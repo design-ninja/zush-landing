@@ -1,0 +1,99 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+:root {
+    --font-family: #{$font-family};
+    --font-family-heading: #{$font-family-heading};
+    --bg-primary: #{$bg-primary};
+    --bg-secondary: #{$bg-secondary};
+    --text-primary: #{$text-primary};
+    --text-secondary: #{$text-secondary};
+    --accent-color: #{$accent-color};
+    --accent-hover: #{$accent-hover};
+    --border-color: #{$border-color};
+    --card-bg: #{$card-bg};
+    --glass-bg: #{$glass-bg};
+    --glass-border: #{$glass-border};
+    --btn-secondary-bg: #{$btn-secondary-bg};
+    --btn-secondary-hover: #{$btn-secondary-hover};
+}
+
+[data-theme='light'] {
+    --bg-primary: #{$light-bg-primary};
+    --bg-secondary: #{$light-bg-secondary};
+    --text-primary: #{$light-text-primary};
+    --text-secondary: #{$light-text-secondary};
+    --accent-color: #{$light-accent-color};
+    --accent-hover: #{$light-accent-hover};
+    --border-color: #{$light-border-color};
+    --card-bg: #{$light-card-bg};
+    --glass-bg: #{$light-glass-bg};
+    --glass-border: #{$light-glass-border};
+    --btn-secondary-bg: #{$light-btn-secondary-bg};
+    --btn-secondary-hover: #{$light-btn-secondary-hover};
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.5;
+    transition: background-color $transition-normal, color $transition-normal;
+    overflow-x: hidden;
+
+    @include mobile {
+        font-size: 14px;
+    }
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-family: inherit;
+}
+
+.markdown-content {
+    h3 {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        color: var(--text-primary);
+    }
+
+    p {
+        margin-bottom: 1.25rem;
+        line-height: 1.7;
+        color: var(--text-secondary);
+    }
+
+    ul {
+        margin-bottom: 1.5rem;
+        padding-left: 1.5rem;
+        list-style: disc;
+    }
+
+    li {
+        margin-bottom: 0.5rem;
+        color: var(--text-secondary);
+    }
+
+    strong {
+        color: var(--text-primary);
+        font-weight: 700;
+    }
+}

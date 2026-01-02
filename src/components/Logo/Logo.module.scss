@@ -1,0 +1,34 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.Logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+
+    &__Icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 16px;
+        corner-shape: squircle;
+        object-fit: contain;
+        transition: transform 0.2s ease;
+
+        @include mobile {
+            width: 40px;
+            height: 40px;
+        }
+    }
+
+    &__Text {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--accent-color);
+        transition: color 0.2s ease;
+
+        @include mobile {
+            font-size: 1.6rem;
+        }
+    }
+}

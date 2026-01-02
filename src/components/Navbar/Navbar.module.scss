@@ -1,0 +1,68 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.Navbar {
+    @include glass-morphism;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: $navbar-height;
+
+    &__Container {
+        @include container;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+    }
+
+    &__Logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    &__LogoText {
+        color: var(--accent-color);
+    }
+
+    &__Actions {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+
+        @include mobile {
+            gap: 1rem;
+        }
+    }
+
+    &__Link {
+        font-weight: 500;
+
+        @include mobile {
+            display: none;
+        }
+    }
+
+    &__ThemeToggle {
+        display: flex;
+        align-items: center;
+        color: var(--text-primary);
+    }
+
+    &__Buttons {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        @include mobile {
+            a:first-child {
+                display: none; // Hide "Buy PRO" link to keep it clean, or keep it? User said "neat".
+            }
+        }
+    }
+}

@@ -1,0 +1,74 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.FileShowcase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    overflow: visible;
+
+    &__Grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        width: 100%;
+
+        @include mobile {
+            grid-template-columns: 1fr;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+    }
+}
+
+.FileItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background-color: var(--bg-secondary);
+    border-radius: $radius-md;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-width: 0;
+
+    @include mobile {
+        &:nth-child(n+5) {
+            display: none;
+        }
+    }
+
+
+    &__Image {
+        width: 64px;
+        height: 64px;
+        border-radius: $radius-sm;
+        object-fit: cover;
+        flex-shrink: 0;
+        background-color: #2a2a2e;
+    }
+
+    &__Content {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        text-align: left;
+    }
+
+    &__Before {
+        font-size: 0.65rem;
+        color: var(--text-secondary);
+        @include text-ellipsis;
+        text-decoration: line-through;
+        margin-bottom: 2px;
+    }
+
+    &__After {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        @include text-ellipsis;
+    }
+}

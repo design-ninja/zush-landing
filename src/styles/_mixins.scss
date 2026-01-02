@@ -1,0 +1,54 @@
+@use 'variables' as *;
+
+@mixin glass-morphism {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+}
+
+@mixin container {
+    max-width: $container-max-width;
+    margin: 0 auto;
+    padding: 0 $container-padding;
+
+    @include mobile {
+        padding: 0 1.25rem;
+    }
+}
+
+
+@mixin section-title {
+    font-family: var(--font-family-heading);
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    text-align: center;
+
+    @include mobile {
+        font-size: 2rem;
+    }
+}
+
+@mixin section-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@mixin text-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin mobile {
+    @media (max-width: 768px) {
+        @content;
+    }
+}

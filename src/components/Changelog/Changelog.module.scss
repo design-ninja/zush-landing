@@ -1,0 +1,148 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.Changelog {
+    padding: 60px 0;
+    min-height: 80vh;
+
+    &__Container {
+        @include container;
+        max-width: 800px;
+    }
+
+    &__Header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    &__Title {
+        font-size: 2.5rem;
+        font-family: $font-family-heading;
+        margin-bottom: 0.5rem;
+    }
+
+    &__Subtitle {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+    }
+
+    &__Timeline {
+        position: relative;
+        padding-left: 2rem;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom,
+                    $accent-color,
+                    transparent);
+            border-radius: 1px;
+        }
+    }
+
+    &__Item {
+        position: relative;
+        padding-bottom: 2.5rem;
+
+        &:last-child {
+            padding-bottom: 0;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 6px;
+            width: 14px;
+            height: 14px;
+            background: $accent-color;
+            border-radius: 50%;
+            border: 3px solid var(--bg-primary);
+            box-shadow: 0 0 0 3px rgba($accent-color, 0.2);
+        }
+    }
+
+    &__ItemHeader {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+    }
+
+    &__Version {
+        font-size: 1.5rem;
+        font-weight: 600;
+        font-family: $font-family-heading;
+    }
+
+    &__Date {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+    }
+
+    &__Badge {
+        padding: 0.25rem 0.75rem;
+        background: rgba($accent-color, 0.15);
+        color: $accent-color;
+        border-radius: $radius-full;
+        font-size: 0.75rem;
+        font-weight: 500;
+    }
+
+    &__Content {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        border-radius: $radius-md;
+        padding: 1.5rem;
+
+        h2,
+        h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            li {
+                padding: 0.5rem 0;
+                color: var(--text-secondary);
+                display: flex;
+                align-items: flex-start;
+                gap: 0.5rem;
+                line-height: 1.5;
+
+                &::before {
+                    content: '•';
+                    color: $accent-color;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    &__Loading,
+    &__Error {
+        text-align: center;
+        padding: 4rem 2rem;
+        color: var(--text-secondary);
+    }
+
+    &__Error {
+        color: #ef4444;
+    }
+
+    &__BackLink {
+        margin-top: 2rem;
+        text-align: center;
+    }
+}

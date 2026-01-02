@@ -1,0 +1,34 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.Legal {
+    padding: 60px 0;
+    min-height: 80vh;
+
+    &__Container {
+        @include container;
+        max-width: 800px;
+    }
+
+    &__Title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    &__Updated {
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+    }
+
+    &__Content {
+        color: var(--text-primary);
+        padding: 2.5rem;
+        background-color: var(--bg-secondary);
+        border-radius: $radius-xl;
+        border: 1px solid var(--border-color);
+    }
+
+    &__BackLink {
+        margin-top: 2rem;
+    }
+}

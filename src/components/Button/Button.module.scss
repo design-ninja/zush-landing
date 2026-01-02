@@ -1,0 +1,70 @@
+@use '@/styles/variables' as *;
+
+.Button {
+    all: unset;
+    border-radius: $radius-full;
+    font-weight: 600;
+    transition: all $transition-fast;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-family: inherit;
+    text-decoration: none;
+    gap: 8px;
+
+    // Sizes
+    &_sm {
+        padding: 0.6rem 1.25rem;
+        font-size: 0.9rem;
+    }
+
+    &_md {
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    &_lg {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+    }
+
+    &_fluid {
+        width: 100%;
+    }
+
+    // Variants
+    &_primary {
+        background-color: var(--accent-color);
+        color: white;
+
+        &:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    }
+
+    &_black {
+        background-color: var(--btn-secondary-bg);
+        color: white;
+        border: 1px solid var(--glass-border);
+
+        &:hover {
+            background-color: var(--btn-secondary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    }
+
+    &_ghost {
+        background-color: rgba(97, 85, 245, 0.1);
+        color: var(--accent-color);
+
+        &:hover {
+            background-color: rgba(97, 85, 245, 0.2);
+        }
+    }
+}

@@ -1,0 +1,90 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.Hero {
+    padding: 100px 0 60px;
+    overflow-x: hidden; // Prevent horizontal scroll from glow effects
+
+    @include mobile {
+        padding: 60px 0 40px;
+    }
+
+    &__Container {
+        @include container;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+        align-items: center;
+        gap: 4rem;
+
+        @include mobile {
+            grid-template-columns: 1fr;
+            text-align: center;
+            gap: 0;
+            padding-top: 0;
+        }
+    }
+
+    &__Title {
+        font-family: var(--font-family-heading);
+        font-size: 2.9rem;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+
+        @include mobile {
+            font-size: 2.2rem;
+        }
+    }
+
+    &__TitleAccent {
+        color: var(--accent-color);
+    }
+
+    &__Subtitle {
+        font-size: 1.25rem;
+        color: var(--text-secondary);
+        margin-bottom: 2.5rem;
+        max-width: 500px;
+
+        @include mobile {
+            font-size: 1.1rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    &__Buttons {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+
+        @include mobile {
+            justify-content: center;
+        }
+    }
+
+    &__ShowcaseWrapper {
+        position: relative;
+        width: 100%;
+    }
+
+    &__GlowEffect {
+        position: absolute;
+        top: -40px;
+        right: -40px;
+        width: 200px;
+        height: 200px;
+        background: var(--accent-color);
+        filter: blur(100px);
+        opacity: 0.2;
+        z-index: -1;
+
+        @include mobile {
+            right: 50%;
+            transform: translateX(50%);
+            top: 0;
+            opacity: 0.15;
+        }
+    }
+}

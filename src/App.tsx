@@ -1,0 +1,42 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useTheme } from './hooks/useTheme';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Features from './components/Features';
+import Pricing from './components/Pricing';
+import Legal from './components/Legal';
+import Changelog from './components/Changelog';
+import Footer from './components/Footer';
+import styles from './App.module.scss';
+
+const MainContent = () => (
+  <>
+    <Hero />
+    <Features />
+    <Pricing />
+  </>
+);
+
+function App() {
+  const { theme, toggleTheme } = useTheme();
+
+  return (
+    <Router>
+      <div className={styles.App}>
+        <Navbar theme={theme} toggleTheme={toggleTheme} />
+        <main className={styles.App__Main}>
+          <Routes>
+            <Route path="/" element={<MainContent />} />
+            <Route path="/changelog" element={<Changelog />} />
+            <Route path="/terms-of-service" element={<Legal type="tos" />} />
+            <Route path="/privacy-policy" element={<Legal type="privacy" />} />
+            <Route path="/refund-policy" element={<Legal type="refund" />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
+  );
+}
+
+export default App;
