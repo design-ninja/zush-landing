@@ -1,16 +1,77 @@
-# React + Vite
+# Zush Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Landing page for [Zush](https://zushapp.com) — AI-powered image organization app for macOS.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19** + **TypeScript**
+- **Vite 7** — build tool
+- **SCSS Modules** — styling
+- **React Router** — routing
+- **Framer Motion** — animations
 
-## React Compiler
+## Development
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+# Install dependencies
+pnpm install
 
-## Expanding the ESLint configuration
+# Start dev server
+pnpm run dev
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Build for production
+pnpm run build
+
+# Preview production build
+pnpm run preview
+```
+
+## Deployment
+
+The site is deployed to GitHub Pages:
+
+```bash
+pnpm run deploy
+```
+
+This will build the project and push to `gh-pages` branch.
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── Button/          # Reusable button component
+│   ├── Changelog/       # Version history (fetches from appcast.xml)
+│   ├── Features/        # Features section
+│   ├── FileShowcase/    # File cards animation
+│   ├── Footer/          # Site footer
+│   ├── Hero/            # Hero section
+│   ├── Legal/           # Terms, Privacy, Refund pages
+│   ├── Logo/            # Logo component
+│   ├── Navbar/          # Navigation bar
+│   └── Pricing/         # Pricing section
+├── content/             # Markdown content for legal pages
+├── hooks/               # Custom React hooks
+├── styles/              # Global SCSS (variables, mixins, base)
+└── App.tsx              # Main app with routing
+
+public/
+├── appcast.xml          # Sparkle update feed
+├── downloads/           # App binaries (.zip)
+├── CNAME                # Custom domain config
+└── images/              # Static images
+```
+
+## Sparkle Integration
+
+The `public/appcast.xml` file serves as the update feed for the macOS app via [Sparkle](https://sparkle-project.org/).
+
+When releasing a new version:
+1. Add the `.zip` binary to `public/downloads/`
+2. Update `appcast.xml` with new version info
+3. Deploy: `pnpm run deploy`
+
+## License
+
+MIT
