@@ -112,7 +112,7 @@ const Pricing = () => {
         </div>
         
         <p className={styles.Pricing__Disclaimer}>
-          Secure payment via Lemon Squeezy. All local taxes included.
+          Secure payment via Paddle. All local taxes included.
         </p>
       </div>
     </section>
