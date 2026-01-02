@@ -127,11 +127,9 @@ const Changelog = () => {
                     ))}
                 </div>
 
-                <div className={styles.Changelog__BackLink}>
-                    <Link to="/">
-                        <Button variant="secondary">Back to Home</Button>
-                    </Link>
-                </div>
+                <Button as={Link} to="/" variant="ghost" className={styles.Changelog__BackLink}>
+                    ← Back to Home
+                </Button>
             </div>
         </section>
     );

@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useTheme } from './hooks/useTheme';
+import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Features from './components/Features';
@@ -22,6 +23,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className={styles.App}>
         <Navbar theme={theme} toggleTheme={toggleTheme} />
         <main className={styles.App__Main}>

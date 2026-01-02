@@ -55,7 +55,7 @@ const Features = () => {
           <span className={styles.Features__TitleAccent}>effortlessly</span>
         </h2>
         <p className={styles.Features__Subtitle}>
-          Zush automatically renames your screenshots and photos so you can find what you need, fast.
+          Zush automatically renames your screenshots and photos so you can find what you need, fast
         </p>
         
         <div className={styles.Features__Grid}>

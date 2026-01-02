@@ -43,7 +43,7 @@ const Pricing = () => {
     },
     {
       name: "🌟 PRO",
-      price: "$19.99",
+      price: "$9.99",
       period: "lifetime",
       description: "Powerful AI features for power users",
       features: [
@@ -52,7 +52,7 @@ const Pricing = () => {
         { title: "Smart Metadata", desc: "Automatically add Finder tags and Spotlight comments", icon: Zap },
         { title: "Custom Naming Pattern", desc: "Create your own file naming pattern with variables", icon: FileCode }
       ],
-      buttonText: "Buy Now",
+      buttonText: "Buy PRO Now 🌟",
       isPro: true,
       highlight: true
     }
@@ -65,7 +65,7 @@ const Pricing = () => {
           Choose your <span className={styles.Pricing__TitleAccent}>Plan</span>
         </h2>
         <p className={styles.Pricing__Subtitle}>
-          Start organizing for free or unlock the full power of AI with 🌟 PRO.
+          Start organizing for free or unlock the full power of AI with 🌟 PRO
         </p>
 
         <div className={styles.Pricing__Grid}>

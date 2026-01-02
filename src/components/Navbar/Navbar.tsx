@@ -14,13 +14,14 @@ const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
       <div className={styles.Navbar__Container}>
         <Logo />
         <div className={styles.Navbar__Actions}>
-          <a href="#features" className={styles.Navbar__Link}>Features</a>
-          <a href="#pricing" className={styles.Navbar__Link}>Pricing</a>
+          <a href="/#features" className={styles.Navbar__Link}>Features</a>
+          <a href="/#pricing" className={styles.Navbar__Link}>Pricing</a>
+          <a href="/changelog" className={styles.Navbar__Link}>Changelog</a>
           <button onClick={toggleTheme} className={styles.Navbar__ThemeToggle}>
             {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
           </button>
           <div className={styles.Navbar__Buttons}>
-            <Button as="a" href="#pricing" variant="ghost" size="sm">
+            <Button as="a" href="/#pricing" variant="ghost" size="sm">
               Buy PRO
             </Button>
             <Button 

@@ -55,7 +55,7 @@
         &::before {
             content: '';
             position: absolute;
-            left: -2rem;
+            left: -2.2rem;
             top: 6px;
             width: 14px;
             height: 14px;
@@ -87,8 +87,8 @@
 
     &__Badge {
         padding: 0.25rem 0.75rem;
-        background: rgba($accent-color, 0.15);
-        color: $accent-color;
+        background: rgba($success-color, 0.15);
+        color: $success-color;
         border-radius: $radius-full;
         font-size: 0.75rem;
         font-weight: 500;
@@ -120,12 +120,6 @@
                 align-items: flex-start;
                 gap: 0.5rem;
                 line-height: 1.5;
-
-                &::before {
-                    content: '•';
-                    color: $accent-color;
-                    font-weight: bold;
-                }
             }
         }
     }
@@ -143,6 +137,5 @@
 
     &__BackLink {
         margin-top: 2rem;
-        text-align: center;
     }
 }

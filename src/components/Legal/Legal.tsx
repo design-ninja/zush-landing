@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import styles from './Legal.module.scss';
@@ -25,10 +24,6 @@ const titles: Record<string, string> = {
 };
 
 const Legal = ({ type }: LegalProps) => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [type]);
-
   const content = contentMap[type];
 
   return (
