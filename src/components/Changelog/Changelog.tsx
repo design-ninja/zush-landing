@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 import Button from '../Button';
 import styles from './Changelog.module.scss';
+import changelogPath from '../../content/changelog.md?url';
 
 interface ReleaseItem {
     version: string;
-    shortVersion: string;
     date: string;
-    description: string;
+    content: string;
 }
 
 const Changelog = () => {
@@ -16,35 +17,15 @@ const Changelog = () => {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        const fetchAppcast = async () => {
+        const fetchChangelog = async () => {
             try {
-                const response = await fetch('/appcast.xml');
+                const response = await fetch(changelogPath);
                 if (!response.ok) {
-                    throw new Error('Failed to fetch appcast');
+                    throw new Error('Failed to fetch changelog');
                 }
-                const xmlText = await response.text();
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
-
-                const items = xmlDoc.querySelectorAll('item');
-                const parsedReleases: ReleaseItem[] = [];
-
-                items.forEach((item) => {
-                    const title = item.querySelector('title')?.textContent || '';
-                    const description = item.querySelector('description')?.textContent || '';
-                    const pubDate = item.querySelector('pubDate')?.textContent || '';
-                    const shortVersion = item.querySelector('shortVersionString')?.textContent || 
-                        title.replace('Version ', '');
-
-                    parsedReleases.push({
-                        version: title,
-                        shortVersion,
-                        date: formatDate(pubDate),
-                        description: cleanDescription(description),
-                    });
-                });
-
-                setReleases(parsedReleases);
+                const text = await response.text();
+                const parsed = parseChangelog(text);
+                setReleases(parsed);
             } catch (err) {
                 setError(err instanceof Error ? err.message : 'Unknown error');
             } finally {
@@ -52,8 +33,29 @@ const Changelog = () => {
             }
         };
 
-        fetchAppcast();
+        fetchChangelog();
     }, []);
+
+    const parseChangelog = (markdown: string): ReleaseItem[] => {
+        // Split by version headers (## [X.X.X] - YYYY-MM-DD)
+        const versions = markdown.split(/^## \[/m);
+        // Remove the first part (header before first version)
+        versions.shift();
+
+        return versions.map(block => {
+            const lines = block.split('\n');
+            const header = lines[0]; // "0.2.0] - 2025-12-31"
+            const content = lines.slice(1).join('\n').trim();
+
+            const [versionPart, datePart] = header.split('] - ');
+            
+            return {
+                version: versionPart,
+                date: formatDate(datePart),
+                content: content
+            };
+        });
+    };
 
     const formatDate = (dateStr: string): string => {
         if (!dateStr) return '';
@@ -67,10 +69,6 @@ const Changelog = () => {
         } catch {
             return dateStr;
         }
-    };
-
-    const cleanDescription = (html: string): string => {
-        return html.trim();
     };
 
     const isLatest = (index: number): boolean => index === 0;
@@ -109,20 +107,19 @@ const Changelog = () => {
 
                 <div className={styles.Changelog__Timeline}>
                     {releases.map((release, index) => (
-                        <article key={release.shortVersion} className={styles.Changelog__Item}>
+                        <article key={release.version} className={styles.Changelog__Item}>
                             <div className={styles.Changelog__ItemHeader}>
                                 <h2 className={styles.Changelog__Version}>
-                                    v{release.shortVersion}
+                                    v{release.version}
                                 </h2>
                                 {isLatest(index) && (
                                     <span className={styles.Changelog__Badge}>Latest</span>
                                 )}
                                 <time className={styles.Changelog__Date}>{release.date}</time>
                             </div>
-                            <div
-                                className={styles.Changelog__Content}
-                                dangerouslySetInnerHTML={{ __html: release.description }}
-                            />
+                            <div className={styles.Changelog__Content}>
+                                <ReactMarkdown>{release.content}</ReactMarkdown>
+                            </div>
                         </article>
                     ))}
                 </div>
