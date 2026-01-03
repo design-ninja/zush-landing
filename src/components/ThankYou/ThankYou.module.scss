@@ -1,0 +1,145 @@
+.ThankYou {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+
+    &__Container {
+        max-width: 600px;
+        text-align: center;
+    }
+
+    &__Icon {
+        color: var(--color-primary);
+        margin-bottom: 24px;
+
+        svg {
+            filter: drop-shadow(0 4px 12px rgba(99, 102, 241, 0.3));
+        }
+    }
+
+    &__Title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--color-text);
+        margin-bottom: 16px;
+    }
+
+    &__Subtitle {
+        font-size: 1.1rem;
+        color: var(--color-text-secondary);
+        margin-bottom: 32px;
+        line-height: 1.6;
+    }
+
+    &__LicenseBox {
+        background: linear-gradient(135deg, var(--color-primary) 0%, #8b5cf6 100%);
+        border-radius: 16px;
+        padding: 24px 32px;
+        margin-bottom: 32px;
+    }
+
+    &__LicenseLabel {
+        display: block;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.875rem;
+        margin-bottom: 12px;
+    }
+
+    &__LicenseKey {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+
+        code {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            letter-spacing: 2px;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+        }
+    }
+
+    &__CopyButton {
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        border-radius: 8px;
+        padding: 8px;
+        color: white;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+    }
+
+    &__NoKey {
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 32px;
+
+        p {
+            color: var(--color-text-secondary);
+            margin: 8px 0;
+
+            strong {
+                color: var(--color-text);
+            }
+        }
+    }
+
+    &__Instructions {
+        text-align: left;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 24px;
+
+        h3 {
+            color: var(--color-text);
+            font-size: 1rem;
+            margin-bottom: 16px;
+        }
+
+        ol {
+            color: var(--color-text-secondary);
+            padding-left: 20px;
+
+            li {
+                margin-bottom: 8px;
+                line-height: 1.6;
+
+                strong {
+                    color: var(--color-text);
+                }
+            }
+        }
+    }
+
+    &__Links {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+    }
+
+    &__Link {
+        color: var(--color-primary);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: opacity 0.2s;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}

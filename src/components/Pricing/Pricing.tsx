@@ -9,6 +9,10 @@ import {
 import Button from '../Button';
 import styles from './Pricing.module.scss';
 
+// Paddle Sandbox checkout URL
+const PADDLE_CHECKOUT_URL = 'https://sandbox-buy.paddle.com/checkout?product=pri_01ke0vfdqxpf0tfx0cy5bhk7qv';
+const DOWNLOAD_URL = 'https://github.com/design-ninja/zush/releases/latest/download/Zush.dmg';
+
 interface Feature {
   title: string;
   desc: string;
@@ -58,6 +62,14 @@ const Pricing = () => {
     }
   ];
 
+  const handleButtonClick = (isPro: boolean) => {
+    if (isPro) {
+      window.open(PADDLE_CHECKOUT_URL, '_blank');
+    } else {
+      window.open(DOWNLOAD_URL, '_blank');
+    }
+  };
+
   return (
     <section id="pricing" className={styles.Pricing}>
       <div className={styles.Pricing__Container}>
@@ -103,7 +115,8 @@ const Pricing = () => {
               </div>
 
               <Button 
-                variant={plan.isPro ? 'primary' : 'black'} 
+                variant={plan.isPro ? 'primary' : 'black'}
+                onClick={() => handleButtonClick(plan.isPro)}
               >
                 {plan.buttonText}
               </Button>
@@ -120,3 +133,4 @@ const Pricing = () => {
 };
 
 export default Pricing;
+
