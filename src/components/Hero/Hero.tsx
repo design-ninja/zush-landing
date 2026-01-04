@@ -30,7 +30,7 @@ const Hero = () => {
           <div className={styles.Hero__Buttons}>
             <Button 
               as="a" 
-              href="https://zushapp.com/releases/Zush-0.4.0.zip" 
+              href="https://zushapp.com/releases/Zush.zip" 
               variant="black"
               size="lg"
             >
