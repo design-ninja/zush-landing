@@ -26,7 +26,7 @@ const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
             </Button>
             <Button 
               as="a" 
-              href="https://zushapp.com/releases/Zush-0.3.0.zip" 
+              href="https://zushapp.com/releases/Zush-0.4.0.zip" 
               variant="black"
               size="sm"
             >

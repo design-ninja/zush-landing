@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.4.0] - 2026-01-04
+### Added
+- 🎉 Welcome onboarding screen for first-time users
+- 📂 Folder selection during onboarding
+- 📍 Menu bar location hint for new users
+- 🔔 Notification when monitoring starts
+- ✏️ Change watched folder button in settings
+
+### Fixed
+- 🐛 Screenshot detection for macOS temp files
+
 ## [0.3.0] - 2026-01-02
 ### Added
 - 🔄 Batch image analysis with processing queue
