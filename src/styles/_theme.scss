@@ -3,15 +3,13 @@
 :root {
     --font-family: #{$font-family};
     --font-family-heading: #{$font-family-heading};
+    --font-mono: #{$font-mono};
 
     --background: #{$background};
     --foreground: #{$foreground};
 
     --card: #{$card};
     --card-foreground: #{$card-foreground};
-
-    --popover: #{$popover};
-    --popover-foreground: #{$popover-foreground};
 
     --muted: #{$muted};
     --muted-foreground: #{$muted-foreground};
@@ -26,16 +24,12 @@
     --secondary-hover: #{$secondary-hover};
 
     --border: #{$border};
-    --input: #{$input};
-    --ring: #{$ring};
 
     --glass: #{$glass};
     --glass-border: #{$glass-border};
 
     --success: #{$success};
     --success-foreground: #{$success-foreground};
-    --warning: #{$warning};
-    --warning-foreground: #{$warning-foreground};
     --destructive: #{$destructive};
     --destructive-foreground: #{$destructive-foreground};
 }
@@ -46,9 +40,6 @@
 
     --card: #{$dark-card};
     --card-foreground: #{$dark-card-foreground};
-
-    --popover: #{$dark-popover};
-    --popover-foreground: #{$dark-popover-foreground};
 
     --muted: #{$dark-muted};
     --muted-foreground: #{$dark-muted-foreground};
@@ -63,16 +54,12 @@
     --secondary-hover: #{$dark-secondary-hover};
 
     --border: #{$dark-border};
-    --input: #{$dark-input};
-    --ring: #{$dark-ring};
 
     --glass: #{$dark-glass};
     --glass-border: #{$dark-glass-border};
 
     --success: #{$dark-success};
     --success-foreground: #{$dark-success-foreground};
-    --warning: #{$dark-warning};
-    --warning-foreground: #{$dark-warning-foreground};
     --destructive: #{$dark-destructive};
     --destructive-foreground: #{$dark-destructive-foreground};
 }

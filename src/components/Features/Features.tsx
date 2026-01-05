@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { FolderSync, Sparkles, Sliders, History, Search, Tag, Zap, Folder, X, Plus, FileImage, FileText, LucideIcon } from 'lucide-react';
+import { FolderSync, Sparkles, Sliders, History, Search, Tag, Folder, Plus, LucideIcon } from 'lucide-react';
 import Heading from '../Heading';
 import Text from '../Text';
 import SectionHeader from '../SectionHeader';

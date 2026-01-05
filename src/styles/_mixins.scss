@@ -17,30 +17,6 @@
     }
 }
 
-
-@mixin section-title {
-    font-family: var(--font-family-heading);
-    font-size: 2.5rem;
-    font-weight: 600;
-    line-height: 1.2;
-    margin-bottom: 1rem;
-    text-align: center;
-
-    @include mobile {
-        font-size: 2rem;
-    }
-}
-
-@mixin section-subtitle {
-    font-size: 1.125rem;
-    color: var(--muted-foreground);
-    text-align: center;
-    margin-bottom: 3rem;
-    max-width: 37.5rem;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 @mixin text-ellipsis {
     white-space: nowrap;
     overflow: hidden;

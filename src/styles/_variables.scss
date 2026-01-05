@@ -5,11 +5,8 @@ $foreground: oklch(0.15 0.015 265);
 $card: oklch(1 0 0);
 $card-foreground: oklch(0.15 0.015 265);
 
-$popover: oklch(1 0 0);
-$popover-foreground: oklch(0.15 0.015 265);
-
 $muted: oklch(0.98 0.003 265);
-$muted-foreground: oklch(0.45 0.015 265);
+$muted-foreground: oklch(0.45 0.01 274.5);
 
 $primary: oklch(0.5 0.22 280);
 $primary-foreground: oklch(1 0 0);
@@ -21,16 +18,12 @@ $secondary-foreground: oklch(1 0 0);
 $secondary-hover: oklch(0.15 0 0);
 
 $border: oklch(0.92 0.003 265);
-$input: oklch(0.92 0.003 265);
-$ring: oklch(0.5 0.22 280 / 0.2);
 
 $glass: oklch(1 0 0 / 0.7);
 $glass-border: oklch(0 0 0 / 0.05);
 
 $success: oklch(0.65 0.17 160);
 $success-foreground: oklch(1 0 0);
-$warning: oklch(0.75 0.15 85);
-$warning-foreground: oklch(0.2 0 0);
 $destructive: oklch(0.6 0.2 25);
 $destructive-foreground: oklch(1 0 0);
 
@@ -40,9 +33,6 @@ $dark-foreground: oklch(1 0 0);
 
 $dark-card: oklch(0.17 0.01 285);
 $dark-card-foreground: oklch(1 0 0);
-
-$dark-popover: oklch(0.2 0.01 285);
-$dark-popover-foreground: oklch(1 0 0);
 
 $dark-muted: oklch(0.2 0.01 285);
 $dark-muted-foreground: oklch(0.7 0.01 265);
@@ -57,22 +47,19 @@ $dark-secondary-foreground: oklch(1 0 0);
 $dark-secondary-hover: oklch(0.25 0.01 285);
 
 $dark-border: oklch(0.28 0.01 285);
-$dark-input: oklch(0.28 0.01 285);
-$dark-ring: oklch(0.55 0.24 280 / 0.2);
 
 $dark-glass: oklch(0.2 0.01 285 / 0.7);
 $dark-glass-border: oklch(1 0 0 / 0.1);
 
 $dark-success: oklch(0.7 0.17 160);
 $dark-success-foreground: oklch(0.15 0 0);
-$dark-warning: oklch(0.8 0.15 85);
-$dark-warning-foreground: oklch(0.15 0 0);
 $dark-destructive: oklch(0.65 0.2 25);
 $dark-destructive-foreground: oklch(1 0 0);
 
 // Typography
 $font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 $font-family-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+$font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
 
 // Spacing
 $container-max-width: 75rem;

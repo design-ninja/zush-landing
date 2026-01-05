@@ -29,21 +29,6 @@
         grid-auto-rows: auto;
     }
 
-    &__Item_Wide {
-        grid-column: span 2;
-
-        @media (max-width: 960px) {
-            grid-column: span 2;
-        }
-
-        @media (max-width: 640px) {
-            grid-column: span 1;
-        }
-    }
-
-    &__Item_Full {
-        grid-column: 1 / -1;
-    }
 }
 
 .BentoCard {
@@ -240,7 +225,7 @@
 
         &__OldName {
             font-size: 0.75rem;
-            color: var(--text-tertiary);
+            color: var(--muted-foreground);
             text-decoration: line-through;
             white-space: nowrap;
             overflow: hidden;
@@ -311,7 +296,7 @@
             gap: 0.75rem;
             border: none;
             // To mimic selection
-            box-shadow: 0 0.25rem 0.75rem rgba(var(--accent-rgb), 0.3);
+            box-shadow: 0 0.25rem 0.75rem oklch(0.5 0.22 280 / 0.3);
         }
 
         &__ResultIcon {
@@ -354,7 +339,7 @@
 
         &__Icon {
             @include mockup-thumb(2rem, 0.5rem);
-            background: var(--action-neutral-bg, #f0f0f0);
+            background: var(--muted);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -379,7 +364,7 @@
 
         &__Time {
             font-size: 0.75rem;
-            color: var(--text-tertiary);
+            color: var(--muted-foreground);
         }
 
         &__Undo {
