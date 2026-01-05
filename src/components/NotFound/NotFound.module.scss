@@ -34,7 +34,7 @@
         border: 1px solid var(--glass-border);
         filter: grayscale(100%) contrast(1.1);
         animation: float 20s infinite ease-in-out;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        @include shadow('md');
 
         &:nth-child(1) {
             top: 10%;
@@ -71,7 +71,7 @@
         -webkit-backdrop-filter: blur(20px);
         border: 1px solid var(--glass-border);
         border-radius: $radius-xl;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+        @include shadow('lg');
         transition: background-color $transition-normal, border-color $transition-normal;
 
         @include mobile {
@@ -87,7 +87,7 @@
         width: 100%;
         height: 2px;
         background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
-        box-shadow: 0 0 15px var(--accent-color);
+        @include shadow('glow');
         animation: scan 4s linear infinite;
         z-index: 3;
     }

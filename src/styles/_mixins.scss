@@ -52,3 +52,29 @@
         @content;
     }
 }
+
+@mixin shadow($type: 'md') {
+    @if $type =='sm' {
+        box-shadow: $shadow-sm;
+    }
+
+    @else if $type =='md' {
+        box-shadow: $shadow-md;
+    }
+
+    @else if $type =='lg' {
+        box-shadow: $shadow-lg;
+    }
+
+    @else if $type =='accent' {
+        box-shadow: $shadow-accent;
+    }
+
+    @else if $type =='glow' {
+        box-shadow: $shadow-glow;
+    }
+
+    @else if $type =='focus' {
+        box-shadow: $shadow-focus;
+    }
+}
