@@ -2,7 +2,7 @@
 @use '@/styles/mixins' as *;
 
 .Pricing {
-    padding: 60px 0;
+    padding: 6rem 0;
     background-color: var(--bg-secondary);
     scroll-margin-top: $navbar-height;
 
@@ -12,7 +12,7 @@
 
     &__Title {
         @include section-title;
-        margin-bottom: 0.5rem;
+        margin-bottom: 1rem;
     }
 
     &__TitleAccent {
@@ -21,7 +21,7 @@
 
     &__Subtitle {
         @include section-subtitle;
-        margin-bottom: 2rem;
+        margin-bottom: 4rem;
     }
 
     &__Grid {
