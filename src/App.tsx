@@ -7,6 +7,7 @@ import Features from './components/Features';
 import Pricing from './components/Pricing';
 import Legal from './components/Legal';
 import Changelog from './components/Changelog';
+import NotFound from './components/NotFound/NotFound';
 import Footer from './components/Footer';
 import styles from './App.module.scss';
 
@@ -33,6 +34,7 @@ function App() {
             <Route path="/terms-of-service" element={<Legal type="tos" />} />
             <Route path="/privacy-policy" element={<Legal type="privacy" />} />
             <Route path="/refund-policy" element={<Legal type="refund" />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />

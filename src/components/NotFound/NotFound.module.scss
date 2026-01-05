@@ -1,0 +1,235 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.NotFound {
+    min-height: calc(100vh - #{$navbar-height});
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: $container-padding;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bg-primary);
+    text-align: center;
+    transition: background-color $transition-normal;
+
+    &__Background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0.15;
+    }
+
+    &__Image {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: $radius-md;
+        border: 1px solid var(--glass-border);
+        filter: grayscale(100%) contrast(1.1);
+        animation: float 20s infinite ease-in-out;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+        &:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        &:nth-child(2) {
+            top: 20%;
+            right: 15%;
+            animation-delay: -5s;
+        }
+
+        &:nth-child(3) {
+            bottom: 15%;
+            left: 15%;
+            animation-delay: -10s;
+        }
+
+        &:nth-child(4) {
+            bottom: 25%;
+            right: 10%;
+            animation-delay: -15s;
+        }
+    }
+
+    &__Content {
+        position: relative;
+        z-index: 2;
+        max-width: 600px;
+        padding: 3.5rem;
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid var(--glass-border);
+        border-radius: $radius-xl;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+        transition: background-color $transition-normal, border-color $transition-normal;
+
+        @include mobile {
+            padding: 2.5rem 1.5rem;
+            margin: 0 1rem;
+        }
+    }
+
+    &__Scanner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+        box-shadow: 0 0 15px var(--accent-color);
+        animation: scan 4s linear infinite;
+        z-index: 3;
+    }
+
+    &__Title {
+        font-family: var(--font-family-heading);
+        font-size: 8rem;
+        font-weight: 900;
+        margin-bottom: 1rem;
+        color: var(--accent-color);
+        position: relative;
+        letter-spacing: -0.05em;
+        line-height: 1;
+
+        &::after {
+            content: '404';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: var(--accent-color);
+            animation: glitch 2.5s infinite;
+            clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+            transform: translate(-2px, -2px);
+            opacity: 0.3;
+        }
+
+        &::before {
+            content: '404';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: var(--accent-color);
+            animation: glitch 2s infinite reverse;
+            clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+            transform: translate(2px, 2px);
+            opacity: 0.3;
+        }
+
+        @include mobile {
+            font-size: 6rem;
+        }
+    }
+
+    &__Subtitle {
+        font-family: var(--font-family-heading);
+        font-size: 1.75rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+    }
+
+    &__Text {
+        color: var(--text-secondary);
+        margin-bottom: 2.5rem;
+        line-height: 1.6;
+        font-size: 1.125rem;
+    }
+
+    &__BackLink {
+        margin-top: 1rem;
+    }
+}
+
+@keyframes scan {
+    0% {
+        top: 0;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-3px, 3px);
+    }
+
+    40% {
+        transform: translate(-3px, -3px);
+    }
+
+    50% {
+        transform: translate(3px, 3px);
+    }
+
+    60% {
+        transform: translate(3px, -3px);
+    }
+
+    80% {
+        transform: translate(-3px, 0);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(15px, 20px) rotate(5deg);
+    }
+
+    50% {
+        transform: translate(-10px, 35px) rotate(-3deg);
+    }
+
+    75% {
+        transform: translate(-25px, 15px) rotate(2deg);
+    }
+}
+
+[data-theme='light'] {
+    .NotFound {
+        &__Image {
+            filter: grayscale(100%) contrast(0.8);
+            opacity: 0.4;
+        }
+    }
+}
