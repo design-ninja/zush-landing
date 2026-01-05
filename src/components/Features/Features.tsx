@@ -87,12 +87,6 @@ const Features = () => {
                   <div className={styles.UI_Monitoring__Item}>
                     <div className={styles.UI_Monitoring__FolderInfo}>
                       <div className={styles.UI_Monitoring__Icon}><Folder size={16} /></div>
-                      <span>~/Downloads</span>
-                    </div>
-                  </div>
-                  <div className={styles.UI_Monitoring__Item}>
-                    <div className={styles.UI_Monitoring__FolderInfo}>
-                      <div className={styles.UI_Monitoring__Icon}><Folder size={16} /></div>
                       <span>~/Projects/Design/Assets</span>
                     </div>
                   </div>
