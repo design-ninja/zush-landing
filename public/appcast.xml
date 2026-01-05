@@ -6,13 +6,24 @@
         <description>Zush app updates</description>
         <language>en</language>
         <item>
+            <title>0.6.0</title>
+            <pubDate>Mon, 05 Jan 2026 20:27:10 +0700</pubDate>
+            <sparkle:version>6</sparkle:version>
+            <sparkle:shortVersionString>0.6.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<h2>What's New in 0.6.0</h2><ul></ul><p><strong>Added</strong></p><ul><li>🎉 Implemented free tier folder watch limits and pro status UI</li><li>🖼️ Added advanced filename pattern options with live preview</li><li>🔑 Added new views for license activation and pro features</li></ul><p><strong>Improved  </strong></p><ul><li>⚡ Reorganized settings tabs for better user experience</li><li>🛠️ Improved filename sanitization for better file handling</li><li>🔄 Updated watcher logic for more reliable file monitoring</li></ul>
+]]></description>
+            <enclosure url="https://zushapp.com/releases/Zush-0.6.0.dmg" length="7566691" type="application/octet-stream" sparkle:edSignature="wMrI3An9SlaQEhZhVcGljbr+xYRHePhmADas+djnG1rJMjh9KTGmflLI9lw3y2FCckg8DBpZTLBy7UfDZV3HAA=="/>
+            <sparkle:deltas>
+                <enclosure url="https://zushapp.com/releases/Zush6-5.delta" sparkle:deltaFrom="5" length="428402" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="66VGkNsKFztrsdKwlLufxZztmesFe9aLkcYtax938MceKaNJ2sjLndxsoNBLKsT14wGOg0OHAisx7vmGynGaDQ=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>0.5.0</title>
             <pubDate>Mon, 05 Jan 2026 09:06:12 +0700</pubDate>
             <sparkle:version>5</sparkle:version>
             <sparkle:shortVersionString>0.5.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<h2>What's New in 0.5.0</h2><ul></ul><p><strong>Added</strong></p><ul><li>🎉 We now ship Zush as a `.dmg` file instead of a `.zip` for easier installation.</li><li>🖼️ Zush now sends lower quality images for AI analysis to improve performance.</li><li>🔑 Pro features, the general tab, and the onboarding views now have a new primary button style.</li><li>🔔 You'll now receive update notifications and dock badge updates thanks to the new update management system.</li><li>🚀 Automated GitHub release creation and Sparkle feed updates in the release script.</li></ul><p><strong>Improved  </strong></p><ul><li>⚡ Optimized AI analysis data fetching and included modification date in file hash for more accurate results.</li><li>⚡ Refined onboarding view layout and styling, including path shortening.</li><li>📈 Improved backend usage and added server timings to AI analysis responses.</li><li>🎨 Enhanced onboarding experience by moving state management to SettingsViewModel and updating menu bar/settings access based on its status.</li></ul><p><strong>Fixed</strong></p><ul><li>🐛 Enabled logging for Gemini API errors to help diagnose issues.</li></ul>
-]]></description>
             <enclosure url="https://zushapp.com/releases/Zush-0.5.0.dmg" length="7540787" type="application/octet-stream" sparkle:edSignature="GoNpcPBkc7lJulClTjfJkLIZ9wvZUWEEsE/yGOsgjEUDG20K9A7jH6dqb3X79bhD7eEF5Suym5riCwrZ78kcAA=="/>
         </item>
         <item>
@@ -33,27 +44,6 @@
             <sparkle:shortVersionString>0.4.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
             <enclosure url="https://zushapp.com/releases/Zush-0.4.0.zip" sparkle:edSignature="70qHh7hnnDTawHSM72iNoD/YYJGpDvQ3QCHQOr2wfdbftz1DYsynOCo/zL+dZDMJuXM/YCgOWGSywtSoQTALCw==" length="7116068" type="application/octet-stream"/>
-        </item>
-        <item>
-            <title>Version 0.3.0</title>
-            <description><![CDATA[
-                <h2>What's New in 0.3.0</h2>
-                <ul>
-                    <li>🔄 Batch image analysis with processing queue</li>
-                    <li>🖼️ Image compression service</li>
-                    <li>⏱️ Rate limiting for API calls</li>
-                    <li>🔑 License activation and management in Settings</li>
-                    <li>📊 Display AI usage count in General tab</li>
-                    <li>🎨 Pro features view layout optimization</li>
-                    <li>🔖 Exclude color names from AI tags</li>
-                    <li>📁 Auto-detect macOS screenshot folder</li>
-                </ul>
-            ]]></description>
-            <pubDate>Thu, 02 Jan 2026 08:30:00 +0000</pubDate>
-            <sparkle:version>3</sparkle:version>
-            <sparkle:shortVersionString>0.3.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://zushapp.com/releases/Zush-0.3.0.zip" sparkle:edSignature="U5EAUJAqtwQR9z7YuPjfPlydSsSvjltLeHf+tT830djmr/Q4qNmUTpR8SxD0DUt5e4+hLAq+MjCf2PXLUgMrBA==" length="7065349" type="application/octet-stream"/>
         </item>
     </channel>
 </rss>

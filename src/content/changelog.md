@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.6.0] - 2026-01-05
+### Added
+- 🎉 Implemented free tier folder watch limits and pro status UI
+- 🖼️ Added advanced filename pattern options with live preview
+- 🔑 Added new views for license activation and pro features
+
+### Improved  
+- ⚡ Reorganized settings tabs for better user experience
+- 🛠️ Improved filename sanitization for better file handling
+- 🔄 Updated watcher logic for more reliable file monitoring
+
 ## [0.5.0] - 2024-01-05
 ### Added
 - 🎉 We now ship Zush as a `.dmg` file instead of a `.zip` for easier installation.
