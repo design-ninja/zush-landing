@@ -32,7 +32,7 @@ const Footer = () => {
           </div>
         </div>
         <div className={styles.Footer__Bottom}>
-          <Text size="sm" color="subtle">© 2026 <a href="https://lirik.pro/en" target="_blank" rel="noopener noreferrer">lirik</a>. All rights reserved</Text>
+          <Text color="subtle">© 2026 <a href="https://lirik.pro/en" target="_blank" rel="noopener noreferrer">lirik</a>. All rights reserved</Text>
           <div className={styles.Footer__BottomLinks}>
             <a href="mailto:support@zushapp.com">Contact Support</a>
           </div>

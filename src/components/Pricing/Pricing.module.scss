@@ -3,26 +3,22 @@
 
 .Pricing {
     padding: 6rem 0;
-    background-color: var(--bg-secondary);
+    background-color: var(--muted);
     scroll-margin-top: $navbar-height;
 
     &__Container {
         @include container;
     }
 
-
-
     &__TitleAccent {
-        color: var(--accent-color);
+        color: var(--primary);
     }
-
-
 
     &__Grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
         gap: 1.5rem;
-        max-width: 900px;
+        max-width: 56.25rem;
         margin: 0 auto;
 
         @include mobile {
@@ -39,13 +35,13 @@
 .PricingCard {
     @include glass-morphism;
     padding: 2rem;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border);
     border-radius: $radius-xl;
     display: flex;
     flex-direction: column;
     position: relative;
     overflow: hidden;
-    scroll-margin-top: calc($navbar-height + 20px);
+    scroll-margin-top: calc($navbar-height + 1.25rem);
     @include shadow('sm');
 
     @include mobile {
@@ -53,12 +49,12 @@
     }
 
     &_highlighted {
-        border: 4px solid var(--accent-color);
+        border: 0.25rem solid var(--primary);
         @include shadow('accent');
     }
 
     &_highlighted &__Name {
-        color: var(--accent-color);
+        color: var(--primary);
     }
 
     &__Header {
@@ -73,7 +69,7 @@
         margin-top: 1rem;
         display: flex;
         align-items: baseline;
-        gap: 4px;
+        gap: 0.25rem;
     }
 
     &__PriceValue {
@@ -83,7 +79,7 @@
     }
 
     &__PricePeriod {
-        color: var(--text-secondary);
+        color: var(--muted-foreground);
         font-size: 1rem;
         margin-left: 0.5rem;
     }
@@ -98,28 +94,28 @@
 
     &__Feature {
         display: flex;
-        gap: 12px;
+        gap: 0.75rem;
         padding-bottom: 0.75rem;
 
         &:not(:last-child) {
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border);
         }
     }
 
     &__FeatureIcon {
-        color: $success-color;
-        margin-top: 2px;
+        color: var(--success);
+        margin-top: 0.125rem;
     }
 
     &__FeatureTitle {
         font-weight: 600;
         font-size: 1rem;
-        color: var(--text-primary);
+        color: var(--foreground);
     }
 
     &__FeatureDesc {
         font-size: 0.8rem;
-        color: var(--text-secondary);
-        margin-top: 1px;
+        color: var(--muted-foreground);
+        margin-top: 0.0625rem;
     }
 }

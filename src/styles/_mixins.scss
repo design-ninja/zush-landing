@@ -1,9 +1,9 @@
 @use 'variables' as *;
 
 @mixin glass-morphism {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: var(--glass);
+    backdrop-filter: blur(0.75rem);
+    -webkit-backdrop-filter: blur(0.75rem);
     border-bottom: 1px solid var(--glass-border);
 }
 
@@ -33,10 +33,10 @@
 
 @mixin section-subtitle {
     font-size: 1.125rem;
-    color: var(--text-secondary);
+    color: var(--muted-foreground);
     text-align: center;
     margin-bottom: 3rem;
-    max-width: 600px;
+    max-width: 37.5rem;
     margin-left: auto;
     margin-right: auto;
 }
@@ -67,7 +67,7 @@
     }
 
     @else if $type =='accent' {
-        box-shadow: $shadow-accent;
+        box-shadow: $shadow-primary;
     }
 
     @else if $type =='glow' {

@@ -2,12 +2,12 @@
 @use '@/styles/mixins' as *;
 
 .Legal {
-    padding: 60px 0;
+    padding: 3.75rem 0;
     min-height: 80vh;
 
     &__Container {
         @include container;
-        max-width: 800px;
+        max-width: 50rem;
     }
 
     &__Title {
@@ -17,16 +17,16 @@
     }
 
     &__Updated {
-        color: var(--text-secondary);
+        color: var(--muted-foreground);
         margin-bottom: 2rem;
     }
 
     &__Content {
-        color: var(--text-primary);
+        color: var(--foreground);
         padding: 2.5rem;
-        background-color: var(--bg-secondary);
+        background-color: var(--muted);
         border-radius: $radius-xl;
-        border: 1px solid var(--border-color);
+        border: 1px solid var(--border);
     }
 
     &__BackLink {

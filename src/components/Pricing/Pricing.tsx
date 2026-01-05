@@ -4,6 +4,10 @@ import {
   FolderPlus, 
   Zap, 
   FileCode,
+  Sparkles,
+  Folder,
+  Tag,
+  FileText,
   LucideIcon
 } from 'lucide-react';
 import Button from '../Button';
@@ -36,10 +40,10 @@ const Pricing = () => {
       price: "$0",
       description: "Basic organization for casual users",
       features: [
-        { title: "Limited Renames", desc: "Basic AI-powered renaming", icon: Infinity },
-        { title: "Single Folder", desc: "Monitor one folder at a time", icon: FolderPlus },
-        { title: "Manual Metadata", desc: "Add Finder tags manually", icon: Zap },
-        { title: "Default Naming Pattern", desc: "Use standard naming variables", icon: FileCode },
+        { title: "Limited Renames", desc: "Basic AI-powered renaming", icon: Sparkles },
+        { title: "Single Folder", desc: "Monitor one folder at a time", icon: Folder },
+        { title: "Manual Metadata", desc: "Add Finder tags manually", icon: Tag },
+        { title: "Default Naming Pattern", desc: "Use standard naming variables", icon: FileText },
       ],
       buttonText: "Download Free",
       isPro: false
@@ -94,7 +98,7 @@ const Pricing = () => {
                 {plan.features.map((feature, i) => (
                   <div key={i} className={styles.PricingCard__Feature}>
                     <div className={styles.PricingCard__FeatureIcon}>
-                      <feature.icon size={18} />
+                      <feature.icon size={22} />
                     </div>
                     <div>
                       <div className={styles.PricingCard__FeatureTitle}>{feature.title}</div>

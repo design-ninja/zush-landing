@@ -116,7 +116,7 @@ const Features = () => {
                     <img src="/images/features/glitch_thumb.png" alt="Glitch Art" />
                   </div>
                   <div className={styles.UI_Metadata__FileInfo}>
-                    <span className={styles.UI_Metadata__FileName}>Glitch_Art.png</span>
+                    <span className={styles.UI_Metadata__FileName}>Cyberpunk_Art.png</span>
                     <span className={styles.UI_Metadata__FileMeta}>4.2 MB</span>
                   </div>
                 </div>
@@ -126,6 +126,7 @@ const Features = () => {
                   <span>statue</span>
                   <span>cyberpunk</span>
                   <span>digital art</span>
+                  <span>palm tree</span>
                 </div>
              </div>
           </BentoCard>
@@ -190,7 +191,7 @@ const Features = () => {
                       <span className={styles.UI_History__Action}>Renamed 2 files</span>
                       <span className={styles.UI_History__Time}>Just now</span>
                    </div>
-                   <button className={styles.UI_History__Undo}>Undo</button>
+                   <span className={styles.UI_History__Undo}>Undo</span>
                 </div>
                 <div className={`${styles.UI_History__Item} ${styles.UI_History__Item_faded}`}>
                    <div className={styles.UI_History__Icon}><History size={14} /></div>

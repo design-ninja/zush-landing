@@ -1,40 +1,6 @@
 @use 'variables' as *;
 @use 'mixins' as *;
 
-:root {
-    --font-family: #{$font-family};
-    --font-family-heading: #{$font-family-heading};
-    --bg-primary: #{$bg-primary};
-    --bg-secondary: #{$bg-secondary};
-    --text-primary: #{$text-primary};
-    --text-secondary: #{$text-secondary};
-    --accent-color: #{$accent-color};
-    --accent-soft: #{$accent-soft};
-    --accent-hover: #{$accent-hover};
-    --border-color: #{$border-color};
-    --card-bg: #{$card-bg};
-    --glass-bg: #{$glass-bg};
-    --glass-border: #{$glass-border};
-    --btn-secondary-bg: #{$btn-secondary-bg};
-    --btn-secondary-hover: #{$btn-secondary-hover};
-}
-
-[data-theme='dark'] {
-    --bg-primary: #{$dark-bg-primary};
-    --bg-secondary: #{$dark-bg-secondary};
-    --text-primary: #{$dark-text-primary};
-    --text-secondary: #{$dark-text-secondary};
-    --accent-color: #{$dark-accent-color};
-    --accent-soft: #{$dark-accent-soft};
-    --accent-hover: #{$dark-accent-hover};
-    --border-color: #{$dark-border-color};
-    --card-bg: #{$dark-card-bg};
-    --glass-bg: #{$dark-glass-bg};
-    --glass-border: #{$dark-glass-border};
-    --btn-secondary-bg: #{$dark-btn-secondary-bg};
-    --btn-secondary-hover: #{$dark-btn-secondary-hover};
-}
-
 * {
     box-sizing: border-box;
 }
@@ -45,14 +11,14 @@ html {
 
 body {
     font-family: var(--font-family);
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
+    background-color: var(--background);
+    color: var(--foreground);
     line-height: 1.5;
     transition: background-color $transition-normal, color $transition-normal;
     overflow-x: hidden;
 
     @include mobile {
-        font-size: 14px;
+        font-size: 0.875rem;
     }
 }
 
@@ -75,13 +41,13 @@ button {
         margin-bottom: 1rem;
         font-size: 1.5rem;
         font-weight: 600;
-        color: var(--text-primary);
+        color: var(--foreground);
     }
 
     p {
         margin-bottom: 1.25rem;
         line-height: 1.7;
-        color: var(--text-secondary);
+        color: var(--muted-foreground);
     }
 
     ul {
@@ -92,11 +58,11 @@ button {
 
     li {
         margin-bottom: 0.5rem;
-        color: var(--text-secondary);
+        color: var(--muted-foreground);
     }
 
     strong {
-        color: var(--text-primary);
+        color: var(--foreground);
         font-weight: 700;
     }
 }

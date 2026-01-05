@@ -13,7 +13,7 @@
     outline: none;
     font-family: inherit;
     text-decoration: none;
-    gap: 8px;
+    gap: 0.5rem;
 
     // Sizes
     &_sm {
@@ -38,33 +38,33 @@
 
     // Variants
     &_primary {
-        background-color: var(--accent-color);
-        color: white;
+        background-color: var(--primary);
+        color: var(--primary-foreground);
 
         &:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-2px);
+            background-color: var(--primary-hover);
+            transform: translateY(-0.125rem);
         }
     }
 
     &_black {
-        background-color: var(--btn-secondary-bg);
-        color: white;
+        background-color: var(--secondary);
+        color: var(--secondary-foreground);
         outline: 1px solid var(--glass-border);
 
         &:hover {
-            background-color: var(--btn-secondary-hover);
-            transform: translateY(-2px);
+            background-color: var(--secondary-hover);
+            transform: translateY(-0.125rem);
         }
     }
 
     &_ghost {
-        background-color: var(--accent-soft);
-        color: var(--accent-color);
+        background-color: var(--primary-soft);
+        color: var(--primary);
 
         &:hover {
-            background-color: rgba(97, 85, 245, 0.2);
-            transform: translateY(-2px);
+            background-color: oklch(0.5 0.22 280 / 0.2);
+            transform: translateY(-0.125rem);
         }
     }
 }
