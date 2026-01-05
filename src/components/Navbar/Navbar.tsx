@@ -16,7 +16,6 @@ const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
         <div className={styles.Navbar__Actions}>
           <a href="/#features" className={styles.Navbar__Link}>Features</a>
           <a href="/#pricing" className={styles.Navbar__Link}>Pricing</a>
-          <a href="/changelog" className={styles.Navbar__Link}>Changelog</a>
           <button onClick={toggleTheme} className={styles.Navbar__ThemeToggle}>
             {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
           </button>
