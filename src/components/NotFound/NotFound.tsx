@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@/components/Button';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
 import styles from './NotFound.module.scss';
 
 const NotFound: React.FC = () => {
@@ -15,12 +17,12 @@ const NotFound: React.FC = () => {
             
             <div className={styles.NotFound__Content}>
                 <div className={styles.NotFound__Scanner}></div>
-                <h1 className={styles.NotFound__Title}>404</h1>
-                <h2 className={styles.NotFound__Subtitle}>Scan Error</h2>
-                <p className={styles.NotFound__Text}>
+                <Heading as="h1" align="center" className={styles.NotFound__Title}>404</Heading>
+                <Heading as="h2" align="center" className={styles.NotFound__Subtitle}>Scan Error</Heading>
+                <Text as="p" size="lg" color="subtle" align="center" className={styles.NotFound__Text}>
                     Our AI couldn't find the page you're looking for. <br />
                     It might have been moved, renamed, or never existed in the first place.
-                </p>
+                </Text>
                 <Button as={Link} to="/" variant="ghost" className={styles.NotFound__BackLink}>
                     ← Back to Home
                 </Button>
@@ -30,3 +32,4 @@ const NotFound: React.FC = () => {
 };
 
 export default NotFound;
+

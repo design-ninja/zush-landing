@@ -11,7 +11,6 @@
     position: relative;
     overflow: hidden;
     background-color: var(--bg-primary);
-    text-align: center;
     transition: background-color $transition-normal;
 
     &__Background {
@@ -73,6 +72,9 @@
         border-radius: $radius-xl;
         @include shadow('lg');
         transition: background-color $transition-normal, border-color $transition-normal;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
         @include mobile {
             padding: 2.5rem 1.5rem;
@@ -93,7 +95,6 @@
     }
 
     &__Title {
-        font-family: var(--font-family-heading);
         font-size: 8rem;
         font-weight: 900;
         margin-bottom: 1rem;
@@ -136,18 +137,12 @@
     }
 
     &__Subtitle {
-        font-family: var(--font-family-heading);
-        font-size: 1.75rem;
-        font-weight: 600;
         margin-bottom: 1rem;
-        color: var(--text-primary);
     }
 
     &__Text {
-        color: var(--text-secondary);
         margin-bottom: 2.5rem;
         line-height: 1.6;
-        font-size: 1.125rem;
     }
 
     &__BackLink {

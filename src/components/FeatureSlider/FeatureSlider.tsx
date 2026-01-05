@@ -1,4 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
+import Heading from '../Heading';
+import Text from '../Text';
+import SectionHeader from '../SectionHeader';
 import styles from './FeatureSlider.module.scss';
 
 interface FeatureItem {
@@ -95,14 +98,10 @@ const FeatureSlider = () => {
   return (
     <section className={styles.FeatureSlider}>
       <div className={styles.FeatureSlider__Container}>
-        <div className={styles.FeatureSlider__Header}>
-          <h2 className={styles.FeatureSlider__Title}>
-            Zush <span className={styles.FeatureSlider__TitleAccent}>Features</span>
-          </h2>
-          <p className={styles.FeatureSlider__Subtitle}>
-            Explore the powerful features that make Zush your ultimate screenshot organization tool
-          </p>
-        </div>
+        <SectionHeader
+            title={<>Zush <span className={styles.FeatureSlider__TitleAccent}>Features</span></>}
+            description="Explore the powerful features that make Zush your ultimate screenshot organization tool"
+          />
 
         <div 
           className={styles.FeatureSlider__Track} 
@@ -119,8 +118,8 @@ const FeatureSlider = () => {
                 />
               </div>
               <div className={styles.FeatureItem__Content}>
-                <h3 className={styles.FeatureItem__Title}>{feature.title}</h3>
-                <p className={styles.FeatureItem__Description}>{feature.description}</p>
+                <Heading as="h3" className={styles.FeatureItem__Title}>{feature.title}</Heading>
+                <Text as="p" size="lg" color="subtle" className={styles.FeatureItem__Description}>{feature.description}</Text>
               </div>
             </div>
           ))}

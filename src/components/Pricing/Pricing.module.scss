@@ -10,19 +10,13 @@
         @include container;
     }
 
-    &__Title {
-        @include section-title;
-        margin-bottom: 1rem;
-    }
+
 
     &__TitleAccent {
         color: var(--accent-color);
     }
 
-    &__Subtitle {
-        @include section-subtitle;
-        margin-bottom: 4rem;
-    }
+
 
     &__Grid {
         display: grid;
@@ -38,9 +32,6 @@
     }
 
     &__Disclaimer {
-        font-size: 0.8rem;
-        color: var(--text-secondary);
-        text-align: center;
         margin-top: 2rem;
     }
 }
@@ -75,14 +66,7 @@
     }
 
     &__Name {
-        font-size: 1.6rem;
-        font-weight: 700;
         margin-bottom: 0.25rem;
-    }
-
-    &__Description {
-        color: var(--text-secondary);
-        font-size: 0.85rem;
     }
 
     &__Price {

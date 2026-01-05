@@ -10,22 +10,15 @@
         @include container;
     }
 
-    &__Header {
-        text-align: center;
-        margin-bottom: 60px;
-    }
 
-    &__Title {
-        @include section-title;
-    }
+
+
 
     &__TitleAccent {
         color: var(--accent-color);
     }
 
-    &__Subtitle {
-        @include section-subtitle;
-    }
+
 
     &__Track {
         display: flex;
@@ -72,7 +65,7 @@
     flex: 0 0 100%;
     scroll-snap-align: center;
     display: flex;
-    flex-direction: row-reverse; // Content on the left, screenshot on the right
+    flex-direction: row-reverse;
     align-items: center;
     justify-content: center;
     gap: 4rem;
@@ -113,11 +106,11 @@
         object-fit: contain;
         display: block;
         transition: transform 0.5s ease;
-        filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15)); // Add shadow to the image itself since background is gone
+        filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
     }
 
     &__Content {
-        flex: 0 0 350px; // Slightly narrower content area to allow larger image
+        flex: 0 0 350px;
         text-align: left;
 
         @media (max-width: 1024px) {
@@ -127,18 +120,11 @@
         }
     }
 
-    // &__Title {
-    //     @include section-title;
-    //     font-size: 2rem;
-    // }
+    &__Title {
+        margin-bottom: 0.5rem;
+    }
 
     &__Description {
-        font-size: 1.25rem;
-        color: var(--text-secondary);
         line-height: 1.6;
-
-        @media (max-width: 768px) {
-            font-size: 1.1rem;
-        }
     }
 }

@@ -9,17 +9,13 @@
         @include container;
     }
 
-    &__Title {
-        @include section-title;
-    }
+
 
     &__TitleAccent {
         color: var(--accent-color);
     }
 
-    &__Subtitle {
-        @include section-subtitle;
-    }
+
 
     &__Grid {
         display: grid;
@@ -55,8 +51,11 @@
         color: var(--accent-color);
     }
 
+    &__Title {
+        margin-bottom: 0.5rem;
+    }
+
     &__Description {
-        color: var(--text-secondary);
         line-height: 1.6;
     }
 }

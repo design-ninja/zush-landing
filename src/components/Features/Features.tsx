@@ -1,5 +1,8 @@
 import { motion } from 'framer-motion';
 import { Zap, Tag, FolderSync, LucideIcon } from 'lucide-react';
+import Heading from '../Heading';
+import Text from '../Text';
+import SectionHeader from '../SectionHeader';
 import styles from './Features.module.scss';
 
 interface FeatureCardProps {
@@ -20,8 +23,8 @@ const FeatureCard = ({ icon: Icon, title, description, delay }: FeatureCardProps
     <div className={styles.FeatureCard__Icon}>
       <Icon size={28} />
     </div>
-    <h3 className={styles.FeatureCard__Title}>{title}</h3>
-    <p className={styles.FeatureCard__Description}>{description}</p>
+    <Heading as="h3" className={styles.FeatureCard__Title}>{title}</Heading>
+    <Text color="subtle" className={styles.FeatureCard__Description}>{description}</Text>
   </motion.div>
 );
 
@@ -50,13 +53,10 @@ const Features = () => {
   return (
     <section id="features" className={styles.Features}>
       <div className={styles.Features__Container}>
-        <h2 className={styles.Features__Title}>
-          Organize your images{' '}
-          <span className={styles.Features__TitleAccent}>effortlessly</span>
-        </h2>
-        <p className={styles.Features__Subtitle}>
-          Zush automatically renames your screenshots and photos so you can find what you need, fast
-        </p>
+        <SectionHeader
+          title={<>Organize your images <span className={styles.Features__TitleAccent}>effortlessly</span></>}
+          description="Zush automatically renames your screenshots and photos so you can find what you need, fast"
+        />
         
         <div className={styles.Features__Grid}>
           {features.map((feature, index) => (

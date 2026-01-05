@@ -1,0 +1,53 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.Heading {
+    font-family: var(--font-family-heading);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--text-primary);
+
+    &_left {
+        text-align: left;
+    }
+
+    &_center {
+        text-align: center;
+    }
+
+    &_right {
+        text-align: right;
+    }
+
+    &_h1 {
+        font-size: 3rem;
+
+        @include mobile {
+            font-size: 2.2rem;
+        }
+    }
+
+    &_h2 {
+        font-size: 2.5rem;
+
+        @include mobile {
+            font-size: 1.8rem;
+        }
+    }
+
+    &_h3 {
+        font-size: 1.6rem;
+
+        @include mobile {
+            font-size: 1.3rem;
+        }
+    }
+
+    &_h4 {
+        font-size: 1.25rem;
+
+        @include mobile {
+            font-size: 1.1rem;
+        }
+    }
+}

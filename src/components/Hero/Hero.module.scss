@@ -3,7 +3,7 @@
 
 .Hero {
     padding: 100px 0 60px;
-    overflow-x: hidden; // Prevent horizontal scroll from glow effects
+    overflow-x: hidden;
 
     @include mobile {
         padding: 60px 0 40px;
@@ -25,15 +25,7 @@
     }
 
     &__Title {
-        font-family: var(--font-family-heading);
-        font-size: 2.9rem;
-        line-height: 1.2;
         margin-bottom: 1.5rem;
-        font-weight: 600;
-
-        @include mobile {
-            font-size: 2.2rem;
-        }
     }
 
     &__TitleAccent {
@@ -41,13 +33,10 @@
     }
 
     &__Subtitle {
-        font-size: 1.25rem;
-        color: var(--text-secondary);
         margin-bottom: 2.5rem;
         max-width: 500px;
 
         @include mobile {
-            font-size: 1.1rem;
             margin-left: auto;
             margin-right: auto;
         }

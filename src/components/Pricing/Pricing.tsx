@@ -7,6 +7,9 @@ import {
   LucideIcon
 } from 'lucide-react';
 import Button from '../Button';
+import Heading from '../Heading';
+import Text from '../Text';
+import SectionHeader from '../SectionHeader';
 import styles from './Pricing.module.scss';
 
 interface Feature {
@@ -61,12 +64,10 @@ const Pricing = () => {
   return (
     <section id="pricing" className={styles.Pricing}>
       <div className={styles.Pricing__Container}>
-        <h2 className={styles.Pricing__Title}>
-          Choose your <span className={styles.Pricing__TitleAccent}>Plan</span>
-        </h2>
-        <p className={styles.Pricing__Subtitle}>
-          Start organizing for free or unlock the full power of AI with 🌟 PRO
-        </p>
+        <SectionHeader
+          title={<>Choose your <span className={styles.Pricing__TitleAccent}>Plan</span></>}
+          description="Start organizing for free or unlock the full power of AI with 🌟 PRO"
+        />
 
         <div className={styles.Pricing__Grid}>
           {plans.map((plan, index) => (
@@ -81,8 +82,8 @@ const Pricing = () => {
             >
               
               <div className={styles.PricingCard__Header}>
-                <h3 className={styles.PricingCard__Name}>{plan.name}</h3>
-                <p className={styles.PricingCard__Description}>{plan.description}</p>
+                <Heading as="h3" className={styles.PricingCard__Name}>{plan.name}</Heading>
+                <Text as="p" size="sm" color="subtle" className={styles.PricingCard__Description}>{plan.description}</Text>
                 <div className={styles.PricingCard__Price}>
                   <span className={styles.PricingCard__PriceValue}>{plan.price}</span>
                   <span className={styles.PricingCard__PricePeriod}>{plan.period}</span>
@@ -112,9 +113,9 @@ const Pricing = () => {
           ))}
         </div>
         
-        <p className={styles.Pricing__Disclaimer}>
+        <Text as="p" size="sm" color="subtle" align="center" className={styles.Pricing__Disclaimer}>
           Secure payment via Paddle. All local taxes included.
-        </p>
+        </Text>
       </div>
     </section>
   );

@@ -31,7 +31,6 @@
     }
 
     &__Description {
-        color: var(--text-secondary);
         max-width: 300px;
 
         @include mobile {
@@ -41,7 +40,6 @@
 
     &__SectionTitle {
         margin-bottom: 1.5rem;
-        font-weight: 700;
     }
 
     &__Links {
@@ -60,8 +58,6 @@
         align-items: center;
         padding-top: 2rem;
         border-top: 1px solid var(--border-color);
-        color: var(--text-secondary);
-        font-size: 0.875rem;
 
         @include mobile {
             flex-direction: column;
