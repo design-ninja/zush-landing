@@ -35,34 +35,12 @@ button {
     font-family: inherit;
 }
 
-.markdown-content {
-    h3 {
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: var(--foreground);
-    }
-
-    p {
-        margin-bottom: 1.25rem;
-        line-height: 1.7;
-        color: var(--muted-foreground);
-    }
-
-    ul {
-        margin-bottom: 1.5rem;
-        padding-left: 1.5rem;
-        list-style: disc;
-    }
-
-    li {
-        margin-bottom: 0.5rem;
-        color: var(--muted-foreground);
-    }
-
-    strong {
-        color: var(--foreground);
-        font-weight: 700;
-    }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-family-heading);
+    font-weight: 550;
 }

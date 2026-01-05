@@ -45,7 +45,7 @@ const Features = () => {
     <section id="features" className={styles.Features} ref={containerRef}>
       <div className={styles.Features__Container}>
         <SectionHeader
-            title={<>Everything you need to <span className={styles.Features__TitleAccent}>organize</span></>}
+            title={<>What <span className={styles.Features__TitleAccent}>Zush</span> does</>}
             description="Powerful features packed into a simple, elegant interface"
           />
 
