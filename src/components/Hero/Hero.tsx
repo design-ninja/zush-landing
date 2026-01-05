@@ -37,7 +37,7 @@ const Hero = () => {
               <AppleIcon />
               Download for Free
             </Button>
-            <Button as="a" href="#pricing" variant="primary" size="lg">
+            <Button as="a" href="#pro" variant="primary" size="lg">
               Buy 🌟 PRO
             </Button>
           </div>

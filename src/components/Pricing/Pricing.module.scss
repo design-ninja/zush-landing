@@ -53,6 +53,7 @@
     flex-direction: column;
     position: relative;
     overflow: hidden;
+    scroll-margin-top: calc($navbar-height + 20px);
 
     @include mobile {
         padding: 1.5rem;
@@ -90,8 +91,9 @@
     }
 
     &__PriceValue {
-        font-size: 2.5rem;
-        font-weight: 700;
+        font-size: 3rem;
+        font-weight: 600;
+        font-family: $font-family-heading;
     }
 
     &__PricePeriod {

@@ -77,6 +77,7 @@ const Pricing = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               className={`${styles.PricingCard} ${plan.highlight ? styles.PricingCard_highlighted : ''}`}
+              id={plan.isPro ? 'pro' : undefined}
             >
               
               <div className={styles.PricingCard__Header}>
