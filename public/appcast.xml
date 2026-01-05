@@ -1,11 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
     <channel>
         <title>Zush Updates</title>
         <link>https://github.com/design-ninja/zush/releases</link>
         <description>Zush app updates</description>
         <language>en</language>
-        
+        <item>
+            <title>0.5.0</title>
+            <pubDate>Mon, 05 Jan 2026 09:06:12 +0700</pubDate>
+            <sparkle:version>5</sparkle:version>
+            <sparkle:shortVersionString>0.5.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<h2>What's New in 0.5.0</h2><ul></ul><p><strong>Added</strong></p><ul><li>🎉 We now ship Zush as a `.dmg` file instead of a `.zip` for easier installation.</li><li>🖼️ Zush now sends lower quality images for AI analysis to improve performance.</li><li>🔑 Pro features, the general tab, and the onboarding views now have a new primary button style.</li><li>🔔 You'll now receive update notifications and dock badge updates thanks to the new update management system.</li><li>🚀 Automated GitHub release creation and Sparkle feed updates in the release script.</li></ul><p><strong>Improved  </strong></p><ul><li>⚡ Optimized AI analysis data fetching and included modification date in file hash for more accurate results.</li><li>⚡ Refined onboarding view layout and styling, including path shortening.</li><li>📈 Improved backend usage and added server timings to AI analysis responses.</li><li>🎨 Enhanced onboarding experience by moving state management to SettingsViewModel and updating menu bar/settings access based on its status.</li></ul><p><strong>Fixed</strong></p><ul><li>🐛 Enabled logging for Gemini API errors to help diagnose issues.</li></ul>
+]]></description>
+            <enclosure url="https://zushapp.com/releases/Zush-0.5.0.dmg" length="7540787" type="application/octet-stream" sparkle:edSignature="GoNpcPBkc7lJulClTjfJkLIZ9wvZUWEEsE/yGOsgjEUDG20K9A7jH6dqb3X79bhD7eEF5Suym5riCwrZ78kcAA=="/>
+        </item>
         <item>
             <title>Version 0.4.0</title>
             <description><![CDATA[
@@ -23,14 +32,8 @@
             <sparkle:version>4</sparkle:version>
             <sparkle:shortVersionString>0.4.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <enclosure
-                url="https://zushapp.com/releases/Zush-0.4.0.zip"
-                sparkle:edSignature="70qHh7hnnDTawHSM72iNoD/YYJGpDvQ3QCHQOr2wfdbftz1DYsynOCo/zL+dZDMJuXM/YCgOWGSywtSoQTALCw=="
-                length="7116068"
-                type="application/octet-stream"
-            />
+            <enclosure url="https://zushapp.com/releases/Zush-0.4.0.zip" sparkle:edSignature="70qHh7hnnDTawHSM72iNoD/YYJGpDvQ3QCHQOr2wfdbftz1DYsynOCo/zL+dZDMJuXM/YCgOWGSywtSoQTALCw==" length="7116068" type="application/octet-stream"/>
         </item>
-
         <item>
             <title>Version 0.3.0</title>
             <description><![CDATA[
@@ -50,60 +53,7 @@
             <sparkle:version>3</sparkle:version>
             <sparkle:shortVersionString>0.3.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <enclosure
-                url="https://zushapp.com/releases/Zush-0.3.0.zip"
-                sparkle:edSignature="U5EAUJAqtwQR9z7YuPjfPlydSsSvjltLeHf+tT830djmr/Q4qNmUTpR8SxD0DUt5e4+hLAq+MjCf2PXLUgMrBA=="
-                length="7065349"
-                type="application/octet-stream"
-            />
+            <enclosure url="https://zushapp.com/releases/Zush-0.3.0.zip" sparkle:edSignature="U5EAUJAqtwQR9z7YuPjfPlydSsSvjltLeHf+tT830djmr/Q4qNmUTpR8SxD0DUt5e4+hLAq+MjCf2PXLUgMrBA==" length="7065349" type="application/octet-stream"/>
         </item>
-
-        <item>
-            <title>Version 0.2.0</title>
-            <description><![CDATA[
-                <h2>What's New in 0.2.0</h2>
-                <ul>
-                    <li>✨ Added automatic update checking via Sparkle</li>
-                    <li>🔄 Check for Updates option in Settings and Menu Bar</li>
-                    <li>⚙️ Automatic updates toggle</li>
-                </ul>
-            ]]></description>
-            <pubDate>Tue, 31 Dec 2025 04:35:00 +0000</pubDate>
-            <sparkle:version>2</sparkle:version>
-            <sparkle:shortVersionString>0.2.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <enclosure
-                url="https://zushapp.com/releases/Zush-0.2.0.zip"
-                sparkle:edSignature="BsK4p79cRgkIly02KwM+EJEGgjsZJhmmkXpcGSvhtQoeN4Xo6/uOA0DbEVwlMEHSpFiEfYxdBkUYJXZYIz+cCA=="
-                length="5578349"
-                type="application/octet-stream"
-            />
-        </item>
-
-        <item>
-            <title>Version 0.1.0</title>
-            <description><![CDATA[
-                <h2>Initial Release</h2>
-                <ul>
-                    <li>🚀 First public release of Zush</li>
-                    <li>🤖 AI-powered image organization with automatic tagging</li>
-                    <li>📁 Smart folder monitoring for new images</li>
-                    <li>🏷️ Automatic Finder tags based on AI analysis</li>
-                    <li>📝 Custom naming patterns for organized files</li>
-                    <li>🎨 Beautiful native macOS interface</li>
-                </ul>
-            ]]></description>
-            <pubDate>Mon, 30 Dec 2025 12:00:00 +0000</pubDate>
-            <sparkle:version>1</sparkle:version>
-            <sparkle:shortVersionString>0.1.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <enclosure
-                url="https://zushapp.com/releases/Zush-0.1.0.zip"
-                sparkle:edSignature="1AuBtIL0WHRIfC+5LI749fX+t4kDozuHNJqqFyh048qEuZO7AsMmf6WN2FWvVAQKo5QbhdmjUt59SIELSYHPDQ=="
-                length="7022914"
-                type="application/octet-stream"
-            />
-        </item>
-
     </channel>
 </rss>
