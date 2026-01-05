@@ -1,6 +1,5 @@
 # Changelog
 
-[1;33mAnalyzing changes since v0.4.0...[0m
 ## [0.5.0] - 2024-01-05
 ### Added
 - 🎉 We now ship Zush as a `.dmg` file instead of a `.zip` for easier installation.
