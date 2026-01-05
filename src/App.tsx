@@ -4,7 +4,6 @@ import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Features from './components/Features';
-import FeatureSlider from './components/FeatureSlider';
 import Pricing from './components/Pricing';
 import Legal from './components/Legal';
 import Changelog from './components/Changelog';
@@ -16,7 +15,6 @@ const MainContent = () => (
   <>
     <Hero />
     <Features />
-    <FeatureSlider />
     <Pricing />
   </>
 );

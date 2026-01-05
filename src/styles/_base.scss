@@ -9,6 +9,7 @@
     --text-primary: #{$text-primary};
     --text-secondary: #{$text-secondary};
     --accent-color: #{$accent-color};
+    --accent-soft: #{$accent-soft};
     --accent-hover: #{$accent-hover};
     --border-color: #{$border-color};
     --card-bg: #{$card-bg};
@@ -18,19 +19,20 @@
     --btn-secondary-hover: #{$btn-secondary-hover};
 }
 
-[data-theme='light'] {
-    --bg-primary: #{$light-bg-primary};
-    --bg-secondary: #{$light-bg-secondary};
-    --text-primary: #{$light-text-primary};
-    --text-secondary: #{$light-text-secondary};
-    --accent-color: #{$light-accent-color};
-    --accent-hover: #{$light-accent-hover};
-    --border-color: #{$light-border-color};
-    --card-bg: #{$light-card-bg};
-    --glass-bg: #{$light-glass-bg};
-    --glass-border: #{$light-glass-border};
-    --btn-secondary-bg: #{$light-btn-secondary-bg};
-    --btn-secondary-hover: #{$light-btn-secondary-hover};
+[data-theme='dark'] {
+    --bg-primary: #{$dark-bg-primary};
+    --bg-secondary: #{$dark-bg-secondary};
+    --text-primary: #{$dark-text-primary};
+    --text-secondary: #{$dark-text-secondary};
+    --accent-color: #{$dark-accent-color};
+    --accent-soft: #{$dark-accent-soft};
+    --accent-hover: #{$dark-accent-hover};
+    --border-color: #{$dark-border-color};
+    --card-bg: #{$dark-card-bg};
+    --glass-bg: #{$dark-glass-bg};
+    --glass-border: #{$dark-glass-border};
+    --btn-secondary-bg: #{$dark-btn-secondary-bg};
+    --btn-secondary-hover: #{$dark-btn-secondary-hover};
 }
 
 * {
