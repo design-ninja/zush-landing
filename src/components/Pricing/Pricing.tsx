@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   Infinity, 
@@ -15,10 +17,8 @@ import Heading from '../Heading';
 import Text from '../Text';
 import SectionHeader from '../SectionHeader';
 import styles from './Pricing.module.scss';
-
-// Paddle Sandbox Price ID
-const PADDLE_PRICE_ID = 'pri_01ke0vfdqxpf0tfx0cy5bhk7qv';
-const DOWNLOAD_URL = 'https://github.com/design-ninja/zush/releases/latest/download/Zush.dmg';
+import { openPaddleCheckout } from '../../utils/paddle';
+import { APP_DOWNLOAD_URL } from '../../constants';
 
 // Declare Paddle type for TypeScript
 declare global {
@@ -49,6 +49,22 @@ interface Plan {
 }
 
 const Pricing = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (params.get('checkout') === 'pro') {
+      // Delay slightly to ensure Paddle.js is ready and page is loaded
+      const timer = setTimeout(() => {
+        openPaddleCheckout();
+        // Remove the parameter from URL without refreshing to avoid re-opening on reload
+        const newUrl = window.location.pathname + window.location.hash;
+        window.history.replaceState({}, '', newUrl);
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [location]);
+
   const plans: Plan[] = [
     {
       name: "FREE",
@@ -82,16 +98,9 @@ const Pricing = () => {
 
   const handleButtonClick = (isPro: boolean) => {
     if (isPro) {
-      // Open Paddle checkout overlay
-      if (window.Paddle) {
-        window.Paddle.Checkout.open({
-          items: [{ priceId: PADDLE_PRICE_ID, quantity: 1 }],
-        });
-      } else {
-        console.error('Paddle.js not loaded');
-      }
+      openPaddleCheckout();
     } else {
-      window.open(DOWNLOAD_URL, '_blank');
+      window.open(APP_DOWNLOAD_URL, '_blank');
     }
   };
 

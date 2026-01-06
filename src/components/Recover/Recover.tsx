@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Mail, ArrowRight, CheckCircle } from 'lucide-react';
 import styles from './Recover.module.scss';
 
-const SUPABASE_URL = 'https://sjzrgmvinyxjzvshfvjy.supabase.co';
+import { SUPABASE_URL } from '../../constants';
 
 const Recover = () => {
   const [email, setEmail] = useState('');
