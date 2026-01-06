@@ -23,7 +23,7 @@ const Recover = () => {
     setError('');
     
     try {
-      const response = await fetch(`${SUPABASE_URL}/functions/v1/recover-license`, {
+      const response = await fetch(`${SUPABASE_URL}/functions/v1/send-magic-link`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ const Recover = () => {
           <h1 className={styles.Recover__Title}>Check your inbox!</h1>
           
           <p className={styles.Recover__Subtitle}>
-            If a license exists for <strong>{email}</strong>, we've sent it to your email.
+            If a purchase exists for <strong>{email}</strong>, we've sent an activation link.
             <br />
             Check your spam folder if you don't see it.
           </p>
@@ -74,11 +74,11 @@ const Recover = () => {
           <Mail size={48} />
         </div>
         
-        <h1 className={styles.Recover__Title}>Recover your license</h1>
+        <h1 className={styles.Recover__Title}>Request Activation Link</h1>
         
         <p className={styles.Recover__Subtitle}>
           Enter the email address you used when purchasing Zush PRO. 
-          We'll send your license key to that address.
+          We'll send you a new activation link.
         </p>
 
         <form onSubmit={handleSubmit} className={styles.Recover__Form}>
@@ -98,7 +98,7 @@ const Recover = () => {
           >
             {isLoading ? 'Sending...' : (
               <>
-                Send License Key
+                Send Activation Link
                 <ArrowRight size={18} />
               </>
             )}
