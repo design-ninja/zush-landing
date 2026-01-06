@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { ExternalLink, AlertCircle } from 'lucide-react';
 import styles from './Activate.module.scss';
-import { APP_DOWNLOAD_URL } from '../../constants';
 
 const Activate = () => {
   const [searchParams] = useSearchParams();
@@ -81,7 +80,7 @@ const Activate = () => {
         <div className={styles.Activate__Help}>
           <p>Don't have Zush installed?</p>
           <a 
-            href={APP_DOWNLOAD_URL}
+            href="https://github.com/design-ninja/zush/releases/latest/download/Zush.dmg"
             className={styles.Activate__Link}
           >
             Download Zush for Mac

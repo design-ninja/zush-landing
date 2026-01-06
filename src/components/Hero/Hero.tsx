@@ -4,8 +4,6 @@ import Button from '../Button';
 import Heading from '../Heading';
 import Text from '../Text';
 import styles from './Hero.module.scss';
-import { openPaddleCheckout } from '../../utils/paddle';
-import { APP_DOWNLOAD_URL } from '../../constants';
 
 const AppleIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -34,14 +32,14 @@ const Hero = () => {
           <div className={styles.Hero__Buttons}>
             <Button 
               as="a" 
-              href={APP_DOWNLOAD_URL} 
+              href="https://zushapp.com/releases/Zush.dmg" 
               variant="black"
               size="lg"
             >
               <AppleIcon />
               Download for Free
             </Button>
-            <Button as="a" href="#pricing" variant="primary" size="lg">
+            <Button as="a" href="#pro" variant="primary" size="lg">
               Buy 🌟 PRO
             </Button>
           </div>

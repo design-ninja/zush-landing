@@ -2,8 +2,6 @@ import { Sun, Moon } from 'lucide-react';
 import Logo from '../Logo';
 import Button from '../Button';
 import styles from './Navbar.module.scss';
-import { openPaddleCheckout } from '../../utils/paddle';
-import { APP_DOWNLOAD_URL } from '../../constants';
 
 interface NavbarProps {
   theme: string;
@@ -22,12 +20,12 @@ const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
             {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
           </button>
           <div className={styles.Navbar__Buttons}>
-            <Button as="a" href="/#pricing" variant="ghost" size="sm">
+            <Button as="a" href="/#pro" variant="ghost" size="sm">
               Buy PRO
             </Button>
             <Button 
               as="a" 
-              href={APP_DOWNLOAD_URL} 
+              href="https://zushapp.com/releases/Zush.dmg" 
               variant="black"
               size="sm"
             >
