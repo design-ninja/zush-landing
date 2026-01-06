@@ -17,7 +17,7 @@ import SectionHeader from '../SectionHeader';
 import styles from './Pricing.module.scss';
 
 // Paddle Sandbox Price ID
-const PADDLE_PRICE_ID = 'pri_01ke0vfdqxpf0tfx0cy5bhk7qv';
+const PADDLE_PRICE_ID = import.meta.env.VITE_PADDLE_PRICE_ID;
 const DOWNLOAD_URL = 'https://github.com/design-ninja/zush/releases/latest/download/Zush.dmg';
 
 // Declare Paddle type for TypeScript
@@ -86,6 +86,9 @@ const Pricing = () => {
       if (window.Paddle) {
         window.Paddle.Checkout.open({
           items: [{ priceId: PADDLE_PRICE_ID, quantity: 1 }],
+          settings: {
+            successUrl: 'https://zushapp.com/thank-you?email={customer_email}',
+          },
         });
       } else {
         console.error('Paddle.js not loaded');
