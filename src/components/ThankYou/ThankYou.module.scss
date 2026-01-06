@@ -1,0 +1,129 @@
+.ThankYou {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+
+    &__Container {
+        max-width: 600px;
+        text-align: center;
+    }
+
+    &__Icon {
+        color: var(--color-primary);
+        margin-bottom: 24px;
+
+        svg {
+            filter: drop-shadow(0 4px 12px rgba(99, 102, 241, 0.3));
+        }
+    }
+
+    &__Title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--color-text);
+        margin-bottom: 16px;
+    }
+
+    &__Subtitle {
+        font-size: 1.1rem;
+        color: var(--color-text-secondary);
+        margin-bottom: 32px;
+        line-height: 1.6;
+
+        strong {
+            color: var(--color-text);
+        }
+    }
+
+    &__EmailBox {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        background: linear-gradient(135deg, var(--color-primary) 0%, #8b5cf6 100%);
+        border-radius: 16px;
+        padding: 24px;
+        margin-bottom: 32px;
+        text-align: left;
+    }
+
+    &__EmailIcon {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        padding: 12px;
+        color: white;
+        flex-shrink: 0;
+    }
+
+    &__EmailContent {
+        flex: 1;
+    }
+
+    &__EmailTitle {
+        color: white;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+
+    &__EmailDesc {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    &__EmailHint {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.85rem;
+    }
+
+    &__Instructions {
+        text-align: left;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 24px;
+
+        h3 {
+            color: var(--color-text);
+            font-size: 1rem;
+            margin-bottom: 16px;
+        }
+
+        ol {
+            color: var(--color-text-secondary);
+            padding-left: 20px;
+
+            li {
+                margin-bottom: 8px;
+                line-height: 1.6;
+
+                strong {
+                    color: var(--color-text);
+                }
+            }
+        }
+    }
+
+    &__Links {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+    }
+
+    &__Link {
+        color: var(--color-primary);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: opacity 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}

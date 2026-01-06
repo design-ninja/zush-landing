@@ -16,6 +16,21 @@ import Text from '../Text';
 import SectionHeader from '../SectionHeader';
 import styles from './Pricing.module.scss';
 
+// Paddle Sandbox Price ID
+const PADDLE_PRICE_ID = 'pri_01ke0vfdqxpf0tfx0cy5bhk7qv';
+const DOWNLOAD_URL = 'https://github.com/design-ninja/zush/releases/latest/download/Zush.dmg';
+
+// Declare Paddle type for TypeScript
+declare global {
+  interface Window {
+    Paddle?: {
+      Checkout: {
+        open: (options: { items: { priceId: string; quantity: number }[] }) => void;
+      };
+    };
+  }
+}
+
 interface Feature {
   title: string;
   desc: string;
@@ -65,6 +80,21 @@ const Pricing = () => {
     }
   ];
 
+  const handleButtonClick = (isPro: boolean) => {
+    if (isPro) {
+      // Open Paddle checkout overlay
+      if (window.Paddle) {
+        window.Paddle.Checkout.open({
+          items: [{ priceId: PADDLE_PRICE_ID, quantity: 1 }],
+        });
+      } else {
+        console.error('Paddle.js not loaded');
+      }
+    } else {
+      window.open(DOWNLOAD_URL, '_blank');
+    }
+  };
+
   return (
     <section id="pricing" className={styles.Pricing}>
       <div className={styles.Pricing__Container}>
@@ -109,7 +139,8 @@ const Pricing = () => {
               </div>
 
               <Button 
-                variant={plan.isPro ? 'primary' : 'black'} 
+                variant={plan.isPro ? 'primary' : 'black'}
+                onClick={() => handleButtonClick(plan.isPro)}
               >
                 {plan.buttonText}
               </Button>
@@ -126,3 +157,4 @@ const Pricing = () => {
 };
 
 export default Pricing;
+
