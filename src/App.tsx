@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useTheme } from './hooks/useTheme';
+import { useCheckoutAutoOpen } from './hooks/useCheckoutAutoOpen';
 import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -22,11 +23,11 @@ const MainContent = () => (
   </>
 );
 
-function App() {
-  const { theme, toggleTheme } = useTheme();
-
+const AppContent = ({ theme, toggleTheme }: { theme: string; toggleTheme: () => void }) => {
+  useCheckoutAutoOpen();
+  
   return (
-    <Router>
+    <>
       <ScrollToTop />
       <div className={styles.App}>
         <Navbar theme={theme} toggleTheme={toggleTheme} />
@@ -45,6 +46,16 @@ function App() {
         </main>
         <Footer />
       </div>
+    </>
+  );
+};
+
+function App() {
+  const { theme, toggleTheme } = useTheme();
+
+  return (
+    <Router>
+      <AppContent theme={theme} toggleTheme={toggleTheme} />
     </Router>
   );
 }
