@@ -4,9 +4,16 @@ import {
   FolderPlus, 
   Zap, 
   FileCode,
+  Sparkles,
+  Folder,
+  Tag,
+  FileText,
   LucideIcon
 } from 'lucide-react';
 import Button from '../Button';
+import Heading from '../Heading';
+import Text from '../Text';
+import SectionHeader from '../SectionHeader';
 import styles from './Pricing.module.scss';
 
 // Paddle Sandbox checkout URL
@@ -37,10 +44,10 @@ const Pricing = () => {
       price: "$0",
       description: "Basic organization for casual users",
       features: [
-        { title: "Limited Renames", desc: "Basic AI-powered renaming", icon: Infinity },
-        { title: "Single Folder", desc: "Monitor one folder at a time", icon: FolderPlus },
-        { title: "Manual Metadata", desc: "Add Finder tags manually", icon: Zap },
-        { title: "Default Naming Pattern", desc: "Use standard naming variables", icon: FileCode },
+        { title: "Limited Renames", desc: "Basic AI-powered renaming", icon: Sparkles },
+        { title: "Single Folder", desc: "Monitor one folder at a time", icon: Folder },
+        { title: "Manual Metadata", desc: "Add Finder tags manually", icon: Tag },
+        { title: "Default Naming Pattern", desc: "Use standard naming variables", icon: FileText },
       ],
       buttonText: "Download Free",
       isPro: false
@@ -73,12 +80,10 @@ const Pricing = () => {
   return (
     <section id="pricing" className={styles.Pricing}>
       <div className={styles.Pricing__Container}>
-        <h2 className={styles.Pricing__Title}>
-          Choose your <span className={styles.Pricing__TitleAccent}>Plan</span>
-        </h2>
-        <p className={styles.Pricing__Subtitle}>
-          Start organizing for free or unlock the full power of AI with 🌟 PRO
-        </p>
+        <SectionHeader
+          title={<>Choose your <span className={styles.Pricing__TitleAccent}>Plan</span></>}
+          description="Start organizing for free or unlock the full power of AI with 🌟 PRO"
+        />
 
         <div className={styles.Pricing__Grid}>
           {plans.map((plan, index) => (
@@ -89,11 +94,12 @@ const Pricing = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               className={`${styles.PricingCard} ${plan.highlight ? styles.PricingCard_highlighted : ''}`}
+              id={plan.isPro ? 'pro' : undefined}
             >
               
               <div className={styles.PricingCard__Header}>
-                <h3 className={styles.PricingCard__Name}>{plan.name}</h3>
-                <p className={styles.PricingCard__Description}>{plan.description}</p>
+                <Heading as="h3" className={styles.PricingCard__Name}>{plan.name}</Heading>
+                <Text as="p" size="sm" color="subtle" className={styles.PricingCard__Description}>{plan.description}</Text>
                 <div className={styles.PricingCard__Price}>
                   <span className={styles.PricingCard__PriceValue}>{plan.price}</span>
                   <span className={styles.PricingCard__PricePeriod}>{plan.period}</span>
@@ -104,7 +110,7 @@ const Pricing = () => {
                 {plan.features.map((feature, i) => (
                   <div key={i} className={styles.PricingCard__Feature}>
                     <div className={styles.PricingCard__FeatureIcon}>
-                      <feature.icon size={18} />
+                      <feature.icon size={22} />
                     </div>
                     <div>
                       <div className={styles.PricingCard__FeatureTitle}>{feature.title}</div>
@@ -124,9 +130,9 @@ const Pricing = () => {
           ))}
         </div>
         
-        <p className={styles.Pricing__Disclaimer}>
+        <Text as="p" size="sm" color="subtle" align="center" className={styles.Pricing__Disclaimer}>
           Secure payment via Paddle. All local taxes included.
-        </p>
+        </Text>
       </div>
     </section>
   );

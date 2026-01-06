@@ -3,7 +3,7 @@
 
 .Footer {
     padding: 4rem 0 2rem;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--border);
 
     &__Container {
         @include container;
@@ -25,14 +25,13 @@
     &__Brand {
         font-size: 1.5rem;
         font-weight: 700;
-        color: var(--accent-color);
+        color: var(--primary);
         margin-bottom: 1rem;
         display: block;
     }
 
     &__Description {
-        color: var(--text-secondary);
-        max-width: 300px;
+        max-width: 18.75rem;
 
         @include mobile {
             margin: 0 auto;
@@ -41,7 +40,6 @@
 
     &__SectionTitle {
         margin-bottom: 1.5rem;
-        font-weight: 700;
     }
 
     &__Links {
@@ -51,7 +49,7 @@
     }
 
     &__Link {
-        color: var(--text-secondary);
+        color: var(--muted-foreground);
     }
 
     &__Bottom {
@@ -59,9 +57,7 @@
         justify-content: space-between;
         align-items: center;
         padding-top: 2rem;
-        border-top: 1px solid var(--border-color);
-        color: var(--text-secondary);
-        font-size: 0.875rem;
+        border-top: 1px solid var(--border);
 
         @include mobile {
             flex-direction: column;
@@ -70,7 +66,7 @@
         }
 
         a {
-            color: $accent-color;
+            color: var(--primary);
         }
     }
 

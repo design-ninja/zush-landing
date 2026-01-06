@@ -2,68 +2,376 @@
 @use '@/styles/mixins' as *;
 
 .Features {
-    padding: 100px 0;
-    scroll-margin-top: $navbar-height;
+    padding: 6.25rem 0;
 
     &__Container {
         @include container;
     }
 
-    &__Title {
-        @include section-title;
-    }
-
     &__TitleAccent {
-        color: var(--accent-color);
-    }
-
-    &__Subtitle {
-        @include section-subtitle;
-    }
-
-    &__Grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1.6rem;
-
-        @include mobile {
-            grid-template-columns: 1fr;
-            gap: 1rem;
-        }
+        color: var(--primary);
     }
 }
 
-.FeatureCard {
-    @include glass-morphism;
-    padding: 2rem;
-    border-radius: $radius-lg;
-    height: 100%;
+.BentoGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(20rem, auto);
+    gap: 1.5rem;
+    margin-top: 3rem;
 
-    @include mobile {
-        padding: 1.5rem;
+    @media (max-width: 960px) {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    &__Icon {
-        width: 50px;
-        height: 50px;
-        background-color: $feature-icon-bg;
-        border-radius: $radius-sm;
+    @media (max-width: 640px) {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+    }
+
+}
+
+.BentoCard {
+    background: var(--muted);
+    border-radius: 2rem;
+    padding: 2rem;
+    gap: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+    position: relative;
+    min-height: 25rem;
+
+    &__Header {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 0.75rem;
+    }
+
+    &__IconWrapper {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 0.75rem;
+        background: var(--primary-soft);
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 1.5rem;
-        color: var(--accent-color);
+        color: var(--primary);
     }
 
     &__Title {
-        font-family: var(--font-family-heading);
-        font-size: 1.3rem;
-        margin-bottom: 1rem;
-        font-weight: 600;
+        margin: 0;
     }
 
     &__Description {
-        color: var(--text-secondary);
-        line-height: 1.6;
+        font-size: 1rem;
+        line-height: 1.5;
+        opacity: 0.8;
+        max-width: 90%;
+    }
+
+    &__Visual {
+        margin-top: auto;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        width: 100%;
+        position: relative;
+    }
+
+    // Shared Mockup Utilities
+    @mixin mockup-container($gap: 1rem, $align: stretch) {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: $gap;
+        align-items: $align;
+    }
+
+    @mixin mockup-item($padding: 0.625rem 0.75rem, $radius: 0.625rem) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: $padding;
+        background: var(--background);
+        border-radius: $radius;
+        border: 1px solid var(--border);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    @mixin mockup-thumb($size: 2rem, $radius: 0.375rem) {
+        width: $size;
+        height: $size;
+        border-radius: $radius;
+        overflow: hidden;
+        flex-shrink: 0;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    // UI Mockups
+    .UI_Monitoring {
+        @include mockup-container(0.75rem);
+
+        &__List {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        &__Item {
+            @include mockup-item;
+            font-size: 0.875rem;
+            font-family: var(--font-mono);
+            color: var(--foreground);
+        }
+
+        &__FolderInfo {
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+        }
+
+        &__Icon {
+            color: var(--primary);
+            display: flex;
+        }
+
+        &__Add {
+            @include mockup-item(0.625rem);
+            border: 1px dashed var(--border);
+            background: transparent;
+            box-shadow: none;
+            color: var(--muted-foreground);
+            font-size: 0.875rem;
+            font-weight: 500;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+    }
+
+    .UI_Metadata {
+        @include mockup-container;
+
+        &__File {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--foreground);
+        }
+
+        &__Preview {
+            @include mockup-thumb(4rem, 0.625rem);
+        }
+
+        &__FileInfo {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            line-height: 1.4;
+        }
+
+        &__FileName {
+            font-weight: 600;
+            font-size: 0.9375rem;
+        }
+
+        &__FileMeta {
+            font-size: 0.75rem;
+            color: var(--muted-foreground);
+        }
+
+        &__Tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.375rem;
+
+            span {
+                font-size: 0.6875rem;
+                padding: 0.25rem 0.625rem;
+                border-radius: 999px;
+                background: var(--primary-soft);
+                color: var(--primary);
+            }
+        }
+    }
+
+    .UI_Analysis {
+        @include mockup-container(1rem, center);
+
+        &__Preview {
+            @include mockup-thumb(4rem, 0.75rem);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        }
+
+        &__Content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        &__OldName {
+            font-size: 0.75rem;
+            color: var(--muted-foreground);
+            text-decoration: line-through;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+            opacity: 0.6;
+        }
+
+        &__NewName {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary);
+            background: var(--primary-soft);
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.5rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+    }
+
+    .UI_Patterns {
+        @include mockup-container;
+
+        &__Input {
+            @include mockup-item(0.75rem);
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+        }
+
+        &__Var {
+            color: var(--primary);
+            background: var(--primary-soft);
+            padding: 0.125rem 0.25rem;
+            border-radius: 0.25rem;
+        }
+
+        &__Sep {
+            color: var(--primary);
+            margin: 0 1px;
+        }
+
+        &__Preview {
+            text-align: center;
+            font-size: 0.8125rem;
+            color: var(--muted-foreground);
+            font-family: var(--font-mono);
+        }
+    }
+
+    .UI_Spotlight {
+        @include mockup-container(0.75rem);
+
+        &__Bar {
+            @include mockup-item(0.625rem 0.75rem);
+            justify-content: flex-start;
+            gap: 0.5rem;
+            color: var(--foreground);
+        }
+
+        &__Result {
+            @include mockup-item(0.625rem);
+            background: var(--primary);
+            color: white;
+            justify-content: flex-start;
+            gap: 0.75rem;
+            border: none;
+            // To mimic selection
+            box-shadow: 0 0.25rem 0.75rem oklch(0.5 0.22 280 / 0.3);
+        }
+
+        &__ResultIcon {
+            @include mockup-thumb(3rem, 0.375rem);
+            background: white;
+        }
+
+        &__ResultText {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            line-height: 1.2;
+            overflow: hidden;
+        }
+
+        &__ResultName {
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        &__ResultPath {
+            font-size: 0.6875rem;
+            opacity: 0.8;
+        }
+    }
+
+    .UI_History {
+        @include mockup-container(0.75rem);
+
+        &__Item {
+            @include mockup-item(0.75rem 1rem, 0.75rem);
+            justify-content: flex-start;
+            gap: 0.75rem;
+
+            &_faded {
+                opacity: 0.5;
+                transform: scale(0.98);
+            }
+        }
+
+        &__Icon {
+            @include mockup-thumb(2rem, 0.5rem);
+            background: var(--muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted-foreground);
+
+            [data-theme='dark'] & {
+                background: rgba(255, 255, 255, 0.1);
+            }
+        }
+
+        &__Info {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        &__Action {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--foreground);
+        }
+
+        &__Time {
+            font-size: 0.75rem;
+            color: var(--muted-foreground);
+        }
+
+        &__Undo {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--primary);
+            background: var(--primary-soft);
+            padding: 0.375rem 0.75rem;
+            border-radius: 0.375rem;
+        }
     }
 }

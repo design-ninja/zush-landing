@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import Button from '../Button';
+import Heading from '../Heading';
+import Text from '../Text';
+import SectionHeader from '../SectionHeader';
 import styles from './Changelog.module.scss';
 import changelogPath from '../../content/changelog.md?url';
 
@@ -99,10 +102,11 @@ const Changelog = () => {
         <section className={styles.Changelog}>
             <div className={styles.Changelog__Container}>
                 <header className={styles.Changelog__Header}>
-                    <h1 className={styles.Changelog__Title}>Changelog</h1>
-                    <p className={styles.Changelog__Subtitle}>
-                        Track all updates and improvements to Zush
-                    </p>
+                    <SectionHeader
+                        title="Changelog"
+                        description="Track all updates and improvements to Zush"
+                        level="h1"
+                    />
                 </header>
 
                 <div className={styles.Changelog__Timeline}>

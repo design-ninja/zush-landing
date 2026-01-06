@@ -23,11 +23,11 @@
         font-weight: 700;
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 0.75rem;
     }
 
     &__LogoText {
-        color: var(--accent-color);
+        color: var(--primary);
     }
 
     &__Actions {
@@ -51,7 +51,7 @@
     &__ThemeToggle {
         display: flex;
         align-items: center;
-        color: var(--text-primary);
+        color: var(--foreground);
     }
 
     &__Buttons {

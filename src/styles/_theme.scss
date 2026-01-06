@@ -1,0 +1,65 @@
+@use 'variables' as *;
+
+:root {
+    --font-family: #{$font-family};
+    --font-family-heading: #{$font-family-heading};
+    --font-mono: #{$font-mono};
+
+    --background: #{$background};
+    --foreground: #{$foreground};
+
+    --card: #{$card};
+    --card-foreground: #{$card-foreground};
+
+    --muted: #{$muted};
+    --muted-foreground: #{$muted-foreground};
+
+    --primary: #{$primary};
+    --primary-foreground: #{$primary-foreground};
+    --primary-hover: #{$primary-hover};
+    --primary-soft: #{$primary-soft};
+
+    --secondary: #{$secondary};
+    --secondary-foreground: #{$secondary-foreground};
+    --secondary-hover: #{$secondary-hover};
+
+    --border: #{$border};
+
+    --glass: #{$glass};
+    --glass-border: #{$glass-border};
+
+    --success: #{$success};
+    --success-foreground: #{$success-foreground};
+    --destructive: #{$destructive};
+    --destructive-foreground: #{$destructive-foreground};
+}
+
+[data-theme='dark'] {
+    --background: #{$dark-background};
+    --foreground: #{$dark-foreground};
+
+    --card: #{$dark-card};
+    --card-foreground: #{$dark-card-foreground};
+
+    --muted: #{$dark-muted};
+    --muted-foreground: #{$dark-muted-foreground};
+
+    --primary: #{$dark-primary};
+    --primary-foreground: #{$dark-primary-foreground};
+    --primary-hover: #{$dark-primary-hover};
+    --primary-soft: #{$dark-primary-soft};
+
+    --secondary: #{$dark-secondary};
+    --secondary-foreground: #{$dark-secondary-foreground};
+    --secondary-hover: #{$dark-secondary-hover};
+
+    --border: #{$dark-border};
+
+    --glass: #{$dark-glass};
+    --glass-border: #{$dark-glass-border};
+
+    --success: #{$dark-success};
+    --success-foreground: #{$dark-success-foreground};
+    --destructive: #{$dark-destructive};
+    --destructive-foreground: #{$dark-destructive-foreground};
+}

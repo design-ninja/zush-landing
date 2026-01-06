@@ -1,9 +1,9 @@
 @use 'variables' as *;
 
 @mixin glass-morphism {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: var(--glass);
+    backdrop-filter: blur(0.75rem);
+    -webkit-backdrop-filter: blur(0.75rem);
     border-bottom: 1px solid var(--glass-border);
 }
 
@@ -17,30 +17,6 @@
     }
 }
 
-
-@mixin section-title {
-    font-family: var(--font-family-heading);
-    font-size: 2.5rem;
-    font-weight: 600;
-    line-height: 1.2;
-    margin-bottom: 1rem;
-    text-align: center;
-
-    @include mobile {
-        font-size: 2rem;
-    }
-}
-
-@mixin section-subtitle {
-    font-size: 1.125rem;
-    color: var(--text-secondary);
-    text-align: center;
-    margin-bottom: 3rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 @mixin text-ellipsis {
     white-space: nowrap;
     overflow: hidden;
@@ -50,5 +26,31 @@
 @mixin mobile {
     @media (max-width: 768px) {
         @content;
+    }
+}
+
+@mixin shadow($type: 'md') {
+    @if $type =='sm' {
+        box-shadow: $shadow-sm;
+    }
+
+    @else if $type =='md' {
+        box-shadow: $shadow-md;
+    }
+
+    @else if $type =='lg' {
+        box-shadow: $shadow-lg;
+    }
+
+    @else if $type =='accent' {
+        box-shadow: $shadow-primary;
+    }
+
+    @else if $type =='glow' {
+        box-shadow: $shadow-glow;
+    }
+
+    @else if $type =='focus' {
+        box-shadow: $shadow-focus;
     }
 }

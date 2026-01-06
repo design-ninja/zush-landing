@@ -2,11 +2,11 @@
 @use '@/styles/mixins' as *;
 
 .Hero {
-    padding: 100px 0 60px;
-    overflow-x: hidden; // Prevent horizontal scroll from glow effects
+    padding: 6.25rem 0 3.75rem;
+    overflow-x: hidden;
 
     @include mobile {
-        padding: 60px 0 40px;
+        padding: 3.75rem 0 2.5rem;
     }
 
     &__Container {
@@ -25,29 +25,18 @@
     }
 
     &__Title {
-        font-family: var(--font-family-heading);
-        font-size: 2.9rem;
-        line-height: 1.2;
         margin-bottom: 1.5rem;
-        font-weight: 600;
-
-        @include mobile {
-            font-size: 2.2rem;
-        }
     }
 
     &__TitleAccent {
-        color: var(--accent-color);
+        color: var(--primary);
     }
 
     &__Subtitle {
-        font-size: 1.25rem;
-        color: var(--text-secondary);
         margin-bottom: 2.5rem;
-        max-width: 500px;
+        max-width: 31.25rem;
 
         @include mobile {
-            font-size: 1.1rem;
             margin-left: auto;
             margin-right: auto;
         }
@@ -71,12 +60,12 @@
 
     &__GlowEffect {
         position: absolute;
-        top: -40px;
-        right: -40px;
-        width: 200px;
-        height: 200px;
-        background: var(--accent-color);
-        filter: blur(100px);
+        top: -2.5rem;
+        right: -2.5rem;
+        width: 12.5rem;
+        height: 12.5rem;
+        background: var(--primary);
+        filter: blur(6.25rem);
         opacity: 0.2;
         z-index: -1;
 

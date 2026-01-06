@@ -4,27 +4,27 @@
 .Logo {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 0.75rem;
     text-decoration: none;
 
     &__Icon {
-        width: 48px;
-        height: 48px;
-        border-radius: 16px;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 1rem;
         corner-shape: squircle;
         object-fit: contain;
         transition: transform 0.2s ease;
 
         @include mobile {
-            width: 40px;
-            height: 40px;
+            width: 2.5rem;
+            height: 2.5rem;
         }
     }
 
     &__Text {
         font-size: 1.8rem;
         font-weight: 700;
-        color: var(--accent-color);
+        color: var(--primary);
         transition: color 0.2s ease;
 
         @include mobile {

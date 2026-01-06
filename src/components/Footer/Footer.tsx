@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import Heading from '../Heading';
+import Text from '../Text';
 import styles from './Footer.module.scss';
 
 const Footer = () => {
@@ -8,12 +10,12 @@ const Footer = () => {
         <div className={styles.Footer__Grid}>
           <div>
             <Link to="/" className={styles.Footer__Brand}>Zush</Link>
-            <p className={styles.Footer__Description}>
+            <Text color="subtle" className={styles.Footer__Description}>
               The ultimate AI-powered image organization utility for macOS
-            </p>
+            </Text>
           </div>
           <div>
-            <h4 className={styles.Footer__SectionTitle}>Product</h4>
+            <Heading as="h4" className={styles.Footer__SectionTitle}>Product</Heading>
             <ul className={styles.Footer__Links}>
               <li><a href="/#features" className={styles.Footer__Link}>Features</a></li>
               <li><a href="/#pricing" className={styles.Footer__Link}>Pricing</a></li>
@@ -21,7 +23,7 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h4 className={styles.Footer__SectionTitle}>Legal</h4>
+            <Heading as="h4" className={styles.Footer__SectionTitle}>Legal</Heading>
             <ul className={styles.Footer__Links}>
               <li><Link to="/terms-of-service" className={styles.Footer__Link}>Terms of Service</Link></li>
               <li><Link to="/privacy-policy" className={styles.Footer__Link}>Privacy Policy</Link></li>
@@ -30,7 +32,7 @@ const Footer = () => {
           </div>
         </div>
         <div className={styles.Footer__Bottom}>
-          <p>© 2026 <a href="https://lirik.pro/en" target="_blank" rel="noopener noreferrer">lirik</a>. All rights reserved</p>
+          <Text color="subtle">© 2026 <a href="https://lirik.pro/en" target="_blank" rel="noopener noreferrer">lirik</a>. All rights reserved</Text>
           <div className={styles.Footer__BottomLinks}>
             <a href="mailto:support@zushapp.com">Contact Support</a>
           </div>
@@ -41,3 +43,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
