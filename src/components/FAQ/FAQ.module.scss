@@ -1,0 +1,93 @@
+.FAQ {
+    padding: 100px 0;
+    background-color: var(--background);
+    position: relative;
+    overflow: hidden;
+
+    &__Container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    &__Grid {
+        margin-top: 60px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    &__TitleAccent {
+        color: var(--primary);
+    }
+}
+
+.FAQItem {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+
+    &:hover {
+        border-color: var(--primary-soft);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+    }
+
+    &_active {
+        border-color: var(--primary);
+    }
+
+    &__Header {
+        width: 100%;
+        padding: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: none;
+        border: none;
+        cursor: pointer;
+        text-align: left;
+        gap: 16px;
+    }
+
+    &__Question {
+        font-size: 1.3rem;
+        font-weight: 500;
+        color: var(--foreground);
+        margin: 0;
+    }
+
+    &__Icon {
+        flex-shrink: 0;
+        color: var(--muted-foreground);
+        transition: transform 0.3s ease;
+        transform: rotate(90deg);
+
+        .FAQItem_active & {
+            transform: rotate(0deg);
+            color: var(--primary);
+        }
+    }
+
+    &__Content {
+        overflow: hidden;
+    }
+
+    &__Answer {
+        padding: 0 24px 24px;
+        color: var(--muted-foreground);
+        line-height: 1.6;
+        margin: 0;
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

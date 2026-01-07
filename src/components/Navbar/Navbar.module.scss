@@ -58,11 +58,19 @@
         display: flex;
         align-items: center;
         gap: 0.5rem;
+    }
 
+    &__BuyBtn {
         @include mobile {
-            a:first-child {
-                display: none; // Hide "Buy PRO" link to keep it clean, or keep it? User said "neat".
-            }
+            background-color: var(--primary) !important;
+            color: var(--primary-foreground) !important;
+            border-color: var(--primary) !important;
+        }
+    }
+
+    &__DownloadBtn {
+        @include mobile {
+            display: none !important;
         }
     }
 }
