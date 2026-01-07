@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
-import { ExternalLink, AlertCircle } from 'lucide-react';
+import { ExternalLink, AlertCircle, ArrowLeft, Download } from 'lucide-react';
+import Button from '../Button';
 import styles from './Activate.module.scss';
 
 const Activate = () => {
@@ -40,9 +41,9 @@ const Activate = () => {
           </p>
           
           <div className={styles.Activate__Actions}>
-            <Link to="/recover" className={styles.Activate__Button}>
+            <Button as={Link} to="/recover" variant="primary" size="lg">
               Request New Link
-            </Link>
+            </Button>
           </div>
           
           <Link to="/" className={styles.Activate__BackLink}>
@@ -71,20 +72,23 @@ const Activate = () => {
           <p className={styles.Activate__BoxDesc}>
             Make sure Zush is installed on your Mac, then click the button below.
           </p>
-          <button onClick={handleOpenApp} className={styles.Activate__Button}>
+          <Button onClick={handleOpenApp} variant="primary" size="lg">
             <ExternalLink size={18} />
             Open Zush App
-          </button>
+          </Button>
         </div>
         
         <div className={styles.Activate__Help}>
           <p>Don't have Zush installed?</p>
-          <a 
+          <Button 
+            as="a"
             href="https://github.com/design-ninja/zush/releases/latest/download/Zush.dmg"
-            className={styles.Activate__Link}
+            variant="ghost"
+            size="md"
           >
+            <Download size={18} />
             Download Zush for Mac
-          </a>
+          </Button>
         </div>
         
         <Link to="/" className={styles.Activate__BackLink}>

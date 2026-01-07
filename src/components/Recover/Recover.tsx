@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, ArrowRight, CheckCircle } from 'lucide-react';
+import { Mail, ArrowRight, CheckCircle, ArrowLeft } from 'lucide-react';
+import Button from '../Button';
 import styles from './Recover.module.scss';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || 'https://sjzrgmvinyxjzvshfvjy.supabase.co';
@@ -59,9 +60,10 @@ const Recover = () => {
             Check your spam folder if you don't see it.
           </p>
           
-          <Link to="/" className={styles.Recover__BackLink}>
-            ← Back to Home
-          </Link>
+          <Button as={Link} to="/" variant="primary" size="lg">
+            <ArrowLeft size={18} />
+            Back to Home
+          </Button>
         </div>
       </section>
     );
@@ -91,9 +93,11 @@ const Recover = () => {
             disabled={isLoading}
           />
           
-          <button 
+          <Button 
             type="submit" 
-            className={styles.Recover__Button}
+            variant="primary"
+            size="lg"
+            fluid
             disabled={isLoading}
           >
             {isLoading ? 'Sending...' : (
@@ -102,7 +106,7 @@ const Recover = () => {
                 <ArrowRight size={18} />
               </>
             )}
-          </button>
+          </Button>
         </form>
         
         {error && (

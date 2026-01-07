@@ -48,7 +48,7 @@
         border: 1px solid var(--color-border);
         border-radius: 16px;
         padding: 24px;
-        margin-bottom: 24px;
+        margin-bottom: 32px;
     }
 
     &__BoxTitle {
@@ -64,27 +64,6 @@
         margin-bottom: 16px;
     }
 
-    &__Button {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: linear-gradient(135deg, var(--color-primary) 0%, #8b5cf6 100%);
-        color: white;
-        font-size: 1rem;
-        font-weight: 600;
-        padding: 12px 24px;
-        border: none;
-        border-radius: 12px;
-        cursor: pointer;
-        text-decoration: none;
-        transition: all 0.2s ease;
-
-        &:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
-        }
-    }
-
     &__Actions {
         margin-bottom: 24px;
     }
@@ -95,17 +74,7 @@
         p {
             color: var(--color-text-secondary);
             font-size: 0.9rem;
-            margin-bottom: 8px;
-        }
-    }
-
-    &__Link {
-        color: var(--color-primary);
-        text-decoration: none;
-        font-weight: 500;
-
-        &:hover {
-            text-decoration: underline;
+            margin-bottom: 12px;
         }
     }
 

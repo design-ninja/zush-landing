@@ -91,9 +91,6 @@ const Pricing = () => {
       if (window.Paddle) {
         const checkoutOptions: any = {
           items: [{ priceId: PADDLE_PRICE_ID, quantity: 1 }],
-          settings: {
-            successUrl: 'https://zushapp.com/thank-you?email={customer_email}',
-          },
         };
 
         if (deviceId) {
