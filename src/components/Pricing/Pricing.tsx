@@ -10,6 +10,7 @@ import {
   FileText,
   LucideIcon
 } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 import Button from '../Button';
 import Heading from '../Heading';
 import Text from '../Text';
@@ -49,6 +50,10 @@ interface Plan {
 }
 
 const Pricing = () => {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const deviceId = searchParams.get('device_id');
+
   const plans: Plan[] = [
     {
       name: "FREE",
@@ -84,12 +89,20 @@ const Pricing = () => {
     if (isPro) {
       // Open Paddle checkout overlay
       if (window.Paddle) {
-        window.Paddle.Checkout.open({
+        const checkoutOptions: any = {
           items: [{ priceId: PADDLE_PRICE_ID, quantity: 1 }],
           settings: {
             successUrl: 'https://zushapp.com/thank-you?email={customer_email}',
           },
-        });
+        };
+
+        if (deviceId) {
+          checkoutOptions.customData = {
+            device_id: deviceId
+          };
+        }
+
+        window.Paddle.Checkout.open(checkoutOptions);
       } else {
         console.error('Paddle.js not loaded');
       }
@@ -160,4 +173,3 @@ const Pricing = () => {
 };
 
 export default Pricing;
-
