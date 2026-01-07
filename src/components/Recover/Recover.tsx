@@ -96,14 +96,11 @@ const Recover = () => {
           <Button 
             type="submit" 
             variant="primary"
-            size="lg"
-            fluid
             disabled={isLoading}
           >
             {isLoading ? 'Sending...' : (
               <>
                 Send Activation Link
-                <ArrowRight size={18} />
               </>
             )}
           </Button>

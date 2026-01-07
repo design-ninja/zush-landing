@@ -11,7 +11,7 @@
     }
 
     &__Icon {
-        color: var(--color-primary);
+        color: var(--primary);
         margin-bottom: 24px;
 
         svg {
@@ -22,38 +22,38 @@
     &__Title {
         font-size: 2rem;
         font-weight: 700;
-        color: var(--color-text);
+        color: var(--foreground);
         margin-bottom: 16px;
     }
 
     &__Subtitle {
         font-size: 1.1rem;
-        color: var(--color-text-secondary);
+        color: var(--muted-foreground);
         margin-bottom: 32px;
         line-height: 1.6;
 
         strong {
-            color: var(--color-text);
+            color: var(--foreground);
         }
     }
 
     &__Instructions {
         text-align: left;
-        background: var(--color-surface);
-        border: 1px solid var(--color-border);
+        background: var(--muted);
+        border: 1px solid var(--border);
         border-radius: 16px;
         padding: 24px;
         margin-bottom: 32px;
 
         h3 {
-            color: var(--color-text);
+            color: var(--foreground);
             font-size: 1rem;
             font-weight: 600;
             margin-bottom: 16px;
         }
 
         ol {
-            color: var(--color-text-secondary);
+            color: var(--muted-foreground);
             padding-left: 20px;
             margin: 0;
 
@@ -66,7 +66,7 @@
                 }
 
                 strong {
-                    color: var(--color-text);
+                    color: var(--foreground);
                 }
             }
         }
@@ -78,14 +78,14 @@
 
     &__Help {
         p {
-            color: var(--color-text-secondary);
+            color: var(--muted-foreground);
             font-size: 0.9rem;
             margin-bottom: 8px;
         }
     }
 
     &__Link {
-        color: var(--color-primary);
+        color: var(--primary);
         text-decoration: none;
         font-size: 0.9rem;
         font-weight: 500;
