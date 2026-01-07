@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { memo } from 'react';
 import { useTheme } from './hooks/useTheme';
 import { useCheckoutAutoOpen } from './hooks/useCheckoutAutoOpen';
 import ScrollToTop from './components/ScrollToTop';
@@ -15,13 +16,13 @@ import NotFound from './components/NotFound/NotFound';
 import Footer from './components/Footer';
 import styles from './App.module.scss';
 
-const MainContent = () => (
+const MainContent = memo(() => (
   <>
     <Hero />
     <Features />
     <Pricing />
   </>
-);
+));
 
 const AppContent = ({ theme, toggleTheme }: { theme: string; toggleTheme: () => void }) => {
   useCheckoutAutoOpen();
