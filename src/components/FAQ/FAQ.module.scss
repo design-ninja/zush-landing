@@ -24,7 +24,7 @@
 
 .FAQItem {
     background: var(--card);
-    border: 1px solid var(--border);
+    outline: 1px solid var(--border);
     border-radius: 16px;
     overflow: hidden;
     transition: all 0.3s ease;
@@ -35,7 +35,7 @@
     }
 
     &_active {
-        border-color: var(--primary);
+        outline: 3px solid var(--primary);
     }
 
     &__Header {

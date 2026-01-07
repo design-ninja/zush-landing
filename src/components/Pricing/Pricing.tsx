@@ -127,7 +127,6 @@ const Pricing = () => {
               className={`${styles.PricingCard} ${plan.highlight ? styles.PricingCard_highlighted : ''}`}
               id={plan.isPro ? 'pro' : undefined}
             >
-              
               <div className={styles.PricingCard__Header}>
                 <Heading as="h3" className={styles.PricingCard__Name}>{plan.name}</Heading>
                 <Text as="p" size="sm" color="subtle" className={styles.PricingCard__Description}>{plan.description}</Text>
