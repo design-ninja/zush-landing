@@ -9,16 +9,26 @@ export const useCheckoutAutoOpen = () => {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const checkout = params.get('checkout');
+    const deviceId = params.get('device_id');
 
     if (checkout === 'pro') {
       if (window.Paddle) {
         setTimeout(() => {
-          window.Paddle.Checkout.open({
+          const checkoutOptions: any = {
             items: [{ priceId: PADDLE_PRICE_ID, quantity: 1 }],
             settings: {
               successUrl: 'https://zushapp.com/thank-you?email={customer_email}',
             },
-          });
+          };
+          
+          // Add device_id to custom data if provided
+          if (deviceId) {
+            checkoutOptions.customData = {
+              device_id: deviceId,
+            };
+          }
+          
+          window.Paddle.Checkout.open(checkoutOptions);
         }, 500);
       } else {
         console.error('Paddle.js not loaded');
