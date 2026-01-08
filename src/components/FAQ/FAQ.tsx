@@ -41,20 +41,24 @@ const FAQ = () => {
 
   const faqs = [
     {
-      question: "Does the app work offline?",
-      answer: "Yes, Zush is a native macOS application that processes your files locally. However, an internet connection is required for AI features (image analysis and name generation) as we use advanced cloud models to ensure the best possible quality."
+      question: "What is Zush?",
+      answer: "Zush is an intelligent macOS application that automates the tedious task of renaming media files. Using advanced AI, it analyzes the content of your images and documents to generate descriptive, meaningful filenames, helping you keep your library perfectly organized."
     },
     {
-      question: "Can I get a refund if it doesn't fit my needs?",
-      answer: (
-        <>
-          Absolutely. If Zush isn't right for you, we offer a 14-day money-back guarantee. You can find more details in our <Link to="/refund-policy">Refund Policy</Link>.
-        </>
-      )
+      question: "What file formats are supported?",
+      answer: "Zush supports all popular image formats: PNG, JPG, JPEG, WebP, GIF, BMP, TIFF, TIF, HEIC, and HEIF. We also support SVG vector graphics and PDF documents (the first page is analyzed for AI renaming)."
     },
     {
-      question: "Can I rename existing image files?",
-      answer: "Yes, that's the core feature of Zush. Simply select a folder with images, and the app will automatically suggest meaningful names based on their content."
+      question: "How does Zush rename my files?",
+      answer: "Zush works by monitoring your selected folders. When you add new images or documents to a monitored folder, Zush automatically analyzes the content and suggests descriptive, meaningful names in real-time."
+    },
+    {
+      question: "Is my data secure?",
+      answer: "Completely. Your files never leave your computer. For AI analysis, only a temporary compressed copy of the image without metadata is sent, which is never stored on our servers."
+    },
+        {
+      question: "Can I undo changes made by the program?",
+      answer: "Yes, you can easily undo any changes in the dedicated Activity tab."
     },
     {
       question: "How many renames are included in the free tier?",
@@ -65,21 +69,21 @@ const FAQ = () => {
       answer: "Currently, Zush is exclusively available for macOS (version 13.0 Ventura and newer)."
     },
     {
-      question: "Can I undo changes made by the program?",
-      answer: "Yes, you can easily undo any changes in the dedicated History tab. This feature is currently in development and will be available starting tomorrow!"
-    },
-    {
       question: "Which AI model does the app use?",
       answer: "We use state-of-the-art models from Google's Gemini family (specifically Gemini 3 Flash) to ensure high speed and incredible accuracy in recognizing objects in your photos."
     },
     {
-      question: "Is my data secure?",
-      answer: "Completely. Your files never leave your computer. For AI analysis, only a temporary compressed copy of the image without metadata is sent, which is never stored on our servers."
+      question: "Does the app work offline?",
+      answer: "Zush requires an internet connection for the AI features (image analysis and name generation) to function. While it is a native macOS application that processes your files locally, we use advanced cloud models to ensure the best possible quality and accuracy."
     },
     {
-      question: "What file formats are supported?",
-      answer: "Zush supports all popular image formats: PNG, JPG, JPEG, WebP, GIF, BMP, TIFF, TIF, HEIC, and HEIF. We also support SVG vector graphics and PDF documents (the first page is analyzed for AI renaming)."
-    }
+      question: "Can I get a refund if it doesn't fit my needs?",
+      answer: (
+        <>
+          Absolutely. If Zush isn't right for you, we offer a 14-day money-back guarantee. You can find more details in our <Link to="/refund-policy">Refund Policy</Link>.
+        </>
+      )
+    },
   ];
 
   return (
