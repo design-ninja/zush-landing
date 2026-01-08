@@ -6,13 +6,25 @@
         <description>Zush app updates</description>
         <language>en</language>
         <item>
+            <title>0.7.0</title>
+            <pubDate>Thu, 08 Jan 2026 09:00:11 +0700</pubDate>
+            <sparkle:version>7</sparkle:version>
+            <sparkle:shortVersionString>0.7.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<h2>What's New in 0.7.0</h2><ul></ul><p><strong>Added</strong></p><ul><li>🎉 Implemented Paddle integration and custom license management</li><li>🔑 Added magic link activation flow, removing license key activation</li><li>🖼️ Show floating settings window after onboarding</li><li>🔔 Added notification, URL handling, window management services</li><li>📦 Added in-app checkout view and integrated it into pro modal</li><li>📂 Added naming pattern and smart metadata sections to processing queue</li><li>✨ Added email validation and refined success message UI</li></ul><p><strong>Improved  </strong></p><ul><li>⚡ Refined device activation logic and normalized device IDs</li><li>⚡ Improved pro modal limit message and menu bar upgrade visibility</li><li>⚡ Enhanced Supabase functions with shared CORS and response utilities</li><li>⚡ Use template objects for email sending with updated IDs</li></ul><p><strong>Fixed</strong></p><ul><li>🐛 Fixed checkout URL to use landing page proxy</li><li>🐛 Fixed Supabase functions issues</li></ul>
+]]></description>
+            <enclosure url="https://zushapp.com/releases/Zush-0.7.0.dmg" length="7663564" type="application/octet-stream" sparkle:edSignature="66c2md5ZKfQgL97Z1gKid1vgoFkMG7x6Wa/NTlHlYNgaPbErdIZYFCcAM61AA07Mhm5TAMQY9lNdgCDyR2stDw=="/>
+            <sparkle:deltas>
+                <enclosure url="https://zushapp.com/releases/Zush7-6.delta" sparkle:deltaFrom="6" length="645762" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="SVpFY4y/FzHbeGcmJtQTG0ihl2NQ+dIeNt5JWmi42eqBgPdsDesVuu+KIxSZk0NNsb6AGhvMrkqbI92QMQ7oBQ=="/>
+                <enclosure url="https://zushapp.com/releases/Zush7-5.delta" sparkle:deltaFrom="5" length="672922" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="18XYTOaWe706VLYxSyPeXOnKBCFijy4Fnaky7FYKRgJNf3tZGkGRAahwLT+FASmd+oPZGnuvz+uT2Xixbfj8Bg=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>0.6.0</title>
             <pubDate>Mon, 05 Jan 2026 20:27:10 +0700</pubDate>
             <sparkle:version>6</sparkle:version>
             <sparkle:shortVersionString>0.6.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<h2>What's New in 0.6.0</h2><ul></ul><p><strong>Added</strong></p><ul><li>🎉 Implemented free tier folder watch limits and pro status UI</li><li>🖼️ Added advanced filename pattern options with live preview</li><li>🔑 Added new views for license activation and pro features</li></ul><p><strong>Improved  </strong></p><ul><li>⚡ Reorganized settings tabs for better user experience</li><li>🛠️ Improved filename sanitization for better file handling</li><li>🔄 Updated watcher logic for more reliable file monitoring</li></ul>
-]]></description>
             <enclosure url="https://zushapp.com/releases/Zush-0.6.0.dmg" length="7566691" type="application/octet-stream" sparkle:edSignature="wMrI3An9SlaQEhZhVcGljbr+xYRHePhmADas+djnG1rJMjh9KTGmflLI9lw3y2FCckg8DBpZTLBy7UfDZV3HAA=="/>
             <sparkle:deltas>
                 <enclosure url="https://zushapp.com/releases/Zush6-5.delta" sparkle:deltaFrom="5" length="428402" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="66VGkNsKFztrsdKwlLufxZztmesFe9aLkcYtax938MceKaNJ2sjLndxsoNBLKsT14wGOg0OHAisx7vmGynGaDQ=="/>
@@ -25,25 +37,6 @@
             <sparkle:shortVersionString>0.5.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
             <enclosure url="https://zushapp.com/releases/Zush-0.5.0.dmg" length="7540787" type="application/octet-stream" sparkle:edSignature="GoNpcPBkc7lJulClTjfJkLIZ9wvZUWEEsE/yGOsgjEUDG20K9A7jH6dqb3X79bhD7eEF5Suym5riCwrZ78kcAA=="/>
-        </item>
-        <item>
-            <title>Version 0.4.0</title>
-            <description><![CDATA[
-                <h2>What's New in 0.4.0</h2>
-                <ul>
-                    <li>🎉 Welcome onboarding screen for first-time users</li>
-                    <li>📂 Folder selection during onboarding</li>
-                    <li>📍 Menu bar location hint for new users</li>
-                    <li>🔔 Notification when monitoring starts</li>
-                    <li>✏️ Change watched folder button in settings</li>
-                    <li>🐛 Fixed screenshot detection for macOS temp files</li>
-                </ul>
-            ]]></description>
-            <pubDate>Sat, 04 Jan 2026 07:30:00 +0000</pubDate>
-            <sparkle:version>4</sparkle:version>
-            <sparkle:shortVersionString>0.4.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://zushapp.com/releases/Zush-0.4.0.zip" sparkle:edSignature="70qHh7hnnDTawHSM72iNoD/YYJGpDvQ3QCHQOr2wfdbftz1DYsynOCo/zL+dZDMJuXM/YCgOWGSywtSoQTALCw==" length="7116068" type="application/octet-stream"/>
         </item>
     </channel>
 </rss>
