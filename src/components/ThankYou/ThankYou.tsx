@@ -20,17 +20,8 @@ const ThankYou = () => {
         </h1>
         
         <p className={styles.ThankYou__Subtitle}>
-          Your Zush PRO license has been activated.
+          Your Zush PRO license has been activated. Open the app, and the PRO features will be unlocked.
         </p>
-
-        <div className={styles.ThankYou__Instructions}>
-          <h3>What happens next:</h3>
-          <ol>
-            <li>✨ The Zush app will automatically unlock PRO features</li>
-            <li>📧 An activation link will be sent to <strong>{email || 'your email'}</strong></li>
-            <li>💻 Use the link to activate PRO on other devices</li>
-          </ol>
-        </div>
 
         <div className={styles.ThankYou__Actions}>
           <Button as={Link} to="/" variant="ghost">

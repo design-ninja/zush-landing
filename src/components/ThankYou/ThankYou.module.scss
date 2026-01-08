@@ -37,41 +37,6 @@
         }
     }
 
-    &__Instructions {
-        text-align: left;
-        background: var(--muted);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        padding: 24px;
-        margin-bottom: 32px;
-
-        h3 {
-            color: var(--foreground);
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-
-        ol {
-            color: var(--muted-foreground);
-            padding-left: 20px;
-            margin: 0;
-
-            li {
-                margin-bottom: 12px;
-                line-height: 1.6;
-
-                &:last-child {
-                    margin-bottom: 0;
-                }
-
-                strong {
-                    color: var(--foreground);
-                }
-            }
-        }
-    }
-
     &__Actions {
         margin-bottom: 32px;
     }
