@@ -75,6 +75,10 @@ const FAQ = () => {
     {
       question: "Is my data secure?",
       answer: "Completely. Your files never leave your computer. For AI analysis, only a temporary compressed copy of the image without metadata is sent, which is never stored on our servers."
+    },
+    {
+      question: "What file formats are supported?",
+      answer: "Zush supports all popular image formats: PNG, JPG, JPEG, WebP, GIF, BMP, TIFF, TIF, HEIC, and HEIF. We also support SVG vector graphics and PDF documents (the first page is analyzed for AI renaming)."
     }
   ];
 
