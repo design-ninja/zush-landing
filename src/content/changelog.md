@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.7.0] - 2026-01-08
+### Added
+- 🎉 Implemented Paddle integration and custom license management
+- 🔑 Added magic link activation flow, removing license key activation
+- 🖼️ Show floating settings window after onboarding
+- 🔔 Added notification, URL handling, window management services
+- 📦 Added in-app checkout view and integrated it into pro modal
+- 📂 Added naming pattern and smart metadata sections to processing queue
+- ✨ Added email validation and refined success message UI
+
+### Improved  
+- ⚡ Refined device activation logic and normalized device IDs
+- ⚡ Improved pro modal limit message and menu bar upgrade visibility
+- ⚡ Enhanced Supabase functions with shared CORS and response utilities
+- ⚡ Use template objects for email sending with updated IDs
+
+### Fixed
+- 🐛 Fixed checkout URL to use landing page proxy
+- 🐛 Fixed Supabase functions issues
+
 ## [0.6.0] - 2026-01-05
 ### Added
 - 🎉 Implemented free tier folder watch limits and pro status UI
