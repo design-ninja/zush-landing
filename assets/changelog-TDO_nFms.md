@@ -1,0 +1,109 @@
+# Changelog
+
+## [0.8.0] - 2024-01-09
+### Added
+- 🎉 Added SVG, PDF, and TIF file format support
+- 🚀 Implemented activity tab with undo functionality
+- 📦 Added chunked processing for batch rename
+- 🖼️ Added analyzing text to batch rename items
+- 🔑 Added dry-run support to release script
+
+### Improved  
+- ⚡ Refactored about tab and updated naming pattern variables
+- ⚡ Refined activity and batch rename UI
+- ⚡ Simplified menu bar usage view with tier name and counter
+- ⚡ Show settings window on launch and dock click
+- ⚡ Unified file list items with shared FileListItemView component
+
+### Fixed
+- 🐛 Added white background for SVG and PDF rendering to JPEG
+- 🐛 Prevented file re-processing after undo
+- 🐛 Fixed batch rename limit
+- 🐛 Fixed open panel permissions on welcome screen
+
+## [0.7.0] - 2026-01-08
+### Added
+- 🎉 Implemented Paddle integration and custom license management
+- 🔑 Added magic link activation flow, removing license key activation
+- 🖼️ Show floating settings window after onboarding
+- 🔔 Added notification, URL handling, window management services
+- 📦 Added in-app checkout view and integrated it into pro modal
+- 📂 Added naming pattern and smart metadata sections to processing queue
+- ✨ Added email validation and refined success message UI
+
+### Improved  
+- ⚡ Refined device activation logic and normalized device IDs
+- ⚡ Improved pro modal limit message and menu bar upgrade visibility
+- ⚡ Enhanced Supabase functions with shared CORS and response utilities
+- ⚡ Use template objects for email sending with updated IDs
+
+### Fixed
+- 🐛 Fixed checkout URL to use landing page proxy
+- 🐛 Fixed Supabase functions issues
+
+## [0.6.0] - 2026-01-05
+### Added
+- 🎉 Implemented free tier folder watch limits and pro status UI
+- 🖼️ Added advanced filename pattern options with live preview
+- 🔑 Added new views for license activation and pro features
+
+### Improved  
+- ⚡ Reorganized settings tabs for better user experience
+- 🛠️ Improved filename sanitization for better file handling
+- 🔄 Updated watcher logic for more reliable file monitoring
+
+## [0.5.0] - 2024-01-05
+### Added
+- 🎉 We now ship Zush as a `.dmg` file instead of a `.zip` for easier installation.
+- 🖼️ Zush now sends lower quality images for AI analysis to improve performance.
+- 🔑 Pro features, the general tab, and the onboarding views now have a new primary button style.
+- 🔔 You'll now receive update notifications and dock badge updates thanks to the new update management system.
+- 🚀 Automated GitHub release creation and Sparkle feed updates in the release script.
+
+### Improved  
+- ⚡ Optimized AI analysis data fetching and included modification date in file hash for more accurate results.
+- ⚡ Refined onboarding view layout and styling, including path shortening.
+- 📈 Improved backend usage and added server timings to AI analysis responses.
+- 🎨 Enhanced onboarding experience by moving state management to SettingsViewModel and updating menu bar/settings access based on its status.
+
+### Fixed
+- 🐛 Enabled logging for Gemini API errors to help diagnose issues.
+
+## [0.4.0] - 2026-01-04
+### Added
+- 🎉 Welcome onboarding screen for first-time users
+- 📂 Folder selection during onboarding
+- 📍 Menu bar location hint for new users
+- 🔔 Notification when monitoring starts
+- ✏️ Change watched folder button in settings
+
+### Fixed
+- 🐛 Screenshot detection for macOS temp files
+
+## [0.3.0] - 2026-01-02
+### Added
+- 🔄 Batch image analysis with processing queue
+- 🖼️ Image compression service
+- ⏱️ Rate limiting for API calls
+- 🔑 License activation and management in Settings
+
+### Improved
+- 📊 Display AI usage count in General tab
+- 🎨 Pro features view layout optimization
+- 🔖 Exclude color names from AI tags
+- 📁 Auto-detect macOS screenshot folder
+
+## [0.2.0] - 2025-12-31
+### Added
+- ✨ Added automatic update checking via Sparkle
+- 🔄 Check for Updates option in Settings and Menu Bar
+- ⚙️ Automatic updates toggle
+
+## [0.1.0] - 2025-12-30
+### Initial Release
+- 🚀 First public release of Zush
+- 🤖 AI-powered image organization with automatic tagging
+- 📁 Smart folder monitoring for new images
+- 🏷️ Automatic Finder tags based on AI analysis
+- 📝 Custom naming patterns for organized files
+- 🎨 Beautiful native macOS interface

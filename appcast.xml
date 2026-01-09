@@ -6,13 +6,26 @@
         <description>Zush app updates</description>
         <language>en</language>
         <item>
+            <title>0.8.0</title>
+            <pubDate>Fri, 09 Jan 2026 20:24:01 +0700</pubDate>
+            <sparkle:version>8</sparkle:version>
+            <sparkle:shortVersionString>0.8.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<h2>What's New in 0.8.0</h2><ul></ul><p><strong>Added</strong></p><ul><li>🎉 Added SVG, PDF, and TIF file format support</li><li>🚀 Implemented activity tab with undo functionality</li><li>📦 Added chunked processing for batch rename</li><li>🖼️ Added analyzing text to batch rename items</li><li>🔑 Added dry-run support to release script</li></ul><p><strong>Improved  </strong></p><ul><li>⚡ Refactored about tab and updated naming pattern variables</li><li>⚡ Refined activity and batch rename UI</li><li>⚡ Simplified menu bar usage view with tier name and counter</li><li>⚡ Show settings window on launch and dock click</li><li>⚡ Unified file list items with shared FileListItemView component</li></ul><p><strong>Fixed</strong></p><ul><li>🐛 Added white background for SVG and PDF rendering to JPEG</li><li>🐛 Prevented file re-processing after undo</li><li>🐛 Fixed batch rename limit</li><li>🐛 Fixed open panel permissions on welcome screen</li></ul>
+]]></description>
+            <enclosure url="https://zushapp.com/releases/Zush-0.8.0.dmg" length="7795986" type="application/octet-stream" sparkle:edSignature="UPKHiBrHifN3rnf9ufcRFyskECcq5ugOrP8w+xFN988kOLBEg+FF5LQ+zEjRBIUq1WEU+Fe+W+ZCSnzsHJUPDw=="/>
+            <sparkle:deltas>
+                <enclosure url="https://zushapp.com/releases/Zush8-7.delta" sparkle:deltaFrom="7" length="731590" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="hqX+3XByzQ/xuNAy3Gplt3eZv2JWfFhYTvE59nAKR61S0EoJ3HS6BN4+Fo4lf/rTKz+yqFHZGrVIuVc8XmUqAw=="/>
+                <enclosure url="https://zushapp.com/releases/Zush8-6.delta" sparkle:deltaFrom="6" length="856898" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="FOhmVEtdj0uL31dXveSB61Tv3H3G8hNB5cu1ygKtvAGZVSzahxoL/b2wkCfO7W0OMd58CLVTb1vdZRxMcuXDBA=="/>
+                <enclosure url="https://zushapp.com/releases/Zush8-5.delta" sparkle:deltaFrom="5" length="869074" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="+70sToilxTKi+DD6Wsnr9POmNXXkHuVxMLh4SBEpseN0cfgrJyy2uHHBaKaWxmw8dUfkO5sJZvNvBO44XV09CA=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>0.7.0</title>
             <pubDate>Thu, 08 Jan 2026 09:00:11 +0700</pubDate>
             <sparkle:version>7</sparkle:version>
             <sparkle:shortVersionString>0.7.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<h2>What's New in 0.7.0</h2><ul></ul><p><strong>Added</strong></p><ul><li>🎉 Implemented Paddle integration and custom license management</li><li>🔑 Added magic link activation flow, removing license key activation</li><li>🖼️ Show floating settings window after onboarding</li><li>🔔 Added notification, URL handling, window management services</li><li>📦 Added in-app checkout view and integrated it into pro modal</li><li>📂 Added naming pattern and smart metadata sections to processing queue</li><li>✨ Added email validation and refined success message UI</li></ul><p><strong>Improved  </strong></p><ul><li>⚡ Refined device activation logic and normalized device IDs</li><li>⚡ Improved pro modal limit message and menu bar upgrade visibility</li><li>⚡ Enhanced Supabase functions with shared CORS and response utilities</li><li>⚡ Use template objects for email sending with updated IDs</li></ul><p><strong>Fixed</strong></p><ul><li>🐛 Fixed checkout URL to use landing page proxy</li><li>🐛 Fixed Supabase functions issues</li></ul>
-]]></description>
             <enclosure url="https://zushapp.com/releases/Zush-0.7.0.dmg" length="7663564" type="application/octet-stream" sparkle:edSignature="66c2md5ZKfQgL97Z1gKid1vgoFkMG7x6Wa/NTlHlYNgaPbErdIZYFCcAM61AA07Mhm5TAMQY9lNdgCDyR2stDw=="/>
             <sparkle:deltas>
                 <enclosure url="https://zushapp.com/releases/Zush7-6.delta" sparkle:deltaFrom="6" length="645762" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="SVpFY4y/FzHbeGcmJtQTG0ihl2NQ+dIeNt5JWmi42eqBgPdsDesVuu+KIxSZk0NNsb6AGhvMrkqbI92QMQ7oBQ=="/>
@@ -29,14 +42,6 @@
             <sparkle:deltas>
                 <enclosure url="https://zushapp.com/releases/Zush6-5.delta" sparkle:deltaFrom="5" length="428402" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="66VGkNsKFztrsdKwlLufxZztmesFe9aLkcYtax938MceKaNJ2sjLndxsoNBLKsT14wGOg0OHAisx7vmGynGaDQ=="/>
             </sparkle:deltas>
-        </item>
-        <item>
-            <title>0.5.0</title>
-            <pubDate>Mon, 05 Jan 2026 09:06:12 +0700</pubDate>
-            <sparkle:version>5</sparkle:version>
-            <sparkle:shortVersionString>0.5.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://zushapp.com/releases/Zush-0.5.0.dmg" length="7540787" type="application/octet-stream" sparkle:edSignature="GoNpcPBkc7lJulClTjfJkLIZ9wvZUWEEsE/yGOsgjEUDG20K9A7jH6dqb3X79bhD7eEF5Suym5riCwrZ78kcAA=="/>
         </item>
     </channel>
 </rss>
