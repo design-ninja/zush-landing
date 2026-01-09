@@ -1,7 +1,7 @@
 We want you to be happy with Zush. If you're not satisfied, we're here to help.
 
-### Annual Subscriptions
-We offer a 14-day money-back guarantee for our annual subscription. If you are not satisfied with the 🌟 PRO features, you can request a full refund within 14 days of your initial purchase.
+### One-Time Purchase
+We offer a 14-day money-back guarantee for the 🌟 PRO license. If you are not satisfied with the PRO features, you can request a full refund within 14 days of your initial purchase.
 
 ### How to Request a Refund
 To request a refund, please contact us at support@zushapp.com with your order number and the email address used for the purchase.

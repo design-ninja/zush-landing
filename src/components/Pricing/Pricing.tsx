@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { 
-  Infinity, 
   FolderPlus, 
   Zap, 
   FileCode,
@@ -60,7 +59,7 @@ const Pricing = () => {
       price: "$0",
       description: "Basic organization for casual users",
       features: [
-        { title: "Limited Renames", desc: "Basic AI-powered renaming", icon: Sparkles },
+        { title: "50 Renames/mo", desc: "AI-powered renaming included", icon: Sparkles },
         { title: "Single Folder", desc: "Monitor one folder at a time", icon: Folder },
         { title: "Manual Metadata", desc: "Add Finder tags manually", icon: Tag },
         { title: "Default Naming Pattern", desc: "Use standard naming variables", icon: FileText },
@@ -71,11 +70,11 @@ const Pricing = () => {
     {
       name: "🌟 PRO",
       price: "$9.99",
-      period: "lifetime",
+      period: "one-time",
       description: "Powerful AI features for power users",
       features: [
-        { title: "Unlimited Renames", desc: "No monthly limit on AI-powered renames", icon: Infinity },
-        { title: "Multiple Folders", desc: "Monitor unlimited folders simultaneously", icon: FolderPlus },
+        { title: "5,000 Renames/mo", desc: "Monthly limit on AI-powered renames", icon: Sparkles },
+        { title: "Multiple Folders", desc: "Monitor multiple folders simultaneously", icon: FolderPlus },
         { title: "Smart Metadata", desc: "Automatically add Finder tags and Spotlight comments", icon: Zap },
         { title: "Custom Naming Pattern", desc: "Create your own file naming pattern with variables", icon: FileCode }
       ],

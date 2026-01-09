@@ -6,17 +6,20 @@ Zush is a macOS utility designed to help users organize, rename, and manage meta
 ### 2. Software License
 We grant you a personal, non-exclusive, non-transferable, limited license to use Zush on macOS devices that you own or control, subject to these Terms.
 
-### 3. Subscriptions and Payments
+### 3. Purchases and Payments
 **3.1 🌟 PRO Version**
-Zush offers a "🌟 PRO" subscription that provides unlimited AI renames, monitoring of multiple folders, and advanced metadata features. The current price and billing cycle (e.g., $4.99/month) are displayed within the application.
+Zush offers a "🌟 PRO" one-time purchase that provides increased monthly AI rename limits (currently 5,000 renames/month), monitoring of multiple folders, and advanced metadata features. The current price is displayed within the application and on the website.
 
-**3.2 Merchant of Record**
+**3.2 One-Time Purchase Terms**
+The 🌟 PRO license is a one-time purchase, not a subscription. This grants you access to PRO features for the current major version of the application. We may release future major versions with new features that require a separate purchase. Minor updates and bug fixes for the purchased version are provided at our discretion with no guaranteed support period.
+
+**3.3 Usage Limits**
+Both free and PRO versions have monthly usage limits for AI-powered features. These limits reset each calendar month. Current limits are displayed in the application.
+
+**3.4 Merchant of Record**
 Our order process is conducted by our online reseller Paddle.com. Paddle.com is the Merchant of Record for all our orders. Paddle provides all customer service inquiries and handles returns.
 
-**3.3 Billing and Cancellation**
-Subscriptions are billed in advance on a recurring basis. You may cancel your subscription at any time through the Paddle checkout link or by contacting Paddle support. Upon cancellation, you will retain access to 🌟 PRO features until the end of your current billing period.
-
-**3.4 Refunds**
+**3.5 Refunds**
 Refund requests are handled by Paddle in accordance with their refund policy.
 
 ### 4. AI-Powered Features and Accuracy
