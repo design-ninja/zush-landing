@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.8.0] - 2024-01-09
+### Added
+- 🎉 Added SVG, PDF, and TIF file format support
+- 🚀 Implemented activity tab with undo functionality
+- 📦 Added chunked processing for batch rename
+- 🖼️ Added analyzing text to batch rename items
+- 🔑 Added dry-run support to release script
+
+### Improved  
+- ⚡ Refactored about tab and updated naming pattern variables
+- ⚡ Refined activity and batch rename UI
+- ⚡ Simplified menu bar usage view with tier name and counter
+- ⚡ Show settings window on launch and dock click
+- ⚡ Unified file list items with shared FileListItemView component
+
+### Fixed
+- 🐛 Added white background for SVG and PDF rendering to JPEG
+- 🐛 Prevented file re-processing after undo
+- 🐛 Fixed batch rename limit
+- 🐛 Fixed open panel permissions on welcome screen
+
 ## [0.7.0] - 2026-01-08
 ### Added
 - 🎉 Implemented Paddle integration and custom license management
