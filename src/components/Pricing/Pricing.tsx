@@ -47,21 +47,55 @@ const Pricing = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const deviceId = searchParams.get('device_id');
-  const [planType, setPlanType] = useState<'monthly' | 'annual' | 'onetime'>('annual');
-  
-  const { price: monthlyPrice, loading: monthlyLoading } = usePaddlePrice(PADDLE_MONTHLY_PRICE_ID);
-  const { price: annualPrice, loading: annualLoading } = usePaddlePrice(PADDLE_ANNUAL_PRICE_ID);
-  const { price: onetimePrice, loading: onetimeLoading } = usePaddlePrice(PADDLE_ONETIME_PRICE_ID);
-  
-  const currentPrice = planType === 'monthly' ? monthlyPrice : planType === 'annual' ? annualPrice : onetimePrice;
-  const currentPriceLoading = planType === 'monthly' ? monthlyLoading : planType === 'annual' ? annualLoading : onetimeLoading;
-  const currentPriceId = planType === 'monthly' ? PADDLE_MONTHLY_PRICE_ID : planType === 'annual' ? PADDLE_ANNUAL_PRICE_ID : PADDLE_ONETIME_PRICE_ID;
-  const currentPeriod = planType === 'monthly' ? 'month' : planType === 'annual' ? 'year' : 'one-time';
-  
+  const [planType, setPlanType] = useState<'monthly' | 'annual' | 'onetime'>(
+    'annual'
+  );
+
+  const { price: monthlyPrice, loading: monthlyLoading } = usePaddlePrice(
+    PADDLE_MONTHLY_PRICE_ID
+  );
+  const { price: annualPrice, loading: annualLoading } = usePaddlePrice(
+    PADDLE_ANNUAL_PRICE_ID
+  );
+  const { price: onetimePrice, loading: onetimeLoading } = usePaddlePrice(
+    PADDLE_ONETIME_PRICE_ID
+  );
+
+  const currentPrice =
+    planType === 'monthly'
+      ? monthlyPrice
+      : planType === 'annual'
+      ? annualPrice
+      : onetimePrice;
+  const currentPriceLoading =
+    planType === 'monthly'
+      ? monthlyLoading
+      : planType === 'annual'
+      ? annualLoading
+      : onetimeLoading;
+  const currentPriceId =
+    planType === 'monthly'
+      ? PADDLE_MONTHLY_PRICE_ID
+      : planType === 'annual'
+      ? PADDLE_ANNUAL_PRICE_ID
+      : PADDLE_ONETIME_PRICE_ID;
+  const currentPeriod =
+    planType === 'monthly'
+      ? 'month'
+      : planType === 'annual'
+      ? 'year'
+      : 'one-time';
+
   // Calculate discount for annual plan
-  const monthlyPriceNum = monthlyPrice ? parseFloat(monthlyPrice.replace('$', '')) : 4.99;
-  const annualPriceNum = annualPrice ? parseFloat(annualPrice.replace('$', '')) : 19.99;
-  const discountPercent = Math.round(((monthlyPriceNum * 12 - annualPriceNum) / (monthlyPriceNum * 12)) * 100);
+  const monthlyPriceNum = monthlyPrice
+    ? parseFloat(monthlyPrice.replace('$', ''))
+    : 4.99;
+  const annualPriceNum = annualPrice
+    ? parseFloat(annualPrice.replace('$', ''))
+    : 19.99;
+  const discountPercent = Math.round(
+    ((monthlyPriceNum * 12 - annualPriceNum) / (monthlyPriceNum * 12)) * 100
+  );
 
   const plans: Plan[] = [
     {
@@ -95,7 +129,14 @@ const Pricing = () => {
     },
     {
       name: '🌟 PRO',
-      price: currentPriceLoading ? '...' : currentPrice || (planType === 'monthly' ? '$4.99' : planType === 'annual' ? '$19.99' : '$59.99'),
+      price: currentPriceLoading
+        ? '...'
+        : currentPrice ||
+          (planType === 'monthly'
+            ? '$4.99'
+            : planType === 'annual'
+            ? '$19.99'
+            : '$59.99'),
       period: currentPeriod,
       description: 'Powerful AI features for power users',
       features: [
@@ -165,14 +206,16 @@ const Pricing = () => {
                   Save {discountPercent}%
                 </div>
               )}
-              
+
               <div className={styles.PricingCard__Top}>
                 <div className={styles.PricingCard__Toggle}>
                   {plan.isPro ? (
                     <>
                       <button
                         className={`${styles.PricingCard__ToggleButton} ${
-                          planType === 'monthly' ? styles.PricingCard__ToggleButton_active : ''
+                          planType === 'monthly'
+                            ? styles.PricingCard__ToggleButton_active
+                            : ''
                         }`}
                         onClick={() => setPlanType('monthly')}
                       >
@@ -180,7 +223,9 @@ const Pricing = () => {
                       </button>
                       <button
                         className={`${styles.PricingCard__ToggleButton} ${
-                          planType === 'annual' ? styles.PricingCard__ToggleButton_active : ''
+                          planType === 'annual'
+                            ? styles.PricingCard__ToggleButton_active
+                            : ''
                         }`}
                         onClick={() => setPlanType('annual')}
                       >
@@ -188,7 +233,9 @@ const Pricing = () => {
                       </button>
                       <button
                         className={`${styles.PricingCard__ToggleButton} ${
-                          planType === 'onetime' ? styles.PricingCard__ToggleButton_active : ''
+                          planType === 'onetime'
+                            ? styles.PricingCard__ToggleButton_active
+                            : ''
                         }`}
                         onClick={() => setPlanType('onetime')}
                       >
@@ -201,7 +248,7 @@ const Pricing = () => {
                     </span>
                   )}
                 </div>
-                
+
                 <div className={styles.PricingCard__Header}>
                   <Heading as='h3' className={styles.PricingCard__Name}>
                     {plan.name}
@@ -220,7 +267,9 @@ const Pricing = () => {
                     </span>
                     {plan.period && (
                       <span className={styles.PricingCard__PricePeriod}>
-                        {plan.period === 'one-time' ? '/ one-time purchase' : `/${plan.period}`}
+                        {plan.period === 'one-time'
+                          ? '/ one-time purchase'
+                          : `/ ${plan.period}`}
                       </span>
                     )}
                   </div>
