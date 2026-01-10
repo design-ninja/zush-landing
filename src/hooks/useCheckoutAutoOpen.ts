@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-
-const PADDLE_PRICE_ID = import.meta.env.VITE_PADDLE_PRICE_ID;
+import { openPaddleCheckout } from '../utils/paddle';
 
 export const useCheckoutAutoOpen = () => {
   const location = useLocation();
@@ -12,24 +11,10 @@ export const useCheckoutAutoOpen = () => {
     const deviceId = params.get('device_id');
 
     if (checkout === 'pro') {
-      if (window.Paddle) {
-        setTimeout(() => {
-          const checkoutOptions: any = {
-            items: [{ priceId: PADDLE_PRICE_ID, quantity: 1 }],
-          };
-          
-          // Add device_id to custom data if provided
-          if (deviceId) {
-            checkoutOptions.customData = {
-              device_id: deviceId,
-            };
-          }
-          
-          window.Paddle.Checkout.open(checkoutOptions);
-        }, 500);
-      } else {
-        console.error('Paddle.js not loaded');
-      }
+      // Small delay to ensure Paddle.js is loaded
+      setTimeout(() => {
+        openPaddleCheckout(deviceId);
+      }, 500);
     }
   }, [location.search]);
 };

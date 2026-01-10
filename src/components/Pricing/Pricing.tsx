@@ -14,22 +14,10 @@ import Button from '../Button';
 import Heading from '../Heading';
 import Text from '../Text';
 import SectionHeader from '../SectionHeader';
+import { openPaddleCheckout } from '../../utils/paddle';
 import styles from './Pricing.module.scss';
 
-// Paddle Sandbox Price ID
-const PADDLE_PRICE_ID = import.meta.env.VITE_PADDLE_PRICE_ID;
 const DOWNLOAD_URL = 'https://github.com/design-ninja/zush/releases/latest/download/Zush.dmg';
-
-// Declare Paddle type for TypeScript
-declare global {
-  interface Window {
-    Paddle?: {
-      Checkout: {
-        open: (options: { items: { priceId: string; quantity: number }[] }) => void;
-      };
-    };
-  }
-}
 
 interface Feature {
   title: string;
@@ -86,22 +74,7 @@ const Pricing = () => {
 
   const handleButtonClick = (isPro: boolean) => {
     if (isPro) {
-      // Open Paddle checkout overlay
-      if (window.Paddle) {
-        const checkoutOptions: any = {
-          items: [{ priceId: PADDLE_PRICE_ID, quantity: 1 }],
-        };
-
-        if (deviceId) {
-          checkoutOptions.customData = {
-            device_id: deviceId
-          };
-        }
-
-        window.Paddle.Checkout.open(checkoutOptions);
-      } else {
-        console.error('Paddle.js not loaded');
-      }
+      openPaddleCheckout(deviceId);
     } else {
       window.open(DOWNLOAD_URL, '_blank');
     }
