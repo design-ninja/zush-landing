@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import {
   FolderPlus,
   Zap,
@@ -17,6 +18,10 @@ import SectionHeader from '../SectionHeader';
 import { openPaddleCheckout } from '../../utils/paddle';
 import { usePaddlePrice } from '../../hooks/usePaddlePrice';
 import styles from './Pricing.module.scss';
+
+const PADDLE_MONTHLY_PRICE_ID = import.meta.env.VITE_PADDLE_MONTHLY_PRICE_ID;
+const PADDLE_ANNUAL_PRICE_ID = import.meta.env.VITE_PADDLE_ANNUAL_PRICE_ID;
+const PADDLE_ONETIME_PRICE_ID = import.meta.env.VITE_PADDLE_ONETIME_PRICE_ID;
 
 const DOWNLOAD_URL =
   'https://github.com/design-ninja/zush/releases/latest/download/Zush.dmg';
@@ -42,7 +47,21 @@ const Pricing = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const deviceId = searchParams.get('device_id');
-  const { price: paddlePrice, loading: priceLoading } = usePaddlePrice();
+  const [planType, setPlanType] = useState<'monthly' | 'annual' | 'onetime'>('annual');
+  
+  const { price: monthlyPrice, loading: monthlyLoading } = usePaddlePrice(PADDLE_MONTHLY_PRICE_ID);
+  const { price: annualPrice, loading: annualLoading } = usePaddlePrice(PADDLE_ANNUAL_PRICE_ID);
+  const { price: onetimePrice, loading: onetimeLoading } = usePaddlePrice(PADDLE_ONETIME_PRICE_ID);
+  
+  const currentPrice = planType === 'monthly' ? monthlyPrice : planType === 'annual' ? annualPrice : onetimePrice;
+  const currentPriceLoading = planType === 'monthly' ? monthlyLoading : planType === 'annual' ? annualLoading : onetimeLoading;
+  const currentPriceId = planType === 'monthly' ? PADDLE_MONTHLY_PRICE_ID : planType === 'annual' ? PADDLE_ANNUAL_PRICE_ID : PADDLE_ONETIME_PRICE_ID;
+  const currentPeriod = planType === 'monthly' ? 'month' : planType === 'annual' ? 'year' : 'one-time';
+  
+  // Calculate discount for annual plan
+  const monthlyPriceNum = monthlyPrice ? parseFloat(monthlyPrice.replace('$', '')) : 4.99;
+  const annualPriceNum = annualPrice ? parseFloat(annualPrice.replace('$', '')) : 19.99;
+  const discountPercent = Math.round(((monthlyPriceNum * 12 - annualPriceNum) / (monthlyPriceNum * 12)) * 100);
 
   const plans: Plan[] = [
     {
@@ -76,8 +95,8 @@ const Pricing = () => {
     },
     {
       name: '🌟 PRO',
-      price: priceLoading ? '...' : paddlePrice || '$9.99',
-      period: 'one-time',
+      price: currentPriceLoading ? '...' : currentPrice || (planType === 'monthly' ? '$4.99' : planType === 'annual' ? '$19.99' : '$59.99'),
+      period: currentPeriod,
       description: 'Powerful AI features for power users',
       features: [
         {
@@ -101,7 +120,7 @@ const Pricing = () => {
           icon: FileCode,
         },
       ],
-      buttonText: 'Buy PRO Now 🌟',
+      buttonText: `Buy PRO Now 🌟`,
       isPro: true,
       highlight: true,
     },
@@ -109,7 +128,7 @@ const Pricing = () => {
 
   const handleButtonClick = (isPro: boolean) => {
     if (isPro) {
-      openPaddleCheckout(deviceId);
+      openPaddleCheckout(deviceId, currentPriceId);
     } else {
       window.open(DOWNLOAD_URL, '_blank');
     }
@@ -141,6 +160,41 @@ const Pricing = () => {
               }`}
               id={plan.isPro ? 'pro' : undefined}
             >
+              {plan.isPro && planType === 'annual' && (
+                <div className={styles.PricingCard__Badge}>
+                  Save {discountPercent}%
+                </div>
+              )}
+              
+              {plan.isPro && (
+                <div className={styles.PricingCard__Toggle}>
+                  <button
+                    className={`${styles.PricingCard__ToggleButton} ${
+                      planType === 'monthly' ? styles.PricingCard__ToggleButton_active : ''
+                    }`}
+                    onClick={() => setPlanType('monthly')}
+                  >
+                    Monthly
+                  </button>
+                  <button
+                    className={`${styles.PricingCard__ToggleButton} ${
+                      planType === 'annual' ? styles.PricingCard__ToggleButton_active : ''
+                    }`}
+                    onClick={() => setPlanType('annual')}
+                  >
+                    Annual
+                  </button>
+                  <button
+                    className={`${styles.PricingCard__ToggleButton} ${
+                      planType === 'onetime' ? styles.PricingCard__ToggleButton_active : ''
+                    }`}
+                    onClick={() => setPlanType('onetime')}
+                  >
+                    One-time
+                  </button>
+                </div>
+              )}
+              
               <div className={styles.PricingCard__Header}>
                 <Heading as='h3' className={styles.PricingCard__Name}>
                   {plan.name}
@@ -157,9 +211,11 @@ const Pricing = () => {
                   <span className={styles.PricingCard__PriceValue}>
                     {plan.price}
                   </span>
-                  <span className={styles.PricingCard__PricePeriod}>
-                    {plan.period}
-                  </span>
+                  {plan.period && (
+                    <span className={styles.PricingCard__PricePeriod}>
+                      {plan.period === 'one-time' ? '/ one-time purchase' : `/${plan.period}`}
+                    </span>
+                  )}
                 </div>
               </div>
 
