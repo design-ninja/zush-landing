@@ -15,6 +15,7 @@ import Heading from '../Heading';
 import Text from '../Text';
 import SectionHeader from '../SectionHeader';
 import { openPaddleCheckout } from '../../utils/paddle';
+import { usePaddlePrice } from '../../hooks/usePaddlePrice';
 import styles from './Pricing.module.scss';
 
 const DOWNLOAD_URL =
@@ -41,6 +42,7 @@ const Pricing = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const deviceId = searchParams.get('device_id');
+  const { price: paddlePrice, loading: priceLoading } = usePaddlePrice();
 
   const plans: Plan[] = [
     {
@@ -74,7 +76,7 @@ const Pricing = () => {
     },
     {
       name: '🌟 PRO',
-      price: '$9.99',
+      price: priceLoading ? '...' : paddlePrice || '$9.99',
       period: 'one-time',
       description: 'Powerful AI features for power users',
       features: [
