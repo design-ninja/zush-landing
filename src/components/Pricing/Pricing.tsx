@@ -166,56 +166,67 @@ const Pricing = () => {
                 </div>
               )}
               
-              {plan.isPro && (
+              <div className={styles.PricingCard__Top}>
                 <div className={styles.PricingCard__Toggle}>
-                  <button
-                    className={`${styles.PricingCard__ToggleButton} ${
-                      planType === 'monthly' ? styles.PricingCard__ToggleButton_active : ''
-                    }`}
-                    onClick={() => setPlanType('monthly')}
-                  >
-                    Monthly
-                  </button>
-                  <button
-                    className={`${styles.PricingCard__ToggleButton} ${
-                      planType === 'annual' ? styles.PricingCard__ToggleButton_active : ''
-                    }`}
-                    onClick={() => setPlanType('annual')}
-                  >
-                    Annual
-                  </button>
-                  <button
-                    className={`${styles.PricingCard__ToggleButton} ${
-                      planType === 'onetime' ? styles.PricingCard__ToggleButton_active : ''
-                    }`}
-                    onClick={() => setPlanType('onetime')}
-                  >
-                    One-time
-                  </button>
-                </div>
-              )}
-              
-              <div className={styles.PricingCard__Header}>
-                <Heading as='h3' className={styles.PricingCard__Name}>
-                  {plan.name}
-                </Heading>
-                <Text
-                  as='p'
-                  size='sm'
-                  color='subtle'
-                  className={styles.PricingCard__Description}
-                >
-                  {plan.description}
-                </Text>
-                <div className={styles.PricingCard__Price}>
-                  <span className={styles.PricingCard__PriceValue}>
-                    {plan.price}
-                  </span>
-                  {plan.period && (
-                    <span className={styles.PricingCard__PricePeriod}>
-                      {plan.period === 'one-time' ? '/ one-time purchase' : `/${plan.period}`}
-                    </span>
+                  {plan.isPro ? (
+                    <>
+                      <button
+                        className={`${styles.PricingCard__ToggleButton} ${
+                          planType === 'monthly' ? styles.PricingCard__ToggleButton_active : ''
+                        }`}
+                        onClick={() => setPlanType('monthly')}
+                      >
+                        Monthly
+                      </button>
+                      <button
+                        className={`${styles.PricingCard__ToggleButton} ${
+                          planType === 'annual' ? styles.PricingCard__ToggleButton_active : ''
+                        }`}
+                        onClick={() => setPlanType('annual')}
+                      >
+                        Annual
+                      </button>
+                      <button
+                        className={`${styles.PricingCard__ToggleButton} ${
+                          planType === 'onetime' ? styles.PricingCard__ToggleButton_active : ''
+                        }`}
+                        onClick={() => setPlanType('onetime')}
+                      >
+                        One-time
+                      </button>
+                    </>
+                  ) : (
+                    <button
+                      className={`${styles.PricingCard__ToggleButton} ${styles.PricingCard__ToggleButton_active}`}
+                      disabled
+                    >
+                      Forever
+                    </button>
                   )}
+                </div>
+                
+                <div className={styles.PricingCard__Header}>
+                  <Heading as='h3' className={styles.PricingCard__Name}>
+                    {plan.name}
+                  </Heading>
+                  <Text
+                    as='p'
+                    size='sm'
+                    color='subtle'
+                    className={styles.PricingCard__Description}
+                  >
+                    {plan.description}
+                  </Text>
+                  <div className={styles.PricingCard__Price}>
+                    <span className={styles.PricingCard__PriceValue}>
+                      {plan.price}
+                    </span>
+                    {plan.period && (
+                      <span className={styles.PricingCard__PricePeriod}>
+                        {plan.period === 'one-time' ? '/ one-time purchase' : `/${plan.period}`}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
 

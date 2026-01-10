@@ -20,6 +20,7 @@
         gap: 1.5rem;
         max-width: 56.25rem;
         margin: 0 auto;
+        align-items: start;
 
         @include mobile {
             grid-template-columns: 1fr;
@@ -47,8 +48,8 @@
     padding: 2rem;
     border: 1px solid var(--border);
     border-radius: $radius-xl;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
     position: relative;
     overflow: visible;
     scroll-margin-top: calc($navbar-height + 1.25rem);
@@ -93,6 +94,11 @@
         }
     }
 
+    &__Top {
+        display: flex;
+        flex-direction: column;
+    }
+
     &__Toggle {
         display: flex;
         gap: 0.5rem;
@@ -101,6 +107,7 @@
         padding: 0.25rem;
         border-radius: $radius-md;
         border: 1px solid var(--border);
+        min-height: 2.75rem;
     }
 
     &__ToggleButton {
@@ -116,8 +123,13 @@
         transition: all $transition-fast;
         font-family: $font-family;
 
-        &:hover {
+        &:hover:not(:disabled) {
             color: var(--foreground);
+        }
+
+        &:disabled {
+            cursor: default;
+            opacity: 1;
         }
 
         &_active {
@@ -129,6 +141,9 @@
 
     &__Header {
         margin-bottom: 1.5rem;
+        min-height: 10.5rem;
+        display: flex;
+        flex-direction: column;
     }
 
     &__Name {
