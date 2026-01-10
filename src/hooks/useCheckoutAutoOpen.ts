@@ -11,6 +11,12 @@ export const useCheckoutAutoOpen = () => {
     const deviceId = params.get('device_id');
 
     if (checkout === 'pro') {
+      // Scroll to pricing section
+      const pricingSection = document.getElementById('pricing');
+      if (pricingSection) {
+        pricingSection.scrollIntoView({ behavior: 'smooth' });
+      }
+
       // Small delay to ensure Paddle.js is loaded
       setTimeout(() => {
         openPaddleCheckout(deviceId);
