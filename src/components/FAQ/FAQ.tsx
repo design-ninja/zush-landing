@@ -49,8 +49,12 @@ const FAQ = () => {
       answer: "Zush supports all popular image formats: PNG, JPG, JPEG, WebP, GIF, BMP, TIFF, TIF, HEIC, and HEIF. We also support SVG vector graphics and PDF documents (the first page is analyzed for AI renaming)."
     },
     {
-      question: "How does Zush rename my files?",
-      answer: "Zush works by monitoring your selected folders. When you add new images or documents to a monitored folder, Zush automatically analyzes the content and suggests descriptive, meaningful names in real-time."
+      question: "How does folder monitoring work?",
+      answer: "Zush monitors your selected folders in the background. When you add new images or documents to a monitored folder, Zush automatically analyzes the content and renames files in real-time — no manual action required."
+    },
+    {
+      question: "What is Batch Rename?",
+      answer: "Batch Rename allows you to rename multiple files at once. Simply drag and drop a collection of images onto the Zush window, and all files will be analyzed and renamed in seconds. Perfect for organizing large collections of screenshots or photos."
     },
     {
       question: "Is my data secure?",
