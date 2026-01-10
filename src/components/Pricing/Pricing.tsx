@@ -196,12 +196,9 @@ const Pricing = () => {
                       </button>
                     </>
                   ) : (
-                    <button
-                      className={`${styles.PricingCard__ToggleButton} ${styles.PricingCard__ToggleButton_active}`}
-                      disabled
-                    >
+                    <span className={styles.PricingCard__ToggleLabel}>
                       Forever
-                    </button>
+                    </span>
                   )}
                 </div>
                 

@@ -139,6 +139,16 @@
         }
     }
 
+    &__ToggleLabel {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        color: var(--muted-foreground);
+        font-size: 0.875rem;
+        font-weight: 500;
+    }
+
     &__Header {
         margin-bottom: 1.5rem;
         min-height: 10.5rem;
