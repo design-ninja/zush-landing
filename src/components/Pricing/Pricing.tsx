@@ -53,11 +53,11 @@ const Pricing = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const deviceId = searchParams.get('device_id');
-  
-  console.log('[Pricing] URL info:', { 
-    search: location.search, 
+
+  console.log('[Pricing] URL info:', {
+    search: location.search,
     hash: location.hash,
-    deviceId 
+    deviceId,
   });
   const [planType, setPlanType] = useState<'monthly' | 'annual' | 'onetime'>(
     'annual'
@@ -277,7 +277,7 @@ const Pricing = () => {
                   {plan.period && (
                     <span className={styles.PricingCard__PricePeriod}>
                       {plan.period === 'one-time'
-                        ? '/ one-time purchase'
+                        ? '/ one-time'
                         : `/ ${plan.period}`}
                     </span>
                   )}
