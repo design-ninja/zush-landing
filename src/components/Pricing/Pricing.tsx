@@ -57,7 +57,7 @@ const Pricing = () => {
     'annual'
   );
 
-  const { config } = useRemoteConfig();
+  const { config, loading: configLoading } = useRemoteConfig();
   const { price: monthlyPrice, loading: monthlyLoading } = usePaddlePrice(
     PADDLE_MONTHLY_PRICE_ID
   );
@@ -112,7 +112,9 @@ const Pricing = () => {
       description: 'Basic organization for casual users',
       features: [
         {
-          title: `${formatNumber(config.free_tier_limit)} Renames`,
+          title: configLoading
+            ? '... Renames'
+            : `${formatNumber(config?.free_tier_limit ?? 0)} Renames`,
           desc: 'Monthly AI-powered renames',
           icon: Sparkles,
         },
@@ -142,7 +144,9 @@ const Pricing = () => {
       description: 'Powerful AI features for power users',
       features: [
         {
-          title: `${formatNumber(config.pro_monthly_limit)} Renames`,
+          title: configLoading
+            ? '... Renames'
+            : `${formatNumber(config?.pro_monthly_limit ?? 0)} Renames`,
           desc: 'Monthly AI-powered renames',
           icon: Sparkles,
         },

@@ -12,7 +12,7 @@ const DEFAULTS: RemoteConfig = {
 };
 
 export const useRemoteConfig = () => {
-  const [config, setConfig] = useState<RemoteConfig>(DEFAULTS);
+  const [config, setConfig] = useState<RemoteConfig | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
