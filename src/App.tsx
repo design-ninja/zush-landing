@@ -13,6 +13,7 @@ import Changelog from './components/Changelog';
 import ThankYou from './components/ThankYou';
 import Recover from './components/Recover';
 import Activate from './components/Activate';
+import ManageSubscription from './components/ManageSubscription';
 import NotFound from './components/NotFound/NotFound';
 import Footer from './components/Footer';
 import styles from './App.module.scss';
@@ -44,6 +45,7 @@ const AppContent = ({ theme, toggleTheme }: { theme: string; toggleTheme: () => 
             <Route path="/thank-you" element={<ThankYou />} />
             <Route path="/recover" element={<Recover />} />
             <Route path="/activate" element={<Activate />} />
+            <Route path="/manage-subscription" element={<ManageSubscription />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
