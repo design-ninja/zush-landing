@@ -110,6 +110,11 @@
         min-height: 2.75rem;
     }
 
+    &__ToggleSpacer {
+        margin-bottom: 1rem;
+        min-height: 2.75rem;
+    }
+
     &__ToggleButton {
         flex: 1;
         padding: 0.5rem 1rem;
@@ -123,10 +128,6 @@
         transition: all $transition-fast;
         font-family: $font-family;
 
-        &:hover:not(:disabled) {
-            color: var(--foreground);
-        }
-
         &:disabled {
             cursor: default;
             opacity: 1;
@@ -136,6 +137,10 @@
             background: var(--primary);
             color: var(--primary-foreground);
             box-shadow: $shadow-sm;
+
+            &:hover {
+                color: var(--primary-foreground);
+            }
         }
     }
 
@@ -150,8 +155,7 @@
     }
 
     &__Header {
-        margin-bottom: 1.5rem;
-        min-height: 10.5rem;
+        margin-bottom: 1rem;
         display: flex;
         flex-direction: column;
     }
@@ -161,10 +165,10 @@
     }
 
     &__Price {
-        margin-top: 1rem;
         display: flex;
         align-items: baseline;
         gap: 0.25rem;
+        margin-bottom: 1rem;
     }
 
     &__PriceValue {

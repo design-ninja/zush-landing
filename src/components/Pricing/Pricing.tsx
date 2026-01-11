@@ -15,6 +15,7 @@ import Button from '../Button';
 import Heading from '../Heading';
 import Text from '../Text';
 import SectionHeader from '../SectionHeader';
+import AppleIcon from '../AppleIcon';
 import { openPaddleCheckout } from '../../utils/paddle';
 import { usePaddlePrice } from '../../hooks/usePaddlePrice';
 import styles from './Pricing.module.scss';
@@ -93,13 +94,11 @@ const Pricing = () => {
   const annualPriceNum = annualPrice
     ? parseFloat(annualPrice.replace('$', ''))
     : 19.99;
-  const discountPercent = Math.round(
-    ((monthlyPriceNum * 12 - annualPriceNum) / (monthlyPriceNum * 12)) * 100
-  );
+  const discountAmount = monthlyPriceNum * 12 - annualPriceNum;
 
   const plans: Plan[] = [
     {
-      name: 'FREE',
+      name: 'Zush Free',
       price: '$0',
       description: 'Basic organization for casual users',
       features: [
@@ -128,7 +127,7 @@ const Pricing = () => {
       isPro: false,
     },
     {
-      name: '🌟 PRO',
+      name: 'Zush 🌟 PRO',
       price: currentPriceLoading
         ? '...'
         : currentPrice ||
@@ -203,52 +202,11 @@ const Pricing = () => {
             >
               {plan.isPro && planType === 'annual' && (
                 <div className={styles.PricingCard__Badge}>
-                  Save {discountPercent}%
+                  Save ${discountAmount.toFixed(2)}
                 </div>
               )}
 
               <div className={styles.PricingCard__Top}>
-                <div className={styles.PricingCard__Toggle}>
-                  {plan.isPro ? (
-                    <>
-                      <button
-                        className={`${styles.PricingCard__ToggleButton} ${
-                          planType === 'monthly'
-                            ? styles.PricingCard__ToggleButton_active
-                            : ''
-                        }`}
-                        onClick={() => setPlanType('monthly')}
-                      >
-                        Monthly
-                      </button>
-                      <button
-                        className={`${styles.PricingCard__ToggleButton} ${
-                          planType === 'annual'
-                            ? styles.PricingCard__ToggleButton_active
-                            : ''
-                        }`}
-                        onClick={() => setPlanType('annual')}
-                      >
-                        Annual
-                      </button>
-                      <button
-                        className={`${styles.PricingCard__ToggleButton} ${
-                          planType === 'onetime'
-                            ? styles.PricingCard__ToggleButton_active
-                            : ''
-                        }`}
-                        onClick={() => setPlanType('onetime')}
-                      >
-                        One-time
-                      </button>
-                    </>
-                  ) : (
-                    <span className={styles.PricingCard__ToggleLabel}>
-                      Forever
-                    </span>
-                  )}
-                </div>
-
                 <div className={styles.PricingCard__Header}>
                   <Heading as='h3' className={styles.PricingCard__Name}>
                     {plan.name}
@@ -261,18 +219,56 @@ const Pricing = () => {
                   >
                     {plan.description}
                   </Text>
-                  <div className={styles.PricingCard__Price}>
-                    <span className={styles.PricingCard__PriceValue}>
-                      {plan.price}
-                    </span>
-                    {plan.period && (
-                      <span className={styles.PricingCard__PricePeriod}>
-                        {plan.period === 'one-time'
-                          ? '/ one-time purchase'
-                          : `/ ${plan.period}`}
-                      </span>
-                    )}
+                </div>
+
+                {plan.isPro ? (
+                  <div className={styles.PricingCard__Toggle}>
+                    <button
+                      className={`${styles.PricingCard__ToggleButton} ${
+                        planType === 'monthly'
+                          ? styles.PricingCard__ToggleButton_active
+                          : ''
+                      }`}
+                      onClick={() => setPlanType('monthly')}
+                    >
+                      Monthly
+                    </button>
+                    <button
+                      className={`${styles.PricingCard__ToggleButton} ${
+                        planType === 'annual'
+                          ? styles.PricingCard__ToggleButton_active
+                          : ''
+                      }`}
+                      onClick={() => setPlanType('annual')}
+                    >
+                      Annual
+                    </button>
+                    <button
+                      className={`${styles.PricingCard__ToggleButton} ${
+                        planType === 'onetime'
+                          ? styles.PricingCard__ToggleButton_active
+                          : ''
+                      }`}
+                      onClick={() => setPlanType('onetime')}
+                    >
+                      One-time
+                    </button>
                   </div>
+                ) : (
+                  <div className={styles.PricingCard__ToggleSpacer}></div>
+                )}
+
+                <div className={styles.PricingCard__Price}>
+                  <span className={styles.PricingCard__PriceValue}>
+                    {plan.price}
+                  </span>
+                  {plan.period && (
+                    <span className={styles.PricingCard__PricePeriod}>
+                      {plan.period === 'one-time'
+                        ? '/ one-time purchase'
+                        : `/ ${plan.period}`}
+                    </span>
+                  )}
                 </div>
               </div>
 
@@ -298,6 +294,7 @@ const Pricing = () => {
                 variant={plan.isPro ? 'primary' : 'black'}
                 onClick={() => handleButtonClick(plan.isPro)}
               >
+                {!plan.isPro && <AppleIcon />}
                 {plan.buttonText}
               </Button>
             </motion.div>
