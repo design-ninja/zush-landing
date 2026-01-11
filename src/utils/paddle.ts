@@ -77,6 +77,10 @@ export function openPaddleCheckout(deviceId?: string | null, priceId?: string | 
     checkoutOptions.customData = {
       device_id: deviceId,
     };
+    // Store device_id for ThankYou page to know if auto-activation happened
+    sessionStorage.setItem('zush_checkout_device_id', deviceId);
+  } else {
+    sessionStorage.removeItem('zush_checkout_device_id');
   }
 
   console.log('[Paddle] Opening checkout with options:', checkoutOptions);
