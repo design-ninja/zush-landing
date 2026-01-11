@@ -18,6 +18,7 @@ import SectionHeader from '../SectionHeader';
 import AppleIcon from '../AppleIcon';
 import { openPaddleCheckout } from '../../utils/paddle';
 import { usePaddlePrice } from '../../hooks/usePaddlePrice';
+import { useRemoteConfig } from '../../hooks/useRemoteConfig';
 import styles from './Pricing.module.scss';
 
 const PADDLE_MONTHLY_PRICE_ID = import.meta.env.VITE_PADDLE_MONTHLY_PRICE_ID;
@@ -44,6 +45,10 @@ interface Plan {
   highlight?: boolean;
 }
 
+const formatNumber = (num: number): string => {
+  return num >= 1000 ? num.toLocaleString('en-US') : String(num);
+};
+
 const Pricing = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -52,6 +57,7 @@ const Pricing = () => {
     'annual'
   );
 
+  const { config } = useRemoteConfig();
   const { price: monthlyPrice, loading: monthlyLoading } = usePaddlePrice(
     PADDLE_MONTHLY_PRICE_ID
   );
@@ -87,14 +93,17 @@ const Pricing = () => {
       ? 'year'
       : 'one-time';
 
-  // Calculate discount for annual plan
+  // Calculate discount for annual plan (only when prices are loaded)
   const monthlyPriceNum = monthlyPrice
-    ? parseFloat(monthlyPrice.replace('$', ''))
-    : 4.99;
+    ? parseFloat(monthlyPrice.replace(/[^0-9.]/g, ''))
+    : null;
   const annualPriceNum = annualPrice
-    ? parseFloat(annualPrice.replace('$', ''))
-    : 19.99;
-  const discountAmount = monthlyPriceNum * 12 - annualPriceNum;
+    ? parseFloat(annualPrice.replace(/[^0-9.]/g, ''))
+    : null;
+  const discountAmount =
+    monthlyPriceNum && annualPriceNum
+      ? monthlyPriceNum * 12 - annualPriceNum
+      : null;
 
   const plans: Plan[] = [
     {
@@ -103,7 +112,7 @@ const Pricing = () => {
       description: 'Basic organization for casual users',
       features: [
         {
-          title: '50 Renames',
+          title: `${formatNumber(config.free_tier_limit)} Renames`,
           desc: 'Monthly AI-powered renames',
           icon: Sparkles,
         },
@@ -128,19 +137,12 @@ const Pricing = () => {
     },
     {
       name: 'Zush 🌟 PRO',
-      price: currentPriceLoading
-        ? '...'
-        : currentPrice ||
-          (planType === 'monthly'
-            ? '$4.99'
-            : planType === 'annual'
-            ? '$19.99'
-            : '$59.99'),
+      price: currentPriceLoading ? '...' : currentPrice || '...',
       period: currentPeriod,
       description: 'Powerful AI features for power users',
       features: [
         {
-          title: '5,000 Renames',
+          title: `${formatNumber(config.pro_monthly_limit)} Renames`,
           desc: 'Monthly AI-powered renames',
           icon: Sparkles,
         },
@@ -200,7 +202,7 @@ const Pricing = () => {
               }`}
               id={plan.isPro ? 'pro' : undefined}
             >
-              {plan.isPro && planType === 'annual' && (
+              {plan.isPro && planType === 'annual' && discountAmount && (
                 <div className={styles.PricingCard__Badge}>
                   Save ${discountAmount.toFixed(2)}
                 </div>

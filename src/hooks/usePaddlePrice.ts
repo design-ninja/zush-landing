@@ -9,7 +9,7 @@ export const usePaddlePrice = (priceId?: string | null) => {
 
   useEffect(() => {
     const finalPriceId = priceId || PADDLE_PRICE_ID;
-    
+
     if (!finalPriceId) {
       setLoading(false);
       return;

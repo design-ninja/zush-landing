@@ -1,5 +1,6 @@
+import { SUPABASE_URL } from './supabase';
+
 const PADDLE_PRICE_ID = import.meta.env.VITE_PADDLE_PRICE_ID;
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || 'https://sjzrgmvinyxjzvshfvjy.supabase.co';
 
 interface PaddleCheckoutOptions {
   items: { priceId: string; quantity: number }[];
@@ -30,11 +31,16 @@ declare global {
 export async function getPaddlePrice(priceId: string): Promise<PaddlePrice | null> {
   try {
     const response = await fetch(
-      `${SUPABASE_URL}/functions/v1/get-price?price_id=${encodeURIComponent(priceId)}`
+      `${SUPABASE_URL}/functions/v1/get-price?price_id=${encodeURIComponent(priceId)}`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
     );
 
     if (!response.ok) {
-      console.error('Failed to fetch price:', response.statusText);
+      console.error('Failed to fetch price:', response.status, response.statusText);
       return null;
     }
 
