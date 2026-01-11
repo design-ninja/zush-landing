@@ -53,6 +53,12 @@ const Pricing = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const deviceId = searchParams.get('device_id');
+  
+  console.log('[Pricing] URL info:', { 
+    search: location.search, 
+    hash: location.hash,
+    deviceId 
+  });
   const [planType, setPlanType] = useState<'monthly' | 'annual' | 'onetime'>(
     'annual'
   );

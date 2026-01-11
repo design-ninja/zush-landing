@@ -56,14 +56,16 @@ export async function getPaddlePrice(priceId: string): Promise<PaddlePrice | nul
  * Opens Paddle checkout overlay with optional device_id for auto-activation
  */
 export function openPaddleCheckout(deviceId?: string | null, priceId?: string | null): boolean {
+  console.log('[Paddle] openPaddleCheckout called:', { deviceId, priceId });
+  
   if (!window.Paddle) {
-    console.error('Paddle.js not loaded');
+    console.error('[Paddle] Paddle.js not loaded');
     return false;
   }
 
   const finalPriceId = priceId || PADDLE_PRICE_ID;
   if (!finalPriceId) {
-    console.error('Price ID not provided');
+    console.error('[Paddle] Price ID not provided');
     return false;
   }
 
@@ -77,6 +79,7 @@ export function openPaddleCheckout(deviceId?: string | null, priceId?: string | 
     };
   }
 
+  console.log('[Paddle] Opening checkout with options:', checkoutOptions);
   window.Paddle.Checkout.open(checkoutOptions);
   return true;
 }
