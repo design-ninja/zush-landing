@@ -63,11 +63,11 @@
 
     const paddleConfig = {
       token: paddleToken,
-      eventCallback: function(event) {
+      eventCallback: function (event) {
         // When checkout is completed successfully
         if (event.name === 'checkout.completed') {
           const email = event.data?.customer?.email || '';
-          
+
           // Let Paddle show success screen for 2.5 seconds, then redirect
           setTimeout(() => {
             window.location.href = `/thank-you?email=${encodeURIComponent(email)}`;
