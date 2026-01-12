@@ -74,7 +74,7 @@ const FAQ = () => {
     },
     {
       question: "Which AI model does the app use?",
-      answer: "We use state-of-the-art models from Google's Gemini family (specifically Gemini 3 Flash) to ensure high speed and incredible accuracy in recognizing objects in your photos."
+      answer: "We use state-of-the-art models from Groq (specifically Llama 4 Scout 17B) to ensure high speed and incredible accuracy in recognizing objects in your photos."
     },
     {
       question: "Does the app work offline?",
