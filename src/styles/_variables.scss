@@ -8,10 +8,10 @@ $card-foreground: oklch(0.15 0.015 265);
 $muted: oklch(0.98 0.003 265);
 $muted-foreground: oklch(0.45 0.01 274.5);
 
-$primary: oklch(0.5 0.22 280);
+$primary: oklch(0.5595 0.2296 279.31);
 $primary-foreground: oklch(1 0 0);
-$primary-hover: oklch(0.55 0.24 280);
-$primary-soft: oklch(0.5 0.22 280 / 0.1);
+$primary-hover: oklch(0.61 0.25 279.31);
+$primary-soft: oklch(0.5595 0.2296 279.31 / 0.1);
 
 $secondary: oklch(0 0 0);
 $secondary-foreground: oklch(1 0 0);
@@ -37,10 +37,10 @@ $dark-card-foreground: oklch(1 0 0);
 $dark-muted: oklch(0.2 0.01 285);
 $dark-muted-foreground: oklch(0.7 0.01 265);
 
-$dark-primary: oklch(0.55 0.24 280);
+$dark-primary: oklch(0.61 0.25 279.31);
 $dark-primary-foreground: oklch(1 0 0);
-$dark-primary-hover: oklch(0.6 0.26 280);
-$dark-primary-soft: oklch(0.55 0.24 280 / 0.1);
+$dark-primary-hover: oklch(0.66 0.27 279.31);
+$dark-primary-soft: oklch(0.61 0.25 279.31 / 0.1);
 
 $dark-secondary: oklch(0.2 0.01 285);
 $dark-secondary-foreground: oklch(1 0 0);
@@ -81,6 +81,6 @@ $transition-normal: 0.3s ease;
 $shadow-sm: 0 0.25rem 1rem oklch(0 0 0 / 0.02);
 $shadow-md: 0 0.625rem 1.875rem oklch(0 0 0 / 0.08);
 $shadow-lg: 0 1.25rem 3.125rem oklch(0 0 0 / 0.12);
-$shadow-primary: 0 0.9375rem 1.875rem oklch(0.5 0.22 280 / 0.15);
+$shadow-primary: 0 0.9375rem 1.875rem oklch(0.5595 0.2296 279.31 / 0.15);
 $shadow-glow: 0 0 0.9375rem var(--primary);
-$shadow-focus: 0 0 0 0.1875rem oklch(0.5 0.22 280 / 0.2);
+$shadow-focus: 0 0 0 0.1875rem oklch(0.5595 0.2296 279.31 / 0.2);
