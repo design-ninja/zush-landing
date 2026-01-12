@@ -57,20 +57,31 @@
       Paddle.Environment.set('sandbox');
     }
 
-    Paddle.Initialize({
+    // Get email from URL if available (for Paddle Retain integration)
+    const urlParams = new URLSearchParams(window.location.search);
+    const customerEmail = urlParams.get('email');
+
+    const paddleConfig = {
       token: paddleToken,
       eventCallback: function(event) {
         // When checkout is completed successfully
         if (event.name === 'checkout.completed') {
-          const customerEmail = event.data?.customer?.email || '';
+          const email = event.data?.customer?.email || '';
           
           // Let Paddle show success screen for 2.5 seconds, then redirect
           setTimeout(() => {
-            window.location.href = `/thank-you?email=${encodeURIComponent(customerEmail)}`;
+            window.location.href = `/thank-you?email=${encodeURIComponent(email)}`;
           }, 2500);
         }
       }
-    });
+    };
+
+    // Add pwCustomer for Paddle Retain if email is known
+    if (customerEmail) {
+      paddleConfig.pwCustomer = { email: customerEmail };
+    }
+
+    Paddle.Initialize(paddleConfig);
   </script>
 </head>
 
