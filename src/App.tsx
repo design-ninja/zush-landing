@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { memo } from 'react';
-import { Analytics } from '@vercel/analytics/react';
 import { useTheme } from './hooks/useTheme';
 import { useCheckoutAutoOpen } from './hooks/useCheckoutAutoOpen';
 import ScrollToTop from './components/ScrollToTop';
@@ -62,7 +61,6 @@ function App() {
   return (
     <Router>
       <AppContent theme={theme} toggleTheme={toggleTheme} />
-      <Analytics />
     </Router>
   );
 }
