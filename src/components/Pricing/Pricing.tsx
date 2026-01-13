@@ -17,17 +17,17 @@ import Heading from '../Heading';
 import Text from '../Text';
 import SectionHeader from '../SectionHeader';
 import AppleIcon from '../AppleIcon';
-import { openPaddleCheckout } from '../../utils/paddle';
-import { usePaddlePrice } from '../../hooks/usePaddlePrice';
-import { useRemoteConfig } from '../../hooks/useRemoteConfig';
+import MobileDownloadModal from '../MobileDownloadModal';
+import { openPaddleCheckout } from '@/utils/paddle';
+import { usePaddlePrice } from '@/hooks/usePaddlePrice';
+import { useRemoteConfig } from '@/hooks/useRemoteConfig';
+import { useIsMobile } from '@/hooks/useIsMobile';
+import { DOWNLOAD_URL } from '@/constants';
 import styles from './Pricing.module.scss';
 
 const PADDLE_MONTHLY_PRICE_ID = import.meta.env.VITE_PADDLE_MONTHLY_PRICE_ID;
 const PADDLE_ANNUAL_PRICE_ID = import.meta.env.VITE_PADDLE_ANNUAL_PRICE_ID;
 const PADDLE_ONETIME_PRICE_ID = import.meta.env.VITE_PADDLE_ONETIME_PRICE_ID;
-
-const DOWNLOAD_URL =
-  'https://github.com/design-ninja/zush/releases/latest/download/Zush.dmg';
 
 interface Feature {
   title: string;
@@ -54,6 +54,8 @@ const Pricing = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const deviceId = searchParams.get('device_id');
+  const isMobile = useIsMobile();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   console.log('[Pricing] URL info:', {
     search: location.search,
@@ -192,6 +194,8 @@ const Pricing = () => {
   const handleButtonClick = (isPro: boolean) => {
     if (isPro) {
       openPaddleCheckout(deviceId, currentPriceId);
+    } else if (isMobile) {
+      setIsModalOpen(true);
     } else {
       window.open(DOWNLOAD_URL, '_blank');
     }
@@ -334,6 +338,11 @@ const Pricing = () => {
           Secure payment via Paddle. All local taxes included.
         </Text>
       </div>
+
+      <MobileDownloadModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 };

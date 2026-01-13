@@ -1,6 +1,7 @@
 import { Sun, Moon } from 'lucide-react';
 import Logo from '../Logo';
 import Button from '../Button';
+import { DOWNLOAD_URL } from '@/constants';
 import styles from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -26,7 +27,7 @@ const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
             </Button>
             <Button 
               as="a" 
-              href="https://zushapp.com/releases/Zush.dmg" 
+              href={DOWNLOAD_URL} 
               variant="black"
               size="sm"
               className={styles.Navbar__DownloadBtn}

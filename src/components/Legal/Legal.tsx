@@ -3,9 +3,9 @@ import ReactMarkdown from 'react-markdown';
 import styles from './Legal.module.scss';
 import Button from '../Button';
 
-import tosContent from '../../content/tos.md?raw';
-import privacyContent from '../../content/privacy.md?raw';
-import refundContent from '../../content/refund.md?raw';
+import tosContent from '@/content/tos.md?raw';
+import privacyContent from '@/content/privacy.md?raw';
+import refundContent from '@/content/refund.md?raw';
 
 interface LegalProps {
   type: 'tos' | 'privacy' | 'refund';

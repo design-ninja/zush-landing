@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CreditCard, CheckCircle, ArrowLeft, ExternalLink } from 'lucide-react';
 import Button from '../Button';
-import { SUPABASE_URL } from '../../utils/supabase';
+import { SUPABASE_URL } from '@/utils/supabase';
 import styles from './ManageSubscription.module.scss';
 
 const ManageSubscription = () => {

@@ -1,4 +1,23 @@
 @use 'variables' as *;
+@use 'breakpoints' as *;
+
+@mixin mobile {
+    @media (max-width: $breakpoint-md) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (max-width: $breakpoint-lg) {
+        @content;
+    }
+}
+
+@mixin small {
+    @media (max-width: $breakpoint-sm) {
+        @content;
+    }
+}
 
 @mixin glass-morphism {
     background: var(--glass);
@@ -21,12 +40,6 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-@mixin mobile {
-    @media (max-width: 768px) {
-        @content;
-    }
 }
 
 @mixin shadow($type: 'md') {

@@ -6,7 +6,7 @@ import Heading from '../Heading';
 import Text from '../Text';
 import SectionHeader from '../SectionHeader';
 import styles from './Changelog.module.scss';
-import changelogPath from '../../content/changelog.md?url';
+import changelogPath from '@/content/changelog.md?url';
 
 interface ReleaseItem {
     version: string;

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Heading from '../Heading';
 import Text from '../Text';
+import { SUPPORT_EMAIL } from '@/constants';
 import styles from './Footer.module.scss';
 
 const Footer = () => {
@@ -35,7 +36,7 @@ const Footer = () => {
         <div className={styles.Footer__Bottom}>
           <Text color="subtle">© 2026 <a href="https://lirik.pro/en" target="_blank" rel="noopener noreferrer">lirik</a>. All rights reserved</Text>
           <div className={styles.Footer__BottomLinks}>
-            <a href="mailto:support@zushapp.com">Contact Support</a>
+            <a href={`mailto:${SUPPORT_EMAIL}`}>Contact Support</a>
           </div>
         </div>
       </div>

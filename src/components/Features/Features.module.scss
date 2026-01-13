@@ -20,11 +20,11 @@
     gap: 1.5rem;
     margin-top: 3rem;
 
-    @media (max-width: 960px) {
+    @include tablet {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    @media (max-width: 640px) {
+    @include small {
         grid-template-columns: 1fr;
         grid-auto-rows: auto;
     }

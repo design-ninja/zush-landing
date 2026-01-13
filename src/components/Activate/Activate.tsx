@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { ExternalLink, AlertCircle, Download } from 'lucide-react';
 import Button from '../Button';
+import { DOWNLOAD_URL } from '@/constants';
 import styles from './Activate.module.scss';
 
 const Activate = () => {
@@ -82,7 +83,7 @@ const Activate = () => {
           <p>Don't have Zush installed?</p>
           <Button 
             as="a"
-            href="https://github.com/design-ninja/zush/releases/latest/download/Zush.dmg"
+            href={DOWNLOAD_URL}
             variant="ghost"
             size="md"
           >
