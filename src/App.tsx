@@ -6,6 +6,7 @@ import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Features from './components/Features';
+import UseCases from './components/UseCases';
 import Pricing from './components/Pricing';
 import FAQ from './components/FAQ';
 import Legal from './components/Legal';
@@ -22,6 +23,7 @@ const MainContent = memo(() => (
   <>
     <Hero />
     <Features />
+    <UseCases />
     <Pricing />
     <FAQ />
   </>

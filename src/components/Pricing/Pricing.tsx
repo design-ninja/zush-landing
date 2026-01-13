@@ -8,6 +8,7 @@ import {
   Folder,
   Tag,
   FileText,
+  Globe,
   LucideIcon,
 } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
@@ -139,6 +140,11 @@ const Pricing = () => {
           desc: 'Use standard naming variables',
           icon: FileText,
         },
+        {
+          title: 'English language only',
+          desc: 'Generate file names in English',
+          icon: Globe,
+        },
       ],
       buttonText: 'Download Free',
       isPro: false,
@@ -170,6 +176,11 @@ const Pricing = () => {
           title: 'Custom Naming Pattern',
           desc: 'Create your own file naming pattern with variables',
           icon: FileCode,
+        },
+        {
+          title: 'Multi-language Support',
+          desc: 'Generate file names in 70+ languages',
+          icon: Globe,
         },
       ],
       buttonText: `Buy PRO Now 🌟`,
@@ -288,7 +299,7 @@ const Pricing = () => {
                 {plan.features.map((feature, i) => (
                   <div key={i} className={styles.PricingCard__Feature}>
                     <div className={styles.PricingCard__FeatureIcon}>
-                      <feature.icon size={22} />
+                      <feature.icon size={24} />
                     </div>
                     <div>
                       <div className={styles.PricingCard__FeatureTitle}>

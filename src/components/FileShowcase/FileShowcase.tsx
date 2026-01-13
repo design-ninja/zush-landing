@@ -50,7 +50,7 @@ const slides: Slide[] = [
   {
     files: [
       {
-        before: 'DSC_9921.RAW',
+        before: 'DSC_9921.jpg',
         after: 'mountainpeak.jpg',
         img: '/images/examples/mountain.jpg',
       },

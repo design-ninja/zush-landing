@@ -32,6 +32,22 @@
     --success-foreground: #{$success-foreground};
     --destructive: #{$destructive};
     --destructive-foreground: #{$destructive-foreground};
+
+    // Case hues
+    --h-purple: #{$h-purple};
+    --h-blue: #{$h-blue};
+    --h-green: #{$h-green};
+    --h-orange: #{$h-orange};
+    --h-pink: #{$h-pink};
+    --h-cyan: #{$h-cyan};
+
+    // Functional pastel generation
+    --case-bg-l: 0.97;
+    --case-bg-c: 0.015;
+    --case-icon-bg-l: 0.92;
+    --case-icon-bg-c: 0.04;
+    --case-icon-l: 0.55;
+    --case-icon-c: 0.12;
 }
 
 [data-theme='dark'] {
@@ -62,4 +78,12 @@
     --success-foreground: #{$dark-success-foreground};
     --destructive: #{$dark-destructive};
     --destructive-foreground: #{$dark-destructive-foreground};
+
+    // Dark mode functional pastel generation
+    --case-bg-l: 0.22;
+    --case-bg-c: 0.02;
+    --case-icon-bg-l: 0.28;
+    --case-icon-bg-c: 0.04;
+    --case-icon-l: 0.85;
+    --case-icon-c: 0.08;
 }
