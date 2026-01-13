@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.9.0] - 2026-01-13
+### Added
+- 🎉 Added Groq provider support for enhanced AI processing
+- 🖼️ Added image thumbnail previews in file list items
+- 📦 Added DMG build scripts with customizable options
+- 🔑 Added dock icon visibility preference with settings management
+- 🔑 Implemented magic link functionality for account activation
+- 🔔 Added subscription management feature with Paddle integration
+- 📂 Added folders monitoring toggle in settings
+- 🌐 Added offline mode handling with network status monitoring
+- 💎 Added comprehensive code quality review checklist
+
+### Improved  
+- ⚡ Improved file handling with drag & drop and custom scheme URLs
+- ⚡ Improved file handling and processing efficiency
+- ⚡ Optimized license status fetching with caching
+- ⚡ Improved auto-activation logic and subscription status handling
+- ⚡ Streamlined file processing logic and enhanced error handling
+- ⚡ Optimized file processing by skipping hidden files early
+- ⚡ Enhanced application initialization logging and file watcher management
+- ⚡ Improved usage info logging for pro status and limits
+- ⚡ Force refresh remote config on app launch
+
+### Fixed
+- 🐛 Prevent duplicate observer subscriptions
+- 🐛 Enhanced subscription status handling in Paddle webhook
+- 🐛 Updated checkout URL to new pricing page
+
 ## [0.8.0] - 2024-01-09
 ### Added
 - 🎉 Added SVG, PDF, and TIF file format support

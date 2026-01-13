@@ -6,13 +6,27 @@
         <description>Zush app updates</description>
         <language>en</language>
         <item>
+            <title>0.9.0</title>
+            <pubDate>Tue, 13 Jan 2026 12:19:19 +0700</pubDate>
+            <sparkle:version>9</sparkle:version>
+            <sparkle:shortVersionString>0.9.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<h2>What's New in 0.9.0</h2><ul></ul><p><strong>Added</strong></p><ul><li>🎉 Added Groq provider support for enhanced AI processing</li><li>🖼️ Added image thumbnail previews in file list items</li><li>📦 Added DMG build scripts with customizable options</li><li>🔑 Added dock icon visibility preference with settings management</li><li>🔑 Implemented magic link functionality for account activation</li><li>🔔 Added subscription management feature with Paddle integration</li><li>📂 Added folders monitoring toggle in settings</li><li>🌐 Added offline mode handling with network status monitoring</li><li>💎 Added comprehensive code quality review checklist</li></ul><p><strong>Improved  </strong></p><ul><li>⚡ Improved file handling with drag & drop and custom scheme URLs</li><li>⚡ Improved file handling and processing efficiency</li><li>⚡ Optimized license status fetching with caching</li><li>⚡ Improved auto-activation logic and subscription status handling</li><li>⚡ Streamlined file processing logic and enhanced error handling</li><li>⚡ Optimized file processing by skipping hidden files early</li><li>⚡ Enhanced application initialization logging and file watcher management</li><li>⚡ Improved usage info logging for pro status and limits</li><li>⚡ Force refresh remote config on app launch</li></ul><p><strong>Fixed</strong></p><ul><li>🐛 Prevent duplicate observer subscriptions</li><li>🐛 Enhanced subscription status handling in Paddle webhook</li><li>🐛 Updated checkout URL to new pricing page</li></ul>
+]]></description>
+            <enclosure url="https://zushapp.com/releases/Zush-0.9.0.dmg" length="7492402" type="application/octet-stream" sparkle:edSignature="CWVIz6gpWPTEkd2ih+6qr6tr65Kznuy9FikOU9CMo+dJXzNUymwOuMOdFHckpPJLc4QpArGe7P8eqQOokuy0Dg=="/>
+            <sparkle:deltas>
+                <enclosure url="https://zushapp.com/releases/Zush9-8.delta" sparkle:deltaFrom="8" length="661270" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="1mgez8GThu83UGxjQeYB6vlXe8AC8VlcxzEuTgO5apcsFNYhjLLNefcS9qUCKNhf3nl5kIrif7l9/3zEZZ1UDw=="/>
+                <enclosure url="https://zushapp.com/releases/Zush9-7.delta" sparkle:deltaFrom="7" length="874178" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="KhhQRauJgu4HPVYUGwQhD2BO8Yo1FuyeovtjX9R4JWSqxzg7uuzPHdb6xxMnzbWUch4cDBWkjbuKqxtAL45cCQ=="/>
+                <enclosure url="https://zushapp.com/releases/Zush9-6.delta" sparkle:deltaFrom="6" length="964306" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="UH/oWb30zsnPJ7ggEbrS7H3RBXOPCNijncb/nr7mHvwSP8rs14v8SnktAlgb42v5gZsiiwQcllSmezIDSRSoDQ=="/>
+                <enclosure url="https://zushapp.com/releases/Zush9-5.delta" sparkle:deltaFrom="5" length="973474" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="k1LYCMxsokiWvPM+0dTAl2QCbNuGoOnCWZTHtDEvz3rHmSGlYkoH0Vai6oqMb/p7RSIkD851fUWV9gCgIm58AQ=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>0.8.0</title>
             <pubDate>Fri, 09 Jan 2026 20:24:01 +0700</pubDate>
             <sparkle:version>8</sparkle:version>
             <sparkle:shortVersionString>0.8.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<h2>What's New in 0.8.0</h2><ul></ul><p><strong>Added</strong></p><ul><li>🎉 Added SVG, PDF, and TIF file format support</li><li>🚀 Implemented activity tab with undo functionality</li><li>📦 Added chunked processing for batch rename</li><li>🖼️ Added analyzing text to batch rename items</li><li>🔑 Added dry-run support to release script</li></ul><p><strong>Improved  </strong></p><ul><li>⚡ Refactored about tab and updated naming pattern variables</li><li>⚡ Refined activity and batch rename UI</li><li>⚡ Simplified menu bar usage view with tier name and counter</li><li>⚡ Show settings window on launch and dock click</li><li>⚡ Unified file list items with shared FileListItemView component</li></ul><p><strong>Fixed</strong></p><ul><li>🐛 Added white background for SVG and PDF rendering to JPEG</li><li>🐛 Prevented file re-processing after undo</li><li>🐛 Fixed batch rename limit</li><li>🐛 Fixed open panel permissions on welcome screen</li></ul>
-]]></description>
             <enclosure url="https://zushapp.com/releases/Zush-0.8.0.dmg" length="7795986" type="application/octet-stream" sparkle:edSignature="UPKHiBrHifN3rnf9ufcRFyskECcq5ugOrP8w+xFN988kOLBEg+FF5LQ+zEjRBIUq1WEU+Fe+W+ZCSnzsHJUPDw=="/>
             <sparkle:deltas>
                 <enclosure url="https://zushapp.com/releases/Zush8-7.delta" sparkle:deltaFrom="7" length="731590" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="hqX+3XByzQ/xuNAy3Gplt3eZv2JWfFhYTvE59nAKR61S0EoJ3HS6BN4+Fo4lf/rTKz+yqFHZGrVIuVc8XmUqAw=="/>
@@ -30,17 +44,6 @@
             <sparkle:deltas>
                 <enclosure url="https://zushapp.com/releases/Zush7-6.delta" sparkle:deltaFrom="6" length="645762" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="SVpFY4y/FzHbeGcmJtQTG0ihl2NQ+dIeNt5JWmi42eqBgPdsDesVuu+KIxSZk0NNsb6AGhvMrkqbI92QMQ7oBQ=="/>
                 <enclosure url="https://zushapp.com/releases/Zush7-5.delta" sparkle:deltaFrom="5" length="672922" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="18XYTOaWe706VLYxSyPeXOnKBCFijy4Fnaky7FYKRgJNf3tZGkGRAahwLT+FASmd+oPZGnuvz+uT2Xixbfj8Bg=="/>
-            </sparkle:deltas>
-        </item>
-        <item>
-            <title>0.6.0</title>
-            <pubDate>Mon, 05 Jan 2026 20:27:10 +0700</pubDate>
-            <sparkle:version>6</sparkle:version>
-            <sparkle:shortVersionString>0.6.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://zushapp.com/releases/Zush-0.6.0.dmg" length="7566691" type="application/octet-stream" sparkle:edSignature="wMrI3An9SlaQEhZhVcGljbr+xYRHePhmADas+djnG1rJMjh9KTGmflLI9lw3y2FCckg8DBpZTLBy7UfDZV3HAA=="/>
-            <sparkle:deltas>
-                <enclosure url="https://zushapp.com/releases/Zush6-5.delta" sparkle:deltaFrom="5" length="428402" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="66VGkNsKFztrsdKwlLufxZztmesFe9aLkcYtax938MceKaNJ2sjLndxsoNBLKsT14wGOg0OHAisx7vmGynGaDQ=="/>
             </sparkle:deltas>
         </item>
     </channel>
