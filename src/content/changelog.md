@@ -1,5 +1,38 @@
 # Changelog
 
+## [1.0.0] - 2026-01-13
+### Added
+- 🎉 Implemented folder monitoring with a new Monitor tab
+- 🚀 Added Groq provider support for AI image analysis
+- ✨ Introduced image thumbnail previews in file lists
+- 📦 Added DMG build scripts with customizable options
+- 🔔 Added dock icon visibility preference in settings
+- 🔑 Implemented magic link functionality for user authentication
+- 🖼️ Added output language setting for AI-generated file names
+- 📂 Added drag & drop and custom scheme URL support for files
+- 💎 Added subscription management feature with Paddle integration
+- 🆕 Added initial Supabase Edge Functions for image analysis
+
+### Improved  
+- ⚡ Enhanced batch renaming with analysis and progress tracking
+- ⚡ Improved file handling and processing efficiency
+- ⚡ Optimized license status fetching with caching
+- ⚡ Enhanced auto-activation logic with purchase checks
+- ⚡ Streamlined file processing logic and error handling
+- ⚡ Improved usage info logging with pro status handling
+- ⚡ Enhanced application initialization logging
+- ⚡ Added pause functionality and status bar icon handling
+- 🎨 Improved UI components for language selection and Pro features
+- 🎨 Streamlined email variable handling in activation emails
+- 📈 Force refresh remote config on app launch
+
+### Fixed
+- 🐛 Prevented duplicate observer subscriptions
+- 🐛 Improved subscription status handling in Paddle webhook
+- 🔧 Updated checkout URL to include pricing hash
+- 🔧 Fixed magic link RLS performance
+- 🛡️ Optimized file processing by skipping hidden files early
+
 ## [0.9.0] - 2026-01-13
 ### Added
 - 🎉 Added Groq provider support for enhanced AI processing
