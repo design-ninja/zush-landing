@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1] - 2026-01-14
+### Added
+- 🔑 Added entitlements for enhanced app security
+
+### Improved  
+- ⚡ Enhanced release script for code signing and notarization
+
 ## [1.0.0] - 2026-01-13
 ### Added
 - 🎉 Implemented folder monitoring with a new Monitor tab
