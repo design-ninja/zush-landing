@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.0] - 2026-01-16
+### Added
+- 🎉 Implemented batch file processing limits with alerts
+- 🖼️ Added unit tests for core services, enhancing reliability
+- 🔑 Added notarization support to release script for security
+
+### Improved  
+- ⚡ Optimized image loading and thumbnail generation for better quality
+- 🎨 Updated rename text field with hover and focus styling
+- ✏️ Updated Spotlight feature descriptions to use 'metadata'
+
+### Fixed
+- 🐛 Fixed code signing and notarization issues in release script
+
 ## [1.0.1] - 2026-01-14
 ### Added
 - 🔑 Added entitlements for enhanced app security
