@@ -171,7 +171,7 @@ const Pricing = () => {
         },
         {
           title: 'Smart Metadata',
-          desc: 'Automatically add Finder tags and Spotlight comments',
+          desc: 'Automatically add Finder tags and Spotlight metadata',
           icon: Zap,
         },
         {

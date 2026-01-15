@@ -210,7 +210,7 @@ const Features = () => {
           {/* Item 5: Smart Metadata */}
           <BentoCard
             title='Smart Metadata'
-            description='Automatically add Finder tags and Spotlight comments. Find files instantly with natural search queries.'
+            description='Automatically add Finder tags and Spotlight metadata. Find files instantly with natural search queries.'
             icon={Tag}
             delay={0.5}
           >
