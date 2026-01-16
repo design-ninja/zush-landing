@@ -57,7 +57,8 @@ const FAQ = () => {
   const supportsPdf = imageExtensions.includes('pdf');
   const formattedExtensions = baseExtensions.map(formatExtension).join(', ');
   const freeTierLimit = formatNumber(config.free_tier_limit);
-  const proMonthlyLimit = formatNumber(config.pro_monthly_limit);
+  const proMonthlyLimitMin = formatNumber(config.pro_monthly_limit_monthly);
+  const proMonthlyLimitMax = formatNumber(config.pro_monthly_limit_one_time);
   const aiProvider = config.ai_provider;
   const aiModel = config.ai_model;
   const refundPeriodDays = config.refund_period_days;
@@ -110,7 +111,7 @@ const FAQ = () => {
     {
       question: 'How many renames are included in the free tier?',
       answer:
-        `The free tier includes ${freeTierLimit} AI-powered renames. This is enough to experience the magic of Zush first-hand. The PRO plan includes ${proMonthlyLimit} renames per month.`,
+        `The free tier includes ${freeTierLimit} AI-powered renames. This is enough to experience the magic of Zush first-hand. PRO plans include ${proMonthlyLimitMin}-${proMonthlyLimitMax} renames per month depending on the plan.`,
     },
     {
       question: 'Which operating systems are supported?',

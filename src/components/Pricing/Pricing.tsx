@@ -63,7 +63,7 @@ const Pricing = () => {
     deviceId,
   });
   const [planType, setPlanType] = useState<'monthly' | 'annual' | 'onetime'>(
-    'annual'
+    'monthly'
   );
 
   const { config, loading: configLoading } = useRemoteConfig();
@@ -101,6 +101,13 @@ const Pricing = () => {
       : planType === 'annual'
       ? 'year'
       : 'one-time';
+
+  const proMonthlyLimit =
+    planType === 'monthly'
+      ? config?.pro_monthly_limit_monthly ?? 0
+      : planType === 'annual'
+      ? config?.pro_monthly_limit_annual ?? 0
+      : config?.pro_monthly_limit_one_time ?? 0;
 
   // Calculate discount for annual plan (only when prices are loaded)
   const monthlyPriceNum = monthlyPrice
@@ -160,7 +167,7 @@ const Pricing = () => {
         {
           title: configLoading
             ? '... Renames'
-            : `${formatNumber(config?.pro_monthly_limit ?? 0)} Renames`,
+            : `${formatNumber(proMonthlyLimit)} Renames`,
           desc: 'Monthly AI-powered renames',
           icon: Sparkles,
         },

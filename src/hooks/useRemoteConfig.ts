@@ -4,6 +4,9 @@ import { SUPABASE_URL } from '../utils/supabase';
 interface RemoteConfig {
   free_tier_limit: number;
   pro_monthly_limit: number;
+  pro_monthly_limit_monthly: number;
+  pro_monthly_limit_annual: number;
+  pro_monthly_limit_one_time: number;
   pro_daily_limit: number;
   image_extensions: string[];
   ai_provider: string;
@@ -15,7 +18,10 @@ interface RemoteConfig {
 
 const DEFAULTS: RemoteConfig = {
   free_tier_limit: 30,
-  pro_monthly_limit: 5000,
+  pro_monthly_limit: 10000,
+  pro_monthly_limit_monthly: 1000,
+  pro_monthly_limit_annual: 5000,
+  pro_monthly_limit_one_time: 10000,
   pro_daily_limit: 5000,
   image_extensions: [
     'png',
@@ -59,6 +65,14 @@ export const useRemoteConfig = () => {
           free_tier_limit: data.free_tier_limit ?? DEFAULTS.free_tier_limit,
           pro_monthly_limit:
             data.pro_monthly_limit ?? DEFAULTS.pro_monthly_limit,
+          pro_monthly_limit_monthly:
+            data.pro_monthly_limit_monthly ??
+            DEFAULTS.pro_monthly_limit_monthly,
+          pro_monthly_limit_annual:
+            data.pro_monthly_limit_annual ?? DEFAULTS.pro_monthly_limit_annual,
+          pro_monthly_limit_one_time:
+            data.pro_monthly_limit_one_time ??
+            DEFAULTS.pro_monthly_limit_one_time,
           pro_daily_limit: data.pro_daily_limit ?? DEFAULTS.pro_daily_limit,
           image_extensions: Array.isArray(data.image_extensions)
             ? data.image_extensions
