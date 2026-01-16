@@ -6,13 +6,28 @@
         <description>Zush app updates</description>
         <language>en</language>
         <item>
+            <title>1.2.0</title>
+            <pubDate>Fri, 16 Jan 2026 16:15:50 +0700</pubDate>
+            <sparkle:version>13</sparkle:version>
+            <sparkle:shortVersionString>1.2.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<h2>What's New in 1.2.0</h2><ul></ul><p><strong>Added</strong></p><ul><li>🖼️ Added support for RAW image formats</li><li>💬 Added Canny feedback link in About Tab and update tab's design</li></ul><p><strong>Improved  </strong></p><ul><li>⚡ Improved batch image analysis with individual processing</li><li>⚡ Enhanced batch analysis with timestamps and progress tracking</li><li>⚡ Improved AI service error handling with localized descriptions</li></ul><p><strong>Fixed</strong></p><ul><li>🐛 Fixed deployment on build failure in release script</li></ul>
+]]></description>
+            <enclosure url="https://zushapp.com/releases/Zush-1.2.0.dmg" length="7717710" type="application/octet-stream" sparkle:edSignature="M8+vzsBuMFYByGrU+2uhdlNSeyqDiHoofFOiIMc3R9ZS01DTJJ2b9ivOjI3zYl6XkiGVZCv0Yior331Kv/VEDg=="/>
+            <sparkle:deltas>
+                <enclosure url="https://zushapp.com/releases/Zush13-12.delta" sparkle:deltaFrom="12" length="633478" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860528" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="Gev2Tx6hNU+yM2pwyVF0EJ2t45RCJnur2hDn3nLLnsQsEP2MWOrzZcO7/U9l8NkCXyhjrqsGW5Q5BJd6vTlxBA=="/>
+                <enclosure url="https://zushapp.com/releases/Zush13-11.delta" sparkle:deltaFrom="11" length="736430" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860528" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="AcgEZ9ZU8u2kaaiAhVIpTmCywlmoWjI/NFL82gCKS22MxGQEi/Zome3Bmps7HeeTiSyCkY3eF33ex2GRM2LaAg=="/>
+                <enclosure url="https://zushapp.com/releases/Zush13-10.delta" sparkle:deltaFrom="10" length="744554" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="lHaKeWU9UPRJqDv1XtWgx/frzx6KxedsE5KK0DgRnUylkdxfJo75n8CwtmKKuqvt9530eYOQpzkU+0PNRaRTAQ=="/>
+                <enclosure url="https://zushapp.com/releases/Zush13-9.delta" sparkle:deltaFrom="9" length="851446" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="b2GnR7gr7XHSj3Rz2MveH1hExm1rT0KVClmJbNgtMoL64uTgZjNTODaqBaIjAR5k3RMyDnkEqDaQ13MkB9DQBQ=="/>
+                <enclosure url="https://zushapp.com/releases/Zush13-8.delta" sparkle:deltaFrom="8" length="981838" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="Js1CCzkJMi4PmL9ZpEl20UBwQcuYvsh4pwpbt0QFbX7APA+noRtOYNplxMB0XdYVBWmLAZDa1f6G8k1BPkMIDA=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>1.1.0</title>
             <pubDate>Fri, 16 Jan 2026 05:49:41 +0700</pubDate>
             <sparkle:version>12</sparkle:version>
             <sparkle:shortVersionString>1.1.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<h2>What's New in 1.1.0</h2><ul></ul><p><strong>Added</strong></p><ul><li>🎉 Implemented batch file processing limits with alerts</li><li>🖼️ Added unit tests for core services, enhancing reliability</li><li>🔑 Added notarization support to release script for security</li></ul><p><strong>Improved  </strong></p><ul><li>⚡ Optimized image loading and thumbnail generation for better quality</li><li>🎨 Updated rename text field with hover and focus styling</li><li>✏️ Updated Spotlight feature descriptions to use 'metadata'</li></ul><p><strong>Fixed</strong></p><ul><li>🐛 Fixed code signing and notarization issues in release script</li></ul>
-]]></description>
             <enclosure url="https://zushapp.com/releases/Zush-1.1.0.dmg" length="7677274" type="application/octet-stream" sparkle:edSignature="sj1D77ryZFlralbrbjnjX7F7h95Kd+9FbCeTiC6wDoY8fbLmvD8vcTZGBQ/qSQyDvHCYDDwr9gFpIKoQw6NLAA=="/>
             <sparkle:deltas>
                 <enclosure url="https://zushapp.com/releases/Zush12-11.delta" sparkle:deltaFrom="11" length="571878" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860528" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="iGKgEUZbBl37zyZiqzi6G7ONSn3OEH/ZJfQWdHSbYAwWQH3FpNnE3N5UyTI//3b+JyRBPq4wK1TPLPcKkpYOBA=="/>
@@ -35,21 +50,6 @@
                 <enclosure url="https://zushapp.com/releases/Zush11-8.delta" sparkle:deltaFrom="8" length="830462" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="ZQyc0GAYmAlHEfHLAZmLY+6vfBk0OVKFNVyDp9bnNWySvjaK4L2qK4KQ8QHtgRhHJtZrcgV3jrTXtEsVtie/DA=="/>
                 <enclosure url="https://zushapp.com/releases/Zush11-7.delta" sparkle:deltaFrom="7" length="974806" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="LbGIpZ8jHDhPVKPCVZyPm/+q99MOHqVY59kWowCmASt5NnaEl4nhw+F3jBok/kfB3WsRqPiff+2EKAFvHKm4Cg=="/>
                 <enclosure url="https://zushapp.com/releases/Zush11-6.delta" sparkle:deltaFrom="6" length="1059526" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="bE950ZGeTTIMlM5wCgAjD/kSMoZDtZvpdCzTb1NmJcqpyTpGL3I5Dx6rcvXQ6jcNGJsEv+z62ttvkvHA+GcuAQ=="/>
-            </sparkle:deltas>
-        </item>
-        <item>
-            <title>1.0.0</title>
-            <pubDate>Tue, 13 Jan 2026 18:27:49 +0700</pubDate>
-            <sparkle:version>10</sparkle:version>
-            <sparkle:shortVersionString>1.0.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://zushapp.com/releases/Zush-1.0.0.dmg" length="7560836" type="application/octet-stream" sparkle:edSignature="0JbSZSm9CS9B31LJn2V7rQVjc19ixWl50BgAu8N4fb4clI/PuBMEOqDLFxA36MSvNjocvbRPK6N81edLsmxNDQ=="/>
-            <sparkle:deltas>
-                <enclosure url="https://zushapp.com/releases/Zush10-9.delta" sparkle:deltaFrom="9" length="624694" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="XLZp+jYQ5YZkZSu9J0ufInFzjPCsUhBtQP6M7SNXnVWMkGkRmb+2gcgp3K08abT95zfT01KMGPssiV7zQjuTBA=="/>
-                <enclosure url="https://zushapp.com/releases/Zush10-8.delta" sparkle:deltaFrom="8" length="810194" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="Xq4g1RVTnTnYVbqsgy+GTdkElQ7KC9yfQmyFRzB+Ep+yNLyf+lz+pGL4wblyOD16CK+4+1QacsRzZ/z347IKDw=="/>
-                <enclosure url="https://zushapp.com/releases/Zush10-7.delta" sparkle:deltaFrom="7" length="954454" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="xwS+el1/G/AjBiMw1Tx6s45CLUcAjjCYCQv6r3CyiJCwI65Wh6wA71zsGiYxhTzaPfqUlltUHiS+gHsxX7L3Bg=="/>
-                <enclosure url="https://zushapp.com/releases/Zush10-6.delta" sparkle:deltaFrom="6" length="1039886" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="kzt7HXQZCAxsBKdSPgFZRFxJ3DY5BBkXypmYrdOo31F3rq8LNEoXKbwG6PByu9Gn/oW3PsjqIpUaRSp7EeIcBw=="/>
-                <enclosure url="https://zushapp.com/releases/Zush10-5.delta" sparkle:deltaFrom="5" length="1046894" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860336" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="SQkOVmC1SbxBJ9/GfR8iIdR6+B+4WaamFwRG/2UPIkq59AoJWbLdFAa4VUqxQu+nCS3f4ZPIuK0Akolcwq+SAQ=="/>
             </sparkle:deltas>
         </item>
     </channel>

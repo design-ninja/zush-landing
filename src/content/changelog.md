@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.0] - 2026-01-16
+### Added
+- 🖼️ Added support for RAW image formats
+- 💬 Added Canny feedback link in About Tab and update tab's design
+
+### Improved  
+- ⚡ Improved batch image analysis with individual processing
+- ⚡ Enhanced batch analysis with timestamps and progress tracking
+- ⚡ Improved AI service error handling with localized descriptions
+
+### Fixed
+- 🐛 Fixed deployment on build failure in release script
+
 ## [1.1.0] - 2026-01-16
 ### Added
 - 🎉 Implemented batch file processing limits with alerts
