@@ -188,7 +188,7 @@ const Pricing = () => {
         },
         {
           title: 'Multi-language Support',
-          desc: 'Generate file names in 70+ languages',
+          desc: 'Generate file names in 60+ languages',
           icon: Globe,
         },
       ],

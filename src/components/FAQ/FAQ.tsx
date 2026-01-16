@@ -51,7 +51,7 @@ const FAQ = () => {
 
   const imageExtensions = normalizeExtensions(config.image_extensions);
   const baseExtensions = imageExtensions.filter(
-    (extension) => extension !== 'svg' && extension !== 'pdf',
+    (extension) => extension !== 'svg' && extension !== 'pdf'
   );
   const supportsSvg = imageExtensions.includes('svg');
   const supportsPdf = imageExtensions.includes('pdf');
@@ -69,14 +69,18 @@ const FAQ = () => {
     {
       question: 'What is Zush?',
       answer:
-        'Zush is an intelligent macOS application that automates the tedious task of renaming media files. Using advanced AI, it analyzes the content of your images and documents to generate descriptive, meaningful filenames, helping you keep your library perfectly organized.',
+        'Zush is an intelligent macOS application that automates the tedious task of renaming media files. Using advanced AI, it analyzes the content of your images (including RAW), SVGs, and PDFs to generate descriptive, meaningful filenames, helping you keep your library perfectly organized.',
     },
     {
       question: 'What file formats are supported?',
       answer:
         `Zush supports popular image formats: ${formattedExtensions}.` +
         `${supportsSvg ? ' We also support SVG vector graphics.' : ''}` +
-        `${supportsPdf ? ' PDF documents are supported too (the first page is analyzed for AI renaming).' : ''}`,
+        `${
+          supportsPdf
+            ? ' PDF documents are supported too (the first page is analyzed for AI renaming).'
+            : ''
+        }`,
     },
     {
       question: 'How does Zush AI Rename work?',
@@ -86,7 +90,7 @@ const FAQ = () => {
     {
       question: 'How does folder monitoring work?',
       answer:
-        'Zush monitors your selected folders in the background. When you add new images or documents to a monitored folder, Zush automatically analyzes the content and renames files in real-time — no manual action required.',
+        'Zush monitors your selected folders in the background. When you add new images or PDFs to a monitored folder, Zush automatically analyzes the content and renames files in real-time while you are online — no manual action required.',
     },
     {
       question: 'Can I regenerate an AI-generated filename?',
@@ -96,7 +100,7 @@ const FAQ = () => {
     {
       question: 'Is my data secure?',
       answer:
-        'Completely. Your files never leave your computer. For AI analysis, only a temporary compressed copy of the image without metadata is sent, which is never stored on our servers.',
+        'Your original files stay on your computer. For AI analysis, Zush sends a resized, compressed JPEG copy to our servers, which is forwarded to our AI providers for processing. We do not store the image in our database.',
     },
     {
       question: 'Can I undo changes made by the program?',
@@ -106,22 +110,19 @@ const FAQ = () => {
     {
       question: 'Does Zush support multiple languages?',
       answer:
-        'Yes, Zush supports multiple languages for AI-generated filenames. You can select your preferred language in the app settings, and the AI will generate file names in that language.',
+        'Yes, Zush supports 60+ languages for AI-generated filenames. You can select your preferred language in the app settings; non-English languages require PRO.',
     },
     {
       question: 'How many renames are included in the free tier?',
-      answer:
-        `The free tier includes ${freeTierLimit} AI-powered renames. This is enough to experience the magic of Zush first-hand. PRO plans include ${proMonthlyLimitMin}-${proMonthlyLimitMax} renames per month depending on the plan.`,
+      answer: `The free tier includes ${freeTierLimit} AI-powered renames. This is enough to experience the magic of Zush first-hand. PRO plans include ${proMonthlyLimitMin}-${proMonthlyLimitMax} renames per month depending on the plan.`,
     },
     {
       question: 'Which operating systems are supported?',
-      answer:
-        `Currently, Zush is exclusively available for macOS (version ${minMacosVersion} ${minMacosName} and newer).`,
+      answer: `Currently, Zush is exclusively available for macOS (version ${minMacosVersion} ${minMacosName} and newer).`,
     },
     {
       question: 'Which AI model does the app use?',
-      answer:
-        `We use state-of-the-art models from ${aiProvider} (specifically ${aiModel}) to ensure high speed and incredible accuracy in recognizing objects in your photos.`,
+      answer: `We use state-of-the-art models from ${aiProvider} (specifically ${aiModel}) to ensure high speed and incredible accuracy in recognizing objects in your photos.`,
     },
     {
       question: 'Does the app work offline?',
@@ -132,10 +133,9 @@ const FAQ = () => {
       question: "Can I get a refund if it doesn't fit my needs?",
       answer: (
         <>
-          Absolutely. If Zush isn't right for you, we offer a{' '}
-          {refundPeriodDays}-day money-back
-          guarantee. You can find more details in our{' '}
-          <Link to="/refund-policy">Refund Policy</Link>.
+          Absolutely. If Zush isn't right for you, we offer a {refundPeriodDays}
+          -day money-back guarantee. You can find more details in our{' '}
+          <Link to='/refund-policy'>Refund Policy</Link>.
         </>
       ),
     },
