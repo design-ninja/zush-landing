@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useRemoteConfig } from '@/hooks/useRemoteConfig';
 import SectionHeader from '../SectionHeader';
 import styles from './FAQ.module.scss';
 
@@ -38,6 +39,30 @@ const FAQItem = ({ question, answer, isOpen, onClick }: FAQItemProps) => {
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const { config } = useRemoteConfig();
+
+  const formatNumber = (value: number) =>
+    new Intl.NumberFormat('en-US').format(value);
+
+  const normalizeExtensions = (extensions: string[]) =>
+    extensions.map((extension) => extension.toLowerCase());
+
+  const formatExtension = (extension: string) => extension.toUpperCase();
+
+  const imageExtensions = normalizeExtensions(config.image_extensions);
+  const baseExtensions = imageExtensions.filter(
+    (extension) => extension !== 'svg' && extension !== 'pdf',
+  );
+  const supportsSvg = imageExtensions.includes('svg');
+  const supportsPdf = imageExtensions.includes('pdf');
+  const formattedExtensions = baseExtensions.map(formatExtension).join(', ');
+  const freeTierLimit = formatNumber(config.free_tier_limit);
+  const proMonthlyLimit = formatNumber(config.pro_monthly_limit);
+  const aiProvider = config.ai_provider;
+  const aiModel = config.ai_model;
+  const refundPeriodDays = config.refund_period_days;
+  const minMacosVersion = config.min_macos_version;
+  const minMacosName = config.min_macos_name;
 
   const faqs = [
     {
@@ -48,7 +73,9 @@ const FAQ = () => {
     {
       question: 'What file formats are supported?',
       answer:
-        'Zush supports all popular image formats: PNG, JPG, JPEG, WebP, GIF, BMP, TIFF, TIF, HEIC, and HEIF. We also support SVG vector graphics and PDF documents (the first page is analyzed for AI renaming).',
+        `Zush supports popular image formats: ${formattedExtensions}.` +
+        `${supportsSvg ? ' We also support SVG vector graphics.' : ''}` +
+        `${supportsPdf ? ' PDF documents are supported too (the first page is analyzed for AI renaming).' : ''}`,
     },
     {
       question: 'How does Zush AI Rename work?',
@@ -83,17 +110,17 @@ const FAQ = () => {
     {
       question: 'How many renames are included in the free tier?',
       answer:
-        'The free tier includes 50 AI-powered renames. This is enough to experience the magic of Zush first-hand. The PRO version removes all limits on the number of renames.',
+        `The free tier includes ${freeTierLimit} AI-powered renames. This is enough to experience the magic of Zush first-hand. The PRO plan includes ${proMonthlyLimit} renames per month.`,
     },
     {
       question: 'Which operating systems are supported?',
       answer:
-        'Currently, Zush is exclusively available for macOS (version 13.0 Ventura and newer).',
+        `Currently, Zush is exclusively available for macOS (version ${minMacosVersion} ${minMacosName} and newer).`,
     },
     {
       question: 'Which AI model does the app use?',
       answer:
-        'We use state-of-the-art models from Groq (specifically Llama 4 Scout 17B) to ensure high speed and incredible accuracy in recognizing objects in your photos.',
+        `We use state-of-the-art models from ${aiProvider} (specifically ${aiModel}) to ensure high speed and incredible accuracy in recognizing objects in your photos.`,
     },
     {
       question: 'Does the app work offline?',
@@ -104,9 +131,10 @@ const FAQ = () => {
       question: "Can I get a refund if it doesn't fit my needs?",
       answer: (
         <>
-          Absolutely. If Zush isn't right for you, we offer a 14-day money-back
+          Absolutely. If Zush isn't right for you, we offer a{' '}
+          {refundPeriodDays}-day money-back
           guarantee. You can find more details in our{' '}
-          <Link to='/refund-policy'>Refund Policy</Link>.
+          <Link to="/refund-policy">Refund Policy</Link>.
         </>
       ),
     },

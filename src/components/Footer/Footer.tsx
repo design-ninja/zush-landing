@@ -21,7 +21,6 @@ const Footer = () => {
               <li><a href="/#features" className={styles.Footer__Link}>Features</a></li>
               <li><a href="/#pricing" className={styles.Footer__Link}>Pricing</a></li>
               <li><Link to="/changelog" className={styles.Footer__Link}>Changelog</Link></li>
-              <li><Link to="/manage-subscription" className={styles.Footer__Link}>Manage Subscription</Link></li>
             </ul>
           </div>
           <div>
@@ -32,11 +31,30 @@ const Footer = () => {
               <li><Link to="/refund-policy" className={styles.Footer__Link}>Refund Policy</Link></li>
             </ul>
           </div>
+          <div>
+            <Heading as="h4" className={styles.Footer__SectionTitle}>Support</Heading>
+            <ul className={styles.Footer__Links}>
+              <li><a href={`mailto:${SUPPORT_EMAIL}`} className={styles.Footer__Link}>Contact Support</a></li>
+              <li><Link to="/manage-subscription" className={styles.Footer__Link}>Manage Subscription</Link></li>
+              <li>
+                <a
+                  href="https://zush.canny.io"
+                  className={styles.Footer__Link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Bugs & Features
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
         <div className={styles.Footer__Bottom}>
-          <Text color="subtle">© 2026 <a href="https://lirik.pro/en" target="_blank" rel="noopener noreferrer">lirik</a>. All rights reserved</Text>
+          <Text color="subtle">© 2026 lirik. All rights reserved</Text>
           <div className={styles.Footer__BottomLinks}>
-            <a href={`mailto:${SUPPORT_EMAIL}`}>Contact Support</a>
+            <Text color="subtle">
+              Designed by <a href="https://lirik.pro/en" target="_blank" rel="noopener noreferrer">lirik</a> with 💜
+            </Text>
           </div>
         </div>
       </div>
