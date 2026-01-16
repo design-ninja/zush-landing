@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import type { ReactNode } from 'react';
 import {
   Palette,
   Camera,
@@ -18,7 +19,7 @@ type CardColor = 'purple' | 'blue' | 'green' | 'orange' | 'pink' | 'cyan';
 interface UseCaseCardProps {
   icon: LucideIcon;
   title: string;
-  description: string;
+  description: ReactNode;
   color: CardColor;
   delay?: number;
 }
@@ -52,43 +53,69 @@ const UseCases = () => {
     {
       icon: Palette,
       title: 'Designers',
-      description:
-        'Stop digging through hundreds of screenshots for that one reference. Find any mockup, UI element, or inspiration in seconds.',
+      description: (
+        <>
+          Stop digging through <strong>hundreds of screenshots</strong> for that
+          one reference. Find any mockup, UI element, or inspiration in{' '}
+          <strong>seconds</strong>.
+        </>
+      ),
       color: 'purple',
     },
     {
       icon: Camera,
       title: 'Photographers',
-      description:
-        'Organize massive photo libraries effortlessly. No more IMG_XXXX chaos — every shot gets a meaningful name.',
+      description: (
+        <>
+          Organize <strong>massive photo libraries</strong> effortlessly.
+          Supports <strong>pro RAW formats</strong> like CR2, NEF, ARW, DNG, RAF,
+          RW2, and more.
+        </>
+      ),
       color: 'blue',
     },
     {
       icon: Megaphone,
       title: 'Marketers & SMM',
-      description:
-        'Keep social media assets organized. Quickly find the right visual for any campaign or report.',
+      description: (
+        <>
+          Keep <strong>social media assets</strong> organized. Quickly find the{' '}
+          <strong>right visual</strong> for any campaign or report.
+        </>
+      ),
       color: 'orange',
     },
     {
       icon: Code,
       title: 'Developers',
-      description:
-        'Screenshots for docs, bug reports, and PR reviews — always organized and easy to find.',
+      description: (
+        <>
+          Screenshots for docs, bug reports, and PR reviews —{' '}
+          <strong>always organized</strong> and easy to find.
+        </>
+      ),
       color: 'green',
     },
     {
       icon: Video,
       title: 'Content Creators',
-      description:
-        'Thumbnails, b-roll references, and visual assets for your content — all neatly organized.',
+      description: (
+        <>
+          Thumbnails, b-roll references, and visual assets for your content —{' '}
+          <strong>all neatly organized</strong>.
+        </>
+      ),
       color: 'pink',
     },
     {
       icon: Briefcase,
       title: 'Product Managers',
-      description:
-        'Screenshots for specs, presentations, and stakeholder updates — instantly searchable.',
+      description: (
+        <>
+          Screenshots for specs, presentations, and stakeholder updates —{' '}
+          <strong>instantly searchable</strong>.
+        </>
+      ),
       color: 'cyan',
     },
   ];
