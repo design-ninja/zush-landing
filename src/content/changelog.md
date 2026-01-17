@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.1] - 2026-01-17
+### Added
+- 🎉 Implemented limit exceeded alert with dynamic messaging
+- 🖼️ Added `onChange` handlers to save naming pattern settings
+
+### Improved  
+- ⚡ Optimized WindowManager settings window handling
+- ⚡ Improved memory management for SwiftUI views
+
 ## [1.2.0] - 2026-01-16
 ### Added
 - 🖼️ Added support for RAW image formats
