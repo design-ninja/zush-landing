@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.2.2] - 2026-01-18
+### Added
+- 🎉 Implemented batch renaming functionality for improved file management
+- 🔔 Added success notification for batch renaming operations
+- 📂 Implemented folder monitoring during onboarding
+- ✨ Introduced confetti animation for visual feedback
+- 🔊 Added batch rename completion notification sound
+
+### Improved  
+- ⚡ Enhanced URL handling and ProModal display logic
+- ⚡ Improved settings modal behavior with ProModal integration
+- ⚡ Enhanced onboarding process with notifications
+
+### Fixed
+- 🐛 Fixed display issues in ActivationSuccessModal
+
 ## [1.2.1] - 2026-01-17
 ### Added
 - 🎉 Implemented limit exceeded alert with dynamic messaging
