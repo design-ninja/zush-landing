@@ -77,6 +77,13 @@
     border-radius: 8px;
   }
 
+  &__Actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
   &__Info {
     background: var(--muted);
     border-radius: 8px;

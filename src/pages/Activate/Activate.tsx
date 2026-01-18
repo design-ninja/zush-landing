@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { ExternalLink, AlertCircle, Download } from 'lucide-react';
-import Button from '../Button';
+import Button from '@/components/Button';
 import { DOWNLOAD_URL } from '@/constants';
 import styles from './Activate.module.scss';
 

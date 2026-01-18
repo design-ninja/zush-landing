@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, ArrowRight, CheckCircle, ArrowLeft } from 'lucide-react';
-import Button from '../Button';
+import Button from '@/components/Button';
 import { SUPABASE_URL } from '@/utils/supabase';
 import styles from './Recover.module.scss';
 
