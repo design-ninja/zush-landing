@@ -63,6 +63,12 @@ const ThankYou = () => {
         )}
 
         <div className={styles.ThankYou__Actions}>
+          {hasDeviceId && (
+            <Button as="a" href="zush://refresh-status">
+              Open app
+              <ArrowRight size={18} />
+            </Button>
+          )}
           <Button as={Link} to="/" variant="ghost">
             <ArrowLeft size={18} />
             Back to Home
