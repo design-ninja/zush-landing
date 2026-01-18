@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.2.3] - 2026-01-18
+### Added
+- 🎉 Implemented monthly Pro Upgrade flow for users
+- 🖼️ Added color scheme support and enhanced progress view styling
+
+### Improved  
+- ⚡ Enhanced SettingsViewModel with monitoring paths
+
+### Fixed
+- 🐛 Updated ProModal description for accurate language support count
+
 ## [1.2.2] - 2026-01-18
 ### Added
 - 🎉 Implemented batch renaming functionality for improved file management
