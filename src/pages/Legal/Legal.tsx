@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import styles from './Legal.module.scss';
-import Button from '../Button';
+import Button from '@/components/Button';
 
 import tosContent from '@/content/tos.md?raw';
 import privacyContent from '@/content/privacy.md?raw';

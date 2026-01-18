@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle, ArrowLeft, Mail, ArrowRight } from 'lucide-react';
-import Button from '../Button';
+import Button from '@/components/Button';
 import styles from './ThankYou.module.scss';
 
 const ThankYou = () => {

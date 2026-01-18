@@ -11,7 +11,7 @@ import {
   Globe,
   LucideIcon,
 } from 'lucide-react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import Button from '../Button';
 import Heading from '../Heading';
 import Text from '../Text';
@@ -343,6 +343,19 @@ const Pricing = () => {
           className={styles.Pricing__Disclaimer}
         >
           Secure payment via Paddle. All local taxes included.
+        </Text>
+
+        <Text
+          as='p'
+          size='sm'
+          color='subtle'
+          align='center'
+          className={styles.Pricing__UpgradeLink}
+        >
+          Already a subscriber?{' '}
+          <Link to='/upgrade' style={{ color: 'var(--primary)', textDecoration: 'none' }}>
+            Upgrade your plan
+          </Link>
         </Text>
       </div>
 

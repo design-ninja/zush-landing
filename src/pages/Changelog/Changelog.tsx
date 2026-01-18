@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
-import Button from '../Button';
-import Heading from '../Heading';
-import Text from '../Text';
-import SectionHeader from '../SectionHeader';
+import Button from '@/components/Button';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
+import SectionHeader from '@/components/SectionHeader';
 import styles from './Changelog.module.scss';
 import changelogPath from '@/content/changelog.md?url';
 

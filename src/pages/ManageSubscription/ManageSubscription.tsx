@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CreditCard, CheckCircle, ArrowLeft, ExternalLink } from 'lucide-react';
-import Button from '../Button';
+import Button from '@/components/Button';
 import { SUPABASE_URL } from '@/utils/supabase';
 import styles from './ManageSubscription.module.scss';
 
@@ -92,17 +92,19 @@ const ManageSubscription = () => {
 
         {error && <p className={styles.ManageSubscription__Error}>{error}</p>}
 
-        <div className={styles.ManageSubscription__Info}>
-          <p>
-            <strong>Note:</strong> This is only for monthly and annual
-            subscriptions. One-time purchases do not require subscription
-            management.
-          </p>
-        </div>
+        <div className={styles.ManageSubscription__Actions}>
+          <div className={styles.ManageSubscription__Info}>
+            <p>
+              <strong>Note:</strong> This is only for monthly and annual
+              subscriptions. One-time purchases do not require subscription
+              management.
+            </p>
+          </div>
 
-        <Link to="/" className={styles.ManageSubscription__BackLink}>
-          ← Back to Home
-        </Link>
+          <Link to="/" className={styles.ManageSubscription__BackLink}>
+            ← Back to Home
+          </Link>
+        </div>
       </div>
     </section>
   );

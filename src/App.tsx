@@ -1,33 +1,22 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { memo } from 'react';
 import { useTheme } from './hooks/useTheme';
 import { useCheckoutAutoOpen } from './hooks/useCheckoutAutoOpen';
 import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Features from './components/Features';
-import UseCases from './components/UseCases';
-import Pricing from './components/Pricing';
-import FAQ from './components/FAQ';
-import Legal from './components/Legal';
-import Changelog from './components/Changelog';
-import ThankYou from './components/ThankYou';
-import Recover from './components/Recover';
-import Activate from './components/Activate';
-import ManageSubscription from './components/ManageSubscription';
-import NotFound from './components/NotFound/NotFound';
 import Footer from './components/Footer';
-import styles from './App.module.scss';
 
-const MainContent = memo(() => (
-  <>
-    <Hero />
-    <Features />
-    <UseCases />
-    <Pricing />
-    <FAQ />
-  </>
-));
+// Pages
+import Home from './pages/Home';
+import Legal from './pages/Legal';
+import Changelog from './pages/Changelog';
+import ThankYou from './pages/ThankYou';
+import Recover from './pages/Recover';
+import Activate from './pages/Activate';
+import ManageSubscription from './pages/ManageSubscription';
+import Upgrade from './pages/Upgrade';
+import NotFound from './pages/NotFound/NotFound';
+
+import styles from './App.module.scss';
 
 const AppContent = ({ theme, toggleTheme }: { theme: string; toggleTheme: () => void }) => {
   useCheckoutAutoOpen();
@@ -39,7 +28,7 @@ const AppContent = ({ theme, toggleTheme }: { theme: string; toggleTheme: () => 
         <Navbar theme={theme} toggleTheme={toggleTheme} />
         <main className={styles.App__Main}>
           <Routes>
-            <Route path="/" element={<MainContent />} />
+            <Route path="/" element={<Home />} />
             <Route path="/changelog" element={<Changelog />} />
             <Route path="/terms-of-service" element={<Legal type="tos" />} />
             <Route path="/privacy-policy" element={<Legal type="privacy" />} />
@@ -48,6 +37,7 @@ const AppContent = ({ theme, toggleTheme }: { theme: string; toggleTheme: () => 
             <Route path="/recover" element={<Recover />} />
             <Route path="/activate" element={<Activate />} />
             <Route path="/manage-subscription" element={<ManageSubscription />} />
+            <Route path="/upgrade" element={<Upgrade />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
