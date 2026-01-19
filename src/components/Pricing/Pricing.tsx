@@ -91,11 +91,12 @@ const Pricing = () => {
   const monthlyPrice = monthlyPack?.price ?? 0;
   const annualPrice = annualPack?.price ?? 0;
 
-  const discountPercent =
-    monthlyPrice && annualPrice
-      ? Math.round(((monthlyPrice * 12 - annualPrice) / (monthlyPrice * 12)) * 100)
-      : 17;
-  const discountLabel = `save ${discountPercent}%`;
+  const discountPercent = useMemo(() => {
+    if (!monthlyPrice || !annualPrice) return 17;
+    return Math.round(((monthlyPrice * 12 - annualPrice) / (monthlyPrice * 12)) * 100);
+  }, [monthlyPrice, annualPrice]);
+
+  const discountLabel = useMemo(() => `save ${discountPercent}%`, [discountPercent]);
 
   const annualMonthlyEquivalent = annualPrice / 12;
 
@@ -219,15 +220,11 @@ const Pricing = () => {
                       {plan.description}
                     </Text>
                   </div>
+                </div>
 
-                  {plan.isPro && (
+                {plan.isPro ? (
+                  <div className={styles.PricingCard__ToggleWrapper}>
                     <label className={styles.AnnualToggle}>
-                      <span className={styles.AnnualToggle__Label}>
-                        <span className={styles.AnnualToggle__Title}>Annual</span>
-                        <span className={styles.AnnualToggle__Discount}>
-                          {discountLabel}
-                        </span>
-                      </span>
                       <input
                         type='checkbox'
                         checked={planType === 'annual'}
@@ -239,24 +236,34 @@ const Pricing = () => {
                       <span className={styles.AnnualToggle__Track}>
                         <span className={styles.AnnualToggle__Thumb} />
                       </span>
+                      <span className={styles.AnnualToggle__Label}>
+                        <span className={styles.AnnualToggle__Title}>Annual billing</span>
+                        <span className={styles.AnnualToggle__Discount}>
+                          ({discountLabel})
+                        </span>
+                      </span>
                     </label>
-                  )}
-                </div>
+                  </div>
+                ) : (
+                  <div className={styles.PricingCard__ToggleSpacer} />
+                )}
 
                 <div className={styles.PricingCard__Price}>
-                  <span className={styles.PricingCard__PriceValue}>
-                    {plan.price}
-                  </span>
-                  {plan.period && (
-                    <span className={styles.PricingCard__PricePeriod}>
-                      / {plan.period}
+                  <div className={styles.PricingCard__PriceLeft}>
+                    <span className={styles.PricingCard__PriceValue}>
+                      {plan.price}
                     </span>
-                  )}
-                  {plan.isPro && planType === 'annual' && (
-                    <span className={styles.PricingCard__PriceAnnual}>
-                      <span className={styles.PricingCard__PriceAnnualValue}>${annualPrice}</span> / year
-                    </span>
-                  )}
+                    {plan.period && (
+                      <span className={styles.PricingCard__PricePeriod}>
+                        / {plan.period}
+                      </span>
+                    )}
+                    {plan.isPro && planType === 'annual' && (
+                      <span className={styles.PricingCard__PriceAnnual}>
+                        <span className={styles.PricingCard__PriceAnnualValue}>${annualPrice}</span> / year
+                      </span>
+                    )}
+                  </div>
                 </div>
 
                 {plan.isPro ? (
@@ -288,9 +295,9 @@ const Pricing = () => {
                     <div className={styles.PackLabel__PricingCard}>
                       Monthly credits
                     </div>
-                    <div className={styles.PackToggle__PricingCard}>
+                    <div className={`${styles.PackToggle__PricingCard} ${styles.PackToggle__PricingCard_single}`}>
                       <button
-                        className={`${styles.PricingCard__ToggleButton} ${styles.PackToggleButton__PricingCard} ${styles.PricingCard__ToggleButton_active}`}
+                        className={`${styles.PricingCard__ToggleButton} ${styles.PackToggleButton__PricingCard} ${styles.PricingCard__ToggleButton_muted}`}
                         disabled
                       >
                         {String(freeLimit)}

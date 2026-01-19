@@ -22,10 +22,10 @@ export const CREDIT_PACKS: CreditPack[] = [
   { price_id: 'pri_01kfajar4pr9cy5nnag11rfan9', credits: 5000, period: 'monthly', price: 20 },
   { price_id: 'pri_01kfajbkxw8syb1ezm6v9tq7f1', credits: 10000, period: 'monthly', price: 35 },
   // Annual
-  { price_id: 'pri_01kfajczsq5r5yr8ma4p95w6km', credits: 500, period: 'annual', price: 50 },
-  { price_id: 'pri_01kfaje2p2wzx2q2yw2hjsetq6', credits: 2000, period: 'annual', price: 100 },
-  { price_id: 'pri_01kfajf11twd2pv9dpw16pr4y8', credits: 5000, period: 'annual', price: 200 },
-  { price_id: 'pri_01kfajfwchd4hvbnq6yqcz4rvm', credits: 10000, period: 'annual', price: 350 },
+  { price_id: 'pri_01kfajczsq5r5yr8ma4p95w6km', credits: 500, period: 'annual', price: 30 },
+  { price_id: 'pri_01kfaje2p2wzx2q2yw2hjsetq6', credits: 2000, period: 'annual', price: 60 },
+  { price_id: 'pri_01kfajf11twd2pv9dpw16pr4y8', credits: 5000, period: 'annual', price: 120 },
+  { price_id: 'pri_01kfajfwchd4hvbnq6yqcz4rvm', credits: 10000, period: 'annual', price: 200 },
 ];
 
 // Config
