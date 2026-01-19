@@ -1,10 +1,9 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   FolderPlus,
   Zap,
   FileCode,
-  Sparkles,
   Folder,
   Tag,
   FileText,
@@ -20,14 +19,12 @@ import AppleIcon from '../AppleIcon';
 import MobileDownloadModal from '../MobileDownloadModal';
 import { openPaddleCheckout } from '@/utils/paddle';
 import { usePaddlePrice } from '@/hooks/usePaddlePrice';
-import { useRemoteConfig } from '@/hooks/useRemoteConfig';
+import { CreditPack, useRemoteConfig } from '@/hooks/useRemoteConfig';
 import { useIsMobile } from '@/hooks/useIsMobile';
 import { DOWNLOAD_URL } from '@/constants';
 import styles from './Pricing.module.scss';
 
-const PADDLE_MONTHLY_PRICE_ID = import.meta.env.VITE_PADDLE_MONTHLY_PRICE_ID;
-const PADDLE_ANNUAL_PRICE_ID = import.meta.env.VITE_PADDLE_ANNUAL_PRICE_ID;
-const PADDLE_ONETIME_PRICE_ID = import.meta.env.VITE_PADDLE_ONETIME_PRICE_ID;
+type BillingPeriod = 'monthly' | 'annual';
 
 interface Feature {
   title: string;
@@ -50,6 +47,31 @@ const formatNumber = (num: number): string => {
   return num >= 1000 ? num.toLocaleString('en-US') : String(num);
 };
 
+const DEFAULT_CREDITS = [500, 2000, 5000, 10000];
+
+const parsePriceAmount = (value?: string | null): number | null => {
+  if (!value) return null;
+  const parsed = parseFloat(value.replace(/[^0-9.]/g, ''));
+  return Number.isFinite(parsed) ? parsed : null;
+};
+
+const getCreditsByPeriod = (packs: CreditPack[], period: BillingPeriod): number[] => {
+  const credits = packs
+    .filter((pack) => pack.period === period)
+    .map((pack) => pack.credits)
+    .filter((value) => Number.isFinite(value));
+
+  return Array.from(new Set(credits)).sort((a, b) => a - b);
+};
+
+const getPackByCredits = (
+  packs: CreditPack[],
+  period: BillingPeriod,
+  credits: number
+): CreditPack | undefined => {
+  return packs.find((pack) => pack.period === period && pack.credits === credits);
+};
+
 const Pricing = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -62,64 +84,55 @@ const Pricing = () => {
     hash: location.hash,
     deviceId,
   });
-  const [planType, setPlanType] = useState<'monthly' | 'annual' | 'onetime'>(
-    'monthly'
-  );
+  const [planType, setPlanType] = useState<BillingPeriod>('monthly');
+  const [selectedCredits, setSelectedCredits] = useState(DEFAULT_CREDITS[0]);
 
-  const { config, loading: configLoading } = useRemoteConfig();
+  const { config } = useRemoteConfig();
+  const creditPacks = useMemo(() => config?.credit_packs ?? [], [config?.credit_packs]);
+
+  const availableCredits = useMemo(() => {
+    const creditsByPeriod = getCreditsByPeriod(creditPacks, planType);
+    return creditsByPeriod.length > 0 ? creditsByPeriod : DEFAULT_CREDITS;
+  }, [creditPacks, planType]);
+
+  useEffect(() => {
+    if (!availableCredits.includes(selectedCredits)) {
+      setSelectedCredits(availableCredits[0]);
+    }
+  }, [availableCredits, selectedCredits]);
+
+  const monthlyPack = getPackByCredits(creditPacks, 'monthly', selectedCredits);
+  const annualPack = getPackByCredits(creditPacks, 'annual', selectedCredits);
+
   const { price: monthlyPrice, loading: monthlyLoading } = usePaddlePrice(
-    PADDLE_MONTHLY_PRICE_ID
+    monthlyPack?.price_id
   );
   const { price: annualPrice, loading: annualLoading } = usePaddlePrice(
-    PADDLE_ANNUAL_PRICE_ID
-  );
-  const { price: onetimePrice, loading: onetimeLoading } = usePaddlePrice(
-    PADDLE_ONETIME_PRICE_ID
+    annualPack?.price_id
   );
 
-  const currentPrice =
-    planType === 'monthly'
-      ? monthlyPrice
-      : planType === 'annual'
-      ? annualPrice
-      : onetimePrice;
+  const currentPrice = planType === 'monthly' ? monthlyPrice : annualPrice;
   const currentPriceLoading =
-    planType === 'monthly'
-      ? monthlyLoading
-      : planType === 'annual'
-      ? annualLoading
-      : onetimeLoading;
+    planType === 'monthly' ? monthlyLoading : annualLoading;
   const currentPriceId =
-    planType === 'monthly'
-      ? PADDLE_MONTHLY_PRICE_ID
-      : planType === 'annual'
-      ? PADDLE_ANNUAL_PRICE_ID
-      : PADDLE_ONETIME_PRICE_ID;
-  const currentPeriod =
-    planType === 'monthly'
-      ? 'month'
-      : planType === 'annual'
-      ? 'year'
-      : 'one-time';
-
-  const proMonthlyLimit =
-    planType === 'monthly'
-      ? config?.pro_monthly_limit_monthly ?? 0
-      : planType === 'annual'
-      ? config?.pro_monthly_limit_annual ?? 0
-      : config?.pro_monthly_limit_one_time ?? 0;
+    planType === 'monthly' ? monthlyPack?.price_id : annualPack?.price_id;
+  const currentPeriod = planType === 'monthly' ? 'month' : 'year';
 
   // Calculate discount for annual plan (only when prices are loaded)
-  const monthlyPriceNum = monthlyPrice
-    ? parseFloat(monthlyPrice.replace(/[^0-9.]/g, ''))
-    : null;
-  const annualPriceNum = annualPrice
-    ? parseFloat(annualPrice.replace(/[^0-9.]/g, ''))
-    : null;
-  const discountAmount =
+  const monthlyPriceNum = parsePriceAmount(monthlyPrice);
+  const annualPriceNum = parsePriceAmount(annualPrice);
+  const discountPercent =
     monthlyPriceNum && annualPriceNum
-      ? monthlyPriceNum * 12 - annualPriceNum
+      ? Math.round(
+          ((monthlyPriceNum * 12 - annualPriceNum) / (monthlyPriceNum * 12)) *
+            100
+        )
       : null;
+  const discountLabel = discountPercent ? `save ${discountPercent}%` : 'save 17%';
+  const annualMonthlyEquivalent =
+    annualPriceNum ? annualPriceNum / 12 : null;
+
+  const freeLimit = config?.free_tier_limit ?? 30;
 
   const plans: Plan[] = [
     {
@@ -127,13 +140,6 @@ const Pricing = () => {
       price: '$0',
       description: 'Basic organization for casual users',
       features: [
-        {
-          title: configLoading
-            ? '... Renames'
-            : `${formatNumber(config?.free_tier_limit ?? 0)} Renames`,
-          desc: 'Monthly AI-powered renames',
-          icon: Sparkles,
-        },
         {
           title: 'Single Folder',
           desc: 'Monitor one folder at a time',
@@ -162,15 +168,8 @@ const Pricing = () => {
       name: 'Zush 🌟 PRO',
       price: currentPriceLoading ? '...' : currentPrice || '...',
       period: currentPeriod,
-      description: 'Powerful AI features for power users',
+      description: 'Flexible credit packs for power users',
       features: [
-        {
-          title: configLoading
-            ? '... Renames'
-            : `${formatNumber(proMonthlyLimit)} Renames`,
-          desc: 'Monthly AI-powered renames',
-          icon: Sparkles,
-        },
         {
           title: 'Multiple Folders',
           desc: 'Monitor multiple folders simultaneously',
@@ -200,6 +199,10 @@ const Pricing = () => {
 
   const handleButtonClick = (isPro: boolean) => {
     if (isPro) {
+      if (!currentPriceId) {
+        console.warn('[Pricing] Price ID is missing for checkout');
+        return;
+      }
       openPaddleCheckout(deviceId, currentPriceId);
     } else if (isMobile) {
       setIsModalOpen(true);
@@ -234,73 +237,94 @@ const Pricing = () => {
               }`}
               id={plan.isPro ? 'pro' : undefined}
             >
-              {plan.isPro && planType === 'annual' && discountAmount && (
-                <div className={styles.PricingCard__Badge}>
-                  Save ${discountAmount.toFixed(2)}
-                </div>
-              )}
-
               <div className={styles.PricingCard__Top}>
-                <div className={styles.PricingCard__Header}>
-                  <Heading as='h3' className={styles.PricingCard__Name}>
-                    {plan.name}
-                  </Heading>
-                  <Text
-                    as='p'
-                    size='sm'
-                    color='subtle'
-                    className={styles.PricingCard__Description}
-                  >
-                    {plan.description}
-                  </Text>
+                <div className={styles.PricingCard__HeaderRow}>
+                  <div className={styles.PricingCard__Header}>
+                    <Heading as='h3' className={styles.PricingCard__Name}>
+                      {plan.name}
+                    </Heading>
+                    <Text
+                      as='p'
+                      size='sm'
+                      color='subtle'
+                      className={styles.PricingCard__Description}
+                    >
+                      {plan.description}
+                    </Text>
+                  </div>
+
+                  {plan.isPro && (
+                    <label className={styles.AnnualToggle}>
+                      <input
+                        type='checkbox'
+                        checked={planType === 'annual'}
+                        onChange={(e) =>
+                          setPlanType(e.target.checked ? 'annual' : 'monthly')
+                        }
+                        className={styles.AnnualToggle__Input}
+                      />
+                      <span className={styles.AnnualToggle__Track}>
+                        <span className={styles.AnnualToggle__Thumb} />
+                      </span>
+                      <span className={styles.AnnualToggle__Label}>
+                        Annual{' '}
+                        {/* <span className={styles.AnnualToggle__Discount}>
+                          ({discountLabel})
+                        </span> */}
+                      </span>
+                    </label>
+                  )}
                 </div>
 
                 {plan.isPro ? (
-                  <div className={styles.PricingCard__Toggle}>
-                    <button
-                      className={`${styles.PricingCard__ToggleButton} ${
-                        planType === 'monthly'
-                          ? styles.PricingCard__ToggleButton_active
-                          : ''
-                      }`}
-                      onClick={() => setPlanType('monthly')}
-                    >
-                      Monthly
-                    </button>
-                    <button
-                      className={`${styles.PricingCard__ToggleButton} ${
-                        planType === 'annual'
-                          ? styles.PricingCard__ToggleButton_active
-                          : ''
-                      }`}
-                      onClick={() => setPlanType('annual')}
-                    >
-                      Annual
-                    </button>
-                    <button
-                      className={`${styles.PricingCard__ToggleButton} ${
-                        planType === 'onetime'
-                          ? styles.PricingCard__ToggleButton_active
-                          : ''
-                      }`}
-                      onClick={() => setPlanType('onetime')}
-                    >
-                      One-time
-                    </button>
+                  <div className={styles.Controls__PricingCard}>
+                    <div className={styles.PackLabel__PricingCard}>
+                      Choose your monthly credits{' '}
+                      <span className={styles.PackLabelHint__PricingCard}>
+                        · 1 credit = 1 file rename
+                      </span>
+                    </div>
+                    <div className={styles.PackToggle__PricingCard}>
+                      {availableCredits.map((credits) => (
+                        <button
+                          key={credits}
+                          className={`${styles.PricingCard__ToggleButton} ${styles.PackToggleButton__PricingCard} ${
+                            selectedCredits === credits
+                              ? styles.PricingCard__ToggleButton_active
+                              : ''
+                          }`}
+                          onClick={() => setSelectedCredits(credits)}
+                        >
+                          {formatNumber(credits)}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 ) : (
-                  <div className={styles.PricingCard__ToggleSpacer}></div>
+                  <div className={styles.Controls__PricingCard}>
+                    <div className={styles.PackLabel__PricingCard}>
+                      Monthly credits
+                    </div>
+                    <div className={styles.PackToggle__PricingCard}>
+                      <button
+                        className={`${styles.PricingCard__ToggleButton} ${styles.PackToggleButton__PricingCard} ${styles.PricingCard__ToggleButton_active}`}
+                        disabled
+                      >
+                        {formatNumber(freeLimit)}
+                      </button>
+                    </div>
+                  </div>
                 )}
 
                 <div className={styles.PricingCard__Price}>
                   <span className={styles.PricingCard__PriceValue}>
-                    {plan.price}
+                    {plan.isPro && planType === 'annual' && annualMonthlyEquivalent
+                      ? `$${annualMonthlyEquivalent.toFixed(2)}`
+                      : plan.price}
                   </span>
                   {plan.period && (
                     <span className={styles.PricingCard__PricePeriod}>
-                      {plan.period === 'one-time'
-                        ? '/ one-time'
-                        : `/ ${plan.period}`}
+                      {plan.isPro ? '/ month' : `/ ${plan.period}`}
                     </span>
                   )}
                 </div>
@@ -324,26 +348,29 @@ const Pricing = () => {
                 ))}
               </div>
 
-              <Button
-                variant={plan.isPro ? 'primary' : 'black'}
-                onClick={() => handleButtonClick(plan.isPro)}
-              >
-                {!plan.isPro && <AppleIcon />}
-                {plan.buttonText}
-              </Button>
+              <div className={styles.PricingCard__ButtonWrapper}>
+                <Button
+                  variant={plan.isPro ? 'primary' : 'black'}
+                  onClick={() => handleButtonClick(plan.isPro)}
+                  disabled={plan.isPro ? !currentPriceId : false}
+                >
+                  {!plan.isPro && <AppleIcon />}
+                  {plan.buttonText}
+                </Button>
+                <Text
+                  as='p'
+                  size='sm'
+                  color='subtle'
+                  className={styles.PricingCard__ButtonHint}
+                >
+                  {plan.isPro
+                    ? 'Secure payment via Paddle'
+                    : 'No credit card required'}
+                </Text>
+              </div>
             </motion.div>
           ))}
         </div>
-
-        <Text
-          as='p'
-          size='sm'
-          color='subtle'
-          align='center'
-          className={styles.Pricing__Disclaimer}
-        >
-          Secure payment via Paddle. All local taxes included.
-        </Text>
 
         <Text
           as='p'

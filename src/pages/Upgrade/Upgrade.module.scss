@@ -145,6 +145,10 @@
     color: var(--muted-foreground);
   }
 
+  &__ToggleGroup {
+    margin-bottom: 24px;
+  }
+
   &__Arrow {
     color: var(--primary);
     margin: 8px 0;
@@ -159,6 +163,12 @@
     border-radius: 8px;
     text-align: center;
     line-height: 1.5;
+  }
+
+  &__Hint {
+    font-size: 0.85rem;
+    color: var(--muted-foreground);
+    margin-bottom: 16px;
   }
 
   &__Actions {
@@ -182,4 +192,65 @@
       color: var(--primary);
     }
   }
+}
+
+.ToggleRow__Upgrade {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+  background: var(--muted);
+  padding: 4px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.ToggleButton__Upgrade {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--muted-foreground);
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  padding: 10px 12px;
+
+  &_active {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.PackLabel__Upgrade {
+  color: var(--muted-foreground);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.PackToggle__Upgrade {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  background: var(--muted);
+  padding: 6px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  min-height: 56px;
+
+  @media (max-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.PackToggleButton__Upgrade {
+  min-height: 40px;
+  font-size: 1rem;
 }

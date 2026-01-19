@@ -11,28 +11,26 @@ We grant you a personal, non-exclusive, non-transferable, limited license to use
 ### 3. Purchases and Payments
 
 **3.1 🌟 PRO Version**
-Zush offers a "🌟 PRO" upgrade that provides increased monthly AI rename limits (currently 5,000 renames/month), monitoring of multiple folders, and advanced metadata features. The current prices are displayed within the application and on the website.
+Zush offers a "🌟 PRO" upgrade that provides credit-based access to AI renames, monitoring of multiple folders, and advanced metadata features. One credit equals one rename. Current pricing is displayed in the app and on the website.
 
 **3.2 Pricing Plans**
-We offer three pricing options for PRO features:
+We offer credit packs billed as subscriptions:
 
-- **Monthly Subscription** ($4.99/month): Recurring monthly billing with full PRO access.
-- **Annual Subscription** ($19.99/year): Recurring yearly billing with full PRO access at a discounted rate.
-- **One-Time Purchase** ($59.99): A single payment that grants lifetime access to PRO features for the current major version of the application.
+- **Monthly Subscriptions** (recurring monthly): 500 credits ($5/month), 2,000 credits ($10/month), 5,000 credits ($20/month), 10,000 credits ($35/month).
+- **Annual Subscriptions** (recurring yearly): 500 credits/month ($50/year), 2,000 credits/month ($100/year), 5,000 credits/month ($200/year), 10,000 credits/month ($350/year).
+
+Credits reset monthly. One credit equals one rename.
 
 **3.3 Subscription Terms**
-For subscription plans (Monthly and Annual), your subscription will automatically renew at the end of each billing period unless you cancel before the renewal date. You can cancel your subscription at any time through your Paddle account or by contacting support.
+Your subscription will automatically renew at the end of each billing period unless you cancel before the renewal date. You can cancel your subscription at any time through your Paddle account or by contacting support.
 
-**3.4 One-Time Purchase Terms**
-The one-time PRO license grants you access to PRO features for the current major version of the application. We may release future major versions with new features that require a separate purchase. Minor updates and bug fixes for the purchased version are provided at our discretion with no guaranteed support period.
-
-**3.5 Usage Limits**
+**3.4 Usage Limits**
 Both free and PRO versions have monthly usage limits for AI-powered features. These limits reset each calendar month. Current limits are displayed in the application.
 
-**3.6 Merchant of Record**
+**3.5 Merchant of Record**
 Our order process is conducted by our online reseller Paddle.com. Paddle.com is the Merchant of Record for all our orders. Paddle provides all customer service inquiries and handles returns.
 
-**3.7 Refunds**
+**3.6 Refunds**
 Refund requests are handled by Paddle in accordance with their refund policy.
 
 ### 4. AI-Powered Features and Accuracy
