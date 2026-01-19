@@ -264,7 +264,9 @@ const Upgrade = () => {
   if (state === 'confirm' || state === 'upgrading') {
     const targetCredits = selectedCredits;
     const currentCreditsValue = currentCredits ?? 0;
-    const canUpgrade = targetPack?.price_id && targetCredits > currentCreditsValue;
+    const isUpgrade = targetCredits > currentCreditsValue;
+    const isDowngrade = targetCredits < currentCreditsValue;
+    const canChange = targetPack?.price_id && targetCredits !== currentCreditsValue;
 
     return (
       <section className={styles.Upgrade}>
@@ -349,14 +351,17 @@ const Upgrade = () => {
           </div>
 
           <div className={styles.Upgrade__ProrationNote}>
-            💳 You'll be charged the prorated difference immediately.
-            Your billing cycle will reset to {selectedPeriod}.
+            {isUpgrade ? (
+              <>💳 You'll be charged the prorated difference immediately.<br />Your billing cycle will reset to {selectedPeriod}.</>
+            ) : (
+              <>📅 Your new plan will start from your next billing period.<br />You'll keep your current credits until then.</>
+            )}
           </div>
 
           {error && <p className={styles.Upgrade__Error}>{error}</p>}
-          {!canUpgrade && (
+          {!canChange && (
             <p className={styles.Upgrade__Hint}>
-              Please select a plan with more credits than your current plan.
+              Please select a different plan.
             </p>
           )}
 
@@ -364,10 +369,12 @@ const Upgrade = () => {
             <Button
               variant="primary"
               onClick={handleUpgrade}
-              disabled={state === 'upgrading' || !canUpgrade}
+              disabled={state === 'upgrading' || !canChange}
               isLoading={state === 'upgrading'}
             >
-              {state === 'upgrading' ? 'Upgrading...' : 'Confirm Upgrade'}
+              {state === 'upgrading'
+                ? (isDowngrade ? 'Processing...' : 'Upgrading...')
+                : (isDowngrade ? 'Confirm Downgrade' : 'Confirm Upgrade')}
             </Button>
 
             <Link to="/" className={styles.Upgrade__BackLink}>
