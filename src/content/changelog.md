@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.2.4] - 2026-01-19
+### Added
+- 🎉 Credit-based pricing model for flexible usage
+- 🔑 Support for original name token in file renaming
+- 🖼️ Date format support for file renaming
+
+### Improved  
+- ⚡ Enhanced license upgrade flow with URL parameters
+- ✏️ Clarified ProModal feature description for localization
+- 📈 Improved email validation in customer portal
+
 ## [1.2.3] - 2026-01-18
 ### Added
 - 🎉 Implemented monthly Pro Upgrade flow for users
