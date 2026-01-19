@@ -3,11 +3,10 @@ import { Link, useLocation } from 'react-router-dom';
 import { ArrowUp, CheckCircle, ArrowDown, Sparkles } from 'lucide-react';
 import Button from '@/components/Button';
 import { SUPABASE_URL } from '@/utils/supabase';
-import { CreditPack, useRemoteConfig } from '@/hooks/useRemoteConfig';
+import { CREDIT_PACKS, CreditPack, BillingPeriod } from '@/constants';
 import styles from './Upgrade.module.scss';
 
 type UpgradeState = 'form' | 'loading' | 'confirm' | 'upgrading' | 'success' | 'error';
-type BillingPeriod = 'monthly' | 'annual';
 
 interface SubscriptionInfo {
   subscription_type: string;
@@ -19,8 +18,6 @@ interface SubscriptionInfo {
 const formatNumber = (num: number): string => {
   return num >= 1000 ? num.toLocaleString('en-US') : String(num);
 };
-
-const DEFAULT_CREDITS = [500, 2000, 5000, 10000];
 
 const getCreditsByPeriod = (packs: CreditPack[], period: BillingPeriod): number[] => {
   const credits = packs
@@ -49,16 +46,12 @@ const Upgrade = () => {
   const [subscriptionInfo, setSubscriptionInfo] = useState<SubscriptionInfo | null>(null);
   const autoCheckTriggered = useRef(false);
 
-  const { config } = useRemoteConfig();
-
-  const creditPacks = useMemo(() => config?.credit_packs ?? [], [config?.credit_packs]);
   const [selectedPeriod, setSelectedPeriod] = useState<BillingPeriod>('monthly');
-  const [selectedCredits, setSelectedCredits] = useState(DEFAULT_CREDITS[0]);
+  const [selectedCredits, setSelectedCredits] = useState(500);
 
   const availableCredits = useMemo(() => {
-    const credits = getCreditsByPeriod(creditPacks, selectedPeriod);
-    return credits.length > 0 ? credits : DEFAULT_CREDITS;
-  }, [creditPacks, selectedPeriod]);
+    return getCreditsByPeriod(CREDIT_PACKS, selectedPeriod);
+  }, [selectedPeriod]);
 
   const currentCredits = useMemo(() => {
     if (!subscriptionInfo) return null;
@@ -66,13 +59,13 @@ const Upgrade = () => {
       return subscriptionInfo.credits_per_month;
     }
     if (subscriptionInfo.paddle_price_id) {
-      const match = creditPacks.find(
+      const match = CREDIT_PACKS.find(
         (pack) => pack.price_id === subscriptionInfo.paddle_price_id
       );
       return match?.credits ?? null;
     }
     return null;
-  }, [subscriptionInfo, creditPacks]);
+  }, [subscriptionInfo]);
 
   useEffect(() => {
     if (subscriptionInfo?.subscription_type === 'monthly') {
@@ -99,7 +92,7 @@ const Upgrade = () => {
   }, [availableCredits, currentCredits, selectedCredits]);
 
   const targetPack = getPackByCredits(
-    creditPacks,
+    CREDIT_PACKS,
     selectedPeriod,
     selectedCredits
   );

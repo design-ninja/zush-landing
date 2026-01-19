@@ -194,9 +194,15 @@
 
     &__PriceAnnual {
         color: var(--muted-foreground);
-        font-size: 0.75rem;
+        font-size: 0.875rem;
         margin-left: 0.5rem;
         white-space: nowrap;
+    }
+
+    &__PriceAnnualValue {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: var(--foreground);
     }
 
     &__Features {
@@ -361,6 +367,8 @@
 .AnnualToggle__Label {
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
     font-size: 0.75rem;
     color: var(--muted-foreground);
     white-space: nowrap;

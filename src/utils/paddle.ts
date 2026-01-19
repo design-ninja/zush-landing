@@ -1,16 +1,8 @@
-import { SUPABASE_URL } from './supabase';
-
 interface PaddleCheckoutOptions {
   items: { priceId: string; quantity: number }[];
   customData?: {
     device_id?: string;
   };
-}
-
-interface PaddlePrice {
-  amount: number;
-  currency_code: string;
-  formatted: string;
 }
 
 declare global {
@@ -23,36 +15,6 @@ declare global {
   }
 }
 
-/**
- * Fetches price information from Paddle API via Supabase function
- */
-export async function getPaddlePrice(priceId: string): Promise<PaddlePrice | null> {
-  try {
-    const response = await fetch(
-      `${SUPABASE_URL}/functions/v1/get-price?price_id=${encodeURIComponent(priceId)}`,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    );
-
-    if (!response.ok) {
-      console.error('Failed to fetch price:', response.status, response.statusText);
-      return null;
-    }
-
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error fetching price:', error);
-    return null;
-  }
-}
-
-/**
- * Opens Paddle checkout overlay with optional device_id for auto-activation
- */
 export function openPaddleCheckout(deviceId?: string | null, priceId?: string | null): boolean {
   console.log('[Paddle] openPaddleCheckout called:', { deviceId, priceId });
   

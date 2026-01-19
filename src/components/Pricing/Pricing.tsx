@@ -18,13 +18,15 @@ import SectionHeader from '../SectionHeader';
 import AppleIcon from '../AppleIcon';
 import MobileDownloadModal from '../MobileDownloadModal';
 import { openPaddleCheckout } from '@/utils/paddle';
-import { usePaddlePrice } from '@/hooks/usePaddlePrice';
-import { CreditPack, useRemoteConfig } from '@/hooks/useRemoteConfig';
 import { useIsMobile } from '@/hooks/useIsMobile';
-import { DOWNLOAD_URL } from '@/constants';
+import {
+  DOWNLOAD_URL,
+  APP_CONFIG,
+  CREDIT_PACKS,
+  CreditPack,
+  BillingPeriod,
+} from '@/constants';
 import styles from './Pricing.module.scss';
-
-type BillingPeriod = 'monthly' | 'annual';
 
 interface Feature {
   title: string;
@@ -42,18 +44,6 @@ interface Plan {
   isPro: boolean;
   highlight?: boolean;
 }
-
-const formatNumber = (num: number): string => {
-  return num >= 1000 ? num.toLocaleString('en-US') : String(num);
-};
-
-const DEFAULT_CREDITS = [500, 2000, 5000, 10000];
-
-const parsePriceAmount = (value?: string | null): number | null => {
-  if (!value) return null;
-  const parsed = parseFloat(value.replace(/[^0-9.]/g, ''));
-  return Number.isFinite(parsed) ? parsed : null;
-};
 
 const getCreditsByPeriod = (packs: CreditPack[], period: BillingPeriod): number[] => {
   const credits = packs
@@ -79,21 +69,12 @@ const Pricing = () => {
   const isMobile = useIsMobile();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  console.log('[Pricing] URL info:', {
-    search: location.search,
-    hash: location.hash,
-    deviceId,
-  });
   const [planType, setPlanType] = useState<BillingPeriod>('monthly');
   const [selectedCredits, setSelectedCredits] = useState(2000);
 
-  const { config } = useRemoteConfig();
-  const creditPacks = useMemo(() => config?.credit_packs ?? [], [config?.credit_packs]);
-
   const availableCredits = useMemo(() => {
-    const creditsByPeriod = getCreditsByPeriod(creditPacks, planType);
-    return creditsByPeriod.length > 0 ? creditsByPeriod : DEFAULT_CREDITS;
-  }, [creditPacks, planType]);
+    return getCreditsByPeriod(CREDIT_PACKS, planType);
+  }, [planType]);
 
   useEffect(() => {
     if (!availableCredits.includes(selectedCredits)) {
@@ -101,38 +82,24 @@ const Pricing = () => {
     }
   }, [availableCredits, selectedCredits]);
 
-  const monthlyPack = getPackByCredits(creditPacks, 'monthly', selectedCredits);
-  const annualPack = getPackByCredits(creditPacks, 'annual', selectedCredits);
+  const monthlyPack = getPackByCredits(CREDIT_PACKS, 'monthly', selectedCredits);
+  const annualPack = getPackByCredits(CREDIT_PACKS, 'annual', selectedCredits);
 
-  const { price: monthlyPrice, loading: monthlyLoading } = usePaddlePrice(
-    monthlyPack?.price_id
-  );
-  const { price: annualPrice, loading: annualLoading } = usePaddlePrice(
-    annualPack?.price_id
-  );
+  const currentPack = planType === 'monthly' ? monthlyPack : annualPack;
+  const currentPriceId = currentPack?.price_id;
 
-  const currentPrice = planType === 'monthly' ? monthlyPrice : annualPrice;
-  const currentPriceLoading =
-    planType === 'monthly' ? monthlyLoading : annualLoading;
-  const currentPriceId =
-    planType === 'monthly' ? monthlyPack?.price_id : annualPack?.price_id;
-  const currentPeriod = planType === 'monthly' ? 'month' : 'year';
+  const monthlyPrice = monthlyPack?.price ?? 0;
+  const annualPrice = annualPack?.price ?? 0;
 
-  // Calculate discount for annual plan (only when prices are loaded)
-  const monthlyPriceNum = parsePriceAmount(monthlyPrice);
-  const annualPriceNum = parsePriceAmount(annualPrice);
   const discountPercent =
-    monthlyPriceNum && annualPriceNum
-      ? Math.round(
-          ((monthlyPriceNum * 12 - annualPriceNum) / (monthlyPriceNum * 12)) *
-            100
-        )
-      : null;
-  const discountLabel = discountPercent ? `save ${discountPercent}%` : 'save 17%';
-  const annualMonthlyEquivalent =
-    annualPriceNum ? annualPriceNum / 12 : null;
+    monthlyPrice && annualPrice
+      ? Math.round(((monthlyPrice * 12 - annualPrice) / (monthlyPrice * 12)) * 100)
+      : 17;
+  const discountLabel = `save ${discountPercent}%`;
 
-  const freeLimit = config?.free_tier_limit ?? 30;
+  const annualMonthlyEquivalent = annualPrice / 12;
+
+  const freeLimit = APP_CONFIG.free_tier_limit;
 
   const plans: Plan[] = [
     {
@@ -166,8 +133,8 @@ const Pricing = () => {
     },
     {
       name: 'Zush 🌟 PRO',
-      price: currentPriceLoading ? '...' : currentPrice || '...',
-      period: currentPeriod,
+      price: `$${planType === 'monthly' ? monthlyPrice : annualMonthlyEquivalent.toFixed(2)}`,
+      period: 'month',
       description: 'Flexible credit packs for power users',
       features: [
         {
@@ -255,6 +222,12 @@ const Pricing = () => {
 
                   {plan.isPro && (
                     <label className={styles.AnnualToggle}>
+                      <span className={styles.AnnualToggle__Label}>
+                        <span className={styles.AnnualToggle__Title}>Annual</span>
+                        <span className={styles.AnnualToggle__Discount}>
+                          {discountLabel}
+                        </span>
+                      </span>
                       <input
                         type='checkbox'
                         checked={planType === 'annual'}
@@ -265,12 +238,6 @@ const Pricing = () => {
                       />
                       <span className={styles.AnnualToggle__Track}>
                         <span className={styles.AnnualToggle__Thumb} />
-                      </span>
-                      <span className={styles.AnnualToggle__Label}>
-                        <span className={styles.AnnualToggle__Title}>Annual</span>
-                        <span className={styles.AnnualToggle__Discount}>
-                          {discountLabel}
-                        </span>
                       </span>
                     </label>
                   )}
@@ -318,18 +285,16 @@ const Pricing = () => {
 
                 <div className={styles.PricingCard__Price}>
                   <span className={styles.PricingCard__PriceValue}>
-                    {plan.isPro && planType === 'annual' && annualMonthlyEquivalent
-                      ? `$${annualMonthlyEquivalent.toFixed(2)}`
-                      : plan.price}
+                    {plan.price}
                   </span>
                   {plan.period && (
                     <span className={styles.PricingCard__PricePeriod}>
-                      {plan.isPro ? '/ month' : `/ ${plan.period}`}
+                      / {plan.period}
                     </span>
                   )}
                   {plan.isPro && planType === 'annual' && (
                     <span className={styles.PricingCard__PriceAnnual}>
-                      {annualPrice ?? '...'} / year
+                      <span className={styles.PricingCard__PriceAnnualValue}>${annualPrice}</span> / year
                     </span>
                   )}
                 </div>
@@ -357,7 +322,6 @@ const Pricing = () => {
                 <Button
                   variant={plan.isPro ? 'primary' : 'black'}
                   onClick={() => handleButtonClick(plan.isPro)}
-                  disabled={plan.isPro ? !currentPriceId : false}
                 >
                   {!plan.isPro && <AppleIcon />}
                   {plan.buttonText}

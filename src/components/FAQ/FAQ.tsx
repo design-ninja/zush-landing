@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useRemoteConfig } from '@/hooks/useRemoteConfig';
+import { APP_CONFIG, CREDIT_PACKS } from '@/constants';
 import SectionHeader from '../SectionHeader';
 import styles from './FAQ.module.scss';
 
@@ -39,7 +39,6 @@ const FAQItem = ({ question, answer, isOpen, onClick }: FAQItemProps) => {
 
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-  const { config } = useRemoteConfig();
 
   const formatNumber = (value: number) =>
     new Intl.NumberFormat('en-US').format(value);
@@ -49,27 +48,22 @@ const FAQ = () => {
 
   const formatExtension = (extension: string) => extension.toUpperCase();
 
-  const imageExtensions = normalizeExtensions(config.image_extensions);
+  const imageExtensions = normalizeExtensions(APP_CONFIG.image_extensions);
   const baseExtensions = imageExtensions.filter(
     (extension) => extension !== 'svg' && extension !== 'pdf'
   );
   const supportsSvg = imageExtensions.includes('svg');
   const supportsPdf = imageExtensions.includes('pdf');
   const formattedExtensions = baseExtensions.map(formatExtension).join(', ');
-  const freeTierLimit = formatNumber(config.free_tier_limit);
-  const defaultCredits = [500, 2000, 5000, 10000];
-  const creditPacks = Array.isArray(config.credit_packs) ? config.credit_packs : [];
-  const creditValues = creditPacks
-    .map((pack) => pack.credits)
-    .filter((value) => Number.isFinite(value));
-  const creditsSource = creditValues.length > 0 ? creditValues : defaultCredits;
-  const minCredits = formatNumber(Math.min(...creditsSource));
-  const maxCredits = formatNumber(Math.max(...creditsSource));
-  const aiProvider = config.ai_provider;
-  const aiModel = config.ai_model;
-  const refundPeriodDays = config.refund_period_days;
-  const minMacosVersion = config.min_macos_version;
-  const minMacosName = config.min_macos_name;
+  const freeTierLimit = formatNumber(APP_CONFIG.free_tier_limit);
+  const creditValues = CREDIT_PACKS.map((pack) => pack.credits);
+  const minCredits = formatNumber(Math.min(...creditValues));
+  const maxCredits = formatNumber(Math.max(...creditValues));
+  const aiProvider = APP_CONFIG.ai_provider;
+  const aiModel = APP_CONFIG.ai_model;
+  const refundPeriodDays = APP_CONFIG.refund_period_days;
+  const minMacosVersion = APP_CONFIG.min_macos_version;
+  const minMacosName = APP_CONFIG.min_macos_name;
 
   const faqs = [
     {
