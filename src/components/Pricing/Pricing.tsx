@@ -150,8 +150,8 @@ const Pricing = () => {
           icon: FileText,
         },
         {
-          title: 'English language only',
-          desc: 'Generate file names in English',
+          title: 'English only',
+          desc: 'English file names with the default date format',
           icon: Globe,
         },
       ],
@@ -187,8 +187,8 @@ const Pricing = () => {
           icon: FileCode,
         },
         {
-          title: 'Multi-language Support',
-          desc: 'Generate file names in 60+ languages',
+          title: 'Localization',
+          desc: 'File names in 60+ languages and custom date format',
           icon: Globe,
         },
       ],

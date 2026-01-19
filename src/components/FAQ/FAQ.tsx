@@ -108,9 +108,9 @@ const FAQ = () => {
         'Yes, you can easily undo any changes in the Activity section of the Monitor tab.',
     },
     {
-      question: 'Does Zush support multiple languages?',
+      question: 'Does Zush support multiple languages and date formats?',
       answer:
-        'Yes, Zush supports 60+ languages for AI-generated filenames. You can select your preferred language in the app settings; non-English languages require PRO.',
+        'Yes, Zush supports 60+ languages for AI-generated filenames and lets you choose a date format. Both are available in app settings; non-English languages and date format changes require PRO.',
     },
     {
       question: 'How many renames are included in the free tier?',
