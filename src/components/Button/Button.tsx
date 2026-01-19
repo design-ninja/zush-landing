@@ -1,4 +1,4 @@
-import { ReactNode, AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
+import { ReactNode, AnchorHTMLAttributes, ButtonHTMLAttributes, MouseEvent } from 'react';
 import { Link, LinkProps } from 'react-router-dom';
 import styles from './Button.module.scss';
 
@@ -9,6 +9,7 @@ interface BaseProps {
   variant?: ButtonVariant;
   size?: ButtonSize;
   fluid?: boolean;
+  isLoading?: boolean;
   children: ReactNode;
   className?: string;
 }
@@ -40,6 +41,7 @@ const Button = ({
   variant = 'primary', 
   size = 'md',
   fluid = false,
+  isLoading = false,
   children, 
   className = '',
   ...props 
@@ -49,30 +51,65 @@ const Button = ({
     styles[`Button_${variant}`],
     styles[`Button_${size}`],
     fluid && styles.Button_fluid,
+    isLoading && styles.Button_loading,
     className
   ].filter(Boolean).join(' ');
 
   if (props.as === 'a') {
-    const { as, ...linkProps } = props;
+    const { as, onClick, tabIndex, ...linkProps } = props;
+    const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+      if (isLoading) {
+        event.preventDefault();
+        event.stopPropagation();
+        return;
+      }
+      onClick?.(event);
+    };
     return (
-      <a className={classNames} {...linkProps as AnchorHTMLAttributes<HTMLAnchorElement>}>
+      <a
+        className={classNames}
+        aria-disabled={isLoading || undefined}
+        tabIndex={isLoading ? -1 : tabIndex}
+        onClick={handleClick}
+        {...linkProps as AnchorHTMLAttributes<HTMLAnchorElement>}
+      >
         {children}
       </a>
     );
   }
 
   if (props.as === Link) {
-    const { as, ...linkProps } = props;
+    const { as, onClick, tabIndex, ...linkProps } = props;
+    const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+      if (isLoading) {
+        event.preventDefault();
+        event.stopPropagation();
+        return;
+      }
+      onClick?.(event);
+    };
     return (
-      <Link className={classNames} {...linkProps as LinkProps}>
+      <Link
+        className={classNames}
+        aria-disabled={isLoading || undefined}
+        tabIndex={isLoading ? -1 : tabIndex}
+        onClick={handleClick}
+        {...linkProps as LinkProps}
+      >
         {children}
       </Link>
     );
   }
 
-  const { as, ...buttonProps } = props as ButtonAsButton;
+  const { as, disabled, ...buttonProps } = props as ButtonAsButton;
+  const isDisabled = isLoading || disabled;
   return (
-    <button className={classNames} {...buttonProps}>
+    <button
+      className={classNames}
+      disabled={isDisabled}
+      aria-busy={isLoading || undefined}
+      {...buttonProps}
+    >
       {children}
     </button>
   );

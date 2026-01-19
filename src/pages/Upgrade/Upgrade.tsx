@@ -237,6 +237,7 @@ const Upgrade = () => {
               variant="primary"
               onClick={handleUpgrade}
               disabled={state === 'upgrading'}
+              isLoading={state === 'upgrading'}
             >
               {state === 'upgrading' ? 'Upgrading...' : 'Confirm Upgrade to PRO Annual'}
             </Button>
@@ -274,7 +275,12 @@ const Upgrade = () => {
             disabled={state === 'loading'}
           />
 
-          <Button type="submit" variant="primary" disabled={state === 'loading'}>
+          <Button
+            type="submit"
+            variant="primary"
+            disabled={state === 'loading'}
+            isLoading={state === 'loading'}
+          >
             {state === 'loading' ? 'Checking...' : 'Check Subscription'}
           </Button>
         </form>

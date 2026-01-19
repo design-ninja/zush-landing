@@ -22,7 +22,7 @@ $border: oklch(0.92 0.003 265);
 $glass: oklch(1 0 0 / 0.7);
 $glass-border: oklch(0 0 0 / 0.05);
 
-$success: oklch(0.65 0.17 160);
+$success: oklch(0.7557 0.208 146.92);
 $success-foreground: oklch(1 0 0);
 $destructive: oklch(0.6 0.2 25);
 $destructive-foreground: oklch(1 0 0);
@@ -84,6 +84,9 @@ $radius-full: 9999px;
 // Transitions
 $transition-fast: 0.2s ease;
 $transition-normal: 0.3s ease;
+
+// Opacity
+$opacity-disabled: 0.6;
 
 // Shadows
 $shadow-sm: 0 0.25rem 1rem oklch(0 0 0 / 0.02);

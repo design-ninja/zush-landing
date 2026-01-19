@@ -67,4 +67,11 @@
             transform: translateY(-0.125rem);
         }
     }
+
+    &_loading {
+        opacity: $opacity-disabled;
+        cursor: default;
+        pointer-events: none;
+        transform: none;
+    }
 }
