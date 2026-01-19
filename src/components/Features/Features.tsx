@@ -189,7 +189,7 @@ const Features = () => {
           {/* Item 4: Custom Patterns */}
           <BentoCard
             title='Custom Patterns'
-            description='Set your own file naming pattern with variables like {title}, {date}, {time}, or {category}.'
+            description='Set your own file naming pattern with variables like {title}, {original}, {date}, {time}, or {category}.'
             icon={Sliders}
             delay={0.4}
           >
