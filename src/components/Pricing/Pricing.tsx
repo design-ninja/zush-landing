@@ -243,6 +243,22 @@ const Pricing = () => {
                   )}
                 </div>
 
+                <div className={styles.PricingCard__Price}>
+                  <span className={styles.PricingCard__PriceValue}>
+                    {plan.price}
+                  </span>
+                  {plan.period && (
+                    <span className={styles.PricingCard__PricePeriod}>
+                      / {plan.period}
+                    </span>
+                  )}
+                  {plan.isPro && planType === 'annual' && (
+                    <span className={styles.PricingCard__PriceAnnual}>
+                      <span className={styles.PricingCard__PriceAnnualValue}>${annualPrice}</span> / year
+                    </span>
+                  )}
+                </div>
+
                 {plan.isPro ? (
                   <div className={styles.Controls__PricingCard}>
                     <div className={styles.PackLabel__PricingCard}>
@@ -282,22 +298,6 @@ const Pricing = () => {
                     </div>
                   </div>
                 )}
-
-                <div className={styles.PricingCard__Price}>
-                  <span className={styles.PricingCard__PriceValue}>
-                    {plan.price}
-                  </span>
-                  {plan.period && (
-                    <span className={styles.PricingCard__PricePeriod}>
-                      / {plan.period}
-                    </span>
-                  )}
-                  {plan.isPro && planType === 'annual' && (
-                    <span className={styles.PricingCard__PriceAnnual}>
-                      <span className={styles.PricingCard__PriceAnnualValue}>${annualPrice}</span> / year
-                    </span>
-                  )}
-                </div>
               </div>
 
               <div className={styles.PricingCard__Features}>
