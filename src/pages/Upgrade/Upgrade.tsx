@@ -21,7 +21,8 @@ const Upgrade = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const emailFromUrl = searchParams.get('email');
-  
+  const deviceId = searchParams.get('device_id');
+
   const [email, setEmail] = useState(emailFromUrl || '');
   const [state, setState] = useState<UpgradeState>(emailFromUrl ? 'loading' : 'form');
   const [error, setError] = useState('');
@@ -33,58 +34,26 @@ const Upgrade = () => {
   const monthlyLimit = config?.pro_monthly_limit_monthly ?? 1000;
   const annualLimit = config?.pro_monthly_limit_annual ?? 5000;
 
-  // Auto-check subscription if email is in URL
-  useEffect(() => {
-    if (emailFromUrl && !autoCheckTriggered.current) {
-      autoCheckTriggered.current = true;
-      checkSubscriptionAuto(emailFromUrl);
+  const getEligibilityError = (info: SubscriptionInfo | null): string | null => {
+    if (!info?.subscription_type || !info?.subscription_status) {
+      return 'Subscription details are missing. Please try again.';
     }
-  }, [emailFromUrl]);
-
-  const checkSubscriptionAuto = async (emailToCheck: string) => {
-    setState('loading');
-    setError('');
-
-    try {
-      const response = await fetch(
-        `${SUPABASE_URL}/functions/v1/get-customer-portal-url`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email: emailToCheck.trim() }),
-        }
-      );
-
-      if (response.status === 404) {
-        setError('No active subscription found for this email.');
-        setState('form');
-        return;
-      }
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        setError(data.error || 'Something went wrong. Please try again.');
-        setState('form');
-        return;
-      }
-
-      setSubscriptionInfo({ subscription_type: 'monthly', subscription_status: 'active' });
-      setState('confirm');
-
-    } catch {
-      setError('Connection error. Please check your internet and try again.');
-      setState('form');
+    if (info.subscription_type === 'annual') {
+      return 'Your subscription is already on the Annual plan.';
     }
+    if (info.subscription_type !== 'monthly') {
+      return 'Upgrade is available only for monthly subscriptions.';
+    }
+    if (info.subscription_status !== 'active') {
+      return 'Your monthly subscription is not active.';
+    }
+    return null;
   };
 
-  const checkSubscription = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!email) {
-      setError('Please enter your email address');
+  const runSubscriptionCheck = async (emailToCheck: string) => {
+    if (!deviceId) {
+      setError('Please open this page from the app to upgrade your subscription.');
+      setState('form');
       return;
     }
 
@@ -99,7 +68,7 @@ const Upgrade = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ email: email.trim() }),
+          body: JSON.stringify({ email: emailToCheck.trim(), device_id: deviceId }),
         }
       );
 
@@ -117,10 +86,19 @@ const Upgrade = () => {
         return;
       }
 
-      // Check if already annual
-      // Note: We need to add subscription info to the response
-      // For now, proceed to confirmation
-      setSubscriptionInfo({ subscription_type: 'monthly', subscription_status: 'active' });
+      const info: SubscriptionInfo = {
+        subscription_type: data.subscription_type,
+        subscription_status: data.subscription_status,
+      };
+
+      const eligibilityError = getEligibilityError(info);
+      if (eligibilityError) {
+        setError(eligibilityError);
+        setState('form');
+        return;
+      }
+
+      setSubscriptionInfo(info);
       setState('confirm');
 
     } catch {
@@ -129,7 +107,38 @@ const Upgrade = () => {
     }
   };
 
+  // Auto-check subscription if email is in URL
+  useEffect(() => {
+    if (emailFromUrl && !autoCheckTriggered.current) {
+      autoCheckTriggered.current = true;
+      runSubscriptionCheck(emailFromUrl);
+    }
+  }, [emailFromUrl, deviceId]);
+
+  const checkSubscription = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!email) {
+      setError('Please enter your email address');
+      return;
+    }
+    await runSubscriptionCheck(email);
+  };
+
   const handleUpgrade = async () => {
+    if (!deviceId) {
+      setError('Please open this page from the app to upgrade your subscription.');
+      setState('confirm');
+      return;
+    }
+
+    const eligibilityError = getEligibilityError(subscriptionInfo);
+    if (eligibilityError) {
+      setError(eligibilityError);
+      setState('confirm');
+      return;
+    }
+
     setState('upgrading');
     setError('');
 
@@ -141,7 +150,7 @@ const Upgrade = () => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ email: email.trim() }),
+          body: JSON.stringify({ email: email.trim(), device_id: deviceId }),
         }
       );
 
