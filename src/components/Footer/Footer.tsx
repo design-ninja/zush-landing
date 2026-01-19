@@ -43,7 +43,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Bugs & Features
+                  Features & Bug Reports
                 </a>
               </li>
             </ul>
