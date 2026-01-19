@@ -85,7 +85,7 @@ const Pricing = () => {
     deviceId,
   });
   const [planType, setPlanType] = useState<BillingPeriod>('monthly');
-  const [selectedCredits, setSelectedCredits] = useState(DEFAULT_CREDITS[0]);
+  const [selectedCredits, setSelectedCredits] = useState(2000);
 
   const { config } = useRemoteConfig();
   const creditPacks = useMemo(() => config?.credit_packs ?? [], [config?.credit_packs]);
@@ -267,10 +267,10 @@ const Pricing = () => {
                         <span className={styles.AnnualToggle__Thumb} />
                       </span>
                       <span className={styles.AnnualToggle__Label}>
-                        Annual{' '}
-                        {/* <span className={styles.AnnualToggle__Discount}>
-                          ({discountLabel})
-                        </span> */}
+                        <span className={styles.AnnualToggle__Title}>Annual</span>
+                        <span className={styles.AnnualToggle__Discount}>
+                          {discountLabel}
+                        </span>
                       </span>
                     </label>
                   )}
@@ -279,7 +279,7 @@ const Pricing = () => {
                 {plan.isPro ? (
                   <div className={styles.Controls__PricingCard}>
                     <div className={styles.PackLabel__PricingCard}>
-                      Choose your monthly credits{' '}
+                      Choose monthly credits{' '}
                       <span className={styles.PackLabelHint__PricingCard}>
                         · 1 credit = 1 file rename
                       </span>
@@ -295,7 +295,7 @@ const Pricing = () => {
                           }`}
                           onClick={() => setSelectedCredits(credits)}
                         >
-                          {formatNumber(credits)}
+                          {String(credits)}
                         </button>
                       ))}
                     </div>
@@ -310,7 +310,7 @@ const Pricing = () => {
                         className={`${styles.PricingCard__ToggleButton} ${styles.PackToggleButton__PricingCard} ${styles.PricingCard__ToggleButton_active}`}
                         disabled
                       >
-                        {formatNumber(freeLimit)}
+                        {String(freeLimit)}
                       </button>
                     </div>
                   </div>
@@ -325,6 +325,11 @@ const Pricing = () => {
                   {plan.period && (
                     <span className={styles.PricingCard__PricePeriod}>
                       {plan.isPro ? '/ month' : `/ ${plan.period}`}
+                    </span>
+                  )}
+                  {plan.isPro && planType === 'annual' && (
+                    <span className={styles.PricingCard__PriceAnnual}>
+                      {annualPrice ?? '...'} / year
                     </span>
                   )}
                 </div>
