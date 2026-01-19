@@ -1,21 +1,18 @@
 import { useState, useEffect } from 'react';
 import { getPaddlePrice } from '../utils/paddle';
 
-const PADDLE_PRICE_ID = import.meta.env.VITE_PADDLE_PRICE_ID;
-
 export const usePaddlePrice = (priceId?: string | null) => {
   const [price, setPrice] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const finalPriceId = priceId || PADDLE_PRICE_ID;
-
-    if (!finalPriceId) {
+    if (!priceId) {
       setLoading(false);
+      setPrice(null);
       return;
     }
 
-    getPaddlePrice(finalPriceId)
+    getPaddlePrice(priceId)
       .then((priceData) => {
         if (priceData?.formatted) {
           setPrice(priceData.formatted);

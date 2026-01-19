@@ -38,9 +38,7 @@ const ManageSubscription = () => {
       if (response.ok && data.portal_url) {
         window.location.href = data.portal_url;
       } else if (response.status === 404) {
-        setError(
-          'No active subscription found for this email. One-time purchases do not require subscription management.'
-        );
+        setError('No active subscription found for this email.');
       } else {
         setError(data.error || 'Something went wrong. Please try again.');
       }
@@ -95,9 +93,7 @@ const ManageSubscription = () => {
         <div className={styles.ManageSubscription__Actions}>
           <div className={styles.ManageSubscription__Info}>
             <p>
-              <strong>Note:</strong> This is only for monthly and annual
-              subscriptions. One-time purchases do not require subscription
-              management.
+              <strong>Note:</strong> This is only for active subscriptions.
             </p>
           </div>
 

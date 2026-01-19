@@ -57,8 +57,14 @@ const FAQ = () => {
   const supportsPdf = imageExtensions.includes('pdf');
   const formattedExtensions = baseExtensions.map(formatExtension).join(', ');
   const freeTierLimit = formatNumber(config.free_tier_limit);
-  const proMonthlyLimitMin = formatNumber(config.pro_monthly_limit_monthly);
-  const proMonthlyLimitMax = formatNumber(config.pro_monthly_limit_one_time);
+  const defaultCredits = [500, 2000, 5000, 10000];
+  const creditPacks = Array.isArray(config.credit_packs) ? config.credit_packs : [];
+  const creditValues = creditPacks
+    .map((pack) => pack.credits)
+    .filter((value) => Number.isFinite(value));
+  const creditsSource = creditValues.length > 0 ? creditValues : defaultCredits;
+  const minCredits = formatNumber(Math.min(...creditsSource));
+  const maxCredits = formatNumber(Math.max(...creditsSource));
   const aiProvider = config.ai_provider;
   const aiModel = config.ai_model;
   const refundPeriodDays = config.refund_period_days;
@@ -114,7 +120,7 @@ const FAQ = () => {
     },
     {
       question: 'How many renames are included in the free tier?',
-      answer: `The free tier includes ${freeTierLimit} AI-powered renames. This is enough to experience the magic of Zush first-hand. PRO plans include ${proMonthlyLimitMin}-${proMonthlyLimitMax} renames per month depending on the plan.`,
+      answer: `The free tier includes ${freeTierLimit} AI-powered renames. This is enough to experience the magic of Zush first-hand. PRO plans include ${minCredits}-${maxCredits} credits per month depending on the pack (1 credit = 1 rename).`,
     },
     {
       question: 'Which operating systems are supported?',

@@ -1,7 +1,5 @@
 import { SUPABASE_URL } from './supabase';
 
-const PADDLE_PRICE_ID = import.meta.env.VITE_PADDLE_PRICE_ID;
-
 interface PaddleCheckoutOptions {
   items: { priceId: string; quantity: number }[];
   customData?: {
@@ -63,14 +61,13 @@ export function openPaddleCheckout(deviceId?: string | null, priceId?: string | 
     return false;
   }
 
-  const finalPriceId = priceId || PADDLE_PRICE_ID;
-  if (!finalPriceId) {
+  if (!priceId) {
     console.error('[Paddle] Price ID not provided');
     return false;
   }
 
   const checkoutOptions: PaddleCheckoutOptions = {
-    items: [{ priceId: finalPriceId, quantity: 1 }],
+    items: [{ priceId, quantity: 1 }],
   };
 
   if (deviceId) {
