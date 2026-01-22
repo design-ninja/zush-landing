@@ -50,7 +50,7 @@ const Footer = () => {
           </div>
         </div>
         <div className={styles.Footer__Bottom}>
-          <Text color="subtle">© 2026 lirik. All rights reserved</Text>
+          <Text color="subtle">© {new Date().getFullYear()} lirik. All rights reserved</Text>
           <div className={styles.Footer__BottomLinks}>
             <Text color="subtle">
               Designed by <a href="https://lirik.pro/en" target="_blank" rel="noopener noreferrer">lirik</a> with 💚
