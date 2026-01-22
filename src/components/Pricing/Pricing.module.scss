@@ -4,7 +4,7 @@
 .Pricing {
     padding: 6rem 0;
     background-color: var(--muted);
-    scroll-margin-top: $navbar-height;
+    scroll-margin-top: calc($navbar-height - 4rem);
 
     &__Container {
         @include container;
