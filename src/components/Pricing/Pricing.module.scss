@@ -160,7 +160,6 @@
     }
 
     &__ToggleButton:disabled {
-        cursor: default;
         opacity: $opacity-disabled;
     }
 
@@ -299,7 +298,7 @@
     padding: 0.4rem;
     border-radius: $radius-md;
     border: 1px solid var(--border);
-    min-height: 3.25rem;
+    min-height: 3.75rem;
 
     @include mobile {
         grid-template-columns: repeat(2, 1fr);
@@ -315,8 +314,31 @@
 }
 
 .PackToggleButton__PricingCard {
-    min-height: 2rem;
+    min-height: 2.5rem;
     font-size: 0.875rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.125rem;
+    padding: 0.375rem 0.5rem;
+}
+
+.PackToggleButton__Credits {
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.PackToggleButton__CurrentLabel {
+    font-size: 0.5625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted-foreground);
+    line-height: 1;
+
+    .PricingCard__ToggleButton_active & {
+        color: rgba(255, 255, 255, 0.5);
+    }
 }
 
 .PriceMeta__PricingCard {
@@ -411,4 +433,122 @@
     color: var(--success);
     font-weight: 600;
     line-height: 1.1;
+}
+
+// Upgrade mode styles
+.Pricing__CurrentPlan {
+    max-width: 28rem;
+    margin: 0 auto 2rem;
+    padding: 1rem 1.5rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: $radius-lg;
+    text-align: center;
+}
+
+.Pricing__CurrentPlanLabel {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted-foreground);
+    margin-bottom: 0.5rem;
+}
+
+.Pricing__CurrentPlanInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.Pricing__CurrentPlanName {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--foreground);
+}
+
+.Pricing__CurrentPlanCredits {
+    font-size: 0.875rem;
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.Pricing__Loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 4rem 2rem;
+}
+
+.Pricing__LoadingIcon {
+    animation: spin 1s linear infinite;
+    color: var(--primary);
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.Pricing__Error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.Pricing__SuccessMessage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 4rem 2rem;
+    text-align: center;
+    max-width: 32rem;
+    margin: 0 auto;
+}
+
+.Pricing__SuccessIcon {
+    color: var(--success);
+}
+
+.Pricing__SuccessTitle {
+    margin-bottom: 0;
+}
+
+.PricingCard_dimmed {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+
+
+.PricingCard__ProrationNote {
+    font-size: 0.8125rem;
+    color: var(--muted-foreground);
+    text-align: center;
+    padding: 0.75rem;
+    background: var(--muted);
+    border-radius: $radius-md;
+    margin-bottom: 0.75rem;
+}
+
+.PricingCard__Error {
+    font-size: 0.8125rem;
+    color: var(--destructive);
+    text-align: center;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
 }

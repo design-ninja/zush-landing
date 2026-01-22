@@ -69,17 +69,9 @@ const ThankYou = () => {
               <ArrowRight size={18} />
             </Button>
           )}
-          <Button as={Link} to="/" variant="ghost">
+          <Link to="/" style={{ color: 'var(--primary)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
             <ArrowLeft size={18} />
             Back to Home
-          </Button>
-        </div>
-
-        <div className={styles.ThankYou__Help}>
-          <p>Need a new activation link?</p>
-          <Link to="/recover" className={styles.ThankYou__Link}>
-            <span>Request Activation Link</span>
-            <ArrowRight size={16} />
           </Link>
         </div>
       </div>

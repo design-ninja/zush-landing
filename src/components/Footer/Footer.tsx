@@ -53,7 +53,7 @@ const Footer = () => {
           <Text color="subtle">© 2026 lirik. All rights reserved</Text>
           <div className={styles.Footer__BottomLinks}>
             <Text color="subtle">
-              Designed by <a href="https://lirik.pro/en" target="_blank" rel="noopener noreferrer">lirik</a> with 💜
+              Designed by <a href="https://lirik.pro/en" target="_blank" rel="noopener noreferrer">lirik</a> with 💚
             </Text>
           </div>
         </div>
