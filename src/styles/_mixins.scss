@@ -67,3 +67,8 @@
         box-shadow: $shadow-focus;
     }
 }
+
+@mixin corner-shape-squircle {
+    -webkit-corner-shape: squircle;
+    corner-shape: squircle;
+}

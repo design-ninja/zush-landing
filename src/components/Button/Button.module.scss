@@ -1,8 +1,10 @@
 @use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
 
 .Button {
     all: unset;
     border-radius: $radius-full;
+    @include corner-shape-squircle;
     font-weight: 600;
     transition: all $transition-fast;
     display: inline-flex;
