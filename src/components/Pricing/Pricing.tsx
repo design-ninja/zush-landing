@@ -444,7 +444,7 @@ const Pricing = () => {
         {isUpgradeMode && upgradeState === 'error' && (
           <div className={styles.Pricing__Error}>
             <Text as='p' color='subtle'>{upgradeError}</Text>
-            <Button as={Link} to='/' variant='secondary'>
+            <Button as={Link} to='/' variant='ghost'>
               Back to Home
             </Button>
           </div>

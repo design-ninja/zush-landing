@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import Hero from '@/components/Hero';
+import Videos from '@/components/Videos';
 import Features from '@/components/Features';
 import UseCases from '@/components/UseCases';
 import Pricing from '@/components/Pricing';
@@ -9,6 +10,7 @@ const Home = memo(() => (
   <>
     <Hero />
     <Features />
+    <Videos />
     <UseCases />
     <Pricing />
     <FAQ />
