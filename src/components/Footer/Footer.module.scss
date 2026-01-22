@@ -74,4 +74,21 @@
         display: flex;
         gap: 1.5rem;
     }
+
+    &__Social {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    &__SocialLink {
+        display: flex;
+        align-items: center;
+        color: var(--muted-foreground);
+        transition: color 0.2s;
+
+        &:hover {
+            color: var(--primary);
+        }
+    }
 }

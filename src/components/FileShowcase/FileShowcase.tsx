@@ -17,32 +17,32 @@ const slides: Slide[] = [
     files: [
       {
         before: 'IMG_0842.JPG',
-        after: 'Cute Pug Portrait.png',
+        after: 'Pug In Yellow Beanie.png',
         img: '/images/examples/pug.jpg',
       },
       {
         before: 'Screenshot 2024-08-08 at 09.14.25.png',
-        after: 'DashboardAnalytics.png',
+        after: 'TechnicalDashboard.png',
         img: '/images/examples/dashboard.jpg',
       },
       {
         before: 'IMG_4821.JPG',
-        after: 'Golden_Hour_Sunset.jpg',
+        after: 'Serene_Beach_Sunset.jpg',
         img: '/images/examples/sunset.jpg',
       },
       {
         before: '73819203_edit.png',
-        after: 'Black And White Cat.png',
+        after: 'Cat On A Table.png',
         img: '/images/examples/cat.jpg',
       },
       {
         before: 'Export_Data_v2.png',
-        after: 'Revenue_Chart_Q3.png',
+        after: 'Laptop_With_Graph.png',
         img: '/images/examples/chart.jpg',
       },
       {
         before: 'Untilted project(3).png',
-        after: 'Architecture-Diagram.png',
+        after: 'Context-Diagram-Components.png',
         img: '/images/examples/diagram.jpg',
       },
     ],
@@ -51,12 +51,12 @@ const slides: Slide[] = [
     files: [
       {
         before: 'DSC_9921.jpg',
-        after: 'mountainpeak.jpg',
+        after: 'mountainrangeatSunset.jpg',
         img: '/images/examples/mountain.jpg',
       },
       {
         before: 'photo_2024_03_15.png',
-        after: 'MORNING_COFFEE_SHOT.png',
+        after: 'COFFEE_CUPS_TOGETHER.png',
         img: '/images/examples/coffee.jpg',
       },
       {
@@ -66,17 +66,17 @@ const slides: Slide[] = [
       },
       {
         before: 'IMG_20240812_143052.jpg',
-        after: 'GoldenRetriever.jpg',
+        after: 'HappyDogOnBeach.jpg',
         img: '/images/examples/dog.jpg',
       },
       {
         before: 'received_1847362910.jpeg',
-        after: 'Pasta_Carbonara_Recipe.jpeg',
+        after: 'Delicious_Asian_Style_Beef.jpeg',
         img: '/images/examples/food.jpg',
       },
       {
         before: 'Screenshot_20240915-182634.png',
-        after: 'Night-CitySkyline-2026.png',
+        after: 'New-York-City-Skyline.png',
         img: '/images/examples/city.jpg',
       },
     ],
@@ -85,32 +85,32 @@ const slides: Slide[] = [
     files: [
       {
         before: 'PXL_20240720_091234.jpg',
-        after: 'spring_flowers_garden.jpg',
+        after: 'vibrant_yellow_flowers.jpg',
         img: '/images/examples/flowers.jpg',
       },
       {
         before: 'CAM00847.jpg',
-        after: 'RedSportsCar.jpg',
+        after: 'BlackFordMustang.jpg',
         img: '/images/examples/car.jpg',
       },
       {
         before: 'image(47).png',
-        after: 'FOREST_MORNING_MIST.png',
+        after: 'FOREST_PATH_SCENE.png',
         img: '/images/examples/nature.jpg',
       },
       {
         before: 'photo_6282910374.jpg',
-        after: 'Glass Skyscraper.jpg',
+        after: 'Skyscrapers From Below.jpg',
         img: '/images/examples/building.jpg',
       },
       {
         before: 'Screenshot 2024-11-02.png',
-        after: 'team_meeting.png',
+        after: 'modern_office_interior.png',
         img: '/images/examples/workspace.jpg',
       },
       {
         before: 'DJI_0234.JPG',
-        after: 'Mountain_Lake_Aerial.jpg',
+        after: 'Mountain_Range_Aerial.jpg',
         img: '/images/examples/mountain.jpg',
       },
     ],
