@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.5] - 2026-01-22
+### Added
+- 🖼️ Implemented onboarding permissions view for new users
+- 🔑 Allow subscription downgrades for existing users
+
+### Improved  
+- ⚡ Updated upgrade modal UI with plan comparison layout
+- 🔔 Enhanced notification handling throughout the app
+- 📈 Updated credit display and license status on activation
+
+### Fixed
+- 🐛 Reordered menu items and removed unnecessary key equivalents
+
 ## [1.2.4] - 2026-01-19
 ### Added
 - 🎉 Credit-based pricing model for flexible usage
