@@ -26,29 +26,6 @@
   @include shadow('lg');
 }
 
-.MobileDownloadModal__CloseButton {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  padding: 0;
-  background: transparent;
-  border: none;
-  border-radius: $radius-full;
-  color: var(--muted-foreground);
-  cursor: pointer;
-  transition: background $transition-fast, color $transition-fast;
-
-  &:hover {
-    background: var(--muted);
-    color: var(--foreground);
-  }
-}
-
 .MobileDownloadModal__Icon {
   display: flex;
   align-items: center;

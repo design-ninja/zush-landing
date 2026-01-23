@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Monitor, X } from 'lucide-react';
+import { Monitor } from 'lucide-react';
 import AppleIcon from '../AppleIcon';
 import { MIN_MACOS_VERSION } from '@/constants';
 import styles from './MobileDownloadModal.module.scss';
@@ -57,16 +57,7 @@ const MobileDownloadModal = ({ isOpen, onClose }: MobileDownloadModalProps) => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.2 }}
-            onClick={(e) => e.stopPropagation()}
           >
-            <button
-              className={styles.MobileDownloadModal__CloseButton}
-              onClick={onClose}
-              aria-label='Close modal'
-            >
-              <X size={20} />
-            </button>
-
             <div className={styles.MobileDownloadModal__Icon}>
               <Monitor size={32} />
             </div>

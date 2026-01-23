@@ -9,6 +9,11 @@
     padding: 1.25rem;
     overflow: visible;
 
+    @include mobile {
+        padding: 0.25rem;
+        margin-top: 1rem;
+    }
+
     &__Grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
