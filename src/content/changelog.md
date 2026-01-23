@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.2.6] - 2026-01-23
+### Added
+- 🚀 Added Sentry crash reporting and error analytics
+- 🔑 Added missing database indexes for query optimization
+
+### Improved  
+- ⚡ Improved ViewModel guidelines with data persistence and accessibility
+
+### Fixed
+- 🐛 Addressed code review issues with constants and error handling
+
 ## [1.2.5] - 2026-01-22
 ### Added
 - 🖼️ Implemented onboarding permissions view for new users
