@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useTheme } from './hooks/useTheme';
 import { useCheckoutAutoOpen } from './hooks/useCheckoutAutoOpen';
@@ -5,18 +6,32 @@ import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
-// Pages
+// Primary page - loaded immediately
 import Home from './pages/Home';
-import Legal from './pages/Legal';
-import Changelog from './pages/Changelog';
-import ThankYou from './pages/ThankYou';
-import Recover from './pages/Recover';
-import Activate from './pages/Activate';
-import ManageSubscription from './pages/ManageSubscription';
-import Upgrade from './pages/Upgrade';
-import NotFound from './pages/NotFound/NotFound';
+
+// Secondary pages - lazy loaded
+const Legal = lazy(() => import('./pages/Legal'));
+const Changelog = lazy(() => import('./pages/Changelog'));
+const ThankYou = lazy(() => import('./pages/ThankYou'));
+const Recover = lazy(() => import('./pages/Recover'));
+const Activate = lazy(() => import('./pages/Activate'));
+const ManageSubscription = lazy(() => import('./pages/ManageSubscription'));
+const Upgrade = lazy(() => import('./pages/Upgrade'));
+const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
 
 import styles from './App.module.scss';
+
+const PageLoader = () => (
+  <div style={{ 
+    display: 'flex', 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    minHeight: '50vh',
+    opacity: 0.5
+  }}>
+    Loading...
+  </div>
+);
 
 const AppContent = ({ theme, toggleTheme }: { theme: string; toggleTheme: () => void }) => {
   useCheckoutAutoOpen();
@@ -27,19 +42,21 @@ const AppContent = ({ theme, toggleTheme }: { theme: string; toggleTheme: () => 
       <div className={styles.App}>
         <Navbar theme={theme} toggleTheme={toggleTheme} />
         <main className={styles.App__Main}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/changelog" element={<Changelog />} />
-            <Route path="/terms-of-service" element={<Legal type="tos" />} />
-            <Route path="/privacy-policy" element={<Legal type="privacy" />} />
-            <Route path="/refund-policy" element={<Legal type="refund" />} />
-            <Route path="/thank-you" element={<ThankYou />} />
-            <Route path="/recover" element={<Recover />} />
-            <Route path="/activate" element={<Activate />} />
-            <Route path="/manage-subscription" element={<ManageSubscription />} />
-            <Route path="/upgrade" element={<Upgrade />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/changelog" element={<Changelog />} />
+              <Route path="/terms-of-service" element={<Legal type="tos" />} />
+              <Route path="/privacy-policy" element={<Legal type="privacy" />} />
+              <Route path="/refund-policy" element={<Legal type="refund" />} />
+              <Route path="/thank-you" element={<ThankYou />} />
+              <Route path="/recover" element={<Recover />} />
+              <Route path="/activate" element={<Activate />} />
+              <Route path="/manage-subscription" element={<ManageSubscription />} />
+              <Route path="/upgrade" element={<Upgrade />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
         </main>
         <Footer />
       </div>

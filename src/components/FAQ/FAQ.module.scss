@@ -28,6 +28,8 @@
     border-radius: 16px;
     overflow: hidden;
     transition: all 0.3s ease;
+    content-visibility: auto;
+    contain-intrinsic-size: auto 80px;
 
     &:hover {
         border-color: var(--primary-soft);
