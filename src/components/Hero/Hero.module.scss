@@ -1,5 +1,5 @@
-@use '@/styles/variables' as *;
-@use '@/styles/mixins' as *;
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
 
 .Hero {
     padding: 6.25rem 0 3.75rem;
@@ -12,7 +12,7 @@
     &__Container {
         @include container;
         display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
         align-items: center;
         gap: 4rem;
 
@@ -46,12 +46,19 @@
     &__Buttons {
         display: flex;
         gap: 1rem;
-        margin-bottom: 2rem;
+        margin-bottom: 0.75rem;
         flex-wrap: wrap;
 
         @include mobile {
             justify-content: center;
         }
+    }
+
+    &__FreeLabel {
+        font-size: 0.875rem;
+        color: var(--text-subtle);
+        opacity: 0.5;
+        margin-bottom: 2rem;
     }
 
     &__ShowcaseWrapper {
@@ -67,7 +74,7 @@
         height: 12.5rem;
         background: var(--primary);
         filter: blur(6.25rem);
-        opacity: 0.2;
+        opacity: 0.3;
         z-index: -1;
 
         @include mobile {
