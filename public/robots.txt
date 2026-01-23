@@ -1,0 +1,14 @@
+# Robots.txt for Zush Landing Page
+# https://zushapp.com
+
+User-agent: *
+Allow: /
+
+# Block transactional/private pages
+Disallow: /thank-you
+Disallow: /recover
+Disallow: /activate
+Disallow: /manage-subscription
+
+# Sitemap
+Sitemap: https://zushapp.com/sitemap.xml

@@ -9,9 +9,13 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
   <link rel="manifest" href="/favicon/site.webmanifest" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="canonical" href="https://zushapp.com/" />
   <title>Zush — AI-Powered Image Organization for macOS</title>
   <meta name="description"
     content="Zush monitors your folders and automatically renames images using advanced AI. Smart metadata, custom naming patterns, and native macOS performance." />
+  <meta name="keywords" content="AI image organizer, macOS image renaming, automatic file renaming, photo organization, batch rename images, folder monitoring, smart metadata, screenshot organizer" />
+  <meta name="author" content="Zush" />
+  <meta name="robots" content="index, follow" />
   <!-- Google Fonts - async loading -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,16 +32,141 @@
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://zushapp.com/" />
+  <meta property="og:site_name" content="Zush" />
+  <meta property="og:locale" content="en_US" />
   <meta property="og:title" content="Zush — AI-Powered Image Organization for macOS" />
   <meta property="og:description"
     content="Organize your images with AI. Automatic renaming, smart metadata, and folder monitoring for macOS." />
-  <meta property="og:image" content="/logo.png" />
+  <meta property="og:image" content="https://zushapp.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Zush - AI-Powered Image Organization for macOS" />
   <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:title" content="Zush — AI-Powered Image Organization for macOS" />
-  <meta property="twitter:description"
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Zush — AI-Powered Image Organization for macOS" />
+  <meta name="twitter:description"
     content="Organize your images with AI. Automatic renaming, smart metadata, and folder monitoring for macOS." />
-  <meta property="twitter:image" content="/logo.png" />
+  <meta name="twitter:image" content="https://zushapp.com/og-image.png" />
+  <meta name="twitter:image:alt" content="Zush - AI-Powered Image Organization for macOS" />
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://zushapp.com/#organization",
+          "name": "Zush",
+          "url": "https://zushapp.com",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://zushapp.com/logo.png"
+          },
+          "email": "support@zushapp.com"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://zushapp.com/#website",
+          "url": "https://zushapp.com",
+          "name": "Zush",
+          "publisher": {
+            "@id": "https://zushapp.com/#organization"
+          }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://zushapp.com/#software",
+          "name": "Zush",
+          "description": "AI-powered image organization app for macOS. Automatically renames images using advanced AI with smart metadata and folder monitoring.",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "macOS 13.0+",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "description": "Free tier with 30 AI renames included"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5",
+            "ratingCount": "1"
+          },
+          "featureList": [
+            "AI-powered image renaming",
+            "Automatic folder monitoring",
+            "Smart metadata extraction",
+            "Custom naming patterns",
+            "Batch rename support",
+            "RAW format support",
+            "PDF analysis",
+            "60+ language support"
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://zushapp.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is Zush?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Zush is an intelligent macOS application that automates the tedious task of renaming media files. Using advanced AI, it analyzes the content of your images (including RAW), SVGs, and PDFs to generate descriptive, meaningful filenames, helping you keep your library perfectly organized."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What file formats are supported?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Zush supports popular image formats: PNG, JPG, JPEG, WEBP, GIF, BMP, TIFF, TIF, HEIC, HEIF. We also support SVG vector graphics and PDF documents (the first page is analyzed for AI renaming)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does Zush AI Rename work?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "AI Rename allows you to rename multiple files at once using artificial intelligence. Simply drag and drop a collection of images onto the Zush window, and all files will be analyzed and renamed in seconds. You can review and regenerate individual file names before applying changes."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does folder monitoring work?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Zush monitors your selected folders in the background. When you add new images or PDFs to a monitored folder, Zush automatically analyzes the content and renames files in real-time while you are online — no manual action required."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is my data secure?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Your original files stay on your computer. For AI analysis, Zush sends a resized, compressed JPEG copy to our servers, which is forwarded to our AI providers for processing. We do not store the image in our database."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Which operating systems are supported?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Currently, Zush is exclusively available for macOS (version 13.0 Ventura and newer)."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does the app work offline?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Zush requires an internet connection for the AI features (image analysis and name generation) to function. While it is a native macOS application that processes your files locally, we use advanced cloud models to ensure the best possible quality and accuracy."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  </script>
   <!-- Paddle.js loaded dynamically via src/utils/paddle.ts -->
 </head>
 
