@@ -1,5 +1,5 @@
-@use '@/styles/variables' as *;
-@use '@/styles/mixins' as *;
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
 
 .FileShowcase {
     display: flex;
@@ -31,15 +31,14 @@
     background-color: var(--muted);
     border-radius: $radius-md;
     border: 1px solid var(--border);
-    @include shadow('sm');
+    @include shadow("sm");
     min-width: 0;
 
     @include mobile {
-        &:nth-child(n+5) {
+        &:nth-child(n + 5) {
             display: none;
         }
     }
-
 
     &__Image {
         width: 4rem;
