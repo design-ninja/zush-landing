@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { ExternalLink, AlertCircle, Download } from 'lucide-react';
 import Button from '@/components/Button';
+import BackToHome from '@/components/BackToHome';
 import { DOWNLOAD_URL } from '@/constants';
 import styles from './Activate.module.scss';
 
@@ -47,9 +48,7 @@ const Activate = () => {
             </Button>
           </div>
           
-          <Link to="/" className={styles.Activate__BackLink}>
-            ← Back to Home
-          </Link>
+          <BackToHome />
         </div>
       </section>
     );

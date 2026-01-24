@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Button from '@/components/Button';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
+import BackToHome from '@/components/BackToHome';
 import styles from './NotFound.module.scss';
 
 const NotFound: React.FC = () => {
@@ -17,9 +16,7 @@ const NotFound: React.FC = () => {
                     Our AI couldn't find the page you're looking for. <br />
                     It might have been moved, renamed, or never existed in the first place.
                 </Text>
-                <Button as={Link} to="/" variant="ghost" className={styles.NotFound__BackLink}>
-                    ← Back to Home
-                </Button>
+                <BackToHome className={styles.NotFound__BackLink} />
             </div>
         </div>
     );

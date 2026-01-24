@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
-import Button from '@/components/Button';
-import Heading from '@/components/Heading';
-import Text from '@/components/Text';
 import SectionHeader from '@/components/SectionHeader';
+import BackToHome from '@/components/BackToHome';
 import styles from './Changelog.module.scss';
 import changelogPath from '@/content/changelog.md?url';
 
@@ -128,9 +125,7 @@ const Changelog = () => {
                     ))}
                 </div>
 
-                <Button as={Link} to="/" variant="ghost" className={styles.Changelog__BackLink}>
-                    ← Back to Home
-                </Button>
+                <BackToHome className={styles.Changelog__BackLink} />
             </div>
         </section>
     );

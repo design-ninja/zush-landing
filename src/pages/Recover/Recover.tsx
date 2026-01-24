@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Mail, ArrowRight, CheckCircle, ArrowLeft } from 'lucide-react';
+import { Mail, CheckCircle } from 'lucide-react';
 import Button from '@/components/Button';
+import BackToHome from '@/components/BackToHome';
 import { SUPABASE_URL } from '@/utils/supabase';
 import styles from './Recover.module.scss';
 
@@ -59,10 +59,7 @@ const Recover = () => {
             Check your spam folder if you don't see it.
           </p>
           
-          <Button as={Link} to="/" variant="primary" size="lg">
-            <ArrowLeft size={18} />
-            Back to Home
-          </Button>
+          <BackToHome />
         </div>
       </section>
     );

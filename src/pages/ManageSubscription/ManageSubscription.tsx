@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { CreditCard, CheckCircle, ArrowLeft, ExternalLink } from 'lucide-react';
+import { CreditCard, ExternalLink } from 'lucide-react';
 import Button from '@/components/Button';
+import BackToHome from '@/components/BackToHome';
 import { SUPABASE_URL } from '@/utils/supabase';
 import styles from './ManageSubscription.module.scss';
 
@@ -97,9 +97,7 @@ const ManageSubscription = () => {
             </p>
           </div>
 
-          <Link to="/" className={styles.ManageSubscription__BackLink}>
-            ← Back to Home
-          </Link>
+          <BackToHome />
         </div>
       </div>
     </section>

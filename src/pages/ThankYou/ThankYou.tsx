@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { CheckCircle, ArrowLeft, Mail, ArrowRight } from 'lucide-react';
+import { CheckCircle, Mail, ArrowRight } from 'lucide-react';
 import Button from '@/components/Button';
+import BackToHome from '@/components/BackToHome';
 import styles from './ThankYou.module.scss';
 
 const ThankYou = () => {
@@ -69,10 +69,7 @@ const ThankYou = () => {
               <ArrowRight size={18} />
             </Button>
           )}
-          <Link to="/" style={{ color: 'var(--primary)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <ArrowLeft size={18} />
-            Back to Home
-          </Link>
+          <BackToHome />
         </div>
       </div>
     </section>
