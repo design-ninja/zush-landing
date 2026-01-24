@@ -1,5 +1,6 @@
 @use '@/styles/variables' as *;
 @use '@/styles/mixins' as *;
+@use '@/styles/animations';
 
 .Pricing {
     padding: 6rem 0;
@@ -475,12 +476,12 @@
 }
 
 .Pricing__Loading {
+    @include loading-state;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    padding: 4rem 2rem;
 }
 
 .Pricing__LoadingIcon {
@@ -488,24 +489,13 @@
     color: var(--primary);
 }
 
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
 .Pricing__Error {
+    @include loading-state;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1.5rem;
-    padding: 4rem 2rem;
-    text-align: center;
 }
 
 .Pricing__SuccessMessage {

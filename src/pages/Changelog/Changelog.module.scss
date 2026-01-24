@@ -10,10 +10,6 @@
         max-width: 50rem;
     }
 
-
-
-
-
     &__Timeline {
         position: relative;
         padding-left: 2rem;
@@ -134,9 +130,7 @@
 
     &__Loading,
     &__Error {
-        text-align: center;
-        padding: 4rem 2rem;
-        color: var(--muted-foreground);
+        @include loading-state;
     }
 
     &__Error {

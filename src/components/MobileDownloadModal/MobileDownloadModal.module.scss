@@ -27,15 +27,8 @@
 }
 
 .MobileDownloadModal__Icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 4rem;
-  height: 4rem;
+  @include icon-wrapper(4rem, var(--primary-soft), var(--primary), $radius-lg);
   margin: 0 auto 1.5rem;
-  background: var(--primary-soft);
-  border-radius: $radius-lg;
-  color: var(--primary);
 }
 
 .MobileDownloadModal__Title {

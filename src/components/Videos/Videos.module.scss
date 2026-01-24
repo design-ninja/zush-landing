@@ -1,5 +1,6 @@
 @use '@/styles/variables' as *;
 @use '@/styles/mixins' as *;
+@use '@/styles/animations';
 
 .Videos {
     padding: 6.25rem 0;
@@ -42,15 +43,6 @@
         z-index: 1;
     }
 
-    @keyframes shimmer {
-        0% {
-            background-position: -200% 0;
-        }
-
-        100% {
-            background-position: 200% 0;
-        }
-    }
 
     &__Video {
         width: 100%;

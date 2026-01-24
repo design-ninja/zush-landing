@@ -51,14 +51,7 @@
     }
 
     &__IconWrapper {
-        width: 3rem;
-        height: 3rem;
-        border-radius: 0.75rem;
-        background: var(--primary-soft);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--primary);
+        @include icon-wrapper;
     }
 
     &__Title {

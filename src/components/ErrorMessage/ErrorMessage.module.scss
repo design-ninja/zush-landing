@@ -1,0 +1,10 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.ErrorMessage {
+    @include error-message(false);
+
+    &--box {
+        @include error-message(true);
+    }
+}

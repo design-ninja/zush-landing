@@ -2,6 +2,10 @@ import { useState } from 'react';
 import { CreditCard, ExternalLink } from 'lucide-react';
 import Button from '@/components/Button';
 import BackToHome from '@/components/BackToHome';
+import PageLayout from '@/components/PageLayout';
+import PageIcon from '@/components/PageIcon';
+import FormInput from '@/components/FormInput';
+import ErrorMessage from '@/components/ErrorMessage';
 import { SUPABASE_URL } from '@/utils/supabase';
 import styles from './ManageSubscription.module.scss';
 
@@ -50,57 +54,54 @@ const ManageSubscription = () => {
   };
 
   return (
-    <section className={styles.ManageSubscription}>
-      <div className={styles.ManageSubscription__Container}>
-        <div className={styles.ManageSubscription__Icon}>
-          <CreditCard size={48} />
+    <PageLayout>
+      <PageIcon>
+        <CreditCard size={48} />
+      </PageIcon>
+
+      <h1 className={styles.ManageSubscription__Title}>
+        Manage Subscription
+      </h1>
+
+      <p className={styles.ManageSubscription__Subtitle}>
+        Enter the email address associated with your Zush PRO subscription to
+        manage your billing, update payment methods, or cancel your
+        subscription.
+      </p>
+
+      <form onSubmit={handleSubmit} className={styles.ManageSubscription__Form}>
+        <FormInput
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="your@email.com"
+          disabled={isLoading}
+        />
+
+        <Button type="submit" variant="primary" disabled={isLoading}>
+          {isLoading ? (
+            'Loading...'
+          ) : (
+            <>
+              Open Customer Portal
+              <ExternalLink size={16} />
+            </>
+          )}
+        </Button>
+      </form>
+
+      <ErrorMessage message={error} variant="box" />
+
+      <div className={styles.ManageSubscription__Actions}>
+        <div className={styles.ManageSubscription__Info}>
+          <p>
+            <strong>Note:</strong> This is only for active subscriptions.
+          </p>
         </div>
 
-        <h1 className={styles.ManageSubscription__Title}>
-          Manage Subscription
-        </h1>
-
-        <p className={styles.ManageSubscription__Subtitle}>
-          Enter the email address associated with your Zush PRO subscription to
-          manage your billing, update payment methods, or cancel your
-          subscription.
-        </p>
-
-        <form onSubmit={handleSubmit} className={styles.ManageSubscription__Form}>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="your@email.com"
-            className={styles.ManageSubscription__Input}
-            disabled={isLoading}
-          />
-
-          <Button type="submit" variant="primary" disabled={isLoading}>
-            {isLoading ? (
-              'Loading...'
-            ) : (
-              <>
-                Open Customer Portal
-                <ExternalLink size={16} />
-              </>
-            )}
-          </Button>
-        </form>
-
-        {error && <p className={styles.ManageSubscription__Error}>{error}</p>}
-
-        <div className={styles.ManageSubscription__Actions}>
-          <div className={styles.ManageSubscription__Info}>
-            <p>
-              <strong>Note:</strong> This is only for active subscriptions.
-            </p>
-          </div>
-
-          <BackToHome />
-        </div>
+        <BackToHome />
       </div>
-    </section>
+    </PageLayout>
   );
 };
 

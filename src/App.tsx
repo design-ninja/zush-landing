@@ -22,10 +22,10 @@ const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
 import styles from './App.module.scss';
 
 const PageLoader = () => (
-  <div style={{ 
-    display: 'flex', 
-    justifyContent: 'center', 
-    alignItems: 'center', 
+  <div style={{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     minHeight: '50vh',
     opacity: 0.5
   }}>
@@ -35,7 +35,7 @@ const PageLoader = () => (
 
 const AppContent = ({ theme, toggleTheme }: { theme: string; toggleTheme: () => void }) => {
   useCheckoutAutoOpen();
-  
+
   return (
     <>
       <ScrollToTop />

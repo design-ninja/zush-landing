@@ -2,6 +2,10 @@ import { useState } from 'react';
 import { Mail, CheckCircle } from 'lucide-react';
 import Button from '@/components/Button';
 import BackToHome from '@/components/BackToHome';
+import PageLayout from '@/components/PageLayout';
+import PageIcon from '@/components/PageIcon';
+import FormInput from '@/components/FormInput';
+import ErrorMessage from '@/components/ErrorMessage';
 import { SUPABASE_URL } from '@/utils/supabase';
 import styles from './Recover.module.scss';
 
@@ -13,15 +17,15 @@ const Recover = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!email) {
       setError('Please enter your email address');
       return;
     }
-    
+
     setIsLoading(true);
     setError('');
-    
+
     try {
       const response = await fetch(`${SUPABASE_URL}/functions/v1/send-magic-link`, {
         method: 'POST',
@@ -30,7 +34,7 @@ const Recover = () => {
         },
         body: JSON.stringify({ email: email.trim() }),
       });
-      
+
       if (response.ok) {
         setIsSuccess(true);
       } else {
@@ -45,72 +49,59 @@ const Recover = () => {
 
   if (isSuccess) {
     return (
-      <section className={styles.Recover}>
-        <div className={styles.Recover__Container}>
-          <div className={styles.Recover__Icon}>
-            <CheckCircle size={64} />
-          </div>
-          
-          <h1 className={styles.Recover__Title}>Check your inbox!</h1>
-          
-          <p className={styles.Recover__Subtitle}>
-            If a purchase exists for <strong>{email}</strong>, we've sent an activation link.
-            <br />
-            Check your spam folder if you don't see it.
-          </p>
-          
-          <BackToHome />
-        </div>
-      </section>
+      <PageLayout>
+        <PageIcon>
+          <CheckCircle size={64} />
+        </PageIcon>
+
+        <h1 className={styles.Recover__Title}>Check your inbox!</h1>
+
+        <p className={styles.Recover__Subtitle}>
+          If a purchase exists for <strong>{email}</strong>, we've sent an activation link.
+          <br />
+          Check your spam folder if you don't see it.
+        </p>
+
+        <BackToHome />
+      </PageLayout>
     );
   }
 
   return (
-    <section className={styles.Recover}>
-      <div className={styles.Recover__Container}>
-        <div className={styles.Recover__IconMail}>
-          <Mail size={48} />
-        </div>
-        
-        <h1 className={styles.Recover__Title}>Request Activation Link</h1>
-        
-        <p className={styles.Recover__Subtitle}>
-          Enter the email address you used when purchasing Zush PRO. 
-          We'll send you a new activation link.
-        </p>
+    <PageLayout>
+      <PageIcon>
+        <Mail size={48} />
+      </PageIcon>
 
-        <form onSubmit={handleSubmit} className={styles.Recover__Form}>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="your@email.com"
-            className={styles.Recover__Input}
-            disabled={isLoading}
-          />
-          
-          <Button 
-            type="submit" 
-            variant="primary"
-            disabled={isLoading}
-          >
-            {isLoading ? 'Sending...' : (
-              <>
-                Send Activation Link
-              </>
-            )}
-          </Button>
-        </form>
-        
-        {error && (
-          <p className={styles.Recover__Error}>{error}</p>
-        )}
-        
-        <Link to="/" className={styles.Recover__BackLink}>
-          ← Back to Home
-        </Link>
-      </div>
-    </section>
+      <h1 className={styles.Recover__Title}>Request Activation Link</h1>
+
+      <p className={styles.Recover__Subtitle}>
+        Enter the email address you used when purchasing Zush PRO.
+        We'll send you a new activation link.
+      </p>
+
+      <form onSubmit={handleSubmit} className={styles.Recover__Form}>
+        <FormInput
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="your@email.com"
+          disabled={isLoading}
+        />
+
+        <Button
+          type="submit"
+          variant="primary"
+          disabled={isLoading}
+        >
+          {isLoading ? 'Sending...' : 'Send Activation Link'}
+        </Button>
+      </form>
+
+      <ErrorMessage message={error} />
+
+      <BackToHome />
+    </PageLayout>
   );
 };
 
