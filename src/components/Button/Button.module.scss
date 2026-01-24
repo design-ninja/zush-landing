@@ -50,12 +50,12 @@
     }
 
     &_black {
-        background-color: var(--secondary);
-        color: var(--secondary-foreground);
+        background-color: var(--tertiary);
+        color: var(--tertiary-foreground);
         outline: 1px solid var(--glass-border);
 
         &:hover {
-            background-color: var(--secondary-hover);
+            background-color: var(--tertiary-hover);
             transform: translateY(-0.125rem);
         }
     }

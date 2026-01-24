@@ -9,8 +9,8 @@ import FAQ from '@/components/FAQ';
 const Home = memo(() => (
   <>
     <Hero />
-    <Features />
     <Videos />
+    <Features />
     <UseCases />
     <Pricing />
     <FAQ />

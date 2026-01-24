@@ -89,7 +89,7 @@ const Videos = () => {
           <SectionHeader
             title={
               <>
-                See <span style={{ color: 'var(--primary)' }}>Zush</span> in Action
+                See <span style={{ color: 'var(--secondary)' }}>Zush</span> in Action
               </>
             }
             description="Watch how Zush transforms your file organization workflow with these powerful features"
