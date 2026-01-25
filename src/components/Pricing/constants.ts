@@ -6,6 +6,7 @@ import {
   Tag,
   FileText,
   Globe,
+  Command,
   LucideIcon,
 } from 'lucide-react';
 
@@ -76,6 +77,11 @@ export const PRO_PLAN: Plan = {
       title: 'Localization',
       desc: 'File names in 60+ languages and custom date format',
       icon: Globe,
+    },
+    {
+      title: 'Quick Rename Shortcut',
+      desc: 'Rename selected files in Finder with a keyboard shortcut',
+      icon: Command,
     },
   ],
   buttonText: 'Buy PRO Now 🌟',
