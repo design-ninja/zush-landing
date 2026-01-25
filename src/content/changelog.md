@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.2.7] - 2026-01-25
+### Added
+- 🎉 Added quick rename shortcut for Finder files
+- 🖼️ Added monitor options section with file prefix filter
+- 🔑 Added symlink for Supabase Postgres best practices
+
+### Improved  
+- ⚡ Improved layout and text in Hotkey settings
+- 🚀 Enhanced Finder file selection with timeout handling
+- 📈 Optimized Supabase database performance and RLS policies
+- 💚 Updated App logo
+
+### Fixed
+- 🐛 Prevented potential out-of-bounds access in HotkeyService
+- 🎨 Updated design credit color in AboutTab view
+
 ## [1.2.6] - 2026-01-23
 ### Added
 - 🚀 Added Sentry crash reporting and error analytics
