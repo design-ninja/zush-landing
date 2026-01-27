@@ -28,6 +28,18 @@ const YouTubeIcon = ({ size = 24 }: { size?: number }) => (
   </svg>
 );
 
+const ProductHuntIcon = ({ size = 24 }: { size?: number }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    aria-hidden="true"
+  >
+    <path d="M13.604 8.4h-3.405V12h3.405a1.8 1.8 0 0 0 0-3.6zM12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm1.604 14.4h-3.405V18H7.801V6h5.804a4.2 4.2 0 0 1 0 8.4z" />
+  </svg>
+);
+
 const Footer = () => {
   return (
     <footer className={styles.Footer}>
@@ -93,6 +105,15 @@ const Footer = () => {
               aria-label="Follow us on YouTube"
             >
               <YouTubeIcon size={24} />
+            </a>
+            <a
+              href="https://www.producthunt.com/products/zush"
+              className={styles.Footer__SocialLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Zush on Product Hunt"
+            >
+              <ProductHuntIcon size={24} />
             </a>
           </div>
           <div className={styles.Footer__BottomLinks}>
