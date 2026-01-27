@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.8] - 2026-01-27
+### Added
+- 📂 Enhanced file monitoring and processing indicators
+
+### Improved  
+- ⚡ Improved folder monitoring and file processing
+- 🎨 Updated color scheme in HotkeyRecorder and SuggestedShortcuts views
+- 🔄 Streamlined activity display and undo functionality
+
+### Fixed
+- 🐛 Adjusted window height in build-dmg script for better layout
+
 ## [1.2.7] - 2026-01-25
 ### Added
 - 🎉 Added quick rename shortcut for Finder files
