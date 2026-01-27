@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.9] - 2026-01-27
+
+### Improved  
+- ⚡ Improved folder validation by moving it to a background thread
+
+### Fixed
+- 🎨 Updated app icon assets for better consistency
+
 ## [1.2.8] - 2026-01-27
 ### Added
 - 📂 Enhanced file monitoring and processing indicators
