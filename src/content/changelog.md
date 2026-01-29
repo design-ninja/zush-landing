@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.0] - 2026-01-29
+### Added
+- 🚀 Distribute Zush on the Mac App Store
+- 🔑 Verify App Store subscriptions with Supabase function
+- 📦 Upload dSYMs to Sentry during release for better crash reporting
+
 ## [1.2.9] - 2026-01-27
 
 ### Improved  
