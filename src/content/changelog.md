@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.1] - 2026-01-30
+### Added
+- 📂 Added directory access for hotkey file processing in sandboxed environments
+- 🔑 Implemented directory access for batch renaming in sandboxed environments
+
+### Improved  
+- ⚡ Improved asynchronous initialization and device ID retrieval
+
 ## [1.3.0] - 2026-01-29
 ### Added
 - 🚀 Distribute Zush on the Mac App Store
