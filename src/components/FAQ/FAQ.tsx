@@ -118,12 +118,16 @@ const createFAQData = (): FAQData[] => [
   },
   {
     question: 'How does pricing work?',
-    answer: `Zush PRO is a simple one-time purchase for $10. You get 10,000 credits per month (1 credit = 1 rename) and access to all features. Want unlimited processing? Use BYOK (Bring Your Own Key) with your Gemini or Groq API key to bypass credit limits entirely.`,
+    answer: `Zush PRO is a simple one-time purchase for $10. You get 10,000 credits per month (1 credit = 1 rename) and access to all features. Want unlimited processing? Use BYOK (Bring Your Own Key) with your own API key from Gemini, Groq, OpenAI, or Claude to bypass credit limits entirely.`,
   },
   {
     question: 'What is BYOK (Bring Your Own Key)?',
-    answer:
-      'BYOK lets PRO users connect their own Gemini or Groq API key for unlimited image processing. When BYOK is enabled, Zush uses your API key instead of our servers, so you pay your AI provider directly and have no credit limits. Perfect for power users with large libraries.',
+    answer: (
+      <>
+        BYOK lets PRO users connect their own API key from Gemini, Groq, OpenAI, or Claude for unlimited image processing. When BYOK is enabled, Zush uses your API key instead of our servers, so you pay your AI provider directly and have no credit limits. Perfect for power users with large libraries.{' '}
+        <Link to="/byok-setup">Learn how to set it up →</Link>
+      </>
+    ),
   },
   {
     question: 'Why one-time purchase instead of subscription?',

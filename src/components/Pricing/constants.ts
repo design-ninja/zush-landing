@@ -74,7 +74,7 @@ export const PRO_PLAN: Plan = {
     },
     {
       title: 'BYOK - Bring Your Own Key',
-      desc: 'Use your Gemini or Groq API key for unlimited processing',
+      desc: 'Use your Gemini, Groq, OpenAI, or Claude API key for unlimited processing',
       icon: Key,
     },
     {
