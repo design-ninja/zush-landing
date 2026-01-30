@@ -23,11 +23,7 @@ const Pricing = () => {
     <section id='pricing' className={styles.Pricing}>
       <div className={styles.Pricing__Container}>
         <SectionHeader
-          title={
-            <>
-              <span className={styles.Pricing__TitleAccent}>Pay once, use forever</span>
-            </>
-          }
+          title='Pay once, use forever'
           description='No subscriptions, no hidden fees. Just a simple one-time purchase.'
         />
 
