@@ -103,7 +103,7 @@ export const PRO_PLAN: Plan = {
       icon: Command,
     },
   ],
-  buttonText: '⚡ Buy Zush PRO',
+  buttonText: 'Buy Zush PRO 🌟',
   isPro: true,
   price: '$10',
   billing: 'one-time',
