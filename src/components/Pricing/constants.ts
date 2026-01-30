@@ -65,21 +65,21 @@ export const FREE_PLAN: Plan = {
 
 export const PRO_PLAN: Plan = {
   name: 'Zush PRO',
-  description: '10,000 credits/month + BYOK (Unlimited)',
+  description: 'One-time purchase • Lifetime access',
   features: [
     {
       title: '10,000 Credits/Month',
-      desc: 'Process up to 10,000 images per month',
+      desc: 'Process up to 10,000 images monthly',
       icon: Zap,
     },
     {
-      title: 'BYOK - Your Gemini/Groq API Key',
-      desc: 'Use your own AI provider API key',
+      title: 'BYOK - Bring Your Own Key',
+      desc: 'Use your Gemini or Groq API key',
       icon: Key,
     },
     {
-      title: 'Unlimited Processing with BYOK',
-      desc: 'No limits when using your own API key',
+      title: 'Unlimited with BYOK',
+      desc: 'No credit limits with your own API key',
       icon: Infinity,
     },
   ],
