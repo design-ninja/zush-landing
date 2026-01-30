@@ -89,7 +89,7 @@ export const PricingCard = memo(({
         </div>
       </div>
 
-      {toggleSlot || <div className={styles.PricingCard__ToggleSpacer} />}
+      {toggleSlot}
 
       <div className={styles.PricingCard__Price}>
         <div className={styles.PricingCard__PriceLeft}>

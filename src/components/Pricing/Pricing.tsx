@@ -25,10 +25,10 @@ const Pricing = () => {
         <SectionHeader
           title={
             <>
-              <span className={styles.Pricing__TitleAccent}>Zush PRO</span>
+              <span className={styles.Pricing__TitleAccent}>Pay once, use forever</span>
             </>
           }
-          description='Buy once - use forever'
+          description='No subscriptions, no hidden fees. Just a simple one-time purchase.'
         />
 
         <div className={styles.Pricing__Single}>

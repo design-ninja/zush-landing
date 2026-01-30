@@ -68,6 +68,16 @@ export const PRO_PLAN: Plan = {
   description: 'One-time purchase • Lifetime access',
   features: [
     {
+      title: '10,000 Credits/Month',
+      desc: 'Process up to 10,000 images monthly',
+      icon: Zap,
+    },
+    {
+      title: 'BYOK - Bring Your Own Key',
+      desc: 'Use your Gemini or Groq API key for unlimited processing',
+      icon: Key,
+    },
+    {
       title: 'Multiple Folders',
       desc: 'Monitor multiple folders simultaneously',
       icon: FolderPlus,
@@ -92,23 +102,8 @@ export const PRO_PLAN: Plan = {
       desc: 'Rename selected files in Finder with a keyboard shortcut',
       icon: Command,
     },
-    {
-      title: '10,000 Credits/Month',
-      desc: 'Process up to 10,000 images monthly',
-      icon: Zap,
-    },
-    {
-      title: 'BYOK - Bring Your Own Key',
-      desc: 'Use your Gemini or Groq API key',
-      icon: Key,
-    },
-    {
-      title: 'Unlimited with BYOK',
-      desc: 'No credit limits with your own API key',
-      icon: Infinity,
-    },
   ],
-  buttonText: '⚡ Buy PRO',
+  buttonText: '⚡ Buy Zush PRO',
   isPro: true,
   price: '$10',
   billing: 'one-time',

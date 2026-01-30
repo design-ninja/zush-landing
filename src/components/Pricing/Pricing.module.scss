@@ -33,7 +33,7 @@
         display: flex;
         justify-content: center;
         margin: 4rem auto 0;
-        max-width: 32rem;
+        max-width: 40rem;
         width: 100%;
 
         @include mobile {
@@ -113,79 +113,6 @@
         flex-direction: column;
     }
 
-    &__Toggle {
-        display: flex;
-        gap: 0.375rem;
-        margin-bottom: 0.75rem;
-        background: var(--muted);
-        padding: 0.25rem;
-        border-radius: $radius-md;
-        border: 1px solid var(--border);
-        min-height: 2.5rem;
-    }
-
-    &__ToggleSpacer {
-        margin-top: 1rem;
-        margin-bottom: 0.5rem;
-        height: 1.5rem;
-
-        @include mobile {
-            display: none;
-        }
-    }
-
-    &__ToggleButton {
-        flex: 1;
-        border: none;
-        background: transparent;
-        color: var(--muted-foreground);
-        font-size: 0.875rem;
-        font-weight: 500;
-        border-radius: calc($radius-md - 0.25rem);
-        cursor: pointer;
-        transition: all $transition-fast;
-        font-family: $font-family;
-
-        &:disabled {
-            cursor: default;
-            opacity: 1;
-        }
-
-        &_active {
-            background: var(--primary);
-            color: var(--primary-foreground);
-            box-shadow: $shadow-sm;
-
-            &:hover {
-                color: var(--primary-foreground);
-            }
-        }
-
-        &_muted {
-            background: transparent;
-            color: var(--foreground);
-            box-shadow: none;
-
-            &:hover {
-                color: var(--foreground);
-            }
-        }
-    }
-
-    &__ToggleButton:disabled {
-        opacity: $opacity-disabled;
-    }
-
-    &__ToggleLabel {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        color: var(--muted-foreground);
-        font-size: 0.875rem;
-        font-weight: 500;
-    }
-
     &__Header {
         display: flex;
         flex-direction: column;
@@ -193,13 +120,6 @@
     }
 
     &__Name {
-        margin-bottom: 0.5rem;
-    }
-
-    &__ToggleWrapper {
-        display: flex;
-        justify-content: flex-start;
-        margin-top: 1rem;
         margin-bottom: 0.5rem;
     }
 
@@ -211,7 +131,7 @@
     }
 
     &__PriceValue {
-        font-size: 2.25rem;
+        font-size: 3rem;
         font-weight: 600;
         font-family: $font-family-heading;
     }
@@ -220,19 +140,6 @@
         color: var(--muted-foreground);
         font-size: 0.875rem;
         margin-left: 0.375rem;
-    }
-
-    &__PriceAnnual {
-        color: var(--muted-foreground);
-        font-size: 0.875rem;
-        margin-left: 1.25rem;
-        white-space: nowrap;
-    }
-
-    &__PriceAnnualValue {
-        font-size: 1.125rem;
-        font-weight: 600;
-        color: var(--foreground);
     }
 
     &__Features {
@@ -275,282 +182,22 @@
         color: var(--muted-foreground);
         margin-top: 0.0625rem;
     }
-}
 
-.Controls__PricingCard {
-    min-height: 6rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin-bottom: 0.75rem;
-}
-
-.ControlsSpacer__PricingCard {
-    flex: 1;
-}
-
-.PackLabel__PricingCard {
-    margin-top: 0.75rem;
-    margin-bottom: 0.5rem;
-    color: var(--foreground);
-    font-size: 0.875rem;
-    font-weight: 500;
-}
-
-.PackLabelHint__PricingCard {
-    color: var(--muted-foreground);
-    font-weight: 400;
-}
-
-.PackToggle__PricingCard {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.375rem;
-    margin-bottom: 0.75rem;
-    background: var(--muted);
-    padding: 0.4rem;
-    border-radius: $radius-md;
-    border: 1px solid var(--border);
-    min-height: 3.75rem;
-
-    @include mobile {
-        grid-template-columns: repeat(2, 1fr);
+    &__HeaderRow {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1rem;
     }
 
-    &_single {
-        grid-template-columns: 1fr;
-
-        @include mobile {
-            grid-template-columns: 1fr;
-        }
+    &__ButtonWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
     }
-}
 
-.PackToggleButton__PricingCard {
-    min-height: 2.5rem;
-    font-size: 0.875rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.125rem;
-    padding: 0.375rem 0.5rem;
-}
-
-.PackToggleButton__Credits {
-    font-weight: 500;
-    line-height: 1.2;
-}
-
-.PackToggleButton__CurrentLabel {
-    font-size: 0.5625rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--muted-foreground);
-    line-height: 1;
-
-    .PricingCard__ToggleButton_active & {
-        color: rgba(255, 255, 255, 0.5);
+    &__ButtonHint {
+        text-align: center;
     }
-}
-
-.PriceMeta__PricingCard {
-    margin-bottom: 0.75rem;
-    min-height: 1.5rem;
-}
-
-.PricingCard__HeaderRow {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 1rem;
-    margin-bottom: 1rem;
-}
-
-.PricingCard__ButtonWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.PricingCard__ButtonHint {
-    text-align: center;
-}
-
-.AnnualToggle {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
-    flex-shrink: 0;
-}
-
-.AnnualToggle__Input {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.AnnualToggle__Track {
-    position: relative;
-    width: 2.75rem;
-    height: 1.5rem;
-    background: var(--border);
-    border-radius: $radius-full;
-    transition: background $transition-fast;
-
-    [data-theme='dark'] & {
-        background: oklch(0.45 0 0);
-    }
-}
-
-.AnnualToggle__Input:checked+.AnnualToggle__Track {
-    background: var(--primary);
-}
-
-.AnnualToggle__Thumb {
-    position: absolute;
-    top: 0.125rem;
-    left: 0.125rem;
-    width: 1.25rem;
-    height: 1.25rem;
-    background: #fff;
-    border-radius: 50%;
-    transition: transform $transition-fast;
-    box-shadow: 0 1px 3px oklch(0 0 0 / 0.2);
-}
-
-.AnnualToggle__Input:checked+.AnnualToggle__Track .AnnualToggle__Thumb {
-    transform: translateX(1.25rem);
-}
-
-.AnnualToggle__Label {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.375rem;
-    text-align: left;
-    font-size: 0.8125rem;
-    color: var(--muted-foreground);
-    white-space: nowrap;
-}
-
-.AnnualToggle__Title {
-    color: var(--foreground);
-    font-weight: 500;
-    line-height: 1;
-}
-
-.AnnualToggle__Discount {
-    color: var(--success);
-    font-weight: 600;
-    line-height: 1.1;
-}
-
-// Upgrade mode styles
-.Pricing__CurrentPlan {
-    max-width: 28rem;
-    margin: 0 auto 2rem;
-    padding: 1rem 1.5rem;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: $radius-lg;
-    text-align: center;
-}
-
-.Pricing__CurrentPlanLabel {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--muted-foreground);
-    margin-bottom: 0.5rem;
-}
-
-.Pricing__CurrentPlanInfo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.Pricing__CurrentPlanName {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--foreground);
-}
-
-.Pricing__CurrentPlanCredits {
-    font-size: 0.875rem;
-    color: var(--primary);
-    font-weight: 500;
-}
-
-.Pricing__Loading {
-    @include loading-state;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-}
-
-.Pricing__LoadingIcon {
-    animation: spin 1s linear infinite;
-    color: var(--primary);
-}
-
-.Pricing__Error {
-    @include loading-state;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-}
-
-.Pricing__SuccessMessage {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-    padding: 4rem 2rem;
-    text-align: center;
-    max-width: 32rem;
-    margin: 0 auto;
-}
-
-.Pricing__SuccessIcon {
-    color: var(--success);
-}
-
-.Pricing__SuccessTitle {
-    margin-bottom: 0;
-}
-
-.PricingCard_dimmed {
-    opacity: 0.5;
-    pointer-events: none;
-}
-
-
-
-.PricingCard__ProrationNote {
-    font-size: 0.8125rem;
-    color: var(--muted-foreground);
-    text-align: center;
-    padding: 0.75rem;
-    background: var(--muted);
-    border-radius: $radius-md;
-    margin-bottom: 0.75rem;
-}
-
-.PricingCard__Error {
-    font-size: 0.8125rem;
-    color: var(--destructive);
-    text-align: center;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
 }
