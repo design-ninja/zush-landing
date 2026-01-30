@@ -43,12 +43,20 @@ const ThankYou = () => {
 
       {hasDeviceId ? (
         // Purchased from app - device was auto-activated
-        <p className={styles.ThankYou__Subtitle}>
-          Your Zush PRO license has been activated. Open the app, and the PRO features will be unlocked.
-        </p>
+        <>
+          <p className={styles.ThankYou__Subtitle}>
+            Your Zush PRO access is permanent (one-time purchase).
+          </p>
+          <p className={styles.ThankYou__Subtitle}>
+            The PRO features have been unlocked in your app. Enjoy 10,000 credits/month and BYOK for unlimited processing!
+          </p>
+        </>
       ) : (
         // Purchased from website - need to activate via email
         <>
+          <p className={styles.ThankYou__Subtitle}>
+            Your PRO access is permanent (one-time purchase).
+          </p>
           <p className={styles.ThankYou__Subtitle}>
             We've sent an activation email to you.
           </p>
