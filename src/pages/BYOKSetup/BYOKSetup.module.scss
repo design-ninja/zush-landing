@@ -1,0 +1,218 @@
+@import '@/styles/variables';
+
+.BYOKSetup__Title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 1rem 0 0.5rem;
+  color: var(--text-primary);
+}
+
+.BYOKSetup__Subtitle {
+  font-size: 1.125rem;
+  text-align: center;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+}
+
+.BYOKSetup__Section {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: var(--surface-secondary);
+  border-radius: 12px;
+  border: 1px solid var(--border-primary);
+}
+
+.BYOKSetup__SectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-primary);
+  }
+
+  svg {
+    color: var(--accent-primary);
+  }
+}
+
+.BYOKSetup__ProviderIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.BYOKSetup__Benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.BYOKSetup__Benefit {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: var(--surface-primary);
+  border-radius: 8px;
+  font-size: 0.9375rem;
+}
+
+.BYOKSetup__BenefitIcon {
+  font-size: 1.5rem;
+}
+
+.BYOKSetup__Steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.BYOKSetup__Step {
+  display: flex;
+  gap: 1rem;
+}
+
+.BYOKSetup__StepNumber {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-primary);
+  color: white;
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.BYOKSetup__StepContent {
+  flex: 1;
+
+  h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    color: var(--text-primary);
+  }
+
+  p {
+    color: var(--text-secondary);
+    margin: 0 0 0.75rem;
+    line-height: 1.6;
+  }
+
+  ul {
+    margin: 0.75rem 0 0;
+    padding-left: 1.5rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+
+    li {
+      margin-bottom: 0.25rem;
+    }
+  }
+}
+
+.BYOKSetup__Note {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(79, 70, 229, 0.1);
+  border-left: 3px solid var(--accent-primary);
+  border-radius: 4px;
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+
+  strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.BYOKSetup__FAQ {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.BYOKSetup__FAQItem {
+  h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    color: var(--text-primary);
+  }
+
+  p {
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.6;
+  }
+}
+
+.BYOKSetup__SecurityNotice {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(16, 185, 129, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+
+  svg {
+    flex-shrink: 0;
+    color: rgb(16, 185, 129);
+  }
+
+  h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    color: var(--text-primary);
+  }
+
+  p {
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 768px) {
+  .BYOKSetup__Title {
+    font-size: 2rem;
+  }
+
+  .BYOKSetup__Subtitle {
+    font-size: 1rem;
+  }
+
+  .BYOKSetup__Section {
+    padding: 1.5rem;
+  }
+
+  .BYOKSetup__Step {
+    flex-direction: column;
+  }
+
+  .BYOKSetup__StepNumber {
+    align-self: flex-start;
+  }
+}

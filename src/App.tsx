@@ -16,7 +16,7 @@ const ThankYou = lazy(() => import('./pages/ThankYou'));
 const Recover = lazy(() => import('./pages/Recover'));
 const Activate = lazy(() => import('./pages/Activate'));
 const ManageSubscription = lazy(() => import('./pages/ManageSubscription'));
-const Upgrade = lazy(() => import('./pages/Upgrade'));
+const BYOKSetup = lazy(() => import('./pages/BYOKSetup'));
 const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
 
 import styles from './App.module.scss';
@@ -53,7 +53,7 @@ const AppContent = ({ theme, toggleTheme }: { theme: string; toggleTheme: () => 
               <Route path="/recover" element={<Recover />} />
               <Route path="/activate" element={<Activate />} />
               <Route path="/manage-subscription" element={<ManageSubscription />} />
-              <Route path="/upgrade" element={<Upgrade />} />
+              <Route path="/byok-setup" element={<BYOKSetup />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
