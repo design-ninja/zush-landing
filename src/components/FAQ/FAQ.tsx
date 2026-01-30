@@ -126,6 +126,11 @@ const createFAQData = (): FAQData[] => [
       'BYOK lets PRO users connect their own Gemini or Groq API key for unlimited image processing. When BYOK is enabled, Zush uses your API key instead of our servers, so you pay your AI provider directly and have no credit limits. Perfect for power users with large libraries.',
   },
   {
+    question: 'Why one-time purchase instead of subscription?',
+    answer:
+      'We believe in fair, transparent pricing. Pay once, own it forever — no recurring fees, no surprise price hikes, no worry about canceling. You get lifetime access to all features and updates. It\'s simple: you pay $10 once, and Zush is yours to keep. No subscription fatigue, no monthly billing stress. Just a straightforward, honest deal that respects your wallet and your time.',
+  },
+  {
     question: 'Which operating systems are supported?',
     answer: `Currently, Zush is exclusively available for macOS (version ${minMacosVersion} ${minMacosName} and newer).`,
   },
