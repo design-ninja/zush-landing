@@ -17,6 +17,7 @@ interface PricingCardProps {
   name: string;
   price: string;
   period?: string;
+  billing?: string;
   annualPrice?: number;
   showAnnualPrice?: boolean;
   description: string;
@@ -25,8 +26,8 @@ interface PricingCardProps {
   isPro: boolean;
   highlight?: boolean;
   index: number;
-  isUpgradeMode: boolean;
-  upgradeState: string;
+  isUpgradeMode?: boolean;
+  upgradeState?: string;
   onButtonClick: () => void;
   isButtonDisabled: boolean;
   isLoading: boolean;
@@ -41,6 +42,7 @@ export const PricingCard = memo(({
   name,
   price,
   period,
+  billing,
   annualPrice,
   showAnnualPrice,
   description,
@@ -48,8 +50,8 @@ export const PricingCard = memo(({
   isPro,
   highlight,
   index,
-  isUpgradeMode,
-  upgradeState,
+  isUpgradeMode = false,
+  upgradeState = 'idle',
   onButtonClick,
   buttonText,
   isButtonDisabled,
@@ -87,14 +89,19 @@ export const PricingCard = memo(({
         </div>
       </div>
 
-      {toggleSlot || <div className={styles.PricingCard__ToggleSpacer} />}
+      {toggleSlot}
 
       <div className={styles.PricingCard__Price}>
         <div className={styles.PricingCard__PriceLeft}>
           <span className={styles.PricingCard__PriceValue}>
             {price}
           </span>
-          {period && (
+          {billing && (
+            <span className={styles.PricingCard__PricePeriod}>
+              {billing}
+            </span>
+          )}
+          {period && !billing && (
             <span className={styles.PricingCard__PricePeriod}>
               / {period}
             </span>

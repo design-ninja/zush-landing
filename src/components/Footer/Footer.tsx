@@ -71,7 +71,7 @@ const Footer = () => {
             <Heading as="h4" className={styles.Footer__SectionTitle}>Support</Heading>
             <ul className={styles.Footer__Links}>
               <li><a href={`mailto:${SUPPORT_EMAIL}`} className={styles.Footer__Link}>Contact Support</a></li>
-              <li><Link to="/manage-subscription" className={styles.Footer__Link}>Manage Subscription</Link></li>
+              <li><Link to="/byok-setup" className={styles.Footer__Link}>BYOK Setup Guide</Link></li>
               <li>
                 <a
                   href="https://zush.canny.io"

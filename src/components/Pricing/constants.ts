@@ -2,11 +2,11 @@ import {
   FolderPlus,
   Zap,
   FileCode,
-  Folder,
-  Tag,
-  FileText,
   Globe,
   Command,
+  Key,
+  Infinity,
+  Tags,
   LucideIcon,
 } from 'lucide-react';
 
@@ -22,41 +22,15 @@ interface Plan {
   features: Feature[];
   buttonText: string;
   isPro: boolean;
+  price?: string;
+  billing?: string;
+  paddlePriceId?: string;
   highlight?: boolean;
 }
 
 export const FREE_PLAN: Plan = {
   name: 'Zush Free',
-  description: 'Basic organization for casual users',
-  features: [
-    {
-      title: 'Single Folder',
-      desc: 'Monitor one folder at a time',
-      icon: Folder,
-    },
-    {
-      title: 'Manual Metadata',
-      desc: 'Add Finder tags manually',
-      icon: Tag,
-    },
-    {
-      title: 'Default Naming Pattern',
-      desc: 'Use standard naming variables',
-      icon: FileText,
-    },
-    {
-      title: 'English only',
-      desc: 'English file names with the default date format',
-      icon: Globe,
-    },
-  ],
-  buttonText: 'Download Free',
-  isPro: false,
-};
-
-export const PRO_PLAN: Plan = {
-  name: 'Zush 🌟 PRO',
-  description: 'Flexible credit packs for power users',
+  description: '30 credits/month + All PRO features',
   features: [
     {
       title: 'Multiple Folders',
@@ -64,18 +38,18 @@ export const PRO_PLAN: Plan = {
       icon: FolderPlus,
     },
     {
-      title: 'Smart Metadata',
+      title: 'Smart Metadata Tags',
       desc: 'Automatically add Finder tags and Spotlight metadata',
-      icon: Zap,
+      icon: Tags,
     },
     {
-      title: 'Custom Naming Pattern',
+      title: 'Custom Naming Patterns',
       desc: 'Create your own file naming pattern with variables',
       icon: FileCode,
     },
     {
-      title: 'Localization',
-      desc: 'File names in 60+ languages and custom date format',
+      title: 'Localization (60+ languages)',
+      desc: 'File names in any language with custom date format',
       icon: Globe,
     },
     {
@@ -84,8 +58,56 @@ export const PRO_PLAN: Plan = {
       icon: Command,
     },
   ],
-  buttonText: 'Buy PRO Now 🌟',
+  buttonText: 'Download Free',
+  isPro: false,
+  price: '$0',
+};
+
+export const PRO_PLAN: Plan = {
+  name: 'Zush PRO 🌟',
+  description: 'One-time purchase • Lifetime access',
+  features: [
+    {
+      title: '10,000 Credits/Month',
+      desc: 'Process up to 10,000 images monthly',
+      icon: Zap,
+    },
+    {
+      title: 'BYOK - Bring Your Own Key',
+      desc: 'Use your Gemini, Groq, OpenAI, or Claude API key for unlimited processing',
+      icon: Key,
+    },
+    {
+      title: 'Multiple Folders',
+      desc: 'Monitor multiple folders simultaneously',
+      icon: FolderPlus,
+    },
+    {
+      title: 'Smart Metadata Tags',
+      desc: 'Automatically add Finder tags and Spotlight metadata',
+      icon: Tags,
+    },
+    {
+      title: 'Custom Naming Patterns',
+      desc: 'Create your own file naming pattern with variables',
+      icon: FileCode,
+    },
+    {
+      title: 'Localization (60+ languages)',
+      desc: 'File names in any language with custom date format',
+      icon: Globe,
+    },
+    {
+      title: 'Quick Rename Shortcut',
+      desc: 'Rename selected files in Finder with a keyboard shortcut',
+      icon: Command,
+    },
+  ],
+  buttonText: 'Buy Zush PRO 🌟',
   isPro: true,
+  price: '$10',
+  billing: 'one-time',
+  paddlePriceId: 'pri_01ke0rya71hzwhy8y1wdt76v1y',
   highlight: true,
 };
 
