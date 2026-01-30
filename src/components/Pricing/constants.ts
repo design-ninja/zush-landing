@@ -87,7 +87,7 @@ export const PRO_PLAN: Plan = {
   isPro: true,
   price: '$10',
   billing: 'one-time',
-  paddlePriceId: 'pri_01jn9vhqb1nf6xfwn8x3qzamvh', // TODO: Replace with new one-time price ID
+  paddlePriceId: 'pri_01ke0rya71hzwhy8y1wdt76v1y',
   highlight: true,
 };
 
