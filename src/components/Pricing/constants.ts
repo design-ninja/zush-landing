@@ -64,7 +64,7 @@ export const FREE_PLAN: Plan = {
 };
 
 export const PRO_PLAN: Plan = {
-  name: 'Zush PRO',
+  name: 'Zush PRO 🌟',
   description: 'One-time purchase • Lifetime access',
   features: [
     {
