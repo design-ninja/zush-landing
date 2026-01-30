@@ -114,11 +114,16 @@ const createFAQData = (): FAQData[] => [
   {
     question: 'Does Zush support multiple languages and date formats?',
     answer:
-      'Yes, Zush supports 60+ languages for AI-generated filenames and lets you choose a date format. Both are available in app settings; non-English languages and date format changes require PRO.',
+      'Yes, Zush supports 60+ languages for AI-generated filenames and lets you choose your preferred date format. Both features are available to all users in app settings.',
   },
   {
-    question: 'How many renames are included in the free tier?',
-    answer: `The free tier includes ${freeTierLimit} AI-powered renames. This is enough to experience the magic of Zush first-hand. PRO plans include ${minCredits}-${maxCredits} credits per month depending on the pack (1 credit = 1 rename).`,
+    question: 'How does pricing work?',
+    answer: `Zush PRO is a simple one-time purchase for $10. You get 10,000 credits per month (1 credit = 1 rename) and access to all features. Want unlimited processing? Use BYOK (Bring Your Own Key) with your Gemini or Groq API key to bypass credit limits entirely.`,
+  },
+  {
+    question: 'What is BYOK (Bring Your Own Key)?',
+    answer:
+      'BYOK lets PRO users connect their own Gemini or Groq API key for unlimited image processing. When BYOK is enabled, Zush uses your API key instead of our servers, so you pay your AI provider directly and have no credit limits. Perfect for power users with large libraries.',
   },
   {
     question: 'Which operating systems are supported?',
