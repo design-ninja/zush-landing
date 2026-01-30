@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.4.0] - 2026-01-30
+### Added
+- 🎉 Implemented BYOK (Bring Your Own Key) for unlimited processing
+- 🔑 Added support for OpenAI and Claude in BYOK
+- 💎 Added Zush PRO one-time purchase option
+- 🚀 Added force update options to release script
+
+### Improved  
+- ⚡ Enhanced DeviceService for better device ID management
+- ⚡ Improved BYOK functionality and UI
+- ⚡ Updated UI for simplified pricing model
+
+### Fixed
+- 🐛 Fixed checkout URL and simplified LicenseService logic
+- 🐛 Fixed AI provider defaults for processed files
+- 🐛 Hid 'Get More Credits' for PRO users
+
 ## [1.3.1] - 2026-01-30
 ### Added
 - 📂 Added directory access for hotkey file processing in sandboxed environments
