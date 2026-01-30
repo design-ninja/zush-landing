@@ -28,7 +28,7 @@ const Pricing = () => {
               <span className={styles.Pricing__TitleAccent}>Zush PRO</span>
             </>
           }
-          description='One-time purchase for unlimited processing'
+          description='Buy once - use forever'
         />
 
         <div className={styles.Pricing__Single}>
@@ -42,21 +42,6 @@ const Pricing = () => {
             isButtonDisabled={false}
             isLoading={false}
             buttonHint='Secure payment via Paddle'
-            creditsSlot={
-              <div className={styles.Controls__PricingCard}>
-                <div className={styles.PackLabel__PricingCard}>
-                  Monthly credits
-                </div>
-                <div className={`${styles.PackToggle__PricingCard} ${styles.PackToggle__PricingCard_single}`}>
-                  <button
-                    className={`${styles.PricingCard__ToggleButton} ${styles.PackToggleButton__PricingCard}`}
-                    disabled
-                  >
-                    10,000
-                  </button>
-                </div>
-              </div>
-            }
           />
         </div>
       </div>

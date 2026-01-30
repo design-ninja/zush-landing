@@ -68,6 +68,31 @@ export const PRO_PLAN: Plan = {
   description: 'One-time purchase • Lifetime access',
   features: [
     {
+      title: 'Multiple Folders',
+      desc: 'Monitor multiple folders simultaneously',
+      icon: FolderPlus,
+    },
+    {
+      title: 'Smart Metadata Tags',
+      desc: 'Automatically add Finder tags and Spotlight metadata',
+      icon: Tags,
+    },
+    {
+      title: 'Custom Naming Patterns',
+      desc: 'Create your own file naming pattern with variables',
+      icon: FileCode,
+    },
+    {
+      title: 'Localization (60+ languages)',
+      desc: 'File names in any language with custom date format',
+      icon: Globe,
+    },
+    {
+      title: 'Quick Rename Shortcut',
+      desc: 'Rename selected files in Finder with a keyboard shortcut',
+      icon: Command,
+    },
+    {
       title: '10,000 Credits/Month',
       desc: 'Process up to 10,000 images monthly',
       icon: Zap,
@@ -83,7 +108,7 @@ export const PRO_PLAN: Plan = {
       icon: Infinity,
     },
   ],
-  buttonText: 'Buy PRO',
+  buttonText: '⚡ Buy PRO',
   isPro: true,
   price: '$10',
   billing: 'one-time',
