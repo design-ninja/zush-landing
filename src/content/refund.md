@@ -1,8 +1,8 @@
 We want you to be happy with Zush. If you're not satisfied, we're here to help.
 
-### Subscriptions (Monthly & Annual)
+### One-Time Purchase
 
-For subscription plans, you can cancel at any time through your Paddle account. Upon cancellation, you will retain access to PRO features until the end of your current billing period. We offer a 14-day money-back guarantee from your initial subscription purchase date.
+Zush PRO is a one-time purchase with lifetime access. We offer a 14-day money-back guarantee from your purchase date.
 
 ### How to Request a Refund
 
