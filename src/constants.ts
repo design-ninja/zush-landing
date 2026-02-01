@@ -23,8 +23,7 @@ export const CREDIT_PACKS: CreditPack[] = [];
 // Config
 export const APP_CONFIG = {
   free_tier_limit: 30,
-  pro_monthly_limit: 10000,
-  pro_daily_limit: 5000,
+  pro_limit: 10000,
   image_extensions: [
     'png',
     'jpg',

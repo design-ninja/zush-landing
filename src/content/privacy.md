@@ -6,11 +6,11 @@ This Privacy Policy explains how Zush ("Kirill Isachenko," "we," "us," or "our")
 To provide AI-powered organizing and renaming features, Zush may analyze the metadata of files in folders you choose to monitor. This information is processed to generate suggestions.
 
 **1.2 Licensing and Usage Data**
-We collect information necessary to manage your subscription or license and enforce usage limits:
+We collect information necessary to manage your license and enforce usage limits:
 
 - Email Address: Provided during the purchase process.
-- Subscription Status: Information about your active subscription plan (Monthly, Annual, or One-Time).
-- Usage Counts: We track the number of AI-processed images to manage monthly limits.
+- License Status: Information about your PRO license (one-time purchase).
+- Usage Counts: We track the number of AI-processed images to manage usage limits.
 - Device Identifiers: A unique anonymous ID (machine UUID) to prevent license abuse.
 
 **1.3 Payment Information**
@@ -21,8 +21,7 @@ We do not store or process your credit card details. All payments are handled se
 We use the collected information to:
 
 - Provide and maintain the Service.
-- Process and verify your 🌟 PRO subscription or license.
-- Manage subscription renewals and billing.
+- Process and verify your 🌟 PRO license.
 - Improve the AI models and application performance.
 - Send you technical notices, updates, and support messages.
 

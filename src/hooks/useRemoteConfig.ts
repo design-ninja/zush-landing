@@ -4,7 +4,7 @@ export type { CreditPack, BillingPeriod };
 
 interface AppConfig {
   free_tier_limit: number;
-  pro_daily_limit: number;
+  pro_limit: number;
   credit_packs: CreditPack[];
   image_extensions: string[];
   ai_provider: string;

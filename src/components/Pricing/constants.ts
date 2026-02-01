@@ -30,7 +30,7 @@ interface Plan {
 
 export const FREE_PLAN: Plan = {
   name: 'Zush Free',
-  description: '30 credits/month + All PRO features',
+  description: '30 credits + All PRO features',
   features: [
     {
       title: 'Multiple Folders',
@@ -68,8 +68,8 @@ export const PRO_PLAN: Plan = {
   description: 'One-time purchase • Lifetime access',
   features: [
     {
-      title: '10,000 Credits/Month',
-      desc: 'Process up to 10,000 images monthly',
+      title: '10,000 Credits',
+      desc: 'Process up to 10,000 images, then use BYOK for unlimited',
       icon: Zap,
     },
     {

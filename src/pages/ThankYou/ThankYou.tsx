@@ -48,7 +48,7 @@ const ThankYou = () => {
             Your Zush PRO access is permanent (one-time purchase).
           </p>
           <p className={styles.ThankYou__Subtitle}>
-            The PRO features have been unlocked in your app. Enjoy 10,000 credits/month and BYOK for unlimited processing!
+            The PRO features have been unlocked in your app. Enjoy 10,000 credits and BYOK for unlimited processing!
           </p>
         </>
       ) : (

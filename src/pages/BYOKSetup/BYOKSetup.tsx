@@ -287,7 +287,7 @@ const BYOKSetup = () => {
               <div className={styles.BYOKSetup__FAQItem}>
                 <h3>Will I still have the 10,000 credits?</h3>
                 <p>
-                  Yes! When BYOK is disabled, you can still use your 10,000 monthly credits.
+                  Yes! When BYOK is disabled, you can still use your remaining credits.
                   BYOK is optional and can be toggled on/off anytime.
                 </p>
               </div>

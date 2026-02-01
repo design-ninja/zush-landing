@@ -14,18 +14,15 @@ We grant you a personal, non-exclusive, non-transferable, limited license to use
 Zush offers a "🌟 PRO" upgrade that provides credit-based access to AI renames, monitoring of multiple folders, and advanced metadata features. One credit equals one rename. Current pricing is displayed in the app and on the website.
 
 **3.2 Pricing Plans**
-We offer credit packs billed as subscriptions:
+We offer a one-time purchase model:
 
-- **Monthly Subscriptions** (recurring monthly): 500 credits ($5/month), 2,000 credits ($10/month), 5,000 credits ($20/month), 10,000 credits ($35/month).
-- **Annual Subscriptions** (recurring yearly): 500 credits/month ($50/year), 2,000 credits/month ($100/year), 5,000 credits/month ($200/year), 10,000 credits/month ($350/year).
+- **Zush Free**: 30 credits included. One credit equals one rename.
+- **Zush PRO**: One-time purchase of $10. Includes 10,000 credits and access to BYOK (Bring Your Own Key) for unlimited processing.
 
-Credits reset monthly. One credit equals one rename.
+Credits are one-time and do not reset. Once credits are exhausted, PRO users can enable BYOK to continue using their own API key for unlimited processing.
 
-**3.3 Subscription Terms**
-Your subscription will automatically renew at the end of each billing period unless you cancel before the renewal date. You can cancel your subscription at any time through your Paddle account or by contacting support.
-
-**3.4 Usage Limits**
-Both free and PRO versions have monthly usage limits for AI-powered features. These limits reset each calendar month. Current limits are displayed in the application.
+**3.3 Usage Limits**
+Both free and PRO versions have usage limits for AI-powered features. Current limits are displayed in the application. PRO users who exhaust their credits can use BYOK for unlimited processing.
 
 **3.5 Merchant of Record**
 Our order process is conducted by our online reseller Paddle.com. Paddle.com is the Merchant of Record for all our orders. Paddle provides all customer service inquiries and handles returns.
@@ -42,7 +39,7 @@ Zush uses artificial intelligence to analyze files and generate suggestions for 
 
 ### 5. Usage Limits and Fair Use
 
-The free version of Zush may include usage limits (e.g., a limited number of AI-processed images per month). We reserve the right to monitor usage and suspend accounts that attempt to bypass these limits or engage in abusive behavior.
+The free version of Zush includes usage limits (e.g., a limited number of AI-processed images). We reserve the right to monitor usage and suspend accounts that attempt to bypass these limits or engage in abusive behavior.
 
 ### 6. Intellectual Property
 
