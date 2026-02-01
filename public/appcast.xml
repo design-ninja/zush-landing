@@ -6,13 +6,28 @@
         <description>Zush app updates</description>
         <language>en</language>
         <item>
+            <title>1.5.0</title>
+            <pubDate>Sun, 01 Feb 2026 21:22:47 +0700</pubDate>
+            <sparkle:version>34</sparkle:version>
+            <sparkle:shortVersionString>1.5.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<h2>What's New in 1.5.0</h2><ul></ul><p><strong>Added</strong></p><ul><li>🎉 Implemented lifetime credit model for Zush</li><li>🔑 API keys are now securely stored in Keychain</li><li>🖼️ Added Help menu link to zushapp.com</li><li>📦 Track app version in devices table</li></ul><p><strong>Improved  </strong></p><ul><li>⚡ Enhanced AIService with better error handling and BYOK support</li><li>⚡ Streamlined API key clearing in BYOK section</li><li>⚡ Optimized device activation and rate limiting logic</li></ul><p><strong>Fixed</strong></p><ul><li>🐛 Redirect PRO users to BYOK tab when limit is reached</li><li>🐛 Fixed BYOK banner visibility based on active setting</li><li>🐛 Hardened edge functions with encryption and rate limiting</li></ul>
+]]></description>
+            <enclosure url="https://zushapp.com/releases/Zush-1.5.0.dmg" length="8054162" type="application/octet-stream" sparkle:edSignature="mpGns8XwiT+nnFqmtUHvc7q3MR6TniewFP/z9aehsn27Qls5hahpj8coiY5QzP8RhFZ+TSfhsGWS0JwxGqkIDA=="/>
+            <sparkle:deltas>
+                <enclosure url="https://zushapp.com/releases/Zush34-32.delta" sparkle:deltaFrom="32" length="1065170" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860528" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="fP7PctnIWrM+ToPoiil2vv7KkQgK/Em0uLveMiStIarincdLGNC3XIQNVg8AP2RTGqMUnP3DXD7FsmIX5agXDg=="/>
+                <enclosure url="https://zushapp.com/releases/Zush34-31.delta" sparkle:deltaFrom="31" length="1135586" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860528" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="/T+UBPCDHvNTVUwoArI+nk8WF76z1qvaxUgjf8345FfnZPru6ZbdzaLxVruCkDURuf0svhCLrR8+1jQPX8kuAw=="/>
+                <enclosure url="https://zushapp.com/releases/Zush34-23.delta" sparkle:deltaFrom="23" length="1146122" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860528" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="V/Tl9YqcG/pYmdC9aS2FWCwYeqZk8dFgIgg7xo4l463/hmWBxhbbC8h0tH7u0qQTpC7Wu3CVDCZKVOFpUTZyDw=="/>
+                <enclosure url="https://zushapp.com/releases/Zush34-22.delta" sparkle:deltaFrom="22" length="1143446" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860528" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="2xa0WNmrTm/fZKD0II6a0mh47eIsxPezTzOC+rvd3GdnL5aGuCq7TnIP9NzhlzFMuxIR3fdDDZb/tylYbr3gDA=="/>
+                <enclosure url="https://zushapp.com/releases/Zush34-21.delta" sparkle:deltaFrom="21" length="1154946" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860528" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="0kHxnPA52IVOijw+RKpIa78xGqglUzJUSnaDM17F/bkZ0RfegzBa4CnTONZ3t29Cu5vSJSR0nUHa5Cz1SjCVCA=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>1.4.0</title>
             <pubDate>Fri, 30 Jan 2026 19:50:38 +0700</pubDate>
             <sparkle:version>32</sparkle:version>
             <sparkle:shortVersionString>1.4.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<h2>What's New in 1.4.0</h2><ul></ul><p><strong>Added</strong></p><ul><li>🎉 Implemented BYOK (Bring Your Own Key) for unlimited processing</li><li>🔑 Added support for OpenAI and Claude in BYOK</li><li>💎 Added Zush PRO one-time purchase option</li><li>🚀 Added force update options to release script</li></ul><p><strong>Improved  </strong></p><ul><li>⚡ Enhanced DeviceService for better device ID management</li><li>⚡ Improved BYOK functionality and UI</li><li>⚡ Updated UI for simplified pricing model</li></ul><p><strong>Fixed</strong></p><ul><li>🐛 Fixed checkout URL and simplified LicenseService logic</li><li>🐛 Fixed AI provider defaults for processed files</li><li>🐛 Hid 'Get More Credits' for PRO users</li></ul>
-]]></description>
             <enclosure url="https://zushapp.com/releases/Zush-1.4.0.dmg" length="8018357" type="application/octet-stream" sparkle:edSignature="RCjwQnNNDnFDU7KRPuzLDgtdQ8eaYy+nNAQNG15KHddr7H+U9HqP+1HVD4rh+4ZgpXc/eKdC7DjH0YyYsTLRAA=="/>
             <sparkle:deltas>
                 <enclosure url="https://zushapp.com/releases/Zush32-31.delta" sparkle:deltaFrom="31" length="824082" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860528" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="Yugm9r3yOyPjp40OEQs1eSsmtALfR06+jOe+LpSITC3J9NVDJ23tCMLxkPN5jXq5dbDYa+7tCnIjneqA6SUcBw=="/>

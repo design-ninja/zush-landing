@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.5.0] - 2026-02-01
+### Added
+- 🎉 Implemented lifetime credit model for Zush
+- 🔑 API keys are now securely stored in Keychain
+- 🖼️ Added Help menu link to zushapp.com
+- 📦 Track app version in devices table
+
+### Improved  
+- ⚡ Enhanced AIService with better error handling and BYOK support
+- ⚡ Streamlined API key clearing in BYOK section
+- ⚡ Optimized device activation and rate limiting logic
+
+### Fixed
+- 🐛 Redirect PRO users to BYOK tab when limit is reached
+- 🐛 Fixed BYOK banner visibility based on active setting
+- 🐛 Hardened edge functions with encryption and rate limiting
+
 ## [1.4.0] - 2026-01-30
 ### Added
 - 🎉 Implemented BYOK (Bring Your Own Key) for unlimited processing
