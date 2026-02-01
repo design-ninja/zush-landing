@@ -10,7 +10,7 @@ We collect information necessary to manage your subscription or license and enfo
 
 - Email Address: Provided during the purchase process.
 - Subscription Status: Information about your active subscription plan (Monthly, Annual, or One-Time).
-- Usage Counts: We track the number of AI-processed images to manage monthly limits.
+- Usage Counts: We track the number of AI-processed images to manage usage limits.
 - Device Identifiers: A unique anonymous ID (machine UUID) to prevent license abuse.
 
 **1.3 Payment Information**
