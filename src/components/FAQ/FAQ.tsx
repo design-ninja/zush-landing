@@ -2,7 +2,7 @@ import { memo, useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { APP_CONFIG, CREDIT_PACKS } from '@/constants';
+import { APP_CONFIG } from '@/constants';
 import SectionHeader from '../SectionHeader';
 import styles from './FAQ.module.scss';
 
@@ -55,11 +55,6 @@ const supportsSvg = imageExtensions.includes('svg');
 const supportsPdf = imageExtensions.includes('pdf');
 const formattedExtensions = baseExtensions.map(formatExtension).join(', ');
 const freeTierLimit = formatNumber(APP_CONFIG.free_tier_limit);
-const creditValues = CREDIT_PACKS.map((pack) => pack.credits);
-const minCredits = formatNumber(Math.min(...creditValues));
-const maxCredits = formatNumber(Math.max(...creditValues));
-const aiProvider = APP_CONFIG.ai_provider;
-const aiModel = APP_CONFIG.ai_model;
 const refundPeriodDays = APP_CONFIG.refund_period_days;
 const minMacosVersion = APP_CONFIG.min_macos_version;
 const minMacosName = APP_CONFIG.min_macos_name;
@@ -140,7 +135,7 @@ const createFAQData = (): FAQData[] => [
   },
   {
     question: 'Which AI model does the app use?',
-    answer: `We use state-of-the-art models from ${aiProvider} (specifically ${aiModel}) to ensure high speed and incredible accuracy in recognizing objects in your photos.`,
+    answer: 'We use state-of-the-art AI models to ensure high speed and incredible accuracy in recognizing objects in your photos. The specific model may change as we continuously optimize for the best results.',
   },
   {
     question: 'Does the app work offline?',

@@ -18,7 +18,7 @@ const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
           <a href="/#features" className={styles.Navbar__Link}>Features</a>
           <a href="/#pricing" className={styles.Navbar__Link}>Pricing</a>
           <a href="/#faq" className={styles.Navbar__Link}>FAQ</a>
-          <button onClick={toggleTheme} className={styles.Navbar__ThemeToggle}>
+          <button onClick={toggleTheme} className={styles.Navbar__ThemeToggle} aria-label="Toggle theme">
             {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
           </button>
           <div className={styles.Navbar__Buttons}>

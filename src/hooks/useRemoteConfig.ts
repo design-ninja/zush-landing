@@ -1,14 +1,10 @@
-import { APP_CONFIG, CREDIT_PACKS, CreditPack, BillingPeriod } from '../constants';
-
-export type { CreditPack, BillingPeriod };
+import { APP_CONFIG } from '../constants';
 
 interface AppConfig {
   free_tier_limit: number;
   pro_limit: number;
-  credit_packs: CreditPack[];
   image_extensions: string[];
   ai_provider: string;
-  ai_model: string;
   refund_period_days: number;
   min_macos_version: string;
   min_macos_name: string;
@@ -16,7 +12,6 @@ interface AppConfig {
 
 const config: AppConfig = {
   ...APP_CONFIG,
-  credit_packs: CREDIT_PACKS,
 };
 
 export const useRemoteConfig = () => {
