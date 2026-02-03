@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.1] - 2026-02-03
+### Added
+- 🖼️ Added tests for Zush functionality
+
+### Improved  
+- ⚡ Improved image analysis order in AI Service
+- ✏️ Updated documentation with new features and architecture details
+
 ## [1.5.0] - 2026-02-01
 ### Added
 - 🎉 Implemented lifetime credit model for Zush
