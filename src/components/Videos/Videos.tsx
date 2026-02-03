@@ -35,19 +35,75 @@ const Videos = () => {
   const [activeFeature, setActiveFeature] = useState(0);
   const [progress, setProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [shouldLoad, setShouldLoad] = useState(false);
+  const [allowAutoplay, setAllowAutoplay] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const videoWrapperRef = useRef<HTMLDivElement>(null);
+  const progressRef = useRef(0);
+  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
-    if (videoRef.current) {
-        setIsLoading(true);
-        // Reset and play when active feature changes
-        videoRef.current.currentTime = 0;
-        videoRef.current.play().catch((e) => {
-            console.log('Autoplay prevented:', e);
-        });
-        setProgress(0);
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+
+    const connection = (navigator as Navigator & {
+      connection?: { saveData?: boolean; effectiveType?: string };
+    }).connection;
+
+    const saveData = connection?.saveData;
+    const effectiveType = connection?.effectiveType;
+    const slowNetwork = effectiveType === 'slow-2g' || effectiveType === '2g';
+
+    setAllowAutoplay(!prefersReducedMotion && !saveData && !slowNetwork);
+  }, []);
+
+  useEffect(() => {
+    if (!videoWrapperRef.current) {
+      setShouldLoad(true);
+      return;
     }
-  }, [activeFeature]);
+
+    if (typeof IntersectionObserver === 'undefined') {
+      setShouldLoad(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          setShouldLoad(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px 0px' }
+    );
+
+    observer.observe(videoWrapperRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (videoRef.current && shouldLoad) {
+      setIsLoading(true);
+      // Reset and play when active feature changes
+      videoRef.current.currentTime = 0;
+      if (allowAutoplay) {
+        videoRef.current.play().catch((e) => {
+          console.log('Autoplay prevented:', e);
+        });
+      }
+      setProgress(0);
+    }
+  }, [activeFeature, allowAutoplay, shouldLoad]);
+
+  useEffect(() => {
+    return () => {
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
+    };
+  }, []);
 
   const handleLoadStart = () => {
     setIsLoading(true);
@@ -57,12 +113,22 @@ const Videos = () => {
     setIsLoading(false);
   };
 
+  const handleLoadedMetadata = () => {
+    setIsLoading(false);
+  };
+
   const handleTimeUpdate = () => {
     if (videoRef.current) {
       const duration = videoRef.current.duration;
       const currentTime = videoRef.current.currentTime;
       if (duration > 0) {
-        setProgress((currentTime / duration) * 100);
+        progressRef.current = (currentTime / duration) * 100;
+        if (!rafRef.current) {
+          rafRef.current = requestAnimationFrame(() => {
+            setProgress(progressRef.current);
+            rafRef.current = null;
+          });
+        }
       }
     }
   };
@@ -76,6 +142,8 @@ const Videos = () => {
     setProgress(0);
     setActiveFeature(index);
   };
+
+  const showSkeleton = !shouldLoad || isLoading;
 
   return (
     <section className={styles.Videos}>
@@ -98,33 +166,37 @@ const Videos = () => {
         
         <motion.div
           className={styles.Videos__VideoWrapper}
+          ref={videoWrapperRef}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-             {isLoading && (
-                <div className={styles.Videos__Skeleton} />
-             )}
-             <AnimatePresence mode="wait">
-                <motion.video
-                    key={FEATURES[activeFeature].video}
-                    ref={videoRef}
-                    className={styles.Videos__Video}
-                    src={FEATURES[activeFeature].video}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: isLoading ? 0 : 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    muted
-                    playsInline
-                    autoPlay
-                    onLoadStart={handleLoadStart}
-                    onCanPlay={handleCanPlay}
-                    onTimeUpdate={handleTimeUpdate}
-                    onEnded={handleEnded}
-                />
-             </AnimatePresence>
+          {showSkeleton && <div className={styles.Videos__Skeleton} />}
+          <AnimatePresence mode="wait">
+            {shouldLoad && (
+              <motion.video
+                key={FEATURES[activeFeature].video}
+                ref={videoRef}
+                className={styles.Videos__Video}
+                src={FEATURES[activeFeature].video}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: isLoading ? 0 : 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                muted
+                playsInline
+                autoPlay={allowAutoplay}
+                controls={!allowAutoplay}
+                preload={allowAutoplay ? 'auto' : 'metadata'}
+                onLoadStart={handleLoadStart}
+                onLoadedMetadata={handleLoadedMetadata}
+                onCanPlay={handleCanPlay}
+                onTimeUpdate={handleTimeUpdate}
+                onEnded={handleEnded}
+              />
+            )}
+          </AnimatePresence>
         </motion.div>
 
         <motion.div

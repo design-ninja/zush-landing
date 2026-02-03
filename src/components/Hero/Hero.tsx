@@ -14,6 +14,10 @@ const Hero = () => {
   const isMobile = useIsMobile();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const introMotion = isMobile
+    ? { initial: { opacity: 0, y: -20 }, animate: { opacity: 1, y: 0 } }
+    : { initial: { opacity: 0, x: -50 }, animate: { opacity: 1, x: 0 } };
+
   const handleDownloadClick = () => {
     if (isMobile) {
       setIsModalOpen(true);
@@ -26,8 +30,8 @@ const Hero = () => {
     <section className={styles.Hero}>
       <div className={styles.Hero__Container}>
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={introMotion.initial}
+          animate={introMotion.animate}
           transition={{ duration: 0.8 }}
         >
           <Heading as="h1" className={styles.Hero__Title}>
