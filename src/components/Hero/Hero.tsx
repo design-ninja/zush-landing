@@ -40,10 +40,24 @@ const Hero = () => {
           </Text>
 
           <div className={styles.Hero__Buttons}>
-            <Button variant="black" size="lg" onClick={handleDownloadClick}>
-              <AppleIcon />
-              Download
-            </Button>
+            {isMobile ? (
+              <Button variant="black" size="lg" onClick={handleDownloadClick}>
+                <AppleIcon />
+                Download
+              </Button>
+            ) : (
+              <Button
+                as="a"
+                href={DOWNLOAD_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="black"
+                size="lg"
+              >
+                <AppleIcon />
+                Download
+              </Button>
+            )}
             <Button as="a" href="#pro" variant="primary" size="lg">
               Buy 🌟 PRO
             </Button>

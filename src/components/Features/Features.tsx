@@ -88,7 +88,14 @@ const Features = () => {
           >
             <div className={styles.UI_Analysis}>
               <div className={styles.UI_Analysis__Preview}>
-                <img src='/images/features/sunset_thumb.png' alt='Sunset' />
+                <img
+                  src='/images/features/sunset_thumb.png'
+                  alt='Sunset'
+                  width={64}
+                  height={64}
+                  loading='lazy'
+                  decoding='async'
+                />
               </div>
               <div className={styles.UI_Analysis__Content}>
                 <span
@@ -220,6 +227,10 @@ const Features = () => {
                   <img
                     src='/images/features/glitch_thumb.png'
                     alt='Glitch Art'
+                    width={64}
+                    height={64}
+                    loading='lazy'
+                    decoding='async'
                   />
                 </div>
                 <div className={styles.UI_Metadata__FileInfo}>

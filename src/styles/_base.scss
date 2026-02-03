@@ -9,6 +9,12 @@ html {
     scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
 body {
     font-family: var(--font-family);
     background-color: var(--background);
@@ -33,6 +39,18 @@ button {
     outline: none;
     background: none;
     font-family: inherit;
+}
+
+a,
+button,
+[role='button'],
+input,
+select,
+textarea {
+    &:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 3px;
+    }
 }
 
 h1,

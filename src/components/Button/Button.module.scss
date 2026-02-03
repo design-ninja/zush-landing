@@ -6,7 +6,12 @@
     border-radius: $radius-full;
     @include corner-shape-squircle;
     font-weight: 600;
-    transition: all $transition-fast;
+    transition:
+        transform $transition-fast,
+        background-color $transition-fast,
+        color $transition-fast,
+        box-shadow $transition-fast,
+        outline-color $transition-fast;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -16,6 +21,11 @@
     font-family: inherit;
     text-decoration: none;
     gap: 0.5rem;
+
+    &:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 3px;
+    }
 
     // Sizes
     &_sm {

@@ -42,6 +42,12 @@
 
     &__Link {
         font-weight: 500;
+        transition: color 0.2s ease;
+
+        &:hover,
+        &:focus-visible {
+            color: var(--primary);
+        }
 
         @include mobile {
             display: none;

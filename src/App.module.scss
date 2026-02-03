@@ -5,3 +5,22 @@
         padding-top: $navbar-height;
     }
 }
+
+.SkipLink {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 1100;
+    padding: 0.5rem 0.75rem;
+    background: var(--background);
+    border: 2px solid var(--primary);
+    border-radius: 0.5rem;
+    color: var(--foreground);
+    font-weight: 600;
+    transform: translateY(-200%);
+    transition: transform 0.2s ease;
+
+    &:focus-visible {
+        transform: translateY(0);
+    }
+}

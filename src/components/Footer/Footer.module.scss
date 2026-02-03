@@ -50,6 +50,12 @@
 
     &__Link {
         color: var(--muted-foreground);
+        transition: color 0.2s ease;
+
+        &:hover,
+        &:focus-visible {
+            color: var(--primary);
+        }
     }
 
     &__Bottom {

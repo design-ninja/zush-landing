@@ -29,7 +29,7 @@ const PageLoader = () => (
     minHeight: '50vh',
     opacity: 0.5
   }}>
-    Loading...
+    Loading…
   </div>
 );
 
@@ -40,8 +40,11 @@ const AppContent = ({ theme, toggleTheme }: { theme: string; toggleTheme: () => 
     <>
       <ScrollToTop />
       <div className={styles.App}>
+        <a className={styles.SkipLink} href="#main-content">
+          Skip to content
+        </a>
         <Navbar theme={theme} toggleTheme={toggleTheme} />
-        <main className={styles.App__Main}>
+        <main id="main-content" className={styles.App__Main}>
           <Suspense fallback={<PageLoader />}>
             <Routes>
               <Route path="/" element={<Home />} />
