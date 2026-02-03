@@ -6,7 +6,6 @@ interface FileItem {
   before: string;
   after: string;
   img: string;
-  priority?: boolean;
 }
 
 interface Slide {
@@ -30,7 +29,6 @@ const slides: Slide[] = [
         before: "IMG_4821.JPG",
         after: "Serene_Beach_Sunset.jpg",
         img: "/images/examples/sunset.jpg",
-        priority: true,
       },
       {
         before: "73819203_edit.png",
@@ -148,7 +146,10 @@ const FileShowcase = () => {
           transition={{ duration: 0.3 }}
           className={styles.FileShowcase__Grid}
         >
-          {slides[currentSlide].files.map((file, i) => (
+          {slides[currentSlide].files.map((file, i) => {
+            const isPriority = currentSlide === 0 && i < 4;
+
+            return (
             <motion.div
               key={i}
               initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
@@ -171,9 +172,9 @@ const FileShowcase = () => {
                   className={styles.FileItem__Image}
                   width={64}
                   height={64}
-                  loading={file.priority ? 'eager' : 'lazy'}
+                  loading={isPriority ? 'eager' : 'lazy'}
                   decoding="async"
-                  fetchPriority={file.priority ? 'high' : 'auto'}
+                  fetchPriority={isPriority ? 'high' : 'auto'}
                 />
               </picture>
               <div className={styles.FileItem__Content}>
@@ -181,7 +182,8 @@ const FileShowcase = () => {
                 <div className={styles.FileItem__After}>{file.after}</div>
               </div>
             </motion.div>
-          ))}
+            );
+          })}
         </motion.div>
       </AnimatePresence>
     </div>
