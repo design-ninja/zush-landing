@@ -3,7 +3,7 @@
 
 .Hero {
     padding: 6.25rem 0 3.75rem;
-    overflow-x: hidden;
+    overflow-x: clip;
 
     @include mobile {
         padding: 3.75rem 0 2.5rem;
@@ -110,6 +110,7 @@
         filter: blur(6.25rem);
         opacity: 0.3;
         z-index: -1;
+        will-change: transform;
 
         @include mobile {
             right: 50%;
