@@ -16,6 +16,130 @@
   <meta name="keywords" content="AI image organizer, macOS image renaming, automatic file renaming, photo organization, batch rename images, folder monitoring, smart metadata, screenshot organizer" />
   <meta name="author" content="Zush" />
   <meta name="robots" content="index, follow" />
+  <style id="critical-css">
+    :root {
+      --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-family-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      --background: oklch(1 0 0);
+      --foreground: oklch(0.15 0.015 265);
+      --muted: oklch(0.98 0.003 265);
+      --muted-foreground: oklch(0.45 0.01 274.5);
+      --primary: oklch(0.5595 0.2296 279.31);
+      --primary-foreground: oklch(1 0 0);
+      --secondary: oklch(0.7556 0.2082 146.98);
+      --tertiary: oklch(0 0 0);
+      --tertiary-foreground: oklch(1 0 0);
+      --border: oklch(0.92 0.003 265);
+      --glass-border: oklch(0 0 0 / 0.05);
+      --text-subtle: var(--muted-foreground);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background: oklch(0.13 0.01 285);
+        --foreground: oklch(1 0 0);
+        --muted: oklch(0.2 0.01 285);
+        --muted-foreground: oklch(0.7 0.01 265);
+        --primary: oklch(0.65 0.25 279.31);
+        --primary-foreground: oklch(1 0 0);
+        --tertiary: oklch(0.2 0.01 285);
+        --tertiary-foreground: oklch(1 0 0);
+        --border: oklch(0.28 0.01 285);
+        --glass-border: oklch(1 0 0 / 0.1);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font-family);
+      background-color: var(--background);
+      color: var(--foreground);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; background: none; border: none; cursor: pointer; }
+
+    .hero { padding: 6.25rem 0 3.75rem; overflow-x: hidden; }
+    .hero__container {
+      max-width: 75rem;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+      align-items: center;
+      gap: 4rem;
+    }
+    .hero__title {
+      font-family: var(--font-family-heading);
+      font-weight: 550;
+      line-height: 1.2;
+      font-size: 3rem;
+      margin: 0 0 1.5rem;
+      text-wrap: balance;
+    }
+    .hero__title-accent { color: var(--primary); }
+    .hero__subtitle {
+      margin: 0 0 2.5rem;
+      max-width: 31.25rem;
+      font-size: 1.25rem;
+      color: var(--muted-foreground);
+      text-wrap: pretty;
+    }
+    .hero__buttons {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .hero__cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+    .hero__cta--primary {
+      background: var(--primary);
+      color: var(--primary-foreground);
+    }
+    .hero__cta--black {
+      background: var(--tertiary);
+      color: var(--tertiary-foreground);
+      outline: 1px solid var(--glass-border);
+    }
+    .hero__free {
+      font-size: 0.875rem;
+      color: var(--text-subtle);
+      opacity: 0.5;
+      margin: 0 0 2rem;
+    }
+
+    @media (max-width: 768px) {
+      body { font-size: 0.875rem; }
+      .hero { padding: 3.75rem 0 2.5rem; }
+      .hero__container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 0;
+        padding: 0 1.25rem;
+      }
+      .hero__title { font-size: 2.2rem; }
+      .hero__subtitle { margin-left: auto; margin-right: auto; font-size: 1.1rem; }
+      .hero__buttons { justify-content: center; }
+      .hero__free { display: none; }
+    }
+  </style>
+  <link rel="preload" as="style" href="/src/styles/main.scss" />
+  <link rel="stylesheet" href="/src/styles/main.scss" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="/src/styles/main.scss">
+  </noscript>
   <!-- Google Fonts - async loading -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

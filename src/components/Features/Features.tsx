@@ -86,18 +86,24 @@ const Features = () => {
             icon={Sparkles}
             delay={0.1}
           >
-            <div className={styles.UI_Analysis}>
-              <div className={styles.UI_Analysis__Preview}>
-                <img
-                  src='/images/features/sunset_thumb.png'
-                  alt='Sunset'
-                  width={64}
-                  height={64}
-                  loading='lazy'
-                  decoding='async'
-                />
-              </div>
-              <div className={styles.UI_Analysis__Content}>
+              <div className={styles.UI_Analysis}>
+                <div className={styles.UI_Analysis__Preview}>
+                <picture>
+                  <source
+                    srcSet='/images/features/sunset_thumb.webp'
+                    type='image/webp'
+                  />
+                  <img
+                    src='/images/features/sunset_thumb.png'
+                    alt='Sunset'
+                    width={64}
+                    height={64}
+                    loading='lazy'
+                    decoding='async'
+                  />
+                </picture>
+                </div>
+                <div className={styles.UI_Analysis__Content}>
                 <span
                   className={styles.UI_Analysis__OldName}
                 >{`Screenshot ${currentYear}-03-15 at 19.45.22.png`}</span>
@@ -221,19 +227,25 @@ const Features = () => {
             icon={Tag}
             delay={0.5}
           >
-            <div className={styles.UI_Metadata}>
+              <div className={styles.UI_Metadata}>
               <div className={styles.UI_Metadata__File}>
-                <div className={styles.UI_Metadata__Preview}>
-                  <img
-                    src='/images/features/glitch_thumb.png'
-                    alt='Glitch Art'
-                    width={64}
-                    height={64}
-                    loading='lazy'
-                    decoding='async'
-                  />
-                </div>
-                <div className={styles.UI_Metadata__FileInfo}>
+                  <div className={styles.UI_Metadata__Preview}>
+                  <picture>
+                    <source
+                      srcSet='/images/features/glitch_thumb.webp'
+                      type='image/webp'
+                    />
+                    <img
+                      src='/images/features/glitch_thumb.png'
+                      alt='Glitch Art'
+                      width={64}
+                      height={64}
+                      loading='lazy'
+                      decoding='async'
+                    />
+                  </picture>
+                  </div>
+                  <div className={styles.UI_Metadata__FileInfo}>
                   <span className={styles.UI_Metadata__FileName}>
                     Cyberpunk_Art.png
                   </span>

@@ -158,15 +158,21 @@ const FileShowcase = () => {
               }}
               className={styles.FileItem}
             >
-              <img
-                src={file.img}
-                alt="Zush App AI File Rename Example Image"
-                className={styles.FileItem__Image}
-                width={64}
-                height={64}
-                loading="lazy"
-                decoding="async"
-              />
+              <picture>
+                <source
+                  srcSet={file.img.replace(/\.jpg$/i, '.webp')}
+                  type="image/webp"
+                />
+                <img
+                  src={file.img}
+                  alt="Zush App AI File Rename Example Image"
+                  className={styles.FileItem__Image}
+                  width={64}
+                  height={64}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
               <div className={styles.FileItem__Content}>
                 <div className={styles.FileItem__Before}>{file.before}</div>
                 <div className={styles.FileItem__After}>{file.after}</div>

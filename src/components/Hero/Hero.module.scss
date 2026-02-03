@@ -70,6 +70,36 @@
         width: 100%;
     }
 
+    &__Intro {
+        opacity: 0;
+        transform: translateX(-50px);
+        animation: heroIntro 0.8s ease forwards;
+
+        @include mobile {
+            transform: translateY(-20px);
+            animation-name: heroIntroMobile;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            opacity: 1;
+            transform: none;
+            animation: none;
+        }
+    }
+
+    &__ShowcaseMotion {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: heroShowcase 1s ease forwards;
+        animation-delay: 0.2s;
+
+        @media (prefers-reduced-motion: reduce) {
+            opacity: 1;
+            transform: none;
+            animation: none;
+        }
+    }
+
     &__GlowEffect {
         position: absolute;
         top: -2.5rem;
@@ -87,5 +117,41 @@
             top: 0;
             opacity: 0.15;
         }
+    }
+}
+
+@keyframes heroIntro {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes heroIntroMobile {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heroShowcase {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

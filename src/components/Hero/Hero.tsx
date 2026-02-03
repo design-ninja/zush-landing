@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 import FileShowcase from "../FileShowcase";
 import Button from "../Button";
 import Heading from "../Heading";
@@ -14,10 +13,6 @@ const Hero = () => {
   const isMobile = useIsMobile();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const introMotion = isMobile
-    ? { initial: { opacity: 0, y: -20 }, animate: { opacity: 1, y: 0 } }
-    : { initial: { opacity: 0, x: -50 }, animate: { opacity: 1, x: 0 } };
-
   const handleDownloadClick = () => {
     if (isMobile) {
       setIsModalOpen(true);
@@ -27,25 +22,32 @@ const Hero = () => {
   };
 
   return (
-    <section className={styles.Hero}>
-      <div className={styles.Hero__Container}>
-        <motion.div
-          initial={introMotion.initial}
-          animate={introMotion.animate}
-          transition={{ duration: 0.8 }}
-        >
-          <Heading as="h1" className={styles.Hero__Title}>
+    <section className={`${styles.Hero} hero`}>
+      <div className={`${styles.Hero__Container} hero__container`}>
+        <div className={`${styles.Hero__Intro} hero__intro`}>
+          <Heading as="h1" className={`${styles.Hero__Title} hero__title`}>
             Stop Naming Images.{" "}
-            <span className={styles.Hero__TitleAccent}>Let AI Do It.</span>
+            <span className={`${styles.Hero__TitleAccent} hero__title-accent`}>
+              Let AI Do It.
+            </span>
           </Heading>
-          <Text size="xl" color="subtle" className={styles.Hero__Subtitle}>
+          <Text
+            size="xl"
+            color="subtle"
+            className={`${styles.Hero__Subtitle} hero__subtitle`}
+          >
             Zush gives your files meaningful AI-powered names — automatically.
             Find any photo in seconds, not minutes.
           </Text>
 
-          <div className={styles.Hero__Buttons}>
+          <div className={`${styles.Hero__Buttons} hero__buttons`}>
             {isMobile ? (
-              <Button variant="black" size="lg" onClick={handleDownloadClick}>
+              <Button
+                variant="black"
+                size="lg"
+                className="hero__cta hero__cta--black"
+                onClick={handleDownloadClick}
+              >
                 <AppleIcon />
                 Download
               </Button>
@@ -57,34 +59,38 @@ const Hero = () => {
                 rel="noopener noreferrer"
                 variant="black"
                 size="lg"
+                className="hero__cta hero__cta--black"
               >
                 <AppleIcon />
                 Download
               </Button>
             )}
-            <Button as="a" href="#pro" variant="primary" size="lg">
+            <Button
+              as="a"
+              href="#pro"
+              variant="primary"
+              size="lg"
+              className="hero__cta hero__cta--primary"
+            >
               Buy 🌟 PRO
             </Button>
           </div>
-          <p className={styles.Hero__FreeLabel}>
+          <p className={`${styles.Hero__FreeLabel} hero__free`}>
             Free, no credit card required
           </p>
-        </motion.div>
+        </div>
 
         <MobileDownloadModal
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
         />
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className={styles.Hero__ShowcaseWrapper}
+        <div
+          className={`${styles.Hero__ShowcaseWrapper} ${styles.Hero__ShowcaseMotion} hero__showcase`}
         >
           <FileShowcase />
           <div className={styles.Hero__GlowEffect} />
-        </motion.div>
+        </div>
       </div>
     </section>
   );
