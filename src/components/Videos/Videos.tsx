@@ -150,8 +150,7 @@ const Videos = () => {
       <div className={styles.Videos__Container}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
           <SectionHeader
@@ -168,8 +167,7 @@ const Videos = () => {
           className={styles.Videos__VideoWrapper}
           ref={videoWrapperRef}
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           {showSkeleton && <div className={styles.Videos__Skeleton} />}
@@ -202,8 +200,7 @@ const Videos = () => {
         <motion.div
           className={styles.Videos__Tabs}
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
             {FEATURES.map((feature, index) => (
