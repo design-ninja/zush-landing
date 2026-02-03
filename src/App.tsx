@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useTheme } from './hooks/useTheme';
 import { useCheckoutAutoOpen } from './hooks/useCheckoutAutoOpen';
+import { useSeo } from './hooks/useSeo';
 import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -35,6 +36,7 @@ const PageLoader = () => (
 
 const AppContent = ({ theme, toggleTheme }: { theme: string; toggleTheme: () => void }) => {
   useCheckoutAutoOpen();
+  useSeo();
 
   return (
     <>
