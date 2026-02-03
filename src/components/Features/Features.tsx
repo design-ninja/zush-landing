@@ -90,8 +90,9 @@ const Features = () => {
                 <div className={styles.UI_Analysis__Preview}>
                 <picture>
                   <source
-                    srcSet='/images/features/sunset_thumb.webp'
+                    srcSet='/images/features/sunset_thumb-64.webp 64w, /images/features/sunset_thumb-128.webp 128w'
                     type='image/webp'
+                    sizes='64px'
                   />
                   <img
                     src='/images/features/sunset_thumb.png'
@@ -232,8 +233,9 @@ const Features = () => {
                   <div className={styles.UI_Metadata__Preview}>
                   <picture>
                     <source
-                      srcSet='/images/features/glitch_thumb.webp'
+                      srcSet='/images/features/glitch_thumb-64.webp 64w, /images/features/glitch_thumb-128.webp 128w'
                       type='image/webp'
+                      sizes='64px'
                     />
                     <img
                       src='/images/features/glitch_thumb.png'

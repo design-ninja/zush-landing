@@ -22,30 +22,23 @@ const Hero = () => {
   };
 
   return (
-    <section className={`${styles.Hero} hero`}>
-      <div className={`${styles.Hero__Container} hero__container`}>
-        <div className={`${styles.Hero__Intro} hero__intro`}>
-          <Heading as="h1" className={`${styles.Hero__Title} hero__title`}>
+    <section className={styles.Hero}>
+      <div className={styles.Hero__Container}>
+        <div className={styles.Hero__Intro}>
+          <Heading as="h1" className={styles.Hero__Title}>
             Stop Naming Images.{" "}
-            <span className={`${styles.Hero__TitleAccent} hero__title-accent`}>
-              Let AI Do It.
-            </span>
+            <span className={styles.Hero__TitleAccent}>Let AI Do It.</span>
           </Heading>
-          <Text
-            size="xl"
-            color="subtle"
-            className={`${styles.Hero__Subtitle} hero__subtitle`}
-          >
+          <Text size="xl" color="subtle" className={styles.Hero__Subtitle}>
             Zush gives your files meaningful AI-powered names — automatically.
             Find any photo in seconds, not minutes.
           </Text>
 
-          <div className={`${styles.Hero__Buttons} hero__buttons`}>
+          <div className={styles.Hero__Buttons}>
             {isMobile ? (
               <Button
                 variant="black"
                 size="lg"
-                className="hero__cta hero__cta--black"
                 onClick={handleDownloadClick}
               >
                 <AppleIcon />
@@ -59,7 +52,6 @@ const Hero = () => {
                 rel="noopener noreferrer"
                 variant="black"
                 size="lg"
-                className="hero__cta hero__cta--black"
               >
                 <AppleIcon />
                 Download
@@ -70,14 +62,11 @@ const Hero = () => {
               href="#pro"
               variant="primary"
               size="lg"
-              className="hero__cta hero__cta--primary"
             >
               Buy 🌟 PRO
             </Button>
           </div>
-          <p className={`${styles.Hero__FreeLabel} hero__free`}>
-            Free, no credit card required
-          </p>
+          <p className={styles.Hero__FreeLabel}>Free, no credit card required</p>
         </div>
 
         <MobileDownloadModal
@@ -86,7 +75,7 @@ const Hero = () => {
         />
 
         <div
-          className={`${styles.Hero__ShowcaseWrapper} ${styles.Hero__ShowcaseMotion} hero__showcase`}
+          className={`${styles.Hero__ShowcaseWrapper} ${styles.Hero__ShowcaseMotion}`}
         >
           <FileShowcase />
           <div className={styles.Hero__GlowEffect} />

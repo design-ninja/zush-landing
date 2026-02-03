@@ -6,6 +6,7 @@ interface FileItem {
   before: string;
   after: string;
   img: string;
+  priority?: boolean;
 }
 
 interface Slide {
@@ -29,6 +30,7 @@ const slides: Slide[] = [
         before: "IMG_4821.JPG",
         after: "Serene_Beach_Sunset.jpg",
         img: "/images/examples/sunset.jpg",
+        priority: true,
       },
       {
         before: "73819203_edit.png",
@@ -169,8 +171,9 @@ const FileShowcase = () => {
                   className={styles.FileItem__Image}
                   width={64}
                   height={64}
-                  loading="lazy"
+                  loading={file.priority ? 'eager' : 'lazy'}
                   decoding="async"
+                  fetchPriority={file.priority ? 'high' : 'auto'}
                 />
               </picture>
               <div className={styles.FileItem__Content}>
