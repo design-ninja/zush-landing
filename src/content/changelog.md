@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.5.2] - 2026-02-04
+### Added
+- 🎉 Unlocked all PRO features for FREE account (except BYOK)
+- 🎉 Enhanced onboarding experience and debug features
+- 🖼️ Added unit tests for AI analysis and bookmark persistence
+- 🔑 Added debug section in preferences
+
+### Improved  
+- ⚡ Improved settings management in AppDelegate and SettingsViewModel
+
+### Fixed
+- 🐛 Adjusted Finder layout script for DMG creation
+
 ## [1.5.1] - 2026-02-03
 ### Added
 - 🖼️ Added tests for Zush functionality
