@@ -74,12 +74,12 @@ export const PRO_PLAN: Plan = {
     },
     {
       title: 'BYOK - Bring Your Own Key',
-      desc: 'Use your Gemini, Groq, OpenAI, or Claude API key for unlimited processing',
+      desc: 'Use your API key for unlimited processing',
       icon: Key,
     },
     {
-      title: 'Multiple Folders',
-      desc: 'Monitor multiple folders simultaneously',
+      title: 'Folders Monitor',
+      desc: 'Auto-rename new images as they land in watched folders',
       icon: FolderPlus,
     },
     {
