@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.5.3] - 2026-02-05
+### Added
+- 🎉 Enhanced debug and settings management features added
+- 🔑 App Store version now sandboxed with updated entitlements
+
+### Improved  
+- ⚡ Updated hotkey instructions for App Store version
+- ⚡ Improved license and store kit services
+
+### Fixed
+- 🐛 Fixed project file references for Zush.storekit
+
 ## [1.5.2] - 2026-02-04
 ### Added
 - 🎉 Unlocked all PRO features for FREE account (except BYOK)
