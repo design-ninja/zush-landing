@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Monitor } from 'lucide-react';
 import AppleIcon from '../AppleIcon';
 import { MIN_MACOS_VERSION } from '@/constants';
@@ -40,44 +39,41 @@ const MobileDownloadModal = ({ isOpen, onClose }: MobileDownloadModalProps) => {
     };
   }, [isOpen, onClose]);
 
+  if (!isOpen) {
+    return null;
+  }
+
   return createPortal(
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          className={styles.MobileDownloadModal__Overlay}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
-          onClick={onClose}
-        >
-          <motion.div
-            className={styles.MobileDownloadModal__Content}
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.2 }}
-          >
-            <div className={styles.MobileDownloadModal__Icon}>
-              <Monitor size={32} />
-            </div>
+    <div
+      className={styles.MobileDownloadModal__Overlay}
+      onClick={onClose}
+      role='presentation'
+    >
+      <div
+        className={styles.MobileDownloadModal__Content}
+        onClick={(event) => event.stopPropagation()}
+        role='dialog'
+        aria-modal='true'
+        aria-labelledby='mobile-download-modal-title'
+      >
+        <div className={styles.MobileDownloadModal__Icon}>
+          <Monitor size={32} />
+        </div>
 
-            <h2 className={styles.MobileDownloadModal__Title}>
-              Desktop Only
-            </h2>
+        <h2 id='mobile-download-modal-title' className={styles.MobileDownloadModal__Title}>
+          Desktop Only
+        </h2>
 
-            <p className={styles.MobileDownloadModal__Description}>
-              Zush is a macOS app designed for desktop use. Visit this page on your Mac to download.
-            </p>
+        <p className={styles.MobileDownloadModal__Description}>
+          Zush is a macOS app designed for desktop use. Visit this page on your Mac to download.
+        </p>
 
-            <div className={styles.MobileDownloadModal__Badge}>
-              <AppleIcon />
-              macOS {MIN_MACOS_VERSION}
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>,
+        <div className={styles.MobileDownloadModal__Badge}>
+          <AppleIcon />
+          macOS {MIN_MACOS_VERSION}
+        </div>
+      </div>
+    </div>,
     document.body
   );
 };

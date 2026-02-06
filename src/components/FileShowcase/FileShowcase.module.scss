@@ -38,6 +38,10 @@
     border: 1px solid var(--border);
     @include shadow("sm");
     min-width: 0;
+    opacity: 0;
+    transform: translateY(0.5rem) scale(0.98);
+    animation: file-item-enter 0.32s ease-out forwards;
+    animation-delay: var(--item-delay, 0ms);
 
     @include mobile {
         &:nth-child(n + 5) {
@@ -74,5 +78,23 @@
         font-weight: 700;
         color: var(--foreground);
         @include text-ellipsis;
+    }
+
+    &_static {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes file-item-enter {
+    from {
+        opacity: 0;
+        transform: translateY(0.5rem) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
     }
 }

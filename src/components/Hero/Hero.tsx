@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import FileShowcase from "../FileShowcase";
 import Button from "../Button";
 import Heading from "../Heading";
 import Text from "../Text";
 import AppleIcon from "../AppleIcon";
-import MobileDownloadModal from "../MobileDownloadModal";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { DOWNLOAD_URL } from "@/constants";
 import styles from "./Hero.module.scss";
+
+const MobileDownloadModal = lazy(() => import("../MobileDownloadModal"));
 
 const Hero = () => {
   const isMobile = useIsMobile();
@@ -69,10 +70,14 @@ const Hero = () => {
           <p className={styles.Hero__FreeLabel}>Free, no credit card required</p>
         </div>
 
-        <MobileDownloadModal
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-        />
+        {isModalOpen && (
+          <Suspense fallback={null}>
+            <MobileDownloadModal
+              isOpen={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+            />
+          </Suspense>
+        )}
 
         <div
           className={`${styles.Hero__ShowcaseWrapper} ${styles.Hero__ShowcaseMotion}`}

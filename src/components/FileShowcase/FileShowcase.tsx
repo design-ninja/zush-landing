@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { CSSProperties, useEffect, useState } from "react";
 import styles from "./FileShowcase.module.scss";
 
 interface FileItem {
@@ -120,7 +119,21 @@ const slides: Slide[] = [
 const FileShowcase = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const prefersReducedMotion = useReducedMotion();
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateMotionPreference = () => {
+      setPrefersReducedMotion(mediaQuery.matches);
+    };
+
+    updateMotionPreference();
+    mediaQuery.addEventListener("change", updateMotionPreference);
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateMotionPreference);
+    };
+  }, []);
 
   useEffect(() => {
     if (isPaused || prefersReducedMotion) return;
@@ -137,33 +150,22 @@ const FileShowcase = () => {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentSlide}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          className={styles.FileShowcase__Grid}
-        >
-          {slides[currentSlide].files.map((file, i) => {
-            const isPriority = currentSlide === 0 && i < 4;
+      <div key={currentSlide} className={styles.FileShowcase__Grid}>
+        {slides[currentSlide].files.map((file, i) => {
+          const isPriority = currentSlide === 0 && i < 4;
+          const itemStyle = {
+            "--item-delay": `${i * 80}ms`,
+          } as CSSProperties;
 
-            return (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
-              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-              transition={{
-                duration: 0.4,
-                delay: i * 0.08,
-                ease: [0.25, 0.46, 0.45, 0.94],
-              }}
-              className={styles.FileItem}
+          return (
+            <div
+              key={`${currentSlide}-${i}`}
+              className={`${styles.FileItem} ${prefersReducedMotion ? styles.FileItem_static : ""}`}
+              style={itemStyle}
             >
               <picture>
                 <source
-                  srcSet={file.img.replace(/\.jpg$/i, '.webp')}
+                  srcSet={file.img.replace(/\.jpg$/i, ".webp")}
                   type="image/webp"
                 />
                 <img
@@ -172,20 +174,19 @@ const FileShowcase = () => {
                   className={styles.FileItem__Image}
                   width={64}
                   height={64}
-                  loading={isPriority ? 'eager' : 'lazy'}
+                  loading={isPriority ? "eager" : "lazy"}
                   decoding="async"
-                  fetchPriority={isPriority ? 'high' : 'auto'}
+                  fetchPriority={isPriority ? "high" : "auto"}
                 />
               </picture>
               <div className={styles.FileItem__Content}>
                 <div className={styles.FileItem__Before}>{file.before}</div>
                 <div className={styles.FileItem__After}>{file.after}</div>
               </div>
-            </motion.div>
-            );
-          })}
-        </motion.div>
-      </AnimatePresence>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
