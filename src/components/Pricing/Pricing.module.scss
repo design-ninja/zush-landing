@@ -49,11 +49,11 @@
 
 @keyframes ai-pulse-glow {
     0% {
-        box-shadow: 0 0 25px -5px color-mix(in srgb, var(--primary), transparent 80%);
+        box-shadow: 0 0 18px -8px color-mix(in srgb, var(--primary), transparent 82%);
     }
 
     100% {
-        box-shadow: 0 0 60px -10px color-mix(in srgb, var(--primary), transparent 50%);
+        box-shadow: 0 0 28px -10px color-mix(in srgb, var(--primary), transparent 62%);
     }
 }
 
@@ -78,6 +78,11 @@
         border: 4px solid var(--primary);
         position: relative;
         animation: ai-pulse-glow 2s infinite alternate;
+
+        @include mobile {
+            animation: none;
+            box-shadow: none;
+        }
 
         &>* {
             position: relative;

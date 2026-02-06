@@ -74,7 +74,15 @@
     }
 
     &__Content {
-        overflow: hidden;
+        display: grid;
+        grid-template-rows: 0fr;
+        opacity: 0;
+        transition: grid-template-rows 0.25s ease, opacity 0.2s ease;
+
+        &_open {
+            grid-template-rows: 1fr;
+            opacity: 1;
+        }
     }
 
     &__Answer {
@@ -82,6 +90,7 @@
         color: var(--muted-foreground);
         line-height: 1.6;
         margin: 0;
+        overflow: hidden;
 
         a {
             color: var(--primary);
