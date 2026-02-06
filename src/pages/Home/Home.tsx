@@ -1,5 +1,6 @@
-import { memo, lazy, Suspense, useEffect, useState } from 'react';
+import { memo, lazy, Suspense } from 'react';
 import Hero from '@/components/Hero';
+import { useInViewOnce } from '@/hooks/useInViewOnce';
 
 const Videos = lazy(() => import('@/components/Videos'));
 const Features = lazy(() => import('@/components/Features'));
@@ -12,64 +13,60 @@ const SectionPlaceholder = ({ minHeight }: { minHeight: number }) => (
 );
 
 const Home = () => {
-  const [renderDeferred, setRenderDeferred] = useState(false);
-
-  useEffect(() => {
-    const windowWithIdle = window as Window & {
-      requestIdleCallback?: (callback: IdleRequestCallback, options?: { timeout: number }) => number;
-      cancelIdleCallback?: (handle: number) => void;
-    };
-
-    if (windowWithIdle.requestIdleCallback) {
-      const idleId = windowWithIdle.requestIdleCallback(
-        () => setRenderDeferred(true),
-        { timeout: 1500 }
-      );
-      return () => windowWithIdle.cancelIdleCallback?.(idleId);
-    }
-
-    const timeoutId = window.setTimeout(() => setRenderDeferred(true), 1200);
-    return () => window.clearTimeout(timeoutId);
-  }, []);
+  const videosSection = useInViewOnce<HTMLDivElement>({ rootMargin: '450px 0px' });
+  const featuresSection = useInViewOnce<HTMLDivElement>({ rootMargin: '450px 0px' });
+  const useCasesSection = useInViewOnce<HTMLDivElement>({ rootMargin: '450px 0px' });
+  const pricingSection = useInViewOnce<HTMLDivElement>({ rootMargin: '500px 0px' });
+  const faqSection = useInViewOnce<HTMLDivElement>({ rootMargin: '500px 0px' });
 
   return (
     <>
       <Hero />
-      {renderDeferred ? (
-        <Suspense fallback={<SectionPlaceholder minHeight={520} />}>
-          <Videos />
-        </Suspense>
-      ) : (
-        <SectionPlaceholder minHeight={520} />
-      )}
-      {renderDeferred ? (
-        <Suspense fallback={<SectionPlaceholder minHeight={760} />}>
-          <Features />
-        </Suspense>
-      ) : (
-        <SectionPlaceholder minHeight={760} />
-      )}
-      {renderDeferred ? (
-        <Suspense fallback={<SectionPlaceholder minHeight={640} />}>
-          <UseCases />
-        </Suspense>
-      ) : (
-        <SectionPlaceholder minHeight={640} />
-      )}
-      {renderDeferred ? (
-        <Suspense fallback={<SectionPlaceholder minHeight={720} />}>
-          <Pricing />
-        </Suspense>
-      ) : (
-        <SectionPlaceholder minHeight={720} />
-      )}
-      {renderDeferred ? (
-        <Suspense fallback={<SectionPlaceholder minHeight={700} />}>
-          <FAQ />
-        </Suspense>
-      ) : (
-        <SectionPlaceholder minHeight={700} />
-      )}
+      <div ref={videosSection.ref}>
+        {videosSection.isInView ? (
+          <Suspense fallback={<SectionPlaceholder minHeight={520} />}>
+            <Videos />
+          </Suspense>
+        ) : (
+          <SectionPlaceholder minHeight={520} />
+        )}
+      </div>
+      <div ref={featuresSection.ref}>
+        {featuresSection.isInView ? (
+          <Suspense fallback={<SectionPlaceholder minHeight={760} />}>
+            <Features />
+          </Suspense>
+        ) : (
+          <SectionPlaceholder minHeight={760} />
+        )}
+      </div>
+      <div ref={useCasesSection.ref}>
+        {useCasesSection.isInView ? (
+          <Suspense fallback={<SectionPlaceholder minHeight={640} />}>
+            <UseCases />
+          </Suspense>
+        ) : (
+          <SectionPlaceholder minHeight={640} />
+        )}
+      </div>
+      <div ref={pricingSection.ref}>
+        {pricingSection.isInView ? (
+          <Suspense fallback={<SectionPlaceholder minHeight={720} />}>
+            <Pricing />
+          </Suspense>
+        ) : (
+          <SectionPlaceholder minHeight={720} />
+        )}
+      </div>
+      <div ref={faqSection.ref}>
+        {faqSection.isInView ? (
+          <Suspense fallback={<SectionPlaceholder minHeight={700} />}>
+            <FAQ />
+          </Suspense>
+        ) : (
+          <SectionPlaceholder minHeight={700} />
+        )}
+      </div>
     </>
   );
 };
