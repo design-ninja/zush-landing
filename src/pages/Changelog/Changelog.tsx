@@ -4,6 +4,7 @@ import SectionHeader from '@/components/SectionHeader';
 import BackToHome from '@/components/BackToHome';
 import styles from './Changelog.module.scss';
 import changelogPath from '@/content/changelog.md?url';
+import '@/styles/markdown-content.scss';
 
 interface ReleaseItem {
     version: string;

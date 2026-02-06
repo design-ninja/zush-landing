@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import SectionHeader from '../SectionHeader';
 import styles from './Videos.module.scss';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -8,26 +8,31 @@ const FEATURES = [
     id: 'batch-rename',
     title: 'Batch Rename',
     video: '/videos/zush-batch-rename.mp4',
+    poster: '/videos/posters/batch-rename.webp',
   },
   {
     id: 'monitor',
     title: 'Folder Monitoring',
     video: '/videos/zush-monitor.mp4',
+    poster: '/videos/posters/monitor.webp',
   },
   {
     id: 'tags',
     title: 'Smart Tags',
     video: '/videos/zush-tags.mp4',
+    poster: '/videos/posters/tags.webp',
   },
   {
     id: 'naming',
     title: 'Naming Patterns',
     video: '/videos/zush-naming-pattern.mp4',
+    poster: '/videos/posters/naming.webp',
   },
   {
     id: 'multilanguage',
     title: 'Multilanguage',
     video: '/videos/zush-multilanguage.mp4',
+    poster: '/videos/posters/multilanguage.webp',
   },
 ];
 
@@ -36,47 +41,54 @@ const Videos = () => {
   const [progress, setProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [shouldLoad, setShouldLoad] = useState(false);
-  const [allowAutoplay, setAllowAutoplay] = useState(false);
+  const [isInViewport, setIsInViewport] = useState(false);
+  const [allowAutoplay, setAllowAutoplay] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
   const videoWrapperRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef(0);
   const rafRef = useRef<number | null>(null);
 
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)'
-    ).matches;
+  const tryAutoplay = useCallback(() => {
+    if (!videoRef.current || !allowAutoplay || !isInViewport) {
+      return;
+    }
 
-    const connection = (navigator as Navigator & {
-      connection?: { saveData?: boolean; effectiveType?: string };
-    }).connection;
-
-    const saveData = connection?.saveData;
-    const effectiveType = connection?.effectiveType;
-    const slowNetwork = effectiveType === 'slow-2g' || effectiveType === '2g';
-
-    setAllowAutoplay(!prefersReducedMotion && !saveData && !slowNetwork);
-  }, []);
+    videoRef.current.play().catch(() => {
+      setAllowAutoplay(false);
+    });
+  }, [allowAutoplay, isInViewport]);
 
   useEffect(() => {
     if (!videoWrapperRef.current) {
       setShouldLoad(true);
+      setIsInViewport(true);
       return;
     }
 
     if (typeof IntersectionObserver === 'undefined') {
       setShouldLoad(true);
+      setIsInViewport(true);
       return;
     }
 
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0]?.isIntersecting) {
+        const entry = entries[0];
+        if (!entry) {
+          return;
+        }
+
+        if (entry.isIntersecting) {
           setShouldLoad(true);
-          observer.disconnect();
+          setIsInViewport(true);
+        } else {
+          setIsInViewport(false);
         }
       },
-      { rootMargin: '200px 0px' }
+      {
+        threshold: 0.5,
+        rootMargin: '0px 0px -10% 0px',
+      }
     );
 
     observer.observe(videoWrapperRef.current);
@@ -86,16 +98,24 @@ const Videos = () => {
   useEffect(() => {
     if (videoRef.current && shouldLoad) {
       setIsLoading(true);
-      // Reset and play when active feature changes
       videoRef.current.currentTime = 0;
-      if (allowAutoplay) {
-        videoRef.current.play().catch((e) => {
-          console.log('Autoplay prevented:', e);
-        });
-      }
       setProgress(0);
+      progressRef.current = 0;
+      tryAutoplay();
     }
-  }, [activeFeature, allowAutoplay, shouldLoad]);
+  }, [activeFeature, shouldLoad, isInViewport, tryAutoplay]);
+
+  useEffect(() => {
+    if (!videoRef.current || !shouldLoad) {
+      return;
+    }
+
+    if (isInViewport) {
+      tryAutoplay();
+    } else {
+      videoRef.current.pause();
+    }
+  }, [isInViewport, shouldLoad, tryAutoplay]);
 
   useEffect(() => {
     return () => {
@@ -122,7 +142,7 @@ const Videos = () => {
       const duration = videoRef.current.duration;
       const currentTime = videoRef.current.currentTime;
       if (duration > 0) {
-        progressRef.current = (currentTime / duration) * 100;
+        progressRef.current = currentTime / duration;
         if (!rafRef.current) {
           rafRef.current = requestAnimationFrame(() => {
             setProgress(progressRef.current);
@@ -140,10 +160,11 @@ const Videos = () => {
 
   const handleTabClick = (index: number) => {
     setProgress(0);
+    progressRef.current = 0;
     setActiveFeature(index);
   };
 
-  const showSkeleton = !shouldLoad || isLoading;
+  const showSkeleton = shouldLoad && isLoading;
 
   return (
     <section className={styles.Videos}>
@@ -170,6 +191,15 @@ const Videos = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
+          {!shouldLoad && (
+            <img
+              src={FEATURES[activeFeature].poster}
+              alt='Video preview'
+              className={styles.Videos__Poster}
+              loading='lazy'
+              decoding='async'
+            />
+          )}
           {showSkeleton && <div className={styles.Videos__Skeleton} />}
           <AnimatePresence mode="wait">
             {shouldLoad && (
@@ -186,7 +216,8 @@ const Videos = () => {
                 playsInline
                 autoPlay={allowAutoplay}
                 controls={!allowAutoplay}
-                preload={allowAutoplay ? 'auto' : 'metadata'}
+                preload='metadata'
+                poster={FEATURES[activeFeature].poster}
                 onLoadStart={handleLoadStart}
                 onLoadedMetadata={handleLoadedMetadata}
                 onCanPlay={handleCanPlay}
@@ -216,7 +247,7 @@ const Videos = () => {
                     {index === activeFeature && (
                         <div 
                             className={styles.Videos__Progress} 
-                            style={{ width: `${progress}%` }}
+                            style={{ transform: `scaleX(${progress})` }}
                         />
                     )}
                 </button>

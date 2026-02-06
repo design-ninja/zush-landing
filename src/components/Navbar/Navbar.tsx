@@ -1,4 +1,5 @@
 import { Sun, Moon } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Logo from '../Logo';
 import Button from '../Button';
 import { DOWNLOAD_URL } from '@/constants';
@@ -15,9 +16,9 @@ const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
       <div className={styles.Navbar__Container}>
         <Logo />
         <div className={styles.Navbar__Actions}>
-          <a href="/#features" className={styles.Navbar__Link}>Features</a>
-          <a href="/#pricing" className={styles.Navbar__Link}>Pricing</a>
-          <a href="/#faq" className={styles.Navbar__Link}>FAQ</a>
+          <Link to="/#features" className={styles.Navbar__Link}>Features</Link>
+          <Link to="/#pricing" className={styles.Navbar__Link}>Pricing</Link>
+          <Link to="/#faq" className={styles.Navbar__Link}>FAQ</Link>
           <button onClick={toggleTheme} className={styles.Navbar__ThemeToggle} aria-label="Toggle theme">
             {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
           </button>

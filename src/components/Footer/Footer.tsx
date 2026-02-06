@@ -54,8 +54,8 @@ const Footer = () => {
           <div>
             <Heading as="h4" className={styles.Footer__SectionTitle}>Product</Heading>
             <ul className={styles.Footer__Links}>
-              <li><a href="/#features" className={styles.Footer__Link}>Features</a></li>
-              <li><a href="/#pricing" className={styles.Footer__Link}>Pricing</a></li>
+              <li><Link to="/#features" className={styles.Footer__Link}>Features</Link></li>
+              <li><Link to="/#pricing" className={styles.Footer__Link}>Pricing</Link></li>
               <li><Link to="/changelog" className={styles.Footer__Link}>Changelog</Link></li>
             </ul>
           </div>
@@ -128,4 +128,3 @@ const Footer = () => {
 };
 
 export default Footer;
-

@@ -1,5 +1,4 @@
 import { memo, useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { APP_CONFIG } from '@/constants';
@@ -20,19 +19,12 @@ const FAQItem = memo(({ question, answer, isOpen, onClick }: FAQItemProps) => {
         <h3 className={styles.FAQItem__Question}>{question}</h3>
         <ChevronDown size={24} className={styles.FAQItem__Icon} />
       </button>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className={styles.FAQItem__Content}
-          >
-            <div className={styles.FAQItem__Answer}>{answer}</div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div
+        className={`${styles.FAQItem__Content} ${isOpen ? styles.FAQItem__Content_open : ''}`}
+        aria-hidden={!isOpen}
+      >
+        <div className={styles.FAQItem__Answer}>{answer}</div>
+      </div>
     </div>
   );
 });
