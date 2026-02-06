@@ -75,13 +75,15 @@
 
     &__Content {
         display: grid;
-        grid-template-rows: 0fr;
+        grid-template-rows: minmax(0, 0fr);
         opacity: 0;
+        visibility: hidden;
         transition: grid-template-rows 0.25s ease, opacity 0.2s ease;
 
         &_open {
-            grid-template-rows: 1fr;
+            grid-template-rows: minmax(0, 1fr);
             opacity: 1;
+            visibility: visible;
         }
     }
 
