@@ -31,7 +31,10 @@ const Home = () => {
           <SectionPlaceholder minHeight={520} />
         )}
       </div>
-      <div ref={featuresSection.ref}>
+      <div
+        ref={featuresSection.ref}
+        id={featuresSection.isInView ? undefined : 'features'}
+      >
         {featuresSection.isInView ? (
           <Suspense fallback={<SectionPlaceholder minHeight={760} />}>
             <Features />
@@ -61,7 +64,10 @@ const Home = () => {
           <SectionPlaceholder minHeight={720} />
         )}
       </div>
-      <div ref={faqSection.ref}>
+      <div
+        ref={faqSection.ref}
+        id={faqSection.isInView ? undefined : 'faq'}
+      >
         {faqSection.isInView ? (
           <Suspense fallback={<SectionPlaceholder minHeight={700} />}>
             <FAQ />
