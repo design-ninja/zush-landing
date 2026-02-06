@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import { openPaddleCheckout } from '@/utils/paddle';
-import { PRO_PLAN } from '@/components/Pricing/constants';
+import { PRO_PADDLE_PRICE_ID } from '@/constants/pricing';
 
 export const useCheckoutAutoOpen = () => {
   const location = useLocation();
@@ -17,13 +16,25 @@ export const useCheckoutAutoOpen = () => {
     }
 
     hasOpened.current = true;
+    let isCancelled = false;
 
-    // Open Paddle checkout modal directly instead of scrolling to pricing
-    setTimeout(() => {
-      const priceId = PRO_PLAN.paddlePriceId;
-      if (priceId) {
-        openPaddleCheckout(deviceId, priceId);
+    // Open Paddle checkout modal directly instead of scrolling to pricing.
+    const timeoutId = window.setTimeout(async () => {
+      if (isCancelled) {
+        return;
+      }
+
+      try {
+        const { openPaddleCheckout } = await import('@/utils/paddle');
+        await openPaddleCheckout(deviceId, PRO_PADDLE_PRICE_ID);
+      } catch (error) {
+        console.error('[CheckoutAutoOpen] Failed to open checkout:', error);
       }
     }, 300);
+
+    return () => {
+      isCancelled = true;
+      window.clearTimeout(timeoutId);
+    };
   }, [location.search]);
 };

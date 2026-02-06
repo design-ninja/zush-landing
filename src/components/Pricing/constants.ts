@@ -9,6 +9,7 @@ import {
   Tags,
   LucideIcon,
 } from 'lucide-react';
+import { PRO_PADDLE_PRICE_ID } from '@/constants/pricing';
 
 interface Feature {
   title: string;
@@ -107,7 +108,7 @@ export const PRO_PLAN: Plan = {
   isPro: true,
   price: '$10',
   billing: 'one-time',
-  paddlePriceId: 'pri_01ke0rya71hzwhy8y1wdt76v1y',
+  paddlePriceId: PRO_PADDLE_PRICE_ID,
   highlight: true,
 };
 
