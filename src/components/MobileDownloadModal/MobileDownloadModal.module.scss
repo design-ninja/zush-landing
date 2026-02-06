@@ -20,7 +20,7 @@
 }
 
 .MobileDownloadModal__Overlay_exit {
-  animation: modal-fade-out 0.24s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: modal-fade-out 0.2s ease-in forwards;
 }
 
 .MobileDownloadModal__Content {
@@ -41,7 +41,7 @@
 }
 
 .MobileDownloadModal__Content_exit {
-  animation: modal-slide-in 0.24s cubic-bezier(0.4, 0, 0.2, 1) reverse forwards;
+  animation: modal-slide-out 0.2s cubic-bezier(0.4, 0, 1, 1) forwards;
 }
 
 .MobileDownloadModal__Icon {
@@ -104,6 +104,18 @@
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes modal-slide-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(1.5rem) scale(0.96);
   }
 }
 

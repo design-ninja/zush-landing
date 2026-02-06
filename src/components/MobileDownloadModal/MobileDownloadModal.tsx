@@ -10,7 +10,7 @@ interface MobileDownloadModalProps {
   onClose: () => void;
 }
 
-const CLOSE_ANIMATION_MS = 240;
+const CLOSE_ANIMATION_MS = 200;
 
 const MobileDownloadModal = ({ isOpen, onClose }: MobileDownloadModalProps) => {
   const [isRendered, setIsRendered] = useState(isOpen);
