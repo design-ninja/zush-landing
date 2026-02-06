@@ -1,6 +1,7 @@
 import ReactMarkdown from 'react-markdown';
 import BackToHome from '@/components/BackToHome';
 import styles from './Legal.module.scss';
+import '@/styles/markdown-content.scss';
 
 import tosContent from '@/content/tos.md?raw';
 import privacyContent from '@/content/privacy.md?raw';
