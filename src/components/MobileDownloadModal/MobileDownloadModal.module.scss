@@ -41,7 +41,7 @@
 }
 
 .MobileDownloadModal__Content_exit {
-  animation: modal-slide-out 0.18s cubic-bezier(0.4, 0, 1, 1) forwards;
+  animation: modal-slide-in 0.24s cubic-bezier(0.4, 0, 0.2, 1) reverse forwards;
 }
 
 .MobileDownloadModal__Icon {
@@ -104,23 +104,6 @@
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes modal-slide-out {
-  from {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-
-  55% {
-    opacity: 0.25;
-    transform: translateY(0.2rem) scale(0.992);
-  }
-
-  to {
-    opacity: 0;
-    transform: translateY(0.3rem) scale(0.985);
   }
 }
 
