@@ -8,31 +8,31 @@ const FEATURES = [
     id: 'batch-rename',
     title: 'Batch Rename',
     video: '/videos/zush-batch-rename.mp4',
-    poster: '/images/features/car_thumb.webp',
+    poster: '/videos/posters/batch-rename.webp',
   },
   {
     id: 'monitor',
     title: 'Folder Monitoring',
     video: '/videos/zush-monitor.mp4',
-    poster: '/images/features/sunset_thumb.webp',
+    poster: '/videos/posters/monitor.webp',
   },
   {
     id: 'tags',
     title: 'Smart Tags',
     video: '/videos/zush-tags.mp4',
-    poster: '/images/features/glitch_thumb.webp',
+    poster: '/videos/posters/tags.webp',
   },
   {
     id: 'naming',
     title: 'Naming Patterns',
     video: '/videos/zush-naming-pattern.mp4',
-    poster: '/images/features/sunset_thumb.webp',
+    poster: '/videos/posters/naming.webp',
   },
   {
     id: 'multilanguage',
     title: 'Multilanguage',
     video: '/videos/zush-multilanguage.mp4',
-    poster: '/images/features/car_thumb.webp',
+    poster: '/videos/posters/multilanguage.webp',
   },
 ];
 
