@@ -49,7 +49,10 @@ const Home = () => {
           <SectionPlaceholder minHeight={640} />
         )}
       </div>
-      <div ref={pricingSection.ref}>
+      <div
+        ref={pricingSection.ref}
+        id={pricingSection.isInView ? undefined : 'pricing'}
+      >
         {pricingSection.isInView ? (
           <Suspense fallback={<SectionPlaceholder minHeight={720} />}>
             <Pricing />
