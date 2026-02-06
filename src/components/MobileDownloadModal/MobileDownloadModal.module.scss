@@ -12,7 +12,14 @@
   background: oklch(0 0 0 / 0.5);
   backdrop-filter: blur(0.5rem);
   -webkit-backdrop-filter: blur(0.5rem);
-  animation: modal-fade-in 0.2s ease-out;
+}
+
+.MobileDownloadModal__Overlay_enter {
+  animation: modal-fade-in 0.2s ease-out forwards;
+}
+
+.MobileDownloadModal__Overlay_exit {
+  animation: modal-fade-out 0.2s ease-out forwards;
 }
 
 .MobileDownloadModal__Content {
@@ -25,7 +32,14 @@
   border-radius: $radius-xl;
   text-align: center;
   @include shadow('lg');
-  animation: modal-slide-in 0.22s ease-out;
+}
+
+.MobileDownloadModal__Content_enter {
+  animation: modal-slide-in 0.22s ease-out forwards;
+}
+
+.MobileDownloadModal__Content_exit {
+  animation: modal-slide-out 0.22s ease-out forwards;
 }
 
 .MobileDownloadModal__Icon {
@@ -69,6 +83,16 @@
   }
 }
 
+@keyframes modal-fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
 @keyframes modal-slide-in {
   from {
     opacity: 0;
@@ -78,5 +102,17 @@
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes modal-slide-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(0.75rem) scale(0.98);
   }
 }

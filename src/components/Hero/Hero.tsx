@@ -13,9 +13,11 @@ const MobileDownloadModal = lazy(() => import("../MobileDownloadModal"));
 const Hero = () => {
   const isMobile = useIsMobile();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [hasLoadedModal, setHasLoadedModal] = useState(false);
 
   const handleDownloadClick = () => {
     if (isMobile) {
+      setHasLoadedModal(true);
       setIsModalOpen(true);
     } else {
       window.open(DOWNLOAD_URL, "_blank");
@@ -70,7 +72,7 @@ const Hero = () => {
           <p className={styles.Hero__FreeLabel}>Free, no credit card required</p>
         </div>
 
-        {isModalOpen && (
+        {hasLoadedModal && (
           <Suspense fallback={null}>
             <MobileDownloadModal
               isOpen={isModalOpen}
