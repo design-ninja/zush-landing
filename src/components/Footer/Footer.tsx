@@ -86,7 +86,7 @@ const Footer = () => {
           </div>
         </div>
         <div className={styles.Footer__Bottom}>
-          <Text color="subtle">© {new Date().getFullYear()} lirik. All rights reserved</Text>
+          <Text color="subtle">© {new Date().getFullYear()} Zush</Text>
           <div className={styles.Footer__Social}>
             <a
               href="https://x.com/zush_app"
