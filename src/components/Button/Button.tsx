@@ -14,21 +14,21 @@ interface BaseProps {
   className?: string;
 }
 
-type ButtonAsButton = BaseProps & 
+type ButtonAsButton = BaseProps &
   ButtonHTMLAttributes<HTMLButtonElement> & {
     as?: 'button';
     href?: never;
     to?: never;
   };
 
-type ButtonAsLink = BaseProps & 
+type ButtonAsLink = BaseProps &
   AnchorHTMLAttributes<HTMLAnchorElement> & {
     as: 'a';
     href: string;
     to?: never;
   };
 
-type ButtonAsRouterLink = BaseProps & 
+type ButtonAsRouterLink = BaseProps &
   LinkProps & {
     as: typeof Link;
     to: string;
