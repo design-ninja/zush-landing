@@ -170,7 +170,7 @@ const FileShowcase = () => {
                 />
                 <img
                   src={file.img}
-                  alt="Zush App AI File Rename Example Image"
+                  alt={file.after}
                   className={styles.FileItem__Image}
                   width={64}
                   height={64}

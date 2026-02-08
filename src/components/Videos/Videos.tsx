@@ -7,30 +7,35 @@ const FEATURES = [
   {
     id: 'batch-rename',
     title: 'Batch Rename',
+    description: 'Drag and drop multiple files to rename them all at once with AI.',
     video: '/videos/zush-batch-rename.mp4',
     poster: '/videos/posters/batch-rename.webp',
   },
   {
     id: 'monitor',
     title: 'Folder Monitoring',
+    description: 'Zush watches your folders and renames new images automatically in the background.',
     video: '/videos/zush-monitor.mp4',
     poster: '/videos/posters/monitor.webp',
   },
   {
     id: 'tags',
     title: 'Smart Tags',
+    description: 'AI-generated Finder tags and Spotlight metadata for instant file search.',
     video: '/videos/zush-tags.mp4',
     poster: '/videos/posters/tags.webp',
   },
   {
     id: 'naming',
     title: 'Naming Patterns',
+    description: 'Customize file naming with variables like title, date, and category.',
     video: '/videos/zush-naming-pattern.mp4',
     poster: '/videos/posters/naming.webp',
   },
   {
     id: 'multilanguage',
     title: 'Multilanguage',
+    description: 'Generate AI filenames in 60+ languages.',
     video: '/videos/zush-multilanguage.mp4',
     poster: '/videos/posters/multilanguage.webp',
   },
@@ -194,7 +199,7 @@ const Videos = () => {
           {!shouldLoad && (
             <img
               src={FEATURES[activeFeature].poster}
-              alt='Video preview'
+              alt={`${FEATURES[activeFeature].title} demo`}
               className={styles.Videos__Poster}
               loading='lazy'
               decoding='async'
@@ -208,6 +213,7 @@ const Videos = () => {
                 ref={videoRef}
                 className={styles.Videos__Video}
                 src={FEATURES[activeFeature].video}
+                aria-label={`${FEATURES[activeFeature].title}: ${FEATURES[activeFeature].description}`}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: isLoading ? 0 : 1 }}
                 exit={{ opacity: 0 }}
@@ -226,6 +232,7 @@ const Videos = () => {
               />
             )}
           </AnimatePresence>
+          <p className={styles.Videos__Description}>{FEATURES[activeFeature].description}</p>
         </motion.div>
 
         <motion.div
