@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.6.1] - 2026-02-09
+### Added
+- 🎉 Added appearance preference settings with UI integration
+
+### Improved  
+- ⚡ Refactored LicenseService for better tier management
+
+### Fixed
+- 🐛 Fixed settings window title visibility issue
+- 🔧 Refactored SettingsTabView layout for better organization
+
 ## [1.6.0] - 2026-02-09
 ### Added
 - 🎉 Introduced activity and processing tabs with UI enhancements
