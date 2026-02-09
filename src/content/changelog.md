@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.6.0] - 2026-02-09
+### Added
+- 🎉 Introduced activity and processing tabs with UI enhancements
+- 🖼️ Added brand color support and updated UI components
+- 🔑 Added license upgrade option to settings
+- 🔔 Updated app menu to reflect onboarding status
+
+### Improved  
+- ⚡ Enhanced onboarding flow and window management
+- ⚡ Improved UsageScale layout in settings
+- 🔄 Updated drop area behavior in BatchRenameSection
+
 ## [1.5.3] - 2026-02-05
 ### Added
 - 🎉 Enhanced debug and settings management features added
