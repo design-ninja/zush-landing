@@ -1,6 +1,5 @@
-onlyBuiltDependencies: puppeteer
-
-packageManager:
-  pnpm:
-    onlyBuiltDependencies:
-      - puppeteer
+onlyBuiltDependencies:
+  - puppeteer
+  - esbuild
+  - sharp
+  - '@parcel/watcher'
