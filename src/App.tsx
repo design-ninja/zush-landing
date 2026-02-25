@@ -6,6 +6,7 @@ import { useSeo } from './hooks/useSeo';
 import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import AppLink from './components/AppLink';
 
 // Primary page - loaded immediately
 import Home from './pages/Home';
@@ -42,9 +43,9 @@ const AppContent = ({ theme, toggleTheme }: { theme: string; toggleTheme: () => 
     <>
       <ScrollToTop />
       <div className={styles.App}>
-        <a className={styles.SkipLink} href="#main-content">
+        <AppLink className={styles.SkipLink} href="#main-content">
           Skip to content
-        </a>
+        </AppLink>
         <Navbar theme={theme} toggleTheme={toggleTheme} />
         <main id="main-content" className={styles.App__Main}>
           <Suspense fallback={<PageLoader />}>

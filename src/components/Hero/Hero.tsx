@@ -1,5 +1,4 @@
 import { lazy, Suspense, useState } from "react";
-import { Link } from "react-router-dom";
 import FileShowcase from "../FileShowcase";
 import Button from "../Button";
 import Heading from "../Heading";
@@ -62,8 +61,8 @@ const Hero = () => {
               </Button>
             )}
             <Button
-              as={Link}
-              to="/#pro"
+              as="link"
+              href="/#pro"
               variant="primary"
               size="lg"
             >

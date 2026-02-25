@@ -1,7 +1,7 @@
 import { memo, useState, useMemo } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import { APP_CONFIG } from '@/constants';
+import AppLink from '@/components/AppLink';
 import SectionHeader from '../SectionHeader';
 import styles from './FAQ.module.scss';
 
@@ -112,7 +112,7 @@ const createFAQData = (): FAQData[] => [
     answer: (
       <>
         BYOK lets PRO users connect their own API key from Gemini, Groq, OpenAI, or Claude for unlimited image processing. When BYOK is enabled, Zush uses your API key instead of our servers, so you pay your AI provider directly and have no credit limits. Perfect for power users with large libraries.{' '}
-        <Link to="/byok-setup">Learn how to set it up →</Link>
+        <AppLink href="/byok-setup">Learn how to set it up →</AppLink>
       </>
     ),
   },
@@ -140,7 +140,7 @@ const createFAQData = (): FAQData[] => [
       <>
         Absolutely. If Zush isn't right for you, we offer a {refundPeriodDays}
         -day money-back guarantee. You can find more details in our{' '}
-        <Link to='/refund-policy'>Refund Policy</Link>.
+        <AppLink href="/refund-policy">Refund Policy</AppLink>.
       </>
     ),
   },

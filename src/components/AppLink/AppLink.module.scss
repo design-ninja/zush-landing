@@ -1,0 +1,20 @@
+@use '@/styles/variables' as *;
+
+.AppLink {
+  transition: color $transition-fast;
+
+  &:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+    border-radius: $radius-sm;
+  }
+
+  &_legal {
+    color: var(--primary);
+    text-decoration: none;
+  }
+
+  &_legal:hover {
+    color: var(--primary-hover);
+  }
+}

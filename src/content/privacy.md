@@ -2,47 +2,58 @@ This Privacy Policy explains how Zush ("Kirill Isachenko," "we," "us," or "our")
 
 ### 1. Information We Collect
 
-**1.1 Metadata and File Information**
-To provide AI-powered organizing and renaming features, Zush may analyze the metadata of files in folders you choose to monitor. This information is processed to generate suggestions.
+**1.1 Image Data**
+To provide AI-powered organizing and renaming features, Zush compresses images from your monitored folders to 512×512 pixels (JPEG format). By default, this compressed copy is sent via Zush servers to cloud AI services (Groq and Google Gemini) for analysis. If you enable BYOK, image data is sent to your selected provider using your API key. Your original files never leave your device.
 
-**1.2 Licensing and Usage Data**
+**1.2 Device Identifier**
+An anonymous device identifier (machine UUID) is sent with each analysis request for usage tracking, rate limiting, and license enforcement. This identifier does not contain personal information.
+
+**1.3 Licensing and Usage Data**
 We collect information necessary to manage your license and enforce usage limits:
 
 - Email Address: Provided during the purchase process.
 - License Status: Information about your PRO license (one-time purchase).
 - Usage Counts: We track the number of AI-processed images to manage usage limits.
-- Device Identifiers: A unique anonymous ID (machine UUID) to prevent license abuse.
 
-**1.3 Payment Information**
-We do not store or process your credit card details. All payments are handled securely by our payment processor, Paddle.com. Please refer to Paddle's Privacy Policy for details on how they handle your payment data.
+**1.4 Payment Information**
+We do not store or process your credit card details. All payments are handled securely by our payment processors: [Paddle.com](https://www.paddle.com) (for direct purchases) and [Apple](https://www.apple.com/legal/privacy/) (for App Store purchases). Please refer to their respective privacy policies for details.
 
 ### 2. How We Use Your Information
 
 We use the collected information to:
 
 - Provide and maintain the Service.
-- Process and verify your 🌟 PRO license.
-- Improve the AI models and application performance.
+- Process and verify your PRO license.
+- Analyze images using AI to generate descriptive file names, tags, and metadata.
 - Send you technical notices, updates, and support messages.
 
 ### 3. Data Processing and AI
 
-Zush uses artificial intelligence services (such as OpenAI or proprietary models) to analyze image content and metadata.
+Zush sends compressed image data to third-party AI services for analysis:
 
-- Privacy First: We do not use your personal images to "train" public AI models without your explicit consent.
-- Anonymity: Data sent for AI processing is typically stripped of personal identifying information.
+- **Default flow:** Compressed image data is sent via Zush servers to Groq (primary) and Google Gemini (fallback).
+- **Bring Your Own Key (BYOK):** PRO users may configure their own API keys for Groq, Google Gemini, OpenAI, or Anthropic Claude, in which case image data is sent directly to the user's chosen provider.
+
+**What is sent:** Compressed image data (512×512 JPEG), MIME type, language preference, and an anonymous device identifier.
+
+**What is NOT sent:** Original images, file names, file paths, or any other personal information.
+
+**Data retention:** Images are processed in real-time and are not stored on Zush servers. Your images are not used to train AI models.
 
 ### 4. Third-Party Services
 
-We may share data with the following types of service providers:
+We share data with the following service providers:
 
-- Payment Processors: Paddle.com.
-- Cloud Infrastructure: Supabase (for backend database and licensing).
-- AI Providers: Services used for metadata analysis.
+- **AI Providers:** Groq (primary), Google Gemini (fallback). With BYOK: optionally OpenAI or Anthropic Claude.
+- **Cloud Infrastructure:** Supabase (backend database, licensing, and API relay).
+- **Payment Processors:** [Paddle.com](https://www.paddle.com) (direct purchases), [Apple](https://www.apple.com/legal/privacy/) (App Store purchases).
+- **Error Tracking:** Sentry (anonymous crash and error reports).
+
+Each third-party provider processes data according to their own privacy policies. We encourage you to review their policies.
 
 ### 5. Data Security
 
-We implement reasonable security measures to protect your information from unauthorized access, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure.
+We implement reasonable security measures to protect your information from unauthorized access, disclosure, or destruction. API keys provided via BYOK are encrypted before storage. However, no method of transmission over the Internet or electronic storage is 100% secure.
 
 ### 6. Your Rights
 
@@ -54,4 +65,4 @@ We may update this Privacy Policy from time to time. The "Last updated" date wil
 
 ### 8. Contact Us
 
-If you have any questions about this Privacy Policy, please contact us at: support@zushapp.com
+If you have any questions about this Privacy Policy, please contact us at: [support@zushapp.com](mailto:support@zushapp.com)

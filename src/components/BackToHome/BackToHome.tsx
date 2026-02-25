@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import AppLink from '@/components/AppLink';
 import styles from './BackToHome.module.scss';
 
 interface BackToHomeProps {
@@ -7,9 +7,9 @@ interface BackToHomeProps {
 
 const BackToHome = ({ className }: BackToHomeProps) => {
   return (
-    <Link to="/" className={`${styles.BackToHome} ${className || ''}`}>
+    <AppLink href="/" className={`${styles.BackToHome} ${className || ''}`}>
       ← Back to Home
-    </Link>
+    </AppLink>
   );
 };
 

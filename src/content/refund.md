@@ -6,7 +6,7 @@ Zush PRO is a one-time purchase with lifetime access. We offer a 14-day money-ba
 
 ### How to Request a Refund
 
-To request a refund, please contact us at refund@zushapp.com with your order number and the email address used for the purchase.
+To request a refund, please contact us at [refund@zushapp.com](mailto:refund@zushapp.com) with your order number and the email address used for the purchase.
 
 ### Processing Refunds
 

@@ -1,5 +1,5 @@
 import { ReactNode, AnchorHTMLAttributes, ButtonHTMLAttributes, MouseEvent } from 'react';
-import { Link, LinkProps } from 'react-router-dom';
+import AppLink from '@/components/AppLink';
 import styles from './Button.module.scss';
 
 type ButtonVariant = 'primary' | 'black' | 'ghost';
@@ -18,24 +18,21 @@ type ButtonAsButton = BaseProps &
   ButtonHTMLAttributes<HTMLButtonElement> & {
     as?: 'button';
     href?: never;
-    to?: never;
   };
 
-type ButtonAsLink = BaseProps &
+type ButtonAsAnchor = BaseProps &
   AnchorHTMLAttributes<HTMLAnchorElement> & {
     as: 'a';
     href: string;
-    to?: never;
   };
 
-type ButtonAsRouterLink = BaseProps &
-  LinkProps & {
-    as: typeof Link;
-    to: string;
-    href?: never;
+type ButtonAsAppLink = BaseProps &
+  AnchorHTMLAttributes<HTMLAnchorElement> & {
+    as: 'link';
+    href: string;
   };
 
-type ButtonProps = ButtonAsButton | ButtonAsLink | ButtonAsRouterLink;
+type ButtonProps = ButtonAsButton | ButtonAsAnchor | ButtonAsAppLink;
 
 const Button = ({ 
   variant = 'primary', 
@@ -55,7 +52,7 @@ const Button = ({
     className
   ].filter(Boolean).join(' ');
 
-  if (props.as === 'a') {
+  if (props.as === 'a' || props.as === 'link') {
     const { as, onClick, tabIndex, ...linkProps } = props;
     const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
       if (isLoading) {
@@ -66,38 +63,15 @@ const Button = ({
       onClick?.(event);
     };
     return (
-      <a
+      <AppLink
         className={classNames}
         aria-disabled={isLoading || undefined}
         tabIndex={isLoading ? -1 : tabIndex}
         onClick={handleClick}
-        {...linkProps as AnchorHTMLAttributes<HTMLAnchorElement>}
+        {...linkProps as AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }}
       >
         {children}
-      </a>
-    );
-  }
-
-  if (props.as === Link) {
-    const { as, onClick, tabIndex, ...linkProps } = props;
-    const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
-      if (isLoading) {
-        event.preventDefault();
-        event.stopPropagation();
-        return;
-      }
-      onClick?.(event);
-    };
-    return (
-      <Link
-        className={classNames}
-        aria-disabled={isLoading || undefined}
-        tabIndex={isLoading ? -1 : tabIndex}
-        onClick={handleClick}
-        {...linkProps as LinkProps}
-      >
-        {children}
-      </Link>
+      </AppLink>
     );
   }
 

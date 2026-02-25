@@ -1,7 +1,7 @@
 import { Sun, Moon } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import Logo from '../Logo';
 import Button from '../Button';
+import AppLink from '@/components/AppLink';
 import { DOWNLOAD_URL } from '@/constants';
 import styles from './Navbar.module.scss';
 
@@ -16,14 +16,14 @@ const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
       <div className={styles.Navbar__Container}>
         <Logo />
         <div className={styles.Navbar__Actions}>
-          <Link to="/#features" className={styles.Navbar__Link}>Features</Link>
-          <Link to="/#pricing" className={styles.Navbar__Link}>Pricing</Link>
-          <Link to="/#faq" className={styles.Navbar__Link}>FAQ</Link>
+          <AppLink href="/#features" className={styles.Navbar__Link}>Features</AppLink>
+          <AppLink href="/#pricing" className={styles.Navbar__Link}>Pricing</AppLink>
+          <AppLink href="/#faq" className={styles.Navbar__Link}>FAQ</AppLink>
           <button onClick={toggleTheme} className={styles.Navbar__ThemeToggle} aria-label="Toggle theme">
             {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
           </button>
           <div className={styles.Navbar__Buttons}>
-            <Button as={Link} to="/#pro" variant="ghost" size="sm" className={styles.Navbar__BuyBtn}>
+            <Button as="link" href="/#pro" variant="ghost" size="sm" className={styles.Navbar__BuyBtn}>
               Buy PRO
             </Button>
             <Button 

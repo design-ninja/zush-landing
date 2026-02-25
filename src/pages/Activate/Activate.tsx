@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { ExternalLink, AlertCircle, Download } from 'lucide-react';
 import Button from '@/components/Button';
 import BackToHome from '@/components/BackToHome';
@@ -44,7 +44,7 @@ const Activate = () => {
         </p>
 
         <div className={styles.Activate__Actions}>
-          <Button as={Link} to="/recover" variant="primary" size="lg">
+          <Button as="link" href="/recover" variant="primary" size="lg">
             Request New Link
           </Button>
         </div>

@@ -25,10 +25,10 @@ Credits are one-time and do not reset. Once credits are exhausted, PRO users can
 Both free and PRO versions have usage limits for AI-powered features. Current limits are displayed in the application. PRO users who exhaust their credits can use BYOK for unlimited processing.
 
 **3.5 Merchant of Record**
-Our order process is conducted by our online reseller Paddle.com. Paddle.com is the Merchant of Record for all our orders. Paddle provides all customer service inquiries and handles returns.
+Our order process is conducted by our online reseller [Paddle.com](https://www.paddle.com). Paddle is the Merchant of Record for all our orders. Paddle provides all customer service inquiries and handles returns.
 
 **3.6 Refunds**
-Refund requests are handled by Paddle in accordance with their refund policy.
+Refund requests are handled by Paddle in accordance with their [refund policy](/refund-policy).
 
 ### 4. AI-Powered Features and Accuracy
 
@@ -71,4 +71,4 @@ We may update these Terms from time to time. We will notify you of any changes b
 
 ### 12. Contact Information
 
-If you have any questions about these Terms, please contact us at: support@zushapp.com
+If you have any questions about these Terms, please contact us at: [support@zushapp.com](mailto:support@zushapp.com)

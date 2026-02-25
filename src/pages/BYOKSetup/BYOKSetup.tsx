@@ -1,5 +1,6 @@
 import { Key, ExternalLink, Shield, HelpCircle, Infinity } from 'lucide-react';
 import Button from '@/components/Button';
+import AppLink from '@/components/AppLink';
 import BackToHome from '@/components/BackToHome';
 import styles from './BYOKSetup.module.scss';
 
@@ -93,7 +94,7 @@ const BYOKSetup = () => {
 
             <div className={styles.BYOKSetup__Note}>
               <strong>Free tier:</strong> Gemini offers 15 requests per minute for free.
-              Perfect for most users. <a href="https://ai.google.dev/pricing" target="_blank" rel="noopener noreferrer">View pricing →</a>
+              Perfect for most users. <AppLink href="https://ai.google.dev/pricing" target="_blank" rel="noopener noreferrer">View pricing →</AppLink>
             </div>
           </div>
 
@@ -147,7 +148,7 @@ const BYOKSetup = () => {
 
             <div className={styles.BYOKSetup__Note}>
               <strong>Free tier:</strong> Groq offers generous free tier with high-speed inference.
-              <a href="https://groq.com/pricing/" target="_blank" rel="noopener noreferrer">View pricing →</a>
+              <AppLink href="https://groq.com/pricing/" target="_blank" rel="noopener noreferrer">View pricing →</AppLink>
             </div>
           </div>
 
@@ -201,7 +202,7 @@ const BYOKSetup = () => {
 
             <div className={styles.BYOKSetup__Note}>
               <strong>Pricing:</strong> OpenAI uses pay-as-you-go pricing. Zush uses GPT-4o mini for fast and affordable image analysis.
-              <a href="https://platform.openai.com/docs/pricing" target="_blank" rel="noopener noreferrer">View pricing →</a>
+              <AppLink href="https://platform.openai.com/docs/pricing" target="_blank" rel="noopener noreferrer">View pricing →</AppLink>
             </div>
           </div>
 
@@ -255,7 +256,7 @@ const BYOKSetup = () => {
 
             <div className={styles.BYOKSetup__Note}>
               <strong>Pricing:</strong> Claude uses pay-as-you-go pricing. Zush uses Claude Haiku for fast and cost-effective image analysis.
-              <a href="https://www.anthropic.com/pricing#702702" target="_blank" rel="noopener noreferrer">View pricing →</a>
+              <AppLink href="https://www.anthropic.com/pricing#702702" target="_blank" rel="noopener noreferrer">View pricing →</AppLink>
             </div>
           </div>
 

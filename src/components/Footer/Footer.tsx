@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
 import Heading from '../Heading';
 import Text from '../Text';
+import AppLink from '@/components/AppLink';
 import { SUPPORT_EMAIL } from '@/constants';
 import styles from './Footer.module.scss';
 
@@ -46,7 +46,7 @@ const Footer = () => {
       <div className={styles.Footer__Container}>
         <div className={styles.Footer__Grid}>
           <div>
-            <Link to="/" className={styles.Footer__Brand}>Zush</Link>
+            <AppLink href="/" className={styles.Footer__Brand}>Zush</AppLink>
             <Text color="subtle" className={styles.Footer__Description}>
               The ultimate AI-powered image organization utility for macOS
             </Text>
@@ -54,33 +54,33 @@ const Footer = () => {
           <div>
             <Heading as="h4" className={styles.Footer__SectionTitle}>Product</Heading>
             <ul className={styles.Footer__Links}>
-              <li><Link to="/#features" className={styles.Footer__Link}>Features</Link></li>
-              <li><Link to="/#pricing" className={styles.Footer__Link}>Pricing</Link></li>
-              <li><Link to="/changelog" className={styles.Footer__Link}>Changelog</Link></li>
+              <li><AppLink href="/#features" className={styles.Footer__Link}>Features</AppLink></li>
+              <li><AppLink href="/#pricing" className={styles.Footer__Link}>Pricing</AppLink></li>
+              <li><AppLink href="/changelog" className={styles.Footer__Link}>Changelog</AppLink></li>
             </ul>
           </div>
           <div>
             <Heading as="h4" className={styles.Footer__SectionTitle}>Legal</Heading>
             <ul className={styles.Footer__Links}>
-              <li><Link to="/terms-of-service" className={styles.Footer__Link}>Terms of Service</Link></li>
-              <li><Link to="/privacy-policy" className={styles.Footer__Link}>Privacy Policy</Link></li>
-              <li><Link to="/refund-policy" className={styles.Footer__Link}>Refund Policy</Link></li>
+              <li><AppLink href="/terms-of-service" className={styles.Footer__Link}>Terms of Service</AppLink></li>
+              <li><AppLink href="/privacy-policy" className={styles.Footer__Link}>Privacy Policy</AppLink></li>
+              <li><AppLink href="/refund-policy" className={styles.Footer__Link}>Refund Policy</AppLink></li>
             </ul>
           </div>
           <div>
             <Heading as="h4" className={styles.Footer__SectionTitle}>Support</Heading>
             <ul className={styles.Footer__Links}>
-              <li><a href={`mailto:${SUPPORT_EMAIL}`} className={styles.Footer__Link}>Contact Support</a></li>
-              <li><Link to="/byok-setup" className={styles.Footer__Link}>BYOK Setup Guide</Link></li>
+              <li><AppLink href={`mailto:${SUPPORT_EMAIL}`} className={styles.Footer__Link}>Contact Support</AppLink></li>
+              <li><AppLink href="/byok-setup" className={styles.Footer__Link}>BYOK Setup Guide</AppLink></li>
               <li>
-                <a
+                <AppLink
                   href="https://zush.canny.io"
                   className={styles.Footer__Link}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Features & Bug Reports
-                </a>
+                </AppLink>
               </li>
             </ul>
           </div>
@@ -88,7 +88,7 @@ const Footer = () => {
         <div className={styles.Footer__Bottom}>
           <Text color="subtle">© {new Date().getFullYear()} Zush</Text>
           <div className={styles.Footer__Social}>
-            <a
+            <AppLink
               href="https://x.com/zush_app"
               className={styles.Footer__SocialLink}
               target="_blank"
@@ -96,8 +96,8 @@ const Footer = () => {
               aria-label="Follow us on X"
             >
               <XIcon size={24} />
-            </a>
-            <a
+            </AppLink>
+            <AppLink
               href="https://www.youtube.com/@zushapp"
               className={styles.Footer__SocialLink}
               target="_blank"
@@ -105,8 +105,8 @@ const Footer = () => {
               aria-label="Follow us on YouTube"
             >
               <YouTubeIcon size={24} />
-            </a>
-            <a
+            </AppLink>
+            <AppLink
               href="https://www.producthunt.com/products/zush"
               className={styles.Footer__SocialLink}
               target="_blank"
@@ -114,11 +114,11 @@ const Footer = () => {
               aria-label="Zush on Product Hunt"
             >
               <ProductHuntIcon size={24} />
-            </a>
+            </AppLink>
           </div>
           <div className={styles.Footer__BottomLinks}>
             <Text color="subtle">
-              Designed by <a href="https://lirik.pro/en" target="_blank" rel="noopener noreferrer">lirik</a> with 💚
+              Designed by <AppLink href="https://lirik.pro/en" target="_blank" rel="noopener noreferrer">lirik</AppLink> with 💚
             </Text>
           </div>
         </div>

@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
+import AppLink from '@/components/AppLink';
 import styles from './Logo.module.scss';
 
 const Logo = () => {
   return (
-    <Link to="/" className={styles.Logo}>
+    <AppLink href="/" className={styles.Logo}>
       <picture>
         <source
           type="image/webp"
@@ -22,7 +22,7 @@ const Logo = () => {
         />
       </picture>
       <span className={styles.Logo__Text}>Zush</span>
-    </Link>
+    </AppLink>
   );
 };
 
