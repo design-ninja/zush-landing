@@ -38,6 +38,20 @@
         }
     }
 
+    &__AppStore {
+        display: inline-block;
+        margin-top: 1rem;
+
+        @include mobile {
+            margin: 1rem auto 0;
+        }
+    }
+
+    &__AppStoreImg {
+        height: 2.5rem;
+        width: auto;
+    }
+
     &__SectionTitle {
         margin-bottom: 1.5rem;
     }

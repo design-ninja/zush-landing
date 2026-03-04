@@ -1,7 +1,7 @@
 import Heading from '../Heading';
 import Text from '../Text';
 import AppLink from '@/components/AppLink';
-import { SUPPORT_EMAIL } from '@/constants';
+import { APP_STORE_URL, SUPPORT_EMAIL } from '@/constants';
 import styles from './Footer.module.scss';
 
 const XIcon = ({ size = 20 }: { size?: number }) => (
@@ -50,6 +50,18 @@ const Footer = () => {
             <Text color="subtle" className={styles.Footer__Description}>
               The ultimate AI-powered image organization utility for macOS
             </Text>
+            <AppLink
+              href={APP_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.Footer__AppStore}
+            >
+              <img
+                src="/images/download-from-appstore.svg"
+                alt="Download on the App Store"
+                className={styles.Footer__AppStoreImg}
+              />
+            </AppLink>
           </div>
           <div>
             <Heading as="h4" className={styles.Footer__SectionTitle}>Product</Heading>

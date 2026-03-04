@@ -1,5 +1,6 @@
 // App URLs
 export const DOWNLOAD_URL = 'https://zushapp.com/releases/Zush.dmg';
+export const APP_STORE_URL = 'https://apps.apple.com/th/app/zush/id6758432449';
 export const SUPPORT_EMAIL = 'support@zushapp.com';
 
 // System requirements
