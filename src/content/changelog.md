@@ -10,9 +10,11 @@
 - ⚡ Enhanced AI prompt customization and error handling
 - ⚡ Enhanced data consent handling in welcome flow
 - ⚡ Improved StoreKit product loading with retry logic
+- ⚡ Improved SVG rendering for AI analysis and recognition
 
 ### Fixed
 - 🐛 Restored AI prompt base for image analysis
+- 🐛 Fixed custom output language not being applied correctly with custom AI prompts
 - 🐛 Prevented onboarding window from freezing
 - 🐛 Stabilized App Store IAP verification and cleaned up legacy objects
 - 🐛 Show data agreement only for App Store builds
