@@ -91,7 +91,7 @@ const createFAQData = (): FAQData[] => [
   {
     question: 'Is my data secure?',
     answer:
-      'Your original files stay on your computer. For AI analysis, Zush sends a resized, compressed JPEG copy to our servers, which is forwarded to our AI providers for processing. We do not store the image in our database.',
+      'Your original files stay on your computer. For AI analysis, Zush sends a resized, compressed JPEG copy to our servers, along with selected processing options and any custom rename or tagging prompts you choose to provide, then forwards the request to our AI providers. We do not store image content after processing as part of normal operation.',
   },
   {
     question: 'Can I undo changes made by the program?',
@@ -111,7 +111,7 @@ const createFAQData = (): FAQData[] => [
     question: 'What is BYOK (Bring Your Own Key)?',
     answer: (
       <>
-        BYOK lets PRO users connect their own API key from Gemini, Groq, OpenAI, or Claude for unlimited image processing. When BYOK is enabled, Zush uses your API key instead of our servers, so you pay your AI provider directly and have no credit limits. Perfect for power users with large libraries.{' '}
+        BYOK lets PRO users connect their own API key from Gemini, Groq, OpenAI, or Claude for unlimited image processing. When BYOK is enabled, Zush uses your API key through its backend relay to call your chosen AI provider, so you pay the provider directly and have no credit limits. Perfect for power users with large libraries.{' '}
         <AppLink href="/byok-setup">Learn how to set it up →</AppLink>
       </>
     ),

@@ -319,9 +319,10 @@ const BYOKSetup = () => {
               <div>
                 <h3>Security & Privacy</h3>
                 <p>
-                  Your API keys are stored securely in your Mac's Keychain. Zush never has access to
-                  your keys or your image data when using BYOK. All processing happens directly between
-                  your Mac and your chosen AI provider.
+                  Your API keys are stored securely and used only for BYOK processing. In BYOK mode,
+                  analysis requests are still relayed through Zush backend infrastructure and then sent
+                  to your chosen AI provider using your API key. Zush does not store image content after
+                  processing as part of normal operation.
                 </p>
               </div>
             </div>
