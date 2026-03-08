@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.7.0] - 2026-03-08
+### Added
+- 🎉 Implemented custom AI prompts for image analysis
+- 🔑 Implemented comprehensive data consent management
+- 📦 Integrated StoreKit for promoted purchases in App Store version
+
+### Improved  
+- ⚡ Enhanced AI prompt customization and error handling
+- ⚡ Enhanced data consent handling in welcome flow
+- ⚡ Improved StoreKit product loading with retry logic
+
+### Fixed
+- 🐛 Restored AI prompt base for image analysis
+- 🐛 Prevented onboarding window from freezing
+- 🐛 Stabilized App Store IAP verification and cleaned up legacy objects
+- 🐛 Show data agreement only for App Store builds
+- 🔧 Adopted Liquid Glass toolbar on macOS 26
+
 ## [1.6.1] - 2026-02-09
 ### Added
 - 🎉 Added appearance preference settings with UI integration
