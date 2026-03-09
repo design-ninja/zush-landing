@@ -1,10 +1,26 @@
 .markdown-content {
 
+    h2 {
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.75rem;
+        font-weight: 600;
+        color: var(--foreground);
+    }
+
     h3 {
         margin-top: 2rem;
         margin-bottom: 1rem;
         font-size: 1.5rem;
         font-weight: 500;
+        color: var(--foreground);
+    }
+
+    h4 {
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        font-size: 1.25rem;
+        font-weight: 600;
         color: var(--foreground);
     }
 
@@ -20,14 +36,56 @@
         list-style: disc;
     }
 
+    ol {
+        margin-bottom: 1.5rem;
+        padding-left: 1.5rem;
+        list-style: decimal;
+    }
+
     li {
         margin-bottom: 0.5rem;
         color: var(--muted-foreground);
+        line-height: 1.7;
     }
 
     strong,
     b {
         color: var(--foreground);
         font-weight: 600;
+    }
+
+    blockquote {
+        border-left: 3px solid var(--primary);
+        padding-left: 1.25rem;
+        margin: 1.5rem 0;
+        color: var(--muted-foreground);
+        font-style: italic;
+    }
+
+    code {
+        background: var(--border);
+        padding: 0.15rem 0.4rem;
+        border-radius: 0.25rem;
+        font-family: var(--font-mono);
+        font-size: 0.875em;
+    }
+
+    pre {
+        background: var(--border);
+        padding: 1rem;
+        border-radius: 0.75rem;
+        overflow-x: auto;
+        margin-bottom: 1.5rem;
+
+        code {
+            background: none;
+            padding: 0;
+        }
+    }
+
+    hr {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 2rem 0;
     }
 }

@@ -69,6 +69,7 @@ const Footer = () => {
               <li><AppLink href="/#features" className={styles.Footer__Link}>Features</AppLink></li>
               <li><AppLink href="/#pricing" className={styles.Footer__Link}>Pricing</AppLink></li>
               <li><AppLink href="/changelog" className={styles.Footer__Link}>Changelog</AppLink></li>
+              <li><AppLink href="/blog" className={styles.Footer__Link}>Blog</AppLink></li>
             </ul>
           </div>
           <div>
