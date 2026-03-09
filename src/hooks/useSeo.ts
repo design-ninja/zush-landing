@@ -51,6 +51,12 @@ const ROUTE_META: Record<string, RouteMeta> = {
       "Zush's refund policy. Money-back guarantee details for our AI image organizer.",
     robots: 'index, follow',
   },
+  '/blog': {
+    title: 'Blog — Zush',
+    description:
+      'Tips, guides, and insights on AI-powered image organization for macOS. Learn about photo management, smart renaming, and workflow automation.',
+    robots: 'index, follow',
+  },
 };
 
 const normalizePath = (pathname: string) => {
@@ -86,6 +92,10 @@ export const useSeo = () => {
 
   useEffect(() => {
     const path = normalizePath(location.pathname);
+
+    // Blog post pages are handled by useBlogPostSeo
+    if (path.startsWith('/blog/') && path !== '/blog') return;
+
     const meta = ROUTE_META[path] || DEFAULT_META;
     const canonicalUrl = `${SITE_ORIGIN}${path === '/' ? '/' : path}`;
 

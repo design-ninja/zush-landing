@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, mkdirSync, existsSync, statSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, statSync, readdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { createServer } from 'http';
@@ -60,11 +60,46 @@ const ROUTE_META = {
       "Zush's refund policy. Money-back guarantee details for our AI image organizer.",
     robots: 'index, follow',
   },
+  '/blog': {
+    title: 'Blog — Zush',
+    description:
+      'Tips, guides, and insights on AI-powered image organization for macOS. Learn about photo management, smart renaming, and workflow automation.',
+    robots: 'index, follow',
+  },
   '/thank-you': DEFAULT_META,
   '/recover': DEFAULT_META,
   '/activate': DEFAULT_META,
   '/manage-subscription': DEFAULT_META,
 };
+
+// Dynamically add blog post routes
+const BLOG_DIR = join(__dirname, '..', 'src', 'content', 'blog');
+if (existsSync(BLOG_DIR)) {
+  const files = readdirSync(BLOG_DIR).filter((f) => f.endsWith('.md'));
+  for (const file of files) {
+    const raw = readFileSync(join(BLOG_DIR, file), 'utf8');
+    const fmMatch = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+    if (!fmMatch) continue;
+
+    const meta = {};
+    for (const line of fmMatch[1].split('\n')) {
+      const idx = line.indexOf(':');
+      if (idx === -1) continue;
+      meta[line.slice(0, idx).trim()] = line
+        .slice(idx + 1)
+        .trim()
+        .replace(/^['"]|['"]$/g, '');
+    }
+
+    if (meta.slug) {
+      ROUTE_META[`/blog/${meta.slug}`] = {
+        title: `${meta.title} — Zush Blog`,
+        description: meta.description || '',
+        robots: 'index, follow',
+      };
+    }
+  }
+}
 
 // --- HTML helpers ---
 
