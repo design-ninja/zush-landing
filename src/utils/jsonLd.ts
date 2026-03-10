@@ -1,4 +1,4 @@
-import type { BlogFrontmatter } from './frontmatter'
+import type { BlogFrontmatter, FAQItem } from './frontmatter'
 
 const SITE_ORIGIN = 'https://zushapp.com'
 
@@ -31,6 +31,21 @@ export function buildBlogPostingJsonLd(post: BlogFrontmatter) {
     url: `${SITE_ORIGIN}/blog/${post.slug}`,
     wordCount: post.readingTime * 200,
     keywords: post.tags.join(', '),
+  }
+}
+
+export function buildFAQPageJsonLd(items: FAQItem[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
   }
 }
 

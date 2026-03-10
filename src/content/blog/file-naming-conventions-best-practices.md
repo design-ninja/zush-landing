@@ -4,6 +4,7 @@ description: Discover file naming conventions and best practices that work for a
 date: 2026-03-05
 slug: file-naming-conventions-best-practices
 tags: file naming conventions, file naming best practices, naming convention guide, file organization
+tldr: Good file naming conventions use lowercase, hyphens, dates, and descriptive keywords — AI renaming tools can enforce these conventions automatically across thousands of files
 ---
 
 A good file naming convention is one of those invisible productivity multipliers that most people never think about until they are staring at a folder full of `Document (1).pdf`, `final_FINAL_v3.psd`, and `IMG_8923.HEIC`. At that point, finding anything requires opening files one by one, and the time lost compounds with every file you add.
@@ -232,3 +233,21 @@ Even with a good convention, certain habits undermine your organization over tim
 A solid file naming convention is a small upfront investment that pays off every time you search for a file, share something with a colleague, or revisit a project months later. The universal rules are straightforward: avoid special characters, use ISO dates, be descriptive but concise, and stay consistent. The specific pattern you choose should reflect your profession and workflow.
 
 For the persistent challenge of naming images — where content is visual and camera defaults are useless — AI tools like [Zush](https://zushapp.com) have made it practical to maintain descriptive naming at scale. Whether you process a backlog of thousands or set up automatic naming for new files, the result is the same: every file on your Mac becomes findable by name, not just by memory. Zush is [available on the Mac App Store](https://apps.apple.com/th/app/zush/id6758432449) for macOS Sonoma and later, with a free tier of 30 images to get started.
+
+## FAQ
+
+### What is the best file naming convention?
+
+The best file naming convention for most people uses lowercase letters, hyphens as word separators, and a consistent structure like `YYYY-MM-DD_description.ext`. This format ensures files sort chronologically, remain compatible across operating systems, and are easy to read in any folder view. The specific pattern should be tailored to your profession and workflow, but the core principles of consistency, descriptiveness, and simplicity apply universally.
+
+### Should I use hyphens or underscores in filenames?
+
+Both hyphens and underscores are safe, cross-platform filename separators. Hyphens (kebab-case) are generally preferred because they are easier to read at a glance and are treated as word separators by most search engines and tools. Underscores work well in programming and data science contexts. The most important thing is to pick one style and use it consistently across all your files.
+
+### How long should filenames be?
+
+Aim to keep filenames under 80 characters, excluding the file path. This length provides enough room for a descriptive name while avoiding issues with older backup systems, Windows path limits, and display truncation in file browsers. Do not sacrifice clarity for brevity, though. A name like `q3-revenue-report-2026.xlsx` is far more useful than `q3rev26.xlsx`, even if it is a few characters longer.
+
+### Can AI help with file naming conventions?
+
+Yes, AI has transformed file naming, especially for images and PDFs where manual naming is impractical at scale. AI vision models can analyze a photo or document, understand its contents, and generate a descriptive filename automatically. Tools like Zush combine AI-generated descriptions with customizable naming patterns, so you get both intelligent content recognition and a consistent naming structure across all your files.

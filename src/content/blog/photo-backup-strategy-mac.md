@@ -4,6 +4,7 @@ description: Build a reliable photo backup strategy for Mac using the 3-2-1 rule
 date: 2026-02-15
 slug: photo-backup-strategy-mac
 tags: photo backup mac, backup photos macOS, photo backup strategy, Time Machine, iCloud Photos
+tldr: A solid backup strategy uses the 3-2-1 rule with Time Machine, cloud storage, and external drives — descriptive filenames make backups easier to verify and restore from
 ---
 
 ## The Cost of Not Having a Backup

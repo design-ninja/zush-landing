@@ -4,6 +4,7 @@ description: "Step-by-step guide to renaming files with macOS Automator. Build w
 date: 2026-02-12
 slug: macos-automator-rename-files-guide
 tags: Automator rename files, macOS Automator guide, automatic file renaming mac, Automator workflow, Shortcuts
+tldr: Automator can build useful file renaming workflows on macOS — but it cannot understand image content, which is where AI-powered renaming tools fill the gap
 ---
 
 Automator has been a part of macOS since 2005, offering a visual way to build automated workflows without writing code. One of its most popular uses is batch file renaming — taking a folder full of generically named files and applying consistent names, dates, or sequential numbers. If you have ever needed to rename hundreds of files at once, Automator can save hours of manual clicking and typing.

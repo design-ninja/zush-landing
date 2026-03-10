@@ -4,6 +4,7 @@ description: Learn how to automate file organization on macOS using Finder Smart
 date: 2026-02-25
 slug: automate-file-organization-macos
 tags: automate file organization mac, automatic file sorting mac, file automation macOS, mac productivity, folder monitoring
+tldr: macOS offers Automator, Shortcuts, and Hazel for file automation — but AI-powered tools like Zush add content-aware renaming that no rule-based system can match
 ---
 
 ## Why Automate File Organization?

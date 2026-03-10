@@ -1,15 +1,50 @@
+export interface FAQItem {
+  question: string
+  answer: string
+}
+
 export interface BlogFrontmatter {
   title: string
   description: string
   date: string
   slug: string
   tags: string[]
+  tldr: string
   readingTime: number
 }
 
 export interface ParsedPost {
   frontmatter: BlogFrontmatter
   content: string
+  faq: FAQItem[]
+}
+
+function extractFAQ(content: string): FAQItem[] {
+  const faqMatch = content.match(/## (?:FAQ|Frequently Asked Questions)\s*\n([\s\S]*)$/)
+  if (!faqMatch) return []
+
+  const items: FAQItem[] = []
+  const lines = faqMatch[1].split('\n')
+  let currentQ = ''
+  let currentA = ''
+
+  for (const line of lines) {
+    const qMatch = line.match(/^###\s+(.+)/)
+    if (qMatch) {
+      if (currentQ && currentA.trim()) {
+        items.push({ question: currentQ, answer: currentA.trim() })
+      }
+      currentQ = qMatch[1]
+      currentA = ''
+    } else if (currentQ) {
+      currentA += line + '\n'
+    }
+  }
+  if (currentQ && currentA.trim()) {
+    items.push({ question: currentQ, answer: currentA.trim() })
+  }
+
+  return items
 }
 
 export function parseFrontmatter(raw: string): ParsedPost {
@@ -41,8 +76,10 @@ export function parseFrontmatter(raw: string): ParsedPost {
         .split(',')
         .map((t) => t.trim())
         .filter(Boolean),
+      tldr: meta.tldr ?? '',
       readingTime: Math.ceil(wordCount / 200),
     },
     content,
+    faq: extractFAQ(content),
   }
 }

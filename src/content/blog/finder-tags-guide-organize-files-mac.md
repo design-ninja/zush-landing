@@ -4,6 +4,7 @@ description: Master Finder tags on Mac to organize files with color coding, cust
 date: 2026-02-14
 slug: finder-tags-guide-organize-files-mac
 tags: Finder tags mac, color tags macOS, organize files with tags, Mac file tags, Smart Folders
+tldr: Finder tags add a powerful cross-folder organization layer to macOS — AI tools like Zush can assign relevant tags automatically based on image content analysis
 ---
 
 ## What Are Finder Tags and Why Should You Use Them?

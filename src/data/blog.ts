@@ -29,3 +29,23 @@ export function getPostBySlug(slug: string): ParsedPost | undefined {
 export function getAllSlugs(): string[] {
   return allPosts.map((p) => p.frontmatter.slug)
 }
+
+export function getRelatedPosts(
+  slug: string,
+  limit = 3,
+): BlogFrontmatter[] {
+  const current = allPosts.find((p) => p.frontmatter.slug === slug)
+  if (!current) return []
+
+  const currentTags = new Set(current.frontmatter.tags)
+
+  return allPosts
+    .filter((p) => p.frontmatter.slug !== slug)
+    .map((p) => ({
+      post: p.frontmatter,
+      score: p.frontmatter.tags.filter((t) => currentTags.has(t)).length,
+    }))
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map((r) => r.post)
+}
