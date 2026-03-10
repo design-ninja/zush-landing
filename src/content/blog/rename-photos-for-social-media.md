@@ -4,6 +4,7 @@ description: Learn how to rename photos for social media to improve SEO, organiz
 date: 2026-02-17
 slug: rename-photos-for-social-media
 tags: rename photos social media, image naming, photo file names, content creator tips, social media SEO
+tldr: Social media platforms benefit from descriptive filenames for SEO and organization — AI renaming helps content creators maintain consistent naming across platforms
 ---
 
 ## Why Your Photo Filenames Matter More Than You Think

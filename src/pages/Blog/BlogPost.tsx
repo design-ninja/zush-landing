@@ -1,10 +1,11 @@
 import { useParams, Navigate } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
-import { getPostBySlug } from '@/data/blog'
+import { getPostBySlug, getRelatedPosts } from '@/data/blog'
 import { useBlogPostSeo } from '@/hooks/useBlogPostSeo'
 import {
   buildBlogPostingJsonLd,
   buildBreadcrumbJsonLd,
+  buildFAQPageJsonLd,
 } from '@/utils/jsonLd'
 import AppLink from '@/components/AppLink'
 import BlogCTA from '@/components/BlogCTA'
@@ -45,10 +46,12 @@ const BlogPost = () => {
     return <Navigate to="/blog" replace />
   }
 
-  const { frontmatter, content } = post
+  const { frontmatter, content, faq } = post
+  const relatedPosts = getRelatedPosts(frontmatter.slug)
   const jsonLd = [
     buildBlogPostingJsonLd(frontmatter),
     buildBreadcrumbJsonLd(frontmatter.title, frontmatter.slug),
+    ...(faq.length > 0 ? [buildFAQPageJsonLd(faq)] : []),
   ]
 
   return (
@@ -77,6 +80,12 @@ const BlogPost = () => {
           )}
         </header>
 
+        {frontmatter.tldr && (
+          <div className={styles.BlogPost__Tldr}>
+            <strong>TL;DR:</strong> {frontmatter.tldr}
+          </div>
+        )}
+
         <div className={`${styles.BlogPost__Content} markdown-content`}>
           <ReactMarkdown
             components={{
@@ -90,6 +99,31 @@ const BlogPost = () => {
         </div>
 
         <BlogCTA />
+
+        {relatedPosts.length > 0 && (
+          <section className={styles.BlogPost__Related}>
+            <h2 className={styles.BlogPost__RelatedTitle}>Related Articles</h2>
+            <div className={styles.BlogPost__RelatedGrid}>
+              {relatedPosts.map((rp) => (
+                <AppLink
+                  key={rp.slug}
+                  href={`/blog/${rp.slug}`}
+                  className={styles.BlogPost__RelatedCard}
+                >
+                  <h3 className={styles.BlogPost__RelatedCardTitle}>
+                    {rp.title}
+                  </h3>
+                  <p className={styles.BlogPost__RelatedCardDesc}>
+                    {rp.description}
+                  </p>
+                  <span className={styles.BlogPost__RelatedCardMeta}>
+                    {formatDate(rp.date)} &middot; {rp.readingTime} min read
+                  </span>
+                </AppLink>
+              ))}
+            </div>
+          </section>
+        )}
 
         <footer className={styles.BlogPost__Footer}>
           <AppLink href="/blog" className={styles.BlogPost__BackLink}>

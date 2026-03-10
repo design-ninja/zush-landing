@@ -4,6 +4,7 @@ description: A complete guide to image file formats for Mac users. Learn when to
 date: 2026-02-24
 slug: image-file-formats-explained-complete-guide
 tags: image file formats, JPEG vs PNG, image format guide, photo formats explained, HEIC, WebP
+tldr: Understanding image formats like HEIC, PNG, JPG, WebP, and RAW helps you choose the right one for each use case — and proper naming makes format-diverse libraries manageable
 ---
 
 ## Why Image Formats Matter

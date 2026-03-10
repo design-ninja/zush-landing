@@ -4,6 +4,7 @@ description: Understand how AI image recognition works, from neural networks to 
 date: 2026-02-18
 slug: how-ai-image-recognition-works
 tags: AI image recognition, computer vision, neural networks, image recognition technology, machine learning
+tldr: Modern AI vision models use deep neural networks to understand image content — this technology powers tools like Zush that generate descriptive filenames from visual analysis
 ---
 
 ## What Happens When AI "Sees" an Image?

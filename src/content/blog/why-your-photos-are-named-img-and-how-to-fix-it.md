@@ -4,6 +4,7 @@ description: "Ever wondered why photos are named IMG_0001? Learn why cameras use
 date: 2026-02-11
 slug: why-your-photos-are-named-img-and-how-to-fix-it
 tags: IMG_ photos, why photos named IMG, fix photo names, rename IMG files, photo organization
+tldr: Cameras use sequential counters like IMG_4382 because they prioritize speed over description — AI vision models can retroactively assign meaningful names based on actual photo content
 ---
 
 Open any folder of photos transferred from a phone or camera, and you will find the same thing: a wall of files named `IMG_4381.HEIC`, `IMG_4382.HEIC`, `IMG_4383.HEIC`, stretching on for hundreds or thousands of entries. Despite decades of progress in camera technology — computational photography, 48-megapixel sensors, ProRAW, and AI-enhanced night mode — the file naming conventions have barely changed since the early days of digital photography.

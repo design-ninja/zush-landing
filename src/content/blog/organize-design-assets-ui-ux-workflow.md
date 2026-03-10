@@ -4,6 +4,7 @@ description: Learn how to organize design assets for UI/UX workflows. Naming con
 date: 2026-02-19
 slug: organize-design-assets-ui-ux-workflow
 tags: organize design assets, UI design files, UX workflow, design asset management, design system organization
+tldr: A well-organized design asset library saves hours of searching — AI renaming transforms exported files into descriptive, categorized assets that any team member can find
 ---
 
 Design work generates an extraordinary volume of files. A single project can produce hundreds of exports: icon variations at multiple sizes, mockups for different screen sizes, component screenshots for documentation, client presentation decks, user flow diagrams, and iteration after iteration of design explorations. Without a deliberate organizational system, a design folder quickly becomes a tangled mess where finding the right version of the right asset at the right size becomes a daily frustration.
