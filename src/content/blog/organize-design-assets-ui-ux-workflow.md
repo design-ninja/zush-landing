@@ -9,7 +9,7 @@ tldr: A well-organized design asset library saves hours of searching — AI rena
 
 Design work generates an extraordinary volume of files. A single project can produce hundreds of exports: icon variations at multiple sizes, mockups for different screen sizes, component screenshots for documentation, client presentation decks, user flow diagrams, and iteration after iteration of design explorations. Without a deliberate organizational system, a design folder quickly becomes a tangled mess where finding the right version of the right asset at the right size becomes a daily frustration.
 
-This guide is for UI/UX designers, product designers, and design teams who want a practical system for organizing their assets. It covers folder structures that scale, naming conventions that eliminate ambiguity, version management strategies, and how modern tools — including AI-powered file renaming — can reduce the organizational overhead that comes with design work.
+This guide is for UI/UX designers, product designers, and design teams who want a practical system for organizing their assets. For a broader look at managing design files on macOS, see our guide to [digital asset management for designers](/blog/digital-asset-management-designers-mac). It covers folder structures that scale, naming conventions that eliminate ambiguity, version management strategies, and how modern tools — including AI-powered file renaming — can reduce the organizational overhead that comes with design work.
 
 ## Why Design Asset Organization Is Uniquely Challenging
 
@@ -172,7 +172,7 @@ Organizing exports by platform and density from the start eliminates the chaos o
 
 ## Naming Conventions for Design Assets
 
-Consistent naming is the backbone of design asset organization. A good naming convention encodes key information — what the asset is, what variant it represents, and what state it captures — directly into the filename.
+Consistent naming is the backbone of design asset organization. If you need a deeper dive into naming strategies beyond design files, our [file naming conventions best practices](/blog/file-naming-conventions-best-practices) guide covers the fundamentals. A good naming convention encodes key information — what the asset is, what variant it represents, and what state it captures — directly into the filename.
 
 ### The Component-Variant-State-Size Pattern
 
@@ -381,7 +381,7 @@ docs/
 
 When exporting assets from design tools, the default filenames often reflect layer names or frame names from your design file. If your Figma layers are well-named, exports will be too. But if you have layers named "Frame 427" or "Group 12" (which is common in real-world files), your exports inherit those meaningless names.
 
-This is another area where batch renaming tools provide value. Export a batch of design assets, run them through AI-powered renaming to get descriptive names, and then organize them into your folder structure. Zush's rename history feature means you can always revert if an AI-generated name does not match your conventions — every rename is logged and reversible with one click.
+This is another area where batch renaming tools provide value — you can learn more in our guide on [how to rename images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos). Export a batch of design assets, run them through AI-powered renaming to get descriptive names, and then organize them into your folder structure. Zush's rename history feature means you can always revert if an AI-generated name does not match your conventions — every rename is logged and reversible with one click.
 
 ## Practical Tips for Maintaining Organization
 

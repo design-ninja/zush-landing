@@ -25,7 +25,7 @@ When you upload an image to a website or blog, search engines use several signal
 - **Surrounding content**: The text on the page near the image
 - **Image filename**: The actual name of the file
 
-Google has confirmed that image filenames are used as a ranking signal for Google Images search. An image named `homemade-sourdough-bread-golden-crust.jpg` gives Google direct information about the image content. An image named `IMG_4382.jpg` gives it nothing.
+Google has confirmed that image filenames are used as a ranking signal for Google Images search. For a deeper dive into how filenames affect search visibility, see our guide on [image SEO file naming for better rankings](/blog/image-seo-file-naming-for-better-rankings). An image named `homemade-sourdough-bread-golden-crust.jpg` gives Google direct information about the image content. An image named `IMG_4382.jpg` gives it nothing.
 
 This matters most for platforms where images are indexed by search engines:
 
@@ -39,7 +39,7 @@ It is worth noting that some platforms strip or replace filenames on upload. Ins
 
 Does that mean filenames do not matter for Instagram? Not exactly. The filename still matters for your personal organization — finding the right image to post, tracking what you have already published, and maintaining a content library. It also matters if you repurpose content across platforms. The same image might go to Instagram (where the filename is stripped) and to your blog (where it helps with SEO).
 
-The principle is simple: always name your files descriptively, because you never know where they will end up.
+The principle is simple: always name your files descriptively, because you never know where they will end up. Our [file naming conventions best practices](/blog/file-naming-conventions-best-practices) guide covers the foundational rules that apply across all file types.
 
 ## Naming Conventions for Content Creators
 
@@ -215,7 +215,7 @@ Content creators work with images from many sources, each with its own default n
 - **AI image generators**: `ComfyUI_00123_.png`, `DALL-E_generation.png`
 - **Stock photos**: `shutterstock_1234567890.jpg`, `pexels-photo-4567890.jpeg`
 
-None of these default names tell you anything about the content. A batch renaming pass after each shoot or design session ensures every image in your library carries a meaningful name from that point forward. The few minutes you spend renaming (or the zero minutes if you automate it) save hours of searching and guessing down the road.
+None of these default names tell you anything about the content. If you are working on a Mac, our [complete guide to batch renaming files](/blog/batch-rename-files-on-mac-complete-guide) walks through every available method. A batch renaming pass after each shoot or design session ensures every image in your library carries a meaningful name from that point forward. The few minutes you spend renaming (or the zero minutes if you automate it) save hours of searching and guessing down the road.
 
 ## Building a Naming System That Scales
 

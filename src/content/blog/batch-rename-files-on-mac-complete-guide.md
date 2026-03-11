@@ -110,7 +110,7 @@ Now you can select files in Finder, right-click, and run your custom rename work
 
 ### When to Use Automator
 
-Automator is best for repeatable workflows you run often. If you batch rename files the same way every week, such as applying a date prefix and sequential numbering to client deliverables, saving it as a Quick Action eliminates repetitive setup. The limitation is that Automator workflows are still pattern-based. They cannot examine file content or make intelligent decisions about what a file actually contains.
+Automator is best for repeatable workflows you run often. For a step-by-step walkthrough, check out our [macOS Automator guide for renaming files automatically](/blog/macos-automator-rename-files-guide). If you batch rename files the same way every week, such as applying a date prefix and sequential numbering to client deliverables, saving it as a Quick Action eliminates repetitive setup. The limitation is that Automator workflows are still pattern-based. They cannot examine file content or make intelligent decisions about what a file actually contains.
 
 ## Method 4: Third-Party Batch Rename Tools
 
@@ -136,7 +136,7 @@ Dedicated rename apps are best when Finder is too limited but Terminal is too in
 
 Every method covered so far shares the same fundamental limitation: you have to tell the computer exactly what to name your files. You create patterns, write rules, and define sequences. But what if your renaming tool could look at an image and understand what it depicts?
 
-This is where AI-powered batch renaming changes the game. Instead of `IMG_4392.HEIC`, imagine your file automatically becomes `golden-retriever-playing-fetch-on-beach.heic`. Not because you typed that name, but because the AI recognized the content.
+This is where AI-powered batch renaming changes the game. Instead of `IMG_4392.HEIC`, imagine your file automatically becomes `golden-retriever-playing-fetch-on-beach.heic`. Not because you typed that name, but because the AI recognized the content. If you work primarily with images, our guide on [how to rename images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos) covers this in depth.
 
 ### How AI Batch Renaming Works
 
@@ -190,7 +190,7 @@ Regardless of which method you pick, these practices will keep your files organi
 - **Use lowercase and hyphens** instead of spaces and mixed case. `beach-sunset-2026.jpg` is more portable and URL-friendly than `Beach Sunset 2026.jpg`.
 - **Put dates at the front** in ISO format (`2026-03-08`) so files sort chronologically in Finder.
 - **Be descriptive but concise.** A filename should tell you what the file contains without opening it. `quarterly-sales-report-q1-2026.pdf` beats `report-final-v2.pdf`.
-- **Settle on a pattern and stick to it.** Consistency matters more than which specific convention you choose.
+- **Settle on a pattern and stick to it.** Consistency matters more than which specific convention you choose. Our guide to [file naming conventions and best practices](/blog/file-naming-conventions-best-practices) can help you pick the right one.
 - **Use batch renaming proactively,** not just when your folders are already a disaster. Regular maintenance is easier than a massive cleanup.
 
 ## Wrapping Up

@@ -37,7 +37,7 @@ Manual organization is the default for most people. You download images from you
 
 ## The Case for AI Image Tagging
 
-AI image tagging uses machine learning models — typically convolutional neural networks or modern vision transformers — to analyze the visual content of a photo and generate descriptive labels. Some tools stop at simple keyword tags ("dog," "beach," "night"). More advanced systems produce natural-language descriptions, detect text within images, and categorize content into meaningful groups.
+AI image tagging uses machine learning models — typically convolutional neural networks or modern vision transformers — to analyze the visual content of a photo and generate descriptive labels. If you are curious about the technology behind this, our deep dive into [how AI image recognition works](/blog/how-ai-image-recognition-works) covers the underlying models and techniques in detail. Some tools stop at simple keyword tags ("dog," "beach," "night"). More advanced systems produce natural-language descriptions, detect text within images, and categorize content into meaningful groups.
 
 ### How AI Image Tagging Works
 
@@ -103,7 +103,7 @@ Most AI tagging tools force you to choose: either use the AI output as-is, or do
 
 **Custom naming patterns.** Rather than forcing a single output format, Zush lets you define naming patterns using variables like `{title}`, `{date}`, `{time}`, `{category}`, and `{original}`. This means you can combine AI-generated descriptions with structured data — for example, `{date}_{title}` produces `2026-03-06_golden-gate-bridge-fog-morning` — giving you both automation and consistency.
 
-**Finder tags and Spotlight metadata.** Zush does not just rename files. It writes category-based Finder tags and Spotlight metadata directly to each image. This means macOS treats your AI-organized photos as first-class citizens in its search index. Open Spotlight, type a description, and find your images instantly — no third-party search tool required.
+**Finder tags and Spotlight metadata.** Zush does not just rename files. It writes category-based [Finder tags](/blog/finder-tags-guide-organize-files-mac) and Spotlight metadata directly to each image. This means macOS treats your AI-organized photos as first-class citizens in its search index. Open Spotlight, type a description, and find your images instantly — no third-party search tool required.
 
 **Folder monitoring for hands-free organization.** Set Zush to watch specific folders, and it will automatically process new images as they arrive. Screenshots land in your Downloads folder? They get renamed and tagged in the background without you lifting a finger. This is especially powerful for photographers who regularly import large batches from cameras or card readers.
 
@@ -131,7 +131,7 @@ At enterprise scale, manual tagging is not just inefficient — it is a liabilit
 
 ## The Verdict
 
-Manual photo organization is not wrong — it is just slow, inconsistent, and unsustainable at scale. For a handful of images with very specific contextual requirements, the human touch still adds value. But for the vast majority of use cases — from personal photo libraries to professional asset management — AI image tagging is the better approach.
+Manual photo organization is not wrong — it is just slow, inconsistent, and unsustainable at scale. For a broader look at all available strategies, see our guide to the [best ways to organize photos on Mac](/blog/best-ways-to-organize-photos-on-mac). For a handful of images with very specific contextual requirements, the human touch still adds value. But for the vast majority of use cases — from personal photo libraries to professional asset management — AI image tagging is the better approach.
 
 The most effective strategy is not purely one or the other. It is AI-first with human oversight: let machine learning handle the heavy lifting of analysis, naming, and tagging, then review and adjust where contextual precision matters. Tools that combine AI analysis with flexible naming patterns, native OS metadata integration, and safety features like rename history make this hybrid approach practical.
 

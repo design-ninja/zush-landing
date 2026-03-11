@@ -11,7 +11,7 @@ tldr: A solid backup strategy uses the 3-2-1 rule with Time Machine, cloud stora
 
 Hard drives fail. It is not a question of if, but when. The average SSD has a lifespan of 5 to 10 years, and mechanical hard drives fare even worse. Beyond hardware failure, photos can be lost to accidental deletion, software corruption, theft, fire, flood, or a bad macOS update. If your only copy of your photo library lives on your Mac's internal drive, every single one of these scenarios means permanent loss.
 
-The photos on your Mac are likely irreplaceable. Family gatherings, vacations, milestones, creative work, professional portfolios — these are not files you can re-download or recreate. Yet surveys consistently show that a significant percentage of people have no backup strategy at all, and many who think they have a backup have never tested whether it actually works.
+The photos on your Mac are likely irreplaceable. If you are still figuring out how to structure your library, start with [the best ways to organize photos on Mac](/blog/best-ways-to-organize-photos-on-mac) before setting up your backup plan. Family gatherings, vacations, milestones, creative work, professional portfolios — these are not files you can re-download or recreate. Yet surveys consistently show that a significant percentage of people have no backup strategy at all, and many who think they have a backup have never tested whether it actually works.
 
 This guide walks through everything you need to build a reliable, redundant photo backup strategy on macOS. It covers the principles behind good backups, the specific tools available to Mac users, and practical steps to set up a system that protects your photos against any realistic failure scenario.
 
@@ -140,7 +140,7 @@ Finder tags are stored as extended attributes on macOS files. Time Machine prese
 
 ### Clean Up Before You Back Up
 
-Before implementing your backup strategy, it is worth spending time on a one-time cleanup:
+Before implementing your backup strategy, it is worth spending time on a one-time cleanup. Avoiding [common photo organization mistakes](/blog/digital-photo-organization-mistakes-to-avoid) now will save you from backing up a mess that is just as hard to navigate after a restore.
 
 - **Delete duplicates**: Multiple copies of the same photo waste backup storage and make your library harder to navigate. macOS Photos has built-in duplicate detection, and third-party tools can find duplicates among loose files in Finder.
 - **Remove files you do not need**: Blurry photos, accidental screenshots, old downloads — these do not need to be backed up forever.
@@ -182,7 +182,7 @@ This satisfies the offsite requirement of 3-2-1. Your photos are now in three pl
 
 With your backup infrastructure in place, invest time in organizing your photo library:
 
-1. **Create a folder structure** that works for your workflow (by year, by event, by project, or a combination)
+1. **Create a folder structure** that works for your workflow — [organizing photos by date](/blog/organize-photos-by-date-mac) is one of the most popular and reliable approaches
 2. **Rename files descriptively** so they are findable by name. AI tools like Zush can batch-rename thousands of images based on their content, which is dramatically faster than doing it manually.
 3. **Tag important photos** in Finder for easy filtering
 4. **Set up automated organization** for new photos going forward. Folder monitoring in tools like Zush can automatically rename and tag new images as they appear, ensuring your organizational system stays current without ongoing manual effort.

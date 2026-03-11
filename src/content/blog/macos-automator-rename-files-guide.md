@@ -9,7 +9,7 @@ tldr: Automator can build useful file renaming workflows on macOS — but it can
 
 Automator has been a part of macOS since 2005, offering a visual way to build automated workflows without writing code. One of its most popular uses is batch file renaming — taking a folder full of generically named files and applying consistent names, dates, or sequential numbers. If you have ever needed to rename hundreds of files at once, Automator can save hours of manual clicking and typing.
 
-This guide walks through building file renaming workflows in Automator step by step, from simple batch renames to Folder Actions that process files automatically. We will also look at where Automator falls short and what modern alternatives offer.
+This guide walks through building file renaming workflows in Automator step by step, from simple batch renames to Folder Actions that process files automatically. We will also look at where Automator falls short and what modern alternatives offer. If you are looking for a broader overview of renaming methods, our [complete guide to batch renaming files on Mac](/blog/batch-rename-files-on-mac-complete-guide) covers every major approach.
 
 ## What Is Automator and Where to Find It
 
@@ -84,7 +84,7 @@ You can also assign a keyboard shortcut to the Quick Action through System Setti
 
 ## Setting Up a Folder Action for Automatic Renaming
 
-Folder Actions are the most powerful Automator feature for file renaming because they run automatically. Attach a Folder Action to a folder, and any file added to that folder gets processed without you lifting a finger.
+Folder Actions are the most powerful Automator feature for file renaming because they run automatically. Attach a Folder Action to a folder, and any file added to that folder gets processed without you lifting a finger. For more ways to [automate file organization on macOS](/blog/automate-file-organization-macos), including tools beyond Automator, see our dedicated guide.
 
 ### Step 1: Create a New Folder Action
 
@@ -161,7 +161,7 @@ For file renaming specifically, neither Automator nor Shortcuts addresses the fu
 
 ## Beyond Automator: AI-Powered File Renaming
 
-The gap that Automator cannot fill — understanding what an image actually shows — is exactly what AI-powered tools are designed for. Instead of applying mechanical text transformations, an AI renaming tool analyzes the visual content of each image and generates a descriptive filename.
+The gap that Automator cannot fill — understanding what an image actually shows — is exactly what AI-powered tools are designed for. Instead of applying mechanical text transformations, an AI renaming tool [analyzes the visual content of each image and generates a descriptive filename](/blog/how-to-rename-images-with-ai-on-macos).
 
 [Zush](https://zushapp.com) takes this approach on macOS. Rather than building a fragile chain of text replacement actions, you drag images onto Zush (or let its folder monitoring feature pick them up automatically), and each image gets a name based on what the AI sees in it. A screenshot of a Figma mockup gets named something like `figma-dashboard-layout-sidebar-navigation.png`. A vacation photo becomes `sunset-over-harbor-boats-docked.jpg`.
 

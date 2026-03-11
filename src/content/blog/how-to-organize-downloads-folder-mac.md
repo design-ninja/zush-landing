@@ -25,7 +25,7 @@ Understanding why Downloads spirals out of control helps explain why simple "jus
 
 ## Quick Cleanup: The 15-Minute Reset
 
-Before setting up any automated system, it helps to start from a cleaner baseline. Here is a fast approach to reducing the chaos.
+Before setting up any automated system, it helps to start from a cleaner baseline. If your clutter extends beyond Downloads, our full [Mac decluttering guide](/blog/declutter-your-mac-file-cleanup-guide) covers every folder. Here is a fast approach to reducing the chaos.
 
 ### Sort by Date Added
 
@@ -115,7 +115,7 @@ Smart Folders do not move or rename files — they are just filtered views. But 
 
 ## Automator and Shortcuts: Rules-Based Automation
 
-For a more hands-off approach, macOS offers automation tools that can move and organize files based on rules you define.
+For a more hands-off approach, macOS offers automation tools that can move and organize files based on rules you define. Our guide on [how to automate file organization on macOS](/blog/automate-file-organization-macos) covers these methods in greater depth.
 
 ### Using Automator Folder Actions
 
@@ -147,7 +147,7 @@ Of all the file types that accumulate in Downloads, images are uniquely problema
 
 **Volume**: Images are the most frequently downloaded file type for many people. Screenshots, photos shared in messages, images saved from the web, exported designs, and AI-generated art all pile up.
 
-**Meaningless names**: Downloaded images almost never have useful filenames. They arrive as `image.png`, `photo-1234567890.jpg`, `download (7).webp`, `Screenshot 2026-03-04 at 15.42.33.png`, or worse, hash-based names like `a8f3c291e4b7.jpeg`. Unlike a PDF that might be named `tax-return-2025.pdf`, images rarely carry any descriptive context in their filenames.
+**Meaningless names**: Downloaded images almost never have useful filenames. They arrive as `image.png`, `photo-1234567890.jpg`, `download (7).webp`, `Screenshot 2026-03-04 at 15.42.33.png`, or worse, hash-based names like `a8f3c291e4b7.jpeg`. Unlike a PDF that might be named `tax-return-2025.pdf`, images rarely carry any descriptive context in their filenames. Screenshots are an especially common offender — our [screenshot naming conventions guide](/blog/screenshot-naming-conventions-macos) explains how to bring order to them.
 
 **Hard to preview at scale**: While Finder's Gallery and Column views show previews, scanning through hundreds of images visually is slow. You cannot search for image content — only filenames and metadata.
 

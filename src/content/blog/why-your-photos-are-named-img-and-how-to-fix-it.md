@@ -116,7 +116,7 @@ This works as long as you stay within the Apple Photos ecosystem. The moment you
 
 ### Method 4: AI-Powered Renaming
 
-The approaches above all share a common limitation: they cannot look at a photo and describe what it shows. AI-powered renaming tools bridge this gap by using vision models to analyze image content and generate descriptive filenames.
+The approaches above all share a common limitation: they cannot look at a photo and describe what it shows. This is the problem [AI image recognition](/blog/how-ai-image-recognition-works) was built to solve. AI-powered renaming tools bridge this gap by using vision models to analyze image content and generate descriptive filenames. For a full walkthrough of this approach, see our guide on [how to rename images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos).
 
 [Zush](https://zushapp.com) is a macOS app designed around this exact workflow. You drag a batch of `IMG_` files onto it, and within seconds, each photo gets a name based on what the AI sees. Here is what that looks like in practice:
 
@@ -149,7 +149,7 @@ If you have years of `IMG_` files accumulated across your Mac, here is a step-by
 1. **Consolidate.** Gather all your loose photo files into a single staging folder. Check Desktop, Downloads, Documents, and any external drives.
 2. **Deduplicate.** Use a duplicate finder (macOS has several free options) to identify and remove exact copies. With `IMG_` naming, duplicates are common.
 3. **Batch rename.** Process the staging folder through an AI renaming tool to give every image a descriptive name. For a collection of a few thousand images, this takes minutes rather than the hours or days manual renaming would require.
-4. **Organize.** With descriptive filenames, sorting images into folders becomes intuitive. You can scan a list of names and quickly identify which photos belong in which project or event folder.
+4. **Organize.** With descriptive filenames, sorting images into folders becomes intuitive. For strategies on structuring those folders, check out the [best ways to organize photos on Mac](/blog/best-ways-to-organize-photos-on-mac). You can scan a list of names and quickly identify which photos belong in which project or event folder.
 5. **Set up automation.** Configure folder monitoring for your import directories so that new photos are renamed automatically going forward. This prevents the backlog from building up again.
 
 ## Why This Matters More Than It Seems

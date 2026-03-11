@@ -149,7 +149,7 @@ This is the category that did not exist a few years ago. AI-powered renamers use
 
 Every approach listed above operates on the same principle: you define a pattern, and the tool applies it. Whether you type the name manually, write a regex, or build an Automator workflow, the intelligence comes from you. The tool is just a text transformation engine.
 
-AI renaming inverts this. You provide the files, and the AI provides the names. A photo of a golden retriever on a beach becomes `golden-retriever-running-on-sandy-beach.heic`, not because you typed that, but because the AI recognized the content. A screenshot of a Slack conversation becomes `slack-thread-project-deadline-discussion.png`. A scanned PDF invoice becomes `acme-corp-invoice-march-2026.pdf`.
+AI renaming inverts this. You provide the files, and the AI provides the names. (For a deeper dive into the underlying technology, see [how AI image recognition works](/blog/how-ai-image-recognition-works).) A photo of a golden retriever on a beach becomes `golden-retriever-running-on-sandy-beach.heic`, not because you typed that, but because the AI recognized the content. A screenshot of a Slack conversation becomes `slack-thread-project-deadline-discussion.png`. A scanned PDF invoice becomes `acme-corp-invoice-march-2026.pdf`.
 
 This is a fundamentally different capability, and it is the reason AI renamers can handle files you have never looked at. You do not need to open each file, decide what it contains, and come up with a name. The AI does that work for you.
 
@@ -158,7 +158,7 @@ This is a fundamentally different capability, and it is the reason AI renamers c
 Not all AI tools are equal. Here are the criteria that matter when evaluating an AI-powered file renamer for Mac:
 
 - **Accuracy of recognition**: Does the AI correctly identify objects, scenes, text, and context? A tool that calls every outdoor photo "nature scene" is not much better than a sequential numbering system.
-- **Format support**: Your workflow probably includes JPEG, PNG, HEIC, WebP, PDF, TIFF, GIF, and possibly SVG and BMP. The tool should handle all of them, not just common image formats.
+- **Format support**: Your workflow probably includes JPEG, PNG, HEIC, WebP, PDF, TIFF, GIF, and possibly SVG and BMP. The tool should handle all of them, not just common image formats. If you work with Apple or camera-native formats, our [HEIC and RAW image management guide](/blog/heic-raw-image-management-guide-macos) covers the nuances.
 - **Custom naming patterns**: AI-generated titles are useful, but you also need control over the filename structure. Can you prepend dates, include categories, or preserve the original filename as part of the new name?
 - **Batch processing speed**: Renaming files one at a time is tedious regardless of how good the AI is. The tool should handle hundreds of files efficiently.
 - **Automatic processing**: The ideal workflow requires no manual intervention. Folder monitoring that detects and renames new files in the background is a game-changer.
@@ -171,7 +171,7 @@ Not all AI tools are equal. Here are the criteria that matter when evaluating an
 
 [Zush](https://zushapp.com) is a macOS application designed specifically for AI-powered file renaming and organization. It checks every box on the list above, and several that are unique to its approach.
 
-**Content-aware naming**: Zush sends images and documents to an AI vision model that identifies objects, scenes, text, UI elements, and more. The resulting filenames are genuinely descriptive — not generic labels, but specific descriptions of what each file contains.
+**Content-aware naming**: Zush sends images and documents to an AI vision model that identifies objects, scenes, text, UI elements, and more. If images are your primary focus, our guide on [how to rename images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos) walks through the full workflow. The resulting filenames are genuinely descriptive — not generic labels, but specific descriptions of what each file contains.
 
 **Broad format support**: Zush handles PNG, JPG, JPEG, WebP, GIF, BMP, TIFF, HEIC, HEIF, SVG, and PDF. This covers virtually every image and document format a macOS user encounters.
 

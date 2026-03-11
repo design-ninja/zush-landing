@@ -32,7 +32,7 @@ This is the core challenge of finding photos on a Mac: the search tools are capa
 
 ### Spotlight Preferences and Indexing
 
-If Spotlight is not returning results you expect, it may be worth checking your indexing settings. Go to **System Settings > Siri & Spotlight** and ensure your search categories include Images and Documents. If you suspect the index is corrupted, you can rebuild it by adding your hard drive to the Privacy exclusion list, waiting a moment, and then removing it. This forces a full re-index.
+If Spotlight is not returning results you expect, it may be worth checking your indexing settings. Our [Spotlight search tips guide](/blog/spotlight-search-tips-find-files-faster-mac) covers advanced operators and techniques that go beyond the basics here. Go to **System Settings > Siri & Spotlight** and ensure your search categories include Images and Documents. If you suspect the index is corrupted, you can rebuild it by adding your hard drive to the Privacy exclusion list, waiting a moment, and then removing it. This forces a full re-index.
 
 ## Method 2: Finder Search and Finder Windows
 
@@ -162,7 +162,7 @@ Consider the difference:
 
 The second file is discoverable through Spotlight, Finder, Terminal commands, and any third-party search tool. The filename itself is documentation. You do not need to remember where you saved it or when you took it — any descriptive term brings it up instantly.
 
-The challenge, of course, is that manually renaming thousands of photos with descriptive names is not realistic. This is where AI-powered tools fill a critical gap.
+If you have ever wondered [why your photos are named IMG_ in the first place](/blog/why-your-photos-are-named-img-and-how-to-fix-it), camera manufacturers are to blame — and the fix is simpler than you think. The challenge, of course, is that manually renaming thousands of photos with descriptive names is not realistic. This is where AI-powered tools fill a critical gap.
 
 ## How AI-Enhanced Metadata Makes Every Search Method Better
 
@@ -190,7 +190,7 @@ When enriching files for better findability, mistakes are a legitimate concern. 
 
 ## Building a "Never Lose a Photo" System
 
-The most effective approach to finding photos on your Mac combines several of the methods above into a layered system:
+The most effective approach to finding photos on your Mac combines several of the methods above into a layered system. For the organizational side of the equation, our guide to the [best ways to organize photos on Mac](/blog/best-ways-to-organize-photos-on-mac) is a useful companion to the search strategies below:
 
 1. **Enrich your files at the source**: Use AI-powered renaming and tagging so every image has descriptive metadata from the moment it hits your disk. Set up folder monitoring for your highest-traffic directories.
 

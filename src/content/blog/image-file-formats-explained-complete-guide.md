@@ -133,7 +133,7 @@ HEIC is Apple's default photo format for iPhones and iPads since iOS 11. It uses
 
 ### HEIC on macOS
 
-Full native support across macOS. Finder, Quick Look, Preview, and Photos all handle HEIC seamlessly. macOS also provides automatic conversion to JPEG when sharing HEIC files with applications that do not support the format.
+Full native support across macOS. Finder, Quick Look, Preview, and Photos all handle HEIC seamlessly. macOS also provides automatic conversion to JPEG when sharing HEIC files with applications that do not support the format. For a deeper dive into managing Apple's default photo format alongside camera RAW files, see our [HEIC and RAW image management guide for macOS](/blog/heic-raw-image-management-guide-macos).
 
 ## TIFF
 
@@ -305,7 +305,7 @@ Each format tends to arrive with its own naming conventions, and none of them ar
 - **TIFF from scanners**: `Scan 2026-02-24 14.33.12.tiff`
 - **GIF downloads**: `giphy.gif`, `funny-animation (1).gif`
 
-When these files all land in the same folder, the format chaos compounds the naming chaos. You end up with a mix of formats and naming conventions that makes browsing and searching equally difficult.
+When these files all land in the same folder, the format chaos compounds the naming chaos. You end up with a mix of formats and naming conventions that makes browsing and searching equally difficult. One effective solution is to [rename images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos), which generates descriptive names regardless of the source format.
 
 ### Format-Aware Organization Tools
 
@@ -313,7 +313,7 @@ This is where tools that support a broad range of formats become essential. If y
 
 [Zush](https://zushapp.com) supports PNG, JPG, JPEG, WebP, GIF, BMP, TIFF, HEIC, HEIF, SVG, and PDF — covering all the common formats and several less common ones. This means a single tool handles the naming and organization for your entire image and document collection, regardless of format. The AI analysis works across all supported formats, generating descriptive filenames whether the file is a JPEG photograph, a HEIC iPhone photo, a PNG screenshot, a WebP web download, or a scanned PDF.
 
-Custom naming patterns with tokens like `{title}`, `{date}`, `{category}`, and `{original}` bring consistency across formats. A pattern like `{date}_{category}_{title}` produces uniformly structured filenames whether the source file is HEIC, JPEG, or PNG. Folder monitoring handles new files automatically as they arrive, so every format gets the same treatment without manual intervention.
+Custom naming patterns with tokens like `{title}`, `{date}`, `{category}`, and `{original}` bring consistency across formats. Pairing format-aware tools with solid [file naming conventions](/blog/file-naming-conventions-best-practices) ensures every file is both identifiable and sortable. A pattern like `{date}_{category}_{title}` produces uniformly structured filenames whether the source file is HEIC, JPEG, or PNG. Folder monitoring handles new files automatically as they arrive, so every format gets the same treatment without manual intervention.
 
 Zush uses Groq AI by default and supports BYOK (Bring Your Own Key) with Gemini, OpenAI, and Claude. The free tier includes 30 file analyses, and the Pro tier provides 10,000. It is [available on the Mac App Store](https://apps.apple.com/th/app/zush/id6758432449) for macOS Sonoma and later.
 

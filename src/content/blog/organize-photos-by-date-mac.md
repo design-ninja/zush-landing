@@ -9,7 +9,7 @@ tldr: Date-based photo organization works well for chronological browsing — co
 
 Date-based organization is the most natural and durable system for managing photos. Events happen on specific days. Trips span specific weeks. Projects occupy specific months. When you organize photos by date, you create a timeline that your future self can navigate intuitively — even years later when you have forgotten every other detail about a set of images.
 
-On macOS, there are several approaches to date-based photo organization, from simple Finder sorting to structured folder hierarchies, Apple Photos' built-in timeline, and automated naming patterns that embed dates directly into filenames. This guide walks through every major method, explains the trade-offs, and helps you build a system that keeps your growing photo library organized chronologically without constant manual effort.
+On macOS, there are several approaches to date-based photo organization, from simple Finder sorting to structured folder hierarchies, Apple Photos' built-in timeline, and automated naming patterns that embed dates directly into filenames. Date sorting is just one strategy among many — for a broader look at all available methods, see our guide to the [best ways to organize photos on Mac](/blog/best-ways-to-organize-photos-on-mac). This guide walks through every major method, explains the trade-offs, and helps you build a system that keeps your growing photo library organized chronologically without constant manual effort.
 
 ## Why Date-Based Organization Works
 
@@ -94,7 +94,7 @@ The depth of your folder hierarchy should match your volume of photos:
 
 - **Casual photographers** (a few hundred photos per year): Year/Month is usually sufficient. Individual months will contain a manageable number of files.
 - **Active photographers** (thousands of photos per year): Year/Month with event subfolders prevents any single folder from becoming overwhelming.
-- **Professional photographers** (tens of thousands per year): Year/Month/Day or Year/Month/Event with further subdivisions by shoot type or client.
+- **Professional photographers** (tens of thousands per year): Year/Month/Day or Year/Month/Event with further subdivisions by shoot type or client. Our [photo management workflow for photographers on Mac](/blog/photo-management-workflow-photographers-mac) covers this scenario in detail.
 
 The key principle is that no single folder should contain so many files that browsing it becomes impractical. If you find yourself scrolling through hundreds of thumbnails to find something, it is time to add a level of hierarchy.
 
@@ -179,7 +179,7 @@ You can manually rename files to include dates:
 - `2026-02-15_dinner-restaurant.jpg`
 - `2026-02-16_morning-hike-trail.jpg`
 
-The ISO 8601 date format (`YYYY-MM-DD`) sorts correctly in alphabetical order, which means any tool that sorts alphabetically automatically sorts chronologically. This is a critical advantage over formats like `MM-DD-YYYY` or `DD/MM/YYYY`, which do not sort correctly.
+The ISO 8601 date format (`YYYY-MM-DD`) sorts correctly in alphabetical order, which means any tool that sorts alphabetically automatically sorts chronologically. This is a critical advantage over formats like `MM-DD-YYYY` or `DD/MM/YYYY`, which do not sort correctly. For a full breakdown of naming rules beyond dates, see our [file naming conventions best practices](/blog/file-naming-conventions-best-practices) guide.
 
 ### Automated Date Naming with Zush
 

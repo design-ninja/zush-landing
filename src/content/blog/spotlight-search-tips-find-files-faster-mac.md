@@ -124,7 +124,7 @@ Click the `+` button to add filters. The default options include Name, Kind, and
 
 ### Saving Searches as Smart Folders
 
-After constructing a Finder search with specific criteria, click "Save" to create a Smart Folder. This saved search appears in Finder's sidebar and dynamically updates as files matching the criteria are added or removed. Smart Folders are one of the most powerful organizational tools on macOS — they provide the benefits of organization without requiring you to move any files.
+After constructing a Finder search with specific criteria, click "Save" to create a Smart Folder. This saved search appears in Finder's sidebar and dynamically updates as files matching the criteria are added or removed. Smart Folders are one of the most powerful organizational tools on macOS — they provide the benefits of organization without requiring you to move any files. Our dedicated [Smart Folders guide](/blog/smart-folders-mac-guide) walks through advanced setups and real-world examples.
 
 Useful Smart Folders to create:
 
@@ -146,7 +146,7 @@ Descriptive filenames are the single highest-leverage improvement you can make f
 
 **Layer 2: Finder Tags**
 
-Finder tags are colored labels and/or text strings that you can attach to any file or folder. They are indexed by Spotlight and can be used as search criteria. To add tags, right-click a file and choose from the tag colors, or type custom tag names.
+Finder tags are colored labels and/or text strings that you can attach to any file or folder. They are indexed by Spotlight and can be used as search criteria. Our [Finder tags guide](/blog/finder-tags-guide-organize-files-mac) explains how to build a full tagging system around them. To add tags, right-click a file and choose from the tag colors, or type custom tag names.
 
 Tags are useful for cross-cutting categories that do not fit into a folder hierarchy. For example, you might have a folder structure organized by project, but you want to tag certain files as "Urgent," "Client Facing," or "Archive." Tags let you create these overlapping categories without duplicating files.
 
@@ -165,7 +165,7 @@ Images are the file type that suffers most from poor metadata. Consider the typi
 - **Downloaded images (various)**: Usually no meaningful EXIF data and a random or generic filename. These are effectively invisible to Spotlight unless you rename or tag them manually.
 - **Camera RAW/JPEG**: EXIF data similar to iPhone photos. Filenames are camera-generated codes (`DSC_0291.NEF`).
 
-The result is that the largest category of files on most people's Macs — images — is also the hardest to find through search. You can search for "photos from March" but not "photos of a mountain" unless someone has added that information to the metadata.
+The result is that the largest category of files on most people's Macs — images — is also the hardest to find through search. For a complete rundown of every technique, see our guide on [how to find photos on your Mac](/blog/how-to-find-photos-on-mac). You can search for "photos from March" but not "photos of a mountain" unless someone has added that information to the metadata.
 
 ## How AI-Enhanced Metadata Transforms Spotlight Search
 
