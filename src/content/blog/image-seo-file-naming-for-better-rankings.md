@@ -65,7 +65,7 @@ Google treats hyphens as word separators but does not treat underscores the same
 - `golden-gate-bridge-sunset.jpg` is read as four separate words: "golden," "gate," "bridge," "sunset"
 - `golden_gate_bridge_sunset.jpg` may be read as a single token: "golden_gate_bridge_sunset"
 
-Always use hyphens (`-`) between words in image filenames. This has been a consistent recommendation from Google for over a decade.
+Always use hyphens (`-`) between words in image filenames. This has been a consistent recommendation from Google for over a decade. For a complete set of rules beyond SEO, see our [file naming conventions best practices](/blog/file-naming-conventions-best-practices) guide.
 
 ### Keep Filenames Concise but Complete
 
@@ -169,7 +169,7 @@ This is the gap that AI-powered naming tools fill. Instead of relying on human d
 
 ## Using AI to Generate SEO-Friendly Image Names
 
-AI vision models can analyze an image and produce a descriptive filename in seconds — the same task that takes a human 15 to 30 seconds per image. At scale, this difference is transformative.
+AI vision models can analyze an image and produce a descriptive filename in seconds — the same task that takes a human 15 to 30 seconds per image. At scale, this difference is transformative. Our guide on [how to rename images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos) walks through the full workflow.
 
 ### How AI Image Naming Works
 
@@ -205,6 +205,8 @@ Different types of web content benefit from different naming structures:
 **E-commerce product images:**
 - Pattern: `product-name-variant-angle.jpg`
 - Example: `leather-wallet-brown-front-view.jpg`
+
+If you publish images to social platforms, [renaming photos for social media](/blog/rename-photos-for-social-media) follows similar principles with platform-specific considerations.
 
 **Portfolio and gallery images:**
 - `{category}-{title}` produces: `landscape-mountain-lake-morning-mist.jpg`

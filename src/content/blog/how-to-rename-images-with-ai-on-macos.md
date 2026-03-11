@@ -35,7 +35,7 @@ Finder has had batch rename functionality since OS X Yosemite. To use it, select
 - **Add Text**: Append or prepend a string to every filename. Good for adding a project name or date prefix, but every file gets the same addition.
 - **Format**: Apply a name-and-counter pattern like `Vacation Photo (1)`, `Vacation Photo (2)`, and so on.
 
-**Limitations**: Finder batch rename is purely text-based. It has no awareness of image content. You still have to decide on a name manually, and if you are renaming 500 photos from a trip, the best you can do is something like `Beach Trip 001` through `Beach Trip 500`. That is better than `IMG_xxxx`, but it still does not distinguish the sunset shot from the restaurant dinner from the group selfie.
+**Limitations**: Finder batch rename is purely text-based. It has no awareness of image content. You still have to decide on a name manually, and if you are renaming 500 photos from a trip, the best you can do is something like `Beach Trip 001` through `Beach Trip 500`. That is better than `IMG_xxxx`, but it still does not distinguish the sunset shot from the restaurant dinner from the group selfie. For a deeper look at every built-in and third-party method, see our [complete guide to batch renaming files on Mac](/blog/batch-rename-files-on-mac-complete-guide).
 
 ### Automator and Shortcuts
 
@@ -53,13 +53,13 @@ For the technically inclined, tools like `exiftool`, `rename`, and custom shell 
 
 The fundamental limitation of every traditional approach is the same: none of them can look at an image and understand what is in it. They can shuffle text around, read metadata, and apply patterns, but they cannot bridge the gap between a file's binary content and a human-meaningful description.
 
-Modern vision AI models can. When you feed an image to a model like Gemini, GPT-4o, or Claude, it can identify objects, scenes, text, people's activities, UI elements in screenshots, document types, and much more. This means that for the first time, renaming images can be truly automatic and truly descriptive.
+Modern vision AI models can. To understand the technology behind this, read [how AI image recognition works](/blog/how-ai-image-recognition-works). When you feed an image to a model like Gemini, GPT-4o, or Claude, it can identify objects, scenes, text, people's activities, UI elements in screenshots, document types, and much more. This means that for the first time, renaming images can be truly automatic and truly descriptive.
 
 Instead of `IMG_4382.HEIC`, you get `golden-retriever-catching-frisbee-park.heic`. Instead of `Screenshot 2026-03-09 at 10.42.17.png`, you get `slack-conversation-project-timeline-update.png`. The filename itself becomes a form of documentation.
 
 ### What to Look for in an AI Image Renamer for Mac
 
-If you are evaluating AI-powered renaming tools for macOS, here are the features that matter most:
+If you are evaluating AI-powered renaming tools for macOS, here are the features that matter most (we also have a detailed [comparison of the best AI file renamer tools for Mac](/blog/best-ai-file-renamer-tools-mac-compared)):
 
 - **Accurate image recognition**: The tool should understand a wide range of image types — photos, screenshots, documents, illustrations, AI-generated art — and produce names that actually reflect the content.
 - **Batch processing**: Renaming files one at a time defeats the purpose. You need something that handles hundreds or thousands of images efficiently.

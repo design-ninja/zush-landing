@@ -83,7 +83,7 @@ This keeps design files separate from screenshots of client feedback, which stay
 
 ## Naming Conventions That Actually Work
 
-Folder structure gets files into the right neighborhood. Naming conventions get them to the right address.
+Folder structure gets files into the right neighborhood. Naming conventions get them to the right address. If you want a thorough grounding in naming principles, our [file naming conventions best practices](/blog/file-naming-conventions-best-practices) guide is a good starting point.
 
 ### For Project Files and Deliverables
 
@@ -195,7 +195,7 @@ Create an `_Unsorted` folder inside each client directory. Move all loose files 
 
 ### Batch Process Images
 
-For the image files — screenshots, reference photos, design exports — batch processing tools are essential. Select all the images in an `_Unsorted` folder and drag them into Zush. Within seconds, each image gets an AI-generated descriptive name. From there, sorting them into the correct project subfolder becomes much faster because the filenames now tell you what each file actually contains.
+For the image files — screenshots, reference photos, design exports — batch processing tools are essential. Our [complete guide to batch renaming files on Mac](/blog/batch-rename-files-on-mac-complete-guide) covers every method from Finder to automation scripts. Select all the images in an `_Unsorted` folder and drag them into Zush. Within seconds, each image gets an AI-generated descriptive name. From there, sorting them into the correct project subfolder becomes much faster because the filenames now tell you what each file actually contains.
 
 ### Work Forward, Not Backward
 
@@ -203,7 +203,7 @@ Retroactive organization has diminishing returns. Spend a focused afternoon sort
 
 ## Tools That Support the System
 
-Beyond Zush for image organization, several other tools complement a freelancer's file management workflow on Mac:
+If your freelance work involves design, our guide on [digital asset management for designers](/blog/digital-asset-management-designers-mac) covers workflows tailored to design-heavy projects. Beyond Zush for image organization, several other tools complement a freelancer's file management workflow on Mac:
 
 - **Hazel** — A file automation tool that watches folders and applies rules (move, rename, tag, archive) based on file attributes. Excellent for automatically sorting invoices, contracts, and other document types.
 - **Default Folder X** — Enhances macOS Open and Save dialogs, making it faster to navigate to the correct client folder when saving new files.

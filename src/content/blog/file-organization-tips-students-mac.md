@@ -9,7 +9,7 @@ tldr: Students juggling multiple courses need a clear folder structure and namin
 
 ## The Student File Management Problem
 
-Every semester starts the same way. You create a few folders, maybe one per class, and tell yourself that this time you will stay organized. By week three, your Desktop is covered in files named `essay_draft.docx`, `notes.pdf`, `Screenshot 2026-02-16 at 2.34.12 PM.png`, and `Untitled document (3).docx`. By midterms, finding that one lecture slide your professor referenced means scrolling through hundreds of files with no clear system.
+Every semester starts the same way. You create a few folders, maybe one per class, and tell yourself that this time you will stay organized. By week three, your Desktop is covered in files named `essay_draft.docx`, `notes.pdf`, `Screenshot 2026-02-16 at 2.34.12 PM.png`, and `Untitled document (3).docx`. If your Downloads folder is the worst offender, start with our guide on [how to organize your Downloads folder on Mac](/blog/how-to-organize-downloads-folder-mac). By midterms, finding that one lecture slide your professor referenced means scrolling through hundreds of files with no clear system.
 
 If this sounds familiar, you are not alone. Students deal with a uniquely challenging file management situation. You juggle multiple courses simultaneously, each producing different types of files: lecture slides, reading PDFs, assignment drafts, research papers, screenshots of whiteboard notes, lab data, group project assets, and more. The volume is high, the sources are diverse, and the stakes — missing an assignment file before a deadline — are real.
 
@@ -66,7 +66,7 @@ Some students prefer to add a `Resources/` or `Reference/` folder for supplement
 
 ### The Problem with Default Names
 
-The single most impactful habit you can build is giving every file a meaningful name the moment you create or download it. Default filenames are the number-one source of file management chaos:
+The single most impactful habit you can build is giving every file a meaningful name the moment you create or download it. Our [file naming conventions best practices](/blog/file-naming-conventions-best-practices) guide explains the principles behind good naming in detail. Default filenames are the number-one source of file management chaos:
 
 - `Document 1.docx` — Which document? For which class?
 - `Screenshot 2026-02-16 at 2.34.12 PM.png` — A screenshot of what?
@@ -290,7 +290,7 @@ If you want to get organized right now, here is a 30-minute action plan:
 ### End-of-Semester (30 Minutes)
 
 - **Archive the semester folder**: Compress it or simply leave it in place
-- **Delete unnecessary files**: Remove duplicate drafts, outdated notes, and files you will never reference again
+- **Delete unnecessary files**: Remove duplicate drafts, outdated notes, and files you will never reference again. For a thorough approach, see our [Mac file cleanup guide](/blog/declutter-your-mac-file-cleanup-guide)
 - **Back up**: Ensure your archived semester is backed up to at least one additional location
 
 ## Conclusion

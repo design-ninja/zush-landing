@@ -19,7 +19,7 @@ The challenge is not just volume. Design files have unique organizational demand
 - **Format diversity** is the norm. Designers work with PNG, JPG, SVG, PDF, WebP, TIFF, PSD, AI, Sketch, Figma, and more — sometimes all in the same project.
 - **Reference material** accumulates silently. Screenshots of competitor sites, inspiration boards, UI patterns, and stock photos all need homes and searchable names.
 
-Without a deliberate system, a designer's file structure devolves into a maze of nested folders, cryptic abbreviations, and files that can only be found by the person who created them.
+Without a deliberate system, a designer's file structure devolves into a maze of nested folders, cryptic abbreviations, and files that can only be found by the person who created them. If you work specifically in UI/UX, our guide on [organizing design assets for UI/UX workflows](/blog/organize-design-assets-ui-ux-workflow) covers project-specific folder structures and export strategies.
 
 ## What Is Digital Asset Management?
 
@@ -35,7 +35,7 @@ Good DAM for a designer means:
 
 ## Naming Conventions That Actually Work
 
-The foundation of any file organization system is consistent naming. Here are conventions that hold up in real design workflows.
+The foundation of any file organization system is consistent naming. For a comprehensive overview that applies beyond design files, see our [file naming conventions best practices](/blog/file-naming-conventions-best-practices) guide. Here are conventions that hold up in real design workflows.
 
 ### The Anatomy of a Good Design Filename
 
@@ -74,7 +74,7 @@ Even the most disciplined naming system has limits:
 - **Stock photos and downloaded assets** come with whatever name the source assigns: `shutterstock_1234567890.jpg` or `pexels-photo-987654.jpeg`.
 - **Client-provided files** follow the client's naming conventions (or lack thereof), not yours.
 
-These are the files that slip through the cracks of any manual naming system. You know you should rename them, but the friction of opening each file, determining its content, and typing a descriptive name is high enough that many files simply stay as-is.
+These are the files that slip through the cracks of any manual naming system. A [complete guide to batch renaming files on Mac](/blog/batch-rename-files-on-mac-complete-guide) can help you tackle these backlogs efficiently. You know you should rename them, but the friction of opening each file, determining its content, and typing a descriptive name is high enough that many files simply stay as-is.
 
 ## Folder Structures for Design Projects
 

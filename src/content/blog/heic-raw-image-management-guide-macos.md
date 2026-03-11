@@ -15,7 +15,7 @@ This guide covers everything Mac users need to know about HEIC and RAW image man
 
 ### What Is HEIC?
 
-HEIC stands for High Efficiency Image Container. It is based on the HEIF (High Efficiency Image Format) standard, which in turn uses the HEVC (H.265) video codec for image compression. Apple adopted HEIC as the default photo format on iPhones starting with iOS 11 in 2017, and it has been the default ever since.
+HEIC stands for High Efficiency Image Container. It is based on the HEIF (High Efficiency Image Format) standard, which in turn uses the HEVC (H.265) video codec for image compression. For a broader overview of how HEIC compares to JPEG, PNG, WebP, and other formats, see our [complete guide to image file formats](/blog/image-file-formats-explained-complete-guide). Apple adopted HEIC as the default photo format on iPhones starting with iOS 11 in 2017, and it has been the default ever since.
 
 When your iPhone takes a photo, it saves the file as `.HEIC` (or `.HEIF` for some variations). If you have iCloud Photos enabled or transfer images to your Mac via AirDrop, these files arrive on your Mac in their native HEIC format.
 
@@ -136,7 +136,7 @@ Photos/
 
 ### Renaming HEIC and RAW Files
 
-Manual renaming is impractical when dealing with hundreds or thousands of image files. But descriptive filenames make a dramatic difference in findability, especially for HEIC files that you accumulate in high volume.
+Manual renaming is impractical when dealing with hundreds or thousands of image files — though [AI-powered renaming tools](/blog/how-to-rename-images-with-ai-on-macos) have made this far more manageable. Descriptive filenames make a dramatic difference in findability, especially for HEIC files that you accumulate in high volume.
 
 [Zush](https://zushapp.com) provides a practical solution for HEIC file management on macOS. The app natively supports HEIC and HEIF formats, using AI vision to analyze each image and generate a descriptive filename. A folder of `IMG_xxxx.HEIC` files becomes a collection of clearly labeled images:
 
@@ -146,7 +146,7 @@ Manual renaming is impractical when dealing with hundreds or thousands of image 
 | `IMG_4383.HEIC` | `espresso-latte-art-marble-counter.heic` |
 | `IMG_4384.HEIC` | `group-dinner-outdoor-patio-string-lights.heic` |
 
-For photographers working with RAW files, the naming question intersects with professional workflow tools. Many photographers rename during import using Lightroom or Capture One, applying patterns like `{date}_{sequence}_{camera}`. Zush complements this by handling the HEIC side of the equation — the iPhone photos, screenshots, and casual images that professional tools are not designed to manage.
+For photographers working with RAW files, the naming question intersects with professional workflow tools. Our [photo management workflow guide for photographers](/blog/photo-management-workflow-photographers-mac) covers this end-to-end process in detail. Many photographers rename during import using Lightroom or Capture One, applying patterns like `{date}_{sequence}_{camera}`. Zush complements this by handling the HEIC side of the equation — the iPhone photos, screenshots, and casual images that professional tools are not designed to manage.
 
 Zush also supports custom naming patterns with tokens like `{date}`, `{time}`, `{title}`, `{category}`, and `{original}`, letting you maintain a consistent naming convention across your entire image library regardless of source format.
 

@@ -23,7 +23,7 @@ When you have 500 photos, this is annoying. When you have 10,000, it is paralyzi
 
 The "dump everything into one folder" approach feels efficient in the moment. No decisions to make about where a file goes — just save it and move on. But as that folder grows into the hundreds and then thousands of files, it becomes unusable. Finder slows down when rendering large folder contents. Scrolling through a flat list of thumbnails becomes the only way to find anything. And there is no structure to help you narrow your search.
 
-**The fix:** Implement a folder hierarchy that matches how you think about your photos. A simple and effective structure:
+**The fix:** Implement a folder hierarchy that matches how you think about your photos. There are several approaches that work well — our guide to the [best ways to organize photos on Mac](/blog/best-ways-to-organize-photos-on-mac) explores them all. A simple and effective structure:
 
 ```
 Photos/
@@ -56,7 +56,7 @@ This is not an organization mistake — it is a survival one. Hard drives fail. 
 
 The 3-2-1 backup rule applies to photos as much as anything else: three copies of your data, on two different types of media, with one copy offsite.
 
-**The fix:** Set up a layered backup strategy:
+**The fix:** Set up a layered backup strategy. Our [photo backup strategy guide for Mac](/blog/photo-backup-strategy-mac) covers this topic in depth, but here is the summary:
 
 - **Time Machine** provides automatic local backup for everything on your Mac. It is the minimum viable backup.
 - **Cloud backup** through iCloud, Google One, or Backblaze provides offsite protection. If your Mac and your external drive both fail (fire, theft, flood), the cloud copy survives.
@@ -124,7 +124,7 @@ Even people who rename their photos often lack consistency. One batch gets named
 
 Inconsistency undermines searchability. If half your beach photos use "beach" in the filename and the other half use "seaside" or "coast," searching for any single term only returns partial results.
 
-**The fix:** Decide on a naming convention and document it (even if the document is just a note to yourself). A good convention includes:
+**The fix:** Decide on a naming convention and document it (even if the document is just a note to yourself). Our [file naming conventions best practices](/blog/file-naming-conventions-best-practices) guide provides a complete framework. A good convention includes:
 
 - **Separator character**: Hyphens (`-`) or underscores (`_`). Pick one. Hyphens are generally preferred for readability.
 - **Case**: All lowercase is the safest and most consistent choice.

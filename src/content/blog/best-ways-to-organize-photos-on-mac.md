@@ -38,7 +38,7 @@ Apple Photos imports your images into a managed library (a single `.photoslibrar
 - **Seamless Apple ecosystem integration**: Photos syncs across iPhone, iPad, and Mac through iCloud. Edit a photo on your iPhone and it appears updated on your Mac within seconds.
 - **On-device search**: The built-in ML model can search for "dog," "beach," "food," or even specific people's faces without any manual tagging. This has improved significantly in recent macOS releases.
 - **Memories and curation**: Photos automatically creates curated collections from trips, events, and time periods. This is a genuinely delightful feature for personal photo libraries.
-- **Smart Albums**: Automatically group photos by criteria like camera type, date range, file format, or whether the photo is a screenshot, selfie, or Live Photo.
+- **Smart Albums**: Automatically group photos by criteria like camera type, date range, file format, or whether the photo is a screenshot, selfie, or Live Photo. macOS Finder offers a similar feature with [Smart Folders](/blog/smart-folders-mac-guide) for file-based workflows.
 - **iCloud storage**: Offload full-resolution originals to the cloud while keeping lightweight thumbnails on your Mac, saving significant local storage.
 
 ### Limitations
@@ -105,6 +105,7 @@ Photos/
 - **Filename matters**: In a folder-based system, the filename is your primary identifier. Descriptive filenames make it possible to find images without opening them.
 - **Works with any file type**: Unlike Photos, a folder system handles any format you throw at it — PNG, JPG, HEIC, WebP, GIF, TIFF, BMP, SVG, PDF, and whatever else your workflow produces.
 - **Scriptable**: Power users can automate folder-based organization with shell scripts, Automator workflows, Hazel rules, or other automation tools.
+- **Tagging support**: Finder tags add another layer of organization on top of folders. Learn more in our [Finder tags guide for organizing files on Mac](/blog/finder-tags-guide-organize-files-mac).
 
 ### Limitations
 
@@ -216,7 +217,7 @@ Choose a folder hierarchy that matches how you think about your images. There is
 - Do I need to separate personal photos from work assets?
 - Do I share folders with collaborators who need to understand the structure?
 
-Start simple. A year-based hierarchy with event subfolders works for most people. You can always add complexity later, but removing it is harder.
+Start simple. A year-based hierarchy with event subfolders works for most people. If date-based sorting is your priority, our guide on [how to organize photos by date on Mac](/blog/organize-photos-by-date-mac) covers this approach in detail. You can always add complexity later, but removing it is harder.
 
 ### Pillar 2: Naming
 

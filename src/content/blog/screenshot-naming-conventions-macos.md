@@ -66,7 +66,7 @@ Now screenshots are named `Screenshot.png`, `Screenshot 2.png`, `Screenshot 3.pn
 
 ## Manual Naming Conventions That Actually Work
 
-If you decide to manually rename your screenshots, having a consistent convention prevents future chaos. Here are the most effective patterns used by professionals.
+If you decide to manually rename your screenshots, having a consistent convention prevents future chaos. These patterns follow the same principles outlined in our broader guide to [file naming conventions and best practices](/blog/file-naming-conventions-best-practices). Here are the most effective patterns used by professionals.
 
 ### Convention 1: Project-Based Naming
 
@@ -216,9 +216,9 @@ This setup takes about five minutes and works indefinitely. No ongoing maintenan
 
 ## Beyond Screenshots: The Bigger Picture
 
-The screenshot naming problem is really a symptom of a larger issue. Most files on your Mac have meaningless names because the software that creates them does not know or care what the content is. Camera apps use sequential numbers. Scanners use dates. Email attachments use whatever the sender happened to name them.
+The screenshot naming problem is really a symptom of a larger issue. Most files on your Mac have meaningless names because the software that creates them does not know or care what the content is. Your [Downloads folder](/blog/how-to-organize-downloads-folder-mac) is often the worst offender. Camera apps use sequential numbers. Scanners use dates. Email attachments use whatever the sender happened to name them.
 
-Solving it for screenshots is a starting point, but the same AI-powered approach works for any image on your drive. Photo imports, downloaded images, design exports, scanned documents: anything visual that currently has a meaningless filename can be given a descriptive one automatically.
+Solving it for screenshots is a starting point, but the same AI-powered approach works for any image on your drive. For a broader look at keeping your entire file system tidy, see our guide on [how to automate file organization on macOS](/blog/automate-file-organization-macos). Photo imports, downloaded images, design exports, scanned documents: anything visual that currently has a meaningless filename can be given a descriptive one automatically.
 
 The era of manually naming files is ending. When AI can look at an image and describe it accurately in a fraction of a second, there is no reason to keep doing that work yourself. Start with your screenshots folder. The rest of your files will thank you next.
 

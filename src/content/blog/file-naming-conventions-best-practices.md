@@ -18,7 +18,7 @@ It is tempting to think of filenames as a minor detail. But filenames are the mo
 The practical benefits of consistent naming conventions include:
 
 - **Faster retrieval**: You can scan a folder listing and locate what you need in seconds instead of minutes.
-- **Better search**: Spotlight, Finder search, and `grep` all work by matching text in filenames. Descriptive names mean more findable files.
+- **Better search**: Spotlight, Finder search, and `grep` all work by matching text in filenames. Descriptive names mean more findable files. If you publish images online, [proper file naming also improves SEO rankings](/blog/image-seo-file-naming-for-better-rankings).
 - **Easier collaboration**: When you share files with colleagues or clients, clear names reduce confusion and back-and-forth questions.
 - **Reliable sorting**: Consistent naming structures allow files to sort chronologically, alphabetically, or by category without manual rearrangement.
 - **Future-proofing**: Six months from now, you will not remember what `draft_v2_FINAL.docx` referred to. A descriptive name makes every file self-documenting.
@@ -168,7 +168,7 @@ This is the naming challenge that has resisted automation for years. Traditional
 
 ### AI-Powered Image Naming
 
-This is where AI has genuinely changed the game. Modern vision models can analyze an image, understand its contents, and produce a descriptive filename automatically. Instead of manually typing names for hundreds of images, you can let AI do the recognition work.
+This is where AI has genuinely changed the game. Modern vision models can analyze an image, understand its contents, and produce a descriptive filename automatically. For a step-by-step walkthrough, see our guide on [how to rename images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos). Instead of manually typing names for hundreds of images, you can let AI do the recognition work.
 
 [Zush](https://zushapp.com) applies this concept to macOS file management. You can drag and drop images, and the app uses AI vision to assign descriptive names based on what each image actually contains. A batch of ambiguously named camera photos becomes a set of clearly labeled files:
 
@@ -212,7 +212,7 @@ If you work on a team, share this document and get buy-in. A convention only wor
 
 ### Step 4: Rename Your Backlog in Batches
 
-Do not try to rename everything at once. Start with the folders you access daily. For documents and non-image files, manual renaming following your new convention is straightforward. For images, where manual naming is impractical at scale, AI-powered tools can process hundreds of files in minutes.
+Do not try to rename everything at once. Start with the folders you access daily. For documents and non-image files, manual renaming following your new convention is straightforward — our guide on [how to batch rename files on Mac](/blog/batch-rename-files-on-mac-complete-guide) covers the built-in and third-party tools available. For images, where manual naming is impractical at scale, AI-powered tools can process hundreds of files in minutes.
 
 ### Step 5: Automate Going Forward
 

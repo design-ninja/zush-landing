@@ -23,7 +23,7 @@ The Desktop is the Mac's junk drawer. It is the default location for screenshots
 
 ### The Downloads Folder
 
-Downloads is arguably the worst clutter hotspot on most Macs. Every file you download from the web, every email attachment you open, every installer DMG you run — they all land here and rarely leave. Unlike other folders where you at least made a conscious decision to save something, Downloads grows entirely passively.
+Downloads is arguably the worst clutter hotspot on most Macs. Every file you download from the web, every email attachment you open, every installer DMG you run — they all land here and rarely leave. We have a dedicated guide on [how to organize your Downloads folder on Mac](/blog/how-to-organize-downloads-folder-mac) if this is your primary pain point. Unlike other folders where you at least made a conscious decision to save something, Downloads grows entirely passively.
 
 Common Downloads folder clutter includes:
 
@@ -39,7 +39,7 @@ Documents tends to accumulate a different type of clutter: project folders that 
 
 ### The Pictures Folder
 
-For users who do not use Apple Photos exclusively, the Pictures folder can become a dumping ground for images from all sources: camera imports, downloaded photos, screenshots moved off the Desktop, exported images from applications, and various subfolders created by different apps over time.
+For users who do not use Apple Photos exclusively, the Pictures folder can become a dumping ground for images from all sources: camera imports, downloaded photos, screenshots moved off the Desktop, exported images from applications, and various subfolders created by different apps over time. Many of the habits that create this mess are covered in our list of [digital photo organization mistakes to avoid](/blog/digital-photo-organization-mistakes-to-avoid).
 
 ### Hidden Clutter: Caches, Logs, and Application Support
 
@@ -172,7 +172,7 @@ You can set up custom naming patterns using tokens like `{date}_{category}_{titl
 
 ### Smart Folders for Monitoring
 
-Create Smart Folders that surface files needing attention:
+[Smart Folders](/blog/smart-folders-mac-guide) are one of macOS's most underused features for keeping clutter visible. Create Smart Folders that surface files needing attention:
 
 - **"Unsorted Downloads"**: Kind is Any, Folder is Downloads, Created within last 7 days
 - **"Large Files"**: File size is greater than 500 MB — helps you spot files consuming disproportionate storage
