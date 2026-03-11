@@ -30,6 +30,8 @@ There are additional challenges specific to PDFs:
 - **Naming varies by source**. Your bank, your employer, your insurance company, and every online service each generate PDFs with their own naming conventions. There is no standard.
 - **Duplicates are common**. Downloading the same bank statement twice gives you `statement.pdf` and `statement (1).pdf`, with no way to distinguish them without opening both.
 
+If you also need to rename image files, see our guide on [how to rename images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos). For naming strategies that work across all file types, check out our [file naming conventions best practices](/blog/file-naming-conventions-best-practices). And if you need to process large batches at once, our [complete guide to batch renaming on Mac](/blog/batch-rename-files-on-mac-complete-guide) covers every method.
+
 ## Manual Approaches to PDF Renaming on Mac
 
 Before exploring AI solutions, here are the methods most Mac users rely on today.

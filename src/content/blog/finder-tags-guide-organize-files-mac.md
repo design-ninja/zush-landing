@@ -171,9 +171,11 @@ Smart Folders can be saved anywhere, but the most useful location is your Finder
 
 Smart Folders do not move or copy files. They are live queries that display files matching their criteria in real time. If you remove a tag from a file, it disappears from the Smart Folder immediately. If you add a tag to a new file, it appears in the relevant Smart Folder automatically.
 
-This makes Smart Folders zero-maintenance. Unlike regular folders where you have to manually move files in and out, Smart Folders update themselves based on the metadata (tags, dates, file types) of your files.
+This makes Smart Folders zero-maintenance. Unlike regular folders where you have to manually move files in and out, Smart Folders update themselves based on the metadata (tags, dates, file types) of your files. For a comprehensive guide to building Smart Folder workflows, see our [Smart Folders on Mac guide](/blog/smart-folders-mac-guide). You can also enhance searchability further with [Spotlight search tips](/blog/spotlight-search-tips-find-files-faster-mac).
 
 ## Advanced Tag Techniques
+
+AI tools can also automate tagging — see our [AI image tagging vs manual organization](/blog/ai-image-tagging-vs-manual-photo-organization) comparison to understand the tradeoffs.
 
 ### Tagging Files from the Terminal
 
