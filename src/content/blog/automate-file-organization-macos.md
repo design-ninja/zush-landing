@@ -57,7 +57,7 @@ Here is an example: automatically sorting screenshots into folders by month.
 4. Add a **Run Shell Script** action to extract the month and year from the filename and construct a subfolder path.
 5. Add a **Move Finder Items** action to move matching files into the appropriate subfolder.
 
-When saved, this Folder Action runs automatically whenever a new file appears in the target folder. Every screenshot is sorted into a monthly subfolder without any manual intervention.
+When saved, this Folder Action runs automatically whenever a new file appears in the target folder. Every screenshot is sorted into a monthly subfolder without any manual intervention. For a deeper dive into Automator-based renaming, see our [macOS Automator guide for renaming files](/blog/macos-automator-rename-files-guide).
 
 ### Other Useful Automator Workflows
 
@@ -217,7 +217,7 @@ done
 
 Every method above shares a fundamental constraint: they organize files based on rules you define. Whether you click buttons in Finder, chain actions in Automator, write Hazel rules, or craft shell scripts, the intelligence comes from you. The tools execute instructions — they do not understand your files.
 
-AI-powered file organization introduces a different paradigm: the tool examines the actual content of your files and makes organizational decisions based on what it finds. This is particularly transformative for images, screenshots, and documents where the filename tells you nothing about the content.
+AI-powered file organization introduces a different paradigm: the tool examines the actual content of your files and makes organizational decisions based on what it finds. This is particularly transformative for images, screenshots, and documents where the filename tells you nothing about the content. Our guide on [how to rename images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos) covers the image-focused workflow in detail. You can also combine AI renaming with [Smart Folders](/blog/smart-folders-mac-guide) for a fully automated system.
 
 ### How AI-Powered Organization Works
 

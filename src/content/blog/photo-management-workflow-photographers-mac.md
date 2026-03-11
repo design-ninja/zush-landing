@@ -67,7 +67,7 @@ This pattern provides:
 - **Project identification**: The project name tells you which job the image belongs to without checking the folder.
 - **Sequence ordering**: Maintains the shooting order within a project.
 
-Most RAW editors handle this renaming during import. In Lightroom Classic, configure the File Renaming panel in the Import dialog. In Capture One, set up a naming template in the Import tool. In Photo Mechanic, use the Ingest dialog's renaming options.
+Most RAW editors handle this renaming during import. In Lightroom Classic, configure the File Renaming panel in the Import dialog. In Capture One, set up a naming template in the Import tool. In Photo Mechanic, use the Ingest dialog's renaming options. For more on working with Apple and camera formats, see our [HEIC and RAW image management guide](/blog/heic-raw-image-management-guide-macos).
 
 ### Import Verification
 
@@ -216,7 +216,7 @@ Archiving is the least glamorous but most important stage of the workflow. It is
 
 ### Archive Storage
 
-The 3-2-1 backup rule is the standard for photography:
+The 3-2-1 backup rule is the standard for photography (see our full [photo backup strategy for Mac](/blog/photo-backup-strategy-mac) for a deeper dive):
 
 - **3 copies** of every file.
 - **2 different storage media** (e.g., SSD + HDD, or local drive + cloud).

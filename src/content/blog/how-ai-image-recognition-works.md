@@ -123,9 +123,11 @@ Social media platforms use image recognition to automatically detect and remove 
 
 This is perhaps the most personally relevant application for most people. AI image recognition can analyze the photos and images on your computer and use that understanding to organize them. Instead of manually sorting through thousands of files with names like `IMG_4382.HEIC` and `Screenshot 2026-02-18 at 3.45.12 PM.png`, AI can look at each image and assign a meaningful name based on what it actually contains.
 
-[Zush](https://zushapp.com), for example, is a macOS application that sends your images through a vision AI model and uses the resulting analysis to rename files descriptively. A photo of a sunset becomes `sunset-over-mountain-lake-golden-hour.heic`. A screenshot of a Slack conversation becomes `slack-thread-project-timeline-discussion.png`. The AI does the recognition work that would take you hours to do manually.
+[Zush](https://zushapp.com), for example, is a macOS application that sends your images through a vision AI model and uses the resulting analysis to [rename files descriptively](/blog/how-to-rename-images-with-ai-on-macos). A photo of a sunset becomes `sunset-over-mountain-lake-golden-hour.heic`. A screenshot of a Slack conversation becomes `slack-thread-project-timeline-discussion.png`. The AI does the recognition work that would take you hours to do manually.
 
 Zush uses Groq AI by default and also supports Bring Your Own Key with providers like Gemini, OpenAI, and Claude, meaning you can leverage the same vision-language models discussed above for your personal file organization. Beyond renaming, it writes Finder tags and Spotlight metadata based on the AI analysis, making your images searchable by content through macOS Spotlight. Features like folder monitoring mean new images are analyzed and renamed automatically as they appear, and a complete rename history lets you revert any change with a single click.
+
+To see how AI tagging compares with doing it by hand, read our [AI image tagging vs manual photo organization](/blog/ai-image-tagging-vs-manual-photo-organization) comparison. For a roundup of tools that put this technology to practical use, check out the [best AI file renamer tools for Mac](/blog/best-ai-file-renamer-tools-mac-compared).
 
 ## The Limitations: What AI Still Gets Wrong
 

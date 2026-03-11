@@ -23,6 +23,8 @@ This means:
 - **Smart Folders update automatically.** When a new file matches the criteria, it appears in the Smart Folder immediately. When a file no longer matches (because you renamed it, changed its metadata, or moved it outside the search scope), it disappears.
 - **They cost nothing.** Smart Folders are tiny XML files (a few kilobytes each) stored in `~/Library/Saved Searches/`. They consume no meaningful disk space and add no overhead to your system.
 
+Smart Folders become even more powerful when combined with [Finder tags](/blog/finder-tags-guide-organize-files-mac) and optimized [Spotlight search](/blog/spotlight-search-tips-find-files-faster-mac). For broader automation strategies, see our guide on [how to automate file organization on macOS](/blog/automate-file-organization-macos).
+
 ## How to Create a Smart Folder
 
 Creating a Smart Folder is straightforward, but the power lies in how you configure the search criteria.
