@@ -8,10 +8,15 @@
   border: 1px solid var(--border);
   background: var(--card);
   @include glass-morphism;
+  border-bottom: 1px solid var(--border);
   text-align: center;
 
   @include mobile {
     padding: 2rem 1.5rem;
+  }
+
+  &[data-placement='early'] {
+    margin-bottom: 2.5rem;
   }
 
   &__Content {

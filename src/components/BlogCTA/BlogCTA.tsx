@@ -1,18 +1,36 @@
-import Button from "@/components/Button";
-import AppleIcon from "@/components/AppleIcon";
-import { DOWNLOAD_URL, APP_STORE_URL } from "@/constants";
-import styles from "./BlogCTA.module.scss";
+import Button from '@/components/Button'
+import AppleIcon from '@/components/AppleIcon'
+import { DOWNLOAD_URL, APP_STORE_URL } from '@/constants'
+import styles from './BlogCTA.module.scss'
 
-const BlogCTA = () => {
+type BlogCTAPlacement = 'early' | 'inline' | 'footer'
+
+interface BlogCTAProps {
+  placement?: BlogCTAPlacement
+}
+
+const placementTitles: Record<BlogCTAPlacement, string> = {
+  early: 'Rename images faster on Mac',
+  inline: 'Automate image renaming on Mac',
+  footer: 'Try Zush — AI image organizer for macOS',
+}
+
+const placementDescriptions: Record<BlogCTAPlacement, string> = {
+  early:
+    'Use AI to rename screenshots, photos, and downloads before they pile up under useless filenames.',
+  inline:
+    'Batch rename files, monitor folders, and make images easier to find with descriptive names and metadata.',
+  footer:
+    'Automatically rename and tag your images with AI. Monitor folders, batch process files, and find everything instantly with Spotlight.',
+}
+
+const BlogCTA = ({ placement = 'footer' }: BlogCTAProps) => {
   return (
-    <aside className={styles.BlogCTA}>
+    <aside className={styles.BlogCTA} data-placement={placement}>
       <div className={styles.BlogCTA__Content}>
-        <p className={styles.BlogCTA__Title}>
-          Try Zush — AI image organizer for macOS
-        </p>
+        <p className={styles.BlogCTA__Title}>{placementTitles[placement]}</p>
         <p className={styles.BlogCTA__Description}>
-          Automatically rename and tag your images with AI. Monitor folders,
-          batch process files, and find everything instantly with Spotlight.
+          {placementDescriptions[placement]}
         </p>
         <div className={styles.BlogCTA__Buttons}>
           <Button
@@ -38,10 +56,10 @@ const BlogCTA = () => {
             Mac App Store
           </Button>
         </div>
-        <p className={styles.BlogCTA__Hint}>Free to try — 30 images included</p>
+        <p className={styles.BlogCTA__Hint}>Free, no credit card required</p>
       </div>
     </aside>
-  );
-};
+  )
+}
 
-export default BlogCTA;
+export default BlogCTA
