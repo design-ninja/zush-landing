@@ -1,5 +1,5 @@
-@use '@/styles/variables' as *;
-@use '@/styles/mixins' as *;
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
 
 .Heading {
     font-family: var(--font-family-heading);
@@ -20,7 +20,7 @@
     }
 
     &_h1 {
-        font-size: 3rem;
+        font-size: 2.8rem;
 
         @include mobile {
             font-size: 2.2rem;
