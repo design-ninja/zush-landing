@@ -10,6 +10,8 @@ import {
   Plus,
   Layers,
   Check,
+  MessageSquareText,
+  KeyRound,
   LucideIcon,
 } from 'lucide-react';
 import Heading from '../Heading';
@@ -22,6 +24,7 @@ interface BentoCardProps {
   description: string;
   icon: LucideIcon;
   className?: string;
+  badge?: string;
   delay?: number;
   children?: React.ReactNode;
 }
@@ -31,6 +34,7 @@ const BentoCard = ({
   description,
   icon: Icon,
   className,
+  badge,
   delay = 0,
   children,
 }: BentoCardProps) => (
@@ -46,9 +50,12 @@ const BentoCard = ({
         <div className={styles.BentoCard__IconWrapper}>
           <Icon size={24} />
         </div>
-        <Heading as='h3' className={styles.BentoCard__Title}>
-          {title}
-        </Heading>
+        <div className={styles.BentoCard__TitleRow}>
+          <Heading as='h3' className={styles.BentoCard__Title}>
+            {title}
+          </Heading>
+          {badge && <span className={styles.BentoCard__Badge}>{badge}</span>}
+        </div>
       </div>
       <Text className={styles.BentoCard__Description} color='subtle'>
         {description}
@@ -301,6 +308,64 @@ const Features = () => {
                 <div className={styles.UI_History__Meta}>
                   <span className={styles.UI_History__Time}>Today, 08:30</span>
                 </div>
+              </div>
+            </div>
+          </BentoCard>
+
+          {/* Item 7: Custom AI Prompts (wide, 2 cols) */}
+          <BentoCard
+            title='Custom AI Prompts'
+            description='Write your own rename and tagging instructions to guide AI output. Tune file names and metadata to match your style and workflow.'
+            icon={MessageSquareText}
+            className={styles['BentoCard--wide']}
+            delay={0.7}
+          >
+            <div className={styles.UI_Prompts}>
+              <div className={styles.UI_Prompts__Panel}>
+                <div className={styles.UI_Prompts__Header}>
+                  <span className={styles.UI_Prompts__Label}>Rename rules</span>
+                  <span className={styles.UI_Prompts__Badge}>Custom</span>
+                </div>
+                <div className={styles.UI_Prompts__Editor}>
+                  <span className={styles.UI_Prompts__Text}>
+                    Keep names short, no more than 5 words, with the main subject first
+                  </span>
+                </div>
+              </div>
+              <div className={styles.UI_Prompts__Panel}>
+                <div className={styles.UI_Prompts__Header}>
+                  <span className={styles.UI_Prompts__Label}>Tagging rules</span>
+                  <span className={styles.UI_Prompts__Badge_default}>Default</span>
+                </div>
+                <div className={styles.UI_Prompts__Editor}>
+                  <span className={styles.UI_Prompts__Placeholder}>
+                    Add your own tagging instructions...
+                  </span>
+                </div>
+              </div>
+            </div>
+          </BentoCard>
+
+          {/* Item 8: BYOK */}
+          <BentoCard
+            title='Bring Your Own Key'
+            description='Connect your own API key from Gemini, Groq, OpenAI, or Claude for unlimited processing.'
+            icon={KeyRound}
+            badge='PRO 🌟'
+            delay={0.8}
+          >
+            <div className={styles.UI_BYOK}>
+              <div className={styles.UI_BYOK__Input}>
+                <span className={styles.UI_BYOK__Key}>sk-proj-a8f3...x9k2</span>
+                <div className={styles.UI_BYOK__Icon}>
+                  <Check size={14} />
+                </div>
+              </div>
+              <div className={styles.UI_BYOK__Providers}>
+                <span>Gemini</span>
+                <span>Groq</span>
+                <span>OpenAI</span>
+                <span>Claude</span>
               </div>
             </div>
           </BentoCard>

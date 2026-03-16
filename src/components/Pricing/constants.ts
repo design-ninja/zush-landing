@@ -1,12 +1,11 @@
 import {
   FolderPlus,
   Zap,
-  FileCode,
   Globe,
   Command,
   Key,
-  Infinity,
   Tags,
+  MessageSquareText,
   LucideIcon,
 } from 'lucide-react';
 import { PRO_PADDLE_PRICE_ID } from '@/constants/pricing';
@@ -39,14 +38,14 @@ export const FREE_PLAN: Plan = {
       icon: FolderPlus,
     },
     {
-      title: 'Smart Metadata Tags',
-      desc: 'Automatically add Finder tags and Spotlight metadata',
+      title: 'Smart Naming & Metadata',
+      desc: 'Customize naming patterns and auto-tag files with Finder metadata',
       icon: Tags,
     },
     {
-      title: 'Custom Naming Patterns',
-      desc: 'Create your own file naming pattern with variables',
-      icon: FileCode,
+      title: 'Custom AI Prompts',
+      desc: 'Personalize AI behavior with your own rename and tagging instructions',
+      icon: MessageSquareText,
     },
     {
       title: 'Localization (60+ languages)',
@@ -84,14 +83,14 @@ export const PRO_PLAN: Plan = {
       icon: FolderPlus,
     },
     {
-      title: 'Smart Metadata Tags',
-      desc: 'Automatically add Finder tags and Spotlight metadata',
+      title: 'Smart Naming & Metadata',
+      desc: 'Customize naming patterns and auto-tag files with Finder metadata',
       icon: Tags,
     },
     {
-      title: 'Custom Naming Patterns',
-      desc: 'Create your own file naming pattern with variables',
-      icon: FileCode,
+      title: 'Custom AI Prompts',
+      desc: 'Personalize AI behavior with your own rename and tagging instructions',
+      icon: MessageSquareText,
     },
     {
       title: 'Localization (60+ languages)',

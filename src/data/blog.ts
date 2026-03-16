@@ -4,7 +4,7 @@ import {
   type BlogFrontmatter,
 } from '@/utils/frontmatter'
 
-const modules = import.meta.glob('@/content/blog/*.md', {
+const modules = import.meta.glob('../content/blog/*.md', {
   query: '?raw',
   eager: true,
   import: 'default',

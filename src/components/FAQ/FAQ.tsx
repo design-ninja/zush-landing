@@ -89,6 +89,11 @@ const createFAQData = (): FAQData[] => [
       'Yes, you can regenerate the AI-generated name for any file. In the AI Rename section, simply select the file and click the regenerate button to get a new AI-generated name.',
   },
   {
+    question: 'Can I customize the AI prompt used for renaming and tagging?',
+    answer:
+      'Yes! You can write your own instructions that guide how the AI generates file names and metadata tags. For example, you can set rename rules like "Keep names short, main subject first" or tagging rules like "Only use these tags: portrait, product, packaging." This feature is free and available to all users.',
+  },
+  {
     question: 'Is my data secure?',
     answer:
       'Your original files stay on your computer. For AI analysis, Zush sends a resized, compressed JPEG copy to our servers, along with selected processing options and any custom rename or tagging prompts you choose to provide, then forwards the request to our AI providers. We do not store image content after processing as part of normal operation.',
