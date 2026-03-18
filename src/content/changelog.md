@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.7.1] - 2026-03-18
+
+### Fixed
+- 🐛 Fix batch hangs and use PDF thumbnails
+- 🐛 Stabilize app store IAP verification and clean legacy purchase objects
+- 🐛 Retry analyze provider timeouts
+- 🐛 Harden file hashing and analyze timeouts
+- 🐛 Refine welcome copy
+- 🐛 Restore data consent view wiring
+- 🐛 Replace `any` types, extract subscription status helper
+- 🐛 Keychain access refactoring
+
 ## [1.7.0] - 2026-03-08
 ### Added
 - 🎉 Implemented custom AI prompts for image analysis
