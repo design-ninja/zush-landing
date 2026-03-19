@@ -10,18 +10,18 @@ interface BlogCTAProps {
 }
 
 const placementTitles: Record<BlogCTAPlacement, string> = {
-  early: 'Rename images faster on Mac',
-  inline: 'Automate image renaming on Mac',
-  footer: 'Try Zush — AI image organizer for macOS',
+  early: 'Rename files faster on Mac',
+  inline: 'Automate file renaming on Mac',
+  footer: 'Try Zush — AI file organizer for macOS',
 }
 
 const placementDescriptions: Record<BlogCTAPlacement, string> = {
   early:
-    'Use AI to rename screenshots, photos, and downloads before they pile up under useless filenames.',
+    'Use AI to rename screenshots, PDFs, documents, and downloads before they pile up under useless filenames.',
   inline:
-    'Batch rename files, monitor folders, and make images easier to find with descriptive names and metadata.',
+    'Batch rename files, monitor folders, and make your documents and visuals easier to find with descriptive names and metadata.',
   footer:
-    'Automatically rename and tag your images with AI. Monitor folders, batch process files, and find everything instantly with Spotlight.',
+    'Automatically rename and tag your files with AI. Monitor folders, batch process files, and find everything instantly with Spotlight.',
 }
 
 const BlogCTA = ({ placement = 'footer' }: BlogCTAProps) => {

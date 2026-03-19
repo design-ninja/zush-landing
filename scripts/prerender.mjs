@@ -19,9 +19,9 @@ const CHROME_PATHS = [
 ].filter(Boolean);
 
 const DEFAULT_META = {
-  title: 'Zush — AI-Powered Image Organization for macOS',
+  title: 'Zush — AI-Powered File Organization for macOS',
   description:
-    'Zush monitors your folders and automatically renames images using advanced AI. Smart metadata, custom naming patterns, and native macOS performance.',
+    'Zush monitors your folders and automatically renames files using advanced AI. Organize images, PDFs, and documents with smart metadata, custom naming patterns, and native macOS performance.',
   robots: 'noindex, nofollow',
 };
 
@@ -33,37 +33,37 @@ const ROUTE_META = {
   '/changelog': {
     title: 'Changelog — Zush',
     description:
-      'Track all updates, new features, and improvements to Zush, the AI-powered image organizer for macOS.',
+      'Track all updates, new features, and improvements to Zush, the AI-powered file organizer for macOS.',
     robots: 'index, follow',
   },
   '/byok-setup': {
     title: 'BYOK Setup Guide — Zush',
     description:
-      'Learn how to set up Bring Your Own Key (BYOK) in Zush with Gemini, Groq, OpenAI, or Claude for unlimited AI image processing.',
+      'Learn how to set up Bring Your Own Key (BYOK) in Zush with Gemini, Groq, OpenAI, or Claude for unlimited AI file processing.',
     robots: 'index, follow',
   },
   '/privacy-policy': {
     title: 'Privacy Policy — Zush',
     description:
-      "Read Zush's privacy policy. Learn how we handle your data, images, and personal information.",
+      "Read Zush's privacy policy. Learn how we handle your data, file content, and personal information.",
     robots: 'index, follow',
   },
   '/terms-of-service': {
     title: 'Terms of Service — Zush',
     description:
-      "Read Zush's terms of service for using our AI-powered image organization app for macOS.",
+      "Read Zush's terms of service for using our AI-powered file organization app for macOS.",
     robots: 'index, follow',
   },
   '/refund-policy': {
     title: 'Refund Policy — Zush',
     description:
-      "Zush's refund policy. Money-back guarantee details for our AI image organizer.",
+      "Zush's refund policy. Money-back guarantee details for our AI file organizer.",
     robots: 'index, follow',
   },
   '/blog': {
     title: 'Blog — Zush',
     description:
-      'Tips, guides, and insights on AI-powered image organization for macOS. Learn about photo management, smart renaming, and workflow automation.',
+      'Tips, guides, and insights on AI-powered file organization for macOS. Learn about smart renaming, metadata, and workflow automation.',
     robots: 'index, follow',
   },
   '/thank-you': DEFAULT_META,

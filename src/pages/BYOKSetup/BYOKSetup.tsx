@@ -13,7 +13,7 @@ const BYOKSetup = () => {
         </h1>
 
         <p className={styles.BYOKSetup__Subtitle}>
-          Bring Your Own Key for unlimited AI-powered image processing
+          Bring Your Own Key for unlimited AI-powered file processing
         </p>
 
         <div className={styles.BYOKSetup__Content}>
@@ -25,8 +25,8 @@ const BYOKSetup = () => {
             </div>
             <p>
               BYOK (Bring Your Own Key) allows Zush PRO users to use their own AI provider API keys
-              for unlimited image processing. Instead of using Zush's AI credits, your images are
-              analyzed directly using your own API key from Gemini, Groq, OpenAI, or Claude.
+              for unlimited file processing. Instead of using Zush's AI credits, your files are
+              analyzed using your own API key from Gemini, Groq, OpenAI, or Claude.
             </p>
             <div className={styles.BYOKSetup__Benefits}>
               <div className={styles.BYOKSetup__Benefit}>
@@ -201,7 +201,7 @@ const BYOKSetup = () => {
             </div>
 
             <div className={styles.BYOKSetup__Note}>
-              <strong>Pricing:</strong> OpenAI uses pay-as-you-go pricing. Zush uses GPT-4o mini for fast and affordable image analysis.
+              <strong>Pricing:</strong> OpenAI uses pay-as-you-go pricing. Zush uses GPT-4o mini for fast and affordable file analysis.
               <AppLink href="https://platform.openai.com/docs/pricing" target="_blank" rel="noopener noreferrer">View pricing →</AppLink>
             </div>
           </div>
@@ -255,7 +255,7 @@ const BYOKSetup = () => {
             </div>
 
             <div className={styles.BYOKSetup__Note}>
-              <strong>Pricing:</strong> Claude uses pay-as-you-go pricing. Zush uses Claude Haiku for fast and cost-effective image analysis.
+              <strong>Pricing:</strong> Claude uses pay-as-you-go pricing. Zush uses Claude Haiku for fast and cost-effective file analysis.
               <AppLink href="https://www.anthropic.com/pricing#702702" target="_blank" rel="noopener noreferrer">View pricing →</AppLink>
             </div>
           </div>
@@ -271,8 +271,8 @@ const BYOKSetup = () => {
               <div className={styles.BYOKSetup__FAQItem}>
                 <h3>Is my API key secure?</h3>
                 <p>
-                  Yes. Your API key is stored locally on your Mac and never sent to Zush servers.
-                  All AI requests go directly from your computer to your chosen provider (Google, Groq, OpenAI, or Anthropic).
+                  Yes. Your API key is stored securely and is only used for BYOK requests.
+                  Requests are relayed through Zush backend infrastructure and then forwarded to your chosen provider with your key.
                 </p>
               </div>
 
@@ -280,7 +280,7 @@ const BYOKSetup = () => {
                 <h3>How much does it cost?</h3>
                 <p>
                   Gemini and Groq offer generous free tiers. OpenAI and Claude use pay-as-you-go pricing.
-                  For typical usage (100-500 images/month), costs are usually less than $1/month.
+                  For typical usage (100-500 files/month), costs are usually less than $1/month.
                   Much cheaper than our credit packs!
                 </p>
               </div>
@@ -296,9 +296,9 @@ const BYOKSetup = () => {
               <div className={styles.BYOKSetup__FAQItem}>
                 <h3>Which provider should I choose?</h3>
                 <p>
-                  All four work great. Gemini (Google) has excellent vision capabilities and a generous free tier.
+                  All four work great. Gemini (Google) has strong multimodal capabilities and a generous free tier.
                   Groq is known for very fast inference speeds. OpenAI (GPT-4o mini) offers reliable, affordable results.
-                  Claude (Anthropic) provides high-quality image understanding. Try them and see which you prefer!
+                  Claude (Anthropic) provides high-quality file understanding. Try them and see which you prefer!
                 </p>
               </div>
 
@@ -321,7 +321,7 @@ const BYOKSetup = () => {
                 <p>
                   Your API keys are stored securely and used only for BYOK processing. In BYOK mode,
                   analysis requests are still relayed through Zush backend infrastructure and then sent
-                  to your chosen AI provider using your API key. Zush does not store image content after
+                  to your chosen AI provider using your API key. Zush does not store file content after
                   processing as part of normal operation.
                 </p>
               </div>

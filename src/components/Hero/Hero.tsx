@@ -29,12 +29,12 @@ const Hero = () => {
       <div className={styles.Hero__Container}>
         <div className={styles.Hero__Intro}>
           <Heading as="h1" className={styles.Hero__Title}>
-            Stop Naming Images.{" "}
+            Stop Naming Files.{" "}
             <span className={styles.Hero__TitleAccent}>Let AI Do It.</span>
           </Heading>
           <Text size="xl" color="subtle" className={styles.Hero__Subtitle}>
             Zush gives your files meaningful AI-powered names — automatically.
-            Find any photo in seconds, not minutes.
+            Find screenshots, documents, PDFs, and downloads in seconds, not minutes.
           </Text>
 
           <div className={styles.Hero__Buttons}>

@@ -72,7 +72,7 @@ This matters even more for documents than for photos. A PDF may represent money,
 
 ## Why Zush fits this workflow
 
-[Zush](https://zushapp.com) is primarily known for image organization, but that is exactly why it can be useful for PDFs that behave like visual documents. A scanned invoice, screenshot-based PDF, or exported slide deck often needs content-aware naming more than metadata-driven renaming.
+[Zush](https://zushapp.com) is primarily known for content-aware file organization, which is exactly why it can be useful for PDFs that behave like visual or text-heavy documents. A scanned invoice, screenshot-based PDF, or exported slide deck often needs content-aware naming more than metadata-driven renaming.
 
 That gives you a practical Mac workflow for:
 

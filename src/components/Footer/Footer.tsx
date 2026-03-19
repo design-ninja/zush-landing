@@ -48,7 +48,7 @@ const Footer = () => {
           <div>
             <AppLink href="/" className={styles.Footer__Brand}>Zush</AppLink>
             <Text color="subtle" className={styles.Footer__Description}>
-              The ultimate AI-powered image organization utility for macOS
+              The AI-powered file organization utility for macOS
             </Text>
             <AppLink
               href={APP_STORE_URL}

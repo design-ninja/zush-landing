@@ -58,6 +58,46 @@
         background-color: var(--muted);
     }
 
+    &__Preview {
+        width: 4rem;
+        height: 4rem;
+        border-radius: $radius-sm;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.2rem;
+        color: white;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+
+        &_doc {
+            background: linear-gradient(160deg, #5b8def 0%, #355dd7 100%);
+        }
+
+        &_sheet {
+            background: linear-gradient(160deg, #30b66f 0%, #198754 100%);
+        }
+
+        &_slides {
+            background: linear-gradient(160deg, #ff9b52 0%, #f97316 100%);
+        }
+
+        &_pdf {
+            background: linear-gradient(160deg, #ff6b6b 0%, #dc2626 100%);
+        }
+    }
+
+    &__Badge {
+        font-size: 0.52rem;
+        line-height: 1;
+        letter-spacing: 0.08em;
+        font-weight: 800;
+        opacity: 0.95;
+    }
+
     &__Content {
         flex: 1;
         min-width: 0;

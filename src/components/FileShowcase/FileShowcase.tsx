@@ -1,10 +1,12 @@
 import { CSSProperties, useEffect, useState } from "react";
+import { FileSpreadsheet, FileText, FileType2, Presentation } from "lucide-react";
 import styles from "./FileShowcase.module.scss";
 
 interface FileItem {
   before: string;
   after: string;
-  img: string;
+  img?: string;
+  type: "image" | "doc" | "sheet" | "slides" | "pdf";
 }
 
 interface Slide {
@@ -16,105 +18,118 @@ const slides: Slide[] = [
     files: [
       {
         before: "IMG_0842.JPG",
-        after: "Pug In Yellow Beanie.png",
+        after: "Pug In Yellow Beanie.jpg",
         img: "/images/examples/pug.jpg",
+        type: "image",
+      },
+      {
+        before: "meeting_notes_v7_final.docx",
+        after: "Q1 Planning Notes.docx",
+        type: "doc",
+      },
+      {
+        before: "budget_export_copy(2).xlsx",
+        after: "Product Launch Budget.xlsx",
+        type: "sheet",
+      },
+      {
+        before: "deck_v12_really-final.pptx",
+        after: "Investor Update Deck.pptx",
+        type: "slides",
+      },
+      {
+        before: "client-brief-scan.pdf",
+        after: "Client Creative Brief.pdf",
+        type: "pdf",
       },
       {
         before: "Screenshot 2024-08-08 at 09.14.25.png",
-        after: "TechnicalDashboard.png",
+        after: "Technical Dashboard.png",
         img: "/images/examples/dashboard.jpg",
-      },
-      {
-        before: "IMG_4821.JPG",
-        after: "Serene_Beach_Sunset.jpg",
-        img: "/images/examples/sunset.jpg",
-      },
-      {
-        before: "73819203_edit.png",
-        after: "Cat On A Table.png",
-        img: "/images/examples/cat.jpg",
-      },
-      {
-        before: "Export_Data_v2.png",
-        after: "Laptop_With_Graph.png",
-        img: "/images/examples/chart.jpg",
-      },
-      {
-        before: "Untilted project(3).png",
-        after: "Context-Diagram-Components.png",
-        img: "/images/examples/diagram.jpg",
+        type: "image",
       },
     ],
   },
   {
     files: [
       {
-        before: "DSC_9921.jpg",
-        after: "mountainrangeatSunset.jpg",
-        img: "/images/examples/mountain.jpg",
+        before: "notes_from_call_FINAL.docx",
+        after: "Hiring Plan Notes.docx",
+        type: "doc",
       },
       {
-        before: "photo_2024_03_15.png",
-        after: "COFFEE_CUPS_TOGETHER.png",
-        img: "/images/examples/coffee.jpg",
+        before: "forecast_2026-03-18_export.xlsx",
+        after: "Revenue Forecast.xlsx",
+        type: "sheet",
       },
       {
-        before: "final_v3_FINAL.jpg",
-        after: "modern office interior.jpg",
-        img: "/images/examples/office.jpg",
+        before: "sales-kickoff-new(3).pptx",
+        after: "Sales Kickoff Slides.pptx",
+        type: "slides",
       },
       {
         before: "IMG_20240812_143052.jpg",
         after: "HappyDogOnBeach.jpg",
         img: "/images/examples/dog.jpg",
+        type: "image",
+      },
+      {
+        before: "proposal_draft_approved.pdf",
+        after: "Website Proposal.pdf",
+        type: "pdf",
       },
       {
         before: "received_1847362910.jpeg",
-        after: "Delicious_Asian_Style_Beef.jpeg",
+        after: "Delicious Asian Style Beef.jpeg",
         img: "/images/examples/food.jpg",
-      },
-      {
-        before: "Screenshot_20240915-182634.png",
-        after: "New-York-City-Skyline.png",
-        img: "/images/examples/city.jpg",
+        type: "image",
       },
     ],
   },
   {
     files: [
       {
+        before: "contract_notes_clean.docx",
+        after: "Vendor Contract Notes.docx",
+        type: "doc",
+      },
+      {
+        before: "pipeline_export_march.xlsx",
+        after: "Sales Pipeline March.xlsx",
+        type: "sheet",
+      },
+      {
+        before: "marketing-review-v5.pptx",
+        after: "Campaign Review Slides.pptx",
+        type: "slides",
+      },
+      {
+        before: "scan_2026_03_19.pdf",
+        after: "Signed Service Agreement.pdf",
+        type: "pdf",
+      },
+      {
         before: "PXL_20240720_091234.jpg",
-        after: "vibrant_yellow_flowers.jpg",
+        after: "Vibrant Yellow Flowers.jpg",
         img: "/images/examples/flowers.jpg",
+        type: "image",
       },
       {
         before: "CAM00847.jpg",
-        after: "BlackFordMustang.jpg",
+        after: "Black Ford Mustang.jpg",
         img: "/images/examples/car.jpg",
-      },
-      {
-        before: "image(47).png",
-        after: "FOREST_PATH_SCENE.png",
-        img: "/images/examples/nature.jpg",
-      },
-      {
-        before: "photo_6282910374.jpg",
-        after: "Skyscrapers From Below.jpg",
-        img: "/images/examples/building.jpg",
-      },
-      {
-        before: "Screenshot 2024-11-02.png",
-        after: "modern_office_interior.png",
-        img: "/images/examples/workspace.jpg",
-      },
-      {
-        before: "DJI_0234.JPG",
-        after: "Mountain_Range_Aerial.jpg",
-        img: "/images/examples/mountain.jpg",
+        type: "image",
       },
     ],
   },
 ];
+
+const fileTypeConfig = {
+  doc: { icon: FileText, label: "DOCX", className: styles.FileItem__Preview_doc },
+  sheet: { icon: FileSpreadsheet, label: "XLSX", className: styles.FileItem__Preview_sheet },
+  slides: { icon: Presentation, label: "PPTX", className: styles.FileItem__Preview_slides },
+  pdf: { icon: FileType2, label: "PDF", className: styles.FileItem__Preview_pdf },
+} as const;
 
 const FileShowcase = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -163,22 +178,37 @@ const FileShowcase = () => {
               className={`${styles.FileItem} ${prefersReducedMotion ? styles.FileItem_static : ""}`}
               style={itemStyle}
             >
-              <picture>
-                <source
-                  srcSet={file.img.replace(/\.jpg$/i, ".webp")}
-                  type="image/webp"
-                />
-                <img
-                  src={file.img}
-                  alt={file.after}
-                  className={styles.FileItem__Image}
-                  width={64}
-                  height={64}
-                  loading={isPriority ? "eager" : "lazy"}
-                  decoding="async"
-                  fetchPriority={isPriority ? "high" : "auto"}
-                />
-              </picture>
+              {file.type === "image" && file.img ? (
+                <picture>
+                  <source
+                    srcSet={file.img.replace(/\.jpg$/i, ".webp")}
+                    type="image/webp"
+                  />
+                  <img
+                    src={file.img}
+                    alt={file.after}
+                    className={styles.FileItem__Image}
+                    width={64}
+                    height={64}
+                    loading={isPriority ? "eager" : "lazy"}
+                    decoding="async"
+                    fetchPriority={isPriority ? "high" : "auto"}
+                  />
+                </picture>
+              ) : (
+                <div
+                  className={`${styles.FileItem__Preview} ${fileTypeConfig[file.type].className}`}
+                  aria-hidden="true"
+                >
+                  {(() => {
+                    const Icon = fileTypeConfig[file.type].icon;
+                    return <Icon size={26} strokeWidth={2.1} />;
+                  })()}
+                  <span className={styles.FileItem__Badge}>
+                    {fileTypeConfig[file.type].label}
+                  </span>
+                </div>
+              )}
               <div className={styles.FileItem__Content}>
                 <div className={styles.FileItem__Before}>{file.before}</div>
                 <div className={styles.FileItem__After}>{file.after}</div>

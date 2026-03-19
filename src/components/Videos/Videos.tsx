@@ -14,7 +14,7 @@ const FEATURES = [
   {
     id: 'monitor',
     title: 'Folder Monitoring',
-    description: 'Zush watches your folders and renames new images automatically in the background.',
+    description: 'Zush watches your folders and renames new files automatically in the background.',
     video: '/videos/zush-monitor.mp4',
     poster: '/videos/posters/monitor.webp',
   },

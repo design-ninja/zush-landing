@@ -89,7 +89,7 @@ const Features = () => {
           {/* Item 1: AI Analysis */}
           <BentoCard
             title='AI Analysis'
-            description='Advanced image recognition assigns meaningful, descriptive names to every file automatically.'
+            description='Advanced AI analyzes images, PDFs, and supported documents to generate meaningful, descriptive filenames automatically.'
             icon={Sparkles}
             delay={0.1}
           >
@@ -125,7 +125,7 @@ const Features = () => {
           {/* Item 2: Monitoring */}
           <BentoCard
             title='Folders Monitoring'
-            description='Watch one or multiple folders. Zush runs in the background and processes new images instantly.'
+            description='Watch one or multiple folders. Zush runs in the background and processes new files automatically.'
             icon={FolderSync}
             delay={0.2}
           >
@@ -179,10 +179,10 @@ const Features = () => {
                 <div className={styles.UI_Batch__Item}>
                   <div className={styles.UI_Batch__Names}>
                     <span className={styles.UI_Batch__OldName}>
-                      IMG_4829.jpg
+                      notes-final-v3.docx
                     </span>
                     <span className={styles.UI_Batch__NewName}>
-                      → Golden Gate Bridge.jpg
+                      → Hiring Plan Notes.docx
                     </span>
                   </div>
                   <div className={styles.UI_Batch__Check}>
@@ -192,11 +192,11 @@ const Features = () => {
                 <div className={styles.UI_Batch__Item}>
                   <div className={styles.UI_Batch__Names}>
                     <span className={styles.UI_Batch__OldName}>
-                      Document_scan.pdf
+                      investor-update-final.pptx
                     </span>
                     <span
                       className={styles.UI_Batch__NewName}
-                    >{`→ Invoice March ${currentYear}.pdf`}</span>
+                    >{`→ Investor Update Deck.pptx`}</span>
                   </div>
                   <div className={styles.UI_Batch__Check}>
                     <Check size={14} />
@@ -284,9 +284,9 @@ const Features = () => {
                 <div className={styles.UI_History__Names}>
                   <span
                     className={styles.UI_History__OldName}
-                  >{`Screenshot ${currentYear}-01-15.png`}</span>
+                  >{`notes_FINAL_copy.docx`}</span>
                   <span className={styles.UI_History__NewName}>
-                    → Dashboard UI.png
+                    → Dashboard Review Notes.docx
                   </span>
                 </div>
                 <div className={styles.UI_History__Meta}>
@@ -299,10 +299,10 @@ const Features = () => {
               >
                 <div className={styles.UI_History__Names}>
                   <span className={styles.UI_History__OldName}>
-                    IMG_8842.heic
+                    q1_report_export.xlsx
                   </span>
                   <span className={styles.UI_History__NewName}>
-                    → Beach Sunset.heic
+                    → Q1 Revenue Report.xlsx
                   </span>
                 </div>
                 <div className={styles.UI_History__Meta}>

@@ -4,6 +4,7 @@ interface AppConfig {
   free_tier_limit: number;
   pro_limit: number;
   image_extensions: string[];
+  document_extensions: string[];
   ai_provider: string;
   refund_period_days: number;
   min_macos_version: string;

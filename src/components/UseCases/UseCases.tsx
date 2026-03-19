@@ -79,8 +79,8 @@ const UseCases = () => {
       title: 'Marketers & SMM',
       description: (
         <>
-          Keep <strong>social media assets</strong> organized. Quickly find the{' '}
-          <strong>right visual</strong> for any campaign or report.
+          Keep <strong>campaign decks, content calendars, and assets</strong>{' '}
+          organized. Quickly find the <strong>right file</strong> for any campaign or report.
         </>
       ),
       color: 'orange',
@@ -112,7 +112,7 @@ const UseCases = () => {
       title: 'Product Managers',
       description: (
         <>
-          Screenshots for specs, presentations, and stakeholder updates —{' '}
+          PRDs, meeting notes, spreadsheets, and stakeholder decks —{' '}
           <strong>instantly searchable</strong>.
         </>
       ),
@@ -125,7 +125,7 @@ const UseCases = () => {
       <div className={styles.UseCases__Container}>
         <SectionHeader
           title='Built for Professionals'
-          description='From designers to developers — Zush saves hours for everyone who works with images'
+          description='From designers to developers — Zush saves hours for everyone who works with files'
         />
 
         <div className={styles.UseCases__Grid}>
