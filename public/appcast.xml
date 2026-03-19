@@ -6,13 +6,28 @@
         <description>Zush app updates</description>
         <language>en</language>
         <item>
+            <title>1.8.0</title>
+            <pubDate>Thu, 19 Mar 2026 16:18:34 +0700</pubDate>
+            <sparkle:version>60</sparkle:version>
+            <sparkle:shortVersionString>1.8.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<h2>What's New in 1.8.0</h2><ul></ul><p><strong>Added</strong></p><ul><li>🎉 Added AI-powered document renaming for supported files</li><li>📄 Added native PDF text extraction with visual fallback</li><li>🗂️ Expanded Zush from image rename to file rename</li></ul><p><strong>Improved</strong></p><ul><li>⚡ Improved supported file handling across batch rename, monitor, and hotkey flows</li><li>🖼️ Restored PDF previews in the batch rename list</li><li>✏️ Updated app copy and onboarding text for file-based workflows</li></ul><p><strong>Fixed</strong></p><ul><li>🐛 Fixed legacy `.doc` and `.ppt` fallback analysis</li><li>🐛 Fixed document placeholders and thumbnail handling in batch rename</li><li>🔧 Updated CI to match the local Xcode 26.3 toolchain</li></ul>
+]]></description>
+            <enclosure url="https://zushapp.com/releases/Zush-1.8.0.dmg" length="8616457" type="application/octet-stream" sparkle:edSignature="3QvEK91KKzRsBUMQ5Mow/WmSINrUweEM9l42mrRb5E2AotABTtjk4RuFlgeKVNQHy5y1DpZOGsbw0t9lwylXBQ=="/>
+            <sparkle:deltas>
+                <enclosure url="https://zushapp.com/releases/Zush60-58.delta" sparkle:deltaFrom="58" length="1150946" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860528" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="tWV4tnj8eo8Uc5vfxa7oDNagh/j7/JSs/npgdHL/Z6TXakVUmIVrLksnO1MNWu1r6OOTddA0ie/n3SUkpsacBw=="/>
+                <enclosure url="https://zushapp.com/releases/Zush60-56.delta" sparkle:deltaFrom="56" length="1324910" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860528" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="AsRiwjF4drJvbkztWppylg5FBVH/s56FPTicO7JZTbrKZKco3oiabMvqACu8QwjllY9IuH7NQhIqg3SVcGniDg=="/>
+                <enclosure url="https://zushapp.com/releases/Zush60-41.delta" sparkle:deltaFrom="41" length="2114530" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860528" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="4FGmZ32v1DoAm74pm713RIz/TInmg9rfV39BdPnPQlOpaCVEDkDPoTdV9GcL1QaR+i7iZphYtYyXF+GGEdI5Bw=="/>
+                <enclosure url="https://zushapp.com/releases/Zush60-40.delta" sparkle:deltaFrom="40" length="2126070" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860528" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="B0JESH4G00rAQuPM5HpnY3OAH5QDJpQP5MDP6W8V3vSxwgiZFDOn2YmCqVou33ojj8u1ApIZS85KBhrcymhbDA=="/>
+                <enclosure url="https://zushapp.com/releases/Zush60-38.delta" sparkle:deltaFrom="38" length="2222758" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860528" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="jazs+hbNkWJkthE8v3KyfxTRKtksrnk3QiCb6ljDSrvavZg0gKU1BQnjXCIMVqyPKT5I/L4e23cwrWCci8J1Bg=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>1.7.1</title>
             <pubDate>Wed, 18 Mar 2026 14:54:51 +0700</pubDate>
             <sparkle:version>58</sparkle:version>
             <sparkle:shortVersionString>1.7.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<h2>What's New in 1.7.1</h2><ul></ul><p><strong>Fixed</strong></p><ul><li>🐛 Fix batch hangs and use PDF thumbnails</li><li>🐛 Stabilize app store IAP verification and clean legacy purchase objects</li><li>🐛 Retry analyze provider timeouts</li><li>🐛 Harden file hashing and analyze timeouts</li><li>🐛 Refine welcome copy</li><li>🐛 Restore data consent view wiring</li><li>🐛 Replace `any` types, extract subscription status helper</li><li>🐛 Keychain access refactoring</li></ul>
-]]></description>
             <enclosure url="https://zushapp.com/releases/Zush-1.7.1.dmg" length="8351726" type="application/octet-stream" sparkle:edSignature="97/ovFGQ1cYHDhK5Aq4/a8YOSDdnnJIhNdgKrEqkO1oiZeWlXRZE/OS5x1dikG/Y4v0/lBNaUTFMBnWutYoABQ=="/>
             <sparkle:deltas>
                 <enclosure url="https://zushapp.com/releases/Zush58-56.delta" sparkle:deltaFrom="56" length="943518" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860528" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="kMQSXhcpP8S/wR98mJTQMXO8qNhHUyAPzKgybqUv+MVYKaIXxzQEqIq4fryfkFPqGrlxEssoi1LS7B9cEvJrAg=="/>
@@ -35,21 +50,6 @@
                 <enclosure url="https://zushapp.com/releases/Zush56-38.delta" sparkle:deltaFrom="38" length="1820218" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860528" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="7FXZ26GdwT97+sE2u5qhGbvAAHvxuFSUCJgcCSjdvxQAfTFaYRYfsZ8SpJ1ViYk8JEpzWP+U5nRvhv1SnZErBg=="/>
                 <enclosure url="https://zushapp.com/releases/Zush56-37.delta" sparkle:deltaFrom="37" length="1821006" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860528" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="qIyQoozgqdTbnvWr3I9g4JdYxE5mLwocIA38gQPLyD3GnbF6WyeGP5ofWdw0Cfn65IsYoH1/VQmBFWvxupcwDw=="/>
                 <enclosure url="https://zushapp.com/releases/Zush56-36.delta" sparkle:deltaFrom="36" length="1896734" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860528" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="AR9Z6PqUAJn8NUaQPOOA42vIJKgMjNLDFh2XUIZTn5o2jNV6IFm+npbIfgn0wOS/2F4uf8E94ghYABAHheJrCA=="/>
-            </sparkle:deltas>
-        </item>
-        <item>
-            <title>1.6.1</title>
-            <pubDate>Mon, 09 Feb 2026 19:10:04 +0700</pubDate>
-            <sparkle:version>41</sparkle:version>
-            <sparkle:shortVersionString>1.6.1</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://zushapp.com/releases/Zush-1.6.1.dmg" length="8130466" type="application/octet-stream" sparkle:edSignature="4ob1sDOetFsy0Akgde5vfmhXwkD/1h08MMqeikkVEaGv13I+WyXp1P2HiCACCGbStRHCo1e8qr4K9CfsYkQfBw=="/>
-            <sparkle:deltas>
-                <enclosure url="https://zushapp.com/releases/Zush41-40.delta" sparkle:deltaFrom="40" length="639306" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860528" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="+vANWuAj/InH/VbY0IdEALsklEd3x1zp0Yrs8K7/vJHaSZbjiXh0ykESB4RmQVmoUcdX7CqVDVxWj4/FAEWGAw=="/>
-                <enclosure url="https://zushapp.com/releases/Zush41-38.delta" sparkle:deltaFrom="38" length="908714" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860528" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="n/6WpVBMlM9aJb5JV//sfoWSSlC+mo0e5wx3oFPqkoqGiISgvfRoVdexcBPE1NnnBOgpJPw4IRInyd3JqWfWAQ=="/>
-                <enclosure url="https://zushapp.com/releases/Zush41-37.delta" sparkle:deltaFrom="37" length="924510" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860528" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="tClfJZYX4NRULnYFZ2Lovt1GpnzarJgfwRhaKJMXeUAzBrzk6csg2pxOzis0UjIQO5FhSeKQmYCEB+GXHItpBQ=="/>
-                <enclosure url="https://zushapp.com/releases/Zush41-36.delta" sparkle:deltaFrom="36" length="1020274" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860528" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="q9dcPqqm2OPWjw0/R5pPVsj+E//bb4hCrT0rvZ4PWCUV0XMemXn03lpPq/KXXq2z38T6nWGZGoTLdmS2HCoTBA=="/>
-                <enclosure url="https://zushapp.com/releases/Zush41-34.delta" sparkle:deltaFrom="34" length="1039018" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="860528" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="UHJFnLIvFtn1f1Uxhr2/iOb+hdI83DqTekCfjjKYJ/WIjFKMLl5ghnw8MAgvxdwQSB2POu1gVU2aiS1+DHiqAw=="/>
             </sparkle:deltas>
         </item>
         <item>
