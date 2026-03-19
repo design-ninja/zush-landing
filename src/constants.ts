@@ -8,7 +8,7 @@ export const MIN_MACOS_VERSION = "Sonoma and newer";
 
 // Config
 export const APP_CONFIG = {
-  free_tier_limit: 30,
+  free_tier_limit: 50,
   pro_limit: 10000,
   image_extensions: [
     "png",

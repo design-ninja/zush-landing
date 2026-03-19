@@ -18,7 +18,7 @@ Zush offers a "🌟 PRO" upgrade that provides credit-based access to AI renames
 **3.2 Pricing Plans**
 We offer a one-time purchase model:
 
-- **Zush Free**: 30 credits included. One credit equals one rename.
+- **Zush Free**: 50 credits included. One credit equals one rename.
 - **Zush PRO**: One-time purchase of $10. Includes 10,000 credits and access to BYOK (Bring Your Own Key) for unlimited processing.
 
 Credits are one-time and do not reset. Once credits are exhausted, PRO users can enable BYOK to continue using their own API key for unlimited processing.
