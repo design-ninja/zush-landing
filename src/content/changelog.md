@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.8.0] - 2026-03-19
+
+### Added
+- 🎉 Added AI-powered document renaming for supported files
+- 📄 Added native PDF text extraction with visual fallback
+- 🗂️ Expanded Zush from image rename to file rename
+
+### Improved
+- ⚡ Improved supported file handling across batch rename, monitor, and hotkey flows
+- 🖼️ Restored PDF previews in the batch rename list
+- ✏️ Updated app copy and onboarding text for file-based workflows
+
+### Fixed
+- 🐛 Fixed legacy `.doc` and `.ppt` fallback analysis
+- 🐛 Fixed document placeholders and thumbnail handling in batch rename
+- 🔧 Updated CI to match the local Xcode 26.3 toolchain
+
 ## [1.7.1] - 2026-03-18
 
 ### Fixed
