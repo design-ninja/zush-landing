@@ -3,7 +3,7 @@ title: How to Rename Images with AI on macOS
 description: Learn how to rename images with AI on macOS using a fast workflow for screenshots, photos, and downloads that stay searchable in Finder and Spotlight.
 date: 2026-03-09
 slug: how-to-rename-images-with-ai-on-macos
-tags: rename images, AI image renamer, macOS, photo management, productivity
+tags: rename images, AI image renamer, macOS, photo management, productivity, rename files with ai mac
 tldr: The fastest way to rename images with AI on macOS is to use a content-aware renamer that can analyze screenshots, photos, and downloads, then apply descriptive filenames in bulk or automatically as files arrive.
 ---
 
@@ -58,8 +58,14 @@ If you want adjacent intents:
 
 - keep filenames descriptive, not stuffed
 - use one naming convention per folder type
-- use AI mainly for images and screenshots, not every file on your system
+- use AI for images, screenshots, PDFs, and documents where content-aware naming adds value
 - make sure rollback is available before doing large batch renames
+
+## Beyond images: renaming documents with AI
+
+While this guide focuses on images, the same AI-powered workflow applies to documents. Zush supports PDF, DOCX, PPTX, XLSX, TXT, MD, JSON, EML, and CSV files. If your Downloads folder fills up with generic attachment names like `document.pdf` or `report-final.docx`, AI renaming can turn those into descriptive filenames just as it does for screenshots.
+
+For a document-specific walkthrough, see [Rename PDF Files with AI on Mac](/blog/rename-pdf-files-with-ai-mac). For a broader comparison of tools, see [Best AI File Renamer Tools for Mac Compared](/blog/best-ai-file-renamer-tools-mac-compared).
 
 ## Conclusion
 
@@ -76,3 +82,7 @@ Use a Mac-native tool that can analyze image content, rename in bulk, and keep a
 ### Can I rename screenshots with AI on Mac?
 
 Yes. Screenshots are one of the best use cases for AI renaming because macOS normally names them with timestamps, not content.
+
+### Can I rename documents and PDFs with AI on Mac?
+
+Yes. Zush supports AI renaming for PDFs, Word documents, spreadsheets, presentations, and text-based formats. The workflow is the same: drag files in or use folder monitoring, and Zush analyzes the content to generate descriptive filenames.

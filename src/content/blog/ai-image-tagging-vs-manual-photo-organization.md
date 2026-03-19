@@ -9,7 +9,7 @@ tldr: AI image tagging scales better than manual photo organization for large li
 
 If you are choosing between AI image tagging and manual photo organization, the short answer is this: manual systems work for small libraries, but AI wins once volume, repetition, and inconsistency start slowing you down. The best setup for most Mac users is not pure automation or pure manual sorting. It is AI for the repetitive work, with light human review where context matters.
 
-That is why tools like [Zush](https://zushapp.com) are useful: they do not just tag images automatically. They help turn weak filenames and unsearchable folders into a system you can actually maintain.
+That is why tools like [Zush](https://zushapp.com) are useful: they do not just tag files automatically. They help turn weak filenames and unsearchable folders into a system you can actually maintain.
 
 ## Where manual organization is still useful
 
@@ -74,7 +74,7 @@ A practical workflow looks like this:
 3. Review only the files where context matters
 4. Use search and metadata instead of over-engineering the folder tree
 
-That is where [Zush](https://zushapp.com) fits well. It can generate descriptive filenames, write Finder-friendly metadata, and reduce the manual effort to a quick review instead of a full tagging session.
+That is where [Zush](https://zushapp.com) fits well. It can generate descriptive filenames, write Finder-friendly metadata for images, PDFs, and supported documents alike, and reduce the manual effort to a quick review instead of a full tagging session.
 
 If your main question is how to rename images rather than how to compare systems, go to [How to Rename Images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos).
 
@@ -95,4 +95,4 @@ In those cases, AI should provide the first draft, not the final taxonomy.
 
 Manual photo organization is precise but hard to maintain at scale. AI image tagging is fast and scalable but occasionally lacks context. For most Mac workflows, the best answer is a hybrid system: let AI handle the repetitive recognition work, then apply human judgment only where it actually adds value.
 
-That is the model [Zush](https://zushapp.com) supports best: descriptive filenames, AI-assisted organization, and less time spent cleaning up image clutter by hand.
+That is the model [Zush](https://zushapp.com) supports best: descriptive filenames, AI-assisted organization, and less time spent cleaning up file clutter by hand.

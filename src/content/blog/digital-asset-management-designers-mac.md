@@ -40,7 +40,7 @@ Use `v2`, `v3`, and state labels instead of vague names like `final`.
 
 Designers usually know where their source files are. The friction starts with screenshots, UI exports, references, and handoff assets. Those are the files that keep getting saved under weak names.
 
-That is where [Zush](https://zushapp.com) can help by turning image-heavy folders into something more searchable and easier to scan.
+That is where [Zush](https://zushapp.com) can help by turning folders full of images, PDFs, and design documents into something more searchable and easier to scan.
 
 ## Conclusion
 

@@ -9,7 +9,7 @@ tldr: Freelancers need client file systems that are simple enough to maintain un
 
 Freelancer file organization on Mac breaks down for one reason: every client brings different files, different deadlines, and different expectations, but most people manage them with whatever folder structure happens to exist that week.
 
-A better system is boring on purpose. Use the same top-level structure for every client, keep filenames consistent, and automate the visual files that would otherwise stay under names like `IMG_4382`, `Screenshot 2026-03-01 at 09.41.22`, or `download (2)`. For that part of the workflow, [Zush](https://zushapp.com) is especially useful because freelancer folders often accumulate screenshots, design exports, and references faster than they can be renamed manually.
+A better system is boring on purpose. Use the same top-level structure for every client, keep filenames consistent, and automate the visual files that would otherwise stay under names like `IMG_4382`, `Screenshot 2026-03-01 at 09.41.22`, or `download (2)`. For that part of the workflow, [Zush](https://zushapp.com) is especially useful because freelancer folders often accumulate screenshots, design exports, references, contracts, invoices, and client documents faster than they can be renamed manually.
 
 ## A client folder structure that scales
 
@@ -50,8 +50,11 @@ For many freelancers, the worst folders are not contracts or invoices. They are 
 - exported social media graphics
 - design mockups
 - phone photos used in content or marketing
+- contracts and proposals as PDFs
+- client briefs and feedback documents
+- invoices and spreadsheets
 
-These files often arrive under terrible names and then stay that way because manual renaming is slow. That is where [Zush](https://zushapp.com) fits naturally into a freelancer workflow: it can batch rename file-heavy folders and make those files easier to sort into the correct project afterward.
+These files often arrive under terrible names and then stay that way because manual renaming is slow. That is where [Zush](https://zushapp.com) fits naturally into a freelancer workflow: it can batch rename file-heavy folders, whether they contain images, PDFs, or Word documents, and make those files easier to sort into the correct project afterward.
 
 If your work is especially design-heavy, see [How to Organize Design Assets: A UI/UX Workflow Guide](/blog/organize-design-assets-ui-ux-workflow).
 
@@ -69,4 +72,4 @@ This maintenance routine matters more than a theoretically perfect folder tree.
 
 The best way to organize client files as a freelancer on Mac is to standardize the things you can control: folder structure, naming format, and content-heavy asset handling.
 
-If screenshots, references, and exported images are the bottleneck, [Zush](https://zushapp.com) can remove a lot of the manual renaming overhead and make the rest of the system easier to maintain.
+If screenshots, references, documents, and exported images are the bottleneck, [Zush](https://zushapp.com) can remove a lot of the manual renaming overhead and make the rest of the system easier to maintain.

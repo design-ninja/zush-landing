@@ -3,8 +3,8 @@ title: Auto Image Renamer for Mac: Automatically Rename Photos and Screenshots
 description: Learn how an auto image renamer for Mac works and how to automatically rename screenshots, photos, and downloaded images with content-aware workflows.
 date: 2026-03-12
 slug: auto-image-renamer-mac
-tags: auto image renamer mac, automatic image renaming, mac automation, screenshot organization
-tldr: An auto image renamer for Mac should rename files as they arrive, not only during one-off cleanup. The best workflows combine content-aware AI naming with folder monitoring.
+tags: auto image renamer mac, automatic image renaming, mac automation, screenshot organization, auto rename files mac
+tldr: An auto image renamer for Mac should rename files as they arrive, not only during one-off cleanup. The best workflows combine content-aware AI naming with folder monitoring. Zush also supports auto-renaming for PDFs, Word docs, and other document formats.
 ---
 
 An auto image renamer for Mac is useful when your problem is not just bad filenames, but the constant arrival of new bad filenames. Screenshots, iPhone photos, downloaded graphics, and exported assets keep landing under names like `IMG_`, `Screenshot`, and `download (4)`.
@@ -64,7 +64,13 @@ Skip full automation if:
 - you need exact legal or accounting naming rules
 - you are not ready to review the first batch and adjust the pattern
 
-Automation is strongest when the incoming files are consistently visual and consistently poorly named.
+Automation is strongest when the incoming files are consistently poorly named, whether they are images, screenshots, PDFs, or documents.
+
+## Auto-renaming beyond images
+
+Automatic renaming is not limited to visual files. Zush also monitors folders for supported document types including PDFs, DOCX, PPTX, XLSX, TXT, MD, JSON, EML, and CSV. When a new document arrives in a monitored folder, Zush reads its content and generates a descriptive filename automatically. That is useful for Downloads folders that accumulate email attachments, exported reports, and shared documents alongside screenshots and images.
+
+For a focused guide on document renaming, see [Rename PDF Files with AI on Mac](/blog/rename-pdf-files-with-ai-mac).
 
 ## Conclusion
 

@@ -36,13 +36,13 @@ Most users should clean these first:
 
 ## Why filenames matter in cleanup
 
-A lot of clutter survives because it is too hard to identify quickly. Weak names like `download (7)` and `IMG_4822` make decisions slower. For visual files, [Zush](https://zushapp.com) can help by turning them into descriptive filenames before they disappear into the pile again.
+A lot of clutter survives because it is too hard to identify quickly. Weak names like `download (7)` and `IMG_4822` make decisions slower. For files with weak names, [Zush](https://zushapp.com) can help by analyzing images, PDFs, and documents and turning them into descriptive filenames before they disappear into the pile again.
 
 ## A realistic cleanup routine
 
 1. delete obvious junk
 2. move active files into the right folder
-3. rename the visual files you will need later
+3. rename the files you will need later, including images, PDFs, and documents
 4. repeat weekly instead of waiting for a crisis
 
 ## Conclusion

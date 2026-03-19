@@ -30,8 +30,9 @@ This is the technology behind tools that can:
 - detect text in images
 - generate image metadata
 - create better filenames for visual files
+- analyze document content for automated filing and renaming
 
-That is how products like [Zush](https://zushapp.com) can turn a weak filename into something descriptive based on the image content.
+That is how products like [Zush](https://zushapp.com) can turn a weak filename into something descriptive based on the image content. Modern multimodal models extend beyond pure image recognition. They can also read and understand text-based documents, enabling tools like Zush to generate descriptive filenames for PDFs, Word documents, spreadsheets, and other file types, not just images.
 
 ## What the model is actually learning
 

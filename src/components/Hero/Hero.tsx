@@ -29,7 +29,8 @@ const Hero = () => {
       <div className={styles.Hero__Container}>
         <div className={styles.Hero__Intro}>
           <Heading as="h1" className={styles.Hero__Title}>
-            Stop Naming Files.{" "}
+            Stop Naming Files.
+            <br />
             <span className={styles.Hero__TitleAccent}>Let AI Do It.</span>
           </Heading>
           <Text size="xl" color="subtle" className={styles.Hero__Subtitle}>

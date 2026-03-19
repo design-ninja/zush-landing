@@ -9,7 +9,7 @@ tldr: The fastest way to organize the Downloads folder on Mac is to reduce inflo
 
 The Downloads folder gets messy because it is not a destination. It is a landing zone. Files arrive there quickly, under inconsistent names, and without any shared structure. If you want to organize Downloads on Mac, the goal is not to create a perfect filing cabinet. It is to stop random files from accumulating faster than you can process them.
 
-A good system starts with a few broad categories, a fast review habit, and automation for the worst offenders. For image-heavy Downloads folders, [Zush](https://zushapp.com) can help by automatically renaming screenshots, web images, and visual files into descriptive names before they disappear into the pile.
+A good system starts with a few broad categories, a fast review habit, and automation for the worst offenders. For Downloads folders full of poorly named files, [Zush](https://zushapp.com) can help by automatically renaming screenshots, images, PDFs, and documents into descriptive names before they disappear into the pile.
 
 ## Why Downloads becomes chaotic so fast
 
@@ -56,7 +56,7 @@ Ask three questions for each file:
 
 This matters most for images, screenshots, and downloaded graphics. A PDF called `2026-q1-report.pdf` is already workable. An image called `download (7).png` is not.
 
-That is where automation helps. [Zush](https://zushapp.com) can monitor folders and rename visual files to something descriptive, which makes the Downloads folder easier to sort and much easier to search later.
+That is where automation helps. [Zush](https://zushapp.com) can monitor folders and rename images, PDFs, and documents to something descriptive, which makes the Downloads folder easier to sort and much easier to search later.
 
 ## What to automate
 
@@ -98,4 +98,4 @@ If you repeat that routine consistently, Downloads stops acting like permanent s
 
 To organize the Downloads folder on Mac, keep the system simple: a few real categories, fast triage, and automation for the files that generate the most clutter.
 
-For image-heavy Downloads folders, [Zush](https://zushapp.com) is a strong fit because it improves filenames before the files get buried, which makes every later cleanup step easier.
+For Downloads folders full of poorly named files, [Zush](https://zushapp.com) is a strong fit because it renames images, documents, and PDFs before the files get buried, which makes every later cleanup step easier.

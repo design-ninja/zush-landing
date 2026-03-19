@@ -9,7 +9,7 @@ tldr: A good file naming convention is simple, descriptive, and consistent: lowe
 
 A solid file naming convention saves time every time you search, sort, or share a file. The best convention is not the cleverest one. It is the one you can apply consistently across real work.
 
-For most people, that means descriptive lowercase names, hyphens or underscores, ISO dates when dates matter, and version numbers instead of vague labels. If your hardest files are images and screenshots, [Zush](https://zushapp.com) can automate the naming step so the convention is easier to maintain.
+For most people, that means descriptive lowercase names, hyphens or underscores, ISO dates when dates matter, and version numbers instead of vague labels. If your hardest files are images, screenshots, PDFs, or documents, [Zush](https://zushapp.com) can automate the naming step so the convention is easier to maintain.
 
 ## The rules that work almost everywhere
 
@@ -93,11 +93,11 @@ Example:
 
 `figma-mobile-checkout-flow.png`
 
-## The hardest files to name are images
+## The hardest files to name are images and documents
 
-Images are where most naming systems break down because the creator of the file usually did not know or care how you would search for it later. Cameras use counters. macOS screenshots use timestamps. Downloads arrive with whatever the source site gave them.
+Images and documents are where most naming systems break down. Cameras use counters. macOS screenshots use timestamps. Downloads arrive with whatever the source site gave them. Email attachments often have generic names like `document.pdf` or `report.docx`.
 
-That is why image naming is where automation matters most. You can define a convention yourself, but generating the descriptive part manually is slow. Tools like [Zush](https://zushapp.com) make that practical by using AI to recognize what the file contains and then applying a consistent pattern on top.
+That is why naming automation matters most for these file types. You can define a convention yourself, but generating the descriptive part manually is slow. Tools like [Zush](https://zushapp.com) make that practical by using AI to recognize what the file contains and then applying a consistent pattern on top.
 
 For a deeper tutorial, see [How to Rename Images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos). If your main interest is search visibility, read [Image SEO: How File Naming Affects Your Search Rankings](/blog/image-seo-file-naming-for-better-rankings).
 
@@ -124,7 +124,7 @@ That last step is what keeps the system from collapsing again. The combination o
 
 The best file naming convention is the one that balances clarity with consistency. Use descriptive words, predictable separators, ISO dates when useful, and version numbers when files evolve.
 
-If your bottleneck is image naming rather than document naming, [Zush](https://zushapp.com) can handle the descriptive part automatically and make the convention easier to apply at scale.
+If your bottleneck is naming images, PDFs, spreadsheets, or documents, [Zush](https://zushapp.com) can handle the descriptive part automatically and make the convention easier to apply at scale.
 
 ## FAQ
 
@@ -138,4 +138,4 @@ Both work. Hyphens are usually easier to read and friendlier in web contexts.
 
 ### Can AI help with file naming conventions?
 
-Yes. AI is especially useful for images, screenshots, and PDFs where the descriptive part of the filename would otherwise need to be written manually.
+Yes. AI is especially useful for images, screenshots, PDFs, and documents (DOCX, PPTX, XLSX) where the descriptive part of the filename would otherwise need to be written manually.

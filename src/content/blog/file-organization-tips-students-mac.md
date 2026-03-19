@@ -9,7 +9,7 @@ tldr: Students stay organized on Mac by using a semester-first folder structure,
 
 The best file organization system for students on Mac is simple: one semester folder, one folder per course, and filenames that make assignments and notes obvious at a glance. If you make the system more complex than that, you probably will not keep using it.
 
-The mess usually comes from the same places every term: Downloads, screenshots, assignment drafts, lecture PDFs, and random files saved to Desktop. If screenshots and visual references are a constant problem, [Zush](https://zushapp.com) can help by renaming those files automatically instead of letting timestamp names pile up.
+The mess usually comes from the same places every term: Downloads, screenshots, assignment drafts, lecture PDFs, and random files saved to Desktop. If screenshots, lecture PDFs, and assignment documents are a constant problem, [Zush](https://zushapp.com) can help by renaming those files automatically instead of letting timestamp names pile up.
 
 ## Use a semester-first folder structure
 
@@ -63,4 +63,4 @@ A 10-minute routine is better than an end-of-semester rescue operation.
 
 Students do not need a complicated file management system. They need one that survives real coursework. A semester-first folder tree, clear filenames, and quick screenshot cleanup are enough for most people.
 
-If visual files are what keep breaking the system, [Zush](https://zushapp.com) can reduce that friction by handling the repetitive renaming part automatically.
+If poorly named files, from screenshots to lecture PDFs to assignment drafts, are what keep breaking the system, [Zush](https://zushapp.com) can reduce that friction by handling the repetitive renaming part automatically.
