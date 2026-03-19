@@ -1,10 +1,10 @@
 ---
 title: How to Organize Client Files as a Freelancer on Mac
-description: Learn how freelancers can organize client files on Mac using a simple folder structure, naming system, and image workflow.
+description: Learn how freelancers can organize client files on Mac using a simple folder structure, naming system, and content-aware rename workflow.
 date: 2026-02-14
 slug: organize-client-files-freelancers-mac
 tags: freelancer file organization, client files mac, file naming, mac productivity
-tldr: Freelancers need client file systems that are simple enough to maintain under pressure: one repeatable folder structure, consistent naming, and a fast workflow for screenshots and image assets.
+tldr: Freelancers need client file systems that are simple enough to maintain under pressure: one repeatable folder structure, consistent naming, and a fast workflow for screenshots, PDFs, and client assets.
 ---
 
 Freelancer file organization on Mac breaks down for one reason: every client brings different files, different deadlines, and different expectations, but most people manage them with whatever folder structure happens to exist that week.
@@ -51,14 +51,14 @@ For many freelancers, the worst folders are not contracts or invoices. They are 
 - design mockups
 - phone photos used in content or marketing
 
-These files often arrive under terrible names and then stay that way because manual renaming is slow. That is where [Zush](https://zushapp.com) fits naturally into a freelancer workflow: it can batch rename image-heavy folders and make those files easier to sort into the correct project afterward.
+These files often arrive under terrible names and then stay that way because manual renaming is slow. That is where [Zush](https://zushapp.com) fits naturally into a freelancer workflow: it can batch rename file-heavy folders and make those files easier to sort into the correct project afterward.
 
 If your work is especially design-heavy, see [How to Organize Design Assets: A UI/UX Workflow Guide](/blog/organize-design-assets-ui-ux-workflow).
 
 ## A simple weekly maintenance routine
 
 1. Move loose files from Desktop and Downloads into the right client folder
-2. Rename any screenshots or exported assets that are still ambiguous
+2. Rename any screenshots, exported assets, or loose PDFs that are still ambiguous
 3. Archive completed project folders
 4. Delete duplicate low-value exports
 5. Keep one active versioning pattern across the client account
@@ -67,6 +67,6 @@ This maintenance routine matters more than a theoretically perfect folder tree.
 
 ## Conclusion
 
-The best way to organize client files as a freelancer on Mac is to standardize the things you can control: folder structure, naming format, and visual asset handling.
+The best way to organize client files as a freelancer on Mac is to standardize the things you can control: folder structure, naming format, and content-heavy asset handling.
 
 If screenshots, references, and exported images are the bottleneck, [Zush](https://zushapp.com) can remove a lot of the manual renaming overhead and make the rest of the system easier to maintain.

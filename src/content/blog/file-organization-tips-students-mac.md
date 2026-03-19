@@ -46,7 +46,7 @@ Avoid `final`, `new`, and `untitled` names. Version numbers are safer.
 
 Students often save references, lecture screenshots, whiteboard captures, and browser downloads without renaming them.
 
-That becomes a problem during exam season when you need to find one specific image or slide quickly. For this kind of visual clutter, [Zush](https://zushapp.com) is useful because it can turn generic screenshot names into something searchable.
+That becomes a problem during exam season when you need to find one specific PDF, slide, or screenshot quickly. For this kind of clutter, [Zush](https://zushapp.com) is useful because it can turn generic file names into something searchable.
 
 ## Keep one weekly cleanup habit
 

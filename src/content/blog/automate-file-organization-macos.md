@@ -1,15 +1,15 @@
 ---
 title: "How to Automate File Organization on macOS"
-description: Learn how to automate file organization on macOS using Smart Folders, Automator, Shortcuts, Hazel, and AI-powered image workflows.
+description: Learn how to automate file organization on macOS using Smart Folders, Automator, Shortcuts, Hazel, and AI-powered file renaming workflows.
 date: 2026-02-25
 slug: automate-file-organization-macos
 tags: automate file organization mac, automatic file sorting mac, file automation macOS, mac productivity, folder monitoring
-tldr: The best way to automate file organization on macOS is to combine simple rule-based tools for routing with AI-powered renaming for screenshots, photos, and downloaded visual files.
+tldr: The best way to automate file organization on macOS is to combine simple rule-based tools for routing with AI-powered renaming for screenshots, PDFs, documents, photos, and downloaded files.
 ---
 
 If you want to automate file organization on macOS, start with one principle: do not automate everything the same way. Rule-based tools are good at moving files based on predictable conditions. AI is better at naming and classifying visual files whose content cannot be inferred from metadata alone.
 
-That is why the strongest setup on Mac is a mixed system. Use Smart Folders, Hazel, Automator, or Shortcuts for routing. Use [Zush](https://zushapp.com) when the real problem is screenshots, photos, and downloaded images arriving under useless names.
+That is why the strongest setup on Mac is a mixed system. Use Smart Folders, Hazel, Automator, or Shortcuts for routing. Use [Zush](https://zushapp.com) when the real problem is screenshots, PDFs, documents, photos, and downloaded files arriving under useless names.
 
 ## What should be automated first
 
@@ -18,7 +18,7 @@ Start with the files that are both frequent and annoying.
 Best candidates:
 
 - screenshots
-- Downloads-folder images
+- Downloads-folder files
 - recurring exports
 - incoming camera photos
 - repetitive document dumps
@@ -34,6 +34,7 @@ Smart Folders do not move files. They surface files dynamically based on search 
 Best for:
 
 - recent images
+- recent documents
 - tagged files needing action
 - large files
 - project-specific searches
@@ -70,7 +71,7 @@ They fail when the file arrives as:
 
 A rule can move those files. It cannot explain what they contain.
 
-That is exactly where AI-based naming becomes useful. [Zush](https://zushapp.com) can monitor folders and rename visual files based on content, which makes every downstream system work better.
+That is exactly where AI-based naming becomes useful. [Zush](https://zushapp.com) can monitor folders and rename files based on content, which makes every downstream system work better.
 
 ## A practical mixed automation setup
 
@@ -78,7 +79,7 @@ A durable macOS setup often looks like this:
 
 1. Use Smart Folders to surface work-in-progress or recent files
 2. Use Automator, Shortcuts, or Hazel for predictable routing
-3. Use AI renaming for screenshots, photos, and downloaded graphics
+3. Use AI renaming for screenshots, PDFs, documents, photos, and downloaded graphics
 4. Keep one review step for high-value folders
 
 This avoids the two common mistakes: trying to do everything manually, or over-automating before you know what your files actually need.
@@ -90,6 +91,8 @@ AI is worth adding when filenames need to describe content, not just metadata.
 Strong examples:
 
 - automatically renaming screenshots by visible app or UI state
+- renaming exported PDFs and presentation decks
+- cleaning up repetitive document dumps
 - naming downloaded inspiration images or references
 - cleaning up imported image batches
 - making Desktop and Downloads visual files searchable later
@@ -100,4 +103,4 @@ For the exact workflow, see [Auto Image Renamer for Mac: Automatically Rename Ph
 
 To automate file organization on macOS effectively, let simple rules handle simple decisions and let AI handle visual ambiguity. That balance gives you a system that is actually maintainable.
 
-For image-heavy automation, [Zush](https://zushapp.com) is the practical addition because it improves filenames before those files enter the rest of your system.
+For content-aware automation, [Zush](https://zushapp.com) is the practical addition because it improves filenames before those files enter the rest of your system.

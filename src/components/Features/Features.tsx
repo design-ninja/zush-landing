@@ -114,9 +114,9 @@ const Features = () => {
                 <div className={styles.UI_Analysis__Content}>
                 <span
                   className={styles.UI_Analysis__OldName}
-                >{`Meeting Notes v4.docx`}</span>
+                >{`Screenshot ${currentYear}-03-15 at 19.45.22.png`}</span>
                 <span className={styles.UI_Analysis__NewName}>
-                  Q1 Planning Notes.docx
+                  Bali_Sunset_Beach.png
                 </span>
               </div>
             </div>
@@ -167,9 +167,9 @@ const Features = () => {
                   <div className={styles.UI_Batch__Names}>
                     <span
                       className={styles.UI_Batch__OldName}
-                    >{`notes-final-v3.docx`}</span>
+                    >{`Screenshot ${currentYear}-02-21.png`}</span>
                     <span className={styles.UI_Batch__NewName}>
-                      → Hiring Plan Notes.docx
+                      → Kanban Board UI.png
                     </span>
                   </div>
                   <div className={styles.UI_Batch__Check}>
@@ -179,10 +179,10 @@ const Features = () => {
                 <div className={styles.UI_Batch__Item}>
                   <div className={styles.UI_Batch__Names}>
                     <span className={styles.UI_Batch__OldName}>
-                      budget_export_copy.xlsx
+                      notes-final-v3.docx
                     </span>
                     <span className={styles.UI_Batch__NewName}>
-                      → Product Launch Budget.xlsx
+                      → Hiring Plan Notes.docx
                     </span>
                   </div>
                   <div className={styles.UI_Batch__Check}>

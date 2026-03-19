@@ -54,7 +54,7 @@ Useful for images, design assets, or review pipelines when folder structure alon
 
 Tags help, but they do not replace filenames. A tagged file called `IMG_4822` is still weak. Finder search becomes much stronger when tags are combined with descriptive names.
 
-This is one reason AI-assisted naming helps visual workflows on Mac. [Zush](https://zushapp.com) can turn screenshots and image files into something much more searchable before tags even enter the picture.
+This is one reason AI-assisted naming helps file-heavy workflows on Mac. [Zush](https://zushapp.com) can turn screenshots, PDFs, and image files into something much more searchable before tags even enter the picture.
 
 ## Finder tags + Smart Folders
 

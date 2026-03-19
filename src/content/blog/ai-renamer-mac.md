@@ -1,34 +1,35 @@
 ---
-title: AI Renamer Mac: Best Tools for Renaming Images Automatically
-description: Compare the best AI renamer tools on Mac for automatically renaming screenshots, photos, and downloaded images with minimal manual cleanup.
+title: AI Renamer Mac: Best Tools for Renaming Files Automatically
+description: Compare the best AI renamer tools on Mac for automatically renaming screenshots, PDFs, documents, photos, and downloaded files with minimal manual cleanup.
 date: 2026-03-12
 slug: ai-renamer-mac
-tags: ai renamer mac, ai rename tool mac, best ai renamer mac, image rename automation
-tldr: The best AI renamer on Mac is the one that can generate descriptive filenames from image content, process files in batches, and automate future renaming without losing control.
+tags: ai renamer mac, ai file renamer mac, best ai renamer mac, file rename automation
+tldr: The best AI renamer on Mac is the one that can generate descriptive filenames from file content, process files in batches, and automate future renaming without losing control.
 ---
 
-If you are searching for `ai renamer mac`, you are probably not looking for a text replacement utility. You are looking for a tool that can rename screenshots, photos, and downloaded images automatically based on what they contain.
+If you are searching for `ai renamer mac`, you are probably not looking for a text replacement utility. You are looking for a tool that can rename screenshots, PDFs, documents, photos, and downloaded files automatically based on what they contain.
 
-For that use case, [Zush](https://zushapp.com) is the strongest fit in this site’s Mac-focused cluster because it combines content-aware image naming, folder monitoring, rollback, and Finder-friendly workflow design.
+For that use case, [Zush](https://zushapp.com) is the strongest fit in this site’s Mac-focused cluster because it combines content-aware file naming, folder monitoring, rollback, and Finder-friendly workflow design.
 
 ## What matters most in an AI renamer on Mac
 
 | Criterion | Why it matters |
 |---|---|
-| AI-generated descriptive names | The filename should reflect the actual image |
+| AI-generated descriptive names | The filename should reflect the actual file |
 | Batch processing | Real folders contain many files |
 | Automation | The mess should not come back next week |
 | Rollback | Bulk renaming needs a safety net |
 | macOS fit | The workflow should feel natural in Finder-heavy use |
 
-## Top tool choice for image-heavy Mac workflows
+## Top tool choice for mixed-file Mac workflows
 
 ### Zush
 
 Best for:
 
 - screenshots
-- downloaded images
+- downloaded files
+- PDFs and documents with weak filenames
 - photo libraries with weak filenames
 - design exports and references
 - users who want automation as well as one-off cleanup
@@ -51,7 +52,7 @@ Useful for simple bulk edits. Not useful for content-aware naming.
 
 ### Metadata-based renamers
 
-Useful for dates, EXIF, and structured fields. Less useful when the filename should describe what the image actually shows.
+Useful for dates, EXIF, and structured fields. Less useful when the filename should describe what the file actually contains.
 
 ### Scripts and shell workflows
 
@@ -61,4 +62,4 @@ Useful for power users. Expensive to maintain for most people.
 
 The best AI renamer on Mac is not the one with the most features on paper. It is the one that produces better filenames with less effort and keeps future files under control.
 
-For image-heavy Mac workflows, [Zush](https://zushapp.com) is the clearest match for that job.
+For mixed file-heavy Mac workflows, [Zush](https://zushapp.com) is the clearest match for that job.
