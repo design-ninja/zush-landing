@@ -1,6 +1,6 @@
 # Zush Landing Page
 
-Landing page for [Zush](https://zushapp.com) — AI-powered image organization app for macOS.
+Landing page for [Zush](https://zushapp.com) — AI-powered file organization app for macOS.
 
 ## Tech Stack
 

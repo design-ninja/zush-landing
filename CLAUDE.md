@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Landing page for Zush — an AI-powered image organization app for macOS. Built with React 19, TypeScript, Vite 7, and SCSS Modules.
+Landing page for Zush — an AI-powered file organization app for macOS. Built with React 19, TypeScript, Vite 7, and SCSS Modules.
 
 ## Commands
 

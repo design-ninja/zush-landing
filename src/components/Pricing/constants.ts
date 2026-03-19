@@ -69,7 +69,7 @@ export const PRO_PLAN: Plan = {
   features: [
     {
       title: '10,000 Credits',
-      desc: 'Process up to 10,000 images, then use BYOK for unlimited',
+      desc: 'Process up to 10,000 files, then use BYOK for unlimited',
       icon: Zap,
     },
     {
@@ -79,7 +79,7 @@ export const PRO_PLAN: Plan = {
     },
     {
       title: 'Folders Monitor',
-      desc: 'Auto-rename new images as they land in watched folders',
+      desc: 'Auto-rename new files as they land in watched folders',
       icon: FolderPlus,
     },
     {

@@ -24,7 +24,7 @@ const BlogList = () => {
       <div className={styles.BlogList__Container}>
         <SectionHeader
           title="Blog"
-          description="Tips, guides, and insights on AI-powered image organization"
+          description="Tips, guides, and insights on AI-powered file organization"
           level="h1"
         />
 

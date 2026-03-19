@@ -31,22 +31,15 @@ const FAQItem = memo(({ question, answer, isOpen, onClick }: FAQItemProps) => {
 
 FAQItem.displayName = 'FAQItem';
 
-const formatNumber = (value: number) =>
-  new Intl.NumberFormat('en-US').format(value);
-
 const normalizeExtensions = (extensions: string[]) =>
   extensions.map((extension) => extension.toLowerCase());
 
 const formatExtension = (extension: string) => extension.toUpperCase();
 
 const imageExtensions = normalizeExtensions(APP_CONFIG.image_extensions);
-const baseExtensions = imageExtensions.filter(
-  (extension) => extension !== 'svg' && extension !== 'pdf'
-);
-const supportsSvg = imageExtensions.includes('svg');
-const supportsPdf = imageExtensions.includes('pdf');
-const formattedExtensions = baseExtensions.map(formatExtension).join(', ');
-const freeTierLimit = formatNumber(APP_CONFIG.free_tier_limit);
+const documentExtensions = normalizeExtensions(APP_CONFIG.document_extensions);
+const visualExtensions = imageExtensions.map(formatExtension).join(', ');
+const formattedDocumentExtensions = documentExtensions.map(formatExtension).join(', ');
 const refundPeriodDays = APP_CONFIG.refund_period_days;
 const minMacosVersion = APP_CONFIG.min_macos_version;
 const minMacosName = APP_CONFIG.min_macos_name;
@@ -60,28 +53,22 @@ const createFAQData = (): FAQData[] => [
   {
     question: 'What is Zush?',
     answer:
-      'Zush is an intelligent macOS application that automates the tedious task of renaming media files. Using advanced AI, it analyzes the content of your images (including RAW), SVGs, and PDFs to generate descriptive, meaningful filenames, helping you keep your library perfectly organized.',
+      'Zush is an intelligent macOS application that automates the tedious task of renaming files. Using advanced AI, it analyzes images, PDFs, and supported documents to generate descriptive, meaningful filenames and metadata, helping you keep your library perfectly organized.',
   },
   {
     question: 'What file formats are supported?',
     answer:
-      `Zush supports popular image formats: ${formattedExtensions}.` +
-      `${supportsSvg ? ' We also support SVG vector graphics.' : ''}` +
-      `${
-        supportsPdf
-          ? ' PDF documents are supported too (the first page is analyzed for AI renaming).'
-          : ''
-      }`,
+      `Zush supports visual formats: ${visualExtensions}. Supported document formats include ${formattedDocumentExtensions}. PDFs and SVGs are supported too, so you can organize both visual assets and everyday documents in one workflow.`,
   },
   {
     question: 'How does Zush AI Rename work?',
     answer:
-      'AI Rename allows you to rename multiple files at once using artificial intelligence. Simply drag and drop a collection of images onto the Zush window, and all files will be analyzed and renamed in seconds. You can review and regenerate individual file names before applying changes. Perfect for organizing large collections of screenshots or photos.',
+      'AI Rename allows you to rename multiple files at once using artificial intelligence. Simply drag and drop a collection of files onto the Zush window, and they will be analyzed and renamed in seconds. You can review and regenerate individual file names before applying changes. Perfect for organizing screenshots, PDFs, docs, and downloads in one pass.',
   },
   {
     question: 'How does folder monitoring work?',
     answer:
-      'Zush monitors your selected folders in the background. When you add new images or PDFs to a monitored folder, Zush automatically analyzes the content and renames files in real-time while you are online — no manual action required.',
+      'Zush monitors your selected folders in the background. When you add new supported files to a monitored folder, Zush automatically analyzes the content and renames them in real time while you are online — no manual action required.',
   },
   {
     question: 'Can I regenerate an AI-generated filename?',
@@ -96,7 +83,7 @@ const createFAQData = (): FAQData[] => [
   {
     question: 'Is my data secure?',
     answer:
-      'Your original files stay on your computer. For AI analysis, Zush sends a resized, compressed JPEG copy to our servers, along with selected processing options and any custom rename or tagging prompts you choose to provide, then forwards the request to our AI providers. We do not store image content after processing as part of normal operation.',
+      'Your original files stay on your computer. For AI analysis, Zush sends either a compressed preview image, extracted document text, or a compact content summary, along with selected processing options and any custom rename or tagging prompts you choose to provide, then forwards the request to our AI providers. We do not store file content after processing as part of normal operation.',
   },
   {
     question: 'Can I undo changes made by the program?',
@@ -116,7 +103,7 @@ const createFAQData = (): FAQData[] => [
     question: 'What is BYOK (Bring Your Own Key)?',
     answer: (
       <>
-        BYOK lets PRO users connect their own API key from Gemini, Groq, OpenAI, or Claude for unlimited image processing. When BYOK is enabled, Zush uses your API key through its backend relay to call your chosen AI provider, so you pay the provider directly and have no credit limits. Perfect for power users with large libraries.{' '}
+        BYOK lets PRO users connect their own API key from Gemini, Groq, OpenAI, or Claude for unlimited file processing. When BYOK is enabled, Zush uses your API key through its backend relay to call your chosen AI provider, so you pay the provider directly and have no credit limits. Perfect for power users with large libraries.{' '}
         <AppLink href="/byok-setup">Learn how to set it up →</AppLink>
       </>
     ),
@@ -132,12 +119,17 @@ const createFAQData = (): FAQData[] => [
   },
   {
     question: 'Which AI model does the app use?',
-    answer: 'We use state-of-the-art AI models to ensure high speed and incredible accuracy in recognizing objects in your photos. The specific model may change as we continuously optimize for the best results.',
+    answer: 'We use state-of-the-art multimodal AI models to ensure high speed and strong accuracy when analyzing both visual files and supported documents. The specific model may change as we continuously optimize for the best results.',
   },
   {
     question: 'Does the app work offline?',
     answer:
-      'Zush requires an internet connection for the AI features (image analysis and name generation) to function. While it is a native macOS application that processes your files locally, we use advanced cloud models to ensure the best possible quality and accuracy.',
+      'Zush requires an internet connection for the AI features (file analysis and name generation) to function. While it is a native macOS application that prepares files locally, we use advanced cloud models to ensure the best possible quality and accuracy.',
+  },
+  {
+    question: 'Do you support audio or video files?',
+    answer:
+      'Not yet. Right now Zush focuses on images, PDFs, and supported documents. Audio and video support is on our roadmap and already under active exploration. Stay tuned!',
   },
   {
     question: "Can I get a refund if it doesn't fit my needs?",
