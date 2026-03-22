@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.8.1] - 2026-03-22
+
+### Added
+- 📊 Added TelemetryDeck funnel tracking for first rename flow
+- 🌍 Added country to new install Telegram notifications
+
+### Improved
+- ⚡ Kept AI Rename prompt visible until valid files are actually added
+- 🔔 Added explicit consent and unsupported-file feedback in AI Rename
+- 🧭 Added deferred dropped-file recovery through onboarding and consent setup
+
+### Fixed
+- 🐛 Fixed duplicate new install notifications from concurrent status checks
+- 🩹 Reduced duplicate status refreshes during app launch
+- 🔧 Captured processing failures in Sentry for analysis and rename flows
+
 ## [1.8.0] - 2026-03-19
 
 ### Added
