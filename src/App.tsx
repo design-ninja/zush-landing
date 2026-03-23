@@ -23,6 +23,21 @@ const BlogList = lazy(() => import('./pages/Blog/BlogList'));
 const BlogPost = lazy(() => import('./pages/Blog/BlogPost'));
 const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
 
+// SEO Landing Pages
+const RenameFilesWithAI = lazy(() => import('./pages/FeaturePages/RenameFilesWithAI'));
+const AIFileRenamer = lazy(() => import('./pages/FeaturePages/AIFileRenamer'));
+const AutoRenameFiles = lazy(() => import('./pages/FeaturePages/AutoRenameFiles'));
+const RenameImagesWithAI = lazy(() => import('./pages/FeaturePages/RenameImagesWithAI'));
+const RenameDocumentsWithAI = lazy(() => import('./pages/FeaturePages/RenameDocumentsWithAI'));
+const RenamePDFWithAI = lazy(() => import('./pages/FeaturePages/RenamePDFWithAI'));
+const RenameScreenshotsWithAI = lazy(() => import('./pages/FeaturePages/RenameScreenshotsWithAI'));
+const RenamePhotosWithAI = lazy(() => import('./pages/FeaturePages/RenamePhotosWithAI'));
+const AIImageRenamer = lazy(() => import('./pages/FeaturePages/AIImageRenamer'));
+const AIDocumentRenamer = lazy(() => import('./pages/FeaturePages/AIDocumentRenamer'));
+const AIPDFRenamer = lazy(() => import('./pages/FeaturePages/AIPDFRenamer'));
+const AIScreenshotRenamer = lazy(() => import('./pages/FeaturePages/AIScreenshotRenamer'));
+const AIPhotoRenamer = lazy(() => import('./pages/FeaturePages/AIPhotoRenamer'));
+
 import styles from './App.module.scss';
 
 const PageLoader = () => (
@@ -64,6 +79,20 @@ const AppContent = ({ theme, toggleTheme }: { theme: string; toggleTheme: () => 
               <Route path="/byok-setup" element={<BYOKSetup />} />
               <Route path="/blog" element={<BlogList />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
+              {/* SEO Landing Pages */}
+              <Route path="/rename-files-with-ai" element={<RenameFilesWithAI />} />
+              <Route path="/ai-file-renamer" element={<AIFileRenamer />} />
+              <Route path="/auto-rename-files" element={<AutoRenameFiles />} />
+              <Route path="/rename-images-with-ai" element={<RenameImagesWithAI />} />
+              <Route path="/rename-documents-with-ai" element={<RenameDocumentsWithAI />} />
+              <Route path="/rename-pdf-with-ai" element={<RenamePDFWithAI />} />
+              <Route path="/rename-screenshots-with-ai" element={<RenameScreenshotsWithAI />} />
+              <Route path="/rename-photos-with-ai" element={<RenamePhotosWithAI />} />
+              <Route path="/ai-image-renamer" element={<AIImageRenamer />} />
+              <Route path="/ai-document-renamer" element={<AIDocumentRenamer />} />
+              <Route path="/ai-pdf-renamer" element={<AIPDFRenamer />} />
+              <Route path="/ai-screenshot-renamer" element={<AIScreenshotRenamer />} />
+              <Route path="/ai-photo-renamer" element={<AIPhotoRenamer />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>

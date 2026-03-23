@@ -48,7 +48,7 @@ const Footer = () => {
           <div>
             <AppLink href="/" className={styles.Footer__Brand}>Zush</AppLink>
             <Text color="subtle" className={styles.Footer__Description}>
-              The AI-powered file organization utility for macOS
+              AI file renamer for macOS — rename files with AI, automatically
             </Text>
             <AppLink
               href={APP_STORE_URL}
@@ -78,6 +78,19 @@ const Footer = () => {
               <li><AppLink href="/terms-of-service" className={styles.Footer__Link}>Terms of Service</AppLink></li>
               <li><AppLink href="/privacy-policy" className={styles.Footer__Link}>Privacy Policy</AppLink></li>
               <li><AppLink href="/refund-policy" className={styles.Footer__Link}>Refund Policy</AppLink></li>
+            </ul>
+          </div>
+          <div>
+            <Heading as="h4" className={styles.Footer__SectionTitle}>Use Cases</Heading>
+            <ul className={styles.Footer__Links}>
+              <li><AppLink href="/rename-files-with-ai" className={styles.Footer__Link}>Rename Files with AI</AppLink></li>
+              <li><AppLink href="/ai-file-renamer" className={styles.Footer__Link}>AI File Renamer</AppLink></li>
+              <li><AppLink href="/ai-image-renamer" className={styles.Footer__Link}>AI Image Renamer</AppLink></li>
+              <li><AppLink href="/ai-document-renamer" className={styles.Footer__Link}>AI Document Renamer</AppLink></li>
+              <li><AppLink href="/ai-pdf-renamer" className={styles.Footer__Link}>AI PDF Renamer</AppLink></li>
+              <li><AppLink href="/ai-screenshot-renamer" className={styles.Footer__Link}>AI Screenshot Renamer</AppLink></li>
+              <li><AppLink href="/ai-photo-renamer" className={styles.Footer__Link}>AI Photo Renamer</AppLink></li>
+              <li><AppLink href="/auto-rename-files" className={styles.Footer__Link}>Auto Rename Files</AppLink></li>
             </ul>
           </div>
           <div>

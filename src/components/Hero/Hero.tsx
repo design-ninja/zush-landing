@@ -29,13 +29,13 @@ const Hero = () => {
       <div className={styles.Hero__Container}>
         <div className={styles.Hero__Intro}>
           <Heading as="h1" className={styles.Hero__Title}>
-            Stop Naming Files.
+            Rename Files with AI.
             <br />
-            <span className={styles.Hero__TitleAccent}>Let AI Do It.</span>
+            <span className={styles.Hero__TitleAccent}>Automatically.</span>
           </Heading>
           <Text size="xl" color="subtle" className={styles.Hero__Subtitle}>
-            Zush gives your files meaningful AI-powered names — automatically.
-            Find screenshots, documents, PDFs, and downloads in seconds, not minutes.
+            The AI file renamer for macOS. Auto rename screenshots, PDFs, documents,
+            and downloads with meaningful names — free to try.
           </Text>
 
           <div className={styles.Hero__Buttons}>

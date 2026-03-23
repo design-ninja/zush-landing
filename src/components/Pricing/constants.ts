@@ -30,7 +30,7 @@ interface Plan {
 
 export const FREE_PLAN: Plan = {
   name: 'Zush Free',
-  description: '50 credits + All PRO features',
+  description: 'Free to try + All PRO features',
   features: [
     {
       title: 'Multiple Folders',
