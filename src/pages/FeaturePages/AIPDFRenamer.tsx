@@ -3,22 +3,25 @@ import FeatureLandingPage from '@/components/FeatureLandingPage';
 const AIPDFRenamer = () => (
   <FeatureLandingPage
     h1="AI PDF Renamer for macOS"
-    definitionTitle="How AI PDF Renamers Work"
-    definitionText="An AI PDF renamer extracts text from your PDF files — whether they contain selectable text or scanned images — and uses language models to identify key details like document type, parties, dates, and subject matter. Instead of opening each PDF to figure out what it is, the AI reads it for you and produces a filename that tells you everything at a glance. This is especially valuable for PDFs since they are among the most commonly downloaded and poorly named file types."
-    beforeAfterExamples={[
-      { before: 'scan0023.pdf', after: 'Invoice #8842 — Office Depot — February 2026.pdf' },
-      { before: 'download (14).pdf', after: 'Non-Disclosure Agreement — Acme Corp — signed March 2026.pdf' },
-      { before: 'Document.pdf', after: 'Machine Learning in Healthcare — Chen et al. 2025 — Nature.pdf' },
-      { before: '2026-03-01_statement.pdf', after: 'Wells Fargo checking account statement — March 2026.pdf' },
-      { before: 'form_2025.pdf', after: 'IRS Form W-2 — 2025 — Jane Smith.pdf' },
-    ]}
-    supportedFormats={['PDF']}
+    definitionTitle="What Is an AI PDF Renamer?"
+    definitionText="An AI PDF renamer extracts text from your PDFs and generates filenames that tell you what each document contains at a glance."
+    showcaseSlides={[{
+      files: [
+        { before: 'scan0023.pdf', after: 'Office Depot Invoice.pdf', type: 'pdf' },
+        { before: 'download (14).pdf', after: 'NDA Acme Corp Signed.pdf', type: 'pdf' },
+        { before: 'Document.pdf', after: 'ML Healthcare Paper.pdf', type: 'pdf' },
+        { before: '2026-03-01_statement.pdf', after: 'Wells Fargo Statement.pdf', type: 'pdf' },
+        { before: 'form_2025.pdf', after: 'IRS Form W-2 2025.pdf', type: 'pdf' },
+        { before: 'contract_draft.pdf', after: 'Service Agreement.pdf', type: 'pdf' },
+      ],
+    }]}
     comparisonRows={[
-      { tool: 'Zush', platform: 'macOS (native)', aiPowered: 'Yes (text + vision)', batchRename: 'Yes', autoMonitor: 'Yes', freeTier: 'Free tier' },
-      { tool: 'Adobe Acrobat', platform: 'Cross-platform', aiPowered: 'No', batchRename: 'No', autoMonitor: 'No', freeTier: 'No (subscription)' },
-      { tool: 'Preview', platform: 'macOS', aiPowered: 'No', batchRename: 'No', autoMonitor: 'No', freeTier: 'Built-in' },
-      { tool: 'Hazel', platform: 'macOS', aiPowered: 'No', batchRename: 'Rule-based', autoMonitor: 'Yes', freeTier: 'No (paid app)' },
-      { tool: 'Manual renaming', platform: 'Any', aiPowered: 'No', batchRename: 'No', autoMonitor: 'No', freeTier: 'Free (your time)' },
+      { tool: 'Zush', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: '$10 one-time / 10,000 renames' },
+      { tool: 'Renamer.ai', platform: 'Mac & Windows', freeTier: '15/m', batchRename: true, autoMonitor: true, pricing: 'From $9.95/mo (200 renames)' },
+      { tool: 'AI Renamer', platform: 'Mac & Windows', freeTier: '10', batchRename: true, autoMonitor: false, pricing: '$19 one-time or $10/200 renames' },
+      { tool: 'NameQuick', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: 'From $5/mo (500 renames) or $38 BYOK' },
+      { tool: 'RenameClick', platform: 'Mac & Windows', freeTier: '30/m', batchRename: true, autoMonitor: true, pricing: '$48 lifetime or $8/mo' },
+      { tool: 'Riffo', platform: 'macOS', freeTier: 'Limited', batchRename: true, autoMonitor: false, pricing: 'Freemium' },
     ]}
     faqItems={[
       {

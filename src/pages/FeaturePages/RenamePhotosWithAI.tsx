@@ -74,24 +74,25 @@ const jsonLd = {
 const RenamePhotosWithAI = () => (
   <FeatureLandingPage
     h1="Rename Photos with AI on macOS"
-    definitionTitle="What is AI photo renaming?"
-    definitionText="AI photo renaming uses vision models to analyze what your photos contain and generate descriptive filenames based on the actual content. Instead of scrolling through thousands of files named IMG_2847 or _DSC3921, every photo gets a name that tells you what it shows — people, places, objects, and events."
-    beforeAfterExamples={[
-      { before: 'IMG_2847.HEIC', after: 'family-dinner-birthday-cake.heic' },
-      { before: '_DSC3921.ARW', after: 'mountain-landscape-sunrise-fog.arw' },
-      { before: 'DSCF0445.RAF', after: 'street-market-vendor-spices.raf' },
-      { before: 'P1080127.JPG', after: 'wedding-ceremony-first-kiss.jpg' },
-      { before: 'IMG_0023.CR3', after: 'golden-retriever-autumn-leaves.cr3' },
-    ]}
-    supportedFormats={[
-      'JPG', 'JPEG', 'HEIC', 'HEIF', 'PNG', 'TIFF',
-      'CR2', 'CR3', 'NEF', 'ARW', 'DNG', 'ORF', 'RAF', 'RW2', 'PEF', 'SRW', 'SR2', 'RAW',
-    ]}
+    definitionTitle="What Is AI Photo Renaming?"
+    definitionText="AI photo renaming uses vision models to analyze what your photos contain and generate descriptive filenames instead of cryptic camera codes."
+    showcaseSlides={[{
+      files: [
+        { before: 'IMG_2847.HEIC', after: 'Birthday Cake Dinner.heic', img: '/images/examples/food.jpg', type: 'image' },
+        { before: '_DSC3921.ARW', after: 'Mountain Sunrise Fog.arw', img: '/images/examples/mountain.jpg', type: 'image' },
+        { before: 'DSCF0445.RAF', after: 'Street Market Spices.raf', img: '/images/examples/city.jpg', type: 'image' },
+        { before: 'P1080127.JPG', after: 'Wedding First Kiss.jpg', img: '/images/examples/flowers.jpg', type: 'image' },
+        { before: 'IMG_0023.CR3', after: 'Golden Retriever Autumn.cr3', img: '/images/examples/dog.jpg', type: 'image' },
+        { before: 'DSC_7102.NEF', after: 'Sunset Over Harbor.nef', img: '/images/examples/sunset.jpg', type: 'image' },
+      ],
+    }]}
     comparisonRows={[
-      { tool: 'Zush', platform: 'macOS', aiPowered: 'Yes', batchRename: 'Yes', autoMonitor: 'Yes', freeTier: 'Free tier' },
-      { tool: 'Lightroom', platform: 'Cross-platform', aiPowered: 'No', batchRename: 'Template-based', autoMonitor: 'No', freeTier: 'No' },
-      { tool: 'Photos app', platform: 'macOS', aiPowered: 'No', batchRename: 'No', autoMonitor: 'No', freeTier: 'Yes' },
-      { tool: 'Manual naming', platform: 'Any', aiPowered: 'No', batchRename: 'No', autoMonitor: 'No', freeTier: 'Yes' },
+      { tool: 'Zush', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: '$10 one-time / 10,000 renames' },
+      { tool: 'Renamer.ai', platform: 'Mac & Windows', freeTier: '15/m', batchRename: true, autoMonitor: true, pricing: 'From $9.95/mo (200 renames)' },
+      { tool: 'AI Renamer', platform: 'Mac & Windows', freeTier: '10', batchRename: true, autoMonitor: false, pricing: '$19 one-time or $10/200 renames' },
+      { tool: 'NameQuick', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: 'From $5/mo (500 renames) or $38 BYOK' },
+      { tool: 'RenameClick', platform: 'Mac & Windows', freeTier: '30/m', batchRename: true, autoMonitor: true, pricing: '$48 lifetime or $8/mo' },
+      { tool: 'Riffo', platform: 'macOS', freeTier: 'Limited', batchRename: true, autoMonitor: false, pricing: 'Freemium' },
     ]}
     faqItems={faqItems}
     relatedPages={[

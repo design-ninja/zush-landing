@@ -74,23 +74,25 @@ const jsonLd = {
 const RenameDocumentsWithAI = () => (
   <FeatureLandingPage
     h1="Rename Documents with AI on macOS"
-    definitionTitle="What is AI document renaming?"
-    definitionText="AI document renaming reads the actual text content of your files — contracts, reports, invoices, presentations — and generates filenames that reflect what the document is about. No more opening dozens of files named 'Document1' or 'download (7)' to find the one you need."
-    beforeAfterExamples={[
-      { before: 'download (7).pdf', after: 'q1-revenue-report-march-2026.pdf' },
-      { before: 'Document1.docx', after: 'project-proposal-client-acme.docx' },
-      { before: 'Untitled spreadsheet.xlsx', after: 'employee-payroll-february-2026.xlsx' },
-      { before: 'presentation_final_v3.pptx', after: 'marketing-strategy-q2-launch.pptx' },
-      { before: 'note.txt', after: 'meeting-notes-product-roadmap-review.txt' },
-    ]}
-    supportedFormats={[
-      'PDF', 'DOCX', 'DOC', 'XLSX', 'PPTX', 'PPT', 'TXT', 'MD', 'CSV', 'EML', 'JSON',
-    ]}
+    definitionTitle="What Is AI Document Renaming?"
+    definitionText="AI document renaming reads the text content of your contracts, reports, and invoices, then generates filenames that reflect what each document is about."
+    showcaseSlides={[{
+      files: [
+        { before: 'download (7).pdf', after: 'Q1 Revenue Report.pdf', type: 'pdf' },
+        { before: 'Document1.docx', after: 'Project Proposal Acme.docx', type: 'doc' },
+        { before: 'Untitled spreadsheet.xlsx', after: 'Employee Payroll Feb.xlsx', type: 'sheet' },
+        { before: 'presentation_final_v3.pptx', after: 'Marketing Strategy Q2.pptx', type: 'slides' },
+        { before: 'note.txt', after: 'Meeting Notes Roadmap.txt', type: 'doc' },
+        { before: 'report_copy.pdf', after: 'Annual Budget Review.pdf', type: 'pdf' },
+      ],
+    }]}
     comparisonRows={[
-      { tool: 'Zush', platform: 'macOS', aiPowered: 'Yes', batchRename: 'Yes', autoMonitor: 'Yes', freeTier: 'Free tier' },
-      { tool: 'Finder', platform: 'macOS', aiPowered: 'No', batchRename: 'Sequential only', autoMonitor: 'No', freeTier: 'Yes' },
-      { tool: 'Automator', platform: 'macOS', aiPowered: 'No', batchRename: 'Pattern-based', autoMonitor: 'No', freeTier: 'Yes' },
-      { tool: 'Manual naming', platform: 'Any', aiPowered: 'No', batchRename: 'No', autoMonitor: 'No', freeTier: 'Yes' },
+      { tool: 'Zush', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: '$10 one-time / 10,000 renames' },
+      { tool: 'Renamer.ai', platform: 'Mac & Windows', freeTier: '15/m', batchRename: true, autoMonitor: true, pricing: 'From $9.95/mo (200 renames)' },
+      { tool: 'AI Renamer', platform: 'Mac & Windows', freeTier: '10', batchRename: true, autoMonitor: false, pricing: '$19 one-time or $10/200 renames' },
+      { tool: 'NameQuick', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: 'From $5/mo (500 renames) or $38 BYOK' },
+      { tool: 'RenameClick', platform: 'Mac & Windows', freeTier: '30/m', batchRename: true, autoMonitor: true, pricing: '$48 lifetime or $8/mo' },
+      { tool: 'Riffo', platform: 'macOS', freeTier: 'Limited', batchRename: true, autoMonitor: false, pricing: 'Freemium' },
     ]}
     faqItems={faqItems}
     relatedPages={[

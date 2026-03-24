@@ -3,25 +3,25 @@ import FeatureLandingPage from '@/components/FeatureLandingPage';
 const AIImageRenamer = () => (
   <FeatureLandingPage
     h1="AI Image Renamer for macOS"
-    definitionTitle="What Makes a Great AI Image Renamer?"
-    definitionText="A good AI image renamer goes beyond simple metadata extraction. It uses vision models to actually look at the image — identifying subjects, scenes, colors, and context — then generates a clear, descriptive filename. The best tools support RAW camera formats, work with batch selections, and let you monitor folders so new images are renamed automatically without manual intervention."
-    beforeAfterExamples={[
-      { before: 'IMG_3847.jpg', after: 'Mountain landscape — autumn foliage at sunrise.jpg' },
-      { before: 'DSC_0192.NEF', after: 'Product flat lay — ceramic coffee mug on linen.nef' },
-      { before: 'Screenshot 2026-03-10 at 14.22.01.png', after: 'Figma mockup — mobile app login screen.png' },
-      { before: 'DCIM_0038.HEIC', after: 'Family dinner — backyard barbecue July 2026.heic' },
-      { before: 'image (12).webp', after: 'Infographic — 2026 social media statistics.webp' },
-    ]}
-    supportedFormats={[
-      'PNG', 'JPG', 'JPEG', 'WEBP', 'GIF', 'HEIC', 'HEIF', 'TIFF', 'BMP', 'SVG', 'PDF',
-      'CR2', 'CR3', 'NEF', 'ARW', 'DNG', 'ORF', 'RAF', 'RW2', 'PEF', 'SRW', 'SR2', 'RAW',
-    ]}
+    definitionTitle="What Is an AI Image Renamer?"
+    definitionText="An AI image renamer uses vision models to understand what's in each photo and generates clear, descriptive filenames automatically."
+    showcaseSlides={[{
+      files: [
+        { before: 'IMG_3847.jpg', after: 'Mountain Autumn Foliage.jpg', img: '/images/examples/mountain.jpg', type: 'image' },
+        { before: 'DSC_0192.NEF', after: 'Coffee Mug On Linen.nef', img: '/images/examples/coffee.jpg', type: 'image' },
+        { before: 'Screenshot 2026-03-10.png', after: 'Mobile App Login Screen.png', img: '/images/examples/dashboard.jpg', type: 'image' },
+        { before: 'DCIM_0038.HEIC', after: 'Backyard Barbecue.heic', img: '/images/examples/food.jpg', type: 'image' },
+        { before: 'image (12).webp', after: 'Social Media Statistics.webp', img: '/images/examples/chart.jpg', type: 'image' },
+        { before: 'CAM_0021.jpg', after: 'City Street At Night.jpg', img: '/images/examples/city.jpg', type: 'image' },
+      ],
+    }]}
     comparisonRows={[
-      { tool: 'Zush', platform: 'macOS (native)', aiPowered: 'Yes (vision + language)', batchRename: 'Yes', autoMonitor: 'Yes', freeTier: 'Free tier' },
-      { tool: 'AI Renamer', platform: 'macOS / Windows', aiPowered: 'Yes', batchRename: 'Yes', autoMonitor: 'No', freeTier: 'Limited trial' },
-      { tool: 'Renamer.ai', platform: 'Web', aiPowered: 'Yes', batchRename: 'Yes', autoMonitor: 'No', freeTier: 'Limited' },
-      { tool: 'WaFile', platform: 'macOS', aiPowered: 'Yes', batchRename: 'Yes', autoMonitor: 'No', freeTier: 'Limited trial' },
-      { tool: 'Cantrips.ai', platform: 'Web', aiPowered: 'Yes', batchRename: 'Yes', autoMonitor: 'No', freeTier: 'Limited' },
+      { tool: 'Zush', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: '$10 one-time / 10,000 renames' },
+      { tool: 'Renamer.ai', platform: 'Mac & Windows', freeTier: '15/m', batchRename: true, autoMonitor: true, pricing: 'From $9.95/mo (200 renames)' },
+      { tool: 'AI Renamer', platform: 'Mac & Windows', freeTier: '10', batchRename: true, autoMonitor: false, pricing: '$19 one-time or $10/200 renames' },
+      { tool: 'NameQuick', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: 'From $5/mo (500 renames) or $38 BYOK' },
+      { tool: 'RenameClick', platform: 'Mac & Windows', freeTier: '30/m', batchRename: true, autoMonitor: true, pricing: '$48 lifetime or $8/mo' },
+      { tool: 'Riffo', platform: 'macOS', freeTier: 'Limited', batchRename: true, autoMonitor: false, pricing: 'Freemium' },
     ]}
     faqItems={[
       {

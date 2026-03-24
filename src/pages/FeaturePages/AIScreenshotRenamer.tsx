@@ -3,21 +3,25 @@ import FeatureLandingPage from '@/components/FeatureLandingPage';
 const AIScreenshotRenamer = () => (
   <FeatureLandingPage
     h1="AI Screenshot Renamer for macOS"
-    definitionTitle="The Screenshot Naming Problem"
-    definitionText="macOS names every screenshot 'Screenshot 2026-03-14 at 10.42.17.png' — a timestamp that tells you nothing about what's in the image. After a few days, your desktop or screenshots folder becomes a wall of identically formatted filenames. An AI screenshot renamer looks at each screenshot, identifies the app, content, and context shown, and replaces that timestamp with a name you can actually search for and recognize."
-    beforeAfterExamples={[
-      { before: 'Screenshot 2026-03-14 at 09.15.33.png', after: 'Slack thread — Q2 roadmap planning discussion.png' },
-      { before: 'Screenshot 2026-03-14 at 11.42.08.png', after: 'VS Code — React component auth error stack trace.png' },
-      { before: 'Screenshot 2026-03-13 at 16.20.45.png', after: 'Chrome — 502 Bad Gateway error page production.png' },
-      { before: 'Screenshot 2026-03-12 at 14.05.22.png', after: 'Figma — mobile checkout flow design review comments.png' },
-      { before: 'Screenshot 2026-03-12 at 10.30.11.png', after: 'Gmail — vendor proposal follow-up from March 12.png' },
-    ]}
+    definitionTitle="What Is an AI Screenshot Renamer?"
+    definitionText="macOS names every screenshot with a timestamp that tells you nothing. An AI screenshot renamer identifies the app and content shown, and replaces it with a searchable name."
+    showcaseSlides={[{
+      files: [
+        { before: 'Screenshot 2026-03-14.png', after: 'Slack Q2 Roadmap.png', img: '/images/examples/workspace.jpg', type: 'image' },
+        { before: 'Screenshot 2026-03-14.png', after: 'VS Code Auth Error.png', img: '/images/examples/dashboard.jpg', type: 'image' },
+        { before: 'Screenshot 2026-03-13.png', after: 'Chrome 502 Error Page.png', img: '/images/examples/diagram.jpg', type: 'image' },
+        { before: 'Screenshot 2026-03-12.png', after: 'Figma Checkout Flow.png', img: '/images/examples/chart.jpg', type: 'image' },
+        { before: 'Screenshot 2026-03-12.png', after: 'Gmail Vendor Follow-Up.png', img: '/images/examples/office.jpg', type: 'image' },
+        { before: 'Screenshot 2026-03-11.png', after: 'Notion Sprint Board.png', img: '/images/examples/building.jpg', type: 'image' },
+      ],
+    }]}
     comparisonRows={[
-      { tool: 'Zush', platform: 'macOS (native)', aiPowered: 'Yes (vision)', batchRename: 'Yes', autoMonitor: 'Yes', freeTier: 'Free tier' },
-      { tool: 'macOS default', platform: 'macOS', aiPowered: 'No', batchRename: 'No', autoMonitor: 'No', freeTier: 'Built-in' },
-      { tool: 'CleanShot X', platform: 'macOS', aiPowered: 'No', batchRename: 'No', autoMonitor: 'No', freeTier: 'No (paid app)' },
-      { tool: 'Automator', platform: 'macOS', aiPowered: 'No', batchRename: 'Rule-based', autoMonitor: 'Limited', freeTier: 'Built-in' },
-      { tool: 'Hazel', platform: 'macOS', aiPowered: 'No', batchRename: 'Rule-based', autoMonitor: 'Yes', freeTier: 'No (paid app)' },
+      { tool: 'Zush', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: '$10 one-time / 10,000 renames' },
+      { tool: 'Renamer.ai', platform: 'Mac & Windows', freeTier: '15/m', batchRename: true, autoMonitor: true, pricing: 'From $9.95/mo (200 renames)' },
+      { tool: 'AI Renamer', platform: 'Mac & Windows', freeTier: '10', batchRename: true, autoMonitor: false, pricing: '$19 one-time or $10/200 renames' },
+      { tool: 'NameQuick', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: 'From $5/mo (500 renames) or $38 BYOK' },
+      { tool: 'RenameClick', platform: 'Mac & Windows', freeTier: '30/m', batchRename: true, autoMonitor: true, pricing: '$48 lifetime or $8/mo' },
+      { tool: 'Riffo', platform: 'macOS', freeTier: 'Limited', batchRename: true, autoMonitor: false, pricing: 'Freemium' },
     ]}
     faqItems={[
       {

@@ -74,21 +74,25 @@ const jsonLd = {
 const RenamePDFWithAI = () => (
   <FeatureLandingPage
     h1="Rename PDF Files with AI on macOS"
-    definitionTitle="What is AI PDF renaming?"
-    definitionText="AI PDF renaming extracts text from your PDF documents and uses artificial intelligence to generate descriptive, searchable filenames. Whether it's a contract, invoice, research paper, or receipt, the AI identifies the document type and key details to create a name that makes sense at a glance."
-    beforeAfterExamples={[
-      { before: 'scan_001.pdf', after: 'invoice-amazon-march-2026.pdf' },
-      { before: 'document.pdf', after: 'employment-contract-acme-corp.pdf' },
-      { before: 'download.pdf', after: 'tax-return-2025-federal-1040.pdf' },
-      { before: 'attachment-3.pdf', after: 'lease-agreement-123-main-street.pdf' },
-      { before: 'IMG_20260310_scan.pdf', after: 'receipt-home-depot-plumbing-supplies.pdf' },
-    ]}
-    supportedFormats={['PDF']}
+    definitionTitle="What Is AI PDF Renaming?"
+    definitionText="AI PDF renaming extracts text from your documents and generates descriptive, searchable filenames - whether it's a contract, invoice, or receipt."
+    showcaseSlides={[{
+      files: [
+        { before: 'scan_001.pdf', after: 'Amazon Invoice March.pdf', type: 'pdf' },
+        { before: 'document.pdf', after: 'Employment Contract.pdf', type: 'pdf' },
+        { before: 'download.pdf', after: 'Tax Return 2025 Federal.pdf', type: 'pdf' },
+        { before: 'attachment-3.pdf', after: 'Lease Agreement 123 Main.pdf', type: 'pdf' },
+        { before: 'IMG_20260310_scan.pdf', after: 'Home Depot Receipt.pdf', type: 'pdf' },
+        { before: 'report_final_v2.pdf', after: 'Q1 Revenue Report.pdf', type: 'pdf' },
+      ],
+    }]}
     comparisonRows={[
-      { tool: 'Zush', platform: 'macOS', aiPowered: 'Yes', batchRename: 'Yes', autoMonitor: 'Yes', freeTier: 'Free tier' },
-      { tool: 'Adobe Acrobat', platform: 'Cross-platform', aiPowered: 'No', batchRename: 'No', autoMonitor: 'No', freeTier: 'No' },
-      { tool: 'Preview', platform: 'macOS', aiPowered: 'No', batchRename: 'No', autoMonitor: 'No', freeTier: 'Yes' },
-      { tool: 'Manual naming', platform: 'Any', aiPowered: 'No', batchRename: 'No', autoMonitor: 'No', freeTier: 'Yes' },
+      { tool: 'Zush', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: '$10 one-time / 10,000 renames' },
+      { tool: 'Renamer.ai', platform: 'Mac & Windows', freeTier: '15/m', batchRename: true, autoMonitor: true, pricing: 'From $9.95/mo (200 renames)' },
+      { tool: 'AI Renamer', platform: 'Mac & Windows', freeTier: '10', batchRename: true, autoMonitor: false, pricing: '$19 one-time or $10/200 renames' },
+      { tool: 'NameQuick', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: 'From $5/mo (500 renames) or $38 BYOK' },
+      { tool: 'RenameClick', platform: 'Mac & Windows', freeTier: '30/m', batchRename: true, autoMonitor: true, pricing: '$48 lifetime or $8/mo' },
+      { tool: 'Riffo', platform: 'macOS', freeTier: 'Limited', batchRename: true, autoMonitor: false, pricing: 'Freemium' },
     ]}
     faqItems={faqItems}
     relatedPages={[

@@ -3,27 +3,25 @@ import FeatureLandingPage from '@/components/FeatureLandingPage';
 const AIFileRenamer = () => (
   <FeatureLandingPage
     h1="AI File Renamer for macOS"
-    definitionTitle="What Makes a Great AI File Renamer?"
-    definitionText="A good AI file renamer doesn't just slap a timestamp on your files — it actually understands what's inside them. The best tools use vision models to read images and text extraction to parse documents, then produce names that are descriptive, consistent, and easy to search. Pricing matters too: one-time purchases beat subscriptions when you're renaming files long-term."
-    beforeAfterExamples={[
-      { before: 'IMG_2087.PNG', after: 'Instagram story mockup — summer campaign gradient.png' },
-      { before: 'final_presentation.pptx', after: 'Series A pitch deck — Q1 2026 financials.pptx' },
-      { before: 'download (7).pdf', after: 'IRS W-9 form — completed and signed.pdf' },
-      { before: 'DCIM_20260301_143022.jpg', after: 'Team offsite group photo — rooftop terrace.jpg' },
-      { before: 'voice-memo.m4a', after: 'Meeting notes audio — product roadmap discussion.m4a' },
-    ]}
-    supportedFormats={[
-      'PNG', 'JPG', 'JPEG', 'WEBP', 'GIF', 'HEIC', 'HEIF', 'TIFF', 'BMP', 'SVG',
-      'PDF', 'RAW', 'CR2', 'NEF', 'ARW',
-      'TXT', 'MD', 'JSON', 'EML', 'CSV',
-      'DOC', 'DOCX', 'PPT', 'PPTX', 'XLSX',
-    ]}
+    definitionTitle="What Is an AI File Renamer?"
+    definitionText="An AI file renamer analyzes what's inside your files — images, documents, PDFs — and generates descriptive, searchable names automatically."
+    showcaseSlides={[{
+      files: [
+        { before: 'IMG_2087.PNG', after: 'Summer Campaign Mockup.png', img: '/images/examples/sunset.jpg', type: 'image' },
+        { before: 'final_presentation.pptx', after: 'Series A Pitch Deck.pptx', type: 'slides' },
+        { before: 'download (7).pdf', after: 'IRS W-9 Form Signed.pdf', type: 'pdf' },
+        { before: 'DCIM_20260301.jpg', after: 'Team Offsite Photo.jpg', img: '/images/examples/building.jpg', type: 'image' },
+        { before: 'budget_v3.xlsx', after: 'Q1 Product Budget.xlsx', type: 'sheet' },
+        { before: 'meeting_notes.docx', after: 'Roadmap Discussion Notes.docx', type: 'doc' },
+      ],
+    }]}
     comparisonRows={[
-      { tool: 'Zush', platform: 'macOS', aiPowered: 'Yes (vision + language)', batchRename: 'Yes', autoMonitor: 'Yes', freeTier: 'Free tier' },
-      { tool: 'AI Renamer', platform: 'macOS / Windows', aiPowered: 'Yes', batchRename: 'Yes', autoMonitor: 'No', freeTier: 'Trial only, subscription' },
-      { tool: 'Renamer.ai', platform: 'Web', aiPowered: 'Yes', batchRename: 'Yes', autoMonitor: 'No', freeTier: 'Credits-based' },
-      { tool: 'WaFile', platform: 'macOS', aiPowered: 'Yes', batchRename: 'Yes', autoMonitor: 'No', freeTier: 'Trial only, subscription' },
-      { tool: 'Finder', platform: 'macOS', aiPowered: 'No', batchRename: 'Basic only', autoMonitor: 'No', freeTier: 'Built-in' },
+      { tool: 'Zush', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: '$10 one-time / 10,000 renames' },
+      { tool: 'Renamer.ai', platform: 'Mac & Windows', freeTier: '15/m', batchRename: true, autoMonitor: true, pricing: 'From $9.95/mo (200 renames)' },
+      { tool: 'AI Renamer', platform: 'Mac & Windows', freeTier: '10', batchRename: true, autoMonitor: false, pricing: '$19 one-time or $10/200 renames' },
+      { tool: 'NameQuick', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: 'From $5/mo (500 renames) or $38 BYOK' },
+      { tool: 'RenameClick', platform: 'Mac & Windows', freeTier: '30/m', batchRename: true, autoMonitor: true, pricing: '$48 lifetime or $8/mo' },
+      { tool: 'Riffo', platform: 'macOS', freeTier: 'Limited', batchRename: true, autoMonitor: false, pricing: 'Freemium' },
     ]}
     faqItems={[
       {

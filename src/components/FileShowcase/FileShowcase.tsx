@@ -2,18 +2,18 @@ import { CSSProperties, useEffect, useState } from "react";
 import { FileSpreadsheet, FileText, FileType2, Presentation } from "lucide-react";
 import styles from "./FileShowcase.module.scss";
 
-interface FileItem {
+export interface FileItem {
   before: string;
   after: string;
   img?: string;
   type: "image" | "doc" | "sheet" | "slides" | "pdf";
 }
 
-interface Slide {
+export interface Slide {
   files: FileItem[];
 }
 
-const slides: Slide[] = [
+const defaultSlides: Slide[] = [
   {
     files: [
       {
@@ -131,7 +131,12 @@ const fileTypeConfig = {
   pdf: { icon: FileType2, label: "PDF", className: styles.FileItem__Preview_pdf },
 } as const;
 
-const FileShowcase = () => {
+interface FileShowcaseProps {
+  slides?: Slide[];
+}
+
+const FileShowcase = ({ slides: customSlides }: FileShowcaseProps = {}) => {
+  const slides = customSlides || defaultSlides;
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
@@ -157,7 +162,7 @@ const FileShowcase = () => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 4000);
     return () => clearInterval(interval);
-  }, [isPaused, prefersReducedMotion]);
+  }, [isPaused, prefersReducedMotion, slides]);
 
   return (
     <div

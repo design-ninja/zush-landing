@@ -4,19 +4,24 @@ const AutoRenameFiles = () => (
   <FeatureLandingPage
     h1="Auto Rename Files on macOS"
     definitionTitle="What Is Automatic File Renaming?"
-    definitionText="Automatic file renaming means your files get renamed without you lifting a finger. You point an app at a folder, and every new file that lands there is analyzed and given a descriptive name on its own. It's the difference between manually renaming each download and having a system that keeps your files organized 24/7."
-    beforeAfterExamples={[
-      { before: 'Screenshot 2026-03-20 at 09.15.32.png', after: 'Figma design — mobile app login screen dark mode.png' },
-      { before: 'IMG_5523.HEIC', after: 'Whiteboard photo — sprint planning user stories.heic' },
-      { before: 'download.pdf', after: 'Amazon order receipt — March 2026 electronics.pdf' },
-      { before: 'Photo-2026-03-18-14-22-01.jpg', after: 'Restaurant menu — Italian place downtown.jpg' },
-      { before: 'Scan 12.pdf', after: 'Medical lab results — blood panel February 2026.pdf' },
-    ]}
+    definitionText="Point an app at a folder and every new file gets analyzed and given a descriptive name automatically. No manual renaming needed."
+    showcaseSlides={[{
+      files: [
+        { before: 'Screenshot 2026-03-20.png', after: 'Figma Login Screen.png', img: '/images/examples/dashboard.jpg', type: 'image' },
+        { before: 'IMG_5523.HEIC', after: 'Whiteboard Sprint Plan.heic', img: '/images/examples/workspace.jpg', type: 'image' },
+        { before: 'download.pdf', after: 'Amazon Order Receipt.pdf', type: 'pdf' },
+        { before: 'Photo-2026-03-18.jpg', after: 'Restaurant Menu Italian.jpg', img: '/images/examples/food.jpg', type: 'image' },
+        { before: 'Scan 12.pdf', after: 'Medical Lab Results.pdf', type: 'pdf' },
+        { before: 'report_draft.docx', after: 'Weekly Status Report.docx', type: 'doc' },
+      ],
+    }]}
     comparisonRows={[
-      { tool: 'Zush', platform: 'macOS', aiPowered: 'Yes (vision + language)', batchRename: 'Yes', autoMonitor: 'Yes', freeTier: 'Free tier' },
-      { tool: 'Automator', platform: 'macOS', aiPowered: 'No', batchRename: 'Scripted only', autoMonitor: 'With Folder Actions', freeTier: 'Built-in' },
-      { tool: 'Hazel', platform: 'macOS', aiPowered: 'No', batchRename: 'Rule-based', autoMonitor: 'Yes', freeTier: 'No (paid app)' },
-      { tool: 'Manual Renaming', platform: 'Any', aiPowered: 'No', batchRename: 'No', autoMonitor: 'No', freeTier: 'Free (your time)' },
+      { tool: 'Zush', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: '$10 one-time / 10,000 renames' },
+      { tool: 'Renamer.ai', platform: 'Mac & Windows', freeTier: '15/m', batchRename: true, autoMonitor: true, pricing: 'From $9.95/mo (200 renames)' },
+      { tool: 'AI Renamer', platform: 'Mac & Windows', freeTier: '10', batchRename: true, autoMonitor: false, pricing: '$19 one-time or $10/200 renames' },
+      { tool: 'NameQuick', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: 'From $5/mo (500 renames) or $38 BYOK' },
+      { tool: 'RenameClick', platform: 'Mac & Windows', freeTier: '30/m', batchRename: true, autoMonitor: true, pricing: '$48 lifetime or $8/mo' },
+      { tool: 'Riffo', platform: 'macOS', freeTier: 'Limited', batchRename: true, autoMonitor: false, pricing: 'Freemium' },
     ]}
     faqItems={[
       {

@@ -3,25 +3,25 @@ import FeatureLandingPage from '@/components/FeatureLandingPage';
 const AIPhotoRenamer = () => (
   <FeatureLandingPage
     h1="AI Photo Renamer for macOS"
-    definitionTitle="The Best AI Photo Renamer: What Photographers Need"
-    definitionText="An AI photo renamer built for photographers needs to do more than just read filenames. It should understand the visual content of each shot — subjects, settings, lighting, composition — and produce names that make a library of thousands immediately searchable. It also needs to handle professional formats like RAW and HEIC natively, support batch processing for large shoots, and offer folder monitoring so imports are renamed on arrival."
-    beforeAfterExamples={[
-      { before: 'DSC_4821.NEF', after: 'Mountain lake reflection — golden hour autumn.nef' },
-      { before: 'IMG_0293.HEIC', after: 'Woman portrait — natural light window studio.heic' },
-      { before: '_MG_1847.CR3', after: 'Wedding ceremony — bride walking down aisle outdoor.cr3' },
-      { before: 'DSCF0092.RAF', after: 'Product shot — leather wallet on dark wood surface.raf' },
-      { before: 'P1000412.RW2', after: 'Street photography — rainy Tokyo crosswalk neon signs.rw2' },
-    ]}
-    supportedFormats={[
-      'JPG', 'JPEG', 'HEIC', 'HEIF', 'PNG', 'TIFF',
-      'CR2', 'CR3', 'NEF', 'ARW', 'DNG', 'ORF', 'RAF', 'RW2', 'PEF', 'SRW', 'SR2', 'RAW',
-    ]}
+    definitionTitle="What Is an AI Photo Renamer?"
+    definitionText="An AI photo renamer analyzes the visual content of each shot and produces searchable filenames. Supports RAW, HEIC, and all major camera formats."
+    showcaseSlides={[{
+      files: [
+        { before: 'DSC_4821.NEF', after: 'Mountain Lake Reflection.nef', img: '/images/examples/nature.jpg', type: 'image' },
+        { before: 'IMG_0293.HEIC', after: 'Woman Portrait Window.heic', img: '/images/examples/office.jpg', type: 'image' },
+        { before: '_MG_1847.CR3', after: 'Wedding Bride Aisle.cr3', img: '/images/examples/flowers.jpg', type: 'image' },
+        { before: 'DSCF0092.RAF', after: 'Leather Wallet Product.raf', img: '/images/examples/coffee.jpg', type: 'image' },
+        { before: 'P1000412.RW2', after: 'Rainy Tokyo Crosswalk.rw2', img: '/images/examples/city.jpg', type: 'image' },
+        { before: 'CAM_3318.jpg', after: 'Cat On Windowsill.jpg', img: '/images/examples/cat.jpg', type: 'image' },
+      ],
+    }]}
     comparisonRows={[
-      { tool: 'Zush', platform: 'macOS (native)', aiPowered: 'Yes (vision)', batchRename: 'Yes', autoMonitor: 'Yes', freeTier: 'Free tier' },
-      { tool: 'Lightroom', platform: 'Cross-platform', aiPowered: 'No', batchRename: 'Template-based', autoMonitor: 'On import', freeTier: 'No (subscription)' },
-      { tool: 'Photo Mechanic', platform: 'Cross-platform', aiPowered: 'No', batchRename: 'Template-based', autoMonitor: 'On ingest', freeTier: 'No (paid app)' },
-      { tool: 'Finder', platform: 'macOS', aiPowered: 'No', batchRename: 'Basic only', autoMonitor: 'No', freeTier: 'Built-in' },
-      { tool: 'Adobe Bridge', platform: 'Cross-platform', aiPowered: 'No', batchRename: 'Template-based', autoMonitor: 'No', freeTier: 'Free with CC' },
+      { tool: 'Zush', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: '$10 one-time / 10,000 renames' },
+      { tool: 'Renamer.ai', platform: 'Mac & Windows', freeTier: '15/m', batchRename: true, autoMonitor: true, pricing: 'From $9.95/mo (200 renames)' },
+      { tool: 'AI Renamer', platform: 'Mac & Windows', freeTier: '10', batchRename: true, autoMonitor: false, pricing: '$19 one-time or $10/200 renames' },
+      { tool: 'NameQuick', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: 'From $5/mo (500 renames) or $38 BYOK' },
+      { tool: 'RenameClick', platform: 'Mac & Windows', freeTier: '30/m', batchRename: true, autoMonitor: true, pricing: '$48 lifetime or $8/mo' },
+      { tool: 'Riffo', platform: 'macOS', freeTier: 'Limited', batchRename: true, autoMonitor: false, pricing: 'Freemium' },
     ]}
     faqItems={[
       {
