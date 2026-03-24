@@ -77,8 +77,8 @@ const Features = () => {
         <SectionHeader
           title={
             <>
-              What <span className={styles.Features__TitleAccent}>Zush</span>{' '}
-              does
+              How <span className={styles.Features__TitleAccent}>Zush</span> AI{' '}
+              Renames Your Files
             </>
           }
           description='Powerful features packed into a simple, elegant interface'

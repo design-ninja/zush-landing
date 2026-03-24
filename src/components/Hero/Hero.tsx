@@ -1,5 +1,6 @@
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense, useState, type ReactNode } from "react";
 import FileShowcase from "../FileShowcase";
+import type { Slide } from "../FileShowcase";
 import Button from "../Button";
 import Heading from "../Heading";
 import Text from "../Text";
@@ -10,7 +11,14 @@ import styles from "./Hero.module.scss";
 
 const MobileDownloadModal = lazy(() => import("../MobileDownloadModal"));
 
-const Hero = () => {
+interface HeroProps {
+  title?: ReactNode;
+  subtitle?: string;
+  slides?: Slide[];
+  as?: "section" | "header";
+}
+
+const Hero = ({ title, subtitle, slides, as: Tag = "section" }: HeroProps) => {
   const isMobile = useIsMobile();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hasLoadedModal, setHasLoadedModal] = useState(false);
@@ -25,17 +33,21 @@ const Hero = () => {
   };
 
   return (
-    <section className={styles.Hero}>
+    <Tag className={styles.Hero}>
       <div className={styles.Hero__Container}>
         <div className={styles.Hero__Intro}>
           <Heading as="h1" className={styles.Hero__Title}>
-            Stop Naming Files.
-            <br />
-            <span className={styles.Hero__TitleAccent}>Let AI Do It.</span>
+            {title ?? (
+              <>
+                Rename Files with AI.
+                <br />
+                <span className={styles.Hero__TitleAccent}>Automatically.</span>
+              </>
+            )}
           </Heading>
           <Text size="xl" color="subtle" className={styles.Hero__Subtitle}>
-            Zush gives your files meaningful AI-powered names — automatically.
-            Find screenshots, documents, PDFs, and downloads in seconds, not minutes.
+            {subtitle ??
+              "The AI file renamer for macOS. Auto rename screenshots, PDFs, documents, and downloads with meaningful names — free to try."}
           </Text>
 
           <div className={styles.Hero__Buttons}>
@@ -85,11 +97,11 @@ const Hero = () => {
         <div
           className={`${styles.Hero__ShowcaseWrapper} ${styles.Hero__ShowcaseMotion}`}
         >
-          <FileShowcase />
+          <FileShowcase slides={slides} />
           <div className={styles.Hero__GlowEffect} />
         </div>
       </div>
-    </section>
+    </Tag>
   );
 };
 

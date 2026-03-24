@@ -124,7 +124,7 @@ const UseCases = () => {
     <section id='use-cases' className={styles.UseCases}>
       <div className={styles.UseCases__Container}>
         <SectionHeader
-          title='Built for Professionals'
+          title='Who Uses AI File Renaming'
           description='From designers to developers — Zush saves hours for everyone who works with files'
         />
 

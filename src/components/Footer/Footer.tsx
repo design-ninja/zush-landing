@@ -48,7 +48,7 @@ const Footer = () => {
           <div>
             <AppLink href="/" className={styles.Footer__Brand}>Zush</AppLink>
             <Text color="subtle" className={styles.Footer__Description}>
-              The AI-powered file organization utility for macOS
+              AI file renamer for macOS — rename files with AI, automatically
             </Text>
             <AppLink
               href={APP_STORE_URL}
