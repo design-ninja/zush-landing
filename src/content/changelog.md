@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.8.2] - 2026-03-26
+
+### Added
+- 📄 Added `.xls` support in document analysis and extraction flows
+- 📬 Added automated Telegram metrics digests for release monitoring
+
+### Improved
+- ⚡ Improved failed-processing retry flow and error visibility
+- 📊 Improved metrics digest calculations and reporting consistency
+
+### Fixed
+- 🛡️ Hardened Paddle webhook signature validation and retry handling
+- 🩹 Reduced noisy monitoring/Sentry events in backend processing
+
 ## [1.8.1] - 2026-03-22
 
 ### Added
