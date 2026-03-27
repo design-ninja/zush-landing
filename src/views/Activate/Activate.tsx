@@ -7,11 +7,13 @@ import PageIcon from '@/components/PageIcon';
 import { DOWNLOAD_URL } from '@/constants';
 import styles from './Activate.module.scss';
 
+interface ActivationParams {
+  token: string;
+  email: string;
+}
+
 const Activate = () => {
-  const [{ token, email }, setActivationParams] = useState({
-    token: '',
-    email: '',
-  });
+  const [activationParams, setActivationParams] = useState<ActivationParams | null>(null);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -20,6 +22,9 @@ const Activate = () => {
       email: params.get('email') || '',
     });
   }, []);
+
+  const token = activationParams?.token || '';
+  const email = activationParams?.email || '';
 
   // Try to open the app automatically
   useEffect(() => {
@@ -35,6 +40,24 @@ const Activate = () => {
       window.location.href = appUrl;
     }
   };
+
+  if (!activationParams) {
+    return (
+      <PageLayout>
+        <PageIcon animated>
+          <ExternalLink size={64} />
+        </PageIcon>
+
+        <h1 className={styles.Activate__Title}>Opening Zush...</h1>
+
+        <p className={styles.Activate__Subtitle}>
+          We're preparing your activation link.
+        </p>
+
+        <BackToHome />
+      </PageLayout>
+    );
+  }
 
   if (!token || !email) {
     return (
