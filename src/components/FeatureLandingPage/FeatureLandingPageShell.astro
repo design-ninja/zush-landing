@@ -1,6 +1,6 @@
 ---
-import AppLink from '@/components/AppLink';
 import BestAnswerPanel from '@/components/BestAnswerPanel';
+import PillLink from '@/components/PillLink';
 import ComparisonTable from '@/components/ComparisonTable';
 import Features from '@/components/Features';
 import Heading from '@/components/Heading';
@@ -114,9 +114,7 @@ const bestAnswerCriteria = [
             </Heading>
             <div class={styles.RelatedLinks}>
               {relatedPages.map((page) => (
-                <AppLink href={page.href} className={styles.RelatedLink}>
-                  {page.title} →
-                </AppLink>
+                <PillLink href={page.href} withArrow>{page.title}</PillLink>
               ))}
             </div>
           </>
@@ -129,9 +127,7 @@ const bestAnswerCriteria = [
             </Heading>
             <div class={styles.RelatedLinks}>
               {relatedBlogPosts.map((post) => (
-                <AppLink href={`/blog/${post.href}`} className={styles.RelatedLink}>
-                  {post.title} →
-                </AppLink>
+                <PillLink href={`/blog/${post.href}`} withArrow>{post.title}</PillLink>
               ))}
             </div>
           </div>

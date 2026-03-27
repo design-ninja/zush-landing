@@ -10,8 +10,12 @@
 
 .TrustSignals__Header {
   max-width: 52rem;
-  margin: 0 auto 1.3rem;
+  margin: 0 auto 1.9rem;
   text-align: center;
+
+  h2 {
+    margin-bottom: 1.05rem;
+  }
 }
 
 .TrustSignals__Grid {
@@ -27,12 +31,17 @@
 .TrustCard {
   border: 1px solid var(--border);
   border-radius: 1rem;
-  padding: 1rem 1.05rem;
+  padding: 1.15rem 1.2rem;
   background: var(--card);
 
   h3 {
-    margin: 0 0 0.5rem;
-    font-size: 1.02rem;
+    margin: 0 0 0.62rem;
+    font-size: 1.28rem;
+    line-height: 1.2;
+
+    @include mobile {
+      font-size: 1.18rem;
+    }
   }
 
   p {

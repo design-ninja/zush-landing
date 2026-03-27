@@ -1,0 +1,36 @@
+@use 'src/styles/variables' as *;
+@use 'src/styles/mixins' as *;
+
+.PillLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid var(--border);
+  border-radius: $radius-full;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 550;
+  transition: background $transition-fast, color $transition-fast, border-color $transition-fast;
+
+  &:hover {
+    background: var(--primary-soft);
+    border-color: var(--primary-hover);
+    color: var(--primary-hover);
+  }
+}
+
+.PillLink_md {
+  padding: 0.4rem 0.85rem;
+  font-size: 0.875rem;
+  line-height: 1.2;
+}
+
+.PillLink_sm {
+  padding: 0.45rem 0.8rem;
+  font-size: 0.8rem;
+  line-height: 1.1;
+}
+
+.PillLink__Arrow {
+  line-height: 1;
+}

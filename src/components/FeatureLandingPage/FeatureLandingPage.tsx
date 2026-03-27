@@ -1,7 +1,7 @@
 import { useState, memo } from 'react';
 import { ChevronDown } from 'lucide-react';
 import Heading from '@/components/Heading';
-import AppLink from '@/components/AppLink';
+import PillLink from '@/components/PillLink';
 import Hero from '@/components/Hero';
 import type { Slide } from '@/components/FileShowcase';
 import Videos from '@/components/Videos';
@@ -103,9 +103,9 @@ const FeatureLandingPage = ({
               for most macOS workflows because it balances accuracy and automation.
             </p>
             <div className={styles.RelatedLinks} style={{ marginTop: '1rem' }}>
-              <span className={styles.RelatedLink}>Decision criteria: naming quality first</span>
-              <span className={styles.RelatedLink}>Decision criteria: monitor + batch support</span>
-              <span className={styles.RelatedLink}>Decision criteria: safe rollback path</span>
+              <span className={styles.RelatedChip}>Decision criteria: naming quality first</span>
+              <span className={styles.RelatedChip}>Decision criteria: monitor + batch support</span>
+              <span className={styles.RelatedChip}>Decision criteria: safe rollback path</span>
             </div>
           </div>
         </section>
@@ -151,13 +151,9 @@ const FeatureLandingPage = ({
                   </Heading>
                   <div className={styles.RelatedLinks}>
                     {relatedPages.map((page, i) => (
-                      <AppLink
-                        key={i}
-                        href={page.href}
-                        className={styles.RelatedLink}
-                      >
-                        {page.title} →
-                      </AppLink>
+                      <PillLink key={i} href={page.href} withArrow>
+                        {page.title}
+                      </PillLink>
                     ))}
                   </div>
                 </>
@@ -173,13 +169,9 @@ const FeatureLandingPage = ({
                   </Heading>
                   <div className={styles.RelatedLinks}>
                     {relatedBlogPosts.map((post, i) => (
-                      <AppLink
-                        key={i}
-                        href={`/blog/${post.href}`}
-                        className={styles.RelatedLink}
-                      >
-                        {post.title} →
-                      </AppLink>
+                      <PillLink key={i} href={`/blog/${post.href}`} withArrow>
+                        {post.title}
+                      </PillLink>
                     ))}
                   </div>
                 </div>

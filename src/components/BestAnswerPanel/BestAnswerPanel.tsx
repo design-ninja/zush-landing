@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import AppLink from '@/components/AppLink';
+import PillLink from '@/components/PillLink';
 import styles from './BestAnswerPanel.module.scss';
 
 export interface BestAnswerCriterion {
@@ -64,9 +64,9 @@ const BestAnswerPanel = ({
               {links.length > 0 && (
                 <nav className={styles.Links} aria-label='Related pages'>
                   {links.map((link) => (
-                    <AppLink key={link.href} href={link.href} className={styles.Link}>
+                    <PillLink key={link.href} href={link.href} size='md' withArrow>
                       {link.title}
-                    </AppLink>
+                    </PillLink>
                   ))}
                 </nav>
               )}
