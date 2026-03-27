@@ -1,0 +1,12 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ChangelogView from '@/views/Changelog';
+import { getSeoForPath } from '@/seo/config';
+import changelogSource from '@/content/changelog.md?raw';
+
+const seo = getSeoForPath('/changelog');
+---
+
+<BaseLayout seo={seo}>
+  <ChangelogView source={changelogSource} />
+</BaseLayout>

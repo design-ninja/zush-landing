@@ -1,10 +1,10 @@
 ---
 title: "How to Rename Files with AI: Complete Guide (2026)"
-description: Learn how to rename files with AI using content-aware tools that generate descriptive filenames from images, PDFs, and documents automatically.
-date: 2026-03-23
-slug: rename-files-with-ai-guide
-tags: rename files with ai, ai file renaming, ai rename tool, file organization, productivity
-tldr: AI file renaming uses content analysis to generate descriptive filenames automatically. It replaces manual renaming for screenshots, photos, PDFs, and documents with names you can actually search for.
+description: "Learn how to rename files with AI using content-aware tools that generate descriptive filenames from images, PDFs, and documents automatically."
+date: "2026-03-23"
+slug: "rename-files-with-ai-guide"
+tags: "rename files with ai, ai file renaming, ai rename tool, file organization, productivity"
+tldr: "AI file renaming uses content analysis to generate descriptive filenames automatically. It replaces manual renaming for screenshots, photos, PDFs, and documents with names you can actually search for."
 ---
 
 Most files arrive with useless names. Screenshots get timestamps. Photos get camera codes. Downloads get hashes or sequence numbers. You end up with a folder full of files you cannot find without opening each one.

@@ -1,0 +1,11 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Home from '@/views/Home';
+import { getSeoForPath, HOME_JSON_LD } from '@/seo/config';
+
+const seo = getSeoForPath('/');
+---
+
+<BaseLayout seo={seo} jsonLd={HOME_JSON_LD}>
+  <Home client:load />
+</BaseLayout>

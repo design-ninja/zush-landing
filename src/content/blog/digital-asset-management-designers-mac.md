@@ -1,10 +1,10 @@
 ---
 title: "Digital Asset Management for Designers on Mac"
-description: Learn practical digital asset management for designers on Mac using naming conventions, folders, and searchable exports.
-date: 2026-02-26
-slug: digital-asset-management-designers-mac
-tags: digital asset management, designer file organization, manage design files mac, DAM for designers, design workflow
-tldr: Good digital asset management for designers on Mac means files are easy to find, versions are clear, and exports are named well enough for reuse and collaboration.
+description: "Learn practical digital asset management for designers on Mac using naming conventions, folders, and searchable exports."
+date: "2026-02-26"
+slug: "digital-asset-management-designers-mac"
+tags: "digital asset management, designer file organization, manage design files mac, DAM for designers, design workflow"
+tldr: "Good digital asset management for designers on Mac means files are easy to find, versions are clear, and exports are named well enough for reuse and collaboration."
 ---
 
 Digital asset management for designers on Mac is really about one question: can you find the right file fast without guessing? If the answer is no, the problem is usually weak naming, mixed exports, and inconsistent project structure.

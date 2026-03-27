@@ -130,6 +130,7 @@ const fileTypeConfig = {
   slides: { icon: Presentation, label: "PPTX", className: styles.FileItem__Preview_slides },
   pdf: { icon: FileType2, label: "PDF", className: styles.FileItem__Preview_pdf },
 } as const;
+type NonImageFileType = Exclude<FileItem['type'], 'image'>;
 
 interface FileShowcaseProps {
   slides?: Slide[];
@@ -172,7 +173,7 @@ const FileShowcase = ({ slides: customSlides }: FileShowcaseProps = {}) => {
     >
       <div key={currentSlide} className={styles.FileShowcase__Grid}>
         {slides[currentSlide].files.map((file, i) => {
-          const isPriority = currentSlide === 0 && i < 4;
+          const isPriority = currentSlide === 0 && file.type === "image";
           const itemStyle = {
             "--item-delay": `${i * 80}ms`,
           } as CSSProperties;
@@ -201,18 +202,21 @@ const FileShowcase = ({ slides: customSlides }: FileShowcaseProps = {}) => {
                   />
                 </picture>
               ) : (
-                <div
-                  className={`${styles.FileItem__Preview} ${fileTypeConfig[file.type].className}`}
-                  aria-hidden="true"
-                >
-                  {(() => {
-                    const Icon = fileTypeConfig[file.type].icon;
-                    return <Icon size={26} strokeWidth={2.1} />;
-                  })()}
-                  <span className={styles.FileItem__Badge}>
-                    {fileTypeConfig[file.type].label}
-                  </span>
-                </div>
+                (() => {
+                  const fileType = file.type as NonImageFileType;
+                  const preview = fileTypeConfig[fileType];
+                  const Icon = preview.icon;
+
+                  return (
+                    <div
+                      className={`${styles.FileItem__Preview} ${preview.className}`}
+                      aria-hidden="true"
+                    >
+                      <Icon size={26} strokeWidth={2.1} />
+                      <span className={styles.FileItem__Badge}>{preview.label}</span>
+                    </div>
+                  );
+                })()
               )}
               <div className={styles.FileItem__Content}>
                 <div className={styles.FileItem__Before}>{file.before}</div>

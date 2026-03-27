@@ -1,10 +1,10 @@
 ---
 title: "How AI Image Recognition Works: A Simple Explanation"
-description: Understand how AI image recognition works and how modern vision models turn pixels into useful descriptions.
-date: 2026-02-18
-slug: how-ai-image-recognition-works
-tags: AI image recognition, computer vision, neural networks, image recognition technology, machine learning
-tldr: AI image recognition works by turning pixels into patterns, then into objects, scenes, and context using neural networks trained on very large image datasets.
+description: "Understand how AI image recognition works and how modern vision models turn pixels into useful descriptions."
+date: "2026-02-18"
+slug: "how-ai-image-recognition-works"
+tags: "AI image recognition, computer vision, neural networks, image recognition technology, machine learning"
+tldr: "AI image recognition works by turning pixels into patterns, then into objects, scenes, and context using neural networks trained on very large image datasets."
 ---
 
 AI image recognition works by taking an image full of pixels and finding patterns that correspond to objects, scenes, text, and relationships. Modern models do not “see” like humans, but they are very good at learning visual structure from massive datasets.

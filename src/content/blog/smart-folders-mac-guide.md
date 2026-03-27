@@ -1,10 +1,10 @@
 ---
 title: "Smart Folders on Mac: The Complete Guide to Automatic Organization"
-description: Learn how Smart Folders on Mac work and how to use them for dynamic file organization without moving the original files.
-date: 2026-02-10
-slug: smart-folders-mac-guide
-tags: Smart Folders mac, create Smart Folder macOS, automatic folder organization, Finder Smart Folder, file management
-tldr: Smart Folders are saved searches in Finder that dynamically group files by criteria like kind, date, name, or tags without changing where the originals live.
+description: "Learn how Smart Folders on Mac work and how to use them for dynamic file organization without moving the original files."
+date: "2026-02-10"
+slug: "smart-folders-mac-guide"
+tags: "Smart Folders mac, create Smart Folder macOS, automatic folder organization, Finder Smart Folder, file management"
+tldr: "Smart Folders are saved searches in Finder that dynamically group files by criteria like kind, date, name, or tags without changing where the originals live."
 ---
 
 Smart Folders on Mac are not normal folders. They are saved searches that show files matching your criteria in real time. That means one file can appear in several Smart Folders without being duplicated.

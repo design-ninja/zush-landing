@@ -1,10 +1,10 @@
 ---
-title: AI Image Renamer for Mac: What It Is and the Best Way to Use One
-description: Learn what an AI image renamer for Mac does, when it is useful, and how to use one for screenshots, photos, downloads, and documents like PDFs.
-date: 2026-03-12
-slug: ai-image-renamer-for-mac
-tags: ai image renamer mac, image renamer mac, rename images automatically, mac productivity, ai file renamer mac
-tldr: An AI image renamer for Mac analyzes the content of screenshots, photos, and downloads, then generates descriptive filenames that are easier to search, sort, and keep organized. Zush also supports PDFs, Word docs, spreadsheets, and other document formats.
+title: "AI Image Renamer for Mac: What It Is and the Best Way to Use One"
+description: "Learn what an AI image renamer for Mac does, when it is useful, and how to use one for screenshots, photos, downloads, and documents like PDFs."
+date: "2026-03-12"
+slug: "ai-image-renamer-for-mac"
+tags: "ai image renamer mac, image renamer mac, rename images automatically, mac productivity, ai file renamer mac"
+tldr: "An AI image renamer for Mac analyzes the content of screenshots, photos, and downloads, then generates descriptive filenames that are easier to search, sort, and keep organized. Zush also supports PDFs, Word docs, spreadsheets, and other document formats."
 ---
 
 An AI image renamer for Mac is a tool that looks at an image, understands what it contains, and creates a filename based on that content. That is what separates it from Finder's built-in rename feature, which can only change text patterns.

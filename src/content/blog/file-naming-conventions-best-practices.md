@@ -1,10 +1,10 @@
 ---
 title: "File Naming Conventions: Best Practices for Any Workflow"
-description: Learn practical file naming conventions that improve search, sorting, and collaboration across images, documents, and creative work.
-date: 2026-03-05
-slug: file-naming-conventions-best-practices
-tags: file naming conventions, file naming best practices, naming convention guide, file organization
-tldr: A good file naming convention is simple, descriptive, and consistent: lowercase words, predictable separators, ISO dates when needed, and no vague names like `final-final-v2`.
+description: "Learn practical file naming conventions that improve search, sorting, and collaboration across images, documents, and creative work."
+date: "2026-03-05"
+slug: "file-naming-conventions-best-practices"
+tags: "file naming conventions, file naming best practices, naming convention guide, file organization"
+tldr: "A good file naming convention is simple, descriptive, and consistent: lowercase words, predictable separators, ISO dates when needed, and no vague names like `final-final-v2`."
 ---
 
 A solid file naming convention saves time every time you search, sort, or share a file. The best convention is not the cleverest one. It is the one you can apply consistently across real work.

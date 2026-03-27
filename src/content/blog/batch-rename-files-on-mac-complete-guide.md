@@ -1,10 +1,10 @@
 ---
-title: Batch Rename Files on Mac: Complete Guide
-description: Learn the best ways to batch rename files on Mac using Finder, Automator, scripts, and AI-powered file renaming.
-date: 2026-02-08
-slug: batch-rename-files-on-mac-complete-guide
-tags: batch rename files mac, rename multiple files mac, Finder batch rename, automatic file renaming, mac file organization
-tldr: The best batch rename method on Mac depends on the job: Finder for simple edits, Automator for repeatable rules, scripts for power users, and AI tools for content-aware file naming.
+title: "Batch Rename Files on Mac: Complete Guide"
+description: "Learn the best ways to batch rename files on Mac using Finder, Automator, scripts, and AI-powered file renaming."
+date: "2026-02-08"
+slug: "batch-rename-files-on-mac-complete-guide"
+tags: "batch rename files mac, rename multiple files mac, Finder batch rename, automatic file renaming, mac file organization"
+tldr: "The best batch rename method on Mac depends on the job: Finder for simple edits, Automator for repeatable rules, scripts for power users, and AI tools for content-aware file naming."
 ---
 
 Batch renaming files on Mac is easy when the rename rule is simple and much harder when every file needs a different descriptive name. That is why there is no single best tool for every situation.

@@ -1,10 +1,10 @@
 ---
 title: "AI Photo Renamer: Stop Using IMG_ Filenames Forever"
-description: Learn how an AI photo renamer replaces generic IMG_ filenames with descriptive names by analyzing what each photo actually shows.
-date: 2026-03-23
-slug: ai-photo-renamer-guide
-tags: ai photo renamer, rename photos with ai, IMG filenames, photo organization, batch rename photos, macOS
-tldr: An AI photo renamer uses vision models to analyze each image and generate descriptive filenames, replacing generic camera names like IMG_4382.HEIC with titles that describe the actual subject and scene.
+description: "Learn how an AI photo renamer replaces generic IMG_ filenames with descriptive names by analyzing what each photo actually shows."
+date: "2026-03-23"
+slug: "ai-photo-renamer-guide"
+tags: "ai photo renamer, rename photos with ai, IMG filenames, photo organization, batch rename photos, macOS"
+tldr: "An AI photo renamer uses vision models to analyze each image and generate descriptive filenames, replacing generic camera names like IMG_4382.HEIC with titles that describe the actual subject and scene."
 ---
 
 Every camera and smartphone on the planet names photos the same way: a short prefix followed by a sequential number. `IMG_4382.HEIC`. `DSC_0019.NEF`. `P1050233.CR2`. The device captures a sunset, a contract, a child's birthday party, and a product prototype, and gives them all equally meaningless names.

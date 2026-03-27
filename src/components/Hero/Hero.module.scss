@@ -1,12 +1,12 @@
-@use "@/styles/variables" as *;
-@use "@/styles/mixins" as *;
+@use "src/styles/variables" as *;
+@use "src/styles/mixins" as *;
 
 .Hero {
-    padding: 6.25rem 0 3.75rem;
+    padding: 9.5rem 0 3.75rem;
     overflow-x: clip;
 
     @include mobile {
-        padding: 3.75rem 0 2.5rem;
+        padding: 4.8rem 0 2.5rem;
     }
 
     &__Container {

@@ -1,10 +1,10 @@
 ---
 title: "Photo Backup Strategy for Mac: Never Lose a Photo Again"
-description: Learn a reliable photo backup strategy for Mac so your images survive drive failures, accidental deletion, and sync mistakes.
-date: 2026-02-24
-slug: photo-backup-strategy-mac
-tags: photo backup mac, backup photos mac, photo storage strategy, photo archive, macOS backup
-tldr: The safest photo backup strategy for Mac is a version of the 3-2-1 rule: multiple copies, multiple media types, and at least one copy outside your main machine.
+description: "Learn a reliable photo backup strategy for Mac so your images survive drive failures, accidental deletion, and sync mistakes."
+date: "2026-02-24"
+slug: "photo-backup-strategy-mac"
+tags: "photo backup mac, backup photos mac, photo storage strategy, photo archive, macOS backup"
+tldr: "The safest photo backup strategy for Mac is a version of the 3-2-1 rule: multiple copies, multiple media types, and at least one copy outside your main machine."
 ---
 
 If your photo backup strategy for Mac is “they are on my laptop and in the cloud somewhere,” you do not really have a backup strategy. Photos need redundancy, not hope.

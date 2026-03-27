@@ -1,10 +1,10 @@
 ---
 title: "AI Document Renamer: How to Auto-Name Docs, PDFs & Spreadsheets"
-description: Learn how an AI document renamer analyzes content to replace generic filenames across PDFs, DOCX, XLSX, and more on Mac.
-date: 2026-03-23
-slug: ai-document-renamer-guide
-tags: ai document renamer, rename documents with ai, document organization, macOS, batch rename documents
-tldr: An AI document renamer reads the content of your PDFs, Word docs, and spreadsheets to generate descriptive filenames automatically, replacing vague names like document (3).pdf with something searchable and useful.
+description: "Learn how an AI document renamer analyzes content to replace generic filenames across PDFs, DOCX, XLSX, and more on Mac."
+date: "2026-03-23"
+slug: "ai-document-renamer-guide"
+tags: "ai document renamer, rename documents with ai, document organization, macOS, batch rename documents"
+tldr: "An AI document renamer reads the content of your PDFs, Word docs, and spreadsheets to generate descriptive filenames automatically, replacing vague names like document (3).pdf with something searchable and useful."
 ---
 
 Documents are supposed to be the most important files on your computer. Contracts, invoices, reports, tax filings, lecture notes, project proposals. Yet most of them sit in folders under names like `document (3).pdf`, `Untitled.docx`, or `export_final_v2.xlsx`. The content is critical, but the filename is throwaway.

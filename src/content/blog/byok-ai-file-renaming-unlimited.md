@@ -1,10 +1,10 @@
 ---
 title: "BYOK: How to Get Unlimited AI File Renames with Your Own API Key"
-description: Learn how to use your own API key for unlimited AI file renaming in Zush. Compare Gemini, Groq, OpenAI, and Claude providers with cost breakdowns.
-date: 2026-03-23
-slug: byok-ai-file-renaming-unlimited
-tags: unlimited ai file renaming, bring your own key file renamer, BYOK AI renamer, API key file renaming, Zush BYOK setup
-tldr: Zush's BYOK feature lets you connect your own API key from Gemini, Groq, OpenAI, or Claude for unlimited AI file renaming. Two of the four providers offer free tiers, and paid usage costs roughly $0.001 per rename or less.
+description: "Learn how to use your own API key for unlimited AI file renaming in Zush. Compare Gemini, Groq, OpenAI, and Claude providers with cost breakdowns."
+date: "2026-03-23"
+slug: "byok-ai-file-renaming-unlimited"
+tags: "unlimited ai file renaming, bring your own key file renamer, BYOK AI renamer, API key file renaming, Zush BYOK setup"
+tldr: "Zush's BYOK feature lets you connect your own API key from Gemini, Groq, OpenAI, or Claude for unlimited AI file renaming. Two of the four providers offer free tiers, and paid usage costs roughly $0.001 per rename or less."
 ---
 
 Zush includes 50 free AI renames per month on the free plan, and 10,000 renames with the Pro plan at $10 one-time. For most people, that is more than enough. But if you process large photo libraries, manage client assets at scale, or simply want to remove any cap entirely, there is a third option: bring your own API key.

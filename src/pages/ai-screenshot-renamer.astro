@@ -1,0 +1,14 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import FeatureLandingPageShell from '@/components/FeatureLandingPage/FeatureLandingPageShell.astro';
+import { getFeaturePageProps } from '@/utils/featurePageProps';
+import AIScreenshotRenamer from '@/views/FeaturePages/AIScreenshotRenamer';
+import { getSeoForPath } from '@/seo/config';
+
+const seo = getSeoForPath('/ai-screenshot-renamer');
+const featurePage = getFeaturePageProps(AIScreenshotRenamer);
+---
+
+<BaseLayout seo={seo} jsonLd={featurePage.jsonLd}>
+  <FeatureLandingPageShell {...featurePage} />
+</BaseLayout>

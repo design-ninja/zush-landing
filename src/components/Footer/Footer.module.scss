@@ -1,5 +1,5 @@
-@use '@/styles/variables' as *;
-@use '@/styles/mixins' as *;
+@use 'src/styles/variables' as *;
+@use 'src/styles/mixins' as *;
 
 .Footer {
     padding: 4rem 0 2rem;
@@ -110,5 +110,17 @@
         &:hover {
             color: var(--primary);
         }
+    }
+
+    &__VisuallyHidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
     }
 }

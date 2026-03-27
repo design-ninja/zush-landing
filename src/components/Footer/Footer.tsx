@@ -55,18 +55,26 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               className={styles.Footer__AppStore}
+              aria-label="Download Zush on the App Store"
             >
               <img
                 src="/images/download-from-appstore.svg"
                 alt="Download on the App Store"
                 className={styles.Footer__AppStoreImg}
+                width={156}
+                height={40}
+                loading="lazy"
+                decoding="async"
               />
             </AppLink>
           </div>
           <div>
             <Heading as="h4" className={styles.Footer__SectionTitle}>Product</Heading>
             <ul className={styles.Footer__Links}>
-              <li><AppLink href="/#features" className={styles.Footer__Link}>Features</AppLink></li>
+              <li><AppLink href="/ai-file-renamer" className={styles.Footer__Link}>AI File Renamer</AppLink></li>
+              <li><AppLink href="/auto-rename-files" className={styles.Footer__Link}>Auto Rename Files</AppLink></li>
+              <li><AppLink href="/rename-documents-with-ai" className={styles.Footer__Link}>Rename Documents</AppLink></li>
+              <li><AppLink href="/rename-screenshots-with-ai" className={styles.Footer__Link}>Rename Screenshots</AppLink></li>
               <li><AppLink href="/#pricing" className={styles.Footer__Link}>Pricing</AppLink></li>
               <li><AppLink href="/changelog" className={styles.Footer__Link}>Changelog</AppLink></li>
               <li><AppLink href="/blog" className={styles.Footer__Link}>Blog</AppLink></li>
@@ -85,6 +93,7 @@ const Footer = () => {
             <ul className={styles.Footer__Links}>
               <li><AppLink href={`mailto:${SUPPORT_EMAIL}`} className={styles.Footer__Link}>Contact Support</AppLink></li>
               <li><AppLink href="/byok-setup" className={styles.Footer__Link}>BYOK Setup Guide</AppLink></li>
+              <li><AppLink href="/methodology" className={styles.Footer__Link}>Methodology & Benchmarks</AppLink></li>
               <li>
                 <AppLink
                   href="https://zush.canny.io"
@@ -109,6 +118,7 @@ const Footer = () => {
               aria-label="Follow us on X"
             >
               <XIcon size={24} />
+              <span className={styles.Footer__VisuallyHidden}>Follow us on X</span>
             </AppLink>
             <AppLink
               href="https://www.youtube.com/@zushapp"
@@ -118,6 +128,7 @@ const Footer = () => {
               aria-label="Follow us on YouTube"
             >
               <YouTubeIcon size={24} />
+              <span className={styles.Footer__VisuallyHidden}>Follow us on YouTube</span>
             </AppLink>
             <AppLink
               href="https://www.producthunt.com/products/zush"
@@ -127,6 +138,7 @@ const Footer = () => {
               aria-label="Zush on Product Hunt"
             >
               <ProductHuntIcon size={24} />
+              <span className={styles.Footer__VisuallyHidden}>Zush on Product Hunt</span>
             </AppLink>
           </div>
           <div className={styles.Footer__BottomLinks}>

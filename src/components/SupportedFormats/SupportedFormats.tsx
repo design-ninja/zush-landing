@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { APP_CONFIG } from '@/constants';
 import Heading from '../Heading';
 import SectionHeader from '../SectionHeader';
@@ -16,13 +15,7 @@ const SupportedFormats = () => (
     <div className={styles.SupportedFormats__Container}>
       <SectionHeader title='Supported File Formats' />
 
-      <motion.div
-        className={styles.SupportedFormats__Group}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-50px' }}
-        transition={{ duration: 0.5 }}
-      >
+      <div className={styles.SupportedFormats__Group}>
         <Heading as='h4' align='center' className={styles.SupportedFormats__GroupTitle}>Images</Heading>
         <div className={styles.SupportedFormats__Tags}>
           {imageFormats.map((format) => (
@@ -31,15 +24,9 @@ const SupportedFormats = () => (
             </span>
           ))}
         </div>
-      </motion.div>
+      </div>
 
-      <motion.div
-        className={styles.SupportedFormats__Group}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-50px' }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-      >
+      <div className={styles.SupportedFormats__Group}>
         <Heading as='h4' align='center' className={styles.SupportedFormats__GroupTitle}>Documents</Heading>
         <div className={styles.SupportedFormats__Tags}>
           {documentFormats.map((format) => (
@@ -48,7 +35,7 @@ const SupportedFormats = () => (
             </span>
           ))}
         </div>
-      </motion.div>
+      </div>
     </div>
   </section>
 );

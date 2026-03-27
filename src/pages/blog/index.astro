@@ -1,0 +1,11 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogList from '@/views/Blog/BlogList';
+import { getSeoForPath } from '@/seo/config';
+
+const seo = getSeoForPath('/blog');
+---
+
+<BaseLayout seo={seo}>
+  <BlogList />
+</BaseLayout>

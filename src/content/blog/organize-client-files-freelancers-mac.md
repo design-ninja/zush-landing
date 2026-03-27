@@ -1,10 +1,10 @@
 ---
-title: How to Organize Client Files as a Freelancer on Mac
-description: Learn how freelancers can organize client files on Mac using a simple folder structure, naming system, and content-aware rename workflow.
-date: 2026-02-14
-slug: organize-client-files-freelancers-mac
-tags: freelancer file organization, client files mac, file naming, mac productivity
-tldr: Freelancers need client file systems that are simple enough to maintain under pressure: one repeatable folder structure, consistent naming, and a fast workflow for screenshots, PDFs, and client assets.
+title: "How to Organize Client Files as a Freelancer on Mac"
+description: "Learn how freelancers can organize client files on Mac using a simple folder structure, naming system, and content-aware rename workflow."
+date: "2026-02-14"
+slug: "organize-client-files-freelancers-mac"
+tags: "freelancer file organization, client files mac, file naming, mac productivity"
+tldr: "Freelancers need client file systems that are simple enough to maintain under pressure: one repeatable folder structure, consistent naming, and a fast workflow for screenshots, PDFs, and client assets."
 ---
 
 Freelancer file organization on Mac breaks down for one reason: every client brings different files, different deadlines, and different expectations, but most people manage them with whatever folder structure happens to exist that week.

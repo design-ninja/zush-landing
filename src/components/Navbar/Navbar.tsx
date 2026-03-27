@@ -16,7 +16,8 @@ const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
       <div className={styles.Navbar__Container}>
         <Logo />
         <div className={styles.Navbar__Actions}>
-          <AppLink href="/#features" className={styles.Navbar__Link}>Features</AppLink>
+          <AppLink href="/ai-file-renamer" className={styles.Navbar__Link}>AI Renamer</AppLink>
+          <AppLink href="/auto-rename-files" className={styles.Navbar__Link}>Auto Rename</AppLink>
           <AppLink href="/#pricing" className={styles.Navbar__Link}>Pricing</AppLink>
           <AppLink href="/#faq" className={styles.Navbar__Link}>FAQ</AppLink>
           <button onClick={toggleTheme} className={styles.Navbar__ThemeToggle} aria-label="Toggle theme">

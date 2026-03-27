@@ -1,0 +1,14 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import FeatureLandingPageShell from '@/components/FeatureLandingPage/FeatureLandingPageShell.astro';
+import { getFeaturePageProps } from '@/utils/featurePageProps';
+import AutoRenameFilesView from '@/views/FeaturePages/AutoRenameFiles';
+import { getSeoForPath } from '@/seo/config';
+
+const seo = getSeoForPath('/auto-rename-files');
+const featurePage = getFeaturePageProps(AutoRenameFilesView);
+---
+
+<BaseLayout seo={seo} jsonLd={featurePage.jsonLd}>
+  <FeatureLandingPageShell {...featurePage} />
+</BaseLayout>

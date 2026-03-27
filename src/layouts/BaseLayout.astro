@@ -1,0 +1,148 @@
+---
+import type { SeoMeta } from '@/seo/config';
+import { DEFAULT_OG_IMAGE, FEATURE_ROUTES, getCanonicalUrl } from '@/seo/config';
+import ThemeNavbar from '@/components/chrome/ThemeNavbar';
+import CheckoutAutoOpenBridge from '@/components/chrome/CheckoutAutoOpenBridge';
+import Footer from '@/components/Footer';
+import Analytics from '@vercel/analytics/astro';
+import '@/styles/main.scss';
+
+interface Props {
+  seo: SeoMeta;
+  jsonLd?: object | object[];
+  includeChrome?: boolean;
+}
+
+const {
+  seo,
+  jsonLd,
+  includeChrome = true,
+} = Astro.props;
+
+const canonicalUrl = getCanonicalUrl(seo.canonicalPath);
+const ldItems = (Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [])
+  .filter(Boolean);
+const isHomePage = seo.canonicalPath === '/';
+const isFeaturePage = FEATURE_ROUTES.includes(
+  seo.canonicalPath as (typeof FEATURE_ROUTES)[number],
+);
+const needsTopOffset = includeChrome && !isHomePage && !isFeaturePage;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>{seo.title}</title>
+    <meta name="description" content={seo.description} />
+    <meta name="robots" content={seo.robots} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+
+    <meta property="og:type" content={seo.ogType ?? 'website'} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="Zush" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content={seo.title} />
+    <meta property="og:description" content={seo.description} />
+    <meta property="og:image" content={DEFAULT_OG_IMAGE} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Zush — AI File Renamer for macOS" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={seo.title} />
+    <meta name="twitter:description" content={seo.description} />
+    <meta name="twitter:image" content={DEFAULT_OG_IMAGE} />
+    <meta name="twitter:image:alt" content="Zush — AI File Renamer for macOS" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Outfit:wght@100..900&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Outfit:wght@100..900&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+
+    {
+      ldItems.map((item) => (
+        <script
+          type="application/ld+json"
+          is:inline
+          set:html={JSON.stringify(item)}
+        />
+      ))
+    }
+  </head>
+  <body>
+    <div class="site-shell">
+      <a class="skip-link" href="#main-content">Skip to content</a>
+      {includeChrome && <ThemeNavbar client:load />}
+      {includeChrome && <CheckoutAutoOpenBridge client:load />}
+      <main id="main-content" class:list={['site-main', { 'site-main_offset': needsTopOffset }]}>
+        <slot />
+      </main>
+      {includeChrome && <Footer />}
+    </div>
+    <Analytics />
+  </body>
+</html>
+
+<style>
+  .site-shell {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .site-main {
+    flex: 1;
+  }
+
+  .site-main_offset {
+    padding-top: calc(var(--navbar-height, 4.375rem) + 0.9rem);
+  }
+
+  @media (max-width: 768px) {
+    .site-main_offset {
+      padding-top: calc(var(--navbar-height, 4.375rem) + 0.55rem);
+    }
+  }
+
+  .skip-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-120%);
+    background: var(--primary, #111);
+    color: #fff;
+    padding: 0.6rem 0.9rem;
+    z-index: 1000;
+    border-radius: 0 0 0.5rem 0;
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+</style>

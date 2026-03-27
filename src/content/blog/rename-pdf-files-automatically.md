@@ -1,10 +1,10 @@
 ---
 title: "How to Rename PDF Files Automatically with AI"
-description: Learn how to rename PDF files automatically using AI that reads document content and replaces generic names like scan_001.pdf with descriptive titles.
-date: 2026-03-23
-slug: rename-pdf-files-automatically
-tags: rename pdf automatically, auto rename pdf, AI pdf renamer, pdf organization, macOS, document management
-tldr: You can rename PDF files automatically by using AI that extracts text and structure from each document, then generates a descriptive filename based on the actual content, replacing names like scan_001.pdf and download.pdf with useful titles.
+description: "Learn how to rename PDF files automatically using AI that reads document content and replaces generic names like scan_001.pdf with descriptive titles."
+date: "2026-03-23"
+slug: "rename-pdf-files-automatically"
+tags: "rename pdf automatically, auto rename pdf, AI pdf renamer, pdf organization, macOS, document management"
+tldr: "You can rename PDF files automatically by using AI that extracts text and structure from each document, then generates a descriptive filename based on the actual content, replacing names like scan_001.pdf and download.pdf with useful titles."
 ---
 
 PDFs are the most common format for documents that matter, and also the most common format for documents with terrible filenames. Scanned invoices arrive as `scan_001.pdf`. Downloaded contracts save as `download.pdf`. Email attachments land as `attachment (3).pdf`. Exported reports default to `report.pdf` or worse.

@@ -1,13 +1,11 @@
 import { useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
 import { PRO_PADDLE_PRICE_ID } from '@/constants/pricing';
 
 export const useCheckoutAutoOpen = () => {
-  const location = useLocation();
   const hasOpened = useRef(false);
 
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
+    const params = new URLSearchParams(window.location.search);
     const checkout = params.get('checkout');
     const deviceId = params.get('device_id');
 
@@ -36,5 +34,5 @@ export const useCheckoutAutoOpen = () => {
       isCancelled = true;
       window.clearTimeout(timeoutId);
     };
-  }, [location.search]);
+  }, []);
 };

@@ -1,10 +1,10 @@
 ---
-title: Spotlight Search Tips: Find Files Faster on Your Mac
-description: Learn the best Spotlight search tips for Mac so you can find files faster using names, dates, kinds, tags, and metadata.
-date: 2026-02-23
-slug: spotlight-search-tips-find-files-faster-mac
-tags: Spotlight tips, find files faster mac, Spotlight search operators, mac file search, Finder search
-tldr: Spotlight works best when your files have useful names and metadata. Search by kind, date, tags, and descriptive filenames to find files faster on Mac.
+title: "Spotlight Search Tips: Find Files Faster on Your Mac"
+description: "Learn the best Spotlight search tips for Mac so you can find files faster using names, dates, kinds, tags, and metadata."
+date: "2026-02-23"
+slug: "spotlight-search-tips-find-files-faster-mac"
+tags: "Spotlight tips, find files faster mac, Spotlight search operators, mac file search, Finder search"
+tldr: "Spotlight works best when your files have useful names and metadata. Search by kind, date, tags, and descriptive filenames to find files faster on Mac."
 ---
 
 Spotlight is one of the fastest ways to find files on Mac, but it only works as well as the metadata it can search. If your files have useful names, tags, and dates, Spotlight feels instant. If everything is `IMG_4382` and `document (7)`, search gets much weaker.

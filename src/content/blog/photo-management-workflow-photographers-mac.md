@@ -1,10 +1,10 @@
 ---
-title: Photo Management Workflow for Photographers on Mac
-description: Build a practical photo management workflow on Mac for import, culling, editing, exporting, and archiving.
-date: 2026-03-01
-slug: photo-management-workflow-photographers-mac
-tags: photo management workflow, photographer file organization, photo workflow mac, photography organization
-tldr: A strong photography workflow on Mac covers five stages: import, cull, edit, export, and archive, with naming and backup decisions made early.
+title: "Photo Management Workflow for Photographers on Mac"
+description: "Build a practical photo management workflow on Mac for import, culling, editing, exporting, and archiving."
+date: "2026-03-01"
+slug: "photo-management-workflow-photographers-mac"
+tags: "photo management workflow, photographer file organization, photo workflow mac, photography organization"
+tldr: "A strong photography workflow on Mac covers five stages: import, cull, edit, export, and archive, with naming and backup decisions made early."
 ---
 
 A photography workflow on Mac breaks down when import, naming, export, and archive decisions happen differently every time. The fix is a repeatable system from card to archive.

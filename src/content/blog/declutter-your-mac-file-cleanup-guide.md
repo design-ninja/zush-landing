@@ -1,10 +1,10 @@
 ---
 title: "Declutter Your Mac: The Complete File Cleanup Guide"
-description: Learn how to declutter your Mac by cleaning up Downloads, Desktop, duplicate files, and old project folders without overcomplicating the process.
-date: 2026-02-11
-slug: declutter-your-mac-file-cleanup-guide
-tags: declutter mac, file cleanup mac, organize files mac, clean up downloads, mac storage cleanup
-tldr: The fastest way to declutter your Mac is to target the few folders where chaos accumulates most often, then improve naming and cleanup habits before the mess rebuilds.
+description: "Learn how to declutter your Mac by cleaning up Downloads, Desktop, duplicate files, and old project folders without overcomplicating the process."
+date: "2026-02-11"
+slug: "declutter-your-mac-file-cleanup-guide"
+tags: "declutter mac, file cleanup mac, organize files mac, clean up downloads, mac storage cleanup"
+tldr: "The fastest way to declutter your Mac is to target the few folders where chaos accumulates most often, then improve naming and cleanup habits before the mess rebuilds."
 ---
 
 Decluttering your Mac is easiest when you stop thinking about the whole machine at once. Most clutter comes from a few predictable places: Desktop, Downloads, screenshots, old project folders, and duplicates.

@@ -1,10 +1,10 @@
 ---
 title: "How to Find Photos on Your Mac: The Ultimate Search Guide"
-description: Learn how to find photos on your Mac using Spotlight, Finder search, folders, tags, and descriptive filenames.
-date: 2026-02-21
-slug: how-to-find-photos-on-mac
-tags: find photos mac, search photos mac, Spotlight photos, Finder search images, Mac image search
-tldr: The fastest way to find photos on Mac is to combine Spotlight, Finder search, and better filenames or metadata so your images are actually searchable.
+description: "Learn how to find photos on your Mac using Spotlight, Finder search, folders, tags, and descriptive filenames."
+date: "2026-02-21"
+slug: "how-to-find-photos-on-mac"
+tags: "find photos mac, search photos mac, Spotlight photos, Finder search images, Mac image search"
+tldr: "The fastest way to find photos on Mac is to combine Spotlight, Finder search, and better filenames or metadata so your images are actually searchable."
 ---
 
 Finding photos on Mac is easy when the files have useful names and metadata. It is hard when everything is `IMG_` or `Screenshot` and you are relying on memory alone.

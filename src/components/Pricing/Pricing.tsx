@@ -1,4 +1,3 @@
-import { useLocation } from 'react-router-dom';
 import SectionHeader from '../SectionHeader';
 import { PricingCard } from './PricingCard';
 import { PRO_PLAN } from './constants';
@@ -6,9 +5,10 @@ import { openPaddleCheckout } from '@/utils/paddle';
 import styles from './Pricing.module.scss';
 
 const Pricing = () => {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const deviceId = searchParams.get('device_id');
+  const deviceId =
+    typeof window === 'undefined'
+      ? null
+      : new URLSearchParams(window.location.search).get('device_id');
 
   const handleButtonClick = () => {
     const priceId = PRO_PLAN.paddlePriceId;

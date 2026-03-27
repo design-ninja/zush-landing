@@ -1,10 +1,10 @@
 ---
-title: How to Organize Your Downloads Folder on Mac
-description: Learn how to organize your Downloads folder on Mac with a simple system for files, screenshots, images, and recurring cleanup.
-date: 2026-02-18
-slug: how-to-organize-downloads-folder-mac
-tags: downloads folder mac, organize downloads, mac productivity, file organization
-tldr: The fastest way to organize the Downloads folder on Mac is to reduce inflow chaos, create a few stable categories, and automate renaming or routing for the files that pile up most often.
+title: "How to Organize Your Downloads Folder on Mac"
+description: "Learn how to organize your Downloads folder on Mac with a simple system for files, screenshots, images, and recurring cleanup."
+date: "2026-02-18"
+slug: "how-to-organize-downloads-folder-mac"
+tags: "downloads folder mac, organize downloads, mac productivity, file organization"
+tldr: "The fastest way to organize the Downloads folder on Mac is to reduce inflow chaos, create a few stable categories, and automate renaming or routing for the files that pile up most often."
 ---
 
 The Downloads folder gets messy because it is not a destination. It is a landing zone. Files arrive there quickly, under inconsistent names, and without any shared structure. If you want to organize Downloads on Mac, the goal is not to create a perfect filing cabinet. It is to stop random files from accumulating faster than you can process them.

@@ -1,10 +1,10 @@
 ---
 title: "Finder Tags Guide: How to Organize Files on Mac with Color Tags"
-description: Learn how to use Finder tags on Mac to organize files by status, category, and workflow without moving files into new folders.
-date: 2026-02-15
-slug: finder-tags-guide-organize-files-mac
-tags: Finder tags, organize files mac, color tags macOS, file tags, Finder organization
-tldr: Finder tags are most useful when they represent a small set of meaningful statuses or categories that help you retrieve files across folders.
+description: "Learn how to use Finder tags on Mac to organize files by status, category, and workflow without moving files into new folders."
+date: "2026-02-15"
+slug: "finder-tags-guide-organize-files-mac"
+tags: "Finder tags, organize files mac, color tags macOS, file tags, Finder organization"
+tldr: "Finder tags are most useful when they represent a small set of meaningful statuses or categories that help you retrieve files across folders."
 ---
 
 Finder tags are one of the simplest ways to organize files on Mac without moving them into new folders. A tagged file can still live in its original location, but it also becomes searchable by color or tag name across your system.

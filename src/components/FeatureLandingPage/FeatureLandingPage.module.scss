@@ -1,5 +1,5 @@
-@use '@/styles/variables' as *;
-@use '@/styles/mixins' as *;
+@use 'src/styles/variables' as *;
+@use 'src/styles/mixins' as *;
 
 .Page {
   min-height: 80vh;
@@ -27,6 +27,10 @@
       font-size: 1.375rem;
     }
   }
+}
+
+.BestAnswerSection {
+  padding-top: 3rem;
 }
 
 // FAQ
@@ -123,18 +127,13 @@
   gap: 0.75rem;
 }
 
-.RelatedLink {
-  display: block;
-  padding: 0.75rem 1.25rem;
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: 500;
+.RelatedChip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 0.95rem;
   border: 1px solid var(--border);
   border-radius: $radius-full;
-  transition: border-color $transition-fast, background $transition-fast;
-
-  &:hover {
-    border-color: var(--primary);
-    background: var(--primary-soft);
-  }
+  background: var(--card);
+  color: var(--muted-foreground);
+  font-size: 0.9rem;
 }

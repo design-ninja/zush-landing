@@ -1,0 +1,99 @@
+import { readFileSync, existsSync } from 'node:fs';
+import { join } from 'node:path';
+
+const ROOT = process.cwd();
+const DIST = join(ROOT, 'dist');
+const SITE_ORIGIN = 'https://zushapp.com';
+const PRIVATE_ROUTES = new Set(['/thank-you', '/recover', '/activate', '/manage-subscription']);
+
+function fail(message) {
+  throw new Error(message);
+}
+
+function parseSitemapLocs(xml) {
+  const locs = [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1].trim());
+  return locs;
+}
+
+function pathFromLoc(loc) {
+  if (!loc.startsWith(SITE_ORIGIN)) {
+    fail(`Unexpected sitemap loc outside origin: ${loc}`);
+  }
+  const pathname = loc.slice(SITE_ORIGIN.length) || '/';
+  return pathname || '/';
+}
+
+function htmlFileForPath(pathname) {
+  if (pathname === '/') return join(DIST, 'index.html');
+  return join(DIST, pathname.slice(1), 'index.html');
+}
+
+function assertIncludes(html, needle, message) {
+  if (!html.includes(needle)) fail(message);
+}
+
+function getJsonLdBlocks(html) {
+  const matches = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)];
+  return matches.map((match) => match[1] ?? '');
+}
+
+const sitemapPath = join(DIST, 'sitemap.xml');
+if (!existsSync(sitemapPath)) {
+  fail('sitemap.xml is missing from dist.');
+}
+
+const sitemapXml = readFileSync(sitemapPath, 'utf8');
+const locs = parseSitemapLocs(sitemapXml);
+if (locs.length === 0) {
+  fail('sitemap.xml has no URLs.');
+}
+
+for (const loc of locs) {
+  const pathname = pathFromLoc(loc);
+  if (PRIVATE_ROUTES.has(pathname)) {
+    fail(`Private route leaked into sitemap: ${pathname}`);
+  }
+
+  const filePath = htmlFileForPath(pathname);
+  if (!existsSync(filePath)) {
+    fail(`Sitemap route missing HTML file: ${pathname} -> ${filePath}`);
+  }
+
+  const html = readFileSync(filePath, 'utf8');
+  const jsonLdBlocks = getJsonLdBlocks(html);
+  assertIncludes(html, '<h1', `Missing <h1> in raw HTML for ${pathname}`);
+
+  if (html.includes('<div id="root"></div>')) {
+    fail(`Empty shell detected for ${pathname}`);
+  }
+
+  const canonicalTag = `<link rel="canonical" href="${loc}"`;
+  assertIncludes(html, canonicalTag, `Canonical mismatch or missing for ${pathname}`);
+
+  if (pathname.startsWith('/blog/')) {
+    assertIncludes(html, '"@type":"BlogPosting"', `BlogPosting JSON-LD missing for ${pathname}`);
+    const hasHomepageHowTo = jsonLdBlocks.some((block) => block.includes('/#howto') || block.includes('"@type":"HowTo"'));
+    if (hasHomepageHowTo) {
+      fail(`Homepage schema leaked into blog page ${pathname}`);
+    }
+  }
+}
+
+for (const route of PRIVATE_ROUTES) {
+  const filePath = htmlFileForPath(route);
+  if (!existsSync(filePath)) {
+    fail(`Private route HTML missing: ${route}`);
+  }
+  const html = readFileSync(filePath, 'utf8');
+  assertIncludes(
+    html,
+    '<meta name="robots" content="noindex, nofollow"',
+    `Private route missing noindex, nofollow: ${route}`,
+  );
+}
+
+const homepageHtml = readFileSync(join(DIST, 'index.html'), 'utf8');
+assertIncludes(homepageHtml, '"@type":"HowTo"', 'Homepage HowTo JSON-LD missing.');
+assertIncludes(homepageHtml, '/#faq', 'Homepage FAQ JSON-LD missing.');
+
+console.log(`[check-html-smoke] OK: ${locs.length} sitemap URLs validated.`);

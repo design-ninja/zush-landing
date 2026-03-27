@@ -9,11 +9,21 @@ export function buildBlogPostingJsonLd(post: BlogFrontmatter) {
     headline: post.title,
     description: post.description,
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: post.reviewedAt || post.date,
     author: {
-      '@type': 'Organization',
-      name: 'Zush',
-      url: SITE_ORIGIN,
+      '@type': 'Person',
+      name: post.authorName,
+      url: `${SITE_ORIGIN}/methodology#editorial-policy`,
+      worksFor: {
+        '@type': 'Organization',
+        name: 'Zush',
+        url: SITE_ORIGIN,
+      },
+    },
+    editor: {
+      '@type': 'Person',
+      name: post.reviewerName,
+      url: `${SITE_ORIGIN}/methodology#benchmark-protocol`,
     },
     publisher: {
       '@type': 'Organization',
@@ -29,7 +39,7 @@ export function buildBlogPostingJsonLd(post: BlogFrontmatter) {
       '@id': `${SITE_ORIGIN}/blog/${post.slug}`,
     },
     url: `${SITE_ORIGIN}/blog/${post.slug}`,
-    wordCount: post.readingTime * 200,
+    wordCount: post.wordCount,
     keywords: post.tags.join(', '),
   }
 }

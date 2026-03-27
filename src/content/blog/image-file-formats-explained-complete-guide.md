@@ -1,10 +1,10 @@
 ---
-title: Image File Formats Explained: Complete Guide for Mac Users
-description: Learn the differences between JPEG, PNG, HEIC, WebP, RAW, GIF, TIFF, and SVG so you can choose the right image format on Mac.
-date: 2026-03-02
-slug: image-file-formats-explained-complete-guide
-tags: image file formats, JPEG vs PNG, HEIC explained, WebP vs JPEG, Mac image formats
-tldr: The best image format depends on the job: JPEG for general photos, PNG for transparency, HEIC for Apple efficiency, WebP for the web, RAW for editing, and SVG for scalable graphics.
+title: "Image File Formats Explained: Complete Guide for Mac Users"
+description: "Learn the differences between JPEG, PNG, HEIC, WebP, RAW, GIF, TIFF, and SVG so you can choose the right image format on Mac."
+date: "2026-03-02"
+slug: "image-file-formats-explained-complete-guide"
+tags: "image file formats, JPEG vs PNG, HEIC explained, WebP vs JPEG, Mac image formats"
+tldr: "The best image format depends on the job: JPEG for general photos, PNG for transparency, HEIC for Apple efficiency, WebP for the web, RAW for editing, and SVG for scalable graphics."
 ---
 
 Choosing the right image file format matters because it affects quality, file size, compatibility, editing flexibility, and searchability. Mac users usually deal with the same core formats: JPEG, PNG, HEIC, WebP, RAW, TIFF, GIF, and SVG.
