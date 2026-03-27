@@ -1,5 +1,9 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import AppLink from '@/components/AppLink';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
+import PillLink from '@/components/PillLink';
 import { getSeoForPath } from '@/seo/config';
 
 const seo = getSeoForPath('/methodology');
@@ -23,154 +27,363 @@ const jsonLd = {
   <article class="methodology">
     <div class="methodology__container">
       <header class="methodology__hero">
-        <p class="methodology__kicker">Trust & Evaluation</p>
-        <h1>Methodology & Benchmarks</h1>
-        <p>
-          This page explains how we evaluate AI file renaming quality for macOS workflows. We publish the rubric,
-          validation flow, and update cadence so recommendations stay reproducible and auditable.
-        </p>
+        <Text as="p" size="sm" color="subtle" align="center" className="methodology__kicker">
+          Trust & Evaluation
+        </Text>
+        <Heading as="h1" align="center">Methodology & Benchmarks</Heading>
+        <Text as="p" size="lg" color="subtle" align="center" className="methodology__lead">
+          This page explains how Zush evaluates AI file renaming quality for macOS workflows. We publish the rubric,
+          validation flow, and update cadence so recommendations stay reproducible, auditable, and practical for real
+          batch operations.
+        </Text>
+
+        <div class="methodology__heroMeta">
+          <span>Monthly reviews</span>
+          <span aria-hidden="true">·</span>
+          <span>5 weighted checks</span>
+          <span aria-hidden="true">·</span>
+          <span>Public changelog</span>
+        </div>
       </header>
 
-      <section id="editorial-policy" class="methodology__section">
-        <h2>Editorial Accountability</h2>
-        <ul>
-          <li><strong>Primary author:</strong> Zush Editorial Team</li>
-          <li><strong>Technical reviewer:</strong> Zush Product Team</li>
-          <li><strong>Update cadence:</strong> criteria reviewed monthly, major changes logged in <a href="/changelog">changelog</a></li>
-        </ul>
-      </section>
+      <div class="methodology__layout">
+        <main class="methodology__main">
+          <section id="editorial-policy" class="methodology__card methodology__card_highlight">
+            <div class="methodology__sectionHead">
+              <span class="methodology__eyebrow">Governance</span>
+              <Heading as="h3" className="methodology__sectionTitle">Editorial Accountability</Heading>
+            </div>
 
-      <section id="scoring-rubric" class="methodology__section">
-        <h2>Scoring Rubric</h2>
-        <p>Each workflow run is graded on weighted criteria:</p>
-        <div class="methodology__tableWrap">
-          <table class="methodology__table">
-            <thead>
-              <tr>
-                <th>Dimension</th>
-                <th>Weight</th>
-                <th>What we measure</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Semantic filename accuracy</td>
-                <td>35%</td>
-                <td>Does the new name describe file meaning, not only generic patterns?</td>
-              </tr>
-              <tr>
-                <td>Consistency in batch runs</td>
-                <td>20%</td>
-                <td>Stable naming style across mixed files in one task.</td>
-              </tr>
-              <tr>
-                <td>Automation depth</td>
-                <td>15%</td>
-                <td>Batch workflow, folder monitoring, and repeatability.</td>
-              </tr>
-              <tr>
-                <td>Safety controls</td>
-                <td>15%</td>
-                <td>History, rollback, preview-before-apply behavior.</td>
-              </tr>
-              <tr>
-                <td>Operational fit</td>
-                <td>15%</td>
-                <td>macOS workflow quality, speed, and setup friction.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+            <div class="methodology__facts" role="list" aria-label="Editorial accountability facts">
+              <div class="methodology__fact" role="listitem">
+                <span class="methodology__factLabel">Primary author</span>
+                <Text as="p">Zush Editorial Team</Text>
+              </div>
+              <div class="methodology__fact" role="listitem">
+                <span class="methodology__factLabel">Technical reviewer</span>
+                <Text as="p">Zush Product Team</Text>
+              </div>
+              <div class="methodology__fact" role="listitem">
+                <span class="methodology__factLabel">Update cadence</span>
+                <Text as="p" color="subtle">
+                  Criteria are reviewed monthly, with material changes logged in{' '}
+                  <AppLink href="/changelog" variant="legal">the changelog</AppLink>.
+                </Text>
+              </div>
+            </div>
+          </section>
 
-      <section id="benchmark-protocol" class="methodology__section">
-        <h2>Benchmark Protocol</h2>
-        <ol>
-          <li>Use a mixed-file benchmark set with screenshots, photos, PDFs, and office documents.</li>
-          <li>Run controlled rename jobs with identical prompt and naming constraints.</li>
-          <li>Score outputs against the rubric above and record false positives/ambiguous labels.</li>
-          <li>Validate revert/recovery behavior before marking a setup as production-safe.</li>
-          <li>Repeat checks after release updates and document material changes in the changelog.</li>
-        </ol>
-      </section>
+          <section id="scoring-rubric" class="methodology__card">
+            <div class="methodology__sectionHead">
+              <span class="methodology__eyebrow">Rubric</span>
+              <Heading as="h3" className="methodology__sectionTitle">Scoring Rubric</Heading>
+            </div>
+            <Text as="p" color="subtle" className="methodology__copy">
+              Each workflow run is graded against a weighted model that balances naming accuracy, operational safety,
+              and day-to-day usability inside a macOS workflow.
+            </Text>
 
-      <section class="methodology__section">
-        <h2>Decision Policy</h2>
-        <p>
-          We prioritize workflows that produce consistently descriptive names and remain recoverable at scale.
-          Recommendations are downgraded when a setup lacks rollback, requires manual babysitting, or produces
-          unstable naming conventions in batch scenarios.
-        </p>
-      </section>
+            <div class="methodology__tableWrap">
+              <table class="methodology__table">
+                <thead>
+                  <tr>
+                    <th>Dimension</th>
+                    <th>Weight</th>
+                    <th>What we measure</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Semantic filename accuracy</td>
+                    <td>35%</td>
+                    <td>Does the new name describe file meaning, not only generic patterns?</td>
+                  </tr>
+                  <tr>
+                    <td>Consistency in batch runs</td>
+                    <td>20%</td>
+                    <td>Stable naming style across mixed files in one task.</td>
+                  </tr>
+                  <tr>
+                    <td>Automation depth</td>
+                    <td>15%</td>
+                    <td>Batch workflow, folder monitoring, and repeatability.</td>
+                  </tr>
+                  <tr>
+                    <td>Safety controls</td>
+                    <td>15%</td>
+                    <td>History, rollback, preview-before-apply behavior.</td>
+                  </tr>
+                  <tr>
+                    <td>Operational fit</td>
+                    <td>15%</td>
+                    <td>macOS workflow quality, speed, and setup friction.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
 
-      <section class="methodology__section">
-        <h2>Supporting Documents</h2>
-        <div class="methodology__links">
-          <a href="/blog/best-ai-file-renamer-tools-mac-compared">Commercial comparison</a>
-          <a href="/privacy-policy">Data handling policy</a>
-          <a href="/byok-setup">BYOK setup and provider controls</a>
-        </div>
-      </section>
+          <section id="benchmark-protocol" class="methodology__card">
+            <div class="methodology__sectionHead">
+              <span class="methodology__eyebrow">Validation</span>
+              <Heading as="h3" className="methodology__sectionTitle">Benchmark Protocol</Heading>
+            </div>
+
+            <ol class="methodology__steps">
+              <li class="methodology__step">
+                <span class="methodology__stepIndex">01</span>
+                <Text as="p" color="subtle">
+                  Use a mixed-file benchmark set with screenshots, photos, PDFs, and office documents.
+                </Text>
+              </li>
+              <li class="methodology__step">
+                <span class="methodology__stepIndex">02</span>
+                <Text as="p" color="subtle">
+                  Run controlled rename jobs with identical prompts and naming constraints.
+                </Text>
+              </li>
+              <li class="methodology__step">
+                <span class="methodology__stepIndex">03</span>
+                <Text as="p" color="subtle">
+                  Score outputs against the rubric and record false positives or ambiguous labels.
+                </Text>
+              </li>
+              <li class="methodology__step">
+                <span class="methodology__stepIndex">04</span>
+                <Text as="p" color="subtle">
+                  Validate revert and recovery behavior before marking a setup as production-safe.
+                </Text>
+              </li>
+              <li class="methodology__step">
+                <span class="methodology__stepIndex">05</span>
+                <Text as="p" color="subtle">
+                  Repeat checks after release updates and track material changes in the changelog.
+                </Text>
+              </li>
+            </ol>
+          </section>
+        </main>
+
+        <aside class="methodology__rail">
+          <section class="methodology__card methodology__card_sticky">
+            <div class="methodology__sectionHead methodology__sectionHead_compact">
+              <span class="methodology__eyebrow">Policy</span>
+              <Heading as="h3" className="methodology__sectionTitle">Decision Policy</Heading>
+            </div>
+            <Text as="p" color="subtle" className="methodology__copy">
+              We prioritize workflows that produce consistently descriptive names and remain recoverable at scale.
+              Recommendations are downgraded when a setup lacks rollback, requires manual babysitting, or produces
+              unstable naming patterns in batch scenarios.
+            </Text>
+          </section>
+
+          <section class="methodology__card">
+            <div class="methodology__sectionHead methodology__sectionHead_compact">
+              <span class="methodology__eyebrow">Coverage</span>
+              <Heading as="h3" className="methodology__sectionTitle">What We Validate</Heading>
+            </div>
+            <ul class="methodology__bulletList">
+              <li>Mixed file types, not synthetic single-format tests</li>
+              <li>Repeatability under batch and semi-automated runs</li>
+              <li>Rollback, preview, and recovery behavior before approval</li>
+              <li>Operational friction inside a real macOS workflow</li>
+            </ul>
+          </section>
+
+          <section class="methodology__card">
+            <div class="methodology__sectionHead methodology__sectionHead_compact">
+              <span class="methodology__eyebrow">References</span>
+              <Heading as="h3" className="methodology__sectionTitle">Supporting Documents</Heading>
+            </div>
+            <div class="methodology__links">
+              <PillLink href="/blog/best-ai-file-renamer-tools-mac-compared" withArrow size="sm">
+                Commercial comparison
+              </PillLink>
+              <PillLink href="/privacy-policy" withArrow size="sm">Data handling policy</PillLink>
+              <PillLink href="/byok-setup" withArrow size="sm">BYOK setup and provider controls</PillLink>
+            </div>
+          </section>
+        </aside>
+      </div>
     </div>
   </article>
 </BaseLayout>
 
 <style>
   .methodology {
-    padding: 3.5rem 0;
+    position: relative;
+    padding: 4.5rem 0 5.5rem;
+    overflow: clip;
+  }
+
+  .methodology::before,
+  .methodology::after {
+    content: '';
+    position: absolute;
+    inset: auto;
+    border-radius: 999px;
+    pointer-events: none;
+    filter: blur(10px);
+    opacity: 0.65;
+  }
+
+  .methodology::before {
+    top: 3.5rem;
+    left: max(1rem, calc(50% - 38rem));
+    width: 16rem;
+    height: 16rem;
+    background: radial-gradient(circle, var(--primary-soft) 0%, transparent 72%);
+  }
+
+  .methodology::after {
+    top: 8rem;
+    right: max(1rem, calc(50% - 36rem));
+    width: 14rem;
+    height: 14rem;
+    background: radial-gradient(circle, oklch(from var(--secondary) l c h / 0.16) 0%, transparent 72%);
   }
 
   .methodology__container {
-    max-width: 72rem;
+    position: relative;
+    z-index: 1;
+    max-width: 76rem;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 0 2rem;
   }
 
-  .methodology__hero h1 {
-    margin-bottom: 1rem;
-  }
-
-  .methodology__hero p {
-    max-width: 50rem;
-    color: var(--muted-foreground);
-    line-height: 1.65;
+  .methodology__hero {
+    max-width: 44rem;
+    margin: 0 auto 3rem;
+    text-align: center;
   }
 
   .methodology__kicker {
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 0.78rem;
+    letter-spacing: 0.12em;
     font-weight: 700;
     color: var(--primary);
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.75rem;
   }
 
-  .methodology__section {
-    margin-top: 2.5rem;
+  .methodology__lead {
+    max-width: 44rem;
+    margin: 1rem auto 0;
+    line-height: 1.7;
   }
 
-  .methodology__section h2 {
-    margin-bottom: 0.8rem;
-  }
-
-  .methodology__section p,
-  .methodology__section li {
+  .methodology__heroMeta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
     color: var(--muted-foreground);
-    line-height: 1.65;
   }
 
-  .methodology__section ul,
-  .methodology__section ol {
-    margin: 0;
-    padding-left: 1.2rem;
+  .methodology__layout {
     display: grid;
-    gap: 0.55rem;
+    grid-template-columns: minmax(0, 1.45fr) minmax(18rem, 0.85fr);
+    gap: 1.25rem;
+    align-items: start;
+  }
+
+  .methodology__main,
+  .methodology__rail {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .methodology__card {
+    position: relative;
+    overflow: hidden;
+    background:
+      linear-gradient(180deg, oklch(from var(--card) l c h / 0.98), oklch(from var(--muted) l c h / 0.92));
+    border: 1px solid oklch(from var(--border) l c h / 0.9);
+    border-radius: 1.6rem;
+    padding: 1.5rem;
+    box-shadow: 0 1rem 2.5rem oklch(0 0 0 / 0.04);
+  }
+
+  .methodology__card::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, oklch(1 0 0 / 0.5), transparent 55%);
+    pointer-events: none;
+  }
+
+  .methodology__card_highlight {
+    background:
+      linear-gradient(135deg, oklch(from var(--primary) l c h / 0.08), transparent 32%),
+      linear-gradient(180deg, oklch(from var(--card) l c h / 0.99), oklch(from var(--muted) l c h / 0.94));
+  }
+
+  .methodology__card_sticky {
+    position: static;
+  }
+
+  .methodology__sectionHead {
+    display: grid;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+  }
+
+  .methodology__sectionHead_compact {
+    margin-bottom: 0.8rem;
+  }
+
+  .methodology__eyebrow {
+    font-size: 0.78rem;
+    line-height: 1.3;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  .methodology__sectionTitle {
+    margin: 0;
+  }
+
+  .methodology__copy {
+    line-height: 1.7;
+  }
+
+  .methodology__facts {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .methodology__fact {
+    display: grid;
+    gap: 0.3rem;
+    padding: 1rem 1.05rem;
+    border: 1px solid oklch(from var(--border) l c h / 0.78);
+    border-radius: 1rem;
+    background: oklch(from var(--card) l c h / 0.7);
+  }
+
+  .methodology__fact p {
+    margin: 0;
+  }
+
+  .methodology__factLabel {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+    font-weight: 650;
   }
 
   .methodology__tableWrap {
     overflow-x: auto;
-    border: 1px solid var(--border);
-    border-radius: 0.9rem;
+    margin-top: 1.1rem;
+    border: 1px solid oklch(from var(--border) l c h / 0.8);
+    border-radius: 1.2rem;
+    background: oklch(from var(--card) l c h / 0.88);
   }
 
   .methodology__table {
@@ -181,50 +394,123 @@ const jsonLd = {
 
   .methodology__table th,
   .methodology__table td {
-    border-bottom: 1px solid var(--border);
-    padding: 0.85rem 1rem;
+    border-bottom: 1px solid oklch(from var(--border) l c h / 0.78);
+    padding: 1rem 1.1rem;
     text-align: left;
     vertical-align: top;
+    color: var(--muted-foreground);
+    line-height: 1.6;
+  }
+
+  .methodology__table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .methodology__table td:first-child {
+    color: var(--foreground);
+    font-weight: 600;
+  }
+
+  .methodology__table td:nth-child(2) {
+    color: var(--foreground);
+    font-family: var(--font-family-heading);
+    font-weight: 550;
+    white-space: nowrap;
   }
 
   .methodology__table th {
-    font-size: 0.82rem;
+    font-size: 0.76rem;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.09em;
     color: var(--muted-foreground);
+    background: oklch(from var(--muted) l c h / 0.9);
+  }
+
+  .methodology__steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .methodology__step {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.9rem;
+    align-items: start;
+    padding: 1rem 1.05rem;
+    border: 1px solid oklch(from var(--border) l c h / 0.8);
+    border-radius: 1rem;
+    background: oklch(from var(--card) l c h / 0.72);
+  }
+
+  .methodology__step p {
+    margin: 0;
+  }
+
+  .methodology__stepIndex {
+    min-width: 2.65rem;
+    height: 2.65rem;
+    border-radius: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-family-heading);
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--primary);
+    background: oklch(from var(--primary) l c h / 0.1);
+    border: 1px solid oklch(from var(--primary) l c h / 0.16);
+  }
+
+  .methodology__bulletList {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: 0.7rem;
+    color: var(--muted-foreground);
+    line-height: 1.6;
   }
 
   .methodology__links {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.8rem;
+    gap: 0.75rem;
   }
 
-  .methodology__links a {
-    display: inline-block;
-    padding: 0.55rem 0.9rem;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    color: var(--primary);
-    text-decoration: none;
-  }
+  @media (max-width: 980px) {
+    .methodology {
+      padding: 3.4rem 0 4.5rem;
+    }
 
-  .methodology__links a:hover {
-    border-color: var(--primary);
-    background: var(--primary-soft);
+    .methodology__layout {
+      grid-template-columns: 1fr;
+    }
   }
 
   @media (max-width: 768px) {
-    .methodology {
-      padding: 2.6rem 0;
+    .methodology__container {
+      padding: 0 1.25rem;
     }
 
-    .methodology__container {
-      padding: 0 1rem;
+    .methodology__card {
+      padding: 1.2rem;
+      border-radius: 1.25rem;
     }
 
     .methodology__table {
-      min-width: 32rem;
+      min-width: 34rem;
+    }
+
+    .methodology__step {
+      grid-template-columns: 1fr;
+    }
+
+    .methodology__stepIndex {
+      min-width: 0;
+      width: fit-content;
+      padding: 0 0.85rem;
     }
   }
 </style>

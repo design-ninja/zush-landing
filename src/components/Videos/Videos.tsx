@@ -235,7 +235,6 @@ const Videos = () => {
                   src='/videos/captions/zush-demo.vtt'
                   srcLang='en'
                   label='English captions'
-                  default
                 />
               </motion.video>
             )}
