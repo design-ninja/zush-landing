@@ -39,10 +39,19 @@
 
   &__Meta {
     display: flex;
+    flex-wrap: wrap;
     gap: 1.5rem;
     color: var(--muted-foreground);
     font-size: 0.9rem;
     margin-bottom: 1rem;
+  }
+
+  &__ReviewPolicy {
+    color: var(--muted-foreground);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    margin-bottom: 1rem;
+    max-width: 46rem;
   }
 
   &__Tags {

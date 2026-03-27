@@ -71,7 +71,10 @@ const Footer = () => {
           <div>
             <Heading as="h4" className={styles.Footer__SectionTitle}>Product</Heading>
             <ul className={styles.Footer__Links}>
-              <li><AppLink href="/#features" className={styles.Footer__Link}>Features</AppLink></li>
+              <li><AppLink href="/ai-file-renamer" className={styles.Footer__Link}>AI File Renamer</AppLink></li>
+              <li><AppLink href="/auto-rename-files" className={styles.Footer__Link}>Auto Rename Files</AppLink></li>
+              <li><AppLink href="/rename-documents-with-ai" className={styles.Footer__Link}>Rename Documents</AppLink></li>
+              <li><AppLink href="/rename-screenshots-with-ai" className={styles.Footer__Link}>Rename Screenshots</AppLink></li>
               <li><AppLink href="/#pricing" className={styles.Footer__Link}>Pricing</AppLink></li>
               <li><AppLink href="/changelog" className={styles.Footer__Link}>Changelog</AppLink></li>
               <li><AppLink href="/blog" className={styles.Footer__Link}>Blog</AppLink></li>
@@ -90,6 +93,7 @@ const Footer = () => {
             <ul className={styles.Footer__Links}>
               <li><AppLink href={`mailto:${SUPPORT_EMAIL}`} className={styles.Footer__Link}>Contact Support</AppLink></li>
               <li><AppLink href="/byok-setup" className={styles.Footer__Link}>BYOK Setup Guide</AppLink></li>
+              <li><AppLink href="/methodology" className={styles.Footer__Link}>Methodology & Benchmarks</AppLink></li>
               <li>
                 <AppLink
                   href="https://zush.canny.io"

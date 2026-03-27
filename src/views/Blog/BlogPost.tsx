@@ -2,11 +2,6 @@ import type { ChangeEvent, ComponentPropsWithoutRef, ReactNode } from 'react'
 import { useMemo, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import { getPostBySlug, getRelatedPosts } from '@/data/blog'
-import {
-  buildBlogPostingJsonLd,
-  buildBreadcrumbJsonLd,
-  buildFAQPageJsonLd,
-} from '@/utils/jsonLd'
 import AppLink from '@/components/AppLink'
 import BlogCTA from '@/components/BlogCTA'
 import styles from './BlogPost.module.scss'
@@ -91,17 +86,12 @@ const BlogPost = ({ slug }: BlogPostProps) => {
     return null
   }
 
-  const { frontmatter, content, faq } = post
+  const { frontmatter, content } = post
   const relatedPosts = getRelatedPosts(frontmatter.slug)
   const toc = useMemo(() => extractToc(content), [content])
   const showToc = toc.filter((item) => item.level === 2).length >= 4
   const shouldRenderInlineCta = countWords(content) >= 1800
   const [mobileTocValue, setMobileTocValue] = useState('')
-  const jsonLd = [
-    buildBlogPostingJsonLd(frontmatter),
-    buildBreadcrumbJsonLd(frontmatter.title, frontmatter.slug),
-    ...(faq.length > 0 ? [buildFAQPageJsonLd(faq)] : []),
-  ]
 
   let h2Index = 0
 
@@ -128,7 +118,20 @@ const BlogPost = ({ slug }: BlogPostProps) => {
               {formatDate(frontmatter.date)}
             </time>
             <span>{frontmatter.readingTime} min read</span>
+            <span>By {frontmatter.authorName}</span>
+            <span>Reviewed by {frontmatter.reviewerName}</span>
           </div>
+          <p className={styles.BlogPost__ReviewPolicy}>
+            Recommendation quality is reviewed with our{' '}
+            <AppLink href="/methodology" variant="legal">
+              public methodology
+            </AppLink>{' '}
+            and updated through the{' '}
+            <AppLink href="/changelog" variant="legal">
+              changelog
+            </AppLink>
+            .
+          </p>
           {frontmatter.tags.length > 0 && (
             <div className={styles.BlogPost__Tags}>
               {frontmatter.tags.map((tag) => (
@@ -268,11 +271,6 @@ const BlogPost = ({ slug }: BlogPostProps) => {
           </AppLink>
         </footer>
       </div>
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
     </article>
   )
 }

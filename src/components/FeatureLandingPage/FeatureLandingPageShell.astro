@@ -10,6 +10,7 @@ import SupportedFormats from '@/components/SupportedFormats';
 import UseCases from '@/components/UseCases';
 import Videos from '@/components/Videos';
 import DownloadCTA from '@/components/DownloadCTA';
+import TrustSignals from '@/components/TrustSignals';
 import { createElement } from 'react';
 import { Sparkles, FolderSync, History } from 'lucide-react';
 import type { FeatureLandingPageProps } from './FeatureLandingPage';
@@ -79,6 +80,11 @@ const bestAnswerCriteria = [
       />
     </div>
   </section>
+
+  <TrustSignals
+    title="Recommendation Confidence"
+    description="This page follows a published scoring model with technical review and changelog-backed updates."
+  />
 
   <Videos client:visible />
   <Features />

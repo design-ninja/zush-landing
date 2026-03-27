@@ -68,6 +68,13 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     robots: 'index, follow',
     ogType: 'website',
   },
+  '/methodology': {
+    title: 'Methodology & Benchmarks — Zush',
+    description:
+      'See how Zush evaluates AI file renaming quality: scoring rubric, benchmark protocol, review standards, and update cadence.',
+    robots: 'index, follow',
+    ogType: 'website',
+  },
   '/rename-files-with-ai': {
     title: 'Rename Files with AI — Free on macOS | Zush',
     description:
@@ -241,12 +248,18 @@ export const HOME_JSON_LD = {
         url: `${SITE_ORIGIN}/logo.png`,
       },
       email: 'support@zushapp.com',
+      sameAs: [
+        'https://x.com/zush_app',
+        'https://www.youtube.com/@zushapp',
+        'https://www.producthunt.com/products/zush',
+      ],
     },
     {
       '@type': 'WebSite',
       '@id': `${SITE_ORIGIN}/#website`,
       url: SITE_ORIGIN,
       name: 'Zush',
+      publishingPrinciples: `${SITE_ORIGIN}/methodology`,
       publisher: {
         '@id': `${SITE_ORIGIN}/#organization`,
       },

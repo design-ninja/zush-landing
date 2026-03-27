@@ -9,6 +9,7 @@ import ComparisonTable from '@/components/ComparisonTable';
 import FAQ from '@/components/FAQ';
 import DownloadCTA from '@/components/DownloadCTA';
 import BestAnswerPanel from '@/components/BestAnswerPanel';
+import TrustSignals from '@/components/TrustSignals';
 import styles from './Home.module.scss';
 
 const Home = () => (
@@ -59,6 +60,7 @@ const Home = () => (
         />
       </div>
     </section>
+    <TrustSignals />
     <Videos />
     <Features />
     <SupportedFormats />

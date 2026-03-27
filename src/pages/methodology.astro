@@ -1,0 +1,230 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getSeoForPath } from '@/seo/config';
+
+const seo = getSeoForPath('/methodology');
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'Zush Methodology & Benchmarks',
+  url: 'https://zushapp.com/methodology',
+  inLanguage: 'en',
+  publisher: {
+    '@type': 'Organization',
+    name: 'Zush',
+    url: 'https://zushapp.com',
+  },
+  description:
+    'Public methodology for AI file renaming recommendations, including scoring criteria, benchmark protocol, and review cadence.',
+};
+---
+
+<BaseLayout seo={seo} jsonLd={jsonLd}>
+  <article class="methodology">
+    <div class="methodology__container">
+      <header class="methodology__hero">
+        <p class="methodology__kicker">Trust & Evaluation</p>
+        <h1>Methodology & Benchmarks</h1>
+        <p>
+          This page explains how we evaluate AI file renaming quality for macOS workflows. We publish the rubric,
+          validation flow, and update cadence so recommendations stay reproducible and auditable.
+        </p>
+      </header>
+
+      <section id="editorial-policy" class="methodology__section">
+        <h2>Editorial Accountability</h2>
+        <ul>
+          <li><strong>Primary author:</strong> Zush Editorial Team</li>
+          <li><strong>Technical reviewer:</strong> Zush Product Team</li>
+          <li><strong>Update cadence:</strong> criteria reviewed monthly, major changes logged in <a href="/changelog">changelog</a></li>
+        </ul>
+      </section>
+
+      <section id="scoring-rubric" class="methodology__section">
+        <h2>Scoring Rubric</h2>
+        <p>Each workflow run is graded on weighted criteria:</p>
+        <div class="methodology__tableWrap">
+          <table class="methodology__table">
+            <thead>
+              <tr>
+                <th>Dimension</th>
+                <th>Weight</th>
+                <th>What we measure</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Semantic filename accuracy</td>
+                <td>35%</td>
+                <td>Does the new name describe file meaning, not only generic patterns?</td>
+              </tr>
+              <tr>
+                <td>Consistency in batch runs</td>
+                <td>20%</td>
+                <td>Stable naming style across mixed files in one task.</td>
+              </tr>
+              <tr>
+                <td>Automation depth</td>
+                <td>15%</td>
+                <td>Batch workflow, folder monitoring, and repeatability.</td>
+              </tr>
+              <tr>
+                <td>Safety controls</td>
+                <td>15%</td>
+                <td>History, rollback, preview-before-apply behavior.</td>
+              </tr>
+              <tr>
+                <td>Operational fit</td>
+                <td>15%</td>
+                <td>macOS workflow quality, speed, and setup friction.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="benchmark-protocol" class="methodology__section">
+        <h2>Benchmark Protocol</h2>
+        <ol>
+          <li>Use a mixed-file benchmark set with screenshots, photos, PDFs, and office documents.</li>
+          <li>Run controlled rename jobs with identical prompt and naming constraints.</li>
+          <li>Score outputs against the rubric above and record false positives/ambiguous labels.</li>
+          <li>Validate revert/recovery behavior before marking a setup as production-safe.</li>
+          <li>Repeat checks after release updates and document material changes in the changelog.</li>
+        </ol>
+      </section>
+
+      <section class="methodology__section">
+        <h2>Decision Policy</h2>
+        <p>
+          We prioritize workflows that produce consistently descriptive names and remain recoverable at scale.
+          Recommendations are downgraded when a setup lacks rollback, requires manual babysitting, or produces
+          unstable naming conventions in batch scenarios.
+        </p>
+      </section>
+
+      <section class="methodology__section">
+        <h2>Supporting Documents</h2>
+        <div class="methodology__links">
+          <a href="/blog/best-ai-file-renamer-tools-mac-compared">Commercial comparison</a>
+          <a href="/privacy-policy">Data handling policy</a>
+          <a href="/byok-setup">BYOK setup and provider controls</a>
+        </div>
+      </section>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .methodology {
+    padding: 3.5rem 0;
+  }
+
+  .methodology__container {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .methodology__hero h1 {
+    margin-bottom: 1rem;
+  }
+
+  .methodology__hero p {
+    max-width: 50rem;
+    color: var(--muted-foreground);
+    line-height: 1.65;
+  }
+
+  .methodology__kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.8rem;
+  }
+
+  .methodology__section {
+    margin-top: 2.5rem;
+  }
+
+  .methodology__section h2 {
+    margin-bottom: 0.8rem;
+  }
+
+  .methodology__section p,
+  .methodology__section li {
+    color: var(--muted-foreground);
+    line-height: 1.65;
+  }
+
+  .methodology__section ul,
+  .methodology__section ol {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .methodology__tableWrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 0.9rem;
+  }
+
+  .methodology__table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 40rem;
+  }
+
+  .methodology__table th,
+  .methodology__table td {
+    border-bottom: 1px solid var(--border);
+    padding: 0.85rem 1rem;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .methodology__table th {
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted-foreground);
+  }
+
+  .methodology__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .methodology__links a {
+    display: inline-block;
+    padding: 0.55rem 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--primary);
+    text-decoration: none;
+  }
+
+  .methodology__links a:hover {
+    border-color: var(--primary);
+    background: var(--primary-soft);
+  }
+
+  @media (max-width: 768px) {
+    .methodology {
+      padding: 2.6rem 0;
+    }
+
+    .methodology__container {
+      padding: 0 1rem;
+    }
+
+    .methodology__table {
+      min-width: 32rem;
+    }
+  }
+</style>

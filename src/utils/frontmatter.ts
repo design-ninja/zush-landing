@@ -10,7 +10,11 @@ export interface BlogFrontmatter {
   slug: string
   tags: string[]
   tldr: string
+  wordCount: number
   readingTime: number
+  authorName: string
+  reviewerName: string
+  reviewedAt: string
 }
 
 export interface ParsedPost {
@@ -77,7 +81,11 @@ export function parseFrontmatter(raw: string): ParsedPost {
         .map((t) => t.trim())
         .filter(Boolean),
       tldr: meta.tldr ?? '',
+      wordCount,
       readingTime: Math.ceil(wordCount / 200),
+      authorName: meta.author || 'Zush Editorial Team',
+      reviewerName: meta.reviewer || 'Zush Product Team',
+      reviewedAt: meta.reviewed || meta.date || '',
     },
     content,
     faq: extractFAQ(content),

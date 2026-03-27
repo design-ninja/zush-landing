@@ -1,0 +1,54 @@
+@use 'src/styles/mixins' as *;
+
+.TrustSignals {
+  padding: 2.2rem 0 0.8rem;
+}
+
+.TrustSignals__Container {
+  @include container;
+}
+
+.TrustSignals__Header {
+  max-width: 52rem;
+  margin: 0 auto 1.3rem;
+  text-align: center;
+}
+
+.TrustSignals__Grid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  @include tablet {
+    grid-template-columns: 1fr;
+  }
+}
+
+.TrustCard {
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1rem 1.05rem;
+  background: var(--card);
+
+  h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.02rem;
+  }
+
+  p {
+    margin: 0 0 0.7rem;
+    line-height: 1.55;
+    color: var(--muted-foreground);
+  }
+
+  &__Links {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  &__Link {
+    color: var(--primary);
+    font-weight: 500;
+  }
+}
