@@ -37,6 +37,24 @@ declare global {
 let paddleLoaded = false;
 let paddleInitialized = false;
 
+function getPaddleConfig() {
+  const paddleEnv =
+    import.meta.env.PUBLIC_PADDLE_ENVIRONMENT ||
+    import.meta.env.VITE_PADDLE_ENVIRONMENT ||
+    'sandbox';
+  const paddleToken =
+    import.meta.env.PUBLIC_PADDLE_TOKEN ||
+    import.meta.env.VITE_PADDLE_TOKEN;
+
+  if (!paddleToken) {
+    throw new Error(
+      'Missing PUBLIC_PADDLE_TOKEN. Astro exposes only PUBLIC_* env vars to client code.'
+    );
+  }
+
+  return { paddleEnv, paddleToken };
+}
+
 async function loadPaddleScript(): Promise<void> {
   if (paddleLoaded) return;
 
@@ -56,8 +74,7 @@ async function loadPaddleScript(): Promise<void> {
 function initializePaddle(): void {
   if (paddleInitialized || !window.Paddle) return;
 
-  const paddleEnv = import.meta.env.VITE_PADDLE_ENVIRONMENT || 'sandbox';
-  const paddleToken = import.meta.env.VITE_PADDLE_TOKEN;
+  const { paddleEnv, paddleToken } = getPaddleConfig();
 
   if (paddleEnv === 'sandbox') {
     window.Paddle.Environment.set('sandbox');
