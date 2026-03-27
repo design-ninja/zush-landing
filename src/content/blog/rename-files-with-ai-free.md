@@ -1,10 +1,10 @@
 ---
 title: "How to Rename Files with AI for Free in 2026"
-description: Learn how to rename files with AI for free using Zush's free tier, BYOK API keys, open-source tools, and scripts without paying for subscriptions.
-date: 2026-03-23
-slug: rename-files-with-ai-free
-tags: rename files with ai free, free ai file renamer, ai rename free, file organization free, byok ai renaming
-tldr: You can rename files with AI for free using Zush's 50 renames per month, a BYOK API key for unlimited renames at minimal cost, or open-source tools with local models.
+description: "Learn how to rename files with AI for free using Zush's free tier, BYOK API keys, open-source tools, and scripts without paying for subscriptions."
+date: "2026-03-23"
+slug: "rename-files-with-ai-free"
+tags: "rename files with ai free, free ai file renamer, ai rename free, file organization free, byok ai renaming"
+tldr: "You can rename files with AI for free using Zush's 50 renames per month, a BYOK API key for unlimited renames at minimal cost, or open-source tools with local models."
 ---
 
 You do not need to pay a subscription to rename files with AI. There are several genuinely free paths, each with different trade-offs in quality, setup effort, and file format support.

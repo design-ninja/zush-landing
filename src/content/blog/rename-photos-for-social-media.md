@@ -1,10 +1,10 @@
 ---
 title: "How to Rename Photos for Social Media: A Creator's Guide"
-description: Learn how to rename photos for social media to improve search, reuse, organization, and cross-platform publishing workflows.
-date: 2026-02-17
-slug: rename-photos-for-social-media
-tags: rename photos social media, image naming, photo file names, content creator tips, social media SEO
-tldr: The best social media photo filenames are descriptive, short, and reusable across platforms, especially if the same image may later appear on your blog, portfolio, or in client folders.
+description: "Learn how to rename photos for social media to improve search, reuse, organization, and cross-platform publishing workflows."
+date: "2026-02-17"
+slug: "rename-photos-for-social-media"
+tags: "rename photos social media, image naming, photo file names, content creator tips, social media SEO"
+tldr: "The best social media photo filenames are descriptive, short, and reusable across platforms, especially if the same image may later appear on your blog, portfolio, or in client folders."
 ---
 
 If you publish photos for social media, the filename matters more than most creators think. Not because Instagram will show it publicly, but because filenames affect your own organization, your reuse workflow, and, in some cases, how those same images perform on the web later.

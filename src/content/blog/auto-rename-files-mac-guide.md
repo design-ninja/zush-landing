@@ -1,10 +1,10 @@
 ---
 title: "Auto Rename Files on Mac: Best Tools & Methods"
-description: Learn how to auto rename files on Mac using Automator, Hazel, and AI-powered folder monitoring with Zush for hands-free file organization.
-date: 2026-03-23
-slug: auto-rename-files-mac-guide
-tags: auto rename files, auto rename files mac, automatic file renaming mac, folder monitoring, mac file automation
-tldr: The best way to auto rename files on Mac depends on the rename logic. Automator handles simple patterns, Hazel handles rule-based sorting, and Zush handles content-aware renaming with folder monitoring.
+description: "Learn how to auto rename files on Mac using Automator, Hazel, and AI-powered folder monitoring with Zush for hands-free file organization."
+date: "2026-03-23"
+slug: "auto-rename-files-mac-guide"
+tags: "auto rename files, auto rename files mac, automatic file renaming mac, folder monitoring, mac file automation"
+tldr: "The best way to auto rename files on Mac depends on the rename logic. Automator handles simple patterns, Hazel handles rule-based sorting, and Zush handles content-aware renaming with folder monitoring."
 ---
 
 Auto renaming files on Mac means setting up a system where files get renamed without manual intervention. A new file lands in a folder, and it gets a proper name without you touching it.

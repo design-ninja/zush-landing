@@ -1,10 +1,10 @@
 ---
 title: "Folder Monitoring for Automatic File Renaming: Set It and Forget It"
-description: Learn how folder monitoring automates file renaming on Mac. Set up real-time rename workflows for Downloads, Desktop, and screenshots with Zush.
-date: 2026-03-23
-slug: folder-monitoring-automatic-file-renaming
-tags: automatic file renaming, folder monitoring rename, auto rename files mac, folder watcher mac, file automation macOS
-tldr: Folder monitoring lets you rename files automatically as they arrive instead of cleaning up after the fact. Zush watches your folders in real time and applies AI-powered content-aware names to images, screenshots, PDFs, and documents.
+description: "Learn how folder monitoring automates file renaming on Mac. Set up real-time rename workflows for Downloads, Desktop, and screenshots with Zush."
+date: "2026-03-23"
+slug: "folder-monitoring-automatic-file-renaming"
+tags: "automatic file renaming, folder monitoring rename, auto rename files mac, folder watcher mac, file automation macOS"
+tldr: "Folder monitoring lets you rename files automatically as they arrive instead of cleaning up after the fact. Zush watches your folders in real time and applies AI-powered content-aware names to images, screenshots, PDFs, and documents."
 ---
 
 Renaming files one at a time is manageable when you save three files a day. It breaks down when your Downloads folder gains twenty files a week, your Desktop collects screenshots every afternoon, and your camera imports land as `IMG_` sequences every time you connect your phone.

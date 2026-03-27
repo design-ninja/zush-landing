@@ -1,10 +1,10 @@
 ---
 title: "Best AI File Renamer Tools in 2026: Free & Paid Compared"
-description: Compare the best AI file renamer tools in 2026 including free options, paid plans, format support, and automation features for images and documents.
-date: 2026-03-23
-slug: best-ai-file-renamer-tools-2026
-tags: ai file renamer, ai file renamer free, best ai rename tool, file renaming tools 2026, ai rename comparison
-tldr: The best AI file renamer in 2026 depends on your platform, file types, and budget. Zush leads on Mac for mixed image and document workflows. Other tools serve narrower use cases.
+description: "Compare the best AI file renamer tools in 2026 including free options, paid plans, format support, and automation features for images and documents."
+date: "2026-03-23"
+slug: "best-ai-file-renamer-tools-2026"
+tags: "ai file renamer, ai file renamer free, best ai rename tool, file renaming tools 2026, ai rename comparison"
+tldr: "The best AI file renamer in 2026 depends on your platform, file types, and budget. Zush leads on Mac for mixed image and document workflows. Other tools serve narrower use cases."
 ---
 
 AI file renamers have gone from experimental curiosities to practical tools. The category has matured enough that there are now real differences between options, not just in AI quality but in format support, automation, pricing, and platform fit.

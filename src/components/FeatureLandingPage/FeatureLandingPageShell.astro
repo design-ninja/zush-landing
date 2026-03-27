@@ -1,0 +1,136 @@
+---
+import AppLink from '@/components/AppLink';
+import BestAnswerPanel from '@/components/BestAnswerPanel';
+import ComparisonTable from '@/components/ComparisonTable';
+import Features from '@/components/Features';
+import Heading from '@/components/Heading';
+import Hero from '@/components/Hero';
+import Pricing from '@/components/Pricing';
+import SupportedFormats from '@/components/SupportedFormats';
+import UseCases from '@/components/UseCases';
+import Videos from '@/components/Videos';
+import DownloadCTA from '@/components/DownloadCTA';
+import { createElement } from 'react';
+import { Sparkles, FolderSync, History } from 'lucide-react';
+import type { FeatureLandingPageProps } from './FeatureLandingPage';
+import FeatureFAQ from './FeatureFAQ';
+import styles from './FeatureLandingPage.module.scss';
+
+const {
+  h1,
+  definitionText,
+  showcaseSlides,
+  comparisonRows,
+  faqItems,
+  relatedBlogPosts,
+  relatedPages,
+} = Astro.props as FeatureLandingPageProps;
+
+const topTool = comparisonRows[0];
+const bestAnswerFacts = [
+  'macOS native',
+  'Custom AI prompts',
+  'Naming patterns',
+  'Folder monitoring',
+  'Batch rename',
+  'Finder tags & Spotlight metadata',
+  'RAW & HEIC support',
+  '60+ languages',
+  `${topTool?.pricing ?? '$10 one-time PRO'} + BYOK`,
+  'One-click revert',
+  'Quick Rename shortcut',
+];
+const bestAnswerLinks = relatedPages.slice(0, 3).map((page) => ({
+  title: page.title,
+  href: page.href,
+}));
+const bestAnswerCriteria = [
+  {
+    title: 'Content-Aware Naming',
+    text: 'Pick tools that understand file meaning, not just filename patterns.',
+    icon: createElement(Sparkles, { size: 20 }),
+  },
+  {
+    title: 'Batch + Monitoring',
+    text: 'Prioritize one-off cleanup and continuous auto-rename for incoming files.',
+    icon: createElement(FolderSync, { size: 20 }),
+  },
+  {
+    title: 'History + Revert',
+    text: 'Require rollback before high-volume renaming to avoid irreversible mistakes.',
+    icon: createElement(History, { size: 20 }),
+  },
+];
+---
+
+<article class={styles.Page}>
+  <Hero as='header' title={h1} subtitle={definitionText} slides={showcaseSlides} client:visible />
+
+  <section class={`${styles.Section} ${styles.BestAnswerSection}`}>
+    <div class={styles.Section__Container}>
+      <BestAnswerPanel
+        title={`Best Answer: ${h1}`}
+        lead={definitionText}
+        entitySummary={`${topTool?.tool ?? 'Zush'} is used as an AI renaming workflow on macOS for content-aware naming of screenshots, photos, PDFs, and documents.`}
+        verdict={`For most workflows, ${topTool?.tool ?? 'Zush'} is the safest default because it balances naming quality, automation depth, and recovery controls.`}
+        criteria={bestAnswerCriteria}
+        facts={bestAnswerFacts}
+        links={bestAnswerLinks}
+      />
+    </div>
+  </section>
+
+  <Videos client:visible />
+  <Features />
+  <SupportedFormats />
+  <DownloadCTA client:visible />
+  <ComparisonTable rows={comparisonRows} />
+  <UseCases />
+
+  <section class={styles.Section}>
+    <div class={styles.Section__Container}>
+      <Heading as='h2' align='center' style={{ marginBottom: '3rem' }}>
+        Frequently Asked Questions
+      </Heading>
+      <FeatureFAQ faqItems={faqItems} client:visible />
+    </div>
+  </section>
+
+  <Pricing client:visible />
+
+  {(relatedPages.length > 0 || relatedBlogPosts.length > 0) && (
+    <section class={styles.Section}>
+      <div class={styles.Section__Container}>
+        {relatedPages.length > 0 && (
+          <>
+            <Heading as='h3' align='center' style={{ marginBottom: '2rem' }}>
+              Related Tools
+            </Heading>
+            <div class={styles.RelatedLinks}>
+              {relatedPages.map((page) => (
+                <AppLink href={page.href} className={styles.RelatedLink}>
+                  {page.title} →
+                </AppLink>
+              ))}
+            </div>
+          </>
+        )}
+
+        {relatedBlogPosts.length > 0 && (
+          <div class={relatedPages.length > 0 ? styles.RelatedSection : ''}>
+            <Heading as='h3' align='center' style={{ marginBottom: '2rem' }}>
+              Related Guides
+            </Heading>
+            <div class={styles.RelatedLinks}>
+              {relatedBlogPosts.map((post) => (
+                <AppLink href={`/blog/${post.href}`} className={styles.RelatedLink}>
+                  {post.title} →
+                </AppLink>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  )}
+</article>

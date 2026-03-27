@@ -1,10 +1,10 @@
 ---
 title: "How to Organize Design Assets: A UI/UX Workflow Guide"
-description: Learn how to organize design assets for UI and UX workflows using naming conventions, folders, and export discipline.
-date: 2026-02-19
-slug: organize-design-assets-ui-ux-workflow
-tags: organize design assets, UI design files, UX workflow, design asset management, design system organization
-tldr: A strong design asset workflow uses predictable folder structure, clear export naming, and a lightweight versioning system that helps designers and developers find the right file fast.
+description: "Learn how to organize design assets for UI and UX workflows using naming conventions, folders, and export discipline."
+date: "2026-02-19"
+slug: "organize-design-assets-ui-ux-workflow"
+tags: "organize design assets, UI design files, UX workflow, design asset management, design system organization"
+tldr: "A strong design asset workflow uses predictable folder structure, clear export naming, and a lightweight versioning system that helps designers and developers find the right file fast."
 ---
 
 Design asset organization gets messy because every project creates exports, screenshots, versions, icons, mockups, and references faster than most teams can name them well. The fix is not more folders. It is clearer structure and better naming.

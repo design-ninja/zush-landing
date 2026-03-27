@@ -18,6 +18,8 @@ const Logo = () => {
           height={48}
           alt="Zush Logo"
           className={styles.Logo__Icon}
+          loading="eager"
+          fetchPriority="high"
           decoding="async"
         />
       </picture>

@@ -1,10 +1,10 @@
 ---
 title: "HEIC and RAW Image Management on macOS: A Complete Guide"
-description: Learn how to manage HEIC and RAW image files on macOS, including compatibility, storage, editing, and organization.
-date: 2026-03-03
-slug: heic-raw-image-management-guide-macos
-tags: HEIC management mac, RAW file organization, manage HEIC files macOS, HEIC photos mac, image formats
-tldr: HEIC is efficient and Apple-friendly, while RAW is flexible and editing-friendly. Managing both well on macOS means understanding compatibility, storage, and naming.
+description: "Learn how to manage HEIC and RAW image files on macOS, including compatibility, storage, editing, and organization."
+date: "2026-03-03"
+slug: "heic-raw-image-management-guide-macos"
+tags: "HEIC management mac, RAW file organization, manage HEIC files macOS, HEIC photos mac, image formats"
+tldr: "HEIC is efficient and Apple-friendly, while RAW is flexible and editing-friendly. Managing both well on macOS means understanding compatibility, storage, and naming."
 ---
 
 HEIC and RAW are common on Mac for opposite reasons. HEIC is the efficient default from iPhone. RAW is the high-flexibility format used by cameras and serious editing workflows. If you use both, the challenge is not just storage. It is compatibility, retrieval, and keeping the library understandable over time.

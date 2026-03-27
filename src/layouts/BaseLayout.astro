@@ -1,6 +1,6 @@
 ---
 import type { SeoMeta } from '@/seo/config';
-import { DEFAULT_OG_IMAGE, getCanonicalUrl } from '@/seo/config';
+import { DEFAULT_OG_IMAGE, FEATURE_ROUTES, getCanonicalUrl } from '@/seo/config';
 import ThemeNavbar from '@/components/chrome/ThemeNavbar';
 import CheckoutAutoOpenBridge from '@/components/chrome/CheckoutAutoOpenBridge';
 import Footer from '@/components/Footer';
@@ -22,6 +22,11 @@ const {
 const canonicalUrl = getCanonicalUrl(seo.canonicalPath);
 const ldItems = (Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [])
   .filter(Boolean);
+const isHomePage = seo.canonicalPath === '/';
+const isFeaturePage = FEATURE_ROUTES.includes(
+  seo.canonicalPath as (typeof FEATURE_ROUTES)[number],
+);
+const needsTopOffset = includeChrome && !isHomePage && !isFeaturePage;
 ---
 
 <!doctype html>
@@ -84,6 +89,7 @@ const ldItems = (Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [])
       ldItems.map((item) => (
         <script
           type="application/ld+json"
+          is:inline
           set:html={JSON.stringify(item)}
         />
       ))
@@ -94,7 +100,7 @@ const ldItems = (Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [])
       <a class="skip-link" href="#main-content">Skip to content</a>
       {includeChrome && <ThemeNavbar client:load />}
       {includeChrome && <CheckoutAutoOpenBridge client:load />}
-      <main id="main-content" class="site-main">
+      <main id="main-content" class:list={['site-main', { 'site-main_offset': needsTopOffset }]}>
         <slot />
       </main>
       {includeChrome && <Footer />}
@@ -112,6 +118,16 @@ const ldItems = (Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [])
 
   .site-main {
     flex: 1;
+  }
+
+  .site-main_offset {
+    padding-top: calc(var(--navbar-height, 4.375rem) + 0.9rem);
+  }
+
+  @media (max-width: 768px) {
+    .site-main_offset {
+      padding-top: calc(var(--navbar-height, 4.375rem) + 0.55rem);
+    }
   }
 
   .skip-link {

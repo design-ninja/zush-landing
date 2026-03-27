@@ -229,7 +229,15 @@ const Videos = () => {
                 onCanPlay={handleCanPlay}
                 onTimeUpdate={handleTimeUpdate}
                 onEnded={handleEnded}
-              />
+              >
+                <track
+                  kind='captions'
+                  src='/videos/captions/zush-demo.vtt'
+                  srcLang='en'
+                  label='English captions'
+                  default
+                />
+              </motion.video>
             )}
           </AnimatePresence>
           <p className={styles.Videos__Description}>{FEATURES[activeFeature].description}</p>

@@ -55,11 +55,16 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               className={styles.Footer__AppStore}
+              aria-label="Download Zush on the App Store"
             >
               <img
                 src="/images/download-from-appstore.svg"
                 alt="Download on the App Store"
                 className={styles.Footer__AppStoreImg}
+                width={156}
+                height={40}
+                loading="lazy"
+                decoding="async"
               />
             </AppLink>
           </div>
@@ -109,6 +114,7 @@ const Footer = () => {
               aria-label="Follow us on X"
             >
               <XIcon size={24} />
+              <span className={styles.Footer__VisuallyHidden}>Follow us on X</span>
             </AppLink>
             <AppLink
               href="https://www.youtube.com/@zushapp"
@@ -118,6 +124,7 @@ const Footer = () => {
               aria-label="Follow us on YouTube"
             >
               <YouTubeIcon size={24} />
+              <span className={styles.Footer__VisuallyHidden}>Follow us on YouTube</span>
             </AppLink>
             <AppLink
               href="https://www.producthunt.com/products/zush"
@@ -127,6 +134,7 @@ const Footer = () => {
               aria-label="Zush on Product Hunt"
             >
               <ProductHuntIcon size={24} />
+              <span className={styles.Footer__VisuallyHidden}>Zush on Product Hunt</span>
             </AppLink>
           </div>
           <div className={styles.Footer__BottomLinks}>

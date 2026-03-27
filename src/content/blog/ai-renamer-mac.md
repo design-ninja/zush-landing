@@ -1,10 +1,10 @@
 ---
-title: AI Renamer Mac: Best Tools for Renaming Files Automatically
-description: Compare the best AI renamer tools on Mac for automatically renaming screenshots, PDFs, documents, photos, and downloaded files with minimal manual cleanup.
-date: 2026-03-12
-slug: ai-renamer-mac
-tags: ai renamer mac, ai file renamer mac, best ai renamer mac, file rename automation
-tldr: The best AI renamer on Mac is the one that can generate descriptive filenames from file content, process files in batches, and automate future renaming without losing control.
+title: "AI Renamer Mac: Best Tools for Renaming Files Automatically"
+description: "Compare the best AI renamer tools on Mac for automatically renaming screenshots, PDFs, documents, photos, and downloaded files with minimal manual cleanup."
+date: "2026-03-12"
+slug: "ai-renamer-mac"
+tags: "ai renamer mac, ai file renamer mac, best ai renamer mac, file rename automation"
+tldr: "The best AI renamer on Mac is the one that can generate descriptive filenames from file content, process files in batches, and automate future renaming without losing control."
 ---
 
 If you are searching for `ai renamer mac`, you are probably not looking for a text replacement utility. You are looking for a tool that can rename screenshots, PDFs, documents, photos, and downloaded files automatically based on what they contain.

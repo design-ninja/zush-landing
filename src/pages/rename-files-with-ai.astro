@@ -1,11 +1,14 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import FeatureLandingPageShell from '@/components/FeatureLandingPage/FeatureLandingPageShell.astro';
+import { getFeaturePageProps } from '@/utils/featurePageProps';
 import RenameFilesWithAI from '@/views/FeaturePages/RenameFilesWithAI';
 import { getSeoForPath } from '@/seo/config';
 
 const seo = getSeoForPath('/rename-files-with-ai');
+const featurePage = getFeaturePageProps(RenameFilesWithAI);
 ---
 
-<BaseLayout seo={seo}>
-  <RenameFilesWithAI client:load />
+<BaseLayout seo={seo} jsonLd={featurePage.jsonLd}>
+  <FeatureLandingPageShell {...featurePage} />
 </BaseLayout>

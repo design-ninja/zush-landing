@@ -1,10 +1,10 @@
 ---
 title: "How to Organize Photos by Date on Mac"
-description: Learn how to organize photos by date on Mac using Finder, Apple Photos, and date-based naming patterns.
-date: 2026-02-22
-slug: organize-photos-by-date-mac
-tags: organize photos by date, sort photos by date, photo date organization, macOS photo management
-tldr: Date-based photo organization is one of the simplest systems on Mac because dates scale well, sort correctly, and are already present in most image files.
+description: "Learn how to organize photos by date on Mac using Finder, Apple Photos, and date-based naming patterns."
+date: "2026-02-22"
+slug: "organize-photos-by-date-mac"
+tags: "organize photos by date, sort photos by date, photo date organization, macOS photo management"
+tldr: "Date-based photo organization is one of the simplest systems on Mac because dates scale well, sort correctly, and are already present in most image files."
 ---
 
 Organizing photos by date on Mac works because it mirrors how people remember events: trips, shoots, holidays, and projects happened at a specific time. It is also one of the easiest systems to scale.

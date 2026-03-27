@@ -1,9 +1,7 @@
-import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import SectionHeader from '@/components/SectionHeader';
 import BackToHome from '@/components/BackToHome';
 import styles from './Changelog.module.scss';
-import changelogPath from '@/content/changelog.md?url';
 import '@/styles/markdown-content.scss';
 
 interface ReleaseItem {
@@ -12,65 +10,44 @@ interface ReleaseItem {
     content: string;
 }
 
-const Changelog = () => {
-    const [releases, setReleases] = useState<ReleaseItem[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+interface ChangelogProps {
+    source: string;
+}
 
-    useEffect(() => {
-        const fetchChangelog = async () => {
-            try {
-                const response = await fetch(changelogPath);
-                if (!response.ok) {
-                    throw new Error('Failed to fetch changelog');
-                }
-                const text = await response.text();
-                const parsed = parseChangelog(text);
-                setReleases(parsed);
-            } catch (err) {
-                setError(err instanceof Error ? err.message : 'Unknown error');
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchChangelog();
-    }, []);
-
-    const parseChangelog = (markdown: string): ReleaseItem[] => {
-        // Split by version headers (## [X.X.X] - YYYY-MM-DD)
-        const versions = markdown.split(/^## \[/m);
-        // Remove the first part (header before first version)
-        versions.shift();
-
-        return versions.map(block => {
-            const lines = block.split('\n');
-            const header = lines[0]; // "0.2.0] - 2025-12-31"
-            const content = lines.slice(1).join('\n').trim();
-
-            const [versionPart, datePart] = header.split('] - ');
-            
-            return {
-                version: versionPart,
-                date: formatDate(datePart),
-                content: content
-            };
+const formatDate = (dateStr: string): string => {
+    if (!dateStr) return '';
+    try {
+        const date = new Date(dateStr);
+        return date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
         });
-    };
+    } catch {
+        return dateStr;
+    }
+};
 
-    const formatDate = (dateStr: string): string => {
-        if (!dateStr) return '';
-        try {
-            const date = new Date(dateStr);
-            return date.toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-            });
-        } catch {
-            return dateStr;
-        }
-    };
+const parseChangelog = (markdown: string): ReleaseItem[] => {
+    const versions = markdown.split(/^## \[/m);
+    versions.shift();
+
+    return versions.map((block) => {
+        const lines = block.split('\n');
+        const header = lines[0];
+        const content = lines.slice(1).join('\n').trim();
+        const [versionPart, datePart] = header.split('] - ');
+
+        return {
+            version: versionPart,
+            date: formatDate(datePart),
+            content,
+        };
+    });
+};
+
+const Changelog = ({ source }: ChangelogProps) => {
+    const releases = parseChangelog(source);
 
     const isLatest = (index: number): boolean => index === 0;
 
@@ -84,24 +61,13 @@ const Changelog = () => {
         </header>
     );
 
-    if (loading) {
-        return (
-            <section className={styles.Changelog}>
-                <div className={styles.Changelog__Container}>
-                    {changelogHeader}
-                    <div className={styles.Changelog__Loading}>Loading changelog...</div>
-                </div>
-            </section>
-        );
-    }
-
-    if (error) {
+    if (releases.length === 0) {
         return (
             <section className={styles.Changelog}>
                 <div className={styles.Changelog__Container}>
                     {changelogHeader}
                     <div className={styles.Changelog__Error}>
-                        Failed to load changelog: {error}
+                        Failed to parse changelog content.
                     </div>
                 </div>
             </section>

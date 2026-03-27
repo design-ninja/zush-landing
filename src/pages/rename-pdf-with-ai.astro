@@ -1,11 +1,14 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import FeatureLandingPageShell from '@/components/FeatureLandingPage/FeatureLandingPageShell.astro';
+import { getFeaturePageProps } from '@/utils/featurePageProps';
 import RenamePDFWithAI from '@/views/FeaturePages/RenamePDFWithAI';
 import { getSeoForPath } from '@/seo/config';
 
 const seo = getSeoForPath('/rename-pdf-with-ai');
+const featurePage = getFeaturePageProps(RenamePDFWithAI);
 ---
 
-<BaseLayout seo={seo}>
-  <RenamePDFWithAI client:load />
+<BaseLayout seo={seo} jsonLd={featurePage.jsonLd}>
+  <FeatureLandingPageShell {...featurePage} />
 </BaseLayout>

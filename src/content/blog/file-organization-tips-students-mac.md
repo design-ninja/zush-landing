@@ -1,10 +1,10 @@
 ---
 title: "File Organization Tips for Students on Mac"
-description: Practical file organization tips for students on Mac, including folders, assignment naming, note storage, and screenshot cleanup.
-date: 2026-02-16
-slug: file-organization-tips-students-mac
-tags: file organization students, organize school files mac, student file management, college organization tips
-tldr: Students stay organized on Mac by using a semester-first folder structure, predictable assignment filenames, and fast cleanup for screenshots, notes, and Downloads.
+description: "Practical file organization tips for students on Mac, including folders, assignment naming, note storage, and screenshot cleanup."
+date: "2026-02-16"
+slug: "file-organization-tips-students-mac"
+tags: "file organization students, organize school files mac, student file management, college organization tips"
+tldr: "Students stay organized on Mac by using a semester-first folder structure, predictable assignment filenames, and fast cleanup for screenshots, notes, and Downloads."
 ---
 
 The best file organization system for students on Mac is simple: one semester folder, one folder per course, and filenames that make assignments and notes obvious at a glance. If you make the system more complex than that, you probably will not keep using it.

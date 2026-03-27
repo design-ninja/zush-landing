@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Check, X } from 'lucide-react';
 import Heading from '@/components/Heading';
 import AppleIcon from '@/components/AppleIcon';
@@ -36,13 +35,7 @@ const ComparisonTable = ({ rows }: ComparisonTableProps) => {
         <Heading as='h2' align='center' style={{ marginBottom: '3rem' }}>
           How Zush Compares
         </Heading>
-        <motion.div
-          className={styles.ComparisonWrapper}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.5 }}
-        >
+        <div className={styles.ComparisonWrapper}>
           <table className={styles.Comparison}>
             <thead>
               <tr>
@@ -75,7 +68,7 @@ const ComparisonTable = ({ rows }: ComparisonTableProps) => {
               ))}
             </tbody>
           </table>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

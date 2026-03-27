@@ -1,11 +1,11 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import ManageSubscription from '@/views/ManageSubscription';
+import ManageSubscriptionView from '@/views/ManageSubscription';
 import { getSeoForPath } from '@/seo/config';
 
 const seo = getSeoForPath('/manage-subscription');
 ---
 
 <BaseLayout seo={seo}>
-  <ManageSubscription client:load />
+  <ManageSubscriptionView client:load />
 </BaseLayout>

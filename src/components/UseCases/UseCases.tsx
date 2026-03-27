@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import type { ReactNode } from 'react';
 import {
   Palette,
@@ -31,12 +30,9 @@ const UseCaseCard = ({
   color,
   delay = 0,
 }: UseCaseCardProps) => (
-  <motion.div
+  <div
     className={`${styles.UseCaseCard} ${styles[`UseCaseCard_${color}`]}`}
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: '-50px' }}
-    transition={{ duration: 0.5, delay }}
+    style={{ transitionDelay: `${delay}s` }}
   >
     <div className={styles.UseCaseCard__IconWrapper}>
       <Icon size={24} />
@@ -45,7 +41,7 @@ const UseCaseCard = ({
       {title}
     </Heading>
     <Text className={styles.UseCaseCard__Description}>{description}</Text>
-  </motion.div>
+  </div>
 );
 
 const UseCases = () => {

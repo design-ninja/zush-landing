@@ -1,10 +1,10 @@
 ---
 title: "Best AI File Renamer Tools for Mac Compared (2026)"
-description: Compare the best AI file renamer tools for Mac in 2026 by automation, safety, format support, and fit for real mixed-file macOS workflows.
-date: 2026-02-28
-slug: best-ai-file-renamer-tools-mac-compared
-tags: AI file renamer mac, best file renamer mac, AI rename tool comparison, mac productivity, file organization
-tldr: The best AI file renamer for Mac should do more than generate names. It should rename based on content, support batch workflows, and offer rollback and automation.
+description: "Compare the best AI file renamer tools for Mac in 2026 by automation, safety, format support, and fit for real mixed-file macOS workflows."
+date: "2026-02-28"
+slug: "best-ai-file-renamer-tools-mac-compared"
+tags: "AI file renamer mac, best file renamer mac, AI rename tool comparison, mac productivity, file organization"
+tldr: "The best AI file renamer for Mac should do more than generate names. It should rename based on content, support batch workflows, and offer rollback and automation."
 ---
 
 If you are searching for the best AI file renamer tools for Mac, you are usually trying to solve one of three problems:
