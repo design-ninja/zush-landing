@@ -1,0 +1,11 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import RenameFilesWithAI from '@/views/FeaturePages/RenameFilesWithAI';
+import { getSeoForPath } from '@/seo/config';
+
+const seo = getSeoForPath('/rename-files-with-ai');
+---
+
+<BaseLayout seo={seo}>
+  <RenameFilesWithAI client:load />
+</BaseLayout>

@@ -1,5 +1,4 @@
 import type { AnchorHTMLAttributes, ReactNode } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
 import styles from './AppLink.module.scss';
 
 type AppLinkVariant = 'inherit' | 'legal';
@@ -16,23 +15,16 @@ const isExternalHref = (href: string) => /^(https?:\/\/|mailto:|tel:)/i.test(hre
 const AppLink = ({ children, className = '', href, rel, target, variant = 'inherit', ...props }: AppLinkProps) => {
   const classes = [styles.AppLink, styles[`AppLink_${variant}`], className].filter(Boolean).join(' ');
   const isExternal = isExternalHref(href);
-  const isFragment = href.startsWith('#');
-  const isInternal = !isExternal && !isFragment && href.startsWith('/');
-
-  if (isInternal) {
-    return (
-      <RouterLink className={classes} to={href}>
-        {children}
-      </RouterLink>
-    );
-  }
+  const safeRel = target === '_blank'
+    ? rel ?? (isExternal ? 'noopener noreferrer' : undefined)
+    : rel;
 
   return (
     <a
       {...props}
       className={classes}
       href={href}
-      rel={rel}
+      rel={safeRel}
       target={target}
     >
       {children}

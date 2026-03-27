@@ -1,0 +1,81 @@
+@use 'src/styles/variables' as *;
+@use 'src/styles/mixins' as *;
+
+.BlogList {
+  padding: 3.75rem 0;
+  min-height: 80vh;
+
+  &__Container {
+    @include container;
+    max-width: 50rem;
+  }
+
+  &__Posts {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__Post {
+    background: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: $radius-xl;
+    transition: border-color $transition-fast;
+
+    &:hover {
+      border-color: var(--primary);
+    }
+  }
+
+  &__PostLink {
+    display: block;
+    padding: 2rem;
+    color: inherit;
+
+    @include mobile {
+      padding: 1.5rem;
+    }
+  }
+
+  &__PostTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: $font-family-heading;
+    margin-bottom: 0.75rem;
+    color: var(--foreground);
+  }
+
+  &__PostDescription {
+    color: var(--muted-foreground);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  &__PostMeta {
+    display: flex;
+    gap: 1.5rem;
+    color: var(--muted-foreground);
+    font-size: 0.875rem;
+  }
+
+  &__PostTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+
+  &__Tag {
+    padding: 0.25rem 0.75rem;
+    background: var(--primary-soft);
+    color: var(--primary);
+    border-radius: $radius-full;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  &__BackLink {
+    margin-top: 2rem;
+    display: inline-block;
+  }
+}

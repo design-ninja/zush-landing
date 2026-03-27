@@ -1,0 +1,11 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BYOKSetup from '@/views/BYOKSetup';
+import { getSeoForPath } from '@/seo/config';
+
+const seo = getSeoForPath('/byok-setup');
+---
+
+<BaseLayout seo={seo}>
+  <BYOKSetup />
+</BaseLayout>

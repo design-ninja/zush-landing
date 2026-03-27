@@ -235,7 +235,7 @@ The point at which you outgrow free depends on your volume.
 
 The progression from free to paid is smooth. You do not lose any features or need to reconfigure anything.
 
-For setup guides on configuring BYOK providers, see [BYOK Setup Guide](/blog/byok-setup).
+For setup guides on configuring BYOK providers, see [BYOK Setup Guide](/byok-setup).
 
 ## Getting started
 

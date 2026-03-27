@@ -1,0 +1,11 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Activate from '@/views/Activate';
+import { getSeoForPath } from '@/seo/config';
+
+const seo = getSeoForPath('/activate');
+---
+
+<BaseLayout seo={seo}>
+  <Activate client:load />
+</BaseLayout>

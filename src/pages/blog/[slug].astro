@@ -1,0 +1,37 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogPost from '@/views/Blog/BlogPost';
+import { getAllPosts, getPostBySlug } from '@/data/blog';
+import { getBlogSeo } from '@/seo/config';
+import {
+  buildBlogPostingJsonLd,
+  buildBreadcrumbJsonLd,
+  buildFAQPageJsonLd,
+} from '@/utils/jsonLd';
+
+export function getStaticPaths() {
+  return getAllPosts().map((post) => ({
+    params: { slug: post.slug },
+    props: { slug: post.slug },
+  }));
+}
+
+const { slug } = Astro.props;
+const parsedPost = getPostBySlug(slug);
+
+if (!parsedPost) {
+  throw new Error(`Unknown blog slug: ${slug}`);
+}
+
+const { frontmatter, faq } = parsedPost;
+const seo = getBlogSeo(frontmatter);
+const jsonLd = [
+  buildBlogPostingJsonLd(frontmatter),
+  buildBreadcrumbJsonLd(frontmatter.title, frontmatter.slug),
+  ...(faq.length > 0 ? [buildFAQPageJsonLd(faq)] : []),
+];
+---
+
+<BaseLayout seo={seo} jsonLd={jsonLd}>
+  <BlogPost slug={slug} client:load />
+</BaseLayout>

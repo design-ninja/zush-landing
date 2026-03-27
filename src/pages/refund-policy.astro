@@ -1,0 +1,11 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Legal from '@/views/Legal';
+import { getSeoForPath } from '@/seo/config';
+
+const seo = getSeoForPath('/refund-policy');
+---
+
+<BaseLayout seo={seo}>
+  <Legal type="refund" />
+</BaseLayout>

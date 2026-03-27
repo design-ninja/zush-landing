@@ -1,0 +1,11 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import RenamePDFWithAI from '@/views/FeaturePages/RenamePDFWithAI';
+import { getSeoForPath } from '@/seo/config';
+
+const seo = getSeoForPath('/rename-pdf-with-ai');
+---
+
+<BaseLayout seo={seo}>
+  <RenamePDFWithAI client:load />
+</BaseLayout>

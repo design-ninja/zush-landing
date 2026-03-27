@@ -1,0 +1,11 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AIImageRenamer from '@/views/FeaturePages/AIImageRenamer';
+import { getSeoForPath } from '@/seo/config';
+
+const seo = getSeoForPath('/ai-image-renamer');
+---
+
+<BaseLayout seo={seo}>
+  <AIImageRenamer client:load />
+</BaseLayout>

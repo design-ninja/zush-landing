@@ -1,0 +1,11 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AIScreenshotRenamer from '@/views/FeaturePages/AIScreenshotRenamer';
+import { getSeoForPath } from '@/seo/config';
+
+const seo = getSeoForPath('/ai-screenshot-renamer');
+---
+
+<BaseLayout seo={seo}>
+  <AIScreenshotRenamer client:load />
+</BaseLayout>

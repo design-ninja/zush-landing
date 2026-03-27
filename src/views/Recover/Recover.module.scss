@@ -1,0 +1,16 @@
+@use 'src/styles/variables' as *;
+@use 'src/styles/mixins' as *;
+
+.Recover {
+    &__Title {
+        @include page-title;
+    }
+
+    &__Subtitle {
+        @include page-subtitle;
+    }
+
+    &__Form {
+        @include form-layout;
+    }
+}

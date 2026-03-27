@@ -1,0 +1,11 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Recover from '@/views/Recover';
+import { getSeoForPath } from '@/seo/config';
+
+const seo = getSeoForPath('/recover');
+---
+
+<BaseLayout seo={seo}>
+  <Recover client:load />
+</BaseLayout>

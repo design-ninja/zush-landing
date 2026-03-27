@@ -6,10 +6,14 @@
   "author": "lirik",
   "license": "MIT",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build && node scripts/prerender.mjs",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "check:payments": "node scripts/verify-payments.mjs",
+    "check:html": "node scripts/check-html-smoke.mjs",
+    "check:links": "node scripts/check-internal-links.mjs",
+    "check:seo": "pnpm check:payments && pnpm check:html && pnpm check:links"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",
@@ -17,25 +21,25 @@
     "lucide-react": "^0.562.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-markdown": "^10.1.0",
-    "react-router-dom": "^7.11.0"
+    "react-markdown": "^10.1.0"
   },
   "devDependencies": {
+    "@astrojs/react": "^5.0.2",
+    "@astrojs/vercel": "^10.0.3",
     "@eslint/js": "^9.39.1",
     "@types/node": "^25.0.3",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
+    "astro": "^6.1.1",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
-    "puppeteer-core": "^24.37.2",
+    "puppeteer": "^24.40.0",
     "sass": "^1.97.1",
     "sharp": "^0.34.5",
     "svgo": "^4.0.1",
-    "typescript": "^5.9.3",
-    "vite": "^8.0.0",
-    "vite-plugin-image-optimizer": "^2.0.3"
+    "typescript": "^5.9.3"
   }
 }

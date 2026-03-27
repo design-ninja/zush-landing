@@ -1,0 +1,11 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import NotFound from '@/views/NotFound/NotFound';
+import { getSeoForPath } from '@/seo/config';
+
+const seo = getSeoForPath('/');
+---
+
+<BaseLayout seo={{ ...seo, title: 'Page Not Found — Zush', description: 'This page does not exist.', canonicalPath: '/404', robots: 'noindex, nofollow' }}>
+  <NotFound />
+</BaseLayout>

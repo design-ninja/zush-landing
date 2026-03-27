@@ -1,0 +1,11 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AIPDFRenamer from '@/views/FeaturePages/AIPDFRenamer';
+import { getSeoForPath } from '@/seo/config';
+
+const seo = getSeoForPath('/ai-pdf-renamer');
+---
+
+<BaseLayout seo={seo}>
+  <AIPDFRenamer client:load />
+</BaseLayout>
