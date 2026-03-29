@@ -6,6 +6,8 @@ import PageLayout from '@/components/PageLayout';
 import PageIcon from '@/components/PageIcon';
 import FormInput from '@/components/FormInput';
 import ErrorMessage from '@/components/ErrorMessage';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
 import { SUPABASE_URL } from '@/utils/supabase';
 import styles from './ManageSubscription.module.scss';
 
@@ -59,15 +61,15 @@ const ManageSubscription = () => {
         <CreditCard size={48} />
       </PageIcon>
 
-      <h1 className={styles.ManageSubscription__Title}>
+      <Heading as='h1' className={styles.ManageSubscription__Title}>
         Manage Subscription
-      </h1>
+      </Heading>
 
-      <p className={styles.ManageSubscription__Subtitle}>
+      <Text as='p' className={styles.ManageSubscription__Subtitle} color='subtle'>
         Enter the email address associated with your Zush PRO subscription to
         manage your billing, update payment methods, or cancel your
         subscription.
-      </p>
+      </Text>
 
       <form onSubmit={handleSubmit} className={styles.ManageSubscription__Form}>
         <FormInput
@@ -94,9 +96,9 @@ const ManageSubscription = () => {
 
       <div className={styles.ManageSubscription__Actions}>
         <div className={styles.ManageSubscription__Info}>
-          <p>
+          <Text as='p' size='sm' color='subtle'>
             <strong>Note:</strong> This is only for active subscriptions.
-          </p>
+          </Text>
         </div>
 
         <BackToHome />

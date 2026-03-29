@@ -1,5 +1,7 @@
 import Button from '@/components/Button'
 import AppleIcon from '@/components/AppleIcon'
+import Heading from '@/components/Heading'
+import Text from '@/components/Text'
 import { DOWNLOAD_URL, APP_STORE_URL } from '@/constants'
 import styles from './BlogCTA.module.scss'
 
@@ -28,10 +30,10 @@ const BlogCTA = ({ placement = 'footer' }: BlogCTAProps) => {
   return (
     <aside className={styles.BlogCTA} data-placement={placement}>
       <div className={styles.BlogCTA__Content}>
-        <p className={styles.BlogCTA__Title}>{placementTitles[placement]}</p>
-        <p className={styles.BlogCTA__Description}>
+        <Heading as='h3' className={styles.BlogCTA__Title}>{placementTitles[placement]}</Heading>
+        <Text as='p' size='sm' color='subtle' className={styles.BlogCTA__Description}>
           {placementDescriptions[placement]}
-        </p>
+        </Text>
         <div className={styles.BlogCTA__Buttons}>
           <Button
             as="a"
@@ -56,7 +58,7 @@ const BlogCTA = ({ placement = 'footer' }: BlogCTAProps) => {
             Mac App Store
           </Button>
         </div>
-        <p className={styles.BlogCTA__Hint}>Free, no credit card required</p>
+        <Text as='p' size='xs' color='subtle' className={styles.BlogCTA__Hint}>Free, no credit card required</Text>
       </div>
     </aside>
   )

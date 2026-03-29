@@ -2,32 +2,34 @@ import { Key, ExternalLink, Shield, HelpCircle, Infinity } from 'lucide-react';
 import Button from '@/components/Button';
 import AppLink from '@/components/AppLink';
 import BackToHome from '@/components/BackToHome';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
 import styles from './BYOKSetup.module.scss';
 
 const BYOKSetup = () => {
   return (
     <section className={styles.BYOKSetup}>
       <div className={styles.BYOKSetup__Container}>
-        <h1 className={styles.BYOKSetup__Title}>
+        <Heading as='h1' className={styles.BYOKSetup__Title}>
           BYOK Setup Guide
-        </h1>
+        </Heading>
 
-        <p className={styles.BYOKSetup__Subtitle}>
+        <Text as='p' className={styles.BYOKSetup__Subtitle} color='subtle'>
           Bring Your Own Key for unlimited AI-powered file processing
-        </p>
+        </Text>
 
         <div className={styles.BYOKSetup__Content}>
           {/* What is BYOK */}
           <div className={styles.BYOKSetup__Section}>
             <div className={styles.BYOKSetup__SectionHeader}>
               <Infinity size={24} />
-              <h2>What is BYOK?</h2>
+              <Heading as='h2'>What is BYOK?</Heading>
             </div>
-            <p>
+            <Text as='p'>
               BYOK (Bring Your Own Key) allows Zush PRO users to use their own AI provider API keys
               for unlimited file processing. Instead of using Zush's AI credits, your files are
               analyzed using your own API key from Gemini, Groq, OpenAI, or Claude.
-            </p>
+            </Text>
             <div className={styles.BYOKSetup__Benefits}>
               <div className={styles.BYOKSetup__Benefit}>
                 <span className={styles.BYOKSetup__BenefitIcon}>∞</span>
@@ -48,15 +50,15 @@ const BYOKSetup = () => {
           <div className={styles.BYOKSetup__Section}>
             <div className={styles.BYOKSetup__SectionHeader}>
               <Key size={24} />
-              <h2>Option 1: Gemini API (Google)</h2>
+              <Heading as='h2'>Option 1: Gemini API (Google)</Heading>
             </div>
 
             <div className={styles.BYOKSetup__Steps}>
               <div className={styles.BYOKSetup__Step}>
                 <div className={styles.BYOKSetup__StepNumber}>1</div>
                 <div className={styles.BYOKSetup__StepContent}>
-                  <h3>Get your API key</h3>
-                  <p>Visit Google AI Studio and create a free API key</p>
+                  <Heading as='h3'>Get your API key</Heading>
+                  <Text as='p'>Visit Google AI Studio and create a free API key</Text>
                   <Button
                     as="a"
                     href="https://aistudio.google.com/app/apikey"
@@ -73,16 +75,16 @@ const BYOKSetup = () => {
               <div className={styles.BYOKSetup__Step}>
                 <div className={styles.BYOKSetup__StepNumber}>2</div>
                 <div className={styles.BYOKSetup__StepContent}>
-                  <h3>Copy your API key</h3>
-                  <p>Click "Create API key" and copy the generated key (starts with "AIza...")</p>
+                  <Heading as='h3'>Copy your API key</Heading>
+                  <Text as='p'>Click "Create API key" and copy the generated key (starts with "AIza...")</Text>
                 </div>
               </div>
 
               <div className={styles.BYOKSetup__Step}>
                 <div className={styles.BYOKSetup__StepNumber}>3</div>
                 <div className={styles.BYOKSetup__StepContent}>
-                  <h3>Configure in Zush</h3>
-                  <p>Open Zush → Settings → Preferences → BYOK section</p>
+                  <Heading as='h3'>Configure in Zush</Heading>
+                  <Text as='p'>Open Zush → Settings → Preferences → BYOK section</Text>
                   <ul>
                     <li>Select "Gemini (Google)" as AI Provider</li>
                     <li>Paste your API key</li>
@@ -102,15 +104,15 @@ const BYOKSetup = () => {
           <div className={styles.BYOKSetup__Section}>
             <div className={styles.BYOKSetup__SectionHeader}>
               <Key size={24} />
-              <h2>Option 2: Groq API</h2>
+              <Heading as='h2'>Option 2: Groq API</Heading>
             </div>
 
             <div className={styles.BYOKSetup__Steps}>
               <div className={styles.BYOKSetup__Step}>
                 <div className={styles.BYOKSetup__StepNumber}>1</div>
                 <div className={styles.BYOKSetup__StepContent}>
-                  <h3>Get your API key</h3>
-                  <p>Visit Groq Console and create a free API key</p>
+                  <Heading as='h3'>Get your API key</Heading>
+                  <Text as='p'>Visit Groq Console and create a free API key</Text>
                   <Button
                     as="a"
                     href="https://console.groq.com/keys"
@@ -127,16 +129,16 @@ const BYOKSetup = () => {
               <div className={styles.BYOKSetup__Step}>
                 <div className={styles.BYOKSetup__StepNumber}>2</div>
                 <div className={styles.BYOKSetup__StepContent}>
-                  <h3>Copy your API key</h3>
-                  <p>Click "Create API Key" and copy the generated key (starts with "gsk_...")</p>
+                  <Heading as='h3'>Copy your API key</Heading>
+                  <Text as='p'>Click "Create API Key" and copy the generated key (starts with "gsk_...")</Text>
                 </div>
               </div>
 
               <div className={styles.BYOKSetup__Step}>
                 <div className={styles.BYOKSetup__StepNumber}>3</div>
                 <div className={styles.BYOKSetup__StepContent}>
-                  <h3>Configure in Zush</h3>
-                  <p>Open Zush → Settings → Preferences → BYOK section</p>
+                  <Heading as='h3'>Configure in Zush</Heading>
+                  <Text as='p'>Open Zush → Settings → Preferences → BYOK section</Text>
                   <ul>
                     <li>Select "Groq" as AI Provider</li>
                     <li>Paste your API key</li>
@@ -156,15 +158,15 @@ const BYOKSetup = () => {
           <div className={styles.BYOKSetup__Section}>
             <div className={styles.BYOKSetup__SectionHeader}>
               <Key size={24} />
-              <h2>Option 3: OpenAI API</h2>
+              <Heading as='h2'>Option 3: OpenAI API</Heading>
             </div>
 
             <div className={styles.BYOKSetup__Steps}>
               <div className={styles.BYOKSetup__Step}>
                 <div className={styles.BYOKSetup__StepNumber}>1</div>
                 <div className={styles.BYOKSetup__StepContent}>
-                  <h3>Get your API key</h3>
-                  <p>Visit OpenAI Platform and create an API key</p>
+                  <Heading as='h3'>Get your API key</Heading>
+                  <Text as='p'>Visit OpenAI Platform and create an API key</Text>
                   <Button
                     as="a"
                     href="https://platform.openai.com/api-keys"
@@ -181,16 +183,16 @@ const BYOKSetup = () => {
               <div className={styles.BYOKSetup__Step}>
                 <div className={styles.BYOKSetup__StepNumber}>2</div>
                 <div className={styles.BYOKSetup__StepContent}>
-                  <h3>Copy your API key</h3>
-                  <p>Click "Create new secret key" and copy the generated key (starts with "sk-...")</p>
+                  <Heading as='h3'>Copy your API key</Heading>
+                  <Text as='p'>Click "Create new secret key" and copy the generated key (starts with "sk-...")</Text>
                 </div>
               </div>
 
               <div className={styles.BYOKSetup__Step}>
                 <div className={styles.BYOKSetup__StepNumber}>3</div>
                 <div className={styles.BYOKSetup__StepContent}>
-                  <h3>Configure in Zush</h3>
-                  <p>Open Zush → Settings → Preferences → BYOK section</p>
+                  <Heading as='h3'>Configure in Zush</Heading>
+                  <Text as='p'>Open Zush → Settings → Preferences → BYOK section</Text>
                   <ul>
                     <li>Select "OpenAI" as AI Provider</li>
                     <li>Paste your API key</li>
@@ -210,15 +212,15 @@ const BYOKSetup = () => {
           <div className={styles.BYOKSetup__Section}>
             <div className={styles.BYOKSetup__SectionHeader}>
               <Key size={24} />
-              <h2>Option 4: Claude API (Anthropic)</h2>
+              <Heading as='h2'>Option 4: Claude API (Anthropic)</Heading>
             </div>
 
             <div className={styles.BYOKSetup__Steps}>
               <div className={styles.BYOKSetup__Step}>
                 <div className={styles.BYOKSetup__StepNumber}>1</div>
                 <div className={styles.BYOKSetup__StepContent}>
-                  <h3>Get your API key</h3>
-                  <p>Visit Anthropic Console and create an API key</p>
+                  <Heading as='h3'>Get your API key</Heading>
+                  <Text as='p'>Visit Anthropic Console and create an API key</Text>
                   <Button
                     as="a"
                     href="https://console.anthropic.com/settings/keys"
@@ -235,16 +237,16 @@ const BYOKSetup = () => {
               <div className={styles.BYOKSetup__Step}>
                 <div className={styles.BYOKSetup__StepNumber}>2</div>
                 <div className={styles.BYOKSetup__StepContent}>
-                  <h3>Copy your API key</h3>
-                  <p>Click "Create Key" and copy the generated key (starts with "sk-ant-...")</p>
+                  <Heading as='h3'>Copy your API key</Heading>
+                  <Text as='p'>Click "Create Key" and copy the generated key (starts with "sk-ant-...")</Text>
                 </div>
               </div>
 
               <div className={styles.BYOKSetup__Step}>
                 <div className={styles.BYOKSetup__StepNumber}>3</div>
                 <div className={styles.BYOKSetup__StepContent}>
-                  <h3>Configure in Zush</h3>
-                  <p>Open Zush → Settings → Preferences → BYOK section</p>
+                  <Heading as='h3'>Configure in Zush</Heading>
+                  <Text as='p'>Open Zush → Settings → Preferences → BYOK section</Text>
                   <ul>
                     <li>Select "Claude" as AI Provider</li>
                     <li>Paste your API key</li>
@@ -264,50 +266,50 @@ const BYOKSetup = () => {
           <div className={styles.BYOKSetup__Section}>
             <div className={styles.BYOKSetup__SectionHeader}>
               <HelpCircle size={24} />
-              <h2>Frequently Asked Questions</h2>
+              <Heading as='h2'>Frequently Asked Questions</Heading>
             </div>
 
             <div className={styles.BYOKSetup__FAQ}>
               <div className={styles.BYOKSetup__FAQItem}>
-                <h3>Is my API key secure?</h3>
-                <p>
+                <Heading as='h3'>Is my API key secure?</Heading>
+                <Text as='p'>
                   Yes. Your API key is stored securely and is only used for BYOK requests.
                   Requests are relayed through Zush backend infrastructure and then forwarded to your chosen provider with your key.
-                </p>
+                </Text>
               </div>
 
               <div className={styles.BYOKSetup__FAQItem}>
-                <h3>How much does it cost?</h3>
-                <p>
+                <Heading as='h3'>How much does it cost?</Heading>
+                <Text as='p'>
                   Gemini and Groq offer generous free tiers. OpenAI and Claude use pay-as-you-go pricing.
                   For typical usage (100-500 files/month), costs are usually less than $1/month.
                   Much cheaper than our credit packs!
-                </p>
+                </Text>
               </div>
 
               <div className={styles.BYOKSetup__FAQItem}>
-                <h3>Will I still have the 10,000 credits?</h3>
-                <p>
+                <Heading as='h3'>Will I still have the 10,000 credits?</Heading>
+                <Text as='p'>
                   Yes! When BYOK is disabled, you can still use your remaining credits.
                   BYOK is optional and can be toggled on/off anytime.
-                </p>
+                </Text>
               </div>
 
               <div className={styles.BYOKSetup__FAQItem}>
-                <h3>Which provider should I choose?</h3>
-                <p>
+                <Heading as='h3'>Which provider should I choose?</Heading>
+                <Text as='p'>
                   All four work great. Gemini (Google) has strong multimodal capabilities and a generous free tier.
                   Groq is known for very fast inference speeds. OpenAI (GPT-4o mini) offers reliable, affordable results.
                   Claude (Anthropic) provides high-quality file understanding. Try them and see which you prefer!
-                </p>
+                </Text>
               </div>
 
               <div className={styles.BYOKSetup__FAQItem}>
-                <h3>Do I need to be a PRO user?</h3>
-                <p>
+                <Heading as='h3'>Do I need to be a PRO user?</Heading>
+                <Text as='p'>
                   Yes, BYOK is a PRO-exclusive feature. Free users can upgrade to PRO for a one-time
                   payment of $10.
-                </p>
+                </Text>
               </div>
             </div>
           </div>
@@ -317,13 +319,13 @@ const BYOKSetup = () => {
             <div className={styles.BYOKSetup__SecurityNotice}>
               <Shield size={24} />
               <div>
-                <h3>Security & Privacy</h3>
-                <p>
+                <Heading as='h3'>Security & Privacy</Heading>
+                <Text as='p'>
                   Your API keys are stored securely and used only for BYOK processing. In BYOK mode,
                   analysis requests are still relayed through Zush backend infrastructure and then sent
                   to your chosen AI provider using your API key. Zush does not store file content after
                   processing as part of normal operation.
-                </p>
+                </Text>
               </div>
             </div>
           </div>

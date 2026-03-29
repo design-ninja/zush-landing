@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import SectionHeader from '../SectionHeader';
+import Text from '@/components/Text';
 import styles from './Videos.module.scss';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -239,7 +240,7 @@ const Videos = () => {
               </motion.video>
             )}
           </AnimatePresence>
-          <p className={styles.Videos__Description}>{FEATURES[activeFeature].description}</p>
+          <Text as='p' className={styles.Videos__Description}>{FEATURES[activeFeature].description}</Text>
         </motion.div>
 
         <motion.div

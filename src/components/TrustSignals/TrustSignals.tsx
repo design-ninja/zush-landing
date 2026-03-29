@@ -24,33 +24,33 @@ const TrustSignals = ({
 
         <div className={styles.TrustSignals__Grid}>
           <article className={styles.TrustCard}>
-            <h3>Documented Methodology</h3>
-            <p>
+            <Heading as='h3'>Documented Methodology</Heading>
+            <Text as='p' color='subtle'>
               Public scoring rubric with weighted criteria for naming accuracy,
               automation depth, and rollback safety.
-            </p>
+            </Text>
             <AppLink href="/methodology" className={styles.TrustCard__Link}>
               View methodology →
             </AppLink>
           </article>
 
           <article className={styles.TrustCard}>
-            <h3>Technical Review Cycle</h3>
-            <p>
+            <Heading as='h3'>Technical Review Cycle</Heading>
+            <Text as='p' color='subtle'>
               Recommendations are reviewed by the product team and updated with
               release-level changes.
-            </p>
+            </Text>
             <AppLink href="/changelog" className={styles.TrustCard__Link}>
               Review updates →
             </AppLink>
           </article>
 
           <article className={styles.TrustCard}>
-            <h3>Evidence Sources</h3>
-            <p>
+            <Heading as='h3'>Evidence Sources</Heading>
+            <Text as='p' color='subtle'>
               Claims are constrained by published product behavior, privacy
               policy, and benchmark protocol.
-            </p>
+            </Text>
             <div className={styles.TrustCard__Links}>
               <AppLink href="/privacy-policy" className={styles.TrustCard__Link}>
                 Data policy

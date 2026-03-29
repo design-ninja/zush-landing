@@ -59,9 +59,7 @@
     }
 
     &__Version {
-        font-size: 1.5rem;
-        font-weight: 600;
-        font-family: $font-family-heading;
+        margin: 0;
     }
 
     &__Date {
@@ -90,8 +88,6 @@
         h4,
         h5,
         h6 {
-            font-size: 1.1rem;
-            font-weight: 600;
             margin-bottom: 0.75rem;
             margin-top: 1.5rem;
             color: var(--foreground);
@@ -119,7 +115,6 @@
 
         p {
             margin-bottom: 1rem;
-            line-height: 1.6;
             color: var(--muted-foreground);
 
             &:last-child {

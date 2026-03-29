@@ -6,6 +6,7 @@ type HeadingAlign = 'left' | 'center' | 'right';
 
 interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
   as?: HeadingTag;
+  size?: HeadingTag;
   align?: HeadingAlign;
   children: ReactNode;
   className?: string;
@@ -13,14 +14,16 @@ interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
 
 const Heading = ({ 
   as: Tag = 'h2',
+  size,
   align,
   children, 
   className = '',
   ...props 
 }: HeadingProps) => {
+  const visualSize = size ?? Tag;
   const classNames = [
     styles.Heading,
-    styles[`Heading_${Tag}`],
+    styles[`Heading_${visualSize}`],
     align && styles[`Heading_${align}`],
     className
   ].filter(Boolean).join(' ');

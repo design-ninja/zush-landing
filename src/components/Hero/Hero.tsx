@@ -82,7 +82,9 @@ const Hero = ({ title, subtitle, slides, as: Tag = "section" }: HeroProps) => {
               Buy 🌟 PRO
             </Button>
           </div>
-          <p className={styles.Hero__FreeLabel}>Free, no credit card required</p>
+          <Text as='p' size='sm' color='subtle' className={styles.Hero__FreeLabel}>
+            Free, no credit card required
+          </Text>
         </div>
 
         {hasLoadedModal && (

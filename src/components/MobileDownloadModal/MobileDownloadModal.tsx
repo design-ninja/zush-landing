@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Monitor } from 'lucide-react';
 import AppleIcon from '../AppleIcon';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
 import { MIN_MACOS_VERSION } from '@/constants';
 import styles from './MobileDownloadModal.module.scss';
 
@@ -107,13 +109,13 @@ const MobileDownloadModal = ({ isOpen, onClose }: MobileDownloadModalProps) => {
           <Monitor size={32} />
         </div>
 
-        <h2 id='mobile-download-modal-title' className={styles.MobileDownloadModal__Title}>
+        <Heading as='h2' id='mobile-download-modal-title' className={styles.MobileDownloadModal__Title}>
           Desktop Only
-        </h2>
+        </Heading>
 
-        <p className={styles.MobileDownloadModal__Description}>
+        <Text as='p' className={styles.MobileDownloadModal__Description} color='subtle'>
           Zush is a macOS app designed for desktop use. Visit this page on your Mac to download.
-        </p>
+        </Text>
 
         <div className={styles.MobileDownloadModal__Badge}>
           <AppleIcon />

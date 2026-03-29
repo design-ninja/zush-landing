@@ -33,7 +33,12 @@
     &__Actions {
         display: flex;
         align-items: center;
+        flex-wrap: nowrap;
         gap: 2rem;
+
+        @include tablet {
+            gap: 1rem;
+        }
 
         @include mobile {
             gap: 1rem;
@@ -41,12 +46,21 @@
     }
 
     &__Link {
+        white-space: nowrap;
         font-weight: 500;
         transition: color 0.2s ease;
 
         &:hover,
         &:focus-visible {
             color: var(--primary);
+        }
+
+        @include tablet {
+            font-size: 0.95rem;
+
+            &:nth-of-type(-n + 2) {
+                display: none;
+            }
         }
 
         @include mobile {
@@ -64,6 +78,10 @@
         display: flex;
         align-items: center;
         gap: 0.5rem;
+
+        @include tablet {
+            gap: 0.35rem;
+        }
     }
 
     &__BuyBtn {
@@ -75,6 +93,10 @@
     }
 
     &__DownloadBtn {
+        @include tablet {
+            display: none !important;
+        }
+
         @include mobile {
             display: none !important;
         }

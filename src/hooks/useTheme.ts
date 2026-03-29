@@ -14,8 +14,21 @@ const getSystemTheme = (): Theme => {
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 };
 
+const getInitialTheme = (): Theme => {
+  if (typeof window === 'undefined') {
+    return 'light';
+  }
+
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  if (currentTheme === 'dark' || currentTheme === 'light') {
+    return currentTheme;
+  }
+
+  return getSystemTheme();
+};
+
 export const useTheme = (): UseThemeReturn => {
-  const [theme, setTheme] = useState<Theme>(getSystemTheme);
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);

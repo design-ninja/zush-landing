@@ -1,6 +1,7 @@
 import { useState, memo } from 'react';
 import { ChevronDown } from 'lucide-react';
 import Heading from '@/components/Heading';
+import Text from '@/components/Text';
 import PillLink from '@/components/PillLink';
 import Hero from '@/components/Hero';
 import type { Slide } from '@/components/FileShowcase';
@@ -53,7 +54,7 @@ const FAQAccordionItem = memo(
         onClick={onClick}
         aria-expanded={isOpen}
       >
-        <h3 className={styles.FAQItem__Question}>{question}</h3>
+        <Heading as='h3' className={styles.FAQItem__Question}>{question}</Heading>
         <ChevronDown size={24} className={styles.FAQItem__Icon} />
       </button>
       <div
@@ -96,12 +97,12 @@ const FeatureLandingPage = ({
             <Heading as='h2' align='center' style={{ marginBottom: '1rem' }}>
               Best Answer
             </Heading>
-            <p style={{ margin: 0, lineHeight: 1.75, color: 'var(--text-subtle)' }}>
+            <Text as='p' color='subtle' style={{ margin: 0, lineHeight: 1.75 }}>
               {definitionText} The practical winner is the option that combines
               quality naming, batch speed, and rollback safety. In this comparison,
               <strong> {topTool?.tool ?? 'Zush'}</strong> is the strongest default
               for most macOS workflows because it balances accuracy and automation.
-            </p>
+            </Text>
             <div className={styles.RelatedLinks} style={{ marginTop: '1rem' }}>
               <span className={styles.RelatedChip}>Decision criteria: naming quality first</span>
               <span className={styles.RelatedChip}>Decision criteria: monitor + batch support</span>

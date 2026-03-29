@@ -1,6 +1,8 @@
 import ReactMarkdown from 'react-markdown';
 import AppLink from '@/components/AppLink';
 import BackToHome from '@/components/BackToHome';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
 import styles from './Legal.module.scss';
 import '@/styles/markdown-content.scss';
 
@@ -45,12 +47,17 @@ const Legal = ({ type }: LegalProps) => {
   return (
     <section className={styles.Legal}>
       <div className={styles.Legal__Container}>
-        <h1 className={styles.Legal__Title}>{titles[type]}</h1>
-        <p className={styles.Legal__Updated}>Last updated: March 19, 2026</p>
+        <Heading as='h1' className={styles.Legal__Title}>{titles[type]}</Heading>
+        <Text as='p' color='subtle' className={styles.Legal__Updated}>Last updated: March 19, 2026</Text>
         <div className={`${styles.Legal__Content} markdown-content`}>
           <ReactMarkdown
             components={{
-              a: ({ node: _node, ...props }) => <LegalMarkdownLink {...props} />
+              a: ({ node: _node, ...props }) => <LegalMarkdownLink {...props} />,
+              h1: ({ node: _node, ...props }) => <Heading as='h2' {...props} />,
+              h2: ({ node: _node, ...props }) => <Heading as='h2' {...props} />,
+              h3: ({ node: _node, ...props }) => <Heading as='h3' {...props} />,
+              h4: ({ node: _node, ...props }) => <Heading as='h4' {...props} />,
+              p: ({ node: _node, ...props }) => <Text as='p' {...props} />,
             }}
           >
             {content}

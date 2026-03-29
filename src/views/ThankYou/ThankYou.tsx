@@ -4,6 +4,8 @@ import Button from '@/components/Button';
 import BackToHome from '@/components/BackToHome';
 import PageLayout from '@/components/PageLayout';
 import PageIcon from '@/components/PageIcon';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
 import styles from './ThankYou.module.scss';
 
 const ThankYou = () => {
@@ -24,9 +26,9 @@ const ThankYou = () => {
         <PageIcon>
           <CheckCircle size={64} />
         </PageIcon>
-        <h1 className={styles.ThankYou__Title}>
+        <Heading as='h1' className={styles.ThankYou__Title}>
           Thank you for your purchase! 🎉
-        </h1>
+        </Heading>
       </PageLayout>
     );
   }
@@ -37,34 +39,34 @@ const ThankYou = () => {
         <CheckCircle size={64} />
       </PageIcon>
 
-      <h1 className={styles.ThankYou__Title}>
+      <Heading as='h1' className={styles.ThankYou__Title}>
         Thank you for your purchase! 🎉
-      </h1>
+      </Heading>
 
       {hasDeviceId ? (
         // Purchased from app - device was auto-activated
         <>
-          <p className={styles.ThankYou__Subtitle}>
+          <Text as='p' className={styles.ThankYou__Subtitle} color='subtle'>
             Your Zush PRO access is permanent (one-time purchase).
-          </p>
-          <p className={styles.ThankYou__Subtitle}>
+          </Text>
+          <Text as='p' className={styles.ThankYou__Subtitle} color='subtle'>
             The PRO features have been unlocked in your app. Enjoy 10,000 credits and BYOK for unlimited processing!
-          </p>
+          </Text>
         </>
       ) : (
         // Purchased from website - need to activate via email
         <>
-          <p className={styles.ThankYou__Subtitle}>
+          <Text as='p' className={styles.ThankYou__Subtitle} color='subtle'>
             Your PRO access is permanent (one-time purchase).
-          </p>
-          <p className={styles.ThankYou__Subtitle}>
+          </Text>
+          <Text as='p' className={styles.ThankYou__Subtitle} color='subtle'>
             We've sent an activation email to you.
-          </p>
+          </Text>
           <div className={styles.ThankYou__EmailNotice}>
             <Mail size={24} />
-            <p>
+            <Text as='p'>
               Open the email and click the <strong>"Activate PRO"</strong> button to unlock PRO features in the app.
-            </p>
+            </Text>
           </div>
         </>
       )}

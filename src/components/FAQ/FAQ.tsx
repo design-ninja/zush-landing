@@ -2,6 +2,7 @@ import { memo, useState, useMemo } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { APP_CONFIG } from '@/constants';
 import AppLink from '@/components/AppLink';
+import Heading from '@/components/Heading';
 import SectionHeader from '../SectionHeader';
 import styles from './FAQ.module.scss';
 
@@ -16,7 +17,7 @@ const FAQItem = memo(({ question, answer, isOpen, onClick }: FAQItemProps) => {
   return (
     <div className={`${styles.FAQItem} ${isOpen ? styles.FAQItem_active : ''}`}>
       <button className={styles.FAQItem__Header} onClick={onClick} aria-expanded={isOpen}>
-        <h3 className={styles.FAQItem__Question}>{question}</h3>
+        <Heading as='h3' className={styles.FAQItem__Question}>{question}</Heading>
         <ChevronDown size={24} className={styles.FAQItem__Icon} />
       </button>
       <div

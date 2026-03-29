@@ -4,6 +4,8 @@ import ReactMarkdown from 'react-markdown'
 import { getPostBySlug, getRelatedPosts } from '@/data/blog'
 import AppLink from '@/components/AppLink'
 import BlogCTA from '@/components/BlogCTA'
+import Heading from '@/components/Heading'
+import Text from '@/components/Text'
 import styles from './BlogPost.module.scss'
 import '@/styles/markdown-content.scss'
 
@@ -112,7 +114,7 @@ const BlogPost = ({ slug }: BlogPostProps) => {
         </AppLink>
 
         <header className={styles.BlogPost__Header}>
-          <h1 className={styles.BlogPost__Title}>{frontmatter.title}</h1>
+          <Heading as='h1' className={styles.BlogPost__Title}>{frontmatter.title}</Heading>
           <div className={styles.BlogPost__Meta}>
             <time dateTime={frontmatter.date}>
               {formatDate(frontmatter.date)}
@@ -121,7 +123,7 @@ const BlogPost = ({ slug }: BlogPostProps) => {
             <span>By {frontmatter.authorName}</span>
             <span>Reviewed by {frontmatter.reviewerName}</span>
           </div>
-          <p className={styles.BlogPost__ReviewPolicy}>
+          <Text as='p' size='sm' color='subtle' className={styles.BlogPost__ReviewPolicy}>
             Recommendation quality is reviewed with our{' '}
             <AppLink href="/methodology" variant="legal">
               public methodology
@@ -131,7 +133,7 @@ const BlogPost = ({ slug }: BlogPostProps) => {
               changelog
             </AppLink>
             .
-          </p>
+          </Text>
           {frontmatter.tags.length > 0 && (
             <div className={styles.BlogPost__Tags}>
               {frontmatter.tags.map((tag) => (
@@ -181,7 +183,7 @@ const BlogPost = ({ slug }: BlogPostProps) => {
           {showToc && (
             <aside className={styles.BlogPost__Toc} aria-label="Table of contents">
               <div className={styles.BlogPost__TocInner}>
-                <p className={styles.BlogPost__TocTitle}>On this page</p>
+                <Text as='p' size='xs' className={styles.BlogPost__TocTitle}>On this page</Text>
                 <nav className={styles.BlogPost__TocNav}>
                   {toc.map((item) => (
                     <AppLink
@@ -216,9 +218,9 @@ const BlogPost = ({ slug }: BlogPostProps) => {
                   return (
                     <>
                       {shouldInjectBeforeHeading && <BlogCTA placement="inline" />}
-                      <h2 id={id} {...props}>
+                      <Heading as='h2' id={id} {...props}>
                         {children}
-                      </h2>
+                      </Heading>
                     </>
                   )
                 },
@@ -226,11 +228,17 @@ const BlogPost = ({ slug }: BlogPostProps) => {
                   const text = flattenText(children)
                   const id = slugifyHeading(text)
                   return (
-                    <h3 id={id} {...props}>
+                    <Heading as='h3' id={id} {...props}>
                       {children}
-                    </h3>
+                    </Heading>
                   )
                 },
+                h4: ({ node: _node, children, ...props }) => (
+                  <Heading as='h4' {...props}>
+                    {children}
+                  </Heading>
+                ),
+                p: ({ node: _node, ...props }) => <Text as='p' {...props} />,
               }}
             >
               {content}
@@ -242,7 +250,7 @@ const BlogPost = ({ slug }: BlogPostProps) => {
 
         {relatedPosts.length > 0 && (
           <section className={styles.BlogPost__Related}>
-            <h2 className={styles.BlogPost__RelatedTitle}>Related Articles</h2>
+            <Heading as='h2' className={styles.BlogPost__RelatedTitle}>Related Articles</Heading>
             <div className={styles.BlogPost__RelatedGrid}>
               {relatedPosts.map((rp) => (
                 <AppLink
@@ -250,12 +258,12 @@ const BlogPost = ({ slug }: BlogPostProps) => {
                   href={`/blog/${rp.slug}`}
                   className={styles.BlogPost__RelatedCard}
                 >
-                  <h3 className={styles.BlogPost__RelatedCardTitle}>
+                  <Heading as='h3' className={styles.BlogPost__RelatedCardTitle}>
                     {rp.title}
-                  </h3>
-                  <p className={styles.BlogPost__RelatedCardDesc}>
+                  </Heading>
+                  <Text as='p' size='sm' color='subtle' className={styles.BlogPost__RelatedCardDesc}>
                     {rp.description}
-                  </p>
+                  </Text>
                   <span className={styles.BlogPost__RelatedCardMeta}>
                     {formatDate(rp.date)} &middot; {rp.readingTime} min read
                   </span>

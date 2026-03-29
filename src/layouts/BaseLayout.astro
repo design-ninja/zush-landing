@@ -39,6 +39,14 @@ const needsTopOffset = includeChrome && !isHomePage && !isFeaturePage;
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
     <link rel="manifest" href="/favicon/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+
+    <script is:inline>
+      (() => {
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', systemTheme);
+      })();
+    </script>
 
     <title>{seo.title}</title>
     <meta name="description" content={seo.description} />

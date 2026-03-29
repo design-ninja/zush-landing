@@ -2,6 +2,8 @@ import { getAllPosts } from '@/data/blog'
 import SectionHeader from '@/components/SectionHeader'
 import AppLink from '@/components/AppLink'
 import BackToHome from '@/components/BackToHome'
+import Heading from '@/components/Heading'
+import Text from '@/components/Text'
 import styles from './BlogList.module.scss'
 
 const formatDate = (dateStr: string): string => {
@@ -35,10 +37,10 @@ const BlogList = () => {
                 href={`/blog/${post.slug}`}
                 className={styles.BlogList__PostLink}
               >
-                <h2 className={styles.BlogList__PostTitle}>{post.title}</h2>
-                <p className={styles.BlogList__PostDescription}>
+                <Heading as='h2' size='h3' className={styles.BlogList__PostTitle}>{post.title}</Heading>
+                <Text as='p' color='subtle' className={styles.BlogList__PostDescription}>
                   {post.description}
-                </p>
+                </Text>
                 <div className={styles.BlogList__PostMeta}>
                   <time dateTime={post.date}>{formatDate(post.date)}</time>
                   <span>{post.readingTime} min read</span>

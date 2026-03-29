@@ -4,18 +4,22 @@ import { useState, useEffect } from 'react';
 export const BREAKPOINT_MD = 768;
 
 export const useIsMobile = (): boolean => {
-  const [isMobile, setIsMobile] = useState(() => {
-    if (typeof window === 'undefined') return false;
-    return window.innerWidth <= BREAKPOINT_MD;
-  });
+  // Keep initial value deterministic between SSR and hydration.
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= BREAKPOINT_MD);
-    };
+    const mediaQuery = window.matchMedia(`(max-width: ${BREAKPOINT_MD}px)`);
+    const updateIsMobile = () => setIsMobile(mediaQuery.matches);
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    updateIsMobile();
+
+    if (typeof mediaQuery.addEventListener === 'function') {
+      mediaQuery.addEventListener('change', updateIsMobile);
+      return () => mediaQuery.removeEventListener('change', updateIsMobile);
+    }
+
+    mediaQuery.addListener(updateIsMobile);
+    return () => mediaQuery.removeListener(updateIsMobile);
   }, []);
 
   return isMobile;

@@ -1,4 +1,5 @@
 import styles from './ErrorMessage.module.scss';
+import Text from '@/components/Text';
 
 interface ErrorMessageProps {
   message: string;
@@ -10,9 +11,13 @@ const ErrorMessage = ({ message, variant = 'inline', className }: ErrorMessagePr
   if (!message) return null;
 
   return (
-    <p className={`${styles.ErrorMessage} ${styles[`ErrorMessage--${variant}`]} ${className || ''}`}>
+    <Text
+      as='p'
+      size='sm'
+      className={`${styles.ErrorMessage} ${styles[`ErrorMessage--${variant}`]} ${className || ''}`}
+    >
       {message}
-    </p>
+    </Text>
   );
 };
 

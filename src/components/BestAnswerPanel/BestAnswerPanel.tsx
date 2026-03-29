@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react';
 import PillLink from '@/components/PillLink';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
 import styles from './BestAnswerPanel.module.scss';
 
 export interface BestAnswerCriterion {
@@ -42,14 +44,14 @@ const BestAnswerPanel = ({
     <div className={classes}>
       <div className={styles.Layout}>
         <div className={styles.Content}>
-          <p className={styles.Kicker}>
+          <Text as='p' size='xs' className={styles.Kicker}>
             <span className={styles.KickerDot} aria-hidden='true' />
             {kicker}
-          </p>
-          <h2 className={styles.Title}>{title}</h2>
-          <p className={styles.Lead}>{lead}</p>
-          {entitySummary && <p className={styles.EntitySummary}>{entitySummary}</p>}
-          <p className={styles.Verdict}>{verdict}</p>
+          </Text>
+          <Heading as='h2' className={styles.Title}>{title}</Heading>
+          <Text as='p' size='sm' color='subtle' className={styles.Lead}>{lead}</Text>
+          {entitySummary && <Text as='p' size='sm' color='subtle' className={styles.EntitySummary}>{entitySummary}</Text>}
+          <Text as='p' size='sm' color='subtle' className={styles.Verdict}>{verdict}</Text>
 
           {(facts.length > 0 || links.length > 0) && (
             <div className={styles.Supporting}>
@@ -78,8 +80,8 @@ const BestAnswerPanel = ({
           {criteria.map((item) => (
             <article className={styles.Card} key={item.title}>
               {item.icon && <div className={styles.CardIcon}>{item.icon}</div>}
-              <h3 className={styles.CardTitle}>{item.title}</h3>
-              <p className={styles.CardText}>{item.text}</p>
+              <Heading as='h3' className={styles.CardTitle}>{item.title}</Heading>
+              <Text as='p' size='xs' color='subtle' className={styles.CardText}>{item.text}</Text>
             </article>
           ))}
         </div>

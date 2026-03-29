@@ -1,6 +1,8 @@
 import ReactMarkdown from 'react-markdown';
 import SectionHeader from '@/components/SectionHeader';
 import BackToHome from '@/components/BackToHome';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
 import styles from './Changelog.module.scss';
 import '@/styles/markdown-content.scss';
 
@@ -83,16 +85,26 @@ const Changelog = ({ source }: ChangelogProps) => {
                     {releases.map((release, index) => (
                         <article key={release.version} className={styles.Changelog__Item}>
                             <div className={styles.Changelog__ItemHeader}>
-                                <h2 className={styles.Changelog__Version}>
+                                <Heading as='h2' className={styles.Changelog__Version}>
                                     v{release.version}
-                                </h2>
+                                </Heading>
                                 {isLatest(index) && (
                                     <span className={styles.Changelog__Badge}>Latest</span>
                                 )}
                                 <time className={styles.Changelog__Date}>{release.date}</time>
                             </div>
                             <div className={styles.Changelog__Content}>
-                                <ReactMarkdown>{release.content}</ReactMarkdown>
+                                <ReactMarkdown
+                                    components={{
+                                        h1: ({ node: _node, ...props }) => <Heading as='h3' {...props} />,
+                                        h2: ({ node: _node, ...props }) => <Heading as='h3' {...props} />,
+                                        h3: ({ node: _node, ...props }) => <Heading as='h4' {...props} />,
+                                        h4: ({ node: _node, ...props }) => <Heading as='h4' {...props} />,
+                                        p: ({ node: _node, ...props }) => <Text as='p' color='subtle' {...props} />,
+                                    }}
+                                >
+                                    {release.content}
+                                </ReactMarkdown>
                             </div>
                         </article>
                     ))}

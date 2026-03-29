@@ -30,24 +30,14 @@
 
 .Title {
   margin: 0 0 0.75rem;
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  font-family: var(--font-family-heading);
-  font-weight: 550;
-  line-height: 1.2;
   text-wrap: balance;
 }
 
 .Subtitle {
   margin: 0;
   max-width: 34rem;
-  font-size: 1rem;
-  line-height: 1.6;
   color: var(--muted-foreground);
   text-wrap: pretty;
-
-  @include mobile {
-    font-size: 0.9375rem;
-  }
 }
 
 .Buttons {
@@ -60,7 +50,6 @@
 
 .Hint {
   margin: 1rem 0 0;
-  font-size: 0.8125rem;
   color: var(--muted-foreground);
   opacity: 0.6;
 }
