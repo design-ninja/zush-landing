@@ -3,6 +3,7 @@ import FeatureLandingPage from '@/components/FeatureLandingPage';
 const RenameFilesWithAI = () => (
   <FeatureLandingPage
     h1="Rename Files with AI on macOS"
+    category="general"
     definitionTitle="What Is AI File Renaming?"
     definitionText="AI file renaming uses vision and language models to analyze file content and generate descriptive, searchable names automatically."
     showcaseSlides={[{

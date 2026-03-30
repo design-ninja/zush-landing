@@ -74,6 +74,7 @@ const jsonLd = {
 const RenamePDFWithAI = () => (
   <FeatureLandingPage
     h1="Rename PDF Files with AI on macOS"
+    category="pdf"
     definitionTitle="What Is AI PDF Renaming?"
     definitionText="AI PDF renaming extracts text from your documents and generates descriptive, searchable filenames - whether it's a contract, invoice, or receipt."
     showcaseSlides={[{

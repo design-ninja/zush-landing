@@ -3,6 +3,7 @@ import FeatureLandingPage from '@/components/FeatureLandingPage';
 const AIScreenshotRenamer = () => (
   <FeatureLandingPage
     h1="AI Screenshot Renamer for macOS"
+    category="screenshot"
     definitionTitle="What Is an AI Screenshot Renamer?"
     definitionText="macOS names every screenshot with a timestamp that tells you nothing. An AI screenshot renamer identifies the app and content shown, and replaces it with a searchable name."
     showcaseSlides={[{

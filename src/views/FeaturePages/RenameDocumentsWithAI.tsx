@@ -74,6 +74,7 @@ const jsonLd = {
 const RenameDocumentsWithAI = () => (
   <FeatureLandingPage
     h1="Rename Documents with AI on macOS"
+    category="document"
     definitionTitle="What Is AI Document Renaming?"
     definitionText="AI document renaming reads the text content of your contracts, reports, and invoices, then generates filenames that reflect what each document is about."
     showcaseSlides={[{

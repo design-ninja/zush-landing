@@ -3,6 +3,7 @@ import FeatureLandingPage from '@/components/FeatureLandingPage';
 const AIPDFRenamer = () => (
   <FeatureLandingPage
     h1="AI PDF Renamer for macOS"
+    category="pdf"
     definitionTitle="What Is an AI PDF Renamer?"
     definitionText="An AI PDF renamer extracts text from your PDFs and generates filenames that tell you what each document contains at a glance."
     showcaseSlides={[{

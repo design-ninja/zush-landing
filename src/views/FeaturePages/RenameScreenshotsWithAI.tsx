@@ -74,6 +74,7 @@ const jsonLd = {
 const RenameScreenshotsWithAI = () => (
   <FeatureLandingPage
     h1="Rename Screenshots with AI on macOS"
+    category="screenshot"
     definitionTitle="What Is AI Screenshot Renaming?"
     definitionText="AI screenshot renaming analyzes the visual content of your screenshots and replaces generic macOS timestamp names with descriptive, searchable filenames."
     showcaseSlides={[{

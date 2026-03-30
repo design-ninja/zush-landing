@@ -3,6 +3,7 @@ import FeatureLandingPage from '@/components/FeatureLandingPage';
 const AutoRenameFiles = () => (
   <FeatureLandingPage
     h1="Auto Rename Files on macOS"
+    category="general"
     definitionTitle="What Is Automatic File Renaming?"
     definitionText="Point an app at a folder and every new file gets analyzed and given a descriptive name automatically. No manual renaming needed."
     showcaseSlides={[{

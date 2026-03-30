@@ -74,6 +74,7 @@ const jsonLd = {
 const RenameImagesWithAI = () => (
   <FeatureLandingPage
     h1="Rename Images with AI on macOS"
+    category="image"
     definitionTitle="What Is AI Image Renaming?"
     definitionText="AI image renaming uses vision models to analyze visual content and generate descriptive filenames based on what each image actually contains."
     showcaseSlides={[{

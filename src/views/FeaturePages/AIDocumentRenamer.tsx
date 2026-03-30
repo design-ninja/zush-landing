@@ -3,6 +3,7 @@ import FeatureLandingPage from '@/components/FeatureLandingPage';
 const AIDocumentRenamer = () => (
   <FeatureLandingPage
     h1="AI Document Renamer for macOS"
+    category="document"
     definitionTitle="What Is an AI Document Renamer?"
     definitionText="An AI document renamer reads the text content of your files and generates filenames that make sense without opening them."
     showcaseSlides={[{

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import BlogPost from '@/views/Blog/BlogPost';
 import { getAllPosts, getPostBySlug } from '@/data/blog';
 import { getBlogSeo } from '@/seo/config';
@@ -30,8 +31,15 @@ const jsonLd = [
   buildBreadcrumbJsonLd(frontmatter.title, frontmatter.slug),
   ...(faq.length > 0 ? [buildFAQPageJsonLd(faq)] : []),
 ];
+
+const breadcrumbItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Blog', href: '/blog' },
+  { label: frontmatter.title },
+];
 ---
 
 <BaseLayout seo={seo} jsonLd={jsonLd}>
+  <Breadcrumbs items={breadcrumbItems} />
   <BlogPost slug={slug} client:load />
 </BaseLayout>

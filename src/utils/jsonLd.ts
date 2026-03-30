@@ -85,3 +85,24 @@ export function buildBreadcrumbJsonLd(postTitle: string, postSlug: string) {
     ],
   }
 }
+
+export function buildFeatureBreadcrumbJsonLd(pageTitle: string, pagePath: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: SITE_ORIGIN,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: pageTitle,
+        item: `${SITE_ORIGIN}${pagePath}`,
+      },
+    ],
+  }
+}

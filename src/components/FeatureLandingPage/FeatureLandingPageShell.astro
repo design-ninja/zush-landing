@@ -1,5 +1,6 @@
 ---
 import BestAnswerPanel from '@/components/BestAnswerPanel';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import PillLink from '@/components/PillLink';
 import ComparisonTable from '@/components/ComparisonTable';
 import Features from '@/components/Features';
@@ -14,6 +15,7 @@ import TrustSignals from '@/components/TrustSignals';
 import { createElement } from 'react';
 import { Sparkles, FolderSync, History } from 'lucide-react';
 import type { FeatureLandingPageProps } from './FeatureLandingPage';
+import { getUseCasesForCategory } from '@/data/featureContent';
 import FeatureFAQ from './FeatureFAQ';
 import styles from './FeatureLandingPage.module.scss';
 
@@ -25,7 +27,10 @@ const {
   faqItems,
   relatedBlogPosts,
   relatedPages,
+  category = 'general',
 } = Astro.props as FeatureLandingPageProps;
+
+const useCasesData = getUseCasesForCategory(category);
 
 const topTool = comparisonRows[0];
 const bestAnswerFacts = [
@@ -62,8 +67,13 @@ const bestAnswerCriteria = [
     icon: createElement(History, { size: 20 }),
   },
 ];
+const breadcrumbItems = [
+  { label: 'Home', href: '/' },
+  { label: h1 },
+];
 ---
 
+<Breadcrumbs items={breadcrumbItems} />
 <article class={styles.Page}>
   <Hero as='header' title={h1} subtitle={definitionText} slides={showcaseSlides} client:visible />
 
@@ -91,7 +101,11 @@ const bestAnswerCriteria = [
   <SupportedFormats />
   <DownloadCTA client:visible />
   <ComparisonTable rows={comparisonRows} />
-  <UseCases />
+  <UseCases
+    title={useCasesData.title}
+    description={useCasesData.description}
+    items={useCasesData.items.length > 0 ? useCasesData.items : undefined}
+  />
 
   <section class={styles.Section}>
     <div class={styles.Section__Container}>

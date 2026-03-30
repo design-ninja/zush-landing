@@ -3,6 +3,7 @@ import FeatureLandingPage from '@/components/FeatureLandingPage';
 const AIImageRenamer = () => (
   <FeatureLandingPage
     h1="AI Image Renamer for macOS"
+    category="image"
     definitionTitle="What Is an AI Image Renamer?"
     definitionText="An AI image renamer uses vision models to understand what's in each photo and generates clear, descriptive filenames automatically."
     showcaseSlides={[{

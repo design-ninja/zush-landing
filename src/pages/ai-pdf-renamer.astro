@@ -1,14 +1,15 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import FeatureLandingPageShell from '@/components/FeatureLandingPage/FeatureLandingPageShell.astro';
-import { getFeaturePageProps } from '@/utils/featurePageProps';
+import { getFeaturePageProps, VIDEO_SCHEMA } from '@/utils/featurePageProps';
 import AIPDFRenamer from '@/views/FeaturePages/AIPDFRenamer';
 import { getSeoForPath } from '@/seo/config';
+import { buildFeatureBreadcrumbJsonLd } from '@/utils/jsonLd';
 
 const seo = getSeoForPath('/ai-pdf-renamer');
 const featurePage = getFeaturePageProps(AIPDFRenamer);
 ---
 
-<BaseLayout seo={seo} jsonLd={featurePage.jsonLd}>
+<BaseLayout seo={seo} jsonLd={[featurePage.jsonLd, VIDEO_SCHEMA, buildFeatureBreadcrumbJsonLd(featurePage.h1, '/ai-pdf-renamer')]}>
   <FeatureLandingPageShell {...featurePage} />
 </BaseLayout>
