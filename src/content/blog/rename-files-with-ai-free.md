@@ -23,6 +23,8 @@ This guide covers every practical way to rename files with AI for free in 2026, 
 
 Each approach has a sweet spot. The rest of this guide walks through them in detail.
 
+![Free AI file renaming tools comparison chart for organizing files](/images/examples/chart.jpg)
+
 ## Option 1: Zush free tier (easiest start)
 
 [Zush](https://zushapp.com/rename-files-with-ai) includes 50 free renames every month. No credit card, no trial period, no feature restrictions. You get the same AI-powered content analysis, batch rename, folder monitoring, and undo capabilities as paid users.
@@ -91,6 +93,8 @@ Each provider has a slightly different process, but the pattern is the same:
 4. Copy the key into Zush.
 
 The BYOK approach gives you the full Zush experience, including batch rename, folder monitoring, custom patterns, Finder tags, 60+ language support, and rename history, with no cap on usage.
+
+![Batch renaming files with AI for free using Zush](/videos/zush-batch-rename.mp4)
 
 For a broader comparison of tools and pricing, see [Best AI File Renamer Tools for Mac Compared](/blog/best-ai-file-renamer-tools-mac-compared).
 
@@ -205,6 +209,8 @@ A DIY script is fast to prototype and useful for understanding the technology. I
 
 Browser tools handle a few files without any setup.
 
+![Organized workspace with Mac showing free AI file renaming workflow](/images/examples/workspace.jpg)
+
 ## Making the most of 50 free renames
 
 If you stick with the Zush free tier, here is how to maximize it:
@@ -236,6 +242,8 @@ The point at which you outgrow free depends on your volume.
 The progression from free to paid is smooth. You do not lose any features or need to reconfigure anything.
 
 For setup guides on configuring BYOK providers, see [BYOK Setup Guide](/byok-setup).
+
+![Office desk setup with Mac running free AI renaming tools](/images/examples/office.jpg)
 
 ## Getting started
 

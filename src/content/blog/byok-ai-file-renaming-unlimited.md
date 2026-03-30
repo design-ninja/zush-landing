@@ -11,6 +11,8 @@ Zush includes 50 free AI renames per month on the free plan, and 10,000 renames 
 
 BYOK (Bring Your Own Key) means you connect your personal API key from a supported AI provider directly to [Zush](https://zushapp.com/ai-file-renamer). Zush sends the file content to the provider under your account, the provider returns a descriptive name, and you pay the provider directly at their standard API rates. There is no Zush markup and no rename limit.
 
+![Dashboard showing AI API key configuration for unlimited file renaming](/images/examples/dashboard.jpg)
+
 ## What BYOK means in practice
 
 When you use Zush's built-in credits, the AI processing happens through Zush's infrastructure. That is convenient but capped. BYOK flips the model: Zush acts as the client, your API key provides the access, and the AI provider handles the processing.
@@ -95,6 +97,8 @@ Here is what typical usage looks like in real dollar terms. These estimates assu
 For context, 500 renames per month covers most active Mac users who take daily screenshots, download files regularly, and import photos weekly. The cost at that volume ranges from free to roughly fifty cents per month.
 
 Even at 2,000 renames per month, which represents heavy professional usage, the total cost is under two dollars with any provider.
+
+![Cost comparison chart for AI file renaming providers showing affordable pricing](/images/examples/chart.jpg)
 
 ## Step-by-step setup for each provider
 
@@ -185,6 +189,8 @@ Claude tends to generate more nuanced and context-rich descriptions. If you work
 
 You are not locked in. You can change your API key or provider in Zush Settings at any point. Some users start with Gemini's free tier and switch to OpenAI or Claude later when they want different output characteristics. Your rename history and naming patterns are preserved regardless of which provider you use.
 
+![Zush batch rename demo showing unlimited AI-powered file renaming with BYOK](/videos/zush-batch-rename.mp4)
+
 ## BYOK and folder monitoring
 
 BYOK pairs naturally with folder monitoring. When you combine the two, you get a fully automatic, unlimited rename pipeline: files arrive in monitored folders, Zush detects them, sends them to your chosen AI provider, and renames them with zero manual input and zero rename cap.
@@ -194,6 +200,8 @@ This is the most hands-off setup available. For a detailed guide on folder monit
 ## Security and privacy
 
 Your API key is stored locally on your Mac and is only sent to the AI provider you selected. File content goes directly to the provider's API endpoint for analysis. Review your chosen provider's API data policy if privacy is a deciding factor.
+
+![Mac workspace with organized files after using BYOK unlimited AI renaming](/images/examples/workspace.jpg)
 
 ## Conclusion
 

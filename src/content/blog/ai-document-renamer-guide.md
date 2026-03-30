@@ -13,6 +13,8 @@ That is the document naming problem. Unlike photos or screenshots, documents car
 
 An AI document renamer solves this by reading the actual content of the file and generating a descriptive name based on what the document contains. If you work with mixed document types on Mac, [Zush](https://zushapp.com) can do this across PDFs, Word files, spreadsheets, and more in a single batch.
 
+![Office desk with documents and PDFs needing AI-powered renaming](/images/examples/office.jpg)
+
 ## How AI analyzes document content
 
 The process is different from photo renaming. With images, AI uses visual recognition to describe what appears in the picture. With documents, the AI extracts and interprets the text, structure, and context of the file.
@@ -67,6 +69,8 @@ The difference between a generic filename and an AI-generated one is immediate:
 | `presentation.pptx` | `investor-pitch-deck-series-a.pptx` |
 
 Every one of those renamed files is now searchable in Spotlight, scannable in Finder, and meaningful in a shared folder.
+
+![AI batch renaming documents and spreadsheets with descriptive names](/videos/zush-batch-rename.mp4)
 
 ## Step-by-step: renaming documents with Zush
 
@@ -134,6 +138,8 @@ Client projects generate proposals, contracts, deliverables, and feedback docume
 
 The key advantage of AI is content awareness. Every other method works from the outside of the file: metadata, file extension, creation date. AI works from the inside, reading what the document actually says.
 
+![Diagram showing AI document renaming workflow from generic to descriptive filenames](/images/examples/diagram.jpg)
+
 ## Best practices for document naming
 
 ### Be specific but brief
@@ -171,6 +177,8 @@ AI document renaming works best when the filename is meaningless and the content
 - Files are encrypted or password-protected and the content cannot be read
 
 In those cases, a deterministic rename rule or manual naming is better.
+
+![Dashboard view of organized documents after AI renaming on Mac](/images/examples/dashboard.jpg)
 
 ## Getting started
 

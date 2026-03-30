@@ -11,6 +11,8 @@ A solid file naming convention saves time every time you search, sort, or share 
 
 For most people, that means descriptive lowercase names, hyphens or underscores, ISO dates when dates matter, and version numbers instead of vague labels. If your hardest files are images, screenshots, PDFs, or documents, [Zush](https://zushapp.com) can automate the naming step so the convention is easier to maintain.
 
+![Well-organized office workspace illustrating file naming conventions best practices](/images/examples/office.jpg)
+
 ## The rules that work almost everywhere
 
 ### 1. Be descriptive first
@@ -93,6 +95,8 @@ Example:
 
 `figma-mobile-checkout-flow.png`
 
+![Diagram showing file naming convention patterns for different workflow types](/images/examples/diagram.jpg)
+
 ## The hardest files to name are images and documents
 
 Images and documents are where most naming systems break down. Cameras use counters. macOS screenshots use timestamps. Downloads arrive with whatever the source site gave them. Email attachments often have generic names like `document.pdf` or `report.docx`.
@@ -112,6 +116,8 @@ If your current library is messy, do not rename everything at once.
 
 That last step is what keeps the system from collapsing again. The combination of a naming convention plus automatic AI-assisted naming is much more durable than occasional cleanup sprints.
 
+![Zush naming patterns demo applying consistent file naming conventions automatically](/videos/zush-naming-pattern.mp4)
+
 ## Common mistakes to avoid
 
 - Using different patterns in every folder
@@ -119,6 +125,8 @@ That last step is what keeps the system from collapsing again. The combination o
 - Keeping spaces and punctuation that break consistency
 - Naming files by status (`new`, `latest`, `final`) instead of content
 - Relying only on folders when the filenames themselves are weak
+
+![Clean workspace with properly named files organized using best practices](/images/examples/workspace.jpg)
 
 ## Conclusion
 

@@ -98,9 +98,9 @@ const breadcrumbItems = [
 
   <Videos client:visible />
   <Features />
-  <SupportedFormats />
+  <SupportedFormats category={category} />
   <DownloadCTA client:visible />
-  <ComparisonTable rows={comparisonRows} />
+  <ComparisonTable rows={comparisonRows} category={category} />
   <UseCases
     title={useCasesData.title}
     description={useCasesData.description}

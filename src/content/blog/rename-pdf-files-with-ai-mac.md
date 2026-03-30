@@ -11,6 +11,8 @@ If you need to rename PDF files with AI on Mac, the best use case is simple: you
 
 Finder can rename PDFs in bulk, but it cannot read the document and tell you whether the file is an invoice, contract, form, receipt, or slide deck. That is where AI becomes useful. If your PDFs are image-like or visually structured, [Zush](https://zushapp.com) can help apply descriptive naming in a Mac workflow that is much faster than manual cleanup.
 
+![Mac office workspace with PDF documents needing AI-powered renaming](/images/examples/office.jpg)
+
 ## When AI renaming for PDFs makes sense
 
 AI renaming is not necessary for every PDF. If the file already has a good title like `2026-03-retainer-invoice.pdf`, you are done.
@@ -45,6 +47,8 @@ If your broader problem includes screenshots and image files as well, read [How 
 | AI-assisted renaming | Descriptive filenames from actual content | Best when the document is visually interpretable |
 
 For a Mac workflow, the real benefit is not just getting one better filename. It is being able to batch rename many PDFs without opening each one.
+
+![AI batch renaming PDF files with content-aware descriptive names](/videos/zush-batch-rename.mp4)
 
 ## A practical workflow on Mac
 
@@ -109,6 +113,8 @@ AI renaming is not the best tool when:
 - The important information is embedded as metadata in a system you already trust
 
 In those cases, a deterministic rename rule may be better.
+
+![Dashboard showing PDF files organized with descriptive AI-generated names](/images/examples/dashboard.jpg)
 
 ## Conclusion
 

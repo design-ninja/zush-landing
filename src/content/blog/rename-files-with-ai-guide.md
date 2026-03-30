@@ -13,6 +13,8 @@ AI file renaming solves this by analyzing the actual content of a file and gener
 
 This guide covers what AI file renaming is, how it works, the best ways to do it on any platform, and a step-by-step walkthrough using the most practical tools available today.
 
+![Cluttered desktop with files needing AI-powered renaming and organization](/images/examples/workspace.jpg)
+
 ## What AI file renaming actually does
 
 Traditional rename tools work with text patterns. They can find and replace strings, add prefixes, append dates, or number files sequentially. That is useful when the rename rule is predictable and the same for every file.
@@ -50,6 +52,8 @@ There are other reasons:
 | `DSC_0891.NEF` | `hummingbird-red-flower-macro.nef` |
 
 Notice that the AI-generated names are lowercase, hyphenated, and descriptive. Most tools follow this convention because it produces clean, searchable, URL-safe filenames.
+
+![AI renaming files with descriptive names using batch processing](/videos/zush-batch-rename.mp4)
 
 ## How AI file renaming works step by step
 
@@ -132,6 +136,8 @@ Here is the practical walkthrough for the most common workflow.
 
 This is the setup that prevents clutter from accumulating in the first place. Instead of cleaning up once a month, the mess never forms.
 
+![Dashboard view of AI file renaming tool showing organized documents](/images/examples/dashboard.jpg)
+
 For a complete walkthrough of batch renaming on Mac, see [Batch Rename Files on Mac: Complete Guide](/blog/batch-rename-files-on-mac-complete-guide).
 
 ## Common formats supported
@@ -179,6 +185,8 @@ Yes. Most tools let you set patterns like `date-description`, `category-descript
 ### Does it work with files already in subfolders?
 
 Yes. You can point batch rename at a parent folder or select specific subfolders. Folder monitoring watches the specific directories you configure.
+
+![Organized office setup with Mac for productive AI file management](/images/examples/office.jpg)
 
 ## When AI renaming is not the right tool
 

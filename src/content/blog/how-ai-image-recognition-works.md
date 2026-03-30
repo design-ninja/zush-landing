@@ -9,6 +9,8 @@ tldr: "AI image recognition works by turning pixels into patterns, then into obj
 
 AI image recognition works by taking an image full of pixels and finding patterns that correspond to objects, scenes, text, and relationships. Modern models do not “see” like humans, but they are very good at learning visual structure from massive datasets.
 
+![AI image recognition analyzing a nature scene with objects and patterns](/images/examples/nature.jpg)
+
 ## The short version
 
 A model receives pixel data, processes it through layers of computation, and predicts what the image contains.
@@ -34,6 +36,8 @@ This is the technology behind tools that can:
 
 That is how products like [Zush](https://zushapp.com) can turn a weak filename into something descriptive based on the image content. Modern multimodal models extend beyond pure image recognition. They can also read and understand text-based documents, enabling tools like Zush to generate descriptive filenames for PDFs, Word documents, spreadsheets, and other file types, not just images.
 
+![Diagram showing how neural networks process image data through layers of computation](/images/examples/diagram.jpg)
+
 ## What the model is actually learning
 
 At a high level, image models learn:
@@ -53,6 +57,10 @@ The model can still fail when:
 - the image contains niche or domain-specific material
 
 So AI recognition is useful, but not magical.
+
+![Cat recognized by AI image recognition technology demonstrating object detection](/images/examples/cat.jpg)
+
+![Zush smart tags demo showing AI-powered image recognition for file organization](/videos/zush-tags.mp4)
 
 ## Conclusion
 

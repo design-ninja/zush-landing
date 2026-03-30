@@ -11,6 +11,8 @@ If you are choosing between AI image tagging and manual photo organization, the 
 
 That is why tools like [Zush](https://zushapp.com) are useful: they do not just tag files automatically. They help turn weak filenames and unsearchable folders into a system you can actually maintain.
 
+![Organized photo library demonstrating AI image tagging versus manual photo organization](/images/examples/flowers.jpg)
+
 ## Where manual organization is still useful
 
 Manual organization has one real advantage: context.
@@ -65,6 +67,8 @@ This is especially useful on Mac because Finder, Spotlight, and folder views bec
 
 For most people, the hybrid model is the right answer.
 
+![Dog photo example showing how AI tagging automatically identifies subjects in images](/images/examples/dog.jpg)
+
 ## The best hybrid workflow on Mac
 
 A practical workflow looks like this:
@@ -77,6 +81,10 @@ A practical workflow looks like this:
 That is where [Zush](https://zushapp.com) fits well. It can generate descriptive filenames, write Finder-friendly metadata for images, PDFs, and supported documents alike, and reduce the manual effort to a quick review instead of a full tagging session.
 
 If your main question is how to rename images rather than how to compare systems, go to [How to Rename Images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos).
+
+![Zush smart tags demo showing automatic AI photo tagging on macOS](/videos/zush-tags.mp4)
+
+![Sunset landscape photo tagged automatically by AI image recognition software](/images/examples/sunset.jpg)
 
 ## When AI is not enough by itself
 

@@ -11,6 +11,8 @@ AI file renamers have gone from experimental curiosities to practical tools. The
 
 This comparison covers the tools worth knowing about in 2026, with honest assessments of what each one does well and where it falls short. If you are looking for the right AI file renamer, whether free or paid, this is the breakdown.
 
+![Comparison chart of AI file renamer tools and features for 2026](/images/examples/chart.jpg)
+
 ## What to evaluate
 
 Before comparing tools, know what actually matters for daily use:
@@ -203,6 +205,8 @@ Renamify is another browser-based option for AI file renaming. It handles images
 
 The pricing difference is significant. Zush is the only tool in this comparison that offers a one-time payment instead of a subscription. The BYOK option makes unlimited renaming possible at bare API cost, which for most providers runs to fractions of a cent per file.
 
+![Zush batch rename tool renaming multiple files with AI on Mac](/videos/zush-batch-rename.mp4)
+
 ## How to choose
 
 **If you are on Mac and work with mixed file types:** Zush is the clear choice. The combination of 23 image formats, 10 document formats, folder monitoring, and one-time pricing is unmatched in this category.
@@ -215,6 +219,8 @@ The pricing difference is significant. Zush is the only tool in this comparison 
 
 **If you just need a few files renamed once:** A browser tool like Renamer.ai or Renamify handles that without installing anything.
 
+![Mac dashboard showing AI file renamer tool comparison and pricing](/images/examples/dashboard.jpg)
+
 ## What about free AI file renamers?
 
 Every tool on this list has some kind of free option. The real question is whether the free tier is enough for your workflow.
@@ -224,6 +230,8 @@ Zush gives 50 free renames per month, which covers light ongoing use or lets you
 AI Renamer is fully free but requires local hardware and setup. Browser tools offer limited free uploads.
 
 For a full guide to free options, read [How to Rename Images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos).
+
+![Clean Mac workspace with well-organized files after using an AI renamer tool](/images/examples/workspace.jpg)
 
 ## Verdict
 

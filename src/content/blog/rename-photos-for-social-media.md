@@ -11,6 +11,8 @@ If you publish photos for social media, the filename matters more than most crea
 
 The practical rule is simple: name the file for what it shows, not for when it happened to be exported. If you reuse images across blog posts, Pinterest, YouTube thumbnails, client work, or portfolios, descriptive names become even more valuable. For batch cleanup, [Zush](https://zushapp.com) is useful because it can generate descriptive names for large sets of visual files instead of forcing you to rename each one manually.
 
+![Coffee flatlay photo styled for social media content creation](/images/examples/coffee.jpg)
+
 ## What a good social media filename looks like
 
 Good examples:
@@ -42,6 +44,8 @@ They still matter for:
 
 If you publish images on your own site too, filenames become even more important. See [Image SEO: How File Naming Affects Your Search Rankings](/blog/image-seo-file-naming-for-better-rankings).
 
+![Food photography styled and renamed for social media publishing](/images/examples/food.jpg)
+
 ## Best filename structure for creators
 
 For most creators, one of these patterns is enough:
@@ -61,6 +65,10 @@ Examples:
 Manual renaming works for a few files. It stops working when you produce content weekly or daily.
 
 That is why AI-assisted naming is useful for creators. [Zush](https://zushapp.com) can help rename large batches of photos, screenshots, and exports into descriptive filenames that are easier to reuse later.
+
+![Zush batch rename demo for renaming social media photos quickly](/videos/zush-batch-rename.mp4)
+
+![Flowers photo with a descriptive filename ready for cross-platform social posting](/images/examples/flowers.jpg)
 
 ## Conclusion
 

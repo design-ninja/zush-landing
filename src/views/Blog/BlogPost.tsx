@@ -238,6 +238,40 @@ const BlogPost = ({ slug }: BlogPostProps) => {
                     {children}
                   </Heading>
                 ),
+                img: ({ node: _node, src, alt, ...props }) => {
+                  if (src && src.endsWith('.mp4')) {
+                    return (
+                      <figure className="markdown-figure">
+                        <video
+                          src={src}
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          preload="metadata"
+                          className="markdown-video"
+                          aria-label={alt || 'Demo video'}
+                        >
+                          <track kind="captions" src="/videos/captions/zush-demo.vtt" srcLang="en" label="English captions" />
+                        </video>
+                        {alt && <figcaption>{alt}</figcaption>}
+                      </figure>
+                    )
+                  }
+                  return (
+                    <figure className="markdown-figure">
+                      <img
+                        src={src}
+                        alt={alt || ''}
+                        loading="lazy"
+                        decoding="async"
+                        className="markdown-image"
+                        {...props}
+                      />
+                      {alt && <figcaption>{alt}</figcaption>}
+                    </figure>
+                  )
+                },
                 p: ({ node: _node, ...props }) => <Text as='p' {...props} />,
               }}
             >

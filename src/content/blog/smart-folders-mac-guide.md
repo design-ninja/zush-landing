@@ -9,6 +9,8 @@ tldr: "Smart Folders are saved searches in Finder that dynamically group files b
 
 Smart Folders on Mac are not normal folders. They are saved searches that show files matching your criteria in real time. That means one file can appear in several Smart Folders without being duplicated.
 
+![Mac Finder showing Smart Folders for automatic file organization](/images/examples/dashboard.jpg)
+
 ## What Smart Folders are good for
 
 They work best when you want dynamic views like:
@@ -32,6 +34,8 @@ They work best when you want dynamic views like:
 - `Name Contains`
 - `Tag`
 
+![Diagram showing how Smart Folders dynamically organize files by criteria on Mac](/images/examples/diagram.jpg)
+
 ## Why naming still matters
 
 Smart Folders become much more useful when filenames and metadata are meaningful. A Smart Folder full of `IMG_4822` files is still hard to scan. That is one reason AI-assisted naming helps image-heavy workflows on Mac. [Zush](https://zushapp.com) can improve the filenames before Smart Folders surface them.
@@ -43,6 +47,8 @@ Smart Folders work especially well with:
 - Finder tags
 - Spotlight search
 - better image filenames
+
+![Clean organized Mac workspace with files sorted by Smart Folders](/images/examples/workspace.jpg)
 
 ## Conclusion
 

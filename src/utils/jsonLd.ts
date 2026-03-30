@@ -14,6 +14,7 @@ export function buildBlogPostingJsonLd(post: BlogFrontmatter) {
       '@type': 'Person',
       name: post.authorName,
       url: `${SITE_ORIGIN}/methodology#editorial-policy`,
+      sameAs: ['https://lirik.pro/en'],
       worksFor: {
         '@type': 'Organization',
         name: 'Zush',
@@ -41,6 +42,16 @@ export function buildBlogPostingJsonLd(post: BlogFrontmatter) {
     url: `${SITE_ORIGIN}/blog/${post.slug}`,
     wordCount: post.wordCount,
     keywords: post.tags.join(', '),
+    isPartOf: {
+      '@type': 'Blog',
+      '@id': `${SITE_ORIGIN}/blog`,
+      name: 'Zush Blog',
+      publisher: {
+        '@type': 'Organization',
+        name: 'Zush',
+        url: SITE_ORIGIN,
+      },
+    },
   }
 }
 

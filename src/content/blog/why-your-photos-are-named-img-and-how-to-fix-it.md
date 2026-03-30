@@ -11,6 +11,8 @@ Your photos are named `IMG_` because the device that created them was designed t
 
 That system works for the device. It works terribly for humans. Once the files leave the camera roll and land in Finder, `IMG_4382.HEIC` tells you almost nothing. If you want searchable photo libraries on Mac, the fix is to replace those generic names with descriptive filenames and keep new images organized automatically.
 
+![Cat photo with a generic IMG filename that needs descriptive renaming](/images/examples/cat.jpg)
+
 ## Why cameras use IMG_ filenames
 
 The reasons are practical:
@@ -44,6 +46,8 @@ You need two things:
 For a small folder, manual renaming is fine. For a large image library, that breaks down immediately. That is where AI-assisted naming becomes practical. [Zush](https://zushapp.com) can analyze image content and generate filenames that describe what each photo actually shows, then apply a consistent pattern across the batch.
 
 For the full workflow, see [How to Rename Images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos).
+
+![Zush batch rename demo replacing IMG filenames with descriptive photo names](/videos/zush-batch-rename.mp4)
 
 ## Better alternatives to IMG_
 
@@ -91,6 +95,8 @@ Good for:
 - Ongoing folder monitoring for new files
 
 That last point matters. Renaming old files once helps, but preventing future `IMG_` clutter is the real long-term fix.
+
+![Pug photo renamed with a descriptive filename instead of generic IMG naming](/images/examples/pug.jpg)
 
 ## A practical Mac workflow
 

@@ -117,9 +117,9 @@ const FeatureLandingPage = ({
 
         <Videos />
         <Features />
-        <SupportedFormats />
+        <SupportedFormats category={category} />
 
-        <ComparisonTable rows={comparisonRows} />
+        <ComparisonTable rows={comparisonRows} category={category} />
 
         <UseCases
           title={useCasesData.title}
