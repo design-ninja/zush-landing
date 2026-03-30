@@ -13,19 +13,21 @@ export function buildBlogPostingJsonLd(post: BlogFrontmatter) {
     author: {
       '@type': 'Person',
       name: post.authorName,
-      url: `${SITE_ORIGIN}/methodology#editorial-policy`,
+      url: 'https://lirik.pro/en',
       sameAs: ['https://lirik.pro/en'],
+      image: `${SITE_ORIGIN}/images/authors/lirik.jpg`,
       worksFor: {
         '@type': 'Organization',
         name: 'Zush',
         url: SITE_ORIGIN,
       },
     },
-    editor: {
-      '@type': 'Person',
-      name: post.reviewerName,
-      url: `${SITE_ORIGIN}/methodology#benchmark-protocol`,
-    },
+    ...(post.reviewerName ? {
+      editor: {
+        '@type': 'Person',
+        name: post.reviewerName,
+      },
+    } : {}),
     publisher: {
       '@type': 'Organization',
       name: 'Zush',

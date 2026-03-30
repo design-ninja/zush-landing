@@ -9,7 +9,6 @@ tldr: "The fastest way to find photos on Mac is to combine Spotlight, Finder sea
 
 Finding photos on Mac is easy when the files have useful names and metadata. It is hard when everything is `IMG_` or `Screenshot` and you are relying on memory alone.
 
-![Mac dashboard showing photo search and file organization tools](/images/examples/dashboard.jpg)
 
 ## Best ways to find photos on Mac
 
@@ -39,7 +38,6 @@ A sensible date or project-based folder structure narrows search even before you
 
 Tags help when you need to retrieve files across folders.
 
-![Mountain photo with searchable descriptive filename for easy Mac retrieval](/images/examples/mountain.jpg)
 
 ## Why search often fails
 
@@ -49,7 +47,6 @@ That is why descriptive naming matters. [Zush](https://zushapp.com) helps on the
 
 ![Zush smart tags demo for improving photo searchability on Mac](/videos/zush-tags.mp4)
 
-![City skyline photo easily found using descriptive filename and Spotlight search](/images/examples/city.jpg)
 
 ## Best practical setup
 

@@ -11,7 +11,6 @@ Most photo libraries become messy for the same reasons: generic filenames, weak 
 
 Here are the most common ones, with the shortest fix for each.
 
-![Cluttered desk workspace illustrating common photo organization mistakes](/images/examples/workspace.jpg)
 
 ## 1. Keeping default camera filenames
 
@@ -43,7 +42,6 @@ Some files get dates, others get events, others keep the original camera name.
 
 Fix: pick one naming rule for each type of photo workflow and stick to it.
 
-![Dog photo with a generic IMG filename showing poor photo naming habits](/images/examples/dog.jpg)
 
 ## 6. Skipping backups
 
@@ -89,7 +87,6 @@ That last part matters. If screenshots, downloads, and exported images keep arri
 
 ![Zush folder monitoring demo to automatically fix photo organization mistakes](/videos/zush-monitor.mp4)
 
-![Organized flower photos with descriptive filenames on Mac](/images/examples/flowers.jpg)
 
 ## Conclusion
 

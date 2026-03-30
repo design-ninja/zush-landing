@@ -13,7 +13,6 @@ There are three serious approaches to this on macOS, each suited to different ki
 
 This guide covers all three, with setup instructions, comparison tables, and guidance on when to use which approach.
 
-![Mac workspace with files ready for automatic renaming and organization](/images/examples/workspace.jpg)
 
 ## What auto file renaming means in practice
 
@@ -204,7 +203,6 @@ New files in those folders are now renamed automatically as they arrive.
 | Document format support | All (pattern only) | All (pattern only) | 10 formats (content-aware) |
 | Setup complexity | Medium | Medium | Low |
 
-![Comparison dashboard showing auto rename tools for Mac files](/images/examples/dashboard.jpg)
 
 ## Which method to use
 
@@ -252,7 +250,6 @@ Zush keeps a complete rename history. Open the history, find the file, and rever
 
 No. All three methods change only the filename. The file content is never modified.
 
-![Clean office desk with Mac showing organized file system](/images/examples/office.jpg)
 
 ## Getting started
 

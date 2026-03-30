@@ -13,7 +13,6 @@ AI file renaming solves this by analyzing the actual content of a file and gener
 
 This guide covers what AI file renaming is, how it works, the best ways to do it on any platform, and a step-by-step walkthrough using the most practical tools available today.
 
-![Cluttered desktop with files needing AI-powered renaming and organization](/images/examples/workspace.jpg)
 
 ## What AI file renaming actually does
 
@@ -136,7 +135,6 @@ Here is the practical walkthrough for the most common workflow.
 
 This is the setup that prevents clutter from accumulating in the first place. Instead of cleaning up once a month, the mess never forms.
 
-![Dashboard view of AI file renaming tool showing organized documents](/images/examples/dashboard.jpg)
 
 For a complete walkthrough of batch renaming on Mac, see [Batch Rename Files on Mac: Complete Guide](/blog/batch-rename-files-on-mac-complete-guide).
 
@@ -186,7 +184,6 @@ Yes. Most tools let you set patterns like `date-description`, `category-descript
 
 Yes. You can point batch rename at a parent folder or select specific subfolders. Folder monitoring watches the specific directories you configure.
 
-![Organized office setup with Mac for productive AI file management](/images/examples/office.jpg)
 
 ## When AI renaming is not the right tool
 

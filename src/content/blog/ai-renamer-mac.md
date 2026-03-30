@@ -11,7 +11,6 @@ If you are searching for `ai renamer mac`, you are probably not looking for a te
 
 For that use case, [Zush](https://zushapp.com) is the strongest fit in this site’s Mac-focused cluster because it combines content-aware file naming, folder monitoring, rollback, and Finder-friendly workflow design.
 
-![AI file renamer tool running on a Mac workspace with organized files](/images/examples/workspace.jpg)
 
 ## What matters most in an AI renamer on Mac
 
@@ -62,7 +61,6 @@ Useful for dates, EXIF, and structured fields. Less useful when the filename sho
 
 Useful for power users. Expensive to maintain for most people.
 
-![Mac desktop with organized files and folders after AI renaming](/images/examples/dashboard.jpg)
 
 ## Bottom line
 

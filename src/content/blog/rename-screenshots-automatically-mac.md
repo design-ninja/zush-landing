@@ -11,7 +11,6 @@ Every screenshot on macOS arrives with a name like `Screenshot 2026-03-23 at 14.
 
 If you take screenshots regularly for work, bug reports, design references, or personal records, the naming problem compounds fast. A folder of 200 screenshots with timestamp names is effectively unsearchable without opening each file. The fix is to rename screenshots automatically using AI that can see what each capture shows and generate a descriptive filename on the spot.
 
-![Cluttered Mac desktop covered with unnamed screenshots and timestamp files](/images/examples/dashboard.jpg)
 
 [Zush](https://zushapp.com/rename-screenshots-with-ai) does this on Mac with folder monitoring. Point it at your screenshot folder, and every new capture gets renamed in the background without you lifting a finger.
 
@@ -80,7 +79,6 @@ The filename reflects the content, not the timestamp. That makes every screensho
 
 Each renamed file is immediately identifiable. No opening required.
 
-![Organized Mac workspace with neatly named files ready for productive screenshot workflow](/images/examples/workspace.jpg)
 
 ## Step-by-step: setting up automatic screenshot renaming with Zush
 
@@ -178,7 +176,6 @@ Even with good names, screenshots from six months ago are rarely needed in your 
 
 AI vision is strong but not infallible. Check the first 10 to 20 renamed screenshots to confirm the names are accurate and useful. If a particular type of screenshot gets weak names, you may need to adjust your pattern or accept that some captures need manual attention.
 
-![Clean and organized Mac desktop after automatic screenshot renaming](/images/examples/office.jpg)
 
 ## The bottom line
 

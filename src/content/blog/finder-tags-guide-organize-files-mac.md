@@ -9,7 +9,6 @@ tldr: "Finder tags are most useful when they represent a small set of meaningful
 
 Finder tags are one of the simplest ways to organize files on Mac without moving them into new folders. A tagged file can still live in its original location, but it also becomes searchable by color or tag name across your system.
 
-![Mac Finder window showing color-coded file tags for organized file management](/images/examples/dashboard.jpg)
 
 ## What Finder tags are best for
 
@@ -64,7 +63,6 @@ This is one reason AI-assisted naming helps file-heavy workflows on Mac. [Zush](
 
 Tags become much more useful when combined with [Smart Folders on Mac: The Complete Guide to Automatic Organization](/blog/smart-folders-mac-guide). That combination gives you dynamic views like “all urgent files” or “all review assets” without changing where the originals live.
 
-![Organized Mac office workspace with tagged and well-named files](/images/examples/office.jpg)
 
 ## Conclusion
 

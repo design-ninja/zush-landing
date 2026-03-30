@@ -11,7 +11,6 @@ Renaming files one at a time is manageable when you save three files a day. It b
 
 The real fix is not faster manual renaming. It is folder monitoring: a background process that watches specific folders and renames files the moment they arrive. That is the core of what makes [Zush](https://zushapp.com/auto-rename-files) a practical tool for automatic file renaming on Mac. You point it at a folder, set your naming preferences, and stop thinking about it.
 
-![Messy Mac desktop with unorganized downloads and screenshot files needing automatic renaming](/images/examples/workspace.jpg)
 
 ## What folder monitoring actually does
 
@@ -152,7 +151,6 @@ Once files have descriptive names and tags, Smart Folders in Finder can surface 
 
 For more on this approach, see [How to Automate File Organization on macOS](/blog/automate-file-organization-macos).
 
-![Organized Mac folder showing descriptive filenames after automatic renaming](/images/examples/dashboard.jpg)
 
 ## How folder monitoring compares to other automation approaches
 
@@ -188,7 +186,6 @@ Folder monitoring is not ideal for every situation:
 
 In those cases, on-demand batch renaming is a better approach.
 
-![Clean Mac office setup with well-organized files and productive workflow](/images/examples/office.jpg)
 
 ## Conclusion
 

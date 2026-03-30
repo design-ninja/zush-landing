@@ -9,7 +9,6 @@ tldr: "A strong design asset workflow uses predictable folder structure, clear e
 
 Design asset organization gets messy because every project creates exports, screenshots, versions, icons, mockups, and references faster than most teams can name them well. The fix is not more folders. It is clearer structure and better naming.
 
-![Designer workspace with organized UI and UX design assets on Mac](/images/examples/workspace.jpg)
 
 ## Best structure for design assets
 
@@ -38,7 +37,6 @@ Examples:
 - `design-system-button-primary-hover.svg`
 - `client-homepage-hero-v2.psd`
 
-![Dashboard showing design asset management with organized UI component exports](/images/examples/dashboard.jpg)
 
 ## Why exports are the problem
 
@@ -55,7 +53,6 @@ That is where AI-assisted naming can help. [Zush](https://zushapp.com) is useful
 
 ![Zush naming patterns demo for organizing design asset exports with consistent names](/videos/zush-naming-pattern.mp4)
 
-![Diagram showing a structured UI UX design asset workflow with clear file naming](/images/examples/diagram.jpg)
 
 ## Conclusion
 

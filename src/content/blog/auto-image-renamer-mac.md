@@ -11,7 +11,6 @@ An auto image renamer for Mac is useful when your problem is not just bad filena
 
 If you want those files renamed automatically instead of manually, you need two things: content-aware naming and folder monitoring. That is why [Zush](https://zushapp.com) is a strong fit for this query. It can watch key folders and rename incoming images based on what they actually show.
 
-![Photos and screenshots on Mac desktop awaiting automatic AI renaming](/images/examples/mountain.jpg)
 
 ## What “auto image renamer” should mean
 
@@ -76,7 +75,6 @@ Automatic renaming is not limited to visual files. Zush also monitors folders fo
 
 For a focused guide on document renaming, see [Rename PDF Files with AI on Mac](/blog/rename-pdf-files-with-ai-mac).
 
-![Sunset landscape photo automatically renamed with AI-generated descriptive filename](/images/examples/sunset.jpg)
 
 ## Conclusion
 

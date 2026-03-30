@@ -7,13 +7,17 @@
 
   &__Container {
     @include container;
-    max-width: 50rem;
+    max-width: 64rem;
   }
 
   &__Posts {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__Post {

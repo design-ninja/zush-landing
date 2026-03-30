@@ -150,7 +150,6 @@ If you are on macOS Ventura or later, Shortcuts can replace Automator for many t
 
 Shortcuts is better for one-off automations. Automator is better for complex multi-step workflows that need shell script access. For a thorough walkthrough of Automator-based file renaming, see our [Automator rename files guide](/blog/macos-automator-rename-files-guide).
 
-![Organized workspace with sorted files](/images/examples/workspace.jpg)
 
 ## Hazel: the power tool for rule-based file automation
 
@@ -262,7 +261,6 @@ The clearest way to understand AI renaming is to see the results. Here is what h
 | `image (2).webp` | `react-component-lifecycle-diagram.webp` |
 | `Untitled.png` | `brand-color-palette-primary-shades.png` |
 
-![Example of organized photo files](/images/examples/sunset.jpg)
 
 The difference is not cosmetic. Descriptive filenames mean Spotlight search works. It means you can scan a folder and know what is inside each file without opening it. It means every downstream system -- Smart Folders, Hazel rules, manual browsing -- works better.
 
@@ -320,7 +318,6 @@ Even with automation, spend 5 minutes once a week glancing at your Smart Folders
 
 After a week of running this setup, look at what is still falling through the cracks. Add new Hazel rules or Smart Folders as needed. Do not try to cover every edge case up front.
 
-![Organized office desk setup](/images/examples/office.jpg)
 
 ## Comparison: which tool for which job
 

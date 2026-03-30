@@ -11,7 +11,6 @@ The best file organization system for students on Mac is simple: one semester fo
 
 The mess usually comes from the same places every term: Downloads, screenshots, assignment drafts, lecture PDFs, and random files saved to Desktop. If screenshots, lecture PDFs, and assignment documents are a constant problem, [Zush](https://zushapp.com) can help by renaming those files automatically instead of letting timestamp names pile up.
 
-![Student workspace on Mac with organized course files and study materials](/images/examples/workspace.jpg)
 
 ## Use a semester-first folder structure
 
@@ -44,7 +43,6 @@ Examples:
 
 Avoid `final`, `new`, and `untitled` names. Version numbers are safer.
 
-![Coffee and study notes representing a productive student file organization session](/images/examples/coffee.jpg)
 
 ## Keep screenshots and Downloads under control
 
@@ -65,7 +63,6 @@ A 10-minute routine is better than an end-of-semester rescue operation.
 
 ![Zush naming patterns demo for organizing student assignment files on Mac](/videos/zush-naming-pattern.mp4)
 
-![Building on campus representing organized academic file management for students](/images/examples/building.jpg)
 
 ## Conclusion
 

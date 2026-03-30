@@ -11,7 +11,6 @@ Zush includes 50 free AI renames per month on the free plan, and 10,000 renames 
 
 BYOK (Bring Your Own Key) means you connect your personal API key from a supported AI provider directly to [Zush](https://zushapp.com/ai-file-renamer). Zush sends the file content to the provider under your account, the provider returns a descriptive name, and you pay the provider directly at their standard API rates. There is no Zush markup and no rename limit.
 
-![Dashboard showing AI API key configuration for unlimited file renaming](/images/examples/dashboard.jpg)
 
 ## What BYOK means in practice
 
@@ -98,7 +97,6 @@ For context, 500 renames per month covers most active Mac users who take daily s
 
 Even at 2,000 renames per month, which represents heavy professional usage, the total cost is under two dollars with any provider.
 
-![Cost comparison chart for AI file renaming providers showing affordable pricing](/images/examples/chart.jpg)
 
 ## Step-by-step setup for each provider
 
@@ -201,7 +199,6 @@ This is the most hands-off setup available. For a detailed guide on folder monit
 
 Your API key is stored locally on your Mac and is only sent to the AI provider you selected. File content goes directly to the provider's API endpoint for analysis. Review your chosen provider's API data policy if privacy is a deciding factor.
 
-![Mac workspace with organized files after using BYOK unlimited AI renaming](/images/examples/workspace.jpg)
 
 ## Conclusion
 

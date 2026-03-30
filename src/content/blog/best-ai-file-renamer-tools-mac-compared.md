@@ -44,7 +44,6 @@ Most comparisons over-weight feature count. In real workflows, these criteria de
 
 Before diving into individual tools, here is what good AI file renaming produces. These examples reflect the kind of output you should expect from a content-aware renamer, not just a pattern-based one.
 
-![AI file renaming before and after](/images/examples/building.jpg)
 
 ### Screenshots
 

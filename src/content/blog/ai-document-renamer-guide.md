@@ -13,7 +13,6 @@ That is the document naming problem. Unlike photos or screenshots, documents car
 
 An AI document renamer solves this by reading the actual content of the file and generating a descriptive name based on what the document contains. If you work with mixed document types on Mac, [Zush](https://zushapp.com) can do this across PDFs, Word files, spreadsheets, and more in a single batch.
 
-![Office desk with documents and PDFs needing AI-powered renaming](/images/examples/office.jpg)
 
 ## How AI analyzes document content
 
@@ -138,7 +137,6 @@ Client projects generate proposals, contracts, deliverables, and feedback docume
 
 The key advantage of AI is content awareness. Every other method works from the outside of the file: metadata, file extension, creation date. AI works from the inside, reading what the document actually says.
 
-![Diagram showing AI document renaming workflow from generic to descriptive filenames](/images/examples/diagram.jpg)
 
 ## Best practices for document naming
 
@@ -178,7 +176,6 @@ AI document renaming works best when the filename is meaningless and the content
 
 In those cases, a deterministic rename rule or manual naming is better.
 
-![Dashboard view of organized documents after AI renaming on Mac](/images/examples/dashboard.jpg)
 
 ## Getting started
 

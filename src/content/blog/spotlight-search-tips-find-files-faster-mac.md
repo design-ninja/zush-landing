@@ -9,7 +9,6 @@ tldr: "Spotlight works best when your files have useful names and metadata. Sear
 
 Spotlight is one of the fastest ways to find files on Mac, but it only works as well as the metadata it can search. If your files have useful names, tags, and dates, Spotlight feels instant. If everything is `IMG_4382` and `document (7)`, search gets much weaker.
 
-![Mac Spotlight search interface finding files faster with descriptive filenames](/images/examples/dashboard.jpg)
 
 ## Most useful Spotlight searches
 
@@ -50,7 +49,6 @@ Examples:
 - `tag:red`
 - `tag:client-alpha`
 
-![Mountain landscape photo illustrating how descriptive filenames improve Spotlight search results](/images/examples/mountain.jpg)
 
 ## Why Spotlight sometimes feels weak
 
@@ -75,7 +73,6 @@ This is one reason AI-assisted naming helps on Mac. [Zush](https://zushapp.com) 
 - [How to Find Photos on Your Mac: The Ultimate Search Guide](/blog/how-to-find-photos-on-mac)
 - [Smart Folders on Mac: The Complete Guide to Automatic Organization](/blog/smart-folders-mac-guide)
 
-![Organized Mac office with files easily findable through Spotlight search](/images/examples/office.jpg)
 
 ## Conclusion
 

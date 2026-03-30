@@ -9,7 +9,6 @@ tldr: "The best way to organize photos on Mac is to combine a simple folder or l
 
 The best way to organize photos on Mac is not to rely on one trick. The strongest system combines a clear structure, descriptive filenames, and searchable metadata so you can find images by time, subject, or project.
 
-![Organized photo library on a Mac workspace with folders and images](/images/examples/workspace.jpg)
 
 For most people, these are the best options.
 
@@ -51,7 +50,6 @@ Best for:
 
 Weakness: it is less flexible if your workflow depends on direct file access in Finder.
 
-![Sunset photo representing a well-organized personal photo collection on Mac](/images/examples/sunset.jpg)
 
 ## 4. Use Finder folders when file control matters
 
@@ -82,7 +80,6 @@ A solid default is:
 - regular backup
 - light use of tags where needed
 
-![Nature photos organized in folders on a Mac desktop](/images/examples/nature.jpg)
 
 ## Conclusion
 

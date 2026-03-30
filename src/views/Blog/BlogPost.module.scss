@@ -29,19 +29,32 @@
     margin-bottom: 1rem;
   }
 
-  &__Meta {
+  &__Author {
     display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    color: var(--muted-foreground);
-    font-size: 0.9rem;
+    align-items: center;
+    gap: 0.75rem;
     margin-bottom: 1rem;
   }
 
-  &__ReviewPolicy {
+  &__AuthorAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__AuthorName {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--foreground);
+  }
+
+  &__Meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
     color: var(--muted-foreground);
-    margin-bottom: 1rem;
-    max-width: 46rem;
+    font-size: 0.85rem;
   }
 
   &__Tags {

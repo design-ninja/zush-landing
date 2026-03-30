@@ -115,25 +115,25 @@ const BlogPost = ({ slug }: BlogPostProps) => {
 
         <header className={styles.BlogPost__Header}>
           <Heading as='h1' className={styles.BlogPost__Title}>{frontmatter.title}</Heading>
-          <div className={styles.BlogPost__Meta}>
-            <time dateTime={frontmatter.date}>
-              {formatDate(frontmatter.date)}
-            </time>
-            <span>{frontmatter.readingTime} min read</span>
-            <span>By {frontmatter.authorName}</span>
-            <span>Reviewed by {frontmatter.reviewerName}</span>
+          <div className={styles.BlogPost__Author}>
+            <img
+              src="/images/authors/lirik.jpg"
+              alt={frontmatter.authorName}
+              className={styles.BlogPost__AuthorAvatar}
+              width={40}
+              height={40}
+              loading="eager"
+            />
+            <div>
+              <span className={styles.BlogPost__AuthorName}>{frontmatter.authorName}</span>
+              <div className={styles.BlogPost__Meta}>
+                <time dateTime={frontmatter.date}>
+                  {formatDate(frontmatter.date)}
+                </time>
+                <span>{frontmatter.readingTime} min read</span>
+              </div>
+            </div>
           </div>
-          <Text as='p' size='sm' color='subtle' className={styles.BlogPost__ReviewPolicy}>
-            Recommendation quality is reviewed with our{' '}
-            <AppLink href="/methodology" variant="legal">
-              public methodology
-            </AppLink>{' '}
-            and updated through the{' '}
-            <AppLink href="/changelog" variant="legal">
-              changelog
-            </AppLink>
-            .
-          </Text>
           {frontmatter.tags.length > 0 && (
             <div className={styles.BlogPost__Tags}>
               {frontmatter.tags.map((tag) => (

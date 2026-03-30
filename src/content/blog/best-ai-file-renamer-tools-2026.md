@@ -11,7 +11,6 @@ AI file renamers have gone from experimental curiosities to practical tools. The
 
 This comparison covers the tools worth knowing about in 2026, with honest assessments of what each one does well and where it falls short. If you are looking for the right AI file renamer, whether free or paid, this is the breakdown.
 
-![Comparison chart of AI file renamer tools and features for 2026](/images/examples/chart.jpg)
 
 ## What to evaluate
 
@@ -219,7 +218,6 @@ The pricing difference is significant. Zush is the only tool in this comparison 
 
 **If you just need a few files renamed once:** A browser tool like Renamer.ai or Renamify handles that without installing anything.
 
-![Mac dashboard showing AI file renamer tool comparison and pricing](/images/examples/dashboard.jpg)
 
 ## What about free AI file renamers?
 
@@ -231,7 +229,6 @@ AI Renamer is fully free but requires local hardware and setup. Browser tools of
 
 For a full guide to free options, read [How to Rename Images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos).
 
-![Clean Mac workspace with well-organized files after using an AI renamer tool](/images/examples/workspace.jpg)
 
 ## Verdict
 

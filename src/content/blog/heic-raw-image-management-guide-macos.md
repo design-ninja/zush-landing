@@ -9,7 +9,6 @@ tldr: "HEIC is efficient and Apple-friendly, while RAW is flexible and editing-f
 
 HEIC and RAW are common on Mac for opposite reasons. HEIC is the efficient default from iPhone. RAW is the high-flexibility format used by cameras and serious editing workflows. If you use both, the challenge is not just storage. It is compatibility, retrieval, and keeping the library understandable over time.
 
-![Nature landscape captured in RAW format for maximum editing flexibility on Mac](/images/examples/nature.jpg)
 
 ## HEIC in one sentence
 
@@ -49,7 +48,6 @@ If you shoot client work, products, events, or serious creative projects, RAW is
 
 Do not mix master files, edits, and exports in one giant folder. Keep source images separate from final JPEG, PNG, or delivery versions.
 
-![Sunset photo in HEIC format managed efficiently on macOS](/images/examples/sunset.jpg)
 
 ### Use descriptive filenames
 
@@ -71,7 +69,6 @@ Keep RAW if:
 - the photos may be reworked later
 - the project has professional or archival value
 
-![Mountain landscape photo in RAW format ready for professional editing on macOS](/images/examples/mountain.jpg)
 
 ## Conclusion
 

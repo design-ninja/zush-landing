@@ -23,7 +23,6 @@ This guide covers every practical way to rename files with AI for free in 2026, 
 
 Each approach has a sweet spot. The rest of this guide walks through them in detail.
 
-![Free AI file renaming tools comparison chart for organizing files](/images/examples/chart.jpg)
 
 ## Option 1: Zush free tier (easiest start)
 
@@ -209,7 +208,6 @@ A DIY script is fast to prototype and useful for understanding the technology. I
 
 Browser tools handle a few files without any setup.
 
-![Organized workspace with Mac showing free AI file renaming workflow](/images/examples/workspace.jpg)
 
 ## Making the most of 50 free renames
 
@@ -243,7 +241,6 @@ The progression from free to paid is smooth. You do not lose any features or nee
 
 For setup guides on configuring BYOK providers, see [BYOK Setup Guide](/byok-setup).
 
-![Office desk setup with Mac running free AI renaming tools](/images/examples/office.jpg)
 
 ## Getting started
 

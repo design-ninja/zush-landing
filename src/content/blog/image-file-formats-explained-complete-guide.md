@@ -9,7 +9,6 @@ tldr: "The best image format depends on the job: JPEG for general photos, PNG fo
 
 Choosing the right image file format matters because it affects quality, file size, compatibility, editing flexibility, and searchability. Mac users usually deal with the same core formats: JPEG, PNG, HEIC, WebP, RAW, TIFF, GIF, and SVG.
 
-![Chart comparing image file formats for Mac users](/images/examples/chart.jpg)
 
 Here is the short version.
 
@@ -105,7 +104,6 @@ Use it when:
 
 Weakness: not appropriate for normal photos.
 
-![Sunset photo saved in different image formats showing quality differences](/images/examples/sunset.jpg)
 
 ## Best quick recommendations
 
@@ -122,7 +120,6 @@ Formats are only half the issue. The other half is naming. A perfectly chosen fo
 
 ![Zush batch rename demo for organizing images across multiple file formats](/videos/zush-batch-rename.mp4)
 
-![Diagram showing image format workflow and file organization on Mac](/images/examples/diagram.jpg)
 
 ## Conclusion
 

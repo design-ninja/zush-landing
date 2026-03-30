@@ -9,7 +9,6 @@ tldr: "A strong photography workflow on Mac covers five stages: import, cull, ed
 
 A photography workflow on Mac breaks down when import, naming, export, and archive decisions happen differently every time. The fix is a repeatable system from card to archive.
 
-![Professional photographer workspace with Mac setup for photo management](/images/examples/workspace.jpg)
 
 ## The five stages
 
@@ -49,7 +48,6 @@ Examples:
 
 Archive completed projects with backup in mind. Working drives and archive drives should have different jobs.
 
-![Mountain landscape photo from a professional photography shoot on Mac](/images/examples/mountain.jpg)
 
 ## Why naming matters in photography
 
@@ -59,7 +57,6 @@ For image-heavy Mac workflows, [Zush](https://zushapp.com) can help with the des
 
 ![Zush batch rename demo for photographer file management workflow on Mac](/videos/zush-batch-rename.mp4)
 
-![Nature photo edited and exported as part of a Mac photography workflow](/images/examples/nature.jpg)
 
 ## Conclusion
 

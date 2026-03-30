@@ -15,7 +15,6 @@ An AI photo renamer solves this by analyzing what each photo actually contains a
 
 [Zush](https://zushapp.com/rename-photos-with-ai) does this on Mac across 23 image formats, including RAW and HEIC, with batch renaming and custom naming patterns.
 
-![Dog photo with generic IMG filename ready for AI photo renaming](/images/examples/dog.jpg)
 
 ## Why cameras use generic filenames
 
@@ -119,7 +118,6 @@ Confirm and apply. The rename is logged so you can revert any file to its origin
 
 If you regularly import photos to a specific folder, enable folder monitoring so new arrivals are renamed automatically. This is especially useful for photographers who dump memory cards into an import directory.
 
-![Mountain landscape photo renamed with descriptive AI-generated filename](/images/examples/mountain.jpg)
 
 ## Photographer workflows
 
@@ -182,7 +180,6 @@ AI vision is strong with clear subjects and recognizable scenes. It is less reli
 
 For these edge cases, manual naming or a simple sequential rename is more appropriate.
 
-![Sunset photo example with AI-generated descriptive filename for searchability](/images/examples/sunset.jpg)
 
 ## Getting started
 

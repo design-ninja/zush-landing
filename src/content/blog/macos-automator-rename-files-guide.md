@@ -11,7 +11,6 @@ Automator can rename files automatically on macOS without writing code. It is a 
 
 Where Automator falls short is content awareness. It cannot tell whether a file is a screenshot of Stripe settings or a beach photo from your iPhone. If that is your problem, [Zush](https://zushapp.com) is the more practical tool because it uses AI to generate descriptive names from image content.
 
-![Mac Automator workflow setup for automatic file renaming on macOS](/images/examples/diagram.jpg)
 
 ## When Automator is a good fit
 
@@ -49,7 +48,6 @@ A typical setup is:
 
 This is fast to set up when the rename pattern is simple and stable.
 
-![Mac dashboard showing Automator limitations versus AI-powered file renaming](/images/examples/dashboard.jpg)
 
 ## Where Automator breaks down
 
@@ -82,7 +80,6 @@ That is why AI-assisted tools now cover a different category of rename problems.
 
 If your goal is a smarter image workflow, read [How to Rename Images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos).
 
-![Clean Mac workspace with well-organized files after automatic renaming](/images/examples/workspace.jpg)
 
 ## Conclusion
 

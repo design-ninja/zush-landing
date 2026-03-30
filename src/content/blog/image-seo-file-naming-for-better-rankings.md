@@ -9,7 +9,6 @@ tldr: "Image filenames are a real SEO signal, but they work best when they are d
 
 Image filenames matter for SEO because they help search engines understand what an image shows. They are not the only signal, but they are one of the easiest to control.
 
-![Dashboard showing image SEO file naming analytics and search ranking metrics](/images/examples/dashboard.jpg)
 
 ## What a good SEO filename looks like
 
@@ -45,7 +44,6 @@ Good filenames help, but they do not replace:
 - page relevance
 - overall technical SEO
 
-![Chart illustrating the impact of descriptive filenames on image search rankings](/images/examples/chart.jpg)
 
 ## Why this matters for content teams
 

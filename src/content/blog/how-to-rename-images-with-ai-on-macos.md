@@ -34,7 +34,6 @@ Here is what that looks like in practice:
 | `Untitled.png` | `error-modal-stripe-payment-failed.png` |
 | `DCIM_0034.ARW` | `street-scene-tokyo-night-rain-sony.arw` |
 
-![Before and after image rename](/images/examples/sunset.jpg)
 
 That matters because most Mac image clutter comes from files that already exist but carry useless names. You took the screenshot, you downloaded the reference image, you imported the photo. The file is already where it needs to be. The problem is that six months from now, `IMG_4382.HEIC` tells you nothing, and you will waste time opening files one by one to find the one you need.
 
@@ -207,7 +206,6 @@ Here is how it works:
 3. **The AI analyzes and renames automatically.** Within seconds of the file appearing, the AI inspects its content and applies a descriptive filename using your chosen naming pattern.
 4. **The file stays in place.** The renamed file remains in the same folder. Nothing moves unless you have set up additional organization rules.
 
-![Screenshot rename example](/images/examples/coffee.jpg)
 
 This is especially useful for screenshots. macOS generates screenshots constantly during normal work — grabbing error messages, saving design references, capturing receipts. With folder monitoring on your Screenshots folder, every screenshot gets a descriptive name within seconds of being taken. Instead of `Screenshot 2026-03-09 at 10.42.17.png`, you get `stripe-payment-dashboard-monthly-revenue.png`.
 

@@ -11,7 +11,6 @@ Batch renaming files on Mac is easy when the rename rule is simple and much hard
 
 That is why there is no single best tool for every situation. This guide covers four approaches in detail: Finder's built-in batch rename, Automator workflows, Terminal scripts, and AI-powered renaming. Each section includes step-by-step instructions and real examples so you can pick the method that fits your actual problem.
 
-![Batch renaming files in Finder on Mac](/images/examples/workspace.jpg)
 
 ## Method 1: Finder batch rename
 
@@ -250,7 +249,6 @@ Scripts also share the same fundamental limitation as Finder and Automator: they
 
 AI renaming is different from every method above. Instead of applying a pattern or rule to filenames, it analyzes the actual content of each file and generates a descriptive name based on what it finds. A screenshot of a Stripe dashboard becomes `stripe-monthly-revenue-chart.png`. A scanned PDF becomes `apartment-lease-agreement-2026.pdf`. A downloaded photo becomes `golden-gate-bridge-foggy-morning.jpg`.
 
-![AI-powered file renaming example](/images/examples/dashboard.jpg)
 
 ### When to use AI renaming
 
@@ -299,7 +297,6 @@ This is the key difference from every other method: each file gets its own name 
 | `photo_2026.heic` | `hiking-trail-redwood-forest.heic` |
 | `download (1).jpg` | `blue-mid-century-modern-sofa.jpg` |
 
-![Example of AI-renamed image files](/images/examples/city.jpg)
 
 ### AI renaming with Zush
 
