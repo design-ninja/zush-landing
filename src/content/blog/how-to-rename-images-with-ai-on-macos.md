@@ -15,6 +15,9 @@ For most Mac users, the goal is not prettier filenames. It is being able to sear
 
 Traditional rename tools change text patterns. You might strip a prefix, append a date, or replace spaces with hyphens. None of that considers what the image actually shows.
 
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
+
 AI renaming works differently. It sends the image through a vision model that analyzes the visual content, identifies objects, scenes, text, and context, then generates a filename that reflects what the file contains.
 
 Here is what that looks like in practice:
@@ -60,6 +63,9 @@ For a deeper comparison of tools, see [Best AI File Renamer Tools for Mac Compar
 ## Step-by-step guide to renaming images with AI on Mac
 
 Here is the practical process for renaming images with AI on macOS, from start to finish.
+
+![Zush batch rename results showing AI-generated descriptive filenames](/images/screenshots/light/zush-batch-rename-results.webp)
+
 
 ### Step 1: Identify your messy folders
 

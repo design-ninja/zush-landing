@@ -16,6 +16,9 @@ That system works for the device. It works terribly for humans. Once the files l
 
 The reasons are practical:
 
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
+
 - Sequential naming is simple and reliable
 - Devices do not need to interpret image content
 - Filenames are treated as technical identifiers, not search labels
@@ -38,6 +41,9 @@ At that point, filenames start carrying real retrieval value. Search, sorting, a
 ## The simplest way to fix IMG_ filenames
 
 You need two things:
+
+![Zush batch rename results showing AI-generated descriptive filenames](/images/screenshots/light/zush-batch-rename-results.webp)
+
 
 1. A naming convention that is descriptive enough to be searchable
 2. A workflow that does not require typing every filename by hand

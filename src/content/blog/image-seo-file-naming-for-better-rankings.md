@@ -14,6 +14,9 @@ Image filenames matter for SEO because they help search engines understand what 
 
 Good examples:
 
+![Zush naming pattern configuration with format template and localization options](/images/screenshots/light/zush-naming-settings.webp)
+
+
 - `standing-desk-home-office.jpg`
 - `sourdough-bread-golden-crust.jpg`
 - `minimalist-checkout-flow-ui.png`
@@ -37,6 +40,9 @@ The best filename is descriptive, readable, and relevant to the image itself.
 ## What filenames do not replace
 
 Good filenames help, but they do not replace:
+
+![Zush batch rename results showing AI-generated descriptive filenames](/images/screenshots/light/zush-batch-rename-results.webp)
+
 
 - alt text
 - surrounding page context

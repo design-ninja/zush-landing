@@ -13,6 +13,8 @@ That is the document naming problem. Unlike photos or screenshots, documents car
 
 An AI document renamer solves this by reading the actual content of the file and generating a descriptive name based on what the document contains. If you work with mixed document types on Mac, [Zush](https://zushapp.com) can do this across PDFs, Word files, spreadsheets, and more in a single batch.
 
+![Zush main AI Rename screen showing supported file format badges for documents and images](/images/screenshots/light/zush-main-interface.webp)
+
 
 ## How AI analyzes document content
 
@@ -69,6 +71,8 @@ The difference between a generic filename and an AI-generated one is immediate:
 
 Every one of those renamed files is now searchable in Spotlight, scannable in Finder, and meaningful in a shared folder.
 
+![Zush AI rename results showing documents with descriptive before and after names and green checkmarks](/images/screenshots/light/zush-batch-rename-results.webp)
+
 ![AI batch renaming documents and spreadsheets with descriptive names](/videos/zush-batch-rename.mp4)
 
 ## Step-by-step: renaming documents with Zush
@@ -93,6 +97,8 @@ Pick a pattern that fits your workflow:
 - `{date}_{category}_{title}` for maximum structure
 
 The AI generates the title and category from the document content. You control how those pieces are assembled.
+
+![Zush processing tab showing naming pattern configuration with title name format and localization options](/images/screenshots/light/zush-naming-settings.webp)
 
 ### 4. Preview the results
 

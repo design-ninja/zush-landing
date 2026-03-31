@@ -14,6 +14,9 @@ Decluttering your Mac is easiest when you stop thinking about the whole machine 
 
 Most users should clean these first:
 
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
+
 - Downloads
 - Desktop
 - Screenshots
@@ -34,6 +37,9 @@ Most users should clean these first:
 - recurring reference material
 - photos worth archiving
 - financial or legal documents
+
+![Zush folder monitoring settings for automatic file renaming](/images/screenshots/light/zush-monitor-settings.webp)
+
 
 
 ## Why filenames matter in cleanup

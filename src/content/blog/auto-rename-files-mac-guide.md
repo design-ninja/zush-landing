@@ -158,6 +158,8 @@ This is better than nothing but still generic. If you have three PDFs arriving o
 
 Every file gets a unique descriptive name because the AI analyzes the actual content, not just the metadata.
 
+![Zush AI rename results showing files with before and after descriptive names](/images/screenshots/light/zush-batch-rename-results.webp)
+
 ![Zush folder monitoring automatically renaming files on Mac](/videos/zush-monitor.mp4)
 
 ### Setting up Zush folder monitoring
@@ -170,6 +172,8 @@ Every file gets a unique descriptive name because the AI analyzes the actual con
 6. Enable monitoring.
 
 New files in those folders are now renamed automatically as they arrive.
+
+![Zush monitor tab showing folder monitoring configuration with Desktop folder selected](/images/screenshots/light/zush-monitor-settings.webp)
 
 ### Additional features
 

@@ -126,6 +126,8 @@ AI Renamer is an open-source tool that runs AI models locally on your machine us
 
 AI Renamer is a solid option if privacy is your absolute top priority and you only need to rename standard image files. For mixed workflows with documents, screenshots, and varied image formats, the format and feature limitations are significant.
 
+![Zush main screen showing supported file format badges in the free version](/images/screenshots/light/zush-main-interface.webp)
+
 ## Option 4: DIY script with a free API tier
 
 If you are comfortable writing code, you can build a basic AI file renamer with a Python script and a vision API.
@@ -238,6 +240,8 @@ The point at which you outgrow free depends on your volume.
 - **Heavy use (500+ files/month):** Zush Pro at $10 one-time gives 10,000 renames. Combined with BYOK, this handles virtually any workload.
 
 The progression from free to paid is smooth. You do not lose any features or need to reconfigure anything.
+
+![Zush upgrade to PRO dialog showing one-time ten dollar payment with ten thousand credits and unlimited BYOK](/images/screenshots/light/zush-about-screen.webp)
 
 For setup guides on configuring BYOK providers, see [BYOK Setup Guide](/byok-setup).
 

@@ -16,6 +16,9 @@ The practical rule is simple: name the file for what it shows, not for when it h
 
 Good examples:
 
+![Zush naming pattern configuration with format template and localization options](/images/screenshots/light/zush-naming-settings.webp)
+
+
 - `morning-skincare-routine-flatlay.jpg`
 - `youtube-thumbnail-home-office-makeover.png`
 - `instagram-carousel-productivity-desk-setup-01.jpg`
@@ -47,6 +50,9 @@ If you publish images on your own site too, filenames become even more important
 ## Best filename structure for creators
 
 For most creators, one of these patterns is enough:
+
+![Zush batch rename results showing AI-generated descriptive filenames](/images/screenshots/light/zush-batch-rename-results.webp)
+
 
 - `platform-topic-description.ext`
 - `campaign-description-sequence.ext`

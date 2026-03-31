@@ -16,6 +16,9 @@ BYOK (Bring Your Own Key) means you connect your personal API key from a support
 
 When you use Zush's built-in credits, the AI processing happens through Zush's infrastructure. That is convenient but capped. BYOK flips the model: Zush acts as the client, your API key provides the access, and the AI provider handles the processing.
 
+![Zush BYOK settings for using your own API key](/images/screenshots/light/zush-byok-settings.webp)
+
+
 The practical result:
 
 - No monthly or lifetime rename limits
@@ -45,6 +48,9 @@ Some users prefer to control which AI provider processes their files. BYOK gives
 ## Supported providers
 
 Zush supports four AI providers for BYOK. Each has different pricing, speed, and availability characteristics.
+
+![Zush AI processing settings with custom prompts and rename rules](/images/screenshots/light/zush-ai-settings.webp)
+
 
 ### Gemini (Google)
 

@@ -55,6 +55,8 @@ Zush is the strongest option for Mac users who work with a mix of file types. It
 
 **Best for:** Mac users with mixed file types who want both one-off cleanup and ongoing automation.
 
+![Zush AI rename results showing files with descriptive before and after names and green checkmarks](/images/screenshots/light/zush-batch-rename-results.webp)
+
 For a Mac-specific deep dive, see [AI Renamer Mac: Best Tools for Renaming Files Automatically](/blog/ai-renamer-mac).
 
 ### 2. AI Renamer
@@ -226,6 +228,8 @@ Every tool on this list has some kind of free option. The real question is wheth
 Zush gives 50 free renames per month, which covers light ongoing use or lets you test the workflow thoroughly before deciding. The BYOK option removes the cap entirely if you already have an API key from OpenAI, Google, or Anthropic.
 
 AI Renamer is fully free but requires local hardware and setup. Browser tools offer limited free uploads.
+
+![Zush activity tab showing rename history with undo buttons for each file](/images/screenshots/light/zush-activity-log.webp)
 
 For a full guide to free options, read [How to Rename Images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos).
 

@@ -87,7 +87,11 @@ This is where [Zush](https://zushapp.com) is useful. It can watch your screensho
 
 If your issue extends beyond screenshots, [How to Rename Images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos) covers the broader workflow.
 
+![Zush processing tab showing naming pattern configuration with title name format and localization settings](/images/screenshots/light/zush-naming-settings.webp)
+
 ![Zush applying custom naming patterns to screenshots automatically on macOS](/videos/zush-naming-pattern.mp4)
+
+![Zush AI rename results showing screenshots with descriptive before and after names](/images/screenshots/light/zush-batch-rename-results.webp)
 
 ## Practical rules that keep screenshot libraries usable
 

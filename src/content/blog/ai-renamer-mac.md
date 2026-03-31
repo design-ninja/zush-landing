@@ -43,9 +43,13 @@ Why it stands out:
 - Spotlight-friendly metadata support
 - rename history and revert support
 
+![Zush main AI Rename screen showing supported file format badges and PRO features](/images/screenshots/light/zush-main-interface.webp)
+
 If you want the full how-to tutorial, go to [How to Rename Images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos). If you want the broader comparison page, read [Best AI File Renamer Tools for Mac Compared](/blog/best-ai-file-renamer-tools-mac-compared). For automation-first intent, go to [Auto Image Renamer for Mac: Automatically Rename Photos and Screenshots](/blog/auto-image-renamer-mac).
 
 ![Batch renaming files with AI on Mac using Zush](/videos/zush-batch-rename.mp4)
+
+![Zush AI rename results showing files with before and after names and green checkmarks](/images/screenshots/light/zush-batch-rename-results.webp)
 
 ## Other tool categories worth knowing
 

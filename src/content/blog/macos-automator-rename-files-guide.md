@@ -16,6 +16,9 @@ Where Automator falls short is content awareness. It cannot tell whether a file 
 
 Use Automator when your rename logic is rule-based and repeatable.
 
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
+
 Examples:
 
 - prepend a date to exported PDFs
@@ -40,6 +43,9 @@ Best when you want files in one folder processed automatically as they arrive.
 ## Basic rename flow in Automator
 
 A typical setup is:
+
+![Zush custom rename rules dialog for configuring AI naming behavior](/images/screenshots/light/zush-rename-rules-dialog.webp)
+
 
 1. get Finder items
 2. optionally copy them for safety

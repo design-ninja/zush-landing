@@ -20,6 +20,9 @@ An AI photo renamer solves this by analyzing what each photo actually contains a
 
 Camera manufacturers optimize for reliability and speed during capture, not for file management afterward. The naming conventions follow a few industry patterns:
 
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
+
 - **IMG_** — Apple iPhones, many point-and-shoot cameras
 - **DSC_** or **_DSC** — Nikon cameras
 - **P followed by numbers** — Panasonic/Lumix cameras
@@ -56,6 +59,9 @@ The combination of these layers produces filenames that are specific enough to b
 ## Supported image formats
 
 Photo workflows involve a wide range of formats depending on the camera, the export pipeline, and the editing software. A useful AI photo renamer needs to handle all of them.
+
+![Zush batch rename results showing AI-generated descriptive filenames](/images/screenshots/light/zush-batch-rename-results.webp)
+
 
 [Zush](https://zushapp.com/ai-photo-renamer) supports 23 image formats:
 

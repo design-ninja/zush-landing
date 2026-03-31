@@ -276,6 +276,34 @@ const BlogPost = ({ slug }: BlogPostProps) => {
                       </figure>
                     );
                   }
+
+                  const isThemed = src?.includes('/screenshots/light/');
+                  if (isThemed && src) {
+                    const darkSrc = src.replace('/screenshots/light/', '/screenshots/dark/');
+                    return (
+                      <figure className='markdown-figure'>
+                        <img
+                          src={src}
+                          alt={alt || ''}
+                          loading='lazy'
+                          decoding='async'
+                          className='markdown-image markdown-image--screenshot markdown-image--light'
+                          {...props}
+                        />
+                        <img
+                          src={darkSrc}
+                          alt={alt || ''}
+                          loading='lazy'
+                          decoding='async'
+                          className='markdown-image markdown-image--screenshot markdown-image--dark'
+                          aria-hidden='true'
+                          {...props}
+                        />
+                        {alt && <figcaption>{alt}</figcaption>}
+                      </figure>
+                    );
+                  }
+
                   return (
                     <figure className='markdown-figure'>
                       <img

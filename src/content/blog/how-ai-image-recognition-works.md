@@ -14,6 +14,9 @@ AI image recognition works by taking an image full of pixels and finding pattern
 
 A model receives pixel data, processes it through layers of computation, and predicts what the image contains.
 
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
+
 That can include:
 
 - objects
@@ -39,6 +42,9 @@ That is how products like [Zush](https://zushapp.com) can turn a weak filename i
 ## What the model is actually learning
 
 At a high level, image models learn:
+
+![Zush AI analyzing files in progress, showing real-time processing status](/images/screenshots/light/zush-analyzing-files.webp)
+
 
 1. low-level patterns like edges and shapes
 2. larger visual features like textures and object parts

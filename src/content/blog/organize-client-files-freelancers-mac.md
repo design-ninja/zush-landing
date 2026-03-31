@@ -16,6 +16,9 @@ A better system is boring on purpose. Use the same top-level structure for every
 
 At the top level, organize by client first:
 
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
+
 - `Client-Name`
 - `Client-Name/Admin`
 - `Client-Name/Projects`
@@ -45,6 +48,9 @@ Avoid filenames like `final`, `latest`, or `homepage-new-new`.
 ## The files that usually cause the mess
 
 For many freelancers, the worst folders are not contracts or invoices. They are visual assets:
+
+![Zush naming pattern configuration with format template and localization options](/images/screenshots/light/zush-naming-settings.webp)
+
 
 - screenshots from client feedback
 - downloaded references

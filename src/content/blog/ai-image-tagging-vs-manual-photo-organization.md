@@ -16,6 +16,9 @@ That is why tools like [Zush](https://zushapp.com) are useful: they do not just 
 
 Manual organization has one real advantage: context.
 
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
+
 You may know that a photo of a conference room belongs to a specific client kickoff, or that a screenshot is tied to a product bug that no model could infer from pixels alone. Humans are still better at assigning that kind of project-specific meaning.
 
 Manual systems work best when:
@@ -43,6 +46,9 @@ That is the real reason AI tagging has become attractive. It removes the repetit
 ## Where AI image tagging wins
 
 AI image tagging is strongest when the files are visually clear but poorly named.
+
+![Zush naming pattern configuration with format template and localization options](/images/screenshots/light/zush-naming-settings.webp)
+
 
 Examples:
 

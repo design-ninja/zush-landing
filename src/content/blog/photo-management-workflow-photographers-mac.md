@@ -18,6 +18,9 @@ A photography workflow on Mac breaks down when import, naming, export, and archi
 4. export
 5. archive
 
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
+
 ## Import
 
 Use a consistent import destination and keep current projects separate from archives.
@@ -29,6 +32,9 @@ A practical structure:
 ## Cull
 
 Do not edit before culling. Remove rejects and pick keepers first so your editing queue stays smaller and cleaner.
+
+![Zush batch rename results showing AI-generated descriptive filenames](/images/screenshots/light/zush-batch-rename-results.webp)
+
 
 ## Edit
 

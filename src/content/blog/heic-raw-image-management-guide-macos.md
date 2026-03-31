@@ -14,6 +14,9 @@ HEIC and RAW are common on Mac for opposite reasons. HEIC is the efficient defau
 
 HEIC is Apple's space-efficient photo format. It gives better compression than JPEG and works well inside Apple devices and apps.
 
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
+
 Best for:
 
 - iPhone photos
@@ -35,6 +38,9 @@ Best for:
 Main downside: large file sizes and slower, heavier workflows.
 
 ## How to manage both on Mac
+
+
+![Zush naming pattern configuration with format template and localization options](/images/screenshots/light/zush-naming-settings.webp)
 
 ### Use HEIC when efficiency matters
 

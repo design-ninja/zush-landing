@@ -14,6 +14,9 @@ Organizing photos by date on Mac works because it mirrors how people remember ev
 
 Dates are:
 
+![Zush naming pattern configuration with format template and localization options](/images/screenshots/light/zush-naming-settings.webp)
+
+
 - objective
 - easy to sort
 - already present in most image files
@@ -44,6 +47,9 @@ Example:
 ## Finder vs Apple Photos
 
 Use Finder if you want direct file control and custom folder structures.
+
+![Zush batch rename results showing AI-generated descriptive filenames](/images/screenshots/light/zush-batch-rename-results.webp)
+
 
 Use Apple Photos if you prefer app-based browsing and automatic timeline views.
 

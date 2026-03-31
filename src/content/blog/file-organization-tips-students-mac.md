@@ -16,6 +16,9 @@ The mess usually comes from the same places every term: Downloads, screenshots, 
 
 A reliable default looks like this:
 
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
+
 ```text
 School/
   2026-Spring/
@@ -47,6 +50,9 @@ Avoid `final`, `new`, and `untitled` names. Version numbers are safer.
 ## Keep screenshots and Downloads under control
 
 Students often save references, lecture screenshots, whiteboard captures, and browser downloads without renaming them.
+
+![Zush naming pattern configuration with format template and localization options](/images/screenshots/light/zush-naming-settings.webp)
+
 
 That becomes a problem during exam season when you need to find one specific PDF, slide, or screenshot quickly. For this kind of clutter, [Zush](https://zushapp.com) is useful because it can turn generic file names into something searchable.
 

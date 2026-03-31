@@ -264,6 +264,8 @@ The clearest way to understand AI renaming is to see the results. Here is what h
 
 The difference is not cosmetic. Descriptive filenames mean Spotlight search works. It means you can scan a folder and know what is inside each file without opening it. It means every downstream system -- Smart Folders, Hazel rules, manual browsing -- works better.
 
+![Zush processing tab showing naming pattern configuration with title name format and localization options](/images/screenshots/light/zush-naming-settings.webp)
+
 For a complete walkthrough of AI-powered auto-renaming, see our [auto rename files on Mac guide](/blog/auto-rename-files-mac-guide).
 
 ## Recommended complete setup: step by step
@@ -302,6 +304,8 @@ Choose one of these options based on your preference:
 - Set it to trigger on a schedule or manually
 
 ### Step 4: Add AI renaming for visual files
+
+![Zush monitor tab showing folder monitoring configuration with Desktop folder selected](/images/screenshots/light/zush-monitor-settings.webp)
 
 Install [Zush](https://zushapp.com) and set it to monitor your Screenshots folder and Downloads folder. This handles the files that rule-based tools cannot properly name:
 

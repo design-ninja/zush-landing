@@ -14,6 +14,9 @@ Design asset organization gets messy because every project creates exports, scre
 
 Use a consistent split like:
 
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
+
 - source files
 - exports
 - references
@@ -41,6 +44,9 @@ Examples:
 ## Why exports are the problem
 
 Design source files are often already named reasonably. Exports are where chaos appears: `export-2.png`, `final-final.svg`, `hero@2x.png` with no surrounding context.
+
+![Zush naming pattern configuration with format template and localization options](/images/screenshots/light/zush-naming-settings.webp)
+
 
 That is where AI-assisted naming can help. [Zush](https://zushapp.com) is useful when you need screenshot and export files to become descriptive enough for later search and reuse.
 

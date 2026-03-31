@@ -266,6 +266,8 @@ AI renaming is different from every method above. Instead of applying a pattern 
 
 This is the key difference from every other method: each file gets its own name based on its own content, not a shared pattern applied to the group.
 
+![Zush AI rename completed showing five files with descriptive before and after names](/images/screenshots/light/zush-batch-rename-results.webp)
+
 ### Before and after: AI renaming real-world examples
 
 #### Screenshots
@@ -379,6 +381,8 @@ Use Finder's built-in rename tool. Select the files you want to rename, right-cl
 ### Can Finder rename files based on their content?
 
 No. Finder's batch rename is strictly pattern-based. It can replace text strings, add prefixes or suffixes, and apply sequential numbering, but it cannot analyze what a file contains. For content-aware renaming where each file gets a unique descriptive name, you need an AI-powered tool that can read images and documents.
+
+![Zush activity tab showing rename history with undo buttons for each renamed file](/images/screenshots/light/zush-activity-log.webp)
 
 ### Is there a way to undo a batch rename on Mac?
 

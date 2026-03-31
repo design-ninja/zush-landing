@@ -16,6 +16,9 @@ For most people, these are the best options.
 
 This is the simplest durable system for large photo libraries.
 
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
+
 Best for:
 
 - personal photos
@@ -41,6 +44,9 @@ Best for:
 ## 3. Use Apple Photos when library browsing matters most
 
 Apple Photos is strong for timeline browsing, albums, and casual personal libraries.
+
+![Zush activity log showing rename history with one-click undo](/images/screenshots/light/zush-activity-log.webp)
+
 
 Best for:
 

@@ -12,6 +12,9 @@ Finding photos on Mac is easy when the files have useful names and metadata. It 
 
 ## Best ways to find photos on Mac
 
+
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
 ### Spotlight
 
 Use Spotlight for quick searches by:
@@ -51,6 +54,9 @@ That is why descriptive naming matters. [Zush](https://zushapp.com) helps on the
 ## Best practical setup
 
 Use:
+
+![Zush naming pattern configuration with format template and localization options](/images/screenshots/light/zush-naming-settings.webp)
+
 
 - a simple folder structure
 - descriptive filenames

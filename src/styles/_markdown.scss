@@ -99,6 +99,14 @@
         height: auto;
         border-radius: 0.75rem;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+
+        &--screenshot {
+            box-shadow: none;
+        }
+
+        &--dark {
+            display: none;
+        }
     }
 
     .markdown-video {
@@ -150,5 +158,15 @@
         tbody tr:hover {
             background: var(--muted);
         }
+    }
+}
+
+[data-theme='dark'] .markdown-content {
+    .markdown-image--light {
+        display: none;
+    }
+
+    .markdown-image--dark {
+        display: block;
     }
 }

@@ -14,6 +14,9 @@ Finder tags are one of the simplest ways to organize files on Mac without moving
 
 Tags work best for cross-folder organization.
 
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
+
 Useful examples:
 
 - status: `urgent`, `waiting`, `approved`
@@ -32,6 +35,9 @@ Avoid:
 - tags that duplicate the exact same information already obvious from the folder path
 
 ## Best practical tag systems
+
+
+![Zush naming pattern configuration with format template and localization options](/images/screenshots/light/zush-naming-settings.webp)
 
 ### Status tags
 

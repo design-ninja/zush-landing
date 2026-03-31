@@ -99,6 +99,8 @@ Drop a few test files into the monitored folder and confirm the results. Adjust 
 
 Once you are satisfied with the results, leave the monitor active. Zush runs quietly in the background and processes new files as they arrive.
 
+![Zush monitor tab showing folder monitoring setup with Desktop folder selected for automatic renaming](/images/screenshots/light/zush-monitor-settings.webp)
+
 ## Before and after examples
 
 Here is what folder monitoring looks like in practice across different file types.
@@ -132,6 +134,8 @@ Every one of those files becomes findable through Spotlight, sortable in Finder,
 ![Zush folder monitoring demo showing automatic file renaming as files arrive](/videos/zush-monitor.mp4)
 
 ## Power user tips
+
+![Zush activity tab showing rename history with undo buttons for each file](/images/screenshots/light/zush-activity-log.webp)
 
 ### Combine monitoring with Finder tags
 

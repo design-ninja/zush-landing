@@ -16,6 +16,9 @@ If you want those files renamed automatically instead of manually, you need two 
 
 Automatic renaming should not mean applying the same prefix to every file. It should mean:
 
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
+
 - watching a folder continuously
 - identifying the content of each image
 - assigning a descriptive title
@@ -39,6 +42,9 @@ These are usually the places where filenames become useless fastest.
 ## Why screenshots and downloads benefit most
 
 Screenshots already contain timing information. What they lack is context. Downloaded images often have neither context nor structure.
+
+![Zush batch rename results showing AI-generated descriptive filenames](/images/screenshots/light/zush-batch-rename-results.webp)
+
 
 That makes them ideal for automatic AI renaming.
 

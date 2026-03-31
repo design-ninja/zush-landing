@@ -16,6 +16,9 @@ A good system starts with a few broad categories, a fast review habit, and autom
 
 The folder collects files from everywhere:
 
+![Zush folder monitoring settings for automatic file renaming](/images/screenshots/light/zush-monitor-settings.webp)
+
+
 - browser downloads
 - screenshots moved from the Desktop
 - email attachments
@@ -42,6 +45,9 @@ A practical setup:
 Do not create twenty subfolders on day one. The system should be easy enough to maintain when you are busy.
 
 ## The two biggest wins: naming and triage
+
+
+![Zush naming pattern configuration with format template and localization options](/images/screenshots/light/zush-naming-settings.webp)
 
 ### 1. Triage the folder regularly
 

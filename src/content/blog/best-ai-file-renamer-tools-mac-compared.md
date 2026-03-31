@@ -159,6 +159,8 @@ This is the category this post focuses on. The following reviews cover every not
 
 **How it works:** You drop files or folders into Zush, it analyzes the content of each file using AI vision and language models, generates a descriptive filename, and lets you preview every proposed name before applying. You can also set up folder monitoring so new files in watched directories are renamed automatically.
 
+![Zush main AI Rename screen showing supported file formats and PRO features](/images/screenshots/light/zush-main-interface.webp)
+
 **Strengths:**
 
 - Content-aware naming across images, documents, and mixed file types
@@ -179,6 +181,8 @@ This is the category this post focuses on. The following reviews cover every not
 - Free tier caps at 50 renames per month (though BYOK removes this)
 
 **Naming quality in testing:** Consistently the strongest across all file types we tested. Screenshots received app-context-aware names (e.g., identifying the app in the screenshot), photos received scene-descriptive names, and PDFs were named based on document content rather than just header text. The ability to choose between AI providers also means you can optimize for speed (Groq) or quality (Claude, GPT-4o) depending on the task.
+
+![Zush AI rename results with five files showing before and after names and green checkmarks](/images/screenshots/light/zush-batch-rename-results.webp)
 
 **Verdict:** The most complete AI file renamer on Mac. The combination of format breadth, automation, rollback, and one-time pricing makes it the strongest pick for anyone who works with more than just JPEGs. If you want a deep dive on Mac-specific workflows, see [AI Renamer Mac: Best Tools for Renaming Files Automatically](/blog/ai-renamer-mac).
 

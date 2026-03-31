@@ -78,6 +78,8 @@ Good tools show you a preview of the proposed names before applying them. You ca
 
 The best tools keep a rename history so you can revert any change. This matters when you are processing hundreds of files at once.
 
+![Zush AI rename completed showing five files with before and after names and green checkmarks](/images/screenshots/light/zush-batch-rename-results.webp)
+
 ## Best ways to rename files with AI
 
 ### On Mac: Zush
@@ -179,6 +181,8 @@ Accuracy depends on the AI model and the clarity of the file content. Screenshot
 ### Can I customize the naming format?
 
 Yes. Most tools let you set patterns like `date-description`, `category-description-number`, or your own custom template. Zush supports custom patterns that give you control over the structure of every generated name.
+
+![Zush processing tab showing naming pattern configuration with title name format and localization settings](/images/screenshots/light/zush-naming-settings.webp)
 
 ### Does it work with files already in subfolders?
 

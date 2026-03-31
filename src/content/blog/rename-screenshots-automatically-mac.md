@@ -79,6 +79,8 @@ The filename reflects the content, not the timestamp. That makes every screensho
 
 Each renamed file is immediately identifiable. No opening required.
 
+![Zush AI rename results showing files with descriptive before and after names and green checkmarks](/images/screenshots/light/zush-batch-rename-results.webp)
+
 
 ## Step-by-step: setting up automatic screenshot renaming with Zush
 
@@ -101,6 +103,8 @@ Download [Zush](https://zushapp.com/ai-screenshot-renamer) and open it. The app 
 ### 3. Set up folder monitoring
 
 In Zush, enable folder monitoring and point it at your screenshot destination. The app will watch for new files that match screenshot patterns, primarily PNG files with the macOS screenshot naming format.
+
+![Zush monitor tab showing folder monitoring configuration for automatic screenshot renaming](/images/screenshots/light/zush-monitor-settings.webp)
 
 ### 4. Choose a naming pattern
 

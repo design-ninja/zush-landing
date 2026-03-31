@@ -14,6 +14,9 @@ For most people, that means descriptive lowercase names, hyphens or underscores,
 
 ## The rules that work almost everywhere
 
+
+![Zush naming pattern configuration with format template and localization options](/images/screenshots/light/zush-naming-settings.webp)
+
 ### 1. Be descriptive first
 
 A filename should tell you what the file is without opening it.
@@ -98,6 +101,9 @@ Example:
 ## The hardest files to name are images and documents
 
 Images and documents are where most naming systems break down. Cameras use counters. macOS screenshots use timestamps. Downloads arrive with whatever the source site gave them. Email attachments often have generic names like `document.pdf` or `report.docx`.
+
+![Zush batch rename results showing AI-generated descriptive filenames](/images/screenshots/light/zush-batch-rename-results.webp)
+
 
 That is why naming automation matters most for these file types. You can define a convention yourself, but generating the descriptive part manually is slow. Tools like [Zush](https://zushapp.com) make that practical by using AI to recognize what the file contains and then applying a consistent pattern on top.
 

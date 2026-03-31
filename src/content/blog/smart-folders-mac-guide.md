@@ -14,6 +14,9 @@ Smart Folders on Mac are not normal folders. They are saved searches that show f
 
 They work best when you want dynamic views like:
 
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
+
 - recent images
 - large files
 - files tagged for review
@@ -32,6 +35,9 @@ They work best when you want dynamic views like:
 - `Date Modified` or `Date Created`
 - `Name Contains`
 - `Tag`
+
+![Zush folder monitoring settings for automatic file renaming](/images/screenshots/light/zush-monitor-settings.webp)
+
 
 
 ## Why naming still matters

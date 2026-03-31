@@ -12,6 +12,9 @@ Spotlight is one of the fastest ways to find files on Mac, but it only works as 
 
 ## Most useful Spotlight searches
 
+
+![Zush naming pattern configuration with format template and localization options](/images/screenshots/light/zush-naming-settings.webp)
+
 ### Search by filename
 
 Type part of the file name directly.
@@ -66,6 +69,9 @@ This is one reason AI-assisted naming helps on Mac. [Zush](https://zushapp.com) 
 - keep folder structures reasonably clean
 - tag only the categories that actually help retrieval
 - rebuild your index only when results are clearly broken
+
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
 
 ## Related tools
 

@@ -15,6 +15,8 @@ Automatic PDF renaming with AI solves this by reading the content of each PDF an
 
 [Zush](https://zushapp.com/rename-pdf-with-ai) handles this on Mac with support for batch renaming, custom naming patterns, and folder monitoring for ongoing automation.
 
+![Zush main AI Rename screen showing all supported file format badges including PDF](/images/screenshots/light/zush-main-interface.webp)
+
 
 ## The PDF naming problem
 
@@ -70,6 +72,8 @@ The AI then synthesizes this information into a concise, descriptive filename th
 | `a4f2e8c1.pdf` | `conference-speaker-agreement-2026.pdf` |
 
 Every renamed file is now findable through Spotlight search, identifiable in Finder, and meaningful in shared folders and email threads.
+
+![Zush AI rename results showing PDF files with descriptive before and after names](/images/screenshots/light/zush-batch-rename-results.webp)
 
 ![Automatic PDF renaming with AI-powered naming patterns on Mac](/videos/zush-naming-pattern.mp4)
 

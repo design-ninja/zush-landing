@@ -16,6 +16,9 @@ Here are the most common ones, with the shortest fix for each.
 
 Names like `IMG_4382` and `DSC_0091` are fine for devices and terrible for humans.
 
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
+
 Fix: rename important photo sets with descriptive filenames. For larger libraries, use AI assistance. [Zush](https://zushapp.com) is useful here because it can turn weak visual filenames into searchable names at scale.
 
 ## 2. Throwing everything into one folder
@@ -27,6 +30,9 @@ Fix: organize by year, month, event, or project. Keep the structure shallow enou
 ## 3. Relying only on folders
 
 Folders help, but a bad filename inside a good folder is still hard to find.
+
+![Zush naming pattern configuration with format template and localization options](/images/screenshots/light/zush-naming-settings.webp)
+
 
 Fix: use both structure and descriptive names.
 

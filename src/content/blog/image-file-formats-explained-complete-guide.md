@@ -16,6 +16,9 @@ Here is the short version.
 
 Best for everyday photos, web uploads, and small file sizes.
 
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
+
 Use it when:
 
 - you need wide compatibility
@@ -39,6 +42,9 @@ Weakness: files are larger than JPEG for photos.
 ## HEIC
 
 Best for Apple-device photos and efficient storage.
+
+![Zush naming pattern configuration with format template and localization options](/images/screenshots/light/zush-naming-settings.webp)
+
 
 Use it when:
 

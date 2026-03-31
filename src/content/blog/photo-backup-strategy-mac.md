@@ -14,6 +14,9 @@ If your photo backup strategy for Mac is “they are on my laptop and in the clo
 
 The classic rule is simple:
 
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
+
 - 3 copies of your data
 - 2 different storage media
 - 1 copy off-device or off-site
@@ -44,6 +47,9 @@ This protects you from theft, fire, and local hardware disasters.
 - trusting sync as if it were backup
 - never testing restores
 - mixing working files and archives without a plan
+
+![Zush activity log showing rename history with one-click undo](/images/screenshots/light/zush-activity-log.webp)
+
 
 
 ## Why organization still matters

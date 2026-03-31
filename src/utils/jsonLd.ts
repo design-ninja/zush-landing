@@ -1,6 +1,6 @@
-import type { BlogFrontmatter, FAQItem } from './frontmatter'
+import type { BlogFrontmatter, FAQItem } from './frontmatter';
 
-const SITE_ORIGIN = 'https://zushapp.com'
+const SITE_ORIGIN = 'https://zushapp.com';
 
 export function buildBlogPostingJsonLd(post: BlogFrontmatter) {
   return {
@@ -15,19 +15,21 @@ export function buildBlogPostingJsonLd(post: BlogFrontmatter) {
       name: post.authorName,
       url: 'https://lirik.pro/en',
       sameAs: ['https://lirik.pro/en'],
-      image: `${SITE_ORIGIN}/images/authors/lirik.jpg`,
+      image: `${SITE_ORIGIN}/images/authors/lirik.png`,
       worksFor: {
         '@type': 'Organization',
         name: 'Zush',
         url: SITE_ORIGIN,
       },
     },
-    ...(post.reviewerName ? {
-      editor: {
-        '@type': 'Person',
-        name: post.reviewerName,
-      },
-    } : {}),
+    ...(post.reviewerName
+      ? {
+          editor: {
+            '@type': 'Person',
+            name: post.reviewerName,
+          },
+        }
+      : {}),
     publisher: {
       '@type': 'Organization',
       name: 'Zush',
@@ -54,7 +56,7 @@ export function buildBlogPostingJsonLd(post: BlogFrontmatter) {
         url: SITE_ORIGIN,
       },
     },
-  }
+  };
 }
 
 export function buildFAQPageJsonLd(items: FAQItem[]) {
@@ -69,7 +71,7 @@ export function buildFAQPageJsonLd(items: FAQItem[]) {
         text: item.answer,
       },
     })),
-  }
+  };
 }
 
 export function buildBreadcrumbJsonLd(postTitle: string, postSlug: string) {
@@ -96,10 +98,13 @@ export function buildBreadcrumbJsonLd(postTitle: string, postSlug: string) {
         item: `${SITE_ORIGIN}/blog/${postSlug}`,
       },
     ],
-  }
+  };
 }
 
-export function buildFeatureBreadcrumbJsonLd(pageTitle: string, pagePath: string) {
+export function buildFeatureBreadcrumbJsonLd(
+  pageTitle: string,
+  pagePath: string,
+) {
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -117,5 +122,5 @@ export function buildFeatureBreadcrumbJsonLd(pageTitle: string, pagePath: string
         item: `${SITE_ORIGIN}${pagePath}`,
       },
     ],
-  }
+  };
 }
