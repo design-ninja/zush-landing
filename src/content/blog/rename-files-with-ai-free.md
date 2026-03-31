@@ -17,9 +17,11 @@ This guide covers every practical way to rename files with AI for free in 2026, 
 |---|---|---|---|---|---|
 | Zush free tier | $0 | Low | High | 23 image + 10 document | Yes |
 | Zush BYOK | API cost only (~$0.001/file) | Medium | High | 23 image + 10 document | Yes |
-| AI Renamer (local) | $0 | High | Medium | Images only | No |
+| Riffo | $0 | Low | Medium | Images, PDFs, documents | No |
+| AI Renamer CLI (local) | $0 | High | Medium | Images only | No |
+| AI Renamer Desktop | 10 free credits | Low | Medium-High | Images + PDF, TXT | No |
+| Renamer.ai free tier | $0 (15 files/month) | Low | Medium-High | 30+ formats | Yes (Magic Folders) |
 | DIY Python script | API cost only | High | Varies | Whatever you code | No |
-| Browser tools (free tiers) | $0 | None | Medium | Images only | No |
 
 Each approach has a sweet spot. The rest of this guide walks through them in detail.
 
@@ -97,34 +99,39 @@ The BYOK approach gives you the full Zush experience, including batch rename, fo
 
 For a broader comparison of tools and pricing, see [Best AI File Renamer Tools for Mac Compared](/blog/best-ai-file-renamer-tools-mac-compared).
 
-## Option 3: AI Renamer with local models
+## Option 3: AI Renamer (CLI + Desktop app)
 
-AI Renamer is an open-source tool that runs AI models locally on your machine using Ollama. It is completely free because no API calls leave your computer.
+AI Renamer comes in two forms. The open-source CLI runs AI models locally on your machine using Ollama -- completely free with no API calls leaving your computer. The separate desktop app (airenamer.app) offers a GUI with both local and cloud options, including 10 free credits on signup.
 
-### Setup process
+### CLI setup process
 
 1. Install Ollama from [ollama.ai](https://ollama.ai).
 2. Download a vision-capable model (such as LLaVA). This is typically 4-8 GB.
-3. Install AI Renamer.
+3. Install AI Renamer CLI via npm.
 4. Point it at your files and let the local model generate names.
+
+### Desktop app (free credits)
+
+The desktop app gives you 10 free credits on signup -- enough to test the workflow. It supports images plus PDF and TXT documents, and offers cloud models (Llama 3.3, GPT-4 Turbo, Llava) for better naming quality. After the free credits, local mode costs $19 one-time or cloud mode costs $10 per 200 credits.
 
 ### Trade-offs
 
 **Advantages:**
-- Fully free with no API costs
-- Files never leave your machine
-- No account required
+- CLI is fully free with no API costs
+- Files never leave your machine in local mode
+- No account required for the CLI
+- Desktop app supports PDF and TXT alongside images
+- Custom prompts and naming case styles (camelCase, snake_case, etc.)
 
 **Disadvantages:**
-- Requires a Mac with sufficient RAM (16 GB minimum recommended)
+- CLI requires terminal comfort and Ollama setup (several GB of disk space)
 - Local models produce lower-quality names than cloud models
-- Only handles basic image formats (JPG, PNG)
-- No document support (no PDF, DOCX, XLSX)
+- CLI only handles image formats (JPG, PNG, GIF, WEBP)
 - No folder monitoring or automation
 - No undo or rename history
-- Setup is technical and requires terminal comfort
+- Desktop app's free credits are limited (10 on signup)
 
-AI Renamer is a solid option if privacy is your absolute top priority and you only need to rename standard image files. For mixed workflows with documents, screenshots, and varied image formats, the format and feature limitations are significant.
+AI Renamer is a solid option if privacy is your top priority. The CLI is best for developers comfortable with the terminal, while the desktop app offers a more accessible experience with broader format support.
 
 ![Zush main screen showing supported file format badges in the free version](/images/screenshots/light/zush-main-interface.webp)
 
@@ -164,33 +171,31 @@ If you are comfortable writing code, you can build a basic AI file renamer with 
 
 A DIY script is best treated as a learning exercise or a one-off cleanup tool. For daily use, the maintenance overhead usually exceeds the savings.
 
-## Option 5: Browser-based free tiers
+## Option 5: Renamer.ai free tier and browser tools
 
-Tools like Renamer.ai and Renamify offer limited free usage through their web interfaces.
+Renamer.ai offers 15 free file renames per month. It is not just a browser tool -- it also has a desktop app for Windows and Mac with Magic Folders automation. The web interface is useful for quick, no-install access.
 
-### How they work
+Renamify (renamify.co) is a web-only tool that requires a paid subscription ($10/month or $96/year) with no free tier.
 
-1. Visit the website.
-2. Upload files.
-3. The tool generates names.
-4. Download the renamed files.
+### How the free options work
+
+1. Renamer.ai: sign up for the free plan (15 files/month) and use the web interface or download the desktop app.
+2. Riffo (riffo.ai): download the free Mac app or use the web demo -- completely free with no confirmed usage cap.
 
 ### Trade-offs
 
 **Advantages:**
-- No installation
-- Works on any platform
-- Instant access
+- Renamer.ai's free tier includes 30+ format support and desktop app access
+- Riffo is completely free with Auto Foldering
+- Web interfaces require no installation
 
 **Disadvantages:**
-- Files are uploaded to remote servers
-- Not suitable for sensitive or confidential documents
-- Limited to small batches
-- No automation or monitoring
-- Re-downloading files adds friction
-- Usually limited to common image formats
+- Renamer.ai free tier is limited to 15 files/month
+- Files are uploaded to remote servers (privacy concern)
+- Renamify has no free option at all
+- Riffo has limited format documentation and no undo
 
-Browser tools are adequate for renaming a handful of images occasionally. They are not practical for regular file management.
+For light usage, Renamer.ai's 15 free renames per month or Riffo's completely free app are viable starting points. For more volume, Zush's free tier (50/month) or BYOK option is more practical.
 
 ## Comparing the free approaches
 

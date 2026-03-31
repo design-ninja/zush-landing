@@ -61,150 +61,161 @@ For a Mac-specific deep dive, see [AI Renamer Mac: Best Tools for Renaming Files
 
 ### 2. AI Renamer
 
-**Platform:** macOS, Windows, Linux
-**Pricing:** Free with local models, paid for cloud models
+**Platform:** CLI (macOS, Windows, Linux) + Desktop app (Mac & Windows)
+**Pricing:** CLI: free and open source. Desktop: $19 one-time (local), $10 per 200 credits (cloud), 10 free credits
 
-AI Renamer is an open-source tool that runs AI models locally on your machine. It uses Ollama as its backend, which means no files leave your computer during processing.
+AI Renamer comes in two forms. The open-source CLI runs via Node.js and uses Ollama or LM Studio for local processing. The separate desktop app (airenamer.app) offers a GUI with both local and cloud model options.
 
 **Strengths:**
 
-- Full local processing with no cloud dependency
-- Open source and free
-- Cross-platform support
+- CLI is fully free, open source, and local
+- Cross-platform support (CLI on all platforms, desktop on Mac & Windows)
+- Multiple AI backends: Ollama, LM Studio, OpenAI
+- Desktop app adds cloud models (Llama 3.3, GPT-4 Turbo, Llava) for better quality
+- Custom prompts and naming case styles (camelCase, snake_case, etc.)
+- Desktop supports PDF and TXT alongside images
 
 **Limitations:**
 
-- Requires Ollama setup and local model downloads (several GB)
-- Performance depends on your hardware
-- Limited to image formats; weak document support
+- CLI requires terminal comfort and local model setup (several GB)
+- Desktop app costs $19 (local) or $10 per 200 credits (cloud)
 - No folder monitoring or automation
-- No batch preview workflow
-- Naming quality depends on which local model you run
+- No undo or rename history
+- Narrower format range than tools like Renamer.ai or Zush
 
-**Best for:** Privacy-focused users with capable hardware who only need image renaming.
+**Best for:** Privacy-focused users and developers who want local processing with optional cloud quality.
 
 ### 3. Renamer.ai
 
-**Platform:** Web-based
-**Pricing:** Free tier with limits, paid plans for volume
+**Platform:** Desktop app (Windows & Mac) + Web interface
+**Pricing:** Free (15 files/month), Pro $9.95/mo (200 files), Power $29.95/mo (1,000 files), Ultimate $99.95/mo (5,000 files)
 
-Renamer.ai is a browser-based tool. You upload files, the AI generates names, and you download the renamed files.
-
-**Strengths:**
-
-- No installation required
-- Works on any platform with a browser
-- Simple interface
-
-**Limitations:**
-
-- Files must be uploaded to a server
-- Slow for large batches
-- No automation or folder monitoring
-- No integration with local file systems
-- Privacy concerns for sensitive documents
-- Limited format support compared to native tools
-
-**Best for:** Quick one-off renames when you cannot install software.
-
-### 4. WaFile
-
-**Platform:** Windows
-**Pricing:** Free beta, paid plans expected
-
-WaFile is a Windows-focused AI file renamer that processes images and some document types.
+Renamer.ai offers both a desktop application and a web interface. The desktop app integrates with your local file system and includes Magic Folders for automatic renaming. It supports 30+ formats with OCR technology.
 
 **Strengths:**
 
-- Native Windows application
-- Batch processing support
-- Clean interface
+- Desktop app for Windows and Mac plus web interface
+- 30+ formats including images (JPG, PNG, HEIC, TIFF, WebP) and documents (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX)
+- Magic Folders for automatic folder monitoring and renaming
+- Undo with preview before applying
+- Custom naming templates with variable builder
+- 20+ language support
 
 **Limitations:**
 
-- Windows only
-- Newer tool with less mature feature set
-- Limited format support compared to Zush
-- No folder monitoring in current version
-- Pricing model not fully established
+- Subscription pricing scales steeply ($9.95-99.95/month)
+- Cloud processing raises privacy concerns for sensitive files
+- Fixed AI provider with no BYOK option
 
-**Best for:** Windows users who want a native AI rename tool.
+**Best for:** Cross-platform users who work with documents and want folder automation.
+
+### 4. Wisfile
+
+**Platform:** Local desktop app
+**Pricing:** Completely free
+**Website:** wisfile.ai
+
+Wisfile is a fully local AI file renamer and organizer. It runs entirely on your device with no cloud dependency, no fees, and no data leaving your machine. It focuses on extracting metadata like titles, authors, and publication years from file content to generate descriptive names.
+
+**Strengths:**
+
+- 100% free with all features included
+- Fully local processing -- no cloud, no data leaks
+- Batch processing for thousands of files
+- Custom naming templates (e.g., "Author-Year-Title" or "Project-Date-DocumentType")
+- Auto-sorts files into logical folder structures by subject, field, or type
+- No signup or account required
+
+**Limitations:**
+
+- Supported file formats and platform details are not well documented
+- No confirmed folder monitoring for automatic ongoing renaming
+- No confirmed undo or rename history
+- Newer tool with less community feedback
+
+**Best for:** Users who want a fully free, fully local AI file renamer with no cloud dependency.
 
 ### 5. Riffo
 
-**Platform:** macOS, Windows
-**Pricing:** Free tier, subscription for full access
+**Platform:** macOS + Web demo
+**Pricing:** Free
+**Website:** riffo.ai
 
-Riffo offers AI-powered file renaming with a focus on images. It provides cloud-based processing and a straightforward rename workflow.
+Riffo is a Mac app and web tool for AI-powered file renaming and folder organization. It is currently free to use. Processing happens in the cloud, backed by AWS, Google Cloud, and OpenAI.
 
 **Strengths:**
 
-- Cross-platform
-- Simple drag-and-drop interface
-- Decent image recognition
+- Completely free with no confirmed usage caps
+- Clean drag-and-drop interface
+- Auto Foldering to categorize files into subfolders automatically
+- Supports images, PDFs, and documents
+- Customizable renaming language
 
 **Limitations:**
 
-- Subscription pricing adds ongoing cost
-- Limited document format support
-- No folder monitoring
-- Less control over naming patterns
-- Smaller format range than tools built for photographer or designer workflows
+- macOS only for the desktop app (no confirmed Windows version)
+- Cloud-dependent for all processing
+- No confirmed folder monitoring for ongoing automation
+- No confirmed undo or rename history
+- Supported format list is not well documented
 
-**Best for:** Users who want a simple cross-platform image renamer and do not mind subscriptions.
+**Best for:** Mac users who want a free, simple AI renamer with automatic folder organization.
 
 ### 6. Renamify
 
 **Platform:** Web-based
-**Pricing:** Free with usage limits, paid for bulk
+**Pricing:** $10/month or $96/year
+**Website:** renamify.co
 
-Renamify is another browser-based option for AI file renaming. It handles images and provides bulk rename capability through a web interface.
+Renamify is a browser-based AI file renaming tool. It handles batch renaming through a web interface with AI-powered suggestions and cloud storage integration.
 
 **Strengths:**
 
-- No installation needed
-- Handles batch uploads
-- Works on any platform
+- No installation needed -- works entirely in the browser
+- Batch rename with AI suggestions
+- Cloud storage integration
+- Works on any platform with a browser
 
 **Limitations:**
 
-- Files uploaded to remote servers
-- No local automation
+- Files uploaded to remote servers -- privacy concern for sensitive documents
+- No local automation or folder monitoring
 - No integration with desktop file management
-- Limited to image formats
 - No undo or rename history
+- No free tier -- requires paid subscription
 
-**Best for:** Occasional use when a browser is the only option.
+**Best for:** Occasional browser-based use when you cannot install desktop software.
 
 ## Feature comparison table
 
-| Feature | Zush | AI Renamer | Renamer.ai | WaFile | Riffo | Renamify |
+| Feature | Zush | AI Renamer | Renamer.ai | Wisfile | Riffo | Renamify |
 |---|---|---|---|---|---|---|
-| Platform | macOS | All | Web | Windows | Mac/Win | Web |
-| Image formats | 23 | ~5 | ~5 | ~8 | ~6 | ~5 |
-| Document formats | 10 | 0 | 0 | ~3 | 0 | 0 |
+| Platform | macOS | CLI (all) + Desktop (Mac/Win) | Desktop (Win/Mac) + Web | Local desktop | macOS + Web | Web |
+| Image formats | 23 (incl. RAW) | ~4 (Desktop) | ~15 | Various | Various | Various |
+| Document formats | 10 | ~2 (Desktop) | ~10 | Various | Some | Limited |
 | Batch rename | Yes | Yes | Yes | Yes | Yes | Yes |
-| Folder monitoring | Yes | No | No | No | No | No |
-| Custom patterns | Yes | No | No | Limited | No | No |
-| Undo/rollback | Yes | No | No | No | No | No |
-| Finder tags | Yes | No | N/A | N/A | No | N/A |
-| Multiple AI providers | Yes | Local only | Fixed | Fixed | Fixed | Fixed |
-| Language support | 60+ | Depends on model | English | English | English | English |
-| Free tier | 50/month | Unlimited (local) | Limited | Beta | Limited | Limited |
-| BYOK option | Yes | N/A | No | No | No | No |
+| Folder monitoring | Yes | No | Yes (Magic Folders) | Not confirmed | Not confirmed | No |
+| Custom patterns | Yes | Yes (custom prompts) | Yes (templates) | Yes (templates) | Limited | No |
+| Undo/rollback | Yes | No | Yes | Not confirmed | Not confirmed | No |
+| Finder tags | Yes | No | N/A (cross-platform) | N/A | No | N/A |
+| Multiple AI providers | 4 providers + BYOK | Ollama/LM Studio/OpenAI | Fixed | Fixed (local) | Fixed (cloud) | Fixed |
+| Language support | 60+ | Configurable | 20+ | Unknown | Limited | Unknown |
+| Free tier | 50/month | CLI: free, Desktop: 10 credits | 15/month | Completely free | Free | No free tier |
+| BYOK option | Yes | N/A | No | N/A | No | No |
 
 ## Pricing comparison
 
-| Tool | Free option | Paid option | Model |
-|---|---|---|---|
-| Zush | 50 renames/month | $10 one-time (10K) | One-time + BYOK unlimited |
-| AI Renamer | Unlimited (local) | N/A | Free / open source |
-| Renamer.ai | Limited uploads | Varies | Subscription |
-| WaFile | Beta access | TBD | TBD |
-| Riffo | Limited | Subscription | Monthly |
-| Renamify | Limited | Bulk pricing | Usage-based |
+| Tool | Free option | Paid option | Annual cost (estimated) | Model |
+|---|---|---|---|---|
+| Zush | 50 renames/month | $10 one-time (10K renames) | $10 total | One-time purchase |
+| Zush BYOK | Unlimited at API cost | ~$0.001 per file | ~$5-10/year | Pay-as-you-go API |
+| AI Renamer | CLI: free, Desktop: 10 credits | Desktop $19 one-time (local) | $0-19 | One-time / credits |
+| Renamer.ai | 15 files/month | $9.95-99.95/month | $120-1,200/year | Subscription |
+| Wisfile | Completely free | N/A | $0 | Free |
+| Riffo | Free | N/A | $0 | Free |
+| Renamify | No free tier | $10/month or $96/year | $96-120/year | Subscription |
 
-The pricing difference is significant. Zush is the only tool in this comparison that offers a one-time payment instead of a subscription. The BYOK option makes unlimited renaming possible at bare API cost, which for most providers runs to fractions of a cent per file.
+The pricing landscape is more varied than it appears. Zush offers the lowest one-time entry price at $10 for 10,000 renames, and its BYOK option makes unlimited renaming possible at bare API cost. Wisfile and Riffo are completely free. AI Renamer's CLI is free and open source. Renamer.ai and Renamify use subscription pricing that compounds over time.
 
 ![Zush batch rename tool renaming multiple files with AI on Mac](/videos/zush-batch-rename.mp4)
 
@@ -214,11 +225,11 @@ The pricing difference is significant. Zush is the only tool in this comparison 
 
 **If privacy is your top priority:** AI Renamer runs everything locally. The trade-off is weaker naming quality and no document support.
 
-**If you need something cross-platform and simple:** Riffo or a browser-based tool will work for basic image renaming without much setup.
+**If you need something cross-platform:** Renamer.ai has desktop apps for both Mac and Windows with folder automation. RenameClick also covers both platforms with local AI processing.
 
-**If you are on Windows:** WaFile is the best native option currently available, though it is less mature than Mac-side tools.
+**If you want a fully free option:** Wisfile is completely free with local processing. Riffo is also free with cloud-based AI and auto foldering.
 
-**If you just need a few files renamed once:** A browser tool like Renamer.ai or Renamify handles that without installing anything.
+**If you just need a few files renamed once:** Renamer.ai's web interface or Renamify handles that without installing anything.
 
 
 ## What about free AI file renamers?
