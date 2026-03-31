@@ -279,7 +279,10 @@ const BlogPost = ({ slug }: BlogPostProps) => {
 
                   const isThemed = src?.includes('/screenshots/light/');
                   if (isThemed && src) {
-                    const darkSrc = src.replace('/screenshots/light/', '/screenshots/dark/');
+                    const darkSrc = src.replace(
+                      '/screenshots/light/',
+                      '/screenshots/dark/',
+                    );
                     return (
                       <figure className='markdown-figure'>
                         <img
@@ -319,7 +322,7 @@ const BlogPost = ({ slug }: BlogPostProps) => {
                   );
                 },
                 table: ({ node: _node, ...props }) => (
-                  <div className="markdown-table-wrap">
+                  <div className='markdown-table-wrap'>
                     <table {...props} />
                   </div>
                 ),
@@ -335,7 +338,7 @@ const BlogPost = ({ slug }: BlogPostProps) => {
 
         {relatedPosts.length > 0 && (
           <section className={styles.BlogPost__Related}>
-            <Heading as='h2' className={styles.BlogPost__RelatedTitle}>
+            <Heading as='h3' className={styles.BlogPost__RelatedTitle}>
               Related Articles
             </Heading>
             <div className={styles.BlogPost__RelatedGrid}>
@@ -347,6 +350,7 @@ const BlogPost = ({ slug }: BlogPostProps) => {
                 >
                   <Heading
                     as='h3'
+                    size='h4'
                     className={styles.BlogPost__RelatedCardTitle}
                   >
                     {rp.title}
