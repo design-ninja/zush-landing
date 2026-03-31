@@ -85,7 +85,7 @@ Do not try to rename your entire hard drive at once. Start with one problem fold
 
 ### 2. Open the folder in Zush
 
-Drag the folder into [Zush](https://zushapp.com/ai-document-renamer) or use the folder browser to navigate to it. The app will detect supported document formats and show you the files that can be renamed.
+Drag the folder into [Zush](https://zushapp.com/rename-documents-with-ai) or use the folder browser to navigate to it. The app will detect supported document formats and show you the files that can be renamed.
 
 ### 3. Choose a naming pattern
 

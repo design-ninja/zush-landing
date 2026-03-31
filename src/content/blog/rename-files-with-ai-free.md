@@ -28,7 +28,7 @@ Each approach has a sweet spot. The rest of this guide walks through them in det
 
 ## Option 1: Zush free tier (easiest start)
 
-[Zush](https://zushapp.com/rename-files-with-ai) includes 50 free renames every month. No credit card, no trial period, no feature restrictions. You get the same AI-powered content analysis, batch rename, folder monitoring, and undo capabilities as paid users.
+[Zush](https://zushapp.com/ai-file-renamer) includes 50 free renames every month. No credit card, no trial period, no feature restrictions. You get the same AI-powered content analysis, batch rename, folder monitoring, and undo capabilities as paid users.
 
 ### What 50 renames per month covers
 
@@ -253,4 +253,4 @@ For setup guides on configuring BYOK providers, see [BYOK Setup Guide](/byok-set
 
 ## Getting started
 
-Download [Zush](https://zushapp.com/rename-files-with-ai) and rename your first batch with the free tier. That takes less than two minutes and tells you more about the workflow than any article can. If the results match what you would have typed manually, you have found your tool.
+Download [Zush](https://zushapp.com/ai-file-renamer) and rename your first batch with the free tier. That takes less than two minutes and tells you more about the workflow than any article can. If the results match what you would have typed manually, you have found your tool.

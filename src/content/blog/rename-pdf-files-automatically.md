@@ -85,7 +85,7 @@ Most people have one folder that contains the bulk of their poorly named PDFs. I
 
 ### 2. Open the folder in Zush
 
-Load the folder in [Zush](https://zushapp.com/ai-pdf-renamer). The app identifies all PDF files and prepares them for batch processing.
+Load the folder in [Zush](https://zushapp.com/rename-pdf-with-ai). The app identifies all PDF files and prepares them for batch processing.
 
 ### 3. Choose your naming pattern
 

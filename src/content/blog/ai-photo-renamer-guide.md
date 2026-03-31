@@ -63,7 +63,7 @@ Photo workflows involve a wide range of formats depending on the camera, the exp
 ![Zush batch rename results showing AI-generated descriptive filenames](/images/screenshots/light/zush-batch-rename-results.webp)
 
 
-[Zush](https://zushapp.com/ai-photo-renamer) supports 23 image formats:
+[Zush](https://zushapp.com/rename-photos-with-ai) supports 23 image formats:
 
 | Category | Formats |
 |---|---|

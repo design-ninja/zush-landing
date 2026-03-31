@@ -11,7 +11,6 @@ import {
   Building2,
   Image,
   Monitor,
-  type LucideIcon,
 } from 'lucide-react';
 import type { UseCaseData } from '@/components/UseCases/UseCases';
 

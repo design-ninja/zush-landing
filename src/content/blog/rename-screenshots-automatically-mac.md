@@ -98,7 +98,7 @@ If the result is your Desktop, consider creating a dedicated `Screenshots` folde
 
 ### 2. Install and open Zush
 
-Download [Zush](https://zushapp.com/ai-screenshot-renamer) and open it. The app runs natively on macOS and sits in your menu bar for quick access.
+Download [Zush](https://zushapp.com/rename-screenshots-with-ai) and open it. The app runs natively on macOS and sits in your menu bar for quick access.
 
 ### 3. Set up folder monitoring
 

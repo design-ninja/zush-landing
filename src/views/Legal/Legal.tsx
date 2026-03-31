@@ -53,11 +53,11 @@ const Legal = ({ type }: LegalProps) => {
           <ReactMarkdown
             components={{
               a: ({ node: _node, ...props }) => <LegalMarkdownLink {...props} />,
-              h1: ({ node: _node, ...props }) => <Heading as='h2' {...props} />,
-              h2: ({ node: _node, ...props }) => <Heading as='h2' {...props} />,
-              h3: ({ node: _node, ...props }) => <Heading as='h3' {...props} />,
-              h4: ({ node: _node, ...props }) => <Heading as='h4' {...props} />,
-              p: ({ node: _node, ...props }) => <Text as='p' {...props} />,
+              h1: ({ node: _node, children }) => <Heading as='h2'>{children}</Heading>,
+              h2: ({ node: _node, children }) => <Heading as='h2'>{children}</Heading>,
+              h3: ({ node: _node, children }) => <Heading as='h3'>{children}</Heading>,
+              h4: ({ node: _node, children }) => <Heading as='h4'>{children}</Heading>,
+              p: ({ node: _node, color: _color, children }) => <Text as='p'>{children}</Text>,
             }}
           >
             {content}

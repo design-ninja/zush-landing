@@ -326,7 +326,9 @@ const BlogPost = ({ slug }: BlogPostProps) => {
                     <table {...props} />
                   </div>
                 ),
-                p: ({ node: _node, ...props }) => <Text as='p' {...props} />,
+                p: ({ node: _node, color: _color, children }) => (
+                  <Text as='p'>{children}</Text>
+                ),
               }}
             >
               {content}

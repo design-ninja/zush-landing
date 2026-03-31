@@ -84,7 +84,7 @@ The best tools keep a rename history so you can revert any change. This matters 
 
 ### On Mac: Zush
 
-[Zush](https://zushapp.com/rename-files-with-ai) is built specifically for this workflow on macOS. It supports 23 image formats including PNG, JPG, HEIC, and RAW formats, plus 10 document formats including PDF, DOCX, and XLSX.
+[Zush](https://zushapp.com/ai-file-renamer) is built specifically for this workflow on macOS. It supports 23 image formats including PNG, JPG, HEIC, and RAW formats, plus 10 document formats including PDF, DOCX, and XLSX.
 
 Key features:
 
@@ -201,4 +201,4 @@ Use the right tool for the job. AI is the answer when the filename should descri
 
 ## Getting started
 
-The fastest way to try AI file renaming is to download [Zush](https://zushapp.com/rename-files-with-ai), rename a few test files with the free tier, and see if the generated names match what you would have typed manually. For most people, the answer is yes, and the time saved compounds quickly.
+The fastest way to try AI file renaming is to download [Zush](https://zushapp.com/ai-file-renamer), rename a few test files with the free tier, and see if the generated names match what you would have typed manually. For most people, the answer is yes, and the time saved compounds quickly.
