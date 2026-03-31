@@ -97,9 +97,9 @@ const RenamePhotosWithAI = () => (
     ]}
     faqItems={faqItems}
     relatedPages={[
-      { title: 'AI Photo Renamer', href: '/ai-photo-renamer' },
-      { title: 'Rename Images with AI', href: '/rename-images-with-ai' },
-      { title: 'Auto Rename Files', href: '/auto-rename-files' },
+      { title: 'AI Image Renamer', href: '/ai-image-renamer' },
+      { title: 'Rename Screenshots with AI', href: '/rename-screenshots-with-ai' },
+      { title: 'Auto Rename Files on macOS', href: '/auto-rename-files' },
     ]}
     relatedBlogPosts={[
       { title: 'Photo Management Workflow for Photographers on Mac', href: 'photo-management-workflow-photographers-mac' },

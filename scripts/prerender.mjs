@@ -66,12 +66,6 @@ const ROUTE_META = {
       'Tips, guides, and insights on AI-powered file organization for macOS. Learn about smart renaming, metadata, and workflow automation.',
     robots: 'index, follow',
   },
-  '/rename-files-with-ai': {
-    title: 'Rename Files with AI — Free on macOS | Zush',
-    description:
-      'Rename files with AI for free on macOS. Zush analyzes screenshots, PDFs, and documents to generate descriptive filenames automatically. Free to try.',
-    robots: 'index, follow',
-  },
   '/ai-file-renamer': {
     title: 'AI File Renamer for Mac — Auto Rename Files | Zush',
     description:
@@ -82,12 +76,6 @@ const ROUTE_META = {
     title: 'Auto Rename Files on Mac with AI | Zush',
     description:
       'Auto rename files on macOS with AI-powered folder monitoring. Zush watches your folders and renames new files automatically as they appear. Set it and forget it.',
-    robots: 'index, follow',
-  },
-  '/rename-images-with-ai': {
-    title: 'Rename Images with AI on Mac — Free | Zush',
-    description:
-      'Rename images with AI on macOS. Zush analyzes photos, screenshots, and graphics to generate descriptive filenames. Supports PNG, JPG, HEIC, RAW, and 20+ formats.',
     robots: 'index, follow',
   },
   '/rename-documents-with-ai': {
@@ -118,30 +106,6 @@ const ROUTE_META = {
     title: 'AI Image Renamer for Mac — Rename Images Automatically | Zush',
     description:
       'The best AI image renamer for macOS. Supports 23 image formats including RAW. Batch rename, folder monitoring, smart Finder tags. Free tier available.',
-    robots: 'index, follow',
-  },
-  '/ai-document-renamer': {
-    title: 'AI Document Renamer — Auto Rename Docs & PDFs | Zush',
-    description:
-      'AI document renamer for macOS. Automatically rename PDFs, Word docs, spreadsheets, and presentations based on their content. Text extraction powered by AI.',
-    robots: 'index, follow',
-  },
-  '/ai-pdf-renamer': {
-    title: 'AI PDF Renamer — Rename PDF Files Automatically | Zush',
-    description:
-      'AI PDF renamer for macOS. Extracts text from PDF files and generates descriptive filenames automatically. Perfect for invoices, contracts, and reports.',
-    robots: 'index, follow',
-  },
-  '/ai-screenshot-renamer': {
-    title: 'AI Screenshot Renamer for Mac — Auto Name Screenshots | Zush',
-    description:
-      'AI screenshot renamer for macOS. Automatically rename screenshots based on their content. Set up folder monitoring and never deal with "Screenshot 2026..." again.',
-    robots: 'index, follow',
-  },
-  '/ai-photo-renamer': {
-    title: 'AI Photo Renamer for Mac — Rename Photos Automatically | Zush',
-    description:
-      'AI photo renamer for macOS. Rename photos automatically with AI-generated descriptive names. Supports RAW, HEIC, and 60+ languages. Built for photographers.',
     robots: 'index, follow',
   },
   '/thank-you': DEFAULT_META,

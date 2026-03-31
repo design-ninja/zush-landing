@@ -97,9 +97,9 @@ const RenameScreenshotsWithAI = () => (
     ]}
     faqItems={faqItems}
     relatedPages={[
-      { title: 'AI Screenshot Renamer', href: '/ai-screenshot-renamer' },
-      { title: 'Auto Rename Files', href: '/auto-rename-files' },
-      { title: 'Rename Images with AI', href: '/rename-images-with-ai' },
+      { title: 'Auto Rename Files on macOS', href: '/auto-rename-files' },
+      { title: 'AI Image Renamer', href: '/ai-image-renamer' },
+      { title: 'AI File Renamer for macOS', href: '/ai-file-renamer' },
     ]}
     relatedBlogPosts={[
       { title: 'Screenshot Naming Conventions on macOS', href: 'screenshot-naming-conventions-macos' },

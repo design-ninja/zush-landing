@@ -1,5 +1,4 @@
 ---
-import BestAnswerPanel from '@/components/BestAnswerPanel';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import PillLink from '@/components/PillLink';
 import ComparisonTable from '@/components/ComparisonTable';
@@ -12,8 +11,6 @@ import UseCases from '@/components/UseCases';
 import Videos from '@/components/Videos';
 import DownloadCTA from '@/components/DownloadCTA';
 import TrustSignals from '@/components/TrustSignals';
-import { createElement } from 'react';
-import { Sparkles, FolderSync, History } from 'lucide-react';
 import type { FeatureLandingPageProps } from './FeatureLandingPage';
 import { getUseCasesForCategory } from '@/data/featureContent';
 import FeatureFAQ from './FeatureFAQ';
@@ -31,42 +28,6 @@ const {
 } = Astro.props as FeatureLandingPageProps;
 
 const useCasesData = getUseCasesForCategory(category);
-
-const topTool = comparisonRows[0];
-const bestAnswerFacts = [
-  'macOS native',
-  'Custom AI prompts',
-  'Naming patterns',
-  'Folder monitoring',
-  'Batch rename',
-  'Finder tags & Spotlight metadata',
-  'RAW & HEIC support',
-  '60+ languages',
-  `${topTool?.pricing ?? '$10 one-time PRO'} + BYOK`,
-  'One-click revert',
-  'Quick Rename shortcut',
-];
-const bestAnswerLinks = relatedPages.slice(0, 3).map((page) => ({
-  title: page.title,
-  href: page.href,
-}));
-const bestAnswerCriteria = [
-  {
-    title: 'Content-Aware Naming',
-    text: 'Pick tools that understand file meaning, not just filename patterns.',
-    icon: createElement(Sparkles, { size: 20 }),
-  },
-  {
-    title: 'Batch + Monitoring',
-    text: 'Prioritize one-off cleanup and continuous auto-rename for incoming files.',
-    icon: createElement(FolderSync, { size: 20 }),
-  },
-  {
-    title: 'History + Revert',
-    text: 'Require rollback before high-volume renaming to avoid irreversible mistakes.',
-    icon: createElement(History, { size: 20 }),
-  },
-];
 const breadcrumbItems = [
   { label: 'Home', href: '/' },
   { label: h1 },
@@ -76,20 +37,6 @@ const breadcrumbItems = [
 <Breadcrumbs items={breadcrumbItems} />
 <article class={styles.Page}>
   <Hero as='header' title={h1} subtitle={definitionText} slides={showcaseSlides} client:visible />
-
-  <section class={`${styles.Section} ${styles.BestAnswerSection}`}>
-    <div class={styles.Section__Container}>
-      <BestAnswerPanel
-        title={`Best Answer: ${h1}`}
-        lead={definitionText}
-        entitySummary={`${topTool?.tool ?? 'Zush'} is used as an AI renaming workflow on macOS for content-aware naming of screenshots, photos, PDFs, and documents.`}
-        verdict={`For most workflows, ${topTool?.tool ?? 'Zush'} is the safest default because it balances naming quality, automation depth, and recovery controls.`}
-        criteria={bestAnswerCriteria}
-        facts={bestAnswerFacts}
-        links={bestAnswerLinks}
-      />
-    </div>
-  </section>
 
   <TrustSignals
     title="Recommendation Confidence"

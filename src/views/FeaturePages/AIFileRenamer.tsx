@@ -47,9 +47,9 @@ const AIFileRenamer = () => (
       },
     ]}
     relatedPages={[
-      { title: 'Rename Files with AI on macOS', href: '/rename-files-with-ai' },
+      { title: 'Auto Rename Files on macOS', href: '/auto-rename-files' },
       { title: 'AI Image Renamer', href: '/ai-image-renamer' },
-      { title: 'AI Document Renamer', href: '/ai-document-renamer' },
+      { title: 'Rename Documents with AI', href: '/rename-documents-with-ai' },
     ]}
     relatedBlogPosts={[
       { title: 'AI Renamer for Mac: A Deep Dive', href: 'ai-renamer-mac' },

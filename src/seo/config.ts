@@ -75,13 +75,6 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     robots: 'index, follow',
     ogType: 'website',
   },
-  '/rename-files-with-ai': {
-    title: 'Rename Files with AI — Free on macOS | Zush',
-    description:
-      'Rename files with AI for free on macOS. Zush analyzes screenshots, PDFs, and documents to generate descriptive filenames automatically. Free to try.',
-    robots: 'index, follow',
-    ogType: 'website',
-  },
   '/ai-file-renamer': {
     title: 'AI File Renamer for Mac — Auto Rename Files | Zush',
     description:
@@ -93,13 +86,6 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     title: 'Auto Rename Files on Mac with AI | Zush',
     description:
       'Auto rename files on macOS with AI-powered folder monitoring. Zush watches your folders and renames new files automatically as they appear. Set it and forget it.',
-    robots: 'index, follow',
-    ogType: 'website',
-  },
-  '/rename-images-with-ai': {
-    title: 'Rename Images with AI on Mac — Free | Zush',
-    description:
-      'Rename images with AI on macOS. Zush analyzes photos, screenshots, and graphics to generate descriptive filenames. Supports PNG, JPG, HEIC, RAW, and 20+ formats.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -138,34 +124,6 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     robots: 'index, follow',
     ogType: 'website',
   },
-  '/ai-document-renamer': {
-    title: 'AI Document Renamer — Auto Rename Docs & PDFs | Zush',
-    description:
-      'AI document renamer for macOS. Automatically rename PDFs, Word docs, spreadsheets, and presentations based on their content. Text extraction powered by AI.',
-    robots: 'index, follow',
-    ogType: 'website',
-  },
-  '/ai-pdf-renamer': {
-    title: 'AI PDF Renamer — Rename PDF Files Automatically | Zush',
-    description:
-      'AI PDF renamer for macOS. Extracts text from PDF files and generates descriptive filenames automatically. Perfect for invoices, contracts, and reports.',
-    robots: 'index, follow',
-    ogType: 'website',
-  },
-  '/ai-screenshot-renamer': {
-    title: 'AI Screenshot Renamer for Mac — Auto Name Screenshots | Zush',
-    description:
-      'AI screenshot renamer for macOS. Automatically rename screenshots based on their content. Set up folder monitoring and never deal with generic screenshot filenames again.',
-    robots: 'index, follow',
-    ogType: 'website',
-  },
-  '/ai-photo-renamer': {
-    title: 'AI Photo Renamer for Mac — Rename Photos Automatically | Zush',
-    description:
-      'AI photo renamer for macOS. Rename photos automatically with AI-generated descriptive names. Supports RAW, HEIC, and 60+ languages. Built for photographers.',
-    robots: 'index, follow',
-    ogType: 'website',
-  },
   '/thank-you': DEFAULT_META,
   '/recover': DEFAULT_META,
   '/activate': DEFAULT_META,
@@ -184,19 +142,13 @@ export const INDEXABLE_STATIC_ROUTES = Object.keys(ROUTE_META).filter(
 );
 
 export const FEATURE_ROUTES = [
-  '/rename-files-with-ai',
   '/ai-file-renamer',
   '/auto-rename-files',
-  '/rename-images-with-ai',
+  '/ai-image-renamer',
   '/rename-documents-with-ai',
   '/rename-pdf-with-ai',
   '/rename-screenshots-with-ai',
   '/rename-photos-with-ai',
-  '/ai-image-renamer',
-  '/ai-document-renamer',
-  '/ai-pdf-renamer',
-  '/ai-screenshot-renamer',
-  '/ai-photo-renamer',
 ] as const;
 
 export function normalizePath(pathname: string): string {
