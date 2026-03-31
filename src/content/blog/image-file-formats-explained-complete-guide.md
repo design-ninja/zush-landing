@@ -9,11 +9,15 @@ tldr: "The best image format depends on the job: JPEG for general photos, PNG fo
 
 Choosing the right image file format matters because it affects quality, file size, compatibility, editing flexibility, and searchability. Mac users usually deal with the same core formats: JPEG, PNG, HEIC, WebP, RAW, TIFF, GIF, and SVG.
 
+
 Here is the short version.
 
 ## JPEG
 
 Best for everyday photos, web uploads, and small file sizes.
+
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
 
 Use it when:
 
@@ -38,6 +42,9 @@ Weakness: files are larger than JPEG for photos.
 ## HEIC
 
 Best for Apple-device photos and efficient storage.
+
+![Zush naming pattern configuration with format template and localization options](/images/screenshots/light/zush-naming-settings.webp)
+
 
 Use it when:
 
@@ -103,6 +110,7 @@ Use it when:
 
 Weakness: not appropriate for normal photos.
 
+
 ## Best quick recommendations
 
 - Photos: JPEG or HEIC
@@ -115,6 +123,9 @@ Weakness: not appropriate for normal photos.
 ## One practical Mac problem most people ignore
 
 Formats are only half the issue. The other half is naming. A perfectly chosen format still becomes hard to find if the file is called `IMG_4822` or `download (7)`. For image-heavy workflows, [Zush](https://zushapp.com) helps by generating descriptive filenames across multiple formats so files stay searchable regardless of whether they are HEIC, PNG, JPEG, or WebP.
+
+![Zush batch rename demo for organizing images across multiple file formats](/videos/zush-batch-rename.mp4)
+
 
 ## Conclusion
 

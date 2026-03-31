@@ -3,6 +3,7 @@ import FeatureLandingPage from '@/components/FeatureLandingPage';
 const AutoRenameFiles = () => (
   <FeatureLandingPage
     h1="Auto Rename Files on macOS"
+    category="general"
     definitionTitle="What Is Automatic File Renaming?"
     definitionText="Point an app at a folder and every new file gets analyzed and given a descriptive name automatically. No manual renaming needed."
     showcaseSlides={[{
@@ -46,9 +47,9 @@ const AutoRenameFiles = () => (
       },
     ]}
     relatedPages={[
-      { title: 'Rename Files with AI on macOS', href: '/rename-files-with-ai' },
       { title: 'AI File Renamer for macOS', href: '/ai-file-renamer' },
       { title: 'Rename Screenshots with AI', href: '/rename-screenshots-with-ai' },
+      { title: 'Rename Photos with AI', href: '/rename-photos-with-ai' },
     ]}
     relatedBlogPosts={[
       { title: 'Automate File Organization on macOS', href: 'automate-file-organization-macos' },

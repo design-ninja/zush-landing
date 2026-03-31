@@ -40,5 +40,11 @@
     border-radius: $radius-full;
     font-size: 0.8125rem;
     font-weight: 500;
+
+    &_highlight {
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+    }
   }
 }

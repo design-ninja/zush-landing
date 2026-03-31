@@ -9,6 +9,7 @@ tldr: "A strong photography workflow on Mac covers five stages: import, cull, ed
 
 A photography workflow on Mac breaks down when import, naming, export, and archive decisions happen differently every time. The fix is a repeatable system from card to archive.
 
+
 ## The five stages
 
 1. import
@@ -16,6 +17,9 @@ A photography workflow on Mac breaks down when import, naming, export, and archi
 3. edit
 4. export
 5. archive
+
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
 
 ## Import
 
@@ -28,6 +32,9 @@ A practical structure:
 ## Cull
 
 Do not edit before culling. Remove rejects and pick keepers first so your editing queue stays smaller and cleaner.
+
+![Zush batch rename results showing AI-generated descriptive filenames](/images/screenshots/light/zush-batch-rename-results.webp)
+
 
 ## Edit
 
@@ -47,11 +54,15 @@ Examples:
 
 Archive completed projects with backup in mind. Working drives and archive drives should have different jobs.
 
+
 ## Why naming matters in photography
 
 Photographers often solve quality and editing first, then leave filenames as `DSC_` or `IMG_`. That makes retrieval harder later, especially across years of work.
 
 For image-heavy Mac workflows, [Zush](https://zushapp.com) can help with the descriptive naming side when you need a faster way to turn weak filenames into searchable ones.
+
+![Zush batch rename demo for photographer file management workflow on Mac](/videos/zush-batch-rename.mp4)
+
 
 ## Conclusion
 

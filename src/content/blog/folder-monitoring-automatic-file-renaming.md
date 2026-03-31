@@ -11,6 +11,7 @@ Renaming files one at a time is manageable when you save three files a day. It b
 
 The real fix is not faster manual renaming. It is folder monitoring: a background process that watches specific folders and renames files the moment they arrive. That is the core of what makes [Zush](https://zushapp.com/auto-rename-files) a practical tool for automatic file renaming on Mac. You point it at a folder, set your naming preferences, and stop thinking about it.
 
+
 ## What folder monitoring actually does
 
 Folder monitoring means a process is watching a directory for changes. When a new file appears, or an existing file is modified, the monitor fires an action. In the context of file renaming, that action is:
@@ -98,6 +99,8 @@ Drop a few test files into the monitored folder and confirm the results. Adjust 
 
 Once you are satisfied with the results, leave the monitor active. Zush runs quietly in the background and processes new files as they arrive.
 
+![Zush monitor tab showing folder monitoring setup with Desktop folder selected for automatic renaming](/images/screenshots/light/zush-monitor-settings.webp)
+
 ## Before and after examples
 
 Here is what folder monitoring looks like in practice across different file types.
@@ -128,7 +131,11 @@ Here is what folder monitoring looks like in practice across different file type
 
 Every one of those files becomes findable through Spotlight, sortable in Finder, and identifiable at a glance.
 
+![Zush folder monitoring demo showing automatic file renaming as files arrive](/videos/zush-monitor.mp4)
+
 ## Power user tips
+
+![Zush activity tab showing rename history with undo buttons for each file](/images/screenshots/light/zush-activity-log.webp)
 
 ### Combine monitoring with Finder tags
 
@@ -147,6 +154,7 @@ There is no limit to how many folders you can monitor. A practical setup might w
 Once files have descriptive names and tags, Smart Folders in Finder can surface them dynamically without any manual sorting. For example, a Smart Folder that shows all files tagged "Receipt" from the last 30 days becomes a self-maintaining expense reference.
 
 For more on this approach, see [How to Automate File Organization on macOS](/blog/automate-file-organization-macos).
+
 
 ## How folder monitoring compares to other automation approaches
 
@@ -181,6 +189,7 @@ Folder monitoring is not ideal for every situation:
 - Temporary staging folders where files are deleted within minutes
 
 In those cases, on-demand batch renaming is a better approach.
+
 
 ## Conclusion
 

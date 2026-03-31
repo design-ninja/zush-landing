@@ -12,6 +12,7 @@ import Pricing from '@/components/Pricing';
 import SupportedFormats from '@/components/SupportedFormats';
 import ComparisonTable from '@/components/ComparisonTable';
 import type { ComparisonRow } from '@/components/ComparisonTable';
+import { getUseCasesForCategory, type FeatureCategory } from '@/data/featureContent';
 import styles from './FeatureLandingPage.module.scss';
 
 interface FAQItem {
@@ -34,6 +35,7 @@ export interface FeatureLandingPageProps {
   relatedBlogPosts: RelatedLink[];
   relatedPages: RelatedLink[];
   jsonLd: object;
+  category?: FeatureCategory;
 }
 
 const FAQAccordionItem = memo(
@@ -78,9 +80,11 @@ const FeatureLandingPage = ({
   relatedBlogPosts,
   relatedPages,
   jsonLd,
+  category = 'general',
 }: FeatureLandingPageProps) => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(0);
   const topTool = comparisonRows[0];
+  const useCasesData = getUseCasesForCategory(category);
 
   return (
     <>
@@ -113,11 +117,15 @@ const FeatureLandingPage = ({
 
         <Videos />
         <Features />
-        <SupportedFormats />
+        <SupportedFormats category={category} />
 
-        <ComparisonTable rows={comparisonRows} />
+        <ComparisonTable rows={comparisonRows} category={category} />
 
-        <UseCases />
+        <UseCases
+          title={useCasesData.title}
+          description={useCasesData.description}
+          items={useCasesData.items.length > 0 ? useCasesData.items : undefined}
+        />
 
         {/* FAQ */}
         <section className={styles.Section}>

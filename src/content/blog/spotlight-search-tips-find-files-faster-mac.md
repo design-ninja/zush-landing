@@ -9,7 +9,11 @@ tldr: "Spotlight works best when your files have useful names and metadata. Sear
 
 Spotlight is one of the fastest ways to find files on Mac, but it only works as well as the metadata it can search. If your files have useful names, tags, and dates, Spotlight feels instant. If everything is `IMG_4382` and `document (7)`, search gets much weaker.
 
+
 ## Most useful Spotlight searches
+
+
+![Zush naming pattern configuration with format template and localization options](/images/screenshots/light/zush-naming-settings.webp)
 
 ### Search by filename
 
@@ -48,6 +52,7 @@ Examples:
 - `tag:red`
 - `tag:client-alpha`
 
+
 ## Why Spotlight sometimes feels weak
 
 Spotlight does not visually understand your files. It searches text-based metadata: filenames, tags, comments, and file properties.
@@ -56,6 +61,8 @@ That means a sunset photo named `IMG_8392.HEIC` is almost invisible unless you a
 
 This is one reason AI-assisted naming helps on Mac. [Zush](https://zushapp.com) can turn weak visual filenames into descriptive ones, which makes Spotlight much more useful later.
 
+![Zush batch rename making files searchable in Spotlight with AI-generated descriptive names](/videos/zush-batch-rename.mp4)
+
 ## Best practices for better Spotlight results
 
 - use descriptive filenames
@@ -63,11 +70,15 @@ This is one reason AI-assisted naming helps on Mac. [Zush](https://zushapp.com) 
 - tag only the categories that actually help retrieval
 - rebuild your index only when results are clearly broken
 
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
+
 ## Related tools
 
 - [Finder Tags Guide: How to Organize Files on Mac with Color Tags](/blog/finder-tags-guide-organize-files-mac)
 - [How to Find Photos on Your Mac: The Ultimate Search Guide](/blog/how-to-find-photos-on-mac)
 - [Smart Folders on Mac: The Complete Guide to Automatic Organization](/blog/smart-folders-mac-guide)
+
 
 ## Conclusion
 

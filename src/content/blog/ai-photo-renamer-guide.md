@@ -15,9 +15,13 @@ An AI photo renamer solves this by analyzing what each photo actually contains a
 
 [Zush](https://zushapp.com/rename-photos-with-ai) does this on Mac across 23 image formats, including RAW and HEIC, with batch renaming and custom naming patterns.
 
+
 ## Why cameras use generic filenames
 
 Camera manufacturers optimize for reliability and speed during capture, not for file management afterward. The naming conventions follow a few industry patterns:
+
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
 
 - **IMG_** — Apple iPhones, many point-and-shoot cameras
 - **DSC_** or **_DSC** — Nikon cameras
@@ -56,7 +60,10 @@ The combination of these layers produces filenames that are specific enough to b
 
 Photo workflows involve a wide range of formats depending on the camera, the export pipeline, and the editing software. A useful AI photo renamer needs to handle all of them.
 
-[Zush](https://zushapp.com/ai-photo-renamer) supports 23 image formats:
+![Zush batch rename results showing AI-generated descriptive filenames](/images/screenshots/light/zush-batch-rename-results.webp)
+
+
+[Zush](https://zushapp.com/rename-photos-with-ai) supports 23 image formats:
 
 | Category | Formats |
 |---|---|
@@ -81,6 +88,8 @@ HEIC support is equally important for iPhone users. Since iOS 11, Apple defaults
 | `DSC_1102.ARW` | `product-box-white-background-front.arw` |
 
 Each renamed file is immediately identifiable in Finder, searchable in Spotlight, and meaningful in a shared folder or client delivery.
+
+![Batch renaming photos with AI to replace generic IMG filenames](/videos/zush-batch-rename.mp4)
 
 ## Step-by-step: batch renaming photos with Zush
 
@@ -114,6 +123,7 @@ Confirm and apply. The rename is logged so you can revert any file to its origin
 ### 6. Set up ongoing monitoring
 
 If you regularly import photos to a specific folder, enable folder monitoring so new arrivals are renamed automatically. This is especially useful for photographers who dump memory cards into an import directory.
+
 
 ## Photographer workflows
 
@@ -175,6 +185,7 @@ AI vision is strong with clear subjects and recognizable scenes. It is less reli
 - Technical test shots or calibration images that are not meaningful photos
 
 For these edge cases, manual naming or a simple sequential rename is more appropriate.
+
 
 ## Getting started
 

@@ -11,9 +11,13 @@ An auto image renamer for Mac is useful when your problem is not just bad filena
 
 If you want those files renamed automatically instead of manually, you need two things: content-aware naming and folder monitoring. That is why [Zush](https://zushapp.com) is a strong fit for this query. It can watch key folders and rename incoming images based on what they actually show.
 
+
 ## What “auto image renamer” should mean
 
 Automatic renaming should not mean applying the same prefix to every file. It should mean:
+
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
 
 - watching a folder continuously
 - identifying the content of each image
@@ -39,6 +43,9 @@ These are usually the places where filenames become useless fastest.
 
 Screenshots already contain timing information. What they lack is context. Downloaded images often have neither context nor structure.
 
+![Zush batch rename results showing AI-generated descriptive filenames](/images/screenshots/light/zush-batch-rename-results.webp)
+
+
 That makes them ideal for automatic AI renaming.
 
 Examples:
@@ -56,6 +63,8 @@ Examples:
 
 That is the practical value of [Zush](https://zushapp.com): you can move from cleanup to prevention without building your own scripts or Shortcuts workflow. If you want the broader category page, read [AI Image Renamer for Mac: What It Is and the Best Way to Use One](/blog/ai-image-renamer-for-mac).
 
+![Automatic folder monitoring renaming images as they arrive on Mac](/videos/zush-monitor.mp4)
+
 ## When automatic renaming is a bad fit
 
 Skip full automation if:
@@ -71,6 +80,7 @@ Automation is strongest when the incoming files are consistently poorly named, w
 Automatic renaming is not limited to visual files. Zush also monitors folders for supported document types including PDFs, DOCX, PPTX, XLSX, TXT, MD, JSON, EML, and CSV. When a new document arrives in a monitored folder, Zush reads its content and generates a descriptive filename automatically. That is useful for Downloads folders that accumulate email attachments, exported reports, and shared documents alongside screenshots and images.
 
 For a focused guide on document renaming, see [Rename PDF Files with AI on Mac](/blog/rename-pdf-files-with-ai-mac).
+
 
 ## Conclusion
 

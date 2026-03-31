@@ -3,6 +3,7 @@ import FeatureLandingPage from '@/components/FeatureLandingPage';
 const AIFileRenamer = () => (
   <FeatureLandingPage
     h1="AI File Renamer for macOS"
+    category="general"
     definitionTitle="What Is an AI File Renamer?"
     definitionText="An AI file renamer analyzes what's inside your files — images, documents, PDFs — and generates descriptive, searchable names automatically."
     showcaseSlides={[{
@@ -46,9 +47,9 @@ const AIFileRenamer = () => (
       },
     ]}
     relatedPages={[
-      { title: 'Rename Files with AI on macOS', href: '/rename-files-with-ai' },
+      { title: 'Auto Rename Files on macOS', href: '/auto-rename-files' },
       { title: 'AI Image Renamer', href: '/ai-image-renamer' },
-      { title: 'AI Document Renamer', href: '/ai-document-renamer' },
+      { title: 'Rename Documents with AI', href: '/rename-documents-with-ai' },
     ]}
     relatedBlogPosts={[
       { title: 'AI Renamer for Mac: A Deep Dive', href: 'ai-renamer-mac' },

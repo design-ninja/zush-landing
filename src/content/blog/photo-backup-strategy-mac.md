@@ -9,9 +9,13 @@ tldr: "The safest photo backup strategy for Mac is a version of the 3-2-1 rule: 
 
 If your photo backup strategy for Mac is “they are on my laptop and in the cloud somewhere,” you do not really have a backup strategy. Photos need redundancy, not hope.
 
+
 ## The safest default: 3-2-1 thinking
 
 The classic rule is simple:
+
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
 
 - 3 copies of your data
 - 2 different storage media
@@ -44,9 +48,14 @@ This protects you from theft, fire, and local hardware disasters.
 - never testing restores
 - mixing working files and archives without a plan
 
+![Zush activity log showing rename history with one-click undo](/images/screenshots/light/zush-activity-log.webp)
+
+
+
 ## Why organization still matters
 
 A backed-up mess is still a mess. Descriptive filenames and clean project structure make restores and later retrieval much easier. For image-heavy libraries, [Zush](https://zushapp.com) can help improve the naming side before the archive grows even larger.
+
 
 ## Conclusion
 

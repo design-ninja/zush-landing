@@ -74,6 +74,7 @@ const jsonLd = {
 const RenameScreenshotsWithAI = () => (
   <FeatureLandingPage
     h1="Rename Screenshots with AI on macOS"
+    category="screenshot"
     definitionTitle="What Is AI Screenshot Renaming?"
     definitionText="AI screenshot renaming analyzes the visual content of your screenshots and replaces generic macOS timestamp names with descriptive, searchable filenames."
     showcaseSlides={[{
@@ -96,9 +97,9 @@ const RenameScreenshotsWithAI = () => (
     ]}
     faqItems={faqItems}
     relatedPages={[
-      { title: 'AI Screenshot Renamer', href: '/ai-screenshot-renamer' },
-      { title: 'Auto Rename Files', href: '/auto-rename-files' },
-      { title: 'Rename Images with AI', href: '/rename-images-with-ai' },
+      { title: 'Auto Rename Files on macOS', href: '/auto-rename-files' },
+      { title: 'AI Image Renamer', href: '/ai-image-renamer' },
+      { title: 'AI File Renamer for macOS', href: '/ai-file-renamer' },
     ]}
     relatedBlogPosts={[
       { title: 'Screenshot Naming Conventions on macOS', href: 'screenshot-naming-conventions-macos' },

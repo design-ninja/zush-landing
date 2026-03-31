@@ -11,9 +11,13 @@ If you are choosing between AI image tagging and manual photo organization, the 
 
 That is why tools like [Zush](https://zushapp.com) are useful: they do not just tag files automatically. They help turn weak filenames and unsearchable folders into a system you can actually maintain.
 
+
 ## Where manual organization is still useful
 
 Manual organization has one real advantage: context.
+
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
 
 You may know that a photo of a conference room belongs to a specific client kickoff, or that a screenshot is tied to a product bug that no model could infer from pixels alone. Humans are still better at assigning that kind of project-specific meaning.
 
@@ -43,6 +47,9 @@ That is the real reason AI tagging has become attractive. It removes the repetit
 
 AI image tagging is strongest when the files are visually clear but poorly named.
 
+![Zush naming pattern configuration with format template and localization options](/images/screenshots/light/zush-naming-settings.webp)
+
+
 Examples:
 
 - screenshots with timestamp names
@@ -65,6 +72,7 @@ This is especially useful on Mac because Finder, Spotlight, and folder views bec
 
 For most people, the hybrid model is the right answer.
 
+
 ## The best hybrid workflow on Mac
 
 A practical workflow looks like this:
@@ -77,6 +85,9 @@ A practical workflow looks like this:
 That is where [Zush](https://zushapp.com) fits well. It can generate descriptive filenames, write Finder-friendly metadata for images, PDFs, and supported documents alike, and reduce the manual effort to a quick review instead of a full tagging session.
 
 If your main question is how to rename images rather than how to compare systems, go to [How to Rename Images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos).
+
+![Zush smart tags demo showing automatic AI photo tagging on macOS](/videos/zush-tags.mp4)
+
 
 ## When AI is not enough by itself
 

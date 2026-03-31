@@ -13,6 +13,9 @@ That is the document naming problem. Unlike photos or screenshots, documents car
 
 An AI document renamer solves this by reading the actual content of the file and generating a descriptive name based on what the document contains. If you work with mixed document types on Mac, [Zush](https://zushapp.com) can do this across PDFs, Word files, spreadsheets, and more in a single batch.
 
+![Zush main AI Rename screen showing supported file format badges for documents and images](/images/screenshots/light/zush-main-interface.webp)
+
+
 ## How AI analyzes document content
 
 The process is different from photo renaming. With images, AI uses visual recognition to describe what appears in the picture. With documents, the AI extracts and interprets the text, structure, and context of the file.
@@ -68,6 +71,10 @@ The difference between a generic filename and an AI-generated one is immediate:
 
 Every one of those renamed files is now searchable in Spotlight, scannable in Finder, and meaningful in a shared folder.
 
+![Zush AI rename results showing documents with descriptive before and after names and green checkmarks](/images/screenshots/light/zush-batch-rename-results.webp)
+
+![AI batch renaming documents and spreadsheets with descriptive names](/videos/zush-batch-rename.mp4)
+
 ## Step-by-step: renaming documents with Zush
 
 ### 1. Collect your disorganized documents
@@ -78,7 +85,7 @@ Do not try to rename your entire hard drive at once. Start with one problem fold
 
 ### 2. Open the folder in Zush
 
-Drag the folder into [Zush](https://zushapp.com/ai-document-renamer) or use the folder browser to navigate to it. The app will detect supported document formats and show you the files that can be renamed.
+Drag the folder into [Zush](https://zushapp.com/rename-documents-with-ai) or use the folder browser to navigate to it. The app will detect supported document formats and show you the files that can be renamed.
 
 ### 3. Choose a naming pattern
 
@@ -90,6 +97,8 @@ Pick a pattern that fits your workflow:
 - `{date}_{category}_{title}` for maximum structure
 
 The AI generates the title and category from the document content. You control how those pieces are assembled.
+
+![Zush processing tab showing naming pattern configuration with title name format and localization options](/images/screenshots/light/zush-naming-settings.webp)
 
 ### 4. Preview the results
 
@@ -134,6 +143,7 @@ Client projects generate proposals, contracts, deliverables, and feedback docume
 
 The key advantage of AI is content awareness. Every other method works from the outside of the file: metadata, file extension, creation date. AI works from the inside, reading what the document actually says.
 
+
 ## Best practices for document naming
 
 ### Be specific but brief
@@ -171,6 +181,7 @@ AI document renaming works best when the filename is meaningless and the content
 - Files are encrypted or password-protected and the content cannot be read
 
 In those cases, a deterministic rename rule or manual naming is better.
+
 
 ## Getting started
 

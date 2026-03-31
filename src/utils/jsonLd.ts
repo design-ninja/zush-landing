@@ -1,6 +1,6 @@
-import type { BlogFrontmatter, FAQItem } from './frontmatter'
+import type { BlogFrontmatter, FAQItem } from './frontmatter';
 
-const SITE_ORIGIN = 'https://zushapp.com'
+const SITE_ORIGIN = 'https://zushapp.com';
 
 export function buildBlogPostingJsonLd(post: BlogFrontmatter) {
   return {
@@ -13,18 +13,23 @@ export function buildBlogPostingJsonLd(post: BlogFrontmatter) {
     author: {
       '@type': 'Person',
       name: post.authorName,
-      url: `${SITE_ORIGIN}/methodology#editorial-policy`,
+      url: 'https://lirik.pro/en',
+      sameAs: ['https://lirik.pro/en'],
+      image: `${SITE_ORIGIN}/images/authors/lirik.png`,
       worksFor: {
         '@type': 'Organization',
         name: 'Zush',
         url: SITE_ORIGIN,
       },
     },
-    editor: {
-      '@type': 'Person',
-      name: post.reviewerName,
-      url: `${SITE_ORIGIN}/methodology#benchmark-protocol`,
-    },
+    ...(post.reviewerName
+      ? {
+          editor: {
+            '@type': 'Person',
+            name: post.reviewerName,
+          },
+        }
+      : {}),
     publisher: {
       '@type': 'Organization',
       name: 'Zush',
@@ -41,7 +46,17 @@ export function buildBlogPostingJsonLd(post: BlogFrontmatter) {
     url: `${SITE_ORIGIN}/blog/${post.slug}`,
     wordCount: post.wordCount,
     keywords: post.tags.join(', '),
-  }
+    isPartOf: {
+      '@type': 'Blog',
+      '@id': `${SITE_ORIGIN}/blog`,
+      name: 'Zush Blog',
+      publisher: {
+        '@type': 'Organization',
+        name: 'Zush',
+        url: SITE_ORIGIN,
+      },
+    },
+  };
 }
 
 export function buildFAQPageJsonLd(items: FAQItem[]) {
@@ -56,7 +71,7 @@ export function buildFAQPageJsonLd(items: FAQItem[]) {
         text: item.answer,
       },
     })),
-  }
+  };
 }
 
 export function buildBreadcrumbJsonLd(postTitle: string, postSlug: string) {
@@ -83,5 +98,29 @@ export function buildBreadcrumbJsonLd(postTitle: string, postSlug: string) {
         item: `${SITE_ORIGIN}/blog/${postSlug}`,
       },
     ],
-  }
+  };
+}
+
+export function buildFeatureBreadcrumbJsonLd(
+  pageTitle: string,
+  pagePath: string,
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: SITE_ORIGIN,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: pageTitle,
+        item: `${SITE_ORIGIN}${pagePath}`,
+      },
+    ],
+  };
 }

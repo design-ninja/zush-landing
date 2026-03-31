@@ -9,9 +9,13 @@ tldr: "Finder tags are most useful when they represent a small set of meaningful
 
 Finder tags are one of the simplest ways to organize files on Mac without moving them into new folders. A tagged file can still live in its original location, but it also becomes searchable by color or tag name across your system.
 
+
 ## What Finder tags are best for
 
 Tags work best for cross-folder organization.
+
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
 
 Useful examples:
 
@@ -32,6 +36,9 @@ Avoid:
 
 ## Best practical tag systems
 
+
+![Zush naming pattern configuration with format template and localization options](/images/screenshots/light/zush-naming-settings.webp)
+
 ### Status tags
 
 Great for action-oriented work.
@@ -50,6 +57,8 @@ Useful when related files live in several folders.
 
 Useful for images, design assets, or review pipelines when folder structure alone is not enough.
 
+![Zush smart tags demo automatically applying Finder tags to files on Mac](/videos/zush-tags.mp4)
+
 ## Why filenames still matter
 
 Tags help, but they do not replace filenames. A tagged file called `IMG_4822` is still weak. Finder search becomes much stronger when tags are combined with descriptive names.
@@ -59,6 +68,7 @@ This is one reason AI-assisted naming helps file-heavy workflows on Mac. [Zush](
 ## Finder tags + Smart Folders
 
 Tags become much more useful when combined with [Smart Folders on Mac: The Complete Guide to Automatic Organization](/blog/smart-folders-mac-guide). That combination gives you dynamic views like “all urgent files” or “all review assets” without changing where the originals live.
+
 
 ## Conclusion
 

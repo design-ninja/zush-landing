@@ -11,9 +11,13 @@ The Downloads folder gets messy because it is not a destination. It is a landing
 
 A good system starts with a few broad categories, a fast review habit, and automation for the worst offenders. For Downloads folders full of poorly named files, [Zush](https://zushapp.com) can help by automatically renaming screenshots, images, PDFs, and documents into descriptive names before they disappear into the pile.
 
+
 ## Why Downloads becomes chaotic so fast
 
 The folder collects files from everywhere:
+
+![Zush folder monitoring settings for automatic file renaming](/images/screenshots/light/zush-monitor-settings.webp)
+
 
 - browser downloads
 - screenshots moved from the Desktop
@@ -42,6 +46,9 @@ Do not create twenty subfolders on day one. The system should be easy enough to 
 
 ## The two biggest wins: naming and triage
 
+
+![Zush naming pattern configuration with format template and localization options](/images/screenshots/light/zush-naming-settings.webp)
+
 ### 1. Triage the folder regularly
 
 A 5-minute cleanup once or twice per week beats a monthly cleanup marathon.
@@ -57,6 +64,7 @@ Ask three questions for each file:
 This matters most for images, screenshots, and downloaded graphics. A PDF called `2026-q1-report.pdf` is already workable. An image called `download (7).png` is not.
 
 That is where automation helps. [Zush](https://zushapp.com) can monitor folders and rename images, PDFs, and documents to something descriptive, which makes the Downloads folder easier to sort and much easier to search later.
+
 
 ## What to automate
 
@@ -85,6 +93,9 @@ For a broader automation strategy, see [How to Automate File Organization on mac
 5. Empty the folder of old low-value leftovers
 
 If you repeat that routine consistently, Downloads stops acting like permanent storage.
+
+![Zush folder monitoring demo showing automatic downloads folder organization on Mac](/videos/zush-monitor.mp4)
+
 
 ## Common mistakes
 

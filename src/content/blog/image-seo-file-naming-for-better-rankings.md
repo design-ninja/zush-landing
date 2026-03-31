@@ -9,9 +9,13 @@ tldr: "Image filenames are a real SEO signal, but they work best when they are d
 
 Image filenames matter for SEO because they help search engines understand what an image shows. They are not the only signal, but they are one of the easiest to control.
 
+
 ## What a good SEO filename looks like
 
 Good examples:
+
+![Zush naming pattern configuration with format template and localization options](/images/screenshots/light/zush-naming-settings.webp)
+
 
 - `standing-desk-home-office.jpg`
 - `sourdough-bread-golden-crust.jpg`
@@ -37,15 +41,21 @@ The best filename is descriptive, readable, and relevant to the image itself.
 
 Good filenames help, but they do not replace:
 
+![Zush batch rename results showing AI-generated descriptive filenames](/images/screenshots/light/zush-batch-rename-results.webp)
+
+
 - alt text
 - surrounding page context
 - image quality
 - page relevance
 - overall technical SEO
 
+
 ## Why this matters for content teams
 
 If you publish lots of images, weak filenames become a compounding problem. It is easy to leave files as `IMG_` or export defaults. For image-heavy workflows, [Zush](https://zushapp.com) can help generate descriptive filenames before those images reach the website. If you need the broader naming rules beyond SEO, read [File Naming Conventions: Best Practices for Any Workflow](/blog/file-naming-conventions-best-practices).
+
+![Zush batch rename demo showing SEO-friendly image file naming in action](/videos/zush-batch-rename.mp4)
 
 ## Conclusion
 

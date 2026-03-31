@@ -1,0 +1,61 @@
+@use 'src/styles/variables' as *;
+
+.Breadcrumbs {
+  padding: 0.75rem 0;
+  max-width: var(--container-max-width, 70rem);
+  margin: 0 auto;
+  padding-left: var(--container-padding, 1.5rem);
+  padding-right: var(--container-padding, 1.5rem);
+}
+
+.Breadcrumbs__List {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+.Breadcrumbs__Item {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.Breadcrumbs__Link {
+  color: var(--text-subtle);
+  text-decoration: none;
+  transition: color 0.15s;
+
+  &:hover {
+    color: var(--text);
+    text-decoration: underline;
+  }
+}
+
+.Breadcrumbs__Current {
+  color: var(--text-subtle);
+  opacity: 0.7;
+}
+
+.Breadcrumbs__Separator {
+  color: var(--text-subtle);
+  opacity: 0.4;
+  margin: 0 0.4rem;
+  user-select: none;
+}
+
+@media (max-width: 640px) {
+  .Breadcrumbs {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .Breadcrumbs__List {
+    font-size: 0.75rem;
+  }
+}

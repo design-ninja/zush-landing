@@ -74,6 +74,7 @@ const jsonLd = {
 const RenamePDFWithAI = () => (
   <FeatureLandingPage
     h1="Rename PDF Files with AI on macOS"
+    category="pdf"
     definitionTitle="What Is AI PDF Renaming?"
     definitionText="AI PDF renaming extracts text from your documents and generates descriptive, searchable filenames - whether it's a contract, invoice, or receipt."
     showcaseSlides={[{
@@ -96,9 +97,9 @@ const RenamePDFWithAI = () => (
     ]}
     faqItems={faqItems}
     relatedPages={[
-      { title: 'AI PDF Renamer', href: '/ai-pdf-renamer' },
       { title: 'Rename Documents with AI', href: '/rename-documents-with-ai' },
-      { title: 'Rename Files with AI', href: '/rename-files-with-ai' },
+      { title: 'AI File Renamer for macOS', href: '/ai-file-renamer' },
+      { title: 'Auto Rename Files on macOS', href: '/auto-rename-files' },
     ]}
     relatedBlogPosts={[
       { title: 'Rename PDF Files with AI on Mac', href: 'rename-pdf-files-with-ai-mac' },

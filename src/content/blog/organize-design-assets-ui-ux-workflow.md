@@ -9,9 +9,13 @@ tldr: "A strong design asset workflow uses predictable folder structure, clear e
 
 Design asset organization gets messy because every project creates exports, screenshots, versions, icons, mockups, and references faster than most teams can name them well. The fix is not more folders. It is clearer structure and better naming.
 
+
 ## Best structure for design assets
 
 Use a consistent split like:
+
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
 
 - source files
 - exports
@@ -36,9 +40,13 @@ Examples:
 - `design-system-button-primary-hover.svg`
 - `client-homepage-hero-v2.psd`
 
+
 ## Why exports are the problem
 
 Design source files are often already named reasonably. Exports are where chaos appears: `export-2.png`, `final-final.svg`, `hero@2x.png` with no surrounding context.
+
+![Zush naming pattern configuration with format template and localization options](/images/screenshots/light/zush-naming-settings.webp)
+
 
 That is where AI-assisted naming can help. [Zush](https://zushapp.com) is useful when you need screenshot and export files to become descriptive enough for later search and reuse.
 
@@ -48,6 +56,9 @@ That is where AI-assisted naming can help. [Zush](https://zushapp.com) is useful
 - separate source files from exports
 - rename important exports immediately
 - avoid saving every asset into one mixed folder
+
+![Zush naming patterns demo for organizing design asset exports with consistent names](/videos/zush-naming-pattern.mp4)
+
 
 ## Conclusion
 

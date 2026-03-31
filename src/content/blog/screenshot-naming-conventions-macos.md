@@ -11,6 +11,7 @@ The default macOS screenshot name is useful for the operating system and almost 
 
 A better screenshot naming convention uses a short description of the context or UI state, such as `figma-checkout-flow-mobile.png` or `slack-project-deadline-thread.png`. If you take screenshots often, [Zush](https://zushapp.com) can automate that descriptive step so screenshots stop piling up under timestamp names.
 
+
 ## The best structure for screenshot filenames
 
 For most Mac users, the strongest pattern is:
@@ -66,6 +67,7 @@ Examples:
 
 Do not turn screenshots into paragraphs. The goal is quick recognition.
 
+
 ## Manual vs automatic screenshot naming
 
 ### Manual naming works when
@@ -85,6 +87,12 @@ This is where [Zush](https://zushapp.com) is useful. It can watch your screensho
 
 If your issue extends beyond screenshots, [How to Rename Images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos) covers the broader workflow.
 
+![Zush processing tab showing naming pattern configuration with title name format and localization settings](/images/screenshots/light/zush-naming-settings.webp)
+
+![Zush applying custom naming patterns to screenshots automatically on macOS](/videos/zush-naming-pattern.mp4)
+
+![Zush AI rename results showing screenshots with descriptive before and after names](/images/screenshots/light/zush-batch-rename-results.webp)
+
 ## Practical rules that keep screenshot libraries usable
 
 - Pick one separator style and keep it consistent
@@ -92,6 +100,7 @@ If your issue extends beyond screenshots, [How to Rename Images with AI on macOS
 - Add sequence numbers only when order matters
 - Avoid vague terms like `new`, `latest`, or `important`
 - Rename at capture time if possible, not weeks later
+
 
 ## Conclusion
 

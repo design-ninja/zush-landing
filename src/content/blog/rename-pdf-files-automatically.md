@@ -15,6 +15,9 @@ Automatic PDF renaming with AI solves this by reading the content of each PDF an
 
 [Zush](https://zushapp.com/rename-pdf-with-ai) handles this on Mac with support for batch renaming, custom naming patterns, and folder monitoring for ongoing automation.
 
+![Zush main AI Rename screen showing all supported file format badges including PDF](/images/screenshots/light/zush-main-interface.webp)
+
+
 ## The PDF naming problem
 
 PDFs have uniquely bad filenames because of how they are created and distributed:
@@ -70,6 +73,10 @@ The AI then synthesizes this information into a concise, descriptive filename th
 
 Every renamed file is now findable through Spotlight search, identifiable in Finder, and meaningful in shared folders and email threads.
 
+![Zush AI rename results showing PDF files with descriptive before and after names](/images/screenshots/light/zush-batch-rename-results.webp)
+
+![Automatic PDF renaming with AI-powered naming patterns on Mac](/videos/zush-naming-pattern.mp4)
+
 ## Step-by-step: automatic PDF renaming with Zush
 
 ### 1. Start with your worst folder
@@ -78,7 +85,7 @@ Most people have one folder that contains the bulk of their poorly named PDFs. I
 
 ### 2. Open the folder in Zush
 
-Load the folder in [Zush](https://zushapp.com/ai-pdf-renamer). The app identifies all PDF files and prepares them for batch processing.
+Load the folder in [Zush](https://zushapp.com/rename-pdf-with-ai). The app identifies all PDF files and prepares them for batch processing.
 
 ### 3. Choose your naming pattern
 
@@ -134,6 +141,7 @@ Tax season means gathering W-2s, 1099s, bank statements, mortgage documents, and
 
 Freelancers and agencies receive documents from multiple clients, often with overlapping generic names. Two different clients both send `contract.pdf`. Three vendors all submit `invoice.pdf`. AI renaming disambiguates by reading the content and generating unique, descriptive names for each file.
 
+
 ## Folder monitoring for continuous automation
 
 One-time batch renaming clears the backlog. Folder monitoring prevents it from returning. This is the difference between cleaning up and staying organized.
@@ -180,6 +188,7 @@ Monthly invoices, quarterly reports, annual tax documents, and weekly meeting no
 Hyphens are universally safe across operating systems, readable in URLs, and produce clean filenames. Avoid spaces, which cause issues in Terminal and some sharing workflows.
 
 For a comprehensive naming framework, see [File Naming Conventions Best Practices](/blog/file-naming-conventions-best-practices).
+
 
 ## Getting started
 

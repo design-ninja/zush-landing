@@ -1,7 +1,7 @@
 import { execSync } from 'node:child_process';
 import { join } from 'node:path';
 import { getAllPosts } from '@/data/blog';
-import { INDEXABLE_STATIC_ROUTES, SITE_ORIGIN } from '@/seo/config';
+import { INDEXABLE_STATIC_ROUTES, FEATURE_ROUTES, SITE_ORIGIN } from '@/seo/config';
 
 const BLOG_CONTENT_DIR = join(process.cwd(), 'src', 'content', 'blog');
 
@@ -28,6 +28,30 @@ function getGitDate(filePath: string): string | null {
   }
 }
 
+type Changefreq = 'daily' | 'weekly' | 'monthly' | 'yearly';
+
+function getRouteHints(route: string): { changefreq: Changefreq; priority: string } {
+  if (route === '/') {
+    return { changefreq: 'weekly', priority: '1.0' };
+  }
+  if (route === '/blog') {
+    return { changefreq: 'weekly', priority: '0.9' };
+  }
+  if ((FEATURE_ROUTES as readonly string[]).includes(route)) {
+    return { changefreq: 'weekly', priority: '0.8' };
+  }
+  if (route === '/changelog') {
+    return { changefreq: 'weekly', priority: '0.6' };
+  }
+  if (route === '/methodology') {
+    return { changefreq: 'monthly', priority: '0.5' };
+  }
+  if (['/privacy-policy', '/terms-of-service', '/refund-policy'].includes(route)) {
+    return { changefreq: 'yearly', priority: '0.3' };
+  }
+  return { changefreq: 'monthly', priority: '0.5' };
+}
+
 export function GET() {
   const staticRoutes = INDEXABLE_STATIC_ROUTES.filter(
     (route) =>
@@ -38,9 +62,12 @@ export function GET() {
   );
   const staticEntries = staticRoutes.map((route) => {
     const loc = `${SITE_ORIGIN}${route === '/' ? '/' : route}`;
+    const { changefreq, priority } = getRouteHints(route);
     return {
       loc,
       lastmod: new Date().toISOString(),
+      changefreq,
+      priority,
     };
   });
 
@@ -53,12 +80,14 @@ export function GET() {
     return {
       loc,
       lastmod: gitDate ?? new Date(`${post.date}T00:00:00.000Z`).toISOString(),
+      changefreq: 'monthly' as Changefreq,
+      priority: '0.7',
     };
   });
 
   const urls = [...staticEntries, ...blogEntries]
-    .map(({ loc, lastmod }) => {
-      return `  <url>\n    <loc>${escapeXml(loc)}</loc>\n    <lastmod>${escapeXml(lastmod)}</lastmod>\n  </url>`;
+    .map(({ loc, lastmod, changefreq, priority }) => {
+      return `  <url>\n    <loc>${escapeXml(loc)}</loc>\n    <lastmod>${escapeXml(lastmod)}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
     })
     .join('\n');
 

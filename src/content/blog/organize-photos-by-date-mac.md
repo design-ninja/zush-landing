@@ -9,9 +9,13 @@ tldr: "Date-based photo organization is one of the simplest systems on Mac becau
 
 Organizing photos by date on Mac works because it mirrors how people remember events: trips, shoots, holidays, and projects happened at a specific time. It is also one of the easiest systems to scale.
 
+
 ## Why date-based organization works
 
 Dates are:
+
+![Zush naming pattern configuration with format template and localization options](/images/screenshots/light/zush-naming-settings.webp)
+
 
 - objective
 - easy to sort
@@ -44,13 +48,20 @@ Example:
 
 Use Finder if you want direct file control and custom folder structures.
 
+![Zush batch rename results showing AI-generated descriptive filenames](/images/screenshots/light/zush-batch-rename-results.webp)
+
+
 Use Apple Photos if you prefer app-based browsing and automatic timeline views.
+
 
 ## Best paired strategy
 
 Date-based organization gets stronger when you combine it with descriptive naming. A file called `2026-03-12_IMG_4822.HEIC` is better than `IMG_4822`, but `2026-03-12_sunset-over-lake.heic` is much better still.
 
 That is one reason AI-assisted naming can help. [Zush](https://zushapp.com) can generate descriptive names while keeping the date-based structure useful.
+
+![Zush naming pattern demo for date-based photo file naming on Mac](/videos/zush-naming-pattern.mp4)
+
 
 ## Conclusion
 

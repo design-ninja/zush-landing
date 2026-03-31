@@ -9,11 +9,15 @@ tldr: "The best way to organize photos on Mac is to combine a simple folder or l
 
 The best way to organize photos on Mac is not to rely on one trick. The strongest system combines a clear structure, descriptive filenames, and searchable metadata so you can find images by time, subject, or project.
 
+
 For most people, these are the best options.
 
 ## 1. Organize by date
 
 This is the simplest durable system for large photo libraries.
+
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
 
 Best for:
 
@@ -41,6 +45,9 @@ Best for:
 
 Apple Photos is strong for timeline browsing, albums, and casual personal libraries.
 
+![Zush activity log showing rename history with one-click undo](/images/screenshots/light/zush-activity-log.webp)
+
+
 Best for:
 
 - iPhone users
@@ -48,6 +55,7 @@ Best for:
 - users who prefer app-based browsing over Finder folders
 
 Weakness: it is less flexible if your workflow depends on direct file access in Finder.
+
 
 ## 4. Use Finder folders when file control matters
 
@@ -66,6 +74,8 @@ A folder structure alone is not enough if the filenames are weak. Names like `IM
 
 That is why many Mac users benefit from AI-assisted naming. [Zush](https://zushapp.com) can rename photos based on visible content and improve searchability in Finder and Spotlight.
 
+![Zush batch rename demo showing AI-powered photo renaming on Mac](/videos/zush-batch-rename.mp4)
+
 ## Best practical setup for most users
 
 A solid default is:
@@ -75,6 +85,7 @@ A solid default is:
 - descriptive filenames
 - regular backup
 - light use of tags where needed
+
 
 ## Conclusion
 

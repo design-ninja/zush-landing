@@ -11,6 +11,7 @@ If you are searching for `ai renamer mac`, you are probably not looking for a te
 
 For that use case, [Zush](https://zushapp.com) is the strongest fit in this site’s Mac-focused cluster because it combines content-aware file naming, folder monitoring, rollback, and Finder-friendly workflow design.
 
+
 ## What matters most in an AI renamer on Mac
 
 | Criterion | Why it matters |
@@ -42,7 +43,13 @@ Why it stands out:
 - Spotlight-friendly metadata support
 - rename history and revert support
 
+![Zush main AI Rename screen showing supported file format badges and PRO features](/images/screenshots/light/zush-main-interface.webp)
+
 If you want the full how-to tutorial, go to [How to Rename Images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos). If you want the broader comparison page, read [Best AI File Renamer Tools for Mac Compared](/blog/best-ai-file-renamer-tools-mac-compared). For automation-first intent, go to [Auto Image Renamer for Mac: Automatically Rename Photos and Screenshots](/blog/auto-image-renamer-mac).
+
+![Batch renaming files with AI on Mac using Zush](/videos/zush-batch-rename.mp4)
+
+![Zush AI rename results showing files with before and after names and green checkmarks](/images/screenshots/light/zush-batch-rename-results.webp)
 
 ## Other tool categories worth knowing
 
@@ -57,6 +64,7 @@ Useful for dates, EXIF, and structured fields. Less useful when the filename sho
 ### Scripts and shell workflows
 
 Useful for power users. Expensive to maintain for most people.
+
 
 ## Bottom line
 

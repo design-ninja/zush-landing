@@ -13,6 +13,7 @@ There are three serious approaches to this on macOS, each suited to different ki
 
 This guide covers all three, with setup instructions, comparison tables, and guidance on when to use which approach.
 
+
 ## What auto file renaming means in practice
 
 Auto renaming is not the same as batch renaming. Batch renaming is something you trigger manually on a set of files. Auto renaming happens continuously without your involvement.
@@ -157,6 +158,10 @@ This is better than nothing but still generic. If you have three PDFs arriving o
 
 Every file gets a unique descriptive name because the AI analyzes the actual content, not just the metadata.
 
+![Zush AI rename results showing files with before and after descriptive names](/images/screenshots/light/zush-batch-rename-results.webp)
+
+![Zush folder monitoring automatically renaming files on Mac](/videos/zush-monitor.mp4)
+
 ### Setting up Zush folder monitoring
 
 1. Download Zush from [zushapp.com](https://zushapp.com).
@@ -167,6 +172,8 @@ Every file gets a unique descriptive name because the AI analyzes the actual con
 6. Enable monitoring.
 
 New files in those folders are now renamed automatically as they arrive.
+
+![Zush monitor tab showing folder monitoring configuration with Desktop folder selected](/images/screenshots/light/zush-monitor-settings.webp)
 
 ### Additional features
 
@@ -199,6 +206,7 @@ New files in those folders are now renamed automatically as they arrive.
 | Image format support | All (pattern only) | All (pattern only) | 23 formats (content-aware) |
 | Document format support | All (pattern only) | All (pattern only) | 10 formats (content-aware) |
 | Setup complexity | Medium | Medium | Low |
+
 
 ## Which method to use
 
@@ -245,6 +253,7 @@ Zush keeps a complete rename history. Open the history, find the file, and rever
 ### Does auto renaming change my file contents?
 
 No. All three methods change only the filename. The file content is never modified.
+
 
 ## Getting started
 

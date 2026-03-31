@@ -9,9 +9,13 @@ tldr: "Good digital asset management for designers on Mac means files are easy t
 
 Digital asset management for designers on Mac is really about one question: can you find the right file fast without guessing? If the answer is no, the problem is usually weak naming, mixed exports, and inconsistent project structure.
 
+
 ## What good DAM looks like
 
 A usable system should make these things easy:
+
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
 
 - finding assets in under a minute
 - telling source files from exports
@@ -36,11 +40,18 @@ Examples:
 
 Use `v2`, `v3`, and state labels instead of vague names like `final`.
 
+
 ## Why visual exports are the pain point
 
 Designers usually know where their source files are. The friction starts with screenshots, UI exports, references, and handoff assets. Those are the files that keep getting saved under weak names.
 
+![Zush naming pattern configuration with format template and localization options](/images/screenshots/light/zush-naming-settings.webp)
+
+
 That is where [Zush](https://zushapp.com) can help by turning folders full of images, PDFs, and design documents into something more searchable and easier to scan.
+
+![Zush batch rename demo for managing and renaming design assets on Mac](/videos/zush-batch-rename.mp4)
+
 
 ## Conclusion
 

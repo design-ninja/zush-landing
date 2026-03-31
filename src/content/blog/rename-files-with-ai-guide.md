@@ -13,6 +13,7 @@ AI file renaming solves this by analyzing the actual content of a file and gener
 
 This guide covers what AI file renaming is, how it works, the best ways to do it on any platform, and a step-by-step walkthrough using the most practical tools available today.
 
+
 ## What AI file renaming actually does
 
 Traditional rename tools work with text patterns. They can find and replace strings, add prefixes, append dates, or number files sequentially. That is useful when the rename rule is predictable and the same for every file.
@@ -51,6 +52,8 @@ There are other reasons:
 
 Notice that the AI-generated names are lowercase, hyphenated, and descriptive. Most tools follow this convention because it produces clean, searchable, URL-safe filenames.
 
+![AI renaming files with descriptive names using batch processing](/videos/zush-batch-rename.mp4)
+
 ## How AI file renaming works step by step
 
 The general workflow is the same regardless of which tool you use:
@@ -75,11 +78,13 @@ Good tools show you a preview of the proposed names before applying them. You ca
 
 The best tools keep a rename history so you can revert any change. This matters when you are processing hundreds of files at once.
 
+![Zush AI rename completed showing five files with before and after names and green checkmarks](/images/screenshots/light/zush-batch-rename-results.webp)
+
 ## Best ways to rename files with AI
 
 ### On Mac: Zush
 
-[Zush](https://zushapp.com/rename-files-with-ai) is built specifically for this workflow on macOS. It supports 23 image formats including PNG, JPG, HEIC, and RAW formats, plus 10 document formats including PDF, DOCX, and XLSX.
+[Zush](https://zushapp.com/ai-file-renamer) is built specifically for this workflow on macOS. It supports 23 image formats including PNG, JPG, HEIC, and RAW formats, plus 10 document formats including PDF, DOCX, and XLSX.
 
 Key features:
 
@@ -132,6 +137,7 @@ Here is the practical walkthrough for the most common workflow.
 
 This is the setup that prevents clutter from accumulating in the first place. Instead of cleaning up once a month, the mess never forms.
 
+
 For a complete walkthrough of batch renaming on Mac, see [Batch Rename Files on Mac: Complete Guide](/blog/batch-rename-files-on-mac-complete-guide).
 
 ## Common formats supported
@@ -176,9 +182,12 @@ Accuracy depends on the AI model and the clarity of the file content. Screenshot
 
 Yes. Most tools let you set patterns like `date-description`, `category-description-number`, or your own custom template. Zush supports custom patterns that give you control over the structure of every generated name.
 
+![Zush processing tab showing naming pattern configuration with title name format and localization settings](/images/screenshots/light/zush-naming-settings.webp)
+
 ### Does it work with files already in subfolders?
 
 Yes. You can point batch rename at a parent folder or select specific subfolders. Folder monitoring watches the specific directories you configure.
+
 
 ## When AI renaming is not the right tool
 
@@ -192,4 +201,4 @@ Use the right tool for the job. AI is the answer when the filename should descri
 
 ## Getting started
 
-The fastest way to try AI file renaming is to download [Zush](https://zushapp.com/rename-files-with-ai), rename a few test files with the free tier, and see if the generated names match what you would have typed manually. For most people, the answer is yes, and the time saved compounds quickly.
+The fastest way to try AI file renaming is to download [Zush](https://zushapp.com/ai-file-renamer), rename a few test files with the free tier, and see if the generated names match what you would have typed manually. For most people, the answer is yes, and the time saved compounds quickly.

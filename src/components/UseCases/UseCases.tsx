@@ -44,84 +44,99 @@ const UseCaseCard = ({
   </div>
 );
 
-const UseCases = () => {
-  const useCases: Omit<UseCaseCardProps, 'delay'>[] = [
-    {
-      icon: Palette,
-      title: 'Designers',
-      description: (
-        <>
-          Stop digging through <strong>hundreds of screenshots</strong> for that
-          one reference. Find any mockup, UI element, or inspiration in{' '}
-          <strong>seconds</strong>.
-        </>
-      ),
-      color: 'purple',
-    },
-    {
-      icon: Camera,
-      title: 'Photographers',
-      description: (
-        <>
-          Organize <strong>massive photo libraries</strong> effortlessly.
-          Supports <strong>pro RAW formats</strong> like CR2, NEF, ARW, DNG, RAF,
-          RW2, and more.
-        </>
-      ),
-      color: 'blue',
-    },
-    {
-      icon: Megaphone,
-      title: 'Marketers & SMM',
-      description: (
-        <>
-          Keep <strong>campaign decks, content calendars, and assets</strong>{' '}
-          organized. Quickly find the <strong>right file</strong> for any campaign or report.
-        </>
-      ),
-      color: 'orange',
-    },
-    {
-      icon: Code,
-      title: 'Developers',
-      description: (
-        <>
-          Screenshots for docs, bug reports, and PR reviews —{' '}
-          <strong>always organized</strong> and easy to find.
-        </>
-      ),
-      color: 'green',
-    },
-    {
-      icon: Video,
-      title: 'Content Creators',
-      description: (
-        <>
-          Thumbnails, b-roll references, and visual assets for your content —{' '}
-          <strong>all neatly organized</strong>.
-        </>
-      ),
-      color: 'pink',
-    },
-    {
-      icon: Briefcase,
-      title: 'Product Managers',
-      description: (
-        <>
-          PRDs, meeting notes, spreadsheets, and stakeholder decks —{' '}
-          <strong>instantly searchable</strong>.
-        </>
-      ),
-      color: 'cyan',
-    },
-  ];
+export interface UseCaseData {
+  icon: LucideIcon;
+  title: string;
+  description: ReactNode;
+  color: CardColor;
+}
+
+const defaultUseCases: UseCaseData[] = [
+  {
+    icon: Palette,
+    title: 'Designers',
+    description: (
+      <>
+        Stop digging through <strong>hundreds of screenshots</strong> for that
+        one reference. Find any mockup, UI element, or inspiration in{' '}
+        <strong>seconds</strong>.
+      </>
+    ),
+    color: 'purple',
+  },
+  {
+    icon: Camera,
+    title: 'Photographers',
+    description: (
+      <>
+        Organize <strong>massive photo libraries</strong> effortlessly.
+        Supports <strong>pro RAW formats</strong> like CR2, NEF, ARW, DNG, RAF,
+        RW2, and more.
+      </>
+    ),
+    color: 'blue',
+  },
+  {
+    icon: Megaphone,
+    title: 'Marketers & SMM',
+    description: (
+      <>
+        Keep <strong>campaign decks, content calendars, and assets</strong>{' '}
+        organized. Quickly find the <strong>right file</strong> for any campaign or report.
+      </>
+    ),
+    color: 'orange',
+  },
+  {
+    icon: Code,
+    title: 'Developers',
+    description: (
+      <>
+        Screenshots for docs, bug reports, and PR reviews —{' '}
+        <strong>always organized</strong> and easy to find.
+      </>
+    ),
+    color: 'green',
+  },
+  {
+    icon: Video,
+    title: 'Content Creators',
+    description: (
+      <>
+        Thumbnails, b-roll references, and visual assets for your content —{' '}
+        <strong>all neatly organized</strong>.
+      </>
+    ),
+    color: 'pink',
+  },
+  {
+    icon: Briefcase,
+    title: 'Product Managers',
+    description: (
+      <>
+        PRDs, meeting notes, spreadsheets, and stakeholder decks —{' '}
+        <strong>instantly searchable</strong>.
+      </>
+    ),
+    color: 'cyan',
+  },
+];
+
+interface UseCasesProps {
+  title?: string;
+  description?: string;
+  items?: UseCaseData[];
+}
+
+const UseCases = ({ title, description, items }: UseCasesProps = {}) => {
+  const useCases = items ?? defaultUseCases;
 
   return (
     <section id='use-cases' className={styles.UseCases}>
       <div className={styles.UseCases__Container}>
         <SectionHeader
-          title='Who Uses AI File Renaming'
-          description='From designers to developers — Zush saves hours for everyone who works with files'
+          title={title ?? 'Who Uses AI File Renaming'}
+          description={description ?? 'From designers to developers — Zush saves hours for everyone who works with files'}
         />
 
         <div className={styles.UseCases__Grid}>

@@ -11,9 +11,13 @@ Most photo libraries become messy for the same reasons: generic filenames, weak 
 
 Here are the most common ones, with the shortest fix for each.
 
+
 ## 1. Keeping default camera filenames
 
 Names like `IMG_4382` and `DSC_0091` are fine for devices and terrible for humans.
+
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
 
 Fix: rename important photo sets with descriptive filenames. For larger libraries, use AI assistance. [Zush](https://zushapp.com) is useful here because it can turn weak visual filenames into searchable names at scale.
 
@@ -26,6 +30,9 @@ Fix: organize by year, month, event, or project. Keep the structure shallow enou
 ## 3. Relying only on folders
 
 Folders help, but a bad filename inside a good folder is still hard to find.
+
+![Zush naming pattern configuration with format template and localization options](/images/screenshots/light/zush-naming-settings.webp)
+
 
 Fix: use both structure and descriptive names.
 
@@ -40,6 +47,7 @@ Fix: cull regularly. Keep the best version, archive the rest if needed, and avoi
 Some files get dates, others get events, others keep the original camera name.
 
 Fix: pick one naming rule for each type of photo workflow and stick to it.
+
 
 ## 6. Skipping backups
 
@@ -82,6 +90,9 @@ For most people, a workable photo organization system includes:
 - automation for the files that pile up fastest
 
 That last part matters. If screenshots, downloads, and exported images keep arriving with bad names, the system will decay again. [Zush](https://zushapp.com) helps prevent that by reducing the manual rename burden on the image-heavy side of the workflow.
+
+![Zush folder monitoring demo to automatically fix photo organization mistakes](/videos/zush-monitor.mp4)
+
 
 ## Conclusion
 

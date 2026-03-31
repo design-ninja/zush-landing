@@ -13,7 +13,19 @@ const jsonLd = {
   name: 'Zush Methodology & Benchmarks',
   url: 'https://zushapp.com/methodology',
   inLanguage: 'en',
+  datePublished: '2026-01-15',
+  dateModified: '2026-03-01',
+  lastReviewed: '2026-03-01',
   publisher: {
+    '@type': 'Organization',
+    name: 'Zush',
+    url: 'https://zushapp.com',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://zushapp.com/logo.png',
+    },
+  },
+  author: {
     '@type': 'Organization',
     name: 'Zush',
     url: 'https://zushapp.com',
@@ -303,16 +315,6 @@ const jsonLd = {
     border-radius: 1.6rem;
     padding: 1.5rem;
     box-shadow: 0 1rem 2.5rem oklch(0 0 0 / 0.04);
-  }
-
-  .methodology__card::before {
-    content: '';
-    position: absolute;
-    inset: 0 auto auto 0;
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, oklch(1 0 0 / 0.5), transparent 55%);
-    pointer-events: none;
   }
 
   .methodology__card_highlight {

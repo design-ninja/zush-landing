@@ -3,6 +3,7 @@ import FeatureLandingPage from '@/components/FeatureLandingPage';
 const AIImageRenamer = () => (
   <FeatureLandingPage
     h1="AI Image Renamer for macOS"
+    category="image"
     definitionTitle="What Is an AI Image Renamer?"
     definitionText="An AI image renamer uses vision models to understand what's in each photo and generates clear, descriptive filenames automatically."
     showcaseSlides={[{
@@ -46,9 +47,9 @@ const AIImageRenamer = () => (
       },
     ]}
     relatedPages={[
-      { title: 'Rename Images with AI', href: '/rename-images-with-ai' },
-      { title: 'AI Photo Renamer', href: '/ai-photo-renamer' },
-      { title: 'AI File Renamer', href: '/ai-file-renamer' },
+      { title: 'Rename Photos with AI', href: '/rename-photos-with-ai' },
+      { title: 'Rename Screenshots with AI', href: '/rename-screenshots-with-ai' },
+      { title: 'AI File Renamer for macOS', href: '/ai-file-renamer' },
     ]}
     relatedBlogPosts={[
       { title: 'AI Image Renamer for Mac: The Complete Guide', href: 'ai-image-renamer-for-mac' },

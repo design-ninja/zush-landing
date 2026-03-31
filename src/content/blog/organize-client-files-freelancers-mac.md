@@ -11,9 +11,13 @@ Freelancer file organization on Mac breaks down for one reason: every client bri
 
 A better system is boring on purpose. Use the same top-level structure for every client, keep filenames consistent, and automate the visual files that would otherwise stay under names like `IMG_4382`, `Screenshot 2026-03-01 at 09.41.22`, or `download (2)`. For that part of the workflow, [Zush](https://zushapp.com) is especially useful because freelancer folders often accumulate screenshots, design exports, references, contracts, invoices, and client documents faster than they can be renamed manually.
 
+
 ## A client folder structure that scales
 
 At the top level, organize by client first:
+
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
 
 - `Client-Name`
 - `Client-Name/Admin`
@@ -45,6 +49,9 @@ Avoid filenames like `final`, `latest`, or `homepage-new-new`.
 
 For many freelancers, the worst folders are not contracts or invoices. They are visual assets:
 
+![Zush naming pattern configuration with format template and localization options](/images/screenshots/light/zush-naming-settings.webp)
+
+
 - screenshots from client feedback
 - downloaded references
 - exported social media graphics
@@ -58,6 +65,9 @@ These files often arrive under terrible names and then stay that way because man
 
 If your work is especially design-heavy, see [How to Organize Design Assets: A UI/UX Workflow Guide](/blog/organize-design-assets-ui-ux-workflow).
 
+
+![Zush batch rename demo for organizing client files and freelancer project assets](/videos/zush-batch-rename.mp4)
+
 ## A simple weekly maintenance routine
 
 1. Move loose files from Desktop and Downloads into the right client folder
@@ -67,6 +77,7 @@ If your work is especially design-heavy, see [How to Organize Design Assets: A U
 5. Keep one active versioning pattern across the client account
 
 This maintenance routine matters more than a theoretically perfect folder tree.
+
 
 ## Conclusion
 
