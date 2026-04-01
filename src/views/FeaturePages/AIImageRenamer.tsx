@@ -81,6 +81,10 @@ const AIImageRenamer = () => (
               description: '10,000 AI renames, one-time payment',
             },
           ],
+          speakable: {
+            '@type': 'SpeakableSpecification',
+            cssSelector: ['h1', 'meta[name="description"]'],
+          },
         },
         {
           '@type': 'FAQPage',

@@ -56,6 +56,10 @@ const jsonLd = {
           text: 'Check the AI-generated names, tweak your naming pattern if desired, and apply the changes. All files are renamed instantly while preserving their content.',
         },
       ],
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: ['h1', 'meta[name="description"]'],
+      },
     },
     {
       '@type': 'FAQPage',

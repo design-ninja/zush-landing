@@ -56,6 +56,10 @@ const jsonLd = {
           text: 'Preview the new names, adjust your naming pattern, and apply. Your photo library is instantly searchable by filename in Finder.',
         },
       ],
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: ['h1', 'meta[name="description"]'],
+      },
     },
     {
       '@type': 'FAQPage',

@@ -4,6 +4,13 @@ import { getAllPosts } from '@/data/blog';
 import { INDEXABLE_STATIC_ROUTES, FEATURE_ROUTES, SITE_ORIGIN } from '@/seo/config';
 
 const BLOG_CONTENT_DIR = join(process.cwd(), 'src', 'content', 'blog');
+const PAGES_DIR = join(process.cwd(), 'src', 'pages');
+
+function getPageSourceFile(route: string): string {
+  if (route === '/') return join(PAGES_DIR, 'index.astro');
+  if (route === '/blog') return join(PAGES_DIR, 'blog', 'index.astro');
+  return join(PAGES_DIR, `${route.slice(1)}.astro`);
+}
 
 function escapeXml(value: string): string {
   return value
@@ -63,9 +70,11 @@ export function GET() {
   const staticEntries = staticRoutes.map((route) => {
     const loc = `${SITE_ORIGIN}${route === '/' ? '/' : route}`;
     const { changefreq, priority } = getRouteHints(route);
+    const sourceFile = getPageSourceFile(route);
+    const gitDate = getGitDate(sourceFile);
     return {
       loc,
-      lastmod: new Date().toISOString(),
+      lastmod: gitDate ?? new Date('2026-03-01T00:00:00.000Z').toISOString(),
       changefreq,
       priority,
     };

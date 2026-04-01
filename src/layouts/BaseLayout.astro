@@ -66,12 +66,16 @@ const needsTopOffset = includeChrome && !isHomePage && !isFeaturePage;
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Zush — AI File Renamer for macOS" />
+    {seo.publishedTime && <meta property="article:published_time" content={seo.publishedTime} />}
+    {seo.modifiedTime && <meta property="article:modified_time" content={seo.modifiedTime} />}
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={seo.title} />
     <meta name="twitter:description" content={seo.description} />
     <meta name="twitter:image" content={DEFAULT_OG_IMAGE} />
     <meta name="twitter:image:alt" content="Zush — AI File Renamer for macOS" />
+    <meta name="twitter:site" content="@zush_app" />
+    <meta name="twitter:creator" content="@zush_app" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

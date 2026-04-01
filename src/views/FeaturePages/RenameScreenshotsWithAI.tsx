@@ -56,6 +56,10 @@ const jsonLd = {
           text: 'The generic timestamp-based name is replaced with a descriptive name that reflects what the screenshot actually shows. No manual intervention needed.',
         },
       ],
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: ['h1', 'meta[name="description"]'],
+      },
     },
     {
       '@type': 'FAQPage',

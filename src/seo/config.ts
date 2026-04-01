@@ -1,4 +1,5 @@
 import type { BlogFrontmatter } from '@/utils/frontmatter';
+import { HOME_FAQ_DATA } from '@/data/homeFaq';
 
 export const SITE_ORIGIN = 'https://zushapp.com';
 export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og-image.png`;
@@ -9,6 +10,8 @@ export interface SeoMeta {
   canonicalPath: string;
   robots: 'index, follow' | 'noindex, nofollow';
   ogType?: 'website' | 'article';
+  publishedTime?: string;
+  modifiedTime?: string;
 }
 
 type RouteSeoMeta = Omit<SeoMeta, 'canonicalPath'>;
@@ -62,9 +65,9 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ogType: 'website',
   },
   '/blog': {
-    title: 'Blog — Zush',
+    title: 'AI File Renaming Tips, Guides & Insights — Zush Blog',
     description:
-      'Tips, guides, and insights on AI-powered file organization for macOS. Learn about smart renaming, metadata, and workflow automation.',
+      'Practical guides on AI-powered file organization for macOS. Learn about smart renaming, batch processing, metadata tagging, and workflow automation with Zush.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -184,6 +187,8 @@ export function getBlogSeo(post: BlogFrontmatter): SeoMeta {
     canonicalPath: `/blog/${post.slug}`,
     robots: 'index, follow',
     ogType: 'article',
+    publishedTime: post.date,
+    modifiedTime: post.reviewedAt || post.date,
   };
 }
 
@@ -308,6 +313,10 @@ export const HOME_JSON_LD = {
       publisher: {
         '@id': `${SITE_ORIGIN}/#organization`,
       },
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: ['h1', '[class*="Hero__Subtitle"]', '#faq'],
+      },
     },
     {
       '@type': 'SoftwareApplication',
@@ -323,6 +332,10 @@ export const HOME_JSON_LD = {
         price: '10',
         priceCurrency: 'USD',
         name: 'Zush PRO',
+      },
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: ['h1', 'meta[name="description"]'],
       },
     },
     {
@@ -353,25 +366,15 @@ export const HOME_JSON_LD = {
     {
       '@type': 'FAQPage',
       '@id': `${SITE_ORIGIN}/#faq`,
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: 'What is Zush?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Zush is a macOS app that renames files automatically using AI analysis of screenshots, photos, PDFs, and documents.',
-          },
+      mainEntity: HOME_FAQ_DATA.map((item) => ({
+        '@type': 'Question' as const,
+        name: item.question,
+        acceptedAnswer: {
+          '@type': 'Answer' as const,
+          text: item.answer,
         },
-        {
-          '@type': 'Question',
-          name: 'How does pricing work?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Zush PRO is a one-time purchase for $10 with 10,000 renames, plus BYOK support for unlimited usage.',
-          },
-        },
-      ],
+      })),
     },
     ...VIDEO_OBJECTS_JSON_LD,
   ],
-} as const;
+};

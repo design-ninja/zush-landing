@@ -88,6 +88,10 @@ const AIFileRenamer = () => (
             '60+ language support',
             'Bring Your Own API Key (BYOK)',
           ],
+          speakable: {
+            '@type': 'SpeakableSpecification',
+            cssSelector: ['h1', 'meta[name="description"]'],
+          },
         },
         {
           '@type': 'FAQPage',

@@ -83,6 +83,10 @@ const AutoRenameFiles = () => (
               text: 'Each file is analyzed by AI and given a descriptive name based on its content, with no manual intervention required.',
             },
           ],
+          speakable: {
+            '@type': 'SpeakableSpecification',
+            cssSelector: ['h1', 'meta[name="description"]'],
+          },
         },
         {
           '@type': 'FAQPage',

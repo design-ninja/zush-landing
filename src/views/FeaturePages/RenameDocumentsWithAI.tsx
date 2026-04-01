@@ -56,6 +56,10 @@ const jsonLd = {
           text: 'Review the AI-suggested names, make any adjustments, and rename all your documents in a single batch.',
         },
       ],
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: ['h1', 'meta[name="description"]'],
+      },
     },
     {
       '@type': 'FAQPage',
