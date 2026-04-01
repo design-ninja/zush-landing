@@ -1,5 +1,4 @@
-import type { ChangeEvent, ComponentPropsWithoutRef, ReactNode } from 'react';
-import { useMemo, useState } from 'react';
+import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { getPostBySlug, getRelatedPosts } from '@/data/blog';
@@ -93,19 +92,11 @@ const BlogPost = ({ slug }: BlogPostProps) => {
 
   const { frontmatter, content } = post;
   const relatedPosts = getRelatedPosts(frontmatter.slug);
-  const toc = useMemo(() => extractToc(content), [content]);
+  const toc = extractToc(content);
   const showToc = toc.filter((item) => item.level === 2).length >= 4;
   const shouldRenderInlineCta = countWords(content) >= 1800;
-  const [mobileTocValue, setMobileTocValue] = useState('');
 
   let h2Index = 0;
-
-  const handleMobileTocChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    const nextValue = event.target.value;
-    setMobileTocValue(nextValue);
-    if (!nextValue) return;
-    window.location.hash = nextValue;
-  };
 
   return (
     <article className={styles.BlogPost}>
@@ -159,29 +150,24 @@ const BlogPost = ({ slug }: BlogPostProps) => {
         <BlogCTA placement='early' />
 
         {showToc && (
-          <div className={styles.BlogPost__MobileToc}>
-            <label
-              className={styles.BlogPost__MobileTocLabel}
-              htmlFor='blog-post-toc'
-            >
+          <details className={styles.BlogPost__MobileToc}>
+            <summary className={styles.BlogPost__MobileTocSummary}>
               Jump to section
-            </label>
-            <select
-              id='blog-post-toc'
-              className={styles.BlogPost__MobileTocSelect}
-              onChange={handleMobileTocChange}
-              value={mobileTocValue}
-            >
-              <option value=''>Select a section</option>
+            </summary>
+            <nav className={styles.BlogPost__MobileTocLinks} aria-label='Jump to section'>
               {toc
                 .filter((item) => item.level === 2)
                 .map((item) => (
-                  <option key={item.id} value={`#${item.id}`}>
+                  <AppLink
+                    key={item.id}
+                    href={`#${item.id}`}
+                    className={styles.BlogPost__MobileTocLink}
+                  >
                     {item.text}
-                  </option>
+                  </AppLink>
                 ))}
-            </select>
-          </div>
+            </nav>
+          </details>
         )}
 
         <div className={styles.BlogPost__Layout}>

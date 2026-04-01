@@ -77,10 +77,10 @@ const jsonLd = {
 
 const RenamePhotosWithAI = () => (
   <FeatureLandingPage
-    h1="Rename Photos with AI on macOS"
+    h1="AI Photo Renamer for Mac"
     category="photo"
     definitionTitle="What Is AI Photo Renaming?"
-    definitionText="AI photo renaming uses vision models to analyze what your photos contain and generate descriptive filenames instead of cryptic camera codes."
+    definitionText="Use Zush as an AI photo renamer for Mac to replace IMG_, HEIC, and RAW camera filenames with searchable descriptions of the actual photo."
     showcaseSlides={[{
       files: [
         { before: 'IMG_2847.HEIC', after: 'Birthday Cake Dinner.heic', img: '/images/examples/food.jpg', type: 'image' },

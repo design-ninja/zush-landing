@@ -102,6 +102,10 @@
 
   &__Toc {
     order: 2;
+    align-self: start;
+    position: sticky;
+    top: 6rem;
+    height: fit-content;
 
     @include tablet {
       display: none;
@@ -109,8 +113,6 @@
   }
 
   &__TocInner {
-    position: sticky;
-    top: 6rem;
     padding: 1rem 1rem 1.1rem;
     border: 1px solid var(--border);
     border-radius: $radius-lg;
@@ -145,34 +147,38 @@
   &__MobileToc {
     display: none;
     margin: 1.5rem 0;
+    border: 1px solid var(--border);
+    border-radius: $radius-md;
+    background: var(--card);
 
     @include tablet {
       display: block;
     }
   }
 
-  &__MobileTocLabel {
-    display: block;
-    margin-bottom: 0.5rem;
+  &__MobileTocSummary {
+    list-style: none;
+    cursor: pointer;
+    padding: 0.85rem 1rem;
     font-size: 0.85rem;
     font-weight: 600;
     color: var(--foreground);
+
+    &::-webkit-details-marker {
+      display: none;
+    }
   }
 
-  &__MobileTocSelect {
-    width: 100%;
-    border: 1px solid var(--border);
-    border-radius: $radius-md;
-    padding: 0.85rem 3rem 0.85rem 1rem;
-    background: var(--card);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6L8 10L12 6' stroke='%23171717' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 0.85rem center;
-    background-size: 1rem;
+  &__MobileTocLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0 1rem 1rem;
+  }
+
+  &__MobileTocLink {
     color: var(--foreground);
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
+    line-height: 1.5;
   }
 
   &__Related {

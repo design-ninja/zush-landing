@@ -77,10 +77,10 @@ const jsonLd = {
 
 const RenamePDFWithAI = () => (
   <FeatureLandingPage
-    h1="Rename PDF Files with AI on macOS"
+    h1="AI PDF Renamer for Mac"
     category="pdf"
     definitionTitle="What Is AI PDF Renaming?"
-    definitionText="AI PDF renaming extracts text from your documents and generates descriptive, searchable filenames - whether it's a contract, invoice, or receipt."
+    definitionText="Use Zush as an AI PDF renamer for Mac to read invoices, contracts, scans, and reports, then turn weak filenames into searchable document titles."
     showcaseSlides={[{
       files: [
         { before: 'scan_001.pdf', after: 'Amazon Invoice March.pdf', type: 'pdf' },
@@ -106,7 +106,7 @@ const RenamePDFWithAI = () => (
       { title: 'Auto Rename Files on macOS', href: '/auto-rename-files' },
     ]}
     relatedBlogPosts={[
-      { title: 'Rename PDF Files with AI on Mac', href: 'rename-pdf-files-with-ai-mac' },
+      { title: 'Rename PDF Files with AI on Mac: Practical Workflow Guide', href: 'rename-pdf-files-with-ai-mac' },
       { title: 'File Naming Conventions Best Practices', href: 'file-naming-conventions-best-practices' },
       { title: 'Automate File Organization on macOS', href: 'automate-file-organization-macos' },
     ]}

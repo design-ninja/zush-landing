@@ -1,10 +1,10 @@
 ---
-title: "AI Photo Renamer: Stop Using IMG_ Filenames Forever"
-description: "Learn how an AI photo renamer replaces generic IMG_ filenames with descriptive names by analyzing what each photo actually shows."
+title: "AI Photo Renamer: How to Replace IMG_ Filenames on Mac"
+description: "Learn how an AI photo renamer replaces generic IMG_ and RAW camera filenames with descriptive names, with a clear path to the dedicated Mac photo-renaming page."
 date: "2026-03-23"
 slug: "ai-photo-renamer-guide"
 tags: "ai photo renamer, rename photos with ai, IMG filenames, photo organization, batch rename photos, macOS"
-tldr: "An AI photo renamer uses vision models to analyze each image and generate descriptive filenames, replacing generic camera names like IMG_4382.HEIC with titles that describe the actual subject and scene."
+tldr: "This page is a practical photo-focused guide for replacing IMG_ and camera-code filenames. It supports the dedicated Mac photo-renaming page instead of duplicating it."
 ---
 
 Every camera and smartphone on the planet names photos the same way: a short prefix followed by a sequential number. `IMG_4382.HEIC`. `DSC_0019.NEF`. `P1050233.CR2`. The device captures a sunset, a contract, a child's birthday party, and a product prototype, and gives them all equally meaningless names.
@@ -12,6 +12,8 @@ Every camera and smartphone on the planet names photos the same way: a short pre
 That system works for the camera. It does not work for the person who needs to find a specific photo six months later. If you have ever scrolled through hundreds of `IMG_` files trying to locate one image, you already understand the problem.
 
 An AI photo renamer solves this by analyzing what each photo actually contains and generating a descriptive filename. Instead of `IMG_4382.HEIC`, you get `sunset-over-lake-michigan-golden-hour.heic`. Instead of `DSC_0019.NEF`, you get `client-headshot-studio-natural-light.nef`. The filename becomes a useful search term, not a random number.
+
+If you already want the main commercial page for this intent, start with [AI Photo Renamer for Mac](/rename-photos-with-ai).
 
 [Zush](https://zushapp.com/rename-photos-with-ai) does this on Mac across 23 image formats, including RAW and HEIC, with batch renaming and custom naming patterns.
 

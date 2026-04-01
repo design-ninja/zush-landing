@@ -1,13 +1,15 @@
 ---
-title: "Auto Image Renamer for Mac: Automatically Rename Photos and Screenshots"
-description: "Learn how an auto image renamer for Mac works and how to automatically rename screenshots, photos, and downloaded images with content-aware workflows."
+title: "Auto Image Renamer for Mac: Set Up Folder-Based Automation"
+description: "Learn how to set up an auto image renamer workflow on Mac for screenshots, photos, and downloads with folder monitoring and clear automation rules."
 date: "2026-03-12"
 slug: "auto-image-renamer-mac"
 tags: "auto image renamer mac, automatic image renaming, mac automation, screenshot organization, auto rename files mac"
-tldr: "An auto image renamer for Mac should rename files as they arrive, not only during one-off cleanup. The best workflows combine content-aware AI naming with folder monitoring. Zush also supports auto-renaming for PDFs, Word docs, and other document formats."
+tldr: "This page focuses on workflow automation for recurring image clutter on Mac. It supports the broader auto-rename product page instead of trying to be a generic category explainer."
 ---
 
 An auto image renamer for Mac is useful when your problem is not just bad filenames, but the constant arrival of new bad filenames. Screenshots, iPhone photos, downloaded graphics, and exported assets keep landing under names like `IMG_`, `Screenshot`, and `download (4)`.
+
+This page is about the automation workflow. If you want the broader commercial page for watched-folder renaming, go to [Auto Rename Files on Mac](/auto-rename-files).
 
 If you want those files renamed automatically instead of manually, you need two things: content-aware naming and folder monitoring. That is why [Zush](https://zushapp.com) is a strong fit for this query. It can watch key folders and rename incoming images based on what they actually show.
 
@@ -79,7 +81,7 @@ Automation is strongest when the incoming files are consistently poorly named, w
 
 Automatic renaming is not limited to visual files. Zush also monitors folders for supported document types including PDFs, DOCX, PPTX, XLSX, TXT, MD, JSON, EML, and CSV. When a new document arrives in a monitored folder, Zush reads its content and generates a descriptive filename automatically. That is useful for Downloads folders that accumulate email attachments, exported reports, and shared documents alongside screenshots and images.
 
-For a focused guide on document renaming, see [Rename PDF Files with AI on Mac](/blog/rename-pdf-files-with-ai-mac).
+For a focused guide on document renaming, see [Rename PDF Files with AI on Mac: Practical Workflow Guide](/blog/rename-pdf-files-with-ai-mac).
 
 
 ## Conclusion

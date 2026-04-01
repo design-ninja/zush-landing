@@ -154,7 +154,7 @@ Key differences:
 
 If you are cleaning up months of accumulated image clutter, batch rename is the way to go. If you are setting up an ongoing workflow, pair single rename with folder monitoring so every new file gets named as it arrives.
 
-For a walkthrough of the automatic approach, see [Auto Image Renamer for Mac: Automatically Rename Photos and Screenshots](/blog/auto-image-renamer-mac).
+For a walkthrough of the automatic approach, see [Auto Image Renamer for Mac: Set Up Folder-Based Automation](/blog/auto-image-renamer-mac).
 
 ## Naming patterns for images
 
@@ -217,7 +217,7 @@ This is especially useful for screenshots. macOS generates screenshots constantl
 
 The same applies to Downloads. Every time you save an image from the web, it arrives with whatever name the server assigned. Folder monitoring renames it immediately, so by the time you look at your Downloads folder, every file already has a useful name.
 
-For a detailed guide on setting up automatic renaming, see [Auto Image Renamer for Mac: Automatically Rename Photos and Screenshots](/blog/auto-image-renamer-mac).
+For a detailed guide on setting up automatic renaming, see [Auto Image Renamer for Mac: Set Up Folder-Based Automation](/blog/auto-image-renamer-mac).
 
 ## Best practices
 
@@ -257,7 +257,7 @@ While this guide focuses on images, the same AI-powered workflow applies to docu
 
 The difference with documents is that the AI reads the text content rather than analyzing visual elements. A PDF named `invoice_38291.pdf` becomes `acme-corp-invoice-march-2026-web-hosting.pdf`. A presentation named `deck-v3-final.pptx` becomes `q1-revenue-review-board-meeting.pptx`.
 
-For a document-specific walkthrough, see [Rename PDF Files with AI on Mac](/blog/rename-pdf-files-with-ai-mac). For a broader comparison of tools, see [Best AI File Renamer Tools for Mac Compared](/blog/best-ai-file-renamer-tools-mac-compared).
+For a document-specific walkthrough, see [Rename PDF Files with AI on Mac: Practical Workflow Guide](/blog/rename-pdf-files-with-ai-mac). For a broader comparison of tools, see [Best AI File Renamer Tools for Mac Compared](/blog/best-ai-file-renamer-tools-mac-compared).
 
 ## Conclusion
 

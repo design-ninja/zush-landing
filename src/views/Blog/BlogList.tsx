@@ -41,10 +41,6 @@ const BlogList = () => {
                 <Text as='p' color='subtle' className={styles.BlogList__PostDescription}>
                   {post.description}
                 </Text>
-                <div className={styles.BlogList__PostMeta}>
-                  <time dateTime={post.date}>{formatDate(post.date)}</time>
-                  <span>{post.readingTime} min read</span>
-                </div>
                 {post.tags.length > 0 && (
                   <div className={styles.BlogList__PostTags}>
                     {post.tags.map((tag) => (
@@ -54,6 +50,10 @@ const BlogList = () => {
                     ))}
                   </div>
                 )}
+                <div className={styles.BlogList__PostMeta}>
+                  <time dateTime={post.date}>{formatDate(post.date)}</time>
+                  <span>{post.readingTime} min read</span>
+                </div>
               </AppLink>
             </article>
           ))}

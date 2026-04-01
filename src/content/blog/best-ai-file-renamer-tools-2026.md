@@ -1,15 +1,17 @@
 ---
-title: "Best AI File Renamer Tools in 2026: Free & Paid Compared"
-description: "Compare the best AI file renamer tools in 2026 including free options, paid plans, format support, and automation features for images and documents."
+title: "Best AI File Renamer Tools in 2026: Cross-Platform Comparison"
+description: "Compare AI file renamer tools across Mac, Windows, web, free, and paid options in 2026 with a broad market view rather than a Mac-only buying page."
 date: "2026-03-23"
 slug: "best-ai-file-renamer-tools-2026"
 tags: "ai file renamer, ai file renamer free, best ai rename tool, file renaming tools 2026, ai rename comparison"
-tldr: "The best AI file renamer in 2026 depends on your platform, file types, and budget. Zush leads on Mac for mixed image and document workflows. Other tools serve narrower use cases."
+tldr: "This page is a broad 2026 market comparison of AI file renamer tools across platforms. For Mac-only buying intent, the more specific comparison page is the better fit."
 ---
 
 AI file renamers have gone from experimental curiosities to practical tools. The category has matured enough that there are now real differences between options, not just in AI quality but in format support, automation, pricing, and platform fit.
 
-This comparison covers the tools worth knowing about in 2026, with honest assessments of what each one does well and where it falls short. If you are looking for the right AI file renamer, whether free or paid, this is the breakdown.
+This comparison covers the tools worth knowing about in 2026, with honest assessments of what each one does well and where it falls short across platforms.
+
+If you only care about Mac buyer intent, go to [Best AI File Renamer Tools for Mac Compared](/blog/best-ai-file-renamer-tools-mac-compared) or straight to [AI File Renamer for Mac](/ai-file-renamer). This page stays broad on purpose.
 
 
 ## What to evaluate
@@ -57,7 +59,7 @@ Zush is the strongest option for Mac users who work with a mix of file types. It
 
 ![Zush AI rename results showing files with descriptive before and after names and green checkmarks](/images/screenshots/light/zush-batch-rename-results.webp)
 
-For a Mac-specific deep dive, see [AI Renamer Mac: Best Tools for Renaming Files Automatically](/blog/ai-renamer-mac).
+For a Mac-specific deep dive, see [AI Renamer Mac: How to Choose the Right Tool on Mac](/blog/ai-renamer-mac).
 
 ### 2. AI Renamer
 

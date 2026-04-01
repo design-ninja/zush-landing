@@ -178,7 +178,7 @@ Tools like Finder's built-in batch rename work well for one-off cleanup jobs. Bu
 
 The key advantage of folder monitoring is that it runs continuously without your input. You set it up once and it handles every file from that point forward. That is the difference between a cleanup tool and a prevention tool.
 
-For a deeper look at AI-powered automatic renaming, see [Auto Image Renamer for Mac: Automatically Rename Photos and Screenshots](/blog/auto-image-renamer-mac).
+For a deeper look at AI-powered automatic renaming, see [Auto Image Renamer for Mac: Set Up Folder-Based Automation](/blog/auto-image-renamer-mac).
 
 ## When folder monitoring is not the right fit
 

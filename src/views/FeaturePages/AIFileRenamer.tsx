@@ -2,10 +2,10 @@ import FeatureLandingPage from '@/components/FeatureLandingPage';
 
 const AIFileRenamer = () => (
   <FeatureLandingPage
-    h1="AI File Renamer for macOS"
+    h1="AI File Renamer for Mac"
     category="general"
     definitionTitle="What Is an AI File Renamer?"
-    definitionText="An AI file renamer analyzes what's inside your files — images, documents, PDFs — and generates descriptive, searchable names automatically."
+    definitionText="Zush is the AI file renamer for Mac when you need one workflow for screenshots, PDFs, documents, and photos with descriptive names, batch control, and rollback."
     showcaseSlides={[{
       files: [
         { before: 'IMG_2087.PNG', after: 'Summer Campaign Mockup.png', img: '/images/examples/sunset.jpg', type: 'image' },
@@ -52,7 +52,7 @@ const AIFileRenamer = () => (
       { title: 'Rename Documents with AI', href: '/rename-documents-with-ai' },
     ]}
     relatedBlogPosts={[
-      { title: 'AI Renamer for Mac: A Deep Dive', href: 'ai-renamer-mac' },
+      { title: 'AI Renamer Mac: How to Choose the Right Tool on Mac', href: 'ai-renamer-mac' },
       { title: 'How to Rename Images with AI on macOS', href: 'how-to-rename-images-with-ai-on-macos' },
       { title: 'Automate File Organization on macOS', href: 'automate-file-organization-macos' },
     ]}

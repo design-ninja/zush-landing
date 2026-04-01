@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import FeatureLandingPageShell from '@/components/FeatureLandingPage/FeatureLandingPageShell.astro';
-import { getFeaturePageProps, VIDEO_SCHEMA } from '@/utils/featurePageProps';
+import { getFeaturePageProps } from '@/utils/featurePageProps';
 import AIFileRenamer from '@/views/FeaturePages/AIFileRenamer';
 import { getSeoForPath } from '@/seo/config';
 import { buildFeatureBreadcrumbJsonLd } from '@/utils/jsonLd';
@@ -10,6 +10,6 @@ const seo = getSeoForPath('/ai-file-renamer');
 const featurePage = getFeaturePageProps(AIFileRenamer);
 ---
 
-<BaseLayout seo={seo} jsonLd={[featurePage.jsonLd, VIDEO_SCHEMA, buildFeatureBreadcrumbJsonLd(featurePage.h1, '/ai-file-renamer')]}>
+<BaseLayout seo={seo} jsonLd={[featurePage.jsonLd, buildFeatureBreadcrumbJsonLd(featurePage.h1, '/ai-file-renamer')]}>
   <FeatureLandingPageShell {...featurePage} />
 </BaseLayout>

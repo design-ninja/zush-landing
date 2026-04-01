@@ -17,9 +17,9 @@ export interface SeoMeta {
 type RouteSeoMeta = Omit<SeoMeta, 'canonicalPath'>;
 
 const DEFAULT_META: RouteSeoMeta = {
-  title: 'Zush — AI File Renamer for macOS | Rename Files with AI',
+  title: 'Zush — AI File Renamer for Mac | Rename Screenshots, PDFs, and Photos',
   description:
-    'Rename files with AI on macOS — free to try. Zush automatically renames screenshots, PDFs, and documents using AI. Batch rename, folder monitoring, smart metadata, and custom naming patterns.',
+    'Zush is the AI file renamer for Mac that turns screenshots, PDFs, documents, and photos into searchable filenames. Batch rename, monitor folders, and stay organized automatically.',
   robots: 'noindex, nofollow',
   ogType: 'website',
 };
@@ -81,49 +81,49 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/ai-file-renamer': {
     title: 'AI File Renamer for Mac — Auto Rename Files | Zush',
     description:
-      'The best AI file renamer for macOS. Zush automatically renames images, PDFs, and documents with AI-generated descriptive names. One-time purchase, no subscription.',
+      'AI file renamer for Mac built for screenshots, PDFs, documents, and photos. Zush gives you content-aware names, batch processing, folder monitoring, and rollback in one workflow.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/auto-rename-files': {
-    title: 'Auto Rename Files on Mac with AI | Zush',
+    title: 'Auto Rename Files on Mac with Folder Monitoring | Zush',
     description:
-      'Auto rename files on macOS with AI-powered folder monitoring. Zush watches your folders and renames new files automatically as they appear. Set it and forget it.',
+      'Automatically rename new files on Mac with AI-powered folder monitoring. Zush watches downloads, screenshots, and project folders, then applies descriptive names as files arrive.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/rename-documents-with-ai': {
-    title: 'Rename Documents with AI on Mac | Zush',
+    title: 'AI Document Renamer for Mac | Rename Documents with AI | Zush',
     description:
-      'Rename documents with AI on macOS. Zush reads PDF, DOCX, XLSX, and other document content to generate meaningful filenames automatically.',
+      'Rename documents with AI on Mac. Zush reads PDF, DOCX, XLSX, and other business files, then generates descriptive filenames based on document content.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/rename-pdf-with-ai': {
-    title: 'Rename PDF Files with AI on Mac | Zush',
+    title: 'AI PDF Renamer for Mac | Rename PDF Files with AI | Zush',
     description:
-      'Rename PDF files with AI on macOS. Zush extracts text from PDFs and generates descriptive filenames for invoices, contracts, reports, and more.',
+      'Rename PDF files with AI on Mac. Zush extracts text from invoices, contracts, scans, and reports to generate clear, searchable filenames automatically.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/rename-screenshots-with-ai': {
-    title: 'Rename Screenshots with AI on Mac | Zush',
+    title: 'AI Screenshot Renamer for Mac | Rename Screenshots with AI | Zush',
     description:
-      'Rename screenshots with AI on macOS. Zush replaces generic screenshot names with descriptive AI-generated filenames. Auto-rename with folder monitoring.',
+      'Rename screenshots with AI on Mac. Zush replaces generic macOS screenshot names with descriptive filenames and can auto-rename new captures with folder monitoring.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/rename-photos-with-ai': {
-    title: 'Rename Photos with AI on Mac | Zush',
+    title: 'AI Photo Renamer for Mac | Rename Photos with AI | Zush',
     description:
-      'Rename photos with AI on macOS. Zush analyzes your photo library and generates descriptive names. Supports HEIC, RAW formats, and 60+ languages.',
+      'Rename photos with AI on Mac. Zush analyzes HEIC, RAW, JPG, and other image files to generate descriptive filenames for searchable photo libraries.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/ai-image-renamer': {
-    title: 'AI Image Renamer for Mac — Rename Images Automatically | Zush',
+    title: 'AI Image Renamer for Mac | Rename Photos, Screenshots, and Images | Zush',
     description:
-      'The best AI image renamer for macOS. Supports 23 image formats including RAW. Batch rename, folder monitoring, smart Finder tags. Free tier available.',
+      'AI image renamer for Mac for photos, screenshots, downloads, and design assets. Supports 23 image formats, batch renaming, folder monitoring, and smart Finder metadata.',
     robots: 'index, follow',
     ogType: 'website',
   },

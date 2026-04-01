@@ -118,7 +118,7 @@ If the same folder keeps accumulating poorly named documents, enable folder moni
 
 Law offices deal with contracts, filings, correspondence, and case documents that arrive under generic names from email, scanners, and court portals. An AI document renamer turns `attachment.pdf` into `smith-v-jones-motion-to-dismiss.pdf` without opening the file.
 
-For more on PDF-specific workflows, see [How to Rename PDF Files with AI on Mac](/blog/rename-pdf-files-with-ai-mac).
+For more on PDF-specific workflows, see [Rename PDF Files with AI on Mac: Practical Workflow Guide](/blog/rename-pdf-files-with-ai-mac).
 
 ### Accountants and bookkeepers
 

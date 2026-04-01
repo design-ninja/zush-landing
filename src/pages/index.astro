@@ -1,11 +1,27 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import Home from '@/views/Home';
+import Hero from '@/components/Hero';
+import Videos from '@/components/Videos';
+import Features from '@/components/Features';
+import SupportedFormats from '@/components/SupportedFormats';
+import UseCases from '@/components/UseCases';
+import Pricing from '@/components/Pricing';
+import ComparisonTable from '@/components/ComparisonTable';
+import FAQ from '@/components/FAQ';
+import DownloadCTA from '@/components/DownloadCTA';
 import { getSeoForPath, HOME_JSON_LD } from '@/seo/config';
 
 const seo = getSeoForPath('/');
 ---
 
 <BaseLayout seo={seo} jsonLd={HOME_JSON_LD}>
-  <Home client:load />
+  <Hero client:visible />
+  <Videos client:visible />
+  <Features />
+  <SupportedFormats />
+  <DownloadCTA client:visible />
+  <ComparisonTable />
+  <UseCases />
+  <Pricing client:visible />
+  <FAQ client:visible />
 </BaseLayout>

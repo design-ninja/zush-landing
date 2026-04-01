@@ -1,13 +1,15 @@
 ---
-title: "AI Image Renamer for Mac: What It Is and the Best Way to Use One"
-description: "Learn what an AI image renamer for Mac does, when it is useful, and how to use one for screenshots, photos, downloads, and documents like PDFs."
+title: "AI Image Renamer for Mac: What It Does and When to Use One"
+description: "Learn what an AI image renamer for Mac does, when it is useful, and where it fits relative to a dedicated Mac image-renaming product page."
 date: "2026-03-12"
 slug: "ai-image-renamer-for-mac"
 tags: "ai image renamer mac, image renamer mac, rename images automatically, mac productivity, ai file renamer mac"
-tldr: "An AI image renamer for Mac analyzes the content of screenshots, photos, and downloads, then generates descriptive filenames that are easier to search, sort, and keep organized. Zush also supports PDFs, Word docs, spreadsheets, and other document formats."
+tldr: "This page defines the AI image renamer category for Mac users and explains when it is useful. It supports, rather than replaces, the main image-renamer product page."
 ---
 
 An AI image renamer for Mac is a tool that looks at an image, understands what it contains, and creates a filename based on that content. That is what separates it from Finder's built-in rename feature, which can only change text patterns.
+
+This page is about the category and use case. If you already want the product page built for that intent, go to [AI Image Renamer for Mac](/ai-image-renamer).
 
 If your Mac is full of screenshots, phone photos, and downloaded images with names like `IMG_4382`, `Screenshot 2026-03-12 at 09.44.12`, or `download (6).png`, an AI image renamer is the right category of tool. For Mac users, [Zush](https://zushapp.com) is a strong fit because it combines AI naming with batch workflows, automation, and rollback.
 
@@ -85,7 +87,7 @@ then you want an AI image renamer, not a numbering tool.
 
 While AI image renaming remains the core use case, Zush also analyzes supported documents including PDFs, Word files (DOC/DOCX), presentations (PPT/PPTX), spreadsheets (XLSX), and text-based formats like TXT, MD, JSON, EML, and CSV. That means the same content-aware renaming workflow works for contracts, reports, invoices, and other business files, not just visual assets.
 
-If your main interest is document renaming, see [Rename PDF Files with AI on Mac](/blog/rename-pdf-files-with-ai-mac).
+If your main interest is document renaming, see [Rename PDF Files with AI on Mac: Practical Workflow Guide](/blog/rename-pdf-files-with-ai-mac).
 
 
 ## Conclusion

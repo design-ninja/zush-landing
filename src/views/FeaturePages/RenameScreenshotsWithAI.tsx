@@ -77,10 +77,10 @@ const jsonLd = {
 
 const RenameScreenshotsWithAI = () => (
   <FeatureLandingPage
-    h1="Rename Screenshots with AI on macOS"
+    h1="AI Screenshot Renamer for Mac"
     category="screenshot"
     definitionTitle="What Is AI Screenshot Renaming?"
-    definitionText="AI screenshot renaming analyzes the visual content of your screenshots and replaces generic macOS timestamp names with descriptive, searchable filenames."
+    definitionText="Use Zush as an AI screenshot renamer for Mac to replace generic timestamp names with descriptive filenames and optionally auto-rename new captures."
     showcaseSlides={[{
       files: [
         { before: 'Screenshot 2026-03-15.png', after: 'Slack Project Timeline.png', img: '/images/examples/dashboard.jpg', type: 'image' },

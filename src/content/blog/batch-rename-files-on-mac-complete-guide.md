@@ -398,7 +398,7 @@ For basic renames like replacing "Screenshot" with a project name, Finder handle
 
 ### Can I batch rename PDFs based on their content?
 
-Yes, with AI renaming tools. The AI reads the text content of each PDF and generates a filename that reflects the document's subject. A scanned invoice named `scan_042.pdf` becomes `invoice-7842-webdesign-services-march-2026.pdf`. For a complete walkthrough, see [How to Rename PDF Files Automatically with AI](/blog/rename-pdf-files-automatically).
+Yes, with AI renaming tools. The AI reads the text content of each PDF and generates a filename that reflects the document's subject. A scanned invoice named `scan_042.pdf` becomes `invoice-7842-webdesign-services-march-2026.pdf`. For a complete walkthrough, see [How to Rename PDF Files Automatically: AI Workflow for Repeating Folders](/blog/rename-pdf-files-automatically).
 
 ### Does batch renaming affect file metadata or creation dates?
 

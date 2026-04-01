@@ -1,17 +1,19 @@
 ---
-title: "How to Rename Files with AI: Complete Guide (2026)"
-description: "Learn how to rename files with AI using content-aware tools that generate descriptive filenames from images, PDFs, and documents automatically."
+title: "How to Rename Files with AI: Step-by-Step Guide"
+description: "Learn how to rename files with AI step by step, including how content-aware tools handle screenshots, PDFs, documents, and photos without turning this page into a product comparison."
 date: "2026-03-23"
 slug: "rename-files-with-ai-guide"
 tags: "rename files with ai, ai file renaming, ai rename tool, file organization, productivity"
-tldr: "AI file renaming uses content analysis to generate descriptive filenames automatically. It replaces manual renaming for screenshots, photos, PDFs, and documents with names you can actually search for."
+tldr: "This page is an educational guide to AI file renaming. It explains how the workflow works, where it helps, and how to apply it to screenshots, photos, PDFs, and documents."
 ---
 
 Most files arrive with useless names. Screenshots get timestamps. Photos get camera codes. Downloads get hashes or sequence numbers. You end up with a folder full of files you cannot find without opening each one.
 
 AI file renaming solves this by analyzing the actual content of a file and generating a descriptive filename from it. Instead of `IMG_4821.HEIC`, you get `golden-retriever-playing-in-park.heic`. Instead of `Screenshot 2026-03-23 at 14.32.08.png`, you get `stripe-dashboard-monthly-revenue.png`.
 
-This guide covers what AI file renaming is, how it works, the best ways to do it on any platform, and a step-by-step walkthrough using the most practical tools available today.
+This guide is the educational layer of the cluster. If you already want a Mac-specific product page, see [AI File Renamer for Mac](/ai-file-renamer). If you want the cross-tool comparison, see [Best AI File Renamer Tools in 2026](/blog/best-ai-file-renamer-tools-2026).
+
+This guide covers what AI file renaming is, how it works, and how to apply it step by step without assuming you have already chosen a tool.
 
 
 ## What AI file renaming actually does

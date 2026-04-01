@@ -2,10 +2,10 @@ import FeatureLandingPage from '@/components/FeatureLandingPage';
 
 const AutoRenameFiles = () => (
   <FeatureLandingPage
-    h1="Auto Rename Files on macOS"
+    h1="Auto Rename Files on Mac"
     category="general"
     definitionTitle="What Is Automatic File Renaming?"
-    definitionText="Point an app at a folder and every new file gets analyzed and given a descriptive name automatically. No manual renaming needed."
+    definitionText="Set up watched folders and let Zush rename new screenshots, downloads, PDFs, and documents automatically as files arrive on your Mac."
     showcaseSlides={[{
       files: [
         { before: 'Screenshot 2026-03-20.png', after: 'Figma Login Screen.png', img: '/images/examples/dashboard.jpg', type: 'image' },
@@ -53,7 +53,7 @@ const AutoRenameFiles = () => (
     ]}
     relatedBlogPosts={[
       { title: 'Automate File Organization on macOS', href: 'automate-file-organization-macos' },
-      { title: 'Auto Image Renamer for Mac', href: 'auto-image-renamer-mac' },
+      { title: 'Auto Image Renamer for Mac: Set Up Folder-Based Automation', href: 'auto-image-renamer-mac' },
       { title: 'macOS Automator: Rename Files Guide', href: 'macos-automator-rename-files-guide' },
     ]}
     jsonLd={{

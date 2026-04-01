@@ -2,10 +2,10 @@ import FeatureLandingPage from '@/components/FeatureLandingPage';
 
 const AIImageRenamer = () => (
   <FeatureLandingPage
-    h1="AI Image Renamer for macOS"
+    h1="AI Image Renamer for Mac"
     category="image"
     definitionTitle="What Is an AI Image Renamer?"
-    definitionText="An AI image renamer uses vision models to understand what's in each photo and generates clear, descriptive filenames automatically."
+    definitionText="Use Zush when you need an AI image renamer for Mac for photos, screenshots, downloads, and design assets with descriptive names and repeatable cleanup."
     showcaseSlides={[{
       files: [
         { before: 'IMG_3847.jpg', after: 'Mountain Autumn Foliage.jpg', img: '/images/examples/mountain.jpg', type: 'image' },
@@ -52,7 +52,7 @@ const AIImageRenamer = () => (
       { title: 'AI File Renamer for macOS', href: '/ai-file-renamer' },
     ]}
     relatedBlogPosts={[
-      { title: 'AI Image Renamer for Mac: The Complete Guide', href: 'ai-image-renamer-for-mac' },
+      { title: 'AI Image Renamer for Mac: What It Does and When to Use One', href: 'ai-image-renamer-for-mac' },
       { title: 'How AI Image Recognition Works for File Naming', href: 'how-ai-image-recognition-works' },
       { title: 'AI Image Tagging vs Manual Photo Organization', href: 'ai-image-tagging-vs-manual-photo-organization' },
     ]}

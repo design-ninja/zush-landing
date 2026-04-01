@@ -1,10 +1,10 @@
 ---
-title: "How to Rename PDF Files Automatically with AI"
-description: "Learn how to rename PDF files automatically using AI that reads document content and replaces generic names like scan_001.pdf with descriptive titles."
+title: "How to Rename PDF Files Automatically: AI Workflow for Repeating Folders"
+description: "Learn how to rename PDF files automatically with AI in repeating folders and ongoing workflows, without duplicating the dedicated PDF product page."
 date: "2026-03-23"
 slug: "rename-pdf-files-automatically"
 tags: "rename pdf automatically, auto rename pdf, AI pdf renamer, pdf organization, macOS, document management"
-tldr: "You can rename PDF files automatically by using AI that extracts text and structure from each document, then generates a descriptive filename based on the actual content, replacing names like scan_001.pdf and download.pdf with useful titles."
+tldr: "This page focuses on automatic PDF renaming for recurring folders and ongoing workflows. It complements the dedicated AI PDF renamer page and the broader auto-rename page."
 ---
 
 PDFs are the most common format for documents that matter, and also the most common format for documents with terrible filenames. Scanned invoices arrive as `scan_001.pdf`. Downloaded contracts save as `download.pdf`. Email attachments land as `attachment (3).pdf`. Exported reports default to `report.pdf` or worse.
@@ -14,6 +14,8 @@ The content inside these files is important. The filenames are not just unhelpfu
 Automatic PDF renaming with AI solves this by reading the content of each PDF and generating a descriptive filename. A scanner output called `scan_0042.pdf` becomes `apartment-lease-agreement-2026.pdf`. A downloaded form called `document.pdf` becomes `w9-tax-form-acme-consulting.pdf`. The renaming happens automatically, in batch, without you opening a single file.
 
 [Zush](https://zushapp.com/rename-pdf-with-ai) handles this on Mac with support for batch renaming, custom naming patterns, and folder monitoring for ongoing automation.
+
+If you want the dedicated commercial page for PDFs, go to [AI PDF Renamer for Mac](/rename-pdf-with-ai). If your main problem is watched folders more broadly, also see [Auto Rename Files on Mac](/auto-rename-files).
 
 ![Zush main AI Rename screen showing all supported file format badges including PDF](/images/screenshots/light/zush-main-interface.webp)
 
@@ -127,7 +129,7 @@ Accounting workflows generate enormous volumes of PDFs with poor names. Vendor i
 
 Law firms and legal departments deal with contracts, agreements, filings, and correspondence that arrive from courts, opposing counsel, clients, and internal teams. A folder where every file is `document.pdf` or `scan_001.pdf` is a liability. AI renaming turns those into descriptive names like `nda-client-onboarding-acme-corp.pdf` or `settlement-agreement-draft-v3.pdf`.
 
-For additional PDF-specific strategies on Mac, read [How to Rename PDF Files with AI on Mac](/blog/rename-pdf-files-with-ai-mac).
+For additional PDF-specific strategies on Mac, read [Rename PDF Files with AI on Mac: Practical Workflow Guide](/blog/rename-pdf-files-with-ai-mac).
 
 ### Academic papers and research
 

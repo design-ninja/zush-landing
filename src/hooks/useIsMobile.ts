@@ -13,13 +13,8 @@ export const useIsMobile = (): boolean => {
 
     updateIsMobile();
 
-    if (typeof mediaQuery.addEventListener === 'function') {
-      mediaQuery.addEventListener('change', updateIsMobile);
-      return () => mediaQuery.removeEventListener('change', updateIsMobile);
-    }
-
-    mediaQuery.addListener(updateIsMobile);
-    return () => mediaQuery.removeListener(updateIsMobile);
+    mediaQuery.addEventListener('change', updateIsMobile);
+    return () => mediaQuery.removeEventListener('change', updateIsMobile);
   }, []);
 
   return isMobile;
