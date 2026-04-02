@@ -170,6 +170,12 @@ export function getCanonicalUrl(pathname: string): string {
   return `${SITE_ORIGIN}${path === '/' ? '/' : path}`;
 }
 
+export function toIsoDateTime(value?: string): string | undefined {
+  if (!value) return value;
+  if (value.includes('T')) return value;
+  return `${value}T00:00:00Z`;
+}
+
 export function getSeoForPath(pathname: string): SeoMeta {
   const path = normalizePath(pathname);
   const routeMeta = ROUTE_META[path] || DEFAULT_META;
@@ -187,8 +193,8 @@ export function getBlogSeo(post: BlogFrontmatter): SeoMeta {
     canonicalPath: `/blog/${post.slug}`,
     robots: 'index, follow',
     ogType: 'article',
-    publishedTime: post.date,
-    modifiedTime: post.reviewedAt || post.date,
+    publishedTime: toIsoDateTime(post.date),
+    modifiedTime: toIsoDateTime(post.reviewedAt || post.date),
   };
 }
 
@@ -201,7 +207,7 @@ export const VIDEO_OBJECTS_JSON_LD = [
     thumbnailUrl: `${SITE_ORIGIN}/videos/posters/batch-rename.webp`,
     contentUrl: `${SITE_ORIGIN}/videos/zush-batch-rename.mp4`,
     embedUrl: `${SITE_ORIGIN}/#batch-rename-video`,
-    uploadDate: '2026-02-01',
+    uploadDate: '2026-02-01T00:00:00Z',
     duration: 'PT12S',
     inLanguage: 'en',
     publisher: {
@@ -219,7 +225,7 @@ export const VIDEO_OBJECTS_JSON_LD = [
     thumbnailUrl: `${SITE_ORIGIN}/videos/posters/monitor.webp`,
     contentUrl: `${SITE_ORIGIN}/videos/zush-monitor.mp4`,
     embedUrl: `${SITE_ORIGIN}/#monitor-video`,
-    uploadDate: '2026-02-01',
+    uploadDate: '2026-02-01T00:00:00Z',
     duration: 'PT7S',
     inLanguage: 'en',
     publisher: {
@@ -237,7 +243,7 @@ export const VIDEO_OBJECTS_JSON_LD = [
     thumbnailUrl: `${SITE_ORIGIN}/videos/posters/tags.webp`,
     contentUrl: `${SITE_ORIGIN}/videos/zush-tags.mp4`,
     embedUrl: `${SITE_ORIGIN}/#tags-video`,
-    uploadDate: '2026-02-01',
+    uploadDate: '2026-02-01T00:00:00Z',
     duration: 'PT18S',
     inLanguage: 'en',
     publisher: {
@@ -255,7 +261,7 @@ export const VIDEO_OBJECTS_JSON_LD = [
     thumbnailUrl: `${SITE_ORIGIN}/videos/posters/naming.webp`,
     contentUrl: `${SITE_ORIGIN}/videos/zush-naming-pattern.mp4`,
     embedUrl: `${SITE_ORIGIN}/#naming-video`,
-    uploadDate: '2026-02-01',
+    uploadDate: '2026-02-01T00:00:00Z',
     duration: 'PT10S',
     inLanguage: 'en',
     publisher: {
@@ -273,7 +279,7 @@ export const VIDEO_OBJECTS_JSON_LD = [
     thumbnailUrl: `${SITE_ORIGIN}/videos/posters/multilanguage.webp`,
     contentUrl: `${SITE_ORIGIN}/videos/zush-multilanguage.mp4`,
     embedUrl: `${SITE_ORIGIN}/#multilanguage-video`,
-    uploadDate: '2026-02-01',
+    uploadDate: '2026-02-01T00:00:00Z',
     duration: 'PT13S',
     inLanguage: 'en',
     publisher: {

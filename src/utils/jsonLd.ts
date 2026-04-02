@@ -1,4 +1,5 @@
 import type { BlogFrontmatter, FAQItem } from './frontmatter';
+import { toIsoDateTime } from '@/seo/config';
 
 const SITE_ORIGIN = 'https://zushapp.com';
 
@@ -8,8 +9,8 @@ export function buildBlogPostingJsonLd(post: BlogFrontmatter) {
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.description,
-    datePublished: post.date,
-    dateModified: post.reviewedAt || post.date,
+    datePublished: toIsoDateTime(post.date),
+    dateModified: toIsoDateTime(post.reviewedAt || post.date),
     author: {
       '@type': 'Person',
       name: post.authorName,

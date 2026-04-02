@@ -4,7 +4,7 @@ import AppLink from '@/components/AppLink';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
 import PillLink from '@/components/PillLink';
-import { getSeoForPath } from '@/seo/config';
+import { getSeoForPath, toIsoDateTime } from '@/seo/config';
 
 const seo = getSeoForPath('/methodology');
 const jsonLd = {
@@ -13,9 +13,9 @@ const jsonLd = {
   name: 'Zush Methodology & Benchmarks',
   url: 'https://zushapp.com/methodology',
   inLanguage: 'en',
-  datePublished: '2026-01-15',
-  dateModified: '2026-03-01',
-  lastReviewed: '2026-03-01',
+  datePublished: toIsoDateTime('2026-01-15'),
+  dateModified: toIsoDateTime('2026-03-01'),
+  lastReviewed: toIsoDateTime('2026-03-01'),
   publisher: {
     '@type': 'Organization',
     name: 'Zush',
