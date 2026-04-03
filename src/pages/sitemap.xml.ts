@@ -1,4 +1,5 @@
 import { execSync } from 'node:child_process';
+import { statSync } from 'node:fs';
 import { join } from 'node:path';
 import { getAllPosts } from '@/data/blog';
 import { INDEXABLE_STATIC_ROUTES, FEATURE_ROUTES, SITE_ORIGIN } from '@/seo/config';
@@ -33,6 +34,18 @@ function getGitDate(filePath: string): string | null {
   } catch {
     return null;
   }
+}
+
+function getFileModifiedDate(filePath: string): string | null {
+  try {
+    return statSync(filePath).mtime.toISOString();
+  } catch {
+    return null;
+  }
+}
+
+function getLastModifiedDate(filePath: string, fallbackDate: string): string {
+  return getGitDate(filePath) ?? getFileModifiedDate(filePath) ?? fallbackDate;
 }
 
 type Changefreq = 'daily' | 'weekly' | 'monthly' | 'yearly';
@@ -71,10 +84,9 @@ export function GET() {
     const loc = `${SITE_ORIGIN}${route === '/' ? '/' : route}`;
     const { changefreq, priority } = getRouteHints(route);
     const sourceFile = getPageSourceFile(route);
-    const gitDate = getGitDate(sourceFile);
     return {
       loc,
-      lastmod: gitDate ?? new Date('2026-03-01T00:00:00.000Z').toISOString(),
+      lastmod: getLastModifiedDate(sourceFile, new Date('2026-03-01T00:00:00.000Z').toISOString()),
       changefreq,
       priority,
     };
@@ -84,11 +96,10 @@ export function GET() {
   const blogEntries = posts.map((post) => {
     const loc = `${SITE_ORIGIN}/blog/${post.slug}`;
     const filePath = join(BLOG_CONTENT_DIR, `${post.slug}.md`);
-    const gitDate = getGitDate(filePath);
 
     return {
       loc,
-      lastmod: gitDate ?? new Date(`${post.date}T00:00:00.000Z`).toISOString(),
+      lastmod: getLastModifiedDate(filePath, new Date(`${post.date}T00:00:00.000Z`).toISOString()),
       changefreq: 'monthly' as Changefreq,
       priority: '0.7',
     };
