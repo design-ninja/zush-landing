@@ -198,99 +198,6 @@ export function getBlogSeo(post: BlogFrontmatter): SeoMeta {
   };
 }
 
-export const VIDEO_OBJECTS_JSON_LD = [
-  {
-    '@type': 'VideoObject',
-    name: 'Zush Batch Rename Demo — AI File Renaming on macOS',
-    description:
-      'Watch how to drag and drop multiple files and rename them all at once with AI in Zush for macOS.',
-    thumbnailUrl: `${SITE_ORIGIN}/videos/posters/batch-rename.webp`,
-    contentUrl: `${SITE_ORIGIN}/videos/zush-batch-rename.mp4`,
-    embedUrl: `${SITE_ORIGIN}/#batch-rename-video`,
-    uploadDate: '2026-02-01T00:00:00Z',
-    duration: 'PT12S',
-    inLanguage: 'en',
-    publisher: {
-      '@type': 'Organization',
-      name: 'Zush',
-      url: SITE_ORIGIN,
-      logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/logo.png` },
-    },
-  },
-  {
-    '@type': 'VideoObject',
-    name: 'Zush Folder Monitoring Demo — Auto Rename Files on Mac',
-    description:
-      'See how Zush watches your folders and renames new files automatically in the background on macOS.',
-    thumbnailUrl: `${SITE_ORIGIN}/videos/posters/monitor.webp`,
-    contentUrl: `${SITE_ORIGIN}/videos/zush-monitor.mp4`,
-    embedUrl: `${SITE_ORIGIN}/#monitor-video`,
-    uploadDate: '2026-02-01T00:00:00Z',
-    duration: 'PT7S',
-    inLanguage: 'en',
-    publisher: {
-      '@type': 'Organization',
-      name: 'Zush',
-      url: SITE_ORIGIN,
-      logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/logo.png` },
-    },
-  },
-  {
-    '@type': 'VideoObject',
-    name: 'Zush Smart Tags Demo — AI Finder Tags and Spotlight Metadata',
-    description:
-      'See how Zush generates AI-powered Finder tags and Spotlight metadata for instant file search on macOS.',
-    thumbnailUrl: `${SITE_ORIGIN}/videos/posters/tags.webp`,
-    contentUrl: `${SITE_ORIGIN}/videos/zush-tags.mp4`,
-    embedUrl: `${SITE_ORIGIN}/#tags-video`,
-    uploadDate: '2026-02-01T00:00:00Z',
-    duration: 'PT18S',
-    inLanguage: 'en',
-    publisher: {
-      '@type': 'Organization',
-      name: 'Zush',
-      url: SITE_ORIGIN,
-      logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/logo.png` },
-    },
-  },
-  {
-    '@type': 'VideoObject',
-    name: 'Zush Naming Patterns Demo — Custom File Naming with Variables',
-    description:
-      'Learn how to customize file naming with variables like title, date, and category in Zush for macOS.',
-    thumbnailUrl: `${SITE_ORIGIN}/videos/posters/naming.webp`,
-    contentUrl: `${SITE_ORIGIN}/videos/zush-naming-pattern.mp4`,
-    embedUrl: `${SITE_ORIGIN}/#naming-video`,
-    uploadDate: '2026-02-01T00:00:00Z',
-    duration: 'PT10S',
-    inLanguage: 'en',
-    publisher: {
-      '@type': 'Organization',
-      name: 'Zush',
-      url: SITE_ORIGIN,
-      logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/logo.png` },
-    },
-  },
-  {
-    '@type': 'VideoObject',
-    name: 'Zush Multilanguage Demo — AI Filenames in 60+ Languages',
-    description:
-      'See how Zush generates AI filenames in over 60 languages on macOS.',
-    thumbnailUrl: `${SITE_ORIGIN}/videos/posters/multilanguage.webp`,
-    contentUrl: `${SITE_ORIGIN}/videos/zush-multilanguage.mp4`,
-    embedUrl: `${SITE_ORIGIN}/#multilanguage-video`,
-    uploadDate: '2026-02-01T00:00:00Z',
-    duration: 'PT13S',
-    inLanguage: 'en',
-    publisher: {
-      '@type': 'Organization',
-      name: 'Zush',
-      url: SITE_ORIGIN,
-      logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/logo.png` },
-    },
-  },
-] as const;
-
 export const HOME_JSON_LD = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -381,6 +288,5 @@ export const HOME_JSON_LD = {
         },
       })),
     },
-    ...VIDEO_OBJECTS_JSON_LD,
   ],
 };

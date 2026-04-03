@@ -5,6 +5,16 @@ const ROOT = process.cwd();
 const DIST = join(ROOT, 'dist');
 const SITE_ORIGIN = 'https://zushapp.com';
 const PRIVATE_ROUTES = new Set(['/thank-you', '/recover', '/activate', '/manage-subscription']);
+const NON_WATCH_VIDEO_ROUTES = new Set([
+  '/',
+  '/ai-file-renamer',
+  '/ai-image-renamer',
+  '/auto-rename-files',
+  '/rename-documents-with-ai',
+  '/rename-pdf-with-ai',
+  '/rename-photos-with-ai',
+  '/rename-screenshots-with-ai',
+]);
 
 function fail(message) {
   throw new Error(message);
@@ -75,6 +85,16 @@ for (const loc of locs) {
     const hasHomepageHowTo = jsonLdBlocks.some((block) => block.includes('/#howto') || block.includes('"@type":"HowTo"'));
     if (hasHomepageHowTo) {
       fail(`Homepage schema leaked into blog page ${pathname}`);
+    }
+  }
+
+  if (NON_WATCH_VIDEO_ROUTES.has(pathname) || pathname.startsWith('/blog/')) {
+    if (html.includes('<video')) {
+      fail(`Inline <video> markup should not be present on non-watch page ${pathname}`);
+    }
+
+    if (html.includes('"@type":"VideoObject"')) {
+      fail(`VideoObject JSON-LD should not be present on non-watch page ${pathname}`);
     }
   }
 }

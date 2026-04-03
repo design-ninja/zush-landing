@@ -6,6 +6,7 @@ import AppLink from '@/components/AppLink';
 import BlogCTA from '@/components/BlogCTA';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
+import { getDemoVideoBySrc } from '@/data/demoVideos';
 import styles from './BlogPost.module.scss';
 import '@/styles/markdown-content.scss';
 
@@ -239,25 +240,37 @@ const BlogPost = ({ slug }: BlogPostProps) => {
                 ),
                 img: ({ node: _node, src, alt, ...props }) => {
                   if (src && src.endsWith('.mp4')) {
+                    const demoVideo = getDemoVideoBySrc(src);
+                    const posterSrc = demoVideo?.poster;
+                    const videoLabel = alt || demoVideo?.title || 'Watch demo video';
+
                     return (
-                      <figure className='markdown-figure'>
-                        <video
-                          src={src}
-                          autoPlay
-                          muted
-                          loop
-                          playsInline
-                          preload='metadata'
-                          className='markdown-video'
-                          aria-label={alt || 'Demo video'}
+                      <figure className='markdown-figure markdown-figure--video'>
+                        <a
+                          href={src}
+                          className='markdown-video-link'
+                          target='_blank'
+                          rel='noopener noreferrer'
+                          data-autoplay-video='true'
+                          data-video-src={src}
+                          data-video-label={videoLabel}
+                          data-video-poster={posterSrc || ''}
+                          aria-label={`${videoLabel}. Open demo video in a new tab`}
                         >
-                          <track
-                            kind='captions'
-                            src='/videos/captions/zush-demo.vtt'
-                            srcLang='en'
-                            label='English captions'
-                          />
-                        </video>
+                          {posterSrc ? (
+                            <img
+                              src={posterSrc}
+                              alt={videoLabel}
+                              loading='lazy'
+                              decoding='async'
+                              className='markdown-video-poster'
+                              {...props}
+                            />
+                          ) : (
+                            <span className='markdown-video-fallback'>{videoLabel}</span>
+                          )}
+                          <span className='markdown-video-badge'>Open demo video</span>
+                        </a>
                         {alt && <figcaption>{alt}</figcaption>}
                       </figure>
                     );

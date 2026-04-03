@@ -118,6 +118,50 @@
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     }
 
+    .markdown-video-link {
+        position: relative;
+        display: inline-flex;
+        max-width: 100%;
+        border-radius: 0.75rem;
+        overflow: hidden;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        text-decoration: none;
+        background: #06070a;
+
+        &:hover .markdown-video-badge {
+            background: rgba(10, 14, 20, 0.92);
+        }
+    }
+
+    .markdown-video-poster {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .markdown-video-badge {
+        position: absolute;
+        right: 0.75rem;
+        bottom: 0.75rem;
+        padding: 0.55rem 0.8rem;
+        border-radius: 9999px;
+        background: rgba(10, 14, 20, 0.82);
+        color: white;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        transition: background-color 0.2s ease;
+    }
+
+    .markdown-video-fallback {
+        display: inline-flex;
+        min-height: 12rem;
+        align-items: center;
+        justify-content: center;
+        padding: 1.25rem;
+        color: white;
+        text-align: center;
+    }
+
     .markdown-table-wrap {
         overflow-x: auto;
         margin-bottom: 1.5rem;
