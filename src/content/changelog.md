@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.8.3] - 2026-04-04
+
+### Added
+- ✨ Added more naming-pattern title variants for filename formatting
+- 🔄 Added `Check for Updates...` to the app menu
+
+### Improved
+- ⚡ Improved monitor reliability around pause, retry, and watched-folder recovery
+- 🛡️ Hardened Supabase edge functions, config loading, and Paddle processing
+- 📊 Improved AI Rename progress messaging and drop-zone clarity
+
+### Fixed
+- 🐛 Fixed monitor batches continuing after pause or connection loss
+- 🩹 Fixed retry and undo flows so reverted files can be processed again
+- 📂 Fixed watched-folder handling when monitored folders are deleted or unavailable
+- 🔧 Fixed same-name renames failing in monitor and activity flows
+
 ## [1.8.2] - 2026-03-26
 
 ### Added
