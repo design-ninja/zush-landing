@@ -5,6 +5,7 @@ date: "2026-02-22"
 slug: "why-your-photos-are-named-img-and-how-to-fix-it"
 tags: "IMG photos, photo naming, rename photos, macOS photo organization"
 tldr: "Photos are named `IMG_` because cameras and phones optimize for simple sequential capture, not for human search. The fix is to rename them with descriptive titles and a consistent pattern."
+reviewed: "2026-04-09"
 ---
 
 Your photos are named `IMG_` because the device that created them was designed to capture quickly, not to produce meaningful filenames. A camera or phone only needs a reliable sequence. It does not know whether the image is a sunset, a receipt, or a screenshot of a client brief.

@@ -5,6 +5,36 @@
       "source": "/:path+/",
       "destination": "/:path+",
       "permanent": true
+    },
+    {
+      "source": "/blog/organize-photos-by-date-mac",
+      "destination": "/blog/best-ways-to-organize-photos-on-mac",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-find-photos-on-mac",
+      "destination": "/blog/best-ways-to-organize-photos-on-mac",
+      "permanent": true
+    },
+    {
+      "source": "/blog/photo-backup-strategy-mac",
+      "destination": "/blog/best-ways-to-organize-photos-on-mac",
+      "permanent": true
+    },
+    {
+      "source": "/blog/smart-folders-mac-guide",
+      "destination": "/blog/finder-tags-guide-organize-files-mac",
+      "permanent": true
+    },
+    {
+      "source": "/blog/spotlight-search-tips-find-files-faster-mac",
+      "destination": "/blog/finder-tags-guide-organize-files-mac",
+      "permanent": true
+    },
+    {
+      "source": "/blog/organize-design-assets-ui-ux-workflow",
+      "destination": "/blog/digital-asset-management-designers-mac",
+      "permanent": true
     }
   ],
   "headers": [
@@ -26,6 +56,10 @@
         {
           "key": "Permissions-Policy",
           "value": "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
         }
       ]
     },

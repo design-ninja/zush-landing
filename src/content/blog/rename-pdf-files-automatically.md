@@ -3,8 +3,9 @@ title: "How to Rename PDF Files Automatically: AI Workflow for Repeating Folders
 description: "Learn how to rename PDF files automatically with AI in repeating folders and ongoing workflows, without duplicating the dedicated PDF product page."
 date: "2026-03-23"
 slug: "rename-pdf-files-automatically"
-tags: "rename pdf automatically, auto rename pdf, AI pdf renamer, pdf organization, macOS, document management"
+tags: "rename pdf automatically, auto rename pdf, pdf folder monitoring, pdf organization workflow, macOS document automation, document management"
 tldr: "This page focuses on automatic PDF renaming for recurring folders and ongoing workflows. It complements the dedicated AI PDF renamer page and the broader auto-rename page."
+reviewed: "2026-04-09"
 ---
 
 PDFs are the most common format for documents that matter, and also the most common format for documents with terrible filenames. Scanned invoices arrive as `scan_001.pdf`. Downloaded contracts save as `download.pdf`. Email attachments land as `attachment (3).pdf`. Exported reports default to `report.pdf` or worse.

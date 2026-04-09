@@ -5,6 +5,7 @@ date: "2026-03-12"
 slug: "auto-image-renamer-mac"
 tags: "auto image renamer mac, automatic image renaming, mac automation, screenshot organization, auto rename files mac"
 tldr: "This page focuses on workflow automation for recurring image clutter on Mac. It supports the broader auto-rename product page instead of trying to be a generic category explainer."
+reviewed: "2026-04-09"
 ---
 
 An auto image renamer for Mac is useful when your problem is not just bad filenames, but the constant arrival of new bad filenames. Screenshots, iPhone photos, downloaded graphics, and exported assets keep landing under names like `IMG_`, `Screenshot`, and `download (4)`.

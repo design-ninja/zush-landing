@@ -5,6 +5,7 @@ date: "2026-03-23"
 slug: "ai-document-renamer-guide"
 tags: "ai document renamer, rename documents with ai, document organization, macOS, batch rename documents"
 tldr: "An AI document renamer reads the content of your PDFs, Word docs, and spreadsheets to generate descriptive filenames automatically, replacing vague names like document (3).pdf with something searchable and useful."
+reviewed: "2026-04-09"
 ---
 
 Documents are supposed to be the most important files on your computer. Contracts, invoices, reports, tax filings, lecture notes, project proposals. Yet most of them sit in folders under names like `document (3).pdf`, `Untitled.docx`, or `export_final_v2.xlsx`. The content is critical, but the filename is throwaway.

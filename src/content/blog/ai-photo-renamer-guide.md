@@ -5,6 +5,7 @@ date: "2026-03-23"
 slug: "ai-photo-renamer-guide"
 tags: "ai photo renamer, rename photos with ai, IMG filenames, photo organization, batch rename photos, macOS"
 tldr: "This page is a practical photo-focused guide for replacing IMG_ and camera-code filenames. It supports the dedicated Mac photo-renaming page instead of duplicating it."
+reviewed: "2026-04-09"
 ---
 
 Every camera and smartphone on the planet names photos the same way: a short prefix followed by a sequential number. `IMG_4382.HEIC`. `DSC_0019.NEF`. `P1050233.CR2`. The device captures a sunset, a contract, a child's birthday party, and a product prototype, and gives them all equally meaningless names.

@@ -5,6 +5,7 @@ date: "2026-02-09"
 slug: "digital-photo-organization-mistakes-to-avoid"
 tags: "photo organization mistakes, photo management tips, digital photo organization, common photo mistakes, file management"
 tldr: "The biggest photo organization mistakes are keeping default filenames, skipping backups, and relying on memory instead of a repeatable system."
+reviewed: "2026-04-09"
 ---
 
 Most photo libraries become messy for the same reasons: generic filenames, weak folder structure, duplicate files, and no consistent maintenance habit. The good news is that you do not need a perfect archival system to fix that. You need to stop repeating the mistakes that make retrieval harder over time.

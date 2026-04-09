@@ -2,7 +2,7 @@ import { execSync } from 'node:child_process';
 import { statSync } from 'node:fs';
 import { join } from 'node:path';
 import { getAllPosts } from '@/data/blog';
-import { INDEXABLE_STATIC_ROUTES, FEATURE_ROUTES, SITE_ORIGIN } from '@/seo/config';
+import { INDEXABLE_STATIC_ROUTES, FEATURE_ROUTES, SITE_ORIGIN, THIN_CONTENT_THRESHOLD } from '@/seo/config';
 
 const BLOG_CONTENT_DIR = join(process.cwd(), 'src', 'content', 'blog');
 const PAGES_DIR = join(process.cwd(), 'src', 'pages');
@@ -92,7 +92,7 @@ export function GET() {
     };
   });
 
-  const posts = getAllPosts();
+  const posts = getAllPosts().filter((post) => post.wordCount >= THIN_CONTENT_THRESHOLD);
   const blogEntries = posts.map((post) => {
     const loc = `${SITE_ORIGIN}/blog/${post.slug}`;
     const filePath = join(BLOG_CONTENT_DIR, `${post.slug}.md`);

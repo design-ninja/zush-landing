@@ -5,6 +5,7 @@ date: "2026-02-25"
 slug: "automate-file-organization-macos"
 tags: "automate file organization mac, automatic file sorting mac, file automation macOS, mac productivity, folder monitoring"
 tldr: "The best way to automate file organization on macOS is to combine simple rule-based tools for routing with AI-powered renaming for screenshots, PDFs, documents, photos, and downloaded files."
+reviewed: "2026-04-09"
 ---
 
 If you want to automate file organization on macOS, start with one principle: do not automate everything the same way. Rule-based tools are good at moving files based on predictable conditions. AI is better at naming and classifying visual files whose content cannot be inferred from metadata alone.
@@ -89,7 +90,7 @@ They are useful for finding files across scattered locations without restructuri
 
 Smart Folders are not true automation since they do not move or rename anything. But they are an excellent first step because they let you see what needs organizing before you commit to rules.
 
-For a deeper dive, see our [complete Smart Folders guide](/blog/smart-folders-mac-guide).
+For a deeper dive, see our [macOS File Search Power Tools guide](/blog/finder-tags-guide-organize-files-mac).
 
 ## Automator and Shortcuts: building real workflows
 

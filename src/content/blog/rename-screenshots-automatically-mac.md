@@ -5,6 +5,7 @@ date: "2026-03-23"
 slug: "rename-screenshots-automatically-mac"
 tags: "rename screenshots automatically, screenshot renamer mac, macOS screenshots, folder monitoring, screenshot organization"
 tldr: "You can rename screenshots automatically on Mac by using Zush's folder monitoring to watch your screenshot destination and replace timestamp-based names with AI-generated descriptive titles as soon as each capture lands."
+reviewed: "2026-04-09"
 ---
 
 Every screenshot on macOS arrives with a name like `Screenshot 2026-03-23 at 14.32.07.png`. That is technically unique, but practically useless. You cannot search for it by subject, you cannot scan a folder of them and know what each one shows, and six months from now it is just noise.

@@ -5,6 +5,7 @@ date: "2026-02-20"
 slug: "screenshot-naming-conventions-macos"
 tags: "screenshot naming, macOS screenshots, file naming, screenshot organization"
 tldr: "The best screenshot naming convention on macOS uses short descriptive titles tied to the app, workflow, or UI state instead of relying on default timestamps."
+reviewed: "2026-04-09"
 ---
 
 The default macOS screenshot name is useful for the operating system and almost useless for the person trying to find the image later. `Screenshot 2026-03-04 at 15.42.33.png` tells you when the capture happened, but not what it shows.

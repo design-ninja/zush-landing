@@ -1,10 +1,11 @@
 ---
-title: "Rename PDF Files with AI on Mac: Practical Workflow Guide"
-description: "Learn a practical workflow for renaming PDF files with AI on Mac, with clear separation from the dedicated AI PDF renamer product page."
+title: "AI PDF Renaming on Mac: Workflow Guide for Invoices, Contracts, and Scans"
+description: "A practical workflow for renaming PDF files with AI on Mac, covering invoices, contracts, scanned documents, and export-heavy folders."
 date: "2026-03-04"
 slug: "rename-pdf-files-with-ai-mac"
-tags: "rename pdf with ai, AI pdf renamer, macOS, document organization"
+tags: "pdf renaming workflow mac, rename invoices automatically, contract file naming, scan organization macOS, document naming guide"
 tldr: "This page is a practical Mac workflow guide for AI PDF renaming. It supports the dedicated AI PDF renamer page instead of replacing it."
+reviewed: "2026-04-09"
 ---
 
 If you need to rename PDF files with AI on Mac, the best use case is simple: you have a folder full of PDFs with useless names and you want filenames that describe what each document actually is. That is especially common with scanned files, downloaded attachments, invoices, and export-heavy workflows.

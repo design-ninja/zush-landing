@@ -3,8 +3,9 @@ title: "How to Rename Files with AI: Step-by-Step Guide"
 description: "Learn how to rename files with AI step by step, including how content-aware tools handle screenshots, PDFs, documents, and photos without turning this page into a product comparison."
 date: "2026-03-23"
 slug: "rename-files-with-ai-guide"
-tags: "rename files with ai, ai file renaming, ai rename tool, file organization, productivity"
+tags: "ai file renaming tutorial, rename files step by step, content-aware renaming, file organization workflow, productivity"
 tldr: "This page is an educational guide to AI file renaming. It explains how the workflow works, where it helps, and how to apply it to screenshots, photos, PDFs, and documents."
+reviewed: "2026-04-09"
 ---
 
 Most files arrive with useless names. Screenshots get timestamps. Photos get camera codes. Downloads get hashes or sequence numbers. You end up with a folder full of files you cannot find without opening each one.

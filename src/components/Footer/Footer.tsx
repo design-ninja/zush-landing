@@ -72,9 +72,12 @@ const Footer = () => {
             <Heading as="h4" className={styles.Footer__SectionTitle}>Product</Heading>
             <ul className={styles.Footer__Links}>
               <li><AppLink href="/ai-file-renamer" className={styles.Footer__Link}>AI File Renamer</AppLink></li>
-              <li><AppLink href="/auto-rename-files" className={styles.Footer__Link}>Auto Rename Files</AppLink></li>
-              <li><AppLink href="/rename-documents-with-ai" className={styles.Footer__Link}>Rename Documents</AppLink></li>
+              <li><AppLink href="/ai-image-renamer" className={styles.Footer__Link}>AI Image Renamer</AppLink></li>
+              <li><AppLink href="/rename-pdf-with-ai" className={styles.Footer__Link}>Rename PDFs</AppLink></li>
+              <li><AppLink href="/rename-photos-with-ai" className={styles.Footer__Link}>Rename Photos</AppLink></li>
               <li><AppLink href="/rename-screenshots-with-ai" className={styles.Footer__Link}>Rename Screenshots</AppLink></li>
+              <li><AppLink href="/rename-documents-with-ai" className={styles.Footer__Link}>Rename Documents</AppLink></li>
+              <li><AppLink href="/auto-rename-files" className={styles.Footer__Link}>Auto Rename Files</AppLink></li>
               <li><AppLink href="/#pricing" className={styles.Footer__Link}>Pricing</AppLink></li>
               <li><AppLink href="/changelog" className={styles.Footer__Link}>Changelog</AppLink></li>
               <li><AppLink href="/blog" className={styles.Footer__Link}>Blog</AppLink></li>

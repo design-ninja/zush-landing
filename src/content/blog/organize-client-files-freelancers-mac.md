@@ -5,6 +5,7 @@ date: "2026-02-14"
 slug: "organize-client-files-freelancers-mac"
 tags: "freelancer file organization, client files mac, file naming, mac productivity"
 tldr: "Freelancers need client file systems that are simple enough to maintain under pressure: one repeatable folder structure, consistent naming, and a fast workflow for screenshots, PDFs, and client assets."
+reviewed: "2026-04-09"
 ---
 
 Freelancer file organization on Mac breaks down for one reason: every client brings different files, different deadlines, and different expectations, but most people manage them with whatever folder structure happens to exist that week.
@@ -63,7 +64,7 @@ For many freelancers, the worst folders are not contracts or invoices. They are 
 
 These files often arrive under terrible names and then stay that way because manual renaming is slow. That is where [Zush](https://zushapp.com) fits naturally into a freelancer workflow: it can batch rename file-heavy folders, whether they contain images, PDFs, or Word documents, and make those files easier to sort into the correct project afterward.
 
-If your work is especially design-heavy, see [How to Organize Design Assets: A UI/UX Workflow Guide](/blog/organize-design-assets-ui-ux-workflow).
+If your work is especially design-heavy, see [Digital Asset Management for Designers on Mac](/blog/digital-asset-management-designers-mac).
 
 
 ![Zush batch rename demo for organizing client files and freelancer project assets](/videos/zush-batch-rename.mp4)

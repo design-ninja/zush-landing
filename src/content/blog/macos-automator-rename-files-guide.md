@@ -5,6 +5,7 @@ date: "2026-02-12"
 slug: "macos-automator-rename-files-guide"
 tags: "Automator rename files, macOS Automator guide, automatic file renaming mac, Automator workflow, Shortcuts"
 tldr: "Automator is useful for repeatable file renaming on macOS, but it works best for metadata and text patterns, not for content-aware image naming."
+reviewed: "2026-04-09"
 ---
 
 Automator can rename files automatically on macOS without writing code. It is a good option when you need the same predictable rename rule every time, such as adding a date prefix, replacing text, or numbering files in order.

@@ -10,6 +10,7 @@ export interface SeoMeta {
   canonicalPath: string;
   robots: 'index, follow' | 'noindex, nofollow';
   ogType?: 'website' | 'article';
+  ogImage?: string;
   publishedTime?: string;
   modifiedTime?: string;
 }
@@ -186,17 +187,23 @@ export function getSeoForPath(pathname: string): SeoMeta {
   };
 }
 
+const THIN_CONTENT_THRESHOLD = 350;
+
 export function getBlogSeo(post: BlogFrontmatter): SeoMeta {
+  const isThinContent = post.wordCount < THIN_CONTENT_THRESHOLD;
+
   return {
     title: `${post.title} — Zush Blog`,
     description: post.description,
     canonicalPath: `/blog/${post.slug}`,
-    robots: 'index, follow',
+    robots: isThinContent ? 'noindex, nofollow' : 'index, follow',
     ogType: 'article',
     publishedTime: toIsoDateTime(post.date),
     modifiedTime: toIsoDateTime(post.reviewedAt || post.date),
   };
 }
+
+export { THIN_CONTENT_THRESHOLD };
 
 export const HOME_JSON_LD = {
   '@context': 'https://schema.org',
@@ -238,14 +245,37 @@ export const HOME_JSON_LD = {
       description:
         'AI-powered file organization app for macOS. Automatically renames images, PDFs, and documents using advanced AI with smart metadata and folder monitoring.',
       applicationCategory: 'UtilitiesApplication',
+      applicationSubCategory: 'File Management',
       operatingSystem: 'macOS 14.0+',
+      softwareVersion: '1.9.0',
       downloadUrl: `${SITE_ORIGIN}/releases/Zush.dmg`,
-      offers: {
-        '@type': 'Offer',
-        price: '10',
-        priceCurrency: 'USD',
-        name: 'Zush PRO',
-      },
+      screenshot: `${SITE_ORIGIN}/og-image.png`,
+      offers: [
+        {
+          '@type': 'Offer',
+          price: '0',
+          priceCurrency: 'USD',
+          description: 'Free tier with 50 AI renames per month',
+        },
+        {
+          '@type': 'Offer',
+          price: '10',
+          priceCurrency: 'USD',
+          name: 'Zush PRO',
+          description: 'One-time purchase. 10,000 AI renames + all features + BYOK for unlimited use.',
+        },
+      ],
+      featureList: [
+        'AI-powered file renaming',
+        'Automatic folder monitoring',
+        'Smart metadata extraction',
+        'Custom naming patterns',
+        'Batch rename support',
+        'RAW format support',
+        'PDF and document analysis',
+        '60+ language support',
+        'Bring Your Own Key (BYOK)',
+      ],
       speakable: {
         '@type': 'SpeakableSpecification',
         cssSelector: ['h1', 'meta[name="description"]'],
