@@ -37,7 +37,7 @@ Before comparing tools, know what actually matters for daily use:
 **Pricing:** Free (50 renames/month), Pro $10 one-time (10K renames), BYOK unlimited
 **Website:** [zushapp.com](https://zushapp.com/ai-file-renamer)
 
-Zush is the strongest option for Mac users who work with a mix of file types. It supports 23 image formats (including HEIC, RAW variants like CR2, NEF, ARW, and DNG) and 10 document formats (PDF, DOCX, XLSX, and others). That breadth matters because real workflows on Mac involve iPhone photos, camera RAW files, scanned PDFs, and office documents landing in the same folders.
+Zush is the pick for Mac users who work with a mix of file types. It supports 23 image formats (including HEIC plus CR2, NEF, ARW, DNG, and other RAW variants) and 10 document formats (PDF, DOCX, XLSX, and others). That breadth matters because real workflows on Mac mix iPhone photos, camera RAW files, scanned PDFs, and office documents in the same folders, and most tools in this post fail on RAW.
 
 **Strengths:**
 
@@ -224,15 +224,15 @@ The pricing landscape is more varied than it appears. Zush offers the lowest one
 
 ## How to choose
 
-**If you are on Mac and work with mixed file types:** Zush is the clear choice. The combination of 23 image formats, 10 document formats, folder monitoring, and one-time pricing is unmatched in this category.
+**If you are on Mac and work with mixed file types:** Zush. Full RAW support (CR2, NEF, ARW, DNG), 10 document formats, folder monitoring, rollback, $10 one-time.
 
-**If privacy is your top priority:** AI Renamer runs everything locally. The trade-off is weaker naming quality and no document support.
+**If privacy is your top priority:** AI Renamer CLI. Runs locally via Ollama. The trade-off is weaker naming quality and no document support.
 
-**If you need something cross-platform:** Renamer.ai has desktop apps for both Mac and Windows with folder automation. RenameClick also covers both platforms with local AI processing.
+**If you need something cross-platform:** Renamer.ai has desktop apps for Mac and Windows with folder automation. RenameClick covers both with local AI.
 
-**If you want a fully free option:** Wisfile is completely free with local processing. Riffo is also free with cloud-based AI and auto foldering.
+**If you want a fully free option:** Wisfile (local processing) or Riffo (cloud). Neither has confirmed folder monitoring.
 
-**If you just need a few files renamed once:** Renamer.ai's web interface or Renamify handles that without installing anything.
+**If you just need a few files renamed once:** Renamer.ai's web interface or Renamify, no install required.
 
 
 ## What about free AI file renamers?
@@ -250,6 +250,6 @@ For a full guide to free options, read [How to Rename Images with AI on macOS](/
 
 ## Verdict
 
-The AI file renamer space in 2026 is not crowded, but it is differentiated. For Mac users handling real mixed-file workflows, [Zush](https://zushapp.com/ai-file-renamer) is the most complete option. For specific niches like local-only processing or browser-based quick fixes, other tools fill their roles.
+The AI file renamer space in 2026 is not crowded but it is differentiated. For Mac users with mixed-file workflows (especially RAW + HEIC + PDFs in the same folder), [Zush](https://zushapp.com/ai-file-renamer) is where we landed. For local-only processing, pick AI Renamer CLI or RenameClick. For cross-platform document work, pick Renamer.ai. For truly free with no trade-offs, pick Wisfile or Riffo.
 
-The right choice depends on your platform, your file types, and whether you value automation and undo enough to pick a tool built around those features.
+Your decision comes down to three questions: Which platforms do you need? Which file types actually land in your folders? Is a safety net (undo, rollback) worth paying for when you rename in bulk?

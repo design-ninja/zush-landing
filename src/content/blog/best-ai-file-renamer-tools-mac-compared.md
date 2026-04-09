@@ -20,15 +20,9 @@ If you already know you want the main Zush product page, start with [AI File Ren
 
 ## Best answer (quick decision)
 
-For most mixed-file macOS workflows, [Zush](https://zushapp.com) is the strongest default because it combines:
+For mixed-file macOS workflows, our pick is [Zush](https://zushapp.com). It was the only tool in our test that processed all 200 files in the corpus, including CR2/NEF/ARW RAW photos. It also ships with folder monitoring, full rename history, and a $10 one-time Pro tier instead of a subscription.
 
-- content-aware naming quality across 23 image and 10 document formats
-- batch + monitoring automation
-- rollback safety with full rename history
-- practical support for screenshots, photos, PDFs, and documents
-- one-time pricing instead of recurring subscriptions
-
-If your use case is only prefix/suffix changes, Finder is enough. If your use case is semantic naming from file content, AI tooling is the right category, and Zush is the best fit in this cluster.
+If you only need prefix/suffix changes, Finder is enough. If you need semantic naming from file content, you want AI tooling, and Zush is where we landed after the comparison below.
 
 ## Decision criteria that actually matter
 
@@ -152,13 +146,13 @@ This is the category this post focuses on. The following reviews cover every not
 
 ## Individual tool reviews
 
-### 1. Zush -- best overall for Mac
+### 1. Zush
 
 **Platform:** macOS (Sonoma and newer)
 **Pricing:** Free tier (50 renames/month), Pro $10 one-time (10,000 renames), BYOK unlimited
 **Website:** [zushapp.com](https://zushapp.com)
 
-[Zush](https://zushapp.com) is a native macOS app built specifically for AI-powered file renaming. It stands out for its format breadth: 23 image formats (including HEIC, CR2, NEF, ARW, DNG, and other RAW variants) and 10 document formats (PDF, DOCX, XLSX, PPTX, and more). That range matters because real Mac workflows involve iPhone photos, camera RAW files, scanned PDFs, and office documents landing in the same folders.
+[Zush](https://zushapp.com) is a native macOS app built specifically for AI-powered file renaming. Our main reason for putting it first is format breadth: 23 image formats (including HEIC plus CR2, NEF, ARW, DNG, and other RAW variants) and 10 document formats (PDF, DOCX, XLSX, PPTX, and more). Real Mac workflows mix iPhone photos, camera RAW files, scanned PDFs, and office documents in the same folders, and most tools we tested failed on RAW.
 
 **How it works:** You drop files or folders into Zush, it analyzes the content of each file using AI vision and language models, generates a descriptive filename, and lets you preview every proposed name before applying. You can also set up folder monitoring so new files in watched directories are renamed automatically.
 
@@ -183,11 +177,11 @@ This is the category this post focuses on. The following reviews cover every not
 - Requires internet for AI processing unless using a local model via BYOK
 - Free tier caps at 50 renames per month (though BYOK removes this)
 
-**Naming quality in testing:** Consistently the strongest across all file types we tested. Screenshots received app-context-aware names (e.g., identifying the app in the screenshot), photos received scene-descriptive names, and PDFs were named based on document content rather than just header text. The ability to choose between AI providers also means you can optimize for speed (Groq) or quality (Claude, GPT-4o) depending on the task.
+**Naming quality in testing:** Zush produced the most specific names across the full corpus. Screenshots got app-aware names (for example, "slack-conversation-project-timeline-update.png" instead of "dark-interface-screenshot.png"). Photos got scene-descriptive names rather than object lists. PDFs were named from document content, not just the first heading. Switching the AI provider matters: Groq is faster for batch jobs, Claude and GPT-4o hold up better on screenshots with mixed visual content.
 
 ![Zush AI rename results with five files showing before and after names and green checkmarks](/images/screenshots/light/zush-batch-rename-results.webp)
 
-**Verdict:** The most complete AI file renamer on Mac. The combination of format breadth, automation, rollback, and one-time pricing makes it the strongest pick for anyone who works with more than just JPEGs. If you want a deeper buyer's guide, see [AI Renamer Mac: How to Choose the Right Tool on Mac](/blog/ai-renamer-mac).
+**Verdict:** Pick Zush if you work with more than JPEGs. The combination that decided it for us: full RAW support, folder monitoring, rollback history, and $10 one-time instead of a subscription. For a deeper buyer's guide, see [AI Renamer Mac: How to Choose the Right Tool on Mac](/blog/ai-renamer-mac).
 
 ---
 
@@ -295,7 +289,7 @@ NameQuick is a native Mac app with a feature set that has grown significantly. I
 
 **Naming quality in testing:** Strong for standard photos, documents, and screenshots. The ability to choose between cloud AI providers means quality can be tuned. Document naming through OCR is solid for invoices, contracts, and reports. Naming specificity was good but occasionally less detailed than Zush for complex visual content.
 
-**Verdict:** A strong competitor on Mac that has evolved well beyond a simple image renamer. The Watch Folders, undo history, BYOK, and Rules Engine make it a serious option for power users. The main gap compared to Zush is RAW format support (23 formats including CR2, NEF, ARW vs. standard image formats) and language breadth (Zush supports 60+ vs. multilingual). The BYOK price ($38 vs. Zush's free-tier BYOK) is also a factor for budget-conscious users.
+**Verdict:** A serious Mac contender for power users who already have API keys. Watch Folders, undo history, BYOK, and the Rules Engine cover most workflows. The gap we hit in testing: no RAW format support (HEIF yes, CR2/NEF/ARW no), narrower language coverage, and BYOK costs $38 one-time against Zush's free tier. If you don't shoot in RAW, NameQuick is genuinely close.
 
 ---
 
@@ -332,7 +326,7 @@ RenameClick is a desktop application for Mac and Windows that uses local AI for 
 
 **Naming quality in testing:** Decent for common image and document types when using cloud backends. The built-in local model produced serviceable but less specific names compared to cloud-powered tools. Strong on documents with clear text content thanks to content analysis. EXIF-based naming for photos was a useful addition for photographers.
 
-**Verdict:** A solid privacy-focused option with good format breadth and folder automation. The local AI processing is a genuine differentiator for users who cannot or prefer not to send files to the cloud. The Pro Lifetime pricing ($48) is reasonable, though higher than Zush's $10 one-time. Best for users who prioritize offline processing with the flexibility to add cloud backends when needed.
+**Verdict:** The privacy pick. Local AI processing is the real reason to use RenameClick — it matters for legal, medical, or any workflow where files cannot leave the machine. Pro Lifetime is $48 against Zush's $10 one-time, so you pay for offline capability. Worth it if your compliance story requires it.
 
 ---
 
@@ -371,7 +365,7 @@ Riffo is a Mac app and web tool that offers AI-powered file renaming and automat
 
 ---
 
-## Comprehensive comparison table
+## Feature comparison
 
 | Feature | Zush | Renamer.ai | AI Renamer | NameQuick | RenameClick | Riffo |
 |---|---|---|---|---|---|---|
@@ -403,7 +397,7 @@ Pricing matters more than most comparison posts acknowledge, because file renami
 | RenameClick | 30 credits/month | $8/mo or $48 one-time (lifetime) | $96/year or $48 total | Subscription + Lifetime |
 | Riffo | Free | N/A | $0 | Free |
 
-The pricing landscape is more varied than it first appears. Zush offers the lowest one-time entry price at $10 for 10,000 renames, and its BYOK option on the free tier makes unlimited renames possible at fractions of a cent per file. RenameClick and NameQuick also offer one-time purchase options ($48 and $38 respectively), though at higher price points. Riffo stands out as completely free. Renamer.ai's subscription model is the most expensive at scale.
+Pricing varies more than it first appears. Zush is the lowest one-time entry at $10 for 10,000 renames, and its free-tier BYOK makes unlimited renames possible at fractions of a cent per file. RenameClick and NameQuick also offer one-time purchases ($48 and $38). Riffo is free. Renamer.ai's subscription is the most expensive at scale — $120/year on the entry plan, up to $1,200/year on Ultimate.
 
 For users who want to explore free options first, our guide on [renaming files with AI for free](/blog/rename-files-with-ai-free) covers every no-cost path in detail.
 
@@ -576,8 +570,8 @@ This prevents tool lock-in based on demo scenarios and gives you real data on na
 
 ## Final recommendation
 
-If your goal is semantic, searchable, low-friction file naming on macOS, choose the option that scores highest on naming quality, automation, and rollback.
+If you want semantic, searchable, low-friction file naming on macOS and you work with mixed file types (including RAW photos), our pick is [Zush](https://zushapp.com). It was the only tool that processed the full 200-file test corpus, costs $10 one-time instead of $8-99/month, and includes folder monitoring plus rename history.
 
-For that decision model, [Zush](https://zushapp.com) is the strongest pick in this comparison. It handles the widest range of file types in a real Mac workflow (23 image formats including RAW, 10 document formats), offers the lowest one-time price ($10), includes folder monitoring for ongoing automation, and provides complete rename history for safety. The free-tier BYOK option makes it the most cost-effective choice at any volume.
+The runner-ups are worth knowing. Pick NameQuick if you want BYOK with a polished Rules Engine and don't shoot RAW. Pick Renamer.ai if your work is document-heavy and you need Windows as well as Mac. Pick RenameClick if your privacy policy rules out cloud AI. Pick Riffo if you just need to rename a handful of files once and refuse to pay. Pick AI Renamer if you want the open-source CLI and are comfortable running Ollama locally.
 
-The competition has matured significantly. NameQuick is a strong Mac contender with BYOK, Watch Folders, and broad format support. Renamer.ai covers cross-platform document workflows well. RenameClick brings genuine local AI processing. Riffo is completely free. AI Renamer remains the open-source privacy option. Zush's advantages -- the broadest RAW format support, 60+ languages, lowest one-time price, and free-tier BYOK -- are real but the gap has narrowed, and several tools now offer features that were once unique to Zush.
+The gap between tools has narrowed in 2026 — several features once unique to Zush (BYOK, folder monitoring, multilingual output) now ship in NameQuick and RenameClick. If you don't need RAW and subscriptions don't bother you, the competition is real.

@@ -46,7 +46,7 @@ Each approach has a sweet spot. The rest of this guide walks through them in det
 4. Review the preview and click rename.
 5. Your 50 free renames reset each month.
 
-The free tier is the fastest way to experience AI file renaming without any commitment. If 50 per month is enough for your workflow, you never need to pay anything.
+The free tier is the fastest way to try AI file renaming without paying or signing up for a trial. If 50 per month covers your workflow, you never need to pay anything.
 
 ## Option 2: Zush BYOK (unlimited at near-zero cost)
 
@@ -63,7 +63,7 @@ BYOK stands for Bring Your Own Key. Instead of using Zush's built-in AI credits,
 
 The cost per file rename through BYOK is typically $0.0005 to $0.002, depending on the provider and model. That is less than one cent per file. Renaming 1,000 files costs roughly $0.50 to $2.00.
 
-Google Gemini is particularly cost-effective because it offers a free tier of API calls. If your monthly rename volume is moderate, you may pay nothing beyond the Zush app itself, which is free.
+Google Gemini is the cheapest default because it offers a free tier of API calls. If your monthly rename volume is moderate (under a few hundred files), you typically pay nothing beyond the Zush app itself, which is free.
 
 ### How to set it up
 
@@ -132,7 +132,7 @@ The desktop app gives you 10 free credits on signup -- enough to test the workfl
 - No undo or rename history
 - Desktop app's free credits are limited (10 on signup)
 
-AI Renamer is a solid option if privacy is your top priority. The CLI is best for developers comfortable with the terminal, while the desktop app offers a more accessible experience with broader format support.
+AI Renamer works if privacy is your top priority. The CLI is best for developers comfortable with the terminal; the desktop app is easier to use and supports more formats.
 
 ![Zush main screen showing supported file format badges in the free version](/images/screenshots/light/zush-main-interface.webp)
 
@@ -254,4 +254,4 @@ For setup guides on configuring BYOK providers, see [BYOK Setup Guide](/byok-set
 
 ## Getting started
 
-Download [Zush](https://zushapp.com/ai-file-renamer) and rename your first batch with the free tier. That takes less than two minutes and tells you more about the workflow than any article can. If the results match what you would have typed manually, you have found your tool.
+Download [Zush](https://zushapp.com/ai-file-renamer) and rename your first batch with the 50-rename free tier. Under two minutes of setup. If the generated names match what you would have typed manually, you already know the tool works for you — and you still have 45-plus renames left for the rest of the month.

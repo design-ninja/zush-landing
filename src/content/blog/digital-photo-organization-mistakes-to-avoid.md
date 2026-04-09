@@ -56,7 +56,7 @@ Organization without backup is fragile. One drive failure can erase all the effo
 
 Fix: keep local and external or cloud backups. If photos matter, treat backup as part of the workflow, not an afterthought.
 
-## 7. Waiting for a “big cleanup day”
+## 7. Waiting for a "big cleanup day"
 
 Backlogs grow because cleanup keeps getting postponed.
 

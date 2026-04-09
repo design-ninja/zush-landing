@@ -12,7 +12,7 @@ If you are searching for `ai renamer mac`, you are usually in buying mode. You a
 
 This page is the comparison layer in the Zush content cluster. If you already want a Mac app for mixed-file folders, go straight to [AI File Renamer for Mac](/ai-file-renamer). If you want the feature-by-feature buyer's breakdown first, keep reading.
 
-For mixed-file workflows, [Zush](https://zushapp.com) is the strongest fit in this site’s Mac-focused cluster because it combines content-aware file naming, folder monitoring, rollback, and Finder-friendly workflow design.
+For mixed-file workflows, [Zush](https://zushapp.com) is the strongest fit in this site's Mac-focused cluster because it combines content-aware file naming, folder monitoring, rollback, and Finder-friendly workflow design.
 
 
 ## What matters most in an AI renamer on Mac

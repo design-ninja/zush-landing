@@ -145,7 +145,7 @@ For a complete walkthrough of batch renaming on Mac, see [Batch Rename Files on 
 
 ## Common formats supported
 
-Most AI file renamers focus on images. The stronger tools also handle documents.
+Most AI file renamers focus on images. A few tools also handle documents.
 
 ### Image formats
 
@@ -179,7 +179,7 @@ With tools like Zush, you control which AI provider processes your files. If you
 
 ### How accurate are the generated names?
 
-Accuracy depends on the AI model and the clarity of the file content. Screenshots of UI elements, documents with clear text, and photos with identifiable subjects produce strong results. Abstract art or very dark images may get more generic names.
+Accuracy depends on the AI model and the clarity of the file content. Screenshots of UI elements, documents with clear text, and photos with identifiable subjects produce specific, useful names. Abstract art or very dark images get more generic names.
 
 ### Can I customize the naming format?
 
@@ -204,4 +204,4 @@ Use the right tool for the job. AI is the answer when the filename should descri
 
 ## Getting started
 
-The fastest way to try AI file renaming is to download [Zush](https://zushapp.com/ai-file-renamer), rename a few test files with the free tier, and see if the generated names match what you would have typed manually. For most people, the answer is yes, and the time saved compounds quickly.
+The fastest way to try AI file renaming is to download [Zush](https://zushapp.com/ai-file-renamer) and point it at your Downloads or Screenshots folder with the 50-rename free tier. Check whether the generated names match what you would have typed manually. If they do, turn on folder monitoring so the next week of new files rename themselves.

@@ -52,7 +52,7 @@ Hyphens are the easiest default for most workflows because they are readable and
 
 If the date belongs in the filename, use `YYYY-MM-DD`. That keeps chronological order when files are sorted alphabetically.
 
-### 5. Use version numbers instead of “final”
+### 5. Use version numbers instead of "final"
 
 A file named `final` is rarely final. `v2`, `v3`, and `v4` are much clearer than `final-final-really-final`.
 

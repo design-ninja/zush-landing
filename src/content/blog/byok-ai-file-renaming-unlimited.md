@@ -86,7 +86,7 @@ Claude is Anthropic's AI with strong visual understanding and detailed analysis 
 
 - **Free tier**: No free tier, but new accounts may receive initial credits.
 - **Paid pricing**: Approximately $0.001 per rename or less, depending on the model and file type.
-- **Speed**: Good. Particularly strong at nuanced image description.
+- **Speed**: Good. In our testing Claude wrote the most specific descriptions for screenshots with mixed visual content.
 - **Best for**: Users who want detailed, accurate content descriptions, especially for complex images and documents.
 
 ## Cost breakdown: what unlimited actually costs
@@ -150,7 +150,7 @@ OpenAI charges per token, so costs scale linearly with usage. For file renaming,
 5. In Zush Settings, select Claude as your provider and paste the key
 6. Test with a sample file
 
-Claude tends to produce detailed, nuanced descriptions, which translates to more descriptive filenames.
+Claude tends to write longer, more specific descriptions, which translates to more specific filenames.
 
 ## When to use BYOK vs. credits
 
@@ -188,7 +188,7 @@ OpenAI's GPT-4o has been widely tested across many image types and document form
 
 ### Choose Claude if description quality is your priority
 
-Claude tends to generate more nuanced and context-rich descriptions. If you work with complex images, detailed documents, or files where the filename really needs to capture subtle content, Claude is a strong pick.
+Claude tends to write longer, more context-aware descriptions. If you work with complex images, detailed documents, or files where the filename really needs to capture subtle content, Claude is worth the extra per-call cost.
 
 ### Switch providers any time
 
@@ -209,6 +209,6 @@ Your API key is stored locally on your Mac and is only sent to the AI provider y
 
 ## Conclusion
 
-BYOK removes the last constraint on AI file renaming. If you have already decided that content-aware renaming is worth using, and the only question is volume, connecting your own API key gives you unlimited capacity at a cost that rounds to zero for most users.
+BYOK removes the rename cap. If you have already decided content-aware renaming is worth doing and your only question is volume, a Gemini or Groq key will typically cover your entire year for free. At 2,000 renames per month (heavy professional use), OpenAI and Claude both come in under $2/month.
 
 For a comparison of Zush against other tools in this category, see [Best AI File Renamer Tools for Mac Compared](/blog/best-ai-file-renamer-tools-mac-compared). To get started with [Zush](https://zushapp.com/ai-file-renamer), the free plan includes 50 renames per month, Pro gives you 10,000 for $10, and BYOK opens the door to unlimited.

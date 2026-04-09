@@ -74,7 +74,7 @@ The AI then synthesizes this information into a concise, descriptive filename th
 | `Scan 20260323.pdf` | `apartment-lease-renewal-agreement.pdf` |
 | `a4f2e8c1.pdf` | `conference-speaker-agreement-2026.pdf` |
 
-Every renamed file is now findable through Spotlight search, identifiable in Finder, and meaningful in shared folders and email threads.
+Every renamed file is searchable in Spotlight and identifiable at a glance when you open the folder.
 
 ![Zush AI rename results showing PDF files with descriptive before and after names](/images/screenshots/light/zush-batch-rename-results.webp)
 
@@ -124,7 +124,7 @@ This is where automatic renaming becomes truly automatic. Set Zush to monitor th
 
 ### Invoices and receipts
 
-Accounting workflows generate enormous volumes of PDFs with poor names. Vendor invoices, client receipts, expense reports, and payment confirmations all arrive under generic names. Automatic renaming produces filenames like `vendor-office-depot-invoice-march-2026.pdf` that make filing, searching, and audit preparation dramatically faster.
+Accounting workflows generate a lot of PDFs with poor names: vendor invoices, client receipts, expense reports, payment confirmations. Automatic renaming produces filenames like `vendor-office-depot-invoice-march-2026.pdf` so you can search "office depot" in Spotlight during an audit instead of opening 40 files.
 
 ### Contracts and legal documents
 
@@ -190,13 +190,13 @@ Monthly invoices, quarterly reports, annual tax documents, and weekly meeting no
 
 Hyphens are universally safe across operating systems, readable in URLs, and produce clean filenames. Avoid spaces, which cause issues in Terminal and some sharing workflows.
 
-For a comprehensive naming framework, see [File Naming Conventions Best Practices](/blog/file-naming-conventions-best-practices).
+For a broader naming framework, see [File Naming Conventions Best Practices](/blog/file-naming-conventions-best-practices).
 
 
 ## Getting started
 
-The fastest path to organized PDFs is straightforward: pick your worst folder, open it in [Zush](https://zushapp.com/rename-pdf-with-ai), and run a batch rename. The free tier includes 50 renames per month, which is enough to test on a real folder and see the results.
+Pick your worst PDF folder (usually Downloads or the scanner output directory), open it in [Zush](https://zushapp.com/rename-pdf-with-ai), and run a batch rename. The 50-rename free tier is enough to process about a month of incoming PDFs.
 
-If PDF renaming becomes a regular need, the Pro plan offers 10,000 renames for a one-time $10 payment. For automated workflows with folder monitoring on high-volume directories, bring your own API key for unlimited renaming.
+If it becomes a regular need, Pro is $10 one-time for 10,000 renames. For high-volume directories with folder monitoring on, bring your own API key and the cap disappears.
 
-The days of opening every PDF to find out what it contains are over. Let the AI read the documents and name them for you.
+Stop opening PDFs just to find out what they are.

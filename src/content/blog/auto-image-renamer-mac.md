@@ -15,7 +15,7 @@ This page is about the automation workflow. If you want the broader commercial p
 If you want those files renamed automatically instead of manually, you need two things: content-aware naming and folder monitoring. That is why [Zush](https://zushapp.com) is a strong fit for this query. It can watch key folders and rename incoming images based on what they actually show.
 
 
-## What “auto image renamer” should mean
+## What "auto image renamer" should mean
 
 Automatic renaming should not mean applying the same prefix to every file. It should mean:
 

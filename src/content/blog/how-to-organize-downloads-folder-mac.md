@@ -102,7 +102,7 @@ If you repeat that routine consistently, Downloads stops acting like permanent s
 
 - Treating Downloads as an archive
 - Creating too many subfolders too early
-- Keeping weak filenames because “I will remember later”
+- Keeping weak filenames because "I will remember later"
 - Saving screenshots and downloaded images under random defaults
 - Automating everything before you understand what should actually happen
 
