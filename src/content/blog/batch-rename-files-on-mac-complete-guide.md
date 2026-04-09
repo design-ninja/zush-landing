@@ -1,6 +1,6 @@
 ---
-title: "Batch Rename Files on Mac: Complete Guide"
-description: "Learn the best ways to batch rename files on Mac using Finder, Automator, scripts, and AI-powered file renaming."
+title: "Batch Rename Files on Mac: Finder, Automator, AI"
+description: "Rename hundreds of files on Mac in minutes. Step-by-step guide to Finder batch rename, Automator, Terminal scripts, and AI-powered renaming—with real examples."
 date: "2026-02-08"
 slug: "batch-rename-files-on-mac-complete-guide"
 tags: "batch rename files mac, rename multiple files mac, Finder batch rename, automatic file renaming, mac file organization"

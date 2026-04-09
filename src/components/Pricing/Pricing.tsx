@@ -37,7 +37,7 @@ const Pricing = () => {
             buttonText={PRO_PLAN.buttonText}
             isButtonDisabled={false}
             isLoading={false}
-            buttonHint='Secure payment via Paddle'
+            buttonHint='14-day money-back guarantee • Secure via Paddle'
           />
         </div>
       </div>

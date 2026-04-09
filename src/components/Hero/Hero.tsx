@@ -47,7 +47,7 @@ const Hero = ({ title, subtitle, slides, as: Tag = "section" }: HeroProps) => {
           </Heading>
           <Text size="xl" color="subtle" className={styles.Hero__Subtitle}>
             {subtitle ??
-              "The AI file renamer for macOS. Auto rename screenshots, PDFs, documents, and downloads with meaningful names — free to try."}
+              "Blazing fast AI file renamer for macOS. Auto rename screenshots, PDFs, documents, and downloads with meaningful names — free to try."}
           </Text>
 
           <div className={styles.Hero__Buttons}>
@@ -82,9 +82,11 @@ const Hero = ({ title, subtitle, slides, as: Tag = "section" }: HeroProps) => {
               Buy 🌟 PRO
             </Button>
           </div>
-          <Text as='p' size='sm' color='subtle' className={styles.Hero__FreeLabel}>
-            Free, no credit card required
-          </Text>
+          <ul className={styles.Hero__TrustRow} aria-label="Trust signals">
+            <li>✨ Free to try</li>
+            <li>💳 No credit card</li>
+            <li>🚫 No subscription</li>
+          </ul>
         </div>
 
         {hasLoadedModal && (
