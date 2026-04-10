@@ -352,7 +352,7 @@ const Features = () => {
           >
             <div className={styles.UI_BYOK}>
               <div className={styles.UI_BYOK__Input}>
-                <span className={styles.UI_BYOK__Key}>sk-proj-a8f3...x9k2</span>
+                <span className={styles.UI_BYOK__Key}>API key connected</span>
                 <div className={styles.UI_BYOK__Icon}>
                   <Check size={14} />
                 </div>

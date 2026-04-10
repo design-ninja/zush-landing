@@ -15,6 +15,7 @@ export interface BlogFrontmatter {
   authorName: string;
   reviewerName: string;
   reviewedAt: string;
+  noindex: boolean;
 }
 
 export interface ParsedPost {
@@ -88,6 +89,7 @@ export function parseFrontmatter(raw: string): ParsedPost {
       authorName: meta.author || 'lirik',
       reviewerName: meta.reviewer || '',
       reviewedAt: meta.reviewed || meta.date || '',
+      noindex: meta.noindex === 'true',
     },
     content,
     faq: extractFAQ(content),

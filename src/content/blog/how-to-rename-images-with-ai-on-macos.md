@@ -1,11 +1,11 @@
 ---
-title: "How to Rename Images with AI on macOS"
-description: "Learn how to rename images with AI on macOS using a fast workflow for screenshots, photos, and downloads that stay searchable in Finder and Spotlight."
+title: "How to Rename Images with AI on Mac (2026 Step-by-Step)"
+description: "Rename screenshots, photos and downloaded images with AI on Mac. Step-by-step workflow that keeps files searchable in Finder and Spotlight — with real examples."
 date: "2026-03-09"
 slug: "how-to-rename-images-with-ai-on-macos"
 tags: "rename images macOS tutorial, image renaming workflow, photo management macOS, Finder image search, batch rename images mac"
 tldr: "The fastest way to rename images with AI on macOS is to use a content-aware renamer that can analyze screenshots, photos, and downloads, then apply descriptive filenames in bulk or automatically as files arrive."
-reviewed: "2026-04-09"
+reviewed: "2026-04-10"
 ---
 
 If you want to rename images with AI on macOS, use a tool that can inspect the image itself, generate a descriptive title, and apply it in bulk. That is the difference between real AI renaming and Finder's text-only rename tools.

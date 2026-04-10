@@ -3,12 +3,14 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import BlogPost from '@/views/Blog/BlogPost';
 import { getAllPosts, getPostBySlug } from '@/data/blog';
-import { getBlogSeo } from '@/seo/config';
+import { getBlogSeo, SITE_ORIGIN } from '@/seo/config';
 import {
   buildBlogPostingJsonLd,
   buildBreadcrumbJsonLd,
   buildFAQPageJsonLd,
+  buildHowToJsonLd,
 } from '@/utils/jsonLd';
+import { HOW_TO_SCHEMAS } from '@/data/howToSchemas';
 
 export function getStaticPaths() {
   return getAllPosts().map((post) => ({
@@ -26,10 +28,14 @@ if (!parsedPost) {
 
 const { frontmatter, faq } = parsedPost;
 const seo = getBlogSeo(frontmatter);
+const howTo = HOW_TO_SCHEMAS[frontmatter.slug];
 const jsonLd = [
   buildBlogPostingJsonLd(frontmatter),
   buildBreadcrumbJsonLd(frontmatter.title, frontmatter.slug),
   ...(faq.length > 0 ? [buildFAQPageJsonLd(faq)] : []),
+  ...(howTo
+    ? [buildHowToJsonLd(howTo, `${SITE_ORIGIN}/blog/${frontmatter.slug}`)]
+    : []),
 ];
 
 const breadcrumbItems = [

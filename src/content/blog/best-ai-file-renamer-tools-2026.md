@@ -1,11 +1,11 @@
 ---
-title: "Best AI File Renamer Tools in 2026: Cross-Platform Comparison"
-description: "Compare AI file renamer tools across Mac, Windows, web, free, and paid options in 2026 with a broad market view rather than a Mac-only buying page."
+title: "Best AI File Renamer Tools in 2026: 8 Picks Tested"
+description: "We tested 8 AI file renamers across Mac, Windows and web in 2026. Free vs paid, accuracy, batch limits, RAW and PDF support — full side-by-side comparison."
 date: "2026-03-23"
 slug: "best-ai-file-renamer-tools-2026"
 tags: "ai rename tools comparison 2026, cross-platform file renamer, file renaming tools review, ai rename comparison, free vs paid renamer"
 tldr: "This page is a broad 2026 market comparison of AI file renamer tools across platforms. For Mac-only buying intent, the more specific comparison page is the better fit."
-reviewed: "2026-04-09"
+reviewed: "2026-04-10"
 ---
 
 AI file renamers have gone from experimental curiosities to practical tools. The category has matured enough that there are now real differences between options, not just in AI quality but in format support, automation, pricing, and platform fit.

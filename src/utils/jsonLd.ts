@@ -75,6 +75,38 @@ export function buildFAQPageJsonLd(items: FAQItem[]) {
   };
 }
 
+export interface HowToStepData {
+  name: string;
+  text: string;
+}
+
+export interface HowToData {
+  name: string;
+  description: string;
+  totalTime?: string;
+  steps: HowToStepData[];
+}
+
+export function buildHowToJsonLd(data: HowToData, pageUrl: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: data.name,
+    description: data.description,
+    ...(data.totalTime ? { totalTime: data.totalTime } : {}),
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': pageUrl,
+    },
+    step: data.steps.map((s, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: s.name,
+      text: s.text,
+    })),
+  };
+}
+
 export function buildBreadcrumbJsonLd(postTitle: string, postSlug: string) {
   return {
     '@context': 'https://schema.org',

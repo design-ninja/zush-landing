@@ -80,51 +80,51 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ogType: 'website',
   },
   '/ai-file-renamer': {
-    title: 'AI File Renamer for Mac — Auto Rename Files | Zush',
+    title: 'AI File Renamer for Mac · PDFs, Photos & Screenshots · Zush',
     description:
-      'AI file renamer for Mac built for screenshots, PDFs, documents, and photos. Zush gives you content-aware names, batch processing, folder monitoring, and rollback in one workflow.',
+      'Rename PDFs, screenshots, photos and documents in seconds. Zush reads file content and creates searchable names automatically. 50 free renames, no signup.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/auto-rename-files': {
-    title: 'Auto Rename Files on Mac with Folder Monitoring | Zush',
+    title: 'Auto Rename Files on Mac · AI Folder Monitoring · Zush',
     description:
-      'Automatically rename new files on Mac with AI-powered folder monitoring. Zush watches downloads, screenshots, and project folders, then applies descriptive names as files arrive.',
+      'Watch any folder and rename new files automatically with AI. Zush handles downloads, screenshots and exports as they arrive — no manual cleanup, no scripts.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/rename-documents-with-ai': {
-    title: 'AI Document Renamer for Mac | Rename Documents with AI | Zush',
+    title: 'Rename Documents with AI on Mac · PDF, DOCX, XLSX · Zush',
     description:
-      'Rename documents with AI on Mac. Zush reads PDF, DOCX, XLSX, and other business files, then generates descriptive filenames based on document content.',
+      "Stop opening every PDF to find what's inside. Zush reads document content and renames invoices, contracts, reports and DOCX files automatically on Mac.",
     robots: 'index, follow',
     ogType: 'website',
   },
   '/rename-pdf-with-ai': {
-    title: 'AI PDF Renamer for Mac | Rename PDF Files with AI | Zush',
+    title: 'Rename PDFs with AI on Mac · Invoices & Contracts · Zush',
     description:
-      'Rename PDF files with AI on Mac. Zush extracts text from invoices, contracts, scans, and reports to generate clear, searchable filenames automatically.',
+      'Rename scanned invoices, contracts and tax forms by their actual content. Zush extracts PDF text and creates searchable filenames in seconds on Mac.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/rename-screenshots-with-ai': {
-    title: 'AI Screenshot Renamer for Mac | Rename Screenshots with AI | Zush',
+    title: 'Rename Screenshots with AI on Mac · Auto-Name Captures · Zush',
     description:
-      'Rename screenshots with AI on Mac. Zush replaces generic macOS screenshot names with descriptive filenames and can auto-rename new captures with folder monitoring.',
+      "Replace 'Screenshot 2026-04-10 at 14.32.png' with 'stripe-revenue-dashboard.png'. Zush auto-names every macOS screenshot using AI vision. Free to try.",
     robots: 'index, follow',
     ogType: 'website',
   },
   '/rename-photos-with-ai': {
-    title: 'AI Photo Renamer for Mac | Rename Photos with AI | Zush',
+    title: 'Rename Photos with AI on Mac · HEIC, RAW & JPG · Zush',
     description:
-      'Rename photos with AI on Mac. Zush analyzes HEIC, RAW, JPG, and other image files to generate descriptive filenames for searchable photo libraries.',
+      'Stop renaming photos one by one. Zush analyzes HEIC, RAW and JPG content to generate descriptive names for your entire photo library on Mac. Free for 50.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/ai-image-renamer': {
-    title: 'AI Image Renamer for Mac | Rename Photos, Screenshots, and Images | Zush',
+    title: 'AI Image Renamer for Mac · HEIC, RAW & JPG Photos · Zush',
     description:
-      'AI image renamer for Mac for photos, screenshots, downloads, and design assets. Supports 23 image formats, batch renaming, folder monitoring, and smart Finder metadata.',
+      'Turn IMG_4821.HEIC into golden-retriever-park.heic. Zush renames photos, screenshots and design assets across 23 image formats. Free for 50 files.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -191,12 +191,13 @@ const THIN_CONTENT_THRESHOLD = 350;
 
 export function getBlogSeo(post: BlogFrontmatter): SeoMeta {
   const isThinContent = post.wordCount < THIN_CONTENT_THRESHOLD;
+  const shouldNoIndex = isThinContent || post.noindex === true;
 
   return {
-    title: `${post.title} — Zush Blog`,
+    title: post.title,
     description: post.description,
     canonicalPath: `/blog/${post.slug}`,
-    robots: isThinContent ? 'noindex, nofollow' : 'index, follow',
+    robots: shouldNoIndex ? 'noindex, nofollow' : 'index, follow',
     ogType: 'article',
     publishedTime: toIsoDateTime(post.date),
     modifiedTime: toIsoDateTime(post.reviewedAt || post.date),

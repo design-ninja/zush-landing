@@ -76,7 +76,7 @@ const BYOKSetup = () => {
                 <div className={styles.BYOKSetup__StepNumber}>2</div>
                 <div className={styles.BYOKSetup__StepContent}>
                   <Heading as='h3'>Copy your API key</Heading>
-                  <Text as='p'>Click "Create API key" and copy the generated key (starts with "AIza...")</Text>
+                  <Text as='p'>Click "Create API key" and copy the generated key from the provider dashboard</Text>
                 </div>
               </div>
 
@@ -130,7 +130,7 @@ const BYOKSetup = () => {
                 <div className={styles.BYOKSetup__StepNumber}>2</div>
                 <div className={styles.BYOKSetup__StepContent}>
                   <Heading as='h3'>Copy your API key</Heading>
-                  <Text as='p'>Click "Create API Key" and copy the generated key (starts with "gsk_...")</Text>
+                  <Text as='p'>Click "Create API Key" and copy the generated key from the provider dashboard</Text>
                 </div>
               </div>
 
@@ -184,7 +184,7 @@ const BYOKSetup = () => {
                 <div className={styles.BYOKSetup__StepNumber}>2</div>
                 <div className={styles.BYOKSetup__StepContent}>
                   <Heading as='h3'>Copy your API key</Heading>
-                  <Text as='p'>Click "Create new secret key" and copy the generated key (starts with "sk-...")</Text>
+                  <Text as='p'>Click "Create new secret key" and copy the generated key from the provider dashboard</Text>
                 </div>
               </div>
 
@@ -238,7 +238,7 @@ const BYOKSetup = () => {
                 <div className={styles.BYOKSetup__StepNumber}>2</div>
                 <div className={styles.BYOKSetup__StepContent}>
                   <Heading as='h3'>Copy your API key</Heading>
-                  <Text as='p'>Click "Create Key" and copy the generated key (starts with "sk-ant-...")</Text>
+                  <Text as='p'>Click "Create Key" and copy the generated key from the provider dashboard</Text>
                 </div>
               </div>
 
