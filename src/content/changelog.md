@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.8.4] - 2026-04-13
+
+### Improved
+- ⚡ Improved BYOK saving, provider switching, and sync reliability across supported AI providers
+- 🧭 Updated Settings to a more native macOS split-view navigation with cleaner toolbar behavior
+- 🔄 Improved monitor, hotkey, and AI Rename coordination to reduce duplicate or stuck processing
+
+### Fixed
+- 🐛 Fixed BYOK requests using out-of-sync provider state during analysis
+- 🩹 Fixed Restore Purchases so local PRO entitlement refreshes more reliably
+- 🔧 Fixed Groq timeout and fallback handling for faster recovery from provider stalls
+- 🛡️ Fixed migration and network-monitor edge cases that could leave app state inconsistent
+
 ## [1.8.3] - 2026-04-04
 
 ### Added
