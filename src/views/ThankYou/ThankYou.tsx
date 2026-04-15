@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { CheckCircle, Mail, ArrowRight } from 'lucide-react';
+import { CheckCircle, Mail } from 'lucide-react';
 import Button from '@/components/Button';
 import BackToHome from '@/components/BackToHome';
 import PageLayout from '@/components/PageLayout';
@@ -47,20 +47,14 @@ const ThankYou = () => {
         // Purchased from app - device was auto-activated
         <>
           <Text as='p' className={styles.ThankYou__Subtitle} color='subtle'>
-            Your Zush PRO access is permanent (one-time purchase).
-          </Text>
-          <Text as='p' className={styles.ThankYou__Subtitle} color='subtle'>
-            The PRO features have been unlocked in your app. Enjoy 10,000 credits and BYOK for unlimited processing!
+            Your Zush PRO is active. Enjoy 10,000 credits and BYOK for unlimited processing.
           </Text>
         </>
       ) : (
         // Purchased from website - need to activate via email
         <>
           <Text as='p' className={styles.ThankYou__Subtitle} color='subtle'>
-            Your PRO access is permanent (one-time purchase).
-          </Text>
-          <Text as='p' className={styles.ThankYou__Subtitle} color='subtle'>
-            We've sent an activation email to you.
+            Your PRO access is permanent. We've sent an activation email to you.
           </Text>
           <div className={styles.ThankYou__EmailNotice}>
             <Mail size={24} />
@@ -74,8 +68,7 @@ const ThankYou = () => {
       <div className={styles.ThankYou__Actions}>
         {hasDeviceId && (
           <Button as="a" href="zush://refresh-status">
-            Open app
-            <ArrowRight size={18} />
+            Open Zush
           </Button>
         )}
         <BackToHome />
