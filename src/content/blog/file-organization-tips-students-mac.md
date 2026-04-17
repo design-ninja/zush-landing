@@ -10,7 +10,7 @@ reviewed: "2026-04-09"
 
 The best file organization system for students on Mac is simple: one semester folder, one folder per course, and filenames that make assignments and notes obvious at a glance. If you make the system more complex than that, you probably will not keep using it.
 
-The mess usually comes from the same places every term: Downloads, screenshots, assignment drafts, lecture PDFs, and random files saved to Desktop. If screenshots, lecture PDFs, and assignment documents are a constant problem, [Zush](https://zushapp.com) can help by renaming those files automatically instead of letting timestamp names pile up.
+The mess usually comes from the same places every term: Downloads, screenshots, assignment drafts, lecture PDFs, and random files saved to Desktop. If screenshots, lecture PDFs, and assignment documents are a constant problem, [Zush](https://zushapp.com) can help by renaming those files automatically instead of letting timestamp names pile up. If you also freelance on the side, the companion guide on [organizing client files as a freelancer on Mac](/blog/organize-client-files-freelancers-mac) uses the same system adapted for paid work.
 
 
 ## Use a semester-first folder structure

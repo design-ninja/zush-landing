@@ -1,6 +1,6 @@
 ---
 title: "How to Batch Rename Files on Mac (2026): 4 Methods Tested"
-description: "Rename hundreds of files on Mac in minutes. We tested Finder, Automator, Terminal scripts and AI tools — step-by-step guide with real examples and a decision table."
+description: "Rename 400 files in one click on Mac. Finder, Automator, Terminal and AI tools compared side-by-side — step-by-step setup, real examples and a method-picker table."
 date: "2026-02-08"
 slug: "batch-rename-files-on-mac-complete-guide"
 tags: "batch rename files mac, rename multiple files mac, Finder batch rename, automatic file renaming, mac file organization"

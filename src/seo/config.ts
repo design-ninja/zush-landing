@@ -196,7 +196,7 @@ export function getBlogSeo(post: BlogFrontmatter): SeoMeta {
   return {
     title: post.title,
     description: post.description,
-    canonicalPath: `/blog/${post.slug}`,
+    canonicalPath: post.canonical ? normalizePath(post.canonical) : `/blog/${post.slug}`,
     robots: shouldNoIndex ? 'noindex, nofollow' : 'index, follow',
     ogType: 'article',
     publishedTime: toIsoDateTime(post.date),

@@ -36,7 +36,7 @@ Most users should clean these first:
 
 ![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
 
-- **Downloads** -- The default dumping ground. Installers, PDFs, images, zip files, and email attachments pile up here faster than anywhere else. Sort by Date Added and work from oldest to newest.
+- **Downloads** -- The default dumping ground. Installers, PDFs, images, zip files, and email attachments pile up here faster than anywhere else. Sort by Date Added and work from oldest to newest. For a dedicated system, see [how to organize your Downloads folder on Mac](/blog/how-to-organize-downloads-folder-mac).
 - **Desktop** -- Treat this as an inbox, not a filing cabinet. Anything that has lived on your Desktop for more than a week either needs a proper home or needs to be deleted.
 - **Screenshots** -- macOS saves screenshots to Desktop by default. If you take more than a few per week, they accumulate fast. Consider changing the screenshot save location to a dedicated `~/Screenshots` folder (use `defaults write com.apple.screencapture location ~/Screenshots` in Terminal).
 - **Old project folders** -- Finished projects with dozens of exports, drafts, and references. Archive what matters, delete the rest.

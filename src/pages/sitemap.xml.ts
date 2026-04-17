@@ -92,7 +92,9 @@ export function GET() {
     };
   });
 
-  const posts = getAllPosts().filter((post) => post.wordCount >= THIN_CONTENT_THRESHOLD);
+  const posts = getAllPosts().filter(
+    (post) => post.wordCount >= THIN_CONTENT_THRESHOLD && !post.noindex && !post.canonical,
+  );
   const blogEntries = posts.map((post) => {
     const loc = `${SITE_ORIGIN}/blog/${post.slug}`;
     const filePath = join(BLOG_CONTENT_DIR, `${post.slug}.md`);

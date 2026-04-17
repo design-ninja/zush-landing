@@ -1,6 +1,6 @@
 ---
-title: "Why Your Photos Are Named IMG_ and How to Fix It"
-description: "Learn why photos are named IMG_ by default and how to replace those generic names with a searchable system on Mac."
+title: "Why iPhone Photos Are Named IMG_ (and How to Rename Them on Mac)"
+description: "IMG_4382.HEIC tells you nothing. Here's why iPhones and cameras use IMG_ filenames — and three ways to replace them with descriptive, searchable names on Mac."
 date: "2026-02-22"
 slug: "why-your-photos-are-named-img-and-how-to-fix-it"
 tags: "IMG photos, photo naming, rename photos, macOS photo organization"

@@ -16,6 +16,7 @@ export interface BlogFrontmatter {
   reviewerName: string;
   reviewedAt: string;
   noindex: boolean;
+  canonical?: string;
 }
 
 export interface ParsedPost {
@@ -90,6 +91,7 @@ export function parseFrontmatter(raw: string): ParsedPost {
       reviewerName: meta.reviewer || '',
       reviewedAt: meta.reviewed || meta.date || '',
       noindex: meta.noindex === 'true',
+      canonical: meta.canonical || undefined,
     },
     content,
     faq: extractFAQ(content),

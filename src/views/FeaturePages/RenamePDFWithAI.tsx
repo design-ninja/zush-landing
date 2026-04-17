@@ -107,7 +107,7 @@ const RenamePDFWithAI = () => (
     ]}
     relatedBlogPosts={[
       { title: 'Rename PDF Files with AI on Mac: Practical Workflow Guide', href: 'rename-pdf-files-with-ai-mac' },
-      { title: 'File Naming Conventions Best Practices', href: 'file-naming-conventions-best-practices' },
+      { title: 'How to Rename PDF Files Automatically', href: 'rename-pdf-files-automatically' },
       { title: 'Automate File Organization on macOS', href: 'automate-file-organization-macos' },
     ]}
     jsonLd={jsonLd}

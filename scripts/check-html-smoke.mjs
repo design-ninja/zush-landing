@@ -82,8 +82,15 @@ for (const loc of locs) {
 
   if (pathname.startsWith('/blog/')) {
     assertIncludes(html, '"@type":"BlogPosting"', `BlogPosting JSON-LD missing for ${pathname}`);
-    const hasHomepageHowTo = jsonLdBlocks.some((block) => block.includes('/#howto') || block.includes('"@type":"HowTo"'));
-    if (hasHomepageHowTo) {
+    const hasHomepageIds = jsonLdBlocks.some(
+      (block) =>
+        block.includes('/#howto') ||
+        block.includes('/#organization') ||
+        block.includes('/#website') ||
+        block.includes('/#software') ||
+        block.includes('/#faq'),
+    );
+    if (hasHomepageIds) {
       fail(`Homepage schema leaked into blog page ${pathname}`);
     }
   }

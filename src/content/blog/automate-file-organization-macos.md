@@ -1,6 +1,6 @@
 ---
-title: "How to Automate File Organization on macOS"
-description: "Learn how to automate file organization on macOS using Smart Folders, Automator, Shortcuts, Hazel, and AI-powered file renaming workflows."
+title: "Automate File Organization on macOS: 5 Tools That Work Together (2026)"
+description: "Stop sorting files by hand. Smart Folders, Hazel, Automator, Shortcuts and AI renaming combined into one Mac workflow — setup, trade-offs and a decision table."
 date: "2026-02-25"
 slug: "automate-file-organization-macos"
 tags: "automate file organization mac, automatic file sorting mac, file automation macOS, mac productivity, folder monitoring"

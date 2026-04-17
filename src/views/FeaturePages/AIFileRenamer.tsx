@@ -53,7 +53,7 @@ const AIFileRenamer = () => (
     ]}
     relatedBlogPosts={[
       { title: 'AI Renamer Mac: How to Choose the Right Tool on Mac', href: 'ai-renamer-mac' },
-      { title: 'How to Rename Images with AI on macOS', href: 'how-to-rename-images-with-ai-on-macos' },
+      { title: 'How to Rename Files with AI for Free in 2026', href: 'rename-files-with-ai-free' },
       { title: 'Automate File Organization on macOS', href: 'automate-file-organization-macos' },
     ]}
     jsonLd={{
