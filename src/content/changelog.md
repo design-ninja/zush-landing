@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.8.5] - 2026-04-19
+
+### Added
+- 🧹 Added a Clear action for activity history without changing files on disk
+- ⚠️ Added missing-file warnings in Activity when renamed files were moved or deleted
+
+### Improved
+- ✨ Improved title regeneration with more varied rename suggestions
+- 🎨 Refined the PRO upgrade flow, CTA visibility, and upgrade screen contrast
+- 🧭 Moved shortcut settings into Preferences and stabilized the Settings window layout
+- 📊 Added richer device and purchase metadata for status checks and purchase notifications
+
+### Fixed
+- 🛡️ Hardened App Store verification, purchase syncing, and backend status handling
+- 🩹 Fixed Settings sidebar update glitches during view refreshes
+- 🔄 Removed the extra onboarding prompt before starting AI Rename
+
 ## [1.8.4] - 2026-04-13
 
 ### Improved
