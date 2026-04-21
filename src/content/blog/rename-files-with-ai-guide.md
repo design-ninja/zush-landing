@@ -87,7 +87,7 @@ The best tools keep a rename history so you can revert any change. This matters 
 
 ### On Mac: Zush
 
-[Zush](https://zushapp.com/ai-file-renamer) is built specifically for this workflow on macOS. It supports 23 image formats including PNG, JPG, HEIC, and RAW formats, plus 10 document formats including PDF, DOCX, and XLSX.
+[Zush](https://zushapp.com/ai-file-renamer) is built specifically for this workflow on macOS. It supports 22 image formats including PNG, JPG, HEIC, and RAW formats, plus 11 document formats including PDF, DOCX, and XLSX.
 
 Key features:
 
@@ -184,6 +184,8 @@ Accuracy depends on the AI model and the clarity of the file content. Screenshot
 ### Can I customize the naming format?
 
 Yes. Most tools let you set patterns like `date-description`, `category-description-number`, or your own custom template. Zush supports custom patterns that give you control over the structure of every generated name.
+
+![Zush custom prompts demo showing guided filename generation with your own instructions](/videos/zush-custom-prompts.mp4)
 
 ![Zush processing tab showing naming pattern configuration with title name format and localization settings](/images/screenshots/light/zush-naming-settings.webp)
 

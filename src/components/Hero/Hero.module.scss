@@ -134,6 +134,14 @@
             opacity: 0.15;
         }
     }
+
+    &_compactTopSpacing {
+        padding-top: 2rem;
+
+        @include mobile {
+            padding-top: 1.5rem;
+        }
+    }
 }
 
 @keyframes heroIntro {

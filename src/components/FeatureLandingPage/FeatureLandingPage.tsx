@@ -94,7 +94,13 @@ const FeatureLandingPage = ({
       />
 
       <article className={styles.Page}>
-        <Hero as='header' title={h1} subtitle={definitionText} slides={showcaseSlides} />
+        <Hero
+          as='header'
+          title={h1}
+          subtitle={definitionText}
+          slides={showcaseSlides}
+          compactTopSpacing
+        />
 
         <section className={styles.Section}>
           <div className={styles.Section__Container}>

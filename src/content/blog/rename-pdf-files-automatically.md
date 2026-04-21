@@ -78,7 +78,7 @@ Every renamed file is searchable in Spotlight and identifiable at a glance when 
 
 ![Zush AI rename results showing PDF files with descriptive before and after names](/images/screenshots/light/zush-batch-rename-results.webp)
 
-![Automatic PDF renaming with AI-powered naming patterns on Mac](/videos/zush-naming-pattern.mp4)
+![Zush custom prompts demo showing prompt-guided PDF filename generation on Mac](/videos/zush-custom-prompts.mp4)
 
 ## Step-by-step: automatic PDF renaming with Zush
 
@@ -130,7 +130,7 @@ Accounting workflows generate a lot of PDFs with poor names: vendor invoices, cl
 
 Law firms and legal departments deal with contracts, agreements, filings, and correspondence that arrive from courts, opposing counsel, clients, and internal teams. A folder where every file is `document.pdf` or `scan_001.pdf` is a liability. AI renaming turns those into descriptive names like `nda-client-onboarding-acme-corp.pdf` or `settlement-agreement-draft-v3.pdf`.
 
-For additional PDF-specific strategies on Mac, read [Rename PDF Files with AI on Mac: Practical Workflow Guide](/blog/rename-pdf-files-with-ai-mac).
+For additional PDF-specific strategies on Mac, read [Rename PDFs with AI on Mac](/rename-pdf-with-ai).
 
 ### Academic papers and research
 

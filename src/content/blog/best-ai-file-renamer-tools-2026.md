@@ -37,7 +37,7 @@ Before comparing tools, know what actually matters for daily use:
 **Pricing:** Free (50 renames/month), Pro $10 one-time (10K renames), BYOK unlimited
 **Website:** [zushapp.com](https://zushapp.com/ai-file-renamer)
 
-Zush is the pick for Mac users who work with a mix of file types. It supports 23 image formats (including HEIC plus CR2, NEF, ARW, DNG, and other RAW variants) and 10 document formats (PDF, DOCX, XLSX, and others). That breadth matters because real workflows on Mac mix iPhone photos, camera RAW files, scanned PDFs, and office documents in the same folders, and most tools in this post fail on RAW.
+Zush is the pick for Mac users who work with a mix of file types. It supports 22 image formats (including HEIC plus CR2, NEF, ARW, DNG, and other RAW variants) and 11 document formats (PDF, DOCX, XLSX, and others). That breadth matters because real workflows on Mac mix iPhone photos, camera RAW files, scanned PDFs, and office documents in the same folders, and most tools in this post fail on RAW.
 
 **Strengths:**
 
@@ -60,7 +60,7 @@ Zush is the pick for Mac users who work with a mix of file types. It supports 23
 
 ![Zush AI rename results showing files with descriptive before and after names and green checkmarks](/images/screenshots/light/zush-batch-rename-results.webp)
 
-For a Mac-specific deep dive, see [AI Renamer Mac: How to Choose the Right Tool on Mac](/blog/ai-renamer-mac).
+For a Mac-specific deep dive, see [AI File Renamer for Mac](/ai-file-renamer).
 
 ### 2. AI Renamer
 
@@ -224,7 +224,7 @@ The pricing landscape is more varied than it appears. Zush offers the lowest one
 
 ## How to choose
 
-**If you are on Mac and work with mixed file types:** Zush. Full RAW support (CR2, NEF, ARW, DNG), 10 document formats, folder monitoring, rollback, $10 one-time.
+**If you are on Mac and work with mixed file types:** Zush. Full RAW support (CR2, NEF, ARW, DNG), 11 document formats, folder monitoring, rollback, $10 one-time.
 
 **If privacy is your top priority:** AI Renamer CLI. Runs locally via Ollama. The trade-off is weaker naming quality and no document support.
 

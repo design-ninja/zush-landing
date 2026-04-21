@@ -194,7 +194,7 @@ Claude tends to write longer, more context-aware descriptions. If you work with 
 
 You are not locked in. You can change your API key or provider in Zush Settings at any point. Some users start with Gemini's free tier and switch to OpenAI or Claude later when they want different output characteristics. Your rename history and naming patterns are preserved regardless of which provider you use.
 
-![Zush batch rename demo showing unlimited AI-powered file renaming with BYOK](/videos/zush-batch-rename.mp4)
+![Zush BYOK demo showing unlimited AI-powered file renaming with your own provider key](/videos/zush-byok.mp4)
 
 ## BYOK and folder monitoring
 

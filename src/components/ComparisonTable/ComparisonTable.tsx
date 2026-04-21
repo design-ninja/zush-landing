@@ -21,7 +21,7 @@ export interface ComparisonRow {
 }
 
 const defaultRows: ComparisonRow[] = [
-  { tool: 'Zush', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: '$10 one-time / 10,000 renames', imageFormats: '23 formats', rawSupport: true, documentFormats: 'PDF, DOCX, XLSX, PPTX, +', pdfExtraction: true, screenshotDetect: true, exifPreserve: true },
+  { tool: 'Zush', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: '$10 one-time / 10,000 renames', imageFormats: '22 formats', rawSupport: true, documentFormats: 'PDF, DOCX, XLSX, PPTX, +', pdfExtraction: true, screenshotDetect: true, exifPreserve: true },
   { tool: 'Renamer.ai', platform: 'Mac & Windows', freeTier: '15/m', batchRename: true, autoMonitor: true, pricing: 'From $9.95/mo (200 renames)', imageFormats: '15+ formats', rawSupport: false, documentFormats: 'PDF, DOCX, XLSX, PPT, +', pdfExtraction: true, screenshotDetect: false, exifPreserve: true },
   { tool: 'AI Renamer', platform: 'Mac & Windows', freeTier: '10', batchRename: true, autoMonitor: false, pricing: '$19 one-time or $10/200 renames', imageFormats: 'Common only', rawSupport: false, documentFormats: 'PDF, TXT', pdfExtraction: true, screenshotDetect: false, exifPreserve: true },
   { tool: 'NameQuick', platform: 'macOS', freeTier: 'Trial (50)', batchRename: true, autoMonitor: true, pricing: 'From $5/mo (500 renames) or $38 BYOK', imageFormats: 'Common + HEIF', rawSupport: false, documentFormats: 'PDF, DOCX, XLSX, Pages', pdfExtraction: true, screenshotDetect: false, exifPreserve: true },

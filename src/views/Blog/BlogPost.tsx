@@ -6,7 +6,7 @@ import AppLink from '@/components/AppLink';
 import BlogCTA from '@/components/BlogCTA';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
-import { getDemoVideoBySrc } from '@/data/demoVideos';
+import { getDemoVideoBySrc, resolveDemoVideoMedia } from '@/data/demoVideos';
 import styles from './BlogPost.module.scss';
 import '@/styles/markdown-content.scss';
 
@@ -241,29 +241,63 @@ const BlogPost = ({ slug }: BlogPostProps) => {
                 img: ({ node: _node, src, alt, ...props }) => {
                   if (src && src.endsWith('.mp4')) {
                     const demoVideo = getDemoVideoBySrc(src);
-                    const posterSrc = demoVideo?.poster;
                     const videoLabel = alt || demoVideo?.title || 'Watch demo video';
+                    const lightMedia = demoVideo
+                      ? resolveDemoVideoMedia(demoVideo, 'light')
+                      : undefined;
+                    const darkMedia = demoVideo
+                      ? resolveDemoVideoMedia(demoVideo, 'dark')
+                      : undefined;
+                    const lightHref = lightMedia?.source || src;
+                    const darkHref = darkMedia?.source || lightHref;
+                    const lightPoster = lightMedia?.poster;
+                    const darkPoster = darkMedia?.poster || lightPoster;
 
                     return (
                       <figure className='markdown-figure markdown-figure--video'>
                         <a
-                          href={src}
-                          className='markdown-video-link'
+                          href={lightHref}
+                          className='markdown-video-link markdown-video-link--light'
                           target='_blank'
                           rel='noopener noreferrer'
                           data-autoplay-video='true'
-                          data-video-src={src}
+                          data-video-src={lightHref}
                           data-video-label={videoLabel}
-                          data-video-poster={posterSrc || ''}
+                          data-video-poster={lightPoster || ''}
                           aria-label={`${videoLabel}. Open demo video in a new tab`}
                         >
-                          {posterSrc ? (
+                          {lightPoster ? (
                             <img
-                              src={posterSrc}
+                              src={lightPoster}
                               alt={videoLabel}
                               loading='lazy'
                               decoding='async'
-                              className='markdown-video-poster'
+                              className='markdown-video-poster markdown-video-poster--light'
+                              {...props}
+                            />
+                          ) : (
+                            <span className='markdown-video-fallback'>{videoLabel}</span>
+                          )}
+                          <span className='markdown-video-badge'>Open demo video</span>
+                        </a>
+                        <a
+                          href={darkHref}
+                          className='markdown-video-link markdown-video-link--dark'
+                          target='_blank'
+                          rel='noopener noreferrer'
+                          data-autoplay-video='true'
+                          data-video-src={darkHref}
+                          data-video-label={videoLabel}
+                          data-video-poster={darkPoster || ''}
+                          aria-label={`${videoLabel}. Open demo video in a new tab`}
+                        >
+                          {darkPoster ? (
+                            <img
+                              src={darkPoster}
+                              alt={videoLabel}
+                              loading='lazy'
+                              decoding='async'
+                              className='markdown-video-poster markdown-video-poster--dark'
                               {...props}
                             />
                           ) : (

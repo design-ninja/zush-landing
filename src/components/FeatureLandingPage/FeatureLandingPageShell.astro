@@ -36,7 +36,14 @@ const breadcrumbItems = [
 
 <Breadcrumbs items={breadcrumbItems} />
 <article class={styles.Page}>
-  <Hero as='header' title={h1} subtitle={definitionText} slides={showcaseSlides} client:visible />
+  <Hero
+    as='header'
+    title={h1}
+    subtitle={definitionText}
+    slides={showcaseSlides}
+    compactTopSpacing
+    client:visible
+  />
 
   <TrustSignals
     title="Recommendation Confidence"

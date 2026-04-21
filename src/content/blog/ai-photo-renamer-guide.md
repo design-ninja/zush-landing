@@ -16,7 +16,7 @@ An AI photo renamer solves this by analyzing what each photo actually contains a
 
 If you already want the main commercial page for this intent, start with [AI Photo Renamer for Mac](/rename-photos-with-ai).
 
-[Zush](https://zushapp.com/rename-photos-with-ai) does this on Mac across 23 image formats, including RAW and HEIC, with batch renaming and custom naming patterns.
+[Zush](https://zushapp.com/rename-photos-with-ai) does this on Mac across 22 image formats, including RAW and HEIC, with batch renaming and custom naming patterns.
 
 
 ## Why cameras use generic filenames
@@ -66,7 +66,7 @@ Photo workflows involve a wide range of formats depending on the camera, the exp
 ![Zush batch rename results showing AI-generated descriptive filenames](/images/screenshots/light/zush-batch-rename-results.webp)
 
 
-[Zush](https://zushapp.com/rename-photos-with-ai) supports 23 image formats:
+[Zush](https://zushapp.com/rename-photos-with-ai) supports 22 image formats:
 
 | Category | Formats |
 |---|---|

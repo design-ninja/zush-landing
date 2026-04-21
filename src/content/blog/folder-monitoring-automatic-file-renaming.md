@@ -30,7 +30,7 @@ This matters because files with bad names do not just look messy. They become in
 
 Zush uses macOS file system events to detect new files in watched folders. There is no polling interval or scheduled scan. When a file lands in a monitored folder, Zush picks it up, reads the content using AI, and applies a descriptive name based on what the file actually contains.
 
-That works across 23 image formats and 10 document formats, which covers the full range of files most Mac users encounter daily: PNG screenshots, HEIC photos, downloaded JPEGs, PDFs, Word documents, spreadsheets, presentations, and more.
+That works across 22 image formats and 11 document formats, which covers the full range of files most Mac users encounter daily: PNG screenshots, HEIC photos, downloaded JPEGs, PDFs, Word documents, spreadsheets, presentations, and more.
 
 The rename follows whatever naming pattern you have configured. You can use patterns like `{date}_{title}`, `{category}_{title}`, or just `{title}`, and Zush applies the pattern consistently to every incoming file.
 
@@ -179,7 +179,7 @@ Tools like Finder's built-in batch rename work well for one-off cleanup jobs. Bu
 
 The key advantage of folder monitoring is that it runs continuously without your input. You set it up once and it handles every file from that point forward. That is the difference between a cleanup tool and a prevention tool.
 
-For a deeper look at AI-powered automatic renaming, see [Auto Image Renamer for Mac: Set Up Folder-Based Automation](/blog/auto-image-renamer-mac).
+For a deeper look at AI-powered automatic renaming, see [Auto Rename Files on Mac](/auto-rename-files).
 
 ## When folder monitoring is not the right fit
 

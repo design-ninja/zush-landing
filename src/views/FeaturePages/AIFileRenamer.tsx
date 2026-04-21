@@ -1,4 +1,5 @@
 import FeatureLandingPage from '@/components/FeatureLandingPage';
+import { buildSoftwareApplicationJsonLd } from '@/utils/jsonLd';
 
 const AIFileRenamer = () => (
   <FeatureLandingPage
@@ -52,47 +53,27 @@ const AIFileRenamer = () => (
       { title: 'Rename Documents with AI', href: '/rename-documents-with-ai' },
     ]}
     relatedBlogPosts={[
-      { title: 'AI Renamer Mac: How to Choose the Right Tool on Mac', href: 'ai-renamer-mac' },
+      { title: 'How to Rename Files with AI: Step-by-Step Guide', href: 'rename-files-with-ai-guide' },
       { title: 'How to Rename Files with AI for Free in 2026', href: 'rename-files-with-ai-free' },
       { title: 'Automate File Organization on macOS', href: 'automate-file-organization-macos' },
     ]}
     jsonLd={{
       '@context': 'https://schema.org',
       '@graph': [
-        {
-          '@type': 'SoftwareApplication',
-          name: 'Zush',
-          operatingSystem: 'macOS',
-          applicationCategory: 'UtilitiesApplication',
-          description: 'AI-powered file renaming app for macOS that analyzes file content and generates descriptive, searchable filenames automatically.',
-          offers: [
-            {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'USD',
-              description: 'Free tier — try AI renaming at no cost',
-            },
-            {
-              '@type': 'Offer',
-              price: '10',
-              priceCurrency: 'USD',
-              description: 'Pro — one-time payment for 10,000 AI renames',
-            },
-          ],
+        buildSoftwareApplicationJsonLd({
+          pagePath: '/ai-file-renamer',
+          description:
+            'AI-powered file renaming app for macOS that analyzes screenshots, PDFs, documents, and photos to generate descriptive, searchable filenames automatically.',
           featureList: [
             'AI-powered content-aware file renaming',
             'Batch rename for files and folders',
             'Automatic folder monitoring',
             'Custom naming patterns',
             'Smart Finder tags and metadata',
-            '60+ language support',
+            'PDF, document, and image analysis',
             'Bring Your Own API Key (BYOK)',
           ],
-          speakable: {
-            '@type': 'SpeakableSpecification',
-            cssSelector: ['h1', 'meta[name="description"]'],
-          },
-        },
+        }),
         {
           '@type': 'FAQPage',
           mainEntity: [

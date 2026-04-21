@@ -1,4 +1,5 @@
 import FeatureLandingPage from '@/components/FeatureLandingPage';
+import { buildSoftwareApplicationJsonLd } from '@/utils/jsonLd';
 
 const faqItems = [
   {
@@ -33,7 +34,7 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'HowTo',
-      name: 'How to rename screenshots with AI on macOS',
+      name: 'Rename Screenshots with AI on Mac',
       description:
         'Use Zush to automatically rename macOS screenshots based on their visual content using AI.',
       step: [
@@ -72,15 +73,28 @@ const jsonLd = {
         },
       })),
     },
+    buildSoftwareApplicationJsonLd({
+      pagePath: '/rename-screenshots-with-ai',
+      description:
+        'AI screenshot renamer for macOS that replaces generic screenshot timestamps with descriptive filenames and can auto-rename new captures in watched folders.',
+      featureList: [
+        'Rename screenshots by visible app and on-screen content',
+        'Automatic folder monitoring for new macOS screenshots',
+        'Batch rename existing screenshot archives',
+        'Support for PNG, JPG, and downloaded image captures',
+        'Useful filenames for bug reports and design references',
+        'Undo and review before apply',
+      ],
+    }),
   ],
 };
 
 const RenameScreenshotsWithAI = () => (
   <FeatureLandingPage
-    h1="AI Screenshot Renamer for Mac"
+    h1="Rename Screenshots with AI on Mac"
     category="screenshot"
     definitionTitle="What Is AI Screenshot Renaming?"
-    definitionText="Use Zush as an AI screenshot renamer for Mac to replace generic timestamp names with descriptive filenames and optionally auto-rename new captures."
+    definitionText="Rename screenshots with AI on Mac using Zush to replace generic timestamp names with descriptive filenames and optionally auto-rename new captures."
     showcaseSlides={[{
       files: [
         { before: 'Screenshot 2026-03-15.png', after: 'Slack Project Timeline.png', img: '/images/examples/dashboard.jpg', type: 'image' },

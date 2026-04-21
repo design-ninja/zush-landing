@@ -94,9 +94,9 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ogType: 'website',
   },
   '/rename-documents-with-ai': {
-    title: 'Rename Documents with AI on Mac · PDF, DOCX, XLSX · Zush',
+    title: 'Rename Documents with AI on Mac · DOCX, XLSX & PPTX · Zush',
     description:
-      "Stop opening every PDF to find what's inside. Zush reads document content and renames invoices, contracts, reports and DOCX files automatically on Mac.",
+      'Rename DOCX, XLSX, PPTX, TXT, CSV and email files by their actual content. Zush reads document text and creates searchable filenames automatically on Mac.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -122,9 +122,9 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ogType: 'website',
   },
   '/ai-image-renamer': {
-    title: 'AI Image Renamer for Mac · HEIC, RAW & JPG Photos · Zush',
+    title: 'AI Image Renamer for Mac · Screenshots, Photos & Design Assets · Zush',
     description:
-      'Turn IMG_4821.HEIC into golden-retriever-park.heic. Zush renames photos, screenshots and design assets across 23 image formats. Free for 50 files.',
+      'Rename screenshots, photos, mockups and downloaded images across 22 formats. Zush uses AI vision to create searchable filenames on Mac. Free for 50 files.',
     robots: 'index, follow',
     ogType: 'website',
   },

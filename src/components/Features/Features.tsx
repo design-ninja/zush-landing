@@ -85,7 +85,7 @@ const Features = () => {
           {/* Item 1: AI Analysis */}
           <BentoCard
             title='AI Analysis'
-            description='Advanced AI analyzes images, PDFs, and supported documents to generate meaningful, descriptive filenames automatically.'
+            description='Advanced AI analyzes images and supported documents, including PDFs, to generate meaningful, descriptive filenames automatically.'
             icon={Sparkles}
             delay={0.1}
           >

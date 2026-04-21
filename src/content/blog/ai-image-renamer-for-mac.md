@@ -89,7 +89,7 @@ then you want an AI image renamer, not a numbering tool.
 
 While AI image renaming remains the core use case, Zush also analyzes supported documents including PDFs, Word files (DOC/DOCX), presentations (PPT/PPTX), spreadsheets (XLSX), and text-based formats like TXT, MD, JSON, EML, and CSV. That means the same content-aware renaming workflow works for contracts, reports, invoices, and other business files, not just visual assets.
 
-If your main interest is document renaming, see [Rename PDF Files with AI on Mac: Practical Workflow Guide](/blog/rename-pdf-files-with-ai-mac).
+If your main interest is document renaming, see [Rename PDFs with AI on Mac](/rename-pdf-with-ai).
 
 
 ## Conclusion

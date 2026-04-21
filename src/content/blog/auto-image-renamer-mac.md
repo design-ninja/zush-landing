@@ -65,7 +65,7 @@ Examples:
 3. Test the first few renames
 4. Leave the monitor running for future files
 
-That is the practical value of [Zush](https://zushapp.com): you can move from cleanup to prevention without building your own scripts or Shortcuts workflow. If you want the broader category page, read [AI Image Renamer for Mac: What It Is and the Best Way to Use One](/blog/ai-image-renamer-for-mac).
+That is the practical value of [Zush](https://zushapp.com): you can move from cleanup to prevention without building your own scripts or Shortcuts workflow. If you want the broader category page, read [AI Image Renamer for Mac](/ai-image-renamer).
 
 ![Automatic folder monitoring renaming images as they arrive on Mac](/videos/zush-monitor.mp4)
 
@@ -83,7 +83,7 @@ Automation is strongest when the incoming files are consistently poorly named, w
 
 Automatic renaming is not limited to visual files. Zush also monitors folders for supported document types including PDFs, DOCX, PPTX, XLSX, TXT, MD, JSON, EML, and CSV. When a new document arrives in a monitored folder, Zush reads its content and generates a descriptive filename automatically. That is useful for Downloads folders that accumulate email attachments, exported reports, and shared documents alongside screenshots and images.
 
-For a focused guide on document renaming, see [Rename PDF Files with AI on Mac: Practical Workflow Guide](/blog/rename-pdf-files-with-ai-mac).
+For a focused guide on document renaming, see [Rename PDFs with AI on Mac](/rename-pdf-with-ai).
 
 
 ## Conclusion

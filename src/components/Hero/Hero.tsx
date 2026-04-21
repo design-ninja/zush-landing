@@ -16,9 +16,16 @@ interface HeroProps {
   subtitle?: string;
   slides?: Slide[];
   as?: "section" | "header";
+  compactTopSpacing?: boolean;
 }
 
-const Hero = ({ title, subtitle, slides, as: Tag = "section" }: HeroProps) => {
+const Hero = ({
+  title,
+  subtitle,
+  slides,
+  as: Tag = "section",
+  compactTopSpacing = false,
+}: HeroProps) => {
   const isMobile = useIsMobile();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hasLoadedModal, setHasLoadedModal] = useState(false);
@@ -33,7 +40,14 @@ const Hero = ({ title, subtitle, slides, as: Tag = "section" }: HeroProps) => {
   };
 
   return (
-    <Tag className={styles.Hero}>
+    <Tag
+      className={[
+        styles.Hero,
+        compactTopSpacing ? styles.Hero_compactTopSpacing : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
       <div className={styles.Hero__Container}>
         <div className={styles.Hero__Intro}>
           <Heading as="h1" className={styles.Hero__Title}>
@@ -75,7 +89,7 @@ const Hero = ({ title, subtitle, slides, as: Tag = "section" }: HeroProps) => {
             )}
             <Button
               as="link"
-              href="/#pro"
+              href="/#pricing"
               variant="primary"
               size="lg"
             >

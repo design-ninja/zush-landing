@@ -221,7 +221,7 @@ A rule can move those files to a specific folder. It cannot explain what they co
 
 This is exactly where AI-based naming becomes useful. Tools that analyze file content -- the actual pixels in an image, the text in a PDF, the layout of a document -- can generate names that describe what the file actually is.
 
-For more on how AI file renaming works under the hood, see our [AI renamer guide](/blog/ai-renamer-mac).
+For more on how AI file renaming works in practice, see our [AI File Renamer for Mac](/ai-file-renamer).
 
 ## AI-powered file renaming: before and after
 

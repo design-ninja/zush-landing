@@ -1,6 +1,6 @@
 ---
 import type { SeoMeta } from '@/seo/config';
-import { DEFAULT_OG_IMAGE, FEATURE_ROUTES, getCanonicalUrl } from '@/seo/config';
+import { DEFAULT_OG_IMAGE, getCanonicalUrl } from '@/seo/config';
 import ThemeNavbar from '@/components/chrome/ThemeNavbar';
 import CheckoutAutoOpenBridge from '@/components/chrome/CheckoutAutoOpenBridge';
 import Footer from '@/components/Footer';
@@ -24,10 +24,7 @@ const ogImage = seo.ogImage || DEFAULT_OG_IMAGE;
 const ldItems = (Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [])
   .filter(Boolean);
 const isHomePage = seo.canonicalPath === '/';
-const isFeaturePage = FEATURE_ROUTES.includes(
-  seo.canonicalPath as (typeof FEATURE_ROUTES)[number],
-);
-const needsTopOffset = includeChrome && !isHomePage && !isFeaturePage;
+const needsTopOffset = includeChrome && !isHomePage;
 ---
 
 <!doctype html>

@@ -96,7 +96,7 @@ Each provider has a slightly different process, but the pattern is the same:
 
 The BYOK approach gives you the full Zush experience, including batch rename, folder monitoring, custom patterns, Finder tags, 60+ language support, and rename history, with no cap on usage.
 
-![Batch renaming files with AI for free using Zush](/videos/zush-batch-rename.mp4)
+![Zush BYOK demo showing unlimited file renaming with your own AI provider key](/videos/zush-byok.mp4)
 
 For a broader comparison of tools and pricing, see [Best AI File Renamer Tools for Mac Compared](/blog/best-ai-file-renamer-tools-mac-compared).
 

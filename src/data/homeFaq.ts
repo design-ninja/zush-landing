@@ -8,11 +8,11 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'What is Zush?',
     answer:
-      'Zush is an intelligent macOS application that automates the tedious task of renaming files. Using advanced AI, it analyzes images, PDFs, and supported documents to generate descriptive, meaningful filenames and metadata, helping you keep your library perfectly organized.',
+      'Zush is an intelligent macOS application that automates the tedious task of renaming files. Using advanced AI, it analyzes images and supported documents, including PDFs, to generate descriptive, meaningful filenames and metadata, helping you keep your library perfectly organized.',
   },
   {
     question: 'What file formats are supported?',
-    answer: `Zush supports visual formats: ${imageExtensions}. Supported document formats include ${documentExtensions}. PDFs and SVGs are supported too, so you can organize both visual assets and everyday documents in one workflow.`,
+    answer: `Zush supports visual formats: ${imageExtensions}. Supported document formats include ${documentExtensions}. SVG is supported too, so you can organize both visual assets and everyday documents in one workflow.`,
   },
   {
     question: 'How does Zush AI Rename work?',
@@ -81,7 +81,7 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'Do you support audio or video files?',
     answer:
-      'Not yet. Right now Zush focuses on images, PDFs, and supported documents. Audio and video support is on our roadmap and already under active exploration. Stay tuned!',
+      'Not yet. Right now Zush focuses on images and supported documents, including PDFs. Audio and video support is on our roadmap and already under active exploration. Stay tuned!',
   },
   {
     question: "Can I get a refund if it doesn't fit my needs?",

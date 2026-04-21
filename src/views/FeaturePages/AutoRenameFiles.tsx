@@ -1,4 +1,5 @@
 import FeatureLandingPage from '@/components/FeatureLandingPage';
+import { buildSoftwareApplicationJsonLd } from '@/utils/jsonLd';
 
 const AutoRenameFiles = () => (
   <FeatureLandingPage
@@ -53,7 +54,7 @@ const AutoRenameFiles = () => (
     ]}
     relatedBlogPosts={[
       { title: 'Automate File Organization on macOS', href: 'automate-file-organization-macos' },
-      { title: 'Auto Image Renamer for Mac: Set Up Folder-Based Automation', href: 'auto-image-renamer-mac' },
+      { title: 'Folder Monitoring for Automatic File Renaming: Set It and Forget It', href: 'folder-monitoring-automatic-file-renaming' },
       { title: 'macOS Automator: Rename Files Guide', href: 'macos-automator-rename-files-guide' },
     ]}
     jsonLd={{
@@ -133,6 +134,19 @@ const AutoRenameFiles = () => (
             },
           ],
         },
+        buildSoftwareApplicationJsonLd({
+          pagePath: '/auto-rename-files',
+          description:
+            'Automatic file renamer for macOS that watches folders and uses AI to rename new screenshots, downloads, PDFs, and documents as they arrive.',
+          featureList: [
+            'Watched folders for automatic file renaming',
+            'Rename downloads, screenshots, photos, and PDFs on arrival',
+            'AI-based content understanding instead of manual rules',
+            'Batch review mode and full rollback history',
+            'Multiple monitored folders at once',
+            'Custom naming patterns with automation',
+          ],
+        }),
       ],
     }}
   />

@@ -8,6 +8,7 @@ import {
   Briefcase,
   LucideIcon,
 } from 'lucide-react';
+import AppLink from '../AppLink';
 import Heading from '../Heading';
 import Text from '../Text';
 import SectionHeader from '../SectionHeader';
@@ -20,7 +21,7 @@ interface UseCaseCardProps {
   title: string;
   description: ReactNode;
   color: CardColor;
-  delay?: number;
+  href?: string;
 }
 
 const UseCaseCard = ({
@@ -28,27 +29,52 @@ const UseCaseCard = ({
   title,
   description,
   color,
-  delay = 0,
-}: UseCaseCardProps) => (
-  <div
-    className={`${styles.UseCaseCard} ${styles[`UseCaseCard_${color}`]}`}
-    style={{ transitionDelay: `${delay}s` }}
-  >
-    <div className={styles.UseCaseCard__IconWrapper}>
-      <Icon size={24} />
+  href,
+}: UseCaseCardProps) => {
+  const className = [
+    styles.UseCaseCard,
+    styles[`UseCaseCard_${color}`],
+    href ? styles.UseCaseCard_linked : '',
+  ].filter(Boolean).join(' ');
+
+  const content = (
+    <>
+      <div className={styles.UseCaseCard__IconWrapper}>
+        <Icon size={24} />
+      </div>
+      <Heading as='h3' className={styles.UseCaseCard__Title}>
+        {title}
+      </Heading>
+      <Text className={styles.UseCaseCard__Description}>{description}</Text>
+    </>
+  );
+
+  if (href) {
+    return (
+      <AppLink
+        href={href}
+        className={className}
+      >
+        {content}
+      </AppLink>
+    );
+  }
+
+  return (
+    <div
+      className={className}
+    >
+      {content}
     </div>
-    <Heading as='h3' className={styles.UseCaseCard__Title}>
-      {title}
-    </Heading>
-    <Text className={styles.UseCaseCard__Description}>{description}</Text>
-  </div>
-);
+  );
+};
 
 export interface UseCaseData {
   icon: LucideIcon;
   title: string;
   description: ReactNode;
   color: CardColor;
+  href?: string;
 }
 
 const defaultUseCases: UseCaseData[] = [
@@ -63,6 +89,7 @@ const defaultUseCases: UseCaseData[] = [
       </>
     ),
     color: 'purple',
+    href: '/ai-image-renamer',
   },
   {
     icon: Camera,
@@ -75,17 +102,19 @@ const defaultUseCases: UseCaseData[] = [
       </>
     ),
     color: 'blue',
+    href: '/rename-photos-with-ai',
   },
   {
     icon: Megaphone,
     title: 'Marketers & SMM',
     description: (
       <>
-        Keep <strong>campaign decks, content calendars, and assets</strong>{' '}
+        Keep <strong>campaign decks, exports, screenshots, and assets</strong>{' '}
         organized. Quickly find the <strong>right file</strong> for any campaign or report.
       </>
     ),
     color: 'orange',
+    href: '/ai-file-renamer',
   },
   {
     icon: Code,
@@ -97,6 +126,7 @@ const defaultUseCases: UseCaseData[] = [
       </>
     ),
     color: 'green',
+    href: '/rename-screenshots-with-ai',
   },
   {
     icon: Video,
@@ -108,6 +138,7 @@ const defaultUseCases: UseCaseData[] = [
       </>
     ),
     color: 'pink',
+    href: '/auto-rename-files',
   },
   {
     icon: Briefcase,
@@ -119,6 +150,7 @@ const defaultUseCases: UseCaseData[] = [
       </>
     ),
     color: 'cyan',
+    href: '/rename-documents-with-ai',
   },
 ];
 
@@ -136,12 +168,12 @@ const UseCases = ({ title, description, items }: UseCasesProps = {}) => {
       <div className={styles.UseCases__Container}>
         <SectionHeader
           title={title ?? 'Who Uses AI File Renaming'}
-          description={description ?? 'From designers to developers — Zush saves hours for everyone who works with files'}
+          description={description ?? 'Click the role closest to your workflow. Each card goes to the Zush page built for that type of file chaos.'}
         />
 
         <div className={styles.UseCases__Grid}>
           {useCases.map((useCase, index) => (
-            <UseCaseCard key={index} {...useCase} delay={index * 0.1} />
+            <UseCaseCard key={index} {...useCase} />
           ))}
         </div>
       </div>

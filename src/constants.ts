@@ -22,7 +22,6 @@ export const APP_CONFIG = {
     "heic",
     "heif",
     "svg",
-    "pdf",
     "cr2",
     "cr3",
     "nef",
@@ -37,6 +36,7 @@ export const APP_CONFIG = {
     "raw",
   ],
   document_extensions: [
+    "pdf",
     "txt",
     "md",
     "json",

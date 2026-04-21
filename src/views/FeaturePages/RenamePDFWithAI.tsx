@@ -1,4 +1,5 @@
 import FeatureLandingPage from '@/components/FeatureLandingPage';
+import { buildSoftwareApplicationJsonLd } from '@/utils/jsonLd';
 
 const faqItems = [
   {
@@ -33,7 +34,7 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'HowTo',
-      name: 'How to rename PDF files with AI on macOS',
+      name: 'Rename PDFs with AI on Mac',
       description:
         'Use Zush to automatically rename PDF files based on their text content using AI on macOS.',
       step: [
@@ -72,15 +73,28 @@ const jsonLd = {
         },
       })),
     },
+    buildSoftwareApplicationJsonLd({
+      pagePath: '/rename-pdf-with-ai',
+      description:
+        'AI PDF renamer for macOS that extracts text from invoices, contracts, scanned receipts, and reports to generate searchable filenames automatically.',
+      featureList: [
+        'Rename PDF files by document content',
+        'Support for scanned PDFs via AI vision',
+        'Batch rename invoices, contracts, and reports',
+        'Automatic folder monitoring for repeating PDF workflows',
+        'Custom naming patterns with dates and entities',
+        'Undo and rename history',
+      ],
+    }),
   ],
 };
 
 const RenamePDFWithAI = () => (
   <FeatureLandingPage
-    h1="AI PDF Renamer for Mac"
+    h1="Rename PDFs with AI on Mac"
     category="pdf"
     definitionTitle="What Is AI PDF Renaming?"
-    definitionText="Use Zush as an AI PDF renamer for Mac to read invoices, contracts, scans, and reports, then turn weak filenames into searchable document titles."
+    definitionText="Rename PDFs with AI on Mac using Zush to read invoices, contracts, scans, and reports, then turn weak filenames into searchable document titles."
     showcaseSlides={[{
       files: [
         { before: 'scan_001.pdf', after: 'Amazon Invoice March.pdf', type: 'pdf' },
@@ -106,8 +120,8 @@ const RenamePDFWithAI = () => (
       { title: 'Auto Rename Files on macOS', href: '/auto-rename-files' },
     ]}
     relatedBlogPosts={[
-      { title: 'Rename PDF Files with AI on Mac: Practical Workflow Guide', href: 'rename-pdf-files-with-ai-mac' },
       { title: 'How to Rename PDF Files Automatically', href: 'rename-pdf-files-automatically' },
+      { title: 'How to Rename Files with AI: Step-by-Step Guide', href: 'rename-files-with-ai-guide' },
       { title: 'Automate File Organization on macOS', href: 'automate-file-organization-macos' },
     ]}
     jsonLd={jsonLd}

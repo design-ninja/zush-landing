@@ -4,7 +4,7 @@ Last updated: March 19, 2026
 
 ### 1. Description of Service
 
-Zush is a macOS utility designed to help users organize, rename, and manage metadata for files using artificial intelligence (AI). Features include automatic renaming for images, PDFs, and supported documents, smart metadata tagging (Finder tags and Spotlight metadata), folder monitoring, and optional custom AI prompt controls for rename and tagging behavior.
+Zush is a macOS utility designed to help users organize, rename, and manage metadata for files using artificial intelligence (AI). Features include automatic renaming for images and supported documents, including PDFs, smart metadata tagging (Finder tags and Spotlight metadata), folder monitoring, and optional custom AI prompt controls for rename and tagging behavior.
 
 ### 2. Software License
 

@@ -1,4 +1,5 @@
 import FeatureLandingPage from '@/components/FeatureLandingPage';
+import { buildSoftwareApplicationJsonLd } from '@/utils/jsonLd';
 
 const faqItems = [
   {
@@ -33,7 +34,7 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'HowTo',
-      name: 'How to rename photos with AI on macOS',
+      name: 'Rename Photos with AI on Mac',
       description:
         'Use Zush to automatically rename photos based on their visual content using AI on macOS.',
       step: [
@@ -72,15 +73,28 @@ const jsonLd = {
         },
       })),
     },
+    buildSoftwareApplicationJsonLd({
+      pagePath: '/rename-photos-with-ai',
+      description:
+        'AI photo renamer for macOS that replaces IMG_, HEIC, and RAW filenames with searchable descriptions for photo libraries, imports, and client shoots.',
+      featureList: [
+        'Rename HEIC, JPG, PNG, and major RAW photo formats',
+        'Generate searchable names for iPhone and camera imports',
+        'Batch rename entire photo libraries',
+        'Automatic duplicate-safe naming with sequences',
+        'Custom patterns with dates and AI descriptions',
+        'Folder monitoring for ongoing photo workflows',
+      ],
+    }),
   ],
 };
 
 const RenamePhotosWithAI = () => (
   <FeatureLandingPage
-    h1="AI Photo Renamer for Mac"
+    h1="Rename Photos with AI on Mac"
     category="photo"
     definitionTitle="What Is AI Photo Renaming?"
-    definitionText="Use Zush as an AI photo renamer for Mac to replace IMG_, HEIC, and RAW camera filenames with searchable descriptions of the actual photo."
+    definitionText="Rename photos with AI on Mac using Zush to replace IMG_, HEIC, and RAW camera filenames with searchable descriptions of the actual photo."
     showcaseSlides={[{
       files: [
         { before: 'IMG_2847.HEIC', after: 'Birthday Cake Dinner.heic', img: '/images/examples/food.jpg', type: 'image' },

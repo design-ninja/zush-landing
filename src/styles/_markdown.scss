@@ -131,12 +131,20 @@
         &:hover .markdown-video-badge {
             background: rgba(10, 14, 20, 0.92);
         }
+
+        &--dark {
+            display: none;
+        }
     }
 
     .markdown-video-poster {
         display: block;
         max-width: 100%;
         height: auto;
+
+        &--dark {
+            display: none;
+        }
     }
 
     .markdown-video-badge {
@@ -213,6 +221,22 @@
     }
 
     .markdown-image--dark {
+        display: block;
+    }
+
+    .markdown-video-link--light {
+        display: none;
+    }
+
+    .markdown-video-link--dark {
+        display: inline-flex;
+    }
+
+    .markdown-video-poster--light {
+        display: none;
+    }
+
+    .markdown-video-poster--dark {
         display: block;
     }
 }

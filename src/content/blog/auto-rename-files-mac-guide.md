@@ -180,7 +180,7 @@ New files in those folders are now renamed automatically as they arrive.
 
 - **Custom patterns.** Control the structure of generated names with templates.
 - **Finder tags.** Zush can apply smart tags based on file content, improving Spotlight searches.
-- **Format support.** Handles 23 image formats (including HEIC, RAW variants) and 10 document formats (PDF, DOCX, XLSX, and others).
+- **Format support.** Handles 22 image formats (including HEIC, RAW variants) and 11 document formats (PDF, DOCX, XLSX, and others).
 - **Multiple AI providers.** Switch between Gemini, Groq, OpenAI, and Claude.
 - **Language support.** Generate names in any of 60+ languages.
 - **Rename history.** Every auto rename is logged. Revert any rename at any time.
@@ -204,8 +204,8 @@ New files in those folders are now renamed automatically as they arrive.
 | Finder tags | No | Yes | Yes (AI-generated) |
 | Rename undo | No | No | Yes |
 | Rename history | No | No | Yes |
-| Image format support | All (pattern only) | All (pattern only) | 23 formats (content-aware) |
-| Document format support | All (pattern only) | All (pattern only) | 10 formats (content-aware) |
+| Image format support | All (pattern only) | All (pattern only) | 22 formats (content-aware) |
+| Document format support | All (pattern only) | All (pattern only) | 11 formats (content-aware) |
 | Setup complexity | Medium | Medium | Low |
 
 

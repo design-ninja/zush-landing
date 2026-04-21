@@ -1,29 +1,121 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Play } from 'lucide-react';
 import SectionHeader from '../SectionHeader';
 import Text from '@/components/Text';
-import { DEMO_VIDEOS } from '@/data/demoVideos';
+import {
+  DEMO_VIDEOS,
+  resolveDemoVideoMedia,
+  type DemoVideoTheme,
+} from '@/data/demoVideos';
 import styles from './Videos.module.scss';
 import { motion } from 'framer-motion';
 
 interface VideosProps {
   autoplayOnHydration?: boolean;
+  autoplayWhenInView?: boolean;
 }
 
-const Videos = ({ autoplayOnHydration = false }: VideosProps) => {
+const getDocumentTheme = (): DemoVideoTheme => {
+  if (typeof document === 'undefined') {
+    return 'light';
+  }
+
+  return document.documentElement.getAttribute('data-theme') === 'dark'
+    ? 'dark'
+    : 'light';
+};
+
+const Videos = ({
+  autoplayOnHydration = false,
+  autoplayWhenInView = false,
+}: VideosProps) => {
   const [activeFeature, setActiveFeature] = useState(0);
+  const [theme, setTheme] = useState<DemoVideoTheme>(getDocumentTheme);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [canAutoplay, setCanAutoplay] = useState(false);
+  const [hasEnteredViewport, setHasEnteredViewport] = useState(false);
+  const videoWrapperRef = useRef<HTMLDivElement>(null);
   const activeVideo = DEMO_VIDEOS[activeFeature];
+  const activeVideoMedia = resolveDemoVideoMedia(activeVideo, theme);
 
   useEffect(() => {
-    if (autoplayOnHydration) {
-      setIsPlaying(true);
+    if (typeof window === 'undefined') {
+      return;
     }
-  }, [autoplayOnHydration]);
+
+    const root = document.documentElement;
+    const syncTheme = () => setTheme(getDocumentTheme());
+
+    syncTheme();
+
+    const observer = new MutationObserver((mutations) => {
+      if (mutations.some((mutation) => mutation.attributeName === 'data-theme')) {
+        syncTheme();
+      }
+    });
+
+    observer.observe(root, {
+      attributes: true,
+      attributeFilter: ['data-theme'],
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
-    setIsPlaying(autoplayOnHydration);
-  }, [activeFeature, autoplayOnHydration]);
+    if (!autoplayOnHydration && !autoplayWhenInView) {
+      return;
+    }
+
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const syncMotionPreference = () => {
+      setCanAutoplay(!motionQuery.matches);
+    };
+
+    syncMotionPreference();
+
+    motionQuery.addEventListener('change', syncMotionPreference);
+    return () =>
+      motionQuery.removeEventListener('change', syncMotionPreference);
+  }, [autoplayOnHydration, autoplayWhenInView]);
+
+  useEffect(() => {
+    if (!autoplayWhenInView || !canAutoplay || hasEnteredViewport) {
+      return;
+    }
+
+    const videoWrapper = videoWrapperRef.current;
+    if (!videoWrapper) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasEnteredViewport(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.45,
+      },
+    );
+
+    observer.observe(videoWrapper);
+
+    return () => observer.disconnect();
+  }, [autoplayWhenInView, canAutoplay, hasEnteredViewport]);
+
+  const shouldAutoplay =
+    canAutoplay && (autoplayOnHydration || hasEnteredViewport);
+
+  useEffect(() => {
+    setIsPlaying(shouldAutoplay);
+  }, [activeFeature, shouldAutoplay]);
 
   const handleTabClick = (index: number) => {
     setActiveFeature(index);
@@ -48,6 +140,7 @@ const Videos = ({ autoplayOnHydration = false }: VideosProps) => {
         </motion.div>
         
         <motion.div
+          ref={videoWrapperRef}
           className={styles.Videos__VideoWrapper}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -61,7 +154,7 @@ const Videos = ({ autoplayOnHydration = false }: VideosProps) => {
               aria-label={`Play ${activeVideo.title} demo video`}
             >
               <img
-                src={activeVideo.poster}
+                src={activeVideoMedia.poster}
                 alt={`${activeVideo.title} demo`}
                 className={styles.Videos__Poster}
                 loading='lazy'
@@ -75,16 +168,16 @@ const Videos = ({ autoplayOnHydration = false }: VideosProps) => {
             </button>
           ) : (
             <video
-              key={activeVideo.video}
+              key={activeVideoMedia.source}
               className={styles.Videos__Video}
-              src={activeVideo.video}
+              src={activeVideoMedia.source}
               aria-label={`${activeVideo.title}: ${activeVideo.description}`}
               muted
               playsInline
               autoPlay
               controls
               preload='metadata'
-              poster={activeVideo.poster}
+              poster={activeVideoMedia.poster}
             >
               <track
                 kind='captions'

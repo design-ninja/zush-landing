@@ -10,7 +10,7 @@ reviewed: "2026-04-10"
 
 If you want to rename images with AI on macOS, use a tool that can inspect the image itself, generate a descriptive title, and apply it in bulk. That is the difference between real AI renaming and Finder's text-only rename tools.
 
-For most Mac users, the goal is not prettier filenames. It is being able to search for screenshots, photos, and downloaded images later without opening them one by one. [Zush](https://zushapp.com) is built around that workflow, and if you want the category overview first, see [AI Image Renamer for Mac: What It Is and the Best Way to Use One](/blog/ai-image-renamer-for-mac).
+For most Mac users, the goal is not prettier filenames. It is being able to search for screenshots, photos, and downloaded images later without opening them one by one. [Zush](https://zushapp.com) is built around that workflow, and if you want the category overview first, see [AI Image Renamer for Mac](/ai-image-renamer).
 
 ## What AI image renaming actually does
 
@@ -155,7 +155,7 @@ Key differences:
 
 If you are cleaning up months of accumulated image clutter, batch rename is the way to go. If you are setting up an ongoing workflow, pair single rename with folder monitoring so every new file gets named as it arrives.
 
-For a walkthrough of the automatic approach, see [Auto Image Renamer for Mac: Set Up Folder-Based Automation](/blog/auto-image-renamer-mac).
+For a walkthrough of the automatic approach, see [Auto Rename Files on Mac](/auto-rename-files).
 
 ## Naming patterns for images
 
@@ -218,7 +218,7 @@ This is especially useful for screenshots. macOS generates screenshots constantl
 
 The same applies to Downloads. Every time you save an image from the web, it arrives with whatever name the server assigned. Folder monitoring renames it immediately, so by the time you look at your Downloads folder, every file already has a useful name.
 
-For a detailed guide on setting up automatic renaming, see [Auto Image Renamer for Mac: Set Up Folder-Based Automation](/blog/auto-image-renamer-mac).
+For a detailed guide on setting up automatic renaming, see [Auto Rename Files on Mac](/auto-rename-files).
 
 ## Best practices
 
@@ -258,7 +258,7 @@ While this guide focuses on images, the same AI-powered workflow applies to docu
 
 The difference with documents is that the AI reads the text content rather than analyzing visual elements. A PDF named `invoice_38291.pdf` becomes `acme-corp-invoice-march-2026-web-hosting.pdf`. A presentation named `deck-v3-final.pptx` becomes `q1-revenue-review-board-meeting.pptx`.
 
-For a document-specific walkthrough, see [Rename PDF Files with AI on Mac: Practical Workflow Guide](/blog/rename-pdf-files-with-ai-mac). For a broader comparison of tools, see [Best AI File Renamer Tools for Mac Compared](/blog/best-ai-file-renamer-tools-mac-compared).
+For a document-specific walkthrough, see [Rename PDFs with AI on Mac](/rename-pdf-with-ai). For a broader comparison of tools, see [Best AI File Renamer Tools for Mac Compared](/blog/best-ai-file-renamer-tools-mac-compared).
 
 ## Conclusion
 

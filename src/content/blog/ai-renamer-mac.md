@@ -3,6 +3,7 @@ title: "How to Choose an AI Renamer for Mac: Buyer's Guide by File Type"
 description: "A buyer's guide to choosing the right AI renamer for Mac based on file types, automation needs, and whether you need one tool for screenshots, PDFs, documents, and photos."
 date: "2026-03-12"
 slug: "ai-renamer-mac"
+canonical: "/ai-file-renamer"
 tags: "choose ai renamer mac, mac renamer buying guide, file type renaming, rename automation guide"
 tldr: "This page is a Mac buyer's guide for AI renamer tools. The right choice depends on file types, automation needs, and whether you need one tool for screenshots, PDFs, documents, and photos."
 reviewed: "2026-04-09"
@@ -48,7 +49,7 @@ Why it stands out:
 
 ![Zush main AI Rename screen showing supported file format badges and PRO features](/images/screenshots/light/zush-main-interface.webp)
 
-If you want the full how-to tutorial, go to [How to Rename Images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos). If you want the broader comparison page, read [Best AI File Renamer Tools for Mac Compared](/blog/best-ai-file-renamer-tools-mac-compared). For automation-first intent, go to [Auto Image Renamer for Mac: Set Up Folder-Based Automation](/blog/auto-image-renamer-mac).
+If you want the full how-to tutorial, go to [How to Rename Images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos). If you want the broader comparison page, read [Best AI File Renamer Tools for Mac Compared](/blog/best-ai-file-renamer-tools-mac-compared). For automation-first intent, go to [Auto Rename Files on Mac](/auto-rename-files).
 
 ![Batch renaming files with AI on Mac using Zush](/videos/zush-batch-rename.mp4)
 

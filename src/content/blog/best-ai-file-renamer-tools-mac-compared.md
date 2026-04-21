@@ -152,7 +152,7 @@ This is the category this post focuses on. The following reviews cover every not
 **Pricing:** Free tier (50 renames/month), Pro $10 one-time (10,000 renames), BYOK unlimited
 **Website:** [zushapp.com](https://zushapp.com)
 
-[Zush](https://zushapp.com) is a native macOS app built specifically for AI-powered file renaming. Our main reason for putting it first is format breadth: 23 image formats (including HEIC plus CR2, NEF, ARW, DNG, and other RAW variants) and 10 document formats (PDF, DOCX, XLSX, PPTX, and more). Real Mac workflows mix iPhone photos, camera RAW files, scanned PDFs, and office documents in the same folders, and most tools we tested failed on RAW.
+[Zush](https://zushapp.com) is a native macOS app built specifically for AI-powered file renaming. Our main reason for putting it first is format breadth: 22 image formats (including HEIC plus CR2, NEF, ARW, DNG, and other RAW variants) and 11 document formats (PDF, DOCX, XLSX, PPTX, and more). Real Mac workflows mix iPhone photos, camera RAW files, scanned PDFs, and office documents in the same folders, and most tools we tested failed on RAW.
 
 **How it works:** You drop files or folders into Zush, it analyzes the content of each file using AI vision and language models, generates a descriptive filename, and lets you preview every proposed name before applying. You can also set up folder monitoring so new files in watched directories are renamed automatically.
 
@@ -181,7 +181,7 @@ This is the category this post focuses on. The following reviews cover every not
 
 ![Zush AI rename results with five files showing before and after names and green checkmarks](/images/screenshots/light/zush-batch-rename-results.webp)
 
-**Verdict:** Pick Zush if you work with more than JPEGs. The combination that decided it for us: full RAW support, folder monitoring, rollback history, and $10 one-time instead of a subscription. For a deeper buyer's guide, see [AI Renamer Mac: How to Choose the Right Tool on Mac](/blog/ai-renamer-mac).
+**Verdict:** Pick Zush if you work with more than JPEGs. The combination that decided it for us: full RAW support, folder monitoring, rollback history, and $10 one-time instead of a subscription. For a deeper buyer's guide, see [AI File Renamer for Mac](/ai-file-renamer).
 
 ---
 
@@ -499,7 +499,7 @@ It depends on whether the tool offers rollback. Zush, Renamer.ai, and NameQuick 
 
 ### Do AI file renamers work with PDFs and documents?
 
-Several tools in this comparison support documents. Zush covers 10 document formats (PDF, DOCX, XLSX, PPTX, TXT, CSV, and more). Renamer.ai supports 30+ formats including PDFs, DOC, DOCX, XLS, XLSX, PPT, PPTX, and more with OCR. NameQuick handles PDFs, Word, Excel, and Pages. RenameClick supports PDF, DOC, DOCX, TXT, MD, CSV, RTF, and ODT. AI Renamer's desktop app adds basic PDF and TXT support. Riffo supports images, PDFs, and some documents.
+Several tools in this comparison support documents. Zush covers 11 document formats (PDF, DOCX, XLSX, PPTX, TXT, CSV, and more). Renamer.ai supports 30+ formats including PDFs, DOC, DOCX, XLS, XLSX, PPT, PPTX, and more with OCR. NameQuick handles PDFs, Word, Excel, and Pages. RenameClick supports PDF, DOC, DOCX, TXT, MD, CSV, RTF, and ODT. AI Renamer's desktop app adds basic PDF and TXT support. Riffo supports images, PDFs, and some documents.
 
 ### How does BYOK (bring your own key) work?
 
@@ -563,7 +563,7 @@ This prevents tool lock-in based on demo scenarios and gives you real data on na
 
 ## Related reading
 
-- [AI Renamer Mac: How to Choose the Right Tool on Mac](/blog/ai-renamer-mac)
+- [AI File Renamer for Mac](/ai-file-renamer)
 - [Auto Rename Files on Mac: Best Tools & Methods](/blog/auto-rename-files-mac-guide)
 - [How to Rename Images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos)
 - [How to Rename Files with AI for Free](/blog/rename-files-with-ai-free)

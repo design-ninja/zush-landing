@@ -80,6 +80,67 @@ export interface HowToStepData {
   text: string;
 }
 
+export interface SoftwareOfferData {
+  name?: string;
+  price: string;
+  priceCurrency?: string;
+  description: string;
+}
+
+export interface SoftwareApplicationData {
+  pagePath: string;
+  description: string;
+  featureList: string[];
+  applicationSubCategory?: string;
+  screenshot?: string;
+  offers?: SoftwareOfferData[];
+}
+
+const DEFAULT_SOFTWARE_OFFERS: SoftwareOfferData[] = [
+  {
+    name: 'Free',
+    price: '0',
+    priceCurrency: 'USD',
+    description: 'Free tier with 50 AI renames per month',
+  },
+  {
+    name: 'Zush Pro',
+    price: '10',
+    priceCurrency: 'USD',
+    description: 'One-time purchase. 10,000 AI renames plus BYOK support.',
+  },
+];
+
+export function buildSoftwareApplicationJsonLd(data: SoftwareApplicationData) {
+  const pageUrl = `${SITE_ORIGIN}${data.pagePath}`;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    '@id': `${pageUrl}#software`,
+    name: 'Zush',
+    url: pageUrl,
+    description: data.description,
+    applicationCategory: 'UtilitiesApplication',
+    applicationSubCategory: data.applicationSubCategory ?? 'File Management',
+    operatingSystem: 'macOS 14.0+',
+    downloadUrl: `${SITE_ORIGIN}/releases/Zush.dmg`,
+    screenshot: data.screenshot ?? `${SITE_ORIGIN}/og-image.png`,
+    offers: (data.offers ?? DEFAULT_SOFTWARE_OFFERS).map((offer) => ({
+      '@type': 'Offer',
+      ...(offer.name ? { name: offer.name } : {}),
+      price: offer.price,
+      priceCurrency: offer.priceCurrency ?? 'USD',
+      description: offer.description,
+    })),
+    featureList: data.featureList,
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['h1', 'meta[name="description"]'],
+    },
+  };
+}
+
 export interface HowToData {
   name: string;
   description: string;

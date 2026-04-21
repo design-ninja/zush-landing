@@ -1,15 +1,16 @@
 import FeatureLandingPage from '@/components/FeatureLandingPage';
+import { buildSoftwareApplicationJsonLd } from '@/utils/jsonLd';
 
 const faqItems = [
   {
-    question: 'What types of documents can Zush rename?',
+    question: 'What types of non-PDF documents can Zush rename?',
     answer:
-      'Zush supports PDFs, Word documents (DOC, DOCX), Excel spreadsheets (XLSX), PowerPoint presentations (PPTX, PPT), plain text files, Markdown, CSV, JSON, and EML email files. The AI reads the content of each file to generate an appropriate name.',
+      'Zush supports Word documents (DOC, DOCX), Excel spreadsheets (XLSX), PowerPoint presentations (PPTX, PPT), plain text files, Markdown, CSV, JSON, and EML email files. The AI reads the content of each file to generate an appropriate name.',
   },
   {
     question: 'How does Zush understand what a document is about?',
     answer:
-      'Zush extracts text from your documents using format-specific parsers. For PDFs it reads the embedded text, for Word files it parses the document structure, and for spreadsheets it analyzes headers and data. The extracted content is then sent to an AI model that identifies the topic and generates a meaningful filename.',
+      'Zush extracts text from your documents using format-specific parsers. For Word files it parses the document structure, for spreadsheets it analyzes headers and data, and for presentations it reads slide text. The extracted content is then sent to an AI model that identifies the topic and generates a meaningful filename.',
   },
   {
     question: 'Is my document content sent to the cloud?',
@@ -22,9 +23,9 @@ const faqItems = [
       'Yes. Zush supports custom naming patterns where you can define templates like date-type-client or category-title. The AI follows your pattern while still generating context-aware names for each file.',
   },
   {
-    question: 'Does it work with scanned documents?',
+    question: 'Can I use a separate workflow for PDFs and scans?',
     answer:
-      'For scanned PDFs that contain images of text, Zush uses AI vision models to read the content. Standard text-based PDFs are processed through text extraction for faster and more accurate results.',
+      'Yes. Zush has a dedicated PDF workflow for invoices, contracts, and scans at the PDF page, while this page focuses on DOCX, XLSX, PPTX, TXT, CSV, and other document-heavy files.',
   },
 ];
 
@@ -33,7 +34,7 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'HowTo',
-      name: 'How to rename documents with AI on macOS',
+      name: 'Rename Documents with AI on Mac',
       description:
         'Use Zush to automatically rename document files based on their text content using AI on macOS.',
       step: [
@@ -41,7 +42,7 @@ const jsonLd = {
           '@type': 'HowToStep',
           position: 1,
           name: 'Add your documents',
-          text: 'Drag and drop files or select a folder containing documents. Zush supports PDFs, Word, Excel, PowerPoint, text files, and more.',
+          text: 'Drag and drop files or select a folder containing documents. Zush supports Word, Excel, PowerPoint, text files, email exports, and more.',
         },
         {
           '@type': 'HowToStep',
@@ -72,23 +73,36 @@ const jsonLd = {
         },
       })),
     },
+    buildSoftwareApplicationJsonLd({
+      pagePath: '/rename-documents-with-ai',
+      description:
+        'AI document renamer for macOS that reads DOCX, XLSX, PPTX, TXT, CSV, JSON, and email files to generate searchable filenames automatically.',
+      featureList: [
+        'Rename DOCX, XLSX, PPTX, TXT, CSV, JSON, and EML files',
+        'Extract document text, spreadsheet headers, and slide titles',
+        'Batch rename document-heavy folders',
+        'Custom naming patterns for client, date, and category',
+        'Folder monitoring for ongoing document workflows',
+        'Undo and rename history',
+      ],
+    }),
   ],
 };
 
 const RenameDocumentsWithAI = () => (
   <FeatureLandingPage
-    h1="AI Document Renamer for Mac"
+    h1="Rename Documents with AI on Mac"
     category="document"
     definitionTitle="What Is AI Document Renaming?"
-    definitionText="Use Zush as an AI document renamer for Mac to read contracts, reports, invoices, and spreadsheets, then generate filenames that match the document content."
+    definitionText="Rename documents with AI on Mac using Zush to read reports, proposals, spreadsheets, slide decks, and email exports, then generate filenames that match the document content."
     showcaseSlides={[{
       files: [
-        { before: 'download (7).pdf', after: 'Q1 Revenue Report.pdf', type: 'pdf' },
         { before: 'Document1.docx', after: 'Project Proposal Acme.docx', type: 'doc' },
         { before: 'Untitled spreadsheet.xlsx', after: 'Employee Payroll Feb.xlsx', type: 'sheet' },
         { before: 'presentation_final_v3.pptx', after: 'Marketing Strategy Q2.pptx', type: 'slides' },
         { before: 'note.txt', after: 'Meeting Notes Roadmap.txt', type: 'doc' },
-        { before: 'report_copy.pdf', after: 'Annual Budget Review.pdf', type: 'pdf' },
+        { before: 'exports.csv', after: 'March Sales Pipeline.csv', type: 'sheet' },
+        { before: 'inbox-export.eml', after: 'Vendor Renewal Thread.eml', type: 'doc' },
       ],
     }]}
     comparisonRows={[
@@ -106,7 +120,7 @@ const RenameDocumentsWithAI = () => (
       { title: 'Auto Rename Files on macOS', href: '/auto-rename-files' },
     ]}
     relatedBlogPosts={[
-      { title: 'Rename PDF Files with AI on Mac: Practical Workflow Guide', href: 'rename-pdf-files-with-ai-mac' },
+      { title: 'AI Document Renamer: How to Auto-Name Docs, PDFs & Spreadsheets', href: 'ai-document-renamer-guide' },
       { title: 'File Naming Conventions Best Practices', href: 'file-naming-conventions-best-practices' },
       { title: 'Organize Client Files as a Freelancer on Mac', href: 'organize-client-files-freelancers-mac' },
     ]}

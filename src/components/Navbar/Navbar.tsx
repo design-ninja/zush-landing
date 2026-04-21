@@ -23,7 +23,7 @@ const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
             {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
           </button>
           <div className={styles.Navbar__Buttons}>
-            <Button as="link" href="/#pro" variant="ghost" size="sm" className={styles.Navbar__BuyBtn}>
+            <Button as="link" href="/#pricing" variant="ghost" size="sm" className={styles.Navbar__BuyBtn}>
               Buy PRO
             </Button>
             <Button 

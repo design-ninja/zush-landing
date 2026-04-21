@@ -6,7 +6,7 @@ import Features from '@/components/Features';
 import SupportedFormats from '@/components/SupportedFormats';
 import UseCases from '@/components/UseCases';
 import Pricing from '@/components/Pricing';
-import ComparisonTable from '@/components/ComparisonTable';
+import WhyZush from '@/components/WhyZush';
 import FAQ from '@/components/FAQ';
 import DownloadCTA from '@/components/DownloadCTA';
 import { getSeoForPath, HOME_JSON_LD } from '@/seo/config';
@@ -16,11 +16,11 @@ const seo = getSeoForPath('/');
 
 <BaseLayout seo={seo} jsonLd={HOME_JSON_LD}>
   <Hero client:visible />
-  <Videos client:visible autoplayOnHydration />
+  <Videos client:visible autoplayWhenInView />
   <Features />
   <SupportedFormats />
   <DownloadCTA client:visible />
-  <ComparisonTable />
+  <WhyZush />
   <UseCases />
   <Pricing client:visible />
   <FAQ client:visible />
