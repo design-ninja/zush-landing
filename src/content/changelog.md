@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.8.6] - 2026-04-22
+
+### Added
+- Undo now restores original Finder tags and comments
+- Better placeholders for document, spreadsheet, and presentation files
+
+### Improved
+- Cleaner thumbnails in AI Rename, Activity, and queue views
+- Smoother Settings and menu bar updates while Zush is working
+- More reliable App Store consent flow during setup
+
+### Fixed
+- Removed the old AI category field from rename analysis
+- Better recovery when Groq returns invalid structured responses
+
 ## [1.8.5] - 2026-04-19
 
 ### Added
