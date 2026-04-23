@@ -114,7 +114,7 @@ export const PLATFORM_LANDING_CONTENT: Record<DownloadOS, PlatformLandingContent
       {
         question: 'Does it run on Windows on ARM?',
         answer:
-          'The Store package runs on ARM via the built-in x64 emulation layer. A native ARM64 build is on our roadmap.',
+          'Yes. The Microsoft Store release pipeline builds native packages for both x64 and ARM64, so Zush runs natively on Windows on ARM devices.',
       },
       {
         question: 'Can I bring my own AI API key?',
