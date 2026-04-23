@@ -2,6 +2,7 @@
 import type { GetStaticPaths, Page } from 'astro';
 import type { BlogPost } from '@/data/blog';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogBreadcrumbs from '@/components/blog/BlogBreadcrumbs.astro';
 import BlogPagination from '@/components/blog/BlogPagination.astro';
 import BlogPostCard from '@/components/blog/BlogPostCard.astro';
 import { getAllPosts } from '@/data/blog';
@@ -29,9 +30,16 @@ const seo: SeoMeta = {
   robots: isFirstPage ? 'index, follow' : 'noindex, follow',
   ogType: 'website',
 };
+const breadcrumbItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Blog', href: '/blog' },
+  { label: isFirstPage ? 'Archive' : `Archive Page ${page.currentPage}` },
+];
 ---
 
 <BaseLayout seo={seo}>
+  <BlogBreadcrumbs items={breadcrumbItems} />
+
   <section class={styles.BlogList}>
     <div class={styles.BlogList__Container}>
       <div class={styles.BlogList__SectionHeader}>
@@ -46,8 +54,17 @@ const seo: SeoMeta = {
             styles.BlogList__SectionDescription,
           ].join(' ')}
         >
-          Every Zush blog article in reverse chronological order.
+          All blog posts in publish order, newest first.
         </p>
+      </div>
+
+      <div class={styles.BlogList__SectionActions}>
+        <a class={styles.BlogList__SectionAction} href='/blog'>
+          Back to Blog
+        </a>
+        <a class={styles.BlogList__SectionAction} href='/blog/tags'>
+          Browse tags
+        </a>
       </div>
 
       <div class={styles.BlogList__SectionPosts}>

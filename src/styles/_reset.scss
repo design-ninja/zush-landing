@@ -111,6 +111,11 @@ body {
     line-height: 1;
 }
 
+::selection {
+    background: color-mix(in srgb, var(--primary) 32%, transparent);
+    color: var(--foreground);
+}
+
 ol,
 ul {
     list-style: none;

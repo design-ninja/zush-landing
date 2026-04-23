@@ -1,6 +1,7 @@
 ---
 import type { GetStaticPaths, Page } from 'astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogBreadcrumbs from '@/components/blog/BlogBreadcrumbs.astro';
 import BlogPagination from '@/components/blog/BlogPagination.astro';
 import BlogPostCard from '@/components/blog/BlogPostCard.astro';
 import { getAllTags, type BlogPost, type BlogTag } from '@/data/blog';
@@ -33,9 +34,17 @@ const seo: SeoMeta = {
   robots: 'noindex, follow',
   ogType: 'website',
 };
+const breadcrumbItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Tags', href: '/blog/tags' },
+  { label: tag.label },
+];
 ---
 
 <BaseLayout seo={seo}>
+  <BlogBreadcrumbs items={breadcrumbItems} />
+
   <section class={styles.BlogList}>
     <div class={styles.BlogList__Container}>
       <div class={styles.BlogList__SectionHeader}>
@@ -55,6 +64,9 @@ const seo: SeoMeta = {
       </div>
 
       <div class={styles.BlogList__SectionActions}>
+        <a class={styles.BlogList__SectionAction} href='/blog'>
+          Back to Blog
+        </a>
         <a class={styles.BlogList__SectionAction} href='/blog/tags'>
           All tags
         </a>

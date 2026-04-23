@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogBreadcrumbs from '@/components/blog/BlogBreadcrumbs.astro';
 import { getAllTags } from '@/data/blog';
 import type { SeoMeta } from '@/seo/config';
 import headingStyles from '@/components/Heading/Heading.module.scss';
@@ -15,9 +16,16 @@ const seo: SeoMeta = {
   robots: 'noindex, follow',
   ogType: 'website',
 };
+const breadcrumbItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Tags' },
+];
 ---
 
 <BaseLayout seo={seo}>
+  <BlogBreadcrumbs items={breadcrumbItems} />
+
   <section class={styles.BlogList}>
     <div class={styles.BlogList__Container}>
       <div class={styles.BlogList__SectionHeader}>
@@ -32,9 +40,17 @@ const seo: SeoMeta = {
             styles.BlogList__SectionDescription,
           ].join(' ')}
         >
-          Topic navigation for the Zush blog. These taxonomy pages stay out of search indexing until
-          the tag set is editorially cleaned up.
+          Browse posts by topic, workflow, file type, or platform.
         </p>
+      </div>
+
+      <div class={styles.BlogList__SectionActions}>
+        <a class={styles.BlogList__SectionAction} href='/blog'>
+          Back to Blog
+        </a>
+        <a class={styles.BlogList__SectionAction} href='/blog/archive'>
+          Browse archive
+        </a>
       </div>
 
       {tags.length > 0 ? (
