@@ -156,7 +156,7 @@ const BlogPost = ({ slug }: BlogPostProps) => {
           </div>
         )}
 
-        <BlogCTA placement='early' />
+        <BlogCTA placement='early' platform={frontmatter.platform} />
 
         {showToc && (
           <details className={styles.BlogPost__MobileToc}>
@@ -224,7 +224,7 @@ const BlogPost = ({ slug }: BlogPostProps) => {
                   return (
                     <>
                       {shouldInjectBeforeHeading && (
-                        <BlogCTA placement='inline' />
+                        <BlogCTA placement='inline' platform={frontmatter.platform} />
                       )}
                       <Heading as='h2' id={id} {...props}>
                         {children}
@@ -385,7 +385,7 @@ const BlogPost = ({ slug }: BlogPostProps) => {
           </div>
         </div>
 
-        <BlogCTA placement='footer' />
+        <BlogCTA placement='footer' platform={frontmatter.platform} />
 
         {relatedPosts.length > 0 && (
           <section className={styles.BlogPost__Related}>

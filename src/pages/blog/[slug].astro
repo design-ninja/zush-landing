@@ -53,4 +53,74 @@ const breadcrumbItems = [
 <BaseLayout seo={seo} jsonLd={jsonLd}>
   <Breadcrumbs items={breadcrumbItems} />
   <BlogPost slug={slug} />
+  <script is:inline>
+    (() => {
+      const detectDownloadOS = () => {
+        try {
+          const preferred = window.localStorage.getItem('zush-preferred-os');
+          if (preferred === 'mac' || preferred === 'windows') return preferred;
+        } catch {}
+
+        const uaData = navigator.userAgentData;
+        if (uaData?.platform) {
+          const platform = uaData.platform.toLowerCase();
+          if (platform.includes('win')) return 'windows';
+          if (platform.includes('mac')) return 'mac';
+        }
+
+        const ua = navigator.userAgent || '';
+        if (/Windows/i.test(ua)) return 'windows';
+        return 'mac';
+      };
+
+      const os = detectDownloadOS();
+
+      document
+        .querySelectorAll('[data-blog-cta-platform="general"]')
+        .forEach((root) => {
+          root.setAttribute('data-blog-cta-os', os);
+
+          const title = root.querySelector('[data-blog-cta-title]');
+          if (title instanceof HTMLElement) {
+            title.textContent =
+              os === 'windows'
+                ? title.dataset.titleWindows || title.textContent
+                : title.dataset.titleMac || title.textContent;
+          }
+
+          const link = root.querySelector('[data-blog-cta-link]');
+          if (link instanceof HTMLAnchorElement) {
+            link.href =
+              os === 'windows'
+                ? link.dataset.hrefWindows || link.href
+                : link.dataset.hrefMac || link.href;
+          }
+
+          const label = root.querySelector('[data-blog-cta-label]');
+          if (label instanceof HTMLElement) {
+            label.textContent =
+              os === 'windows' ? 'Download for Windows' : 'Download for Mac';
+          }
+
+          const hint = root.querySelector('[data-blog-cta-hint]');
+          if (hint instanceof HTMLElement) {
+            hint.textContent =
+              os === 'windows'
+                ? hint.dataset.hintWindows || hint.textContent
+                : hint.dataset.hintMac || hint.textContent;
+          }
+
+          const macIcon = root.querySelector('[data-blog-cta-icon="mac"]');
+          const windowsIcon = root.querySelector('[data-blog-cta-icon="windows"]');
+
+          if (macIcon instanceof HTMLElement) {
+            macIcon.hidden = os === 'windows';
+          }
+
+          if (windowsIcon instanceof HTMLElement) {
+            windowsIcon.hidden = os !== 'windows';
+          }
+        });
+    })();
+  </script>
 </BaseLayout>
