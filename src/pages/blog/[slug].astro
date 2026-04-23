@@ -17,6 +17,7 @@ import {
   getRelatedPosts,
   normalizeTagSlug,
 } from '@/data/blog';
+import { getBlogPublicTagSlug } from '@/data/blogTaxonomy';
 import { BLOG_PLATFORM_LABELS } from '@/data/blogSchema';
 import { getBlogSeo, getCanonicalUrl } from '@/seo/config';
 import {
@@ -134,7 +135,10 @@ const breadcrumbItems = [
         {post.tags.length > 0 && (
           <div class={styles.BlogPost__Tags}>
             {post.tags.map((tag) => (
-              <a class={styles.BlogPost__Tag} href={`/blog/tags/${normalizeTagSlug(tag)}`}>
+              <a
+                class={styles.BlogPost__Tag}
+                href={`/blog/tags/${getBlogPublicTagSlug(tag) ?? normalizeTagSlug(tag)}`}
+              >
                 {tag}
               </a>
             ))}

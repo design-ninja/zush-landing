@@ -28,10 +28,10 @@ const currentPath = isFirstPage
   ? `/blog/tags/${tag.slug}`
   : `/blog/tags/${tag.slug}/${page.currentPage}`;
 const seo: SeoMeta = {
-  title: `${tag.label} Articles — Zush Blog`,
-  description: `Articles tagged "${tag.label}" on the Zush blog.`,
+  title: isFirstPage ? tag.seoTitle : `${tag.seoTitle} — Page ${page.currentPage}`,
+  description: tag.seoDescription,
   canonicalPath: currentPath,
-  robots: 'noindex, follow',
+  robots: isFirstPage && tag.indexable ? 'index, follow' : 'noindex, follow',
   ogType: 'website',
 };
 const breadcrumbItems = [
@@ -59,7 +59,7 @@ const breadcrumbItems = [
             styles.BlogList__SectionDescription,
           ].join(' ')}
         >
-          {`Navigational tag page with ${tag.count} related article${tag.count === 1 ? '' : 's'}.`}
+          {tag.description}
         </p>
       </div>
 

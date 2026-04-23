@@ -1,12 +1,12 @@
 ---
 import type { SeoMeta } from '@/seo/config';
 import { DEFAULT_OG_IMAGE, getCanonicalUrl } from '@/seo/config';
+import '@/styles/main.scss';
 import ThemeNavbar from '@/components/chrome/ThemeNavbar';
 import CheckoutAutoOpenBridge from '@/components/chrome/CheckoutAutoOpenBridge';
 import Footer from '@/components/Footer';
 import type { DownloadOS } from '@/utils/download';
 import Analytics from '@vercel/analytics/astro';
-import '@/styles/main.scss';
 
 interface Props {
   seo: SeoMeta;

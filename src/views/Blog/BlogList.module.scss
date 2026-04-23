@@ -155,6 +155,10 @@
     margin-bottom: 1rem;
     padding-bottom: 3rem;
     border-bottom: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
+
+    &[hidden] {
+      display: none;
+    }
   }
 
   &__SectionHeader {

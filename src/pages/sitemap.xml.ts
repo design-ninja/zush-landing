@@ -1,7 +1,7 @@
 import { execSync } from 'node:child_process';
 import { statSync } from 'node:fs';
 import { join } from 'node:path';
-import { getAllPosts, isSitemapEligibleBlogPost } from '@/data/blog';
+import { getAllPosts, getAllTags, isSitemapEligibleBlogPost } from '@/data/blog';
 import { INDEXABLE_STATIC_ROUTES, FEATURE_ROUTES, SITE_ORIGIN, THIN_CONTENT_THRESHOLD } from '@/seo/config';
 
 const BLOG_CONTENT_DIR = join(process.cwd(), 'src', 'content', 'blog');
@@ -111,7 +111,16 @@ export async function GET() {
     };
   });
 
-  const urls = [...staticEntries, ...blogEntries]
+  const tagEntries = (await getAllTags())
+    .filter((tag) => tag.indexable)
+    .map((tag) => ({
+      loc: `${SITE_ORIGIN}/blog/tags/${tag.slug}`,
+      lastmod: new Date().toISOString(),
+      changefreq: 'weekly' as Changefreq,
+      priority: '0.55',
+    }));
+
+  const urls = [...staticEntries, ...blogEntries, ...tagEntries]
     .map(({ loc, lastmod, changefreq, priority }) => {
       return `  <url>\n    <loc>${escapeXml(loc)}</loc>\n    <lastmod>${escapeXml(lastmod)}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
     })

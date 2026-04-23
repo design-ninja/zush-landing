@@ -1,5 +1,10 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import {
+  BLOG_PUBLIC_TAGS,
+  getBlogPublicTagSlug,
+  type BlogPublicTagSlug,
+} from '@/data/blogTaxonomy';
+import {
   BLOG_PLATFORM_META,
   type BlogPlatform,
   type BlogTopic,
@@ -50,13 +55,18 @@ export interface BlogSection {
 }
 
 export interface BlogTag {
+  id: BlogPublicTagSlug;
   slug: string;
   label: string;
   count: number;
+  description: string;
+  seoTitle: string;
+  seoDescription: string;
+  indexable: boolean;
   posts: BlogPost[];
 }
 
-const THIN_CONTENT_WORDS_TO_HIDE_TAG_INDEX = 1;
+const INDEXABLE_TAG_MIN_POSTS = 2;
 const WORDS_PER_MINUTE = 200;
 
 function toIsoDate(value: Date): string {
@@ -333,14 +343,15 @@ export async function getRecentBlogPosts(limit = 6): Promise<BlogPost[]> {
 }
 
 export async function getAllTags(): Promise<BlogTag[]> {
-  const posts = (await getAllPosts()).filter(
-    (post) => post.wordCount >= THIN_CONTENT_WORDS_TO_HIDE_TAG_INDEX,
-  );
-  const tags = new Map<string, BlogTag>();
+  const posts = await getAllPosts();
+  const tags = new Map<BlogPublicTagSlug, BlogTag>();
 
   for (const post of posts) {
     for (const label of post.tags) {
-      const slug = normalizeTagSlug(label);
+      const slug = getBlogPublicTagSlug(label);
+      if (!slug) {
+        continue;
+      }
       const current = tags.get(slug);
 
       if (current) {
@@ -349,10 +360,16 @@ export async function getAllTags(): Promise<BlogTag[]> {
         continue;
       }
 
+      const meta = BLOG_PUBLIC_TAGS[slug];
       tags.set(slug, {
+        id: slug,
         slug,
         label,
         count: 1,
+        description: meta.description,
+        seoTitle: meta.seoTitle,
+        seoDescription: meta.seoDescription,
+        indexable: true,
         posts: [post],
       });
     }
@@ -361,10 +378,12 @@ export async function getAllTags(): Promise<BlogTag[]> {
   return [...tags.values()]
     .map((tag) => ({
       ...tag,
+      indexable: tag.count >= INDEXABLE_TAG_MIN_POSTS,
       posts: tag.posts.sort(
         (a, b) => b.dateValue.getTime() - a.dateValue.getTime(),
       ),
     }))
+    .filter((tag) => tag.count >= INDEXABLE_TAG_MIN_POSTS)
     .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
 }
 
