@@ -85,7 +85,7 @@ const BlogCTA = ({ placement = 'footer', platform = 'general' }: BlogCTAProps) =
                 <span className={styles.BlogCTA__ButtonIcon} data-blog-cta-icon='windows' hidden>
                   <WindowsIcon />
                 </span>
-                <span data-blog-cta-label>Download for Mac</span>
+                <span data-blog-cta-label>Download</span>
               </a>
             </div>
           </div>
@@ -119,7 +119,7 @@ const BlogCTA = ({ placement = 'footer', platform = 'general' }: BlogCTAProps) =
           <DownloadButton
             source='blog-cta'
             size='md'
-            label={`Download for ${osLabel}`}
+            label='Download'
             forceOS={resolvedOS}
             showDropdown={false}
           />

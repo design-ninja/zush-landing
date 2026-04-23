@@ -98,8 +98,7 @@ const breadcrumbItems = [
 
           const label = root.querySelector('[data-blog-cta-label]');
           if (label instanceof HTMLElement) {
-            label.textContent =
-              os === 'windows' ? 'Download for Windows' : 'Download for Mac';
+            label.textContent = 'Download';
           }
 
           const hint = root.querySelector('[data-blog-cta-hint]');
