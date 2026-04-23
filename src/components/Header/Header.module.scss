@@ -1,7 +1,7 @@
 @use 'src/styles/variables' as *;
 @use 'src/styles/mixins' as *;
 
-.Navbar {
+.Header {
     @include glass-morphism;
     position: fixed;
     top: 0;
@@ -69,9 +69,38 @@
     }
 
     &__ThemeToggle {
+        all: unset;
         display: flex;
         align-items: center;
+        justify-content: center;
         color: var(--foreground);
+        cursor: pointer;
+        border-radius: 999px;
+        padding: 0.35rem;
+        transition: background-color 0.2s ease, color 0.2s ease;
+
+        &:hover,
+        &:focus-visible {
+            background-color: var(--muted);
+            color: var(--primary);
+            outline: none;
+        }
+
+        &:focus-visible {
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+    }
+
+    &__ThemeIcon {
+        display: none;
+    }
+
+    :global(html[data-theme='light']) &__ThemeIcon_moon {
+        display: block;
+    }
+
+    :global(html[data-theme='dark']) &__ThemeIcon_sun {
+        display: block;
     }
 
     &__Buttons {

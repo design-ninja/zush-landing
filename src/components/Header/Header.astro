@@ -1,0 +1,117 @@
+---
+import DownloadButton from '@/components/DownloadButton/DownloadButton';
+import type { DownloadOS } from '@/utils/download';
+import appLinkStyles from '@/components/AppLink/AppLink.module.scss';
+import buttonStyles from '@/components/Button/Button.module.scss';
+import logoStyles from '@/components/Logo/Logo.module.scss';
+import styles from './Header.module.scss';
+
+interface Props {
+  forceOS?: DownloadOS;
+  basePath?: string;
+}
+
+const { forceOS, basePath = '/' } = Astro.props as Props;
+
+const featuresHref = `${basePath}#features`;
+const pricingHref = `${basePath}#pricing`;
+const buyButtonClass = [
+  buttonStyles.Button,
+  buttonStyles.Button_ghost,
+  buttonStyles.Button_sm,
+  styles.Header__BuyBtn,
+].join(' ');
+const navLinkClass = [appLinkStyles.AppLink, styles.Header__Link].join(' ');
+const logoClass = [appLinkStyles.AppLink, logoStyles.Logo].join(' ');
+---
+
+<nav class={styles.Header}>
+  <div class={styles.Header__Container}>
+    <a href='/' class={logoClass} aria-label='Go to homepage'>
+      <picture>
+        <source
+          type='image/webp'
+          srcset='/logo-80.webp 80w, /logo-96.webp 96w'
+          sizes='(max-width: 768px) 40px, 48px'
+        />
+        <img
+          src='/logo-96.png'
+          srcset='/logo-80.png 80w, /logo-96.png 96w'
+          sizes='(max-width: 768px) 40px, 48px'
+          width='48'
+          height='48'
+          alt='Zush Logo'
+          class={logoStyles.Logo__Icon}
+          loading='eager'
+          fetchpriority='high'
+          decoding='async'
+        />
+      </picture>
+      <span class={logoStyles.Logo__Text}>Zush</span>
+    </a>
+
+    <div class={styles.Header__Actions}>
+      <a href={featuresHref} class={navLinkClass}>Features</a>
+      <a href={pricingHref} class={navLinkClass}>Pricing</a>
+      <a href='/blog' class={navLinkClass}>Blog</a>
+
+      <button
+        type='button'
+        class={styles.Header__ThemeToggle}
+        aria-label='Toggle theme'
+        data-theme-toggle
+      >
+        <svg
+          class={`${styles.Header__ThemeIcon} ${styles.Header__ThemeIcon_sun}`}
+          width='20'
+          height='20'
+          viewBox='0 0 24 24'
+          fill='none'
+          stroke='currentColor'
+          stroke-width='2'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          aria-hidden='true'
+        >
+          <circle cx='12' cy='12' r='4'></circle>
+          <path d='M12 2v2'></path>
+          <path d='M12 20v2'></path>
+          <path d='m4.93 4.93 1.41 1.41'></path>
+          <path d='m17.66 17.66 1.41 1.41'></path>
+          <path d='M2 12h2'></path>
+          <path d='M20 12h2'></path>
+          <path d='m6.34 17.66-1.41 1.41'></path>
+          <path d='m19.07 4.93-1.41 1.41'></path>
+        </svg>
+        <svg
+          class={`${styles.Header__ThemeIcon} ${styles.Header__ThemeIcon_moon}`}
+          width='20'
+          height='20'
+          viewBox='0 0 24 24'
+          fill='none'
+          stroke='currentColor'
+          stroke-width='2'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          aria-hidden='true'
+        >
+          <path d='M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9'></path>
+        </svg>
+      </button>
+
+      <div class={styles.Header__Buttons}>
+        <a href={pricingHref} class={buyButtonClass}>Buy PRO</a>
+        <DownloadButton
+          client:load
+          source='navbar'
+          variant='black'
+          size='sm'
+          label='Download'
+          forceOS={forceOS}
+          showDropdown={false}
+          className={styles.Header__DownloadBtn}
+        />
+      </div>
+    </div>
+  </div>
+</nav>

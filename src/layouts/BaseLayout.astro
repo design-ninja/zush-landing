@@ -3,9 +3,9 @@ import { ClientRouter } from 'astro:transitions';
 import type { SeoMeta } from '@/seo/config';
 import { DEFAULT_OG_IMAGE, getCanonicalUrl } from '@/seo/config';
 import '@/styles/main.scss';
-import ThemeNavbar from '@/components/chrome/ThemeNavbar';
+import Header from '@/components/Header/Header.astro';
 import CheckoutAutoOpenBridge from '@/components/chrome/CheckoutAutoOpenBridge';
-import Footer from '@/components/Footer';
+import Footer from '@/components/Footer/Footer.astro';
 import type { DownloadOS } from '@/utils/download';
 import Analytics from '@vercel/analytics/astro';
 
@@ -85,27 +85,60 @@ const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
     <script is:inline>
       (() => {
         const THEME_STORAGE_KEY = 'zush-theme';
+        const root = () => document.documentElement;
 
-        const getTheme = () => {
-          try {
-            const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
-            if (storedTheme === 'dark' || storedTheme === 'light') {
-              return storedTheme;
-            }
-          } catch {}
+        if (!window.__zushThemeManagerBound) {
+          window.__zushThemeManagerBound = true;
 
-          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        };
+          const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
-        const applyTheme = (root) => {
-          (root || document.documentElement).setAttribute('data-theme', getTheme());
-        };
+          const getStoredTheme = () => {
+            try {
+              const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
+              if (storedTheme === 'dark' || storedTheme === 'light') {
+                return storedTheme;
+              }
+            } catch {}
 
-        applyTheme();
-        document.addEventListener('astro:before-swap', (event) => {
-          applyTheme(event.newDocument.documentElement);
-        });
-        document.addEventListener('astro:after-swap', () => applyTheme());
+            return null;
+          };
+
+          const getTheme = () => getStoredTheme() ?? (mediaQuery.matches ? 'dark' : 'light');
+
+          const applyTheme = (target = root(), theme = getTheme()) => {
+            target.setAttribute('data-theme', theme);
+          };
+
+          const toggleTheme = () => {
+            const nextTheme = getTheme() === 'light' ? 'dark' : 'light';
+
+            try {
+              window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+            } catch {}
+
+            applyTheme(root(), nextTheme);
+          };
+
+          applyTheme();
+          mediaQuery.addEventListener('change', (event) => {
+            if (getStoredTheme()) return;
+            applyTheme(root(), event.matches ? 'dark' : 'light');
+          });
+
+          document.addEventListener('click', (event) => {
+            const target = event.target instanceof Element ? event.target.closest('[data-theme-toggle]') : null;
+            if (!target) return;
+            toggleTheme();
+          });
+
+          document.addEventListener('astro:before-swap', (event) => {
+            applyTheme(event.newDocument.documentElement);
+          });
+          document.addEventListener('astro:after-swap', () => applyTheme());
+          return;
+        }
+
+        root().setAttribute('data-theme', root().getAttribute('data-theme') || 'light');
       })();
     </script>
 
@@ -171,7 +204,7 @@ const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
   <body>
     <div class="site-shell">
       <a class="skip-link" href="#main-content">Skip to content</a>
-      {includeChrome && <ThemeNavbar client:load forceOS={forceOS} basePath={chromeBasePath} />}
+      {includeChrome && <Header forceOS={forceOS} basePath={chromeBasePath} />}
       {includeChrome && <CheckoutAutoOpenBridge client:load />}
       <main
         id="main-content"
@@ -180,7 +213,7 @@ const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
       >
         <slot />
       </main>
-      {includeChrome && <Footer client:load />}
+      {includeChrome && <Footer />}
       <script>
         import { bindStoreLinks } from '@/utils/storeLinks';
 

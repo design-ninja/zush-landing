@@ -1,0 +1,234 @@
+---
+import {
+  APP_STORE_PROTOCOL_URL,
+  APP_STORE_URL,
+  SUPPORT_EMAIL,
+  WINDOWS_STORE_PROTOCOL_URL,
+  WINDOWS_STORE_URL,
+} from '@/constants';
+import appLinkStyles from '@/components/AppLink/AppLink.module.scss';
+import headingStyles from '@/components/Heading/Heading.module.scss';
+import textStyles from '@/components/Text/Text.module.scss';
+import styles from './Footer.module.scss';
+
+const sectionTitleClass = [headingStyles.Heading, headingStyles.Heading_h4, styles.Footer__SectionTitle].join(' ');
+const descriptionClass = [textStyles.Text, textStyles.Text_subtle, styles.Footer__Description].join(' ');
+const subtleTextClass = [textStyles.Text, textStyles.Text_subtle].join(' ');
+const linkClass = [appLinkStyles.AppLink, styles.Footer__Link].join(' ');
+const socialLinkClass = [appLinkStyles.AppLink, styles.Footer__SocialLink].join(' ');
+const brandClass = [appLinkStyles.AppLink, styles.Footer__Brand].join(' ');
+---
+
+<footer class={styles.Footer}>
+  <div class={styles.Footer__Container}>
+    <div class={styles.Footer__Grid}>
+      <div>
+        <a href='/' class={brandClass}>Zush</a>
+        <p class={descriptionClass}>
+          AI file renamer for Mac and Windows — rename files with AI, automatically
+        </p>
+
+        <div class={styles.Footer__StoreBadges}>
+          <a
+            href={APP_STORE_URL}
+            target='_blank'
+            rel='noopener noreferrer'
+            class={`${appLinkStyles.AppLink} ${styles.Footer__AppStore}`}
+            aria-label='Download Zush on the Mac App Store'
+            data-store-os='mac'
+            data-store-app-url={APP_STORE_PROTOCOL_URL}
+            data-store-web-url={APP_STORE_URL}
+          >
+            <span class={styles.Footer__StoreBadge}>
+              <span class={styles.Footer__StoreBadgeIcon}>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='24'
+                  height='24'
+                  viewBox='0 0 800 800'
+                  aria-hidden='true'
+                >
+                  <defs>
+                    <linearGradient
+                      id='footer-app-store-grad'
+                      gradientUnits='userSpaceOnUse'
+                      x1='400.05'
+                      y1='798.7717'
+                      x2='400.05'
+                      y2='-1.2283'
+                      gradientTransform='matrix(1 0 0 -1 0 798.7717)'
+                    >
+                      <stop offset='0' stop-color='#18BFFB' />
+                      <stop offset='1' stop-color='#2072F3' />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    fill='url(#footer-app-store-grad)'
+                    d='M638.4,0H161.6C72.3,0,0,72.3,0,161.6v476.9C0,727.7,72.3,800,161.6,800h476.9c89.2,0,161.6-72.3,161.6-161.6V161.6C800,72.3,727.7,0,638.4,0z'
+                  ></path>
+                  <path
+                    fill='#FFFFFF'
+                    d='M396.6,183.8l16.2-28c10-17.5,32.3-23.4,49.8-13.4s23.4,32.3,13.4,49.8L319.9,462.4h112.9c36.6,0,57.1,43,41.2,72.8H143c-20.2,0-36.4-16.2-36.4-36.4c0-20.2,16.2-36.4,36.4-36.4h92.8l118.8-205.9l-37.1-64.4c-10-17.5-4.1-39.6,13.4-49.8c17.5-10,39.6-4.1,49.8,13.4L396.6,183.8L396.6,183.8z M256.2,572.7l-35,60.7c-10,17.5-32.3,23.4-49.8,13.4S148,614.5,158,597l26-45C213.4,542.9,237.3,549.9,256.2,572.7L256.2,572.7z M557.6,462.6h94.7c20.2,0,36.4,16.2,36.4,36.4c0,20.2-16.2,36.4-36.4,36.4h-52.6l35.5,61.6c10,17.5,4.1,39.6-13.4,49.8c-17.5,10-39.6,4.1-49.8-13.4c-59.8-103.7-104.7-181.3-134.5-233c-30.5-52.6-8.7-105.4,12.8-123.3C474.2,318.1,509.9,380,557.6,462.6L557.6,462.6z'
+                  ></path>
+                </svg>
+              </span>
+              <span class={styles.Footer__StoreBadgeText}>
+                <span class={styles.Footer__StoreBadgeKicker}>Download on the</span>
+                <span class={styles.Footer__StoreBadgeLabel}>Mac App Store</span>
+              </span>
+            </span>
+          </a>
+
+          <a
+            href={WINDOWS_STORE_URL}
+            target='_blank'
+            rel='noopener noreferrer'
+            class={`${appLinkStyles.AppLink} ${styles.Footer__MicrosoftStore}`}
+            aria-label='Get Zush from the Microsoft Store'
+            data-store-os='windows'
+            data-store-app-url={WINDOWS_STORE_PROTOCOL_URL}
+            data-store-web-url={WINDOWS_STORE_URL}
+          >
+            <span class={styles.Footer__StoreBadge}>
+              <span class={styles.Footer__StoreBadgeIcon}>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='24'
+                  height='24'
+                  viewBox='0 0 248 248'
+                  aria-hidden='true'
+                >
+                  <defs>
+                    <linearGradient id='footer-ms-store-grad-bg' gradientUnits='userSpaceOnUse' x1='109.37' y1='72.28' x2='151.79' y2='230.9'>
+                      <stop offset='0' stop-color='#0669BC' />
+                      <stop offset='0.7147' stop-color='#1B4779' />
+                      <stop offset='1' stop-color='#233B61' />
+                    </linearGradient>
+                    <linearGradient id='footer-ms-store-grad-top' gradientUnits='userSpaceOnUse' x1='124' y1='7.2' x2='124' y2='43.5'>
+                      <stop offset='0' stop-color='#30DAFF' />
+                      <stop offset='1' stop-color='#0194D4' />
+                    </linearGradient>
+                    <linearGradient id='footer-ms-store-grad-bar' gradientUnits='userSpaceOnUse' x1='124' y1='2.54' x2='124' y2='14.08'>
+                      <stop offset='0' stop-color='#1FB8FD' />
+                      <stop offset='1' stop-color='#0591F2' />
+                    </linearGradient>
+                  </defs>
+                  <path fill='url(#footer-ms-store-grad-bg)' d='M248,42c0-5.523-4.477-10-10-10H10C4.477,32,0,36.477,0,42v166c0,22.091,17.909,40,40,40h168c22.091,0,40-17.909,40-40V42z'></path>
+                  <path fill='#F25022' d='M120,88H72v48h48V88z'></path>
+                  <path fill='#7FBA00' d='M176,88h-48v48h48V88z'></path>
+                  <path fill='#00A4EF' d='M120,144H72v48h48V144z'></path>
+                  <path fill='#FFB900' d='M176,144h-48v48h48V144z'></path>
+                  <path fill='url(#footer-ms-store-grad-top)' d='M56,16c0-8.837,7.163-16,16-16h104c8.837,0,16,7.163,16,16v24c0,4.418-3.582,8-8,8s-8-3.582-8-8V16H72v24c0,4.418-3.582,8-8,8s-8-3.582-8-8V16z'></path>
+                  <path fill='url(#footer-ms-store-grad-bar)' d='M176,0H72v16h104V0z'></path>
+                </svg>
+              </span>
+              <span class={styles.Footer__StoreBadgeText}>
+                <span class={styles.Footer__StoreBadgeKicker}>Download from the</span>
+                <span class={styles.Footer__StoreBadgeLabel}>Microsoft Store</span>
+              </span>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class={sectionTitleClass}>Product</h4>
+        <ul class={styles.Footer__Links}>
+          <li><a href='/ai-file-renamer' class={linkClass}>AI File Renamer</a></li>
+          <li><a href='/ai-image-renamer' class={linkClass}>AI Image Renamer</a></li>
+          <li><a href='/batch-rename-files' class={linkClass}>Batch Rename Files</a></li>
+          <li><a href='/auto-rename-files' class={linkClass}>Auto Rename Files</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class={sectionTitleClass}>By File Type</h4>
+        <ul class={styles.Footer__Links}>
+          <li><a href='/rename-pdf-with-ai' class={linkClass}>Rename PDFs</a></li>
+          <li><a href='/rename-photos-with-ai' class={linkClass}>Rename Photos</a></li>
+          <li><a href='/rename-screenshots-with-ai' class={linkClass}>Rename Screenshots</a></li>
+          <li><a href='/rename-documents-with-ai' class={linkClass}>Rename Documents</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class={sectionTitleClass}>Resources</h4>
+        <ul class={styles.Footer__Links}>
+          <li><a href='/mac' class={linkClass}>Zush for Mac</a></li>
+          <li><a href='/windows' class={linkClass}>Zush for Windows</a></li>
+          <li><a href='/#pricing' class={linkClass}>Pricing</a></li>
+          <li><a href='/blog' class={linkClass}>Blog</a></li>
+          <li><a href='/changelog' class={linkClass}>Changelog</a></li>
+          <li><a href='/methodology' class={linkClass}>Methodology</a></li>
+          <li><a href='/byok-setup' class={linkClass}>BYOK Setup Guide</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class={sectionTitleClass}>Support</h4>
+        <ul class={styles.Footer__Links}>
+          <li><a href={`mailto:${SUPPORT_EMAIL}`} class={linkClass}>Contact Support</a></li>
+          <li><a href='https://zush.canny.io' class={linkClass} target='_blank' rel='noopener noreferrer'>Features &amp; Bug Reports</a></li>
+          <li><a href='/terms-of-service' class={linkClass}>Terms of Service</a></li>
+          <li><a href='/privacy-policy' class={linkClass}>Privacy Policy</a></li>
+          <li><a href='/refund-policy' class={linkClass}>Refund Policy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class={styles.Footer__Bottom}>
+      <p class={subtleTextClass}>© {new Date().getFullYear()} Zush</p>
+
+      <div class={styles.Footer__Social}>
+        <a
+          href='https://x.com/zush_app'
+          class={socialLinkClass}
+          target='_blank'
+          rel='noopener noreferrer'
+          aria-label='Follow us on X'
+        >
+          <svg width='24' height='24' viewBox='0 0 24 24' fill='currentColor' aria-hidden='true'>
+            <path d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z' />
+          </svg>
+          <span class={styles.Footer__VisuallyHidden}>Follow us on X</span>
+        </a>
+
+        <a
+          href='https://www.youtube.com/@zushapp'
+          class={socialLinkClass}
+          target='_blank'
+          rel='noopener noreferrer'
+          aria-label='Follow us on YouTube'
+        >
+          <svg width='24' height='24' viewBox='0 0 24 24' fill='currentColor' aria-hidden='true'>
+            <path d='M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z' />
+          </svg>
+          <span class={styles.Footer__VisuallyHidden}>Follow us on YouTube</span>
+        </a>
+
+        <a
+          href='https://www.producthunt.com/products/zush'
+          class={socialLinkClass}
+          target='_blank'
+          rel='noopener noreferrer'
+          aria-label='Zush on Product Hunt'
+        >
+          <svg width='24' height='24' viewBox='0 0 24 24' fill='currentColor' aria-hidden='true'>
+            <path d='M13.604 8.4h-3.405V12h3.405a1.8 1.8 0 0 0 0-3.6zM12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm1.604 14.4h-3.405V18H7.801V6h5.804a4.2 4.2 0 0 1 0 8.4z' />
+          </svg>
+          <span class={styles.Footer__VisuallyHidden}>Zush on Product Hunt</span>
+        </a>
+      </div>
+
+      <div class={styles.Footer__BottomLinks}>
+        <p class={subtleTextClass}>
+          Designed by
+          {' '}
+          <a href='https://lirik.pro/en' class={`${appLinkStyles.AppLink} ${appLinkStyles.AppLink_legal}`} target='_blank' rel='noopener noreferrer'>lirik</a>
+          {' '}
+          with 💚
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

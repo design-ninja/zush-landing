@@ -8,16 +8,16 @@ import { WINDOWS_STORE_PROTOCOL_URL, WINDOWS_STORE_URL } from '@/constants';
 import { useOS } from '@/hooks/useOS';
 import { getDownloadUrl, trackDownloadClick, type DownloadOS } from '@/utils/download';
 import { getPreferredStoreHref, handleStoreLinkClick } from '@/utils/storeLinks';
-import styles from './Navbar.module.scss';
+import styles from './Header.module.scss';
 
-interface NavbarProps {
+interface HeaderProps {
   theme: string;
   toggleTheme: () => void;
   forceOS?: DownloadOS;
   basePath?: string;
 }
 
-const Navbar = ({ theme, toggleTheme, forceOS, basePath = '/' }: NavbarProps) => {
+const Header = ({ theme, toggleTheme, forceOS, basePath = '/' }: HeaderProps) => {
   const { downloadOS: detectedOS, manual: detectedManual } = useOS();
   const downloadOS = forceOS ?? detectedOS;
   const manual = forceOS ? true : detectedManual;
@@ -34,18 +34,18 @@ const Navbar = ({ theme, toggleTheme, forceOS, basePath = '/' }: NavbarProps) =>
   const pricingHref = `${basePath}#pricing`;
 
   return (
-    <nav className={styles.Navbar}>
-      <div className={styles.Navbar__Container}>
+    <nav className={styles.Header}>
+      <div className={styles.Header__Container}>
         <Logo />
-        <div className={styles.Navbar__Actions}>
-          <AppLink href={featuresHref} className={styles.Navbar__Link}>Features</AppLink>
-          <AppLink href={pricingHref} className={styles.Navbar__Link}>Pricing</AppLink>
-          <AppLink href="/blog" className={styles.Navbar__Link}>Blog</AppLink>
-          <button onClick={toggleTheme} className={styles.Navbar__ThemeToggle} aria-label="Toggle theme">
+        <div className={styles.Header__Actions}>
+          <AppLink href={featuresHref} className={styles.Header__Link}>Features</AppLink>
+          <AppLink href={pricingHref} className={styles.Header__Link}>Pricing</AppLink>
+          <AppLink href="/blog" className={styles.Header__Link}>Blog</AppLink>
+          <button onClick={toggleTheme} className={styles.Header__ThemeToggle} aria-label="Toggle theme">
             {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
           </button>
-          <div className={styles.Navbar__Buttons}>
-            <Button as="link" href={pricingHref} variant="ghost" size="sm" className={styles.Navbar__BuyBtn}>
+          <div className={styles.Header__Buttons}>
+            <Button as="link" href={pricingHref} variant="ghost" size="sm" className={styles.Header__BuyBtn}>
               Buy PRO
             </Button>
             <Button
@@ -55,7 +55,7 @@ const Navbar = ({ theme, toggleTheme, forceOS, basePath = '/' }: NavbarProps) =>
               rel={shouldOpenDownloadInNewTab ? 'noopener noreferrer' : undefined}
               variant="black"
               size="sm"
-              className={styles.Navbar__DownloadBtn}
+              className={styles.Header__DownloadBtn}
               onClick={(event) => {
                 trackDownloadClick({ os: downloadOS, source: 'navbar', manual });
 
@@ -78,4 +78,4 @@ const Navbar = ({ theme, toggleTheme, forceOS, basePath = '/' }: NavbarProps) =>
   );
 };
 
-export default Navbar;
+export default Header;
