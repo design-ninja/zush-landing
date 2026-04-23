@@ -55,18 +55,22 @@ export type DownloadSource =
   | 'download-page-mac'
   | 'download-page-windows';
 
+export type DownloadChannel = 'direct' | 'mac-app-store' | 'microsoft-store';
+
 export interface TrackDownloadClickOptions {
   os: DownloadOS;
   source: DownloadSource;
   manual?: boolean;
+  channel?: DownloadChannel;
 }
 
-export function trackDownloadClick({ os, source, manual }: TrackDownloadClickOptions): void {
+export function trackDownloadClick({ os, source, manual, channel }: TrackDownloadClickOptions): void {
   try {
     track('download_click', {
       os,
       source,
       detection: manual ? 'manual' : 'auto',
+      channel: channel ?? (os === 'windows' ? 'microsoft-store' : 'direct'),
     });
   } catch {
     // Analytics might not be initialized in dev / tests — never block the click.
