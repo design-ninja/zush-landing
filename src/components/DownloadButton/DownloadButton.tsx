@@ -1,0 +1,162 @@
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
+import { ChevronDown } from 'lucide-react';
+import AppleIcon from '@/components/AppleIcon';
+import WindowsIcon from '@/components/WindowsIcon';
+import MicrosoftStoreIcon from '@/components/MicrosoftStoreIcon';
+import { useOS } from '@/hooks/useOS';
+import { useIsMobile } from '@/hooks/useIsMobile';
+import {
+  type DownloadOS,
+  type DownloadSource,
+  getDownloadUrl,
+  getOSLabel,
+  getOtherOS,
+  trackDownloadClick,
+} from '@/utils/download';
+import styles from './DownloadButton.module.scss';
+
+const MobileDownloadModal = lazy(() => import('@/components/MobileDownloadModal'));
+
+type Variant = 'black' | 'primary' | 'ghost';
+type Size = 'sm' | 'md' | 'lg';
+
+interface DownloadButtonProps {
+  source: DownloadSource;
+  variant?: Variant;
+  size?: Size;
+  label?: string;
+  className?: string;
+  useMobileModal?: boolean;
+  forceOS?: DownloadOS;
+}
+
+const OS_STORE_LABEL: Record<DownloadOS, string> = {
+  mac: 'Direct .dmg download',
+  windows: 'Microsoft Store',
+};
+
+const DownloadButton = ({
+  source,
+  variant = 'black',
+  size = 'md',
+  label = 'Download',
+  className,
+  useMobileModal = true,
+  forceOS,
+}: DownloadButtonProps) => {
+  const { downloadOS: detectedOS, manual: detectedManual } = useOS();
+  const downloadOS = forceOS ?? detectedOS;
+  const manual = forceOS ? true : detectedManual;
+  const isMobile = useIsMobile();
+  const [isOpen, setIsOpen] = useState(false);
+  const [hasLoadedModal, setHasLoadedModal] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const wrapRef = useRef<HTMLDivElement>(null);
+
+  const downloadUrl = getDownloadUrl(downloadOS);
+  const DownloadIcon = downloadOS === 'windows' ? WindowsIcon : AppleIcon;
+  const otherOS = getOtherOS(downloadOS);
+  const OtherMenuIcon = otherOS === 'windows' ? MicrosoftStoreIcon : AppleIcon;
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleClickAway = (event: MouseEvent) => {
+      if (!wrapRef.current?.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsOpen(false);
+    };
+    document.addEventListener('mousedown', handleClickAway);
+    document.addEventListener('keydown', handleEscape);
+    return () => {
+      document.removeEventListener('mousedown', handleClickAway);
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [isOpen]);
+
+  const handlePrimaryClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    trackDownloadClick({ os: downloadOS, source, manual });
+    if (useMobileModal && isMobile) {
+      event.preventDefault();
+      setHasLoadedModal(true);
+      setIsModalOpen(true);
+    }
+  };
+
+  const handleOtherClick = () => {
+    trackDownloadClick({ os: otherOS, source, manual: true });
+    setIsOpen(false);
+  };
+
+  const otherUrl = getDownloadUrl(otherOS);
+
+  return (
+    <div
+      ref={wrapRef}
+      className={[
+        styles.Group,
+        styles[`Group_${variant}`],
+        styles[`Group_${size}`],
+        isOpen ? styles.Group_open : '',
+        className,
+      ]
+        .filter(Boolean)
+        .join(' ')}
+    >
+      <a
+        className={styles.Main}
+        href={downloadUrl}
+        target='_blank'
+        rel='noopener noreferrer'
+        onClick={handlePrimaryClick}
+      >
+        <DownloadIcon />
+        <span>{label}</span>
+      </a>
+      <button
+        type='button'
+        className={styles.Toggle}
+        aria-label={`Show download options for ${getOSLabel(otherOS)}`}
+        aria-haspopup='menu'
+        aria-expanded={isOpen}
+        onClick={() => setIsOpen((prev) => !prev)}
+      >
+        <ChevronDown size={18} className={isOpen ? styles.Toggle__Icon_open : styles.Toggle__Icon} />
+      </button>
+
+      {isOpen && (
+        <div role='menu' className={styles.Menu}>
+          <a
+            role='menuitem'
+            className={styles.Menu__Item}
+            href={otherUrl}
+            target='_blank'
+            rel='noopener noreferrer'
+            onClick={handleOtherClick}
+          >
+            <span className={styles.Menu__Icon}>
+              <OtherMenuIcon />
+            </span>
+            <span className={styles.Menu__Text}>
+              <span className={styles.Menu__Title}>Download for {getOSLabel(otherOS)}</span>
+              <span className={styles.Menu__Hint}>{OS_STORE_LABEL[otherOS]}</span>
+            </span>
+          </a>
+        </div>
+      )}
+
+      {hasLoadedModal && (
+        <Suspense fallback={null}>
+          <MobileDownloadModal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+          />
+        </Suspense>
+      )}
+    </div>
+  );
+};
+
+export default DownloadButton;

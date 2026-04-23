@@ -69,6 +69,56 @@
   color: var(--foreground);
 }
 
+.MobileDownloadModal__Options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.MobileDownloadModal__Option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: $radius-md;
+  text-decoration: none;
+  color: var(--foreground);
+  text-align: left;
+  transition: background 0.15s ease, border-color 0.15s ease;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--primary-soft);
+    border-color: var(--primary);
+  }
+}
+
+.MobileDownloadModal__OptionIcon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--foreground);
+}
+
+.MobileDownloadModal__OptionText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.125rem;
+}
+
+.MobileDownloadModal__OptionTitle {
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.MobileDownloadModal__OptionHint {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
 @keyframes modal-fade-in {
   from {
     opacity: 0;

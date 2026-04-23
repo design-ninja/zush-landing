@@ -1,15 +1,12 @@
-import { lazy, Suspense, useState, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import FileShowcase from "../FileShowcase";
 import type { Slide } from "../FileShowcase";
 import Button from "../Button";
+import DownloadButton from "../DownloadButton";
 import Heading from "../Heading";
 import Text from "../Text";
-import AppleIcon from "../AppleIcon";
-import { useIsMobile } from "@/hooks/useIsMobile";
-import { DOWNLOAD_URL } from "@/constants";
 import styles from "./Hero.module.scss";
 
-const MobileDownloadModal = lazy(() => import("../MobileDownloadModal"));
 
 interface HeroProps {
   title?: ReactNode;
@@ -28,19 +25,6 @@ const Hero = ({
   as: Tag = "section",
   compactTopSpacing = false,
 }: HeroProps) => {
-  const isMobile = useIsMobile();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [hasLoadedModal, setHasLoadedModal] = useState(false);
-
-  const handleDownloadClick = () => {
-    if (isMobile) {
-      setHasLoadedModal(true);
-      setIsModalOpen(true);
-    } else {
-      window.open(DOWNLOAD_URL, "_blank");
-    }
-  };
-
   return (
     <Tag
       className={[
@@ -72,32 +56,11 @@ const Hero = ({
           </Heading>
           <Text size="xl" color="subtle" className={styles.Hero__Subtitle}>
             {subtitle ??
-              "Blazing fast AI file renamer for macOS. Auto rename screenshots, PDFs, documents, and downloads with meaningful names — free to try."}
+              "Blazing fast AI file renamer for Mac and Windows. Auto rename screenshots, PDFs, documents, and downloads with meaningful names — free to try."}
           </Text>
 
           <div className={styles.Hero__Buttons}>
-            {isMobile ? (
-              <Button
-                variant="black"
-                size="lg"
-                onClick={handleDownloadClick}
-              >
-                <AppleIcon />
-                Download
-              </Button>
-            ) : (
-              <Button
-                as="a"
-                href={DOWNLOAD_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="black"
-                size="lg"
-              >
-                <AppleIcon />
-                Download
-              </Button>
-            )}
+            <DownloadButton source="hero" size="lg" />
             <Button
               as="link"
               href="/#pricing"
@@ -113,15 +76,6 @@ const Hero = ({
             <li>🚫 No subscription</li>
           </ul>
         </div>
-
-        {hasLoadedModal && (
-          <Suspense fallback={null}>
-            <MobileDownloadModal
-              isOpen={isModalOpen}
-              onClose={() => setIsModalOpen(false)}
-            />
-          </Suspense>
-        )}
 
         <div
           className={`${styles.Hero__ShowcaseWrapper} ${styles.Hero__ShowcaseMotion}`}

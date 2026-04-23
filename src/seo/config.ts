@@ -18,9 +18,9 @@ export interface SeoMeta {
 type RouteSeoMeta = Omit<SeoMeta, 'canonicalPath'>;
 
 const DEFAULT_META: RouteSeoMeta = {
-  title: 'Zush — AI File Renamer for Mac · 50 Free Renames, No Signup',
+  title: 'Zush — AI File Renamer for Mac & Windows · 50 Free Renames, No Signup',
   description:
-    'Zush renames screenshots, PDFs, photos and documents on Mac using AI. Batch rename, watch folders, stay organized automatically. 50 free renames, no signup.',
+    'Zush renames screenshots, PDFs, photos and documents on Mac and Windows using AI. Batch rename, watch folders, stay organized automatically. 50 free renames, no signup.',
   robots: 'noindex, nofollow',
   ogType: 'website',
 };
@@ -132,6 +132,20 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     title: 'AI Image Renamer for Mac · Photos & Screenshots · Zush',
     description:
       'Rename screenshots, photos, mockups and downloaded images across 22 formats. Zush uses AI vision to create searchable filenames on Mac. Free for 50 files.',
+    robots: 'index, follow',
+    ogType: 'website',
+  },
+  '/download/mac': {
+    title: 'Download Zush for Mac — AI File Renamer',
+    description:
+      'Download Zush for macOS. AI-powered file renamer for screenshots, PDFs, photos and documents. Runs natively on Apple Silicon and Intel. Free for 50 renames.',
+    robots: 'index, follow',
+    ogType: 'website',
+  },
+  '/download/windows': {
+    title: 'Download Zush for Windows — AI File Renamer',
+    description:
+      'Get Zush for Windows from the Microsoft Store. AI-powered file renamer for screenshots, PDFs, photos and documents. Free for 50 renames, no signup.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -252,12 +266,13 @@ export const HOME_JSON_LD = {
       '@id': `${SITE_ORIGIN}/#software`,
       name: 'Zush',
       description:
-        'AI-powered file organization app for macOS. Automatically renames images, PDFs, and documents using advanced AI with smart metadata and folder monitoring.',
+        'AI-powered file organization app for macOS and Windows. Automatically renames images, PDFs, and documents using advanced AI with smart metadata and folder monitoring.',
       applicationCategory: 'UtilitiesApplication',
       applicationSubCategory: 'File Management',
-      operatingSystem: 'macOS 14.0+',
+      operatingSystem: ['macOS 14.0+', 'Windows 10', 'Windows 11'],
       softwareVersion: '1.9.0',
       downloadUrl: `${SITE_ORIGIN}/releases/Zush.dmg`,
+      installUrl: 'https://apps.microsoft.com/detail/9ND4WVZSDQ3X',
       screenshot: `${SITE_ORIGIN}/og-image.png`,
       offers: [
         {
@@ -293,7 +308,7 @@ export const HOME_JSON_LD = {
     {
       '@type': 'HowTo',
       '@id': `${SITE_ORIGIN}/#howto`,
-      name: 'How to Rename Files with AI on macOS',
+      name: 'How to Rename Files with AI on Mac or Windows',
       step: [
         {
           '@type': 'HowToStep',

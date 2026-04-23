@@ -1,7 +1,7 @@
 import Heading from '../Heading';
 import Text from '../Text';
 import AppLink from '@/components/AppLink';
-import { APP_STORE_URL, SUPPORT_EMAIL } from '@/constants';
+import { APP_STORE_URL, SUPPORT_EMAIL, WINDOWS_STORE_URL } from '@/constants';
 import styles from './Footer.module.scss';
 
 const XIcon = ({ size = 20 }: { size?: number }) => (
@@ -48,25 +48,44 @@ const Footer = () => {
           <div>
             <AppLink href="/" className={styles.Footer__Brand}>Zush</AppLink>
             <Text color="subtle" className={styles.Footer__Description}>
-              AI file renamer for macOS — rename files with AI, automatically
+              AI file renamer for Mac and Windows — rename files with AI, automatically
             </Text>
-            <AppLink
-              href={APP_STORE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.Footer__AppStore}
-              aria-label="Download Zush on the App Store"
-            >
-              <img
-                src="/images/download-from-appstore.svg"
-                alt="Download on the App Store"
-                className={styles.Footer__AppStoreImg}
-                width={156}
-                height={40}
-                loading="lazy"
-                decoding="async"
-              />
-            </AppLink>
+            <div className={styles.Footer__StoreBadges}>
+              <AppLink
+                href={APP_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.Footer__AppStore}
+                aria-label="Download Zush on the Mac App Store"
+              >
+                <img
+                  src="/images/download-from-appstore.svg"
+                  alt="Download on the Mac App Store"
+                  className={styles.Footer__AppStoreImg}
+                  width={156}
+                  height={40}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </AppLink>
+              <AppLink
+                href={WINDOWS_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.Footer__MicrosoftStore}
+                aria-label="Get Zush from the Microsoft Store"
+              >
+                <img
+                  src="/images/get-from-microsoft-dark.svg"
+                  alt="Get it from Microsoft"
+                  className={styles.Footer__MicrosoftStoreImg}
+                  width={161}
+                  height={44}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </AppLink>
+            </div>
           </div>
           <div>
             <Heading as="h4" className={styles.Footer__SectionTitle}>Product</Heading>
@@ -89,6 +108,8 @@ const Footer = () => {
           <div>
             <Heading as="h4" className={styles.Footer__SectionTitle}>Resources</Heading>
             <ul className={styles.Footer__Links}>
+              <li><AppLink href="/download/mac" className={styles.Footer__Link}>Download for Mac</AppLink></li>
+              <li><AppLink href="/download/windows" className={styles.Footer__Link}>Download for Windows</AppLink></li>
               <li><AppLink href="/#pricing" className={styles.Footer__Link}>Pricing</AppLink></li>
               <li><AppLink href="/blog" className={styles.Footer__Link}>Blog</AppLink></li>
               <li><AppLink href="/changelog" className={styles.Footer__Link}>Changelog</AppLink></li>

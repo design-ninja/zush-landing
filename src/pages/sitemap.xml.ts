@@ -10,6 +10,8 @@ const PAGES_DIR = join(process.cwd(), 'src', 'pages');
 function getPageSourceFile(route: string): string {
   if (route === '/') return join(PAGES_DIR, 'index.astro');
   if (route === '/blog') return join(PAGES_DIR, 'blog', 'index.astro');
+  if (route === '/download/mac') return join(PAGES_DIR, 'download', 'mac.astro');
+  if (route === '/download/windows') return join(PAGES_DIR, 'download', 'windows.astro');
   return join(PAGES_DIR, `${route.slice(1)}.astro`);
 }
 
@@ -59,6 +61,9 @@ function getRouteHints(route: string): { changefreq: Changefreq; priority: strin
   }
   if ((FEATURE_ROUTES as readonly string[]).includes(route)) {
     return { changefreq: 'weekly', priority: '0.8' };
+  }
+  if (route === '/download/mac' || route === '/download/windows') {
+    return { changefreq: 'weekly', priority: '0.9' };
   }
   if (route === '/changelog') {
     return { changefreq: 'weekly', priority: '0.6' };

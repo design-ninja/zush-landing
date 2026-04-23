@@ -15,7 +15,7 @@ const seo = getSeoForPath('/');
 ---
 
 <BaseLayout seo={seo} jsonLd={HOME_JSON_LD}>
-  <Hero client:visible />
+  <Hero client:load />
   <Videos client:visible autoplayWhenInView />
   <Features />
   <SupportedFormats />

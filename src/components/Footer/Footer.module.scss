@@ -38,18 +38,36 @@
         }
     }
 
-    &__AppStore {
-        display: inline-block;
+    &__StoreBadges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
         margin-top: 1rem;
 
         @include mobile {
+            justify-content: center;
             margin: 1rem auto 0;
         }
+    }
+
+    &__AppStore {
+        display: inline-block;
     }
 
     &__AppStoreImg {
         height: 2.5rem;
         width: auto;
+        display: block;
+    }
+
+    &__MicrosoftStore {
+        display: inline-block;
+    }
+
+    &__MicrosoftStoreImg {
+        height: 2.5rem;
+        width: auto;
+        display: block;
     }
 
     &__SectionTitle {

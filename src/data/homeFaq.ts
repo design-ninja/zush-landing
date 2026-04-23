@@ -8,7 +8,7 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'What is Zush?',
     answer:
-      'Zush is an intelligent macOS application that automates the tedious task of renaming files. Using advanced AI, it analyzes images and supported documents, including PDFs, to generate descriptive, meaningful filenames and metadata, helping you keep your library perfectly organized.',
+      'Zush is an intelligent desktop application for Mac and Windows that automates the tedious task of renaming files. Using advanced AI, it analyzes images and supported documents, including PDFs, to generate descriptive, meaningful filenames and metadata, helping you keep your library perfectly organized.',
   },
   {
     question: 'What file formats are supported?',
@@ -66,7 +66,7 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   },
   {
     question: 'Which operating systems are supported?',
-    answer: `Currently, Zush is exclusively available for macOS (version ${APP_CONFIG.min_macos_version} ${APP_CONFIG.min_macos_name} and newer).`,
+    answer: `Zush runs on macOS (${APP_CONFIG.min_macos_version} ${APP_CONFIG.min_macos_name} and newer) and Windows 10 / 11. The Mac build is distributed as a signed .dmg and on the Mac App Store; the Windows build is available on the Microsoft Store.`,
   },
   {
     question: 'Which AI model does the app use?',

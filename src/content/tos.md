@@ -1,14 +1,14 @@
-Welcome to Zush. These Terms of Service ("Terms") govern your use of the Zush application for macOS ("Service"), provided by Kirill Isachenko ("we," "us," or "our"). By downloading, installing, or using Zush, you agree to be bound by these Terms.
+Welcome to Zush. These Terms of Service ("Terms") govern your use of the Zush application for macOS and Windows ("Service"), provided by Kirill Isachenko ("we," "us," or "our"). By downloading, installing, or using Zush, you agree to be bound by these Terms.
 
 Last updated: March 19, 2026
 
 ### 1. Description of Service
 
-Zush is a macOS utility designed to help users organize, rename, and manage metadata for files using artificial intelligence (AI). Features include automatic renaming for images and supported documents, including PDFs, smart metadata tagging (Finder tags and Spotlight metadata), folder monitoring, and optional custom AI prompt controls for rename and tagging behavior.
+Zush is a desktop utility for macOS and Windows designed to help users organize, rename, and manage metadata for files using artificial intelligence (AI). Features include automatic renaming for images and supported documents, including PDFs, smart metadata tagging (Finder tags on macOS, file properties on Windows, and Spotlight metadata), folder monitoring, and optional custom AI prompt controls for rename and tagging behavior.
 
 ### 2. Software License
 
-We grant you a personal, non-exclusive, non-transferable, limited license to use Zush on macOS devices that you own or control, subject to these Terms.
+We grant you a personal, non-exclusive, non-transferable, limited license to use Zush on macOS or Windows devices that you own or control, subject to these Terms.
 
 ### 3. Purchases and Payments
 

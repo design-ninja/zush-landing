@@ -1,10 +1,13 @@
 // App URLs
 export const DOWNLOAD_URL = "https://zushapp.com/releases/Zush.dmg";
 export const APP_STORE_URL = "https://apps.apple.com/app/zush/id6758432449";
+export const WINDOWS_STORE_URL = "https://apps.microsoft.com/detail/9ND4WVZSDQ3X";
+export const WINDOWS_STORE_PROTOCOL = "ms-windows-store://pdp/?productid=9ND4WVZSDQ3X";
 export const SUPPORT_EMAIL = "support@zushapp.com";
 
 // System requirements
 export const MIN_MACOS_VERSION = "Sonoma and newer";
+export const MIN_WINDOWS_VERSION = "Windows 10 and newer";
 
 // Config
 export const APP_CONFIG = {
