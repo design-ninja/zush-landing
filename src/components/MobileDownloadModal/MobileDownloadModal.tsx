@@ -5,8 +5,16 @@ import AppleIcon from '../AppleIcon';
 import WindowsIcon from '../WindowsIcon';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
-import { DOWNLOAD_URL, MIN_MACOS_VERSION, MIN_WINDOWS_VERSION, WINDOWS_STORE_URL } from '@/constants';
+import {
+  DOWNLOAD_URL,
+  MIN_MACOS_VERSION,
+  MIN_WINDOWS_VERSION,
+  WINDOWS_STORE_PROTOCOL_URL,
+  WINDOWS_STORE_URL,
+} from '@/constants';
+import { useOS } from '@/hooks/useOS';
 import { trackDownloadClick } from '@/utils/download';
+import { getPreferredStoreHref, handleStoreLinkClick } from '@/utils/storeLinks';
 import styles from './MobileDownloadModal.module.scss';
 
 interface MobileDownloadModalProps {
@@ -17,6 +25,7 @@ interface MobileDownloadModalProps {
 const CLOSE_ANIMATION_MS = 200;
 
 const MobileDownloadModal = ({ isOpen, onClose }: MobileDownloadModalProps) => {
+  const { os } = useOS();
   const [isRendered, setIsRendered] = useState(isOpen);
   const [isClosing, setIsClosing] = useState(false);
   const closeTimerRef = useRef<number | null>(null);
@@ -93,6 +102,12 @@ const MobileDownloadModal = ({ isOpen, onClose }: MobileDownloadModalProps) => {
       ? styles.MobileDownloadModal__Content_exit
       : styles.MobileDownloadModal__Content_enter
   }`;
+  const windowsStoreHref = getPreferredStoreHref({
+    os: 'windows',
+    runtimeOS: os,
+    appUrl: WINDOWS_STORE_PROTOCOL_URL,
+    webUrl: WINDOWS_STORE_URL,
+  });
 
   return createPortal(
     <div
@@ -137,10 +152,20 @@ const MobileDownloadModal = ({ isOpen, onClose }: MobileDownloadModalProps) => {
           </a>
           <a
             className={styles.MobileDownloadModal__Option}
-            href={WINDOWS_STORE_URL}
+            href={windowsStoreHref}
             target='_blank'
             rel='noopener noreferrer'
-            onClick={() => trackDownloadClick({ os: 'windows', source: 'mobile-modal' })}
+            data-store-os='windows'
+            data-store-app-url={WINDOWS_STORE_PROTOCOL_URL}
+            data-store-web-url={WINDOWS_STORE_URL}
+            onClick={(event) => {
+              trackDownloadClick({ os: 'windows', source: 'mobile-modal' });
+              handleStoreLinkClick(event, {
+                os: 'windows',
+                appUrl: WINDOWS_STORE_PROTOCOL_URL,
+                webUrl: WINDOWS_STORE_URL,
+              });
+            }}
           >
             <span className={styles.MobileDownloadModal__OptionIcon}>
               <WindowsIcon />

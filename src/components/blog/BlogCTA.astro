@@ -2,6 +2,7 @@
 import headingStyles from '@/components/Heading/Heading.module.scss';
 import textStyles from '@/components/Text/Text.module.scss';
 import downloadStyles from '@/components/DownloadButton/DownloadButton.module.scss';
+import { WINDOWS_STORE_PROTOCOL_URL } from '@/constants';
 import { getDownloadUrl, getOSLabel, getShortRequirements } from '@/utils/download';
 import type { BlogPlatform } from '@/data/blogSchema';
 import BlogOSIcon from '@/components/blog/BlogOSIcon.astro';
@@ -78,6 +79,7 @@ const hintClasses = [
               data-blog-cta-link
               data-href-mac={getDownloadUrl('mac')}
               data-href-windows={getDownloadUrl('windows')}
+              data-store-app-url-windows={WINDOWS_STORE_PROTOCOL_URL}
               href={getDownloadUrl('mac')}
               rel='noopener noreferrer'
               target='_blank'
@@ -121,6 +123,8 @@ const hintClasses = [
             <a
               class={[downloadStyles.Main, downloadStyles.Main_single].join(' ')}
               href={getDownloadUrl(platform === 'windows' ? 'windows' : 'mac')}
+              data-store-os={platform === 'windows' ? 'windows' : undefined}
+              data-store-app-url={platform === 'windows' ? WINDOWS_STORE_PROTOCOL_URL : undefined}
               rel='noopener noreferrer'
               target='_blank'
             >

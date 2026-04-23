@@ -180,7 +180,13 @@ const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
       >
         <slot />
       </main>
-      {includeChrome && <Footer />}
+      {includeChrome && <Footer client:load />}
+      <script>
+        import { bindStoreLinks } from '@/utils/storeLinks';
+
+        bindStoreLinks();
+        document.addEventListener('astro:after-swap', () => bindStoreLinks());
+      </script>
     </div>
     <Analytics />
   </body>

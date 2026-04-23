@@ -3,7 +3,15 @@ import Text from '../Text';
 import AppLink from '@/components/AppLink';
 import AppStoreIcon from '@/components/AppStoreIcon';
 import MicrosoftStoreIcon from '@/components/MicrosoftStoreIcon';
-import { APP_STORE_URL, SUPPORT_EMAIL, WINDOWS_STORE_URL } from '@/constants';
+import {
+  APP_STORE_PROTOCOL_URL,
+  APP_STORE_URL,
+  SUPPORT_EMAIL,
+  WINDOWS_STORE_PROTOCOL_URL,
+  WINDOWS_STORE_URL,
+} from '@/constants';
+import { useOS } from '@/hooks/useOS';
+import { getPreferredStoreHref, handleStoreLinkClick } from '@/utils/storeLinks';
 import styles from './Footer.module.scss';
 
 const XIcon = ({ size = 20 }: { size?: number }) => (
@@ -43,6 +51,20 @@ const ProductHuntIcon = ({ size = 24 }: { size?: number }) => (
 );
 
 const Footer = () => {
+  const { os } = useOS();
+  const appStoreHref = getPreferredStoreHref({
+    os: 'mac',
+    runtimeOS: os,
+    appUrl: APP_STORE_PROTOCOL_URL,
+    webUrl: APP_STORE_URL,
+  });
+  const windowsStoreHref = getPreferredStoreHref({
+    os: 'windows',
+    runtimeOS: os,
+    appUrl: WINDOWS_STORE_PROTOCOL_URL,
+    webUrl: WINDOWS_STORE_URL,
+  });
+
   return (
     <footer className={styles.Footer}>
       <div className={styles.Footer__Container}>
@@ -54,11 +76,20 @@ const Footer = () => {
             </Text>
             <div className={styles.Footer__StoreBadges}>
               <AppLink
-                href={APP_STORE_URL}
+                href={appStoreHref}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.Footer__AppStore}
                 aria-label="Download Zush on the Mac App Store"
+                data-store-os='mac'
+                data-store-app-url={APP_STORE_PROTOCOL_URL}
+                data-store-web-url={APP_STORE_URL}
+                onClick={(event) =>
+                  handleStoreLinkClick(event, {
+                    os: 'mac',
+                    appUrl: APP_STORE_PROTOCOL_URL,
+                    webUrl: APP_STORE_URL,
+                  })}
               >
                 <span className={styles.Footer__StoreBadge}>
                   <span className={styles.Footer__StoreBadgeIcon}>
@@ -71,11 +102,20 @@ const Footer = () => {
                 </span>
               </AppLink>
               <AppLink
-                href={WINDOWS_STORE_URL}
+                href={windowsStoreHref}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.Footer__MicrosoftStore}
                 aria-label="Get Zush from the Microsoft Store"
+                data-store-os='windows'
+                data-store-app-url={WINDOWS_STORE_PROTOCOL_URL}
+                data-store-web-url={WINDOWS_STORE_URL}
+                onClick={(event) =>
+                  handleStoreLinkClick(event, {
+                    os: 'windows',
+                    appUrl: WINDOWS_STORE_PROTOCOL_URL,
+                    webUrl: WINDOWS_STORE_URL,
+                  })}
               >
                 <span className={styles.Footer__StoreBadge}>
                   <span className={styles.Footer__StoreBadgeIcon}>

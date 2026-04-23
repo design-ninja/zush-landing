@@ -4,8 +4,10 @@ import Button from '../Button';
 import AppleIcon from '../AppleIcon';
 import WindowsIcon from '../WindowsIcon';
 import AppLink from '@/components/AppLink';
+import { WINDOWS_STORE_PROTOCOL_URL, WINDOWS_STORE_URL } from '@/constants';
 import { useOS } from '@/hooks/useOS';
 import { getDownloadUrl, trackDownloadClick, type DownloadOS } from '@/utils/download';
+import { getPreferredStoreHref, handleStoreLinkClick } from '@/utils/storeLinks';
 import styles from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -20,6 +22,12 @@ const Navbar = ({ theme, toggleTheme, forceOS, basePath = '/' }: NavbarProps) =>
   const downloadOS = forceOS ?? detectedOS;
   const manual = forceOS ? true : detectedManual;
   const downloadUrl = getDownloadUrl(downloadOS);
+  const primaryHref = getPreferredStoreHref({
+    os: 'windows',
+    runtimeOS: detectedOS,
+    appUrl: WINDOWS_STORE_PROTOCOL_URL,
+    webUrl: downloadUrl,
+  });
   const DownloadIcon = downloadOS === 'windows' ? WindowsIcon : AppleIcon;
   const shouldOpenDownloadInNewTab = downloadOS === 'windows';
   const featuresHref = `${basePath}#features`;
@@ -42,13 +50,23 @@ const Navbar = ({ theme, toggleTheme, forceOS, basePath = '/' }: NavbarProps) =>
             </Button>
             <Button
               as="a"
-              href={downloadUrl}
+              href={primaryHref}
               target={shouldOpenDownloadInNewTab ? '_blank' : undefined}
               rel={shouldOpenDownloadInNewTab ? 'noopener noreferrer' : undefined}
               variant="black"
               size="sm"
               className={styles.Navbar__DownloadBtn}
-              onClick={() => trackDownloadClick({ os: downloadOS, source: 'navbar', manual })}
+              onClick={(event) => {
+                trackDownloadClick({ os: downloadOS, source: 'navbar', manual });
+
+                if (downloadOS === 'windows') {
+                  handleStoreLinkClick(event, {
+                    os: 'windows',
+                    appUrl: WINDOWS_STORE_PROTOCOL_URL,
+                    webUrl: WINDOWS_STORE_URL,
+                  });
+                }
+              }}
             >
               <DownloadIcon />
               Download

@@ -4,9 +4,10 @@ import AppleIcon from '@/components/AppleIcon';
 import AppStoreIcon from '@/components/AppStoreIcon';
 import WindowsIcon from '@/components/WindowsIcon';
 import MicrosoftStoreIcon from '@/components/MicrosoftStoreIcon';
-import { APP_STORE_URL } from '@/constants';
+import { APP_STORE_PROTOCOL_URL, APP_STORE_URL, WINDOWS_STORE_PROTOCOL_URL, WINDOWS_STORE_URL } from '@/constants';
 import { useOS } from '@/hooks/useOS';
 import { useIsMobile } from '@/hooks/useIsMobile';
+import { getPreferredStoreHref, handleStoreLinkClick } from '@/utils/storeLinks';
 import {
   type DownloadOS,
   type DownloadSource,
@@ -58,6 +59,18 @@ const DownloadButton = ({
   const wrapRef = useRef<HTMLDivElement>(null);
 
   const downloadUrl = getDownloadUrl(downloadOS);
+  const primaryHref = getPreferredStoreHref({
+    os: 'windows',
+    runtimeOS: detectedOS,
+    appUrl: WINDOWS_STORE_PROTOCOL_URL,
+    webUrl: downloadUrl,
+  });
+  const appStoreHref = getPreferredStoreHref({
+    os: 'mac',
+    runtimeOS: detectedOS,
+    appUrl: APP_STORE_PROTOCOL_URL,
+    webUrl: APP_STORE_URL,
+  });
   const DownloadIcon = downloadOS === 'windows' ? WindowsIcon : AppleIcon;
   const otherOS = getOtherOS(downloadOS);
   const OtherMenuIcon = otherOS === 'windows' ? MicrosoftStoreIcon : AppleIcon;
@@ -87,6 +100,15 @@ const DownloadButton = ({
       event.preventDefault();
       setHasLoadedModal(true);
       setIsModalOpen(true);
+      return;
+    }
+
+    if (downloadOS === 'windows') {
+      handleStoreLinkClick(event, {
+        os: 'windows',
+        appUrl: WINDOWS_STORE_PROTOCOL_URL,
+        webUrl: WINDOWS_STORE_URL,
+      });
     }
   };
 
@@ -95,8 +117,13 @@ const DownloadButton = ({
     setIsOpen(false);
   };
 
-  const handleAppStoreClick = () => {
+  const handleAppStoreClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     trackDownloadClick({ os: 'mac', source, manual: true, channel: 'mac-app-store' });
+    handleStoreLinkClick(event, {
+      os: 'mac',
+      appUrl: APP_STORE_PROTOCOL_URL,
+      webUrl: APP_STORE_URL,
+    });
     setIsOpen(false);
   };
 
@@ -126,9 +153,12 @@ const DownloadButton = ({
           key='app-store'
           role='menuitem'
           className={styles.Menu__Item}
-          href={APP_STORE_URL}
+          href={appStoreHref}
           target='_blank'
           rel='noopener noreferrer'
+          data-store-os='mac'
+          data-store-app-url={APP_STORE_PROTOCOL_URL}
+          data-store-web-url={APP_STORE_URL}
           onClick={handleAppStoreClick}
         >
           <span className={`${styles.Menu__Icon} ${styles.Menu__Icon_appStore}`}>
@@ -145,9 +175,12 @@ const DownloadButton = ({
           key='app-store'
           role='menuitem'
           className={styles.Menu__Item}
-          href={APP_STORE_URL}
+          href={appStoreHref}
           target='_blank'
           rel='noopener noreferrer'
+          data-store-os='mac'
+          data-store-app-url={APP_STORE_PROTOCOL_URL}
+          data-store-web-url={APP_STORE_URL}
           onClick={handleAppStoreClick}
         >
           <span className={`${styles.Menu__Icon} ${styles.Menu__Icon_appStore}`}>
@@ -195,9 +228,12 @@ const DownloadButton = ({
     >
       <a
         className={[styles.Main, !showDropdown ? styles.Main_single : ''].filter(Boolean).join(' ')}
-        href={downloadUrl}
+        href={primaryHref}
         target='_blank'
         rel='noopener noreferrer'
+        data-store-os={downloadOS === 'windows' ? 'windows' : undefined}
+        data-store-app-url={downloadOS === 'windows' ? WINDOWS_STORE_PROTOCOL_URL : undefined}
+        data-store-web-url={downloadOS === 'windows' ? WINDOWS_STORE_URL : undefined}
         onClick={handlePrimaryClick}
       >
         <DownloadIcon />

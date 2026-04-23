@@ -255,7 +255,9 @@ const breadcrumbItems = [
     </div>
   </article>
 
-  <script is:inline>
+  <script>
+    import { bindStoreLink, bindStoreLinks } from '@/utils/storeLinks';
+
     (() => {
       const detectDownloadOS = () => {
         try {
@@ -296,6 +298,15 @@ const breadcrumbItems = [
               os === 'windows'
                 ? link.dataset.hrefWindows || link.href
                 : link.dataset.hrefMac || link.href;
+
+            if (os === 'windows' && link.dataset.storeAppUrlWindows) {
+              link.dataset.storeOs = 'windows';
+              link.dataset.storeAppUrl = link.dataset.storeAppUrlWindows;
+              bindStoreLink(link);
+            } else {
+              delete link.dataset.storeOs;
+              delete link.dataset.storeAppUrl;
+            }
           }
 
           const hint = root.querySelector('[data-blog-cta-hint]');
@@ -317,6 +328,8 @@ const breadcrumbItems = [
             windowsIcon.hidden = os !== 'windows';
           }
         });
+
+      bindStoreLinks();
     })();
   </script>
 </BaseLayout>
