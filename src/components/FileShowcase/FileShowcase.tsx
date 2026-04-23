@@ -173,7 +173,6 @@ const FileShowcase = ({ slides: customSlides }: FileShowcaseProps = {}) => {
     >
       <div key={currentSlide} className={styles.FileShowcase__Grid}>
         {slides[currentSlide].files.map((file, i) => {
-          const isPriority = currentSlide === 0 && file.type === "image";
           const itemStyle = {
             "--item-delay": `${i * 80}ms`,
           } as CSSProperties;
@@ -192,13 +191,12 @@ const FileShowcase = ({ slides: customSlides }: FileShowcaseProps = {}) => {
                   />
                   <img
                     src={file.img}
-                    alt={file.after}
+                    alt=""
                     className={styles.FileItem__Image}
                     width={64}
                     height={64}
-                    loading={isPriority ? "eager" : "lazy"}
+                    loading="eager"
                     decoding="async"
-                    fetchPriority={isPriority ? "high" : "auto"}
                   />
                 </picture>
               ) : (

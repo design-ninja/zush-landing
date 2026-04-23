@@ -1,7 +1,7 @@
 @use 'src/styles/mixins' as *;
 
 .TrustSignals {
-  padding: 2.2rem 0 0.8rem;
+  padding: 2.2rem 0 3.2rem;
 }
 
 .TrustSignals__Container {
@@ -29,6 +29,8 @@
 }
 
 .TrustCard {
+  display: flex;
+  flex-direction: column;
   border: 1px solid var(--border);
   border-radius: 1rem;
   padding: 1.15rem 1.2rem;
@@ -45,7 +47,7 @@
   }
 
   p {
-    margin: 0 0 0.7rem;
+    margin: 0 0 0.9rem;
     line-height: 1.55;
     color: var(--muted-foreground);
   }
@@ -54,10 +56,16 @@
     display: flex;
     gap: 0.6rem;
     flex-wrap: wrap;
+    margin-top: auto;
   }
 
   &__Link {
     color: var(--primary);
     font-weight: 500;
+    margin-top: auto;
+  }
+
+  &__Links &__Link {
+    margin-top: 0;
   }
 }

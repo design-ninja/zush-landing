@@ -4,26 +4,41 @@ import { buildSoftwareApplicationJsonLd } from '@/utils/jsonLd';
 const AutoRenameFiles = () => (
   <FeatureLandingPage
     h1="Auto Rename Files on Mac"
+    h1Accent="Auto Rename"
     category="general"
     definitionTitle="What Is Automatic File Renaming?"
     definitionText="Set up watched folders and let Zush rename new screenshots, downloads, PDFs, and documents automatically as files arrive on your Mac."
-    showcaseSlides={[{
-      files: [
-        { before: 'Screenshot 2026-03-20.png', after: 'Figma Login Screen.png', img: '/images/examples/dashboard.jpg', type: 'image' },
-        { before: 'IMG_5523.HEIC', after: 'Whiteboard Sprint Plan.heic', img: '/images/examples/workspace.jpg', type: 'image' },
-        { before: 'download.pdf', after: 'Amazon Order Receipt.pdf', type: 'pdf' },
-        { before: 'Photo-2026-03-18.jpg', after: 'Restaurant Menu Italian.jpg', img: '/images/examples/food.jpg', type: 'image' },
-        { before: 'Scan 12.pdf', after: 'Medical Lab Results.pdf', type: 'pdf' },
-        { before: 'report_draft.docx', after: 'Weekly Status Report.docx', type: 'doc' },
-      ],
-    }]}
-    comparisonRows={[
-      { tool: 'Zush', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: '$10 one-time / 10,000 renames' },
-      { tool: 'Renamer.ai', platform: 'Mac & Windows', freeTier: '15/m', batchRename: true, autoMonitor: true, pricing: 'From $9.95/mo (200 renames)' },
-      { tool: 'AI Renamer', platform: 'Mac & Windows', freeTier: '10', batchRename: true, autoMonitor: false, pricing: '$19 one-time or $10/200 renames' },
-      { tool: 'NameQuick', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: 'From $5/mo (500 renames) or $38 BYOK' },
-      { tool: 'RenameClick', platform: 'Mac & Windows', freeTier: '30/m', batchRename: true, autoMonitor: true, pricing: '$48 lifetime or $8/mo' },
-      { tool: 'Riffo', platform: 'macOS', freeTier: 'Limited', batchRename: true, autoMonitor: false, pricing: 'Freemium' },
+    showcaseSlides={[
+      {
+        files: [
+          { before: 'Screenshot 2026-03-20.png', after: 'Figma Login Screen.png', img: '/images/examples/dashboard.jpg', type: 'image' },
+          { before: 'IMG_5523.HEIC', after: 'Whiteboard Sprint Plan.heic', img: '/images/examples/workspace.jpg', type: 'image' },
+          { before: 'download.pdf', after: 'Amazon Order Receipt.pdf', type: 'pdf' },
+          { before: 'Photo-2026-03-18.jpg', after: 'Italian Restaurant Menu.jpg', img: '/images/examples/food.jpg', type: 'image' },
+          { before: 'report_draft.docx', after: 'Weekly Status Report.docx', type: 'doc' },
+          { before: 'budget_v2.xlsx', after: 'Q2 Marketing Budget.xlsx', type: 'sheet' },
+        ],
+      },
+      {
+        files: [
+          { before: 'download (7).pdf', after: 'IRS W-9 Form Signed.pdf', type: 'pdf' },
+          { before: 'CAM00847.jpg', after: 'Black Ford Mustang.jpg', img: '/images/examples/car.jpg', type: 'image' },
+          { before: 'meeting_notes.docx', after: 'Q1 Board Meeting Notes.docx', type: 'doc' },
+          { before: 'Screenshot 2026-02-18.png', after: 'Architecture Flow Diagram.png', img: '/images/examples/diagram.jpg', type: 'image' },
+          { before: 'forecast_export.xlsx', after: 'Revenue Forecast 2026.xlsx', type: 'sheet' },
+          { before: 'launch_deck_v4.pptx', after: 'Product Launch Keynote.pptx', type: 'slides' },
+        ],
+      },
+      {
+        files: [
+          { before: 'PXL_20240720.jpg', after: 'Yellow Wildflowers Field.jpg', img: '/images/examples/flowers.jpg', type: 'image' },
+          { before: 'scan_001.pdf', after: 'Medical Lab Results.pdf', type: 'pdf' },
+          { before: 'sales_data.xlsx', after: 'Sales Pipeline March.xlsx', type: 'sheet' },
+          { before: 'IMG_5523.HEIC', after: 'Golden Retriever At Park.heic', img: '/images/examples/dog.jpg', type: 'image' },
+          { before: 'contract_clean.docx', after: 'Vendor NDA Final.docx', type: 'doc' },
+          { before: 'board_review.pptx', after: 'Q1 Board Deck.pptx', type: 'slides' },
+        ],
+      },
     ]}
     faqItems={[
       {

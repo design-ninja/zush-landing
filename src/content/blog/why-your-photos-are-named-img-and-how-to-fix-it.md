@@ -1,5 +1,5 @@
 ---
-title: "Why iPhone Photos Are Named IMG_ (and How to Rename Them on Mac)"
+title: "Why iPhone Photos Are Named IMG_ (Fix It on Mac, 2026)"
 description: "IMG_4382.HEIC tells you nothing. Here's why iPhones and cameras use IMG_ filenames — and three ways to replace them with descriptive, searchable names on Mac."
 date: "2026-02-22"
 slug: "why-your-photos-are-named-img-and-how-to-fix-it"
@@ -49,7 +49,7 @@ You need two things:
 1. A naming convention that is descriptive enough to be searchable
 2. A workflow that does not require typing every filename by hand
 
-For a small folder, manual renaming is fine. For a large image library, that breaks down immediately. That is where AI-assisted naming becomes practical. [Zush](https://zushapp.com) can analyze image content and generate filenames that describe what each photo actually shows, then apply a consistent pattern across the batch.
+For a small folder, manual renaming is fine. For a large image library, that breaks down immediately. That is where AI-assisted naming becomes practical. [Zush batch rename on Mac](/batch-rename-files) can analyze image content and generate filenames that describe what each photo actually shows, then apply a consistent pattern across the batch.
 
 For the full workflow, see [How to Rename Images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos).
 

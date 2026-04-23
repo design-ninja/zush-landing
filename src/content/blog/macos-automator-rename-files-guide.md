@@ -10,7 +10,7 @@ reviewed: "2026-04-09"
 
 Automator can rename files automatically on macOS without writing code. It is a good option when you need the same predictable rename rule every time, such as adding a date prefix, replacing text, or numbering files in order.
 
-Where Automator falls short is content awareness. It cannot tell whether a file is a screenshot of Stripe settings or a beach photo from your iPhone. If that is your problem, [Zush](https://zushapp.com) is the more practical tool because it uses AI to generate descriptive names from image content.
+Where Automator falls short is content awareness. It cannot tell whether a file is a screenshot of Stripe settings or a beach photo from your iPhone. If that is your problem, [Zush AI batch rename on Mac](/batch-rename-files) is the more practical tool because it uses AI to generate descriptive names from image content.
 
 
 ## When Automator is a good fit

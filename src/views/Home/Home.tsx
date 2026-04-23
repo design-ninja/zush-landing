@@ -1,6 +1,5 @@
 import Hero from '@/components/Hero';
 import Videos from '@/components/Videos';
-import Features from '@/components/Features';
 import SupportedFormats from '@/components/SupportedFormats';
 import UseCases from '@/components/UseCases';
 import Pricing from '@/components/Pricing';
@@ -12,7 +11,6 @@ const Home = () => (
   <>
     <Hero />
     <Videos autoplayWhenInView />
-    <Features />
     <SupportedFormats />
     <DownloadCTA />
     <WhyZush />

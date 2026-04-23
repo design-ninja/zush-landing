@@ -92,26 +92,41 @@ const jsonLd = {
 const RenameDocumentsWithAI = () => (
   <FeatureLandingPage
     h1="Rename Documents with AI on Mac"
+    h1Accent="Rename Documents"
     category="document"
     definitionTitle="What Is AI Document Renaming?"
     definitionText="Rename documents with AI on Mac using Zush to read reports, proposals, spreadsheets, slide decks, and email exports, then generate filenames that match the document content."
-    showcaseSlides={[{
-      files: [
-        { before: 'Document1.docx', after: 'Project Proposal Acme.docx', type: 'doc' },
-        { before: 'Untitled spreadsheet.xlsx', after: 'Employee Payroll Feb.xlsx', type: 'sheet' },
-        { before: 'presentation_final_v3.pptx', after: 'Marketing Strategy Q2.pptx', type: 'slides' },
-        { before: 'note.txt', after: 'Meeting Notes Roadmap.txt', type: 'doc' },
-        { before: 'exports.csv', after: 'March Sales Pipeline.csv', type: 'sheet' },
-        { before: 'inbox-export.eml', after: 'Vendor Renewal Thread.eml', type: 'doc' },
-      ],
-    }]}
-    comparisonRows={[
-      { tool: 'Zush', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: '$10 one-time / 10,000 renames' },
-      { tool: 'Renamer.ai', platform: 'Mac & Windows', freeTier: '15/m', batchRename: true, autoMonitor: true, pricing: 'From $9.95/mo (200 renames)' },
-      { tool: 'AI Renamer', platform: 'Mac & Windows', freeTier: '10', batchRename: true, autoMonitor: false, pricing: '$19 one-time or $10/200 renames' },
-      { tool: 'NameQuick', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: 'From $5/mo (500 renames) or $38 BYOK' },
-      { tool: 'RenameClick', platform: 'Mac & Windows', freeTier: '30/m', batchRename: true, autoMonitor: true, pricing: '$48 lifetime or $8/mo' },
-      { tool: 'Riffo', platform: 'macOS', freeTier: 'Limited', batchRename: true, autoMonitor: false, pricing: 'Freemium' },
+    showcaseSlides={[
+      {
+        files: [
+          { before: 'Document1.docx', after: 'Project Proposal Acme.docx', type: 'doc' },
+          { before: 'Untitled spreadsheet.xlsx', after: 'Employee Payroll Feb.xlsx', type: 'sheet' },
+          { before: 'presentation_final_v3.pptx', after: 'Marketing Strategy Q2.pptx', type: 'slides' },
+          { before: 'note.txt', after: 'Meeting Notes Roadmap.txt', type: 'doc' },
+          { before: 'exports.csv', after: 'March Sales Pipeline.csv', type: 'sheet' },
+          { before: 'inbox-export.eml', after: 'Vendor Renewal Thread.eml', type: 'doc' },
+        ],
+      },
+      {
+        files: [
+          { before: 'meeting_notes.docx', after: 'Q1 Board Meeting Notes.docx', type: 'doc' },
+          { before: 'budget_v2.xlsx', after: 'Q2 Marketing Budget.xlsx', type: 'sheet' },
+          { before: 'deck_v12_final.pptx', after: 'Series A Pitch Deck.pptx', type: 'slides' },
+          { before: 'readme.md', after: 'API Integration Guide.md', type: 'doc' },
+          { before: 'data_export.csv', after: 'Customer Signup Log.csv', type: 'sheet' },
+          { before: 'contract_clean.docx', after: 'Vendor NDA Final.docx', type: 'doc' },
+        ],
+      },
+      {
+        files: [
+          { before: 'policy_draft.docx', after: 'HR Policy Update.docx', type: 'doc' },
+          { before: 'forecast_export.xlsx', after: 'Revenue Forecast 2026.xlsx', type: 'sheet' },
+          { before: 'board_review.pptx', after: 'Q1 Board Deck.pptx', type: 'slides' },
+          { before: 'transcript.txt', after: 'Interview Transcript Raw.txt', type: 'doc' },
+          { before: 'metrics.json', after: 'User Analytics Export.json', type: 'doc' },
+          { before: 'sales-kickoff.pptx', after: 'Sales Kickoff Slides.pptx', type: 'slides' },
+        ],
+      },
     ]}
     faqItems={faqItems}
     relatedPages={[

@@ -269,7 +269,9 @@ const BlogPost = ({ slug }: BlogPostProps) => {
                           {lightPoster ? (
                             <img
                               src={lightPoster}
-                              alt={videoLabel}
+                              alt=''
+                              width={1280}
+                              height={720}
                               loading='lazy'
                               decoding='async'
                               className='markdown-video-poster markdown-video-poster--light'
@@ -294,7 +296,9 @@ const BlogPost = ({ slug }: BlogPostProps) => {
                           {darkPoster ? (
                             <img
                               src={darkPoster}
-                              alt={videoLabel}
+                              alt=''
+                              width={1280}
+                              height={720}
                               loading='lazy'
                               decoding='async'
                               className='markdown-video-poster markdown-video-poster--dark'
@@ -321,6 +325,8 @@ const BlogPost = ({ slug }: BlogPostProps) => {
                         <img
                           src={src}
                           alt={alt || ''}
+                          width={1664}
+                          height={1528}
                           loading='lazy'
                           decoding='async'
                           className='markdown-image markdown-image--screenshot markdown-image--light'
@@ -329,6 +335,8 @@ const BlogPost = ({ slug }: BlogPostProps) => {
                         <img
                           src={darkSrc}
                           alt={alt || ''}
+                          width={1664}
+                          height={1528}
                           loading='lazy'
                           decoding='async'
                           className='markdown-image markdown-image--screenshot markdown-image--dark'

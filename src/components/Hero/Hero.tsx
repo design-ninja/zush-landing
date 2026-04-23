@@ -13,6 +13,7 @@ const MobileDownloadModal = lazy(() => import("../MobileDownloadModal"));
 
 interface HeroProps {
   title?: ReactNode;
+  titleAccent?: string;
   subtitle?: string;
   slides?: Slide[];
   as?: "section" | "header";
@@ -21,6 +22,7 @@ interface HeroProps {
 
 const Hero = ({
   title,
+  titleAccent,
   subtitle,
   slides,
   as: Tag = "section",
@@ -51,7 +53,16 @@ const Hero = ({
       <div className={styles.Hero__Container}>
         <div className={styles.Hero__Intro}>
           <Heading as="h1" className={styles.Hero__Title}>
-            {title ?? (
+            {title ? (
+              typeof title === "string" && titleAccent && title.startsWith(titleAccent) ? (
+                <>
+                  <span className={styles.Hero__TitleAccent}>{titleAccent}</span>
+                  {title.slice(titleAccent.length)}
+                </>
+              ) : (
+                title
+              )
+            ) : (
               <>
                 Rename Files with AI.
                 <br />

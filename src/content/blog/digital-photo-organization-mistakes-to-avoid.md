@@ -1,5 +1,5 @@
 ---
-title: "10 Digital Photo Organization Mistakes You're Probably Making"
+title: "10 Digital Photo Organization Mistakes to Avoid (2026)"
 description: "Avoid the most common photo organization mistakes that create clutter, duplicates, and hard-to-find image libraries."
 date: "2026-02-09"
 slug: "digital-photo-organization-mistakes-to-avoid"

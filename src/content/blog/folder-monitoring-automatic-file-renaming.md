@@ -1,5 +1,5 @@
 ---
-title: "Folder Monitoring for Automatic File Renaming: Set It and Forget It"
+title: "Folder Monitoring for Auto File Renaming on Mac (2026)"
 description: "Learn how folder monitoring automates file renaming on Mac. Set up real-time rename workflows for Downloads, Desktop, and screenshots with Zush."
 date: "2026-03-23"
 slug: "folder-monitoring-automatic-file-renaming"

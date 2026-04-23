@@ -1,6 +1,6 @@
 ---
-title: "Automate File Organization on macOS: 5 Tools That Work Together (2026)"
-description: "Stop sorting files by hand. Smart Folders, Hazel, Automator, Shortcuts and AI renaming combined into one Mac workflow — setup, trade-offs and a decision table."
+title: "Automate File Organization on macOS in 2026: 5-Tool Workflow"
+description: "Stop sorting files by hand. Smart Folders, Hazel, Automator, Shortcuts and AI renaming combined into one Mac workflow — setup and a decision table."
 date: "2026-02-25"
 slug: "automate-file-organization-macos"
 tags: "automate file organization mac, automatic file sorting mac, file automation macOS, mac productivity, folder monitoring"
@@ -337,7 +337,7 @@ After a week of running this setup, look at what is still falling through the cr
 | One-click file processing | Shortcuts | Clean UI, easy to share |
 | Complex multi-condition routing | Hazel | Most powerful rule engine on macOS |
 
-For a detailed comparison of batch renaming methods specifically, see our [batch rename files on Mac guide](/blog/batch-rename-files-on-mac-complete-guide).
+For a detailed comparison of batch renaming methods specifically, see our [batch rename files on Mac guide](/blog/batch-rename-files-on-mac-complete-guide). If you already know you need AI-powered unique names (not shared prefixes), the [batch rename tool on Mac](/batch-rename-files) is the shortest path — 50 free renames, no signup.
 
 ## Common mistakes to avoid
 

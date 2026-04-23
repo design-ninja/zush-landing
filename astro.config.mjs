@@ -7,6 +7,9 @@ export default defineConfig({
   site: 'https://zushapp.com',
   output: 'static',
   trailingSlash: 'never',
+  redirects: {
+    '/bulk-rename-files': { status: 301, destination: '/batch-rename-files' },
+  },
   integrations: [react()],
   adapter: vercel(),
   vite: {

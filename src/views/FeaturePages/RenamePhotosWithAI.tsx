@@ -92,26 +92,41 @@ const jsonLd = {
 const RenamePhotosWithAI = () => (
   <FeatureLandingPage
     h1="Rename Photos with AI on Mac"
+    h1Accent="Rename Photos"
     category="photo"
     definitionTitle="What Is AI Photo Renaming?"
     definitionText="Rename photos with AI on Mac using Zush to replace IMG_, HEIC, and RAW camera filenames with searchable descriptions of the actual photo."
-    showcaseSlides={[{
-      files: [
-        { before: 'IMG_2847.HEIC', after: 'Birthday Cake Dinner.heic', img: '/images/examples/food.jpg', type: 'image' },
-        { before: '_DSC3921.ARW', after: 'Mountain Sunrise Fog.arw', img: '/images/examples/mountain.jpg', type: 'image' },
-        { before: 'DSCF0445.RAF', after: 'Street Market Spices.raf', img: '/images/examples/city.jpg', type: 'image' },
-        { before: 'P1080127.JPG', after: 'Wedding First Kiss.jpg', img: '/images/examples/flowers.jpg', type: 'image' },
-        { before: 'IMG_0023.CR3', after: 'Golden Retriever Autumn.cr3', img: '/images/examples/dog.jpg', type: 'image' },
-        { before: 'DSC_7102.NEF', after: 'Sunset Over Harbor.nef', img: '/images/examples/sunset.jpg', type: 'image' },
-      ],
-    }]}
-    comparisonRows={[
-      { tool: 'Zush', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: '$10 one-time / 10,000 renames' },
-      { tool: 'Renamer.ai', platform: 'Mac & Windows', freeTier: '15/m', batchRename: true, autoMonitor: true, pricing: 'From $9.95/mo (200 renames)' },
-      { tool: 'AI Renamer', platform: 'Mac & Windows', freeTier: '10', batchRename: true, autoMonitor: false, pricing: '$19 one-time or $10/200 renames' },
-      { tool: 'NameQuick', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: 'From $5/mo (500 renames) or $38 BYOK' },
-      { tool: 'RenameClick', platform: 'Mac & Windows', freeTier: '30/m', batchRename: true, autoMonitor: true, pricing: '$48 lifetime or $8/mo' },
-      { tool: 'Riffo', platform: 'macOS', freeTier: 'Limited', batchRename: true, autoMonitor: false, pricing: 'Freemium' },
+    showcaseSlides={[
+      {
+        files: [
+          { before: 'IMG_2847.HEIC', after: 'Birthday Cake Dinner.heic', img: '/images/examples/food.jpg', type: 'image' },
+          { before: '_DSC3921.ARW', after: 'Mountain Sunrise Fog.arw', img: '/images/examples/mountain.jpg', type: 'image' },
+          { before: 'DSCF0445.RAF', after: 'Tokyo Night Skyline.raf', img: '/images/examples/city.jpg', type: 'image' },
+          { before: 'P1080127.JPG', after: 'Yellow Wildflowers Field.jpg', img: '/images/examples/flowers.jpg', type: 'image' },
+          { before: 'IMG_0023.CR3', after: 'Golden Retriever Autumn.cr3', img: '/images/examples/dog.jpg', type: 'image' },
+          { before: 'DSC_7102.NEF', after: 'Sunset Over Harbor.nef', img: '/images/examples/sunset.jpg', type: 'image' },
+        ],
+      },
+      {
+        files: [
+          { before: 'IMG_4201.HEIC', after: 'Sagrada Familia Evening.heic', img: '/images/examples/sagrada.jpg', type: 'image' },
+          { before: 'DSC_0488.jpg', after: 'Spanish Tapas Plate.jpg', img: '/images/examples/tapas.jpg', type: 'image' },
+          { before: 'CAM00847.jpg', after: 'Black Ford Mustang.jpg', img: '/images/examples/car.jpg', type: 'image' },
+          { before: 'IMG_5523.HEIC', after: 'Pug Puppy Portrait.heic', img: '/images/examples/pug.jpg', type: 'image' },
+          { before: '_DSC0192.NEF', after: 'Coffee Mug On Linen.nef', img: '/images/examples/coffee.jpg', type: 'image' },
+          { before: 'P1080992.JPG', after: 'Forest Waterfall Scene.jpg', img: '/images/examples/nature.jpg', type: 'image' },
+        ],
+      },
+      {
+        files: [
+          { before: 'IMG_0842.jpg', after: 'Persian Cat Napping.jpg', img: '/images/examples/cat.jpg', type: 'image' },
+          { before: 'DCIM_0104.jpg', after: 'Park Guell Colonnade.jpg', img: '/images/examples/parkguell.jpg', type: 'image' },
+          { before: 'IMG_3039.HEIC', after: 'Modern Building Facade.heic', img: '/images/examples/building.jpg', type: 'image' },
+          { before: '_DSC7721.ARW', after: 'Home Office Workspace.arw', img: '/images/examples/office.jpg', type: 'image' },
+          { before: 'CAM00233.HEIC', after: 'Italian Restaurant Menu.heic', img: '/images/examples/food.jpg', type: 'image' },
+          { before: 'DSCF2210.RAF', after: 'Designer Workspace Setup.raf', img: '/images/examples/workspace.jpg', type: 'image' },
+        ],
+      },
     ]}
     faqItems={faqItems}
     relatedPages={[

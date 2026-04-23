@@ -10,7 +10,7 @@ reviewed: "2026-04-09"
 
 A solid file naming convention saves time every time you search, sort, or share a file. The best convention is not the cleverest one. It is the one you can apply consistently across real work.
 
-For most people, that means descriptive lowercase names, hyphens or underscores, ISO dates when dates matter, and version numbers instead of vague labels. If your hardest files are images, screenshots, PDFs, or documents, [Zush](https://zushapp.com) can automate the naming step so the convention is easier to maintain.
+For most people, that means descriptive lowercase names, hyphens or underscores, ISO dates when dates matter, and version numbers instead of vague labels. If your hardest files are images, screenshots, PDFs, or documents, [Zush AI file renamer for Mac](/ai-file-renamer) can automate the naming step so the convention is easier to maintain.
 
 
 ## The rules that work almost everywhere

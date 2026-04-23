@@ -1,6 +1,6 @@
 ---
-title: "How to Choose an AI Renamer for Mac: Buyer's Guide by File Type"
-description: "A buyer's guide to choosing the right AI renamer for Mac based on file types, automation needs, and whether you need one tool for screenshots, PDFs, documents, and photos."
+title: "How to Choose an AI Renamer for Mac: Buyer's Guide 2026"
+description: "Pick the right AI renamer for Mac by file type. Screenshots, PDFs, documents, photos and automation needs compared — what to buy and why."
 date: "2026-03-12"
 slug: "ai-renamer-mac"
 canonical: "/ai-file-renamer"

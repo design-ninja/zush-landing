@@ -1,5 +1,5 @@
 ---
-title: "What Is an AI Image Renamer? How It Works and When You Need One"
+title: "What Is an AI Image Renamer? How It Works (Mac, 2026)"
 description: "Understand what an AI image renamer does, how it analyzes visual content to generate filenames, and when automated image renaming makes sense for your workflow."
 date: "2026-03-12"
 slug: "ai-image-renamer-for-mac"

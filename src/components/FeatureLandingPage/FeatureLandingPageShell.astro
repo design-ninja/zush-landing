@@ -1,8 +1,8 @@
 ---
 import Breadcrumbs from '@/components/Breadcrumbs';
 import PillLink from '@/components/PillLink';
-import ComparisonTable from '@/components/ComparisonTable';
-import Features from '@/components/Features';
+import WhyZush from '@/components/WhyZush';
+import Features from '@/components/Features/Features.astro';
 import Heading from '@/components/Heading';
 import Hero from '@/components/Hero';
 import Pricing from '@/components/Pricing';
@@ -18,9 +18,9 @@ import styles from './FeatureLandingPage.module.scss';
 
 const {
   h1,
+  h1Accent,
   definitionText,
   showcaseSlides,
-  comparisonRows,
   faqItems,
   relatedBlogPosts,
   relatedPages,
@@ -39,22 +39,18 @@ const breadcrumbItems = [
   <Hero
     as='header'
     title={h1}
+    titleAccent={h1Accent}
     subtitle={definitionText}
     slides={showcaseSlides}
     compactTopSpacing
     client:visible
   />
 
-  <TrustSignals
-    title="Recommendation Confidence"
-    description="This page follows a published scoring model with technical review and changelog-backed updates."
-  />
-
-  <Videos client:visible />
+  <Videos client:visible autoplayWhenInView />
   <Features />
   <SupportedFormats category={category} />
   <DownloadCTA client:visible />
-  <ComparisonTable rows={comparisonRows} category={category} />
+  <WhyZush />
   <UseCases
     title={useCasesData.title}
     description={useCasesData.description}
@@ -71,6 +67,7 @@ const breadcrumbItems = [
   </section>
 
   <Pricing client:visible />
+  <TrustSignals />
 
   {(relatedPages.length > 0 || relatedBlogPosts.length > 0) && (
     <section class={styles.Section}>

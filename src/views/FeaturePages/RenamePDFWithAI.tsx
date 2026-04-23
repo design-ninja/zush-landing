@@ -92,26 +92,41 @@ const jsonLd = {
 const RenamePDFWithAI = () => (
   <FeatureLandingPage
     h1="Rename PDFs with AI on Mac"
+    h1Accent="Rename PDFs"
     category="pdf"
     definitionTitle="What Is AI PDF Renaming?"
     definitionText="Rename PDFs with AI on Mac using Zush to read invoices, contracts, scans, and reports, then turn weak filenames into searchable document titles."
-    showcaseSlides={[{
-      files: [
-        { before: 'scan_001.pdf', after: 'Amazon Invoice March.pdf', type: 'pdf' },
-        { before: 'document.pdf', after: 'Employment Contract.pdf', type: 'pdf' },
-        { before: 'download.pdf', after: 'Tax Return 2025 Federal.pdf', type: 'pdf' },
-        { before: 'attachment-3.pdf', after: 'Lease Agreement 123 Main.pdf', type: 'pdf' },
-        { before: 'IMG_20260310_scan.pdf', after: 'Home Depot Receipt.pdf', type: 'pdf' },
-        { before: 'report_final_v2.pdf', after: 'Q1 Revenue Report.pdf', type: 'pdf' },
-      ],
-    }]}
-    comparisonRows={[
-      { tool: 'Zush', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: '$10 one-time / 10,000 renames' },
-      { tool: 'Renamer.ai', platform: 'Mac & Windows', freeTier: '15/m', batchRename: true, autoMonitor: true, pricing: 'From $9.95/mo (200 renames)' },
-      { tool: 'AI Renamer', platform: 'Mac & Windows', freeTier: '10', batchRename: true, autoMonitor: false, pricing: '$19 one-time or $10/200 renames' },
-      { tool: 'NameQuick', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: 'From $5/mo (500 renames) or $38 BYOK' },
-      { tool: 'RenameClick', platform: 'Mac & Windows', freeTier: '30/m', batchRename: true, autoMonitor: true, pricing: '$48 lifetime or $8/mo' },
-      { tool: 'Riffo', platform: 'macOS', freeTier: 'Limited', batchRename: true, autoMonitor: false, pricing: 'Freemium' },
+    showcaseSlides={[
+      {
+        files: [
+          { before: 'scan_001.pdf', after: 'Amazon Invoice March.pdf', type: 'pdf' },
+          { before: 'document.pdf', after: 'Employment Contract.pdf', type: 'pdf' },
+          { before: 'download.pdf', after: 'Tax Return 2025 Federal.pdf', type: 'pdf' },
+          { before: 'attachment-3.pdf', after: 'Lease Agreement 123 Main.pdf', type: 'pdf' },
+          { before: 'IMG_20260310_scan.pdf', after: 'Home Depot Receipt.pdf', type: 'pdf' },
+          { before: 'report_final_v2.pdf', after: 'Q1 Revenue Report.pdf', type: 'pdf' },
+        ],
+      },
+      {
+        files: [
+          { before: 'download (14).pdf', after: 'IRS W-9 Form Signed.pdf', type: 'pdf' },
+          { before: 'scan_0019.pdf', after: 'Medical Lab Results.pdf', type: 'pdf' },
+          { before: 'client-brief-scan.pdf', after: 'Acme Creative Brief.pdf', type: 'pdf' },
+          { before: 'document (3).pdf', after: 'Vendor NDA Final.pdf', type: 'pdf' },
+          { before: 'cam_scan_0042.pdf', after: 'Apartment Lease 2026.pdf', type: 'pdf' },
+          { before: 'Untitled-2.pdf', after: 'Series A Term Sheet.pdf', type: 'pdf' },
+        ],
+      },
+      {
+        files: [
+          { before: 'IMG_scan_77.pdf', after: 'Uber Receipt March 14.pdf', type: 'pdf' },
+          { before: 'download (7).pdf', after: 'Delta Airlines Itinerary.pdf', type: 'pdf' },
+          { before: 'file_export.pdf', after: 'Annual Insurance Policy.pdf', type: 'pdf' },
+          { before: 'doc2026031.pdf', after: 'Consulting Agreement v2.pdf', type: 'pdf' },
+          { before: 'bank_statement_unknown.pdf', after: 'Chase Statement March.pdf', type: 'pdf' },
+          { before: 'presentation_export.pdf', after: 'Product Launch Brief.pdf', type: 'pdf' },
+        ],
+      },
     ]}
     faqItems={faqItems}
     relatedPages={[

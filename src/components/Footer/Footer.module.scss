@@ -11,8 +11,8 @@
 
     &__Grid {
         display: grid;
-        grid-template-columns: 1.5fr 1fr 1fr 1fr;
-        gap: 3rem;
+        grid-template-columns: 1.4fr repeat(4, 1fr);
+        gap: 2.5rem;
         margin-bottom: 6rem;
 
         @include mobile {

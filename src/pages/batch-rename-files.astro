@@ -1,0 +1,15 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import FeatureLandingPageShell from '@/components/FeatureLandingPage/FeatureLandingPageShell.astro';
+import { getFeaturePageProps } from '@/utils/featurePageProps';
+import BatchRenameFilesView from '@/views/FeaturePages/BatchRenameFiles';
+import { getSeoForPath } from '@/seo/config';
+import { buildFeatureBreadcrumbJsonLd } from '@/utils/jsonLd';
+
+const seo = getSeoForPath('/batch-rename-files');
+const featurePage = getFeaturePageProps(BatchRenameFilesView);
+---
+
+<BaseLayout seo={seo} jsonLd={[featurePage.jsonLd, buildFeatureBreadcrumbJsonLd(featurePage.h1, '/batch-rename-files')]}>
+  <FeatureLandingPageShell {...featurePage} />
+</BaseLayout>

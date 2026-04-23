@@ -4,26 +4,41 @@ import { buildSoftwareApplicationJsonLd } from '@/utils/jsonLd';
 const AIFileRenamer = () => (
   <FeatureLandingPage
     h1="AI File Renamer for Mac"
+    h1Accent="AI File Renamer"
     category="general"
     definitionTitle="What Is an AI File Renamer?"
     definitionText="Zush is the AI file renamer for Mac when you need one workflow for screenshots, PDFs, documents, and photos with descriptive names, batch control, and rollback."
-    showcaseSlides={[{
-      files: [
-        { before: 'IMG_2087.PNG', after: 'Summer Campaign Mockup.png', img: '/images/examples/sunset.jpg', type: 'image' },
-        { before: 'final_presentation.pptx', after: 'Series A Pitch Deck.pptx', type: 'slides' },
-        { before: 'download (7).pdf', after: 'IRS W-9 Form Signed.pdf', type: 'pdf' },
-        { before: 'DCIM_20260301.jpg', after: 'Team Offsite Photo.jpg', img: '/images/examples/building.jpg', type: 'image' },
-        { before: 'budget_v3.xlsx', after: 'Q1 Product Budget.xlsx', type: 'sheet' },
-        { before: 'meeting_notes.docx', after: 'Roadmap Discussion Notes.docx', type: 'doc' },
-      ],
-    }]}
-    comparisonRows={[
-      { tool: 'Zush', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: '$10 one-time / 10,000 renames' },
-      { tool: 'Renamer.ai', platform: 'Mac & Windows', freeTier: '15/m', batchRename: true, autoMonitor: true, pricing: 'From $9.95/mo (200 renames)' },
-      { tool: 'AI Renamer', platform: 'Mac & Windows', freeTier: '10', batchRename: true, autoMonitor: false, pricing: '$19 one-time or $10/200 renames' },
-      { tool: 'NameQuick', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: 'From $5/mo (500 renames) or $38 BYOK' },
-      { tool: 'RenameClick', platform: 'Mac & Windows', freeTier: '30/m', batchRename: true, autoMonitor: true, pricing: '$48 lifetime or $8/mo' },
-      { tool: 'Riffo', platform: 'macOS', freeTier: 'Limited', batchRename: true, autoMonitor: false, pricing: 'Freemium' },
+    showcaseSlides={[
+      {
+        files: [
+          { before: 'IMG_2087.PNG', after: 'Summer Campaign Mockup.png', img: '/images/examples/sunset.jpg', type: 'image' },
+          { before: 'final_presentation.pptx', after: 'Series A Pitch Deck.pptx', type: 'slides' },
+          { before: 'download (7).pdf', after: 'IRS W-9 Form Signed.pdf', type: 'pdf' },
+          { before: 'DCIM_20260301.jpg', after: 'Team Offsite Group Photo.jpg', img: '/images/examples/building.jpg', type: 'image' },
+          { before: 'budget_v3.xlsx', after: 'Q1 Product Budget.xlsx', type: 'sheet' },
+          { before: 'meeting_notes.docx', after: 'Roadmap Discussion Notes.docx', type: 'doc' },
+        ],
+      },
+      {
+        files: [
+          { before: 'IMG_4203.HEIC', after: 'Alpine Hiking Trail.heic', img: '/images/examples/mountain.jpg', type: 'image' },
+          { before: 'attachment-3.pdf', after: 'Home Depot Receipt.pdf', type: 'pdf' },
+          { before: 'spreadsheet_copy.xlsx', after: 'Sales Pipeline March.xlsx', type: 'sheet' },
+          { before: 'DSC_0192.jpg', after: 'Park Guell Barcelona.jpg', img: '/images/examples/parkguell.jpg', type: 'image' },
+          { before: 'contract_clean.docx', after: 'Vendor NDA Final.docx', type: 'doc' },
+          { before: 'launch_deck_v4.pptx', after: 'Product Launch Keynote.pptx', type: 'slides' },
+        ],
+      },
+      {
+        files: [
+          { before: 'CAM_0021.jpg', after: 'Tokyo Night Skyline.jpg', img: '/images/examples/city.jpg', type: 'image' },
+          { before: 'IMG_0842.jpg', after: 'Persian Cat Napping.jpg', img: '/images/examples/cat.jpg', type: 'image' },
+          { before: 'scan_001.pdf', after: 'Medical Lab Results.pdf', type: 'pdf' },
+          { before: 'forecast_export.xlsx', after: 'Revenue Forecast 2026.xlsx', type: 'sheet' },
+          { before: 'policy_draft.docx', after: 'HR Policy Update.docx', type: 'doc' },
+          { before: 'board_review.pptx', after: 'Q1 Board Deck.pptx', type: 'slides' },
+        ],
+      },
     ]}
     faqItems={[
       {

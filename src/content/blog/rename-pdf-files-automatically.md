@@ -1,5 +1,5 @@
 ---
-title: "How to Rename PDF Files Automatically: AI Workflow for Repeating Folders"
+title: "Rename PDF Files Automatically: AI Folder Workflow (2026)"
 description: "Learn how to rename PDF files automatically with AI in repeating folders and ongoing workflows, without duplicating the dedicated PDF product page."
 date: "2026-03-23"
 slug: "rename-pdf-files-automatically"

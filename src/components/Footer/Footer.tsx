@@ -73,30 +73,33 @@ const Footer = () => {
             <ul className={styles.Footer__Links}>
               <li><AppLink href="/ai-file-renamer" className={styles.Footer__Link}>AI File Renamer</AppLink></li>
               <li><AppLink href="/ai-image-renamer" className={styles.Footer__Link}>AI Image Renamer</AppLink></li>
+              <li><AppLink href="/batch-rename-files" className={styles.Footer__Link}>Batch Rename Files</AppLink></li>
+              <li><AppLink href="/auto-rename-files" className={styles.Footer__Link}>Auto Rename Files</AppLink></li>
+            </ul>
+          </div>
+          <div>
+            <Heading as="h4" className={styles.Footer__SectionTitle}>By File Type</Heading>
+            <ul className={styles.Footer__Links}>
               <li><AppLink href="/rename-pdf-with-ai" className={styles.Footer__Link}>Rename PDFs</AppLink></li>
               <li><AppLink href="/rename-photos-with-ai" className={styles.Footer__Link}>Rename Photos</AppLink></li>
               <li><AppLink href="/rename-screenshots-with-ai" className={styles.Footer__Link}>Rename Screenshots</AppLink></li>
               <li><AppLink href="/rename-documents-with-ai" className={styles.Footer__Link}>Rename Documents</AppLink></li>
-              <li><AppLink href="/auto-rename-files" className={styles.Footer__Link}>Auto Rename Files</AppLink></li>
-              <li><AppLink href="/#pricing" className={styles.Footer__Link}>Pricing</AppLink></li>
-              <li><AppLink href="/changelog" className={styles.Footer__Link}>Changelog</AppLink></li>
-              <li><AppLink href="/blog" className={styles.Footer__Link}>Blog</AppLink></li>
             </ul>
           </div>
           <div>
-            <Heading as="h4" className={styles.Footer__SectionTitle}>Legal</Heading>
+            <Heading as="h4" className={styles.Footer__SectionTitle}>Resources</Heading>
             <ul className={styles.Footer__Links}>
-              <li><AppLink href="/terms-of-service" className={styles.Footer__Link}>Terms of Service</AppLink></li>
-              <li><AppLink href="/privacy-policy" className={styles.Footer__Link}>Privacy Policy</AppLink></li>
-              <li><AppLink href="/refund-policy" className={styles.Footer__Link}>Refund Policy</AppLink></li>
+              <li><AppLink href="/#pricing" className={styles.Footer__Link}>Pricing</AppLink></li>
+              <li><AppLink href="/blog" className={styles.Footer__Link}>Blog</AppLink></li>
+              <li><AppLink href="/changelog" className={styles.Footer__Link}>Changelog</AppLink></li>
+              <li><AppLink href="/methodology" className={styles.Footer__Link}>Methodology</AppLink></li>
+              <li><AppLink href="/byok-setup" className={styles.Footer__Link}>BYOK Setup Guide</AppLink></li>
             </ul>
           </div>
           <div>
             <Heading as="h4" className={styles.Footer__SectionTitle}>Support</Heading>
             <ul className={styles.Footer__Links}>
               <li><AppLink href={`mailto:${SUPPORT_EMAIL}`} className={styles.Footer__Link}>Contact Support</AppLink></li>
-              <li><AppLink href="/byok-setup" className={styles.Footer__Link}>BYOK Setup Guide</AppLink></li>
-              <li><AppLink href="/methodology" className={styles.Footer__Link}>Methodology & Benchmarks</AppLink></li>
               <li>
                 <AppLink
                   href="https://zush.canny.io"
@@ -107,6 +110,9 @@ const Footer = () => {
                   Features & Bug Reports
                 </AppLink>
               </li>
+              <li><AppLink href="/terms-of-service" className={styles.Footer__Link}>Terms of Service</AppLink></li>
+              <li><AppLink href="/privacy-policy" className={styles.Footer__Link}>Privacy Policy</AppLink></li>
+              <li><AppLink href="/refund-policy" className={styles.Footer__Link}>Refund Policy</AppLink></li>
             </ul>
           </div>
         </div>

@@ -1,0 +1,280 @@
+---
+import { Picture } from 'astro:assets';
+import {
+  FolderSync,
+  Sparkles,
+  Sliders,
+  History,
+  Tag,
+  Folder,
+  Plus,
+  Layers,
+  Check,
+  MessageSquareText,
+  KeyRound,
+} from 'lucide-react';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
+import sunsetThumb from '@/assets/features/sunset_thumb.png';
+import glitchThumb from '@/assets/features/glitch_thumb.png';
+import BentoCard from './BentoCard.astro';
+import styles from './Features.module.scss';
+
+const currentYear = new Date().getFullYear();
+---
+
+<section id='features' class={styles.Features}>
+  <div class={styles.Features__Container}>
+    <div class={styles.SectionHeader ?? ''} style='text-align: center; margin-bottom: 2rem; max-width: 50rem; margin-left: auto; margin-right: auto;'>
+      <Heading as='h2' align='center' style={{ marginBottom: '1.25rem' }}>
+        How <span class={styles.Features__TitleAccent}>Zush</span> AI Renames Your Files
+      </Heading>
+      <Text as='p' size='lg' color='subtle' align='center' style={{ maxWidth: '35rem', marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.6 }}>
+        Powerful features packed into a simple, elegant interface
+      </Text>
+    </div>
+
+    <div class={styles.BentoGrid}>
+      <BentoCard
+        title='AI Analysis'
+        description='Advanced AI analyzes images and supported documents, including PDFs, to generate meaningful, descriptive filenames automatically.'
+        icon={Sparkles}
+        delay={0.1}
+      >
+        <div class={styles.UI_Analysis}>
+          <div class={styles.UI_Analysis__Preview}>
+            <Picture
+              src={sunsetThumb}
+              alt='Sunset'
+              width={64}
+              height={64}
+              widths={[64, 128]}
+              sizes='64px'
+              loading='lazy'
+              decoding='async'
+              formats={['webp']}
+              fallbackFormat='png'
+            />
+          </div>
+          <div class={styles.UI_Analysis__Content}>
+            <span class={styles.UI_Analysis__OldName}>{`Screenshot ${currentYear}-03-15 at 19.45.22.png`}</span>
+            <span class={styles.UI_Analysis__NewName}>Bali_Sunset_Beach.png</span>
+          </div>
+        </div>
+      </BentoCard>
+
+      <BentoCard
+        title='Folders Monitoring'
+        description='Watch one or multiple folders. Zush runs in the background and processes new files automatically.'
+        icon={FolderSync}
+        delay={0.2}
+      >
+        <div class={styles.UI_Monitoring}>
+          <div class={styles.UI_Monitoring__List}>
+            <div class={styles.UI_Monitoring__Item}>
+              <div class={styles.UI_Monitoring__FolderInfo}>
+                <div class={styles.UI_Monitoring__Icon}>
+                  <Folder size={16} />
+                </div>
+                <span>~/Desktop</span>
+              </div>
+            </div>
+            <div class={styles.UI_Monitoring__Item}>
+              <div class={styles.UI_Monitoring__FolderInfo}>
+                <div class={styles.UI_Monitoring__Icon}>
+                  <Folder size={16} />
+                </div>
+                <span>~/Projects/Design/Assets</span>
+              </div>
+            </div>
+          </div>
+          <div class={styles.UI_Monitoring__Add}>
+            <Plus size={16} /> Add Folder
+          </div>
+        </div>
+      </BentoCard>
+
+      <BentoCard
+        title='Batch Rename'
+        description='Drag and drop multiple files at once. Zush will analyze and rename them all in seconds.'
+        icon={Layers}
+        delay={0.3}
+      >
+        <div class={styles.UI_Batch}>
+          <div class={styles.UI_Batch__List}>
+            <div class={styles.UI_Batch__Item}>
+              <div class={styles.UI_Batch__Names}>
+                <span class={styles.UI_Batch__OldName}>{`Screenshot ${currentYear}-02-21.png`}</span>
+                <span class={styles.UI_Batch__NewName}>→ Kanban Board UI.png</span>
+              </div>
+              <div class={styles.UI_Batch__Check}>
+                <Check size={14} />
+              </div>
+            </div>
+            <div class={styles.UI_Batch__Item}>
+              <div class={styles.UI_Batch__Names}>
+                <span class={styles.UI_Batch__OldName}>notes-final-v3.docx</span>
+                <span class={styles.UI_Batch__NewName}>→ Hiring Plan Notes.docx</span>
+              </div>
+              <div class={styles.UI_Batch__Check}>
+                <Check size={14} />
+              </div>
+            </div>
+            <div class={styles.UI_Batch__Item}>
+              <div class={styles.UI_Batch__Names}>
+                <span class={styles.UI_Batch__OldName}>investor-update-final.pptx</span>
+                <span class={styles.UI_Batch__NewName}>→ Investor Update Deck.pptx</span>
+              </div>
+              <div class={styles.UI_Batch__Check}>
+                <Check size={14} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </BentoCard>
+
+      <BentoCard
+        title='Custom Patterns'
+        description='Set your own file naming pattern with variables like {title}, {original}, {date}, {time}, or {category}.'
+        icon={Sliders}
+        delay={0.4}
+      >
+        <div class={styles.UI_Patterns}>
+          <div class={styles.UI_Patterns__Input}>
+            <span class={styles.UI_Patterns__Var}>{`{Title}`}</span>
+            <span class={styles.UI_Patterns__Sep}>_</span>
+            <span class={styles.UI_Patterns__Var}>{`{Date}`}</span>
+            <span class={styles.UI_Patterns__Sep}>_</span>
+            <span class={styles.UI_Patterns__Var}>{`{Category}`}</span>
+          </div>
+          <div class={styles.UI_Patterns__Preview}>
+            {`Project_Zush_${currentYear}-03-20_Design.png`}
+          </div>
+        </div>
+      </BentoCard>
+
+      <BentoCard
+        title='Smart Metadata'
+        description='Automatically add Finder tags and Spotlight metadata. Find files instantly with natural search queries.'
+        icon={Tag}
+        delay={0.5}
+      >
+        <div class={styles.UI_Metadata}>
+          <div class={styles.UI_Metadata__File}>
+            <div class={styles.UI_Metadata__Preview}>
+              <Picture
+                src={glitchThumb}
+                alt='Glitch Art'
+                width={64}
+                height={64}
+                widths={[64, 128]}
+                sizes='64px'
+                loading='lazy'
+                decoding='async'
+                formats={['webp']}
+                fallbackFormat='png'
+              />
+            </div>
+            <div class={styles.UI_Metadata__FileInfo}>
+              <span class={styles.UI_Metadata__FileName}>Cyberpunk_Art.png</span>
+              <span class={styles.UI_Metadata__FileMeta}>4.2 MB</span>
+            </div>
+          </div>
+          <div class={styles.UI_Metadata__Tags}>
+            <span>glitch art</span>
+            <span>vaporwave</span>
+            <span>statue</span>
+            <span>cyberpunk</span>
+            <span>digital art</span>
+            <span>palm tree</span>
+          </div>
+        </div>
+      </BentoCard>
+
+      <BentoCard
+        title='Rename History'
+        description='Keep track of every change. Made a mistake? Rollback to the original filename with one click.'
+        icon={History}
+        delay={0.6}
+      >
+        <div class={styles.UI_History}>
+          <div class={styles.UI_History__Item}>
+            <div class={styles.UI_History__Names}>
+              <span class={styles.UI_History__OldName}>notes_FINAL_copy.docx</span>
+              <span class={styles.UI_History__NewName}>→ Dashboard Review Notes.docx</span>
+            </div>
+            <div class={styles.UI_History__Meta}>
+              <span class={styles.UI_History__Time}>Today, 09:51</span>
+              <span class={styles.UI_History__Undo}>Undo</span>
+            </div>
+          </div>
+          <div class={`${styles.UI_History__Item} ${styles.UI_History__Item_faded}`}>
+            <div class={styles.UI_History__Names}>
+              <span class={styles.UI_History__OldName}>q1_report_export.xlsx</span>
+              <span class={styles.UI_History__NewName}>→ Q1 Revenue Report.xlsx</span>
+            </div>
+            <div class={styles.UI_History__Meta}>
+              <span class={styles.UI_History__Time}>Today, 08:30</span>
+            </div>
+          </div>
+        </div>
+      </BentoCard>
+
+      <BentoCard
+        title='Custom AI Prompts'
+        description='Write your own rename and tagging instructions to guide AI output. Tune file names and metadata to match your style and workflow.'
+        icon={MessageSquareText}
+        class={styles['BentoCard--wide']}
+        delay={0.7}
+      >
+        <div class={styles.UI_Prompts}>
+          <div class={styles.UI_Prompts__Panel}>
+            <div class={styles.UI_Prompts__Header}>
+              <span class={styles.UI_Prompts__Label}>Rename rules</span>
+              <span class={styles.UI_Prompts__Badge}>Custom</span>
+            </div>
+            <div class={styles.UI_Prompts__Editor}>
+              <span class={styles.UI_Prompts__Text}>
+                Keep names short, no more than 5 words, with the main subject first
+              </span>
+            </div>
+          </div>
+          <div class={styles.UI_Prompts__Panel}>
+            <div class={styles.UI_Prompts__Header}>
+              <span class={styles.UI_Prompts__Label}>Tagging rules</span>
+              <span class={styles.UI_Prompts__Badge_default}>Default</span>
+            </div>
+            <div class={styles.UI_Prompts__Editor}>
+              <span class={styles.UI_Prompts__Placeholder}>
+                Add your own tagging instructions...
+              </span>
+            </div>
+          </div>
+        </div>
+      </BentoCard>
+
+      <BentoCard
+        title='Bring Your Own Key'
+        description='Connect your own API key from Gemini, Groq, OpenAI, or Claude for unlimited processing.'
+        icon={KeyRound}
+        badge='PRO 🌟'
+        delay={0.8}
+      >
+        <div class={styles.UI_BYOK}>
+          <div class={styles.UI_BYOK__Input}>
+            <span class={styles.UI_BYOK__Key}>API key connected</span>
+            <div class={styles.UI_BYOK__Icon}>
+              <Check size={14} />
+            </div>
+          </div>
+          <div class={styles.UI_BYOK__Providers}>
+            <span>Gemini</span>
+            <span>Groq</span>
+            <span>OpenAI</span>
+            <span>Claude</span>
+          </div>
+        </div>
+      </BentoCard>
+    </div>
+  </div>
+</section>

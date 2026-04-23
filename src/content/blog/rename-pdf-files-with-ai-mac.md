@@ -1,5 +1,5 @@
 ---
-title: "AI PDF Renaming on Mac: Workflow Guide for Invoices, Contracts, and Scans"
+title: "AI PDF Renaming on Mac (2026): Invoices, Contracts, Scans"
 description: "A practical workflow for renaming PDF files with AI on Mac, covering invoices, contracts, scanned documents, and export-heavy folders."
 date: "2026-03-04"
 slug: "rename-pdf-files-with-ai-mac"

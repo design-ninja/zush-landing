@@ -18,9 +18,9 @@ export interface SeoMeta {
 type RouteSeoMeta = Omit<SeoMeta, 'canonicalPath'>;
 
 const DEFAULT_META: RouteSeoMeta = {
-  title: 'Zush — AI File Renamer for Mac | Rename Screenshots, PDFs, and Photos',
+  title: 'Zush — AI File Renamer for Mac · 50 Free Renames, No Signup',
   description:
-    'Zush is the AI file renamer for Mac that turns screenshots, PDFs, documents, and photos into searchable filenames. Batch rename, monitor folders, and stay organized automatically.',
+    'Zush renames screenshots, PDFs, photos and documents on Mac using AI. Batch rename, watch folders, stay organized automatically. 50 free renames, no signup.',
   robots: 'noindex, nofollow',
   ogType: 'website',
 };
@@ -93,6 +93,13 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     robots: 'index, follow',
     ogType: 'website',
   },
+  '/batch-rename-files': {
+    title: 'Batch Rename Files on Mac with AI (2026) · Zush',
+    description:
+      'Batch rename hundreds of files on Mac in one click. AI gives each file a unique descriptive name — not just a prefix. Free for 50 files, no signup.',
+    robots: 'index, follow',
+    ogType: 'website',
+  },
   '/rename-documents-with-ai': {
     title: 'Rename Documents with AI on Mac · DOCX, XLSX & PPTX · Zush',
     description:
@@ -108,7 +115,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ogType: 'website',
   },
   '/rename-screenshots-with-ai': {
-    title: 'Rename Screenshots with AI on Mac · Auto-Name Captures · Zush',
+    title: 'Rename Screenshots with AI on Mac · Zush',
     description:
       "Replace 'Screenshot 2026-04-10 at 14.32.png' with 'stripe-revenue-dashboard.png'. Zush auto-names every macOS screenshot using AI vision. Free to try.",
     robots: 'index, follow',
@@ -122,7 +129,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ogType: 'website',
   },
   '/ai-image-renamer': {
-    title: 'AI Image Renamer for Mac · Screenshots, Photos & Design Assets · Zush',
+    title: 'AI Image Renamer for Mac · Photos & Screenshots · Zush',
     description:
       'Rename screenshots, photos, mockups and downloaded images across 22 formats. Zush uses AI vision to create searchable filenames on Mac. Free for 50 files.',
     robots: 'index, follow',
@@ -149,6 +156,7 @@ export const FEATURE_ROUTES = [
   '/ai-file-renamer',
   '/auto-rename-files',
   '/ai-image-renamer',
+  '/batch-rename-files',
   '/rename-documents-with-ai',
   '/rename-pdf-with-ai',
   '/rename-screenshots-with-ai',

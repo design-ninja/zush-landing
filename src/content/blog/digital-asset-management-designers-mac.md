@@ -1,6 +1,6 @@
 ---
-title: "Digital Asset Management for Designers on Mac: The Complete Guide"
-description: "A comprehensive guide to digital asset management for designers on Mac, covering folder structure, naming conventions, version control, export discipline, handoff, and scaling DAM without enterprise tools."
+title: "Digital Asset Management for Designers on Mac (2026)"
+description: "Digital asset management for designers on Mac: folder structure, naming, version control, export discipline and handoff — no enterprise software required."
 date: "2026-02-26"
 slug: "digital-asset-management-designers-mac"
 tags: "digital asset management, designer file organization, manage design files mac, DAM for designers, design workflow, organize design assets, UI design files, design system organization"

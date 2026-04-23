@@ -12,7 +12,7 @@ AI file renamers have gone from experimental curiosities to practical tools. The
 
 This comparison covers the tools worth knowing about in 2026, with honest assessments of what each one does well and where it falls short across platforms.
 
-If you only care about Mac buyer intent, go to [Best AI File Renamer Tools for Mac Compared](/blog/best-ai-file-renamer-tools-mac-compared) or straight to [AI File Renamer for Mac](/ai-file-renamer). This page stays broad on purpose.
+If you only care about Mac buyer intent, go to [Best AI File Renamer Tools for Mac Compared](/blog/best-ai-file-renamer-tools-mac-compared), [AI File Renamer for Mac](/ai-file-renamer), or [Batch Rename Files on Mac](/batch-rename-files). This page stays broad on purpose.
 
 
 ## What to evaluate

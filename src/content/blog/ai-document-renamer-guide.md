@@ -1,5 +1,5 @@
 ---
-title: "AI Document Renamer: How to Auto-Name Docs, PDFs & Spreadsheets"
+title: "AI Document Renamer: Auto-Name Docs, PDFs & Spreadsheets"
 description: "Learn how an AI document renamer analyzes content to replace generic filenames across PDFs, DOCX, XLSX, and more on Mac."
 date: "2026-03-23"
 slug: "ai-document-renamer-guide"

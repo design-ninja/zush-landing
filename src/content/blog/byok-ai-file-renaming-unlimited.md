@@ -1,5 +1,5 @@
 ---
-title: "BYOK: How to Get Unlimited AI File Renames with Your Own API Key"
+title: "BYOK: Unlimited AI File Renames with Your Own API Key (2026)"
 description: "Learn how to use your own API key for unlimited AI file renaming in Zush. Compare Gemini, Groq, OpenAI, and Claude providers with cost breakdowns."
 date: "2026-03-23"
 slug: "byok-ai-file-renaming-unlimited"

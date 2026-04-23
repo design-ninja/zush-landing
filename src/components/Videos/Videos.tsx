@@ -157,6 +157,8 @@ const Videos = ({
                 src={activeVideoMedia.poster}
                 alt={`${activeVideo.title} demo`}
                 className={styles.Videos__Poster}
+                width={1280}
+                height={720}
                 loading='lazy'
                 decoding='async'
               />

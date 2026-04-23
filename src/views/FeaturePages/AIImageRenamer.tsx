@@ -57,26 +57,41 @@ const jsonLd = {
 const AIImageRenamer = () => (
   <FeatureLandingPage
     h1="AI Image Renamer for Mac"
+    h1Accent="AI Image Renamer"
     category="image"
     definitionTitle="What Is an AI Image Renamer?"
     definitionText="Use Zush as an AI image renamer for Mac for screenshots, photos, downloads, and design assets with descriptive names and repeatable cleanup."
-    showcaseSlides={[{
-      files: [
-        { before: 'IMG_3847.jpg', after: 'Mountain Autumn Foliage.jpg', img: '/images/examples/mountain.jpg', type: 'image' },
-        { before: 'DSC_0192.NEF', after: 'Coffee Mug On Linen.nef', img: '/images/examples/coffee.jpg', type: 'image' },
-        { before: 'Screenshot 2026-03-10.png', after: 'Mobile App Login Screen.png', img: '/images/examples/dashboard.jpg', type: 'image' },
-        { before: 'DCIM_0038.HEIC', after: 'Backyard Barbecue.heic', img: '/images/examples/food.jpg', type: 'image' },
-        { before: 'image (12).webp', after: 'Social Media Statistics.webp', img: '/images/examples/chart.jpg', type: 'image' },
-        { before: 'CAM_0021.jpg', after: 'City Street At Night.jpg', img: '/images/examples/city.jpg', type: 'image' },
-      ],
-    }]}
-    comparisonRows={[
-      { tool: 'Zush', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: '$10 one-time / 10,000 renames' },
-      { tool: 'Renamer.ai', platform: 'Mac & Windows', freeTier: '15/m', batchRename: true, autoMonitor: true, pricing: 'From $9.95/mo (200 renames)' },
-      { tool: 'AI Renamer', platform: 'Mac & Windows', freeTier: '10', batchRename: true, autoMonitor: false, pricing: '$19 one-time or $10/200 renames' },
-      { tool: 'NameQuick', platform: 'macOS', freeTier: '50', batchRename: true, autoMonitor: true, pricing: 'From $5/mo (500 renames) or $38 BYOK' },
-      { tool: 'RenameClick', platform: 'Mac & Windows', freeTier: '30/m', batchRename: true, autoMonitor: true, pricing: '$48 lifetime or $8/mo' },
-      { tool: 'Riffo', platform: 'macOS', freeTier: 'Limited', batchRename: true, autoMonitor: false, pricing: 'Freemium' },
+    showcaseSlides={[
+      {
+        files: [
+          { before: 'IMG_3847.jpg', after: 'Mountain Autumn Foliage.jpg', img: '/images/examples/mountain.jpg', type: 'image' },
+          { before: 'DSC_0192.NEF', after: 'Coffee Mug On Linen.nef', img: '/images/examples/coffee.jpg', type: 'image' },
+          { before: 'Screenshot 2026-03-10.png', after: 'Revenue Dashboard View.png', img: '/images/examples/dashboard.jpg', type: 'image' },
+          { before: 'DCIM_0038.HEIC', after: 'Backyard Barbecue.heic', img: '/images/examples/food.jpg', type: 'image' },
+          { before: 'image (12).webp', after: 'Social Media Statistics.webp', img: '/images/examples/chart.jpg', type: 'image' },
+          { before: 'CAM_0021.jpg', after: 'Tokyo Night Skyline.jpg', img: '/images/examples/city.jpg', type: 'image' },
+        ],
+      },
+      {
+        files: [
+          { before: 'PXL_20240720.jpg', after: 'Yellow Wildflowers Field.jpg', img: '/images/examples/flowers.jpg', type: 'image' },
+          { before: 'IMG_0842.jpg', after: 'Persian Cat Napping.jpg', img: '/images/examples/cat.jpg', type: 'image' },
+          { before: 'Screenshot 2026-02-18.png', after: 'Architecture Flow Diagram.png', img: '/images/examples/diagram.jpg', type: 'image' },
+          { before: 'IMG_5523.HEIC', after: 'Pug Puppy Portrait.heic', img: '/images/examples/pug.jpg', type: 'image' },
+          { before: 'DCIM_0072.jpg', after: 'Home Office Workspace.jpg', img: '/images/examples/office.jpg', type: 'image' },
+          { before: 'CAM00233.HEIC', after: 'Golden Hour Sunset.heic', img: '/images/examples/sunset.jpg', type: 'image' },
+        ],
+      },
+      {
+        files: [
+          { before: 'IMG_4201.HEIC', after: 'Sagrada Familia Evening.heic', img: '/images/examples/sagrada.jpg', type: 'image' },
+          { before: 'DSC_0488.jpg', after: 'Spanish Tapas Plate.jpg', img: '/images/examples/tapas.jpg', type: 'image' },
+          { before: 'Screenshot 2026-03-22.png', after: 'Designer Workspace Setup.png', img: '/images/examples/workspace.jpg', type: 'image' },
+          { before: 'DCIM_0104.jpg', after: 'Golden Retriever At Park.jpg', img: '/images/examples/dog.jpg', type: 'image' },
+          { before: 'CAM00847.jpg', after: 'Black Ford Mustang.jpg', img: '/images/examples/car.jpg', type: 'image' },
+          { before: 'IMG_2019.CR2', after: 'Forest Waterfall Scene.cr2', img: '/images/examples/nature.jpg', type: 'image' },
+        ],
+      },
     ]}
     faqItems={faqItems}
     relatedPages={[

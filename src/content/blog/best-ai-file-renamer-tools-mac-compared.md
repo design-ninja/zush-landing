@@ -16,7 +16,7 @@ If you are searching for the best AI file renamer tools for Mac, you are usually
 
 This comparison is built for commercial-intent queries where you need a concrete decision, not a broad feature list. We tested six tools across real Mac workflows involving screenshots, photos, PDFs, and mixed document folders. For full details on our evaluation process, see [our methodology page](/methodology).
 
-If you already know you want the main Zush product page, start with [AI File Renamer for Mac](/ai-file-renamer). This article exists to compare alternatives and clarify fit.
+If you already know you want the main Zush product page, start with [AI File Renamer for Mac](/ai-file-renamer). For batch-specific workflows, see [Batch Rename Files on Mac](/batch-rename-files). This article exists to compare alternatives and clarify fit.
 
 ## Best answer (quick decision)
 

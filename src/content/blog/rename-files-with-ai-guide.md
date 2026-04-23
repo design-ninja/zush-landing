@@ -1,6 +1,6 @@
 ---
 title: "How to Rename Files with AI: Step-by-Step Guide"
-description: "Learn how to rename files with AI step by step, including how content-aware tools handle screenshots, PDFs, documents, and photos without turning this page into a product comparison."
+description: "Learn how to rename files with AI step by step — how content-aware tools handle screenshots, PDFs, documents and photos on Mac in 2026."
 date: "2026-03-23"
 slug: "rename-files-with-ai-guide"
 tags: "ai file renaming tutorial, rename files step by step, content-aware renaming, file organization workflow, productivity"
@@ -12,7 +12,7 @@ Most files arrive with useless names. Screenshots get timestamps. Photos get cam
 
 AI file renaming solves this by analyzing the actual content of a file and generating a descriptive filename from it. Instead of `IMG_4821.HEIC`, you get `golden-retriever-playing-in-park.heic`. Instead of `Screenshot 2026-03-23 at 14.32.08.png`, you get `stripe-dashboard-monthly-revenue.png`.
 
-This guide is the educational layer of the cluster. If you already want a Mac-specific product page, see [AI File Renamer for Mac](/ai-file-renamer). If you want the cross-tool comparison, see [Best AI File Renamer Tools in 2026](/blog/best-ai-file-renamer-tools-2026).
+This guide is the educational layer of the cluster. If you already want a Mac-specific product page, see [AI File Renamer for Mac](/ai-file-renamer) or [Batch Rename Files on Mac](/batch-rename-files). If you want the cross-tool comparison, see [Best AI File Renamer Tools in 2026](/blog/best-ai-file-renamer-tools-2026).
 
 This guide covers what AI file renaming is, how it works, and how to apply it step by step without assuming you have already chosen a tool.
 
@@ -141,7 +141,7 @@ Here is the practical walkthrough for the most common workflow.
 This is the setup that prevents clutter from accumulating in the first place. Instead of cleaning up once a month, the mess never forms.
 
 
-For a complete walkthrough of batch renaming on Mac, see [Batch Rename Files on Mac: Complete Guide](/blog/batch-rename-files-on-mac-complete-guide).
+For a complete walkthrough of batch renaming on Mac, see [Batch Rename Files on Mac: Complete Guide](/blog/batch-rename-files-on-mac-complete-guide) or go straight to the [AI batch rename tool](/batch-rename-files).
 
 ## Common formats supported
 

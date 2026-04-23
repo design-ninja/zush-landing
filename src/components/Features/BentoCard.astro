@@ -1,0 +1,44 @@
+---
+import type { LucideIcon } from 'lucide-react';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
+import styles from './Features.module.scss';
+
+interface Props {
+  title: string;
+  description: string;
+  icon: LucideIcon;
+  class?: string;
+  badge?: string;
+  delay?: number;
+}
+
+const { title, description, icon: Icon, class: className, badge, delay = 0 } = Astro.props;
+---
+
+<div
+  class={`${styles.BentoCard} ${className || ''}`}
+  style={`transition-delay: ${delay}s`}
+>
+  <div class={styles.BentoCard__Content}>
+    <div class={styles.BentoCard__Header}>
+      <div class={styles.BentoCard__IconWrapper}>
+        <Icon size={24} />
+      </div>
+      <div class={styles.BentoCard__TitleRow}>
+        <Heading as='h3' className={styles.BentoCard__Title}>
+          {title}
+        </Heading>
+        {badge && <span class={styles.BentoCard__Badge}>{badge}</span>}
+      </div>
+    </div>
+    <Text className={styles.BentoCard__Description} color='subtle'>
+      {description}
+    </Text>
+  </div>
+  <div class={styles.BentoCard__Visual}>
+    <slot>
+      <div class={styles.BentoCard__Placeholder} />
+    </slot>
+  </div>
+</div>

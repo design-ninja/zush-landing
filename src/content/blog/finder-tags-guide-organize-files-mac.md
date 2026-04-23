@@ -1,5 +1,5 @@
 ---
-title: "macOS File Search Power Tools: Finder Tags, Smart Folders, and Spotlight"
+title: "Finder Tags, Smart Folders & Spotlight: Mac Search Guide"
 description: "Master macOS file search with Finder tags, Smart Folders, and Spotlight. Learn how to combine these built-in tools to find any file on your Mac in seconds."
 date: "2026-02-15"
 slug: "finder-tags-guide-organize-files-mac"

@@ -1,6 +1,6 @@
 ---
 title: "Auto Rename Files on Mac (2026): Hazel, Automator & AI"
-description: "Set up hands-free file renaming on Mac. We tested Automator, Hazel and AI folder monitoring with Zush — step-by-step setup for downloads, screenshots and exports."
+description: "Set up hands-free file renaming on Mac. Automator, Hazel and AI folder monitoring tested — setup for downloads, screenshots and exports."
 date: "2026-03-23"
 slug: "auto-rename-files-mac-guide"
 tags: "auto rename files, auto rename files mac, automatic file renaming mac, folder monitoring, mac file automation"
@@ -17,7 +17,7 @@ This guide covers all three, with setup instructions, comparison tables, and gui
 
 ## What auto file renaming means in practice
 
-Auto renaming is not the same as batch renaming. Batch renaming is something you trigger manually on a set of files. Auto renaming happens continuously without your involvement.
+Auto renaming is not the same as [batch renaming](/batch-rename-files). Batch renaming is something you trigger manually on a set of files. Auto renaming happens continuously without your involvement.
 
 The common setup:
 
