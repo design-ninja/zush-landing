@@ -12,7 +12,7 @@ interface Props {
 
 const { platform } = Astro.props as Props;
 const meta = BLOG_PLATFORM_META[platform];
-const posts = getFeaturedPostsByPlatform(platform, 3);
+const posts = await getFeaturedPostsByPlatform(platform, 3);
 ---
 
 {posts.length > 0 && (

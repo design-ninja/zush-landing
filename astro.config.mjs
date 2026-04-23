@@ -1,7 +1,9 @@
 import { defineConfig } from 'astro/config';
+import mdx from '@astrojs/mdx';
 import react from '@astrojs/react';
 import vercel from '@astrojs/vercel';
 import { fileURLToPath } from 'node:url';
+import remarkGfm from 'remark-gfm';
 
 export default defineConfig({
   site: 'https://zushapp.com',
@@ -12,8 +14,13 @@ export default defineConfig({
     '/download/mac': { status: 301, destination: '/mac' },
     '/download/windows': { status: 301, destination: '/windows' },
   },
-  integrations: [react()],
+  integrations: [mdx(), react()],
   adapter: vercel(),
+  markdown: {
+    remarkPlugins: [remarkGfm],
+    gfm: true,
+    smartypants: true,
+  },
   vite: {
     resolve: {
       alias: {

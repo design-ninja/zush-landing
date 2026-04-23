@@ -1,4 +1,4 @@
-import type { BlogFrontmatter } from '@/utils/frontmatter';
+import type { BlogPost } from '@/data/blog';
 import { HOME_FAQ_DATA } from '@/data/homeFaq';
 
 export const SITE_ORIGIN = 'https://zushapp.com';
@@ -8,7 +8,7 @@ export interface SeoMeta {
   title: string;
   description: string;
   canonicalPath: string;
-  robots: 'index, follow' | 'noindex, nofollow';
+  robots: string;
   ogType?: 'website' | 'article';
   ogImage?: string;
   publishedTime?: string;
@@ -69,6 +69,13 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     title: 'AI File Renaming Tips, Guides & Insights — Zush Blog',
     description:
       'Practical guides on AI-powered file organization for Mac and Windows. Learn about smart renaming, batch processing, metadata tagging, and workflow automation with Zush.',
+    robots: 'index, follow',
+    ogType: 'website',
+  },
+  '/blog/archive': {
+    title: 'Blog Archive — Zush',
+    description:
+      'Browse the full Zush blog archive: AI file renaming guides, comparisons, workflows, and platform-specific tutorials.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -211,7 +218,7 @@ export function getSeoForPath(pathname: string): SeoMeta {
 
 const THIN_CONTENT_THRESHOLD = 350;
 
-export function getBlogSeo(post: BlogFrontmatter): SeoMeta {
+export function getBlogSeo(post: BlogPost): SeoMeta {
   const isThinContent = post.wordCount < THIN_CONTENT_THRESHOLD;
   const shouldNoIndex = isThinContent || post.noindex === true;
 

@@ -1,0 +1,55 @@
+@use 'src/styles/variables' as *;
+@use 'src/styles/mixins' as *;
+
+.Pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+
+  @include mobile {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  &__Meta {
+    color: var(--muted-foreground);
+    font-size: 0.95rem;
+  }
+
+  &__Links {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+
+    @include mobile {
+      justify-content: space-between;
+    }
+  }
+
+  &__Link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.5rem;
+    padding: 0.65rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: $radius-full;
+    color: var(--foreground);
+    text-decoration: none;
+    transition:
+      border-color $transition-fast,
+      color $transition-fast,
+      background-color $transition-fast;
+
+    &:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-soft);
+    }
+  }
+}

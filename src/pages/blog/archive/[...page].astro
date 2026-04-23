@@ -1,0 +1,60 @@
+---
+import type { GetStaticPaths, Page } from 'astro';
+import type { BlogPost } from '@/data/blog';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogPagination from '@/components/blog/BlogPagination.astro';
+import BlogPostCard from '@/components/blog/BlogPostCard.astro';
+import { getAllPosts } from '@/data/blog';
+import type { SeoMeta } from '@/seo/config';
+import headingStyles from '@/components/Heading/Heading.module.scss';
+import textStyles from '@/components/Text/Text.module.scss';
+import styles from '@/views/Blog/BlogList.module.scss';
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+  const posts = await getAllPosts();
+
+  return paginate(posts, {
+    pageSize: 12,
+  });
+};
+
+const { page } = Astro.props as { page: Page<BlogPost> };
+const isFirstPage = page.currentPage === 1;
+const currentPath = isFirstPage ? '/blog/archive' : page.url.current;
+const seo: SeoMeta = {
+  title: isFirstPage ? 'Blog Archive — Zush' : `Blog Archive Page ${page.currentPage} — Zush`,
+  description:
+    'Browse the full Zush blog archive: AI file renaming guides, comparisons, workflows, and platform-specific tutorials.',
+  canonicalPath: currentPath,
+  robots: isFirstPage ? 'index, follow' : 'noindex, follow',
+  ogType: 'website',
+};
+---
+
+<BaseLayout seo={seo}>
+  <section class={styles.BlogList}>
+    <div class={styles.BlogList__Container}>
+      <div class={styles.BlogList__SectionHeader}>
+        <h1 class={[headingStyles.Heading, headingStyles.Heading_h1].join(' ')}>
+          Blog Archive
+        </h1>
+        <p
+          class={[
+            textStyles.Text,
+            textStyles.Text_lg,
+            textStyles.Text_subtle,
+            styles.BlogList__SectionDescription,
+          ].join(' ')}
+        >
+          Every Zush blog article in reverse chronological order.
+        </p>
+      </div>
+
+      <div class={styles.BlogList__SectionPosts}>
+        {page.data.map((post) => <BlogPostCard post={post} />)}
+      </div>
+
+      <BlogPagination label='articles' page={page} />
+    </div>
+  </section>
+</BaseLayout>

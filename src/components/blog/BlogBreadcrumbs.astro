@@ -1,0 +1,46 @@
+---
+import styles from '@/components/Breadcrumbs/Breadcrumbs.module.scss';
+
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<nav aria-label='Breadcrumb' class={styles.Breadcrumbs}>
+  <ol class={styles.Breadcrumbs__List}>
+    {
+      items.map((item, index) => {
+        const isLast = index === items.length - 1;
+
+        return (
+          <li class={styles.Breadcrumbs__Item}>
+            {!isLast && item.href ? (
+              <a class={styles.Breadcrumbs__Link} href={item.href}>
+                {item.label}
+              </a>
+            ) : (
+              <span
+                aria-current={isLast ? 'page' : undefined}
+                class={styles.Breadcrumbs__Current}
+              >
+                {item.label}
+              </span>
+            )}
+            {!isLast && (
+              <span aria-hidden='true' class={styles.Breadcrumbs__Separator}>
+                /
+              </span>
+            )}
+          </li>
+        );
+      })
+    }
+  </ol>
+</nav>

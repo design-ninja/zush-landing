@@ -1,0 +1,56 @@
+---
+import headingStyles from '@/components/Heading/Heading.module.scss';
+import textStyles from '@/components/Text/Text.module.scss';
+import { BLOG_PLATFORM_LABELS } from '@/data/blogSchema';
+import { formatBlogDate, type BlogPost } from '@/data/blog';
+import styles from '@/views/Blog/BlogList.module.scss';
+
+interface Props {
+  post: BlogPost;
+}
+
+const { post } = Astro.props;
+---
+
+<article class={styles.BlogList__Post}>
+  <a class={styles.BlogList__PostLink} href={`/blog/${post.slug}`}>
+    <span
+      class={[
+        styles.BlogList__Track,
+        styles[`BlogList__Track_${post.platform}`],
+      ].join(' ')}
+    >
+      {BLOG_PLATFORM_LABELS[post.platform]}
+    </span>
+    <h3
+      class={[
+        headingStyles.Heading,
+        headingStyles.Heading_h4,
+        styles.BlogList__PostTitle,
+      ].join(' ')}
+    >
+      {post.title}
+    </h3>
+    <p
+      class={[
+        textStyles.Text,
+        textStyles.Text_md,
+        textStyles.Text_subtle,
+        styles.BlogList__PostDescription,
+      ].join(' ')}
+    >
+      {post.description}
+    </p>
+    {post.tags.length > 0 && (
+      <div class={styles.BlogList__PostTags}>
+        {post.tags.slice(0, 3).map((tag) => (
+          <span class={styles.BlogList__Tag}>{tag}</span>
+        ))}
+      </div>
+    )}
+    <div class={styles.BlogList__PostMeta}>
+      <time datetime={post.date}>{formatBlogDate(post.dateValue)}</time>
+      <span>{post.readingTime} min read</span>
+    </div>
+  </a>
+</article>

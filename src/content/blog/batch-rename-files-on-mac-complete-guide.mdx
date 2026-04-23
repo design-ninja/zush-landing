@@ -1,0 +1,431 @@
+---
+title: "How to Batch Rename Files on Mac (2026): 4 Methods Tested"
+description: "Rename 400 files in one click on Mac. Finder, Automator, Terminal and AI tools compared — step-by-step setup with a method-picker table."
+date: "2026-02-08"
+slug: "batch-rename-files-on-mac-complete-guide"
+platform: "mac"
+topic: "automation"
+tags:
+  - "batch rename files mac"
+  - "rename multiple files mac"
+  - "Finder batch rename"
+  - "automatic file renaming"
+  - "mac file organization"
+tldr: "The best batch rename method on Mac depends on the job: Finder for simple edits, Automator for repeatable rules, scripts for power users, and AI tools for content-aware file naming."
+reviewed: "2026-04-10"
+---
+import BlogInlineCTA from '@/components/blog/BlogInlineCTA.astro';
+
+Batch renaming files on Mac is easy when the rename rule is simple and much harder when every file needs a different descriptive name. A photographer renaming 400 vacation photos from `IMG_4201.jpg` through `IMG_4600.jpg` has a completely different problem than a student renaming a folder of mixed screenshots into something searchable.
+
+That is why there is no single best tool for every situation. This guide covers four approaches in detail: Finder's built-in batch rename, Automator workflows, Terminal scripts, and AI-powered renaming. Each section includes step-by-step instructions and real examples so you can pick the method that fits your actual problem.
+
+> **Looking for the shortest path?** If you need unique descriptive names for every file (not a shared prefix), jump straight to the [AI batch rename tool for Mac](/batch-rename-files) — 50 free renames, no signup.
+
+
+## Method 1: Finder batch rename
+
+Finder has a built-in batch rename tool that most Mac users never discover. It handles three types of renames: replacing text in filenames, adding text before or after the existing name, and formatting names with a sequential number or counter.
+
+### When to use Finder batch rename
+
+- Replacing a common string across many files (e.g., changing `IMG_` to `vacation-`)
+- Adding a date prefix or project suffix to a group of files
+- Numbering a set of files sequentially (e.g., `photo-001.jpg`, `photo-002.jpg`)
+- Any rename where every file gets the same rule applied
+
+### Step-by-step: how to batch rename files in Finder
+
+**Step 1: Select the files.**
+Open the folder containing the files you want to rename. Select all files with Cmd+A, or select a specific range by clicking the first file, then Shift+clicking the last. To pick individual files, hold Cmd and click each one.
+
+**Step 2: Open the rename dialog.**
+Right-click (or Control+click) on any selected file and choose "Rename..." from the context menu. You can also use the Finder menu bar: go to File > Rename.
+
+**Step 3: Choose your rename mode.**
+The rename dialog has a dropdown at the top with three options:
+
+- **Replace Text** -- Find a string in the current filenames and replace it with something else.
+- **Add Text** -- Append or prepend text to every filename.
+- **Format** -- Replace the entire name with a base name plus a sequential number, counter, or date.
+
+**Step 4: Configure and preview.**
+Fill in the fields. Finder shows a preview of the new name so you can verify before committing. Check that the result looks right.
+
+**Step 5: Click Rename.**
+All selected files are renamed instantly. If you made a mistake, press Cmd+Z immediately to undo the entire batch.
+
+### Finder rename examples
+
+#### Replace Text mode
+
+You downloaded a batch of product images from a supplier and they all start with a vendor code you do not need.
+
+| Before | After |
+|---|---|
+| `VNDX-001_blue-widget.png` | `blue-widget.png` |
+| `VNDX-001_red-widget.png` | `red-widget.png` |
+| `VNDX-001_green-widget.png` | `green-widget.png` |
+
+Settings: Find `VNDX-001_`, Replace with (empty).
+
+#### Add Text mode
+
+You want to add a project name as a prefix to a set of deliverables.
+
+| Before | After |
+|---|---|
+| `homepage-hero.psd` | `acme-redesign_homepage-hero.psd` |
+| `about-section.psd` | `acme-redesign_about-section.psd` |
+| `footer-layout.psd` | `acme-redesign_footer-layout.psd` |
+
+Settings: Add Text `acme-redesign_`, Before Name.
+
+#### Format mode
+
+You shot 50 photos at an event and want clean numbered names.
+
+| Before | After |
+|---|---|
+| `IMG_7823.jpg` | `company-retreat-001.jpg` |
+| `IMG_7824.jpg` | `company-retreat-002.jpg` |
+| `IMG_7825.jpg` | `company-retreat-003.jpg` |
+
+Settings: Name Format: Name and Index, Custom Format: `company-retreat-`, Start Numbers At: 1.
+
+### Limitations of Finder batch rename
+
+Finder applies the same rule to every selected file. It cannot give each file a unique descriptive name based on its content. It also cannot handle regex patterns, conditional logic, or metadata-driven naming. For those jobs, you need a different tool.
+
+For more on setting up naming conventions that make batch renames effective, see [File Naming Conventions: Best Practices for Any Workflow](/blog/file-naming-conventions-best-practices).
+
+
+<BlogInlineCTA platform="mac" />
+
+## Method 2: Automator workflows
+
+Automator is a macOS automation tool that lets you build multi-step workflows without writing code. For file renaming, it provides more power than Finder because you can chain multiple rename actions, use metadata like creation date, and attach the workflow to a folder so it runs automatically.
+
+### When to use Automator
+
+- You need the same rename rule applied regularly (weekly exports, recurring reports)
+- You want to combine renaming with other actions (moving files, changing extensions)
+- You need metadata-based naming (creation date, file size, image dimensions)
+- You want a drag-and-drop application for non-technical team members
+
+### Step-by-step: building a rename workflow in Automator
+
+**Step 1: Open Automator.**
+Launch Automator from Applications or Spotlight (Cmd+Space, type "Automator"). Choose "New Document" when prompted.
+
+**Step 2: Select the workflow type.**
+Pick one of these depending on your use case:
+
+- **Workflow** -- Run manually from within Automator. Good for testing.
+- **Application** -- Creates a standalone app you can drag files onto. Good for occasional use.
+- **Folder Action** -- Attached to a specific folder. Runs automatically when new files are added. Good for ongoing automation.
+- **Quick Action** -- Appears in the right-click context menu in Finder. Good for on-demand use.
+
+For batch renaming, **Application** or **Folder Action** are the most practical choices.
+
+**Step 3: Add the rename action.**
+In the left sidebar, search for "Rename Finder Items." Drag it into the workflow area on the right. Automator will ask if you want to add a "Copy Finder Items" step first to preserve originals. Click "Don't Add" if you want to rename in place, or "Add" if you want to keep backups.
+
+**Step 4: Configure the rename rule.**
+The "Rename Finder Items" action has several modes:
+
+- **Add Date or Time** -- Prepend or append the file's creation or modification date. Useful for organizing exports chronologically.
+- **Change Case** -- Convert filenames to lowercase, uppercase, or title case.
+- **Find and Replace** -- Same as Finder's Replace Text, but chainable with other actions.
+- **Make Sequential** -- Add an index number to each file.
+- **Replace Text** -- Swap one string for another.
+
+You can stack multiple rename actions in sequence. For example: first replace `IMG_` with an empty string, then add the creation date as a prefix, then change the case to lowercase.
+
+**Step 5: Add input.**
+If you chose a Workflow, add a "Get Specified Finder Items" action at the top and drag your files into it. If you chose an Application or Folder Action, files are passed in automatically.
+
+**Step 6: Test the workflow.**
+Click the Run button in the top right. Check the results in Finder. If something went wrong, press Cmd+Z in Finder to undo.
+
+**Step 7: Save.**
+Save with a descriptive name like "Rename Client Exports." If you built an Application, save it to your Applications folder or Desktop. If you built a Folder Action, it attaches to the folder you specified.
+
+### Automator rename example: date-prefixed client deliverables
+
+A designer exports files for clients every week and wants them prefixed with the export date.
+
+| Before | After |
+|---|---|
+| `homepage-mockup-v3.pdf` | `2026-02-08_homepage-mockup-v3.pdf` |
+| `mobile-nav-prototype.pdf` | `2026-02-08_mobile-nav-prototype.pdf` |
+| `brand-guidelines-update.pdf` | `2026-02-08_brand-guidelines-update.pdf` |
+
+Workflow: Get Specified Finder Items > Rename Finder Items (Add Date or Time, Date Added, Before Name, format YYYY-MM-DD, separator underscore).
+
+### Automator limitations
+
+Automator is pattern-based. It works well when every file should follow the same rule. It cannot look at a PDF and decide the filename should be `tax-return-2025.pdf` instead of `scan_003.pdf`. It also has no AI integration, and its reliability across macOS updates has become inconsistent. Apple has been shifting investment toward Shortcuts, which handles some of the same tasks but with a different interface.
+
+For a deeper walkthrough of Automator rename workflows, read [macOS Automator: How to Rename Files Automatically](/blog/macos-automator-rename-files-guide).
+
+## Method 3: Terminal scripts
+
+If you are comfortable with the command line, shell scripts give you the most control over batch renaming on Mac. You can use regex, conditionals, loops, and any metadata available through command-line tools.
+
+### When to use scripts
+
+- You need regex-based pattern matching (e.g., extracting dates from filenames)
+- You want to rename based on file metadata (EXIF data, PDF properties)
+- You need conditional logic (rename only files matching certain criteria)
+- You are already comfortable in Terminal
+
+### Basic rename with a loop
+
+Rename all `.jpeg` files to `.jpg`:
+
+```bash
+for f in *.jpeg; do
+  mv "$f" "${f%.jpeg}.jpg"
+done
+```
+
+### Replace text in filenames
+
+Replace spaces with hyphens in all filenames in the current directory:
+
+```bash
+for f in *\ *; do
+  mv "$f" "${f// /-}"
+done
+```
+
+### Add a date prefix from file metadata
+
+Prefix each JPEG with its EXIF creation date using `exiftool`:
+
+```bash
+for f in *.jpg; do
+  date=$(exiftool -d "%Y-%m-%d" -DateTimeOriginal -s3 "$f")
+  mv "$f" "${date}_${f}"
+done
+```
+
+Before and after:
+
+| Before | After |
+|---|---|
+| `IMG_4201.jpg` | `2026-01-15_IMG_4201.jpg` |
+| `IMG_4202.jpg` | `2026-01-15_IMG_4202.jpg` |
+| `IMG_4203.jpg` | `2026-01-16_IMG_4203.jpg` |
+
+### Sequential numbering with zero-padding
+
+Rename a set of files with a prefix and zero-padded numbers:
+
+```bash
+counter=1
+for f in *.png; do
+  mv "$f" "$(printf 'slide-%03d.png' $counter)"
+  counter=$((counter + 1))
+done
+```
+
+| Before | After |
+|---|---|
+| `Screen Shot 2026-02-01.png` | `slide-001.png` |
+| `Screen Shot 2026-02-02.png` | `slide-002.png` |
+| `Screen Shot 2026-02-03.png` | `slide-003.png` |
+
+### Using the `rename` command (Perl-based)
+
+If you install the Perl `rename` utility via Homebrew (`brew install rename`), you get regex support in a single command:
+
+```bash
+rename 's/IMG_/vacation-/' *.jpg
+```
+
+This replaces `IMG_` with `vacation-` in every `.jpg` filename in the current directory.
+
+### Script limitations
+
+Scripts are powerful but require technical knowledge. A typo in a rename script can damage filenames across an entire directory with no undo. Always test on a copy of your files first, or use `echo` before `mv` to preview what will happen:
+
+```bash
+for f in *.jpg; do
+  echo "mv $f -> vacation-${f#IMG_}"
+done
+```
+
+Scripts also share the same fundamental limitation as Finder and Automator: they apply rules, not understanding. A script cannot look at an image and decide what it shows. For content-aware renaming, you need AI.
+
+## Method 4: AI-powered renaming
+
+AI renaming is different from every method above. Instead of applying a pattern or rule to filenames, it analyzes the actual content of each file and generates a descriptive name based on what it finds. A screenshot of a Stripe dashboard becomes `stripe-monthly-revenue-chart.png`. A scanned PDF becomes `apartment-lease-agreement-2026.pdf`. A downloaded photo becomes `golden-gate-bridge-foggy-morning.jpg`.
+
+
+### When to use AI renaming
+
+- Screenshots with timestamp names that tell you nothing about the content
+- Scanned documents and PDFs with names like `scan_001.pdf`
+- Downloaded images with meaningless names like `download.jpg` or `IMG_4392.heic`
+- Any folder where filenames should describe what the file actually contains
+
+### How it works
+
+1. You select files or point the tool at a folder
+2. The AI analyzes each file: reading text in documents, recognizing objects and scenes in images, understanding UI elements in screenshots
+3. It generates a descriptive filename for each file based on the content
+4. Files are renamed individually, each with a unique name that reflects what it contains
+
+This is the key difference from every other method: each file gets its own name based on its own content, not a shared pattern applied to the group.
+
+![Zush AI rename completed showing five files with descriptive before and after names](/images/screenshots/light/zush-batch-rename-results.webp)
+
+### Before and after: AI renaming real-world examples
+
+#### Screenshots
+
+| Before | After |
+|---|---|
+| `Screenshot 2026-02-08 at 09.14.22.png` | `figma-checkout-page-mobile-wireframe.png` |
+| `Screenshot 2026-02-08 at 09.18.44.png` | `stripe-dashboard-monthly-revenue.png` |
+| `Screenshot 2026-02-08 at 10.02.11.png` | `slack-design-team-feedback-thread.png` |
+| `Screenshot 2026-02-08 at 10.45.33.png` | `vscode-typescript-build-error-log.png` |
+| `Screenshot 2026-02-08 at 14.05.19.png` | `notion-sprint-planning-board-week-6.png` |
+
+#### Documents and PDFs
+
+| Before | After |
+|---|---|
+| `scan_001.pdf` | `apartment-lease-agreement-2026.pdf` |
+| `download.pdf` | `w9-tax-form-acme-consulting.pdf` |
+| `Document (3).pdf` | `quarterly-sales-report-q4-2025.pdf` |
+| `attachment.pdf` | `invoice-7842-webdesign-services.pdf` |
+
+#### Photos and images
+
+| Before | After |
+|---|---|
+| `IMG_4201.jpg` | `golden-gate-bridge-sunset-view.jpg` |
+| `IMG_4202.jpg` | `fishermans-wharf-street-performer.jpg` |
+| `DSC_0087.jpg` | `team-dinner-italian-restaurant.jpg` |
+| `photo_2026.heic` | `hiking-trail-redwood-forest.heic` |
+| `download (1).jpg` | `blue-mid-century-modern-sofa.jpg` |
+
+
+### AI renaming with Zush
+
+[Zush](/batch-rename-files) is built specifically for this kind of renaming on Mac. It handles images, screenshots, PDFs, and documents with AI-powered content analysis. You can rename files in batch, set up folder monitoring for automatic renaming of new files, and customize the naming pattern to include dates, categories, or custom prefixes.
+
+For ongoing automation, [Zush watches folders](/auto-rename-files) like your Desktop or Downloads and renames new files as they arrive. That turns batch renaming into a background process that keeps your files organized without manual effort.
+
+For a detailed comparison of AI renaming tools, see [Best AI File Renamer Tools for Mac Compared](/blog/best-ai-file-renamer-tools-mac-compared).
+
+## Comparison: all four methods
+
+| Feature | Finder | Automator | Scripts | AI (Zush) |
+|---|---|---|---|---|
+| Difficulty | Easy | Medium | Hard | Easy |
+| Replace text | Yes | Yes | Yes | Yes |
+| Add prefix/suffix | Yes | Yes | Yes | Yes |
+| Sequential numbering | Yes | Yes | Yes | Yes |
+| Regex support | No | No | Yes | No |
+| Metadata-based naming | No | Yes | Yes | Limited |
+| Content-aware naming | No | No | No | Yes |
+| Folder monitoring | No | Yes (Folder Actions) | Yes (with cron/launchd) | Yes |
+| Undo support | Yes (Cmd+Z) | Yes (if copy step added) | No (without backup) | Yes |
+| Works on images | Pattern only | Pattern only | Pattern only | Reads image content |
+| Works on PDFs | Pattern only | Pattern only | Pattern only | Reads PDF text |
+| Handles mixed file types | Same rule for all | Same rule for all | Conditional logic possible | Each file named individually |
+| Cost | Free | Free | Free | Free tier + paid plans |
+
+The right choice depends on what you are renaming and why. If every file needs the same text change, Finder takes 10 seconds. If every file needs a unique descriptive name, AI is the only option that does not require you to open each file and think of a name yourself.
+
+## Common mistakes when batch renaming
+
+### Forgetting to include the file extension
+
+When using scripts, accidentally stripping or overwriting file extensions is a common error. A file renamed from `report.pdf` to `quarterly-report` (without `.pdf`) will not open correctly on double-click. Always preserve the extension in your rename logic.
+
+### Not testing on a copy first
+
+Renaming is destructive. If you apply a bad pattern to 500 files, undoing it can be painful or impossible (especially with scripts). Copy a small sample of files to a test folder, run your rename there, and verify the results before touching the originals.
+
+### Using characters that cause problems
+
+Avoid these characters in filenames on macOS: `/`, `:`, and null bytes. While macOS is more permissive than Windows, filenames with special characters can cause issues when syncing to cloud storage, transferring to external drives, or sharing with Windows or Linux users. Stick to letters, numbers, hyphens, and underscores.
+
+### Applying the wrong method to the problem
+
+Using Finder's Replace Text to rename a folder of mixed screenshots is a waste of time because every screenshot shows something different. Conversely, using AI to rename a batch of files that just need `IMG_` changed to `vacation-` is overkill. Match the tool to the actual task.
+
+### Ignoring sort order
+
+If you need files in a specific order, use zero-padded numbers (`001`, `002`, not `1`, `2`). Without padding, file `10` sorts between `1` and `2` in Finder because it sorts alphabetically, not numerically. Use at least three digits for collections under 1000 files.
+
+## Tips for better batch renaming results
+
+### Establish a naming convention first
+
+Before renaming anything, decide on your convention. Will you use hyphens or underscores? Lowercase or mixed case? Date prefix or no? Having a convention in place means you rename once and the names stay useful. For guidance, read [File Naming Conventions: Best Practices for Any Workflow](/blog/file-naming-conventions-best-practices).
+
+### Group files before renaming
+
+Do not try to rename an entire folder of mixed file types in a single pass. Separate photos from documents from screenshots, then batch rename each group with the appropriate tool and pattern. This avoids applying a photo naming scheme to a PDF or vice versa.
+
+### Use Finder's undo immediately
+
+Finder's batch rename supports Cmd+Z undo, but only immediately after the rename. If you perform other Finder actions first, the undo history moves on. Check your results right after renaming and undo immediately if something is wrong.
+
+### Combine methods for complex jobs
+
+Real-world folders often need more than one approach. You might use Finder to strip a common prefix, then use [Zush to batch rename files on Mac](/batch-rename-files) and generate descriptive names for the files that need content-aware renaming. Sequential renaming for event photos, AI renaming for screenshots, and Automator for recurring exports can all coexist in the same workflow.
+
+### Keep your Downloads folder clean
+
+The Downloads folder is the most common source of poorly named files. Setting up automatic renaming for downloads prevents the mess from accumulating. See [How to Organize Your Downloads Folder on Mac](/blog/how-to-organize-downloads-folder-mac) for a complete strategy.
+
+## FAQ
+
+### How do I batch rename files on Mac without installing anything?
+
+Use Finder's built-in rename tool. Select the files you want to rename, right-click, and choose "Rename..." from the context menu. You can replace text, add text, or format names with sequential numbers. This works on any Mac running macOS Yosemite (10.10) or later with no downloads required.
+
+### Can Finder rename files based on their content?
+
+No. Finder's batch rename is strictly pattern-based. It can replace text strings, add prefixes or suffixes, and apply sequential numbering, but it cannot analyze what a file contains. For content-aware renaming where each file gets a unique descriptive name, you need an AI-powered tool that can read images and documents.
+
+![Zush activity tab showing rename history with undo buttons for each renamed file](/images/screenshots/light/zush-activity-log.webp)
+
+### Is there a way to undo a batch rename on Mac?
+
+Yes, if you use Finder. Immediately after a batch rename, press Cmd+Z to undo the entire operation. All files revert to their original names. This undo is only available as the very next action. If you use Terminal scripts, there is no built-in undo, so always test on copies first or save a list of original filenames before running the script.
+
+### What is the best way to rename photos with dates on Mac?
+
+For adding the file's creation date as a prefix, Automator's "Add Date or Time" rename action is the easiest option. For adding EXIF capture dates from camera metadata, use a Terminal script with `exiftool`. For adding dates plus descriptive content names, an AI tool like Zush can combine date patterns with content analysis.
+
+### How do I rename hundreds of screenshots on Mac?
+
+For basic renames like replacing "Screenshot" with a project name, Finder handles this in seconds. For giving each screenshot a descriptive name based on what it shows, use AI renaming. Select all the screenshots, let the AI analyze each image, and get names like `slack-design-review-thread.png` instead of `Screenshot 2026-02-08 at 10.45.33.png`. For automatic renaming of future screenshots, set up folder monitoring. See [How to Rename Screenshots Automatically on Mac](/blog/rename-screenshots-automatically-mac).
+
+### Can I batch rename PDFs based on their content?
+
+Yes, with AI renaming tools. The AI reads the text content of each PDF and generates a filename that reflects the document's subject. A scanned invoice named `scan_042.pdf` becomes `invoice-7842-webdesign-services-march-2026.pdf`. For a complete walkthrough, see [How to Rename PDF Files Automatically: AI Workflow for Repeating Folders](/blog/rename-pdf-files-automatically).
+
+### Does batch renaming affect file metadata or creation dates?
+
+Renaming a file in Finder or through Automator does not change its creation date, modification date, or internal metadata. The file content stays identical. Only the filename in the filesystem changes. However, some cloud sync services may treat a rename as a new upload, so check your sync status after renaming large batches on synced folders.
+
+### What naming convention should I use for batch renamed files?
+
+Use lowercase letters, hyphens between words, and dates in ISO format (YYYY-MM-DD) when chronological order matters. Avoid spaces, special characters, and vague labels like `final-v2`. A consistent convention makes files sortable, searchable, and transferable across operating systems. For detailed guidance, see [File Naming Conventions: Best Practices](/blog/file-naming-conventions-best-practices).
+
+## Conclusion
+
+Batch renaming on Mac is not one workflow. It is a set of workflows, and the right approach depends on what kind of rename you actually need.
+
+For quick text replacements and sequential numbering, Finder handles it in seconds with no setup. For repeatable rules that run automatically, Automator gives you more power with folder actions and metadata access. For regex patterns and full control, Terminal scripts let you do anything the filesystem allows. And for the hardest rename problem, giving every file a unique descriptive name based on its actual content, AI-powered tools fill the gap that no pattern-based method can reach.
+
+Pick the simplest tool that matches the real problem. Use Finder when you can, scripts when you must, and AI when the filenames need to mean something.

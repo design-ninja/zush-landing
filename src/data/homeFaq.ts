@@ -1,4 +1,4 @@
-import type { FAQItem } from '@/utils/frontmatter';
+import type { FAQItem } from '@/data/blog';
 import { APP_CONFIG } from '@/constants';
 
 const imageExtensions = APP_CONFIG.image_extensions.map((e) => e.toUpperCase()).join(', ');

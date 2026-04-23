@@ -1,11 +1,198 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import BlogList from '@/views/Blog/BlogList';
+import { ArrowRight, History, Tags } from 'lucide-react';
+import BlogPostCard from '@/components/blog/BlogPostCard.astro';
+import {
+  getAllTags,
+  getBlogIndexSections,
+  getRecentBlogPosts,
+} from '@/data/blog';
 import { getSeoForPath } from '@/seo/config';
+import headingStyles from '@/components/Heading/Heading.module.scss';
+import textStyles from '@/components/Text/Text.module.scss';
+import backToHomeStyles from '@/components/BackToHome/BackToHome.module.scss';
+import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module.scss';
+import styles from '@/views/Blog/BlogList.module.scss';
 
 const seo = getSeoForPath('/blog');
+const sections = await getBlogIndexSections();
+const recentPosts = await getRecentBlogPosts(6);
+const topTags = (await getAllTags()).slice(0, 12);
 ---
 
 <BaseLayout seo={seo}>
-  <BlogList />
+  <section class={styles.BlogList}>
+    <div class={styles.BlogList__Container}>
+      <div class={sectionHeaderStyles.SectionHeader}>
+        <h1
+          class={[
+            headingStyles.Heading,
+            headingStyles.Heading_h1,
+            headingStyles.Heading_center,
+            sectionHeaderStyles.SectionHeader__Title,
+          ].join(' ')}
+        >
+          <span class={styles.BlogList__TitleAccent}>Zush</span> Blog
+        </h1>
+        <p
+          class={[
+            textStyles.Text,
+            textStyles.Text_lg,
+            textStyles.Text_subtle,
+            textStyles.Text_center,
+            sectionHeaderStyles.SectionHeader__Description,
+          ].join(' ')}
+        >
+          Guides, comparisons, and real workflows for AI-powered file renaming across Mac, Windows,
+          and general desktop setup.
+        </p>
+      </div>
+
+      <div class={styles.BlogList__IntroLinks}>
+        <a class={styles.BlogList__IntroCard} href='/blog/archive'>
+          <h2
+            class={[
+              headingStyles.Heading,
+              headingStyles.Heading_h4,
+              styles.BlogList__IntroCardTitle,
+            ].join(' ')}
+          >
+            <span class={styles.BlogList__IntroCardTitleIcon} aria-hidden='true'>
+              <History size={18} strokeWidth={2.2} />
+            </span>
+            <span>Browse the full archive</span>
+          </h2>
+          <p
+            class={[
+              textStyles.Text,
+              textStyles.Text_md,
+              textStyles.Text_subtle,
+              styles.BlogList__IntroCardDescription,
+            ].join(' ')}
+          >
+            See every article in chronological order with clean pagination and canonical blog URLs.
+          </p>
+          <span class={styles.BlogList__IntroCardMeta}>
+            <span>Open archive</span>
+            <ArrowRight size={16} strokeWidth={2.2} />
+          </span>
+        </a>
+        <a class={styles.BlogList__IntroCard} href='/blog/tags'>
+          <h2
+            class={[
+              headingStyles.Heading,
+              headingStyles.Heading_h4,
+              styles.BlogList__IntroCardTitle,
+            ].join(' ')}
+          >
+            <span class={styles.BlogList__IntroCardTitleIcon} aria-hidden='true'>
+              <Tags size={18} strokeWidth={2.2} />
+            </span>
+            <span>Explore topics and tags</span>
+          </h2>
+          <p
+            class={[
+              textStyles.Text,
+              textStyles.Text_md,
+              textStyles.Text_subtle,
+              styles.BlogList__IntroCardDescription,
+            ].join(' ')}
+          >
+            Jump into clusters like automation, screenshots, documents, BYOK, search, and platform
+            workflows.
+          </p>
+          <span class={styles.BlogList__IntroCardMeta}>
+            <span>{`${topTags.length}+ active tags`}</span>
+            <ArrowRight size={16} strokeWidth={2.2} />
+          </span>
+        </a>
+      </div>
+
+      <div class={styles.BlogList__Sections}>
+        {
+          sections.map((section) => (
+            <section class={styles.BlogList__Section}>
+              <div class={styles.BlogList__SectionHeader}>
+                <div class={styles.BlogList__SectionTitleRow}>
+                  <h2
+                    class={[
+                      headingStyles.Heading,
+                      headingStyles.Heading_h3,
+                      styles.BlogList__SectionTitle,
+                    ].join(' ')}
+                  >
+                    {section.title}
+                  </h2>
+                  <span class={styles.BlogList__SectionCount}>{section.posts.length}</span>
+                </div>
+              </div>
+              <p
+                class={[
+                  textStyles.Text,
+                  textStyles.Text_md,
+                  textStyles.Text_subtle,
+                  styles.BlogList__SectionDescription,
+                ].join(' ')}
+              >
+                {section.description}
+              </p>
+              <div class={styles.BlogList__SectionActions}>
+                <a class={styles.BlogList__SectionAction} href='/blog/archive'>
+                  Browse archive
+                </a>
+                <a class={styles.BlogList__SectionAction} href={section.ctaHref}>
+                  {section.ctaLabel}
+                </a>
+              </div>
+              <div class={styles.BlogList__SectionPosts}>
+                {section.posts.map((post) => <BlogPostCard post={post} />)}
+              </div>
+            </section>
+          ))
+        }
+
+        <section class={styles.BlogList__Section}>
+          <div class={styles.BlogList__SectionHeader}>
+            <div class={styles.BlogList__SectionTitleRow}>
+              <h2
+                class={[
+                  headingStyles.Heading,
+                  headingStyles.Heading_h3,
+                  styles.BlogList__SectionTitle,
+                ].join(' ')}
+              >
+                Recent Articles
+              </h2>
+              <span class={styles.BlogList__SectionCount}>{recentPosts.length}</span>
+            </div>
+          </div>
+          <p
+            class={[
+              textStyles.Text,
+              textStyles.Text_md,
+              textStyles.Text_subtle,
+              styles.BlogList__SectionDescription,
+            ].join(' ')}
+          >
+            The latest additions from the archive, sorted by publish date.
+          </p>
+          <div class={styles.BlogList__SectionActions}>
+            <a class={styles.BlogList__SectionAction} href='/blog/archive'>
+              View all posts
+            </a>
+            <a class={styles.BlogList__SectionAction} href='/blog/tags'>
+              Browse tags
+            </a>
+          </div>
+          <div class={styles.BlogList__SectionPosts}>
+            {recentPosts.map((post) => <BlogPostCard post={post} />)}
+          </div>
+        </section>
+      </div>
+
+      <a class={[backToHomeStyles.BackToHome, styles.BlogList__BackLink].join(' ')} href='/'>
+        ← Back to Home
+      </a>
+    </div>
+  </section>
 </BaseLayout>

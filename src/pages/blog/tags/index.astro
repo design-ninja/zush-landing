@@ -1,0 +1,66 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getAllTags } from '@/data/blog';
+import type { SeoMeta } from '@/seo/config';
+import headingStyles from '@/components/Heading/Heading.module.scss';
+import textStyles from '@/components/Text/Text.module.scss';
+import styles from '@/views/Blog/BlogList.module.scss';
+
+const tags = await getAllTags();
+const seo: SeoMeta = {
+  title: 'Blog Tags — Zush',
+  description:
+    'Browse tag pages for the Zush blog. These pages are navigational and group articles by topic.',
+  canonicalPath: '/blog/tags',
+  robots: 'noindex, follow',
+  ogType: 'website',
+};
+---
+
+<BaseLayout seo={seo}>
+  <section class={styles.BlogList}>
+    <div class={styles.BlogList__Container}>
+      <div class={styles.BlogList__SectionHeader}>
+        <h1 class={[headingStyles.Heading, headingStyles.Heading_h1].join(' ')}>
+          Blog Tags
+        </h1>
+        <p
+          class={[
+            textStyles.Text,
+            textStyles.Text_lg,
+            textStyles.Text_subtle,
+            styles.BlogList__SectionDescription,
+          ].join(' ')}
+        >
+          Topic navigation for the Zush blog. These taxonomy pages stay out of search indexing until
+          the tag set is editorially cleaned up.
+        </p>
+      </div>
+
+      {tags.length > 0 ? (
+        <div class={styles.BlogList__TagCloud}>
+          {tags.map((tag) => (
+            <a class={styles.BlogList__TagCard} href={`/blog/tags/${tag.slug}`}>
+              <h2
+                class={[
+                  headingStyles.Heading,
+                  headingStyles.Heading_h4,
+                  styles.BlogList__TagTitle,
+                ].join(' ')}
+              >
+                {tag.label}
+              </h2>
+              <span class={styles.BlogList__TagMeta}>{`${tag.count} article${
+                tag.count === 1 ? '' : 's'
+              }`}</span>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <p class={[textStyles.Text, textStyles.Text_md, styles.BlogList__Empty].join(' ')}>
+          No tags found.
+        </p>
+      )}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,7 +1,7 @@
 import { execSync } from 'node:child_process';
 import { statSync } from 'node:fs';
 import { join } from 'node:path';
-import { getAllPosts } from '@/data/blog';
+import { getAllPosts, isSitemapEligibleBlogPost } from '@/data/blog';
 import { INDEXABLE_STATIC_ROUTES, FEATURE_ROUTES, SITE_ORIGIN, THIN_CONTENT_THRESHOLD } from '@/seo/config';
 
 const BLOG_CONTENT_DIR = join(process.cwd(), 'src', 'content', 'blog');
@@ -10,6 +10,7 @@ const PAGES_DIR = join(process.cwd(), 'src', 'pages');
 function getPageSourceFile(route: string): string {
   if (route === '/') return join(PAGES_DIR, 'index.astro');
   if (route === '/blog') return join(PAGES_DIR, 'blog', 'index.astro');
+  if (route === '/blog/archive') return join(PAGES_DIR, 'blog', 'archive', '[...page].astro');
   return join(PAGES_DIR, `${route.slice(1)}.astro`);
 }
 
@@ -75,7 +76,7 @@ function getRouteHints(route: string): { changefreq: Changefreq; priority: strin
   return { changefreq: 'monthly', priority: '0.5' };
 }
 
-export function GET() {
+export async function GET() {
   const staticRoutes = INDEXABLE_STATIC_ROUTES.filter(
     (route) =>
       route !== '/thank-you' &&
@@ -95,12 +96,12 @@ export function GET() {
     };
   });
 
-  const posts = getAllPosts().filter(
-    (post) => post.wordCount >= THIN_CONTENT_THRESHOLD && !post.noindex && !post.canonical,
+  const posts = (await getAllPosts()).filter((post) =>
+    isSitemapEligibleBlogPost(post, THIN_CONTENT_THRESHOLD),
   );
   const blogEntries = posts.map((post) => {
     const loc = `${SITE_ORIGIN}/blog/${post.slug}`;
-    const filePath = join(BLOG_CONTENT_DIR, `${post.slug}.md`);
+    const filePath = join(BLOG_CONTENT_DIR, `${post.slug}.mdx`);
 
     return {
       loc,

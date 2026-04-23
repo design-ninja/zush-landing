@@ -1,11 +1,11 @@
-import type { BlogFrontmatter, FAQItem } from './frontmatter';
+import type { BlogPost, FAQItem } from '@/data/blog';
 import { toIsoDateTime } from '@/seo/config';
 import { DOWNLOAD_URL, WINDOWS_STORE_URL } from '@/constants';
 
 const SITE_ORIGIN = 'https://zushapp.com';
 
 export function buildBlogPostingJsonLd(
-  post: BlogFrontmatter,
+  post: BlogPost,
   pageUrl = `${SITE_ORIGIN}/blog/${post.slug}`,
 ) {
   return {

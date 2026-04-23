@@ -1,0 +1,14 @@
+---
+import headingStyles from '@/components/Heading/Heading.module.scss';
+
+const { class: className = '', ...props } = Astro.props;
+---
+
+<h4
+  {...props}
+  class={[headingStyles.Heading, headingStyles.Heading_h4, className]
+    .filter(Boolean)
+    .join(' ')}
+>
+  <slot />
+</h4>

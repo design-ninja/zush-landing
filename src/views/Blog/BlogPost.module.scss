@@ -97,6 +97,7 @@
     border-radius: $radius-full;
     font-size: 0.75rem;
     font-weight: 500;
+    text-decoration: none;
   }
 
   &__Tldr {
@@ -163,6 +164,7 @@
     font-size: 0.92rem;
     line-height: 1.45;
     color: var(--foreground);
+    text-decoration: none;
 
     &_subtle {
       color: var(--muted-foreground);
@@ -206,6 +208,7 @@
   &__MobileTocLink {
     color: var(--foreground);
     line-height: 1.5;
+    text-decoration: none;
   }
 
   &__Related {
@@ -238,6 +241,9 @@
     &:hover {
       border-color: var(--primary);
     }
+
+    text-decoration: none;
+    color: inherit;
   }
 
   &__RelatedCardTitle {

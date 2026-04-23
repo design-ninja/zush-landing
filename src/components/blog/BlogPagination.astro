@@ -1,0 +1,28 @@
+---
+import styles from '@/components/blog/BlogPagination.module.scss';
+
+const { page, label = 'posts' } = Astro.props;
+const shouldRender = Boolean(page && page.lastPage > 1);
+---
+
+{
+  shouldRender && (
+    <nav aria-label='Pagination' class={styles.Pagination}>
+      <p class={styles.Pagination__Meta}>
+        {`Page ${page.currentPage} of ${page.lastPage} · ${page.total} ${label}`}
+      </p>
+      <div class={styles.Pagination__Links}>
+        {page.url.prev && (
+          <a class={styles.Pagination__Link} href={page.url.prev}>
+            Previous
+          </a>
+        )}
+        {page.url.next && (
+          <a class={styles.Pagination__Link} href={page.url.next}>
+            Next
+          </a>
+        )}
+      </div>
+    </nav>
+  )
+}
