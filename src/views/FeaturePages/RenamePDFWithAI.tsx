@@ -34,9 +34,9 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'HowTo',
-      name: 'Rename PDFs with AI on Mac',
+      name: 'Rename PDFs with AI',
       description:
-        'Use Zush to automatically rename PDF files based on their text content using AI on macOS.',
+        'Use Zush to automatically rename PDF files based on their text content using AI.',
       step: [
         {
           '@type': 'HowToStep',
@@ -76,7 +76,7 @@ const jsonLd = {
     buildSoftwareApplicationJsonLd({
       pagePath: '/rename-pdf-with-ai',
       description:
-        'AI PDF renamer for macOS that extracts text from invoices, contracts, scanned receipts, and reports to generate searchable filenames automatically.',
+        'AI PDF renamer that extracts text from invoices, contracts, scanned receipts, and reports to generate searchable filenames automatically.',
       featureList: [
         'Rename PDF files by document content',
         'Support for scanned PDFs via AI vision',
@@ -91,11 +91,11 @@ const jsonLd = {
 
 const RenamePDFWithAI = () => (
   <FeatureLandingPage
-    h1="Rename PDFs with AI on Mac"
+    h1="Rename PDFs with AI"
     h1Accent="Rename PDFs"
     category="pdf"
     definitionTitle="What Is AI PDF Renaming?"
-    definitionText="Rename PDFs with AI on Mac using Zush to read invoices, contracts, scans, and reports, then turn weak filenames into searchable document titles."
+    definitionText="Rename PDFs with AI using Zush to read invoices, contracts, scans, and reports, then turn weak filenames into searchable document titles."
     showcaseSlides={[
       {
         files: [
@@ -131,8 +131,8 @@ const RenamePDFWithAI = () => (
     faqItems={faqItems}
     relatedPages={[
       { title: 'Rename Documents with AI', href: '/rename-documents-with-ai' },
-      { title: 'AI File Renamer for macOS', href: '/ai-file-renamer' },
-      { title: 'Auto Rename Files on macOS', href: '/auto-rename-files' },
+      { title: 'AI File Renamer', href: '/ai-file-renamer' },
+      { title: 'Auto Rename Files with AI', href: '/auto-rename-files' },
     ]}
     relatedBlogPosts={[
       { title: 'How to Rename PDF Files Automatically', href: 'rename-pdf-files-automatically' },

@@ -3,11 +3,11 @@ import { buildSoftwareApplicationJsonLd } from '@/utils/jsonLd';
 
 const AIFileRenamer = () => (
   <FeatureLandingPage
-    h1="AI File Renamer for Mac"
+    h1="AI File Renamer"
     h1Accent="AI File Renamer"
     category="general"
     definitionTitle="What Is an AI File Renamer?"
-    definitionText="Zush is the AI file renamer for Mac when you need one workflow for screenshots, PDFs, documents, and photos with descriptive names, batch control, and rollback."
+    definitionText="Zush is the AI file renamer when you need one workflow for screenshots, PDFs, documents, and photos with descriptive names, batch control, and rollback."
     showcaseSlides={[
       {
         files: [
@@ -43,7 +43,7 @@ const AIFileRenamer = () => (
     faqItems={[
       {
         question: 'How is Zush different from other AI file renamers?',
-        answer: 'Zush is the only macOS AI file renamer that combines content-aware renaming, batch processing, and automatic folder monitoring in a single app. It also uses a one-time pricing model ($10 for Pro) instead of monthly subscriptions, which saves money over time.',
+        answer: 'Zush combines content-aware renaming, batch processing, and automatic folder monitoring in a single desktop app. It also uses a one-time pricing model ($10 for Pro) instead of monthly subscriptions, which saves money over time.',
       },
       {
         question: 'Do I need an internet connection for AI renaming?',
@@ -63,7 +63,7 @@ const AIFileRenamer = () => (
       },
     ]}
     relatedPages={[
-      { title: 'Auto Rename Files on macOS', href: '/auto-rename-files' },
+      { title: 'Auto Rename Files with AI', href: '/auto-rename-files' },
       { title: 'AI Image Renamer', href: '/ai-image-renamer' },
       { title: 'Rename Documents with AI', href: '/rename-documents-with-ai' },
     ]}
@@ -78,13 +78,13 @@ const AIFileRenamer = () => (
         buildSoftwareApplicationJsonLd({
           pagePath: '/ai-file-renamer',
           description:
-            'AI-powered file renaming app for macOS that analyzes screenshots, PDFs, documents, and photos to generate descriptive, searchable filenames automatically.',
+            'AI-powered file renaming app that analyzes screenshots, PDFs, documents, and photos to generate descriptive, searchable filenames automatically.',
           featureList: [
             'AI-powered content-aware file renaming',
             'Batch rename for files and folders',
             'Automatic folder monitoring',
             'Custom naming patterns',
-            'Smart Finder tags and metadata',
+            'Smart tags and metadata',
             'PDF, document, and image analysis',
             'Bring Your Own API Key (BYOK)',
           ],
@@ -97,7 +97,7 @@ const AIFileRenamer = () => (
               name: 'How is Zush different from other AI file renamers?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Zush is the only macOS AI file renamer that combines content-aware renaming, batch processing, and automatic folder monitoring in a single app. It also uses a one-time pricing model ($10 for Pro) instead of monthly subscriptions, which saves money over time.',
+                text: 'Zush combines content-aware renaming, batch processing, and automatic folder monitoring in a single desktop app. It also uses a one-time pricing model ($10 for Pro) instead of monthly subscriptions, which saves money over time.',
               },
             },
             {

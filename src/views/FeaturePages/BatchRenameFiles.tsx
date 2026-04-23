@@ -3,10 +3,10 @@ import { buildSoftwareApplicationJsonLd } from '@/utils/jsonLd';
 
 const BatchRenameFiles = () => (
   <FeatureLandingPage
-    h1="Batch Rename Files on Mac"
+    h1="Batch Rename Files with AI"
     h1Accent="Batch Rename"
     category="general"
-    definitionTitle="What Is Batch File Renaming on Mac?"
+    definitionTitle="What Is Batch File Renaming?"
     definitionText="Batch rename (bulk rename) hundreds of files at once. Zush AI reads each file and gives it a unique descriptive name — not a shared prefix or counter."
     showcaseSlides={[
       {
@@ -42,16 +42,16 @@ const BatchRenameFiles = () => (
     ]}
     faqItems={[
       {
-        question: 'Is "batch rename" the same as "bulk rename" on Mac?',
-        answer: 'Functionally yes — both terms describe renaming many files at once in one operation. "Batch rename" is the standard term on macOS (Finder calls its built-in tool "Rename Finder Items" and every Apple tutorial uses "batch"). "Bulk rename" is more common on Windows because of the popular Bulk Rename Utility. This page uses both terms interchangeably.',
+        question: 'Is "batch rename" the same as "bulk rename"?',
+        answer: 'Functionally yes — both terms describe renaming many files at once in one operation. "Batch rename" is the more standard generic term, while "bulk rename" is common in Windows tooling. This page uses both terms interchangeably.',
       },
       {
         question: 'How many files can Zush batch rename at once?',
         answer: 'There is no hard limit. Zush has been tested with folders of 2,000+ files. Processing speed depends on file type and AI model — screenshots and small images typically take 1–2 seconds each, PDFs and RAW photos a little longer. Batches run in parallel, so a 400-file folder is usually done in a few minutes.',
       },
       {
-        question: 'How is AI batch renaming different from Finder\'s built-in batch rename?',
-        answer: 'Finder\'s batch rename can only apply the same rule to every file — replace text, add a prefix, or number files sequentially. It cannot read what is inside the file. Zush reads each file\'s content and generates a unique descriptive name, so "IMG_4201.jpg, IMG_4202.jpg, IMG_4203.jpg" become three different meaningful names like "Barcelona Sagrada Familia.jpg, Park Guell Bench.jpg, Tapas Dinner.jpg".',
+        question: 'How is AI batch renaming different from built-in batch rename tools?',
+        answer: 'Built-in batch rename tools can only apply the same rule to every file — replace text, add a prefix, or number files sequentially. They cannot read what is inside the file. Zush reads each file\'s content and generates a unique descriptive name, so "IMG_4201.jpg, IMG_4202.jpg, IMG_4203.jpg" become three different meaningful names like "Barcelona Sagrada Familia.jpg, Park Guell Bench.jpg, Tapas Dinner.jpg".',
       },
       {
         question: 'Can I undo a batch rename if the AI gets names wrong?',
@@ -67,8 +67,8 @@ const BatchRenameFiles = () => (
       },
     ]}
     relatedPages={[
-      { title: 'AI File Renamer for macOS', href: '/ai-file-renamer' },
-      { title: 'Auto Rename Files on Mac', href: '/auto-rename-files' },
+      { title: 'AI File Renamer', href: '/ai-file-renamer' },
+      { title: 'Auto Rename Files with AI', href: '/auto-rename-files' },
       { title: 'Rename Photos with AI', href: '/rename-photos-with-ai' },
       { title: 'Rename PDFs with AI', href: '/rename-pdf-with-ai' },
     ]}
@@ -82,8 +82,8 @@ const BatchRenameFiles = () => (
       '@graph': [
         {
           '@type': 'HowTo',
-          name: 'How to Batch Rename Files on Mac with AI',
-          description: 'Batch rename many files at once on macOS using Zush. AI reads each file\'s content and generates unique descriptive names — not just a shared prefix or counter.',
+          name: 'How to Batch Rename Files with AI',
+          description: 'Batch rename many files at once using Zush. AI reads each file\'s content and generates unique descriptive names — not just a shared prefix or counter.',
           step: [
             {
               '@type': 'HowToStep',
@@ -114,10 +114,10 @@ const BatchRenameFiles = () => (
           mainEntity: [
             {
               '@type': 'Question',
-              name: 'Is "batch rename" the same as "bulk rename" on Mac?',
+              name: 'Is "batch rename" the same as "bulk rename"?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Functionally yes — both terms describe renaming many files at once in one operation. "Batch rename" is the standard term on macOS (Finder calls its built-in tool "Rename Finder Items" and every Apple tutorial uses "batch"). "Bulk rename" is more common on Windows because of the popular Bulk Rename Utility. This page uses both terms interchangeably.',
+                text: 'Functionally yes — both terms describe renaming many files at once in one operation. "Batch rename" is the more standard generic term, while "bulk rename" is common in Windows tooling. This page uses both terms interchangeably.',
               },
             },
             {
@@ -130,10 +130,10 @@ const BatchRenameFiles = () => (
             },
             {
               '@type': 'Question',
-              name: "How is AI batch renaming different from Finder's built-in batch rename?",
+              name: 'How is AI batch renaming different from built-in batch rename tools?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: "Finder's batch rename can only apply the same rule to every file — replace text, add a prefix, or number files sequentially. It cannot read what is inside the file. Zush reads each file's content and generates a unique descriptive name.",
+                text: "Built-in batch rename tools can only apply the same rule to every file — replace text, add a prefix, or number files sequentially. They cannot read what is inside the file. Zush reads each file's content and generates a unique descriptive name.",
               },
             },
             {
@@ -165,7 +165,7 @@ const BatchRenameFiles = () => (
         buildSoftwareApplicationJsonLd({
           pagePath: '/batch-rename-files',
           description:
-            'Batch rename hundreds of files on Mac using AI. Zush generates unique descriptive names for photos, PDFs, documents and screenshots — not just prefixes or counters.',
+            'Batch rename hundreds of files using AI. Zush generates unique descriptive names for photos, PDFs, documents and screenshots — not just prefixes or counters.',
           featureList: [
             'AI-powered batch rename for mixed-format folders',
             'Unique descriptive names per file (not shared prefix)',

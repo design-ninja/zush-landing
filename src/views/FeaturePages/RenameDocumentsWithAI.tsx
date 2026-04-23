@@ -32,11 +32,11 @@ const faqItems = [
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
-    {
-      '@type': 'HowTo',
-      name: 'Rename Documents with AI on Mac',
-      description:
-        'Use Zush to automatically rename document files based on their text content using AI on macOS.',
+        {
+          '@type': 'HowTo',
+          name: 'Rename Documents with AI',
+          description:
+        'Use Zush to automatically rename document files based on their text content using AI.',
       step: [
         {
           '@type': 'HowToStep',
@@ -73,10 +73,10 @@ const jsonLd = {
         },
       })),
     },
-    buildSoftwareApplicationJsonLd({
-      pagePath: '/rename-documents-with-ai',
-      description:
-        'AI document renamer for macOS that reads DOCX, XLSX, PPTX, TXT, CSV, JSON, and email files to generate searchable filenames automatically.',
+        buildSoftwareApplicationJsonLd({
+          pagePath: '/rename-documents-with-ai',
+          description:
+        'AI document renamer that reads DOCX, XLSX, PPTX, TXT, CSV, JSON, and email files to generate searchable filenames automatically.',
       featureList: [
         'Rename DOCX, XLSX, PPTX, TXT, CSV, JSON, and EML files',
         'Extract document text, spreadsheet headers, and slide titles',
@@ -91,11 +91,11 @@ const jsonLd = {
 
 const RenameDocumentsWithAI = () => (
   <FeatureLandingPage
-    h1="Rename Documents with AI on Mac"
+    h1="Rename Documents with AI"
     h1Accent="Rename Documents"
     category="document"
     definitionTitle="What Is AI Document Renaming?"
-    definitionText="Rename documents with AI on Mac using Zush to read reports, proposals, spreadsheets, slide decks, and email exports, then generate filenames that match the document content."
+    definitionText="Rename documents with AI using Zush to read reports, proposals, spreadsheets, slide decks, and email exports, then generate filenames that match the document content."
     showcaseSlides={[
       {
         files: [
@@ -131,8 +131,8 @@ const RenameDocumentsWithAI = () => (
     faqItems={faqItems}
     relatedPages={[
       { title: 'Rename PDFs with AI', href: '/rename-pdf-with-ai' },
-      { title: 'AI File Renamer for macOS', href: '/ai-file-renamer' },
-      { title: 'Auto Rename Files on macOS', href: '/auto-rename-files' },
+      { title: 'AI File Renamer', href: '/ai-file-renamer' },
+      { title: 'Auto Rename Files with AI', href: '/auto-rename-files' },
     ]}
     relatedBlogPosts={[
       { title: 'AI Document Renamer: How to Auto-Name Docs, PDFs & Spreadsheets', href: 'ai-document-renamer-guide' },

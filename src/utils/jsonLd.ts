@@ -1,5 +1,6 @@
 import type { BlogFrontmatter, FAQItem } from './frontmatter';
 import { toIsoDateTime } from '@/seo/config';
+import { DOWNLOAD_URL, WINDOWS_STORE_URL } from '@/constants';
 
 const SITE_ORIGIN = 'https://zushapp.com';
 
@@ -94,6 +95,9 @@ export interface SoftwareApplicationData {
   applicationSubCategory?: string;
   screenshot?: string;
   offers?: SoftwareOfferData[];
+  operatingSystem?: string | string[];
+  downloadUrl?: string;
+  installUrl?: string;
 }
 
 const DEFAULT_SOFTWARE_OFFERS: SoftwareOfferData[] = [
@@ -123,8 +127,9 @@ export function buildSoftwareApplicationJsonLd(data: SoftwareApplicationData) {
     description: data.description,
     applicationCategory: 'UtilitiesApplication',
     applicationSubCategory: data.applicationSubCategory ?? 'File Management',
-    operatingSystem: 'macOS 14.0+',
-    downloadUrl: `${SITE_ORIGIN}/releases/Zush.dmg`,
+    operatingSystem: data.operatingSystem ?? ['macOS 14.0+', 'Windows 10', 'Windows 11'],
+    downloadUrl: data.downloadUrl ?? DOWNLOAD_URL,
+    ...(data.installUrl ? { installUrl: data.installUrl } : { installUrl: WINDOWS_STORE_URL }),
     screenshot: data.screenshot ?? `${SITE_ORIGIN}/og-image.png`,
     offers: (data.offers ?? DEFAULT_SOFTWARE_OFFERS).map((offer) => ({
       '@type': 'Offer',

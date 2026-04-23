@@ -30,7 +30,7 @@ const jsonLd = {
     buildSoftwareApplicationJsonLd({
       pagePath: '/ai-image-renamer',
       description:
-        'AI-powered image renamer for macOS that uses vision models to rename screenshots, photos, downloaded images, and design assets with descriptive filenames.',
+        'AI-powered image renamer that uses vision models to rename screenshots, photos, downloaded images, and design assets with descriptive filenames.',
       featureList: [
         'AI renaming for screenshots and downloaded images',
         'Photo and design asset naming across 22 image formats',
@@ -56,11 +56,11 @@ const jsonLd = {
 
 const AIImageRenamer = () => (
   <FeatureLandingPage
-    h1="AI Image Renamer for Mac"
+    h1="AI Image Renamer"
     h1Accent="AI Image Renamer"
     category="image"
     definitionTitle="What Is an AI Image Renamer?"
-    definitionText="Use Zush as an AI image renamer for Mac for screenshots, photos, downloads, and design assets with descriptive names and repeatable cleanup."
+    definitionText="Use Zush as an AI image renamer for screenshots, photos, downloads, and design assets with descriptive names and repeatable cleanup."
     showcaseSlides={[
       {
         files: [
@@ -97,7 +97,7 @@ const AIImageRenamer = () => (
     relatedPages={[
       { title: 'Rename Photos with AI', href: '/rename-photos-with-ai' },
       { title: 'Rename Screenshots with AI', href: '/rename-screenshots-with-ai' },
-      { title: 'AI File Renamer for macOS', href: '/ai-file-renamer' },
+      { title: 'AI File Renamer', href: '/ai-file-renamer' },
     ]}
     relatedBlogPosts={[
       { title: 'How to Rename Images with AI on Mac (2026 Step-by-Step)', href: 'how-to-rename-images-with-ai-on-macos' },

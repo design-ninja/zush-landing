@@ -8,9 +8,9 @@ const faqItems = [
       'Yes. Zush can monitor your Screenshots folder (or any folder you choose) and automatically rename new files as they appear. Just enable folder monitoring and every new screenshot gets an AI-generated name within seconds.',
   },
   {
-    question: 'Does it work with the default macOS screenshot naming format?',
+    question: 'Does it work with default screenshot naming formats?',
     answer:
-      'Absolutely. Zush recognizes the standard "Screenshot YYYY-MM-DD at HH.MM.SS" format and replaces it with a content-based name. It also works with screenshots from any other tool that saves to a watched folder.',
+      'Absolutely. Zush recognizes generic timestamp-based screenshot filenames and replaces them with content-based names. It also works with screenshots from any other tool that saves to a watched folder.',
   },
   {
     question: 'What if I take multiple screenshots of the same app?',
@@ -20,7 +20,7 @@ const faqItems = [
   {
     question: 'Can I use Zush for screenshots saved as different formats?',
     answer:
-      'Yes. Whether your screenshots are saved as PNG, JPG, or any other image format, Zush handles them all. You can even change the macOS default screenshot format and Zush will still work seamlessly.',
+      'Yes. Whether your screenshots are saved as PNG, JPG, or any other image format, Zush handles them all. You can change your preferred screenshot format and Zush will still work seamlessly.',
   },
   {
     question: 'How does this help with bug reporting?',
@@ -34,9 +34,9 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'HowTo',
-      name: 'Rename Screenshots with AI on Mac',
+      name: 'Rename Screenshots with AI',
       description:
-        'Use Zush to automatically rename macOS screenshots based on their visual content using AI.',
+        'Use Zush to automatically rename screenshots based on their visual content using AI.',
       step: [
         {
           '@type': 'HowToStep',
@@ -76,10 +76,10 @@ const jsonLd = {
     buildSoftwareApplicationJsonLd({
       pagePath: '/rename-screenshots-with-ai',
       description:
-        'AI screenshot renamer for macOS that replaces generic screenshot timestamps with descriptive filenames and can auto-rename new captures in watched folders.',
+        'AI screenshot renamer that replaces generic screenshot timestamps with descriptive filenames and can auto-rename new captures in watched folders.',
       featureList: [
         'Rename screenshots by visible app and on-screen content',
-        'Automatic folder monitoring for new macOS screenshots',
+        'Automatic folder monitoring for new screenshots',
         'Batch rename existing screenshot archives',
         'Support for PNG, JPG, and downloaded image captures',
         'Useful filenames for bug reports and design references',
@@ -91,11 +91,11 @@ const jsonLd = {
 
 const RenameScreenshotsWithAI = () => (
   <FeatureLandingPage
-    h1="Rename Screenshots with AI on Mac"
+    h1="Rename Screenshots with AI"
     h1Accent="Rename Screenshots"
     category="screenshot"
     definitionTitle="What Is AI Screenshot Renaming?"
-    definitionText="Rename screenshots with AI on Mac using Zush to replace generic timestamp names with descriptive filenames and optionally auto-rename new captures."
+    definitionText="Rename screenshots with AI using Zush to replace generic timestamp names with descriptive filenames and optionally auto-rename new captures."
     showcaseSlides={[
       {
         files: [
@@ -130,9 +130,9 @@ const RenameScreenshotsWithAI = () => (
     ]}
     faqItems={faqItems}
     relatedPages={[
-      { title: 'Auto Rename Files on macOS', href: '/auto-rename-files' },
+      { title: 'Auto Rename Files with AI', href: '/auto-rename-files' },
       { title: 'AI Image Renamer', href: '/ai-image-renamer' },
-      { title: 'AI File Renamer for macOS', href: '/ai-file-renamer' },
+      { title: 'AI File Renamer', href: '/ai-file-renamer' },
     ]}
     relatedBlogPosts={[
       { title: 'Screenshot Naming Conventions on macOS', href: 'screenshot-naming-conventions-macos' },
