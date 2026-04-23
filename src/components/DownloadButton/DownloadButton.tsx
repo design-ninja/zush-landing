@@ -98,6 +98,83 @@ const DownloadButton = ({
   };
 
   const otherUrl = getDownloadUrl(otherOS);
+  const menuItems = downloadOS === 'windows'
+    ? [
+        <a
+          key='other-os'
+          role='menuitem'
+          className={styles.Menu__Item}
+          href={otherUrl}
+          target='_blank'
+          rel='noopener noreferrer'
+          onClick={handleOtherClick}
+        >
+          <span className={styles.Menu__Icon}>
+            <OtherMenuIcon />
+          </span>
+          <span className={styles.Menu__Text}>
+            <span className={styles.Menu__Title}>
+              {otherOS === 'windows' ? 'Windows (x64/arm64)' : `Download for ${getOSLabel(otherOS)}`}
+            </span>
+            <span className={styles.Menu__Hint}>{OS_STORE_LABEL[otherOS]}</span>
+          </span>
+        </a>,
+        <a
+          key='app-store'
+          role='menuitem'
+          className={styles.Menu__Item}
+          href={APP_STORE_URL}
+          target='_blank'
+          rel='noopener noreferrer'
+          onClick={handleAppStoreClick}
+        >
+          <span className={styles.Menu__Icon}>
+            <AppStoreIcon />
+          </span>
+          <span className={styles.Menu__Text}>
+            <span className={styles.Menu__Title}>Mac App Store</span>
+            <span className={styles.Menu__Hint}>Install via App Store</span>
+          </span>
+        </a>,
+      ]
+    : [
+        <a
+          key='app-store'
+          role='menuitem'
+          className={styles.Menu__Item}
+          href={APP_STORE_URL}
+          target='_blank'
+          rel='noopener noreferrer'
+          onClick={handleAppStoreClick}
+        >
+          <span className={styles.Menu__Icon}>
+            <AppStoreIcon />
+          </span>
+          <span className={styles.Menu__Text}>
+            <span className={styles.Menu__Title}>Mac App Store</span>
+            <span className={styles.Menu__Hint}>Install via App Store</span>
+          </span>
+        </a>,
+        <a
+          key='other-os'
+          role='menuitem'
+          className={styles.Menu__Item}
+          href={otherUrl}
+          target='_blank'
+          rel='noopener noreferrer'
+          onClick={handleOtherClick}
+        >
+          <span className={styles.Menu__Icon}>
+            <OtherMenuIcon />
+          </span>
+          <span className={styles.Menu__Text}>
+            <span className={styles.Menu__Title}>
+              {otherOS === 'windows' ? 'Windows (x64/arm64)' : `Download for ${getOSLabel(otherOS)}`}
+            </span>
+            <span className={styles.Menu__Hint}>{OS_STORE_LABEL[otherOS]}</span>
+          </span>
+        </a>,
+      ];
 
   return (
     <div
@@ -135,40 +212,7 @@ const DownloadButton = ({
 
       {isOpen && (
         <div role='menu' className={styles.Menu}>
-          <a
-            role='menuitem'
-            className={styles.Menu__Item}
-            href={APP_STORE_URL}
-            target='_blank'
-            rel='noopener noreferrer'
-            onClick={handleAppStoreClick}
-          >
-            <span className={styles.Menu__Icon}>
-              <AppStoreIcon />
-            </span>
-            <span className={styles.Menu__Text}>
-              <span className={styles.Menu__Title}>Mac App Store</span>
-              <span className={styles.Menu__Hint}>Install via App Store</span>
-            </span>
-          </a>
-          <a
-            role='menuitem'
-            className={styles.Menu__Item}
-            href={otherUrl}
-            target='_blank'
-            rel='noopener noreferrer'
-            onClick={handleOtherClick}
-          >
-            <span className={styles.Menu__Icon}>
-              <OtherMenuIcon />
-            </span>
-            <span className={styles.Menu__Text}>
-              <span className={styles.Menu__Title}>
-                {otherOS === 'windows' ? 'Windows (x64/arm64)' : `Download for ${getOSLabel(otherOS)}`}
-              </span>
-              <span className={styles.Menu__Hint}>{OS_STORE_LABEL[otherOS]}</span>
-            </span>
-          </a>
+          {menuItems}
         </div>
       )}
 

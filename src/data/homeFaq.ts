@@ -76,7 +76,7 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'Does the app work offline?',
     answer:
-      'Zush requires an internet connection for the AI features (file analysis and name generation) to function. While it is a native macOS application that prepares files locally, we use advanced cloud models to ensure the best possible quality and accuracy.',
+      'Zush requires an internet connection for the AI features (file analysis and name generation) to function. While it is a native desktop application that prepares files locally, we currently rely on advanced cloud models to ensure the best possible quality and accuracy. Support for a local AI provider is in active development.',
   },
   {
     question: 'Do you support audio or video files?',

@@ -17,6 +17,7 @@ const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
   const { downloadOS, manual } = useOS();
   const downloadUrl = getDownloadUrl(downloadOS);
   const DownloadIcon = downloadOS === 'windows' ? WindowsIcon : AppleIcon;
+  const shouldOpenDownloadInNewTab = downloadOS === 'windows';
 
   return (
     <nav className={styles.Navbar}>
@@ -36,6 +37,8 @@ const Navbar = ({ theme, toggleTheme }: NavbarProps) => {
             <Button
               as="a"
               href={downloadUrl}
+              target={shouldOpenDownloadInNewTab ? '_blank' : undefined}
+              rel={shouldOpenDownloadInNewTab ? 'noopener noreferrer' : undefined}
               variant="black"
               size="sm"
               className={styles.Navbar__DownloadBtn}

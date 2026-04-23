@@ -13,6 +13,14 @@ export interface DemoVideoAsset {
   posters: ThemeAwareMedia;
 }
 
+export interface DemoScreenshotAsset {
+  id: string;
+  title: string;
+  description: string;
+  images: ThemeAwareMedia;
+  alt: string;
+}
+
 export interface ResolvedDemoVideoMedia {
   source: string;
   poster: string;
@@ -112,6 +120,79 @@ export const DEMO_VIDEOS: DemoVideoAsset[] = [
   },
 ];
 
+export const WINDOWS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
+  {
+    id: 'batch-rename',
+    title: 'Batch Rename',
+    description: 'Rename multiple files at once with AI',
+    images: {
+      light: '/images/showcase/windows-original/2.PNG',
+      dark: '/images/showcase/windows-original/8.PNG',
+    },
+    alt: 'Batch rename workflow in Zush for Windows',
+  },
+  {
+    id: 'monitor',
+    title: 'Folder Monitoring',
+    description: 'Automatically rename new files as they appear',
+    images: {
+      light: '/images/showcase/windows-original/3.PNG',
+      dark: '/images/showcase/windows-original/3.PNG',
+    },
+    alt: 'Folder monitoring settings in Zush for Windows',
+  },
+  {
+    id: 'tags',
+    title: 'Smart Tags',
+    description: 'Generate smart tags for faster file search',
+    images: {
+      light: '/images/showcase/windows-original/5.PNG',
+      dark: '/images/showcase/windows-original/5.PNG',
+    },
+    alt: 'Smart metadata and tagging settings in Zush for Windows',
+  },
+  {
+    id: 'naming',
+    title: 'Naming Patterns',
+    description: 'Create reusable naming patterns with flexible variables',
+    images: {
+      light: '/images/showcase/windows-original/5.PNG',
+      dark: '/images/showcase/windows-original/5.PNG',
+    },
+    alt: 'Naming pattern editor in Zush for Windows',
+  },
+  {
+    id: 'multilanguage',
+    title: 'Multilanguage',
+    description: 'Generate filenames in more than 60 languages',
+    images: {
+      light: '/images/showcase/windows-original/5.PNG',
+      dark: '/images/showcase/windows-original/5.PNG',
+    },
+    alt: 'Localization settings for generated filenames in Zush for Windows',
+  },
+  {
+    id: 'custom-prompts',
+    title: 'Custom Prompts',
+    description: 'Guide filename generation with your own instructions',
+    images: {
+      light: '/images/showcase/windows-original/5.PNG',
+      dark: '/images/showcase/windows-original/5.PNG',
+    },
+    alt: 'Custom prompt settings in Zush for Windows',
+  },
+  {
+    id: 'byok',
+    title: 'BYOK',
+    description: 'Connect your own AI provider for unlimited renaming',
+    images: {
+      light: '/images/showcase/windows-original/6.PNG',
+      dark: '/images/showcase/windows-original/6.PNG',
+    },
+    alt: 'Bring your own key setup in Zush for Windows',
+  },
+];
+
 const DEMO_VIDEO_BY_SRC = Object.fromEntries(
   DEMO_VIDEOS.flatMap((video) => [
     [video.sources.light, video],
@@ -127,6 +208,13 @@ export function resolveDemoVideoMedia(
     source: asset.sources[theme],
     poster: asset.posters[theme],
   };
+}
+
+export function resolveDemoScreenshotMedia(
+  asset: DemoScreenshotAsset,
+  theme: DemoVideoTheme,
+): string {
+  return asset.images[theme];
 }
 
 export function getDemoVideoBySrc(src?: string | null) {

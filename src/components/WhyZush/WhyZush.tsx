@@ -8,6 +8,7 @@ import {
 import Heading from '@/components/Heading';
 import SectionHeader from '@/components/SectionHeader';
 import Text from '@/components/Text';
+import { useOS } from '@/hooks/useOS';
 import styles from './WhyZush.module.scss';
 
 const pricingTrustItems = [
@@ -44,6 +45,9 @@ const workflowSteps = [
 ];
 
 const WhyZush = () => {
+  const { downloadOS } = useOS();
+  const isWindows = downloadOS === 'windows';
+
   return (
     <section className={styles.WhyZush}>
       <div className={styles.WhyZush__Container}>
@@ -51,10 +55,14 @@ const WhyZush = () => {
           title={
             <>
               Why <span className={styles.WhyZush__TitleAccent}>Zush</span>{' '}
-              Wins on Mac
+              Wins on {isWindows ? 'Windows' : 'Mac'}
             </>
           }
-          description='One-time pricing, native macOS feel, fast renaming, and fewer annoying decisions'
+          description={
+            isWindows
+              ? 'One-time pricing, native Windows feel, fast renaming, and fewer annoying decisions'
+              : 'One-time pricing, native macOS feel, fast renaming, and fewer annoying decisions'
+          }
         />
 
         <div className={styles.Grid}>
@@ -97,23 +105,43 @@ const WhyZush = () => {
               <div className={styles.Card__Icon}>
                 <Monitor size={24} />
               </div>
-              <span className={styles.Card__Eyebrow}>Mac-first feel</span>
+              <span className={styles.Card__Eyebrow}>
+                {isWindows ? 'Windows-first feel' : 'Mac-first feel'}
+              </span>
             </div>
 
             <Heading as='h3' className={styles.Card__Title}>
-              Native, fast, and modern
+              {isWindows ? 'Native, fast, and at home on Windows' : 'Native, fast, and modern'}
             </Heading>
             <Text className={styles.Card__Description} color='subtle'>
-              Zush feels like a real macOS app: quick to open, clean to use, and
-              visually at home on the desktop instead of feeling like a clunky
-              utility panel.
+              {isWindows
+                ? 'Zush feels like a real Windows app: quick to open, clean to use, and visually at home on the desktop instead of feeling like a clunky utility panel.'
+                : 'Zush feels like a real macOS app: quick to open, clean to use, and visually at home on the desktop instead of feeling like a clunky utility panel.'}
             </Text>
 
-            <div className={styles.WindowMockup} aria-hidden='true'>
+            <div
+              className={`${styles.WindowMockup} ${
+                isWindows ? styles.WindowMockup_windows : ''
+              }`}
+              aria-hidden='true'
+            >
               <div className={styles.WindowMockup__TopBar}>
-                <span />
-                <span />
-                <span />
+                {isWindows ? (
+                  <>
+                    <div className={styles.WindowMockup__TitleBar} />
+                    <div className={styles.WindowMockup__WindowControls}>
+                      <span className={`${styles.WindowMockup__Control} ${styles.WindowMockup__Control_minimize}`} />
+                      <span className={`${styles.WindowMockup__Control} ${styles.WindowMockup__Control_maximize}`} />
+                      <span className={`${styles.WindowMockup__Control} ${styles.WindowMockup__Control_close}`} />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <span />
+                    <span />
+                    <span />
+                  </>
+                )}
               </div>
               <div className={styles.WindowMockup__Body}>
                 <div className={styles.WindowMockup__Sidebar}>

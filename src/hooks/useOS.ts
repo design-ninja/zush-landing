@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 export type OS = 'mac' | 'windows' | 'mobile' | 'unknown';
 
 const PREFERRED_OS_KEY = 'zush-preferred-os';
+const FORCED_OS: OS | null = 'windows';
 
 interface UserAgentData {
   platform?: string;
@@ -60,11 +61,18 @@ export interface UseOSResult {
 
 export function useOS(): UseOSResult {
   // SSR / first render: Mac as default (per product decision).
-  const [os, setOS] = useState<OS>('mac');
+  const [os, setOS] = useState<OS>(FORCED_OS ?? 'mac');
   const [detected, setDetected] = useState(false);
   const [manual, setManual] = useState(false);
 
   useEffect(() => {
+    if (FORCED_OS) {
+      setOS(FORCED_OS);
+      setManual(true);
+      setDetected(true);
+      return;
+    }
+
     const preferred = readPreferredOS();
     if (preferred) {
       setOS(preferred);
