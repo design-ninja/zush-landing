@@ -9,6 +9,8 @@ export default defineConfig({
   trailingSlash: 'never',
   redirects: {
     '/bulk-rename-files': { status: 301, destination: '/batch-rename-files' },
+    '/download/mac': { status: 301, destination: '/mac' },
+    '/download/windows': { status: 301, destination: '/windows' },
   },
   integrations: [react()],
   adapter: vercel(),

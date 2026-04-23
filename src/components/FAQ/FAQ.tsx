@@ -1,4 +1,4 @@
-import { memo, useState, useMemo } from 'react';
+import { memo, useState, useMemo, type ReactNode } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { APP_CONFIG } from '@/constants';
 import AppLink from '@/components/AppLink';
@@ -35,7 +35,15 @@ FAQItem.displayName = 'FAQItem';
 
 interface FAQData {
   question: string;
-  answer: React.ReactNode;
+  answer: ReactNode;
+}
+
+interface FAQProps {
+  items?: FAQData[];
+  title?: ReactNode;
+  description?: string;
+  initialOpenIndex?: number | null;
+  appendDefaultItems?: boolean;
 }
 
 const STATIC_JSX_OVERRIDES: Record<string, React.ReactNode> = {
@@ -54,46 +62,80 @@ const STATIC_JSX_OVERRIDES: Record<string, React.ReactNode> = {
   ),
 };
 
-const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+const DEFAULT_TITLE = (
+  <>
+    Frequently Asked <span className={styles.FAQ__TitleAccent}>Questions</span>
+  </>
+);
+
+const buildDefaultFaqItems = (): FAQData[] =>
+  HOME_FAQ_DATA.map((item): FAQData => {
+    if (item.question === 'Which operating systems are supported?') {
+      return {
+        question: item.question,
+        answer: (
+          <>
+            Zush runs on macOS ({APP_CONFIG.min_macos_version} {APP_CONFIG.min_macos_name} and newer) and Windows 10 / 11. See the{' '}
+            <AppLink href="/mac">Mac page</AppLink> for the signed .dmg and Mac App Store options, or the{' '}
+            <AppLink href="/windows">Windows page</AppLink> for the Microsoft Store build.
+          </>
+        ),
+      };
+    }
+
+    if (item.question === 'Does the app work offline?') {
+      return {
+        question: item.question,
+        answer:
+          'Zush requires an internet connection for the AI features (file analysis and name generation) to function. While it is a native desktop application that prepares files locally, we currently rely on advanced cloud models to ensure the best possible quality and accuracy. Support for a local AI provider is in active development.',
+      };
+    }
+
+    return {
+      question: item.question,
+      answer: STATIC_JSX_OVERRIDES[item.question] ?? item.answer,
+    };
+  });
+
+const FAQ = ({
+  items,
+  title = DEFAULT_TITLE,
+  description = 'Everything you need to know about Zush in one place',
+  initialOpenIndex = 0,
+  appendDefaultItems = false,
+}: FAQProps) => {
+  const [openIndex, setOpenIndex] = useState<number | null>(initialOpenIndex);
 
   const faqs = useMemo(
-    () =>
-      HOME_FAQ_DATA.map((item): FAQData => {
-        if (item.question === 'Which operating systems are supported?') {
-          return {
-            question: item.question,
-            answer: `Zush runs on macOS (${APP_CONFIG.min_macos_version} ${APP_CONFIG.min_macos_name} and newer) and Windows 10 / 11. The Mac build is distributed as a signed .dmg and on the Mac App Store; the Windows build is available on the Microsoft Store.`,
-          };
-        }
+    () => {
+      const defaultItems = buildDefaultFaqItems();
 
-        if (item.question === 'Does the app work offline?') {
-          return {
-            question: item.question,
-            answer:
-              'Zush requires an internet connection for the AI features (file analysis and name generation) to function. While it is a native desktop application that prepares files locally, we currently rely on advanced cloud models to ensure the best possible quality and accuracy. Support for a local AI provider is in active development.',
-          };
-        }
+      if (!items) {
+        return defaultItems;
+      }
 
-        return {
-          question: item.question,
-          answer: STATIC_JSX_OVERRIDES[item.question] ?? item.answer,
-        };
-      }),
-    [],
+      if (!appendDefaultItems) {
+        return items;
+      }
+
+      const seen = new Set<string>();
+      return [...items, ...defaultItems].filter((item) => {
+        if (seen.has(item.question)) {
+          return false;
+        }
+        seen.add(item.question);
+        return true;
+      });
+    },
+    [appendDefaultItems, items],
   );
 
   return (
     <section id='faq' className={styles.FAQ}>
       <div className={styles.FAQ__Container}>
         <SectionHeader
-          title={
-            <>
-              Frequently Asked{' '}
-              <span className={styles.FAQ__TitleAccent}>Questions</span>
-            </>
-          }
-          description='Everything you need to know about Zush in one place'
+          title={title}
+          description={description}
         />
 
         <div className={styles.FAQ__Grid}>

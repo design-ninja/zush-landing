@@ -110,8 +110,8 @@ const Footer = () => {
           <div>
             <Heading as="h4" className={styles.Footer__SectionTitle}>Resources</Heading>
             <ul className={styles.Footer__Links}>
-              <li><AppLink href="/download/mac" className={styles.Footer__Link}>Download for Mac</AppLink></li>
-              <li><AppLink href="/download/windows" className={styles.Footer__Link}>Download for Windows</AppLink></li>
+              <li><AppLink href="/mac" className={styles.Footer__Link}>Zush for Mac</AppLink></li>
+              <li><AppLink href="/windows" className={styles.Footer__Link}>Zush for Windows</AppLink></li>
               <li><AppLink href="/#pricing" className={styles.Footer__Link}>Pricing</AppLink></li>
               <li><AppLink href="/blog" className={styles.Footer__Link}>Blog</AppLink></li>
               <li><AppLink href="/changelog" className={styles.Footer__Link}>Changelog</AppLink></li>

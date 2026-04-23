@@ -6,25 +6,64 @@ import DownloadButton from "../DownloadButton";
 import Heading from "../Heading";
 import Text from "../Text";
 import styles from "./Hero.module.scss";
+import type { DownloadOS } from "@/utils/download";
 
 
 interface HeroProps {
   title?: ReactNode;
   titleAccent?: string;
+  titleHighlight?: string;
   subtitle?: string;
   slides?: Slide[];
   as?: "section" | "header";
   compactTopSpacing?: boolean;
+  forceOS?: DownloadOS;
+  secondaryHref?: string;
 }
 
 const Hero = ({
   title,
   titleAccent,
+  titleHighlight,
   subtitle,
   slides,
   as: Tag = "section",
   compactTopSpacing = false,
+  forceOS,
+  secondaryHref = "/#pricing",
 }: HeroProps) => {
+  const highlightText = titleHighlight ?? titleAccent;
+
+  const renderTitle = () => {
+    if (!title) {
+      return (
+        <>
+          Rename Files with AI.
+          <br />
+          <span className={styles.Hero__TitleAccent}>Automatically.</span>
+        </>
+      );
+    }
+
+    if (typeof title === "string" && highlightText) {
+      const highlightIndex = title.indexOf(highlightText);
+      if (highlightIndex !== -1) {
+        const before = title.slice(0, highlightIndex);
+        const after = title.slice(highlightIndex + highlightText.length);
+
+        return (
+          <>
+            {before}
+            <span className={styles.Hero__TitleAccent}>{highlightText}</span>
+            {after}
+          </>
+        );
+      }
+    }
+
+    return title;
+  };
+
   return (
     <Tag
       className={[
@@ -37,22 +76,7 @@ const Hero = ({
       <div className={styles.Hero__Container}>
         <div className={styles.Hero__Intro}>
           <Heading as="h1" className={styles.Hero__Title}>
-            {title ? (
-              typeof title === "string" && titleAccent && title.startsWith(titleAccent) ? (
-                <>
-                  <span className={styles.Hero__TitleAccent}>{titleAccent}</span>
-                  {title.slice(titleAccent.length)}
-                </>
-              ) : (
-                title
-              )
-            ) : (
-              <>
-                Rename Files with AI.
-                <br />
-                <span className={styles.Hero__TitleAccent}>Automatically.</span>
-              </>
-            )}
+            {renderTitle()}
           </Heading>
           <Text size="xl" color="subtle" className={styles.Hero__Subtitle}>
             {subtitle ??
@@ -60,10 +84,10 @@ const Hero = ({
           </Text>
 
           <div className={styles.Hero__Buttons}>
-            <DownloadButton source="hero" size="lg" />
+            <DownloadButton source="hero" size="lg" forceOS={forceOS} />
             <Button
               as="link"
-              href="/#pricing"
+              href={secondaryHref}
               variant="primary"
               size="lg"
             >

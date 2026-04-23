@@ -135,17 +135,17 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     robots: 'index, follow',
     ogType: 'website',
   },
-  '/download/mac': {
-    title: 'Download Zush for Mac — AI File Renamer',
+  '/mac': {
+    title: 'AI File Renamer for Mac · Native macOS App · Zush',
     description:
-      'Download Zush for macOS. AI-powered file renamer for screenshots, PDFs, photos and documents. Runs natively on Apple Silicon and Intel. Free for 50 renames.',
+      'Rename screenshots, PDFs, photos and documents on Mac with AI. Native Apple Silicon and Intel app, signed .dmg download, free for 50 renames.',
     robots: 'index, follow',
     ogType: 'website',
   },
-  '/download/windows': {
-    title: 'Download Zush for Windows — AI File Renamer',
+  '/windows': {
+    title: 'AI File Renamer for Windows · Microsoft Store App · Zush',
     description:
-      'Get Zush for Windows from the Microsoft Store. AI-powered file renamer for screenshots, PDFs, photos and documents. Free for 50 renames, no signup.',
+      'Rename screenshots, PDFs, photos and documents on Windows with AI. Microsoft Store install, automatic updates, free for 50 renames, no signup.',
     robots: 'index, follow',
     ogType: 'website',
   },

@@ -39,7 +39,7 @@ export function getOtherOS(os: DownloadOS): DownloadOS {
 }
 
 export function getDownloadPagePath(os: DownloadOS): string {
-  return os === 'windows' ? '/download/windows' : '/download/mac';
+  return os === 'windows' ? '/windows' : '/mac';
 }
 
 export type DownloadSource =

@@ -9,6 +9,7 @@ import Heading from '@/components/Heading';
 import SectionHeader from '@/components/SectionHeader';
 import Text from '@/components/Text';
 import { useOS } from '@/hooks/useOS';
+import type { DownloadOS } from '@/utils/download';
 import styles from './WhyZush.module.scss';
 
 const pricingTrustItems = [
@@ -44,21 +45,42 @@ const workflowSteps = [
   'Revert from history',
 ];
 
-const WhyZush = () => {
-  const { downloadOS } = useOS();
+interface WhyZushProps {
+  forceOS?: DownloadOS;
+  platformSpecificCopy?: boolean;
+}
+
+const WhyZush = ({ forceOS, platformSpecificCopy = false }: WhyZushProps) => {
+  const { downloadOS: detectedOS } = useOS();
+  const downloadOS = forceOS ?? detectedOS;
   const isWindows = downloadOS === 'windows';
+  const osLabel = isWindows ? 'Windows' : 'Mac';
+  const sectionTitle = platformSpecificCopy ? (
+    <>
+      Why <span className={styles.WhyZush__TitleAccent}>Zush</span> Wins on {osLabel}
+    </>
+  ) : (
+    <>
+      Why <span className={styles.WhyZush__TitleAccent}>Zush</span>{' '}
+      Fits Real Desktop Work
+    </>
+  );
+  const sectionDescription = platformSpecificCopy
+    ? `Native desktop feel, fast renaming, one-time pricing, and fewer annoying decisions on ${osLabel}`
+    : 'One-time pricing, desktop-native feel, fast renaming, and fewer annoying decisions';
+  const nativeEyebrow = platformSpecificCopy
+    ? `${osLabel}-native feel`
+    : 'Desktop-native feel';
+  const nativeDescription = platformSpecificCopy
+    ? `Zush feels like a real native ${osLabel} app: quick to open, clean to use, and visually at home on your machine instead of feeling like a clunky utility panel.`
+    : 'Zush feels like a real desktop app: quick to open, clean to use, and visually at home on your machine instead of feeling like a clunky utility panel.';
 
   return (
     <section className={styles.WhyZush}>
       <div className={styles.WhyZush__Container}>
         <SectionHeader
-          title={
-            <>
-              Why <span className={styles.WhyZush__TitleAccent}>Zush</span>{' '}
-              Fits Real Desktop Work
-            </>
-          }
-          description='One-time pricing, desktop-native feel, fast renaming, and fewer annoying decisions'
+          title={sectionTitle}
+          description={sectionDescription}
         />
 
         <div className={styles.Grid}>
@@ -101,16 +123,14 @@ const WhyZush = () => {
               <div className={styles.Card__Icon}>
                 <Monitor size={24} />
               </div>
-              <span className={styles.Card__Eyebrow}>Desktop-native feel</span>
+              <span className={styles.Card__Eyebrow}>{nativeEyebrow}</span>
             </div>
 
             <Heading as='h3' className={styles.Card__Title}>
               Native, fast, and modern
             </Heading>
             <Text className={styles.Card__Description} color='subtle'>
-              Zush feels like a real desktop app: quick to open, clean to use,
-              and visually at home on your machine instead of feeling like a
-              clunky utility panel.
+              {nativeDescription}
             </Text>
 
             <div

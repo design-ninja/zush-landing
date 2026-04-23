@@ -128,7 +128,7 @@ const DownloadButton = ({
           rel='noopener noreferrer'
           onClick={handleAppStoreClick}
         >
-          <span className={styles.Menu__Icon}>
+          <span className={`${styles.Menu__Icon} ${styles.Menu__Icon_appStore}`}>
             <AppStoreIcon />
           </span>
           <span className={styles.Menu__Text}>
@@ -147,7 +147,7 @@ const DownloadButton = ({
           rel='noopener noreferrer'
           onClick={handleAppStoreClick}
         >
-          <span className={styles.Menu__Icon}>
+          <span className={`${styles.Menu__Icon} ${styles.Menu__Icon_appStore}`}>
             <AppStoreIcon />
           </span>
           <span className={styles.Menu__Text}>

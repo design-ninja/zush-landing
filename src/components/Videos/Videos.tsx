@@ -10,12 +10,14 @@ import {
   type DemoVideoTheme,
 } from '@/data/demoVideos';
 import { useOS } from '@/hooks/useOS';
+import type { DownloadOS } from '@/utils/download';
 import styles from './Videos.module.scss';
 import { motion } from 'framer-motion';
 
 interface VideosProps {
   autoplayOnHydration?: boolean;
   autoplayWhenInView?: boolean;
+  forceOS?: DownloadOS;
 }
 
 const getDocumentTheme = (): DemoVideoTheme => {
@@ -31,8 +33,10 @@ const getDocumentTheme = (): DemoVideoTheme => {
 const Videos = ({
   autoplayOnHydration = false,
   autoplayWhenInView = false,
+  forceOS,
 }: VideosProps) => {
-  const { downloadOS } = useOS();
+  const { downloadOS: detectedOS } = useOS();
+  const downloadOS = forceOS ?? detectedOS;
   const isWindowsShowcase = downloadOS === 'windows';
   const [activeFeature, setActiveFeature] = useState(0);
   const [theme, setTheme] = useState<DemoVideoTheme>(getDocumentTheme);
