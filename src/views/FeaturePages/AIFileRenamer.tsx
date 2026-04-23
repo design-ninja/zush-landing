@@ -69,8 +69,8 @@ const AIFileRenamer = () => (
     ]}
     relatedBlogPosts={[
       { title: 'How to Rename Files with AI: Step-by-Step Guide', href: 'rename-files-with-ai-guide' },
+      { title: 'Best AI File Renamer Tools in 2026: 8 Picks Tested', href: 'best-ai-file-renamer-tools-2026' },
       { title: 'How to Rename Files with AI for Free in 2026', href: 'rename-files-with-ai-free' },
-      { title: 'Automate File Organization on macOS', href: 'automate-file-organization-macos' },
     ]}
     jsonLd={{
       '@context': 'https://schema.org',

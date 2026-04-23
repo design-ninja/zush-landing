@@ -10,6 +10,10 @@
     &_open {
         z-index: 50;
     }
+
+    &_single {
+        display: inline-flex;
+    }
 }
 
 .Main,
@@ -45,6 +49,11 @@
 
     svg {
         flex-shrink: 0;
+    }
+
+    &_single {
+        border-radius: $radius-full;
+        width: 100%;
     }
 }
 

@@ -23,7 +23,7 @@ const placementDescriptions: Record<BlogCTAPlacement, string> = {
   inline:
     'Batch rename files, monitor folders, and make your documents and visuals easier to find with descriptive names and metadata.',
   footer:
-    'AI renaming, folder monitoring and Spotlight-friendly names. 50 free renames to start — one-time $10 Pro, no subscription.',
+    'AI renaming, folder monitoring and search-friendly names. 50 free renames to start — one-time $10 Pro, no subscription.',
 }
 
 const BlogCTA = ({ placement = 'footer' }: BlogCTAProps) => {
@@ -38,7 +38,12 @@ const BlogCTA = ({ placement = 'footer' }: BlogCTAProps) => {
           {placementDescriptions[placement]}
         </Text>
         <div className={styles.BlogCTA__Buttons}>
-          <DownloadButton source='blog-cta' size='md' label={`Download for ${osLabel}`} />
+          <DownloadButton
+            source='blog-cta'
+            size='md'
+            label={`Download for ${osLabel}`}
+            showDropdown={false}
+          />
         </div>
         <Text as='p' size='xs' color='subtle' className={styles.BlogCTA__Hint}>
           Free · 50 AI renames · {getShortRequirements(downloadOS)} · No signup

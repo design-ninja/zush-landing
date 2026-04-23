@@ -30,6 +30,7 @@ interface DownloadButtonProps {
   className?: string;
   useMobileModal?: boolean;
   forceOS?: DownloadOS;
+  showDropdown?: boolean;
 }
 
 const OS_STORE_LABEL: Record<DownloadOS, string> = {
@@ -45,6 +46,7 @@ const DownloadButton = ({
   className,
   useMobileModal = true,
   forceOS,
+  showDropdown = true,
 }: DownloadButtonProps) => {
   const { downloadOS: detectedOS, manual: detectedManual } = useOS();
   const downloadOS = forceOS ?? detectedOS;
@@ -61,6 +63,7 @@ const DownloadButton = ({
   const OtherMenuIcon = otherOS === 'windows' ? MicrosoftStoreIcon : AppleIcon;
 
   useEffect(() => {
+    if (!showDropdown) return;
     if (!isOpen) return;
     const handleClickAway = (event: MouseEvent) => {
       if (!wrapRef.current?.contains(event.target as Node)) {
@@ -76,7 +79,7 @@ const DownloadButton = ({
       document.removeEventListener('mousedown', handleClickAway);
       document.removeEventListener('keydown', handleEscape);
     };
-  }, [isOpen]);
+  }, [isOpen, showDropdown]);
 
   const handlePrimaryClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     trackDownloadClick({ os: downloadOS, source, manual });
@@ -183,6 +186,7 @@ const DownloadButton = ({
         styles.Group,
         styles[`Group_${variant}`],
         styles[`Group_${size}`],
+        !showDropdown ? styles.Group_single : '',
         isOpen ? styles.Group_open : '',
         className,
       ]
@@ -190,7 +194,7 @@ const DownloadButton = ({
         .join(' ')}
     >
       <a
-        className={styles.Main}
+        className={[styles.Main, !showDropdown ? styles.Main_single : ''].filter(Boolean).join(' ')}
         href={downloadUrl}
         target='_blank'
         rel='noopener noreferrer'
@@ -199,18 +203,20 @@ const DownloadButton = ({
         <DownloadIcon />
         <span>{label}</span>
       </a>
-      <button
-        type='button'
-        className={styles.Toggle}
-        aria-label={`Show download options for ${getOSLabel(otherOS)}`}
-        aria-haspopup='menu'
-        aria-expanded={isOpen}
-        onClick={() => setIsOpen((prev) => !prev)}
-      >
-        <ChevronDown size={18} className={isOpen ? styles.Toggle__Icon_open : styles.Toggle__Icon} />
-      </button>
+      {showDropdown && (
+        <button
+          type='button'
+          className={styles.Toggle}
+          aria-label={`Show download options for ${getOSLabel(otherOS)}`}
+          aria-haspopup='menu'
+          aria-expanded={isOpen}
+          onClick={() => setIsOpen((prev) => !prev)}
+        >
+          <ChevronDown size={18} className={isOpen ? styles.Toggle__Icon_open : styles.Toggle__Icon} />
+        </button>
+      )}
 
-      {isOpen && (
+      {showDropdown && isOpen && (
         <div role='menu' className={styles.Menu}>
           {menuItems}
         </div>

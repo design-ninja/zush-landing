@@ -73,9 +73,9 @@ const BatchRenameFiles = () => (
       { title: 'Rename PDFs with AI', href: '/rename-pdf-with-ai' },
     ]}
     relatedBlogPosts={[
-      { title: 'How to Batch Rename Files on Mac (2026): 4 Methods Tested', href: 'batch-rename-files-on-mac-complete-guide' },
-      { title: 'macOS Automator: Rename Files Guide', href: 'macos-automator-rename-files-guide' },
-      { title: 'Best AI File Renamer for Mac (2026): 6 Tools Compared', href: 'best-ai-file-renamer-tools-mac-compared' },
+      { title: 'How to Rename Files with AI: Step-by-Step Guide', href: 'rename-files-with-ai-guide' },
+      { title: 'Auto Rename Files on Windows (2026): Best Workflows for Downloads, Screenshots and PDFs', href: 'auto-rename-files-windows-guide' },
+      { title: 'Best AI File Renamer Tools in 2026: 8 Picks Tested', href: 'best-ai-file-renamer-tools-2026' },
     ]}
     jsonLd={{
       '@context': 'https://schema.org',

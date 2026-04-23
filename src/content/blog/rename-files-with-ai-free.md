@@ -98,7 +98,7 @@ The BYOK approach gives you the full Zush experience, including batch rename, fo
 
 ![Zush BYOK demo showing unlimited file renaming with your own AI provider key](/videos/zush-byok.mp4)
 
-For a broader comparison of tools and pricing, see [Best AI File Renamer Tools for Mac Compared](/blog/best-ai-file-renamer-tools-mac-compared).
+For a broader comparison of tools and pricing, see [Best AI File Renamer Tools in 2026](/blog/best-ai-file-renamer-tools-2026).
 
 ## Option 3: AI Renamer (CLI + Desktop app)
 

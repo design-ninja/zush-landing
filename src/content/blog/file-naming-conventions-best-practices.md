@@ -10,7 +10,7 @@ reviewed: "2026-04-09"
 
 A solid file naming convention saves time every time you search, sort, or share a file. The best convention is not the cleverest one. It is the one you can apply consistently across real work.
 
-For most people, that means descriptive lowercase names, hyphens or underscores, ISO dates when dates matter, and version numbers instead of vague labels. If your hardest files are images, screenshots, PDFs, or documents, [Zush AI file renamer for Mac](/ai-file-renamer) can automate the naming step so the convention is easier to maintain.
+For most people, that means descriptive lowercase names, hyphens or underscores, ISO dates when dates matter, and version numbers instead of vague labels. If your hardest files are images, screenshots, PDFs, or documents, [Zush AI file renamer](/ai-file-renamer) can automate the naming step so the convention is easier to maintain.
 
 
 ## The rules that work almost everywhere
@@ -108,7 +108,7 @@ Images and documents are where most naming systems break down. Cameras use count
 
 That is why naming automation matters most for these file types. You can define a convention yourself, but generating the descriptive part manually is slow. Tools like [Zush](https://zushapp.com) make that practical by using AI to recognize what the file contains and then applying a consistent pattern on top.
 
-For a deeper tutorial, see [How to Rename Images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos). If your main interest is search visibility, read [Image SEO: How File Naming Affects Your Search Rankings](/blog/image-seo-file-naming-for-better-rankings).
+For a Mac-specific image workflow, see [How to Rename Images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos). If you want the Windows naming layer, continue with [Windows File Naming Conventions for Searchable Folders](/blog/windows-file-naming-conventions-searchable-folders). If your main interest is search visibility, read [Image SEO: How File Naming Affects Your Search Rankings](/blog/image-seo-file-naming-for-better-rankings).
 
 ## A simple implementation plan
 

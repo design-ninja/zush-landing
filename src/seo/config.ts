@@ -68,7 +68,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/blog': {
     title: 'AI File Renaming Tips, Guides & Insights — Zush Blog',
     description:
-      'Practical guides on AI-powered file organization for macOS. Learn about smart renaming, batch processing, metadata tagging, and workflow automation with Zush.',
+      'Practical guides on AI-powered file organization for Mac and Windows. Learn about smart renaming, batch processing, metadata tagging, and workflow automation with Zush.',
     robots: 'index, follow',
     ogType: 'website',
   },

@@ -9,6 +9,7 @@ import Pricing from '@/components/Pricing';
 import WhyZush from '@/components/WhyZush';
 import DownloadCTA from '@/components/DownloadCTA';
 import FAQ from '@/components/FAQ';
+import PlatformGuides from '@/components/PlatformGuides/PlatformGuides.astro';
 import { PLATFORM_LANDING_CONTENT } from '@/data/platformLanding';
 import { getSeoForPath, SITE_ORIGIN } from '@/seo/config';
 import { buildFAQPageJsonLd, buildFeatureBreadcrumbJsonLd } from '@/utils/jsonLd';
@@ -79,6 +80,7 @@ const softwareJsonLd = {
   <WhyZush client:visible forceOS="mac" platformSpecificCopy />
   <UseCases />
   <Pricing client:visible />
+  <PlatformGuides platform="mac" />
   <FAQ
     client:visible
     items={page.faqs}

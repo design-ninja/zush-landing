@@ -137,7 +137,7 @@ const RenameDocumentsWithAI = () => (
     relatedBlogPosts={[
       { title: 'AI Document Renamer: How to Auto-Name Docs, PDFs & Spreadsheets', href: 'ai-document-renamer-guide' },
       { title: 'File Naming Conventions Best Practices', href: 'file-naming-conventions-best-practices' },
-      { title: 'Organize Client Files as a Freelancer on Mac', href: 'organize-client-files-freelancers-mac' },
+      { title: 'How to Rename PDF Files with AI on Windows', href: 'rename-pdf-files-with-ai-windows' },
     ]}
     jsonLd={jsonLd}
   />

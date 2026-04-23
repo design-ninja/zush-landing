@@ -3,7 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import BlogPost from '@/views/Blog/BlogPost';
 import { getAllPosts, getPostBySlug } from '@/data/blog';
-import { getBlogSeo, SITE_ORIGIN } from '@/seo/config';
+import { getBlogSeo, getCanonicalUrl } from '@/seo/config';
 import {
   buildBlogPostingJsonLd,
   buildBreadcrumbJsonLd,
@@ -29,14 +29,19 @@ if (!parsedPost) {
 const { frontmatter, faq } = parsedPost;
 const seo = getBlogSeo(frontmatter);
 const howTo = HOW_TO_SCHEMAS[frontmatter.slug];
-const jsonLd = [
-  buildBlogPostingJsonLd(frontmatter),
-  buildBreadcrumbJsonLd(frontmatter.title, frontmatter.slug),
-  ...(faq.length > 0 ? [buildFAQPageJsonLd(faq)] : []),
-  ...(howTo
-    ? [buildHowToJsonLd(howTo, `${SITE_ORIGIN}/blog/${frontmatter.slug}`)]
-    : []),
-];
+const blogPath = `/blog/${frontmatter.slug}`;
+const isSelfCanonical = seo.canonicalPath === blogPath;
+const canonicalUrl = getCanonicalUrl(seo.canonicalPath);
+const jsonLd = isSelfCanonical
+  ? [
+      buildBlogPostingJsonLd(frontmatter, canonicalUrl),
+      buildBreadcrumbJsonLd(frontmatter.title, canonicalUrl),
+      ...(faq.length > 0 ? [buildFAQPageJsonLd(faq)] : []),
+      ...(howTo
+        ? [buildHowToJsonLd(howTo, canonicalUrl)]
+        : []),
+    ]
+  : [];
 
 const breadcrumbItems = [
   { label: 'Home', href: '/' },

@@ -4,7 +4,10 @@ import { DOWNLOAD_URL, WINDOWS_STORE_URL } from '@/constants';
 
 const SITE_ORIGIN = 'https://zushapp.com';
 
-export function buildBlogPostingJsonLd(post: BlogFrontmatter) {
+export function buildBlogPostingJsonLd(
+  post: BlogFrontmatter,
+  pageUrl = `${SITE_ORIGIN}/blog/${post.slug}`,
+) {
   return {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -43,9 +46,9 @@ export function buildBlogPostingJsonLd(post: BlogFrontmatter) {
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `${SITE_ORIGIN}/blog/${post.slug}`,
+      '@id': pageUrl,
     },
-    url: `${SITE_ORIGIN}/blog/${post.slug}`,
+    url: pageUrl,
     wordCount: post.wordCount,
     keywords: post.tags.join(', '),
     isPartOf: {
@@ -173,7 +176,7 @@ export function buildHowToJsonLd(data: HowToData, pageUrl: string) {
   };
 }
 
-export function buildBreadcrumbJsonLd(postTitle: string, postSlug: string) {
+export function buildBreadcrumbJsonLd(postTitle: string, pageUrl: string) {
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -194,7 +197,7 @@ export function buildBreadcrumbJsonLd(postTitle: string, postSlug: string) {
         '@type': 'ListItem',
         position: 3,
         name: postTitle,
-        item: `${SITE_ORIGIN}/blog/${postSlug}`,
+        item: pageUrl,
       },
     ],
   };

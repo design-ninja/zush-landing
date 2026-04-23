@@ -1,6 +1,6 @@
 ---
 title: "How to Rename Files with AI: Step-by-Step Guide"
-description: "Learn how to rename files with AI step by step — how content-aware tools handle screenshots, PDFs, documents and photos on Mac in 2026."
+description: "Learn how to rename files with AI step by step — how content-aware tools handle screenshots, PDFs, documents and photos on Mac and Windows in 2026."
 date: "2026-03-23"
 slug: "rename-files-with-ai-guide"
 tags: "ai file renaming tutorial, rename files step by step, content-aware renaming, file organization workflow, productivity"
@@ -12,7 +12,7 @@ Most files arrive with useless names. Screenshots get timestamps. Photos get cam
 
 AI file renaming solves this by analyzing the actual content of a file and generating a descriptive filename from it. Instead of `IMG_4821.HEIC`, you get `golden-retriever-playing-in-park.heic`. Instead of `Screenshot 2026-03-23 at 14.32.08.png`, you get `stripe-dashboard-monthly-revenue.png`.
 
-This guide is the educational layer of the cluster. If you already want a Mac-specific product page, see [AI File Renamer for Mac](/ai-file-renamer) or [Batch Rename Files on Mac](/batch-rename-files). If you want the cross-tool comparison, see [Best AI File Renamer Tools in 2026](/blog/best-ai-file-renamer-tools-2026).
+This guide is the educational layer of the cluster. If you already want the platform pages, see [Zush for Mac](/mac) or [Zush for Windows](/windows). If you want the cross-tool comparison, see [Best AI File Renamer Tools in 2026](/blog/best-ai-file-renamer-tools-2026).
 
 This guide covers what AI file renaming is, how it works, and how to apply it step by step without assuming you have already chosen a tool.
 
@@ -85,23 +85,23 @@ The best tools keep a rename history so you can revert any change. This matters 
 
 ## Best ways to rename files with AI
 
-### On Mac: Zush
+### On desktop: Zush
 
-[Zush](https://zushapp.com/ai-file-renamer) is built specifically for this workflow on macOS. It supports 22 image formats including PNG, JPG, HEIC, and RAW formats, plus 11 document formats including PDF, DOCX, and XLSX.
+[Zush](https://zushapp.com/ai-file-renamer) is built specifically for this workflow on desktop. It supports 22 image formats including PNG, JPG, HEIC, and RAW formats, plus 11 document formats including PDF, DOCX, and XLSX.
 
 Key features:
 
 - **Batch rename.** Select a folder or drag files in, and Zush renames them all in one pass.
 - **Folder monitoring.** Set Zush to watch a folder, and new files get renamed automatically as they arrive.
 - **Custom patterns.** Define naming templates that control how filenames are structured.
-- **Finder tags and metadata.** Zush can apply smart Finder tags and update metadata for Spotlight searchability.
+- **Search-friendly metadata.** Zush can apply useful naming patterns and metadata so files are easier to find later.
 - **Multiple AI providers.** Choose from Gemini, Groq, OpenAI, or Claude depending on your preference.
 - **60+ languages.** Generate filenames in your preferred language.
 - **Rename history.** Every rename is logged and reversible.
 
 Zush offers 50 free renames per month. For heavier use, Pro is a one-time $10 payment for 10,000 renames. If you bring your own API key (BYOK), renames are unlimited.
 
-For a detailed comparison of tools in this space, read [Best AI File Renamer Tools for Mac Compared](/blog/best-ai-file-renamer-tools-mac-compared).
+For a detailed comparison of tools in this space, read [Best AI File Renamer Tools in 2026](/blog/best-ai-file-renamer-tools-2026).
 
 ### On any platform: command-line tools
 
@@ -141,7 +141,7 @@ Here is the practical walkthrough for the most common workflow.
 This is the setup that prevents clutter from accumulating in the first place. Instead of cleaning up once a month, the mess never forms.
 
 
-For a complete walkthrough of batch renaming on Mac, see [Batch Rename Files on Mac: Complete Guide](/blog/batch-rename-files-on-mac-complete-guide) or go straight to the [AI batch rename tool](/batch-rename-files).
+For a Mac-specific batch tutorial, see [Batch Rename Files on Mac: Complete Guide](/blog/batch-rename-files-on-mac-complete-guide). For the Windows equivalent workflow, go to [How to Rename Files with AI on Windows](/blog/rename-files-with-ai-windows-guide) or straight to the [AI batch rename tool](/batch-rename-files).
 
 ## Common formats supported
 
@@ -155,7 +155,7 @@ PNG, JPG, JPEG, HEIC, HEIF, WebP, TIFF, BMP, GIF, SVG, AVIF, and RAW formats fro
 
 PDF, DOCX, DOC, XLSX, XLS, PPTX, PPT, TXT, RTF, and CSV.
 
-A tool that only handles JPG and PNG will miss half the files in a real Mac workflow. HEIC from iPhone photos and RAW from cameras are the formats that need renaming most.
+A tool that only handles JPG and PNG will miss half the files in a real desktop workflow. HEIC from phones and RAW from cameras are the formats that need renaming most.
 
 ## Free options for AI file renaming
 

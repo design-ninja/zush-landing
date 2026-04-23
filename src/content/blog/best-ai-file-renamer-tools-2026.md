@@ -12,7 +12,7 @@ AI file renamers have gone from experimental curiosities to practical tools. The
 
 This comparison covers the tools worth knowing about in 2026, with honest assessments of what each one does well and where it falls short across platforms.
 
-If you only care about Mac buyer intent, go to [Best AI File Renamer Tools for Mac Compared](/blog/best-ai-file-renamer-tools-mac-compared), [AI File Renamer for Mac](/ai-file-renamer), or [Batch Rename Files on Mac](/batch-rename-files). This page stays broad on purpose.
+If you want the platform-specific version, go to [Best AI File Renamer Tools for Mac Compared](/blog/best-ai-file-renamer-tools-mac-compared) or [Best AI File Renamer for Windows](/blog/best-ai-file-renamer-tools-windows-compared). This page stays broad on purpose.
 
 
 ## What to evaluate
@@ -33,11 +33,11 @@ Before comparing tools, know what actually matters for daily use:
 
 ### 1. Zush
 
-**Platform:** macOS
+**Platform:** Mac and Windows
 **Pricing:** Free (50 renames/month), Pro $10 one-time (10K renames), BYOK unlimited
 **Website:** [zushapp.com](https://zushapp.com/ai-file-renamer)
 
-Zush is the pick for Mac users who work with a mix of file types. It supports 22 image formats (including HEIC plus CR2, NEF, ARW, DNG, and other RAW variants) and 11 document formats (PDF, DOCX, XLSX, and others). That breadth matters because real workflows on Mac mix iPhone photos, camera RAW files, scanned PDFs, and office documents in the same folders, and most tools in this post fail on RAW.
+Zush is the pick for users who work with a mix of file types and want one desktop workflow instead of separate rename tools for images and documents. It supports 22 image formats (including HEIC plus CR2, NEF, ARW, DNG, and other RAW variants) and 11 document formats (PDF, DOCX, XLSX, and others). That breadth matters because real workflows mix phone photos, camera RAW files, scanned PDFs, and office documents in the same folders, and most tools in this post fail on RAW.
 
 **Strengths:**
 
@@ -45,7 +45,7 @@ Zush is the pick for Mac users who work with a mix of file types. It supports 22
 - Batch rename with preview before applying
 - Folder monitoring for automatic renaming of new files
 - Custom naming patterns and templates
-- Smart Finder tags and Spotlight-friendly metadata
+- Search-friendly names, metadata, and custom prompts
 - Multiple AI providers: Gemini, Groq, OpenAI, Claude
 - Support for 60+ languages
 - Rename history with full revert capability
@@ -53,14 +53,14 @@ Zush is the pick for Mac users who work with a mix of file types. It supports 22
 
 **Limitations:**
 
-- macOS only
+- Best experience if you want a native desktop workflow rather than a browser-only tool
 - Requires an internet connection for AI processing (unless using a local model via BYOK)
 
-**Best for:** Mac users with mixed file types who want both one-off cleanup and ongoing automation.
+**Best for:** Mac and Windows users with mixed file types who want both one-off cleanup and ongoing automation.
 
 ![Zush AI rename results showing files with descriptive before and after names and green checkmarks](/images/screenshots/light/zush-batch-rename-results.webp)
 
-For a Mac-specific deep dive, see [AI File Renamer for Mac](/ai-file-renamer).
+For the platform-specific deep dives, see [Zush for Mac](/mac) and [Zush for Windows](/windows).
 
 ### 2. AI Renamer
 
@@ -245,7 +245,7 @@ AI Renamer is fully free but requires local hardware and setup. Browser tools of
 
 ![Zush activity tab showing rename history with undo buttons for each file](/images/screenshots/light/zush-activity-log.webp)
 
-For a full guide to free options, read [How to Rename Images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos).
+For a full guide to free options, read [How to Rename Files with AI for Free in 2026](/blog/rename-files-with-ai-free).
 
 
 ## Verdict

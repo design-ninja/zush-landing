@@ -135,9 +135,9 @@ const RenameScreenshotsWithAI = () => (
       { title: 'AI File Renamer', href: '/ai-file-renamer' },
     ]}
     relatedBlogPosts={[
+      { title: 'How to Rename Screenshots Automatically on Windows', href: 'rename-screenshots-automatically-windows' },
       { title: 'Screenshot Naming Conventions on macOS', href: 'screenshot-naming-conventions-macos' },
-      { title: 'How to Organize Your Downloads Folder on Mac', href: 'how-to-organize-downloads-folder-mac' },
-      { title: 'Automate File Organization on macOS', href: 'automate-file-organization-macos' },
+      { title: 'How to Organize Your Downloads Folder on Windows', href: 'organize-downloads-folder-windows' },
     ]}
     jsonLd={jsonLd}
   />

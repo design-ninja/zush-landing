@@ -100,9 +100,9 @@ const AIImageRenamer = () => (
       { title: 'AI File Renamer', href: '/ai-file-renamer' },
     ]}
     relatedBlogPosts={[
-      { title: 'How to Rename Images with AI on Mac (2026 Step-by-Step)', href: 'how-to-rename-images-with-ai-on-macos' },
-      { title: 'AI Image Tagging vs Manual Photo Organization', href: 'ai-image-tagging-vs-manual-photo-organization' },
-      { title: 'Best AI File Renamer for Mac (2026): 6 Tools Compared', href: 'best-ai-file-renamer-tools-mac-compared' },
+      { title: 'Why Your Photos Are Named IMG and How to Fix It', href: 'why-your-photos-are-named-img-and-how-to-fix-it' },
+      { title: 'Rename Photos for Social Media: Better Filenames for Reuse and SEO', href: 'rename-photos-for-social-media' },
+      { title: 'Image File Formats Explained: Complete Guide', href: 'image-file-formats-explained-complete-guide' },
     ]}
     jsonLd={jsonLd}
   />

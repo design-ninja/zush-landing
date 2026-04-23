@@ -68,9 +68,9 @@ const AutoRenameFiles = () => (
       { title: 'Rename Photos with AI', href: '/rename-photos-with-ai' },
     ]}
     relatedBlogPosts={[
-      { title: 'Automate File Organization on macOS', href: 'automate-file-organization-macos' },
       { title: 'Folder Monitoring for Automatic File Renaming: Set It and Forget It', href: 'folder-monitoring-automatic-file-renaming' },
-      { title: 'macOS Automator: Rename Files Guide', href: 'macos-automator-rename-files-guide' },
+      { title: 'Auto Rename Files on Windows (2026): Best Workflows for Downloads, Screenshots and PDFs', href: 'auto-rename-files-windows-guide' },
+      { title: 'Automate File Organization on macOS', href: 'automate-file-organization-macos' },
     ]}
     jsonLd={{
       '@context': 'https://schema.org',

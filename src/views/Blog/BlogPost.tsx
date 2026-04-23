@@ -2,6 +2,7 @@ import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { getPostBySlug, getRelatedPosts } from '@/data/blog';
+import { BLOG_PLATFORM_LABELS } from '@/data/blogSchema';
 import AppLink from '@/components/AppLink';
 import BlogCTA from '@/components/BlogCTA';
 import Heading from '@/components/Heading';
@@ -96,6 +97,10 @@ const BlogPost = ({ slug }: BlogPostProps) => {
   const toc = extractToc(content);
   const showToc = toc.filter((item) => item.level === 2).length >= 4;
   const shouldRenderInlineCta = countWords(content) >= 1800;
+  const trackClassName = [
+    styles.BlogPost__Track,
+    styles[`BlogPost__Track_${frontmatter.platform}`],
+  ].join(' ');
 
   let h2Index = 0;
 
@@ -107,6 +112,9 @@ const BlogPost = ({ slug }: BlogPostProps) => {
         </AppLink>
 
         <header className={styles.BlogPost__Header}>
+          <span className={trackClassName}>
+            {BLOG_PLATFORM_LABELS[frontmatter.platform]}
+          </span>
           <Heading as='h1' className={styles.BlogPost__Title}>
             {frontmatter.title}
           </Heading>
