@@ -314,7 +314,7 @@ export const HOME_JSON_LD = {
           '@type': 'HowToStep',
           position: 1,
           name: 'Download Zush',
-          text: 'Install Zush on your Mac. No account required.',
+          text: 'Install Zush on your desktop. No account required.',
         },
         {
           '@type': 'HowToStep',

@@ -1,6 +1,8 @@
 import Heading from '../Heading';
 import Text from '../Text';
 import AppLink from '@/components/AppLink';
+import AppStoreIcon from '@/components/AppStoreIcon';
+import MicrosoftStoreIcon from '@/components/MicrosoftStoreIcon';
 import { APP_STORE_URL, SUPPORT_EMAIL, WINDOWS_STORE_URL } from '@/constants';
 import styles from './Footer.module.scss';
 
@@ -58,15 +60,15 @@ const Footer = () => {
                 className={styles.Footer__AppStore}
                 aria-label="Download Zush on the Mac App Store"
               >
-                <img
-                  src="/images/download-from-appstore.svg"
-                  alt="Download on the Mac App Store"
-                  className={styles.Footer__AppStoreImg}
-                  width={156}
-                  height={40}
-                  loading="lazy"
-                  decoding="async"
-                />
+                <span className={styles.Footer__StoreBadge}>
+                  <span className={styles.Footer__StoreBadgeIcon}>
+                    <AppStoreIcon />
+                  </span>
+                  <span className={styles.Footer__StoreBadgeText}>
+                    <span className={styles.Footer__StoreBadgeKicker}>Download on the</span>
+                    <span className={styles.Footer__StoreBadgeLabel}>Mac App Store</span>
+                  </span>
+                </span>
               </AppLink>
               <AppLink
                 href={WINDOWS_STORE_URL}
@@ -75,15 +77,15 @@ const Footer = () => {
                 className={styles.Footer__MicrosoftStore}
                 aria-label="Get Zush from the Microsoft Store"
               >
-                <img
-                  src="/images/get-from-microsoft-dark.svg"
-                  alt="Get it from Microsoft"
-                  className={styles.Footer__MicrosoftStoreImg}
-                  width={161}
-                  height={44}
-                  loading="lazy"
-                  decoding="async"
-                />
+                <span className={styles.Footer__StoreBadge}>
+                  <span className={styles.Footer__StoreBadgeIcon}>
+                    <MicrosoftStoreIcon />
+                  </span>
+                  <span className={styles.Footer__StoreBadgeText}>
+                    <span className={styles.Footer__StoreBadgeKicker}>Download from the</span>
+                    <span className={styles.Footer__StoreBadgeLabel}>Microsoft Store</span>
+                  </span>
+                </span>
               </AppLink>
             </div>
           </div>

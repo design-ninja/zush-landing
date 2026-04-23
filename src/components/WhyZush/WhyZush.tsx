@@ -55,14 +55,10 @@ const WhyZush = () => {
           title={
             <>
               Why <span className={styles.WhyZush__TitleAccent}>Zush</span>{' '}
-              Wins on {isWindows ? 'Windows' : 'Mac'}
+              Fits Real Desktop Work
             </>
           }
-          description={
-            isWindows
-              ? 'One-time pricing, native Windows feel, fast renaming, and fewer annoying decisions'
-              : 'One-time pricing, native macOS feel, fast renaming, and fewer annoying decisions'
-          }
+          description='One-time pricing, desktop-native feel, fast renaming, and fewer annoying decisions'
         />
 
         <div className={styles.Grid}>
@@ -105,18 +101,16 @@ const WhyZush = () => {
               <div className={styles.Card__Icon}>
                 <Monitor size={24} />
               </div>
-              <span className={styles.Card__Eyebrow}>
-                {isWindows ? 'Windows-first feel' : 'Mac-first feel'}
-              </span>
+              <span className={styles.Card__Eyebrow}>Desktop-native feel</span>
             </div>
 
             <Heading as='h3' className={styles.Card__Title}>
-              {isWindows ? 'Native, fast, and at home on Windows' : 'Native, fast, and modern'}
+              Native, fast, and modern
             </Heading>
             <Text className={styles.Card__Description} color='subtle'>
-              {isWindows
-                ? 'Zush feels like a real Windows app: quick to open, clean to use, and visually at home on the desktop instead of feeling like a clunky utility panel.'
-                : 'Zush feels like a real macOS app: quick to open, clean to use, and visually at home on the desktop instead of feeling like a clunky utility panel.'}
+              Zush feels like a real desktop app: quick to open, clean to use,
+              and visually at home on your machine instead of feeling like a
+              clunky utility panel.
             </Text>
 
             <div

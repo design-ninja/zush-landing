@@ -18,8 +18,7 @@ const DownloadCTA = ({
 }: DownloadCTAProps) => {
   const { downloadOS } = useOS();
 
-  const resolvedTitle =
-    title ?? (downloadOS === 'windows' ? 'Try Zush free on Windows' : 'Try Zush free on your Mac');
+  const resolvedTitle = title ?? 'Try Zush free';
 
   return (
     <section className={[styles.Section, className].filter(Boolean).join(' ')}>

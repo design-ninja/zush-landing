@@ -3,7 +3,6 @@ import { ChevronDown } from 'lucide-react';
 import { APP_CONFIG } from '@/constants';
 import AppLink from '@/components/AppLink';
 import Heading from '@/components/Heading';
-import { useOS } from '@/hooks/useOS';
 import { HOME_FAQ_DATA } from '@/data/homeFaq';
 import SectionHeader from '../SectionHeader';
 import styles from './FAQ.module.scss';
@@ -56,8 +55,6 @@ const STATIC_JSX_OVERRIDES: Record<string, React.ReactNode> = {
 };
 
 const FAQ = () => {
-  const { downloadOS } = useOS();
-  const isWindows = downloadOS === 'windows';
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const faqs = useMemo(
@@ -66,9 +63,7 @@ const FAQ = () => {
         if (item.question === 'Which operating systems are supported?') {
           return {
             question: item.question,
-            answer: isWindows
-              ? `Zush runs on Windows 10 / 11 and macOS (${APP_CONFIG.min_macos_version} ${APP_CONFIG.min_macos_name} and newer). The Windows build is available on the Microsoft Store; the Mac build is distributed as a signed .dmg and on the Mac App Store.`
-              : `Zush runs on macOS (${APP_CONFIG.min_macos_version} ${APP_CONFIG.min_macos_name} and newer) and Windows 10 / 11. The Mac build is distributed as a signed .dmg and on the Mac App Store; the Windows build is available on the Microsoft Store.`,
+            answer: `Zush runs on macOS (${APP_CONFIG.min_macos_version} ${APP_CONFIG.min_macos_name} and newer) and Windows 10 / 11. The Mac build is distributed as a signed .dmg and on the Mac App Store; the Windows build is available on the Microsoft Store.`,
           };
         }
 
@@ -85,7 +80,7 @@ const FAQ = () => {
           answer: STATIC_JSX_OVERRIDES[item.question] ?? item.answer,
         };
       }),
-    [isWindows],
+    [],
   );
 
   return (

@@ -155,11 +155,7 @@ const Videos = ({
                 See <span style={{ color: 'var(--secondary)' }}>Zush</span> in Action
               </>
             }
-            description={
-              isWindowsShowcase
-                ? 'Explore key Windows workflows with real product screenshots'
-                : 'Watch how Zush transforms your file organization workflow with these powerful features'
-            }
+            description='See how Zush handles real file organization workflows with these core features'
           />
         </motion.div>
         
