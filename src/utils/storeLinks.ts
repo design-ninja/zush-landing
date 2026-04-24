@@ -17,11 +17,8 @@ interface StoreLinkClickEvent {
 }
 
 const STORE_FALLBACK_DELAY_MS = 1500;
-const FORCE_WINDOWS_FOR_REVIEW = true;
 
 export const detectRuntimeStoreOS = (): StoreOS | null => {
-  if (FORCE_WINDOWS_FOR_REVIEW) return 'windows';
-
   if (typeof navigator === 'undefined') return null;
 
   const nav = navigator as Navigator & {

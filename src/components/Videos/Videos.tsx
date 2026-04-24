@@ -44,12 +44,15 @@ const Videos = ({
   const [canAutoplay, setCanAutoplay] = useState(false);
   const [hasEnteredViewport, setHasEnteredViewport] = useState(false);
   const videoWrapperRef = useRef<HTMLDivElement>(null);
+  const windowsVideoRef = useRef<HTMLVideoElement>(null);
   const showcaseItems = isWindowsShowcase ? WINDOWS_DEMO_SCREENSHOTS : DEMO_VIDEOS;
   const activeVideo = DEMO_VIDEOS[activeFeature];
   const activeScreenshot = WINDOWS_DEMO_SCREENSHOTS[activeFeature];
   const activeVideoMedia = resolveDemoVideoMedia(activeVideo, theme);
   const activeScreenshotSrc = resolveDemoScreenshotMedia(activeScreenshot, theme);
   const activeItem = showcaseItems[activeFeature];
+  const activeWindowsVideoSrc = activeScreenshot.video?.[theme] ?? '';
+  const hasActiveWindowsVideo = isWindowsShowcase && activeWindowsVideoSrc.length > 0;
 
   useEffect(() => {
     if (activeFeature >= showcaseItems.length) {
@@ -134,12 +137,30 @@ const Videos = ({
 
   useEffect(() => {
     if (isWindowsShowcase) {
-      setIsPlaying(false);
+      setIsPlaying(hasActiveWindowsVideo && shouldAutoplay);
       return;
     }
 
     setIsPlaying(shouldAutoplay);
-  }, [activeFeature, isWindowsShowcase, shouldAutoplay]);
+  }, [activeFeature, hasActiveWindowsVideo, isWindowsShowcase, shouldAutoplay]);
+
+  useEffect(() => {
+    if (!hasActiveWindowsVideo) {
+      return;
+    }
+
+    const video = windowsVideoRef.current;
+    if (!video) {
+      return;
+    }
+
+    if (isPlaying) {
+      void video.play().catch(() => undefined);
+      return;
+    }
+
+    video.pause();
+  }, [hasActiveWindowsVideo, isPlaying, activeWindowsVideoSrc]);
 
   const handleTabClick = (index: number) => {
     setActiveFeature(index);
@@ -170,7 +191,19 @@ const Videos = ({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          {isWindowsShowcase ? (
+          {hasActiveWindowsVideo ? (
+            <video
+              ref={windowsVideoRef}
+              key={activeWindowsVideoSrc}
+              className={styles.Videos__Video}
+              src={activeWindowsVideoSrc}
+              aria-label={`${activeItem.title}: ${activeItem.description}`}
+              muted
+              playsInline
+              controls
+              preload='auto'
+            />
+          ) : isWindowsShowcase ? (
             <img
               src={activeScreenshotSrc}
               alt={activeScreenshot.alt}
@@ -185,11 +218,11 @@ const Videos = ({
               type='button'
               className={styles.Videos__PlayButton}
               onClick={() => setIsPlaying(true)}
-              aria-label={`Play ${activeVideo.title} demo video`}
+              aria-label={`Play ${activeItem.title} demo video`}
             >
               <img
-                src={activeVideoMedia.poster}
-                alt={`${activeVideo.title} demo`}
+                src={hasActiveWindowsVideo ? activeScreenshotSrc : activeVideoMedia.poster}
+                alt={`${activeItem.title} demo`}
                 className={styles.Videos__Poster}
                 width={1280}
                 height={720}
@@ -204,23 +237,25 @@ const Videos = ({
             </button>
           ) : (
             <video
-              key={activeVideoMedia.source}
+              key={hasActiveWindowsVideo ? activeWindowsVideoSrc : activeVideoMedia.source}
               className={styles.Videos__Video}
-              src={activeVideoMedia.source}
-              aria-label={`${activeVideo.title}: ${activeVideo.description}`}
+              src={hasActiveWindowsVideo ? activeWindowsVideoSrc : activeVideoMedia.source}
+              aria-label={`${activeItem.title}: ${activeItem.description}`}
               muted
               playsInline
               autoPlay
               controls
               preload='metadata'
-              poster={activeVideoMedia.poster}
+              poster={hasActiveWindowsVideo ? activeScreenshotSrc : activeVideoMedia.poster}
             >
-              <track
-                kind='captions'
-                src='/videos/captions/zush-demo.vtt'
-                srcLang='en'
-                label='English captions'
-              />
+              {!hasActiveWindowsVideo && (
+                <track
+                  kind='captions'
+                  src='/videos/captions/zush-demo.vtt'
+                  srcLang='en'
+                  label='English captions'
+                />
+              )}
             </video>
           )}
         </motion.div>

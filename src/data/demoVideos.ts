@@ -18,6 +18,7 @@ export interface DemoScreenshotAsset {
   title: string;
   description: string;
   images: ThemeAwareMedia;
+  video?: ThemeAwareMedia;
   alt: string;
 }
 
@@ -128,6 +129,10 @@ export const WINDOWS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
     images: {
       light: '/images/showcase/windows-original/2.webp',
       dark: '/images/showcase/windows-original/3.webp',
+    },
+    video: {
+      light: '/videos/windows/zush-batch-rename.mp4',
+      dark: '/videos/windows/zush-batch-rename.mp4',
     },
     alt: 'Batch rename workflow in Zush for Windows',
   },
