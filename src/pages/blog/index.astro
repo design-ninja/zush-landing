@@ -5,8 +5,8 @@ import BlogPostCard from '@/components/blog/BlogPostCard.astro';
 import {
   getAllPosts,
   getAllTags,
+  getBalancedRecentBlogPosts,
   getBlogIndexSections,
-  getRecentBlogPosts,
 } from '@/data/blog';
 import { getSeoForPath } from '@/seo/config';
 import headingStyles from '@/components/Heading/Heading.module.scss';
@@ -18,7 +18,7 @@ import styles from '@/views/Blog/BlogList.module.scss';
 const seo = getSeoForPath('/blog');
 const allPosts = await getAllPosts();
 const sections = await getBlogIndexSections();
-const recentPosts = await getRecentBlogPosts(6);
+const recentPosts = await getBalancedRecentBlogPosts(2);
 const allTags = await getAllTags();
 const searchablePosts = allPosts.map((post) => ({
   post,
@@ -60,7 +60,7 @@ const searchablePosts = allPosts.map((post) => ({
           ].join(' ')}
         >
           Guides, comparisons, and real workflows for AI-powered file renaming across Mac, Windows,
-          and general desktop setup.
+          and general desktop setup
         </p>
       </div>
 
@@ -99,7 +99,7 @@ const searchablePosts = allPosts.map((post) => ({
               styles.BlogList__IntroCardDescription,
             ].join(' ')}
           >
-            See all posts in publish order, newest first.
+            See all posts in publish order, newest first
           </p>
           <span class={styles.BlogList__IntroCardMeta}>
             <span>Open archive</span>
@@ -127,7 +127,7 @@ const searchablePosts = allPosts.map((post) => ({
               styles.BlogList__IntroCardDescription,
             ].join(' ')}
           >
-            Browse posts by topic, workflow, file type, or platform.
+            Browse posts by topic, workflow, file type, or platform
           </p>
           <span class={styles.BlogList__IntroCardMeta}>
             <span>{`${allTags.length} tags`}</span>
@@ -164,7 +164,7 @@ const searchablePosts = allPosts.map((post) => ({
           ].join(' ')}
           data-blog-search-summary
         >
-          Matching posts will appear here.
+          Matching posts will appear here
         </p>
         <div class={styles.BlogList__SectionActions}>
           <button
@@ -193,7 +193,7 @@ const searchablePosts = allPosts.map((post) => ({
           data-blog-search-empty
           hidden
         >
-          No posts found. Try a different keyword or browse the archive.
+          No posts found. Try a different keyword or browse the archive
         </p>
       </section>
 
@@ -263,7 +263,7 @@ const searchablePosts = allPosts.map((post) => ({
               styles.BlogList__SectionDescription,
             ].join(' ')}
           >
-            The latest additions from the archive, sorted by publish date.
+            A balanced selection of recent Windows, Mac, and general guides
           </p>
           <div class={styles.BlogList__SectionActions}>
             <a class={styles.BlogList__SectionAction} href='/blog/archive'>
@@ -345,12 +345,12 @@ const searchablePosts = allPosts.map((post) => ({
             matches === 1
               ? `1 post matching "${input.value.trim()}".`
               : `${matches} posts matching "${input.value.trim()}".`;
-          status.textContent = 'Filtering all blog posts in real time.';
+          status.textContent = 'Filtering all blog posts in real time';
           params.set('q', input.value.trim());
         } else {
           count.textContent = '0';
-          summary.textContent = 'Matching posts will appear here.';
-          status.textContent = 'Search across all blog posts.';
+          summary.textContent = 'Matching posts will appear here';
+          status.textContent = 'Search across all blog posts';
           params.delete('q');
         }
 

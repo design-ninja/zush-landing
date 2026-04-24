@@ -1,6 +1,7 @@
 ---
 import type { GetStaticPaths, Page } from 'astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import BackLink from '@/components/BackLink/BackLink.astro';
 import BlogBreadcrumbs from '@/components/blog/BlogBreadcrumbs.astro';
 import BlogPagination from '@/components/blog/BlogPagination.astro';
 import BlogPostCard from '@/components/blog/BlogPostCard.astro';
@@ -44,8 +45,11 @@ const breadcrumbItems = [
 
 <BaseLayout seo={seo}>
   <BlogBreadcrumbs items={breadcrumbItems} />
+  <div class={styles.BlogList__BreadcrumbBack}>
+    <BackLink href='/blog' label='Back to Blog' />
+  </div>
 
-  <section class={styles.BlogList}>
+  <section class={[styles.BlogList, styles.BlogList_afterBreadcrumbBack].join(' ')}>
     <div class={styles.BlogList__Container}>
       <div class={styles.BlogList__SectionHeader}>
         <h1 class={[headingStyles.Heading, headingStyles.Heading_h1].join(' ')}>
@@ -64,9 +68,6 @@ const breadcrumbItems = [
       </div>
 
       <div class={styles.BlogList__SectionActions}>
-        <a class={styles.BlogList__SectionAction} href='/blog'>
-          Back to Blog
-        </a>
         <a class={styles.BlogList__SectionAction} href='/blog/tags'>
           All tags
         </a>

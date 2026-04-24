@@ -1,6 +1,7 @@
 ---
 import { render } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import BackLink from '@/components/BackLink/BackLink.astro';
 import BlogBreadcrumbs from '@/components/blog/BlogBreadcrumbs.astro';
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogMarkdownH2 from '@/components/blog/BlogMarkdownH2.astro';
@@ -98,13 +99,12 @@ const breadcrumbItems = [
 
 <BaseLayout jsonLd={jsonLd} seo={seo}>
   <BlogBreadcrumbs items={breadcrumbItems} />
+  <div class={styles.BlogPost__BreadcrumbBack}>
+    <BackLink href='/blog' label='Back to Blog' />
+  </div>
 
-  <article class={styles.BlogPost}>
+  <article class={[styles.BlogPost, styles.BlogPost_afterBreadcrumbBack].join(' ')}>
     <div class={styles.BlogPost__Container}>
-      <a class={styles.BlogPost__BackLink} href='/blog'>
-        &larr; Back to Blog
-      </a>
-
       <header class={styles.BlogPost__Header}>
         <span
           class={[styles.BlogPost__Track, styles[`BlogPost__Track_${post.platform}`]].join(' ')}
@@ -151,8 +151,6 @@ const breadcrumbItems = [
           <strong>TL;DR:</strong> {post.tldr}
         </div>
       )}
-
-      <BlogCTA placement='early' platform={post.platform} />
 
       {showToc && (
         <details class={styles.BlogPost__MobileToc}>
@@ -248,9 +246,7 @@ const breadcrumbItems = [
       )}
 
       <footer class={styles.BlogPost__Footer}>
-        <a class={styles.BlogPost__BackLink} href='/blog'>
-          &larr; Back to Blog
-        </a>
+        <BackLink href='/blog' label='Back to Blog' class={styles.BlogPost__BackLink} />
       </footer>
     </div>
   </article>

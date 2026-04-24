@@ -8,10 +8,7 @@
   margin-top: 2.5rem;
   padding: 2.5rem;
   border-radius: $radius-xl;
-  border: 1px solid var(--border);
-  background: var(--card);
-  @include glass-morphism;
-  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--primary-soft) 60%, var(--card));
   text-align: center;
 
   @include mobile {

@@ -5,9 +5,20 @@
   padding: 3.75rem 0;
   min-height: 80vh;
 
+  &_afterBreadcrumbBack {
+    padding-top: 2rem;
+  }
+
   &__Container {
     @include container;
     max-width: 70rem;
+  }
+
+  &__BreadcrumbBack {
+    @include container;
+
+    max-width: 70rem;
+    padding-top: 0.5rem;
   }
 
   &_underHeader {
@@ -163,6 +174,10 @@
 
   &__SectionHeader {
     margin-bottom: 0.75rem;
+  }
+
+  &__SectionHeader > &__SectionDescription {
+    margin-top: 0.9rem;
   }
 
   &__SectionTitleRow {
@@ -368,7 +383,6 @@
   }
 
   &__BackLink {
-    margin-top: 2rem;
-    display: inline-block;
+    margin-bottom: 2rem;
   }
 }

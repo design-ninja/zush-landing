@@ -37,21 +37,21 @@ export const BLOG_PLATFORM_META: Record<
   general: {
     title: 'General Guides',
     description:
-      'Platform-neutral explainers, naming rules, comparisons, and AI file renaming workflows that apply across desktop setups.',
+      'Platform-neutral explainers, naming rules, comparisons, and AI file renaming workflows that apply across desktop setups',
     ctaHref: '/',
     ctaLabel: 'See the full app',
   },
   mac: {
     title: 'Mac Guides',
     description:
-      'Finder, Automator, Spotlight, screenshots, photos, and buyer-intent workflows for Mac users.',
+      'Finder, Automator, Spotlight, screenshots, photos, and buyer-intent workflows for Mac users',
     ctaHref: '/mac',
     ctaLabel: 'View Zush for Mac',
   },
   windows: {
     title: 'Windows Guides',
     description:
-      'File Explorer, Microsoft Store, Windows Search, screenshots, PDFs, downloads, and folder-monitoring workflows for Windows.',
+      'File Explorer, Microsoft Store, Windows Search, screenshots, PDFs, downloads, and folder-monitoring workflows for Windows',
     ctaHref: '/windows',
     ctaLabel: 'View Zush for Windows',
   },

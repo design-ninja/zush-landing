@@ -1,0 +1,19 @@
+---
+import styles from './BackLink.module.scss';
+
+interface Props {
+  href?: string;
+  label?: string;
+  class?: string;
+}
+
+const {
+  href = '/',
+  label = 'Back to Home',
+  class: className = '',
+} = Astro.props as Props;
+---
+
+<a href={href} class:list={[styles.BackToHome, className]}>
+  ← {label}
+</a>
