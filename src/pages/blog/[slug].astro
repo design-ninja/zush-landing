@@ -265,7 +265,9 @@ const breadcrumbItems = [
           if (preferred === 'mac' || preferred === 'windows') return preferred;
         } catch {}
 
-        const uaData = navigator.userAgentData;
+        const uaData = (navigator as Navigator & {
+          userAgentData?: { platform?: string };
+        }).userAgentData;
         if (uaData?.platform) {
           const platform = uaData.platform.toLowerCase();
           if (platform.includes('win')) return 'windows';
