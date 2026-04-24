@@ -1,0 +1,27 @@
+---
+import styles from '@/components/AppLink/AppLink.module.scss';
+
+const {
+  href = '',
+  class: className = '',
+  rel,
+  target,
+  ...props
+} = Astro.props;
+
+const isExternal = /^(https?:\/\/|mailto:|tel:)/i.test(href);
+const safeRel =
+  target === '_blank'
+    ? rel ?? (isExternal ? 'noopener noreferrer' : undefined)
+    : rel;
+---
+
+<a
+  {...props}
+  class={[styles.AppLink, styles.AppLink_legal, className].filter(Boolean).join(' ')}
+  href={href}
+  rel={safeRel}
+  target={target}
+>
+  <slot />
+</a>

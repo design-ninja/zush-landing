@@ -5,12 +5,239 @@
   padding: 3.75rem 0;
   min-height: 80vh;
 
-  &__Container {
-    @include container;
-    max-width: 64rem;
+  &_afterBreadcrumbBack {
+    padding-top: 2rem;
   }
 
-  &__Posts {
+  &__Container {
+    @include container;
+    max-width: 70rem;
+  }
+
+  &__BreadcrumbBack {
+    @include container;
+
+    max-width: 70rem;
+    padding-top: 0.5rem;
+  }
+
+  &_underHeader {
+    padding-top: calc(var(--navbar-height, 4.375rem) + 3.75rem);
+
+    @include mobile {
+      padding-top: calc(var(--navbar-height, 4.375rem) + 2.5rem);
+    }
+  }
+
+  &_glowTopRight {
+    position: relative;
+    overflow: clip;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: max(2rem, calc((100vw - 70rem) / 2));
+      width: 13rem;
+      height: 13rem;
+      background: var(--secondary);
+      filter: blur(6.25rem);
+      opacity: 0.22;
+      pointer-events: none;
+      z-index: 0;
+
+      @include mobile {
+        top: 0;
+        right: -1.5rem;
+        opacity: 0.16;
+      }
+    }
+
+    .BlogList__Container {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  &__TitleAccent {
+    color: var(--secondary);
+  }
+
+  &__Search {
+    width: 100%;
+    margin: 0 0 2rem;
+  }
+
+  &__SearchInput {
+    @include form-input;
+
+    width: 100%;
+    background: color-mix(in srgb, var(--muted) 72%, var(--background));
+  }
+
+  &__SearchStatus {
+    display: none;
+  }
+
+  &__Sections {
+    display: grid;
+    gap: 0;
+    margin-bottom: 3rem;
+  }
+
+  &__Sections > &__Section {
+    padding-bottom: 3rem;
+  }
+
+  &__Sections > &__Section:not(:last-child) {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
+  }
+
+  &__Sections > &__Section:last-child {
+    padding-bottom: 0;
+  }
+
+  &__IntroLinks {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__IntroCard {
+    padding: 1.25rem 1.4rem;
+    border: 1px solid var(--border);
+    border-radius: $radius-xl;
+    background: var(--card);
+    text-decoration: none;
+    color: inherit;
+    transition:
+      border-color $transition-fast,
+      transform $transition-fast;
+
+    &:hover {
+      border-color: var(--primary);
+      transform: translateY(-1px);
+    }
+  }
+
+  &__IntroCardTitle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.45rem;
+  }
+
+  &__IntroCardTitleIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary);
+    flex-shrink: 0;
+  }
+
+  &__IntroCardDescription {
+    margin-bottom: 0.75rem;
+  }
+
+  &__IntroCardMeta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.875rem;
+    color: var(--primary);
+  }
+
+  &__Section {
+    padding: 2rem 0;
+
+    @include mobile {
+      padding: 1.5rem 0;
+    }
+  }
+
+  &__SearchResults {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  &__SectionHeader {
+    margin-bottom: 0.75rem;
+  }
+
+  &__SectionHeader > &__SectionDescription {
+    margin-top: 0.9rem;
+  }
+
+  &__SectionTitleRow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  &__SectionCount {
+    min-width: 1.75rem;
+    height: 1.75rem;
+    padding: 0 0.45rem;
+    border-radius: 9999px;
+    border: 1px solid var(--border);
+    background: var(--muted);
+    color: color-mix(in srgb, var(--muted-foreground) 72%, transparent);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  &__SectionTitle {
+    color: var(--foreground);
+  }
+
+  &__SectionDescription {
+    max-width: 46rem;
+    margin-bottom: 1.5rem;
+  }
+
+  &__SectionActions {
+    display: flex;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  &__SectionAction {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.95rem;
+
+    &:hover {
+      color: var(--primary-hover);
+    }
+  }
+
+  &__SectionActionButton {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    font: inherit;
+  }
+
+  &__SectionPosts {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem;
@@ -21,13 +248,19 @@
   }
 
   &__Post {
-    background: var(--muted);
+    background: var(--background);
     border: 1px solid var(--border);
     border-radius: $radius-xl;
-    transition: border-color $transition-fast;
+    overflow: hidden;
+    transition:
+      border-color $transition-fast,
+      transform $transition-fast,
+      box-shadow $transition-fast;
 
     &:hover {
-      border-color: var(--primary);
+      border-color: color-mix(in srgb, var(--primary) 30%, var(--border));
+      transform: translateY(-2px);
+      box-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
     }
   }
 
@@ -35,38 +268,90 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding: 2rem;
+    padding: 0;
     color: inherit;
+    overflow: hidden;
+  }
 
-    @include mobile {
-      padding: 1.5rem;
+  &__PostMedia {
+    aspect-ratio: 4 / 3;
+    width: 100%;
+    overflow: hidden;
+    border-radius: $radius-xl $radius-xl 0 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
+    background: var(--muted);
+  }
+
+  &__PostImage {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__Track {
+    --track-hue: var(--h-purple);
+
+    display: inline-flex;
+    align-self: flex-start;
+    margin: 1.35rem 1.5rem 0.85rem;
+    padding: 0.32rem 0.7rem;
+    border-radius: $radius-full;
+    background: oklch(var(--case-bg-l) var(--case-bg-c) var(--track-hue));
+    color: oklch(var(--case-icon-l) var(--case-icon-c) var(--track-hue));
+    border: 1px solid oklch(var(--case-icon-bg-l) var(--case-icon-bg-c) var(--track-hue));
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    &_general {
+      --track-hue: var(--h-cyan);
+    }
+
+    &_mac {
+      --track-hue: var(--h-purple);
+    }
+
+    &_windows {
+      --track-hue: var(--h-blue);
     }
   }
 
   &__PostTitle {
-    margin-bottom: 0.75rem;
+    margin: 0 1.5rem 0.75rem;
     color: var(--foreground);
   }
 
   &__PostDescription {
     color: var(--muted-foreground);
-    margin-bottom: 1rem;
+    margin: 0 1.5rem 1rem;
   }
 
   &__PostMeta {
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
     margin-top: auto;
+    padding: 0 1.5rem 1.5rem;
     color: var(--muted-foreground);
     font-size: 0.875rem;
+  }
+
+  &__PostMetaItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-width: 0;
+
+    svg {
+      flex: 0 0 auto;
+    }
   }
 
   &__PostTags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-top: 0.75rem;
-    margin-bottom: 0.9rem;
+    margin: 0.25rem 1.5rem 0.9rem;
   }
 
   &__Tag {
@@ -76,10 +361,58 @@
     border-radius: $radius-full;
     font-size: 0.75rem;
     font-weight: 500;
+    text-decoration: none;
+  }
+
+  &__TagCloud {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+
+    @include tablet {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__TagCard {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    padding: 1.25rem 1.35rem;
+    border: 1px solid var(--border);
+    border-radius: $radius-xl;
+    background: var(--card);
+    color: inherit;
+    text-decoration: none;
+    transition:
+      border-color $transition-fast,
+      transform $transition-fast;
+
+    &:hover {
+      border-color: var(--primary);
+      transform: translateY(-1px);
+    }
+  }
+
+  &__TagTitle {
+    margin: 0;
+  }
+
+  &__TagMeta {
+    color: var(--muted-foreground);
+    font-size: 0.875rem;
+  }
+
+  &__Empty {
+    padding: 1.25rem 0;
+    color: var(--muted-foreground);
   }
 
   &__BackLink {
-    margin-top: 2rem;
-    display: inline-block;
+    margin-bottom: 2rem;
   }
 }

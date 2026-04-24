@@ -1,0 +1,34 @@
+---
+import Heading from '@/components/Heading';
+import PillLink from '@/components/PillLink';
+import Text from '@/components/Text';
+import { BLOG_PLATFORM_META, type BlogPlatform } from '@/data/blogSchema';
+import { getFeaturedPostsByPlatform } from '@/data/blog';
+import styles from './PlatformGuides.module.scss';
+
+interface Props {
+  platform: Exclude<BlogPlatform, 'general'>;
+}
+
+const { platform } = Astro.props as Props;
+const meta = BLOG_PLATFORM_META[platform];
+const posts = await getFeaturedPostsByPlatform(platform, 3);
+---
+
+{posts.length > 0 && (
+  <section class={styles.PlatformGuides}>
+    <div class={styles.PlatformGuides__Container}>
+      <Heading as='h2' align='center'>
+        Read the Guides
+      </Heading>
+      <Text as='p' align='center' color='subtle' className={styles.PlatformGuides__Description}>
+        {meta.description}
+      </Text>
+      <div class={styles.PlatformGuides__Links}>
+        {posts.map((post) => (
+          <PillLink href={`/blog/${post.slug}`} withArrow>{post.title}</PillLink>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

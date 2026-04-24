@@ -58,6 +58,26 @@
         }
     }
 
+    &__OtherOS {
+        margin: 0 0 1.5rem;
+        font-size: 0.875rem;
+        color: var(--text-subtle);
+
+        a {
+            color: inherit;
+            text-decoration: underline;
+            text-underline-offset: 0.2em;
+
+            &:hover {
+                color: var(--primary);
+            }
+        }
+
+        @include mobile {
+            text-align: center;
+        }
+    }
+
     &__TrustRow {
         display: flex;
         flex-wrap: wrap;

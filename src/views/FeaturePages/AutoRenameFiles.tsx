@@ -3,11 +3,11 @@ import { buildSoftwareApplicationJsonLd } from '@/utils/jsonLd';
 
 const AutoRenameFiles = () => (
   <FeatureLandingPage
-    h1="Auto Rename Files on Mac"
+    h1="Auto Rename Files with AI"
     h1Accent="Auto Rename"
     category="general"
     definitionTitle="What Is Automatic File Renaming?"
-    definitionText="Set up watched folders and let Zush rename new screenshots, downloads, PDFs, and documents automatically as files arrive on your Mac."
+    definitionText="Set up watched folders and let Zush rename new screenshots, downloads, PDFs, and documents automatically as files arrive."
     showcaseSlides={[
       {
         files: [
@@ -54,8 +54,8 @@ const AutoRenameFiles = () => (
         answer: 'Every rename is logged in Zush\'s history, so you can revert any file to its original name with one click. You can also start with manual review mode, where Zush suggests names but waits for your approval before applying them.',
       },
       {
-        question: 'Does auto-rename work when my Mac is asleep?',
-        answer: 'Auto-rename requires Zush to be running, so it pauses when your Mac is asleep or the app is quit. When your Mac wakes up and Zush is open, it will automatically process any files that arrived while it was inactive.',
+        question: 'Does auto-rename work when my computer is asleep?',
+        answer: 'Auto-rename requires Zush to be running, so it pauses when your computer is asleep or the app is quit. Once your machine wakes up and Zush is open again, it will automatically process any files that arrived while it was inactive.',
       },
       {
         question: 'How is this different from Hazel or Automator?',
@@ -63,22 +63,22 @@ const AutoRenameFiles = () => (
       },
     ]}
     relatedPages={[
-      { title: 'AI File Renamer for macOS', href: '/ai-file-renamer' },
+      { title: 'AI File Renamer', href: '/ai-file-renamer' },
       { title: 'Rename Screenshots with AI', href: '/rename-screenshots-with-ai' },
       { title: 'Rename Photos with AI', href: '/rename-photos-with-ai' },
     ]}
     relatedBlogPosts={[
-      { title: 'Automate File Organization on macOS', href: 'automate-file-organization-macos' },
       { title: 'Folder Monitoring for Automatic File Renaming: Set It and Forget It', href: 'folder-monitoring-automatic-file-renaming' },
-      { title: 'macOS Automator: Rename Files Guide', href: 'macos-automator-rename-files-guide' },
+      { title: 'Auto Rename Files on Windows (2026): Best Workflows for Downloads, Screenshots and PDFs', href: 'auto-rename-files-windows-guide' },
+      { title: 'Automate File Organization on macOS', href: 'automate-file-organization-macos' },
     ]}
     jsonLd={{
       '@context': 'https://schema.org',
       '@graph': [
         {
           '@type': 'HowTo',
-          name: 'How to Auto Rename Files on macOS',
-          description: 'Set up automatic AI-powered file renaming on your Mac using Zush. Files are renamed as soon as they appear in a watched folder.',
+          name: 'How to Auto Rename Files with AI',
+          description: 'Set up automatic AI-powered file renaming with Zush. Files are renamed as soon as they appear in a watched folder.',
           step: [
             {
               '@type': 'HowToStep',
@@ -133,10 +133,10 @@ const AutoRenameFiles = () => (
             },
             {
               '@type': 'Question',
-              name: 'Does auto-rename work when my Mac is asleep?',
+              name: 'Does auto-rename work when my computer is asleep?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Auto-rename requires Zush to be running, so it pauses when your Mac is asleep or the app is quit. When your Mac wakes up and Zush is open, it will automatically process any files that arrived while it was inactive.',
+                text: 'Auto-rename requires Zush to be running, so it pauses when your computer is asleep or the app is quit. Once your machine wakes up and Zush is open again, it will automatically process any files that arrived while it was inactive.',
               },
             },
             {
@@ -152,7 +152,7 @@ const AutoRenameFiles = () => (
         buildSoftwareApplicationJsonLd({
           pagePath: '/auto-rename-files',
           description:
-            'Automatic file renamer for macOS that watches folders and uses AI to rename new screenshots, downloads, PDFs, and documents as they arrive.',
+            'Automatic file renamer that watches folders and uses AI to rename new screenshots, downloads, PDFs, and documents as they arrive.',
           featureList: [
             'Watched folders for automatic file renaming',
             'Rename downloads, screenshots, photos, and PDFs on arrival',

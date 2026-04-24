@@ -38,18 +38,82 @@
         }
     }
 
-    &__AppStore {
-        display: inline-block;
+    &__StoreBadges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
         margin-top: 1rem;
 
         @include mobile {
+            justify-content: center;
             margin: 1rem auto 0;
         }
     }
 
-    &__AppStoreImg {
-        height: 2.5rem;
-        width: auto;
+    &__AppStore {
+        display: inline-flex;
+    }
+
+    &__MicrosoftStore {
+        display: inline-flex;
+    }
+
+    &__StoreBadge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+        min-height: 2.75rem;
+        padding: 0.45rem 0.75rem;
+        border-radius: 0.85rem;
+        border: 1px solid var(--border);
+        background: var(--background);
+        color: var(--foreground);
+        box-shadow: inset 0 1px 0 color-mix(in srgb, white, transparent 30%);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    &__AppStore:hover &__StoreBadge,
+    &__AppStore:focus-visible &__StoreBadge,
+    &__MicrosoftStore:hover &__StoreBadge,
+    &__MicrosoftStore:focus-visible &__StoreBadge {
+        transform: translateY(-1px);
+        border-color: color-mix(in srgb, var(--border), var(--foreground) 10%);
+        box-shadow:
+            inset 0 1px 0 color-mix(in srgb, white, transparent 24%),
+            0 8px 18px rgba(15, 23, 42, 0.05);
+        background: color-mix(in srgb, var(--background), var(--muted) 10%);
+    }
+
+    &__StoreBadgeIcon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.9rem;
+        height: 1.9rem;
+        flex-shrink: 0;
+
+        svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    }
+
+    &__StoreBadgeText {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.05;
+    }
+
+    &__StoreBadgeKicker {
+        font-size: 0.58rem;
+        letter-spacing: 0.04em;
+        color: var(--muted-foreground);
+    }
+
+    &__StoreBadgeLabel {
+        font-size: 0.9rem;
+        font-weight: 600;
     }
 
     &__SectionTitle {

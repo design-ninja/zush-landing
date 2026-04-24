@@ -1,9 +1,30 @@
 ---
+import { Image } from 'astro:assets';
+import { render } from 'astro:content';
+import { Calendar, Glasses } from 'lucide-react';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import Breadcrumbs from '@/components/Breadcrumbs';
-import BlogPost from '@/views/Blog/BlogPost';
-import { getAllPosts, getPostBySlug } from '@/data/blog';
-import { getBlogSeo, SITE_ORIGIN } from '@/seo/config';
+import BackLink from '@/components/BackLink/BackLink.astro';
+import BlogBreadcrumbs from '@/components/blog/BlogBreadcrumbs.astro';
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogMarkdownH2 from '@/components/blog/BlogMarkdownH2.astro';
+import BlogMarkdownH3 from '@/components/blog/BlogMarkdownH3.astro';
+import BlogMarkdownH4 from '@/components/blog/BlogMarkdownH4.astro';
+import BlogMarkdownImage from '@/components/blog/BlogMarkdownImage.astro';
+import BlogMarkdownLink from '@/components/blog/BlogMarkdownLink.astro';
+import BlogMarkdownParagraph from '@/components/blog/BlogMarkdownParagraph.astro';
+import BlogMarkdownTable from '@/components/blog/BlogMarkdownTable.astro';
+import BlogPostCard from '@/components/blog/BlogPostCard.astro';
+import {
+  formatBlogDate,
+  getAllPosts,
+  getBlogPostBySlug,
+  getRelatedPosts,
+  normalizeTagSlug,
+} from '@/data/blog';
+import { getBlogThumbnail, getBlogThumbnailAlt } from '@/data/blogThumbnails';
+import { getBlogPublicTagSlug } from '@/data/blogTaxonomy';
+import { BLOG_PLATFORM_LABELS } from '@/data/blogSchema';
+import { getBlogSeo, getCanonicalUrl } from '@/seo/config';
 import {
   buildBlogPostingJsonLd,
   buildBreadcrumbJsonLd,
@@ -11,41 +32,305 @@ import {
   buildHowToJsonLd,
 } from '@/utils/jsonLd';
 import { HOW_TO_SCHEMAS } from '@/data/howToSchemas';
+import headingStyles from '@/components/Heading/Heading.module.scss';
+import textStyles from '@/components/Text/Text.module.scss';
+import styles from '@/views/Blog/BlogPost.module.scss';
+import '@/styles/markdown-content.scss';
 
-export function getStaticPaths() {
-  return getAllPosts().map((post) => ({
+interface TocItem {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+export async function getStaticPaths() {
+  const posts = await getAllPosts();
+
+  return posts.map((post) => ({
     params: { slug: post.slug },
-    props: { slug: post.slug },
   }));
 }
 
-const { slug } = Astro.props;
-const parsedPost = getPostBySlug(slug);
+const { slug } = Astro.params;
 
-if (!parsedPost) {
+if (!slug) {
+  throw new Error('Missing blog slug');
+}
+
+const details = await getBlogPostBySlug(slug);
+
+if (!details) {
   throw new Error(`Unknown blog slug: ${slug}`);
 }
 
-const { frontmatter, faq } = parsedPost;
-const seo = getBlogSeo(frontmatter);
-const howTo = HOW_TO_SCHEMAS[frontmatter.slug];
-const jsonLd = [
-  buildBlogPostingJsonLd(frontmatter),
-  buildBreadcrumbJsonLd(frontmatter.title, frontmatter.slug),
-  ...(faq.length > 0 ? [buildFAQPageJsonLd(faq)] : []),
-  ...(howTo
-    ? [buildHowToJsonLd(howTo, `${SITE_ORIGIN}/blog/${frontmatter.slug}`)]
-    : []),
-];
+const { entry, post, faq } = details;
+const relatedPosts = await getRelatedPosts(post.slug);
+const thumbnail = getBlogThumbnail(post.slug);
+const thumbnailAlt = getBlogThumbnailAlt(post.title);
+const { Content, headings } = await render(entry);
+const toc = headings.filter(
+  (item: TocItem) => item.depth === 2 || item.depth === 3,
+);
+const showToc = toc.filter((item: TocItem) => item.depth === 2).length >= 4;
+const seo = getBlogSeo(post);
+const howTo = HOW_TO_SCHEMAS[post.slug];
+const blogPath = `/blog/${post.slug}`;
+const isSelfCanonical = seo.canonicalPath === blogPath;
+const canonicalUrl = getCanonicalUrl(seo.canonicalPath);
+const jsonLd = isSelfCanonical
+  ? [
+      buildBlogPostingJsonLd(post, canonicalUrl),
+      buildBreadcrumbJsonLd(post.title, canonicalUrl),
+      ...(faq.length > 0 ? [buildFAQPageJsonLd(faq)] : []),
+      ...(howTo ? [buildHowToJsonLd(howTo, canonicalUrl)] : []),
+    ]
+  : [];
+
+const mdxComponents = {
+  a: BlogMarkdownLink,
+  h2: BlogMarkdownH2,
+  h3: BlogMarkdownH3,
+  h4: BlogMarkdownH4,
+  img: BlogMarkdownImage,
+  p: BlogMarkdownParagraph,
+  table: BlogMarkdownTable,
+};
 
 const breadcrumbItems = [
   { label: 'Home', href: '/' },
   { label: 'Blog', href: '/blog' },
-  { label: frontmatter.title },
+  { label: post.title },
 ];
 ---
 
-<BaseLayout seo={seo} jsonLd={jsonLd}>
-  <Breadcrumbs items={breadcrumbItems} />
-  <BlogPost slug={slug} />
+<BaseLayout jsonLd={jsonLd} seo={seo}>
+  <BlogBreadcrumbs items={breadcrumbItems} />
+  <div class={styles.BlogPost__BreadcrumbBack}>
+    <BackLink href='/blog' label='Back to Blog' />
+  </div>
+
+  <article class={[styles.BlogPost, styles.BlogPost_afterBreadcrumbBack].join(' ')}>
+    <div class={styles.BlogPost__Container}>
+      <header class={styles.BlogPost__Header}>
+        <span
+          class={[styles.BlogPost__Track, styles[`BlogPost__Track_${post.platform}`]].join(' ')}
+        >
+          {BLOG_PLATFORM_LABELS[post.platform]}
+        </span>
+        <h1 class={[headingStyles.Heading, headingStyles.Heading_h1, styles.BlogPost__Title].join(' ')}>
+          {post.title}
+        </h1>
+        <div class={styles.BlogPost__Author}>
+          <img
+            alt={post.authorName}
+            class={styles.BlogPost__AuthorAvatar}
+            decoding='async'
+            height='40'
+            loading='eager'
+            src='/images/authors/lirik.png'
+            width='40'
+          />
+          <div>
+            <span class={styles.BlogPost__AuthorName}>{post.authorName}</span>
+            <div class={styles.BlogPost__Meta}>
+              <span class={styles.BlogPost__MetaItem}>
+                <Calendar aria-hidden='true' size={15} strokeWidth={2} />
+                <time datetime={post.date}>{formatBlogDate(post.dateValue)}</time>
+              </span>
+              <span class={styles.BlogPost__MetaItem}>
+                <Glasses aria-hidden='true' size={15} strokeWidth={2} />
+                <span>{post.readingTime} min read</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        {post.tags.length > 0 && (
+          <div class={styles.BlogPost__Tags}>
+            {post.tags.map((tag) => (
+              <a
+                class={styles.BlogPost__Tag}
+                href={`/blog/tags/${getBlogPublicTagSlug(tag) ?? normalizeTagSlug(tag)}`}
+              >
+                {tag}
+              </a>
+            ))}
+          </div>
+        )}
+      </header>
+
+      <figure class={styles.BlogPost__HeroMedia}>
+        <Image
+          alt={thumbnailAlt}
+          class={styles.BlogPost__HeroImage}
+          decoding='async'
+          height={1086}
+          loading='eager'
+          sizes='(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(100vw - 4rem), 1152px'
+          src={thumbnail}
+          width={1448}
+          widths={[724, 966, 1086, 1448]}
+        />
+      </figure>
+
+      {post.tldr && (
+        <div class={styles.BlogPost__Tldr}>
+          <strong>TL;DR:</strong> {post.tldr}
+        </div>
+      )}
+
+      {showToc && (
+        <details class={styles.BlogPost__MobileToc}>
+          <summary class={styles.BlogPost__MobileTocSummary}>Jump to section</summary>
+          <nav aria-label='Jump to section' class={styles.BlogPost__MobileTocLinks}>
+            {toc
+              .filter((item: TocItem) => item.depth === 2)
+              .map((item: TocItem) => (
+                <a class={styles.BlogPost__MobileTocLink} href={`#${item.slug}`}>
+                  {item.text}
+                </a>
+              ))}
+          </nav>
+        </details>
+      )}
+
+      <div class={styles.BlogPost__Layout}>
+        {showToc && (
+          <aside aria-label='Table of contents' class={styles.BlogPost__Toc}>
+            <div class={styles.BlogPost__TocInner}>
+              <p
+                class={[
+                  textStyles.Text,
+                  textStyles.Text_xs,
+                  textStyles.Text_base,
+                  styles.BlogPost__TocTitle,
+                ].join(' ')}
+              >
+                On this page
+              </p>
+              <nav class={styles.BlogPost__TocNav}>
+                {toc.map((item: TocItem) => (
+                  <a
+                    class={[
+                      styles.BlogPost__TocLink,
+                      item.depth === 3 ? styles.BlogPost__TocLink_subtle : '',
+                    ].join(' ')}
+                    href={`#${item.slug}`}
+                  >
+                    {item.text}
+                  </a>
+                ))}
+              </nav>
+            </div>
+          </aside>
+        )}
+
+        <div class={`${styles.BlogPost__Content} markdown-content`}>
+          <Content components={mdxComponents} />
+        </div>
+      </div>
+
+      <BlogCTA placement='footer' platform={post.platform} />
+
+      {relatedPosts.length > 0 && (
+        <section class={styles.BlogPost__Related}>
+          <h2
+            class={[headingStyles.Heading, headingStyles.Heading_h3, styles.BlogPost__RelatedTitle].join(
+              ' ',
+            )}
+          >
+            Related Articles
+          </h2>
+          <div class={styles.BlogPost__RelatedGrid}>
+            {relatedPosts.map((relatedPost) => (
+              <BlogPostCard post={relatedPost} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      <footer class={styles.BlogPost__Footer}>
+        <BackLink href='/blog' label='Back to Blog' class={styles.BlogPost__BackLink} />
+      </footer>
+    </div>
+  </article>
+
+  <script>
+    import { bindStoreLink, bindStoreLinks } from '@/utils/storeLinks';
+
+    (() => {
+      const detectDownloadOS = () => {
+        try {
+          const preferred = window.localStorage.getItem('zush-preferred-os');
+          if (preferred === 'mac' || preferred === 'windows') return preferred;
+        } catch {}
+
+        const uaData = (navigator as Navigator & {
+          userAgentData?: { platform?: string };
+        }).userAgentData;
+        if (uaData?.platform) {
+          const platform = uaData.platform.toLowerCase();
+          if (platform.includes('win')) return 'windows';
+          if (platform.includes('mac')) return 'mac';
+        }
+
+        const ua = navigator.userAgent || '';
+        if (/Windows/i.test(ua)) return 'windows';
+        return 'mac';
+      };
+
+      const os = detectDownloadOS();
+
+      document
+        .querySelectorAll('[data-blog-cta-platform=\"general\"]')
+        .forEach((root) => {
+          root.setAttribute('data-blog-cta-os', os);
+
+          const title = root.querySelector('[data-blog-cta-title]');
+          if (title instanceof HTMLElement) {
+            title.textContent =
+              os === 'windows'
+                ? title.dataset.titleWindows || title.textContent
+                : title.dataset.titleMac || title.textContent;
+          }
+
+          const link = root.querySelector('[data-blog-cta-link]');
+          if (link instanceof HTMLAnchorElement) {
+            link.href =
+              os === 'windows'
+                ? link.dataset.hrefWindows || link.href
+                : link.dataset.hrefMac || link.href;
+
+            if (os === 'windows' && link.dataset.storeAppUrlWindows) {
+              link.dataset.storeOs = 'windows';
+              link.dataset.storeAppUrl = link.dataset.storeAppUrlWindows;
+              bindStoreLink(link);
+            } else {
+              delete link.dataset.storeOs;
+              delete link.dataset.storeAppUrl;
+            }
+          }
+
+          const hint = root.querySelector('[data-blog-cta-hint]');
+          if (hint instanceof HTMLElement) {
+            hint.textContent =
+              os === 'windows'
+                ? hint.dataset.hintWindows || hint.textContent
+                : hint.dataset.hintMac || hint.textContent;
+          }
+
+          const macIcon = root.querySelector('[data-blog-cta-icon=\"mac\"]');
+          const windowsIcon = root.querySelector('[data-blog-cta-icon=\"windows\"]');
+
+          if (macIcon instanceof HTMLElement) {
+            macIcon.hidden = os === 'windows';
+          }
+
+          if (windowsIcon instanceof HTMLElement) {
+            windowsIcon.hidden = os !== 'windows';
+          }
+        });
+
+      bindStoreLinks();
+    })();
+  </script>
 </BaseLayout>

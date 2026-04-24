@@ -1,52 +1,42 @@
-import { useState } from 'react';
-import Button from '@/components/Button';
-import AppleIcon from '@/components/AppleIcon';
-import MobileDownloadModal from '@/components/MobileDownloadModal';
+import DownloadButton from '@/components/DownloadButton';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
-import { DOWNLOAD_URL } from '@/constants';
+import { useOS } from '@/hooks/useOS';
+import { getShortRequirements, type DownloadOS } from '@/utils/download';
 import styles from './DownloadCTA.module.scss';
-
-const isMobile = () =>
-  typeof window !== 'undefined' && /iPhone|iPad|Android/i.test(navigator.userAgent);
 
 interface DownloadCTAProps {
   title?: string;
   subtitle?: string;
   className?: string;
+  forceOS?: DownloadOS;
 }
 
 const DownloadCTA = ({
-  title = 'Try Zush free on your Mac',
+  title,
   subtitle = 'AI-powered file renaming with custom prompts, folder monitoring, and one-click revert.',
   className,
+  forceOS,
 }: DownloadCTAProps) => {
-  const [showModal, setShowModal] = useState(false);
+  const { downloadOS: detectedOS } = useOS();
+  const downloadOS = forceOS ?? detectedOS;
 
-  const handleDownload = () => {
-    if (isMobile()) {
-      setShowModal(true);
-    } else {
-      window.open(DOWNLOAD_URL, '_blank', 'noopener,noreferrer');
-    }
-  };
+  const resolvedTitle = title ?? 'Try Zush free';
 
   return (
     <section className={[styles.Section, className].filter(Boolean).join(' ')}>
       <div className={styles.Container}>
         <div className={styles.Card}>
-          <Heading as='h2' className={styles.Title}>{title}</Heading>
+          <Heading as='h2' className={styles.Title}>{resolvedTitle}</Heading>
           <Text as='p' className={styles.Subtitle} color='subtle'>{subtitle}</Text>
           <div className={styles.Buttons}>
-            <Button variant='black' size='lg' onClick={handleDownload}>
-              <AppleIcon />
-              Download
-            </Button>
+            <DownloadButton source='download-cta' size='lg' forceOS={forceOS} />
           </div>
-          <Text as='p' size='xs' color='subtle' className={styles.Hint}>Free · No credit card required · macOS Sonoma+</Text>
+          <Text as='p' size='xs' color='subtle' className={styles.Hint}>
+            Free · No credit card required · {getShortRequirements(downloadOS)}
+          </Text>
         </div>
       </div>
-      <MobileDownloadModal isOpen={showModal} onClose={() => setShowModal(false)} />
     </section>
   );
 };

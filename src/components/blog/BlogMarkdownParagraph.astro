@@ -1,0 +1,14 @@
+---
+import textStyles from '@/components/Text/Text.module.scss';
+
+const { class: className = '', ...props } = Astro.props;
+---
+
+<p
+  {...props}
+  class={[textStyles.Text, textStyles.Text_md, textStyles.Text_base, className]
+    .filter(Boolean)
+    .join(' ')}
+>
+  <slot />
+</p>

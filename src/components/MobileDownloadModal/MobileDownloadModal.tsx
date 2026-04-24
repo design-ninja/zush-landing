@@ -2,9 +2,19 @@ import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Monitor } from 'lucide-react';
 import AppleIcon from '../AppleIcon';
+import WindowsIcon from '../WindowsIcon';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
-import { MIN_MACOS_VERSION } from '@/constants';
+import {
+  DOWNLOAD_URL,
+  MIN_MACOS_VERSION,
+  MIN_WINDOWS_VERSION,
+  WINDOWS_STORE_PROTOCOL_URL,
+  WINDOWS_STORE_URL,
+} from '@/constants';
+import { useOS } from '@/hooks/useOS';
+import { trackDownloadClick } from '@/utils/download';
+import { getPreferredStoreHref, handleStoreLinkClick } from '@/utils/storeLinks';
 import styles from './MobileDownloadModal.module.scss';
 
 interface MobileDownloadModalProps {
@@ -15,6 +25,7 @@ interface MobileDownloadModalProps {
 const CLOSE_ANIMATION_MS = 200;
 
 const MobileDownloadModal = ({ isOpen, onClose }: MobileDownloadModalProps) => {
+  const { os } = useOS();
   const [isRendered, setIsRendered] = useState(isOpen);
   const [isClosing, setIsClosing] = useState(false);
   const closeTimerRef = useRef<number | null>(null);
@@ -91,6 +102,12 @@ const MobileDownloadModal = ({ isOpen, onClose }: MobileDownloadModalProps) => {
       ? styles.MobileDownloadModal__Content_exit
       : styles.MobileDownloadModal__Content_enter
   }`;
+  const windowsStoreHref = getPreferredStoreHref({
+    os: 'windows',
+    runtimeOS: os,
+    appUrl: WINDOWS_STORE_PROTOCOL_URL,
+    webUrl: WINDOWS_STORE_URL,
+  });
 
   return createPortal(
     <div
@@ -114,12 +131,50 @@ const MobileDownloadModal = ({ isOpen, onClose }: MobileDownloadModalProps) => {
         </Heading>
 
         <Text as='p' className={styles.MobileDownloadModal__Description} color='subtle'>
-          Zush is a macOS app designed for desktop use. Visit this page on your Mac to download.
+          Zush is a desktop app for Mac and Windows. Open this page on your computer to download.
         </Text>
 
-        <div className={styles.MobileDownloadModal__Badge}>
-          <AppleIcon />
-          macOS {MIN_MACOS_VERSION}
+        <div className={styles.MobileDownloadModal__Options}>
+          <a
+            className={styles.MobileDownloadModal__Option}
+            href={DOWNLOAD_URL}
+            target='_blank'
+            rel='noopener noreferrer'
+            onClick={() => trackDownloadClick({ os: 'mac', source: 'mobile-modal' })}
+          >
+            <span className={styles.MobileDownloadModal__OptionIcon}>
+              <AppleIcon />
+            </span>
+            <span className={styles.MobileDownloadModal__OptionText}>
+              <span className={styles.MobileDownloadModal__OptionTitle}>Download for Mac</span>
+              <span className={styles.MobileDownloadModal__OptionHint}>macOS {MIN_MACOS_VERSION}</span>
+            </span>
+          </a>
+          <a
+            className={styles.MobileDownloadModal__Option}
+            href={windowsStoreHref}
+            target='_blank'
+            rel='noopener noreferrer'
+            data-store-os='windows'
+            data-store-app-url={WINDOWS_STORE_PROTOCOL_URL}
+            data-store-web-url={WINDOWS_STORE_URL}
+            onClick={(event) => {
+              trackDownloadClick({ os: 'windows', source: 'mobile-modal' });
+              handleStoreLinkClick(event, {
+                os: 'windows',
+                appUrl: WINDOWS_STORE_PROTOCOL_URL,
+                webUrl: WINDOWS_STORE_URL,
+              });
+            }}
+          >
+            <span className={styles.MobileDownloadModal__OptionIcon}>
+              <WindowsIcon />
+            </span>
+            <span className={styles.MobileDownloadModal__OptionText}>
+              <span className={styles.MobileDownloadModal__OptionTitle}>Get from Microsoft Store</span>
+              <span className={styles.MobileDownloadModal__OptionHint}>{MIN_WINDOWS_VERSION}</span>
+            </span>
+          </a>
         </div>
       </div>
     </div>,

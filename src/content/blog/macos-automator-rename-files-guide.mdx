@@ -1,0 +1,97 @@
+---
+title: "macOS Automator: How to Rename Files Automatically"
+description: "Learn how to rename files automatically with macOS Automator and when to use AI-powered alternatives instead."
+date: "2026-02-12"
+slug: "macos-automator-rename-files-guide"
+platform: "mac"
+topic: "automation"
+tags:
+  - "Automation"
+tldr: "Automator is useful for repeatable file renaming on macOS, but it works best for metadata and text patterns, not for content-aware image naming."
+reviewed: "2026-04-09"
+---
+Automator can rename files automatically on macOS without writing code. It is a good option when you need the same predictable rename rule every time, such as adding a date prefix, replacing text, or numbering files in order.
+
+Where Automator falls short is content awareness. It cannot tell whether a file is a screenshot of Stripe settings or a beach photo from your iPhone. If that is your problem, [Zush AI batch rename on Mac](/batch-rename-files) is the more practical tool because it uses AI to generate descriptive names from image content.
+
+
+## When Automator is a good fit
+
+Use Automator when your rename logic is rule-based and repeatable.
+
+![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+
+
+Examples:
+
+- prepend a date to exported PDFs
+- number image sequences
+- replace a client code across many filenames
+- move files into a consistent drag-and-drop workflow
+
+## Best Automator workflow types for renaming
+
+### Application
+
+Best when you want to drag files onto a saved app.
+
+### Quick Action
+
+Best when you want a Finder right-click rename tool.
+
+### Folder Action
+
+Best when you want files in one folder processed automatically as they arrive.
+
+## Basic rename flow in Automator
+
+A typical setup is:
+
+![Zush custom rename rules dialog for configuring AI naming behavior](/images/screenshots/light/zush-rename-rules-dialog.webp)
+
+
+1. get Finder items
+2. optionally copy them for safety
+3. apply a rename action
+4. save the workflow as an app, Quick Action, or Folder Action
+
+This is fast to set up when the rename pattern is simple and stable.
+
+
+## Where Automator breaks down
+
+Automator struggles when filenames should reflect the actual contents of an image.
+
+It can use:
+
+- existing text
+- file dates
+- simple sequence numbers
+- predictable metadata
+
+It cannot use:
+
+- what the image shows
+- what app appears in a screenshot
+- whether one photo is a receipt and another is a landscape
+
+That is why AI-assisted tools now cover a different category of rename problems.
+
+![Zush batch rename demo showing AI-powered content-aware file renaming on Mac](/videos/zush-batch-rename.mp4)
+
+## Automator vs AI renaming
+
+| Tool | Best for | Weakness |
+|---|---|---|
+| Automator | Repeatable pattern-based renaming | No content awareness |
+| Finder batch rename | Quick one-off cleanup | Limited flexibility |
+| Zush | Descriptive image naming and folder monitoring | Best when visual files are the real problem |
+
+If your goal is a smarter image workflow, read [How to Rename Images with AI on macOS](/blog/how-to-rename-images-with-ai-on-macos).
+
+
+## Conclusion
+
+Automator is still useful on macOS when the rename rule is deterministic. It is less useful when the filename needs to describe visual content.
+
+For screenshots, downloads, and photo-heavy workflows, [Zush](https://zushapp.com) solves the part Automator cannot: understanding what the image actually contains before naming it.

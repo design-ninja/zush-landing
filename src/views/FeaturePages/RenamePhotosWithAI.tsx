@@ -34,9 +34,9 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'HowTo',
-      name: 'Rename Photos with AI on Mac',
+      name: 'Rename Photos with AI',
       description:
-        'Use Zush to automatically rename photos based on their visual content using AI on macOS.',
+        'Use Zush to automatically rename photos based on their visual content using AI.',
       step: [
         {
           '@type': 'HowToStep',
@@ -54,7 +54,7 @@ const jsonLd = {
           '@type': 'HowToStep',
           position: 3,
           name: 'Apply and organize',
-          text: 'Preview the new names, adjust your naming pattern, and apply. Your photo library is instantly searchable by filename in Finder.',
+          text: 'Preview the new names, adjust your naming pattern, and apply. Your photo library is instantly searchable by filename.',
         },
       ],
       speakable: {
@@ -76,7 +76,7 @@ const jsonLd = {
     buildSoftwareApplicationJsonLd({
       pagePath: '/rename-photos-with-ai',
       description:
-        'AI photo renamer for macOS that replaces IMG_, HEIC, and RAW filenames with searchable descriptions for photo libraries, imports, and client shoots.',
+        'AI photo renamer that replaces IMG_, HEIC, and RAW filenames with searchable descriptions for photo libraries, imports, and client shoots.',
       featureList: [
         'Rename HEIC, JPG, PNG, and major RAW photo formats',
         'Generate searchable names for iPhone and camera imports',
@@ -91,11 +91,11 @@ const jsonLd = {
 
 const RenamePhotosWithAI = () => (
   <FeatureLandingPage
-    h1="Rename Photos with AI on Mac"
+    h1="Rename Photos with AI"
     h1Accent="Rename Photos"
     category="photo"
     definitionTitle="What Is AI Photo Renaming?"
-    definitionText="Rename photos with AI on Mac using Zush to replace IMG_, HEIC, and RAW camera filenames with searchable descriptions of the actual photo."
+    definitionText="Rename photos with AI using Zush to replace IMG_, HEIC, and RAW camera filenames with searchable descriptions of the actual photo."
     showcaseSlides={[
       {
         files: [
@@ -132,12 +132,12 @@ const RenamePhotosWithAI = () => (
     relatedPages={[
       { title: 'AI Image Renamer', href: '/ai-image-renamer' },
       { title: 'Rename Screenshots with AI', href: '/rename-screenshots-with-ai' },
-      { title: 'Auto Rename Files on macOS', href: '/auto-rename-files' },
+      { title: 'Auto Rename Files with AI', href: '/auto-rename-files' },
     ]}
     relatedBlogPosts={[
-      { title: 'Photo Management Workflow for Photographers on Mac', href: 'photo-management-workflow-photographers-mac' },
       { title: 'Why Your Photos Are Named IMG and How to Fix It', href: 'why-your-photos-are-named-img-and-how-to-fix-it' },
-      { title: 'Best Ways to Organize Photos on Mac', href: 'best-ways-to-organize-photos-on-mac' },
+      { title: 'Rename Photos for Social Media: Better Filenames for Reuse and SEO', href: 'rename-photos-for-social-media' },
+      { title: 'Photo Management Workflow for Photographers on Mac', href: 'photo-management-workflow-photographers-mac' },
     ]}
     jsonLd={jsonLd}
   />

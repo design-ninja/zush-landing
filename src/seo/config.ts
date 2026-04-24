@@ -1,4 +1,4 @@
-import type { BlogFrontmatter } from '@/utils/frontmatter';
+import type { BlogPost } from '@/data/blog';
 import { HOME_FAQ_DATA } from '@/data/homeFaq';
 
 export const SITE_ORIGIN = 'https://zushapp.com';
@@ -8,7 +8,7 @@ export interface SeoMeta {
   title: string;
   description: string;
   canonicalPath: string;
-  robots: 'index, follow' | 'noindex, nofollow';
+  robots: string;
   ogType?: 'website' | 'article';
   ogImage?: string;
   publishedTime?: string;
@@ -18,9 +18,9 @@ export interface SeoMeta {
 type RouteSeoMeta = Omit<SeoMeta, 'canonicalPath'>;
 
 const DEFAULT_META: RouteSeoMeta = {
-  title: 'Zush — AI File Renamer for Mac · 50 Free Renames, No Signup',
+  title: 'Zush — AI File Renamer for Mac & Windows · 50 Free Renames, No Signup',
   description:
-    'Zush renames screenshots, PDFs, photos and documents on Mac using AI. Batch rename, watch folders, stay organized automatically. 50 free renames, no signup.',
+    'Zush renames screenshots, PDFs, photos and documents on Mac and Windows using AI. Batch rename, watch folders, stay organized automatically. 50 free renames, no signup.',
   robots: 'noindex, nofollow',
   ogType: 'website',
 };
@@ -68,7 +68,14 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/blog': {
     title: 'AI File Renaming Tips, Guides & Insights — Zush Blog',
     description:
-      'Practical guides on AI-powered file organization for macOS. Learn about smart renaming, batch processing, metadata tagging, and workflow automation with Zush.',
+      'Practical guides on AI-powered file organization for Mac and Windows. Learn about smart renaming, batch processing, metadata tagging, and workflow automation with Zush.',
+    robots: 'index, follow',
+    ogType: 'website',
+  },
+  '/blog/archive': {
+    title: 'Blog Archive — Zush',
+    description:
+      'Browse the full Zush blog archive: AI file renaming guides, comparisons, workflows, and platform-specific tutorials.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -80,58 +87,72 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ogType: 'website',
   },
   '/ai-file-renamer': {
-    title: 'AI File Renamer for Mac · PDFs, Photos & Screenshots · Zush',
+    title: 'AI File Renamer · PDFs, Photos & Screenshots · Zush',
     description:
-      'Rename PDFs, screenshots, photos and documents in seconds. Zush reads file content and creates searchable names automatically. 50 free renames, no signup.',
+      'Rename PDFs, screenshots, photos and documents in seconds. Zush reads file content and creates searchable names automatically on Mac or Windows. 50 free renames, no signup.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/auto-rename-files': {
-    title: 'Auto Rename Files on Mac · AI Folder Monitoring · Zush',
+    title: 'Auto Rename Files with AI · Folder Monitoring · Zush',
     description:
-      'Watch any folder and rename new files automatically with AI. Zush handles downloads, screenshots and exports as they arrive — no manual cleanup, no scripts.',
+      'Watch any folder and rename new files automatically with AI. Zush handles downloads, screenshots and exports as they arrive on Mac or Windows — no manual cleanup, no scripts.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/batch-rename-files': {
-    title: 'Batch Rename Files on Mac with AI (2026) · Zush',
+    title: 'Batch Rename Files with AI (2026) · Zush',
     description:
-      'Batch rename hundreds of files on Mac in one click. AI gives each file a unique descriptive name — not just a prefix. Free for 50 files, no signup.',
+      'Batch rename hundreds of files in one click. AI gives each file a unique descriptive name — not just a prefix. Free for 50 files, no signup.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/rename-documents-with-ai': {
-    title: 'Rename Documents with AI on Mac · DOCX, XLSX & PPTX · Zush',
+    title: 'Rename Documents with AI · DOCX, XLSX & PPTX · Zush',
     description:
-      'Rename DOCX, XLSX, PPTX, TXT, CSV and email files by their actual content. Zush reads document text and creates searchable filenames automatically on Mac.',
+      'Rename DOCX, XLSX, PPTX, TXT, CSV and email files by their actual content. Zush reads document text and creates searchable filenames automatically.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/rename-pdf-with-ai': {
-    title: 'Rename PDFs with AI on Mac · Invoices & Contracts · Zush',
+    title: 'Rename PDFs with AI · Invoices & Contracts · Zush',
     description:
-      'Rename scanned invoices, contracts and tax forms by their actual content. Zush extracts PDF text and creates searchable filenames in seconds on Mac.',
+      'Rename scanned invoices, contracts and tax forms by their actual content. Zush extracts PDF text and creates searchable filenames in seconds.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/rename-screenshots-with-ai': {
-    title: 'Rename Screenshots with AI on Mac · Zush',
+    title: 'Rename Screenshots with AI · Zush',
     description:
-      "Replace 'Screenshot 2026-04-10 at 14.32.png' with 'stripe-revenue-dashboard.png'. Zush auto-names every macOS screenshot using AI vision. Free to try.",
+      "Replace generic screenshot filenames with names like 'stripe-revenue-dashboard.png'. Zush auto-names screenshots using AI vision. Free to try.",
     robots: 'index, follow',
     ogType: 'website',
   },
   '/rename-photos-with-ai': {
-    title: 'Rename Photos with AI on Mac · HEIC, RAW & JPG · Zush',
+    title: 'Rename Photos with AI · HEIC, RAW & JPG · Zush',
     description:
-      'Stop renaming photos one by one. Zush analyzes HEIC, RAW and JPG content to generate descriptive names for your entire photo library on Mac. Free for 50.',
+      'Stop renaming photos one by one. Zush analyzes HEIC, RAW and JPG content to generate descriptive names for your entire photo library. Free for 50.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/ai-image-renamer': {
-    title: 'AI Image Renamer for Mac · Photos & Screenshots · Zush',
+    title: 'AI Image Renamer · Photos & Screenshots · Zush',
     description:
-      'Rename screenshots, photos, mockups and downloaded images across 22 formats. Zush uses AI vision to create searchable filenames on Mac. Free for 50 files.',
+      'Rename screenshots, photos, mockups and downloaded images across 22 formats. Zush uses AI vision to create searchable filenames on Mac or Windows. Free for 50 files.',
+    robots: 'index, follow',
+    ogType: 'website',
+  },
+  '/mac': {
+    title: 'AI File Renamer for Mac · Native macOS App · Zush',
+    description:
+      'Rename screenshots, PDFs, photos and documents on Mac with AI. Native Apple Silicon and Intel app, signed .dmg download, free for 50 renames.',
+    robots: 'index, follow',
+    ogType: 'website',
+  },
+  '/windows': {
+    title: 'AI File Renamer for Windows · Microsoft Store App · Zush',
+    description:
+      'Rename screenshots, PDFs, photos and documents on Windows with AI. Microsoft Store install, automatic updates, free for 50 renames, no signup.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -197,7 +218,7 @@ export function getSeoForPath(pathname: string): SeoMeta {
 
 const THIN_CONTENT_THRESHOLD = 350;
 
-export function getBlogSeo(post: BlogFrontmatter): SeoMeta {
+export function getBlogSeo(post: BlogPost): SeoMeta {
   const isThinContent = post.wordCount < THIN_CONTENT_THRESHOLD;
   const shouldNoIndex = isThinContent || post.noindex === true;
 
@@ -252,12 +273,13 @@ export const HOME_JSON_LD = {
       '@id': `${SITE_ORIGIN}/#software`,
       name: 'Zush',
       description:
-        'AI-powered file organization app for macOS. Automatically renames images, PDFs, and documents using advanced AI with smart metadata and folder monitoring.',
+        'AI-powered file organization app for macOS and Windows. Automatically renames images, PDFs, and documents using advanced AI with smart metadata and folder monitoring.',
       applicationCategory: 'UtilitiesApplication',
       applicationSubCategory: 'File Management',
-      operatingSystem: 'macOS 14.0+',
+      operatingSystem: ['macOS 14.0+', 'Windows 10', 'Windows 11'],
       softwareVersion: '1.9.0',
       downloadUrl: `${SITE_ORIGIN}/releases/Zush.dmg`,
+      installUrl: 'https://apps.microsoft.com/detail/9ND4WVZSDQ3X',
       screenshot: `${SITE_ORIGIN}/og-image.png`,
       offers: [
         {
@@ -293,13 +315,13 @@ export const HOME_JSON_LD = {
     {
       '@type': 'HowTo',
       '@id': `${SITE_ORIGIN}/#howto`,
-      name: 'How to Rename Files with AI on macOS',
+      name: 'How to Rename Files with AI on Mac or Windows',
       step: [
         {
           '@type': 'HowToStep',
           position: 1,
           name: 'Download Zush',
-          text: 'Install Zush on your Mac. No account required.',
+          text: 'Install Zush on your desktop. No account required.',
         },
         {
           '@type': 'HowToStep',

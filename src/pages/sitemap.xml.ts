@@ -1,7 +1,7 @@
 import { execSync } from 'node:child_process';
 import { statSync } from 'node:fs';
 import { join } from 'node:path';
-import { getAllPosts } from '@/data/blog';
+import { getAllPosts, getAllTags, isSitemapEligibleBlogPost } from '@/data/blog';
 import { INDEXABLE_STATIC_ROUTES, FEATURE_ROUTES, SITE_ORIGIN, THIN_CONTENT_THRESHOLD } from '@/seo/config';
 
 const BLOG_CONTENT_DIR = join(process.cwd(), 'src', 'content', 'blog');
@@ -10,6 +10,7 @@ const PAGES_DIR = join(process.cwd(), 'src', 'pages');
 function getPageSourceFile(route: string): string {
   if (route === '/') return join(PAGES_DIR, 'index.astro');
   if (route === '/blog') return join(PAGES_DIR, 'blog', 'index.astro');
+  if (route === '/blog/archive') return join(PAGES_DIR, 'blog', 'archive', '[...page].astro');
   return join(PAGES_DIR, `${route.slice(1)}.astro`);
 }
 
@@ -60,6 +61,9 @@ function getRouteHints(route: string): { changefreq: Changefreq; priority: strin
   if ((FEATURE_ROUTES as readonly string[]).includes(route)) {
     return { changefreq: 'weekly', priority: '0.8' };
   }
+  if (route === '/mac' || route === '/windows') {
+    return { changefreq: 'weekly', priority: '0.9' };
+  }
   if (route === '/changelog') {
     return { changefreq: 'weekly', priority: '0.6' };
   }
@@ -72,7 +76,7 @@ function getRouteHints(route: string): { changefreq: Changefreq; priority: strin
   return { changefreq: 'monthly', priority: '0.5' };
 }
 
-export function GET() {
+export async function GET() {
   const staticRoutes = INDEXABLE_STATIC_ROUTES.filter(
     (route) =>
       route !== '/thank-you' &&
@@ -92,12 +96,12 @@ export function GET() {
     };
   });
 
-  const posts = getAllPosts().filter(
-    (post) => post.wordCount >= THIN_CONTENT_THRESHOLD && !post.noindex && !post.canonical,
+  const posts = (await getAllPosts()).filter((post) =>
+    isSitemapEligibleBlogPost(post, THIN_CONTENT_THRESHOLD),
   );
   const blogEntries = posts.map((post) => {
     const loc = `${SITE_ORIGIN}/blog/${post.slug}`;
-    const filePath = join(BLOG_CONTENT_DIR, `${post.slug}.md`);
+    const filePath = join(BLOG_CONTENT_DIR, `${post.slug}.mdx`);
 
     return {
       loc,
@@ -107,7 +111,16 @@ export function GET() {
     };
   });
 
-  const urls = [...staticEntries, ...blogEntries]
+  const tagEntries = (await getAllTags())
+    .filter((tag) => tag.indexable)
+    .map((tag) => ({
+      loc: `${SITE_ORIGIN}/blog/tags/${tag.slug}`,
+      lastmod: new Date().toISOString(),
+      changefreq: 'weekly' as Changefreq,
+      priority: '0.55',
+    }));
+
+  const urls = [...staticEntries, ...blogEntries, ...tagEntries]
     .map(({ loc, lastmod, changefreq, priority }) => {
       return `  <url>\n    <loc>${escapeXml(loc)}</loc>\n    <lastmod>${escapeXml(lastmod)}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
     })

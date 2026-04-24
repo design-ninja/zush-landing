@@ -1,0 +1,103 @@
+---
+import { getDemoVideoBySrc, resolveDemoVideoMedia } from '@/data/demoVideos';
+
+const { src = '', alt = '', ...props } = Astro.props;
+
+if (typeof src !== 'string') {
+  throw new Error('BlogMarkdownImage requires a string src');
+}
+
+const demoVideo = src.endsWith('.mp4') ? getDemoVideoBySrc(src) : undefined;
+const isThemedScreenshot = src.includes('/screenshots/light/');
+---
+
+{
+  demoVideo ? (
+    <figure class='markdown-figure markdown-figure--video'>
+      <a
+        aria-label={`${alt || demoVideo.title}. Open demo video in a new tab`}
+        class='markdown-video-link markdown-video-link--light'
+        data-autoplay-video='true'
+        data-video-label={alt || demoVideo.title}
+        data-video-poster={resolveDemoVideoMedia(demoVideo, 'light').poster}
+        data-video-src={resolveDemoVideoMedia(demoVideo, 'light').source}
+        href={resolveDemoVideoMedia(demoVideo, 'light').source}
+        rel='noopener noreferrer'
+        target='_blank'
+      >
+        <img
+          {...props}
+          alt=''
+          class='markdown-video-poster markdown-video-poster--light'
+          decoding='async'
+          height='720'
+          loading='lazy'
+          src={resolveDemoVideoMedia(demoVideo, 'light').poster}
+          width='1280'
+        />
+        <span class='markdown-video-badge'>Open demo video</span>
+      </a>
+      <a
+        aria-label={`${alt || demoVideo.title}. Open demo video in a new tab`}
+        class='markdown-video-link markdown-video-link--dark'
+        data-autoplay-video='true'
+        data-video-label={alt || demoVideo.title}
+        data-video-poster={resolveDemoVideoMedia(demoVideo, 'dark').poster}
+        data-video-src={resolveDemoVideoMedia(demoVideo, 'dark').source}
+        href={resolveDemoVideoMedia(demoVideo, 'dark').source}
+        rel='noopener noreferrer'
+        target='_blank'
+      >
+        <img
+          {...props}
+          alt=''
+          class='markdown-video-poster markdown-video-poster--dark'
+          decoding='async'
+          height='720'
+          loading='lazy'
+          src={resolveDemoVideoMedia(demoVideo, 'dark').poster}
+          width='1280'
+        />
+        <span class='markdown-video-badge'>Open demo video</span>
+      </a>
+      {alt && <figcaption>{alt}</figcaption>}
+    </figure>
+  ) : isThemedScreenshot ? (
+    <figure class='markdown-figure'>
+      <img
+        {...props}
+        alt={alt}
+        class='markdown-image markdown-image--screenshot markdown-image--light'
+        decoding='async'
+        height='1528'
+        loading='lazy'
+        src={src}
+        width='1664'
+      />
+      <img
+        {...props}
+        alt={alt}
+        aria-hidden='true'
+        class='markdown-image markdown-image--screenshot markdown-image--dark'
+        decoding='async'
+        height='1528'
+        loading='lazy'
+        src={src.replace('/screenshots/light/', '/screenshots/dark/')}
+        width='1664'
+      />
+      {alt && <figcaption>{alt}</figcaption>}
+    </figure>
+  ) : (
+    <figure class='markdown-figure'>
+      <img
+        {...props}
+        alt={alt}
+        class='markdown-image'
+        decoding='async'
+        loading='lazy'
+        src={src}
+      />
+      {alt && <figcaption>{alt}</figcaption>}
+    </figure>
+  )
+}

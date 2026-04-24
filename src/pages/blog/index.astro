@@ -1,11 +1,372 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import BlogList from '@/views/Blog/BlogList';
+import { ArrowRight, History, Tags } from 'lucide-react';
+import BlogPostCard from '@/components/blog/BlogPostCard.astro';
+import {
+  getAllPosts,
+  getAllTags,
+  getBalancedRecentBlogPosts,
+  getBlogIndexSections,
+} from '@/data/blog';
 import { getSeoForPath } from '@/seo/config';
+import headingStyles from '@/components/Heading/Heading.module.scss';
+import textStyles from '@/components/Text/Text.module.scss';
+import backToHomeStyles from '@/components/BackToHome/BackToHome.module.scss';
+import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module.scss';
+import styles from '@/views/Blog/BlogList.module.scss';
 
 const seo = getSeoForPath('/blog');
+const allPosts = await getAllPosts();
+const sections = await getBlogIndexSections();
+const recentPosts = await getBalancedRecentBlogPosts(2);
+const allTags = await getAllTags();
+const searchablePosts = allPosts.map((post) => ({
+  post,
+  searchText: [
+    post.title,
+    post.description,
+    post.tldr,
+    post.platform,
+    post.topic,
+    ...post.tags,
+  ]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase(),
+}));
 ---
 
-<BaseLayout seo={seo}>
-  <BlogList />
+<BaseLayout seo={seo} disableTopOffset={true}>
+  <section class={[styles.BlogList, styles.BlogList_underHeader, styles.BlogList_glowTopRight].join(' ')}>
+    <div class={styles.BlogList__Container}>
+      <div class={sectionHeaderStyles.SectionHeader}>
+        <h1
+          class={[
+            headingStyles.Heading,
+            headingStyles.Heading_h1,
+            headingStyles.Heading_center,
+            sectionHeaderStyles.SectionHeader__Title,
+          ].join(' ')}
+        >
+          <span class={styles.BlogList__TitleAccent}>Zush</span> Blog
+        </h1>
+        <p
+          class={[
+            textStyles.Text,
+            textStyles.Text_lg,
+            textStyles.Text_subtle,
+            textStyles.Text_center,
+            sectionHeaderStyles.SectionHeader__Description,
+          ].join(' ')}
+        >
+          Guides, comparisons, and real workflows for AI-powered file renaming across Mac, Windows,
+          and general desktop setup
+        </p>
+      </div>
+
+      <div class={styles.BlogList__Search} data-blog-search-root>
+        <input
+          class={styles.BlogList__SearchInput}
+          data-blog-search-input
+          id='blog-search'
+          name='q'
+          placeholder='Search by title, tag, workflow, or platform'
+          spellcheck='false'
+          type='search'
+        />
+        <p class={styles.BlogList__SearchStatus} data-blog-search-status hidden></p>
+      </div>
+
+      <div class={styles.BlogList__IntroLinks} data-blog-search-default>
+        <a class={styles.BlogList__IntroCard} href='/blog/archive'>
+          <h2
+            class={[
+              headingStyles.Heading,
+              headingStyles.Heading_h4,
+              styles.BlogList__IntroCardTitle,
+            ].join(' ')}
+          >
+            <span class={styles.BlogList__IntroCardTitleIcon} aria-hidden='true'>
+              <History size={18} strokeWidth={2.2} />
+            </span>
+            <span>Browse the full archive</span>
+          </h2>
+          <p
+            class={[
+              textStyles.Text,
+              textStyles.Text_md,
+              textStyles.Text_subtle,
+              styles.BlogList__IntroCardDescription,
+            ].join(' ')}
+          >
+            See all posts in publish order, newest first
+          </p>
+          <span class={styles.BlogList__IntroCardMeta}>
+            <span>Open archive</span>
+            <ArrowRight size={16} strokeWidth={2.2} />
+          </span>
+        </a>
+        <a class={styles.BlogList__IntroCard} href='/blog/tags'>
+          <h2
+            class={[
+              headingStyles.Heading,
+              headingStyles.Heading_h4,
+              styles.BlogList__IntroCardTitle,
+            ].join(' ')}
+          >
+            <span class={styles.BlogList__IntroCardTitleIcon} aria-hidden='true'>
+              <Tags size={18} strokeWidth={2.2} />
+            </span>
+            <span>Explore topics and tags</span>
+          </h2>
+          <p
+            class={[
+              textStyles.Text,
+              textStyles.Text_md,
+              textStyles.Text_subtle,
+              styles.BlogList__IntroCardDescription,
+            ].join(' ')}
+          >
+            Browse posts by topic, workflow, file type, or platform
+          </p>
+          <span class={styles.BlogList__IntroCardMeta}>
+            <span>{`${allTags.length} tags`}</span>
+            <ArrowRight size={16} strokeWidth={2.2} />
+          </span>
+        </a>
+      </div>
+
+      <section
+        class={[styles.BlogList__Section, styles.BlogList__SearchResults].join(' ')}
+        data-blog-search-results
+        hidden
+      >
+        <div class={styles.BlogList__SectionHeader}>
+          <div class={styles.BlogList__SectionTitleRow}>
+            <h2
+              class={[
+                headingStyles.Heading,
+                headingStyles.Heading_h3,
+                styles.BlogList__SectionTitle,
+              ].join(' ')}
+            >
+              Search Results
+            </h2>
+            <span class={styles.BlogList__SectionCount} data-blog-search-count>0</span>
+          </div>
+        </div>
+        <p
+          class={[
+            textStyles.Text,
+            textStyles.Text_md,
+            textStyles.Text_subtle,
+            styles.BlogList__SectionDescription,
+          ].join(' ')}
+          data-blog-search-summary
+        >
+          Matching posts will appear here
+        </p>
+        <div class={styles.BlogList__SectionActions}>
+          <button
+            class={[styles.BlogList__SectionAction, styles.BlogList__SectionActionButton].join(' ')}
+            data-blog-search-clear
+            hidden
+            type='button'
+          >
+            Clear search
+          </button>
+          <a class={styles.BlogList__SectionAction} href='/blog/archive'>
+            Browse archive
+          </a>
+        </div>
+        <div class={styles.BlogList__SectionPosts}>
+          {
+            searchablePosts.map(({ post, searchText }) => (
+              <div data-blog-search-item data-search={searchText}>
+                <BlogPostCard post={post} />
+              </div>
+            ))
+          }
+        </div>
+        <p
+          class={[textStyles.Text, textStyles.Text_md, styles.BlogList__Empty].join(' ')}
+          data-blog-search-empty
+          hidden
+        >
+          No posts found. Try a different keyword or browse the archive
+        </p>
+      </section>
+
+      <div class={styles.BlogList__Sections} data-blog-search-default>
+        {
+          sections.map((section) => (
+            <section class={styles.BlogList__Section}>
+              <div class={styles.BlogList__SectionHeader}>
+                <div class={styles.BlogList__SectionTitleRow}>
+                  <h2
+                    class={[
+                      headingStyles.Heading,
+                      headingStyles.Heading_h3,
+                      styles.BlogList__SectionTitle,
+                    ].join(' ')}
+                  >
+                    {section.title}
+                  </h2>
+                  <span class={styles.BlogList__SectionCount}>{section.posts.length}</span>
+                </div>
+              </div>
+              <p
+                class={[
+                  textStyles.Text,
+                  textStyles.Text_md,
+                  textStyles.Text_subtle,
+                  styles.BlogList__SectionDescription,
+                ].join(' ')}
+              >
+                {section.description}
+              </p>
+              <div class={styles.BlogList__SectionActions}>
+                <a class={styles.BlogList__SectionAction} href='/blog/archive'>
+                  Browse archive
+                </a>
+                <a class={styles.BlogList__SectionAction} href={section.ctaHref}>
+                  {section.ctaLabel}
+                </a>
+              </div>
+              <div class={styles.BlogList__SectionPosts}>
+                {section.posts.map((post) => <BlogPostCard post={post} />)}
+              </div>
+            </section>
+          ))
+        }
+
+        <section class={styles.BlogList__Section}>
+          <div class={styles.BlogList__SectionHeader}>
+            <div class={styles.BlogList__SectionTitleRow}>
+              <h2
+                class={[
+                  headingStyles.Heading,
+                  headingStyles.Heading_h3,
+                  styles.BlogList__SectionTitle,
+                ].join(' ')}
+              >
+                Recent Articles
+              </h2>
+              <span class={styles.BlogList__SectionCount}>{recentPosts.length}</span>
+            </div>
+          </div>
+          <p
+            class={[
+              textStyles.Text,
+              textStyles.Text_md,
+              textStyles.Text_subtle,
+              styles.BlogList__SectionDescription,
+            ].join(' ')}
+          >
+            A balanced selection of recent Windows, Mac, and general guides
+          </p>
+          <div class={styles.BlogList__SectionActions}>
+            <a class={styles.BlogList__SectionAction} href='/blog/archive'>
+              View all posts
+            </a>
+            <a class={styles.BlogList__SectionAction} href='/blog/tags'>
+              Browse tags
+            </a>
+          </div>
+          <div class={styles.BlogList__SectionPosts}>
+            {recentPosts.map((post) => <BlogPostCard post={post} />)}
+          </div>
+        </section>
+      </div>
+
+      <a class={[backToHomeStyles.BackToHome, styles.BlogList__BackLink].join(' ')} href='/'>
+        ← Back to Home
+      </a>
+    </div>
+  </section>
+
+  <script is:inline>
+    (() => {
+      const root = document.querySelector('[data-blog-search-root]');
+      if (!root) return;
+
+      const input = root.querySelector('[data-blog-search-input]');
+      const status = root.querySelector('[data-blog-search-status]');
+      const resultsSection = document.querySelector('[data-blog-search-results]');
+      const resultItems = Array.from(document.querySelectorAll('[data-blog-search-item]'));
+      const defaultSections = Array.from(document.querySelectorAll('[data-blog-search-default]'));
+      const count = document.querySelector('[data-blog-search-count]');
+      const summary = document.querySelector('[data-blog-search-summary]');
+      const empty = document.querySelector('[data-blog-search-empty]');
+      const clearButton = document.querySelector('[data-blog-search-clear]');
+
+      if (
+        !(input instanceof HTMLInputElement) ||
+        !(status instanceof HTMLElement) ||
+        !(resultsSection instanceof HTMLElement) ||
+        !(count instanceof HTMLElement) ||
+        !(summary instanceof HTMLElement) ||
+        !(empty instanceof HTMLElement) ||
+        !(clearButton instanceof HTMLButtonElement)
+      ) {
+        return;
+      }
+
+      const params = new URLSearchParams(window.location.search);
+
+      const applySearch = () => {
+        const query = input.value.trim().toLowerCase();
+        let matches = 0;
+
+        resultItems.forEach((item) => {
+          const searchable = item.getAttribute('data-search') || '';
+          const visible = query.length > 0 && searchable.includes(query);
+          item.hidden = !visible;
+
+          if (visible) {
+            matches += 1;
+          }
+        });
+
+        const searching = query.length > 0;
+        resultsSection.hidden = !searching;
+        clearButton.hidden = !searching;
+        empty.hidden = !searching || matches > 0;
+
+        defaultSections.forEach((section) => {
+          if (section instanceof HTMLElement) {
+            section.hidden = searching;
+          }
+        });
+
+        if (searching) {
+          count.textContent = String(matches);
+          summary.textContent =
+            matches === 1
+              ? `1 post matching "${input.value.trim()}".`
+              : `${matches} posts matching "${input.value.trim()}".`;
+          status.textContent = 'Filtering all blog posts in real time';
+          params.set('q', input.value.trim());
+        } else {
+          count.textContent = '0';
+          summary.textContent = 'Matching posts will appear here';
+          status.textContent = 'Search across all blog posts';
+          params.delete('q');
+        }
+
+        const nextQuery = params.toString();
+        const nextUrl = nextQuery ? `${window.location.pathname}?${nextQuery}` : window.location.pathname;
+        window.history.replaceState({}, '', nextUrl);
+      };
+
+      input.value = params.get('q') || '';
+      input.addEventListener('input', applySearch);
+      clearButton.addEventListener('click', () => {
+        input.value = '';
+        input.focus();
+        applySearch();
+      });
+      applySearch();
+    })();
+  </script>
 </BaseLayout>

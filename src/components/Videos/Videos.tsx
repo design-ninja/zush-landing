@@ -4,15 +4,20 @@ import SectionHeader from '../SectionHeader';
 import Text from '@/components/Text';
 import {
   DEMO_VIDEOS,
+  WINDOWS_DEMO_SCREENSHOTS,
   resolveDemoVideoMedia,
+  resolveDemoScreenshotMedia,
   type DemoVideoTheme,
 } from '@/data/demoVideos';
+import { useOS } from '@/hooks/useOS';
+import type { DownloadOS } from '@/utils/download';
 import styles from './Videos.module.scss';
 import { motion } from 'framer-motion';
 
 interface VideosProps {
   autoplayOnHydration?: boolean;
   autoplayWhenInView?: boolean;
+  forceOS?: DownloadOS;
 }
 
 const getDocumentTheme = (): DemoVideoTheme => {
@@ -28,15 +33,32 @@ const getDocumentTheme = (): DemoVideoTheme => {
 const Videos = ({
   autoplayOnHydration = false,
   autoplayWhenInView = false,
+  forceOS,
 }: VideosProps) => {
+  const { downloadOS: detectedOS } = useOS();
+  const downloadOS = forceOS ?? detectedOS;
+  const isWindowsShowcase = downloadOS === 'windows';
   const [activeFeature, setActiveFeature] = useState(0);
   const [theme, setTheme] = useState<DemoVideoTheme>(getDocumentTheme);
   const [isPlaying, setIsPlaying] = useState(false);
   const [canAutoplay, setCanAutoplay] = useState(false);
   const [hasEnteredViewport, setHasEnteredViewport] = useState(false);
   const videoWrapperRef = useRef<HTMLDivElement>(null);
+  const windowsVideoRef = useRef<HTMLVideoElement>(null);
+  const showcaseItems = isWindowsShowcase ? WINDOWS_DEMO_SCREENSHOTS : DEMO_VIDEOS;
   const activeVideo = DEMO_VIDEOS[activeFeature];
+  const activeScreenshot = WINDOWS_DEMO_SCREENSHOTS[activeFeature];
   const activeVideoMedia = resolveDemoVideoMedia(activeVideo, theme);
+  const activeScreenshotSrc = resolveDemoScreenshotMedia(activeScreenshot, theme);
+  const activeItem = showcaseItems[activeFeature];
+  const activeWindowsVideoSrc = activeScreenshot.video?.[theme] ?? '';
+  const hasActiveWindowsVideo = isWindowsShowcase && activeWindowsVideoSrc.length > 0;
+
+  useEffect(() => {
+    if (activeFeature >= showcaseItems.length) {
+      setActiveFeature(0);
+    }
+  }, [activeFeature, showcaseItems.length]);
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -114,8 +136,31 @@ const Videos = ({
     canAutoplay && (autoplayOnHydration || hasEnteredViewport);
 
   useEffect(() => {
+    if (isWindowsShowcase) {
+      setIsPlaying(hasActiveWindowsVideo && shouldAutoplay);
+      return;
+    }
+
     setIsPlaying(shouldAutoplay);
-  }, [activeFeature, shouldAutoplay]);
+  }, [activeFeature, hasActiveWindowsVideo, isWindowsShowcase, shouldAutoplay]);
+
+  useEffect(() => {
+    if (!hasActiveWindowsVideo) {
+      return;
+    }
+
+    const video = windowsVideoRef.current;
+    if (!video) {
+      return;
+    }
+
+    if (isPlaying) {
+      void video.play().catch(() => undefined);
+      return;
+    }
+
+    video.pause();
+  }, [hasActiveWindowsVideo, isPlaying, activeWindowsVideoSrc]);
 
   const handleTabClick = (index: number) => {
     setActiveFeature(index);
@@ -135,7 +180,7 @@ const Videos = ({
                 See <span style={{ color: 'var(--secondary)' }}>Zush</span> in Action
               </>
             }
-            description="Watch how Zush transforms your file organization workflow with these powerful features"
+            description='See how Zush handles real file organization workflows with these core features'
           />
         </motion.div>
         
@@ -146,16 +191,38 @@ const Videos = ({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          {!isPlaying ? (
+          {hasActiveWindowsVideo ? (
+            <video
+              ref={windowsVideoRef}
+              key={activeWindowsVideoSrc}
+              className={styles.Videos__Video}
+              src={activeWindowsVideoSrc}
+              aria-label={`${activeItem.title}: ${activeItem.description}`}
+              muted
+              playsInline
+              controls
+              preload='auto'
+            />
+          ) : isWindowsShowcase ? (
+            <img
+              src={activeScreenshotSrc}
+              alt={activeScreenshot.alt}
+              className={styles.Videos__Poster}
+              width={1280}
+              height={720}
+              loading='lazy'
+              decoding='async'
+            />
+          ) : !isPlaying ? (
             <button
               type='button'
               className={styles.Videos__PlayButton}
               onClick={() => setIsPlaying(true)}
-              aria-label={`Play ${activeVideo.title} demo video`}
+              aria-label={`Play ${activeItem.title} demo video`}
             >
               <img
-                src={activeVideoMedia.poster}
-                alt={`${activeVideo.title} demo`}
+                src={hasActiveWindowsVideo ? activeScreenshotSrc : activeVideoMedia.poster}
+                alt={`${activeItem.title} demo`}
                 className={styles.Videos__Poster}
                 width={1280}
                 height={720}
@@ -170,27 +237,29 @@ const Videos = ({
             </button>
           ) : (
             <video
-              key={activeVideoMedia.source}
+              key={hasActiveWindowsVideo ? activeWindowsVideoSrc : activeVideoMedia.source}
               className={styles.Videos__Video}
-              src={activeVideoMedia.source}
-              aria-label={`${activeVideo.title}: ${activeVideo.description}`}
+              src={hasActiveWindowsVideo ? activeWindowsVideoSrc : activeVideoMedia.source}
+              aria-label={`${activeItem.title}: ${activeItem.description}`}
               muted
               playsInline
               autoPlay
               controls
               preload='metadata'
-              poster={activeVideoMedia.poster}
+              poster={hasActiveWindowsVideo ? activeScreenshotSrc : activeVideoMedia.poster}
             >
-              <track
-                kind='captions'
-                src='/videos/captions/zush-demo.vtt'
-                srcLang='en'
-                label='English captions'
-              />
+              {!hasActiveWindowsVideo && (
+                <track
+                  kind='captions'
+                  src='/videos/captions/zush-demo.vtt'
+                  srcLang='en'
+                  label='English captions'
+                />
+              )}
             </video>
           )}
         </motion.div>
-        <Text as='p' className={styles.Videos__Description}>{activeVideo.description}</Text>
+        <Text as='p' className={styles.Videos__Description}>{activeItem.description}</Text>
 
         <motion.div
           className={styles.Videos__Tabs}
@@ -198,7 +267,7 @@ const Videos = ({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-            {DEMO_VIDEOS.map((feature, index) => (
+            {showcaseItems.map((feature, index) => (
                 <button
                     key={feature.id}
                     className={`${styles.Videos__Tab} ${

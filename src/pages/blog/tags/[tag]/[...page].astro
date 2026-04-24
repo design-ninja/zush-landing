@@ -1,0 +1,86 @@
+---
+import type { GetStaticPaths, Page } from 'astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BackLink from '@/components/BackLink/BackLink.astro';
+import BlogBreadcrumbs from '@/components/blog/BlogBreadcrumbs.astro';
+import BlogPagination from '@/components/blog/BlogPagination.astro';
+import BlogPostCard from '@/components/blog/BlogPostCard.astro';
+import { getAllTags, type BlogPost, type BlogTag } from '@/data/blog';
+import type { SeoMeta } from '@/seo/config';
+import headingStyles from '@/components/Heading/Heading.module.scss';
+import textStyles from '@/components/Text/Text.module.scss';
+import styles from '@/views/Blog/BlogList.module.scss';
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+  const tags = await getAllTags();
+
+  return tags.flatMap((tag) =>
+    paginate(tag.posts, {
+      pageSize: 12,
+      params: { tag: tag.slug },
+      props: { tag },
+    }),
+  );
+};
+
+const { page, tag } = Astro.props as { page: Page<BlogPost>; tag: BlogTag };
+const isFirstPage = page.currentPage === 1;
+const currentPath = isFirstPage
+  ? `/blog/tags/${tag.slug}`
+  : `/blog/tags/${tag.slug}/${page.currentPage}`;
+const seo: SeoMeta = {
+  title: isFirstPage ? tag.seoTitle : `${tag.seoTitle} — Page ${page.currentPage}`,
+  description: tag.seoDescription,
+  canonicalPath: currentPath,
+  robots: isFirstPage && tag.indexable ? 'index, follow' : 'noindex, follow',
+  ogType: 'website',
+};
+const breadcrumbItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Tags', href: '/blog/tags' },
+  { label: tag.label },
+];
+---
+
+<BaseLayout seo={seo}>
+  <BlogBreadcrumbs items={breadcrumbItems} />
+  <div class={styles.BlogList__BreadcrumbBack}>
+    <BackLink href='/blog' label='Back to Blog' />
+  </div>
+
+  <section class={[styles.BlogList, styles.BlogList_afterBreadcrumbBack].join(' ')}>
+    <div class={styles.BlogList__Container}>
+      <div class={styles.BlogList__SectionHeader}>
+        <h1 class={[headingStyles.Heading, headingStyles.Heading_h1].join(' ')}>
+          {tag.label}
+        </h1>
+        <p
+          class={[
+            textStyles.Text,
+            textStyles.Text_lg,
+            textStyles.Text_subtle,
+            styles.BlogList__SectionDescription,
+          ].join(' ')}
+        >
+          {tag.description}
+        </p>
+      </div>
+
+      <div class={styles.BlogList__SectionActions}>
+        <a class={styles.BlogList__SectionAction} href='/blog/tags'>
+          All tags
+        </a>
+        <a class={styles.BlogList__SectionAction} href='/blog/archive'>
+          Full archive
+        </a>
+      </div>
+
+      <div class={styles.BlogList__SectionPosts}>
+        {page.data.map((post) => <BlogPostCard post={post} />)}
+      </div>
+
+      <BlogPagination label='articles' page={page} />
+    </div>
+  </section>
+</BaseLayout>

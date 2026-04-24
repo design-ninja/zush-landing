@@ -38,6 +38,14 @@ function htmlFileForPath(pathname) {
   return join(DIST, pathname.slice(1), 'index.html');
 }
 
+function isBlogPostPath(pathname) {
+  return pathname.startsWith('/blog/') &&
+    pathname !== '/blog/archive' &&
+    pathname !== '/blog/tags' &&
+    !pathname.startsWith('/blog/archive/') &&
+    !pathname.startsWith('/blog/tags/');
+}
+
 function assertIncludes(html, needle, message) {
   if (!html.includes(needle)) fail(message);
 }
@@ -80,7 +88,7 @@ for (const loc of locs) {
   const canonicalTag = `<link rel="canonical" href="${loc}"`;
   assertIncludes(html, canonicalTag, `Canonical mismatch or missing for ${pathname}`);
 
-  if (pathname.startsWith('/blog/')) {
+  if (isBlogPostPath(pathname)) {
     assertIncludes(html, '"@type":"BlogPosting"', `BlogPosting JSON-LD missing for ${pathname}`);
     const hasHomepageIds = jsonLdBlocks.some(
       (block) =>

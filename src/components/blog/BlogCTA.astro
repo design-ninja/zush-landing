@@ -1,0 +1,144 @@
+---
+import headingStyles from '@/components/Heading/Heading.module.scss';
+import textStyles from '@/components/Text/Text.module.scss';
+import downloadStyles from '@/components/DownloadButton/DownloadButton.module.scss';
+import { WINDOWS_STORE_PROTOCOL_URL } from '@/constants';
+import { getDownloadUrl, getOSLabel, getShortRequirements } from '@/utils/download';
+import type { BlogPlatform } from '@/data/blogSchema';
+import BlogOSIcon from '@/components/blog/BlogOSIcon.astro';
+import styles from '@/components/BlogCTA/BlogCTA.module.scss';
+
+type BlogCTAPlacement = 'early' | 'inline' | 'footer';
+
+interface Props {
+  placement?: BlogCTAPlacement;
+  platform?: BlogPlatform;
+}
+
+const { placement = 'footer', platform = 'general' } = Astro.props;
+
+const placementTitles: Record<BlogCTAPlacement, (osLabel: string) => string> = {
+  early: (os) => `Rename files in one click on ${os}`,
+  inline: (os) => `Automate file renaming on ${os}`,
+  footer: (os) => `Stop renaming files by hand — get Zush for ${os}`,
+};
+
+const placementDescriptions: Record<BlogCTAPlacement, string> = {
+  early:
+    'Zush uses AI to rename screenshots, PDFs, documents, and downloads before they pile up. 50 free renames, no signup.',
+  inline:
+    'Batch rename files, monitor folders, and make your documents and visuals easier to find with descriptive names and metadata.',
+  footer:
+    'AI renaming, folder monitoring and search-friendly names. 50 free renames to start — one-time $10 Pro, no subscription.',
+};
+
+const titleClasses = [headingStyles.Heading, headingStyles.Heading_h3, styles.BlogCTA__Title].join(' ');
+const descriptionClasses = [
+  textStyles.Text,
+  textStyles.Text_sm,
+  textStyles.Text_subtle,
+  styles.BlogCTA__Description,
+].join(' ');
+const hintClasses = [
+  textStyles.Text,
+  textStyles.Text_xs,
+  textStyles.Text_subtle,
+  styles.BlogCTA__Hint,
+].join(' ');
+---
+
+{
+  platform === 'general' ? (
+    <aside
+      class={styles.BlogCTA}
+      data-blog-cta-os='mac'
+      data-blog-cta-platform='general'
+      data-placement={placement}
+    >
+      <div class={styles.BlogCTA__Content}>
+        <h3
+          class={titleClasses}
+          data-blog-cta-title
+          data-title-mac={placementTitles[placement]('Mac')}
+          data-title-windows={placementTitles[placement]('Windows')}
+        >
+          {placementTitles[placement]('Mac')}
+        </h3>
+        <p class={descriptionClasses}>{placementDescriptions[placement]}</p>
+        <div class={styles.BlogCTA__Buttons}>
+          <div
+            class={[
+              downloadStyles.Group,
+              downloadStyles.Group_black,
+              downloadStyles.Group_md,
+              downloadStyles.Group_single,
+            ].join(' ')}
+          >
+            <a
+              class={[downloadStyles.Main, downloadStyles.Main_single].join(' ')}
+              data-blog-cta-link
+              data-href-mac={getDownloadUrl('mac')}
+              data-href-windows={getDownloadUrl('windows')}
+              data-store-app-url-windows={WINDOWS_STORE_PROTOCOL_URL}
+              href={getDownloadUrl('mac')}
+              rel='noopener noreferrer'
+              target='_blank'
+            >
+              <span class={styles.BlogCTA__ButtonIcon} data-blog-cta-icon='mac'>
+                <BlogOSIcon os='mac' />
+              </span>
+              <span class={styles.BlogCTA__ButtonIcon} data-blog-cta-icon='windows' hidden>
+                <BlogOSIcon os='windows' />
+              </span>
+              <span data-blog-cta-label>Download</span>
+            </a>
+          </div>
+        </div>
+        <p
+          class={hintClasses}
+          data-blog-cta-hint
+          data-hint-mac={`Free · 50 AI renames · ${getShortRequirements('mac')} · No signup`}
+          data-hint-windows={`Free · 50 AI renames · ${getShortRequirements('windows')} · No signup`}
+        >
+          {`Free · 50 AI renames · ${getShortRequirements('mac')} · No signup`}
+        </p>
+      </div>
+    </aside>
+  ) : (
+    <aside class={styles.BlogCTA} data-placement={placement}>
+      <div class={styles.BlogCTA__Content}>
+        <h3 class={titleClasses}>
+          {placementTitles[placement](getOSLabel(platform === 'windows' ? 'windows' : 'mac'))}
+        </h3>
+        <p class={descriptionClasses}>{placementDescriptions[placement]}</p>
+        <div class={styles.BlogCTA__Buttons}>
+          <div
+            class={[
+              downloadStyles.Group,
+              downloadStyles.Group_black,
+              downloadStyles.Group_md,
+              downloadStyles.Group_single,
+            ].join(' ')}
+          >
+            <a
+              class={[downloadStyles.Main, downloadStyles.Main_single].join(' ')}
+              href={getDownloadUrl(platform === 'windows' ? 'windows' : 'mac')}
+              data-store-os={platform === 'windows' ? 'windows' : undefined}
+              data-store-app-url={platform === 'windows' ? WINDOWS_STORE_PROTOCOL_URL : undefined}
+              rel='noopener noreferrer'
+              target='_blank'
+            >
+              <BlogOSIcon os={platform === 'windows' ? 'windows' : 'mac'} />
+              <span>Download</span>
+            </a>
+          </div>
+        </div>
+        <p class={hintClasses}>
+          {`Free · 50 AI renames · ${getShortRequirements(
+            platform === 'windows' ? 'windows' : 'mac',
+          )} · No signup`}
+        </p>
+      </div>
+    </aside>
+  )
+}

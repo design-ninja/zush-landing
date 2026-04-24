@@ -1,0 +1,133 @@
+@use 'src/styles/variables' as *;
+@use 'src/styles/mixins' as *;
+
+.Header {
+    @include glass-morphism;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: $navbar-height;
+
+    &__Container {
+        @include container;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+    }
+
+    &__Logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    &__LogoText {
+        color: var(--primary);
+    }
+
+    &__Actions {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: 2rem;
+
+        @include tablet {
+            gap: 1rem;
+        }
+
+        @include mobile {
+            gap: 1rem;
+        }
+    }
+
+    &__Link {
+        white-space: nowrap;
+        font-weight: 500;
+        transition: color 0.2s ease;
+
+        &:hover,
+        &:focus-visible {
+            color: var(--primary);
+        }
+
+        @include tablet {
+            font-size: 0.95rem;
+
+            &:nth-of-type(-n + 2) {
+                display: none;
+            }
+        }
+
+        @include mobile {
+            display: none;
+        }
+    }
+
+    &__ThemeToggle {
+        all: unset;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--foreground);
+        cursor: pointer;
+        border-radius: 999px;
+        padding: 0.35rem;
+        transition: background-color 0.2s ease, color 0.2s ease;
+
+        &:hover,
+        &:focus-visible {
+            background-color: var(--muted);
+            color: var(--primary);
+            outline: none;
+        }
+
+        &:focus-visible {
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+    }
+
+    &__ThemeIcon {
+        display: none;
+    }
+
+    :global(html[data-theme='light']) &__ThemeIcon_moon {
+        display: block;
+    }
+
+    :global(html[data-theme='dark']) &__ThemeIcon_sun {
+        display: block;
+    }
+
+    &__Buttons {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        @include tablet {
+            gap: 0.35rem;
+        }
+    }
+
+    &__BuyBtn {
+        @include mobile {
+            background-color: var(--primary) !important;
+            color: var(--primary-foreground) !important;
+            border-color: var(--primary) !important;
+        }
+    }
+
+    &__DownloadBtn {
+        @include tablet {
+            display: none !important;
+        }
+
+        @include mobile {
+            display: none !important;
+        }
+    }
+}
