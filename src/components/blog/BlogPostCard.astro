@@ -1,8 +1,11 @@
 ---
+import { Image } from 'astro:assets';
+import { Calendar, Glasses } from 'lucide-react';
 import headingStyles from '@/components/Heading/Heading.module.scss';
 import textStyles from '@/components/Text/Text.module.scss';
 import { BLOG_PLATFORM_LABELS } from '@/data/blogSchema';
 import { formatBlogDate, type BlogPost } from '@/data/blog';
+import { getBlogThumbnail } from '@/data/blogThumbnails';
 import styles from '@/views/Blog/BlogList.module.scss';
 
 interface Props {
@@ -10,10 +13,24 @@ interface Props {
 }
 
 const { post } = Astro.props;
+const thumbnail = getBlogThumbnail(post.slug);
 ---
 
 <article class={styles.BlogList__Post}>
   <a class={styles.BlogList__PostLink} href={`/blog/${post.slug}`}>
+    <div class={styles.BlogList__PostMedia} aria-hidden='true'>
+      <Image
+        alt=''
+        class={styles.BlogList__PostImage}
+        decoding='async'
+        height={543}
+        loading='lazy'
+        sizes='(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc((100vw - 5rem) / 2), 520px'
+        src={thumbnail}
+        width={724}
+        widths={[360, 520, 724, 1040]}
+      />
+    </div>
     <span
       class={[
         styles.BlogList__Track,
@@ -49,8 +66,14 @@ const { post } = Astro.props;
       </div>
     )}
     <div class={styles.BlogList__PostMeta}>
-      <time datetime={post.date}>{formatBlogDate(post.dateValue)}</time>
-      <span>{post.readingTime} min read</span>
+      <span class={styles.BlogList__PostMetaItem}>
+        <Calendar aria-hidden='true' size={15} strokeWidth={2} />
+        <time datetime={post.date}>{formatBlogDate(post.dateValue)}</time>
+      </span>
+      <span class={styles.BlogList__PostMetaItem}>
+        <Glasses aria-hidden='true' size={15} strokeWidth={2} />
+        <span>{post.readingTime} min read</span>
+      </span>
     </div>
   </a>
 </article>

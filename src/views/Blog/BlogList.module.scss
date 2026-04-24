@@ -251,6 +251,7 @@
     background: var(--background);
     border: 1px solid var(--border);
     border-radius: $radius-xl;
+    overflow: hidden;
     transition:
       border-color $transition-fast,
       transform $transition-fast,
@@ -267,8 +268,25 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding: 1.5rem;
+    padding: 0;
     color: inherit;
+    overflow: hidden;
+  }
+
+  &__PostMedia {
+    aspect-ratio: 4 / 3;
+    width: 100%;
+    overflow: hidden;
+    border-radius: $radius-xl $radius-xl 0 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
+    background: var(--muted);
+  }
+
+  &__PostImage {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   &__Track {
@@ -276,7 +294,7 @@
 
     display: inline-flex;
     align-self: flex-start;
-    margin-bottom: 0.85rem;
+    margin: 1.35rem 1.5rem 0.85rem;
     padding: 0.32rem 0.7rem;
     border-radius: $radius-full;
     background: oklch(var(--case-bg-l) var(--case-bg-c) var(--track-hue));
@@ -299,29 +317,41 @@
   }
 
   &__PostTitle {
-    margin-bottom: 0.75rem;
+    margin: 0 1.5rem 0.75rem;
     color: var(--foreground);
   }
 
   &__PostDescription {
     color: var(--muted-foreground);
-    margin-bottom: 1rem;
+    margin: 0 1.5rem 1rem;
   }
 
   &__PostMeta {
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
     margin-top: auto;
+    padding: 0 1.5rem 1.5rem;
     color: var(--muted-foreground);
     font-size: 0.875rem;
+  }
+
+  &__PostMetaItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-width: 0;
+
+    svg {
+      flex: 0 0 auto;
+    }
   }
 
   &__PostTags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-top: 0.25rem;
-    margin-bottom: 0.9rem;
+    margin: 0.25rem 1.5rem 0.9rem;
   }
 
   &__Tag {

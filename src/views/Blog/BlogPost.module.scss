@@ -34,7 +34,7 @@
   }
 
   &__Header {
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
   }
 
   &__Track {
@@ -96,10 +96,41 @@
     font-size: 0.85rem;
   }
 
+  &__MetaItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    svg {
+      flex: 0 0 auto;
+    }
+  }
+
   &__Tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+  }
+
+  &__HeroMedia {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    margin: 0 0 2rem;
+    overflow: hidden;
+    border-radius: $radius-md;
+    border: 1px solid color-mix(in srgb, var(--border) 84%, transparent);
+    background: var(--muted);
+
+    @include mobile {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  &__HeroImage {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   &__Tag {
