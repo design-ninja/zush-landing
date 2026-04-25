@@ -79,14 +79,14 @@ const Changelog = ({ macSource, windowsSource, activePlatform }: ChangelogProps)
                 <nav className={styles.Changelog__Tabs} aria-label='Changelog platform'>
                     <a
                         className={`${styles.Changelog__Tab} ${activePlatform === 'mac' ? styles['Changelog__Tab--Active'] : ''}`}
-                        href='/changelog?platform=mac'
+                        href='/changelog'
                         aria-current={activePlatform === 'mac' ? 'page' : undefined}
                     >
                         Mac
                     </a>
                     <a
                         className={`${styles.Changelog__Tab} ${activePlatform === 'windows' ? styles['Changelog__Tab--Active'] : ''}`}
-                        href='/changelog?platform=windows'
+                        href='/changelog/windows'
                         aria-current={activePlatform === 'windows' ? 'page' : undefined}
                     >
                         Windows
