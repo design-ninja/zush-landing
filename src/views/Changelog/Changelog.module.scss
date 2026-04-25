@@ -10,6 +10,41 @@
         max-width: 50rem;
     }
 
+    &__Tabs {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        padding: 0.25rem;
+        margin-bottom: 2rem;
+        border: 1px solid var(--border);
+        border-radius: $radius-md;
+        background: var(--muted);
+    }
+
+    &__Tab {
+        min-width: 6.25rem;
+        padding: 0.625rem 1rem;
+        border-radius: $radius-sm;
+        color: var(--muted-foreground);
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-align: center;
+        text-decoration: none;
+        transition:
+            background-color $transition-base,
+            color $transition-base;
+
+        &:hover {
+            color: var(--foreground);
+        }
+
+        &--Active {
+            background: var(--background);
+            color: var(--foreground);
+            @include shadow('sm');
+        }
+    }
+
     &__Timeline {
         position: relative;
         padding-left: 2rem;
@@ -124,8 +159,13 @@
     }
 
     &__Loading,
+    &__Empty,
     &__Error {
         @include loading-state;
+    }
+
+    &__Empty {
+        color: var(--muted-foreground);
     }
 
     &__Error {

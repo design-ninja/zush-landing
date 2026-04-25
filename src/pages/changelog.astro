@@ -2,11 +2,18 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import ChangelogView from '@/views/Changelog';
 import { getSeoForPath } from '@/seo/config';
-import changelogSource from '@/content/changelog.md?raw';
+import macChangelogSource from '@/content/changelog.md?raw';
+import windowsChangelogSource from '@/content/changelog.windows.md?raw';
 
 const seo = getSeoForPath('/changelog');
+const platformParam = Astro.url.searchParams.get('platform');
+const activePlatform = platformParam === 'windows' ? 'windows' : 'mac';
 ---
 
 <BaseLayout seo={seo}>
-  <ChangelogView source={changelogSource} />
+  <ChangelogView
+    macSource={macChangelogSource}
+    windowsSource={windowsChangelogSource}
+    activePlatform={activePlatform}
+  />
 </BaseLayout>

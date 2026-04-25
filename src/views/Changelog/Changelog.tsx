@@ -12,8 +12,12 @@ interface ReleaseItem {
     content: string;
 }
 
+type Platform = 'mac' | 'windows';
+
 interface ChangelogProps {
-    source: string;
+    macSource: string;
+    windowsSource: string;
+    activePlatform: Platform;
 }
 
 const formatDate = (dateStr: string): string => {
@@ -48,10 +52,14 @@ const parseChangelog = (markdown: string): ReleaseItem[] => {
     });
 };
 
-const Changelog = ({ source }: ChangelogProps) => {
+const Changelog = ({ macSource, windowsSource, activePlatform }: ChangelogProps) => {
+    const source = activePlatform === 'windows' ? windowsSource : macSource;
     const releases = parseChangelog(source);
 
     const isLatest = (index: number): boolean => index === 0;
+    const emptyMessage = activePlatform === 'windows'
+        ? 'Windows release notes will appear here after the first Store release.'
+        : 'Mac release notes will appear here after the next release.';
 
     const changelogHeader = (
         <header className={styles.Changelog__Header}>
@@ -63,52 +71,62 @@ const Changelog = ({ source }: ChangelogProps) => {
         </header>
     );
 
-    if (releases.length === 0) {
-        return (
-            <section className={styles.Changelog}>
-                <div className={styles.Changelog__Container}>
-                    {changelogHeader}
-                    <div className={styles.Changelog__Error}>
-                        Failed to parse changelog content.
-                    </div>
-                </div>
-            </section>
-        );
-    }
-
     return (
         <section className={styles.Changelog}>
             <div className={styles.Changelog__Container}>
                 {changelogHeader}
 
-                <div className={styles.Changelog__Timeline}>
-                    {releases.map((release, index) => (
-                        <article key={release.version} className={styles.Changelog__Item}>
-                            <div className={styles.Changelog__ItemHeader}>
-                                <Heading as='h2' className={styles.Changelog__Version}>
-                                    v{release.version}
-                                </Heading>
-                                {isLatest(index) && (
-                                    <span className={styles.Changelog__Badge}>Latest</span>
-                                )}
-                                <time className={styles.Changelog__Date}>{release.date}</time>
-                            </div>
-                            <div className={styles.Changelog__Content}>
-                                <ReactMarkdown
-                                    components={{
-                                        h1: ({ node: _node, children }) => <Heading as='h3'>{children}</Heading>,
-                                        h2: ({ node: _node, children }) => <Heading as='h3'>{children}</Heading>,
-                                        h3: ({ node: _node, children }) => <Heading as='h4'>{children}</Heading>,
-                                        h4: ({ node: _node, children }) => <Heading as='h4'>{children}</Heading>,
-                                        p: ({ node: _node, color: _color, children }) => <Text as='p' color='subtle'>{children}</Text>,
-                                    }}
-                                >
-                                    {release.content}
-                                </ReactMarkdown>
-                            </div>
-                        </article>
-                    ))}
-                </div>
+                <nav className={styles.Changelog__Tabs} aria-label='Changelog platform'>
+                    <a
+                        className={`${styles.Changelog__Tab} ${activePlatform === 'mac' ? styles['Changelog__Tab--Active'] : ''}`}
+                        href='/changelog?platform=mac'
+                        aria-current={activePlatform === 'mac' ? 'page' : undefined}
+                    >
+                        Mac
+                    </a>
+                    <a
+                        className={`${styles.Changelog__Tab} ${activePlatform === 'windows' ? styles['Changelog__Tab--Active'] : ''}`}
+                        href='/changelog?platform=windows'
+                        aria-current={activePlatform === 'windows' ? 'page' : undefined}
+                    >
+                        Windows
+                    </a>
+                </nav>
+
+                {releases.length === 0 ? (
+                    <div className={styles.Changelog__Empty}>
+                        {emptyMessage}
+                    </div>
+                ) : (
+                    <div className={styles.Changelog__Timeline}>
+                        {releases.map((release, index) => (
+                            <article key={`${activePlatform}-${release.version}`} className={styles.Changelog__Item}>
+                                <div className={styles.Changelog__ItemHeader}>
+                                    <Heading as='h2' className={styles.Changelog__Version}>
+                                        v{release.version}
+                                    </Heading>
+                                    {isLatest(index) && (
+                                        <span className={styles.Changelog__Badge}>Latest</span>
+                                    )}
+                                    <time className={styles.Changelog__Date}>{release.date}</time>
+                                </div>
+                                <div className={styles.Changelog__Content}>
+                                    <ReactMarkdown
+                                        components={{
+                                            h1: ({ node: _node, children }) => <Heading as='h3'>{children}</Heading>,
+                                            h2: ({ node: _node, children }) => <Heading as='h3'>{children}</Heading>,
+                                            h3: ({ node: _node, children }) => <Heading as='h4'>{children}</Heading>,
+                                            h4: ({ node: _node, children }) => <Heading as='h4'>{children}</Heading>,
+                                            p: ({ node: _node, color: _color, children }) => <Text as='p' color='subtle'>{children}</Text>,
+                                        }}
+                                    >
+                                        {release.content}
+                                    </ReactMarkdown>
+                                </div>
+                            </article>
+                        ))}
+                    </div>
+                )}
 
                 <BackToHome className={styles.Changelog__BackLink} />
             </div>
