@@ -11,7 +11,7 @@
     }
 
     &__Tabs {
-        display: inline-flex;
+        display: flex;
         align-items: center;
         gap: 0.25rem;
         padding: 0.25rem;
@@ -23,6 +23,10 @@
     }
 
     &__Tab {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.45rem;
         min-width: 6.25rem;
         padding: 0.625rem 1rem;
         border-radius: $radius-sm;
@@ -43,6 +47,18 @@
             background: var(--background);
             color: var(--foreground);
             @include shadow('sm');
+        }
+    }
+
+    &__TabIcon {
+        display: inline-flex;
+        width: 1.725rem;
+        height: 1.725rem;
+        flex: 0 0 auto;
+
+        svg {
+            width: 100%;
+            height: 100%;
         }
     }
 

@@ -3,6 +3,8 @@ import SectionHeader from '@/components/SectionHeader';
 import BackToHome from '@/components/BackToHome';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
+import AppleIcon from '@/components/AppleIcon';
+import WindowsIcon from '@/components/WindowsIcon';
 import styles from './Changelog.module.scss';
 import '@/styles/markdown-content.scss';
 
@@ -82,6 +84,9 @@ const Changelog = ({ macSource, windowsSource, activePlatform }: ChangelogProps)
                         href='/changelog'
                         aria-current={activePlatform === 'mac' ? 'page' : undefined}
                     >
+                        <span className={styles.Changelog__TabIcon} aria-hidden='true'>
+                            <AppleIcon />
+                        </span>
                         Mac
                     </a>
                     <a
@@ -89,6 +94,9 @@ const Changelog = ({ macSource, windowsSource, activePlatform }: ChangelogProps)
                         href='/changelog/windows'
                         aria-current={activePlatform === 'windows' ? 'page' : undefined}
                     >
+                        <span className={styles.Changelog__TabIcon} aria-hidden='true'>
+                            <WindowsIcon />
+                        </span>
                         Windows
                     </a>
                 </nav>
