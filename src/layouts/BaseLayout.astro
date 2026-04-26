@@ -86,28 +86,27 @@ const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
       (() => {
         const THEME_STORAGE_KEY = 'zush-theme';
         const root = () => document.documentElement;
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+        const getStoredTheme = () => {
+          try {
+            const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
+            if (storedTheme === 'dark' || storedTheme === 'light') {
+              return storedTheme;
+            }
+          } catch {}
+
+          return null;
+        };
+
+        const getTheme = () => getStoredTheme() ?? (mediaQuery.matches ? 'dark' : 'light');
+
+        const applyTheme = (target = root(), theme = getTheme()) => {
+          target.setAttribute('data-theme', theme);
+        };
 
         if (!window.__zushThemeManagerBound) {
           window.__zushThemeManagerBound = true;
-
-          const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-          const getStoredTheme = () => {
-            try {
-              const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
-              if (storedTheme === 'dark' || storedTheme === 'light') {
-                return storedTheme;
-              }
-            } catch {}
-
-            return null;
-          };
-
-          const getTheme = () => getStoredTheme() ?? (mediaQuery.matches ? 'dark' : 'light');
-
-          const applyTheme = (target = root(), theme = getTheme()) => {
-            target.setAttribute('data-theme', theme);
-          };
 
           const toggleTheme = () => {
             const nextTheme = getTheme() === 'light' ? 'dark' : 'light';
@@ -138,7 +137,7 @@ const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
           return;
         }
 
-        root().setAttribute('data-theme', root().getAttribute('data-theme') || 'light');
+        applyTheme(root(), root().getAttribute('data-theme') || getTheme());
       })();
     </script>
 
