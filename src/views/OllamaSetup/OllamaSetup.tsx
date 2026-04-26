@@ -158,6 +158,18 @@ const OllamaSetup = () => {
                 </article>
               ))}
             </div>
+
+            <Text as='p' color='subtle' className={styles.OllamaSetup__CatalogNote}>
+              Or choose another vision-capable model from the{' '}
+              <AppLink
+                href='https://ollama.com/search?c=vision'
+                target='_blank'
+                rel='noopener noreferrer'
+                className={styles.OllamaSetup__CatalogLink}
+              >
+                Ollama model catalog <ExternalLink size={14} />
+              </AppLink>.
+            </Text>
           </section>
 
           <section className={styles.OllamaSetup__Section}>

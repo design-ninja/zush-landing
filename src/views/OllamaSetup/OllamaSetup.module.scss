@@ -85,6 +85,20 @@
         margin-bottom: 1.25rem;
     }
 
+    &__CatalogNote {
+        margin-top: 1rem;
+        line-height: 1.6;
+    }
+
+    &__CatalogLink {
+        color: var(--primary);
+        font-weight: 600;
+
+        &:hover {
+            color: var(--primary-hover);
+        }
+    }
+
     &__Steps {
         display: flex;
         flex-direction: column;
