@@ -49,7 +49,7 @@ interface FAQProps {
 const STATIC_JSX_OVERRIDES: Record<string, React.ReactNode> = {
   'What is BYOK (Bring Your Own Key)?': (
     <>
-      BYOK lets PRO users connect their own API key from Gemini, Groq, OpenAI, or Claude for unlimited file processing. When BYOK is enabled, Zush uses your API key through its backend relay to call your chosen AI provider, so you pay the provider directly and have no credit limits. Perfect for power users with large libraries.{' '}
+      BYOK lets PRO users connect their own API key from Gemini, Groq, OpenAI, or Claude for unlimited cloud processing. Your key is stored locally in macOS Keychain and is sent only when Zush needs to call your selected provider through the backend relay.{' '}
       <AppLink href="/byok-setup">Learn how to set it up →</AppLink>
     </>
   ),
@@ -86,8 +86,12 @@ const buildDefaultFaqItems = (): FAQData[] =>
     if (item.question === 'Does the app work offline?') {
       return {
         question: item.question,
-        answer:
-          'Zush requires an internet connection for the AI features (file analysis and name generation) to function. While it is a native desktop application that prepares files locally, we currently rely on advanced cloud models to ensure the best possible quality and accuracy. Support for a local AI provider is in active development.',
+        answer: (
+          <>
+            Cloud processing requires an internet connection. On Mac, PRO users can enable Local (Ollama) to process supported files with a model running on their computer after installing Ollama and downloading a compatible model.{' '}
+            <AppLink href="/ollama-setup">Open the Ollama setup guide →</AppLink>
+          </>
+        ),
       };
     }
 

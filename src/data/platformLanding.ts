@@ -29,12 +29,12 @@ export const PLATFORM_LANDING_CONTENT: Record<DownloadOS, PlatformLandingContent
     breadcrumbLabel: 'Zush for Mac',
     softwareName: 'Zush for Mac',
     softwareDescription:
-      'AI-powered file renamer for macOS. Rename screenshots, PDFs, photos and documents with descriptive names. Native Apple Silicon and Intel support.',
+      'AI-powered file renamer for macOS. Rename screenshots, PDFs, photos and documents with cloud AI or local Ollama models. Native Apple Silicon and Intel support.',
     operatingSystem: 'macOS 14.0+',
     downloadUrl: DOWNLOAD_URL,
     heroTitle: 'AI File Renamer for Mac',
     heroSubtitle:
-      'Rename screenshots, PDFs, photos, and documents on macOS with AI. Native desktop app for Apple Silicon and Intel, free to try with no signup.',
+      'Rename screenshots, PDFs, photos, and documents on macOS with AI. Use fast cloud models or process locally with Ollama on supported Mac builds.',
     ctaSubtitle:
       'Install the signed macOS app and start renaming screenshots, PDFs, photos, and documents in minutes.',
     features: [
@@ -46,6 +46,7 @@ export const PLATFORM_LANDING_CONTENT: Record<DownloadOS, PlatformLandingContent
       'Native Apple Silicon and Intel build',
       '60+ languages and flexible date formats',
       'BYOK for unlimited use (Gemini, Groq, OpenAI, Claude)',
+      'Local Ollama mode for offline processing on Mac',
     ],
     faqs: [
       {
@@ -66,12 +67,17 @@ export const PLATFORM_LANDING_CONTENT: Record<DownloadOS, PlatformLandingContent
       {
         question: 'Where are my files sent?',
         answer:
-          'Originals stay on your Mac. For AI analysis, Zush sends a compressed image preview or extracted document text to our AI providers. Content is not stored after processing.',
+          'Originals stay on your Mac. Cloud mode sends the analysis payload needed for renaming, such as a compressed preview or extracted document text, to the selected AI provider. Local (Ollama) mode processes supported files on your Mac and does not send analysis content to Zush cloud or third-party AI providers.',
       },
       {
         question: 'Can I switch to my own API key?',
         answer:
-          'Yes. PRO users can enable BYOK (Bring Your Own Key) with Gemini, Groq, OpenAI or Claude for unlimited processing — you pay the provider directly.',
+          'Yes. PRO users can enable BYOK (Bring Your Own Key) with Gemini, Groq, OpenAI or Claude for unlimited cloud processing. Your key is stored locally in macOS Keychain.',
+      },
+      {
+        question: 'Can I use Zush offline?',
+        answer:
+          'Yes, on Mac with Local (Ollama). Install Ollama, download a compatible vision model, then enable Local mode in AI Setup. Cloud and BYOK processing still require internet.',
       },
     ],
   },
@@ -109,7 +115,7 @@ export const PLATFORM_LANDING_CONTENT: Record<DownloadOS, PlatformLandingContent
       {
         question: 'Does Zush for Windows have the same features as Mac?',
         answer:
-          'Yes. Zush for Windows ships with the same AI rename flow, folder monitoring, custom prompts, one-click revert, and BYOK support. We keep feature parity between platforms.',
+          'Zush for Windows ships with the same core cloud AI rename flow, folder monitoring, custom prompts, one-click revert, and BYOK support. Local Ollama processing is currently available on Mac.',
       },
       {
         question: 'Does it run on Windows on ARM?',
@@ -119,12 +125,12 @@ export const PLATFORM_LANDING_CONTENT: Record<DownloadOS, PlatformLandingContent
       {
         question: 'Can I bring my own AI API key?',
         answer:
-          'Yes. PRO users can enable BYOK (Bring Your Own Key) with Gemini, Groq, OpenAI or Claude for unlimited processing — you pay the provider directly.',
+          'Yes. PRO users can enable BYOK (Bring Your Own Key) with Gemini, Groq, OpenAI or Claude for unlimited cloud processing — you pay the provider directly.',
       },
       {
         question: 'Where are my files sent?',
         answer:
-          'Originals stay on your PC. For AI analysis, Zush sends a compressed image preview or extracted document text to our AI providers. Content is not stored after processing.',
+          'Originals stay on your PC. For cloud AI analysis, Zush sends the analysis payload needed for renaming, such as a compressed preview or extracted document text, to the selected AI provider. Content is not stored after processing as part of normal operation.',
       },
     ],
   },

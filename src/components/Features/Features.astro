@@ -12,6 +12,7 @@ import {
   Check,
   MessageSquareText,
   KeyRound,
+  Bot,
 } from 'lucide-react';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
@@ -255,7 +256,7 @@ const currentYear = new Date().getFullYear();
 
       <BentoCard
         title='Bring Your Own Key'
-        description='Connect your own API key from Gemini, Groq, OpenAI, or Claude for unlimited processing.'
+        description='Connect your own API key from Gemini, Groq, OpenAI, or Claude for unlimited cloud processing. Keys are stored locally in macOS Keychain.'
         icon={KeyRound}
         badge='PRO 🌟'
         delay={0.8}
@@ -272,6 +273,32 @@ const currentYear = new Date().getFullYear();
             <span>Groq</span>
             <span>OpenAI</span>
             <span>Claude</span>
+          </div>
+        </div>
+      </BentoCard>
+
+      <BentoCard
+        title='Local Ollama'
+        description='Run supported analysis on your Mac with a local Ollama model. In Local mode, file analysis content is not sent to Zush cloud or AI providers.'
+        icon={Bot}
+        badge='PRO 🌟'
+        delay={0.9}
+      >
+        <div class={styles.UI_Ollama}>
+          <div class={styles.UI_Ollama__Terminal}>
+            <div class={styles.UI_Ollama__Dots}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class={styles.UI_Ollama__Line}>ollama run qwen2.5vl:3b</div>
+            <div class={styles.UI_Ollama__Status}>
+              <Check size={14} />
+              <span>Local model ready</span>
+            </div>
+          </div>
+          <div class={styles.UI_Ollama__Privacy}>
+            <span>Files stay on this Mac</span>
           </div>
         </div>
       </BentoCard>

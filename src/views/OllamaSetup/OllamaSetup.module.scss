@@ -1,0 +1,258 @@
+@use 'src/styles/variables' as *;
+@use 'src/styles/mixins' as *;
+
+.OllamaSetup {
+    padding: 3.75rem 0;
+    min-height: 80vh;
+
+    &__Container {
+        @include container;
+        max-width: 54rem;
+    }
+
+    &__Hero {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    &__HeroIcon {
+        width: 4rem;
+        height: 4rem;
+        border-radius: $radius-xl;
+        background: var(--primary-soft);
+        color: var(--primary);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+
+    &__Title {
+        margin-bottom: 1rem;
+    }
+
+    &__Subtitle {
+        max-width: 44rem;
+        margin: 0 auto 1.5rem;
+        line-height: 1.6;
+    }
+
+    &__Actions {
+        display: flex;
+        justify-content: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
+
+    &__Content {
+        background: var(--muted);
+        border: 1px solid var(--border);
+        border-radius: $radius-xl;
+        padding: 2rem;
+
+        @include small {
+            padding: 1.5rem;
+            border-radius: $radius-lg;
+        }
+    }
+
+    &__Section {
+        padding: 2rem 0;
+        border-bottom: 1px solid var(--border);
+        scroll-margin-top: calc($navbar-height + 1rem);
+
+        &:first-child {
+            padding-top: 0;
+        }
+    }
+
+    &__SectionHeader {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+        color: var(--primary);
+
+        h2 {
+            margin: 0;
+            color: var(--foreground);
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+    }
+
+    &__SectionLead {
+        margin-bottom: 1.25rem;
+    }
+
+    &__Steps {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    &__Step {
+        display: grid;
+        grid-template-columns: 2rem 1fr;
+        gap: 1rem;
+
+        @include small {
+            grid-template-columns: 1.75rem 1fr;
+            gap: 0.75rem;
+        }
+    }
+
+    &__StepNumber {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        background: var(--secondary);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 0.875rem;
+        flex-shrink: 0;
+
+        @include small {
+            width: 1.75rem;
+            height: 1.75rem;
+            font-size: 0.75rem;
+        }
+    }
+
+    &__StepContent {
+        h3 {
+            margin: 0 0 0.5rem;
+            font-size: 1.125rem;
+        }
+
+        p {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+    }
+
+    &__Code,
+    &__Command {
+        margin: 0.75rem 0 0;
+        padding: 0.875rem 1rem;
+        border-radius: $radius-md;
+        background: var(--background);
+        border: 1px solid var(--border);
+        overflow-x: auto;
+
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            color: var(--foreground);
+        }
+    }
+
+    &__ModelGrid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    &__ModelCard {
+        background: var(--background);
+        border: 1px solid var(--border);
+        border-radius: $radius-lg;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+
+    &__ModelHeader {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+
+        h3 {
+            margin: 0;
+            font-size: 1.125rem;
+        }
+
+        span {
+            font-size: 0.6875rem;
+            font-weight: 700;
+            color: var(--primary);
+            background: var(--primary-soft);
+            padding: 0.25rem 0.5rem;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+    }
+
+    &__ModelMeta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+
+        span {
+            font-size: 0.75rem;
+            color: var(--muted-foreground);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 0.25rem 0.5rem;
+        }
+    }
+
+    &__Command {
+        margin-top: 0;
+        padding: 0.75rem;
+    }
+
+    &__FAQ {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    &__FAQItem {
+        h3 {
+            margin: 0 0 0.5rem;
+            font-size: 1rem;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.875em;
+            color: var(--foreground);
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 0.375rem;
+            padding: 0.125rem 0.25rem;
+        }
+    }
+
+    &__Note {
+        display: flex;
+        gap: 0.75rem;
+        align-items: flex-start;
+        padding: 1rem;
+        background: var(--primary-soft);
+        border-radius: $radius-lg;
+        margin-top: 2rem;
+        color: var(--primary);
+
+        p {
+            margin: 0;
+            line-height: 1.6;
+        }
+    }
+
+    &__Back {
+        margin-top: 2rem;
+        text-align: center;
+    }
+}

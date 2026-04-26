@@ -4,6 +4,7 @@ import {
   Globe,
   Command,
   Key,
+  Bot,
   Tags,
   MessageSquareText,
   LucideIcon,
@@ -69,13 +70,18 @@ export const PRO_PLAN: Plan = {
   features: [
     {
       title: '10,000 Credits',
-      desc: 'Process up to 10,000 files, then use BYOK for unlimited',
+      desc: 'Process up to 10,000 files, then use BYOK or Local Ollama',
       icon: Zap,
     },
     {
       title: 'BYOK - Bring Your Own Key',
-      desc: 'Use your API key for unlimited processing',
+      desc: 'Use your provider key for unlimited cloud processing',
       icon: Key,
+    },
+    {
+      title: 'Local Ollama on Mac',
+      desc: 'Process supported files with a local model on your Mac',
+      icon: Bot,
     },
     {
       title: 'Folders Monitor',

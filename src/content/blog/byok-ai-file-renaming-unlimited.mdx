@@ -8,12 +8,12 @@ topic: "byok"
 tags:
   - "AI File Renaming"
   - "BYOK"
-tldr: "Zush's BYOK feature lets you connect your own API key from Gemini, Groq, OpenAI, or Claude for unlimited AI file renaming. Two of the four providers offer free tiers, and paid usage costs roughly $0.001 per rename or less."
-reviewed: "2026-04-09"
+tldr: "Zush's BYOK feature lets you connect your own API key from Gemini, Groq, OpenAI, or Claude for unlimited cloud AI file renaming. Two of the four providers offer free tiers, and paid usage costs roughly $0.001 per rename or less."
+reviewed: "2026-04-26"
 ---
 Zush includes 50 free AI renames per month on the free plan, and 10,000 renames with the Pro plan at $10 one-time. For most people, that is more than enough. But if you process large photo libraries, manage client assets at scale, or simply want to remove any cap entirely, there is a third option: bring your own API key.
 
-BYOK (Bring Your Own Key) means you connect your personal API key from a supported AI provider directly to [Zush](https://zushapp.com/ai-file-renamer). Zush sends the file content to the provider under your account, the provider returns a descriptive name, and you pay the provider directly at their standard API rates. There is no Zush markup and no rename limit.
+BYOK (Bring Your Own Key) means you connect your personal API key from a supported AI provider to [Zush](https://zushapp.com/ai-file-renamer). In current Mac builds, the key is stored locally in macOS Keychain. When BYOK is enabled, Zush relays the analysis request through its backend to your selected provider using your key for that request, the provider returns a descriptive name, and you pay the provider directly at their standard API rates. There is no Zush markup and no cloud rename limit.
 
 
 ## What BYOK means in practice
@@ -29,7 +29,7 @@ The practical result:
 - You pay the AI provider directly at their published rates
 - You choose which provider and model to use
 - You can switch providers at any time
-- Your API key stays on your machine and is never sent to Zush's servers
+- In current Mac builds, your API key is stored locally in macOS Keychain and sent only when needed for a BYOK request
 
 ## Why BYOK matters
 

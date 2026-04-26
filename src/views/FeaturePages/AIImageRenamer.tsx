@@ -16,7 +16,7 @@ const faqItems = [
   },
   {
     question: 'Does AI image renaming work offline?',
-    answer: 'No, an internet connection is required since the AI analysis happens via cloud-based vision models. However, your images are only sent for analysis and are never stored on remote servers after processing.',
+    answer: 'Cloud and BYOK image analysis require an internet connection. On supported Mac builds, PRO users can enable Local (Ollama) and process supported images with a vision model running on their computer.',
   },
   {
     question: 'Can I set up automatic renaming for new images?',
@@ -38,6 +38,7 @@ const jsonLd = {
         'Automatic folder monitoring for incoming images',
         'Support for HEIC, RAW, JPG, PNG, and WebP',
         'Bring Your Own API Key (BYOK)',
+        'Local Ollama processing on supported Mac builds',
       ],
     }),
     {

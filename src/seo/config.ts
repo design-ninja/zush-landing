@@ -44,6 +44,13 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     robots: 'index, follow',
     ogType: 'website',
   },
+  '/ollama-setup': {
+    title: 'Ollama Setup Guide — Zush',
+    description:
+      'Learn how to set up Ollama in Zush, choose recommended local AI models, and process supported files locally on your Mac.',
+    robots: 'index, follow',
+    ogType: 'website',
+  },
   '/privacy-policy': {
     title: 'Privacy Policy — Zush',
     description:
@@ -293,7 +300,7 @@ export const HOME_JSON_LD = {
           price: '10',
           priceCurrency: 'USD',
           name: 'Zush PRO',
-          description: 'One-time purchase. 10,000 AI renames + all features + BYOK for unlimited use.',
+          description: 'One-time purchase. 10,000 AI renames, all features, BYOK, and Local Ollama on supported Mac builds.',
         },
       ],
       featureList: [
@@ -306,6 +313,7 @@ export const HOME_JSON_LD = {
         'PDF and document analysis',
         '60+ language support',
         'Bring Your Own Key (BYOK)',
+        'Local Ollama processing on supported Mac builds',
       ],
       speakable: {
         '@type': 'SpeakableSpecification',

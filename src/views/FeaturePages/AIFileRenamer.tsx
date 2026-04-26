@@ -47,11 +47,11 @@ const AIFileRenamer = () => (
       },
       {
         question: 'Do I need an internet connection for AI renaming?',
-        answer: 'Yes, since Zush sends file content to cloud-based AI models for analysis. The processing happens in real time and files are not stored after renaming. A stable internet connection ensures fast and accurate results.',
+        answer: 'Cloud and BYOK processing require an internet connection. On supported Mac builds, PRO users can enable Local (Ollama) to process supported files with a model running on their computer.',
       },
       {
         question: 'What does "Bring Your Own Key" (BYOK) mean?',
-        answer: 'BYOK lets you connect your own OpenAI, Anthropic, or other AI provider API key to Zush. This gives you unlimited renames at your API provider\'s per-token pricing, and full control over which models process your files.',
+        answer: 'BYOK lets you connect your own Gemini, Groq, OpenAI, or Claude API key for unlimited cloud processing. In current Mac builds, your key is stored locally in macOS Keychain and sent only when Zush calls your selected provider.',
       },
       {
         question: 'Can I undo a rename if I don\'t like the result?',
@@ -87,6 +87,7 @@ const AIFileRenamer = () => (
             'Smart tags and metadata',
             'PDF, document, and image analysis',
             'Bring Your Own API Key (BYOK)',
+            'Local Ollama processing on supported Mac builds',
           ],
         }),
         {
@@ -105,7 +106,7 @@ const AIFileRenamer = () => (
               name: 'Do I need an internet connection for AI renaming?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Yes, since Zush sends file content to cloud-based AI models for analysis. The processing happens in real time and files are not stored after renaming. A stable internet connection ensures fast and accurate results.',
+                text: 'Cloud and BYOK processing require an internet connection. On supported Mac builds, PRO users can enable Local (Ollama) to process supported files with a model running on their computer.',
               },
             },
             {
@@ -113,7 +114,7 @@ const AIFileRenamer = () => (
               name: 'What does "Bring Your Own Key" (BYOK) mean?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'BYOK lets you connect your own OpenAI, Anthropic, or other AI provider API key to Zush. This gives you unlimited renames at your API provider\'s per-token pricing, and full control over which models process your files.',
+                text: 'BYOK lets you connect your own Gemini, Groq, OpenAI, or Claude API key for unlimited cloud processing. In current Mac builds, your key is stored locally in macOS Keychain and sent only when Zush calls your selected provider.',
               },
             },
             {

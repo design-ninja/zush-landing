@@ -273,8 +273,9 @@ const BYOKSetup = () => {
               <div className={styles.BYOKSetup__FAQItem}>
                 <Heading as='h3'>Is my API key secure?</Heading>
                 <Text as='p'>
-                  Yes. Your API key is stored securely and is only used for BYOK requests.
-                  Requests are relayed through Zush backend infrastructure and then forwarded to your chosen provider with your key.
+                  Yes. In current Mac builds, your API key is stored locally in macOS Keychain.
+                  It is sent only when a BYOK request is relayed through Zush backend infrastructure
+                  and forwarded to your chosen provider.
                 </Text>
               </div>
 
@@ -321,10 +322,10 @@ const BYOKSetup = () => {
               <div>
                 <Heading as='h3'>Security & Privacy</Heading>
                 <Text as='p'>
-                  Your API keys are stored securely and used only for BYOK processing. In BYOK mode,
-                  analysis requests are still relayed through Zush backend infrastructure and then sent
-                  to your chosen AI provider using your API key. Zush does not store file content after
-                  processing as part of normal operation.
+                  In current Mac builds, your API keys are stored locally in macOS Keychain and used
+                  only for BYOK processing. In BYOK mode, analysis requests are still relayed through
+                  Zush backend infrastructure and then sent to your chosen AI provider using your API
+                  key. Zush does not store file content after processing as part of normal operation.
                 </Text>
               </div>
             </div>
