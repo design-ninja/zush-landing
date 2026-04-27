@@ -167,6 +167,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/recover': DEFAULT_META,
   '/activate': DEFAULT_META,
   '/manage-subscription': DEFAULT_META,
+  '/manage-subscription/confirm': DEFAULT_META,
 };
 
 export const PRIVATE_ROUTES = [
@@ -174,6 +175,7 @@ export const PRIVATE_ROUTES = [
   '/recover',
   '/activate',
   '/manage-subscription',
+  '/manage-subscription/confirm',
 ] as const;
 
 export const INDEXABLE_STATIC_ROUTES = Object.keys(ROUTE_META).filter(

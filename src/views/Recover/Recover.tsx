@@ -59,7 +59,7 @@ const Recover = () => {
         <Heading as='h1' className={styles.Recover__Title}>Check your inbox!</Heading>
 
         <Text as='p' className={styles.Recover__Subtitle} color='subtle'>
-          If a purchase exists for <strong>{email}</strong>, we've sent an activation link.
+          If a purchase exists for <strong>{email}</strong>, we've sent a one-time activation link.
           <br />
           Check your spam folder if you don't see it.
         </Text>
@@ -79,7 +79,7 @@ const Recover = () => {
 
       <Text as='p' className={styles.Recover__Subtitle} color='subtle'>
         Enter the email address you used when purchasing Zush PRO.
-        We'll send you a new activation link.
+        We'll send you a new one-time activation link.
       </Text>
 
       <form onSubmit={handleSubmit} className={styles.Recover__Form}>

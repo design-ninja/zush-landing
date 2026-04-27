@@ -4,7 +4,13 @@ import { join } from 'node:path';
 const ROOT = process.cwd();
 const DIST = join(ROOT, 'dist');
 const SITE_ORIGIN = 'https://zushapp.com';
-const PRIVATE_ROUTES = new Set(['/thank-you', '/recover', '/activate', '/manage-subscription']);
+const PRIVATE_ROUTES = new Set([
+  '/thank-you',
+  '/recover',
+  '/activate',
+  '/manage-subscription',
+  '/manage-subscription/confirm',
+]);
 const NON_WATCH_VIDEO_ROUTES = new Set([
   '/',
   '/ai-file-renamer',

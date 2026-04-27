@@ -21,6 +21,22 @@
         gap: 16px;
     }
 
+    &__Success {
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto 24px;
+        padding: 14px 16px;
+        border: 1px solid color-mix(in srgb, var(--success, #16a34a) 34%, transparent);
+        border-radius: $radius-sm;
+        background: color-mix(in srgb, var(--success, #16a34a) 9%, transparent);
+        text-align: center;
+
+        p {
+            margin: 0;
+            color: var(--foreground);
+        }
+    }
+
     &__Info {
         background: var(--muted);
         border-radius: $radius-sm;

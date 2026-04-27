@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CreditCard, ExternalLink } from 'lucide-react';
+import { CreditCard, Mail } from 'lucide-react';
 import Button from '@/components/Button';
 import BackToHome from '@/components/BackToHome';
 import PageLayout from '@/components/PageLayout';
@@ -15,6 +15,7 @@ const ManageSubscription = () => {
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [sent, setSent] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,10 +27,11 @@ const ManageSubscription = () => {
 
     setIsLoading(true);
     setError('');
+    setSent(false);
 
     try {
       const response = await fetch(
-        `${SUPABASE_URL}/functions/v1/get-customer-portal-url`,
+        `${SUPABASE_URL}/functions/v1/send-customer-portal-link`,
         {
           method: 'POST',
           headers: {
@@ -41,10 +43,8 @@ const ManageSubscription = () => {
 
       const data = await response.json();
 
-      if (response.ok && data.portal_url) {
-        window.location.href = data.portal_url;
-      } else if (response.status === 404) {
-        setError('No active subscription found for this email.');
+      if (response.ok) {
+        setSent(true);
       } else {
         setError(data.error || 'Something went wrong. Please try again.');
       }
@@ -66,9 +66,9 @@ const ManageSubscription = () => {
       </Heading>
 
       <Text as='p' className={styles.ManageSubscription__Subtitle} color='subtle'>
-        Enter the email address associated with your Zush PRO subscription to
-        manage your billing, update payment methods, or cancel your
-        subscription.
+        Enter the email address associated with your Zush PRO subscription.
+        We will send a one-time link to manage billing, payment methods, or
+        cancellation.
       </Text>
 
       <form onSubmit={handleSubmit} className={styles.ManageSubscription__Form}>
@@ -82,22 +82,31 @@ const ManageSubscription = () => {
 
         <Button type="submit" variant="primary" disabled={isLoading}>
           {isLoading ? (
-            'Loading...'
+            'Sending...'
           ) : (
             <>
-              Open Customer Portal
-              <ExternalLink size={16} />
+              Send Management Link
+              <Mail size={16} />
             </>
           )}
         </Button>
       </form>
+
+      {sent && (
+        <div className={styles.ManageSubscription__Success}>
+          <Text as='p' size='sm'>
+            Check your email for a one-time subscription management link.
+          </Text>
+        </div>
+      )}
 
       <ErrorMessage message={error} variant="box" />
 
       <div className={styles.ManageSubscription__Actions}>
         <div className={styles.ManageSubscription__Info}>
           <Text as='p' size='sm' color='subtle'>
-            <strong>Note:</strong> This is only for active subscriptions.
+            <strong>Note:</strong> For security, the link expires quickly and
+            can only be used once.
           </Text>
         </div>
 
