@@ -11,6 +11,7 @@ interface Feature {
   title: string;
   desc: string;
   icon: LucideIcon;
+  groupBreakBefore?: boolean;
 }
 
 interface PricingCardProps {
@@ -118,21 +119,34 @@ export const PricingCard = memo(
       </div>
 
       <div className={styles.PricingCard__Features}>
-        {features.map((feature, i) => (
-          <div key={i} className={styles.PricingCard__Feature}>
-            <div className={styles.PricingCard__FeatureIcon}>
-              <feature.icon size={24} />
+        {features
+          .reduce<Feature[][]>((groups, feature) => {
+            if (groups.length === 0 || feature.groupBreakBefore) {
+              groups.push([]);
+            }
+
+            groups[groups.length - 1].push(feature);
+            return groups;
+          }, [])
+          .map((group, groupIndex) => (
+            <div key={groupIndex} className={styles.PricingCard__FeatureGroup}>
+              {group.map((feature, i) => (
+                <div key={i} className={styles.PricingCard__Feature}>
+                  <div className={styles.PricingCard__FeatureIcon}>
+                    <feature.icon size={24} />
+                  </div>
+                  <div>
+                    <div className={styles.PricingCard__FeatureTitle}>
+                      {feature.title}
+                    </div>
+                    <div className={styles.PricingCard__FeatureDesc}>
+                      {feature.desc}
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-            <div>
-              <div className={styles.PricingCard__FeatureTitle}>
-                {feature.title}
-              </div>
-              <div className={styles.PricingCard__FeatureDesc}>
-                {feature.desc}
-              </div>
-            </div>
-          </div>
-        ))}
+          ))}
       </div>
 
       <div className={styles.PricingCard__ButtonWrapper}>

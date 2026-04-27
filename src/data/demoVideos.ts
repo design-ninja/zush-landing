@@ -119,6 +119,19 @@ export const DEMO_VIDEOS: DemoVideoAsset[] = [
       dark: '/videos/posters/byok-dark.webp',
     },
   },
+  {
+    id: 'offline-ai',
+    title: 'Offline AI mode',
+    description: 'Process supported files offline with private local models via Ollama',
+    sources: {
+      light: '/videos/zush-ollama.mp4',
+      dark: '/videos/zush-ollama-dark.mp4',
+    },
+    posters: {
+      light: '/videos/posters/ollama.webp',
+      dark: '/videos/posters/ollama-dark.webp',
+    },
+  },
 ];
 
 export const WINDOWS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [

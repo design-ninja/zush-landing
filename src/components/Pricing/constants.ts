@@ -15,6 +15,7 @@ interface Feature {
   title: string;
   desc: string;
   icon: LucideIcon;
+  groupBreakBefore?: boolean;
 }
 
 interface Plan {
@@ -79,14 +80,15 @@ export const PRO_PLAN: Plan = {
       icon: Key,
     },
     {
-      title: 'Offline AI mode - private local models via Ollama',
-      desc: 'Process supported files offline without cloud processing',
+      title: 'Offline AI mode',
+      desc: 'Private local models via Ollama',
       icon: Bot,
     },
     {
       title: 'Folders Monitor',
       desc: 'Auto-rename new files as they land in watched folders',
       icon: FolderPlus,
+      groupBreakBefore: true,
     },
     {
       title: 'Smart Naming & Metadata',
