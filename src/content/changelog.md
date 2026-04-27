@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.9.0] - 2026-04-27
+
+### Added
+- Added Offline AI mode with local Ollama analysis
+- Added provider-scoped Bring Your Own Key setup for PRO users
+- Added secure customer portal links for subscription management
+
+### Improved
+- Improved AI setup with clearer cloud and local mode controls
+- Improved PDF and document analysis reliability
+- Improved PRO onboarding, feature copy, and welcome screen guidance
+- Improved usage limit display and AI error visibility
+
+### Fixed
+- Fixed BYOK provider keys persisting across app launches
+- Fixed device authentication and activation rollout edge cases
+- Fixed customer portal and purchase status syncing reliability
+- Fixed missing-file and batch picker handling during rename flows
+
 ## [1.8.6] - 2026-04-22
 
 ### Added
