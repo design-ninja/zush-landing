@@ -38,11 +38,14 @@ function verifyActivationAndRecovery() {
   const activate = read('src/views/Activate/Activate.tsx');
   const recover = read('src/views/Recover/Recover.tsx');
   const manage = read('src/views/ManageSubscription/ManageSubscription.tsx');
+  const manageConfirm = read('src/views/ManageSubscription/ManageSubscriptionConfirm.tsx');
   const thankYou = read('src/views/ThankYou/ThankYou.tsx');
 
   assertMatch(activate, /zush:\/\/activate\?token=\$\{token\}&email=\$\{encodeURIComponent\(email\)\}/, 'Activate deep link is missing');
   assertMatch(recover, /send-magic-link/, 'Recover flow endpoint changed or removed');
-  assertMatch(manage, /get-customer-portal-url/, 'Manage subscription endpoint changed or removed');
+  assertMatch(manage, /send-customer-portal-link/, 'Manage subscription email-link endpoint changed or removed');
+  assertMatch(manageConfirm, /get-customer-portal-url/, 'Manage subscription confirmation endpoint changed or removed');
+  assertMatch(manageConfirm, /JSON\.stringify\(\{\s*token\s*\}\)/, 'Manage subscription confirmation no longer exchanges token');
   assertMatch(thankYou, /sessionStorage\.getItem\('zush_checkout_device_id'\)/, 'Thank-you app purchase detection is missing');
   assertMatch(thankYou, /sessionStorage\.removeItem\('zush_checkout_device_id'\)/, 'Thank-you cleanup of device id is missing');
 }
@@ -53,6 +56,7 @@ function verifyCriticalRoutes() {
     'src/pages/recover.astro',
     'src/pages/activate.astro',
     'src/pages/manage-subscription.astro',
+    'src/pages/manage-subscription/confirm.astro',
   ];
 
   for (const routeFile of routes) {

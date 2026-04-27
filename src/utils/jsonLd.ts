@@ -114,7 +114,7 @@ const DEFAULT_SOFTWARE_OFFERS: SoftwareOfferData[] = [
     name: 'Zush Pro',
     price: '10',
     priceCurrency: 'USD',
-    description: 'One-time purchase. 10,000 AI renames plus BYOK support and Local Ollama on supported Mac builds.',
+    description: 'One-time purchase. 10,000 AI renames plus BYOK and Offline AI mode.',
   },
 ];
 

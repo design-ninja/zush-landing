@@ -46,8 +46,9 @@ const Videos = ({
   const videoWrapperRef = useRef<HTMLDivElement>(null);
   const windowsVideoRef = useRef<HTMLVideoElement>(null);
   const showcaseItems = isWindowsShowcase ? WINDOWS_DEMO_SCREENSHOTS : DEMO_VIDEOS;
-  const activeVideo = DEMO_VIDEOS[activeFeature];
-  const activeScreenshot = WINDOWS_DEMO_SCREENSHOTS[activeFeature];
+  const activeVideo = DEMO_VIDEOS[activeFeature] ?? DEMO_VIDEOS[0];
+  const activeScreenshot =
+    WINDOWS_DEMO_SCREENSHOTS[activeFeature] ?? WINDOWS_DEMO_SCREENSHOTS[0];
   const activeVideoMedia = resolveDemoVideoMedia(activeVideo, theme);
   const activeScreenshotSrc = resolveDemoScreenshotMedia(activeScreenshot, theme);
   const activeItem = showcaseItems[activeFeature];

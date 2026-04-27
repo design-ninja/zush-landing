@@ -63,7 +63,7 @@ const BatchRenameFiles = () => (
       },
       {
         question: 'Is there a free version for batch renaming?',
-        answer: 'Yes. Zush includes 50 free AI renames with no signup and no credit card. That is enough to clean up a Downloads folder or a screenshot archive. Pro is a one-time $10 purchase for 10,000 renames — no subscription. BYOK gives unlimited cloud renames at provider cost, and Local (Ollama) is available on supported Mac builds.',
+        answer: 'Yes. Zush includes 50 free AI renames with no signup and no credit card. That is enough to clean up a Downloads folder or a screenshot archive. Pro is a one-time $10 purchase for 10,000 renames — no subscription. BYOK gives unlimited cloud renames at provider cost, and Offline AI mode - private local models via Ollama is available for supported files.',
       },
     ]}
     relatedPages={[
@@ -157,7 +157,7 @@ const BatchRenameFiles = () => (
               name: 'Is there a free version for batch renaming?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Yes. Zush includes 50 free AI renames with no signup and no credit card. Pro is a one-time $10 purchase for 10,000 renames — no subscription. BYOK gives unlimited cloud renames at provider cost, and Local (Ollama) is available on supported Mac builds.',
+                text: 'Yes. Zush includes 50 free AI renames with no signup and no credit card. Pro is a one-time $10 purchase for 10,000 renames — no subscription. BYOK gives unlimited cloud renames at provider cost, and Offline AI mode - private local models via Ollama is available for supported files.',
               },
             },
           ],

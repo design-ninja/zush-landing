@@ -1,0 +1,11 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ManageSubscriptionConfirmView from '@/views/ManageSubscription/ManageSubscriptionConfirm';
+import { getSeoForPath } from '@/seo/config';
+
+const seo = getSeoForPath('/manage-subscription/confirm');
+---
+
+<BaseLayout seo={seo}>
+  <ManageSubscriptionConfirmView client:load />
+</BaseLayout>

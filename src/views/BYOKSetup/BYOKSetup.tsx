@@ -15,7 +15,7 @@ const BYOKSetup = () => {
         </Heading>
 
         <Text as='p' className={styles.BYOKSetup__Subtitle} color='subtle'>
-          Bring Your Own Key for unlimited AI-powered file processing
+          Bring Your Own Key for unlimited cloud renames
         </Text>
 
         <div className={styles.BYOKSetup__Content}>
@@ -27,13 +27,13 @@ const BYOKSetup = () => {
             </div>
             <Text as='p'>
               BYOK (Bring Your Own Key) allows Zush PRO users to use their own AI provider API keys
-              for unlimited file processing. Instead of using Zush's AI credits, your files are
+              for unlimited cloud renames. Instead of using Zush's AI credits, your files are
               analyzed using your own API key from Gemini, Groq, OpenAI, or Claude.
             </Text>
             <div className={styles.BYOKSetup__Benefits}>
               <div className={styles.BYOKSetup__Benefit}>
                 <span className={styles.BYOKSetup__BenefitIcon}>∞</span>
-                <span>Unlimited processing (no credit limits)</span>
+                <span>Unlimited cloud renames (no credit limits)</span>
               </div>
               <div className={styles.BYOKSetup__Benefit}>
                 <span className={styles.BYOKSetup__BenefitIcon}>💰</span>
@@ -273,7 +273,7 @@ const BYOKSetup = () => {
               <div className={styles.BYOKSetup__FAQItem}>
                 <Heading as='h3'>Is my API key secure?</Heading>
                 <Text as='p'>
-                  Yes. In current Mac builds, your API key is stored locally in macOS Keychain.
+                  Yes. Your API key is stored locally in secure platform storage.
                   It is sent only when a BYOK request is relayed through Zush backend infrastructure
                   and forwarded to your chosen provider.
                 </Text>
@@ -322,7 +322,7 @@ const BYOKSetup = () => {
               <div>
                 <Heading as='h3'>Security & Privacy</Heading>
                 <Text as='p'>
-                  In current Mac builds, your API keys are stored locally in macOS Keychain and used
+                  Your API keys are stored locally in secure platform storage and used
                   only for BYOK processing. In BYOK mode, analysis requests are still relayed through
                   Zush backend infrastructure and then sent to your chosen AI provider using your API
                   key. Zush does not store file content after processing as part of normal operation.

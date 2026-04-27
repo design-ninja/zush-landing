@@ -47,7 +47,7 @@ const ThankYou = () => {
         // Purchased from app - device was auto-activated
         <>
           <Text as='p' className={styles.ThankYou__Subtitle} color='subtle'>
-            Your Zush PRO is active. Enjoy 10,000 credits, BYOK, and Local Ollama on supported Mac builds.
+            Your Zush PRO is active. Enjoy 10,000 credits, BYOK, and Offline AI mode - private local models via Ollama.
           </Text>
         </>
       ) : (

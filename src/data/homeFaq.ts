@@ -37,7 +37,7 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'Is my data secure?',
     answer:
-      'Your original files stay on your computer. In Cloud mode, Zush sends only the analysis payload needed for renaming, such as a compressed preview, extracted text, or compact summary, to the selected AI provider. In Local (Ollama) mode on Mac, supported analysis runs on your computer and file analysis content is not sent to Zush cloud or third-party AI providers.',
+      'Your original files stay on your computer. In Cloud mode, Zush sends only the analysis payload needed for renaming, such as a compressed preview, extracted text, or compact summary, to the selected AI provider. In Offline AI mode, private local models via Ollama process supported files on your device and file analysis content is not sent to Zush cloud or third-party AI providers.',
   },
   {
     question: 'Can I undo changes made by the program?',
@@ -52,12 +52,12 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'How does pricing work?',
     answer:
-      'Zush PRO is a simple one-time purchase for $10. You get 10,000 credits (1 credit = 1 rename) and access to all features, including BYOK and Local (Ollama) on supported Mac builds. Once credits are used up, enable BYOK with your own provider key or use a local Ollama model.',
+      'Zush PRO is a simple one-time purchase for $10. You get 10,000 credits (1 credit = 1 rename) and access to all features, including BYOK and Offline AI mode - private local models via Ollama. Once credits are used up, enable BYOK with your own provider key or use Offline AI mode.',
   },
   {
     question: 'What is BYOK (Bring Your Own Key)?',
     answer:
-      'BYOK lets PRO users connect their own API key from Gemini, Groq, OpenAI, or Claude for unlimited cloud processing. Your key is stored locally in macOS Keychain and is sent only when Zush needs to call your selected provider through the backend relay. Learn more at https://zushapp.com/byok-setup.',
+      'BYOK lets PRO users connect their own API key from Gemini, Groq, OpenAI, or Claude for unlimited cloud renames. Your key is stored locally in secure platform storage and is sent only when Zush needs to call your selected provider through the backend relay. Learn more at https://zushapp.com/byok-setup.',
   },
   {
     question: 'Why one-time purchase instead of subscription?',
@@ -76,7 +76,7 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'Does the app work offline?',
     answer:
-      'Cloud processing requires an internet connection. On Mac, PRO users can enable Local (Ollama) to process supported files with a model running on their computer after installing Ollama and downloading a compatible model. Learn more at https://zushapp.com/ollama-setup.',
+      'Cloud processing requires an internet connection. PRO users can enable Offline AI mode - private local models via Ollama after installing Ollama and downloading a compatible model. Learn more at https://zushapp.com/ollama-setup.',
   },
   {
     question: 'Do you support audio or video files?',

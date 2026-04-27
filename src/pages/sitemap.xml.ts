@@ -82,7 +82,8 @@ export async function GET() {
       route !== '/thank-you' &&
       route !== '/recover' &&
       route !== '/activate' &&
-      route !== '/manage-subscription',
+      route !== '/manage-subscription' &&
+      route !== '/manage-subscription/confirm',
   );
   const staticEntries = staticRoutes.map((route) => {
     const loc = `${SITE_ORIGIN}${route === '/' ? '/' : route}`;

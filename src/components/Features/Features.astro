@@ -223,31 +223,19 @@ const currentYear = new Date().getFullYear();
 
       <BentoCard
         title='Custom AI Prompts'
-        description='Write your own rename and tagging instructions to guide AI output. Tune file names and metadata to match your style and workflow.'
+        description='Set rename, tagging, and metadata rules so AI output follows your style and workflow.'
         icon={MessageSquareText}
-        class={styles['BentoCard--wide']}
         delay={0.7}
       >
         <div class={styles.UI_Prompts}>
           <div class={styles.UI_Prompts__Panel}>
             <div class={styles.UI_Prompts__Header}>
-              <span class={styles.UI_Prompts__Label}>Rename rules</span>
+              <span class={styles.UI_Prompts__Label}>Prompt rules</span>
               <span class={styles.UI_Prompts__Badge}>Custom</span>
             </div>
             <div class={styles.UI_Prompts__Editor}>
               <span class={styles.UI_Prompts__Text}>
-                Keep names short, no more than 5 words, with the main subject first
-              </span>
-            </div>
-          </div>
-          <div class={styles.UI_Prompts__Panel}>
-            <div class={styles.UI_Prompts__Header}>
-              <span class={styles.UI_Prompts__Label}>Tagging rules</span>
-              <span class={styles.UI_Prompts__Badge_default}>Default</span>
-            </div>
-            <div class={styles.UI_Prompts__Editor}>
-              <span class={styles.UI_Prompts__Placeholder}>
-                Add your own tagging instructions...
+                Keep names short, put the subject first, and add matching Finder tags.
               </span>
             </div>
           </div>
@@ -256,7 +244,7 @@ const currentYear = new Date().getFullYear();
 
       <BentoCard
         title='Bring Your Own Key'
-        description='Connect your own API key from Gemini, Groq, OpenAI, or Claude for unlimited cloud processing. Keys are stored locally in macOS Keychain.'
+        description='Connect your own API key from Gemini, Groq, OpenAI, or Claude for unlimited cloud renames. Keys are stored locally in secure platform storage.'
         icon={KeyRound}
         badge='PRO 🌟'
         delay={0.8}
@@ -278,27 +266,27 @@ const currentYear = new Date().getFullYear();
       </BentoCard>
 
       <BentoCard
-        title='Local Ollama'
-        description='Run supported analysis on your Mac with a local Ollama model. In Local mode, file analysis content is not sent to Zush cloud or AI providers.'
+        title='Offline AI mode'
+        description='Private local models via Ollama. Process supported files offline without sending analysis content to Zush cloud or AI providers.'
         icon={Bot}
         badge='PRO 🌟'
         delay={0.9}
       >
         <div class={styles.UI_Ollama}>
           <div class={styles.UI_Ollama__Terminal}>
-            <div class={styles.UI_Ollama__Dots}>
-              <span></span>
-              <span></span>
-              <span></span>
+            <div class={styles.UI_Ollama__Header}>
+              <span>Terminal</span>
             </div>
-            <div class={styles.UI_Ollama__Line}>ollama run qwen2.5vl:3b</div>
-            <div class={styles.UI_Ollama__Status}>
-              <Check size={14} />
-              <span>Local model ready</span>
+            <div class={styles.UI_Ollama__Body}>
+              <div class={styles.UI_Ollama__Line}>
+                <span class={styles.UI_Ollama__Prompt}>$</span>
+                <span>ollama run qwen2.5vl:3b</span>
+              </div>
+              <div class={styles.UI_Ollama__Status}>
+                <Check size={14} />
+                <span>Local model ready</span>
+              </div>
             </div>
-          </div>
-          <div class={styles.UI_Ollama__Privacy}>
-            <span>Files stay on this Mac</span>
           </div>
         </div>
       </BentoCard>
