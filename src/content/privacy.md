@@ -1,6 +1,6 @@
 This Privacy Policy explains how Zush ("Kirill Isachenko," "we," "us," or "our") collects, uses, and protects your information when you use our macOS application and related services.
 
-Last updated: April 26, 2026
+Last updated: April 27, 2026
 
 ### 1. Information We Collect
 
@@ -28,6 +28,8 @@ We collect information necessary to manage your license and enforce usage limits
 **1.5 Payment Information**
 We do not store or process your credit card details. All payments are handled securely by our payment processors: [Paddle.com](https://www.paddle.com) (for direct purchases) and [Apple](https://www.apple.com/legal/privacy/) (for App Store purchases). Please refer to their respective privacy policies for details.
 
+For App Store purchases, Zush sends StoreKit product and transaction identifiers to Zush backend to verify PRO entitlement, restore purchases, prevent abuse, and maintain account status.
+
 ### 2. How We Use Your Information
 
 We use the collected information to:
@@ -43,7 +45,7 @@ We use the collected information to:
 Zush sends file analysis payloads to third-party AI services for analysis:
 
 - **Default flow:** File analysis requests are sent via Zush servers to Groq (primary) and Google Gemini (fallback).
-- **Bring Your Own Key (BYOK):** PRO users may configure their own API keys for Groq, Google Gemini, OpenAI, or Anthropic Claude. BYOK keys are stored locally in secure platform storage. In BYOK mode, requests are still relayed through Zush backend infrastructure and then sent to the user's chosen provider using that API key for that request.
+- **Bring Your Own Key (BYOK):** PRO users may configure their own API keys for Groq, Google Gemini, OpenAI, or Anthropic Claude. BYOK keys are stored locally in macOS Keychain. In BYOK mode, the key is sent to Zush backend and the selected AI provider only to validate the key and process AI requests. Zush backend does not permanently store BYOK API keys.
 - **Offline AI mode:** PRO users may process supported files with private local models via Ollama. In Offline AI mode, file analysis content is processed on the user's device and is not sent to Zush servers or third-party AI providers for analysis. Zush may still contact backend services for licensing, updates, support, or non-content operational checks.
 
 **What is sent in Cloud and BYOK modes:** Depending on file type, this may include a compressed preview image, extracted document text, or a compact content summary, along with MIME type, file extension, language preference, regenerate and BYOK settings, an anonymous device identifier, and any custom rename or tagging prompt text you submit. Some requests may also include basic file metadata such as the file name needed to generate better rename suggestions.
@@ -61,12 +63,13 @@ We share data with the following service providers:
 - **Cloud Infrastructure:** Supabase (backend database, licensing, and API relay).
 - **Payment Processors:** [Paddle.com](https://www.paddle.com) (direct purchases), [Apple](https://www.apple.com/legal/privacy/) (App Store purchases).
 - **Error Tracking:** Sentry (anonymous crash and error reports).
+- **Usage Analytics:** TelemetryDeck (privacy-focused product analytics).
 
 Each third-party provider processes data according to their own privacy policies. We encourage you to review their policies.
 
 ### 5. Data Security
 
-We implement reasonable security measures to protect your information from unauthorized access, disclosure, or destruction. BYOK API keys are stored locally in secure platform storage and are not stored in the Zush backend. When BYOK is used, the key is transmitted only as needed to complete the selected provider request. However, no method of transmission over the Internet or electronic storage is 100% secure.
+We implement reasonable security measures to protect your information from unauthorized access, disclosure, or destruction. BYOK API keys are stored locally in macOS Keychain and are not permanently stored in the Zush backend. When BYOK is used, the key is transmitted only as needed to validate the key and complete the selected provider request. However, no method of transmission over the Internet or electronic storage is 100% secure.
 
 ### 6. Your Rights
 
