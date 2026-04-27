@@ -16,7 +16,7 @@ const faqItems = [
   },
   {
     question: 'Does AI image renaming work offline?',
-    answer: 'Cloud and BYOK image analysis require an internet connection. On supported Mac builds, PRO users can enable Local (Ollama) and process supported images with a vision model running on their computer.',
+    answer: 'Cloud and BYOK image analysis require an internet connection. PRO users can enable Offline AI mode - private local models via Ollama and process supported images with a compatible vision model.',
   },
   {
     question: 'Can I set up automatic renaming for new images?',
@@ -38,7 +38,7 @@ const jsonLd = {
         'Automatic folder monitoring for incoming images',
         'Support for HEIC, RAW, JPG, PNG, and WebP',
         'Bring Your Own API Key (BYOK)',
-        'Local Ollama processing on supported Mac builds',
+        'Offline AI mode - private local models via Ollama',
       ],
     }),
     {

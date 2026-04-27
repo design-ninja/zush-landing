@@ -56,7 +56,7 @@ const OllamaSetup = () => {
             Ollama Setup Guide
           </Heading>
           <Text as='p' size='lg' color='subtle' align='center' className={styles.OllamaSetup__Subtitle}>
-            Run Zush analysis locally on your Mac with Ollama. Your files are processed by a model on your computer instead of a cloud AI provider.
+            Use Offline AI mode with private local models via Ollama. Your files are processed by a model on your device instead of a cloud AI provider.
           </Text>
           <div className={styles.OllamaSetup__Actions}>
             <Button as='a' href='https://ollama.com/download' target='_blank' rel='noopener noreferrer' size='md'>
@@ -72,10 +72,10 @@ const OllamaSetup = () => {
           <section className={styles.OllamaSetup__Section}>
             <div className={styles.OllamaSetup__SectionHeader}>
               <Shield size={24} />
-              <Heading as='h2'>What Local Mode Means</Heading>
+              <Heading as='h2'>What Offline AI Mode Means</Heading>
             </div>
             <Text as='p' color='subtle'>
-              When Local (Ollama) is enabled in Zush, supported file analysis runs through your local Ollama server. Zush does not send analysis content to Zush cloud or third-party AI providers in this mode. You still control which model is installed, where Ollama stores it, and when Ollama is running.
+              When Offline AI mode is enabled in Zush, supported file analysis runs through your local Ollama server. Zush does not send analysis content to Zush cloud or third-party AI providers in this mode. You still control which model is installed, where Ollama stores it, and when Ollama is running.
             </Text>
           </section>
 
@@ -124,9 +124,9 @@ const OllamaSetup = () => {
               <div className={styles.OllamaSetup__Step}>
                 <div className={styles.OllamaSetup__StepNumber}>4</div>
                 <div className={styles.OllamaSetup__StepContent}>
-                  <Heading as='h3'>Enable Local mode in Zush</Heading>
+                  <Heading as='h3'>Enable Offline AI mode in Zush</Heading>
                   <Text as='p' color='subtle'>
-                    Open Zush, go to AI Setup, turn on Local (Ollama), refresh the model list, select your model, and run Test.
+                    Open Zush, go to AI Setup, turn on Offline AI mode, refresh the model list, select your model, and run Test.
                   </Text>
                 </div>
               </div>
@@ -203,7 +203,7 @@ const OllamaSetup = () => {
           <div className={styles.OllamaSetup__Note}>
             <HelpCircle size={20} />
             <Text as='p' size='sm' color='subtle'>
-              Local mode is separate from Cloud and BYOK. Cloud uses Zush credits by default, BYOK uses your provider key, and Local uses Ollama on your Mac.
+              Offline AI mode is separate from Cloud and BYOK. Cloud uses Zush credits by default, BYOK uses your provider key for cloud renames, and Offline AI mode uses Ollama on your device.
             </Text>
           </div>
 

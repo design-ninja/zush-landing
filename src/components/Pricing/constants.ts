@@ -70,17 +70,17 @@ export const PRO_PLAN: Plan = {
   features: [
     {
       title: '10,000 Credits',
-      desc: 'Process up to 10,000 files, then use BYOK or Local Ollama',
+      desc: 'Process up to 10,000 files, then use BYOK or Offline AI mode',
       icon: Zap,
     },
     {
       title: 'BYOK - Bring Your Own Key',
-      desc: 'Use your provider key for unlimited cloud processing',
+      desc: 'Use your provider key for unlimited cloud renames',
       icon: Key,
     },
     {
-      title: 'Local Ollama on Mac',
-      desc: 'Process supported files with a local model on your Mac',
+      title: 'Offline AI mode - private local models via Ollama',
+      desc: 'Process supported files offline without cloud processing',
       icon: Bot,
     },
     {

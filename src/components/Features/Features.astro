@@ -256,7 +256,7 @@ const currentYear = new Date().getFullYear();
 
       <BentoCard
         title='Bring Your Own Key'
-        description='Connect your own API key from Gemini, Groq, OpenAI, or Claude for unlimited cloud processing. Keys are stored locally in macOS Keychain.'
+        description='Connect your own API key from Gemini, Groq, OpenAI, or Claude for unlimited cloud renames. Keys are stored locally in secure platform storage.'
         icon={KeyRound}
         badge='PRO 🌟'
         delay={0.8}
@@ -278,8 +278,8 @@ const currentYear = new Date().getFullYear();
       </BentoCard>
 
       <BentoCard
-        title='Local Ollama'
-        description='Run supported analysis on your Mac with a local Ollama model. In Local mode, file analysis content is not sent to Zush cloud or AI providers.'
+        title='Offline AI mode'
+        description='Private local models via Ollama. Process supported files offline without sending analysis content to Zush cloud or AI providers.'
         icon={Bot}
         badge='PRO 🌟'
         delay={0.9}
@@ -298,7 +298,7 @@ const currentYear = new Date().getFullYear();
             </div>
           </div>
           <div class={styles.UI_Ollama__Privacy}>
-            <span>Files stay on this Mac</span>
+            <span>Files stay on your device</span>
           </div>
         </div>
       </BentoCard>

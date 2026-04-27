@@ -47,11 +47,11 @@ const AIFileRenamer = () => (
       },
       {
         question: 'Do I need an internet connection for AI renaming?',
-        answer: 'Cloud and BYOK processing require an internet connection. On supported Mac builds, PRO users can enable Local (Ollama) to process supported files with a model running on their computer.',
+        answer: 'Cloud and BYOK processing require an internet connection. PRO users can enable Offline AI mode - private local models via Ollama to process supported files after installing Ollama and downloading a compatible model.',
       },
       {
         question: 'What does "Bring Your Own Key" (BYOK) mean?',
-        answer: 'BYOK lets you connect your own Gemini, Groq, OpenAI, or Claude API key for unlimited cloud processing. In current Mac builds, your key is stored locally in macOS Keychain and sent only when Zush calls your selected provider.',
+        answer: 'BYOK lets you connect your own Gemini, Groq, OpenAI, or Claude API key for unlimited cloud renames. Your key is stored locally in secure platform storage and sent only when Zush calls your selected provider.',
       },
       {
         question: 'Can I undo a rename if I don\'t like the result?',
@@ -87,7 +87,7 @@ const AIFileRenamer = () => (
             'Smart tags and metadata',
             'PDF, document, and image analysis',
             'Bring Your Own API Key (BYOK)',
-            'Local Ollama processing on supported Mac builds',
+            'Offline AI mode - private local models via Ollama',
           ],
         }),
         {
@@ -106,7 +106,7 @@ const AIFileRenamer = () => (
               name: 'Do I need an internet connection for AI renaming?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'Cloud and BYOK processing require an internet connection. On supported Mac builds, PRO users can enable Local (Ollama) to process supported files with a model running on their computer.',
+                text: 'Cloud and BYOK processing require an internet connection. PRO users can enable Offline AI mode - private local models via Ollama to process supported files after installing Ollama and downloading a compatible model.',
               },
             },
             {
@@ -114,7 +114,7 @@ const AIFileRenamer = () => (
               name: 'What does "Bring Your Own Key" (BYOK) mean?',
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: 'BYOK lets you connect your own Gemini, Groq, OpenAI, or Claude API key for unlimited cloud processing. In current Mac builds, your key is stored locally in macOS Keychain and sent only when Zush calls your selected provider.',
+                text: 'BYOK lets you connect your own Gemini, Groq, OpenAI, or Claude API key for unlimited cloud renames. Your key is stored locally in secure platform storage and sent only when Zush calls your selected provider.',
               },
             },
             {

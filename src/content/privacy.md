@@ -10,7 +10,7 @@ To provide AI-powered organizing and renaming features, Zush processes the files
 - **Visual files** such as images, RAW previews, SVGs, and some PDFs may be converted into a compressed preview image before analysis.
 - **Supported documents** such as text files, emails, spreadsheets, presentations, and some PDFs may be analyzed using extracted text or a compact content summary generated on your device before the request is sent.
 
-Your original full-resolution files do not leave your device as part of normal cloud operation. If you enable Local (Ollama) mode on Mac, supported file analysis runs through your local Ollama installation instead of Zush cloud or third-party AI providers.
+Your original full-resolution files do not leave your device as part of normal cloud operation. If you enable Offline AI mode, supported file analysis runs through private local models via Ollama instead of Zush cloud or third-party AI providers.
 
 **1.2 Prompt and Instruction Data**
 If you use the AI prompt editor or other prompt customization features, the custom rename prompt text and custom tagging prompt text you enter are sent with the analysis request so the AI provider can follow your instructions.
@@ -43,8 +43,8 @@ We use the collected information to:
 Zush sends file analysis payloads to third-party AI services for analysis:
 
 - **Default flow:** File analysis requests are sent via Zush servers to Groq (primary) and Google Gemini (fallback).
-- **Bring Your Own Key (BYOK):** PRO users may configure their own API keys for Groq, Google Gemini, OpenAI, or Anthropic Claude. BYOK keys are stored locally in macOS Keychain in current Mac builds. In BYOK mode, requests are still relayed through Zush backend infrastructure and then sent to the user's chosen provider using that API key for that request.
-- **Local (Ollama):** PRO users on supported Mac builds may process supported files with a local Ollama model. In Local mode, file analysis content is processed on the user's Mac and is not sent to Zush servers or third-party AI providers for analysis. Zush may still contact backend services for licensing, updates, support, or non-content operational checks.
+- **Bring Your Own Key (BYOK):** PRO users may configure their own API keys for Groq, Google Gemini, OpenAI, or Anthropic Claude. BYOK keys are stored locally in secure platform storage. In BYOK mode, requests are still relayed through Zush backend infrastructure and then sent to the user's chosen provider using that API key for that request.
+- **Offline AI mode:** PRO users may process supported files with private local models via Ollama. In Offline AI mode, file analysis content is processed on the user's device and is not sent to Zush servers or third-party AI providers for analysis. Zush may still contact backend services for licensing, updates, support, or non-content operational checks.
 
 **What is sent in Cloud and BYOK modes:** Depending on file type, this may include a compressed preview image, extracted document text, or a compact content summary, along with MIME type, file extension, language preference, regenerate and BYOK settings, an anonymous device identifier, and any custom rename or tagging prompt text you submit. Some requests may also include basic file metadata such as the file name needed to generate better rename suggestions.
 
@@ -57,7 +57,7 @@ Zush sends file analysis payloads to third-party AI services for analysis:
 We share data with the following service providers:
 
 - **AI Providers:** Groq (primary), Google Gemini (fallback). With BYOK: optionally OpenAI or Anthropic Claude.
-- **Local AI Runtime:** Ollama, if you install and enable Local mode on Mac. Ollama runs on your device and is managed by your local Ollama installation.
+- **Local AI Runtime:** Ollama, if you install and enable Offline AI mode. Ollama runs on your device and is managed by your local Ollama installation.
 - **Cloud Infrastructure:** Supabase (backend database, licensing, and API relay).
 - **Payment Processors:** [Paddle.com](https://www.paddle.com) (direct purchases), [Apple](https://www.apple.com/legal/privacy/) (App Store purchases).
 - **Error Tracking:** Sentry (anonymous crash and error reports).
@@ -66,7 +66,7 @@ Each third-party provider processes data according to their own privacy policies
 
 ### 5. Data Security
 
-We implement reasonable security measures to protect your information from unauthorized access, disclosure, or destruction. In current Mac builds, BYOK API keys are stored locally in macOS Keychain and are not stored in the Zush backend. When BYOK is used, the key is transmitted only as needed to complete the selected provider request. However, no method of transmission over the Internet or electronic storage is 100% secure.
+We implement reasonable security measures to protect your information from unauthorized access, disclosure, or destruction. BYOK API keys are stored locally in secure platform storage and are not stored in the Zush backend. When BYOK is used, the key is transmitted only as needed to complete the selected provider request. However, no method of transmission over the Internet or electronic storage is 100% secure.
 
 ### 6. Your Rights
 
