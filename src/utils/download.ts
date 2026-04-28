@@ -51,6 +51,7 @@ export type DownloadSource =
   | 'footer'
   | 'footer-appstore'
   | 'footer-microsoft-store'
+  | 'thank-you'
   | 'mobile-modal'
   | 'download-page-mac'
   | 'download-page-windows';

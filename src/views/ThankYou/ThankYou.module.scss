@@ -2,6 +2,24 @@
 @use 'src/styles/mixins' as *;
 
 .ThankYou {
+    &__LoadingIcon {
+        color: var(--primary);
+
+        svg {
+            animation: thankYouSpin 0.9s linear infinite;
+            filter: drop-shadow(0 4px 12px rgba(99, 102, 241, 0.3));
+            transform-origin: center;
+        }
+    }
+
+    &__SuccessIcon {
+        color: #22c55e;
+
+        svg {
+            filter: drop-shadow(0 4px 12px rgba(34, 197, 94, 0.3));
+        }
+    }
+
     &__Title {
         @include page-title;
     }
@@ -46,5 +64,11 @@
         align-items: center;
         justify-content: center;
         gap: 28px;
+    }
+}
+
+@keyframes thankYouSpin {
+    to {
+        transform: rotate(360deg);
     }
 }

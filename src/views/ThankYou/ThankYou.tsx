@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { CheckCircle, Download, ExternalLink, LoaderCircle, Mail } from "lucide-react";
+import { CheckCircle, ExternalLink, LoaderCircle, Mail } from "lucide-react";
 import Button from "@/components/Button";
 import BackToHome from "@/components/BackToHome";
+import DownloadButton from "@/components/DownloadButton";
 import PageLayout from "@/components/PageLayout";
 import PageIcon from "@/components/PageIcon";
 import Heading from "@/components/Heading";
 import Text from "@/components/Text";
 import { SUPABASE_URL } from "@/utils/supabase";
-import { DOWNLOAD_URL } from "@/constants";
 import styles from "./ThankYou.module.scss";
 
 type ActivationState =
@@ -121,18 +121,22 @@ const ThankYou = () => {
 
   return (
     <PageLayout maxWidth="lg">
-      <PageIcon>
+      <PageIcon
+        className={isChecking
+          ? styles.ThankYou__LoadingIcon
+          : styles.ThankYou__SuccessIcon}
+      >
         {isChecking ? <LoaderCircle size={64} /> : <CheckCircle size={64} />}
       </PageIcon>
 
       <Heading as="h1" className={styles.ThankYou__Title}>
-        Thank you for your purchase!
+        {isChecking ? "Finalizing your purchase..." : "Thank you for your purchase!"}
       </Heading>
 
       {isChecking ? (
         <>
           <Text as="p" className={styles.ThankYou__Subtitle} color="subtle">
-            We're finishing your activation. Zush will open automatically.
+            We're confirming your payment. This usually takes a few seconds.
           </Text>
         </>
       ) : activationState === "activated" ? (
@@ -165,41 +169,45 @@ const ThankYou = () => {
       ) : (
         <>
           <Text as="p" className={styles.ThankYou__Subtitle} color="subtle">
-            Your PRO purchase is ready. Install Zush, then activate PRO from
-            this page or from the email we sent you.
+            Your PRO purchase is ready. We sent the activation link to the
+            email address you used at checkout.
           </Text>
           <div className={styles.ThankYou__EmailNotice}>
             <Mail size={24} />
             <Text as="p">
-              Already have Zush installed? Click <strong>"Activate PRO"</strong>{" "}
-              below. Otherwise download Zush first, then use the activation
-              link from this page or your email.
+              Open that email and click <strong>"Activate PRO"</strong> to
+              unlock PRO in Zush. If you do not see the email, please check
+              your spam folder.
             </Text>
           </div>
         </>
       )}
 
-      <div className={styles.ThankYou__Actions}>
-        {appUrl && (
-          <Button as="a" href={appUrl}>
-            <ExternalLink size={18} />
-            Open Zush
-          </Button>
-        )}
-        {activationState === "email" && (
-          <Button as="a" href={DOWNLOAD_URL} variant="black">
-            <Download size={18} />
-            Download Zush
-          </Button>
-        )}
-        {!appUrl && webActivationUrl && (
-          <Button as="a" href={webActivationUrl}>
-            <ExternalLink size={18} />
-            Activate PRO
-          </Button>
-        )}
-        <BackToHome />
-      </div>
+      {!isChecking && (
+        <div className={styles.ThankYou__Actions}>
+          {appUrl && (
+            <Button as="a" href={appUrl}>
+              <ExternalLink size={18} />
+              Open Zush
+            </Button>
+          )}
+          {activationState === "email" && (
+            <DownloadButton
+              source="thank-you"
+              variant="black"
+              label="Download Zush"
+              showDropdown={false}
+            />
+          )}
+          {!appUrl && webActivationUrl && (
+            <Button as="a" href={webActivationUrl}>
+              <ExternalLink size={18} />
+              Activate PRO
+            </Button>
+          )}
+          <BackToHome />
+        </div>
+      )}
     </PageLayout>
   );
 };
