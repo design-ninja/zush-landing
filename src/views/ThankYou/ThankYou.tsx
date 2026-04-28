@@ -24,14 +24,12 @@ interface CheckoutSessionStatus {
   completed?: boolean;
   device_activated?: boolean;
   app_url?: string;
-  web_activation_url?: string;
 }
 
 const ThankYou = () => {
   const [activationState, setActivationState] =
     useState<ActivationState>("checking");
   const [appUrl, setAppUrl] = useState<string | null>(null);
-  const [webActivationUrl, setWebActivationUrl] = useState<string | null>(null);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -73,13 +71,11 @@ const ThankYou = () => {
               result.device_activated ? "activated" : "activation_ready",
             );
             setAppUrl(result.app_url);
-            setWebActivationUrl(result.web_activation_url || null);
             return;
           }
 
           if (response.ok && result.completed) {
             setActivationState(result.status === "expired" ? "expired" : "email");
-            setWebActivationUrl(result.web_activation_url || null);
             return;
           }
 
@@ -198,12 +194,6 @@ const ThankYou = () => {
               label="Download Zush"
               showDropdown={false}
             />
-          )}
-          {!appUrl && webActivationUrl && (
-            <Button as="a" href={webActivationUrl}>
-              <ExternalLink size={18} />
-              Activate PRO
-            </Button>
           )}
           <BackToHome />
         </div>
