@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { CheckCircle, ExternalLink, LoaderCircle, Mail } from "lucide-react";
+import { CheckCircle, Download, ExternalLink, LoaderCircle, Mail } from "lucide-react";
 import Button from "@/components/Button";
 import BackToHome from "@/components/BackToHome";
 import PageLayout from "@/components/PageLayout";
@@ -7,6 +7,7 @@ import PageIcon from "@/components/PageIcon";
 import Heading from "@/components/Heading";
 import Text from "@/components/Text";
 import { SUPABASE_URL } from "@/utils/supabase";
+import { DOWNLOAD_URL } from "@/constants";
 import styles from "./ThankYou.module.scss";
 
 type ActivationState =
@@ -72,6 +73,12 @@ const ThankYou = () => {
               result.device_activated ? "activated" : "activation_ready",
             );
             setAppUrl(result.app_url);
+            setWebActivationUrl(result.web_activation_url || null);
+            return;
+          }
+
+          if (response.ok && result.completed) {
+            setActivationState(result.status === "expired" ? "expired" : "email");
             setWebActivationUrl(result.web_activation_url || null);
             return;
           }
@@ -158,13 +165,15 @@ const ThankYou = () => {
       ) : (
         <>
           <Text as="p" className={styles.ThankYou__Subtitle} color="subtle">
-            Your PRO access is permanent. We've sent an activation email to you.
+            Your PRO purchase is ready. Install Zush, then activate PRO from
+            this page or from the email we sent you.
           </Text>
           <div className={styles.ThankYou__EmailNotice}>
             <Mail size={24} />
             <Text as="p">
-              Open the email and click the <strong>"Activate PRO"</strong>{" "}
-              button to unlock PRO features in Zush.
+              Already have Zush installed? Click <strong>"Activate PRO"</strong>{" "}
+              below. Otherwise download Zush first, then use the activation
+              link from this page or your email.
             </Text>
           </div>
         </>
@@ -175,6 +184,12 @@ const ThankYou = () => {
           <Button as="a" href={appUrl}>
             <ExternalLink size={18} />
             Open Zush
+          </Button>
+        )}
+        {activationState === "email" && (
+          <Button as="a" href={DOWNLOAD_URL} variant="black">
+            <Download size={18} />
+            Download Zush
           </Button>
         )}
         {!appUrl && webActivationUrl && (
