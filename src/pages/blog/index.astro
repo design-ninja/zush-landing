@@ -285,88 +285,106 @@ const searchablePosts = allPosts.map((post) => ({
     </div>
   </section>
 
-  <script is:inline>
+  <script is:inline data-astro-rerun>
     (() => {
-      const root = document.querySelector('[data-blog-search-root]');
-      if (!root) return;
+      const initBlogSearch = () => {
+        const root = document.querySelector('[data-blog-search-root]');
+        if (!(root instanceof HTMLElement) || root.dataset.blogSearchBound === 'true') return;
 
-      const input = root.querySelector('[data-blog-search-input]');
-      const status = root.querySelector('[data-blog-search-status]');
-      const resultsSection = document.querySelector('[data-blog-search-results]');
-      const resultItems = Array.from(document.querySelectorAll('[data-blog-search-item]'));
-      const defaultSections = Array.from(document.querySelectorAll('[data-blog-search-default]'));
-      const count = document.querySelector('[data-blog-search-count]');
-      const summary = document.querySelector('[data-blog-search-summary]');
-      const empty = document.querySelector('[data-blog-search-empty]');
-      const clearButton = document.querySelector('[data-blog-search-clear]');
+        const input = root.querySelector('[data-blog-search-input]');
+        const status = root.querySelector('[data-blog-search-status]');
+        const resultsSection = document.querySelector('[data-blog-search-results]');
+        const resultItems = Array.from(document.querySelectorAll('[data-blog-search-item]'));
+        const defaultSections = Array.from(document.querySelectorAll('[data-blog-search-default]'));
+        const count = document.querySelector('[data-blog-search-count]');
+        const summary = document.querySelector('[data-blog-search-summary]');
+        const empty = document.querySelector('[data-blog-search-empty]');
+        const clearButton = document.querySelector('[data-blog-search-clear]');
 
-      if (
-        !(input instanceof HTMLInputElement) ||
-        !(status instanceof HTMLElement) ||
-        !(resultsSection instanceof HTMLElement) ||
-        !(count instanceof HTMLElement) ||
-        !(summary instanceof HTMLElement) ||
-        !(empty instanceof HTMLElement) ||
-        !(clearButton instanceof HTMLButtonElement)
-      ) {
-        return;
-      }
-
-      const params = new URLSearchParams(window.location.search);
-
-      const applySearch = () => {
-        const query = input.value.trim().toLowerCase();
-        let matches = 0;
-
-        resultItems.forEach((item) => {
-          const searchable = item.getAttribute('data-search') || '';
-          const visible = query.length > 0 && searchable.includes(query);
-          item.hidden = !visible;
-
-          if (visible) {
-            matches += 1;
-          }
-        });
-
-        const searching = query.length > 0;
-        resultsSection.hidden = !searching;
-        clearButton.hidden = !searching;
-        empty.hidden = !searching || matches > 0;
-
-        defaultSections.forEach((section) => {
-          if (section instanceof HTMLElement) {
-            section.hidden = searching;
-          }
-        });
-
-        if (searching) {
-          count.textContent = String(matches);
-          summary.textContent =
-            matches === 1
-              ? `1 post matching "${input.value.trim()}".`
-              : `${matches} posts matching "${input.value.trim()}".`;
-          status.textContent = 'Filtering all blog posts in real time';
-          params.set('q', input.value.trim());
-        } else {
-          count.textContent = '0';
-          summary.textContent = 'Matching posts will appear here';
-          status.textContent = 'Search across all blog posts';
-          params.delete('q');
+        if (
+          !(input instanceof HTMLInputElement) ||
+          !(status instanceof HTMLElement) ||
+          !(resultsSection instanceof HTMLElement) ||
+          !(count instanceof HTMLElement) ||
+          !(summary instanceof HTMLElement) ||
+          !(empty instanceof HTMLElement) ||
+          !(clearButton instanceof HTMLButtonElement)
+        ) {
+          return;
         }
 
-        const nextQuery = params.toString();
-        const nextUrl = nextQuery ? `${window.location.pathname}?${nextQuery}` : window.location.pathname;
-        window.history.replaceState({}, '', nextUrl);
+        root.dataset.blogSearchBound = 'true';
+
+        const applySearch = () => {
+          const params = new URLSearchParams(window.location.search);
+          const query = input.value.trim().toLowerCase();
+          let matches = 0;
+
+          resultItems.forEach((item) => {
+            const searchable = item.getAttribute('data-search') || '';
+            const visible = query.length > 0 && searchable.includes(query);
+            item.hidden = !visible;
+
+            if (visible) {
+              matches += 1;
+            }
+          });
+
+          const searching = query.length > 0;
+          resultsSection.hidden = !searching;
+          clearButton.hidden = !searching;
+          empty.hidden = !searching || matches > 0;
+
+          defaultSections.forEach((section) => {
+            if (section instanceof HTMLElement) {
+              section.hidden = searching;
+            }
+          });
+
+          if (searching) {
+            count.textContent = String(matches);
+            summary.textContent =
+              matches === 1
+                ? `1 post matching "${input.value.trim()}".`
+                : `${matches} posts matching "${input.value.trim()}".`;
+            status.textContent = 'Filtering all blog posts in real time';
+            params.set('q', input.value.trim());
+          } else {
+            count.textContent = '0';
+            summary.textContent = 'Matching posts will appear here';
+            status.textContent = 'Search across all blog posts';
+            params.delete('q');
+          }
+
+          const nextQuery = params.toString();
+          const nextUrl = nextQuery
+            ? `${window.location.pathname}?${nextQuery}`
+            : window.location.pathname;
+          window.history.replaceState({}, '', nextUrl);
+        };
+
+        input.value = new URLSearchParams(window.location.search).get('q') || '';
+        input.addEventListener('input', applySearch);
+        clearButton.addEventListener('click', () => {
+          input.value = '';
+          input.focus();
+          applySearch();
+        });
+        applySearch();
       };
 
-      input.value = params.get('q') || '';
-      input.addEventListener('input', applySearch);
-      clearButton.addEventListener('click', () => {
-        input.value = '';
-        input.focus();
-        applySearch();
-      });
-      applySearch();
+      window.__zushInitBlogSearch = initBlogSearch;
+
+      if (!window.__zushBlogSearchPageLoadBound) {
+        window.__zushBlogSearchPageLoadBound = true;
+        document.addEventListener('astro:page-load', () => {
+          if (typeof window.__zushInitBlogSearch === 'function') {
+            window.__zushInitBlogSearch();
+          }
+        });
+      }
+
+      initBlogSearch();
     })();
   </script>
 </BaseLayout>
