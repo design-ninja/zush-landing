@@ -1,0 +1,161 @@
+---
+title: "How to Rename Files with Ollama on Mac (Offline AI Guide)"
+description: "Set up Ollama on Mac and use Zush Offline AI mode to rename screenshots, PDFs, photos, and documents with private local AI models."
+date: "2026-04-28"
+slug: "rename-files-with-ollama-mac"
+platform: "mac"
+topic: "local-ai"
+tags:
+  - "AI File Renaming"
+  - "Ollama"
+tldr: "To rename files with Ollama on Mac, install Ollama, pull a vision-capable model, confirm the local service is running, enable Offline AI mode in Zush, and test with a small batch before using it on important folders."
+reviewed: "2026-04-28"
+---
+import BlogInlineCTA from '@/components/blog/BlogInlineCTA.astro';
+
+Mac users finally have a practical way to rename files with AI without routing supported analysis content through a cloud provider. Zush Offline AI mode connects to Ollama, which runs a local model on your Mac and returns filename suggestions for screenshots, images, PDFs, and supported documents.
+
+This guide is for the Mac release. Windows support is coming soon, but this article does not assume the Windows setup flow is public yet. For the current app page, see [Zush for Mac](/mac). For the broader product surface, see [AI File Renamer](/ai-file-renamer). For the short setup reference, open the [Ollama setup guide](/ollama-setup).
+
+<BlogInlineCTA platform="mac" />
+
+## What you need before starting
+
+You need three pieces:
+
+- Zush for Mac with Offline AI mode available
+- [Ollama for macOS](https://ollama.com/download)
+- a vision-capable Ollama model
+
+Ollama's download page lists macOS 14 Sonoma or later as the macOS requirement. Zush for Mac is built for modern macOS workflows with Finder, Spotlight-friendly metadata, batch rename, folder monitoring, and one-click rename history.
+
+The important part is the model. Text-only models are not enough for file renaming because many files are visual: screenshots, photos, scans, and document previews. Start with a small vision model before trying anything large.
+
+## Step 1: install Ollama
+
+Download Ollama from the official [Ollama download page](https://ollama.com/download), install it, and open it once. Opening the app starts the local runtime that Zush talks to.
+
+If you prefer Terminal, Ollama also documents command-line installation on its download page. For most Mac users, the regular macOS app install is the simpler path.
+
+## Step 2: pull a vision model
+
+Open Terminal and download one model. For most users, start with:
+
+```bash
+ollama pull qwen2.5vl:3b
+```
+
+The [qwen2.5vl](https://ollama.com/library/qwen2.5vl) page lists `qwen2.5vl:3b` as a text-and-image model, which is why it is a practical first choice for screenshots and images.
+
+Other good options:
+
+```bash
+ollama pull gemma3:4b
+ollama pull granite3.2-vision:2b
+```
+
+[gemma3](https://ollama.com/library/gemma3) includes multimodal vision variants such as `gemma3:4b`. [granite3.2-vision](https://ollama.com/library/granite3.2-vision) is a compact vision-language model designed around visual document understanding.
+
+Start with one model, not five. Once the first one works, you can compare speed and naming quality.
+
+## Step 3: confirm Ollama is running
+
+In Terminal, run:
+
+```bash
+ollama list
+```
+
+You should see the model you pulled. If the list is empty, the model download did not finish or the model name was mistyped.
+
+If Zush cannot connect, make sure Ollama is open. You can also start the local service manually:
+
+```bash
+ollama serve
+```
+
+The default local host used by the setup guide is `http://127.0.0.1:11434`.
+
+## Step 4: enable Offline AI mode in Zush
+
+Open Zush, go to AI Setup, and switch to Offline AI mode. Refresh the model list, choose the model you installed, and run the connection test.
+
+Offline AI mode is separate from Zush Cloud and BYOK:
+
+| Mode | Best for | Internet required for processing |
+|---|---|---|
+| Cloud | Easiest setup and strong quality | Yes |
+| BYOK | Unlimited cloud renames with your own provider key | Yes |
+| Offline AI | Private local model processing for supported files | No, after setup |
+
+If you process a lot of files and still want cloud models, read [BYOK: Unlimited AI File Renames with Your Own API Key](/blog/byok-ai-file-renaming-unlimited). If you want the broad overview, read [Local AI File Renaming with Ollama](/blog/local-ai-file-renaming-ollama-guide).
+
+## Step 5: test with a small batch
+
+Do not test on a huge work archive first. Pick a sample folder with 10 files:
+
+- a few screenshots
+- one or two photos
+- a PDF or scan
+- a document export
+
+Run the rename preview and inspect the proposed names. Good names should be descriptive without being wordy:
+
+| Before | Good local AI name |
+|---|---|
+| `Screenshot 2026-04-28 at 11.10.04.png` | `notion-roadmap-database-sprint-plan.png` |
+| `IMG_7742.HEIC` | `workspace-desk-laptop-window-light.heic` |
+| `scan_08.pdf` | `utility-bill-april-2026.pdf` |
+| `Untitled.xlsx` | `marketing-budget-q2-forecast.xlsx` |
+
+If the names are too long, tighten your custom prompt. If they are too generic, try another model. For naming conventions, use [File Naming Conventions: Best Practices for Searchable Files](/blog/file-naming-conventions-best-practices).
+
+## Best Mac folders to start with
+
+### Screenshots
+
+The macOS screenshot folder fills with timestamp names. Local AI can turn those into names based on visible UI, charts, messages, and documents. For a deeper workflow, see [How to Rename Screenshots Automatically on Mac](/blog/rename-screenshots-automatically-mac).
+
+### Downloads
+
+Downloads is where random filenames collect. Local AI helps when files are visual or text-readable. Pair it with a weekly cleanup routine from [How to Organize Your Downloads Folder on Mac](/blog/how-to-organize-downloads-folder-mac).
+
+### Scans and PDFs
+
+PDFs often arrive as `scan_001.pdf` or `document.pdf`. A local vision model can help when the document preview contains enough visible context. For PDF-specific guidance, read [Rename PDF Files with AI on Mac](/blog/rename-pdf-files-with-ai-mac).
+
+### Photo imports
+
+For casual photo folders, local AI can replace `IMG_` names with searchable descriptions. For large professional photo archives, test carefully because local model speed can vary by hardware and image size. For more photo workflow detail, read [Best Ways to Organize Photos on Mac](/blog/best-ways-to-organize-photos-on-mac).
+
+## Troubleshooting
+
+### Zush does not see any models
+
+Run `ollama list`. If no models appear, pull a model first. Then refresh the model list in Zush AI Setup.
+
+### Connection test fails
+
+Make sure Ollama is open. If needed, run `ollama serve` and confirm the host setting in Zush points to `http://127.0.0.1:11434`.
+
+### Renaming is slow
+
+Try a smaller model, close memory-heavy apps, or switch back to Cloud for large batches where speed matters more than local processing.
+
+### Names are vague
+
+Try a stronger model, add a custom prompt, or use Cloud/BYOK for files where naming quality matters more than offline processing.
+
+## FAQ
+
+### Can I rename files with Ollama on any Mac?
+
+You need a Mac that can run the current Ollama macOS app and has enough memory and disk space for the model you choose. Smaller models are a better starting point for everyday Macs.
+
+### Does Zush send my files to the cloud in Offline AI mode?
+
+For supported Offline AI processing, analysis content is processed by the local Ollama model instead of Zush cloud or third-party AI providers. Licensing, updates, support, or non-content operational checks may still use backend services. See the [privacy policy](/privacy-policy) for details.
+
+### Should I use Ollama or BYOK?
+
+Use Ollama when local processing is the priority. Use BYOK when you want unlimited cloud renames with provider-level billing and model quality. Both are Pro-oriented workflows in Zush.

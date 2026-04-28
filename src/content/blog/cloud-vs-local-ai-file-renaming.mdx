@@ -1,0 +1,164 @@
+---
+title: "Cloud AI vs Local AI File Renaming: Privacy, Speed, and Cost"
+description: "Compare cloud AI, BYOK, and local Ollama file renaming for privacy, speed, quality, setup effort, and cost before choosing your Zush workflow."
+date: "2026-04-28"
+slug: "cloud-vs-local-ai-file-renaming"
+platform: "general"
+topic: "local-ai"
+tags:
+  - "AI File Renaming"
+  - "Ollama"
+  - "BYOK"
+tldr: "Cloud AI is usually easiest and strongest, BYOK gives unlimited cloud processing with your own provider key, and local Ollama gives private on-device processing for supported files. The right choice depends on privacy requirements, batch size, hardware, and how much setup you want."
+reviewed: "2026-04-28"
+---
+import BlogInlineCTA from '@/components/blog/BlogInlineCTA.astro';
+
+AI file renaming is no longer a single technical choice. You can use built-in cloud credits, connect your own API key, or run a local model with Ollama. All three can produce better filenames than rules alone, but they optimize for different constraints.
+
+This guide compares the three modes from a practical desktop workflow perspective: privacy, speed, cost, quality, setup effort, and when each one fits. For the local setup path, start with [Ollama Setup Guide](/ollama-setup). For the product overview, see [AI File Renamer](/ai-file-renamer). For the current Mac release, see [Zush for Mac](/mac).
+
+<BlogInlineCTA platform="general" />
+
+## The three modes
+
+| Mode | What it means | Best fit |
+|---|---|---|
+| Cloud AI | Zush uses built-in cloud processing credits | Easiest setup and strong everyday quality |
+| BYOK | You connect your own provider key for cloud AI | Unlimited cloud volume and direct provider billing |
+| Local AI with Ollama | Zush uses a model running on your device | Private processing for supported files and offline workflows |
+
+All three modes are useful. The mistake is treating them as interchangeable. A fast cloud model, an API-key workflow, and a small local vision model have different strengths.
+
+## Privacy
+
+Privacy is where local AI has the clearest argument. In Offline AI mode, supported file analysis runs through the local Ollama model on your device instead of Zush cloud or a third-party AI provider.
+
+Cloud AI and BYOK can still be appropriate for many files. They are convenient, fast, and often stronger. But if you are renaming sensitive client screenshots, contracts, scans, invoices, or internal research, local processing may be the better default.
+
+The practical privacy ladder looks like this:
+
+| Privacy preference | Recommended mode |
+|---|---|
+| Sensitive folders should stay local | Local AI with Ollama |
+| I choose the cloud provider and manage billing | BYOK |
+| I want the simplest workflow | Cloud AI |
+
+For full data handling language, read the [privacy policy](/privacy-policy).
+
+## Speed
+
+Cloud AI is usually the fastest path for large batches because remote providers run on specialized infrastructure. BYOK is also cloud-based, so speed depends on the provider you choose. Local AI speed depends on your hardware, the model size, and what else your computer is doing.
+
+Local models can feel responsive on a modern Mac with small vision models. They can also feel slow if you ask a small laptop to process a huge folder while other apps are open.
+
+Use this rule:
+
+- Use Cloud when speed matters and the files are not sensitive.
+- Use BYOK when you process many files and want cloud throughput without Zush credit limits.
+- Use Ollama when local processing matters more than maximum speed.
+
+For ongoing folder workflows, see [Folder Monitoring for Automatic File Renaming](/blog/folder-monitoring-automatic-file-renaming).
+
+## Quality
+
+Quality depends on the model. Cloud models tend to be stronger at complex screenshots, messy documents, and ambiguous images. Local vision models are improving quickly, but small models can still produce generic names or miss important context.
+
+For file renaming, you do not need a poetic caption. You need names that are:
+
+- accurate
+- short
+- searchable
+- consistent with your naming pattern
+- safe to review before applying
+
+That last point matters. A good AI renamer should show a preview and keep rename history. Zush does both, so you can compare modes without committing every suggestion blindly.
+
+If local names are weak, try a different model or adjust the prompt. Zush's setup guide recommends vision-capable options from official Ollama model pages: [qwen2.5vl](https://ollama.com/library/qwen2.5vl), [gemma3](https://ollama.com/library/gemma3), and [granite3.2-vision](https://ollama.com/library/granite3.2-vision).
+
+## Cost
+
+The cost model is different for each mode.
+
+Cloud credits are the simplest. Zush includes free monthly renames and a one-time Pro tier with more credits. You do not manage provider billing.
+
+BYOK shifts cost to your provider account. You bring an API key from a supported provider and pay the provider directly. This is often the best option for high-volume users who want cloud quality and no Zush rename cap. For the full walkthrough, read [BYOK: Unlimited AI File Renames with Your Own API Key](/blog/byok-ai-file-renaming-unlimited) and [BYOK Setup Guide](/byok-setup).
+
+Local AI with Ollama has no per-rename AI provider bill once the model is installed, but it uses your hardware, memory, battery, and disk space. The cost is not a cloud invoice. The cost is local compute and setup time.
+
+| Mode | Direct AI cost | Hidden cost |
+|---|---|---|
+| Cloud AI | Zush credits | Internet required |
+| BYOK | Provider API billing | API key setup and provider account management |
+| Ollama | No provider request per local rename | Local compute, model storage, slower batches on weaker hardware |
+
+## Setup effort
+
+Cloud AI is nearly zero setup. Install Zush, choose files, preview names, rename.
+
+BYOK requires creating an API key, choosing a provider, and testing the connection. It is still straightforward, but there is an account and billing layer.
+
+Ollama requires local setup:
+
+1. Install Ollama from the official [download page](https://ollama.com/download).
+2. Pull a vision model.
+3. Confirm Ollama is running.
+4. Select the model in Zush.
+5. Test before using large folders.
+
+For Mac-specific instructions, read [How to Rename Files with Ollama on Mac](/blog/rename-files-with-ollama-mac). Windows support is coming soon, so avoid assuming the Windows setup flow until the public release is available.
+
+## Which mode should you choose?
+
+### Choose Cloud AI when:
+
+- you want the least setup
+- you rename normal everyday files
+- speed and quality matter more than local processing
+- you are using the free tier or Pro credits comfortably
+
+### Choose BYOK when:
+
+- you process hundreds or thousands of files
+- you want cloud model quality without Zush credit limits
+- you already have a provider account
+- you want direct billing visibility
+
+### Choose Local AI with Ollama when:
+
+- folders contain sensitive analysis content
+- internet access is limited or unavailable
+- you want provider-independent processing for supported files
+- you are comfortable installing and managing a local model
+
+Many users will use more than one mode. That is the point. Use Cloud for normal cleanup, BYOK for high-volume cloud work, and Ollama for folders where local processing is the priority.
+
+## Practical examples
+
+| Workflow | Best first choice | Why |
+|---|---|---|
+| Rename 40 random downloads | Cloud AI | Fastest setup |
+| Rename 3,000 product images | BYOK | High-volume cloud workflow with provider billing |
+| Rename private client scans | Local AI with Ollama | Keeps supported analysis local |
+| Auto-rename incoming screenshots | Cloud or Local | Choose based on sensitivity and speed |
+| Clean up a Mac archive before handoff | Local or BYOK | Local for privacy, BYOK for speed |
+
+If you mostly rename photos, also read [AI Photo Renamer Guide](/blog/ai-photo-renamer-guide). If screenshots are the main issue, see [How to Rename Screenshots Automatically on Mac](/blog/rename-screenshots-automatically-mac).
+
+## FAQ
+
+### Is local AI better than cloud AI for file renaming?
+
+Not universally. Local AI is better when privacy and offline processing matter. Cloud AI is usually easier and often stronger for difficult visual content.
+
+### Does BYOK mean files stay local?
+
+No. BYOK is still cloud processing. The difference is that you use your own provider API key and pay the provider directly. For local processing, use Offline AI mode with Ollama.
+
+### Can I switch modes later?
+
+Yes. The practical workflow is to use the mode that fits the folder. Use local AI for sensitive files, cloud for speed, and BYOK for high-volume cloud work.
+
+### Is Windows supported?
+
+Zush for Windows is coming soon. Use the [Windows product page](/windows) for current release status, and do not treat this article as a Windows setup guide yet.

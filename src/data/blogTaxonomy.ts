@@ -12,6 +12,7 @@ export const BLOG_PUBLIC_TAG_ORDER = [
   'image-formats',
   'image-seo',
   'byok',
+  'ollama',
 ] as const;
 
 export type BlogPublicTagSlug = (typeof BLOG_PUBLIC_TAG_ORDER)[number];
@@ -141,6 +142,15 @@ export const BLOG_PUBLIC_TAGS: Record<BlogPublicTagSlug, BlogPublicTagMeta> = {
     seoTitle: 'BYOK AI File Renaming Guides — Zush Blog',
     seoDescription:
       'Bring-your-own-key guides for AI file renaming with OpenAI, Gemini, Groq, Claude, and similar providers.',
+  },
+  ollama: {
+    slug: 'ollama',
+    label: 'Ollama',
+    description:
+      'Offline AI file renaming workflows with local Ollama models and private desktop processing',
+    seoTitle: 'Ollama AI File Renaming Guides - Zush Blog',
+    seoDescription:
+      'Learn how to use Ollama for local AI file renaming, offline workflows, model choice, and private desktop processing.',
   },
 };
 

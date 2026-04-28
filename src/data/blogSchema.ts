@@ -16,6 +16,7 @@ export const BLOG_TOPIC_VALUES = [
   'formats',
   'search',
   'byok',
+  'local-ai',
 ] as const;
 export type BlogTopic = (typeof BLOG_TOPIC_VALUES)[number];
 

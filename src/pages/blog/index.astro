@@ -198,6 +198,44 @@ const searchablePosts = allPosts.map((post) => ({
       </section>
 
       <div class={styles.BlogList__Sections} data-blog-search-default>
+        <section class={styles.BlogList__Section}>
+          <div class={styles.BlogList__SectionHeader}>
+            <div class={styles.BlogList__SectionTitleRow}>
+              <h2
+                class={[
+                  headingStyles.Heading,
+                  headingStyles.Heading_h3,
+                  styles.BlogList__SectionTitle,
+                ].join(' ')}
+              >
+                Latest Articles
+              </h2>
+              <span class={styles.BlogList__SectionCount}>{recentPosts.length}</span>
+            </div>
+          </div>
+          <p
+            class={[
+              textStyles.Text,
+              textStyles.Text_md,
+              textStyles.Text_subtle,
+              styles.BlogList__SectionDescription,
+            ].join(' ')}
+          >
+            A balanced selection of recent Windows, Mac, and general guides
+          </p>
+          <div class={styles.BlogList__SectionActions}>
+            <a class={styles.BlogList__SectionAction} href='/blog/archive'>
+              View all posts
+            </a>
+            <a class={styles.BlogList__SectionAction} href='/blog/tags'>
+              Browse tags
+            </a>
+          </div>
+          <div class={styles.BlogList__SectionPosts}>
+            {recentPosts.map((post) => <BlogPostCard post={post} />)}
+          </div>
+        </section>
+
         {
           sections.map((section) => (
             <section class={styles.BlogList__Section}>
@@ -239,44 +277,6 @@ const searchablePosts = allPosts.map((post) => ({
             </section>
           ))
         }
-
-        <section class={styles.BlogList__Section}>
-          <div class={styles.BlogList__SectionHeader}>
-            <div class={styles.BlogList__SectionTitleRow}>
-              <h2
-                class={[
-                  headingStyles.Heading,
-                  headingStyles.Heading_h3,
-                  styles.BlogList__SectionTitle,
-                ].join(' ')}
-              >
-                Recent Articles
-              </h2>
-              <span class={styles.BlogList__SectionCount}>{recentPosts.length}</span>
-            </div>
-          </div>
-          <p
-            class={[
-              textStyles.Text,
-              textStyles.Text_md,
-              textStyles.Text_subtle,
-              styles.BlogList__SectionDescription,
-            ].join(' ')}
-          >
-            A balanced selection of recent Windows, Mac, and general guides
-          </p>
-          <div class={styles.BlogList__SectionActions}>
-            <a class={styles.BlogList__SectionAction} href='/blog/archive'>
-              View all posts
-            </a>
-            <a class={styles.BlogList__SectionAction} href='/blog/tags'>
-              Browse tags
-            </a>
-          </div>
-          <div class={styles.BlogList__SectionPosts}>
-            {recentPosts.map((post) => <BlogPostCard post={post} />)}
-          </div>
-        </section>
       </div>
 
       <a class={[backToHomeStyles.BackToHome, styles.BlogList__BackLink].join(' ')} href='/'>
