@@ -1,74 +1,186 @@
-import { useEffect, useState } from 'react';
-import { CheckCircle, Mail } from 'lucide-react';
-import Button from '@/components/Button';
-import BackToHome from '@/components/BackToHome';
-import PageLayout from '@/components/PageLayout';
-import PageIcon from '@/components/PageIcon';
-import Heading from '@/components/Heading';
-import Text from '@/components/Text';
-import styles from './ThankYou.module.scss';
+import { useEffect, useState } from "react";
+import { CheckCircle, ExternalLink, LoaderCircle, Mail } from "lucide-react";
+import Button from "@/components/Button";
+import BackToHome from "@/components/BackToHome";
+import PageLayout from "@/components/PageLayout";
+import PageIcon from "@/components/PageIcon";
+import Heading from "@/components/Heading";
+import Text from "@/components/Text";
+import { SUPABASE_URL } from "@/utils/supabase";
+import styles from "./ThankYou.module.scss";
+
+type ActivationState =
+  | "checking"
+  | "pending"
+  | "activated"
+  | "activation_ready"
+  | "email"
+  | "expired";
+
+interface CheckoutSessionStatus {
+  success?: boolean;
+  status?: ActivationState | "failed";
+  completed?: boolean;
+  device_activated?: boolean;
+  app_url?: string;
+  web_activation_url?: string;
+}
 
 const ThankYou = () => {
-  const [hasDeviceId, setHasDeviceId] = useState<boolean | null>(null);
+  const [activationState, setActivationState] =
+    useState<ActivationState>("checking");
+  const [appUrl, setAppUrl] = useState<string | null>(null);
+  const [webActivationUrl, setWebActivationUrl] = useState<string | null>(null);
 
   useEffect(() => {
-    // Check if purchase was made from the app (with device_id)
-    const deviceId = sessionStorage.getItem('zush_checkout_device_id');
-    setHasDeviceId(!!deviceId);
-    // Clear the stored device_id
-    sessionStorage.removeItem('zush_checkout_device_id');
+    const params = new URLSearchParams(window.location.search);
+    const checkoutSession =
+      params.get("checkout_session") ||
+      sessionStorage.getItem("zush_checkout_session");
+    const deviceId = sessionStorage.getItem("zush_checkout_device_id");
+
+    sessionStorage.removeItem("zush_checkout_session");
+    sessionStorage.removeItem("zush_checkout_device_id");
+
+    if (!checkoutSession) {
+      setActivationState(deviceId ? "activated" : "email");
+      if (deviceId) {
+        setAppUrl("zush://refresh-status");
+      }
+      return;
+    }
+
+    let cancelled = false;
+
+    const pollCheckoutSession = async () => {
+      for (let attempt = 0; attempt < 12; attempt += 1) {
+        try {
+          const response = await fetch(
+            `${SUPABASE_URL}/functions/v1/checkout-session-status`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ checkout_session: checkoutSession }),
+            },
+          );
+          const result = (await response.json()) as CheckoutSessionStatus;
+
+          if (cancelled) return;
+
+          if (response.ok && result.completed && result.app_url) {
+            setActivationState(
+              result.device_activated ? "activated" : "activation_ready",
+            );
+            setAppUrl(result.app_url);
+            setWebActivationUrl(result.web_activation_url || null);
+            return;
+          }
+
+          if (response.ok && result.status === "expired") {
+            setActivationState("expired");
+            return;
+          }
+        } catch (error) {
+          console.error("[ThankYou] Checkout session status failed:", error);
+        }
+
+        await new Promise((resolve) => window.setTimeout(resolve, 1000));
+      }
+
+      if (!cancelled) {
+        setActivationState("pending");
+      }
+    };
+
+    pollCheckoutSession();
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
-  // Show loading state while checking
-  if (hasDeviceId === null) {
-    return (
-      <PageLayout maxWidth="lg">
-        <PageIcon>
-          <CheckCircle size={64} />
-        </PageIcon>
-        <Heading as='h1' className={styles.ThankYou__Title}>
-          Thank you for your purchase! 🎉
-        </Heading>
-      </PageLayout>
-    );
-  }
+  useEffect(() => {
+    if (
+      appUrl &&
+      (activationState === "activated" ||
+        activationState === "activation_ready")
+    ) {
+      window.location.href = appUrl;
+    }
+  }, [activationState, appUrl]);
+
+  const isChecking =
+    activationState === "checking" || activationState === "pending";
 
   return (
     <PageLayout maxWidth="lg">
       <PageIcon>
-        <CheckCircle size={64} />
+        {isChecking ? <LoaderCircle size={64} /> : <CheckCircle size={64} />}
       </PageIcon>
 
-      <Heading as='h1' className={styles.ThankYou__Title}>
-        Thank you for your purchase! 🎉
+      <Heading as="h1" className={styles.ThankYou__Title}>
+        Thank you for your purchase!
       </Heading>
 
-      {hasDeviceId ? (
-        // Purchased from app - device was auto-activated
+      {isChecking ? (
         <>
-          <Text as='p' className={styles.ThankYou__Subtitle} color='subtle'>
-            Your Zush PRO is active. Enjoy 10,000 credits, BYOK, and Offline AI mode - private local models via Ollama.
+          <Text as="p" className={styles.ThankYou__Subtitle} color="subtle">
+            We're finishing your activation. Zush will open automatically.
           </Text>
         </>
-      ) : (
-        // Purchased from website - need to activate via email
+      ) : activationState === "activated" ? (
         <>
-          <Text as='p' className={styles.ThankYou__Subtitle} color='subtle'>
+          <Text as="p" className={styles.ThankYou__Subtitle} color="subtle">
+            Your Zush PRO is active. Enjoy 10,000 credits, BYOK, and Offline AI
+            mode.
+          </Text>
+        </>
+      ) : activationState === "activation_ready" ? (
+        <>
+          <Text as="p" className={styles.ThankYou__Subtitle} color="subtle">
+            We're opening Zush to activate PRO on this device.
+          </Text>
+        </>
+      ) : activationState === "expired" ? (
+        <>
+          <Text as="p" className={styles.ThankYou__Subtitle} color="subtle">
+            We couldn't finish automatic activation from this browser session.
+            We've sent an activation email to you.
+          </Text>
+          <div className={styles.ThankYou__EmailNotice}>
+            <Mail size={24} />
+            <Text as="p">
+              Open the email and click the <strong>"Activate PRO"</strong>{" "}
+              button to unlock PRO features in Zush.
+            </Text>
+          </div>
+        </>
+      ) : (
+        <>
+          <Text as="p" className={styles.ThankYou__Subtitle} color="subtle">
             Your PRO access is permanent. We've sent an activation email to you.
           </Text>
           <div className={styles.ThankYou__EmailNotice}>
             <Mail size={24} />
-            <Text as='p'>
-              Open the email and click the <strong>"Activate PRO"</strong> button to unlock PRO features in the app.
+            <Text as="p">
+              Open the email and click the <strong>"Activate PRO"</strong>{" "}
+              button to unlock PRO features in Zush.
             </Text>
           </div>
         </>
       )}
 
       <div className={styles.ThankYou__Actions}>
-        {hasDeviceId && (
-          <Button as="a" href="zush://refresh-status">
+        {appUrl && (
+          <Button as="a" href={appUrl}>
+            <ExternalLink size={18} />
             Open Zush
+          </Button>
+        )}
+        {!appUrl && webActivationUrl && (
+          <Button as="a" href={webActivationUrl}>
+            <ExternalLink size={18} />
+            Activate PRO
           </Button>
         )}
         <BackToHome />

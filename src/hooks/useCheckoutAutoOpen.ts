@@ -1,15 +1,15 @@
-import { useEffect, useRef } from 'react';
-import { PRO_PADDLE_PRICE_ID } from '@/constants/pricing';
+import { useEffect, useRef } from "react";
+import { PRO_PADDLE_PRICE_ID } from "@/constants/pricing";
+import { getCheckoutParam } from "@/utils/checkoutParams";
 
 export const useCheckoutAutoOpen = () => {
   const hasOpened = useRef(false);
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const checkout = params.get('checkout');
-    const deviceId = params.get('device_id');
+    const checkout = getCheckoutParam("checkout");
+    const deviceId = getCheckoutParam("device_id");
 
-    if (checkout !== 'pro' || hasOpened.current) {
+    if (checkout !== "pro" || hasOpened.current) {
       return;
     }
 
@@ -23,10 +23,10 @@ export const useCheckoutAutoOpen = () => {
       }
 
       try {
-        const { openPaddleCheckout } = await import('@/utils/paddle');
+        const { openPaddleCheckout } = await import("@/utils/paddle");
         await openPaddleCheckout(deviceId, PRO_PADDLE_PRICE_ID);
       } catch (error) {
-        console.error('[CheckoutAutoOpen] Failed to open checkout:', error);
+        console.error("[CheckoutAutoOpen] Failed to open checkout:", error);
       }
     }, 300);
 
