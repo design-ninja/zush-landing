@@ -140,8 +140,8 @@ export const WINDOWS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
     title: 'Batch Rename',
     description: 'Rename multiple files at once with AI',
     images: {
-      light: '/images/showcase/windows-original/2.webp',
-      dark: '/images/showcase/windows-original/3.webp',
+      light: '/images/showcase/windows-original/02-ai-rename-results.webp',
+      dark: '/images/showcase/windows-original/10-dark-mode-results.webp',
     },
     video: {
       light: '/videos/windows/zush-batch-rename.mp4',
@@ -154,38 +154,38 @@ export const WINDOWS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
     title: 'Folder Monitoring',
     description: 'Automatically rename new files as they appear',
     images: {
-      light: '/images/showcase/windows-original/4.webp',
-      dark: '/images/showcase/windows-original/4.webp',
+      light: '/images/showcase/windows-original/09-folder-monitor.webp',
+      dark: '/images/showcase/windows-original/09-folder-monitor.webp',
     },
     alt: 'Folder monitoring settings in Zush for Windows',
   },
   {
-    id: 'tags',
-    title: 'Smart Tags',
-    description: 'Generate smart tags for faster file search',
+    id: 'activity',
+    title: 'Activity History',
+    description: 'Review recent renames and undo changes when needed',
     images: {
-      light: '/images/showcase/windows-original/6.webp',
-      dark: '/images/showcase/windows-original/6.webp',
+      light: '/images/showcase/windows-original/03-activity-history.webp',
+      dark: '/images/showcase/windows-original/03-activity-history.webp',
     },
-    alt: 'Smart metadata and tagging settings in Zush for Windows',
+    alt: 'Activity history and undo workflow in Zush for Windows',
   },
   {
     id: 'naming',
-    title: 'Naming Patterns',
-    description: 'Create reusable naming patterns with flexible variables',
+    title: 'Naming & Metadata',
+    description: 'Create naming patterns and add searchable metadata',
     images: {
-      light: '/images/showcase/windows-original/6.webp',
-      dark: '/images/showcase/windows-original/6.webp',
+      light: '/images/showcase/windows-original/04-processing-settings.webp',
+      dark: '/images/showcase/windows-original/04-processing-settings.webp',
     },
-    alt: 'Naming pattern editor in Zush for Windows',
+    alt: 'Naming pattern and metadata settings in Zush for Windows',
   },
   {
     id: 'multilanguage',
     title: 'Multilanguage',
     description: 'Generate filenames in more than 60 languages',
     images: {
-      light: '/images/showcase/windows-original/7.webp',
-      dark: '/images/showcase/windows-original/7.webp',
+      light: '/images/showcase/windows-original/05-language-picker.webp',
+      dark: '/images/showcase/windows-original/05-language-picker.webp',
     },
     alt: 'Localization settings for generated filenames in Zush for Windows',
   },
@@ -194,8 +194,8 @@ export const WINDOWS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
     title: 'Custom Prompts',
     description: 'Guide filename generation with your own instructions',
     images: {
-      light: '/images/showcase/windows-original/8.webp',
-      dark: '/images/showcase/windows-original/8.webp',
+      light: '/images/showcase/windows-original/06-rename-rules.webp',
+      dark: '/images/showcase/windows-original/06-rename-rules.webp',
     },
     alt: 'Custom prompt settings in Zush for Windows',
   },
@@ -204,10 +204,20 @@ export const WINDOWS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
     title: 'BYOK',
     description: 'Connect your own AI provider for unlimited renaming',
     images: {
-      light: '/images/showcase/windows-original/9.webp',
-      dark: '/images/showcase/windows-original/9.webp',
+      light: '/images/showcase/windows-original/07-cloud-ai-setup.webp',
+      dark: '/images/showcase/windows-original/07-cloud-ai-setup.webp',
     },
     alt: 'Bring your own key setup in Zush for Windows',
+  },
+  {
+    id: 'offline-ai',
+    title: 'Offline AI mode',
+    description: 'Process supported files offline with private local models via Ollama',
+    images: {
+      light: '/images/showcase/windows-original/08-local-ai-setup.webp',
+      dark: '/images/showcase/windows-original/08-local-ai-setup.webp',
+    },
+    alt: 'Offline AI setup in Zush for Windows',
   },
 ];
 
