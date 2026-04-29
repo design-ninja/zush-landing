@@ -31,7 +31,6 @@ const Pricing = () => {
             {...PRO_PLAN}
             price={PRO_PLAN.price || "$10"}
             billing={PRO_PLAN.billing}
-            index={0}
             onButtonClick={handleButtonClick}
             buttonText={PRO_PLAN.buttonText}
             isButtonDisabled={false}

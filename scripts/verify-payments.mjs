@@ -54,7 +54,8 @@ function verifyPaddleCheckout() {
 }
 
 function verifyAutoOpenFlow() {
-  const src = read("src/hooks/useCheckoutAutoOpen.ts");
+  const src = read("src/utils/checkoutAutoOpen.ts");
+  const layoutSrc = read("src/layouts/BaseLayout.astro");
   const paramsSrc = read("src/utils/checkoutParams.ts");
   assertMatch(
     src,
@@ -85,6 +86,16 @@ function verifyAutoOpenFlow() {
     src,
     /openPaddleCheckout\(deviceId,\s*PRO_PADDLE_PRICE_ID\)/,
     "Auto-open no longer opens Paddle with PRO price",
+  );
+  assertMatch(
+    src,
+    /window\.setTimeout\(/,
+    "Auto-open no longer defers checkout opening after page load",
+  );
+  assertMatch(
+    layoutSrc,
+    /bindCheckoutAutoOpen\(\)/,
+    "Base layout no longer binds checkout auto-open flow",
   );
 }
 

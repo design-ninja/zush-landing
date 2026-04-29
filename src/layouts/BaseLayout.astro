@@ -4,7 +4,6 @@ import type { SeoMeta } from '@/seo/config';
 import { DEFAULT_OG_IMAGE, getCanonicalUrl } from '@/seo/config';
 import '@/styles/main.scss';
 import Header from '@/components/Header/Header.astro';
-import CheckoutAutoOpenBridge from '@/components/chrome/CheckoutAutoOpenBridge';
 import Footer from '@/components/Footer/Footer.astro';
 import type { DownloadOS } from '@/utils/download';
 import Analytics from '@vercel/analytics/astro';
@@ -204,7 +203,6 @@ const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
     <div class="site-shell">
       <a class="skip-link" href="#main-content">Skip to content</a>
       {includeChrome && <Header forceOS={forceOS} basePath={chromeBasePath} />}
-      {includeChrome && <CheckoutAutoOpenBridge client:load />}
       <main
         id="main-content"
         class:list={['site-main', { 'site-main_offset': needsTopOffset }]}
@@ -214,10 +212,15 @@ const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
       </main>
       {includeChrome && <Footer />}
       <script>
+        import { bindCheckoutAutoOpen } from '@/utils/checkoutAutoOpen';
         import { bindStoreLinks } from '@/utils/storeLinks';
 
+        bindCheckoutAutoOpen();
         bindStoreLinks();
-        document.addEventListener('astro:after-swap', () => bindStoreLinks());
+        document.addEventListener('astro:after-swap', () => {
+          bindCheckoutAutoOpen();
+          bindStoreLinks();
+        });
       </script>
     </div>
     <Analytics />

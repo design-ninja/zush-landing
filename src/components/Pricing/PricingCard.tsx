@@ -1,5 +1,4 @@
 import { memo } from 'react';
-import { motion } from 'framer-motion';
 import { LucideIcon } from 'lucide-react';
 import Button from '../Button';
 import Heading from '../Heading';
@@ -26,7 +25,6 @@ interface PricingCardProps {
   buttonText: string;
   isPro: boolean;
   highlight?: boolean;
-  index: number;
   isUpgradeMode?: boolean;
   upgradeState?: string;
   onButtonClick: () => void;
@@ -51,7 +49,6 @@ export const PricingCard = memo(
     features,
     isPro,
     highlight,
-    index,
     isUpgradeMode = false,
     upgradeState = 'idle',
     onButtonClick,
@@ -64,11 +61,7 @@ export const PricingCard = memo(
     toggleSlot,
     creditsSlot,
   }: PricingCardProps) => (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.1 }}
+    <div
       className={`${styles.PricingCard} ${
         highlight ? styles.PricingCard_highlighted : ''
       } ${isUpgradeMode && !isPro ? styles.PricingCard_dimmed : ''}`}
@@ -181,7 +174,7 @@ export const PricingCard = memo(
           {buttonHint}
         </Text>
       </div>
-    </motion.div>
+    </div>
   )
 );
 
