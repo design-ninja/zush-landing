@@ -213,12 +213,15 @@ const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
       {includeChrome && <Footer />}
       <script>
         import { bindCheckoutAutoOpen } from '@/utils/checkoutAutoOpen';
+        import { bindPricingCheckout } from '@/utils/pricingCheckout';
         import { bindStoreLinks } from '@/utils/storeLinks';
 
         bindCheckoutAutoOpen();
+        bindPricingCheckout();
         bindStoreLinks();
         document.addEventListener('astro:after-swap', () => {
           bindCheckoutAutoOpen();
+          bindPricingCheckout();
           bindStoreLinks();
         });
       </script>

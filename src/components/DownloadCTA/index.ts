@@ -1,1 +1,1 @@
-export { default } from './DownloadCTA';
+export { default } from './DownloadCTA.astro';

@@ -5,9 +5,9 @@ import Videos from '@/components/Videos';
 import Features from '@/components/Features/Features.astro';
 import SupportedFormats from '@/components/SupportedFormats';
 import UseCases from '@/components/UseCases';
-import Pricing from '@/components/Pricing';
+import Pricing from '@/components/Pricing/Pricing.astro';
 import WhyZush from '@/components/WhyZush';
-import DownloadCTA from '@/components/DownloadCTA';
+import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
 import FAQ from '@/components/FAQ';
 import PlatformGuides from '@/components/PlatformGuides/PlatformGuides.astro';
 import { PLATFORM_LANDING_CONTENT } from '@/data/platformLanding';
@@ -73,14 +73,13 @@ const softwareJsonLd = {
   <Features />
   <SupportedFormats />
   <DownloadCTA
-    client:visible
     forceOS="windows"
     title="Try Zush free on Windows"
     subtitle={page.ctaSubtitle}
   />
   <WhyZush forceOS="windows" platformSpecificCopy />
   <UseCases />
-  <Pricing client:visible />
+  <Pricing />
   <PlatformGuides platform="windows" />
   <FAQ
     client:visible

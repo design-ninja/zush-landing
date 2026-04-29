@@ -99,6 +99,38 @@ function verifyAutoOpenFlow() {
   );
 }
 
+function verifyPricingCheckoutFlow() {
+  const src = read("src/utils/pricingCheckout.ts");
+  const pricingSrc = read("src/components/Pricing/Pricing.astro");
+  const layoutSrc = read("src/layouts/BaseLayout.astro");
+
+  assertMatch(
+    pricingSrc,
+    /data-paddle-checkout/,
+    "Pricing button no longer exposes the Paddle checkout trigger",
+  );
+  assertMatch(
+    pricingSrc,
+    /data-paddle-price-id=\{plan\.paddlePriceId\}/,
+    "Pricing button no longer passes the PRO price id",
+  );
+  assertMatch(
+    src,
+    /getCheckoutParam\(["']device_id["']\)/,
+    "Pricing checkout no longer reads device_id through shared parsing",
+  );
+  assertMatch(
+    src,
+    /openPaddleCheckout\(deviceId,\s*priceId\)/,
+    "Pricing checkout no longer opens Paddle with the selected price",
+  );
+  assertMatch(
+    layoutSrc,
+    /bindPricingCheckout\(\)/,
+    "Base layout no longer binds pricing checkout flow",
+  );
+}
+
 function verifyActivationAndRecovery() {
   const activate = read("src/views/Activate/Activate.tsx");
   const recover = read("src/views/Recover/Recover.tsx");
@@ -172,6 +204,7 @@ function verifyCriticalRoutes() {
 try {
   verifyPaddleCheckout();
   verifyAutoOpenFlow();
+  verifyPricingCheckoutFlow();
   verifyActivationAndRecovery();
   verifyCriticalRoutes();
   console.log(
