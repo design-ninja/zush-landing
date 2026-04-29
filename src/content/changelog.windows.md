@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.1.0.0] - 2026-04-29
+### Added
+- Offline AI mode with local Ollama analysis
+- Cloud and Local AI settings with model selection, refresh, and connection tests
+- AI content reporting for generated file names
+
+### Improved
+- BYOK provider keys are validated by the backend and stored only on this Windows device
+- Cloud AI privacy copy clarifies when selected previews and text are sent to the chosen AI provider
+- PDF and document analysis now uses sampled preview pages for better payloads
+- Monitoring can continue without internet when Offline AI mode is enabled
+
+### Fixed
+- Activation, analysis, BYOK, and billing portal flows now use device-authenticated backend calls
+- Billing portal links can be opened or sent by email for authenticated devices
+
+
 ## [1.0.2.0] - 2026-04-25
 ### Added
 - Automated Windows Store release flow that reads the live Store version, builds `.msixupload` packages, publishes GitHub releases, updates the Windows changelog, and submits the Store update.
@@ -26,4 +43,3 @@
 ### Added
 - First Windows Store build prepared for certification
 - Store packaging, signing, and Microsoft Store identity setup
-
