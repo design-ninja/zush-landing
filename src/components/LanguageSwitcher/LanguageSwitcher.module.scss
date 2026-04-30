@@ -137,13 +137,19 @@
 
 @media (max-width: 768px) {
   .LanguageSwitcher__Button {
-    min-width: 5.9rem;
-    max-width: 7.6rem;
-    padding: 0.46rem 0.55rem 0.46rem 0.65rem;
+    gap: 0.35rem;
+    min-width: 4.35rem;
+    max-width: none;
+    padding: 0.48rem 0.55rem 0.48rem 0.7rem;
+  }
+
+  .LanguageSwitcher__Flag {
+    width: 1.55rem;
+    font-size: 1.35rem;
   }
 
   .LanguageSwitcher__Current {
-    max-width: 4.25rem;
+    display: none;
   }
 }
 
