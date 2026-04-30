@@ -87,6 +87,7 @@ const staticPages: Record<Exclude<Locale, 'en'>, Record<StaticLocalizedRoute, St
     '/refund-policy': {
       title: 'Rückerstattungsrichtlinie',
       description: 'Informationen zur 14-Tage-Geld-zurück-Garantie für Zush PRO.',
+      updated: 'Zuletzt aktualisiert: 19. März 2026',
       sections: [
         { eyebrow: 'Einmalkauf', title: '14 Tage Geld zurück', body: 'Zush PRO ist ein Einmalkauf. Wenn du nicht zufrieden bist, kannst du innerhalb von 14 Tagen ab Kaufdatum eine Rückerstattung anfragen.' },
         { eyebrow: 'Anfrage', title: 'So beantragst du eine Rückerstattung', body: 'Schreibe an refund@zushapp.com mit Bestellnummer und der E-Mail-Adresse, die du beim Kauf verwendet hast.' },
@@ -145,6 +146,7 @@ const staticPages: Record<Exclude<Locale, 'en'>, Record<StaticLocalizedRoute, St
     '/refund-policy': {
       title: 'Politique de remboursement',
       description: 'Détails de la garantie de remboursement de 14 jours pour Zush PRO.',
+      updated: 'Dernière mise à jour: 19 mars 2026',
       sections: [
         { eyebrow: 'Achat unique', title: '14 jours pour changer d’avis', body: 'Zush PRO est un achat unique. Si cela ne vous convient pas, vous pouvez demander un remboursement sous 14 jours après l’achat.' },
         { eyebrow: 'Demande', title: 'Comment demander un remboursement', body: 'Écrivez à refund@zushapp.com avec votre numéro de commande et l’adresse email utilisée pour l’achat.' },
@@ -203,6 +205,7 @@ const staticPages: Record<Exclude<Locale, 'en'>, Record<StaticLocalizedRoute, St
     '/refund-policy': {
       title: 'Política de reembolso',
       description: 'Detalhes da garantia de reembolso de 14 dias para Zush PRO.',
+      updated: 'Última atualização: 19 de março de 2026',
       sections: [
         { eyebrow: 'Compra única', title: '14 dias de garantia', body: 'Zush PRO é uma compra única. Se não ficar satisfeito, você pode pedir reembolso em até 14 dias após a compra.' },
         { eyebrow: 'Solicitação', title: 'Como pedir reembolso', body: 'Envie email para refund@zushapp.com com o número do pedido e o email usado na compra.' },
@@ -261,6 +264,7 @@ const staticPages: Record<Exclude<Locale, 'en'>, Record<StaticLocalizedRoute, St
     '/refund-policy': {
       title: 'Política de reembolso',
       description: 'Detalles de la garantía de devolución de 14 días para Zush PRO.',
+      updated: 'Última actualización: 19 de marzo de 2026',
       sections: [
         { eyebrow: 'Compra única', title: '14 días de garantía', body: 'Zush PRO es una compra única. Si no estás satisfecho, puedes pedir reembolso dentro de los 14 días posteriores a la compra.' },
         { eyebrow: 'Solicitud', title: 'Cómo pedir reembolso', body: 'Escribe a refund@zushapp.com con el número de pedido y el email usado en la compra.' },
@@ -319,6 +323,7 @@ const staticPages: Record<Exclude<Locale, 'en'>, Record<StaticLocalizedRoute, St
     '/refund-policy': {
       title: 'Terugbetalingsbeleid',
       description: 'Details van de 14 dagen geld-terug-garantie voor Zush PRO.',
+      updated: 'Laatst bijgewerkt: 19 maart 2026',
       sections: [
         { eyebrow: 'Eenmalige aankoop', title: '14 dagen garantie', body: 'Zush PRO is een eenmalige aankoop. Ben je niet tevreden, dan kun je binnen 14 dagen na aankoop terugbetaling aanvragen.' },
         { eyebrow: 'Aanvraag', title: 'Terugbetaling aanvragen', body: 'Mail refund@zushapp.com met je bestelnummer en het e-mailadres van de aankoop.' },
@@ -377,6 +382,7 @@ const staticPages: Record<Exclude<Locale, 'en'>, Record<StaticLocalizedRoute, St
     '/refund-policy': {
       title: 'Politica di rimborso',
       description: 'Dettagli della garanzia di rimborso di 14 giorni per Zush PRO.',
+      updated: 'Ultimo aggiornamento: 19 marzo 2026',
       sections: [
         { eyebrow: 'Acquisto unico', title: 'Garanzia di 14 giorni', body: 'Zush PRO è un acquisto unico. Se non sei soddisfatto, puoi chiedere il rimborso entro 14 giorni dall’acquisto.' },
         { eyebrow: 'Richiesta', title: 'Come chiedere rimborso', body: 'Scrivi a refund@zushapp.com con numero ordine e indirizzo email usato per l’acquisto.' },
@@ -435,6 +441,7 @@ const staticPages: Record<Exclude<Locale, 'en'>, Record<StaticLocalizedRoute, St
     '/refund-policy': {
       title: '返金ポリシー',
       description: 'Zush PRO の14日間返金保証について。',
+      updated: '最終更新: 2026年3月19日',
       sections: [
         { eyebrow: '買い切り', title: '14日間保証', body: 'Zush PRO は買い切りです。満足できない場合、購入日から14日以内に返金を申請できます。' },
         { eyebrow: '申請', title: '返金の依頼方法', body: '注文番号と購入時のメールアドレスを添えて refund@zushapp.com へ連絡してください。' },
@@ -493,6 +500,7 @@ const staticPages: Record<Exclude<Locale, 'en'>, Record<StaticLocalizedRoute, St
     '/refund-policy': {
       title: '환불 정책',
       description: 'Zush PRO 14일 환불 보장 안내.',
+      updated: '마지막 업데이트: 2026년 3월 19일',
       sections: [
         { eyebrow: '일회성 구매', title: '14일 보장', body: 'Zush PRO는 일회성 구매입니다. 만족하지 않으면 구매일로부터 14일 이내 환불을 요청할 수 있습니다.' },
         { eyebrow: '요청', title: '환불 요청 방법', body: '주문 번호와 구매에 사용한 이메일 주소를 refund@zushapp.com 으로 보내세요.' },
@@ -551,6 +559,7 @@ const staticPages: Record<Exclude<Locale, 'en'>, Record<StaticLocalizedRoute, St
     '/refund-policy': {
       title: '退款政策',
       description: 'Zush PRO 14 天退款保证说明。',
+      updated: '最后更新：2026 年 3 月 19 日',
       sections: [
         { eyebrow: '一次性购买', title: '14 天保证', body: 'Zush PRO 是一次性购买。如果不满意，你可以在购买日起 14 天内申请退款。' },
         { eyebrow: '申请', title: '如何申请退款', body: '请将订单号和购买时使用的邮箱发送到 refund@zushapp.com。' },

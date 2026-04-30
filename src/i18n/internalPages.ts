@@ -320,7 +320,7 @@ export function getMethodologyCopy(locale: InternalLocale): MethodologyCopy {
 export function getLegalPageCopy(locale: InternalLocale, route: LegalRoute): {
   type: LegalType;
   title: string;
-  updated: string;
+  updated?: string;
   content: string;
   backToHomeLabel: string;
   homeHref: string;
@@ -334,7 +334,7 @@ export function getLegalPageCopy(locale: InternalLocale, route: LegalRoute): {
   return {
     type: type[route],
     title: staticCopy.title,
-    updated: staticCopy.updated ?? '',
+    updated: staticCopy.updated,
     content: getLegalMarkdown(locale, route),
     backToHomeLabel: backToHome[locale],
     homeHref: getLocalizedPath('/', locale),
