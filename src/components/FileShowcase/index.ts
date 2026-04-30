@@ -1,2 +1,2 @@
 export { default } from './FileShowcase';
-export type { FileItem, Slide } from './FileShowcase';
+export type { Slide } from './FileShowcase';

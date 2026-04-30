@@ -170,7 +170,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/manage-subscription/confirm': DEFAULT_META,
 };
 
-export const PRIVATE_ROUTES = [
+const PRIVATE_ROUTES = [
   '/thank-you',
   '/recover',
   '/activate',
@@ -193,7 +193,7 @@ export const FEATURE_ROUTES = [
   '/rename-photos-with-ai',
 ] as const;
 
-export function normalizePath(pathname: string): string {
+function normalizePath(pathname: string): string {
   let path = pathname || '/';
   if (!path.startsWith('/')) {
     path = `/${path}`;

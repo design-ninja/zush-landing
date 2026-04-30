@@ -1,0 +1,44 @@
+---
+import DownloadButton from '@/components/DownloadButton/DownloadButton';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
+import { getShortRequirements, type DownloadOS } from '@/utils/download';
+import styles from './DownloadCTA.module.scss';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  className?: string;
+  forceOS?: DownloadOS;
+}
+
+const {
+  title,
+  subtitle = 'AI-powered file renaming with custom prompts, folder monitoring, and one-click revert.',
+  className,
+  forceOS,
+} = Astro.props as Props;
+
+const resolvedTitle = title ?? 'Try Zush free';
+const downloadOS = forceOS ?? 'mac';
+---
+
+<section class:list={[styles.Section, className]}>
+  <div class={styles.Container}>
+    <div class={styles.Card}>
+      <Heading as="h2" className={styles.Title}>{resolvedTitle}</Heading>
+      <Text as="p" className={styles.Subtitle} color="subtle">{subtitle}</Text>
+      <div class={styles.Buttons}>
+        <DownloadButton
+          client:visible
+          source="download-cta"
+          size="lg"
+          forceOS={forceOS}
+        />
+      </div>
+      <Text as="p" size="xs" color="subtle" className={styles.Hint}>
+        Free · No credit card required · {getShortRequirements(downloadOS)}
+      </Text>
+    </div>
+  </div>
+</section>

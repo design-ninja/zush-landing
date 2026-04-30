@@ -54,7 +54,8 @@ function verifyPaddleCheckout() {
 }
 
 function verifyAutoOpenFlow() {
-  const src = read("src/hooks/useCheckoutAutoOpen.ts");
+  const src = read("src/utils/checkoutAutoOpen.ts");
+  const layoutSrc = read("src/layouts/BaseLayout.astro");
   const paramsSrc = read("src/utils/checkoutParams.ts");
   assertMatch(
     src,
@@ -85,6 +86,48 @@ function verifyAutoOpenFlow() {
     src,
     /openPaddleCheckout\(deviceId,\s*PRO_PADDLE_PRICE_ID\)/,
     "Auto-open no longer opens Paddle with PRO price",
+  );
+  assertMatch(
+    src,
+    /window\.setTimeout\(/,
+    "Auto-open no longer defers checkout opening after page load",
+  );
+  assertMatch(
+    layoutSrc,
+    /bindCheckoutAutoOpen\(\)/,
+    "Base layout no longer binds checkout auto-open flow",
+  );
+}
+
+function verifyPricingCheckoutFlow() {
+  const src = read("src/utils/pricingCheckout.ts");
+  const pricingSrc = read("src/components/Pricing/Pricing.astro");
+  const layoutSrc = read("src/layouts/BaseLayout.astro");
+
+  assertMatch(
+    pricingSrc,
+    /data-paddle-checkout/,
+    "Pricing button no longer exposes the Paddle checkout trigger",
+  );
+  assertMatch(
+    pricingSrc,
+    /data-paddle-price-id=\{plan\.paddlePriceId\}/,
+    "Pricing button no longer passes the PRO price id",
+  );
+  assertMatch(
+    src,
+    /getCheckoutParam\(["']device_id["']\)/,
+    "Pricing checkout no longer reads device_id through shared parsing",
+  );
+  assertMatch(
+    src,
+    /openPaddleCheckout\(deviceId,\s*priceId\)/,
+    "Pricing checkout no longer opens Paddle with the selected price",
+  );
+  assertMatch(
+    layoutSrc,
+    /bindPricingCheckout\(\)/,
+    "Base layout no longer binds pricing checkout flow",
   );
 }
 
@@ -161,6 +204,7 @@ function verifyCriticalRoutes() {
 try {
   verifyPaddleCheckout();
   verifyAutoOpenFlow();
+  verifyPricingCheckoutFlow();
   verifyActivationAndRecovery();
   verifyCriticalRoutes();
   console.log(

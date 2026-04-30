@@ -2,28 +2,12 @@ import { track } from '@vercel/analytics';
 import {
   DOWNLOAD_URL,
   WINDOWS_STORE_URL,
-  MIN_MACOS_VERSION,
-  MIN_WINDOWS_VERSION,
 } from '@/constants';
 
 export type DownloadOS = 'mac' | 'windows';
 
 export function getDownloadUrl(os: DownloadOS): string {
   return os === 'windows' ? WINDOWS_STORE_URL : DOWNLOAD_URL;
-}
-
-export function getDownloadLabel(os: DownloadOS): string {
-  return os === 'windows' ? 'Get from Microsoft Store' : 'Download for Mac';
-}
-
-export function getShortDownloadLabel(os: DownloadOS): string {
-  return os === 'windows' ? 'Microsoft Store' : 'Download';
-}
-
-export function getSystemRequirements(os: DownloadOS): string {
-  return os === 'windows'
-    ? `Windows · ${MIN_WINDOWS_VERSION}`
-    : `macOS ${MIN_MACOS_VERSION}`;
 }
 
 export function getShortRequirements(os: DownloadOS): string {
@@ -36,10 +20,6 @@ export function getOSLabel(os: DownloadOS): string {
 
 export function getOtherOS(os: DownloadOS): DownloadOS {
   return os === 'windows' ? 'mac' : 'windows';
-}
-
-export function getDownloadPagePath(os: DownloadOS): string {
-  return os === 'windows' ? '/windows' : '/mac';
 }
 
 export type DownloadSource =

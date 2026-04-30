@@ -18,7 +18,7 @@ interface StoreLinkClickEvent {
 
 const STORE_FALLBACK_DELAY_MS = 1500;
 
-export const detectRuntimeStoreOS = (): StoreOS | null => {
+const detectRuntimeStoreOS = (): StoreOS | null => {
   if (typeof navigator === 'undefined') return null;
 
   const nav = navigator as Navigator & {
@@ -78,7 +78,7 @@ const attemptNativeStoreOpen = ({ appUrl, webUrl }: Required<Pick<StoreLinkTarge
   window.location.assign(appUrl);
 };
 
-export const shouldAttemptNativeStoreOpen = (os: StoreOS): boolean => detectRuntimeStoreOS() === os;
+const shouldAttemptNativeStoreOpen = (os: StoreOS): boolean => detectRuntimeStoreOS() === os;
 
 export const getPreferredStoreHref = ({
   appUrl,
@@ -104,6 +104,7 @@ export const handleStoreLinkClick = (
   attemptNativeStoreOpen({ appUrl, webUrl });
 };
 
+// fallow-ignore-next-line unused-export
 export const bindStoreLink = (link: HTMLAnchorElement) => {
   const os = link.dataset.storeOs;
   const appUrl = link.dataset.storeAppUrl;
@@ -131,6 +132,7 @@ export const bindStoreLink = (link: HTMLAnchorElement) => {
   });
 };
 
+// fallow-ignore-next-line unused-export
 export const bindStoreLinks = (root: ParentNode = document) => {
   root.querySelectorAll<HTMLAnchorElement>('a[data-store-os][data-store-app-url]').forEach(bindStoreLink);
 };

@@ -12,7 +12,6 @@ import {
 import { useOS } from '@/hooks/useOS';
 import type { DownloadOS } from '@/utils/download';
 import styles from './Videos.module.scss';
-import { motion } from 'framer-motion';
 
 interface VideosProps {
   autoplayOnHydration?: boolean;
@@ -170,11 +169,7 @@ const Videos = ({
   return (
     <section className={styles.Videos}>
       <div className={styles.Videos__Container}>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+        <div>
           <SectionHeader
             title={
               <>
@@ -183,14 +178,11 @@ const Videos = ({
             }
             description='See how Zush handles real file organization workflows with these core features'
           />
-        </motion.div>
+        </div>
         
-        <motion.div
+        <div
           ref={videoWrapperRef}
           className={styles.Videos__VideoWrapper}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
         >
           {hasActiveWindowsVideo ? (
             <video
@@ -259,14 +251,11 @@ const Videos = ({
               )}
             </video>
           )}
-        </motion.div>
+        </div>
         <Text as='p' className={styles.Videos__Description}>{activeItem.description}</Text>
 
-        <motion.div
+        <div
           className={styles.Videos__Tabs}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
         >
             {showcaseItems.map((feature, index) => (
                 <button
@@ -280,7 +269,7 @@ const Videos = ({
                     <span>{feature.title}</span>
                 </button>
             ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

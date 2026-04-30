@@ -5,10 +5,10 @@ import Videos from '@/components/Videos';
 import Features from '@/components/Features/Features.astro';
 import SupportedFormats from '@/components/SupportedFormats';
 import UseCases from '@/components/UseCases';
-import Pricing from '@/components/Pricing';
+import Pricing from '@/components/Pricing/Pricing.astro';
 import WhyZush from '@/components/WhyZush';
 import FAQ from '@/components/FAQ';
-import DownloadCTA from '@/components/DownloadCTA';
+import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
 import { getSeoForPath, HOME_JSON_LD } from '@/seo/config';
 
 const seo = getSeoForPath('/');
@@ -19,9 +19,9 @@ const seo = getSeoForPath('/');
   <Videos client:visible autoplayWhenInView />
   <Features />
   <SupportedFormats />
-  <DownloadCTA client:visible />
-  <WhyZush client:visible />
+  <DownloadCTA />
+  <WhyZush />
   <UseCases />
-  <Pricing client:visible />
+  <Pricing />
   <FAQ client:visible />
 </BaseLayout>

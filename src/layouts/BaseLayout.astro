@@ -4,7 +4,6 @@ import type { SeoMeta } from '@/seo/config';
 import { DEFAULT_OG_IMAGE, getCanonicalUrl } from '@/seo/config';
 import '@/styles/main.scss';
 import Header from '@/components/Header/Header.astro';
-import CheckoutAutoOpenBridge from '@/components/chrome/CheckoutAutoOpenBridge';
 import Footer from '@/components/Footer/Footer.astro';
 import type { DownloadOS } from '@/utils/download';
 import Analytics from '@vercel/analytics/astro';
@@ -104,6 +103,9 @@ const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
         const applyTheme = (target = root(), theme = getTheme()) => {
           target.setAttribute('data-theme', theme);
         };
+        const enableScrollReveal = (target = root()) => {
+          target.setAttribute('data-scroll-reveal', 'enabled');
+        };
 
         if (!window.__zushThemeManagerBound) {
           window.__zushThemeManagerBound = true;
@@ -119,6 +121,7 @@ const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
           };
 
           applyTheme();
+          enableScrollReveal();
           mediaQuery.addEventListener('change', (event) => {
             if (getStoredTheme()) return;
             applyTheme(root(), event.matches ? 'dark' : 'light');
@@ -132,12 +135,17 @@ const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
 
           document.addEventListener('astro:before-swap', (event) => {
             applyTheme(event.newDocument.documentElement);
+            enableScrollReveal(event.newDocument.documentElement);
           });
-          document.addEventListener('astro:after-swap', () => applyTheme());
+          document.addEventListener('astro:after-swap', () => {
+            applyTheme();
+            enableScrollReveal();
+          });
           return;
         }
 
         applyTheme(root(), root().getAttribute('data-theme') || getTheme());
+        enableScrollReveal();
       })();
     </script>
 
@@ -204,7 +212,6 @@ const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
     <div class="site-shell">
       <a class="skip-link" href="#main-content">Skip to content</a>
       {includeChrome && <Header forceOS={forceOS} basePath={chromeBasePath} />}
-      {includeChrome && <CheckoutAutoOpenBridge client:load />}
       <main
         id="main-content"
         class:list={['site-main', { 'site-main_offset': needsTopOffset }]}
@@ -214,10 +221,21 @@ const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
       </main>
       {includeChrome && <Footer />}
       <script>
+        import { bindCheckoutAutoOpen } from '@/utils/checkoutAutoOpen';
+        import { bindPricingCheckout } from '@/utils/pricingCheckout';
+        import { bindScrollReveal } from '@/utils/scrollReveal';
         import { bindStoreLinks } from '@/utils/storeLinks';
 
+        bindCheckoutAutoOpen();
+        bindPricingCheckout();
+        bindScrollReveal();
         bindStoreLinks();
-        document.addEventListener('astro:after-swap', () => bindStoreLinks());
+        document.addEventListener('astro:after-swap', () => {
+          bindCheckoutAutoOpen();
+          bindPricingCheckout();
+          bindScrollReveal();
+          bindStoreLinks();
+        });
       </script>
     </div>
     <Analytics />
@@ -316,7 +334,32 @@ const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
     }
   }
 
+  html[data-scroll-reveal='enabled'] [data-scroll-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 1.5rem, 0);
+    transition:
+      opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  html[data-scroll-reveal='enabled']
+    [data-scroll-reveal]:not([data-scroll-reveal-state='visible']) {
+    will-change: opacity, transform;
+  }
+
+  html[data-scroll-reveal='enabled']
+    [data-scroll-reveal][data-scroll-reveal-state='visible'] {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
   @media (prefers-reduced-motion: reduce) {
+    html[data-scroll-reveal='enabled'] [data-scroll-reveal] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
     ::view-transition-group(*),
     ::view-transition-old(*),
     ::view-transition-new(*) {

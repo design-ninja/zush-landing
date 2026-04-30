@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 // Should match $breakpoint-md in _breakpoints.scss
-export const BREAKPOINT_MD = 768;
+const BREAKPOINT_MD = 768;
 
 export const useIsMobile = (): boolean => {
   // Keep initial value deterministic between SSR and hydration.

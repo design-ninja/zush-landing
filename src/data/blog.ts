@@ -154,7 +154,7 @@ export function formatBlogDate(value: string | Date): string {
   }
 }
 
-export function toBlogPost(entry: BlogEntry): BlogPost {
+function toBlogPost(entry: BlogEntry): BlogPost {
   const sanitizedBody = sanitizeBody(entry.body);
   const wordCount = countWords(sanitizedBody);
   const reviewedDateValue = entry.data.reviewed ?? entry.data.date;
@@ -338,10 +338,6 @@ export async function getRelatedPosts(slug: string, limit = 3): Promise<BlogPost
   return selected.slice(0, limit);
 }
 
-export async function getRecentBlogPosts(limit = 6): Promise<BlogPost[]> {
-  return (await getAllPosts()).slice(0, limit);
-}
-
 export async function getBalancedRecentBlogPosts(limitPerPlatform = 2): Promise<BlogPost[]> {
   const posts = await getAllPosts();
   const platforms: BlogPlatform[] = ['windows', 'mac', 'general'];
@@ -396,10 +392,6 @@ export async function getAllTags(): Promise<BlogTag[]> {
     }))
     .filter((tag) => tag.count >= INDEXABLE_TAG_MIN_POSTS)
     .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
-}
-
-export async function getTagBySlug(slug: string): Promise<BlogTag | undefined> {
-  return (await getAllTags()).find((tag) => tag.slug === slug);
 }
 
 export function isSitemapEligibleBlogPost(post: BlogPost, thinContentThreshold: number): boolean {

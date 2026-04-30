@@ -128,89 +128,52 @@ const DownloadButton = ({
   };
 
   const otherUrl = getDownloadUrl(otherOS);
+  const renderOtherOSMenuItem = () => (
+    <a
+      key='other-os'
+      role='menuitem'
+      className={styles.Menu__Item}
+      href={otherUrl}
+      target='_blank'
+      rel='noopener noreferrer'
+      onClick={handleOtherClick}
+    >
+      <span className={styles.Menu__Icon}>
+        <OtherMenuIcon />
+      </span>
+      <span className={styles.Menu__Text}>
+        <span className={styles.Menu__Title}>
+          {otherOS === 'windows' ? 'Windows (x64/arm64)' : `Download for ${getOSLabel(otherOS)}`}
+        </span>
+        <span className={styles.Menu__Hint}>{OS_STORE_LABEL[otherOS]}</span>
+      </span>
+    </a>
+  );
+  const renderAppStoreMenuItem = () => (
+    <a
+      key='app-store'
+      role='menuitem'
+      className={styles.Menu__Item}
+      href={appStoreHref}
+      target='_blank'
+      rel='noopener noreferrer'
+      data-store-os='mac'
+      data-store-app-url={APP_STORE_PROTOCOL_URL}
+      data-store-web-url={APP_STORE_URL}
+      onClick={handleAppStoreClick}
+    >
+      <span className={`${styles.Menu__Icon} ${styles.Menu__Icon_appStore}`}>
+        <AppStoreIcon />
+      </span>
+      <span className={styles.Menu__Text}>
+        <span className={styles.Menu__Title}>Mac App Store</span>
+        <span className={styles.Menu__Hint}>Install via App Store</span>
+      </span>
+    </a>
+  );
   const menuItems = downloadOS === 'windows'
-    ? [
-        <a
-          key='other-os'
-          role='menuitem'
-          className={styles.Menu__Item}
-          href={otherUrl}
-          target='_blank'
-          rel='noopener noreferrer'
-          onClick={handleOtherClick}
-        >
-          <span className={styles.Menu__Icon}>
-            <OtherMenuIcon />
-          </span>
-          <span className={styles.Menu__Text}>
-            <span className={styles.Menu__Title}>
-              {otherOS === 'windows' ? 'Windows (x64/arm64)' : `Download for ${getOSLabel(otherOS)}`}
-            </span>
-            <span className={styles.Menu__Hint}>{OS_STORE_LABEL[otherOS]}</span>
-          </span>
-        </a>,
-        <a
-          key='app-store'
-          role='menuitem'
-          className={styles.Menu__Item}
-          href={appStoreHref}
-          target='_blank'
-          rel='noopener noreferrer'
-          data-store-os='mac'
-          data-store-app-url={APP_STORE_PROTOCOL_URL}
-          data-store-web-url={APP_STORE_URL}
-          onClick={handleAppStoreClick}
-        >
-          <span className={`${styles.Menu__Icon} ${styles.Menu__Icon_appStore}`}>
-            <AppStoreIcon />
-          </span>
-          <span className={styles.Menu__Text}>
-            <span className={styles.Menu__Title}>Mac App Store</span>
-            <span className={styles.Menu__Hint}>Install via App Store</span>
-          </span>
-        </a>,
-      ]
-    : [
-        <a
-          key='app-store'
-          role='menuitem'
-          className={styles.Menu__Item}
-          href={appStoreHref}
-          target='_blank'
-          rel='noopener noreferrer'
-          data-store-os='mac'
-          data-store-app-url={APP_STORE_PROTOCOL_URL}
-          data-store-web-url={APP_STORE_URL}
-          onClick={handleAppStoreClick}
-        >
-          <span className={`${styles.Menu__Icon} ${styles.Menu__Icon_appStore}`}>
-            <AppStoreIcon />
-          </span>
-          <span className={styles.Menu__Text}>
-            <span className={styles.Menu__Title}>Mac App Store</span>
-            <span className={styles.Menu__Hint}>Install via App Store</span>
-          </span>
-        </a>,
-        <a
-          key='other-os'
-          role='menuitem'
-          className={styles.Menu__Item}
-          href={otherUrl}
-          target='_blank'
-          rel='noopener noreferrer'
-          onClick={handleOtherClick}
-        >
-          <span className={styles.Menu__Icon}>
-            <OtherMenuIcon />
-          </span>
-          <span className={styles.Menu__Text}>
-            <span className={styles.Menu__Title}>
-              {otherOS === 'windows' ? 'Windows (x64/arm64)' : `Download for ${getOSLabel(otherOS)}`}
-            </span>
-            <span className={styles.Menu__Hint}>{OS_STORE_LABEL[otherOS]}</span>
-          </span>
-        </a>,
-      ];
+    ? [renderOtherOSMenuItem(), renderAppStoreMenuItem()]
+    : [renderAppStoreMenuItem(), renderOtherOSMenuItem()];
 
   return (
     <div

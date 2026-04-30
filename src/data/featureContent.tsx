@@ -16,7 +16,7 @@ import type { UseCaseData } from '@/components/UseCases/UseCases';
 
 // ---------- USE CASES PER CATEGORY ----------
 
-export const imageUseCases: UseCaseData[] = [
+const imageUseCases: UseCaseData[] = [
   {
     icon: Camera,
     title: 'Photographers',
@@ -85,7 +85,7 @@ export const imageUseCases: UseCaseData[] = [
   },
 ];
 
-export const documentUseCases: UseCaseData[] = [
+const documentUseCases: UseCaseData[] = [
   {
     icon: Scale,
     title: 'Legal Teams',
@@ -154,7 +154,7 @@ export const documentUseCases: UseCaseData[] = [
   },
 ];
 
-export const screenshotUseCases: UseCaseData[] = [
+const screenshotUseCases: UseCaseData[] = [
   {
     icon: Code,
     title: 'Developers',
@@ -223,7 +223,7 @@ export const screenshotUseCases: UseCaseData[] = [
   },
 ];
 
-export const photoUseCases: UseCaseData[] = [
+const photoUseCases: UseCaseData[] = [
   {
     icon: Camera,
     title: 'Professional Photographers',
