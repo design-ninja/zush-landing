@@ -7,6 +7,7 @@ import {
   RefreshCw,
   Shield,
 } from 'lucide-react';
+import type { ReactNode } from 'react';
 import Button from '@/components/Button';
 import AppLink from '@/components/AppLink';
 import BackToHome from '@/components/BackToHome';
@@ -14,7 +15,46 @@ import Heading from '@/components/Heading';
 import Text from '@/components/Text';
 import styles from './OllamaSetup.module.scss';
 
-const recommendedModels = [
+interface RecommendedModel {
+  name: string;
+  label: string;
+  command: string;
+  description: string;
+  hardware: string;
+  speed: string;
+}
+
+export interface OllamaSetupCopy {
+  title: string;
+  subtitle: string;
+  downloadOllama: string;
+  recommendedModelsButton: string;
+  offlineTitle: string;
+  offlineBody: string;
+  setupTitle: string;
+  openDownloadPage: string;
+  steps: readonly {
+    title: string;
+    body: string;
+    command?: string;
+  }[];
+  recommendedTitle: string;
+  recommendedLead: string;
+  recommendedModels: RecommendedModel[];
+  catalogPrefix: string;
+  catalogLink: string;
+  catalogSuffix: string;
+  troubleshootingTitle: string;
+  troubleshooting: readonly {
+    title: string;
+    body: ReactNode;
+  }[];
+  note: string;
+  backToHomeLabel?: string;
+  homeHref?: string;
+}
+
+const defaultRecommendedModels = [
   {
     name: 'qwen2.5vl:3b',
     label: 'For speed',
@@ -44,7 +84,80 @@ const recommendedModels = [
   },
 ];
 
-const OllamaSetup = () => {
+export const defaultOllamaSetupCopy: OllamaSetupCopy = {
+  title: 'Ollama Setup Guide',
+  subtitle:
+    'Use Offline AI mode with private local models via Ollama. Your files are processed by a model on your device instead of a cloud AI provider.',
+  downloadOllama: 'Download Ollama',
+  recommendedModelsButton: 'Recommended models',
+  offlineTitle: 'What Offline AI Mode Means',
+  offlineBody:
+    'When Offline AI mode is enabled in Zush, supported file analysis runs through your local Ollama server. Zush does not send analysis content to Zush cloud or third-party AI providers in this mode. You still control which model is installed, where Ollama stores it, and when Ollama is running.',
+  setupTitle: 'Setup Steps',
+  openDownloadPage: 'Open Ollama download page',
+  steps: [
+    {
+      title: 'Install Ollama',
+      body: 'Download Ollama for macOS from the official website, install it, and open the app once so the local server can start.',
+    },
+    {
+      title: 'Download a vision model',
+      body: 'Zush works best with a vision-capable model because many files are images, screenshots, PDFs, or visual previews. Start with:',
+      command: 'ollama pull qwen2.5vl:3b',
+    },
+    {
+      title: 'Check that Ollama is running',
+      body: 'Ollama usually runs in the background after you open it. If Zush cannot connect, start it from Terminal:',
+      command: 'ollama serve',
+    },
+    {
+      title: 'Enable Offline AI mode in Zush',
+      body: 'Open Zush, go to AI Setup, turn on Offline AI mode, refresh the model list, select your model, and run Test.',
+    },
+  ],
+  recommendedTitle: 'Recommended Models',
+  recommendedLead:
+    'Pick a model based on the job: qwen2.5vl:3b for speed, gemma3:4b for balance, or granite3.2-vision:2b for documents.',
+  recommendedModels: defaultRecommendedModels,
+  catalogPrefix: 'Or choose another vision-capable model from the ',
+  catalogLink: 'Ollama model catalog',
+  catalogSuffix: '.',
+  troubleshootingTitle: 'Troubleshooting',
+  troubleshooting: [
+    {
+      title: 'Zush does not see any models',
+      body: (
+        <>
+          Run <code>ollama list</code> in Terminal. If the list is empty, pull a model first, then click refresh in Zush.
+        </>
+      ),
+    },
+    {
+      title: 'Connection test fails',
+      body: (
+        <>
+          Make sure Ollama is running and the host is set to <code>http://127.0.0.1:11434</code> in Zush connection settings.
+        </>
+      ),
+    },
+    {
+      title: 'Processing is too slow',
+      body: (
+        <>
+          Use a smaller model like <code>qwen2.5vl:3b</code>, close memory-heavy apps, or switch back to Cloud when you need faster batch processing.
+        </>
+      ),
+    },
+  ],
+  note:
+    'Offline AI mode is separate from Cloud and BYOK. Cloud uses Zush credits by default, BYOK uses your provider key for cloud renames, and Offline AI mode uses Ollama on your device.',
+};
+
+interface OllamaSetupProps {
+  copy?: OllamaSetupCopy;
+}
+
+const OllamaSetup = ({ copy = defaultOllamaSetupCopy }: OllamaSetupProps) => {
   return (
     <section className={styles.OllamaSetup}>
       <div className={styles.OllamaSetup__Container}>
@@ -53,17 +166,17 @@ const OllamaSetup = () => {
             <Bot size={32} />
           </div>
           <Heading as='h1' align='center' className={styles.OllamaSetup__Title}>
-            Ollama Setup Guide
+            {copy.title}
           </Heading>
           <Text as='p' size='lg' color='subtle' align='center' className={styles.OllamaSetup__Subtitle}>
-            Use Offline AI mode with private local models via Ollama. Your files are processed by a model on your device instead of a cloud AI provider.
+            {copy.subtitle}
           </Text>
           <div className={styles.OllamaSetup__Actions}>
             <Button as='a' href='https://ollama.com/download' target='_blank' rel='noopener noreferrer' size='md'>
-              Download Ollama <ExternalLink size={16} />
+              {copy.downloadOllama} <ExternalLink size={16} />
             </Button>
             <Button as='a' href='#recommended-models' variant='ghost' size='md'>
-              Recommended models
+              {copy.recommendedModelsButton}
             </Button>
           </div>
         </div>
@@ -72,78 +185,49 @@ const OllamaSetup = () => {
           <section className={styles.OllamaSetup__Section}>
             <div className={styles.OllamaSetup__SectionHeader}>
               <Shield size={24} />
-              <Heading as='h2'>What Offline AI Mode Means</Heading>
+              <Heading as='h2'>{copy.offlineTitle}</Heading>
             </div>
             <Text as='p' color='subtle'>
-              When Offline AI mode is enabled in Zush, supported file analysis runs through your local Ollama server. Zush does not send analysis content to Zush cloud or third-party AI providers in this mode. You still control which model is installed, where Ollama stores it, and when Ollama is running.
+              {copy.offlineBody}
             </Text>
           </section>
 
           <section className={styles.OllamaSetup__Section}>
             <div className={styles.OllamaSetup__SectionHeader}>
               <Download size={24} />
-              <Heading as='h2'>Setup Steps</Heading>
+              <Heading as='h2'>{copy.setupTitle}</Heading>
             </div>
 
             <div className={styles.OllamaSetup__Steps}>
-              <div className={styles.OllamaSetup__Step}>
-                <div className={styles.OllamaSetup__StepNumber}>1</div>
-                <div className={styles.OllamaSetup__StepContent}>
-                  <Heading as='h3'>Install Ollama</Heading>
-                  <Text as='p' color='subtle'>
-                    Download Ollama for macOS from the official website, install it, and open the app once so the local server can start.
-                  </Text>
-                  <AppLink href='https://ollama.com/download' target='_blank' rel='noopener noreferrer'>
-                    Open Ollama download page <ExternalLink size={14} />
-                  </AppLink>
+              {copy.steps.map((step, index) => (
+                <div className={styles.OllamaSetup__Step} key={step.title}>
+                  <div className={styles.OllamaSetup__StepNumber}>{index + 1}</div>
+                  <div className={styles.OllamaSetup__StepContent}>
+                    <Heading as='h3'>{step.title}</Heading>
+                    <Text as='p' color='subtle'>{step.body}</Text>
+                    {index === 0 && (
+                      <AppLink href='https://ollama.com/download' target='_blank' rel='noopener noreferrer'>
+                        {copy.openDownloadPage} <ExternalLink size={14} />
+                      </AppLink>
+                    )}
+                    {step.command && <pre className={styles.OllamaSetup__Code}><code>{step.command}</code></pre>}
+                  </div>
                 </div>
-              </div>
-
-              <div className={styles.OllamaSetup__Step}>
-                <div className={styles.OllamaSetup__StepNumber}>2</div>
-                <div className={styles.OllamaSetup__StepContent}>
-                  <Heading as='h3'>Download a vision model</Heading>
-                  <Text as='p' color='subtle'>
-                    Zush works best with a vision-capable model because many files are images, screenshots, PDFs, or visual previews. Start with:
-                  </Text>
-                  <pre className={styles.OllamaSetup__Code}><code>ollama pull qwen2.5vl:3b</code></pre>
-                </div>
-              </div>
-
-              <div className={styles.OllamaSetup__Step}>
-                <div className={styles.OllamaSetup__StepNumber}>3</div>
-                <div className={styles.OllamaSetup__StepContent}>
-                  <Heading as='h3'>Check that Ollama is running</Heading>
-                  <Text as='p' color='subtle'>
-                    Ollama usually runs in the background after you open it. If Zush cannot connect, start it from Terminal:
-                  </Text>
-                  <pre className={styles.OllamaSetup__Code}><code>ollama serve</code></pre>
-                </div>
-              </div>
-
-              <div className={styles.OllamaSetup__Step}>
-                <div className={styles.OllamaSetup__StepNumber}>4</div>
-                <div className={styles.OllamaSetup__StepContent}>
-                  <Heading as='h3'>Enable Offline AI mode in Zush</Heading>
-                  <Text as='p' color='subtle'>
-                    Open Zush, go to AI Setup, turn on Offline AI mode, refresh the model list, select your model, and run Test.
-                  </Text>
-                </div>
-              </div>
+              ))}
             </div>
           </section>
 
           <section id='recommended-models' className={styles.OllamaSetup__Section}>
             <div className={styles.OllamaSetup__SectionHeader}>
               <Gauge size={24} />
-              <Heading as='h2'>Recommended Models</Heading>
+              <Heading as='h2'>{copy.recommendedTitle}</Heading>
             </div>
             <Text as='p' color='subtle' className={styles.OllamaSetup__SectionLead}>
-              Pick a model based on the job: <strong>qwen2.5vl:3b</strong> for speed, <strong>gemma3:4b</strong> for balance, or <strong>granite3.2-vision:2b</strong> for documents.
+              {copy.recommendedLead}
             </Text>
 
             <div className={styles.OllamaSetup__ModelGrid}>
-              {recommendedModels.map((model) => (
+              {copy.recommendedModels.map((model) => (
                 <article className={styles.OllamaSetup__ModelCard} key={model.name}>
                   <div className={styles.OllamaSetup__ModelHeader}>
                     <Heading as='h3'>{model.name}</Heading>
@@ -160,55 +244,44 @@ const OllamaSetup = () => {
             </div>
 
             <Text as='p' color='subtle' className={styles.OllamaSetup__CatalogNote}>
-              Or choose another vision-capable model from the{' '}
+              {copy.catalogPrefix}
               <AppLink
                 href='https://ollama.com/search?c=vision'
                 target='_blank'
                 rel='noopener noreferrer'
                 className={styles.OllamaSetup__CatalogLink}
               >
-                Ollama model catalog <ExternalLink size={14} />
-              </AppLink>.
+                {copy.catalogLink} <ExternalLink size={14} />
+              </AppLink>
+              {copy.catalogSuffix}
             </Text>
           </section>
 
           <section className={styles.OllamaSetup__Section}>
             <div className={styles.OllamaSetup__SectionHeader}>
               <RefreshCw size={24} />
-              <Heading as='h2'>Troubleshooting</Heading>
+              <Heading as='h2'>{copy.troubleshootingTitle}</Heading>
             </div>
 
             <div className={styles.OllamaSetup__FAQ}>
-              <div className={styles.OllamaSetup__FAQItem}>
-                <Heading as='h3'>Zush does not see any models</Heading>
-                <Text as='p' color='subtle'>
-                  Run <code>ollama list</code> in Terminal. If the list is empty, pull a model first, then click refresh in Zush.
-                </Text>
-              </div>
-              <div className={styles.OllamaSetup__FAQItem}>
-                <Heading as='h3'>Connection test fails</Heading>
-                <Text as='p' color='subtle'>
-                  Make sure Ollama is running and the host is set to <code>http://127.0.0.1:11434</code> in Zush connection settings.
-                </Text>
-              </div>
-              <div className={styles.OllamaSetup__FAQItem}>
-                <Heading as='h3'>Processing is too slow</Heading>
-                <Text as='p' color='subtle'>
-                  Use a smaller model like <code>qwen2.5vl:3b</code>, close memory-heavy apps, or switch back to Cloud when you need faster batch processing.
-                </Text>
-              </div>
+              {copy.troubleshooting.map((item) => (
+                <div className={styles.OllamaSetup__FAQItem} key={item.title}>
+                  <Heading as='h3'>{item.title}</Heading>
+                  <Text as='p' color='subtle'>{item.body}</Text>
+                </div>
+              ))}
             </div>
           </section>
 
           <div className={styles.OllamaSetup__Note}>
             <HelpCircle size={20} />
             <Text as='p' size='sm' color='subtle'>
-              Offline AI mode is separate from Cloud and BYOK. Cloud uses Zush credits by default, BYOK uses your provider key for cloud renames, and Offline AI mode uses Ollama on your device.
+              {copy.note}
             </Text>
           </div>
 
           <div className={styles.OllamaSetup__Back}>
-            <BackToHome />
+            <BackToHome href={copy.homeHref} label={copy.backToHomeLabel} />
           </div>
         </div>
       </div>

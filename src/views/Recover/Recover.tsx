@@ -10,14 +10,40 @@ import ErrorMessage from '@/components/ErrorMessage';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
 import { useEmailSubmission } from '@/hooks/useEmailSubmission';
+import { DEFAULT_LOCALE, getLocalizedPath, type Locale } from '@/i18n/config';
+import { getServicePageCopy, type RecoverCopy } from '@/i18n/servicePages';
 import styles from './Recover.module.scss';
 
-const Recover = () => {
+interface RecoverProps {
+  locale?: Locale;
+  copy?: RecoverCopy;
+  backToHomeLabel?: string;
+  homeHref?: string;
+  emailPlaceholder?: string;
+  emailRequired?: string;
+  genericError?: string;
+  connectionError?: string;
+}
+
+const defaultServiceCopy = getServicePageCopy(DEFAULT_LOCALE);
+
+const Recover = ({
+  locale = DEFAULT_LOCALE,
+  copy = defaultServiceCopy.recover,
+  backToHomeLabel = defaultServiceCopy.backToHome,
+  homeHref,
+  emailPlaceholder = defaultServiceCopy.emailPlaceholder,
+  emailRequired = defaultServiceCopy.emailRequired,
+  genericError = defaultServiceCopy.genericError,
+  connectionError = defaultServiceCopy.connectionError,
+}: RecoverProps) => {
   const [isSuccess, setIsSuccess] = useState(false);
+  const resolvedHomeHref = homeHref ?? getLocalizedPath('/', locale);
   const { email, error, handleSubmit, isLoading, setEmail } =
     useEmailSubmission({
       endpoint: 'send-magic-link',
       onSuccess: () => setIsSuccess(true),
+      messages: { emailRequired, genericError, connectionError },
     });
 
   if (isSuccess) {
@@ -27,15 +53,14 @@ const Recover = () => {
           <CheckCircle size={64} />
         </PageIcon>
 
-        <Heading as='h1' className={styles.Recover__Title}>Check your inbox!</Heading>
+        <Heading as='h1' className={styles.Recover__Title}>{copy.successTitle}</Heading>
 
         <Text as='p' className={styles.Recover__Subtitle} color='subtle'>
-          If a purchase exists for <strong>{email}</strong>, we've sent a one-time activation link.
+          {copy.successTextBeforeEmail} <strong>{email}</strong> {copy.successTextAfterEmail}
           <br />
-          Check your spam folder if you don't see it.
         </Text>
 
-        <BackToHome />
+        <BackToHome href={resolvedHomeHref} label={backToHomeLabel} />
       </PageLayout>
     );
   }
@@ -46,11 +71,10 @@ const Recover = () => {
         <Mail size={48} />
       </PageIcon>
 
-      <Heading as='h1' className={styles.Recover__Title}>Request Activation Link</Heading>
+      <Heading as='h1' className={styles.Recover__Title}>{copy.title}</Heading>
 
       <Text as='p' className={styles.Recover__Subtitle} color='subtle'>
-        Enter the email address you used when purchasing Zush PRO.
-        We'll send you a new one-time activation link.
+        {copy.subtitle}
       </Text>
 
       <form onSubmit={handleSubmit} className={styles.Recover__Form}>
@@ -58,7 +82,7 @@ const Recover = () => {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="your@email.com"
+          placeholder={emailPlaceholder}
           disabled={isLoading}
         />
 
@@ -67,13 +91,13 @@ const Recover = () => {
           variant="primary"
           disabled={isLoading}
         >
-          {isLoading ? 'Sending...' : 'Send Activation Link'}
+          {isLoading ? copy.sending : copy.send}
         </Button>
       </form>
 
       <ErrorMessage message={error} />
 
-      <BackToHome />
+      <BackToHome href={resolvedHomeHref} label={backToHomeLabel} />
     </PageLayout>
   );
 };

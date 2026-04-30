@@ -7,6 +7,8 @@ import PageIcon from '@/components/PageIcon';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
 import { DOWNLOAD_URL } from '@/constants';
+import { DEFAULT_LOCALE, getLocalizedPath, type Locale } from '@/i18n/config';
+import { getServicePageCopy, type ActivateCopy } from '@/i18n/servicePages';
 import styles from './Activate.module.scss';
 
 interface ActivationParams {
@@ -14,8 +16,26 @@ interface ActivationParams {
   email: string;
 }
 
-const Activate = () => {
+interface ActivateProps {
+  locale?: Locale;
+  copy?: ActivateCopy;
+  backToHomeLabel?: string;
+  homeHref?: string;
+  recoverHref?: string;
+}
+
+const defaultServiceCopy = getServicePageCopy(DEFAULT_LOCALE);
+
+const Activate = ({
+  locale = DEFAULT_LOCALE,
+  copy = defaultServiceCopy.activate,
+  backToHomeLabel = defaultServiceCopy.backToHome,
+  homeHref,
+  recoverHref,
+}: ActivateProps) => {
   const [activationParams, setActivationParams] = useState<ActivationParams | null>(null);
+  const resolvedHomeHref = homeHref ?? getLocalizedPath('/', locale);
+  const resolvedRecoverHref = recoverHref ?? getLocalizedPath('/recover', locale);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -50,13 +70,13 @@ const Activate = () => {
           <ExternalLink size={64} />
         </PageIcon>
 
-        <Heading as='h1' className={styles.Activate__Title}>Opening Zush...</Heading>
+        <Heading as='h1' className={styles.Activate__Title}>{copy.preparingTitle}</Heading>
 
         <Text as='p' className={styles.Activate__Subtitle} color='subtle'>
-          We're preparing your activation link.
+          {copy.preparingText}
         </Text>
 
-        <BackToHome />
+        <BackToHome href={resolvedHomeHref} label={backToHomeLabel} />
       </PageLayout>
     );
   }
@@ -68,21 +88,19 @@ const Activate = () => {
           <AlertCircle size={64} />
         </PageIcon>
 
-        <Heading as='h1' className={styles.Activate__Title}>Invalid Activation Link</Heading>
+        <Heading as='h1' className={styles.Activate__Title}>{copy.invalidTitle}</Heading>
 
         <Text as='p' className={styles.Activate__Subtitle} color='subtle'>
-          This activation link appears to be invalid or expired.
-          <br />
-          Please request a new activation link.
+          {copy.invalidText}
         </Text>
 
         <div className={styles.Activate__Actions}>
-          <Button as="link" href="/recover" variant="primary" size="lg">
-            Request New Link
+          <Button as="link" href={resolvedRecoverHref} variant="primary" size="lg">
+            {copy.requestNewLink}
           </Button>
         </div>
 
-        <BackToHome />
+        <BackToHome href={resolvedHomeHref} label={backToHomeLabel} />
       </PageLayout>
     );
   }
@@ -93,25 +111,25 @@ const Activate = () => {
         <ExternalLink size={64} />
       </PageIcon>
 
-      <Heading as='h1' className={styles.Activate__Title}>Opening Zush...</Heading>
+      <Heading as='h1' className={styles.Activate__Title}>{copy.openingTitle}</Heading>
 
       <Text as='p' className={styles.Activate__Subtitle} color='subtle'>
-        We're trying to open the Zush app to complete activation.
+        {copy.openingText}
       </Text>
 
       <div className={styles.Activate__Box}>
-        <Text as='p' className={styles.Activate__BoxTitle}>App didn't open?</Text>
+        <Text as='p' className={styles.Activate__BoxTitle}>{copy.appDidNotOpen}</Text>
         <Text as='p' className={styles.Activate__BoxDesc} color='subtle'>
-          Make sure Zush is installed on your Mac, then click the button below.
+          {copy.installHint}
         </Text>
         <Button onClick={handleOpenApp} variant="primary" size="lg">
           <ExternalLink size={18} />
-          Open Zush App
+          {copy.openApp}
         </Button>
       </div>
 
       <div className={styles.Activate__Help}>
-        <Text as='p' size='sm' color='subtle'>Don't have Zush installed?</Text>
+        <Text as='p' size='sm' color='subtle'>{copy.notInstalled}</Text>
         <Button
           as="a"
           href={DOWNLOAD_URL}
@@ -119,11 +137,11 @@ const Activate = () => {
           size="md"
         >
           <Download size={18} />
-          Download Zush for Mac
+          {copy.download}
         </Button>
       </div>
 
-      <BackToHome />
+      <BackToHome href={resolvedHomeHref} label={backToHomeLabel} />
     </PageLayout>
   );
 };

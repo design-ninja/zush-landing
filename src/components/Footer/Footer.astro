@@ -6,10 +6,19 @@ import {
   WINDOWS_STORE_PROTOCOL_URL,
   WINDOWS_STORE_URL,
 } from '@/constants';
+import { DEFAULT_LOCALE, getLocalizedPath, type Locale } from '@/i18n/config';
+import { getCopy } from '@/i18n/copy';
 import appLinkStyles from '@/components/AppLink/AppLink.module.scss';
 import headingStyles from '@/components/Heading/Heading.module.scss';
 import textStyles from '@/components/Text/Text.module.scss';
 import styles from './Footer.module.scss';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = DEFAULT_LOCALE } = Astro.props as Props;
+const copy = getCopy(locale).footer;
 
 const sectionTitleClass = [headingStyles.Heading, headingStyles.Heading_h4, styles.Footer__SectionTitle].join(' ');
 const descriptionClass = [textStyles.Text, textStyles.Text_subtle, styles.Footer__Description].join(' ');
@@ -23,9 +32,9 @@ const brandClass = [appLinkStyles.AppLink, styles.Footer__Brand].join(' ');
   <div class={styles.Footer__Container}>
     <div class={styles.Footer__Grid}>
       <div>
-        <a href='/' class={brandClass}>Zush</a>
+        <a href={getLocalizedPath('/', locale)} class={brandClass}>Zush</a>
         <p class={descriptionClass}>
-          AI file renamer for Mac and Windows — rename files with AI, automatically
+          {copy.description}
         </p>
 
         <div class={styles.Footer__StoreBadges}>
@@ -34,7 +43,7 @@ const brandClass = [appLinkStyles.AppLink, styles.Footer__Brand].join(' ');
             target='_blank'
             rel='noopener noreferrer'
             class={`${appLinkStyles.AppLink} ${styles.Footer__AppStore}`}
-            aria-label='Download Zush on the Mac App Store'
+            aria-label={copy.appStoreAria}
             data-store-os='mac'
             data-store-app-url={APP_STORE_PROTOCOL_URL}
             data-store-web-url={APP_STORE_URL}
@@ -73,8 +82,8 @@ const brandClass = [appLinkStyles.AppLink, styles.Footer__Brand].join(' ');
                 </svg>
               </span>
               <span class={styles.Footer__StoreBadgeText}>
-                <span class={styles.Footer__StoreBadgeKicker}>Download on the</span>
-                <span class={styles.Footer__StoreBadgeLabel}>Mac App Store</span>
+                <span class={styles.Footer__StoreBadgeKicker}>{copy.appStoreKicker}</span>
+                <span class={styles.Footer__StoreBadgeLabel}>{copy.appStoreLabel}</span>
               </span>
             </span>
           </a>
@@ -84,7 +93,7 @@ const brandClass = [appLinkStyles.AppLink, styles.Footer__Brand].join(' ');
             target='_blank'
             rel='noopener noreferrer'
             class={`${appLinkStyles.AppLink} ${styles.Footer__MicrosoftStore}`}
-            aria-label='Get Zush from the Microsoft Store'
+            aria-label={copy.microsoftStoreAria}
             data-store-os='windows'
             data-store-app-url={WINDOWS_STORE_PROTOCOL_URL}
             data-store-web-url={WINDOWS_STORE_URL}
@@ -123,8 +132,8 @@ const brandClass = [appLinkStyles.AppLink, styles.Footer__Brand].join(' ');
                 </svg>
               </span>
               <span class={styles.Footer__StoreBadgeText}>
-                <span class={styles.Footer__StoreBadgeKicker}>Download from the</span>
-                <span class={styles.Footer__StoreBadgeLabel}>Microsoft Store</span>
+                <span class={styles.Footer__StoreBadgeKicker}>{copy.microsoftStoreKicker}</span>
+                <span class={styles.Footer__StoreBadgeLabel}>{copy.microsoftStoreLabel}</span>
               </span>
             </span>
           </a>
@@ -132,47 +141,47 @@ const brandClass = [appLinkStyles.AppLink, styles.Footer__Brand].join(' ');
       </div>
 
       <div>
-        <h4 class={sectionTitleClass}>Product</h4>
+        <h4 class={sectionTitleClass}>{copy.product}</h4>
         <ul class={styles.Footer__Links}>
-          <li><a href='/ai-file-renamer' class={linkClass}>AI File Renamer</a></li>
-          <li><a href='/ai-image-renamer' class={linkClass}>AI Image Renamer</a></li>
-          <li><a href='/batch-rename-files' class={linkClass}>Batch Rename Files</a></li>
-          <li><a href='/auto-rename-files' class={linkClass}>Auto Rename Files</a></li>
-          <li><a href='/mac' class={linkClass}>Zush for Mac</a></li>
-          <li><a href='/windows' class={linkClass}>Zush for Windows</a></li>
+          <li><a href={getLocalizedPath('/ai-file-renamer', locale)} class={linkClass}>{copy.productLinks.aiFileRenamer}</a></li>
+          <li><a href={getLocalizedPath('/ai-image-renamer', locale)} class={linkClass}>{copy.productLinks.aiImageRenamer}</a></li>
+          <li><a href={getLocalizedPath('/batch-rename-files', locale)} class={linkClass}>{copy.productLinks.batchRenameFiles}</a></li>
+          <li><a href={getLocalizedPath('/auto-rename-files', locale)} class={linkClass}>{copy.productLinks.autoRenameFiles}</a></li>
+          <li><a href={getLocalizedPath('/mac', locale)} class={linkClass}>{copy.productLinks.mac}</a></li>
+          <li><a href={getLocalizedPath('/windows', locale)} class={linkClass}>{copy.productLinks.windows}</a></li>
         </ul>
       </div>
 
       <div>
-        <h4 class={sectionTitleClass}>By File Type</h4>
+        <h4 class={sectionTitleClass}>{copy.byFileType}</h4>
         <ul class={styles.Footer__Links}>
-          <li><a href='/rename-pdf-with-ai' class={linkClass}>Rename PDFs</a></li>
-          <li><a href='/rename-photos-with-ai' class={linkClass}>Rename Photos</a></li>
-          <li><a href='/rename-screenshots-with-ai' class={linkClass}>Rename Screenshots</a></li>
-          <li><a href='/rename-documents-with-ai' class={linkClass}>Rename Documents</a></li>
+          <li><a href={getLocalizedPath('/rename-pdf-with-ai', locale)} class={linkClass}>{copy.productLinks.pdf}</a></li>
+          <li><a href={getLocalizedPath('/rename-photos-with-ai', locale)} class={linkClass}>{copy.productLinks.photos}</a></li>
+          <li><a href={getLocalizedPath('/rename-screenshots-with-ai', locale)} class={linkClass}>{copy.productLinks.screenshots}</a></li>
+          <li><a href={getLocalizedPath('/rename-documents-with-ai', locale)} class={linkClass}>{copy.productLinks.documents}</a></li>
         </ul>
       </div>
 
       <div>
-        <h4 class={sectionTitleClass}>Resources</h4>
+        <h4 class={sectionTitleClass}>{copy.resources}</h4>
         <ul class={styles.Footer__Links}>
-          <li><a href='/#pricing' class={linkClass}>Pricing</a></li>
-          <li><a href='/blog' class={linkClass}>Blog</a></li>
-          <li><a href='/changelog' class={linkClass}>Changelog</a></li>
-          <li><a href='/methodology' class={linkClass}>Methodology</a></li>
-          <li><a href='/byok-setup' class={linkClass}>BYOK Setup Guide</a></li>
-          <li><a href='/ollama-setup' class={linkClass}>Ollama Setup Guide</a></li>
+          <li><a href={`${getLocalizedPath('/', locale)}#pricing`} class={linkClass}>{copy.pricing}</a></li>
+          <li><a href='/blog' class={linkClass}>{copy.blog}</a></li>
+          <li><a href='/changelog' class={linkClass}>{copy.changelog}</a></li>
+          <li><a href={getLocalizedPath('/methodology', locale)} class={linkClass}>{copy.methodology}</a></li>
+          <li><a href={getLocalizedPath('/byok-setup', locale)} class={linkClass}>{copy.byokSetup}</a></li>
+          <li><a href={getLocalizedPath('/ollama-setup', locale)} class={linkClass}>{copy.ollamaSetup}</a></li>
         </ul>
       </div>
 
       <div>
-        <h4 class={sectionTitleClass}>Support</h4>
+        <h4 class={sectionTitleClass}>{copy.support}</h4>
         <ul class={styles.Footer__Links}>
-          <li><a href={`mailto:${SUPPORT_EMAIL}`} class={linkClass}>Contact Support</a></li>
-          <li><a href='https://zush.canny.io' class={linkClass} target='_blank' rel='noopener noreferrer'>Features &amp; Bug Reports</a></li>
-          <li><a href='/terms-of-service' class={linkClass}>Terms of Service</a></li>
-          <li><a href='/privacy-policy' class={linkClass}>Privacy Policy</a></li>
-          <li><a href='/refund-policy' class={linkClass}>Refund Policy</a></li>
+          <li><a href={`mailto:${SUPPORT_EMAIL}`} class={linkClass}>{copy.contactSupport}</a></li>
+          <li><a href='https://zush.canny.io' class={linkClass} target='_blank' rel='noopener noreferrer'>{copy.feedback}</a></li>
+          <li><a href={getLocalizedPath('/terms-of-service', locale)} class={linkClass}>{copy.terms}</a></li>
+          <li><a href={getLocalizedPath('/privacy-policy', locale)} class={linkClass}>{copy.privacy}</a></li>
+          <li><a href={getLocalizedPath('/refund-policy', locale)} class={linkClass}>{copy.refund}</a></li>
         </ul>
       </div>
     </div>
@@ -186,12 +195,12 @@ const brandClass = [appLinkStyles.AppLink, styles.Footer__Brand].join(' ');
           class={socialLinkClass}
           target='_blank'
           rel='noopener noreferrer'
-          aria-label='Follow us on X'
+          aria-label={copy.followX}
         >
           <svg width='24' height='24' viewBox='0 0 24 24' fill='currentColor' aria-hidden='true'>
             <path d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z' />
           </svg>
-          <span class={styles.Footer__VisuallyHidden}>Follow us on X</span>
+          <span class={styles.Footer__VisuallyHidden}>{copy.followX}</span>
         </a>
 
         <a
@@ -199,12 +208,12 @@ const brandClass = [appLinkStyles.AppLink, styles.Footer__Brand].join(' ');
           class={socialLinkClass}
           target='_blank'
           rel='noopener noreferrer'
-          aria-label='Follow us on YouTube'
+          aria-label={copy.followYouTube}
         >
           <svg width='24' height='24' viewBox='0 0 24 24' fill='currentColor' aria-hidden='true'>
             <path d='M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z' />
           </svg>
-          <span class={styles.Footer__VisuallyHidden}>Follow us on YouTube</span>
+          <span class={styles.Footer__VisuallyHidden}>{copy.followYouTube}</span>
         </a>
 
         <a
@@ -212,22 +221,22 @@ const brandClass = [appLinkStyles.AppLink, styles.Footer__Brand].join(' ');
           class={socialLinkClass}
           target='_blank'
           rel='noopener noreferrer'
-          aria-label='Zush on Product Hunt'
+          aria-label={copy.productHunt}
         >
           <svg width='24' height='24' viewBox='0 0 24 24' fill='currentColor' aria-hidden='true'>
             <path d='M13.604 8.4h-3.405V12h3.405a1.8 1.8 0 0 0 0-3.6zM12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm1.604 14.4h-3.405V18H7.801V6h5.804a4.2 4.2 0 0 1 0 8.4z' />
           </svg>
-          <span class={styles.Footer__VisuallyHidden}>Zush on Product Hunt</span>
+          <span class={styles.Footer__VisuallyHidden}>{copy.productHunt}</span>
         </a>
       </div>
 
       <div class={styles.Footer__BottomLinks}>
         <p class={subtleTextClass}>
-          Designed by
+          {copy.designedBy}
           {' '}
           <a href='https://lirik.pro/en' class={`${appLinkStyles.AppLink} ${appLinkStyles.AppLink_legal}`} target='_blank' rel='noopener noreferrer'>lirik</a>
           {' '}
-          with 💚
+          {copy.designedWith} 💚
         </p>
       </div>
     </div>

@@ -6,8 +6,27 @@ import buttonStyles from '@/components/Button/Button.module.scss';
 import { PRO_PLAN, type Feature } from './constants';
 import styles from './Pricing.module.scss';
 
+interface Props {
+  copy?: {
+    title: string;
+    description: string;
+    planName: string;
+    planDescription: string;
+    billing: string;
+    buttonText: string;
+    buttonHint: string;
+    features: Array<{ title: string; desc: string }>;
+  };
+}
+
+const { copy } = Astro.props as Props;
 const plan = PRO_PLAN;
-const featureGroups = plan.features.reduce<Feature[][]>((groups, feature) => {
+const localizedFeatures: Feature[] = plan.features.map((feature, index) => ({
+  ...feature,
+  title: copy?.features[index]?.title ?? feature.title,
+  desc: copy?.features[index]?.desc ?? feature.desc,
+}));
+const featureGroups = localizedFeatures.reduce<Feature[][]>((groups, feature) => {
   if (groups.length === 0 || feature.groupBreakBefore) {
     groups.push([]);
   }
@@ -31,8 +50,8 @@ const buttonClass = [
 <section id="pricing" class={styles.Pricing}>
   <div class={styles.Pricing__Container}>
     <SectionHeader
-      title="Pay once, use forever"
-      description="No subscriptions, no hidden fees. Just a simple one-time purchase."
+      title={copy?.title ?? 'Pay once, use forever'}
+      description={copy?.description ?? 'No subscriptions, no hidden fees. Just a simple one-time purchase.'}
     />
 
     <div class={styles.Pricing__Single}>
@@ -41,7 +60,7 @@ const buttonClass = [
           <div class={styles.PricingCard__HeaderRow}>
             <div class={styles.PricingCard__Header}>
               <Heading as="h3" className={styles.PricingCard__Name}>
-                {plan.name}
+                {copy?.planName ?? plan.name}
               </Heading>
               <Text
                 as="p"
@@ -49,7 +68,7 @@ const buttonClass = [
                 color="subtle"
                 className={styles.PricingCard__Description}
               >
-                {plan.description}
+                {copy?.planDescription ?? plan.description}
               </Text>
             </div>
           </div>
@@ -58,7 +77,7 @@ const buttonClass = [
             <div class={styles.PricingCard__PriceLeft}>
               <span class={styles.PricingCard__PriceValue}>{plan.price ?? '$10'}</span>
               {plan.billing && (
-                <span class={styles.PricingCard__PricePeriod}>{plan.billing}</span>
+                <span class={styles.PricingCard__PricePeriod}>{copy?.billing ?? plan.billing}</span>
               )}
             </div>
           </div>
@@ -97,7 +116,7 @@ const buttonClass = [
             data-paddle-checkout
             data-paddle-price-id={plan.paddlePriceId}
           >
-            {plan.buttonText}
+            {copy?.buttonText ?? plan.buttonText}
           </button>
           <Text
             as="p"
@@ -105,7 +124,7 @@ const buttonClass = [
             color="subtle"
             className={styles.PricingCard__ButtonHint}
           >
-            14-day money-back guarantee • Secure via Paddle
+            {copy?.buttonHint ?? '14-day money-back guarantee • Secure via Paddle'}
           </Text>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { statSync } from 'node:fs';
 import { join } from 'node:path';
 import { getAllPosts, getAllTags, isSitemapEligibleBlogPost } from '@/data/blog';
 import { INDEXABLE_STATIC_ROUTES, FEATURE_ROUTES, SITE_ORIGIN, THIN_CONTENT_THRESHOLD } from '@/seo/config';
+import { DEFAULT_LOCALE, LOCALES, LOCALE_META, LOCALIZED_ROUTES, getAlternatePaths, getLocalizedPath } from '@/i18n/config';
 
 const BLOG_CONTENT_DIR = join(process.cwd(), 'src', 'content', 'blog');
 const PAGES_DIR = join(process.cwd(), 'src', 'pages');
@@ -96,6 +97,24 @@ export async function GET() {
       priority,
     };
   });
+  const localizedEntries = LOCALES
+    .filter((locale) => locale !== DEFAULT_LOCALE)
+    .flatMap((locale) =>
+      LOCALIZED_ROUTES.filter((route) => INDEXABLE_STATIC_ROUTES.includes(route)).map((route) => {
+        const locPath = getLocalizedPath(route, locale);
+        const loc = `${SITE_ORIGIN}${locPath}`;
+        const { changefreq, priority } = getRouteHints(route);
+        const sourceFile = getPageSourceFile(route);
+
+        return {
+          loc,
+          route,
+          lastmod: getLastModifiedDate(sourceFile, new Date('2026-03-01T00:00:00.000Z').toISOString()),
+          changefreq,
+          priority,
+        };
+      }),
+    );
 
   const posts = (await getAllPosts()).filter((post) =>
     isSitemapEligibleBlogPost(post, THIN_CONTENT_THRESHOLD),
@@ -106,6 +125,7 @@ export async function GET() {
 
     return {
       loc,
+      route: undefined,
       lastmod: getLastModifiedDate(filePath, new Date(`${post.date}T00:00:00.000Z`).toISOString()),
       changefreq: 'monthly' as Changefreq,
       priority: '0.7',
@@ -116,18 +136,34 @@ export async function GET() {
     .filter((tag) => tag.indexable)
     .map((tag) => ({
       loc: `${SITE_ORIGIN}/blog/tags/${tag.slug}`,
+      route: undefined,
       lastmod: new Date().toISOString(),
       changefreq: 'weekly' as Changefreq,
       priority: '0.55',
     }));
 
-  const urls = [...staticEntries, ...blogEntries, ...tagEntries]
-    .map(({ loc, lastmod, changefreq, priority }) => {
-      return `  <url>\n    <loc>${escapeXml(loc)}</loc>\n    <lastmod>${escapeXml(lastmod)}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
+  const urls = [...staticEntries.map((entry) => ({ ...entry, route: entry.loc.replace(SITE_ORIGIN, '') || '/' })), ...localizedEntries, ...blogEntries, ...tagEntries]
+    .map(({ loc, route, lastmod, changefreq, priority }) => {
+      const normalizedRoute = LOCALIZED_ROUTES.includes(route as never)
+        ? route
+        : undefined;
+      const alternates = normalizedRoute
+        ? Object.entries(getAlternatePaths(normalizedRoute))
+          .map(([locale, path]) => {
+            const hreflang = LOCALE_META[locale as keyof typeof LOCALE_META].lang;
+            return `    <xhtml:link rel="alternate" hreflang="${escapeXml(hreflang)}" href="${escapeXml(`${SITE_ORIGIN}${path}`)}" />`;
+          })
+          .join('\n')
+        : '';
+      const xDefault = normalizedRoute
+        ? `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(`${SITE_ORIGIN}${getLocalizedPath(normalizedRoute, DEFAULT_LOCALE)}`)}" />`
+        : '';
+
+      return `  <url>\n    <loc>${escapeXml(loc)}</loc>${alternates ? `\n${alternates}${xDefault}` : ''}\n    <lastmod>${escapeXml(lastmod)}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;
     })
     .join('\n');
 
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls}\n</urlset>\n`;
 
   return new Response(xml, {
     headers: {

@@ -7,6 +7,8 @@ import PageLayout from "@/components/PageLayout";
 import PageIcon from "@/components/PageIcon";
 import Heading from "@/components/Heading";
 import Text from "@/components/Text";
+import { DEFAULT_LOCALE, getLocalizedPath, type Locale } from "@/i18n/config";
+import { getServicePageCopy, type ThankYouCopy } from "@/i18n/servicePages";
 import { SUPABASE_URL } from "@/utils/supabase";
 import styles from "./ThankYou.module.scss";
 
@@ -26,10 +28,25 @@ interface CheckoutSessionStatus {
   app_url?: string;
 }
 
-const ThankYou = () => {
+interface ThankYouProps {
+  locale?: Locale;
+  copy?: ThankYouCopy;
+  backToHomeLabel?: string;
+  homeHref?: string;
+}
+
+const defaultServiceCopy = getServicePageCopy(DEFAULT_LOCALE);
+
+const ThankYou = ({
+  locale = DEFAULT_LOCALE,
+  copy = defaultServiceCopy.thankYou,
+  backToHomeLabel = defaultServiceCopy.backToHome,
+  homeHref,
+}: ThankYouProps) => {
   const [activationState, setActivationState] =
     useState<ActivationState>("checking");
   const [appUrl, setAppUrl] = useState<string | null>(null);
+  const resolvedHomeHref = homeHref ?? getLocalizedPath('/', locale);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -126,54 +143,50 @@ const ThankYou = () => {
       </PageIcon>
 
       <Heading as="h1" className={styles.ThankYou__Title}>
-        {isChecking ? "Finalizing your purchase..." : "Thank you for your purchase!"}
+        {isChecking ? copy.checkingTitle : copy.successTitle}
       </Heading>
 
       {isChecking ? (
         <>
           <Text as="p" className={styles.ThankYou__Subtitle} color="subtle">
-            We're confirming your payment. This usually takes a few seconds.
+            {copy.checkingText}
           </Text>
         </>
       ) : activationState === "activated" ? (
         <>
           <Text as="p" className={styles.ThankYou__Subtitle} color="subtle">
-            Your Zush PRO is active. Enjoy 10,000 credits, BYOK, and Offline AI
-            mode.
+            {copy.activatedText}
           </Text>
         </>
       ) : activationState === "activation_ready" ? (
         <>
           <Text as="p" className={styles.ThankYou__Subtitle} color="subtle">
-            We're opening Zush to activate PRO on this device.
+            {copy.activationReadyText}
           </Text>
         </>
       ) : activationState === "expired" ? (
         <>
           <Text as="p" className={styles.ThankYou__Subtitle} color="subtle">
-            We couldn't finish automatic activation from this browser session.
-            We've sent an activation email to you.
+            {copy.expiredText}
           </Text>
           <div className={styles.ThankYou__EmailNotice}>
             <Mail size={24} />
             <Text as="p">
-              Open the email and click the <strong>"Activate PRO"</strong>{" "}
-              button to unlock PRO features in Zush.
+              {copy.expiredNoticeBeforeAction} <strong>"{copy.expiredNoticeAction}"</strong>{' '}
+              {copy.expiredNoticeAfterAction}
             </Text>
           </div>
         </>
       ) : (
         <>
           <Text as="p" className={styles.ThankYou__Subtitle} color="subtle">
-            Your PRO purchase is ready. We sent the activation link to the
-            email address you used at checkout.
+            {copy.emailText}
           </Text>
           <div className={styles.ThankYou__EmailNotice}>
             <Mail size={24} />
             <Text as="p">
-              Open that email and click <strong>"Activate PRO"</strong> to
-              unlock PRO in Zush. If you do not see the email, please check
-              your spam folder.
+              {copy.emailNoticeBeforeAction} <strong>"{copy.emailNoticeAction}"</strong>{' '}
+              {copy.emailNoticeAfterAction}
             </Text>
           </div>
         </>
@@ -184,18 +197,18 @@ const ThankYou = () => {
           {appUrl && (
             <Button as="a" href={appUrl}>
               <ExternalLink size={18} />
-              Open Zush
+              {copy.openZush}
             </Button>
           )}
           {activationState === "email" && (
             <DownloadButton
               source="thank-you"
               variant="black"
-              label="Download Zush"
+              label={copy.downloadZush}
               showDropdown={false}
             />
           )}
-          <BackToHome />
+          <BackToHome href={resolvedHomeHref} label={backToHomeLabel} />
         </div>
       )}
     </PageLayout>

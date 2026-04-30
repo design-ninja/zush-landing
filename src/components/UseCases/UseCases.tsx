@@ -158,10 +158,17 @@ interface UseCasesProps {
   title?: string;
   description?: string;
   items?: UseCaseData[];
+  copy?: {
+    items: Array<{ title: string; description: string }>;
+  };
 }
 
-const UseCases = ({ title, description, items }: UseCasesProps = {}) => {
-  const useCases = items ?? defaultUseCases;
+const UseCases = ({ title, description, items, copy }: UseCasesProps = {}) => {
+  const useCases = items ?? defaultUseCases.map((item, index) => ({
+    ...item,
+    title: copy?.items[index]?.title ?? item.title,
+    description: copy?.items[index]?.description ?? item.description,
+  }));
 
   return (
     <section id='use-cases' className={styles.UseCases}>

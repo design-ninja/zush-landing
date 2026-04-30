@@ -7,6 +7,7 @@ import Heading from "../Heading";
 import Text from "../Text";
 import styles from "./Hero.module.scss";
 import type { DownloadOS } from "@/utils/download";
+import type { DownloadMenuCopy } from "@/i18n/copy";
 
 
 interface HeroProps {
@@ -19,6 +20,10 @@ interface HeroProps {
   compactTopSpacing?: boolean;
   forceOS?: DownloadOS;
   secondaryHref?: string;
+  buyLabel?: string;
+  downloadLabel?: string;
+  downloadMenu?: DownloadMenuCopy;
+  trustSignals?: string[];
 }
 
 const Hero = ({
@@ -31,6 +36,10 @@ const Hero = ({
   compactTopSpacing = false,
   forceOS,
   secondaryHref = "/#pricing",
+  buyLabel = "Buy 🌟 PRO",
+  downloadLabel = "Download",
+  downloadMenu,
+  trustSignals = ["✨ Free to try", "💳 No credit card", "🚫 No subscription"],
 }: HeroProps) => {
   const highlightText = titleHighlight ?? titleAccent;
 
@@ -84,20 +93,20 @@ const Hero = ({
           </Text>
 
           <div className={styles.Hero__Buttons}>
-            <DownloadButton source="hero" size="lg" forceOS={forceOS} />
+            <DownloadButton source="hero" size="lg" forceOS={forceOS} label={downloadLabel} menuCopy={downloadMenu} />
             <Button
               as="link"
               href={secondaryHref}
               variant="primary"
               size="lg"
             >
-              Buy 🌟 PRO
+              {buyLabel}
             </Button>
           </div>
           <ul className={styles.Hero__TrustRow} aria-label="Trust signals">
-            <li>✨ Free to try</li>
-            <li>💳 No credit card</li>
-            <li>🚫 No subscription</li>
+            {trustSignals.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
           </ul>
         </div>
 

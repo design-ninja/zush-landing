@@ -12,6 +12,11 @@ import refundContent from '@/content/refund.md?raw';
 
 interface LegalProps {
   type: 'tos' | 'privacy' | 'refund';
+  title?: string;
+  updated?: string;
+  content?: string;
+  backToHomeLabel?: string;
+  homeHref?: string;
 }
 
 interface LegalMarkdownLinkProps extends React.ComponentPropsWithoutRef<'a'> {
@@ -41,14 +46,21 @@ const titles: Record<string, string> = {
   refund: 'Refund Policy'
 };
 
-const Legal = ({ type }: LegalProps) => {
-  const content = contentMap[type];
+const Legal = ({
+  type,
+  title,
+  updated = 'Last updated: March 19, 2026',
+  content,
+  backToHomeLabel,
+  homeHref,
+}: LegalProps) => {
+  const markdown = content ?? contentMap[type];
 
   return (
     <section className={styles.Legal}>
       <div className={styles.Legal__Container}>
-        <Heading as='h1' className={styles.Legal__Title}>{titles[type]}</Heading>
-        <Text as='p' color='subtle' className={styles.Legal__Updated}>Last updated: March 19, 2026</Text>
+        <Heading as='h1' className={styles.Legal__Title}>{title ?? titles[type]}</Heading>
+        <Text as='p' color='subtle' className={styles.Legal__Updated}>{updated}</Text>
         <div className={`${styles.Legal__Content} markdown-content`}>
           <ReactMarkdown
             components={{
@@ -60,10 +72,10 @@ const Legal = ({ type }: LegalProps) => {
               p: ({ node: _node, color: _color, children }) => <Text as='p'>{children}</Text>,
             }}
           >
-            {content}
+            {markdown}
           </ReactMarkdown>
         </div>
-        <BackToHome className={styles.Legal__BackLink} />
+        <BackToHome className={styles.Legal__BackLink} href={homeHref} label={backToHomeLabel} />
       </div>
     </section>
   );

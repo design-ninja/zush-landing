@@ -8,6 +8,7 @@ import { APP_STORE_PROTOCOL_URL, APP_STORE_URL, WINDOWS_STORE_PROTOCOL_URL, WIND
 import { useOS } from '@/hooks/useOS';
 import { useIsMobile } from '@/hooks/useIsMobile';
 import { getPreferredStoreHref, handleStoreLinkClick } from '@/utils/storeLinks';
+import type { DownloadMenuCopy } from '@/i18n/copy';
 import {
   type DownloadOS,
   type DownloadSource,
@@ -32,11 +33,17 @@ interface DownloadButtonProps {
   useMobileModal?: boolean;
   forceOS?: DownloadOS;
   showDropdown?: boolean;
+  menuCopy?: DownloadMenuCopy;
 }
 
-const OS_STORE_LABEL: Record<DownloadOS, string> = {
-  mac: 'Direct .dmg download',
-  windows: 'Microsoft Store',
+const DEFAULT_MENU_COPY: DownloadMenuCopy = {
+  downloadForMac: 'Download for Mac',
+  windowsTitle: 'Windows (x64/arm64)',
+  macDirectHint: 'Direct .dmg download',
+  windowsHint: 'Microsoft Store',
+  appStoreTitle: 'Mac App Store',
+  appStoreHint: 'Install via App Store',
+  showOptions: 'Show download options for {os}',
 };
 
 const DownloadButton = ({
@@ -48,6 +55,7 @@ const DownloadButton = ({
   useMobileModal = true,
   forceOS,
   showDropdown = true,
+  menuCopy = DEFAULT_MENU_COPY,
 }: DownloadButtonProps) => {
   const { downloadOS: detectedOS, manual: detectedManual } = useOS();
   const downloadOS = forceOS ?? detectedOS;
@@ -74,6 +82,7 @@ const DownloadButton = ({
   const DownloadIcon = downloadOS === 'windows' ? WindowsIcon : AppleIcon;
   const otherOS = getOtherOS(downloadOS);
   const OtherMenuIcon = otherOS === 'windows' ? MicrosoftStoreIcon : AppleIcon;
+  const otherOSLabel = getOSLabel(otherOS);
 
   useEffect(() => {
     if (!showDropdown) return;
@@ -143,9 +152,11 @@ const DownloadButton = ({
       </span>
       <span className={styles.Menu__Text}>
         <span className={styles.Menu__Title}>
-          {otherOS === 'windows' ? 'Windows (x64/arm64)' : `Download for ${getOSLabel(otherOS)}`}
+          {otherOS === 'windows' ? menuCopy.windowsTitle : menuCopy.downloadForMac}
         </span>
-        <span className={styles.Menu__Hint}>{OS_STORE_LABEL[otherOS]}</span>
+        <span className={styles.Menu__Hint}>
+          {otherOS === 'windows' ? menuCopy.windowsHint : menuCopy.macDirectHint}
+        </span>
       </span>
     </a>
   );
@@ -166,8 +177,8 @@ const DownloadButton = ({
         <AppStoreIcon />
       </span>
       <span className={styles.Menu__Text}>
-        <span className={styles.Menu__Title}>Mac App Store</span>
-        <span className={styles.Menu__Hint}>Install via App Store</span>
+        <span className={styles.Menu__Title}>{menuCopy.appStoreTitle}</span>
+        <span className={styles.Menu__Hint}>{menuCopy.appStoreHint}</span>
       </span>
     </a>
   );
@@ -206,7 +217,7 @@ const DownloadButton = ({
         <button
           type='button'
           className={styles.Toggle}
-          aria-label={`Show download options for ${getOSLabel(otherOS)}`}
+          aria-label={menuCopy.showOptions.replace('{os}', otherOSLabel)}
           aria-haspopup='menu'
           aria-expanded={isOpen}
           onClick={() => setIsOpen((prev) => !prev)}

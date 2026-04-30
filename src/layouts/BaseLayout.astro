@@ -6,6 +6,16 @@ import '@/styles/main.scss';
 import Header from '@/components/Header/Header.astro';
 import Footer from '@/components/Footer/Footer.astro';
 import type { DownloadOS } from '@/utils/download';
+import {
+  DEFAULT_LOCALE,
+  LOCALES,
+  LOCALE_META,
+  getAlternatePaths,
+  isLocalizedRoute,
+  stripLocaleFromPath,
+  type Locale,
+} from '@/i18n/config';
+import { getCopy } from '@/i18n/copy';
 import Analytics from '@vercel/analytics/astro';
 
 const crossfadeEasing = 'cubic-bezier(0.4, 0, 0.2, 1)';
@@ -49,6 +59,7 @@ interface Props {
   forceOS?: DownloadOS;
   chromeBasePath?: string;
   disableTopOffset?: boolean;
+  locale?: Locale;
 }
 
 const {
@@ -58,18 +69,30 @@ const {
   forceOS,
   chromeBasePath = '/',
   disableTopOffset = false,
+  locale = DEFAULT_LOCALE,
 } = Astro.props;
 
 const canonicalUrl = getCanonicalUrl(seo.canonicalPath);
+const { route } = stripLocaleFromPath(seo.canonicalPath);
+const alternatePaths = getAlternatePaths(route);
+const shouldEmitLocaleAlternates = isLocalizedRoute(route) && seo.robots !== 'noindex, nofollow';
+const localeMeta = LOCALE_META[locale];
+const layoutCopy = getCopy(locale);
 const ogImage = seo.ogImage || DEFAULT_OG_IMAGE;
 const ldItems = (Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [])
   .filter(Boolean);
-const isHomePage = seo.canonicalPath === '/';
+const isHomePage = route === '/';
 const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
+const shouldAutoDetectLocale = locale === DEFAULT_LOCALE && seo.canonicalPath === '/';
+const localeRedirectConfig = JSON.stringify({
+  ...Object.fromEntries(LOCALES.map((item) => [LOCALE_META[item].lang.toLowerCase(), LOCALE_META[item].slug || ''])),
+  pt: LOCALE_META['pt-br'].slug,
+  zh: LOCALE_META['zh-cn'].slug,
+});
 ---
 
 <!doctype html>
-<html lang="en" transition:animate="none">
+<html lang={localeMeta.lang} dir="ltr" transition:animate="none">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
@@ -148,11 +171,50 @@ const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
         enableScrollReveal();
       })();
     </script>
+    {shouldAutoDetectLocale && (
+      <script is:inline define:vars={{ localeRedirectConfig }}>
+        (() => {
+          const SELECTED_KEY = 'zush-locale';
+          const REDIRECTED_KEY = 'zush-locale-autodetected';
+          const localeMap = JSON.parse(localeRedirectConfig);
+
+          try {
+            if (window.localStorage.getItem(SELECTED_KEY) || window.sessionStorage.getItem(REDIRECTED_KEY)) {
+              return;
+            }
+
+            const languages = navigator.languages && navigator.languages.length > 0
+              ? navigator.languages
+              : [navigator.language].filter(Boolean);
+            const match = languages
+              .map((language) => language.toLowerCase())
+              .map((language) => localeMap[language] ?? localeMap[language.split('-')[0]])
+              .find((slug) => slug);
+
+            if (!match) return;
+            window.sessionStorage.setItem(REDIRECTED_KEY, '1');
+            window.location.replace(`/${match}`);
+          } catch {}
+        })();
+      </script>
+    )}
 
     <title>{seo.title}</title>
     <meta name="description" content={seo.description} />
     <meta name="robots" content={seo.robots} />
     <link rel="canonical" href={canonicalUrl} />
+    {shouldEmitLocaleAlternates && (
+      LOCALES.map((item) => (
+        <link
+          rel="alternate"
+          hreflang={LOCALE_META[item].lang}
+          href={getCanonicalUrl(alternatePaths[item])}
+        />
+      ))
+    )}
+    {shouldEmitLocaleAlternates && (
+      <link rel="alternate" hreflang="x-default" href={getCanonicalUrl(alternatePaths.en)} />
+    )}
 
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
@@ -160,13 +222,13 @@ const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
     <meta property="og:type" content={seo.ogType ?? 'website'} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content="Zush" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content={localeMeta.ogLocale} />
     <meta property="og:title" content={seo.title} />
     <meta property="og:description" content={seo.description} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Zush — AI File Renamer for Mac and Windows" />
+    <meta property="og:image:alt" content={seo.title} />
     {seo.publishedTime && <meta property="article:published_time" content={seo.publishedTime} />}
     {seo.modifiedTime && <meta property="article:modified_time" content={seo.modifiedTime} />}
 
@@ -174,7 +236,7 @@ const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
     <meta name="twitter:title" content={seo.title} />
     <meta name="twitter:description" content={seo.description} />
     <meta name="twitter:image" content={ogImage} />
-    <meta name="twitter:image:alt" content="Zush — AI File Renamer for Mac and Windows" />
+    <meta name="twitter:image:alt" content={seo.title} />
     <meta name="twitter:site" content="@zush_app" />
     <meta name="twitter:creator" content="@zush_app" />
 
@@ -210,8 +272,8 @@ const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
   </head>
   <body>
     <div class="site-shell">
-      <a class="skip-link" href="#main-content">Skip to content</a>
-      {includeChrome && <Header forceOS={forceOS} basePath={chromeBasePath} />}
+      <a class="skip-link" href="#main-content">{layoutCopy.header.skipToContent ?? 'Skip to content'}</a>
+      {includeChrome && <Header forceOS={forceOS} basePath={chromeBasePath} locale={locale} route={route} />}
       <main
         id="main-content"
         class:list={['site-main', { 'site-main_offset': needsTopOffset }]}
@@ -219,19 +281,91 @@ const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
       >
         <slot />
       </main>
-      {includeChrome && <Footer />}
+      {includeChrome && <Footer locale={locale} />}
       <script>
         import { bindCheckoutAutoOpen } from '@/utils/checkoutAutoOpen';
         import { bindPricingCheckout } from '@/utils/pricingCheckout';
         import { bindScrollReveal } from '@/utils/scrollReveal';
         import { bindStoreLinks } from '@/utils/storeLinks';
 
+        const bindLanguageSwitcher = () => {
+          document.querySelectorAll('[data-language-switcher]').forEach((switcher) => {
+            if (!(switcher instanceof HTMLElement) || switcher.dataset.bound === 'true') return;
+
+            const trigger = switcher.querySelector('[data-language-trigger]');
+            const menu = switcher.querySelector('[data-language-menu]');
+            if (!(trigger instanceof HTMLButtonElement) || !(menu instanceof HTMLElement)) return;
+
+            switcher.dataset.bound = 'true';
+
+            const setOpen = (isOpen: boolean) => {
+              switcher.dataset.open = isOpen ? 'true' : 'false';
+              trigger.setAttribute('aria-expanded', String(isOpen));
+              menu.hidden = !isOpen;
+            };
+
+            trigger.addEventListener('click', () => {
+              setOpen(switcher.dataset.open !== 'true');
+            });
+
+            switcher.querySelectorAll('[data-language-option]').forEach((option) => {
+              if (!(option instanceof HTMLAnchorElement)) return;
+              option.addEventListener('click', () => {
+                const nextLocale = option.dataset.locale || '';
+                if (!nextLocale) return;
+                try {
+                  window.localStorage.setItem('zush-locale', nextLocale);
+                } catch {}
+              });
+            });
+
+            document.addEventListener('mousedown', (event) => {
+              if (switcher.dataset.open !== 'true') return;
+              if (event.target instanceof Node && switcher.contains(event.target)) return;
+              setOpen(false);
+            });
+
+            document.addEventListener('keydown', (event) => {
+              if (event.key !== 'Escape' || switcher.dataset.open !== 'true') return;
+              setOpen(false);
+              trigger.focus();
+            });
+
+            switcher.querySelectorAll('[data-language-option]').forEach((option) => {
+              if (!(option instanceof HTMLAnchorElement)) return;
+              option.addEventListener('auxclick', () => {
+                const nextLocale = option.dataset.locale || '';
+                if (!nextLocale) return;
+                try {
+                  window.localStorage.setItem('zush-locale', nextLocale);
+                } catch {}
+              });
+            });
+          });
+
+          document.querySelectorAll('select[data-language-switcher]').forEach((select) => {
+            if (!(select instanceof HTMLSelectElement) || select.dataset.bound === 'true') return;
+            select.dataset.bound = 'true';
+            select.addEventListener('change', () => {
+              const paths = JSON.parse(select.dataset.languagePaths || '{}');
+              const nextLocale = select.value;
+              const nextPath = paths[nextLocale] || '/';
+              try {
+                window.localStorage.setItem('zush-locale', nextLocale);
+              } catch {}
+              window.location.href = nextPath;
+            });
+          });
+        };
+
         bindCheckoutAutoOpen();
+        bindLanguageSwitcher();
         bindPricingCheckout();
         bindScrollReveal();
         bindStoreLinks();
         document.addEventListener('astro:after-swap', () => {
           bindCheckoutAutoOpen();
+          bindLanguageSwitcher();
           bindPricingCheckout();
           bindScrollReveal();
           bindStoreLinks();

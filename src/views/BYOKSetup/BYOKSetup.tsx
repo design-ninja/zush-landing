@@ -6,11 +6,11 @@ import Heading from '@/components/Heading';
 import Text from '@/components/Text';
 import styles from './BYOKSetup.module.scss';
 
-interface ProviderSetup {
+export interface ProviderSetup {
   title: string;
   providerName: string;
   dashboardName: string;
-  dashboardInstruction: string;
+  getKeyText: string;
   dashboardUrl: string;
   buttonLabel: string;
   copyInstruction: string;
@@ -19,18 +19,46 @@ interface ProviderSetup {
   pricingUrl: string;
 }
 
-const benefits = [
+export interface BYOKSetupCopy {
+  title: string;
+  subtitle: string;
+  whatTitle: string;
+  whatBody: string;
+  benefits: readonly (readonly [string, string])[];
+  providers: ProviderSetup[];
+  steps: {
+    getKey: string;
+    copyKey: string;
+    configure: string;
+    settingsPath: string;
+    selectProvider: (providerName: string) => string;
+    pasteKey: string;
+    saveEnable: string;
+    viewPricing: string;
+  };
+  faqTitle: string;
+  faqs: readonly {
+    question: string;
+    answer: string;
+  }[];
+  securityTitle: string;
+  securityBody: string;
+  backToHomeLabel?: string;
+  homeHref?: string;
+}
+
+const defaultBenefits = [
   ['∞', 'Unlimited cloud renames (no credit limits)'],
   ['💰', 'Pay only for what you use (API costs are very low)'],
   ['🔐', 'Your data never leaves your control'],
 ] as const;
 
-const providers: ProviderSetup[] = [
+const defaultProviders: ProviderSetup[] = [
   {
     title: 'Option 1: Gemini API (Google)',
     providerName: 'Gemini (Google)',
     dashboardName: 'Google AI Studio',
-    dashboardInstruction: 'create a free API key',
+    getKeyText: 'Visit Google AI Studio and create a free API key',
     dashboardUrl: 'https://aistudio.google.com/app/apikey',
     buttonLabel: 'Open Google AI Studio',
     copyInstruction:
@@ -43,7 +71,7 @@ const providers: ProviderSetup[] = [
     title: 'Option 2: Groq API',
     providerName: 'Groq',
     dashboardName: 'Groq Console',
-    dashboardInstruction: 'create a free API key',
+    getKeyText: 'Visit Groq Console and create a free API key',
     dashboardUrl: 'https://console.groq.com/keys',
     buttonLabel: 'Open Groq Console',
     copyInstruction:
@@ -56,7 +84,7 @@ const providers: ProviderSetup[] = [
     title: 'Option 3: OpenAI API',
     providerName: 'OpenAI',
     dashboardName: 'OpenAI Platform',
-    dashboardInstruction: 'create an API key',
+    getKeyText: 'Visit OpenAI Platform and create an API key',
     dashboardUrl: 'https://platform.openai.com/api-keys',
     buttonLabel: 'Open OpenAI Platform',
     copyInstruction:
@@ -70,7 +98,7 @@ const providers: ProviderSetup[] = [
     title: 'Option 4: Claude API (Anthropic)',
     providerName: 'Claude',
     dashboardName: 'Anthropic Console',
-    dashboardInstruction: 'create an API key',
+    getKeyText: 'Visit Anthropic Console and create an API key',
     dashboardUrl: 'https://console.anthropic.com/settings/keys',
     buttonLabel: 'Open Anthropic Console',
     copyInstruction:
@@ -82,7 +110,7 @@ const providers: ProviderSetup[] = [
   },
 ];
 
-const faqs = [
+const defaultFaqs = [
   {
     question: 'Is my API key secure?',
     answer:
@@ -110,7 +138,38 @@ const faqs = [
   },
 ] as const;
 
-const ProviderSetupSection = ({ provider }: { provider: ProviderSetup }) => (
+export const defaultBYOKSetupCopy: BYOKSetupCopy = {
+  title: 'BYOK Setup Guide',
+  subtitle: 'Bring Your Own Key for unlimited cloud renames',
+  whatTitle: 'What is BYOK?',
+  whatBody:
+    "BYOK (Bring Your Own Key) allows Zush PRO users to use their own AI provider API keys for unlimited cloud renames. Instead of using Zush's AI credits, your files are analyzed using your own API key from Gemini, Groq, OpenAI, or Claude.",
+  benefits: defaultBenefits,
+  providers: defaultProviders,
+  steps: {
+    getKey: 'Get your API key',
+    copyKey: 'Copy your API key',
+    configure: 'Configure in Zush',
+    settingsPath: 'Open Zush -> Settings -> Preferences -> BYOK section',
+    selectProvider: (providerName) => `Select "${providerName}" as AI Provider`,
+    pasteKey: 'Paste your API key',
+    saveEnable: 'Click "Save" and enable BYOK',
+    viewPricing: 'View pricing ->',
+  },
+  faqTitle: 'Frequently Asked Questions',
+  faqs: defaultFaqs,
+  securityTitle: 'Security & Privacy',
+  securityBody:
+    'Your API keys are stored locally in secure platform storage and used only for BYOK processing. In BYOK mode, analysis requests are still relayed through Zush backend infrastructure and then sent to your chosen AI provider using your API key. Zush does not store file content after processing as part of normal operation.',
+};
+
+const ProviderSetupSection = ({
+  provider,
+  steps,
+}: {
+  provider: ProviderSetup;
+  steps: BYOKSetupCopy['steps'];
+}) => (
   <div className={styles.BYOKSetup__Section}>
     <div className={styles.BYOKSetup__SectionHeader}>
       <Key size={24} />
@@ -121,10 +180,8 @@ const ProviderSetupSection = ({ provider }: { provider: ProviderSetup }) => (
       <div className={styles.BYOKSetup__Step}>
         <div className={styles.BYOKSetup__StepNumber}>1</div>
         <div className={styles.BYOKSetup__StepContent}>
-          <Heading as='h3'>Get your API key</Heading>
-          <Text as='p'>
-            Visit {provider.dashboardName} and {provider.dashboardInstruction}
-          </Text>
+          <Heading as='h3'>{steps.getKey}</Heading>
+          <Text as='p'>{provider.getKeyText}</Text>
           <Button
             as="a"
             href={provider.dashboardUrl}
@@ -141,7 +198,7 @@ const ProviderSetupSection = ({ provider }: { provider: ProviderSetup }) => (
       <div className={styles.BYOKSetup__Step}>
         <div className={styles.BYOKSetup__StepNumber}>2</div>
         <div className={styles.BYOKSetup__StepContent}>
-          <Heading as='h3'>Copy your API key</Heading>
+          <Heading as='h3'>{steps.copyKey}</Heading>
           <Text as='p'>{provider.copyInstruction}</Text>
         </div>
       </div>
@@ -149,12 +206,12 @@ const ProviderSetupSection = ({ provider }: { provider: ProviderSetup }) => (
       <div className={styles.BYOKSetup__Step}>
         <div className={styles.BYOKSetup__StepNumber}>3</div>
         <div className={styles.BYOKSetup__StepContent}>
-          <Heading as='h3'>Configure in Zush</Heading>
-          <Text as='p'>Open Zush → Settings → Preferences → BYOK section</Text>
+          <Heading as='h3'>{steps.configure}</Heading>
+          <Text as='p'>{steps.settingsPath}</Text>
           <ul>
-            <li>Select "{provider.providerName}" as AI Provider</li>
-            <li>Paste your API key</li>
-            <li>Click "Save" and enable BYOK</li>
+            <li>{steps.selectProvider(provider.providerName)}</li>
+            <li>{steps.pasteKey}</li>
+            <li>{steps.saveEnable}</li>
           </ul>
         </div>
       </div>
@@ -167,37 +224,39 @@ const ProviderSetupSection = ({ provider }: { provider: ProviderSetup }) => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        View pricing →
+        {steps.viewPricing}
       </AppLink>
     </div>
   </div>
 );
 
-const BYOKSetup = () => {
+interface BYOKSetupProps {
+  copy?: BYOKSetupCopy;
+}
+
+const BYOKSetup = ({ copy = defaultBYOKSetupCopy }: BYOKSetupProps) => {
   return (
     <section className={styles.BYOKSetup}>
       <div className={styles.BYOKSetup__Container}>
         <Heading as='h1' className={styles.BYOKSetup__Title}>
-          BYOK Setup Guide
+          {copy.title}
         </Heading>
 
         <Text as='p' className={styles.BYOKSetup__Subtitle} color='subtle'>
-          Bring Your Own Key for unlimited cloud renames
+          {copy.subtitle}
         </Text>
 
         <div className={styles.BYOKSetup__Content}>
           <div className={styles.BYOKSetup__Section}>
             <div className={styles.BYOKSetup__SectionHeader}>
               <Infinity size={24} />
-              <Heading as='h2'>What is BYOK?</Heading>
+              <Heading as='h2'>{copy.whatTitle}</Heading>
             </div>
             <Text as='p'>
-              BYOK (Bring Your Own Key) allows Zush PRO users to use their own AI provider API keys
-              for unlimited cloud renames. Instead of using Zush's AI credits, your files are
-              analyzed using your own API key from Gemini, Groq, OpenAI, or Claude.
+              {copy.whatBody}
             </Text>
             <div className={styles.BYOKSetup__Benefits}>
-              {benefits.map(([icon, label]) => (
+              {copy.benefits.map(([icon, label]) => (
                 <div className={styles.BYOKSetup__Benefit} key={label}>
                   <span className={styles.BYOKSetup__BenefitIcon}>{icon}</span>
                   <span>{label}</span>
@@ -206,18 +265,18 @@ const BYOKSetup = () => {
             </div>
           </div>
 
-          {providers.map((provider) => (
-            <ProviderSetupSection key={provider.providerName} provider={provider} />
+          {copy.providers.map((provider) => (
+            <ProviderSetupSection key={provider.providerName} provider={provider} steps={copy.steps} />
           ))}
 
           <div className={styles.BYOKSetup__Section}>
             <div className={styles.BYOKSetup__SectionHeader}>
               <HelpCircle size={24} />
-              <Heading as='h2'>Frequently Asked Questions</Heading>
+              <Heading as='h2'>{copy.faqTitle}</Heading>
             </div>
 
             <div className={styles.BYOKSetup__FAQ}>
-              {faqs.map((faq) => (
+              {copy.faqs.map((faq) => (
                 <div className={styles.BYOKSetup__FAQItem} key={faq.question}>
                   <Heading as='h3'>{faq.question}</Heading>
                   <Text as='p'>{faq.answer}</Text>
@@ -230,19 +289,20 @@ const BYOKSetup = () => {
             <div className={styles.BYOKSetup__SecurityNotice}>
               <Shield size={24} />
               <div>
-                <Heading as='h3'>Security & Privacy</Heading>
+                <Heading as='h3'>{copy.securityTitle}</Heading>
                 <Text as='p'>
-                  Your API keys are stored locally in secure platform storage and used
-                  only for BYOK processing. In BYOK mode, analysis requests are still relayed through
-                  Zush backend infrastructure and then sent to your chosen AI provider using your API
-                  key. Zush does not store file content after processing as part of normal operation.
+                  {copy.securityBody}
                 </Text>
               </div>
             </div>
           </div>
         </div>
 
-        <BackToHome className={styles.BYOKSetup__BackLink} />
+        <BackToHome
+          className={styles.BYOKSetup__BackLink}
+          href={copy.homeHref}
+          label={copy.backToHomeLabel}
+        />
       </div>
     </section>
   );

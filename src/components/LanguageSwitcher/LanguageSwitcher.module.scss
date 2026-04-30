@@ -1,0 +1,160 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.LanguageSwitcher {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  z-index: 1;
+
+  &[data-open='true'] {
+    z-index: 50;
+
+    .LanguageSwitcher__Icon {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.LanguageSwitcher__Button {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-width: 7.6rem;
+  border: 1px solid var(--border);
+  border-radius: $radius-full;
+  @include corner-shape-squircle;
+  background-color: var(--background);
+  color: var(--foreground);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.25;
+  padding: 0.48rem 0.65rem 0.48rem 0.75rem;
+  transition:
+    background-color $transition-fast,
+    border-color $transition-fast,
+    box-shadow $transition-fast,
+    color $transition-fast,
+    outline-color $transition-fast;
+
+  &:hover,
+  &:focus-visible {
+    border-color: var(--primary);
+    background-color: var(--muted);
+    outline: none;
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 2px var(--primary-soft);
+  }
+}
+
+.LanguageSwitcher__Flag,
+.LanguageSwitcher__MenuFlag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.25rem;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.LanguageSwitcher__Current {
+  min-width: 0;
+  overflow: hidden;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.LanguageSwitcher__Icon {
+  flex-shrink: 0;
+  color: var(--muted-foreground);
+  transition: transform $transition-fast;
+}
+
+.LanguageSwitcher__Menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  z-index: 100;
+  min-width: 12.5rem;
+  width: max-content;
+  max-width: min(18rem, calc(100vw - 2rem));
+  border: 1px solid var(--border);
+  border-radius: $radius-lg;
+  @include corner-shape-squircle;
+  background-color: var(--background);
+  color: var(--foreground);
+  padding: 0.35rem;
+  box-shadow: 0 20px 45px -20px rgba(0, 0, 0, 0.25), 0 2px 6px rgba(0, 0, 0, 0.06);
+  animation: languageMenuFadeIn 120ms ease-out;
+}
+
+.LanguageSwitcher__MenuItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: $radius-md;
+  color: inherit;
+  padding: 0.55rem 0.65rem;
+  text-decoration: none;
+  transition:
+    background-color $transition-fast,
+    color $transition-fast;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--muted);
+    outline: none;
+  }
+
+  &_active {
+    background-color: var(--primary-soft);
+    color: var(--primary);
+  }
+}
+
+.LanguageSwitcher__MenuText {
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  text-align: left;
+  line-height: 1.25;
+}
+
+.LanguageSwitcher__MenuTitle {
+  color: currentColor;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .LanguageSwitcher__Button {
+    min-width: 5.9rem;
+    max-width: 7.6rem;
+    padding: 0.46rem 0.55rem 0.46rem 0.65rem;
+  }
+
+  .LanguageSwitcher__Current {
+    max-width: 4.25rem;
+  }
+}
+
+@keyframes languageMenuFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

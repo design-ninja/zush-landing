@@ -1,5 +1,4 @@
 ---
-import { Picture } from 'astro:assets';
 import {
   FolderSync,
   Sparkles,
@@ -21,51 +20,138 @@ import glitchThumb from '@/assets/features/glitch_thumb.png';
 import BentoCard from './BentoCard.astro';
 import styles from './Features.module.scss';
 
+interface Props {
+  title?: string;
+  description?: string;
+  copy?: FeatureCardCopy;
+}
+
+interface FeatureCardCopy {
+  aiAnalysis: { title: string; description: string };
+  foldersMonitoring: { title: string; description: string };
+  batchRename: { title: string; description: string };
+  customPatterns: { title: string; description: string };
+  smartMetadata: { title: string; description: string };
+  renameHistory: { title: string; description: string };
+  customPrompts: { title: string; description: string };
+  byok: { title: string; description: string };
+  offlineAi: { title: string; description: string };
+  addFolder: string;
+  promptRules: string;
+  customBadge: string;
+  apiKeyConnected: string;
+  terminal: string;
+  localModelReady: string;
+  today: string;
+  undo: string;
+  analysisNewName: string;
+  batchNewNames: string[];
+  metadataFileName: string;
+  metadataTags: string[];
+  historyNewNames: string[];
+  promptExample: string;
+}
+
+const defaultCopy: FeatureCardCopy = {
+  aiAnalysis: {
+    title: 'AI Analysis',
+    description: 'Advanced AI analyzes images and supported documents, including PDFs, to generate meaningful, descriptive filenames automatically.',
+  },
+  foldersMonitoring: {
+    title: 'Folders Monitoring',
+    description: 'Watch one or multiple folders. Zush runs in the background and processes new files automatically.',
+  },
+  batchRename: {
+    title: 'Batch Rename',
+    description: 'Drag and drop multiple files at once. Zush will analyze and rename them all in seconds.',
+  },
+  customPatterns: {
+    title: 'Custom Patterns',
+    description: 'Set your own file naming pattern with variables like {title}, {original}, {date}, {time}, or {category}.',
+  },
+  smartMetadata: {
+    title: 'Smart Metadata',
+    description: 'Automatically add Finder tags and Spotlight metadata. Find files instantly with natural search queries.',
+  },
+  renameHistory: {
+    title: 'Rename History',
+    description: 'Keep track of every change. Made a mistake? Rollback to the original filename with one click.',
+  },
+  customPrompts: {
+    title: 'Custom AI Prompts',
+    description: 'Set rename, tagging, and metadata rules so AI output follows your style and workflow.',
+  },
+  byok: {
+    title: 'Bring Your Own Key',
+    description: 'Connect your own API key from Gemini, Groq, OpenAI, or Claude for unlimited cloud renames. Keys are stored locally in secure platform storage.',
+  },
+  offlineAi: {
+    title: 'Offline AI mode',
+    description: 'Private local models via Ollama. Process supported files offline without sending analysis content to Zush cloud or AI providers.',
+  },
+  addFolder: 'Add Folder',
+  promptRules: 'Prompt rules',
+  customBadge: 'Custom',
+  apiKeyConnected: 'API key connected',
+  terminal: 'Terminal',
+  localModelReady: 'Local model ready',
+  today: 'Today',
+  undo: 'Undo',
+  analysisNewName: 'Bali_Sunset_Beach.png',
+  batchNewNames: ['Kanban Board UI.png', 'Hiring Plan Notes.docx', 'Investor Update Deck.pptx'],
+  metadataFileName: 'Cyberpunk_Art.png',
+  metadataTags: ['glitch art', 'vaporwave', 'statue', 'cyberpunk', 'digital art', 'palm tree'],
+  historyNewNames: ['Dashboard Review Notes.docx', 'Q1 Revenue Report.xlsx'],
+  promptExample: 'Keep names short, put the subject first, and add matching Finder tags.',
+};
+
+const {
+  title = 'How Zush AI Renames Your Files',
+  description = 'Powerful features packed into a simple, elegant interface',
+  copy = defaultCopy,
+} = Astro.props as Props;
 const currentYear = new Date().getFullYear();
+const titleParts = title.split('Zush');
 ---
 
 <section id='features' class={styles.Features}>
   <div class={styles.Features__Container}>
     <div class={styles.SectionHeader ?? ''} style='text-align: center; margin-bottom: 2rem; max-width: 50rem; margin-left: auto; margin-right: auto;'>
       <Heading as='h2' align='center' style={{ marginBottom: '1.25rem' }}>
-        How <span class={styles.Features__TitleAccent}>Zush</span> AI Renames Your Files
+        {titleParts[0]}{titleParts.length > 1 ? <span class={styles.Features__TitleAccent}>Zush</span> : null}{titleParts.slice(1).join('Zush')}
       </Heading>
       <Text as='p' size='lg' color='subtle' align='center' style={{ maxWidth: '35rem', marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.6 }}>
-        Powerful features packed into a simple, elegant interface
+        {description}
       </Text>
     </div>
 
     <div class={styles.BentoGrid}>
       <BentoCard
-        title='AI Analysis'
-        description='Advanced AI analyzes images and supported documents, including PDFs, to generate meaningful, descriptive filenames automatically.'
+        title={copy.aiAnalysis.title}
+        description={copy.aiAnalysis.description}
         icon={Sparkles}
       >
         <div class={styles.UI_Analysis}>
           <div class={styles.UI_Analysis__Preview}>
-            <Picture
-              src={sunsetThumb}
+            <img
+              src={sunsetThumb.src}
               alt='Sunset'
               width={64}
               height={64}
-              widths={[64, 128]}
-              sizes='64px'
               loading='lazy'
               decoding='async'
-              formats={['webp']}
-              fallbackFormat='png'
             />
           </div>
           <div class={styles.UI_Analysis__Content}>
             <span class={styles.UI_Analysis__OldName}>{`Screenshot ${currentYear}-03-15 at 19.45.22.png`}</span>
-            <span class={styles.UI_Analysis__NewName}>Bali_Sunset_Beach.png</span>
+            <span class={styles.UI_Analysis__NewName}>{copy.analysisNewName}</span>
           </div>
         </div>
       </BentoCard>
 
       <BentoCard
-        title='Folders Monitoring'
-        description='Watch one or multiple folders. Zush runs in the background and processes new files automatically.'
+        title={copy.foldersMonitoring.title}
+        description={copy.foldersMonitoring.description}
         icon={FolderSync}
       >
         <div class={styles.UI_Monitoring}>
@@ -88,14 +174,14 @@ const currentYear = new Date().getFullYear();
             </div>
           </div>
           <div class={styles.UI_Monitoring__Add}>
-            <Plus size={16} /> Add Folder
+            <Plus size={16} /> {copy.addFolder}
           </div>
         </div>
       </BentoCard>
 
       <BentoCard
-        title='Batch Rename'
-        description='Drag and drop multiple files at once. Zush will analyze and rename them all in seconds.'
+        title={copy.batchRename.title}
+        description={copy.batchRename.description}
         icon={Layers}
       >
         <div class={styles.UI_Batch}>
@@ -103,7 +189,7 @@ const currentYear = new Date().getFullYear();
             <div class={styles.UI_Batch__Item}>
               <div class={styles.UI_Batch__Names}>
                 <span class={styles.UI_Batch__OldName}>{`Screenshot ${currentYear}-02-21.png`}</span>
-                <span class={styles.UI_Batch__NewName}>→ Kanban Board UI.png</span>
+                <span class={styles.UI_Batch__NewName}>→ {copy.batchNewNames[0]}</span>
               </div>
               <div class={styles.UI_Batch__Check}>
                 <Check size={14} />
@@ -112,7 +198,7 @@ const currentYear = new Date().getFullYear();
             <div class={styles.UI_Batch__Item}>
               <div class={styles.UI_Batch__Names}>
                 <span class={styles.UI_Batch__OldName}>notes-final-v3.docx</span>
-                <span class={styles.UI_Batch__NewName}>→ Hiring Plan Notes.docx</span>
+                <span class={styles.UI_Batch__NewName}>→ {copy.batchNewNames[1]}</span>
               </div>
               <div class={styles.UI_Batch__Check}>
                 <Check size={14} />
@@ -121,7 +207,7 @@ const currentYear = new Date().getFullYear();
             <div class={styles.UI_Batch__Item}>
               <div class={styles.UI_Batch__Names}>
                 <span class={styles.UI_Batch__OldName}>investor-update-final.pptx</span>
-                <span class={styles.UI_Batch__NewName}>→ Investor Update Deck.pptx</span>
+                <span class={styles.UI_Batch__NewName}>→ {copy.batchNewNames[2]}</span>
               </div>
               <div class={styles.UI_Batch__Check}>
                 <Check size={14} />
@@ -132,8 +218,8 @@ const currentYear = new Date().getFullYear();
       </BentoCard>
 
       <BentoCard
-        title='Custom Patterns'
-        description='Set your own file naming pattern with variables like {title}, {original}, {date}, {time}, or {category}.'
+        title={copy.customPatterns.title}
+        description={copy.customPatterns.description}
         icon={Sliders}
       >
         <div class={styles.UI_Patterns}>
@@ -151,84 +237,75 @@ const currentYear = new Date().getFullYear();
       </BentoCard>
 
       <BentoCard
-        title='Smart Metadata'
-        description='Automatically add Finder tags and Spotlight metadata. Find files instantly with natural search queries.'
+        title={copy.smartMetadata.title}
+        description={copy.smartMetadata.description}
         icon={Tag}
       >
         <div class={styles.UI_Metadata}>
           <div class={styles.UI_Metadata__File}>
             <div class={styles.UI_Metadata__Preview}>
-              <Picture
-                src={glitchThumb}
+              <img
+                src={glitchThumb.src}
                 alt='Glitch Art'
                 width={64}
                 height={64}
-                widths={[64, 128]}
-                sizes='64px'
                 loading='lazy'
                 decoding='async'
-                formats={['webp']}
-                fallbackFormat='png'
               />
             </div>
             <div class={styles.UI_Metadata__FileInfo}>
-              <span class={styles.UI_Metadata__FileName}>Cyberpunk_Art.png</span>
+              <span class={styles.UI_Metadata__FileName}>{copy.metadataFileName}</span>
               <span class={styles.UI_Metadata__FileMeta}>4.2 MB</span>
             </div>
           </div>
           <div class={styles.UI_Metadata__Tags}>
-            <span>glitch art</span>
-            <span>vaporwave</span>
-            <span>statue</span>
-            <span>cyberpunk</span>
-            <span>digital art</span>
-            <span>palm tree</span>
+            {copy.metadataTags.map((tag) => <span>{tag}</span>)}
           </div>
         </div>
       </BentoCard>
 
       <BentoCard
-        title='Rename History'
-        description='Keep track of every change. Made a mistake? Rollback to the original filename with one click.'
+        title={copy.renameHistory.title}
+        description={copy.renameHistory.description}
         icon={History}
       >
         <div class={styles.UI_History}>
           <div class={styles.UI_History__Item}>
             <div class={styles.UI_History__Names}>
               <span class={styles.UI_History__OldName}>notes_FINAL_copy.docx</span>
-              <span class={styles.UI_History__NewName}>→ Dashboard Review Notes.docx</span>
+              <span class={styles.UI_History__NewName}>→ {copy.historyNewNames[0]}</span>
             </div>
             <div class={styles.UI_History__Meta}>
-              <span class={styles.UI_History__Time}>Today, 09:51</span>
-              <span class={styles.UI_History__Undo}>Undo</span>
+              <span class={styles.UI_History__Time}>{copy.today}, 09:51</span>
+              <span class={styles.UI_History__Undo}>{copy.undo}</span>
             </div>
           </div>
           <div class={`${styles.UI_History__Item} ${styles.UI_History__Item_faded}`}>
             <div class={styles.UI_History__Names}>
               <span class={styles.UI_History__OldName}>q1_report_export.xlsx</span>
-              <span class={styles.UI_History__NewName}>→ Q1 Revenue Report.xlsx</span>
+              <span class={styles.UI_History__NewName}>→ {copy.historyNewNames[1]}</span>
             </div>
             <div class={styles.UI_History__Meta}>
-              <span class={styles.UI_History__Time}>Today, 08:30</span>
+              <span class={styles.UI_History__Time}>{copy.today}, 08:30</span>
             </div>
           </div>
         </div>
       </BentoCard>
 
       <BentoCard
-        title='Custom AI Prompts'
-        description='Set rename, tagging, and metadata rules so AI output follows your style and workflow.'
+        title={copy.customPrompts.title}
+        description={copy.customPrompts.description}
         icon={MessageSquareText}
       >
         <div class={styles.UI_Prompts}>
           <div class={styles.UI_Prompts__Panel}>
             <div class={styles.UI_Prompts__Header}>
-              <span class={styles.UI_Prompts__Label}>Prompt rules</span>
-              <span class={styles.UI_Prompts__Badge}>Custom</span>
+              <span class={styles.UI_Prompts__Label}>{copy.promptRules}</span>
+              <span class={styles.UI_Prompts__Badge}>{copy.customBadge}</span>
             </div>
             <div class={styles.UI_Prompts__Editor}>
               <span class={styles.UI_Prompts__Text}>
-                Keep names short, put the subject first, and add matching Finder tags.
+                {copy.promptExample}
               </span>
             </div>
           </div>
@@ -236,14 +313,14 @@ const currentYear = new Date().getFullYear();
       </BentoCard>
 
       <BentoCard
-        title='Bring Your Own Key'
-        description='Connect your own API key from Gemini, Groq, OpenAI, or Claude for unlimited cloud renames. Keys are stored locally in secure platform storage.'
+        title={copy.byok.title}
+        description={copy.byok.description}
         icon={KeyRound}
         badge='PRO 🌟'
       >
         <div class={styles.UI_BYOK}>
           <div class={styles.UI_BYOK__Input}>
-            <span class={styles.UI_BYOK__Key}>API key connected</span>
+            <span class={styles.UI_BYOK__Key}>{copy.apiKeyConnected}</span>
             <div class={styles.UI_BYOK__Icon}>
               <Check size={14} />
             </div>
@@ -258,15 +335,15 @@ const currentYear = new Date().getFullYear();
       </BentoCard>
 
       <BentoCard
-        title='Offline AI mode'
-        description='Private local models via Ollama. Process supported files offline without sending analysis content to Zush cloud or AI providers.'
+        title={copy.offlineAi.title}
+        description={copy.offlineAi.description}
         icon={Bot}
         badge='PRO 🌟'
       >
         <div class={styles.UI_Ollama}>
           <div class={styles.UI_Ollama__Terminal}>
             <div class={styles.UI_Ollama__Header}>
-              <span>Terminal</span>
+              <span>{copy.terminal}</span>
             </div>
             <div class={styles.UI_Ollama__Body}>
               <div class={styles.UI_Ollama__Line}>
@@ -275,7 +352,7 @@ const currentYear = new Date().getFullYear();
               </div>
               <div class={styles.UI_Ollama__Status}>
                 <Check size={14} />
-                <span>Local model ready</span>
+                <span>{copy.localModelReady}</span>
               </div>
             </div>
           </div>

@@ -10,18 +10,44 @@ import ErrorMessage from '@/components/ErrorMessage';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
 import { useEmailSubmission } from '@/hooks/useEmailSubmission';
+import { DEFAULT_LOCALE, getLocalizedPath, type Locale } from '@/i18n/config';
+import { getServicePageCopy, type ManageSubscriptionCopy } from '@/i18n/servicePages';
 import styles from './ManageSubscription.module.scss';
 
-const ManageSubscription = () => {
+interface ManageSubscriptionProps {
+  locale?: Locale;
+  copy?: ManageSubscriptionCopy;
+  backToHomeLabel?: string;
+  homeHref?: string;
+  emailPlaceholder?: string;
+  emailRequired?: string;
+  genericError?: string;
+  connectionError?: string;
+}
+
+const defaultServiceCopy = getServicePageCopy(DEFAULT_LOCALE);
+
+const ManageSubscription = ({
+  locale = DEFAULT_LOCALE,
+  copy = defaultServiceCopy.manageSubscription,
+  backToHomeLabel = defaultServiceCopy.backToHome,
+  homeHref,
+  emailPlaceholder = defaultServiceCopy.emailPlaceholder,
+  emailRequired = defaultServiceCopy.emailRequired,
+  genericError = defaultServiceCopy.genericError,
+  connectionError = defaultServiceCopy.connectionError,
+}: ManageSubscriptionProps) => {
   const [sent, setSent] = useState(false);
+  const resolvedHomeHref = homeHref ?? getLocalizedPath('/', locale);
   const { email, error, handleSubmit, isLoading, setEmail } =
     useEmailSubmission({
       endpoint: 'send-customer-portal-link',
       onSubmitStart: () => setSent(false),
       onSuccess: () => setSent(true),
+      messages: { emailRequired, genericError, connectionError },
       getErrorMessage: async (response) => {
         const data = await response.json();
-        return data.error || 'Something went wrong. Please try again.';
+        return data.error || genericError;
       },
     });
 
@@ -32,13 +58,11 @@ const ManageSubscription = () => {
       </PageIcon>
 
       <Heading as='h1' className={styles.ManageSubscription__Title}>
-        Manage Subscription
+        {copy.title}
       </Heading>
 
       <Text as='p' className={styles.ManageSubscription__Subtitle} color='subtle'>
-        Enter the email address associated with your Zush PRO subscription.
-        We will send a one-time link to manage billing, payment methods, or
-        cancellation.
+        {copy.subtitle}
       </Text>
 
       <form onSubmit={handleSubmit} className={styles.ManageSubscription__Form}>
@@ -46,16 +70,16 @@ const ManageSubscription = () => {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="your@email.com"
+          placeholder={emailPlaceholder}
           disabled={isLoading}
         />
 
         <Button type="submit" variant="primary" disabled={isLoading}>
           {isLoading ? (
-            'Sending...'
+            copy.sending
           ) : (
             <>
-              Send Management Link
+              {copy.send}
               <Mail size={16} />
             </>
           )}
@@ -65,7 +89,7 @@ const ManageSubscription = () => {
       {sent && (
         <div className={styles.ManageSubscription__Success}>
           <Text as='p' size='sm'>
-            Check your email for a one-time subscription management link.
+            {copy.success}
           </Text>
         </div>
       )}
@@ -75,12 +99,11 @@ const ManageSubscription = () => {
       <div className={styles.ManageSubscription__Actions}>
         <div className={styles.ManageSubscription__Info}>
           <Text as='p' size='sm' color='subtle'>
-            <strong>Note:</strong> For security, the link expires quickly and
-            can only be used once.
+            <strong>{copy.noteLabel}</strong> {copy.noteText}
           </Text>
         </div>
 
-        <BackToHome />
+        <BackToHome href={resolvedHomeHref} label={backToHomeLabel} />
       </div>
     </PageLayout>
   );

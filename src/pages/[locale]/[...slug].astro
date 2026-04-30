@@ -1,0 +1,273 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import FeatureLandingPageShell from '@/components/FeatureLandingPage/FeatureLandingPageShell.astro';
+import MethodologyPage from '@/components/MethodologyPage/MethodologyPage.astro';
+import PlatformLandingPage from '@/components/PlatformLandingPage/PlatformLandingPage.astro';
+import { getFeaturePageProps } from '@/utils/featurePageProps';
+import ActivateView from '@/views/Activate';
+import AIFileRenamer from '@/views/FeaturePages/AIFileRenamer';
+import AIImageRenamer from '@/views/FeaturePages/AIImageRenamer';
+import AutoRenameFiles from '@/views/FeaturePages/AutoRenameFiles';
+import BatchRenameFiles from '@/views/FeaturePages/BatchRenameFiles';
+import BYOKSetup from '@/views/BYOKSetup';
+import Legal from '@/views/Legal';
+import ManageSubscriptionView from '@/views/ManageSubscription';
+import ManageSubscriptionConfirmView from '@/views/ManageSubscription/ManageSubscriptionConfirm';
+import NotFound from '@/views/NotFound/NotFound';
+import OllamaSetupView from '@/views/OllamaSetup';
+import RecoverView from '@/views/Recover';
+import RenameDocumentsWithAI from '@/views/FeaturePages/RenameDocumentsWithAI';
+import RenamePDFWithAI from '@/views/FeaturePages/RenamePDFWithAI';
+import RenamePhotosWithAI from '@/views/FeaturePages/RenamePhotosWithAI';
+import RenameScreenshotsWithAI from '@/views/FeaturePages/RenameScreenshotsWithAI';
+import ThankYouView from '@/views/ThankYou';
+import { buildFeatureBreadcrumbJsonLd } from '@/utils/jsonLd';
+import {
+  LOCALIZED_ROUTES,
+  LOCALES,
+  getLocalizedPath,
+  isLocale,
+  isLocalizedRoute,
+  type Locale,
+  type LocalizedRoute,
+} from '@/i18n/config';
+import { getCopy } from '@/i18n/copy';
+import { getLegalPageCopy, getMethodologyCopy } from '@/i18n/internalPages';
+import { getLocalizedSeoForRoute } from '@/i18n/seo';
+import { getServicePageCopy, isServiceLocalizedRoute } from '@/i18n/servicePages';
+import { getBYOKSetupCopy, getOllamaSetupCopy } from '@/i18n/setupGuides';
+import { getStaticPageCopy, isStaticLocalizedRoute } from '@/i18n/staticPages';
+import { getSeoForPath } from '@/seo/config';
+
+const FEATURE_VIEWS = {
+  '/ai-file-renamer': AIFileRenamer,
+  '/auto-rename-files': AutoRenameFiles,
+  '/batch-rename-files': BatchRenameFiles,
+  '/ai-image-renamer': AIImageRenamer,
+  '/rename-documents-with-ai': RenameDocumentsWithAI,
+  '/rename-pdf-with-ai': RenamePDFWithAI,
+  '/rename-screenshots-with-ai': RenameScreenshotsWithAI,
+  '/rename-photos-with-ai': RenamePhotosWithAI,
+} as const;
+
+export function getStaticPaths() {
+  return LOCALES
+    .filter((locale) => locale !== 'en')
+    .flatMap((locale) =>
+      LOCALIZED_ROUTES
+        .filter((route) => route !== '/')
+        .map((route) => ({
+          params: {
+            locale,
+            slug: route.slice(1),
+          },
+        })),
+    );
+}
+
+if (!isLocale(Astro.params.locale)) {
+  return Astro.redirect('/404');
+}
+
+const locale = Astro.params.locale;
+const slug = Astro.params.slug ? `/${Astro.params.slug}` : '/';
+
+if (!isLocalizedRoute(slug)) {
+  return Astro.redirect(getLocalizedPath('/404', locale));
+}
+
+const route = slug as LocalizedRoute;
+const copy = getCopy(locale);
+const serviceCopy = getServicePageCopy(locale);
+const seo = getLocalizedSeoForRoute(route, locale);
+const localizedPath = getLocalizedPath(route, locale);
+const byokSetupCopy = route === '/byok-setup' ? getBYOKSetupCopy(locale) : null;
+const ollamaSetupCopy = route === '/ollama-setup' ? getOllamaSetupCopy(locale) : null;
+const methodologyCopy = route === '/methodology' ? getMethodologyCopy(locale) : null;
+const legalCopy = route === '/privacy-policy' || route === '/terms-of-service' || route === '/refund-policy'
+  ? getLegalPageCopy(locale, route)
+  : null;
+const staticCopy = isStaticLocalizedRoute(route) ? getStaticPageCopy(locale as Exclude<Locale, 'en'>, route) : null;
+const staticSeo = staticCopy
+  ? {
+      ...getSeoForPath(route),
+      title: `${staticCopy.title} — Zush`,
+      description: staticCopy.description,
+      canonicalPath: localizedPath,
+    }
+  : null;
+const serviceSeo = isServiceLocalizedRoute(route)
+  ? {
+      ...getSeoForPath(route),
+      ...serviceCopy.seo[route],
+      canonicalPath: localizedPath,
+      robots: 'noindex, nofollow',
+    }
+  : null;
+const localizedHomeHref = getLocalizedPath('/', locale);
+---
+
+{route === '/mac' && <PlatformLandingPage platform="mac" locale={locale} />}
+{route === '/windows' && <PlatformLandingPage platform="windows" locale={locale} />}
+{
+  route === '/activate' && serviceSeo && (
+    <BaseLayout seo={serviceSeo} locale={locale} chromeBasePath={localizedHomeHref}>
+      <ActivateView
+        client:load
+        locale={locale}
+        copy={serviceCopy.activate}
+        backToHomeLabel={serviceCopy.backToHome}
+        homeHref={localizedHomeHref}
+        recoverHref={getLocalizedPath('/recover', locale)}
+      />
+    </BaseLayout>
+  )
+}
+{
+  route === '/recover' && serviceSeo && (
+    <BaseLayout seo={serviceSeo} locale={locale} chromeBasePath={localizedHomeHref}>
+      <RecoverView
+        client:load
+        locale={locale}
+        copy={serviceCopy.recover}
+        backToHomeLabel={serviceCopy.backToHome}
+        homeHref={localizedHomeHref}
+        emailPlaceholder={serviceCopy.emailPlaceholder}
+        emailRequired={serviceCopy.emailRequired}
+        genericError={serviceCopy.genericError}
+        connectionError={serviceCopy.connectionError}
+      />
+    </BaseLayout>
+  )
+}
+{
+  route === '/manage-subscription' && serviceSeo && (
+    <BaseLayout seo={serviceSeo} locale={locale} chromeBasePath={localizedHomeHref}>
+      <ManageSubscriptionView
+        client:load
+        locale={locale}
+        copy={serviceCopy.manageSubscription}
+        backToHomeLabel={serviceCopy.backToHome}
+        homeHref={localizedHomeHref}
+        emailPlaceholder={serviceCopy.emailPlaceholder}
+        emailRequired={serviceCopy.emailRequired}
+        genericError={serviceCopy.genericError}
+        connectionError={serviceCopy.connectionError}
+      />
+    </BaseLayout>
+  )
+}
+{
+  route === '/manage-subscription/confirm' && serviceSeo && (
+    <BaseLayout seo={serviceSeo} locale={locale} chromeBasePath={localizedHomeHref}>
+      <ManageSubscriptionConfirmView
+        client:load
+        locale={locale}
+        copy={serviceCopy.manageSubscriptionConfirm}
+        backToHomeLabel={serviceCopy.backToHome}
+        homeHref={localizedHomeHref}
+        connectionError={serviceCopy.connectionError}
+      />
+    </BaseLayout>
+  )
+}
+{
+  route === '/thank-you' && serviceSeo && (
+    <BaseLayout seo={serviceSeo} locale={locale} chromeBasePath={localizedHomeHref}>
+      <ThankYouView
+        client:load
+        locale={locale}
+        copy={serviceCopy.thankYou}
+        backToHomeLabel={serviceCopy.backToHome}
+        homeHref={localizedHomeHref}
+      />
+    </BaseLayout>
+  )
+}
+{
+  route === '/404' && serviceSeo && (
+    <BaseLayout seo={serviceSeo} locale={locale} chromeBasePath={localizedHomeHref}>
+      <NotFound
+        locale={locale}
+        copy={serviceCopy.notFound}
+        backToHomeLabel={serviceCopy.backToHome}
+        homeHref={localizedHomeHref}
+      />
+    </BaseLayout>
+  )
+}
+{
+  methodologyCopy && staticSeo && (
+    <BaseLayout
+      seo={staticSeo}
+      locale={locale}
+      chromeBasePath={localizedHomeHref}
+    >
+      <MethodologyPage copy={methodologyCopy} />
+    </BaseLayout>
+  )
+}
+{
+  byokSetupCopy && staticSeo && (
+    <BaseLayout
+      seo={staticSeo}
+      locale={locale}
+      chromeBasePath={localizedHomeHref}
+    >
+      <BYOKSetup copy={byokSetupCopy} />
+    </BaseLayout>
+  )
+}
+{
+  ollamaSetupCopy && staticSeo && (
+    <BaseLayout
+      seo={staticSeo}
+      locale={locale}
+      chromeBasePath={localizedHomeHref}
+    >
+      <OllamaSetupView copy={ollamaSetupCopy} />
+    </BaseLayout>
+  )
+}
+{
+  legalCopy && staticSeo && (
+    <BaseLayout
+      seo={staticSeo}
+      locale={locale}
+      chromeBasePath={localizedHomeHref}
+    >
+      <Legal
+        type={legalCopy.type}
+        title={legalCopy.title}
+        updated={legalCopy.updated}
+        content={legalCopy.content}
+        backToHomeLabel={legalCopy.backToHomeLabel}
+        homeHref={legalCopy.homeHref}
+      />
+    </BaseLayout>
+  )
+}
+{
+  route in FEATURE_VIEWS && (() => {
+    const featurePage = getFeaturePageProps(FEATURE_VIEWS[route as keyof typeof FEATURE_VIEWS]);
+    const localizedCopy = copy.featurePages[route];
+
+    return (
+      <BaseLayout
+        seo={seo}
+        locale={locale}
+        chromeBasePath={localizedPath}
+        jsonLd={[
+          featurePage.jsonLd,
+          buildFeatureBreadcrumbJsonLd(localizedCopy?.h1 ?? featurePage.h1, localizedPath),
+        ]}
+      >
+        <FeatureLandingPageShell
+          {...featurePage}
+          locale={locale}
+          localizedCopy={localizedCopy}
+        />
+      </BaseLayout>
+    );
+  })()
+}

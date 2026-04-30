@@ -10,10 +10,16 @@ interface UseEmailSubmissionOptions {
   onSubmitStart?: () => void;
   onSuccess: (response: Response) => Promise<void> | void;
   getErrorMessage?: (response: Response) => Promise<string> | string;
+  messages?: {
+    emailRequired?: string;
+    genericError?: string;
+    connectionError?: string;
+  };
 }
 
 export function useEmailSubmission({
   endpoint,
+  messages,
   onSubmitStart,
   onSuccess,
   getErrorMessage,
@@ -26,7 +32,7 @@ export function useEmailSubmission({
     event.preventDefault();
 
     if (!email) {
-      setError('Please enter your email address');
+      setError(messages?.emailRequired ?? 'Please enter your email address');
       return;
     }
 
@@ -49,11 +55,11 @@ export function useEmailSubmission({
         setError(
           getErrorMessage
             ? await getErrorMessage(response)
-            : 'Something went wrong. Please try again.',
+            : messages?.genericError ?? 'Something went wrong. Please try again.',
         );
       }
     } catch {
-      setError('Connection error. Please check your internet and try again.');
+      setError(messages?.connectionError ?? 'Connection error. Please check your internet and try again.');
     } finally {
       setIsLoading(false);
     }

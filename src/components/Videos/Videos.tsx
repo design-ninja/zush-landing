@@ -17,7 +17,26 @@ interface VideosProps {
   autoplayOnHydration?: boolean;
   autoplayWhenInView?: boolean;
   forceOS?: DownloadOS;
+  copy?: VideosCopy;
 }
+
+interface VideosCopy {
+  title: string;
+  titleAccent: string;
+  description: string;
+  playDemo: string;
+  switchTo: string;
+  items: Record<string, { title: string; description: string; alt?: string }>;
+}
+
+const defaultCopy: VideosCopy = {
+  title: 'See Zush in Action',
+  titleAccent: 'Zush',
+  description: 'See how Zush handles real file organization workflows with these core features',
+  playDemo: 'Play demo',
+  switchTo: 'Switch to',
+  items: {},
+};
 
 const getDocumentTheme = (): DemoVideoTheme => {
   if (typeof document === 'undefined') {
@@ -33,6 +52,7 @@ const Videos = ({
   autoplayOnHydration = false,
   autoplayWhenInView = false,
   forceOS,
+  copy = defaultCopy,
 }: VideosProps) => {
   const { downloadOS: detectedOS } = useOS();
   const downloadOS = forceOS ?? detectedOS;
@@ -51,6 +71,10 @@ const Videos = ({
   const activeVideoMedia = resolveDemoVideoMedia(activeVideo, theme);
   const activeScreenshotSrc = resolveDemoScreenshotMedia(activeScreenshot, theme);
   const activeItem = showcaseItems[activeFeature];
+  const localizedActiveItem = {
+    ...activeItem,
+    ...copy.items[activeItem.id],
+  };
   const activeWindowsVideoSrc = activeScreenshot.video?.[theme] ?? '';
   const hasActiveWindowsVideo = isWindowsShowcase && activeWindowsVideoSrc.length > 0;
 
@@ -173,10 +197,10 @@ const Videos = ({
           <SectionHeader
             title={
               <>
-                See <span style={{ color: 'var(--secondary)' }}>Zush</span> in Action
+                {copy.title.split(copy.titleAccent)[0]}<span style={{ color: 'var(--secondary)' }}>{copy.titleAccent}</span>{copy.title.split(copy.titleAccent).slice(1).join(copy.titleAccent)}
               </>
             }
-            description='See how Zush handles real file organization workflows with these core features'
+            description={copy.description}
           />
         </div>
         
@@ -190,7 +214,7 @@ const Videos = ({
               key={activeWindowsVideoSrc}
               className={styles.Videos__Video}
               src={activeWindowsVideoSrc}
-              aria-label={`${activeItem.title}: ${activeItem.description}`}
+              aria-label={`${localizedActiveItem.title}: ${localizedActiveItem.description}`}
               muted
               playsInline
               controls
@@ -211,11 +235,11 @@ const Videos = ({
               type='button'
               className={styles.Videos__PlayButton}
               onClick={() => setIsPlaying(true)}
-              aria-label={`Play ${activeItem.title} demo video`}
+              aria-label={`${copy.playDemo}: ${localizedActiveItem.title}`}
             >
               <img
                 src={hasActiveWindowsVideo ? activeScreenshotSrc : activeVideoMedia.poster}
-                alt={`${activeItem.title} demo`}
+                alt={copy.items[activeItem.id]?.alt ?? `${localizedActiveItem.title} demo`}
                 className={styles.Videos__Poster}
                 width={1280}
                 height={720}
@@ -226,14 +250,14 @@ const Videos = ({
               <span className={styles.Videos__PlayIcon} aria-hidden='true'>
                 <Play size={28} fill='currentColor' />
               </span>
-              <span className={styles.Videos__PlayLabel}>Play demo</span>
+              <span className={styles.Videos__PlayLabel}>{copy.playDemo}</span>
             </button>
           ) : (
             <video
               key={hasActiveWindowsVideo ? activeWindowsVideoSrc : activeVideoMedia.source}
               className={styles.Videos__Video}
               src={hasActiveWindowsVideo ? activeWindowsVideoSrc : activeVideoMedia.source}
-              aria-label={`${activeItem.title}: ${activeItem.description}`}
+              aria-label={`${localizedActiveItem.title}: ${localizedActiveItem.description}`}
               muted
               playsInline
               autoPlay
@@ -252,23 +276,29 @@ const Videos = ({
             </video>
           )}
         </div>
-        <Text as='p' className={styles.Videos__Description}>{activeItem.description}</Text>
+        <Text as='p' className={styles.Videos__Description}>{localizedActiveItem.description}</Text>
 
         <div
           className={styles.Videos__Tabs}
         >
-            {showcaseItems.map((feature, index) => (
+            {showcaseItems.map((feature, index) => {
+              const localizedFeature = {
+                ...feature,
+                ...copy.items[feature.id],
+              };
+              return (
                 <button
                     key={feature.id}
                     className={`${styles.Videos__Tab} ${
                         index === activeFeature ? styles.Videos__Tab_active : ''
                     }`}
                     onClick={() => handleTabClick(index)}
-                    aria-label={`Switch to ${feature.title}`}
+                    aria-label={`${copy.switchTo} ${localizedFeature.title}`}
                 >
-                    <span>{feature.title}</span>
+                    <span>{localizedFeature.title}</span>
                 </button>
-            ))}
+              );
+            })}
         </div>
       </div>
     </section>

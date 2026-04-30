@@ -22,18 +22,26 @@ const highlightMap: Record<FeatureCategory, string[]> = {
 
 interface SupportedFormatsProps {
   category?: FeatureCategory;
+  title?: string;
+  imagesLabel?: string;
+  documentsLabel?: string;
 }
 
-const SupportedFormats = ({ category = 'general' }: SupportedFormatsProps) => {
+const SupportedFormats = ({
+  category = 'general',
+  title = 'Supported File Formats',
+  imagesLabel = 'Images',
+  documentsLabel = 'Documents',
+}: SupportedFormatsProps) => {
   const highlightedFormats = new Set(highlightMap[category] ?? []);
 
   return (
     <section className={styles.SupportedFormats}>
       <div className={styles.SupportedFormats__Container}>
-        <SectionHeader title='Supported File Formats' />
+        <SectionHeader title={title} />
 
         <div className={styles.SupportedFormats__Group}>
-          <Heading as='h4' align='center' className={styles.SupportedFormats__GroupTitle}>Images</Heading>
+          <Heading as='h4' align='center' className={styles.SupportedFormats__GroupTitle}>{imagesLabel}</Heading>
           <div className={styles.SupportedFormats__Tags}>
             {imageFormats.map((format) => (
               <span
@@ -49,7 +57,7 @@ const SupportedFormats = ({ category = 'general' }: SupportedFormatsProps) => {
         </div>
 
         <div className={styles.SupportedFormats__Group}>
-          <Heading as='h4' align='center' className={styles.SupportedFormats__GroupTitle}>Documents</Heading>
+          <Heading as='h4' align='center' className={styles.SupportedFormats__GroupTitle}>{documentsLabel}</Heading>
           <div className={styles.SupportedFormats__Tags}>
             {documentFormats.map((format) => (
               <span

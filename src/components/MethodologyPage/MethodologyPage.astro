@@ -1,0 +1,548 @@
+---
+import AppLink from '@/components/AppLink';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
+import PillLink from '@/components/PillLink';
+
+export interface MethodologyCopy {
+  kicker: string;
+  title: string;
+  lead: string;
+  heroMeta: string[];
+  governanceEyebrow: string;
+  accountabilityTitle: string;
+  factsLabel: string;
+  primaryAuthorLabel: string;
+  primaryAuthor: string;
+  technicalReviewerLabel: string;
+  technicalReviewer: string;
+  updateCadenceLabel: string;
+  updateCadence: string;
+  changelogLabel: string;
+  rubricEyebrow: string;
+  rubricTitle: string;
+  rubricBody: string;
+  tableHeaders: [string, string, string];
+  tableRows: [string, string, string][];
+  validationEyebrow: string;
+  benchmarkTitle: string;
+  steps: string[];
+  policyEyebrow: string;
+  decisionPolicyTitle: string;
+  decisionPolicyBody: string;
+  coverageEyebrow: string;
+  coverageTitle: string;
+  coverageItems: string[];
+  referencesEyebrow: string;
+  referencesTitle: string;
+  referenceLinks: {
+    commercialComparison: string;
+    dataPolicy: string;
+    byok: string;
+    offlineAi: string;
+  };
+  paths: {
+    changelog: string;
+    commercialComparison: string;
+    privacy: string;
+    byok: string;
+    ollama: string;
+  };
+}
+
+const defaultCopy: MethodologyCopy = {
+  kicker: 'Trust & Evaluation',
+  title: 'Methodology & Benchmarks',
+  lead:
+    'This page explains how Zush evaluates AI file renaming quality for macOS workflows. We publish the rubric, validation flow, and update cadence so recommendations stay reproducible, auditable, and practical for real batch operations.',
+  heroMeta: ['Monthly reviews', '5 weighted checks', 'Public changelog'],
+  governanceEyebrow: 'Governance',
+  accountabilityTitle: 'Editorial Accountability',
+  factsLabel: 'Editorial accountability facts',
+  primaryAuthorLabel: 'Primary author',
+  primaryAuthor: 'Zush Editorial Team',
+  technicalReviewerLabel: 'Technical reviewer',
+  technicalReviewer: 'Zush Product Team',
+  updateCadenceLabel: 'Update cadence',
+  updateCadence: 'Criteria are reviewed monthly, with material changes logged in',
+  changelogLabel: 'the changelog',
+  rubricEyebrow: 'Rubric',
+  rubricTitle: 'Scoring Rubric',
+  rubricBody:
+    'Each workflow run is graded against a weighted model that balances naming accuracy, operational safety, and day-to-day usability inside a macOS workflow.',
+  tableHeaders: ['Dimension', 'Weight', 'What we measure'],
+  tableRows: [
+    ['Semantic filename accuracy', '35%', 'Does the new name describe file meaning, not only generic patterns?'],
+    ['Consistency in batch runs', '20%', 'Stable naming style across mixed files in one task.'],
+    ['Automation depth', '15%', 'Batch workflow, folder monitoring, and repeatability.'],
+    ['Safety controls', '15%', 'History, rollback, preview-before-apply behavior.'],
+    ['Operational fit', '15%', 'macOS workflow quality, speed, and setup friction.'],
+  ],
+  validationEyebrow: 'Validation',
+  benchmarkTitle: 'Benchmark Protocol',
+  steps: [
+    'Use a mixed-file benchmark set with screenshots, photos, PDFs, and office documents.',
+    'Run controlled rename jobs with identical prompts and naming constraints.',
+    'Score outputs against the rubric and record false positives or ambiguous labels.',
+    'Validate revert and recovery behavior before marking a setup as production-safe.',
+    'Repeat checks after release updates and track material changes in the changelog.',
+  ],
+  policyEyebrow: 'Policy',
+  decisionPolicyTitle: 'Decision Policy',
+  decisionPolicyBody:
+    'We prioritize workflows that produce consistently descriptive names and remain recoverable at scale. Recommendations are downgraded when a setup lacks rollback, requires manual babysitting, or produces unstable naming patterns in batch scenarios.',
+  coverageEyebrow: 'Coverage',
+  coverageTitle: 'What We Validate',
+  coverageItems: [
+    'Mixed file types, not synthetic single-format tests',
+    'Repeatability under batch and semi-automated runs',
+    'Rollback, preview, and recovery behavior before approval',
+    'Operational friction inside a real macOS workflow',
+  ],
+  referencesEyebrow: 'References',
+  referencesTitle: 'Supporting Documents',
+  referenceLinks: {
+    commercialComparison: 'Commercial comparison',
+    dataPolicy: 'Data handling policy',
+    byok: 'BYOK setup and provider controls',
+    offlineAi: 'Offline AI setup',
+  },
+  paths: {
+    changelog: '/changelog',
+    commercialComparison: '/blog/best-ai-file-renamer-tools-mac-compared',
+    privacy: '/privacy-policy',
+    byok: '/byok-setup',
+    ollama: '/ollama-setup',
+  },
+};
+
+interface Props {
+  copy?: MethodologyCopy;
+}
+
+const copy = Astro.props.copy ?? defaultCopy;
+---
+
+<article class="methodology">
+  <div class="methodology__container">
+    <header class="methodology__hero">
+      <Text as="p" size="sm" color="subtle" align="center" className="methodology__kicker">
+        {copy.kicker}
+      </Text>
+      <Heading as="h1" align="center">{copy.title}</Heading>
+      <Text as="p" size="lg" color="subtle" align="center" className="methodology__lead">
+        {copy.lead}
+      </Text>
+
+      <div class="methodology__heroMeta">
+        {copy.heroMeta.map((item, index) => (
+          <>
+            {index > 0 && <span aria-hidden="true">·</span>}
+            <span>{item}</span>
+          </>
+        ))}
+      </div>
+    </header>
+
+    <div class="methodology__layout">
+      <main class="methodology__main">
+        <section id="editorial-policy" class="methodology__card methodology__card_highlight">
+          <div class="methodology__sectionHead">
+            <span class="methodology__eyebrow">{copy.governanceEyebrow}</span>
+            <Heading as="h3" className="methodology__sectionTitle">{copy.accountabilityTitle}</Heading>
+          </div>
+
+          <div class="methodology__facts" role="list" aria-label={copy.factsLabel}>
+            <div class="methodology__fact" role="listitem">
+              <span class="methodology__factLabel">{copy.primaryAuthorLabel}</span>
+              <Text as="p">{copy.primaryAuthor}</Text>
+            </div>
+            <div class="methodology__fact" role="listitem">
+              <span class="methodology__factLabel">{copy.technicalReviewerLabel}</span>
+              <Text as="p">{copy.technicalReviewer}</Text>
+            </div>
+            <div class="methodology__fact" role="listitem">
+              <span class="methodology__factLabel">{copy.updateCadenceLabel}</span>
+              <Text as="p" color="subtle">
+                {copy.updateCadence}{' '}
+                <AppLink href={copy.paths.changelog} variant="legal">{copy.changelogLabel}</AppLink>.
+              </Text>
+            </div>
+          </div>
+        </section>
+
+        <section id="scoring-rubric" class="methodology__card">
+          <div class="methodology__sectionHead">
+            <span class="methodology__eyebrow">{copy.rubricEyebrow}</span>
+            <Heading as="h3" className="methodology__sectionTitle">{copy.rubricTitle}</Heading>
+          </div>
+          <Text as="p" color="subtle" className="methodology__copy">{copy.rubricBody}</Text>
+
+          <div class="methodology__tableWrap">
+            <table class="methodology__table">
+              <thead>
+                <tr>
+                  {copy.tableHeaders.map((header) => <th>{header}</th>)}
+                </tr>
+              </thead>
+              <tbody>
+                {copy.tableRows.map(([dimension, weight, measure]) => (
+                  <tr>
+                    <td>{dimension}</td>
+                    <td>{weight}</td>
+                    <td>{measure}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="benchmark-protocol" class="methodology__card">
+          <div class="methodology__sectionHead">
+            <span class="methodology__eyebrow">{copy.validationEyebrow}</span>
+            <Heading as="h3" className="methodology__sectionTitle">{copy.benchmarkTitle}</Heading>
+          </div>
+
+          <ol class="methodology__steps">
+            {copy.steps.map((step, index) => (
+              <li class="methodology__step">
+                <span class="methodology__stepIndex">{String(index + 1).padStart(2, '0')}</span>
+                <Text as="p" color="subtle">{step}</Text>
+              </li>
+            ))}
+          </ol>
+        </section>
+      </main>
+
+      <aside class="methodology__rail">
+        <section class="methodology__card methodology__card_sticky">
+          <div class="methodology__sectionHead methodology__sectionHead_compact">
+            <span class="methodology__eyebrow">{copy.policyEyebrow}</span>
+            <Heading as="h3" className="methodology__sectionTitle">{copy.decisionPolicyTitle}</Heading>
+          </div>
+          <Text as="p" color="subtle" className="methodology__copy">{copy.decisionPolicyBody}</Text>
+        </section>
+
+        <section class="methodology__card">
+          <div class="methodology__sectionHead methodology__sectionHead_compact">
+            <span class="methodology__eyebrow">{copy.coverageEyebrow}</span>
+            <Heading as="h3" className="methodology__sectionTitle">{copy.coverageTitle}</Heading>
+          </div>
+          <ul class="methodology__bulletList">
+            {copy.coverageItems.map((item) => <li>{item}</li>)}
+          </ul>
+        </section>
+
+        <section class="methodology__card">
+          <div class="methodology__sectionHead methodology__sectionHead_compact">
+            <span class="methodology__eyebrow">{copy.referencesEyebrow}</span>
+            <Heading as="h3" className="methodology__sectionTitle">{copy.referencesTitle}</Heading>
+          </div>
+          <div class="methodology__links">
+            <PillLink href={copy.paths.commercialComparison} withArrow size="sm">{copy.referenceLinks.commercialComparison}</PillLink>
+            <PillLink href={copy.paths.privacy} withArrow size="sm">{copy.referenceLinks.dataPolicy}</PillLink>
+            <PillLink href={copy.paths.byok} withArrow size="sm">{copy.referenceLinks.byok}</PillLink>
+            <PillLink href={copy.paths.ollama} withArrow size="sm">{copy.referenceLinks.offlineAi}</PillLink>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </div>
+</article>
+
+<style>
+  .methodology {
+    position: relative;
+    padding: 4.5rem 0 5.5rem;
+    overflow: clip;
+  }
+
+  .methodology::before,
+  .methodology::after {
+    content: '';
+    position: absolute;
+    inset: auto;
+    border-radius: 999px;
+    pointer-events: none;
+    filter: blur(10px);
+    opacity: 0.65;
+  }
+
+  .methodology::before {
+    top: 3.5rem;
+    left: max(1rem, calc(50% - 38rem));
+    width: 16rem;
+    height: 16rem;
+    background: radial-gradient(circle, var(--primary-soft) 0%, transparent 72%);
+  }
+
+  .methodology::after {
+    top: 8rem;
+    right: max(1rem, calc(50% - 36rem));
+    width: 14rem;
+    height: 14rem;
+    background: radial-gradient(circle, oklch(from var(--secondary) l c h / 0.16) 0%, transparent 72%);
+  }
+
+  .methodology__container {
+    position: relative;
+    z-index: 1;
+    max-width: 76rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .methodology__hero {
+    max-width: 44rem;
+    margin: 0 auto 3rem;
+    text-align: center;
+  }
+
+  .methodology__kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .methodology__lead {
+    max-width: 44rem;
+    margin: 1rem auto 0;
+    line-height: 1.7;
+  }
+
+  .methodology__heroMeta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+  }
+
+  .methodology__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(18rem, 0.85fr);
+    gap: 1.25rem;
+    align-items: start;
+  }
+
+  .methodology__main,
+  .methodology__rail {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .methodology__card {
+    position: relative;
+    overflow: hidden;
+    background:
+      linear-gradient(180deg, oklch(from var(--card) l c h / 0.98), oklch(from var(--muted) l c h / 0.92));
+    border: 1px solid oklch(from var(--border) l c h / 0.9);
+    border-radius: 1.6rem;
+    padding: 1.5rem;
+    box-shadow: 0 1rem 2.5rem oklch(0 0 0 / 0.04);
+  }
+
+  .methodology__card_highlight {
+    background:
+      linear-gradient(135deg, oklch(from var(--primary) l c h / 0.08), transparent 32%),
+      linear-gradient(180deg, oklch(from var(--card) l c h / 0.99), oklch(from var(--muted) l c h / 0.94));
+  }
+
+  .methodology__card_sticky {
+    position: static;
+  }
+
+  .methodology__sectionHead {
+    display: grid;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+  }
+
+  .methodology__sectionHead_compact {
+    margin-bottom: 0.8rem;
+  }
+
+  .methodology__eyebrow {
+    font-size: 0.78rem;
+    line-height: 1.3;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  .methodology__sectionTitle {
+    margin: 0;
+  }
+
+  .methodology__copy {
+    line-height: 1.7;
+  }
+
+  .methodology__facts {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .methodology__fact {
+    display: grid;
+    gap: 0.3rem;
+    padding: 1rem 1.05rem;
+    border: 1px solid oklch(from var(--border) l c h / 0.78);
+    border-radius: 1rem;
+    background: oklch(from var(--card) l c h / 0.7);
+  }
+
+  .methodology__fact p {
+    margin: 0;
+  }
+
+  .methodology__factLabel {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+    font-weight: 650;
+  }
+
+  .methodology__tableWrap {
+    overflow-x: auto;
+    margin-top: 1.1rem;
+    border: 1px solid oklch(from var(--border) l c h / 0.8);
+    border-radius: 1.2rem;
+    background: oklch(from var(--card) l c h / 0.88);
+  }
+
+  .methodology__table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 40rem;
+  }
+
+  .methodology__table th,
+  .methodology__table td {
+    border-bottom: 1px solid oklch(from var(--border) l c h / 0.78);
+    padding: 1rem 1.1rem;
+    text-align: left;
+    vertical-align: top;
+    color: var(--muted-foreground);
+    line-height: 1.6;
+  }
+
+  .methodology__table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .methodology__table td:first-child {
+    color: var(--foreground);
+    font-weight: 600;
+  }
+
+  .methodology__table td:nth-child(2) {
+    color: var(--foreground);
+    font-family: var(--font-family-heading);
+    font-weight: 550;
+    white-space: nowrap;
+  }
+
+  .methodology__table th {
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--muted-foreground);
+    background: oklch(from var(--muted) l c h / 0.9);
+  }
+
+  .methodology__steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .methodology__step {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.9rem;
+    align-items: start;
+    padding: 1rem 1.05rem;
+    border: 1px solid oklch(from var(--border) l c h / 0.8);
+    border-radius: 1rem;
+    background: oklch(from var(--card) l c h / 0.72);
+  }
+
+  .methodology__step p {
+    margin: 0;
+  }
+
+  .methodology__stepIndex {
+    min-width: 2.65rem;
+    height: 2.65rem;
+    border-radius: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-family-heading);
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--primary);
+    background: oklch(from var(--primary) l c h / 0.1);
+    border: 1px solid oklch(from var(--primary) l c h / 0.16);
+  }
+
+  .methodology__bulletList {
+    margin: 0;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: 0.7rem;
+    color: var(--muted-foreground);
+    line-height: 1.6;
+  }
+
+  .methodology__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  @media (max-width: 980px) {
+    .methodology {
+      padding: 3.4rem 0 4.5rem;
+    }
+
+    .methodology__layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .methodology__container {
+      padding: 0 1.25rem;
+    }
+
+    .methodology__card {
+      padding: 1.2rem;
+      border-radius: 1.25rem;
+    }
+
+    .methodology__table {
+      min-width: 34rem;
+    }
+
+    .methodology__step {
+      grid-template-columns: 1fr;
+    }
+
+    .methodology__stepIndex {
+      min-width: 0;
+      width: fit-content;
+      padding: 0 0.85rem;
+    }
+  }
+</style>

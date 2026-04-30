@@ -1,0 +1,137 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/Hero';
+import Videos from '@/components/Videos';
+import Features from '@/components/Features/Features.astro';
+import SupportedFormats from '@/components/SupportedFormats';
+import UseCases from '@/components/UseCases';
+import Pricing from '@/components/Pricing/Pricing.astro';
+import WhyZush from '@/components/WhyZush';
+import FAQ from '@/components/FAQ';
+import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
+import { HOME_JSON_LD } from '@/seo/config';
+import { getCopy } from '@/i18n/copy';
+import { getLocalizedSeoForRoute } from '@/i18n/seo';
+import { getLocaleBasePath, LOCALES, type Locale } from '@/i18n/config';
+
+export function getStaticPaths() {
+  return LOCALES
+    .filter((locale) => locale !== 'en')
+    .map((locale) => ({ params: { locale } }));
+}
+
+const locale = Astro.params.locale as Locale;
+const copy = getCopy(locale);
+const seo = getLocalizedSeoForRoute('/', locale);
+const chromeBasePath = getLocaleBasePath(locale);
+const localizedJsonLd = {
+  ...HOME_JSON_LD,
+  '@graph': HOME_JSON_LD['@graph'].map((entry) => {
+    const type = (entry as { '@type': string })['@type'];
+
+    if (type === 'SoftwareApplication') {
+      return {
+        ...entry,
+        description: copy.footer.description,
+        offers: [
+          {
+            '@type': 'Offer',
+            price: '0',
+            priceCurrency: 'USD',
+            description: copy.home.downloadHintPrefix,
+          },
+          {
+            '@type': 'Offer',
+            price: '10',
+            priceCurrency: 'USD',
+            name: copy.pricing.planName,
+            description: copy.pricing.planDescription,
+          },
+        ],
+        featureList: copy.pricing.features.map((item) => item.title),
+      };
+    }
+
+    if (type === 'HowTo') {
+      return {
+        ...entry,
+        name: copy.home.heroTitle,
+        step: [
+          {
+            '@type': 'HowToStep',
+            position: 1,
+            name: copy.header.download,
+            text: copy.home.downloadSubtitle,
+          },
+          {
+            '@type': 'HowToStep',
+            position: 2,
+            name: copy.home.featureCards.batchRename.title,
+            text: copy.home.featureCards.batchRename.description,
+          },
+          {
+            '@type': 'HowToStep',
+            position: 3,
+            name: copy.home.whyZush.controlTitle,
+            text: copy.home.whyZush.controlDescription,
+          },
+        ],
+      };
+    }
+
+    if (type === 'FAQPage') {
+      return {
+        ...entry,
+        mainEntity: copy.home.faqItems.map((item) => ({
+          '@type': 'Question',
+          name: item.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.answer,
+          },
+        })),
+      };
+    }
+
+    return entry;
+  }),
+};
+---
+
+<BaseLayout seo={seo} jsonLd={localizedJsonLd} locale={locale} chromeBasePath={chromeBasePath}>
+  <Hero
+    client:load
+    title={copy.home.heroTitle}
+    titleAccent={copy.home.heroAccent}
+    subtitle={copy.home.heroSubtitle}
+    buyLabel={copy.home.buyPro}
+    downloadLabel={copy.header.download}
+    downloadMenu={copy.downloadMenu}
+    trustSignals={copy.home.trustSignals}
+    secondaryHref="#pricing"
+    slides={copy.home.showcaseSlides}
+  />
+  <Videos client:visible autoplayWhenInView copy={copy.home.videos} />
+  <Features title={copy.home.featuresTitle} description={copy.home.featuresDescription} copy={copy.home.featureCards} />
+  <SupportedFormats
+    title={copy.home.supportedFormats}
+    imagesLabel={copy.home.images}
+    documentsLabel={copy.home.documents}
+  />
+  <DownloadCTA
+    title={copy.home.downloadTitle}
+    subtitle={copy.home.downloadSubtitle}
+    hintPrefix={copy.home.downloadHintPrefix}
+    downloadLabel={copy.header.download}
+    downloadMenu={copy.downloadMenu}
+  />
+  <WhyZush copy={copy.home.whyZush} />
+  <UseCases title={copy.home.useCasesTitle} description={copy.home.useCasesDescription} copy={copy.home.useCases} />
+  <Pricing copy={copy.pricing} />
+  <FAQ
+    client:visible
+    title={copy.home.faqTitle}
+    description={copy.home.faqDescription}
+    items={copy.home.faqItems}
+  />
+</BaseLayout>

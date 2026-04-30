@@ -1,0 +1,67 @@
+---
+import { LOCALES, LOCALE_META, type Locale } from '@/i18n/config';
+import styles from './LanguageSwitcher.module.scss';
+
+interface Props {
+  locale: Locale;
+  paths: Record<Locale, string>;
+  label: string;
+}
+
+const { locale, paths, label } = Astro.props as Props;
+const currentLocaleMeta = LOCALE_META[locale];
+---
+
+<div
+  class={styles.LanguageSwitcher}
+  data-language-switcher
+  data-open="false"
+>
+  <button
+    type="button"
+    class={styles.LanguageSwitcher__Button}
+    aria-label={label}
+    aria-haspopup="menu"
+    aria-expanded="false"
+    data-language-trigger
+  >
+    <span class={styles.LanguageSwitcher__Flag} aria-hidden="true">{currentLocaleMeta.flag}</span>
+    <span class={styles.LanguageSwitcher__Current}>{currentLocaleMeta.nativeLabel}</span>
+    <svg
+      class={styles.LanguageSwitcher__Icon}
+      data-language-icon
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="m6 9 6 6 6-6"></path>
+    </svg>
+  </button>
+
+  <div class={styles.LanguageSwitcher__Menu} role="menu" data-language-menu hidden>
+    {LOCALES.map((item) => (
+      <a
+        class:list={[
+          styles.LanguageSwitcher__MenuItem,
+          item === locale && styles.LanguageSwitcher__MenuItem_active,
+        ]}
+        href={paths[item]}
+        role="menuitem"
+        data-language-option
+        data-locale={item}
+        aria-current={item === locale ? 'page' : undefined}
+      >
+        <span class={styles.LanguageSwitcher__MenuFlag} aria-hidden="true">{LOCALE_META[item].flag}</span>
+        <span class={styles.LanguageSwitcher__MenuText}>
+          <span class={styles.LanguageSwitcher__MenuTitle}>{LOCALE_META[item].nativeLabel}</span>
+        </span>
+      </a>
+    ))}
+  </div>
+</div>
