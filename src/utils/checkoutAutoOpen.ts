@@ -5,7 +5,11 @@ import { getCheckoutParam } from '@/utils/checkoutParams';
 let hasOpenedCheckout = false;
 
 export function bindCheckoutAutoOpen(): void {
-  if (typeof window === 'undefined' || hasOpenedCheckout) {
+  if (
+    typeof window === 'undefined'
+    || hasOpenedCheckout
+    || (window as Window & { __zushLocaleRedirecting?: boolean }).__zushLocaleRedirecting
+  ) {
     return;
   }
 

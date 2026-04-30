@@ -183,14 +183,37 @@ const localeRedirectConfig = JSON.stringify({
           const localeMap = JSON.parse(localeRedirectConfig);
 
           try {
-            if (window.localStorage.getItem(SELECTED_KEY) || window.sessionStorage.getItem(REDIRECTED_KEY)) {
+            const paramsFromHash = (hash) => {
+              const fragment = hash.startsWith('#') ? hash.slice(1) : hash;
+              if (!fragment) return new URLSearchParams();
+              const queryStart = fragment.indexOf('?');
+              if (queryStart >= 0) return new URLSearchParams(fragment.slice(queryStart + 1));
+              const ampStart = fragment.indexOf('&');
+              if (ampStart >= 0) return new URLSearchParams(fragment.slice(ampStart + 1));
+              return new URLSearchParams(fragment);
+            };
+            const getParam = (name) => (
+              new URLSearchParams(window.location.search).get(name)
+              || paramsFromHash(window.location.hash).get(name)
+            );
+            const selectedLocale = window.localStorage.getItem(SELECTED_KEY);
+            const selectedSlug = selectedLocale
+              ? localeMap[selectedLocale.toLowerCase()]
+              : '';
+            const isCheckoutIntent = getParam('checkout') === 'pro';
+
+            if (selectedLocale && !selectedSlug) {
+              return;
+            }
+
+            if (!selectedSlug && window.sessionStorage.getItem(REDIRECTED_KEY) && !isCheckoutIntent) {
               return;
             }
 
             const languages = navigator.languages && navigator.languages.length > 0
               ? navigator.languages
               : [navigator.language].filter(Boolean);
-            const match = languages
+            const match = selectedSlug || languages
               .map((language) => language.toLowerCase())
               .map((language) => localeMap[language] ?? localeMap[language.split('-')[0]])
               .find((slug) => slug);
@@ -198,6 +221,7 @@ const localeRedirectConfig = JSON.stringify({
             if (!match) return;
             const targetPath = route === '/' ? `/${match}` : `/${match}${route}`;
             window.sessionStorage.setItem(REDIRECTED_KEY, '1');
+            window.__zushLocaleRedirecting = true;
             window.location.replace(`${targetPath}${window.location.search}${window.location.hash}`);
           } catch {}
         })();
