@@ -1,10 +1,10 @@
 import type { MethodologyCopy } from '@/components/MethodologyPage/MethodologyPage.astro';
 import type { Locale } from '@/i18n/config';
 import { getLocalizedPath } from '@/i18n/config';
+import { getLegalMarkdown, type LegalRoute } from '@/i18n/legalPages';
 import { getStaticPageCopy, type StaticLocalizedRoute } from '@/i18n/staticPages';
 
 type InternalLocale = Exclude<Locale, 'en'>;
-type LegalRoute = '/privacy-policy' | '/terms-of-service' | '/refund-policy';
 type LegalType = 'privacy' | 'tos' | 'refund';
 
 const backToHome: Record<InternalLocale, string> = {
@@ -331,23 +331,11 @@ export function getLegalPageCopy(locale: InternalLocale, route: LegalRoute): {
     '/terms-of-service': 'tos',
     '/refund-policy': 'refund',
   };
-  const content = [
-    staticCopy.description,
-    '',
-    ...(staticCopy.sections.flatMap((section, index) => [
-      `### ${index + 1}. ${section.title}`,
-      '',
-      section.body,
-      '',
-      ...(section.bullets?.length ? section.bullets.map((item) => `- ${item}`).concat('') : []),
-    ])),
-  ].join('\n');
-
   return {
     type: type[route],
     title: staticCopy.title,
     updated: staticCopy.updated ?? '',
-    content,
+    content: getLegalMarkdown(locale, route),
     backToHomeLabel: backToHome[locale],
     homeHref: getLocalizedPath('/', locale),
   };
