@@ -5,6 +5,7 @@
     position: relative;
     display: inline-flex;
     align-items: stretch;
+    --download-button-height: auto;
     z-index: 1;
 
     &_open {
@@ -26,6 +27,8 @@
     cursor: pointer;
     font-family: inherit;
     font-weight: 600;
+    line-height: 1;
+    min-height: var(--download-button-height);
     text-decoration: none;
     transition:
         transform $transition-fast,
@@ -62,6 +65,7 @@
     border-bottom-right-radius: $radius-full;
     @include corner-shape-squircle;
     position: relative;
+    align-self: stretch;
 
     // Subtle divider between main and toggle
     &::before {
@@ -87,6 +91,8 @@
 
 // Sizes
 .Group_sm {
+    --download-button-height: 2.25rem;
+
     .Main {
         padding: 0.45rem 1rem;
         font-size: 0.9rem;
@@ -98,6 +104,8 @@
 }
 
 .Group_md {
+    --download-button-height: 2.75rem;
+
     .Main {
         padding: 0.85rem 1.5rem;
         font-size: 1rem;
@@ -110,6 +118,8 @@
 }
 
 .Group_lg {
+    --download-button-height: 3.625rem;
+
     .Main {
         padding: 1rem 2rem;
         font-size: 1.1rem;
