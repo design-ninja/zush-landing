@@ -8,6 +8,7 @@ import Footer from '@/components/Footer/Footer.astro';
 import type { DownloadOS } from '@/utils/download';
 import {
   DEFAULT_LOCALE,
+  INDEXABLE_LOCALIZED_ROUTES,
   LOCALES,
   LOCALE_META,
   getAlternatePaths,
@@ -83,7 +84,9 @@ const ldItems = (Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [])
   .filter(Boolean);
 const isHomePage = route === '/';
 const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
-const shouldAutoDetectLocale = locale === DEFAULT_LOCALE && seo.canonicalPath === '/';
+const shouldAutoDetectLocale = locale === DEFAULT_LOCALE
+  && (INDEXABLE_LOCALIZED_ROUTES as readonly string[]).includes(route);
+const autoDetectRoute = route;
 const localeRedirectConfig = JSON.stringify({
   ...Object.fromEntries(LOCALES.map((item) => [LOCALE_META[item].lang.toLowerCase(), LOCALE_META[item].slug || ''])),
   pt: LOCALE_META['pt-br'].slug,
@@ -172,10 +175,11 @@ const localeRedirectConfig = JSON.stringify({
       })();
     </script>
     {shouldAutoDetectLocale && (
-      <script is:inline define:vars={{ localeRedirectConfig }}>
+      <script is:inline define:vars={{ autoDetectRoute, localeRedirectConfig }}>
         (() => {
           const SELECTED_KEY = 'zush-locale';
           const REDIRECTED_KEY = 'zush-locale-autodetected';
+          const route = autoDetectRoute;
           const localeMap = JSON.parse(localeRedirectConfig);
 
           try {
@@ -192,8 +196,9 @@ const localeRedirectConfig = JSON.stringify({
               .find((slug) => slug);
 
             if (!match) return;
+            const targetPath = route === '/' ? `/${match}` : `/${match}${route}`;
             window.sessionStorage.setItem(REDIRECTED_KEY, '1');
-            window.location.replace(`/${match}`);
+            window.location.replace(`${targetPath}${window.location.search}${window.location.hash}`);
           } catch {}
         })();
       </script>
