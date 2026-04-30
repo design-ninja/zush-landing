@@ -45,35 +45,94 @@ const workflowSteps = [
   'Revert from history',
 ];
 
+interface WhyZushCopy {
+  title: string;
+  titlePlatform: string;
+  description: string;
+  descriptionPlatform: string;
+  nativeEyebrow: string;
+  nativeEyebrowPlatform: string;
+  nativeTitle: string;
+  nativeDescription: string;
+  nativeDescriptionPlatform: string;
+  pricingTrustItems: string[];
+  priceEyebrow: string;
+  priceTitle: string;
+  priceDescription: string;
+  priceLabel: string;
+  speedEyebrow: string;
+  speedTitle: string;
+  speedDescription: string;
+  formatsEyebrow: string;
+  formatsTitle: string;
+  formatsDescription: string;
+  controlEyebrow: string;
+  controlTitle: string;
+  controlDescription: string;
+  workflowSteps: string[];
+}
+
+const defaultCopy: WhyZushCopy = {
+  title: 'Why Zush Fits Real Desktop Work',
+  titlePlatform: 'Why Zush Wins on {os}',
+  description: 'One-time pricing, desktop-native feel, fast renaming, and fewer annoying decisions',
+  descriptionPlatform: 'Native desktop feel, fast renaming, one-time pricing, and fewer annoying decisions on {os}',
+  nativeEyebrow: 'Desktop-native feel',
+  nativeEyebrowPlatform: '{os}-native feel',
+  nativeTitle: 'Native, fast, and modern',
+  nativeDescription: 'Zush feels like a real desktop app: quick to open, clean to use, and visually at home on your machine instead of feeling like a clunky utility panel.',
+  nativeDescriptionPlatform: 'Zush feels like a real native {os} app: quick to open, clean to use, and visually at home on your machine instead of feeling like a clunky utility panel.',
+  pricingTrustItems,
+  priceEyebrow: 'One-time fair pricing',
+  priceTitle: 'Pay once, keep the workflow',
+  priceDescription: 'Most AI file renamers try to become another monthly bill. Zush stays simple: free to try, then one small one-time purchase when it proves useful.',
+  priceLabel: 'one-time',
+  speedEyebrow: 'Sssupafast!',
+  speedTitle: 'Renames happen in seconds',
+  speedDescription: 'Speed matters because cleanup only sticks if it does not interrupt the real work. Drop files in, review, apply, move on.',
+  formatsEyebrow: 'Pro photo support',
+  formatsTitle: 'Native RAW support for photographers',
+  formatsDescription: 'Supports professional camera formats like CR2, NEF, ARW, DNG, RAF, and RW2, so photographers can rename imports by actual image content instead of living with `IMG_` chaos.',
+  controlEyebrow: 'Low-risk automation',
+  controlTitle: 'Batch, monitor, and undo',
+  controlDescription: 'Clean up old piles in batch, keep new folders readable with monitoring, and revert from history if you want a different name.',
+  workflowSteps,
+};
+
 interface WhyZushProps {
   forceOS?: DownloadOS;
   platformSpecificCopy?: boolean;
+  copy?: WhyZushCopy;
 }
 
-const WhyZush = ({ forceOS, platformSpecificCopy = false }: WhyZushProps) => {
+const renderZushTitle = (value: string) => {
+  const [before, ...after] = value.split('Zush');
+  return (
+    <>
+      {before}
+      <span className={styles.WhyZush__TitleAccent}>Zush</span>
+      {after.join('Zush')}
+    </>
+  );
+};
+
+const withOS = (value: string, osLabel: string) => value.replace('{os}', osLabel);
+
+const WhyZush = ({ forceOS, platformSpecificCopy = false, copy = defaultCopy }: WhyZushProps) => {
   const { downloadOS: detectedOS } = useOS();
   const downloadOS = forceOS ?? detectedOS;
   const isWindows = downloadOS === 'windows';
   const osLabel = isWindows ? 'Windows' : 'Mac';
-  const sectionTitle = platformSpecificCopy ? (
-    <>
-      Why <span className={styles.WhyZush__TitleAccent}>Zush</span> Wins on {osLabel}
-    </>
-  ) : (
-    <>
-      Why <span className={styles.WhyZush__TitleAccent}>Zush</span>{' '}
-      Fits Real Desktop Work
-    </>
-  );
+  const sectionTitle = renderZushTitle(withOS(platformSpecificCopy ? copy.titlePlatform : copy.title, osLabel));
   const sectionDescription = platformSpecificCopy
-    ? `Native desktop feel, fast renaming, one-time pricing, and fewer annoying decisions on ${osLabel}`
-    : 'One-time pricing, desktop-native feel, fast renaming, and fewer annoying decisions';
+    ? withOS(copy.descriptionPlatform, osLabel)
+    : copy.description;
   const nativeEyebrow = platformSpecificCopy
-    ? `${osLabel}-native feel`
-    : 'Desktop-native feel';
+    ? withOS(copy.nativeEyebrowPlatform, osLabel)
+    : copy.nativeEyebrow;
   const nativeDescription = platformSpecificCopy
-    ? `Zush feels like a real native ${osLabel} app: quick to open, clean to use, and visually at home on your machine instead of feeling like a clunky utility panel.`
-    : 'Zush feels like a real desktop app: quick to open, clean to use, and visually at home on your machine instead of feeling like a clunky utility panel.';
+    ? withOS(copy.nativeDescriptionPlatform, osLabel)
+    : copy.nativeDescription;
 
   return (
     <section className={styles.WhyZush}>
@@ -89,27 +148,25 @@ const WhyZush = ({ forceOS, platformSpecificCopy = false }: WhyZushProps) => {
               <div className={styles.Card__Icon}>
                 <DollarSign size={24} />
               </div>
-              <span className={styles.Card__Eyebrow}>One-time fair pricing</span>
+              <span className={styles.Card__Eyebrow}>{copy.priceEyebrow}</span>
             </div>
 
             <div className={styles.PriceLayout}>
               <div className={styles.PriceCopy}>
                 <Heading as='h3' className={styles.Card__Title}>
-                  Pay once, keep the workflow
+                  {copy.priceTitle}
                 </Heading>
                 <Text className={styles.Card__Description} color='subtle'>
-                  Most AI file renamers try to become another monthly bill.
-                  Zush stays simple: free to try, then one small one-time
-                  purchase when it proves useful.
+                  {copy.priceDescription}
                 </Text>
 
                 <div className={styles.PricePanel}>
                   <div className={styles.PricePanel__Header}>
                     <span className={styles.PricePanel__Value}>$10</span>
-                    <span className={styles.PricePanel__Label}>one-time</span>
+                    <span className={styles.PricePanel__Label}>{copy.priceLabel}</span>
                   </div>
                   <ul className={styles.PricePanel__Trust} aria-label='Pricing trust signals'>
-                    {pricingTrustItems.map((item) => (
+                    {copy.pricingTrustItems.map((item) => (
                       <li key={item}>{item}</li>
                     ))}
                   </ul>
@@ -127,7 +184,7 @@ const WhyZush = ({ forceOS, platformSpecificCopy = false }: WhyZushProps) => {
             </div>
 
             <Heading as='h3' className={styles.Card__Title}>
-              Native, fast, and modern
+              {withOS(copy.nativeTitle, osLabel)}
             </Heading>
             <Text className={styles.Card__Description} color='subtle'>
               {nativeDescription}
@@ -177,15 +234,14 @@ const WhyZush = ({ forceOS, platformSpecificCopy = false }: WhyZushProps) => {
               <div className={styles.Card__Icon}>
                 <Zap size={24} />
               </div>
-              <span className={styles.Card__Eyebrow}>Sssupafast!</span>
+              <span className={styles.Card__Eyebrow}>{copy.speedEyebrow}</span>
             </div>
 
             <Heading as='h3' className={styles.Card__Title}>
-              Renames happen in seconds
+              {copy.speedTitle}
             </Heading>
             <Text className={styles.Card__Description} color='subtle'>
-              Speed matters because cleanup only sticks if it does not interrupt
-              the real work. Drop files in, review, apply, move on.
+              {copy.speedDescription}
             </Text>
 
             <div className={styles.RenameExamples} aria-hidden='true'>
@@ -207,16 +263,14 @@ const WhyZush = ({ forceOS, platformSpecificCopy = false }: WhyZushProps) => {
               <div className={styles.Card__Icon}>
                 <Camera size={24} />
               </div>
-              <span className={styles.Card__Eyebrow}>Pro photo support</span>
+              <span className={styles.Card__Eyebrow}>{copy.formatsEyebrow}</span>
             </div>
 
             <Heading as='h3' className={styles.Card__Title}>
-              Native RAW support for photographers
+              {copy.formatsTitle}
             </Heading>
             <Text className={styles.Card__Description} color='subtle'>
-              Supports professional camera formats like CR2, NEF, ARW, DNG,
-              RAF, and RW2, so photographers can rename imports by actual image
-              content instead of living with `IMG_` chaos.
+              {copy.formatsDescription}
             </Text>
 
             <div className={styles.FormatPills} aria-hidden='true'>
@@ -233,19 +287,18 @@ const WhyZush = ({ forceOS, platformSpecificCopy = false }: WhyZushProps) => {
               <div className={styles.Card__Icon}>
                 <History size={24} />
               </div>
-              <span className={styles.Card__Eyebrow}>Low-risk automation</span>
+              <span className={styles.Card__Eyebrow}>{copy.controlEyebrow}</span>
             </div>
 
             <Heading as='h3' className={styles.Card__Title}>
-              Batch, monitor, and undo
+              {copy.controlTitle}
             </Heading>
             <Text className={styles.Card__Description} color='subtle'>
-              Clean up old piles in batch, keep new folders readable with
-              monitoring, and revert from history if you want a different name.
+              {copy.controlDescription}
             </Text>
 
             <div className={styles.WorkflowSteps} aria-hidden='true'>
-              {workflowSteps.map((step, index) => (
+              {copy.workflowSteps.map((step, index) => (
                 <div key={step} className={styles.WorkflowSteps__Item}>
                   <span className={styles.WorkflowSteps__Number}>
                     {index + 1}

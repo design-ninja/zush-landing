@@ -4,6 +4,9 @@ import { SUPABASE_URL } from "@/utils/supabase";
 interface PaddleCheckoutOptions {
   items?: { priceId: string; quantity: number }[];
   transactionId?: string;
+  settings?: {
+    locale?: string;
+  };
   customData?: {
     device_id?: string;
   };
@@ -48,6 +51,32 @@ declare global {
 let paddleLoaded = false;
 let paddleInitialized = false;
 let activeCheckoutSession: string | null = null;
+
+const PADDLE_LOCALES: Record<string, string> = {
+  en: "en",
+  de: "de",
+  fr: "fr",
+  "pt-br": "pt-BR",
+  pt: "pt",
+  es: "es",
+  nl: "nl",
+  it: "it",
+  ja: "ja",
+  ko: "ko",
+  "zh-cn": "zh-Hans",
+  zh: "zh-Hans",
+};
+const LOCALIZED_PATH_PREFIXES = new Set([
+  "de",
+  "fr",
+  "pt-br",
+  "es",
+  "nl",
+  "it",
+  "ja",
+  "ko",
+  "zh-cn",
+]);
 
 function getPaddleConfig() {
   const paddleEnv =
@@ -107,9 +136,10 @@ function initializePaddle(): void {
           params.set("email", email);
         }
         setTimeout(() => {
+          const thankYouPath = getLocalizedThankYouPath();
           window.location.href = params.toString()
-            ? `/thank-you?${params}`
-            : "/thank-you";
+            ? `${thankYouPath}?${params}`
+            : thankYouPath;
         }, 2500);
       }
     },
@@ -121,6 +151,33 @@ function initializePaddle(): void {
 
   window.Paddle.Initialize(paddleConfig);
   paddleInitialized = true;
+}
+
+function normalizeLanguage(value: string): string {
+  return value.trim().toLowerCase().replace(/_/g, "-");
+}
+
+function getCurrentPaddleLocale(): string | undefined {
+  const pageLanguage = normalizeLanguage(document.documentElement.lang || "");
+  const browserLanguage = normalizeLanguage(navigator.language || "");
+  const language = pageLanguage || browserLanguage;
+  if (!language) return undefined;
+
+  if (language.startsWith("zh")) return PADDLE_LOCALES.zh;
+  if (language.startsWith("pt-br")) return PADDLE_LOCALES["pt-br"];
+
+  const exactLocale = PADDLE_LOCALES[language];
+  if (exactLocale) return exactLocale;
+
+  return PADDLE_LOCALES[language.split("-")[0]];
+}
+
+function getLocalizedThankYouPath(): string {
+  const path = window.location.pathname;
+  const [, maybeLocale] = path.split("/");
+  return LOCALIZED_PATH_PREFIXES.has(maybeLocale)
+    ? `/${maybeLocale}/thank-you`
+    : "/thank-you";
 }
 
 async function ensurePaddleReady(): Promise<boolean> {
@@ -211,6 +268,10 @@ export async function openPaddleCheckout(
   const checkoutOptions: PaddleCheckoutOptions = {
     transactionId: checkoutSession.transaction_id,
   };
+  const paddleLocale = getCurrentPaddleLocale();
+  if (paddleLocale) {
+    checkoutOptions.settings = { locale: paddleLocale };
+  }
 
   console.log("[Paddle] Opening checkout with options:", checkoutOptions);
   window.Paddle.Checkout.open(checkoutOptions);

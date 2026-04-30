@@ -38,6 +38,16 @@ function verifyPaddleCheckout() {
   );
   assertMatch(
     src,
+    /settings\s*=\s*\{\s*locale:\s*paddleLocale\s*\}/,
+    "Checkout no longer passes the current page locale to Paddle",
+  );
+  assertMatch(
+    src,
+    /"zh-cn":\s*"zh-Hans"/,
+    "Checkout no longer maps Simplified Chinese pages to Paddle's locale code",
+  );
+  assertMatch(
+    src,
     /sessionStorage\.setItem\(\s*["']zush_checkout_device_id["'],\s*deviceId\s*\)/,
     "Device ID is not persisted before checkout",
   );
@@ -96,6 +106,16 @@ function verifyAutoOpenFlow() {
     layoutSrc,
     /bindCheckoutAutoOpen\(\)/,
     "Base layout no longer binds checkout auto-open flow",
+  );
+  assertMatch(
+    layoutSrc,
+    /window\.__zushLocaleRedirecting\s*=\s*true/,
+    "Locale redirect no longer blocks checkout auto-open before navigation",
+  );
+  assertMatch(
+    src,
+    /__zushLocaleRedirecting/,
+    "Auto-open no longer waits for locale redirect to finish",
   );
 }
 

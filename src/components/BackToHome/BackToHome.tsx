@@ -3,12 +3,14 @@ import styles from './BackToHome.module.scss';
 
 interface BackToHomeProps {
   className?: string;
+  href?: string;
+  label?: string;
 }
 
-const BackToHome = ({ className }: BackToHomeProps) => {
+const BackToHome = ({ className, href = '/', label = '← Back to Home' }: BackToHomeProps) => {
   return (
-    <AppLink href="/" className={`${styles.BackToHome} ${className || ''}`}>
-      ← Back to Home
+    <AppLink href={href} className={`${styles.BackToHome} ${className || ''}`}>
+      {label}
     </AppLink>
   );
 };

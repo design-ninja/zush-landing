@@ -6,17 +6,36 @@ import PageIcon from '@/components/PageIcon';
 import ErrorMessage from '@/components/ErrorMessage';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
+import { DEFAULT_LOCALE, getLocalizedPath, type Locale } from '@/i18n/config';
+import { getServicePageCopy, type ManageSubscriptionConfirmCopy } from '@/i18n/servicePages';
 import { SUPABASE_URL } from '@/utils/supabase';
 import styles from './ManageSubscription.module.scss';
 
-const ManageSubscriptionConfirm = () => {
+interface ManageSubscriptionConfirmProps {
+  locale?: Locale;
+  copy?: ManageSubscriptionConfirmCopy;
+  backToHomeLabel?: string;
+  homeHref?: string;
+  connectionError?: string;
+}
+
+const defaultServiceCopy = getServicePageCopy(DEFAULT_LOCALE);
+
+const ManageSubscriptionConfirm = ({
+  locale = DEFAULT_LOCALE,
+  copy = defaultServiceCopy.manageSubscriptionConfirm,
+  backToHomeLabel = defaultServiceCopy.backToHome,
+  homeHref,
+  connectionError = defaultServiceCopy.connectionError,
+}: ManageSubscriptionConfirmProps) => {
   const [error, setError] = useState('');
+  const resolvedHomeHref = homeHref ?? getLocalizedPath('/', locale);
 
   useEffect(() => {
     const token = new URLSearchParams(window.location.search).get('token');
 
     if (!token) {
-      setError('Subscription management link is missing or invalid.');
+      setError(copy.missingToken);
       return;
     }
 
@@ -47,11 +66,11 @@ const ManageSubscriptionConfirm = () => {
         setError(
           data.message ||
             data.error ||
-            'This subscription management link is invalid or expired.'
+            copy.invalidLink
         );
       } catch {
         if (!cancelled) {
-          setError('Connection error. Please check your internet and try again.');
+          setError(connectionError);
         }
       }
     };
@@ -70,12 +89,12 @@ const ManageSubscriptionConfirm = () => {
       </PageIcon>
 
       <Heading as='h1' className={styles.ManageSubscription__Title}>
-        Opening Subscription Portal
+        {copy.title}
       </Heading>
 
       {!error && (
         <Text as='p' className={styles.ManageSubscription__Subtitle} color='subtle'>
-          Redirecting to Paddle...
+          {copy.redirecting}
         </Text>
       )}
 
@@ -83,7 +102,7 @@ const ManageSubscriptionConfirm = () => {
 
       {error && (
         <div className={styles.ManageSubscription__Actions}>
-          <BackToHome />
+          <BackToHome href={resolvedHomeHref} label={backToHomeLabel} />
         </div>
       )}
     </PageLayout>

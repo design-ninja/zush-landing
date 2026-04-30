@@ -14,23 +14,36 @@ import { PLATFORM_LANDING_CONTENT } from '@/data/platformLanding';
 import { getSeoForPath, SITE_ORIGIN } from '@/seo/config';
 import { buildFAQPageJsonLd, buildFeatureBreadcrumbJsonLd } from '@/utils/jsonLd';
 import type { DownloadOS } from '@/utils/download';
+import { DEFAULT_LOCALE, getLocalizedPath, type Locale } from '@/i18n/config';
+import { getCopy } from '@/i18n/copy';
+import { getPlatformFaqCopy } from '@/i18n/platformFaqs';
+import { getLocalizedSeoForRoute } from '@/i18n/seo';
 
 interface Props {
   platform: Extract<DownloadOS, 'mac' | 'windows'>;
+  locale?: Locale;
 }
 
-const { platform } = Astro.props as Props;
+const { platform, locale = DEFAULT_LOCALE } = Astro.props as Props;
+const copy = getCopy(locale);
 const page = PLATFORM_LANDING_CONTENT[platform];
-const seo = getSeoForPath(page.path);
+const localizedPage = copy.platforms[platform];
+const localizedPlatformFaq = getPlatformFaqCopy(locale, platform, {
+  description: localizedPage.faqDescription,
+  items: localizedPage.faqs,
+});
+const faqItems = [...localizedPlatformFaq.items, ...copy.home.faqItems];
+const seo = locale === DEFAULT_LOCALE ? getSeoForPath(page.path) : getLocalizedSeoForRoute(page.path, locale);
 const platformLabel = platform === 'mac' ? 'Mac' : 'Windows';
+const pagePath = getLocalizedPath(page.path, locale);
 
 const softwareJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
-  '@id': `${SITE_ORIGIN}${page.path}#software`,
-  name: page.softwareName,
-  url: `${SITE_ORIGIN}${page.path}`,
-  description: page.softwareDescription,
+  '@id': `${SITE_ORIGIN}${pagePath}#software`,
+  name: localizedPage.softwareName,
+  url: `${SITE_ORIGIN}${pagePath}`,
+  description: localizedPage.softwareDescription,
   applicationCategory: 'UtilitiesApplication',
   applicationSubCategory: 'File Management',
   operatingSystem: page.operatingSystem,
@@ -56,45 +69,58 @@ const softwareJsonLd = {
       description: 'One-time purchase. 10,000 AI renames plus BYOK and Offline AI mode.',
     },
   ],
-  featureList: page.features,
+  featureList: localizedPage.features,
 };
 ---
 
 <BaseLayout
   seo={seo}
+  locale={locale}
   forceOS={platform}
-  chromeBasePath={page.path}
+  chromeBasePath={pagePath}
   disableTopOffset
   jsonLd={[
     softwareJsonLd,
-    buildFeatureBreadcrumbJsonLd(page.breadcrumbLabel, page.path),
-    buildFAQPageJsonLd(page.faqs),
+    buildFeatureBreadcrumbJsonLd(localizedPage.breadcrumbLabel, pagePath),
+    buildFAQPageJsonLd(faqItems),
   ]}
 >
   <Hero
     client:load
     forceOS={platform}
-    title={page.heroTitle}
+    title={localizedPage.heroTitle}
     titleHighlight={platformLabel}
-    subtitle={page.heroSubtitle}
+    subtitle={localizedPage.heroSubtitle}
+    buyLabel={copy.home.buyPro}
+    downloadLabel={copy.header.download}
+    downloadMenu={copy.downloadMenu}
+    trustSignals={copy.home.trustSignals}
     secondaryHref="#pricing"
+    slides={copy.home.showcaseSlides}
   />
-  <Videos client:visible autoplayWhenInView forceOS={platform} />
-  <Features />
-  <SupportedFormats />
+  <Videos client:visible autoplayWhenInView forceOS={platform} copy={copy.home.videos} />
+  <Features title={copy.home.featuresTitle} description={copy.home.featuresDescription} copy={copy.home.featureCards} />
+  <SupportedFormats
+    title={copy.home.supportedFormats}
+    imagesLabel={copy.home.images}
+    documentsLabel={copy.home.documents}
+  />
   <DownloadCTA
     forceOS={platform}
-    title={`Try Zush free on ${platformLabel}`}
-    subtitle={page.ctaSubtitle}
+    title={localizedPage.ctaTitle}
+    subtitle={localizedPage.ctaSubtitle}
+    hintPrefix={copy.home.downloadHintPrefix}
+    downloadLabel={copy.header.download}
+    downloadMenu={copy.downloadMenu}
   />
-  <WhyZush forceOS={platform} platformSpecificCopy />
-  <UseCases />
-  <Pricing />
-  <PlatformGuides platform={platform} />
+  <WhyZush forceOS={platform} platformSpecificCopy copy={copy.home.whyZush} />
+  <UseCases title={copy.home.useCasesTitle} description={copy.home.useCasesDescription} copy={copy.home.useCases} />
+  <Pricing copy={copy.pricing} />
+  {locale === DEFAULT_LOCALE && <PlatformGuides platform={platform} />}
   <FAQ
     client:visible
-    items={page.faqs}
-    appendDefaultItems
-    description={`Everything you need to know about Zush for ${platformLabel} and the rest of the product.`}
+    items={faqItems}
+    title={copy.home.faqTitle}
+    description={localizedPlatformFaq.description}
   />
 </BaseLayout>

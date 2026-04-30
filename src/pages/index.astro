@@ -10,18 +10,45 @@ import WhyZush from '@/components/WhyZush';
 import FAQ from '@/components/FAQ';
 import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
 import { getSeoForPath, HOME_JSON_LD } from '@/seo/config';
+import { getCopy } from '@/i18n/copy';
 
 const seo = getSeoForPath('/');
+const copy = getCopy('en');
 ---
 
 <BaseLayout seo={seo} jsonLd={HOME_JSON_LD}>
-  <Hero client:load />
-  <Videos client:visible autoplayWhenInView />
-  <Features />
-  <SupportedFormats />
-  <DownloadCTA />
-  <WhyZush />
-  <UseCases />
-  <Pricing />
-  <FAQ client:visible />
+  <Hero
+    client:load
+    title={copy.home.heroTitle}
+    titleAccent={copy.home.heroAccent}
+    subtitle={copy.home.heroSubtitle}
+    buyLabel={copy.home.buyPro}
+    downloadLabel={copy.header.download}
+    downloadMenu={copy.downloadMenu}
+    trustSignals={copy.home.trustSignals}
+    slides={copy.home.showcaseSlides}
+  />
+  <Videos client:visible autoplayWhenInView copy={copy.home.videos} />
+  <Features title={copy.home.featuresTitle} description={copy.home.featuresDescription} copy={copy.home.featureCards} />
+  <SupportedFormats
+    title={copy.home.supportedFormats}
+    imagesLabel={copy.home.images}
+    documentsLabel={copy.home.documents}
+  />
+  <DownloadCTA
+    title={copy.home.downloadTitle}
+    subtitle={copy.home.downloadSubtitle}
+    hintPrefix={copy.home.downloadHintPrefix}
+    downloadLabel={copy.header.download}
+    downloadMenu={copy.downloadMenu}
+  />
+  <WhyZush copy={copy.home.whyZush} />
+  <UseCases copy={copy.home.useCases} />
+  <Pricing copy={copy.pricing} />
+  <FAQ
+    client:visible
+    title={copy.home.faqTitle}
+    description={copy.home.faqDescription}
+    items={copy.home.faqItems}
+  />
 </BaseLayout>

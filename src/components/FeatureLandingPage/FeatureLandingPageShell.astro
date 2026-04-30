@@ -14,7 +14,14 @@ import TrustSignals from '@/components/TrustSignals';
 import type { FeatureLandingPageProps } from './FeatureLandingPage';
 import { getUseCasesForCategory } from '@/data/featureContent';
 import FeatureFAQ from './FeatureFAQ';
+import { DEFAULT_LOCALE, getLocalizedPath, type Locale, type LocalizedRoute } from '@/i18n/config';
+import { getCopy, type FeatureCopy } from '@/i18n/copy';
 import styles from './FeatureLandingPage.module.scss';
+
+interface LocalizedProps {
+  locale?: Locale;
+  localizedCopy?: FeatureCopy;
+}
 
 const {
   h1,
@@ -25,12 +32,17 @@ const {
   relatedBlogPosts,
   relatedPages,
   category = 'general',
-} = Astro.props as FeatureLandingPageProps;
+} = Astro.props as FeatureLandingPageProps & LocalizedProps;
 
+const localizedProps = Astro.props as FeatureLandingPageProps & LocalizedProps;
+const currentLocale = localizedProps.locale ?? DEFAULT_LOCALE;
+const currentCopy = getCopy(currentLocale);
+const pageCopy = localizedProps.localizedCopy;
 const useCasesData = getUseCasesForCategory(category);
+const heroSlides = pageCopy?.showcaseSlides ?? (currentLocale === DEFAULT_LOCALE ? showcaseSlides : currentCopy.home.showcaseSlides);
 const breadcrumbItems = [
-  { label: 'Home', href: '/' },
-  { label: h1 },
+  { label: currentLocale === DEFAULT_LOCALE ? 'Home' : 'Zush', href: getLocalizedPath('/', currentLocale) },
+  { label: pageCopy?.h1 ?? h1 },
 ];
 ---
 
@@ -38,36 +50,52 @@ const breadcrumbItems = [
 <article class={styles.Page}>
   <Hero
     as='header'
-    title={h1}
-    titleAccent={h1Accent}
-    subtitle={definitionText}
-    slides={showcaseSlides}
+    title={pageCopy?.h1 ?? h1}
+    titleAccent={pageCopy?.accent ?? h1Accent}
+    subtitle={pageCopy?.definitionText ?? definitionText}
+    slides={heroSlides}
     compactTopSpacing
+    buyLabel={currentCopy.home.buyPro}
+    downloadLabel={currentCopy.header.download}
+    downloadMenu={currentCopy.downloadMenu}
+    trustSignals={currentCopy.home.trustSignals}
     client:visible
   />
 
-  <Videos client:visible autoplayWhenInView />
-  <Features />
-  <SupportedFormats category={category} />
-  <DownloadCTA />
-  <WhyZush />
+  <Videos client:visible autoplayWhenInView copy={currentCopy.home.videos} />
+  <Features title={currentCopy.home.featuresTitle} description={currentCopy.home.featuresDescription} copy={currentCopy.home.featureCards} />
+  <SupportedFormats
+    category={category}
+    title={currentCopy.home.supportedFormats}
+    imagesLabel={currentCopy.home.images}
+    documentsLabel={currentCopy.home.documents}
+  />
+  <DownloadCTA
+    title={currentCopy.home.downloadTitle}
+    subtitle={currentCopy.home.downloadSubtitle}
+    hintPrefix={currentCopy.home.downloadHintPrefix}
+    downloadLabel={currentCopy.header.download}
+    downloadMenu={currentCopy.downloadMenu}
+  />
+  <WhyZush copy={currentCopy.home.whyZush} />
   <UseCases
-    title={useCasesData.title}
-    description={useCasesData.description}
-    items={useCasesData.items.length > 0 ? useCasesData.items : undefined}
+    title={currentLocale === DEFAULT_LOCALE ? useCasesData.title : currentCopy.home.useCasesTitle}
+    description={currentLocale === DEFAULT_LOCALE ? useCasesData.description : currentCopy.home.useCasesDescription}
+    items={currentLocale === DEFAULT_LOCALE && useCasesData.items.length > 0 ? useCasesData.items : undefined}
+    copy={currentLocale === DEFAULT_LOCALE ? undefined : currentCopy.home.useCases}
   />
 
   <section class={styles.Section}>
     <div class={styles.Section__Container}>
       <Heading as='h2' align='center' style={{ marginBottom: '3rem' }}>
-        Frequently Asked Questions
+        {pageCopy?.faqTitle ?? 'Frequently Asked Questions'}
       </Heading>
-      <FeatureFAQ faqItems={faqItems} client:visible />
+      <FeatureFAQ faqItems={pageCopy?.faqItems ?? faqItems} client:visible />
     </div>
   </section>
 
-  <Pricing />
-  <TrustSignals />
+  <Pricing copy={currentCopy.pricing} />
+  {currentLocale === DEFAULT_LOCALE && <TrustSignals />}
 
   {(relatedPages.length > 0 || relatedBlogPosts.length > 0) && (
     <section class={styles.Section}>
@@ -75,20 +103,20 @@ const breadcrumbItems = [
         {relatedPages.length > 0 && (
           <>
             <Heading as='h3' align='center' style={{ marginBottom: '2rem' }}>
-              Related Tools
+              {pageCopy?.relatedToolsTitle ?? 'Related Tools'}
             </Heading>
             <div class={styles.RelatedLinks}>
               {relatedPages.map((page) => (
-                <PillLink href={page.href} withArrow>{page.title}</PillLink>
+                <PillLink href={getLocalizedPath(page.href, currentLocale)} withArrow>{currentCopy.featurePages[page.href as LocalizedRoute]?.h1 ?? page.title}</PillLink>
               ))}
             </div>
           </>
         )}
 
-        {relatedBlogPosts.length > 0 && (
+        {currentLocale === DEFAULT_LOCALE && relatedBlogPosts.length > 0 && (
           <div class={relatedPages.length > 0 ? styles.RelatedSection : ''}>
             <Heading as='h3' align='center' style={{ marginBottom: '2rem' }}>
-              Related Guides
+              {pageCopy?.relatedGuidesTitle ?? 'Related Guides'}
             </Heading>
             <div class={styles.RelatedLinks}>
               {relatedBlogPosts.map((post) => (
