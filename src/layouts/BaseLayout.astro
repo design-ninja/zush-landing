@@ -5,6 +5,7 @@ import { DEFAULT_OG_IMAGE, getCanonicalUrl } from '@/seo/config';
 import '@/styles/main.scss';
 import Header from '@/components/Header/Header.astro';
 import Footer from '@/components/Footer/Footer.astro';
+import ScrollToTopButton from '@/components/ScrollToTopButton/ScrollToTopButton.astro';
 import type { DownloadOS } from '@/utils/download';
 import {
   DEFAULT_LOCALE,
@@ -311,10 +312,12 @@ const localeRedirectConfig = JSON.stringify({
         <slot />
       </main>
       {includeChrome && <Footer locale={locale} />}
+      {includeChrome && <ScrollToTopButton />}
       <script>
         import { bindCheckoutAutoOpen } from '@/utils/checkoutAutoOpen';
         import { bindPricingCheckout } from '@/utils/pricingCheckout';
         import { bindScrollReveal } from '@/utils/scrollReveal';
+        import { bindScrollToTopButton } from '@/utils/scrollToTop';
         import { bindStoreLinks } from '@/utils/storeLinks';
 
         const bindLanguageSwitcher = () => {
@@ -391,12 +394,14 @@ const localeRedirectConfig = JSON.stringify({
         bindLanguageSwitcher();
         bindPricingCheckout();
         bindScrollReveal();
+        bindScrollToTopButton();
         bindStoreLinks();
         document.addEventListener('astro:after-swap', () => {
           bindCheckoutAutoOpen();
           bindLanguageSwitcher();
           bindPricingCheckout();
           bindScrollReveal();
+          bindScrollToTopButton();
           bindStoreLinks();
         });
       </script>

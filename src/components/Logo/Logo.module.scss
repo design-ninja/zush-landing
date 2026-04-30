@@ -26,6 +26,11 @@
             width: 2.5rem;
             height: 2.5rem;
         }
+
+        @media (max-width: 390px) {
+            width: 2.1rem;
+            height: 2.1rem;
+        }
     }
 
     &__Text {
@@ -39,5 +44,13 @@
         @include mobile {
             font-size: 1.6rem;
         }
+
+        @media (max-width: 390px) {
+            font-size: 1.35rem;
+        }
+    }
+
+    @media (max-width: 390px) {
+        gap: 0.5rem;
     }
 }

@@ -17,6 +17,11 @@
         justify-content: space-between;
         align-items: center;
         height: 100%;
+
+        @media (max-width: 390px) {
+            padding-left: 0.85rem;
+            padding-right: 0.85rem;
+        }
     }
 
     &__Logo {
@@ -43,6 +48,10 @@
 
         @include mobile {
             gap: 1rem;
+        }
+
+        @media (max-width: 390px) {
+            gap: 0.5rem;
         }
     }
 
@@ -79,6 +88,10 @@
         border-radius: 999px;
         padding: 0.35rem;
         transition: background-color 0.2s ease, color 0.2s ease;
+
+        @media (max-width: 390px) {
+            padding: 0.25rem;
+        }
 
         &:hover,
         &:focus-visible {
@@ -119,6 +132,14 @@
             background-color: var(--primary) !important;
             color: var(--primary-foreground) !important;
             border-color: var(--primary) !important;
+        }
+
+        @media (max-width: 390px) {
+            height: 1.1rem;
+            padding: 0.48rem 0.78rem;
+            font-size: 0.82rem;
+            line-height: 1;
+            white-space: nowrap;
         }
     }
 

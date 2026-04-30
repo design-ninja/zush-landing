@@ -1,0 +1,70 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.ScrollToTopButton {
+  @include glass-morphism;
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 900;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--glass-border);
+  border-radius: $radius-full;
+  @include corner-shape-squircle;
+  color: var(--foreground);
+  box-shadow:
+    0 1.25rem 2.5rem color-mix(in srgb, var(--foreground) 14%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--foreground) 8%, transparent);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0.65rem) scale(0.94);
+  transition:
+    opacity $transition-fast,
+    transform $transition-fast,
+    background-color $transition-fast,
+    border-color $transition-fast,
+    color $transition-fast,
+    box-shadow $transition-fast;
+
+  &[data-visible='true'] {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+  }
+
+  &:hover,
+  &:focus-visible {
+    border-color: color-mix(in srgb, var(--primary) 55%, var(--border));
+    background: color-mix(in srgb, var(--glass) 78%, var(--primary-soft));
+    color: var(--primary);
+    box-shadow:
+      0 1.4rem 2.8rem color-mix(in srgb, var(--primary) 18%, transparent),
+      inset 0 1px 0 color-mix(in srgb, var(--foreground) 8%, transparent);
+  }
+
+  svg {
+    flex: 0 0 auto;
+  }
+
+  @include mobile {
+    right: max(0.85rem, env(safe-area-inset-right));
+    bottom: max(0.85rem, env(safe-area-inset-bottom));
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ScrollToTopButton {
+    transition:
+      opacity 0.01ms linear,
+      background-color $transition-fast,
+      border-color $transition-fast,
+      color $transition-fast,
+      box-shadow $transition-fast;
+  }
+}

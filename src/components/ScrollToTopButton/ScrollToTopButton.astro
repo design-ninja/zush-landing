@@ -1,0 +1,23 @@
+---
+import { ArrowUp } from 'lucide-react';
+import styles from './ScrollToTopButton.module.scss';
+
+interface Props {
+  label?: string;
+}
+
+const { label = 'Back to top' } = Astro.props;
+---
+
+<button
+  aria-hidden='true'
+  aria-label={label}
+  class={styles.ScrollToTopButton}
+  data-scroll-to-top
+  data-visible='false'
+  tabindex='-1'
+  title={label}
+  type='button'
+>
+  <ArrowUp aria-hidden='true' size={21} strokeWidth={2.4} />
+</button>

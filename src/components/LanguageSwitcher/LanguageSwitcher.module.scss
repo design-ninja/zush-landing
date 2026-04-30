@@ -153,6 +153,24 @@
   }
 }
 
+@media (max-width: 390px) {
+  .LanguageSwitcher__Button {
+    gap: 0.25rem;
+    min-width: 3.35rem;
+    padding: 0.42rem 0.42rem 0.42rem 0.52rem;
+  }
+
+  .LanguageSwitcher__Flag {
+    width: 1.25rem;
+    font-size: 1.15rem;
+  }
+
+  .LanguageSwitcher__Icon {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
 @keyframes languageMenuFadeIn {
   from {
     opacity: 0;
