@@ -33,7 +33,7 @@ export const LOCALE_META: Record<Locale, LocaleMeta> = {
     ogLocale: 'en_US',
     label: 'English',
     nativeLabel: 'English',
-    flag: '🇺🇸',
+    flag: '🌐',
   },
   de: {
     locale: 'de',
