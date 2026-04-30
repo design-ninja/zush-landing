@@ -16,6 +16,7 @@ import { buildFAQPageJsonLd, buildFeatureBreadcrumbJsonLd } from '@/utils/jsonLd
 import type { DownloadOS } from '@/utils/download';
 import { DEFAULT_LOCALE, getLocalizedPath, type Locale } from '@/i18n/config';
 import { getCopy } from '@/i18n/copy';
+import { getPlatformFaqCopy } from '@/i18n/platformFaqs';
 import { getLocalizedSeoForRoute } from '@/i18n/seo';
 
 interface Props {
@@ -27,6 +28,11 @@ const { platform, locale = DEFAULT_LOCALE } = Astro.props as Props;
 const copy = getCopy(locale);
 const page = PLATFORM_LANDING_CONTENT[platform];
 const localizedPage = copy.platforms[platform];
+const localizedPlatformFaq = getPlatformFaqCopy(locale, platform, {
+  description: localizedPage.faqDescription,
+  items: localizedPage.faqs,
+});
+const faqItems = [...localizedPlatformFaq.items, ...copy.home.faqItems];
 const seo = locale === DEFAULT_LOCALE ? getSeoForPath(page.path) : getLocalizedSeoForRoute(page.path, locale);
 const platformLabel = platform === 'mac' ? 'Mac' : 'Windows';
 const pagePath = getLocalizedPath(page.path, locale);
@@ -76,7 +82,7 @@ const softwareJsonLd = {
   jsonLd={[
     softwareJsonLd,
     buildFeatureBreadcrumbJsonLd(localizedPage.breadcrumbLabel, pagePath),
-    buildFAQPageJsonLd(localizedPage.faqs),
+    buildFAQPageJsonLd(faqItems),
   ]}
 >
   <Hero
@@ -113,9 +119,8 @@ const softwareJsonLd = {
   {locale === DEFAULT_LOCALE && <PlatformGuides platform={platform} />}
   <FAQ
     client:visible
-    items={localizedPage.faqs}
-    appendDefaultItems={locale === DEFAULT_LOCALE}
+    items={faqItems}
     title={copy.home.faqTitle}
-    description={localizedPage.faqDescription}
+    description={localizedPlatformFaq.description}
   />
 </BaseLayout>
