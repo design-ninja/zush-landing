@@ -5,7 +5,7 @@ const thumbnailModules = import.meta.glob<{ default: ImageMetadata }>(
   { eager: true },
 );
 
-export const BLOG_THUMBNAILS = Object.fromEntries(
+const BLOG_THUMBNAILS = Object.fromEntries(
   Object.entries(thumbnailModules).map(([filePath, module]) => {
     const slug = filePath.split('/').pop()?.replace(/\.webp$/, '');
 

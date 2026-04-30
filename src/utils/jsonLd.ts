@@ -149,6 +149,41 @@ export function buildSoftwareApplicationJsonLd(data: SoftwareApplicationData) {
   };
 }
 
+export interface FeaturePageJsonLdData {
+  howTo: {
+    name: string;
+    description: string;
+    steps: HowToStepData[];
+  };
+  faqItems: FAQItem[];
+  software: SoftwareApplicationData;
+}
+
+export function buildFeaturePageJsonLd(data: FeaturePageJsonLdData) {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'HowTo',
+        name: data.howTo.name,
+        description: data.howTo.description,
+        step: data.howTo.steps.map((step, index) => ({
+          '@type': 'HowToStep',
+          position: index + 1,
+          name: step.name,
+          text: step.text,
+        })),
+        speakable: {
+          '@type': 'SpeakableSpecification',
+          cssSelector: ['h1', 'meta[name="description"]'],
+        },
+      },
+      buildFAQPageJsonLd(data.faqItems),
+      buildSoftwareApplicationJsonLd(data.software),
+    ],
+  };
+}
+
 export interface HowToData {
   name: string;
   description: string;

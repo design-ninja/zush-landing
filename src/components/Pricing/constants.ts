@@ -30,41 +30,6 @@ interface Plan {
   highlight?: boolean;
 }
 
-export const FREE_PLAN: Plan = {
-  name: 'Zush Free',
-  description: 'Free to try + All PRO features',
-  features: [
-    {
-      title: 'Multiple Folders',
-      desc: 'Monitor multiple folders simultaneously',
-      icon: FolderPlus,
-    },
-    {
-      title: 'Smart Naming & Metadata',
-      desc: 'Customize naming patterns and auto-tag files with Finder metadata',
-      icon: Tags,
-    },
-    {
-      title: 'Custom AI Prompts',
-      desc: 'Personalize AI behavior with your own rename and tagging instructions',
-      icon: MessageSquareText,
-    },
-    {
-      title: 'Localization (60+ languages)',
-      desc: 'File names in any language with custom date format',
-      icon: Globe,
-    },
-    {
-      title: 'Quick Rename Shortcut',
-      desc: 'Rename selected files in Finder with a keyboard shortcut',
-      icon: Command,
-    },
-  ],
-  buttonText: 'Download Free',
-  isPro: false,
-  price: '$0',
-};
-
 export const PRO_PLAN: Plan = {
   name: 'Zush PRO 🌟',
   description: 'One-time purchase • Lifetime access',

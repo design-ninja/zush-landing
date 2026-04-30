@@ -1,3 +1,4 @@
+// fallow-ignore-file unused-file
 import { SUPABASE_URL } from "@/utils/supabase";
 
 interface PaddleCheckoutOptions {
@@ -122,7 +123,7 @@ function initializePaddle(): void {
   paddleInitialized = true;
 }
 
-export async function ensurePaddleReady(): Promise<boolean> {
+async function ensurePaddleReady(): Promise<boolean> {
   try {
     await loadPaddleScript();
     initializePaddle();
@@ -166,6 +167,7 @@ async function createCheckoutSession(
   }
 }
 
+// fallow-ignore-next-line unused-export
 export async function openPaddleCheckout(
   deviceId?: string | null,
   priceId?: string | null,

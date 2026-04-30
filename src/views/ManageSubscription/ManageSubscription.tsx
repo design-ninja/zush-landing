@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { CreditCard, Mail } from 'lucide-react';
+// fallow-ignore-next-line code-duplication
 import Button from '@/components/Button';
 import BackToHome from '@/components/BackToHome';
 import PageLayout from '@/components/PageLayout';
@@ -8,52 +9,21 @@ import FormInput from '@/components/FormInput';
 import ErrorMessage from '@/components/ErrorMessage';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
-import { SUPABASE_URL } from '@/utils/supabase';
+import { useEmailSubmission } from '@/hooks/useEmailSubmission';
 import styles from './ManageSubscription.module.scss';
 
 const ManageSubscription = () => {
-  const [email, setEmail] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
   const [sent, setSent] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!email) {
-      setError('Please enter your email address');
-      return;
-    }
-
-    setIsLoading(true);
-    setError('');
-    setSent(false);
-
-    try {
-      const response = await fetch(
-        `${SUPABASE_URL}/functions/v1/send-customer-portal-link`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email: email.trim() }),
-        }
-      );
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setSent(true);
-      } else {
-        setError(data.error || 'Something went wrong. Please try again.');
-      }
-    } catch {
-      setError('Connection error. Please check your internet and try again.');
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const { email, error, handleSubmit, isLoading, setEmail } =
+    useEmailSubmission({
+      endpoint: 'send-customer-portal-link',
+      onSubmitStart: () => setSent(false),
+      onSuccess: () => setSent(true),
+      getErrorMessage: async (response) => {
+        const data = await response.json();
+        return data.error || 'Something went wrong. Please try again.';
+      },
+    });
 
   return (
     <PageLayout>

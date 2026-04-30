@@ -1,3 +1,4 @@
+// fallow-ignore-file unused-file
 const REVEAL_SELECTOR = 'section:not([data-scroll-reveal-skip])';
 const REVEAL_STATE_VISIBLE = 'visible';
 

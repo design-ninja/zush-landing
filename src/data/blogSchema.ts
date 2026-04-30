@@ -1,9 +1,9 @@
 import { z } from 'astro/zod';
 
-export const BLOG_PLATFORM_VALUES = ['general', 'mac', 'windows'] as const;
+const BLOG_PLATFORM_VALUES = ['general', 'mac', 'windows'] as const;
 export type BlogPlatform = (typeof BLOG_PLATFORM_VALUES)[number];
 
-export const BLOG_TOPIC_VALUES = [
+const BLOG_TOPIC_VALUES = [
   'ai-renaming',
   'automation',
   'organization',
@@ -56,24 +56,6 @@ export const BLOG_PLATFORM_META: Record<
     ctaHref: '/windows',
     ctaLabel: 'View Zush for Windows',
   },
-};
-
-export const BLOG_GUIDE_SLUGS: Record<BlogPlatform, string[]> = {
-  general: [
-    'best-ai-file-renamer-tools-2026',
-    'rename-files-with-ai-guide',
-    'file-naming-conventions-best-practices',
-  ],
-  mac: [
-    'best-ai-file-renamer-tools-mac-compared',
-    'auto-rename-files-mac-guide',
-    'rename-screenshots-automatically-mac',
-  ],
-  windows: [
-    'best-ai-file-renamer-tools-windows-compared',
-    'rename-files-with-ai-windows-guide',
-    'auto-rename-files-windows-guide',
-  ],
 };
 
 export const blogCollectionSchema = z.object({

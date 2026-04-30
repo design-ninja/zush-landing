@@ -1,5 +1,5 @@
 import FeatureLandingPage from '@/components/FeatureLandingPage';
-import { buildSoftwareApplicationJsonLd } from '@/utils/jsonLd';
+import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 
 const faqItems = [
   {
@@ -29,65 +29,41 @@ const faqItems = [
   },
 ];
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'HowTo',
-      name: 'Rename PDFs with AI',
-      description:
-        'Use Zush to automatically rename PDF files based on their text content using AI.',
-      step: [
-        {
-          '@type': 'HowToStep',
-          position: 1,
-          name: 'Add your PDF files',
-          text: 'Drag and drop PDFs into Zush or select a folder. You can add individual files or process an entire directory of PDFs at once.',
-        },
-        {
-          '@type': 'HowToStep',
-          position: 2,
-          name: 'AI reads and understands each PDF',
-          text: 'Zush extracts text from your PDFs, identifying document types, key entities, dates, and topics. For scanned documents, AI vision reads the page images directly.',
-        },
-        {
-          '@type': 'HowToStep',
-          position: 3,
-          name: 'Review and rename',
-          text: 'Check the AI-generated names, tweak your naming pattern if desired, and apply the changes. All files are renamed instantly while preserving their content.',
-        },
-      ],
-      speakable: {
-        '@type': 'SpeakableSpecification',
-        cssSelector: ['h1', 'meta[name="description"]'],
+const jsonLd = buildFeaturePageJsonLd({
+  howTo: {
+    name: 'Rename PDFs with AI',
+    description:
+      'Use Zush to automatically rename PDF files based on their text content using AI.',
+    steps: [
+      {
+        name: 'Add your PDF files',
+        text: 'Drag and drop PDFs into Zush or select a folder. You can add individual files or process an entire directory of PDFs at once.',
       },
-    },
-    {
-      '@type': 'FAQPage',
-      mainEntity: faqItems.map((item) => ({
-        '@type': 'Question',
-        name: item.question,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: item.answer,
-        },
-      })),
-    },
-    buildSoftwareApplicationJsonLd({
-      pagePath: '/rename-pdf-with-ai',
-      description:
-        'AI PDF renamer that extracts text from invoices, contracts, scanned receipts, and reports to generate searchable filenames automatically.',
-      featureList: [
-        'Rename PDF files by document content',
-        'Support for scanned PDFs via AI vision',
-        'Batch rename invoices, contracts, and reports',
-        'Automatic folder monitoring for repeating PDF workflows',
-        'Custom naming patterns with dates and entities',
-        'Undo and rename history',
-      ],
-    }),
-  ],
-};
+      {
+        name: 'AI reads and understands each PDF',
+        text: 'Zush extracts text from your PDFs, identifying document types, key entities, dates, and topics. For scanned documents, AI vision reads the page images directly.',
+      },
+      {
+        name: 'Review and rename',
+        text: 'Check the AI-generated names, tweak your naming pattern if desired, and apply the changes. All files are renamed instantly while preserving their content.',
+      },
+    ],
+  },
+  faqItems,
+  software: {
+    pagePath: '/rename-pdf-with-ai',
+    description:
+      'AI PDF renamer that extracts text from invoices, contracts, scanned receipts, and reports to generate searchable filenames automatically.',
+    featureList: [
+      'Rename PDF files by document content',
+      'Support for scanned PDFs via AI vision',
+      'Batch rename invoices, contracts, and reports',
+      'Automatic folder monitoring for repeating PDF workflows',
+      'Custom naming patterns with dates and entities',
+      'Undo and rename history',
+    ],
+  },
+});
 
 const RenamePDFWithAI = () => (
   <FeatureLandingPage

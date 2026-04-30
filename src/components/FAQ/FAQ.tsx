@@ -1,37 +1,10 @@
-import { memo, useState, useMemo, type ReactNode } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { useState, useMemo, type ReactNode } from 'react';
 import { APP_CONFIG } from '@/constants';
 import AppLink from '@/components/AppLink';
-import Heading from '@/components/Heading';
 import { HOME_FAQ_DATA } from '@/data/homeFaq';
 import SectionHeader from '../SectionHeader';
+import FAQAccordionItem from './FAQAccordionItem';
 import styles from './FAQ.module.scss';
-
-interface FAQItemProps {
-  question: string;
-  answer: React.ReactNode;
-  isOpen: boolean;
-  onClick: () => void;
-}
-
-const FAQItem = memo(({ question, answer, isOpen, onClick }: FAQItemProps) => {
-  return (
-    <div className={`${styles.FAQItem} ${isOpen ? styles.FAQItem_active : ''}`}>
-      <button className={styles.FAQItem__Header} onClick={onClick} aria-expanded={isOpen}>
-        <Heading as='h3' className={styles.FAQItem__Question}>{question}</Heading>
-        <ChevronDown size={24} className={styles.FAQItem__Icon} />
-      </button>
-      <div
-        className={`${styles.FAQItem__Content} ${isOpen ? styles.FAQItem__Content_open : ''}`}
-        aria-hidden={!isOpen}
-      >
-        <div className={styles.FAQItem__Answer}>{answer}</div>
-      </div>
-    </div>
-  );
-});
-
-FAQItem.displayName = 'FAQItem';
 
 interface FAQData {
   question: string;
@@ -144,12 +117,13 @@ const FAQ = ({
 
         <div className={styles.FAQ__Grid}>
           {faqs.map((faq, index) => (
-            <FAQItem
+            <FAQAccordionItem
               key={index}
               question={faq.question}
               answer={faq.answer}
               isOpen={openIndex === index}
               onClick={() => setOpenIndex(openIndex === index ? null : index)}
+              classes={styles}
             />
           ))}
         </div>

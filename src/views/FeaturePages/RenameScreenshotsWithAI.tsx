@@ -1,5 +1,5 @@
 import FeatureLandingPage from '@/components/FeatureLandingPage';
-import { buildSoftwareApplicationJsonLd } from '@/utils/jsonLd';
+import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 
 const faqItems = [
   {
@@ -29,65 +29,41 @@ const faqItems = [
   },
 ];
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'HowTo',
-      name: 'Rename Screenshots with AI',
-      description:
-        'Use Zush to automatically rename screenshots based on their visual content using AI.',
-      step: [
-        {
-          '@type': 'HowToStep',
-          position: 1,
-          name: 'Set up folder monitoring',
-          text: 'Point Zush at your Screenshots folder (or any folder where screenshots land). Zush will watch for new files and rename them automatically.',
-        },
-        {
-          '@type': 'HowToStep',
-          position: 2,
-          name: 'AI reads the screenshot content',
-          text: 'When a new screenshot appears, Zush uses AI vision to identify the app, UI elements, text, and context shown in the image.',
-        },
-        {
-          '@type': 'HowToStep',
-          position: 3,
-          name: 'Screenshot is renamed instantly',
-          text: 'The generic timestamp-based name is replaced with a descriptive name that reflects what the screenshot actually shows. No manual intervention needed.',
-        },
-      ],
-      speakable: {
-        '@type': 'SpeakableSpecification',
-        cssSelector: ['h1', 'meta[name="description"]'],
+const jsonLd = buildFeaturePageJsonLd({
+  howTo: {
+    name: 'Rename Screenshots with AI',
+    description:
+      'Use Zush to automatically rename screenshots based on their visual content using AI.',
+    steps: [
+      {
+        name: 'Set up folder monitoring',
+        text: 'Point Zush at your Screenshots folder (or any folder where screenshots land). Zush will watch for new files and rename them automatically.',
       },
-    },
-    {
-      '@type': 'FAQPage',
-      mainEntity: faqItems.map((item) => ({
-        '@type': 'Question',
-        name: item.question,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: item.answer,
-        },
-      })),
-    },
-    buildSoftwareApplicationJsonLd({
-      pagePath: '/rename-screenshots-with-ai',
-      description:
-        'AI screenshot renamer that replaces generic screenshot timestamps with descriptive filenames and can auto-rename new captures in watched folders.',
-      featureList: [
-        'Rename screenshots by visible app and on-screen content',
-        'Automatic folder monitoring for new screenshots',
-        'Batch rename existing screenshot archives',
-        'Support for PNG, JPG, and downloaded image captures',
-        'Useful filenames for bug reports and design references',
-        'Undo and review before apply',
-      ],
-    }),
-  ],
-};
+      {
+        name: 'AI reads the screenshot content',
+        text: 'When a new screenshot appears, Zush uses AI vision to identify the app, UI elements, text, and context shown in the image.',
+      },
+      {
+        name: 'Screenshot is renamed instantly',
+        text: 'The generic timestamp-based name is replaced with a descriptive name that reflects what the screenshot actually shows. No manual intervention needed.',
+      },
+    ],
+  },
+  faqItems,
+  software: {
+    pagePath: '/rename-screenshots-with-ai',
+    description:
+      'AI screenshot renamer that replaces generic screenshot timestamps with descriptive filenames and can auto-rename new captures in watched folders.',
+    featureList: [
+      'Rename screenshots by visible app and on-screen content',
+      'Automatic folder monitoring for new screenshots',
+      'Batch rename existing screenshot archives',
+      'Support for PNG, JPG, and downloaded image captures',
+      'Useful filenames for bug reports and design references',
+      'Undo and review before apply',
+    ],
+  },
+});
 
 const RenameScreenshotsWithAI = () => (
   <FeatureLandingPage

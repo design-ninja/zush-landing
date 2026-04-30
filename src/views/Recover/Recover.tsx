@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Mail, CheckCircle } from 'lucide-react';
+// fallow-ignore-next-line code-duplication
 import Button from '@/components/Button';
 import BackToHome from '@/components/BackToHome';
 import PageLayout from '@/components/PageLayout';
@@ -8,46 +9,16 @@ import FormInput from '@/components/FormInput';
 import ErrorMessage from '@/components/ErrorMessage';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
-import { SUPABASE_URL } from '@/utils/supabase';
+import { useEmailSubmission } from '@/hooks/useEmailSubmission';
 import styles from './Recover.module.scss';
 
 const Recover = () => {
-  const [email, setEmail] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [error, setError] = useState('');
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!email) {
-      setError('Please enter your email address');
-      return;
-    }
-
-    setIsLoading(true);
-    setError('');
-
-    try {
-      const response = await fetch(`${SUPABASE_URL}/functions/v1/send-magic-link`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email: email.trim() }),
-      });
-
-      if (response.ok) {
-        setIsSuccess(true);
-      } else {
-        setError('Something went wrong. Please try again.');
-      }
-    } catch {
-      setError('Connection error. Please check your internet and try again.');
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const { email, error, handleSubmit, isLoading, setEmail } =
+    useEmailSubmission({
+      endpoint: 'send-magic-link',
+      onSuccess: () => setIsSuccess(true),
+    });
 
   if (isSuccess) {
     return (

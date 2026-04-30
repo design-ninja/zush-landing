@@ -1,5 +1,5 @@
 import FeatureLandingPage from '@/components/FeatureLandingPage';
-import { buildSoftwareApplicationJsonLd } from '@/utils/jsonLd';
+import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 
 const faqItems = [
   {
@@ -29,65 +29,41 @@ const faqItems = [
   },
 ];
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'HowTo',
-      name: 'Rename Photos with AI',
-      description:
-        'Use Zush to automatically rename photos based on their visual content using AI.',
-      step: [
-        {
-          '@type': 'HowToStep',
-          position: 1,
-          name: 'Import your photos',
-          text: 'Drag and drop photos into Zush or point it at a folder. Zush supports JPG, HEIC, PNG, TIFF, and all major RAW formats from Canon, Nikon, Sony, Fuji, and more.',
-        },
-        {
-          '@type': 'HowToStep',
-          position: 2,
-          name: 'AI describes each photo',
-          text: 'Zush uses AI vision models to understand the content of each photo — people, places, objects, events — and generates a clear, descriptive filename.',
-        },
-        {
-          '@type': 'HowToStep',
-          position: 3,
-          name: 'Apply and organize',
-          text: 'Preview the new names, adjust your naming pattern, and apply. Your photo library is instantly searchable by filename.',
-        },
-      ],
-      speakable: {
-        '@type': 'SpeakableSpecification',
-        cssSelector: ['h1', 'meta[name="description"]'],
+const jsonLd = buildFeaturePageJsonLd({
+  howTo: {
+    name: 'Rename Photos with AI',
+    description:
+      'Use Zush to automatically rename photos based on their visual content using AI.',
+    steps: [
+      {
+        name: 'Import your photos',
+        text: 'Drag and drop photos into Zush or point it at a folder. Zush supports JPG, HEIC, PNG, TIFF, and all major RAW formats from Canon, Nikon, Sony, Fuji, and more.',
       },
-    },
-    {
-      '@type': 'FAQPage',
-      mainEntity: faqItems.map((item) => ({
-        '@type': 'Question',
-        name: item.question,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: item.answer,
-        },
-      })),
-    },
-    buildSoftwareApplicationJsonLd({
-      pagePath: '/rename-photos-with-ai',
-      description:
-        'AI photo renamer that replaces IMG_, HEIC, and RAW filenames with searchable descriptions for photo libraries, imports, and client shoots.',
-      featureList: [
-        'Rename HEIC, JPG, PNG, and major RAW photo formats',
-        'Generate searchable names for iPhone and camera imports',
-        'Batch rename entire photo libraries',
-        'Automatic duplicate-safe naming with sequences',
-        'Custom patterns with dates and AI descriptions',
-        'Folder monitoring for ongoing photo workflows',
-      ],
-    }),
-  ],
-};
+      {
+        name: 'AI describes each photo',
+        text: 'Zush uses AI vision models to understand the content of each photo — people, places, objects, events — and generates a clear, descriptive filename.',
+      },
+      {
+        name: 'Apply and organize',
+        text: 'Preview the new names, adjust your naming pattern, and apply. Your photo library is instantly searchable by filename.',
+      },
+    ],
+  },
+  faqItems,
+  software: {
+    pagePath: '/rename-photos-with-ai',
+    description:
+      'AI photo renamer that replaces IMG_, HEIC, and RAW filenames with searchable descriptions for photo libraries, imports, and client shoots.',
+    featureList: [
+      'Rename HEIC, JPG, PNG, and major RAW photo formats',
+      'Generate searchable names for iPhone and camera imports',
+      'Batch rename entire photo libraries',
+      'Automatic duplicate-safe naming with sequences',
+      'Custom patterns with dates and AI descriptions',
+      'Folder monitoring for ongoing photo workflows',
+    ],
+  },
+});
 
 const RenamePhotosWithAI = () => (
   <FeatureLandingPage

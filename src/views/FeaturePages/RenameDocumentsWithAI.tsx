@@ -1,5 +1,5 @@
 import FeatureLandingPage from '@/components/FeatureLandingPage';
-import { buildSoftwareApplicationJsonLd } from '@/utils/jsonLd';
+import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 
 const faqItems = [
   {
@@ -29,65 +29,41 @@ const faqItems = [
   },
 ];
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
-        {
-          '@type': 'HowTo',
-          name: 'Rename Documents with AI',
-          description:
-        'Use Zush to automatically rename document files based on their text content using AI.',
-      step: [
-        {
-          '@type': 'HowToStep',
-          position: 1,
-          name: 'Add your documents',
-          text: 'Drag and drop files or select a folder containing documents. Zush supports Word, Excel, PowerPoint, text files, email exports, and more.',
-        },
-        {
-          '@type': 'HowToStep',
-          position: 2,
-          name: 'AI extracts and analyzes text',
-          text: 'Zush reads the text content of each document, identifies key topics, dates, and entities, then generates a descriptive filename.',
-        },
-        {
-          '@type': 'HowToStep',
-          position: 3,
-          name: 'Apply new names',
-          text: 'Review the AI-suggested names, make any adjustments, and rename all your documents in a single batch.',
-        },
-      ],
-      speakable: {
-        '@type': 'SpeakableSpecification',
-        cssSelector: ['h1', 'meta[name="description"]'],
+const jsonLd = buildFeaturePageJsonLd({
+  howTo: {
+    name: 'Rename Documents with AI',
+    description:
+      'Use Zush to automatically rename document files based on their text content using AI.',
+    steps: [
+      {
+        name: 'Add your documents',
+        text: 'Drag and drop files or select a folder containing documents. Zush supports Word, Excel, PowerPoint, text files, email exports, and more.',
       },
-    },
-    {
-      '@type': 'FAQPage',
-      mainEntity: faqItems.map((item) => ({
-        '@type': 'Question',
-        name: item.question,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: item.answer,
-        },
-      })),
-    },
-        buildSoftwareApplicationJsonLd({
-          pagePath: '/rename-documents-with-ai',
-          description:
-        'AI document renamer that reads DOCX, XLSX, PPTX, TXT, CSV, JSON, and email files to generate searchable filenames automatically.',
-      featureList: [
-        'Rename DOCX, XLSX, PPTX, TXT, CSV, JSON, and EML files',
-        'Extract document text, spreadsheet headers, and slide titles',
-        'Batch rename document-heavy folders',
-        'Custom naming patterns for client, date, and category',
-        'Folder monitoring for ongoing document workflows',
-        'Undo and rename history',
-      ],
-    }),
-  ],
-};
+      {
+        name: 'AI extracts and analyzes text',
+        text: 'Zush reads the text content of each document, identifies key topics, dates, and entities, then generates a descriptive filename.',
+      },
+      {
+        name: 'Apply new names',
+        text: 'Review the AI-suggested names, make any adjustments, and rename all your documents in a single batch.',
+      },
+    ],
+  },
+  faqItems,
+  software: {
+    pagePath: '/rename-documents-with-ai',
+    description:
+      'AI document renamer that reads DOCX, XLSX, PPTX, TXT, CSV, JSON, and email files to generate searchable filenames automatically.',
+    featureList: [
+      'Rename DOCX, XLSX, PPTX, TXT, CSV, JSON, and EML files',
+      'Extract document text, spreadsheet headers, and slide titles',
+      'Batch rename document-heavy folders',
+      'Custom naming patterns for client, date, and category',
+      'Folder monitoring for ongoing document workflows',
+      'Undo and rename history',
+    ],
+  },
+});
 
 const RenameDocumentsWithAI = () => (
   <FeatureLandingPage

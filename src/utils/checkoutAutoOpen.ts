@@ -1,3 +1,4 @@
+// fallow-ignore-file unused-file
 import { PRO_PADDLE_PRICE_ID } from '@/constants/pricing';
 import { getCheckoutParam } from '@/utils/checkoutParams';
 

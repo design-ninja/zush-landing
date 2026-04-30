@@ -1,4 +1,4 @@
-export const BLOG_PUBLIC_TAG_ORDER = [
+const BLOG_PUBLIC_TAG_ORDER = [
   'ai-file-renaming',
   'automation',
   'file-organization',

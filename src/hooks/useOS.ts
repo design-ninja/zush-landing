@@ -39,15 +39,6 @@ function readPreferredOS(): OS | null {
   return null;
 }
 
-export function setPreferredOS(os: 'mac' | 'windows'): void {
-  if (typeof window === 'undefined') return;
-  try {
-    window.localStorage.setItem(PREFERRED_OS_KEY, os);
-  } catch {
-    // ignore
-  }
-}
-
 export interface UseOSResult {
   os: OS;
   /** Whether detection has finished on the client. False during SSR / first paint. */
