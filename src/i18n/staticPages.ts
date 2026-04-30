@@ -360,7 +360,7 @@ const staticPages: Record<Exclude<Locale, 'en'>, Record<StaticLocalizedRoute, St
       ],
     },
     '/privacy-policy': {
-      title: 'Privacy Policy',
+      title: 'Informativa sulla privacy',
       description: 'Come Zush gestisce file, licenze, pagamenti, analisi e servizi di terze parti.',
       updated: 'Ultimo aggiornamento: 27 aprile 2026',
       sections: [
