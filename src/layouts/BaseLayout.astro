@@ -340,6 +340,10 @@ const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
     transition:
       opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
       transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  html[data-scroll-reveal='enabled']
+    [data-scroll-reveal]:not([data-scroll-reveal-state='visible']) {
     will-change: opacity, transform;
   }
 

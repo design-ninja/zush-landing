@@ -10,15 +10,13 @@ interface Props {
   icon: LucideIcon;
   class?: string;
   badge?: string;
-  delay?: number;
 }
 
-const { title, description, icon: Icon, class: className, badge, delay = 0 } = Astro.props;
+const { title, description, icon: Icon, class: className, badge } = Astro.props;
 ---
 
 <div
   class={`${styles.BentoCard} ${className || ''}`}
-  style={`transition-delay: ${delay}s`}
 >
   <div class={styles.BentoCard__Content}>
     <div class={styles.BentoCard__Header}>
