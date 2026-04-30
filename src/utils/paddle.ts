@@ -191,6 +191,11 @@ async function ensurePaddleReady(): Promise<boolean> {
   }
 }
 
+// fallow-ignore-next-line unused-export
+export function preloadPaddleCheckout(): Promise<boolean> {
+  return ensurePaddleReady();
+}
+
 async function createCheckoutSession(
   deviceId: string | null | undefined,
   priceId: string,
@@ -236,7 +241,10 @@ export async function openPaddleCheckout(
     return false;
   }
 
-  const checkoutSession = await createCheckoutSession(deviceId, priceId);
+  const checkoutSessionPromise = createCheckoutSession(deviceId, priceId);
+  const readyPromise = ensurePaddleReady();
+
+  const checkoutSession = await checkoutSessionPromise;
   if (!checkoutSession) {
     console.error("[Paddle] Checkout session was not created");
     return false;
@@ -254,7 +262,7 @@ export async function openPaddleCheckout(
     sessionStorage.removeItem("zush_checkout_device_id");
   }
 
-  const ready = await ensurePaddleReady();
+  const ready = await readyPromise;
   if (!ready || !window.Paddle) {
     if (checkoutSession.checkout_url) {
       window.location.href = checkoutSession.checkout_url;

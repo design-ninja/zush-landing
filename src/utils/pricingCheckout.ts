@@ -2,6 +2,29 @@
 import { getCheckoutParam } from '@/utils/checkoutParams';
 
 let isPricingCheckoutBound = false;
+let paddleModulePromise: Promise<typeof import('@/utils/paddle')> | null = null;
+
+function getPaddleModule() {
+  paddleModulePromise ??= import('@/utils/paddle');
+  return paddleModulePromise;
+}
+
+function getCheckoutButton(target: EventTarget | null): HTMLButtonElement | null {
+  return target instanceof Element
+    ? target.closest<HTMLButtonElement>('[data-paddle-checkout]')
+    : null;
+}
+
+function preloadCheckout(target: EventTarget | null): void {
+  const checkoutButton = getCheckoutButton(target);
+  if (!checkoutButton || checkoutButton.disabled) return;
+
+  void getPaddleModule()
+    .then(({ preloadPaddleCheckout }) => preloadPaddleCheckout())
+    .catch((error) => {
+      console.warn('[Pricing] Failed to preload checkout:', error);
+    });
+}
 
 export function bindPricingCheckout(): void {
   if (typeof document === 'undefined' || isPricingCheckoutBound) {
@@ -10,11 +33,11 @@ export function bindPricingCheckout(): void {
 
   isPricingCheckoutBound = true;
 
+  document.addEventListener('pointerenter', (event) => preloadCheckout(event.target), { capture: true });
+  document.addEventListener('focusin', (event) => preloadCheckout(event.target));
+
   document.addEventListener('click', async (event) => {
-    const checkoutButton =
-      event.target instanceof Element
-        ? event.target.closest<HTMLButtonElement>('[data-paddle-checkout]')
-        : null;
+    const checkoutButton = getCheckoutButton(event.target);
 
     if (!checkoutButton || checkoutButton.disabled) {
       return;
@@ -28,12 +51,20 @@ export function bindPricingCheckout(): void {
 
     event.preventDefault();
 
+    checkoutButton.disabled = true;
+    checkoutButton.dataset.paddleLoading = 'true';
+    checkoutButton.setAttribute('aria-busy', 'true');
+
     try {
       const deviceId = getCheckoutParam('device_id');
-      const { openPaddleCheckout } = await import('@/utils/paddle');
+      const { openPaddleCheckout } = await getPaddleModule();
       await openPaddleCheckout(deviceId, priceId);
     } catch (error) {
       console.error('[Pricing] Failed to open checkout:', error);
+    } finally {
+      checkoutButton.disabled = false;
+      delete checkoutButton.dataset.paddleLoading;
+      checkoutButton.removeAttribute('aria-busy');
     }
   });
 }
