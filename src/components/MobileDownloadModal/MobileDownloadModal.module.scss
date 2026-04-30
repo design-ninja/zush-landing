@@ -12,14 +12,15 @@
   padding: 1.5rem;
   background: oklch(0 0 0 / 0.5);
   backdrop-filter: blur(0.5rem);
-  will-change: opacity;
 }
 
 .MobileDownloadModal__Overlay_enter {
+  will-change: opacity;
   animation: modal-fade-in 0.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .MobileDownloadModal__Overlay_exit {
+  will-change: opacity;
   animation: modal-fade-out 0.2s ease-in forwards;
 }
 
@@ -33,14 +34,15 @@
   border-radius: $radius-xl;
   text-align: center;
   @include shadow('lg');
-  will-change: opacity, transform;
 }
 
 .MobileDownloadModal__Content_enter {
+  will-change: opacity, transform;
   animation: modal-slide-in 0.24s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .MobileDownloadModal__Content_exit {
+  will-change: opacity, transform;
   animation: modal-slide-out 0.2s cubic-bezier(0.4, 0, 1, 1) forwards;
 }
 
@@ -170,5 +172,6 @@
   .MobileDownloadModal__Content_enter,
   .MobileDownloadModal__Content_exit {
     animation: none;
+    will-change: auto;
   }
 }
