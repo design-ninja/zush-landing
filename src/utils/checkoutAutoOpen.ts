@@ -22,9 +22,16 @@ export function bindCheckoutAutoOpen(): void {
 
   hasOpenedCheckout = true;
 
+  const paddleModulePromise = import('@/utils/paddle');
+  void paddleModulePromise
+    .then(({ preloadPaddleCheckout }) => preloadPaddleCheckout())
+    .catch((error) => {
+      console.warn('[CheckoutAutoOpen] Failed to preload checkout:', error);
+    });
+
   window.setTimeout(async () => {
     try {
-      const { openPaddleCheckout } = await import('@/utils/paddle');
+      const { openPaddleCheckout } = await paddleModulePromise;
       await openPaddleCheckout(deviceId, PRO_PADDLE_PRICE_ID);
     } catch (error) {
       console.error('[CheckoutAutoOpen] Failed to open checkout:', error);
