@@ -34,7 +34,9 @@ import Text from '@/components/Text';
 import StoreBadge from '@/components/StoreBadge/StoreBadge.astro';
 import { PLATFORM_SPECIFICS_CONTENT, type PlatformSpecificsKey, type ScenarioFileType } from '@/data/platformSpecifics';
 import { DEFAULT_LOCALE, type Locale } from '@/i18n/config';
+import { getCopy } from '@/i18n/copy';
 import { getPlatformSpecificsCopy } from '@/i18n/platformSpecifics';
+import { getLocalizedPlatformSpecificsContent } from '@/i18n/platformSpecificsContent';
 import styles from './PlatformSpecifics.module.scss';
 
 interface Props {
@@ -43,8 +45,15 @@ interface Props {
 }
 
 const { platform, locale = DEFAULT_LOCALE } = Astro.props as Props;
-const data = PLATFORM_SPECIFICS_CONTENT[platform];
 const copy = getPlatformSpecificsCopy(locale);
+const localeCopy = getCopy(locale);
+const data = getLocalizedPlatformSpecificsContent(
+  platform,
+  locale,
+  localeCopy,
+  copy,
+  PLATFORM_SPECIFICS_CONTENT[platform],
+);
 const isMac = platform === 'mac';
 
 const QUICKSTART_ICONS = [Rocket, Upload, Wand2, FolderSync] as const;
@@ -67,6 +76,10 @@ const dropZoneHint = isMac ? '~/Downloads' : 'Downloads';
 const watchPaths = isMac
   ? ['~/Screenshots', '~/Downloads']
   : ['Pictures\\Screenshots', 'Downloads'];
+const previewReviewRows = data.scenarios.slice(0, 2).map((scenario) => ({
+  before: scenario.before,
+  after: scenario.after,
+}));
 ---
 
 <section class={styles.PlatformSpecifics}>
@@ -207,23 +220,20 @@ const watchPaths = isMac
                       <span class={styles.PreviewDrop__Icon}>
                         <ArrowDown size={18} />
                       </span>
-                      <span class={styles.PreviewDrop__Hint}>Drop {dropZoneHint}</span>
+                      <span class={styles.PreviewDrop__Hint}>{copy.quickstartDropPrefix} {dropZoneHint}</span>
                     </div>
                     <div class={styles.PreviewDrop__File}>
                       <span class={styles.PreviewDrop__FileIcon}>
                         <FileText size={12} />
                       </span>
-                      <span class={styles.PreviewDrop__FileName}>3 files ready</span>
+                      <span class={styles.PreviewDrop__FileName}>{copy.quickstartFilesReady}</span>
                     </div>
                   </div>
                 )}
 
                 {step.preview === 'review' && (
                   <div class={styles.PreviewReview}>
-                    {[
-                      { before: 'IMG_4847.jpg', after: 'Sunset_Walk.jpg' },
-                      { before: 'Screenshot.png', after: 'Q4_Chart.png' },
-                    ].map((row) => (
+                    {previewReviewRows.map((row) => (
                       <div class={styles.PreviewReview__Row}>
                         <div class={styles.PreviewReview__Names}>
                           <span class={styles.PreviewReview__Before}>{row.before}</span>
@@ -252,7 +262,7 @@ const watchPaths = isMac
                     ))}
                     <div class={styles.PreviewWatch__Activity}>
                       <span class={styles.PreviewWatch__Pulse}></span>
-                      <span class={styles.PreviewWatch__ActivityText}>Watching</span>
+                      <span class={styles.PreviewWatch__ActivityText}>{copy.quickstartWatching}</span>
                     </div>
                   </div>
                 )}

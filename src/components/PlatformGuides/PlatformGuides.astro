@@ -4,14 +4,119 @@ import PillLink from '@/components/PillLink';
 import Text from '@/components/Text';
 import { BLOG_PLATFORM_META, type BlogPlatform } from '@/data/blogSchema';
 import { getFeaturedPostsByPlatform } from '@/data/blog';
+import { DEFAULT_LOCALE, type Locale } from '@/i18n/config';
 import styles from './PlatformGuides.module.scss';
 
 interface Props {
   platform: Exclude<BlogPlatform, 'general'>;
+  locale?: Locale;
 }
 
-const { platform } = Astro.props as Props;
-const meta = BLOG_PLATFORM_META[platform];
+const GUIDE_COPY: Record<Locale, Record<Exclude<BlogPlatform, 'general'>, { title: string; description: string }>> = {
+  en: {
+    mac: {
+      title: 'Read the Guides',
+      description: BLOG_PLATFORM_META.mac.description,
+    },
+    windows: {
+      title: 'Read the Guides',
+      description: BLOG_PLATFORM_META.windows.description,
+    },
+  },
+  de: {
+    mac: {
+      title: 'Englische Guides lesen',
+      description: 'Praktische englische Anleitungen zu Mac-Workflows, Screenshots, Downloads und KI-Umbenennung.',
+    },
+    windows: {
+      title: 'Englische Guides lesen',
+      description: 'Praktische englische Anleitungen zu Windows-Workflows, Downloads, Screenshots und KI-Umbenennung.',
+    },
+  },
+  fr: {
+    mac: {
+      title: 'Lire les guides en anglais',
+      description: 'Guides pratiques en anglais pour les workflows Mac, captures, téléchargements et renommage IA.',
+    },
+    windows: {
+      title: 'Lire les guides en anglais',
+      description: 'Guides pratiques en anglais pour les workflows Windows, téléchargements, captures et renommage IA.',
+    },
+  },
+  'pt-br': {
+    mac: {
+      title: 'Ler guias em inglês',
+      description: 'Guias práticos em inglês sobre fluxos no Mac, screenshots, downloads e renomeação com IA.',
+    },
+    windows: {
+      title: 'Ler guias em inglês',
+      description: 'Guias práticos em inglês sobre fluxos no Windows, downloads, screenshots e renomeação com IA.',
+    },
+  },
+  es: {
+    mac: {
+      title: 'Leer guías en inglés',
+      description: 'Guías prácticas en inglés sobre flujos en Mac, capturas, descargas y renombrado con IA.',
+    },
+    windows: {
+      title: 'Leer guías en inglés',
+      description: 'Guías prácticas en inglés sobre flujos en Windows, descargas, capturas y renombrado con IA.',
+    },
+  },
+  nl: {
+    mac: {
+      title: 'Engelse gidsen lezen',
+      description: 'Praktische Engelstalige gidsen voor Mac-workflows, screenshots, downloads en AI-hernoemen.',
+    },
+    windows: {
+      title: 'Engelse gidsen lezen',
+      description: 'Praktische Engelstalige gidsen voor Windows-workflows, downloads, screenshots en AI-hernoemen.',
+    },
+  },
+  it: {
+    mac: {
+      title: 'Leggi le guide in inglese',
+      description: 'Guide pratiche in inglese per workflow Mac, screenshot, download e rinomina con IA.',
+    },
+    windows: {
+      title: 'Leggi le guide in inglese',
+      description: 'Guide pratiche in inglese per workflow Windows, download, screenshot e rinomina con IA.',
+    },
+  },
+  ja: {
+    mac: {
+      title: '英語ガイドを読む',
+      description: 'Mac のワークフロー、スクリーンショット、ダウンロード、AI リネームに関する英語の実用ガイドです。',
+    },
+    windows: {
+      title: '英語ガイドを読む',
+      description: 'Windows のワークフロー、ダウンロード、スクリーンショット、AI リネームに関する英語の実用ガイドです。',
+    },
+  },
+  ko: {
+    mac: {
+      title: '영어 가이드 읽기',
+      description: 'Mac 워크플로, 스크린샷, 다운로드, AI 이름 변경에 대한 실용 영어 가이드입니다.',
+    },
+    windows: {
+      title: '영어 가이드 읽기',
+      description: 'Windows 워크플로, 다운로드, 스크린샷, AI 이름 변경에 대한 실용 영어 가이드입니다.',
+    },
+  },
+  'zh-cn': {
+    mac: {
+      title: '阅读英文指南',
+      description: '关于 Mac 工作流、截图、下载文件和 AI 重命名的实用英文指南。',
+    },
+    windows: {
+      title: '阅读英文指南',
+      description: '关于 Windows 工作流、下载文件、截图和 AI 重命名的实用英文指南。',
+    },
+  },
+};
+
+const { platform, locale = DEFAULT_LOCALE } = Astro.props as Props;
+const copy = GUIDE_COPY[locale]?.[platform] ?? GUIDE_COPY.en[platform];
 const posts = await getFeaturedPostsByPlatform(platform, 3);
 ---
 
@@ -19,10 +124,10 @@ const posts = await getFeaturedPostsByPlatform(platform, 3);
   <section class={styles.PlatformGuides}>
     <div class={styles.PlatformGuides__Container}>
       <Heading as='h2' align='center'>
-        Read the Guides
+        {copy.title}
       </Heading>
       <Text as='p' align='center' color='subtle' className={styles.PlatformGuides__Description}>
-        {meta.description}
+        {copy.description}
       </Text>
       <div class={styles.PlatformGuides__Links}>
         {posts.map((post) => (

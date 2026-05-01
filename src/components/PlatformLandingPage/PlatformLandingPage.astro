@@ -20,6 +20,8 @@ import type { DownloadOS } from '@/utils/download';
 import { DEFAULT_LOCALE, getLocalizedPath, type Locale } from '@/i18n/config';
 import { getCopy } from '@/i18n/copy';
 import { getPlatformFaqCopy } from '@/i18n/platformFaqs';
+import { getPlatformSpecificsCopy } from '@/i18n/platformSpecifics';
+import { getLocalizedPlatformSpecificsContent } from '@/i18n/platformSpecificsContent';
 import { getLocalizedSeoForRoute } from '@/i18n/seo';
 
 interface Props {
@@ -40,8 +42,13 @@ const seo = locale === DEFAULT_LOCALE ? getSeoForPath(page.path) : getLocalizedS
 const platformLabel = platform === 'mac' ? 'Mac' : 'Windows';
 const pagePath = getLocalizedPath(page.path, locale);
 
-const specifics = PLATFORM_SPECIFICS_CONTENT[platform];
-const shouldRenderPlatformSpecifics = locale === DEFAULT_LOCALE;
+const specifics = getLocalizedPlatformSpecificsContent(
+  platform,
+  locale,
+  copy,
+  getPlatformSpecificsCopy(locale),
+  PLATFORM_SPECIFICS_CONTENT[platform],
+);
 const memorySpec = specifics.systemRequirements.rows.find((row) => row.key === 'memory')?.value;
 const storageSpec = specifics.systemRequirements.rows.find((row) => row.key === 'diskSpace')?.value;
 const processorSpec = specifics.systemRequirements.rows.find((row) => row.key === 'processor')?.value;
@@ -56,9 +63,9 @@ const softwareJsonLd = {
   applicationCategory: 'UtilitiesApplication',
   applicationSubCategory: 'File Management',
   operatingSystem: page.operatingSystem,
-  ...(shouldRenderPlatformSpecifics && processorSpec ? { processorRequirements: processorSpec } : {}),
-  ...(shouldRenderPlatformSpecifics && memorySpec ? { memoryRequirements: memorySpec } : {}),
-  ...(shouldRenderPlatformSpecifics && storageSpec ? { storageRequirements: storageSpec } : {}),
+  ...(processorSpec ? { processorRequirements: processorSpec } : {}),
+  ...(memorySpec ? { memoryRequirements: memorySpec } : {}),
+  ...(storageSpec ? { storageRequirements: storageSpec } : {}),
   softwareVersion: '1.9.0',
   downloadUrl: page.downloadUrl,
   ...(platform === 'windows' ? { installUrl: page.installUrl } : {}),
@@ -129,9 +136,9 @@ const softwareJsonLd = {
   <WhyZush forceOS={platform} platformSpecificCopy copy={copy.home.whyZush} />
   <UseCases title={copy.home.useCasesTitle} description={copy.home.useCasesDescription} copy={copy.home.useCases} />
   <Pricing copy={copy.pricing} />
-  {shouldRenderPlatformSpecifics && <PlatformSpecifics platform={platform} locale={locale} />}
+  <PlatformSpecifics platform={platform} locale={locale} />
   <CrossPlatformBanner locale={locale} hidePlatform={platform} />
-  {locale === DEFAULT_LOCALE && <PlatformGuides platform={platform} />}
+  <PlatformGuides platform={platform} locale={locale} />
   <FAQ
     client:visible
     items={faqItems}

@@ -13,6 +13,9 @@ export interface PlatformSpecificsCopy {
   quickstartTitle: string;
   quickstartDescriptionMac: string;
   quickstartDescriptionWindows: string;
+  quickstartDropPrefix: string;
+  quickstartFilesReady: string;
+  quickstartWatching: string;
   integrationsEyebrow: string;
   integrationsTitle: string;
   integrationsDescriptionMac: string;
@@ -46,6 +49,9 @@ const EN: PlatformSpecificsCopy = {
     'From a fresh download to a fully automated rename pipeline, the whole flow on Mac fits in a single coffee break.',
   quickstartDescriptionWindows:
     'From the Microsoft Store install to ongoing folder monitoring, the whole flow on Windows fits in a single coffee break.',
+  quickstartDropPrefix: 'Drop',
+  quickstartFilesReady: '3 files ready',
+  quickstartWatching: 'Watching',
   integrationsEyebrow: 'Integrations',
   integrationsTitle: 'Native integrations',
   integrationsDescriptionMac:
@@ -90,6 +96,9 @@ const PLATFORM_SPECIFICS_COPY: Record<Locale, PlatformSpecificsCopy> = {
       'Vom frischen Download bis zur vollautomatischen Umbenenn-Pipeline — der gesamte Ablauf auf dem Mac passt in eine Kaffeepause.',
     quickstartDescriptionWindows:
       'Von der Microsoft-Store-Installation bis zur laufenden Ordnerüberwachung — der gesamte Ablauf unter Windows passt in eine Kaffeepause.',
+    quickstartDropPrefix: 'Ablegen in',
+    quickstartFilesReady: '3 Dateien bereit',
+    quickstartWatching: 'Überwacht',
     integrationsTitle: 'Native Integrationen',
     integrationsDescriptionMac:
       'Zush bindet sich in die macOS-Bestandteile ein, die du jeden Tag nutzt — Finder, Kurzbefehle, Spotlight und Screenshots.',
@@ -128,6 +137,9 @@ const PLATFORM_SPECIFICS_COPY: Record<Locale, PlatformSpecificsCopy> = {
       'Du téléchargement à un pipeline de renommage entièrement automatisé — tout le parcours Mac tient dans une pause café.',
     quickstartDescriptionWindows:
       'De l’installation depuis le Microsoft Store à la surveillance continue de dossier — tout le parcours Windows tient dans une pause café.',
+    quickstartDropPrefix: 'Déposer dans',
+    quickstartFilesReady: '3 fichiers prêts',
+    quickstartWatching: 'Surveillance',
     integrationsTitle: 'Intégrations natives',
     integrationsDescriptionMac:
       'Zush s’intègre aux éléments de macOS que vous utilisez chaque jour — Finder, Raccourcis, Spotlight et captures d’écran.',
@@ -166,6 +178,9 @@ const PLATFORM_SPECIFICS_COPY: Record<Locale, PlatformSpecificsCopy> = {
       'Do download a um pipeline de renomeação totalmente automatizado — todo o fluxo no Mac cabe em uma pausa para o café.',
     quickstartDescriptionWindows:
       'Da instalação pela Microsoft Store ao monitoramento contínuo de pastas — todo o fluxo no Windows cabe em uma pausa para o café.',
+    quickstartDropPrefix: 'Soltar em',
+    quickstartFilesReady: '3 arquivos prontos',
+    quickstartWatching: 'Monitorando',
     integrationsTitle: 'Integrações nativas',
     integrationsDescriptionMac:
       'O Zush se conecta aos recursos do macOS que você já usa todo dia — Finder, Atalhos, Spotlight e capturas de tela.',
@@ -204,6 +219,9 @@ const PLATFORM_SPECIFICS_COPY: Record<Locale, PlatformSpecificsCopy> = {
       'De la descarga a un pipeline de renombrado totalmente automatizado — todo el flujo en Mac cabe en una pausa para el café.',
     quickstartDescriptionWindows:
       'De la instalación desde Microsoft Store al monitoreo continuo de carpetas — todo el flujo en Windows cabe en una pausa para el café.',
+    quickstartDropPrefix: 'Soltar en',
+    quickstartFilesReady: '3 archivos listos',
+    quickstartWatching: 'Vigilando',
     integrationsTitle: 'Integraciones nativas',
     integrationsDescriptionMac:
       'Zush se integra con las partes de macOS que ya usas a diario — Finder, Atajos, Spotlight y capturas de pantalla.',
@@ -242,6 +260,9 @@ const PLATFORM_SPECIFICS_COPY: Record<Locale, PlatformSpecificsCopy> = {
       'Van een verse download tot een volledig geautomatiseerde hernoempijplijn — de hele flow op Mac past in één koffiepauze.',
     quickstartDescriptionWindows:
       'Van Microsoft Store-installatie tot doorlopende mapmonitoring — de hele flow op Windows past in één koffiepauze.',
+    quickstartDropPrefix: 'Sleep naar',
+    quickstartFilesReady: '3 bestanden klaar',
+    quickstartWatching: 'Bewaken',
     integrationsTitle: 'Native integraties',
     integrationsDescriptionMac:
       'Zush sluit aan op de macOS-onderdelen die je elke dag gebruikt — Finder, Opdrachten, Spotlight en schermafbeeldingen.',
@@ -280,6 +301,9 @@ const PLATFORM_SPECIFICS_COPY: Record<Locale, PlatformSpecificsCopy> = {
       'Dal download a una pipeline di rinomina completamente automatizzata — tutto il flusso su Mac entra in una pausa caffè.',
     quickstartDescriptionWindows:
       'Dall’installazione dal Microsoft Store al monitoraggio continuo di cartelle — tutto il flusso su Windows entra in una pausa caffè.',
+    quickstartDropPrefix: 'Rilascia in',
+    quickstartFilesReady: '3 file pronti',
+    quickstartWatching: 'Monitoraggio',
     integrationsTitle: 'Integrazioni native',
     integrationsDescriptionMac:
       'Zush si integra con le parti di macOS che usi ogni giorno — Finder, Comandi rapidi, Spotlight e schermate.',
@@ -318,6 +342,9 @@ const PLATFORM_SPECIFICS_COPY: Record<Locale, PlatformSpecificsCopy> = {
       'ダウンロードから完全自動のリネームパイプラインまで、Mac での流れはコーヒーブレイクで完結します。',
     quickstartDescriptionWindows:
       'Microsoft Store のインストールから継続的なフォルダ監視まで、Windows での流れはコーヒーブレイクで完結します。',
+    quickstartDropPrefix: 'ドロップ先',
+    quickstartFilesReady: '3 件のファイル準備完了',
+    quickstartWatching: '監視中',
     integrationsTitle: 'ネイティブ統合',
     integrationsDescriptionMac:
       'Zush は毎日使う macOS の機能と直接連携します — Finder、ショートカット、Spotlight、スクリーンショット。',
@@ -328,8 +355,8 @@ const PLATFORM_SPECIFICS_COPY: Record<Locale, PlatformSpecificsCopy> = {
       'これらは多くの人が Zush を使っている Mac の日常的なワークフローです。それぞれ監視フォルダまたはドラッグ＆ドロップで実行できます。',
     scenariosDescriptionWindows:
       'これらは多くの人が Zush を使っている Windows の日常的なワークフローです。それぞれ監視フォルダまたはドラッグ＆ドロップで実行できます。',
-    scenariosBeforeLabel: 'Before',
-    scenariosAfterLabel: 'After',
+    scenariosBeforeLabel: '変更前',
+    scenariosAfterLabel: '変更後',
     securityTitle: 'セキュリティとプライバシー',
     securityDescriptionMac:
       'Zush は macOS のセキュリティ要件を満たします: notarize 済みバイナリ、サンドボックス化された App Store 版、Keychain に保存される鍵、明確なデータ境界。',
@@ -356,6 +383,9 @@ const PLATFORM_SPECIFICS_COPY: Record<Locale, PlatformSpecificsCopy> = {
       '다운로드부터 완전 자동화된 이름 변경 파이프라인까지, Mac에서의 전체 흐름은 커피 한 잔이면 충분합니다.',
     quickstartDescriptionWindows:
       'Microsoft Store 설치부터 지속적인 폴더 모니터링까지, Windows에서의 전체 흐름은 커피 한 잔이면 충분합니다.',
+    quickstartDropPrefix: '드롭 위치',
+    quickstartFilesReady: '파일 3개 준비됨',
+    quickstartWatching: '감시 중',
     integrationsTitle: '네이티브 통합',
     integrationsDescriptionMac:
       'Zush는 매일 사용하는 macOS 구성 요소와 직접 연동됩니다 — Finder, 단축어, Spotlight, 스크린샷.',
@@ -394,6 +424,9 @@ const PLATFORM_SPECIFICS_COPY: Record<Locale, PlatformSpecificsCopy> = {
       '从下载到完全自动化的重命名流水线 — 在 Mac 上的整个流程一杯咖啡的时间就能搞定。',
     quickstartDescriptionWindows:
       '从 Microsoft Store 安装到持续的文件夹监控 — 在 Windows 上的整个流程一杯咖啡的时间就能搞定。',
+    quickstartDropPrefix: '拖放到',
+    quickstartFilesReady: '3 个文件已准备好',
+    quickstartWatching: '正在监控',
     integrationsTitle: '原生集成',
     integrationsDescriptionMac:
       'Zush 与你每天使用的 macOS 组件无缝集成 — Finder、快捷指令、Spotlight 和截图。',
