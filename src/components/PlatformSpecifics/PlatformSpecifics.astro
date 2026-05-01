@@ -1,0 +1,385 @@
+---
+import {
+  Cpu,
+  Download,
+  Plug,
+  Rocket,
+  ShieldCheck,
+  Workflow,
+  FolderSync,
+  Upload,
+  Wand2,
+  FileText,
+  FileSpreadsheet,
+  FileType2,
+  Presentation,
+  Folder,
+  ArrowDown,
+  Check,
+  Eye,
+  BadgeCheck,
+  Laptop,
+  Lock,
+  MousePointerClick,
+  Search,
+  Camera,
+  Cloud,
+  Sun,
+  Sparkles,
+  Scissors,
+  Zap,
+} from 'lucide-react';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
+import StoreBadge from '@/components/StoreBadge/StoreBadge.astro';
+import { PLATFORM_SPECIFICS_CONTENT, type PlatformSpecificsKey, type ScenarioFileType } from '@/data/platformSpecifics';
+import { DEFAULT_LOCALE, type Locale } from '@/i18n/config';
+import { getPlatformSpecificsCopy } from '@/i18n/platformSpecifics';
+import styles from './PlatformSpecifics.module.scss';
+
+interface Props {
+  platform: PlatformSpecificsKey;
+  locale?: Locale;
+}
+
+const { platform, locale = DEFAULT_LOCALE } = Astro.props as Props;
+const data = PLATFORM_SPECIFICS_CONTENT[platform];
+const copy = getPlatformSpecificsCopy(locale);
+const isMac = platform === 'mac';
+
+const QUICKSTART_ICONS = [Rocket, Upload, Wand2, FolderSync] as const;
+
+const SECURITY_ICONS = [BadgeCheck, ShieldCheck, Laptop, Lock] as const;
+
+const INTEGRATION_ICONS_MAC = [MousePointerClick, Zap, Search, Camera, Cloud, Sun] as const;
+const INTEGRATION_ICONS_WIN = [MousePointerClick, Scissors, Sparkles, Cloud, Search, Sun] as const;
+
+const FILE_TYPE_META: Record<Exclude<ScenarioFileType, 'image'>, { Icon: typeof FileText; label: string; modifier: string }> = {
+  doc: { Icon: FileText, label: 'DOCX', modifier: 'doc' },
+  sheet: { Icon: FileSpreadsheet, label: 'XLSX', modifier: 'sheet' },
+  slides: { Icon: Presentation, label: 'PPTX', modifier: 'slides' },
+  pdf: { Icon: FileType2, label: 'PDF', modifier: 'pdf' },
+};
+
+const launchPlatformLabel = isMac ? 'macOS' : 'Windows';
+const launchAccentLabel = isMac ? 'Spotlight' : 'Start';
+const dropZoneHint = isMac ? '~/Downloads' : 'Downloads';
+const watchPaths = isMac
+  ? ['~/Screenshots', '~/Downloads']
+  : ['Pictures\\Screenshots', 'Downloads'];
+---
+
+<section class={styles.PlatformSpecifics}>
+  <div class={styles.PlatformSpecifics__Container}>
+    <div class={styles.Block}>
+      <header class={styles.Block__Header}>
+        <span class={styles.Block__Eyebrow}>
+          <Cpu size={14} aria-hidden='true' />
+          {copy.systemRequirementsEyebrow}
+        </span>
+        <Heading as='h2' className={styles.Block__Title}>
+          {copy.systemRequirementsTitle}
+        </Heading>
+        <Text as='p' color='subtle' className={styles.Block__Description}>
+          {copy.systemRequirementsDescription}
+        </Text>
+      </header>
+
+      <dl class={styles.SpecList}>
+        {data.systemRequirements.rows.map((row) => (
+          <div class={styles.SpecList__Row}>
+            <dt class={styles.SpecList__Label}>{row.label}</dt>
+            <dd class={styles.SpecList__Value}>{row.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+
+    <div class={styles.Block}>
+      <header class={styles.Block__Header}>
+        <span class={styles.Block__Eyebrow}>
+          <Download size={14} aria-hidden='true' />
+          {copy.installMethodsEyebrow}
+        </span>
+        <Heading as='h2' className={styles.Block__Title}>
+          {copy.installMethodsTitle}
+        </Heading>
+        <Text as='p' color='subtle' className={styles.Block__Description}>
+          {copy.installMethodsDescription}
+        </Text>
+      </header>
+
+      <div class={styles.InstallGrid} data-count={data.installMethods.length}>
+        {data.installMethods.map((method) => (
+          <article class={styles.InstallCard}>
+            <div class={styles.InstallCard__Head}>
+              <span class={styles.InstallCard__Badge} data-recommended={method.recommended ? 'true' : undefined}>
+                {method.recommended ? copy.installRecommendedBadge : method.badge}
+              </span>
+              <h3 class={styles.InstallCard__Title}>{method.title}</h3>
+            </div>
+            <p class={styles.InstallCard__Description}>{method.description}</p>
+            <ol class={styles.InstallCard__Steps}>
+              {method.steps.map((step, idx) => (
+                <li>
+                  <span class={styles.InstallCard__StepIndex}>{idx + 1}</span>
+                  <div>
+                    <strong>{step.step}</strong>
+                    <span>{step.detail}</span>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <div class={styles.InstallCard__CTA}>
+              <StoreBadge
+                kind={method.storeBadge.kind}
+                href={method.href}
+                kicker={method.storeBadge.kicker}
+                label={method.storeBadge.label}
+                ariaLabel={method.storeBadge.ariaLabel}
+                size='lg'
+              />
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div class={styles.Block}>
+      <header class={styles.Block__Header}>
+        <span class={styles.Block__Eyebrow}>
+          <Rocket size={14} aria-hidden='true' />
+          {copy.quickstartEyebrow}
+        </span>
+        <Heading as='h2' className={styles.Block__Title}>
+          {copy.quickstartTitle}
+        </Heading>
+        <Text as='p' color='subtle' className={styles.Block__Description}>
+          {isMac ? copy.quickstartDescriptionMac : copy.quickstartDescriptionWindows}
+        </Text>
+      </header>
+
+      <ol class={styles.QuickstartGrid}>
+        {data.quickstart.map((step, idx) => {
+          const Icon = QUICKSTART_ICONS[idx] ?? Rocket;
+          return (
+            <li class={styles.QuickstartTile}>
+              <div class={styles.QuickstartTile__Header}>
+                <span class={styles.QuickstartTile__Icon} aria-hidden='true'>
+                  <Icon size={18} />
+                </span>
+                <span class={styles.QuickstartTile__Duration}>{step.duration}</span>
+              </div>
+              <h3 class={styles.QuickstartTile__Title}>{step.title}</h3>
+              <p class={styles.QuickstartTile__Detail}>{step.detail}</p>
+
+              <div class={styles.QuickstartTile__Preview} data-preview={step.preview} aria-hidden='true'>
+                {step.preview === 'launch' && (
+                  <div class={styles.PreviewLaunch}>
+                    <div class={styles.PreviewLaunch__Window}>
+                      <span class={styles.PreviewLaunch__WinTitle}>Zush — {launchPlatformLabel}</span>
+                    </div>
+                    <div class={styles.PreviewLaunch__Body}>
+                      <picture>
+                        <source srcset='/logo-80.webp' type='image/webp' />
+                        <img
+                          src='/logo-80.png'
+                          alt=''
+                          class={styles.PreviewLaunch__AppIcon}
+                          width='32'
+                          height='32'
+                          loading='lazy'
+                          decoding='async'
+                        />
+                      </picture>
+                      <div class={styles.PreviewLaunch__Lines}>
+                        <span class={styles.PreviewLaunch__Line} data-w='wide'></span>
+                        <span class={styles.PreviewLaunch__Line} data-w='medium'></span>
+                      </div>
+                      <span class={styles.PreviewLaunch__Pill}>{launchAccentLabel}</span>
+                    </div>
+                  </div>
+                )}
+
+                {step.preview === 'drop' && (
+                  <div class={styles.PreviewDrop}>
+                    <div class={styles.PreviewDrop__Zone}>
+                      <span class={styles.PreviewDrop__Icon}>
+                        <ArrowDown size={18} />
+                      </span>
+                      <span class={styles.PreviewDrop__Hint}>Drop {dropZoneHint}</span>
+                    </div>
+                    <div class={styles.PreviewDrop__File}>
+                      <span class={styles.PreviewDrop__FileIcon}>
+                        <FileText size={12} />
+                      </span>
+                      <span class={styles.PreviewDrop__FileName}>3 files ready</span>
+                    </div>
+                  </div>
+                )}
+
+                {step.preview === 'review' && (
+                  <div class={styles.PreviewReview}>
+                    {[
+                      { before: 'IMG_4847.jpg', after: 'Sunset_Walk.jpg' },
+                      { before: 'Screenshot.png', after: 'Q4_Chart.png' },
+                    ].map((row) => (
+                      <div class={styles.PreviewReview__Row}>
+                        <div class={styles.PreviewReview__Names}>
+                          <span class={styles.PreviewReview__Before}>{row.before}</span>
+                          <span class={styles.PreviewReview__After}>→ {row.after}</span>
+                        </div>
+                        <span class={styles.PreviewReview__Check}>
+                          <Check size={11} />
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {step.preview === 'watch' && (
+                  <div class={styles.PreviewWatch}>
+                    {watchPaths.map((path) => (
+                      <div class={styles.PreviewWatch__Row}>
+                        <span class={styles.PreviewWatch__FolderIcon}>
+                          <Folder size={12} />
+                        </span>
+                        <span class={styles.PreviewWatch__Path}>{path}</span>
+                        <span class={styles.PreviewWatch__Status}>
+                          <Eye size={11} />
+                        </span>
+                      </div>
+                    ))}
+                    <div class={styles.PreviewWatch__Activity}>
+                      <span class={styles.PreviewWatch__Pulse}></span>
+                      <span class={styles.PreviewWatch__ActivityText}>Watching</span>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+
+    <div class={styles.Block}>
+      <header class={styles.Block__Header}>
+        <span class={styles.Block__Eyebrow}>
+          <Plug size={14} aria-hidden='true' />
+          {copy.integrationsEyebrow}
+        </span>
+        <Heading as='h2' className={styles.Block__Title}>
+          {copy.integrationsTitle}
+        </Heading>
+        <Text as='p' color='subtle' className={styles.Block__Description}>
+          {isMac ? copy.integrationsDescriptionMac : copy.integrationsDescriptionWindows}
+        </Text>
+      </header>
+
+      <ul class={styles.IntegrationList}>
+        {data.integrations.map((item, idx) => {
+          const iconSet = isMac ? INTEGRATION_ICONS_MAC : INTEGRATION_ICONS_WIN;
+          const IntegrationIcon = iconSet[idx] ?? Plug;
+          return (
+            <li class={styles.IntegrationRow}>
+              <span class={styles.IntegrationRow__Icon} aria-hidden='true'>
+                <IntegrationIcon size={28} strokeWidth={1.7} />
+              </span>
+              <div class={styles.IntegrationRow__Body}>
+                <h3 class={styles.IntegrationRow__Title}>{item.title}</h3>
+                <p class={styles.IntegrationRow__Description}>{item.description}</p>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+
+    <div class={styles.Block}>
+      <header class={styles.Block__Header}>
+        <span class={styles.Block__Eyebrow}>
+          <Workflow size={14} aria-hidden='true' />
+          {copy.scenariosEyebrow}
+        </span>
+        <Heading as='h2' className={styles.Block__Title}>
+          {copy.scenariosTitle}
+        </Heading>
+        <Text as='p' color='subtle' className={styles.Block__Description}>
+          {isMac ? copy.scenariosDescriptionMac : copy.scenariosDescriptionWindows}
+        </Text>
+      </header>
+
+      <div class={styles.ScenarioGrid}>
+        {data.scenarios.map((scenario) => {
+          const meta = scenario.fileType !== 'image' ? FILE_TYPE_META[scenario.fileType] : null;
+          const isImage = scenario.fileType === 'image';
+          return (
+            <article class={styles.ScenarioCard}>
+              <div class={styles.FileItem}>
+                {isImage && scenario.image ? (
+                  <img
+                    class={styles.FileItem__Image}
+                    src={scenario.image}
+                    alt=''
+                    role='presentation'
+                    width='64'
+                    height='64'
+                    loading='lazy'
+                    decoding='async'
+                  />
+                ) : (
+                  meta && (
+                    <div
+                      class={`${styles.FileItem__Preview} ${styles[`FileItem__Preview_${meta.modifier}`]}`}
+                      aria-hidden='true'
+                    >
+                      <meta.Icon size={26} strokeWidth={2.1} />
+                      <span class={styles.FileItem__Badge}>{meta.label}</span>
+                    </div>
+                  )
+                )}
+                <div class={styles.FileItem__Content}>
+                  <div class={styles.FileItem__Before}>{scenario.before}</div>
+                  <div class={styles.FileItem__After}>{scenario.after}</div>
+                </div>
+              </div>
+              <h3 class={styles.ScenarioCard__Title}>{scenario.title}</h3>
+              <p class={styles.ScenarioCard__Description}>{scenario.description}</p>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+
+    <div class={styles.Block}>
+      <header class={styles.Block__Header}>
+        <span class={styles.Block__Eyebrow}>
+          <ShieldCheck size={14} aria-hidden='true' />
+          {copy.securityEyebrow}
+        </span>
+        <Heading as='h2' className={styles.Block__Title}>
+          {copy.securityTitle}
+        </Heading>
+        <Text as='p' color='subtle' className={styles.Block__Description}>
+          {isMac ? copy.securityDescriptionMac : copy.securityDescriptionWindows}
+        </Text>
+      </header>
+
+      <ul class={styles.SecurityColumns}>
+        {data.security.map((item, idx) => {
+          const SecurityIcon = SECURITY_ICONS[idx] ?? ShieldCheck;
+          return (
+            <li class={styles.SecurityColumn}>
+              <span class={styles.SecurityColumn__Icon} aria-hidden='true'>
+                <SecurityIcon size={32} strokeWidth={1.7} />
+              </span>
+              <h3 class={styles.SecurityColumn__Title}>{item.title}</h3>
+              <p class={styles.SecurityColumn__Description}>{item.description}</p>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  </div>
+</section>

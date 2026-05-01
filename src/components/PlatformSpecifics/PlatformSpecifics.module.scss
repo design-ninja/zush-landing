@@ -1,0 +1,807 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.PlatformSpecifics {
+  padding: 2.5rem 0 5rem;
+
+  &__Container {
+    @include container;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+
+    @include mobile {
+      gap: 3.5rem;
+    }
+  }
+}
+
+.Block {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  &__Header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+    max-width: 42rem;
+    margin: 0 auto;
+  }
+
+  &__Eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.75rem;
+    background: var(--primary-soft);
+    color: var(--primary);
+    border-radius: $radius-full;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  &__Title {
+    margin: 0;
+  }
+
+  &__Description {
+    margin: 0;
+    line-height: 1.6;
+  }
+}
+
+.SpecList {
+  display: flex;
+  flex-direction: column;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: $radius-xl;
+  overflow: hidden;
+  margin: 0;
+  max-width: 56rem;
+  width: 100%;
+  align-self: center;
+
+  &__Row {
+    display: grid;
+    grid-template-columns: minmax(10rem, 18rem) 1fr;
+    gap: 1.5rem;
+    padding: 1.1rem 1.75rem;
+    border-top: 1px solid var(--border);
+    align-items: baseline;
+
+    &:first-child {
+      border-top: none;
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: 0.35rem;
+      padding: 1rem 1.25rem;
+    }
+  }
+
+  &__Label {
+    margin: 0;
+    color: var(--muted-foreground);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__Value {
+    margin: 0;
+    color: var(--foreground);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+}
+
+.InstallGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+
+  &[data-count='1'] {
+    grid-template-columns: minmax(0, 36rem);
+    justify-content: center;
+  }
+
+  @include tablet {
+    grid-template-columns: 1fr;
+  }
+}
+
+.InstallCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 2rem;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: $radius-xl;
+
+  &__Head {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  &__Badge {
+    padding: 0.25rem 0.6rem;
+    background: var(--card);
+    color: var(--muted-foreground);
+    border: 1px solid var(--border);
+    border-radius: $radius-full;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    &[data-recommended='true'] {
+      background: var(--secondary);
+      color: var(--secondary-foreground);
+      border-color: transparent;
+    }
+  }
+
+  &__Title {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--foreground);
+  }
+
+  &__Description {
+    margin: 0;
+    color: var(--muted-foreground);
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  &__Steps {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+
+    li {
+      display: grid;
+      grid-template-columns: 2rem 1fr;
+      gap: 1rem;
+      align-items: flex-start;
+
+      strong {
+        display: block;
+        font-weight: 600;
+        color: var(--foreground);
+        margin-bottom: 0.2rem;
+      }
+
+      div span {
+        display: block;
+        color: var(--muted-foreground);
+        font-size: 0.9rem;
+        line-height: 1.55;
+      }
+    }
+  }
+
+  &__StepIndex {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: $radius-full;
+    background: var(--secondary);
+    color: var(--secondary-foreground);
+    font-weight: 700;
+    font-size: 0.9rem;
+    line-height: 1;
+  }
+
+  &__CTA {
+    margin-top: auto;
+    display: flex;
+    align-items: flex-start;
+  }
+}
+
+.QuickstartGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include small {
+    grid-template-columns: 1fr;
+  }
+}
+
+.QuickstartTile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 1.4rem;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: $radius-xl;
+
+  &__Header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  &__Icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: $radius-md;
+    background: var(--primary-soft);
+    color: var(--primary);
+  }
+
+  &__Duration {
+    font-family: $font-mono;
+    font-size: 0.72rem;
+    color: var(--muted-foreground);
+    padding: 0.2rem 0.5rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: $radius-sm;
+  }
+
+  &__Title {
+    margin: 0.25rem 0 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--foreground);
+    line-height: 1.35;
+  }
+
+  &__Detail {
+    margin: 0;
+    color: var(--muted-foreground);
+    font-size: 0.85rem;
+    line-height: 1.55;
+  }
+
+  &__Preview {
+    margin-top: auto;
+    padding: 0.85rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: $radius-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 6rem;
+  }
+}
+
+.PreviewLaunch {
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: $radius-md;
+  overflow: hidden;
+  box-shadow: 0 8px 20px color-mix(in srgb, black, transparent 92%);
+
+  &__Window {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.45rem 0.7rem;
+    background: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+
+  &__WinTitle {
+    font-size: 0.7rem;
+    color: var(--muted-foreground);
+    font-weight: 500;
+  }
+
+  &__Body {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.75rem 0.85rem;
+  }
+
+  &__AppIcon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: $radius-sm;
+    flex-shrink: 0;
+    object-fit: contain;
+    display: block;
+  }
+
+  &__Lines {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    flex: 1;
+  }
+
+  &__Line {
+    height: 0.4rem;
+    background: var(--border);
+    border-radius: $radius-full;
+
+    &[data-w='wide'] {
+      width: 80%;
+    }
+
+    &[data-w='medium'] {
+      width: 55%;
+    }
+  }
+
+  &__Pill {
+    font-family: $font-mono;
+    font-size: 0.6rem;
+    color: var(--primary);
+    background: var(--primary-soft);
+    padding: 0.2rem 0.45rem;
+    border-radius: $radius-sm;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+}
+
+.PreviewDrop {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  &__Zone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    padding: 0.8rem 1rem;
+    background: var(--card);
+    border: 1.5px dashed color-mix(in oklch, var(--primary), var(--border) 30%);
+    border-radius: $radius-md;
+  }
+
+  &__Icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--primary-soft);
+    color: var(--primary);
+  }
+
+  &__Hint {
+    font-family: $font-mono;
+    font-size: 0.7rem;
+    color: var(--muted-foreground);
+  }
+
+  &__File {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.6rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: $radius-sm;
+  }
+
+  &__FileIcon {
+    color: var(--primary);
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &__FileName {
+    font-size: 0.72rem;
+    color: var(--foreground);
+    font-weight: 500;
+  }
+}
+
+.PreviewReview {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  &__Row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    padding: 0.45rem 0.6rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: $radius-sm;
+  }
+
+  &__Names {
+    display: flex;
+    flex-direction: column;
+    gap: 0.05rem;
+    min-width: 0;
+    flex: 1;
+  }
+
+  &__Before {
+    font-family: $font-mono;
+    font-size: 0.6rem;
+    color: var(--muted-foreground);
+    text-decoration: line-through;
+    @include text-ellipsis;
+  }
+
+  &__After {
+    font-family: $font-mono;
+    font-size: 0.7rem;
+    color: var(--foreground);
+    font-weight: 600;
+    @include text-ellipsis;
+  }
+
+  &__Check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.1rem;
+    height: 1.1rem;
+    border-radius: 50%;
+    background: var(--secondary);
+    color: var(--secondary-foreground);
+    flex-shrink: 0;
+  }
+}
+
+.PreviewWatch {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  &__Row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.6rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: $radius-sm;
+  }
+
+  &__FolderIcon {
+    color: var(--primary);
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &__Path {
+    flex: 1;
+    font-family: $font-mono;
+    font-size: 0.7rem;
+    color: var(--foreground);
+    @include text-ellipsis;
+  }
+
+  &__Status {
+    color: var(--secondary);
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &__Activity {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  &__Pulse {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: var(--secondary);
+    box-shadow: 0 0 0 0 var(--secondary);
+    animation: previewPulse 2s ease-in-out infinite;
+  }
+
+  &__ActivityText {
+    font-size: 0.65rem;
+    color: var(--muted-foreground);
+  }
+}
+
+@keyframes previewPulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--secondary), transparent 40%);
+  }
+  70% {
+    box-shadow: 0 0 0 0.4rem color-mix(in srgb, var(--secondary), transparent 100%);
+  }
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--secondary), transparent 100%);
+  }
+}
+
+.IntegrationList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 3rem;
+  row-gap: 0;
+  max-width: 60rem;
+  width: 100%;
+  align-self: center;
+  border-top: 1px solid var(--border);
+
+  @include small {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+  }
+}
+
+.IntegrationRow {
+  display: grid;
+  grid-template-columns: 3.25rem 1fr;
+  column-gap: 1.1rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: flex-start;
+
+  &__Icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.25rem;
+    height: 3.25rem;
+    color: var(--primary);
+    flex-shrink: 0;
+  }
+
+  &__Body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-width: 0;
+  }
+
+  &__Title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--foreground);
+    line-height: 1.3;
+  }
+
+  &__Description {
+    margin: 0;
+    color: var(--muted-foreground);
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+}
+
+.ScenarioGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+
+  @include tablet {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include small {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ScenarioCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.75rem;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: $radius-xl;
+
+  &__Title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--foreground);
+  }
+
+  &__Description {
+    margin: 0;
+    color: var(--muted-foreground);
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+}
+
+.FileItem {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: $radius-md;
+  min-width: 0;
+
+  &__Image {
+    width: 4rem;
+    height: 4rem;
+    border-radius: $radius-sm;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: var(--muted);
+  }
+
+  &__Preview {
+    width: 4rem;
+    height: 4rem;
+    border-radius: $radius-sm;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    color: white;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    &_doc {
+      background: linear-gradient(160deg, #5b8def 0%, #355dd7 100%);
+    }
+
+    &_sheet {
+      background: linear-gradient(160deg, #30b66f 0%, #198754 100%);
+    }
+
+    &_slides {
+      background: linear-gradient(160deg, #ff9b52 0%, #f97316 100%);
+    }
+
+    &_pdf {
+      background: linear-gradient(160deg, #ff6b6b 0%, #dc2626 100%);
+    }
+  }
+
+  &__Badge {
+    font-size: 0.55rem;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    font-weight: 800;
+    opacity: 0.95;
+  }
+
+  &__Content {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-align: left;
+  }
+
+  &__Before {
+    font-family: $font-mono;
+    font-size: 0.7rem;
+    color: var(--muted-foreground);
+    @include text-ellipsis;
+    text-decoration: line-through;
+    margin-bottom: 0.2rem;
+  }
+
+  &__After {
+    font-family: $font-mono;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--foreground);
+    @include text-ellipsis;
+  }
+}
+
+.SecurityColumns {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2rem;
+
+  @include tablet {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.5rem;
+  }
+
+  @include small {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.SecurityColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.85rem;
+  padding: 0 0.5rem;
+
+  &:nth-child(1) .SecurityColumn__Icon {
+    color: oklch(0.55 0.22 285);
+    background: oklch(0.94 0.06 285);
+  }
+
+  &:nth-child(2) .SecurityColumn__Icon {
+    color: oklch(0.55 0.18 245);
+    background: oklch(0.94 0.05 245);
+  }
+
+  &:nth-child(3) .SecurityColumn__Icon {
+    color: oklch(0.55 0.18 155);
+    background: oklch(0.94 0.05 155);
+  }
+
+  &:nth-child(4) .SecurityColumn__Icon {
+    color: oklch(0.62 0.18 45);
+    background: oklch(0.94 0.07 65);
+  }
+
+  &__Icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 4.25rem;
+    height: 4.25rem;
+    border-radius: 50%;
+  }
+
+  &__Title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--foreground);
+    line-height: 1.35;
+  }
+
+  &__Description {
+    margin: 0;
+    color: var(--muted-foreground);
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+}

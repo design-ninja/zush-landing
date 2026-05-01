@@ -10,7 +10,10 @@ import WhyZush from '@/components/WhyZush';
 import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
 import FAQ from '@/components/FAQ';
 import PlatformGuides from '@/components/PlatformGuides/PlatformGuides.astro';
+import PlatformSpecifics from '@/components/PlatformSpecifics/PlatformSpecifics.astro';
+import CrossPlatformBanner from '@/components/CrossPlatformBanner/CrossPlatformBanner.astro';
 import { PLATFORM_LANDING_CONTENT } from '@/data/platformLanding';
+import { PLATFORM_SPECIFICS_CONTENT } from '@/data/platformSpecifics';
 import { getSeoForPath, SITE_ORIGIN } from '@/seo/config';
 import { buildFAQPageJsonLd, buildFeatureBreadcrumbJsonLd } from '@/utils/jsonLd';
 import type { DownloadOS } from '@/utils/download';
@@ -37,6 +40,12 @@ const seo = locale === DEFAULT_LOCALE ? getSeoForPath(page.path) : getLocalizedS
 const platformLabel = platform === 'mac' ? 'Mac' : 'Windows';
 const pagePath = getLocalizedPath(page.path, locale);
 
+const specifics = PLATFORM_SPECIFICS_CONTENT[platform];
+const shouldRenderPlatformSpecifics = locale === DEFAULT_LOCALE;
+const memorySpec = specifics.systemRequirements.rows.find((row) => row.key === 'memory')?.value;
+const storageSpec = specifics.systemRequirements.rows.find((row) => row.key === 'diskSpace')?.value;
+const processorSpec = specifics.systemRequirements.rows.find((row) => row.key === 'processor')?.value;
+
 const softwareJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
@@ -47,6 +56,10 @@ const softwareJsonLd = {
   applicationCategory: 'UtilitiesApplication',
   applicationSubCategory: 'File Management',
   operatingSystem: page.operatingSystem,
+  ...(shouldRenderPlatformSpecifics && processorSpec ? { processorRequirements: processorSpec } : {}),
+  ...(shouldRenderPlatformSpecifics && memorySpec ? { memoryRequirements: memorySpec } : {}),
+  ...(shouldRenderPlatformSpecifics && storageSpec ? { storageRequirements: storageSpec } : {}),
+  softwareVersion: '1.9.0',
   downloadUrl: page.downloadUrl,
   ...(platform === 'windows' ? { installUrl: page.installUrl } : {}),
   screenshot:
@@ -116,6 +129,8 @@ const softwareJsonLd = {
   <WhyZush forceOS={platform} platformSpecificCopy copy={copy.home.whyZush} />
   <UseCases title={copy.home.useCasesTitle} description={copy.home.useCasesDescription} copy={copy.home.useCases} />
   <Pricing copy={copy.pricing} />
+  {shouldRenderPlatformSpecifics && <PlatformSpecifics platform={platform} locale={locale} />}
+  <CrossPlatformBanner locale={locale} hidePlatform={platform} />
   {locale === DEFAULT_LOCALE && <PlatformGuides platform={platform} />}
   <FAQ
     client:visible

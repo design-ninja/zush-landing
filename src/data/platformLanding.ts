@@ -111,7 +111,7 @@ export const PLATFORM_LANDING_CONTENT: Record<DownloadOS, PlatformLandingContent
       {
         question: 'Why is Zush distributed through the Microsoft Store?',
         answer:
-          'The Store handles installation, signing, and auto-updates for every user. No separate installer, no SmartScreen prompts, no manual version bumps.',
+          'The Store handles installation, package trust, and auto-updates for every user. No separate installer or manual version maintenance is needed.',
       },
       {
         question: 'Does Zush for Windows have the same features as Mac?',

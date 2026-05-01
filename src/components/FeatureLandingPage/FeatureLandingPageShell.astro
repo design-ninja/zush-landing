@@ -10,6 +10,7 @@ import SupportedFormats from '@/components/SupportedFormats';
 import UseCases from '@/components/UseCases';
 import Videos from '@/components/Videos';
 import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
+import CrossPlatformBanner from '@/components/CrossPlatformBanner/CrossPlatformBanner.astro';
 import TrustSignals from '@/components/TrustSignals';
 import type { FeatureLandingPageProps } from './FeatureLandingPage';
 import { getUseCasesForCategory } from '@/data/featureContent';
@@ -78,6 +79,7 @@ const breadcrumbItems = [
     downloadMenu={currentCopy.downloadMenu}
   />
   <WhyZush copy={currentCopy.home.whyZush} />
+  <CrossPlatformBanner locale={currentLocale} />
   <UseCases
     title={currentLocale === DEFAULT_LOCALE ? useCasesData.title : currentCopy.home.useCasesTitle}
     description={currentLocale === DEFAULT_LOCALE ? useCasesData.description : currentCopy.home.useCasesDescription}

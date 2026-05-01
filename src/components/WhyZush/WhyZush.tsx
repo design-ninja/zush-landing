@@ -1,5 +1,6 @@
 import {
   Camera,
+  Check,
   DollarSign,
   History,
   Monitor,
@@ -36,6 +37,10 @@ const renameExamples = [
   {
     oldName: 'scan_0034.pdf',
     newName: 'acme-invoice-april-2026.pdf',
+  },
+  {
+    oldName: 'IMG_20260410_143205.jpg',
+    newName: 'sunset-bali-beach-walk.jpg',
   },
 ];
 
@@ -255,6 +260,12 @@ const WhyZush = ({ forceOS, platformSpecificCopy = false, copy = defaultCopy }: 
                   </span>
                 </div>
               ))}
+              <div className={styles.RenameExamples__Summary}>
+                <span className={styles.RenameExamples__SummaryIcon}>
+                  <Check size={14} />
+                </span>
+                <span>3 files renamed in 3 seconds</span>
+              </div>
             </div>
           </article>
 

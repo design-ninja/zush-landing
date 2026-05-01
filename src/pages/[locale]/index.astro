@@ -9,6 +9,7 @@ import Pricing from '@/components/Pricing/Pricing.astro';
 import WhyZush from '@/components/WhyZush';
 import FAQ from '@/components/FAQ';
 import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
+import CrossPlatformBanner from '@/components/CrossPlatformBanner/CrossPlatformBanner.astro';
 import { HOME_JSON_LD } from '@/seo/config';
 import { getCopy } from '@/i18n/copy';
 import { getLocalizedSeoForRoute } from '@/i18n/seo';
@@ -126,6 +127,7 @@ const localizedJsonLd = {
     downloadMenu={copy.downloadMenu}
   />
   <WhyZush copy={copy.home.whyZush} />
+  <CrossPlatformBanner locale={locale} />
   <UseCases title={copy.home.useCasesTitle} description={copy.home.useCasesDescription} copy={copy.home.useCases} />
   <Pricing copy={copy.pricing} />
   <FAQ
