@@ -12,6 +12,7 @@ import Videos from '@/components/Videos';
 import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
 import CrossPlatformBanner from '@/components/CrossPlatformBanner/CrossPlatformBanner.astro';
 import TrustSignals from '@/components/TrustSignals';
+import { FileType2 } from 'lucide-react';
 import type { FeatureLandingPageProps } from './FeatureLandingPage';
 import { getUseCasesForCategory } from '@/data/featureContent';
 import FeatureFAQ from './FeatureFAQ';
@@ -151,16 +152,21 @@ const pdfComparisonRows = [
             </p>
           </div>
 
-          <div class={styles.PdfRecipeGrid}>
+          <div class={styles.PdfScenarioGrid}>
             {pdfNamingRecipes.map((recipe) => (
-              <article class={styles.PdfRecipe}>
-                <div class={styles.PdfRecipe__Title}>{recipe.title}</div>
-                <div class={styles.PdfRecipe__Names}>
-                  <span class={styles.PdfRecipe__Before}>{recipe.before}</span>
-                  <span class={styles.PdfRecipe__Arrow}>&rarr;</span>
-                  <span class={styles.PdfRecipe__After}>{recipe.after}</span>
+              <article class={styles.PdfScenarioCard}>
+                <div class={styles.PdfFileItem}>
+                  <div class={styles.PdfFileItem__Preview} aria-hidden='true'>
+                    <FileType2 size={26} strokeWidth={2.1} />
+                    <span class={styles.PdfFileItem__Badge}>PDF</span>
+                  </div>
+                  <div class={styles.PdfFileItem__Content}>
+                    <div class={styles.PdfFileItem__Before}>{recipe.before}</div>
+                    <div class={styles.PdfFileItem__After}>{recipe.after}</div>
+                  </div>
                 </div>
-                <p>{recipe.detail}</p>
+                <h3 class={styles.PdfScenarioCard__Title}>{recipe.title}</h3>
+                <p class={styles.PdfScenarioCard__Description}>{recipe.detail}</p>
               </article>
             ))}
           </div>

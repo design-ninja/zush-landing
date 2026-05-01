@@ -35,14 +35,14 @@
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    padding: 0.35rem 0.75rem;
+    padding: 0.35rem 0.85rem;
     background: var(--primary-soft);
     color: var(--primary);
     border-radius: $radius-full;
     font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0;
   }
 
   &__Title {
@@ -704,7 +704,7 @@
   &__Badge {
     font-size: 0.55rem;
     line-height: 1;
-    letter-spacing: 0.08em;
+    letter-spacing: 0;
     font-weight: 800;
     opacity: 0.95;
   }

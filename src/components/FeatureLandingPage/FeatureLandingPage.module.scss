@@ -144,8 +144,6 @@
 }
 
 .PdfDeepDive {
-  background: var(--muted);
-
   &__Header {
     max-width: 760px;
     margin: 0 auto 2.25rem;
@@ -153,10 +151,15 @@
   }
 
   &__Eyebrow {
+    display: inline-flex;
+    align-items: center;
     margin: 0 0 0.75rem;
+    padding: 0.35rem 0.85rem;
+    background: var(--primary-soft);
     color: var(--primary);
-    font-size: 0.78rem;
-    font-weight: 700;
+    border-radius: $radius-full;
+    font-size: 0.75rem;
+    font-weight: 600;
     letter-spacing: 0;
     text-transform: uppercase;
   }
@@ -169,71 +172,97 @@
   }
 }
 
-.PdfRecipeGrid {
+.PdfScenarioGrid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
 
-  @include tablet {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  @include mobile {
+  @include small {
     grid-template-columns: 1fr;
   }
 }
 
-.PdfRecipe {
+.PdfScenarioCard {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 1rem;
   min-width: 0;
-  padding: 1.25rem;
+  padding: 1.75rem;
+  background: var(--muted);
   border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--card);
+  border-radius: $radius-xl;
 
   &__Title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
     color: var(--foreground);
-    font-weight: 700;
   }
 
-  &__Names {
-    display: grid;
-    gap: 0.45rem;
-    min-width: 0;
+  &__Description {
+    margin: 0;
     color: var(--muted-foreground);
-    font-family: $font-mono;
-    font-size: 0.78rem;
-    line-height: 1.45;
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+}
+
+.PdfFileItem {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: $radius-md;
+  min-width: 0;
+
+  &__Preview {
+    width: 4rem;
+    height: 4rem;
+    border-radius: $radius-sm;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    color: white;
+    overflow: hidden;
+    background: linear-gradient(160deg, #ff6b6b 0%, #dc2626 100%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
   }
 
-  &__Before,
-  &__After {
-    display: block;
+  &__Badge {
+    font-size: 0.55rem;
+    line-height: 1;
+    letter-spacing: 0;
+    font-weight: 800;
+    opacity: 0.95;
+  }
+
+  &__Content {
+    flex: 1;
     min-width: 0;
-    overflow-wrap: anywhere;
+    overflow: hidden;
+    text-align: left;
   }
 
   &__Before {
+    font-family: $font-mono;
+    font-size: 0.7rem;
     color: var(--muted-foreground);
+    @include text-ellipsis;
     text-decoration: line-through;
+    margin-bottom: 0.2rem;
   }
 
   &__After {
-    color: var(--foreground);
-    font-weight: 700;
-  }
-
-  &__Arrow {
-    color: var(--primary);
-  }
-
-  p {
-    margin: 0;
-    color: var(--muted-foreground);
+    font-family: $font-mono;
     font-size: 0.95rem;
-    line-height: 1.65;
+    font-weight: 700;
+    color: var(--foreground);
+    @include text-ellipsis;
   }
 }
 
