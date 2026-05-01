@@ -7,7 +7,7 @@ import { getStaticPageCopy, type StaticLocalizedRoute } from '@/i18n/staticPages
 type InternalLocale = Exclude<Locale, 'en'>;
 type LegalType = 'privacy' | 'tos' | 'refund';
 
-const backToHome: Record<InternalLocale, string> = {
+const backToHome: Partial<Record<InternalLocale, string>> = {
   de: 'Zurück zur Startseite',
   fr: 'Retour à l’accueil',
   'pt-br': 'Voltar ao início',
@@ -19,7 +19,7 @@ const backToHome: Record<InternalLocale, string> = {
   'zh-cn': '返回首页',
 };
 
-const methodologyText: Record<InternalLocale, Omit<MethodologyCopy, 'title' | 'lead' | 'paths'>> = {
+const methodologyText: Partial<Record<InternalLocale, Omit<MethodologyCopy, 'title' | 'lead' | 'paths'>>> = {
   de: {
     kicker: 'Vertrauen & Bewertung',
     heroMeta: ['Monatliche Prüfung', '5 gewichtete Checks', 'Öffentliches Changelog'],
@@ -303,8 +303,9 @@ const methodologyText: Record<InternalLocale, Omit<MethodologyCopy, 'title' | 'l
 
 export function getMethodologyCopy(locale: InternalLocale): MethodologyCopy {
   const staticCopy = getStaticPageCopy(locale, '/methodology');
+  const copy = methodologyText[locale] ?? methodologyText.de!;
   return {
-    ...methodologyText[locale],
+    ...copy,
     title: staticCopy.title,
     lead: staticCopy.description,
     paths: {
@@ -336,7 +337,7 @@ export function getLegalPageCopy(locale: InternalLocale, route: LegalRoute): {
     title: staticCopy.title,
     updated: staticCopy.updated,
     content: getLegalMarkdown(locale, route),
-    backToHomeLabel: backToHome[locale],
+    backToHomeLabel: backToHome[locale] ?? backToHome.de!,
     homeHref: getLocalizedPath('/', locale),
   };
 }

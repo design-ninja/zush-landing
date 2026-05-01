@@ -175,7 +175,7 @@ const en: ServicePageCopy = {
   },
 };
 
-const serviceCopies: Record<Locale, ServicePageCopy> = {
+const serviceCopies: Partial<Record<Locale, ServicePageCopy>> = {
   en,
   de: {
     backToHome: '← Zur Startseite',

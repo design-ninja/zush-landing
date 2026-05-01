@@ -76,10 +76,10 @@ const AIImageRenamer = () => (
       {
         files: [
           { before: 'PXL_20240720.jpg', after: 'Yellow Wildflowers Field.jpg', img: '/images/examples/flowers.jpg', type: 'image' },
-          { before: 'IMG_0842.jpg', after: 'Persian Cat Napping.jpg', img: '/images/examples/cat.jpg', type: 'image' },
+          { before: 'IMG_0842.jpg', after: 'Tuxedo Cat Portrait.jpg', img: '/images/examples/cat.jpg', type: 'image' },
           { before: 'Screenshot 2026-02-18.png', after: 'Architecture Flow Diagram.png', img: '/images/examples/diagram.jpg', type: 'image' },
           { before: 'IMG_5523.HEIC', after: 'Pug Puppy Portrait.heic', img: '/images/examples/pug.jpg', type: 'image' },
-          { before: 'DCIM_0072.jpg', after: 'Home Office Workspace.jpg', img: '/images/examples/office.jpg', type: 'image' },
+          { before: 'DCIM_0072.jpg', after: 'Modern Office Corridor.jpg', img: '/images/examples/office.jpg', type: 'image' },
           { before: 'CAM00233.HEIC', after: 'Golden Hour Sunset.heic', img: '/images/examples/sunset.jpg', type: 'image' },
         ],
       },

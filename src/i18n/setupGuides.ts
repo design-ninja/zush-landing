@@ -113,7 +113,7 @@ const modelNames = {
   documents: 'granite3.2-vision:2b',
 } as const;
 
-const t: Record<SetupLocale, SetupLocaleText> = {
+const t: Partial<Record<SetupLocale, SetupLocaleText>> = {
   de: {
     backToHome: 'Zurück zur Startseite',
     byok: {
@@ -712,7 +712,8 @@ const t: Record<SetupLocale, SetupLocaleText> = {
 
 export function getBYOKSetupCopy(locale: SetupLocale): BYOKSetupCopy {
   const staticCopy = getStaticPageCopy(locale, '/byok-setup');
-  const text = t[locale].byok;
+  const localeText = t[locale] ?? t.de!;
+  const text = localeText.byok;
   const overview = staticCopy.sections[0];
   const security = staticCopy.sections[2];
 
@@ -728,14 +729,15 @@ export function getBYOKSetupCopy(locale: SetupLocale): BYOKSetupCopy {
     faqs: text.faqs,
     securityTitle: text.securityTitle,
     securityBody: security.body,
-    backToHomeLabel: t[locale].backToHome,
+    backToHomeLabel: localeText.backToHome,
     homeHref: getLocalizedPath('/', locale),
   };
 }
 
 export function getOllamaSetupCopy(locale: SetupLocale): OllamaSetupCopy {
   const staticCopy = getStaticPageCopy(locale, '/ollama-setup');
-  const text = t[locale].ollama;
+  const localeText = t[locale] ?? t.de!;
+  const text = localeText.ollama;
   const offline = staticCopy.sections[0];
 
   return {
@@ -757,7 +759,7 @@ export function getOllamaSetupCopy(locale: SetupLocale): OllamaSetupCopy {
     troubleshootingTitle: text.troubleshootingTitle,
     troubleshooting: text.troubleshooting,
     note: text.note,
-    backToHomeLabel: t[locale].backToHome,
+    backToHomeLabel: localeText.backToHome,
     homeHref: getLocalizedPath('/', locale),
   };
 }

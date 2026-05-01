@@ -3,7 +3,6 @@ import { ChevronDown } from 'lucide-react';
 import AppleIcon from '@/components/AppleIcon';
 import AppStoreIcon from '@/components/AppStoreIcon';
 import WindowsIcon from '@/components/WindowsIcon';
-import MicrosoftStoreIcon from '@/components/MicrosoftStoreIcon';
 import { APP_STORE_PROTOCOL_URL, APP_STORE_URL, WINDOWS_STORE_PROTOCOL_URL, WINDOWS_STORE_URL } from '@/constants';
 import { useOS } from '@/hooks/useOS';
 import { useIsMobile } from '@/hooks/useIsMobile';
@@ -81,9 +80,7 @@ const DownloadButton = ({
     appUrl: APP_STORE_PROTOCOL_URL,
     webUrl: APP_STORE_URL,
   });
-  const DownloadIcon = downloadOS === 'windows' ? WindowsIcon : AppleIcon;
   const otherOS = getOtherOS(downloadOS);
-  const OtherMenuIcon = otherOS === 'windows' ? MicrosoftStoreIcon : AppleIcon;
   const otherOSLabel = getOSLabel(otherOS);
 
   useEffect(() => {
@@ -150,7 +147,7 @@ const DownloadButton = ({
       onClick={handleOtherClick}
     >
       <span className={styles.Menu__Icon}>
-        <OtherMenuIcon />
+        {otherOS === 'windows' ? <WindowsIcon colored /> : <AppleIcon />}
       </span>
       <span className={styles.Menu__Text}>
         <span className={styles.Menu__Title}>
@@ -212,7 +209,7 @@ const DownloadButton = ({
         data-store-web-url={downloadOS === 'windows' ? WINDOWS_STORE_URL : undefined}
         onClick={handlePrimaryClick}
       >
-        <DownloadIcon />
+        {downloadOS === 'windows' ? <WindowsIcon colored /> : <AppleIcon />}
         <span>{label}</span>
       </a>
       {showDropdown && (

@@ -42,7 +42,7 @@ const languagePaths = shouldUseRouteLanguagePaths
   ? getAlternatePaths(route)
   : Object.fromEntries(
     LOCALES.map((item) => [item, getLocaleBasePath(item)]),
-  ) as Record<Locale, string>;
+  ) as Partial<Record<Locale, string>>;
 const buyButtonClass = [
   buttonStyles.Button,
   buttonStyles.Button_ghost,

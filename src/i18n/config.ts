@@ -11,6 +11,7 @@ export const LOCALES = [
   'ja',
   'ko',
   'zh-cn',
+  'ar',
 ] as const;
 
 export type Locale = (typeof LOCALES)[number];
@@ -23,6 +24,7 @@ export interface LocaleMeta {
   label: string;
   nativeLabel: string;
   flag: string;
+  dir?: 'ltr' | 'rtl';
 }
 
 export const LOCALE_META: Record<Locale, LocaleMeta> = {
@@ -116,6 +118,16 @@ export const LOCALE_META: Record<Locale, LocaleMeta> = {
     nativeLabel: '中文',
     flag: '🇨🇳',
   },
+  ar: {
+    locale: 'ar',
+    slug: 'ar',
+    lang: 'ar',
+    ogLocale: 'ar_SA',
+    label: 'Arabic',
+    nativeLabel: 'العربية',
+    flag: '🇸🇦',
+    dir: 'rtl',
+  },
 };
 
 export const INDEXABLE_LOCALIZED_ROUTES = [
@@ -153,6 +165,20 @@ export const LOCALIZED_ROUTES = [
 ] as const;
 
 export type LocalizedRoute = (typeof LOCALIZED_ROUTES)[number];
+
+const ARABIC_LOCALIZED_ROUTES = [
+  '/',
+  '/ai-file-renamer',
+  '/auto-rename-files',
+  '/batch-rename-files',
+  '/ai-image-renamer',
+  '/rename-documents-with-ai',
+  '/rename-pdf-with-ai',
+  '/rename-screenshots-with-ai',
+  '/rename-photos-with-ai',
+  '/mac',
+  '/windows',
+] as const;
 
 export function isLocale(value: string | undefined): value is Locale {
   return Boolean(value && (LOCALES as readonly string[]).includes(value));
@@ -193,8 +219,18 @@ export function getLocaleBasePath(locale: Locale): string {
   return locale === DEFAULT_LOCALE ? '/' : `/${LOCALE_META[locale].slug}`;
 }
 
-export function getAlternatePaths(route: string): Record<Locale, string> {
+export function getAlternatePaths(route: string): Partial<Record<Locale, string>> {
   return Object.fromEntries(
-    LOCALES.map((locale) => [locale, getLocalizedPath(route, locale)]),
-  ) as Record<Locale, string>;
+    getLocalesForRoute(route).map((locale) => [locale, getLocalizedPath(route, locale)]),
+  ) as Partial<Record<Locale, string>>;
+}
+
+export function getLocalesForRoute(route: string): readonly Locale[] {
+  const normalizedRoute = normalizeRoute(route);
+
+  if ((ARABIC_LOCALIZED_ROUTES as readonly string[]).includes(normalizedRoute)) {
+    return LOCALES;
+  }
+
+  return LOCALES.filter((locale) => locale !== 'ar');
 }

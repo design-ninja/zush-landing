@@ -1,0 +1,138 @@
+---
+import styles from './StoreBadge.module.scss';
+
+export type StoreBadgeKind = 'app-store' | 'microsoft-store' | 'direct-dmg';
+
+interface Props {
+  kind: StoreBadgeKind;
+  href: string;
+  kicker: string;
+  label: string;
+  ariaLabel: string;
+  size?: 'sm' | 'md' | 'lg';
+  /** Optional store integration data attrs (used by app-store / microsoft-store openers). */
+  dataStoreOs?: 'mac' | 'windows';
+  dataStoreAppUrl?: string;
+  dataStoreWebUrl?: string;
+  /** When true, opens in a new tab (defaults to true for store URLs, false for direct downloads). */
+  external?: boolean;
+}
+
+const {
+  kind,
+  href,
+  kicker,
+  label,
+  ariaLabel,
+  size = 'md',
+  dataStoreOs,
+  dataStoreAppUrl,
+  dataStoreWebUrl,
+  external = kind !== 'direct-dmg',
+} = Astro.props as Props;
+
+const uniqueId = Math.random().toString(36).slice(2, 9);
+---
+
+<a
+  href={href}
+  class={`${styles.StoreBadge} ${styles[`StoreBadge_${size}`]}`}
+  data-kind={kind}
+  aria-label={ariaLabel}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener noreferrer' : undefined}
+  data-store-os={dataStoreOs}
+  data-store-app-url={dataStoreAppUrl}
+  data-store-web-url={dataStoreWebUrl}
+>
+  <span class={styles.StoreBadge__Icon}>
+    {kind === 'app-store' && (
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800' aria-hidden='true'>
+        <defs>
+          <linearGradient
+            id={`store-app-store-${uniqueId}`}
+            gradientUnits='userSpaceOnUse'
+            x1='400.05'
+            y1='798.7717'
+            x2='400.05'
+            y2='-1.2283'
+            gradientTransform='matrix(1 0 0 -1 0 798.7717)'
+          >
+            <stop offset='0' stop-color='#18BFFB' />
+            <stop offset='1' stop-color='#2072F3' />
+          </linearGradient>
+        </defs>
+        <path
+          fill={`url(#store-app-store-${uniqueId})`}
+          d='M638.4,0H161.6C72.3,0,0,72.3,0,161.6v476.9C0,727.7,72.3,800,161.6,800h476.9c89.2,0,161.6-72.3,161.6-161.6V161.6C800,72.3,727.7,0,638.4,0z'
+        />
+        <path
+          fill='#FFFFFF'
+          d='M396.6,183.8l16.2-28c10-17.5,32.3-23.4,49.8-13.4s23.4,32.3,13.4,49.8L319.9,462.4h112.9c36.6,0,57.1,43,41.2,72.8H143c-20.2,0-36.4-16.2-36.4-36.4c0-20.2,16.2-36.4,36.4-36.4h92.8l118.8-205.9l-37.1-64.4c-10-17.5-4.1-39.6,13.4-49.8c17.5-10,39.6-4.1,49.8,13.4L396.6,183.8L396.6,183.8z M256.2,572.7l-35,60.7c-10,17.5-32.3,23.4-49.8,13.4S148,614.5,158,597l26-45C213.4,542.9,237.3,549.9,256.2,572.7L256.2,572.7z M557.6,462.6h94.7c20.2,0,36.4,16.2,36.4,36.4c0,20.2-16.2,36.4-36.4,36.4h-52.6l35.5,61.6c10,17.5,4.1,39.6-13.4,49.8c-17.5,10-39.6,4.1-49.8-13.4c-59.8-103.7-104.7-181.3-134.5-233c-30.5-52.6-8.7-105.4,12.8-123.3C474.2,318.1,509.9,380,557.6,462.6L557.6,462.6z'
+        />
+      </svg>
+    )}
+    {kind === 'microsoft-store' && (
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 248 248' aria-hidden='true'>
+        <defs>
+          <linearGradient
+            id={`store-ms-bg-${uniqueId}`}
+            gradientUnits='userSpaceOnUse'
+            x1='109.37'
+            y1='72.28'
+            x2='151.79'
+            y2='230.9'
+          >
+            <stop offset='0' stop-color='#0669BC' />
+            <stop offset='0.7147' stop-color='#1B4779' />
+            <stop offset='1' stop-color='#233B61' />
+          </linearGradient>
+          <linearGradient
+            id={`store-ms-top-${uniqueId}`}
+            gradientUnits='userSpaceOnUse'
+            x1='124'
+            y1='7.2'
+            x2='124'
+            y2='43.5'
+          >
+            <stop offset='0' stop-color='#30DAFF' />
+            <stop offset='1' stop-color='#0194D4' />
+          </linearGradient>
+          <linearGradient
+            id={`store-ms-bar-${uniqueId}`}
+            gradientUnits='userSpaceOnUse'
+            x1='124'
+            y1='2.54'
+            x2='124'
+            y2='14.08'
+          >
+            <stop offset='0' stop-color='#1FB8FD' />
+            <stop offset='1' stop-color='#0591F2' />
+          </linearGradient>
+        </defs>
+        <path
+          fill={`url(#store-ms-bg-${uniqueId})`}
+          d='M248,42c0-5.523-4.477-10-10-10H10C4.477,32,0,36.477,0,42v166c0,22.091,17.909,40,40,40h168c22.091,0,40-17.909,40-40V42z'
+        />
+        <path fill='#F25022' d='M120,88H72v48h48V88z' />
+        <path fill='#7FBA00' d='M176,88h-48v48h48V88z' />
+        <path fill='#00A4EF' d='M120,144H72v48h48V144z' />
+        <path fill='#FFB900' d='M176,144h-48v48h48V144z' />
+        <path
+          fill={`url(#store-ms-top-${uniqueId})`}
+          d='M56,16c0-8.837,7.163-16,16-16h104c8.837,0,16,7.163,16,16v24c0,4.418-3.582,8-8,8s-8-3.582-8-8V16H72v24c0,4.418-3.582,8-8,8s-8-3.582-8-8V16z'
+        />
+        <path fill={`url(#store-ms-bar-${uniqueId})`} d='M176,0H72v16h104V0z' />
+      </svg>
+    )}
+    {kind === 'direct-dmg' && (
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' aria-hidden='true'>
+        <path d='M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.955 4.45z' />
+      </svg>
+    )}
+  </span>
+  <span class={styles.StoreBadge__Text}>
+    <span class={styles.StoreBadge__Kicker}>{kicker}</span>
+    <span class={styles.StoreBadge__Label}>{label}</span>
+  </span>
+</a>

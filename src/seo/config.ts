@@ -18,9 +18,9 @@ export interface SeoMeta {
 type RouteSeoMeta = Omit<SeoMeta, 'canonicalPath'>;
 
 const DEFAULT_META: RouteSeoMeta = {
-  title: 'Zush — AI File Renamer for Mac & Windows · 50 Free Renames, No Signup',
+  title: 'Zush — Rename Files with AI on Mac & Windows',
   description:
-    'Zush renames screenshots, PDFs, photos and documents on Mac and Windows using AI. Batch rename, watch folders, stay organized automatically. 50 free renames, no signup.',
+    'Rename screenshots, PDFs, photos and documents in seconds. Batch rename or watch folders on Mac and Windows. Free for 50 files, no signup.',
   robots: 'noindex, nofollow',
   ogType: 'website',
 };

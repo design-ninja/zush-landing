@@ -24,7 +24,7 @@ import ThankYouView from '@/views/ThankYou';
 import { buildFeatureBreadcrumbJsonLd } from '@/utils/jsonLd';
 import {
   LOCALIZED_ROUTES,
-  LOCALES,
+  getLocalesForRoute,
   getLocalizedPath,
   isLocale,
   isLocalizedRoute,
@@ -51,12 +51,12 @@ const FEATURE_VIEWS = {
 } as const;
 
 export function getStaticPaths() {
-  return LOCALES
-    .filter((locale) => locale !== 'en')
-    .flatMap((locale) =>
-      LOCALIZED_ROUTES
-        .filter((route) => route !== '/')
-        .map((route) => ({
+  return LOCALIZED_ROUTES
+    .filter((route) => route !== '/')
+    .flatMap((route) =>
+      getLocalesForRoute(route)
+        .filter((locale) => locale !== 'en')
+        .map((locale) => ({
           params: {
             locale,
             slug: route.slice(1),
@@ -73,10 +73,15 @@ const locale = Astro.params.locale;
 const slug = Astro.params.slug ? `/${Astro.params.slug}` : '/';
 
 if (!isLocalizedRoute(slug)) {
-  return Astro.redirect(getLocalizedPath('/404', locale));
+  return Astro.redirect('/404');
 }
 
 const route = slug as LocalizedRoute;
+
+if (!getLocalesForRoute(route).includes(locale)) {
+  return Astro.redirect('/404');
+}
+
 const copy = getCopy(locale);
 const serviceCopy = getServicePageCopy(locale);
 const seo = getLocalizedSeoForRoute(route, locale);

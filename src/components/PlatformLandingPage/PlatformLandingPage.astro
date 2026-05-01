@@ -10,13 +10,19 @@ import WhyZush from '@/components/WhyZush';
 import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
 import FAQ from '@/components/FAQ';
 import PlatformGuides from '@/components/PlatformGuides/PlatformGuides.astro';
+import PlatformSpecifics from '@/components/PlatformSpecifics/PlatformSpecifics.astro';
+import CrossPlatformBanner from '@/components/CrossPlatformBanner/CrossPlatformBanner.astro';
 import { PLATFORM_LANDING_CONTENT } from '@/data/platformLanding';
+import { getPlatformLandingSections } from '@/data/platformLandingSections';
+import { PLATFORM_SPECIFICS_CONTENT } from '@/data/platformSpecifics';
 import { getSeoForPath, SITE_ORIGIN } from '@/seo/config';
 import { buildFAQPageJsonLd, buildFeatureBreadcrumbJsonLd } from '@/utils/jsonLd';
 import type { DownloadOS } from '@/utils/download';
 import { DEFAULT_LOCALE, getLocalizedPath, type Locale } from '@/i18n/config';
 import { getCopy } from '@/i18n/copy';
 import { getPlatformFaqCopy } from '@/i18n/platformFaqs';
+import { getPlatformSpecificsCopy } from '@/i18n/platformSpecifics';
+import { getLocalizedPlatformSpecificsContent } from '@/i18n/platformSpecificsContent';
 import { getLocalizedSeoForRoute } from '@/i18n/seo';
 
 interface Props {
@@ -36,6 +42,18 @@ const faqItems = [...localizedPlatformFaq.items, ...copy.home.faqItems];
 const seo = locale === DEFAULT_LOCALE ? getSeoForPath(page.path) : getLocalizedSeoForRoute(page.path, locale);
 const platformLabel = platform === 'mac' ? 'Mac' : 'Windows';
 const pagePath = getLocalizedPath(page.path, locale);
+const platformSections = getPlatformLandingSections(platform, locale, copy);
+
+const specifics = getLocalizedPlatformSpecificsContent(
+  platform,
+  locale,
+  copy,
+  getPlatformSpecificsCopy(locale),
+  PLATFORM_SPECIFICS_CONTENT[platform],
+);
+const memorySpec = specifics.systemRequirements.rows.find((row) => row.key === 'memory')?.value;
+const storageSpec = specifics.systemRequirements.rows.find((row) => row.key === 'diskSpace')?.value;
+const processorSpec = specifics.systemRequirements.rows.find((row) => row.key === 'processor')?.value;
 
 const softwareJsonLd = {
   '@context': 'https://schema.org',
@@ -47,6 +65,10 @@ const softwareJsonLd = {
   applicationCategory: 'UtilitiesApplication',
   applicationSubCategory: 'File Management',
   operatingSystem: page.operatingSystem,
+  ...(processorSpec ? { processorRequirements: processorSpec } : {}),
+  ...(memorySpec ? { memoryRequirements: memorySpec } : {}),
+  ...(storageSpec ? { storageRequirements: storageSpec } : {}),
+  softwareVersion: '1.9.0',
   downloadUrl: page.downloadUrl,
   ...(platform === 'windows' ? { installUrl: page.installUrl } : {}),
   screenshot:
@@ -99,12 +121,6 @@ const softwareJsonLd = {
     slides={copy.home.showcaseSlides}
   />
   <Videos client:visible autoplayWhenInView forceOS={platform} copy={copy.home.videos} />
-  <Features title={copy.home.featuresTitle} description={copy.home.featuresDescription} copy={copy.home.featureCards} />
-  <SupportedFormats
-    title={copy.home.supportedFormats}
-    imagesLabel={copy.home.images}
-    documentsLabel={copy.home.documents}
-  />
   <DownloadCTA
     forceOS={platform}
     title={localizedPage.ctaTitle}
@@ -113,10 +129,26 @@ const softwareJsonLd = {
     downloadLabel={copy.header.download}
     downloadMenu={copy.downloadMenu}
   />
+  <PlatformSpecifics platform={platform} locale={locale} />
+  <Features
+    title={platformSections.featuresTitle}
+    description={platformSections.featuresDescription}
+    copy={platformSections.featureCards}
+  />
+  <SupportedFormats
+    title={copy.home.supportedFormats}
+    imagesLabel={copy.home.images}
+    documentsLabel={copy.home.documents}
+  />
   <WhyZush forceOS={platform} platformSpecificCopy copy={copy.home.whyZush} />
-  <UseCases title={copy.home.useCasesTitle} description={copy.home.useCasesDescription} copy={copy.home.useCases} />
+  <UseCases
+    title={platformSections.useCasesTitle}
+    description={platformSections.useCasesDescription}
+    copy={platformSections.useCases}
+  />
   <Pricing copy={copy.pricing} />
-  {locale === DEFAULT_LOCALE && <PlatformGuides platform={platform} />}
+  <CrossPlatformBanner locale={locale} hidePlatform={platform} />
+  <PlatformGuides platform={platform} locale={locale} />
   <FAQ
     client:visible
     items={faqItems}

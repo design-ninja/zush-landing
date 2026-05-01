@@ -27,6 +27,16 @@ const faqItems = [
     answer:
       'Yes. When the AI detects dates within the document content, it can include them in the generated filename. You can also configure custom naming patterns to control where the date appears and in what format.',
   },
+  {
+    question: 'How is this different from Adobe Acrobat, Preview, or Finder?',
+    answer:
+      'Adobe Acrobat and Preview are useful for opening, editing, signing, exporting, and reviewing PDFs. Finder and File Explorer can rename files manually. Zush focuses on the missing workflow between them: reading each PDF, understanding the document type and entities, and generating a searchable filename for a whole batch.',
+  },
+  {
+    question: 'What naming patterns work best for invoices and contracts?',
+    answer:
+      'For invoices, a pattern like vendor-date-invoice-number keeps folders sortable. For contracts, party-document-type-status-date usually works better, such as Acme-NDA-signed-2026-03-14.pdf. Zush can follow these patterns while still adapting to the content of each PDF.',
+  },
 ];
 
 const jsonLd = buildFeaturePageJsonLd({
@@ -58,6 +68,8 @@ const jsonLd = buildFeaturePageJsonLd({
       'Rename PDF files by document content',
       'Support for scanned PDFs via AI vision',
       'Batch rename invoices, contracts, and reports',
+      'PDF-specific patterns for vendors, counterparties, dates, and document types',
+      'Comparison workflow for Finder, Preview, and Adobe Acrobat users',
       'Automatic folder monitoring for repeating PDF workflows',
       'Custom naming patterns with dates and entities',
       'Undo and rename history',

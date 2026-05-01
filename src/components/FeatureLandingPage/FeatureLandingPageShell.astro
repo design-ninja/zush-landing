@@ -10,9 +10,12 @@ import SupportedFormats from '@/components/SupportedFormats';
 import UseCases from '@/components/UseCases';
 import Videos from '@/components/Videos';
 import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
+import CrossPlatformBanner from '@/components/CrossPlatformBanner/CrossPlatformBanner.astro';
 import TrustSignals from '@/components/TrustSignals';
+import { FileType2 } from 'lucide-react';
 import type { FeatureLandingPageProps } from './FeatureLandingPage';
 import { getUseCasesForCategory } from '@/data/featureContent';
+import { getPdfDeepDiveCopy } from '@/data/pdfDeepDive';
 import FeatureFAQ from './FeatureFAQ';
 import { DEFAULT_LOCALE, getLocalizedPath, type Locale, type LocalizedRoute } from '@/i18n/config';
 import { getCopy, type FeatureCopy } from '@/i18n/copy';
@@ -38,12 +41,26 @@ const localizedProps = Astro.props as FeatureLandingPageProps & LocalizedProps;
 const currentLocale = localizedProps.locale ?? DEFAULT_LOCALE;
 const currentCopy = getCopy(currentLocale);
 const pageCopy = localizedProps.localizedCopy;
-const useCasesData = getUseCasesForCategory(category);
+const useCasesData = getUseCasesForCategory(category, currentLocale);
+const shouldUseLocalizedDefaultUseCases = category === 'general' && currentLocale !== DEFAULT_LOCALE;
+const hasCategoryUseCases = !shouldUseLocalizedDefaultUseCases && useCasesData.items.length > 0;
+const useCasesTitle = hasCategoryUseCases
+  ? useCasesData.title
+  : currentLocale === DEFAULT_LOCALE
+    ? useCasesData.title
+    : currentCopy.home.useCasesTitle;
+const useCasesDescription = hasCategoryUseCases
+  ? useCasesData.description
+  : currentLocale === DEFAULT_LOCALE
+    ? useCasesData.description
+    : currentCopy.home.useCasesDescription;
 const heroSlides = pageCopy?.showcaseSlides ?? (currentLocale === DEFAULT_LOCALE ? showcaseSlides : currentCopy.home.showcaseSlides);
 const breadcrumbItems = [
   { label: currentLocale === DEFAULT_LOCALE ? 'Home' : 'Zush', href: getLocalizedPath('/', currentLocale) },
   { label: pageCopy?.h1 ?? h1 },
 ];
+const shouldRenderPdfDeepDive = category === 'pdf';
+const pdfDeepDive = getPdfDeepDiveCopy(currentLocale);
 ---
 
 <Breadcrumbs items={breadcrumbItems} />
@@ -78,12 +95,79 @@ const breadcrumbItems = [
     downloadMenu={currentCopy.downloadMenu}
   />
   <WhyZush copy={currentCopy.home.whyZush} />
+  <CrossPlatformBanner locale={currentLocale} />
   <UseCases
-    title={currentLocale === DEFAULT_LOCALE ? useCasesData.title : currentCopy.home.useCasesTitle}
-    description={currentLocale === DEFAULT_LOCALE ? useCasesData.description : currentCopy.home.useCasesDescription}
-    items={currentLocale === DEFAULT_LOCALE && useCasesData.items.length > 0 ? useCasesData.items : undefined}
-    copy={currentLocale === DEFAULT_LOCALE ? undefined : currentCopy.home.useCases}
+    title={useCasesTitle}
+    description={useCasesDescription}
+    items={hasCategoryUseCases ? useCasesData.items : undefined}
+    copy={!hasCategoryUseCases && currentLocale !== DEFAULT_LOCALE ? currentCopy.home.useCases : undefined}
   />
+
+  {shouldRenderPdfDeepDive && (
+    <>
+      <section class={styles.PdfDeepDive}>
+        <div class={styles.Section__Container}>
+          <div class={styles.PdfDeepDive__Header}>
+            <p class={styles.PdfDeepDive__Eyebrow}>{pdfDeepDive.workflowsEyebrow}</p>
+            <Heading as='h2' align='center'>
+              {pdfDeepDive.workflowsTitle}
+            </Heading>
+            <p class={styles.PdfDeepDive__Intro}>
+              {pdfDeepDive.workflowsIntro}
+            </p>
+          </div>
+
+          <div class={styles.PdfScenarioGrid}>
+            {pdfDeepDive.recipes.map((recipe) => (
+              <article class={styles.PdfScenarioCard}>
+                <div class={styles.PdfFileItem}>
+                  <div class={styles.PdfFileItem__Preview} aria-hidden='true'>
+                    <FileType2 size={26} strokeWidth={2.1} />
+                    <span class={styles.PdfFileItem__Badge}>PDF</span>
+                  </div>
+                  <div class={styles.PdfFileItem__Content}>
+                    <div class={styles.PdfFileItem__Before}>{recipe.before}</div>
+                    <div class={styles.PdfFileItem__After}>{recipe.after}</div>
+                  </div>
+                </div>
+                <h3 class={styles.PdfScenarioCard__Title}>{recipe.title}</h3>
+                <p class={styles.PdfScenarioCard__Description}>{recipe.detail}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class={styles.PdfComparison}>
+        <div class={styles.Section__Container}>
+          <div class={styles.PdfDeepDive__Header}>
+            <p class={styles.PdfDeepDive__Eyebrow}>{pdfDeepDive.comparisonEyebrow}</p>
+            <Heading as='h2' align='center'>
+              {pdfDeepDive.comparisonTitle}
+            </Heading>
+            <p class={styles.PdfDeepDive__Intro}>
+              {pdfDeepDive.comparisonIntro}
+            </p>
+          </div>
+
+          <div class={styles.PdfComparisonTable}>
+            <div class={styles.PdfComparisonTable__Head}>
+              <span>{pdfDeepDive.comparisonHeaders?.tool ?? 'Tool'}</span>
+              <span>{pdfDeepDive.comparisonHeaders?.bestFor ?? 'Best for'}</span>
+              <span>{pdfDeepDive.comparisonHeaders?.gap ?? 'Filename gap'}</span>
+            </div>
+            {pdfDeepDive.comparisonRows.map((row) => (
+              <div class={styles.PdfComparisonTable__Row}>
+                <strong>{row.tool}</strong>
+                <span>{row.bestFor}</span>
+                <span>{row.gap}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  )}
 
   <section class={styles.Section}>
     <div class={styles.Section__Container}>

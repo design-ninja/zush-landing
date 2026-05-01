@@ -4,12 +4,15 @@ import styles from './LanguageSwitcher.module.scss';
 
 interface Props {
   locale: Locale;
-  paths: Record<Locale, string>;
+  paths: Partial<Record<Locale, string>>;
   label: string;
 }
 
 const { locale, paths, label } = Astro.props as Props;
 const currentLocaleMeta = LOCALE_META[locale];
+const availableOptions = LOCALES
+  .map((item) => ({ locale: item, path: paths[item] }))
+  .filter((option): option is { locale: Locale; path: string } => Boolean(option.path));
 ---
 
 <div
@@ -45,13 +48,13 @@ const currentLocaleMeta = LOCALE_META[locale];
   </button>
 
   <div class={styles.LanguageSwitcher__Menu} role="menu" data-language-menu hidden>
-    {LOCALES.map((item) => (
+    {availableOptions.map(({ locale: item, path }) => (
       <a
         class:list={[
           styles.LanguageSwitcher__MenuItem,
           item === locale && styles.LanguageSwitcher__MenuItem_active,
         ]}
-        href={paths[item]}
+        href={path}
         role="menuitem"
         data-language-option
         data-locale={item}

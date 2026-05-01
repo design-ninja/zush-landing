@@ -75,12 +75,12 @@ const RenameScreenshotsWithAI = () => (
     showcaseSlides={[
       {
         files: [
-          { before: 'Screenshot 2026-03-15.png', after: 'Slack Project Timeline.png', img: '/images/examples/dashboard.jpg', type: 'image' },
+          { before: 'Screenshot 2026-03-15.png', after: 'Analytics Dashboard Metrics.png', img: '/images/examples/dashboard.jpg', type: 'image' },
           { before: 'Screenshot 2026-03-18.png', after: 'Figma Dashboard Wireframe.png', img: '/images/examples/diagram.jpg', type: 'image' },
           { before: 'Screenshot 2026-03-20.png', after: 'VS Code Error Log.png', img: '/images/examples/workspace.jpg', type: 'image' },
           { before: 'Screenshot 2026-03-21.png', after: 'Stripe Revenue Chart.png', img: '/images/examples/chart.jpg', type: 'image' },
           { before: 'Screenshot 2026-03-22.png', after: 'Architecture Flow Diagram.png', img: '/images/examples/diagram.jpg', type: 'image' },
-          { before: 'Screenshot 2026-03-23.png', after: 'Home Office Setup.png', img: '/images/examples/office.jpg', type: 'image' },
+          { before: 'Screenshot 2026-03-23.png', after: 'Modern Office Corridor.png', img: '/images/examples/office.jpg', type: 'image' },
         ],
       },
       {
@@ -88,7 +88,7 @@ const RenameScreenshotsWithAI = () => (
           { before: 'Screenshot 2026-02-10.png', after: 'Notion Roadmap View.png', img: '/images/examples/dashboard.jpg', type: 'image' },
           { before: 'Screenshot 2026-02-12.png', after: 'Sagrada Familia Reference.png', img: '/images/examples/sagrada.jpg', type: 'image' },
           { before: 'Screenshot 2026-02-15.png', after: 'Designer Workspace Mood.png', img: '/images/examples/workspace.jpg', type: 'image' },
-          { before: 'Screenshot 2026-02-18.png', after: 'Persian Cat Reference.png', img: '/images/examples/cat.jpg', type: 'image' },
+          { before: 'Screenshot 2026-02-18.png', after: 'Tuxedo Cat Reference.png', img: '/images/examples/cat.jpg', type: 'image' },
           { before: 'Screenshot 2026-02-20.png', after: 'Analytics Funnel Chart.png', img: '/images/examples/chart.jpg', type: 'image' },
           { before: 'Screenshot 2026-02-25.png', after: 'Italian Menu Reference.png', img: '/images/examples/food.jpg', type: 'image' },
         ],
@@ -100,7 +100,7 @@ const RenameScreenshotsWithAI = () => (
           { before: 'Screenshot 2026-01-10.png', after: 'Ford Mustang Reference.png', img: '/images/examples/car.jpg', type: 'image' },
           { before: 'Screenshot 2026-01-14.png', after: 'Wildflower Field Mood.png', img: '/images/examples/flowers.jpg', type: 'image' },
           { before: 'Screenshot 2026-01-18.png', after: 'Modern Facade Reference.png', img: '/images/examples/building.jpg', type: 'image' },
-          { before: 'Screenshot 2026-01-22.png', after: 'Park Guell Inspiration.png', img: '/images/examples/parkguell.jpg', type: 'image' },
+          { before: 'Screenshot 2026-01-22.png', after: 'Park Guell Terrace Detail.png', img: '/images/examples/parkguell.jpg', type: 'image' },
         ],
       },
     ]}

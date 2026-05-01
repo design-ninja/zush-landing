@@ -35,7 +35,7 @@ export function isStaticLocalizedRoute(route: LocalizedRoute): route is StaticLo
   return (STATIC_LOCALIZED_ROUTES as readonly string[]).includes(route);
 }
 
-const staticPages: Record<Exclude<Locale, 'en'>, Record<StaticLocalizedRoute, StaticPageCopy>> = {
+const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedRoute, StaticPageCopy>>> = {
   de: {
     '/methodology': {
       title: 'Methodik & Benchmarks',
@@ -570,5 +570,5 @@ const staticPages: Record<Exclude<Locale, 'en'>, Record<StaticLocalizedRoute, St
 };
 
 export function getStaticPageCopy(locale: Exclude<Locale, 'en'>, route: StaticLocalizedRoute): StaticPageCopy {
-  return staticPages[locale][route];
+  return staticPages[locale]?.[route] ?? staticPages.de![route];
 }
