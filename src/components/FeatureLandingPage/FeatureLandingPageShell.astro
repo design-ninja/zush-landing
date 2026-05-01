@@ -15,6 +15,7 @@ import TrustSignals from '@/components/TrustSignals';
 import { FileType2 } from 'lucide-react';
 import type { FeatureLandingPageProps } from './FeatureLandingPage';
 import { getUseCasesForCategory } from '@/data/featureContent';
+import { getPdfDeepDiveCopy } from '@/data/pdfDeepDive';
 import FeatureFAQ from './FeatureFAQ';
 import { DEFAULT_LOCALE, getLocalizedPath, type Locale, type LocalizedRoute } from '@/i18n/config';
 import { getCopy, type FeatureCopy } from '@/i18n/copy';
@@ -40,61 +41,25 @@ const localizedProps = Astro.props as FeatureLandingPageProps & LocalizedProps;
 const currentLocale = localizedProps.locale ?? DEFAULT_LOCALE;
 const currentCopy = getCopy(currentLocale);
 const pageCopy = localizedProps.localizedCopy;
-const useCasesData = getUseCasesForCategory(category);
+const useCasesData = getUseCasesForCategory(category, currentLocale);
+const hasCategoryUseCases = useCasesData.items.length > 0;
+const useCasesTitle = hasCategoryUseCases
+  ? useCasesData.title
+  : currentLocale === DEFAULT_LOCALE
+    ? useCasesData.title
+    : currentCopy.home.useCasesTitle;
+const useCasesDescription = hasCategoryUseCases
+  ? useCasesData.description
+  : currentLocale === DEFAULT_LOCALE
+    ? useCasesData.description
+    : currentCopy.home.useCasesDescription;
 const heroSlides = pageCopy?.showcaseSlides ?? (currentLocale === DEFAULT_LOCALE ? showcaseSlides : currentCopy.home.showcaseSlides);
 const breadcrumbItems = [
   { label: currentLocale === DEFAULT_LOCALE ? 'Home' : 'Zush', href: getLocalizedPath('/', currentLocale) },
   { label: pageCopy?.h1 ?? h1 },
 ];
-const shouldRenderPdfDeepDive = currentLocale === DEFAULT_LOCALE && category === 'pdf';
-const pdfNamingRecipes = [
-  {
-    title: 'Invoices',
-    before: 'scan_001.pdf',
-    after: 'Amazon Invoice 2026-03.pdf',
-    detail: 'Vendor, document type, invoice period, and date keep accounting folders sortable.',
-  },
-  {
-    title: 'Contracts',
-    before: 'signed-final.pdf',
-    after: 'Acme NDA Signed 2026-03-14.pdf',
-    detail: 'Counterparty, agreement type, status, and date make legal PDFs easier to retrieve.',
-  },
-  {
-    title: 'Statements',
-    before: 'download (7).pdf',
-    after: 'Chase Statement March 2026.pdf',
-    detail: 'Institution and reporting period are pulled from the PDF instead of guessed from the download name.',
-  },
-  {
-    title: 'Scanned receipts',
-    before: 'IMG_20260310_scan.pdf',
-    after: 'Home Depot Receipt March 10.pdf',
-    detail: 'For image-only scans, AI vision reads visible page content when there is no embedded text layer.',
-  },
-];
-const pdfComparisonRows = [
-  {
-    tool: 'Finder / File Explorer',
-    bestFor: 'One-off manual renames',
-    gap: 'You still have to open each PDF, read it, decide on a name, and repeat that for every file.',
-  },
-  {
-    tool: 'Preview',
-    bestFor: 'Reading, marking up, exporting, and signing PDFs on Mac',
-    gap: 'Preview does not batch-generate content-aware filenames for invoices, contracts, scans, and statements.',
-  },
-  {
-    tool: 'Adobe Acrobat',
-    bestFor: 'OCR, editing, forms, signatures, and PDF review workflows',
-    gap: 'Acrobat helps manage PDF content, but filename cleanup is still largely a separate manual workflow.',
-  },
-  {
-    tool: 'Zush',
-    bestFor: 'Turning weak PDF filenames into searchable document names',
-    gap: 'Zush reads text layers or scanned pages, extracts entities and dates, then previews names before applying them.',
-  },
-];
+const shouldRenderPdfDeepDive = category === 'pdf';
+const pdfDeepDive = getPdfDeepDiveCopy(currentLocale);
 ---
 
 <Breadcrumbs items={breadcrumbItems} />
@@ -131,10 +96,10 @@ const pdfComparisonRows = [
   <WhyZush copy={currentCopy.home.whyZush} />
   <CrossPlatformBanner locale={currentLocale} />
   <UseCases
-    title={currentLocale === DEFAULT_LOCALE ? useCasesData.title : currentCopy.home.useCasesTitle}
-    description={currentLocale === DEFAULT_LOCALE ? useCasesData.description : currentCopy.home.useCasesDescription}
-    items={currentLocale === DEFAULT_LOCALE && useCasesData.items.length > 0 ? useCasesData.items : undefined}
-    copy={currentLocale === DEFAULT_LOCALE ? undefined : currentCopy.home.useCases}
+    title={useCasesTitle}
+    description={useCasesDescription}
+    items={hasCategoryUseCases ? useCasesData.items : undefined}
+    copy={!hasCategoryUseCases && currentLocale !== DEFAULT_LOCALE ? currentCopy.home.useCases : undefined}
   />
 
   {shouldRenderPdfDeepDive && (
@@ -142,18 +107,17 @@ const pdfComparisonRows = [
       <section class={styles.PdfDeepDive}>
         <div class={styles.Section__Container}>
           <div class={styles.PdfDeepDive__Header}>
-            <p class={styles.PdfDeepDive__Eyebrow}>PDF naming workflows</p>
+            <p class={styles.PdfDeepDive__Eyebrow}>{pdfDeepDive.workflowsEyebrow}</p>
             <Heading as='h2' align='center'>
-              Built for invoices, contracts, scans, and statements
+              {pdfDeepDive.workflowsTitle}
             </Heading>
             <p class={styles.PdfDeepDive__Intro}>
-              PDF cleanup is different from renaming photos or screenshots. The useful filename is usually hidden in
-              the document text: vendor names, counterparties, dates, form numbers, billing periods, and signatures.
+              {pdfDeepDive.workflowsIntro}
             </p>
           </div>
 
           <div class={styles.PdfScenarioGrid}>
-            {pdfNamingRecipes.map((recipe) => (
+            {pdfDeepDive.recipes.map((recipe) => (
               <article class={styles.PdfScenarioCard}>
                 <div class={styles.PdfFileItem}>
                   <div class={styles.PdfFileItem__Preview} aria-hidden='true'>
@@ -176,13 +140,12 @@ const pdfComparisonRows = [
       <section class={styles.PdfComparison}>
         <div class={styles.Section__Container}>
           <div class={styles.PdfDeepDive__Header}>
-            <p class={styles.PdfDeepDive__Eyebrow}>Workflow comparison</p>
+            <p class={styles.PdfDeepDive__Eyebrow}>{pdfDeepDive.comparisonEyebrow}</p>
             <Heading as='h2' align='center'>
-              Where Zush fits next to Finder, Preview, and Adobe Acrobat
+              {pdfDeepDive.comparisonTitle}
             </Heading>
             <p class={styles.PdfDeepDive__Intro}>
-              Zush does not replace PDF readers or editors. It fills the repetitive filename step after PDFs are
-              downloaded, scanned, signed, exported, or received by email.
+              {pdfDeepDive.comparisonIntro}
             </p>
           </div>
 
@@ -192,7 +155,7 @@ const pdfComparisonRows = [
               <span>Best for</span>
               <span>Filename gap</span>
             </div>
-            {pdfComparisonRows.map((row) => (
+            {pdfDeepDive.comparisonRows.map((row) => (
               <div class={styles.PdfComparisonTable__Row}>
                 <strong>{row.tool}</strong>
                 <span>{row.bestFor}</span>
