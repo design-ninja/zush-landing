@@ -67,12 +67,14 @@ const DownloadButton = ({
   const wrapRef = useRef<HTMLDivElement>(null);
 
   const downloadUrl = getDownloadUrl(downloadOS);
-  const primaryHref = getPreferredStoreHref({
-    os: 'windows',
-    runtimeOS: detectedOS,
-    appUrl: WINDOWS_STORE_PROTOCOL_URL,
-    webUrl: downloadUrl,
-  });
+  const primaryHref = downloadOS === 'windows'
+    ? getPreferredStoreHref({
+        os: 'windows',
+        runtimeOS: detectedOS,
+        appUrl: WINDOWS_STORE_PROTOCOL_URL,
+        webUrl: WINDOWS_STORE_URL,
+      })
+    : downloadUrl;
   const appStoreHref = getPreferredStoreHref({
     os: 'mac',
     runtimeOS: detectedOS,
