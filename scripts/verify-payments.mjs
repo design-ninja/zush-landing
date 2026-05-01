@@ -38,6 +38,21 @@ function verifyPaddleCheckout() {
   );
   assertMatch(
     src,
+    /paddleScriptPromise/,
+    "Checkout no longer reuses a single Paddle.js loading promise",
+  );
+  assertMatch(
+    src,
+    /waitForPaddleGlobal/,
+    "Checkout no longer waits for the Paddle global before initializing",
+  );
+  assertMatch(
+    src,
+    /return initializePaddle\(\)/,
+    "Checkout readiness can succeed without Paddle.Initialize completing",
+  );
+  assertMatch(
+    src,
     /settings\s*=\s*\{\s*locale:\s*paddleLocale\s*\}/,
     "Checkout no longer passes the current page locale to Paddle",
   );

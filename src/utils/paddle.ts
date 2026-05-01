@@ -50,6 +50,7 @@ declare global {
 
 let paddleLoaded = false;
 let paddleInitialized = false;
+let paddleScriptPromise: Promise<void> | null = null;
 let activeCheckoutSession: string | null = null;
 
 const PADDLE_LOCALES: Record<string, string> = {
@@ -97,22 +98,56 @@ function getPaddleConfig() {
 
 async function loadPaddleScript(): Promise<void> {
   if (paddleLoaded) return;
+  if (window.Paddle) {
+    paddleLoaded = true;
+    return;
+  }
 
-  return new Promise((resolve, reject) => {
+  paddleScriptPromise ??= new Promise((resolve, reject) => {
     const script = document.createElement("script");
     script.src = "https://cdn.paddle.com/paddle/v2/paddle.js";
     script.async = true;
-    script.onload = () => {
-      paddleLoaded = true;
-      resolve();
+    script.onload = () => resolve();
+    script.onerror = () => {
+      paddleScriptPromise = null;
+      reject(new Error("Failed to load Paddle.js"));
     };
-    script.onerror = () => reject(new Error("Failed to load Paddle.js"));
     document.head.appendChild(script);
+  });
+
+  await paddleScriptPromise;
+  await waitForPaddleGlobal();
+  paddleLoaded = true;
+}
+
+async function waitForPaddleGlobal(): Promise<void> {
+  if (window.Paddle) return;
+
+  await new Promise<void>((resolve, reject) => {
+    const startedAt = Date.now();
+    const timeoutMs = 5000;
+
+    const poll = () => {
+      if (window.Paddle) {
+        resolve();
+        return;
+      }
+
+      if (Date.now() - startedAt >= timeoutMs) {
+        reject(new Error("Paddle.js loaded, but window.Paddle is unavailable"));
+        return;
+      }
+
+      window.setTimeout(poll, 25);
+    };
+
+    poll();
   });
 }
 
-function initializePaddle(): void {
-  if (paddleInitialized || !window.Paddle) return;
+function initializePaddle(): boolean {
+  if (paddleInitialized) return true;
+  if (!window.Paddle) return false;
 
   const { paddleEnv, paddleToken } = getPaddleConfig();
 
@@ -151,6 +186,7 @@ function initializePaddle(): void {
 
   window.Paddle.Initialize(paddleConfig);
   paddleInitialized = true;
+  return true;
 }
 
 function normalizeLanguage(value: string): string {
@@ -183,8 +219,7 @@ function getLocalizedThankYouPath(): string {
 async function ensurePaddleReady(): Promise<boolean> {
   try {
     await loadPaddleScript();
-    initializePaddle();
-    return true;
+    return initializePaddle();
   } catch (error) {
     console.error("[Paddle] Failed to load:", error);
     return false;
