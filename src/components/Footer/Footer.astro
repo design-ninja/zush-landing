@@ -6,7 +6,13 @@ import {
   WINDOWS_STORE_PROTOCOL_URL,
   WINDOWS_STORE_URL,
 } from '@/constants';
-import { DEFAULT_LOCALE, getLocalizedPath, type Locale } from '@/i18n/config';
+import {
+  DEFAULT_LOCALE,
+  getLocalesForRoute,
+  getLocalizedPath,
+  type Locale,
+  type LocalizedRoute,
+} from '@/i18n/config';
 import { getCopy } from '@/i18n/copy';
 import appLinkStyles from '@/components/AppLink/AppLink.module.scss';
 import headingStyles from '@/components/Heading/Heading.module.scss';
@@ -26,13 +32,15 @@ const subtleTextClass = [textStyles.Text, textStyles.Text_subtle].join(' ');
 const linkClass = [appLinkStyles.AppLink, styles.Footer__Link].join(' ');
 const socialLinkClass = [appLinkStyles.AppLink, styles.Footer__SocialLink].join(' ');
 const brandClass = [appLinkStyles.AppLink, styles.Footer__Brand].join(' ');
+const footerHref = (route: LocalizedRoute) =>
+  getLocalizedPath(route, getLocalesForRoute(route).includes(locale) ? locale : DEFAULT_LOCALE);
 ---
 
 <footer class={styles.Footer}>
   <div class={styles.Footer__Container}>
     <div class={styles.Footer__Grid}>
       <div>
-        <a href={getLocalizedPath('/', locale)} class={brandClass}>Zush</a>
+        <a href={footerHref('/')} class={brandClass}>Zush</a>
         <p class={descriptionClass}>
           {copy.description}
         </p>
@@ -143,34 +151,34 @@ const brandClass = [appLinkStyles.AppLink, styles.Footer__Brand].join(' ');
       <div>
         <h4 class={sectionTitleClass}>{copy.product}</h4>
         <ul class={styles.Footer__Links}>
-          <li><a href={getLocalizedPath('/ai-file-renamer', locale)} class={linkClass}>{copy.productLinks.aiFileRenamer}</a></li>
-          <li><a href={getLocalizedPath('/ai-image-renamer', locale)} class={linkClass}>{copy.productLinks.aiImageRenamer}</a></li>
-          <li><a href={getLocalizedPath('/batch-rename-files', locale)} class={linkClass}>{copy.productLinks.batchRenameFiles}</a></li>
-          <li><a href={getLocalizedPath('/auto-rename-files', locale)} class={linkClass}>{copy.productLinks.autoRenameFiles}</a></li>
-          <li><a href={getLocalizedPath('/mac', locale)} class={linkClass}>{copy.productLinks.mac}</a></li>
-          <li><a href={getLocalizedPath('/windows', locale)} class={linkClass}>{copy.productLinks.windows}</a></li>
+          <li><a href={footerHref('/ai-file-renamer')} class={linkClass}>{copy.productLinks.aiFileRenamer}</a></li>
+          <li><a href={footerHref('/ai-image-renamer')} class={linkClass}>{copy.productLinks.aiImageRenamer}</a></li>
+          <li><a href={footerHref('/batch-rename-files')} class={linkClass}>{copy.productLinks.batchRenameFiles}</a></li>
+          <li><a href={footerHref('/auto-rename-files')} class={linkClass}>{copy.productLinks.autoRenameFiles}</a></li>
+          <li><a href={footerHref('/mac')} class={linkClass}>{copy.productLinks.mac}</a></li>
+          <li><a href={footerHref('/windows')} class={linkClass}>{copy.productLinks.windows}</a></li>
         </ul>
       </div>
 
       <div>
         <h4 class={sectionTitleClass}>{copy.byFileType}</h4>
         <ul class={styles.Footer__Links}>
-          <li><a href={getLocalizedPath('/rename-pdf-with-ai', locale)} class={linkClass}>{copy.productLinks.pdf}</a></li>
-          <li><a href={getLocalizedPath('/rename-photos-with-ai', locale)} class={linkClass}>{copy.productLinks.photos}</a></li>
-          <li><a href={getLocalizedPath('/rename-screenshots-with-ai', locale)} class={linkClass}>{copy.productLinks.screenshots}</a></li>
-          <li><a href={getLocalizedPath('/rename-documents-with-ai', locale)} class={linkClass}>{copy.productLinks.documents}</a></li>
+          <li><a href={footerHref('/rename-pdf-with-ai')} class={linkClass}>{copy.productLinks.pdf}</a></li>
+          <li><a href={footerHref('/rename-photos-with-ai')} class={linkClass}>{copy.productLinks.photos}</a></li>
+          <li><a href={footerHref('/rename-screenshots-with-ai')} class={linkClass}>{copy.productLinks.screenshots}</a></li>
+          <li><a href={footerHref('/rename-documents-with-ai')} class={linkClass}>{copy.productLinks.documents}</a></li>
         </ul>
       </div>
 
       <div>
         <h4 class={sectionTitleClass}>{copy.resources}</h4>
         <ul class={styles.Footer__Links}>
-          <li><a href={`${getLocalizedPath('/', locale)}#pricing`} class={linkClass}>{copy.pricing}</a></li>
+          <li><a href={`${footerHref('/')}#pricing`} class={linkClass}>{copy.pricing}</a></li>
           <li><a href='/blog' class={linkClass}>{copy.blog}</a></li>
           <li><a href='/changelog' class={linkClass}>{copy.changelog}</a></li>
-          <li><a href={getLocalizedPath('/methodology', locale)} class={linkClass}>{copy.methodology}</a></li>
-          <li><a href={getLocalizedPath('/byok-setup', locale)} class={linkClass}>{copy.byokSetup}</a></li>
-          <li><a href={getLocalizedPath('/ollama-setup', locale)} class={linkClass}>{copy.ollamaSetup}</a></li>
+          <li><a href={footerHref('/methodology')} class={linkClass}>{copy.methodology}</a></li>
+          <li><a href={footerHref('/byok-setup')} class={linkClass}>{copy.byokSetup}</a></li>
+          <li><a href={footerHref('/ollama-setup')} class={linkClass}>{copy.ollamaSetup}</a></li>
         </ul>
       </div>
 
@@ -179,9 +187,9 @@ const brandClass = [appLinkStyles.AppLink, styles.Footer__Brand].join(' ');
         <ul class={styles.Footer__Links}>
           <li><a href={`mailto:${SUPPORT_EMAIL}`} class={linkClass}>{copy.contactSupport}</a></li>
           <li><a href='https://zush.canny.io' class={linkClass} target='_blank' rel='noopener noreferrer'>{copy.feedback}</a></li>
-          <li><a href={getLocalizedPath('/terms-of-service', locale)} class={linkClass}>{copy.terms}</a></li>
-          <li><a href={getLocalizedPath('/privacy-policy', locale)} class={linkClass}>{copy.privacy}</a></li>
-          <li><a href={getLocalizedPath('/refund-policy', locale)} class={linkClass}>{copy.refund}</a></li>
+          <li><a href={footerHref('/terms-of-service')} class={linkClass}>{copy.terms}</a></li>
+          <li><a href={footerHref('/privacy-policy')} class={linkClass}>{copy.privacy}</a></li>
+          <li><a href={footerHref('/refund-policy')} class={linkClass}>{copy.refund}</a></li>
         </ul>
       </div>
     </div>

@@ -248,6 +248,37 @@
     }
 }
 
+:global([dir='rtl']) {
+    .Main:not(.Main_single) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: $radius-full;
+        border-bottom-right-radius: $radius-full;
+    }
+
+    .Toggle {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: $radius-full;
+        border-bottom-left-radius: $radius-full;
+
+        &::before {
+            left: auto;
+            right: 0;
+        }
+    }
+
+    .Menu {
+        left: auto;
+        right: 0;
+
+        &__Text {
+            align-items: flex-end;
+            text-align: right;
+        }
+    }
+}
+
 @keyframes menuFadeIn {
     from {
         opacity: 0;

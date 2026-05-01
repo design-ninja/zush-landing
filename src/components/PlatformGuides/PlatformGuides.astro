@@ -12,7 +12,7 @@ interface Props {
   locale?: Locale;
 }
 
-const GUIDE_COPY: Record<Locale, Record<Exclude<BlogPlatform, 'general'>, { title: string; description: string }>> = {
+const GUIDE_COPY: Partial<Record<Locale, Record<Exclude<BlogPlatform, 'general'>, { title: string; description: string }>>> = {
   en: {
     mac: {
       title: 'Read the Guides',
@@ -116,7 +116,7 @@ const GUIDE_COPY: Record<Locale, Record<Exclude<BlogPlatform, 'general'>, { titl
 };
 
 const { platform, locale = DEFAULT_LOCALE } = Astro.props as Props;
-const copy = GUIDE_COPY[locale]?.[platform] ?? GUIDE_COPY.en[platform];
+const copy = GUIDE_COPY[locale]?.[platform] ?? GUIDE_COPY.en![platform];
 const posts = await getFeaturedPostsByPlatform(platform, 3);
 ---
 

@@ -74,7 +74,7 @@ const EN: PlatformSpecificsCopy = {
     'Zush uses the standard Microsoft Store install path, Windows Credential Manager for keys, and clear data boundaries.',
 };
 
-const PLATFORM_SPECIFICS_COPY: Record<Locale, PlatformSpecificsCopy> = {
+const PLATFORM_SPECIFICS_COPY: Partial<Record<Locale, PlatformSpecificsCopy>> = {
   en: EN,
   de: {
     systemRequirementsEyebrow: 'Kompatibilität',
@@ -444,6 +444,47 @@ const PLATFORM_SPECIFICS_COPY: Record<Locale, PlatformSpecificsCopy> = {
       'Zush 满足 macOS 的安全要求：经过 Apple 公证的二进制、沙盒化的 App Store 版本、保存在钥匙串中的密钥，以及清晰的数据边界。',
     securityDescriptionWindows:
       'Zush 使用标准的 Microsoft Store 安装流程、Windows 凭据管理器保存密钥，并保持清晰的数据边界。',
+  },
+  ar: {
+    systemRequirementsEyebrow: 'التوافق',
+    installMethodsEyebrow: 'الإعداد',
+    quickstartEyebrow: 'التشغيل الأول',
+    integrationsEyebrow: 'التكاملات',
+    scenariosEyebrow: 'سير العمل',
+    securityEyebrow: 'الخصوصية',
+    systemRequirementsTitle: 'متطلبات النظام',
+    systemRequirementsDescription:
+      'كل ما تحتاج إلى معرفته قبل التثبيت: إصدارات النظام المدعومة، بنى المعالج، الذاكرة، والأذونات.',
+    installMethodsTitle: 'طرق التثبيت',
+    installMethodsDescription:
+      'اختر المثبّت الذي يناسب طريقة إدارتك للبرامج على جهازك.',
+    installRecommendedBadge: 'موصى به',
+    installCtaLabel: 'فتح',
+    quickstartTitle: 'بدء سريع خلال 60 ثانية',
+    quickstartDescriptionMac:
+      'من تنزيل جديد إلى مسار إعادة تسمية مؤتمت بالكامل، يكتمل التدفق على Mac خلال استراحة قصيرة.',
+    quickstartDescriptionWindows:
+      'من التثبيت عبر Microsoft Store إلى مراقبة المجلدات المستمرة، يكتمل التدفق على Windows خلال استراحة قصيرة.',
+    quickstartDropPrefix: 'أفلِت في',
+    quickstartFilesReady: '3 ملفات جاهزة',
+    quickstartWatching: 'قيد المراقبة',
+    integrationsTitle: 'تكاملات أصلية',
+    integrationsDescriptionMac:
+      'يتكامل Zush مع أجزاء macOS التي تستخدمها يوميا: Finder والاختصارات وSpotlight ولقطات الشاشة.',
+    integrationsDescriptionWindows:
+      'يتكامل Zush مع أجزاء Windows التي تستخدمها يوميا: File Explorer وأداة القص وOneDrive وبحث Windows.',
+    scenariosTitle: 'سيناريوهات واقعية',
+    scenariosDescriptionMac:
+      'هذه هي تدفقات Mac اليومية التي يستخدم الناس Zush من أجلها. كل واحد منها يبدأ بمجلد مراقب أو سحب وإفلات.',
+    scenariosDescriptionWindows:
+      'هذه هي تدفقات Windows اليومية التي يستخدم الناس Zush من أجلها. كل واحد منها يبدأ بمجلد مراقب أو سحب وإفلات.',
+    scenariosBeforeLabel: 'قبل',
+    scenariosAfterLabel: 'بعد',
+    securityTitle: 'الأمان والخصوصية',
+    securityDescriptionMac:
+      'صُمم Zush ليلائم توقعات أمان macOS: ملف موثّق من Apple، خيار App Store داخل sandbox، مفاتيح محفوظة في Keychain، وحدود بيانات واضحة.',
+    securityDescriptionWindows:
+      'يستخدم Zush مسار التثبيت القياسي من Microsoft Store، وWindows Credential Manager للمفاتيح، وحدود بيانات واضحة.',
   },
 };
 

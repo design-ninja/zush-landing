@@ -5,7 +5,7 @@ export type LegalRoute = '/privacy-policy' | '/terms-of-service' | '/refund-poli
 
 type LegalMarkdownByRoute = Record<LegalRoute, string>;
 
-const LEGAL_MARKDOWN: Record<InternalLocale, LegalMarkdownByRoute> = {
+const LEGAL_MARKDOWN: Partial<Record<InternalLocale, LegalMarkdownByRoute>> = {
   de: {
     '/privacy-policy': `Diese Datenschutzerklärung erklärt, wie Zush ("Kirill Isachenko", "wir", "uns" oder "unser") deine Informationen erfasst, nutzt und schützt, wenn du unsere macOS-App und zugehörige Dienste verwendest.
 
@@ -1638,5 +1638,5 @@ Zush PRO 是一次性购买，并提供终身访问。我们自购买日起提�
 };
 
 export function getLegalMarkdown(locale: InternalLocale, route: LegalRoute): string {
-  return LEGAL_MARKDOWN[locale][route];
+  return LEGAL_MARKDOWN[locale]?.[route] ?? LEGAL_MARKDOWN.de![route];
 }

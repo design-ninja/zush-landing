@@ -7,7 +7,7 @@ import { DEFAULT_LOCALE, type Locale } from '@/i18n/config';
 import type { LocaleCopy } from '@/i18n/copy';
 import type { PlatformSpecificsCopy } from '@/i18n/platformSpecifics';
 
-const REQUIREMENT_LABELS: Record<Locale, Record<SpecKey, string>> = {
+const REQUIREMENT_LABELS: Partial<Record<Locale, Record<SpecKey, string>>> = {
   en: {
     operatingSystem: 'Operating system',
     processor: 'Processor',
@@ -88,14 +88,22 @@ const REQUIREMENT_LABELS: Record<Locale, Record<SpecKey, string>> = {
     network: '网络',
     permissions: '权限',
   },
+  ar: {
+    operatingSystem: 'نظام التشغيل',
+    processor: 'المعالج',
+    memory: 'الذاكرة',
+    diskSpace: 'مساحة القرص',
+    network: 'الشبكة',
+    permissions: 'الأذونات',
+  },
 };
 
-const REQUIREMENT_TEXT: Record<Locale, {
+const REQUIREMENT_TEXT: Partial<Record<Locale, {
   memory: string;
   network: string;
   permissions: string;
   diskSpace: (appSize: string) => string;
-}> = {
+}>> = {
   en: {
     memory: '4 GB minimum, 8 GB recommended for Offline AI',
     diskSpace: (appSize) => `${appSize} for the app, additional space for Ollama models`,
@@ -155,6 +163,12 @@ const REQUIREMENT_TEXT: Record<Locale, {
     diskSpace: (appSize) => `应用约 ${appSize}，Ollama 模型需要额外空间`,
     network: '云端重命名需要网络，离线 AI 模式可选',
     permissions: '添加要重命名或监控的文件夹时会请求文件夹访问权限',
+  },
+  ar: {
+    memory: '4 GB كحد أدنى، و8 GB موصى بها لوضع الذكاء الاصطناعي دون اتصال',
+    diskSpace: (appSize) => `${appSize} للتطبيق، مع مساحة إضافية لنماذج Ollama`,
+    network: 'مطلوبة لإعادة التسمية السحابية، واختيارية لوضع الذكاء الاصطناعي دون اتصال',
+    permissions: 'يُطلب الوصول إلى المجلدات عندما تضيف مجلدات لإعادة التسمية أو المراقبة',
   },
 };
 
@@ -227,8 +241,8 @@ export function getLocalizedPlatformSpecificsContent(
 ): PlatformSpecificsContent {
   if (locale === DEFAULT_LOCALE) return fallback;
 
-  const labels = REQUIREMENT_LABELS[locale];
-  const requirementText = REQUIREMENT_TEXT[locale];
+  const labels = REQUIREMENT_LABELS[locale] ?? REQUIREMENT_LABELS[DEFAULT_LOCALE]!;
+  const requirementText = REQUIREMENT_TEXT[locale] ?? REQUIREMENT_TEXT[DEFAULT_LOCALE]!;
   const afterNames = localizedAfterNames(localeCopy);
   const osLabel = osLabelFor(platform);
   const platformCopy = localeCopy.platforms[platform];

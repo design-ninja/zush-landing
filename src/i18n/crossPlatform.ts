@@ -135,6 +135,18 @@ const COPY: Record<Locale, CrossPlatformBannerCopy> = {
     macCta: '查看 Mac 详情',
     windowsCta: '查看 Windows 详情',
   },
+  ar: {
+    eyebrow: 'متوفر على كلا نظامي سطح المكتب',
+    title: 'اختر منصتك — Zush نفسه، بتجربة أصلية في كل مكان',
+    description:
+      'ملف .dmg موقّع وموثق لنظام macOS. تثبيت عبر Microsoft Store لنظام Windows. نفس محرك إعادة التسمية، ونفس BYOK وOffline AI، بتجربة أصلية لكل نظام.',
+    macTitle: 'Zush لنظام Mac',
+    macDescription: 'Apple Silicon وIntel · macOS 14+ · App Store + .dmg',
+    windowsTitle: 'Zush لنظام Windows',
+    windowsDescription: 'x64 وARM64 · Windows 10/11 · Microsoft Store',
+    macCta: 'عرض تفاصيل Mac',
+    windowsCta: 'عرض تفاصيل Windows',
+  },
 };
 
 export function getCrossPlatformBannerCopy(locale: Locale): CrossPlatformBannerCopy {

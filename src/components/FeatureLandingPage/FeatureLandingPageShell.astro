@@ -151,9 +151,9 @@ const pdfDeepDive = getPdfDeepDiveCopy(currentLocale);
 
           <div class={styles.PdfComparisonTable}>
             <div class={styles.PdfComparisonTable__Head}>
-              <span>Tool</span>
-              <span>Best for</span>
-              <span>Filename gap</span>
+              <span>{pdfDeepDive.comparisonHeaders?.tool ?? 'Tool'}</span>
+              <span>{pdfDeepDive.comparisonHeaders?.bestFor ?? 'Best for'}</span>
+              <span>{pdfDeepDive.comparisonHeaders?.gap ?? 'Filename gap'}</span>
             </div>
             {pdfDeepDive.comparisonRows.map((row) => (
               <div class={styles.PdfComparisonTable__Row}>

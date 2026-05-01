@@ -10,9 +10,9 @@ import type { DownloadOS } from '@/utils/download';
 import {
   DEFAULT_LOCALE,
   INDEXABLE_LOCALIZED_ROUTES,
-  LOCALES,
   LOCALE_META,
-  getAlternatePaths,
+  getLocalesForRoute,
+  getLocalizedPath,
   isLocalizedRoute,
   stripLocaleFromPath,
   type Locale,
@@ -76,7 +76,7 @@ const {
 
 const canonicalUrl = getCanonicalUrl(seo.canonicalPath);
 const { route } = stripLocaleFromPath(seo.canonicalPath);
-const alternatePaths = getAlternatePaths(route);
+const routeLocales = getLocalesForRoute(route);
 const shouldEmitLocaleAlternates = isLocalizedRoute(route) && seo.robots !== 'noindex, nofollow';
 const localeMeta = LOCALE_META[locale];
 const layoutCopy = getCopy(locale);
@@ -89,14 +89,14 @@ const shouldAutoDetectLocale = locale === DEFAULT_LOCALE
   && (INDEXABLE_LOCALIZED_ROUTES as readonly string[]).includes(route);
 const autoDetectRoute = route;
 const localeRedirectConfig = JSON.stringify({
-  ...Object.fromEntries(LOCALES.map((item) => [LOCALE_META[item].lang.toLowerCase(), LOCALE_META[item].slug || ''])),
+  ...Object.fromEntries(routeLocales.map((item) => [LOCALE_META[item].lang.toLowerCase(), LOCALE_META[item].slug || ''])),
   pt: LOCALE_META['pt-br'].slug,
   zh: LOCALE_META['zh-cn'].slug,
 });
 ---
 
 <!doctype html>
-<html lang={localeMeta.lang} dir="ltr" transition:animate="none">
+<html lang={localeMeta.lang} dir={localeMeta.dir ?? 'ltr'} transition:animate="none">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
@@ -234,16 +234,16 @@ const localeRedirectConfig = JSON.stringify({
     <meta name="robots" content={seo.robots} />
     <link rel="canonical" href={canonicalUrl} />
     {shouldEmitLocaleAlternates && (
-      LOCALES.map((item) => (
+      routeLocales.map((item) => (
         <link
           rel="alternate"
           hreflang={LOCALE_META[item].lang}
-          href={getCanonicalUrl(alternatePaths[item])}
+          href={getCanonicalUrl(getLocalizedPath(route, item))}
         />
       ))
     )}
     {shouldEmitLocaleAlternates && (
-      <link rel="alternate" hreflang="x-default" href={getCanonicalUrl(alternatePaths.en)} />
+      <link rel="alternate" hreflang="x-default" href={getCanonicalUrl(getLocalizedPath(route, DEFAULT_LOCALE))} />
     )}
 
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />

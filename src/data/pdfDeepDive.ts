@@ -13,6 +13,11 @@ export interface PdfDeepDiveCopy {
   comparisonEyebrow: string;
   comparisonTitle: string;
   comparisonIntro: string;
+  comparisonHeaders?: {
+    tool: string;
+    bestFor: string;
+    gap: string;
+  };
   comparisonRows: Array<{
     tool: string;
     bestFor: string;
@@ -20,7 +25,7 @@ export interface PdfDeepDiveCopy {
   }>;
 }
 
-const PDF_DEEP_DIVE_COPY: Record<Locale, PdfDeepDiveCopy> = {
+const PDF_DEEP_DIVE_COPY: Partial<Record<Locale, PdfDeepDiveCopy>> = {
   en: {
     workflowsEyebrow: 'PDF naming workflows',
     workflowsTitle: 'Built for invoices, contracts, scans, and statements',
@@ -601,8 +606,71 @@ const PDF_DEEP_DIVE_COPY: Record<Locale, PdfDeepDiveCopy> = {
       },
     ],
   },
+  ar: {
+    workflowsEyebrow: 'تدفقات تسمية PDF',
+    workflowsTitle: 'مصمم للفواتير والعقود والمسحات والكشوف',
+    workflowsIntro:
+      'تنظيف ملفات PDF يختلف عن إعادة تسمية الصور أو لقطات الشاشة. غالبا ما يكون الاسم المفيد مخفيا داخل نص المستند: أسماء الموردين، الأطراف، التواريخ، أرقام النماذج، فترات الفوترة، والتوقيعات.',
+    recipes: [
+      {
+        title: 'الفواتير',
+        before: 'scan_001.pdf',
+        after: 'فاتورة Amazon 2026-03.pdf',
+        detail: 'المورد ونوع المستند وفترة الفاتورة والتاريخ تجعل مجلدات المحاسبة قابلة للترتيب.',
+      },
+      {
+        title: 'العقود',
+        before: 'signed-final.pdf',
+        after: 'Acme NDA موقع 2026-03-14.pdf',
+        detail: 'الطرف المقابل ونوع الاتفاق والحالة والتاريخ تجعل ملفات PDF القانونية أسهل في الاسترجاع.',
+      },
+      {
+        title: 'الكشوف',
+        before: 'download (7).pdf',
+        after: 'كشف Chase مارس 2026.pdf',
+        detail: 'تُستخرج المؤسسة وفترة التقرير من PDF بدلا من تخمينها من اسم التنزيل.',
+      },
+      {
+        title: 'الإيصالات الممسوحة',
+        before: 'IMG_20260310_scan.pdf',
+        after: 'إيصال Home Depot 10 مارس.pdf',
+        detail: 'للمسحات التي تحتوي على صور فقط، تقرأ رؤية الذكاء الاصطناعي محتوى الصفحة المرئي حتى دون طبقة نص مضمنة.',
+      },
+    ],
+    comparisonEyebrow: 'مقارنة سير العمل',
+    comparisonTitle: 'أين يناسب Zush إلى جانب Finder وPreview وAdobe Acrobat',
+    comparisonIntro:
+      'لا يستبدل Zush قارئات PDF أو محرراته. إنه يغطي خطوة اسم الملف المتكررة بعد تنزيل ملفات PDF أو مسحها أو توقيعها أو تصديرها أو استلامها عبر البريد.',
+    comparisonHeaders: {
+      tool: 'الأداة',
+      bestFor: 'الأفضل لـ',
+      gap: 'فجوة اسم الملف',
+    },
+    comparisonRows: [
+      {
+        tool: 'Finder / File Explorer',
+        bestFor: 'إعادة تسمية يدوية لملف واحد',
+        gap: 'ما زلت تحتاج إلى فتح كل PDF وقراءته واختيار اسم له وتكرار ذلك لكل ملف.',
+      },
+      {
+        tool: 'Preview',
+        bestFor: 'قراءة ملفات PDF والتعليق عليها وتصديرها وتوقيعها على Mac',
+        gap: 'لا يولد Preview أسماء ملفات دفعة واحدة بحسب المحتوى للفواتير والعقود والمسحات والكشوف.',
+      },
+      {
+        tool: 'Adobe Acrobat',
+        bestFor: 'OCR والتحرير والنماذج والتوقيعات ومراجعة PDF',
+        gap: 'يساعد Acrobat في إدارة محتوى PDF، لكن تنظيف أسماء الملفات يبقى غالبا خطوة يدوية منفصلة.',
+      },
+      {
+        tool: 'Zush',
+        bestFor: 'تحويل أسماء PDF الضعيفة إلى أسماء مستندات قابلة للبحث',
+        gap: 'يقرأ Zush طبقات النص أو الصفحات الممسوحة، يستخرج الكيانات والتواريخ، ثم يعرض الأسماء قبل تطبيقها.',
+      },
+    ],
+  },
 };
 
 export function getPdfDeepDiveCopy(locale: Locale): PdfDeepDiveCopy {
-  return PDF_DEEP_DIVE_COPY[locale] ?? PDF_DEEP_DIVE_COPY.en;
+  return PDF_DEEP_DIVE_COPY[locale] ?? PDF_DEEP_DIVE_COPY.en!;
 }

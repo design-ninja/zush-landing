@@ -720,6 +720,62 @@ const PLATFORM_OVERRIDES: Partial<Record<Locale, PlatformOverrides>> = {
       },
     },
   },
+  ar: {
+    mac: {
+      featuresTitle: 'كيف يعمل Zush على macOS',
+      featuresDescription: 'تدفقات إعادة تسمية مصممة لـ Mac: Finder وSpotlight والتنزيلات ولقطات الشاشة والذكاء الاصطناعي المحلي.',
+      featureCards: {
+        aiAnalysis: { title: 'تحليل بالذكاء الاصطناعي لملفات Mac', description: 'حلّل لقطات الشاشة وملفات PDF وصور HEIC وRAW ومستندات Office والتصديرات دون مغادرة سير عمل macOS الأصلي.' },
+        foldersMonitoring: { title: 'مراقبة التنزيلات ولقطات الشاشة', description: 'راقب ~/Downloads أو سطح المكتب أو مجلد لقطات الشاشة لتحصل الملفات الجديدة على أسماء واضحة فور وصولها.' },
+        batchRename: { title: 'إعادة تسمية دفعات من Finder', description: 'اسحب الملفات أو المجلدات من Finder إلى Zush، راجع كل اسم مقترح، ثم طبّق إعادة التسمية في مكانها.' },
+        customPatterns: { title: 'أنماط تسمية لـ macOS', description: 'استخدم أنماطا تحتوي على التاريخ والفئة والاسم الأصلي حتى تبقى مجلدات Finder متسقة بين المشاريع.' },
+        smartMetadata: { title: 'وسوم Finder وبحث Spotlight', description: 'أنشئ أسماء وبيانات وصفية مقروءة حتى يسهل العثور على الملفات لاحقا عبر Finder وSpotlight.' },
+        renameHistory: { title: 'تراجع دون مخاطرة', description: 'يتم تسجيل كل إعادة تسمية على Mac، حتى تتمكن من إرجاع الملفات إلى أسمائها الأصلية عند الحاجة.' },
+        customPrompts: { title: 'قواعد لتدفقات Finder', description: 'أخبر Zush كيف يسمي تصديرات التصميم والفواتير ولقطات الشاشة ومجلدات العملاء قبل تطبيق التغييرات.' },
+        byok: { title: 'BYOK على Mac', description: 'وصّل Gemini أو Groq أو OpenAI أو Claude بمفتاحك الخاص عندما تريد إعادة تسمية سحابية غير محدودة من macOS.' },
+        offlineAi: { title: 'ذكاء اصطناعي دون اتصال عبر Ollama', description: 'شغّل تحليل الملفات المدعومة على Mac بنماذج محلية عندما تكون الخصوصية أو العمل دون اتصال أهم من سرعة السحابة.' },
+      },
+      useCasesTitle: 'تدفقات Mac التي ينظفها Zush',
+      useCasesDescription: 'نفس التطبيق، مضبوط للمجلدات المزدحمة التي يلمسها مستخدمو Mac كل يوم.',
+      useCases: {
+        items: [
+          { title: 'مصممو Mac', description: 'أعد تسمية لقطات الشاشة وتصديرات Figma وأصول Sketch والصور المرجعية حتى تبقى مجلدات Finder سهلة الفحص.' },
+          { title: 'المصورون', description: 'امنح واردات HEIC وRAW وJPG أسماء مفيدة قبل أن تضيع داخل مكتبات صور كبيرة أو مجلدات iCloud.' },
+          { title: 'المستقلون', description: 'نظّف الفواتير وملفات PDF الموقعة والعروض وتنزيلات العملاء قبل أرشفتها حسب المشروع.' },
+          { title: 'المطورون', description: 'حوّل لقطات PR ولقطات الأخطاء وصور التوثيق إلى أسماء ملفات تشرح ما تغيّر.' },
+          { title: 'صناع المحتوى', description: 'أعد تسمية الصور المصغرة ومراجع b-roll وتصديرات الصور قبل أن تتراكم على سطح المكتب أو في التنزيلات.' },
+          { title: 'المديرون', description: 'اجعل ملاحظات الاجتماعات والجداول والعروض وملفات PDF الخاصة بالأطراف المعنية قابلة للبحث من Finder وSpotlight.' },
+        ],
+      },
+    },
+    windows: {
+      featuresTitle: 'كيف يعمل Zush على Windows',
+      featuresDescription: 'تنظيف مصمم لـ Windows: File Explorer والتنزيلات ولقطات الشاشة وMicrosoft Store والذكاء الاصطناعي المحلي.',
+      featureCards: {
+        aiAnalysis: { title: 'تحليل بالذكاء الاصطناعي لملفات Windows', description: 'حلّل لقطات الشاشة وملفات PDF والصور ومستندات Office والتصديرات من مجلدات Windows العادية.' },
+        foldersMonitoring: { title: 'مراقبة التنزيلات ولقطات الشاشة', description: 'راقب Downloads أو Pictures\\Screenshots أو مجلدات العمل حتى تحصل الملفات الجديدة على أسماء مفيدة تلقائيا.' },
+        batchRename: { title: 'إعادة تسمية دفعات من File Explorer', description: 'اسحب ملفات مختلطة من File Explorer إلى Zush، راجع الاقتراحات، ثم طبّق كل الأسماء في خطوة واحدة.' },
+        customPatterns: { title: 'أنماط تسمية لـ Windows', description: 'استخدم متغيرات التاريخ والفئة والاسم الأصلي لإبقاء مجلدات المشاريع والأقراص المشتركة متسقة.' },
+        smartMetadata: { title: 'مجلدات Windows قابلة للبحث', description: 'أنشئ أسماء ملفات وصفية يسهل العثور عليها لاحقا عبر File Explorer وبحث Windows.' },
+        renameHistory: { title: 'تراجع بعد الدفعة', description: 'يتم تتبع كل إعادة تسمية، حتى تستطيع الرجوع عن دفعة كاملة دون سكربتات أو استعادة يدوية للأسماء.' },
+        customPrompts: { title: 'قواعد لمجلدات Windows', description: 'ضع قواعد تسمية للقطات الشاشة والفواتير وملفات PDF الخاصة بالعملاء والتقارير ومجلدات الفرق المشتركة.' },
+        byok: { title: 'BYOK على Windows', description: 'استخدم مفتاح Gemini أو Groq أو OpenAI أو Claude الخاص بك لإعادة تسمية سحابية غير محدودة من تطبيق Windows.' },
+        offlineAi: { title: 'ذكاء اصطناعي دون اتصال عبر Ollama', description: 'شغّل تحليل الملفات المدعومة محليا عندما تريد إعادة تسمية خاصة دون إرسال المحتوى إلى نماذج سحابية.' },
+      },
+      useCasesTitle: 'مجلدات Windows التي ينظفها Zush',
+      useCasesDescription: 'تنظيف عملي لأكوام الملفات التي تتراكم داخل File Explorer.',
+      useCases: {
+        items: [
+          { title: 'فرق التصميم', description: 'أعد تسمية لقطات الشاشة والنماذج المرئية والأصول المصدّرة وصور المراجعة قبل نقلها إلى المجلدات المشتركة.' },
+          { title: 'مكتبات الصور', description: 'حوّل واردات الكاميرا ومجلدات مزامنة الهاتف إلى أسماء قابلة للبحث بدلا من ملفات IMG وDSC التي لا تنتهي.' },
+          { title: 'العمليات', description: 'نظّف الفواتير والعقود والكشوف وملفات PDF الخاصة بالموردين فور وصولها إلى Downloads.' },
+          { title: 'المطورون', description: 'سمّ لقطات الأخطاء ولقطات إعادة الإنتاج وصور التوثيق بحسب ما يعرضه كل ملف فعليا.' },
+          { title: 'صناع المحتوى', description: 'نظّم الصور المصغرة وتصديرات الشبكات الاجتماعية والصور المرجعية قبل أن تصعب قراءة مجلدات المشاريع.' },
+          { title: 'المديرون', description: 'أبق التقارير والجداول والعروض وملفات الاجتماعات واضحة داخل مجلدات Windows المحلية والمتزامنة.' },
+        ],
+      },
+    },
+  },
 };
 
 export function getPlatformLandingSections(
