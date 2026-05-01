@@ -10,7 +10,7 @@ const faqItems = [
   {
     question: 'Can Zush handle HEIC files from my iPhone?',
     answer:
-      'Absolutely. HEIC and HEIF are fully supported. Zush analyzes the photo content and replaces generic iPhone names like IMG_2847 with descriptions of what the photo actually shows, such as "family-dinner-birthday-cake".',
+      'Absolutely. HEIC and HEIF are fully supported. Zush analyzes the photo content and replaces generic iPhone names like IMG_2847 with descriptions of what the photo actually shows, such as "spiced-steak-dinner".',
   },
   {
     question: 'Can I include dates in the photo filename?',
@@ -75,7 +75,7 @@ const RenamePhotosWithAI = () => (
     showcaseSlides={[
       {
         files: [
-          { before: 'IMG_2847.HEIC', after: 'Birthday Cake Dinner.heic', img: '/images/examples/food.jpg', type: 'image' },
+          { before: 'IMG_2847.HEIC', after: 'Spiced Steak Dinner.heic', img: '/images/examples/food.jpg', type: 'image' },
           { before: '_DSC3921.ARW', after: 'Mountain Sunrise Fog.arw', img: '/images/examples/mountain.jpg', type: 'image' },
           { before: 'DSCF0445.RAF', after: 'Tokyo Night Skyline.raf', img: '/images/examples/city.jpg', type: 'image' },
           { before: 'P1080127.JPG', after: 'Yellow Wildflowers Field.jpg', img: '/images/examples/flowers.jpg', type: 'image' },
@@ -95,11 +95,11 @@ const RenamePhotosWithAI = () => (
       },
       {
         files: [
-          { before: 'IMG_0842.jpg', after: 'Persian Cat Napping.jpg', img: '/images/examples/cat.jpg', type: 'image' },
-          { before: 'DCIM_0104.jpg', after: 'Park Guell Colonnade.jpg', img: '/images/examples/parkguell.jpg', type: 'image' },
+          { before: 'IMG_0842.jpg', after: 'Tuxedo Cat Portrait.jpg', img: '/images/examples/cat.jpg', type: 'image' },
+          { before: 'DCIM_0104.jpg', after: 'Park Guell Terrace.jpg', img: '/images/examples/parkguell.jpg', type: 'image' },
           { before: 'IMG_3039.HEIC', after: 'Modern Building Facade.heic', img: '/images/examples/building.jpg', type: 'image' },
-          { before: '_DSC7721.ARW', after: 'Home Office Workspace.arw', img: '/images/examples/office.jpg', type: 'image' },
-          { before: 'CAM00233.HEIC', after: 'Italian Restaurant Menu.heic', img: '/images/examples/food.jpg', type: 'image' },
+          { before: '_DSC7721.ARW', after: 'Modern Office Corridor.arw', img: '/images/examples/office.jpg', type: 'image' },
+          { before: 'CAM00233.HEIC', after: 'Spiced Steak Plate.heic', img: '/images/examples/food.jpg', type: 'image' },
           { before: 'DSCF2210.RAF', after: 'Designer Workspace Setup.raf', img: '/images/examples/workspace.jpg', type: 'image' },
         ],
       },

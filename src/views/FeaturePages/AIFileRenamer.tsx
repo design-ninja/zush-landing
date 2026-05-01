@@ -32,7 +32,7 @@ const AIFileRenamer = () => (
       {
         files: [
           { before: 'CAM_0021.jpg', after: 'Tokyo Night Skyline.jpg', img: '/images/examples/city.jpg', type: 'image' },
-          { before: 'IMG_0842.jpg', after: 'Persian Cat Napping.jpg', img: '/images/examples/cat.jpg', type: 'image' },
+          { before: 'IMG_0842.jpg', after: 'Tuxedo Cat Portrait.jpg', img: '/images/examples/cat.jpg', type: 'image' },
           { before: 'scan_001.pdf', after: 'Medical Lab Results.pdf', type: 'pdf' },
           { before: 'forecast_export.xlsx', after: 'Revenue Forecast 2026.xlsx', type: 'sheet' },
           { before: 'policy_draft.docx', after: 'HR Policy Update.docx', type: 'doc' },

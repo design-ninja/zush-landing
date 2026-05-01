@@ -14,7 +14,7 @@ const AutoRenameFiles = () => (
           { before: 'Screenshot 2026-03-20.png', after: 'Figma Login Screen.png', img: '/images/examples/dashboard.jpg', type: 'image' },
           { before: 'IMG_5523.HEIC', after: 'Whiteboard Sprint Plan.heic', img: '/images/examples/workspace.jpg', type: 'image' },
           { before: 'download.pdf', after: 'Amazon Order Receipt.pdf', type: 'pdf' },
-          { before: 'Photo-2026-03-18.jpg', after: 'Italian Restaurant Menu.jpg', img: '/images/examples/food.jpg', type: 'image' },
+          { before: 'Photo-2026-03-18.jpg', after: 'Spiced Steak Dinner.jpg', img: '/images/examples/food.jpg', type: 'image' },
           { before: 'report_draft.docx', after: 'Weekly Status Report.docx', type: 'doc' },
           { before: 'budget_v2.xlsx', after: 'Q2 Marketing Budget.xlsx', type: 'sheet' },
         ],

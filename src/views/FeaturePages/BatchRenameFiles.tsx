@@ -32,7 +32,7 @@ const BatchRenameFiles = () => (
       {
         files: [
           { before: 'PXL_20240720_091234.jpg', after: 'Yellow Wildflowers Field.jpg', img: '/images/examples/flowers.jpg', type: 'image' },
-          { before: 'Photo-2026-03-18.jpg', after: 'Italian Restaurant Menu.jpg', img: '/images/examples/food.jpg', type: 'image' },
+          { before: 'Photo-2026-03-18.jpg', after: 'Spiced Steak Dinner.jpg', img: '/images/examples/food.jpg', type: 'image' },
           { before: 'scan_0019.pdf', after: 'Medical Lab Results.pdf', type: 'pdf' },
           { before: 'forecast_export.xlsx', after: 'Revenue Forecast 2026.xlsx', type: 'sheet' },
           { before: 'client-brief-scan.pdf', after: 'Acme Creative Brief.pdf', type: 'pdf' },
