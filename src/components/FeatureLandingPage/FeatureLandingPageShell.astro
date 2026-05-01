@@ -42,7 +42,8 @@ const currentLocale = localizedProps.locale ?? DEFAULT_LOCALE;
 const currentCopy = getCopy(currentLocale);
 const pageCopy = localizedProps.localizedCopy;
 const useCasesData = getUseCasesForCategory(category, currentLocale);
-const hasCategoryUseCases = useCasesData.items.length > 0;
+const shouldUseLocalizedDefaultUseCases = category === 'general' && currentLocale !== DEFAULT_LOCALE;
+const hasCategoryUseCases = !shouldUseLocalizedDefaultUseCases && useCasesData.items.length > 0;
 const useCasesTitle = hasCategoryUseCases
   ? useCasesData.title
   : currentLocale === DEFAULT_LOCALE
