@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.9.1] - 2026-05-01
+
+### Added
+- Added app interface translations for more languages
+- Added a language preference for the app
+
+### Improved
+- Improved PDF, document, spreadsheet, and presentation analysis
+- Refreshed the app icon
+
+### Fixed
+- Fixed a Keychain prompt that could appear on launch
+- Fixed localized AI error messages and missing UI translations
+
 ## [1.9.0] - 2026-04-27
 
 ### Added
