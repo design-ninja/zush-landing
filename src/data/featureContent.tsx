@@ -154,6 +154,72 @@ const documentUseCases: UseCaseData[] = [
   },
 ];
 
+const pdfUseCases: UseCaseData[] = [
+  {
+    icon: Building2,
+    title: 'Invoice folders',
+    description: (
+      <>
+        Rename vendor invoices by <strong>supplier, invoice date, and billing period</strong> so accounting folders sort cleanly.
+      </>
+    ),
+    color: 'blue',
+  },
+  {
+    icon: Scale,
+    title: 'Contracts & NDAs',
+    description: (
+      <>
+        Turn legal PDFs into names with <strong>counterparty, agreement type, status, and date</strong> instead of "signed.pdf".
+      </>
+    ),
+    color: 'purple',
+  },
+  {
+    icon: Briefcase,
+    title: 'Client paperwork',
+    description: (
+      <>
+        Proposals, scopes, creative briefs, and approvals stay searchable by
+        <strong> client, project, and document role</strong>.
+      </>
+    ),
+    color: 'orange',
+  },
+  {
+    icon: GraduationCap,
+    title: 'Scans & research PDFs',
+    description: (
+      <>
+        Scanned letters, articles, and forms get names based on
+        <strong> visible page content</strong>, even when the file has no useful title.
+      </>
+    ),
+    color: 'green',
+  },
+  {
+    icon: FileText,
+    title: 'Receipts & reimbursements',
+    description: (
+      <>
+        Save expense PDFs as <strong>merchant, purchase type, and date</strong> for fast reimbursement review.
+      </>
+    ),
+    color: 'pink',
+  },
+  {
+    icon: Monitor,
+    title: 'Statements & tax records',
+    description: (
+      <>
+        Bank statements, insurance policies, and tax forms are labeled by
+        <strong> institution, form type, and period</strong>.
+      </>
+    ),
+    color: 'cyan',
+  },
+];
+
 const screenshotUseCases: UseCaseData[] = [
   {
     icon: Code,
@@ -314,8 +380,8 @@ const useCasesMap: Record<FeatureCategory, { title: string; description: string;
   },
   pdf: {
     title: 'Who Uses AI PDF Renaming',
-    description: 'Anyone tired of "scan0023.pdf" — from lawyers to students to accountants',
-    items: documentUseCases,
+    description: 'People who need searchable invoices, contracts, scans, statements, and receipts',
+    items: pdfUseCases,
   },
   screenshot: {
     title: 'Who Uses AI Screenshot Renaming',

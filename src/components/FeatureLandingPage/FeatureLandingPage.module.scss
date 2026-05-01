@@ -133,3 +133,152 @@
   color: var(--muted-foreground);
   font-size: 0.9rem;
 }
+
+.PdfDeepDive,
+.PdfComparison {
+  padding: 4rem 0;
+
+  @include mobile {
+    padding: 2.5rem 0;
+  }
+}
+
+.PdfDeepDive {
+  background: var(--muted);
+
+  &__Header {
+    max-width: 760px;
+    margin: 0 auto 2.25rem;
+    text-align: center;
+  }
+
+  &__Eyebrow {
+    margin: 0 0 0.75rem;
+    color: var(--primary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  &__Intro {
+    margin: 1rem auto 0;
+    color: var(--muted-foreground);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+}
+
+.PdfRecipeGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+
+  @include tablet {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.PdfRecipe {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  min-width: 0;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+
+  &__Title {
+    color: var(--foreground);
+    font-weight: 700;
+  }
+
+  &__Names {
+    display: grid;
+    gap: 0.45rem;
+    min-width: 0;
+    color: var(--muted-foreground);
+    font-family: $font-mono;
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+
+  &__Before,
+  &__After {
+    display: block;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  &__Before {
+    color: var(--muted-foreground);
+    text-decoration: line-through;
+  }
+
+  &__After {
+    color: var(--foreground);
+    font-weight: 700;
+  }
+
+  &__Arrow {
+    color: var(--primary);
+  }
+
+  p {
+    margin: 0;
+    color: var(--muted-foreground);
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+}
+
+.PdfComparisonTable {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+
+  &__Head,
+  &__Row {
+    display: grid;
+    grid-template-columns: 0.85fr 1fr 1.45fr;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+    }
+  }
+
+  &__Head {
+    color: var(--foreground);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    background: var(--muted);
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__Row {
+    color: var(--muted-foreground);
+    line-height: 1.55;
+
+    & + & {
+      border-top: 1px solid var(--border);
+    }
+
+    strong {
+      color: var(--foreground);
+    }
+  }
+}
