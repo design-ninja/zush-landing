@@ -157,7 +157,16 @@
     }
 
     &__SelectButton {
-        margin-bottom: 1.25rem;
+        margin-bottom: 1.15rem;
+    }
+
+    &__ChipGroups {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.05rem;
+        max-width: 25.5rem;
+        margin: 0.25rem 0 1.05rem;
     }
 
     &__Chips {
@@ -165,8 +174,8 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 0.45rem;
-        max-width: 25rem;
-        margin: 0.35rem 0 1.05rem;
+        max-width: 25.5rem;
+        margin: 0;
 
         span {
             display: inline-flex;
@@ -177,7 +186,7 @@
             background: var(--primary-soft);
             color: var(--primary);
             font-size: 0.76rem;
-            font-weight: 800;
+            font-weight: 500;
         }
     }
 
@@ -246,6 +255,7 @@
         flex-shrink: 0;
 
         img {
+            display: block;
             width: 100%;
             height: 100%;
             object-fit: cover;

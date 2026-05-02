@@ -76,12 +76,24 @@ interface HeroRenameDemoProps {
 
 const MAX_FILES = 5;
 const MAX_IMAGE_SOURCE_BYTES = 30 * 1024 * 1024;
+const MAX_HEIC_SOURCE_BYTES = 80 * 1024 * 1024;
+const MAX_TIFF_SOURCE_BYTES = 120 * 1024 * 1024;
+const MAX_RAW_SOURCE_BYTES = 250 * 1024 * 1024;
 const MAX_TEXT_SOURCE_BYTES = 25 * 1024 * 1024;
 const MAX_PDF_SOURCE_BYTES = 250 * 1024 * 1024;
 const MAX_OFFICE_SOURCE_BYTES = 250 * 1024 * 1024;
+const MAX_LEGACY_OFFICE_SCAN_BYTES = 30 * 1024 * 1024;
+const MAX_TIFF_PIXELS = 36_000_000;
+const MAX_EMBEDDED_JPEG_BYTES = 42 * 1024 * 1024;
+const MAX_RAW_DECODE_PIXELS = 4_000_000;
+const MAX_JPEG_CANDIDATES = 14;
 const MAX_TEXT_CHARS = 12_000;
 const MAX_IMAGE_SIDE = 720;
 const MAX_DOCUMENT_IMAGES = 3;
+const PREVIEW_THUMBNAIL_WIDTH = 360;
+const PREVIEW_THUMBNAIL_HEIGHT = 272;
+const PREVIEW_THUMBNAIL_BACKGROUND = '#111117';
+const ALPHA_CROP_SAMPLE_SIDE = 420;
 
 const IMAGE_EXTENSIONS = new Set([
   'png',
@@ -92,22 +104,69 @@ const IMAGE_EXTENSIONS = new Set([
   'bmp',
   'tif',
   'tiff',
+  'heic',
+  'heif',
   'svg',
 ]);
+const RAW_EXTENSIONS = new Set([
+  'cr2',
+  'cr3',
+  'nef',
+  'arw',
+  'dng',
+  'orf',
+  'raf',
+  'rw2',
+  'pef',
+  'srw',
+  'sr2',
+  'raw',
+]);
+const HEIC_EXTENSIONS = new Set(['heic', 'heif']);
+const TIFF_EXTENSIONS = new Set(['tif', 'tiff']);
 const TEXT_EXTENSIONS = new Set(['txt', 'md', 'json', 'eml', 'csv']);
-const DOCUMENT_EXTENSIONS = new Set(['pdf', 'docx', 'pptx', 'xlsx']);
+const DOCUMENT_EXTENSIONS = new Set(['pdf', 'doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx']);
 
-const SUPPORTED_CHIPS = [
-  '.png',
-  '.jpg',
-  '.webp',
-  '.svg',
-  '.pdf',
-  '.docx',
-  '.xlsx',
-  '.pptx',
-  '.txt',
-  '.csv',
+const SUPPORTED_CHIP_GROUPS = [
+  [
+    '.png',
+    '.jpg',
+    '.jpeg',
+    '.webp',
+    '.gif',
+    '.bmp',
+    '.tiff',
+    '.tif',
+    '.heic',
+    '.heif',
+    '.svg',
+    '.cr2',
+    '.cr3',
+    '.nef',
+    '.arw',
+    '.dng',
+    '.orf',
+    '.raf',
+    '.rw2',
+    '.pef',
+    '.srw',
+    '.sr2',
+    '.raw',
+  ],
+  [
+    '.txt',
+    '.md',
+    '.json',
+    '.eml',
+    '.csv',
+    '.doc',
+    '.docx',
+    '.ppt',
+    '.pptx',
+    '.xls',
+    '.xlsx',
+    '.pdf',
+  ],
 ];
 const SPINNER_SEGMENTS = Array.from({ length: 12 }, (_, index) => index);
 
@@ -115,8 +174,11 @@ const extensionIconMap = {
   image: FileImage,
   text: FileText,
   pdf: FileType2,
+  doc: FileText,
   docx: FileText,
+  ppt: Presentation,
   pptx: Presentation,
+  xls: FileSpreadsheet,
   xlsx: FileSpreadsheet,
 } as const;
 
@@ -130,13 +192,16 @@ function getExtension(file: File): string {
 }
 
 function inferContentKind(extension: string): ContentKind | null {
-  if (IMAGE_EXTENSIONS.has(extension)) return 'image';
+  if (IMAGE_EXTENSIONS.has(extension) || RAW_EXTENSIONS.has(extension)) return 'image';
   if (TEXT_EXTENSIONS.has(extension)) return 'text';
   if (DOCUMENT_EXTENSIONS.has(extension)) return 'document';
   return null;
 }
 
 function getMaxSourceBytes(item: DemoFile): number {
+  if (RAW_EXTENSIONS.has(item.extension)) return MAX_RAW_SOURCE_BYTES;
+  if (HEIC_EXTENSIONS.has(item.extension)) return MAX_HEIC_SOURCE_BYTES;
+  if (TIFF_EXTENSIONS.has(item.extension)) return MAX_TIFF_SOURCE_BYTES;
   if (item.contentKind === 'image') return MAX_IMAGE_SOURCE_BYTES;
   if (item.contentKind === 'text') return MAX_TEXT_SOURCE_BYTES;
   if (item.extension === 'pdf') return MAX_PDF_SOURCE_BYTES;
@@ -156,6 +221,97 @@ function dataUrlToBase64(dataUrl: string): string {
 
 function canvasToJpegDataUrl(canvas: HTMLCanvasElement): string {
   return canvas.toDataURL('image/jpeg', 0.72);
+}
+
+interface SourceCrop {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
+function getVisibleSourceCrop(
+  source: CanvasImageSource,
+  sourceWidth: number,
+  sourceHeight: number,
+): SourceCrop {
+  const fullCrop = { x: 0, y: 0, width: sourceWidth, height: sourceHeight };
+  const sampleScale = Math.min(1, ALPHA_CROP_SAMPLE_SIDE / Math.max(sourceWidth, sourceHeight));
+  const sampleWidth = Math.max(1, Math.round(sourceWidth * sampleScale));
+  const sampleHeight = Math.max(1, Math.round(sourceHeight * sampleScale));
+  const sampleCanvas = document.createElement('canvas');
+  sampleCanvas.width = sampleWidth;
+  sampleCanvas.height = sampleHeight;
+
+  const context = sampleCanvas.getContext('2d', { willReadFrequently: true });
+  if (!context) return fullCrop;
+
+  try {
+    context.clearRect(0, 0, sampleWidth, sampleHeight);
+    context.drawImage(source, 0, 0, sampleWidth, sampleHeight);
+
+    const pixels = context.getImageData(0, 0, sampleWidth, sampleHeight).data;
+    let minX = sampleWidth;
+    let minY = sampleHeight;
+    let maxX = -1;
+    let maxY = -1;
+
+    for (let y = 0; y < sampleHeight; y += 1) {
+      for (let x = 0; x < sampleWidth; x += 1) {
+        const alpha = pixels[(y * sampleWidth + x) * 4 + 3];
+        if (alpha <= 8) continue;
+        minX = Math.min(minX, x);
+        minY = Math.min(minY, y);
+        maxX = Math.max(maxX, x);
+        maxY = Math.max(maxY, y);
+      }
+    }
+
+    if (maxX < minX || maxY < minY) return fullCrop;
+
+    const padding = 2 / sampleScale;
+    const x = Math.max(0, Math.floor(minX / sampleScale - padding));
+    const y = Math.max(0, Math.floor(minY / sampleScale - padding));
+    const right = Math.min(sourceWidth, Math.ceil((maxX + 1) / sampleScale + padding));
+    const bottom = Math.min(sourceHeight, Math.ceil((maxY + 1) / sampleScale + padding));
+    const width = Math.max(1, right - x);
+    const height = Math.max(1, bottom - y);
+
+    if (width / sourceWidth > 0.985 && height / sourceHeight > 0.985) {
+      return fullCrop;
+    }
+
+    return { x, y, width, height };
+  } catch {
+    return fullCrop;
+  }
+}
+
+function createCoverThumbnailDataUrl(
+  source: CanvasImageSource,
+  sourceWidth: number,
+  sourceHeight: number,
+): string {
+  const crop = getVisibleSourceCrop(source, sourceWidth, sourceHeight);
+  const canvas = document.createElement('canvas');
+  canvas.width = PREVIEW_THUMBNAIL_WIDTH;
+  canvas.height = PREVIEW_THUMBNAIL_HEIGHT;
+
+  const context = canvas.getContext('2d');
+  if (!context) throw new Error('Canvas is not available');
+
+  const scale = Math.max(canvas.width / crop.width, canvas.height / crop.height);
+  const width = crop.width * scale;
+  const height = crop.height * scale;
+  const x = (canvas.width - width) / 2;
+  const y = (canvas.height - height) / 2;
+
+  context.fillStyle = PREVIEW_THUMBNAIL_BACKGROUND;
+  context.fillRect(0, 0, canvas.width, canvas.height);
+  context.imageSmoothingQuality = 'high';
+  context.drawImage(source, crop.x, crop.y, crop.width, crop.height, x, y, width, height);
+
+  return canvasToJpegDataUrl(canvas);
 }
 
 function normalizeWhitespace(value: string): string {
@@ -211,23 +367,350 @@ async function imageBlobToJpegPreview(blob: Blob) {
   return {
     dataUrl,
     base64: dataUrlToBase64(dataUrl),
+    thumbnailDataUrl: createCoverThumbnailDataUrl(image, sourceWidth, sourceHeight),
   };
 }
 
-async function prepareImageFile(file: File): Promise<PreparedFile['payload'] & { thumbnailDataUrl: string }> {
-  if (file.size > MAX_IMAGE_SOURCE_BYTES) {
+function rgbaToJpegPreview(rgba: Uint8Array, sourceWidth: number, sourceHeight: number) {
+  if (!sourceWidth || !sourceHeight || sourceWidth * sourceHeight > MAX_TIFF_PIXELS) {
     throw new Error('source-too-large');
   }
 
-  const preview = await imageBlobToJpegPreview(file);
+  const scale = Math.min(1, MAX_IMAGE_SIDE / Math.max(sourceWidth, sourceHeight));
+  const width = Math.max(1, Math.round(sourceWidth * scale));
+  const height = Math.max(1, Math.round(sourceHeight * scale));
+  const sourceCanvas = document.createElement('canvas');
+  sourceCanvas.width = sourceWidth;
+  sourceCanvas.height = sourceHeight;
+
+  const sourceContext = sourceCanvas.getContext('2d');
+  if (!sourceContext) throw new Error('Canvas is not available');
+  sourceContext.putImageData(
+    new ImageData(
+      new Uint8ClampedArray(rgba),
+      sourceWidth,
+      sourceHeight,
+    ),
+    0,
+    0,
+  );
+
+  const canvas = document.createElement('canvas');
+  canvas.width = width;
+  canvas.height = height;
+  const context = canvas.getContext('2d');
+  if (!context) throw new Error('Canvas is not available');
+  context.fillStyle = '#ffffff';
+  context.fillRect(0, 0, width, height);
+  context.drawImage(sourceCanvas, 0, 0, width, height);
+
+  const dataUrl = canvasToJpegDataUrl(canvas);
+  return {
+    dataUrl,
+    base64: dataUrlToBase64(dataUrl),
+    thumbnailDataUrl: createCoverThumbnailDataUrl(sourceCanvas, sourceWidth, sourceHeight),
+  };
+}
+
+type ImagePreview = ReturnType<typeof rgbaToJpegPreview>;
+
+function uint8ArrayToArrayBuffer(value: Uint8Array): ArrayBuffer {
+  const copy = new Uint8Array(value.byteLength);
+  copy.set(value);
+  return copy.buffer;
+}
+
+type UtifIfd = Record<string, unknown> & {
+  width?: number;
+  height?: number;
+  data?: unknown;
+};
+
+interface UtifModule {
+  decode: (buffer: ArrayBuffer) => UtifIfd[];
+  decodeImage: (buffer: ArrayBuffer, ifd: UtifIfd) => void;
+  toRGBA8: (ifd: UtifIfd) => Uint8Array;
+}
+
+interface JpegCandidate {
+  offset: number;
+  length: number;
+  source: 'tiff-tag' | 'scan';
+}
+
+function numbersFromTag(value: unknown): number[] {
+  if (typeof value === 'number') return [value];
+  if (Array.isArray(value)) return value.filter((item): item is number => typeof item === 'number');
+  if (ArrayBuffer.isView(value) && 'length' in value) {
+    return Array.from(value as unknown as ArrayLike<number>).filter((item) => Number.isFinite(item));
+  }
+  return [];
+}
+
+function firstPositiveInteger(value: unknown): number | null {
+  const number = numbersFromTag(value).find((item) => Number.isInteger(item) && item > 0);
+  return typeof number === 'number' ? number : null;
+}
+
+async function getUtif(): Promise<UtifModule> {
+  const module = await import('utif');
+  return (module.default ?? module) as UtifModule;
+}
+
+function looksLikeJpegStart(bytes: Uint8Array, offset: number): boolean {
+  if (offset < 0 || offset + 3 >= bytes.length) return false;
+  const marker = bytes[offset + 3];
+  return bytes[offset] === 0xff &&
+    bytes[offset + 1] === 0xd8 &&
+    bytes[offset + 2] === 0xff &&
+    marker >= 0xc0 &&
+    marker <= 0xfe &&
+    marker !== 0xd8 &&
+    marker !== 0xd9;
+}
+
+function pushJpegCandidate(
+  candidates: JpegCandidate[],
+  seen: Set<string>,
+  bytes: Uint8Array,
+  offset: number,
+  length: number,
+  source: JpegCandidate['source'],
+) {
+  if (
+    !Number.isInteger(offset) ||
+    !Number.isInteger(length) ||
+    offset < 0 ||
+    length <= 2048 ||
+    length > MAX_EMBEDDED_JPEG_BYTES ||
+    offset + length > bytes.length ||
+    !looksLikeJpegStart(bytes, offset)
+  ) {
+    return;
+  }
+
+  const key = `${offset}:${length}`;
+  if (seen.has(key)) return;
+  seen.add(key);
+  candidates.push({ offset, length, source });
+}
+
+function pushJpegCandidatesFromTags(
+  candidates: JpegCandidate[],
+  seen: Set<string>,
+  bytes: Uint8Array,
+  offsetValue: unknown,
+  lengthValue: unknown,
+) {
+  const offsets = numbersFromTag(offsetValue);
+  const lengths = numbersFromTag(lengthValue);
+  const count = Math.min(offsets.length, lengths.length);
+
+  for (let index = 0; index < count; index += 1) {
+    pushJpegCandidate(candidates, seen, bytes, offsets[index], lengths[index], 'tiff-tag');
+  }
+}
+
+function extractTiffTaggedJpegCandidates(bytes: Uint8Array, ifds: UtifIfd[]): JpegCandidate[] {
+  const candidates: JpegCandidate[] = [];
+  const seen = new Set<string>();
+
+  for (const ifd of ifds) {
+    pushJpegCandidatesFromTags(candidates, seen, bytes, ifd.t513, ifd.t514);
+    pushJpegCandidatesFromTags(candidates, seen, bytes, ifd.t273, ifd.t279);
+    pushJpegCandidatesFromTags(candidates, seen, bytes, ifd.t324, ifd.t325);
+  }
+
+  return candidates;
+}
+
+function rankJpegCandidates(candidates: JpegCandidate[]): JpegCandidate[] {
+  return [...candidates]
+    .sort((a, b) => {
+      if (a.source !== b.source) return a.source === 'tiff-tag' ? -1 : 1;
+      return b.length - a.length;
+    })
+    .slice(0, MAX_JPEG_CANDIDATES);
+}
+
+function jpegCandidateToBlob(bytes: Uint8Array, candidate: JpegCandidate): Blob {
+  const jpeg = bytes.slice(candidate.offset, candidate.offset + candidate.length);
+  return new Blob([uint8ArrayToArrayBuffer(jpeg)], { type: 'image/jpeg' });
+}
+
+async function jpegCandidateToPreview(bytes: Uint8Array, candidate: JpegCandidate): Promise<ImagePreview | null> {
+  try {
+    return await imageBlobToJpegPreview(jpegCandidateToBlob(bytes, candidate));
+  } catch {
+    return null;
+  }
+}
+
+function findNextJpegEnd(bytes: Uint8Array, start: number): number {
+  for (let index = start + 2; index < bytes.length - 1; index += 1) {
+    if (bytes[index] === 0xff && bytes[index + 1] === 0xd9) {
+      return index + 2;
+    }
+  }
+
+  return -1;
+}
+
+function extractScannedJpegCandidates(bytes: Uint8Array, seen: Set<string>): JpegCandidate[] {
+  const candidates: JpegCandidate[] = [];
+
+  for (let index = 0; index < bytes.length - 1; index += 1) {
+    if (!looksLikeJpegStart(bytes, index)) continue;
+
+    const end = findNextJpegEnd(bytes, index);
+    if (end === -1) break;
+
+    const length = end - index;
+    pushJpegCandidate(candidates, seen, bytes, index, length, 'scan');
+
+    index = end - 1;
+  }
+
+  return candidates;
+}
+
+async function imagePreviewFromEmbeddedJpeg(buffer: ArrayBuffer): Promise<ImagePreview | null> {
+  const bytes = new Uint8Array(buffer);
+  const seen = new Set<string>();
+  let candidates: JpegCandidate[] = [];
+
+  try {
+    const UTIF = await getUtif();
+    const ifds = UTIF.decode(buffer);
+    candidates = candidates.concat(extractTiffTaggedJpegCandidates(bytes, ifds));
+    candidates.forEach((candidate) => seen.add(`${candidate.offset}:${candidate.length}`));
+  } catch {
+    // Some RAW containers are not TIFF-ish. Fall back to scanning for embedded JPEG previews.
+  }
+
+  candidates = candidates.concat(extractScannedJpegCandidates(bytes, seen));
+
+  for (const candidate of rankJpegCandidates(candidates)) {
+    const preview = await jpegCandidateToPreview(bytes, candidate);
+    if (preview) return preview;
+  }
+
+  return null;
+}
+
+async function decodeTiffIfdPreview(buffer: ArrayBuffer, maxPixels: number): Promise<ImagePreview | null> {
+  try {
+    const UTIF = await getUtif();
+    const ifds = UTIF.decode(buffer)
+      .map((ifd) => {
+        const width = firstPositiveInteger(ifd.t256) ?? ifd.width ?? 0;
+        const height = firstPositiveInteger(ifd.t257) ?? ifd.height ?? 0;
+        return { ifd, width, height, pixels: width * height };
+      })
+      .filter(({ width, height, pixels }) => width > 0 && height > 0 && pixels > 0 && pixels <= maxPixels)
+      .sort((a, b) => b.pixels - a.pixels);
+
+    for (const { ifd } of ifds) {
+      try {
+        UTIF.decodeImage(buffer, ifd);
+        const rgba = UTIF.toRGBA8(ifd);
+        return rgbaToJpegPreview(rgba, ifd.width ?? 0, ifd.height ?? 0);
+      } catch {
+        // Keep trying smaller preview IFDs; some RAW IFDs use unsupported compression.
+      }
+    }
+  } catch {
+    return null;
+  }
+
+  return null;
+}
+
+async function tiffBlobToJpegPreview(file: File) {
+  try {
+    return await imageBlobToJpegPreview(file);
+  } catch {
+    // Most browsers except Safari do not decode TIFF natively, so use UTIF below.
+  }
+
+  const buffer = await file.arrayBuffer();
+  const UTIF = await getUtif();
+  const ifds = UTIF.decode(buffer);
+  const imageIfd = ifds.find((ifd) => {
+    const width = firstPositiveInteger(ifd.t256);
+    const height = firstPositiveInteger(ifd.t257);
+    return width && height && width * height <= MAX_TIFF_PIXELS;
+  }) ?? ifds[0];
+
+  if (!imageIfd) throw new Error('empty-preview');
+
+  try {
+    UTIF.decodeImage(buffer, imageIfd);
+    const rgba = UTIF.toRGBA8(imageIfd);
+    return rgbaToJpegPreview(rgba, imageIfd.width ?? 0, imageIfd.height ?? 0);
+  } catch {
+    const embeddedPreview = await imagePreviewFromEmbeddedJpeg(buffer);
+    if (!embeddedPreview) throw new Error('empty-preview');
+    return embeddedPreview;
+  }
+}
+
+async function heicBlobToJpegPreview(file: File) {
+  const { heicTo } = await import('heic-to/csp');
+  const jpeg = await heicTo({
+    blob: file,
+    type: 'image/jpeg',
+    quality: 0.72,
+  });
+
+  if (!(jpeg instanceof Blob)) {
+    throw new Error('empty-preview');
+  }
+
+  return imageBlobToJpegPreview(jpeg);
+}
+
+async function rawBlobToJpegPreview(file: File) {
+  const buffer = await file.arrayBuffer();
+  const embeddedPreview = await imagePreviewFromEmbeddedJpeg(buffer);
+  if (embeddedPreview) return embeddedPreview;
+
+  const decodedPreview = await decodeTiffIfdPreview(buffer, MAX_RAW_DECODE_PIXELS);
+  if (decodedPreview) return decodedPreview;
+
+  throw new Error('empty-preview');
+}
+
+async function prepareImageFile(file: File): Promise<PreparedFile['payload'] & { thumbnailDataUrl: string }> {
+  const extension = getExtension(file);
+  if (file.size > getMaxSourceBytes({
+    id: '',
+    file,
+    originalName: file.name,
+    extension,
+    contentKind: 'image',
+    mimeType: file.type || 'application/octet-stream',
+    status: 'queued',
+  })) {
+    throw new Error('source-too-large');
+  }
+
+  const preview = HEIC_EXTENSIONS.has(extension)
+    ? await heicBlobToJpegPreview(file)
+    : RAW_EXTENSIONS.has(extension)
+    ? await rawBlobToJpegPreview(file)
+    : TIFF_EXTENSIONS.has(extension)
+    ? await tiffBlobToJpegPreview(file)
+    : await imageBlobToJpegPreview(file);
+
   return {
     name: file.name,
-    original_extension: getExtension(file),
+    original_extension: extension,
     mime_type: file.type || 'application/octet-stream',
     content_kind: 'image',
     image: preview.base64,
     image_mime_type: 'image/jpeg',
-    thumbnailDataUrl: preview.dataUrl,
+    thumbnailDataUrl: preview.thumbnailDataUrl,
   };
 }
 
@@ -368,7 +851,126 @@ function extractSpreadsheetText(workbookXml: string, sharedStringsXml: string, s
   ].filter(Boolean).join('\n'));
 }
 
+async function extractXlsText(file: File): Promise<string> {
+  const XLSX = await import('xlsx');
+  const workbook = XLSX.read(await file.arrayBuffer(), {
+    type: 'array',
+    sheetRows: 120,
+    cellText: true,
+    cellFormula: false,
+  });
+
+  return truncateText(
+    workbook.SheetNames.slice(0, 8)
+      .map((sheetName) => {
+        const sheet = workbook.Sheets[sheetName];
+        const rows = XLSX.utils.sheet_to_csv(sheet, {
+          FS: ' | ',
+          RS: '\n',
+          blankrows: false,
+        });
+        return [`Sheet: ${sheetName}`, rows].filter(Boolean).join('\n');
+      })
+      .filter(Boolean)
+      .join('\n'),
+  );
+}
+
+function isReadableAsciiByte(byte: number) {
+  return byte === 9 || byte === 10 || byte === 13 || (byte >= 32 && byte <= 126);
+}
+
+function isReadableUtf16CodeUnit(codeUnit: number) {
+  return codeUnit === 9 ||
+    codeUnit === 10 ||
+    codeUnit === 13 ||
+    (codeUnit >= 32 && codeUnit <= 0xd7ff) ||
+    (codeUnit >= 0xe000 && codeUnit <= 0xfffd);
+}
+
+function hasUsefulLetters(value: string) {
+  const letters = value.match(/\p{L}/gu)?.length ?? 0;
+  return letters >= 4;
+}
+
+function collectAsciiStrings(bytes: Uint8Array): string[] {
+  const strings: string[] = [];
+  let current = '';
+
+  for (const byte of bytes) {
+    if (isReadableAsciiByte(byte)) {
+      current += String.fromCharCode(byte);
+      continue;
+    }
+
+    const normalized = normalizeWhitespace(current);
+    if (normalized.length >= 4 && hasUsefulLetters(normalized)) {
+      strings.push(normalized);
+    }
+    current = '';
+  }
+
+  const normalized = normalizeWhitespace(current);
+  if (normalized.length >= 4 && hasUsefulLetters(normalized)) {
+    strings.push(normalized);
+  }
+
+  return strings;
+}
+
+function collectUtf16LeStrings(bytes: Uint8Array): string[] {
+  const strings: string[] = [];
+
+  for (const startOffset of [0, 1]) {
+    let current = '';
+
+    for (let index = startOffset; index < bytes.length - 1; index += 2) {
+      const codeUnit = bytes[index] | (bytes[index + 1] << 8);
+      if (isReadableUtf16CodeUnit(codeUnit)) {
+        current += String.fromCharCode(codeUnit);
+        continue;
+      }
+
+      const normalized = normalizeWhitespace(current);
+      if (normalized.length >= 4 && hasUsefulLetters(normalized)) {
+        strings.push(normalized);
+      }
+      current = '';
+    }
+
+    const normalized = normalizeWhitespace(current);
+    if (normalized.length >= 4 && hasUsefulLetters(normalized)) {
+      strings.push(normalized);
+    }
+  }
+
+  return strings;
+}
+
+async function extractLegacyOfficeText(file: File): Promise<string> {
+  const buffer = await file.slice(0, MAX_LEGACY_OFFICE_SCAN_BYTES).arrayBuffer();
+  const bytes = new Uint8Array(buffer);
+  const seen = new Set<string>();
+  const strings = [...collectUtf16LeStrings(bytes), ...collectAsciiStrings(bytes)]
+    .map((value) => normalizeWhitespace(value))
+    .filter((value) => {
+      if (value.length < 4 || value.length > 800 || seen.has(value)) return false;
+      seen.add(value);
+      return true;
+    });
+
+  return truncateText(strings.join('\n'));
+}
+
 async function extractOfficeText(file: File, extension: string): Promise<string> {
+  if (extension === 'xls') {
+    return extractXlsText(file);
+  }
+
+  if (extension === 'doc' || extension === 'ppt') {
+    return extractLegacyOfficeText(file);
+  }
+
   const zip = await JSZip.loadAsync(await file.arrayBuffer());
 
   if (extension === 'docx') {
@@ -559,7 +1161,7 @@ function errorToCopy(error: unknown, copy: RenameDemoCopy, extension?: string) {
     return copy.errors.fileTooLarge;
   }
 
-  if (message === 'empty-text') {
+  if (message === 'empty-text' || message === 'empty-preview') {
     return copy.errors.emptyPreview;
   }
 
@@ -579,8 +1181,11 @@ function getFileIcon(file: DemoFile) {
   if (file.contentKind === 'image') return extensionIconMap.image;
   if (file.contentKind === 'text') return extensionIconMap.text;
   if (file.extension === 'pdf') return extensionIconMap.pdf;
+  if (file.extension === 'doc') return extensionIconMap.doc;
   if (file.extension === 'docx') return extensionIconMap.docx;
+  if (file.extension === 'ppt') return extensionIconMap.ppt;
   if (file.extension === 'pptx') return extensionIconMap.pptx;
+  if (file.extension === 'xls') return extensionIconMap.xls;
   if (file.extension === 'xlsx') return extensionIconMap.xlsx;
   return FileText;
 }
@@ -804,7 +1409,7 @@ const HeroRenameDemo = ({
           className={styles.RenameDemo__Input}
           type='file'
           multiple
-          accept='.png,.jpg,.jpeg,.webp,.gif,.bmp,.tif,.tiff,.svg,.pdf,.docx,.pptx,.xlsx,.txt,.md,.json,.eml,.csv'
+          accept='.png,.jpg,.jpeg,.webp,.gif,.bmp,.tif,.tiff,.heic,.heif,.svg,.cr2,.cr3,.nef,.arw,.dng,.orf,.raf,.rw2,.pef,.srw,.sr2,.raw,.pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.txt,.md,.json,.eml,.csv'
           onChange={handleInputChange}
         />
 
@@ -816,7 +1421,7 @@ const HeroRenameDemo = ({
             <Button
               as='button'
               type='button'
-              variant='ghost'
+              variant='primary'
               size='sm'
               className={styles.RenameDemo__SelectButton}
               onClick={() => inputRef.current?.click()}
@@ -824,9 +1429,13 @@ const HeroRenameDemo = ({
             >
               {copy.selectFiles}
             </Button>
-            <div className={styles.RenameDemo__Chips} aria-label={copy.supportedFormatsLabel}>
-              {SUPPORTED_CHIPS.map((chip) => (
-                <span key={chip}>{chip}</span>
+            <div className={styles.RenameDemo__ChipGroups} aria-label={copy.supportedFormatsLabel}>
+              {SUPPORTED_CHIP_GROUPS.map((chips) => (
+                <div key={chips.join('-')} className={styles.RenameDemo__Chips}>
+                  {chips.map((chip) => (
+                    <span key={chip}>{chip}</span>
+                  ))}
+                </div>
               ))}
             </div>
           </div>
