@@ -145,11 +145,11 @@ function parseArgs(argv) {
 }
 
 function getOAuthClient() {
-  const clientId = process.env.YOUTUBE_CLIENT_ID;
-  const clientSecret = process.env.YOUTUBE_CLIENT_SECRET;
+  const clientId = process.env.YOUTUBE_CLIENT_ID || process.env.GOOGLE_CLIENT_ID;
+  const clientSecret = process.env.YOUTUBE_CLIENT_SECRET || process.env.GOOGLE_CLIENT_SECRET;
 
   if (!clientId || !clientSecret) {
-    fail('Set YOUTUBE_CLIENT_ID and YOUTUBE_CLIENT_SECRET in .env.local, .env.youtube.local, or your shell.');
+    fail('Set YOUTUBE_CLIENT_ID/YOUTUBE_CLIENT_SECRET or GOOGLE_CLIENT_ID/GOOGLE_CLIENT_SECRET in .env, .env.local, .env.youtube.local, or your shell.');
   }
 
   return { clientId, clientSecret };
