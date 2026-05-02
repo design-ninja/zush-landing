@@ -2,6 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Hero from '@/components/Hero';
 import Videos from '@/components/Videos';
+import SpeedComparison from '@/components/SpeedComparison';
 import Features from '@/components/Features/Features.astro';
 import SupportedFormats from '@/components/SupportedFormats';
 import UseCases from '@/components/UseCases';
@@ -126,6 +127,7 @@ const localizedJsonLd = {
     downloadLabel={copy.header.download}
     downloadMenu={copy.downloadMenu}
   />
+  <SpeedComparison client:visible copy={copy.home.speedComparison} />
   <WhyZush copy={copy.home.whyZush} />
   <CrossPlatformBanner locale={locale} />
   <UseCases title={copy.home.useCasesTitle} description={copy.home.useCasesDescription} copy={copy.home.useCases} />

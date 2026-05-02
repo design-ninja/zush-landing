@@ -1,0 +1,571 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.SpeedComparison {
+  padding: 6.25rem 0;
+
+  &__Container {
+    @include container;
+  }
+}
+
+.Header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+
+  &__Eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.85rem;
+    border-radius: 9999px;
+    background: var(--primary-soft);
+    color: var(--primary);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  &__Title {
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  &__TitleAccent {
+    color: var(--secondary);
+  }
+
+  &__Description {
+    max-width: 42rem;
+    margin: 0;
+    line-height: 1.6;
+  }
+}
+
+.Grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+
+  @include small {
+    grid-template-columns: 1fr;
+  }
+}
+
+.Card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.75rem;
+  border-radius: 2rem;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  overflow: hidden;
+
+  @include mobile {
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+  }
+
+  &_zush {
+    background: color-mix(in srgb, var(--secondary), var(--background) 88%);
+    border: 2px solid color-mix(in srgb, var(--secondary), transparent 55%);
+    box-shadow: 0 1.25rem 2.5rem -1rem color-mix(in srgb, var(--secondary), transparent 80%);
+  }
+
+  &_rival {
+    background: var(--muted);
+  }
+
+  &__Header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  &__Brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    min-width: 0;
+  }
+
+  &__BrandLogo {
+    display: block;
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.55rem;
+    overflow: hidden;
+    @include corner-shape-squircle;
+    box-shadow: 0 0.25rem 0.75rem -0.25rem color-mix(in srgb, var(--secondary), transparent 70%);
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__BrandMark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    flex-shrink: 0;
+    border-radius: 0.55rem;
+    background: var(--tertiary);
+    color: var(--tertiary-foreground);
+    font-family: $font-family-heading;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  &__BrandName {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--foreground);
+  }
+
+  &__Time {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-family: $font-family-heading;
+    color: var(--secondary);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+
+    &_rival {
+      color: color-mix(in srgb, var(--foreground), transparent 30%);
+    }
+  }
+
+  &__TimeValue {
+    font-size: clamp(2.75rem, 6vw, 4rem);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+    transition: filter 0.18s ease, transform 0.18s ease;
+
+    &_skipping {
+      filter: blur(1.5px);
+      transform: scaleX(1.06);
+      animation: SpeedComparison_skipPulse 0.4s ease-in-out infinite alternate;
+    }
+  }
+
+  &__TimeCheck {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    background: var(--secondary);
+    color: var(--secondary-foreground);
+    animation: SpeedComparison_pop 0.32s ease-out both;
+  }
+
+  &__Caption {
+    margin: 0;
+    color: var(--muted-foreground);
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+}
+
+.Badge_winner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 9999px;
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.Badge_running {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--secondary), transparent 85%);
+  color: var(--secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.Badge_neutral {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 9999px;
+  background: var(--background);
+  color: var(--muted-foreground);
+  border: 1px solid var(--border);
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.LiveDot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: var(--secondary);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--secondary), transparent 50%);
+  animation: SpeedComparison_pulse 1.4s ease-out infinite;
+}
+
+.SpinIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  animation: SpeedComparison_spin 1.4s linear infinite;
+}
+
+.Media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: #06070a;
+  border: 1px solid var(--border);
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+
+  &__Video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: filter 0.18s ease, transform 0.18s ease;
+
+    &_skipping {
+      filter: blur(2.5px) saturate(1.15);
+      transform: scale(1.015);
+    }
+  }
+
+  &_rival {
+    background: linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--background), var(--muted) 50%) 0%,
+      var(--muted) 100%
+    );
+  }
+
+  &_skipping {
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.18) 0%,
+        rgba(255, 255, 255, 0) 35%,
+        rgba(255, 255, 255, 0) 65%,
+        rgba(255, 255, 255, 0.18) 100%
+      );
+      mix-blend-mode: overlay;
+      animation: SpeedComparison_skipSweep 0.5s linear infinite;
+    }
+  }
+}
+
+.Placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  padding: 1.25rem;
+
+  &__Window {
+    width: 80%;
+    max-width: 24rem;
+    border-radius: 0.85rem;
+    background: var(--background);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: 0 1rem 2.25rem -0.85rem rgba(0, 0, 0, 0.18);
+  }
+
+  &__TitleBar {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 0.75rem;
+    background: color-mix(in srgb, var(--muted), transparent 30%);
+    border-bottom: 1px solid var(--border);
+  }
+
+  &__Dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background: color-mix(in srgb, var(--muted-foreground), transparent 60%);
+  }
+
+  &__TitleText {
+    margin-left: 0.5rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--muted-foreground);
+  }
+
+  &__Body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 1.25rem 1rem;
+  }
+
+  &__Spinner {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 9999px;
+    border: 3px solid color-mix(in srgb, var(--foreground), transparent 88%);
+    border-top-color: var(--foreground);
+    animation: SpeedComparison_spin 1.1s linear infinite;
+    opacity: 0.7;
+
+    &_paused {
+      animation-play-state: paused;
+      opacity: 0.45;
+    }
+  }
+
+  &__Bar {
+    width: 100%;
+    height: 0.4rem;
+    border-radius: 9999px;
+    background: color-mix(in srgb, var(--foreground), transparent 92%);
+    overflow: hidden;
+  }
+
+  &__BarFill {
+    width: 35%;
+    height: 100%;
+    border-radius: inherit;
+    background: color-mix(in srgb, var(--foreground), transparent 60%);
+    animation: SpeedComparison_indeterminate 2.4s ease-in-out infinite;
+
+    &_paused {
+      animation-play-state: paused;
+    }
+  }
+
+  &__Lines {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    gap: 0.45rem;
+
+    span {
+      height: 0.45rem;
+      border-radius: 9999px;
+      background: color-mix(in srgb, var(--foreground), transparent 92%);
+
+      &:nth-child(1) {
+        width: 80%;
+      }
+      &:nth-child(2) {
+        width: 60%;
+      }
+      &:nth-child(3) {
+        width: 70%;
+      }
+    }
+  }
+
+  &__Hint {
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+  }
+}
+
+.Disclaimer {
+  margin: 1.5rem auto 0;
+  max-width: 42rem;
+  text-align: center;
+  font-size: 0.72rem;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--muted-foreground), transparent 25%);
+  letter-spacing: 0.01em;
+}
+
+.Controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+.SkipButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-left: auto;
+  padding: 0.4rem 0.7rem;
+  border-radius: 9999px;
+  background: var(--background);
+  border: 1px solid var(--border);
+  color: var(--muted-foreground);
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: $font-family;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+  animation: SpeedComparison_fadeInUp 0.32s ease-out both;
+
+  &:hover {
+    background: var(--muted);
+    color: var(--foreground);
+    border-color: color-mix(in srgb, var(--foreground), transparent 70%);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+}
+
+.ReplayButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.7rem 1.25rem;
+  border-radius: 9999px;
+  background: var(--background);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+
+  &:hover:not(:disabled) {
+    background: var(--muted);
+    border-color: color-mix(in srgb, var(--foreground), transparent 70%);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+@keyframes SpeedComparison_spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes SpeedComparison_pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--secondary), transparent 50%);
+  }
+  100% {
+    box-shadow: 0 0 0 0.6rem color-mix(in srgb, var(--secondary), transparent 100%);
+  }
+}
+
+@keyframes SpeedComparison_pop {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes SpeedComparison_fadeInUp {
+  from {
+    transform: translateY(0.35rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes SpeedComparison_skipSweep {
+  from {
+    transform: translateX(-30%);
+  }
+  to {
+    transform: translateX(30%);
+  }
+}
+
+@keyframes SpeedComparison_skipPulse {
+  from {
+    opacity: 0.92;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes SpeedComparison_indeterminate {
+  0% {
+    transform: translateX(-110%);
+  }
+  60% {
+    transform: translateX(160%);
+  }
+  100% {
+    transform: translateX(160%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .SpinIcon,
+  .Placeholder__Spinner,
+  .Placeholder__BarFill,
+  .LiveDot,
+  .Card__TimeCheck {
+    animation: none;
+  }
+}
