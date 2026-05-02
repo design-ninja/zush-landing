@@ -14,7 +14,10 @@
     "check:payments": "node scripts/verify-payments.mjs",
     "check:html": "node scripts/check-html-smoke.mjs",
     "check:links": "node scripts/check-internal-links.mjs",
-    "check:seo": "pnpm check:astro && pnpm check:payments && pnpm build && pnpm check:html && pnpm check:links"
+    "check:seo": "pnpm check:astro && pnpm check:payments && pnpm build && pnpm check:html && pnpm check:links",
+    "youtube:auth": "node scripts/youtube-upload.mjs auth",
+    "youtube:dry-run": "node scripts/youtube-upload.mjs dry-run",
+    "youtube:upload": "node scripts/youtube-upload.mjs upload"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
