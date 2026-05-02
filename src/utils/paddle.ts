@@ -29,6 +29,10 @@ interface PaddleEvent {
 
 type PaddleEventListener = (event: PaddleEvent) => void;
 
+interface OpenPaddleCheckoutOptions {
+  onCheckoutOpen?: () => void;
+}
+
 interface CheckoutSessionResponse {
   success: boolean;
   checkout_session: string;
@@ -294,6 +298,7 @@ async function createCheckoutSession(
 export async function openPaddleCheckout(
   deviceId?: string | null,
   priceId?: string | null,
+  options?: OpenPaddleCheckoutOptions,
 ): Promise<boolean> {
   console.log("[Paddle] openPaddleCheckout called:", { deviceId, priceId });
 
@@ -343,6 +348,7 @@ export async function openPaddleCheckout(
   }
 
   console.log("[Paddle] Opening checkout with options:", checkoutOptions);
+  options?.onCheckoutOpen?.();
   window.Paddle.Checkout.open(checkoutOptions);
   return true;
 }

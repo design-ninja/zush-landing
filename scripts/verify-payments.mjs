@@ -156,8 +156,13 @@ function verifyPricingCheckoutFlow() {
   );
   assertMatch(
     src,
-    /openPaddleCheckout\(deviceId,\s*priceId\)/,
+    /openPaddleCheckout\(deviceId,\s*priceId,\s*\{/,
     "Pricing checkout no longer opens Paddle with the selected price",
+  );
+  assertMatch(
+    src,
+    /onCheckoutOpen:\s*resetCheckoutButton/,
+    "Pricing checkout no longer resets the loading state as Paddle opens",
   );
   assertMatch(
     layoutSrc,

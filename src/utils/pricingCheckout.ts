@@ -91,7 +91,9 @@ export function bindPricingCheckout(): void {
           resetCheckoutButton();
         }
       });
-      await openPaddleCheckout(deviceId, priceId);
+      await openPaddleCheckout(deviceId, priceId, {
+        onCheckoutOpen: resetCheckoutButton,
+      });
     } catch (error) {
       console.error('[Pricing] Failed to open checkout:', error);
     } finally {
