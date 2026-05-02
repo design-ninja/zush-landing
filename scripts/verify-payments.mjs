@@ -76,6 +76,11 @@ function verifyPaddleCheckout() {
     /params\.set\(["']checkout_session["'],\s*activeCheckoutSession\s*\)/,
     "Thank-you redirect no longer includes checkout session",
   );
+  assertMatch(
+    src,
+    /waitForBrowserPaint/,
+    "Checkout no longer waits for the browser to paint after clearing loading UI",
+  );
 }
 
 function verifyAutoOpenFlow() {

@@ -116,7 +116,9 @@ const buttonClass = [
             data-paddle-checkout
             data-paddle-price-id={plan.paddlePriceId}
           >
-            {copy?.buttonText ?? plan.buttonText}
+            <span class={styles.PricingCard__ButtonText}>
+              {copy?.buttonText ?? plan.buttonText}
+            </span>
           </button>
           <Text
             as="p"

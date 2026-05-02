@@ -30,7 +30,7 @@ interface PaddleEvent {
 type PaddleEventListener = (event: PaddleEvent) => void;
 
 interface OpenPaddleCheckoutOptions {
-  onCheckoutOpen?: () => void;
+  onCheckoutOpen?: () => Promise<void> | void;
 }
 
 interface CheckoutSessionResponse {
@@ -110,6 +110,14 @@ function notifyPaddleEventListeners(event: PaddleEvent): void {
     } catch (error) {
       console.error("[Paddle] Event listener failed:", error);
     }
+  });
+}
+
+async function waitForBrowserPaint(): Promise<void> {
+  await new Promise<void>((resolve) => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => resolve());
+    });
   });
 }
 
@@ -348,7 +356,10 @@ export async function openPaddleCheckout(
   }
 
   console.log("[Paddle] Opening checkout with options:", checkoutOptions);
-  options?.onCheckoutOpen?.();
+  if (options?.onCheckoutOpen) {
+    await options.onCheckoutOpen();
+    await waitForBrowserPaint();
+  }
   window.Paddle.Checkout.open(checkoutOptions);
   return true;
 }

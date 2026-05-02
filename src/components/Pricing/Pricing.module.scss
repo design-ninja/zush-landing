@@ -228,8 +228,11 @@
 
         button[data-paddle-loading='true'] {
             position: relative;
-            color: transparent;
             cursor: progress;
+
+            .PricingCard__ButtonText {
+                opacity: 0;
+            }
 
             &::after {
                 content: '';
@@ -246,6 +249,12 @@
                 animation: pricing-checkout-spin 0.75s linear infinite;
             }
         }
+    }
+
+    &__ButtonText {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
     }
 
     &__ButtonHint {
