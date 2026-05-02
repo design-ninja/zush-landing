@@ -27,6 +27,8 @@ interface PaddleEvent {
   };
 }
 
+type PaddleEventListener = (event: PaddleEvent) => void;
+
 interface CheckoutSessionResponse {
   success: boolean;
   checkout_session: string;
@@ -52,6 +54,7 @@ let paddleLoaded = false;
 let paddleInitialized = false;
 let paddleScriptPromise: Promise<void> | null = null;
 let activeCheckoutSession: string | null = null;
+const paddleEventListeners = new Set<PaddleEventListener>();
 
 const PADDLE_LOCALES: Record<string, string> = {
   en: "en",
@@ -94,6 +97,16 @@ function getPaddleConfig() {
   }
 
   return { paddleEnv, paddleToken };
+}
+
+function notifyPaddleEventListeners(event: PaddleEvent): void {
+  paddleEventListeners.forEach((listener) => {
+    try {
+      listener(event);
+    } catch (error) {
+      console.error("[Paddle] Event listener failed:", error);
+    }
+  });
 }
 
 async function loadPaddleScript(): Promise<void> {
@@ -161,6 +174,8 @@ function initializePaddle(): boolean {
   const paddleConfig: PaddleConfig = {
     token: paddleToken,
     eventCallback: (event: PaddleEvent) => {
+      notifyPaddleEventListeners(event);
+
       if (event.name === "checkout.completed") {
         const email = event.data?.customer?.email || "";
         const params = new URLSearchParams();
@@ -229,6 +244,17 @@ async function ensurePaddleReady(): Promise<boolean> {
 // fallow-ignore-next-line unused-export
 export function preloadPaddleCheckout(): Promise<boolean> {
   return ensurePaddleReady();
+}
+
+// fallow-ignore-next-line unused-export
+export function onPaddleCheckoutEvent(
+  listener: PaddleEventListener,
+): () => void {
+  paddleEventListeners.add(listener);
+
+  return () => {
+    paddleEventListeners.delete(listener);
+  };
 }
 
 async function createCheckoutSession(

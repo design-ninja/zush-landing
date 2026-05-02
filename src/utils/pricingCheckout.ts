@@ -4,6 +4,13 @@ import { getCheckoutParam } from '@/utils/checkoutParams';
 let isPricingCheckoutBound = false;
 let paddleModulePromise: Promise<typeof import('@/utils/paddle')> | null = null;
 
+const CHECKOUT_LOADING_RESET_EVENTS = new Set([
+  'checkout.loaded',
+  'checkout.closed',
+  'checkout.completed',
+  'checkout.error',
+]);
+
 function getPaddleModule() {
   paddleModulePromise ??= import('@/utils/paddle');
   return paddleModulePromise;
@@ -24,6 +31,22 @@ function preloadCheckout(target: EventTarget | null): void {
     .catch((error) => {
       console.warn('[Pricing] Failed to preload checkout:', error);
     });
+}
+
+function setCheckoutButtonLoading(
+  checkoutButton: HTMLButtonElement,
+  isLoading: boolean,
+): void {
+  checkoutButton.disabled = isLoading;
+
+  if (isLoading) {
+    checkoutButton.dataset.paddleLoading = 'true';
+    checkoutButton.setAttribute('aria-busy', 'true');
+    return;
+  }
+
+  delete checkoutButton.dataset.paddleLoading;
+  checkoutButton.removeAttribute('aria-busy');
 }
 
 export function bindPricingCheckout(): void {
@@ -51,20 +74,28 @@ export function bindPricingCheckout(): void {
 
     event.preventDefault();
 
-    checkoutButton.disabled = true;
-    checkoutButton.dataset.paddleLoading = 'true';
-    checkoutButton.setAttribute('aria-busy', 'true');
+    setCheckoutButtonLoading(checkoutButton, true);
+
+    let unsubscribeFromPaddleEvents: (() => void) | undefined;
+    const resetCheckoutButton = () => {
+      setCheckoutButtonLoading(checkoutButton, false);
+      unsubscribeFromPaddleEvents?.();
+      unsubscribeFromPaddleEvents = undefined;
+    };
 
     try {
       const deviceId = getCheckoutParam('device_id');
-      const { openPaddleCheckout } = await getPaddleModule();
+      const { onPaddleCheckoutEvent, openPaddleCheckout } = await getPaddleModule();
+      unsubscribeFromPaddleEvents = onPaddleCheckoutEvent((paddleEvent) => {
+        if (CHECKOUT_LOADING_RESET_EVENTS.has(paddleEvent.name)) {
+          resetCheckoutButton();
+        }
+      });
       await openPaddleCheckout(deviceId, priceId);
     } catch (error) {
       console.error('[Pricing] Failed to open checkout:', error);
     } finally {
-      checkoutButton.disabled = false;
-      delete checkoutButton.dataset.paddleLoading;
-      checkoutButton.removeAttribute('aria-busy');
+      resetCheckoutButton();
     }
   });
 }
