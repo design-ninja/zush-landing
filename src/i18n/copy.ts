@@ -95,6 +95,25 @@ export interface VideosCopy {
   items: Record<string, { title: string; description: string; alt?: string }>;
 }
 
+export interface SpeedComparisonCopy {
+  eyebrow: string;
+  title: string;
+  titleAccent: string;
+  description: string;
+  zushLabel: string;
+  zushCaption: string;
+  zushBadge: string;
+  rivalLabel: string;
+  rivalCaption: string;
+  rivalStatus: string;
+  rivalDoneLabel: string;
+  rivalPlaceholderHint: string;
+  runningLabel: string;
+  replayLabel: string;
+  skipToEndLabel: string;
+  disclaimer: string;
+}
+
 export interface WhyZushCopy {
   title: string;
   titlePlatform: string;
@@ -147,6 +166,7 @@ export interface HomeCopy {
   faqDescription: string;
   featureCards: FeatureCardsCopy;
   videos: VideosCopy;
+  speedComparison: SpeedComparisonCopy;
   whyZush: WhyZushCopy;
   useCases: UseCasesCopy;
   faqItems: FAQCopyItem[];
@@ -877,6 +897,24 @@ export const EN_COPY: LocaleCopy = {
         activity: { title: 'Activity History', description: 'Review recent renames and undo changes when needed' },
       },
     },
+    speedComparison: {
+      eyebrow: 'Speed test',
+      title: 'Faster work. Sharper names.',
+      titleAccent: 'Sharper names.',
+      description: 'Same 10 files, same goal: rename by content. One purpose-built tool, one general AI agent — head to head.',
+      zushLabel: 'Zush',
+      zushBadge: 'Done',
+      zushCaption: 'Purpose-built for files. Drop them in, get clean names, move on.',
+      rivalLabel: 'Claude Cowork',
+      rivalStatus: 'Still working',
+      rivalDoneLabel: 'Finally done',
+      rivalCaption: 'Brilliant generalist — but routine file work isn’t where chat agents shine.',
+      rivalPlaceholderHint: 'Comparison capture coming',
+      runningLabel: 'Running',
+      replayLabel: 'Replay',
+      skipToEndLabel: 'Skip to end',
+      disclaimer: 'Claude and Claude Cowork are trademarks of Anthropic PBC. Zush is not affiliated with or endorsed by Anthropic.',
+    },
     whyZush: {
       title: 'Why Zush Fits Real Desktop Work',
       titlePlatform: 'Why Zush Wins on {os}',
@@ -1098,6 +1136,10 @@ const localized = (overrides: DeepPartial<LocaleCopy>): LocaleCopy => ({
         ...overrides.home?.videos?.items,
       },
     } as VideosCopy,
+    speedComparison: {
+      ...base.home.speedComparison,
+      ...overrides.home?.speedComparison,
+    } as SpeedComparisonCopy,
     whyZush: {
       ...base.home.whyZush,
       ...overrides.home?.whyZush,
@@ -1648,7 +1690,7 @@ const localizedPricingFeatures: Record<Exclude<Locale, 'en'>, PricingCopy['featu
   ]),
 };
 
-const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeCopy, 'featureCards' | 'videos' | 'whyZush' | 'useCases' | 'faqItems' | 'showcaseSlides'>>> = {
+const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeCopy, 'featureCards' | 'videos' | 'speedComparison' | 'whyZush' | 'useCases' | 'faqItems' | 'showcaseSlides'>>> = {
   de: {
     featureCards: {
       aiAnalysis: { title: 'KI-Analyse', description: 'Fortschrittliche KI analysiert Bilder und unterstützte Dokumente, inklusive PDFs, und erzeugt automatisch aussagekräftige Dateinamen.' },
@@ -1932,15 +1974,199 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
   },
 };
 
+const localizedSpeedComparison: Record<Exclude<Locale, 'en'>, SpeedComparisonCopy> = {
+  de: {
+    eyebrow: 'Geschwindigkeitstest',
+    title: 'Schnellere Arbeit. Schärfere Namen.',
+    titleAccent: 'Schärfere Namen.',
+    description: 'Dieselben 10 Dateien, dasselbe Ziel: Umbenennen nach Inhalt. Spezialisiertes Tool gegen einen allgemeinen KI-Agenten — direkter Vergleich.',
+    zushLabel: 'Zush',
+    zushBadge: 'Fertig',
+    zushCaption: 'Speziell für Dateien gebaut. Reinziehen, saubere Namen erhalten, weiterarbeiten.',
+    rivalLabel: 'Claude Cowork',
+    rivalStatus: 'Arbeitet noch',
+    rivalDoneLabel: 'Endlich fertig',
+    rivalCaption: 'Brillanter Generalist — aber Routinearbeit an Dateien ist nicht seine Stärke.',
+    rivalPlaceholderHint: 'Vergleichsaufnahme folgt',
+    runningLabel: 'Läuft',
+    replayLabel: 'Erneut abspielen',
+    skipToEndLabel: 'Zum Ende springen',
+    disclaimer: 'Claude und Claude Cowork sind Marken von Anthropic PBC. Zush ist nicht mit Anthropic verbunden, gesponsert oder unterstützt.',
+  },
+  fr: {
+    eyebrow: 'Test de vitesse',
+    title: 'Plus rapide. Noms plus clairs.',
+    titleAccent: 'Noms plus clairs.',
+    description: 'Mêmes 10 fichiers, même objectif : renommer par contenu. Un outil dédié face à un agent IA généraliste — face à face.',
+    zushLabel: 'Zush',
+    zushBadge: 'Terminé',
+    zushCaption: 'Conçu pour les fichiers. Déposez-les, obtenez des noms clairs, passez à autre chose.',
+    rivalLabel: 'Claude Cowork',
+    rivalStatus: 'Toujours en cours',
+    rivalDoneLabel: 'Enfin terminé',
+    rivalCaption: 'Généraliste brillant — mais le travail routinier sur les fichiers n’est pas son fort.',
+    rivalPlaceholderHint: 'Capture comparative à venir',
+    runningLabel: 'En cours',
+    replayLabel: 'Rejouer',
+    skipToEndLabel: 'Passer à la fin',
+    disclaimer: 'Claude et Claude Cowork sont des marques d’Anthropic PBC. Zush n’est ni affilié à Anthropic ni soutenu par Anthropic.',
+  },
+  'pt-br': {
+    eyebrow: 'Teste de velocidade',
+    title: 'Mais rápido. Nomes mais claros.',
+    titleAccent: 'Nomes mais claros.',
+    description: 'Os mesmos 10 arquivos, o mesmo objetivo: renomear pelo conteúdo. Ferramenta dedicada contra um agente de IA geral — frente a frente.',
+    zushLabel: 'Zush',
+    zushBadge: 'Pronto',
+    zushCaption: 'Feito para arquivos. Solte-os, receba nomes claros, siga adiante.',
+    rivalLabel: 'Claude Cowork',
+    rivalStatus: 'Ainda trabalhando',
+    rivalDoneLabel: 'Finalmente pronto',
+    rivalCaption: 'Generalista brilhante — mas trabalho rotineiro com arquivos não é seu forte.',
+    rivalPlaceholderHint: 'Captura comparativa em breve',
+    runningLabel: 'Rodando',
+    replayLabel: 'Reproduzir',
+    skipToEndLabel: 'Pular para o fim',
+    disclaimer: 'Claude e Claude Cowork são marcas da Anthropic PBC. Zush não é afiliada nem endossada pela Anthropic.',
+  },
+  es: {
+    eyebrow: 'Prueba de velocidad',
+    title: 'Más rápido. Nombres más claros.',
+    titleAccent: 'Nombres más claros.',
+    description: 'Los mismos 10 archivos, el mismo objetivo: renombrar por contenido. Una herramienta dedicada frente a un agente de IA general — cara a cara.',
+    zushLabel: 'Zush',
+    zushBadge: 'Listo',
+    zushCaption: 'Diseñado para archivos. Arrástralos, obtén nombres claros, sigue adelante.',
+    rivalLabel: 'Claude Cowork',
+    rivalStatus: 'Aún trabajando',
+    rivalDoneLabel: 'Por fin listo',
+    rivalCaption: 'Generalista brillante — pero el trabajo rutinario con archivos no es lo suyo.',
+    rivalPlaceholderHint: 'Captura de comparación próximamente',
+    runningLabel: 'En curso',
+    replayLabel: 'Reproducir',
+    skipToEndLabel: 'Saltar al final',
+    disclaimer: 'Claude y Claude Cowork son marcas de Anthropic PBC. Zush no está afiliado ni respaldado por Anthropic.',
+  },
+  nl: {
+    eyebrow: 'Snelheidstest',
+    title: 'Sneller werk. Scherpere namen.',
+    titleAccent: 'Scherpere namen.',
+    description: 'Dezelfde 10 bestanden, hetzelfde doel: hernoemen op inhoud. Een toegewijde tool tegen een algemene AI-agent — direct vergelijken.',
+    zushLabel: 'Zush',
+    zushBadge: 'Klaar',
+    zushCaption: 'Gemaakt voor bestanden. Sleep ze erin, krijg duidelijke namen, ga door.',
+    rivalLabel: 'Claude Cowork',
+    rivalStatus: 'Nog bezig',
+    rivalDoneLabel: 'Eindelijk klaar',
+    rivalCaption: 'Briljante generalist — maar routinematig bestandswerk is niet zijn sterkste kant.',
+    rivalPlaceholderHint: 'Vergelijkingsopname volgt',
+    runningLabel: 'Bezig',
+    replayLabel: 'Opnieuw afspelen',
+    skipToEndLabel: 'Naar het einde',
+    disclaimer: 'Claude en Claude Cowork zijn handelsmerken van Anthropic PBC. Zush is niet verbonden met of onderschreven door Anthropic.',
+  },
+  it: {
+    eyebrow: 'Test di velocità',
+    title: 'Più veloce. Nomi più chiari.',
+    titleAccent: 'Nomi più chiari.',
+    description: 'Stessi 10 file, stesso obiettivo: rinominare per contenuto. Uno strumento dedicato contro un agente IA generico — faccia a faccia.',
+    zushLabel: 'Zush',
+    zushBadge: 'Fatto',
+    zushCaption: 'Pensato per i file. Trascinali, ottieni nomi chiari, vai avanti.',
+    rivalLabel: 'Claude Cowork',
+    rivalStatus: 'Ancora al lavoro',
+    rivalDoneLabel: 'Finalmente fatto',
+    rivalCaption: 'Generalista brillante — ma il lavoro di routine sui file non è il suo forte.',
+    rivalPlaceholderHint: 'Acquisizione comparativa in arrivo',
+    runningLabel: 'In esecuzione',
+    replayLabel: 'Riproduci di nuovo',
+    skipToEndLabel: 'Vai alla fine',
+    disclaimer: 'Claude e Claude Cowork sono marchi di Anthropic PBC. Zush non è affiliato né sponsorizzato da Anthropic.',
+  },
+  ja: {
+    eyebrow: 'スピードテスト',
+    title: 'より速く。より鋭い名前。',
+    titleAccent: 'より鋭い名前。',
+    description: '同じ10ファイル、同じ目的：内容に基づいてリネーム。専用ツールと汎用AIエージェントの直接対決。',
+    zushLabel: 'Zush',
+    zushBadge: '完了',
+    zushCaption: 'ファイル専用に設計。ドロップして、わかりやすい名前を受け取り、次へ。',
+    rivalLabel: 'Claude Cowork',
+    rivalStatus: '作業中',
+    rivalDoneLabel: 'ようやく完了',
+    rivalCaption: '優秀な汎用エージェント — だが日常的なファイル作業は得意分野ではない。',
+    rivalPlaceholderHint: '比較動画は準備中',
+    runningLabel: '実行中',
+    replayLabel: 'もう一度',
+    skipToEndLabel: '最後までスキップ',
+    disclaimer: 'ClaudeおよびClaude CoworkはAnthropic PBCの商標です。ZushはAnthropicと提携・支援関係にありません。',
+  },
+  ko: {
+    eyebrow: '속도 테스트',
+    title: '더 빠르게. 더 깔끔한 이름.',
+    titleAccent: '더 깔끔한 이름.',
+    description: '같은 파일 10개, 같은 목표: 내용 기반으로 이름 바꾸기. 전용 도구와 범용 AI 에이전트의 정면 대결.',
+    zushLabel: 'Zush',
+    zushBadge: '완료',
+    zushCaption: '파일 전용으로 설계. 드롭하고, 깔끔한 이름을 받고, 다음 작업으로.',
+    rivalLabel: 'Claude Cowork',
+    rivalStatus: '작업 중',
+    rivalDoneLabel: '드디어 완료',
+    rivalCaption: '뛰어난 범용 에이전트 — 하지만 일상적인 파일 작업은 그 강점이 아닙니다.',
+    rivalPlaceholderHint: '비교 영상 준비 중',
+    runningLabel: '실행 중',
+    replayLabel: '다시 재생',
+    skipToEndLabel: '끝으로 건너뛰기',
+    disclaimer: 'Claude 및 Claude Cowork는 Anthropic PBC의 상표입니다. Zush는 Anthropic과 제휴되거나 후원받지 않습니다.',
+  },
+  'zh-cn': {
+    eyebrow: '速度测试',
+    title: '更快完成。命名更精准。',
+    titleAccent: '命名更精准。',
+    description: '同样的 10 个文件，同样的目标：根据内容重命名。专业工具与通用 AI 智能体——正面对决。',
+    zushLabel: 'Zush',
+    zushBadge: '完成',
+    zushCaption: '为文件而生。拖入、获得清晰命名、继续工作。',
+    rivalLabel: 'Claude Cowork',
+    rivalStatus: '仍在工作',
+    rivalDoneLabel: '终于完成',
+    rivalCaption: '出色的通用智能体——但日常文件工作不是它的强项。',
+    rivalPlaceholderHint: '对比视频即将上线',
+    runningLabel: '运行中',
+    replayLabel: '重新播放',
+    skipToEndLabel: '跳到结尾',
+    disclaimer: 'Claude 和 Claude Cowork 是 Anthropic PBC 的商标。Zush 与 Anthropic 没有关联，也未获其背书。',
+  },
+  ar: {
+    eyebrow: 'اختبار السرعة',
+    title: 'عمل أسرع. أسماء أوضح.',
+    titleAccent: 'أسماء أوضح.',
+    description: 'نفس الـ10 ملفات، نفس الهدف: إعادة التسمية حسب المحتوى. أداة متخصصة في مواجهة وكيل ذكاء اصطناعي عام — مباشرة.',
+    zushLabel: 'Zush',
+    zushBadge: 'تم',
+    zushCaption: 'مصممة للملفات. أسقطها، احصل على أسماء واضحة، تابع.',
+    rivalLabel: 'Claude Cowork',
+    rivalStatus: 'لا يزال يعمل',
+    rivalDoneLabel: 'انتهى أخيرا',
+    rivalCaption: 'عام رائع — لكن العمل الروتيني مع الملفات ليس نقطة قوته.',
+    rivalPlaceholderHint: 'تسجيل المقارنة قريبا',
+    runningLabel: 'قيد التشغيل',
+    replayLabel: 'إعادة التشغيل',
+    skipToEndLabel: 'تخطي إلى النهاية',
+    disclaimer: 'Claude وClaude Cowork علامتان تجاريتان لشركة Anthropic PBC. Zush غير منتسبة إلى Anthropic ولا مدعومة منها.',
+  },
+};
+
 const withLocalizedFileExamples = (
   locale: Exclude<Locale, 'en'>,
-  details: DeepPartial<Pick<HomeCopy, 'featureCards' | 'videos' | 'whyZush' | 'useCases' | 'faqItems' | 'showcaseSlides'>>,
-): DeepPartial<Pick<HomeCopy, 'featureCards' | 'videos' | 'whyZush' | 'useCases' | 'faqItems' | 'showcaseSlides'>> => ({
+  details: DeepPartial<Pick<HomeCopy, 'featureCards' | 'videos' | 'speedComparison' | 'whyZush' | 'useCases' | 'faqItems' | 'showcaseSlides'>>,
+): DeepPartial<Pick<HomeCopy, 'featureCards' | 'videos' | 'speedComparison' | 'whyZush' | 'useCases' | 'faqItems' | 'showcaseSlides'>> => ({
   ...details,
   featureCards: {
     ...details.featureCards,
     ...localizedFileExamples[locale].featureCards,
   },
+  speedComparison: localizedSpeedComparison[locale],
   showcaseSlides: localizedFileExamples[locale].showcaseSlides,
   faqItems: details.faqItems?.length === base.home.faqItems.length
     ? details.faqItems
