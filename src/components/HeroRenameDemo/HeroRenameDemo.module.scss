@@ -1,0 +1,370 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.RenameDemo {
+    position: relative;
+    width: 100%;
+    min-height: 31rem;
+    border: 1px solid var(--border);
+    border-radius: $radius-lg;
+    background:
+        linear-gradient(180deg, color-mix(in oklab, var(--card) 92%, var(--primary) 8%), var(--card)),
+        var(--card);
+    box-shadow: 0 1.75rem 5.5rem rgba(0, 0, 0, 0.16);
+    overflow: hidden;
+    color: var(--foreground);
+
+    [data-theme="dark"] & {
+        box-shadow: 0 1.75rem 5.5rem rgba(0, 0, 0, 0.42);
+    }
+
+    &__Chrome {
+        display: flex;
+        gap: 0.5rem;
+
+        span {
+            width: 0.72rem;
+            height: 0.72rem;
+            border-radius: 999px;
+            background: #ff5f57;
+
+            &:nth-child(2) {
+                background: #ffbd2e;
+            }
+
+            &:nth-child(3) {
+                background: #28c840;
+            }
+        }
+    }
+
+    &__Header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        min-height: 4.45rem;
+        padding: 1rem 1.25rem 0.9rem;
+        border-bottom: 1px solid var(--border);
+
+        svg {
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+    }
+
+    &__HeaderText {
+        display: flex;
+        min-width: 0;
+        flex-direction: column;
+        gap: 0.62rem;
+    }
+
+    &__Title {
+        margin: 0.12rem 0 0;
+        min-width: 0;
+        overflow: hidden;
+        font-size: 1rem;
+        line-height: 1;
+        letter-spacing: 0;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    &__TitleBrand {
+        color: var(--secondary);
+    }
+
+    &__Banner {
+        margin: 1rem 1.15rem 0;
+        padding: 0.7rem 0.85rem;
+        border-radius: $radius-sm;
+        background: color-mix(in oklab, var(--destructive) 12%, transparent);
+        border: 1px solid color-mix(in oklab, var(--destructive) 28%, transparent);
+        color: var(--foreground);
+        font-size: 0.78rem;
+        font-weight: 650;
+    }
+
+    &__DropZone {
+        display: flex;
+        flex-direction: column;
+        margin: 1.15rem;
+        min-height: 27rem;
+        border: 1px dashed color-mix(in oklab, var(--muted-foreground) 42%, transparent);
+        border-radius: $radius-lg;
+        background:
+            radial-gradient(circle at 50% 6%, color-mix(in oklab, var(--primary) 10%, transparent), transparent 42%),
+            color-mix(in oklab, var(--muted) 60%, transparent);
+        transition:
+            border-color $transition-fast,
+            background-color $transition-fast,
+            transform $transition-fast;
+
+        &_dragging {
+            border-color: var(--primary);
+            background-color: color-mix(in oklab, var(--primary) 8%, var(--muted));
+            transform: translateY(-0.1rem);
+        }
+
+        &_hasFiles {
+            border-style: solid;
+            background: color-mix(in oklab, var(--muted) 50%, transparent);
+        }
+    }
+
+    &__Input {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        clip-path: inset(50%);
+    }
+
+    &__Empty {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        text-align: center;
+
+        > svg {
+            margin-bottom: 1rem;
+            color: var(--muted-foreground);
+        }
+    }
+
+    &__EmptyTitle {
+        margin: 0 0 0.45rem;
+        max-width: 20rem;
+        font-size: 1rem;
+        font-weight: 800;
+        line-height: 1.28;
+        color: var(--foreground);
+    }
+
+    &__EmptySubtitle {
+        margin: 0 0 1.15rem;
+        max-width: 24rem;
+        font-size: 0.84rem;
+        line-height: 1.48;
+        color: var(--muted-foreground);
+        text-wrap: pretty;
+    }
+
+    &__SelectButton {
+        margin-bottom: 1.25rem;
+    }
+
+    &__Chips {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.45rem;
+        max-width: 25rem;
+        margin: 0.35rem 0 1.05rem;
+
+        span {
+            display: inline-flex;
+            min-height: 1.75rem;
+            align-items: center;
+            border-radius: $radius-sm;
+            padding: 0.2rem 0.62rem;
+            background: var(--primary-soft);
+            color: var(--primary);
+            font-size: 0.76rem;
+            font-weight: 800;
+        }
+    }
+
+    &__Results {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    &__ProgressRow {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 0.55rem;
+        color: var(--muted-foreground);
+        font-size: 0.78rem;
+        font-weight: 600;
+    }
+
+    &__ProgressTrack {
+        height: 0.48rem;
+        margin-bottom: 1rem;
+        overflow: hidden;
+        border-radius: $radius-full;
+        background: color-mix(in oklab, var(--muted-foreground) 18%, transparent);
+
+        span {
+            display: block;
+            height: 100%;
+            border-radius: inherit;
+            background: var(--primary);
+            transition: width $transition-normal;
+        }
+    }
+
+    &__List {
+        border: 1px solid var(--border);
+        border-radius: $radius-md;
+        overflow: hidden;
+        background: color-mix(in oklab, var(--card) 70%, transparent);
+    }
+
+    &__Row {
+        display: grid;
+        grid-template-columns: 3.6rem minmax(0, 1fr) 1.75rem;
+        align-items: center;
+        gap: 0.75rem;
+        min-height: 4.2rem;
+        padding: 0.58rem 0.8rem;
+
+        & + & {
+            border-top: 1px solid var(--border);
+        }
+    }
+
+    &__Preview {
+        display: grid;
+        width: 3.6rem;
+        height: 2.72rem;
+        place-items: center;
+        overflow: hidden;
+        border-radius: 0.35rem;
+        background: color-mix(in oklab, var(--primary) 14%, var(--muted));
+        color: var(--primary);
+        flex-shrink: 0;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__RowContent {
+        min-width: 0;
+        text-align: left;
+    }
+
+    &__Original {
+        color: var(--muted-foreground);
+        font-size: 0.79rem;
+        font-weight: 600;
+        line-height: 1.25;
+        @include text-ellipsis;
+    }
+
+    &__Suggested,
+    &__Status {
+        margin-top: 0.18rem;
+        min-width: 0;
+        font-size: 0.88rem;
+        line-height: 1.22;
+    }
+
+    &__Suggested {
+        display: flex;
+        align-items: center;
+        gap: 0.28rem;
+        color: var(--foreground);
+        font-weight: 600;
+
+        svg {
+            color: var(--success);
+            flex-shrink: 0;
+        }
+
+        span {
+            @include text-ellipsis;
+        }
+    }
+
+    &__Status {
+        color: var(--primary);
+        font-weight: 700;
+        @include text-ellipsis;
+    }
+
+    &__RowAction {
+        display: grid;
+        place-items: center;
+        color: var(--muted-foreground);
+
+        svg {
+            flex-shrink: 0;
+        }
+
+        &_done {
+            color: var(--success);
+        }
+    }
+
+    &__Spinner {
+        position: relative;
+        display: inline-block;
+        width: 1.3rem;
+        height: 1.3rem;
+        color: color-mix(in oklab, var(--muted-foreground) 84%, var(--foreground));
+
+        span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0.13rem;
+            height: 0.42rem;
+            border-radius: $radius-full;
+            background: currentColor;
+            opacity: 0.18;
+            transform:
+                translate(-50%, -50%)
+                rotate(calc(var(--segment-index) * 30deg))
+                translateY(-0.43rem);
+            animation: rename-demo-spinner 1s linear infinite;
+            animation-delay: calc(var(--segment-index) * -0.083333s);
+        }
+    }
+
+    &__Actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.85rem;
+        margin-top: auto;
+        padding-top: 1rem;
+    }
+
+    &__Download {
+        flex-shrink: 0;
+    }
+}
+
+.RenameDemoSecurityHint {
+    max-width: 34rem;
+    margin: 0.9rem auto 0;
+    color: var(--muted-foreground);
+    font-size: 0.7rem;
+    font-weight: 400;
+    line-height: 1.35;
+    text-align: center;
+}
+
+@keyframes rename-demo-spinner {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.18;
+    }
+}

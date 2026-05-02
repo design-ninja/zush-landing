@@ -1,13 +1,15 @@
 import { type ReactNode } from "react";
 import FileShowcase from "../FileShowcase";
 import type { Slide } from "../FileShowcase";
+import HeroRenameDemo from "../HeroRenameDemo";
 import Button from "../Button";
 import DownloadButton from "../DownloadButton";
 import Heading from "../Heading";
 import Text from "../Text";
 import styles from "./Hero.module.scss";
 import type { DownloadOS } from "@/utils/download";
-import type { DownloadMenuCopy } from "@/i18n/copy";
+import type { DownloadMenuCopy, RenameDemoCopy } from "@/i18n/copy";
+import type { Locale } from "@/i18n/config";
 
 
 interface HeroProps {
@@ -24,6 +26,9 @@ interface HeroProps {
   downloadLabel?: string;
   downloadMenu?: DownloadMenuCopy;
   trustSignals?: string[];
+  renameDemo?: RenameDemoCopy;
+  locale?: Locale;
+  showInteractiveDemo?: boolean;
 }
 
 const Hero = ({
@@ -40,6 +45,9 @@ const Hero = ({
   downloadLabel = "Download",
   downloadMenu,
   trustSignals = ["✨ Free to try", "💳 No credit card", "🚫 No subscription"],
+  renameDemo,
+  locale,
+  showInteractiveDemo = false,
 }: HeroProps) => {
   const highlightText = titleHighlight ?? titleAccent;
 
@@ -113,7 +121,23 @@ const Hero = ({
         <div
           className={`${styles.Hero__ShowcaseWrapper} ${styles.Hero__ShowcaseMotion}`}
         >
-          <FileShowcase slides={slides} />
+          {showInteractiveDemo && renameDemo ? (
+            <>
+              <div className={styles.Hero__InteractiveShowcase}>
+                <HeroRenameDemo
+                  copy={renameDemo}
+                  downloadLabel={downloadLabel}
+                  downloadMenu={downloadMenu}
+                  locale={locale}
+                />
+              </div>
+              <div className={styles.Hero__MobileShowcase}>
+                <FileShowcase slides={slides} />
+              </div>
+            </>
+          ) : (
+            <FileShowcase slides={slides} />
+          )}
           <div className={styles.Hero__GlowEffect} />
         </div>
       </div>

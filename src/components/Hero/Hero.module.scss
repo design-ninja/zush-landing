@@ -111,6 +111,22 @@
         width: 100%;
     }
 
+    &__InteractiveShowcase {
+        display: block;
+
+        @include mobile {
+            display: none;
+        }
+    }
+
+    &__MobileShowcase {
+        display: none;
+
+        @include mobile {
+            display: block;
+        }
+    }
+
     &__Intro {
         opacity: 0;
         transform: translateX(-50px);
