@@ -249,9 +249,35 @@
   aspect-ratio: 16 / 9;
   border-radius: 1rem;
   overflow: hidden;
-  background: #06070a;
+  background: var(--muted);
   border: 1px solid var(--border);
   -webkit-mask-image: -webkit-radial-gradient(white, black);
+
+  &__Skeleton {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--muted), var(--background) 20%) 0%,
+      var(--muted) 100%
+    );
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        color-mix(in srgb, var(--foreground), transparent 94%) 40%,
+        color-mix(in srgb, var(--foreground), transparent 94%) 60%,
+        transparent 100%
+      );
+      animation: SpeedComparison_shimmer 1.8s ease-in-out infinite;
+    }
+  }
 
   &__Video {
     width: 100%;
@@ -548,6 +574,15 @@
   }
 }
 
+@keyframes SpeedComparison_shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 @keyframes SpeedComparison_indeterminate {
   0% {
     transform: translateX(-110%);
@@ -565,7 +600,8 @@
   .Placeholder__Spinner,
   .Placeholder__BarFill,
   .LiveDot,
-  .Card__TimeCheck {
+  .Card__TimeCheck,
+  .Media__Skeleton::after {
     animation: none;
   }
 }

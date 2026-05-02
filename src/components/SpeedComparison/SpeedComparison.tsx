@@ -58,6 +58,8 @@ const SpeedComparison = ({
   const [zushElapsed, setZushElapsed] = useState(0);
   const [rivalElapsed, setRivalElapsed] = useState(0);
   const [isSkipping, setIsSkipping] = useState(false);
+  const [zushVideoLoaded, setZushVideoLoaded] = useState(false);
+  const [rivalVideoLoaded, setRivalVideoLoaded] = useState(false);
   const skipRafRef = useRef<number | null>(null);
   const skipActiveRef = useRef(false);
 
@@ -293,6 +295,7 @@ const SpeedComparison = ({
             </div>
 
             <div className={styles.Media}>
+              {!zushVideoLoaded && <div className={styles.Media__Skeleton} />}
               {mounted && (
                 <video
                   ref={zushVideoRef}
@@ -302,6 +305,7 @@ const SpeedComparison = ({
                   muted
                   playsInline
                   preload='auto'
+                  onLoadedData={() => setZushVideoLoaded(true)}
                   aria-label={`${copy.zushLabel}: ${copy.zushCaption}`}
                 />
               )}
@@ -355,6 +359,7 @@ const SpeedComparison = ({
             </div>
 
             <div className={`${styles.Media} ${styles.Media_rival} ${isSkipping ? styles.Media_skipping : ''}`}>
+              {hasRivalVideo && !rivalVideoLoaded && <div className={styles.Media__Skeleton} />}
               {hasRivalVideo && mounted ? (
                 <video
                   ref={rivalVideoRef}
@@ -364,6 +369,7 @@ const SpeedComparison = ({
                   muted
                   playsInline
                   preload='auto'
+                  onLoadedData={() => setRivalVideoLoaded(true)}
                   aria-label={`${copy.rivalLabel}: ${copy.rivalCaption}`}
                 />
               ) : !hasRivalVideo ? (
