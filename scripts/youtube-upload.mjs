@@ -5,7 +5,7 @@ import { randomBytes } from 'node:crypto';
 import { tmpdir } from 'node:os';
 
 const ROOT = process.cwd();
-const CONFIG_PATH = join(ROOT, 'scripts/youtube-videos.json');
+const DEFAULT_CONFIG_PATH = join(ROOT, 'scripts/youtube-videos.json');
 const TOKEN_PATH = join(ROOT, 'scripts/.youtube-oauth-token.json');
 const RESULTS_PATH = join(ROOT, 'scripts/.youtube-upload-results.json');
 const AUTH_URL = 'https://accounts.google.com/o/oauth2/v2/auth';
@@ -32,6 +32,7 @@ Options:
   --skip-thumbnails      Do not upload thumbnails.
   --force                Re-upload videos already present in local results.
   --notify-subscribers   Ask YouTube to notify subscribers for new uploads.
+  --config path          Upload manifest path. Default: scripts/youtube-videos.json.
   --port number          OAuth localhost callback port. Default: 8787.
 
 Environment:
@@ -97,6 +98,7 @@ function parseArgs(argv) {
     skipThumbnails: false,
     force: false,
     notifySubscribers: false,
+    configPath: DEFAULT_CONFIG_PATH,
     port: Number(process.env.YOUTUBE_REDIRECT_PORT || 8787),
   };
 
@@ -122,6 +124,9 @@ function parseArgs(argv) {
         break;
       case '--notify-subscribers':
         options.notifySubscribers = true;
+        break;
+      case '--config':
+        options.configPath = resolve(ROOT, rest[++index] || '');
         break;
       case '--port':
         options.port = Number(rest[++index]);
@@ -310,8 +315,8 @@ async function getAccessToken() {
   return refreshed.access_token;
 }
 
-function readConfig() {
-  return readJson(CONFIG_PATH);
+function readConfig(options) {
+  return readJson(options.configPath);
 }
 
 function normalizeVideo(defaults, video, options) {
@@ -391,7 +396,7 @@ function printPlan(videos, options) {
 }
 
 async function uploadVideos(options) {
-  const config = readConfig();
+  const config = readConfig(options);
   const videos = selectVideos(config, options);
   validateVideos(videos);
   printPlan(videos, options);
@@ -570,7 +575,7 @@ async function main() {
       await authorize(options);
       break;
     case 'dry-run': {
-      const config = readConfig();
+      const config = readConfig(options);
       const videos = selectVideos(config, options);
       validateVideos(videos);
       printPlan(videos, options);
