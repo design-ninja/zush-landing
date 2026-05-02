@@ -13,7 +13,6 @@ import {
   WINDOWS_STORE_URL,
 } from '@/constants';
 import { useOS } from '@/hooks/useOS';
-import { trackDownloadClick } from '@/utils/download';
 import { getPreferredStoreHref, handleStoreLinkClick } from '@/utils/storeLinks';
 import styles from './MobileDownloadModal.module.scss';
 
@@ -140,7 +139,9 @@ const MobileDownloadModal = ({ isOpen, onClose }: MobileDownloadModalProps) => {
             href={DOWNLOAD_URL}
             target='_blank'
             rel='noopener noreferrer'
-            onClick={() => trackDownloadClick({ os: 'mac', source: 'mobile-modal' })}
+            data-download-os='mac'
+            data-download-source='mobile-modal'
+            data-download-channel='direct'
           >
             <span className={styles.MobileDownloadModal__OptionIcon}>
               <AppleIcon />
@@ -158,8 +159,10 @@ const MobileDownloadModal = ({ isOpen, onClose }: MobileDownloadModalProps) => {
             data-store-os='windows'
             data-store-app-url={WINDOWS_STORE_PROTOCOL_URL}
             data-store-web-url={WINDOWS_STORE_URL}
+            data-download-os='windows'
+            data-download-source='mobile-modal'
+            data-download-channel='microsoft-store'
             onClick={(event) => {
-              trackDownloadClick({ os: 'windows', source: 'mobile-modal' });
               handleStoreLinkClick(event, {
                 os: 'windows',
                 appUrl: WINDOWS_STORE_PROTOCOL_URL,

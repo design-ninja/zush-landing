@@ -1,5 +1,6 @@
 ---
 import styles from './StoreBadge.module.scss';
+import type { DownloadChannel, DownloadOS, DownloadSource } from '@/utils/download';
 
 export type StoreBadgeKind = 'app-store' | 'microsoft-store' | 'direct-dmg';
 
@@ -14,6 +15,10 @@ interface Props {
   dataStoreOs?: 'mac' | 'windows';
   dataStoreAppUrl?: string;
   dataStoreWebUrl?: string;
+  /** Optional download tracking data attrs for static install/download links. */
+  downloadOs?: DownloadOS;
+  downloadSource?: DownloadSource;
+  downloadChannel?: DownloadChannel;
   /** When true, opens in a new tab (defaults to true for store URLs, false for direct downloads). */
   external?: boolean;
 }
@@ -28,6 +33,9 @@ const {
   dataStoreOs,
   dataStoreAppUrl,
   dataStoreWebUrl,
+  downloadOs,
+  downloadSource,
+  downloadChannel,
   external = kind !== 'direct-dmg',
 } = Astro.props as Props;
 
@@ -44,6 +52,9 @@ const uniqueId = Math.random().toString(36).slice(2, 9);
   data-store-os={dataStoreOs}
   data-store-app-url={dataStoreAppUrl}
   data-store-web-url={dataStoreWebUrl}
+  data-download-os={downloadOs}
+  data-download-source={downloadSource}
+  data-download-channel={downloadChannel}
 >
   <span class={styles.StoreBadge__Icon}>
     {kind === 'app-store' && (

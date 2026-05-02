@@ -21,10 +21,13 @@ import styles from './Footer.module.scss';
 
 interface Props {
   locale?: Locale;
+  hidePlatform?: 'mac' | 'windows';
 }
 
-const { locale = DEFAULT_LOCALE } = Astro.props as Props;
+const { locale = DEFAULT_LOCALE, hidePlatform } = Astro.props as Props;
 const copy = getCopy(locale).footer;
+const shouldShowAppStore = hidePlatform !== 'mac';
+const shouldShowMicrosoftStore = hidePlatform !== 'windows';
 
 const sectionTitleClass = [headingStyles.Heading, headingStyles.Heading_h4, styles.Footer__SectionTitle].join(' ');
 const descriptionClass = [textStyles.Text, textStyles.Text_subtle, styles.Footer__Description].join(' ');
@@ -46,6 +49,7 @@ const footerHref = (route: LocalizedRoute) =>
         </p>
 
         <div class={styles.Footer__StoreBadges}>
+          {shouldShowAppStore && (
           <a
             href={APP_STORE_URL}
             target='_blank'
@@ -55,6 +59,9 @@ const footerHref = (route: LocalizedRoute) =>
             data-store-os='mac'
             data-store-app-url={APP_STORE_PROTOCOL_URL}
             data-store-web-url={APP_STORE_URL}
+            data-download-os='mac'
+            data-download-source='footer-appstore'
+            data-download-channel='mac-app-store'
           >
             <span class={styles.Footer__StoreBadge}>
               <span class={styles.Footer__StoreBadgeIcon}>
@@ -95,7 +102,9 @@ const footerHref = (route: LocalizedRoute) =>
               </span>
             </span>
           </a>
+          )}
 
+          {shouldShowMicrosoftStore && (
           <a
             href={WINDOWS_STORE_URL}
             target='_blank'
@@ -105,6 +114,9 @@ const footerHref = (route: LocalizedRoute) =>
             data-store-os='windows'
             data-store-app-url={WINDOWS_STORE_PROTOCOL_URL}
             data-store-web-url={WINDOWS_STORE_URL}
+            data-download-os='windows'
+            data-download-source='footer-microsoft-store'
+            data-download-channel='microsoft-store'
           >
             <span class={styles.Footer__StoreBadge}>
               <span class={styles.Footer__StoreBadgeIcon}>
@@ -145,6 +157,7 @@ const footerHref = (route: LocalizedRoute) =>
               </span>
             </span>
           </a>
+          )}
         </div>
       </div>
 

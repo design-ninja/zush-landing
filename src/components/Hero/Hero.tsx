@@ -23,6 +23,7 @@ interface HeroProps {
   buyLabel?: string;
   downloadLabel?: string;
   downloadMenu?: DownloadMenuCopy;
+  includeOtherDownloadOS?: boolean;
   trustSignals?: string[];
 }
 
@@ -39,6 +40,7 @@ const Hero = ({
   buyLabel = "Buy 🌟 PRO",
   downloadLabel = "Download",
   downloadMenu,
+  includeOtherDownloadOS = true,
   trustSignals = ["✨ Free to try", "💳 No credit card", "🚫 No subscription"],
 }: HeroProps) => {
   const highlightText = titleHighlight ?? titleAccent;
@@ -93,7 +95,14 @@ const Hero = ({
           </Text>
 
           <div className={styles.Hero__Buttons}>
-            <DownloadButton source="hero" size="lg" forceOS={forceOS} label={downloadLabel} menuCopy={downloadMenu} />
+            <DownloadButton
+              source="hero"
+              size="lg"
+              forceOS={forceOS}
+              label={downloadLabel}
+              menuCopy={downloadMenu}
+              includeOtherOS={includeOtherDownloadOS}
+            />
             <Button
               as="link"
               href={secondaryHref}

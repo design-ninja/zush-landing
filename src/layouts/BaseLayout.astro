@@ -59,6 +59,7 @@ interface Props {
   jsonLd?: object | object[];
   includeChrome?: boolean;
   forceOS?: DownloadOS;
+  footerHidePlatform?: DownloadOS;
   chromeBasePath?: string;
   disableTopOffset?: boolean;
   locale?: Locale;
@@ -69,11 +70,14 @@ const {
   jsonLd,
   includeChrome = true,
   forceOS,
+  footerHidePlatform,
   chromeBasePath = '/',
   disableTopOffset = false,
   locale = DEFAULT_LOCALE,
 } = Astro.props;
 
+const googleAdsId = import.meta.env.PUBLIC_GOOGLE_ADS_ID;
+const shouldLoadGoogleAds = typeof googleAdsId === 'string' && googleAdsId.startsWith('AW-');
 const canonicalUrl = getCanonicalUrl(seo.canonicalPath);
 const { route } = stripLocaleFromPath(seo.canonicalPath);
 const routeLocales = getLocalesForRoute(route);
@@ -107,6 +111,17 @@ const localeRedirectConfig = JSON.stringify({
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light dark" />
     <ClientRouter />
+    {shouldLoadGoogleAds && (
+      <>
+        <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${googleAdsId}`}></script>
+        <script is:inline define:vars={{ googleAdsId }}>
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = window.gtag || function gtag(){ window.dataLayer.push(arguments); };
+          window.gtag('js', new Date());
+          window.gtag('config', googleAdsId);
+        </script>
+      </>
+    )}
 
     <script is:inline>
       (() => {
@@ -311,10 +326,11 @@ const localeRedirectConfig = JSON.stringify({
       >
         <slot />
       </main>
-      {includeChrome && <Footer locale={locale} />}
+      {includeChrome && <Footer locale={locale} hidePlatform={footerHidePlatform} />}
       {includeChrome && <ScrollToTopButton />}
       <script>
         import { bindCheckoutAutoOpen } from '@/utils/checkoutAutoOpen';
+        import { bindDownloadTracking } from '@/utils/download';
         import { bindPricingCheckout } from '@/utils/pricingCheckout';
         import { bindScrollReveal } from '@/utils/scrollReveal';
         import { bindScrollToTopButton } from '@/utils/scrollToTop';
@@ -391,6 +407,7 @@ const localeRedirectConfig = JSON.stringify({
         };
 
         bindCheckoutAutoOpen();
+        bindDownloadTracking();
         bindLanguageSwitcher();
         bindPricingCheckout();
         bindScrollReveal();
@@ -398,6 +415,7 @@ const localeRedirectConfig = JSON.stringify({
         bindStoreLinks();
         document.addEventListener('astro:after-swap', () => {
           bindCheckoutAutoOpen();
+          bindDownloadTracking();
           bindLanguageSwitcher();
           bindPricingCheckout();
           bindScrollReveal();

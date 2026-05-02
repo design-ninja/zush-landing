@@ -14,7 +14,6 @@ import {
   getDownloadUrl,
   getOSLabel,
   getOtherOS,
-  trackDownloadClick,
 } from '@/utils/download';
 import styles from './DownloadButton.module.scss';
 
@@ -32,6 +31,7 @@ interface DownloadButtonProps {
   useMobileModal?: boolean;
   forceOS?: DownloadOS;
   showDropdown?: boolean;
+  includeOtherOS?: boolean;
   menuCopy?: DownloadMenuCopy;
 }
 
@@ -54,11 +54,11 @@ const DownloadButton = ({
   useMobileModal = true,
   forceOS,
   showDropdown = true,
+  includeOtherOS = true,
   menuCopy = DEFAULT_MENU_COPY,
 }: DownloadButtonProps) => {
-  const { downloadOS: detectedOS, manual: detectedManual } = useOS();
+  const { downloadOS: detectedOS } = useOS();
   const downloadOS = forceOS ?? detectedOS;
-  const manual = forceOS ? true : detectedManual;
   const isMobile = useIsMobile();
   const [isOpen, setIsOpen] = useState(false);
   const [hasLoadedModal, setHasLoadedModal] = useState(false);
@@ -103,7 +103,6 @@ const DownloadButton = ({
   }, [isOpen, showDropdown]);
 
   const handlePrimaryClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    trackDownloadClick({ os: downloadOS, source, manual });
     if (useMobileModal && isMobile) {
       event.preventDefault();
       setHasLoadedModal(true);
@@ -121,12 +120,10 @@ const DownloadButton = ({
   };
 
   const handleOtherClick = () => {
-    trackDownloadClick({ os: otherOS, source, manual: true });
     setIsOpen(false);
   };
 
   const handleAppStoreClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    trackDownloadClick({ os: 'mac', source, manual: true, channel: 'mac-app-store' });
     handleStoreLinkClick(event, {
       os: 'mac',
       appUrl: APP_STORE_PROTOCOL_URL,
@@ -144,6 +141,9 @@ const DownloadButton = ({
       href={otherUrl}
       target='_blank'
       rel='noopener noreferrer'
+      data-download-os={otherOS}
+      data-download-source={source}
+      data-download-channel={otherOS === 'windows' ? 'microsoft-store' : 'direct'}
       onClick={handleOtherClick}
     >
       <span className={styles.Menu__Icon}>
@@ -170,6 +170,9 @@ const DownloadButton = ({
       data-store-os='mac'
       data-store-app-url={APP_STORE_PROTOCOL_URL}
       data-store-web-url={APP_STORE_URL}
+      data-download-os='mac'
+      data-download-source={source}
+      data-download-channel='mac-app-store'
       onClick={handleAppStoreClick}
     >
       <span className={`${styles.Menu__Icon} ${styles.Menu__Icon_appStore}`}>
@@ -181,9 +184,16 @@ const DownloadButton = ({
       </span>
     </a>
   );
-  const menuItems = downloadOS === 'windows'
-    ? [renderOtherOSMenuItem(), renderAppStoreMenuItem()]
-    : [renderAppStoreMenuItem(), renderOtherOSMenuItem()];
+  const menuItems = (() => {
+    if (downloadOS === 'windows') {
+      return includeOtherOS ? [renderOtherOSMenuItem(), renderAppStoreMenuItem()] : [];
+    }
+
+    return includeOtherOS
+      ? [renderAppStoreMenuItem(), renderOtherOSMenuItem()]
+      : [renderAppStoreMenuItem()];
+  })();
+  const hasDropdownItems = showDropdown && menuItems.length > 0;
 
   return (
     <div
@@ -192,7 +202,7 @@ const DownloadButton = ({
         styles.Group,
         styles[`Group_${variant}`],
         styles[`Group_${size}`],
-        !showDropdown ? styles.Group_single : '',
+        !hasDropdownItems ? styles.Group_single : '',
         isOpen ? styles.Group_open : '',
         className,
       ]
@@ -200,19 +210,22 @@ const DownloadButton = ({
         .join(' ')}
     >
       <a
-        className={[styles.Main, !showDropdown ? styles.Main_single : ''].filter(Boolean).join(' ')}
+        className={[styles.Main, !hasDropdownItems ? styles.Main_single : ''].filter(Boolean).join(' ')}
         href={primaryHref}
         target='_blank'
         rel='noopener noreferrer'
         data-store-os={downloadOS === 'windows' ? 'windows' : undefined}
         data-store-app-url={downloadOS === 'windows' ? WINDOWS_STORE_PROTOCOL_URL : undefined}
         data-store-web-url={downloadOS === 'windows' ? WINDOWS_STORE_URL : undefined}
+        data-download-os={downloadOS}
+        data-download-source={source}
+        data-download-channel={downloadOS === 'windows' ? 'microsoft-store' : 'direct'}
         onClick={handlePrimaryClick}
       >
         {downloadOS === 'windows' ? <WindowsIcon colored /> : <AppleIcon />}
         <span>{label}</span>
       </a>
-      {showDropdown && (
+      {hasDropdownItems && (
         <button
           type='button'
           className={styles.Toggle}
@@ -225,7 +238,7 @@ const DownloadButton = ({
         </button>
       )}
 
-      {showDropdown && isOpen && (
+      {hasDropdownItems && isOpen && (
         <div role='menu' className={styles.Menu}>
           {menuItems}
         </div>

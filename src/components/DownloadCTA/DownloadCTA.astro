@@ -14,6 +14,7 @@ interface Props {
   hintPrefix?: string;
   downloadLabel?: string;
   downloadMenu?: DownloadMenuCopy;
+  includeOtherDownloadOS?: boolean;
 }
 
 const {
@@ -24,6 +25,7 @@ const {
   hintPrefix = 'Free · No credit card required',
   downloadLabel,
   downloadMenu,
+  includeOtherDownloadOS = true,
 } = Astro.props as Props;
 
 const resolvedTitle = title ?? 'Try Zush free';
@@ -43,6 +45,7 @@ const downloadOS = forceOS ?? 'mac';
           forceOS={forceOS}
           label={downloadLabel}
           menuCopy={downloadMenu}
+          includeOtherOS={includeOtherDownloadOS}
         />
       </div>
       <Text as="p" size="xs" color="subtle" className={styles.Hint}>

@@ -80,6 +80,9 @@ const hintClasses = [
               data-href-mac={getDownloadUrl('mac')}
               data-href-windows={getDownloadUrl('windows')}
               data-store-app-url-windows={WINDOWS_STORE_PROTOCOL_URL}
+              data-download-os='mac'
+              data-download-source='blog-cta'
+              data-download-channel='direct'
               href={getDownloadUrl('mac')}
               rel='noopener noreferrer'
               target='_blank'
@@ -125,6 +128,9 @@ const hintClasses = [
               href={getDownloadUrl(platform === 'windows' ? 'windows' : 'mac')}
               data-store-os={platform === 'windows' ? 'windows' : undefined}
               data-store-app-url={platform === 'windows' ? WINDOWS_STORE_PROTOCOL_URL : undefined}
+              data-download-os={platform === 'windows' ? 'windows' : 'mac'}
+              data-download-source='blog-cta'
+              data-download-channel={platform === 'windows' ? 'microsoft-store' : 'direct'}
               rel='noopener noreferrer'
               target='_blank'
             >

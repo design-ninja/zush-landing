@@ -43,6 +43,9 @@ const seo = locale === DEFAULT_LOCALE ? getSeoForPath(page.path) : getLocalizedS
 const platformLabel = platform === 'mac' ? 'Mac' : 'Windows';
 const pagePath = getLocalizedPath(page.path, locale);
 const platformSections = getPlatformLandingSections(platform, locale, copy);
+const includeOtherDownloadOS = platform !== 'mac';
+const shouldShowCrossPlatformBanner = platform !== 'mac';
+const footerHidePlatform = platform === 'mac' ? 'windows' : undefined;
 
 const specifics = getLocalizedPlatformSpecificsContent(
   platform,
@@ -99,6 +102,7 @@ const softwareJsonLd = {
   seo={seo}
   locale={locale}
   forceOS={platform}
+  footerHidePlatform={footerHidePlatform}
   chromeBasePath={pagePath}
   disableTopOffset
   jsonLd={[
@@ -116,6 +120,7 @@ const softwareJsonLd = {
     buyLabel={copy.home.buyPro}
     downloadLabel={copy.header.download}
     downloadMenu={copy.downloadMenu}
+    includeOtherDownloadOS={includeOtherDownloadOS}
     trustSignals={copy.home.trustSignals}
     secondaryHref="#pricing"
     slides={copy.home.showcaseSlides}
@@ -128,6 +133,7 @@ const softwareJsonLd = {
     hintPrefix={copy.home.downloadHintPrefix}
     downloadLabel={copy.header.download}
     downloadMenu={copy.downloadMenu}
+    includeOtherDownloadOS={includeOtherDownloadOS}
   />
   <PlatformSpecifics platform={platform} locale={locale} />
   <Features
@@ -147,7 +153,7 @@ const softwareJsonLd = {
     copy={platformSections.useCases}
   />
   <Pricing copy={copy.pricing} />
-  <CrossPlatformBanner locale={locale} hidePlatform={platform} />
+  {shouldShowCrossPlatformBanner && <CrossPlatformBanner locale={locale} hidePlatform={platform} />}
   <PlatformGuides platform={platform} locale={locale} />
   <FAQ
     client:visible
