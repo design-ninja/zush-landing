@@ -220,9 +220,8 @@ function waitForOAuthCode(port, expectedState) {
 
       if (!code || state !== expectedState) {
         res.writeHead(400, { 'Content-Type': 'text/plain; charset=utf-8' });
-        res.end('Invalid OAuth callback.');
-        server.close();
-        reject(new Error('Invalid OAuth callback.'));
+        res.end('Invalid OAuth callback. Return to the terminal and keep the auth command running.');
+        console.warn(`Ignored invalid OAuth callback: ${describeOAuthCallback(url, expectedState)}`);
         return;
       }
 
@@ -237,6 +236,21 @@ function waitForOAuthCode(port, expectedState) {
     });
 
     server.listen(port, '127.0.0.1');
+  });
+}
+
+function describeOAuthCallback(url, expectedState) {
+  const state = url.searchParams.get('state');
+  const hasCode = url.searchParams.has('code');
+  const error = url.searchParams.get('error');
+
+  return JSON.stringify({
+    path: url.pathname,
+    hasCode,
+    stateMatches: state === expectedState,
+    receivedState: state ? `${state.slice(0, 8)}...` : null,
+    expectedState: `${expectedState.slice(0, 8)}...`,
+    error,
   });
 }
 
