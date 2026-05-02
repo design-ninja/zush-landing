@@ -52,6 +52,7 @@ const SpeedComparison = ({
   const zushVideoRef = useRef<HTMLVideoElement>(null);
   const rivalVideoRef = useRef<HTMLVideoElement>(null);
   const [theme, setTheme] = useState<'light' | 'dark'>(getDocumentTheme);
+  const [mounted, setMounted] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
   const [runId, setRunId] = useState(0);
   const [zushElapsed, setZushElapsed] = useState(0);
@@ -59,6 +60,10 @@ const SpeedComparison = ({
   const [isSkipping, setIsSkipping] = useState(false);
   const skipRafRef = useRef<number | null>(null);
   const skipActiveRef = useRef(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -288,16 +293,18 @@ const SpeedComparison = ({
             </div>
 
             <div className={styles.Media}>
-              <video
-                ref={zushVideoRef}
-                key={`zush-${theme}`}
-                className={styles.Media__Video}
-                src={zushSrc}
-                muted
-                playsInline
-                preload='auto'
-                aria-label={`${copy.zushLabel}: ${copy.zushCaption}`}
-              />
+              {mounted && (
+                <video
+                  ref={zushVideoRef}
+                  key={`zush-${theme}`}
+                  className={styles.Media__Video}
+                  src={zushSrc}
+                  muted
+                  playsInline
+                  preload='auto'
+                  aria-label={`${copy.zushLabel}: ${copy.zushCaption}`}
+                />
+              )}
             </div>
 
             <p className={styles.Card__Caption}>{copy.zushCaption}</p>
@@ -348,7 +355,7 @@ const SpeedComparison = ({
             </div>
 
             <div className={`${styles.Media} ${styles.Media_rival} ${isSkipping ? styles.Media_skipping : ''}`}>
-              {hasRivalVideo ? (
+              {hasRivalVideo && mounted ? (
                 <video
                   ref={rivalVideoRef}
                   key={`rival-${theme}`}
@@ -359,7 +366,7 @@ const SpeedComparison = ({
                   preload='auto'
                   aria-label={`${copy.rivalLabel}: ${copy.rivalCaption}`}
                 />
-              ) : (
+              ) : !hasRivalVideo ? (
                 <div className={styles.Placeholder} aria-hidden='true'>
                   <div className={styles.Placeholder__Window}>
                     <div className={styles.Placeholder__TitleBar}>
@@ -386,7 +393,7 @@ const SpeedComparison = ({
                   </div>
                   <span className={styles.Placeholder__Hint}>{copy.rivalPlaceholderHint}</span>
                 </div>
-              )}
+              ) : null}
             </div>
 
             <p className={styles.Card__Caption}>{copy.rivalCaption}</p>
