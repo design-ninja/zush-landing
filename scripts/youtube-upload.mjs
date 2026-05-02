@@ -103,6 +103,8 @@ function parseArgs(argv) {
   for (let index = 0; index < rest.length; index += 1) {
     const arg = rest[index];
     switch (arg) {
+      case '--':
+        break;
       case '--only':
         options.only = new Set((rest[++index] || '').split(',').map((item) => item.trim()).filter(Boolean));
         break;
