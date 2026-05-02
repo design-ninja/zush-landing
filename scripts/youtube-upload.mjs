@@ -36,8 +36,8 @@ Options:
   --port number          OAuth localhost callback port. Default: 8787.
 
 Environment:
-  YOUTUBE_CLIENT_ID      OAuth 2.0 client id from Google Cloud.
-  YOUTUBE_CLIENT_SECRET  OAuth 2.0 client secret from Google Cloud.
+  GOOGLE_CLIENT_ID       OAuth 2.0 client id from Google Cloud.
+  GOOGLE_CLIENT_SECRET   OAuth 2.0 client secret from Google Cloud.
   YOUTUBE_REDIRECT_PORT  Optional default OAuth callback port.
 `);
 }
@@ -84,8 +84,6 @@ function loadEnvFile(path) {
 
 function loadLocalEnv() {
   loadEnvFile(join(ROOT, '.env'));
-  loadEnvFile(join(ROOT, '.env.local'));
-  loadEnvFile(join(ROOT, '.env.youtube.local'));
 }
 
 function parseArgs(argv) {
@@ -152,11 +150,11 @@ function parseArgs(argv) {
 }
 
 function getOAuthClient() {
-  const clientId = process.env.YOUTUBE_CLIENT_ID || process.env.GOOGLE_CLIENT_ID;
-  const clientSecret = process.env.YOUTUBE_CLIENT_SECRET || process.env.GOOGLE_CLIENT_SECRET;
+  const clientId = process.env.GOOGLE_CLIENT_ID;
+  const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
 
   if (!clientId || !clientSecret) {
-    fail('Set YOUTUBE_CLIENT_ID/YOUTUBE_CLIENT_SECRET or GOOGLE_CLIENT_ID/GOOGLE_CLIENT_SECRET in .env, .env.local, .env.youtube.local, or your shell.');
+    fail('Set GOOGLE_CLIENT_ID/GOOGLE_CLIENT_SECRET in .env or your shell.');
   }
 
   return { clientId, clientSecret };
