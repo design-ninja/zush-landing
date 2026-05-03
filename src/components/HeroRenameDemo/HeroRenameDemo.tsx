@@ -142,7 +142,6 @@ const MAX_IMAGE_SIDE = 720;
 const MAX_DOCUMENT_IMAGES = 3;
 const PREVIEW_THUMBNAIL_WIDTH = 360;
 const PREVIEW_THUMBNAIL_HEIGHT = 272;
-const PREVIEW_THUMBNAIL_BACKGROUND = '#111117';
 const ALPHA_CROP_SAMPLE_SIDE = 420;
 const SILENT_AUDIO_SRC = 'data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA==';
 
@@ -338,6 +337,10 @@ function canvasToJpegDataUrl(canvas: HTMLCanvasElement): string {
   return canvas.toDataURL('image/jpeg', 0.72);
 }
 
+function canvasToPngDataUrl(canvas: HTMLCanvasElement): string {
+  return canvas.toDataURL('image/png');
+}
+
 interface SourceCrop {
   x: number;
   y: number;
@@ -421,12 +424,11 @@ function createCoverThumbnailDataUrl(
   const x = (canvas.width - width) / 2;
   const y = (canvas.height - height) / 2;
 
-  context.fillStyle = PREVIEW_THUMBNAIL_BACKGROUND;
-  context.fillRect(0, 0, canvas.width, canvas.height);
+  context.clearRect(0, 0, canvas.width, canvas.height);
   context.imageSmoothingQuality = 'high';
   context.drawImage(source, crop.x, crop.y, crop.width, crop.height, x, y, width, height);
 
-  return canvasToJpegDataUrl(canvas);
+  return canvasToPngDataUrl(canvas);
 }
 
 function normalizeWhitespace(value: string): string {
@@ -1643,9 +1645,8 @@ async function preparePdfFile(file: File): Promise<PreparedFile['payload'] & { t
 
   try {
     const pageCount = pdf.numPages;
-    const pageNumbers = Array.from(
-      { length: Math.min(pageCount, MAX_DOCUMENT_IMAGES) },
-      (_, index) => index + 1,
+    const pageNumbers = sampleIndices(pageCount, MAX_DOCUMENT_IMAGES).map(
+      (index) => index + 1,
     );
     const pages = await Promise.all(pageNumbers.map((pageNumber) => pdf.getPage(pageNumber)));
     const textItems = await Promise.all(
@@ -1767,7 +1768,16 @@ function getRunStatus(successCount: number, errorCount: number): RunTelemetrySna
   return 'failed';
 }
 
-async function analyzePreviewFiles(files: PreviewPayloadFile[], locale: Locale | undefined, runId: string) {
+function formatElapsedSeconds(durationMs: number): number {
+  return Math.round(Math.max(0, durationMs) / 100) / 10;
+}
+
+async function analyzePreviewFiles(
+  files: PreviewPayloadFile[],
+  locale: Locale | undefined,
+  runId: string,
+  clientPrepareDurationMs: number,
+) {
   const response = await fetch(`${SUPABASE_URL}/functions/v1/web-preview-analyze`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -1775,6 +1785,7 @@ async function analyzePreviewFiles(files: PreviewPayloadFile[], locale: Locale |
       visitor_id: getOrCreateVisitorId(),
       run_id: runId,
       locale,
+      client_prepare_duration_ms: Math.max(0, Math.round(clientPrepareDurationMs)),
       files,
     }),
   });
@@ -1986,7 +1997,7 @@ const HeroRenameDemo = ({
     if (!runStartedAt || runFinishedAt) return undefined;
 
     const updateElapsed = () => {
-      setElapsedSeconds(Math.floor((Date.now() - runStartedAt) / 1000));
+      setElapsedSeconds(formatElapsedSeconds(Date.now() - runStartedAt));
     };
     updateElapsed();
 
@@ -2187,10 +2198,12 @@ const HeroRenameDemo = ({
       preparedFiles.forEach((item) => updateFile(item.id, { status: 'analyzing' }));
 
       try {
+        const clientPrepareDurationMs = Date.now() - startedAt;
         const results = await analyzePreviewFiles(
           preparedFiles.map((item) => item.payload),
           locale,
           runId,
+          clientPrepareDurationMs,
         );
         shouldPlayCompletionSound = results.some((result) => Boolean(result?.suggested_name && !result.error));
         const analysisSuccessCount = results.filter((result) => Boolean(result?.suggested_name && !result.error)).length;
@@ -2250,7 +2263,7 @@ const HeroRenameDemo = ({
     } finally {
       const finishedAt = Date.now();
       setRunFinishedAt(finishedAt);
-      setElapsedSeconds(Math.max(1, Math.ceil((finishedAt - startedAt) / 1000)));
+      setElapsedSeconds(formatElapsedSeconds(finishedAt - startedAt));
       setLastRunTelemetry({
         runId,
         files: telemetryFiles,

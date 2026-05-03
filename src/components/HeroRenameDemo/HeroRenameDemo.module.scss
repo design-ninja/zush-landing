@@ -384,7 +384,7 @@
     }
 
     &__Preview {
-        --rename-demo-preview-bg: color-mix(in oklab, var(--primary) 14%, var(--muted));
+        --rename-demo-preview-bg: color-mix(in oklab, var(--primary) 18%, #f7f4ff);
         --rename-demo-preview-color: var(--primary);
 
         display: grid;
@@ -396,6 +396,10 @@
         background: var(--rename-demo-preview-bg);
         color: var(--rename-demo-preview-color);
         flex-shrink: 0;
+
+        [data-theme="dark"] & {
+            --rename-demo-preview-bg: color-mix(in oklab, var(--primary) 18%, var(--card));
+        }
 
         &_document {
             --rename-demo-preview-bg: oklch(var(--case-icon-bg-l) var(--case-icon-bg-c) var(--h-blue));
