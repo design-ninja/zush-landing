@@ -58,6 +58,7 @@ const availableOptions = LOCALES
         role="menuitem"
         data-language-option
         data-locale={item}
+        data-astro-reload
         aria-current={item === locale ? 'page' : undefined}
       >
         <span class={styles.LanguageSwitcher__MenuFlag} aria-hidden="true">{LOCALE_META[item].flag}</span>

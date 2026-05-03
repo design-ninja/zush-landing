@@ -2103,19 +2103,6 @@ const HeroRenameDemo = ({
         </div>
         <div className={styles.RenameDemo__HeaderRight}>
           {renderAnimatedSparkles()}
-          {effectiveOS === 'windows' && (
-            <div className={styles.RenameDemo__ChromeWindows} aria-hidden='true'>
-              <span className={styles.RenameDemo__ChromeWinBtn}>
-                <svg viewBox='0 0 12 12' width='10' height='10' fill='none'><path d='M2 6h8' stroke='currentColor' strokeWidth='1' strokeLinecap='square' /></svg>
-              </span>
-              <span className={styles.RenameDemo__ChromeWinBtn}>
-                <svg viewBox='0 0 12 12' width='9' height='9' fill='none'><rect x='2.5' y='2.5' width='7' height='7' stroke='currentColor' strokeWidth='1' /></svg>
-              </span>
-              <span className={`${styles.RenameDemo__ChromeWinBtn} ${styles.RenameDemo__ChromeWinBtn_close}`}>
-                <svg viewBox='0 0 12 12' width='10' height='10' fill='none'><path d='M2.5 2.5l7 7M9.5 2.5l-7 7' stroke='currentColor' strokeWidth='1' strokeLinecap='square' /></svg>
-              </span>
-            </div>
-          )}
         </div>
       </div>
 

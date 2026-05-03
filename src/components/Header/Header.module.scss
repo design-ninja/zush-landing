@@ -14,13 +14,19 @@
     &__Container {
         @include container;
         display: grid;
-        grid-template-columns: 1fr auto 1fr;
+        width: 100%;
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
         align-items: center;
         height: 100%;
         gap: 1.5rem;
 
+        > a:first-child {
+            justify-self: start;
+            min-width: 0;
+        }
+
         @include tablet {
-            grid-template-columns: 1fr auto 1fr;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
             gap: 1rem;
         }
 
@@ -34,10 +40,13 @@
             padding-left: 0.85rem;
             padding-right: 0.85rem;
         }
+
     }
 
     &__Nav {
         display: flex;
+        min-width: 0;
+        justify-self: center;
         justify-content: center;
         align-items: center;
         gap: 1.75rem;
@@ -64,7 +73,11 @@
     }
 
     &__Actions {
+        position: relative;
         display: flex;
+        min-width: 0;
+        max-width: 100%;
+        justify-self: end;
         align-items: center;
         justify-content: flex-end;
         flex-wrap: nowrap;
@@ -170,18 +183,18 @@
 
     &[data-cta-state='hidden'] &__Buttons {
         max-width: 0;
-        margin-left: -2rem;
+        margin-left: 0;
         overflow: hidden;
         opacity: 0;
         transform: translateY(-4px);
         pointer-events: none;
 
         @include tablet {
-            margin-left: -1rem;
+            margin-left: 0;
         }
 
         @include mobile {
-            margin-left: -1rem;
+            margin-left: 0;
         }
     }
 
@@ -194,5 +207,39 @@
             display: none !important;
         }
     }
-}
 
+    &__MobileBuyBtn {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        min-height: 2.25rem;
+        padding: 0 1rem;
+        border-radius: $radius-full;
+        @include corner-shape-squircle;
+        background-color: var(--primary);
+        color: var(--primary-foreground);
+        font-size: 0.9rem;
+        font-weight: 600;
+        line-height: 1;
+        white-space: nowrap;
+        text-decoration: none;
+        transition:
+            background-color $transition-fast,
+            transform $transition-fast;
+
+        &:hover,
+        &:focus-visible {
+            background-color: var(--primary-hover);
+            color: var(--primary-foreground);
+            outline: none;
+        }
+
+        &:focus-visible {
+            box-shadow: 0 0 0 2px var(--primary-soft);
+        }
+
+        @include mobile {
+            display: inline-flex;
+        }
+    }
+}
