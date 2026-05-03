@@ -17,7 +17,6 @@ import {
   Layers,
   MessageSquareText,
   Presentation,
-  Sparkles,
   Tags,
   Upload,
   X,
@@ -124,6 +123,7 @@ const PREVIEW_THUMBNAIL_WIDTH = 360;
 const PREVIEW_THUMBNAIL_HEIGHT = 272;
 const PREVIEW_THUMBNAIL_BACKGROUND = '#111117';
 const ALPHA_CROP_SAMPLE_SIDE = 420;
+const SILENT_AUDIO_SRC = 'data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA==';
 
 const IMAGE_EXTENSIONS = new Set([
   'png',
@@ -1565,6 +1565,37 @@ async function renderPdfPageToPreview(page: any) {
   };
 }
 
+async function readPdfPageText(page: any): Promise<string> {
+  if (typeof page.streamTextContent === 'function') {
+    const stream = page.streamTextContent();
+    const reader = stream?.getReader?.();
+
+    if (reader) {
+      const chunks: string[] = [];
+
+      try {
+        while (true) {
+          const { value, done } = await reader.read();
+          if (done) break;
+
+          chunks.push(
+            ...(value?.items ?? [])
+              .map((item: any) => item.str ?? '')
+              .filter(Boolean),
+          );
+        }
+      } finally {
+        reader.releaseLock?.();
+      }
+
+      return chunks.join(' ');
+    }
+  }
+
+  const content = await page.getTextContent();
+  return content.items.map((item: any) => item.str ?? '').join(' ');
+}
+
 async function preparePdfFile(file: File): Promise<PreparedFile['payload'] & { thumbnailDataUrl?: string }> {
   const pdfjsLib = await getPdfJs();
   const arrayBuffer = await file.arrayBuffer();
@@ -1581,10 +1612,7 @@ async function preparePdfFile(file: File): Promise<PreparedFile['payload'] & { t
     );
     const pages = await Promise.all(pageNumbers.map((pageNumber) => pdf.getPage(pageNumber)));
     const textItems = await Promise.all(
-      pages.map(async (page) => {
-        const content = await page.getTextContent();
-        return content.items.map((item: any) => item.str ?? '').join(' ');
-      }),
+      pages.map((page) => readPdfPageText(page)),
     );
     const previews = await Promise.all(pages.map((page) => renderPdfPageToPreview(page)));
 
@@ -1725,6 +1753,7 @@ function getFileIcon(file: DemoFile) {
 }
 
 function getPreviewToneClass(file: DemoFile) {
+  if (file.extension === 'pdf') return styles.RenameDemo__Preview_pdf;
   if (SPREADSHEET_PREVIEW_EXTENSIONS.has(file.extension)) return styles.RenameDemo__Preview_spreadsheet;
   if (PRESENTATION_PREVIEW_EXTENSIONS.has(file.extension)) return styles.RenameDemo__Preview_presentation;
   if (DOCUMENT_PREVIEW_EXTENSIONS.has(file.extension)) return styles.RenameDemo__Preview_document;
@@ -1884,23 +1913,27 @@ const HeroRenameDemo = ({
   };
 
   const primeCompletionSound = () => {
-    const sound = getCompletionSound();
-    sound.volume = 0;
-    sound.currentTime = 0;
-    void sound.play()
+    const completionSound = getCompletionSound();
+    completionSound.load();
+
+    const silentSound = new Audio(SILENT_AUDIO_SRC);
+    silentSound.muted = true;
+    silentSound.volume = 0;
+    void silentSound.play()
       .then(() => {
-        sound.pause();
-        sound.currentTime = 0;
-        sound.volume = 0.5;
+        silentSound.pause();
+        silentSound.removeAttribute('src');
+        silentSound.load();
       })
       .catch(() => {
-        sound.volume = 0.5;
-        sound.load();
+        silentSound.removeAttribute('src');
+        silentSound.load();
       });
   };
 
   const playCompletionSound = () => {
     const sound = getCompletionSound();
+    sound.muted = false;
     sound.volume = 0.5;
     sound.pause();
     sound.currentTime = 0;
@@ -2267,7 +2300,6 @@ const HeroRenameDemo = ({
         )}
       </div>
       </div>
-      <p className={styles.RenameDemoSecurityHint}>{copy.privacyHint}</p>
     </>
   );
 };

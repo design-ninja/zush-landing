@@ -10,6 +10,7 @@ export interface FAQCopyItem {
 export interface HeaderCopy {
   features: string;
   pricing: string;
+  faq: string;
   blog: string;
   buyPro: string;
   download: string;
@@ -818,6 +819,7 @@ export const EN_COPY: LocaleCopy = {
   header: {
     features: 'Features',
     pricing: 'Pricing',
+    faq: 'FAQ',
     blog: 'Blog',
     buyPro: 'Buy 🌟 PRO',
     download: 'Download',
@@ -996,8 +998,8 @@ export const EN_COPY: LocaleCopy = {
     renameDemo: {
       eyebrow: 'Quick demo',
       title: 'Zush AI Rename Demo',
-      emptyTitle: 'Drop files here',
-      emptySubtitle: 'Demo: up to 5 files. Unlock folder monitoring, BYOK, offline AI, and more in the app.',
+      emptyTitle: 'Drop files here to try',
+      emptySubtitle: 'Demo: up to 5 files. Only temporary previews are sent; originals stay private and are never uploaded or stored.',
       selectFiles: 'Select files...',
       supportedFormatsLabel: 'Supported preview formats',
       privacyHint: 'Your files stay private. This demo only sends a temporary preview; original files are never uploaded or stored.',
@@ -1243,6 +1245,14 @@ const localized = (overrides: DeepPartial<LocaleCopy>): LocaleCopy => ({
       errors: {
         ...base.home.renameDemo.errors,
         ...overrides.home?.renameDemo?.errors,
+      },
+      cta: {
+        ...base.home.renameDemo.cta,
+        ...overrides.home?.renameDemo?.cta,
+        features: {
+          ...base.home.renameDemo.cta.features,
+          ...overrides.home?.renameDemo?.cta?.features,
+        },
       },
     },
     faqItems: overrides.home?.faqItems ?? base.home.faqItems,
@@ -2556,7 +2566,7 @@ const withLocalizedFileExamples = (
 export const COPY: Record<Locale, LocaleCopy> = {
   en: base,
   de: localized({
-    header: { features: 'Funktionen', pricing: 'Preise', blog: 'Blog', buyPro: '🌟 PRO kaufen', download: 'Download', toggleTheme: 'Design wechseln', language: 'Sprache', homeAria: 'Zur Startseite', skipToContent: 'Zum Inhalt springen' },
+    header: { features: 'Funktionen', pricing: 'Preise', faq: 'FAQ', blog: 'Blog', buyPro: '🌟 PRO kaufen', download: 'Download', toggleTheme: 'Design wechseln', language: 'Sprache', homeAria: 'Zur Startseite', skipToContent: 'Zum Inhalt springen' },
     downloadMenu: localizedDownloadMenu.de,
     footer: {
       description: 'KI-Dateiumbenennung für Mac und Windows — Dateien automatisch mit KI benennen',
@@ -2620,7 +2630,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   fr: localized({
-    header: { features: 'Fonctions', pricing: 'Tarifs', blog: 'Blog', buyPro: 'Acheter 🌟 PRO', download: 'Télécharger', toggleTheme: 'Changer le thème', language: 'Langue', homeAria: 'Aller à l’accueil', skipToContent: 'Aller au contenu' },
+    header: { features: 'Fonctions', pricing: 'Tarifs', faq: 'FAQ', blog: 'Blog', buyPro: 'Acheter 🌟 PRO', download: 'Télécharger', toggleTheme: 'Changer le thème', language: 'Langue', homeAria: 'Aller à l’accueil', skipToContent: 'Aller au contenu' },
     downloadMenu: localizedDownloadMenu.fr,
     footer: { description: 'Renommeur de fichiers IA pour Mac et Windows — renommez vos fichiers automatiquement', product: 'Produit', byFileType: 'Par type', resources: 'Ressources', support: 'Support', pricing: 'Tarifs', contactSupport: 'Contacter le support', feedback: 'Fonctions & bugs', terms: 'Conditions', privacy: 'Confidentialité', refund: 'Remboursement', ...localizedFooterDetails.fr },
     home: {
@@ -2660,7 +2670,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   'pt-br': localized({
-    header: { features: 'Recursos', pricing: 'Preços', blog: 'Blog', buyPro: 'Comprar 🌟 PRO', download: 'Baixar', toggleTheme: 'Alternar tema', language: 'Idioma', homeAria: 'Ir para o início', skipToContent: 'Pular para o conteúdo' },
+    header: { features: 'Recursos', pricing: 'Preços', faq: 'FAQ', blog: 'Blog', buyPro: 'Comprar 🌟 PRO', download: 'Baixar', toggleTheme: 'Alternar tema', language: 'Idioma', homeAria: 'Ir para o início', skipToContent: 'Pular para o conteúdo' },
     downloadMenu: localizedDownloadMenu['pt-br'],
     footer: { description: 'Renomeador de arquivos com IA para Mac e Windows — renomeie arquivos automaticamente', product: 'Produto', byFileType: 'Por tipo', resources: 'Recursos', support: 'Suporte', pricing: 'Preços', contactSupport: 'Falar com suporte', feedback: 'Recursos e bugs', terms: 'Termos', privacy: 'Privacidade', refund: 'Reembolso', ...localizedFooterDetails['pt-br'] },
     home: {
@@ -2700,7 +2710,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   es: localized({
-    header: { features: 'Funciones', pricing: 'Precios', blog: 'Blog', buyPro: 'Comprar 🌟 PRO', download: 'Descargar', toggleTheme: 'Cambiar tema', language: 'Idioma', homeAria: 'Ir al inicio', skipToContent: 'Saltar al contenido' },
+    header: { features: 'Funciones', pricing: 'Precios', faq: 'FAQ', blog: 'Blog', buyPro: 'Comprar 🌟 PRO', download: 'Descargar', toggleTheme: 'Cambiar tema', language: 'Idioma', homeAria: 'Ir al inicio', skipToContent: 'Saltar al contenido' },
     downloadMenu: localizedDownloadMenu.es,
     footer: { description: 'Renombrador de archivos con IA para Mac y Windows — renombra archivos automáticamente', product: 'Producto', byFileType: 'Por tipo', resources: 'Recursos', support: 'Soporte', pricing: 'Precios', contactSupport: 'Contactar soporte', feedback: 'Funciones y errores', terms: 'Términos', privacy: 'Privacidad', refund: 'Reembolso', ...localizedFooterDetails.es },
     home: {
@@ -2740,7 +2750,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   nl: localized({
-    header: { features: 'Functies', pricing: 'Prijzen', blog: 'Blog', buyPro: 'Koop 🌟 PRO', download: 'Download', toggleTheme: 'Thema wisselen', language: 'Taal', homeAria: 'Naar home', skipToContent: 'Naar inhoud' },
+    header: { features: 'Functies', pricing: 'Prijzen', faq: 'FAQ', blog: 'Blog', buyPro: 'Koop 🌟 PRO', download: 'Download', toggleTheme: 'Thema wisselen', language: 'Taal', homeAria: 'Naar home', skipToContent: 'Naar inhoud' },
     downloadMenu: localizedDownloadMenu.nl,
     footer: { description: 'AI-bestandshernoemer voor Mac en Windows — hernoem bestanden automatisch', product: 'Product', byFileType: 'Per type', resources: 'Bronnen', support: 'Support', pricing: 'Prijzen', contactSupport: 'Support contacteren', feedback: 'Functies & bugs', terms: 'Voorwaarden', privacy: 'Privacy', refund: 'Terugbetaling', ...localizedFooterDetails.nl },
     home: {
@@ -2780,7 +2790,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   it: localized({
-    header: { features: 'Funzioni', pricing: 'Prezzi', blog: 'Blog', buyPro: 'Acquista 🌟 PRO', download: 'Scarica', toggleTheme: 'Cambia tema', language: 'Lingua', homeAria: 'Vai alla home', skipToContent: 'Vai al contenuto' },
+    header: { features: 'Funzioni', pricing: 'Prezzi', faq: 'FAQ', blog: 'Blog', buyPro: 'Acquista 🌟 PRO', download: 'Scarica', toggleTheme: 'Cambia tema', language: 'Lingua', homeAria: 'Vai alla home', skipToContent: 'Vai al contenuto' },
     downloadMenu: localizedDownloadMenu.it,
     footer: { description: 'Rinomina file con IA per Mac e Windows — rinomina automaticamente i file', product: 'Prodotto', byFileType: 'Per tipo', resources: 'Risorse', support: 'Supporto', pricing: 'Prezzi', contactSupport: 'Contatta supporto', feedback: 'Funzioni e bug', terms: 'Termini', privacy: 'Privacy', refund: 'Rimborso', ...localizedFooterDetails.it },
     home: {
@@ -2820,7 +2830,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   ja: localized({
-    header: { features: '機能', pricing: '料金', blog: 'ブログ', buyPro: '🌟 PROを購入', download: 'ダウンロード', toggleTheme: 'テーマ切替', language: '言語', homeAria: 'ホームへ移動', skipToContent: 'コンテンツへスキップ' },
+    header: { features: '機能', pricing: '料金', faq: 'FAQ', blog: 'ブログ', buyPro: '🌟 PROを購入', download: 'ダウンロード', toggleTheme: 'テーマ切替', language: '言語', homeAria: 'ホームへ移動', skipToContent: 'コンテンツへスキップ' },
     downloadMenu: localizedDownloadMenu.ja,
     footer: { description: 'Mac と Windows 向け AI ファイルリネーム — ファイル名を自動で整理', product: '製品', byFileType: 'ファイル別', resources: 'リソース', support: 'サポート', pricing: '料金', contactSupport: 'サポートに連絡', feedback: '機能要望と不具合', terms: '利用規約', privacy: 'プライバシー', refund: '返金ポリシー', ...localizedFooterDetails.ja },
     home: {
@@ -2860,7 +2870,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   ko: localized({
-    header: { features: '기능', pricing: '가격', blog: '블로그', buyPro: '🌟 PRO 구매', download: '다운로드', toggleTheme: '테마 전환', language: '언어', homeAria: '홈으로 이동', skipToContent: '콘텐츠로 건너뛰기' },
+    header: { features: '기능', pricing: '가격', faq: 'FAQ', blog: '블로그', buyPro: '🌟 PRO 구매', download: '다운로드', toggleTheme: '테마 전환', language: '언어', homeAria: '홈으로 이동', skipToContent: '콘텐츠로 건너뛰기' },
     downloadMenu: localizedDownloadMenu.ko,
     footer: { description: 'Mac 및 Windows용 AI 파일 이름 변경 — 파일을 자동으로 정리하세요', product: '제품', byFileType: '파일 유형별', resources: '리소스', support: '지원', pricing: '가격', contactSupport: '지원 문의', feedback: '기능 및 버그', terms: '이용 약관', privacy: '개인정보', refund: '환불 정책', ...localizedFooterDetails.ko },
     home: {
@@ -2900,7 +2910,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   'zh-cn': localized({
-    header: { features: '功能', pricing: '价格', blog: '博客', buyPro: '购买 🌟 PRO', download: '下载', toggleTheme: '切换主题', language: '语言', homeAria: '前往首页', skipToContent: '跳到内容' },
+    header: { features: '功能', pricing: '价格', faq: 'FAQ', blog: '博客', buyPro: '购买 🌟 PRO', download: '下载', toggleTheme: '切换主题', language: '语言', homeAria: '前往首页', skipToContent: '跳到内容' },
     downloadMenu: localizedDownloadMenu['zh-cn'],
     footer: {
       description: '适用于 Mac 和 Windows 的 AI 文件重命名工具 — 自动整理文件名',
@@ -3059,6 +3069,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
     header: {
       features: 'الميزات',
       pricing: 'السعر',
+      faq: 'FAQ',
       blog: 'المدونة',
       buyPro: 'شراء 🌟 PRO',
       download: 'تنزيل',

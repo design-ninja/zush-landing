@@ -191,7 +191,7 @@ const Videos = ({
   };
 
   return (
-    <section className={styles.Videos}>
+    <section className={styles.Videos} data-scroll-reveal-skip=''>
       <div className={styles.Videos__Container}>
         <div>
           <SectionHeader

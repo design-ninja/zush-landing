@@ -34,6 +34,7 @@ const copy = localeCopy.header;
 
 const featuresHref = `${basePath}#features`;
 const pricingHref = `${basePath}#pricing`;
+const faqHref = `${basePath}#faq`;
 const homeHref = getLocalizedPath('/', locale);
 const blogHref = '/blog';
 const shouldUseRouteLanguagePaths = isLocalizedRoute(route) && route !== '/404';
@@ -74,6 +75,7 @@ const logoClass = [appLinkStyles.AppLink, logoStyles.Logo].join(' ');
     <nav class={styles.Header__Nav} aria-label={copy.skipToContent}>
       <a href={featuresHref} class={navLinkClass}>{copy.features}</a>
       <a href={pricingHref} class={navLinkClass}>{copy.pricing}</a>
+      <a href={faqHref} class={navLinkClass}>{copy.faq}</a>
       <a href={blogHref} class={navLinkClass}>{copy.blog}</a>
     </nav>
 

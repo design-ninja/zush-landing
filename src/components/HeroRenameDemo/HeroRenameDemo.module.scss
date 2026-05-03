@@ -12,7 +12,9 @@
     background:
         linear-gradient(180deg, color-mix(in oklab, var(--card) 92%, var(--primary) 8%), var(--card)),
         var(--card);
-    box-shadow: 0 1.75rem 5.5rem rgba(0, 0, 0, 0.16);
+    box-shadow:
+        0 2.6rem 8rem color-mix(in oklab, var(--primary) 5%, transparent),
+        0 0.8rem 2.4rem color-mix(in oklab, var(--primary) 3%, transparent);
     overflow: hidden;
     color: var(--foreground);
 
@@ -128,7 +130,7 @@
         margin: 0.85rem;
         min-height: 24rem;
         overflow: hidden;
-        border: 1px dashed color-mix(in oklab, var(--muted-foreground) 28%, transparent);
+        border: 1px dashed color-mix(in oklab, var(--muted-foreground) 18%, transparent);
         border-radius: $radius-lg;
         background: color-mix(in oklab, var(--muted) 60%, transparent);
         transition:
@@ -148,13 +150,13 @@
             transform: translate(-50%, -50%);
             transform-origin: center;
             background:
-                radial-gradient(closest-side at 50% 50%, color-mix(in oklab, var(--primary) 22%, transparent), transparent 72%);
+                radial-gradient(closest-side at 50% 50%, color-mix(in oklab, var(--primary) 12%, transparent), transparent 68%);
             filter: blur(8px);
-            animation: rename-demo-glow-breath 7s ease-in-out infinite;
+        }
 
-            @media (prefers-reduced-motion: reduce) {
-                animation: none;
-            }
+        [data-theme="dark"] &::before {
+            background:
+                radial-gradient(closest-side at 50% 50%, color-mix(in oklab, var(--primary) 22%, transparent), transparent 72%);
         }
 
         > * {
@@ -170,7 +172,7 @@
 
         &_hasFiles {
             border-style: solid;
-            border-color: color-mix(in oklab, var(--muted-foreground) 30%, transparent);
+            border-color: color-mix(in oklab, var(--muted-foreground) 18%, transparent);
             background: color-mix(in oklab, var(--muted) 50%, transparent);
         }
     }
@@ -411,6 +413,11 @@
             --rename-demo-preview-color: oklch(var(--case-icon-l) var(--case-icon-c) var(--h-blue));
         }
 
+        &_pdf {
+            --rename-demo-preview-bg: oklch(var(--case-icon-bg-l) var(--case-icon-bg-c) 25);
+            --rename-demo-preview-color: oklch(var(--case-icon-l) var(--case-icon-c) 25);
+        }
+
         &_spreadsheet {
             --rename-demo-preview-bg: oklch(var(--case-icon-bg-l) var(--case-icon-bg-c) var(--h-green));
             --rename-demo-preview-color: oklch(var(--case-icon-l) var(--case-icon-c) var(--h-green));
@@ -508,7 +515,7 @@
                 rotate(calc(var(--segment-index) * 30deg))
                 translateY(-0.43rem);
             animation: rename-demo-spinner 1s linear infinite;
-            animation-delay: calc(var(--segment-index) * -0.083333s);
+            animation-delay: calc(-1s + var(--segment-index) * 0.083333s);
         }
     }
 
@@ -632,16 +639,6 @@
     }
 }
 
-.RenameDemoSecurityHint {
-    max-width: 34rem;
-    margin: 0.85rem auto 0;
-    color: var(--muted-foreground);
-    font-size: 0.66rem;
-    font-weight: 400;
-    line-height: 1.3;
-    text-align: center;
-}
-
 @keyframes rename-demo-spinner {
     0% {
         opacity: 1;
@@ -698,17 +695,6 @@
     30% {
         opacity: 0.3;
         transform: scale(0.5);
-    }
-}
-
-@keyframes rename-demo-glow-breath {
-    0%, 100% {
-        transform: translate(-50%, -50%) scale(0.85);
-        opacity: 0.7;
-    }
-    50% {
-        transform: translate(-50%, -50%) scale(1.12);
-        opacity: 1;
     }
 }
 
