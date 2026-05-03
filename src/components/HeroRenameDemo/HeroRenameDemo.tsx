@@ -88,6 +88,7 @@ const MAX_EMBEDDED_JPEG_BYTES = 42 * 1024 * 1024;
 const MAX_RAW_DECODE_PIXELS = 4_000_000;
 const MAX_JPEG_CANDIDATES = 14;
 const MAX_TEXT_CHARS = 12_000;
+const MAX_PPTX_TEXT_SLIDES = 12;
 const MAX_IMAGE_SIDE = 720;
 const MAX_DOCUMENT_IMAGES = 3;
 const PREVIEW_THUMBNAIL_WIDTH = 360;
@@ -752,12 +753,118 @@ async function readZipText(zip: JSZip, path: string): Promise<string> {
   return zip.file(path)?.async('text') ?? Promise.resolve('');
 }
 
+async function extractOoxmlCoreProperties(zip: JSZip): Promise<string[]> {
+  const xml = await readZipText(zip, 'docProps/core.xml');
+  const doc = xml ? parseXmlDocument(xml) : null;
+  if (!doc) return [];
+
+  const fields = [
+    ['Title', 'title'],
+    ['Subject', 'subject'],
+    ['Creator', 'creator'],
+    ['Keywords', 'keywords'],
+    ['Description', 'description'],
+    ['Category', 'category'],
+    ['Content status', 'contentStatus'],
+  ] as const;
+
+  return fields
+    .map(([label, localName]) => {
+      const value = normalizeWhitespace(getElementsByLocalName(doc, localName)[0]?.textContent ?? '');
+      return value ? `${label}: ${value}` : '';
+    })
+    .filter(Boolean);
+}
+
 function sortSlidePaths(paths: string[]) {
   return paths.sort((a, b) => {
     const aNumber = Number(a.match(/slide(\d+)\.xml$/)?.[1] ?? 0);
     const bNumber = Number(b.match(/slide(\d+)\.xml$/)?.[1] ?? 0);
     return aNumber - bNumber;
   });
+}
+
+function sampleIndices(itemCount: number, limit: number): number[] {
+  if (itemCount <= 0 || limit <= 0) return [];
+  if (itemCount <= limit) return Array.from({ length: itemCount }, (_, index) => index);
+
+  const lastIndex = itemCount - 1;
+  const selected: number[] = [];
+  for (let position = 0; position < limit; position += 1) {
+    const denominator = Math.max(limit - 1, 1);
+    const index = Math.round((position * lastIndex) / denominator);
+    if (!selected.includes(index)) selected.push(index);
+  }
+
+  return selected;
+}
+
+function parseXmlRelationships(xml: string): Record<string, string> {
+  const doc = parseXmlDocument(xml);
+  if (!doc) return {};
+
+  return Object.fromEntries(
+    getElementsByLocalName(doc, 'Relationship')
+      .map((relationship) => {
+        const id = relationship.getAttribute('Id') ?? relationship.getAttribute('id') ?? '';
+        const target = relationship.getAttribute('Target') ?? relationship.getAttribute('target') ?? '';
+        return [id, target];
+      })
+      .filter(([id, target]) => id && target),
+  );
+}
+
+function getNamespacedAttribute(element: Element, localName: string): string {
+  const attributes = Array.from(element.attributes);
+  const namespaced = attributes.find(
+    (attribute) => attribute.name.includes(':') && normalizeXmlTagName(attribute.name) === localName,
+  );
+  if (namespaced) return namespaced.value;
+
+  return element.getAttribute(localName) ??
+    attributes.find((attribute) => normalizeXmlTagName(attribute.name) === localName)?.value ??
+    '';
+}
+
+function resolveOoxmlPath(target: string, baseDirectory: string): string {
+  const withoutFragment = target.split('#')[0] ?? target;
+  if (withoutFragment.startsWith('/')) return withoutFragment.slice(1);
+  if (withoutFragment.startsWith(`${baseDirectory}/`)) return withoutFragment;
+
+  const components = baseDirectory.split('/').filter(Boolean);
+  for (const component of withoutFragment.split('/')) {
+    if (!component || component === '.') continue;
+    if (component === '..') {
+      components.pop();
+      continue;
+    }
+    components.push(component);
+  }
+
+  return components.join('/');
+}
+
+async function getOrderedPptxSlidePaths(zip: JSZip): Promise<string[]> {
+  const fallback = sortSlidePaths(
+    Object.keys(zip.files).filter((path) => /^ppt\/slides\/slide\d+\.xml$/.test(path)),
+  );
+
+  const [presentationXml, relsXml] = await Promise.all([
+    readZipText(zip, 'ppt/presentation.xml'),
+    readZipText(zip, 'ppt/_rels/presentation.xml.rels'),
+  ]);
+  const presentation = presentationXml ? parseXmlDocument(presentationXml) : null;
+  if (!presentation || !relsXml) return fallback;
+
+  const relationships = parseXmlRelationships(relsXml);
+  const availableSlides = new Set(fallback);
+  const ordered = getElementsByLocalName(presentation, 'sldId')
+    .map((slide) => getNamespacedAttribute(slide, 'id'))
+    .map((relationshipId) => relationships[relationshipId] ?? '')
+    .map((target) => target ? resolveOoxmlPath(target, 'ppt') : '')
+    .filter((path) => availableSlides.has(path));
+
+  return ordered.length > 0 ? [...new Set(ordered)] : fallback;
 }
 
 function sortSheetPaths(paths: string[]) {
@@ -851,7 +958,7 @@ function extractSpreadsheetText(workbookXml: string, sharedStringsXml: string, s
   ].filter(Boolean).join('\n'));
 }
 
-async function extractXlsText(file: File): Promise<string> {
+async function extractSpreadsheetWorkbookText(file: File): Promise<string> {
   const XLSX = await import('xlsx');
   const workbook = XLSX.read(await file.arrayBuffer(), {
     type: 'array',
@@ -963,8 +1070,8 @@ async function extractLegacyOfficeText(file: File): Promise<string> {
 }
 
 async function extractOfficeText(file: File, extension: string): Promise<string> {
-  if (extension === 'xls') {
-    return extractXlsText(file);
+  if (extension === 'xls' || extension === 'xlsx') {
+    return extractSpreadsheetWorkbookText(file);
   }
 
   if (extension === 'doc' || extension === 'ppt') {
@@ -972,18 +1079,24 @@ async function extractOfficeText(file: File, extension: string): Promise<string>
   }
 
   const zip = await JSZip.loadAsync(await file.arrayBuffer());
+  const coreProperties = await extractOoxmlCoreProperties(zip);
 
   if (extension === 'docx') {
     const xml = await readZipText(zip, 'word/document.xml');
-    return parseXmlText(xml, ['w:t', 't']);
+    const documentText = parseXmlText(xml, ['t']);
+    return truncateText([...coreProperties, documentText].filter(Boolean).join('\n'));
   }
 
   if (extension === 'pptx') {
-    const slidePaths = sortSlidePaths(
-      Object.keys(zip.files).filter((path) => /^ppt\/slides\/slide\d+\.xml$/.test(path)),
-    ).slice(0, 10);
-    const slides = await Promise.all(slidePaths.map((path) => readZipText(zip, path)));
-    return parseXmlText(slides.join(' '), ['a:t', 't']);
+    const slidePaths = await getOrderedPptxSlidePaths(zip);
+    const slideIndices = sampleIndices(slidePaths.length, MAX_PPTX_TEXT_SLIDES);
+    const slideSections = await Promise.all(slideIndices.map(async (slideIndex) => {
+      const slidePath = slidePaths[slideIndex];
+      if (!slidePath) return '';
+      const slideText = parseXmlText(await readZipText(zip, slidePath), ['t']);
+      return slideText ? `Slide ${slideIndex + 1}: ${slideText}` : '';
+    }));
+    return truncateText([...coreProperties, ...slideSections].filter(Boolean).join('\n'));
   }
 
   const sharedStrings = await readZipText(zip, 'xl/sharedStrings.xml');
