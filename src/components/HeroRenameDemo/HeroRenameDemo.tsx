@@ -235,6 +235,10 @@ const extensionIconMap = {
   xlsx: FileSpreadsheet,
 } as const;
 
+const DOCUMENT_PREVIEW_EXTENSIONS = new Set(['pdf', 'doc', 'docx', 'txt', 'md', 'json', 'eml']);
+const SPREADSHEET_PREVIEW_EXTENSIONS = new Set(['xls', 'xlsx', 'csv']);
+const PRESENTATION_PREVIEW_EXTENSIONS = new Set(['ppt', 'pptx']);
+
 function createFileId(file: File, index: number): string {
   return `${file.name}-${file.size}-${file.lastModified}-${index}`;
 }
@@ -1691,6 +1695,7 @@ function getStatusLabel(file: DemoFile, copy: RenameDemoCopy) {
 
 function getFileIcon(file: DemoFile) {
   if (file.contentKind === 'image') return extensionIconMap.image;
+  if (SPREADSHEET_PREVIEW_EXTENSIONS.has(file.extension)) return extensionIconMap.xls;
   if (file.contentKind === 'text') return extensionIconMap.text;
   if (file.extension === 'pdf') return extensionIconMap.pdf;
   if (file.extension === 'doc') return extensionIconMap.doc;
@@ -1700,6 +1705,13 @@ function getFileIcon(file: DemoFile) {
   if (file.extension === 'xls') return extensionIconMap.xls;
   if (file.extension === 'xlsx') return extensionIconMap.xlsx;
   return FileText;
+}
+
+function getPreviewToneClass(file: DemoFile) {
+  if (SPREADSHEET_PREVIEW_EXTENSIONS.has(file.extension)) return styles.RenameDemo__Preview_spreadsheet;
+  if (PRESENTATION_PREVIEW_EXTENSIONS.has(file.extension)) return styles.RenameDemo__Preview_presentation;
+  if (DOCUMENT_PREVIEW_EXTENSIONS.has(file.extension)) return styles.RenameDemo__Preview_document;
+  return '';
 }
 
 function renderDemoTitle(title: string) {
@@ -1973,7 +1985,13 @@ const HeroRenameDemo = ({
 
                 return (
                   <div key={file.id} className={styles.RenameDemo__Row}>
-                    <div className={styles.RenameDemo__Preview} aria-hidden='true'>
+                    <div
+                      className={[
+                        styles.RenameDemo__Preview,
+                        getPreviewToneClass(file),
+                      ].filter(Boolean).join(' ')}
+                      aria-hidden='true'
+                    >
                       {file.thumbnailDataUrl ? (
                         <img src={file.thumbnailDataUrl} alt='' />
                       ) : (

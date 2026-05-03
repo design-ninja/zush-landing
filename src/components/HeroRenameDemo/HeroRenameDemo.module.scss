@@ -244,15 +244,33 @@
     }
 
     &__Preview {
+        --rename-demo-preview-bg: color-mix(in oklab, var(--primary) 14%, var(--muted));
+        --rename-demo-preview-color: var(--primary);
+
         display: grid;
         width: 3.6rem;
         height: 2.72rem;
         place-items: center;
         overflow: hidden;
         border-radius: 0.35rem;
-        background: color-mix(in oklab, var(--primary) 14%, var(--muted));
-        color: var(--primary);
+        background: var(--rename-demo-preview-bg);
+        color: var(--rename-demo-preview-color);
         flex-shrink: 0;
+
+        &_document {
+            --rename-demo-preview-bg: oklch(var(--case-icon-bg-l) var(--case-icon-bg-c) var(--h-blue));
+            --rename-demo-preview-color: oklch(var(--case-icon-l) var(--case-icon-c) var(--h-blue));
+        }
+
+        &_spreadsheet {
+            --rename-demo-preview-bg: oklch(var(--case-icon-bg-l) var(--case-icon-bg-c) var(--h-green));
+            --rename-demo-preview-color: oklch(var(--case-icon-l) var(--case-icon-c) var(--h-green));
+        }
+
+        &_presentation {
+            --rename-demo-preview-bg: oklch(var(--case-icon-bg-l) var(--case-icon-bg-c) var(--h-orange));
+            --rename-demo-preview-color: oklch(var(--case-icon-l) var(--case-icon-c) var(--h-orange));
+        }
 
         img {
             display: block;
