@@ -26,7 +26,7 @@ import Button from '@/components/Button';
 import DownloadButton from '@/components/DownloadButton';
 import { useOS } from '@/hooks/useOS';
 import { SUPABASE_URL } from '@/utils/supabase';
-import type { DownloadOS } from '@/utils/download';
+import { getDownloadUrl, trackDownloadClick, type DownloadOS } from '@/utils/download';
 import type { DownloadMenuCopy, RenameDemoCopy } from '@/i18n/copy';
 import type { Locale } from '@/i18n/config';
 import styles from './HeroRenameDemo.module.scss';
@@ -1841,6 +1841,27 @@ function renderMacSpinner() {
   );
 }
 
+function renderBannerMessage(message: string, downloadHref: string, onDownloadClick: () => void) {
+  const downloadLabel = 'Download Zush';
+  const downloadIndex = message.indexOf(downloadLabel);
+
+  if (downloadIndex === -1) return message;
+
+  return (
+    <>
+      {message.slice(0, downloadIndex)}
+      <a
+        className={styles.RenameDemo__BannerLink}
+        href={downloadHref}
+        onClick={onDownloadClick}
+      >
+        {downloadLabel}
+      </a>
+      {message.slice(downloadIndex + downloadLabel.length)}
+    </>
+  );
+}
+
 const HeroRenameDemo = ({
   copy,
   downloadLabel,
@@ -1852,6 +1873,7 @@ const HeroRenameDemo = ({
   const effectiveOS: DownloadOS = forceOS ?? detectedOS;
   const inputRef = useRef<HTMLInputElement>(null);
   const completionSoundRef = useRef<HTMLAudioElement | null>(null);
+  const bannerDownloadHref = getDownloadUrl(effectiveOS);
   const [files, setFiles] = useState<DemoFile[]>([]);
   const [isDragging, setIsDragging] = useState(false);
   const [banner, setBanner] = useState<string | null>(null);
@@ -1940,6 +1962,9 @@ const HeroRenameDemo = ({
     void sound.play().catch(() => undefined);
   };
 
+  const handleBannerDownloadClick = () => {
+    trackDownloadClick({ os: effectiveOS, source: 'hero' });
+  };
 
   const processFiles = async (selectedFiles: File[]) => {
     const startedAt = Date.now();
@@ -2093,12 +2118,6 @@ const HeroRenameDemo = ({
           )}
         </div>
       </div>
-
-      {banner && (
-        <div className={styles.RenameDemo__Banner} role='status'>
-          {banner}
-        </div>
-      )}
 
       <div
         className={[
@@ -2299,6 +2318,11 @@ const HeroRenameDemo = ({
           </div>
         )}
       </div>
+      {banner && (
+        <div className={styles.RenameDemo__Banner} role='status'>
+          {renderBannerMessage(banner, bannerDownloadHref, handleBannerDownloadClick)}
+        </div>
+      )}
       </div>
     </>
   );
