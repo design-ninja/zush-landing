@@ -6,11 +6,11 @@ import DownloadButton from "../DownloadButton";
 import Heading from "../Heading";
 import Text from "../Text";
 import styles from "./Hero.module.scss";
-import type { DownloadOS } from "@/utils/download";
+import { trackProClick, type DownloadOS } from "@/utils/download";
 import type { DownloadMenuCopy } from "@/i18n/copy";
 
 
-interface HeroProps {
+export interface HeroProps {
   title?: ReactNode;
   titleAccent?: string;
   titleHighlight?: string;
@@ -24,6 +24,8 @@ interface HeroProps {
   downloadLabel?: string;
   downloadMenu?: DownloadMenuCopy;
   trustSignals?: string[];
+  showcase?: ReactNode;
+  mobileShowcase?: ReactNode;
 }
 
 const Hero = ({
@@ -40,8 +42,11 @@ const Hero = ({
   downloadLabel = "Download",
   downloadMenu,
   trustSignals = ["✨ Free to try", "💳 No credit card", "🚫 No subscription"],
+  showcase,
+  mobileShowcase,
 }: HeroProps) => {
   const highlightText = titleHighlight ?? titleAccent;
+  const hasCustomShowcase = Boolean(showcase);
 
   const renderTitle = () => {
     if (!title) {
@@ -75,6 +80,7 @@ const Hero = ({
 
   return (
     <Tag
+      data-hero-root
       className={[
         styles.Hero,
         compactTopSpacing ? styles.Hero_compactTopSpacing : "",
@@ -89,7 +95,7 @@ const Hero = ({
           </Heading>
           <Text size="xl" color="subtle" className={styles.Hero__Subtitle}>
             {subtitle ??
-              "Blazing fast AI file renamer for Mac and Windows. Auto rename screenshots, PDFs, documents, and downloads with meaningful names — free to try."}
+              "Blazing fast AI file renamer for Mac and Windows. Auto-rename screenshots, PDFs, and documents with meaningful names — folder watching, BYOK, and offline AI built in."}
           </Text>
 
           <div className={styles.Hero__Buttons}>
@@ -99,6 +105,7 @@ const Hero = ({
               href={secondaryHref}
               variant="primary"
               size="lg"
+              onClick={() => trackProClick({ source: "hero" })}
             >
               {buyLabel}
             </Button>
@@ -113,7 +120,18 @@ const Hero = ({
         <div
           className={`${styles.Hero__ShowcaseWrapper} ${styles.Hero__ShowcaseMotion}`}
         >
-          <FileShowcase slides={slides} />
+          {hasCustomShowcase ? (
+            <>
+              <div className={styles.Hero__InteractiveShowcase}>
+                {showcase}
+              </div>
+              <div className={styles.Hero__MobileShowcase}>
+                {mobileShowcase ?? <FileShowcase slides={slides} />}
+              </div>
+            </>
+          ) : (
+            <FileShowcase slides={slides} />
+          )}
           <div className={styles.Hero__GlowEffect} />
         </div>
       </div>

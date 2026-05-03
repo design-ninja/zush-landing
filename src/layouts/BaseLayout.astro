@@ -315,6 +315,7 @@ const localeRedirectConfig = JSON.stringify({
       {includeChrome && <ScrollToTopButton />}
       <script>
         import { bindCheckoutAutoOpen } from '@/utils/checkoutAutoOpen';
+        import { bindDownloadTracking, bindProClickTracking } from '@/utils/download';
         import { bindPricingCheckout } from '@/utils/pricingCheckout';
         import { bindScrollReveal } from '@/utils/scrollReveal';
         import { bindScrollToTopButton } from '@/utils/scrollToTop';
@@ -391,14 +392,18 @@ const localeRedirectConfig = JSON.stringify({
         };
 
         bindCheckoutAutoOpen();
+        bindDownloadTracking();
         bindLanguageSwitcher();
+        bindProClickTracking();
         bindPricingCheckout();
         bindScrollReveal();
         bindScrollToTopButton();
         bindStoreLinks();
         document.addEventListener('astro:after-swap', () => {
           bindCheckoutAutoOpen();
+          bindDownloadTracking();
           bindLanguageSwitcher();
+          bindProClickTracking();
           bindPricingCheckout();
           bindScrollReveal();
           bindScrollToTopButton();

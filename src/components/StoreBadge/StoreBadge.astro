@@ -14,6 +14,9 @@ interface Props {
   dataStoreOs?: 'mac' | 'windows';
   dataStoreAppUrl?: string;
   dataStoreWebUrl?: string;
+  dataDownloadSource?: string;
+  dataDownloadOs?: 'mac' | 'windows';
+  dataDownloadChannel?: 'direct' | 'mac-app-store' | 'microsoft-store';
   /** When true, opens in a new tab (defaults to true for store URLs, false for direct downloads). */
   external?: boolean;
 }
@@ -28,6 +31,9 @@ const {
   dataStoreOs,
   dataStoreAppUrl,
   dataStoreWebUrl,
+  dataDownloadSource,
+  dataDownloadOs,
+  dataDownloadChannel,
   external = kind !== 'direct-dmg',
 } = Astro.props as Props;
 
@@ -44,6 +50,9 @@ const uniqueId = Math.random().toString(36).slice(2, 9);
   data-store-os={dataStoreOs}
   data-store-app-url={dataStoreAppUrl}
   data-store-web-url={dataStoreWebUrl}
+  data-download-source={dataDownloadSource}
+  data-download-os={dataDownloadOs}
+  data-download-channel={dataDownloadChannel}
 >
   <span class={styles.StoreBadge__Icon}>
     {kind === 'app-store' && (

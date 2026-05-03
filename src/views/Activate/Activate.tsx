@@ -9,6 +9,7 @@ import Text from '@/components/Text';
 import { DOWNLOAD_URL } from '@/constants';
 import { DEFAULT_LOCALE, getLocalizedPath, type Locale } from '@/i18n/config';
 import { getServicePageCopy, type ActivateCopy } from '@/i18n/servicePages';
+import { trackDownloadClick } from '@/utils/download';
 import styles from './Activate.module.scss';
 
 interface ActivationParams {
@@ -135,6 +136,7 @@ const Activate = ({
           href={DOWNLOAD_URL}
           variant="ghost"
           size="md"
+          onClick={() => trackDownloadClick({ os: 'mac', source: 'activate' })}
         >
           <Download size={18} />
           {copy.download}

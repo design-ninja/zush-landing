@@ -24,6 +24,7 @@ export function getOtherOS(os: DownloadOS): DownloadOS {
 
 export type DownloadSource =
   | 'hero'
+  | 'hero-demo'
   | 'navbar'
   | 'download-cta'
   | 'blog-cta'
@@ -31,12 +32,16 @@ export type DownloadSource =
   | 'footer'
   | 'footer-appstore'
   | 'footer-microsoft-store'
+  | 'platform-install'
   | 'thank-you'
   | 'mobile-modal'
+  | 'activate'
   | 'download-page-mac'
   | 'download-page-windows';
 
 export type DownloadChannel = 'direct' | 'mac-app-store' | 'microsoft-store';
+
+export type ProClickSource = 'hero' | 'navbar' | 'pricing';
 
 export interface TrackDownloadClickOptions {
   os: DownloadOS;
@@ -47,13 +52,70 @@ export interface TrackDownloadClickOptions {
 
 export function trackDownloadClick({ os, source, manual, channel }: TrackDownloadClickOptions): void {
   try {
-    track('download_click', {
-      os,
+    const resolvedChannel = channel ?? (os === 'windows' ? 'microsoft-store' : 'direct');
+    const sourceValue = [
       source,
-      detection: manual ? 'manual' : 'auto',
-      channel: channel ?? (os === 'windows' ? 'microsoft-store' : 'direct'),
-    });
+      os,
+      resolvedChannel,
+      manual ? 'manual' : 'auto',
+    ].join(':');
+
+    track('download_click', { source: sourceValue });
   } catch {
     // Analytics might not be initialized in dev / tests — never block the click.
   }
 }
+
+export function trackProClick({ source }: { source: ProClickSource }): void {
+  try {
+    track('pro_click', { source });
+  } catch {
+    // Analytics might not be initialized in dev / tests — never block the click.
+  }
+}
+
+const isDownloadOS = (value: string | undefined): value is DownloadOS =>
+  value === 'mac' || value === 'windows';
+
+const isDownloadChannel = (value: string | undefined): value is DownloadChannel =>
+  value === 'direct' || value === 'mac-app-store' || value === 'microsoft-store';
+
+const isProClickSource = (value: string | undefined): value is ProClickSource =>
+  value === 'hero' || value === 'navbar' || value === 'pricing';
+
+export const bindDownloadTracking = (root: ParentNode = document) => {
+  root.querySelectorAll<HTMLElement>('[data-download-source]').forEach((element) => {
+    if (element.dataset.downloadTrackingBound === 'true') return;
+
+    const source = element.dataset.downloadSource as DownloadSource | undefined;
+    if (!source) return;
+
+    element.dataset.downloadTrackingBound = 'true';
+    element.addEventListener('click', () => {
+      const os = element.dataset.downloadOs;
+      if (!isDownloadOS(os)) return;
+
+      const channel = element.dataset.downloadChannel;
+      trackDownloadClick({
+        os,
+        source,
+        manual: element.dataset.downloadManual === 'true',
+        channel: isDownloadChannel(channel) ? channel : undefined,
+      });
+    });
+  });
+};
+
+export const bindProClickTracking = (root: ParentNode = document) => {
+  root.querySelectorAll<HTMLElement>('[data-pro-click-source]').forEach((element) => {
+    if (element.dataset.proClickTrackingBound === 'true') return;
+
+    const source = element.dataset.proClickSource;
+    if (!isProClickSource(source)) return;
+
+    element.dataset.proClickTrackingBound = 'true';
+    element.addEventListener('click', () => {
+      trackProClick({ source });
+    });
+  });
+};

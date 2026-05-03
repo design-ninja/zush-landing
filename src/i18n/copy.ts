@@ -10,6 +10,7 @@ export interface FAQCopyItem {
 export interface HeaderCopy {
   features: string;
   pricing: string;
+  faq: string;
   blog: string;
   buyPro: string;
   download: string;
@@ -145,6 +146,47 @@ export interface UseCasesCopy {
   items: Array<{ title: string; description: string }>;
 }
 
+export interface RenameDemoCopy {
+  eyebrow: string;
+  title: string;
+  emptyTitle: string;
+  emptySubtitle: string;
+  selectFiles: string;
+  supportedFormatsLabel: string;
+  privacyHint: string;
+  progressLabel: string;
+  previewOnlyLabel: string;
+  startOver: string;
+  downloadCta: string;
+  status: {
+    queued: string;
+    preparing: string;
+    analyzing: string;
+    done: string;
+    error: string;
+  };
+  errors: {
+    unsupportedType: string;
+    fileTooLarge: string;
+    emptyPreview: string;
+    processingFailed: string;
+    tooManyFiles: string;
+  };
+  cta: {
+    title: string;
+    features: {
+      batchRename: string;
+      foldersMonitor: string;
+      smartNaming: string;
+      customAIPrompts: string;
+      languages: string;
+      quickRenameShortcut: string;
+      byok: string;
+      offlineAI: string;
+    };
+  };
+}
+
 export interface HomeCopy {
   heroTitle: string;
   heroAccent: string;
@@ -169,6 +211,7 @@ export interface HomeCopy {
   speedComparison: SpeedComparisonCopy;
   whyZush: WhyZushCopy;
   useCases: UseCasesCopy;
+  renameDemo: RenameDemoCopy;
   faqItems: FAQCopyItem[];
   showcaseSlides: Slide[];
 }
@@ -776,8 +819,9 @@ export const EN_COPY: LocaleCopy = {
   header: {
     features: 'Features',
     pricing: 'Pricing',
+    faq: 'FAQ',
     blog: 'Blog',
-    buyPro: 'Buy PRO',
+    buyPro: 'Buy 🌟 PRO',
     download: 'Download',
     toggleTheme: 'Toggle theme',
     language: 'Language',
@@ -838,7 +882,7 @@ export const EN_COPY: LocaleCopy = {
     heroTitle: 'Rename Files with AI. Automatically.',
     heroAccent: 'Automatically.',
     heroSubtitle:
-      'Blazing fast AI file renamer for Mac and Windows. Auto rename screenshots, PDFs, documents, and downloads with meaningful names — free to try.',
+      'Blazing fast AI file renamer for Mac and Windows. Auto-rename screenshots, PDFs, and documents with meaningful names — folder watching, BYOK, and offline AI built in.',
     buyPro: 'Buy 🌟 PRO',
     trustSignals: ['✨ Free to try', '💳 No credit card', '🚫 No subscription'],
     featuresTitle: 'How Zush AI Renames Your Files',
@@ -950,6 +994,46 @@ export const EN_COPY: LocaleCopy = {
         { title: 'Content Creators', description: 'Thumbnails, b-roll references, and visual assets for your content — all neatly organized.' },
         { title: 'Product Managers', description: 'PRDs, meeting notes, spreadsheets, and stakeholder decks — instantly searchable.' },
       ],
+    },
+    renameDemo: {
+      eyebrow: 'Quick demo',
+      title: 'Zush AI Rename Demo',
+      emptyTitle: 'Drop files here to try',
+      emptySubtitle: 'Demo: up to 5 files. Only temporary previews are sent; originals stay private and are never uploaded or stored.',
+      selectFiles: 'Select files...',
+      supportedFormatsLabel: 'Supported preview formats',
+      privacyHint: 'Your files stay private. This demo only sends a temporary preview; original files are never uploaded or stored.',
+      progressLabel: '{analyzed} of {total} analyzed',
+      previewOnlyLabel: 'Preview',
+      startOver: 'Start Over',
+      downloadCta: 'Download',
+      status: {
+        queued: 'Waiting...',
+        preparing: 'Preparing preview...',
+        analyzing: 'Analyzing file...',
+        done: 'Ready',
+        error: 'Could not analyze',
+      },
+      errors: {
+        unsupportedType: '{extension} is not supported in the web preview yet.',
+        fileTooLarge: 'This browser preview cannot safely read this file. Download Zush to rename full-size files.',
+        emptyPreview: 'Could not extract enough content from this file.',
+        processingFailed: 'Could not prepare this file.',
+        tooManyFiles: 'Showing the first {limit} files for this quick demo.',
+      },
+      cta: {
+        title: 'Zush does much more!',
+        features: {
+          batchRename: 'Batch Rename',
+          foldersMonitor: 'Folders Monitor',
+          smartNaming: 'Smart Naming & Metadata',
+          customAIPrompts: 'Custom AI Prompts',
+          languages: '60+ Languages',
+          quickRenameShortcut: 'Quick Rename Shortcut',
+          byok: 'BYOK',
+          offlineAI: 'Offline AI',
+        },
+      },
     },
     faqItems: HOME_FAQ_DATA,
     showcaseSlides: EN_HOME_SHOWCASE_SLIDES,
@@ -1150,6 +1234,26 @@ const localized = (overrides: DeepPartial<LocaleCopy>): LocaleCopy => ({
       ...base.home.useCases,
       ...overrides.home?.useCases,
       items: overrides.home?.useCases?.items ?? base.home.useCases.items,
+    },
+    renameDemo: {
+      ...base.home.renameDemo,
+      ...overrides.home?.renameDemo,
+      status: {
+        ...base.home.renameDemo.status,
+        ...overrides.home?.renameDemo?.status,
+      },
+      errors: {
+        ...base.home.renameDemo.errors,
+        ...overrides.home?.renameDemo?.errors,
+      },
+      cta: {
+        ...base.home.renameDemo.cta,
+        ...overrides.home?.renameDemo?.cta,
+        features: {
+          ...base.home.renameDemo.cta.features,
+          ...overrides.home?.renameDemo?.cta?.features,
+        },
+      },
     },
     faqItems: overrides.home?.faqItems ?? base.home.faqItems,
     showcaseSlides: overrides.home?.showcaseSlides ?? base.home.showcaseSlides,
@@ -1690,7 +1794,290 @@ const localizedPricingFeatures: Record<Exclude<Locale, 'en'>, PricingCopy['featu
   ]),
 };
 
-const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeCopy, 'featureCards' | 'videos' | 'speedComparison' | 'whyZush' | 'useCases' | 'faqItems' | 'showcaseSlides'>>> = {
+const localizedRenameDemo: Record<Exclude<Locale, 'en'>, RenameDemoCopy> = {
+  de: {
+    eyebrow: 'Kurzdemo',
+    title: 'Zush AI Rename Demo',
+    emptyTitle: 'Dateien hier ablegen',
+    emptySubtitle: 'Teste bis zu 5 Dateien. Lade Zush für alle Funktionen, Ordner und Dateien in voller Größe herunter.',
+    selectFiles: 'Dateien auswählen...',
+    supportedFormatsLabel: 'Unterstützte Vorschauformate',
+    privacyHint: 'Deine Dateien bleiben privat. Diese Demo sendet nur eine temporäre Vorschau; Originaldateien werden nie hochgeladen oder gespeichert.',
+    progressLabel: '{analyzed} von {total} analysiert',
+    previewOnlyLabel: 'Vorschau',
+    startOver: 'Neu starten',
+    downloadCta: 'Herunterladen',
+    status: { queued: 'Warten...', preparing: 'Vorschau wird vorbereitet...', analyzing: 'Datei wird analysiert...', done: 'Bereit', error: 'Analyse fehlgeschlagen' },
+    errors: { unsupportedType: '{extension} wird in der Web-Vorschau noch nicht unterstützt.', fileTooLarge: 'Diese Browser-Vorschau kann diese Datei nicht sicher lesen. Lade Zush herunter, um Dateien in voller Größe umzubenennen.', emptyPreview: 'Aus dieser Datei konnte nicht genug Inhalt gelesen werden.', processingFailed: 'Diese Datei konnte nicht vorbereitet werden.', tooManyFiles: 'Diese Kurzdemo zeigt die ersten {limit} Dateien.' },
+    cta: {
+      title: 'Zush kann noch viel mehr!',
+      features: {
+        batchRename: 'Stapel umbenennen',
+        foldersMonitor: 'Ordnerüberwachung',
+        smartNaming: 'Smarte Benennung & Metadaten',
+        customAIPrompts: 'Eigene KI-Prompts',
+        languages: '60+ Sprachen',
+        quickRenameShortcut: 'Schnell-Umbenennen-Tastenkürzel',
+        byok: 'BYOK',
+        offlineAI: 'Offline-KI',
+      },
+    },
+  },
+  fr: {
+    eyebrow: 'Démo rapide',
+    title: 'Zush AI Rename Demo',
+    emptyTitle: 'Déposez des fichiers ici',
+    emptySubtitle: 'Testez jusqu’à 5 fichiers. Téléchargez Zush pour toutes les fonctionnalités, les dossiers et les fichiers complets.',
+    selectFiles: 'Choisir des fichiers...',
+    supportedFormatsLabel: 'Formats d’aperçu pris en charge',
+    privacyHint: 'Vos fichiers restent privés. Cette démo envoie seulement un aperçu temporaire ; les fichiers originaux ne sont jamais téléversés ni stockés.',
+    progressLabel: '{analyzed} sur {total} analysés',
+    previewOnlyLabel: 'Aperçu',
+    startOver: 'Recommencer',
+    downloadCta: 'Télécharger',
+    status: { queued: 'En attente...', preparing: 'Préparation de l’aperçu...', analyzing: 'Analyse du fichier...', done: 'Prêt', error: 'Analyse impossible' },
+    errors: { unsupportedType: '{extension} n’est pas encore pris en charge dans l’aperçu web.', fileTooLarge: 'Cet aperçu dans le navigateur ne peut pas lire ce fichier en toute sécurité. Téléchargez Zush pour renommer les fichiers complets.', emptyPreview: 'Impossible d’extraire assez de contenu de ce fichier.', processingFailed: 'Impossible de préparer ce fichier.', tooManyFiles: 'Cette démo rapide affiche les {limit} premiers fichiers.' },
+    cta: {
+      title: 'Zush fait bien plus !',
+      features: {
+        batchRename: 'Renommage par lots',
+        foldersMonitor: 'Surveillance des dossiers',
+        smartNaming: 'Nommage intelligent & métadonnées',
+        customAIPrompts: 'Prompts IA personnalisés',
+        languages: '60+ langues',
+        quickRenameShortcut: 'Raccourci de renommage rapide',
+        byok: 'BYOK',
+        offlineAI: 'IA hors ligne',
+      },
+    },
+  },
+  'pt-br': {
+    eyebrow: 'Demonstração rápida',
+    title: 'Zush AI Rename Demo',
+    emptyTitle: 'Solte arquivos aqui',
+    emptySubtitle: 'Teste até 5 arquivos. Baixe o Zush para todos os recursos, pastas e arquivos completos.',
+    selectFiles: 'Selecionar arquivos...',
+    supportedFormatsLabel: 'Formatos compatíveis na prévia',
+    privacyHint: 'Seus arquivos permanecem privados. Esta demo envia apenas uma prévia temporária; os arquivos originais nunca são enviados nem armazenados.',
+    progressLabel: '{analyzed} de {total} analisados',
+    previewOnlyLabel: 'Prévia',
+    startOver: 'Começar de novo',
+    downloadCta: 'Baixar',
+    status: { queued: 'Aguardando...', preparing: 'Preparando prévia...', analyzing: 'Analisando arquivo...', done: 'Pronto', error: 'Não foi possível analisar' },
+    errors: { unsupportedType: '{extension} ainda não é compatível com a prévia web.', fileTooLarge: 'Esta prévia no navegador não consegue ler este arquivo com segurança. Baixe o Zush para renomear arquivos completos.', emptyPreview: 'Não foi possível extrair conteúdo suficiente deste arquivo.', processingFailed: 'Não foi possível preparar este arquivo.', tooManyFiles: 'Esta demo rápida mostra os primeiros {limit} arquivos.' },
+    cta: {
+      title: 'O Zush faz muito mais!',
+      features: {
+        batchRename: 'Renomeação em lote',
+        foldersMonitor: 'Monitor de pastas',
+        smartNaming: 'Nomenclatura inteligente & metadados',
+        customAIPrompts: 'Prompts de IA personalizados',
+        languages: '60+ idiomas',
+        quickRenameShortcut: 'Atalho de renomeação rápida',
+        byok: 'BYOK',
+        offlineAI: 'IA offline',
+      },
+    },
+  },
+  es: {
+    eyebrow: 'Demo rápida',
+    title: 'Zush AI Rename Demo',
+    emptyTitle: 'Suelta archivos aquí',
+    emptySubtitle: 'Prueba hasta 5 archivos. Descarga Zush para todas las funciones, carpetas y archivos completos.',
+    selectFiles: 'Seleccionar archivos...',
+    supportedFormatsLabel: 'Formatos de vista previa admitidos',
+    privacyHint: 'Tus archivos siguen siendo privados. Esta demo solo envía una vista previa temporal; los archivos originales nunca se suben ni se almacenan.',
+    progressLabel: '{analyzed} de {total} analizados',
+    previewOnlyLabel: 'Vista previa',
+    startOver: 'Empezar de nuevo',
+    downloadCta: 'Descargar',
+    status: { queued: 'Esperando...', preparing: 'Preparando vista previa...', analyzing: 'Analizando archivo...', done: 'Listo', error: 'No se pudo analizar' },
+    errors: { unsupportedType: '{extension} aún no es compatible con la vista previa web.', fileTooLarge: 'Esta vista previa del navegador no puede leer este archivo de forma segura. Descarga Zush para renombrar archivos completos.', emptyPreview: 'No se pudo extraer suficiente contenido de este archivo.', processingFailed: 'No se pudo preparar este archivo.', tooManyFiles: 'Esta demo rápida muestra los primeros {limit} archivos.' },
+    cta: {
+      title: '¡Zush hace mucho más!',
+      features: {
+        batchRename: 'Renombrado por lotes',
+        foldersMonitor: 'Monitor de carpetas',
+        smartNaming: 'Nombrado inteligente y metadatos',
+        customAIPrompts: 'Prompts de IA personalizados',
+        languages: '60+ idiomas',
+        quickRenameShortcut: 'Atajo de renombrado rápido',
+        byok: 'BYOK',
+        offlineAI: 'IA sin conexión',
+      },
+    },
+  },
+  nl: {
+    eyebrow: 'Snelle demo',
+    title: 'Zush AI Rename Demo',
+    emptyTitle: 'Sleep bestanden hierheen',
+    emptySubtitle: 'Probeer maximaal 5 bestanden. Download Zush voor alle functies, mappen en volledige bestanden.',
+    selectFiles: 'Bestanden kiezen...',
+    supportedFormatsLabel: 'Ondersteunde voorbeeldformaten',
+    privacyHint: 'Je bestanden blijven privé. Deze demo verstuurt alleen een tijdelijke preview; originele bestanden worden nooit geüpload of opgeslagen.',
+    progressLabel: '{analyzed} van {total} geanalyseerd',
+    previewOnlyLabel: 'Voorbeeld',
+    startOver: 'Opnieuw beginnen',
+    downloadCta: 'Download',
+    status: { queued: 'Wachten...', preparing: 'Voorbeeld voorbereiden...', analyzing: 'Bestand analyseren...', done: 'Klaar', error: 'Analyse mislukt' },
+    errors: { unsupportedType: '{extension} wordt nog niet ondersteund in het webvoorbeeld.', fileTooLarge: 'Deze browserpreview kan dit bestand niet veilig lezen. Download Zush om volledige bestanden te hernoemen.', emptyPreview: 'Er kon niet genoeg inhoud uit dit bestand worden gehaald.', processingFailed: 'Dit bestand kon niet worden voorbereid.', tooManyFiles: 'Deze snelle demo toont de eerste {limit} bestanden.' },
+    cta: {
+      title: 'Zush kan nog veel meer!',
+      features: {
+        batchRename: 'Batch hernoemen',
+        foldersMonitor: 'Mapmonitor',
+        smartNaming: 'Slimme naamgeving & metadata',
+        customAIPrompts: 'Aangepaste AI-prompts',
+        languages: '60+ talen',
+        quickRenameShortcut: 'Snel hernoemen-sneltoets',
+        byok: 'BYOK',
+        offlineAI: 'Offline AI',
+      },
+    },
+  },
+  it: {
+    eyebrow: 'Demo rapida',
+    title: 'Zush AI Rename Demo',
+    emptyTitle: 'Trascina qui i file',
+    emptySubtitle: 'Prova fino a 5 file. Scarica Zush per tutte le funzioni, le cartelle e i file completi.',
+    selectFiles: 'Seleziona file...',
+    supportedFormatsLabel: 'Formati supportati nell’anteprima',
+    privacyHint: 'I tuoi file restano privati. Questa demo invia solo un’anteprima temporanea; i file originali non vengono mai caricati o archiviati.',
+    progressLabel: '{analyzed} di {total} analizzati',
+    previewOnlyLabel: 'Anteprima',
+    startOver: 'Ricomincia',
+    downloadCta: 'Scarica',
+    status: { queued: 'In attesa...', preparing: 'Preparazione anteprima...', analyzing: 'Analisi file...', done: 'Pronto', error: 'Analisi non riuscita' },
+    errors: { unsupportedType: '{extension} non è ancora supportato nell’anteprima web.', fileTooLarge: 'Questa anteprima nel browser non può leggere questo file in sicurezza. Scarica Zush per rinominare file completi.', emptyPreview: 'Impossibile estrarre contenuto sufficiente da questo file.', processingFailed: 'Impossibile preparare questo file.', tooManyFiles: 'Questa demo rapida mostra i primi {limit} file.' },
+    cta: {
+      title: 'Zush fa molto di più!',
+      features: {
+        batchRename: 'Rinomina in batch',
+        foldersMonitor: 'Monitor cartelle',
+        smartNaming: 'Denominazione intelligente e metadati',
+        customAIPrompts: 'Prompt IA personalizzati',
+        languages: '60+ lingue',
+        quickRenameShortcut: 'Scorciatoia rinomina rapida',
+        byok: 'BYOK',
+        offlineAI: 'IA offline',
+      },
+    },
+  },
+  ja: {
+    eyebrow: 'クイックデモ',
+    title: 'Zush AI Rename Demo',
+    emptyTitle: 'ここにファイルをドロップ',
+    emptySubtitle: '最大5ファイルまで試せます。すべての機能、フォルダ、フルサイズファイルにはZushをダウンロードしてください。',
+    selectFiles: 'ファイルを選択...',
+    supportedFormatsLabel: 'プレビュー対応形式',
+    privacyHint: 'ファイルは非公開のままです。このデモは一時的なプレビューだけを送信し、元ファイルはアップロードも保存もされません。',
+    progressLabel: '{total}件中{analyzed}件を解析',
+    previewOnlyLabel: 'プレビュー',
+    startOver: '最初から',
+    downloadCta: 'ダウンロード',
+    status: { queued: '待機中...', preparing: 'プレビューを準備中...', analyzing: 'ファイルを解析中...', done: '完了', error: '解析できませんでした' },
+    errors: { unsupportedType: '{extension} はWebプレビューではまだ対応していません。', fileTooLarge: 'このブラウザプレビューでは、このファイルを安全に読み取れません。フルサイズのファイルをリネームするにはZushをダウンロードしてください。', emptyPreview: 'このファイルから十分な内容を抽出できませんでした。', processingFailed: 'このファイルを準備できませんでした。', tooManyFiles: 'このクイックデモでは最初の{limit}ファイルを表示しています。' },
+    cta: {
+      title: 'Zushはもっとたくさんできます!',
+      features: {
+        batchRename: '一括リネーム',
+        foldersMonitor: 'フォルダ監視',
+        smartNaming: 'スマート命名 & メタデータ',
+        customAIPrompts: 'カスタムAIプロンプト',
+        languages: '60以上の言語',
+        quickRenameShortcut: 'クイックリネームのショートカット',
+        byok: 'BYOK',
+        offlineAI: 'オフラインAI',
+      },
+    },
+  },
+  ko: {
+    eyebrow: '빠른 데모',
+    title: 'Zush AI Rename Demo',
+    emptyTitle: '여기에 파일을 놓으세요',
+    emptySubtitle: '최대 5개 파일을 테스트해 보세요. 모든 기능, 폴더, 전체 크기 파일은 Zush를 다운로드하세요.',
+    selectFiles: '파일 선택...',
+    supportedFormatsLabel: '지원되는 미리보기 형식',
+    privacyHint: '파일은 비공개로 유지됩니다. 이 데모는 임시 미리보기만 전송하며 원본 파일은 업로드되거나 저장되지 않습니다.',
+    progressLabel: '{total}개 중 {analyzed}개 분석됨',
+    previewOnlyLabel: '미리보기',
+    startOver: '다시 시작',
+    downloadCta: '다운로드',
+    status: { queued: '대기 중...', preparing: '미리보기 준비 중...', analyzing: '파일 분석 중...', done: '준비됨', error: '분석할 수 없음' },
+    errors: { unsupportedType: '{extension} 형식은 아직 웹 미리보기에서 지원되지 않습니다.', fileTooLarge: '이 브라우저 미리보기에서는 이 파일을 안전하게 읽을 수 없습니다. 전체 크기 파일을 이름 변경하려면 Zush를 다운로드하세요.', emptyPreview: '이 파일에서 충분한 내용을 추출하지 못했습니다.', processingFailed: '이 파일을 준비하지 못했습니다.', tooManyFiles: '이 빠른 데모는 처음 {limit}개 파일을 보여줍니다.' },
+    cta: {
+      title: 'Zush는 훨씬 더 많은 것을 할 수 있어요!',
+      features: {
+        batchRename: '일괄 이름 변경',
+        foldersMonitor: '폴더 모니터',
+        smartNaming: '스마트 이름 & 메타데이터',
+        customAIPrompts: '맞춤 AI 프롬프트',
+        languages: '60+ 언어',
+        quickRenameShortcut: '빠른 이름 변경 단축키',
+        byok: 'BYOK',
+        offlineAI: '오프라인 AI',
+      },
+    },
+  },
+  'zh-cn': {
+    eyebrow: '快速演示',
+    title: 'Zush AI Rename Demo',
+    emptyTitle: '将文件拖到这里',
+    emptySubtitle: '最多试用 5 个文件。下载 Zush 可使用全部功能、文件夹和完整大小文件。',
+    selectFiles: '选择文件...',
+    supportedFormatsLabel: '支持的预览格式',
+    privacyHint: '你的文件保持私密。此演示只发送临时预览；原始文件不会上传或存储。',
+    progressLabel: '已分析 {analyzed}/{total}',
+    previewOnlyLabel: '预览',
+    startOver: '重新开始',
+    downloadCta: '下载',
+    status: { queued: '等待中...', preparing: '正在准备预览...', analyzing: '正在分析文件...', done: '完成', error: '无法分析' },
+    errors: { unsupportedType: '网页预览暂不支持 {extension}。', fileTooLarge: '此浏览器预览无法安全读取该文件。请下载 Zush 来重命名完整大小的文件。', emptyPreview: '无法从此文件提取足够内容。', processingFailed: '无法准备此文件。', tooManyFiles: '此快速演示会显示前 {limit} 个文件。' },
+    cta: {
+      title: 'Zush 还能做更多！',
+      features: {
+        batchRename: '批量重命名',
+        foldersMonitor: '文件夹监控',
+        smartNaming: '智能命名与元数据',
+        customAIPrompts: '自定义 AI 提示',
+        languages: '60+ 种语言',
+        quickRenameShortcut: '快速重命名快捷键',
+        byok: 'BYOK',
+        offlineAI: '离线 AI',
+      },
+    },
+  },
+  ar: {
+    eyebrow: 'عرض سريع',
+    title: 'Zush AI Rename Demo',
+    emptyTitle: 'أسقط الملفات هنا',
+    emptySubtitle: 'جرّب حتى 5 ملفات. نزّل Zush لكل الميزات والمجلدات والملفات كاملة الحجم.',
+    selectFiles: 'اختيار الملفات...',
+    supportedFormatsLabel: 'تنسيقات المعاينة المدعومة',
+    privacyHint: 'تبقى ملفاتك خاصة. يرسل هذا العرض معاينة مؤقتة فقط؛ لا يتم رفع الملفات الأصلية أو تخزينها.',
+    progressLabel: 'تم تحليل {analyzed} من {total}',
+    previewOnlyLabel: 'معاينة',
+    startOver: 'ابدأ من جديد',
+    downloadCta: 'تنزيل',
+    status: { queued: 'في الانتظار...', preparing: 'جار تحضير المعاينة...', analyzing: 'جار تحليل الملف...', done: 'جاهز', error: 'تعذر التحليل' },
+    errors: { unsupportedType: 'لا يدعم معاين الويب {extension} بعد.', fileTooLarge: 'لا يمكن لهذه المعاينة في المتصفح قراءة هذا الملف بأمان. نزّل Zush لإعادة تسمية الملفات كاملة الحجم.', emptyPreview: 'تعذر استخراج محتوى كاف من هذا الملف.', processingFailed: 'تعذر تحضير هذا الملف.', tooManyFiles: 'يعرض هذا العرض السريع أول {limit} ملفات.' },
+    cta: {
+      title: '!يفعل Zush أكثر بكثير',
+      features: {
+        batchRename: 'إعادة التسمية بالدُفعات',
+        foldersMonitor: 'مراقب المجلدات',
+        smartNaming: 'تسمية ذكية وبيانات وصفية',
+        customAIPrompts: 'أوامر ذكاء اصطناعي مخصصة',
+        languages: '60+ لغة',
+        quickRenameShortcut: 'اختصار إعادة التسمية السريعة',
+        byok: 'BYOK',
+        offlineAI: 'ذكاء اصطناعي بدون اتصال',
+      },
+    },
+  },
+};
+
+const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeCopy, 'featureCards' | 'videos' | 'speedComparison' | 'whyZush' | 'useCases' | 'renameDemo' | 'faqItems' | 'showcaseSlides'>>> = {
   de: {
     featureCards: {
       aiAnalysis: { title: 'KI-Analyse', description: 'Fortschrittliche KI analysiert Bilder und unterstützte Dokumente, inklusive PDFs, und erzeugt automatisch aussagekräftige Dateinamen.' },
@@ -2159,14 +2546,15 @@ const localizedSpeedComparison: Record<Exclude<Locale, 'en'>, SpeedComparisonCop
 
 const withLocalizedFileExamples = (
   locale: Exclude<Locale, 'en'>,
-  details: DeepPartial<Pick<HomeCopy, 'featureCards' | 'videos' | 'speedComparison' | 'whyZush' | 'useCases' | 'faqItems' | 'showcaseSlides'>>,
-): DeepPartial<Pick<HomeCopy, 'featureCards' | 'videos' | 'speedComparison' | 'whyZush' | 'useCases' | 'faqItems' | 'showcaseSlides'>> => ({
+  details: DeepPartial<Pick<HomeCopy, 'featureCards' | 'videos' | 'speedComparison' | 'whyZush' | 'useCases' | 'renameDemo' | 'faqItems' | 'showcaseSlides'>>,
+): DeepPartial<Pick<HomeCopy, 'featureCards' | 'videos' | 'speedComparison' | 'whyZush' | 'useCases' | 'renameDemo' | 'faqItems' | 'showcaseSlides'>> => ({
   ...details,
   featureCards: {
     ...details.featureCards,
     ...localizedFileExamples[locale].featureCards,
   },
   speedComparison: localizedSpeedComparison[locale],
+  renameDemo: localizedRenameDemo[locale],
   showcaseSlides: localizedFileExamples[locale].showcaseSlides,
   faqItems: details.faqItems?.length === base.home.faqItems.length
     ? details.faqItems
@@ -2178,7 +2566,7 @@ const withLocalizedFileExamples = (
 export const COPY: Record<Locale, LocaleCopy> = {
   en: base,
   de: localized({
-    header: { features: 'Funktionen', pricing: 'Preise', blog: 'Blog', buyPro: 'PRO kaufen', download: 'Download', toggleTheme: 'Design wechseln', language: 'Sprache', homeAria: 'Zur Startseite', skipToContent: 'Zum Inhalt springen' },
+    header: { features: 'Funktionen', pricing: 'Preise', faq: 'FAQ', blog: 'Blog', buyPro: '🌟 PRO kaufen', download: 'Download', toggleTheme: 'Design wechseln', language: 'Sprache', homeAria: 'Zur Startseite', skipToContent: 'Zum Inhalt springen' },
     downloadMenu: localizedDownloadMenu.de,
     footer: {
       description: 'KI-Dateiumbenennung für Mac und Windows — Dateien automatisch mit KI benennen',
@@ -2242,7 +2630,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   fr: localized({
-    header: { features: 'Fonctions', pricing: 'Tarifs', blog: 'Blog', buyPro: 'Acheter PRO', download: 'Télécharger', toggleTheme: 'Changer le thème', language: 'Langue', homeAria: 'Aller à l’accueil', skipToContent: 'Aller au contenu' },
+    header: { features: 'Fonctions', pricing: 'Tarifs', faq: 'FAQ', blog: 'Blog', buyPro: 'Acheter 🌟 PRO', download: 'Télécharger', toggleTheme: 'Changer le thème', language: 'Langue', homeAria: 'Aller à l’accueil', skipToContent: 'Aller au contenu' },
     downloadMenu: localizedDownloadMenu.fr,
     footer: { description: 'Renommeur de fichiers IA pour Mac et Windows — renommez vos fichiers automatiquement', product: 'Produit', byFileType: 'Par type', resources: 'Ressources', support: 'Support', pricing: 'Tarifs', contactSupport: 'Contacter le support', feedback: 'Fonctions & bugs', terms: 'Conditions', privacy: 'Confidentialité', refund: 'Remboursement', ...localizedFooterDetails.fr },
     home: {
@@ -2282,7 +2670,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   'pt-br': localized({
-    header: { features: 'Recursos', pricing: 'Preços', blog: 'Blog', buyPro: 'Comprar PRO', download: 'Baixar', toggleTheme: 'Alternar tema', language: 'Idioma', homeAria: 'Ir para o início', skipToContent: 'Pular para o conteúdo' },
+    header: { features: 'Recursos', pricing: 'Preços', faq: 'FAQ', blog: 'Blog', buyPro: 'Comprar 🌟 PRO', download: 'Baixar', toggleTheme: 'Alternar tema', language: 'Idioma', homeAria: 'Ir para o início', skipToContent: 'Pular para o conteúdo' },
     downloadMenu: localizedDownloadMenu['pt-br'],
     footer: { description: 'Renomeador de arquivos com IA para Mac e Windows — renomeie arquivos automaticamente', product: 'Produto', byFileType: 'Por tipo', resources: 'Recursos', support: 'Suporte', pricing: 'Preços', contactSupport: 'Falar com suporte', feedback: 'Recursos e bugs', terms: 'Termos', privacy: 'Privacidade', refund: 'Reembolso', ...localizedFooterDetails['pt-br'] },
     home: {
@@ -2322,7 +2710,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   es: localized({
-    header: { features: 'Funciones', pricing: 'Precios', blog: 'Blog', buyPro: 'Comprar PRO', download: 'Descargar', toggleTheme: 'Cambiar tema', language: 'Idioma', homeAria: 'Ir al inicio', skipToContent: 'Saltar al contenido' },
+    header: { features: 'Funciones', pricing: 'Precios', faq: 'FAQ', blog: 'Blog', buyPro: 'Comprar 🌟 PRO', download: 'Descargar', toggleTheme: 'Cambiar tema', language: 'Idioma', homeAria: 'Ir al inicio', skipToContent: 'Saltar al contenido' },
     downloadMenu: localizedDownloadMenu.es,
     footer: { description: 'Renombrador de archivos con IA para Mac y Windows — renombra archivos automáticamente', product: 'Producto', byFileType: 'Por tipo', resources: 'Recursos', support: 'Soporte', pricing: 'Precios', contactSupport: 'Contactar soporte', feedback: 'Funciones y errores', terms: 'Términos', privacy: 'Privacidad', refund: 'Reembolso', ...localizedFooterDetails.es },
     home: {
@@ -2362,7 +2750,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   nl: localized({
-    header: { features: 'Functies', pricing: 'Prijzen', blog: 'Blog', buyPro: 'Koop PRO', download: 'Download', toggleTheme: 'Thema wisselen', language: 'Taal', homeAria: 'Naar home', skipToContent: 'Naar inhoud' },
+    header: { features: 'Functies', pricing: 'Prijzen', faq: 'FAQ', blog: 'Blog', buyPro: 'Koop 🌟 PRO', download: 'Download', toggleTheme: 'Thema wisselen', language: 'Taal', homeAria: 'Naar home', skipToContent: 'Naar inhoud' },
     downloadMenu: localizedDownloadMenu.nl,
     footer: { description: 'AI-bestandshernoemer voor Mac en Windows — hernoem bestanden automatisch', product: 'Product', byFileType: 'Per type', resources: 'Bronnen', support: 'Support', pricing: 'Prijzen', contactSupport: 'Support contacteren', feedback: 'Functies & bugs', terms: 'Voorwaarden', privacy: 'Privacy', refund: 'Terugbetaling', ...localizedFooterDetails.nl },
     home: {
@@ -2402,7 +2790,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   it: localized({
-    header: { features: 'Funzioni', pricing: 'Prezzi', blog: 'Blog', buyPro: 'Acquista PRO', download: 'Scarica', toggleTheme: 'Cambia tema', language: 'Lingua', homeAria: 'Vai alla home', skipToContent: 'Vai al contenuto' },
+    header: { features: 'Funzioni', pricing: 'Prezzi', faq: 'FAQ', blog: 'Blog', buyPro: 'Acquista 🌟 PRO', download: 'Scarica', toggleTheme: 'Cambia tema', language: 'Lingua', homeAria: 'Vai alla home', skipToContent: 'Vai al contenuto' },
     downloadMenu: localizedDownloadMenu.it,
     footer: { description: 'Rinomina file con IA per Mac e Windows — rinomina automaticamente i file', product: 'Prodotto', byFileType: 'Per tipo', resources: 'Risorse', support: 'Supporto', pricing: 'Prezzi', contactSupport: 'Contatta supporto', feedback: 'Funzioni e bug', terms: 'Termini', privacy: 'Privacy', refund: 'Rimborso', ...localizedFooterDetails.it },
     home: {
@@ -2442,7 +2830,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   ja: localized({
-    header: { features: '機能', pricing: '料金', blog: 'ブログ', buyPro: 'PROを購入', download: 'ダウンロード', toggleTheme: 'テーマ切替', language: '言語', homeAria: 'ホームへ移動', skipToContent: 'コンテンツへスキップ' },
+    header: { features: '機能', pricing: '料金', faq: 'FAQ', blog: 'ブログ', buyPro: '🌟 PROを購入', download: 'ダウンロード', toggleTheme: 'テーマ切替', language: '言語', homeAria: 'ホームへ移動', skipToContent: 'コンテンツへスキップ' },
     downloadMenu: localizedDownloadMenu.ja,
     footer: { description: 'Mac と Windows 向け AI ファイルリネーム — ファイル名を自動で整理', product: '製品', byFileType: 'ファイル別', resources: 'リソース', support: 'サポート', pricing: '料金', contactSupport: 'サポートに連絡', feedback: '機能要望と不具合', terms: '利用規約', privacy: 'プライバシー', refund: '返金ポリシー', ...localizedFooterDetails.ja },
     home: {
@@ -2482,7 +2870,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   ko: localized({
-    header: { features: '기능', pricing: '가격', blog: '블로그', buyPro: 'PRO 구매', download: '다운로드', toggleTheme: '테마 전환', language: '언어', homeAria: '홈으로 이동', skipToContent: '콘텐츠로 건너뛰기' },
+    header: { features: '기능', pricing: '가격', faq: 'FAQ', blog: '블로그', buyPro: '🌟 PRO 구매', download: '다운로드', toggleTheme: '테마 전환', language: '언어', homeAria: '홈으로 이동', skipToContent: '콘텐츠로 건너뛰기' },
     downloadMenu: localizedDownloadMenu.ko,
     footer: { description: 'Mac 및 Windows용 AI 파일 이름 변경 — 파일을 자동으로 정리하세요', product: '제품', byFileType: '파일 유형별', resources: '리소스', support: '지원', pricing: '가격', contactSupport: '지원 문의', feedback: '기능 및 버그', terms: '이용 약관', privacy: '개인정보', refund: '환불 정책', ...localizedFooterDetails.ko },
     home: {
@@ -2522,7 +2910,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   'zh-cn': localized({
-    header: { features: '功能', pricing: '价格', blog: '博客', buyPro: '购买 PRO', download: '下载', toggleTheme: '切换主题', language: '语言', homeAria: '前往首页', skipToContent: '跳到内容' },
+    header: { features: '功能', pricing: '价格', faq: 'FAQ', blog: '博客', buyPro: '购买 🌟 PRO', download: '下载', toggleTheme: '切换主题', language: '语言', homeAria: '前往首页', skipToContent: '跳到内容' },
     downloadMenu: localizedDownloadMenu['zh-cn'],
     footer: {
       description: '适用于 Mac 和 Windows 的 AI 文件重命名工具 — 自动整理文件名',
@@ -2681,8 +3069,9 @@ export const COPY: Record<Locale, LocaleCopy> = {
     header: {
       features: 'الميزات',
       pricing: 'السعر',
+      faq: 'FAQ',
       blog: 'المدونة',
-      buyPro: 'شراء PRO',
+      buyPro: 'شراء 🌟 PRO',
       download: 'تنزيل',
       toggleTheme: 'تبديل السمة',
       language: 'اللغة',

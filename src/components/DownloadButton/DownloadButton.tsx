@@ -33,6 +33,7 @@ interface DownloadButtonProps {
   forceOS?: DownloadOS;
   showDropdown?: boolean;
   menuCopy?: DownloadMenuCopy;
+  onPrimaryClick?: (event: { os: DownloadOS; source: DownloadSource }) => void;
 }
 
 const DEFAULT_MENU_COPY: DownloadMenuCopy = {
@@ -55,6 +56,7 @@ const DownloadButton = ({
   forceOS,
   showDropdown = true,
   menuCopy = DEFAULT_MENU_COPY,
+  onPrimaryClick,
 }: DownloadButtonProps) => {
   const { downloadOS: detectedOS, manual: detectedManual } = useOS();
   const downloadOS = forceOS ?? detectedOS;
@@ -104,6 +106,7 @@ const DownloadButton = ({
 
   const handlePrimaryClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     trackDownloadClick({ os: downloadOS, source, manual });
+    onPrimaryClick?.({ os: downloadOS, source });
     if (useMobileModal && isMobile) {
       event.preventDefault();
       setHasLoadedModal(true);

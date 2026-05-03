@@ -94,7 +94,7 @@ const pdfDeepDive = getPdfDeepDiveCopy(currentLocale);
     downloadLabel={currentCopy.header.download}
     downloadMenu={currentCopy.downloadMenu}
   />
-  <WhyZush copy={currentCopy.home.whyZush} />
+  <WhyZush client:visible copy={currentCopy.home.whyZush} />
   <CrossPlatformBanner locale={currentLocale} />
   <UseCases
     title={useCasesTitle}
@@ -169,7 +169,7 @@ const pdfDeepDive = getPdfDeepDiveCopy(currentLocale);
     </>
   )}
 
-  <section class={styles.Section}>
+  <section id='faq' class={styles.Section}>
     <div class={styles.Section__Container}>
       <Heading as='h2' align='center' style={{ marginBottom: '3rem' }}>
         {pageCopy?.faqTitle ?? 'Frequently Asked Questions'}

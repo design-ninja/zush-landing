@@ -31,7 +31,7 @@ import {
 } from 'lucide-react';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
-import StoreBadge from '@/components/StoreBadge/StoreBadge.astro';
+import StoreBadge, { type StoreBadgeKind } from '@/components/StoreBadge/StoreBadge.astro';
 import { PLATFORM_SPECIFICS_CONTENT, type PlatformSpecificsKey, type ScenarioFileType } from '@/data/platformSpecifics';
 import { DEFAULT_LOCALE, type Locale } from '@/i18n/config';
 import { getCopy } from '@/i18n/copy';
@@ -62,6 +62,15 @@ const SECURITY_ICONS = [BadgeCheck, ShieldCheck, Laptop, Lock] as const;
 
 const INTEGRATION_ICONS_MAC = [MousePointerClick, Zap, Search, Camera, Cloud, Sun] as const;
 const INTEGRATION_ICONS_WIN = [MousePointerClick, Scissors, Sparkles, Cloud, Search, Sun] as const;
+
+const getDownloadMeta = (kind: StoreBadgeKind) => ({
+  os: kind === 'microsoft-store' ? 'windows' : 'mac',
+  channel: kind === 'microsoft-store'
+    ? 'microsoft-store'
+    : kind === 'app-store'
+      ? 'mac-app-store'
+      : 'direct',
+} as const);
 
 const FILE_TYPE_META: Record<Exclude<ScenarioFileType, 'image'>, { Icon: typeof FileText; label: string; modifier: string }> = {
   doc: { Icon: FileText, label: 'DOCX', modifier: 'doc' },
@@ -151,6 +160,9 @@ const previewReviewRows = data.scenarios.slice(0, 2).map((scenario) => ({
                 label={method.storeBadge.label}
                 ariaLabel={method.storeBadge.ariaLabel}
                 size='lg'
+                dataDownloadSource='platform-install'
+                dataDownloadOs={getDownloadMeta(method.storeBadge.kind).os}
+                dataDownloadChannel={getDownloadMeta(method.storeBadge.kind).channel}
               />
             </div>
           </article>

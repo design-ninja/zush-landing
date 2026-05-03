@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import Hero from '@/components/Hero';
+import HeroWithRenameDemo from '@/components/Hero/HeroWithRenameDemo';
 import Videos from '@/components/Videos';
 import SpeedComparison from '@/components/SpeedComparison';
 import Features from '@/components/Features/Features.astro';
@@ -101,7 +101,7 @@ const localizedJsonLd = {
 ---
 
 <BaseLayout seo={seo} jsonLd={localizedJsonLd} locale={locale} chromeBasePath={chromeBasePath}>
-  <Hero
+  <HeroWithRenameDemo
     client:load
     title={copy.home.heroTitle}
     titleAccent={copy.home.heroAccent}
@@ -112,6 +112,8 @@ const localizedJsonLd = {
     trustSignals={copy.home.trustSignals}
     secondaryHref="#pricing"
     slides={copy.home.showcaseSlides}
+    renameDemo={copy.home.renameDemo}
+    locale={locale}
   />
   <Videos client:visible autoplayWhenInView copy={copy.home.videos} />
   <Features title={copy.home.featuresTitle} description={copy.home.featuresDescription} copy={copy.home.featureCards} />
@@ -128,7 +130,7 @@ const localizedJsonLd = {
     downloadMenu={copy.downloadMenu}
   />
   <SpeedComparison client:visible copy={copy.home.speedComparison} />
-  <WhyZush copy={copy.home.whyZush} />
+  <WhyZush client:visible copy={copy.home.whyZush} />
   <CrossPlatformBanner locale={locale} />
   <UseCases title={copy.home.useCasesTitle} description={copy.home.useCasesDescription} copy={copy.home.useCases} />
   <Pricing copy={copy.pricing} />

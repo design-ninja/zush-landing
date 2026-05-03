@@ -1,0 +1,725 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.RenameDemo {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 36rem;
+    border: 1px solid var(--border);
+    border-radius: $radius-lg;
+    background:
+        linear-gradient(180deg, color-mix(in oklab, var(--card) 92%, var(--primary) 8%), var(--card)),
+        var(--card);
+    box-shadow:
+        0 2.6rem 8rem color-mix(in oklab, var(--primary) 5%, transparent),
+        0 0.8rem 2.4rem color-mix(in oklab, var(--primary) 3%, transparent);
+    overflow: hidden;
+    color: var(--foreground);
+
+    [data-theme="dark"] & {
+        box-shadow: 0 1.75rem 5.5rem rgba(0, 0, 0, 0.42);
+    }
+
+    &__Chrome {
+        display: flex;
+        gap: 0.5rem;
+
+        span {
+            width: 0.72rem;
+            height: 0.72rem;
+            border-radius: 999px;
+            background: #ff5f57;
+
+            &:nth-child(2) {
+                background: #ffbd2e;
+            }
+
+            &:nth-child(3) {
+                background: #28c840;
+            }
+        }
+    }
+
+    &__HeaderRight {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        flex-shrink: 0;
+    }
+
+    &__Header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        min-height: 3.5rem;
+        padding: 0.7rem 1.1rem 0.6rem;
+        border-bottom: 1px solid var(--border);
+
+        svg {
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+    }
+
+    &__HeaderText {
+        display: flex;
+        min-width: 0;
+        flex-direction: column;
+        gap: 0.62rem;
+    }
+
+    &__Title {
+        margin: 0.12rem 0 0;
+        min-width: 0;
+        overflow: hidden;
+        font-size: 1.12rem;
+        line-height: 1;
+        letter-spacing: 0;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    &__TitleBrand {
+        color: var(--secondary);
+    }
+
+    &__Banner {
+        margin: 0 1.15rem 1rem;
+        padding: 0.7rem 0.85rem;
+        border-radius: 0.55rem;
+        background: color-mix(in oklab, #fbbf24 18%, var(--card));
+        border: 1px solid color-mix(in oklab, #f59e0b 38%, transparent);
+        color: color-mix(in oklab, #713f12 82%, var(--foreground));
+        font-size: 0.78rem;
+        font-weight: 400;
+        text-align: center;
+    }
+
+    [data-theme="dark"] &__Banner {
+        background: color-mix(in oklab, #f59e0b 12%, var(--card));
+        border-color: color-mix(in oklab, #fbbf24 26%, transparent);
+        color: color-mix(in oklab, #fde68a 72%, var(--muted-foreground));
+    }
+
+    &__BannerLink {
+        color: var(--primary);
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    &__DropZone {
+        position: relative;
+        isolation: isolate;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        margin: 0.85rem;
+        min-height: 24rem;
+        overflow: hidden;
+        border: 1px dashed color-mix(in oklab, var(--muted-foreground) 18%, transparent);
+        border-radius: $radius-lg;
+        background: color-mix(in oklab, var(--muted) 60%, transparent);
+        transition:
+            border-color $transition-fast,
+            background-color $transition-fast,
+            transform $transition-fast;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 130%;
+            aspect-ratio: 1;
+            z-index: 0;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transform-origin: center;
+            background:
+                radial-gradient(closest-side at 50% 50%, color-mix(in oklab, var(--primary) 12%, transparent), transparent 68%);
+            filter: blur(8px);
+        }
+
+        [data-theme="dark"] &::before {
+            background:
+                radial-gradient(closest-side at 50% 50%, color-mix(in oklab, var(--primary) 22%, transparent), transparent 72%);
+        }
+
+        > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        &_dragging {
+            border-color: var(--primary);
+            background-color: color-mix(in oklab, var(--primary) 8%, var(--muted));
+            transform: translateY(-0.1rem);
+        }
+
+        &_hasFiles {
+            border-style: solid;
+            border-color: color-mix(in oklab, var(--muted-foreground) 18%, transparent);
+            background: color-mix(in oklab, var(--muted) 50%, transparent);
+        }
+    }
+
+    &__Input {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        clip-path: inset(50%);
+    }
+
+    &__Empty {
+        position: relative;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1.6rem 1.4rem;
+        padding-bottom: 11.4rem;
+        text-align: center;
+    }
+
+    &__EmptyHeader {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        > svg {
+            margin-bottom: 0.65rem;
+            color: var(--muted-foreground);
+        }
+    }
+
+    &__EmptyTitle {
+        margin: 0 0 0.4rem;
+        max-width: 20rem;
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 1.28;
+        color: var(--foreground);
+    }
+
+    &__EmptySubtitle {
+        margin: 0 0 1rem;
+        max-width: 24rem;
+        font-size: 0.82rem;
+        line-height: 1.45;
+        color: var(--muted-foreground);
+        text-wrap: pretty;
+    }
+
+    &__SelectButton {
+        margin-bottom: 1.4rem;
+    }
+
+    &__PreviewShowcase {
+        position: absolute;
+        left: 1.4rem;
+        right: 1.4rem;
+        bottom: 1.4rem;
+        min-height: 8.4rem;
+    }
+
+    &__PreviewGrid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.6rem;
+        width: 100%;
+    }
+
+    &__PreviewItem {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        padding: 0.55rem 0.65rem;
+        min-width: 0;
+        border-radius: $radius-md;
+        border: 1px solid var(--border);
+        background: color-mix(in oklab, var(--card) 78%, transparent);
+        @include shadow("sm");
+        opacity: 0;
+        transform: translateY(0.4rem) scale(0.98);
+        animation: rename-demo-preview-enter 0.32s ease-out forwards;
+        animation-delay: var(--preview-delay, 0ms);
+    }
+
+    &__PreviewGrid_static &__PreviewItem {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+
+    &__PreviewImage {
+        width: 2.6rem;
+        height: 2.6rem;
+        border-radius: 0.4rem;
+        object-fit: cover;
+        flex-shrink: 0;
+        background-color: var(--muted);
+    }
+
+    &__PreviewIcon {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.12rem;
+        width: 2.6rem;
+        height: 2.6rem;
+        border-radius: 0.4rem;
+        flex-shrink: 0;
+        color: white;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+
+        &_tone_doc {
+            background: linear-gradient(160deg, #5b8def 0%, #355dd7 100%);
+        }
+
+        &_tone_sheet {
+            background: linear-gradient(160deg, #30b66f 0%, #198754 100%);
+        }
+
+        &_tone_slides {
+            background: linear-gradient(160deg, #ff9b52 0%, #f97316 100%);
+        }
+
+        &_tone_pdf {
+            background: linear-gradient(160deg, #ff6b6b 0%, #dc2626 100%);
+        }
+    }
+
+    &__PreviewBadge {
+        font-size: 0.42rem;
+        line-height: 1;
+        letter-spacing: 0.08em;
+        font-weight: 800;
+        opacity: 0.95;
+    }
+
+    &__PreviewContent {
+        flex: 1;
+        min-width: 0;
+        text-align: left;
+    }
+
+    &__PreviewBefore {
+        font-size: 0.6rem;
+        line-height: 1.2;
+        color: var(--muted-foreground);
+        text-decoration: line-through;
+        margin-bottom: 0.1rem;
+        @include text-ellipsis;
+    }
+
+    &__PreviewAfter {
+        font-size: 0.78rem;
+        font-weight: 600;
+        line-height: 1.22;
+        color: var(--foreground);
+        @include text-ellipsis;
+    }
+
+    &__Results {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    &__ProgressRow {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 0.55rem;
+        color: var(--muted-foreground);
+        font-size: 0.78rem;
+        font-weight: 400;
+    }
+
+    &__ProgressTrack {
+        height: 0.48rem;
+        margin-bottom: 1rem;
+        overflow: hidden;
+        border-radius: $radius-full;
+        background: color-mix(in oklab, var(--muted-foreground) 18%, transparent);
+
+        span {
+            display: block;
+            height: 100%;
+            border-radius: inherit;
+            background: var(--primary);
+            transition: width $transition-normal;
+        }
+    }
+
+    &__List {
+        border: 1px solid var(--border);
+        border-radius: $radius-md;
+        overflow: hidden;
+        background: color-mix(in oklab, var(--card) 70%, transparent);
+    }
+
+    &__Row {
+        display: grid;
+        grid-template-columns: 3rem minmax(0, 1fr) 1.4rem;
+        align-items: center;
+        gap: 0.65rem;
+        min-height: 2.85rem;
+        padding: 0.32rem 0.6rem;
+
+        & + & {
+            border-top: 1px solid var(--border);
+        }
+    }
+
+    &__Preview {
+        --rename-demo-preview-bg: color-mix(in oklab, var(--primary) 14%, var(--muted));
+        --rename-demo-preview-color: var(--primary);
+
+        display: grid;
+        width: 3rem;
+        height: 2.25rem;
+        place-items: center;
+        overflow: hidden;
+        border-radius: 0.35rem;
+        background: var(--rename-demo-preview-bg);
+        color: var(--rename-demo-preview-color);
+        flex-shrink: 0;
+
+        &_document {
+            --rename-demo-preview-bg: oklch(var(--case-icon-bg-l) var(--case-icon-bg-c) var(--h-blue));
+            --rename-demo-preview-color: oklch(var(--case-icon-l) var(--case-icon-c) var(--h-blue));
+        }
+
+        &_pdf {
+            --rename-demo-preview-bg: oklch(var(--case-icon-bg-l) var(--case-icon-bg-c) 25);
+            --rename-demo-preview-color: oklch(var(--case-icon-l) var(--case-icon-c) 25);
+        }
+
+        &_spreadsheet {
+            --rename-demo-preview-bg: oklch(var(--case-icon-bg-l) var(--case-icon-bg-c) var(--h-green));
+            --rename-demo-preview-color: oklch(var(--case-icon-l) var(--case-icon-c) var(--h-green));
+        }
+
+        &_presentation {
+            --rename-demo-preview-bg: oklch(var(--case-icon-bg-l) var(--case-icon-bg-c) var(--h-orange));
+            --rename-demo-preview-color: oklch(var(--case-icon-l) var(--case-icon-c) var(--h-orange));
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__RowContent {
+        min-width: 0;
+        text-align: left;
+    }
+
+    &__Original {
+        color: var(--muted-foreground);
+        font-size: 0.68rem;
+        font-weight: 400;
+        line-height: 1.18;
+        @include text-ellipsis;
+    }
+
+    &__Suggested,
+    &__Status {
+        margin-top: 0.1rem;
+        min-width: 0;
+        font-size: 0.78rem;
+        line-height: 1.18;
+    }
+
+    &__Suggested {
+        display: flex;
+        align-items: center;
+        gap: 0.28rem;
+        color: var(--foreground);
+        font-weight: 400;
+
+        svg {
+            color: var(--success);
+            flex-shrink: 0;
+        }
+
+        span {
+            @include text-ellipsis;
+        }
+    }
+
+    &__Status {
+        color: var(--primary);
+        font-weight: 400;
+        @include text-ellipsis;
+    }
+
+    &__RowAction {
+        display: grid;
+        place-items: center;
+        color: var(--muted-foreground);
+
+        svg {
+            flex-shrink: 0;
+        }
+
+        &_done {
+            color: var(--success);
+        }
+    }
+
+    &__Spinner {
+        position: relative;
+        display: inline-block;
+        width: 1.3rem;
+        height: 1.3rem;
+        color: color-mix(in oklab, var(--muted-foreground) 84%, var(--foreground));
+
+        span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0.13rem;
+            height: 0.42rem;
+            border-radius: $radius-full;
+            background: currentColor;
+            opacity: 0.18;
+            transform:
+                translate(-50%, -50%)
+                rotate(calc(var(--segment-index) * 30deg))
+                translateY(-0.43rem);
+            animation: rename-demo-spinner 1s linear infinite;
+            animation-delay: calc(-1s + var(--segment-index) * 0.083333s);
+        }
+    }
+
+    &__CTA {
+        display: flex;
+        flex-direction: column;
+        gap: 0.55rem;
+        margin-top: auto;
+        padding-top: 0.85rem;
+        border-top: 1px solid color-mix(in oklab, var(--border) 75%, transparent);
+
+        opacity: 0;
+        transform: translateY(8px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+
+        @media (prefers-reduced-motion: reduce) {
+            opacity: 1;
+            transform: none;
+            transition: none;
+        }
+    }
+
+    &__CTA_revealed {
+        opacity: 1;
+        transform: none;
+    }
+
+    &__CTATitle {
+        margin: 0;
+        font-size: 0.92rem;
+        font-weight: 600;
+        line-height: 1.2;
+        color: var(--foreground);
+    }
+
+    &__CTATitleBrand {
+        color: var(--secondary);
+    }
+
+    &__CTAFeatures {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.3rem 1rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    &__CTAFeature {
+        display: flex;
+        align-items: center;
+        min-width: 0;
+        font-size: 0.78rem;
+        line-height: 1.2;
+        color: var(--foreground);
+
+        opacity: 0;
+        transform: translateY(6px);
+        transition: opacity 0.32s ease, transform 0.32s ease;
+        transition-delay: calc(0.1s + var(--cta-index, 0) * 0.045s);
+
+        > svg {
+            color: var(--secondary);
+            flex-shrink: 0;
+            margin-right: 0.45rem;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            opacity: 1;
+            transform: none;
+            transition: none;
+        }
+    }
+
+    &__CTA_revealed &__CTAFeature {
+        opacity: 1;
+        transform: none;
+    }
+
+    &__CTAFeatureLabel {
+        @include text-ellipsis;
+        font-weight: 500;
+        flex-shrink: 1;
+    }
+
+    &__CTAProBadge {
+        margin-left: 0.3rem;
+        padding: 0.08rem 0.3rem;
+        border-radius: 0.26rem;
+        background: var(--primary);
+        color: var(--primary-foreground);
+        font-size: 0.52rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        line-height: 1;
+        flex-shrink: 0;
+    }
+
+    &__CTADownload {
+        align-self: stretch;
+        margin-top: 0.4rem;
+        opacity: 0;
+        transform: translateY(6px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        transition-delay: calc(0.1s + 8 * 0.045s + 0.05s);
+
+        @media (prefers-reduced-motion: reduce) {
+            opacity: 1;
+            transform: none;
+            transition: none;
+        }
+    }
+
+    &__CTA_revealed &__CTADownload {
+        opacity: 1;
+        transform: none;
+    }
+
+    &__Download {
+        flex-shrink: 0;
+    }
+}
+
+@keyframes rename-demo-spinner {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.18;
+    }
+}
+
+@keyframes rename-demo-preview-enter {
+    from {
+        opacity: 0;
+        transform: translateY(0.4rem) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes rename-demo-sparkle-star {
+    0%, 100% {
+        transform: rotate(0deg) scale(1);
+    }
+    25% {
+        transform: rotate(-8deg) scale(1.08);
+    }
+    50% {
+        transform: rotate(0deg) scale(1);
+    }
+    75% {
+        transform: rotate(8deg) scale(1.08);
+    }
+}
+
+@keyframes rename-demo-sparkle-plus {
+    0%, 70%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    35% {
+        opacity: 0.2;
+        transform: scale(0.6);
+    }
+}
+
+@keyframes rename-demo-sparkle-dot {
+    0%, 60%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    30% {
+        opacity: 0.3;
+        transform: scale(0.5);
+    }
+}
+
+.RenameDemo__SparkleIcon {
+    color: var(--primary);
+    overflow: visible;
+    flex-shrink: 0;
+}
+
+.RenameDemo__SparkleStar {
+    transform-origin: 12px 12px;
+    transform-box: fill-box;
+    animation: rename-demo-sparkle-star 3s ease-in-out infinite;
+
+    @media (prefers-reduced-motion: reduce) {
+        animation: none;
+    }
+}
+
+.RenameDemo__SparklePlus {
+    transform-origin: 20px 4px;
+    transform-box: view-box;
+    animation: rename-demo-sparkle-plus 2.4s ease-in-out infinite;
+
+    @media (prefers-reduced-motion: reduce) {
+        animation: none;
+    }
+}
+
+.RenameDemo__SparkleDot {
+    transform-origin: 4px 20px;
+    transform-box: view-box;
+    animation: rename-demo-sparkle-dot 2.8s ease-in-out infinite;
+    animation-delay: 0.4s;
+
+    @media (prefers-reduced-motion: reduce) {
+        animation: none;
+    }
+}
