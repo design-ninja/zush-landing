@@ -3,8 +3,10 @@
 
 .RenameDemo {
     position: relative;
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    min-height: 31rem;
+    min-height: 36rem;
     border: 1px solid var(--border);
     border-radius: $radius-lg;
     background:
@@ -90,8 +92,9 @@
         display: flex;
         flex-direction: column;
         margin: 1.15rem;
-        min-height: 27rem;
-        border: 1px dashed color-mix(in oklab, var(--muted-foreground) 42%, transparent);
+        height: 31.25rem;
+        min-height: 31.25rem;
+        border: 1px dashed color-mix(in oklab, var(--muted-foreground) 28%, transparent);
         border-radius: $radius-lg;
         background:
             radial-gradient(circle at 50% 6%, color-mix(in oklab, var(--primary) 10%, transparent), transparent 42%),
@@ -109,6 +112,7 @@
 
         &_hasFiles {
             border-style: solid;
+            border-color: color-mix(in oklab, var(--muted-foreground) 30%, transparent);
             background: color-mix(in oklab, var(--muted) 50%, transparent);
         }
     }

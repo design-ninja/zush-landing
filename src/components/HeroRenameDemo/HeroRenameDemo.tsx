@@ -1715,6 +1715,28 @@ function getPreviewToneClass(file: DemoFile) {
   return '';
 }
 
+function titleCaseWord(word: string) {
+  const hasLetters = /\p{L}/u.test(word);
+  if (!hasLetters) return word;
+  if (/^[\p{Lu}\d]{2,}$/u.test(word) || /[\p{Ll}][\p{Lu}]/u.test(word)) return word;
+
+  const [first = '', ...rest] = Array.from(word);
+  return `${first.toLocaleUpperCase()}${rest.join('').toLocaleLowerCase()}`;
+}
+
+function formatSuggestedFilename(name: string | null | undefined) {
+  const trimmed = name?.trim();
+  if (!trimmed) return undefined;
+
+  const extensionIndex = trimmed.lastIndexOf('.');
+  const hasExtension = extensionIndex > 0 && extensionIndex < trimmed.length - 1;
+  const baseName = hasExtension ? trimmed.slice(0, extensionIndex) : trimmed;
+  const extension = hasExtension ? trimmed.slice(extensionIndex) : '';
+  const titledBaseName = baseName.replace(/[\p{L}\p{N}]+/gu, titleCaseWord);
+
+  return `${titledBaseName}${extension}`;
+}
+
 function renderDemoTitle(title: string) {
   if (!title.startsWith('Zush ')) return title;
 
@@ -1884,7 +1906,7 @@ const HeroRenameDemo = ({
           const result = results[index];
           updateFile(item.id, {
             status: result?.error ? 'error' : 'done',
-            suggestedName: result?.suggested_name ?? undefined,
+            suggestedName: result?.error ? undefined : formatSuggestedFilename(result?.suggested_name),
             error: result?.error || undefined,
           });
         });
@@ -2080,7 +2102,7 @@ const HeroRenameDemo = ({
               </Button>
               <DownloadButton
                 source='hero'
-                variant='primary'
+                variant='black'
                 size='sm'
                 label={downloadLabel}
                 menuCopy={downloadMenu}
