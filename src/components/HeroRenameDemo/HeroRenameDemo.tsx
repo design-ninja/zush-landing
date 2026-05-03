@@ -86,7 +86,7 @@ interface CfbFile {
 
 interface XlsxWithCfb {
   CFB?: {
-    read: (data: ArrayBuffer, options: { type: 'array' }) => CfbFile;
+    read: (data: Uint8Array, options: { type: 'array' }) => CfbFile;
   };
 }
 
@@ -1040,6 +1040,25 @@ function contentToBytes(content: CfbFileEntry['content']): Uint8Array | null {
   return Uint8Array.from(content);
 }
 
+async function readCfbFile(file: File): Promise<CfbFile | null> {
+  const CFB = (XLSX as unknown as XlsxWithCfb).CFB;
+  if (!CFB) return null;
+
+  return CFB.read(new Uint8Array(await file.arrayBuffer()), { type: 'array' });
+}
+
+function findCfbEntryBytes(cfb: CfbFile, names: string[]): Uint8Array | null {
+  const lowerNames = names.map((name) => name.toLowerCase());
+  const entry = cfb.FileIndex.find((item) => {
+    const lowerEntryName = item.name.toLowerCase();
+    return lowerNames.some((name) =>
+      lowerEntryName === name || lowerEntryName.endsWith(`/${name}`)
+    );
+  });
+
+  return contentToBytes(entry?.content);
+}
+
 function getLegacyTextDecoder(codePage: number) {
   const normalizedCodePage = codePage < 0 ? codePage + 65536 : codePage;
   const label = normalizedCodePage === 1200
@@ -1153,14 +1172,10 @@ function parseLegacyPropertySet(
   return entries;
 }
 
-async function extractLegacyOfficeMetadata(file: File): Promise<{
+function extractLegacyOfficeMetadataFromCfb(cfb: CfbFile): {
   text: string;
   hasDescriptiveMetadata: boolean;
-}> {
-  const CFB = (XLSX as unknown as XlsxWithCfb).CFB;
-  if (!CFB) return { text: '', hasDescriptiveMetadata: false };
-
-  const cfb = CFB.read(await file.arrayBuffer(), { type: 'array' });
+} {
   const entries = [
     {
       name: '\u0005SummaryInformation',
@@ -1171,7 +1186,7 @@ async function extractLegacyOfficeMetadata(file: File): Promise<{
       labels: DOCUMENT_SUMMARY_PROPERTY_LABELS,
     },
   ].flatMap(({ name, labels }) => {
-    const content = contentToBytes(cfb.FileIndex.find((entry) => entry.name === name)?.content);
+    const content = findCfbEntryBytes(cfb, [name]);
     return content ? parseLegacyPropertySet(content, labels) : [];
   });
 
@@ -1188,6 +1203,169 @@ async function extractLegacyOfficeMetadata(file: File): Promise<{
     text: lines.join('\n'),
     hasDescriptiveMetadata: entries.some((entry) => DESCRIPTIVE_LEGACY_METADATA_LABELS.has(entry.label)),
   };
+}
+
+function readLegacyUint16(bytes: Uint8Array, offset: number): number | null {
+  if (offset < 0 || offset + 2 > bytes.byteLength) return null;
+  return new DataView(bytes.buffer, bytes.byteOffset + offset, 2).getUint16(0, true);
+}
+
+function readLegacyUint32(bytes: Uint8Array, offset: number): number | null {
+  if (offset < 0 || offset + 4 > bytes.byteLength) return null;
+  return new DataView(bytes.buffer, bytes.byteOffset + offset, 4).getUint32(0, true);
+}
+
+function cleanLegacyOfficeText(value: string): string {
+  return normalizeWhitespace(
+    value
+      .replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]+/g, ' ')
+      .replace(/\r+/g, '\n'),
+  );
+}
+
+function decodeLegacyWordPiece(
+  wordDocument: Uint8Array,
+  fileCharacterPosition: number,
+  characterCount: number,
+): string {
+  const isCompressed = (fileCharacterPosition & 0x40000000) !== 0;
+  const fileOffset = fileCharacterPosition & 0x3fffffff;
+
+  if (isCompressed) {
+    const byteOffset = Math.floor(fileOffset / 2);
+    const end = Math.min(wordDocument.byteLength, byteOffset + characterCount);
+    if (end <= byteOffset) return '';
+
+    return getLegacyTextDecoder(1252).decode(wordDocument.slice(byteOffset, end));
+  }
+
+  const byteOffset = fileOffset;
+  const end = Math.min(wordDocument.byteLength, byteOffset + characterCount * 2);
+  if (end <= byteOffset) return '';
+
+  return new TextDecoder('utf-16le').decode(wordDocument.slice(byteOffset, end));
+}
+
+function extractLegacyWordText(cfb: CfbFile): string {
+  const wordDocument = findCfbEntryBytes(cfb, ['WordDocument']);
+  if (!wordDocument) return '';
+
+  const flags = readLegacyUint16(wordDocument, 0x0a) ?? 0;
+  const tableName = (flags & 0x0200) !== 0 ? '1Table' : '0Table';
+  const table = findCfbEntryBytes(cfb, [tableName]);
+  if (!table) return '';
+
+  const fcClx = readLegacyUint32(wordDocument, 0x01a2);
+  const lcbClx = readLegacyUint32(wordDocument, 0x01a6);
+  if (
+    fcClx === null ||
+    lcbClx === null ||
+    lcbClx <= 0 ||
+    fcClx < 0 ||
+    fcClx + lcbClx > table.byteLength
+  ) {
+    return '';
+  }
+
+  const clx = table.slice(fcClx, fcClx + lcbClx);
+  let offset = 0;
+  const chunks: string[] = [];
+
+  while (offset < clx.byteLength) {
+    const marker = clx[offset];
+    offset += 1;
+
+    if (marker === 0x01) {
+      const skipLength = readLegacyUint16(clx, offset);
+      if (skipLength === null) break;
+      offset += 2 + skipLength;
+      continue;
+    }
+
+    if (marker !== 0x02) break;
+
+    const pieceTableLength = readLegacyUint32(clx, offset);
+    if (pieceTableLength === null || pieceTableLength < 4) break;
+
+    const pieceCount = (pieceTableLength - 4) / 12;
+    if (!Number.isInteger(pieceCount) || pieceCount <= 0) break;
+
+    const pieceTableOffset = offset + 4;
+    const characterPositionsOffset = pieceTableOffset;
+    const pieceDescriptorsOffset = characterPositionsOffset + (pieceCount + 1) * 4;
+    const pieceTableEnd = pieceTableOffset + pieceTableLength;
+    if (pieceTableEnd > clx.byteLength) break;
+
+    for (let index = 0; index < pieceCount; index += 1) {
+      const startCp = readLegacyUint32(clx, characterPositionsOffset + index * 4);
+      const endCp = readLegacyUint32(clx, characterPositionsOffset + (index + 1) * 4);
+      const fileCharacterPosition = readLegacyUint32(clx, pieceDescriptorsOffset + index * 8 + 2);
+      if (startCp === null || endCp === null || fileCharacterPosition === null || endCp <= startCp) {
+        continue;
+      }
+
+      chunks.push(decodeLegacyWordPiece(wordDocument, fileCharacterPosition, endCp - startCp));
+    }
+
+    offset = pieceTableEnd;
+  }
+
+  return truncateText(cleanLegacyOfficeText(chunks.join('\n')));
+}
+
+function isUsefulLegacyPowerPointText(value: string): boolean {
+  if (value.length < 3) return false;
+  if (/^\*+$/.test(value)) return false;
+  if (/^click to edit master/i.test(value)) return false;
+  if (/second level third level fourth level fifth level/i.test(value)) return false;
+  return hasUsefulLetters(value);
+}
+
+function extractLegacyPowerPointText(cfb: CfbFile): string {
+  const stream = findCfbEntryBytes(cfb, ['PowerPoint Document']);
+  if (!stream) return '';
+
+  const texts: string[] = [];
+  const seen = new Set<string>();
+
+  const parseRange = (start: number, end: number) => {
+    let offset = start;
+
+    while (offset + 8 <= end) {
+      const recordInfo = readLegacyUint16(stream, offset);
+      const recordType = readLegacyUint16(stream, offset + 2);
+      const recordLength = readLegacyUint32(stream, offset + 4);
+      if (recordInfo === null || recordType === null || recordLength === null) break;
+
+      const dataStart = offset + 8;
+      const dataEnd = dataStart + recordLength;
+      if (recordLength < 0 || dataEnd > end || dataEnd > stream.byteLength) {
+        offset += 1;
+        continue;
+      }
+
+      if (recordType === 4000 || recordType === 4008) {
+        const rawText = recordType === 4000
+          ? new TextDecoder('utf-16le').decode(stream.slice(dataStart, dataEnd))
+          : getLegacyTextDecoder(1252).decode(stream.slice(dataStart, dataEnd));
+        const text = cleanLegacyOfficeText(rawText);
+
+        if (isUsefulLegacyPowerPointText(text) && !seen.has(text)) {
+          seen.add(text);
+          texts.push(text);
+        }
+      }
+
+      if ((recordInfo & 0x000f) === 0x000f && recordLength > 0) {
+        parseRange(dataStart, dataEnd);
+      }
+
+      offset = dataEnd;
+    }
+  };
+
+  parseRange(0, stream.byteLength);
+  return truncateText(texts.join('\n'));
 }
 
 function isReadableAsciiByte(byte: number) {
@@ -1262,9 +1440,18 @@ function collectUtf16LeStrings(bytes: Uint8Array): string[] {
 }
 
 async function extractLegacyOfficeText(file: File, extension: string): Promise<string> {
-  const metadata = await extractLegacyOfficeMetadata(file);
-  if (extension === 'ppt' && metadata.hasDescriptiveMetadata) {
-    return truncateText(metadata.text);
+  const cfb = await readCfbFile(file);
+  if (!cfb) return '';
+
+  const metadata = extractLegacyOfficeMetadataFromCfb(cfb);
+  const structuredText = extension === 'doc'
+    ? extractLegacyWordText(cfb)
+    : extension === 'ppt'
+      ? extractLegacyPowerPointText(cfb)
+      : '';
+
+  if (structuredText) {
+    return truncateText([metadata.text, structuredText].filter(Boolean).join('\n'));
   }
 
   const buffer = await file.slice(0, MAX_LEGACY_OFFICE_SCAN_BYTES).arrayBuffer();
