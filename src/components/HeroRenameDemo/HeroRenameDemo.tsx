@@ -4,19 +4,30 @@ import JSZip from 'jszip';
 import * as XLSX from 'xlsx';
 import {
   ArrowRight,
+  Bot,
   Check,
+  Command,
   FileImage,
   FileSpreadsheet,
   FileText,
   FileType2,
+  FolderPlus,
+  Globe,
+  Key,
+  Layers,
+  MessageSquareText,
   Presentation,
   Sparkles,
+  Tags,
   Upload,
   X,
+  type LucideIcon,
 } from 'lucide-react';
 import Button from '@/components/Button';
 import DownloadButton from '@/components/DownloadButton';
+import { useOS } from '@/hooks/useOS';
 import { SUPABASE_URL } from '@/utils/supabase';
+import type { DownloadOS } from '@/utils/download';
 import type { DownloadMenuCopy, RenameDemoCopy } from '@/i18n/copy';
 import type { Locale } from '@/i18n/config';
 import styles from './HeroRenameDemo.module.scss';
@@ -73,6 +84,7 @@ interface HeroRenameDemoProps {
   downloadLabel: string;
   downloadMenu?: DownloadMenuCopy;
   locale?: Locale;
+  forceOS?: DownloadOS;
 }
 
 interface CfbFileEntry {
@@ -145,47 +157,55 @@ const TIFF_EXTENSIONS = new Set(['tif', 'tiff']);
 const TEXT_EXTENSIONS = new Set(['txt', 'md', 'json', 'eml', 'csv']);
 const DOCUMENT_EXTENSIONS = new Set(['pdf', 'doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx']);
 
-const SUPPORTED_CHIP_GROUPS = [
+type DemoPreviewType = 'image' | 'doc' | 'sheet' | 'slides' | 'pdf';
+
+interface DemoPreviewItem {
+  before: string;
+  after: string;
+  type: DemoPreviewType;
+  img?: string;
+}
+
+const DEMO_PREVIEW_SLIDES: DemoPreviewItem[][] = [
   [
-    '.png',
-    '.jpg',
-    '.jpeg',
-    '.webp',
-    '.gif',
-    '.bmp',
-    '.tiff',
-    '.tif',
-    '.heic',
-    '.heif',
-    '.svg',
-    '.cr2',
-    '.cr3',
-    '.nef',
-    '.arw',
-    '.dng',
-    '.orf',
-    '.raf',
-    '.rw2',
-    '.pef',
-    '.srw',
-    '.sr2',
-    '.raw',
+    { before: 'IMG_0842.JPG', after: 'Pug In Yellow Beanie.jpg', type: 'image', img: '/images/examples/pug.jpg' },
+    { before: 'meeting_notes_v7_final.docx', after: 'Q1 Planning Notes.docx', type: 'doc' },
+    { before: 'budget_export_copy(2).xlsx', after: 'Product Launch Budget.xlsx', type: 'sheet' },
+    { before: 'deck_v12_really-final.pptx', after: 'Investor Update Deck.pptx', type: 'slides' },
   ],
   [
-    '.txt',
-    '.md',
-    '.json',
-    '.eml',
-    '.csv',
-    '.doc',
-    '.docx',
-    '.ppt',
-    '.pptx',
-    '.xls',
-    '.xlsx',
-    '.pdf',
+    { before: 'Screenshot 2024-08-08 at 09.14.25.png', after: 'Technical Dashboard.png', type: 'image', img: '/images/examples/dashboard.jpg' },
+    { before: 'client-brief-scan.pdf', after: 'Client Creative Brief.pdf', type: 'pdf' },
+    { before: 'forecast_2026-03-18_export.xlsx', after: 'Revenue Forecast.xlsx', type: 'sheet' },
+    { before: 'received_1847362910.jpeg', after: 'Asian Style Beef.jpeg', type: 'image', img: '/images/examples/food.jpg' },
+  ],
+  [
+    { before: 'IMG_20240812_143052.jpg', after: 'Happy Dog On Beach.jpg', type: 'image', img: '/images/examples/dog.jpg' },
+    { before: 'sales-kickoff-new(3).pptx', after: 'Sales Kickoff Slides.pptx', type: 'slides' },
+    { before: 'contract_notes_clean.docx', after: 'Vendor Contract Notes.docx', type: 'doc' },
+    { before: 'PXL_20240720_091234.jpg', after: 'Vibrant Yellow Flowers.jpg', type: 'image', img: '/images/examples/flowers.jpg' },
   ],
 ];
+
+type CTAFeatureKey = keyof RenameDemoCopy['cta']['features'];
+
+const CTA_FEATURES: { icon: LucideIcon; key: CTAFeatureKey; pro?: boolean }[] = [
+  { icon: Layers, key: 'batchRename' },
+  { icon: FolderPlus, key: 'foldersMonitor' },
+  { icon: Tags, key: 'smartNaming' },
+  { icon: MessageSquareText, key: 'customAIPrompts' },
+  { icon: Globe, key: 'languages' },
+  { icon: Command, key: 'quickRenameShortcut' },
+  { icon: Key, key: 'byok', pro: true },
+  { icon: Bot, key: 'offlineAI', pro: true },
+];
+
+const DEMO_PREVIEW_ICON_CONFIG: Record<Exclude<DemoPreviewType, 'image'>, { Icon: typeof FileText; label: string; toneClass: string }> = {
+  doc: { Icon: FileText, label: 'DOCX', toneClass: 'tone_doc' },
+  sheet: { Icon: FileSpreadsheet, label: 'XLSX', toneClass: 'tone_sheet' },
+  slides: { Icon: Presentation, label: 'PPTX', toneClass: 'tone_slides' },
+  pdf: { Icon: FileType2, label: 'PDF', toneClass: 'tone_pdf' },
+};
 const SPINNER_SEGMENTS = Array.from({ length: 12 }, (_, index) => index);
 
 const SUMMARY_PROPERTY_LABELS = new Map([
@@ -1547,45 +1567,41 @@ async function renderPdfPageToPreview(page: any) {
 
 async function preparePdfFile(file: File): Promise<PreparedFile['payload'] & { thumbnailDataUrl?: string }> {
   const pdfjsLib = await getPdfJs();
-  const objectUrl = URL.createObjectURL(file);
+  const arrayBuffer = await file.arrayBuffer();
+
+  const pdf = await pdfjsLib.getDocument({
+    data: new Uint8Array(arrayBuffer),
+  }).promise;
 
   try {
-    const pdf = await pdfjsLib.getDocument({
-      url: objectUrl,
-    }).promise;
+    const pageCount = pdf.numPages;
+    const pageNumbers = Array.from(
+      { length: Math.min(pageCount, MAX_DOCUMENT_IMAGES) },
+      (_, index) => index + 1,
+    );
+    const pages = await Promise.all(pageNumbers.map((pageNumber) => pdf.getPage(pageNumber)));
+    const textItems = await Promise.all(
+      pages.map(async (page) => {
+        const content = await page.getTextContent();
+        return content.items.map((item: any) => item.str ?? '').join(' ');
+      }),
+    );
+    const previews = await Promise.all(pages.map((page) => renderPdfPageToPreview(page)));
 
-    try {
-      const pageCount = pdf.numPages;
-      const pageNumbers = Array.from(
-        { length: Math.min(pageCount, MAX_DOCUMENT_IMAGES) },
-        (_, index) => index + 1,
-      );
-      const pages = await Promise.all(pageNumbers.map((pageNumber) => pdf.getPage(pageNumber)));
-      const textItems = await Promise.all(
-        pages.map(async (page) => {
-          const content = await page.getTextContent();
-          return content.items.map((item: any) => item.str ?? '').join(' ');
-        }),
-      );
-      const previews = await Promise.all(pages.map((page) => renderPdfPageToPreview(page)));
-
-      return {
-        name: file.name,
-        original_extension: 'pdf',
-        mime_type: file.type || 'application/pdf',
-        content_kind: 'document',
-        text: truncateText(textItems.join(' ')),
-        images: previews.map((preview) => preview.base64),
-        image_mime_type: 'image/jpeg',
-        preview_page_numbers: pageNumbers,
-        page_count: pageCount,
-        thumbnailDataUrl: previews[0]?.dataUrl,
-      };
-    } finally {
-      await pdf.destroy?.();
-    }
+    return {
+      name: file.name,
+      original_extension: 'pdf',
+      mime_type: file.type || 'application/pdf',
+      content_kind: 'document',
+      text: truncateText(textItems.join(' ')),
+      images: previews.map((preview) => preview.base64),
+      image_mime_type: 'image/jpeg',
+      preview_page_numbers: pageNumbers,
+      page_count: pageCount,
+      thumbnailDataUrl: previews[0]?.dataUrl,
+    };
   } finally {
-    URL.revokeObjectURL(objectUrl);
+    await pdf.destroy?.();
   }
 }
 
@@ -1748,6 +1764,44 @@ function renderDemoTitle(title: string) {
   );
 }
 
+function renderCTATitle(title: string) {
+  const zushIndex = title.indexOf('Zush');
+  if (zushIndex === -1) return title;
+  return (
+    <>
+      {title.slice(0, zushIndex)}
+      <span className={styles.RenameDemo__CTATitleBrand}>Zush</span>
+      {title.slice(zushIndex + 'Zush'.length)}
+    </>
+  );
+}
+
+function renderAnimatedSparkles() {
+  return (
+    <svg
+      className={styles.RenameDemo__SparkleIcon}
+      xmlns='http://www.w3.org/2000/svg'
+      width='22'
+      height='22'
+      viewBox='0 0 24 24'
+      fill='none'
+      stroke='currentColor'
+      strokeWidth='2'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      aria-hidden='true'
+    >
+      <path
+        className={styles.RenameDemo__SparkleStar}
+        d='M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z'
+      />
+      <path className={styles.RenameDemo__SparklePlus} d='M20 2v4' />
+      <path className={styles.RenameDemo__SparklePlus} d='M22 4h-4' />
+      <circle className={styles.RenameDemo__SparkleDot} cx='4' cy='20' r='2' />
+    </svg>
+  );
+}
+
 function renderMacSpinner() {
   return (
     <span className={styles.RenameDemo__Spinner}>
@@ -1763,7 +1817,10 @@ const HeroRenameDemo = ({
   downloadLabel,
   downloadMenu,
   locale,
+  forceOS,
 }: HeroRenameDemoProps) => {
+  const { downloadOS: detectedOS } = useOS();
+  const effectiveOS: DownloadOS = forceOS ?? detectedOS;
   const inputRef = useRef<HTMLInputElement>(null);
   const completionSoundRef = useRef<HTMLAudioElement | null>(null);
   const [files, setFiles] = useState<DemoFile[]>([]);
@@ -1772,10 +1829,30 @@ const HeroRenameDemo = ({
   const [runStartedAt, setRunStartedAt] = useState<number | null>(null);
   const [runFinishedAt, setRunFinishedAt] = useState<number | null>(null);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
+  const [previewSlide, setPreviewSlide] = useState(0);
+  const [previewPaused, setPreviewPaused] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   const analyzedCount = files.filter((file) => file.status === 'done' || file.status === 'error').length;
   const hasFiles = files.length > 0;
   const isBusy = files.some((file) => file.status === 'preparing' || file.status === 'analyzing');
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return undefined;
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const update = () => setPrefersReducedMotion(mediaQuery.matches);
+    update();
+    mediaQuery.addEventListener('change', update);
+    return () => mediaQuery.removeEventListener('change', update);
+  }, []);
+
+  useEffect(() => {
+    if (hasFiles || previewPaused || prefersReducedMotion) return undefined;
+    const intervalId = window.setInterval(() => {
+      setPreviewSlide((prev) => (prev + 1) % DEMO_PREVIEW_SLIDES.length);
+    }, 4200);
+    return () => window.clearInterval(intervalId);
+  }, [hasFiles, previewPaused, prefersReducedMotion]);
 
   useEffect(() => {
     if (!runStartedAt || runFinishedAt) return undefined;
@@ -1808,36 +1885,28 @@ const HeroRenameDemo = ({
 
   const primeCompletionSound = () => {
     const sound = getCompletionSound();
-    sound.muted = true;
+    sound.volume = 0;
     sound.currentTime = 0;
     void sound.play()
       .then(() => {
         sound.pause();
         sound.currentTime = 0;
-        sound.muted = false;
+        sound.volume = 0.5;
       })
       .catch(() => {
-        sound.muted = false;
+        sound.volume = 0.5;
         sound.load();
       });
   };
 
   const playCompletionSound = () => {
     const sound = getCompletionSound();
-    sound.muted = false;
+    sound.volume = 0.5;
     sound.pause();
     sound.currentTime = 0;
     void sound.play().catch(() => undefined);
   };
 
-  const startOver = () => {
-    setFiles([]);
-    setBanner(null);
-    setRunStartedAt(null);
-    setRunFinishedAt(null);
-    setElapsedSeconds(0);
-    if (inputRef.current) inputRef.current.value = '';
-  };
 
   const processFiles = async (selectedFiles: File[]) => {
     const startedAt = Date.now();
@@ -1849,9 +1918,6 @@ const HeroRenameDemo = ({
 
     try {
       const acceptedFiles = selectedFiles.slice(0, MAX_FILES);
-      if (selectedFiles.length > MAX_FILES) {
-        setBanner(formatCopy(copy.errors.tooManyFiles, { limit: MAX_FILES }));
-      }
 
       const initialFiles = acceptedFiles.map((file, index) => {
         const extension = getExtension(file);
@@ -1968,14 +2034,31 @@ const HeroRenameDemo = ({
       <div className={styles.RenameDemo}>
       <div className={styles.RenameDemo__Header}>
         <div className={styles.RenameDemo__HeaderText}>
-          <div className={styles.RenameDemo__Chrome} aria-hidden='true'>
-            <span />
-            <span />
-            <span />
-          </div>
+          {effectiveOS !== 'windows' && (
+            <div className={styles.RenameDemo__Chrome} aria-hidden='true'>
+              <span />
+              <span />
+              <span />
+            </div>
+          )}
           <h2 className={styles.RenameDemo__Title}>{renderDemoTitle(copy.title)}</h2>
         </div>
-        <Sparkles size={20} aria-hidden='true' />
+        <div className={styles.RenameDemo__HeaderRight}>
+          {renderAnimatedSparkles()}
+          {effectiveOS === 'windows' && (
+            <div className={styles.RenameDemo__ChromeWindows} aria-hidden='true'>
+              <span className={styles.RenameDemo__ChromeWinBtn}>
+                <svg viewBox='0 0 12 12' width='10' height='10' fill='none'><path d='M2 6h8' stroke='currentColor' strokeWidth='1' strokeLinecap='square' /></svg>
+              </span>
+              <span className={styles.RenameDemo__ChromeWinBtn}>
+                <svg viewBox='0 0 12 12' width='9' height='9' fill='none'><rect x='2.5' y='2.5' width='7' height='7' stroke='currentColor' strokeWidth='1' /></svg>
+              </span>
+              <span className={`${styles.RenameDemo__ChromeWinBtn} ${styles.RenameDemo__ChromeWinBtn_close}`}>
+                <svg viewBox='0 0 12 12' width='10' height='10' fill='none'><path d='M2.5 2.5l7 7M9.5 2.5l-7 7' stroke='currentColor' strokeWidth='1' strokeLinecap='square' /></svg>
+              </span>
+            </div>
+          )}
+        </div>
       </div>
 
       {banner && (
@@ -2005,28 +2088,82 @@ const HeroRenameDemo = ({
 
         {!hasFiles ? (
           <div className={styles.RenameDemo__Empty}>
-            <Upload size={32} strokeWidth={1.8} aria-hidden='true' />
-            <p className={styles.RenameDemo__EmptyTitle}>{copy.emptyTitle}</p>
-            <p className={styles.RenameDemo__EmptySubtitle}>{copy.emptySubtitle}</p>
-            <Button
-              as='button'
-              type='button'
-              variant='primary'
-              size='sm'
-              className={styles.RenameDemo__SelectButton}
-              onClick={() => inputRef.current?.click()}
-              disabled={isBusy}
+            <div className={styles.RenameDemo__EmptyHeader}>
+              <Upload size={26} strokeWidth={1.8} aria-hidden='true' />
+              <p className={styles.RenameDemo__EmptyTitle}>{copy.emptyTitle}</p>
+              <p className={styles.RenameDemo__EmptySubtitle}>{copy.emptySubtitle}</p>
+              <Button
+                as='button'
+                type='button'
+                variant='ghost'
+                size='sm'
+                className={styles.RenameDemo__SelectButton}
+                onClick={() => inputRef.current?.click()}
+                disabled={isBusy}
+              >
+                {copy.selectFiles}
+              </Button>
+            </div>
+            <div
+              className={styles.RenameDemo__PreviewShowcase}
+              aria-label={copy.supportedFormatsLabel}
+              onMouseEnter={() => setPreviewPaused(true)}
+              onMouseLeave={() => setPreviewPaused(false)}
             >
-              {copy.selectFiles}
-            </Button>
-            <div className={styles.RenameDemo__ChipGroups} aria-label={copy.supportedFormatsLabel}>
-              {SUPPORTED_CHIP_GROUPS.map((chips) => (
-                <div key={chips.join('-')} className={styles.RenameDemo__Chips}>
-                  {chips.map((chip) => (
-                    <span key={chip}>{chip}</span>
-                  ))}
-                </div>
-              ))}
+              <div
+                className={[
+                  styles.RenameDemo__PreviewGrid,
+                  prefersReducedMotion ? styles.RenameDemo__PreviewGrid_static : '',
+                ].filter(Boolean).join(' ')}
+              >
+                {DEMO_PREVIEW_SLIDES[previewSlide].map((item, index) => {
+                  const itemStyle = { '--preview-delay': `${index * 80}ms` } as CSSProperties;
+                  return (
+                    <div
+                      key={`${previewSlide}-${index}-${item.after}`}
+                      className={styles.RenameDemo__PreviewItem}
+                      style={itemStyle}
+                    >
+                      {item.type === 'image' && item.img ? (
+                        <picture>
+                          <source srcSet={item.img.replace(/\.jpg$/i, '.webp')} type='image/webp' />
+                          <img
+                            src={item.img}
+                            alt=''
+                            className={styles.RenameDemo__PreviewImage}
+                            width={48}
+                            height={48}
+                            loading='lazy'
+                            decoding='async'
+                            aria-hidden='true'
+                          />
+                        </picture>
+                      ) : (
+                        (() => {
+                          const config = DEMO_PREVIEW_ICON_CONFIG[item.type as Exclude<DemoPreviewType, 'image'>];
+                          const PreviewIcon = config.Icon;
+                          return (
+                            <div
+                              className={[
+                                styles.RenameDemo__PreviewIcon,
+                                styles[`RenameDemo__PreviewIcon_${config.toneClass}`] ?? '',
+                              ].filter(Boolean).join(' ')}
+                              aria-hidden='true'
+                            >
+                              <PreviewIcon size={20} strokeWidth={2.1} />
+                              <span className={styles.RenameDemo__PreviewBadge}>{config.label}</span>
+                            </div>
+                          );
+                        })()
+                      )}
+                      <div className={styles.RenameDemo__PreviewContent}>
+                        <div className={styles.RenameDemo__PreviewBefore}>{item.before}</div>
+                        <div className={styles.RenameDemo__PreviewAfter}>{item.after}</div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         ) : (
@@ -2061,7 +2198,7 @@ const HeroRenameDemo = ({
                       {file.thumbnailDataUrl ? (
                         <img src={file.thumbnailDataUrl} alt='' />
                       ) : (
-                        <Icon size={24} strokeWidth={2} />
+                        <Icon size={18} strokeWidth={1.9} />
                       )}
                     </div>
                     <div className={styles.RenameDemo__RowContent}>
@@ -2089,25 +2226,41 @@ const HeroRenameDemo = ({
               })}
             </div>
 
-            <div className={styles.RenameDemo__Actions}>
-              <Button
-                as='button'
-                type='button'
-                variant='ghost'
-                size='sm'
-                onClick={startOver}
-                disabled={isBusy}
-              >
-                {copy.startOver}
-              </Button>
+            <div
+              className={[
+                styles.RenameDemo__CTA,
+                runFinishedAt ? styles.RenameDemo__CTA_revealed : '',
+              ].filter(Boolean).join(' ')}
+            >
+              <p className={styles.RenameDemo__CTATitle}>{renderCTATitle(copy.cta.title)}</p>
+              <ul className={styles.RenameDemo__CTAFeatures}>
+                {CTA_FEATURES.map((feature, index) => {
+                  const FeatureIcon = feature.icon;
+                  const label = copy.cta.features[feature.key];
+                  return (
+                    <li
+                      key={feature.key}
+                      className={styles.RenameDemo__CTAFeature}
+                      style={{ '--cta-index': index } as CSSProperties}
+                    >
+                      <FeatureIcon size={16} strokeWidth={2.1} aria-hidden='true' />
+                      <span className={styles.RenameDemo__CTAFeatureLabel}>{label}</span>
+                      {feature.pro && (
+                        <span className={styles.RenameDemo__CTAProBadge}>PRO</span>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
               <DownloadButton
                 source='hero'
                 variant='black'
-                size='sm'
+                size='md'
+                forceOS={forceOS}
                 label={downloadLabel}
                 menuCopy={downloadMenu}
                 showDropdown={false}
-                className={styles.RenameDemo__Download}
+                className={styles.RenameDemo__CTADownload}
               />
             </div>
           </div>

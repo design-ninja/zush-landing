@@ -83,6 +83,7 @@ const Hero = ({
 
   return (
     <Tag
+      data-hero-root
       className={[
         styles.Hero,
         compactTopSpacing ? styles.Hero_compactTopSpacing : "",
@@ -97,7 +98,7 @@ const Hero = ({
           </Heading>
           <Text size="xl" color="subtle" className={styles.Hero__Subtitle}>
             {subtitle ??
-              "Blazing fast AI file renamer for Mac and Windows. Auto rename screenshots, PDFs, documents, and downloads with meaningful names — free to try."}
+              "Blazing fast AI file renamer for Mac and Windows. Auto-rename screenshots, PDFs, and documents with meaningful names — folder watching, BYOK, and offline AI built in."}
           </Text>
 
           <div className={styles.Hero__Buttons}>
@@ -129,6 +130,7 @@ const Hero = ({
                   downloadLabel={downloadLabel}
                   downloadMenu={downloadMenu}
                   locale={locale}
+                  forceOS={forceOS}
                 />
               </div>
               <div className={styles.Hero__MobileShowcase}>

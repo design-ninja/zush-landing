@@ -13,7 +13,6 @@ import {
 } from '@/i18n/config';
 import { getCopy } from '@/i18n/copy';
 import appLinkStyles from '@/components/AppLink/AppLink.module.scss';
-import buttonStyles from '@/components/Button/Button.module.scss';
 import logoStyles from '@/components/Logo/Logo.module.scss';
 import styles from './Header.module.scss';
 
@@ -43,17 +42,11 @@ const languagePaths = shouldUseRouteLanguagePaths
   : Object.fromEntries(
     LOCALES.map((item) => [item, getLocaleBasePath(item)]),
   ) as Partial<Record<Locale, string>>;
-const buyButtonClass = [
-  buttonStyles.Button,
-  buttonStyles.Button_ghost,
-  buttonStyles.Button_sm,
-  styles.Header__BuyBtn,
-].join(' ');
 const navLinkClass = [appLinkStyles.AppLink, styles.Header__Link].join(' ');
 const logoClass = [appLinkStyles.AppLink, logoStyles.Logo].join(' ');
 ---
 
-<nav class={styles.Header}>
+<nav class={styles.Header} data-cta-state='hidden'>
   <div class={styles.Header__Container}>
     <a href={homeHref} class={logoClass} aria-label={copy.homeAria ?? 'Go to homepage'}>
       <picture>
@@ -78,13 +71,13 @@ const logoClass = [appLinkStyles.AppLink, logoStyles.Logo].join(' ');
       <span class={logoStyles.Logo__Text}>Zush</span>
     </a>
 
-    <div class={styles.Header__Actions}>
+    <nav class={styles.Header__Nav} aria-label={copy.skipToContent}>
       <a href={featuresHref} class={navLinkClass}>{copy.features}</a>
       <a href={pricingHref} class={navLinkClass}>{copy.pricing}</a>
       <a href={blogHref} class={navLinkClass}>{copy.blog}</a>
+    </nav>
 
-      <LanguageSwitcher locale={locale} paths={languagePaths} label={copy.language} />
-
+    <div class={styles.Header__Actions}>
       <button
         type='button'
         class={styles.Header__ThemeToggle}
@@ -129,8 +122,9 @@ const logoClass = [appLinkStyles.AppLink, logoStyles.Logo].join(' ');
         </svg>
       </button>
 
+      <LanguageSwitcher locale={locale} paths={languagePaths} label={copy.language} />
+
       <div class={styles.Header__Buttons}>
-        <a href={pricingHref} class={buyButtonClass}>{copy.buyPro}</a>
         <DownloadButton
           client:load
           source='navbar'
@@ -146,3 +140,27 @@ const logoClass = [appLinkStyles.AppLink, logoStyles.Logo].join(' ');
     </div>
   </div>
 </nav>
+
+<script>
+  const NAV_STATE_THRESHOLD = 60;
+
+  function updateHeaderCtaState() {
+    const nav = document.querySelector('nav[data-cta-state]');
+    if (!nav) return;
+    const hero = document.querySelector('[data-hero-root]');
+    if (!hero) {
+      nav.setAttribute('data-cta-state', 'visible');
+      return;
+    }
+    const heroRect = hero.getBoundingClientRect();
+    const heroOutOfView = heroRect.bottom <= NAV_STATE_THRESHOLD;
+    nav.setAttribute('data-cta-state', heroOutOfView ? 'visible' : 'hidden');
+  }
+
+  updateHeaderCtaState();
+  window.addEventListener('scroll', updateHeaderCtaState, { passive: true });
+  window.addEventListener('resize', updateHeaderCtaState, { passive: true });
+  document.addEventListener('astro:after-swap', () => {
+    updateHeaderCtaState();
+  });
+</script>
