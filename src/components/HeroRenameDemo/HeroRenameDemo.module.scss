@@ -204,7 +204,7 @@
         margin-bottom: 0.55rem;
         color: var(--muted-foreground);
         font-size: 0.78rem;
-        font-weight: 600;
+        font-weight: 400;
     }
 
     &__ProgressTrack {
@@ -270,7 +270,7 @@
     &__Original {
         color: var(--muted-foreground);
         font-size: 0.79rem;
-        font-weight: 600;
+        font-weight: 400;
         line-height: 1.25;
         @include text-ellipsis;
     }
@@ -288,7 +288,7 @@
         align-items: center;
         gap: 0.28rem;
         color: var(--foreground);
-        font-weight: 600;
+        font-weight: 400;
 
         svg {
             color: var(--success);
@@ -302,7 +302,7 @@
 
     &__Status {
         color: var(--primary);
-        font-weight: 700;
+        font-weight: 400;
         @include text-ellipsis;
     }
 
