@@ -1,18 +1,16 @@
 import { type ReactNode } from "react";
 import FileShowcase from "../FileShowcase";
 import type { Slide } from "../FileShowcase";
-import HeroRenameDemo from "../HeroRenameDemo";
 import Button from "../Button";
 import DownloadButton from "../DownloadButton";
 import Heading from "../Heading";
 import Text from "../Text";
 import styles from "./Hero.module.scss";
 import { trackProClick, type DownloadOS } from "@/utils/download";
-import type { DownloadMenuCopy, RenameDemoCopy } from "@/i18n/copy";
-import type { Locale } from "@/i18n/config";
+import type { DownloadMenuCopy } from "@/i18n/copy";
 
 
-interface HeroProps {
+export interface HeroProps {
   title?: ReactNode;
   titleAccent?: string;
   titleHighlight?: string;
@@ -26,9 +24,8 @@ interface HeroProps {
   downloadLabel?: string;
   downloadMenu?: DownloadMenuCopy;
   trustSignals?: string[];
-  renameDemo?: RenameDemoCopy;
-  locale?: Locale;
-  showInteractiveDemo?: boolean;
+  showcase?: ReactNode;
+  mobileShowcase?: ReactNode;
 }
 
 const Hero = ({
@@ -45,11 +42,11 @@ const Hero = ({
   downloadLabel = "Download",
   downloadMenu,
   trustSignals = ["✨ Free to try", "💳 No credit card", "🚫 No subscription"],
-  renameDemo,
-  locale,
-  showInteractiveDemo = false,
+  showcase,
+  mobileShowcase,
 }: HeroProps) => {
   const highlightText = titleHighlight ?? titleAccent;
+  const hasCustomShowcase = Boolean(showcase);
 
   const renderTitle = () => {
     if (!title) {
@@ -123,19 +120,13 @@ const Hero = ({
         <div
           className={`${styles.Hero__ShowcaseWrapper} ${styles.Hero__ShowcaseMotion}`}
         >
-          {showInteractiveDemo && renameDemo ? (
+          {hasCustomShowcase ? (
             <>
               <div className={styles.Hero__InteractiveShowcase}>
-                <HeroRenameDemo
-                  copy={renameDemo}
-                  downloadLabel={downloadLabel}
-                  downloadMenu={downloadMenu}
-                  locale={locale}
-                  forceOS={forceOS}
-                />
+                {showcase}
               </div>
               <div className={styles.Hero__MobileShowcase}>
-                <FileShowcase slides={slides} />
+                {mobileShowcase ?? <FileShowcase slides={slides} />}
               </div>
             </>
           ) : (

@@ -93,6 +93,12 @@ interface RunTelemetrySnapshot {
   errorMessage?: string | null;
 }
 
+interface ClientFileError {
+  extension: string;
+  content_kind: ContentKind | null;
+  message: string;
+}
+
 interface HeroRenameDemoProps {
   copy: RenameDemoCopy;
   downloadLabel: string;
@@ -1746,6 +1752,15 @@ function summarizeDemoFile(file: DemoFile): WebPreviewFileSummary | null {
   };
 }
 
+function summarizeClientFileError(file: DemoFile, message = file.error): ClientFileError | null {
+  if (!message) return null;
+  return {
+    extension: file.extension || 'unknown',
+    content_kind: file.contentKind,
+    message,
+  };
+}
+
 function getRunStatus(successCount: number, errorCount: number): RunTelemetrySnapshot['status'] {
   if (successCount > 0 && errorCount === 0) return 'success';
   if (successCount > 0) return 'partial';
@@ -2060,6 +2075,7 @@ const HeroRenameDemo = ({
     let telemetrySuccessCount = 0;
     let telemetryErrorCount = 0;
     let telemetryErrorMessage: string | null = null;
+    let clientPreparationErrors: ClientFileError[] = [];
     let shouldPlayCompletionSound = false;
     setBanner(null);
     setRunStartedAt(startedAt);
@@ -2091,6 +2107,9 @@ const HeroRenameDemo = ({
       telemetryFiles = initialFiles
         .map(summarizeDemoFile)
         .filter((file): file is WebPreviewFileSummary => Boolean(file));
+      clientPreparationErrors = initialFiles
+        .map((file) => summarizeClientFileError(file))
+        .filter((error): error is ClientFileError => Boolean(error));
 
       const preparedFiles: PreparedFile[] = [];
       for (const item of initialFiles) {
@@ -2105,9 +2124,12 @@ const HeroRenameDemo = ({
             thumbnailDataUrl: preparedFile.thumbnailDataUrl,
           });
         } catch (error) {
+          const message = errorToCopy(error, copy, item.extension);
+          const clientError = summarizeClientFileError(item, message);
+          if (clientError) clientPreparationErrors.push(clientError);
           updateFile(item.id, {
             status: 'error',
-            error: errorToCopy(error, copy, item.extension),
+            error: message,
           });
         }
       }
@@ -2128,23 +2150,40 @@ const HeroRenameDemo = ({
           error_message: telemetryErrorMessage,
           error_details: {
             status: 'failed',
-            errors: initialFiles
-              .filter((file) => file.error)
-              .map((file) => ({
-                extension: file.extension,
-                content_kind: file.contentKind,
-                message: file.error,
-              })),
+            errors: clientPreparationErrors,
           },
         });
         return;
       }
 
-      telemetryFiles = preparedFiles.map((item) => {
+      const preparedTelemetryFiles = new Map(preparedFiles.map((item) => {
         const sourceFile = initialFiles.find((file) => file.id === item.id);
-        return summarizePreviewPayloadFile(item.payload, sourceFile?.file.size);
-      });
-      telemetryFileCount = preparedFiles.length;
+        return [item.id, summarizePreviewPayloadFile(item.payload, sourceFile?.file.size)] as const;
+      }));
+      telemetryFiles = initialFiles
+        .map((file) => preparedTelemetryFiles.get(file.id) ?? summarizeDemoFile(file))
+        .filter((file): file is WebPreviewFileSummary => Boolean(file));
+      telemetryFileCount = initialFiles.length;
+
+      if (clientPreparationErrors.length > 0) {
+        sendWebPreviewEvent({
+          event_type: 'client_prepare_failed',
+          visitor_id: visitorId,
+          run_id: runId,
+          locale,
+          files: telemetryFiles,
+          file_count: initialFiles.length,
+          success_count: preparedFiles.length,
+          error_count: clientPreparationErrors.length,
+          duration_ms: Date.now() - startedAt,
+          error_message: 'One or more demo files could not be prepared for analysis',
+          error_details: {
+            status: 'partial',
+            errors: clientPreparationErrors,
+          },
+        });
+      }
+
       preparedFiles.forEach((item) => updateFile(item.id, { status: 'analyzing' }));
 
       try {
@@ -2154,9 +2193,15 @@ const HeroRenameDemo = ({
           runId,
         );
         shouldPlayCompletionSound = results.some((result) => Boolean(result?.suggested_name && !result.error));
-        telemetrySuccessCount = results.filter((result) => Boolean(result?.suggested_name && !result.error)).length;
-        telemetryErrorCount = preparedFiles.length - telemetrySuccessCount;
-        telemetryErrorMessage = telemetryErrorCount > 0 ? 'One or more demo files failed analysis' : null;
+        const analysisSuccessCount = results.filter((result) => Boolean(result?.suggested_name && !result.error)).length;
+        const analysisErrorCount = preparedFiles.length - analysisSuccessCount;
+        telemetrySuccessCount = analysisSuccessCount;
+        telemetryErrorCount = clientPreparationErrors.length + analysisErrorCount;
+        telemetryErrorMessage = telemetryErrorCount > 0
+          ? analysisErrorCount > 0
+            ? 'One or more demo files failed analysis'
+            : 'One or more demo files could not be prepared for analysis'
+          : null;
 
         preparedFiles.forEach((item, index) => {
           const result = results[index];
@@ -2169,7 +2214,7 @@ const HeroRenameDemo = ({
       } catch (error) {
         const message = errorToCopy(error, copy);
         telemetrySuccessCount = 0;
-        telemetryErrorCount = preparedFiles.length;
+        telemetryErrorCount = clientPreparationErrors.length + preparedFiles.length;
         telemetryErrorMessage = message;
         setBanner(message);
         sendWebPreviewEvent({
@@ -2178,18 +2223,21 @@ const HeroRenameDemo = ({
           run_id: runId,
           locale,
           files: telemetryFiles,
-          file_count: preparedFiles.length,
+          file_count: initialFiles.length,
           success_count: 0,
-          error_count: preparedFiles.length,
+          error_count: telemetryErrorCount,
           duration_ms: Date.now() - startedAt,
           error_message: message,
           error_details: {
             status: 'failed',
-            errors: preparedFiles.map((item) => ({
-              extension: item.payload.original_extension,
-              content_kind: item.payload.content_kind,
-              message,
-            })),
+            errors: [
+              ...clientPreparationErrors,
+              ...preparedFiles.map((item) => ({
+                extension: item.payload.original_extension,
+                content_kind: item.payload.content_kind,
+                message,
+              })),
+            ],
           },
         });
         preparedFiles.forEach((item) => {
@@ -2221,6 +2269,7 @@ const HeroRenameDemo = ({
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = Array.from(event.target.files ?? []);
+    event.currentTarget.value = '';
     if (selectedFiles.length) {
       primeCompletionSound();
       void processFiles(selectedFiles);
