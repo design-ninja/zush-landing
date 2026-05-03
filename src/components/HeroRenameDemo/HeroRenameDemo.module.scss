@@ -64,7 +64,7 @@
         margin: 0.12rem 0 0;
         min-width: 0;
         overflow: hidden;
-        font-size: 1rem;
+        font-size: 1.12rem;
         line-height: 1;
         letter-spacing: 0;
         text-overflow: ellipsis;
@@ -79,11 +79,11 @@
         margin: 1rem 1.15rem 0;
         padding: 0.7rem 0.85rem;
         border-radius: $radius-sm;
-        background: color-mix(in oklab, var(--destructive) 12%, transparent);
-        border: 1px solid color-mix(in oklab, var(--destructive) 28%, transparent);
+        background: color-mix(in oklab, var(--primary) 8%, transparent);
+        border: 1px solid color-mix(in oklab, var(--primary) 20%, transparent);
         color: var(--foreground);
         font-size: 0.78rem;
-        font-weight: 650;
+        font-weight: 400;
     }
 
     &__DropZone {
@@ -142,7 +142,7 @@
         margin: 0 0 0.45rem;
         max-width: 20rem;
         font-size: 1rem;
-        font-weight: 800;
+        font-weight: 600;
         line-height: 1.28;
         color: var(--foreground);
     }

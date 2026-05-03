@@ -91,6 +91,7 @@ interface XlsxWithCfb {
 }
 
 const MAX_FILES = 5;
+const COMPLETION_SOUND_SRC = '/sounds/ding.wav';
 const MAX_IMAGE_SOURCE_BYTES = 30 * 1024 * 1024;
 const MAX_HEIC_SOURCE_BYTES = 80 * 1024 * 1024;
 const MAX_TIFF_SOURCE_BYTES = 120 * 1024 * 1024;
@@ -1742,6 +1743,7 @@ const HeroRenameDemo = ({
   locale,
 }: HeroRenameDemoProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const completionSoundRef = useRef<HTMLAudioElement | null>(null);
   const [files, setFiles] = useState<DemoFile[]>([]);
   const [isDragging, setIsDragging] = useState(false);
   const [banner, setBanner] = useState<string | null>(null);
@@ -1771,6 +1773,41 @@ const HeroRenameDemo = ({
     );
   };
 
+  const getCompletionSound = () => {
+    if (!completionSoundRef.current) {
+      const sound = new Audio(COMPLETION_SOUND_SRC);
+      sound.preload = 'auto';
+      sound.volume = 0.5;
+      completionSoundRef.current = sound;
+    }
+
+    return completionSoundRef.current;
+  };
+
+  const primeCompletionSound = () => {
+    const sound = getCompletionSound();
+    sound.muted = true;
+    sound.currentTime = 0;
+    void sound.play()
+      .then(() => {
+        sound.pause();
+        sound.currentTime = 0;
+        sound.muted = false;
+      })
+      .catch(() => {
+        sound.muted = false;
+        sound.load();
+      });
+  };
+
+  const playCompletionSound = () => {
+    const sound = getCompletionSound();
+    sound.muted = false;
+    sound.pause();
+    sound.currentTime = 0;
+    void sound.play().catch(() => undefined);
+  };
+
   const startOver = () => {
     setFiles([]);
     setBanner(null);
@@ -1782,6 +1819,7 @@ const HeroRenameDemo = ({
 
   const processFiles = async (selectedFiles: File[]) => {
     const startedAt = Date.now();
+    let shouldPlayCompletionSound = false;
     setBanner(null);
     setRunStartedAt(startedAt);
     setRunFinishedAt(null);
@@ -1840,6 +1878,7 @@ const HeroRenameDemo = ({
           preparedFiles.map((item) => item.payload),
           locale,
         );
+        shouldPlayCompletionSound = results.some((result) => Boolean(result?.suggested_name && !result.error));
 
         preparedFiles.forEach((item, index) => {
           const result = results[index];
@@ -1863,12 +1902,16 @@ const HeroRenameDemo = ({
       const finishedAt = Date.now();
       setRunFinishedAt(finishedAt);
       setElapsedSeconds(Math.max(1, Math.ceil((finishedAt - startedAt) / 1000)));
+      if (shouldPlayCompletionSound) {
+        playCompletionSound();
+      }
     }
   };
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = Array.from(event.target.files ?? []);
     if (selectedFiles.length) {
+      primeCompletionSound();
       void processFiles(selectedFiles);
     }
   };
@@ -1879,6 +1922,7 @@ const HeroRenameDemo = ({
     if (isBusy) return;
     const selectedFiles = Array.from(event.dataTransfer.files ?? []);
     if (selectedFiles.length) {
+      primeCompletionSound();
       void processFiles(selectedFiles);
     }
   };
@@ -1939,7 +1983,7 @@ const HeroRenameDemo = ({
 
         {!hasFiles ? (
           <div className={styles.RenameDemo__Empty}>
-            <Upload size={38} strokeWidth={1.8} aria-hidden='true' />
+            <Upload size={32} strokeWidth={1.8} aria-hidden='true' />
             <p className={styles.RenameDemo__EmptyTitle}>{copy.emptyTitle}</p>
             <p className={styles.RenameDemo__EmptySubtitle}>{copy.emptySubtitle}</p>
             <Button
