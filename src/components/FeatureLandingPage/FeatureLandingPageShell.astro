@@ -94,7 +94,7 @@ const pdfDeepDive = getPdfDeepDiveCopy(currentLocale);
     downloadLabel={currentCopy.header.download}
     downloadMenu={currentCopy.downloadMenu}
   />
-  <WhyZush copy={currentCopy.home.whyZush} />
+  <WhyZush client:visible copy={currentCopy.home.whyZush} />
   <CrossPlatformBanner locale={currentLocale} />
   <UseCases
     title={useCasesTitle}

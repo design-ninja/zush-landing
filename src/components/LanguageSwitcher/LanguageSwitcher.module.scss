@@ -69,11 +69,25 @@
   width: 1.5rem;
   font-size: 1.25rem;
   line-height: 1;
+
+  svg {
+    display: block;
+    width: 1.35rem;
+    height: 1rem;
+    overflow: hidden;
+    border-radius: 0.18rem;
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--border), transparent 20%);
+  }
 }
 
 .LanguageSwitcher__MenuFlag {
   width: 1.25rem;
   font-size: 1rem;
+
+  svg {
+    width: 1.15rem;
+    height: 0.86rem;
+  }
 }
 
 .LanguageSwitcher__Current {
@@ -162,6 +176,11 @@
   .LanguageSwitcher__Flag {
     width: 1.55rem;
     font-size: 1.35rem;
+
+    svg {
+      width: 1.4rem;
+      height: 1.05rem;
+    }
   }
 
   .LanguageSwitcher__Current {
@@ -179,6 +198,11 @@
   .LanguageSwitcher__Flag {
     width: 1.25rem;
     font-size: 1.15rem;
+
+    svg {
+      width: 1.15rem;
+      height: 0.86rem;
+    }
   }
 
   .LanguageSwitcher__Icon {

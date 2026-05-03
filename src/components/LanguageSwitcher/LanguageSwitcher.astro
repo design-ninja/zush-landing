@@ -10,9 +10,33 @@ interface Props {
 
 const { locale, paths, label } = Astro.props as Props;
 const currentLocaleMeta = LOCALE_META[locale];
+type AvailableLanguageOption = {
+  locale: Locale;
+  path: string;
+  meta: (typeof LOCALE_META)[Locale];
+  flagSvg: string | undefined;
+};
+const FLAG_SVGS: Partial<Record<Locale, string>> = {
+  de: '<svg viewBox="0 0 48 36" role="img"><path fill="#151515" d="M0 0h48v12H0z"/><path fill="#dd0000" d="M0 12h48v12H0z"/><path fill="#ffce00" d="M0 24h48v12H0z"/></svg>',
+  fr: '<svg viewBox="0 0 48 36" role="img"><path fill="#0055a4" d="M0 0h16v36H0z"/><path fill="#fff" d="M16 0h16v36H16z"/><path fill="#ef4135" d="M32 0h16v36H32z"/></svg>',
+  'pt-br': '<svg viewBox="0 0 48 36" role="img"><path fill="#009b3a" d="M0 0h48v36H0z"/><path fill="#ffdf00" d="m24 5 18 13-18 13L6 18z"/><circle cx="24" cy="18" r="8" fill="#002776"/></svg>',
+  es: '<svg viewBox="0 0 48 36" role="img"><path fill="#aa151b" d="M0 0h48v9H0zm0 27h48v9H0z"/><path fill="#f1bf00" d="M0 9h48v18H0z"/></svg>',
+  nl: '<svg viewBox="0 0 48 36" role="img"><path fill="#ae1c28" d="M0 0h48v12H0z"/><path fill="#fff" d="M0 12h48v12H0z"/><path fill="#21468b" d="M0 24h48v12H0z"/></svg>',
+  it: '<svg viewBox="0 0 48 36" role="img"><path fill="#009246" d="M0 0h16v36H0z"/><path fill="#fff" d="M16 0h16v36H16z"/><path fill="#ce2b37" d="M32 0h16v36H32z"/></svg>',
+  ja: '<svg viewBox="0 0 48 36" role="img"><path fill="#fff" d="M0 0h48v36H0z"/><circle cx="24" cy="18" r="9" fill="#bc002d"/></svg>',
+  ko: '<svg viewBox="0 0 48 36" role="img"><path fill="#fff" d="M0 0h48v36H0z"/><path fill="#cd2e3a" d="M16 18a8 8 0 0 1 16 0c0 2.2-1.8 4-4 4s-4-1.8-4-4-1.8-4-4-4-4 1.8-4 4Z"/><path fill="#0047a0" d="M32 18a8 8 0 0 1-16 0c0-2.2 1.8-4 4-4s4 1.8 4 4 1.8 4 4 4 4-1.8 4-4Z"/><g stroke="#111" stroke-width="1.6" stroke-linecap="round"><path d="M9 8h7M9 11h7M9 14h7" transform="rotate(-33 12.5 11)"/><path d="M32 22h7M32 25h7M32 28h7" transform="rotate(-33 35.5 25)"/><path d="M32 8h7M32 11h7M32 14h7" transform="rotate(33 35.5 11)"/><path d="M9 22h7M9 25h7M9 28h7" transform="rotate(33 12.5 25)"/></g></svg>',
+  'zh-cn': '<svg viewBox="0 0 48 36" role="img"><path fill="#de2910" d="M0 0h48v36H0z"/><path fill="#ffde00" d="m10 6 1.8 5.4h5.7l-4.6 3.4 1.8 5.4-4.7-3.3-4.6 3.3 1.8-5.4-4.7-3.4h5.7z"/><circle cx="22" cy="8" r="2" fill="#ffde00"/><circle cx="27" cy="13" r="2" fill="#ffde00"/><circle cx="27" cy="20" r="2" fill="#ffde00"/><circle cx="22" cy="25" r="2" fill="#ffde00"/></svg>',
+  ar: '<svg viewBox="0 0 48 36" role="img"><path fill="#006c35" d="M0 0h48v36H0z"/><path fill="#fff" d="M12 14h24v3H12zM11 22h25c2 0 3.5-.7 4.5-2l.8 2.6c-1.4 1.5-3.2 2.2-5.4 2.2H11z"/></svg>',
+};
 const availableOptions = LOCALES
-  .map((item) => ({ locale: item, path: paths[item] }))
-  .filter((option): option is { locale: Locale; path: string } => Boolean(option.path));
+  .map((item) => ({
+    locale: item,
+    path: paths[item],
+    meta: LOCALE_META[item],
+    flagSvg: FLAG_SVGS[item],
+  }))
+  .filter((option): option is AvailableLanguageOption => Boolean(option.path));
+const currentFlagSvg = FLAG_SVGS[locale];
 ---
 
 <div
@@ -28,7 +52,9 @@ const availableOptions = LOCALES
     aria-expanded="false"
     data-language-trigger
   >
-    <span class={styles.LanguageSwitcher__Flag} aria-hidden="true">{currentLocaleMeta.flag}</span>
+    <span class={styles.LanguageSwitcher__Flag} aria-hidden="true">
+      {currentFlagSvg ? <Fragment set:html={currentFlagSvg} /> : currentLocaleMeta.flag}
+    </span>
     <span class={styles.LanguageSwitcher__Current}>{currentLocaleMeta.nativeLabel}</span>
     <svg
       class={styles.LanguageSwitcher__Icon}
@@ -48,7 +74,7 @@ const availableOptions = LOCALES
   </button>
 
   <div class={styles.LanguageSwitcher__Menu} role="menu" data-language-menu hidden>
-    {availableOptions.map(({ locale: item, path }) => (
+    {availableOptions.map(({ locale: item, path, meta, flagSvg }) => (
       <a
         class:list={[
           styles.LanguageSwitcher__MenuItem,
@@ -61,9 +87,11 @@ const availableOptions = LOCALES
         data-astro-reload
         aria-current={item === locale ? 'page' : undefined}
       >
-        <span class={styles.LanguageSwitcher__MenuFlag} aria-hidden="true">{LOCALE_META[item].flag}</span>
+        <span class={styles.LanguageSwitcher__MenuFlag} aria-hidden="true">
+          {flagSvg ? <Fragment set:html={flagSvg} /> : meta.flag}
+        </span>
         <span class={styles.LanguageSwitcher__MenuText}>
-          <span class={styles.LanguageSwitcher__MenuTitle}>{LOCALE_META[item].nativeLabel}</span>
+          <span class={styles.LanguageSwitcher__MenuTitle}>{meta.nativeLabel}</span>
         </span>
       </a>
     ))}
