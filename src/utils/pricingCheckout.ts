@@ -1,5 +1,6 @@
 // fallow-ignore-file unused-file
 import { getCheckoutParam } from '@/utils/checkoutParams';
+import { trackProClick } from '@/utils/download';
 
 let isPricingCheckoutBound = false;
 let paddleModulePromise: Promise<typeof import('@/utils/paddle')> | null = null;
@@ -73,6 +74,7 @@ export function bindPricingCheckout(): void {
     }
 
     event.preventDefault();
+    trackProClick({ source: 'pricing' });
 
     setCheckoutButtonLoading(checkoutButton, true);
 

@@ -138,7 +138,11 @@ const logoClass = [appLinkStyles.AppLink, logoStyles.Logo].join(' ');
           showDropdown={false}
           className={styles.Header__DownloadBtn}
         />
-        <a href={pricingHref} class={`${appLinkStyles.AppLink} ${styles.Header__MobileBuyBtn}`}>
+        <a
+          href={pricingHref}
+          class={`${appLinkStyles.AppLink} ${styles.Header__MobileBuyBtn}`}
+          data-pro-click-source='navbar'
+        >
           {copy.buyPro}
         </a>
       </div>

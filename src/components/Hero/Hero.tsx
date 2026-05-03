@@ -7,7 +7,7 @@ import DownloadButton from "../DownloadButton";
 import Heading from "../Heading";
 import Text from "../Text";
 import styles from "./Hero.module.scss";
-import type { DownloadOS } from "@/utils/download";
+import { trackProClick, type DownloadOS } from "@/utils/download";
 import type { DownloadMenuCopy, RenameDemoCopy } from "@/i18n/copy";
 import type { Locale } from "@/i18n/config";
 
@@ -108,6 +108,7 @@ const Hero = ({
               href={secondaryHref}
               variant="primary"
               size="lg"
+              onClick={() => trackProClick({ source: "hero" })}
             >
               {buyLabel}
             </Button>

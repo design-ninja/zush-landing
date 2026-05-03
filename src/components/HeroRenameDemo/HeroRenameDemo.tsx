@@ -27,6 +27,10 @@ import DownloadButton from '@/components/DownloadButton';
 import { useOS } from '@/hooks/useOS';
 import { SUPABASE_URL } from '@/utils/supabase';
 import { getDownloadUrl, trackDownloadClick, type DownloadOS } from '@/utils/download';
+import {
+  sendWebPreviewEvent,
+  type WebPreviewFileSummary,
+} from '@/utils/webPreviewEvents';
 import type { DownloadMenuCopy, RenameDemoCopy } from '@/i18n/copy';
 import type { Locale } from '@/i18n/config';
 import styles from './HeroRenameDemo.module.scss';
@@ -76,6 +80,17 @@ interface PreparedFile {
   id: string;
   payload: PreviewPayloadFile;
   thumbnailDataUrl?: string;
+}
+
+interface RunTelemetrySnapshot {
+  runId: string;
+  files: WebPreviewFileSummary[];
+  fileCount: number;
+  successCount: number;
+  errorCount: number;
+  durationMs: number;
+  status: 'success' | 'partial' | 'failed';
+  errorMessage?: string | null;
 }
 
 interface HeroRenameDemoProps {
@@ -1708,12 +1723,42 @@ function getOrCreateVisitorId(): string {
   return visitorId;
 }
 
-async function analyzePreviewFiles(files: PreviewPayloadFile[], locale: Locale | undefined) {
+function summarizePreviewPayloadFile(file: PreviewPayloadFile, sizeBytes?: number): WebPreviewFileSummary {
+  return {
+    extension: file.original_extension,
+    mime_type: file.mime_type,
+    content_kind: file.content_kind,
+    page_count: file.page_count ?? null,
+    preview_pages: file.preview_page_numbers?.length,
+    has_text: Boolean(file.text),
+    image_count: file.images?.length ?? (file.image ? 1 : undefined),
+    size_bytes: sizeBytes ?? null,
+  };
+}
+
+function summarizeDemoFile(file: DemoFile): WebPreviewFileSummary | null {
+  if (!file.contentKind) return null;
+  return {
+    extension: file.extension || 'unknown',
+    mime_type: file.mimeType || 'application/octet-stream',
+    content_kind: file.contentKind,
+    size_bytes: file.file.size,
+  };
+}
+
+function getRunStatus(successCount: number, errorCount: number): RunTelemetrySnapshot['status'] {
+  if (successCount > 0 && errorCount === 0) return 'success';
+  if (successCount > 0) return 'partial';
+  return 'failed';
+}
+
+async function analyzePreviewFiles(files: PreviewPayloadFile[], locale: Locale | undefined, runId: string) {
   const response = await fetch(`${SUPABASE_URL}/functions/v1/web-preview-analyze`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       visitor_id: getOrCreateVisitorId(),
+      run_id: runId,
       locale,
       files,
     }),
@@ -1895,6 +1940,7 @@ const HeroRenameDemo = ({
   const [banner, setBanner] = useState<string | null>(null);
   const [runStartedAt, setRunStartedAt] = useState<number | null>(null);
   const [runFinishedAt, setRunFinishedAt] = useState<number | null>(null);
+  const [lastRunTelemetry, setLastRunTelemetry] = useState<RunTelemetrySnapshot | null>(null);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [previewSlide, setPreviewSlide] = useState(0);
   const [previewPaused, setPreviewPaused] = useState(false);
@@ -1978,20 +2024,52 @@ const HeroRenameDemo = ({
     void sound.play().catch(() => undefined);
   };
 
+  const trackDownloadAfterDemo = (os: DownloadOS) => {
+    if (!lastRunTelemetry) return;
+
+    sendWebPreviewEvent({
+      event_type: 'download_after_demo',
+      visitor_id: getOrCreateVisitorId(),
+      run_id: lastRunTelemetry.runId,
+      locale,
+      files: lastRunTelemetry.files,
+      file_count: lastRunTelemetry.fileCount,
+      success_count: lastRunTelemetry.successCount,
+      error_count: lastRunTelemetry.errorCount,
+      duration_ms: lastRunTelemetry.durationMs,
+      error_message: lastRunTelemetry.errorMessage,
+      error_details: {
+        status: lastRunTelemetry.status,
+        source: 'hero-demo',
+        os,
+      },
+    }, { beacon: true });
+  };
+
   const handleBannerDownloadClick = () => {
-    trackDownloadClick({ os: effectiveOS, source: 'hero' });
+    trackDownloadClick({ os: effectiveOS, source: 'hero-demo' });
+    trackDownloadAfterDemo(effectiveOS);
   };
 
   const processFiles = async (selectedFiles: File[]) => {
     const startedAt = Date.now();
+    const runId = createVisitorId();
+    const visitorId = getOrCreateVisitorId();
+    let telemetryFiles: WebPreviewFileSummary[] = [];
+    let telemetryFileCount = 0;
+    let telemetrySuccessCount = 0;
+    let telemetryErrorCount = 0;
+    let telemetryErrorMessage: string | null = null;
     let shouldPlayCompletionSound = false;
     setBanner(null);
     setRunStartedAt(startedAt);
     setRunFinishedAt(null);
+    setLastRunTelemetry(null);
     setElapsedSeconds(0);
 
     try {
       const acceptedFiles = selectedFiles.slice(0, MAX_FILES);
+      telemetryFileCount = acceptedFiles.length;
 
       const initialFiles = acceptedFiles.map((file, index) => {
         const extension = getExtension(file);
@@ -2010,6 +2088,9 @@ const HeroRenameDemo = ({
       });
 
       setFiles(initialFiles);
+      telemetryFiles = initialFiles
+        .map(summarizeDemoFile)
+        .filter((file): file is WebPreviewFileSummary => Boolean(file));
 
       const preparedFiles: PreparedFile[] = [];
       for (const item of initialFiles) {
@@ -2031,16 +2112,51 @@ const HeroRenameDemo = ({
         }
       }
 
-      if (!preparedFiles.length) return;
+      if (!preparedFiles.length) {
+        telemetryErrorCount = initialFiles.length;
+        telemetryErrorMessage = 'No demo files could be prepared for analysis';
+        sendWebPreviewEvent({
+          event_type: 'client_prepare_failed',
+          visitor_id: visitorId,
+          run_id: runId,
+          locale,
+          files: telemetryFiles,
+          file_count: initialFiles.length,
+          success_count: 0,
+          error_count: telemetryErrorCount,
+          duration_ms: Date.now() - startedAt,
+          error_message: telemetryErrorMessage,
+          error_details: {
+            status: 'failed',
+            errors: initialFiles
+              .filter((file) => file.error)
+              .map((file) => ({
+                extension: file.extension,
+                content_kind: file.contentKind,
+                message: file.error,
+              })),
+          },
+        });
+        return;
+      }
 
+      telemetryFiles = preparedFiles.map((item) => {
+        const sourceFile = initialFiles.find((file) => file.id === item.id);
+        return summarizePreviewPayloadFile(item.payload, sourceFile?.file.size);
+      });
+      telemetryFileCount = preparedFiles.length;
       preparedFiles.forEach((item) => updateFile(item.id, { status: 'analyzing' }));
 
       try {
         const results = await analyzePreviewFiles(
           preparedFiles.map((item) => item.payload),
           locale,
+          runId,
         );
         shouldPlayCompletionSound = results.some((result) => Boolean(result?.suggested_name && !result.error));
+        telemetrySuccessCount = results.filter((result) => Boolean(result?.suggested_name && !result.error)).length;
+        telemetryErrorCount = preparedFiles.length - telemetrySuccessCount;
+        telemetryErrorMessage = telemetryErrorCount > 0 ? 'One or more demo files failed analysis' : null;
 
         preparedFiles.forEach((item, index) => {
           const result = results[index];
@@ -2052,7 +2168,30 @@ const HeroRenameDemo = ({
         });
       } catch (error) {
         const message = errorToCopy(error, copy);
+        telemetrySuccessCount = 0;
+        telemetryErrorCount = preparedFiles.length;
+        telemetryErrorMessage = message;
         setBanner(message);
+        sendWebPreviewEvent({
+          event_type: 'client_request_failed',
+          visitor_id: visitorId,
+          run_id: runId,
+          locale,
+          files: telemetryFiles,
+          file_count: preparedFiles.length,
+          success_count: 0,
+          error_count: preparedFiles.length,
+          duration_ms: Date.now() - startedAt,
+          error_message: message,
+          error_details: {
+            status: 'failed',
+            errors: preparedFiles.map((item) => ({
+              extension: item.payload.original_extension,
+              content_kind: item.payload.content_kind,
+              message,
+            })),
+          },
+        });
         preparedFiles.forEach((item) => {
           updateFile(item.id, {
             status: 'error',
@@ -2064,6 +2203,16 @@ const HeroRenameDemo = ({
       const finishedAt = Date.now();
       setRunFinishedAt(finishedAt);
       setElapsedSeconds(Math.max(1, Math.ceil((finishedAt - startedAt) / 1000)));
+      setLastRunTelemetry({
+        runId,
+        files: telemetryFiles,
+        fileCount: telemetryFileCount || telemetryFiles.length || telemetrySuccessCount + telemetryErrorCount,
+        successCount: telemetrySuccessCount,
+        errorCount: telemetryErrorCount,
+        durationMs: finishedAt - startedAt,
+        status: getRunStatus(telemetrySuccessCount, telemetryErrorCount),
+        errorMessage: telemetryErrorMessage,
+      });
       if (shouldPlayCompletionSound) {
         playCompletionSound();
       }
@@ -2308,13 +2457,14 @@ const HeroRenameDemo = ({
                 })}
               </ul>
               <DownloadButton
-                source='hero'
+                source='hero-demo'
                 variant='black'
                 size='md'
                 forceOS={forceOS}
                 label={downloadLabel}
                 menuCopy={downloadMenu}
                 showDropdown={false}
+                onPrimaryClick={({ os }) => trackDownloadAfterDemo(os)}
                 className={styles.RenameDemo__CTADownload}
               />
             </div>

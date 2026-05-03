@@ -303,10 +303,14 @@ const breadcrumbItems = [
             if (os === 'windows' && link.dataset.storeAppUrlWindows) {
               link.dataset.storeOs = 'windows';
               link.dataset.storeAppUrl = link.dataset.storeAppUrlWindows;
+              link.dataset.downloadOs = 'windows';
+              link.dataset.downloadChannel = 'microsoft-store';
               bindStoreLink(link);
             } else {
               delete link.dataset.storeOs;
               delete link.dataset.storeAppUrl;
+              link.dataset.downloadOs = 'mac';
+              link.dataset.downloadChannel = 'direct';
             }
           }
 
