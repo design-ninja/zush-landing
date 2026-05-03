@@ -1,6 +1,7 @@
 import { ChangeEvent, DragEvent, useEffect, useRef, useState } from 'react';
 import type { CSSProperties } from 'react';
 import JSZip from 'jszip';
+import * as XLSX from 'xlsx';
 import {
   ArrowRight,
   Check,
@@ -72,6 +73,21 @@ interface HeroRenameDemoProps {
   downloadLabel: string;
   downloadMenu?: DownloadMenuCopy;
   locale?: Locale;
+}
+
+interface CfbFileEntry {
+  name: string;
+  content?: Uint8Array | number[];
+}
+
+interface CfbFile {
+  FileIndex: CfbFileEntry[];
+}
+
+interface XlsxWithCfb {
+  CFB?: {
+    read: (data: ArrayBuffer, options: { type: 'array' }) => CfbFile;
+  };
 }
 
 const MAX_FILES = 5;
@@ -170,6 +186,42 @@ const SUPPORTED_CHIP_GROUPS = [
   ],
 ];
 const SPINNER_SEGMENTS = Array.from({ length: 12 }, (_, index) => index);
+
+const SUMMARY_PROPERTY_LABELS = new Map([
+  [2, 'Title'],
+  [3, 'Subject'],
+  [4, 'Author'],
+  [5, 'Keywords'],
+  [6, 'Comments'],
+  [7, 'Template'],
+  [8, 'Last saved by'],
+  [14, 'Pages'],
+  [15, 'Words'],
+  [16, 'Characters'],
+  [18, 'Application'],
+]);
+
+const DOCUMENT_SUMMARY_PROPERTY_LABELS = new Map([
+  [2, 'Category'],
+  [3, 'Presentation target'],
+  [4, 'Bytes'],
+  [5, 'Lines'],
+  [6, 'Paragraphs'],
+  [7, 'Slides'],
+  [8, 'Notes'],
+  [9, 'Hidden slides'],
+  [12, 'Company'],
+  [13, 'Links up to date'],
+]);
+
+const DESCRIPTIVE_LEGACY_METADATA_LABELS = new Set([
+  'Title',
+  'Subject',
+  'Keywords',
+  'Comments',
+  'Category',
+  'Presentation target',
+]);
 
 const extensionIconMap = {
   image: FileImage,
@@ -959,7 +1011,6 @@ function extractSpreadsheetText(workbookXml: string, sharedStringsXml: string, s
 }
 
 async function extractSpreadsheetWorkbookText(file: File): Promise<string> {
-  const XLSX = await import('xlsx');
   const workbook = XLSX.read(await file.arrayBuffer(), {
     type: 'array',
     sheetRows: 120,
@@ -981,6 +1032,162 @@ async function extractSpreadsheetWorkbookText(file: File): Promise<string> {
       .filter(Boolean)
       .join('\n'),
   );
+}
+
+function contentToBytes(content: CfbFileEntry['content']): Uint8Array | null {
+  if (!content) return null;
+  if (content instanceof Uint8Array) return content;
+  return Uint8Array.from(content);
+}
+
+function getLegacyTextDecoder(codePage: number) {
+  const normalizedCodePage = codePage < 0 ? codePage + 65536 : codePage;
+  const label = normalizedCodePage === 1200
+    ? 'utf-16le'
+    : normalizedCodePage === 65001
+      ? 'utf-8'
+      : normalizedCodePage >= 1250 && normalizedCodePage <= 1258
+        ? `windows-${normalizedCodePage}`
+        : 'windows-1252';
+
+  try {
+    return new TextDecoder(label);
+  } catch {
+    return new TextDecoder('windows-1252');
+  }
+}
+
+function readLegacyPropertyValue(
+  view: DataView,
+  offset: number,
+  codePage: number,
+): string | number | boolean | null {
+  if (offset < 0 || offset + 8 > view.byteLength) return null;
+
+  const type = view.getUint32(offset, true);
+  const valueOffset = offset + 4;
+
+  if (type === 0x02 && valueOffset + 2 <= view.byteLength) return view.getInt16(valueOffset, true);
+  if (type === 0x03 && valueOffset + 4 <= view.byteLength) return view.getInt32(valueOffset, true);
+  if (type === 0x13 && valueOffset + 4 <= view.byteLength) return view.getUint32(valueOffset, true);
+  if (type === 0x0b && valueOffset + 2 <= view.byteLength) return view.getUint16(valueOffset, true) !== 0;
+
+  if (type === 0x1e && valueOffset + 4 <= view.byteLength) {
+    const byteLength = view.getUint32(valueOffset, true);
+    const start = valueOffset + 4;
+    const end = Math.min(view.byteLength, start + Math.max(0, byteLength - 1));
+    if (end <= start) return null;
+    const bytes = new Uint8Array(view.buffer, view.byteOffset + start, end - start);
+    return normalizeWhitespace(getLegacyTextDecoder(codePage).decode(bytes));
+  }
+
+  if (type === 0x1f && valueOffset + 4 <= view.byteLength) {
+    const characterCount = view.getUint32(valueOffset, true);
+    const start = valueOffset + 4;
+    const end = Math.min(view.byteLength, start + Math.max(0, characterCount - 1) * 2);
+    if (end <= start) return null;
+    const bytes = new Uint8Array(view.buffer, view.byteOffset + start, end - start);
+    return normalizeWhitespace(new TextDecoder('utf-16le').decode(bytes));
+  }
+
+  return null;
+}
+
+function readLegacyCodePage(view: DataView, propertyOffset: number): number | null {
+  if (propertyOffset < 0 || propertyOffset + 6 > view.byteLength) return null;
+
+  const type = view.getUint32(propertyOffset, true);
+  if (type === 0x02) return view.getInt16(propertyOffset + 4, true);
+  if (type === 0x03 && propertyOffset + 8 <= view.byteLength) return view.getInt32(propertyOffset + 4, true);
+  return null;
+}
+
+function parseLegacyPropertySet(
+  bytes: Uint8Array,
+  labels: Map<number, string>,
+): Array<{ label: string; value: string }> {
+  if (bytes.byteLength < 48) return [];
+
+  const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+  const propertySetCount = view.getUint32(24, true);
+  const sections: Array<{ offset: number }> = [];
+
+  for (let index = 0; index < propertySetCount; index += 1) {
+    const descriptorOffset = 28 + index * 20;
+    if (descriptorOffset + 20 > view.byteLength) break;
+    sections.push({ offset: view.getUint32(descriptorOffset + 16, true) });
+  }
+
+  const entries: Array<{ label: string; value: string }> = [];
+  for (const section of sections) {
+    if (section.offset + 8 > view.byteLength) continue;
+
+    const propertyCount = view.getUint32(section.offset + 4, true);
+    const properties: Array<{ id: number; offset: number }> = [];
+    let codePage = 1252;
+
+    for (let index = 0; index < propertyCount; index += 1) {
+      const tableOffset = section.offset + 8 + index * 8;
+      if (tableOffset + 8 > view.byteLength) break;
+
+      const id = view.getUint32(tableOffset, true);
+      const offset = section.offset + view.getUint32(tableOffset + 4, true);
+      properties.push({ id, offset });
+
+      if (id === 1) {
+        codePage = readLegacyCodePage(view, offset) ?? codePage;
+      }
+    }
+
+    for (const property of properties) {
+      const label = labels.get(property.id);
+      if (!label) continue;
+
+      const value = readLegacyPropertyValue(view, property.offset, codePage);
+      if (value === null || value === '') continue;
+
+      entries.push({ label, value: normalizeWhitespace(String(value)) });
+    }
+  }
+
+  return entries;
+}
+
+async function extractLegacyOfficeMetadata(file: File): Promise<{
+  text: string;
+  hasDescriptiveMetadata: boolean;
+}> {
+  const CFB = (XLSX as unknown as XlsxWithCfb).CFB;
+  if (!CFB) return { text: '', hasDescriptiveMetadata: false };
+
+  const cfb = CFB.read(await file.arrayBuffer(), { type: 'array' });
+  const entries = [
+    {
+      name: '\u0005SummaryInformation',
+      labels: SUMMARY_PROPERTY_LABELS,
+    },
+    {
+      name: '\u0005DocumentSummaryInformation',
+      labels: DOCUMENT_SUMMARY_PROPERTY_LABELS,
+    },
+  ].flatMap(({ name, labels }) => {
+    const content = contentToBytes(cfb.FileIndex.find((entry) => entry.name === name)?.content);
+    return content ? parseLegacyPropertySet(content, labels) : [];
+  });
+
+  const seen = new Set<string>();
+  const lines = entries
+    .map((entry) => `${entry.label}: ${entry.value}`)
+    .filter((line) => {
+      if (seen.has(line)) return false;
+      seen.add(line);
+      return true;
+    });
+
+  return {
+    text: lines.join('\n'),
+    hasDescriptiveMetadata: entries.some((entry) => DESCRIPTIVE_LEGACY_METADATA_LABELS.has(entry.label)),
+  };
 }
 
 function isReadableAsciiByte(byte: number) {
@@ -1054,7 +1261,12 @@ function collectUtf16LeStrings(bytes: Uint8Array): string[] {
   return strings;
 }
 
-async function extractLegacyOfficeText(file: File): Promise<string> {
+async function extractLegacyOfficeText(file: File, extension: string): Promise<string> {
+  const metadata = await extractLegacyOfficeMetadata(file);
+  if (extension === 'ppt' && metadata.hasDescriptiveMetadata) {
+    return truncateText(metadata.text);
+  }
+
   const buffer = await file.slice(0, MAX_LEGACY_OFFICE_SCAN_BYTES).arrayBuffer();
   const bytes = new Uint8Array(buffer);
   const seen = new Set<string>();
@@ -1066,7 +1278,7 @@ async function extractLegacyOfficeText(file: File): Promise<string> {
       return true;
     });
 
-  return truncateText(strings.join('\n'));
+  return truncateText([metadata.text, strings.join('\n')].filter(Boolean).join('\n'));
 }
 
 async function extractOfficeText(file: File, extension: string): Promise<string> {
@@ -1075,7 +1287,7 @@ async function extractOfficeText(file: File, extension: string): Promise<string>
   }
 
   if (extension === 'doc' || extension === 'ppt') {
-    return extractLegacyOfficeText(file);
+    return extractLegacyOfficeText(file, extension);
   }
 
   const zip = await JSZip.loadAsync(await file.arrayBuffer());
