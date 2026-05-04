@@ -74,6 +74,10 @@ interface PreviewResult {
 interface PreviewResponse {
   results?: PreviewResult[];
   error?: string;
+  provider?: string | null;
+  model?: string | null;
+  fallback_provider?: string | null;
+  fallback_model?: string | null;
 }
 
 interface PreparedFile {
@@ -90,6 +94,10 @@ interface RunTelemetrySnapshot {
   errorCount: number;
   durationMs: number;
   status: 'success' | 'partial' | 'failed';
+  provider?: string | null;
+  model?: string | null;
+  fallbackProvider?: string | null;
+  fallbackModel?: string | null;
   errorMessage?: string | null;
 }
 
@@ -1772,7 +1780,7 @@ function getRunStatus(successCount: number, errorCount: number): RunTelemetrySna
 }
 
 function formatElapsedSeconds(durationMs: number): number {
-  return Math.round(Math.max(0, durationMs) / 100) / 10;
+  return Math.round(Math.max(0, durationMs) / 1000);
 }
 
 async function analyzePreviewFiles(
@@ -1803,7 +1811,7 @@ async function analyzePreviewFiles(
     throw new Error(body.error || 'network');
   }
 
-  return body.results ?? [];
+  return { ...body, results: body.results ?? [] };
 }
 
 function errorToCopy(error: unknown, copy: RenameDemoCopy, extension?: string) {
@@ -2071,6 +2079,10 @@ const HeroRenameDemo = ({
       success_count: lastRunTelemetry.successCount,
       error_count: lastRunTelemetry.errorCount,
       duration_ms: lastRunTelemetry.durationMs,
+      provider: lastRunTelemetry.provider,
+      model: lastRunTelemetry.model,
+      fallback_provider: lastRunTelemetry.fallbackProvider,
+      fallback_model: lastRunTelemetry.fallbackModel,
       error_message: lastRunTelemetry.errorMessage,
       error_details: {
         status: lastRunTelemetry.status,
@@ -2094,6 +2106,11 @@ const HeroRenameDemo = ({
     let telemetrySuccessCount = 0;
     let telemetryErrorCount = 0;
     let telemetryErrorMessage: string | null = null;
+    let telemetryProvider: string | null = null;
+    let telemetryModel: string | null = null;
+    let telemetryFallbackProvider: string | null = null;
+    let telemetryFallbackModel: string | null = null;
+    let shouldSendAnalysisTelemetry = false;
     let clientPreparationErrors: ClientFileError[] = [];
     let shouldPlayCompletionSound = false;
     setBanner(null);
@@ -2207,12 +2224,18 @@ const HeroRenameDemo = ({
 
       try {
         const clientPrepareDurationMs = Date.now() - startedAt;
-        const results = await analyzePreviewFiles(
+        const response = await analyzePreviewFiles(
           preparedFiles.map((item) => item.payload),
           locale,
           runId,
           clientPrepareDurationMs,
         );
+        const results = response.results ?? [];
+        telemetryProvider = response.provider ?? null;
+        telemetryModel = response.model ?? null;
+        telemetryFallbackProvider = response.fallback_provider ?? null;
+        telemetryFallbackModel = response.fallback_model ?? null;
+        shouldSendAnalysisTelemetry = true;
         shouldPlayCompletionSound = results.some((result) => Boolean(result?.suggested_name && !result.error));
         const analysisSuccessCount = results.filter((result) => Boolean(result?.suggested_name && !result.error)).length;
         const analysisErrorCount = preparedFiles.length - analysisSuccessCount;
@@ -2270,18 +2293,47 @@ const HeroRenameDemo = ({
       }
     } finally {
       const finishedAt = Date.now();
+      const durationMs = formatElapsedSeconds(finishedAt - startedAt) * 1000;
+      const runStatus = getRunStatus(telemetrySuccessCount, telemetryErrorCount);
       setRunFinishedAt(finishedAt);
-      setElapsedSeconds(formatElapsedSeconds(finishedAt - startedAt));
+      setElapsedSeconds(formatElapsedSeconds(durationMs));
       setLastRunTelemetry({
         runId,
         files: telemetryFiles,
         fileCount: telemetryFileCount || telemetryFiles.length || telemetrySuccessCount + telemetryErrorCount,
         successCount: telemetrySuccessCount,
         errorCount: telemetryErrorCount,
-        durationMs: finishedAt - startedAt,
-        status: getRunStatus(telemetrySuccessCount, telemetryErrorCount),
+        durationMs,
+        status: runStatus,
+        provider: telemetryProvider,
+        model: telemetryModel,
+        fallbackProvider: telemetryFallbackProvider,
+        fallbackModel: telemetryFallbackModel,
         errorMessage: telemetryErrorMessage,
       });
+      if (shouldSendAnalysisTelemetry) {
+        sendWebPreviewEvent({
+          event_type: telemetrySuccessCount > 0 ? 'analysis_completed' : 'analysis_failed',
+          visitor_id: visitorId,
+          run_id: runId,
+          locale,
+          files: telemetryFiles,
+          file_count: telemetryFileCount || telemetryFiles.length || telemetrySuccessCount + telemetryErrorCount,
+          success_count: telemetrySuccessCount,
+          error_count: telemetryErrorCount,
+          duration_ms: durationMs,
+          provider: telemetryProvider,
+          model: telemetryModel,
+          fallback_provider: telemetryFallbackProvider,
+          fallback_model: telemetryFallbackModel,
+          error_message: telemetryErrorMessage,
+          error_details: {
+            status: runStatus,
+            source: 'hero-demo',
+            duration_source: 'client_ui',
+          },
+        });
+      }
       if (shouldPlayCompletionSound) {
         playCompletionSound();
       }

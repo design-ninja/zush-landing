@@ -1,7 +1,13 @@
 import { SUPABASE_URL } from '@/utils/supabase';
 import type { Locale } from '@/i18n/config';
 
+const WEB_PREVIEW_DEV_BYPASS_TOKEN = import.meta.env.DEV
+  ? import.meta.env.PUBLIC_WEB_PREVIEW_DEV_BYPASS_TOKEN?.trim()
+  : undefined;
+
 export type WebPreviewEventType =
+  | 'analysis_completed'
+  | 'analysis_failed'
   | 'client_prepare_failed'
   | 'client_request_failed'
   | 'download_after_demo';
@@ -27,6 +33,10 @@ export interface WebPreviewEventPayload {
   success_count?: number;
   error_count?: number;
   duration_ms?: number | null;
+  provider?: string | null;
+  model?: string | null;
+  fallback_provider?: string | null;
+  fallback_model?: string | null;
   error_message?: string | null;
   error_details?: Record<string, unknown> | null;
 }
@@ -35,14 +45,24 @@ export function sendWebPreviewEvent(payload: WebPreviewEventPayload, options: { 
   const body = JSON.stringify(payload);
   const url = `${SUPABASE_URL}/functions/v1/web-preview-event`;
 
-  if (options.beacon && typeof navigator !== 'undefined' && navigator.sendBeacon) {
+  if (
+    options.beacon &&
+    !WEB_PREVIEW_DEV_BYPASS_TOKEN &&
+    typeof navigator !== 'undefined' &&
+    navigator.sendBeacon
+  ) {
     const didQueue = navigator.sendBeacon(url, new Blob([body], { type: 'application/json' }));
     if (didQueue) return;
   }
 
   void fetch(url, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      ...(WEB_PREVIEW_DEV_BYPASS_TOKEN
+        ? { 'x-zush-demo-dev-bypass': WEB_PREVIEW_DEV_BYPASS_TOKEN }
+        : {}),
+    },
     body,
     keepalive: options.beacon,
   }).catch((error) => {
