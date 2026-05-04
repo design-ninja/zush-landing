@@ -566,6 +566,12 @@ interface JpegCandidate {
   source: 'tiff-tag' | 'scan';
 }
 
+function getTiffIfdDimensions(ifd: UtifIfd) {
+  const width = firstPositiveInteger(ifd.t256) ?? ifd.width ?? 0;
+  const height = firstPositiveInteger(ifd.t257) ?? ifd.height ?? 0;
+  return { width, height, pixels: width * height };
+}
+
 function numbersFromTag(value: unknown): number[] {
   if (typeof value === 'number') return [value];
   if (Array.isArray(value)) return value.filter((item): item is number => typeof item === 'number');
@@ -731,18 +737,17 @@ async function decodeTiffIfdPreview(buffer: ArrayBuffer, maxPixels: number): Pro
     const UTIF = await getUtif();
     const ifds = UTIF.decode(buffer)
       .map((ifd) => {
-        const width = firstPositiveInteger(ifd.t256) ?? ifd.width ?? 0;
-        const height = firstPositiveInteger(ifd.t257) ?? ifd.height ?? 0;
-        return { ifd, width, height, pixels: width * height };
+        const dimensions = getTiffIfdDimensions(ifd);
+        return { ifd, ...dimensions };
       })
       .filter(({ width, height, pixels }) => width > 0 && height > 0 && pixels > 0 && pixels <= maxPixels)
       .sort((a, b) => b.pixels - a.pixels);
 
-    for (const { ifd } of ifds) {
+    for (const { ifd, width, height } of ifds) {
       try {
         UTIF.decodeImage(buffer, ifd);
         const rgba = UTIF.toRGBA8(ifd);
-        return rgbaToJpegPreview(rgba, ifd.width ?? 0, ifd.height ?? 0);
+        return rgbaToJpegPreview(rgba, ifd.width ?? width, ifd.height ?? height);
       } catch {
         // Keep trying smaller preview IFDs; some RAW IFDs use unsupported compression.
       }
@@ -764,18 +769,21 @@ async function tiffBlobToJpegPreview(file: File) {
   const buffer = await file.arrayBuffer();
   const UTIF = await getUtif();
   const ifds = UTIF.decode(buffer);
-  const imageIfd = ifds.find((ifd) => {
-    const width = firstPositiveInteger(ifd.t256);
-    const height = firstPositiveInteger(ifd.t257);
-    return width && height && width * height <= MAX_TIFF_PIXELS;
-  }) ?? ifds[0];
+  const imageIfd = ifds
+    .map((ifd) => ({ ifd, ...getTiffIfdDimensions(ifd) }))
+    .find(({ width, height, pixels }) => width > 0 && height > 0 && pixels > 0 && pixels <= MAX_TIFF_PIXELS) ??
+    (ifds[0] ? { ifd: ifds[0], ...getTiffIfdDimensions(ifds[0]) } : undefined);
 
   if (!imageIfd) throw new Error('empty-preview');
 
   try {
-    UTIF.decodeImage(buffer, imageIfd);
-    const rgba = UTIF.toRGBA8(imageIfd);
-    return rgbaToJpegPreview(rgba, imageIfd.width ?? 0, imageIfd.height ?? 0);
+    UTIF.decodeImage(buffer, imageIfd.ifd);
+    const rgba = UTIF.toRGBA8(imageIfd.ifd);
+    return rgbaToJpegPreview(
+      rgba,
+      imageIfd.ifd.width ?? imageIfd.width,
+      imageIfd.ifd.height ?? imageIfd.height,
+    );
   } catch {
     const embeddedPreview = await imagePreviewFromEmbeddedJpeg(buffer);
     if (!embeddedPreview) throw new Error('empty-preview');
