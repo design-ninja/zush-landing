@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.2.0.0] - 2026-05-04
+### Added
+- Hindi localization
+- Refreshed app icon assets
+
+### Improved
+- AI document analysis inputs
+- Localized Windows UI parity
+
+### Fixed
+- Interface language now persists on shutdown
+- Localization placeholders are now honored
+
+
 ## [1.1.0.0] - 2026-04-29
 ### Added
 - Offline AI mode with local Ollama analysis
