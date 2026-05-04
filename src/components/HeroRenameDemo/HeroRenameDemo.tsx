@@ -144,6 +144,9 @@ const PREVIEW_THUMBNAIL_WIDTH = 360;
 const PREVIEW_THUMBNAIL_HEIGHT = 272;
 const ALPHA_CROP_SAMPLE_SIDE = 420;
 const SILENT_AUDIO_SRC = 'data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA==';
+const WEB_PREVIEW_DEV_BYPASS_TOKEN = import.meta.env.DEV
+  ? import.meta.env.PUBLIC_WEB_PREVIEW_DEV_BYPASS_TOKEN?.trim()
+  : undefined;
 
 const IMAGE_EXTENSIONS = new Set([
   'png',
@@ -1780,7 +1783,12 @@ async function analyzePreviewFiles(
 ) {
   const response = await fetch(`${SUPABASE_URL}/functions/v1/web-preview-analyze`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      ...(WEB_PREVIEW_DEV_BYPASS_TOKEN
+        ? { 'x-zush-demo-dev-bypass': WEB_PREVIEW_DEV_BYPASS_TOKEN }
+        : {}),
+    },
     body: JSON.stringify({
       visitor_id: getOrCreateVisitorId(),
       run_id: runId,
