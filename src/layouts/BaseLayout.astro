@@ -217,7 +217,7 @@ const localeRedirectConfig = JSON.stringify({
             const match = selectedSlug || languages
               .map((language) => language.toLowerCase())
               .map((language) => localeMap[language] ?? localeMap[language.split('-')[0]])
-              .find((slug) => slug);
+              .find((slug) => typeof slug === 'string');
 
             if (!match) return;
             const targetPath = route === '/' ? `/${match}` : `/${match}${route}`;
