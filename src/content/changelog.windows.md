@@ -1,8 +1,8 @@
 # Changelog
 
-## [1.2.0.0] - 2026-05-04
+## [1.2.0] - 2026-05-04
 ### Added
-- Hindi localization
+- German, French, Portuguese, Spanish, Dutch, Italian, Japanese, Korean, Chinese, and Hindi app localization
 - Refreshed app icon assets
 
 ### Improved
@@ -14,7 +14,7 @@
 - Localization placeholders are now honored
 
 
-## [1.1.0.0] - 2026-04-29
+## [1.1.0] - 2026-04-29
 ### Added
 - Offline AI mode with local Ollama analysis
 - Cloud and Local AI settings with model selection, refresh, and connection tests
@@ -31,7 +31,7 @@
 - Billing portal links can be opened or sent by email for authenticated devices
 
 
-## [1.0.2.0] - 2026-04-25
+## [1.0.2] - 2026-04-25
 ### Added
 - Automated Windows Store release flow that reads the live Store version, builds `.msixupload` packages, publishes GitHub releases, updates the Windows changelog, and submits the Store update.
 - Purchase activation link in the PRO dialog for smoother checkout recovery.
@@ -44,7 +44,7 @@
 - Test assets now resolve from repo-relative paths for more reliable local and CI runs.
 
 
-## [1.0.1.0] - 2026-04-24
+## [1.0.1] - 2026-04-24
 
 ### Added
 - Initial Microsoft Store release of Zush for Windows
@@ -52,7 +52,7 @@
 - Batch rename, folder monitoring, quick rename shortcut, and undo history
 - Custom naming patterns, smart metadata, and BYOK support
 
-## [1.0.0.0] - 2026-04-23
+## [1.0.0] - 2026-04-23
 
 ### Added
 - First Windows Store build prepared for certification
