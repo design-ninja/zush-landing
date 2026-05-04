@@ -109,6 +109,18 @@ const PLATFORM_SEO: Partial<Record<Locale, Partial<Record<'/mac' | '/windows', {
       description: '在 Windows 上用 AI 重命名截图、PDF、照片和文档。通过 Microsoft Store 安装，可免费试用。',
     },
   },
+  hi: {
+    '/mac': {
+      title: 'Mac के लिए Zush — macOS AI फ़ाइल नाम-बदलाव टूल',
+      description:
+        'Mac पर स्क्रीनशॉट, PDF, फ़ोटो और दस्तावेज़ों के नाम AI से बदलें। Apple Silicon, Intel, BYOK और Ollama Offline AI सपोर्ट।',
+    },
+    '/windows': {
+      title: 'Windows के लिए Zush — AI फ़ाइल नाम-बदलाव टूल',
+      description:
+        'Windows पर स्क्रीनशॉट, PDF, फ़ोटो और दस्तावेज़ों के नाम AI से बदलें। Microsoft Store इंस्टॉल, अपने-आप अपडेट और मुफ़्त ट्रायल।',
+    },
+  },
 };
 
 export function getLocalizedSeoForRoute(route: LocalizedRoute, locale: Locale): SeoMeta {

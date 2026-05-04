@@ -2,12 +2,13 @@ export const DEFAULT_LOCALE = 'en';
 
 export const LOCALES = [
   'en',
-  'de',
   'fr',
-  'pt-br',
+  'de',
   'es',
-  'nl',
+  'pt-br',
   'it',
+  'nl',
+  'hi',
   'ja',
   'ko',
   'zh-cn',
@@ -118,6 +119,15 @@ export const LOCALE_META: Record<Locale, LocaleMeta> = {
     nativeLabel: '中文',
     flag: '🇨🇳',
   },
+  hi: {
+    locale: 'hi',
+    slug: 'hi',
+    lang: 'hi',
+    ogLocale: 'hi_IN',
+    label: 'Hindi',
+    nativeLabel: 'हिन्दी',
+    flag: '🇮🇳',
+  },
   ar: {
     locale: 'ar',
     slug: 'ar',
@@ -166,7 +176,7 @@ export const LOCALIZED_ROUTES = [
 
 export type LocalizedRoute = (typeof LOCALIZED_ROUTES)[number];
 
-const ARABIC_LOCALIZED_ROUTES = [
+const LANDING_LOCALIZED_ROUTES = [
   '/',
   '/ai-file-renamer',
   '/auto-rename-files',
@@ -179,6 +189,11 @@ const ARABIC_LOCALIZED_ROUTES = [
   '/mac',
   '/windows',
 ] as const;
+
+const LIMITED_LOCALE_ROUTES: Partial<Record<Locale, readonly LocalizedRoute[]>> = {
+  ar: LANDING_LOCALIZED_ROUTES,
+  hi: LANDING_LOCALIZED_ROUTES,
+};
 
 export function isLocale(value: string | undefined): value is Locale {
   return Boolean(value && (LOCALES as readonly string[]).includes(value));
@@ -228,9 +243,8 @@ export function getAlternatePaths(route: string): Partial<Record<Locale, string>
 export function getLocalesForRoute(route: string): readonly Locale[] {
   const normalizedRoute = normalizeRoute(route);
 
-  if ((ARABIC_LOCALIZED_ROUTES as readonly string[]).includes(normalizedRoute)) {
-    return LOCALES;
-  }
-
-  return LOCALES.filter((locale) => locale !== 'ar');
+  return LOCALES.filter((locale) => {
+    const limitedRoutes = LIMITED_LOCALE_ROUTES[locale];
+    return !limitedRoutes || (limitedRoutes as readonly string[]).includes(normalizedRoute);
+  });
 }

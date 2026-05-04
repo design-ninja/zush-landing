@@ -113,6 +113,16 @@ const GUIDE_COPY: Partial<Record<Locale, Record<Exclude<BlogPlatform, 'general'>
       description: '关于 Windows 工作流、下载文件、截图和 AI 重命名的实用英文指南。',
     },
   },
+  hi: {
+    mac: {
+      title: 'अंग्रेज़ी गाइड पढ़ें',
+      description: 'Mac workflow, स्क्रीनशॉट, डाउनलोड और AI नाम-बदलाव पर उपयोगी अंग्रेज़ी गाइड।',
+    },
+    windows: {
+      title: 'अंग्रेज़ी गाइड पढ़ें',
+      description: 'Windows workflow, डाउनलोड, स्क्रीनशॉट और AI नाम-बदलाव पर उपयोगी अंग्रेज़ी गाइड।',
+    },
+  },
 };
 
 const { platform, locale = DEFAULT_LOCALE } = Astro.props as Props;

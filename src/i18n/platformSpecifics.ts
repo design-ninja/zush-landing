@@ -445,6 +445,47 @@ const PLATFORM_SPECIFICS_COPY: Partial<Record<Locale, PlatformSpecificsCopy>> = 
     securityDescriptionWindows:
       'Zush 使用标准的 Microsoft Store 安装流程、Windows 凭据管理器保存密钥，并保持清晰的数据边界。',
   },
+  hi: {
+    systemRequirementsEyebrow: 'संगतता',
+    installMethodsEyebrow: 'सेटअप',
+    quickstartEyebrow: 'पहली बार चलाना',
+    integrationsEyebrow: 'इंटीग्रेशन',
+    scenariosEyebrow: 'काम के तरीके',
+    securityEyebrow: 'गोपनीयता',
+    systemRequirementsTitle: 'सिस्टम आवश्यकताएँ',
+    systemRequirementsDescription:
+      'इंस्टॉल करने से पहले जरूरी जानकारी — समर्थित OS संस्करण, CPU architecture, मेमोरी और अनुमतियाँ।',
+    installMethodsTitle: 'इंस्टॉल करने के तरीके',
+    installMethodsDescription:
+      'अपनी software management शैली के हिसाब से installer चुनें।',
+    installRecommendedBadge: 'अनुशंसित',
+    installCtaLabel: 'खोलें',
+    quickstartTitle: '60 सेकंड में शुरुआत',
+    quickstartDescriptionMac:
+      'नए डाउनलोड से अपने-आप चलने वाली नाम-बदलाव प्रक्रिया तक, Mac पर पूरी प्रक्रिया एक छोटी कॉफ़ी ब्रेक में हो जाती है।',
+    quickstartDescriptionWindows:
+      'Microsoft Store इंस्टॉल से लगातार फ़ोल्डर निगरानी तक, Windows पर पूरी प्रक्रिया एक छोटी कॉफ़ी ब्रेक में हो जाती है।',
+    quickstartDropPrefix: 'छोड़ें',
+    quickstartFilesReady: '3 फ़ाइलें तैयार',
+    quickstartWatching: 'निगरानी चालू',
+    integrationsTitle: 'नेटिव इंटीग्रेशन',
+    integrationsDescriptionMac:
+      'Zush macOS के उन हिस्सों से जुड़ता है जिन्हें आप रोज़ इस्तेमाल करते हैं — Finder, Shortcuts, Spotlight और screenshots।',
+    integrationsDescriptionWindows:
+      'Zush Windows के उन हिस्सों से जुड़ता है जिन्हें आप रोज़ इस्तेमाल करते हैं — File Explorer, Snipping Tool, OneDrive और Windows Search।',
+    scenariosTitle: 'असल काम के उदाहरण',
+    scenariosDescriptionMac:
+      'ये रोज़मर्रा के Mac workflow हैं जिनके लिए लोग Zush इस्तेमाल करते हैं। हर प्रक्रिया निगरानी फ़ोल्डर या खींचकर छोड़ने जितनी आसान है।',
+    scenariosDescriptionWindows:
+      'ये रोज़मर्रा के Windows workflow हैं जिनके लिए लोग Zush इस्तेमाल करते हैं। हर प्रक्रिया निगरानी फ़ोल्डर या खींचकर छोड़ने जितनी आसान है।',
+    scenariosBeforeLabel: 'पहले',
+    scenariosAfterLabel: 'बाद में',
+    securityTitle: 'सुरक्षा और गोपनीयता',
+    securityDescriptionMac:
+      'Zush macOS सुरक्षा अपेक्षाओं के हिसाब से बना है: notarized binary, sandboxed App Store विकल्प, Keychain में सेव कुंजियाँ और साफ़ डेटा सीमाएँ।',
+    securityDescriptionWindows:
+      'Zush मानक Microsoft Store इंस्टॉल पथ, कुंजियों के लिए Windows Credential Manager और साफ़ डेटा सीमाएँ इस्तेमाल करता है।',
+  },
   ar: {
     systemRequirementsEyebrow: 'التوافق',
     installMethodsEyebrow: 'الإعداد',

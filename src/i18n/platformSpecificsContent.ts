@@ -88,6 +88,14 @@ const REQUIREMENT_LABELS: Partial<Record<Locale, Record<SpecKey, string>>> = {
     network: '网络',
     permissions: '权限',
   },
+  hi: {
+    operatingSystem: 'ऑपरेटिंग सिस्टम',
+    processor: 'प्रोसेसर',
+    memory: 'मेमोरी',
+    diskSpace: 'डिस्क स्पेस',
+    network: 'नेटवर्क',
+    permissions: 'अनुमतियाँ',
+  },
   ar: {
     operatingSystem: 'نظام التشغيل',
     processor: 'المعالج',
@@ -163,6 +171,12 @@ const REQUIREMENT_TEXT: Partial<Record<Locale, {
     diskSpace: (appSize) => `应用约 ${appSize}，Ollama 模型需要额外空间`,
     network: '云端重命名需要网络，离线 AI 模式可选',
     permissions: '添加要重命名或监控的文件夹时会请求文件夹访问权限',
+  },
+  hi: {
+    memory: 'न्यूनतम 4 GB, Offline AI के लिए 8 GB अनुशंसित',
+    diskSpace: (appSize) => `ऐप के लिए ${appSize}, Ollama मॉडल के लिए अतिरिक्त स्पेस`,
+    network: 'क्लाउड नाम-बदलाव के लिए ज़रूरी, Offline AI मोड के लिए वैकल्पिक',
+    permissions: 'नाम बदलने या निगरानी के लिए फ़ोल्डर जोड़ते समय फ़ोल्डर एक्सेस माँगा जाता है',
   },
   ar: {
     memory: '4 GB كحد أدنى، و8 GB موصى بها لوضع الذكاء الاصطناعي دون اتصال',
