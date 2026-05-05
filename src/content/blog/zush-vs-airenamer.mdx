@@ -1,0 +1,163 @@
+---
+title: "Zush vs AI Renamer (2026): Full Desktop App vs CLI + Limited Desktop"
+description: "Honest comparison of Zush and AI Renamer. $10 one-time vs free CLI / $19 desktop. 23 image formats incl. RAW vs JPG/PNG/GIF/WEBP only. Folder monitoring + undo only in Zush."
+date: "2026-05-05"
+slug: "zush-vs-airenamer"
+platform: "general"
+topic: "comparisons"
+tags:
+  - "AI File Renaming"
+  - "Tool Comparisons"
+tldr: "Pick Zush if you want a finished desktop app — RAW + HEIC + 11 doc formats, folder monitoring, undo, BYOK — for $10 one-time. Pick AI Renamer's open-source CLI if you are a developer who wants free local-only renaming and is fine with images-only and no automation. The AI Renamer Desktop app is a halfway option at $19."
+reviewed: "2026-05-05"
+featuredOrder: 4
+---
+import BlogHighlight from '@/components/blog/BlogHighlight.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
+
+Quick answer: Zush is a complete Mac and Windows desktop AI file renamer at <BlogHighlight>$10 one-time</BlogHighlight> with 23 image formats (incl. RAW), 11 document formats, folder monitoring, undo, and BYOK. AI Renamer comes in two unrelated products with the same name: an <BlogHighlight>open-source CLI</BlogHighlight> (free, image + video, no automation/undo) and a <BlogHighlight>$19 Desktop app</BlogHighlight> (images + PDF/TXT, no folder monitoring, no undo, no BYOK). Pick by how much workflow you want included.
+
+If you are searching "Zush vs AI Renamer", first know the comparison covers two different products that share the name "AI Renamer": an open-source CLI (`ozgrozer/ai-renamer` on GitHub, GPL-3.0) and a separate commercial desktop app at airenamer.app. They are not made by the same team. We compare both against Zush below.
+
+<BlogProductIntro />
+
+## TL;DR comparison
+
+| Dimension | Zush | AI Renamer Desktop | AI Renamer CLI |
+|---|---|---|---|
+| Pricing | <BlogHighlight>$10 one-time</BlogHighlight> | $19 one-time (local) or $10/200 credits (cloud) | <BlogHighlight>Free, open source</BlogHighlight> (GPL-3.0) |
+| Free tier | 50 renames to start | 10 free credits on signup | Free always |
+| Platforms | Mac + Windows desktop | Mac + Windows desktop | Mac + Windows + Linux (Node CLI) |
+| Image formats | <BlogHighlight>23 (incl. RAW + HEIC)</BlogHighlight> | JPG, PNG, GIF, WEBP | Images + video (with ffmpeg) |
+| Document formats | 11 (PDF, DOCX, XLSX, etc.) | PDF, TXT only | Generic files (no doc parsing) |
+| RAW support | <BlogHighlight>Yes (11 variants)</BlogHighlight> | <BlogHighlight>No</BlogHighlight> | <BlogHighlight>No</BlogHighlight> |
+| Folder monitoring | <BlogHighlight>Yes</BlogHighlight> | <BlogHighlight>No</BlogHighlight> | <BlogHighlight>No</BlogHighlight> |
+| Undo / rollback | <BlogHighlight>Yes (full history)</BlogHighlight> | <BlogHighlight>No</BlogHighlight> | <BlogHighlight>No</BlogHighlight> |
+| BYOK | Yes (Gemini/Groq/OpenAI/Claude) | <BlogHighlight>No</BlogHighlight> | OpenAI key support |
+| Local AI (Ollama) | Yes (Mac builds) | Yes | Yes (Ollama, LM Studio) |
+| Languages | 60+ | Multilingual | Configurable |
+| Setup effort | Drag-and-drop install | Drag-and-drop install | Terminal + Ollama (~4–8GB) |
+
+## Zush
+
+<BlogToolMeta platform="Mac (macOS 14+) and Windows 10/11" website="https://zushapp.com/" label="zushapp.com">
+  <Fragment slot="pricing">Free demo (5 files), Pro <BlogHighlight>$10 one-time</BlogHighlight> for 10,000 renames, BYOK unlimited at API cost (Gemini/Groq/OpenAI/Claude), Local Ollama on supported Mac builds</Fragment>
+</BlogToolMeta>
+
+![Zush AI rename results showing files with descriptive before and after names and green checkmarks](/images/screenshots/light/zush-batch-rename-results.webp)
+
+Zush is a complete desktop AI file renamer for Mac and Windows. The differentiators in this comparison are the things AI Renamer (either version) does not do: 23 image formats including 11 RAW variants, 11 document formats including PDF/DOCX/XLSX/PPT, folder monitoring for automatic ongoing renames, full rename history with one-click undo, and BYOK across 4 providers without paying extra.
+
+## AI Renamer Desktop (airenamer.app)
+
+<BlogToolMeta platform="Mac and Windows desktop" website="https://airenamer.app/" label="airenamer.app">
+  <Fragment slot="pricing">10 free credits on signup, Local Mode $19 one-time (unlimited local), Cloud Mode $10 per 200 credits (1 credit per rename)</Fragment>
+</BlogToolMeta>
+
+![AI Renamer interface (image: airenamer.app)](/images/blog/competitors/ai-renamer.png)
+
+The AI Renamer Desktop app costs $19 one-time for unlimited local processing or $10 per 200 cloud credits. The supported file format list per their site is short: JPG, PNG, GIF, WEBP for images and PDF + TXT for documents. The site does not list folder monitoring, undo, or BYOK as features — meaning if you set up a bad rename, there is no built-in history to roll back to.
+
+## AI Renamer CLI (open-source)
+
+The AI Renamer CLI is `ozgrozer/ai-renamer` on GitHub — a free GPL-3.0 Node.js command-line tool. Install via `npx ai-renamer /path` or globally with npm. Backends: Ollama (default), LM Studio, OpenAI. It handles images and videos (via ffmpeg) but does not rename documents like PDFs.
+
+The CLI is the right pick for developers who want a local-only renaming tool, are comfortable in a terminal, and accept the trade-offs: no folder monitoring, no undo, no GUI for preview.
+
+## Format support
+
+### RAW + HEIC: only Zush
+
+Zush is the only one of the three with explicit RAW format support: CR2, CR3, NEF, ARW, DNG, ORF, RAF, RW2, PEF, SRW, SR2. Both AI Renamer products list only standard image formats (JPG, PNG, GIF, WEBP). For HEIC iPhone photos, Zush supports them; the AI Renamer products do not list HEIC.
+
+### Documents: Zush has 11 formats; AI Renamer Desktop has 2; CLI has 0
+
+Zush handles PDF, DOCX, XLSX, PPT, PPTX, TXT, MD, JSON, EML, CSV, DOC. AI Renamer Desktop adds PDF and TXT to its image-rename feature. The CLI does not parse document content — it can rename files but only based on what its model can infer from the filename or video frames.
+
+### Video: only the CLI
+
+The AI Renamer CLI can rename videos by extracting frames with ffmpeg and feeding them to the AI. Neither Zush nor AI Renamer Desktop renames video files at this time.
+
+## Features that differ
+
+### Folder monitoring
+
+Zush has folder monitoring — a "Watch" feature that automatically renames new files dropped into specified folders. Neither AI Renamer product offers this. If your goal is "make my Downloads folder clean automatically forever," Zush is the only fit here.
+
+### Undo / rename history
+
+Zush keeps a full rename history with one-click revert per file. The AI Renamer Desktop and CLI do not advertise undo functionality. If you batch-rename hundreds of files and 5% of names are wrong, Zush lets you fix those individually; with AI Renamer you would need to manually rename them back.
+
+### BYOK with multiple providers
+
+Zush includes BYOK with the $10 Pro purchase across Gemini, Groq, OpenAI, and Claude. The AI Renamer CLI supports OpenAI keys directly. The AI Renamer Desktop app does not list BYOK on its site.
+
+### Local-only setup
+
+For privacy-first users, the AI Renamer CLI's local-only Ollama path is the lightest setup once you have Ollama installed. Zush's Offline AI mode (Ollama on Mac builds) is similar but bundled into a GUI. Both keep files on-device.
+
+## Pick by use case
+
+**Pick Zush if:**
+
+- You want a complete desktop app, not a CLI
+- You handle RAW/HEIC photos or office documents (DOCX/XLSX/PPT)
+- You want folder monitoring for ongoing automatic renaming
+- You want undo/rollback when batch-renaming hundreds of files
+- You want BYOK across 4 providers included in the $10 price
+
+**Pick AI Renamer CLI if:**
+
+- You are a developer comfortable in the terminal
+- You want a free, open-source, local-only renaming tool
+- You are fine with images and videos (no documents)
+- You can live without folder monitoring and undo
+
+**Pick AI Renamer Desktop ($19) if:**
+
+- You want a GUI but only for JPG/PNG/GIF/WEBP + PDF/TXT
+- You do not need folder monitoring or undo
+- $19 fits your budget and you do not want to set up Ollama
+
+Honestly, the AI Renamer Desktop is the hardest to justify — for $9 more than Zush you get less (no RAW, no HEIC, no Office docs, no monitoring, no undo, no BYOK).
+
+## Setup effort
+
+Zush installs as a native Mac or Windows app via .dmg / Microsoft Store. Drag-and-drop, no terminal.
+
+AI Renamer Desktop installs the same way (commercial download).
+
+AI Renamer CLI requires: Node.js, npm/npx, Ollama (4–8GB disk), a vision model (LLaVA), and terminal comfort. The setup itself takes 15–30 minutes if you have not done it before.
+
+## FAQ
+
+### Are AI Renamer Desktop and AI Renamer CLI from the same company?
+
+No. The CLI is `ozgrozer/ai-renamer` on GitHub (GPL-3.0). The Desktop app is at airenamer.app, a separate commercial product. They share the name "AI Renamer" but are not the same project.
+
+### Can the AI Renamer CLI rename PDFs and Office documents?
+
+No. The CLI handles images and videos (with ffmpeg). It does not parse document content. For PDFs/DOCX/XLSX, you need a tool that reads document text — Zush, NameQuick, Renamer.ai, or Renamed.to.
+
+### Does AI Renamer Desktop have folder monitoring?
+
+Their site does not list folder monitoring as a feature. If you need ongoing automatic renaming, Zush is the fit.
+
+### Is the AI Renamer CLI really free?
+
+Yes. GPL-3.0 open source. The only "cost" is potential OpenAI API charges if you use OpenAI as the backend; if you use Ollama or LM Studio locally, it is fully free with no API cost.
+
+### Which has the most formats?
+
+Zush has the broadest official format support: 23 image formats (incl. RAW + HEIC) and 11 document formats. AI Renamer Desktop lists 4 image formats + PDF/TXT. The CLI handles images + video (with ffmpeg) but does not parse documents.
+
+## Verdict
+
+The three tools are different in ambition, not just price:
+
+- For a finished desktop app with the most coverage: <BlogHighlight>Zush at $10 one-time</BlogHighlight>.
+- For free, local, terminal-based renaming: AI Renamer CLI on GitHub.
+- The AI Renamer Desktop at $19 sits in an awkward middle — pay more than Zush for less coverage. We would only recommend it if you specifically need a GUI but cannot or will not pay the extra $9 over the CLI for Zush.
+
+For a broader market view, see [Best AI File Renamers 2026](/blog/best-ai-file-renamer-tools-2026). For free options including the AI Renamer CLI in detail, see [How to Rename Files with AI for Free](/blog/rename-files-with-ai-free).
