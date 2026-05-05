@@ -3,7 +3,7 @@ import { statSync } from 'node:fs';
 import { join } from 'node:path';
 import { getAllPosts, getAllTags, isSitemapEligibleBlogPost } from '@/data/blog';
 import { INDEXABLE_STATIC_ROUTES, FEATURE_ROUTES, SITE_ORIGIN, THIN_CONTENT_THRESHOLD } from '@/seo/config';
-import { DEFAULT_LOCALE, LOCALE_META, LOCALIZED_ROUTES, getAlternatePaths, getLocalesForRoute, getLocalizedPath } from '@/i18n/config';
+import { DEFAULT_LOCALE, LOCALE_META, LOCALIZATION_PAUSED, LOCALIZED_ROUTES, getAlternatePaths, getLocalesForRoute, getLocalizedPath } from '@/i18n/config';
 
 const BLOG_CONTENT_DIR = join(process.cwd(), 'src', 'content', 'blog');
 const PAGES_DIR = join(process.cwd(), 'src', 'pages');
@@ -97,24 +97,26 @@ export async function GET() {
       priority,
     };
   });
-  const localizedEntries = LOCALIZED_ROUTES
-    .filter((route) => INDEXABLE_STATIC_ROUTES.includes(route))
-    .flatMap((route) =>
-      getLocalesForRoute(route).filter((locale) => locale !== DEFAULT_LOCALE).map((locale) => {
-        const locPath = getLocalizedPath(route, locale);
-        const loc = `${SITE_ORIGIN}${locPath}`;
-        const { changefreq, priority } = getRouteHints(route);
-        const sourceFile = getPageSourceFile(route);
+  const localizedEntries = LOCALIZATION_PAUSED
+    ? []
+    : LOCALIZED_ROUTES
+      .filter((route) => INDEXABLE_STATIC_ROUTES.includes(route))
+      .flatMap((route) =>
+        getLocalesForRoute(route).filter((locale) => locale !== DEFAULT_LOCALE).map((locale) => {
+          const locPath = getLocalizedPath(route, locale);
+          const loc = `${SITE_ORIGIN}${locPath}`;
+          const { changefreq, priority } = getRouteHints(route);
+          const sourceFile = getPageSourceFile(route);
 
-        return {
-          loc,
-          route,
-          lastmod: getLastModifiedDate(sourceFile, new Date('2026-03-01T00:00:00.000Z').toISOString()),
-          changefreq,
-          priority,
-        };
-      }),
-    );
+          return {
+            loc,
+            route,
+            lastmod: getLastModifiedDate(sourceFile, new Date('2026-03-01T00:00:00.000Z').toISOString()),
+            changefreq,
+            priority,
+          };
+        }),
+      );
 
   const posts = (await getAllPosts()).filter((post) =>
     isSitemapEligibleBlogPost(post, THIN_CONTENT_THRESHOLD),

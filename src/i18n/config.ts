@@ -1,5 +1,23 @@
 export const DEFAULT_LOCALE = 'en';
 
+/**
+ * SEO "soft pause" for non-default locales.
+ *
+ * When `true`:
+ *   - Localized routes get `robots: noindex, nofollow`
+ *   - Localized routes are excluded from sitemap.xml
+ *   - hreflang link tags are NOT emitted (per Google guidance: noindex
+ *     pages in an hreflang cluster invalidate the whole cluster)
+ *   - Auto-redirect by browser language is disabled
+ *   - Language switcher in the UI is preserved — locales remain
+ *     reachable when a user picks one manually
+ *
+ * Set to `false` (and rebuild) when there is meaningful direct demand
+ * from a specific region — at that point also localize pricing /
+ * legal / regional copy beyond raw translations.
+ */
+export const LOCALIZATION_PAUSED = true;
+
 export const LOCALES = [
   'en',
   'fr',

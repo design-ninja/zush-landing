@@ -1,5 +1,5 @@
 import { getSeoForPath, type SeoMeta } from '@/seo/config';
-import { getLocalizedPath, type Locale, type LocalizedRoute } from '@/i18n/config';
+import { DEFAULT_LOCALE, LOCALIZATION_PAUSED, getLocalizedPath, type Locale, type LocalizedRoute } from '@/i18n/config';
 import { getCopy } from '@/i18n/copy';
 
 const PLATFORM_SEO: Partial<Record<Locale, Partial<Record<'/mac' | '/windows', { title: string; description: string }>>>> = {
@@ -137,6 +137,11 @@ export function getLocalizedSeoForRoute(route: LocalizedRoute, locale: Locale): 
       ? copy.platforms.windows
       : null;
 
+  const isNonDefaultLocale = locale !== DEFAULT_LOCALE;
+  const robots = LOCALIZATION_PAUSED && isNonDefaultLocale
+    ? 'noindex, nofollow'
+    : seo.robots;
+
   return {
     ...seo,
     title: localizedPlatformSeo?.title
@@ -150,5 +155,6 @@ export function getLocalizedSeoForRoute(route: LocalizedRoute, locale: Locale): 
       ?? platformSeo?.heroSubtitle
       ?? seo.description,
     canonicalPath: getLocalizedPath(route, locale),
+    robots,
   };
 }

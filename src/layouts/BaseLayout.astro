@@ -11,6 +11,7 @@ import {
   DEFAULT_LOCALE,
   INDEXABLE_LOCALIZED_ROUTES,
   LOCALE_META,
+  LOCALIZATION_PAUSED,
   getLocalesForRoute,
   getLocalizedPath,
   isLocalizedRoute,
@@ -77,7 +78,9 @@ const {
 const canonicalUrl = getCanonicalUrl(seo.canonicalPath);
 const { route } = stripLocaleFromPath(seo.canonicalPath);
 const routeLocales = getLocalesForRoute(route);
-const shouldEmitLocaleAlternates = isLocalizedRoute(route) && seo.robots !== 'noindex, nofollow';
+const shouldEmitLocaleAlternates = !LOCALIZATION_PAUSED
+  && isLocalizedRoute(route)
+  && seo.robots !== 'noindex, nofollow';
 const localeMeta = LOCALE_META[locale];
 const layoutCopy = getCopy(locale);
 const ogImage = seo.ogImage || DEFAULT_OG_IMAGE;
@@ -85,7 +88,8 @@ const ldItems = (Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [])
   .filter(Boolean);
 const isHomePage = route === '/';
 const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
-const shouldAutoDetectLocale = locale === DEFAULT_LOCALE
+const shouldAutoDetectLocale = !LOCALIZATION_PAUSED
+  && locale === DEFAULT_LOCALE
   && (INDEXABLE_LOCALIZED_ROUTES as readonly string[]).includes(route);
 const autoDetectRoute = route;
 const localeRedirectConfig = JSON.stringify({
