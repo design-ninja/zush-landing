@@ -94,42 +94,42 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ogType: 'website',
   },
   '/rename-pdf-with-ai': {
-    title: 'Rename PDFs with AI · Invoices & Contracts · Zush',
+    title: 'Rename PDFs with AI (2026) · Invoices & Contracts · Zush',
     description:
       'Rename scanned invoices, contracts and tax forms by their actual content. Zush extracts PDF text and creates searchable filenames in seconds.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/rename-documents-with-ai': {
-    title: 'Rename Documents with AI · DOCX, XLSX & PPTX · Zush',
+    title: 'Rename Documents with AI (2026) · DOCX, XLSX & PPTX · Zush',
     description:
       'Rename DOCX, XLSX, PPTX, TXT, CSV and email files by their actual content. Zush reads document text and creates searchable filenames automatically.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/rename-screenshots-with-ai': {
-    title: 'Rename Screenshots with AI · Zush',
+    title: 'Rename Screenshots with AI (2026) · Mac & Windows · Zush',
     description:
       "Replace generic screenshot filenames with names like 'stripe-revenue-dashboard.png'. Zush auto-names screenshots using AI vision. Free to try.",
     robots: 'index, follow',
     ogType: 'website',
   },
   '/rename-photos-with-ai': {
-    title: 'Rename Photos with AI · HEIC, RAW & JPG · Zush',
+    title: 'Rename Photos with AI (2026) · HEIC, RAW & JPG · Zush',
     description:
       'Stop renaming photos one by one. Zush analyzes HEIC, RAW and JPG content to generate descriptive names for your entire photo library. Free for 50.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/mac': {
-    title: 'AI File Renamer for Mac · Native macOS App · Zush',
+    title: 'AI File Renamer for Mac (2026) · Native macOS App · Zush',
     description:
       'Rename screenshots, PDFs, photos and documents on Mac with AI. Native Apple Silicon and Intel app, signed .dmg download, free for 50 renames.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/windows': {
-    title: 'AI File Renamer for Windows · Microsoft Store App · Zush',
+    title: 'AI File Renamer for Windows (2026) · Microsoft Store · Zush',
     description:
       'Rename screenshots, PDFs, photos and documents on Windows with AI. Microsoft Store install, automatic updates, free for 50 renames, no signup.',
     robots: 'index, follow',
