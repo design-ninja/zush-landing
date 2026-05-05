@@ -150,7 +150,7 @@ const defaultUseCases: UseCaseData[] = [
       </>
     ),
     color: 'cyan',
-    href: '/rename-pdf-with-ai',
+    href: '/rename-documents-with-ai',
   },
 ];
 

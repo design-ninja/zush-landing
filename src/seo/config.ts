@@ -100,6 +100,13 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     robots: 'index, follow',
     ogType: 'website',
   },
+  '/rename-documents-with-ai': {
+    title: 'Rename Documents with AI · DOCX, XLSX & PPTX · Zush',
+    description:
+      'Rename DOCX, XLSX, PPTX, TXT, CSV and email files by their actual content. Zush reads document text and creates searchable filenames automatically.',
+    robots: 'index, follow',
+    ogType: 'website',
+  },
   '/rename-screenshots-with-ai': {
     title: 'Rename Screenshots with AI · Zush',
     description:
@@ -149,6 +156,7 @@ export const INDEXABLE_STATIC_ROUTES = Object.keys(ROUTE_META).filter(
 
 export const FEATURE_ROUTES = [
   '/rename-pdf-with-ai',
+  '/rename-documents-with-ai',
   '/rename-screenshots-with-ai',
   '/rename-photos-with-ai',
 ] as const;

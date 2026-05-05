@@ -118,9 +118,9 @@ const RenamePDFWithAI = () => (
     ]}
     faqItems={faqItems}
     relatedPages={[
+      { title: 'Rename Documents with AI', href: '/rename-documents-with-ai' },
       { title: 'Rename Photos with AI', href: '/rename-photos-with-ai' },
       { title: 'Rename Screenshots with AI', href: '/rename-screenshots-with-ai' },
-      { title: 'Zush for Mac', href: '/mac' },
     ]}
     relatedBlogPosts={[
       { title: 'How to Rename PDF Files Automatically', href: 'rename-pdf-files-automatically' },

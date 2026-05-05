@@ -12,6 +12,7 @@ import ManageSubscriptionConfirmView from '@/views/ManageSubscription/ManageSubs
 import NotFound from '@/views/NotFound/NotFound';
 import OllamaSetupView from '@/views/OllamaSetup';
 import RecoverView from '@/views/Recover';
+import RenameDocumentsWithAI from '@/views/FeaturePages/RenameDocumentsWithAI';
 import RenamePDFWithAI from '@/views/FeaturePages/RenamePDFWithAI';
 import RenamePhotosWithAI from '@/views/FeaturePages/RenamePhotosWithAI';
 import RenameScreenshotsWithAI from '@/views/FeaturePages/RenameScreenshotsWithAI';
@@ -36,6 +37,7 @@ import { getSeoForPath } from '@/seo/config';
 
 const FEATURE_VIEWS = {
   '/rename-pdf-with-ai': RenamePDFWithAI,
+  '/rename-documents-with-ai': RenameDocumentsWithAI,
   '/rename-screenshots-with-ai': RenameScreenshotsWithAI,
   '/rename-photos-with-ai': RenamePhotosWithAI,
 } as const;

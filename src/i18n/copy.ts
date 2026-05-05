@@ -920,6 +920,7 @@ export const EN_COPY: LocaleCopy = {
       pdf: 'Rename PDFs',
       photos: 'Rename Photos',
       screenshots: 'Rename Screenshots',
+      documents: 'Rename Documents',
     },
   },
   home: {
@@ -1180,6 +1181,7 @@ const featureFaq = (language: string): FAQCopyItem[] => [
 function withFeaturePages(copy: LocaleCopy): LocaleCopy {
   const routeLabels: Array<[LocalizedRoute, string, string]> = [
     ['/rename-pdf-with-ai', 'Rename PDFs with AI', 'Rename invoices, contracts, scans, and forms by the text and context inside each PDF.'],
+    ['/rename-documents-with-ai', 'Rename Documents with AI', 'Rename DOCX, XLSX, PPTX, TXT, CSV, and email files by their actual content.'],
     ['/rename-screenshots-with-ai', 'Rename Screenshots with AI', 'Replace generic screenshot names with useful names based on what each screenshot shows.'],
     ['/rename-photos-with-ai', 'Rename Photos with AI', 'Rename HEIC, RAW, JPG, and other photos by subject, scene, and context.'],
   ];
@@ -1357,6 +1359,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       pdf: 'PDFs umbenennen',
       photos: 'Fotos umbenennen',
       screenshots: 'Screenshots umbenennen',
+      documents: 'Dokumente umbenennen',
     },
   },
   fr: {
@@ -1382,6 +1385,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       pdf: 'Renommer des PDF',
       photos: 'Renommer des photos',
       screenshots: 'Renommer des captures',
+      documents: 'Renommer des documents',
     },
   },
   'pt-br': {
@@ -1407,6 +1411,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       pdf: 'Renomear PDFs',
       photos: 'Renomear fotos',
       screenshots: 'Renomear screenshots',
+      documents: 'Renomear documentos',
     },
   },
   es: {
@@ -1432,6 +1437,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       pdf: 'Renombrar PDFs',
       photos: 'Renombrar fotos',
       screenshots: 'Renombrar capturas',
+      documents: 'Renombrar documentos',
     },
   },
   nl: {
@@ -1457,6 +1463,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       pdf: 'PDFs hernoemen',
       photos: 'Foto’s hernoemen',
       screenshots: 'Screenshots hernoemen',
+      documents: 'Documenten hernoemen',
     },
   },
   it: {
@@ -1482,6 +1489,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       pdf: 'Rinomina PDF',
       photos: 'Rinomina foto',
       screenshots: 'Rinomina screenshot',
+      documents: 'Rinomina documenti',
     },
   },
   ja: {
@@ -1507,6 +1515,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       pdf: 'PDF をリネーム',
       photos: '写真をリネーム',
       screenshots: 'スクリーンショットをリネーム',
+      documents: '文書をリネーム',
     },
   },
   ko: {
@@ -1532,6 +1541,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       pdf: 'PDF 이름 변경',
       photos: '사진 이름 변경',
       screenshots: '스크린샷 이름 변경',
+      documents: '문서 이름 변경',
     },
   },
   'zh-cn': {
@@ -1557,6 +1567,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       pdf: '重命名 PDF',
       photos: '重命名照片',
       screenshots: '重命名截图',
+      documents: '重命名文档',
     },
   },
   hi: {
@@ -1582,6 +1593,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       pdf: 'PDF के नाम बदलें',
       photos: 'फ़ोटो के नाम बदलें',
       screenshots: 'स्क्रीनशॉट के नाम बदलें',
+      documents: 'दस्तावेज़ों के नाम बदलें',
     },
   },
   ar: {
@@ -1607,6 +1619,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       pdf: 'إعادة تسمية PDF',
       photos: 'إعادة تسمية الصور',
       screenshots: 'إعادة تسمية لقطات الشاشة',
+      documents: 'إعادة تسمية المستندات',
     },
   },
 };
@@ -2772,6 +2785,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
       { question: 'Kann ich eine Umbenennung rückgängig machen?', answer: 'Ja. Zush speichert den Verlauf, damit du Dateien mit einem Klick auf den ursprünglichen Namen zurücksetzen kannst.' },
     ], [
       ['/rename-pdf-with-ai', 'PDFs mit KI umbenennen', 'Benenne Rechnungen, Verträge, Scans und Formulare nach Text und Kontext im PDF.'],
+      ['/rename-documents-with-ai', 'Dokumente mit KI umbenennen', 'Benenne DOCX, XLSX, PPTX, TXT, CSV und E-Mails nach ihrem Inhalt.'],
       ['/rename-screenshots-with-ai', 'Screenshots mit KI umbenennen', 'Ersetze generische Screenshot-Namen durch nützliche Namen basierend auf dem Inhalt.'],
       ['/rename-photos-with-ai', 'Fotos mit KI umbenennen', 'Benenne HEIC-, RAW-, JPG- und andere Fotos nach Motiv, Szene und Kontext.'],
     ]),
@@ -2806,6 +2820,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
       { question: 'Puis-je annuler un renommage ?', answer: 'Oui. Zush conserve un historique pour restaurer le nom d’origine en un clic.' },
     ], [
       ['/rename-pdf-with-ai', 'Renommer des PDF avec l’IA', 'Renommez factures, contrats, scans et formulaires selon le texte du PDF.'],
+      ['/rename-documents-with-ai', 'Renommer des documents avec l’IA', 'Renommez DOCX, XLSX, PPTX, TXT, CSV et emails selon leur contenu.'],
       ['/rename-screenshots-with-ai', 'Renommer des screenshots avec l’IA', 'Remplacez les noms génériques par des noms utiles basés sur l’écran capturé.'],
       ['/rename-photos-with-ai', 'Renommer des photos avec l’IA', 'Renommez HEIC, RAW, JPG et autres photos selon le sujet et la scène.'],
     ]),
@@ -2840,6 +2855,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
       { question: 'Posso desfazer uma renomeação?', answer: 'Sim. O Zush mantém um histórico para restaurar o nome original com um clique.' },
     ], [
       ['/rename-pdf-with-ai', 'Renomear PDFs com IA', 'Renomeie notas, contratos, scans e formulários pelo texto do PDF.'],
+      ['/rename-documents-with-ai', 'Renomear documentos com IA', 'Renomeie DOCX, XLSX, PPTX, TXT, CSV e emails pelo conteúdo real.'],
       ['/rename-screenshots-with-ai', 'Renomear screenshots com IA', 'Troque nomes genéricos por nomes úteis baseados no conteúdo da tela.'],
       ['/rename-photos-with-ai', 'Renomear fotos com IA', 'Renomeie HEIC, RAW, JPG e outras fotos por assunto, cena e contexto.'],
     ]),
@@ -2874,6 +2890,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
       { question: '¿Puedo deshacer un cambio de nombre?', answer: 'Sí. Zush guarda el historial para restaurar el nombre original con un clic.' },
     ], [
       ['/rename-pdf-with-ai', 'Renombrar PDFs con IA', 'Renombra facturas, contratos, escaneos y formularios por el texto del PDF.'],
+      ['/rename-documents-with-ai', 'Renombrar documentos con IA', 'Renombra DOCX, XLSX, PPTX, TXT, CSV y emails por su contenido real.'],
       ['/rename-screenshots-with-ai', 'Renombrar capturas con IA', 'Cambia nombres genéricos por nombres útiles según lo que muestra la captura.'],
       ['/rename-photos-with-ai', 'Renombrar fotos con IA', 'Renombra HEIC, RAW, JPG y otras fotos por sujeto, escena y contexto.'],
     ]),
@@ -2908,6 +2925,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
       { question: 'Kan ik een hernoeming ongedaan maken?', answer: 'Ja. Zush bewaart de geschiedenis zodat je met één klik de originele naam herstelt.' },
     ], [
       ['/rename-pdf-with-ai', 'PDFs hernoemen met AI', 'Hernoem facturen, contracten, scans en formulieren op basis van PDF-tekst.'],
+      ['/rename-documents-with-ai', 'Documenten hernoemen met AI', 'Hernoem DOCX, XLSX, PPTX, TXT, CSV en e-mails op basis van inhoud.'],
       ['/rename-screenshots-with-ai', 'Screenshots hernoemen met AI', 'Vervang generieke screenshotnamen door nuttige namen op basis van de inhoud.'],
       ['/rename-photos-with-ai', 'Foto’s hernoemen met AI', 'Hernoem HEIC, RAW, JPG en andere foto’s op onderwerp, scène en context.'],
     ]),
@@ -2942,6 +2960,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
       { question: 'Posso annullare una rinomina?', answer: 'Sì. Zush conserva la cronologia per ripristinare il nome originale con un clic.' },
     ], [
       ['/rename-pdf-with-ai', 'Rinomina PDF con IA', 'Rinomina fatture, contratti, scansioni e moduli in base al testo del PDF.'],
+      ['/rename-documents-with-ai', 'Rinomina documenti con IA', 'Rinomina DOCX, XLSX, PPTX, TXT, CSV ed email in base al contenuto.'],
       ['/rename-screenshots-with-ai', 'Rinomina screenshot con IA', 'Sostituisci nomi generici con nomi utili basati su ciò che mostra lo screenshot.'],
       ['/rename-photos-with-ai', 'Rinomina foto con IA', 'Rinomina HEIC, RAW, JPG e altre foto per soggetto, scena e contesto.'],
     ]),
@@ -2976,6 +2995,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
       { question: 'リネームを元に戻せますか？', answer: 'はい。Zush は履歴を保存するため、ワンクリックで元の名前に戻せます。' },
     ], [
       ['/rename-pdf-with-ai', 'AIでPDFをリネーム', '請求書、契約書、スキャン、フォームを PDF の内容でリネームします。'],
+      ['/rename-documents-with-ai', 'AIで文書をリネーム', 'DOCX、XLSX、PPTX、TXT、CSV、メールを内容に基づいてリネームします。'],
       ['/rename-screenshots-with-ai', 'AIでスクリーンショットをリネーム', '内容に基づいて汎用的なスクリーンショット名を便利な名前に変えます。'],
       ['/rename-photos-with-ai', 'AIで写真をリネーム', 'HEIC、RAW、JPG などの写真を被写体やシーンでリネームします。'],
     ]),
@@ -3010,6 +3030,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
       { question: '이름 변경을 되돌릴 수 있나요?', answer: '예. Zush는 기록을 저장하므로 한 번의 클릭으로 원래 이름으로 되돌릴 수 있습니다.' },
     ], [
       ['/rename-pdf-with-ai', 'AI로 PDF 이름 변경', '송장, 계약서, 스캔, 양식을 PDF 텍스트와 맥락으로 이름 변경합니다.'],
+      ['/rename-documents-with-ai', 'AI로 문서 이름 변경', 'DOCX, XLSX, PPTX, TXT, CSV, 이메일을 실제 내용으로 이름 변경합니다.'],
       ['/rename-screenshots-with-ai', 'AI로 스크린샷 이름 변경', '일반적인 스크린샷 이름을 화면 내용 기반의 유용한 이름으로 바꿉니다.'],
       ['/rename-photos-with-ai', 'AI로 사진 이름 변경', 'HEIC, RAW, JPG 등 사진을 피사체, 장면, 맥락으로 이름 변경합니다.'],
     ]),
@@ -3155,6 +3176,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
       { question: '可以撤销重命名吗？', answer: '可以。Zush 会保存重命名历史，你可以一键恢复原始文件名。' },
     ], [
       ['/rename-pdf-with-ai', '用 AI 重命名 PDF', '根据 PDF 文本和上下文重命名发票、合同、扫描件和表单。'],
+      ['/rename-documents-with-ai', '用 AI 重命名文档', '根据实际内容重命名 DOCX、XLSX、PPTX、TXT、CSV 和邮件文件。'],
       ['/rename-screenshots-with-ai', '用 AI 重命名截图', '根据截图内容把通用文件名改成有用的名称。'],
       ['/rename-photos-with-ai', '用 AI 重命名照片', '根据主体、场景和上下文重命名 HEIC、RAW、JPG 等照片。'],
     ]),
@@ -3293,6 +3315,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
       { question: 'क्या मैं नाम-बदलाव वापस कर सकता हूँ?', answer: 'हाँ। Zush नाम-बदलाव इतिहास रखता है ताकि आप फ़ाइलों को एक क्लिक में मूल नामों पर वापस ला सकें।' },
     ], [
       ['/rename-pdf-with-ai', 'AI से PDF के नाम बदलें', 'इनवॉइस, कॉन्ट्रैक्ट, स्कैन और फ़ॉर्म को PDF के टेक्स्ट और संदर्भ के आधार पर नाम दें।'],
+      ['/rename-documents-with-ai', 'AI से दस्तावेज़ों के नाम बदलें', 'DOCX, XLSX, PPTX, TXT, CSV और ईमेल फ़ाइलों को उनके वास्तविक कॉन्टेंट से नाम दें।'],
       ['/rename-screenshots-with-ai', 'AI से स्क्रीनशॉट के नाम बदलें', 'सामान्य स्क्रीनशॉट नामों को हर स्क्रीनशॉट के कॉन्टेंट पर आधारित उपयोगी नामों से बदलें।'],
       ['/rename-photos-with-ai', 'AI से फ़ोटो के नाम बदलें', 'HEIC, RAW, JPG और दूसरी फ़ोटो को विषय, दृश्य और संदर्भ के आधार पर नाम दें।'],
     ]),
@@ -3431,6 +3454,7 @@ export const COPY: Record<Locale, LocaleCopy> = {
       { question: 'هل يمكنني التراجع عن إعادة التسمية؟', answer: 'نعم. يحتفظ Zush بسجل لإعادة التسمية حتى تتمكن من إعادة الملفات إلى أسمائها الأصلية بنقرة واحدة.' },
     ], [
       ['/rename-pdf-with-ai', 'إعادة تسمية ملفات PDF بالذكاء الاصطناعي', 'أعد تسمية الفواتير والعقود والمسحات والنماذج بحسب النص والسياق داخل ملف PDF.'],
+      ['/rename-documents-with-ai', 'إعادة تسمية المستندات بالذكاء الاصطناعي', 'أعد تسمية DOCX وXLSX وPPTX وTXT وCSV وملفات البريد بحسب محتواها الفعلي.'],
       ['/rename-screenshots-with-ai', 'إعادة تسمية لقطات الشاشة بالذكاء الاصطناعي', 'استبدل أسماء لقطات الشاشة العامة بأسماء مفيدة مبنية على ما يظهر في كل لقطة.'],
       ['/rename-photos-with-ai', 'إعادة تسمية الصور الفوتوغرافية بالذكاء الاصطناعي', 'أعد تسمية صور HEIC وRAW وJPG وغيرها بحسب الموضوع والمشهد والسياق.'],
     ]),
