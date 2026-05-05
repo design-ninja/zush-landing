@@ -14,6 +14,8 @@ reviewed: "2026-04-09"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
+Quick answer: rename PDFs automatically by setting up a folder monitor that pipes new PDFs through an AI tool which extracts document text — invoice number, contract title, sender — and produces a descriptive filename like `invoice-acme-2026-q1.pdf`.
+
 PDFs are the most common format for documents that matter, and also the most common format for documents with terrible filenames. Scanned invoices arrive as `scan_001.pdf`. Downloaded contracts save as `download.pdf`. Email attachments land as `attachment (3).pdf`. Exported reports default to `report.pdf` or worse.
 
 The content inside these files is important. The filenames are not just unhelpful, they are actively harmful to your ability to find, sort, and manage documents. When every PDF in a folder has a meaningless name, the only way to identify a file is to open it. That does not scale.

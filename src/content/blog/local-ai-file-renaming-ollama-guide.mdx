@@ -13,6 +13,8 @@ reviewed: "2026-04-28"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
+Quick answer: install Ollama, pull a vision-capable model like LLaVA, then connect it to a local AI rename tool such as Zush Offline AI on Mac. Files stay on your machine and renaming runs without API cost or upload.
+
 Most file renaming tools fall into two camps: rule-based batch rename utilities and cloud AI tools. Rule-based tools are reliable but blind. Cloud AI tools can understand screenshots, PDFs, photos, and documents, but they require an internet connection and a provider request.
 
 Local AI file renaming is the third path. Instead of sending analysis content to a cloud model, a desktop app asks a model running on your own computer to describe the file and propose a useful name. In Zush, that workflow is called Offline AI mode, and it uses [Ollama](https://ollama.com/download) as the local model runtime.
