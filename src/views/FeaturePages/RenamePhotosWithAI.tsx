@@ -113,7 +113,7 @@ const RenamePhotosWithAI = () => (
     relatedBlogPosts={[
       { title: 'Why Your Photos Are Named IMG and How to Fix It', href: 'why-your-photos-are-named-img-and-how-to-fix-it' },
       { title: 'Rename Photos for Social Media: Better Filenames for Reuse and SEO', href: 'rename-photos-for-social-media' },
-      { title: 'Photo Management Workflow for Photographers on Mac', href: 'photo-management-workflow-photographers-mac' },
+      { title: 'Best Ways to Organize Photos on Mac', href: 'best-ways-to-organize-photos-on-mac' },
     ]}
     jsonLd={jsonLd}
   />

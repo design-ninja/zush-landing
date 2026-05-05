@@ -395,7 +395,6 @@ export async function getAllTags(): Promise<BlogTag[]> {
         (a, b) => b.dateValue.getTime() - a.dateValue.getTime(),
       ),
     }))
-    .filter((tag) => tag.count >= INDEXABLE_TAG_MIN_POSTS)
     .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
 }
 
