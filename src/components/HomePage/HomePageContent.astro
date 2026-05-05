@@ -1,0 +1,63 @@
+---
+import HeroWithRenameDemo from '@/components/Hero/HeroWithRenameDemo';
+import Videos from '@/components/Videos';
+import SpeedComparison from '@/components/SpeedComparison';
+import Features from '@/components/Features/Features.astro';
+import SupportedFormats from '@/components/SupportedFormats';
+import Pricing from '@/components/Pricing/Pricing.astro';
+import WhyZush from '@/components/WhyZush';
+import FAQ from '@/components/FAQ';
+import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
+import CrossPlatformBanner from '@/components/CrossPlatformBanner/CrossPlatformBanner.astro';
+import EvidenceSignals from '@/components/EvidenceSignals/EvidenceSignals.astro';
+import type { Locale } from '@/i18n/config';
+import type { LocaleCopy } from '@/i18n/copy';
+
+interface Props {
+  copy: LocaleCopy;
+  locale: Locale;
+  secondaryHref?: string;
+}
+
+const { copy, locale, secondaryHref } = Astro.props as Props;
+---
+
+<HeroWithRenameDemo
+  client:load
+  title={copy.home.heroTitle}
+  titleAccent={copy.home.heroAccent}
+  subtitle={copy.home.heroSubtitle}
+  buyLabel={copy.home.buyPro}
+  downloadLabel={copy.header.download}
+  downloadMenu={copy.downloadMenu}
+  trustSignals={copy.home.trustSignals}
+  secondaryHref={secondaryHref}
+  slides={copy.home.showcaseSlides}
+  renameDemo={copy.home.renameDemo}
+  locale={locale}
+/>
+<Videos client:visible autoplayWhenInView copy={copy.home.videos} />
+<Features title={copy.home.featuresTitle} description={copy.home.featuresDescription} copy={copy.home.featureCards} />
+<SupportedFormats
+  title={copy.home.supportedFormats}
+  imagesLabel={copy.home.images}
+  documentsLabel={copy.home.documents}
+/>
+<DownloadCTA
+  title={copy.home.downloadTitle}
+  subtitle={copy.home.downloadSubtitle}
+  hintPrefix={copy.home.downloadHintPrefix}
+  downloadLabel={copy.header.download}
+  downloadMenu={copy.downloadMenu}
+/>
+<SpeedComparison client:visible copy={copy.home.speedComparison} />
+<WhyZush client:visible copy={copy.home.whyZush} />
+{locale === 'en' && <EvidenceSignals />}
+<CrossPlatformBanner locale={locale} />
+<Pricing copy={copy.pricing} />
+<FAQ
+  client:visible
+  title={copy.home.faqTitle}
+  description={copy.home.faqDescription}
+  items={copy.home.faqItems}
+/>

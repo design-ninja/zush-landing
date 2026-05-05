@@ -11,18 +11,22 @@ tldr: "Use Automator for simple automatic rename rules, Hazel for rule-based fol
 reviewed: "2026-05-01"
 featuredOrder: 2
 ---
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
 Quick answer: Automator can auto rename files with simple Mac rules, Hazel can watch folders and sort by conditions, and AI monitoring is the right fit when filenames must describe file content.
 
 Auto renaming files on Mac means setting up a system where files get renamed without manual intervention. A new file lands in a folder, and it gets a proper name without you touching it.
 
-There are three serious approaches to this on macOS, each suited to different kinds of rename logic. Automator handles pattern-based rules. Hazel handles condition-based sorting and renaming. [Zush](https://zushapp.com/auto-rename-files) handles content-aware renaming where the filename needs to describe what is actually inside the file.
+There are three serious approaches to this on macOS, each suited to different kinds of rename logic. Automator handles pattern-based rules. Hazel handles condition-based sorting and renaming. [Zush](/) handles content-aware renaming where the filename needs to describe what is actually inside the file.
 
 This guide covers all three, with setup instructions, comparison tables, and guidance on when to use which approach.
 
 
+<BlogProductIntro />
+
 ## What auto file renaming means in practice
 
-Auto renaming is not the same as [batch renaming](/batch-rename-files). Batch renaming is something you trigger manually on a set of files. Auto renaming happens continuously without your involvement.
+Auto renaming is not the same as [batch renaming](/). Batch renaming is something you trigger manually on a set of files. Auto renaming happens continuously without your involvement.
 
 The common setup:
 
@@ -133,7 +137,7 @@ This is better than nothing but still generic. If you have three PDFs arriving o
 
 ## Method 3: Zush folder monitoring
 
-[Zush](https://zushapp.com/auto-rename-files) approaches auto renaming differently. Instead of applying text patterns or metadata rules, it sends each file to an AI model that analyzes the content and generates a descriptive name.
+[Zush](/) approaches auto renaming differently. Instead of applying text patterns or metadata rules, it sends each file to an AI model that analyzes the content and generates a descriptive name.
 
 ### What Zush folder monitoring does
 
@@ -185,7 +189,7 @@ New files in those folders are now renamed automatically as they arrive.
 
 - **Custom patterns.** Control the structure of generated names with templates.
 - **Finder tags.** Zush can apply smart tags based on file content, improving Spotlight searches.
-- **Format support.** Handles 22 image formats (including HEIC, RAW variants) and 11 document formats (PDF, DOCX, XLSX, and others).
+- **Format support.** Handles 23 image formats (including HEIC, RAW variants) and 11 document formats (PDF, DOCX, XLSX, and others).
 - **Multiple AI providers.** Switch between Gemini, Groq, OpenAI, and Claude.
 - **Language support.** Generate names in any of 60+ languages.
 - **Rename history.** Every auto rename is logged. Revert any rename at any time.
@@ -193,7 +197,7 @@ New files in those folders are now renamed automatically as they arrive.
 ### Zush verdict
 
 **Best for:** Content-aware auto renaming where each file needs a unique name that describes its contents.
-**Trade-off:** Requires an AI provider (cloud-based by default). Free tier provides 50 renames/month; BYOK removes the cap.
+**Trade-off:** Requires an AI provider (cloud-based by default). Free tier provides 50 renames to start; BYOK removes the cap.
 
 ## Comparison table
 
@@ -267,4 +271,4 @@ If you have never set up auto renaming before, start with one folder and one met
 
 For pattern-based auto renaming, try [Automator](/blog/macos-automator-rename-files-guide) first since it is free and built in.
 
-For content-aware auto renaming, download [Zush](https://zushapp.com/auto-rename-files) and enable folder monitoring on your Downloads folder. Watch a few files get renamed automatically and decide if the results match what you need.
+For content-aware auto renaming, download [Zush](/) and enable folder monitoring on your Downloads folder. Watch a few files get renamed automatically and decide if the results match what you need.

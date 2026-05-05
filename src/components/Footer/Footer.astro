@@ -157,10 +157,6 @@ const footerHref = (route: LocalizedRoute) =>
       <div>
         <h4 class={sectionTitleClass}>{copy.product}</h4>
         <ul class={styles.Footer__Links}>
-          <li><a href={footerHref('/ai-file-renamer')} class={linkClass}>{copy.productLinks.aiFileRenamer}</a></li>
-          <li><a href={footerHref('/ai-image-renamer')} class={linkClass}>{copy.productLinks.aiImageRenamer}</a></li>
-          <li><a href={footerHref('/batch-rename-files')} class={linkClass}>{copy.productLinks.batchRenameFiles}</a></li>
-          <li><a href={footerHref('/auto-rename-files')} class={linkClass}>{copy.productLinks.autoRenameFiles}</a></li>
           <li><a href={footerHref('/mac')} class={linkClass}>{copy.productLinks.mac}</a></li>
           <li><a href={footerHref('/windows')} class={linkClass}>{copy.productLinks.windows}</a></li>
         </ul>
@@ -170,9 +166,9 @@ const footerHref = (route: LocalizedRoute) =>
         <h4 class={sectionTitleClass}>{copy.byFileType}</h4>
         <ul class={styles.Footer__Links}>
           <li><a href={footerHref('/rename-pdf-with-ai')} class={linkClass}>{copy.productLinks.pdf}</a></li>
+          <li><a href={footerHref('/rename-documents-with-ai')} class={linkClass}>{copy.productLinks.documents}</a></li>
           <li><a href={footerHref('/rename-photos-with-ai')} class={linkClass}>{copy.productLinks.photos}</a></li>
           <li><a href={footerHref('/rename-screenshots-with-ai')} class={linkClass}>{copy.productLinks.screenshots}</a></li>
-          <li><a href={footerHref('/rename-documents-with-ai')} class={linkClass}>{copy.productLinks.documents}</a></li>
         </ul>
       </div>
 

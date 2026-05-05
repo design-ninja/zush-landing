@@ -12,7 +12,13 @@ tags:
 tldr: "HEIC is efficient and Apple-friendly, while RAW is flexible and editing-friendly. Managing both well on macOS means understanding compatibility, storage, and naming."
 reviewed: "2026-04-09"
 ---
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Quick answer: store HEIC and RAW in date-based folders, rename them with content-aware names (Zush supports both formats), and keep EXIF metadata intact for searchability. Convert HEIC to JPG only when sharing outside the Apple ecosystem.
+
 HEIC and RAW are common on Mac for opposite reasons. HEIC is the efficient default from iPhone. RAW is the high-flexibility format used by cameras and serious editing workflows. If you use both, the challenge is not just storage. It is compatibility, retrieval, and keeping the library understandable over time.
+
+<BlogProductIntro />
 
 ## Format comparison at a glance
 
@@ -34,7 +40,7 @@ The key takeaway: HEIC and RAW serve fundamentally different purposes. HEIC repl
 
 HEIC (High Efficiency Image Container) uses the HEVC codec to compress images at roughly half the file size of JPEG with comparable or better quality. Apple adopted it as the default camera format starting with iOS 11 and macOS High Sierra (10.13) in 2017.
 
-![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+![Zush AI Rename screen on macOS — a file renamed to a descriptive name alongside Finder file details](/images/screenshots/light/zush-main-interface.webp)
 
 ### macOS and iOS version support
 

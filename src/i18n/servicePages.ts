@@ -1,6 +1,6 @@
 import type { Locale, LocalizedRoute } from '@/i18n/config';
 
-export const SERVICE_LOCALIZED_ROUTES = [
+const SERVICE_LOCALIZED_ROUTES = [
   '/activate',
   '/recover',
   '/thank-you',

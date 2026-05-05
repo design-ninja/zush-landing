@@ -105,11 +105,8 @@ const breadcrumbItems = [
 
 <BaseLayout jsonLd={jsonLd} seo={seo}>
   <BlogBreadcrumbs items={breadcrumbItems} />
-  <div class={styles.BlogPost__BreadcrumbBack}>
-    <BackLink href='/blog' label='Back to Blog' />
-  </div>
 
-  <article class={[styles.BlogPost, styles.BlogPost_afterBreadcrumbBack].join(' ')}>
+  <article class={styles.BlogPost}>
     <div class={styles.BlogPost__Container}>
       <header class={styles.BlogPost__Header}>
         <span

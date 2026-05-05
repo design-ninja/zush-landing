@@ -10,6 +10,7 @@ import Heading from '@/components/Heading';
 import SectionHeader from '@/components/SectionHeader';
 import Text from '@/components/Text';
 import { useOS } from '@/hooks/useOS';
+import type { WhyZushCopy } from '@/i18n/copy';
 import type { DownloadOS } from '@/utils/download';
 import styles from './WhyZush.module.scss';
 
@@ -49,33 +50,6 @@ const workflowSteps = [
   'Watch new folders',
   'Revert from history',
 ];
-
-interface WhyZushCopy {
-  title: string;
-  titlePlatform: string;
-  description: string;
-  descriptionPlatform: string;
-  nativeEyebrow: string;
-  nativeEyebrowPlatform: string;
-  nativeTitle: string;
-  nativeDescription: string;
-  nativeDescriptionPlatform: string;
-  pricingTrustItems: string[];
-  priceEyebrow: string;
-  priceTitle: string;
-  priceDescription: string;
-  priceLabel: string;
-  speedEyebrow: string;
-  speedTitle: string;
-  speedDescription: string;
-  formatsEyebrow: string;
-  formatsTitle: string;
-  formatsDescription: string;
-  controlEyebrow: string;
-  controlTitle: string;
-  controlDescription: string;
-  workflowSteps: string[];
-}
 
 const defaultCopy: WhyZushCopy = {
   title: 'Why Zush Fits Real Desktop Work',

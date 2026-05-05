@@ -11,19 +11,21 @@ tags:
 tldr: "To rename images with AI on Mac, choose a content-aware renamer, test a small batch, review the suggested names, then monitor folders so new screenshots and photos stay searchable."
 reviewed: "2026-05-01"
 ---
-import BlogInlineCTA from '@/components/blog/BlogInlineCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
 Quick answer: use an AI image renamer when Finder can only change text patterns but you need names based on what each image shows, such as screenshots, iPhone photos, RAW files, and downloads.
 
 If you want to rename images with AI on macOS, use a tool that can inspect the image itself, generate a descriptive title, and apply it in bulk. That is the difference between real AI renaming and Finder's text-only rename tools.
 
-For most Mac users, the goal is not prettier filenames. It is being able to search for screenshots, photos, and downloaded images later without opening them one by one. [Zush](https://zushapp.com) is built around that workflow, and if you want the category overview first, see [AI Image Renamer for Mac](/ai-image-renamer).
+For most Mac users, the goal is not prettier filenames. It is being able to search for screenshots, photos, and downloaded images later without opening them one by one. [Zush](https://zushapp.com) is built around that workflow, and if you want the category overview first, see [AI Image Renamer for Mac](/rename-photos-with-ai).
+
+<BlogProductIntro />
 
 ## What AI image renaming actually does
 
 Traditional rename tools change text patterns. You might strip a prefix, append a date, or replace spaces with hyphens. None of that considers what the image actually shows.
 
-![Zush app interface showing supported file formats including images, documents, and media files](/images/screenshots/light/zush-main-interface.webp)
+![Zush AI Rename screen on macOS — a file renamed to a descriptive name alongside Finder file details](/images/screenshots/light/zush-main-interface.webp)
 
 
 AI renaming works differently. It sends the image through a vision model that analyzes the visual content, identifies objects, scenes, text, and context, then generates a filename that reflects what the file contains.
@@ -50,8 +52,6 @@ That matters because most Mac image clutter comes from files that already exist 
 
 With AI-generated filenames, Finder search and Spotlight become genuinely useful for your image library. You can type "sunset lake" or "dashboard mockup" and find the right file immediately.
 
-
-<BlogInlineCTA platform="mac" />
 
 ## When AI is better than Finder or Automator
 
@@ -165,7 +165,7 @@ Key differences:
 
 If you are cleaning up months of accumulated image clutter, batch rename is the way to go. If you are setting up an ongoing workflow, pair single rename with folder monitoring so every new file gets named as it arrives.
 
-For a walkthrough of the automatic approach, see [Auto Rename Files on Mac](/auto-rename-files).
+For a walkthrough of the automatic approach, see [Auto Rename Files on Mac](/).
 
 ## Naming patterns for images
 
@@ -228,7 +228,7 @@ This is especially useful for screenshots. macOS generates screenshots constantl
 
 The same applies to Downloads. Every time you save an image from the web, it arrives with whatever name the server assigned. Folder monitoring renames it immediately, so by the time you look at your Downloads folder, every file already has a useful name.
 
-For a detailed guide on setting up automatic renaming, see [Auto Rename Files on Mac](/auto-rename-files).
+For a detailed guide on setting up automatic renaming, see [Auto Rename Files on Mac](/).
 
 ## Best practices
 

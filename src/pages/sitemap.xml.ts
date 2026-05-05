@@ -1,9 +1,9 @@
 import { execSync } from 'node:child_process';
 import { statSync } from 'node:fs';
 import { join } from 'node:path';
-import { getAllPosts, getAllTags, isSitemapEligibleBlogPost } from '@/data/blog';
+import { getAllPosts, getAllTags, isSitemapEligibleBlogPost, type BlogPost, type BlogTag } from '@/data/blog';
 import { INDEXABLE_STATIC_ROUTES, FEATURE_ROUTES, SITE_ORIGIN, THIN_CONTENT_THRESHOLD } from '@/seo/config';
-import { DEFAULT_LOCALE, LOCALE_META, LOCALIZED_ROUTES, getAlternatePaths, getLocalesForRoute, getLocalizedPath } from '@/i18n/config';
+import { DEFAULT_LOCALE, LOCALE_META, LOCALIZATION_PAUSED, LOCALIZED_ROUTES, getAlternatePaths, getLocalesForRoute, getLocalizedPath } from '@/i18n/config';
 
 const BLOG_CONTENT_DIR = join(process.cwd(), 'src', 'content', 'blog');
 const PAGES_DIR = join(process.cwd(), 'src', 'pages');
@@ -48,6 +48,25 @@ function getFileModifiedDate(filePath: string): string | null {
 
 function getLastModifiedDate(filePath: string, fallbackDate: string): string {
   return getGitDate(filePath) ?? getFileModifiedDate(filePath) ?? fallbackDate;
+}
+
+function getBlogPostSourceFile(post: BlogPost): string {
+  return join(BLOG_CONTENT_DIR, `${post.slug}.mdx`);
+}
+
+function getBlogPostLastModifiedDate(post: BlogPost): string {
+  return getLastModifiedDate(
+    getBlogPostSourceFile(post),
+    new Date(`${post.date}T00:00:00.000Z`).toISOString(),
+  );
+}
+
+function getTagLastModifiedDate(tag: BlogTag): string {
+  const dates = tag.posts
+    .map(getBlogPostLastModifiedDate)
+    .sort((a, b) => new Date(b).getTime() - new Date(a).getTime());
+
+  return dates[0] ?? new Date('2026-03-01T00:00:00.000Z').toISOString();
 }
 
 type Changefreq = 'daily' | 'weekly' | 'monthly' | 'yearly';
@@ -97,36 +116,37 @@ export async function GET() {
       priority,
     };
   });
-  const localizedEntries = LOCALIZED_ROUTES
-    .filter((route) => INDEXABLE_STATIC_ROUTES.includes(route))
-    .flatMap((route) =>
-      getLocalesForRoute(route).filter((locale) => locale !== DEFAULT_LOCALE).map((locale) => {
-        const locPath = getLocalizedPath(route, locale);
-        const loc = `${SITE_ORIGIN}${locPath}`;
-        const { changefreq, priority } = getRouteHints(route);
-        const sourceFile = getPageSourceFile(route);
+  const localizedEntries = LOCALIZATION_PAUSED
+    ? []
+    : LOCALIZED_ROUTES
+      .filter((route) => INDEXABLE_STATIC_ROUTES.includes(route))
+      .flatMap((route) =>
+        getLocalesForRoute(route).filter((locale) => locale !== DEFAULT_LOCALE).map((locale) => {
+          const locPath = getLocalizedPath(route, locale);
+          const loc = `${SITE_ORIGIN}${locPath}`;
+          const { changefreq, priority } = getRouteHints(route);
+          const sourceFile = getPageSourceFile(route);
 
-        return {
-          loc,
-          route,
-          lastmod: getLastModifiedDate(sourceFile, new Date('2026-03-01T00:00:00.000Z').toISOString()),
-          changefreq,
-          priority,
-        };
-      }),
-    );
+          return {
+            loc,
+            route,
+            lastmod: getLastModifiedDate(sourceFile, new Date('2026-03-01T00:00:00.000Z').toISOString()),
+            changefreq,
+            priority,
+          };
+        }),
+      );
 
   const posts = (await getAllPosts()).filter((post) =>
     isSitemapEligibleBlogPost(post, THIN_CONTENT_THRESHOLD),
   );
   const blogEntries = posts.map((post) => {
     const loc = `${SITE_ORIGIN}/blog/${post.slug}`;
-    const filePath = join(BLOG_CONTENT_DIR, `${post.slug}.mdx`);
 
     return {
       loc,
       route: undefined,
-      lastmod: getLastModifiedDate(filePath, new Date(`${post.date}T00:00:00.000Z`).toISOString()),
+      lastmod: getBlogPostLastModifiedDate(post),
       changefreq: 'monthly' as Changefreq,
       priority: '0.7',
     };
@@ -137,14 +157,14 @@ export async function GET() {
     .map((tag) => ({
       loc: `${SITE_ORIGIN}/blog/tags/${tag.slug}`,
       route: undefined,
-      lastmod: new Date().toISOString(),
+      lastmod: getTagLastModifiedDate(tag),
       changefreq: 'weekly' as Changefreq,
       priority: '0.55',
     }));
 
   const urls = [...staticEntries.map((entry) => ({ ...entry, route: entry.loc.replace(SITE_ORIGIN, '') || '/' })), ...localizedEntries, ...blogEntries, ...tagEntries]
     .map(({ loc, route, lastmod, changefreq, priority }) => {
-      const normalizedRoute = LOCALIZED_ROUTES.includes(route as never)
+      const normalizedRoute = !LOCALIZATION_PAUSED && LOCALIZED_ROUTES.includes(route as never)
         ? route
         : undefined;
       const alternates = normalizedRoute

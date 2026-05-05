@@ -1,0 +1,170 @@
+---
+title: "Zush vs Renamer.ai (2026): One-Time $10 vs $9.95-99.95/Month"
+description: "Compare Zush vs Renamer.ai: $10 one-time vs $9.95-$99.95/month, Mac+Windows support, RAW/photo formats, documents and automation."
+date: "2026-05-05"
+slug: "zush-vs-renamer-ai"
+platform: "general"
+topic: "comparisons"
+tags:
+  - "AI File Renaming"
+  - "Tool Comparisons"
+tldr: "Pick Zush if you want one-time pricing ($10 forever), full RAW photo support, and BYOK without an extra fee. Pick Renamer.ai if subscription billing fits your team and you mostly rename text-heavy documents through OCR."
+reviewed: "2026-05-05"
+featuredOrder: 2
+---
+import BlogHighlight from '@/components/blog/BlogHighlight.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
+
+Quick answer: Zush is a one-time <BlogHighlight>$10</BlogHighlight> Mac and Windows desktop app with 23 image formats (incl. RAW), folder monitoring, undo, and free BYOK. Renamer.ai is a desktop + web subscription at <BlogHighlight>$9.95-99.95/month</BlogHighlight> ($120-$1,200/year) focused on document OCR with 30+ formats. Pick by pricing model and whether you need RAW photo support.
+
+If you are searching "Zush vs Renamer.ai", you are usually deciding between two paid AI file renamers that both run on Mac and Windows. The answer depends mostly on three things: how you prefer to pay, what file types land in your folders, and whether OCR-driven document renaming is your core use case.
+
+<BlogProductIntro />
+
+## TL;DR comparison
+
+| Dimension | Zush | Renamer.ai |
+|---|---|---|
+| Pricing | <BlogHighlight>$10 one-time</BlogHighlight> (10K renames) | $9.95–$99.95/month |
+| Free tier | 50 renames to start | 25 files/month |
+| 5-year cost (10K/yr) | <BlogHighlight>$10 total</BlogHighlight> | $597–$5,997 |
+| Platforms | Mac + Windows desktop | Desktop (Mac/Win) + Web |
+| Image formats | 23 (incl. RAW + HEIC) | ~7 (no RAW) |
+| Document formats | 11 | ~12 (incl. EML, EPS, AI, SVG) |
+| OCR | Yes | Yes (advertised core) |
+| Folder monitoring | Yes | Yes (Magic Folders) |
+| Undo / rollback | Yes (full history) | Yes |
+| BYOK | <BlogHighlight>Yes, no extra fee</BlogHighlight> | No |
+| Languages | 60+ | 20+ |
+| Local AI (Ollama) | Yes (Mac builds) | No |
+
+## Zush
+
+<BlogToolMeta platform="Mac (macOS 14+) and Windows 10/11" website="https://zushapp.com/" label="zushapp.com">
+  <Fragment slot="pricing">Free demo (5 files), Pro <BlogHighlight>$10 one-time</BlogHighlight> for 10,000 renames, BYOK unlimited at API cost (Gemini/Groq/OpenAI/Claude), Local Ollama on supported Mac builds</Fragment>
+</BlogToolMeta>
+
+![Zush AI rename results showing files with descriptive before and after names and green checkmarks](/images/screenshots/light/zush-batch-rename-results.webp)
+
+Zush is a native desktop AI file renamer for both Mac and Windows. It supports 23 image formats — including HEIC plus camera RAW (CR2, CR3, NEF, ARW, DNG, ORF, RAF, RW2, PEF, SRW, SR2) — and 11 document formats (PDF, DOCX, XLSX, PPT, PPTX, TXT, MD, JSON, EML, CSV, DOC).
+
+Pricing is one-time: <BlogHighlight>$10</BlogHighlight> for 10,000 renames. After that, BYOK with Gemini, Groq, OpenAI, or Claude removes the cap entirely at the AI provider's per-request cost (typically fractions of a cent per file). There is also an Offline AI mode via Ollama on supported Mac builds, where files never leave the device.
+
+## Renamer.ai
+
+<BlogToolMeta platform="Desktop (Mac and Windows) + Web interface" website="https://renamer.ai/" label="renamer.ai">
+  <Fragment slot="pricing">Starter free (25 files/month), Pro $9.95/mo (200 files), Power User $29.95/mo (1,000 files), Ultimate $99.95/mo (5,000 files); annual billing offers a 15% discount</Fragment>
+</BlogToolMeta>
+
+![Renamer.ai desktop app screenshot (image: renamer.ai)](/images/blog/competitors/renamer-ai.png)
+
+Renamer.ai is a desktop and web tool focused on document-heavy workflows. Their site advertises "30+ file formats" — documents (PDF, DOC, DOCX, ODT, RTF, TXT), spreadsheets (XLS, XLSX), images (JPG, PNG, WebP, GIF, BMP, TIFF, HEIC), presentations (PPT, PPTX), vector files (EPS, SVG, AI), and email (EML). Notably absent from the public format list: camera RAW formats (CR2, NEF, ARW, etc.).
+
+Pricing is monthly subscription with four tiers: free Starter (25 files/month), Pro $9.95/mo (200 files), Power User $29.95/mo (1,000 files), and Ultimate $99.95/mo (5,000 files). Annual billing gives a 15% discount per their site.
+
+## Pricing reality over 5 years
+
+For a moderately active user renaming around 10,000 files per year (not unusual for someone with mixed photo + document workflows), the pricing gap between one-time and subscription pricing compounds dramatically:
+
+| Model | Year 1 | 3 years | 5 years |
+|---|---|---|---|
+| <BlogHighlight>Zush Pro</BlogHighlight> | <BlogHighlight>$10</BlogHighlight> | <BlogHighlight>$10</BlogHighlight> | <BlogHighlight>$10</BlogHighlight> |
+| Zush BYOK after credits | ~$10 + API cost | ~$30–50 | ~$50–100 |
+| Renamer.ai Pro ($9.95/mo) | $119 | $358 | $597 |
+| Renamer.ai Power ($29.95/mo) | $359 | $1,078 | $1,797 |
+| Renamer.ai Ultimate ($99.95/mo) | $1,199 | $3,597 | $5,997 |
+
+Even on Renamer.ai's cheapest paid tier at $9.95/mo, the 5-year cost is <BlogHighlight>$597 — roughly 60× the one-time Zush price</BlogHighlight>. On the Ultimate tier, it is closer to 600× over 5 years.
+
+Caveat: this assumes constant usage. If you only need a one-off cleanup of a few hundred files, both free tiers cover that.
+
+## Format support
+
+Mixed-file folders are where format coverage starts to matter:
+
+### Zush handles RAW + HEIC; Renamer.ai does not
+
+Zush's public format list includes 11 RAW variants: CR2, CR3 (Canon), NEF (Nikon), ARW (Sony), DNG (Adobe), ORF (Olympus), RAF (Fujifilm), RW2 (Panasonic), PEF (Pentax), SRW (Samsung), SR2 (Sony). Renamer.ai's public format list does not include any camera RAW formats.
+
+If you are a photographer or anyone with `IMG_4382.HEIC` or `_DSC0019.NEF` files in your library, Zush is the cleaner fit. If your folders are mostly Word, Excel, PowerPoint, scanned PDFs, and EML emails, Renamer.ai's document-first emphasis is solid.
+
+### Renamer.ai covers more vector + email formats
+
+On the document side, Renamer.ai supports a few formats Zush does not list explicitly: EPS, AI (Adobe Illustrator), and EML for email. Zush supports EML in its document list but not EPS / AI. If those matter to your workflow, Renamer.ai is broader there.
+
+### Both handle the common case
+
+For everyday use — JPG, PNG, HEIC, PDF, DOCX, XLSX — both tools work. The decision usually comes down to RAW (Zush) vs steeply-priced higher-volume tiers (Renamer.ai).
+
+## Features that differ
+
+### BYOK
+
+<BlogHighlight>Zush includes BYOK with the $10 Pro purchase</BlogHighlight> — connect your own Gemini/Groq/OpenAI/Claude key and rename without a monthly cap, paying only the provider's per-request cost. Renamer.ai does not list a BYOK option on their site; you stay on whatever AI service they bundle.
+
+### Local AI mode
+
+Zush supports an Offline AI mode via Ollama on Mac, so file content never leaves the device. Renamer.ai does not advertise a local-only mode.
+
+### Web access
+
+Renamer.ai has a web interface in addition to the desktop app — useful if you cannot install software (corporate machine, occasional one-off use). Zush is desktop-only on Mac and Windows.
+
+### Language support
+
+Zush states 60+ output languages; Renamer.ai states 20+. If you generate filenames in non-English languages routinely, Zush is broader.
+
+## Pick by use case
+
+**Pick Zush if:**
+
+- You want one-time pricing instead of recurring billing
+- You handle RAW photos (CR2/NEF/ARW/DNG/etc.) or HEIC from iPhone
+- You want BYOK without paying extra
+- You want Offline AI (Ollama) for privacy or air-gapped work
+- You need 60+ language support for non-English filenames
+
+**Pick Renamer.ai if:**
+
+- Subscription billing fits how your team or company pays for software
+- Your folders are mostly text-heavy documents (PDFs, DOCX, XLSX) and OCR is core to your workflow
+- You need a web interface in addition to a desktop app
+- You work with EPS / AI vector formats specifically
+
+## Migration tip
+
+If you are leaving Renamer.ai for Zush: download Zush, run a free 5-file demo on a sample folder to verify naming quality on your file types, then buy Pro for $10. Cancel the Renamer.ai subscription. Your existing renamed files in Renamer.ai stay as-is — they are just files in your filesystem.
+
+If you are leaving Zush for Renamer.ai: less common, but if you need their web interface, sign up for the free 25-files/month Starter tier first to verify it covers your volume before subscribing.
+
+## FAQ
+
+### Is Zush cheaper than Renamer.ai?
+
+Yes by a large margin. Zush is $10 one-time. Renamer.ai's cheapest paid tier is $9.95/month ($120/year). Over 5 years at any meaningful usage level, Zush is roughly 60× cheaper than Renamer.ai's Pro tier and 600× cheaper than their Ultimate tier.
+
+### Does Renamer.ai support RAW photos like CR2 or NEF?
+
+The format list on Renamer.ai's public site does not include camera RAW formats. If you shoot RAW, Zush is the safer pick — its 23-format list explicitly covers CR2, CR3, NEF, ARW, DNG, ORF, RAF, RW2, PEF, SRW, and SR2.
+
+### Can I use my own OpenAI key with Renamer.ai?
+
+Renamer.ai does not advertise a BYOK option. Zush includes BYOK in the $10 Pro purchase — you can connect your own Gemini, Groq, OpenAI, or Claude key.
+
+### Do both have folder monitoring?
+
+Yes. Zush has folder monitoring built into the desktop app. Renamer.ai calls theirs "Magic Folders" and includes it in paid tiers.
+
+### Can I undo renames in either tool?
+
+Yes. Zush keeps a full rename history with one-click revert. Renamer.ai supports undo as well.
+
+## Verdict
+
+Both tools work for everyday AI file renaming and both have folder monitoring + undo. The decision splits cleanly:
+
+- If you want to pay once and never think about it again, handle RAW/HEIC, and run BYOK without an extra purchase: <BlogHighlight>Zush at $10 one-time</BlogHighlight>.
+- If subscription billing is how you buy software anyway, your work is mostly OCR-driven document renaming, and you need a web interface: Renamer.ai.
+
+For the broader market view of all eight tools we tested, see [Best AI File Renamers 2026](/blog/best-ai-file-renamer-tools-2026).

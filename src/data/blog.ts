@@ -67,6 +67,7 @@ export interface BlogTag {
 }
 
 const INDEXABLE_TAG_MIN_POSTS = 2;
+const TAG_PAGES_INDEXABLE = false;
 const WORDS_PER_MINUTE = 200;
 
 function toIsoDate(value: Date): string {
@@ -77,7 +78,6 @@ function sanitizeBody(body: string): string {
   return body
     .replace(/^import\s.+$/gm, '')
     .replace(/^export\s.+$/gm, '')
-    .replace(/^<BlogInlineCTA[^>]*\/>\s*$/gm, '')
     .trim();
 }
 
@@ -338,15 +338,9 @@ export async function getRelatedPosts(slug: string, limit = 3): Promise<BlogPost
   return selected.slice(0, limit);
 }
 
-export async function getBalancedRecentBlogPosts(limitPerPlatform = 2): Promise<BlogPost[]> {
+export async function getRecentBlogPosts(limit = 6): Promise<BlogPost[]> {
   const posts = await getAllPosts();
-  const platforms: BlogPlatform[] = ['windows', 'mac', 'general'];
-
-  return platforms
-    .flatMap((platform) =>
-      posts.filter((post) => post.platform === platform).slice(0, limitPerPlatform),
-    )
-    .sort((a, b) => b.dateValue.getTime() - a.dateValue.getTime());
+  return posts.slice(0, limit);
 }
 
 export async function getAllTags(): Promise<BlogTag[]> {
@@ -385,12 +379,11 @@ export async function getAllTags(): Promise<BlogTag[]> {
   return [...tags.values()]
     .map((tag) => ({
       ...tag,
-      indexable: tag.count >= INDEXABLE_TAG_MIN_POSTS,
+      indexable: TAG_PAGES_INDEXABLE && tag.count >= INDEXABLE_TAG_MIN_POSTS,
       posts: tag.posts.sort(
         (a, b) => b.dateValue.getTime() - a.dateValue.getTime(),
       ),
     }))
-    .filter((tag) => tag.count >= INDEXABLE_TAG_MIN_POSTS)
     .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
 }
 

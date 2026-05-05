@@ -106,14 +106,14 @@ const RenamePhotosWithAI = () => (
     ]}
     faqItems={faqItems}
     relatedPages={[
-      { title: 'AI Image Renamer', href: '/ai-image-renamer' },
       { title: 'Rename Screenshots with AI', href: '/rename-screenshots-with-ai' },
-      { title: 'Auto Rename Files with AI', href: '/auto-rename-files' },
+      { title: 'Rename PDFs with AI', href: '/rename-pdf-with-ai' },
+      { title: 'Zush for Mac', href: '/mac' },
     ]}
     relatedBlogPosts={[
       { title: 'Why Your Photos Are Named IMG and How to Fix It', href: 'why-your-photos-are-named-img-and-how-to-fix-it' },
       { title: 'Rename Photos for Social Media: Better Filenames for Reuse and SEO', href: 'rename-photos-for-social-media' },
-      { title: 'Photo Management Workflow for Photographers on Mac', href: 'photo-management-workflow-photographers-mac' },
+      { title: 'Best Ways to Organize Photos on Mac', href: 'best-ways-to-organize-photos-on-mac' },
     ]}
     jsonLd={jsonLd}
   />

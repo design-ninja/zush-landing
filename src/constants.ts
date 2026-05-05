@@ -56,4 +56,5 @@ export const APP_CONFIG = {
   refund_period_days: 14,
   min_macos_version: "14.0",
   min_macos_name: "Sonoma",
+  app_version: "1.9.1",
 };

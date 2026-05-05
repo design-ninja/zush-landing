@@ -1,5 +1,5 @@
 ---
-title: "Local AI File Renaming with Ollama: Private Offline Workflow (2026)"
+title: "Local AI File Renaming with Ollama: Offline Workflow"
 description: "Learn how local AI file renaming with Ollama works in Zush, when to use Offline AI mode, which models matter, and how it compares with cloud renaming."
 date: "2026-04-28"
 slug: "local-ai-file-renaming-ollama-guide"
@@ -11,15 +11,17 @@ tags:
 tldr: "Local AI file renaming uses a model on your own computer to analyze supported files and suggest descriptive filenames. In Zush, Offline AI mode connects to Ollama so supported analysis content stays on device instead of going to Zush cloud or a third-party AI provider."
 reviewed: "2026-04-28"
 ---
-import BlogInlineCTA from '@/components/blog/BlogInlineCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Quick answer: install Ollama, pull a vision-capable model like LLaVA, then connect it to a local AI rename tool such as Zush Offline AI on Mac. Files stay on your machine and renaming runs without API cost or upload.
 
 Most file renaming tools fall into two camps: rule-based batch rename utilities and cloud AI tools. Rule-based tools are reliable but blind. Cloud AI tools can understand screenshots, PDFs, photos, and documents, but they require an internet connection and a provider request.
 
 Local AI file renaming is the third path. Instead of sending analysis content to a cloud model, a desktop app asks a model running on your own computer to describe the file and propose a useful name. In Zush, that workflow is called Offline AI mode, and it uses [Ollama](https://ollama.com/download) as the local model runtime.
 
-If you want the setup page first, start with the [Ollama setup guide](/ollama-setup). If you want the product surface first, see [AI File Renamer](/ai-file-renamer) or [Zush for Mac](/mac).
+If you want the setup page first, start with the [Ollama setup guide](/ollama-setup). If you want the product surface first, see [AI File Renamer](/) or [Zush for Mac](/mac).
 
-<BlogInlineCTA platform="general" />
+<BlogProductIntro />
 
 ## What local AI file renaming means
 

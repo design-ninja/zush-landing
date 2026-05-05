@@ -5,10 +5,6 @@ import MethodologyPage from '@/components/MethodologyPage/MethodologyPage.astro'
 import PlatformLandingPage from '@/components/PlatformLandingPage/PlatformLandingPage.astro';
 import { getFeaturePageProps } from '@/utils/featurePageProps';
 import ActivateView from '@/views/Activate';
-import AIFileRenamer from '@/views/FeaturePages/AIFileRenamer';
-import AIImageRenamer from '@/views/FeaturePages/AIImageRenamer';
-import AutoRenameFiles from '@/views/FeaturePages/AutoRenameFiles';
-import BatchRenameFiles from '@/views/FeaturePages/BatchRenameFiles';
 import BYOKSetup from '@/views/BYOKSetup';
 import Legal from '@/views/Legal';
 import ManageSubscriptionView from '@/views/ManageSubscription';
@@ -40,12 +36,8 @@ import { getStaticPageCopy, isStaticLocalizedRoute } from '@/i18n/staticPages';
 import { getSeoForPath } from '@/seo/config';
 
 const FEATURE_VIEWS = {
-  '/ai-file-renamer': AIFileRenamer,
-  '/auto-rename-files': AutoRenameFiles,
-  '/batch-rename-files': BatchRenameFiles,
-  '/ai-image-renamer': AIImageRenamer,
-  '/rename-documents-with-ai': RenameDocumentsWithAI,
   '/rename-pdf-with-ai': RenamePDFWithAI,
+  '/rename-documents-with-ai': RenameDocumentsWithAI,
   '/rename-screenshots-with-ai': RenameScreenshotsWithAI,
   '/rename-photos-with-ai': RenamePhotosWithAI,
 } as const;
@@ -95,7 +87,7 @@ const legalCopy = route === '/privacy-policy' || route === '/terms-of-service' |
 const staticCopy = isStaticLocalizedRoute(route) ? getStaticPageCopy(locale as Exclude<Locale, 'en'>, route) : null;
 const staticSeo = staticCopy
   ? {
-      ...getSeoForPath(route),
+      ...seo,
       title: `${staticCopy.title} — Zush`,
       description: staticCopy.description,
       canonicalPath: localizedPath,

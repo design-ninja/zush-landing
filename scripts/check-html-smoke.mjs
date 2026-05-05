@@ -21,6 +21,15 @@ const NON_WATCH_VIDEO_ROUTES = new Set([
   '/rename-photos-with-ai',
   '/rename-screenshots-with-ai',
 ]);
+const USE_CASES_BLOCK_ROUTES = [
+  '/',
+  '/mac',
+  '/windows',
+  '/rename-documents-with-ai',
+  '/rename-pdf-with-ai',
+  '/rename-photos-with-ai',
+  '/rename-screenshots-with-ai',
+];
 
 function fail(message) {
   throw new Error(message);
@@ -52,8 +61,16 @@ function isBlogPostPath(pathname) {
     !pathname.startsWith('/blog/tags/');
 }
 
+function isUseCasesLandingPath(pathname) {
+  return USE_CASES_BLOCK_ROUTES.some((route) => pathname === route || pathname.endsWith(route));
+}
+
 function assertIncludes(html, needle, message) {
   if (!html.includes(needle)) fail(message);
+}
+
+function assertNotIncludes(html, needle, message) {
+  if (html.includes(needle)) fail(message);
 }
 
 function getJsonLdBlocks(html) {
@@ -91,6 +108,10 @@ for (const loc of locs) {
     fail(`Empty shell detected for ${pathname}`);
   }
 
+  if (isUseCasesLandingPath(pathname)) {
+    assertNotIncludes(html, 'id="use-cases"', `Use cases block should not be present on ${pathname}`);
+  }
+
   const canonicalTag = `<link rel="canonical" href="${loc}"`;
   assertIncludes(html, canonicalTag, `Canonical mismatch or missing for ${pathname}`);
 
@@ -98,11 +119,9 @@ for (const loc of locs) {
     assertIncludes(html, '"@type":"BlogPosting"', `BlogPosting JSON-LD missing for ${pathname}`);
     const hasHomepageIds = jsonLdBlocks.some(
       (block) =>
-        block.includes('/#howto') ||
         block.includes('/#organization') ||
         block.includes('/#website') ||
-        block.includes('/#software') ||
-        block.includes('/#faq'),
+        block.includes('/#software'),
     );
     if (hasHomepageIds) {
       fail(`Homepage schema leaked into blog page ${pathname}`);
@@ -134,7 +153,16 @@ for (const route of PRIVATE_ROUTES) {
 }
 
 const homepageHtml = readFileSync(join(DIST, 'index.html'), 'utf8');
-assertIncludes(homepageHtml, '"@type":"HowTo"', 'Homepage HowTo JSON-LD missing.');
-assertIncludes(homepageHtml, '/#faq', 'Homepage FAQ JSON-LD missing.');
+const homepageJsonLdBlocks = getJsonLdBlocks(homepageHtml).map((block) => JSON.parse(block));
+const homepageFaq = homepageJsonLdBlocks.find((item) => item['@type'] === 'FAQPage');
+assertIncludes(homepageHtml, '"@type":"SoftwareApplication"', 'Homepage SoftwareApplication JSON-LD missing.');
+assertNotIncludes(homepageHtml, '"@type":"HowTo"', 'Homepage should not emit HowTo JSON-LD.');
+if (!homepageFaq) {
+  fail('Homepage FAQPage JSON-LD missing.');
+}
+if (!Array.isArray(homepageFaq.mainEntity) || homepageFaq.mainEntity.length === 0) {
+  fail('Homepage FAQPage JSON-LD should include questions.');
+}
+assertNotIncludes(homepageHtml, '"speakable"', 'Homepage should not emit speakable JSON-LD.');
 
 console.log(`[check-html-smoke] OK: ${locs.length} sitemap URLs validated.`);

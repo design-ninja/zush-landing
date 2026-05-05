@@ -12,14 +12,20 @@ tags:
 tldr: "An AI document renamer reads the content of your PDFs, Word docs, and spreadsheets to generate descriptive filenames automatically, replacing vague names like document (3).pdf with something searchable and useful."
 reviewed: "2026-04-09"
 ---
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Quick answer: an AI document renamer reads the actual content of PDFs, DOCX, XLSX, and similar files — invoice numbers, contract parties, headings — and replaces generic names like `document (3).pdf` with descriptive, searchable filenames automatically.
+
 Documents are supposed to be the most important files on your computer. Contracts, invoices, reports, tax filings, lecture notes, project proposals. Yet most of them sit in folders under names like `document (3).pdf`, `Untitled.docx`, or `export_final_v2.xlsx`. The content is critical, but the filename is throwaway.
 
 That is the document naming problem. Unlike photos or screenshots, documents carry structured information that should make naming easy. But the tools that create them do not prioritize filenames. Scanners produce sequential names. Email clients save attachments under whatever the sender chose. Export functions default to generic labels. The result is folders full of important files that are impossible to browse, search, or manage without opening each one.
 
 An AI document renamer solves this by reading the actual content of the file and generating a descriptive name based on what the document contains. If you work with mixed document types on Mac, [Zush](https://zushapp.com) can do this across PDFs, Word files, spreadsheets, and more in a single batch.
 
-![Zush main AI Rename screen showing supported file format badges for documents and images](/images/screenshots/light/zush-main-interface.webp)
+![Zush AI Rename screen on macOS — a file renamed to a descriptive name alongside Finder file details](/images/screenshots/light/zush-main-interface.webp)
 
+
+<BlogProductIntro />
 
 ## How AI analyzes document content
 
@@ -190,6 +196,6 @@ In those cases, a deterministic rename rule or manual naming is better.
 
 ## Getting started
 
-Zush offers 50 free renames per month, which is enough to test the workflow on a real folder. If document renaming becomes part of your regular routine, the Pro plan gives you 10,000 renames for a one-time $10 payment. For heavy or automated workflows, bring your own API key for unlimited renaming.
+Zush offers 50 free renames, which is enough to test the workflow on a real folder. If document renaming becomes part of your regular routine, the Pro plan gives you 10,000 renames for a one-time $10 payment. For heavy or automated workflows, bring your own API key for unlimited renaming.
 
 Start with the folder that has been bothering you the longest. Once you see `document (7).pdf` turn into something you can actually find later, the value is obvious.

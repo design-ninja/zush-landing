@@ -108,7 +108,7 @@ const DEFAULT_SOFTWARE_OFFERS: SoftwareOfferData[] = [
     name: 'Free',
     price: '0',
     priceCurrency: 'USD',
-    description: 'Free tier with 50 AI renames per month',
+    description: 'Free tier with 50 AI renames',
   },
   {
     name: 'Zush Pro',
@@ -118,7 +118,7 @@ const DEFAULT_SOFTWARE_OFFERS: SoftwareOfferData[] = [
   },
 ];
 
-export function buildSoftwareApplicationJsonLd(data: SoftwareApplicationData) {
+function buildSoftwareApplicationJsonLd(data: SoftwareApplicationData) {
   const pageUrl = `${SITE_ORIGIN}${data.pagePath}`;
 
   return {

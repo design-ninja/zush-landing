@@ -1,0 +1,102 @@
+---
+interface Props {
+  platform?: string;
+  website?: string;
+  label?: string;
+}
+
+const { platform, website, label } = Astro.props;
+
+const websiteIsExternal = !!website && !website.startsWith('https://zushapp.com') && !website.startsWith('/');
+const linkLabel =
+  label ??
+  (website ? website.replace(/^https?:\/\/(www\.)?/, '').replace(/\/+$/, '') : '');
+---
+
+<dl class='blog-tool-meta'>
+  <div class='blog-tool-meta__row'>
+    <dt>Platform</dt>
+    <dd>
+      <slot name='platform'>{platform}</slot>
+    </dd>
+  </div>
+  <div class='blog-tool-meta__row'>
+    <dt>Pricing</dt>
+    <dd>
+      <slot name='pricing' />
+    </dd>
+  </div>
+  {
+    website && (
+      <div class='blog-tool-meta__row'>
+        <dt>Website</dt>
+        <dd>
+          <a
+            class='blog-tool-meta__link'
+            href={website}
+            rel={websiteIsExternal ? 'nofollow noopener noreferrer' : undefined}
+            target={websiteIsExternal ? '_blank' : undefined}
+          >
+            {linkLabel}
+          </a>
+        </dd>
+      </div>
+    )
+  }
+</dl>
+
+<style is:global>
+  .blog-tool-meta {
+    margin: 0.5rem 0 1.5rem;
+    padding: 0.85rem 1rem;
+    background: color-mix(in srgb, var(--foreground) 4%, var(--card));
+    border: 1px solid var(--border);
+    border-radius: 0.6rem;
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  .blog-tool-meta__row {
+    display: grid;
+    grid-template-columns: 6.25rem 1fr;
+    gap: 0.6rem;
+    align-items: baseline;
+  }
+
+  .blog-tool-meta dt {
+    font-weight: 600;
+    color: var(--muted-foreground);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  .blog-tool-meta dd {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    min-width: 0;
+    color: var(--foreground);
+  }
+
+  .blog-tool-meta__link {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .blog-tool-meta__link:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 600px) {
+    .blog-tool-meta__row {
+      grid-template-columns: 1fr;
+      gap: 0.1rem;
+    }
+
+    .blog-tool-meta dt {
+      font-size: 0.78rem;
+    }
+  }
+</style>

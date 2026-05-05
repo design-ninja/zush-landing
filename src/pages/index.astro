@@ -1,60 +1,16 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import HeroWithRenameDemo from '@/components/Hero/HeroWithRenameDemo';
-import Videos from '@/components/Videos';
-import SpeedComparison from '@/components/SpeedComparison';
-import Features from '@/components/Features/Features.astro';
-import SupportedFormats from '@/components/SupportedFormats';
-import UseCases from '@/components/UseCases';
-import Pricing from '@/components/Pricing/Pricing.astro';
-import WhyZush from '@/components/WhyZush';
-import FAQ from '@/components/FAQ';
-import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
-import CrossPlatformBanner from '@/components/CrossPlatformBanner/CrossPlatformBanner.astro';
+import HomePageContent from '@/components/HomePage/HomePageContent.astro';
+import { HOME_FAQ_DATA } from '@/data/homeFaq';
 import { getSeoForPath, HOME_JSON_LD } from '@/seo/config';
+import { buildFAQPageJsonLd } from '@/utils/jsonLd';
 import { getCopy } from '@/i18n/copy';
 
 const seo = getSeoForPath('/');
 const copy = getCopy('en');
+const jsonLd = [HOME_JSON_LD, buildFAQPageJsonLd(HOME_FAQ_DATA)];
 ---
 
-<BaseLayout seo={seo} jsonLd={HOME_JSON_LD}>
-  <HeroWithRenameDemo
-    client:load
-    title={copy.home.heroTitle}
-    titleAccent={copy.home.heroAccent}
-    subtitle={copy.home.heroSubtitle}
-    buyLabel={copy.home.buyPro}
-    downloadLabel={copy.header.download}
-    downloadMenu={copy.downloadMenu}
-    trustSignals={copy.home.trustSignals}
-    slides={copy.home.showcaseSlides}
-    renameDemo={copy.home.renameDemo}
-    locale="en"
-  />
-  <Videos client:visible autoplayWhenInView copy={copy.home.videos} />
-  <Features title={copy.home.featuresTitle} description={copy.home.featuresDescription} copy={copy.home.featureCards} />
-  <SupportedFormats
-    title={copy.home.supportedFormats}
-    imagesLabel={copy.home.images}
-    documentsLabel={copy.home.documents}
-  />
-  <DownloadCTA
-    title={copy.home.downloadTitle}
-    subtitle={copy.home.downloadSubtitle}
-    hintPrefix={copy.home.downloadHintPrefix}
-    downloadLabel={copy.header.download}
-    downloadMenu={copy.downloadMenu}
-  />
-  <SpeedComparison client:visible copy={copy.home.speedComparison} />
-  <WhyZush client:visible copy={copy.home.whyZush} />
-  <CrossPlatformBanner />
-  <UseCases copy={copy.home.useCases} />
-  <Pricing copy={copy.pricing} />
-  <FAQ
-    client:visible
-    title={copy.home.faqTitle}
-    description={copy.home.faqDescription}
-    items={copy.home.faqItems}
-  />
+<BaseLayout seo={seo} jsonLd={jsonLd}>
+  <HomePageContent copy={copy} locale="en" />
 </BaseLayout>

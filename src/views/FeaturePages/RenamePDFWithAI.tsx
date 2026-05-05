@@ -119,8 +119,8 @@ const RenamePDFWithAI = () => (
     faqItems={faqItems}
     relatedPages={[
       { title: 'Rename Documents with AI', href: '/rename-documents-with-ai' },
-      { title: 'AI File Renamer', href: '/ai-file-renamer' },
-      { title: 'Auto Rename Files with AI', href: '/auto-rename-files' },
+      { title: 'Rename Photos with AI', href: '/rename-photos-with-ai' },
+      { title: 'Rename Screenshots with AI', href: '/rename-screenshots-with-ai' },
     ]}
     relatedBlogPosts={[
       { title: 'How to Rename PDF Files Automatically', href: 'rename-pdf-files-automatically' },

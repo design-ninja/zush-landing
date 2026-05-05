@@ -12,6 +12,10 @@ tags:
 tldr: "This page focuses on automatic PDF renaming for recurring folders and ongoing workflows. It complements the dedicated AI PDF renamer page and the broader auto-rename page."
 reviewed: "2026-04-09"
 ---
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Quick answer: rename PDFs automatically by setting up a folder monitor that pipes new PDFs through an AI tool which extracts document text — invoice number, contract title, sender — and produces a descriptive filename like `invoice-acme-2026-q1.pdf`.
+
 PDFs are the most common format for documents that matter, and also the most common format for documents with terrible filenames. Scanned invoices arrive as `scan_001.pdf`. Downloaded contracts save as `download.pdf`. Email attachments land as `attachment (3).pdf`. Exported reports default to `report.pdf` or worse.
 
 The content inside these files is important. The filenames are not just unhelpful, they are actively harmful to your ability to find, sort, and manage documents. When every PDF in a folder has a meaningless name, the only way to identify a file is to open it. That does not scale.
@@ -20,10 +24,12 @@ Automatic PDF renaming with AI solves this by reading the content of each PDF an
 
 [Zush](https://zushapp.com/rename-pdf-with-ai) handles this on Mac with support for batch renaming, custom naming patterns, and folder monitoring for ongoing automation.
 
-If you want the dedicated commercial page for PDFs, go to [AI PDF Renamer for Mac](/rename-pdf-with-ai). If your main problem is watched folders more broadly, also see [Auto Rename Files on Mac](/auto-rename-files).
+If you want the dedicated commercial page for PDFs, go to [AI PDF Renamer for Mac](/rename-pdf-with-ai). If your main problem is watched folders more broadly, also see [Auto Rename Files on Mac](/).
 
-![Zush main AI Rename screen showing all supported file format badges including PDF](/images/screenshots/light/zush-main-interface.webp)
+![Zush AI Rename screen on macOS — a file renamed to a descriptive name alongside Finder file details](/images/screenshots/light/zush-main-interface.webp)
 
+
+<BlogProductIntro />
 
 ## The PDF naming problem
 

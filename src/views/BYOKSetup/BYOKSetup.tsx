@@ -138,7 +138,7 @@ const defaultFaqs = [
   },
 ] as const;
 
-export const defaultBYOKSetupCopy: BYOKSetupCopy = {
+const defaultBYOKSetupCopy: BYOKSetupCopy = {
   title: 'BYOK Setup Guide',
   subtitle: 'Bring Your Own Key for unlimited cloud renames',
   whatTitle: 'What is BYOK?',

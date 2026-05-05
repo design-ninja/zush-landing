@@ -7,6 +7,46 @@
       "permanent": true
     },
     {
+      "source": "/ai-file-renamer",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/ai-file-renamer",
+      "destination": "/:locale",
+      "permanent": true
+    },
+    {
+      "source": "/auto-rename-files",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/auto-rename-files",
+      "destination": "/:locale",
+      "permanent": true
+    },
+    {
+      "source": "/batch-rename-files",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/batch-rename-files",
+      "destination": "/:locale",
+      "permanent": true
+    },
+    {
+      "source": "/ai-image-renamer",
+      "destination": "/rename-photos-with-ai",
+      "permanent": true
+    },
+    {
+      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/ai-image-renamer",
+      "destination": "/:locale/rename-photos-with-ai",
+      "permanent": true
+    },
+    {
       "source": "/ai-photo-renamer",
       "destination": "/rename-photos-with-ai",
       "permanent": true
@@ -29,6 +69,41 @@
     {
       "source": "/blog/organize-photos-by-date-mac",
       "destination": "/blog/best-ways-to-organize-photos-on-mac",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ai-renamer-mac",
+      "destination": "/blog/best-ai-file-renamer-tools-mac-compared",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ai-image-renamer-for-mac",
+      "destination": "/blog/how-to-rename-images-with-ai-on-macos",
+      "permanent": true
+    },
+    {
+      "source": "/blog/auto-image-renamer-mac",
+      "destination": "/blog/how-to-rename-images-with-ai-on-macos",
+      "permanent": true
+    },
+    {
+      "source": "/blog/photo-management-workflow-photographers-mac",
+      "destination": "/blog/best-ways-to-organize-photos-on-mac",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-ai-image-recognition-works",
+      "destination": "/methodology",
+      "permanent": true
+    },
+    {
+      "source": "/blog/image-file-formats-explained-complete-guide",
+      "destination": "/blog/file-naming-conventions-best-practices",
+      "permanent": true
+    },
+    {
+      "source": "/blog/image-seo-file-naming-for-better-rankings",
+      "destination": "/blog/file-naming-conventions-best-practices",
       "permanent": true
     },
     {

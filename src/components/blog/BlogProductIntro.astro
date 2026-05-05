@@ -1,0 +1,144 @@
+---
+interface Link {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  title?: string;
+  description?: string;
+  links?: Link[];
+}
+
+const {
+  title = 'New to Zush?',
+  description = 'Zush is an AI file renamer for Mac and Windows. Rename screenshots, PDFs, photos, and documents with descriptive AI-generated names — automatically.',
+  links = [
+    { href: '/', label: 'What is Zush' },
+    { href: '/mac', label: 'For Mac' },
+    { href: '/windows', label: 'For Windows' },
+  ],
+} = Astro.props;
+---
+
+<aside class='blog-product-intro'>
+  <div class='blog-product-intro__row'>
+    <a class='blog-product-intro__logo' href='/' aria-label='Zush homepage'>
+      <picture>
+        <source
+          type='image/webp'
+          srcset='/logo-80.webp 80w, /logo-96.webp 96w'
+          sizes='56px'
+        />
+        <img
+          src='/logo-96.png'
+          srcset='/logo-80.png 80w, /logo-96.png 96w'
+          sizes='56px'
+          width='56'
+          height='56'
+          alt=''
+          loading='lazy'
+          decoding='async'
+        />
+      </picture>
+    </a>
+    <div class='blog-product-intro__head'>
+      <span class='blog-product-intro__title'>{title}</span>
+      <span class='blog-product-intro__description'>{description}</span>
+    </div>
+  </div>
+  <div class='blog-product-intro__links'>
+    {
+      links.map((link) => (
+        <a class='blog-product-intro__link' href={link.href}>
+          {link.label}
+          <span aria-hidden='true'>→</span>
+        </a>
+      ))
+    }
+  </div>
+</aside>
+
+<style is:global>
+  .blog-product-intro {
+    margin: 1.75rem 0 2rem;
+    padding: 1rem 1.25rem;
+    background: color-mix(in srgb, var(--primary) 7%, var(--card));
+    border: 1px solid color-mix(in srgb, var(--primary) 18%, var(--border));
+    border-radius: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .blog-product-intro__row {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .blog-product-intro__logo {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+  }
+
+  .blog-product-intro__logo img {
+    width: 56px;
+    height: 56px;
+    border-radius: 0.7rem;
+    display: block;
+  }
+
+  .blog-product-intro__head {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .blog-product-intro__title {
+    font-weight: 700;
+    color: var(--foreground);
+    font-size: 0.95rem;
+  }
+
+  .blog-product-intro__description {
+    color: var(--muted-foreground);
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .blog-product-intro__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.85rem;
+  }
+
+  .blog-product-intro__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.92rem;
+    text-decoration: none;
+    border: 0;
+    transition: opacity 0.15s ease;
+  }
+
+  .blog-product-intro__link:hover {
+    opacity: 0.75;
+  }
+
+  .blog-product-intro__link span {
+    transition: transform 0.15s ease;
+  }
+
+  .blog-product-intro__link:hover span {
+    transform: translateX(2px);
+  }
+</style>

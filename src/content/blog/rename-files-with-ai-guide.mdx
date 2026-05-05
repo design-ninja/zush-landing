@@ -12,6 +12,10 @@ tldr: "This page is an educational guide to AI file renaming. It explains how th
 reviewed: "2026-04-09"
 featuredOrder: 2
 ---
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Quick answer: AI file renaming sends a file content (image pixels or document text) to a vision-or-language model that returns a descriptive filename. Drop files into Zush, review suggestions in a preview, and apply with one click — no manual typing.
+
 Most files arrive with useless names. Screenshots get timestamps. Photos get camera codes. Downloads get hashes or sequence numbers. You end up with a folder full of files you cannot find without opening each one.
 
 AI file renaming solves this by analyzing the actual content of a file and generating a descriptive filename from it. Instead of `IMG_4821.HEIC`, you get `golden-retriever-playing-in-park.heic`. Instead of `Screenshot 2026-03-23 at 14.32.08.png`, you get `stripe-dashboard-monthly-revenue.png`.
@@ -20,6 +24,8 @@ This guide is the educational layer of the cluster. If you already want the plat
 
 This guide covers what AI file renaming is, how it works, and how to apply it step by step without assuming you have already chosen a tool.
 
+
+<BlogProductIntro />
 
 ## What AI file renaming actually does
 
@@ -91,7 +97,7 @@ The best tools keep a rename history so you can revert any change. This matters 
 
 ### On desktop: Zush
 
-[Zush](https://zushapp.com/ai-file-renamer) is built specifically for this workflow on desktop. It supports 22 image formats including PNG, JPG, HEIC, and RAW formats, plus 11 document formats including PDF, DOCX, and XLSX.
+[Zush](/) is built specifically for this workflow on desktop. It supports 23 image formats including PNG, JPG, HEIC, and RAW formats, plus 11 document formats including PDF, DOCX, and XLSX.
 
 Key features:
 
@@ -103,7 +109,7 @@ Key features:
 - **60+ languages.** Generate filenames in your preferred language.
 - **Rename history.** Every rename is logged and reversible.
 
-Zush offers 50 free renames per month. For heavier use, Pro is a one-time $10 payment for 10,000 renames. If you bring your own API key (BYOK), renames are unlimited.
+Zush offers 50 free renames. For heavier use, Pro is a one-time $10 payment for 10,000 renames. If you bring your own API key (BYOK), renames are unlimited.
 
 For a detailed comparison of tools in this space, read [Best AI File Renamer Tools in 2026](/blog/best-ai-file-renamer-tools-2026).
 
@@ -145,7 +151,7 @@ Here is the practical walkthrough for the most common workflow.
 This is the setup that prevents clutter from accumulating in the first place. Instead of cleaning up once a month, the mess never forms.
 
 
-For a Mac-specific batch tutorial, see [Batch Rename Files on Mac: Complete Guide](/blog/batch-rename-files-on-mac-complete-guide). For the Windows equivalent workflow, go to [How to Rename Files with AI on Windows](/blog/rename-files-with-ai-windows-guide) or straight to the [AI batch rename tool](/batch-rename-files).
+For a Mac-specific batch tutorial, see [Batch Rename Files on Mac: Complete Guide](/blog/batch-rename-files-on-mac-complete-guide). For the Windows equivalent workflow, go to [How to Rename Files with AI on Windows](/blog/rename-files-with-ai-windows-guide) or straight to the [AI batch rename tool](/).
 
 ## Common formats supported
 
@@ -165,7 +171,7 @@ A tool that only handles JPG and PNG will miss half the files in a real desktop 
 
 You do not need to pay to start using AI for file renaming.
 
-- **Zush free tier.** 50 renames per month at no cost. Enough to try the workflow and handle light ongoing use.
+- **Zush free tier.** 50 free renames at no cost. Enough to try the workflow and handle light ongoing use.
 - **Zush BYOK.** Bring your own API key from any supported provider and rename unlimited files. You pay only the API cost, which is fractions of a cent per file.
 - **DIY scripts.** If you have API access already, a Python script with the OpenAI vision API can rename images. No GUI, no undo, but free beyond API costs.
 
@@ -210,4 +216,4 @@ Use the right tool for the job. AI is the answer when the filename should descri
 
 ## Getting started
 
-The fastest way to try AI file renaming is to download [Zush](https://zushapp.com/ai-file-renamer) and point it at your Downloads or Screenshots folder with the 50-rename free tier. Check whether the generated names match what you would have typed manually. If they do, turn on folder monitoring so the next week of new files rename themselves.
+The fastest way to try AI file renaming is to download [Zush](/) and point it at your Downloads or Screenshots folder with the 50-rename free tier. Check whether the generated names match what you would have typed manually. If they do, turn on folder monitoring so the next week of new files rename themselves.

@@ -22,7 +22,7 @@ export interface StaticPageCopy {
   sections: StaticPageSection[];
 }
 
-export const STATIC_LOCALIZED_ROUTES = [
+const STATIC_LOCALIZED_ROUTES = [
   '/methodology',
   '/byok-setup',
   '/ollama-setup',

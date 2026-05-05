@@ -1,0 +1,31 @@
+---
+interface Props {
+  variant?: 'primary' | 'accent';
+}
+
+const { variant = 'primary' } = Astro.props;
+---
+
+<mark class:list={['blog-highlight', `blog-highlight--${variant}`]}><slot /></mark>
+
+<style is:global>
+  .blog-highlight {
+    background: color-mix(in srgb, var(--primary) 18%, transparent);
+    color: var(--foreground);
+    padding: 0.1em 0;
+    border-radius: 0.15em;
+    box-shadow:
+      0.15em 0 0 color-mix(in srgb, var(--primary) 18%, transparent),
+      -0.15em 0 0 color-mix(in srgb, var(--primary) 18%, transparent);
+    font-weight: 600;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  .blog-highlight--accent {
+    background: color-mix(in srgb, var(--secondary, #14b884) 22%, transparent);
+    box-shadow:
+      0.15em 0 0 color-mix(in srgb, var(--secondary, #14b884) 22%, transparent),
+      -0.15em 0 0 color-mix(in srgb, var(--secondary, #14b884) 22%, transparent);
+  }
+</style>

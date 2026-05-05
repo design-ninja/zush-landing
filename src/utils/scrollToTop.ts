@@ -1,3 +1,4 @@
+// fallow-ignore-file unused-file
 const SCROLL_TO_TOP_SELECTOR = '[data-scroll-to-top]';
 
 function shouldShowScrollToTop(): boolean {

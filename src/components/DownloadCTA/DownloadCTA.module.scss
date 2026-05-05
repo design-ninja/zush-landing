@@ -14,7 +14,11 @@
 }
 
 .Card {
-  background: var(--muted);
+  background-color: var(--muted);
+  background-image: var(--download-cta-bg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   border-radius: 2rem;
   padding: 4rem 2rem;
   display: flex;
@@ -36,7 +40,6 @@
 .Subtitle {
   margin: 0;
   max-width: 34rem;
-  color: var(--muted-foreground);
   text-wrap: pretty;
 }
 
@@ -50,6 +53,19 @@
 
 .Hint {
   margin: 1rem 0 0;
-  color: var(--muted-foreground);
-  opacity: 0.6;
+}
+
+.Card .Title {
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.Card .Subtitle {
+  color: rgba(255, 255, 255, 0.88);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.09);
+}
+
+.Card .Hint {
+  color: rgba(255, 255, 255, 0.72);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 }

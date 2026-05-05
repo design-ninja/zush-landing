@@ -1,5 +1,23 @@
 export const DEFAULT_LOCALE = 'en';
 
+/**
+ * SEO "soft pause" for non-default locales.
+ *
+ * When `true`:
+ *   - Localized routes get `robots: noindex, nofollow`
+ *   - Localized routes are excluded from sitemap.xml
+ *   - hreflang link tags are NOT emitted (per Google guidance: noindex
+ *     pages in an hreflang cluster invalidate the whole cluster)
+ *   - Auto-redirect by browser language is disabled
+ *   - Language switcher in the UI is preserved — locales remain
+ *     reachable when a user picks one manually
+ *
+ * Set to `false` (and rebuild) when there is meaningful direct demand
+ * from a specific region — at that point also localize pricing /
+ * legal / regional copy beyond raw translations.
+ */
+export const LOCALIZATION_PAUSED = true;
+
 export const LOCALES = [
   'en',
   'fr',
@@ -142,12 +160,8 @@ export const LOCALE_META: Record<Locale, LocaleMeta> = {
 
 export const INDEXABLE_LOCALIZED_ROUTES = [
   '/',
-  '/ai-file-renamer',
-  '/auto-rename-files',
-  '/batch-rename-files',
-  '/ai-image-renamer',
-  '/rename-documents-with-ai',
   '/rename-pdf-with-ai',
+  '/rename-documents-with-ai',
   '/rename-screenshots-with-ai',
   '/rename-photos-with-ai',
   '/mac',
@@ -160,7 +174,7 @@ export const INDEXABLE_LOCALIZED_ROUTES = [
   '/refund-policy',
 ] as const;
 
-export const PRIVATE_LOCALIZED_ROUTES = [
+const PRIVATE_LOCALIZED_ROUTES = [
   '/activate',
   '/recover',
   '/thank-you',
@@ -178,12 +192,8 @@ export type LocalizedRoute = (typeof LOCALIZED_ROUTES)[number];
 
 const LANDING_LOCALIZED_ROUTES = [
   '/',
-  '/ai-file-renamer',
-  '/auto-rename-files',
-  '/batch-rename-files',
-  '/ai-image-renamer',
-  '/rename-documents-with-ai',
   '/rename-pdf-with-ai',
+  '/rename-documents-with-ai',
   '/rename-screenshots-with-ai',
   '/rename-photos-with-ai',
   '/mac',
@@ -203,7 +213,7 @@ export function isLocalizedRoute(value: string): value is LocalizedRoute {
   return (LOCALIZED_ROUTES as readonly string[]).includes(value);
 }
 
-export function normalizeRoute(pathname: string): string {
+function normalizeRoute(pathname: string): string {
   let path = pathname || '/';
   if (!path.startsWith('/')) path = `/${path}`;
   if (path.length > 1 && path.endsWith('/')) path = path.slice(0, -1);

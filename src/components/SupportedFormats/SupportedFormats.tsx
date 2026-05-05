@@ -41,7 +41,7 @@ const SupportedFormats = ({
         <SectionHeader title={title} />
 
         <div className={styles.SupportedFormats__Group}>
-          <Heading as='h4' align='center' className={styles.SupportedFormats__GroupTitle}>{imagesLabel}</Heading>
+          <Heading as='h3' size='h4' align='center' className={styles.SupportedFormats__GroupTitle}>{imagesLabel}</Heading>
           <div className={styles.SupportedFormats__Tags}>
             {imageFormats.map((format) => (
               <span
@@ -57,7 +57,7 @@ const SupportedFormats = ({
         </div>
 
         <div className={styles.SupportedFormats__Group}>
-          <Heading as='h4' align='center' className={styles.SupportedFormats__GroupTitle}>{documentsLabel}</Heading>
+          <Heading as='h3' size='h4' align='center' className={styles.SupportedFormats__GroupTitle}>{documentsLabel}</Heading>
           <div className={styles.SupportedFormats__Tags}>
             {documentFormats.map((format) => (
               <span

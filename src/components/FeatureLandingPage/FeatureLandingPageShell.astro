@@ -7,14 +7,12 @@ import Heading from '@/components/Heading';
 import Hero from '@/components/Hero';
 import Pricing from '@/components/Pricing/Pricing.astro';
 import SupportedFormats from '@/components/SupportedFormats';
-import UseCases from '@/components/UseCases';
 import Videos from '@/components/Videos';
 import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
 import CrossPlatformBanner from '@/components/CrossPlatformBanner/CrossPlatformBanner.astro';
 import TrustSignals from '@/components/TrustSignals';
 import { FileType2 } from 'lucide-react';
 import type { FeatureLandingPageProps } from './FeatureLandingPage';
-import { getUseCasesForCategory } from '@/data/featureContent';
 import { getPdfDeepDiveCopy } from '@/data/pdfDeepDive';
 import FeatureFAQ from './FeatureFAQ';
 import { DEFAULT_LOCALE, getLocalizedPath, type Locale, type LocalizedRoute } from '@/i18n/config';
@@ -41,19 +39,6 @@ const localizedProps = Astro.props as FeatureLandingPageProps & LocalizedProps;
 const currentLocale = localizedProps.locale ?? DEFAULT_LOCALE;
 const currentCopy = getCopy(currentLocale);
 const pageCopy = localizedProps.localizedCopy;
-const useCasesData = getUseCasesForCategory(category, currentLocale);
-const shouldUseLocalizedDefaultUseCases = category === 'general' && currentLocale !== DEFAULT_LOCALE;
-const hasCategoryUseCases = !shouldUseLocalizedDefaultUseCases && useCasesData.items.length > 0;
-const useCasesTitle = hasCategoryUseCases
-  ? useCasesData.title
-  : currentLocale === DEFAULT_LOCALE
-    ? useCasesData.title
-    : currentCopy.home.useCasesTitle;
-const useCasesDescription = hasCategoryUseCases
-  ? useCasesData.description
-  : currentLocale === DEFAULT_LOCALE
-    ? useCasesData.description
-    : currentCopy.home.useCasesDescription;
 const heroSlides = pageCopy?.showcaseSlides ?? (currentLocale === DEFAULT_LOCALE ? showcaseSlides : currentCopy.home.showcaseSlides);
 const breadcrumbItems = [
   { label: currentLocale === DEFAULT_LOCALE ? 'Home' : 'Zush', href: getLocalizedPath('/', currentLocale) },
@@ -96,12 +81,6 @@ const pdfDeepDive = getPdfDeepDiveCopy(currentLocale);
   />
   <WhyZush client:visible copy={currentCopy.home.whyZush} />
   <CrossPlatformBanner locale={currentLocale} />
-  <UseCases
-    title={useCasesTitle}
-    description={useCasesDescription}
-    items={hasCategoryUseCases ? useCasesData.items : undefined}
-    copy={!hasCategoryUseCases && currentLocale !== DEFAULT_LOCALE ? currentCopy.home.useCases : undefined}
-  />
 
   {shouldRenderPdfDeepDive && (
     <>
