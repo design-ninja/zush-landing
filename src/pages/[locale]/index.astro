@@ -54,47 +54,6 @@ const localizedJsonLd = {
       };
     }
 
-    if (type === 'HowTo') {
-      return {
-        ...entry,
-        name: copy.home.heroTitle,
-        step: [
-          {
-            '@type': 'HowToStep',
-            position: 1,
-            name: copy.header.download,
-            text: copy.home.downloadSubtitle,
-          },
-          {
-            '@type': 'HowToStep',
-            position: 2,
-            name: copy.home.featureCards.batchRename.title,
-            text: copy.home.featureCards.batchRename.description,
-          },
-          {
-            '@type': 'HowToStep',
-            position: 3,
-            name: copy.home.whyZush.controlTitle,
-            text: copy.home.whyZush.controlDescription,
-          },
-        ],
-      };
-    }
-
-    if (type === 'FAQPage') {
-      return {
-        ...entry,
-        mainEntity: copy.home.faqItems.map((item) => ({
-          '@type': 'Question',
-          name: item.question,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: item.answer,
-          },
-        })),
-      };
-    }
-
     return entry;
   }),
 };

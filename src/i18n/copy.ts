@@ -934,6 +934,7 @@ export const EN_COPY: LocaleCopy = {
     featuresDescription: 'Powerful features packed into a simple, elegant interface',
     supportedFormats: 'Supported File Formats',
     images: 'Images',
+    documents: 'Documents',
     downloadTitle: 'Try Zush free',
     downloadSubtitle: 'AI-powered file renaming with custom prompts, folder monitoring, and one-click revert.',
     downloadHintPrefix: 'Free · No credit card required',

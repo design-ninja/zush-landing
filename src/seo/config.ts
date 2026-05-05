@@ -1,5 +1,5 @@
 import type { BlogPost } from '@/data/blog';
-import { HOME_FAQ_DATA } from '@/data/homeFaq';
+import { APP_CONFIG, DOWNLOAD_URL } from '@/constants';
 
 export const SITE_ORIGIN = 'https://zushapp.com';
 export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og-image.png`;
@@ -28,6 +28,8 @@ const DEFAULT_META: RouteSeoMeta = {
 const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/': {
     ...DEFAULT_META,
+    title: 'Zush — AI File Renamer for Mac & Windows',
+    description: `AI file renamer for Mac and Windows. Rename screenshots, PDFs, photos, and documents in seconds with batch rename and folder monitoring. Free for ${APP_CONFIG.free_tier_limit} files.`,
     robots: 'index, follow',
   },
   '/changelog': {
@@ -240,37 +242,40 @@ export const HOME_JSON_LD = {
       publisher: {
         '@id': `${SITE_ORIGIN}/#organization`,
       },
-      speakable: {
-        '@type': 'SpeakableSpecification',
-        cssSelector: ['h1', '[class*="Hero__Subtitle"]', '#faq'],
-      },
     },
     {
       '@type': 'SoftwareApplication',
       '@id': `${SITE_ORIGIN}/#software`,
       name: 'Zush',
+      url: SITE_ORIGIN,
       description:
         'AI-powered file organization app for macOS and Windows. Automatically renames images, PDFs, and documents using advanced AI with smart metadata and folder monitoring.',
       applicationCategory: 'UtilitiesApplication',
       applicationSubCategory: 'File Management',
       operatingSystem: ['macOS 14.0+', 'Windows 10', 'Windows 11'],
-      softwareVersion: '1.9.0',
-      downloadUrl: `${SITE_ORIGIN}/releases/Zush.dmg`,
+      softwareVersion: APP_CONFIG.app_version,
+      downloadUrl: DOWNLOAD_URL,
       installUrl: 'https://apps.microsoft.com/detail/9ND4WVZSDQ3X',
+      image: DEFAULT_OG_IMAGE,
       screenshot: `${SITE_ORIGIN}/og-image.png`,
       offers: [
         {
           '@type': 'Offer',
+          name: 'Free starter',
           price: '0',
           priceCurrency: 'USD',
-          description: 'Free tier with 50 AI renames',
+          availability: 'https://schema.org/InStock',
+          url: SITE_ORIGIN,
+          description: `Free tier with ${APP_CONFIG.free_tier_limit} AI renames`,
         },
         {
           '@type': 'Offer',
           price: '10',
           priceCurrency: 'USD',
           name: 'Zush PRO',
-          description: 'One-time purchase. 10,000 AI renames, all features, BYOK, and Offline AI mode.',
+          availability: 'https://schema.org/InStock',
+          url: `${SITE_ORIGIN}/#pricing`,
+          description: `One-time purchase. ${APP_CONFIG.pro_limit.toLocaleString('en-US')} AI renames, all features, BYOK, and Offline AI mode.`,
         },
       ],
       featureList: [
@@ -285,47 +290,6 @@ export const HOME_JSON_LD = {
         'Bring Your Own Key (BYOK)',
         'Offline AI mode - private local models via Ollama',
       ],
-      speakable: {
-        '@type': 'SpeakableSpecification',
-        cssSelector: ['h1', 'meta[name="description"]'],
-      },
-    },
-    {
-      '@type': 'HowTo',
-      '@id': `${SITE_ORIGIN}/#howto`,
-      name: 'How to Rename Files with AI on Mac or Windows',
-      step: [
-        {
-          '@type': 'HowToStep',
-          position: 1,
-          name: 'Download Zush',
-          text: 'Install Zush on your desktop. No account required.',
-        },
-        {
-          '@type': 'HowToStep',
-          position: 2,
-          name: 'Add files or a watched folder',
-          text: 'Drag and drop files, or configure folder monitoring.',
-        },
-        {
-          '@type': 'HowToStep',
-          position: 3,
-          name: 'Apply AI generated names',
-          text: 'Review suggested names and apply with one click.',
-        },
-      ],
-    },
-    {
-      '@type': 'FAQPage',
-      '@id': `${SITE_ORIGIN}/#faq`,
-      mainEntity: HOME_FAQ_DATA.map((item) => ({
-        '@type': 'Question' as const,
-        name: item.question,
-        acceptedAnswer: {
-          '@type': 'Answer' as const,
-          text: item.answer,
-        },
-      })),
     },
   ],
 };

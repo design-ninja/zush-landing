@@ -56,6 +56,10 @@ function assertIncludes(html, needle, message) {
   if (!html.includes(needle)) fail(message);
 }
 
+function assertNotIncludes(html, needle, message) {
+  if (html.includes(needle)) fail(message);
+}
+
 function getJsonLdBlocks(html) {
   const matches = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)];
   return matches.map((match) => match[1] ?? '');
@@ -98,11 +102,9 @@ for (const loc of locs) {
     assertIncludes(html, '"@type":"BlogPosting"', `BlogPosting JSON-LD missing for ${pathname}`);
     const hasHomepageIds = jsonLdBlocks.some(
       (block) =>
-        block.includes('/#howto') ||
         block.includes('/#organization') ||
         block.includes('/#website') ||
-        block.includes('/#software') ||
-        block.includes('/#faq'),
+        block.includes('/#software'),
     );
     if (hasHomepageIds) {
       fail(`Homepage schema leaked into blog page ${pathname}`);
@@ -134,7 +136,9 @@ for (const route of PRIVATE_ROUTES) {
 }
 
 const homepageHtml = readFileSync(join(DIST, 'index.html'), 'utf8');
-assertIncludes(homepageHtml, '"@type":"HowTo"', 'Homepage HowTo JSON-LD missing.');
-assertIncludes(homepageHtml, '/#faq', 'Homepage FAQ JSON-LD missing.');
+assertIncludes(homepageHtml, '"@type":"SoftwareApplication"', 'Homepage SoftwareApplication JSON-LD missing.');
+assertNotIncludes(homepageHtml, '"@type":"HowTo"', 'Homepage should not emit HowTo JSON-LD.');
+assertNotIncludes(homepageHtml, '"@type":"FAQPage"', 'Homepage should not emit FAQPage JSON-LD.');
+assertNotIncludes(homepageHtml, '"speakable"', 'Homepage should not emit speakable JSON-LD.');
 
 console.log(`[check-html-smoke] OK: ${locs.length} sitemap URLs validated.`);
