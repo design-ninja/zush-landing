@@ -59,7 +59,7 @@ Before comparing tools, know what actually matters for daily use:
 
 ![Zush AI rename results showing files with descriptive before and after names and green checkmarks](/images/screenshots/light/zush-batch-rename-results.webp)
 
-Zush is the pick for users who work with a mix of file types and want one desktop workflow instead of separate rename tools for images and documents. It supports 22 image formats (including HEIC plus CR2, NEF, ARW, DNG, and other RAW variants) and 11 document formats (PDF, DOCX, XLSX, and others). That breadth matters because real workflows mix phone photos, camera RAW files, scanned PDFs, and office documents in the same folders, and most tools in this post fail on RAW.
+Zush is the pick for users who work with a mix of file types and want one desktop workflow instead of separate rename tools for images and documents. It supports 23 image formats (including HEIC plus CR2, NEF, ARW, DNG, and other RAW variants) and 11 document formats (PDF, DOCX, XLSX, and others). That breadth matters because real workflows mix phone photos, camera RAW files, scanned PDFs, and office documents in the same folders, and most tools in this post fail on RAW.
 
 What makes Zush stand out next to the rest of this list:
 
@@ -121,7 +121,7 @@ AI Renamer comes in two forms. The open-source CLI runs via Node.js and uses Oll
 ### 3. Renamer.ai
 
 <BlogToolMeta platform="Desktop app (Windows & Mac) + Web interface" website="https://renamer.ai/" label="renamer.ai">
-  <Fragment slot="pricing">Free (15 files/month), Pro $9.95/mo (200 files), Power $29.95/mo (1,000 files), Ultimate $99.95/mo (5,000 files)</Fragment>
+  <Fragment slot="pricing">Free (25 files/month), Pro $9.95/mo (200 files), Power $29.95/mo (1,000 files), Ultimate $99.95/mo (5,000 files)</Fragment>
 </BlogToolMeta>
 
 ![Renamer.ai desktop app screenshot (image: renamer.ai)](/images/blog/competitors/renamer-ai.png)
@@ -148,7 +148,7 @@ Renamer.ai offers both a desktop application and a web interface. The desktop ap
 ### 4. NameQuick
 
 <BlogToolMeta platform="macOS only" website="https://www.namequick.app/" label="namequick.app">
-  <Fragment slot="pricing">Managed $5/month (or $5/year with annual discount, credit-based 500–10,000/mo); Self-Managed $38 one-time + your own API key (BYOK); 7-day free trial with 50 renames</Fragment>
+  <Fragment slot="pricing">Managed plans from $5/month (credit packs from 500 to 10,000/mo, annual discount available); Self-Managed $38 one-time + your own API key (BYOK); 7-day free trial with 50 renames</Fragment>
 </BlogToolMeta>
 
 ![NameQuick Mac app interface (image: namequick.app)](/images/blog/competitors/namequick.png)
@@ -168,8 +168,8 @@ NameQuick is a polished Mac-native AI renamer with a focus on Finder integration
 **Limitations:**
 
 - macOS only — no Windows or Linux build
-- Subscription tier scales by credits ($5/mo for the smallest pack); the one-time $38 plan requires you to bring your own API key
-- Annual cost is higher than Zush's $10 one-time even at the lowest subscription tier
+- Subscription tier scales by credits (starts at $5/mo for the smallest pack); the one-time $38 plan requires you to bring your own API key
+- Annual cost adds up vs Zush's $10 one-time even at the lowest subscription tier
 
 **Best for:** Mac power users who want deep Finder integration and are happy paying $5/month or $38 + their own API key.
 
@@ -181,23 +181,20 @@ NameQuick is a polished Mac-native AI renamer with a focus on Finder integration
 
 ![Wisfile local file renamer interface (image: wisfile.ai)](/images/blog/competitors/wisfile.webp)
 
-Wisfile is a fully local AI file renamer and organizer. It runs entirely on your device with no cloud dependency, no fees, and no data leaving your machine. It focuses on extracting metadata like titles, authors, and publication years from file content to generate descriptive names.
+Wisfile is a fully local AI file renamer and organizer. The site says it runs entirely on the user's device, with no cloud dependency, no fees, and no data leaving the machine.
 
 **Strengths:**
 
-- 100% free with all features included
-- Fully local processing -- no cloud, no data leaks
-- Batch processing for thousands of files
-- Custom naming templates (e.g., "Author-Year-Title" or "Project-Date-DocumentType")
-- Auto-sorts files into logical folder structures by subject, field, or type
+- 100% free per the marketing site
+- Fully local processing — no cloud, no data leaks per the marketing site
 - No signup or account required
 
 **Limitations:**
 
-- Supported file formats and platform details are not well documented
+- Supported file formats and platform details are not well documented on the public site
 - No confirmed folder monitoring for automatic ongoing renaming
 - No confirmed undo or rename history
-- Newer tool with less community feedback
+- Newer tool with limited public documentation and community feedback
 
 **Best for:** Users who want a fully free, fully local AI file renamer with no cloud dependency.
 
@@ -231,13 +228,13 @@ Riffo is a Mac app and web tool for AI-powered file renaming and folder organiza
 
 ### 7. Renamed.to
 
-<BlogToolMeta platform="Web app + cloud integrations (Google Drive, Dropbox, Box, OneDrive); REST API, CLI, file watcher daemon; Zapier, Make, n8n" website="https://www.renamed.to/" label="renamed.to">
-  <Fragment slot="pricing">Free 50/month; pay-as-you-go credit packs ($9/1,000 = $0.009 each, $49/10,000 = $0.0049 each); 12-month credit validity; 30-day money-back</Fragment>
+<BlogToolMeta platform="Web app + cloud integrations (Google Drive, Dropbox, OneDrive); REST API, CLI, file watcher daemon; Zapier, Make, n8n" website="https://www.renamed.to/" label="renamed.to">
+  <Fragment slot="pricing">Free 50 documents to start (no monthly reset; credits valid 12 months); pay-as-you-go credit packs ($9/1,000 = $0.009 each, $49/10,000 = $0.0049 each); 12-month credit validity; 30-day money-back</Fragment>
 </BlogToolMeta>
 
 ![Renamed.to web app interface (image: renamed.to)](/images/blog/competitors/renamed-to.png)
 
-Renamed.to is the cloud/team option. It analyzes documents and renames them inside your existing Google Drive, Dropbox, Box, or OneDrive — files stay in your storage, never on Renamed's servers. Confidence scoring lets you auto-apply high-certainty renames and review the rest.
+Renamed.to is the cloud/team option. It analyzes documents and renames them inside your existing Google Drive, Dropbox, or OneDrive — files stay in your storage, never on Renamed's servers. Confidence scoring lets you auto-apply high-certainty renames and review the rest.
 
 **Strengths:**
 
@@ -299,7 +296,7 @@ Renamify is a browser-based AI file renaming tool. It handles batch renaming thr
 | Finder tags | Yes | No | N/A (cross-platform) | Yes | N/A | No | N/A | N/A |
 | Multiple AI providers | 4 providers + BYOK | Ollama/LM Studio/OpenAI | Fixed | OpenAI/Claude/Gemini/OpenRouter/Ollama/LM Studio/MLX | Fixed (local) | Fixed (cloud) | Fixed | Fixed |
 | Language support | 60+ | Configurable | 20+ | Multilingual | Unknown | Limited | 20+ | Unknown |
-| Free tier | 50/month | CLI: free, Desktop: 10 credits | 15/month | 7-day trial (50 files) | Completely free | Free | 50/month | No free tier |
+| Free tier | 50 to start | CLI: free, Desktop: 10 credits | 15/month | 7-day trial (50 files) | Completely free | Free | 50 to start | No free tier |
 | BYOK option | Yes | N/A | No | Yes ($38 self-managed) | N/A | No | No (cloud only) | No |
 
 ## Pricing comparison
@@ -309,8 +306,8 @@ Renamify is a browser-based AI file renaming tool. It handles batch renaming thr
 | Zush | 50 renames/month | <BlogHighlight>$10 one-time</BlogHighlight> (10K renames) | <BlogHighlight>$10 total, never recurring</BlogHighlight> | One-time purchase |
 | Zush BYOK | Unlimited at API cost | ~$0.001 per file | ~$5–10/year | Pay-as-you-go API |
 | AI Renamer | CLI: free, Desktop: 10 credits | Desktop $19 one-time (local) | $0–19 | One-time / credits |
-| Renamer.ai | 15 files/month | $9.95–99.95/month | $120–1,200/year | Subscription |
-| NameQuick | 7-day trial (50 files) | $5/mo (Managed) or $38 one-time + BYOK | $60/year (Managed) or $38 + API cost (BYOK) | Subscription or one-time + BYOK |
+| Renamer.ai | 25 files/month | $9.95–99.95/month | $120–1,200/year | Subscription |
+| NameQuick | 7-day trial (50 files) | from $5/mo (Managed) or $38 one-time + BYOK | from $60/year (Managed) or $38 + API cost (BYOK) | Subscription or one-time + BYOK |
 | Wisfile | Completely free | N/A | $0 | Free |
 | Riffo | Free | N/A | $0 | Free |
 | Renamed.to | 50 docs/month | $9 / 1,000 ($0.009 each), $49 / 10,000 ($0.0049 each) | Depends on volume; ~$49 covers 10K renames | Pay-as-you-go credits |
@@ -325,8 +322,8 @@ Pricing differences compound. For a heavy user doing ~10,000 renames/year:
 | <BlogHighlight>Zush Pro</BlogHighlight> | <BlogHighlight>$10</BlogHighlight> | <BlogHighlight>$10</BlogHighlight> | <BlogHighlight>$10</BlogHighlight> |
 | Zush BYOK | ~$10 (API) | ~$30 | ~$50 |
 | AI Renamer Desktop | $19 | $19 | $19 |
-| NameQuick Self-Managed | $38 + API | $38 + API (~$30 over 3y) | $38 + API (~$50 over 5y) |
-| NameQuick Managed | $60 | $180 | $300 |
+| NameQuick Self-Managed | $38 + API | $38 + API | $38 + API |
+| NameQuick Managed | from $60 | from $180 | from $300 |
 | Renamed.to (10K credits) | $49 | $147 | $245 |
 | Renamify | $96 | $288 | $480 |
 | Renamer.ai Pro | $119 | $358 | $597 |
@@ -350,7 +347,7 @@ Wisfile and Riffo are completely free but trade off folder monitoring confirmati
 
 **If you want a fully free option:** Wisfile (local processing) or Riffo (cloud). Neither has confirmed folder monitoring.
 
-**If you just need a few files renamed once:** Renamer.ai's web interface, Renamed.to's free 50/month, or Renamify — no install required.
+**If you just need a few files renamed once:** Renamer.ai's web interface, Renamed.to's 50-credit free tier, or Renamify — no install required.
 
 
 ## What about free AI file renamers?

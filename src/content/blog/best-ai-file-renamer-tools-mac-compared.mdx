@@ -166,7 +166,7 @@ This is the category this post focuses on. The following reviews cover every not
 
 ![Zush AI Rename screen on macOS — a file renamed to a descriptive name alongside Finder file details](/images/screenshots/light/zush-main-interface.webp)
 
-[Zush](https://zushapp.com) is a native macOS app built specifically for AI-powered file renaming. Our main reason for putting it first is format breadth: 22 image formats (including HEIC plus CR2, NEF, ARW, DNG, and other RAW variants) and 11 document formats (PDF, DOCX, XLSX, PPTX, and more). Real Mac workflows mix iPhone photos, camera RAW files, scanned PDFs, and office documents in the same folders, and most tools we tested failed on RAW.
+[Zush](https://zushapp.com) is a native macOS app built specifically for AI-powered file renaming. Our main reason for putting it first is format breadth: 23 image formats (including HEIC plus CR2, NEF, ARW, DNG, and other RAW variants) and 11 document formats (PDF, DOCX, XLSX, PPTX, and more). Real Mac workflows mix iPhone photos, camera RAW files, scanned PDFs, and office documents in the same folders, and most tools we tested failed on RAW.
 
 **How it works:** You drop files or folders into Zush, it analyzes the content of each file using AI vision and language models, generates a descriptive filename, and lets you preview every proposed name before applying. You can also set up folder monitoring so new files in watched directories are renamed automatically.
 
@@ -201,7 +201,7 @@ This is the category this post focuses on. The following reviews cover every not
 ### 2. Renamer.ai
 
 <BlogToolMeta platform="Desktop app (Windows & Mac) + Web interface" website="https://renamer.ai/" label="renamer.ai">
-  <Fragment slot="pricing">Free (15 files/month), Pro $9.95/mo (200 files), Power $29.95/mo (1,000 files), Ultimate $99.95/mo (5,000 files)</Fragment>
+  <Fragment slot="pricing">Free (25 files/month), Pro $9.95/mo (200 files), Power $29.95/mo (1,000 files), Ultimate $99.95/mo (5,000 files)</Fragment>
 </BlogToolMeta>
 
 Renamer.ai offers both a desktop application for Windows and Mac and a web interface for quick browser-based renaming. The desktop app integrates with your local file system and includes features like Magic Folders for automatic renaming. It uses OCR technology to read document content and generate descriptive filenames.
@@ -281,7 +281,7 @@ NameQuick is a native Mac app with a feature set that has grown significantly. I
 
 **Strengths:**
 
-- 30+ file formats including PDFs, Word, Excel, Pages, images (JPG, PNG, GIF, HEIF), audio (MP3, M4A), video (MOV, MP4), and archives (ZIP, RAR)
+- 30+ file formats spanning PDFs, Office documents, images, audio, video, and archives per the namequick.app marketing
 - Watch Folders for automatic renaming of new files as they arrive
 - Full rename history with undo capability
 - BYOK option ($38 one-time) with 6 AI providers: OpenAI, Claude, Gemini, OpenRouter, Ollama, LM Studio
@@ -331,11 +331,11 @@ RenameClick is a desktop application for Mac and Windows that uses local AI for 
 **Limitations:**
 
 - Free tier limited to 30 credits/month for applying changes
-- Requires ~4GB disk space and ~4GB RAM for the local AI model
+- Local AI model requires meaningful disk space and RAM (exact requirements not documented publicly)
 - Local model quality may be lower than cloud-based alternatives
 - Undo/rollback capability not confirmed in documentation
 - No confirmed BYOK support for arbitrary API providers beyond the built-in options
-- Smaller RAW format range than Zush (no CR2, NEF, ARW support)
+- Camera RAW formats (CR2, NEF, ARW) not listed in their public format docs
 
 **Naming quality in testing:** Decent for common image and document types when using cloud backends. The built-in local model produced serviceable but less specific names compared to cloud-powered tools. Strong on documents with clear text content thanks to content analysis. EXIF-based naming for photos was a useful addition for photographers.
 
@@ -383,7 +383,7 @@ Riffo is a Mac app and web tool that offers AI-powered file renaming and automat
 | Feature | Zush | Renamer.ai | AI Renamer | NameQuick | RenameClick | Riffo |
 |---|---|---|---|---|---|---|
 | **Platform** | macOS | Desktop (Win/Mac) + Web | CLI (all) + Desktop (Mac/Win) | macOS | Desktop (Mac/Win) | macOS + Web |
-| **Free tier** | 50/month | 15/month | CLI: free, Desktop: 10 credits | 7-day trial (50) | 30/month | Free |
+| **Free tier** | 50/month | 25/month | CLI: free, Desktop: 10 credits | 7-day trial (50) | 30/month | Free |
 | **Batch rename** | Yes, with preview | Yes | Yes | Yes, with preview | Yes | Yes |
 | **Auto monitor** | Yes | Yes (Magic Folders) | No | Yes (Watch Folders) | Yes (Auto Flow) | No |
 | **Rollback/undo** | Full history | Yes | No | Yes (full history) | Not confirmed | Not confirmed |
@@ -404,7 +404,7 @@ Pricing matters more than most comparison posts acknowledge, because file renami
 |---|---|---|---|---|
 | Zush | 50 renames/month | $10 one-time (10K renames) | $10 total | One-time purchase |
 | Zush BYOK | Unlimited at API cost | ~$0.001 per file | ~$5-10/year at typical volume | Pay-as-you-go API |
-| Renamer.ai | 15 files/month | $9.95-99.95/month | $120-1,200/year | Subscription |
+| Renamer.ai | 25 files/month | $9.95-99.95/month | $120-1,200/year | Subscription |
 | AI Renamer | CLI: unlimited (local), Desktop: 10 credits | Desktop $19 one-time (local) or $10/200 credits | $0-19 | One-time / credits |
 | NameQuick | 7-day trial (50 renames) | $5-35/mo or BYOK $38 one-time | $50-350/year or $38 total | Subscription + BYOK |
 | RenameClick | 30 credits/month | $8/mo or $48 one-time (lifetime) | $96/year or $48 total | Subscription + Lifetime |
