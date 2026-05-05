@@ -89,7 +89,7 @@ const defaultUseCases: UseCaseData[] = [
       </>
     ),
     color: 'purple',
-    href: '/ai-image-renamer',
+    href: '/rename-screenshots-with-ai',
   },
   {
     icon: Camera,
@@ -114,7 +114,7 @@ const defaultUseCases: UseCaseData[] = [
       </>
     ),
     color: 'orange',
-    href: '/ai-file-renamer',
+    href: '/',
   },
   {
     icon: Code,
@@ -138,7 +138,7 @@ const defaultUseCases: UseCaseData[] = [
       </>
     ),
     color: 'pink',
-    href: '/auto-rename-files',
+    href: '/',
   },
   {
     icon: Briefcase,
@@ -150,7 +150,7 @@ const defaultUseCases: UseCaseData[] = [
       </>
     ),
     color: 'cyan',
-    href: '/rename-documents-with-ai',
+    href: '/rename-pdf-with-ai',
   },
 ];
 

@@ -7,6 +7,56 @@
       "permanent": true
     },
     {
+      "source": "/ai-file-renamer",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/ai-file-renamer",
+      "destination": "/:locale",
+      "permanent": true
+    },
+    {
+      "source": "/auto-rename-files",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/auto-rename-files",
+      "destination": "/:locale",
+      "permanent": true
+    },
+    {
+      "source": "/batch-rename-files",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/batch-rename-files",
+      "destination": "/:locale",
+      "permanent": true
+    },
+    {
+      "source": "/ai-image-renamer",
+      "destination": "/rename-photos-with-ai",
+      "permanent": true
+    },
+    {
+      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/ai-image-renamer",
+      "destination": "/:locale/rename-photos-with-ai",
+      "permanent": true
+    },
+    {
+      "source": "/rename-documents-with-ai",
+      "destination": "/rename-pdf-with-ai",
+      "permanent": true
+    },
+    {
+      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/rename-documents-with-ai",
+      "destination": "/:locale/rename-pdf-with-ai",
+      "permanent": true
+    },
+    {
       "source": "/ai-photo-renamer",
       "destination": "/rename-photos-with-ai",
       "permanent": true

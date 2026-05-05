@@ -93,34 +93,6 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     robots: 'index, follow',
     ogType: 'website',
   },
-  '/ai-file-renamer': {
-    title: 'AI File Renamer · PDFs, Photos & Screenshots · Zush',
-    description:
-      'Rename PDFs, screenshots, photos and documents in seconds. Zush reads file content and creates searchable names automatically on Mac or Windows. 50 free renames, no signup.',
-    robots: 'index, follow',
-    ogType: 'website',
-  },
-  '/auto-rename-files': {
-    title: 'Auto Rename Files with AI · Folder Monitoring · Zush',
-    description:
-      'Watch any folder and rename new files automatically with AI. Zush handles downloads, screenshots and exports as they arrive on Mac or Windows — no manual cleanup, no scripts.',
-    robots: 'index, follow',
-    ogType: 'website',
-  },
-  '/batch-rename-files': {
-    title: 'Batch Rename Files with AI (2026) · Zush',
-    description:
-      'Batch rename hundreds of files in one click. AI gives each file a unique descriptive name — not just a prefix. Free for 50 files, no signup.',
-    robots: 'index, follow',
-    ogType: 'website',
-  },
-  '/rename-documents-with-ai': {
-    title: 'Rename Documents with AI · DOCX, XLSX & PPTX · Zush',
-    description:
-      'Rename DOCX, XLSX, PPTX, TXT, CSV and email files by their actual content. Zush reads document text and creates searchable filenames automatically.',
-    robots: 'index, follow',
-    ogType: 'website',
-  },
   '/rename-pdf-with-ai': {
     title: 'Rename PDFs with AI · Invoices & Contracts · Zush',
     description:
@@ -139,13 +111,6 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     title: 'Rename Photos with AI · HEIC, RAW & JPG · Zush',
     description:
       'Stop renaming photos one by one. Zush analyzes HEIC, RAW and JPG content to generate descriptive names for your entire photo library. Free for 50.',
-    robots: 'index, follow',
-    ogType: 'website',
-  },
-  '/ai-image-renamer': {
-    title: 'AI Image Renamer · Photos & Screenshots · Zush',
-    description:
-      'Rename screenshots, photos, mockups and downloaded images across 22 formats. Zush uses AI vision to create searchable filenames on Mac or Windows. Free for 50 files.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -183,11 +148,6 @@ export const INDEXABLE_STATIC_ROUTES = Object.keys(ROUTE_META).filter(
 );
 
 export const FEATURE_ROUTES = [
-  '/ai-file-renamer',
-  '/auto-rename-files',
-  '/ai-image-renamer',
-  '/batch-rename-files',
-  '/rename-documents-with-ai',
   '/rename-pdf-with-ai',
   '/rename-screenshots-with-ai',
   '/rename-photos-with-ai',

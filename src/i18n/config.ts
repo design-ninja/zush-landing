@@ -142,11 +142,6 @@ export const LOCALE_META: Record<Locale, LocaleMeta> = {
 
 export const INDEXABLE_LOCALIZED_ROUTES = [
   '/',
-  '/ai-file-renamer',
-  '/auto-rename-files',
-  '/batch-rename-files',
-  '/ai-image-renamer',
-  '/rename-documents-with-ai',
   '/rename-pdf-with-ai',
   '/rename-screenshots-with-ai',
   '/rename-photos-with-ai',
@@ -178,11 +173,6 @@ export type LocalizedRoute = (typeof LOCALIZED_ROUTES)[number];
 
 const LANDING_LOCALIZED_ROUTES = [
   '/',
-  '/ai-file-renamer',
-  '/auto-rename-files',
-  '/batch-rename-files',
-  '/ai-image-renamer',
-  '/rename-documents-with-ai',
   '/rename-pdf-with-ai',
   '/rename-screenshots-with-ai',
   '/rename-photos-with-ai',
