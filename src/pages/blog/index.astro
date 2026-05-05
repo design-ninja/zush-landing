@@ -5,8 +5,8 @@ import BlogPostCard from '@/components/blog/BlogPostCard.astro';
 import {
   getAllPosts,
   getAllTags,
-  getBalancedRecentBlogPosts,
   getBlogIndexSections,
+  getRecentBlogPosts,
 } from '@/data/blog';
 import { getSeoForPath } from '@/seo/config';
 import headingStyles from '@/components/Heading/Heading.module.scss';
@@ -18,7 +18,7 @@ import styles from '@/views/Blog/BlogList.module.scss';
 const seo = getSeoForPath('/blog');
 const allPosts = await getAllPosts();
 const sections = await getBlogIndexSections();
-const recentPosts = await getBalancedRecentBlogPosts(2);
+const recentPosts = await getRecentBlogPosts(6);
 const allTags = await getAllTags();
 const searchablePosts = allPosts.map((post) => ({
   post,

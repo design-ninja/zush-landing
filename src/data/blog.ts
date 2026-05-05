@@ -349,6 +349,11 @@ export async function getBalancedRecentBlogPosts(limitPerPlatform = 2): Promise<
     .sort((a, b) => b.dateValue.getTime() - a.dateValue.getTime());
 }
 
+export async function getRecentBlogPosts(limit = 6): Promise<BlogPost[]> {
+  const posts = await getAllPosts();
+  return posts.slice(0, limit);
+}
+
 export async function getAllTags(): Promise<BlogTag[]> {
   const posts = await getAllPosts();
   const tags = new Map<BlogPublicTagSlug, BlogTag>();
