@@ -263,7 +263,7 @@ export const HOME_JSON_LD = {
           '@type': 'Offer',
           price: '0',
           priceCurrency: 'USD',
-          description: 'Free tier with 50 AI renames per month',
+          description: 'Free tier with 50 AI renames',
         },
         {
           '@type': 'Offer',
