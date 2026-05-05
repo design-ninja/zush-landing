@@ -1,7 +1,6 @@
 import { ChangeEvent, DragEvent, useEffect, useRef, useState } from 'react';
 import type { CSSProperties } from 'react';
-import JSZip from 'jszip';
-import * as XLSX from 'xlsx';
+import type JSZip from 'jszip';
 import {
   ArrowRight,
   Bot,
@@ -130,6 +129,11 @@ interface XlsxWithCfb {
   };
 }
 
+type JSZipModule = typeof import('jszip') & {
+  default?: typeof import('jszip');
+};
+type HeicToModule = typeof import('heic-to/csp');
+
 const MAX_FILES = 5;
 const COMPLETION_SOUND_SRC = '/sounds/ding.wav';
 const MAX_IMAGE_SOURCE_BYTES = 30 * 1024 * 1024;
@@ -155,6 +159,9 @@ const SILENT_AUDIO_SRC = 'data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEA
 const WEB_PREVIEW_DEV_BYPASS_TOKEN = import.meta.env.DEV
   ? import.meta.env.PUBLIC_WEB_PREVIEW_DEV_BYPASS_TOKEN?.trim()
   : undefined;
+let jsZipModulePromise: Promise<JSZipModule> | null = null;
+let xlsxModulePromise: Promise<typeof import('xlsx')> | null = null;
+let heicToModulePromise: Promise<HeicToModule> | null = null;
 
 const IMAGE_EXTENSIONS = new Set([
   'png',
@@ -252,6 +259,22 @@ const SUMMARY_PROPERTY_LABELS = new Map([
   [16, 'Characters'],
   [18, 'Application'],
 ]);
+
+async function getJSZip() {
+  jsZipModulePromise ??= import('jszip') as Promise<JSZipModule>;
+  const module = await jsZipModulePromise;
+  return module.default ?? module;
+}
+
+async function getXlsx() {
+  xlsxModulePromise ??= import('xlsx');
+  return xlsxModulePromise;
+}
+
+async function getHeicTo() {
+  heicToModulePromise ??= import('heic-to/csp');
+  return heicToModulePromise;
+}
 
 const DOCUMENT_SUMMARY_PROPERTY_LABELS = new Map([
   [2, 'Category'],
@@ -801,7 +824,7 @@ async function tiffBlobToJpegPreview(file: File) {
 }
 
 async function heicBlobToJpegPreview(file: File) {
-  const { heicTo } = await import('heic-to/csp');
+  const { heicTo } = await getHeicTo();
   const jpeg = await heicTo({
     blob: file,
     type: 'image/jpeg',
@@ -1103,6 +1126,7 @@ function extractSpreadsheetText(workbookXml: string, sharedStringsXml: string, s
 }
 
 async function extractSpreadsheetWorkbookText(file: File): Promise<string> {
+  const XLSX = await getXlsx();
   const workbook = XLSX.read(await file.arrayBuffer(), {
     type: 'array',
     sheetRows: 120,
@@ -1133,6 +1157,7 @@ function contentToBytes(content: CfbFileEntry['content']): Uint8Array | null {
 }
 
 async function readCfbFile(file: File): Promise<CfbFile | null> {
+  const XLSX = await getXlsx();
   const CFB = (XLSX as unknown as XlsxWithCfb).CFB;
   if (!CFB) return null;
 
@@ -1569,6 +1594,7 @@ async function extractOfficeText(file: File, extension: string): Promise<string>
     return extractLegacyOfficeText(file, extension);
   }
 
+  const JSZip = await getJSZip();
   const zip = await JSZip.loadAsync(await file.arrayBuffer());
   const coreProperties = await extractOoxmlCoreProperties(zip);
 

@@ -67,6 +67,7 @@ export interface BlogTag {
 }
 
 const INDEXABLE_TAG_MIN_POSTS = 2;
+const TAG_PAGES_INDEXABLE = false;
 const WORDS_PER_MINUTE = 200;
 
 function toIsoDate(value: Date): string {
@@ -378,7 +379,7 @@ export async function getAllTags(): Promise<BlogTag[]> {
   return [...tags.values()]
     .map((tag) => ({
       ...tag,
-      indexable: tag.count >= INDEXABLE_TAG_MIN_POSTS,
+      indexable: TAG_PAGES_INDEXABLE && tag.count >= INDEXABLE_TAG_MIN_POSTS,
       posts: tag.posts.sort(
         (a, b) => b.dateValue.getTime() - a.dateValue.getTime(),
       ),

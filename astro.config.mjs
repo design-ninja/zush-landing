@@ -22,6 +22,9 @@ export default defineConfig({
     smartypants: true,
   },
   vite: {
+    optimizeDeps: {
+      include: ['heic-to/csp', 'jszip', 'xlsx'],
+    },
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
