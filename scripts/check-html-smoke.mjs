@@ -136,9 +136,16 @@ for (const route of PRIVATE_ROUTES) {
 }
 
 const homepageHtml = readFileSync(join(DIST, 'index.html'), 'utf8');
+const homepageJsonLdBlocks = getJsonLdBlocks(homepageHtml).map((block) => JSON.parse(block));
+const homepageFaq = homepageJsonLdBlocks.find((item) => item['@type'] === 'FAQPage');
 assertIncludes(homepageHtml, '"@type":"SoftwareApplication"', 'Homepage SoftwareApplication JSON-LD missing.');
 assertNotIncludes(homepageHtml, '"@type":"HowTo"', 'Homepage should not emit HowTo JSON-LD.');
-assertNotIncludes(homepageHtml, '"@type":"FAQPage"', 'Homepage should not emit FAQPage JSON-LD.');
+if (!homepageFaq) {
+  fail('Homepage FAQPage JSON-LD missing.');
+}
+if (!Array.isArray(homepageFaq.mainEntity) || homepageFaq.mainEntity.length === 0) {
+  fail('Homepage FAQPage JSON-LD should include questions.');
+}
 assertNotIncludes(homepageHtml, '"speakable"', 'Homepage should not emit speakable JSON-LD.');
 
 console.log(`[check-html-smoke] OK: ${locs.length} sitemap URLs validated.`);

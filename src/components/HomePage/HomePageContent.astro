@@ -10,6 +10,7 @@ import WhyZush from '@/components/WhyZush';
 import FAQ from '@/components/FAQ';
 import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
 import CrossPlatformBanner from '@/components/CrossPlatformBanner/CrossPlatformBanner.astro';
+import EvidenceSignals from '@/components/EvidenceSignals/EvidenceSignals.astro';
 import type { Locale } from '@/i18n/config';
 import type { LocaleCopy } from '@/i18n/copy';
 
@@ -52,6 +53,7 @@ const { copy, locale, secondaryHref } = Astro.props as Props;
 />
 <SpeedComparison client:visible copy={copy.home.speedComparison} />
 <WhyZush client:visible copy={copy.home.whyZush} />
+{locale === 'en' && <EvidenceSignals />}
 <CrossPlatformBanner locale={locale} />
 <UseCases title={copy.home.useCasesTitle} description={copy.home.useCasesDescription} copy={copy.home.useCases} />
 <Pricing copy={copy.pricing} />

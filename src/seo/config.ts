@@ -244,10 +244,48 @@ export const HOME_JSON_LD = {
       },
     },
     {
+      '@type': 'WebPage',
+      '@id': `${SITE_ORIGIN}/#webpage`,
+      url: SITE_ORIGIN,
+      name: 'Zush - AI File Renamer for Mac & Windows',
+      description:
+        'Zush is an AI file renamer for Mac and Windows that renames screenshots, PDFs, photos, and documents with batch rename, folder monitoring, BYOK, and Offline AI mode.',
+      isPartOf: {
+        '@id': `${SITE_ORIGIN}/#website`,
+      },
+      about: {
+        '@id': `${SITE_ORIGIN}/#software`,
+      },
+      mainEntity: {
+        '@id': `${SITE_ORIGIN}/#software`,
+      },
+      primaryImageOfPage: {
+        '@type': 'ImageObject',
+        url: DEFAULT_OG_IMAGE,
+        width: 1200,
+        height: 630,
+      },
+      breadcrumb: {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: SITE_ORIGIN,
+          },
+        ],
+      },
+      inLanguage: 'en',
+    },
+    {
       '@type': 'SoftwareApplication',
       '@id': `${SITE_ORIGIN}/#software`,
       name: 'Zush',
       url: SITE_ORIGIN,
+      mainEntityOfPage: {
+        '@id': `${SITE_ORIGIN}/#webpage`,
+      },
       description:
         'AI-powered file organization app for macOS and Windows. Automatically renames images, PDFs, and documents using advanced AI with smart metadata and folder monitoring.',
       applicationCategory: 'UtilitiesApplication',

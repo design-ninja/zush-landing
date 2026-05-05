@@ -164,7 +164,7 @@ export async function GET() {
 
   const urls = [...staticEntries.map((entry) => ({ ...entry, route: entry.loc.replace(SITE_ORIGIN, '') || '/' })), ...localizedEntries, ...blogEntries, ...tagEntries]
     .map(({ loc, route, lastmod, changefreq, priority }) => {
-      const normalizedRoute = LOCALIZED_ROUTES.includes(route as never)
+      const normalizedRoute = !LOCALIZATION_PAUSED && LOCALIZED_ROUTES.includes(route as never)
         ? route
         : undefined;
       const alternates = normalizedRoute

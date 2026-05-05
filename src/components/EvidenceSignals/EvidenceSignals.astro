@@ -1,0 +1,95 @@
+---
+import {
+  BadgeDollarSign,
+  Gift,
+  Languages,
+} from 'lucide-react';
+import { APP_CONFIG, APP_STORE_URL, WINDOWS_STORE_URL } from '@/constants';
+import Heading from '@/components/Heading';
+import PillLink from '@/components/PillLink';
+import SectionHeader from '@/components/SectionHeader';
+import Text from '@/components/Text';
+import formatStyles from '@/components/SupportedFormats/SupportedFormats.module.scss';
+import useCaseStyles from '@/components/UseCases/UseCases.module.scss';
+
+const imageFormatCount = APP_CONFIG.image_extensions.length;
+const documentFormatCount = APP_CONFIG.document_extensions.length;
+const proCredits = APP_CONFIG.pro_limit.toLocaleString('en-US');
+
+const facts = [
+  {
+    icon: Gift,
+    title: 'Free to try',
+    description: `${APP_CONFIG.free_tier_limit} AI renames before purchase, with no signup or credit card required.`,
+    color: 'green',
+  },
+  {
+    icon: BadgeDollarSign,
+    title: 'One-time Pro',
+    description: `$10 unlocks Zush Pro with ${proCredits} credits, BYOK, and Offline AI mode via Ollama.`,
+    color: 'blue',
+  },
+  {
+    icon: Languages,
+    title: 'Broad file coverage',
+    description: `60+ filename languages, ${imageFormatCount} image and RAW formats, and ${documentFormatCount} document formats.`,
+    color: 'purple',
+  },
+];
+
+const sourceLinks = [
+  { href: '/methodology', label: 'Methodology' },
+  { href: '/changelog', label: 'Changelog' },
+  { href: '/privacy-policy', label: 'Privacy' },
+  { href: APP_STORE_URL, label: 'Mac App Store', external: true },
+  { href: WINDOWS_STORE_URL, label: 'Microsoft Store', external: true },
+  { href: 'https://www.producthunt.com/products/zush', label: 'Product Hunt', external: true },
+];
+---
+
+<section class={useCaseStyles.UseCases}>
+  <div class={useCaseStyles.UseCases__Container}>
+    <SectionHeader
+      title="Zush product facts"
+      description="A desktop AI file renamer for Mac and Windows: screenshots, PDFs, photos, and office documents by content, with batch review, folder monitoring, BYOK, Offline AI mode, and one-click revert."
+    />
+
+    <div class={useCaseStyles.UseCases__Grid}>
+      {facts.map((fact) => {
+        const Icon = fact.icon;
+
+        return (
+          <article class={`${useCaseStyles.UseCaseCard} ${useCaseStyles[`UseCaseCard_${fact.color}`]}`}>
+            <div class={useCaseStyles.UseCaseCard__IconWrapper}>
+              <Icon size={24} />
+            </div>
+            <Heading as="h3" className={useCaseStyles.UseCaseCard__Title}>
+              {fact.title}
+            </Heading>
+            <Text className={useCaseStyles.UseCaseCard__Description}>
+              {fact.description}
+            </Text>
+          </article>
+        );
+      })}
+    </div>
+
+    <div class={`${formatStyles.SupportedFormats} ${formatStyles.SupportedFormats__Group}`}>
+      <Heading as="h3" size="h4" align="center" className={formatStyles.SupportedFormats__GroupTitle}>
+        Sources
+      </Heading>
+      <div class={formatStyles.SupportedFormats__Tags}>
+        {sourceLinks.map((link) => (
+          <PillLink
+            href={link.href}
+            target={link.external ? '_blank' : undefined}
+            rel={link.external ? 'noopener noreferrer' : undefined}
+            size="sm"
+          >
+            {link.label}
+          </PillLink>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

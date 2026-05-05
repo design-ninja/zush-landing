@@ -1,13 +1,16 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import HomePageContent from '@/components/HomePage/HomePageContent.astro';
+import { HOME_FAQ_DATA } from '@/data/homeFaq';
 import { getSeoForPath, HOME_JSON_LD } from '@/seo/config';
+import { buildFAQPageJsonLd } from '@/utils/jsonLd';
 import { getCopy } from '@/i18n/copy';
 
 const seo = getSeoForPath('/');
 const copy = getCopy('en');
+const jsonLd = [HOME_JSON_LD, buildFAQPageJsonLd(HOME_FAQ_DATA)];
 ---
 
-<BaseLayout seo={seo} jsonLd={HOME_JSON_LD}>
+<BaseLayout seo={seo} jsonLd={jsonLd}>
   <HomePageContent copy={copy} locale="en" />
 </BaseLayout>
