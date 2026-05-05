@@ -21,6 +21,15 @@ const NON_WATCH_VIDEO_ROUTES = new Set([
   '/rename-photos-with-ai',
   '/rename-screenshots-with-ai',
 ]);
+const USE_CASES_BLOCK_ROUTES = [
+  '/',
+  '/mac',
+  '/windows',
+  '/rename-documents-with-ai',
+  '/rename-pdf-with-ai',
+  '/rename-photos-with-ai',
+  '/rename-screenshots-with-ai',
+];
 
 function fail(message) {
   throw new Error(message);
@@ -50,6 +59,10 @@ function isBlogPostPath(pathname) {
     pathname !== '/blog/tags' &&
     !pathname.startsWith('/blog/archive/') &&
     !pathname.startsWith('/blog/tags/');
+}
+
+function isUseCasesLandingPath(pathname) {
+  return USE_CASES_BLOCK_ROUTES.some((route) => pathname === route || pathname.endsWith(route));
 }
 
 function assertIncludes(html, needle, message) {
@@ -93,6 +106,10 @@ for (const loc of locs) {
 
   if (html.includes('<div id="root"></div>')) {
     fail(`Empty shell detected for ${pathname}`);
+  }
+
+  if (isUseCasesLandingPath(pathname)) {
+    assertNotIncludes(html, 'id="use-cases"', `Use cases block should not be present on ${pathname}`);
   }
 
   const canonicalTag = `<link rel="canonical" href="${loc}"`;

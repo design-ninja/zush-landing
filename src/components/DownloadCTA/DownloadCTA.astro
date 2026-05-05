@@ -1,4 +1,6 @@
 ---
+import { getImage } from 'astro:assets';
+import ctaBackground from '@/assets/download-cta/try-zush-free-bg.webp';
 import DownloadButton from '@/components/DownloadButton/DownloadButton';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
@@ -28,11 +30,17 @@ const {
 
 const resolvedTitle = title ?? 'Try Zush free';
 const downloadOS = forceOS ?? 'mac';
+const backgroundImage = await getImage({
+  src: ctaBackground,
+  width: 1600,
+  format: 'webp',
+  quality: 78,
+});
 ---
 
 <section class:list={[styles.Section, className]}>
   <div class={styles.Container}>
-    <div class={styles.Card}>
+    <div class={styles.Card} style={`--download-cta-bg: url(${backgroundImage.src})`}>
       <Heading as="h2" className={styles.Title}>{resolvedTitle}</Heading>
       <Text as="p" className={styles.Subtitle} color="subtle">{subtitle}</Text>
       <div class={styles.Buttons}>

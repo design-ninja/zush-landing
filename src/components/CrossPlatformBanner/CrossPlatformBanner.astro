@@ -15,13 +15,19 @@ const { locale = DEFAULT_LOCALE, hidePlatform } = Astro.props as Props;
 const copy = getCrossPlatformBannerCopy(locale);
 const macHref = getLocalizedPath('/mac', locale);
 const windowsHref = getLocalizedPath('/windows', locale);
+const titleParts = copy.title.split('Zush');
+const hasTitleAccent = titleParts.length > 1;
 ---
 
 <section class={styles.CrossPlatformBanner}>
   <div class={styles.CrossPlatformBanner__Container}>
     <div class={styles.CrossPlatformBanner__Header}>
       <span class={styles.CrossPlatformBanner__Eyebrow}>{copy.eyebrow}</span>
-      <Heading as='h2' className={styles.CrossPlatformBanner__Title}>{copy.title}</Heading>
+      <Heading as='h2' className={styles.CrossPlatformBanner__Title}>
+        {hasTitleAccent ? titleParts[0] : copy.title}
+        {hasTitleAccent && <span style="color: var(--secondary)">Zush</span>}
+        {hasTitleAccent && titleParts.slice(1).join('Zush')}
+      </Heading>
       <Text as='p' color='subtle' className={styles.CrossPlatformBanner__Description}>
         {copy.description}
       </Text>

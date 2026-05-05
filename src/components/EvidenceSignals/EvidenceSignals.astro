@@ -7,8 +7,8 @@ import {
 import { APP_CONFIG, APP_STORE_URL, WINDOWS_STORE_URL } from '@/constants';
 import Heading from '@/components/Heading';
 import PillLink from '@/components/PillLink';
-import SectionHeader from '@/components/SectionHeader';
 import Text from '@/components/Text';
+import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module.scss';
 import formatStyles from '@/components/SupportedFormats/SupportedFormats.module.scss';
 import useCaseStyles from '@/components/UseCases/UseCases.module.scss';
 
@@ -49,10 +49,14 @@ const sourceLinks = [
 
 <section class={useCaseStyles.UseCases}>
   <div class={useCaseStyles.UseCases__Container}>
-    <SectionHeader
-      title="Zush product facts"
-      description="A desktop AI file renamer for Mac and Windows: screenshots, PDFs, photos, and office documents by content, with batch review, folder monitoring, BYOK, Offline AI mode, and one-click revert."
-    />
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as="h2" align="center" className={sectionHeaderStyles.SectionHeader__Title}>
+        <span style="color: var(--secondary)">Zush</span> product facts
+      </Heading>
+      <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>
+        A desktop AI file renamer for Mac and Windows: screenshots, PDFs, photos, and office documents by content, with batch review, folder monitoring, BYOK, Offline AI mode, and one-click revert.
+      </Text>
+    </div>
 
     <div class={useCaseStyles.UseCases__Grid}>
       {facts.map((fact) => {
