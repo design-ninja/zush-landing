@@ -87,7 +87,7 @@ const legalCopy = route === '/privacy-policy' || route === '/terms-of-service' |
 const staticCopy = isStaticLocalizedRoute(route) ? getStaticPageCopy(locale as Exclude<Locale, 'en'>, route) : null;
 const staticSeo = staticCopy
   ? {
-      ...getSeoForPath(route),
+      ...seo,
       title: `${staticCopy.title} — Zush`,
       description: staticCopy.description,
       canonicalPath: localizedPath,
