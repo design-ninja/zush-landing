@@ -94,44 +94,44 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ogType: 'website',
   },
   '/rename-pdf-with-ai': {
-    title: 'Rename PDFs with AI · Invoices & Contracts · Zush',
+    title: 'Rename PDFs with AI · Invoices, Contracts, Scans · Zush',
     description:
-      'Rename scanned invoices, contracts and tax forms by their actual content. Zush extracts PDF text and creates searchable filenames in seconds.',
+      'Rename scanned PDFs, invoices, contracts, and tax forms by their actual content. Zush uses OCR + AI to turn scan_0042.pdf into signed-lease-2026-march.pdf.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/rename-documents-with-ai': {
-    title: 'Rename Documents with AI · DOCX, XLSX & PPTX · Zush',
+    title: 'Rename Office Documents with AI · DOCX, XLSX, PPTX · Zush',
     description:
-      'Rename DOCX, XLSX, PPTX, TXT, CSV and email files by their actual content. Zush reads document text and creates searchable filenames automatically.',
+      'Rename DOCX, XLSX, PPTX, TXT, CSV, and email files by their actual content. Zush turns Untitled.docx into Q1-revenue-report.docx automatically.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/rename-screenshots-with-ai': {
-    title: 'Rename Screenshots with AI · Zush',
+    title: 'Rename Screenshots with AI on Mac & Windows · Zush',
     description:
-      "Replace generic screenshot filenames with names like 'stripe-revenue-dashboard.png'. Zush auto-names screenshots using AI vision. Free to try.",
+      'Replace Screenshot 2026-03-23 at 14.32.07.png with descriptive names like slack-conversation-project-update.png. Zush auto-names screenshots using AI vision.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/rename-photos-with-ai': {
-    title: 'Rename Photos with AI · HEIC, RAW & JPG · Zush',
+    title: 'Rename Photos with AI on Mac · HEIC, RAW, JPG · Zush',
     description:
-      'Stop renaming photos one by one. Zush analyzes HEIC, RAW and JPG content to generate descriptive names for your entire photo library. Free for 50.',
+      'Stop renaming photos one by one. Zush reads HEIC, RAW, and JPG content to generate descriptive names like sunset-pacific-beach.heic across 23 image formats.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/mac': {
-    title: 'AI File Renamer for Mac · Native macOS App · Zush',
+    title: 'AI File Renamer for Mac · Apple Silicon + Intel · Zush',
     description:
-      'Rename screenshots, PDFs, photos and documents on Mac with AI. Native Apple Silicon and Intel app, signed .dmg download, free for 50 renames.',
+      'Rename screenshots, PDFs, photos, and documents on Mac with AI. Apple Silicon + Intel, signed .dmg or Mac App Store install, free starter, no subscription.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/windows': {
-    title: 'AI File Renamer for Windows · Microsoft Store App · Zush',
+    title: 'AI File Renamer for Windows · Microsoft Store · Zush',
     description:
-      'Rename screenshots, PDFs, photos and documents on Windows with AI. Microsoft Store install, automatic updates, free for 50 renames, no signup.',
+      'Rename screenshots, PDFs, photos, and documents on Windows with AI in seconds. Microsoft Store install, automatic updates, free starter, no subscription.',
     robots: 'index, follow',
     ogType: 'website',
   },
