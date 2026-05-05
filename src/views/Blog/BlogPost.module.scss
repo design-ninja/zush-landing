@@ -5,22 +5,10 @@
   padding: 3.75rem 0;
   min-height: 80vh;
 
-  &_afterBreadcrumbBack {
-    padding-top: 2rem;
-  }
-
   &__Container {
     @include container;
     max-width: 72rem;
   }
-
-  &__BreadcrumbBack {
-    @include container;
-
-    max-width: 72rem;
-    padding-top: 0.5rem;
-  }
-
 
   &__BackLink {
     color: var(--muted-foreground);
@@ -177,7 +165,8 @@
     align-self: start;
     position: sticky;
     top: 6rem;
-    height: fit-content;
+    max-height: calc(100vh - 7.5rem);
+    min-height: 0;
 
     @include tablet {
       display: none;
@@ -189,6 +178,10 @@
     border: 1px solid var(--border);
     border-radius: $radius-lg;
     background: var(--card);
+    max-height: inherit;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
   }
 
   &__TocTitle {
