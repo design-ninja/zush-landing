@@ -174,7 +174,7 @@ export const INDEXABLE_LOCALIZED_ROUTES = [
   '/refund-policy',
 ] as const;
 
-export const PRIVATE_LOCALIZED_ROUTES = [
+const PRIVATE_LOCALIZED_ROUTES = [
   '/activate',
   '/recover',
   '/thank-you',
@@ -213,7 +213,7 @@ export function isLocalizedRoute(value: string): value is LocalizedRoute {
   return (LOCALIZED_ROUTES as readonly string[]).includes(value);
 }
 
-export function normalizeRoute(pathname: string): string {
+function normalizeRoute(pathname: string): string {
   let path = pathname || '/';
   if (!path.startsWith('/')) path = `/${path}`;
   if (path.length > 1 && path.endsWith('/')) path = path.slice(0, -1);

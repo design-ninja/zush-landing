@@ -77,7 +77,6 @@ function sanitizeBody(body: string): string {
   return body
     .replace(/^import\s.+$/gm, '')
     .replace(/^export\s.+$/gm, '')
-    .replace(/^<BlogInlineCTA[^>]*\/>\s*$/gm, '')
     .trim();
 }
 
@@ -336,17 +335,6 @@ export async function getRelatedPosts(slug: string, limit = 3): Promise<BlogPost
   }
 
   return selected.slice(0, limit);
-}
-
-export async function getBalancedRecentBlogPosts(limitPerPlatform = 2): Promise<BlogPost[]> {
-  const posts = await getAllPosts();
-  const platforms: BlogPlatform[] = ['windows', 'mac', 'general'];
-
-  return platforms
-    .flatMap((platform) =>
-      posts.filter((post) => post.platform === platform).slice(0, limitPerPlatform),
-    )
-    .sort((a, b) => b.dateValue.getTime() - a.dateValue.getTime());
 }
 
 export async function getRecentBlogPosts(limit = 6): Promise<BlogPost[]> {

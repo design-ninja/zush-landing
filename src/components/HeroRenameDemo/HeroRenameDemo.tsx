@@ -469,6 +469,38 @@ async function loadImageElement(blob: Blob): Promise<HTMLImageElement> {
   }
 }
 
+function getScaledPreviewSize(sourceWidth: number, sourceHeight: number) {
+  const scale = Math.min(1, MAX_IMAGE_SIDE / Math.max(sourceWidth, sourceHeight));
+
+  return {
+    width: Math.max(1, Math.round(sourceWidth * scale)),
+    height: Math.max(1, Math.round(sourceHeight * scale)),
+  };
+}
+
+function createWhiteCanvas(width: number, height: number) {
+  const canvas = document.createElement('canvas');
+  canvas.width = width;
+  canvas.height = height;
+
+  const context = canvas.getContext('2d');
+  if (!context) throw new Error('Canvas is not available');
+  context.fillStyle = '#ffffff';
+  context.fillRect(0, 0, width, height);
+
+  return { canvas, context };
+}
+
+function createJpegDataUrlFromSource(
+  source: CanvasImageSource,
+  width: number,
+  height: number,
+) {
+  const { canvas, context } = createWhiteCanvas(width, height);
+  context.drawImage(source, 0, 0, width, height);
+  return canvasToJpegDataUrl(canvas);
+}
+
 async function imageBlobToJpegPreview(blob: Blob) {
   const image = await loadImageElement(blob);
   const sourceWidth = image.naturalWidth || image.width;
@@ -478,20 +510,8 @@ async function imageBlobToJpegPreview(blob: Blob) {
     throw new Error('Unable to decode image dimensions');
   }
 
-  const scale = Math.min(1, MAX_IMAGE_SIDE / Math.max(sourceWidth, sourceHeight));
-  const width = Math.max(1, Math.round(sourceWidth * scale));
-  const height = Math.max(1, Math.round(sourceHeight * scale));
-  const canvas = document.createElement('canvas');
-  canvas.width = width;
-  canvas.height = height;
-
-  const context = canvas.getContext('2d');
-  if (!context) throw new Error('Canvas is not available');
-  context.fillStyle = '#ffffff';
-  context.fillRect(0, 0, width, height);
-  context.drawImage(image, 0, 0, width, height);
-
-  const dataUrl = canvasToJpegDataUrl(canvas);
+  const { width, height } = getScaledPreviewSize(sourceWidth, sourceHeight);
+  const dataUrl = createJpegDataUrlFromSource(image, width, height);
   return {
     dataUrl,
     base64: dataUrlToBase64(dataUrl),
@@ -504,9 +524,7 @@ function rgbaToJpegPreview(rgba: Uint8Array, sourceWidth: number, sourceHeight: 
     throw new Error('source-too-large');
   }
 
-  const scale = Math.min(1, MAX_IMAGE_SIDE / Math.max(sourceWidth, sourceHeight));
-  const width = Math.max(1, Math.round(sourceWidth * scale));
-  const height = Math.max(1, Math.round(sourceHeight * scale));
+  const { width, height } = getScaledPreviewSize(sourceWidth, sourceHeight);
   const sourceCanvas = document.createElement('canvas');
   sourceCanvas.width = sourceWidth;
   sourceCanvas.height = sourceHeight;
@@ -523,16 +541,7 @@ function rgbaToJpegPreview(rgba: Uint8Array, sourceWidth: number, sourceHeight: 
     0,
   );
 
-  const canvas = document.createElement('canvas');
-  canvas.width = width;
-  canvas.height = height;
-  const context = canvas.getContext('2d');
-  if (!context) throw new Error('Canvas is not available');
-  context.fillStyle = '#ffffff';
-  context.fillRect(0, 0, width, height);
-  context.drawImage(sourceCanvas, 0, 0, width, height);
-
-  const dataUrl = canvasToJpegDataUrl(canvas);
+  const dataUrl = createJpegDataUrlFromSource(sourceCanvas, width, height);
   return {
     dataUrl,
     base64: dataUrlToBase64(dataUrl),
@@ -911,12 +920,16 @@ async function extractOoxmlCoreProperties(zip: JSZip): Promise<string[]> {
     .filter(Boolean);
 }
 
-function sortSlidePaths(paths: string[]) {
+function sortNumberedOoxmlPaths(paths: string[], pattern: RegExp) {
   return paths.sort((a, b) => {
-    const aNumber = Number(a.match(/slide(\d+)\.xml$/)?.[1] ?? 0);
-    const bNumber = Number(b.match(/slide(\d+)\.xml$/)?.[1] ?? 0);
+    const aNumber = Number(a.match(pattern)?.[1] ?? 0);
+    const bNumber = Number(b.match(pattern)?.[1] ?? 0);
     return aNumber - bNumber;
   });
+}
+
+function sortSlidePaths(paths: string[]) {
+  return sortNumberedOoxmlPaths(paths, /slide(\d+)\.xml$/);
 }
 
 function sampleIndices(itemCount: number, limit: number): number[] {
@@ -1003,11 +1016,7 @@ async function getOrderedPptxSlidePaths(zip: JSZip): Promise<string[]> {
 }
 
 function sortSheetPaths(paths: string[]) {
-  return paths.sort((a, b) => {
-    const aNumber = Number(a.match(/sheet(\d+)\.xml$/)?.[1] ?? 0);
-    const bNumber = Number(b.match(/sheet(\d+)\.xml$/)?.[1] ?? 0);
-    return aNumber - bNumber;
-  });
+  return sortNumberedOoxmlPaths(paths, /sheet(\d+)\.xml$/);
 }
 
 function getFirstXmlText(root: Element, localName: string): string {

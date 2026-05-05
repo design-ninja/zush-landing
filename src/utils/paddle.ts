@@ -253,12 +253,10 @@ async function ensurePaddleReady(): Promise<boolean> {
   }
 }
 
-// fallow-ignore-next-line unused-export
 export function preloadPaddleCheckout(): Promise<boolean> {
   return ensurePaddleReady();
 }
 
-// fallow-ignore-next-line unused-export
 export function onPaddleCheckoutEvent(
   listener: PaddleEventListener,
 ): () => void {
@@ -302,7 +300,6 @@ async function createCheckoutSession(
   }
 }
 
-// fallow-ignore-next-line unused-export
 export async function openPaddleCheckout(
   deviceId?: string | null,
   priceId?: string | null,

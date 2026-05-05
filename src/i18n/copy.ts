@@ -87,6 +87,59 @@ export interface FeatureCardsCopy {
   promptExample: string;
 }
 
+export const DEFAULT_FEATURE_CARDS_COPY: FeatureCardsCopy = {
+  aiAnalysis: {
+    title: 'AI Analysis',
+    description: 'Advanced AI analyzes images and supported documents, including PDFs, to generate meaningful, descriptive filenames automatically.',
+  },
+  foldersMonitoring: {
+    title: 'Folders Monitoring',
+    description: 'Watch one or multiple folders. Zush runs in the background and processes new files automatically.',
+  },
+  batchRename: {
+    title: 'Batch Rename',
+    description: 'Drag and drop multiple files at once. Zush will analyze and rename them all in seconds.',
+  },
+  customPatterns: {
+    title: 'Custom Patterns',
+    description: 'Set your own file naming pattern with variables like {title}, {original}, {date}, {time}, or {category}.',
+  },
+  smartMetadata: {
+    title: 'Smart Metadata',
+    description: 'Automatically add Finder tags and Spotlight metadata. Find files instantly with natural search queries.',
+  },
+  renameHistory: {
+    title: 'Rename History',
+    description: 'Keep track of every change. Made a mistake? Rollback to the original filename with one click.',
+  },
+  customPrompts: {
+    title: 'Custom AI Prompts',
+    description: 'Set rename, tagging, and metadata rules so AI output follows your style and workflow.',
+  },
+  byok: {
+    title: 'Bring Your Own Key',
+    description: 'Connect your own API key from Gemini, Groq, OpenAI, or Claude for unlimited cloud renames. Keys are stored locally in secure platform storage.',
+  },
+  offlineAi: {
+    title: 'Offline AI mode',
+    description: 'Private local models via Ollama. Process supported files offline without sending analysis content to Zush cloud or AI providers.',
+  },
+  addFolder: 'Add Folder',
+  promptRules: 'Prompt rules',
+  customBadge: 'Custom',
+  apiKeyConnected: 'API key connected',
+  terminal: 'Terminal',
+  localModelReady: 'Local model ready',
+  today: 'Today',
+  undo: 'Undo',
+  analysisNewName: 'Bali_Sunset_Beach.png',
+  batchNewNames: ['Kanban Board UI.png', 'Hiring Plan Notes.docx', 'Investor Update Deck.pptx'],
+  metadataFileName: 'Cyberpunk_Art.png',
+  metadataTags: ['glitch art', 'vaporwave', 'statue', 'cyberpunk', 'digital art', 'palm tree'],
+  historyNewNames: ['Dashboard Review Notes.docx', 'Q1 Revenue Report.xlsx'],
+  promptExample: 'Keep names short, put the subject first, and add matching Finder tags.',
+};
+
 export interface VideosCopy {
   title: string;
   titleAccent: string;
@@ -864,7 +917,7 @@ const localizedFullHomeFaqItems: Record<Exclude<Locale, 'en' | 'zh-cn'>, FAQCopy
   ],
 };
 
-export const EN_COPY: LocaleCopy = {
+const EN_COPY: LocaleCopy = {
   header: {
     features: 'Features',
     pricing: 'Pricing',
@@ -943,31 +996,7 @@ export const EN_COPY: LocaleCopy = {
     faqTitle: 'Frequently Asked Questions',
     faqTitleAccent: 'Questions',
     faqDescription: 'Everything you need to know about Zush in one place',
-    featureCards: {
-      aiAnalysis: { title: 'AI Analysis', description: 'Advanced AI analyzes images and supported documents, including PDFs, to generate meaningful, descriptive filenames automatically.' },
-      foldersMonitoring: { title: 'Folders Monitoring', description: 'Watch one or multiple folders. Zush runs in the background and processes new files automatically.' },
-      batchRename: { title: 'Batch Rename', description: 'Drag and drop multiple files at once. Zush will analyze and rename them all in seconds.' },
-      customPatterns: { title: 'Custom Patterns', description: 'Set your own file naming pattern with variables like {title}, {original}, {date}, {time}, or {category}.' },
-      smartMetadata: { title: 'Smart Metadata', description: 'Automatically add Finder tags and Spotlight metadata. Find files instantly with natural search queries.' },
-      renameHistory: { title: 'Rename History', description: 'Keep track of every change. Made a mistake? Rollback to the original filename with one click.' },
-      customPrompts: { title: 'Custom AI Prompts', description: 'Set rename, tagging, and metadata rules so AI output follows your style and workflow.' },
-      byok: { title: 'Bring Your Own Key', description: 'Connect your own API key from Gemini, Groq, OpenAI, or Claude for unlimited cloud renames. Keys are stored locally in secure platform storage.' },
-      offlineAi: { title: 'Offline AI mode', description: 'Private local models via Ollama. Process supported files offline without sending analysis content to Zush cloud or AI providers.' },
-      addFolder: 'Add Folder',
-      promptRules: 'Prompt rules',
-      customBadge: 'Custom',
-      apiKeyConnected: 'API key connected',
-      terminal: 'Terminal',
-      localModelReady: 'Local model ready',
-      today: 'Today',
-      undo: 'Undo',
-      analysisNewName: 'Bali_Sunset_Beach.png',
-      batchNewNames: ['Kanban Board UI.png', 'Hiring Plan Notes.docx', 'Investor Update Deck.pptx'],
-      metadataFileName: 'Cyberpunk_Art.png',
-      metadataTags: ['glitch art', 'vaporwave', 'statue', 'cyberpunk', 'digital art', 'palm tree'],
-      historyNewNames: ['Dashboard Review Notes.docx', 'Q1 Revenue Report.xlsx'],
-      promptExample: 'Keep names short, put the subject first, and add matching Finder tags.',
-    },
+    featureCards: DEFAULT_FEATURE_CARDS_COPY,
     videos: {
       title: 'See Zush in Action',
       titleAccent: 'Zush',
@@ -2730,7 +2759,7 @@ const withLocalizedFileExamples = (
       : localizedFullHomeFaqItems[locale],
 });
 
-export const COPY: Record<Locale, LocaleCopy> = {
+const COPY: Record<Locale, LocaleCopy> = {
   en: base,
   de: localized({
     header: { features: 'Funktionen', pricing: 'Preise', faq: 'FAQ', blog: 'Blog', buyPro: '🌟 PRO kaufen', download: 'Download', toggleTheme: 'Design wechseln', language: 'Sprache', homeAria: 'Zur Startseite', skipToContent: 'Zum Inhalt springen' },

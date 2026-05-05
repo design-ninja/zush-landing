@@ -84,7 +84,7 @@ const defaultRecommendedModels = [
   },
 ];
 
-export const defaultOllamaSetupCopy: OllamaSetupCopy = {
+const defaultOllamaSetupCopy: OllamaSetupCopy = {
   title: 'Ollama Setup Guide',
   subtitle:
     'Use Offline AI mode with private local models via Ollama. Your files are processed by a model on your device instead of a cloud AI provider.',

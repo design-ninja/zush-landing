@@ -83,6 +83,7 @@ const isDownloadChannel = (value: string | undefined): value is DownloadChannel 
 const isProClickSource = (value: string | undefined): value is ProClickSource =>
   value === 'hero' || value === 'navbar' || value === 'pricing';
 
+// fallow-ignore-next-line unused-export
 export const bindDownloadTracking = (root: ParentNode = document) => {
   root.querySelectorAll<HTMLElement>('[data-download-source]').forEach((element) => {
     if (element.dataset.downloadTrackingBound === 'true') return;
@@ -106,6 +107,7 @@ export const bindDownloadTracking = (root: ParentNode = document) => {
   });
 };
 
+// fallow-ignore-next-line unused-export
 export const bindProClickTracking = (root: ParentNode = document) => {
   root.querySelectorAll<HTMLElement>('[data-pro-click-source]').forEach((element) => {
     if (element.dataset.proClickTrackingBound === 'true') return;

@@ -118,7 +118,7 @@ const DEFAULT_SOFTWARE_OFFERS: SoftwareOfferData[] = [
   },
 ];
 
-export function buildSoftwareApplicationJsonLd(data: SoftwareApplicationData) {
+function buildSoftwareApplicationJsonLd(data: SoftwareApplicationData) {
   const pageUrl = `${SITE_ORIGIN}${data.pagePath}`;
 
   return {

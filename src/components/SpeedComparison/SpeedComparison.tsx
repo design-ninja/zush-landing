@@ -35,6 +35,12 @@ const getDocumentTheme = (): 'light' | 'dark' => {
   return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
 };
 
+const restartVideo = (video: HTMLVideoElement | null) => {
+  if (!video) return;
+  video.currentTime = 0;
+  void video.play().catch(() => undefined);
+};
+
 const SpeedComparison = ({
   copy,
   zushVideoLight = '/videos/zush-speed-test.mp4',
@@ -104,16 +110,8 @@ const SpeedComparison = ({
     setZushElapsed(0);
     setRivalElapsed(0);
 
-    const zushVideo = zushVideoRef.current;
-    const rivalVideo = rivalVideoRef.current;
-    if (zushVideo) {
-      zushVideo.currentTime = 0;
-      void zushVideo.play().catch(() => undefined);
-    }
-    if (rivalVideo) {
-      rivalVideo.currentTime = 0;
-      void rivalVideo.play().catch(() => undefined);
-    }
+    restartVideo(zushVideoRef.current);
+    restartVideo(rivalVideoRef.current);
 
     const start = performance.now();
     const totalRealMs =
@@ -164,16 +162,8 @@ const SpeedComparison = ({
 
   const handleReplay = () => {
     cancelSkipAnimation();
-    const zushVideo = zushVideoRef.current;
-    const rivalVideo = rivalVideoRef.current;
-    if (zushVideo) {
-      zushVideo.currentTime = 0;
-      void zushVideo.play().catch(() => undefined);
-    }
-    if (rivalVideo) {
-      rivalVideo.currentTime = 0;
-      void rivalVideo.play().catch(() => undefined);
-    }
+    restartVideo(zushVideoRef.current);
+    restartVideo(rivalVideoRef.current);
     setRunId((id) => id + 1);
   };
 
