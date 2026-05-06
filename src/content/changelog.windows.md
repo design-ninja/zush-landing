@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.1] - 2026-05-06
+### Fixed
+- Blocked Regenerate name and Retry analysis when a free account has reached its AI batch rename limit
+- Kept existing analyzed names intact when a regenerate action is blocked by the usage limit
+- Widened the checkout recovery dialog so the Still waiting message fits cleanly
+- Fine-tuned rename result arrow alignment in AI Rename and Activity
+
+
 ## [1.2.0] - 2026-05-04
 ### Added
 - German, French, Portuguese, Spanish, Dutch, Italian, Japanese, Korean, Chinese, and Hindi app localization
