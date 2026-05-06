@@ -1,6 +1,12 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "redirects": [
+    {
+      "source": "/ai-image-renamer/",
+      "destination": "/rename-photos-with-ai",
+      "permanent": true
+    },
     {
       "source": "/:path+/",
       "destination": "/:path+",
