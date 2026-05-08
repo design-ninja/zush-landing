@@ -15,7 +15,11 @@ export default defineConfig({
     '/download/windows': { status: 301, destination: '/windows' },
   },
   integrations: [mdx(), react()],
-  adapter: vercel(),
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
   markdown: {
     remarkPlugins: [remarkGfm],
     gfm: true,

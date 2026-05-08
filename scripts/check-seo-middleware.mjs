@@ -17,8 +17,15 @@ function assertRedirect(input, expectedLocation) {
   );
 }
 
-assertRedirect('https://zushapp.com/?ref=producthunt', 'https://zushapp.com/');
-assertRedirect('https://zushapp.com/?checkout=pro&ref=producthunt', 'https://zushapp.com/?checkout=pro');
+assertRedirect('https://zushapp.com/?ref=producthunt', 'https://zushapp.com/?utm_source=producthunt');
+assertRedirect(
+  'https://zushapp.com/?checkout=pro&ref=producthunt',
+  'https://zushapp.com/?checkout=pro&utm_source=producthunt',
+);
+assertRedirect(
+  'https://zushapp.com/?utm_source=google&ref=producthunt',
+  'https://zushapp.com/?utm_source=google',
+);
 
 const cleanHomepage = middleware(new Request('https://zushapp.com/'));
 assert(cleanHomepage === undefined, 'Clean homepage should continue without middleware redirect.');
