@@ -134,6 +134,99 @@ export const DEMO_VIDEOS: DemoVideoAsset[] = [
   },
 ];
 
+export const MACOS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
+  {
+    id: 'batch-rename',
+    title: 'Batch Rename',
+    description: 'Rename multiple files at once with AI',
+    images: {
+      light: '/images/showcase/macos/batch-rename-light.webp',
+      dark: '/images/showcase/macos/batch-rename-dark.webp',
+    },
+    alt: 'Batch rename results in Zush for macOS',
+  },
+  {
+    id: 'monitor',
+    title: 'Folder Monitoring',
+    description: 'Automatically rename new files as they appear',
+    images: {
+      light: '/images/showcase/macos/monitor-light.webp',
+      dark: '/images/showcase/macos/monitor-dark.webp',
+    },
+    alt: 'Folder monitoring settings in Zush for macOS',
+  },
+  {
+    id: 'activity',
+    title: 'Activity History',
+    description: 'Review recent renames and undo changes when needed',
+    images: {
+      light: '/images/showcase/macos/activity-light.webp',
+      dark: '/images/showcase/macos/activity-dark.webp',
+    },
+    alt: 'Activity history in Zush for macOS',
+  },
+  {
+    id: 'tags',
+    title: 'Smart Tags',
+    description: 'Generate smart tags for faster file search',
+    images: {
+      light: '/images/showcase/macos/tags-light.webp',
+      dark: '/images/showcase/macos/tags-dark.webp',
+    },
+    alt: 'Smart tags workflow in Zush for macOS',
+  },
+  {
+    id: 'naming',
+    title: 'Naming Patterns',
+    description: 'Create reusable naming patterns with flexible variables',
+    images: {
+      light: '/images/showcase/macos/naming-light.webp',
+      dark: '/images/showcase/macos/naming-dark.webp',
+    },
+    alt: 'Naming pattern settings in Zush for macOS',
+  },
+  {
+    id: 'multilanguage',
+    title: 'Multilanguage',
+    description: 'Generate filenames in more than 60 languages',
+    images: {
+      light: '/images/showcase/macos/multilanguage-light.webp',
+      dark: '/images/showcase/macos/multilanguage-dark.webp',
+    },
+    alt: 'Language picker in Zush for macOS',
+  },
+  {
+    id: 'custom-prompts',
+    title: 'Custom Prompts',
+    description: 'Guide filename generation with your own instructions',
+    images: {
+      light: '/images/showcase/macos/custom-prompts-light.webp',
+      dark: '/images/showcase/macos/custom-prompts-dark.webp',
+    },
+    alt: 'Custom prompt editor in Zush for macOS',
+  },
+  {
+    id: 'byok',
+    title: 'BYOK',
+    description: 'Connect your own AI provider for unlimited renaming',
+    images: {
+      light: '/images/showcase/macos/byok-light.webp',
+      dark: '/images/showcase/macos/byok-dark.webp',
+    },
+    alt: 'Bring your own key settings in Zush for macOS',
+  },
+  {
+    id: 'offline-ai',
+    title: 'Offline AI mode',
+    description: 'Process supported files offline with private local models via Ollama',
+    images: {
+      light: '/images/showcase/macos/offline-ai-light.webp',
+      dark: '/images/showcase/macos/offline-ai-dark.webp',
+    },
+    alt: 'Offline AI setup in Zush for macOS',
+  },
+];
+
 export const WINDOWS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
   {
     id: 'batch-rename',
