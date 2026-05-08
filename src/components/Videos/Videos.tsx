@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import SectionHeader from '../SectionHeader';
 import Text from '@/components/Text';
 import {
@@ -47,6 +47,8 @@ const getDocumentTheme = (): DemoVideoTheme => {
 };
 
 const Videos = ({
+  autoplayOnHydration = false,
+  autoplayWhenInView = false,
   forceOS,
   copy = defaultCopy,
 }: VideosProps) => {
@@ -55,6 +57,11 @@ const Videos = ({
   const isWindowsShowcase = downloadOS === 'windows';
   const [activeFeature, setActiveFeature] = useState(0);
   const [theme, setTheme] = useState<DemoVideoTheme>('light');
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [canAutoplay, setCanAutoplay] = useState(false);
+  const [hasEnteredViewport, setHasEnteredViewport] = useState(false);
+  const videoWrapperRef = useRef<HTMLDivElement>(null);
+  const windowsVideoRef = useRef<HTMLVideoElement>(null);
   const showcaseItems = isWindowsShowcase
     ? WINDOWS_DEMO_SCREENSHOTS
     : MACOS_DEMO_SCREENSHOTS;
@@ -98,6 +105,84 @@ const Videos = ({
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (!isWindowsShowcase || (!autoplayOnHydration && !autoplayWhenInView)) {
+      return;
+    }
+
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const syncMotionPreference = () => {
+      setCanAutoplay(!motionQuery.matches);
+    };
+
+    syncMotionPreference();
+
+    motionQuery.addEventListener('change', syncMotionPreference);
+    return () =>
+      motionQuery.removeEventListener('change', syncMotionPreference);
+  }, [autoplayOnHydration, autoplayWhenInView, isWindowsShowcase]);
+
+  useEffect(() => {
+    if (!isWindowsShowcase || !autoplayWhenInView || !canAutoplay || hasEnteredViewport) {
+      return;
+    }
+
+    const videoWrapper = videoWrapperRef.current;
+    if (!videoWrapper) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasEnteredViewport(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.45,
+      },
+    );
+
+    observer.observe(videoWrapper);
+
+    return () => observer.disconnect();
+  }, [autoplayWhenInView, canAutoplay, hasEnteredViewport, isWindowsShowcase]);
+
+  const shouldAutoplay =
+    isWindowsShowcase && canAutoplay && (autoplayOnHydration || hasEnteredViewport);
+
+  useEffect(() => {
+    if (!isWindowsShowcase) {
+      setIsPlaying(false);
+      return;
+    }
+
+    setIsPlaying(hasActiveWindowsVideo && shouldAutoplay);
+  }, [activeFeature, hasActiveWindowsVideo, isWindowsShowcase, shouldAutoplay]);
+
+  useEffect(() => {
+    if (!hasActiveWindowsVideo) {
+      return;
+    }
+
+    const video = windowsVideoRef.current;
+    if (!video) {
+      return;
+    }
+
+    if (isPlaying) {
+      void video.play().catch(() => undefined);
+      return;
+    }
+
+    video.pause();
+  }, [hasActiveWindowsVideo, isPlaying, activeWindowsVideoSrc]);
+
   const handleTabClick = (index: number) => {
     setActiveFeature(index);
   };
@@ -116,9 +201,13 @@ const Videos = ({
           />
         </div>
         
-        <div className={styles.Videos__VideoWrapper}>
+        <div
+          ref={videoWrapperRef}
+          className={styles.Videos__VideoWrapper}
+        >
           {hasActiveWindowsVideo ? (
             <video
+              ref={windowsVideoRef}
               key={activeWindowsVideoSrc}
               className={styles.Videos__Video}
               src={activeWindowsVideoSrc}
@@ -126,8 +215,17 @@ const Videos = ({
               muted
               playsInline
               controls
-              preload='metadata'
-              poster={activeScreenshotSrc}
+              preload='auto'
+            />
+          ) : isWindowsShowcase ? (
+            <img
+              src={activeScreenshotSrc}
+              alt={activeScreenshot.alt}
+              className={styles.Videos__Poster}
+              width={1280}
+              height={720}
+              loading='lazy'
+              decoding='async'
             />
           ) : (
             <img
