@@ -24,7 +24,6 @@ export function getOtherOS(os: DownloadOS): DownloadOS {
 
 export type DownloadSource =
   | 'hero'
-  | 'hero-demo'
   | 'navbar'
   | 'download-cta'
   | 'blog-cta'

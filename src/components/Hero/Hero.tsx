@@ -24,8 +24,6 @@ export interface HeroProps {
   downloadLabel?: string;
   downloadMenu?: DownloadMenuCopy;
   trustSignals?: string[];
-  showcase?: ReactNode;
-  mobileShowcase?: ReactNode;
 }
 
 const Hero = ({
@@ -42,11 +40,8 @@ const Hero = ({
   downloadLabel = "Download",
   downloadMenu,
   trustSignals = ["✨ Free to try", "💳 No credit card", "🚫 No subscription"],
-  showcase,
-  mobileShowcase,
 }: HeroProps) => {
   const highlightText = titleHighlight ?? titleAccent;
-  const hasCustomShowcase = Boolean(showcase);
 
   const renderTitle = () => {
     if (!title) {
@@ -120,18 +115,7 @@ const Hero = ({
         <div
           className={`${styles.Hero__ShowcaseWrapper} ${styles.Hero__ShowcaseMotion}`}
         >
-          {hasCustomShowcase ? (
-            <>
-              <div className={styles.Hero__InteractiveShowcase}>
-                {showcase}
-              </div>
-              <div className={styles.Hero__MobileShowcase}>
-                {mobileShowcase ?? <FileShowcase slides={slides} />}
-              </div>
-            </>
-          ) : (
-            <FileShowcase slides={slides} />
-          )}
+          <FileShowcase slides={slides} />
           <div className={styles.Hero__GlowEffect} />
         </div>
       </div>

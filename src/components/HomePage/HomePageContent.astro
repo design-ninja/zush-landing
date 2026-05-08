@@ -1,5 +1,5 @@
 ---
-import HeroWithRenameDemo from '@/components/Hero/HeroWithRenameDemo';
+import Hero from '@/components/Hero';
 import Videos from '@/components/Videos';
 import SpeedComparison from '@/components/SpeedComparison';
 import Features from '@/components/Features/Features.astro';
@@ -22,7 +22,7 @@ interface Props {
 const { copy, locale, secondaryHref } = Astro.props as Props;
 ---
 
-<HeroWithRenameDemo
+<Hero
   client:load
   title={copy.home.heroTitle}
   titleAccent={copy.home.heroAccent}
@@ -33,8 +33,6 @@ const { copy, locale, secondaryHref } = Astro.props as Props;
   trustSignals={copy.home.trustSignals}
   secondaryHref={secondaryHref}
   slides={copy.home.showcaseSlides}
-  renameDemo={copy.home.renameDemo}
-  locale={locale}
 />
 <Videos client:visible autoplayWhenInView copy={copy.home.videos} />
 <Features title={copy.home.featuresTitle} description={copy.home.featuresDescription} copy={copy.home.featureCards} />
