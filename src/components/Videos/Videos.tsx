@@ -1,11 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import { Play } from 'lucide-react';
 import SectionHeader from '../SectionHeader';
 import Text from '@/components/Text';
 import {
-  DEMO_VIDEOS,
+  MACOS_DEMO_SCREENSHOTS,
   WINDOWS_DEMO_SCREENSHOTS,
-  resolveDemoVideoMedia,
   resolveDemoScreenshotMedia,
   type DemoVideoTheme,
 } from '@/data/demoVideos';
@@ -58,19 +56,18 @@ const Videos = ({
   const downloadOS = forceOS ?? detectedOS;
   const isWindowsShowcase = downloadOS === 'windows';
   const [activeFeature, setActiveFeature] = useState(0);
-  const [theme, setTheme] = useState<DemoVideoTheme>(getDocumentTheme);
+  const [theme, setTheme] = useState<DemoVideoTheme>('light');
   const [isPlaying, setIsPlaying] = useState(false);
   const [canAutoplay, setCanAutoplay] = useState(false);
   const [hasEnteredViewport, setHasEnteredViewport] = useState(false);
   const videoWrapperRef = useRef<HTMLDivElement>(null);
   const windowsVideoRef = useRef<HTMLVideoElement>(null);
-  const showcaseItems = isWindowsShowcase ? WINDOWS_DEMO_SCREENSHOTS : DEMO_VIDEOS;
-  const activeVideo = DEMO_VIDEOS[activeFeature] ?? DEMO_VIDEOS[0];
-  const activeScreenshot =
-    WINDOWS_DEMO_SCREENSHOTS[activeFeature] ?? WINDOWS_DEMO_SCREENSHOTS[0];
-  const activeVideoMedia = resolveDemoVideoMedia(activeVideo, theme);
+  const showcaseItems = isWindowsShowcase
+    ? WINDOWS_DEMO_SCREENSHOTS
+    : MACOS_DEMO_SCREENSHOTS;
+  const activeScreenshot = showcaseItems[activeFeature] ?? showcaseItems[0];
   const activeScreenshotSrc = resolveDemoScreenshotMedia(activeScreenshot, theme);
-  const activeItem = showcaseItems[activeFeature];
+  const activeItem = activeScreenshot;
   const localizedActiveItem = {
     ...activeItem,
     ...copy.items[activeItem.id],
@@ -109,7 +106,7 @@ const Videos = ({
   }, []);
 
   useEffect(() => {
-    if (!autoplayOnHydration && !autoplayWhenInView) {
+    if (!isWindowsShowcase || (!autoplayOnHydration && !autoplayWhenInView)) {
       return;
     }
 
@@ -127,10 +124,10 @@ const Videos = ({
     motionQuery.addEventListener('change', syncMotionPreference);
     return () =>
       motionQuery.removeEventListener('change', syncMotionPreference);
-  }, [autoplayOnHydration, autoplayWhenInView]);
+  }, [autoplayOnHydration, autoplayWhenInView, isWindowsShowcase]);
 
   useEffect(() => {
-    if (!autoplayWhenInView || !canAutoplay || hasEnteredViewport) {
+    if (!isWindowsShowcase || !autoplayWhenInView || !canAutoplay || hasEnteredViewport) {
       return;
     }
 
@@ -154,18 +151,18 @@ const Videos = ({
     observer.observe(videoWrapper);
 
     return () => observer.disconnect();
-  }, [autoplayWhenInView, canAutoplay, hasEnteredViewport]);
+  }, [autoplayWhenInView, canAutoplay, hasEnteredViewport, isWindowsShowcase]);
 
   const shouldAutoplay =
-    canAutoplay && (autoplayOnHydration || hasEnteredViewport);
+    isWindowsShowcase && canAutoplay && (autoplayOnHydration || hasEnteredViewport);
 
   useEffect(() => {
-    if (isWindowsShowcase) {
-      setIsPlaying(hasActiveWindowsVideo && shouldAutoplay);
+    if (!isWindowsShowcase) {
+      setIsPlaying(false);
       return;
     }
 
-    setIsPlaying(shouldAutoplay);
+    setIsPlaying(hasActiveWindowsVideo && shouldAutoplay);
   }, [activeFeature, hasActiveWindowsVideo, isWindowsShowcase, shouldAutoplay]);
 
   useEffect(() => {
@@ -230,50 +227,16 @@ const Videos = ({
               loading='lazy'
               decoding='async'
             />
-          ) : !isPlaying ? (
-            <button
-              type='button'
-              className={styles.Videos__PlayButton}
-              onClick={() => setIsPlaying(true)}
-              aria-label={`${copy.playDemo}: ${localizedActiveItem.title}`}
-            >
-              <img
-                src={hasActiveWindowsVideo ? activeScreenshotSrc : activeVideoMedia.poster}
-                alt={copy.items[activeItem.id]?.alt ?? `${localizedActiveItem.title} demo`}
-                className={styles.Videos__Poster}
-                width={1280}
-                height={720}
-                loading='lazy'
-                decoding='async'
-              />
-              <span className={styles.Videos__PlayOverlay} />
-              <span className={styles.Videos__PlayIcon} aria-hidden='true'>
-                <Play size={28} fill='currentColor' />
-              </span>
-              <span className={styles.Videos__PlayLabel}>{copy.playDemo}</span>
-            </button>
           ) : (
-            <video
-              key={hasActiveWindowsVideo ? activeWindowsVideoSrc : activeVideoMedia.source}
-              className={styles.Videos__Video}
-              src={hasActiveWindowsVideo ? activeWindowsVideoSrc : activeVideoMedia.source}
-              aria-label={`${localizedActiveItem.title}: ${localizedActiveItem.description}`}
-              muted
-              playsInline
-              autoPlay
-              controls
-              preload='metadata'
-              poster={hasActiveWindowsVideo ? activeScreenshotSrc : activeVideoMedia.poster}
-            >
-              {!hasActiveWindowsVideo && (
-                <track
-                  kind='captions'
-                  src='/videos/captions/zush-demo.vtt'
-                  srcLang='en'
-                  label='English captions'
-                />
-              )}
-            </video>
+            <img
+              src={activeScreenshotSrc}
+              alt={copy.items[activeItem.id]?.alt ?? activeScreenshot.alt}
+              className={styles.Videos__Poster}
+              width={1280}
+              height={720}
+              loading='lazy'
+              decoding='async'
+            />
           )}
         </div>
         <Text as='p' className={styles.Videos__Description}>{localizedActiveItem.description}</Text>
