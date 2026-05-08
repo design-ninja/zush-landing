@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.0] - 2026-05-08
+
+### Added
+- Added video analysis with sampled frames and subtitle context
+- Added support for many more image, document, spreadsheet, presentation, subtitle, and video formats
+- Added Rename with Zush from the file context menu
+
+### Improved
+- Improved Offline AI setup with clearer Ollama status and model checks
+- Improved Settings navigation, drag-and-drop, and monitoring file type controls
+
+### Fixed
+- Fixed several layout, localization, and supported-format edge cases
+
 ## [1.9.1] - 2026-05-01
 
 ### Added
