@@ -15,8 +15,11 @@ const appBinary = path.join(derivedDataPath, 'Build/Products/Debug/Zush.app/Cont
 const sourceAssetRoot =
   process.env.ZUSH_PROMO_SOURCE_FILES ??
   '/Users/lirik/Projects/zush/zush-assets/#test files/Files';
-const outputDir = path.join(repoRoot, 'public/images/showcase/macos');
+const defaultLandingOutputDir = path.join(repoRoot, 'public/images/showcase/macos');
+const defaultAppStoreOutputDir = '/Users/lirik/Projects/zush/zush-assets/App Store';
 const tempRoot = path.join(os.tmpdir(), `zush-feature-screenshots-${Date.now()}`);
+const baseMainWindowWidth = 1460;
+const windowZoom = 1.035;
 
 const wallpapers = {
   light: '/Users/lirik/Desktop/tahoe/macos-tahoe-26-6016x6016-22673.jpg',
@@ -24,28 +27,116 @@ const wallpapers = {
 };
 
 const features = [
-  { id: 'batch-rename', fixture: 'batch-rename', mainWidth: 1460 },
-  { id: 'monitor', fixture: 'monitor', mainWidth: 1380 },
-  { id: 'activity', fixture: 'activity', mainWidth: 1460 },
-  { id: 'tags', fixture: 'smart-tags', mainWidth: 1120, extraOwners: ['Finder'] },
-  { id: 'naming', fixture: 'naming', mainWidth: 1120 },
-  { id: 'multilanguage', fixture: 'multilanguage', mainWidth: 1120 },
-  { id: 'custom-prompts', fixture: 'custom-prompts', mainWidth: 1450, captureZushExtras: true },
-  { id: 'byok', fixture: 'byok', mainWidth: 1120 },
-  { id: 'offline-ai', fixture: 'offline-ai', mainWidth: 1120 },
+  { id: 'batch-rename', fixture: 'batch-rename' },
+  { id: 'monitor', fixture: 'monitor' },
+  { id: 'activity', fixture: 'activity' },
+  { id: 'tags', fixture: 'smart-tags', extraOwners: ['Finder'] },
+  { id: 'naming', fixture: 'naming' },
+  { id: 'multilanguage', fixture: 'multilanguage' },
+  { id: 'custom-prompts', fixture: 'custom-prompts', captureZushExtras: true },
+  { id: 'byok', fixture: 'byok' },
+  { id: 'offline-ai', fixture: 'offline-ai' },
 ];
 
 const args = new Set(process.argv.slice(2));
 const only = process.argv.find((arg) => arg.startsWith('--only='))?.split('=')[1];
 const themeArg = process.argv.find((arg) => arg.startsWith('--theme='))?.split('=')[1];
-const selectedThemes = themeArg ? [themeArg] : ['light', 'dark'];
+const outputDirArg = process.argv.find((arg) => arg.startsWith('--output-dir='))?.split('=')[1];
+const landingOutputDirArg = process.argv
+  .find((arg) => arg.startsWith('--landing-output-dir='))
+  ?.split('=')[1];
+const appStoreOutputDirArg = process.argv
+  .find((arg) => arg.startsWith('--app-store-output-dir='))
+  ?.split('=')[1];
+const targetArg =
+  process.argv.find((arg) => arg.startsWith('--targets='))?.split('=')[1] ??
+  process.argv.find((arg) => arg.startsWith('--target='))?.split('=')[1];
+const selectedTargets = parseTargets(
+  targetArg ?? (args.has('--app-store') ? 'app-store' : 'landing,app-store'),
+);
+if (selectedTargets.includes('app-store') && themeArg && themeArg !== 'light') {
+  throw new Error('App Store screenshots are light-only. Use --target=landing for dark screenshots.');
+}
+const selectedThemes = [
+  ...new Set(selectedTargets.flatMap((target) => themesForTarget(target, themeArg))),
+];
+const outputDirs = {
+  landing: path.resolve(
+    landingOutputDirArg ??
+      (outputDirArg && selectedTargets.length === 1 ? outputDirArg : defaultLandingOutputDir),
+  ),
+  'app-store': path.resolve(
+    appStoreOutputDirArg ??
+      (outputDirArg && selectedTargets.length === 1 ? outputDirArg : defaultAppStoreOutputDir),
+  ),
+};
 const selectedFeatures = only
   ? features.filter((feature) => feature.id === only || feature.fixture === only)
   : features;
 let activeZushPid = null;
 
+const targetConfigs = {
+  landing: {
+    canvas: { width: 2560, height: 1440 },
+    extension: 'webp',
+    finderGap: 85,
+    mainTargetWidth: () => Math.round(baseMainWindowWidth * windowZoom),
+  },
+  'app-store': {
+    canvas: { width: 2880, height: 1800 },
+    extension: 'jpg',
+    finderGap: Math.round(85 * (2880 / 2560)),
+    mainTargetWidth: () => Math.round(2880 * (baseMainWindowWidth / 2560) * windowZoom),
+  },
+};
+
+const appStoreNames = {
+  'batch-rename': '01-batch-rename',
+  monitor: '02-monitor',
+  activity: '03-activity',
+  tags: '04-tags',
+  naming: '05-naming',
+  multilanguage: '06-multilanguage',
+  'offline-ai': '07-offline-ai',
+  byok: '08-byok',
+  'custom-prompts': '09-custom-prompts',
+};
+
 if (selectedFeatures.length === 0) {
   throw new Error(`No feature matched --only=${only}`);
+}
+
+function parseTargets(value) {
+  const targets = value
+    .split(',')
+    .map((target) => normalizeTarget(target.trim()))
+    .filter(Boolean);
+
+  if (targets.length === 0) {
+    throw new Error('No screenshot targets selected');
+  }
+
+  return [...new Set(targets)];
+}
+
+function normalizeTarget(target) {
+  if (target === 'landing') {
+    return 'landing';
+  }
+
+  if (['app-store', 'appstore', 'app_store', 'asc'].includes(target)) {
+    return 'app-store';
+  }
+
+  throw new Error(`Unsupported screenshot target: ${target}`);
+}
+
+function themesForTarget(target, explicitTheme) {
+  if (explicitTheme) {
+    return [explicitTheme];
+  }
+
+  return target === 'app-store' ? ['light'] : ['light', 'dark'];
 }
 
 function run(command, commandArgs, options = {}) {
@@ -68,7 +159,7 @@ function run(command, commandArgs, options = {}) {
     );
   }
 
-  return result.stdout.trim();
+  return typeof result.stdout === 'string' ? result.stdout.trim() : '';
 }
 
 function wait(ms) {
@@ -287,6 +378,36 @@ function captureWindow(window, outputPath) {
   run('magick', [outputPath, '-trim', '+repage', outputPath]);
 }
 
+function activateZushForCapture() {
+  if (!activeZushPid) {
+    return;
+  }
+
+  run('osascript', [
+    '-e',
+    `tell application "System Events"
+      set targetProcess to first process whose unix id is ${activeZushPid}
+      set frontmost of targetProcess to true
+    end tell`,
+  ]);
+}
+
+function focusZushSidebarWithTab() {
+  if (!activeZushPid) {
+    return;
+  }
+  run('osascript', [
+    '-e',
+    `tell application "System Events"
+      set targetProcess to first process whose unix id is ${activeZushPid}
+      set frontmost of targetProcess to true
+      key code 48
+      delay 0.08
+      key code 48 using {shift down}
+    end tell`,
+  ]);
+}
+
 function imageSize(imagePath) {
   const out = run('magick', ['identify', '-format', '%w %h', imagePath]);
   const [width, height] = out.split(/\s+/).map(Number);
@@ -385,14 +506,24 @@ function captureWindowsForFeature(feature, captureDir) {
   return captures;
 }
 
-function renderComposite({ feature, theme, captures, outputPath }) {
-  const canvas = { width: 2560, height: 1440 };
+function renderComposite({ feature, theme, captures, outputPath, target }) {
+  const config = targetConfigs[target];
+  const canvas = config.canvas;
   const main = captures.find((capture) => capture.role === 'main');
   const pointScale = main.size.width / main.window.width;
-  const mainTargetWidth = feature.mainWidth;
+  const mainTargetWidth = config.mainTargetWidth();
   const scale = mainTargetWidth / main.size.width;
   const mainTargetHeight = Math.round(main.size.height * scale);
-  const mainX = Math.round((canvas.width - mainTargetWidth) / 2);
+  const finderGap = config.finderGap;
+  const finderCapture =
+    feature.id === 'tags'
+      ? captures.find((capture) => capture.role !== 'main' && capture.window.owner === 'Finder')
+      : null;
+  const finderTargetWidth = finderCapture ? Math.round(finderCapture.size.width * scale) : 0;
+  const groupTargetWidth = finderCapture
+    ? mainTargetWidth + finderGap + finderTargetWidth
+    : mainTargetWidth;
+  const mainX = Math.round((canvas.width - groupTargetWidth) / 2);
   const mainY = Math.round((canvas.height - mainTargetHeight) / 2);
 
   const commandArgs = [
@@ -420,9 +551,7 @@ function renderComposite({ feature, theme, captures, outputPath }) {
       y = Math.round(mainY + dy);
 
       if (feature.id === 'tags' && capture.window.owner === 'Finder') {
-        width = 430;
-        height = Math.round(capture.size.height * (width / capture.size.width));
-        x = Math.round(mainX + mainTargetWidth + 85);
+        x = Math.round(mainX + mainTargetWidth + finderGap);
         y = Math.round((canvas.height - height) / 2);
       }
     }
@@ -441,8 +570,30 @@ function renderComposite({ feature, theme, captures, outputPath }) {
     );
   }
 
-  commandArgs.push('-quality', '90', '-define', 'webp:method=6', outputPath);
+  if (target === 'app-store') {
+    commandArgs.push(
+      '-colorspace',
+      'sRGB',
+      '-strip',
+      '-sampling-factor',
+      '4:4:4',
+      '-quality',
+      '94',
+      outputPath,
+    );
+  } else {
+    commandArgs.push('-quality', '90', '-define', 'webp:method=6', outputPath);
+  }
+
   run('magick', commandArgs);
+}
+
+function outputNameForTarget({ feature, theme, target }) {
+  if (target === 'app-store') {
+    return `${appStoreNames[feature.id] ?? feature.id}.jpg`;
+  }
+
+  return `${feature.id}-${theme}.webp`;
 }
 
 async function captureFeature({ feature, theme, runId, assetRoot }) {
@@ -450,7 +601,9 @@ async function captureFeature({ feature, theme, runId, assetRoot }) {
   await wait(450);
 
   postFixture({ fixture: feature.fixture, theme, assetRoot, runId });
-  await wait(feature.fixture === 'custom-prompts' ? 1600 : 1100);
+  const fixtureDelay =
+    feature.fixture === 'custom-prompts' ? 1600 : feature.fixture === 'offline-ai' ? 1900 : 1100;
+  await wait(fixtureDelay);
 
   if (feature.fixture === 'smart-tags') {
     await openFinderInfo(path.join(assetRoot, 'wedding.jpg'));
@@ -460,14 +613,28 @@ async function captureFeature({ feature, theme, runId, assetRoot }) {
 
   await wait(300);
   await waitForMainWindow();
+  activateZushForCapture();
+  await wait(160);
+  focusZushSidebarWithTab();
+  await wait(300);
 
   const captureDir = path.join(tempRoot, runId, `${feature.id}-${theme}`);
   fs.mkdirSync(captureDir, { recursive: true });
   const captures = captureWindowsForFeature(feature, captureDir);
-  const outputPath = path.join(outputDir, `${feature.id}-${theme}.webp`);
-  fs.mkdirSync(outputDir, { recursive: true });
-  renderComposite({ feature, theme, captures, outputPath });
-  return outputPath;
+  const outputs = [];
+
+  for (const target of selectedTargets) {
+    if (target === 'app-store' && theme !== 'light') {
+      continue;
+    }
+
+    const outputPath = path.join(outputDirs[target], outputNameForTarget({ feature, theme, target }));
+    fs.mkdirSync(outputDirs[target], { recursive: true });
+    renderComposite({ feature, theme, captures, outputPath, target });
+    outputs.push(outputPath);
+  }
+
+  return outputs;
 }
 
 async function main() {
@@ -493,9 +660,11 @@ async function main() {
     await wait(2500);
     for (const theme of selectedThemes) {
       for (const feature of selectedFeatures) {
-        const output = await captureFeature({ feature, theme, runId, assetRoot });
-        outputs.push(output);
-        console.log(`Wrote ${path.relative(repoRoot, output)}`);
+        const featureOutputs = await captureFeature({ feature, theme, runId, assetRoot });
+        outputs.push(...featureOutputs);
+        for (const output of featureOutputs) {
+          console.log(`Wrote ${path.relative(repoRoot, output)}`);
+        }
       }
     }
   } finally {
