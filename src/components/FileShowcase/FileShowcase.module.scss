@@ -6,7 +6,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding: 1.25rem;
+    padding: 1rem 0.75rem;
     overflow: visible;
 
     @include mobile {
@@ -119,9 +119,14 @@
 
     &__After {
         font-size: 0.9rem;
-        font-weight: 700;
+        line-height: 1.25;
+        font-weight: 600;
         color: var(--foreground);
-        @include text-ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        overflow-wrap: anywhere;
     }
 
     &_static {
