@@ -76,22 +76,22 @@ const RenameVideosWithAI = () => (
     showcaseSlides={[
       {
         files: [
-          { before: 'Screen Recording 2026-05-08.mov', after: 'Checkout Flow Bug Recording.mov', img: VIDEO_PREVIEW_IMAGES.checkoutFlowBugRecording, type: 'video' },
-          { before: 'GX010114.MP4', after: 'Product Demo Hero Animation.mp4', img: VIDEO_PREVIEW_IMAGES.productDemoHeroAnimation, type: 'video' },
-          { before: 'clip_final_v3.m4v', after: 'Launch Trailer Cutdown.m4v', img: VIDEO_PREVIEW_IMAGES.launchTrailerCutdown, type: 'video' },
-          { before: 'meeting_export_001.mp4', after: 'Roadmap Review Highlights.mp4', img: VIDEO_PREVIEW_IMAGES.roadmapReviewHighlights, type: 'video' },
-          { before: 'tutorial_capture_04.mov', after: 'Tutorial Voiceover Walkthrough.mov', img: VIDEO_PREVIEW_IMAGES.tutorialVoiceoverWalkthrough, type: 'video' },
-          { before: 'tutorial_cover_take_03.mpg', after: 'Tutorial Cover Frame.mpg', img: VIDEO_PREVIEW_IMAGES.tutorialCoverFrame, type: 'video' },
+          { before: 'VID_20260507_184233.mp4', after: 'Dog Training Park Session.mp4', img: VIDEO_PREVIEW_IMAGES.dogTrainingParkSession, type: 'video' },
+          { before: 'gallery_walk_042.mov', after: 'Museum Exhibit Walkthrough.mov', img: VIDEO_PREVIEW_IMAGES.museumExhibitWalkthrough, type: 'video' },
+          { before: 'warmup_final_export.mp4', after: 'Fitness Class Warmup Clip.mp4', img: VIDEO_PREVIEW_IMAGES.fitnessClassWarmupClip, type: 'video' },
+          { before: 'ceremony_cam_b.m4v', after: 'Wedding Ceremony Entrance.m4v', img: VIDEO_PREVIEW_IMAGES.weddingCeremonyEntrance, type: 'video' },
+          { before: 'podcast_cut_001.ts', after: 'Podcast Studio Multicam Cut.ts', img: VIDEO_PREVIEW_IMAGES.podcastStudioMulticamCut, type: 'video' },
+          { before: 'cafe_bts_07.mp4', after: 'Cafe Product Shoot Behind Scenes.mp4', img: VIDEO_PREVIEW_IMAGES.cafeProductShootBehindScenes, type: 'video' },
         ],
       },
       {
         files: [
-          { before: 'VID_20260507_184233.mp4', after: 'Cafe Product Shoot Behind Scenes.mp4', img: VIDEO_PREVIEW_IMAGES.cafeProductShootBehindScenes, type: 'video' },
-          { before: 'demo_take_02.mov', after: 'Settings Sidebar Walkthrough.mov', img: VIDEO_PREVIEW_IMAGES.settingsSidebarWalkthrough, type: 'video' },
-          { before: 'recording-12.ts', after: 'Conference Talk Intro.ts', img: VIDEO_PREVIEW_IMAGES.conferenceTalkIntro, type: 'video' },
-          { before: 'camera-roll-0091.m2ts', after: 'Factory Tour Assembly Line.m2ts', img: VIDEO_PREVIEW_IMAGES.factoryTourAssembly, type: 'video' },
-          { before: 'archive_clip_17.3gp', after: 'Mobile Vertical Product Teaser.3gp', img: VIDEO_PREVIEW_IMAGES.mobileVerticalProductTeaser, type: 'video' },
-          { before: 'camcorder_import.dv', after: 'Workshop Camera Angle.dv', img: VIDEO_PREVIEW_IMAGES.workshopCameraAngle, type: 'video' },
+          { before: 'unbox_take_03.mp4', after: 'Product Unboxing Tabletop Shot.mp4', img: VIDEO_PREVIEW_IMAGES.productUnboxingTabletopShot, type: 'video' },
+          { before: 'lecture_recording_12.mov', after: 'Classroom Whiteboard Lecture.mov', img: VIDEO_PREVIEW_IMAGES.classroomWhiteboardLecture, type: 'video' },
+          { before: 'beach_timelapse_v2.mpg', after: 'Travel Beach Sunset Timelapse.mpg', img: VIDEO_PREVIEW_IMAGES.travelBeachSunsetTimelapse, type: 'video' },
+          { before: 'stream_highlight_009.mp4', after: 'Gaming Stream Boss Fight Clip.mp4', img: VIDEO_PREVIEW_IMAGES.gamingStreamBossFightClip, type: 'video' },
+          { before: 'lighting_test_final.mov', after: 'Music Video Lighting Test.mov', img: VIDEO_PREVIEW_IMAGES.musicVideoLightingTest, type: 'video' },
+          { before: 'factory_import_091.m2ts', after: 'Factory Assembly Line Tour.m2ts', img: VIDEO_PREVIEW_IMAGES.factoryTourAssembly, type: 'video' },
         ],
       },
     ]}
