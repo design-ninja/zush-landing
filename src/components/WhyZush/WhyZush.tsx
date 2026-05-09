@@ -1,7 +1,7 @@
 import {
-  Camera,
   Check,
   DollarSign,
+  Files,
   History,
   Monitor,
   Zap,
@@ -9,6 +9,7 @@ import {
 import Heading from '@/components/Heading';
 import SectionHeader from '@/components/SectionHeader';
 import Text from '@/components/Text';
+import { APP_CONFIG } from '@/constants';
 import { useOS } from '@/hooks/useOS';
 import type { WhyZushCopy } from '@/i18n/copy';
 import type { DownloadOS } from '@/utils/download';
@@ -22,13 +23,24 @@ const pricingTrustItems = [
 const formatPills = [
   'avif',
   'raw',
+  'heic',
+  'psd',
+  'pdf',
   'docx',
+  'xlsx',
+  'pptx',
   'srt',
+  'vtt',
   'mp4',
   'mov',
   'm2ts',
-  'vtt',
 ];
+const supportedFormatCount = new Set([
+  ...APP_CONFIG.image_extensions,
+  ...APP_CONFIG.document_extensions,
+  ...APP_CONFIG.video_extensions,
+]).size;
+const hiddenFormatCount = supportedFormatCount - formatPills.length;
 
 const renameExamples = [
   {
@@ -246,7 +258,7 @@ const WhyZush = ({ forceOS, platformSpecificCopy = false, copy = defaultCopy }: 
           <article className={`${styles.Card} ${styles.Card_formats}`}>
             <div className={styles.Card__Header}>
               <div className={styles.Card__Icon}>
-                <Camera size={24} />
+                <Files size={24} />
               </div>
               <span className={styles.Card__Eyebrow}>{copy.formatsEyebrow}</span>
             </div>
@@ -264,6 +276,9 @@ const WhyZush = ({ forceOS, platformSpecificCopy = false, copy = defaultCopy }: 
                   {pill}
                 </span>
               ))}
+              <span className={styles.FormatPills__Item}>
+                +{hiddenFormatCount} more
+              </span>
             </div>
           </article>
 
