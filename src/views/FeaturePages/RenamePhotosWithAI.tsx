@@ -5,7 +5,7 @@ const faqItems = [
   {
     question: 'Does Zush support RAW photo formats from different camera brands?',
     answer:
-      'Yes. Zush supports RAW files from Canon (CR2, CR3), Nikon (NEF), Sony (ARW, SR2, SRW), Fuji (RAF), Olympus (ORF), Panasonic (RW2), Pentax (PEF), and Adobe DNG. It reads embedded previews to understand image content without needing to decode the full RAW data.',
+      'Yes. Zush supports RAW files from Canon (CR2, CR3), Nikon (NEF), Sony (ARW, SR2, SRW), Fuji (RAF), Olympus (ORF), Panasonic (RW2), Pentax (PEF), Adobe DNG, and generic RAW extensions. It reads embedded previews to understand image content without needing to decode the full RAW data.',
   },
   {
     question: 'Can Zush handle HEIC files from my iPhone?',
@@ -37,7 +37,7 @@ const jsonLd = buildFeaturePageJsonLd({
     steps: [
       {
         name: 'Import your photos',
-        text: 'Drag and drop photos into Zush or point it at a folder. Zush supports JPG, HEIC, PNG, TIFF, and all major RAW formats from Canon, Nikon, Sony, Fuji, and more.',
+        text: 'Drag and drop photos into Zush or point it at a folder. Zush supports 42 image formats, including JPG, PNG, WebP, AVIF, HEIC/HEIF, TIFF, PSD, SVG, EXR, icons, and major RAW formats from Canon, Nikon, Sony, Fuji, and more.',
       },
       {
         name: 'AI describes each photo',
@@ -55,12 +55,13 @@ const jsonLd = buildFeaturePageJsonLd({
     description:
       'AI photo renamer that replaces IMG_, HEIC, and RAW filenames with searchable descriptions for photo libraries, imports, and client shoots.',
     featureList: [
-      'Rename HEIC, JPG, PNG, and major RAW photo formats',
+      'Rename 42 image formats including HEIC, AVIF, JPG, PNG, WebP, PSD, SVG, TIFF, and major RAW formats',
       'Generate searchable names for iPhone and camera imports',
       'Batch rename entire photo libraries',
       'Automatic duplicate-safe naming with sequences',
       'Custom patterns with dates and AI descriptions',
       'Folder monitoring for ongoing photo workflows',
+      'Batch review for up to 50 files at a time',
     ],
   },
 });
@@ -107,6 +108,7 @@ const RenamePhotosWithAI = () => (
     faqItems={faqItems}
     relatedPages={[
       { title: 'Rename Screenshots with AI', href: '/rename-screenshots-with-ai' },
+      { title: 'Rename Videos with AI', href: '/rename-videos-with-ai' },
       { title: 'Rename PDFs with AI', href: '/rename-pdf-with-ai' },
       { title: 'Zush for Mac', href: '/mac' },
     ]}

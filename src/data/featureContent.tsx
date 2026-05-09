@@ -15,7 +15,7 @@ import {
 import type { UseCaseData } from '@/components/UseCases/UseCases';
 import type { Locale } from '@/i18n/config';
 
-export type FeatureCategory = 'general' | 'image' | 'document' | 'screenshot' | 'photo' | 'pdf';
+export type FeatureCategory = 'general' | 'image' | 'document' | 'screenshot' | 'photo' | 'pdf' | 'video';
 
 // ---------- USE CASES PER CATEGORY ----------
 
@@ -361,6 +361,75 @@ const photoUseCases: UseCaseData[] = [
   },
 ];
 
+const videoUseCases: UseCaseData[] = [
+  {
+    icon: Video,
+    title: 'Video Creators',
+    description: (
+      <>
+        Screen recordings, reels, and production clips get names based on
+        <strong> sampled frames, visible context, and subtitles</strong>.
+      </>
+    ),
+    color: 'pink',
+  },
+  {
+    icon: Megaphone,
+    title: 'Marketing Teams',
+    description: (
+      <>
+        Product demos, ad variations, and launch clips stay searchable by
+        <strong> campaign, topic, and scene</strong>.
+      </>
+    ),
+    color: 'orange',
+  },
+  {
+    icon: Code,
+    title: 'Product Teams',
+    description: (
+      <>
+        Bug recordings and UX walkthroughs are named by
+        <strong> app, flow, and issue</strong> instead of camera-roll timestamps.
+      </>
+    ),
+    color: 'green',
+  },
+  {
+    icon: GraduationCap,
+    title: 'Educators',
+    description: (
+      <>
+        Lecture clips, tutorials, and course exports are labeled by
+        <strong> subject, lesson, and visible topic</strong>.
+      </>
+    ),
+    color: 'blue',
+  },
+  {
+    icon: Briefcase,
+    title: 'Client Teams',
+    description: (
+      <>
+        Meeting recordings, review clips, and approvals become easier to file by
+        <strong> client, project, and action</strong>.
+      </>
+    ),
+    color: 'purple',
+  },
+  {
+    icon: Monitor,
+    title: 'Support & QA',
+    description: (
+      <>
+        Reproduction videos and support captures get descriptive names that
+        <strong> preserve the visible problem</strong>.
+      </>
+    ),
+    color: 'cyan',
+  },
+];
+
 // ---------- CATEGORY LOOKUP ----------
 
 const useCasesMap: Record<FeatureCategory, { title: string; description: string; items: UseCaseData[] }> = {
@@ -393,6 +462,11 @@ const useCasesMap: Record<FeatureCategory, { title: string; description: string;
     title: 'Who Uses AI Photo Renaming',
     description: 'Photographers and creators who need organized, searchable photo libraries',
     items: photoUseCases,
+  },
+  video: {
+    title: 'Who Uses AI Video Renaming',
+    description: 'Creators, product teams, and operators who need searchable clips and recordings',
+    items: videoUseCases,
   },
 };
 
@@ -442,6 +516,14 @@ const categoryItemMeta: Record<Exclude<FeatureCategory, 'general'>, Array<Pick<U
     { icon: Building2, color: 'green' },
     { icon: Megaphone, color: 'pink' },
     { icon: Image, color: 'cyan' },
+  ],
+  video: [
+    { icon: Video, color: 'pink' },
+    { icon: Megaphone, color: 'orange' },
+    { icon: Code, color: 'green' },
+    { icon: GraduationCap, color: 'blue' },
+    { icon: Briefcase, color: 'purple' },
+    { icon: Monitor, color: 'cyan' },
   ],
 };
 

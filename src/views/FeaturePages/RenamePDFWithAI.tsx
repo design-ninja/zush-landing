@@ -13,9 +13,9 @@ const faqItems = [
       'Zush uses a built-in PDF parser to read the embedded text layer. It pulls out key information like titles, headings, dates, and names from the first few pages, then sends that context to the AI to generate a meaningful filename.',
   },
   {
-    question: 'Can I rename hundreds of invoices at once?',
+    question: 'Can I rename a folder of invoices at once?',
     answer:
-      'Absolutely. Zush handles batch renaming, so you can drop an entire folder of invoices and have them all renamed in one go. The AI identifies vendor names, amounts, and dates to create consistent, sortable filenames.',
+      'Yes. Zush handles batch review for up to 50 files at a time, so you can drop a folder of invoices, review the generated names, and apply them in one pass. The AI identifies vendor names, amounts, and dates to create consistent, sortable filenames.',
   },
   {
     question: 'Will renaming affect the PDF content or bookmarks?',
@@ -68,6 +68,7 @@ const jsonLd = buildFeaturePageJsonLd({
       'Rename PDF files by document content',
       'Support for scanned PDFs via AI vision',
       'Batch rename invoices, contracts, and reports',
+      'Review up to 50 PDFs in one batch',
       'PDF-specific patterns for vendors, counterparties, dates, and document types',
       'Comparison workflow for Finder, Preview, and Adobe Acrobat users',
       'Automatic folder monitoring for repeating PDF workflows',
@@ -119,6 +120,7 @@ const RenamePDFWithAI = () => (
     faqItems={faqItems}
     relatedPages={[
       { title: 'Rename Documents with AI', href: '/rename-documents-with-ai' },
+      { title: 'Rename Videos with AI', href: '/rename-videos-with-ai' },
       { title: 'Rename Photos with AI', href: '/rename-photos-with-ai' },
       { title: 'Rename Screenshots with AI', href: '/rename-screenshots-with-ai' },
     ]}

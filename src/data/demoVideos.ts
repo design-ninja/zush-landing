@@ -31,7 +31,7 @@ export const DEMO_VIDEOS: DemoVideoAsset[] = [
   {
     id: 'batch-rename',
     title: 'Batch Rename',
-    description: 'Rename multiple files at once with AI',
+    description: 'Rename up to 50 mixed files at once with AI',
     sources: {
       light: '/videos/zush-batch-rename.mp4',
       dark: '/videos/zush-batch-rename-dark.mp4',
@@ -44,7 +44,7 @@ export const DEMO_VIDEOS: DemoVideoAsset[] = [
   {
     id: 'monitor',
     title: 'Folder Monitoring',
-    description: 'Automatically rename new files as they appear',
+    description: 'Automatically rename selected file types as they appear',
     sources: {
       light: '/videos/zush-monitor.mp4',
       dark: '/videos/zush-monitor-dark.mp4',
@@ -122,7 +122,7 @@ export const DEMO_VIDEOS: DemoVideoAsset[] = [
   {
     id: 'offline-ai',
     title: 'Offline AI mode',
-    description: 'Process supported files offline with private local models via Ollama',
+    description: 'Process supported files offline after Ollama setup checks pass',
     sources: {
       light: '/videos/zush-ollama.mp4',
       dark: '/videos/zush-ollama-dark.mp4',

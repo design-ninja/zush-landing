@@ -16,6 +16,7 @@ import RenameDocumentsWithAI from '@/views/FeaturePages/RenameDocumentsWithAI';
 import RenamePDFWithAI from '@/views/FeaturePages/RenamePDFWithAI';
 import RenamePhotosWithAI from '@/views/FeaturePages/RenamePhotosWithAI';
 import RenameScreenshotsWithAI from '@/views/FeaturePages/RenameScreenshotsWithAI';
+import RenameVideosWithAI from '@/views/FeaturePages/RenameVideosWithAI';
 import ThankYouView from '@/views/ThankYou';
 import { buildFeatureBreadcrumbJsonLd } from '@/utils/jsonLd';
 import {
@@ -40,6 +41,7 @@ const FEATURE_VIEWS = {
   '/rename-documents-with-ai': RenameDocumentsWithAI,
   '/rename-screenshots-with-ai': RenameScreenshotsWithAI,
   '/rename-photos-with-ai': RenamePhotosWithAI,
+  '/rename-videos-with-ai': RenameVideosWithAI,
 } as const;
 
 export function getStaticPaths() {

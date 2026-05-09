@@ -14,6 +14,8 @@ import useCaseStyles from '@/components/UseCases/UseCases.module.scss';
 
 const imageFormatCount = APP_CONFIG.image_extensions.length;
 const documentFormatCount = APP_CONFIG.document_extensions.length;
+const videoFormatCount = APP_CONFIG.video_extensions.length;
+const totalFormatCount = imageFormatCount + documentFormatCount + videoFormatCount;
 const proCredits = APP_CONFIG.pro_limit.toLocaleString('en-US');
 
 const facts = [
@@ -32,7 +34,7 @@ const facts = [
   {
     icon: Languages,
     title: 'Broad file coverage',
-    description: `60+ filename languages, ${imageFormatCount} image and RAW formats, and ${documentFormatCount} document formats.`,
+    description: `60+ filename languages and ${totalFormatCount} supported image, document, and video formats.`,
     color: 'purple',
   },
 ];
@@ -54,7 +56,7 @@ const sourceLinks = [
         <span style="color: var(--secondary)">Zush</span> product facts
       </Heading>
       <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>
-        A desktop AI file renamer for Mac and Windows: screenshots, PDFs, photos, and office documents by content, with batch review, folder monitoring, BYOK, Offline AI mode, and one-click revert.
+        A desktop AI file renamer for Mac and Windows: screenshots, videos, PDFs, photos, and office documents by content, with batch review, folder monitoring, BYOK, Offline AI mode, and one-click revert.
       </Text>
     </div>
 

@@ -553,7 +553,7 @@ const t: Partial<Record<SetupLocale, SetupLocaleText>> = {
       openDownloadPage: 'Ollama のダウンロードページを開く',
       steps: [
         { title: 'Ollama をインストール', body: '公式サイトから macOS 版 Ollama をダウンロードしてインストールし、一度開いてローカルサーバーを起動します。' },
-        { title: 'Vision モデルをダウンロード', body: '画像、スクリーンショット、PDF、プレビューを扱うため、Vision 対応モデルが最適です。まずは次を使います:', command: `ollama pull ${modelNames.speed}` },
+        { title: 'Vision モデルをダウンロード', body: '画像、スクリーンショット、動画フレーム、PDF、プレビューを扱うため、Vision 対応モデルが最適です。まずは次を使います:', command: `ollama pull ${modelNames.speed}` },
         { title: 'Ollama が動作しているか確認', body: 'Ollama は通常バックグラウンドで動作します。Zush が接続できない場合は Terminal で起動します:', command: 'ollama serve' },
         { title: 'Zush でオフライン AI を有効化', body: 'Zush を開き、AI Setup で Offline AI mode を有効にし、モデル一覧を更新してモデルを選び、Test を実行します。' },
       ],
@@ -619,7 +619,7 @@ const t: Partial<Record<SetupLocale, SetupLocaleText>> = {
       openDownloadPage: 'Ollama 다운로드 페이지 열기',
       steps: [
         { title: 'Ollama 설치', body: '공식 웹사이트에서 macOS용 Ollama를 다운로드해 설치하고, 로컬 서버가 시작되도록 앱을 한 번 여세요.' },
-        { title: '비전 모델 다운로드', body: 'Zush는 이미지, 스크린샷, PDF, 미리보기를 이해하는 비전 모델과 가장 잘 작동합니다. 먼저 다음을 사용하세요:', command: `ollama pull ${modelNames.speed}` },
+        { title: '비전 모델 다운로드', body: 'Zush는 이미지, 스크린샷, 비디오 프레임, PDF, 미리보기를 이해하는 비전 모델과 가장 잘 작동합니다. 먼저 다음을 사용하세요:', command: `ollama pull ${modelNames.speed}` },
         { title: 'Ollama 실행 확인', body: 'Ollama는 보통 백그라운드에서 실행됩니다. Zush가 연결하지 못하면 터미널에서 시작하세요:', command: 'ollama serve' },
         { title: 'Zush에서 오프라인 AI 활성화', body: 'Zush를 열고 AI Setup에서 Offline AI mode를 켠 뒤 모델 목록을 새로고침하고 모델을 선택한 후 Test를 실행하세요.' },
       ],
@@ -685,7 +685,7 @@ const t: Partial<Record<SetupLocale, SetupLocaleText>> = {
       openDownloadPage: '打开 Ollama 下载页面',
       steps: [
         { title: '安装 Ollama', body: '从官方网站下载 macOS 版 Ollama，完成安装后打开一次应用，让本地服务器启动。' },
-        { title: '下载视觉模型', body: 'Zush 最适合搭配能理解图片、截图、PDF 和预览的视觉模型。建议先使用：', command: `ollama pull ${modelNames.speed}` },
+        { title: '下载视觉模型', body: 'Zush 最适合搭配能理解图片、截图、视频帧、PDF 和预览的视觉模型。建议先使用：', command: `ollama pull ${modelNames.speed}` },
         { title: '确认 Ollama 正在运行', body: 'Ollama 通常会在后台运行。如果 Zush 无法连接，可在终端启动：', command: 'ollama serve' },
         { title: '在 Zush 中启用离线 AI', body: '打开 Zush，进入 AI Setup，开启 Offline AI mode，刷新模型列表，选择模型并运行 Test。' },
       ],

@@ -97,7 +97,7 @@ Zuletzt aktualisiert: 26. April 2026
 
 ### 1. Beschreibung des Dienstes
 
-Zush ist ein Desktop-Dienstprogramm für macOS und Windows, das Nutzern hilft, Dateien mithilfe künstlicher Intelligenz (KI) zu organisieren, umzubenennen und Metadaten zu verwalten. Zu den Funktionen gehören automatische Umbenennung für Bilder und unterstützte Dokumente einschließlich PDFs, smarte Metadaten-Tags (Finder-Tags auf macOS, Dateieigenschaften auf Windows und Spotlight-Metadaten), Ordnerüberwachung, optionale benutzerdefinierte KI-Prompt-Steuerung für Umbenennung und Tagging, BYOK-Cloud-Verarbeitung und Offline-KI-Modus mit privaten lokalen Modellen via Ollama.
+Zush ist ein Desktop-Dienstprogramm für macOS und Windows, das Nutzern hilft, Dateien mithilfe künstlicher Intelligenz (KI) zu organisieren, umzubenennen und Metadaten zu verwalten. Zu den Funktionen gehören automatische Umbenennung für Bilder, Videos und unterstützte Dokumente einschließlich PDFs, smarte Metadaten-Tags (Finder-Tags auf macOS, Dateieigenschaften auf Windows und Spotlight-Metadaten), Ordnerüberwachung, optionale benutzerdefinierte KI-Prompt-Steuerung für Umbenennung und Tagging, BYOK-Cloud-Verarbeitung und Offline-KI-Modus mit privaten lokalen Modellen via Ollama.
 
 ### 2. Softwarelizenz
 
@@ -459,7 +459,7 @@ Se você tiver dúvidas sobre esta Política de Privacidade, entre em contato: [
 
 ### 1. Descrição do Serviço
 
-Zush é um utilitário desktop para macOS e Windows criado para ajudar usuários a organizar, renomear e gerenciar metadados de arquivos usando inteligência artificial (IA). Os recursos incluem renomeação automática para imagens e documentos compatíveis, incluindo PDFs, tags inteligentes de metadados (tags do Finder no macOS, propriedades de arquivo no Windows e metadados do Spotlight), monitoramento de pastas, controles opcionais de prompts personalizados para renomeação e tags, processamento cloud BYOK e modo IA offline com modelos locais privados via Ollama.
+Zush é um utilitário desktop para macOS e Windows criado para ajudar usuários a organizar, renomear e gerenciar metadados de arquivos usando inteligência artificial (IA). Os recursos incluem renomeação automática para imagens, vídeos e documentos compatíveis, incluindo PDFs, tags inteligentes de metadados (tags do Finder no macOS, propriedades de arquivo no Windows e metadados do Spotlight), monitoramento de pastas, controles opcionais de prompts personalizados para renomeação e tags, processamento cloud BYOK e modo IA offline com modelos locais privados via Ollama.
 
 ### 2. Licença de software
 
@@ -640,7 +640,7 @@ Si tienes preguntas sobre esta Política de privacidad, contáctanos en: [suppor
 
 ### 1. Descripción del Servicio
 
-Zush es una utilidad de escritorio para macOS y Windows diseñada para ayudar a organizar, renombrar y gestionar metadatos de archivos con inteligencia artificial (IA). Las funciones incluyen renombrado automático para imágenes y documentos compatibles, incluidos PDF, etiquetado inteligente de metadatos (tags de Finder en macOS, propiedades de archivo en Windows y metadatos Spotlight), monitoreo de carpetas, controles opcionales de prompts personalizados para renombrado y etiquetado, procesamiento cloud BYOK y modo IA offline con modelos locales privados mediante Ollama.
+Zush es una utilidad de escritorio para macOS y Windows diseñada para ayudar a organizar, renombrar y gestionar metadatos de archivos con inteligencia artificial (IA). Las funciones incluyen renombrado automático para imágenes, videos y documentos compatibles, incluidos PDF, etiquetado inteligente de metadatos (tags de Finder en macOS, propiedades de archivo en Windows y metadatos Spotlight), monitoreo de carpetas, controles opcionales de prompts personalizados para renombrado y etiquetado, procesamiento cloud BYOK y modo IA offline con modelos locales privados mediante Ollama.
 
 ### 2. Licencia de software
 
@@ -821,7 +821,7 @@ Laatst bijgewerkt: 26 april 2026
 
 ### 1. Beschrijving van de Dienst
 
-Zush is een desktoptool voor macOS en Windows die gebruikers helpt bestanden te organiseren, hernoemen en metadata te beheren met kunstmatige intelligentie (AI). Functies omvatten automatische hernoeming voor afbeeldingen en ondersteunde documenten inclusief PDF's, slimme metadatatags (Finder-tags op macOS, bestandseigenschappen op Windows en Spotlight-metadata), mapbewaking, optionele aangepaste AI-promptinstellingen voor hernoeming en tagging, BYOK-cloudverwerking en Offline AI met private lokale modellen via Ollama.
+Zush is een desktoptool voor macOS en Windows die gebruikers helpt bestanden te organiseren, hernoemen en metadata te beheren met kunstmatige intelligentie (AI). Functies omvatten automatische hernoeming voor afbeeldingen, video’s en ondersteunde documenten inclusief PDF's, slimme metadatatags (Finder-tags op macOS, bestandseigenschappen op Windows en Spotlight-metadata), mapbewaking, optionele aangepaste AI-promptinstellingen voor hernoeming en tagging, BYOK-cloudverwerking en Offline AI met private lokale modellen via Ollama.
 
 ### 2. Softwarelicentie
 
@@ -1002,7 +1002,7 @@ Ultimo aggiornamento: 26 aprile 2026
 
 ### 1. Descrizione del Servizio
 
-Zush è un’utilità desktop per macOS e Windows progettata per aiutare gli utenti a organizzare, rinominare e gestire metadati dei file usando intelligenza artificiale (IA). Le funzioni includono rinomina automatica per immagini e documenti supportati, inclusi PDF, tagging intelligente dei metadati (tag Finder su macOS, proprietà file su Windows e metadati Spotlight), monitoraggio cartelle, controlli opzionali di prompt IA personalizzati per rinomina e tagging, elaborazione cloud BYOK e modalità IA offline con modelli locali privati via Ollama.
+Zush è un’utilità desktop per macOS e Windows progettata per aiutare gli utenti a organizzare, rinominare e gestire metadati dei file usando intelligenza artificiale (IA). Le funzioni includono rinomina automatica per immagini, video e documenti supportati, inclusi PDF, tagging intelligente dei metadati (tag Finder su macOS, proprietà file su Windows e metadati Spotlight), monitoraggio cartelle, controlli opzionali di prompt IA personalizzati per rinomina e tagging, elaborazione cloud BYOK e modalità IA offline con modelli locali privati via Ollama.
 
 ### 2. Licenza software
 
@@ -1545,7 +1545,7 @@ Zush 会将文件分析 payload 发送给第三方 AI 服务进行分析：
 
 ### 1. 服务说明
 
-Zush 是一款适用于 macOS 和 Windows 的桌面工具，旨在帮助用户使用人工智能（AI）整理、重命名和管理文件元数据。功能包括对图片和支持的文档（包括 PDF）进行自动重命名、智能元数据标签（macOS 上的 Finder 标签、Windows 上的文件属性以及 Spotlight 元数据）、文件夹监控、用于重命名和标签行为的可选自定义 AI 提示词控制、BYOK 云端处理，以及通过 Ollama 的私有本地模型实现的离线 AI 模式。
+Zush 是一款适用于 macOS 和 Windows 的桌面工具，旨在帮助用户使用人工智能（AI）整理、重命名和管理文件元数据。功能包括对图片、视频和支持的文档（包括 PDF）进行自动重命名、智能元数据标签（macOS 上的 Finder 标签、Windows 上的文件属性以及 Spotlight 元数据）、文件夹监控、用于重命名和标签行为的可选自定义 AI 提示词控制、BYOK 云端处理，以及通过 Ollama 的私有本地模型实现的离线 AI 模式。
 
 ### 2. 软件许可
 

@@ -90,7 +90,7 @@ const Hero = ({
           </Heading>
           <Text size="xl" color="subtle" className={styles.Hero__Subtitle}>
             {subtitle ??
-              "Blazing fast AI file renamer for Mac and Windows. Auto-rename screenshots, PDFs, and documents with meaningful names — folder watching, BYOK, and offline AI built in."}
+              "Blazing fast AI file renamer for Mac and Windows. Auto-rename screenshots, videos, PDFs, photos, and documents with meaningful names — folder watching, BYOK, and offline AI built in."}
           </Text>
 
           <div className={styles.Hero__Buttons}>

@@ -1,12 +1,13 @@
 import { CSSProperties, useEffect, useState } from "react";
-import { FileSpreadsheet, FileText, FileType2, Presentation } from "lucide-react";
+import { FileSpreadsheet, FileText, FileType2, Film, Presentation } from "lucide-react";
+import { VIDEO_PREVIEW_IMAGES } from "@/data/videoPreviewImages";
 import styles from "./FileShowcase.module.scss";
 
 export interface FileItem {
   before: string;
   after: string;
   img?: string;
-  type: "image" | "doc" | "sheet" | "slides" | "pdf";
+  type: "image" | "doc" | "sheet" | "slides" | "pdf" | "video";
 }
 
 export interface Slide {
@@ -43,10 +44,10 @@ const defaultSlides: Slide[] = [
         type: "pdf",
       },
       {
-        before: "Screenshot 2024-08-08 at 09.14.25.png",
-        after: "Technical Dashboard.png",
-        img: "/images/examples/dashboard.jpg",
-        type: "image",
+        before: "demo_take_02.mov",
+        after: "Settings Sidebar Walkthrough.mov",
+        img: VIDEO_PREVIEW_IMAGES.settingsSidebarWalkthrough,
+        type: "video",
       },
     ],
   },
@@ -79,10 +80,10 @@ const defaultSlides: Slide[] = [
         type: "pdf",
       },
       {
-        before: "received_1847362910.jpeg",
-        after: "Delicious Asian Style Beef.jpeg",
-        img: "/images/examples/food.jpg",
-        type: "image",
+        before: "Screen Recording 2026-05-08.mov",
+        after: "Checkout Flow Bug Recording.mov",
+        img: VIDEO_PREVIEW_IMAGES.checkoutFlowBugRecording,
+        type: "video",
       },
     ],
   },
@@ -115,10 +116,10 @@ const defaultSlides: Slide[] = [
         type: "image",
       },
       {
-        before: "CAM00847.jpg",
-        after: "Black Ford Mustang.jpg",
-        img: "/images/examples/car.jpg",
-        type: "image",
+        before: "camera_roll_0091.m2ts",
+        after: "Factory Tour Assembly.m2ts",
+        img: VIDEO_PREVIEW_IMAGES.factoryTourAssembly,
+        type: "video",
       },
     ],
   },
@@ -129,6 +130,7 @@ const fileTypeConfig = {
   sheet: { icon: FileSpreadsheet, label: "XLSX", className: styles.FileItem__Preview_sheet },
   slides: { icon: Presentation, label: "PPTX", className: styles.FileItem__Preview_slides },
   pdf: { icon: FileType2, label: "PDF", className: styles.FileItem__Preview_pdf },
+  video: { icon: Film, label: "MP4", className: styles.FileItem__Preview_video },
 } as const;
 type NonImageFileType = Exclude<FileItem['type'], 'image'>;
 
@@ -183,7 +185,7 @@ const FileShowcase = ({ slides: customSlides }: FileShowcaseProps = {}) => {
               className={`${styles.FileItem} ${prefersReducedMotion ? styles.FileItem_static : ""}`}
               style={itemStyle}
             >
-              {file.type === "image" && file.img ? (
+              {file.img ? (
                 <picture>
                   <source
                     srcSet={file.img.replace(/\.jpg$/i, ".webp")}

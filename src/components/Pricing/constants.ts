@@ -51,13 +51,13 @@ export const PRO_PLAN: Plan = {
     },
     {
       title: 'Folders Monitor',
-      desc: 'Auto-rename new files as they land in watched folders',
+      desc: 'Auto-rename new files in watched folders with file-type exclusions',
       icon: FolderPlus,
       groupBreakBefore: true,
     },
     {
       title: 'Smart Naming & Metadata',
-      desc: 'Customize naming patterns and auto-tag files with Finder metadata',
+      desc: 'Customize naming patterns, Finder tags, and Spotlight metadata',
       icon: Tags,
     },
     {
@@ -72,7 +72,7 @@ export const PRO_PLAN: Plan = {
     },
     {
       title: 'Quick Rename Shortcut',
-      desc: 'Rename selected files in Finder with a keyboard shortcut',
+      desc: 'Rename selected files from Finder with a context menu or keyboard shortcut',
       icon: Command,
     },
   ],

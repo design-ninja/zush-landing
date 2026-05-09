@@ -1,6 +1,6 @@
 ---
 title: "Automate File Organization on Mac: 2026 Workflow Guide"
-description: "Set up Mac file automation with Smart Folders, Hazel, Automator, Shortcuts and AI renaming for Downloads, screenshots, PDFs and photos."
+description: "Set up Mac file automation with Smart Folders, Hazel, Automator, Shortcuts and AI renaming for Downloads, screenshots, videos, PDFs and photos."
 date: "2026-02-25"
 slug: "automate-file-organization-macos"
 platform: "mac"
@@ -13,11 +13,11 @@ reviewed: "2026-05-01"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: use Smart Folders to see the mess, Hazel or Automator to route predictable files, and AI renaming for screenshots, PDFs, documents, photos, and downloads that need content-aware names.
+Quick answer: use Smart Folders to see the mess, Hazel or Automator to route predictable files, and AI renaming for screenshots, videos, PDFs, documents, photos, and downloads that need content-aware names.
 
 If you want to automate file organization on macOS, start with one principle: do not automate everything the same way. Rule-based tools are good at moving files based on predictable conditions. AI is better at naming and classifying visual files whose content cannot be inferred from metadata alone.
 
-That is why the strongest setup on Mac is a mixed system. Use Smart Folders, Hazel, Automator, or Shortcuts for routing. Use [Zush](https://zushapp.com) when the real problem is screenshots, PDFs, documents, photos, and downloaded files arriving under useless names.
+That is why the strongest setup on Mac is a mixed system. Use Smart Folders, Hazel, Automator, or Shortcuts for routing. Use [Zush](https://zushapp.com) when the real problem is screenshots, videos, PDFs, documents, photos, and downloaded files arriving under useless names.
 
 This guide walks through every major approach to file automation on macOS, with setup steps, real examples, and a recommended combined workflow you can build in under an hour.
 
@@ -229,7 +229,7 @@ They fail when the file arrives as:
 
 A rule can move those files to a specific folder. It cannot explain what they contain. And without a descriptive name, you cannot find them later even if they are perfectly organized into folders.
 
-This is exactly where AI-based naming becomes useful. Tools that analyze file content -- the actual pixels in an image, the text in a PDF, the layout of a document -- can generate names that describe what the file actually is.
+This is exactly where AI-based naming becomes useful. Tools that analyze file content -- the actual pixels in an image, sampled frames from a video, the text in a PDF, the layout of a document -- can generate names that describe what the file actually is.
 
 For more on how AI file renaming works in practice, see our [AI File Renamer for Mac](/).
 
@@ -373,7 +373,7 @@ Automator is the older tool with more action types, shell script support, and Fo
 
 ### Can Hazel rename files based on their contents?
 
-Hazel can read text content inside PDFs and documents and use that in renaming rules. For example, you can extract a date or keyword from a PDF and include it in the filename. However, Hazel cannot analyze image contents -- it has no vision capability. For screenshots, photos, and other image files, you need an AI-based tool that can actually look at what is in the image.
+Hazel can read text content inside PDFs and documents and use that in renaming rules. For example, you can extract a date or keyword from a PDF and include it in the filename. However, Hazel cannot analyze image or video contents -- it has no vision capability. For screenshots, photos, screen recordings, and other visual files, you need an AI-based tool that can actually look at what is in the file.
 
 ### How do I stop my Downloads folder from getting cluttered?
 
