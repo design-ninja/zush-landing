@@ -20,7 +20,7 @@ type RouteSeoMeta = Omit<SeoMeta, 'canonicalPath'>;
 const DEFAULT_META: RouteSeoMeta = {
   title: 'Zush — Rename Files with AI on Mac & Windows',
   description:
-    'Rename screenshots, PDFs, photos and documents in seconds. Batch rename or watch folders on Mac and Windows. Free for 50 files, no signup.',
+    'Rename screenshots, videos, PDFs, photos and documents in seconds. Batch rename or watch folders on Mac and Windows. Free for 50 files, no signup.',
   robots: 'noindex, nofollow',
   ogType: 'website',
 };
@@ -29,7 +29,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/': {
     ...DEFAULT_META,
     title: 'Zush — AI File Renamer for Mac & Windows',
-    description: `AI file renamer for Mac and Windows. Rename screenshots, PDFs, photos, and documents in seconds with batch rename and folder monitoring. Free for ${APP_CONFIG.free_tier_limit} files.`,
+    description: `AI file renamer for Mac and Windows. Rename screenshots, videos, PDFs, photos, and documents in seconds with batch rename and folder monitoring. Free for ${APP_CONFIG.free_tier_limit} files.`,
     robots: 'index, follow',
   },
   '/changelog': {
@@ -105,7 +105,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/rename-documents-with-ai': {
     title: 'Rename Office Documents with AI · DOCX, XLSX, PPTX · Zush',
     description:
-      'Rename DOCX, XLSX, PPTX, TXT, CSV, and email files by their actual content. Zush turns Untitled.docx into Q1-revenue-report.docx automatically.',
+      'Rename DOCX, XLSX, PPTX, TXT, CSV, XML, YAML, subtitles, RTF, OpenDocument, and email files by their actual content.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -117,23 +117,30 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ogType: 'website',
   },
   '/rename-photos-with-ai': {
-    title: 'Rename Photos with AI on Mac · HEIC, RAW, JPG · Zush',
+    title: 'Rename Photos with AI on Mac · HEIC, RAW, AVIF · Zush',
     description:
-      'Stop renaming photos one by one. Zush reads HEIC, RAW, and JPG content to generate descriptive names like sunset-pacific-beach.heic across 23 image formats.',
+      'Stop renaming photos one by one. Zush reads HEIC, RAW, AVIF, PSD, JPG, and more to generate descriptive names like sunset-pacific-beach.heic.',
+    robots: 'index, follow',
+    ogType: 'website',
+  },
+  '/rename-videos-with-ai': {
+    title: 'Rename Videos with AI · MP4, MOV, Screen Recordings · Zush',
+    description:
+      'Rename MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, and VOB videos with AI using sampled frames and subtitle context.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/mac': {
     title: 'AI File Renamer for Mac · Apple Silicon + Intel · Zush',
     description:
-      'Rename screenshots, PDFs, photos, and documents on Mac with AI. Apple Silicon + Intel, signed .dmg or Mac App Store install, free starter, no subscription.',
+      'Rename screenshots, videos, PDFs, photos, and documents on Mac with AI. Apple Silicon + Intel, signed .dmg or Mac App Store install, free starter, no subscription.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/windows': {
     title: 'AI File Renamer for Windows · Microsoft Store · Zush',
     description:
-      'Rename screenshots, PDFs, photos, and documents on Windows with AI in seconds. Microsoft Store install, automatic updates, free starter, no subscription.',
+      'Rename screenshots, videos, PDFs, photos, and documents on Windows with AI in seconds. Microsoft Store install, automatic updates, free starter, no subscription.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -161,6 +168,7 @@ export const FEATURE_ROUTES = [
   '/rename-documents-with-ai',
   '/rename-screenshots-with-ai',
   '/rename-photos-with-ai',
+  '/rename-videos-with-ai',
 ] as const;
 
 function normalizePath(pathname: string): string {
@@ -249,7 +257,7 @@ export const HOME_JSON_LD = {
       url: SITE_ORIGIN,
       name: 'Zush - AI File Renamer for Mac & Windows',
       description:
-        'Zush is an AI file renamer for Mac and Windows that renames screenshots, PDFs, photos, and documents with batch rename, folder monitoring, BYOK, and Offline AI mode.',
+        'Zush is an AI file renamer for Mac and Windows that renames screenshots, videos, PDFs, photos, and documents with batch rename, folder monitoring, BYOK, and Offline AI mode.',
       isPartOf: {
         '@id': `${SITE_ORIGIN}/#website`,
       },
@@ -287,7 +295,7 @@ export const HOME_JSON_LD = {
         '@id': `${SITE_ORIGIN}/#webpage`,
       },
       description:
-        'AI-powered file organization app for macOS and Windows. Automatically renames images, PDFs, and documents using advanced AI with smart metadata and folder monitoring.',
+        'AI-powered file organization app for macOS and Windows. Automatically renames images, videos, PDFs, and documents using advanced AI with smart metadata and folder monitoring.',
       applicationCategory: 'UtilitiesApplication',
       applicationSubCategory: 'File Management',
       operatingSystem: ['macOS 14.0+', 'Windows 10', 'Windows 11'],
@@ -322,6 +330,7 @@ export const HOME_JSON_LD = {
         'Smart metadata extraction',
         'Custom naming patterns',
         'Batch rename support',
+        'Video analysis with sampled frames and subtitles',
         'RAW format support',
         'PDF and document analysis',
         '60+ language support',

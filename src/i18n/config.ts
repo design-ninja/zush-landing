@@ -164,6 +164,7 @@ export const INDEXABLE_LOCALIZED_ROUTES = [
   '/rename-documents-with-ai',
   '/rename-screenshots-with-ai',
   '/rename-photos-with-ai',
+  '/rename-videos-with-ai',
   '/mac',
   '/windows',
   '/methodology',
@@ -196,6 +197,7 @@ const LANDING_LOCALIZED_ROUTES = [
   '/rename-documents-with-ai',
   '/rename-screenshots-with-ai',
   '/rename-photos-with-ai',
+  '/rename-videos-with-ai',
   '/mac',
   '/windows',
 ] as const;

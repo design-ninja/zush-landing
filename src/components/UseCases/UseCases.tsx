@@ -97,8 +97,7 @@ const defaultUseCases: UseCaseData[] = [
     description: (
       <>
         Organize <strong>massive photo libraries</strong> effortlessly.
-        Supports <strong>pro RAW formats</strong> like CR2, NEF, ARW, DNG, RAF,
-        RW2, and more.
+        Supports <strong>RAW, HEIC, AVIF, PSD, and other image formats</strong>.
       </>
     ),
     color: 'blue',
@@ -133,12 +132,12 @@ const defaultUseCases: UseCaseData[] = [
     title: 'Content Creators',
     description: (
       <>
-        Thumbnails, b-roll references, and visual assets for your content —{' '}
+        Thumbnails, b-roll clips, screen recordings, and visual assets for your content —{' '}
         <strong>all neatly organized</strong>.
       </>
     ),
     color: 'pink',
-    href: '/',
+    href: '/rename-videos-with-ai',
   },
   {
     icon: Briefcase,

@@ -1,7 +1,7 @@
 import {
-  Camera,
   Check,
   DollarSign,
+  Files,
   History,
   Monitor,
   Zap,
@@ -9,6 +9,7 @@ import {
 import Heading from '@/components/Heading';
 import SectionHeader from '@/components/SectionHeader';
 import Text from '@/components/Text';
+import { APP_CONFIG } from '@/constants';
 import { useOS } from '@/hooks/useOS';
 import type { WhyZushCopy } from '@/i18n/copy';
 import type { DownloadOS } from '@/utils/download';
@@ -20,15 +21,26 @@ const pricingTrustItems = [
   '↩️ 14-day refund',
 ];
 const formatPills = [
-  'cr2',
-  'nef',
-  'arw',
-  'dng',
-  'raf',
-  'rw2',
-  'orf',
-  'pef',
+  'avif',
+  'raw',
+  'heic',
+  'psd',
+  'pdf',
+  'docx',
+  'xlsx',
+  'pptx',
+  'srt',
+  'vtt',
+  'mp4',
+  'mov',
+  'm2ts',
 ];
+const supportedFormatCount = new Set([
+  ...APP_CONFIG.image_extensions,
+  ...APP_CONFIG.document_extensions,
+  ...APP_CONFIG.video_extensions,
+]).size;
+const hiddenFormatCount = supportedFormatCount - formatPills.length;
 
 const renameExamples = [
   {
@@ -40,8 +52,8 @@ const renameExamples = [
     newName: 'acme-invoice-april-2026.pdf',
   },
   {
-    oldName: 'IMG_20260410_143205.jpg',
-    newName: 'sunset-bali-beach-walk.jpg',
+    oldName: 'Screen Recording 2026-05-08.mov',
+    newName: 'checkout-flow-bug-recording.mov',
   },
 ];
 
@@ -69,9 +81,9 @@ const defaultCopy: WhyZushCopy = {
   speedEyebrow: 'Sssupafast!',
   speedTitle: 'Renames happen in seconds',
   speedDescription: 'Speed matters because cleanup only sticks if it does not interrupt the real work. Drop files in, review, apply, move on.',
-  formatsEyebrow: 'Pro photo support',
-  formatsTitle: 'Native RAW support for photographers',
-  formatsDescription: 'Supports professional camera formats like CR2, NEF, ARW, DNG, RAF, and RW2, so photographers can rename imports by actual image content instead of living with `IMG_` chaos.',
+  formatsEyebrow: '91 supported formats',
+  formatsTitle: 'Images, documents, and videos',
+  formatsDescription: 'Supports AVIF, RAW, Office files, subtitles, and common video formats, so mixed folders can be renamed by actual content instead of file-type silos.',
   controlEyebrow: 'Low-risk automation',
   controlTitle: 'Batch, monitor, and undo',
   controlDescription: 'Clean up old piles in batch, keep new folders readable with monitoring, and revert from history if you want a different name.',
@@ -246,7 +258,7 @@ const WhyZush = ({ forceOS, platformSpecificCopy = false, copy = defaultCopy }: 
           <article className={`${styles.Card} ${styles.Card_formats}`}>
             <div className={styles.Card__Header}>
               <div className={styles.Card__Icon}>
-                <Camera size={24} />
+                <Files size={24} />
               </div>
               <span className={styles.Card__Eyebrow}>{copy.formatsEyebrow}</span>
             </div>
@@ -264,6 +276,9 @@ const WhyZush = ({ forceOS, platformSpecificCopy = false, copy = defaultCopy }: 
                   {pill}
                 </span>
               ))}
+              <span className={styles.FormatPills__Item}>
+                +{hiddenFormatCount} more
+              </span>
             </div>
           </article>
 

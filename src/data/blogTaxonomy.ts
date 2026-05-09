@@ -3,6 +3,7 @@ const BLOG_PUBLIC_TAG_ORDER = [
   'automation',
   'file-organization',
   'photos',
+  'videos',
   'screenshots',
   'pdf-documents',
   'tool-comparisons',
@@ -30,10 +31,10 @@ export const BLOG_PUBLIC_TAGS: Record<BlogPublicTagSlug, BlogPublicTagMeta> = {
     slug: 'ai-file-renaming',
     label: 'AI File Renaming',
     description:
-      'Guides and explainers on using AI to rename files, screenshots, photos, and documents',
+      'Guides and explainers on using AI to rename files, screenshots, videos, photos, and documents',
     seoTitle: 'AI File Renaming Guides & Workflows — Zush Blog',
     seoDescription:
-      'Browse Zush guides on AI file renaming across screenshots, photos, PDFs, and mixed-file workflows on desktop.',
+      'Browse Zush guides on AI file renaming across screenshots, videos, photos, PDFs, and mixed-file workflows on desktop.',
   },
   automation: {
     slug: 'automation',
@@ -61,6 +62,15 @@ export const BLOG_PUBLIC_TAGS: Record<BlogPublicTagSlug, BlogPublicTagMeta> = {
     seoTitle: 'Photo Naming & Organization Guides — Zush Blog',
     seoDescription:
       'Photo naming, photo organization, and image workflow guides for photographers, creators, and desktop users.',
+  },
+  videos: {
+    slug: 'videos',
+    label: 'Videos',
+    description:
+      'Video filename workflows for screen recordings, clips, b-roll, subtitles, and searchable media libraries',
+    seoTitle: 'Video File Naming & Organization Guides — Zush Blog',
+    seoDescription:
+      'Guides for renaming videos, screen recordings, b-roll, clips, and subtitle-backed media files with AI.',
   },
   screenshots: {
     slug: 'screenshots',

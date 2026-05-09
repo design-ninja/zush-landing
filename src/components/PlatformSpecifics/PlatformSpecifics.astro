@@ -12,6 +12,7 @@ import {
   FileText,
   FileSpreadsheet,
   FileType2,
+  Film,
   Presentation,
   Folder,
   ArrowDown,
@@ -77,6 +78,7 @@ const FILE_TYPE_META: Record<Exclude<ScenarioFileType, 'image'>, { Icon: typeof 
   sheet: { Icon: FileSpreadsheet, label: 'XLSX', modifier: 'sheet' },
   slides: { Icon: Presentation, label: 'PPTX', modifier: 'slides' },
   pdf: { Icon: FileType2, label: 'PDF', modifier: 'pdf' },
+  video: { Icon: Film, label: 'MP4', modifier: 'video' },
 };
 
 const launchPlatformLabel = isMac ? 'macOS' : 'Windows';
@@ -335,11 +337,10 @@ const previewReviewRows = data.scenarios.slice(0, 2).map((scenario) => ({
       <div class={styles.ScenarioGrid}>
         {data.scenarios.map((scenario) => {
           const meta = scenario.fileType !== 'image' ? FILE_TYPE_META[scenario.fileType] : null;
-          const isImage = scenario.fileType === 'image';
           return (
             <article class={styles.ScenarioCard}>
               <div class={styles.FileItem}>
-                {isImage && scenario.image ? (
+                {scenario.image ? (
                   <img
                     class={styles.FileItem__Image}
                     src={scenario.image}

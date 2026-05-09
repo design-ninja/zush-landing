@@ -1,6 +1,6 @@
 ---
 title: "How to Rename Files with Ollama on Mac (Offline AI Guide)"
-description: "Set up Ollama on Mac and use Zush Offline AI mode to rename screenshots, PDFs, photos, and documents with private local AI models."
+description: "Set up Ollama on Mac and use Zush Offline AI mode to rename screenshots, videos, PDFs, photos, and documents with private local AI models."
 date: "2026-04-28"
 slug: "rename-files-with-ollama-mac"
 platform: "mac"
@@ -15,7 +15,7 @@ import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
 Quick answer: rename files locally on Mac with Ollama by installing Ollama, pulling a vision model like LLaVA, then enabling Offline AI mode in Zush. Files never leave your device and there are no API costs.
 
-Mac users finally have a practical way to rename files with AI without routing supported analysis content through a cloud provider. Zush Offline AI mode connects to Ollama, which runs a local model on your Mac and returns filename suggestions for screenshots, images, PDFs, and supported documents.
+Mac users finally have a practical way to rename files with AI without routing supported analysis content through a cloud provider. Zush Offline AI mode connects to Ollama, which runs a local model on your Mac and returns filename suggestions for screenshots, videos, images, PDFs, and supported documents.
 
 This guide is for the Mac release. Windows support is coming soon, but this article does not assume the Windows setup flow is public yet. For the current app page, see [Zush for Mac](/mac). For the broader product surface, see [AI File Renamer](/). For the short setup reference, open the [Ollama setup guide](/ollama-setup).
 
@@ -31,7 +31,7 @@ You need three pieces:
 
 Ollama's download page lists macOS 14 Sonoma or later as the macOS requirement. Zush for Mac is built for modern macOS workflows with Finder, Spotlight-friendly metadata, batch rename, folder monitoring, and one-click rename history.
 
-The important part is the model. Text-only models are not enough for file renaming because many files are visual: screenshots, photos, scans, and document previews. Start with a small vision model before trying anything large.
+The important part is the model. Text-only models are not enough for file renaming because many files are visual: screenshots, videos, photos, scans, and document previews. Start with a small vision model before trying anything large.
 
 ## Step 1: install Ollama
 

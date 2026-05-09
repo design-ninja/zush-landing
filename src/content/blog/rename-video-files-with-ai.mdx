@@ -1,0 +1,155 @@
+---
+title: "How to Rename Video Files with AI: MP4, MOV, Clips and Subtitles"
+description: "Learn how AI video renaming works for MP4, MOV, screen recordings, clips, subtitle sidecars, and mixed media folders."
+date: "2026-05-09"
+slug: "rename-video-files-with-ai"
+platform: "general"
+topic: "videos"
+tags:
+  - "AI File Renaming"
+  - "Videos"
+  - "File Naming"
+tldr: "AI video renaming works by sampling frames from a video, combining that visual context with subtitle files when available, and turning vague names like VID_20260507_184233.mp4 into searchable filenames."
+reviewed: "2026-05-09"
+---
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Quick answer: rename video files with AI by using a tool that can inspect sampled frames and optional subtitle context, then preview names before applying them. In Zush 2.0, MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, VOB, and related video formats can be renamed alongside photos, screenshots, PDFs, and documents.
+
+Video files are often the worst named files in a working folder. Cameras create names like `VID_20260507_184233.mp4`. Screen recorders create names like `Screen Recording 2026-05-08 at 11.42.19.mov`. Export tools create names like `final_export_v7.mp4`. None of those names tell you what is in the clip.
+
+AI video renaming fixes that by looking at representative frames from the video and using them to generate a descriptive filename. If a subtitle sidecar is present, the AI can use that text as supporting context too. The result is a filename like `checkout-flow-bug-recording.mov`, `factory-tour-assembly-line.m2ts`, or `product-demo-settings-sidebar.mp4`.
+
+If you want the dedicated product page, start with [Rename Videos with AI](/rename-videos-with-ai).
+
+<BlogProductIntro />
+
+## What AI video renaming does
+
+Traditional batch rename tools only see the current filename. They can replace text, add dates, or append counters, but they cannot tell whether a video shows a cafe product shoot, a software walkthrough, or a conference talk.
+
+AI video renaming uses visual understanding instead. A good workflow:
+
+- samples frames from the video timeline
+- reads sidecar subtitles such as `.srt` or `.vtt` when available
+- asks a multimodal model to infer the subject, setting, and purpose
+- generates a short, searchable filename
+- lets you review the result before changing files on disk
+
+The key is that the AI does not need to upload or inspect every frame. Representative samples are usually enough to identify the main content of a short clip, screen recording, or b-roll file.
+
+## Before and after examples
+
+| Original filename | AI-generated filename |
+|---|---|
+| `VID_20260507_184233.mp4` | `cafe-product-shoot-behind-scenes.mp4` |
+| `demo_take_02.mov` | `settings-sidebar-walkthrough.mov` |
+| `Screen Recording 2026-05-08.mov` | `checkout-flow-bug-recording.mov` |
+| `camera_roll_0091.m2ts` | `factory-tour-assembly-line.m2ts` |
+| `recording_12.ts` | `conference-talk-intro.ts` |
+| `launch_demo.srt` | `launch-demo-subtitles.srt` |
+
+The goal is not to write a perfect title. The goal is to make the file identifiable in Finder, File Explorer, Spotlight, Windows Search, cloud sync folders, and project archives.
+
+## Which video formats are supported in Zush
+
+Zush 2.0 supports 16 common video formats:
+
+`mp4`, `mov`, `qt`, `m4v`, `mpeg`, `mpg`, `m2v`, `3gp`, `3gpp`, `3g2`, `3gp2`, `dv`, `ts`, `mts`, `m2ts`, and `vob`.
+
+That covers common phone videos, screen recordings, QuickTime exports, camera clips, transport stream files, and older DVD-style video sources. Zush also supports subtitle files such as `.srt` and `.vtt` through its document pipeline, so a folder can contain both the video and its subtitle context.
+
+Audio-only formats are not part of the supported file list yet. If your folder is mostly MP3, WAV, or podcast audio, you still need an audio-specific workflow.
+
+## Why sampled frames are enough
+
+Most video files contain repeated visual context. A screen recording of a settings panel shows the same app for much of the clip. A product shoot shows the same subject across multiple angles. A talk recording has slides, speaker frames, or title cards.
+
+Sampling a few frames gives the AI enough signal to infer:
+
+- the broad category of the video
+- visible UI or product context
+- location or scene
+- subject matter
+- whether the clip is a demo, recording, b-roll, tutorial, or event capture
+
+For longer videos, the name should describe the whole file rather than one exact timestamp. A filename like `factory-tour-assembly-line.m2ts` is more useful than a hyper-specific name based on one sampled frame.
+
+## When subtitles help
+
+Subtitle sidecars can improve naming when the visuals are ambiguous. For example, a screen recording may show a presentation slide, while the subtitles explain that the topic is onboarding analytics. A talking-head video may have little visual variety, but the transcript gives the topic.
+
+Use subtitles as supporting context, not as the whole filename. Good names stay concise:
+
+- `launch-demo-subtitles.vtt`
+- `conference-talk-product-roadmap.mp4`
+- `onboarding-analytics-walkthrough.mov`
+
+Avoid copying a long subtitle sentence into the filename. Long filenames are harder to scan and easier to break in synced folders.
+
+## A practical workflow
+
+### 1. Stage messy video files
+
+Put the files with weak names in a staging folder first. This keeps the review focused and avoids renaming finished deliverables that already have approved names.
+
+### 2. Drop the folder into Zush
+
+Zush can process mixed folders, so your video folder can include `.mp4`, `.mov`, `.m2ts`, `.srt`, `.vtt`, screenshots, PDFs, and notes. Batch review supports up to 50 files at a time.
+
+### 3. Review names before applying
+
+Do not skip review for video files. A sampled-frame model can usually identify the content, but clips with similar visuals may need a small edit. The preview step is where you catch that.
+
+### 4. Keep naming patterns simple
+
+For video files, these patterns usually work:
+
+- `{title}`
+- `{category}-{title}`
+- `{date}-{title}`
+- `{project}-{title}`
+
+If your workflow includes many clients, use a client or project prefix. If you are organizing a personal media library, the title alone is often enough.
+
+### 5. Use history if something needs to change
+
+AI renaming should be reversible. Zush keeps rename history so you can restore original names if a batch needs another pass.
+
+## Best use cases
+
+AI video renaming is especially useful for:
+
+- screen recordings
+- product demos
+- tutorial clips
+- creator b-roll
+- event footage
+- conference talks
+- QA recordings
+- software walkthroughs
+- camera imports with sequential names
+
+It is less useful when your video files already have production-approved names, strict episode IDs, or media asset manager IDs that must not change.
+
+## FAQ
+
+### Can AI rename a video without watching the whole file?
+
+Yes. A practical video renamer samples representative frames and uses them as context. It does not need every frame to create a useful descriptive filename.
+
+### Does Zush rename audio-only files?
+
+Not yet. Zush 2.0 adds video support, but audio-only formats are still outside the supported file list.
+
+### Can I rename videos and documents together?
+
+Yes. Zush is built for mixed desktop folders. A batch can include videos, subtitles, screenshots, PDFs, Office documents, and images, then show one preview list before applying names.
+
+### Should I include subtitles in the same folder?
+
+Yes, if you have them. Sidecar subtitle files can provide helpful context for talks, tutorials, demos, and videos where the visuals alone are not enough.
+
+## Getting started
+
+The fastest test is a folder of 10 to 20 video files with weak names. Drop it into [Zush](/rename-videos-with-ai), review the suggested names, and apply only the names that make the files easier to find. If the workflow helps, add folder monitoring for the places where new recordings or camera imports land.

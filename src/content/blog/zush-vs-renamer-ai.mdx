@@ -16,7 +16,7 @@ import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
-Quick answer: Zush is a one-time <BlogHighlight>$10</BlogHighlight> Mac and Windows desktop app with 23 image formats (incl. RAW), folder monitoring, undo, and free BYOK. Renamer.ai is a desktop + web subscription at <BlogHighlight>$9.95-99.95/month</BlogHighlight> ($120-$1,200/year) focused on document OCR with 30+ formats. Pick by pricing model and whether you need RAW photo support.
+Quick answer: Zush is a one-time <BlogHighlight>$10</BlogHighlight> Mac and Windows desktop app with 91 supported image, document, and video formats, folder monitoring, undo, and free BYOK. Renamer.ai is a desktop + web subscription at <BlogHighlight>$9.95-99.95/month</BlogHighlight> ($120-$1,200/year) focused on document OCR with 30+ formats. Pick by pricing model and whether you need RAW photo or video support.
 
 If you are searching "Zush vs Renamer.ai", you are usually deciding between two paid AI file renamers that both run on Mac and Windows. The answer depends mostly on three things: how you prefer to pay, what file types land in your folders, and whether OCR-driven document renaming is your core use case.
 
@@ -30,8 +30,9 @@ If you are searching "Zush vs Renamer.ai", you are usually deciding between two 
 | Free tier | 50 renames to start | 25 files/month |
 | 5-year cost (10K/yr) | <BlogHighlight>$10 total</BlogHighlight> | $597–$5,997 |
 | Platforms | Mac + Windows desktop | Desktop (Mac/Win) + Web |
-| Image formats | 23 (incl. RAW + HEIC) | ~7 (no RAW) |
-| Document formats | 11 | ~12 (incl. EML, EPS, AI, SVG) |
+| Image formats | 42 (incl. RAW + HEIC + AVIF) | ~7 (no RAW) |
+| Document formats | 33 | ~12 (incl. EML, EPS, AI, SVG) |
+| Video formats | 16 common formats | Not a core advertised workflow |
 | OCR | Yes | Yes (advertised core) |
 | Folder monitoring | Yes | Yes (Magic Folders) |
 | Undo / rollback | Yes (full history) | Yes |
@@ -47,7 +48,7 @@ If you are searching "Zush vs Renamer.ai", you are usually deciding between two 
 
 ![Zush AI rename results showing files with descriptive before and after names and green checkmarks](/images/showcase/macos/batch-rename-light.webp)
 
-Zush is a native desktop AI file renamer for both Mac and Windows. It supports 23 image formats — including HEIC plus camera RAW (CR2, CR3, NEF, ARW, DNG, ORF, RAF, RW2, PEF, SRW, SR2) — and 11 document formats (PDF, DOCX, XLSX, PPT, PPTX, TXT, MD, JSON, EML, CSV, DOC).
+Zush is a native desktop AI file renamer for both Mac and Windows. Version 2.0 supports 91 formats: 42 image formats including HEIC, AVIF, PSD, SVG, TIFF, and camera RAW; 33 document formats including PDF, Office, OpenDocument, text, CSV/TSV, JSON, XML/YAML, EML, SRT, and VTT; and 16 common video formats including MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, and VOB.
 
 Pricing is one-time: <BlogHighlight>$10</BlogHighlight> for 10,000 renames. After that, BYOK with Gemini, Groq, OpenAI, or Claude removes the cap entirely at the AI provider's per-request cost (typically fractions of a cent per file). There is also an Offline AI mode via Ollama on supported Mac builds, where files never leave the device.
 
@@ -89,9 +90,9 @@ Zush's public format list includes 11 RAW variants: CR2, CR3 (Canon), NEF (Nikon
 
 If you are a photographer or anyone with `IMG_4382.HEIC` or `_DSC0019.NEF` files in your library, Zush is the cleaner fit. If your folders are mostly Word, Excel, PowerPoint, scanned PDFs, and EML emails, Renamer.ai's document-first emphasis is solid.
 
-### Renamer.ai covers more vector + email formats
+### Renamer.ai covers more vector formats
 
-On the document side, Renamer.ai supports a few formats Zush does not list explicitly: EPS, AI (Adobe Illustrator), and EML for email. Zush supports EML in its document list but not EPS / AI. If those matter to your workflow, Renamer.ai is broader there.
+On the document/vector side, Renamer.ai supports a few formats Zush does not list explicitly: EPS and AI (Adobe Illustrator). Zush supports EML in its document list but not EPS / AI. If those vector files matter to your workflow, Renamer.ai is broader there; if your folders include screen recordings or clips, Zush has the clearer video workflow.
 
 ### Both handle the common case
 
@@ -146,7 +147,7 @@ Yes by a large margin. Zush is $10 one-time. Renamer.ai's cheapest paid tier is 
 
 ### Does Renamer.ai support RAW photos like CR2 or NEF?
 
-The format list on Renamer.ai's public site does not include camera RAW formats. If you shoot RAW, Zush is the safer pick — its 23-format list explicitly covers CR2, CR3, NEF, ARW, DNG, ORF, RAF, RW2, PEF, SRW, and SR2.
+The format list on Renamer.ai's public site does not include camera RAW formats. If you shoot RAW, Zush is the safer pick — its image list explicitly covers CR2, CR3, NEF, ARW, DNG, ORF, RAF, RW2, PEF, SRW, SR2, and generic RAW extensions.
 
 ### Can I use my own OpenAI key with Renamer.ai?
 

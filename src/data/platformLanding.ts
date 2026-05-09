@@ -29,17 +29,17 @@ export const PLATFORM_LANDING_CONTENT: Record<DownloadOS, PlatformLandingContent
     breadcrumbLabel: 'Zush for Mac',
     softwareName: 'Zush for Mac',
     softwareDescription:
-      'AI-powered file renamer for macOS. Rename screenshots, PDFs, photos and documents with cloud AI or Offline AI mode via Ollama. Native Apple Silicon and Intel support.',
+      'AI-powered file renamer for macOS. Rename screenshots, videos, PDFs, photos and documents with cloud AI or Offline AI mode via Ollama. Native Apple Silicon and Intel support.',
     operatingSystem: 'macOS 14.0+',
     downloadUrl: DOWNLOAD_URL,
     heroTitle: 'AI File Renamer for Mac',
     heroSubtitle:
-      'Rename screenshots, PDFs, photos, and documents on macOS with AI. Use fast cloud models or Offline AI mode with private local models via Ollama.',
+      'Rename screenshots, videos, PDFs, photos, and documents on macOS with AI. Use fast cloud models or Offline AI mode with private local models via Ollama.',
     ctaSubtitle:
-      'Install the signed macOS app and start renaming screenshots, PDFs, photos, and documents in minutes.',
+      'Install the signed macOS app and start renaming screenshots, videos, PDFs, photos, and documents in minutes.',
     features: [
-      'AI-powered renaming for screenshots, PDFs, photos, documents',
-      'Folder monitoring for new files and recurring cleanup',
+      'AI-powered renaming for screenshots, videos, PDFs, photos, documents',
+      'Folder monitoring with file-type exclusions',
       'Batch rename with per-file regenerate',
       'Custom prompts for names and metadata tags',
       'One-click revert from the Activity log',
@@ -87,18 +87,18 @@ export const PLATFORM_LANDING_CONTENT: Record<DownloadOS, PlatformLandingContent
     breadcrumbLabel: 'Zush for Windows',
     softwareName: 'Zush for Windows',
     softwareDescription:
-      'AI-powered file renamer for Windows. Rename screenshots, PDFs, photos and documents with descriptive names. Distributed through the Microsoft Store with auto-updates.',
+      'AI-powered file renamer for Windows. Rename screenshots, videos, PDFs, photos and documents with descriptive names. Distributed through the Microsoft Store with auto-updates.',
     operatingSystem: ['Windows 10', 'Windows 11'],
     downloadUrl: WINDOWS_STORE_URL,
     installUrl: WINDOWS_STORE_URL,
     heroTitle: 'AI File Renamer for Windows',
     heroSubtitle:
-      'Rename screenshots, PDFs, photos, and documents on Windows with AI. Installs from the Microsoft Store with automatic updates, free to try with no signup.',
+      'Rename screenshots, videos, PDFs, photos, and documents on Windows with AI. Installs from the Microsoft Store with automatic updates, free to try with no signup.',
     ctaSubtitle:
-      'Open the Microsoft Store and start renaming screenshots, PDFs, photos, and documents with the full Windows build.',
+      'Open the Microsoft Store and start renaming screenshots, videos, PDFs, photos, and documents with the full Windows build.',
     features: [
-      'AI-powered renaming for screenshots, PDFs, photos, documents',
-      'Folder monitoring for new files and recurring cleanup',
+      'AI-powered renaming for screenshots, videos, PDFs, photos, documents',
+      'Folder monitoring with file-type exclusions',
       'Batch rename with per-file regenerate',
       'Custom prompts for names and metadata tags',
       'One-click revert from the Activity log',

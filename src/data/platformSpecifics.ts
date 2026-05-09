@@ -3,6 +3,7 @@ import {
   DOWNLOAD_URL,
   WINDOWS_STORE_URL,
 } from '@/constants';
+import { VIDEO_PREVIEW_IMAGES } from '@/data/videoPreviewImages';
 
 export type PlatformSpecificsKey = 'mac' | 'windows';
 export type SpecKey = 'operatingSystem' | 'processor' | 'memory' | 'diskSpace' | 'network' | 'permissions';
@@ -48,7 +49,7 @@ export interface QuickstartStep {
   preview: QuickstartPreviewKind;
 }
 
-export type ScenarioFileType = 'image' | 'doc' | 'sheet' | 'slides' | 'pdf';
+export type ScenarioFileType = 'image' | 'doc' | 'sheet' | 'slides' | 'pdf' | 'video';
 
 export interface ScenarioItem {
   title: string;
@@ -135,7 +136,7 @@ export const PLATFORM_SPECIFICS_CONTENT: Record<PlatformSpecificsKey, PlatformSp
       },
       {
         title: 'Drag a folder or files onto the dropzone',
-        detail: 'Try ~/Downloads or your Screenshots folder. Zush analyzes images and documents in parallel.',
+        detail: 'Try ~/Downloads or your Screenshots folder. Zush analyzes images, videos, and documents in parallel.',
         duration: '~20s',
         preview: 'drop',
       },
@@ -147,7 +148,7 @@ export const PLATFORM_SPECIFICS_CONTENT: Record<PlatformSpecificsKey, PlatformSp
       },
       {
         title: 'Add a watched folder for everyday cleanup',
-        detail: 'Open the Monitor tab → Add folder → pick ~/Downloads or your Screenshots folder. New files get descriptive names automatically.',
+        detail: 'Open the Monitor tab → Add folder → pick ~/Downloads or your Screenshots folder. New supported files get descriptive names automatically, and you can exclude file types you do not want processed.',
         duration: '~10s',
         preview: 'watch',
       },
@@ -156,7 +157,7 @@ export const PLATFORM_SPECIFICS_CONTENT: Record<PlatformSpecificsKey, PlatformSp
       {
         title: 'Finder workflow',
         description:
-          'Drag files or folders from Finder into Zush, review the generated names, then apply the rename in place.',
+          'Drag files or folders from Finder into Zush, or use Rename with Zush from the Finder context menu. Review generated names, then apply the rename in place.',
       },
       {
         title: 'Automation-ready folders',
@@ -221,6 +222,15 @@ export const PLATFORM_SPECIFICS_CONTENT: Record<PlatformSpecificsKey, PlatformSp
         image: '/images/examples/dog.webp',
       },
       {
+        title: 'Screen recordings and clips',
+        before: 'Screen Recording 2026-05-08.mov',
+        after: 'Checkout Flow Bug Recording.mov',
+        description:
+          'Zush samples video frames and optional subtitles so screen recordings, product demos, and b-roll clips become searchable without opening each file.',
+        fileType: 'video',
+        image: VIDEO_PREVIEW_IMAGES.checkoutFlowBugRecording,
+      },
+      {
         title: 'PDF invoices and contracts',
         before: 'scan_2026_03_19.pdf',
         after: 'Signed Service Agreement.pdf',
@@ -252,7 +262,7 @@ export const PLATFORM_SPECIFICS_CONTENT: Record<PlatformSpecificsKey, PlatformSp
       {
         title: 'Originals stay on-device',
         description:
-          'Cloud mode only sends the analysis payload (compressed preview or extracted text). Offline AI mode sends nothing — Ollama runs locally.',
+          'Cloud mode only sends the analysis payload (compressed preview, sampled video frames, subtitles, extracted text, or compact summary). Offline AI mode sends nothing — Ollama runs locally.',
       },
       {
         title: 'Secure key storage',
@@ -314,7 +324,7 @@ export const PLATFORM_SPECIFICS_CONTENT: Record<PlatformSpecificsKey, PlatformSp
       },
       {
         title: 'Watch a folder for ongoing cleanup',
-        detail: 'Open the Monitor tab → Add folder → pick Downloads or a OneDrive folder. New files get descriptive names automatically.',
+        detail: 'Open the Monitor tab → Add folder → pick Downloads or a OneDrive folder. New supported files get descriptive names automatically, and you can exclude file types you do not want processed.',
         duration: '~10s',
         preview: 'watch',
       },
@@ -385,6 +395,15 @@ export const PLATFORM_SPECIFICS_CONTENT: Record<PlatformSpecificsKey, PlatformSp
         description:
           'Save attachments into a Zush-watched folder. Word, Excel, and PowerPoint files get names from their actual content, not generic message IDs.',
         fileType: 'doc',
+      },
+      {
+        title: 'Screen recordings and clips',
+        before: 'recording-2026-05-08.mp4',
+        after: 'Product Demo Checkout Flow.mp4',
+        description:
+          'Zush samples video frames and optional subtitle context so recordings, demos, and clips get names that describe what is visible.',
+        fileType: 'video',
+        image: VIDEO_PREVIEW_IMAGES.checkoutFlowBugRecording,
       },
       {
         title: 'Receipts from PDF & scanner',

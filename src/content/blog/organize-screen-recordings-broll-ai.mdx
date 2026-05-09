@@ -1,0 +1,205 @@
+---
+title: "How to Organize Screen Recordings and B-Roll with AI"
+description: "A practical workflow for naming screen recordings, b-roll clips, tutorial exports, and video sidecars with AI."
+date: "2026-05-09"
+slug: "organize-screen-recordings-broll-ai"
+platform: "general"
+topic: "videos"
+tags:
+  - "Videos"
+  - "File Organization"
+  - "Automation"
+tldr: "Screen recordings and b-roll clips become searchable when their filenames describe the content, project, and purpose. AI can generate those names from sampled frames and subtitle context, then folder monitoring can keep new files organized."
+reviewed: "2026-05-09"
+---
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Quick answer: organize screen recordings and b-roll by naming each clip for what it shows, not when it was created. Use AI to turn files like `Screen Recording 2026-05-08.mov` and `camera_roll_0091.m2ts` into names like `checkout-flow-bug-recording.mov` and `factory-tour-assembly-line.m2ts`, then use folder monitoring so new clips are renamed as they arrive.
+
+Screen recordings and b-roll files pile up quickly because they are easy to create and annoying to name. You record a bug, export a demo, capture a tutorial step, or dump a camera card, then the files land under timestamp or sequence names. A week later, every clip looks the same in Finder or File Explorer.
+
+This is exactly the kind of workflow AI file renaming helps with. The file content is visual, the original names are weak, and searchability matters later.
+
+For the feature page, see [Rename Videos with AI](/rename-videos-with-ai).
+
+<BlogProductIntro />
+
+## The problem with video work folders
+
+Most video folders are not clean libraries. They are working folders:
+
+- screen recordings for bug reports
+- quick product demos for a team chat
+- b-roll clips for a YouTube edit
+- camera imports with sequential names
+- tutorial exports from QuickTime or OBS
+- subtitle files next to final clips
+- thumbnails, PDFs, and notes in the same project folder
+
+The folder may contain `Screen Recording 2026-05-08 at 11.54.43.mov`, `VID_184233.mp4`, `demo_take_02.mov`, `launch_demo.srt`, and `brief_notes.pdf`. The problem is not storage. The problem is retrieval. You cannot find the right file without opening half the folder.
+
+## A naming system that works
+
+Good video filenames are short, descriptive, and stable. They should answer three questions:
+
+1. What is the file about?
+2. What kind of clip is it?
+3. Does it belong to a project, client, or date-sensitive workflow?
+
+Useful examples:
+
+| Weak name | Better name |
+|---|---|
+| `Screen Recording 2026-05-08.mov` | `checkout-flow-bug-recording.mov` |
+| `demo_take_02.mov` | `settings-sidebar-walkthrough.mov` |
+| `VID_20260507_184233.mp4` | `cafe-product-shoot-broll.mp4` |
+| `camera_roll_0091.m2ts` | `factory-tour-assembly-line.m2ts` |
+| `recording_12.ts` | `conference-talk-intro.ts` |
+
+Use lowercase, hyphenated names when files move between systems. They are easy to scan, copy, and publish.
+
+## How AI helps with screen recordings
+
+Screen recordings are usually easy for AI to understand because they contain visible UI, text, and application context. A sampled frame might show:
+
+- a checkout page
+- a settings sidebar
+- an error dialog
+- a dashboard chart
+- a terminal command
+- a design review screen
+
+From that, the AI can generate a name that is far more useful than a timestamp. For QA and support teams, this is especially valuable because the filename can describe the actual bug or workflow.
+
+## How AI helps with b-roll
+
+B-roll is harder than screenshots because many clips are similar. A folder may contain dozens of clips from the same shoot. Still, AI can identify the broad scene and subject:
+
+- `cafe-product-shoot-broll.mp4`
+- `factory-tour-assembly-line.m2ts`
+- `conference-audience-wide-shot.mov`
+- `desk-setup-keyboard-closeup.mp4`
+- `warehouse-packing-process-broll.mov`
+
+That level of naming is enough to make an edit folder searchable. You can still add selects, ratings, or project-specific prefixes later.
+
+## Where subtitles fit
+
+Subtitles and transcripts help when visuals alone are not specific enough. A talking-head video may look like a person at a desk, but the subtitle file may reveal that the clip is about onboarding analytics or a Q2 roadmap.
+
+If you keep `.srt` or `.vtt` files next to video files, use names that connect them:
+
+- `product-roadmap-talk.mp4`
+- `product-roadmap-talk.srt`
+- `onboarding-analytics-demo.mov`
+- `onboarding-analytics-demo.vtt`
+
+Zush 2.0 can rename common video formats and also supports subtitle files as documents, so a mixed folder can be cleaned up in one workflow.
+
+## Folder monitoring for new recordings
+
+The best time to name a screen recording is when it lands. Waiting until the folder has 300 files makes the cleanup feel like a separate project.
+
+A practical setup:
+
+1. Create a folder for new recordings, such as `Recordings Inbox`.
+2. Point your screen recorder or export workflow at that folder.
+3. Add the folder to Zush monitoring.
+4. Exclude file types you do not want processed.
+5. Review the activity history when needed.
+
+This gives you automatic cleanup without losing control. New supported files get descriptive names, and the rename history remains available if something needs to be reverted.
+
+## Suggested folder structure
+
+For creators and product teams, start simple:
+
+```text
+Video Inbox/
+  recordings/
+  b-roll/
+  exports/
+  subtitles/
+  references/
+```
+
+Keep the inbox small. Move finished files into project folders after they have useful names.
+
+For larger projects:
+
+```text
+Project Name/
+  01-raw-clips/
+  02-screen-recordings/
+  03-b-roll/
+  04-subtitles/
+  05-final-exports/
+```
+
+AI renaming works best on `01-raw-clips`, `02-screen-recordings`, and `03-b-roll`, where the names are usually weakest.
+
+## Naming patterns by workflow
+
+### QA and bug reports
+
+Use a pattern that describes the product area and issue:
+
+- `checkout-flow-button-freeze.mov`
+- `settings-sidebar-layout-bug.mp4`
+- `login-error-message-recording.mov`
+
+### Product demos
+
+Use feature-first names:
+
+- `folder-monitoring-setup-demo.mp4`
+- `offline-ai-ollama-checks.mov`
+- `rename-history-undo-demo.mp4`
+
+### Creator b-roll
+
+Use subject and scene:
+
+- `cafe-product-shoot-broll.mp4`
+- `desk-setup-keyboard-closeup.mov`
+- `city-night-street-broll.m4v`
+
+### Events and talks
+
+Use topic and segment:
+
+- `conference-talk-opening-slide.ts`
+- `panel-discussion-audience-qa.mp4`
+- `workshop-intro-speaker-wide.mov`
+
+## Common mistakes
+
+**Overloading filenames.** Do not turn a transcript sentence into a filename. Keep names compact.
+
+**Renaming final deliverables without review.** Published videos may have names required by a client, CMS, or asset manager. Use AI renaming on raw and working folders first.
+
+**Ignoring sidecars.** Keep subtitles near the video file. They add context and make the project easier to move.
+
+**Skipping undo.** Video files can be large and important. Use a tool with rename history instead of a one-way script.
+
+## FAQ
+
+### Can AI organize b-roll perfectly?
+
+No. AI can produce useful descriptive names, but selects, ratings, and editorial judgment still belong to you. Use AI naming to make the folder searchable, not to replace editing decisions.
+
+### Should I rename every screen recording automatically?
+
+Only if the folder receives files you actually want processed. Zush monitoring supports file-type exclusions, so you can keep the workflow focused on supported files and avoid folders that should stay untouched.
+
+### Does this work on Mac and Windows?
+
+Yes. Zush supports Mac and Windows workflows. The folder names and recorder apps differ, but the core workflow is the same: capture, analyze, preview, rename, and keep history.
+
+### What if a video has no obvious visual context?
+
+Use subtitles or a custom prompt when possible. If a clip is visually ambiguous, a short manual edit during preview is still faster than naming every file from scratch.
+
+## Getting started
+
+Pick one folder where screen recordings or b-roll already pile up. Run a small batch through [Zush video renaming](/rename-videos-with-ai), apply only the useful names, and then decide whether monitoring should watch that folder going forward.

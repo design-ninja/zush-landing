@@ -5,7 +5,7 @@ const faqItems = [
   {
     question: 'What types of non-PDF documents can Zush rename?',
     answer:
-      'Zush supports Word documents (DOC, DOCX), Excel spreadsheets (XLSX), PowerPoint presentations (PPTX, PPT), plain text files, Markdown, CSV, JSON, and EML email files. The AI reads the content of each file to generate an appropriate name.',
+      'Zush supports 33 document formats: Word documents, Excel spreadsheets, PowerPoint presentations, text, Markdown, CSV/TSV, JSON, XML/YAML, subtitles (SRT/VTT), RTF, OpenDocument files, and EML email files. The AI reads the content of each file to generate an appropriate name.',
   },
   {
     question: 'How does Zush understand what a document is about?',
@@ -25,7 +25,7 @@ const faqItems = [
   {
     question: 'Can I use a separate workflow for PDFs and scans?',
     answer:
-      'Yes. Zush has a dedicated PDF workflow for invoices, contracts, and scans at the PDF page, while this page focuses on DOCX, XLSX, PPTX, TXT, CSV, and other document-heavy files.',
+      'Yes. Zush has a dedicated PDF workflow for invoices, contracts, and scans at the PDF page, while this page focuses on DOCX, XLSX, PPTX, TXT, CSV, subtitle files, email exports, and other document-heavy files.',
   },
 ];
 
@@ -37,7 +37,7 @@ const jsonLd = buildFeaturePageJsonLd({
     steps: [
       {
         name: 'Add your documents',
-        text: 'Drag and drop files or select a folder containing documents. Zush supports Word, Excel, PowerPoint, text files, email exports, and more.',
+        text: 'Drag and drop files or select a folder containing documents. Zush supports Word, Excel, PowerPoint, text files, subtitle files, email exports, OpenDocument files, and more.',
       },
       {
         name: 'AI extracts and analyzes text',
@@ -53,13 +53,14 @@ const jsonLd = buildFeaturePageJsonLd({
   software: {
     pagePath: '/rename-documents-with-ai',
     description:
-      'AI document renamer that reads DOCX, XLSX, PPTX, TXT, CSV, JSON, and email files to generate searchable filenames automatically.',
+      'AI document renamer that reads DOCX, XLSX, PPTX, TXT, CSV, JSON, subtitles, OpenDocument, and email files to generate searchable filenames automatically.',
     featureList: [
-      'Rename DOCX, XLSX, PPTX, TXT, CSV, JSON, and EML files',
+      'Rename 33 document formats including DOCX, XLSX, PPTX, TXT, CSV, JSON, SRT, VTT, and EML',
       'Extract document text, spreadsheet headers, and slide titles',
       'Batch rename document-heavy folders',
       'Custom naming patterns for client, date, and category',
       'Folder monitoring for ongoing document workflows',
+      'Batch review for up to 50 files at a time',
       'Undo and rename history',
     ],
   },
@@ -107,6 +108,7 @@ const RenameDocumentsWithAI = () => (
     faqItems={faqItems}
     relatedPages={[
       { title: 'Rename PDFs with AI', href: '/rename-pdf-with-ai' },
+      { title: 'Rename Videos with AI', href: '/rename-videos-with-ai' },
       { title: 'Rename Screenshots with AI', href: '/rename-screenshots-with-ai' },
       { title: 'Zush for Mac', href: '/mac' },
     ]}

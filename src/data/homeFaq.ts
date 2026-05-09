@@ -3,21 +3,22 @@ import { APP_CONFIG } from '@/constants';
 
 const imageExtensions = APP_CONFIG.image_extensions.map((e) => e.toUpperCase()).join(', ');
 const documentExtensions = APP_CONFIG.document_extensions.map((e) => e.toUpperCase()).join(', ');
+const videoExtensions = APP_CONFIG.video_extensions.map((e) => e.toUpperCase()).join(', ');
 
 export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'What is Zush?',
     answer:
-      'Zush is an intelligent desktop application for Mac and Windows that automates the tedious task of renaming files. Using advanced AI, it analyzes images and supported documents, including PDFs, to generate descriptive, meaningful filenames and metadata, helping you keep your library perfectly organized.',
+      'Zush is an intelligent desktop application for Mac and Windows that automates the tedious task of renaming files. Using advanced AI, it analyzes images, videos, and supported documents, including PDFs, to generate descriptive, meaningful filenames and metadata, helping you keep your library perfectly organized.',
   },
   {
     question: 'What file formats are supported?',
-    answer: `Zush supports visual formats: ${imageExtensions}. Supported document formats include ${documentExtensions}. SVG is supported too, so you can organize both visual assets and everyday documents in one workflow.`,
+    answer: `Zush supports visual formats: ${imageExtensions}. Supported document formats include ${documentExtensions}. Supported video formats include ${videoExtensions}. SVG is supported too, so you can organize visual assets, videos, and everyday documents in one workflow.`,
   },
   {
     question: 'How does Zush AI Rename work?',
     answer:
-      'AI Rename allows you to rename multiple files at once using artificial intelligence. Simply drag and drop a collection of files onto the Zush window, and they will be analyzed and renamed in seconds. You can review and regenerate individual file names before applying changes. Perfect for organizing screenshots, PDFs, docs, and downloads in one pass.',
+      'AI Rename allows you to rename up to 50 files at once using artificial intelligence. Simply drag and drop a collection of files onto the Zush window, and they will be analyzed and renamed in seconds. You can review and regenerate individual file names before applying changes. Perfect for organizing screenshots, videos, PDFs, docs, and downloads in one pass.',
   },
   {
     question: 'How does folder monitoring work?',
@@ -37,12 +38,12 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'Is my data secure?',
     answer:
-      'Your original files stay on your computer. In Cloud mode, Zush sends only the analysis payload needed for renaming, such as a compressed preview, extracted text, or compact summary, to the selected AI provider. In Offline AI mode, private local models via Ollama process supported files on your device and file analysis content is not sent to Zush cloud or third-party AI providers.',
+      'Your original files stay on your computer. In Cloud mode, Zush sends only the analysis payload needed for renaming, such as a compressed preview, sampled video frames, subtitle context, extracted text, or compact summary, to the selected AI provider. In Offline AI mode, private local models via Ollama process supported files on your device and file analysis content is not sent to Zush cloud or third-party AI providers.',
   },
   {
     question: 'Can I undo changes made by the program?',
     answer:
-      'Yes, you can easily undo any changes in the Activity section of the Monitor tab.',
+      'Yes, you can easily undo any changes from the Activity history.',
   },
   {
     question: 'Does Zush support multiple languages and date formats?',
@@ -81,7 +82,7 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'Do you support audio or video files?',
     answer:
-      'Not yet. Right now Zush focuses on images and supported documents, including PDFs. Audio and video support is on our roadmap and already under active exploration. Stay tuned!',
+      'Zush 2.0 supports video analysis for common formats such as MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, and VOB using sampled frames and optional subtitle context. Audio-only files are not supported yet.',
   },
   {
     question: "Can I get a refund if it doesn't fit my needs?",

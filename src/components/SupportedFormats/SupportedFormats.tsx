@@ -10,14 +10,18 @@ const imageFormats = [...new Set(APP_CONFIG.image_extensions)].map((f) =>
 const documentFormats = [...new Set(APP_CONFIG.document_extensions)].map((f) =>
   f.toLowerCase(),
 );
+const videoFormats = [...new Set(APP_CONFIG.video_extensions)].map((f) =>
+  f.toLowerCase(),
+);
 
 const highlightMap: Record<FeatureCategory, string[]> = {
   general: [],
   image: imageFormats,
-  photo: ['heic', 'cr2', 'cr3', 'nef', 'arw', 'dng', 'raf', 'rw2', 'orf', 'pef', 'srw', 'sr2', 'raw'],
+  photo: ['heic', 'heif', 'avif', 'psd', 'cr2', 'cr3', 'nef', 'arw', 'dng', 'raf', 'rw2', 'orf', 'pef', 'srw', 'sr2', 'raw'],
   screenshot: ['png', 'jpg', 'jpeg', 'webp'],
-  document: ['pdf', 'txt', 'md', 'json', 'eml', 'csv', 'doc', 'docx', 'ppt', 'pptx', 'xlsx'],
+  document: documentFormats,
   pdf: ['pdf'],
+  video: videoFormats,
 };
 
 interface SupportedFormatsProps {
@@ -25,6 +29,7 @@ interface SupportedFormatsProps {
   title?: string;
   imagesLabel?: string;
   documentsLabel?: string;
+  videosLabel?: string;
 }
 
 const SupportedFormats = ({
@@ -32,6 +37,7 @@ const SupportedFormats = ({
   title = 'Supported File Formats',
   imagesLabel = 'Images',
   documentsLabel = 'Documents',
+  videosLabel = 'Videos',
 }: SupportedFormatsProps) => {
   const highlightedFormats = new Set(highlightMap[category] ?? []);
 
@@ -60,6 +66,22 @@ const SupportedFormats = ({
           <Heading as='h3' size='h4' align='center' className={styles.SupportedFormats__GroupTitle}>{documentsLabel}</Heading>
           <div className={styles.SupportedFormats__Tags}>
             {documentFormats.map((format) => (
+              <span
+                key={format}
+                className={`${styles.SupportedFormats__Tag} ${
+                  highlightedFormats.has(format) ? styles.SupportedFormats__Tag_highlight : ''
+                }`}
+              >
+                {format}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.SupportedFormats__Group}>
+          <Heading as='h3' size='h4' align='center' className={styles.SupportedFormats__GroupTitle}>{videosLabel}</Heading>
+          <div className={styles.SupportedFormats__Tags}>
+            {videoFormats.map((format) => (
               <span
                 key={format}
                 className={`${styles.SupportedFormats__Tag} ${

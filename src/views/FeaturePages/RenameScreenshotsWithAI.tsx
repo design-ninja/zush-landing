@@ -1,4 +1,5 @@
 import FeatureLandingPage from '@/components/FeatureLandingPage';
+import { SCREENSHOT_PREVIEW_IMAGES } from '@/data/screenshotPreviewImages';
 import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 
 const faqItems = [
@@ -75,32 +76,32 @@ const RenameScreenshotsWithAI = () => (
     showcaseSlides={[
       {
         files: [
-          { before: 'Screenshot 2026-03-15.png', after: 'Analytics Dashboard Metrics.png', img: '/images/examples/dashboard.jpg', type: 'image' },
-          { before: 'Screenshot 2026-03-18.png', after: 'Figma Dashboard Wireframe.png', img: '/images/examples/diagram.jpg', type: 'image' },
-          { before: 'Screenshot 2026-03-20.png', after: 'VS Code Error Log.png', img: '/images/examples/workspace.jpg', type: 'image' },
-          { before: 'Screenshot 2026-03-21.png', after: 'Stripe Revenue Chart.png', img: '/images/examples/chart.jpg', type: 'image' },
-          { before: 'Screenshot 2026-03-22.png', after: 'Architecture Flow Diagram.png', img: '/images/examples/diagram.jpg', type: 'image' },
-          { before: 'Screenshot 2026-03-23.png', after: 'Modern Office Corridor.png', img: '/images/examples/office.jpg', type: 'image' },
+          { before: 'Screenshot 2026-03-15.png', after: 'Slack Design Feedback Thread.png', img: SCREENSHOT_PREVIEW_IMAGES.slackDesignFeedbackThread, type: 'image' },
+          { before: 'Screenshot 2026-03-18.png', after: 'Figma Checkout Mobile Wireframe.png', img: SCREENSHOT_PREVIEW_IMAGES.figmaCheckoutMobileWireframe, type: 'image' },
+          { before: 'Screenshot 2026-03-20.png', after: 'VS Code TypeScript Build Error.png', img: SCREENSHOT_PREVIEW_IMAGES.vsCodeTypescriptBuildError, type: 'image' },
+          { before: 'Screenshot 2026-03-21.png', after: 'Stripe Monthly Revenue Dashboard.png', img: SCREENSHOT_PREVIEW_IMAGES.stripeMonthlyRevenueDashboard, type: 'image' },
+          { before: 'Screenshot 2026-03-22.png', after: 'Linear Sprint Backlog Board.png', img: SCREENSHOT_PREVIEW_IMAGES.linearSprintBacklogBoard, type: 'image' },
+          { before: 'Screenshot 2026-03-23.png', after: 'Safari Competitor Pricing Page.png', img: SCREENSHOT_PREVIEW_IMAGES.safariCompetitorPricingPage, type: 'image' },
         ],
       },
       {
         files: [
-          { before: 'Screenshot 2026-02-10.png', after: 'Notion Roadmap View.png', img: '/images/examples/dashboard.jpg', type: 'image' },
-          { before: 'Screenshot 2026-02-12.png', after: 'Sagrada Familia Reference.png', img: '/images/examples/sagrada.jpg', type: 'image' },
-          { before: 'Screenshot 2026-02-15.png', after: 'Designer Workspace Mood.png', img: '/images/examples/workspace.jpg', type: 'image' },
-          { before: 'Screenshot 2026-02-18.png', after: 'Tuxedo Cat Reference.png', img: '/images/examples/cat.jpg', type: 'image' },
-          { before: 'Screenshot 2026-02-20.png', after: 'Analytics Funnel Chart.png', img: '/images/examples/chart.jpg', type: 'image' },
-          { before: 'Screenshot 2026-02-25.png', after: 'Italian Menu Reference.png', img: '/images/examples/food.jpg', type: 'image' },
+          { before: 'Screenshot 2026-02-10.png', after: 'Notion Product Roadmap Table.png', img: SCREENSHOT_PREVIEW_IMAGES.notionProductRoadmapTable, type: 'image' },
+          { before: 'Screenshot 2026-02-12.png', after: 'GitHub Pull Request Review Comments.png', img: SCREENSHOT_PREVIEW_IMAGES.githubPullRequestReviewComments, type: 'image' },
+          { before: 'Screenshot 2026-02-15.png', after: 'Google Analytics Traffic Sources.png', img: SCREENSHOT_PREVIEW_IMAGES.googleAnalyticsTrafficSources, type: 'image' },
+          { before: 'Screenshot 2026-02-18.png', after: 'Xcode Simulator Layout Bug.png', img: SCREENSHOT_PREVIEW_IMAGES.xcodeSimulatorLayoutBug, type: 'image' },
+          { before: 'Screenshot 2026-02-20.png', after: 'Zoom Meeting Shared Roadmap.png', img: SCREENSHOT_PREVIEW_IMAGES.zoomMeetingSharedRoadmap, type: 'image' },
+          { before: 'Screenshot 2026-02-25.png', after: 'Apple Notes Research Checklist.png', img: SCREENSHOT_PREVIEW_IMAGES.appleNotesResearchChecklist, type: 'image' },
         ],
       },
       {
         files: [
-          { before: 'Screenshot 2026-01-04.png', after: 'Linear Backlog Board.png', img: '/images/examples/dashboard.jpg', type: 'image' },
-          { before: 'Screenshot 2026-01-07.png', after: 'Sunset Color Palette.png', img: '/images/examples/sunset.jpg', type: 'image' },
-          { before: 'Screenshot 2026-01-10.png', after: 'Ford Mustang Reference.png', img: '/images/examples/car.jpg', type: 'image' },
-          { before: 'Screenshot 2026-01-14.png', after: 'Wildflower Field Mood.png', img: '/images/examples/flowers.jpg', type: 'image' },
-          { before: 'Screenshot 2026-01-18.png', after: 'Modern Facade Reference.png', img: '/images/examples/building.jpg', type: 'image' },
-          { before: 'Screenshot 2026-01-22.png', after: 'Park Guell Terrace Detail.png', img: '/images/examples/parkguell.jpg', type: 'image' },
+          { before: 'Screenshot 2026-01-04.png', after: 'Maps Restaurant Directions.png', img: SCREENSHOT_PREVIEW_IMAGES.mapsRestaurantDirections, type: 'image' },
+          { before: 'Screenshot 2026-01-07.png', after: 'System Settings Display Options.png', img: SCREENSHOT_PREVIEW_IMAGES.systemSettingsDisplayOptions, type: 'image' },
+          { before: 'Screenshot 2026-01-10.png', after: 'Gmail Invoice Search Results.png', img: SCREENSHOT_PREVIEW_IMAGES.gmailInvoiceSearchResults, type: 'image' },
+          { before: 'Screenshot 2026-01-14.png', after: 'Calendar Launch Timeline Week.png', img: SCREENSHOT_PREVIEW_IMAGES.calendarLaunchTimelineWeek, type: 'image' },
+          { before: 'Screenshot 2026-01-18.png', after: 'Docs Proposal Comment Thread.png', img: SCREENSHOT_PREVIEW_IMAGES.docsProposalCommentThread, type: 'image' },
+          { before: 'Screenshot 2026-01-22.png', after: 'Terminal Deploy Error Log.png', img: SCREENSHOT_PREVIEW_IMAGES.terminalDeployErrorLog, type: 'image' },
         ],
       },
     ]}

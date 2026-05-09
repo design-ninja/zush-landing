@@ -23,17 +23,17 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
   mac: {
     featuresTitle: 'How Zush works on macOS',
     featuresDescription:
-      'Mac-first renaming workflows for Finder, Spotlight, Downloads, screenshots, and local AI.',
+      'Mac-first renaming workflows for Finder, Spotlight, Downloads, screenshots, videos, and local AI.',
     featureCards: {
       aiAnalysis: {
         title: 'AI analysis for Mac files',
         description:
-          'Analyze screenshots, PDFs, HEIC and RAW photos, Office docs, and exports without leaving a native macOS workflow.',
+          'Analyze screenshots, videos, PDFs, HEIC and RAW photos, Office docs, and exports without leaving a native macOS workflow.',
       },
       foldersMonitoring: {
         title: 'Watch Downloads and Screenshots',
         description:
-          'Monitor ~/Downloads, Desktop, or a screenshot folder so new files get readable names as they arrive.',
+          'Monitor ~/Downloads, Desktop, or a screenshot folder so selected file types get readable names as they arrive.',
       },
       batchRename: {
         title: 'Batch rename from Finder',
@@ -58,7 +58,7 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
       customPrompts: {
         title: 'Rules for Finder workflows',
         description:
-          'Tell Zush how to name design exports, invoices, screenshots, and client folders before you apply changes.',
+          'Tell Zush how to name design exports, invoices, videos, screenshots, and client folders before you apply changes.',
       },
       byok: {
         title: 'BYOK on Mac',
@@ -106,7 +106,7 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
         {
           title: 'Creators',
           description:
-            'Rename thumbnails, b-roll references, and image exports before they pile up in Desktop or Downloads.',
+            'Rename thumbnails, b-roll clips, screen recordings, and image exports before they pile up in Desktop or Downloads.',
         },
         {
           title: 'Managers',
@@ -119,17 +119,17 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
   windows: {
     featuresTitle: 'How Zush works on Windows',
     featuresDescription:
-      'Windows-first cleanup for File Explorer, Downloads, screenshots, Microsoft Store installs, and local AI.',
+      'Windows-first cleanup for File Explorer, Downloads, screenshots, videos, Microsoft Store installs, and local AI.',
     featureCards: {
       aiAnalysis: {
         title: 'AI analysis for Windows files',
         description:
-          'Analyze screenshots, PDFs, photos, Office docs, and exports from ordinary Windows folders.',
+          'Analyze screenshots, videos, PDFs, photos, Office docs, and exports from ordinary Windows folders.',
       },
       foldersMonitoring: {
         title: 'Watch Downloads and Screenshots',
         description:
-          'Monitor Downloads, Pictures\\Screenshots, or work folders so new files get useful names automatically.',
+          'Monitor Downloads, Pictures\\Screenshots, or work folders so selected file types get useful names automatically.',
       },
       batchRename: {
         title: 'Batch rename from File Explorer',
@@ -154,7 +154,7 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
       customPrompts: {
         title: 'Rules for Windows folders',
         description:
-          'Set naming rules for screenshots, invoices, client PDFs, reports, and shared team folders.',
+          'Set naming rules for screenshots, videos, invoices, client PDFs, reports, and shared team folders.',
       },
       byok: {
         title: 'BYOK on Windows',
@@ -202,7 +202,7 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
         {
           title: 'Creators',
           description:
-            'Organize thumbnails, social exports, and reference images before project folders get hard to scan.',
+            'Organize thumbnails, social exports, b-roll clips, screen recordings, and reference images before project folders get hard to scan.',
         },
         {
           title: 'Managers',
@@ -221,7 +221,7 @@ const PLATFORM_OVERRIDES: Partial<Record<Locale, PlatformOverrides>> = {
       featuresTitle: 'So arbeitet Zush auf macOS',
       featuresDescription: 'Mac-orientierte Workflows für Finder, Spotlight, Downloads, Screenshots und lokale KI.',
       featureCards: {
-        aiAnalysis: { title: 'KI-Analyse für Mac-Dateien', description: 'Analysiere Screenshots, PDFs, HEIC- und RAW-Fotos, Office-Dokumente und Exporte direkt im nativen macOS-Workflow.' },
+        aiAnalysis: { title: 'KI-Analyse für Mac-Dateien', description: 'Analysiere Screenshots, Videos, PDFs, HEIC- und RAW-Fotos, Office-Dokumente und Exporte direkt im nativen macOS-Workflow.' },
         foldersMonitoring: { title: 'Downloads und Screenshots überwachen', description: 'Überwache ~/Downloads, Desktop oder einen Screenshot-Ordner, damit neue Dateien sofort lesbare Namen erhalten.' },
         batchRename: { title: 'Batch-Umbenennung aus dem Finder', description: 'Ziehe Dateien oder Ordner aus dem Finder in Zush, prüfe die Vorschläge und wende sie direkt an.' },
         customPatterns: { title: 'macOS-Namensmuster', description: 'Nutze Muster mit Datum, Kategorie und Originalnamen, damit Finder-Ordner über Projekte hinweg konsistent bleiben.' },
@@ -248,7 +248,7 @@ const PLATFORM_OVERRIDES: Partial<Record<Locale, PlatformOverrides>> = {
       featuresTitle: 'So arbeitet Zush auf Windows',
       featuresDescription: 'Windows-orientierte Ordnung für Datei-Explorer, Downloads, Screenshots, Microsoft Store und lokale KI.',
       featureCards: {
-        aiAnalysis: { title: 'KI-Analyse für Windows-Dateien', description: 'Analysiere Screenshots, PDFs, Fotos, Office-Dokumente und Exporte aus normalen Windows-Ordnern.' },
+        aiAnalysis: { title: 'KI-Analyse für Windows-Dateien', description: 'Analysiere Screenshots, Videos, PDFs, Fotos, Office-Dokumente und Exporte aus normalen Windows-Ordnern.' },
         foldersMonitoring: { title: 'Downloads und Screenshots überwachen', description: 'Überwache Downloads, Pictures\\Screenshots oder Arbeitsordner, damit neue Dateien automatisch nützliche Namen erhalten.' },
         batchRename: { title: 'Batch-Umbenennung aus dem Explorer', description: 'Ziehe gemischte Dateien aus dem Datei-Explorer in Zush, prüfe die Vorschläge und wende alle Namen in einem Durchgang an.' },
         customPatterns: { title: 'Windows-Namensmuster', description: 'Nutze Datum, Kategorie und Originalnamen, damit Projektordner und geteilte Laufwerke konsistent bleiben.' },
@@ -277,7 +277,7 @@ const PLATFORM_OVERRIDES: Partial<Record<Locale, PlatformOverrides>> = {
       featuresTitle: 'Comment Zush fonctionne sur macOS',
       featuresDescription: 'Des workflows Mac pour Finder, Spotlight, Téléchargements, captures d’écran et IA locale.',
       featureCards: {
-        aiAnalysis: { title: 'Analyse IA des fichiers Mac', description: 'Analysez captures, PDF, photos HEIC et RAW, documents Office et exports sans quitter un workflow macOS natif.' },
+        aiAnalysis: { title: 'Analyse IA des fichiers Mac', description: 'Analysez captures, vidéos, PDF, photos HEIC et RAW, documents Office et exports sans quitter un workflow macOS natif.' },
         foldersMonitoring: { title: 'Surveiller Téléchargements et captures', description: 'Surveillez ~/Downloads, le Bureau ou un dossier de captures pour donner des noms lisibles aux nouveaux fichiers.' },
         batchRename: { title: 'Renommage en lot depuis Finder', description: 'Glissez des fichiers ou dossiers depuis Finder vers Zush, vérifiez les propositions, puis appliquez le renommage.' },
         customPatterns: { title: 'Modèles de noms macOS', description: 'Utilisez dates, catégories et noms d’origine pour garder des dossiers Finder cohérents.' },
@@ -304,7 +304,7 @@ const PLATFORM_OVERRIDES: Partial<Record<Locale, PlatformOverrides>> = {
       featuresTitle: 'Comment Zush fonctionne sur Windows',
       featuresDescription: 'Nettoyage pensé pour l’Explorateur, les téléchargements, les captures, le Microsoft Store et l’IA locale.',
       featureCards: {
-        aiAnalysis: { title: 'Analyse IA des fichiers Windows', description: 'Analysez captures, PDF, photos, documents Office et exports depuis des dossiers Windows ordinaires.' },
+        aiAnalysis: { title: 'Analyse IA des fichiers Windows', description: 'Analysez captures, vidéos, PDF, photos, documents Office et exports depuis des dossiers Windows ordinaires.' },
         foldersMonitoring: { title: 'Surveiller téléchargements et captures', description: 'Surveillez Downloads, Pictures\\Screenshots ou vos dossiers de travail pour nommer automatiquement les nouveaux fichiers.' },
         batchRename: { title: 'Renommage en lot depuis l’Explorateur', description: 'Glissez des fichiers depuis l’Explorateur vers Zush, vérifiez les suggestions, puis appliquez tout en une passe.' },
         customPatterns: { title: 'Modèles de noms Windows', description: 'Utilisez date, catégorie et nom d’origine pour garder projets et dossiers partagés cohérents.' },
@@ -333,7 +333,7 @@ const PLATFORM_OVERRIDES: Partial<Record<Locale, PlatformOverrides>> = {
       featuresTitle: 'Como o Zush funciona no macOS',
       featuresDescription: 'Fluxos para Mac com Finder, Spotlight, Downloads, screenshots e IA local.',
       featureCards: {
-        aiAnalysis: { title: 'Análise de IA para arquivos do Mac', description: 'Analise screenshots, PDFs, fotos HEIC e RAW, documentos Office e exports sem sair do fluxo nativo do macOS.' },
+        aiAnalysis: { title: 'Análise de IA para arquivos do Mac', description: 'Analise screenshots, vídeos, PDFs, fotos HEIC e RAW, documentos Office e exports sem sair do fluxo nativo do macOS.' },
         foldersMonitoring: { title: 'Monitore Downloads e screenshots', description: 'Monitore ~/Downloads, Mesa ou a pasta de screenshots para nomear novos arquivos assim que chegam.' },
         batchRename: { title: 'Renomeação em lote pelo Finder', description: 'Arraste arquivos ou pastas do Finder para o Zush, revise os nomes sugeridos e aplique no local.' },
         customPatterns: { title: 'Padrões de nome no macOS', description: 'Use datas, categorias e nomes originais para manter pastas do Finder consistentes entre projetos.' },
@@ -360,7 +360,7 @@ const PLATFORM_OVERRIDES: Partial<Record<Locale, PlatformOverrides>> = {
       featuresTitle: 'Como o Zush funciona no Windows',
       featuresDescription: 'Organização para Explorador de Arquivos, Downloads, screenshots, Microsoft Store e IA local.',
       featureCards: {
-        aiAnalysis: { title: 'Análise de IA para arquivos do Windows', description: 'Analise screenshots, PDFs, fotos, documentos Office e exports de pastas comuns do Windows.' },
+        aiAnalysis: { title: 'Análise de IA para arquivos do Windows', description: 'Analise screenshots, vídeos, PDFs, fotos, documentos Office e exports de pastas comuns do Windows.' },
         foldersMonitoring: { title: 'Monitore Downloads e screenshots', description: 'Monitore Downloads, Pictures\\Screenshots ou pastas de trabalho para nomear novos arquivos automaticamente.' },
         batchRename: { title: 'Renomeação em lote pelo Explorador', description: 'Arraste arquivos mistos do Explorador para o Zush, revise sugestões e aplique tudo em uma passada.' },
         customPatterns: { title: 'Padrões de nome no Windows', description: 'Use data, categoria e nome original para manter projetos e pastas compartilhadas consistentes.' },
@@ -389,7 +389,7 @@ const PLATFORM_OVERRIDES: Partial<Record<Locale, PlatformOverrides>> = {
       featuresTitle: 'Cómo funciona Zush en macOS',
       featuresDescription: 'Flujos para Mac con Finder, Spotlight, Descargas, capturas e IA local.',
       featureCards: {
-        aiAnalysis: { title: 'Análisis IA para archivos de Mac', description: 'Analiza capturas, PDFs, fotos HEIC y RAW, documentos Office y exports sin salir del flujo nativo de macOS.' },
+        aiAnalysis: { title: 'Análisis IA para archivos de Mac', description: 'Analiza capturas, videos, PDFs, fotos HEIC y RAW, documentos Office y exports sin salir del flujo nativo de macOS.' },
         foldersMonitoring: { title: 'Vigila Descargas y capturas', description: 'Monitoriza ~/Downloads, Escritorio o una carpeta de capturas para dar nombres legibles a cada archivo nuevo.' },
         batchRename: { title: 'Renombrado por lotes desde Finder', description: 'Arrastra archivos o carpetas desde Finder a Zush, revisa cada sugerencia y aplica el cambio en su lugar.' },
         customPatterns: { title: 'Patrones de nombre en macOS', description: 'Usa fechas, categorías y nombres originales para mantener carpetas de Finder consistentes.' },
@@ -416,7 +416,7 @@ const PLATFORM_OVERRIDES: Partial<Record<Locale, PlatformOverrides>> = {
       featuresTitle: 'Cómo funciona Zush en Windows',
       featuresDescription: 'Orden para Explorador de archivos, Descargas, capturas, Microsoft Store e IA local.',
       featureCards: {
-        aiAnalysis: { title: 'Análisis IA para archivos Windows', description: 'Analiza capturas, PDFs, fotos, documentos Office y exports desde carpetas normales de Windows.' },
+        aiAnalysis: { title: 'Análisis IA para archivos Windows', description: 'Analiza capturas, videos, PDFs, fotos, documentos Office y exports desde carpetas normales de Windows.' },
         foldersMonitoring: { title: 'Vigila Descargas y capturas', description: 'Monitoriza Downloads, Pictures\\Screenshots o carpetas de trabajo para nombrar archivos nuevos automáticamente.' },
         batchRename: { title: 'Renombrado por lotes desde Explorador', description: 'Arrastra archivos mixtos desde el Explorador a Zush, revisa sugerencias y aplica todo de una vez.' },
         customPatterns: { title: 'Patrones de nombre en Windows', description: 'Usa fecha, categoría y nombre original para mantener consistentes proyectos y carpetas compartidas.' },
@@ -445,7 +445,7 @@ const PLATFORM_OVERRIDES: Partial<Record<Locale, PlatformOverrides>> = {
       featuresTitle: 'Zo werkt Zush op macOS',
       featuresDescription: 'Mac-gerichte workflows voor Finder, Spotlight, Downloads, screenshots en lokale AI.',
       featureCards: {
-        aiAnalysis: { title: 'AI-analyse voor Mac-bestanden', description: 'Analyseer screenshots, PDFs, HEIC- en RAW-foto’s, Office-documenten en exports binnen een native macOS-workflow.' },
+        aiAnalysis: { title: 'AI-analyse voor Mac-bestanden', description: 'Analyseer screenshots, video’s, PDFs, HEIC- en RAW-foto’s, Office-documenten en exports binnen een native macOS-workflow.' },
         foldersMonitoring: { title: 'Bewaak Downloads en screenshots', description: 'Bewaak ~/Downloads, Desktop of een screenshotmap zodat nieuwe bestanden direct leesbare namen krijgen.' },
         batchRename: { title: 'Bulk hernoemen vanuit Finder', description: 'Sleep bestanden of mappen uit Finder naar Zush, controleer de voorgestelde namen en pas ze op hun plek toe.' },
         customPatterns: { title: 'macOS-naampatronen', description: 'Gebruik datums, categorieën en oorspronkelijke namen om Finder-mappen consistent te houden.' },
@@ -472,7 +472,7 @@ const PLATFORM_OVERRIDES: Partial<Record<Locale, PlatformOverrides>> = {
       featuresTitle: 'Zo werkt Zush op Windows',
       featuresDescription: 'Windows-gerichte opruiming voor Verkenner, Downloads, screenshots, Microsoft Store en lokale AI.',
       featureCards: {
-        aiAnalysis: { title: 'AI-analyse voor Windows-bestanden', description: 'Analyseer screenshots, PDFs, foto’s, Office-documenten en exports vanuit gewone Windows-mappen.' },
+        aiAnalysis: { title: 'AI-analyse voor Windows-bestanden', description: 'Analyseer screenshots, video’s, PDFs, foto’s, Office-documenten en exports vanuit gewone Windows-mappen.' },
         foldersMonitoring: { title: 'Bewaak Downloads en screenshots', description: 'Bewaak Downloads, Pictures\\Screenshots of werkmappen zodat nieuwe bestanden automatisch bruikbare namen krijgen.' },
         batchRename: { title: 'Bulk hernoemen vanuit Verkenner', description: 'Sleep gemengde bestanden uit Verkenner naar Zush, controleer de suggesties en pas alles in één ronde toe.' },
         customPatterns: { title: 'Windows-naampatronen', description: 'Gebruik datum, categorie en oorspronkelijke naam om projectmappen en gedeelde drives consistent te houden.' },
@@ -501,7 +501,7 @@ const PLATFORM_OVERRIDES: Partial<Record<Locale, PlatformOverrides>> = {
       featuresTitle: 'Come funziona Zush su macOS',
       featuresDescription: 'Workflow per Mac con Finder, Spotlight, Download, screenshot e IA locale.',
       featureCards: {
-        aiAnalysis: { title: 'Analisi IA per file Mac', description: 'Analizza screenshot, PDF, foto HEIC e RAW, documenti Office ed export senza uscire dal workflow nativo macOS.' },
+        aiAnalysis: { title: 'Analisi IA per file Mac', description: 'Analizza screenshot, video, PDF, foto HEIC e RAW, documenti Office ed export senza uscire dal workflow nativo macOS.' },
         foldersMonitoring: { title: 'Monitora Download e screenshot', description: 'Monitora ~/Downloads, Scrivania o una cartella screenshot per dare nomi leggibili ai nuovi file.' },
         batchRename: { title: 'Rinomina in batch da Finder', description: 'Trascina file o cartelle da Finder in Zush, controlla i suggerimenti e applica la rinomina sul posto.' },
         customPatterns: { title: 'Pattern di nome per macOS', description: 'Usa date, categorie e nomi originali per mantenere coerenti le cartelle Finder.' },
@@ -528,7 +528,7 @@ const PLATFORM_OVERRIDES: Partial<Record<Locale, PlatformOverrides>> = {
       featuresTitle: 'Come funziona Zush su Windows',
       featuresDescription: 'Pulizia pensata per Esplora file, Download, screenshot, Microsoft Store e IA locale.',
       featureCards: {
-        aiAnalysis: { title: 'Analisi IA per file Windows', description: 'Analizza screenshot, PDF, foto, documenti Office ed export da normali cartelle Windows.' },
+        aiAnalysis: { title: 'Analisi IA per file Windows', description: 'Analizza screenshot, video, PDF, foto, documenti Office ed export da normali cartelle Windows.' },
         foldersMonitoring: { title: 'Monitora Download e screenshot', description: 'Monitora Downloads, Pictures\\Screenshots o cartelle di lavoro per nominare automaticamente i nuovi file.' },
         batchRename: { title: 'Rinomina in batch da Esplora file', description: 'Trascina file misti da Esplora file in Zush, controlla i suggerimenti e applica tutto in un passaggio.' },
         customPatterns: { title: 'Pattern di nome per Windows', description: 'Usa data, categoria e nome originale per mantenere coerenti progetti e cartelle condivise.' },
@@ -557,7 +557,7 @@ const PLATFORM_OVERRIDES: Partial<Record<Locale, PlatformOverrides>> = {
       featuresTitle: 'Zush の macOS ワークフロー',
       featuresDescription: 'Finder、Spotlight、ダウンロード、スクリーンショット、ローカル AI に合わせた Mac 向けの整理。',
       featureCards: {
-        aiAnalysis: { title: 'Mac ファイルの AI 解析', description: 'スクリーンショット、PDF、HEIC/RAW 写真、Office 文書、書き出しファイルを macOS の流れのまま解析します。' },
+        aiAnalysis: { title: 'Mac ファイルの AI 解析', description: 'スクリーンショット、動画、PDF、HEIC/RAW 写真、Office 文書、書き出しファイルを macOS の流れのまま解析します。' },
         foldersMonitoring: { title: 'ダウンロードとスクリーンショットを監視', description: '~/Downloads、デスクトップ、スクリーンショット保存先を監視し、新しいファイルに読みやすい名前を付けます。' },
         batchRename: { title: 'Finder から一括リネーム', description: 'Finder からファイルやフォルダを Zush にドラッグし、候補を確認してその場で適用できます。' },
         customPatterns: { title: 'macOS 向け命名パターン', description: '日付、カテゴリ、元の名前を使って、Finder のプロジェクトフォルダを揃えます。' },
@@ -584,7 +584,7 @@ const PLATFORM_OVERRIDES: Partial<Record<Locale, PlatformOverrides>> = {
       featuresTitle: 'Zush の Windows ワークフロー',
       featuresDescription: 'エクスプローラー、ダウンロード、スクリーンショット、Microsoft Store、ローカル AI に合わせた整理。',
       featureCards: {
-        aiAnalysis: { title: 'Windows ファイルの AI 解析', description: '通常の Windows フォルダ内のスクリーンショット、PDF、写真、Office 文書、書き出しファイルを解析します。' },
+        aiAnalysis: { title: 'Windows ファイルの AI 解析', description: '通常の Windows フォルダ内のスクリーンショット、動画、PDF、写真、Office 文書、書き出しファイルを解析します。' },
         foldersMonitoring: { title: 'ダウンロードとスクリーンショットを監視', description: 'Downloads、Pictures\\Screenshots、作業フォルダを監視し、新しいファイルに自動で名前を付けます。' },
         batchRename: { title: 'エクスプローラーから一括リネーム', description: 'エクスプローラーから複数種類のファイルを Zush にドラッグし、候補を確認して一括適用できます。' },
         customPatterns: { title: 'Windows 向け命名パターン', description: '日付、カテゴリ、元の名前を使って、プロジェクトフォルダや共有ドライブを揃えます。' },
@@ -613,7 +613,7 @@ const PLATFORM_OVERRIDES: Partial<Record<Locale, PlatformOverrides>> = {
       featuresTitle: 'macOS에서 Zush가 작동하는 방식',
       featuresDescription: 'Finder, Spotlight, 다운로드, 스크린샷, 로컬 AI에 맞춘 Mac 워크플로입니다.',
       featureCards: {
-        aiAnalysis: { title: 'Mac 파일 AI 분석', description: '스크린샷, PDF, HEIC/RAW 사진, Office 문서, 내보낸 파일을 macOS 흐름 안에서 분석합니다.' },
+        aiAnalysis: { title: 'Mac 파일 AI 분석', description: '스크린샷, 비디오, PDF, HEIC/RAW 사진, Office 문서, 내보낸 파일을 macOS 흐름 안에서 분석합니다.' },
         foldersMonitoring: { title: '다운로드와 스크린샷 감시', description: '~/Downloads, 데스크탑, 스크린샷 폴더를 감시해 새 파일에 읽기 쉬운 이름을 붙입니다.' },
         batchRename: { title: 'Finder에서 일괄 이름 변경', description: 'Finder에서 파일이나 폴더를 Zush로 끌어와 제안 이름을 확인하고 바로 적용합니다.' },
         customPatterns: { title: 'macOS 이름 패턴', description: '날짜, 카테고리, 원래 이름을 사용해 Finder 프로젝트 폴더를 일관되게 유지합니다.' },
@@ -640,7 +640,7 @@ const PLATFORM_OVERRIDES: Partial<Record<Locale, PlatformOverrides>> = {
       featuresTitle: 'Windows에서 Zush가 작동하는 방식',
       featuresDescription: '파일 탐색기, 다운로드, 스크린샷, Microsoft Store, 로컬 AI에 맞춘 정리입니다.',
       featureCards: {
-        aiAnalysis: { title: 'Windows 파일 AI 분석', description: '일반 Windows 폴더의 스크린샷, PDF, 사진, Office 문서, 내보낸 파일을 분석합니다.' },
+        aiAnalysis: { title: 'Windows 파일 AI 분석', description: '일반 Windows 폴더의 스크린샷, 비디오, PDF, 사진, Office 문서, 내보낸 파일을 분석합니다.' },
         foldersMonitoring: { title: '다운로드와 스크린샷 감시', description: 'Downloads, Pictures\\Screenshots 또는 작업 폴더를 감시해 새 파일에 자동으로 유용한 이름을 붙입니다.' },
         batchRename: { title: '파일 탐색기에서 일괄 이름 변경', description: '파일 탐색기에서 여러 파일을 Zush로 끌어와 제안을 확인하고 한 번에 적용합니다.' },
         customPatterns: { title: 'Windows 이름 패턴', description: '날짜, 카테고리, 원래 이름으로 프로젝트 폴더와 공유 드라이브를 일관되게 유지합니다.' },
@@ -669,7 +669,7 @@ const PLATFORM_OVERRIDES: Partial<Record<Locale, PlatformOverrides>> = {
       featuresTitle: 'Zush 在 macOS 上如何工作',
       featuresDescription: '面向 Finder、Spotlight、下载、截图和本地 AI 的 Mac 文件整理流程。',
       featureCards: {
-        aiAnalysis: { title: 'Mac 文件 AI 分析', description: '在原生 macOS 流程中分析截图、PDF、HEIC 和 RAW 照片、Office 文档与导出文件。' },
+        aiAnalysis: { title: 'Mac 文件 AI 分析', description: '在原生 macOS 流程中分析截图、视频、PDF、HEIC 和 RAW 照片、Office 文档与导出文件。' },
         foldersMonitoring: { title: '监控下载和截图', description: '监控 ~/Downloads、桌面或截图文件夹，让新文件进入后立即获得可读名称。' },
         batchRename: { title: '从 Finder 批量重命名', description: '从 Finder 拖入文件或文件夹，检查每个建议名称，然后原地应用。' },
         customPatterns: { title: 'macOS 命名模式', description: '使用日期、类别和原始名称，让 Finder 项目文件夹保持一致。' },
@@ -696,7 +696,7 @@ const PLATFORM_OVERRIDES: Partial<Record<Locale, PlatformOverrides>> = {
       featuresTitle: 'Zush 在 Windows 上如何工作',
       featuresDescription: '面向文件资源管理器、下载、截图、Microsoft Store 和本地 AI 的文件整理。',
       featureCards: {
-        aiAnalysis: { title: 'Windows 文件 AI 分析', description: '分析普通 Windows 文件夹中的截图、PDF、照片、Office 文档和导出文件。' },
+        aiAnalysis: { title: 'Windows 文件 AI 分析', description: '分析普通 Windows 文件夹中的截图、视频、PDF、照片、Office 文档和导出文件。' },
         foldersMonitoring: { title: '监控下载和截图', description: '监控 Downloads、Pictures\\Screenshots 或工作文件夹，让新文件自动获得有用名称。' },
         batchRename: { title: '从文件资源管理器批量重命名', description: '从文件资源管理器拖入混合文件，检查建议，然后一次应用所有重命名。' },
         customPatterns: { title: 'Windows 命名模式', description: '使用日期、类别和原始名称，让项目文件夹和共享盘保持一致。' },
@@ -725,7 +725,7 @@ const PLATFORM_OVERRIDES: Partial<Record<Locale, PlatformOverrides>> = {
       featuresTitle: 'كيف يعمل Zush على macOS',
       featuresDescription: 'تدفقات إعادة تسمية مصممة لـ Mac: Finder وSpotlight والتنزيلات ولقطات الشاشة والذكاء الاصطناعي المحلي.',
       featureCards: {
-        aiAnalysis: { title: 'تحليل بالذكاء الاصطناعي لملفات Mac', description: 'حلّل لقطات الشاشة وملفات PDF وصور HEIC وRAW ومستندات Office والتصديرات دون مغادرة سير عمل macOS الأصلي.' },
+        aiAnalysis: { title: 'تحليل بالذكاء الاصطناعي لملفات Mac', description: 'حلّل لقطات الشاشة والفيديو وملفات PDF وصور HEIC وRAW ومستندات Office والتصديرات دون مغادرة سير عمل macOS الأصلي.' },
         foldersMonitoring: { title: 'مراقبة التنزيلات ولقطات الشاشة', description: 'راقب ~/Downloads أو سطح المكتب أو مجلد لقطات الشاشة لتحصل الملفات الجديدة على أسماء واضحة فور وصولها.' },
         batchRename: { title: 'إعادة تسمية دفعات من Finder', description: 'اسحب الملفات أو المجلدات من Finder إلى Zush، راجع كل اسم مقترح، ثم طبّق إعادة التسمية في مكانها.' },
         customPatterns: { title: 'أنماط تسمية لـ macOS', description: 'استخدم أنماطا تحتوي على التاريخ والفئة والاسم الأصلي حتى تبقى مجلدات Finder متسقة بين المشاريع.' },
@@ -752,7 +752,7 @@ const PLATFORM_OVERRIDES: Partial<Record<Locale, PlatformOverrides>> = {
       featuresTitle: 'كيف يعمل Zush على Windows',
       featuresDescription: 'تنظيف مصمم لـ Windows: File Explorer والتنزيلات ولقطات الشاشة وMicrosoft Store والذكاء الاصطناعي المحلي.',
       featureCards: {
-        aiAnalysis: { title: 'تحليل بالذكاء الاصطناعي لملفات Windows', description: 'حلّل لقطات الشاشة وملفات PDF والصور ومستندات Office والتصديرات من مجلدات Windows العادية.' },
+        aiAnalysis: { title: 'تحليل بالذكاء الاصطناعي لملفات Windows', description: 'حلّل لقطات الشاشة والفيديو وملفات PDF والصور ومستندات Office والتصديرات من مجلدات Windows العادية.' },
         foldersMonitoring: { title: 'مراقبة التنزيلات ولقطات الشاشة', description: 'راقب Downloads أو Pictures\\Screenshots أو مجلدات العمل حتى تحصل الملفات الجديدة على أسماء مفيدة تلقائيا.' },
         batchRename: { title: 'إعادة تسمية دفعات من File Explorer', description: 'اسحب ملفات مختلطة من File Explorer إلى Zush، راجع الاقتراحات، ثم طبّق كل الأسماء في خطوة واحدة.' },
         customPatterns: { title: 'أنماط تسمية لـ Windows', description: 'استخدم متغيرات التاريخ والفئة والاسم الأصلي لإبقاء مجلدات المشاريع والأقراص المشتركة متسقة.' },
