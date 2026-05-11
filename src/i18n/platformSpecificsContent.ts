@@ -89,12 +89,12 @@ const REQUIREMENT_LABELS: Partial<Record<Locale, Record<SpecKey, string>>> = {
     permissions: '权限',
   },
   hi: {
-    operatingSystem: 'ऑपरेटिंग सिस्टम',
-    processor: 'प्रोसेसर',
-    memory: 'मेमोरी',
-    diskSpace: 'डिस्क स्पेस',
-    network: 'नेटवर्क',
-    permissions: 'अनुमतियाँ',
+    operatingSystem: 'Operating system',
+    processor: 'Processor',
+    memory: 'Memory',
+    diskSpace: 'Disk space',
+    network: 'Network',
+    permissions: 'Permissions',
   },
   ar: {
     operatingSystem: 'نظام التشغيل',
@@ -173,10 +173,10 @@ const REQUIREMENT_TEXT: Partial<Record<Locale, {
     permissions: '添加要重命名或监控的文件夹时会请求文件夹访问权限',
   },
   hi: {
-    memory: 'न्यूनतम 4 GB, Offline AI के लिए 8 GB अनुशंसित',
-    diskSpace: (appSize) => `ऐप के लिए ${appSize}, Ollama मॉडल के लिए अतिरिक्त स्पेस`,
-    network: 'क्लाउड नाम-बदलाव के लिए ज़रूरी, Offline AI मोड के लिए वैकल्पिक',
-    permissions: 'नाम बदलने या निगरानी के लिए फ़ोल्डर जोड़ते समय फ़ोल्डर एक्सेस माँगा जाता है',
+    memory: 'Minimum 4 GB, Offline AI के लिए 8 GB recommended',
+    diskSpace: (appSize) => `App के लिए ${appSize}, Ollama models के लिए extra space`,
+    network: 'Cloud renames के लिए required, Offline AI mode के लिए optional',
+    permissions: 'Rename या monitoring के लिए folder add करते समय folder access मांगा जाता है',
   },
   ar: {
     memory: '4 GB كحد أدنى، و8 GB موصى بها لوضع الذكاء الاصطناعي دون اتصال',

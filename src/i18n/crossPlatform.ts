@@ -136,16 +136,16 @@ const COPY: Record<Locale, CrossPlatformBannerCopy> = {
     windowsCta: '查看 Windows 详情',
   },
   hi: {
-    eyebrow: 'दोनों डेस्कटॉप प्लेटफ़ॉर्म पर उपलब्ध',
-    title: 'अपना प्लेटफ़ॉर्म चुनें — वही Zush, हर जगह नेटिव',
+    eyebrow: 'दोनों desktop platforms पर available',
+    title: 'अपना platform चुनें — वही Zush, हर जगह native',
     description:
-      'macOS के लिए signed और notarized .dmg। Windows के लिए Microsoft Store इंस्टॉल। वही नाम-बदलाव इंजन, वही BYOK और Offline AI मोड, हर OS के लिए नेटिव।',
+      'macOS के लिए signed और notarized .dmg। Windows के लिए Microsoft Store install। वही rename engine, वही BYOK और Offline AI mode, हर OS के लिए native।',
     macTitle: 'Mac के लिए Zush',
     macDescription: 'Apple Silicon और Intel · macOS 14+ · App Store + .dmg',
     windowsTitle: 'Windows के लिए Zush',
     windowsDescription: 'x64 और ARM64 · Windows 10/11 · Microsoft Store',
-    macCta: 'Mac विवरण देखें',
-    windowsCta: 'Windows विवरण देखें',
+    macCta: 'Mac details देखें',
+    windowsCta: 'Windows details देखें',
   },
   ar: {
     eyebrow: 'متوفر على كلا نظامي سطح المكتب',

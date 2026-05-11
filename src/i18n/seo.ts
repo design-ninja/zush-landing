@@ -111,14 +111,14 @@ const PLATFORM_SEO: Partial<Record<Locale, Partial<Record<'/mac' | '/windows', {
   },
   hi: {
     '/mac': {
-      title: 'Mac के लिए Zush — macOS AI फ़ाइल नाम-बदलाव टूल',
+      title: 'Mac के लिए Zush — macOS AI file renamer',
       description:
-        'Mac पर स्क्रीनशॉट, वीडियो, PDF, फ़ोटो और दस्तावेज़ों के नाम AI से बदलें। Apple Silicon, Intel, BYOK और Ollama Offline AI सपोर्ट।',
+        'Mac पर screenshots, videos, PDFs, photos और documents को AI से rename करें। Apple Silicon, Intel, BYOK और Ollama Offline AI support।',
     },
     '/windows': {
-      title: 'Windows के लिए Zush — AI फ़ाइल नाम-बदलाव टूल',
+      title: 'Windows के लिए Zush — AI file renamer',
       description:
-        'Windows पर स्क्रीनशॉट, वीडियो, PDF, फ़ोटो और दस्तावेज़ों के नाम AI से बदलें। Microsoft Store इंस्टॉल, अपने-आप अपडेट और मुफ़्त ट्रायल।',
+        'Windows पर screenshots, videos, PDFs, photos और documents को AI से rename करें। Microsoft Store install, auto-updates और free trial।',
     },
   },
 };
