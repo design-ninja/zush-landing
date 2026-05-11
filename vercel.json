@@ -8,6 +8,16 @@
       "permanent": true
     },
     {
+      "source": "/rename-images-with-ai/",
+      "destination": "/rename-photos-with-ai",
+      "permanent": true
+    },
+    {
+      "source": "/rename-files-with-ai/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/:path+/",
       "destination": "/:path+",
       "permanent": true
@@ -18,7 +28,17 @@
       "permanent": true
     },
     {
+      "source": "/rename-files-with-ai",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/ai-file-renamer",
+      "destination": "/:locale",
+      "permanent": true
+    },
+    {
+      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/rename-files-with-ai",
       "destination": "/:locale",
       "permanent": true
     },
@@ -48,7 +68,17 @@
       "permanent": true
     },
     {
+      "source": "/rename-images-with-ai",
+      "destination": "/rename-photos-with-ai",
+      "permanent": true
+    },
+    {
       "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/ai-image-renamer",
+      "destination": "/:locale/rename-photos-with-ai",
+      "permanent": true
+    },
+    {
+      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/rename-images-with-ai",
       "destination": "/:locale/rename-photos-with-ai",
       "permanent": true
     },
