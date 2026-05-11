@@ -1,6 +1,21 @@
 # Changelog
 
-## [2.0] - 2026-05-08
+## [2.1.0] - 2026-05-11
+
+### Added
+- Added Hindi interface language
+
+### Improved
+- Improved quick rename errors when the backend is unavailable
+- Improved batch rename analysis for spreadsheets, videos, and unusual file paths
+- Improved monitoring behavior when AI provider keys, quotas, or models fail
+- Reduced extra notifications while you are already working in Zush
+
+### Fixed
+- Fixed rename counts when some files fail
+- Fixed version display in About
+
+## [2.0.0] - 2026-05-08
 
 ### Added
 - Added video analysis with sampled frames and subtitle context
