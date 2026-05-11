@@ -1,7 +1,5 @@
 Welcome to Zush. These Terms of Service ("Terms") govern your use of the Zush application for macOS and Windows ("Service"), provided by Kirill Isachenko ("we," "us," or "our"). By downloading, installing, or using Zush, you agree to be bound by these Terms.
 
-Last updated: April 26, 2026
-
 ### 1. Description of Service
 
 Zush is a desktop utility for macOS and Windows designed to help users organize, rename, and manage metadata for files using artificial intelligence (AI). Features include automatic renaming for images, videos, and supported documents, including PDFs, smart metadata tagging (Finder tags on macOS, file properties on Windows, and Spotlight metadata), folder monitoring with file-type exclusions, optional custom AI prompt controls for rename and tagging behavior, Finder context-menu renaming on macOS, BYOK cloud processing, and Offline AI mode with private local models via Ollama.
@@ -28,6 +26,8 @@ Both free and PRO versions have usage limits for AI-powered cloud features. Curr
 
 **3.5 Merchant of Record**
 Our order process is conducted by our online reseller [Paddle.com](https://www.paddle.com). Paddle is the Merchant of Record for all our orders. Paddle provides all customer service inquiries and handles returns.
+
+Purchases made through the Mac App Store or Microsoft Store are processed by the applicable store platform under its own payment, refund, and account terms.
 
 **3.6 Refunds**
 Refund requests are handled by Paddle in accordance with their [refund policy](/refund-policy).

@@ -1,6 +1,4 @@
-This Privacy Policy explains how Zush ("Kirill Isachenko," "we," "us," or "our") collects, uses, and protects your information when you use our macOS application and related services.
-
-Last updated: April 27, 2026
+This Privacy Policy explains how Zush ("Kirill Isachenko," "we," "us," or "our") collects, uses, and protects your information when you use our macOS and Windows applications and related services.
 
 ### 1. Information We Collect
 
@@ -26,9 +24,9 @@ We collect information necessary to manage your license and enforce usage limits
 - Usage Counts: We track the number of AI-processed files to manage usage limits.
 
 **1.5 Payment Information**
-We do not store or process your credit card details. All payments are handled securely by our payment processors: [Paddle.com](https://www.paddle.com) (for direct purchases) and [Apple](https://www.apple.com/legal/privacy/) (for App Store purchases). Please refer to their respective privacy policies for details.
+We do not store or process your credit card details. All payments are handled securely by our payment processors: [Paddle.com](https://www.paddle.com) (for direct purchases), [Apple](https://www.apple.com/legal/privacy/) (for Mac App Store purchases), and [Microsoft](https://privacy.microsoft.com/privacystatement) (for Microsoft Store purchases). Please refer to their respective privacy policies for details.
 
-For App Store purchases, Zush sends StoreKit product and transaction identifiers to Zush backend to verify PRO entitlement, restore purchases, prevent abuse, and maintain account status.
+For store purchases, Zush sends store product and transaction identifiers to Zush backend to verify PRO entitlement, restore purchases, prevent abuse, and maintain account status.
 
 ### 2. How We Use Your Information
 
@@ -61,7 +59,7 @@ We share data with the following service providers:
 - **AI Providers:** Groq (primary), Google Gemini (fallback). With BYOK: optionally OpenAI or Anthropic Claude.
 - **Local AI Runtime:** Ollama, if you install and enable Offline AI mode. Ollama runs on your device and is managed by your local Ollama installation.
 - **Cloud Infrastructure:** Supabase (backend database, licensing, and API relay).
-- **Payment Processors:** [Paddle.com](https://www.paddle.com) (direct purchases), [Apple](https://www.apple.com/legal/privacy/) (App Store purchases).
+- **Payment Processors:** [Paddle.com](https://www.paddle.com) (direct purchases), [Apple](https://www.apple.com/legal/privacy/) (Mac App Store purchases), [Microsoft](https://privacy.microsoft.com/privacystatement) (Microsoft Store purchases).
 - **Error Tracking:** Sentry (anonymous crash and error reports).
 - **Usage Analytics:** TelemetryDeck (privacy-focused product analytics).
 

@@ -46,10 +46,16 @@ const titles: Record<string, string> = {
   refund: 'Refund Policy'
 };
 
+const updatedDates: Record<LegalProps['type'], string> = {
+  tos: 'Last updated: April 26, 2026',
+  privacy: 'Last updated: April 27, 2026',
+  refund: 'Last updated: March 19, 2026',
+};
+
 const Legal = ({
   type,
   title,
-  updated = 'Last updated: March 19, 2026',
+  updated,
   content,
   backToHomeLabel,
   homeHref,
@@ -60,7 +66,7 @@ const Legal = ({
     <section className={styles.Legal}>
       <div className={styles.Legal__Container}>
         <Heading as='h1' className={styles.Legal__Title}>{title ?? titles[type]}</Heading>
-        <Text as='p' color='subtle' className={styles.Legal__Updated}>{updated}</Text>
+        <Text as='p' color='subtle' className={styles.Legal__Updated}>{updated ?? updatedDates[type]}</Text>
         <div className={`${styles.Legal__Content} markdown-content`}>
           <ReactMarkdown
             components={{

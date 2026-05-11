@@ -63,7 +63,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/terms-of-service': {
     title: 'Terms of Service — Zush',
     description:
-      "Read Zush's terms of service for using our AI-powered file organization app for macOS.",
+      "Read Zush's terms of service for using our AI-powered file organization app for macOS and Windows.",
     robots: 'index, follow',
     ogType: 'website',
   },
