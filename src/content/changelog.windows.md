@@ -1,5 +1,24 @@
 # Changelog
 
+## [2.0.0] - 2026-05-11
+### Added
+- Expanded AI analysis support to 90+ image, document, spreadsheet, subtitle, RAW, and video formats
+- Added video preview frames and subtitle context for smarter video file names
+- Added per-format monitoring controls so watched folders can focus on the file types you actually want renamed
+- Added Windows notifications for monitoring, hotkey rename completion, paused states, and setup issues
+
+### Improved
+- Refined Cloud/BYOK and Offline AI setup with clearer Ollama status, model refresh, and configuration prompts
+- Improved image, PDF, document, spreadsheet, and RAW preview payloads for more accurate AI naming
+- Completed localized Windows UI coverage across supported Store languages
+- Polished drag and drop, quick rename, queue status, and metadata handling for closer macOS parity
+
+### Fixed
+- Pauses monitoring on provider quota, billing, model, or API key failures instead of repeatedly retrying doomed batches
+- Fixed hotkey completion notifications when selected files are skipped or already processed
+- Fixed Microsoft Store resource metadata for localized app names and Chinese Simplified package language
+- Improved fallback behavior for unsupported previews and failed file analysis batches
+
 ## [1.2.1] - 2026-05-06
 ### Fixed
 - Blocked Regenerate name and Retry analysis when a free account has reached its AI batch rename limit
