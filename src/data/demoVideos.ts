@@ -31,7 +31,7 @@ export const DEMO_VIDEOS: DemoVideoAsset[] = [
   {
     id: 'batch-rename',
     title: 'Batch Rename',
-    description: 'Rename up to 50 mixed files at once with AI',
+    description: 'Batch rename files with AI based on their actual content',
     sources: {
       light: '/videos/zush-batch-rename.mp4',
       dark: '/videos/zush-batch-rename-dark.mp4',
@@ -138,7 +138,7 @@ export const MACOS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
   {
     id: 'batch-rename',
     title: 'Batch Rename',
-    description: 'Rename multiple files at once with AI',
+    description: 'Batch rename files with AI based on their actual content',
     images: {
       light: '/images/showcase/macos/batch-rename-light.webp',
       dark: '/images/showcase/macos/batch-rename-dark.webp',
@@ -231,7 +231,7 @@ export const WINDOWS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
   {
     id: 'batch-rename',
     title: 'Batch Rename',
-    description: 'Rename multiple files at once with AI',
+    description: 'Batch rename files with AI based on their actual content',
     images: {
       light: '/images/showcase/windows-original/02-ai-rename-results.webp',
       dark: '/images/showcase/windows-original/10-dark-mode-results.webp',
