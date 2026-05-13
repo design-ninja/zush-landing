@@ -28,8 +28,8 @@ const DEFAULT_META: RouteSeoMeta = {
 const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/': {
     ...DEFAULT_META,
-    title: 'Zush — AI File Renamer for Mac & Windows',
-    description: `AI file renamer for Mac and Windows. Rename screenshots, videos, PDFs, photos, and documents in seconds with batch rename and folder monitoring. Free for ${APP_CONFIG.free_tier_limit} files.`,
+    title: 'AI File Renamer & Batch Rename Tool for Mac & Windows — Zush',
+    description: `Batch rename files with AI, watch folders automatically, and rename screenshots, PDFs, photos, videos, and documents by content. ${APP_CONFIG.free_tier_limit} free files.`,
     robots: 'index, follow',
   },
   '/changelog': {
@@ -131,16 +131,16 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ogType: 'website',
   },
   '/mac': {
-    title: 'AI File Renamer for Mac · Apple Silicon + Intel · Zush',
+    title: 'AI File Renamer & Batch Rename Tool for Mac · Zush',
     description:
-      'Rename screenshots, videos, PDFs, photos, and documents on Mac with AI. Apple Silicon + Intel, signed .dmg or Mac App Store install, free starter, no subscription.',
+      'Batch rename files on Mac with AI, watch folders automatically, and rename screenshots, PDFs, photos, videos, and documents by content.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/windows': {
-    title: 'AI File Renamer for Windows · Microsoft Store · Zush',
+    title: 'AI File Renamer & Batch Rename Tool for Windows · Zush',
     description:
-      'Rename screenshots, videos, PDFs, photos, and documents on Windows with AI in seconds. Microsoft Store install, automatic updates, free starter, no subscription.',
+      'Batch rename files on Windows with AI, watch folders automatically, and rename screenshots, PDFs, photos, videos, and documents by content.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -255,9 +255,9 @@ export const HOME_JSON_LD = {
       '@type': 'WebPage',
       '@id': `${SITE_ORIGIN}/#webpage`,
       url: SITE_ORIGIN,
-      name: 'Zush - AI File Renamer for Mac & Windows',
+      name: 'Zush - AI File Renamer & Batch Rename Tool',
       description:
-        'Zush is an AI file renamer for Mac and Windows that renames screenshots, videos, PDFs, photos, and documents with batch rename, folder monitoring, BYOK, and Offline AI mode.',
+        'Zush is an AI file renamer and batch rename tool for Mac and Windows. It renames screenshots, PDFs, photos, videos, and documents by content with automatic folder monitoring, BYOK, and Offline AI mode.',
       isPartOf: {
         '@id': `${SITE_ORIGIN}/#website`,
       },
@@ -295,7 +295,7 @@ export const HOME_JSON_LD = {
         '@id': `${SITE_ORIGIN}/#webpage`,
       },
       description:
-        'AI-powered file organization app for macOS and Windows. Automatically renames images, videos, PDFs, and documents using advanced AI with smart metadata and folder monitoring.',
+        'AI file renamer, batch rename tool, and automatic file organizer for macOS and Windows. Rename screenshots, PDFs, photos, videos, and documents by content with smart metadata and folder monitoring.',
       applicationCategory: 'UtilitiesApplication',
       applicationSubCategory: 'File Management',
       operatingSystem: ['macOS 14.0+', 'Windows 10', 'Windows 11'],
@@ -326,6 +326,8 @@ export const HOME_JSON_LD = {
       ],
       featureList: [
         'AI-powered file renaming',
+        'AI batch file renamer for mixed folders',
+        'Bulk rename screenshots, PDFs, photos, videos, and documents',
         'Automatic folder monitoring',
         'Smart metadata extraction',
         'Custom naming patterns',

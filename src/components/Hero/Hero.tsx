@@ -1,4 +1,4 @@
-import { type ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 import FileShowcase from "../FileShowcase";
 import type { Slide } from "../FileShowcase";
 import Button from "../Button";
@@ -26,6 +26,19 @@ export interface HeroProps {
   trustSignals?: string[];
 }
 
+const renderTextWithBreaks = (value: string) =>
+  value.split("\n").map((part, index) => (
+    <Fragment key={`${part}-${index}`}>
+      {index > 0 && (
+        <>
+          {" "}
+          <br />
+        </>
+      )}
+      {part}
+    </Fragment>
+  ));
+
 const Hero = ({
   title,
   titleAccent,
@@ -47,9 +60,10 @@ const Hero = ({
     if (!title) {
       return (
         <>
-          Rename Files with AI.
+          <span className={styles.Hero__TitleAccent}>AI File Renamer</span>
+          {" "}
           <br />
-          <span className={styles.Hero__TitleAccent}>Automatically.</span>
+          for Mac & Windows
         </>
       );
     }
@@ -62,12 +76,16 @@ const Hero = ({
 
         return (
           <>
-            {before}
-            <span className={styles.Hero__TitleAccent}>{highlightText}</span>
-            {after}
+            {renderTextWithBreaks(before)}
+            <span className={styles.Hero__TitleAccent}>{renderTextWithBreaks(highlightText)}</span>
+            {renderTextWithBreaks(after)}
           </>
         );
       }
+    }
+
+    if (typeof title === "string") {
+      return <>{renderTextWithBreaks(title)}</>;
     }
 
     return title;
@@ -90,7 +108,7 @@ const Hero = ({
           </Heading>
           <Text size="xl" color="subtle" className={styles.Hero__Subtitle}>
             {subtitle ??
-              "Blazing fast AI file renamer for Mac and Windows. Auto-rename screenshots, videos, PDFs, photos, and documents with meaningful names — folder watching, BYOK, and offline AI built in."}
+              "Batch rename files with AI, watch folders automatically, and organize screenshots, PDFs, photos, videos, and documents with searchable names based on real content."}
           </Text>
 
           <div className={styles.Hero__Buttons}>

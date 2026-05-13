@@ -58,15 +58,15 @@ const renameExamples = [
 ];
 
 const workflowSteps = [
-  'Batch old piles',
+  'Batch rename old piles',
   'Watch new folders',
   'Revert from history',
 ];
 
 const defaultCopy: WhyZushCopy = {
-  title: 'Why Zush Fits Real Desktop Work',
+  title: 'Why Zush Wins Against Generic File Renamers',
   titlePlatform: 'Why Zush Wins on {os}',
-  description: 'One-time pricing, desktop-native feel, fast renaming, and fewer annoying decisions',
+  description: 'AI batch renaming, automatic folder monitoring, rollback, BYOK, Offline AI, and mixed-format support in one desktop app',
   descriptionPlatform: 'Native desktop feel, fast renaming, one-time pricing, and fewer annoying decisions on {os}',
   nativeEyebrow: 'Desktop-native feel',
   nativeEyebrowPlatform: '{os}-native feel',
@@ -82,11 +82,11 @@ const defaultCopy: WhyZushCopy = {
   speedTitle: 'Renames happen in seconds',
   speedDescription: 'Speed matters because cleanup only sticks if it does not interrupt the real work. Drop files in, review, apply, move on.',
   formatsEyebrow: '91 supported formats',
-  formatsTitle: 'Images, documents, and videos',
-  formatsDescription: 'Supports AVIF, RAW, Office files, subtitles, and common video formats, so mixed folders can be renamed by actual content instead of file-type silos.',
+  formatsTitle: 'Screenshots, PDFs, photos, documents, and videos',
+  formatsDescription: 'Supports AVIF, RAW, Office files, PDFs, subtitles, and common video formats, so mixed folders can be renamed by actual content instead of file-type silos.',
   controlEyebrow: 'Low-risk automation',
-  controlTitle: 'Batch, monitor, and undo',
-  controlDescription: 'Clean up old piles in batch, keep new folders readable with monitoring, and revert from history if you want a different name.',
+  controlTitle: 'Batch rename, watch folders, undo safely',
+  controlDescription: 'Use Zush as a batch file renamer for old piles, an automatic file renamer for new folders, and a low-risk workflow with full rename history.',
   workflowSteps,
 };
 
