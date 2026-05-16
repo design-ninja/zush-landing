@@ -27,15 +27,15 @@ const wallpapers = {
 };
 
 const features = [
-  { id: 'batch-rename', fixture: 'batch-rename' },
-  { id: 'monitor', fixture: 'monitor' },
-  { id: 'activity', fixture: 'activity' },
-  { id: 'tags', fixture: 'smart-tags', extraOwners: ['Finder'] },
-  { id: 'naming', fixture: 'naming' },
-  { id: 'multilanguage', fixture: 'multilanguage' },
-  { id: 'custom-prompts', fixture: 'custom-prompts', captureZushExtras: true },
-  { id: 'byok', fixture: 'byok' },
-  { id: 'offline-ai', fixture: 'offline-ai' },
+  { id: 'batch-rename', fixture: 'batch-rename', mainWidth: 1460 },
+  { id: 'monitor', fixture: 'monitor', mainWidth: 1380 },
+  { id: 'activity', fixture: 'activity', mainWidth: 1460 },
+  { id: 'tags', fixture: 'smart-tags', mainWidth: 1120, extraOwners: ['Finder'] },
+  { id: 'naming', fixture: 'naming', mainWidth: 1120 },
+  { id: 'multilanguage', fixture: 'multilanguage', mainWidth: 1120 },
+  { id: 'custom-prompts', fixture: 'custom-prompts', mainWidth: 1450, captureZushExtras: true },
+  { id: 'byok', fixture: 'byok', mainWidth: 1120 },
+  { id: 'offline-ai', fixture: 'offline-ai', mainWidth: 1120 },
 ];
 
 const args = new Set(process.argv.slice(2));
@@ -80,13 +80,14 @@ const targetConfigs = {
     canvas: { width: 2560, height: 1440 },
     extension: 'webp',
     finderGap: 85,
-    mainTargetWidth: () => Math.round(baseMainWindowWidth * windowZoom),
+    mainTargetWidth: (feature) => Math.round((feature.mainWidth ?? baseMainWindowWidth) * windowZoom),
   },
   'app-store': {
     canvas: { width: 2880, height: 1800 },
     extension: 'jpg',
     finderGap: Math.round(85 * (2880 / 2560)),
-    mainTargetWidth: () => Math.round(2880 * (baseMainWindowWidth / 2560) * windowZoom),
+    mainTargetWidth: (feature) =>
+      Math.round(2880 * ((feature.mainWidth ?? baseMainWindowWidth) / 2560) * windowZoom),
   },
 };
 
@@ -511,7 +512,7 @@ function renderComposite({ feature, theme, captures, outputPath, target }) {
   const canvas = config.canvas;
   const main = captures.find((capture) => capture.role === 'main');
   const pointScale = main.size.width / main.window.width;
-  const mainTargetWidth = config.mainTargetWidth();
+  const mainTargetWidth = config.mainTargetWidth(feature);
   const scale = mainTargetWidth / main.size.width;
   const mainTargetHeight = Math.round(main.size.height * scale);
   const finderGap = config.finderGap;
