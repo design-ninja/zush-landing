@@ -1,76 +1,76 @@
-# Zush Landing Page
+# Zush Landing
 
-Landing page for [Zush](https://zushapp.com) — AI-powered file organization app for macOS.
+Marketing website for [Zush](https://zushapp.com), built with Astro and React islands.
 
 ## Tech Stack
 
-- **React 19** + **TypeScript**
-- **Vite 7** — build tool
-- **SCSS Modules** — styling
-- **React Router** — routing
-- **Framer Motion** — animations
+- Astro 6
+- React 19 + TypeScript
+- SCSS modules
+- Vercel adapter (`@astrojs/vercel`)
+- PNPM 10
 
-## Development
+## Requirements
+
+- Node.js 22+
+- PNPM 10+
+
+## Local Development
 
 ```bash
-# Install dependencies
 pnpm install
-
-# Start dev server
-pnpm run dev
-
-# Build for production
-pnpm run build
-
-# Preview production build
-pnpm run preview
+pnpm dev
 ```
 
-## Deployment
-
-The site is deployed to GitHub Pages:
+Useful commands:
 
 ```bash
-pnpm run deploy
+pnpm build        # Production build
+pnpm preview      # Preview built site
+pnpm lint         # ESLint
+pnpm check:astro  # Astro + TS diagnostics
+pnpm check:seo    # Full quality gates (astro + payments + build + html + links)
 ```
 
-This will build the project and push to `gh-pages` branch.
+## CI and Quality Gates
 
-## Project Structure
+GitHub Actions workflow: `.github/workflows/quality-gates.yml`
 
-```
-src/
-├── components/
-│   ├── Button/          # Reusable button component
-│   ├── Changelog/       # Version history (fetches from appcast.xml)
-│   ├── Features/        # Features section
-│   ├── FileShowcase/    # File cards animation
-│   ├── Footer/          # Site footer
-│   ├── Hero/            # Hero section
-│   ├── Legal/           # Terms, Privacy, Refund pages
-│   ├── Logo/            # Logo component
-│   ├── Navbar/          # Navigation bar
-│   └── Pricing/         # Pricing section
-├── content/             # Markdown content for legal pages
-├── hooks/               # Custom React hooks
-├── styles/              # Global SCSS (variables, mixins, base)
-└── App.tsx              # Main app with routing
+The `seo-and-payments` job runs:
 
-public/
-├── appcast.xml          # Sparkle update feed
-├── downloads/           # App binaries (.zip)
-├── CNAME                # Custom domain config
-└── images/              # Static images
+```bash
+pnpm install --frozen-lockfile
+pnpm check:seo
 ```
 
-## Sparkle Integration
+`pnpm check:seo` includes:
 
-The `public/appcast.xml` file serves as the update feed for the macOS app via [Sparkle](https://sparkle-project.org/).
+- `check:astro`
+- `check:payments`
+- `build`
+- `check:html`
+- `check:links`
 
-When releasing a new version:
-1. Add the `.zip` binary to `public/downloads/`
-2. Update `appcast.xml` with new version info
-3. Deploy: `pnpm run deploy`
+## Deployment (Main Branch)
+
+- Production is deployed by Vercel from the `main` branch.
+- Pull requests and feature branches get preview deployments.
+- `gh-pages` deployment is no longer used.
+
+## URLs and Redirects
+
+Canonical routes and legacy URL redirects are maintained in `vercel.json` (for example, old `/rename-files-with-ai` -> `/ai-file-renamer`).
+
+## Sparkle / Release Feed
+
+`public/appcast.xml` is the Sparkle update feed for the macOS app, and release binaries live in `public/releases/`.
+
+When publishing a new app release:
+
+1. Add the new artifact(s) to `public/releases/`.
+2. Update `public/appcast.xml` with the new version metadata and enclosure info.
+3. Run `pnpm check:seo` locally.
+4. Merge to `main` to ship via Vercel.
 
 ## License
 
