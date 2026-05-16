@@ -1,0 +1,29 @@
+{\rtf1\ansi\deff0
+{\fonttbl{\f0 Arial;}}
+\f0\fs24
+\b Zush Google Ads API Tool Design\par\b0
+\par
+\b 1. Overview\par\b0
+Zush is a macOS application that helps users batch rename files with AI. The Google Ads API integration is an internal tool used to manage and monitor Zush's own Google Ads account. It is not a public product, agency tool, resale platform, or client-facing dashboard.\par
+\par
+\b 2. Purpose of API Usage\par\b0
+The tool is used for internal campaign operations for Zush only. Intended API usage includes reading campaign status, budgets, keywords, search terms, ads, recommendations, conversion actions, and performance metrics. The tool may also be used to pause, resume, and adjust Zush-owned campaigns, ad groups, ads, keywords, and budgets after human review.\par
+\par
+\b 3. Users and Access\par\b0
+Access is limited to internal Zush operators and approved contractors working on Zush marketing operations. There are no external users, public signups, client accounts, or self-service customer access. The Google Ads developer token is stored locally in a private environment file and is not exposed in frontend code.\par
+\par
+\b 4. Architecture\par\b0
+The local integration uses Google's official Google Ads MCP server and the official Google Ads Python client library. Codex connects to the local MCP server over stdio. The MCP server uses Google Application Default Credentials and the Zush Google Ads developer token to call the Google Ads API. The manager account is 280-758-8601, and the linked Zush advertising account is 471-469-2966.\par
+\par
+\b 5. Data Flow\par\b0
+The tool reads Google Ads account and campaign data from Google Ads API and presents it to the internal operator in the local Codex environment. When campaign changes are needed, the operator reviews the proposed change before it is applied. The tool does not sell, export, or share Google Ads data with external parties.\par
+\par
+\b 6. Authentication and Security\par\b0
+Authentication uses Google OAuth Application Default Credentials with the Google Ads API scope. Secrets are stored in a local .env file that is excluded from source control. The local virtual environment and MCP installation are excluded from source control. Access is restricted to Google accounts that have permission on the Zush manager/client Google Ads accounts.\par
+\par
+\b 7. Compliance Controls\par\b0
+The tool is intended to comply with Google Ads API Terms and Policies. It is used only for Zush-owned accounts and legitimate campaign management. The tool does not scrape Google Ads UI pages, bypass account controls, bypass billing controls, automate policy evasion, or manage accounts without authorization.\par
+\par
+\b 8. Expected Volume\par\b0
+Expected usage is low volume: periodic campaign checks, reporting, conversion tracking validation, recommendations review, and occasional campaign edits. Basic Access limits are sufficient for the expected usage.\par
+}
