@@ -69,7 +69,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       description: 'Wie Zush Dateiinhalt, Lizenzdaten, Zahlungen, Analysen und Drittanbieter verarbeitet.',
       updated: 'Zuletzt aktualisiert: 27. April 2026',
       sections: [
-        { eyebrow: 'Daten', title: 'Welche Informationen verarbeitet werden', body: 'Zush verarbeitet ausgewählte oder überwachte Dateien, um KI-gestützte Namen, Tags und Metadaten zu erzeugen. Je nach Dateityp werden Vorschauen, extrahierter Text oder kompakte Zusammenfassungen verwendet.' },
+        { eyebrow: 'Daten', title: 'Welche Informationen verarbeitet werden', body: 'Zush verarbeitet ausgewählte oder überwachte Dateien, um KI-gestützte Namen, Tags und Metadaten zu erzeugen. Je nach Dateityp werden Vorschauen, extrahierter Text, kompakte Zusammenfassungen, Audio-Metadaten oder Transkripte verwendet.' },
         { eyebrow: 'KI', title: 'Cloud, BYOK und Offline-Modus', body: 'Im Standardmodus laufen Analysen über Zush-Server zu KI-Anbietern. Mit BYOK verwendest du deinen eigenen Anbieter. Im Offline-KI-Modus werden unterstützte Inhalte lokal über Ollama verarbeitet.' },
         { eyebrow: 'Rechte', title: 'Sicherheit und Kontakt', body: 'Originaldateien verlassen dein Gerät im normalen Cloud-Betrieb nicht als vollständige Dateien. Für Datenschutzanfragen kontaktiere support@zushapp.com.' },
       ],
@@ -79,7 +79,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       description: 'Bedingungen für die Nutzung von Zush auf macOS und Windows.',
       updated: 'Zuletzt aktualisiert: 26. April 2026',
       sections: [
-        { eyebrow: 'Service', title: 'Beschreibung', body: 'Zush ist ein Desktop-Werkzeug zum Organisieren, Umbenennen und Verwalten von Dateimetadaten mit KI. Dazu gehören Stapel-Umbenennung, Ordnerüberwachung, eigene Prompts, BYOK und Offline-KI.' },
+        { eyebrow: 'Service', title: 'Beschreibung', body: 'Zush ist ein Desktop-Werkzeug zum Organisieren, Umbenennen und Verwalten von Dateimetadaten mit KI. Dazu gehören Audio-Unterstützung, Templates, Naming Blocks, Stapel-Umbenennung, Ordnerüberwachung, eigene Prompts, BYOK und Offline-KI.' },
         { eyebrow: 'Lizenz', title: 'Nutzung und Zahlungen', body: 'Du erhältst eine persönliche, nicht übertragbare Lizenz. Zush PRO ist ein Einmalkauf mit Credits sowie Zugriff auf BYOK und Offline-KI. Zahlungen werden über Paddle oder Store-Plattformen abgewickelt.' },
         { eyebrow: 'Haftung', title: 'KI-Ergebnisse und Verantwortung', body: 'KI kann falsche oder unerwartete Namen erzeugen. Du bist dafür verantwortlich, Änderungen vor dem Anwenden zu prüfen. Der Dienst wird ohne Gewährleistung bereitgestellt.' },
       ],
@@ -128,7 +128,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       description: 'Comment Zush traite les fichiers, licences, paiements, analyses et services tiers.',
       updated: 'Dernière mise à jour: 27 avril 2026',
       sections: [
-        { eyebrow: 'Données', title: 'Informations traitées', body: 'Zush traite les fichiers que vous sélectionnez ou surveillez pour générer des noms, tags et métadonnées avec l’IA. Selon le type, cela peut utiliser des aperçus, du texte extrait ou des résumés compacts.' },
+        { eyebrow: 'Données', title: 'Informations traitées', body: 'Zush traite les fichiers que vous sélectionnez ou surveillez pour générer des noms, tags et métadonnées avec l’IA. Selon le type, cela peut utiliser des aperçus, du texte extrait, des résumés compacts, des métadonnées audio ou des transcriptions.' },
         { eyebrow: 'IA', title: 'Cloud, BYOK et hors ligne', body: 'Par défaut, l’analyse passe par les serveurs Zush vers des fournisseurs IA. Avec BYOK, vous utilisez votre propre fournisseur. En mode hors ligne, les contenus pris en charge sont traités localement via Ollama.' },
         { eyebrow: 'Droits', title: 'Sécurité et contact', body: 'Les fichiers originaux complets ne quittent pas votre appareil dans le fonctionnement cloud normal. Pour toute demande de confidentialité, contactez support@zushapp.com.' },
       ],
@@ -138,7 +138,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       description: 'Conditions d’utilisation de Zush sur macOS et Windows.',
       updated: 'Dernière mise à jour: 26 avril 2026',
       sections: [
-        { eyebrow: 'Service', title: 'Description', body: 'Zush est un utilitaire desktop pour organiser, renommer et gérer les métadonnées de fichiers avec l’IA: lots, surveillance, prompts personnalisés, BYOK et IA hors ligne.' },
+        { eyebrow: 'Service', title: 'Description', body: 'Zush est un utilitaire desktop pour organiser, renommer et gérer les métadonnées de fichiers avec l’IA: audio, modèles, blocs de nommage, lots, surveillance, prompts personnalisés, BYOK et IA hors ligne.' },
         { eyebrow: 'Licence', title: 'Utilisation et paiements', body: 'Vous recevez une licence personnelle non transférable. Zush PRO est un achat unique avec crédits et accès à BYOK et à l’IA hors ligne. Les paiements sont traités par Paddle ou les stores.' },
         { eyebrow: 'Responsabilité', title: 'Résultats IA', body: 'L’IA peut produire des noms incorrects ou inattendus. Vous devez vérifier les changements avant de les appliquer. Le service est fourni sans garantie.' },
       ],
@@ -187,7 +187,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       description: 'Como o Zush lida com arquivos, licença, pagamentos, análises e serviços terceiros.',
       updated: 'Última atualização: 27 de abril de 2026',
       sections: [
-        { eyebrow: 'Dados', title: 'Informações processadas', body: 'O Zush processa arquivos selecionados ou monitorados para gerar nomes, tags e metadados com IA. Dependendo do tipo, usa prévias, texto extraído ou resumos compactos.' },
+        { eyebrow: 'Dados', title: 'Informações processadas', body: 'O Zush processa arquivos selecionados ou monitorados para gerar nomes, tags e metadados com IA. Dependendo do tipo, usa prévias, texto extraído, resumos compactos, metadados de áudio ou transcrições.' },
         { eyebrow: 'IA', title: 'Cloud, BYOK e offline', body: 'Por padrão, análises passam pelos servidores do Zush para provedores de IA. Com BYOK, você usa seu próprio provedor. No offline, conteúdos compatíveis são processados localmente via Ollama.' },
         { eyebrow: 'Direitos', title: 'Segurança e contato', body: 'Arquivos originais completos não saem do dispositivo na operação cloud normal. Para privacidade, fale com support@zushapp.com.' },
       ],
@@ -197,7 +197,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       description: 'Termos de uso do Zush no macOS e Windows.',
       updated: 'Última atualização: 26 de abril de 2026',
       sections: [
-        { eyebrow: 'Serviço', title: 'Descrição', body: 'Zush é um utilitário desktop para organizar, renomear e gerenciar metadados de arquivos com IA: lotes, monitoramento, prompts personalizados, BYOK e IA offline.' },
+        { eyebrow: 'Serviço', title: 'Descrição', body: 'Zush é um utilitário desktop para organizar, renomear e gerenciar metadados de arquivos com IA: áudio, modelos, blocos de nomes, lotes, monitoramento, prompts personalizados, BYOK e IA offline.' },
         { eyebrow: 'Licença', title: 'Uso e pagamentos', body: 'Você recebe uma licença pessoal e intransferível. Zush PRO é uma compra única com créditos e acesso a BYOK e IA offline. Pagamentos são processados por Paddle ou lojas.' },
         { eyebrow: 'Responsabilidade', title: 'Resultados da IA', body: 'A IA pode gerar nomes incorretos ou inesperados. Você deve revisar alterações antes de aplicar. O serviço é fornecido sem garantias.' },
       ],
@@ -246,7 +246,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       description: 'Cómo Zush trata archivos, licencia, pagos, analítica y servicios de terceros.',
       updated: 'Última actualización: 27 de abril de 2026',
       sections: [
-        { eyebrow: 'Datos', title: 'Información procesada', body: 'Zush procesa archivos seleccionados o vigilados para generar nombres, etiquetas y metadatos con IA. Según el tipo, usa vistas previas, texto extraído o resúmenes compactos.' },
+        { eyebrow: 'Datos', title: 'Información procesada', body: 'Zush procesa archivos seleccionados o vigilados para generar nombres, etiquetas y metadatos con IA. Según el tipo, usa vistas previas, texto extraído, resúmenes compactos, metadatos de audio o transcripciones.' },
         { eyebrow: 'IA', title: 'Cloud, BYOK y offline', body: 'Por defecto, los análisis pasan por servidores de Zush hacia proveedores de IA. Con BYOK usas tu propio proveedor. En offline, el contenido compatible se procesa localmente con Ollama.' },
         { eyebrow: 'Derechos', title: 'Seguridad y contacto', body: 'Los archivos originales completos no salen de tu dispositivo en la operación cloud normal. Para privacidad, escribe a support@zushapp.com.' },
       ],
@@ -256,7 +256,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       description: 'Términos para usar Zush en macOS y Windows.',
       updated: 'Última actualización: 26 de abril de 2026',
       sections: [
-        { eyebrow: 'Servicio', title: 'Descripción', body: 'Zush es una utilidad de escritorio para organizar, renombrar y gestionar metadatos con IA: lotes, monitoreo, prompts personalizados, BYOK e IA offline.' },
+        { eyebrow: 'Servicio', title: 'Descripción', body: 'Zush es una utilidad de escritorio para organizar, renombrar y gestionar metadatos con IA: audio, plantillas, bloques de nombres, lotes, monitoreo, prompts personalizados, BYOK e IA offline.' },
         { eyebrow: 'Licencia', title: 'Uso y pagos', body: 'Recibes una licencia personal e intransferible. Zush PRO es una compra única con créditos y acceso a BYOK e IA offline. Los pagos se procesan mediante Paddle o tiendas.' },
         { eyebrow: 'Responsabilidad', title: 'Resultados de IA', body: 'La IA puede producir nombres incorrectos o inesperados. Debes revisar los cambios antes de aplicarlos. El servicio se ofrece sin garantías.' },
       ],
@@ -305,7 +305,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       description: 'Hoe Zush omgaat met bestanden, licenties, betalingen, analyse en externe services.',
       updated: 'Laatst bijgewerkt: 27 april 2026',
       sections: [
-        { eyebrow: 'Data', title: 'Welke informatie wordt verwerkt', body: 'Zush verwerkt geselecteerde of bewaakte bestanden om AI-namen, tags en metadata te maken. Afhankelijk van het type gebruikt Zush previews, geëxtraheerde tekst of compacte samenvattingen.' },
+        { eyebrow: 'Data', title: 'Welke informatie wordt verwerkt', body: 'Zush verwerkt geselecteerde of bewaakte bestanden om AI-namen, tags en metadata te maken. Afhankelijk van het type gebruikt Zush previews, geëxtraheerde tekst, compacte samenvattingen, audiometadata of transcripties.' },
         { eyebrow: 'AI', title: 'Cloud, BYOK en offline', body: 'Standaard lopen analyses via Zush-servers naar AI-providers. Met BYOK gebruik je je eigen provider. Offline wordt ondersteunde inhoud lokaal via Ollama verwerkt.' },
         { eyebrow: 'Rechten', title: 'Veiligheid en contact', body: 'Volledige originele bestanden verlaten je apparaat normaal niet in cloudmodus. Voor privacyvragen: support@zushapp.com.' },
       ],
@@ -315,7 +315,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       description: 'Voorwaarden voor het gebruik van Zush op macOS en Windows.',
       updated: 'Laatst bijgewerkt: 26 april 2026',
       sections: [
-        { eyebrow: 'Service', title: 'Beschrijving', body: 'Zush is een desktoptool om bestanden met AI te organiseren, hernoemen en van metadata te voorzien: batches, mapbewaking, eigen prompts, BYOK en offline AI.' },
+        { eyebrow: 'Service', title: 'Beschrijving', body: 'Zush is een desktoptool om bestanden met AI te organiseren, hernoemen en van metadata te voorzien: audio, templates, Naming Blocks, batches, mapbewaking, eigen prompts, BYOK en offline AI.' },
         { eyebrow: 'Licentie', title: 'Gebruik en betalingen', body: 'Je krijgt een persoonlijke, niet-overdraagbare licentie. Zush PRO is beschikbaar als maandplan of eenmalige aankoop en geeft toegang tot unlimited PRO, BYOK en offline AI. Betalingen lopen via Paddle of stores.' },
         { eyebrow: 'Verantwoordelijkheid', title: 'AI-resultaten', body: 'AI kan onjuiste of onverwachte namen maken. Controleer wijzigingen voor toepassing. De service wordt zonder garantie geleverd.' },
       ],
@@ -364,7 +364,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       description: 'Come Zush gestisce file, licenze, pagamenti, analisi e servizi di terze parti.',
       updated: 'Ultimo aggiornamento: 27 aprile 2026',
       sections: [
-        { eyebrow: 'Dati', title: 'Informazioni elaborate', body: 'Zush elabora file selezionati o monitorati per generare nomi, tag e metadati con IA. In base al tipo usa anteprime, testo estratto o riassunti compatti.' },
+        { eyebrow: 'Dati', title: 'Informazioni elaborate', body: 'Zush elabora file selezionati o monitorati per generare nomi, tag e metadati con IA. In base al tipo usa anteprime, testo estratto, riassunti compatti, metadati audio o trascrizioni.' },
         { eyebrow: 'IA', title: 'Cloud, BYOK e offline', body: 'Di default le analisi passano dai server Zush a provider IA. Con BYOK usi il tuo provider. Offline elabora contenuti supportati localmente via Ollama.' },
         { eyebrow: 'Diritti', title: 'Sicurezza e contatto', body: 'I file originali completi non lasciano il dispositivo nel normale uso cloud. Per richieste privacy: support@zushapp.com.' },
       ],
@@ -374,7 +374,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       description: 'Condizioni per usare Zush su macOS e Windows.',
       updated: 'Ultimo aggiornamento: 26 aprile 2026',
       sections: [
-        { eyebrow: 'Servizio', title: 'Descrizione', body: 'Zush è un utility desktop per organizzare, rinominare e gestire metadati con IA: batch, monitoraggio cartelle, prompt personalizzati, BYOK e IA offline.' },
+        { eyebrow: 'Servizio', title: 'Descrizione', body: 'Zush è un utility desktop per organizzare, rinominare e gestire metadati con IA: audio, modelli, blocchi di nomi, batch, monitoraggio cartelle, prompt personalizzati, BYOK e IA offline.' },
         { eyebrow: 'Licenza', title: 'Uso e pagamenti', body: 'Ricevi una licenza personale non trasferibile. Zush PRO è un acquisto unico con crediti e accesso a BYOK e IA offline. I pagamenti sono gestiti da Paddle o dagli store.' },
         { eyebrow: 'Responsabilità', title: 'Risultati IA', body: 'L’IA può produrre nomi errati o inattesi. Devi controllare le modifiche prima di applicarle. Il servizio è fornito senza garanzie.' },
       ],
@@ -423,7 +423,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       description: 'Zush がファイル、ライセンス、支払い、分析、外部サービスを扱う方法。',
       updated: '最終更新: 2026年4月27日',
       sections: [
-        { eyebrow: 'データ', title: '処理される情報', body: 'Zush は選択または監視されたファイルを処理し、AI による名前、タグ、メタデータを生成します。種類によりプレビュー、抽出テキスト、要約を使います。' },
+        { eyebrow: 'データ', title: '処理される情報', body: 'Zush は選択または監視されたファイルを処理し、AI による名前、タグ、メタデータを生成します。種類によりプレビュー、抽出テキスト、要約、音声メタデータ、文字起こしを利用できます。' },
         { eyebrow: 'AI', title: 'クラウド、BYOK、オフライン', body: '標準では Zush サーバー経由で AI プロバイダーに分析を送ります。BYOK では自分のプロバイダーを使い、オフラインでは Ollama でローカル処理します。' },
         { eyebrow: '権利', title: '安全性と連絡先', body: '通常のクラウド処理で元の完全なファイルがそのまま送信されることはありません。問い合わせは support@zushapp.com へ。' },
       ],
@@ -433,7 +433,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       description: 'macOS と Windows で Zush を利用するための条件。',
       updated: '最終更新: 2026年4月26日',
       sections: [
-        { eyebrow: 'サービス', title: '説明', body: 'Zush は AI でファイル名とメタデータを整理するデスクトップツールです。一括リネーム、フォルダ監視、カスタムプロンプト、BYOK、Offline AI を含みます。' },
+        { eyebrow: 'サービス', title: '説明', body: 'Zush は AI でファイル名とメタデータを整理するデスクトップツールです。音声、テンプレート、命名ブロック、一括リネーム、フォルダ監視、カスタムプロンプト、BYOK、Offline AI を含みます。' },
         { eyebrow: 'ライセンス', title: '利用と支払い', body: '個人用で譲渡不可のライセンスが付与されます。Zush PRO は買い切りで、クレジット、BYOK、Offline AI が含まれます。支払いは Paddle またはストア経由です。' },
         { eyebrow: '責任', title: 'AI の結果', body: 'AI は誤った名前や予期しない名前を生成する場合があります。適用前に確認してください。サービスは保証なしで提供されます。' },
       ],
@@ -482,7 +482,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       description: 'Zush가 파일, 라이선스, 결제, 분석, 타사 서비스를 처리하는 방식.',
       updated: '마지막 업데이트: 2026년 4월 27일',
       sections: [
-        { eyebrow: '데이터', title: '처리되는 정보', body: 'Zush는 선택하거나 모니터링하는 파일을 처리해 AI 이름, 태그, 메타데이터를 생성합니다. 파일 유형에 따라 미리보기, 추출 텍스트, 요약을 사용합니다.' },
+        { eyebrow: '데이터', title: '처리되는 정보', body: 'Zush는 선택하거나 모니터링하는 파일을 처리해 AI 이름, 태그, 메타데이터를 생성합니다. 파일 유형에 따라 미리보기, 추출 텍스트, 요약, 오디오 메타데이터, 전사를 사용할 수 있습니다.' },
         { eyebrow: 'AI', title: '클라우드, BYOK, 오프라인', body: '기본적으로 분석은 Zush 서버를 거쳐 AI 제공자로 전달됩니다. BYOK는 자신의 제공자를 사용하고, 오프라인은 Ollama로 로컬 처리합니다.' },
         { eyebrow: '권리', title: '보안 및 문의', body: '일반 클라우드 운영에서 원본 전체 파일은 그대로 전송되지 않습니다. 개인정보 문의는 support@zushapp.com 으로 보내세요.' },
       ],
@@ -492,7 +492,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       description: 'macOS 및 Windows에서 Zush를 사용하기 위한 조건.',
       updated: '마지막 업데이트: 2026년 4월 26일',
       sections: [
-        { eyebrow: '서비스', title: '설명', body: 'Zush는 AI로 파일 이름과 메타데이터를 정리하는 데스크톱 도구입니다. 일괄 이름 변경, 폴더 모니터링, 사용자 프롬프트, BYOK, 오프라인 AI를 포함합니다.' },
+        { eyebrow: '서비스', title: '설명', body: 'Zush는 AI로 파일 이름과 메타데이터를 정리하는 데스크톱 도구입니다. 오디오, 템플릿, Naming Blocks, 일괄 이름 변경, 폴더 모니터링, 사용자 프롬프트, BYOK, 오프라인 AI를 포함합니다.' },
         { eyebrow: '라이선스', title: '사용 및 결제', body: '개인적이고 양도할 수 없는 라이선스가 제공됩니다. Zush PRO는 크레딧, BYOK, 오프라인 AI가 포함된 일회성 구매입니다. 결제는 Paddle 또는 스토어에서 처리됩니다.' },
         { eyebrow: '책임', title: 'AI 결과', body: 'AI는 잘못되거나 예상치 못한 이름을 만들 수 있습니다. 적용 전 변경을 검토해야 합니다. 서비스는 보증 없이 제공됩니다.' },
       ],
@@ -541,7 +541,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       description: 'Zush 如何处理文件、许可证、支付、分析和第三方服务。',
       updated: '最后更新：2026 年 4 月 27 日',
       sections: [
-        { eyebrow: '数据', title: '处理哪些信息', body: 'Zush 会处理你选择或监控的文件，用 AI 生成名称、标签和元数据。根据文件类型，可能使用预览图、提取文本或压缩摘要。' },
+        { eyebrow: '数据', title: '处理哪些信息', body: 'Zush 会处理你选择或监控的文件，用 AI 生成名称、标签和元数据。根据文件类型，音频还可使用元数据或转录上下文。' },
         { eyebrow: 'AI', title: '云端、BYOK 与离线', body: '默认情况下，分析会通过 Zush 服务器发送给 AI provider。BYOK 使用你自己的 provider。离线模式会通过 Ollama 在本地处理支持的内容。' },
         { eyebrow: '权利', title: '安全与联系', body: '正常云端运行中，完整原始文件不会作为完整文件离开你的设备。如有隐私问题，请联系 support@zushapp.com。' },
       ],
@@ -551,7 +551,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       description: '在 macOS 和 Windows 上使用 Zush 的条款。',
       updated: '最后更新：2026 年 4 月 26 日',
       sections: [
-        { eyebrow: '服务', title: '说明', body: 'Zush 是用 AI 整理、重命名并管理文件元数据的桌面工具，包括批量重命名、文件夹监控、自定义提示词、BYOK 和离线 AI。' },
+        { eyebrow: '服务', title: '说明', body: 'Zush 是用 AI 整理、重命名并管理文件元数据的桌面工具，支持音频、模板、命名块、批量重命名、文件夹监控、自定义提示词、BYOK 和离线 AI。' },
         { eyebrow: '许可', title: '使用与付款', body: '你获得个人、不可转让的使用许可。Zush PRO 提供月付和一次性购买两种方案，包含 unlimited PRO、BYOK 和离线 AI。付款由 Paddle 或应用商店处理。' },
         { eyebrow: '责任', title: 'AI 结果', body: 'AI 可能生成错误或意外的名称。应用前你需要检查变更。服务按现状提供，不作担保。' },
       ],

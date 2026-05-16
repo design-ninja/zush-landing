@@ -7,11 +7,12 @@ To provide AI-powered organizing and renaming features, Zush processes the files
 
 - **Visual files** such as images, RAW previews, SVGs, and some PDFs may be converted into a compressed preview image before analysis.
 - **Supported documents** such as text files, emails, spreadsheets, presentations, and some PDFs may be analyzed using extracted text or a compact content summary generated on your device before the request is sent.
+- **Supported audio files** may be analyzed using embedded metadata, recognition context, transcript context, sidecar transcript data, or a bounded audio payload when transcription is required.
 
-Your original full-resolution files do not leave your device as part of normal cloud operation. If you enable Offline AI mode, supported file analysis runs through private local models via Ollama instead of Zush cloud or third-party AI providers.
+Your original full-resolution files do not leave your device as part of normal cloud operation, except where a bounded audio payload is required for transcription. If you enable Offline AI mode, supported file analysis runs through private local models via Ollama instead of Zush cloud or third-party AI providers where supported.
 
 **1.2 Prompt and Instruction Data**
-If you use the AI prompt editor or other prompt customization features, the custom rename prompt text and custom tagging prompt text you enter are sent with the analysis request so the AI provider can follow your instructions.
+If you use the AI prompt editor, reusable templates, Naming Blocks, or other prompt customization features, the custom rename prompt text, custom tagging prompt text, and selected naming structure you enter are sent with the analysis request so the AI provider can follow your instructions.
 
 **1.3 Device Identifier**
 An anonymous device identifier (machine UUID) is sent with each analysis request for usage tracking, rate limiting, and license enforcement. This identifier does not contain personal information.
@@ -46,11 +47,11 @@ Zush sends file analysis payloads to third-party AI services for analysis:
 - **Bring Your Own Key (BYOK):** PRO users may configure their own API keys for Groq, Google Gemini, OpenAI, or Anthropic Claude. BYOK keys are stored locally in macOS Keychain. In BYOK mode, the key is sent to Zush backend and the selected AI provider only to validate the key and process AI requests. Zush backend does not permanently store BYOK API keys.
 - **Offline AI mode:** PRO users may process supported files with private local models via Ollama. In Offline AI mode, file analysis content is processed on the user's device and is not sent to Zush servers or third-party AI providers for analysis. Zush may still contact backend services for licensing, updates, support, or non-content operational checks.
 
-**What is sent in Cloud and BYOK modes:** Depending on file type, this may include a compressed preview image, extracted document text, or a compact content summary, along with MIME type, file extension, language preference, regenerate and BYOK settings, an anonymous device identifier, and any custom rename or tagging prompt text you submit. Some requests may also include basic file metadata such as the file name needed to generate better rename suggestions.
+**What is sent in Cloud and BYOK modes:** Depending on file type, this may include a compressed preview image, sampled video frames, subtitle context, extracted document text, audio metadata, transcript context, a bounded audio payload when transcription is required, or a compact content summary, along with MIME type, file extension, language preference, regenerate and BYOK settings, an anonymous device identifier, and any custom rename or tagging prompt text you submit. Some requests may also include basic file metadata such as the file name needed to generate better rename suggestions.
 
-**What is NOT sent automatically:** Original full-resolution file contents and local folder paths are not sent as separate fields. However, if personal information appears inside a file preview, extracted text, or you type personal or identifying information into a custom prompt, that information may be processed as part of the request.
+**What is NOT sent automatically:** Original full-resolution file contents and local folder paths are not sent as separate fields, except for bounded audio content when transcription is required. However, if personal information appears inside a file preview, extracted text, transcript, audio payload, or you type personal or identifying information into a custom prompt, that information may be processed as part of the request.
 
-**Data retention:** File previews, extracted text, summaries, and custom prompt text are processed for real-time analysis. Zush does not store file content after processing as part of normal operation, and does not intentionally store custom prompt text as an application feature. Submitted data may still be processed or retained by third-party AI providers according to their own terms. Your file content and prompt text are not used by Zush to train our own models.
+**Data retention:** File previews, extracted text, transcripts, audio payloads, summaries, templates, Naming Blocks, and custom prompt text are processed for real-time analysis. Zush does not store file content after processing as part of normal operation, and does not intentionally store custom prompt text as an application feature. Submitted data may still be processed or retained by third-party AI providers according to their own terms. Your file content and prompt text are not used by Zush to train our own models.
 
 ### 4. Third-Party Services
 

@@ -1,0 +1,83 @@
+---
+title: "How to Rename Audio Files with AI: MP3, M4A, WAV and Podcasts"
+description: "Learn how AI audio renaming works for music tracks, voice memos, podcasts, interviews, meeting recordings, and mixed media folders."
+date: "2026-05-16"
+slug: "rename-audio-files-with-ai"
+platform: "general"
+topic: "formats"
+tags:
+  - "AI File Renaming"
+  - "Audio"
+  - "File Naming"
+tldr: "AI audio renaming turns weak names like track_01_final.mp3 or voice_memo_042.m4a into searchable filenames by using metadata, recognition, transcript context, and reusable naming templates."
+reviewed: "2026-05-16"
+---
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Quick answer: rename audio files with AI by using a tool that can read audio metadata, use recognition or transcript context when available, and preview filenames before applying them. In Zush 3.0, MP3, M4A, WAV, FLAC, OGG, WebM, and MPGA files can be renamed alongside photos, screenshots, videos, PDFs, and documents.
+
+Audio files pile up under names that are useful to recording software but useless to people: `track_01_final.mp3`, `voice_memo_042.m4a`, `session_export.wav`, `podcast_cut_003.wav`. The name rarely tells you the guest, client, subject, take, BPM, or whether the file is a keeper.
+
+[Rename Audio with AI](/rename-audio-with-ai) is built for that gap. Zush generates searchable names from the context available for each file, then lets you review everything before changing files on disk.
+
+<BlogProductIntro />
+
+## What AI audio renaming can use
+
+Audio files can carry several types of useful context:
+
+- embedded metadata such as title, artist, album, duration, and creation date
+- transcript context from spoken recordings
+- recognition context for music, voice, ambience, or meeting audio
+- folder and original filename clues
+- your naming template and Naming Blocks
+
+The result is a filename like `client-discovery-call.m4a`, `lo-fi-piano-loop-92bpm.mp3`, or `product-roadmap-interview.wav`.
+
+## Supported audio formats in Zush
+
+Zush 3.0 supports these audio formats:
+
+`mp3`, `m4a`, `wav`, `flac`, `ogg`, `webm`, and `mpga`.
+
+That covers common music exports, voice memos, podcast cuts, meeting audio, browser-recorded WebM audio, and high-quality WAV or FLAC files.
+
+## Before and after examples
+
+| Original filename | AI-generated filename |
+|---|---|
+| `track_01_final.mp3` | `lo-fi-piano-loop-92bpm.mp3` |
+| `voice_memo_042.m4a` | `client-discovery-call.m4a` |
+| `podcast_cut_003.wav` | `product-roadmap-interview.wav` |
+| `field_rec_18.flac` | `rainy-street-ambience.flac` |
+| `meeting_audio_2026-04-09.mpga` | `acme-contract-review-call.mpga` |
+
+## Use templates for repeatable audio names
+
+Templates help when the same kind of audio arrives every week. A podcast folder might use:
+
+`{date}_{guest}_{topic}`
+
+A music production folder might use:
+
+`{artist}_{title}_{bpm}`
+
+A client calls folder might use:
+
+`{client_name}_{meeting_topic}_{date}`
+
+The point is consistency. AI can infer the subject, and the template keeps the structure predictable across hundreds of files.
+
+## FAQ
+
+### Does Zush upload my whole audio file?
+
+Your original files stay on your computer. Cloud analysis sends only the payload needed for renaming, such as metadata, transcript context, or a bounded audio payload when transcription is required.
+
+### Can Zush rename audio with videos and documents in one batch?
+
+Yes. Audio files can be mixed with supported images, videos, PDFs, Office documents, text files, spreadsheets, and screenshots.
+
+### Is audio support free?
+
+You can try Zush free. Advanced workflows such as reusable templates, BYOK, Offline AI mode, and Naming Blocks are part of Zush PRO.

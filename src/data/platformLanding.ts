@@ -29,7 +29,7 @@ export const PLATFORM_LANDING_CONTENT: Record<DownloadOS, PlatformLandingContent
     breadcrumbLabel: 'Zush for Mac',
     softwareName: 'Zush for Mac',
     softwareDescription:
-      'AI-powered file renamer for macOS. Rename screenshots, videos, PDFs, photos and documents with cloud AI or Offline AI mode via Ollama. Native Apple Silicon and Intel support.',
+      'AI-powered file renamer for macOS. Rename screenshots, audio, videos, PDFs, photos and documents with cloud AI, templates, Naming Blocks, or Offline AI mode via Ollama. Native Apple Silicon and Intel support.',
     operatingSystem: 'macOS 14.0+',
     downloadUrl: DOWNLOAD_URL,
     heroTitle: 'AI File Renamer for Mac',
@@ -87,7 +87,7 @@ export const PLATFORM_LANDING_CONTENT: Record<DownloadOS, PlatformLandingContent
     breadcrumbLabel: 'Zush for Windows',
     softwareName: 'Zush for Windows',
     softwareDescription:
-      'AI-powered file renamer for Windows. Rename screenshots, videos, PDFs, photos and documents with descriptive names. Distributed through the Microsoft Store with auto-updates.',
+      'AI-powered file renamer for Windows. Rename screenshots, audio, videos, PDFs, photos and documents with descriptive names, templates, and Naming Blocks. Distributed through the Microsoft Store with auto-updates.',
     operatingSystem: ['Windows 10', 'Windows 11'],
     downloadUrl: WINDOWS_STORE_URL,
     installUrl: WINDOWS_STORE_URL,

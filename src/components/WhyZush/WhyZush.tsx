@@ -1,6 +1,5 @@
 import {
   Check,
-  DollarSign,
   Files,
   History,
   Monitor,
@@ -15,11 +14,6 @@ import type { WhyZushCopy } from '@/i18n/copy';
 import type { DownloadOS } from '@/utils/download';
 import styles from './WhyZush.module.scss';
 
-const pricingTrustItems = [
-  '✨ Free to try',
-  '∞ Unlimited PRO',
-  '↩️ 14-day refund',
-];
 const formatPills = [
   'avif',
   'raw',
@@ -34,11 +28,16 @@ const formatPills = [
   'mp4',
   'mov',
   'm2ts',
+  'mp3',
+  'm4a',
+  'wav',
+  'flac',
 ];
 const supportedFormatCount = new Set([
   ...APP_CONFIG.image_extensions,
   ...APP_CONFIG.document_extensions,
   ...APP_CONFIG.video_extensions,
+  ...APP_CONFIG.audio_extensions,
 ]).size;
 const hiddenFormatCount = supportedFormatCount - formatPills.length;
 
@@ -66,24 +65,24 @@ const workflowSteps = [
 const defaultCopy: WhyZushCopy = {
   title: 'Why Zush Wins Against Generic File Renamers',
   titlePlatform: 'Why Zush Wins on {os}',
-  description: 'AI batch renaming, automatic folder monitoring, rollback, BYOK, Offline AI, and mixed-format support in one desktop app',
-  descriptionPlatform: 'Native desktop feel, fast renaming, flexible PRO pricing, and fewer annoying decisions on {os}',
+  description: 'AI batch renaming, templates, naming blocks, audio support, folder monitoring, rollback, BYOK, and Offline AI in one desktop app',
+  descriptionPlatform: 'Native desktop feel, fast renaming, templates, naming blocks, audio support, and fewer manual decisions on {os}',
   nativeEyebrow: 'Desktop-native feel',
   nativeEyebrowPlatform: '{os}-native feel',
   nativeTitle: 'Native, fast, and modern',
   nativeDescription: 'Zush feels like a real desktop app: quick to open, clean to use, and visually at home on your machine instead of feeling like a clunky utility panel.',
   nativeDescriptionPlatform: 'Zush feels like a real native {os} app: quick to open, clean to use, and visually at home on your machine instead of feeling like a clunky utility panel.',
-  pricingTrustItems,
-  priceEyebrow: 'Fair PRO pricing',
-  priceTitle: 'Monthly or one-time',
-  priceDescription: 'Start with 50 free renames, then choose $8/month or a $38 one-time plan when Zush becomes part of your workflow.',
-  priceLabel: 'from $8/mo',
+  pricingTrustItems: ['✨ Free to try', '∞ Unlimited PRO', '↩️ 14-day refund'],
+  priceEyebrow: 'Reusable templates',
+  priceTitle: 'One setup for every folder',
+  priceDescription: 'Save naming rules for screenshots, expenses, music tracks, client notes, legal files, travel bookings, and monitored folders.',
+  priceLabel: '11 built-in',
   speedEyebrow: 'Sssupafast!',
   speedTitle: 'Renames happen in seconds',
   speedDescription: 'Speed matters because cleanup only sticks if it does not interrupt the real work. Drop files in, review, apply, move on.',
-  formatsEyebrow: '91 supported formats',
-  formatsTitle: 'Screenshots, PDFs, photos, documents, and videos',
-  formatsDescription: 'Supports AVIF, RAW, Office files, PDFs, subtitles, and common video formats, so mixed folders can be renamed by actual content instead of file-type silos.',
+  formatsEyebrow: '98 supported formats',
+  formatsTitle: 'Screenshots, PDFs, photos, audio, documents, and videos',
+  formatsDescription: 'Supports AVIF, RAW, Office files, PDFs, subtitles, MP3, M4A, WAV, FLAC, and common video formats, so mixed folders can be renamed by actual content instead of file-type silos.',
   controlEyebrow: 'Low-risk automation',
   controlTitle: 'Batch rename, watch folders, undo safely',
   controlDescription: 'Use Zush as a batch file renamer for old piles, an automatic file renamer for new folders, and a low-risk workflow with full rename history.',
@@ -134,38 +133,6 @@ const WhyZush = ({ forceOS, platformSpecificCopy = false, copy = defaultCopy }: 
         />
 
         <div className={styles.Grid}>
-          <article className={`${styles.Card} ${styles.Card_price}`}>
-            <div className={styles.Card__Header}>
-              <div className={styles.Card__Icon}>
-                <DollarSign size={24} />
-              </div>
-              <span className={styles.Card__Eyebrow}>{copy.priceEyebrow}</span>
-            </div>
-
-            <div className={styles.PriceLayout}>
-              <div className={styles.PriceCopy}>
-                <Heading as='h3' className={styles.Card__Title}>
-                  {copy.priceTitle}
-                </Heading>
-                <Text className={styles.Card__Description} color='subtle'>
-                  {copy.priceDescription}
-                </Text>
-
-                <div className={styles.PricePanel}>
-                  <div className={styles.PricePanel__Header}>
-                    <span className={styles.PricePanel__Value}>$10</span>
-                    <span className={styles.PricePanel__Label}>{copy.priceLabel}</span>
-                  </div>
-                  <ul className={styles.PricePanel__Trust} aria-label='Pricing trust signals'>
-                    {copy.pricingTrustItems.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </article>
-
           <article className={`${styles.Card} ${styles.Card_native}`}>
             <div className={styles.Card__Header}>
               <div className={styles.Card__Icon}>

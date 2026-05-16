@@ -2,7 +2,7 @@ Welcome to Zush. These Terms of Service ("Terms") govern your use of the Zush ap
 
 ### 1. Description of Service
 
-Zush is a desktop utility for macOS and Windows designed to help users organize, rename, and manage metadata for files using artificial intelligence (AI). Features include automatic renaming for images, videos, and supported documents, including PDFs, smart metadata tagging (Finder tags on macOS, file properties on Windows, and Spotlight metadata), folder monitoring with file-type exclusions, optional custom AI prompt controls for rename and tagging behavior, Finder context-menu renaming on macOS, BYOK cloud processing, and Offline AI mode with private local models via Ollama.
+Zush is a desktop utility for macOS and Windows designed to help users organize, rename, and manage metadata for files using artificial intelligence (AI). Features include automatic renaming for images, audio, videos, and supported documents, including PDFs, reusable templates, 145+ Naming Blocks for consistent filename structures, smart metadata tagging (Finder tags on macOS, file properties on Windows, and Spotlight metadata), folder monitoring with file-type exclusions, optional custom AI prompt controls for rename and tagging behavior, Finder context-menu renaming on macOS, BYOK cloud processing, and Offline AI mode with private local models via Ollama.
 
 ### 2. Software License
 
@@ -11,14 +11,14 @@ We grant you a personal, non-exclusive, non-transferable, limited license to use
 ### 3. Purchases and Payments
 
 **3.1 🌟 PRO Version**
-Zush offers a "🌟 PRO" upgrade that unlocks unlimited AI renames, monitoring of multiple folders, BYOK, Offline AI mode, and advanced metadata features. Current pricing is displayed in the app and on the website.
+Zush offers a "🌟 PRO" upgrade that unlocks unlimited AI renames, reusable templates, Naming Blocks, custom AI prompts, monitoring of multiple folders, BYOK, Offline AI mode, and advanced metadata features. Current pricing is displayed in the app and on the website.
 
 **3.2 Pricing Plans**
 We offer free usage plus two paid PRO plans:
 
 - **Zush Free**: 50 credits included. One credit equals one rename.
-- **Zush PRO Monthly**: $8/month + VAT. Includes unlimited PRO renames and access to BYOK (Bring Your Own Key) and Offline AI mode with private local models via Ollama.
-- **Zush PRO One-Time**: $38 + VAT. Includes lifetime access to unlimited PRO renames, BYOK, and Offline AI mode.
+- **Zush PRO Monthly**: $8/month + VAT. Includes unlimited PRO renames, reusable templates, Naming Blocks, BYOK (Bring Your Own Key), and Offline AI mode with private local models via Ollama.
+- **Zush PRO One-Time**: $38 + VAT. Includes lifetime access to unlimited PRO renames, reusable templates, Naming Blocks, BYOK, and Offline AI mode.
 
 **3.3 Usage Limits**
 The free version has usage limits for AI-powered cloud features. Paid PRO plans remove the cloud rename limit. We may still apply reasonable abuse prevention and technical safeguards to protect service reliability.

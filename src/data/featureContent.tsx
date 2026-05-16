@@ -1,5 +1,6 @@
 import {
   Camera,
+  Captions,
   Palette,
   Megaphone,
   Code,
@@ -10,12 +11,16 @@ import {
   Scale,
   Building2,
   Image,
+  Mic2,
   Monitor,
+  Music2,
+  Podcast,
+  Radio,
 } from 'lucide-react';
 import type { UseCaseData } from '@/components/UseCases/UseCases';
 import type { Locale } from '@/i18n/config';
 
-export type FeatureCategory = 'general' | 'image' | 'document' | 'screenshot' | 'photo' | 'pdf' | 'video';
+export type FeatureCategory = 'general' | 'image' | 'document' | 'screenshot' | 'photo' | 'pdf' | 'video' | 'audio';
 
 // ---------- USE CASES PER CATEGORY ----------
 
@@ -151,6 +156,75 @@ const documentUseCases: UseCaseData[] = [
       <>
         System logs, configuration exports, and runbooks —
         <strong> labeled by system, date, and action</strong> for fast incident response.
+      </>
+    ),
+    color: 'cyan',
+  },
+];
+
+const audioUseCases: UseCaseData[] = [
+  {
+    icon: Music2,
+    title: 'Musicians & Producers',
+    description: (
+      <>
+        Rename loops, stems, demos, and exports by
+        <strong> artist, mood, BPM, instrument, and take</strong> instead of track_01_final.mp3.
+      </>
+    ),
+    color: 'purple',
+  },
+  {
+    icon: Mic2,
+    title: 'Podcasters',
+    description: (
+      <>
+        Turn voice memos and episode cuts into names based on
+        <strong> guest, topic, segment, and transcript context</strong>.
+      </>
+    ),
+    color: 'blue',
+  },
+  {
+    icon: Podcast,
+    title: 'Interview Teams',
+    description: (
+      <>
+        Discovery calls, research interviews, and meeting audio stay searchable by
+        <strong> client, person, project, and date</strong>.
+      </>
+    ),
+    color: 'orange',
+  },
+  {
+    icon: Radio,
+    title: 'Field Recordists',
+    description: (
+      <>
+        Ambience, effects, and field recordings get names with
+        <strong> location, sound source, and scene context</strong>.
+      </>
+    ),
+    color: 'green',
+  },
+  {
+    icon: Captions,
+    title: 'Transcription Workflows',
+    description: (
+      <>
+        Audio files can use transcript context so recordings become
+        <strong> easier to search, review, and hand off</strong>.
+      </>
+    ),
+    color: 'pink',
+  },
+  {
+    icon: Briefcase,
+    title: 'Client Services',
+    description: (
+      <>
+        Calls, notes, and deliverables can share naming templates across
+        <strong> audio, documents, videos, and screenshots</strong>.
       </>
     ),
     color: 'cyan',
@@ -468,6 +542,11 @@ const useCasesMap: Record<FeatureCategory, { title: string; description: string;
     description: 'Creators, product teams, and operators who need searchable clips and recordings',
     items: videoUseCases,
   },
+  audio: {
+    title: 'Who Uses AI Audio Renaming',
+    description: 'Musicians, podcasters, researchers, and client teams who need searchable recordings',
+    items: audioUseCases,
+  },
 };
 
 type LocalizedCategoryUseCases = {
@@ -524,6 +603,14 @@ const categoryItemMeta: Record<Exclude<FeatureCategory, 'general'>, Array<Pick<U
     { icon: GraduationCap, color: 'blue' },
     { icon: Briefcase, color: 'purple' },
     { icon: Monitor, color: 'cyan' },
+  ],
+  audio: [
+    { icon: Music2, color: 'purple' },
+    { icon: Mic2, color: 'blue' },
+    { icon: Podcast, color: 'orange' },
+    { icon: Radio, color: 'green' },
+    { icon: Captions, color: 'pink' },
+    { icon: Briefcase, color: 'cyan' },
   ],
 };
 

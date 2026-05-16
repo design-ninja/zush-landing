@@ -20,7 +20,7 @@ type RouteSeoMeta = Omit<SeoMeta, 'canonicalPath'>;
 const DEFAULT_META: RouteSeoMeta = {
   title: 'Zush — Rename Files with AI on Mac & Windows',
   description:
-    'Rename screenshots, videos, PDFs, photos and documents in seconds. Batch rename or watch folders on Mac and Windows. Free for 50 files, no signup.',
+    'Rename screenshots, audio, videos, PDFs, photos and documents in seconds. Use templates, Naming Blocks, batch rename, or watch folders on Mac and Windows. Free for 50 files, no signup.',
   robots: 'noindex, nofollow',
   ogType: 'website',
 };
@@ -29,7 +29,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/': {
     ...DEFAULT_META,
     title: 'AI File Renamer & Batch Rename Tool for Mac & Windows — Zush',
-    description: `Batch rename files with AI, watch folders automatically, and rename screenshots, PDFs, photos, videos, and documents by content. ${APP_CONFIG.free_tier_limit} free files.`,
+    description: `Batch rename files with AI, watch folders automatically, and rename screenshots, PDFs, photos, audio, videos, and documents by content with templates and Naming Blocks. ${APP_CONFIG.free_tier_limit} free files.`,
     robots: 'index, follow',
   },
   '/changelog': {
@@ -130,17 +130,24 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     robots: 'index, follow',
     ogType: 'website',
   },
+  '/rename-audio-with-ai': {
+    title: 'Rename Audio with AI · MP3, M4A, WAV, FLAC · Zush',
+    description:
+      'Rename MP3, M4A, WAV, FLAC, OGG, WebM, and MPGA audio files with AI using metadata, recognition, transcripts, templates, and Naming Blocks.',
+    robots: 'index, follow',
+    ogType: 'website',
+  },
   '/mac': {
     title: 'AI File Renamer & Batch Rename Tool for Mac · Zush',
     description:
-      'Batch rename files on Mac with AI, watch folders automatically, and rename screenshots, PDFs, photos, videos, and documents by content.',
+      'Batch rename files on Mac with AI, watch folders automatically, and rename screenshots, PDFs, photos, audio, videos, and documents by content.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/windows': {
     title: 'AI File Renamer & Batch Rename Tool for Windows · Zush',
     description:
-      'Batch rename files on Windows with AI, watch folders automatically, and rename screenshots, PDFs, photos, videos, and documents by content.',
+      'Batch rename files on Windows with AI, watch folders automatically, and rename screenshots, PDFs, photos, audio, videos, and documents by content.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -169,6 +176,7 @@ export const FEATURE_ROUTES = [
   '/rename-screenshots-with-ai',
   '/rename-photos-with-ai',
   '/rename-videos-with-ai',
+  '/rename-audio-with-ai',
 ] as const;
 
 function normalizePath(pathname: string): string {

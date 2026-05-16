@@ -346,6 +346,128 @@
         }
     }
 
+    .UI_Templates {
+        @include mockup-container(0.75rem);
+
+        &__Header {
+            @include mockup-item(0.625rem 0.75rem);
+            color: var(--primary);
+            font-size: 0.8125rem;
+            font-weight: 700;
+            background: var(--primary-soft);
+        }
+
+        &__List {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        &__Item {
+            @include mockup-item(0.625rem 0.75rem);
+            justify-content: flex-start;
+            gap: 0.625rem;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--foreground);
+        }
+
+        &__Dot {
+            width: 0.55rem;
+            height: 0.55rem;
+            border-radius: 50%;
+            background: var(--secondary);
+            flex-shrink: 0;
+        }
+    }
+
+    .UI_NamingBlocks {
+        @include mockup-container(0.85rem);
+
+        &__Chips {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.45rem;
+
+            span {
+                font-family: var(--font-mono);
+                font-size: 0.72rem;
+                padding: 0.3rem 0.55rem;
+                border-radius: 0.45rem;
+                background: var(--background);
+                border: 1px solid var(--border);
+                color: var(--primary);
+                font-weight: 700;
+            }
+        }
+
+        &__Preview {
+            @include mockup-item(0.75rem);
+            justify-content: center;
+            width: 100%;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--muted-foreground);
+            overflow-wrap: anywhere;
+            text-align: center;
+        }
+    }
+
+    .UI_Audio {
+        @include mockup-container(0.75rem);
+
+        &__Wave {
+            @include mockup-item(0.625rem 0.75rem);
+            justify-content: center;
+            gap: 0.35rem;
+            min-height: 3.25rem;
+
+            span {
+                width: 0.35rem;
+                border-radius: 999px;
+                background: var(--secondary);
+
+                &:nth-child(1) { height: 1rem; opacity: 0.7; }
+                &:nth-child(2) { height: 1.8rem; opacity: 0.85; }
+                &:nth-child(3) { height: 2.45rem; }
+                &:nth-child(4) { height: 1.55rem; opacity: 0.85; }
+                &:nth-child(5) { height: 1.15rem; opacity: 0.7; }
+            }
+        }
+
+        &__List {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        &__Item {
+            @include mockup-item(0.625rem 0.75rem);
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.25rem;
+        }
+
+        &__OldName,
+        &__NewName {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 0.78rem;
+        }
+
+        &__OldName {
+            color: var(--muted-foreground);
+            text-decoration: line-through;
+        }
+
+        &__NewName {
+            color: var(--primary);
+            font-weight: 700;
+        }
+    }
+
     .UI_History {
         @include mockup-container(0.5rem);
 

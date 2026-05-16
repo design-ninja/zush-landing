@@ -46,14 +46,14 @@ export const BLOG_PLATFORM_META: Record<
   mac: {
     title: 'Mac Guides',
     description:
-      'Finder, Automator, Spotlight, screenshots, videos, photos, and buyer-intent workflows for Mac users',
+      'Finder, Automator, Spotlight, screenshots, audio, videos, photos, and buyer-intent workflows for Mac users',
     ctaHref: '/mac',
     ctaLabel: 'View Zush for Mac',
   },
   windows: {
     title: 'Windows Guides',
     description:
-      'File Explorer, Microsoft Store, Windows Search, screenshots, videos, PDFs, downloads, and folder-monitoring workflows for Windows',
+      'File Explorer, Microsoft Store, Windows Search, screenshots, audio, videos, PDFs, downloads, and folder-monitoring workflows for Windows',
     ctaHref: '/windows',
     ctaLabel: 'View Zush for Windows',
   },

@@ -1,6 +1,6 @@
 ---
 import {
-  BadgeDollarSign,
+  Blocks,
   Gift,
   Languages,
 } from 'lucide-react';
@@ -12,10 +12,12 @@ import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module
 import formatStyles from '@/components/SupportedFormats/SupportedFormats.module.scss';
 import useCaseStyles from '@/components/UseCases/UseCases.module.scss';
 
-const imageFormatCount = APP_CONFIG.image_extensions.length;
-const documentFormatCount = APP_CONFIG.document_extensions.length;
-const videoFormatCount = APP_CONFIG.video_extensions.length;
-const totalFormatCount = imageFormatCount + documentFormatCount + videoFormatCount;
+const totalFormatCount = new Set([
+  ...APP_CONFIG.image_extensions,
+  ...APP_CONFIG.document_extensions,
+  ...APP_CONFIG.video_extensions,
+  ...APP_CONFIG.audio_extensions,
+]).size;
 
 const facts = [
   {
@@ -25,15 +27,15 @@ const facts = [
     color: 'green',
   },
   {
-    icon: BadgeDollarSign,
-    title: 'Two PRO plans',
-    description: `$8/month or $38 one-time unlocks unlimited PRO, BYOK, and Offline AI mode via Ollama.`,
+    icon: Blocks,
+    title: '145+ Naming Blocks',
+    description: 'Build filenames from dates, metadata, audio details, finance fields, clients, travel, legal, and AI-detected context.',
     color: 'blue',
   },
   {
     icon: Languages,
     title: 'Broad file coverage',
-    description: `60+ filename languages and ${totalFormatCount} supported image, document, and video formats.`,
+    description: `60+ filename languages and ${totalFormatCount} supported image, document, video, and audio formats.`,
     color: 'purple',
   },
 ];
@@ -55,7 +57,7 @@ const sourceLinks = [
         <span style="color: var(--secondary)">Zush</span> product facts
       </Heading>
       <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>
-        A desktop AI file renamer for Mac and Windows: screenshots, videos, PDFs, photos, and office documents by content, with batch review, folder monitoring, BYOK, Offline AI mode, and one-click revert.
+        A desktop AI file renamer for Mac and Windows: screenshots, videos, audio, PDFs, photos, and office documents by content, with templates, naming blocks, batch review, folder monitoring, BYOK, Offline AI mode, and one-click revert.
       </Text>
     </div>
 

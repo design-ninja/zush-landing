@@ -14,7 +14,7 @@ reviewed: "2026-05-09"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: rename video files with AI by using a tool that can inspect sampled frames and optional subtitle context, then preview names before applying them. In Zush 2.0, MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, VOB, and related video formats can be renamed alongside photos, screenshots, PDFs, and documents.
+Quick answer: rename video files with AI by using a tool that can inspect sampled frames and optional subtitle context, then preview names before applying them. In Zush 3.0, MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, VOB, and related video formats can be renamed alongside audio, photos, screenshots, PDFs, and documents.
 
 Video files are often the worst named files in a working folder. Cameras create names like `VID_20260507_184233.mp4`. Screen recorders create names like `Screen Recording 2026-05-08 at 11.42.19.mov`. Export tools create names like `final_export_v7.mp4`. None of those names tell you what is in the clip.
 
@@ -53,13 +53,13 @@ The goal is not to write a perfect title. The goal is to make the file identifia
 
 ## Which video formats are supported in Zush
 
-Zush 2.0 supports 16 common video formats:
+Zush 3.0 supports 16 common video formats:
 
 `mp4`, `mov`, `qt`, `m4v`, `mpeg`, `mpg`, `m2v`, `3gp`, `3gpp`, `3g2`, `3gp2`, `dv`, `ts`, `mts`, `m2ts`, and `vob`.
 
 That covers common phone videos, screen recordings, QuickTime exports, camera clips, transport stream files, and older DVD-style video sources. Zush also supports subtitle files such as `.srt` and `.vtt` through its document pipeline, so a folder can contain both the video and its subtitle context.
 
-Audio-only formats are not part of the supported file list yet. If your folder is mostly MP3, WAV, or podcast audio, you still need an audio-specific workflow.
+Zush also supports audio files: `mp3`, `m4a`, `wav`, `flac`, `ogg`, `webm`, and `mpga`. For music, podcasts, voice memos, and meeting recordings, see [Rename Audio with AI](/rename-audio-with-ai).
 
 ## Why sampled frames are enough
 
@@ -140,7 +140,7 @@ Yes. A practical video renamer samples representative frames and uses them as co
 
 ### Does Zush rename audio-only files?
 
-Not yet. Zush 2.0 adds video support, but audio-only formats are still outside the supported file list.
+Yes. Zush 3.0 supports MP3, M4A, WAV, FLAC, OGG, WebM, and MPGA using metadata, recognition, and transcript context when available.
 
 ### Can I rename videos and documents together?
 

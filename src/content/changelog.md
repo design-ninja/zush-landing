@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0] - 2026-05-16
+
+### Added
+- Added reusable Templates for screenshots, expenses, music tracks, client work, legal files, travel bookings, and monitored folders
+- Added 145+ Naming Blocks across 19 categories for dates, metadata, audio, finance, legal, travel, clients, and AI-detected fields
+- Added audio support for MP3, M4A, WAV, FLAC, OGG, WebM, and MPGA files
+
+### Improved
+- Improved custom naming patterns with audio, client, finance, travel, and legal fields
+- Updated mixed-format batches so audio can be renamed alongside images, PDFs, documents, and videos
+
 ## [2.1.0] - 2026-05-11
 
 ### Added

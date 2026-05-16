@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.0.0] - 2026-05-16
+### Added
+- Added reusable Templates for repeatable rename workflows and monitored folders
+- Added 145+ Naming Blocks across 19 categories for consistent filenames
+- Added audio support for MP3, M4A, WAV, FLAC, OGG, WebM, and MPGA files
+
+### Improved
+- Improved mixed-format batches with audio, image, document, PDF, and video files
+- Expanded naming patterns with audio, client, finance, legal, and travel fields
+
 ## [2.0.0] - 2026-05-11
 ### Added
 - Expanded AI analysis support to 90+ image, document, spreadsheet, subtitle, RAW, and video formats

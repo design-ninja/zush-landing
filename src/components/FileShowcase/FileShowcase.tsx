@@ -1,5 +1,5 @@
 import { CSSProperties, useEffect, useState } from "react";
-import { FileSpreadsheet, FileText, FileType2, Film, Presentation } from "lucide-react";
+import { FileAudio2, FileSpreadsheet, FileText, FileType2, Film, Presentation } from "lucide-react";
 import { VIDEO_PREVIEW_IMAGES } from "@/data/videoPreviewImages";
 import styles from "./FileShowcase.module.scss";
 
@@ -7,7 +7,7 @@ export interface FileItem {
   before: string;
   after: string;
   img?: string;
-  type: "image" | "doc" | "sheet" | "slides" | "pdf" | "video";
+  type: "image" | "doc" | "sheet" | "slides" | "pdf" | "video" | "audio";
 }
 
 export interface Slide {
@@ -24,6 +24,11 @@ const defaultSlides: Slide[] = [
         type: "image",
       },
       {
+        before: "track_01_final.mp3",
+        after: "Lo-Fi Piano Loop 92BPM.mp3",
+        type: "audio",
+      },
+      {
         before: "meeting_notes_v7_final.docx",
         after: "Q1 Planning Notes.docx",
         type: "doc",
@@ -32,11 +37,6 @@ const defaultSlides: Slide[] = [
         before: "budget_export_copy(2).xlsx",
         after: "Product Launch Budget.xlsx",
         type: "sheet",
-      },
-      {
-        before: "deck_v12_really-final.pptx",
-        after: "Investor Update Deck.pptx",
-        type: "slides",
       },
       {
         before: "client-brief-scan.pdf",
@@ -54,6 +54,11 @@ const defaultSlides: Slide[] = [
   {
     files: [
       {
+        before: "voice_memo_042.m4a",
+        after: "Client Discovery Call.m4a",
+        type: "audio",
+      },
+      {
         before: "notes_from_call_FINAL.docx",
         after: "Hiring Plan Notes.docx",
         type: "doc",
@@ -62,11 +67,6 @@ const defaultSlides: Slide[] = [
         before: "forecast_2026-03-18_export.xlsx",
         after: "Revenue Forecast.xlsx",
         type: "sheet",
-      },
-      {
-        before: "sales-kickoff-new(3).pptx",
-        after: "Sales Kickoff Slides.pptx",
-        type: "slides",
       },
       {
         before: "IMG_20240812_143052.jpg",
@@ -131,6 +131,7 @@ const fileTypeConfig = {
   slides: { icon: Presentation, label: "PPTX", className: styles.FileItem__Preview_slides },
   pdf: { icon: FileType2, label: "PDF", className: styles.FileItem__Preview_pdf },
   video: { icon: Film, label: "MP4", className: styles.FileItem__Preview_video },
+  audio: { icon: FileAudio2, label: "MP3", className: styles.FileItem__Preview_audio },
 } as const;
 type NonImageFileType = Exclude<FileItem['type'], 'image'>;
 

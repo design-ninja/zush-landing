@@ -21,12 +21,12 @@ const faqItems = [
   {
     question: 'Can I batch rename videos with photos and documents?',
     answer:
-      'Yes. Zush can process mixed batches across supported images, videos, PDFs, Office documents, text files, spreadsheets, subtitles, and more. The batch limit is 50 files.',
+      'Yes. Zush can process mixed batches across supported images, audio, videos, PDFs, Office documents, text files, spreadsheets, subtitles, and more. The batch limit is 50 files.',
   },
   {
-    question: 'Does Zush support audio-only files?',
+    question: 'Can Zush rename audio-only files too?',
     answer:
-      'Not yet. Zush 2.0 adds video analysis, but audio-only formats are still outside the supported file list.',
+      'Yes. Zush supports MP3, M4A, WAV, FLAC, OGG, WebM, and MPGA audio files using metadata, recognition, and transcript context when available.',
   },
 ];
 
@@ -59,7 +59,7 @@ const jsonLd = buildFeaturePageJsonLd({
       'Rename MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, and VOB files',
       'Analyze sampled frames instead of relying only on filenames',
       'Use SRT and VTT subtitle context when available',
-      'Batch rename videos alongside images and documents',
+      'Batch rename videos alongside audio, images, and documents',
       'Custom naming patterns with dates and AI descriptions',
       'Full rename history with one-click revert',
     ],
@@ -98,6 +98,7 @@ const RenameVideosWithAI = () => (
     faqItems={faqItems}
     relatedPages={[
       { title: 'Rename Photos with AI', href: '/rename-photos-with-ai' },
+      { title: 'Rename Audio with AI', href: '/rename-audio-with-ai' },
       { title: 'Rename Screenshots with AI', href: '/rename-screenshots-with-ai' },
       { title: 'Rename Documents with AI', href: '/rename-documents-with-ai' },
     ]}

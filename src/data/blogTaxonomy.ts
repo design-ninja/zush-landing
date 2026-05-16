@@ -4,10 +4,13 @@ const BLOG_PUBLIC_TAG_ORDER = [
   'file-organization',
   'photos',
   'videos',
+  'audio',
   'screenshots',
   'pdf-documents',
   'tool-comparisons',
   'file-naming',
+  'templates',
+  'naming-blocks',
   'downloads',
   'file-explorer',
   'image-formats',
@@ -72,6 +75,15 @@ export const BLOG_PUBLIC_TAGS: Record<BlogPublicTagSlug, BlogPublicTagMeta> = {
     seoDescription:
       'Guides for renaming videos, screen recordings, b-roll, clips, and subtitle-backed media files with AI.',
   },
+  audio: {
+    slug: 'audio',
+    label: 'Audio',
+    description:
+      'Audio filename workflows for music tracks, podcasts, voice memos, meeting recordings, and searchable media libraries',
+    seoTitle: 'Audio File Naming & AI Rename Guides - Zush Blog',
+    seoDescription:
+      'Guides for renaming MP3, M4A, WAV, FLAC, podcast, music, voice memo, and meeting audio files with AI.',
+  },
   screenshots: {
     slug: 'screenshots',
     label: 'Screenshots',
@@ -107,6 +119,24 @@ export const BLOG_PUBLIC_TAGS: Record<BlogPublicTagSlug, BlogPublicTagMeta> = {
     seoTitle: 'File Naming Conventions & Searchable Filenames — Zush Blog',
     seoDescription:
       'Guides to file naming conventions, searchable filenames, and better naming systems for files and folders.',
+  },
+  templates: {
+    slug: 'templates',
+    label: 'Templates',
+    description:
+      'Reusable naming setups, repeatable rename workflows, and folder-specific automation patterns',
+    seoTitle: 'File Renaming Template Guides - Zush Blog',
+    seoDescription:
+      'Learn how reusable templates keep screenshots, audio, documents, client files, legal files, and monitored folders consistently named.',
+  },
+  'naming-blocks': {
+    slug: 'naming-blocks',
+    label: 'Naming Blocks',
+    description:
+      'Structured filename fields for dates, metadata, audio, finance, legal, travel, clients, and AI-detected content',
+    seoTitle: 'Naming Blocks & Structured Filename Guides - Zush Blog',
+    seoDescription:
+      'Learn how Naming Blocks turn AI analysis, metadata, dates, clients, audio fields, and document details into consistent filenames.',
   },
   downloads: {
     slug: 'downloads',

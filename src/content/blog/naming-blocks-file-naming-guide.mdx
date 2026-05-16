@@ -1,0 +1,78 @@
+---
+title: "Naming Blocks: Build Searchable File Names from 145+ Fields"
+description: "Learn how Zush Naming Blocks create consistent filenames from dates, metadata, audio fields, finance fields, clients, travel details, legal context, and AI-detected content."
+date: "2026-05-16"
+slug: "naming-blocks-file-naming-guide"
+platform: "general"
+topic: "naming"
+tags:
+  - "Naming Blocks"
+  - "File Naming"
+  - "AI File Renaming"
+tldr: "Naming Blocks are reusable fields such as date, client_name, artist, invoice_number, bpm, and title. Zush 3.0 includes 145+ blocks across 19 categories so filenames stay consistent without manual typing."
+reviewed: "2026-05-16"
+---
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Quick answer: Naming Blocks are structured fields you can combine into a filename pattern. Zush 3.0 includes 145+ blocks across 19 categories, covering dates, file metadata, audio, photos, finance, legal, travel, client work, and AI-detected content.
+
+Without blocks, a naming pattern is just a string. With blocks, a pattern becomes a reusable system.
+
+<BlogProductIntro />
+
+## What Naming Blocks solve
+
+A filename like `final.pdf` fails because it has no stable meaning. A filename like `2026-05-16_acme_contract-review_call.m4a` works because each part has a role.
+
+Naming Blocks make those roles explicit:
+
+- `{date}`
+- `{client_name}`
+- `{title}`
+- `{artist}`
+- `{bpm}`
+- `{invoice_number}`
+- `{document_type}`
+- `{location}`
+
+Zush fills the blocks from metadata, extracted content, AI analysis, and the original file context.
+
+## 145+ blocks across 19 categories
+
+The full block set covers everyday file organization and specialized workflows:
+
+- dates and time
+- original file metadata
+- AI titles and descriptions
+- audio fields
+- photo and camera context
+- finance and invoice fields
+- legal and contract context
+- travel bookings
+- client and project details
+- people, locations, and topics
+
+The benefit is consistency. You can use the same template across a whole folder without manually deciding which detail belongs where.
+
+## Examples
+
+| Pattern | Example result |
+|---|---|
+| `{date}_{client_name}_{title}` | `2026-05-16_acme_contract-review-call.m4a` |
+| `{artist}_{title}_{bpm}` | `luma_lo-fi-piano-loop_92bpm.mp3` |
+| `{vendor}_{invoice_number}_{date}` | `figma_inv-2034_2026-05-16.pdf` |
+| `{location}_{subject}_{date}` | `tokyo_station-night-rain_2026-05-16.jpg` |
+
+## Why this helps search
+
+Search tools are strongest when filenames contain the words people actually remember. Naming Blocks make sure the useful details appear in the filename every time, not only when someone has the patience to type them manually.
+
+## FAQ
+
+### Are Naming Blocks only for documents?
+
+No. Naming Blocks work across supported file types, including images, PDFs, documents, videos, and audio files.
+
+### Can I combine Naming Blocks with AI prompts?
+
+Yes. Prompts guide what the AI should extract or emphasize, while Naming Blocks control where those details land in the final filename.

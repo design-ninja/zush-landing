@@ -44,35 +44,29 @@
     padding: 1.5rem;
   }
 
-  &_price {
-    grid-column: span 7;
-  }
-
   &_native {
-    grid-column: span 5;
+    grid-column: span 6;
   }
 
   &_speed,
   &_formats,
   &_control {
-    grid-column: span 4;
+    grid-column: span 6;
   }
 
   @include tablet {
-    &_price,
-    &_native {
+    &_native,
+    &_control {
       grid-column: span 2;
     }
 
     &_speed,
-    &_formats,
-    &_control {
+    &_formats {
       grid-column: span 1;
     }
   }
 
   @include small {
-    &_price,
     &_native,
     &_speed,
     &_formats,
@@ -110,96 +104,6 @@
     margin: 0;
     max-width: 38rem;
     line-height: 1.65;
-  }
-}
-
-.PriceLayout {
-  display: flex;
-  flex: 1;
-  margin-top: 1.75rem;
-
-  @include mobile {
-    margin-top: 1.25rem;
-  }
-}
-
-.PriceCopy {
-  display: flex;
-  flex-direction: column;
-  gap: 0.875rem;
-  max-width: 34rem;
-  flex: 1;
-}
-
-.PricePanel {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.25rem;
-  width: 100%;
-  margin-top: auto;
-  padding: 1rem 1.125rem;
-  border-radius: 1.25rem;
-  background: color-mix(in srgb, var(--background), var(--muted) 55%);
-  box-shadow: inset 0 1px 0 color-mix(in srgb, white, transparent 22%);
-
-  &__Value {
-    font-family: $font-family-heading;
-    font-size: clamp(2.125rem, 4.2vw, 3rem);
-    line-height: 0.9;
-    font-weight: 700;
-    color: var(--foreground);
-  }
-
-  &__Header {
-    display: flex;
-    align-items: flex-end;
-    gap: 0.45rem;
-    line-height: 1;
-    flex-shrink: 0;
-    min-width: 6.5rem;
-  }
-
-  &__Label {
-    font-size: 0.8125rem;
-    font-weight: 700;
-    color: var(--primary);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin: 0;
-    margin-bottom: 0.28rem;
-  }
-
-  &__Trust {
-    display: flex;
-    flex-direction: column;
-    gap: 0.45rem;
-    margin: 0;
-    padding: 0 0 0 1.75rem;
-    flex: 1;
-    list-style: none;
-    border-left: 1px solid color-mix(in srgb, var(--border), transparent 10%);
-    font-size: 0.875rem;
-    color: var(--muted-foreground);
-    opacity: 0.92;
-    line-height: 1.4;
-
-    li {
-      white-space: normal;
-    }
-  }
-
-  @include mobile {
-    width: 100%;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    align-items: flex-start;
-
-    &__Trust {
-      padding: 0.75rem 0 0;
-      border-left: 0;
-      border-top: 1px solid color-mix(in srgb, var(--border), transparent 10%);
-    }
   }
 }
 

@@ -13,6 +13,9 @@ const documentFormats = [...new Set(APP_CONFIG.document_extensions)].map((f) =>
 const videoFormats = [...new Set(APP_CONFIG.video_extensions)].map((f) =>
   f.toLowerCase(),
 );
+const audioFormats = [...new Set(APP_CONFIG.audio_extensions)].map((f) =>
+  f.toLowerCase(),
+);
 
 const highlightMap: Record<FeatureCategory, string[]> = {
   general: [],
@@ -22,6 +25,7 @@ const highlightMap: Record<FeatureCategory, string[]> = {
   document: documentFormats,
   pdf: ['pdf'],
   video: videoFormats,
+  audio: audioFormats,
 };
 
 interface SupportedFormatsProps {
@@ -30,6 +34,7 @@ interface SupportedFormatsProps {
   imagesLabel?: string;
   documentsLabel?: string;
   videosLabel?: string;
+  audioLabel?: string;
 }
 
 const SupportedFormats = ({
@@ -38,6 +43,7 @@ const SupportedFormats = ({
   imagesLabel = 'Images',
   documentsLabel = 'Documents',
   videosLabel = 'Videos',
+  audioLabel = 'Audio',
 }: SupportedFormatsProps) => {
   const highlightedFormats = new Set(highlightMap[category] ?? []);
 
@@ -82,6 +88,22 @@ const SupportedFormats = ({
           <Heading as='h3' size='h4' align='center' className={styles.SupportedFormats__GroupTitle}>{videosLabel}</Heading>
           <div className={styles.SupportedFormats__Tags}>
             {videoFormats.map((format) => (
+              <span
+                key={format}
+                className={`${styles.SupportedFormats__Tag} ${
+                  highlightedFormats.has(format) ? styles.SupportedFormats__Tag_highlight : ''
+                }`}
+              >
+                {format}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.SupportedFormats__Group}>
+          <Heading as='h3' size='h4' align='center' className={styles.SupportedFormats__GroupTitle}>{audioLabel}</Heading>
+          <div className={styles.SupportedFormats__Tags}>
+            {audioFormats.map((format) => (
               <span
                 key={format}
                 className={`${styles.SupportedFormats__Tag} ${

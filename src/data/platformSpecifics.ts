@@ -136,7 +136,7 @@ export const PLATFORM_SPECIFICS_CONTENT: Record<PlatformSpecificsKey, PlatformSp
       },
       {
         title: 'Drag a folder or files onto the dropzone',
-        detail: 'Try ~/Downloads or your Screenshots folder. Zush analyzes images, videos, and documents in parallel.',
+        detail: 'Try ~/Downloads or your Screenshots folder. Zush analyzes images, audio, videos, and documents in parallel.',
         duration: '~20s',
         preview: 'drop',
       },
