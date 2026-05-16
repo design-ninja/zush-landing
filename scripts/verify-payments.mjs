@@ -33,6 +33,11 @@ function verifyPaddleCheckout() {
   );
   assertMatch(
     src,
+    /source:\s*deviceId\s*\?\s*["']app["']\s*:\s*["']landing["']/,
+    "Direct website checkout no longer marks sessions as landing purchases",
+  );
+  assertMatch(
+    src,
     /transactionId:\s*checkoutSession\.transaction_id/,
     "Checkout no longer opens Paddle by server-created transaction",
   );
@@ -234,6 +239,11 @@ function verifyActivationAndRecovery() {
     thankYou,
     /checkout-session-status/,
     "Thank-you no longer checks checkout session status",
+  );
+  assertMatch(
+    thankYou,
+    /setActivationState\(result\.status === ["']expired["'] \? ["']expired["'] : ["']email["']\)/,
+    "Direct website checkout completion no longer falls back to email activation",
   );
   assertMatch(
     thankYou,
