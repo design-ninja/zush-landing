@@ -1,1 +1,10 @@
-export const PRO_PADDLE_PRICE_ID = 'pri_01ke0rya71hzwhy8y1wdt76v1y';
+const LEGACY_PRO_ONE_TIME_PRICE_ID = 'pri_01ke0rya71hzwhy8y1wdt76v1y';
+
+export const PRO_MONTHLY_PADDLE_PRICE_ID =
+  import.meta.env.PUBLIC_PADDLE_PRO_MONTHLY_PRICE_ID || '';
+
+export const PRO_ONE_TIME_PADDLE_PRICE_ID =
+  import.meta.env.PUBLIC_PADDLE_PRO_ONE_TIME_PRICE_ID ||
+  LEGACY_PRO_ONE_TIME_PRICE_ID;
+
+export const PRO_PADDLE_PRICE_ID = PRO_ONE_TIME_PADDLE_PRICE_ID;

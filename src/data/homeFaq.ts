@@ -53,7 +53,7 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'How does pricing work?',
     answer:
-      'Zush PRO is a simple one-time purchase for $10. You get 10,000 credits (1 credit = 1 rename) and access to all features, including BYOK and Offline AI mode - private local models via Ollama. Once credits are used up, enable BYOK with your own provider key or use Offline AI mode.',
+      'Zush PRO has two paid plans: Monthly for $8/month + VAT, or One-Time for $38 + VAT. Both unlock unlimited PRO renames, BYOK, Offline AI mode, and all PRO features.',
   },
   {
     question: 'What is BYOK (Bring Your Own Key)?',
@@ -61,9 +61,9 @@ export const HOME_FAQ_DATA: FAQItem[] = [
       'BYOK lets PRO users connect their own API key from Gemini, Groq, OpenAI, or Claude for unlimited cloud renames. Your key is stored locally in secure platform storage and is sent only when Zush needs to call your selected provider through the backend relay. Learn more at https://zushapp.com/byok-setup.',
   },
   {
-    question: 'Why one-time purchase instead of subscription?',
+    question: 'Which PRO plan should I choose?',
     answer:
-      "We believe in fair, transparent pricing. Pay once, own it forever — no recurring fees, no surprise price hikes, no worry about canceling. You get lifetime access to all features and updates. It's simple: you pay $10 once, and Zush is yours to keep. No subscription fatigue, no monthly billing stress. Just a straightforward, honest deal that respects your wallet and your time.",
+      'Choose Monthly if you want a lower upfront price and flexibility. Choose One-Time if you prefer to pay once for lifetime access. The feature set is the same.',
   },
   {
     question: 'Which operating systems are supported?',

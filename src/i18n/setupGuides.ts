@@ -143,9 +143,9 @@ const t: Partial<Record<SetupLocale, SetupLocaleText>> = {
       faqs: [
         { question: 'Ist mein API-Schlüssel sicher?', answer: 'Ja. Der Schlüssel wird lokal in sicherem Systemspeicher abgelegt und nur für BYOK-Anfragen an den gewählten Anbieter verwendet.' },
         { question: 'Was kostet das?', answer: 'Gemini und Groq haben kostenlose Kontingente. OpenAI und Claude rechnen nutzungsbasiert ab. Typische Nutzung kostet meist deutlich unter 1 US-Dollar pro Monat.' },
-        { question: 'Bleiben meine 10.000 Credits erhalten?', answer: 'Ja. Wenn BYOK deaktiviert ist, kannst du verbleibende Credits weiter nutzen. BYOK ist optional.' },
+        { question: 'Brauche ich BYOK mit PRO?', answer: 'Nein. Bezahlte PRO-Pläne enthalten unbegrenzte Zush-Cloud-Umbenennungen. BYOK ist optional.' },
         { question: 'Welchen Anbieter soll ich wählen?', answer: 'Alle vier funktionieren gut. Gemini ist stark multimodal, Groq sehr schnell, OpenAI zuverlässig und Claude liefert hochwertige Dateiverständnis-Ergebnisse.' },
-        { question: 'Brauche ich PRO?', answer: 'Ja, BYOK ist eine PRO-Funktion. Free-Nutzer können für eine Einmalzahlung von 10 US-Dollar upgraden.' },
+        { question: 'Brauche ich PRO?', answer: 'Ja, BYOK ist eine PRO-Funktion. Free-Nutzer können mit Monthly oder One-Time upgraden.' },
       ],
       securityTitle: 'Sicherheit & Datenschutz',
     },
@@ -209,7 +209,7 @@ const t: Partial<Record<SetupLocale, SetupLocaleText>> = {
       faqs: [
         { question: 'Ma clé API est-elle sécurisée ?', answer: 'Oui. Elle est stockée localement dans le stockage sécurisé du système et utilisée seulement pour les requêtes BYOK vers le fournisseur choisi.' },
         { question: 'Combien cela coûte-t-il ?', answer: 'Gemini et Groq ont des offres gratuites. OpenAI et Claude sont facturés à l’usage. Pour une utilisation typique, le coût est souvent inférieur à 1 $ par mois.' },
-        { question: 'Est-ce que je garde mes 10 000 crédits ?', answer: 'Oui. Quand BYOK est désactivé, vous pouvez continuer à utiliser vos crédits restants. BYOK est optionnel.' },
+        { question: 'Ai-je besoin de BYOK avec PRO ?', answer: 'Non. Les offres PRO payantes incluent les renommages cloud Zush illimités. BYOK reste optionnel.' },
         { question: 'Quel fournisseur choisir ?', answer: 'Les quatre fonctionnent bien : Gemini est fort en multimodal, Groq est très rapide, OpenAI est fiable et Claude donne une compréhension de fichiers de haute qualité.' },
         { question: 'Faut-il être PRO ?', answer: 'Oui, BYOK est réservé aux utilisateurs PRO. Les utilisateurs gratuits peuvent passer à PRO avec un paiement unique de 10 $.' },
       ],
@@ -275,7 +275,7 @@ const t: Partial<Record<SetupLocale, SetupLocaleText>> = {
       faqs: [
         { question: 'Minha chave API é segura?', answer: 'Sim. Ela fica armazenada localmente em armazenamento seguro da plataforma e é usada apenas em solicitações BYOK para o provedor escolhido.' },
         { question: 'Quanto custa?', answer: 'Gemini e Groq têm planos gratuitos. OpenAI e Claude cobram por uso. Em uso típico, o custo costuma ficar abaixo de US$ 1 por mês.' },
-        { question: 'Ainda tenho os 10.000 créditos?', answer: 'Sim. Quando BYOK está desativado, você pode usar seus créditos restantes. BYOK é opcional.' },
+        { question: 'Ainda preciso de BYOK com PRO?', answer: 'Não. Planos PRO pagos incluem renomeações cloud Zush ilimitadas. BYOK é opcional.' },
         { question: 'Qual provedor escolher?', answer: 'Todos funcionam bem. Gemini é forte em multimodal, Groq é muito rápido, OpenAI é confiável e Claude entende arquivos com alta qualidade.' },
         { question: 'Preciso ser PRO?', answer: 'Sim, BYOK é exclusivo para PRO. Usuários gratuitos podem fazer upgrade com pagamento único de US$ 10.' },
       ],
@@ -341,7 +341,7 @@ const t: Partial<Record<SetupLocale, SetupLocaleText>> = {
       faqs: [
         { question: '¿Mi clave API es segura?', answer: 'Sí. Se guarda localmente en almacenamiento seguro de la plataforma y solo se usa para solicitudes BYOK al proveedor elegido.' },
         { question: '¿Cuánto cuesta?', answer: 'Gemini y Groq tienen planes gratuitos. OpenAI y Claude cobran por uso. En uso típico suele costar menos de 1 US$ al mes.' },
-        { question: '¿Conservo los 10.000 créditos?', answer: 'Sí. Cuando BYOK está desactivado, puedes seguir usando los créditos restantes. BYOK es opcional.' },
+        { question: '¿Necesito BYOK con PRO?', answer: 'No. Los planes PRO de pago incluyen renombrados cloud ilimitados de Zush. BYOK es opcional.' },
         { question: '¿Qué proveedor elijo?', answer: 'Los cuatro funcionan bien. Gemini es fuerte en multimodal, Groq es muy rápido, OpenAI es fiable y Claude entiende archivos con mucha calidad.' },
         { question: '¿Necesito PRO?', answer: 'Sí, BYOK es exclusivo de PRO. Puedes actualizar con un pago único de 10 US$.' },
       ],
@@ -407,7 +407,7 @@ const t: Partial<Record<SetupLocale, SetupLocaleText>> = {
       faqs: [
         { question: 'Is mijn API-sleutel veilig?', answer: 'Ja. De sleutel wordt lokaal opgeslagen in veilige platformopslag en alleen gebruikt voor BYOK-verzoeken naar je gekozen provider.' },
         { question: 'Wat kost het?', answer: 'Gemini en Groq hebben gratis lagen. OpenAI en Claude rekenen per gebruik. Typisch gebruik kost meestal minder dan 1 dollar per maand.' },
-        { question: 'Houd ik mijn 10.000 credits?', answer: 'Ja. Als BYOK uit staat, kun je je resterende credits blijven gebruiken. BYOK is optioneel.' },
+        { question: 'Heb ik BYOK nodig met PRO?', answer: 'Nee. Betaalde PRO-plannen bevatten onbeperkte Zush-cloudhernoemingen. BYOK is optioneel.' },
         { question: 'Welke provider kies ik?', answer: 'Alle vier werken goed. Gemini is sterk multimodaal, Groq is erg snel, OpenAI is betrouwbaar en Claude begrijpt bestanden goed.' },
         { question: 'Heb ik PRO nodig?', answer: 'Ja, BYOK is exclusief voor PRO. Gratis gebruikers kunnen upgraden met een eenmalige betaling van 10 dollar.' },
       ],
@@ -473,7 +473,7 @@ const t: Partial<Record<SetupLocale, SetupLocaleText>> = {
       faqs: [
         { question: 'La mia chiave API è sicura?', answer: 'Sì. La chiave resta salvata localmente nello storage sicuro della piattaforma ed è usata solo per richieste BYOK verso il provider scelto.' },
         { question: 'Quanto costa?', answer: 'Gemini e Groq hanno piani gratuiti. OpenAI e Claude sono a consumo. Un uso tipico costa spesso meno di 1 dollaro al mese.' },
-        { question: 'Mantengo i 10.000 crediti?', answer: 'Sì. Quando BYOK è disattivato puoi continuare a usare i crediti rimanenti. BYOK è facoltativo.' },
+        { question: 'Mi serve BYOK con PRO?', answer: 'No. I piani PRO a pagamento includono rinomine cloud Zush illimitate. BYOK è facoltativo.' },
         { question: 'Quale provider scegliere?', answer: 'Tutti funzionano bene. Gemini è forte nel multimodale, Groq è molto veloce, OpenAI è affidabile e Claude capisce i file con alta qualità.' },
         { question: 'Serve PRO?', answer: 'Sì, BYOK è una funzione PRO. Gli utenti gratuiti possono fare upgrade con pagamento unico da 10 dollari.' },
       ],
@@ -539,9 +539,9 @@ const t: Partial<Record<SetupLocale, SetupLocaleText>> = {
       faqs: [
         { question: 'API キーは安全ですか？', answer: 'はい。キーは安全なプラットフォームストレージにローカル保存され、選択したプロバイダーへの BYOK リクエストにのみ使われます。' },
         { question: '費用はいくらですか？', answer: 'Gemini と Groq には無料枠があります。OpenAI と Claude は従量課金です。通常利用では月 1 ドル未満に収まることが多いです。' },
-        { question: '10,000 クレジットは残りますか？', answer: 'はい。BYOK をオフにすれば残りのクレジットを使えます。BYOK は任意です。' },
+        { question: 'PRO でも BYOK は必要ですか？', answer: 'いいえ。有料 PRO プランには無制限の Zush クラウドリネームが含まれます。BYOK は任意です。' },
         { question: 'どのプロバイダーを選ぶべきですか？', answer: '4 つとも利用できます。Gemini はマルチモーダル、Groq は速度、OpenAI は信頼性、Claude は高品質なファイル理解に強みがあります。' },
-        { question: 'PRO が必要ですか？', answer: 'はい。BYOK は PRO 限定機能です。無料ユーザーは 10 ドルの一回払いでアップグレードできます。' },
+        { question: 'PRO が必要ですか？', answer: 'はい。BYOK は PRO 限定機能です。無料ユーザーは Monthly または One-Time にアップグレードできます。' },
       ],
       securityTitle: 'セキュリティとプライバシー',
     },
@@ -605,9 +605,9 @@ const t: Partial<Record<SetupLocale, SetupLocaleText>> = {
       faqs: [
         { question: 'API 키는 안전한가요?', answer: '네. 키는 안전한 플랫폼 저장소에 로컬로 저장되며 선택한 제공자에 대한 BYOK 요청에만 사용됩니다.' },
         { question: '비용은 얼마나 드나요?', answer: 'Gemini와 Groq는 무료 티어가 있습니다. OpenAI와 Claude는 사용량 기반입니다. 일반적인 사용량은 월 1달러 미만인 경우가 많습니다.' },
-        { question: '10,000 크레딧은 유지되나요?', answer: '네. BYOK를 끄면 남은 크레딧을 계속 사용할 수 있습니다. BYOK는 선택 사항입니다.' },
+        { question: 'PRO에서도 BYOK가 필요한가요?', answer: '아니요. 유료 PRO 플랜에는 무제한 Zush 클라우드 이름 변경이 포함됩니다. BYOK는 선택 사항입니다.' },
         { question: '어떤 제공자를 선택해야 하나요?', answer: '네 가지 모두 잘 작동합니다. Gemini는 멀티모달, Groq는 속도, OpenAI는 안정성, Claude는 고품질 파일 이해가 강점입니다.' },
-        { question: 'PRO가 필요한가요?', answer: '네. BYOK는 PRO 전용 기능입니다. 무료 사용자는 10달러 일회 결제로 업그레이드할 수 있습니다.' },
+        { question: 'PRO가 필요한가요?', answer: '네. BYOK는 PRO 전용 기능입니다. 무료 사용자는 Monthly 또는 One-Time으로 업그레이드할 수 있습니다.' },
       ],
       securityTitle: '보안 및 개인정보',
     },
@@ -671,9 +671,9 @@ const t: Partial<Record<SetupLocale, SetupLocaleText>> = {
       faqs: [
         { question: '我的 API 密钥安全吗？', answer: '安全。密钥会保存在本地安全存储中，只在向所选服务商发起 BYOK 请求时使用。' },
         { question: '费用是多少？', answer: 'Gemini 和 Groq 提供免费额度。OpenAI 和 Claude 按量计费。典型使用通常每月不到 1 美元。' },
-        { question: '10,000 credits 还在吗？', answer: '还在。关闭 BYOK 后，你仍可继续使用剩余 credits。BYOK 是可选功能。' },
+        { question: 'PRO 还需要 BYOK 吗？', answer: '不需要。付费 PRO 方案包含无限 Zush 云端重命名。BYOK 是可选功能。' },
         { question: '应该选择哪个服务商？', answer: '四个都可用。Gemini 擅长多模态，Groq 速度快，OpenAI 稳定，Claude 对文件理解质量高。' },
-        { question: '需要 PRO 吗？', answer: '需要。BYOK 是 PRO 专属功能。免费用户可通过一次性支付 10 美元升级。' },
+        { question: '需要 PRO 吗？', answer: '需要。BYOK 是 PRO 专属功能。免费用户可以升级到 Monthly 或 One-Time。' },
       ],
       securityTitle: '安全与隐私',
     },

@@ -17,7 +17,7 @@ import styles from './WhyZush.module.scss';
 
 const pricingTrustItems = [
   '✨ Free to try',
-  '🚫 No subscription',
+  '∞ Unlimited PRO',
   '↩️ 14-day refund',
 ];
 const formatPills = [
@@ -67,17 +67,17 @@ const defaultCopy: WhyZushCopy = {
   title: 'Why Zush Wins Against Generic File Renamers',
   titlePlatform: 'Why Zush Wins on {os}',
   description: 'AI batch renaming, automatic folder monitoring, rollback, BYOK, Offline AI, and mixed-format support in one desktop app',
-  descriptionPlatform: 'Native desktop feel, fast renaming, one-time pricing, and fewer annoying decisions on {os}',
+  descriptionPlatform: 'Native desktop feel, fast renaming, flexible PRO pricing, and fewer annoying decisions on {os}',
   nativeEyebrow: 'Desktop-native feel',
   nativeEyebrowPlatform: '{os}-native feel',
   nativeTitle: 'Native, fast, and modern',
   nativeDescription: 'Zush feels like a real desktop app: quick to open, clean to use, and visually at home on your machine instead of feeling like a clunky utility panel.',
   nativeDescriptionPlatform: 'Zush feels like a real native {os} app: quick to open, clean to use, and visually at home on your machine instead of feeling like a clunky utility panel.',
   pricingTrustItems,
-  priceEyebrow: 'One-time fair pricing',
-  priceTitle: 'Pay once, keep the workflow',
-  priceDescription: 'Most AI file renamers try to become another monthly bill. Zush stays simple: free to try, then one small one-time purchase when it proves useful.',
-  priceLabel: 'one-time',
+  priceEyebrow: 'Fair PRO pricing',
+  priceTitle: 'Monthly or one-time',
+  priceDescription: 'Start with 50 free renames, then choose $8/month or a $38 one-time plan when Zush becomes part of your workflow.',
+  priceLabel: 'from $8/mo',
   speedEyebrow: 'Sssupafast!',
   speedTitle: 'Renames happen in seconds',
   speedDescription: 'Speed matters because cleanup only sticks if it does not interrupt the real work. Drop files in, review, apply, move on.',

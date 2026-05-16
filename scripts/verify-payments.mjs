@@ -109,13 +109,28 @@ function verifyAutoOpenFlow() {
   );
   assertMatch(
     src,
-    /checkout !== ["']pro["']/,
-    "Auto-open trigger for checkout=pro is missing",
+    /getCheckoutPriceId\(checkout\)/,
+    "Auto-open no longer resolves checkout plan to a price",
   );
   assertMatch(
     src,
-    /openPaddleCheckout\(deviceId,\s*PRO_PADDLE_PRICE_ID\)/,
-    "Auto-open no longer opens Paddle with PRO price",
+    /case ["']monthly["']/,
+    "Auto-open trigger for checkout=monthly is missing",
+  );
+  assertMatch(
+    src,
+    /case ["']one-time["']/,
+    "Auto-open trigger for checkout=one-time is missing",
+  );
+  assertMatch(
+    src,
+    /case ["']pro["']/,
+    "Legacy checkout=pro fallback is missing",
+  );
+  assertMatch(
+    src,
+    /openPaddleCheckout\(deviceId,\s*priceId\)/,
+    "Auto-open no longer opens Paddle with the resolved price",
   );
   assertMatch(
     src,

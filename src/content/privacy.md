@@ -20,7 +20,7 @@ An anonymous device identifier (machine UUID) is sent with each analysis request
 We collect information necessary to manage your license and enforce usage limits:
 
 - Email Address: Provided during the purchase process.
-- License Status: Information about your PRO license (one-time purchase).
+- License Status: Information about your PRO license or subscription.
 - Usage Counts: We track the number of AI-processed files to manage usage limits.
 
 **1.5 Payment Information**

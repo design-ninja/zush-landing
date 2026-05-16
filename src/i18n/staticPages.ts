@@ -316,7 +316,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       updated: 'Laatst bijgewerkt: 26 april 2026',
       sections: [
         { eyebrow: 'Service', title: 'Beschrijving', body: 'Zush is een desktoptool om bestanden met AI te organiseren, hernoemen en van metadata te voorzien: batches, mapbewaking, eigen prompts, BYOK en offline AI.' },
-        { eyebrow: 'Licentie', title: 'Gebruik en betalingen', body: 'Je krijgt een persoonlijke, niet-overdraagbare licentie. Zush PRO is een eenmalige aankoop met credits en toegang tot BYOK en offline AI. Betalingen lopen via Paddle of stores.' },
+        { eyebrow: 'Licentie', title: 'Gebruik en betalingen', body: 'Je krijgt een persoonlijke, niet-overdraagbare licentie. Zush PRO is beschikbaar als maandplan of eenmalige aankoop en geeft toegang tot unlimited PRO, BYOK en offline AI. Betalingen lopen via Paddle of stores.' },
         { eyebrow: 'Verantwoordelijkheid', title: 'AI-resultaten', body: 'AI kan onjuiste of onverwachte namen maken. Controleer wijzigingen voor toepassing. De service wordt zonder garantie geleverd.' },
       ],
     },
@@ -552,7 +552,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       updated: '最后更新：2026 年 4 月 26 日',
       sections: [
         { eyebrow: '服务', title: '说明', body: 'Zush 是用 AI 整理、重命名并管理文件元数据的桌面工具，包括批量重命名、文件夹监控、自定义提示词、BYOK 和离线 AI。' },
-        { eyebrow: '许可', title: '使用与付款', body: '你获得个人、不可转让的使用许可。Zush PRO 是一次性购买，包含 credits、BYOK 和离线 AI。付款由 Paddle 或应用商店处理。' },
+        { eyebrow: '许可', title: '使用与付款', body: '你获得个人、不可转让的使用许可。Zush PRO 提供月付和一次性购买两种方案，包含 unlimited PRO、BYOK 和离线 AI。付款由 Paddle 或应用商店处理。' },
         { eyebrow: '责任', title: 'AI 结果', body: 'AI 可能生成错误或意外的名称。应用前你需要检查变更。服务按现状提供，不作担保。' },
       ],
     },

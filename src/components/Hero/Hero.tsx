@@ -52,7 +52,7 @@ const Hero = ({
   buyLabel = "Buy 🌟 PRO",
   downloadLabel = "Download",
   downloadMenu,
-  trustSignals = ["✨ Free to try", "💳 No credit card", "🚫 No subscription"],
+  trustSignals = ["✨ Free to try", "💳 No credit card", "∞ Unlimited PRO"],
 }: HeroProps) => {
   const highlightText = titleHighlight ?? titleAccent;
 
