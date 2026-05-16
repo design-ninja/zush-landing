@@ -1,135 +1,168 @@
 ---
 import SectionHeader from '@/components/SectionHeader';
-import Heading from '@/components/Heading';
 import Text from '@/components/Text';
 import buttonStyles from '@/components/Button/Button.module.scss';
-import { PRO_PLAN, type Feature } from './constants';
+import { PRICING_PLANS, PRO_FEATURES } from './constants';
 import styles from './Pricing.module.scss';
+
+interface PlanCopy {
+  titleSuffix?: string;
+  description?: string;
+  buttonText?: string;
+  billing?: string;
+}
 
 interface Props {
   copy?: {
     title: string;
     description: string;
-    planName: string;
-    planDescription: string;
-    billing: string;
-    buttonText: string;
     buttonHint: string;
     features: Array<{ title: string; desc: string }>;
+    sharedFeaturesTitle?: string;
+    monthlyDifferentiators?: string[];
+    oneTimeDifferentiators?: string[];
+    monthlyPlan?: PlanCopy;
+    oneTimePlan?: PlanCopy;
   };
 }
 
 const { copy } = Astro.props as Props;
-const plan = PRO_PLAN;
-const localizedFeatures: Feature[] = plan.features.map((feature, index) => ({
+const paidButtonClass = [
+  buttonStyles.Button,
+  buttonStyles.Button_primary,
+  buttonStyles.Button_lg,
+  buttonStyles.Button_fluid,
+].join(' ');
+const trustLine = copy?.buttonHint ?? '14-day money-back guarantee • Secure via Paddle';
+const sharedFeaturesTitle = copy?.sharedFeaturesTitle ?? 'PRO 🌟 Features';
+const rawTitle = copy?.title ?? 'Choose your PRO plan';
+const titleHtml = rawTitle.replace(
+  /\bPRO\b/,
+  `<span class="${styles.Pricing__TitlePro}">PRO</span>`,
+);
+const sharedFeatures = PRO_FEATURES.map((feature, index) => ({
   ...feature,
   title: copy?.features[index]?.title ?? feature.title,
   desc: copy?.features[index]?.desc ?? feature.desc,
 }));
-const featureGroups = localizedFeatures.reduce<Feature[][]>((groups, feature) => {
-  if (groups.length === 0 || feature.groupBreakBefore) {
-    groups.push([]);
-  }
+const plans = PRICING_PLANS.map((plan) => {
+  const localizedDifferentiators =
+    plan.id === 'monthly' ? copy?.monthlyDifferentiators : copy?.oneTimeDifferentiators;
+  const planCopy: PlanCopy | undefined =
+    plan.id === 'monthly' ? copy?.monthlyPlan : copy?.oneTimePlan;
 
-  groups[groups.length - 1].push(feature);
-  return groups;
-}, []);
-const cardClass = [
-  styles.PricingCard,
-  plan.highlight ? styles.PricingCard_highlighted : '',
-]
-  .filter(Boolean)
-  .join(' ');
-const buttonClass = [
-  buttonStyles.Button,
-  buttonStyles.Button_primary,
-  buttonStyles.Button_md,
-].join(' ');
+  return {
+    ...plan,
+    titleSuffix: planCopy?.titleSuffix ?? plan.titleSuffix,
+    description: planCopy?.description ?? plan.description,
+    buttonText: planCopy?.buttonText ?? plan.buttonText,
+    billing: planCopy?.billing ?? plan.billing,
+    differentiators: plan.differentiators.map((differentiator, index) => ({
+      ...differentiator,
+      title: localizedDifferentiators?.[index] ?? differentiator.title,
+    })),
+  };
+});
 ---
 
 <section id="pricing" class={styles.Pricing}>
   <div class={styles.Pricing__Container}>
     <SectionHeader
-      title={copy?.title ?? 'Pay once, use forever'}
-      description={copy?.description ?? 'No subscriptions, no hidden fees. Just a simple one-time purchase.'}
+      titleHtml={titleHtml}
+      description={copy?.description ?? 'Monthly flexibility or one-time lifetime access. Both plans unlock unlimited PRO.'}
     />
 
-    <div class={styles.Pricing__Single}>
-      <div class={cardClass} id={plan.isPro ? 'pro' : undefined}>
-        <div class={styles.PricingCard__Top}>
-          <div class={styles.PricingCard__HeaderRow}>
+    <div class={styles.Pricing__Layout}>
+      <div class={styles.Pricing__Shared}>
+        <div class={styles.Pricing__SharedHeader}>
+          <h3
+            class={styles.Pricing__SharedTitle}
+            set:html={sharedFeaturesTitle.replace(
+              /\bPRO\b/,
+              `<span class="${styles.Pricing__SharedTitlePro}">PRO</span>`,
+            )}
+          />
+        </div>
+
+        <ul class={styles.Pricing__SharedList}>
+          {sharedFeatures.map((feature) => {
+            const Icon = feature.icon;
+
+            return (
+              <li class={styles.Pricing__SharedFeature} data-tone={feature.tone}>
+                <span class={styles.Pricing__SharedFeatureIcon}>
+                  <Icon size={20} aria-hidden="true" />
+                </span>
+                <span class={styles.Pricing__SharedFeatureCopy}>
+                  <span class={styles.Pricing__SharedFeatureTitle}>{feature.title}</span>
+                  <span class={styles.Pricing__SharedFeatureDesc}>{feature.desc}</span>
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+
+      <div class={styles.Pricing__Plans}>
+        {plans.map((plan) => (
+        <div class={styles.PricingCard} id={plan.id === 'monthly' ? 'pro' : undefined}>
+          <div class={styles.PricingCard__Top}>
             <div class={styles.PricingCard__Header}>
-              <Heading as="h3" className={styles.PricingCard__Name}>
-                {copy?.planName ?? plan.name}
-              </Heading>
+              <h3 class={styles.PricingCard__Name}>
+                <span class={styles.PricingCard__NameZush}>Zush</span>{' '}
+                <span class={styles.PricingCard__NamePro}>PRO</span>{' '}
+                <span>{plan.titleSuffix}</span>
+              </h3>
               <Text
                 as="p"
                 size="sm"
                 color="subtle"
                 className={styles.PricingCard__Description}
               >
-                {copy?.planDescription ?? plan.description}
+                {plan.description}
               </Text>
             </div>
-          </div>
 
-          <div class={styles.PricingCard__Price}>
-            <div class={styles.PricingCard__PriceLeft}>
-              <span class={styles.PricingCard__PriceValue}>{plan.price ?? '$10'}</span>
+            <div class={styles.PricingCard__Price}>
+              <span class={styles.PricingCard__PriceValue}>{plan.price}</span>
               {plan.billing && (
-                <span class={styles.PricingCard__PricePeriod}>{copy?.billing ?? plan.billing}</span>
+                <span class={styles.PricingCard__PricePeriod}>{plan.billing}</span>
               )}
             </div>
           </div>
-        </div>
 
-        <div class={styles.PricingCard__Features}>
-          {featureGroups.map((group) => (
-            <div class={styles.PricingCard__FeatureGroup}>
-              {group.map((feature) => {
-                const Icon = feature.icon;
+          <ul class={styles.PricingCard__Differentiators}>
+            {plan.differentiators.map((differentiator) => {
+              const Icon = differentiator.icon;
 
-                return (
-                  <div class={styles.PricingCard__Feature}>
-                    <div class={styles.PricingCard__FeatureIcon}>
-                      <Icon size={24} />
-                    </div>
-                    <div>
-                      <div class={styles.PricingCard__FeatureTitle}>
-                        {feature.title}
-                      </div>
-                      <div class={styles.PricingCard__FeatureDesc}>
-                        {feature.desc}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          ))}
-        </div>
+              return (
+                <li class={styles.PricingCard__Differentiator}>
+                  <Icon size={20} aria-hidden="true" />
+                  <span>{differentiator.title}</span>
+                </li>
+              );
+            })}
+          </ul>
 
-        <div class={styles.PricingCard__ButtonWrapper}>
-          <button
-            type="button"
-            class={buttonClass}
-            data-paddle-checkout
-            data-paddle-price-id={plan.paddlePriceId}
-          >
-            <span class={styles.PricingCard__ButtonText}>
-              {copy?.buttonText ?? plan.buttonText}
-            </span>
-          </button>
-          <Text
-            as="p"
-            size="sm"
-            color="subtle"
-            className={styles.PricingCard__ButtonHint}
-          >
-            {copy?.buttonHint ?? '14-day money-back guarantee • Secure via Paddle'}
-          </Text>
+          <div class={styles.PricingCard__ButtonWrapper}>
+            <button
+              type="button"
+              class={paidButtonClass}
+              data-paddle-checkout
+              data-paddle-price-id={plan.paddlePriceId}
+            >
+              <span class={styles.PricingCard__ButtonText}>
+                {plan.buttonText}
+              </span>
+            </button>
+          </div>
         </div>
+        ))}
       </div>
     </div>
+
+    <Text as="p" size="sm" color="subtle" align="center" className={styles.Pricing__TrustLine}>
+      {trustLine}
+    </Text>
   </div>
 </section>

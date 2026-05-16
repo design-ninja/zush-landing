@@ -122,9 +122,9 @@ const defaultFaqs = [
       'Gemini and Groq offer generous free tiers. OpenAI and Claude use pay-as-you-go pricing. For typical usage (100-500 files/month), costs are usually less than $1/month. Much cheaper than our credit packs!',
   },
   {
-    question: 'Will I still have the 10,000 credits?',
+    question: 'Do PRO users still need BYOK?',
     answer:
-      'Yes! When BYOK is disabled, you can still use your remaining credits. BYOK is optional and can be toggled on/off anytime.',
+      'No. Paid PRO plans include unlimited Zush cloud renames. BYOK is optional if you prefer to use your own provider key.',
   },
   {
     question: 'Which provider should I choose?',
@@ -134,7 +134,7 @@ const defaultFaqs = [
   {
     question: 'Do I need to be a PRO user?',
     answer:
-      'Yes, BYOK is a PRO-exclusive feature. Free users can upgrade to PRO for a one-time payment of $10.',
+      'Yes, BYOK is a PRO-exclusive feature. Free users can upgrade to PRO with Monthly or One-Time.',
   },
 ] as const;
 
@@ -143,7 +143,7 @@ const defaultBYOKSetupCopy: BYOKSetupCopy = {
   subtitle: 'Bring Your Own Key for unlimited cloud renames',
   whatTitle: 'What is BYOK?',
   whatBody:
-    "BYOK (Bring Your Own Key) allows Zush PRO users to use their own AI provider API keys for unlimited cloud renames. Instead of using Zush's AI credits, your files are analyzed using your own API key from Gemini, Groq, OpenAI, or Claude.",
+    "BYOK (Bring Your Own Key) allows Zush PRO users to use their own AI provider API keys for unlimited cloud renames. Instead of using Zush's managed cloud provider, your files are analyzed using your own API key from Gemini, Groq, OpenAI, or Claude.",
   benefits: defaultBenefits,
   providers: defaultProviders,
   steps: {

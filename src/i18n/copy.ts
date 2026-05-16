@@ -229,6 +229,13 @@ export interface HomeCopy {
   showcaseSlides: Slide[];
 }
 
+export interface PricingPlanCopy {
+  titleSuffix?: string;
+  description?: string;
+  buttonText?: string;
+  billing?: string;
+}
+
 export interface PricingCopy {
   title: string;
   description: string;
@@ -238,6 +245,11 @@ export interface PricingCopy {
   buttonText: string;
   buttonHint: string;
   features: Array<{ title: string; desc: string }>;
+  sharedFeaturesTitle?: string;
+  monthlyDifferentiators?: string[];
+  oneTimeDifferentiators?: string[];
+  monthlyPlan?: PricingPlanCopy;
+  oneTimePlan?: PricingPlanCopy;
 }
 
 export interface PlatformCopy {
@@ -285,17 +297,6 @@ type DeepPartial<T> = {
       ? DeepPartial<T[K]>
       : T[K];
 };
-
-const pricingFeatureIcons = [
-  'credits',
-  'byok',
-  'offline',
-  'monitor',
-  'metadata',
-  'prompts',
-  'localization',
-  'shortcut',
-] as const;
 
 const homeShowcaseSlides = (afterNames: string[]): Slide[] => [
   {
@@ -695,7 +696,7 @@ const localizedFullHomeFaqItems: Record<Exclude<Locale, 'en' | 'zh-cn'>, FAQCopy
     { question: 'Sind meine Daten sicher?', answer: 'Deine Originaldateien bleiben auf deinem Computer. Im Cloud-Modus wird nur der nötige Analyseinhalt an den gewählten KI-Anbieter gesendet. Im Offline-KI-Modus verarbeitet Ollama unterstützte Dateien lokal.' },
     { question: 'Kann ich Änderungen rückgängig machen?', answer: 'Ja. Im Aktivitätsbereich kannst du Umbenennungen auf den ursprünglichen Dateinamen zurücksetzen.' },
     { question: 'Unterstützt Zush mehrere Sprachen und Datumsformate?', answer: 'Ja. Zush kann KI-Dateinamen in über 60 Sprachen erzeugen und dein bevorzugtes Datumsformat verwenden.' },
-    { question: 'Wie funktioniert der Preis?', answer: 'Zush PRO ist ein Einmalkauf für 10 US-Dollar mit 10.000 Credits und Zugriff auf BYOK und Offline-KI. Danach kannst du BYOK oder Offline-KI weiter nutzen.' },
+    { question: 'Wie funktioniert der Preis?', answer: 'Zush PRO hat zwei Pläne: Monthly für 8 $/Monat + MwSt. oder One-Time für 38 $ + MwSt. Beide schalten unbegrenztes PRO, BYOK und Offline-KI frei.' },
     { question: 'Was ist BYOK (Bring Your Own Key)?', answer: 'BYOK erlaubt PRO-Nutzern, eigene API-Schlüssel von Gemini, Groq, OpenAI oder Claude für unbegrenzte Cloud-Umbenennungen zu verbinden. Der Schlüssel wird lokal sicher gespeichert.' },
     { question: 'Warum Einmalkauf statt Abo?', answer: 'Wir setzen auf transparente Preise: einmal zahlen, dauerhaft nutzen, ohne monatliche Gebühren oder Abo-Stress.' },
     { question: 'Welche Betriebssysteme werden unterstützt?', answer: 'Zush läuft auf macOS 14 Sonoma und neuer sowie Windows 10 / 11. Mac gibt es als signierte dmg und im Mac App Store, Windows im Microsoft Store.' },
@@ -714,7 +715,7 @@ const localizedFullHomeFaqItems: Record<Exclude<Locale, 'en' | 'zh-cn'>, FAQCopy
     { question: 'Mes données sont-elles sécurisées ?', answer: 'Vos fichiers originaux restent sur votre ordinateur. En mode cloud, seul le contenu nécessaire à l’analyse est envoyé au fournisseur IA choisi. En mode hors ligne, Ollama traite les fichiers localement.' },
     { question: 'Puis-je annuler les changements ?', answer: 'Oui. L’historique d’activité permet de restaurer les noms d’origine.' },
     { question: 'Zush prend-il en charge plusieurs langues et formats de date ?', answer: 'Oui. Zush peut générer des noms dans plus de 60 langues et utiliser votre format de date préféré.' },
-    { question: 'Comment fonctionne le prix ?', answer: 'Zush PRO est un achat unique de 10 $ avec 10 000 crédits et l’accès à BYOK et au mode IA hors ligne. Ensuite, vous pouvez utiliser BYOK ou l’IA hors ligne.' },
+    { question: 'Comment fonctionne le prix ?', answer: 'Zush PRO propose deux offres : Monthly à 8 $/mois + TVA ou One-Time à 38 $ + TVA. Les deux débloquent PRO illimité, BYOK et le mode IA hors ligne.' },
     { question: 'Qu’est-ce que BYOK (Bring Your Own Key) ?', answer: 'BYOK permet aux utilisateurs PRO de connecter leur clé Gemini, Groq, OpenAI ou Claude pour des renommages cloud illimités. La clé est stockée localement de façon sécurisée.' },
     { question: 'Pourquoi un achat unique plutôt qu’un abonnement ?', answer: 'Nous privilégions un prix clair: payez une fois, utilisez durablement, sans mensualités ni fatigue d’abonnement.' },
     { question: 'Quels systèmes d’exploitation sont pris en charge ?', answer: 'Zush fonctionne sur macOS 14 Sonoma et versions récentes, ainsi que Windows 10 / 11. Mac est disponible en dmg signé et sur le Mac App Store, Windows via Microsoft Store.' },
@@ -733,7 +734,7 @@ const localizedFullHomeFaqItems: Record<Exclude<Locale, 'en' | 'zh-cn'>, FAQCopy
     { question: 'Meus dados estão seguros?', answer: 'Os arquivos originais ficam no seu computador. No modo cloud, só o conteúdo necessário para análise é enviado ao provedor de IA escolhido. No modo offline, o Ollama processa localmente.' },
     { question: 'Posso desfazer alterações?', answer: 'Sim. No histórico de atividade você pode restaurar os nomes originais.' },
     { question: 'O Zush suporta vários idiomas e formatos de data?', answer: 'Sim. O Zush pode gerar nomes em mais de 60 idiomas e usar seu formato de data preferido.' },
-    { question: 'Como funciona o preço?', answer: 'Zush PRO é uma compra única de US$ 10 com 10.000 créditos e acesso a BYOK e IA offline. Depois disso, você pode usar BYOK ou IA offline.' },
+    { question: 'Como funciona o preço?', answer: 'Zush PRO tem dois planos: Monthly por US$ 8/mês + VAT ou One-Time por US$ 38 + VAT. Ambos liberam PRO ilimitado, BYOK e IA offline.' },
     { question: 'O que é BYOK (Bring Your Own Key)?', answer: 'BYOK permite conectar sua própria chave Gemini, Groq, OpenAI ou Claude para renomeações cloud ilimitadas. A chave fica armazenada localmente com segurança.' },
     { question: 'Por que compra única em vez de assinatura?', answer: 'Preferimos preço claro: pague uma vez, use por muito tempo, sem mensalidades nem estresse de assinatura.' },
     { question: 'Quais sistemas operacionais são suportados?', answer: 'Zush funciona no macOS 14 Sonoma ou mais recente e no Windows 10 / 11. Mac tem dmg assinado e Mac App Store; Windows vem pela Microsoft Store.' },
@@ -752,7 +753,7 @@ const localizedFullHomeFaqItems: Record<Exclude<Locale, 'en' | 'zh-cn'>, FAQCopy
     { question: '¿Mis datos están seguros?', answer: 'Tus archivos originales permanecen en tu ordenador. En modo cloud, solo se envía al proveedor elegido el contenido necesario para el análisis. En modo offline, Ollama procesa localmente.' },
     { question: '¿Puedo deshacer cambios?', answer: 'Sí. En el historial de actividad puedes restaurar los nombres originales.' },
     { question: '¿Zush admite varios idiomas y formatos de fecha?', answer: 'Sí. Zush puede generar nombres en más de 60 idiomas y usar tu formato de fecha preferido.' },
-    { question: '¿Cómo funciona el precio?', answer: 'Zush PRO es una compra única de 10 US$ con 10.000 créditos y acceso a BYOK e IA offline. Después puedes seguir usando BYOK o IA offline.' },
+    { question: '¿Cómo funciona el precio?', answer: 'Zush PRO tiene dos planes: Monthly por 8 US$/mes + IVA o One-Time por 38 US$ + IVA. Ambos desbloquean PRO ilimitado, BYOK e IA offline.' },
     { question: '¿Qué es BYOK (Bring Your Own Key)?', answer: 'BYOK permite conectar tu propia clave de Gemini, Groq, OpenAI o Claude para renombrados cloud ilimitados. La clave se guarda localmente de forma segura.' },
     { question: '¿Por qué compra única y no suscripción?', answer: 'Preferimos un precio claro: pagas una vez y usas la app sin cuotas mensuales ni cansancio de suscripciones.' },
     { question: '¿Qué sistemas operativos son compatibles?', answer: 'Zush funciona en macOS 14 Sonoma o posterior y Windows 10 / 11. Mac tiene dmg firmado y Mac App Store; Windows está en Microsoft Store.' },
@@ -771,7 +772,7 @@ const localizedFullHomeFaqItems: Record<Exclude<Locale, 'en' | 'zh-cn'>, FAQCopy
     { question: 'Zijn mijn gegevens veilig?', answer: 'Je originele bestanden blijven op je computer. In cloudmodus wordt alleen de benodigde analyse-inhoud naar de gekozen AI-provider gestuurd. Offline verwerkt Ollama lokaal.' },
     { question: 'Kan ik wijzigingen ongedaan maken?', answer: 'Ja. Via de activiteitengeschiedenis kun je originele bestandsnamen herstellen.' },
     { question: 'Ondersteunt Zush meerdere talen en datumformaten?', answer: 'Ja. Zush kan namen in meer dan 60 talen genereren en je favoriete datumformaat gebruiken.' },
-    { question: 'Hoe werkt de prijs?', answer: 'Zush PRO is een eenmalige aankoop van $10 met 10.000 credits en toegang tot BYOK en offline AI. Daarna kun je BYOK of offline AI blijven gebruiken.' },
+    { question: 'Hoe werkt de prijs?', answer: 'Zush PRO heeft twee plannen: Monthly voor $8/maand + btw of One-Time voor $38 + btw. Beide ontgrendelen onbeperkte PRO, BYOK en offline AI.' },
     { question: 'Wat is BYOK (Bring Your Own Key)?', answer: 'BYOK laat PRO-gebruikers hun eigen Gemini-, Groq-, OpenAI- of Claude-sleutel koppelen voor onbeperkt cloudhernoemen. De sleutel wordt lokaal veilig opgeslagen.' },
     { question: 'Waarom eenmalig kopen in plaats van een abonnement?', answer: 'We kiezen voor duidelijke prijzen: één keer betalen en blijven gebruiken, zonder maandkosten of abonnementsstress.' },
     { question: 'Welke besturingssystemen worden ondersteund?', answer: 'Zush werkt op macOS 14 Sonoma en nieuwer en Windows 10 / 11. Mac is er als ondertekende dmg en via de Mac App Store; Windows via Microsoft Store.' },
@@ -790,7 +791,7 @@ const localizedFullHomeFaqItems: Record<Exclude<Locale, 'en' | 'zh-cn'>, FAQCopy
     { question: 'I miei dati sono al sicuro?', answer: 'I file originali restano sul computer. In modalità cloud viene inviato solo il contenuto necessario all’analisi. In modalità offline, Ollama elabora localmente.' },
     { question: 'Posso annullare le modifiche?', answer: 'Sì. Dalla cronologia attività puoi ripristinare i nomi originali.' },
     { question: 'Zush supporta più lingue e formati data?', answer: 'Sì. Zush può generare nomi in oltre 60 lingue e usare il tuo formato data preferito.' },
-    { question: 'Come funziona il prezzo?', answer: 'Zush PRO è un acquisto unico da 10 $ con 10.000 crediti e accesso a BYOK e IA offline. Dopo puoi continuare con BYOK o IA offline.' },
+    { question: 'Come funziona il prezzo?', answer: 'Zush PRO ha due piani: Monthly a 8 $/mese + IVA oppure One-Time a 38 $ + IVA. Entrambi sbloccano PRO illimitato, BYOK e IA offline.' },
     { question: 'Cos’è BYOK (Bring Your Own Key)?', answer: 'BYOK consente agli utenti PRO di collegare una chiave Gemini, Groq, OpenAI o Claude per rinomine cloud illimitate. La chiave è salvata localmente in modo sicuro.' },
     { question: 'Perché acquisto unico invece di abbonamento?', answer: 'Preferiamo prezzi trasparenti: paghi una volta e continui a usare l’app, senza costi mensili o stress da abbonamento.' },
     { question: 'Quali sistemi operativi sono supportati?', answer: 'Zush funziona su macOS 14 Sonoma e versioni successive e su Windows 10 / 11. Mac è disponibile come dmg firmato e su Mac App Store, Windows su Microsoft Store.' },
@@ -809,7 +810,7 @@ const localizedFullHomeFaqItems: Record<Exclude<Locale, 'en' | 'zh-cn'>, FAQCopy
     { question: 'データは安全ですか？', answer: '元ファイルはコンピュータ上に残ります。クラウドモードでは分析に必要な内容だけを選択した AI プロバイダーへ送信します。オフラインでは Ollama がローカル処理します。' },
     { question: '変更を元に戻せますか？', answer: 'はい。アクティビティ履歴から元のファイル名を復元できます。' },
     { question: '複数言語と日付形式に対応していますか？', answer: 'はい。Zush は 60 以上の言語で名前を生成でき、好みの日付形式も使えます。' },
-    { question: '料金はどうなっていますか？', answer: 'Zush PRO は 10 ドルの買い切りで、10,000 クレジットと BYOK、オフライン AI を利用できます。その後は BYOK またはオフライン AI を使えます。' },
+    { question: '料金はどうなっていますか？', answer: 'Zush PRO には Monthly（月額 8 ドル + VAT）と One-Time（38 ドル + VAT）の 2 つのプランがあります。どちらも無制限 PRO、BYOK、オフライン AI を利用できます。' },
     { question: 'BYOK（Bring Your Own Key）とは？', answer: 'PRO ユーザーが Gemini、Groq、OpenAI、Claude の自分の API キーを接続し、クラウドリネームを無制限に使える機能です。キーはローカルに安全に保存されます。' },
     { question: 'なぜサブスクではなく買い切りですか？', answer: '分かりやすい価格にしたいからです。一度支払えば継続して使え、月額料金や解約の心配はありません。' },
     { question: '対応 OS は？', answer: 'macOS 14 Sonoma 以降と Windows 10 / 11 に対応しています。Mac は署名済み dmg と Mac App Store、Windows は Microsoft Store で提供されます。' },
@@ -828,7 +829,7 @@ const localizedFullHomeFaqItems: Record<Exclude<Locale, 'en' | 'zh-cn'>, FAQCopy
     { question: '데이터는 안전한가요?', answer: '원본 파일은 컴퓨터에 남아 있습니다. 클라우드 모드에서는 분석에 필요한 내용만 선택한 AI 제공자에게 전송됩니다. 오프라인 모드에서는 Ollama가 로컬에서 처리합니다.' },
     { question: '변경을 되돌릴 수 있나요?', answer: '예. 활동 기록에서 원래 파일 이름을 복원할 수 있습니다.' },
     { question: 'Zush는 여러 언어와 날짜 형식을 지원하나요?', answer: '예. Zush는 60개 이상 언어로 이름을 생성하고 원하는 날짜 형식을 사용할 수 있습니다.' },
-    { question: '가격은 어떻게 되나요?', answer: 'Zush PRO는 10달러 일회성 구매이며 10,000 크레딧, BYOK, 오프라인 AI를 제공합니다. 이후 BYOK 또는 오프라인 AI를 사용할 수 있습니다.' },
+    { question: '가격은 어떻게 되나요?', answer: 'Zush PRO는 두 가지 플랜입니다: Monthly 월 $8 + VAT 또는 One-Time $38 + VAT. 둘 다 무제한 PRO, BYOK, 오프라인 AI를 제공합니다.' },
     { question: 'BYOK(Bring Your Own Key)이란 무엇인가요?', answer: 'PRO 사용자가 Gemini, Groq, OpenAI, Claude API 키를 연결해 무제한 클라우드 이름 변경을 사용하는 기능입니다. 키는 로컬에 안전하게 저장됩니다.' },
     { question: '왜 구독이 아니라 일회성 구매인가요?', answer: '명확한 가격을 원하기 때문입니다. 한 번 결제하면 계속 사용할 수 있고 월 요금이나 구독 피로가 없습니다.' },
     { question: '지원 운영체제는 무엇인가요?', answer: 'macOS 14 Sonoma 이상과 Windows 10 / 11을 지원합니다. Mac은 서명된 dmg와 Mac App Store, Windows는 Microsoft Store에서 제공됩니다.' },
@@ -847,9 +848,9 @@ const localizedFullHomeFaqItems: Record<Exclude<Locale, 'en' | 'zh-cn'>, FAQCopy
     { question: 'क्या मेरा data safe है?', answer: 'Original files आपके computer पर रहती हैं। Cloud mode में analysis के लिए जितना content जरूरी है वही चुने हुए AI provider को भेजा जाता है। Offline AI mode में Ollama supported files को locally process करता है।' },
     { question: 'क्या मैं changes undo कर सकता हूँ?', answer: 'हाँ। Activity history से आप files को one click में original names पर वापस ला सकते हैं।' },
     { question: 'क्या Zush multiple languages और date formats support करता है?', answer: 'हाँ। Zush 60+ languages में file names बना सकता है और आपका preferred date format use कर सकता है।' },
-    { question: 'Pricing कैसे काम करती है?', answer: 'Zush PRO $10 की one-time purchase है, जिसमें 10,000 credits और BYOK व Offline AI access मिलता है। उसके बाद आप BYOK या Offline AI use करते रह सकते हैं।' },
+    { question: 'Pricing कैसे काम करती है?', answer: 'Zush PRO में दो plans हैं: Monthly $8/month + VAT या One-Time $38 + VAT। दोनों unlimited PRO, BYOK और Offline AI unlock करते हैं।' },
     { question: 'BYOK (Bring Your Own Key) क्या है?', answer: 'BYOK से PRO users Gemini, Groq, OpenAI या Claude की अपनी API key connect करके unlimited cloud renames कर सकते हैं। Key local secure storage में save रहती है।' },
-    { question: 'Subscription के बजाय one-time purchase क्यों?', answer: 'हम pricing simple रखना चाहते हैं: एक बार pay करें, long-term use करें, बिना monthly fees या subscription fatigue के।' },
+    { question: 'Monthly और One-Time में क्या फर्क है?', answer: 'Monthly $8/month + VAT है और flexible है। One-Time $38 + VAT है और lifetime access देता है। दोनों unlimited PRO, BYOK और Offline AI unlock करते हैं।' },
     { question: 'कौन से operating systems supported हैं?', answer: 'Zush macOS 14 Sonoma और newer versions, साथ ही Windows 10 / 11 पर चलता है। Mac के लिए signed dmg और Mac App Store, Windows के लिए Microsoft Store available है।' },
     { question: 'App कौन सा AI model use करता है?', answer: 'Zush images, videos और supported documents के fast, accurate analysis के लिए modern multimodal AI models use करता है। Optimization के साथ model बदल सकता है।' },
     { question: 'क्या app offline काम करता है?', answer: 'Cloud processing के लिए internet चाहिए। PRO users Ollama और compatible model install करने के बाद Offline AI enable कर सकते हैं।' },
@@ -866,7 +867,7 @@ const localizedFullHomeFaqItems: Record<Exclude<Locale, 'en' | 'zh-cn'>, FAQCopy
     { question: 'هل بياناتي آمنة؟', answer: 'تبقى ملفاتك الأصلية على جهازك. في وضع السحابة، يرسل Zush فقط محتوى التحليل الضروري إلى مزود الذكاء الاصطناعي المختار. في وضع Offline AI يعالج Ollama الملفات المدعومة محليا.' },
     { question: 'هل يمكنني التراجع عن التغييرات؟', answer: 'نعم. من سجل النشاط يمكنك استعادة أسماء الملفات الأصلية بنقرة واحدة.' },
     { question: 'هل يدعم Zush عدة لغات وتنسيقات تاريخ؟', answer: 'نعم. يمكن لـ Zush إنشاء أسماء ملفات بأكثر من 60 لغة واستخدام تنسيق التاريخ الذي تفضله.' },
-    { question: 'كيف يعمل السعر؟', answer: 'Zush PRO هو شراء لمرة واحدة بقيمة 10 دولارات، يتضمن 10,000 رصيد والوصول إلى BYOK وOffline AI. بعد ذلك يمكنك متابعة الاستخدام عبر BYOK أو Offline AI.' },
+    { question: 'كيف يعمل السعر؟', answer: 'يتوفر Zush PRO بخطتين: Monthly مقابل 8 دولارات/شهر + VAT أو One-Time مقابل 38 دولارا + VAT. كلاهما يفتح PRO غير محدود وBYOK وOffline AI.' },
     { question: 'ما هو BYOK (Bring Your Own Key)؟', answer: 'يتيح BYOK لمستخدمي PRO ربط مفاتيح Gemini أو Groq أو OpenAI أو Claude الخاصة بهم لإعادة تسمية غير محدودة عبر السحابة. يتم تخزين المفتاح محليا وبشكل آمن.' },
     { question: 'لماذا شراء لمرة واحدة بدلا من اشتراك؟', answer: 'نفضل تسعيرا واضحا: تدفع مرة واحدة وتستمر في الاستخدام بدون رسوم شهرية أو عبء الاشتراكات.' },
     { question: 'ما أنظمة التشغيل المدعومة؟', answer: 'يعمل Zush على macOS 14 Sonoma والإصدارات الأحدث، وعلى Windows 10 / 11. يتوفر Mac كملف dmg موقّع وعلى Mac App Store، ويتوفر Windows عبر Microsoft Store.' },
@@ -943,7 +944,7 @@ const EN_COPY: LocaleCopy = {
     heroSubtitle:
       'Batch rename files with AI, watch folders automatically, and organize screenshots, PDFs, photos, videos, and documents with searchable names based on real content.',
     buyPro: 'Buy 🌟 PRO',
-    trustSignals: ['✨ Free to try', '💳 No credit card', '🚫 No subscription'],
+    trustSignals: ['✨ Free to try', '💳 No credit card', '∞ Unlimited PRO'],
     featuresTitle: 'Batch Rename, Watch Folders, and Rename by Content',
     featuresDescription: 'One desktop AI file renamer for screenshots, PDFs, photos, videos, documents, and messy mixed folders',
     supportedFormats: 'Supported File Formats',
@@ -999,17 +1000,17 @@ const EN_COPY: LocaleCopy = {
       title: 'Why Zush Wins Against Generic File Renamers',
       titlePlatform: 'Why Zush Wins on {os}',
       description: 'AI batch renaming, automatic folder monitoring, rollback, BYOK, Offline AI, and mixed-format support in one desktop app',
-      descriptionPlatform: 'Native desktop feel, fast renaming, one-time pricing, and fewer annoying decisions on {os}',
+      descriptionPlatform: 'Native desktop feel, fast renaming, flexible PRO pricing, and fewer annoying decisions on {os}',
       nativeEyebrow: 'Desktop-native feel',
       nativeEyebrowPlatform: '{os}-native feel',
       nativeTitle: 'Native, fast, and modern',
       nativeDescription: 'Zush feels like a real desktop app: quick to open, clean to use, and visually at home on your machine instead of feeling like a clunky utility panel.',
       nativeDescriptionPlatform: 'Zush feels like a real native {os} app: quick to open, clean to use, and visually at home on your machine instead of feeling like a clunky utility panel.',
-      pricingTrustItems: ['✨ Free to try', '🚫 No subscription', '↩️ 14-day refund'],
-      priceEyebrow: 'One-time fair pricing',
-      priceTitle: 'Pay once, keep the workflow',
-      priceDescription: 'Most AI file renamers try to become another monthly bill. Zush stays simple: free to try, then one small one-time purchase when it proves useful.',
-      priceLabel: 'one-time',
+      pricingTrustItems: ['✨ Free to try', '∞ Unlimited PRO', '↩️ 14-day refund'],
+      priceEyebrow: 'Fair PRO pricing',
+      priceTitle: 'Monthly or one-time',
+      priceDescription: 'Start with 50 free renames, then choose $8/month or a $38 one-time plan when Zush becomes part of your workflow.',
+      priceLabel: 'from $8/mo',
       speedEyebrow: 'Sssupafast!',
       speedTitle: 'Renames happen in seconds',
       speedDescription: 'Speed matters because cleanup only sticks if it does not interrupt the real work. Drop files in, review, apply, move on.',
@@ -1035,23 +1036,44 @@ const EN_COPY: LocaleCopy = {
     showcaseSlides: EN_HOME_SHOWCASE_SLIDES,
   },
   pricing: {
-    title: 'Pay once, use forever',
-    description: 'No subscriptions, no hidden fees. Just a simple one-time purchase.',
+    title: 'Choose your PRO plan',
+    description: 'Monthly flexibility or one-time lifetime access. Both plans unlock unlimited PRO.',
     planName: 'Zush PRO 🌟',
-    planDescription: 'One-time purchase • Lifetime access',
-    billing: 'one-time',
+    planDescription: 'Monthly or one-time • Unlimited PRO',
+    billing: 'monthly or one-time',
     buttonText: 'Buy Zush PRO 🌟',
     buttonHint: '14-day money-back guarantee • Secure via Paddle',
     features: [
-      { title: '10,000 Credits', desc: 'Process up to 10,000 files, then use BYOK or Offline AI mode' },
-      { title: 'BYOK - Bring Your Own Key', desc: 'Use your provider key for unlimited cloud renames' },
+      { title: 'Unlimited PRO renames', desc: 'Remove the cloud rename limit' },
+      { title: 'Bring Your Own Key', desc: 'Unlimited cloud renames with your AI API key' },
       { title: 'Offline AI mode', desc: 'Private local models via Ollama' },
-      { title: 'Folders Monitor', desc: 'Auto-rename new files in watched folders with file-type exclusions' },
-      { title: 'Smart Naming & Metadata', desc: 'Customize naming patterns, Finder tags, and Spotlight metadata' },
       { title: 'Custom AI Prompts', desc: 'Personalize AI behavior with your own rename and tagging instructions' },
-      { title: 'Localization (60+ languages)', desc: 'File names in any language with custom date format' },
-      { title: 'Quick Rename Shortcut', desc: 'Rename selected files from Finder with a context menu or keyboard shortcut' },
+      { title: 'Templates', desc: 'Reusable rename setups for AI Rename and Monitor' },
+      { title: 'Naming Blocks', desc: 'Build names from dates, media, documents, metadata and much more' },
     ],
+    sharedFeaturesTitle: 'PRO 🌟 Features',
+    monthlyDifferentiators: [
+      'Cancel anytime',
+      'Lowest entry price',
+      'No long-term commitment',
+    ],
+    oneTimeDifferentiators: [
+      'Pay once, use forever',
+      'All future updates included',
+      'Pays off in ~5 months',
+    ],
+    monthlyPlan: {
+      titleSuffix: 'Monthly',
+      description: 'Flexible monthly plan',
+      buttonText: 'Start Zush PRO Monthly',
+      billing: '/month + VAT',
+    },
+    oneTimePlan: {
+      titleSuffix: 'One-Time',
+      description: 'Pay once for lifetime access',
+      buttonText: 'Buy Zush PRO One-Time',
+      billing: 'one-time + VAT',
+    },
   },
   platforms: {
     mac: {
@@ -1235,6 +1257,12 @@ const localized = (overrides: DeepPartial<LocaleCopy>): LocaleCopy => ({
     ...base.pricing,
     ...overrides.pricing,
     features: overrides.pricing?.features ?? base.pricing.features,
+    monthlyDifferentiators:
+      overrides.pricing?.monthlyDifferentiators ?? base.pricing.monthlyDifferentiators,
+    oneTimeDifferentiators:
+      overrides.pricing?.oneTimeDifferentiators ?? base.pricing.oneTimeDifferentiators,
+    monthlyPlan: { ...base.pricing.monthlyPlan, ...overrides.pricing?.monthlyPlan },
+    oneTimePlan: { ...base.pricing.oneTimePlan, ...overrides.pricing?.oneTimePlan },
   },
   platforms: {
     mac: { ...base.platforms.mac, ...overrides.platforms?.mac },
@@ -1245,7 +1273,7 @@ const localized = (overrides: DeepPartial<LocaleCopy>): LocaleCopy => ({
 });
 
 const simpleFeatures = (items: Array<[string, string]>) =>
-  pricingFeatureIcons.map((_, index) => ({ title: items[index][0], desc: items[index][1] }));
+  items.map(([title, desc]) => ({ title, desc }));
 
 const localizedPlatforms: Record<Exclude<Locale, 'en' | 'zh-cn' | 'hi' | 'ar'>, LocaleCopy['platforms']> = {
   de: {
@@ -2107,115 +2135,316 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
 
 const localizedPricingFeatures: Record<Exclude<Locale, 'en'>, PricingCopy['features']> = {
   de: simpleFeatures([
-    ['10.000 Credits', 'Bis zu 10.000 Dateien verarbeiten, danach BYOK oder Offline-KI nutzen'],
+    ['Unbegrenzte PRO-Umbenennungen', 'Bezahlte Pläne entfernen das Cloud-Umbenennungslimit'],
     ['BYOK - eigener Schlüssel', 'Nutze deinen Provider-Schlüssel für unbegrenzte Cloud-Umbenennungen'],
     ['Offline-KI-Modus', 'Private lokale Modelle über Ollama'],
-    ['Ordnerüberwachung', 'Neue Dateien in überwachten Ordnern automatisch umbenennen'],
-    ['Smarte Namen & Metadaten', 'Namensmuster anpassen und Finder-Metadaten setzen'],
     ['Eigene KI-Prompts', 'KI-Verhalten mit eigenen Regeln steuern'],
-    ['Lokalisierung (60+ Sprachen)', 'Dateinamen in jeder Sprache mit eigenem Datumsformat'],
-    ['Schnell-Shortcut', 'Ausgewählte Dateien im Finder per Tastatur umbenennen'],
+    ['Templates', 'Wiederverwendbare Umbenennungsprofile für AI Rename und Monitor'],
+    ['Namensbausteine', 'Erstelle Namen aus Datum, Medien, Dokumenten, Metadaten und mehr'],
   ]),
   fr: simpleFeatures([
-    ['10 000 crédits', 'Traitez jusqu’à 10 000 fichiers, puis utilisez BYOK ou l’IA hors ligne'],
+    ['Renommages PRO illimités', 'Les offres payantes retirent la limite de renommage cloud'],
     ['BYOK - votre propre clé', 'Utilisez la clé de votre fournisseur pour des renommages cloud illimités'],
     ['Mode IA hors ligne', 'Modèles locaux privés via Ollama'],
-    ['Surveillance de dossiers', 'Renomme automatiquement les nouveaux fichiers des dossiers surveillés'],
-    ['Noms et métadonnées intelligents', 'Personnalisez les modèles de nom et ajoutez des métadonnées Finder'],
     ['Prompts IA personnalisés', 'Ajustez le comportement de l’IA avec vos propres règles'],
-    ['Localisation (60+ langues)', 'Générez des noms dans n’importe quelle langue avec vos formats de date'],
-    ['Raccourci de renommage rapide', 'Renommez les fichiers sélectionnés dans Finder au clavier'],
+    ['Modèles', 'Profils de renommage réutilisables pour AI Rename et Monitor'],
+    ['Blocs de nommage', 'Créez des noms à partir de dates, médias, documents, métadonnées et plus'],
   ]),
   'pt-br': simpleFeatures([
-    ['10.000 créditos', 'Processe até 10.000 arquivos e depois use BYOK ou IA offline'],
+    ['Renomeações PRO ilimitadas', 'Planos pagos removem o limite de renomeação na nuvem'],
     ['BYOK - sua própria chave', 'Use a chave do seu provedor para renomeações ilimitadas na nuvem'],
     ['Modo IA offline', 'Modelos locais privados via Ollama'],
-    ['Monitoramento de pastas', 'Renomeie automaticamente novos arquivos em pastas monitoradas'],
-    ['Nomes e metadados inteligentes', 'Personalize padrões de nome e adicione metadados do Finder'],
     ['Prompts de IA personalizados', 'Ajuste o comportamento da IA com suas próprias regras'],
-    ['Localização (60+ idiomas)', 'Gere nomes em qualquer idioma com formatos de data próprios'],
-    ['Atalho de renomeação rápida', 'Renomeie arquivos selecionados no Finder pelo teclado'],
+    ['Modelos', 'Perfis de renomeação reutilizáveis para AI Rename e Monitor'],
+    ['Blocos de nomes', 'Crie nomes a partir de datas, mídia, documentos, metadados e mais'],
   ]),
   es: simpleFeatures([
-    ['10.000 créditos', 'Procesa hasta 10.000 archivos y luego usa BYOK o IA sin conexión'],
+    ['Renombrados PRO ilimitados', 'Los planes de pago eliminan el límite de renombrado en la nube'],
     ['BYOK - tu propia clave', 'Usa la clave de tu proveedor para renombrados ilimitados en la nube'],
     ['Modo IA sin conexión', 'Modelos locales privados mediante Ollama'],
-    ['Monitoreo de carpetas', 'Renombra automáticamente archivos nuevos en carpetas vigiladas'],
-    ['Nombres y metadatos inteligentes', 'Personaliza patrones de nombre y añade metadatos de Finder'],
     ['Prompts de IA personalizados', 'Ajusta el comportamiento de la IA con tus propias reglas'],
-    ['Localización (60+ idiomas)', 'Genera nombres en cualquier idioma con formatos de fecha propios'],
-    ['Atajo de renombrado rápido', 'Renombra archivos seleccionados en Finder con el teclado'],
+    ['Plantillas', 'Perfiles de renombrado reutilizables para AI Rename y Monitor'],
+    ['Bloques de nombres', 'Crea nombres con fechas, medios, documentos, metadatos y más'],
   ]),
   nl: simpleFeatures([
-    ['10.000 credits', 'Verwerk tot 10.000 bestanden en gebruik daarna BYOK of offline AI'],
+    ['Onbeperkte PRO-hernoemingen', 'Betaalde plannen verwijderen de cloudlimiet'],
     ['BYOK - je eigen sleutel', 'Gebruik je provider-sleutel voor onbeperkt hernoemen in de cloud'],
     ['Offline AI-modus', 'Privé lokale modellen via Ollama'],
-    ['Mapbewaking', 'Hernoem nieuwe bestanden in bewaakte mappen automatisch'],
-    ['Slimme namen en metadata', 'Pas naamtemplates aan en voeg Finder-metadata toe'],
     ['Eigen AI-prompts', 'Stuur het AI-gedrag met je eigen regels'],
-    ['Lokalisatie (60+ talen)', 'Genereer namen in elke taal met eigen datumformaten'],
-    ['Snelle hernoemsneltoets', 'Hernoem geselecteerde bestanden in Finder met het toetsenbord'],
+    ['Templates', 'Herbruikbare hernoemprofielen voor AI Rename en Monitor'],
+    ['Naamblokken', 'Bouw namen uit datums, media, documenten, metadata en meer'],
   ]),
   it: simpleFeatures([
-    ['10.000 crediti', 'Elabora fino a 10.000 file, poi usa BYOK o IA offline'],
+    ['Rinomine PRO illimitate', 'I piani a pagamento rimuovono il limite cloud'],
     ['BYOK - la tua chiave', 'Usa la chiave del tuo provider per rinomine cloud illimitate'],
     ['Modalità IA offline', 'Modelli locali privati tramite Ollama'],
-    ['Monitoraggio cartelle', 'Rinomina automaticamente i nuovi file nelle cartelle monitorate'],
-    ['Nomi e metadati intelligenti', 'Personalizza i pattern di nome e aggiungi metadati Finder'],
     ['Prompt IA personalizzati', 'Regola il comportamento dell’IA con le tue regole'],
-    ['Localizzazione (60+ lingue)', 'Genera nomi in qualsiasi lingua con formati data personalizzati'],
-    ['Scorciatoia di rinomina rapida', 'Rinomina i file selezionati nel Finder con la tastiera'],
+    ['Modelli', 'Profili di rinomina riutilizzabili per AI Rename e Monitor'],
+    ['Blocchi di denominazione', 'Crea nomi da date, media, documenti, metadati e altro'],
   ]),
   ja: simpleFeatures([
-    ['10,000 クレジット', '最大 10,000 ファイルを処理し、その後は BYOK またはオフライン AI を利用'],
+    ['無制限の PRO リネーム', '有料プランではクラウドリネーム制限がなくなります'],
     ['BYOK - 自分のキー', '自分のプロバイダーキーでクラウドリネームを無制限に実行'],
     ['オフライン AI モード', 'Ollama によるプライベートなローカルモデル'],
-    ['フォルダ監視', '監視フォルダに入った新しいファイルを自動でリネーム'],
-    ['スマートな名前とメタデータ', '命名パターンを調整し Finder メタデータを追加'],
     ['カスタム AI プロンプト', '独自ルールで AI の動作を調整'],
-    ['ローカライズ（60+ 言語）', '任意の言語と日付形式でファイル名を生成'],
-    ['クイックリネームショートカット', 'Finder で選択したファイルをキーボードでリネーム'],
+    ['テンプレート', 'AI Rename と Monitor で使える再利用可能なリネーム設定'],
+    ['命名ブロック', '日付、メディア、文書、メタデータなどから名前を構築'],
   ]),
   ko: simpleFeatures([
-    ['10,000 크레딧', '최대 10,000개 파일을 처리한 뒤 BYOK 또는 오프라인 AI 사용'],
+    ['무제한 PRO 이름 변경', '유료 플랜은 클라우드 이름 변경 제한을 제거합니다'],
     ['BYOK - 내 키 사용', '내 제공업체 키로 클라우드 이름 변경을 무제한 사용'],
     ['오프라인 AI 모드', 'Ollama를 통한 비공개 로컬 모델'],
-    ['폴더 모니터링', '모니터링 폴더의 새 파일을 자동으로 이름 변경'],
-    ['스마트 이름 및 메타데이터', '이름 패턴을 조정하고 Finder 메타데이터 추가'],
     ['사용자 지정 AI 프롬프트', '나만의 규칙으로 AI 동작 조정'],
-    ['현지화(60+ 언어)', '원하는 언어와 날짜 형식으로 파일명 생성'],
-    ['빠른 이름 변경 단축키', 'Finder에서 선택한 파일을 키보드로 이름 변경'],
+    ['템플릿', 'AI Rename 및 Monitor용 재사용 가능한 이름 변경 설정'],
+    ['이름 블록', '날짜, 미디어, 문서, 메타데이터 등으로 이름 구성'],
   ]),
   'zh-cn': simpleFeatures([
-    ['10,000 个额度', '最多处理 10,000 个文件，之后可使用 BYOK 或离线 AI 模式'],
+    ['无限 PRO 重命名', '付费方案移除云端重命名限制'],
     ['BYOK - 使用自己的密钥', '用自己的服务商密钥进行无限云端重命名'],
     ['离线 AI 模式', '通过 Ollama 使用私有本地模型'],
-    ['文件夹监控', '新文件进入监控文件夹后自动重命名'],
-    ['智能命名与元数据', '自定义命名模式并自动添加 Finder 标签和 Spotlight 元数据'],
     ['自定义 AI 提示词', '用自己的规则调整 AI 的命名和标签行为'],
-    ['本地化（60+ 语言）', '用任意语言生成文件名，并支持自定义日期格式'],
-    ['快速重命名快捷键', '在 Finder 中用右键菜单或快捷键重命名选中文件'],
+    ['模板', 'AI Rename 和 Monitor 可复用的重命名设置'],
+    ['命名块', '用日期、媒体、文档、元数据等构建文件名'],
   ]),
   hi: simpleFeatures([
-    ['10,000 credits', '10,000 files तक process करें, फिर BYOK या Offline AI mode use करें'],
+    ['Unlimited PRO renames', 'Paid plans cloud rename limit हटाते हैं'],
     ['BYOK - अपनी key use करें', 'Unlimited cloud renames के लिए अपने provider की key use करें'],
     ['Offline AI mode', 'Ollama के जरिए private local models'],
-    ['Folder monitoring', 'Watched folders में आने वाली नई files को automatically rename करें'],
-    ['Smart names और metadata', 'Naming patterns customize करें और Finder metadata के साथ files auto-tag करें'],
     ['Custom AI prompts', 'अपने rename और tagging instructions से AI behavior control करें'],
-    ['Localization (60+ languages)', 'अपने date format के साथ किसी भी language में file names बनाएं'],
-    ['Quick rename shortcut', 'Finder में selected files को keyboard shortcut से rename करें'],
+    ['Templates', 'AI Rename और Monitor के लिए reusable rename setups'],
+    ['Naming Blocks', 'Dates, media, documents, metadata और बहुत कुछ से names बनाएं'],
   ]),
   ar: simpleFeatures([
-    ['10,000 رصيد', 'عالج حتى 10,000 ملف، ثم استخدم BYOK أو وضع Offline AI'],
+    ['إعادة تسمية PRO غير محدودة', 'الخطط المدفوعة تزيل حد إعادة التسمية السحابية'],
     ['BYOK - استخدم مفتاحك الخاص', 'استخدم مفتاح مزودك لإعادة تسمية غير محدودة عبر السحابة'],
     ['وضع Offline AI', 'نماذج محلية خاصة عبر Ollama'],
-    ['مراقبة المجلدات', 'أعد تسمية الملفات الجديدة تلقائيا عند وصولها إلى المجلدات المراقبة'],
-    ['أسماء وبيانات وصفية ذكية', 'خصص أنماط التسمية وأضف بيانات Finder الوصفية تلقائيا'],
     ['تعليمات AI مخصصة', 'خصص سلوك الذكاء الاصطناعي بقواعدك الخاصة للأسماء والوسوم'],
-    ['توطين (60+ لغة)', 'أسماء ملفات بأي لغة مع تنسيق تاريخ مخصص'],
-    ['اختصار إعادة تسمية سريع', 'أعد تسمية الملفات المحددة في Finder عبر اختصار لوحة المفاتيح'],
+    ['القوالب', 'إعدادات إعادة تسمية قابلة لإعادة الاستخدام في AI Rename و Monitor'],
+    ['كتل التسمية', 'أنشئ أسماء من التواريخ والوسائط والمستندات والبيانات الوصفية والمزيد'],
   ]),
+};
+
+type PricingExtrasCopy = Pick<
+  PricingCopy,
+  | 'title'
+  | 'description'
+  | 'sharedFeaturesTitle'
+  | 'monthlyDifferentiators'
+  | 'oneTimeDifferentiators'
+  | 'monthlyPlan'
+  | 'oneTimePlan'
+>;
+
+const localizedPricingExtras: Record<Exclude<Locale, 'en'>, PricingExtrasCopy> = {
+  de: {
+    title: 'Wähle deinen PRO Plan',
+    description: 'Monatliche Flexibilität oder einmaliger lebenslanger Zugriff. Beide Pläne schalten unbegrenztes PRO frei.',
+    sharedFeaturesTitle: 'PRO 🌟 Funktionen',
+    monthlyDifferentiators: ['Jederzeit kündbar', 'Niedrigster Einstiegspreis', 'Keine langfristige Bindung'],
+    oneTimeDifferentiators: ['Einmal zahlen, dauerhaft nutzen', 'Alle zukünftigen Updates inklusive', 'Amortisiert sich in ~5 Monaten'],
+    monthlyPlan: {
+      titleSuffix: 'Monthly',
+      description: 'Flexibler Monatsplan',
+      buttonText: 'Zush PRO Monthly starten',
+      billing: '/Monat + MwSt.',
+    },
+    oneTimePlan: {
+      titleSuffix: 'One-Time',
+      description: 'Einmal zahlen für lebenslangen Zugriff',
+      buttonText: 'Zush PRO One-Time kaufen',
+      billing: 'einmalig + MwSt.',
+    },
+  },
+  fr: {
+    title: 'Choisis ton plan PRO',
+    description: 'Flexibilité mensuelle ou accès à vie en un seul paiement. Les deux plans débloquent PRO illimité.',
+    sharedFeaturesTitle: 'Fonctions PRO 🌟',
+    monthlyDifferentiators: ['Annulez à tout moment', 'Prix d’entrée le plus bas', 'Sans engagement'],
+    oneTimeDifferentiators: ['Payez une fois, à vie', 'Toutes les mises à jour futures incluses', 'Rentabilisé en ~5 mois'],
+    monthlyPlan: {
+      titleSuffix: 'Monthly',
+      description: 'Plan mensuel flexible',
+      buttonText: 'Démarrer Zush PRO Monthly',
+      billing: '/mois + TVA',
+    },
+    oneTimePlan: {
+      titleSuffix: 'One-Time',
+      description: 'Payez une fois pour un accès à vie',
+      buttonText: 'Acheter Zush PRO One-Time',
+      billing: 'paiement unique + TVA',
+    },
+  },
+  'pt-br': {
+    title: 'Escolha seu plano PRO',
+    description: 'Flexibilidade mensal ou acesso vitalício único. Ambos os planos liberam PRO ilimitado.',
+    sharedFeaturesTitle: 'Recursos PRO 🌟',
+    monthlyDifferentiators: ['Cancele quando quiser', 'Menor preço de entrada', 'Sem compromisso de longo prazo'],
+    oneTimeDifferentiators: ['Pague uma vez, use para sempre', 'Todas as atualizações futuras incluídas', 'Se paga em ~5 meses'],
+    monthlyPlan: {
+      titleSuffix: 'Monthly',
+      description: 'Plano mensal flexível',
+      buttonText: 'Começar Zush PRO Monthly',
+      billing: '/mês + VAT',
+    },
+    oneTimePlan: {
+      titleSuffix: 'One-Time',
+      description: 'Pague uma vez por acesso vitalício',
+      buttonText: 'Comprar Zush PRO One-Time',
+      billing: 'pagamento único + VAT',
+    },
+  },
+  es: {
+    title: 'Elige tu plan PRO',
+    description: 'Flexibilidad mensual o acceso vitalicio único. Ambos planes desbloquean PRO ilimitado.',
+    sharedFeaturesTitle: 'Funciones PRO 🌟',
+    monthlyDifferentiators: ['Cancela cuando quieras', 'Precio de entrada más bajo', 'Sin compromiso a largo plazo'],
+    oneTimeDifferentiators: ['Paga una vez, úsalo para siempre', 'Todas las actualizaciones futuras incluidas', 'Se amortiza en ~5 meses'],
+    monthlyPlan: {
+      titleSuffix: 'Monthly',
+      description: 'Plan mensual flexible',
+      buttonText: 'Empezar Zush PRO Monthly',
+      billing: '/mes + IVA',
+    },
+    oneTimePlan: {
+      titleSuffix: 'One-Time',
+      description: 'Paga una vez por acceso de por vida',
+      buttonText: 'Comprar Zush PRO One-Time',
+      billing: 'pago único + IVA',
+    },
+  },
+  nl: {
+    title: 'Kies je PRO-plan',
+    description: 'Maandelijkse flexibiliteit of eenmalige levenslange toegang. Beide plannen ontgrendelen onbeperkte PRO.',
+    sharedFeaturesTitle: 'PRO 🌟 functies',
+    monthlyDifferentiators: ['Altijd opzegbaar', 'Laagste instapprijs', 'Geen langetermijnverplichting'],
+    oneTimeDifferentiators: ['Eenmalig betalen, voor altijd gebruiken', 'Alle toekomstige updates inbegrepen', 'Verdient zich terug in ~5 maanden'],
+    monthlyPlan: {
+      titleSuffix: 'Monthly',
+      description: 'Flexibel maandelijks plan',
+      buttonText: 'Start Zush PRO Monthly',
+      billing: '/maand + btw',
+    },
+    oneTimePlan: {
+      titleSuffix: 'One-Time',
+      description: 'Betaal één keer voor levenslange toegang',
+      buttonText: 'Koop Zush PRO One-Time',
+      billing: 'eenmalig + btw',
+    },
+  },
+  it: {
+    title: 'Scegli il tuo piano PRO',
+    description: 'Flessibilità mensile o accesso a vita una tantum. Entrambi i piani sbloccano PRO illimitato.',
+    sharedFeaturesTitle: 'Funzioni PRO 🌟',
+    monthlyDifferentiators: ['Disdici quando vuoi', 'Prezzo d’ingresso più basso', 'Nessun impegno a lungo termine'],
+    oneTimeDifferentiators: ['Paga una volta, usa per sempre', 'Tutti gli aggiornamenti futuri inclusi', 'Si ripaga in ~5 mesi'],
+    monthlyPlan: {
+      titleSuffix: 'Monthly',
+      description: 'Piano mensile flessibile',
+      buttonText: 'Inizia Zush PRO Monthly',
+      billing: '/mese + IVA',
+    },
+    oneTimePlan: {
+      titleSuffix: 'One-Time',
+      description: 'Paga una volta per accesso a vita',
+      buttonText: 'Acquista Zush PRO One-Time',
+      billing: 'pagamento unico + IVA',
+    },
+  },
+  ja: {
+    title: 'PRO プランを選択',
+    description: '月額の柔軟性、または買い切りで永続アクセス。どちらのプランも無制限 PRO を解放します。',
+    sharedFeaturesTitle: 'PRO 🌟 機能',
+    monthlyDifferentiators: ['いつでもキャンセル可能', '最も手軽な開始価格', '長期契約なし'],
+    oneTimeDifferentiators: ['買い切り、永続利用', '今後のアップデートすべて含む', '約5か月で元が取れる'],
+    monthlyPlan: {
+      titleSuffix: 'Monthly',
+      description: '柔軟な月額プラン',
+      buttonText: 'Zush PRO Monthly を開始',
+      billing: '/月 + VAT',
+    },
+    oneTimePlan: {
+      titleSuffix: 'One-Time',
+      description: '一度の支払いで永続アクセス',
+      buttonText: 'Zush PRO One-Time を購入',
+      billing: '買い切り + VAT',
+    },
+  },
+  ko: {
+    title: 'PRO 플랜을 선택하세요',
+    description: '월간 유연성 또는 일회성 평생 액세스. 두 플랜 모두 무제한 PRO를 잠금 해제합니다.',
+    sharedFeaturesTitle: 'PRO 🌟 기능',
+    monthlyDifferentiators: ['언제든지 취소 가능', '가장 저렴한 시작 가격', '장기 약정 없음'],
+    oneTimeDifferentiators: ['한 번 결제, 평생 사용', '모든 향후 업데이트 포함', '약 5개월이면 본전'],
+    monthlyPlan: {
+      titleSuffix: 'Monthly',
+      description: '유연한 월간 플랜',
+      buttonText: 'Zush PRO Monthly 시작',
+      billing: '/월 + VAT',
+    },
+    oneTimePlan: {
+      titleSuffix: 'One-Time',
+      description: '한 번 결제로 평생 액세스',
+      buttonText: 'Zush PRO One-Time 구매',
+      billing: '일회성 + VAT',
+    },
+  },
+  'zh-cn': {
+    title: '选择你的 PRO 方案',
+    description: '按月灵活付费，或一次性永久使用。两种方案都解锁无限 PRO。',
+    sharedFeaturesTitle: 'PRO 🌟 功能',
+    monthlyDifferentiators: ['随时可取消', '最低入门价格', '无长期承诺'],
+    oneTimeDifferentiators: ['一次付费，永久使用', '包含所有未来更新', '约 5 个月即可回本'],
+    monthlyPlan: {
+      titleSuffix: 'Monthly',
+      description: '灵活的月度方案',
+      buttonText: '开始 Zush PRO Monthly',
+      billing: '/月 + VAT',
+    },
+    oneTimePlan: {
+      titleSuffix: 'One-Time',
+      description: '一次付费，永久使用',
+      buttonText: '购买 Zush PRO One-Time',
+      billing: '一次性 + VAT',
+    },
+  },
+  hi: {
+    title: 'अपना PRO plan चुनें',
+    description: 'Monthly flexibility या one-time lifetime access। दोनों plans unlimited PRO unlock करते हैं।',
+    sharedFeaturesTitle: 'PRO 🌟 Features',
+    monthlyDifferentiators: ['कभी भी cancel करें', 'सबसे कम entry price', 'कोई long-term commitment नहीं'],
+    oneTimeDifferentiators: ['एक बार pay करें, हमेशा use करें', 'सभी future updates included', '~5 महीनों में payoff'],
+    monthlyPlan: {
+      titleSuffix: 'Monthly',
+      description: 'Flexible monthly plan',
+      buttonText: 'Zush PRO Monthly शुरू करें',
+      billing: '/महीना + VAT',
+    },
+    oneTimePlan: {
+      titleSuffix: 'One-Time',
+      description: 'एक बार pay करके lifetime access',
+      buttonText: 'Zush PRO One-Time खरीदें',
+      billing: 'one-time + VAT',
+    },
+  },
+  ar: {
+    title: 'اختر خطة PRO الخاصة بك',
+    description: 'مرونة شهرية أو وصول مدى الحياة لمرة واحدة. كلا الخطتين تفتحان PRO غير محدود.',
+    sharedFeaturesTitle: 'ميزات PRO 🌟',
+    monthlyDifferentiators: ['إلغاء في أي وقت', 'أقل سعر للبدء', 'بدون التزام طويل الأمد'],
+    oneTimeDifferentiators: ['ادفع مرة واحدة، استخدم للأبد', 'جميع التحديثات المستقبلية مشمولة', 'يسترد قيمته خلال ~5 أشهر'],
+    monthlyPlan: {
+      titleSuffix: 'Monthly',
+      description: 'خطة شهرية مرنة',
+      buttonText: 'ابدأ Zush PRO Monthly',
+      billing: '/شهر + ضريبة القيمة المضافة',
+    },
+    oneTimePlan: {
+      titleSuffix: 'One-Time',
+      description: 'ادفع مرة واحدة للحصول على وصول مدى الحياة',
+      buttonText: 'اشترِ Zush PRO One-Time',
+      billing: 'دفعة واحدة + ضريبة القيمة المضافة',
+    },
+  },
 };
 
 const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeCopy, 'featureCards' | 'videos' | 'speedComparison' | 'whyZush' | 'useCases' | 'faqItems' | 'showcaseSlides'>>> = {
@@ -2405,17 +2634,17 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       title: 'Zush generic file renamers से बेहतर क्यों है',
       titlePlatform: '{os} पर Zush क्यों win करता है',
       description: 'AI batch renaming, automatic folder monitoring, undo, BYOK, Offline AI और mixed-format support एक desktop app में',
-      descriptionPlatform: '{os} पर native desktop feel, fast rename, one-time price और less friction',
+      descriptionPlatform: '{os} पर native desktop feel, fast rename, flexible PRO plans और less friction',
       nativeEyebrow: 'Desktop-native feel',
       nativeEyebrowPlatform: '{os}-native feel',
       nativeTitle: 'Native, fast, modern',
       nativeDescription: 'Zush real desktop app जैसा लगता है: quickly open होता है, clean interface देता है और आपकी machine पर natural feel करता है।',
       nativeDescriptionPlatform: 'Zush real native {os} app जैसा लगता है: quickly open होता है, clean interface देता है और आपकी machine पर natural feel करता है।',
-      pricingTrustItems: ['✨ Free try करें', '🚫 No subscription', '↩️ 14-day refund'],
-      priceEyebrow: 'Fair one-time price',
-      priceTitle: 'एक बार pay करें, workflow चलता रहे',
-      priceDescription: 'Zush simple रहता है: पहले free try करें, फिर useful लगे तो छोटा one-time purchase करें।',
-      priceLabel: 'one-time',
+      pricingTrustItems: ['✨ Free try करें', '∞ Unlimited PRO', '↩️ 14-day refund'],
+      priceEyebrow: 'Fair PRO plans',
+      priceTitle: 'Monthly या One-Time चुनें',
+      priceDescription: 'Zush simple रहता है: पहले free try करें, फिर $8/month या $38 one-time वाला unlimited PRO चुनें।',
+      priceLabel: 'from $8/mo',
       speedEyebrow: 'Super fast',
       speedTitle: 'Renames seconds में',
       speedDescription: 'Cleanup तभी टिकती है जब real work को slow न करे। Files drop करें, review करें, apply करें और आगे बढ़ें।',
@@ -2490,7 +2719,7 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       { question: '我的数据安全吗？', answer: '原始文件会留在你的电脑上。云端模式只发送重命名所需的分析内容；离线 AI 模式则通过 Ollama 本地模型在设备上处理。' },
       { question: '可以撤销程序做出的修改吗？', answer: '可以。你可以在 Activity 历史里一键恢复原始文件名。' },
       { question: 'Zush 支持多语言和日期格式吗？', answer: '支持。Zush 可以用 60 多种语言生成文件名，并允许选择你偏好的日期格式。' },
-      { question: '价格如何计算？', answer: 'Zush PRO 是 10 美元一次性购买，包含 10,000 个额度，并解锁 BYOK 和离线 AI 模式。额度用完后可使用自己的 provider key 或离线 AI。' },
+      { question: '价格如何计算？', answer: 'Zush PRO 有两个方案：Monthly 每月 8 美元 + VAT，或 One-Time 38 美元 + VAT。两者都解锁无限 PRO、BYOK 和离线 AI。' },
       { question: '什么是 BYOK（Bring Your Own Key）？', answer: 'BYOK 允许 PRO 用户连接自己的 Gemini、Groq、OpenAI 或 Claude API key，用于无限云端重命名。密钥会保存在本地安全存储中。' },
       { question: '为什么是一次性购买而不是订阅？', answer: '我们希望价格透明、公平。一次付费后即可长期使用，不需要月费，也不用担心订阅涨价或忘记取消。' },
       { question: '支持哪些操作系统？', answer: 'Zush 支持 macOS 14 Sonoma 及更新版本，以及 Windows 10 / 11。Mac 可使用签名 dmg 或 Mac App Store，Windows 可从 Microsoft Store 安装。' },
@@ -2838,14 +3067,13 @@ const COPY: Record<Locale, LocaleCopy> = {
       ...withLocalizedFileExamples('de', localizedHomeDetails.de),
     },
     pricing: {
-      title: 'Einmal zahlen, dauerhaft nutzen',
-      description: 'Keine Abos, keine versteckten Gebühren. Nur ein einfacher Einmalkauf.',
       planName: 'Zush PRO 🌟',
       planDescription: 'Einmalkauf • Lebenslanger Zugriff',
       billing: 'einmalig',
       buttonText: 'Zush PRO kaufen 🌟',
       buttonHint: '14 Tage Geld-zurück-Garantie • Sicher über Paddle',
       features: localizedPricingFeatures.de,
+      ...localizedPricingExtras.de,
     },
     platforms: localizedPlatforms.de,
     seo: {
@@ -2887,7 +3115,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       faqDescription: 'Tout ce qu’il faut savoir sur Zush',
       ...withLocalizedFileExamples('fr', localizedHomeDetails.fr),
     },
-    pricing: { title: 'Payez une fois, utilisez toujours', description: 'Pas d’abonnement, pas de frais cachés. Un simple achat unique.', planName: 'Zush PRO 🌟', planDescription: 'Achat unique • Accès à vie', billing: 'une fois', buttonText: 'Acheter Zush PRO 🌟', buttonHint: 'Garantie 14 jours • Paiement sécurisé via Paddle', features: localizedPricingFeatures.fr },
+    pricing: { planName: 'Zush PRO 🌟', planDescription: 'Achat unique • Accès à vie', billing: 'une fois', buttonText: 'Acheter Zush PRO 🌟', buttonHint: 'Garantie 14 jours • Paiement sécurisé via Paddle', features: localizedPricingFeatures.fr, ...localizedPricingExtras.fr },
     platforms: localizedPlatforms.fr,
     seo: { '/': { title: 'Renommeur IA & outil de renommage par lot pour Mac & Windows — Zush', description: 'Renommez les fichiers par lot avec l’IA, surveillez les dossiers automatiquement et renommez screenshots, PDF, photos, vidéos et documents par contenu.' } },
     featurePages: localizedFeaturePages('Questions fréquentes', 'Outils associés', 'Guides associés', [
@@ -2926,7 +3154,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       faqDescription: 'Tudo que você precisa saber sobre o Zush',
       ...withLocalizedFileExamples('pt-br', localizedHomeDetails['pt-br']),
     },
-    pricing: { title: 'Pague uma vez, use para sempre', description: 'Sem assinaturas e sem taxas escondidas. Apenas uma compra única.', planName: 'Zush PRO 🌟', planDescription: 'Compra única • Acesso vitalício', billing: 'único', buttonText: 'Comprar Zush PRO 🌟', buttonHint: 'Garantia de 14 dias • Seguro via Paddle', features: localizedPricingFeatures['pt-br'] },
+    pricing: { planName: 'Zush PRO 🌟', planDescription: 'Compra única • Acesso vitalício', billing: 'único', buttonText: 'Comprar Zush PRO 🌟', buttonHint: 'Garantia de 14 dias • Seguro via Paddle', features: localizedPricingFeatures['pt-br'], ...localizedPricingExtras['pt-br'] },
     platforms: localizedPlatforms['pt-br'],
     seo: { '/': { title: 'Renomeador com IA e ferramenta de renomeação em lote para Mac & Windows — Zush', description: 'Renomeie arquivos em lote com IA, monitore pastas automaticamente e renomeie screenshots, PDFs, fotos, vídeos e documentos por conteúdo.' } },
     featurePages: localizedFeaturePages('Perguntas frequentes', 'Ferramentas relacionadas', 'Guias relacionados', [
@@ -2965,7 +3193,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       faqDescription: 'Todo lo que necesitas saber sobre Zush',
       ...withLocalizedFileExamples('es', localizedHomeDetails.es),
     },
-    pricing: { title: 'Paga una vez, úsalo para siempre', description: 'Sin suscripciones ni cargos ocultos. Solo una compra única.', planName: 'Zush PRO 🌟', planDescription: 'Compra única • Acceso de por vida', billing: 'una vez', buttonText: 'Comprar Zush PRO 🌟', buttonHint: 'Garantía de 14 días • Seguro con Paddle', features: localizedPricingFeatures.es },
+    pricing: { planName: 'Zush PRO 🌟', planDescription: 'Compra única • Acceso de por vida', billing: 'una vez', buttonText: 'Comprar Zush PRO 🌟', buttonHint: 'Garantía de 14 días • Seguro con Paddle', features: localizedPricingFeatures.es, ...localizedPricingExtras.es },
     platforms: localizedPlatforms.es,
     seo: { '/': { title: 'Renombrador IA y herramienta de renombrado por lotes para Mac & Windows — Zush', description: 'Renombra archivos por lotes con IA, monitorea carpetas automáticamente y renombra capturas, PDFs, fotos, videos y documentos por contenido.' } },
     featurePages: localizedFeaturePages('Preguntas frecuentes', 'Herramientas relacionadas', 'Guías relacionadas', [
@@ -3004,7 +3232,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       faqDescription: 'Alles wat je over Zush moet weten',
       ...withLocalizedFileExamples('nl', localizedHomeDetails.nl),
     },
-    pricing: { title: 'Betaal één keer, gebruik voor altijd', description: 'Geen abonnementen, geen verborgen kosten. Gewoon één aankoop.', planName: 'Zush PRO 🌟', planDescription: 'Eenmalige aankoop • Levenslange toegang', billing: 'eenmalig', buttonText: 'Koop Zush PRO 🌟', buttonHint: '14 dagen geld-terug-garantie • Veilig via Paddle', features: localizedPricingFeatures.nl },
+    pricing: { planName: 'Zush PRO 🌟', planDescription: 'Eenmalige aankoop • Levenslange toegang', billing: 'eenmalig', buttonText: 'Koop Zush PRO 🌟', buttonHint: '14 dagen geld-terug-garantie • Veilig via Paddle', features: localizedPricingFeatures.nl, ...localizedPricingExtras.nl },
     platforms: localizedPlatforms.nl,
     seo: { '/': { title: 'AI-bestandshernoemer & bulk-hernoemtool voor Mac & Windows — Zush', description: 'Hernoem bestanden in bulk met AI, bewaak mappen automatisch en hernoem screenshots, PDFs, foto’s, video’s en documenten op inhoud.' } },
     featurePages: localizedFeaturePages('Veelgestelde vragen', 'Gerelateerde tools', 'Gerelateerde gidsen', [
@@ -3043,7 +3271,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       faqDescription: 'Tutto quello che devi sapere su Zush',
       ...withLocalizedFileExamples('it', localizedHomeDetails.it),
     },
-    pricing: { title: 'Paga una volta, usa per sempre', description: 'Nessun abbonamento, nessun costo nascosto. Solo un acquisto unico.', planName: 'Zush PRO 🌟', planDescription: 'Acquisto unico • Accesso a vita', billing: 'una tantum', buttonText: 'Acquista Zush PRO 🌟', buttonHint: 'Garanzia 14 giorni • Sicuro con Paddle', features: localizedPricingFeatures.it },
+    pricing: { planName: 'Zush PRO 🌟', planDescription: 'Acquisto unico • Accesso a vita', billing: 'una tantum', buttonText: 'Acquista Zush PRO 🌟', buttonHint: 'Garanzia 14 giorni • Sicuro con Paddle', features: localizedPricingFeatures.it, ...localizedPricingExtras.it },
     platforms: localizedPlatforms.it,
     seo: { '/': { title: 'Rinomina file IA e strumento batch per Mac & Windows — Zush', description: 'Rinomina file in batch con IA, monitora cartelle automaticamente e rinomina screenshot, PDF, foto, video e documenti per contenuto.' } },
     featurePages: localizedFeaturePages('Domande frequenti', 'Strumenti correlati', 'Guide correlate', [
@@ -3082,7 +3310,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       faqDescription: 'Zush について知っておきたいこと',
       ...withLocalizedFileExamples('ja', localizedHomeDetails.ja),
     },
-    pricing: { title: '一度払えば、ずっと使える', description: 'サブスクなし、隠れた料金なし。シンプルな買い切りです。', planName: 'Zush PRO 🌟', planDescription: '買い切り • 永続アクセス', billing: '買い切り', buttonText: 'Zush PRO を購入 🌟', buttonHint: '14日間返金保証 • Paddleで安全決済', features: localizedPricingFeatures.ja },
+    pricing: { planName: 'Zush PRO 🌟', planDescription: '買い切り • 永続アクセス', billing: '買い切り', buttonText: 'Zush PRO を購入 🌟', buttonHint: '14日間返金保証 • Paddleで安全決済', features: localizedPricingFeatures.ja, ...localizedPricingExtras.ja },
     platforms: localizedPlatforms.ja,
     seo: { '/': { title: 'Mac・Windows対応 AIファイルリネーム & 一括リネームツール — Zush', description: 'AIでファイルを一括リネームし、フォルダを自動監視。スクリーンショット、PDF、写真、動画、文書を内容でリネームします。' } },
     featurePages: localizedFeaturePages('よくある質問', '関連ツール', '関連ガイド', [
@@ -3121,7 +3349,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       faqDescription: 'Zush에 대해 알아야 할 모든 것',
       ...withLocalizedFileExamples('ko', localizedHomeDetails.ko),
     },
-    pricing: { title: '한 번 결제하고 계속 사용', description: '구독도 숨겨진 비용도 없습니다. 단순한 일회성 구매입니다.', planName: 'Zush PRO 🌟', planDescription: '일회성 구매 • 평생 이용', billing: '일회성', buttonText: 'Zush PRO 구매 🌟', buttonHint: '14일 환불 보장 • Paddle 보안 결제', features: localizedPricingFeatures.ko },
+    pricing: { planName: 'Zush PRO 🌟', planDescription: '일회성 구매 • 평생 이용', billing: '일회성', buttonText: 'Zush PRO 구매 🌟', buttonHint: '14일 환불 보장 • Paddle 보안 결제', features: localizedPricingFeatures.ko, ...localizedPricingExtras.ko },
     platforms: localizedPlatforms.ko,
     seo: { '/': { title: 'Mac 및 Windows용 AI 파일 이름 변경 및 일괄 이름 변경 도구 — Zush', description: 'AI로 파일을 일괄 이름 변경하고, 폴더를 자동 모니터링하며, 스크린샷, PDF, 사진, 비디오, 문서를 내용 기준으로 이름 변경합니다.' } },
     featurePages: localizedFeaturePages('자주 묻는 질문', '관련 도구', '관련 가이드', [
@@ -3198,23 +3426,13 @@ const COPY: Record<Locale, LocaleCopy> = {
       ...withLocalizedFileExamples('zh-cn', localizedHomeDetails['zh-cn']),
     },
     pricing: {
-      title: '一次付费，长期使用',
-      description: '没有订阅，没有隐藏费用。只有简单的一次性购买。',
       planName: 'Zush PRO 🌟',
       planDescription: '一次性购买 • 永久访问',
       billing: '一次性',
       buttonText: '购买 Zush PRO 🌟',
       buttonHint: '14 天退款保证 • Paddle 安全支付',
-      features: simpleFeatures([
-        ['10,000 个额度', '最多处理 10,000 个文件，之后可使用 BYOK 或离线 AI 模式'],
-        ['BYOK - 使用自己的密钥', '用自己的服务商密钥进行无限云端重命名'],
-        ['离线 AI 模式', '通过 Ollama 使用私有本地模型'],
-        ['文件夹监控', '新文件进入监控文件夹后自动重命名'],
-        ['智能命名与元数据', '自定义命名模式并自动添加 Finder 标签和 Spotlight 元数据'],
-        ['自定义 AI 提示词', '用自己的规则调整 AI 的命名和标签行为'],
-        ['本地化（60+ 语言）', '用任意语言生成文件名，并支持自定义日期格式'],
-        ['快速重命名快捷键', '在 Finder 中用右键菜单或快捷键重命名选中文件'],
-      ]),
+      features: localizedPricingFeatures['zh-cn'],
+      ...localizedPricingExtras['zh-cn'],
     },
     platforms: {
       mac: {
@@ -3318,7 +3536,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       heroAccent: 'AI file renamer',
       heroSubtitle: 'AI से files batch rename करें, folders automatically watch करें, और screenshots, PDFs, photos, videos और documents को actual content पर based searchable names से organize करें।',
       buyPro: 'PRO खरीदें 🌟',
-      trustSignals: ['✨ Free try करें', '💳 Credit card नहीं चाहिए', '🚫 No subscription'],
+      trustSignals: ['✨ Free try करें', '💳 Credit card नहीं चाहिए', '∞ Unlimited PRO'],
       featuresTitle: 'Batch rename, folder monitoring और content-based names',
       featuresDescription: 'Screenshots, PDFs, photos, videos, documents और mixed folders के लिए desktop AI file renamer',
       supportedFormats: 'Supported file formats',
@@ -3336,14 +3554,13 @@ const COPY: Record<Locale, LocaleCopy> = {
       ...withLocalizedFileExamples('hi', localizedHomeDetails.hi),
     },
     pricing: {
-      title: 'एक बार pay करें, हमेशा use करें',
-      description: 'No subscription, no hidden fees। सिर्फ simple one-time purchase।',
       planName: 'Zush PRO 🌟',
-      planDescription: 'One-time purchase • Lifetime access',
-      billing: 'one-time',
+      planDescription: 'Monthly या One-Time • Unlimited PRO',
+      billing: 'from $8/mo',
       buttonText: 'Zush PRO खरीदें 🌟',
       buttonHint: '14-day money-back guarantee • Paddle के जरिए secure',
       features: localizedPricingFeatures.hi,
+      ...localizedPricingExtras.hi,
     },
     platforms: {
       mac: {
@@ -3478,14 +3695,13 @@ const COPY: Record<Locale, LocaleCopy> = {
       ...withLocalizedFileExamples('ar', localizedHomeDetails.ar),
     },
     pricing: {
-      title: 'ادفع مرة واحدة واستخدمه دائما',
-      description: 'لا اشتراكات ولا رسوم مخفية. شراء بسيط لمرة واحدة فقط.',
       planName: 'Zush PRO 🌟',
       planDescription: 'شراء لمرة واحدة • وصول دائم',
       billing: 'مرة واحدة',
       buttonText: 'شراء Zush PRO 🌟',
       buttonHint: 'ضمان استرداد 14 يوما • دفع آمن عبر Paddle',
       features: localizedPricingFeatures.ar,
+      ...localizedPricingExtras.ar,
     },
     platforms: {
       mac: {

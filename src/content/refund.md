@@ -1,8 +1,8 @@
 We want you to be happy with Zush. If you're not satisfied, we're here to help.
 
-### One-Time Purchase
+### Paid PRO Plans
 
-Zush PRO is a one-time purchase with lifetime access. We offer a 14-day money-back guarantee from your purchase date.
+Zush PRO is available as Monthly or One-Time. We offer a 14-day money-back guarantee from your purchase date.
 
 ### How to Request a Refund
 

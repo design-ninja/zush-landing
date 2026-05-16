@@ -1,87 +1,117 @@
 import {
-  FolderPlus,
-  Zap,
-  Globe,
-  Command,
-  Key,
-  Bot,
-  Tags,
+  Blocks,
+  CalendarClock,
+  Cpu,
+  Gift,
+  Infinity as InfinityIcon,
+  KeyRound,
+  Layers3,
   MessageSquareText,
+  RefreshCw,
+  Sparkles,
+  TrendingDown,
   LucideIcon,
 } from 'lucide-react';
-import { PRO_PADDLE_PRICE_ID } from '@/constants/pricing';
+import {
+  PRO_MONTHLY_PADDLE_PRICE_ID,
+  PRO_ONE_TIME_PADDLE_PRICE_ID,
+} from '@/constants/pricing';
 
 interface Feature {
   title: string;
   desc: string;
   icon: LucideIcon;
-  groupBreakBefore?: boolean;
+  tone: 'orange' | 'green' | 'blue' | 'purple' | 'pink' | 'teal';
+}
+
+interface Differentiator {
+  title: string;
+  icon: LucideIcon;
 }
 
 interface Plan {
-  name: string;
+  id: 'monthly' | 'one-time';
+  titleSuffix: 'Monthly' | 'One-Time';
   description: string;
-  features: Feature[];
+  differentiators: Differentiator[];
   buttonText: string;
-  isPro: boolean;
-  price?: string;
-  billing?: string;
+  price: string;
+  billing: string;
   paddlePriceId?: string;
-  highlight?: boolean;
 }
 
-export const PRO_PLAN: Plan = {
-  name: 'Zush PRO 🌟',
-  description: 'One-time purchase • Lifetime access',
-  features: [
-    {
-      title: '10,000 Credits',
-      desc: 'Process up to 10,000 files, then use BYOK or Offline AI mode',
-      icon: Zap,
-    },
-    {
-      title: 'BYOK - Bring Your Own Key',
-      desc: 'Use your provider key for unlimited cloud renames',
-      icon: Key,
-    },
-    {
-      title: 'Offline AI mode',
-      desc: 'Private local models via Ollama',
-      icon: Bot,
-    },
-    {
-      title: 'Folders Monitor',
-      desc: 'Auto-rename new files in watched folders with file-type exclusions',
-      icon: FolderPlus,
-      groupBreakBefore: true,
-    },
-    {
-      title: 'Smart Naming & Metadata',
-      desc: 'Customize naming patterns, Finder tags, and Spotlight metadata',
-      icon: Tags,
-    },
-    {
-      title: 'Custom AI Prompts',
-      desc: 'Personalize AI behavior with your own rename and tagging instructions',
-      icon: MessageSquareText,
-    },
-    {
-      title: 'Localization (60+ languages)',
-      desc: 'File names in any language with custom date format',
-      icon: Globe,
-    },
-    {
-      title: 'Quick Rename Shortcut',
-      desc: 'Rename selected files from Finder with a context menu or keyboard shortcut',
-      icon: Command,
-    },
-  ],
-  buttonText: 'Buy Zush PRO 🌟',
-  isPro: true,
-  price: '$10',
-  billing: 'one-time',
-  paddlePriceId: PRO_PADDLE_PRICE_ID,
-  highlight: true,
-};
+export const PRO_FEATURES: Feature[] = [
+  {
+    title: 'Unlimited PRO renames',
+    desc: 'Remove the cloud rename limit',
+    icon: Sparkles,
+    tone: 'orange',
+  },
+  {
+    title: 'Bring Your Own Key',
+    desc: 'Unlimited cloud renames with your AI API key',
+    icon: KeyRound,
+    tone: 'green',
+  },
+  {
+    title: 'Offline AI mode',
+    desc: 'Private local models via Ollama',
+    icon: Cpu,
+    tone: 'blue',
+  },
+  {
+    title: 'Custom AI Prompts',
+    desc: 'Personalize AI behavior with your own rename and tagging instructions',
+    icon: MessageSquareText,
+    tone: 'purple',
+  },
+  {
+    title: 'Templates',
+    desc: 'Reusable rename setups for AI Rename and Monitor',
+    icon: Layers3,
+    tone: 'pink',
+  },
+  {
+    title: 'Naming Blocks',
+    desc: 'Build names from dates, media, documents, metadata and much more',
+    icon: Blocks,
+    tone: 'teal',
+  },
+];
 
-export { type Feature, type Plan };
+export const MONTHLY_DIFFERENTIATORS: Differentiator[] = [
+  { title: 'Cancel anytime', icon: CalendarClock },
+  { title: 'Lowest entry price', icon: TrendingDown },
+  { title: 'No long-term commitment', icon: RefreshCw },
+];
+
+export const ONE_TIME_DIFFERENTIATORS: Differentiator[] = [
+  { title: 'Pay once, use forever', icon: InfinityIcon },
+  { title: 'All future updates included', icon: Gift },
+  { title: 'Pays off in ~5 months', icon: TrendingDown },
+];
+
+export const PRICING_PLANS: Plan[] = [
+  {
+    id: 'monthly',
+    titleSuffix: 'Monthly',
+    description: 'Flexible monthly plan',
+    differentiators: MONTHLY_DIFFERENTIATORS,
+    buttonText: 'Start Zush PRO Monthly',
+    price: '$8',
+    billing: '/month + VAT',
+    paddlePriceId: PRO_MONTHLY_PADDLE_PRICE_ID,
+  },
+  {
+    id: 'one-time',
+    titleSuffix: 'One-Time',
+    description: 'Pay once for lifetime access',
+    differentiators: ONE_TIME_DIFFERENTIATORS,
+    buttonText: 'Buy Zush PRO One-Time',
+    price: '$38',
+    billing: 'one-time + VAT',
+    paddlePriceId: PRO_ONE_TIME_PADDLE_PRICE_ID,
+  },
+];
+
+export { type Differentiator, type Feature, type Plan };

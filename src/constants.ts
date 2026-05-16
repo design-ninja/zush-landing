@@ -13,7 +13,6 @@ export const MIN_WINDOWS_VERSION = "Windows 10 and newer";
 // Config
 export const APP_CONFIG = {
   free_tier_limit: 50,
-  pro_limit: 10000,
   image_extensions: [
     "png",
     "jpg",
