@@ -229,6 +229,13 @@ export interface HomeCopy {
   showcaseSlides: Slide[];
 }
 
+export interface PricingPlanCopy {
+  titleSuffix?: string;
+  description?: string;
+  buttonText?: string;
+  billing?: string;
+}
+
 export interface PricingCopy {
   title: string;
   description: string;
@@ -241,8 +248,8 @@ export interface PricingCopy {
   sharedFeaturesTitle?: string;
   monthlyDifferentiators?: string[];
   oneTimeDifferentiators?: string[];
-  monthlyBadge?: string;
-  oneTimeBadge?: string;
+  monthlyPlan?: PricingPlanCopy;
+  oneTimePlan?: PricingPlanCopy;
 }
 
 export interface PlatformCopy {
@@ -1044,7 +1051,7 @@ const EN_COPY: LocaleCopy = {
       { title: 'Templates', desc: 'Reusable rename setups for AI Rename and Monitor' },
       { title: 'Naming Blocks', desc: 'Build names from dates, media, documents, metadata and much more' },
     ],
-    sharedFeaturesTitle: 'Both plans unlock all PRO features',
+    sharedFeaturesTitle: 'PRO 🌟 Features',
     monthlyDifferentiators: [
       'Cancel anytime',
       'Lowest entry price',
@@ -1055,7 +1062,18 @@ const EN_COPY: LocaleCopy = {
       'All future updates included',
       'Pays off in ~5 months',
     ],
-    oneTimeBadge: 'Best value',
+    monthlyPlan: {
+      titleSuffix: 'Monthly',
+      description: 'Flexible monthly plan',
+      buttonText: 'Start Zush PRO Monthly',
+      billing: '/month + VAT',
+    },
+    oneTimePlan: {
+      titleSuffix: 'One-Time',
+      description: 'Pay once for lifetime access',
+      buttonText: 'Buy Zush PRO One-Time',
+      billing: 'one-time + VAT',
+    },
   },
   platforms: {
     mac: {
@@ -1239,6 +1257,12 @@ const localized = (overrides: DeepPartial<LocaleCopy>): LocaleCopy => ({
     ...base.pricing,
     ...overrides.pricing,
     features: overrides.pricing?.features ?? base.pricing.features,
+    monthlyDifferentiators:
+      overrides.pricing?.monthlyDifferentiators ?? base.pricing.monthlyDifferentiators,
+    oneTimeDifferentiators:
+      overrides.pricing?.oneTimeDifferentiators ?? base.pricing.oneTimeDifferentiators,
+    monthlyPlan: { ...base.pricing.monthlyPlan, ...overrides.pricing?.monthlyPlan },
+    oneTimePlan: { ...base.pricing.oneTimePlan, ...overrides.pricing?.oneTimePlan },
   },
   platforms: {
     mac: { ...base.platforms.mac, ...overrides.platforms?.mac },
@@ -2200,6 +2224,229 @@ const localizedPricingFeatures: Record<Exclude<Locale, 'en'>, PricingCopy['featu
   ]),
 };
 
+type PricingExtrasCopy = Pick<
+  PricingCopy,
+  | 'title'
+  | 'description'
+  | 'sharedFeaturesTitle'
+  | 'monthlyDifferentiators'
+  | 'oneTimeDifferentiators'
+  | 'monthlyPlan'
+  | 'oneTimePlan'
+>;
+
+const localizedPricingExtras: Record<Exclude<Locale, 'en'>, PricingExtrasCopy> = {
+  de: {
+    title: 'Wähle deinen PRO Plan',
+    description: 'Monatliche Flexibilität oder einmaliger lebenslanger Zugriff. Beide Pläne schalten unbegrenztes PRO frei.',
+    sharedFeaturesTitle: 'PRO 🌟 Funktionen',
+    monthlyDifferentiators: ['Jederzeit kündbar', 'Niedrigster Einstiegspreis', 'Keine langfristige Bindung'],
+    oneTimeDifferentiators: ['Einmal zahlen, dauerhaft nutzen', 'Alle zukünftigen Updates inklusive', 'Amortisiert sich in ~5 Monaten'],
+    monthlyPlan: {
+      titleSuffix: 'Monthly',
+      description: 'Flexibler Monatsplan',
+      buttonText: 'Zush PRO Monthly starten',
+      billing: '/Monat + MwSt.',
+    },
+    oneTimePlan: {
+      titleSuffix: 'One-Time',
+      description: 'Einmal zahlen für lebenslangen Zugriff',
+      buttonText: 'Zush PRO One-Time kaufen',
+      billing: 'einmalig + MwSt.',
+    },
+  },
+  fr: {
+    title: 'Choisis ton plan PRO',
+    description: 'Flexibilité mensuelle ou accès à vie en un seul paiement. Les deux plans débloquent PRO illimité.',
+    sharedFeaturesTitle: 'Fonctions PRO 🌟',
+    monthlyDifferentiators: ['Annulez à tout moment', 'Prix d’entrée le plus bas', 'Sans engagement'],
+    oneTimeDifferentiators: ['Payez une fois, à vie', 'Toutes les mises à jour futures incluses', 'Rentabilisé en ~5 mois'],
+    monthlyPlan: {
+      titleSuffix: 'Monthly',
+      description: 'Plan mensuel flexible',
+      buttonText: 'Démarrer Zush PRO Monthly',
+      billing: '/mois + TVA',
+    },
+    oneTimePlan: {
+      titleSuffix: 'One-Time',
+      description: 'Payez une fois pour un accès à vie',
+      buttonText: 'Acheter Zush PRO One-Time',
+      billing: 'paiement unique + TVA',
+    },
+  },
+  'pt-br': {
+    title: 'Escolha seu plano PRO',
+    description: 'Flexibilidade mensal ou acesso vitalício único. Ambos os planos liberam PRO ilimitado.',
+    sharedFeaturesTitle: 'Recursos PRO 🌟',
+    monthlyDifferentiators: ['Cancele quando quiser', 'Menor preço de entrada', 'Sem compromisso de longo prazo'],
+    oneTimeDifferentiators: ['Pague uma vez, use para sempre', 'Todas as atualizações futuras incluídas', 'Se paga em ~5 meses'],
+    monthlyPlan: {
+      titleSuffix: 'Monthly',
+      description: 'Plano mensal flexível',
+      buttonText: 'Começar Zush PRO Monthly',
+      billing: '/mês + VAT',
+    },
+    oneTimePlan: {
+      titleSuffix: 'One-Time',
+      description: 'Pague uma vez por acesso vitalício',
+      buttonText: 'Comprar Zush PRO One-Time',
+      billing: 'pagamento único + VAT',
+    },
+  },
+  es: {
+    title: 'Elige tu plan PRO',
+    description: 'Flexibilidad mensual o acceso vitalicio único. Ambos planes desbloquean PRO ilimitado.',
+    sharedFeaturesTitle: 'Funciones PRO 🌟',
+    monthlyDifferentiators: ['Cancela cuando quieras', 'Precio de entrada más bajo', 'Sin compromiso a largo plazo'],
+    oneTimeDifferentiators: ['Paga una vez, úsalo para siempre', 'Todas las actualizaciones futuras incluidas', 'Se amortiza en ~5 meses'],
+    monthlyPlan: {
+      titleSuffix: 'Monthly',
+      description: 'Plan mensual flexible',
+      buttonText: 'Empezar Zush PRO Monthly',
+      billing: '/mes + IVA',
+    },
+    oneTimePlan: {
+      titleSuffix: 'One-Time',
+      description: 'Paga una vez por acceso de por vida',
+      buttonText: 'Comprar Zush PRO One-Time',
+      billing: 'pago único + IVA',
+    },
+  },
+  nl: {
+    title: 'Kies je PRO-plan',
+    description: 'Maandelijkse flexibiliteit of eenmalige levenslange toegang. Beide plannen ontgrendelen onbeperkte PRO.',
+    sharedFeaturesTitle: 'PRO 🌟 functies',
+    monthlyDifferentiators: ['Altijd opzegbaar', 'Laagste instapprijs', 'Geen langetermijnverplichting'],
+    oneTimeDifferentiators: ['Eenmalig betalen, voor altijd gebruiken', 'Alle toekomstige updates inbegrepen', 'Verdient zich terug in ~5 maanden'],
+    monthlyPlan: {
+      titleSuffix: 'Monthly',
+      description: 'Flexibel maandelijks plan',
+      buttonText: 'Start Zush PRO Monthly',
+      billing: '/maand + btw',
+    },
+    oneTimePlan: {
+      titleSuffix: 'One-Time',
+      description: 'Betaal één keer voor levenslange toegang',
+      buttonText: 'Koop Zush PRO One-Time',
+      billing: 'eenmalig + btw',
+    },
+  },
+  it: {
+    title: 'Scegli il tuo piano PRO',
+    description: 'Flessibilità mensile o accesso a vita una tantum. Entrambi i piani sbloccano PRO illimitato.',
+    sharedFeaturesTitle: 'Funzioni PRO 🌟',
+    monthlyDifferentiators: ['Disdici quando vuoi', 'Prezzo d’ingresso più basso', 'Nessun impegno a lungo termine'],
+    oneTimeDifferentiators: ['Paga una volta, usa per sempre', 'Tutti gli aggiornamenti futuri inclusi', 'Si ripaga in ~5 mesi'],
+    monthlyPlan: {
+      titleSuffix: 'Monthly',
+      description: 'Piano mensile flessibile',
+      buttonText: 'Inizia Zush PRO Monthly',
+      billing: '/mese + IVA',
+    },
+    oneTimePlan: {
+      titleSuffix: 'One-Time',
+      description: 'Paga una volta per accesso a vita',
+      buttonText: 'Acquista Zush PRO One-Time',
+      billing: 'pagamento unico + IVA',
+    },
+  },
+  ja: {
+    title: 'PRO プランを選択',
+    description: '月額の柔軟性、または買い切りで永続アクセス。どちらのプランも無制限 PRO を解放します。',
+    sharedFeaturesTitle: 'PRO 🌟 機能',
+    monthlyDifferentiators: ['いつでもキャンセル可能', '最も手軽な開始価格', '長期契約なし'],
+    oneTimeDifferentiators: ['買い切り、永続利用', '今後のアップデートすべて含む', '約5か月で元が取れる'],
+    monthlyPlan: {
+      titleSuffix: 'Monthly',
+      description: '柔軟な月額プラン',
+      buttonText: 'Zush PRO Monthly を開始',
+      billing: '/月 + VAT',
+    },
+    oneTimePlan: {
+      titleSuffix: 'One-Time',
+      description: '一度の支払いで永続アクセス',
+      buttonText: 'Zush PRO One-Time を購入',
+      billing: '買い切り + VAT',
+    },
+  },
+  ko: {
+    title: 'PRO 플랜을 선택하세요',
+    description: '월간 유연성 또는 일회성 평생 액세스. 두 플랜 모두 무제한 PRO를 잠금 해제합니다.',
+    sharedFeaturesTitle: 'PRO 🌟 기능',
+    monthlyDifferentiators: ['언제든지 취소 가능', '가장 저렴한 시작 가격', '장기 약정 없음'],
+    oneTimeDifferentiators: ['한 번 결제, 평생 사용', '모든 향후 업데이트 포함', '약 5개월이면 본전'],
+    monthlyPlan: {
+      titleSuffix: 'Monthly',
+      description: '유연한 월간 플랜',
+      buttonText: 'Zush PRO Monthly 시작',
+      billing: '/월 + VAT',
+    },
+    oneTimePlan: {
+      titleSuffix: 'One-Time',
+      description: '한 번 결제로 평생 액세스',
+      buttonText: 'Zush PRO One-Time 구매',
+      billing: '일회성 + VAT',
+    },
+  },
+  'zh-cn': {
+    title: '选择你的 PRO 方案',
+    description: '按月灵活付费，或一次性永久使用。两种方案都解锁无限 PRO。',
+    sharedFeaturesTitle: 'PRO 🌟 功能',
+    monthlyDifferentiators: ['随时可取消', '最低入门价格', '无长期承诺'],
+    oneTimeDifferentiators: ['一次付费，永久使用', '包含所有未来更新', '约 5 个月即可回本'],
+    monthlyPlan: {
+      titleSuffix: 'Monthly',
+      description: '灵活的月度方案',
+      buttonText: '开始 Zush PRO Monthly',
+      billing: '/月 + VAT',
+    },
+    oneTimePlan: {
+      titleSuffix: 'One-Time',
+      description: '一次付费，永久使用',
+      buttonText: '购买 Zush PRO One-Time',
+      billing: '一次性 + VAT',
+    },
+  },
+  hi: {
+    title: 'अपना PRO plan चुनें',
+    description: 'Monthly flexibility या one-time lifetime access। दोनों plans unlimited PRO unlock करते हैं।',
+    sharedFeaturesTitle: 'PRO 🌟 Features',
+    monthlyDifferentiators: ['कभी भी cancel करें', 'सबसे कम entry price', 'कोई long-term commitment नहीं'],
+    oneTimeDifferentiators: ['एक बार pay करें, हमेशा use करें', 'सभी future updates included', '~5 महीनों में payoff'],
+    monthlyPlan: {
+      titleSuffix: 'Monthly',
+      description: 'Flexible monthly plan',
+      buttonText: 'Zush PRO Monthly शुरू करें',
+      billing: '/महीना + VAT',
+    },
+    oneTimePlan: {
+      titleSuffix: 'One-Time',
+      description: 'एक बार pay करके lifetime access',
+      buttonText: 'Zush PRO One-Time खरीदें',
+      billing: 'one-time + VAT',
+    },
+  },
+  ar: {
+    title: 'اختر خطة PRO الخاصة بك',
+    description: 'مرونة شهرية أو وصول مدى الحياة لمرة واحدة. كلا الخطتين تفتحان PRO غير محدود.',
+    sharedFeaturesTitle: 'ميزات PRO 🌟',
+    monthlyDifferentiators: ['إلغاء في أي وقت', 'أقل سعر للبدء', 'بدون التزام طويل الأمد'],
+    oneTimeDifferentiators: ['ادفع مرة واحدة، استخدم للأبد', 'جميع التحديثات المستقبلية مشمولة', 'يسترد قيمته خلال ~5 أشهر'],
+    monthlyPlan: {
+      titleSuffix: 'Monthly',
+      description: 'خطة شهرية مرنة',
+      buttonText: 'ابدأ Zush PRO Monthly',
+      billing: '/شهر + ضريبة القيمة المضافة',
+    },
+    oneTimePlan: {
+      titleSuffix: 'One-Time',
+      description: 'ادفع مرة واحدة للحصول على وصول مدى الحياة',
+      buttonText: 'اشترِ Zush PRO One-Time',
+      billing: 'دفعة واحدة + ضريبة القيمة المضافة',
+    },
+  },
+};
+
 const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeCopy, 'featureCards' | 'videos' | 'speedComparison' | 'whyZush' | 'useCases' | 'faqItems' | 'showcaseSlides'>>> = {
   de: {
     featureCards: {
@@ -2820,14 +3067,13 @@ const COPY: Record<Locale, LocaleCopy> = {
       ...withLocalizedFileExamples('de', localizedHomeDetails.de),
     },
     pricing: {
-      title: 'Einmal zahlen, dauerhaft nutzen',
-      description: 'Keine Abos, keine versteckten Gebühren. Nur ein einfacher Einmalkauf.',
       planName: 'Zush PRO 🌟',
       planDescription: 'Einmalkauf • Lebenslanger Zugriff',
       billing: 'einmalig',
       buttonText: 'Zush PRO kaufen 🌟',
       buttonHint: '14 Tage Geld-zurück-Garantie • Sicher über Paddle',
       features: localizedPricingFeatures.de,
+      ...localizedPricingExtras.de,
     },
     platforms: localizedPlatforms.de,
     seo: {
@@ -2869,7 +3115,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       faqDescription: 'Tout ce qu’il faut savoir sur Zush',
       ...withLocalizedFileExamples('fr', localizedHomeDetails.fr),
     },
-    pricing: { title: 'Payez une fois, utilisez toujours', description: 'Pas d’abonnement, pas de frais cachés. Un simple achat unique.', planName: 'Zush PRO 🌟', planDescription: 'Achat unique • Accès à vie', billing: 'une fois', buttonText: 'Acheter Zush PRO 🌟', buttonHint: 'Garantie 14 jours • Paiement sécurisé via Paddle', features: localizedPricingFeatures.fr },
+    pricing: { planName: 'Zush PRO 🌟', planDescription: 'Achat unique • Accès à vie', billing: 'une fois', buttonText: 'Acheter Zush PRO 🌟', buttonHint: 'Garantie 14 jours • Paiement sécurisé via Paddle', features: localizedPricingFeatures.fr, ...localizedPricingExtras.fr },
     platforms: localizedPlatforms.fr,
     seo: { '/': { title: 'Renommeur IA & outil de renommage par lot pour Mac & Windows — Zush', description: 'Renommez les fichiers par lot avec l’IA, surveillez les dossiers automatiquement et renommez screenshots, PDF, photos, vidéos et documents par contenu.' } },
     featurePages: localizedFeaturePages('Questions fréquentes', 'Outils associés', 'Guides associés', [
@@ -2908,7 +3154,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       faqDescription: 'Tudo que você precisa saber sobre o Zush',
       ...withLocalizedFileExamples('pt-br', localizedHomeDetails['pt-br']),
     },
-    pricing: { title: 'Pague uma vez, use para sempre', description: 'Sem assinaturas e sem taxas escondidas. Apenas uma compra única.', planName: 'Zush PRO 🌟', planDescription: 'Compra única • Acesso vitalício', billing: 'único', buttonText: 'Comprar Zush PRO 🌟', buttonHint: 'Garantia de 14 dias • Seguro via Paddle', features: localizedPricingFeatures['pt-br'] },
+    pricing: { planName: 'Zush PRO 🌟', planDescription: 'Compra única • Acesso vitalício', billing: 'único', buttonText: 'Comprar Zush PRO 🌟', buttonHint: 'Garantia de 14 dias • Seguro via Paddle', features: localizedPricingFeatures['pt-br'], ...localizedPricingExtras['pt-br'] },
     platforms: localizedPlatforms['pt-br'],
     seo: { '/': { title: 'Renomeador com IA e ferramenta de renomeação em lote para Mac & Windows — Zush', description: 'Renomeie arquivos em lote com IA, monitore pastas automaticamente e renomeie screenshots, PDFs, fotos, vídeos e documentos por conteúdo.' } },
     featurePages: localizedFeaturePages('Perguntas frequentes', 'Ferramentas relacionadas', 'Guias relacionados', [
@@ -2947,7 +3193,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       faqDescription: 'Todo lo que necesitas saber sobre Zush',
       ...withLocalizedFileExamples('es', localizedHomeDetails.es),
     },
-    pricing: { title: 'Paga una vez, úsalo para siempre', description: 'Sin suscripciones ni cargos ocultos. Solo una compra única.', planName: 'Zush PRO 🌟', planDescription: 'Compra única • Acceso de por vida', billing: 'una vez', buttonText: 'Comprar Zush PRO 🌟', buttonHint: 'Garantía de 14 días • Seguro con Paddle', features: localizedPricingFeatures.es },
+    pricing: { planName: 'Zush PRO 🌟', planDescription: 'Compra única • Acceso de por vida', billing: 'una vez', buttonText: 'Comprar Zush PRO 🌟', buttonHint: 'Garantía de 14 días • Seguro con Paddle', features: localizedPricingFeatures.es, ...localizedPricingExtras.es },
     platforms: localizedPlatforms.es,
     seo: { '/': { title: 'Renombrador IA y herramienta de renombrado por lotes para Mac & Windows — Zush', description: 'Renombra archivos por lotes con IA, monitorea carpetas automáticamente y renombra capturas, PDFs, fotos, videos y documentos por contenido.' } },
     featurePages: localizedFeaturePages('Preguntas frecuentes', 'Herramientas relacionadas', 'Guías relacionadas', [
@@ -2986,7 +3232,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       faqDescription: 'Alles wat je over Zush moet weten',
       ...withLocalizedFileExamples('nl', localizedHomeDetails.nl),
     },
-    pricing: { title: 'Betaal één keer, gebruik voor altijd', description: 'Geen abonnementen, geen verborgen kosten. Gewoon één aankoop.', planName: 'Zush PRO 🌟', planDescription: 'Eenmalige aankoop • Levenslange toegang', billing: 'eenmalig', buttonText: 'Koop Zush PRO 🌟', buttonHint: '14 dagen geld-terug-garantie • Veilig via Paddle', features: localizedPricingFeatures.nl },
+    pricing: { planName: 'Zush PRO 🌟', planDescription: 'Eenmalige aankoop • Levenslange toegang', billing: 'eenmalig', buttonText: 'Koop Zush PRO 🌟', buttonHint: '14 dagen geld-terug-garantie • Veilig via Paddle', features: localizedPricingFeatures.nl, ...localizedPricingExtras.nl },
     platforms: localizedPlatforms.nl,
     seo: { '/': { title: 'AI-bestandshernoemer & bulk-hernoemtool voor Mac & Windows — Zush', description: 'Hernoem bestanden in bulk met AI, bewaak mappen automatisch en hernoem screenshots, PDFs, foto’s, video’s en documenten op inhoud.' } },
     featurePages: localizedFeaturePages('Veelgestelde vragen', 'Gerelateerde tools', 'Gerelateerde gidsen', [
@@ -3025,7 +3271,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       faqDescription: 'Tutto quello che devi sapere su Zush',
       ...withLocalizedFileExamples('it', localizedHomeDetails.it),
     },
-    pricing: { title: 'Paga una volta, usa per sempre', description: 'Nessun abbonamento, nessun costo nascosto. Solo un acquisto unico.', planName: 'Zush PRO 🌟', planDescription: 'Acquisto unico • Accesso a vita', billing: 'una tantum', buttonText: 'Acquista Zush PRO 🌟', buttonHint: 'Garanzia 14 giorni • Sicuro con Paddle', features: localizedPricingFeatures.it },
+    pricing: { planName: 'Zush PRO 🌟', planDescription: 'Acquisto unico • Accesso a vita', billing: 'una tantum', buttonText: 'Acquista Zush PRO 🌟', buttonHint: 'Garanzia 14 giorni • Sicuro con Paddle', features: localizedPricingFeatures.it, ...localizedPricingExtras.it },
     platforms: localizedPlatforms.it,
     seo: { '/': { title: 'Rinomina file IA e strumento batch per Mac & Windows — Zush', description: 'Rinomina file in batch con IA, monitora cartelle automaticamente e rinomina screenshot, PDF, foto, video e documenti per contenuto.' } },
     featurePages: localizedFeaturePages('Domande frequenti', 'Strumenti correlati', 'Guide correlate', [
@@ -3064,7 +3310,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       faqDescription: 'Zush について知っておきたいこと',
       ...withLocalizedFileExamples('ja', localizedHomeDetails.ja),
     },
-    pricing: { title: '一度払えば、ずっと使える', description: 'サブスクなし、隠れた料金なし。シンプルな買い切りです。', planName: 'Zush PRO 🌟', planDescription: '買い切り • 永続アクセス', billing: '買い切り', buttonText: 'Zush PRO を購入 🌟', buttonHint: '14日間返金保証 • Paddleで安全決済', features: localizedPricingFeatures.ja },
+    pricing: { planName: 'Zush PRO 🌟', planDescription: '買い切り • 永続アクセス', billing: '買い切り', buttonText: 'Zush PRO を購入 🌟', buttonHint: '14日間返金保証 • Paddleで安全決済', features: localizedPricingFeatures.ja, ...localizedPricingExtras.ja },
     platforms: localizedPlatforms.ja,
     seo: { '/': { title: 'Mac・Windows対応 AIファイルリネーム & 一括リネームツール — Zush', description: 'AIでファイルを一括リネームし、フォルダを自動監視。スクリーンショット、PDF、写真、動画、文書を内容でリネームします。' } },
     featurePages: localizedFeaturePages('よくある質問', '関連ツール', '関連ガイド', [
@@ -3103,7 +3349,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       faqDescription: 'Zush에 대해 알아야 할 모든 것',
       ...withLocalizedFileExamples('ko', localizedHomeDetails.ko),
     },
-    pricing: { title: '한 번 결제하고 계속 사용', description: '구독도 숨겨진 비용도 없습니다. 단순한 일회성 구매입니다.', planName: 'Zush PRO 🌟', planDescription: '일회성 구매 • 평생 이용', billing: '일회성', buttonText: 'Zush PRO 구매 🌟', buttonHint: '14일 환불 보장 • Paddle 보안 결제', features: localizedPricingFeatures.ko },
+    pricing: { planName: 'Zush PRO 🌟', planDescription: '일회성 구매 • 평생 이용', billing: '일회성', buttonText: 'Zush PRO 구매 🌟', buttonHint: '14일 환불 보장 • Paddle 보안 결제', features: localizedPricingFeatures.ko, ...localizedPricingExtras.ko },
     platforms: localizedPlatforms.ko,
     seo: { '/': { title: 'Mac 및 Windows용 AI 파일 이름 변경 및 일괄 이름 변경 도구 — Zush', description: 'AI로 파일을 일괄 이름 변경하고, 폴더를 자동 모니터링하며, 스크린샷, PDF, 사진, 비디오, 문서를 내용 기준으로 이름 변경합니다.' } },
     featurePages: localizedFeaturePages('자주 묻는 질문', '관련 도구', '관련 가이드', [
@@ -3180,23 +3426,13 @@ const COPY: Record<Locale, LocaleCopy> = {
       ...withLocalizedFileExamples('zh-cn', localizedHomeDetails['zh-cn']),
     },
     pricing: {
-      title: '一次付费，长期使用',
-      description: '没有订阅，没有隐藏费用。只有简单的一次性购买。',
       planName: 'Zush PRO 🌟',
       planDescription: '一次性购买 • 永久访问',
       billing: '一次性',
       buttonText: '购买 Zush PRO 🌟',
       buttonHint: '14 天退款保证 • Paddle 安全支付',
-      features: simpleFeatures([
-        ['无限 PRO 重命名', '付费方案移除云端重命名限制'],
-        ['BYOK - 使用自己的密钥', '用自己的服务商密钥进行无限云端重命名'],
-        ['离线 AI 模式', '通过 Ollama 使用私有本地模型'],
-        ['文件夹监控', '新文件进入监控文件夹后自动重命名'],
-        ['智能命名与元数据', '自定义命名模式并自动添加 Finder 标签和 Spotlight 元数据'],
-        ['自定义 AI 提示词', '用自己的规则调整 AI 的命名和标签行为'],
-        ['本地化（60+ 语言）', '用任意语言生成文件名，并支持自定义日期格式'],
-        ['快速重命名快捷键', '在 Finder 中用右键菜单或快捷键重命名选中文件'],
-      ]),
+      features: localizedPricingFeatures['zh-cn'],
+      ...localizedPricingExtras['zh-cn'],
     },
     platforms: {
       mac: {
@@ -3318,14 +3554,13 @@ const COPY: Record<Locale, LocaleCopy> = {
       ...withLocalizedFileExamples('hi', localizedHomeDetails.hi),
     },
     pricing: {
-      title: 'अपना PRO plan चुनें',
-      description: 'Monthly flexibility या one-time lifetime access। दोनों unlimited PRO unlock करते हैं।',
       planName: 'Zush PRO 🌟',
       planDescription: 'Monthly या One-Time • Unlimited PRO',
       billing: 'from $8/mo',
       buttonText: 'Zush PRO खरीदें 🌟',
       buttonHint: '14-day money-back guarantee • Paddle के जरिए secure',
       features: localizedPricingFeatures.hi,
+      ...localizedPricingExtras.hi,
     },
     platforms: {
       mac: {
@@ -3460,14 +3695,13 @@ const COPY: Record<Locale, LocaleCopy> = {
       ...withLocalizedFileExamples('ar', localizedHomeDetails.ar),
     },
     pricing: {
-      title: 'ادفع مرة واحدة واستخدمه دائما',
-      description: 'لا اشتراكات ولا رسوم مخفية. شراء بسيط لمرة واحدة فقط.',
       planName: 'Zush PRO 🌟',
       planDescription: 'شراء لمرة واحدة • وصول دائم',
       billing: 'مرة واحدة',
       buttonText: 'شراء Zush PRO 🌟',
       buttonHint: 'ضمان استرداد 14 يوما • دفع آمن عبر Paddle',
       features: localizedPricingFeatures.ar,
+      ...localizedPricingExtras.ar,
     },
     platforms: {
       mac: {

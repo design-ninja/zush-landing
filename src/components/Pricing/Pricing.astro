@@ -2,8 +2,15 @@
 import SectionHeader from '@/components/SectionHeader';
 import Text from '@/components/Text';
 import buttonStyles from '@/components/Button/Button.module.scss';
-import { FREE_FEATURES, PRICING_PLANS, PRO_FEATURES } from './constants';
+import { PRICING_PLANS, PRO_FEATURES } from './constants';
 import styles from './Pricing.module.scss';
+
+interface PlanCopy {
+  titleSuffix?: string;
+  description?: string;
+  buttonText?: string;
+  billing?: string;
+}
 
 interface Props {
   copy?: {
@@ -14,8 +21,8 @@ interface Props {
     sharedFeaturesTitle?: string;
     monthlyDifferentiators?: string[];
     oneTimeDifferentiators?: string[];
-    monthlyBadge?: string;
-    oneTimeBadge?: string;
+    monthlyPlan?: PlanCopy;
+    oneTimePlan?: PlanCopy;
   };
 }
 
@@ -23,11 +30,16 @@ const { copy } = Astro.props as Props;
 const paidButtonClass = [
   buttonStyles.Button,
   buttonStyles.Button_primary,
-  buttonStyles.Button_md,
+  buttonStyles.Button_lg,
   buttonStyles.Button_fluid,
 ].join(' ');
 const trustLine = copy?.buttonHint ?? '14-day money-back guarantee • Secure via Paddle';
-const sharedFeaturesTitle = copy?.sharedFeaturesTitle ?? 'Both plans unlock all PRO features';
+const sharedFeaturesTitle = copy?.sharedFeaturesTitle ?? 'PRO 🌟 Features';
+const rawTitle = copy?.title ?? 'Choose your PRO plan';
+const titleHtml = rawTitle.replace(
+  /\bPRO\b/,
+  `<span class="${styles.Pricing__TitlePro}">PRO</span>`,
+);
 const sharedFeatures = PRO_FEATURES.map((feature, index) => ({
   ...feature,
   title: copy?.features[index]?.title ?? feature.title,
@@ -36,11 +48,15 @@ const sharedFeatures = PRO_FEATURES.map((feature, index) => ({
 const plans = PRICING_PLANS.map((plan) => {
   const localizedDifferentiators =
     plan.id === 'monthly' ? copy?.monthlyDifferentiators : copy?.oneTimeDifferentiators;
-  const localizedBadge = plan.id === 'monthly' ? copy?.monthlyBadge : copy?.oneTimeBadge;
+  const planCopy: PlanCopy | undefined =
+    plan.id === 'monthly' ? copy?.monthlyPlan : copy?.oneTimePlan;
 
   return {
     ...plan,
-    badge: localizedBadge ?? plan.badge,
+    titleSuffix: planCopy?.titleSuffix ?? plan.titleSuffix,
+    description: planCopy?.description ?? plan.description,
+    buttonText: planCopy?.buttonText ?? plan.buttonText,
+    billing: planCopy?.billing ?? plan.billing,
     differentiators: plan.differentiators.map((differentiator, index) => ({
       ...differentiator,
       title: localizedDifferentiators?.[index] ?? differentiator.title,
@@ -52,33 +68,49 @@ const plans = PRICING_PLANS.map((plan) => {
 <section id="pricing" class={styles.Pricing}>
   <div class={styles.Pricing__Container}>
     <SectionHeader
-      title={copy?.title ?? 'Choose your PRO plan'}
+      titleHtml={titleHtml}
       description={copy?.description ?? 'Monthly flexibility or one-time lifetime access. Both plans unlock unlimited PRO.'}
     />
 
-    <div class={styles.Pricing__Grid}>
-      {plans.map((plan) => {
-        const cardClass = [
-          styles.PricingCard,
-          plan.highlight ? styles.PricingCard_highlighted : '',
-        ]
-          .filter(Boolean)
-          .join(' ');
+    <div class={styles.Pricing__Layout}>
+      <div class={styles.Pricing__Shared}>
+        <div class={styles.Pricing__SharedHeader}>
+          <h3
+            class={styles.Pricing__SharedTitle}
+            set:html={sharedFeaturesTitle.replace(
+              /\bPRO\b/,
+              `<span class="${styles.Pricing__SharedTitlePro}">PRO</span>`,
+            )}
+          />
+        </div>
 
-        return (
-      <div class={cardClass} id={plan.id === 'monthly' ? 'pro' : undefined}>
-        {plan.badge && (
-          <span class={styles.PricingCard__Badge} aria-label={plan.badge}>
-            <span aria-hidden="true">★</span> {plan.badge}
-          </span>
-        )}
-        <div class={styles.PricingCard__Top}>
-          <div class={styles.PricingCard__HeaderRow}>
+        <ul class={styles.Pricing__SharedList}>
+          {sharedFeatures.map((feature) => {
+            const Icon = feature.icon;
+
+            return (
+              <li class={styles.Pricing__SharedFeature} data-tone={feature.tone}>
+                <span class={styles.Pricing__SharedFeatureIcon}>
+                  <Icon size={20} aria-hidden="true" />
+                </span>
+                <span class={styles.Pricing__SharedFeatureCopy}>
+                  <span class={styles.Pricing__SharedFeatureTitle}>{feature.title}</span>
+                  <span class={styles.Pricing__SharedFeatureDesc}>{feature.desc}</span>
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+
+      <div class={styles.Pricing__Plans}>
+        {plans.map((plan) => (
+        <div class={styles.PricingCard} id={plan.id === 'monthly' ? 'pro' : undefined}>
+          <div class={styles.PricingCard__Top}>
             <div class={styles.PricingCard__Header}>
               <h3 class={styles.PricingCard__Name}>
                 <span class={styles.PricingCard__NameZush}>Zush</span>{' '}
                 <span class={styles.PricingCard__NamePro}>PRO</span>{' '}
-                <span class={styles.PricingCard__NameStar} aria-hidden="true">🌟</span>{' '}
                 <span>{plan.titleSuffix}</span>
               </h3>
               <Text
@@ -90,101 +122,42 @@ const plans = PRICING_PLANS.map((plan) => {
                 {plan.description}
               </Text>
             </div>
-          </div>
 
-          <div class={styles.PricingCard__Price}>
-            <div class={styles.PricingCard__PriceLeft}>
+            <div class={styles.PricingCard__Price}>
               <span class={styles.PricingCard__PriceValue}>{plan.price}</span>
               {plan.billing && (
                 <span class={styles.PricingCard__PricePeriod}>{plan.billing}</span>
               )}
             </div>
           </div>
-        </div>
 
-        <ul class={styles.PricingCard__Differentiators}>
-          {plan.differentiators.map((differentiator) => {
-            const Icon = differentiator.icon;
-
-            return (
-              <li class={styles.PricingCard__Differentiator}>
-                <Icon size={16} aria-hidden="true" />
-                <span>{differentiator.title}</span>
-              </li>
-            );
-          })}
-        </ul>
-
-        <div class={styles.PricingCard__ButtonWrapper}>
-          <button
-            type="button"
-            class={paidButtonClass}
-            data-paddle-checkout
-            data-paddle-price-id={plan.paddlePriceId}
-          >
-            <span class={styles.PricingCard__ButtonText}>
-              {plan.buttonText}
-            </span>
-          </button>
-        </div>
-      </div>
-        );
-      })}
-    </div>
-
-    <div class={styles.Pricing__Shared}>
-      <div class={styles.Pricing__SharedHeader}>
-        <span class={styles.Pricing__SharedKicker} aria-hidden="true">🌟</span>
-        <h3 class={styles.Pricing__SharedTitle}>{sharedFeaturesTitle}</h3>
-      </div>
-
-      <ul class={styles.Pricing__SharedGrid}>
-        {sharedFeatures.map((feature) => {
-          const Icon = feature.icon;
-
-          return (
-            <li class={styles.Pricing__SharedFeature} data-tone={feature.tone}>
-              <span class={styles.Pricing__SharedFeatureIcon}>
-                <Icon size={20} aria-hidden="true" />
-              </span>
-              <span class={styles.Pricing__SharedFeatureCopy}>
-                <span class={styles.Pricing__SharedFeatureTitle}>{feature.title}</span>
-                <span class={styles.Pricing__SharedFeatureDesc}>{feature.desc}</span>
-              </span>
-            </li>
-          );
-        })}
-      </ul>
-
-      <div class={styles.Pricing__SharedFooter}>
-        <button
-          type="button"
-          class={styles.Pricing__AllFeaturesTrigger}
-          aria-describedby="pricing-free-features"
-        >
-          + All Zush FREE Features
-        </button>
-        <div
-          id="pricing-free-features"
-          role="tooltip"
-          class={styles.Pricing__AllFeaturesPopover}
-        >
-          <ul>
-            {FREE_FEATURES.map((feature) => {
-              const Icon = feature.icon;
+          <ul class={styles.PricingCard__Differentiators}>
+            {plan.differentiators.map((differentiator) => {
+              const Icon = differentiator.icon;
 
               return (
-                <li data-tone={feature.tone}>
-                  <Icon size={16} />
-                  <span>
-                    <strong>{feature.title}</strong>
-                    <small>{feature.desc}</small>
-                  </span>
+                <li class={styles.PricingCard__Differentiator}>
+                  <Icon size={20} aria-hidden="true" />
+                  <span>{differentiator.title}</span>
                 </li>
               );
             })}
           </ul>
+
+          <div class={styles.PricingCard__ButtonWrapper}>
+            <button
+              type="button"
+              class={paidButtonClass}
+              data-paddle-checkout
+              data-paddle-price-id={plan.paddlePriceId}
+            >
+              <span class={styles.PricingCard__ButtonText}>
+                {plan.buttonText}
+              </span>
+            </button>
+          </div>
         </div>
+        ))}
       </div>
     </div>
 

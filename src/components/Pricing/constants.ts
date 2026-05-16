@@ -1,18 +1,14 @@
 import {
   Blocks,
   CalendarClock,
-  Command,
   Cpu,
-  FolderPlus,
   Gift,
-  Globe,
   Infinity as InfinityIcon,
   KeyRound,
   Layers3,
   MessageSquareText,
   RefreshCw,
   Sparkles,
-  Tags,
   TrendingDown,
   LucideIcon,
 } from 'lucide-react';
@@ -42,8 +38,6 @@ interface Plan {
   price: string;
   billing: string;
   paddlePriceId?: string;
-  highlight?: boolean;
-  badge?: string;
 }
 
 export const PRO_FEATURES: Feature[] = [
@@ -85,39 +79,6 @@ export const PRO_FEATURES: Feature[] = [
   },
 ];
 
-export const FREE_FEATURES: Feature[] = [
-  {
-    title: '50 free renames',
-    desc: 'Try cloud AI renaming before upgrading',
-    icon: Sparkles,
-    tone: 'orange',
-  },
-  {
-    title: 'Folders Monitor',
-    desc: 'Auto-rename new files in watched folders with file-type exclusions',
-    icon: FolderPlus,
-    tone: 'green',
-  },
-  {
-    title: 'Smart Naming & Metadata',
-    desc: 'Customize naming patterns, Finder tags, and Spotlight metadata',
-    icon: Tags,
-    tone: 'blue',
-  },
-  {
-    title: 'Localization (60+ languages)',
-    desc: 'File names in any language with custom date format',
-    icon: Globe,
-    tone: 'purple',
-  },
-  {
-    title: 'Quick Rename Shortcut',
-    desc: 'Rename selected files from Finder with a context menu or keyboard shortcut',
-    icon: Command,
-    tone: 'pink',
-  },
-];
-
 export const MONTHLY_DIFFERENTIATORS: Differentiator[] = [
   { title: 'Cancel anytime', icon: CalendarClock },
   { title: 'Lowest entry price', icon: TrendingDown },
@@ -150,8 +111,6 @@ export const PRICING_PLANS: Plan[] = [
     price: '$38',
     billing: 'one-time + VAT',
     paddlePriceId: PRO_ONE_TIME_PADDLE_PRICE_ID,
-    highlight: true,
-    badge: 'Best value',
   },
 ];
 
