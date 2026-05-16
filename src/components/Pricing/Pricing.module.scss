@@ -143,8 +143,13 @@
         }
 
         &[data-tone='pink'] {
-            --feature-color: oklch(0.67 0.22 12);
-            --feature-bg: oklch(0.67 0.22 12 / 0.13);
+            --feature-color: oklch(0.68 0.24 330);
+            --feature-bg: oklch(0.68 0.24 330 / 0.13);
+        }
+
+        &[data-tone='teal'] {
+            --feature-color: oklch(0.72 0.16 185);
+            --feature-bg: oklch(0.72 0.16 185 / 0.14);
         }
     }
 

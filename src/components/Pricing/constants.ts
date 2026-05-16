@@ -21,7 +21,7 @@ interface Feature {
   title: string;
   desc: string;
   icon: LucideIcon;
-  tone: 'orange' | 'green' | 'blue' | 'purple' | 'pink';
+  tone: 'orange' | 'green' | 'blue' | 'purple' | 'pink' | 'teal';
 }
 
 interface Differentiator {
@@ -69,13 +69,13 @@ export const PRO_FEATURES: Feature[] = [
     title: 'Templates',
     desc: 'Reusable rename setups for AI Rename and Monitor',
     icon: Layers3,
-    tone: 'blue',
+    tone: 'pink',
   },
   {
     title: 'Naming Blocks',
     desc: 'Build names from dates, media, documents, metadata and much more',
     icon: Blocks,
-    tone: 'pink',
+    tone: 'teal',
   },
 ];
 
