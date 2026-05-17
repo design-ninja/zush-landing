@@ -217,7 +217,7 @@ const FileShowcase = ({ slides: customSlides }: FileShowcaseProps = {}) => {
                       className={`${styles.FileItem__Preview} ${preview.className}`}
                       aria-hidden="true"
                     >
-                      <Icon size={26} strokeWidth={2.1} />
+                      <Icon size={26} strokeWidth={2.45} />
                       <span className={styles.FileItem__Badge}>{file.label ?? preview.label}</span>
                     </div>
                   );

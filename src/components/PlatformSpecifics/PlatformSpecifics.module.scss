@@ -680,32 +680,38 @@
     align-items: center;
     justify-content: center;
     gap: 0.2rem;
-    color: white;
+    color: var(--file-preview-color);
+    background: color-mix(in srgb, var(--file-preview-color) 14%, white);
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid color-mix(in srgb, var(--file-preview-color) 22%, white);
+
+    :global(html[data-theme='dark']) & {
+      background: color-mix(in srgb, var(--file-preview-color) 18%, var(--card));
+      border-color: color-mix(in srgb, var(--file-preview-color) 32%, var(--card));
+    }
 
     &_doc {
-      background: linear-gradient(160deg, #5b8def 0%, #355dd7 100%);
+      --file-preview-color: #0088ff;
     }
 
     &_design {
-      background: linear-gradient(160deg, #ec4899 0%, #7c3aed 100%);
+      --file-preview-color: #cb30e0;
     }
 
     &_sheet {
-      background: linear-gradient(160deg, #30b66f 0%, #198754 100%);
+      --file-preview-color: #34c759;
     }
 
     &_slides {
-      background: linear-gradient(160deg, #ff9b52 0%, #f97316 100%);
+      --file-preview-color: #ff8d28;
     }
 
     &_pdf {
-      background: linear-gradient(160deg, #ff6b6b 0%, #dc2626 100%);
+      --file-preview-color: #ff383c;
     }
 
     &_video {
-      background: linear-gradient(160deg, #8b5cf6 0%, #2563eb 100%);
+      --file-preview-color: #00c3d0;
     }
   }
 

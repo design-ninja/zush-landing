@@ -227,10 +227,16 @@
     align-items: center;
     justify-content: center;
     gap: 0.2rem;
-    color: white;
+    --file-preview-color: #ff383c;
+    color: var(--file-preview-color);
+    background: color-mix(in srgb, var(--file-preview-color) 14%, white);
     overflow: hidden;
-    background: linear-gradient(160deg, #ff6b6b 0%, #dc2626 100%);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid color-mix(in srgb, var(--file-preview-color) 22%, white);
+
+    :global(html[data-theme='dark']) & {
+      background: color-mix(in srgb, var(--file-preview-color) 18%, var(--card));
+      border-color: color-mix(in srgb, var(--file-preview-color) 32%, var(--card));
+    }
   }
 
   &__Badge {
