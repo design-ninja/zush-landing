@@ -22,14 +22,28 @@ const baseMainWindowWidth = 1460;
 const windowZoom = 1.035;
 
 const wallpapers = {
-  light: '/Users/lirik/Desktop/tahoe/macos-tahoe-26-6016x6016-22673.jpg',
-  dark: '/Users/lirik/Desktop/tahoe/macos-tahoe-26-5k-6016x6016-22672.jpg',
+  light:
+    process.env.ZUSH_PROMO_LIGHT_WALLPAPER ??
+    firstExistingImagePath([
+      '/Users/lirik/Desktop/tahoe/macos-tahoe-26-6016x6016-22673.jpg',
+      '/System/Library/Desktop Pictures/Sonoma.heic[0]',
+      '/System/Library/Desktop Pictures/.thumbnails/Sonoma Light.heic',
+    ]),
+  dark:
+    process.env.ZUSH_PROMO_DARK_WALLPAPER ??
+    firstExistingImagePath([
+      '/Users/lirik/Desktop/tahoe/macos-tahoe-26-5k-6016x6016-22672.jpg',
+      '/System/Library/Desktop Pictures/Sonoma.heic[1]',
+      '/System/Library/Desktop Pictures/.thumbnails/Sonoma Dark.heic',
+    ]),
 };
 
 const features = [
   { id: 'batch-rename', fixture: 'batch-rename', mainWidth: 1460 },
   { id: 'monitor', fixture: 'monitor', mainWidth: 1380 },
   { id: 'activity', fixture: 'activity', mainWidth: 1460 },
+  { id: 'templates', fixture: 'templates', mainWidth: 1120 },
+  { id: 'naming-blocks', fixture: 'naming-blocks', mainWidth: 1120 },
   { id: 'tags', fixture: 'smart-tags', mainWidth: 1120, extraOwners: ['Finder'] },
   { id: 'naming', fixture: 'naming', mainWidth: 1120 },
   { id: 'multilanguage', fixture: 'multilanguage', mainWidth: 1120 },
@@ -95,12 +109,14 @@ const appStoreNames = {
   'batch-rename': '01-batch-rename',
   monitor: '02-monitor',
   activity: '03-activity',
-  tags: '04-tags',
-  naming: '05-naming',
-  multilanguage: '06-multilanguage',
-  'offline-ai': '07-offline-ai',
-  byok: '08-byok',
-  'custom-prompts': '09-custom-prompts',
+  templates: '04-templates',
+  'naming-blocks': '05-naming-blocks',
+  tags: '06-tags',
+  naming: '07-smart-rename',
+  multilanguage: '08-multilanguage',
+  'offline-ai': '09-offline-ai',
+  byok: '10-byok',
+  'custom-prompts': '11-custom-prompts',
 };
 
 if (selectedFeatures.length === 0) {
@@ -165,6 +181,10 @@ function run(command, commandArgs, options = {}) {
 
 function wait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function firstExistingImagePath(paths) {
+  return paths.find((imagePath) => fs.existsSync(imagePath.replace(/\[\d+\]$/, ''))) ?? paths[0];
 }
 
 function ensureBuilt() {
@@ -239,6 +259,9 @@ function startZush(runId) {
   if (!fs.existsSync(appBinary)) {
     throw new Error(`Zush binary not found: ${appBinary}`);
   }
+
+  run('defaults', ['write', 'com.lirik.Zush', 'debug.backend.environment', 'local']);
+  run('defaults', ['write', 'com.lirik.Zush', 'debugTierOverride.local', '-int', '2']);
 
   const before = new Set(zushPids());
   const appBundle = path.resolve(appBinary, '../../..');
@@ -643,7 +666,7 @@ async function main() {
     if (!['light', 'dark'].includes(theme)) {
       throw new Error(`Unsupported theme: ${theme}`);
     }
-    if (!fs.existsSync(wallpapers[theme])) {
+    if (!fs.existsSync(wallpapers[theme].replace(/\[\d+\]$/, ''))) {
       throw new Error(`Missing ${theme} wallpaper: ${wallpapers[theme]}`);
     }
   }

@@ -1,7 +1,8 @@
 import {
+  Blocks,
   Check,
   Files,
-  History,
+  FileType2,
   Monitor,
   Zap,
 } from 'lucide-react';
@@ -57,9 +58,9 @@ const renameExamples = [
 ];
 
 const workflowSteps = [
-  'Batch rename old piles',
-  'Watch new folders',
-  'Revert from history',
+  'Photographers: date, client, shoot, scene',
+  'Doctors: visit type, date, record kind',
+  'Accountants: vendor, invoice, period',
 ];
 
 const defaultCopy: WhyZushCopy = {
@@ -83,9 +84,9 @@ const defaultCopy: WhyZushCopy = {
   formatsEyebrow: '98 supported formats',
   formatsTitle: 'Screenshots, PDFs, photos, audio, documents, and videos',
   formatsDescription: 'Supports AVIF, RAW, Office files, PDFs, subtitles, MP3, M4A, WAV, FLAC, and common video formats, so mixed folders can be renamed by actual content instead of file-type silos.',
-  controlEyebrow: 'Low-risk automation',
-  controlTitle: 'Batch rename, watch folders, undo safely',
-  controlDescription: 'Use Zush as a batch file renamer for old piles, an automatic file renamer for new folders, and a low-risk workflow with full rename history.',
+  controlEyebrow: 'Naming Blocks',
+  controlTitle: 'Structured filenames for professional work',
+  controlDescription: 'Professionals can build their own filename patterns from blocks that match their work. AI reads each file and fills those blocks with the details they chose, like client, date, invoice number, location, or project.',
   workflowSteps,
 };
 
@@ -252,7 +253,7 @@ const WhyZush = ({ forceOS, platformSpecificCopy = false, copy = defaultCopy }: 
           <article className={`${styles.Card} ${styles.Card_control}`}>
             <div className={styles.Card__Header}>
               <div className={styles.Card__Icon}>
-                <History size={24} />
+                <Blocks size={24} />
               </div>
               <span className={styles.Card__Eyebrow}>{copy.controlEyebrow}</span>
             </div>
@@ -264,15 +265,26 @@ const WhyZush = ({ forceOS, platformSpecificCopy = false, copy = defaultCopy }: 
               {copy.controlDescription}
             </Text>
 
-            <div className={styles.WorkflowSteps} aria-hidden='true'>
-              {copy.workflowSteps.map((step, index) => (
-                <div key={step} className={styles.WorkflowSteps__Item}>
-                  <span className={styles.WorkflowSteps__Number}>
-                    {index + 1}
+            <div className={styles.NamingBlockExample} aria-hidden='true'>
+              <div className={styles.NamingBlockExample__Blocks}>
+                <span>Invoice Date</span>
+                <span>Vendor Name</span>
+                <span>Total Amount</span>
+                <span>Invoice Number</span>
+              </div>
+              <div className={styles.NamingBlockExample__Rename}>
+                <span className={styles.NamingBlockExample__Before}>
+                  <span className={styles.NamingBlockExample__PdfIcon}>
+                    <FileType2 size={14} strokeWidth={2.4} />
+                    <span>PDF</span>
                   </span>
-                  <span className={styles.WorkflowSteps__Label}>{step}</span>
-                </div>
-              ))}
+                  <span className={styles.NamingBlockExample__BeforeText}>scan_0034.pdf</span>
+                </span>
+                <span className={styles.NamingBlockExample__Arrow}>→</span>
+                <span className={styles.NamingBlockExample__After}>
+                  2026-05-08_Acme_Store_129.95_INV-3839.pdf
+                </span>
+              </div>
             </div>
           </article>
         </div>

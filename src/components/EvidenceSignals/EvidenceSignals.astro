@@ -1,6 +1,7 @@
 ---
 import {
   Blocks,
+  Files,
   Gift,
   Languages,
 } from 'lucide-react';
@@ -34,9 +35,15 @@ const facts = [
   },
   {
     icon: Languages,
-    title: 'Broad file coverage',
-    description: `60+ filename languages and ${totalFormatCount} supported image, document, video, and audio formats.`,
+    title: '60+ filename languages',
+    description: 'Generate searchable names in the language and date format that fits each folder or team.',
     color: 'purple',
+  },
+  {
+    icon: Files,
+    title: `${totalFormatCount} supported formats`,
+    description: 'Images, RAW photos, PDFs, Office files, subtitles, audio, and videos can live in one rename workflow.',
+    color: 'orange',
   },
 ];
 
@@ -57,11 +64,11 @@ const sourceLinks = [
         <span style="color: var(--secondary)">Zush</span> product facts
       </Heading>
       <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>
-        A desktop AI file renamer for Mac and Windows: screenshots, videos, audio, PDFs, photos, and office documents by content, with templates, naming blocks, batch review, folder monitoring, BYOK, Offline AI mode, and one-click revert.
+        AI file renaming by content for Mac and Windows, with templates, monitoring, BYOK, and one-click revert.
       </Text>
     </div>
 
-    <div class={useCaseStyles.UseCases__Grid}>
+    <div class={`${useCaseStyles.UseCases__Grid} evidenceFactsGrid`}>
       {facts.map((fact) => {
         const Icon = fact.icon;
 
@@ -100,3 +107,21 @@ const sourceLinks = [
     </div>
   </div>
 </section>
+
+<style>
+  .evidenceFactsGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  @media (max-width: 1024px) {
+    .evidenceFactsGrid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .evidenceFactsGrid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

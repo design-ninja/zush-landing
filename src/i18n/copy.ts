@@ -97,8 +97,8 @@ export interface FeatureCardsCopy {
 
 export const DEFAULT_FEATURE_CARDS_COPY: FeatureCardsCopy = {
   aiAnalysis: {
-    title: 'AI Analysis',
-    description: 'Advanced AI analyzes images, videos, and supported documents, including PDFs, to generate meaningful, descriptive filenames automatically.',
+    title: 'Smart Batch Rename',
+    description: 'Batch rename mixed files with smart analysis based on each file type and its actual content, from images and PDFs to audio, videos, and documents.',
   },
   foldersMonitoring: {
     title: 'Folders Monitoring',
@@ -350,7 +350,6 @@ const homeShowcaseSlides = (
       { before: 'sales-kickoff-new(3).pptx', after: afterNames[8], type: 'slides' },
       { before: 'IMG_20240812_143052.jpg', after: afterNames[9], img: '/images/examples/dog.jpg', type: 'image' },
       { before: 'proposal_draft_approved.pdf', after: afterNames[10], type: 'pdf' },
-      { before: 'Screen Recording 2026-05-08.mov', after: afterNames[11], img: VIDEO_PREVIEW_IMAGES.checkoutFlowBugRecording, type: 'video' },
     ],
   },
   {
@@ -361,7 +360,6 @@ const homeShowcaseSlides = (
       { before: 'marketing-review-v5.pptx', after: afterNames[14], type: 'slides' },
       { before: 'scan_2026_03_19.pdf', after: afterNames[15], type: 'pdf' },
       { before: 'PXL_20240720_091234.jpg', after: afterNames[16], img: '/images/examples/flowers.jpg', type: 'image' },
-      { before: 'camera_roll_0091.m2ts', after: afterNames[17], img: VIDEO_PREVIEW_IMAGES.factoryTourAssembly, type: 'video' },
     ],
   },
 ];
@@ -980,8 +978,8 @@ const EN_COPY: LocaleCopy = {
     heroSubtitle:
       'Batch rename files with AI, watch folders automatically, and organize screenshots, PDFs, photos, audio, videos, and documents with reusable templates and searchable names based on real content.',
     buyPro: 'Buy 🌟 PRO',
-    trustSignals: ['✨ Free to try', '💳 No credit card', '∞ Unlimited PRO'],
-    featuresTitle: 'Batch Rename, Templates, Naming Blocks, and Audio Support',
+    trustSignals: ['✨ Free to try', '💳 No credit card required'],
+    featuresTitle: 'Zush Features',
     featuresDescription: 'One desktop AI file renamer for screenshots, PDFs, photos, audio, videos, documents, and messy mixed folders',
     supportedFormats: 'Supported File Formats',
     images: 'Images',
@@ -1006,6 +1004,8 @@ const EN_COPY: LocaleCopy = {
       items: {
         'batch-rename': { title: 'AI Batch Rename', description: 'Bulk rename files by real content before you apply changes' },
         monitor: { title: 'Automatic File Renamer', description: 'Watch folders and rename new screenshots, PDFs, photos, audio, videos, and downloads as they appear' },
+        templates: { title: 'Templates', description: 'Save reusable rename setups for repeated AI Rename and Monitor workflows' },
+        'naming-blocks': { title: 'Naming Blocks', description: 'Build invoice-ready filenames from finance, date, vendor, and AI-detected fields' },
         tags: { title: 'Smart Tags', description: 'Generate smart tags for faster file search' },
         naming: { title: 'Naming Blocks', description: 'Build reusable filenames from 145+ blocks for dates, metadata, audio, finance, legal, travel, and AI fields' },
         multilanguage: { title: 'Multilanguage', description: 'Generate filenames in more than 60 languages' },
@@ -1054,10 +1054,14 @@ const EN_COPY: LocaleCopy = {
       formatsEyebrow: '98 supported formats',
       formatsTitle: 'Screenshots, PDFs, photos, audio, documents, and videos',
       formatsDescription: 'Supports AVIF, RAW, Office files, PDFs, subtitles, MP3, M4A, WAV, FLAC, and common video formats, so mixed folders can be renamed by actual content instead of file-type silos.',
-      controlEyebrow: 'Low-risk automation',
-      controlTitle: 'Batch rename, watch folders, undo safely',
-      controlDescription: 'Use Zush as a batch file renamer for old piles, an automatic file renamer for new folders, and a low-risk workflow with full rename history.',
-      workflowSteps: ['Batch rename old piles', 'Watch new folders', 'Revert from history'],
+      controlEyebrow: 'Naming Blocks',
+      controlTitle: 'Structured filenames for professional work',
+      controlDescription: 'Professionals can build their own filename patterns from blocks that match their work. AI reads each file and fills those blocks with the details they chose, like client, date, invoice number, location, or project.',
+      workflowSteps: [
+        'Photographers: date, client, shoot, scene',
+        'Doctors: visit type, date, record kind',
+        'Accountants: vendor, invoice, period',
+      ],
     },
     useCases: {
       items: [

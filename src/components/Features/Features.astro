@@ -2,19 +2,18 @@
 import {
   FolderSync,
   Sparkles,
-  Sliders,
   History,
   Tag,
   Folder,
   Plus,
-  Layers,
   Check,
   MessageSquareText,
   KeyRound,
   Bot,
   LayoutTemplate,
   Blocks,
-  AudioLines,
+  Camera,
+  ReceiptText,
 } from 'lucide-react';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
@@ -31,12 +30,32 @@ interface Props {
 }
 
 const {
-  title = 'Batch Rename, Templates, Naming Blocks, and Audio Support',
+  title = 'Zush Features',
   description = 'One desktop AI file renamer for screenshots, PDFs, photos, audio, videos, documents, and messy mixed folders',
   copy = DEFAULT_FEATURE_CARDS_COPY,
 } = Astro.props as Props;
 const currentYear = new Date().getFullYear();
 const titleParts = title.split('Zush');
+const templateExamples = [
+  {
+    title: 'Screenshots',
+    description: 'Names by app, screen, and visible content',
+    icon: Camera,
+    tone: 'screenshots',
+  },
+  {
+    title: 'Photographer Shoots',
+    description: 'Shoots named by date, client, event, and place',
+    icon: Camera,
+    tone: 'photographer',
+  },
+  {
+    title: 'Bookkeeper Expenses',
+    description: 'Date, vendor, total, and invoice number',
+    icon: ReceiptText,
+    tone: 'expenses',
+  },
+];
 ---
 
 <section id='features' class={styles.Features}>
@@ -105,129 +124,6 @@ const titleParts = title.split('Zush');
       </BentoCard>
 
       <BentoCard
-        title={copy.batchRename.title}
-        description={copy.batchRename.description}
-        icon={Layers}
-      >
-        <div class={styles.UI_Batch}>
-          <div class={styles.UI_Batch__List}>
-            <div class={styles.UI_Batch__Item}>
-              <div class={styles.UI_Batch__Names}>
-                <span class={styles.UI_Batch__OldName}>{`Screenshot ${currentYear}-02-21.png`}</span>
-                <span class={styles.UI_Batch__NewName}>→ {copy.batchNewNames[0]}</span>
-              </div>
-              <div class={styles.UI_Batch__Check}>
-                <Check size={14} />
-              </div>
-            </div>
-            <div class={styles.UI_Batch__Item}>
-              <div class={styles.UI_Batch__Names}>
-                <span class={styles.UI_Batch__OldName}>notes-final-v3.docx</span>
-                <span class={styles.UI_Batch__NewName}>→ {copy.batchNewNames[1]}</span>
-              </div>
-              <div class={styles.UI_Batch__Check}>
-                <Check size={14} />
-              </div>
-            </div>
-            <div class={styles.UI_Batch__Item}>
-              <div class={styles.UI_Batch__Names}>
-                <span class={styles.UI_Batch__OldName}>investor-update-final.pptx</span>
-                <span class={styles.UI_Batch__NewName}>→ {copy.batchNewNames[2]}</span>
-              </div>
-              <div class={styles.UI_Batch__Check}>
-                <Check size={14} />
-              </div>
-            </div>
-          </div>
-        </div>
-      </BentoCard>
-
-      <BentoCard
-        title={copy.templates.title}
-        description={copy.templates.description}
-        icon={LayoutTemplate}
-        badge='PRO 🌟'
-      >
-        <div class={styles.UI_Templates}>
-          <div class={styles.UI_Templates__Header}>
-            <span>{copy.templateActive}</span>
-            <Check size={14} />
-          </div>
-          <div class={styles.UI_Templates__List}>
-            {copy.templateNames.map((templateName) => (
-              <div class={styles.UI_Templates__Item}>
-                <span class={styles.UI_Templates__Dot} />
-                <span>{templateName}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </BentoCard>
-
-      <BentoCard
-        title={copy.namingBlocks.title}
-        description={copy.namingBlocks.description}
-        icon={Blocks}
-        badge='PRO 🌟'
-      >
-        <div class={styles.UI_NamingBlocks}>
-          <div class={styles.UI_NamingBlocks__Chips}>
-            {copy.namingBlockLabels.map((label) => (
-              <span>{label}</span>
-            ))}
-          </div>
-          <div class={styles.UI_NamingBlocks__Preview}>
-            {`{date}_{client_name}_{title}`}
-          </div>
-        </div>
-      </BentoCard>
-
-      <BentoCard
-        title={copy.audioSupport.title}
-        description={copy.audioSupport.description}
-        icon={AudioLines}
-      >
-        <div class={styles.UI_Audio}>
-          <div class={styles.UI_Audio__Wave} aria-hidden='true'>
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-          </div>
-          <div class={styles.UI_Audio__List}>
-            <div class={styles.UI_Audio__Item}>
-              <span class={styles.UI_Audio__OldName}>track_01_final.mp3</span>
-              <span class={styles.UI_Audio__NewName}>→ {copy.audioNewNames[0]}</span>
-            </div>
-            <div class={styles.UI_Audio__Item}>
-              <span class={styles.UI_Audio__OldName}>voice_memo_042.m4a</span>
-              <span class={styles.UI_Audio__NewName}>→ {copy.audioNewNames[1]}</span>
-            </div>
-          </div>
-        </div>
-      </BentoCard>
-
-      <BentoCard
-        title={copy.customPatterns.title}
-        description={copy.customPatterns.description}
-        icon={Sliders}
-      >
-        <div class={styles.UI_Patterns}>
-          <div class={styles.UI_Patterns__Input}>
-            <span class={styles.UI_Patterns__Var}>{`{Title}`}</span>
-            <span class={styles.UI_Patterns__Sep}>_</span>
-            <span class={styles.UI_Patterns__Var}>{`{Date}`}</span>
-            <span class={styles.UI_Patterns__Sep}>_</span>
-            <span class={styles.UI_Patterns__Var}>{`{Category}`}</span>
-          </div>
-          <div class={styles.UI_Patterns__Preview}>
-            {`Project_Zush_${currentYear}-03-20_Design.png`}
-          </div>
-        </div>
-      </BentoCard>
-
-      <BentoCard
         title={copy.smartMetadata.title}
         description={copy.smartMetadata.description}
         icon={Tag}
@@ -284,9 +180,62 @@ const titleParts = title.split('Zush');
       </BentoCard>
 
       <BentoCard
+        title={copy.templates.title}
+        description={copy.templates.description}
+        icon={LayoutTemplate}
+        badge='PRO 🌟'
+      >
+        <div class={styles.UI_Templates}>
+          <div class={styles.UI_Templates__List}>
+            {templateExamples.map((template) => {
+              const Icon = template.icon;
+
+              return (
+              <div class={styles.UI_Templates__Item}>
+                <span class={`${styles.UI_Templates__Icon} ${styles[`UI_Templates__Icon_${template.tone}`]}`}>
+                  <Icon size={17} strokeWidth={2.35} />
+                </span>
+                <span class={styles.UI_Templates__Copy}>
+                  <span class={styles.UI_Templates__Name}>{template.title}</span>
+                  <span class={styles.UI_Templates__Description}>{template.description}</span>
+                </span>
+              </div>
+              );
+            })}
+          </div>
+        </div>
+      </BentoCard>
+
+      <BentoCard
+        title={copy.namingBlocks.title}
+        description={copy.namingBlocks.description}
+        icon={Blocks}
+        badge='PRO 🌟'
+      >
+        <div class={styles.UI_NamingBlocks}>
+          <div class={styles.UI_NamingBlocks__Editor}>
+            <div class={styles.UI_NamingBlocks__Builder}>
+              <span class={styles.UI_NamingBlocks__Block}>Capture Date</span>
+              <span class={styles.UI_NamingBlocks__Separator}>_</span>
+              <span class={styles.UI_NamingBlocks__Block}>Client Name</span>
+              <span class={styles.UI_NamingBlocks__Separator}>_</span>
+              <span class={styles.UI_NamingBlocks__Block}>Event</span>
+              <span class={styles.UI_NamingBlocks__Separator}>_</span>
+              <span class={styles.UI_NamingBlocks__Block}>Location</span>
+            </div>
+            <span class={styles.UI_NamingBlocks__Add}>+</span>
+          </div>
+          <span class={styles.UI_NamingBlocks__Preview}>
+            2026-05-10_Globex_Wedding_Santa_Monica.jpg
+          </span>
+        </div>
+      </BentoCard>
+
+      <BentoCard
         title={copy.customPrompts.title}
         description={copy.customPrompts.description}
         icon={MessageSquareText}
+        badge='PRO 🌟'
       >
         <div class={styles.UI_Prompts}>
           <div class={styles.UI_Prompts__Panel}>

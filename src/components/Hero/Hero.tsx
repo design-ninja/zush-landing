@@ -54,7 +54,7 @@ const Hero = ({
   downloadLabel = "Download",
   downloadMenu,
   includeOtherDownloadOS = true,
-  trustSignals = ["✨ Free to try", "💳 No credit card", "∞ Unlimited PRO"],
+  trustSignals = ["✨ Free to try", "💳 No credit card required"],
 }: HeroProps) => {
   const highlightText = titleHighlight ?? titleAccent;
 
@@ -108,7 +108,7 @@ const Hero = ({
           <Heading as="h1" className={styles.Hero__Title}>
             {renderTitle()}
           </Heading>
-          <Text size="xl" color="subtle" className={styles.Hero__Subtitle}>
+          <Text size="lg" color="subtle" className={styles.Hero__Subtitle}>
             {subtitle ??
               "Batch rename files with AI, watch folders automatically, and organize screenshots, PDFs, photos, audio, videos, and documents with reusable templates and searchable names based on real content."}
           </Text>
@@ -132,11 +132,13 @@ const Hero = ({
               {buyLabel}
             </Button>
           </div>
-          <ul className={styles.Hero__TrustRow} aria-label="Trust signals">
-            {trustSignals.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+          {trustSignals.length > 0 && (
+            <ul className={styles.Hero__TrustRow} aria-label="Trust signals">
+              {trustSignals.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          )}
         </div>
 
         <div

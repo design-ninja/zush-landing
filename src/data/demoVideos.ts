@@ -166,6 +166,26 @@ export const MACOS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
     alt: 'Activity history in Zush for macOS',
   },
   {
+    id: 'templates',
+    title: 'Templates',
+    description: 'Save reusable rename setups for repeated AI Rename and Monitor workflows',
+    images: {
+      light: '/images/showcase/macos/templates-light.webp',
+      dark: '/images/showcase/macos/templates-dark.webp',
+    },
+    alt: 'Reusable templates list in Zush for macOS',
+  },
+  {
+    id: 'naming-blocks',
+    title: 'Naming Blocks',
+    description: 'Build invoice-ready filenames from finance, date, vendor, and AI-detected fields',
+    images: {
+      light: '/images/showcase/macos/naming-blocks-light.webp',
+      dark: '/images/showcase/macos/naming-blocks-dark.webp',
+    },
+    alt: 'Bookkeeper invoice naming blocks in Zush for macOS',
+  },
+  {
     id: 'tags',
     title: 'Smart Tags',
     description: 'Generate smart tags for faster file search',
@@ -174,16 +194,6 @@ export const MACOS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
       dark: '/images/showcase/macos/tags-dark.webp',
     },
     alt: 'Smart tags workflow in Zush for macOS',
-  },
-  {
-    id: 'naming',
-    title: 'Naming Patterns',
-    description: 'Create reusable naming patterns with flexible variables',
-    images: {
-      light: '/images/showcase/macos/naming-light.webp',
-      dark: '/images/showcase/macos/naming-dark.webp',
-    },
-    alt: 'Naming pattern settings in Zush for macOS',
   },
   {
     id: 'multilanguage',
