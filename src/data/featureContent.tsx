@@ -20,7 +20,7 @@ import {
 import type { UseCaseData } from '@/components/UseCases/UseCases';
 import type { Locale } from '@/i18n/config';
 
-export type FeatureCategory = 'general' | 'image' | 'document' | 'screenshot' | 'photo' | 'pdf' | 'video' | 'audio';
+export type FeatureCategory = 'general' | 'image' | 'design' | 'document' | 'screenshot' | 'photo' | 'pdf' | 'video' | 'audio';
 
 // ---------- USE CASES PER CATEGORY ----------
 
@@ -90,6 +90,75 @@ const imageUseCases: UseCaseData[] = [
       </>
     ),
     color: 'cyan',
+  },
+];
+
+const designUseCases: UseCaseData[] = [
+  {
+    icon: Palette,
+    title: 'Product Designers',
+    description: (
+      <>
+        Rename Figma, Sketch, Illustrator, and PSD files by
+        <strong> screen, flow, component, and project context</strong>.
+      </>
+    ),
+    color: 'purple',
+  },
+  {
+    icon: Briefcase,
+    title: 'Agencies',
+    description: (
+      <>
+        Keep client mockups, logo concepts, and campaign compositions
+        <strong> searchable across handoff folders</strong>.
+      </>
+    ),
+    color: 'blue',
+  },
+  {
+    icon: Code,
+    title: 'Design Systems Teams',
+    description: (
+      <>
+        Turn generic component library files into names with
+        <strong> product area, state, and UI pattern</strong>.
+      </>
+    ),
+    color: 'green',
+  },
+  {
+    icon: Megaphone,
+    title: 'Brand Teams',
+    description: (
+      <>
+        Organize social templates, campaign art, and source files by
+        <strong> brand, channel, and creative role</strong>.
+      </>
+    ),
+    color: 'orange',
+  },
+  {
+    icon: Image,
+    title: 'Asset Managers',
+    description: (
+      <>
+        Mixed design folders become easier to audit when source files are
+        <strong> named by their visible purpose</strong>.
+      </>
+    ),
+    color: 'cyan',
+  },
+  {
+    icon: Monitor,
+    title: 'Product Teams',
+    description: (
+      <>
+        Handoff folders stay clear when flows, prototypes, and comps are
+        <strong> labeled before review</strong>.
+      </>
+    ),
+    color: 'pink',
   },
 ];
 
@@ -517,6 +586,11 @@ const useCasesMap: Record<FeatureCategory, { title: string; description: string;
     description: 'Photographers, designers, and creators who need searchable image libraries',
     items: imageUseCases,
   },
+  design: {
+    title: 'Who Uses AI Design File Renaming',
+    description: 'Designers, agencies, and product teams who need searchable source files',
+    items: designUseCases,
+  },
   document: {
     title: 'Who Uses AI Document Renaming',
     description: 'Legal teams, accountants, and managers who handle hundreds of documents daily',
@@ -563,6 +637,14 @@ const categoryItemMeta: Record<Exclude<FeatureCategory, 'general'>, Array<Pick<U
     { icon: Video, color: 'pink' },
     { icon: Code, color: 'green' },
     { icon: Image, color: 'cyan' },
+  ],
+  design: [
+    { icon: Palette, color: 'purple' },
+    { icon: Briefcase, color: 'blue' },
+    { icon: Code, color: 'green' },
+    { icon: Megaphone, color: 'orange' },
+    { icon: Image, color: 'cyan' },
+    { icon: Monitor, color: 'pink' },
   ],
   document: [
     { icon: Scale, color: 'purple' },

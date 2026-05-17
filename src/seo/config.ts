@@ -20,7 +20,7 @@ type RouteSeoMeta = Omit<SeoMeta, 'canonicalPath'>;
 const DEFAULT_META: RouteSeoMeta = {
   title: 'Zush — Rename Files with AI on Mac & Windows',
   description:
-    'Rename screenshots, audio, videos, PDFs, photos and documents in seconds. Use templates, Naming Blocks, batch rename, or watch folders on Mac and Windows. Free for 50 files, no signup.',
+    'Rename screenshots, design files, audio, videos, PDFs, photos, iWork and Office documents in seconds. Use templates, Naming Blocks, batch rename, or watch folders on Mac and Windows. Free for 50 files, no signup.',
   robots: 'noindex, nofollow',
   ogType: 'website',
 };
@@ -29,7 +29,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/': {
     ...DEFAULT_META,
     title: 'AI File Renamer & Batch Rename Tool for Mac & Windows — Zush',
-    description: `Batch rename files with AI, watch folders automatically, and rename screenshots, PDFs, photos, audio, videos, and documents by content with templates and Naming Blocks. ${APP_CONFIG.free_tier_limit} free files.`,
+    description: `Batch rename files with AI, watch folders automatically, and rename screenshots, design files, PDFs, photos, audio, videos, iWork and Office documents by content with templates and Naming Blocks. ${APP_CONFIG.free_tier_limit} free files.`,
     robots: 'index, follow',
   },
   '/changelog': {
@@ -103,9 +103,16 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ogType: 'website',
   },
   '/rename-documents-with-ai': {
-    title: 'Rename Office Documents with AI · DOCX, XLSX, PPTX · Zush',
+    title: 'Rename Documents with AI · Office, iWork, Text · Zush',
     description:
-      'Rename DOCX, XLSX, PPTX, TXT, CSV, XML, YAML, subtitles, RTF, OpenDocument, and email files by their actual content.',
+      'Rename DOCX, XLSX, PPTX, Pages, Numbers, Keynote, TXT, CSV, XML, YAML, subtitles, RTF, OpenDocument, and email files by their actual content.',
+    robots: 'index, follow',
+    ogType: 'website',
+  },
+  '/rename-design-files-with-ai': {
+    title: 'Rename Design Files with AI · Figma, Sketch, AI, PSD · Zush',
+    description:
+      'Rename Sketch, Figma .fig, Adobe Illustrator .ai, and Photoshop .psd files by visual preview and project context.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -119,7 +126,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/rename-photos-with-ai': {
     title: 'Rename Photos with AI on Mac · HEIC, RAW, AVIF · Zush',
     description:
-      'Stop renaming photos one by one. Zush reads HEIC, RAW, AVIF, PSD, JPG, and more to generate descriptive names like sunset-pacific-beach.heic.',
+      'Stop renaming photos one by one. Zush reads HEIC, RAW, AVIF, JPG, SVG, TIFF, and more to generate descriptive names like sunset-pacific-beach.heic.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -140,14 +147,14 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/mac': {
     title: 'AI File Renamer & Batch Rename Tool for Mac · Zush',
     description:
-      'Batch rename files on Mac with AI, watch folders automatically, and rename screenshots, PDFs, photos, audio, videos, and documents by content.',
+      'Batch rename files on Mac with AI, watch folders automatically, and rename screenshots, design files, PDFs, photos, audio, videos, iWork and Office documents by content.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/windows': {
     title: 'AI File Renamer & Batch Rename Tool for Windows · Zush',
     description:
-      'Batch rename files on Windows with AI, watch folders automatically, and rename screenshots, PDFs, photos, audio, videos, and documents by content.',
+      'Batch rename files on Windows with AI, watch folders automatically, and rename screenshots, design files, PDFs, photos, audio, videos, iWork and Office documents by content.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -172,6 +179,7 @@ export const INDEXABLE_STATIC_ROUTES = Object.keys(ROUTE_META).filter(
 
 export const FEATURE_ROUTES = [
   '/rename-pdf-with-ai',
+  '/rename-design-files-with-ai',
   '/rename-documents-with-ai',
   '/rename-screenshots-with-ai',
   '/rename-photos-with-ai',
@@ -265,7 +273,7 @@ export const HOME_JSON_LD = {
       url: SITE_ORIGIN,
       name: 'Zush - AI File Renamer & Batch Rename Tool',
       description:
-        'Zush is an AI file renamer and batch rename tool for Mac and Windows. It renames screenshots, PDFs, photos, videos, and documents by content with automatic folder monitoring, BYOK, and Offline AI mode.',
+        'Zush is an AI file renamer and batch rename tool for Mac and Windows. It renames screenshots, design files, PDFs, photos, audio, videos, and documents by content with automatic folder monitoring, BYOK, and Offline AI mode.',
       isPartOf: {
         '@id': `${SITE_ORIGIN}/#website`,
       },
@@ -303,7 +311,7 @@ export const HOME_JSON_LD = {
         '@id': `${SITE_ORIGIN}/#webpage`,
       },
       description:
-        'AI file renamer, batch rename tool, and automatic file organizer for macOS and Windows. Rename screenshots, PDFs, photos, videos, and documents by content with smart metadata and folder monitoring.',
+        'AI file renamer, batch rename tool, and automatic file organizer for macOS and Windows. Rename screenshots, design files, PDFs, photos, audio, videos, iWork and Office documents by content with smart metadata and folder monitoring.',
       applicationCategory: 'UtilitiesApplication',
       applicationSubCategory: 'File Management',
       operatingSystem: ['macOS 14.0+', 'Windows 10', 'Windows 11'],
@@ -344,12 +352,14 @@ export const HOME_JSON_LD = {
       featureList: [
         'AI-powered file renaming',
         'AI batch file renamer for mixed folders',
-        'Bulk rename screenshots, PDFs, photos, videos, and documents',
+        'Bulk rename screenshots, design files, PDFs, photos, audio, videos, and documents',
         'Automatic folder monitoring',
         'Smart metadata extraction',
         'Custom naming patterns',
         'Batch rename support',
         'Video analysis with sampled frames and subtitles',
+        'Design file support for Sketch, Figma, Illustrator, and PSD',
+        'iWork support for Pages, Numbers, and Keynote',
         'RAW format support',
         'PDF and document analysis',
         '60+ language support',

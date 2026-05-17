@@ -1,5 +1,5 @@
 import { CSSProperties, useEffect, useState } from "react";
-import { FileAudio2, FileSpreadsheet, FileText, FileType2, Film, Presentation } from "lucide-react";
+import { FileAudio2, FileSpreadsheet, FileText, FileType2, Film, Palette, Presentation } from "lucide-react";
 import { VIDEO_PREVIEW_IMAGES } from "@/data/videoPreviewImages";
 import styles from "./FileShowcase.module.scss";
 
@@ -7,7 +7,8 @@ export interface FileItem {
   before: string;
   after: string;
   img?: string;
-  type: "image" | "doc" | "sheet" | "slides" | "pdf" | "video" | "audio";
+  type: "image" | "design" | "doc" | "sheet" | "slides" | "pdf" | "video" | "audio";
+  label?: string;
 }
 
 export interface Slide {
@@ -29,9 +30,10 @@ const defaultSlides: Slide[] = [
         type: "audio",
       },
       {
-        before: "meeting_notes_v7_final.docx",
-        after: "Q1 Planning Notes.docx",
-        type: "doc",
+        before: "checkout-flow.fig",
+        after: "Mobile Checkout Flow.fig",
+        type: "design",
+        label: "FIG",
       },
       {
         before: "budget_export_copy(2).xlsx",
@@ -100,9 +102,10 @@ const defaultSlides: Slide[] = [
         type: "sheet",
       },
       {
-        before: "marketing-review-v5.pptx",
-        after: "Campaign Review Slides.pptx",
-        type: "slides",
+        before: "brand-system.sketch",
+        after: "Brand Component Library.sketch",
+        type: "design",
+        label: "SKETCH",
       },
       {
         before: "scan_2026_03_19.pdf",
@@ -126,6 +129,7 @@ const defaultSlides: Slide[] = [
 ];
 
 const fileTypeConfig = {
+  design: { icon: Palette, label: "FIG", className: styles.FileItem__Preview_design },
   doc: { icon: FileText, label: "DOCX", className: styles.FileItem__Preview_doc },
   sheet: { icon: FileSpreadsheet, label: "XLSX", className: styles.FileItem__Preview_sheet },
   slides: { icon: Presentation, label: "PPTX", className: styles.FileItem__Preview_slides },
@@ -214,7 +218,7 @@ const FileShowcase = ({ slides: customSlides }: FileShowcaseProps = {}) => {
                       aria-hidden="true"
                     >
                       <Icon size={26} strokeWidth={2.1} />
-                      <span className={styles.FileItem__Badge}>{preview.label}</span>
+                      <span className={styles.FileItem__Badge}>{file.label ?? preview.label}</span>
                     </div>
                   );
                 })()

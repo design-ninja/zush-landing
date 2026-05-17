@@ -25,6 +25,7 @@ import {
   Search,
   Camera,
   Cloud,
+  Palette,
   Sun,
   Sparkles,
   Scissors,
@@ -71,6 +72,7 @@ const INTEGRATION_ICONS_MAC = [MousePointerClick, Zap, Search, Camera, Cloud, Su
 const INTEGRATION_ICONS_WIN = [MousePointerClick, Scissors, Sparkles, Cloud, Search, Sun] as const;
 
 const FILE_TYPE_META: Record<Exclude<ScenarioFileType, 'image'>, { Icon: typeof FileText; label: string; modifier: string }> = {
+  design: { Icon: Palette, label: 'FIG', modifier: 'design' },
   doc: { Icon: FileText, label: 'DOCX', modifier: 'doc' },
   sheet: { Icon: FileSpreadsheet, label: 'XLSX', modifier: 'sheet' },
   slides: { Icon: Presentation, label: 'PPTX', modifier: 'slides' },
@@ -377,7 +379,7 @@ const getStoreAppUrl = (kind: string) => {
                       aria-hidden='true'
                     >
                       <meta.Icon size={26} strokeWidth={2.1} />
-                      <span class={styles.FileItem__Badge}>{meta.label}</span>
+                      <span class={styles.FileItem__Badge}>{scenario.badgeLabel ?? meta.label}</span>
                     </div>
                   )
                 )}

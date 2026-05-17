@@ -322,7 +322,7 @@ export function getLocalizedPlatformSpecificsContent(
         ...scenario,
         title: useCase?.title ?? scenario.title,
         description: useCase?.description ?? scenario.description,
-        after: scenario.fileType === 'video' ? scenario.after : afterNames[index] ?? scenario.after,
+        after: scenario.fileType === 'video' || scenario.fileType === 'design' ? scenario.after : afterNames[index] ?? scenario.after,
       };
     }),
     security: [

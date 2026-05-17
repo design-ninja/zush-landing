@@ -18,7 +18,7 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 Quick verdict by use case:
 
-- **Mixed files (RAW + HEIC + PDF + DOCX) on Mac & Windows:** Zush
+- **Mixed files (RAW + HEIC + design + iWork + audio + video) on Mac & Windows:** Zush
 - **Local-only / privacy-first:** AI Renamer CLI or Wisfile
 - **Mac-native with deep Finder integration:** NameQuick
 - **Document-heavy or team workflows:** Renamer.ai or Renamed.to
@@ -59,7 +59,7 @@ Before comparing tools, know what actually matters for daily use:
 
 ![Zush AI rename results showing files with descriptive before and after names and green checkmarks](/images/showcase/macos/batch-rename-light.webp)
 
-[Zush AI file renamer for Mac and Windows](/) is the pick for users who work with a mix of file types and want one desktop workflow instead of separate rename tools for images, documents, videos, and audio. It supports 98 formats: 42 image formats (including HEIC, AVIF, PSD, SVG, and RAW), 33 document formats (PDF, Office, OpenDocument, text, data, email, and subtitle files), 16 video formats (including MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, and VOB), and 7 audio formats (including MP3, M4A, WAV, FLAC, OGG, WebM, and MPGA). That breadth matters because real workflows mix phone photos, camera RAW files, scanned PDFs, office documents, subtitles, screen recordings, and audio files in the same folders, and most tools in this post fail on at least one of those categories.
+[Zush AI file renamer for Mac and Windows](/) is the pick for users who work with a mix of file types and want one desktop workflow instead of separate rename tools for images, design files, documents, videos, and audio. It supports 100+ formats: 41 image formats (including HEIC, AVIF, SVG, and RAW), 4 design formats (Sketch, Figma .fig, Adobe Illustrator .ai, and PSD), 37 document and PDF-related formats (PDF, Office, iWork, OpenDocument, text, data, email, and subtitle files), 16 video formats (including MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, and VOB), and 7 audio formats (including MP3, M4A, WAV, FLAC, OGG, WebM, and MPGA). That breadth matters because real workflows mix phone photos, camera RAW files, design assets, scanned PDFs, office documents, subtitles, screen recordings, and audio files in the same folders, and most tools in this post fail on at least one of those categories.
 
 What makes Zush stand out next to the rest of this list:
 
@@ -69,10 +69,10 @@ What makes Zush stand out next to the rest of this list:
 
 **Strengths:**
 
-- Content-aware naming across images, documents, videos, and audio
+- Content-aware naming across images, design files, documents, videos, and audio
 - Batch rename with preview before applying
 - Folder monitoring for automatic renaming of new files
-- Custom naming patterns and templates
+- Reusable templates and 145+ Naming Blocks for repeatable filename structures
 - Search-friendly names, metadata, and custom prompts
 - Multiple AI providers: Gemini, Groq, OpenAI, Claude
 - Local Ollama processing on supported Mac builds
@@ -87,7 +87,7 @@ What makes Zush stand out next to the rest of this list:
 
 **Best for:** Mac and Windows users with mixed file types who want both one-off cleanup and ongoing automation — and want to pay once.
 
-**Learn more about Zush:** [Zush homepage](/) · [for Mac](/mac) · [for Windows](/windows) · [Rename PDFs](/rename-pdf-with-ai) · [Rename Photos](/rename-photos-with-ai) · [Rename Screenshots](/rename-screenshots-with-ai) · [Rename Documents](/rename-documents-with-ai)
+**Learn more about Zush:** [Zush homepage](/) · [for Mac](/mac) · [for Windows](/windows) · [Rename PDFs](/rename-pdf-with-ai) · [Rename Photos](/rename-photos-with-ai) · [Rename Screenshots](/rename-screenshots-with-ai) · [Rename Documents](/rename-documents-with-ai) · [Rename Design Files](/rename-design-files-with-ai) · [Rename Audio](/rename-audio-with-ai)
 
 ### 2. AI Renamer
 
@@ -169,7 +169,7 @@ NameQuick is a polished Mac-native AI renamer with a focus on Finder integration
 
 - macOS only — no Windows or Linux build
 - Subscription tier scales by credits (starts at $5/mo for the smallest pack); the one-time $38 plan requires you to bring your own API key
-- Annual cost adds up vs Zush's $10 one-time even at the lowest subscription tier
+- Annual cost adds up vs Zush's $38 one-time even at the lowest subscription tier
 
 **Best for:** Mac power users who want deep Finder integration and are happy paying $5/month or $38 + their own API key.
 
@@ -287,12 +287,12 @@ Renamify is a browser-based AI file renaming tool. It handles batch renaming thr
 | Feature | Zush | AI Renamer | Renamer.ai | NameQuick | Wisfile | Riffo | Renamed.to | Renamify |
 |---|---|---|---|---|---|---|---|---|
 | Platform | Mac & Windows | CLI (all) + Desktop (Mac/Win) | Desktop (Win/Mac) + Web | macOS only | Local desktop | macOS + Web | Web + cloud APIs | Web |
-| Image formats | 42 (incl. RAW) | ~4 (Desktop) | ~15 | OCR + EXIF, broad | Various | Various | Scanned images | Various |
-| Document formats | 33 | ~2 (Desktop) | ~10 | 30+ formats | Various | Some | PDF/DOCX/XLSX/PPTX | Limited |
+| Image/design formats | 41 images + 4 design formats | ~4 (Desktop) | ~15 | OCR + EXIF, broad | Various | Various | Scanned images | Various |
+| Document formats | 37, including iWork | ~2 (Desktop) | ~10 | 30+ formats | Various | Some | PDF/DOCX/XLSX/PPTX | Limited |
 | Video formats | 16 | CLI supports video | Not central | Listed | Not confirmed | Not documented | No | Not documented |
 | Batch rename | Yes | Yes | Yes | Yes | Yes | Yes | Yes (10–10,000) | Yes |
 | Folder monitoring | Yes | No | Yes (Magic Folders) | Yes (Watch folders) | Not confirmed | Not confirmed | Yes (file watcher daemon) | No |
-| Custom patterns | Yes | Yes (custom prompts) | Yes (templates) | Yes (visual builder, 16+ placeholders) | Yes (templates) | Limited | Yes (saved team rules) | No |
+| Custom patterns | Templates + 145+ Naming Blocks | Yes (custom prompts) | Yes (templates) | Yes (visual builder, 16+ placeholders) | Yes (templates) | Limited | Yes (saved team rules) | No |
 | Undo/rollback | Yes | No | Yes | Yes | Not confirmed | Not confirmed | Yes (review queue) | No |
 | Finder tags | Yes | No | N/A (cross-platform) | Yes | N/A | No | N/A | N/A |
 | Multiple AI providers | 4 providers + BYOK | Ollama/LM Studio/OpenAI | Fixed | OpenAI/Claude/Gemini/OpenRouter/Ollama/LM Studio/MLX | Fixed (local) | Fixed (cloud) | Fixed | Fixed |
@@ -304,8 +304,8 @@ Renamify is a browser-based AI file renaming tool. It handles batch renaming thr
 
 | Tool | Free option | Paid option | Annual cost (estimated) | Model |
 |---|---|---|---|---|
-| Zush | 50 renames to start | <BlogHighlight>$10 one-time</BlogHighlight> (10K renames) | <BlogHighlight>$10 total, never recurring</BlogHighlight> | One-time purchase |
-| Zush BYOK | Unlimited at API cost | ~$0.001 per file | ~$5–10/year | Pay-as-you-go API |
+| Zush | 50 renames to start | <BlogHighlight>$8/month or $38 one-time</BlogHighlight> | <BlogHighlight>$38 one-time or $96/year monthly</BlogHighlight> | Monthly or one-time PRO |
+| Zush BYOK | Included with paid PRO | Provider API cost | Optional API cost | Pay-as-you-go API |
 | AI Renamer | CLI: free, Desktop: 10 credits | Desktop $19 one-time (local) | $0–19 | One-time / credits |
 | Renamer.ai | 25 files/month | $9.95–99.95/month | $120–1,200/year | Subscription |
 | NameQuick | 7-day trial (50 files) | from $5/mo (Managed) or $38 one-time + BYOK | from $60/year (Managed) or $38 + API cost (BYOK) | Subscription or one-time + BYOK |
@@ -339,7 +339,7 @@ Wisfile and Riffo are completely free but trade off folder monitoring confirmati
 
 ## How to choose
 
-**If you want the lowest total cost on Mac or Windows:** <BlogHighlight>Zush One-Time at $38</BlogHighlight>. Full RAW support (CR2, NEF, ARW, DNG), 33 document formats, 16 video formats, folder monitoring, rollback, and unlimited PRO renames.
+**If you want the lowest total cost on Mac or Windows:** <BlogHighlight>Zush One-Time at $38</BlogHighlight>. Full RAW support (CR2, NEF, ARW, DNG), design files, iWork files, audio, 37 document and PDF-related formats, 16 video formats, folder monitoring, rollback, templates, Naming Blocks, and unlimited PRO renames.
 
 **If you are on Mac and want deep Finder integration:** NameQuick. Strong template builder, Finder tags, broad AI provider support; $5/mo or $38 + your own API key.
 
@@ -356,7 +356,7 @@ Wisfile and Riffo are completely free but trade off folder monitoring confirmati
 
 Every tool on this list has some kind of free option. The real question is whether the free tier is enough for your workflow.
 
-Zush gives 50 free renames, which covers light ongoing use or lets you test the workflow thoroughly before deciding. The BYOK option removes the cap entirely if you already have an API key from OpenAI, Google, or Anthropic.
+Zush gives 50 free renames, which covers light ongoing use or lets you test the workflow thoroughly before deciding. Paid PRO unlocks unlimited PRO renames, and the BYOK option lets you use your own Gemini, Groq, OpenAI, or Claude key at provider API cost.
 
 AI Renamer is fully free but requires local hardware and setup. Browser tools offer limited free uploads.
 
@@ -369,6 +369,6 @@ For a full guide to free options, read [How to Rename Files with AI for Free in 
 
 The AI file renamer space in 2026 is not crowded but it is differentiated, and the eight tools above each win something different.
 
-For Mac and Windows users with mixed-file workflows (especially RAW + HEIC + PDFs in the same folder) and a strong dislike of subscriptions, [Zush](https://zushapp.com/) is where we landed — <BlogHighlight>$10 one-time, fast analysis, descriptive names</BlogHighlight>, and BYOK if you outgrow the included credits. For Mac power users who want deep Finder integration, NameQuick is the closest competitor. For local-only processing, pick AI Renamer CLI or Wisfile. For cloud-first document work in Google Drive or Dropbox, pick Renamed.to. For Magic Folders subscription automation, Renamer.ai. For truly free with no trade-offs, Wisfile or Riffo.
+For Mac and Windows users with mixed-file workflows (especially RAW, HEIC, design files, iWork docs, audio, videos, and PDFs in the same folders) and a strong dislike of subscriptions, [Zush](https://zushapp.com/) is where we landed — <BlogHighlight>$38 one-time, fast analysis, descriptive names</BlogHighlight>, plus templates, Naming Blocks, and BYOK on paid PRO. For Mac power users who want deep Finder integration, NameQuick is the closest competitor. For local-only processing, pick AI Renamer CLI or Wisfile. For cloud-first document work in Google Drive or Dropbox, pick Renamed.to. For Magic Folders subscription automation, Renamer.ai. For truly free with no trade-offs, Wisfile or Riffo.
 
 Your decision comes down to four questions: Which platforms do you need? Which file types actually land in your folders? Do you want to pay once or pay forever? Is a safety net (undo, rollback) worth paying for when you rename in bulk?

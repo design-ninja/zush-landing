@@ -2,6 +2,7 @@ import type { FAQItem } from '@/data/blog';
 import { APP_CONFIG } from '@/constants';
 
 const imageExtensions = APP_CONFIG.image_extensions.map((e) => e.toUpperCase()).join(', ');
+const designExtensions = APP_CONFIG.design_extensions.map((e) => e.toUpperCase()).join(', ');
 const documentExtensions = APP_CONFIG.document_extensions.map((e) => e.toUpperCase()).join(', ');
 const videoExtensions = APP_CONFIG.video_extensions.map((e) => e.toUpperCase()).join(', ');
 const audioExtensions = APP_CONFIG.audio_extensions.map((e) => e.toUpperCase()).join(', ');
@@ -10,16 +11,16 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'What is Zush?',
     answer:
-      'Zush is an intelligent desktop application for Mac and Windows that automates the tedious task of renaming files. Using advanced AI, templates, and 145+ Naming Blocks, it analyzes images, audio, videos, and supported documents, including PDFs, to generate descriptive, meaningful filenames and metadata.',
+      'Zush is an intelligent desktop application for Mac and Windows that automates the tedious task of renaming files. Using advanced AI, templates, and 145+ Naming Blocks, it analyzes images, design files, audio, videos, and supported documents, including PDFs and iWork files, to generate descriptive, meaningful filenames and metadata.',
   },
   {
     question: 'What file formats are supported?',
-    answer: `Zush supports visual formats: ${imageExtensions}. Supported document formats include ${documentExtensions}. Supported video formats include ${videoExtensions}. Supported audio formats include ${audioExtensions}. SVG is supported too, so you can organize visual assets, audio, videos, and everyday documents in one workflow.`,
+    answer: `Zush supports visual formats: ${imageExtensions}. Supported design formats include ${designExtensions}. Supported document formats include ${documentExtensions}. Supported video formats include ${videoExtensions}. Supported audio formats include ${audioExtensions}. SVG is supported too, so you can organize visual assets, design files, audio, videos, and everyday documents in one workflow.`,
   },
   {
     question: 'How does Zush AI Rename work?',
     answer:
-      'AI Rename allows you to rename up to 50 files at once using artificial intelligence. Simply drag and drop a collection of files onto the Zush window, and they will be analyzed and renamed in seconds. You can review and regenerate individual file names before applying changes. Perfect for organizing screenshots, audio, videos, PDFs, docs, and downloads in one pass.',
+      'AI Rename allows you to rename up to 50 files at once using artificial intelligence. Simply drag and drop a collection of files onto the Zush window, and they will be analyzed and renamed in seconds. You can review and regenerate individual file names before applying changes. Perfect for organizing screenshots, design files, audio, videos, PDFs, iWork docs, and downloads in one pass.',
   },
   {
     question: 'How does folder monitoring work?',
@@ -39,7 +40,7 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'Is my data secure?',
     answer:
-      'Your original files stay on your computer. In Cloud mode, Zush sends only the analysis payload needed for renaming, such as a compressed preview, sampled video frames, subtitle context, extracted text, compact summary, audio metadata, transcript context, or a bounded audio payload when transcription is required. In Offline AI mode, private local models via Ollama process supported files on your device where supported.',
+      'Your original files stay on your computer. In Cloud mode, Zush sends only the analysis payload needed for renaming, such as a compressed preview, design preview, sampled video frames, subtitle context, extracted text, temporary iWork PDF preview, compact summary, audio metadata, transcript context, or a bounded audio payload when transcription is required. In Offline AI mode, private local models via Ollama process supported files on your device where supported.',
   },
   {
     question: 'Can I undo changes made by the program?',
@@ -73,7 +74,7 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'Which AI model does the app use?',
     answer:
-      'We use state-of-the-art multimodal and speech-capable AI models to ensure high speed and strong accuracy when analyzing visual files, audio, video, and supported documents. The specific model may change as we continuously optimize for the best results.',
+      'We use state-of-the-art multimodal and speech-capable AI models to ensure high speed and strong accuracy when analyzing visual files, design files, audio, video, and supported documents. The specific model may change as we continuously optimize for the best results.',
   },
   {
     question: 'Does the app work offline?',

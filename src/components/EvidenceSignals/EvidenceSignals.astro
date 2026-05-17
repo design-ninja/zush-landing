@@ -13,13 +13,6 @@ import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module
 import formatStyles from '@/components/SupportedFormats/SupportedFormats.module.scss';
 import useCaseStyles from '@/components/UseCases/UseCases.module.scss';
 
-const totalFormatCount = new Set([
-  ...APP_CONFIG.image_extensions,
-  ...APP_CONFIG.document_extensions,
-  ...APP_CONFIG.video_extensions,
-  ...APP_CONFIG.audio_extensions,
-]).size;
-
 const facts = [
   {
     icon: Gift,
@@ -41,8 +34,8 @@ const facts = [
   },
   {
     icon: Files,
-    title: `${totalFormatCount} supported formats`,
-    description: 'Images, RAW photos, PDFs, Office files, subtitles, audio, and videos can live in one rename workflow.',
+    title: '100+ supported formats',
+    description: 'Images, RAW photos, design files, PDFs, Office and iWork files, subtitles, audio, and videos can live in one rename workflow.',
     color: 'orange',
   },
 ];

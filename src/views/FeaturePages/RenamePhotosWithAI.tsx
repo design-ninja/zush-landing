@@ -37,7 +37,7 @@ const jsonLd = buildFeaturePageJsonLd({
     steps: [
       {
         name: 'Import your photos',
-        text: 'Drag and drop photos into Zush or point it at a folder. Zush supports 42 image formats, including JPG, PNG, WebP, AVIF, HEIC/HEIF, TIFF, PSD, SVG, EXR, icons, and major RAW formats from Canon, Nikon, Sony, Fuji, and more.',
+        text: 'Drag and drop photos into Zush or point it at a folder. Zush supports 41 image formats, including JPG, PNG, WebP, AVIF, HEIC/HEIF, TIFF, SVG, EXR, icons, and major RAW formats from Canon, Nikon, Sony, Fuji, and more.',
       },
       {
         name: 'AI describes each photo',
@@ -55,7 +55,7 @@ const jsonLd = buildFeaturePageJsonLd({
     description:
       'AI photo renamer that replaces IMG_, HEIC, and RAW filenames with searchable descriptions for photo libraries, imports, and client shoots.',
     featureList: [
-      'Rename 42 image formats including HEIC, AVIF, JPG, PNG, WebP, PSD, SVG, TIFF, and major RAW formats',
+      'Rename 41 image formats including HEIC, AVIF, JPG, PNG, WebP, SVG, TIFF, and major RAW formats',
       'Generate searchable names for iPhone and camera imports',
       'Batch rename entire photo libraries',
       'Automatic duplicate-safe naming with sequences',

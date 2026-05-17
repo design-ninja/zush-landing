@@ -38,7 +38,7 @@ This matters because files with bad names do not just look messy. They become in
 
 Zush uses macOS file system events to detect new files in watched folders. There is no polling interval or scheduled scan. When a file lands in a monitored folder, Zush picks it up, reads the content using AI, and applies a descriptive name based on what the file actually contains.
 
-That works across 98 supported image, document, video, and audio formats, which covers the files most Mac users encounter daily: PNG screenshots, HEIC and RAW photos, downloaded JPEGs, PDFs, Word documents, spreadsheets, presentations, subtitle files, MP4/MOV screen recordings, M2TS camera clips, MP3 voice memos, WAV exports, and more. In Zush 3.0, monitoring can also use templates and Naming Blocks for folders that need repeatable naming rules.
+That works across 100+ supported image, design, document, video, and audio formats, which covers the files most Mac users encounter daily: PNG screenshots, HEIC and RAW photos, downloaded JPEGs, Sketch/Figma/Illustrator/PSD files, PDFs, Word documents, iWork files, spreadsheets, presentations, subtitle files, MP4/MOV screen recordings, M2TS camera clips, MP3 voice memos, WAV exports, and more. In Zush 3.0, monitoring can also use templates and Naming Blocks for folders that need repeatable naming rules.
 
 The rename follows whatever naming pattern you have configured. You can use patterns like <code>{'{date}_{title}'}</code>, <code>{'{category}_{title}'}</code>, or just <code>{'{title}'}</code>, and Zush applies the pattern consistently to every incoming file.
 

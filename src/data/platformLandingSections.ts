@@ -23,12 +23,12 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
   mac: {
     featuresTitle: 'How Zush works on macOS',
     featuresDescription:
-      'Mac-first renaming workflows for Finder, Spotlight, Downloads, screenshots, audio, videos, and local AI.',
+      'Mac-first renaming workflows for Finder, Spotlight, Downloads, screenshots, design files, iWork, audio, videos, and local AI.',
     featureCards: {
       aiAnalysis: {
         title: 'AI analysis for Mac files',
         description:
-          'Analyze screenshots, audio, videos, PDFs, HEIC and RAW photos, Office docs, and exports without leaving a native macOS workflow.',
+          'Analyze screenshots, Figma, Sketch, Illustrator, PSD, audio, videos, PDFs, HEIC and RAW photos, Office docs, iWork files, and exports without leaving a native macOS workflow.',
       },
       foldersMonitoring: {
         title: 'Watch Downloads and Screenshots',
@@ -58,7 +58,7 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
       customPrompts: {
         title: 'Rules for Finder workflows',
         description:
-          'Tell Zush how to name design exports, invoices, audio, videos, screenshots, and client folders before you apply changes.',
+          'Tell Zush how to name design source files, invoices, audio, videos, screenshots, and client folders before you apply changes.',
       },
       byok: {
         title: 'BYOK on Mac',
@@ -86,7 +86,7 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
         {
           title: 'Designers on Mac',
           description:
-            'Rename screenshots, Figma exports, Sketch assets, and reference images so Finder folders stay scannable.',
+            'Rename Figma, Sketch, Illustrator, PSD, screenshots, exports, and reference images so Finder folders stay scannable.',
         },
         {
           title: 'Photographers',
@@ -119,12 +119,12 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
   windows: {
     featuresTitle: 'How Zush works on Windows',
     featuresDescription:
-      'Windows-first cleanup for File Explorer, Downloads, screenshots, videos, Microsoft Store installs, and local AI.',
+      'Windows-first cleanup for File Explorer, Downloads, screenshots, design files, iWork, videos, Microsoft Store installs, and local AI.',
     featureCards: {
       aiAnalysis: {
         title: 'AI analysis for Windows files',
         description:
-          'Analyze screenshots, audio, videos, PDFs, photos, Office docs, and exports from ordinary Windows folders.',
+          'Analyze screenshots, design files, audio, videos, PDFs, photos, Office docs, iWork files, and exports from ordinary Windows folders.',
       },
       foldersMonitoring: {
         title: 'Watch Downloads and Screenshots',
@@ -154,7 +154,7 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
       customPrompts: {
         title: 'Rules for Windows folders',
         description:
-          'Set naming rules for screenshots, audio, videos, invoices, client PDFs, reports, and shared team folders.',
+          'Set naming rules for screenshots, design files, audio, videos, invoices, client PDFs, reports, and shared team folders.',
       },
       byok: {
         title: 'BYOK on Windows',
@@ -182,7 +182,7 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
         {
           title: 'Design teams',
           description:
-            'Rename screenshots, mockups, exported assets, and review images before they move to shared folders.',
+            'Rename Figma, Sketch, Illustrator, PSD, screenshots, mockups, exported assets, and review images before they move to shared folders.',
         },
         {
           title: 'Photo libraries',

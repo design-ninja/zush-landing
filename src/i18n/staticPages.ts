@@ -50,7 +50,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       title: 'BYOK-Einrichtung',
       description: 'Verbinde deinen eigenen KI-Anbieter und nutze unbegrenzte Cloud-Umbenennungen mit Gemini, Groq, OpenAI oder Claude.',
       sections: [
-        { eyebrow: 'Überblick', title: 'Was ist BYOK?', body: 'BYOK bedeutet Bring Your Own Key. PRO-Nutzer können eigene API-Schlüssel verbinden, statt Zush-Credits für Cloud-Analysen zu nutzen.', bullets: ['Unbegrenzte Cloud-Umbenennungen zum Anbieterpreis', 'Gemini, Groq, OpenAI und Claude werden unterstützt', 'Schlüssel bleiben lokal sicher gespeichert'] },
+        { eyebrow: 'Überblick', title: 'Was ist BYOK?', body: 'BYOK bedeutet Bring Your Own Key. PRO-Nutzer können eigene API-Schlüssel für Cloud-Analysen zum Anbieterpreis verbinden.', bullets: ['Unbegrenzte Cloud-Umbenennungen zum Anbieterpreis', 'Gemini, Groq, OpenAI und Claude werden unterstützt', 'Schlüssel bleiben lokal sicher gespeichert'] },
         { eyebrow: 'Schritte', title: 'So richtest du es ein', body: 'Erstelle einen API-Schlüssel im Dashboard deines Anbieters, öffne Zush, gehe zu Settings > Preferences > BYOK, wähle den Anbieter, füge den Schlüssel ein und aktiviere BYOK.' },
         { eyebrow: 'Sicherheit', title: 'Datenkontrolle', body: 'In BYOK werden Analyseanfragen über die Zush-Infrastruktur an deinen Anbieter weitergeleitet. Zush speichert deine Dateiinhalte im normalen Betrieb nicht dauerhaft.' },
       ],
@@ -80,7 +80,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       updated: 'Zuletzt aktualisiert: 26. April 2026',
       sections: [
         { eyebrow: 'Service', title: 'Beschreibung', body: 'Zush ist ein Desktop-Werkzeug zum Organisieren, Umbenennen und Verwalten von Dateimetadaten mit KI. Dazu gehören Audio-Unterstützung, Templates, Naming Blocks, Stapel-Umbenennung, Ordnerüberwachung, eigene Prompts, BYOK und Offline-KI.' },
-        { eyebrow: 'Lizenz', title: 'Nutzung und Zahlungen', body: 'Du erhältst eine persönliche, nicht übertragbare Lizenz. Zush PRO ist ein Einmalkauf mit Credits sowie Zugriff auf BYOK und Offline-KI. Zahlungen werden über Paddle oder Store-Plattformen abgewickelt.' },
+        { eyebrow: 'Lizenz', title: 'Nutzung und Zahlungen', body: 'Du erhältst eine persönliche, nicht übertragbare Lizenz. Zush PRO ist als Monatsplan oder Einmalkauf verfügbar und bietet Zugriff auf Unlimited PRO, BYOK und Offline-KI. Zahlungen werden über Paddle oder Store-Plattformen abgewickelt.' },
         { eyebrow: 'Haftung', title: 'KI-Ergebnisse und Verantwortung', body: 'KI kann falsche oder unerwartete Namen erzeugen. Du bist dafür verantwortlich, Änderungen vor dem Anwenden zu prüfen. Der Dienst wird ohne Gewährleistung bereitgestellt.' },
       ],
     },
@@ -89,7 +89,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       description: 'Informationen zur 14-Tage-Geld-zurück-Garantie für Zush PRO.',
       updated: 'Zuletzt aktualisiert: 19. März 2026',
       sections: [
-        { eyebrow: 'Einmalkauf', title: '14 Tage Geld zurück', body: 'Zush PRO ist ein Einmalkauf. Wenn du nicht zufrieden bist, kannst du innerhalb von 14 Tagen ab Kaufdatum eine Rückerstattung anfragen.' },
+        { eyebrow: 'Einmalkauf', title: '14 Tage Geld zurück', body: 'Zush PRO ist als bezahlter Plan erstattungsfähig. Wenn du nicht zufrieden bist, kannst du innerhalb von 14 Tagen ab Kaufdatum eine Rückerstattung anfragen.' },
         { eyebrow: 'Anfrage', title: 'So beantragst du eine Rückerstattung', body: 'Schreibe an refund@zushapp.com mit Bestellnummer und der E-Mail-Adresse, die du beim Kauf verwendet hast.' },
         { eyebrow: 'Bearbeitung', title: 'Auszahlung', body: 'Nach Genehmigung wird die Rückerstattung auf die ursprüngliche Zahlungsmethode gebucht. Die Dauer hängt vom Kartenanbieter ab.' },
       ],
@@ -109,7 +109,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       title: 'Guide de configuration BYOK',
       description: 'Connectez votre propre fournisseur IA pour des renommages cloud illimités avec Gemini, Groq, OpenAI ou Claude.',
       sections: [
-        { eyebrow: 'Aperçu', title: 'Qu’est-ce que BYOK ?', body: 'BYOK signifie Bring Your Own Key. Les utilisateurs PRO peuvent connecter leurs propres clés API au lieu d’utiliser les crédits Zush.', bullets: ['Renommages cloud illimités au coût du fournisseur', 'Gemini, Groq, OpenAI et Claude pris en charge', 'Les clés restent stockées localement'] },
+        { eyebrow: 'Aperçu', title: 'Qu’est-ce que BYOK ?', body: 'BYOK signifie Bring Your Own Key. Les utilisateurs PRO peuvent connecter leurs propres clés API pour des analyses cloud au coût du fournisseur.', bullets: ['Renommages cloud illimités au coût du fournisseur', 'Gemini, Groq, OpenAI et Claude pris en charge', 'Les clés restent stockées localement'] },
         { eyebrow: 'Étapes', title: 'Configuration', body: 'Créez une clé API dans le tableau de bord du fournisseur, ouvrez Zush, allez dans Settings > Preferences > BYOK, choisissez le fournisseur, collez la clé et activez BYOK.' },
         { eyebrow: 'Sécurité', title: 'Contrôle des données', body: 'En mode BYOK, les demandes sont relayées par l’infrastructure Zush vers votre fournisseur. Zush ne conserve pas durablement le contenu des fichiers dans le fonctionnement normal.' },
       ],
@@ -139,7 +139,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       updated: 'Dernière mise à jour: 26 avril 2026',
       sections: [
         { eyebrow: 'Service', title: 'Description', body: 'Zush est un utilitaire desktop pour organiser, renommer et gérer les métadonnées de fichiers avec l’IA: audio, modèles, blocs de nommage, lots, surveillance, prompts personnalisés, BYOK et IA hors ligne.' },
-        { eyebrow: 'Licence', title: 'Utilisation et paiements', body: 'Vous recevez une licence personnelle non transférable. Zush PRO est un achat unique avec crédits et accès à BYOK et à l’IA hors ligne. Les paiements sont traités par Paddle ou les stores.' },
+        { eyebrow: 'Licence', title: 'Utilisation et paiements', body: 'Vous recevez une licence personnelle non transférable. Zush PRO est disponible en abonnement mensuel ou achat unique avec accès à Unlimited PRO, BYOK et à l’IA hors ligne. Les paiements sont traités par Paddle ou les stores.' },
         { eyebrow: 'Responsabilité', title: 'Résultats IA', body: 'L’IA peut produire des noms incorrects ou inattendus. Vous devez vérifier les changements avant de les appliquer. Le service est fourni sans garantie.' },
       ],
     },
@@ -148,7 +148,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       description: 'Détails de la garantie de remboursement de 14 jours pour Zush PRO.',
       updated: 'Dernière mise à jour: 19 mars 2026',
       sections: [
-        { eyebrow: 'Achat unique', title: '14 jours pour changer d’avis', body: 'Zush PRO est un achat unique. Si cela ne vous convient pas, vous pouvez demander un remboursement sous 14 jours après l’achat.' },
+        { eyebrow: 'Achat unique', title: '14 jours pour changer d’avis', body: 'Zush PRO est remboursable sur les offres payantes. Si cela ne vous convient pas, vous pouvez demander un remboursement sous 14 jours après l’achat.' },
         { eyebrow: 'Demande', title: 'Comment demander un remboursement', body: 'Écrivez à refund@zushapp.com avec votre numéro de commande et l’adresse email utilisée pour l’achat.' },
         { eyebrow: 'Traitement', title: 'Versement', body: 'Après approbation, le remboursement est appliqué au moyen de paiement initial. Le délai dépend de l’émetteur de votre carte.' },
       ],
@@ -168,7 +168,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       title: 'Guia de configuração BYOK',
       description: 'Conecte seu próprio provedor de IA para renomeações cloud ilimitadas com Gemini, Groq, OpenAI ou Claude.',
       sections: [
-        { eyebrow: 'Visão geral', title: 'O que é BYOK?', body: 'BYOK significa Bring Your Own Key. Usuários PRO podem conectar suas próprias chaves API em vez de usar créditos do Zush.', bullets: ['Renomeações cloud ilimitadas pelo custo do provedor', 'Gemini, Groq, OpenAI e Claude', 'Chaves armazenadas localmente'] },
+        { eyebrow: 'Visão geral', title: 'O que é BYOK?', body: 'BYOK significa Bring Your Own Key. Usuários PRO podem conectar suas próprias chaves API para análises cloud pelo custo do provedor.', bullets: ['Renomeações cloud ilimitadas pelo custo do provedor', 'Gemini, Groq, OpenAI e Claude', 'Chaves armazenadas localmente'] },
         { eyebrow: 'Passos', title: 'Como configurar', body: 'Crie uma chave API no painel do provedor, abra o Zush, vá para Settings > Preferences > BYOK, escolha o provedor, cole a chave e ative BYOK.' },
         { eyebrow: 'Segurança', title: 'Controle dos dados', body: 'No BYOK, as solicitações passam pela infraestrutura do Zush até seu provedor. O Zush não armazena conteúdo de arquivos de forma permanente na operação normal.' },
       ],
@@ -198,7 +198,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       updated: 'Última atualização: 26 de abril de 2026',
       sections: [
         { eyebrow: 'Serviço', title: 'Descrição', body: 'Zush é um utilitário desktop para organizar, renomear e gerenciar metadados de arquivos com IA: áudio, modelos, blocos de nomes, lotes, monitoramento, prompts personalizados, BYOK e IA offline.' },
-        { eyebrow: 'Licença', title: 'Uso e pagamentos', body: 'Você recebe uma licença pessoal e intransferível. Zush PRO é uma compra única com créditos e acesso a BYOK e IA offline. Pagamentos são processados por Paddle ou lojas.' },
+        { eyebrow: 'Licença', title: 'Uso e pagamentos', body: 'Você recebe uma licença pessoal e intransferível. Zush PRO está disponível em plano mensal ou compra única com acesso a Unlimited PRO, BYOK e IA offline. Pagamentos são processados por Paddle ou lojas.' },
         { eyebrow: 'Responsabilidade', title: 'Resultados da IA', body: 'A IA pode gerar nomes incorretos ou inesperados. Você deve revisar alterações antes de aplicar. O serviço é fornecido sem garantias.' },
       ],
     },
@@ -207,7 +207,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       description: 'Detalhes da garantia de reembolso de 14 dias para Zush PRO.',
       updated: 'Última atualização: 19 de março de 2026',
       sections: [
-        { eyebrow: 'Compra única', title: '14 dias de garantia', body: 'Zush PRO é uma compra única. Se não ficar satisfeito, você pode pedir reembolso em até 14 dias após a compra.' },
+        { eyebrow: 'Compra única', title: '14 dias de garantia', body: 'Zush PRO é reembolsável nos planos pagos. Se não ficar satisfeito, você pode pedir reembolso em até 14 dias após a compra.' },
         { eyebrow: 'Solicitação', title: 'Como pedir reembolso', body: 'Envie email para refund@zushapp.com com o número do pedido e o email usado na compra.' },
         { eyebrow: 'Processamento', title: 'Pagamento', body: 'Após aprovação, o reembolso é aplicado ao método de pagamento original. O prazo depende do emissor do cartão.' },
       ],
@@ -227,7 +227,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       title: 'Guía de configuración BYOK',
       description: 'Conecta tu propio proveedor de IA para renombrados cloud ilimitados con Gemini, Groq, OpenAI o Claude.',
       sections: [
-        { eyebrow: 'Resumen', title: '¿Qué es BYOK?', body: 'BYOK significa Bring Your Own Key. Los usuarios PRO pueden conectar sus propias claves API en lugar de usar créditos de Zush.', bullets: ['Renombrados cloud ilimitados al coste del proveedor', 'Gemini, Groq, OpenAI y Claude', 'Claves guardadas localmente'] },
+        { eyebrow: 'Resumen', title: '¿Qué es BYOK?', body: 'BYOK significa Bring Your Own Key. Los usuarios PRO pueden conectar sus propias claves API para análisis cloud al coste del proveedor.', bullets: ['Renombrados cloud ilimitados al coste del proveedor', 'Gemini, Groq, OpenAI y Claude', 'Claves guardadas localmente'] },
         { eyebrow: 'Pasos', title: 'Cómo configurarlo', body: 'Crea una clave API en el panel del proveedor, abre Zush, entra en Settings > Preferences > BYOK, elige proveedor, pega la clave y activa BYOK.' },
         { eyebrow: 'Seguridad', title: 'Control de datos', body: 'En BYOK, las solicitudes pasan por infraestructura de Zush hacia tu proveedor. Zush no almacena contenido de archivos de forma permanente durante la operación normal.' },
       ],
@@ -257,7 +257,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       updated: 'Última actualización: 26 de abril de 2026',
       sections: [
         { eyebrow: 'Servicio', title: 'Descripción', body: 'Zush es una utilidad de escritorio para organizar, renombrar y gestionar metadatos con IA: audio, plantillas, bloques de nombres, lotes, monitoreo, prompts personalizados, BYOK e IA offline.' },
-        { eyebrow: 'Licencia', title: 'Uso y pagos', body: 'Recibes una licencia personal e intransferible. Zush PRO es una compra única con créditos y acceso a BYOK e IA offline. Los pagos se procesan mediante Paddle o tiendas.' },
+        { eyebrow: 'Licencia', title: 'Uso y pagos', body: 'Recibes una licencia personal e intransferible. Zush PRO está disponible como plan mensual o compra única con acceso a Unlimited PRO, BYOK e IA offline. Los pagos se procesan mediante Paddle o tiendas.' },
         { eyebrow: 'Responsabilidad', title: 'Resultados de IA', body: 'La IA puede producir nombres incorrectos o inesperados. Debes revisar los cambios antes de aplicarlos. El servicio se ofrece sin garantías.' },
       ],
     },
@@ -266,7 +266,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       description: 'Detalles de la garantía de devolución de 14 días para Zush PRO.',
       updated: 'Última actualización: 19 de marzo de 2026',
       sections: [
-        { eyebrow: 'Compra única', title: '14 días de garantía', body: 'Zush PRO es una compra única. Si no estás satisfecho, puedes pedir reembolso dentro de los 14 días posteriores a la compra.' },
+        { eyebrow: 'Compra única', title: '14 días de garantía', body: 'Zush PRO es reembolsable en los planes pagos. Si no estás satisfecho, puedes pedir reembolso dentro de los 14 días posteriores a la compra.' },
         { eyebrow: 'Solicitud', title: 'Cómo pedir reembolso', body: 'Escribe a refund@zushapp.com con el número de pedido y el email usado en la compra.' },
         { eyebrow: 'Procesamiento', title: 'Pago', body: 'Tras aprobación, el reembolso se aplica al método de pago original. El plazo depende del emisor de la tarjeta.' },
       ],
@@ -325,7 +325,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       description: 'Details van de 14 dagen geld-terug-garantie voor Zush PRO.',
       updated: 'Laatst bijgewerkt: 19 maart 2026',
       sections: [
-        { eyebrow: 'Eenmalige aankoop', title: '14 dagen garantie', body: 'Zush PRO is een eenmalige aankoop. Ben je niet tevreden, dan kun je binnen 14 dagen na aankoop terugbetaling aanvragen.' },
+        { eyebrow: 'Eenmalige aankoop', title: '14 dagen garantie', body: 'Zush PRO is terugbetaalbaar voor betaalde plannen. Ben je niet tevreden, dan kun je binnen 14 dagen na aankoop terugbetaling aanvragen.' },
         { eyebrow: 'Aanvraag', title: 'Terugbetaling aanvragen', body: 'Mail refund@zushapp.com met je bestelnummer en het e-mailadres van de aankoop.' },
         { eyebrow: 'Verwerking', title: 'Uitbetaling', body: 'Na goedkeuring wordt het bedrag teruggestort naar de oorspronkelijke betaalmethode. De duur hangt af van je kaartuitgever.' },
       ],
@@ -345,7 +345,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       title: 'Guida BYOK',
       description: 'Collega il tuo provider IA per rinomine cloud illimitate con Gemini, Groq, OpenAI o Claude.',
       sections: [
-        { eyebrow: 'Panoramica', title: 'Cos’è BYOK?', body: 'BYOK significa Bring Your Own Key. Gli utenti PRO possono collegare le proprie chiavi API invece di usare i crediti Zush.', bullets: ['Rinomine cloud illimitate al costo del provider', 'Gemini, Groq, OpenAI e Claude', 'Chiavi salvate localmente'] },
+        { eyebrow: 'Panoramica', title: 'Cos’è BYOK?', body: 'BYOK significa Bring Your Own Key. Gli utenti PRO possono collegare le proprie chiavi API per analisi cloud al costo del provider.', bullets: ['Rinomine cloud illimitate al costo del provider', 'Gemini, Groq, OpenAI e Claude', 'Chiavi salvate localmente'] },
         { eyebrow: 'Passaggi', title: 'Configurazione', body: 'Crea una chiave API nel pannello del provider, apri Zush, vai in Settings > Preferences > BYOK, scegli il provider, incolla la chiave e abilita BYOK.' },
         { eyebrow: 'Sicurezza', title: 'Controllo dati', body: 'In BYOK le richieste passano dall’infrastruttura Zush al tuo provider. Zush non conserva permanentemente il contenuto dei file durante l’uso normale.' },
       ],
@@ -375,7 +375,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       updated: 'Ultimo aggiornamento: 26 aprile 2026',
       sections: [
         { eyebrow: 'Servizio', title: 'Descrizione', body: 'Zush è un utility desktop per organizzare, rinominare e gestire metadati con IA: audio, modelli, blocchi di nomi, batch, monitoraggio cartelle, prompt personalizzati, BYOK e IA offline.' },
-        { eyebrow: 'Licenza', title: 'Uso e pagamenti', body: 'Ricevi una licenza personale non trasferibile. Zush PRO è un acquisto unico con crediti e accesso a BYOK e IA offline. I pagamenti sono gestiti da Paddle o dagli store.' },
+        { eyebrow: 'Licenza', title: 'Uso e pagamenti', body: 'Ricevi una licenza personale non trasferibile. Zush PRO è disponibile come piano mensile o acquisto unico con accesso a Unlimited PRO, BYOK e IA offline. I pagamenti sono gestiti da Paddle o dagli store.' },
         { eyebrow: 'Responsabilità', title: 'Risultati IA', body: 'L’IA può produrre nomi errati o inattesi. Devi controllare le modifiche prima di applicarle. Il servizio è fornito senza garanzie.' },
       ],
     },
@@ -434,7 +434,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       updated: '最終更新: 2026年4月26日',
       sections: [
         { eyebrow: 'サービス', title: '説明', body: 'Zush は AI でファイル名とメタデータを整理するデスクトップツールです。音声、テンプレート、命名ブロック、一括リネーム、フォルダ監視、カスタムプロンプト、BYOK、Offline AI を含みます。' },
-        { eyebrow: 'ライセンス', title: '利用と支払い', body: '個人用で譲渡不可のライセンスが付与されます。Zush PRO は買い切りで、クレジット、BYOK、Offline AI が含まれます。支払いは Paddle またはストア経由です。' },
+        { eyebrow: 'ライセンス', title: '利用と支払い', body: '個人用で譲渡不可のライセンスが付与されます。Zush PRO は月額プランまたは買い切りで利用でき、Unlimited PRO、BYOK、Offline AI が含まれます。支払いは Paddle またはストア経由です。' },
         { eyebrow: '責任', title: 'AI の結果', body: 'AI は誤った名前や予期しない名前を生成する場合があります。適用前に確認してください。サービスは保証なしで提供されます。' },
       ],
     },
@@ -443,7 +443,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       description: 'Zush PRO の14日間返金保証について。',
       updated: '最終更新: 2026年3月19日',
       sections: [
-        { eyebrow: '買い切り', title: '14日間保証', body: 'Zush PRO は買い切りです。満足できない場合、購入日から14日以内に返金を申請できます。' },
+        { eyebrow: '買い切り', title: '14日間保証', body: 'Zush PRO の有料プランは返金対象です。満足できない場合、購入日から14日以内に返金を申請できます。' },
         { eyebrow: '申請', title: '返金の依頼方法', body: '注文番号と購入時のメールアドレスを添えて refund@zushapp.com へ連絡してください。' },
         { eyebrow: '処理', title: '返金処理', body: '承認後、元の支払い方法に返金されます。所要時間はカード発行会社により異なります。' },
       ],
@@ -493,7 +493,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       updated: '마지막 업데이트: 2026년 4월 26일',
       sections: [
         { eyebrow: '서비스', title: '설명', body: 'Zush는 AI로 파일 이름과 메타데이터를 정리하는 데스크톱 도구입니다. 오디오, 템플릿, Naming Blocks, 일괄 이름 변경, 폴더 모니터링, 사용자 프롬프트, BYOK, 오프라인 AI를 포함합니다.' },
-        { eyebrow: '라이선스', title: '사용 및 결제', body: '개인적이고 양도할 수 없는 라이선스가 제공됩니다. Zush PRO는 크레딧, BYOK, 오프라인 AI가 포함된 일회성 구매입니다. 결제는 Paddle 또는 스토어에서 처리됩니다.' },
+        { eyebrow: '라이선스', title: '사용 및 결제', body: '개인적이고 양도할 수 없는 라이선스가 제공됩니다. Zush PRO는 월간 플랜 또는 일회성 구매로 제공되며 Unlimited PRO, BYOK, 오프라인 AI를 포함합니다. 결제는 Paddle 또는 스토어에서 처리됩니다.' },
         { eyebrow: '책임', title: 'AI 결과', body: 'AI는 잘못되거나 예상치 못한 이름을 만들 수 있습니다. 적용 전 변경을 검토해야 합니다. 서비스는 보증 없이 제공됩니다.' },
       ],
     },
@@ -502,7 +502,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       description: 'Zush PRO 14일 환불 보장 안내.',
       updated: '마지막 업데이트: 2026년 3월 19일',
       sections: [
-        { eyebrow: '일회성 구매', title: '14일 보장', body: 'Zush PRO는 일회성 구매입니다. 만족하지 않으면 구매일로부터 14일 이내 환불을 요청할 수 있습니다.' },
+        { eyebrow: '일회성 구매', title: '14일 보장', body: 'Zush PRO 유료 플랜은 환불 대상입니다. 만족하지 않으면 구매일로부터 14일 이내 환불을 요청할 수 있습니다.' },
         { eyebrow: '요청', title: '환불 요청 방법', body: '주문 번호와 구매에 사용한 이메일 주소를 refund@zushapp.com 으로 보내세요.' },
         { eyebrow: '처리', title: '환불 처리', body: '승인 후 원래 결제 수단으로 환불됩니다. 처리 시간은 카드 발급사에 따라 다릅니다.' },
       ],
@@ -561,7 +561,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       description: 'Zush PRO 14 天退款保证说明。',
       updated: '最后更新：2026 年 3 月 19 日',
       sections: [
-        { eyebrow: '一次性购买', title: '14 天保证', body: 'Zush PRO 是一次性购买。如果不满意，你可以在购买日起 14 天内申请退款。' },
+        { eyebrow: '一次性购买', title: '14 天保证', body: 'Zush PRO 付费方案可退款。如果不满意，你可以在购买日起 14 天内申请退款。' },
         { eyebrow: '申请', title: '如何申请退款', body: '请将订单号和购买时使用的邮箱发送到 refund@zushapp.com。' },
         { eyebrow: '处理', title: '退款到账', body: '批准后，退款会退回原支付方式。到账时间取决于发卡机构。' },
       ],

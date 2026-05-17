@@ -49,7 +49,7 @@ export interface QuickstartStep {
   preview: QuickstartPreviewKind;
 }
 
-export type ScenarioFileType = 'image' | 'doc' | 'sheet' | 'slides' | 'pdf' | 'video';
+export type ScenarioFileType = 'image' | 'design' | 'doc' | 'sheet' | 'slides' | 'pdf' | 'video';
 
 export interface ScenarioItem {
   title: string;
@@ -58,6 +58,7 @@ export interface ScenarioItem {
   description: string;
   fileType: ScenarioFileType;
   image?: string;
+  badgeLabel?: string;
 }
 
 export interface SecurityItem {
@@ -136,7 +137,7 @@ export const PLATFORM_SPECIFICS_CONTENT: Record<PlatformSpecificsKey, PlatformSp
       },
       {
         title: 'Drag a folder or files onto the dropzone',
-        detail: 'Try ~/Downloads or your Screenshots folder. Zush analyzes images, audio, videos, and documents in parallel.',
+        detail: 'Try ~/Downloads or your Screenshots folder. Zush analyzes images, design files, audio, videos, and documents in parallel.',
         duration: '~20s',
         preview: 'drop',
       },
@@ -213,13 +214,13 @@ export const PLATFORM_SPECIFICS_CONTENT: Record<PlatformSpecificsKey, PlatformSp
         image: '/images/examples/pug.webp',
       },
       {
-        title: 'Design exports from Figma & Sketch',
-        before: 'IMG_20240812_143052.jpg',
-        after: 'HappyDogOnBeach.jpg',
+        title: 'Design source files',
+        before: 'checkout-wireframes.fig',
+        after: 'Mobile Checkout Flow.fig',
         description:
-          'Stop hunting through generic export names. Drop your exports folder onto Zush and ship to engineering with names that match the component.',
-        fileType: 'image',
-        image: '/images/examples/dog.webp',
+          'Rename Figma, Sketch, Illustrator, and PSD source files by visible flow, screen, component, and project context before handoff.',
+        fileType: 'design',
+        badgeLabel: 'FIG',
       },
       {
         title: 'Screen recordings and clips',
@@ -390,10 +391,10 @@ export const PLATFORM_SPECIFICS_CONTENT: Record<PlatformSpecificsKey, PlatformSp
       },
       {
         title: 'Outlook email attachments',
-        before: 'meeting_notes_v7_final.docx',
-        after: 'Q1 Planning Notes.docx',
+        before: 'product-roadmap.pages',
+        after: 'Product Roadmap Notes.pages',
         description:
-          'Save attachments into a Zush-watched folder. Word, Excel, and PowerPoint files get names from their actual content, not generic message IDs.',
+          'Save attachments into a Zush-watched folder. Word, Excel, PowerPoint, Pages, Numbers, and Keynote files get names from their actual content.',
         fileType: 'doc',
       },
       {

@@ -110,7 +110,7 @@ const Hero = ({
           </Heading>
           <Text size="lg" color="subtle" className={styles.Hero__Subtitle}>
             {subtitle ??
-              "Batch rename files with AI, watch folders automatically, and organize screenshots, PDFs, photos, audio, videos, and documents with reusable templates and searchable names based on real content."}
+              "Batch rename files with AI, watch folders automatically, and organize screenshots, design files, PDFs, photos, audio, videos, iWork, and Office documents with reusable templates and searchable names based on real content."}
           </Text>
 
           <div className={styles.Hero__Buttons}>

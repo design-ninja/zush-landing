@@ -83,13 +83,12 @@ const defaultUseCases: UseCaseData[] = [
     title: 'Designers',
     description: (
       <>
-        Stop digging through <strong>hundreds of screenshots</strong> for that
-        one reference. Find any mockup, UI element, or inspiration in{' '}
-        <strong>seconds</strong>.
+        Rename <strong>Figma, Sketch, Illustrator, PSD, screenshots, and mockups</strong>{' '}
+        by what they show, so source files and handoffs stay searchable.
       </>
     ),
     color: 'purple',
-    href: '/rename-screenshots-with-ai',
+    href: '/rename-design-files-with-ai',
   },
   {
     icon: Camera,
@@ -97,7 +96,7 @@ const defaultUseCases: UseCaseData[] = [
     description: (
       <>
         Organize <strong>massive photo libraries</strong> effortlessly.
-        Supports <strong>RAW, HEIC, AVIF, PSD, and other image formats</strong>.
+        Supports <strong>RAW, HEIC, AVIF, SVG, TIFF, and other image formats</strong>.
       </>
     ),
     color: 'blue',

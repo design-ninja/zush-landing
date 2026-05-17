@@ -5,17 +5,17 @@ const faqItems = [
   {
     question: 'What types of non-PDF documents can Zush rename?',
     answer:
-      'Zush supports 33 document formats: Word documents, Excel spreadsheets, PowerPoint presentations, text, Markdown, CSV/TSV, JSON, XML/YAML, subtitles (SRT/VTT), RTF, OpenDocument files, and EML email files. The AI reads the content of each file to generate an appropriate name.',
+      'Zush supports 37 document and PDF-related formats: Word documents, Excel spreadsheets, PowerPoint presentations, Pages, Numbers, Keynote, text, Markdown, CSV/TSV, JSON, XML/YAML, subtitles (SRT/VTT), RTF, OpenDocument files, and EML email files. The AI reads the content of each file to generate an appropriate name.',
   },
   {
     question: 'How does Zush understand what a document is about?',
     answer:
-      'Zush extracts text from your documents using format-specific parsers. For Word files it parses the document structure, for spreadsheets it analyzes headers and data, and for presentations it reads slide text. The extracted content is then sent to an AI model that identifies the topic and generates a meaningful filename.',
+      'Zush extracts text from your documents using format-specific parsers. For Word files it parses the document structure, for spreadsheets it analyzes headers and data, for presentations it reads slide text, and for iWork files it can use temporary PDF export for analysis. The extracted content is then sent to an AI model that identifies the topic and generates a meaningful filename.',
   },
   {
     question: 'Is my document content sent to the cloud?',
     answer:
-      'Zush sends extracted text snippets to the AI model for analysis. Only the minimum text necessary for generating a good filename is transmitted. Your full documents are never uploaded or stored on any server.',
+      'Zush sends extracted text snippets or temporary iWork PDF previews to the AI model for analysis. Only the content necessary for generating a good filename is transmitted, and Zush does not store your document content after processing as part of normal operation.',
   },
   {
     question: 'Can I set up a naming convention for all my documents?',
@@ -37,7 +37,7 @@ const jsonLd = buildFeaturePageJsonLd({
     steps: [
       {
         name: 'Add your documents',
-        text: 'Drag and drop files or select a folder containing documents. Zush supports Word, Excel, PowerPoint, text files, subtitle files, email exports, OpenDocument files, and more.',
+        text: 'Drag and drop files or select a folder containing documents. Zush supports Word, Excel, PowerPoint, Pages, Numbers, Keynote, text files, subtitle files, email exports, OpenDocument files, and more.',
       },
       {
         name: 'AI extracts and analyzes text',
@@ -53,9 +53,9 @@ const jsonLd = buildFeaturePageJsonLd({
   software: {
     pagePath: '/rename-documents-with-ai',
     description:
-      'AI document renamer that reads DOCX, XLSX, PPTX, TXT, CSV, JSON, subtitles, OpenDocument, and email files to generate searchable filenames automatically.',
+      'AI document renamer that reads DOCX, XLSX, PPTX, Pages, Numbers, Keynote, TXT, CSV, JSON, subtitles, OpenDocument, and email files to generate searchable filenames automatically.',
     featureList: [
-      'Rename 33 document formats including DOCX, XLSX, PPTX, TXT, CSV, JSON, SRT, VTT, and EML',
+      'Rename 37 document and PDF-related formats including DOCX, XLSX, PPTX, Pages, Numbers, Keynote, TXT, CSV, JSON, SRT, VTT, and EML',
       'Extract document text, spreadsheet headers, and slide titles',
       'Batch rename document-heavy folders',
       'Custom naming patterns for client, date, and category',
@@ -72,13 +72,13 @@ const RenameDocumentsWithAI = () => (
     h1Accent="Rename Documents"
     category="document"
     definitionTitle="What Is AI Document Renaming?"
-    definitionText="Rename documents with AI using Zush to read reports, proposals, spreadsheets, slide decks, and email exports, then generate filenames that match the document content."
+    definitionText="Rename documents with AI using Zush to read reports, proposals, spreadsheets, iWork files, slide decks, and email exports, then generate filenames that match the document content."
     showcaseSlides={[
       {
         files: [
           { before: 'Document1.docx', after: 'Project Proposal Acme.docx', type: 'doc' },
           { before: 'Untitled spreadsheet.xlsx', after: 'Employee Payroll Feb.xlsx', type: 'sheet' },
-          { before: 'presentation_final_v3.pptx', after: 'Marketing Strategy Q2.pptx', type: 'slides' },
+          { before: 'presentation_final_v3.key', after: 'Marketing Strategy Q2.key', type: 'slides', label: 'KEY' },
           { before: 'note.txt', after: 'Meeting Notes Roadmap.txt', type: 'doc' },
           { before: 'exports.csv', after: 'March Sales Pipeline.csv', type: 'sheet' },
           { before: 'inbox-export.eml', after: 'Vendor Renewal Thread.eml', type: 'doc' },
@@ -88,7 +88,7 @@ const RenameDocumentsWithAI = () => (
         files: [
           { before: 'meeting_notes.docx', after: 'Q1 Board Meeting Notes.docx', type: 'doc' },
           { before: 'budget_v2.xlsx', after: 'Q2 Marketing Budget.xlsx', type: 'sheet' },
-          { before: 'deck_v12_final.pptx', after: 'Series A Pitch Deck.pptx', type: 'slides' },
+          { before: 'deck_v12_final.key', after: 'Series A Pitch Deck.key', type: 'slides', label: 'KEY' },
           { before: 'readme.md', after: 'API Integration Guide.md', type: 'doc' },
           { before: 'data_export.csv', after: 'Customer Signup Log.csv', type: 'sheet' },
           { before: 'contract_clean.docx', after: 'Vendor NDA Final.docx', type: 'doc' },
@@ -97,7 +97,7 @@ const RenameDocumentsWithAI = () => (
       {
         files: [
           { before: 'policy_draft.docx', after: 'HR Policy Update.docx', type: 'doc' },
-          { before: 'forecast_export.xlsx', after: 'Revenue Forecast 2026.xlsx', type: 'sheet' },
+          { before: 'forecast_export.numbers', after: 'Revenue Forecast 2026.numbers', type: 'sheet', label: 'NUM' },
           { before: 'board_review.pptx', after: 'Q1 Board Deck.pptx', type: 'slides' },
           { before: 'transcript.txt', after: 'Interview Transcript Raw.txt', type: 'doc' },
           { before: 'metrics.json', after: 'User Analytics Export.json', type: 'doc' },

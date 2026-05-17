@@ -2,7 +2,7 @@ Welcome to Zush. These Terms of Service ("Terms") govern your use of the Zush ap
 
 ### 1. Description of Service
 
-Zush is a desktop utility for macOS and Windows designed to help users organize, rename, and manage metadata for files using artificial intelligence (AI). Features include automatic renaming for images, audio, videos, and supported documents, including PDFs, reusable templates, 145+ Naming Blocks for consistent filename structures, smart metadata tagging (Finder tags on macOS, file properties on Windows, and Spotlight metadata), folder monitoring with file-type exclusions, optional custom AI prompt controls for rename and tagging behavior, Finder context-menu renaming on macOS, BYOK cloud processing, and Offline AI mode with private local models via Ollama.
+Zush is a desktop utility for macOS and Windows designed to help users organize, rename, and manage metadata for files using artificial intelligence (AI). Features include automatic renaming for images, design files, audio, videos, and supported documents, including PDFs and iWork files, reusable templates, 145+ Naming Blocks for consistent filename structures, smart metadata tagging (Finder tags on macOS, file properties on Windows, and Spotlight metadata), folder monitoring with file-type exclusions, optional custom AI prompt controls for rename and tagging behavior, Finder context-menu renaming on macOS, BYOK cloud processing, and Offline AI mode with private local models via Ollama.
 
 ### 2. Software License
 

@@ -1,0 +1,15 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import FeatureLandingPageShell from '@/components/FeatureLandingPage/FeatureLandingPageShell.astro';
+import { getFeaturePageProps } from '@/utils/featurePageProps';
+import RenameDesignFilesWithAI from '@/views/FeaturePages/RenameDesignFilesWithAI';
+import { getSeoForPath } from '@/seo/config';
+import { buildFeatureBreadcrumbJsonLd } from '@/utils/jsonLd';
+
+const seo = getSeoForPath('/rename-design-files-with-ai');
+const featurePage = getFeaturePageProps(RenameDesignFilesWithAI);
+---
+
+<BaseLayout seo={seo} jsonLd={[featurePage.jsonLd, buildFeatureBreadcrumbJsonLd(featurePage.h1, '/rename-design-files-with-ai')]}>
+  <FeatureLandingPageShell {...featurePage} />
+</BaseLayout>
