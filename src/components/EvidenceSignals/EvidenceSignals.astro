@@ -66,8 +66,10 @@ const sourceLinks = [
         const Icon = fact.icon;
 
         return (
-          <article class={`${useCaseStyles.UseCaseCard} ${useCaseStyles[`UseCaseCard_${fact.color}`]}`}>
-            <div class={useCaseStyles.UseCaseCard__IconWrapper}>
+          <article
+            class={`${useCaseStyles.UseCaseCard} ${useCaseStyles[`UseCaseCard_${fact.color}`]} evidenceFactCard evidenceFactCard_${fact.color}`}
+          >
+            <div class={`${useCaseStyles.UseCaseCard__IconWrapper} evidenceFactIcon`}>
               <Icon size={24} />
             </div>
             <Heading as="h3" className={useCaseStyles.UseCaseCard__Title}>
@@ -104,6 +106,43 @@ const sourceLinks = [
 <style>
   .evidenceFactsGrid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .evidenceFactsGrid .evidenceFactCard {
+    --fact-accent: var(--success);
+    --fact-card-bg: color-mix(in srgb, var(--fact-accent) 8%, var(--background));
+    --fact-card-border: color-mix(in srgb, var(--fact-accent) 24%, transparent);
+    --fact-icon-bg: color-mix(in srgb, var(--fact-accent) 15%, transparent);
+
+    background: var(--fact-card-bg);
+    border-color: var(--fact-card-border);
+  }
+
+  .evidenceFactsGrid .evidenceFactIcon {
+    background: var(--fact-icon-bg);
+    color: var(--fact-accent);
+  }
+
+  .evidenceFactsGrid .evidenceFactCard_green {
+    --fact-accent: var(--success);
+  }
+
+  .evidenceFactsGrid .evidenceFactCard_blue {
+    --fact-accent: oklch(0.62 0.2 252);
+  }
+
+  .evidenceFactsGrid .evidenceFactCard_purple {
+    --fact-accent: var(--primary);
+  }
+
+  .evidenceFactsGrid .evidenceFactCard_orange {
+    --fact-accent: oklch(0.74 0.17 55);
+  }
+
+  :global(html[data-theme='dark']) .evidenceFactsGrid .evidenceFactCard {
+    --fact-card-bg: color-mix(in srgb, var(--fact-accent) 11%, var(--card));
+    --fact-card-border: color-mix(in srgb, var(--fact-accent) 26%, transparent);
+    --fact-icon-bg: color-mix(in srgb, var(--fact-accent) 24%, transparent);
   }
 
   @media (max-width: 1024px) {

@@ -292,16 +292,31 @@
             &_screenshots {
                 color: #c026d3;
                 background: #f5d0fe;
+
+                :global(html[data-theme='dark']) & {
+                    color: oklch(0.78 0.22 325);
+                    background: oklch(0.78 0.22 325 / 0.2);
+                }
             }
 
             &_photographer {
                 color: #f97316;
                 background: #ffedd5;
+
+                :global(html[data-theme='dark']) & {
+                    color: oklch(0.76 0.17 55);
+                    background: oklch(0.76 0.17 55 / 0.2);
+                }
             }
 
             &_expenses {
                 color: #16a34a;
                 background: #dcfce7;
+
+                :global(html[data-theme='dark']) & {
+                    color: oklch(0.78 0.17 156);
+                    background: oklch(0.78 0.17 156 / 0.2);
+                }
             }
         }
 
@@ -418,6 +433,11 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+
+            :global(html[data-theme='dark']) & {
+                background: oklch(0.78 0.17 156 / 0.16);
+                color: oklch(0.78 0.17 156);
+            }
         }
     }
 
