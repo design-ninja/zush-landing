@@ -13,7 +13,7 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
     mac: {
       description: 'Alles Wichtige über Zush für Mac und den Rest des Produkts.',
       items: [
-        { question: 'Funktioniert Zush auf Apple Silicon?', answer: 'Ja. Zush läuft nativ auf Apple Silicon und Intel Macs mit macOS 14 oder neuer.' },
+        { question: 'Funktioniert Zush auf Apple Silicon?', answer: 'Ja. Zush läuft nativ auf Apple Silicon und Intel Macs mit macOS 15 oder neuer.' },
         { question: 'Ist die App von Apple notariell beglaubigt?', answer: 'Ja. Die .dmg ist codesigniert und notariell beglaubigt, sodass Gatekeeper sie auf unterstützten macOS-Versionen normal öffnet.' },
         { question: 'Kann ich Zush offline nutzen?', answer: 'Ja. PRO-Nutzer können den Offline-KI-Modus mit privaten lokalen Modellen über Ollama aktivieren.' },
       ],
@@ -31,7 +31,7 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
     mac: {
       description: 'Tout ce qu’il faut savoir sur Zush pour Mac et le reste du produit.',
       items: [
-        { question: 'Zush fonctionne-t-il sur Apple Silicon ?', answer: 'Oui. Zush fonctionne nativement sur les Mac Apple Silicon et Intel avec macOS 14 ou plus récent.' },
+        { question: 'Zush fonctionne-t-il sur Apple Silicon ?', answer: 'Oui. Zush fonctionne nativement sur les Mac Apple Silicon et Intel avec macOS 15 ou plus récent.' },
         { question: 'L’app est-elle notarisée par Apple ?', answer: 'Oui. Le .dmg est signé et notarisé, donc Gatekeeper l’ouvre normalement sur les versions macOS prises en charge.' },
         { question: 'Puis-je utiliser Zush hors ligne ?', answer: 'Oui. Les utilisateurs PRO peuvent activer le mode IA hors ligne avec des modèles locaux privés via Ollama.' },
       ],
@@ -49,7 +49,7 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
     mac: {
       description: 'Tudo que você precisa saber sobre o Zush para Mac e o restante do produto.',
       items: [
-        { question: 'O Zush funciona em Apple Silicon?', answer: 'Sim. O Zush roda nativamente em Macs Apple Silicon e Intel com macOS 14 ou mais recente.' },
+        { question: 'O Zush funciona em Apple Silicon?', answer: 'Sim. O Zush roda nativamente em Macs Apple Silicon e Intel com macOS 15 ou mais recente.' },
         { question: 'O app é notarizado pela Apple?', answer: 'Sim. O .dmg é assinado e notarizado, então o Gatekeeper o abre normalmente nas versões compatíveis do macOS.' },
         { question: 'Posso usar o Zush offline?', answer: 'Sim. Usuários PRO podem ativar o modo IA offline com modelos locais privados via Ollama.' },
       ],
@@ -67,7 +67,7 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
     mac: {
       description: 'Todo lo que necesitas saber sobre Zush para Mac y el resto del producto.',
       items: [
-        { question: '¿Zush funciona en Apple Silicon?', answer: 'Sí. Zush se ejecuta de forma nativa en Macs Apple Silicon e Intel con macOS 14 o posterior.' },
+        { question: '¿Zush funciona en Apple Silicon?', answer: 'Sí. Zush se ejecuta de forma nativa en Macs Apple Silicon e Intel con macOS 15 o posterior.' },
         { question: '¿La app está notarizada por Apple?', answer: 'Sí. El .dmg está firmado y notarizado, por lo que Gatekeeper lo abre normalmente en versiones compatibles de macOS.' },
         { question: '¿Puedo usar Zush sin conexión?', answer: 'Sí. Los usuarios PRO pueden activar el modo IA offline con modelos locales privados mediante Ollama.' },
       ],
@@ -85,7 +85,7 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
     mac: {
       description: 'Alles wat je moet weten over Zush voor Mac en de rest van het product.',
       items: [
-        { question: 'Werkt Zush op Apple Silicon?', answer: 'Ja. Zush draait native op Apple Silicon- en Intel-Macs met macOS 14 of nieuwer.' },
+        { question: 'Werkt Zush op Apple Silicon?', answer: 'Ja. Zush draait native op Apple Silicon- en Intel-Macs met macOS 15 of nieuwer.' },
         { question: 'Is de app door Apple genotariseerd?', answer: 'Ja. De .dmg is code-signed en genotariseerd, zodat Gatekeeper deze normaal opent op ondersteunde macOS-versies.' },
         { question: 'Kan ik Zush offline gebruiken?', answer: 'Ja. PRO-gebruikers kunnen Offline AI inschakelen met private lokale modellen via Ollama.' },
       ],
@@ -103,7 +103,7 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
     mac: {
       description: 'Tutto quello che devi sapere su Zush per Mac e sul resto del prodotto.',
       items: [
-        { question: 'Zush funziona su Apple Silicon?', answer: 'Sì. Zush gira in modo nativo su Mac Apple Silicon e Intel con macOS 14 o versioni successive.' },
+        { question: 'Zush funziona su Apple Silicon?', answer: 'Sì. Zush gira in modo nativo su Mac Apple Silicon e Intel con macOS 15 o versioni successive.' },
         { question: 'L’app è notarizzata da Apple?', answer: 'Sì. Il file .dmg è firmato e notarizzato, quindi Gatekeeper lo apre normalmente sulle versioni macOS supportate.' },
         { question: 'Posso usare Zush offline?', answer: 'Sì. Gli utenti PRO possono attivare la modalità IA offline con modelli locali privati tramite Ollama.' },
       ],
@@ -121,7 +121,7 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
     mac: {
       description: 'Zush for Mac と製品全体について知っておきたいこと。',
       items: [
-        { question: 'Zush は Apple Silicon で動作しますか？', answer: 'はい。Zush は macOS 14 以降の Apple Silicon Mac と Intel Mac でネイティブに動作します。' },
+        { question: 'Zush は Apple Silicon で動作しますか？', answer: 'はい。Zush は macOS 15 以降の Apple Silicon Mac と Intel Mac でネイティブに動作します。' },
         { question: 'アプリは Apple によって notarize されていますか？', answer: 'はい。.dmg はコード署名と notarization 済みなので、対応する macOS では Gatekeeper から通常どおり開けます。' },
         { question: 'Zush はオフラインで使えますか？', answer: 'はい。PRO ユーザーは Ollama のプライベートなローカルモデルでオフライン AI モードを有効にできます。' },
       ],
@@ -139,7 +139,7 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
     mac: {
       description: 'Mac용 Zush와 제품 전반에 대해 알아야 할 내용입니다.',
       items: [
-        { question: 'Zush는 Apple Silicon에서 작동하나요?', answer: '예. Zush는 macOS 14 이상을 실행하는 Apple Silicon 및 Intel Mac에서 네이티브로 작동합니다.' },
+        { question: 'Zush는 Apple Silicon에서 작동하나요?', answer: '예. Zush는 macOS 15 이상을 실행하는 Apple Silicon 및 Intel Mac에서 네이티브로 작동합니다.' },
         { question: '앱은 Apple 공증을 받았나요?', answer: '예. .dmg는 코드 서명 및 공증이 완료되어 지원되는 macOS 버전에서 Gatekeeper가 정상적으로 열 수 있습니다.' },
         { question: 'Zush를 오프라인으로 사용할 수 있나요?', answer: '예. PRO 사용자는 Ollama를 통한 개인 로컬 모델로 오프라인 AI 모드를 활성화할 수 있습니다.' },
       ],
@@ -157,7 +157,7 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
     mac: {
       description: '关于 Zush for Mac 和产品功能的常见问题。',
       items: [
-        { question: 'Zush 支持 Apple Silicon 吗？', answer: '支持。Zush 可在 Apple Silicon 和 Intel Mac 上原生运行，要求 macOS 14 或更新版本。' },
+        { question: 'Zush 支持 Apple Silicon 吗？', answer: '支持。Zush 可在 Apple Silicon 和 Intel Mac 上原生运行，要求 macOS 15 或更新版本。' },
         { question: '应用经过 Apple 公证吗？', answer: '是的。.dmg 已签名并通过公证，Gatekeeper 可以在受支持的 macOS 版本上正常打开。' },
         { question: '可以离线使用 Zush 吗？', answer: '可以。PRO 用户可以通过 Ollama 的私有本地模型启用离线 AI 模式。' },
       ],

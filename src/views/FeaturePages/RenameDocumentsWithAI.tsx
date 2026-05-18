@@ -60,7 +60,7 @@ const jsonLd = buildFeaturePageJsonLd({
       'Batch rename document-heavy folders',
       'Custom naming patterns for client, date, and category',
       'Folder monitoring for ongoing document workflows',
-      'Batch review for up to 50 files at a time',
+      'Batch review for document-heavy folders',
       'Undo and rename history',
     ],
   },

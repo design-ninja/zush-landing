@@ -61,7 +61,7 @@ const jsonLd = buildFeaturePageJsonLd({
       'Automatic duplicate-safe naming with sequences',
       'Custom patterns with dates and AI descriptions',
       'Folder monitoring for ongoing photo workflows',
-      'Batch review for up to 50 files at a time',
+      'Batch review for photo libraries before applying changes',
     ],
   },
 });

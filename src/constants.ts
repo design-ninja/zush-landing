@@ -7,7 +7,7 @@ export const WINDOWS_STORE_PROTOCOL_URL = "ms-windows-store://pdp/?ProductId=9ND
 export const SUPPORT_EMAIL = "support@zushapp.com";
 
 // System requirements
-export const MIN_MACOS_VERSION = "Sonoma and newer";
+export const MIN_MACOS_VERSION = "Sequoia and newer";
 export const MIN_WINDOWS_VERSION = "Windows 10 and newer";
 
 // Config
@@ -130,7 +130,7 @@ export const APP_CONFIG = {
   ],
   ai_provider: "Groq",
   refund_period_days: 14,
-  min_macos_version: "14.0",
-  min_macos_name: "Sonoma",
+  min_macos_version: "15.0",
+  min_macos_name: "Sequoia",
   app_version: "3.0",
 };

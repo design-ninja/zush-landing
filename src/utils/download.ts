@@ -15,7 +15,7 @@ export function getDownloadUrl(os: DownloadOS): string {
 }
 
 export function getShortRequirements(os: DownloadOS): string {
-  return os === 'windows' ? 'Windows 10+' : 'macOS Sonoma+';
+  return os === 'windows' ? 'Windows 10+' : 'macOS Sequoia+';
 }
 
 export function getOSLabel(os: DownloadOS): string {

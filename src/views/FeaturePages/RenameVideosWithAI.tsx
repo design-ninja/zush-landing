@@ -21,7 +21,7 @@ const faqItems = [
   {
     question: 'Can I batch rename videos with photos and documents?',
     answer:
-      'Yes. Zush can process mixed batches across supported images, audio, videos, PDFs, Office documents, text files, spreadsheets, subtitles, and more. The batch limit is 50 files.',
+      'Yes. Zush can process mixed batches across supported images, audio, videos, PDFs, Office documents, text files, spreadsheets, subtitles, and more.',
   },
   {
     question: 'Can Zush rename audio-only files too?',

@@ -41,38 +41,40 @@ const DEFAULT_TITLE = (
   </>
 );
 
-const buildDefaultFaqItems = (): FAQData[] =>
-  HOME_FAQ_DATA.map((item): FAQData => {
-    if (item.question === 'Which operating systems are supported?') {
-      return {
-        question: item.question,
-        answer: (
-          <>
-            Zush runs on macOS ({APP_CONFIG.min_macos_version} {APP_CONFIG.min_macos_name} and newer) and Windows 10 / 11. See the{' '}
-            <AppLink href="/mac">Mac page</AppLink> for the signed .dmg and Mac App Store options, or the{' '}
-            <AppLink href="/windows">Windows page</AppLink> for the Microsoft Store build.
-          </>
-        ),
-      };
-    }
-
-    if (item.question === 'Does the app work offline?') {
-      return {
-        question: item.question,
-        answer: (
-          <>
-            Cloud processing requires an internet connection. PRO users can enable Offline AI mode - private local models via Ollama after installing Ollama and downloading a compatible model.{' '}
-            <AppLink href="/ollama-setup">Open the Ollama setup guide →</AppLink>
-          </>
-        ),
-      };
-    }
-
+const withLinkedAnswer = (item: FAQData): FAQData => {
+  if (item.question === 'Which operating systems are supported?') {
     return {
       question: item.question,
-      answer: STATIC_JSX_OVERRIDES[item.question] ?? item.answer,
+      answer: (
+        <>
+          Zush runs on macOS ({APP_CONFIG.min_macos_version} {APP_CONFIG.min_macos_name} and newer) and Windows 10 / 11. See the{' '}
+          <AppLink href="/mac">Mac page</AppLink> for the signed .dmg and Mac App Store options, or the{' '}
+          <AppLink href="/windows">Windows page</AppLink> for the Microsoft Store build.
+        </>
+      ),
     };
-  });
+  }
+
+  if (item.question === 'Does the app work offline?') {
+    return {
+      question: item.question,
+      answer: (
+        <>
+          Cloud processing requires an internet connection. PRO users can enable Offline AI mode - private local models via Ollama after installing Ollama and downloading a compatible model.{' '}
+          <AppLink href="/ollama-setup">Open the Ollama setup guide →</AppLink>
+        </>
+      ),
+    };
+  }
+
+  return {
+    question: item.question,
+    answer: STATIC_JSX_OVERRIDES[item.question] ?? item.answer,
+  };
+};
+
+const buildDefaultFaqItems = (): FAQData[] =>
+  HOME_FAQ_DATA.map((item): FAQData => withLinkedAnswer(item));
 
 const FAQ = ({
   items,
@@ -92,11 +94,11 @@ const FAQ = ({
       }
 
       if (!appendDefaultItems) {
-        return items;
+        return items.map(withLinkedAnswer);
       }
 
       const seen = new Set<string>();
-      return [...items, ...defaultItems].filter((item) => {
+      return [...items.map(withLinkedAnswer), ...defaultItems].filter((item) => {
         if (seen.has(item.question)) {
           return false;
         }

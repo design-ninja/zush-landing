@@ -314,12 +314,15 @@ export const HOME_JSON_LD = {
         'AI file renamer, batch rename tool, and automatic file organizer for macOS and Windows. Rename screenshots, design files, PDFs, photos, audio, videos, iWork and Office documents by content with smart metadata and folder monitoring.',
       applicationCategory: 'UtilitiesApplication',
       applicationSubCategory: 'File Management',
-      operatingSystem: ['macOS 14.0+', 'Windows 10', 'Windows 11'],
+      operatingSystem: ['macOS 15.0+', 'Windows 10', 'Windows 11'],
       softwareVersion: APP_CONFIG.app_version,
       downloadUrl: DOWNLOAD_URL,
       installUrl: 'https://apps.microsoft.com/detail/9ND4WVZSDQ3X',
       image: DEFAULT_OG_IMAGE,
-      screenshot: `${SITE_ORIGIN}/og-image.png`,
+      screenshot: [
+        `${SITE_ORIGIN}/images/screenshots/light/zush-main-interface.webp`,
+        `${SITE_ORIGIN}/images/showcase/windows-original/02-ai-rename-results.webp`,
+      ],
       offers: [
         {
           '@type': 'Offer',

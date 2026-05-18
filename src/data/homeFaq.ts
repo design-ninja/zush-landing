@@ -20,7 +20,7 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'How does Zush AI Rename work?',
     answer:
-      'AI Rename allows you to rename up to 50 files at once using artificial intelligence. Simply drag and drop a collection of files onto the Zush window, and they will be analyzed and renamed in seconds. You can review and regenerate individual file names before applying changes. Perfect for organizing screenshots, design files, audio, videos, PDFs, iWork docs, and downloads in one pass.',
+      'AI Rename uses artificial intelligence to rename files by content. Simply drag and drop a collection of files onto the Zush window, and they will be analyzed and renamed in seconds. You can review and regenerate individual file names before applying changes. Perfect for organizing screenshots, design files, audio, videos, PDFs, iWork docs, and downloads in one pass.',
   },
   {
     question: 'How does folder monitoring work?',
@@ -88,6 +88,6 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   },
   {
     question: "Can I get a refund if it doesn't fit my needs?",
-    answer: `Absolutely. If Zush isn't right for you, we offer a ${APP_CONFIG.refund_period_days}-day money-back guarantee. You can find more details in our refund policy at https://zushapp.com/refund-policy.`,
+    answer: `Absolutely. If Zush isn't right for you, we offer a ${APP_CONFIG.refund_period_days}-day money-back guarantee. You can find more details in our refund policy.`,
   },
 ];

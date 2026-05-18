@@ -81,7 +81,7 @@ export const PLATFORM_SPECIFICS_CONTENT: Record<PlatformSpecificsKey, PlatformSp
   mac: {
     systemRequirements: {
       rows: [
-        { key: 'operatingSystem', label: 'Operating system', value: 'macOS 14 Sonoma, 15 Sequoia, 26 Tahoe' },
+        { key: 'operatingSystem', label: 'Operating system', value: 'macOS 15 Sequoia, 26 Tahoe' },
         { key: 'processor', label: 'Processor', value: 'Apple Silicon (M1, M2, M3, M4) and Intel x86_64' },
         { key: 'memory', label: 'Memory', value: '4 GB minimum, 8 GB recommended for Offline AI' },
         { key: 'diskSpace', label: 'Disk space', value: '~200 MB for the app, additional space for Ollama models' },

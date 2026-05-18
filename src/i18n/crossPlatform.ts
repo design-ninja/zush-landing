@@ -18,7 +18,7 @@ const EN: CrossPlatformBannerCopy = {
   description:
     'A signed and notarized .dmg for macOS. A Microsoft Store install for Windows. Same renaming engine, same BYOK and Offline AI mode, native to each OS.',
   macTitle: 'Zush for Mac',
-  macDescription: 'Apple Silicon and Intel · macOS 14+ · App Store + .dmg',
+  macDescription: 'Apple Silicon and Intel · macOS 15+ · App Store + .dmg',
   windowsTitle: 'Zush for Windows',
   windowsDescription: 'x64 and ARM64 · Windows 10/11 · Microsoft Store',
   macCta: 'See Mac details',
@@ -33,7 +33,7 @@ const COPY: Record<Locale, CrossPlatformBannerCopy> = {
     description:
       'Eine signierte und notarisierte .dmg für macOS. Eine Microsoft-Store-Installation für Windows. Gleiche Rename-Engine, gleiches BYOK und Offline-KI, nativ pro System.',
     macTitle: 'Zush für Mac',
-    macDescription: 'Apple Silicon und Intel · macOS 14+ · App Store + .dmg',
+    macDescription: 'Apple Silicon und Intel · macOS 15+ · App Store + .dmg',
     windowsTitle: 'Zush für Windows',
     windowsDescription: 'x64 und ARM64 · Windows 10/11 · Microsoft Store',
     macCta: 'Mac-Details ansehen',
@@ -45,7 +45,7 @@ const COPY: Record<Locale, CrossPlatformBannerCopy> = {
     description:
       'Un .dmg signé et notarisé pour macOS. Une installation Microsoft Store pour Windows. Même moteur de renommage, même BYOK et IA hors ligne, natif sur chaque OS.',
     macTitle: 'Zush pour Mac',
-    macDescription: 'Apple Silicon et Intel · macOS 14+ · App Store + .dmg',
+    macDescription: 'Apple Silicon et Intel · macOS 15+ · App Store + .dmg',
     windowsTitle: 'Zush pour Windows',
     windowsDescription: 'x64 et ARM64 · Windows 10/11 · Microsoft Store',
     macCta: 'Voir les détails Mac',
@@ -57,7 +57,7 @@ const COPY: Record<Locale, CrossPlatformBannerCopy> = {
     description:
       'Um .dmg assinado e notarizado para macOS. Instalação pela Microsoft Store no Windows. Mesma engine de renomeação, mesmo BYOK e IA offline, nativo em cada SO.',
     macTitle: 'Zush para Mac',
-    macDescription: 'Apple Silicon e Intel · macOS 14+ · App Store + .dmg',
+    macDescription: 'Apple Silicon e Intel · macOS 15+ · App Store + .dmg',
     windowsTitle: 'Zush para Windows',
     windowsDescription: 'x64 e ARM64 · Windows 10/11 · Microsoft Store',
     macCta: 'Ver detalhes do Mac',
@@ -69,7 +69,7 @@ const COPY: Record<Locale, CrossPlatformBannerCopy> = {
     description:
       'Un .dmg firmado y notarizado para macOS. Instalación desde Microsoft Store para Windows. El mismo motor de renombrado, el mismo BYOK e IA offline, nativo en cada SO.',
     macTitle: 'Zush para Mac',
-    macDescription: 'Apple Silicon e Intel · macOS 14+ · App Store + .dmg',
+    macDescription: 'Apple Silicon e Intel · macOS 15+ · App Store + .dmg',
     windowsTitle: 'Zush para Windows',
     windowsDescription: 'x64 y ARM64 · Windows 10/11 · Microsoft Store',
     macCta: 'Ver detalles de Mac',
@@ -81,7 +81,7 @@ const COPY: Record<Locale, CrossPlatformBannerCopy> = {
     description:
       'Een ondertekende en genotariseerde .dmg voor macOS. Een Microsoft Store-installatie voor Windows. Dezelfde rename-engine, dezelfde BYOK en Offline AI, native per OS.',
     macTitle: 'Zush voor Mac',
-    macDescription: 'Apple Silicon en Intel · macOS 14+ · App Store + .dmg',
+    macDescription: 'Apple Silicon en Intel · macOS 15+ · App Store + .dmg',
     windowsTitle: 'Zush voor Windows',
     windowsDescription: 'x64 en ARM64 · Windows 10/11 · Microsoft Store',
     macCta: 'Bekijk Mac-details',
@@ -93,7 +93,7 @@ const COPY: Record<Locale, CrossPlatformBannerCopy> = {
     description:
       'Un .dmg firmato e notarizzato per macOS. Installazione dal Microsoft Store per Windows. Stesso motore di rinomina, stesso BYOK e IA offline, nativo su ogni OS.',
     macTitle: 'Zush per Mac',
-    macDescription: 'Apple Silicon e Intel · macOS 14+ · App Store + .dmg',
+    macDescription: 'Apple Silicon e Intel · macOS 15+ · App Store + .dmg',
     windowsTitle: 'Zush per Windows',
     windowsDescription: 'x64 e ARM64 · Windows 10/11 · Microsoft Store',
     macCta: 'Vedi dettagli Mac',
@@ -105,7 +105,7 @@ const COPY: Record<Locale, CrossPlatformBannerCopy> = {
     description:
       'macOS には署名済みで notarize された .dmg。Windows には Microsoft Store からのインストール。同じリネームエンジン、同じ BYOK とオフライン AI、それぞれの OS にネイティブ。',
     macTitle: 'Zush for Mac',
-    macDescription: 'Apple Silicon と Intel · macOS 14+ · App Store + .dmg',
+    macDescription: 'Apple Silicon と Intel · macOS 15+ · App Store + .dmg',
     windowsTitle: 'Zush for Windows',
     windowsDescription: 'x64 と ARM64 · Windows 10/11 · Microsoft Store',
     macCta: 'Mac の詳細を見る',
@@ -117,7 +117,7 @@ const COPY: Record<Locale, CrossPlatformBannerCopy> = {
     description:
       'macOS용 서명 및 공증된 .dmg. Windows용 Microsoft Store 설치. 동일한 이름 변경 엔진, 동일한 BYOK 및 오프라인 AI, 각 OS에 네이티브.',
     macTitle: 'Mac용 Zush',
-    macDescription: 'Apple Silicon 및 Intel · macOS 14+ · App Store + .dmg',
+    macDescription: 'Apple Silicon 및 Intel · macOS 15+ · App Store + .dmg',
     windowsTitle: 'Windows용 Zush',
     windowsDescription: 'x64 및 ARM64 · Windows 10/11 · Microsoft Store',
     macCta: 'Mac 상세 보기',
@@ -129,7 +129,7 @@ const COPY: Record<Locale, CrossPlatformBannerCopy> = {
     description:
       '为 macOS 提供签名并公证的 .dmg。为 Windows 提供 Microsoft Store 安装。相同的重命名引擎、相同的 BYOK 和离线 AI，每个系统都是原生体验。',
     macTitle: 'Zush for Mac',
-    macDescription: 'Apple Silicon 与 Intel · macOS 14+ · App Store + .dmg',
+    macDescription: 'Apple Silicon 与 Intel · macOS 15+ · App Store + .dmg',
     windowsTitle: 'Zush for Windows',
     windowsDescription: 'x64 与 ARM64 · Windows 10/11 · Microsoft Store',
     macCta: '查看 Mac 详情',
@@ -141,7 +141,7 @@ const COPY: Record<Locale, CrossPlatformBannerCopy> = {
     description:
       'macOS के लिए signed और notarized .dmg। Windows के लिए Microsoft Store install। वही rename engine, वही BYOK और Offline AI mode, हर OS के लिए native।',
     macTitle: 'Mac के लिए Zush',
-    macDescription: 'Apple Silicon और Intel · macOS 14+ · App Store + .dmg',
+    macDescription: 'Apple Silicon और Intel · macOS 15+ · App Store + .dmg',
     windowsTitle: 'Windows के लिए Zush',
     windowsDescription: 'x64 और ARM64 · Windows 10/11 · Microsoft Store',
     macCta: 'Mac details देखें',
@@ -153,7 +153,7 @@ const COPY: Record<Locale, CrossPlatformBannerCopy> = {
     description:
       'ملف .dmg موقّع وموثق لنظام macOS. تثبيت عبر Microsoft Store لنظام Windows. نفس محرك إعادة التسمية، ونفس BYOK وOffline AI، بتجربة أصلية لكل نظام.',
     macTitle: 'Zush لنظام Mac',
-    macDescription: 'Apple Silicon وIntel · macOS 14+ · App Store + .dmg',
+    macDescription: 'Apple Silicon وIntel · macOS 15+ · App Store + .dmg',
     windowsTitle: 'Zush لنظام Windows',
     windowsDescription: 'x64 وARM64 · Windows 10/11 · Microsoft Store',
     macCta: 'عرض تفاصيل Mac',

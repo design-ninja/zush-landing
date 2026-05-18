@@ -15,7 +15,7 @@ const faqItems = [
   {
     question: 'Can I rename a folder of invoices at once?',
     answer:
-      'Yes. Zush handles batch review for up to 50 files at a time, so you can drop a folder of invoices, review the generated names, and apply them in one pass. The AI identifies vendor names, amounts, and dates to create consistent, sortable filenames.',
+      'Yes. Zush handles batch review for invoice folders, so you can drop a folder of invoices, review the generated names, and apply them in one pass. The AI identifies vendor names, amounts, and dates to create consistent, sortable filenames.',
   },
   {
     question: 'Will renaming affect the PDF content or bookmarks?',
@@ -68,7 +68,7 @@ const jsonLd = buildFeaturePageJsonLd({
       'Rename PDF files by document content',
       'Support for scanned PDFs via AI vision',
       'Batch rename invoices, contracts, and reports',
-      'Review up to 50 PDFs in one batch',
+      'Review PDF batches before applying changes',
       'PDF-specific patterns for vendors, counterparties, dates, and document types',
       'Comparison workflow for Finder, Preview, and Adobe Acrobat users',
       'Automatic folder monitoring for repeating PDF workflows',

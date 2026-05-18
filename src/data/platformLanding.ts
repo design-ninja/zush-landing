@@ -30,7 +30,7 @@ export const PLATFORM_LANDING_CONTENT: Record<DownloadOS, PlatformLandingContent
     softwareName: 'Zush for Mac',
     softwareDescription:
       'AI-powered file renamer for macOS. Rename screenshots, design files, audio, videos, PDFs, photos, iWork and Office documents with cloud AI, templates, Naming Blocks, or Offline AI mode via Ollama. Native Apple Silicon and Intel support.',
-    operatingSystem: 'macOS 14.0+',
+    operatingSystem: 'macOS 15.0+',
     downloadUrl: DOWNLOAD_URL,
     heroTitle: 'AI File Renamer for Mac',
     heroSubtitle:
@@ -52,7 +52,7 @@ export const PLATFORM_LANDING_CONTENT: Record<DownloadOS, PlatformLandingContent
       {
         question: 'Does Zush work on Apple Silicon?',
         answer:
-          'Yes. Zush ships as a universal binary and runs natively on M1, M2, M3 and M4 Macs. Intel Macs running macOS 14+ are supported as well.',
+          'Yes. Zush ships as a universal binary and runs natively on M1, M2, M3 and M4 Macs. Intel Macs running macOS 15+ are supported as well.',
       },
       {
         question: 'Is the app notarized by Apple?',

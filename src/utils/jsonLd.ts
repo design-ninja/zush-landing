@@ -136,7 +136,7 @@ function buildSoftwareApplicationJsonLd(data: SoftwareApplicationData) {
     description: data.description,
     applicationCategory: 'UtilitiesApplication',
     applicationSubCategory: data.applicationSubCategory ?? 'File Management',
-    operatingSystem: data.operatingSystem ?? ['macOS 14.0+', 'Windows 10', 'Windows 11'],
+    operatingSystem: data.operatingSystem ?? ['macOS 15.0+', 'Windows 10', 'Windows 11'],
     downloadUrl: data.downloadUrl ?? DOWNLOAD_URL,
     ...(data.installUrl ? { installUrl: data.installUrl } : { installUrl: WINDOWS_STORE_URL }),
     screenshot: data.screenshot ?? `${SITE_ORIGIN}/og-image.png`,
