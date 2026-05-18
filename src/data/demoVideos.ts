@@ -55,19 +55,6 @@ export const DEMO_VIDEOS: DemoVideoAsset[] = [
     },
   },
   {
-    id: 'tags',
-    title: 'Smart Tags',
-    description: 'Generate smart tags for faster file search',
-    sources: {
-      light: '/videos/zush-tags.mp4',
-      dark: '/videos/zush-tags-dark.mp4',
-    },
-    posters: {
-      light: '/videos/posters/tags.webp',
-      dark: '/videos/posters/tags-dark.webp',
-    },
-  },
-  {
     id: 'naming',
     title: 'Naming Patterns',
     description: 'Create reusable naming patterns with flexible variables',
@@ -78,19 +65,6 @@ export const DEMO_VIDEOS: DemoVideoAsset[] = [
     posters: {
       light: '/videos/posters/naming.webp',
       dark: '/videos/posters/naming-dark.webp',
-    },
-  },
-  {
-    id: 'multilanguage',
-    title: 'Multilanguage',
-    description: 'Generate filenames in more than 60 languages',
-    sources: {
-      light: '/videos/zush-multilanguage.mp4',
-      dark: '/videos/zush-multilanguage-dark.mp4',
-    },
-    posters: {
-      light: '/videos/posters/multilanguage.webp',
-      dark: '/videos/posters/multilanguage-dark.webp',
     },
   },
   {
@@ -156,6 +130,16 @@ export const MACOS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
     alt: 'Folder monitoring settings in Zush for macOS',
   },
   {
+    id: 'statistics',
+    title: 'Statistics',
+    description: 'See rename volume, Monitor share, activity, and file type trends',
+    images: {
+      light: '/images/showcase/macos/statistics-light.webp',
+      dark: '/images/showcase/macos/statistics-dark.webp',
+    },
+    alt: 'Statistics dashboard in Zush for macOS',
+  },
+  {
     id: 'activity',
     title: 'Activity History',
     description: 'Review recent renames and undo changes when needed',
@@ -184,26 +168,6 @@ export const MACOS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
       dark: '/images/showcase/macos/naming-blocks-dark.webp',
     },
     alt: 'Bookkeeper invoice naming blocks in Zush for macOS',
-  },
-  {
-    id: 'tags',
-    title: 'Smart Tags',
-    description: 'Generate smart tags for faster file search',
-    images: {
-      light: '/images/showcase/macos/tags-light.webp',
-      dark: '/images/showcase/macos/tags-dark.webp',
-    },
-    alt: 'Smart tags workflow in Zush for macOS',
-  },
-  {
-    id: 'multilanguage',
-    title: 'Multilanguage',
-    description: 'Generate filenames in more than 60 languages',
-    images: {
-      light: '/images/showcase/macos/multilanguage-light.webp',
-      dark: '/images/showcase/macos/multilanguage-dark.webp',
-    },
-    alt: 'Language picker in Zush for macOS',
   },
   {
     id: 'custom-prompts',
@@ -281,16 +245,6 @@ export const WINDOWS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
       dark: '/images/showcase/windows-original/04-processing-settings.webp',
     },
     alt: 'Naming pattern and metadata settings in Zush for Windows',
-  },
-  {
-    id: 'multilanguage',
-    title: 'Multilanguage',
-    description: 'Generate filenames in more than 60 languages',
-    images: {
-      light: '/images/showcase/windows-original/05-language-picker.webp',
-      dark: '/images/showcase/windows-original/05-language-picker.webp',
-    },
-    alt: 'Localization settings for generated filenames in Zush for Windows',
   },
   {
     id: 'custom-prompts',

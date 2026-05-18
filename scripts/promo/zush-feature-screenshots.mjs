@@ -20,36 +20,52 @@ const defaultAppStoreOutputDir = '/Users/lirik/Projects/zush/zush-assets/App Sto
 const tempRoot = path.join(os.tmpdir(), `zush-feature-screenshots-${Date.now()}`);
 const baseMainWindowWidth = 1460;
 const windowZoom = 1.035;
+const tahoeWallpaperRoot = '/Users/lirik/Projects/zush/zush-assets/tahoe-wallpapers';
+const tahoeAssetWallpapers = {
+  light: path.join(tahoeWallpaperRoot, 'tahoe-light.jpeg'),
+  dark: path.join(tahoeWallpaperRoot, 'tahoe-dark.jpeg'),
+};
+const tahoeLightWallpaper =
+  '/System/Library/ExtensionKit/Extensions/NeptuneOneWallpaper.appex/Contents/Resources/TahoeLight.heic';
+const tahoeDarkWallpaper =
+  '/System/Library/ExtensionKit/Extensions/NeptuneOneWallpaper.appex/Contents/Resources/TahoeDark.heic';
+const tahoeDayWallpaper = '/System/Library/Desktop Pictures/.wallpapers/Tahoe Day/Tahoe Day.mov';
 
-const wallpapers = {
+const wallpaperSources = {
   light:
     process.env.ZUSH_PROMO_LIGHT_WALLPAPER ??
-    firstExistingImagePath([
+    firstExistingAssetPath([
+      tahoeAssetWallpapers.light,
       '/Users/lirik/Desktop/tahoe/macos-tahoe-26-6016x6016-22673.jpg',
+      tahoeLightWallpaper,
+      tahoeDayWallpaper,
       '/System/Library/Desktop Pictures/Sonoma.heic[0]',
       '/System/Library/Desktop Pictures/.thumbnails/Sonoma Light.heic',
     ]),
   dark:
     process.env.ZUSH_PROMO_DARK_WALLPAPER ??
-    firstExistingImagePath([
+    firstExistingAssetPath([
+      tahoeAssetWallpapers.dark,
       '/Users/lirik/Desktop/tahoe/macos-tahoe-26-5k-6016x6016-22672.jpg',
+      tahoeDarkWallpaper,
+      tahoeDayWallpaper,
       '/System/Library/Desktop Pictures/Sonoma.heic[1]',
       '/System/Library/Desktop Pictures/.thumbnails/Sonoma Dark.heic',
     ]),
 };
+const preparedWallpapers = {};
 
 const features = [
-  { id: 'batch-rename', fixture: 'batch-rename', mainWidth: 1460 },
-  { id: 'monitor', fixture: 'monitor', mainWidth: 1380 },
-  { id: 'activity', fixture: 'activity', mainWidth: 1460 },
-  { id: 'templates', fixture: 'templates', mainWidth: 1120 },
-  { id: 'naming-blocks', fixture: 'naming-blocks', mainWidth: 1120 },
-  { id: 'tags', fixture: 'smart-tags', mainWidth: 1120, extraOwners: ['Finder'] },
-  { id: 'naming', fixture: 'naming', mainWidth: 1120 },
-  { id: 'multilanguage', fixture: 'multilanguage', mainWidth: 1120 },
-  { id: 'custom-prompts', fixture: 'custom-prompts', mainWidth: 1450, captureZushExtras: true },
-  { id: 'byok', fixture: 'byok', mainWidth: 1120 },
-  { id: 'offline-ai', fixture: 'offline-ai', mainWidth: 1120 },
+  { id: 'batch-rename', fixture: 'batch-rename' },
+  { id: 'monitor', fixture: 'monitor' },
+  { id: 'statistics', fixture: 'statistics' },
+  { id: 'activity', fixture: 'activity' },
+  { id: 'templates', fixture: 'templates' },
+  { id: 'naming-blocks', fixture: 'naming-blocks' },
+  { id: 'naming', fixture: 'naming' },
+  { id: 'custom-prompts', fixture: 'custom-prompts', captureZushExtras: true },
+  { id: 'byok', fixture: 'byok' },
+  { id: 'offline-ai', fixture: 'offline-ai' },
 ];
 
 const args = new Set(process.argv.slice(2));
@@ -108,15 +124,14 @@ const targetConfigs = {
 const appStoreNames = {
   'batch-rename': '01-batch-rename',
   monitor: '02-monitor',
-  activity: '03-activity',
-  templates: '04-templates',
-  'naming-blocks': '05-naming-blocks',
-  tags: '06-tags',
+  statistics: '03-statistics',
+  activity: '04-activity',
+  templates: '05-templates',
+  'naming-blocks': '06-naming-blocks',
   naming: '07-smart-rename',
-  multilanguage: '08-multilanguage',
-  'offline-ai': '09-offline-ai',
-  byok: '10-byok',
-  'custom-prompts': '11-custom-prompts',
+  'offline-ai': '08-offline-ai',
+  byok: '09-byok',
+  'custom-prompts': '10-custom-prompts',
 };
 
 if (selectedFeatures.length === 0) {
@@ -179,12 +194,78 @@ function run(command, commandArgs, options = {}) {
   return typeof result.stdout === 'string' ? result.stdout.trim() : '';
 }
 
+function commandExists(command) {
+  return spawnSync('/usr/bin/which', [command], { encoding: 'utf8' }).status === 0;
+}
+
 function wait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-function firstExistingImagePath(paths) {
-  return paths.find((imagePath) => fs.existsSync(imagePath.replace(/\[\d+\]$/, ''))) ?? paths[0];
+function firstExistingAssetPath(paths) {
+  return paths.find((assetPath) => fs.existsSync(pathForExistenceCheck(assetPath))) ?? paths[0];
+}
+
+function pathForExistenceCheck(assetPath) {
+  return assetPath.replace(/\[\d+\]$/, '');
+}
+
+function isVideoWallpaper(assetPath) {
+  return /\.(mov|mp4|m4v)$/i.test(pathForExistenceCheck(assetPath));
+}
+
+function prepareWallpaper(theme) {
+  const source = wallpaperSources[theme];
+  const sourcePath = pathForExistenceCheck(source);
+  if (!isVideoWallpaper(source)) {
+    return source;
+  }
+
+  if (!commandExists('ffmpeg')) {
+    throw new Error(`ffmpeg is required to extract the ${theme} Tahoe wallpaper from ${sourcePath}`);
+  }
+
+  const rawFramePath = path.join(tempRoot, `tahoe-${theme}-raw.jpg`);
+  const outputPath = path.join(tempRoot, `tahoe-${theme}.jpg`);
+  const timestamp = theme === 'dark' ? '00:01:50' : '00:00:10';
+  fs.mkdirSync(tempRoot, { recursive: true });
+
+  run('ffmpeg', [
+    '-y',
+    '-hide_banner',
+    '-loglevel',
+    'error',
+    '-ss',
+    timestamp,
+    '-i',
+    sourcePath,
+    '-frames:v',
+    '1',
+    '-q:v',
+    '2',
+    rawFramePath,
+  ]);
+
+  const magickArgs =
+    theme === 'dark'
+      ? [
+          rawFramePath,
+          '-modulate',
+          '48,82,100',
+          '-fill',
+          '#07111f',
+          '-colorize',
+          '24',
+          outputPath,
+        ]
+      : [rawFramePath, '-modulate', '108,104,100', outputPath];
+  run('magick', magickArgs);
+
+  return outputPath;
+}
+
+function wallpaperForTheme(theme) {
+  return preparedWallpapers[theme] ?? wallpaperSources[theme];
 }
 
 function ensureBuilt() {
@@ -220,24 +301,10 @@ function copyFixtureAssets(runId) {
 
     const source = path.join(sourceAssetRoot, entry);
     const target = path.join(targetRoot, entry);
-    if (fs.statSync(source).isFile()) {
-      fs.copyFileSync(source, target);
-    }
+    fs.cpSync(source, target, { recursive: true });
   }
 
-  setFinderTags(path.join(targetRoot, 'wedding.jpg'), ['wedding', 'portrait', 'bride', 'groom']);
   return targetRoot;
-}
-
-function setFinderTags(filePath, tags) {
-  const swift = `
-import Foundation
-var url = URL(fileURLWithPath: ${JSON.stringify(filePath)})
-var values = URLResourceValues()
-values.tagNames = ${JSON.stringify(tags)}
-try url.setResourceValues(values)
-`;
-  run('/usr/bin/swift', ['-e', swift]);
 }
 
 function getSystemDarkMode() {
@@ -316,14 +383,18 @@ function zushPids() {
     .map((pid) => Number(pid));
 }
 
-function postFixture({ fixture, theme, assetRoot, runId }) {
+function postFixture({ fixture, theme, assetRoot, runId, completionMarkerPath }) {
+  const completionMarkerEntry = completionMarkerPath
+    ? `,
+    "completionMarkerPath": ${JSON.stringify(completionMarkerPath)}`
+    : '';
   const swift = `
 import Foundation
 let userInfo: [String: Any] = [
     "fixture": ${JSON.stringify(fixture)},
     "theme": ${JSON.stringify(theme)},
     "assetRoot": ${JSON.stringify(assetRoot)},
-    "runId": ${JSON.stringify(runId)}
+    "runId": ${JSON.stringify(runId)}${completionMarkerEntry}
 ]
 DistributedNotificationCenter.default().postNotificationName(
     Notification.Name("com.lirik.Zush.debug.promoScreenshotFixture"),
@@ -333,6 +404,27 @@ DistributedNotificationCenter.default().postNotificationName(
 )
 `;
   run('/usr/bin/swift', ['-e', swift]);
+}
+
+async function waitForPromoRealAnalysis(markerPath, timeoutMs = 190_000) {
+  const startedAt = Date.now();
+  while (Date.now() - startedAt < timeoutMs) {
+    if (fs.existsSync(markerPath)) {
+      const marker = JSON.parse(fs.readFileSync(markerPath, 'utf8'));
+      if (marker.status !== 'ok') {
+        throw new Error(
+          `Real AI batch analysis ended with ${marker.status}: ` +
+            `${marker.analyzedCount}/${marker.expectedCount} analyzed, ` +
+            `${marker.failedCount} failed. ${marker.errors?.join('; ') ?? ''}`,
+        );
+      }
+      return marker;
+    }
+
+    await wait(500);
+  }
+
+  throw new Error(`Timed out waiting for real AI batch analysis marker: ${markerPath}`);
 }
 
 function listWindows() {
@@ -538,20 +630,11 @@ function renderComposite({ feature, theme, captures, outputPath, target }) {
   const mainTargetWidth = config.mainTargetWidth(feature);
   const scale = mainTargetWidth / main.size.width;
   const mainTargetHeight = Math.round(main.size.height * scale);
-  const finderGap = config.finderGap;
-  const finderCapture =
-    feature.id === 'tags'
-      ? captures.find((capture) => capture.role !== 'main' && capture.window.owner === 'Finder')
-      : null;
-  const finderTargetWidth = finderCapture ? Math.round(finderCapture.size.width * scale) : 0;
-  const groupTargetWidth = finderCapture
-    ? mainTargetWidth + finderGap + finderTargetWidth
-    : mainTargetWidth;
-  const mainX = Math.round((canvas.width - groupTargetWidth) / 2);
+  const mainX = Math.round((canvas.width - mainTargetWidth) / 2);
   const mainY = Math.round((canvas.height - mainTargetHeight) / 2);
 
   const commandArgs = [
-    wallpapers[theme],
+    wallpaperForTheme(theme),
     '-resize',
     `${canvas.width}x${canvas.height}^`,
     '-gravity',
@@ -573,11 +656,6 @@ function renderComposite({ feature, theme, captures, outputPath, target }) {
       const dy = (capture.window.y - main.window.y) * pointScale * scale;
       x = Math.round(mainX + dx);
       y = Math.round(mainY + dy);
-
-      if (feature.id === 'tags' && capture.window.owner === 'Finder') {
-        x = Math.round(mainX + mainTargetWidth + finderGap);
-        y = Math.round((canvas.height - height) / 2);
-      }
     }
 
     commandArgs.push(
@@ -624,16 +702,32 @@ async function captureFeature({ feature, theme, runId, assetRoot }) {
   setSystemDarkMode(theme === 'dark');
   await wait(450);
 
-  postFixture({ fixture: feature.fixture, theme, assetRoot, runId });
-  const fixtureDelay =
-    feature.fixture === 'custom-prompts' ? 1600 : feature.fixture === 'offline-ai' ? 1900 : 1100;
-  await wait(fixtureDelay);
-
-  if (feature.fixture === 'smart-tags') {
-    await openFinderInfo(path.join(assetRoot, 'wedding.jpg'));
-  } else {
-    closeFinderInfoWindows();
+  const completionMarkerPath =
+    feature.fixture === 'batch-rename'
+      ? path.join(tempRoot, runId, `${feature.id}-${theme}-real-analysis.json`)
+      : null;
+  if (completionMarkerPath) {
+    fs.rmSync(completionMarkerPath, { force: true });
   }
+
+  postFixture({ fixture: feature.fixture, theme, assetRoot, runId, completionMarkerPath });
+  const fixtureDelay =
+    feature.fixture === 'custom-prompts'
+      ? 1600
+      : feature.fixture === 'offline-ai'
+        ? 1900
+        : feature.fixture === 'statistics'
+          ? 1800
+          : 1100;
+  if (completionMarkerPath) {
+    const marker = await waitForPromoRealAnalysis(completionMarkerPath);
+    console.log(`Real AI analyzed ${marker.analyzedCount}/${marker.expectedCount} batch files`);
+    await wait(500);
+  } else {
+    await wait(fixtureDelay);
+  }
+
+  closeFinderInfoWindows();
 
   await wait(300);
   await waitForMainWindow();
@@ -666,9 +760,10 @@ async function main() {
     if (!['light', 'dark'].includes(theme)) {
       throw new Error(`Unsupported theme: ${theme}`);
     }
-    if (!fs.existsSync(wallpapers[theme].replace(/\[\d+\]$/, ''))) {
-      throw new Error(`Missing ${theme} wallpaper: ${wallpapers[theme]}`);
+    if (!fs.existsSync(pathForExistenceCheck(wallpaperSources[theme]))) {
+      throw new Error(`Missing ${theme} wallpaper: ${wallpaperSources[theme]}`);
     }
+    preparedWallpapers[theme] = prepareWallpaper(theme);
   }
 
   ensureBuilt();
