@@ -8,7 +8,28 @@ if (typeof src !== 'string') {
 }
 
 const demoVideo = src.endsWith('.mp4') ? getDemoVideoBySrc(src) : undefined;
-const isThemedScreenshot = src.includes('/screenshots/light/');
+const themedScreenshot = getThemedScreenshot(src);
+
+function getThemedScreenshot(src: string) {
+  if (src.includes('/screenshots/light/')) {
+    return {
+      darkSrc: src.replace('/screenshots/light/', '/screenshots/dark/'),
+      height: '1528',
+      width: '1664',
+    };
+  }
+
+  const macosShowcaseMatch = src.match(/^\/images\/showcase\/macos\/(.+)-light\.webp$/);
+  if (macosShowcaseMatch) {
+    return {
+      darkSrc: `/images/showcase/macos/${macosShowcaseMatch[1]}-dark.webp`,
+      height: '1440',
+      width: '2560',
+    };
+  }
+
+  return undefined;
+}
 ---
 
 {
@@ -62,17 +83,17 @@ const isThemedScreenshot = src.includes('/screenshots/light/');
       </a>
       {alt && <figcaption>{alt}</figcaption>}
     </figure>
-  ) : isThemedScreenshot ? (
+  ) : themedScreenshot ? (
     <figure class='markdown-figure'>
       <img
         {...props}
         alt={alt}
         class='markdown-image markdown-image--screenshot markdown-image--light'
         decoding='async'
-        height='1528'
+        height={themedScreenshot.height}
         loading='lazy'
         src={src}
-        width='1664'
+        width={themedScreenshot.width}
       />
       <img
         {...props}
@@ -80,10 +101,10 @@ const isThemedScreenshot = src.includes('/screenshots/light/');
         aria-hidden='true'
         class='markdown-image markdown-image--screenshot markdown-image--dark'
         decoding='async'
-        height='1528'
+        height={themedScreenshot.height}
         loading='lazy'
-        src={src.replace('/screenshots/light/', '/screenshots/dark/')}
-        width='1664'
+        src={themedScreenshot.darkSrc}
+        width={themedScreenshot.width}
       />
       {alt && <figcaption>{alt}</figcaption>}
     </figure>
