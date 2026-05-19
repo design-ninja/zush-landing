@@ -89,9 +89,9 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ogType: 'website',
   },
   '/methodology': {
-    title: 'Methodology & Benchmarks — Zush',
+    title: 'AI File Renaming Methodology & Benchmarks — Zush',
     description:
-      'See how Zush evaluates AI file renaming quality: scoring rubric, benchmark protocol, review standards, and update cadence.',
+      'How Zush scores AI file renaming on Mac & Windows: 35% accuracy, 20% consistency, 15% automation, 15% safety, 15% fit. Reviewed monthly.',
     robots: 'index, follow',
     ogType: 'website',
   },

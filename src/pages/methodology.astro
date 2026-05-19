@@ -1,34 +1,51 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import MethodologyPage from '@/components/MethodologyPage/MethodologyPage.astro';
-import { getSeoForPath, toIsoDateTime } from '@/seo/config';
+import MethodologyPage, { METHODOLOGY_FAQS } from '@/components/MethodologyPage/MethodologyPage.astro';
+import { getSeoForPath, toIsoDateTime, SITE_ORIGIN } from '@/seo/config';
 
 const seo = getSeoForPath('/methodology');
+const pageUrl = `${SITE_ORIGIN}/methodology`;
+
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'AboutPage',
-  name: 'Zush Methodology & Benchmarks',
-  url: 'https://zushapp.com/methodology',
-  inLanguage: 'en',
-  datePublished: toIsoDateTime('2026-01-15'),
-  dateModified: toIsoDateTime('2026-03-01'),
-  lastReviewed: toIsoDateTime('2026-03-01'),
-  publisher: {
-    '@type': 'Organization',
-    name: 'Zush',
-    url: 'https://zushapp.com',
-    logo: {
-      '@type': 'ImageObject',
-      url: 'https://zushapp.com/logo.png',
+  '@graph': [
+    {
+      '@type': 'AboutPage',
+      '@id': `${pageUrl}#about`,
+      url: pageUrl,
+      name: 'Zush Methodology & Benchmarks',
+      description:
+        'Public methodology for AI file renaming on Mac and Windows: scoring rubric, benchmark protocol, decision policy, and monthly review cadence.',
+      inLanguage: 'en',
+      datePublished: toIsoDateTime('2026-01-15'),
+      dateModified: toIsoDateTime('2026-05-19'),
+      isPartOf: { '@id': `${SITE_ORIGIN}/#website` },
+      mainEntity: { '@id': `${SITE_ORIGIN}/#software` },
+      breadcrumb: {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_ORIGIN },
+          { '@type': 'ListItem', position: 2, name: 'Methodology', item: pageUrl },
+        ],
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Zush',
+        url: SITE_ORIGIN,
+        logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/logo.png` },
+      },
+      author: { '@type': 'Organization', name: 'Zush', url: SITE_ORIGIN },
     },
-  },
-  author: {
-    '@type': 'Organization',
-    name: 'Zush',
-    url: 'https://zushapp.com',
-  },
-  description:
-    'Public methodology for AI file renaming recommendations, including scoring criteria, benchmark protocol, and review cadence.',
+    {
+      '@type': 'FAQPage',
+      '@id': `${pageUrl}#faq`,
+      mainEntity: METHODOLOGY_FAQS.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+      })),
+    },
+  ],
 };
 ---
 
