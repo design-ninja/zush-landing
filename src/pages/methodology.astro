@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import MethodologyPage, { METHODOLOGY_FAQS } from '@/components/MethodologyPage/MethodologyPage.astro';
+import FAQ from '@/components/FAQ';
 import { getSeoForPath, toIsoDateTime, SITE_ORIGIN } from '@/seo/config';
 
 const seo = getSeoForPath('/methodology');
@@ -51,4 +52,9 @@ const jsonLd = {
 
 <BaseLayout seo={seo} jsonLd={jsonLd}>
   <MethodologyPage />
+  <FAQ
+    client:visible
+    items={METHODOLOGY_FAQS}
+    description="How Zush evaluates and benchmarks AI file renaming on Mac and Windows."
+  />
 </BaseLayout>

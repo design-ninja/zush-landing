@@ -282,26 +282,6 @@ const copy = Astro.props.copy ?? defaultCopy;
           </ol>
         </section>
 
-        {copy.faqs && copy.faqs.length > 0 && (
-          <section id="methodology-faq" class="methodology__card">
-            <div class="methodology__sectionHead">
-              <span class="methodology__eyebrow">{copy.faqEyebrow ?? 'FAQ'}</span>
-              <Heading as="h2" className="methodology__sectionTitle">
-                {copy.faqTitle ?? 'Frequently Asked Questions'}
-              </Heading>
-            </div>
-            <div class="methodology__faqList">
-              {copy.faqs.map((faq) => (
-                <details class="methodology__faqItem">
-                  <summary>
-                    <Heading as="h3" className="methodology__faqQuestion">{faq.question}</Heading>
-                  </summary>
-                  <Text as="p" color="subtle" className="methodology__faqAnswer">{faq.answer}</Text>
-                </details>
-              ))}
-            </div>
-          </section>
-        )}
       </main>
 
       <aside class="methodology__rail">
@@ -584,58 +564,6 @@ const copy = Astro.props.copy ?? defaultCopy;
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-  }
-
-  .methodology__faqList {
-    display: grid;
-    gap: 0.6rem;
-  }
-
-  .methodology__faqItem {
-    border: 1px solid var(--border);
-    border-radius: 0.75rem;
-    background: var(--muted);
-    padding: 0;
-  }
-
-  .methodology__faqItem > summary {
-    list-style: none;
-    cursor: pointer;
-    padding: 1rem 1.1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-
-  .methodology__faqItem > summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .methodology__faqItem > summary::after {
-    content: '+';
-    font-family: var(--font-family-heading);
-    font-size: 1.4rem;
-    line-height: 1;
-    color: var(--muted-foreground);
-    transition: transform 0.2s ease;
-  }
-
-  .methodology__faqItem[open] > summary::after {
-    content: '−';
-  }
-
-  .methodology__faqQuestion {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--foreground);
-  }
-
-  .methodology__faqAnswer {
-    margin: 0;
-    padding: 0 1.1rem 1.1rem;
-    line-height: 1.65;
   }
 
   @media (max-width: 980px) {
