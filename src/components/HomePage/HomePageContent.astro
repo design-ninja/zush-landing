@@ -1,6 +1,6 @@
 ---
 import Hero from '@/components/Hero';
-import Videos from '@/components/Videos';
+import Tour from '@/components/Tour';
 import SpeedComparison from '@/components/SpeedComparison';
 import Features from '@/components/Features/Features.astro';
 import SupportedFormats from '@/components/SupportedFormats';
@@ -41,7 +41,7 @@ const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
   windowsVersion={windowsVersion}
 />
 {locale === 'en' && <EvidenceSignals />}
-<Videos client:visible autoplayWhenInView copy={copy.home.videos} />
+<Tour client:visible copy={copy.home.videos} />
 <Features title={copy.home.featuresTitle} description={copy.home.featuresDescription} copy={copy.home.featureCards} />
 <SupportedFormats
   title={copy.home.supportedFormats}

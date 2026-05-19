@@ -6,7 +6,7 @@ import Heading from '@/components/Heading';
 import Hero from '@/components/Hero';
 import Pricing from '@/components/Pricing/Pricing.astro';
 import SupportedFormats from '@/components/SupportedFormats';
-import Videos from '@/components/Videos';
+import Tour from '@/components/Tour';
 import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
 import CrossPlatformBanner from '@/components/CrossPlatformBanner/CrossPlatformBanner.astro';
 import TrustSignals from '@/components/TrustSignals';
@@ -70,7 +70,7 @@ const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
     client:visible
   />
 
-  <Videos client:visible autoplayWhenInView copy={currentCopy.home.videos} />
+  <Tour client:visible copy={currentCopy.home.videos} />
   <Features title={currentCopy.home.featuresTitle} description={currentCopy.home.featuresDescription} copy={currentCopy.home.featureCards} />
   <SupportedFormats
     category={category}
