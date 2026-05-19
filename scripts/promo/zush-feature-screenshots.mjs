@@ -67,6 +67,7 @@ const features = [
   { id: 'byok', fixture: 'byok' },
   { id: 'offline-ai', fixture: 'offline-ai' },
 ];
+const realAnalysisFixtures = new Set(['batch-rename', 'activity']);
 
 const args = new Set(process.argv.slice(2));
 const only = process.argv.find((arg) => arg.startsWith('--only='))?.split('=')[1];
@@ -706,7 +707,7 @@ async function captureFeature({ feature, theme, runId, assetRoot, reuseCurrentFi
     await wait(700);
   } else {
     const completionMarkerPath =
-      feature.fixture === 'batch-rename'
+      realAnalysisFixtures.has(feature.fixture)
         ? path.join(tempRoot, runId, `${feature.id}-${theme}-real-analysis.json`)
         : null;
     if (completionMarkerPath) {
@@ -790,7 +791,6 @@ async function main() {
     for (const feature of selectedFeatures) {
       for (const theme of selectedThemes) {
         const reuseCurrentFixture =
-          feature.fixture === 'batch-rename' &&
           theme === 'dark' &&
           previousCapture?.featureId === feature.id &&
           previousCapture?.theme === 'light';
