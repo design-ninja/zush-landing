@@ -15,7 +15,9 @@
 
 .Card {
   background-color: var(--muted);
-  background-image: var(--download-cta-bg);
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    var(--download-cta-bg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

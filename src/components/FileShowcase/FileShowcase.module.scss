@@ -80,31 +80,31 @@
         }
 
         &_doc {
-            --file-preview-color: #0088ff;
+            --file-preview-color: var(--tone-blue-fg);
         }
 
         &_design {
-            --file-preview-color: #cb30e0;
+            --file-preview-color: var(--tone-magenta-fg);
         }
 
         &_sheet {
-            --file-preview-color: #34c759;
+            --file-preview-color: var(--tone-green-fg);
         }
 
         &_slides {
-            --file-preview-color: #ff8d28;
+            --file-preview-color: var(--tone-orange-fg);
         }
 
         &_pdf {
-            --file-preview-color: #ff383c;
+            --file-preview-color: var(--tone-red-fg);
         }
 
         &_video {
-            --file-preview-color: #00c3d0;
+            --file-preview-color: var(--tone-cyan-fg);
         }
 
         &_audio {
-            --file-preview-color: #ac7f5e;
+            --file-preview-color: var(--tone-coffee-fg);
         }
     }
 

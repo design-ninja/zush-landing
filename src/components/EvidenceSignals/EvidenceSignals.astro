@@ -54,7 +54,7 @@ const sourceLinks = [
   <div class={useCaseStyles.UseCases__Container}>
     <div class={sectionHeaderStyles.SectionHeader}>
       <Heading as="h2" align="center" className={sectionHeaderStyles.SectionHeader__Title}>
-        <span style="color: var(--secondary)">Zush</span> product facts
+        What is <span style="color: var(--secondary)">Zush</span>
       </Heading>
       <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>
         AI file renaming by content for Mac and Windows, with templates, monitoring, BYOK, and one-click revert.
@@ -109,7 +109,7 @@ const sourceLinks = [
   }
 
   .evidenceFactsGrid .evidenceFactCard {
-    --fact-accent: var(--success);
+    --fact-accent: var(--tone-green-fg);
     --fact-card-bg: color-mix(in srgb, var(--fact-accent) 8%, var(--background));
     --fact-card-border: color-mix(in srgb, var(--fact-accent) 24%, transparent);
     --fact-icon-bg: color-mix(in srgb, var(--fact-accent) 15%, transparent);
@@ -124,19 +124,19 @@ const sourceLinks = [
   }
 
   .evidenceFactsGrid .evidenceFactCard_green {
-    --fact-accent: var(--success);
+    --fact-accent: var(--tone-green-fg);
   }
 
   .evidenceFactsGrid .evidenceFactCard_blue {
-    --fact-accent: oklch(0.62 0.2 252);
+    --fact-accent: var(--tone-blue-fg);
   }
 
   .evidenceFactsGrid .evidenceFactCard_purple {
-    --fact-accent: var(--primary);
+    --fact-accent: var(--tone-purple-fg);
   }
 
   .evidenceFactsGrid .evidenceFactCard_orange {
-    --fact-accent: oklch(0.74 0.17 55);
+    --fact-accent: var(--tone-orange-fg);
   }
 
   :global(html[data-theme='dark']) .evidenceFactsGrid .evidenceFactCard {

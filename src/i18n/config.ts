@@ -11,6 +11,8 @@ export const DEFAULT_LOCALE = 'en';
  *   - Auto-redirect by browser language is disabled
  *   - Language switcher in the UI is preserved — locales remain
  *     reachable when a user picks one manually
+ *   - GSC may report localized URLs as "Excluded by noindex"; that is
+ *     expected while this pause is enabled
  *
  * Set to `false` (and rebuild) when there is meaningful direct demand
  * from a specific region — at that point also localize pricing /

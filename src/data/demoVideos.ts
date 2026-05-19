@@ -130,16 +130,6 @@ export const MACOS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
     alt: 'Folder monitoring settings in Zush for macOS',
   },
   {
-    id: 'statistics',
-    title: 'Statistics',
-    description: 'See rename volume, Monitor share, activity, and file type trends',
-    images: {
-      light: '/images/showcase/macos/statistics-light.webp',
-      dark: '/images/showcase/macos/statistics-dark.webp',
-    },
-    alt: 'Statistics dashboard in Zush for macOS',
-  },
-  {
     id: 'activity',
     title: 'Activity History',
     description: 'Review recent renames and undo changes when needed',
@@ -148,6 +138,16 @@ export const MACOS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
       dark: '/images/showcase/macos/activity-dark.webp',
     },
     alt: 'Activity history in Zush for macOS',
+  },
+  {
+    id: 'statistics',
+    title: 'Statistics',
+    description: 'See rename volume, Monitor share, activity, and file type trends',
+    images: {
+      light: '/images/showcase/macos/statistics-light.webp',
+      dark: '/images/showcase/macos/statistics-dark.webp',
+    },
+    alt: 'Statistics dashboard in Zush for macOS',
   },
   {
     id: 'templates',
@@ -162,12 +162,12 @@ export const MACOS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
   {
     id: 'naming-blocks',
     title: 'Naming Blocks',
-    description: 'Build invoice-ready filenames from finance, date, vendor, and AI-detected fields',
+    description: 'Build filenames from your file content using 145+ ready-made blocks',
     images: {
       light: '/images/showcase/macos/naming-blocks-light.webp',
       dark: '/images/showcase/macos/naming-blocks-dark.webp',
     },
-    alt: 'Bookkeeper invoice naming blocks in Zush for macOS',
+    alt: 'Naming Blocks catalog in Zush for macOS',
   },
   {
     id: 'custom-prompts',

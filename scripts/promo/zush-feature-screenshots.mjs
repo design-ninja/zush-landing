@@ -698,33 +698,42 @@ function outputNameForTarget({ feature, theme, target }) {
   return `${feature.id}-${theme}.webp`;
 }
 
-async function captureFeature({ feature, theme, runId, assetRoot }) {
+async function captureFeature({ feature, theme, runId, assetRoot, reuseCurrentFixture = false }) {
   setSystemDarkMode(theme === 'dark');
   await wait(450);
 
-  const completionMarkerPath =
-    feature.fixture === 'batch-rename'
-      ? path.join(tempRoot, runId, `${feature.id}-${theme}-real-analysis.json`)
-      : null;
-  if (completionMarkerPath) {
-    fs.rmSync(completionMarkerPath, { force: true });
+  if (reuseCurrentFixture) {
+    await wait(700);
+  } else {
+    const completionMarkerPath =
+      feature.fixture === 'batch-rename'
+        ? path.join(tempRoot, runId, `${feature.id}-${theme}-real-analysis.json`)
+        : null;
+    if (completionMarkerPath) {
+      fs.rmSync(completionMarkerPath, { force: true });
+    }
+
+    postFixture({ fixture: feature.fixture, theme, assetRoot, runId, completionMarkerPath });
+    const fixtureDelay =
+      feature.fixture === 'custom-prompts'
+        ? 1600
+        : feature.fixture === 'offline-ai'
+          ? 1900
+          : feature.fixture === 'statistics'
+            ? 1800
+            : 1100;
+    if (completionMarkerPath) {
+      const marker = await waitForPromoRealAnalysis(completionMarkerPath);
+      console.log(`Real AI analyzed ${marker.analyzedCount}/${marker.expectedCount} batch files`);
+      await wait(500);
+    } else {
+      await wait(fixtureDelay);
+    }
   }
 
-  postFixture({ fixture: feature.fixture, theme, assetRoot, runId, completionMarkerPath });
-  const fixtureDelay =
-    feature.fixture === 'custom-prompts'
-      ? 1600
-      : feature.fixture === 'offline-ai'
-        ? 1900
-        : feature.fixture === 'statistics'
-          ? 1800
-          : 1100;
-  if (completionMarkerPath) {
-    const marker = await waitForPromoRealAnalysis(completionMarkerPath);
-    console.log(`Real AI analyzed ${marker.analyzedCount}/${marker.expectedCount} batch files`);
+  if (reuseCurrentFixture) {
+    console.log(`Reusing current ${feature.id} fixture state for ${theme}`);
     await wait(500);
-  } else {
-    await wait(fixtureDelay);
   }
 
   closeFinderInfoWindows();
@@ -777,13 +786,26 @@ async function main() {
   try {
     await app.waitForPid();
     await wait(2500);
-    for (const theme of selectedThemes) {
-      for (const feature of selectedFeatures) {
-        const featureOutputs = await captureFeature({ feature, theme, runId, assetRoot });
+    let previousCapture = null;
+    for (const feature of selectedFeatures) {
+      for (const theme of selectedThemes) {
+        const reuseCurrentFixture =
+          feature.fixture === 'batch-rename' &&
+          theme === 'dark' &&
+          previousCapture?.featureId === feature.id &&
+          previousCapture?.theme === 'light';
+        const featureOutputs = await captureFeature({
+          feature,
+          theme,
+          runId,
+          assetRoot,
+          reuseCurrentFixture,
+        });
         outputs.push(...featureOutputs);
         for (const output of featureOutputs) {
           console.log(`Wrote ${path.relative(repoRoot, output)}`);
         }
+        previousCapture = { featureId: feature.id, theme };
       }
     }
   } finally {

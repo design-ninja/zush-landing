@@ -29,6 +29,7 @@ export function getOtherOS(os: DownloadOS): DownloadOS {
 export type DownloadSource =
   | 'hero'
   | 'navbar'
+  | 'floating-cta'
   | 'download-cta'
   | 'blog-cta'
   | 'blog-cta-store'

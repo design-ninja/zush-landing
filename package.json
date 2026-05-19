@@ -26,11 +26,13 @@
     "promo:feature-screenshots": "node scripts/promo/zush-feature-screenshots.mjs"
   },
   "dependencies": {
+    "@remotion/player": "^4.0.461",
     "@vercel/analytics": "^2.0.1",
     "lucide-react": "^1.8.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "react-markdown": "^10.1.0"
+    "react-markdown": "^10.1.0",
+    "remotion": "^4.0.461"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.8",

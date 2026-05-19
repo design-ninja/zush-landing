@@ -114,6 +114,11 @@ for (const loc of locs) {
 
   const canonicalTag = `<link rel="canonical" href="${loc}"`;
   assertIncludes(html, canonicalTag, `Canonical mismatch or missing for ${pathname}`);
+  assertNotIncludes(
+    html,
+    '<meta name="robots" content="noindex',
+    `Sitemap URL must not emit noindex robots meta: ${pathname}`,
+  );
 
   if (isBlogPostPath(pathname)) {
     assertIncludes(html, '"@type":"BlogPosting"', `BlogPosting JSON-LD missing for ${pathname}`);

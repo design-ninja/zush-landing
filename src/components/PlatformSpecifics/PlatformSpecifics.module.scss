@@ -691,27 +691,31 @@
     }
 
     &_doc {
-      --file-preview-color: #0088ff;
+      --file-preview-color: var(--tone-blue-fg);
     }
 
     &_design {
-      --file-preview-color: #cb30e0;
+      --file-preview-color: var(--tone-magenta-fg);
     }
 
     &_sheet {
-      --file-preview-color: #34c759;
+      --file-preview-color: var(--tone-green-fg);
     }
 
     &_slides {
-      --file-preview-color: #ff8d28;
+      --file-preview-color: var(--tone-orange-fg);
     }
 
     &_pdf {
-      --file-preview-color: #ff383c;
+      --file-preview-color: var(--tone-red-fg);
     }
 
     &_video {
-      --file-preview-color: #00c3d0;
+      --file-preview-color: var(--tone-cyan-fg);
+    }
+
+    &_audio {
+      --file-preview-color: var(--tone-coffee-fg);
     }
   }
 
@@ -776,23 +780,23 @@
   padding: 0 0.5rem;
 
   &:nth-child(1) .SecurityColumn__Icon {
-    color: oklch(0.55 0.22 285);
-    background: oklch(0.94 0.06 285);
+    color: var(--tone-purple-fg);
+    background: var(--tone-purple-bg);
   }
 
   &:nth-child(2) .SecurityColumn__Icon {
-    color: oklch(0.55 0.18 245);
-    background: oklch(0.94 0.05 245);
+    color: var(--tone-blue-fg);
+    background: var(--tone-blue-bg);
   }
 
   &:nth-child(3) .SecurityColumn__Icon {
-    color: oklch(0.55 0.18 155);
-    background: oklch(0.94 0.05 155);
+    color: var(--tone-green-fg);
+    background: var(--tone-green-bg);
   }
 
   &:nth-child(4) .SecurityColumn__Icon {
-    color: oklch(0.62 0.18 45);
-    background: oklch(0.94 0.07 65);
+    color: var(--tone-orange-fg);
+    background: var(--tone-orange-bg);
   }
 
   &__Icon {

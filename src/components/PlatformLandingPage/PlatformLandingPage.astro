@@ -5,7 +5,6 @@ import Videos from '@/components/Videos';
 import Features from '@/components/Features/Features.astro';
 import SupportedFormats from '@/components/SupportedFormats';
 import Pricing from '@/components/Pricing/Pricing.astro';
-import WhyZush from '@/components/WhyZush';
 import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
 import FAQ from '@/components/FAQ';
 import PlatformGuides from '@/components/PlatformGuides/PlatformGuides.astro';
@@ -14,6 +13,9 @@ import CrossPlatformBanner from '@/components/CrossPlatformBanner/CrossPlatformB
 import { PLATFORM_LANDING_CONTENT } from '@/data/platformLanding';
 import { getPlatformLandingSections } from '@/data/platformLandingSections';
 import { PLATFORM_SPECIFICS_CONTENT } from '@/data/platformSpecifics';
+import macChangelogSource from '@/content/changelog.md?raw';
+import windowsChangelogSource from '@/content/changelog.windows.md?raw';
+import { parseLatestVersion } from '@/utils/version';
 import { getSeoForPath, SITE_ORIGIN } from '@/seo/config';
 import { buildFAQPageJsonLd, buildFeatureBreadcrumbJsonLd } from '@/utils/jsonLd';
 import type { DownloadOS } from '@/utils/download';
@@ -57,6 +59,9 @@ const specifics = getLocalizedPlatformSpecificsContent(
 const memorySpec = specifics.systemRequirements.rows.find((row) => row.key === 'memory')?.value;
 const storageSpec = specifics.systemRequirements.rows.find((row) => row.key === 'diskSpace')?.value;
 const processorSpec = specifics.systemRequirements.rows.find((row) => row.key === 'processor')?.value;
+
+const macVersion = parseLatestVersion(macChangelogSource) ?? undefined;
+const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
 
 const softwareJsonLd = {
   '@context': 'https://schema.org',
@@ -131,6 +136,8 @@ const softwareJsonLd = {
     trustSignals={copy.home.trustSignals}
     secondaryHref="#pricing"
     slides={copy.home.showcaseSlides}
+    macVersion={macVersion}
+    windowsVersion={windowsVersion}
   />
   <Videos client:visible autoplayWhenInView forceOS={platform} copy={copy.home.videos} />
   <DownloadCTA
@@ -156,7 +163,6 @@ const softwareJsonLd = {
     videosLabel={copy.home.videosLabel}
     audioLabel={copy.home.audioLabel}
   />
-  <WhyZush forceOS={platform} platformSpecificCopy copy={copy.home.whyZush} />
   <Pricing copy={copy.pricing} />
   {shouldShowCrossPlatformBanner && <CrossPlatformBanner locale={locale} hidePlatform={platform} />}
   <PlatformGuides platform={platform} locale={locale} />

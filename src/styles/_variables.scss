@@ -39,6 +39,39 @@ $h-orange: 45;
 $h-pink: 355;
 $h-cyan: 195;
 
+// Pastel tone palette — single source of truth for accent swatches
+// (Pricing "PRO Features", file-type icons, blog tags, security icons, etc.)
+// Each tone exposes a foreground (icon/text color) and a soft background.
+$tone-orange-fg:  oklch(0.74 0.17 55);
+$tone-orange-bg:  oklch(0.74 0.17 55 / 0.16);
+
+$tone-green-fg:   oklch(0.7557 0.208 147);
+$tone-green-bg:   oklch(0.7557 0.208 147 / 0.14);
+
+$tone-blue-fg:    oklch(0.62 0.2 252);
+$tone-blue-bg:    oklch(0.62 0.2 252 / 0.14);
+
+$tone-purple-fg:  oklch(0.5595 0.2296 279.31);
+$tone-purple-bg:  oklch(0.5595 0.2296 279.31 / 0.1);
+
+$tone-pink-fg:    oklch(0.68 0.24 330);
+$tone-pink-bg:    oklch(0.68 0.24 330 / 0.13);
+
+$tone-teal-fg:    oklch(0.72 0.16 185);
+$tone-teal-bg:    oklch(0.72 0.16 185 / 0.14);
+
+$tone-coffee-fg:  oklch(0.58 0.07 50);
+$tone-coffee-bg:  oklch(0.58 0.07 50 / 0.14);
+
+$tone-red-fg:     oklch(0.65 0.22 25);
+$tone-red-bg:     oklch(0.65 0.22 25 / 0.13);
+
+$tone-cyan-fg:    oklch(0.72 0.15 215);
+$tone-cyan-bg:    oklch(0.72 0.15 215 / 0.14);
+
+$tone-magenta-fg: oklch(0.62 0.25 320);
+$tone-magenta-bg: oklch(0.62 0.25 320 / 0.13);
+
 // Dark Mode
 $dark-background: oklch(0.13 0.01 285);
 $dark-foreground: oklch(1 0 0);
@@ -71,6 +104,37 @@ $dark-success: oklch(0.7 0.17 160);
 $dark-success-foreground: oklch(0.15 0 0);
 $dark-destructive: oklch(0.65 0.2 25);
 $dark-destructive-foreground: oklch(1 0 0);
+
+// Dark mode pastel tones — slightly higher L, larger bg alpha for legibility.
+$dark-tone-orange-fg:  oklch(0.8 0.16 55);
+$dark-tone-orange-bg:  oklch(0.8 0.16 55 / 0.22);
+
+$dark-tone-green-fg:   oklch(0.8 0.18 147);
+$dark-tone-green-bg:   oklch(0.8 0.18 147 / 0.2);
+
+$dark-tone-blue-fg:    oklch(0.72 0.18 252);
+$dark-tone-blue-bg:    oklch(0.72 0.18 252 / 0.2);
+
+$dark-tone-purple-fg:  oklch(0.72 0.2 279.31);
+$dark-tone-purple-bg:  oklch(0.72 0.2 279.31 / 0.2);
+
+$dark-tone-pink-fg:    oklch(0.76 0.21 330);
+$dark-tone-pink-bg:    oklch(0.76 0.21 330 / 0.2);
+
+$dark-tone-teal-fg:    oklch(0.8 0.14 185);
+$dark-tone-teal-bg:    oklch(0.8 0.14 185 / 0.2);
+
+$dark-tone-coffee-fg:  oklch(0.72 0.07 50);
+$dark-tone-coffee-bg:  oklch(0.72 0.07 50 / 0.2);
+
+$dark-tone-red-fg:     oklch(0.74 0.2 25);
+$dark-tone-red-bg:     oklch(0.74 0.2 25 / 0.2);
+
+$dark-tone-cyan-fg:    oklch(0.8 0.13 215);
+$dark-tone-cyan-bg:    oklch(0.8 0.13 215 / 0.2);
+
+$dark-tone-magenta-fg: oklch(0.72 0.22 320);
+$dark-tone-magenta-bg: oklch(0.72 0.22 320 / 0.2);
 
 // Typography
 $font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;

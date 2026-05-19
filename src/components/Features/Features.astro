@@ -4,23 +4,18 @@ import {
   Sparkles,
   History,
   Tag,
-  Folder,
-  Plus,
-  Check,
   MessageSquareText,
   KeyRound,
   Bot,
   LayoutTemplate,
   Blocks,
-  Camera,
-  ReceiptText,
 } from 'lucide-react';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
 import { DEFAULT_FEATURE_CARDS_COPY, type FeatureCardsCopy } from '@/i18n/copy';
-import sunsetThumb from '@/assets/features/sunset_thumb.png';
-import glitchThumb from '@/assets/features/glitch_thumb.png';
 import BentoCard from './BentoCard.astro';
+import SmartBatchRenameVisual from './SmartBatchRenameVisual';
+import FeatureAnimation from './FeatureAnimation';
 import styles from './Features.module.scss';
 
 interface Props {
@@ -34,28 +29,7 @@ const {
   description = 'One desktop AI file renamer for screenshots, design files, PDFs, photos, audio, videos, documents, and messy mixed folders',
   copy = DEFAULT_FEATURE_CARDS_COPY,
 } = Astro.props as Props;
-const currentYear = new Date().getFullYear();
 const titleParts = title.split('Zush');
-const templateExamples = [
-  {
-    title: 'Screenshots',
-    description: 'Names by app, screen, and visible content',
-    icon: Camera,
-    tone: 'screenshots',
-  },
-  {
-    title: 'Photographer Shoots',
-    description: 'Shoots named by date, client, event, and place',
-    icon: Camera,
-    tone: 'photographer',
-  },
-  {
-    title: 'Bookkeeper Expenses',
-    description: 'Date, vendor, total, and invoice number',
-    icon: ReceiptText,
-    tone: 'expenses',
-  },
-];
 ---
 
 <section id='features' class={styles.Features}>
@@ -75,21 +49,8 @@ const templateExamples = [
         description={copy.aiAnalysis.description}
         icon={Sparkles}
       >
-        <div class={styles.UI_Analysis}>
-          <div class={styles.UI_Analysis__Preview}>
-            <img
-              src={sunsetThumb.src}
-              alt='Sunset'
-              width={64}
-              height={64}
-              loading='lazy'
-              decoding='async'
-            />
-          </div>
-          <div class={styles.UI_Analysis__Content}>
-            <span class={styles.UI_Analysis__OldName}>{`Screenshot ${currentYear}-03-15 at 19.45.22.png`}</span>
-            <span class={styles.UI_Analysis__NewName}>{copy.analysisNewName}</span>
-          </div>
+        <div class={styles.UI_BatchRename}>
+          <SmartBatchRenameVisual client:visible />
         </div>
       </BentoCard>
 
@@ -98,28 +59,8 @@ const templateExamples = [
         description={copy.foldersMonitoring.description}
         icon={FolderSync}
       >
-        <div class={styles.UI_Monitoring}>
-          <div class={styles.UI_Monitoring__List}>
-            <div class={styles.UI_Monitoring__Item}>
-              <div class={styles.UI_Monitoring__FolderInfo}>
-                <div class={styles.UI_Monitoring__Icon}>
-                  <Folder size={16} />
-                </div>
-                <span>~/Desktop</span>
-              </div>
-            </div>
-            <div class={styles.UI_Monitoring__Item}>
-              <div class={styles.UI_Monitoring__FolderInfo}>
-                <div class={styles.UI_Monitoring__Icon}>
-                  <Folder size={16} />
-                </div>
-                <span>~/Projects/Design/Assets</span>
-              </div>
-            </div>
-          </div>
-          <div class={styles.UI_Monitoring__Add}>
-            <Plus size={16} /> {copy.addFolder}
-          </div>
+        <div class={styles.UI_FeatureAnimation}>
+          <FeatureAnimation kind='folders' client:visible />
         </div>
       </BentoCard>
 
@@ -128,26 +69,8 @@ const templateExamples = [
         description={copy.smartMetadata.description}
         icon={Tag}
       >
-        <div class={styles.UI_Metadata}>
-          <div class={styles.UI_Metadata__File}>
-            <div class={styles.UI_Metadata__Preview}>
-              <img
-                src={glitchThumb.src}
-                alt='Glitch Art'
-                width={64}
-                height={64}
-                loading='lazy'
-                decoding='async'
-              />
-            </div>
-            <div class={styles.UI_Metadata__FileInfo}>
-              <span class={styles.UI_Metadata__FileName}>{copy.metadataFileName}</span>
-              <span class={styles.UI_Metadata__FileMeta}>4.2 MB</span>
-            </div>
-          </div>
-          <div class={styles.UI_Metadata__Tags}>
-            {copy.metadataTags.map((tag) => <span>{tag}</span>)}
-          </div>
+        <div class={styles.UI_FeatureAnimation}>
+          <FeatureAnimation kind='metadata' client:visible />
         </div>
       </BentoCard>
 
@@ -156,26 +79,8 @@ const templateExamples = [
         description={copy.renameHistory.description}
         icon={History}
       >
-        <div class={styles.UI_History}>
-          <div class={styles.UI_History__Item}>
-            <div class={styles.UI_History__Names}>
-              <span class={styles.UI_History__OldName}>notes_FINAL_copy.docx</span>
-              <span class={styles.UI_History__NewName}>→ {copy.historyNewNames[0]}</span>
-            </div>
-            <div class={styles.UI_History__Meta}>
-              <span class={styles.UI_History__Time}>{copy.today}, 09:51</span>
-              <span class={styles.UI_History__Undo}>{copy.undo}</span>
-            </div>
-          </div>
-          <div class={`${styles.UI_History__Item} ${styles.UI_History__Item_faded}`}>
-            <div class={styles.UI_History__Names}>
-              <span class={styles.UI_History__OldName}>q1_report_export.xlsx</span>
-              <span class={styles.UI_History__NewName}>→ {copy.historyNewNames[1]}</span>
-            </div>
-            <div class={styles.UI_History__Meta}>
-              <span class={styles.UI_History__Time}>{copy.today}, 08:30</span>
-            </div>
-          </div>
+        <div class={styles.UI_FeatureAnimation}>
+          <FeatureAnimation kind='history' client:visible />
         </div>
       </BentoCard>
 
@@ -185,24 +90,8 @@ const templateExamples = [
         icon={LayoutTemplate}
         badge='PRO 🌟'
       >
-        <div class={styles.UI_Templates}>
-          <div class={styles.UI_Templates__List}>
-            {templateExamples.map((template) => {
-              const Icon = template.icon;
-
-              return (
-              <div class={styles.UI_Templates__Item}>
-                <span class={`${styles.UI_Templates__Icon} ${styles[`UI_Templates__Icon_${template.tone}`]}`}>
-                  <Icon size={17} strokeWidth={2.35} />
-                </span>
-                <span class={styles.UI_Templates__Copy}>
-                  <span class={styles.UI_Templates__Name}>{template.title}</span>
-                  <span class={styles.UI_Templates__Description}>{template.description}</span>
-                </span>
-              </div>
-              );
-            })}
-          </div>
+        <div class={styles.UI_FeatureAnimation}>
+          <FeatureAnimation kind='templates' client:visible />
         </div>
       </BentoCard>
 
@@ -212,22 +101,8 @@ const templateExamples = [
         icon={Blocks}
         badge='PRO 🌟'
       >
-        <div class={styles.UI_NamingBlocks}>
-          <div class={styles.UI_NamingBlocks__Editor}>
-            <div class={styles.UI_NamingBlocks__Builder}>
-              <span class={styles.UI_NamingBlocks__Block}>Capture Date</span>
-              <span class={styles.UI_NamingBlocks__Separator}>_</span>
-              <span class={styles.UI_NamingBlocks__Block}>Client Name</span>
-              <span class={styles.UI_NamingBlocks__Separator}>_</span>
-              <span class={styles.UI_NamingBlocks__Block}>Event</span>
-              <span class={styles.UI_NamingBlocks__Separator}>_</span>
-              <span class={styles.UI_NamingBlocks__Block}>Location</span>
-            </div>
-            <span class={styles.UI_NamingBlocks__Add}>+</span>
-          </div>
-          <span class={styles.UI_NamingBlocks__Preview}>
-            2026-05-10_Globex_Wedding_Santa_Monica.jpg
-          </span>
+        <div class={styles.UI_FeatureAnimation}>
+          <FeatureAnimation kind='naming-blocks' client:visible />
         </div>
       </BentoCard>
 
@@ -237,18 +112,8 @@ const templateExamples = [
         icon={MessageSquareText}
         badge='PRO 🌟'
       >
-        <div class={styles.UI_Prompts}>
-          <div class={styles.UI_Prompts__Panel}>
-            <div class={styles.UI_Prompts__Header}>
-              <span class={styles.UI_Prompts__Label}>{copy.promptRules}</span>
-              <span class={styles.UI_Prompts__Badge}>{copy.customBadge}</span>
-            </div>
-            <div class={styles.UI_Prompts__Editor}>
-              <span class={styles.UI_Prompts__Text}>
-                {copy.promptExample}
-              </span>
-            </div>
-          </div>
+        <div class={styles.UI_FeatureAnimation}>
+          <FeatureAnimation kind='prompts' client:visible />
         </div>
       </BentoCard>
 
@@ -258,19 +123,8 @@ const templateExamples = [
         icon={KeyRound}
         badge='PRO 🌟'
       >
-        <div class={styles.UI_BYOK}>
-          <div class={styles.UI_BYOK__Input}>
-            <span class={styles.UI_BYOK__Key}>{copy.apiKeyConnected}</span>
-            <div class={styles.UI_BYOK__Icon}>
-              <Check size={14} />
-            </div>
-          </div>
-          <div class={styles.UI_BYOK__Providers}>
-            <span>Gemini</span>
-            <span>Groq</span>
-            <span>OpenAI</span>
-            <span>Claude</span>
-          </div>
+        <div class={styles.UI_FeatureAnimation}>
+          <FeatureAnimation kind='byok' client:visible />
         </div>
       </BentoCard>
 
@@ -280,22 +134,8 @@ const templateExamples = [
         icon={Bot}
         badge='PRO 🌟'
       >
-        <div class={styles.UI_Ollama}>
-          <div class={styles.UI_Ollama__Terminal}>
-            <div class={styles.UI_Ollama__Header}>
-              <span>{copy.terminal}</span>
-            </div>
-            <div class={styles.UI_Ollama__Body}>
-              <div class={styles.UI_Ollama__Line}>
-                <span class={styles.UI_Ollama__Prompt}>$</span>
-                <span>ollama run qwen2.5vl:3b</span>
-              </div>
-              <div class={styles.UI_Ollama__Status}>
-                <Check size={14} />
-                <span>{copy.localModelReady}</span>
-              </div>
-            </div>
-          </div>
+        <div class={styles.UI_FeatureAnimation}>
+          <FeatureAnimation kind='offline-ai' client:visible />
         </div>
       </BentoCard>
     </div>

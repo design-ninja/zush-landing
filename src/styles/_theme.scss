@@ -53,6 +53,28 @@
     --case-icon-bg-c: 0.04;
     --case-icon-l: 0.55;
     --case-icon-c: 0.12;
+
+    // Pastel tone palette — single source of truth.
+    --tone-orange-fg:  #{$tone-orange-fg};
+    --tone-orange-bg:  #{$tone-orange-bg};
+    --tone-green-fg:   #{$tone-green-fg};
+    --tone-green-bg:   #{$tone-green-bg};
+    --tone-blue-fg:    #{$tone-blue-fg};
+    --tone-blue-bg:    #{$tone-blue-bg};
+    --tone-purple-fg:  #{$tone-purple-fg};
+    --tone-purple-bg:  #{$tone-purple-bg};
+    --tone-pink-fg:    #{$tone-pink-fg};
+    --tone-pink-bg:    #{$tone-pink-bg};
+    --tone-teal-fg:    #{$tone-teal-fg};
+    --tone-teal-bg:    #{$tone-teal-bg};
+    --tone-coffee-fg:  #{$tone-coffee-fg};
+    --tone-coffee-bg:  #{$tone-coffee-bg};
+    --tone-red-fg:     #{$tone-red-fg};
+    --tone-red-bg:     #{$tone-red-bg};
+    --tone-cyan-fg:    #{$tone-cyan-fg};
+    --tone-cyan-bg:    #{$tone-cyan-bg};
+    --tone-magenta-fg: #{$tone-magenta-fg};
+    --tone-magenta-bg: #{$tone-magenta-bg};
 }
 
 [data-theme='dark'] {
@@ -95,4 +117,26 @@
     --case-icon-bg-c: 0.04;
     --case-icon-l: 0.85;
     --case-icon-c: 0.08;
+
+    // Dark-mode pastel tone palette.
+    --tone-orange-fg:  #{$dark-tone-orange-fg};
+    --tone-orange-bg:  #{$dark-tone-orange-bg};
+    --tone-green-fg:   #{$dark-tone-green-fg};
+    --tone-green-bg:   #{$dark-tone-green-bg};
+    --tone-blue-fg:    #{$dark-tone-blue-fg};
+    --tone-blue-bg:    #{$dark-tone-blue-bg};
+    --tone-purple-fg:  #{$dark-tone-purple-fg};
+    --tone-purple-bg:  #{$dark-tone-purple-bg};
+    --tone-pink-fg:    #{$dark-tone-pink-fg};
+    --tone-pink-bg:    #{$dark-tone-pink-bg};
+    --tone-teal-fg:    #{$dark-tone-teal-fg};
+    --tone-teal-bg:    #{$dark-tone-teal-bg};
+    --tone-coffee-fg:  #{$dark-tone-coffee-fg};
+    --tone-coffee-bg:  #{$dark-tone-coffee-bg};
+    --tone-red-fg:     #{$dark-tone-red-fg};
+    --tone-red-bg:     #{$dark-tone-red-bg};
+    --tone-cyan-fg:    #{$dark-tone-cyan-fg};
+    --tone-cyan-bg:    #{$dark-tone-cyan-bg};
+    --tone-magenta-fg: #{$dark-tone-magenta-fg};
+    --tone-magenta-bg: #{$dark-tone-magenta-bg};
 }

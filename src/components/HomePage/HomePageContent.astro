@@ -5,10 +5,13 @@ import SpeedComparison from '@/components/SpeedComparison';
 import Features from '@/components/Features/Features.astro';
 import SupportedFormats from '@/components/SupportedFormats';
 import Pricing from '@/components/Pricing/Pricing.astro';
-import WhyZush from '@/components/WhyZush';
 import FAQ from '@/components/FAQ';
 import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
 import CrossPlatformBanner from '@/components/CrossPlatformBanner/CrossPlatformBanner.astro';
+import EvidenceSignals from '@/components/EvidenceSignals/EvidenceSignals.astro';
+import macChangelogSource from '@/content/changelog.md?raw';
+import windowsChangelogSource from '@/content/changelog.windows.md?raw';
+import { parseLatestVersion } from '@/utils/version';
 import type { Locale } from '@/i18n/config';
 import type { LocaleCopy } from '@/i18n/copy';
 
@@ -19,6 +22,8 @@ interface Props {
 }
 
 const { copy, locale, secondaryHref } = Astro.props as Props;
+const macVersion = parseLatestVersion(macChangelogSource) ?? undefined;
+const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
 ---
 
 <Hero
@@ -32,7 +37,10 @@ const { copy, locale, secondaryHref } = Astro.props as Props;
   trustSignals={copy.home.trustSignals}
   secondaryHref={secondaryHref}
   slides={copy.home.showcaseSlides}
+  macVersion={macVersion}
+  windowsVersion={windowsVersion}
 />
+{locale === 'en' && <EvidenceSignals />}
 <Videos client:visible autoplayWhenInView copy={copy.home.videos} />
 <Features title={copy.home.featuresTitle} description={copy.home.featuresDescription} copy={copy.home.featureCards} />
 <SupportedFormats
@@ -51,7 +59,6 @@ const { copy, locale, secondaryHref } = Astro.props as Props;
   downloadMenu={copy.downloadMenu}
 />
 <SpeedComparison client:visible copy={copy.home.speedComparison} />
-<WhyZush client:visible copy={copy.home.whyZush} />
 <CrossPlatformBanner locale={locale} />
 <Pricing copy={copy.pricing} />
 <FAQ

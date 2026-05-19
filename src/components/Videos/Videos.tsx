@@ -28,9 +28,9 @@ interface VideosCopy {
 }
 
 const defaultCopy: VideosCopy = {
-  title: 'See Zush in Action',
+  title: 'Take a tour of Zush',
   titleAccent: 'Zush',
-  description: 'See how Zush handles real file organization workflows with these core features',
+  description: 'One short demo per feature — click a tab to see it in action',
   playDemo: 'Play demo',
   switchTo: 'Switch to',
   items: {},
@@ -188,7 +188,7 @@ const Videos = ({
   };
 
   return (
-    <section className={styles.Videos} data-scroll-reveal-skip=''>
+    <section className={styles.Videos}>
       <div className={styles.Videos__Container}>
         <div>
           <SectionHeader

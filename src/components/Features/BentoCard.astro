@@ -17,6 +17,7 @@ const { title, description, icon: Icon, class: className, badge } = Astro.props;
 
 <div
   class={`${styles.BentoCard} ${className || ''}`}
+  data-bento-card
 >
   <div class={styles.BentoCard__Content}>
     <div class={styles.BentoCard__Header}>

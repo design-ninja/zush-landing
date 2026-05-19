@@ -27,6 +27,7 @@ interface DownloadButtonProps {
   variant?: Variant;
   size?: Size;
   label?: string;
+  labelAccent?: string;
   className?: string;
   useMobileModal?: boolean;
   forceOS?: DownloadOS;
@@ -35,6 +36,19 @@ interface DownloadButtonProps {
   menuCopy?: DownloadMenuCopy;
   onPrimaryClick?: (event: { os: DownloadOS; source: DownloadSource }) => void;
 }
+
+const renderLabel = (label: string, accent?: string) => {
+  if (!accent) return label;
+  const idx = label.indexOf(accent);
+  if (idx === -1) return label;
+  return (
+    <>
+      {label.slice(0, idx)}
+      <span className={styles.Accent}>{accent}</span>
+      {label.slice(idx + accent.length)}
+    </>
+  );
+};
 
 const DEFAULT_MENU_COPY: DownloadMenuCopy = {
   downloadForMac: 'Download for Mac',
@@ -51,6 +65,7 @@ const DownloadButton = ({
   variant = 'black',
   size = 'md',
   label = 'Download',
+  labelAccent,
   className,
   useMobileModal = true,
   forceOS,
@@ -226,7 +241,7 @@ const DownloadButton = ({
         onClick={handlePrimaryClick}
       >
         {downloadOS === 'windows' ? <WindowsIcon colored /> : <AppleIcon />}
-        <span>{label}</span>
+        <span>{renderLabel(label, labelAccent)}</span>
       </a>
       {hasDropdownItems && (
         <button

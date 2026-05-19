@@ -1,7 +1,6 @@
 ---
 import Breadcrumbs from '@/components/Breadcrumbs';
 import PillLink from '@/components/PillLink';
-import WhyZush from '@/components/WhyZush';
 import Features from '@/components/Features/Features.astro';
 import Heading from '@/components/Heading';
 import Hero from '@/components/Hero';
@@ -17,6 +16,9 @@ import { getPdfDeepDiveCopy } from '@/data/pdfDeepDive';
 import FeatureFAQ from './FeatureFAQ';
 import { DEFAULT_LOCALE, getLocalizedPath, type Locale, type LocalizedRoute } from '@/i18n/config';
 import { getCopy, type FeatureCopy } from '@/i18n/copy';
+import macChangelogSource from '@/content/changelog.md?raw';
+import windowsChangelogSource from '@/content/changelog.windows.md?raw';
+import { parseLatestVersion } from '@/utils/version';
 import styles from './FeatureLandingPage.module.scss';
 
 interface LocalizedProps {
@@ -46,6 +48,8 @@ const breadcrumbItems = [
 ];
 const shouldRenderPdfDeepDive = category === 'pdf';
 const pdfDeepDive = getPdfDeepDiveCopy(currentLocale);
+const macVersion = parseLatestVersion(macChangelogSource) ?? undefined;
+const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
 ---
 
 <Breadcrumbs items={breadcrumbItems} />
@@ -61,6 +65,8 @@ const pdfDeepDive = getPdfDeepDiveCopy(currentLocale);
     downloadLabel={currentCopy.header.download}
     downloadMenu={currentCopy.downloadMenu}
     trustSignals={currentCopy.home.trustSignals}
+    macVersion={macVersion}
+    windowsVersion={windowsVersion}
     client:visible
   />
 
@@ -82,7 +88,6 @@ const pdfDeepDive = getPdfDeepDiveCopy(currentLocale);
     downloadLabel={currentCopy.header.download}
     downloadMenu={currentCopy.downloadMenu}
   />
-  <WhyZush client:visible copy={currentCopy.home.whyZush} />
   <CrossPlatformBanner locale={currentLocale} />
 
   {shouldRenderPdfDeepDive && (

@@ -227,7 +227,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.2rem;
-    --file-preview-color: #ff383c;
+    --file-preview-color: var(--tone-red-fg);
     color: var(--file-preview-color);
     background: color-mix(in srgb, var(--file-preview-color) 14%, white);
     overflow: hidden;

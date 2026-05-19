@@ -1,0 +1,30 @@
+---
+import DownloadButton from '@/components/DownloadButton/DownloadButton';
+import type { DownloadOS } from '@/utils/download';
+import styles from './FloatingDownloadCTA.module.scss';
+
+interface Props {
+  forceOS?: DownloadOS;
+}
+
+const { forceOS } = Astro.props as Props;
+---
+
+<div
+  class={styles.FloatingDownloadCTA}
+  data-floating-download
+  data-active='false'
+  data-visible='false'
+  aria-hidden='true'
+>
+  <DownloadButton
+    client:load
+    source='floating-cta'
+    variant='black'
+    size='lg'
+    label='Download Zush'
+    labelAccent='Zush'
+    forceOS={forceOS}
+    showDropdown={false}
+  />
+</div>

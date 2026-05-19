@@ -7,6 +7,7 @@ import Heading from "../Heading";
 import Text from "../Text";
 import styles from "./Hero.module.scss";
 import { trackProClick, type DownloadOS } from "@/utils/download";
+import { useOS } from "@/hooks/useOS";
 import type { DownloadMenuCopy } from "@/i18n/copy";
 
 
@@ -25,6 +26,8 @@ export interface HeroProps {
   downloadMenu?: DownloadMenuCopy;
   includeOtherDownloadOS?: boolean;
   trustSignals?: string[];
+  macVersion?: string;
+  windowsVersion?: string;
 }
 
 const renderTextWithBreaks = (value: string) =>
@@ -55,8 +58,16 @@ const Hero = ({
   downloadMenu,
   includeOtherDownloadOS = true,
   trustSignals = ["✨ Free to try", "💳 No credit card required"],
+  macVersion,
+  windowsVersion,
 }: HeroProps) => {
   const highlightText = titleHighlight ?? titleAccent;
+  const { downloadOS: detectedOS } = useOS();
+  const versionOS = forceOS ?? detectedOS;
+  const platformVersion = versionOS === "windows" ? windowsVersion : macVersion;
+  const finalTrustSignals = platformVersion
+    ? [`🤖 v${platformVersion}`, ...trustSignals]
+    : trustSignals;
 
   const renderTitle = () => {
     if (!title) {
@@ -132,9 +143,9 @@ const Hero = ({
               {buyLabel}
             </Button>
           </div>
-          {trustSignals.length > 0 && (
+          {finalTrustSignals.length > 0 && (
             <ul className={styles.Hero__TrustRow} aria-label="Trust signals">
-              {trustSignals.map((item) => (
+              {finalTrustSignals.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>

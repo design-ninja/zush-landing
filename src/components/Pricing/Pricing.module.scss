@@ -119,37 +119,42 @@
         align-items: center;
         gap: 0.75rem;
         padding: 0.25rem 0;
-        --feature-color: var(--success);
-        --feature-bg: color-mix(in srgb, var(--success), transparent 86%);
+        --feature-color: var(--tone-green-fg);
+        --feature-bg: var(--tone-green-bg);
 
         &[data-tone='orange'] {
-            --feature-color: oklch(0.74 0.17 55);
-            --feature-bg: oklch(0.74 0.17 55 / 0.16);
+            --feature-color: var(--tone-orange-fg);
+            --feature-bg: var(--tone-orange-bg);
         }
 
         &[data-tone='green'] {
-            --feature-color: var(--success);
-            --feature-bg: color-mix(in srgb, var(--success), transparent 84%);
+            --feature-color: var(--tone-green-fg);
+            --feature-bg: var(--tone-green-bg);
         }
 
         &[data-tone='blue'] {
-            --feature-color: oklch(0.62 0.2 252);
-            --feature-bg: oklch(0.62 0.2 252 / 0.14);
+            --feature-color: var(--tone-blue-fg);
+            --feature-bg: var(--tone-blue-bg);
         }
 
         &[data-tone='purple'] {
-            --feature-color: var(--primary);
-            --feature-bg: var(--primary-soft);
+            --feature-color: var(--tone-purple-fg);
+            --feature-bg: var(--tone-purple-bg);
         }
 
         &[data-tone='pink'] {
-            --feature-color: oklch(0.68 0.24 330);
-            --feature-bg: oklch(0.68 0.24 330 / 0.13);
+            --feature-color: var(--tone-pink-fg);
+            --feature-bg: var(--tone-pink-bg);
         }
 
         &[data-tone='teal'] {
-            --feature-color: oklch(0.72 0.16 185);
-            --feature-bg: oklch(0.72 0.16 185 / 0.14);
+            --feature-color: var(--tone-teal-fg);
+            --feature-bg: var(--tone-teal-bg);
+        }
+
+        &[data-tone='coffee'] {
+            --feature-color: var(--tone-coffee-fg);
+            --feature-bg: var(--tone-coffee-bg);
         }
     }
 
@@ -219,7 +224,23 @@
     position: relative;
     overflow: visible;
     scroll-margin-top: calc($navbar-height + 1.25rem);
+    transition:
+        transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.4s ease;
     @include shadow('sm');
+
+    &:hover {
+        transform: scale(1.025) translateY(-0.25rem);
+        @include shadow('md');
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+
+        &:hover {
+            transform: none;
+        }
+    }
 
     @include mobile {
         padding: 1.5rem 1.4rem;
@@ -307,7 +328,7 @@
         color: var(--foreground);
 
         svg {
-            color: var(--success);
+            color: var(--secondary);
             flex-shrink: 0;
         }
     }

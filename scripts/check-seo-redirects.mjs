@@ -27,6 +27,8 @@ for (const source of ['/rename-images-with-ai/', '/rename-files-with-ai/']) {
 assertRedirect('/rename-images-with-ai/', '/rename-photos-with-ai');
 assertRedirect('/rename-images-with-ai', '/rename-photos-with-ai');
 assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/rename-images-with-ai', '/:locale/rename-photos-with-ai');
+assertRedirect('/ai-photo-renamer', '/rename-photos-with-ai');
+assertRedirect('/ai-document-renamer', '/rename-documents-with-ai');
 
 assertRedirect('/rename-files-with-ai/', '/');
 assertRedirect('/rename-files-with-ai', '/');
