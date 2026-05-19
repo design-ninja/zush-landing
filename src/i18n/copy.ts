@@ -981,7 +981,7 @@ const EN_COPY: LocaleCopy = {
     heroTitle: 'AI File Renamer\nfor Mac & Windows',
     heroAccent: 'AI File Renamer',
     heroSubtitle:
-      'Batch rename files with AI, watch folders automatically, and organize screenshots, design files, PDFs, photos, audio, videos, iWork, and Office documents with reusable templates and searchable names based on real content.',
+      'AI batch rename for Mac & Windows. Rename screenshots, PDFs, design files, photos, audio, video, iWork and Office documents by file content. Watch folders, save reusable templates, undo any change.',
     buyPro: 'Buy 🌟 PRO',
     trustSignals: ['✨ Free to try', '💳 No credit card required'],
     featuresTitle: 'Zush Features',
@@ -1190,7 +1190,7 @@ const EN_COPY: LocaleCopy = {
     '/': {
       title: 'AI File Renamer & Batch Rename Tool for Mac & Windows — Zush',
       description:
-        'Batch rename files with AI, watch folders automatically, and rename screenshots, design files, PDFs, photos, audio, videos, iWork, and Office documents by content. 50 free files.',
+        'AI batch rename for Mac & Windows. Rename screenshots, PDFs, photos, video, iWork and Office docs by file content. Watch folders, templates. 50 free files.',
     },
   },
 };
@@ -3159,7 +3159,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'KI-Dateiumbenenner\nfür Mac & Windows',
       heroAccent: 'KI-Dateiumbenenner',
-      heroSubtitle: 'Benenne Dateien stapelweise mit KI um, überwache Ordner automatisch und organisiere Screenshots, PDFs, Fotos, Videos und Dokumente mit durchsuchbaren Namen basierend auf echtem Inhalt.',
+      heroSubtitle: 'KI-Stapelumbenennung für Mac & Windows. Benenne Screenshots, PDFs, Designdateien, Fotos, Audio, Videos, iWork- und Office-Dokumente nach Dateiinhalt um. Ordner überwachen, wiederverwendbare Vorlagen speichern, jede Änderung rückgängig machen.',
       buyPro: 'PRO kaufen 🌟',
       trustSignals: ['✨ Kostenlos testen', '💳 Keine Kreditkarte erforderlich'],
       featuresTitle: 'Zush Funktionen',
@@ -3190,7 +3190,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     },
     platforms: localizedPlatforms.de,
     seo: {
-      '/': { title: 'KI-Dateiumbenenner & Stapel-Umbenennung für Mac & Windows — Zush', description: 'Benenne Dateien stapelweise mit KI um, überwache Ordner automatisch und benenne Screenshots, PDFs, Fotos, Videos und Dokumente nach Inhalt.' },
+      '/': { title: 'KI-Dateiumbenenner & Stapel-Umbenennung für Mac & Windows — Zush', description: 'KI-Stapelumbenennung für Mac & Windows. Benenne Screenshots, PDFs, Fotos, Videos, iWork- und Office-Dokumente nach Dateiinhalt. Ordner, Vorlagen. 50 gratis.' },
     },
     featurePages: localizedFeaturePages('Häufig gestellte Fragen', 'Verwandte Tools', 'Verwandte Anleitungen', [
       { question: 'Kann ich eine Umbenennung rückgängig machen?', answer: 'Ja. Zush speichert den Verlauf, damit du Dateien mit einem Klick auf den ursprünglichen Namen zurücksetzen kannst.' },
@@ -3210,7 +3210,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'Renommeur de fichiers IA\npour Mac & Windows',
       heroAccent: 'Renommeur de fichiers IA',
-      heroSubtitle: 'Renommez les fichiers par lot avec l’IA, surveillez les dossiers automatiquement et organisez screenshots, PDF, photos, vidéos et documents avec des noms recherchables basés sur le contenu réel.',
+      heroSubtitle: 'Renommage par lot avec IA pour Mac & Windows. Renommez screenshots, PDF, fichiers de design, photos, audio, vidéos, documents iWork et Office d’après le contenu du fichier. Surveillez les dossiers, créez des modèles réutilisables, annulez toute modification.',
       buyPro: 'Acheter PRO 🌟',
       trustSignals: ['✨ Essai gratuit', '💳 Sans carte bancaire'],
       featuresTitle: 'Fonctions Zush',
@@ -3232,7 +3232,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     },
     pricing: { planName: 'Zush PRO 🌟', planDescription: 'Achat unique • Accès à vie', billing: 'une fois', buttonText: 'Acheter Zush PRO 🌟', buttonHint: 'Garantie 14 jours • Paiement sécurisé via Paddle', features: localizedPricingFeatures.fr, ...localizedPricingExtras.fr },
     platforms: localizedPlatforms.fr,
-    seo: { '/': { title: 'Renommeur IA & outil de renommage par lot pour Mac & Windows — Zush', description: 'Renommez les fichiers par lot avec l’IA, surveillez les dossiers automatiquement et renommez screenshots, PDF, photos, vidéos et documents par contenu.' } },
+    seo: { '/': { title: 'Renommeur IA & outil de renommage par lot pour Mac & Windows — Zush', description: 'Renommage IA par lot pour Mac & Windows. Renommez screenshots, PDF, photos, vidéos, iWork et docs Office d’après le contenu. Dossiers, modèles. 50 gratuits.' } },
     featurePages: localizedFeaturePages('Questions fréquentes', 'Outils associés', 'Guides associés', [
       { question: 'Puis-je annuler un renommage ?', answer: 'Oui. Zush conserve un historique pour restaurer le nom d’origine en un clic.' },
     ], [
@@ -3251,7 +3251,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'Renomeador de arquivos com IA\npara Mac & Windows',
       heroAccent: 'Renomeador de arquivos com IA',
-      heroSubtitle: 'Renomeie arquivos em lote com IA, monitore pastas automaticamente e organize screenshots, PDFs, fotos, vídeos e documentos com nomes pesquisáveis baseados no conteúdo real.',
+      heroSubtitle: 'Renomeação em lote com IA para Mac & Windows. Renomeie screenshots, PDFs, arquivos de design, fotos, áudio, vídeos, documentos iWork e Office pelo conteúdo do arquivo. Monitore pastas, salve templates reutilizáveis, desfaça qualquer mudança.',
       buyPro: 'Comprar PRO 🌟',
       trustSignals: ['✨ Teste grátis', '💳 Sem cartão de crédito'],
       featuresTitle: 'Recursos do Zush',
@@ -3273,7 +3273,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     },
     pricing: { planName: 'Zush PRO 🌟', planDescription: 'Compra única • Acesso vitalício', billing: 'único', buttonText: 'Comprar Zush PRO 🌟', buttonHint: 'Garantia de 14 dias • Seguro via Paddle', features: localizedPricingFeatures['pt-br'], ...localizedPricingExtras['pt-br'] },
     platforms: localizedPlatforms['pt-br'],
-    seo: { '/': { title: 'Renomeador com IA e ferramenta de renomeação em lote para Mac & Windows — Zush', description: 'Renomeie arquivos em lote com IA, monitore pastas automaticamente e renomeie screenshots, PDFs, fotos, vídeos e documentos por conteúdo.' } },
+    seo: { '/': { title: 'Renomeador com IA e ferramenta de renomeação em lote para Mac & Windows — Zush', description: 'Renomeação em lote com IA para Mac & Windows. Renomeie screenshots, PDFs, fotos, vídeos, iWork e docs Office pelo conteúdo. Pastas, templates. 50 grátis.' } },
     featurePages: localizedFeaturePages('Perguntas frequentes', 'Ferramentas relacionadas', 'Guias relacionados', [
       { question: 'Posso desfazer uma renomeação?', answer: 'Sim. O Zush mantém um histórico para restaurar o nome original com um clique.' },
     ], [
@@ -3292,7 +3292,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'Renombrador de archivos con IA\npara Mac & Windows',
       heroAccent: 'Renombrador de archivos con IA',
-      heroSubtitle: 'Renombra archivos por lotes con IA, monitorea carpetas automáticamente y organiza capturas, PDFs, fotos, videos y documentos con nombres buscables basados en el contenido real.',
+      heroSubtitle: 'Renombrado por lotes con IA para Mac & Windows. Renombra capturas, PDFs, archivos de diseño, fotos, audio, videos, documentos iWork y Office según el contenido del archivo. Monitorea carpetas, guarda plantillas reutilizables, deshaz cualquier cambio.',
       buyPro: 'Comprar PRO 🌟',
       trustSignals: ['✨ Prueba gratis', '💳 Sin tarjeta de crédito'],
       featuresTitle: 'Funciones de Zush',
@@ -3314,7 +3314,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     },
     pricing: { planName: 'Zush PRO 🌟', planDescription: 'Compra única • Acceso de por vida', billing: 'una vez', buttonText: 'Comprar Zush PRO 🌟', buttonHint: 'Garantía de 14 días • Seguro con Paddle', features: localizedPricingFeatures.es, ...localizedPricingExtras.es },
     platforms: localizedPlatforms.es,
-    seo: { '/': { title: 'Renombrador IA y herramienta de renombrado por lotes para Mac & Windows — Zush', description: 'Renombra archivos por lotes con IA, monitorea carpetas automáticamente y renombra capturas, PDFs, fotos, videos y documentos por contenido.' } },
+    seo: { '/': { title: 'Renombrador IA y herramienta de renombrado por lotes para Mac & Windows — Zush', description: 'Renombrado por lotes con IA para Mac & Windows. Renombra capturas, PDFs, fotos, videos, iWork y docs Office por contenido. Carpetas, plantillas. 50 gratis.' } },
     featurePages: localizedFeaturePages('Preguntas frecuentes', 'Herramientas relacionadas', 'Guías relacionadas', [
       { question: '¿Puedo deshacer un cambio de nombre?', answer: 'Sí. Zush guarda el historial para restaurar el nombre original con un clic.' },
     ], [
@@ -3333,7 +3333,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'AI-bestandshernoemer\nvoor Mac & Windows',
       heroAccent: 'AI-bestandshernoemer',
-      heroSubtitle: 'Hernoem bestanden in bulk met AI, bewaak mappen automatisch en organiseer screenshots, PDFs, foto’s, video’s en documenten met doorzoekbare namen op basis van echte inhoud.',
+      heroSubtitle: 'AI-bulkhernoeming voor Mac & Windows. Hernoem screenshots, PDFs, designbestanden, foto’s, audio, video’s, iWork- en Office-documenten op basis van bestandsinhoud. Bewaak mappen, sla herbruikbare sjablonen op, maak elke wijziging ongedaan.',
       buyPro: 'Koop PRO 🌟',
       trustSignals: ['✨ Gratis proberen', '💳 Geen creditcard nodig'],
       featuresTitle: 'Zush-functies',
@@ -3355,7 +3355,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     },
     pricing: { planName: 'Zush PRO 🌟', planDescription: 'Eenmalige aankoop • Levenslange toegang', billing: 'eenmalig', buttonText: 'Koop Zush PRO 🌟', buttonHint: '14 dagen geld-terug-garantie • Veilig via Paddle', features: localizedPricingFeatures.nl, ...localizedPricingExtras.nl },
     platforms: localizedPlatforms.nl,
-    seo: { '/': { title: 'AI-bestandshernoemer & bulk-hernoemtool voor Mac & Windows — Zush', description: 'Hernoem bestanden in bulk met AI, bewaak mappen automatisch en hernoem screenshots, PDFs, foto’s, video’s en documenten op inhoud.' } },
+    seo: { '/': { title: 'AI-bestandshernoemer & bulk-hernoemtool voor Mac & Windows — Zush', description: 'AI-bulkhernoeming voor Mac & Windows. Hernoem screenshots, PDFs, foto’s, video’s, iWork- en Office-docs op bestandsinhoud. Mappen, sjablonen. 50 gratis.' } },
     featurePages: localizedFeaturePages('Veelgestelde vragen', 'Gerelateerde tools', 'Gerelateerde gidsen', [
       { question: 'Kan ik een hernoeming ongedaan maken?', answer: 'Ja. Zush bewaart de geschiedenis zodat je met één klik de originele naam herstelt.' },
     ], [
@@ -3374,7 +3374,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'Rinomina file con IA\nper Mac & Windows',
       heroAccent: 'Rinomina file con IA',
-      heroSubtitle: 'Rinomina file in batch con IA, monitora cartelle automaticamente e organizza screenshot, PDF, foto, video e documenti con nomi ricercabili basati sul contenuto reale.',
+      heroSubtitle: 'Rinomina in batch con IA per Mac & Windows. Rinomina screenshot, PDF, file di design, foto, audio, video, documenti iWork e Office in base al contenuto del file. Monitora cartelle, salva template riutilizzabili, annulla ogni modifica.',
       buyPro: 'Acquista PRO 🌟',
       trustSignals: ['✨ Prova gratis', '💳 Nessuna carta richiesta'],
       featuresTitle: 'Funzioni di Zush',
@@ -3396,7 +3396,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     },
     pricing: { planName: 'Zush PRO 🌟', planDescription: 'Acquisto unico • Accesso a vita', billing: 'una tantum', buttonText: 'Acquista Zush PRO 🌟', buttonHint: 'Garanzia 14 giorni • Sicuro con Paddle', features: localizedPricingFeatures.it, ...localizedPricingExtras.it },
     platforms: localizedPlatforms.it,
-    seo: { '/': { title: 'Rinomina file IA e strumento batch per Mac & Windows — Zush', description: 'Rinomina file in batch con IA, monitora cartelle automaticamente e rinomina screenshot, PDF, foto, video e documenti per contenuto.' } },
+    seo: { '/': { title: 'Rinomina file IA e strumento batch per Mac & Windows — Zush', description: 'Rinomina in batch con IA per Mac & Windows. Rinomina screenshot, PDF, foto, video, iWork e doc Office in base al contenuto. Cartelle, template. 50 gratis.' } },
     featurePages: localizedFeaturePages('Domande frequenti', 'Strumenti correlati', 'Guide correlate', [
       { question: 'Posso annullare una rinomina?', answer: 'Sì. Zush conserva la cronologia per ripristinare il nome originale con un clic.' },
     ], [
@@ -3415,7 +3415,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'AIファイルリネーム\nMac・Windows対応',
       heroAccent: 'AIファイルリネーム',
-      heroSubtitle: 'AIでファイルを一括リネームし、フォルダを自動監視。スクリーンショット、PDF、写真、動画、文書を実際の内容に基づく検索しやすい名前で整理します。',
+      heroSubtitle: 'Mac & Windows 向け AI 一括リネーム。スクリーンショット、PDF、デザインファイル、写真、音声、動画、iWork・Office 文書をファイル内容からリネームします。フォルダ監視、再利用可能なテンプレート保存、ワンクリック取り消しに対応。',
       buyPro: 'PROを購入 🌟',
       trustSignals: ['✨ 無料で試せる', '💳 クレジットカード不要'],
       featuresTitle: 'Zush の機能',
@@ -3437,7 +3437,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     },
     pricing: { planName: 'Zush PRO 🌟', planDescription: '買い切り • 永続アクセス', billing: '買い切り', buttonText: 'Zush PRO を購入 🌟', buttonHint: '14日間返金保証 • Paddleで安全決済', features: localizedPricingFeatures.ja, ...localizedPricingExtras.ja },
     platforms: localizedPlatforms.ja,
-    seo: { '/': { title: 'Mac・Windows対応 AIファイルリネーム & 一括リネームツール — Zush', description: 'AIでファイルを一括リネームし、フォルダを自動監視。スクリーンショット、PDF、写真、動画、文書を内容でリネームします。' } },
+    seo: { '/': { title: 'Mac・Windows対応 AIファイルリネーム & 一括リネームツール — Zush', description: 'Mac & Windows 向け AI 一括リネーム。スクリーンショット、PDF、写真、動画、iWork・Office 文書をファイル内容からリネーム。フォルダ監視、テンプレート対応。50ファイル無料。' } },
     featurePages: localizedFeaturePages('よくある質問', '関連ツール', '関連ガイド', [
       { question: 'リネームを元に戻せますか？', answer: 'はい。Zush は履歴を保存するため、ワンクリックで元の名前に戻せます。' },
     ], [
@@ -3456,7 +3456,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'AI 파일 이름 변경 도구\nMac 및 Windows용',
       heroAccent: 'AI 파일 이름 변경 도구',
-      heroSubtitle: 'AI로 파일을 일괄 이름 변경하고, 폴더를 자동 모니터링하며, 스크린샷, PDF, 사진, 비디오, 문서를 실제 내용 기반의 검색 가능한 이름으로 정리합니다.',
+      heroSubtitle: 'Mac 및 Windows용 AI 일괄 이름 변경. 스크린샷, PDF, 디자인 파일, 사진, 오디오, 비디오, iWork·Office 문서를 파일 내용 기반으로 이름 변경합니다. 폴더 모니터링, 재사용 가능한 템플릿 저장, 변경 사항 원클릭 되돌리기.',
       buyPro: 'PRO 구매 🌟',
       trustSignals: ['✨ 무료 체험', '💳 카드 필요 없음'],
       featuresTitle: 'Zush 기능',
@@ -3478,7 +3478,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     },
     pricing: { planName: 'Zush PRO 🌟', planDescription: '일회성 구매 • 평생 이용', billing: '일회성', buttonText: 'Zush PRO 구매 🌟', buttonHint: '14일 환불 보장 • Paddle 보안 결제', features: localizedPricingFeatures.ko, ...localizedPricingExtras.ko },
     platforms: localizedPlatforms.ko,
-    seo: { '/': { title: 'Mac 및 Windows용 AI 파일 이름 변경 및 일괄 이름 변경 도구 — Zush', description: 'AI로 파일을 일괄 이름 변경하고, 폴더를 자동 모니터링하며, 스크린샷, PDF, 사진, 비디오, 문서를 내용 기준으로 이름 변경합니다.' } },
+    seo: { '/': { title: 'Mac 및 Windows용 AI 파일 이름 변경 및 일괄 이름 변경 도구 — Zush', description: 'Mac 및 Windows용 AI 일괄 이름 변경. 스크린샷, PDF, 사진, 비디오, iWork·Office 문서를 파일 내용으로 이름 변경. 폴더 감시, 템플릿 지원. 50파일 무료.' } },
     featurePages: localizedFeaturePages('자주 묻는 질문', '관련 도구', '관련 가이드', [
       { question: '이름 변경을 되돌릴 수 있나요?', answer: '예. Zush는 기록을 저장하므로 한 번의 클릭으로 원래 이름으로 되돌릴 수 있습니다.' },
     ], [
@@ -3534,7 +3534,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'AI 文件重命名工具\n适用于 Mac 和 Windows',
       heroAccent: 'AI 文件重命名工具',
-      heroSubtitle: '用 AI 批量重命名文件，自动监控文件夹，并用基于实际内容、便于搜索的名称整理截图、PDF、照片、视频和文档。',
+      heroSubtitle: '面向 Mac 和 Windows 的 AI 批量重命名。根据文件内容重命名截图、PDF、设计文件、照片、音频、视频、iWork 和 Office 文档。自动监控文件夹、保存可复用模板、一键撤销任何更改。',
       buyPro: '购买 PRO 🌟',
       trustSignals: ['✨ 免费试用', '💳 无需信用卡'],
       featuresTitle: 'Zush 功能',
@@ -3618,7 +3618,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       },
     },
     seo: {
-      '/': { title: '适用于 Mac 和 Windows 的 AI 文件重命名与批量重命名工具 — Zush', description: '用 AI 批量重命名文件，自动监控文件夹，并按内容重命名截图、PDF、照片、视频和文档。' },
+      '/': { title: '适用于 Mac 和 Windows 的 AI 文件重命名与批量重命名工具 — Zush', description: '面向 Mac 和 Windows 的 AI 批量重命名。根据文件内容重命名截图、PDF、照片、视频、iWork 和 Office 文档。支持文件夹监控、模板。50 个文件免费。' },
       '/mac': { title: 'Zush for Mac — macOS AI 文件重命名与批量重命名工具', description: '在 Mac 上用 AI 批量重命名截图、视频、PDF、照片和文档。支持 Apple Silicon、Intel、BYOK 和 Ollama 离线 AI。' },
       '/windows': { title: 'Zush for Windows — Windows AI 文件重命名与批量重命名工具', description: '在 Windows 上用 AI 批量重命名截图、视频、PDF、照片和文档。通过 Microsoft Store 安装，可免费试用。' },
     },
@@ -3664,7 +3664,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'AI file renamer\nMac और Windows के लिए',
       heroAccent: 'AI file renamer',
-      heroSubtitle: 'AI से files batch rename करें, folders automatically watch करें, और screenshots, PDFs, photos, videos और documents को actual content पर based searchable names से organize करें।',
+      heroSubtitle: 'Mac और Windows के लिए AI batch rename। Screenshots, PDFs, design files, photos, audio, videos, iWork और Office documents को file content से rename करें। Folders monitor करें, reusable templates save करें, किसी भी change को एक क्लिक में undo करें।',
       buyPro: 'PRO खरीदें 🌟',
       trustSignals: ['✨ Free try करें', '💳 Credit card नहीं चाहिए'],
       featuresTitle: 'Zush Features',
@@ -3754,7 +3754,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     seo: {
       '/': {
         title: 'Mac और Windows के लिए AI file renamer और batch rename tool — Zush',
-        description: 'AI से files batch rename करें, folders automatically watch करें, और screenshots, PDFs, photos, videos और documents को content से rename करें।',
+        description: 'Mac और Windows के लिए AI batch rename। Screenshots, PDFs, photos, videos, iWork और Office documents को file content से rename करें। Folders, templates। 50 files free।',
       },
       '/mac': {
         title: 'Mac के लिए Zush — macOS AI file renamer और batch rename tool',
@@ -3807,7 +3807,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'أداة إعادة تسمية الملفات بالذكاء الاصطناعي\nلنظامي Mac وWindows',
       heroAccent: 'أداة إعادة تسمية الملفات بالذكاء الاصطناعي',
-      heroSubtitle: 'أعد تسمية الملفات دفعة واحدة بالذكاء الاصطناعي، وراقب المجلدات تلقائيا، ونظّم لقطات الشاشة وملفات PDF والصور والفيديوهات والمستندات بأسماء قابلة للبحث مبنية على المحتوى الفعلي.',
+      heroSubtitle: 'إعادة تسمية بالدفعات بالذكاء الاصطناعي لنظامي Mac وWindows. أعد تسمية لقطات الشاشة وملفات PDF وملفات التصميم والصور والصوت والفيديو ومستندات iWork وOffice حسب محتوى الملف. راقب المجلدات، واحفظ قوالب قابلة لإعادة الاستخدام، وتراجع عن أي تغيير بنقرة واحدة.',
       buyPro: 'شراء PRO 🌟',
       trustSignals: ['✨ تجربة مجانية', '💳 لا تحتاج إلى بطاقة ائتمان'],
       featuresTitle: 'ميزات Zush',
@@ -3897,7 +3897,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     seo: {
       '/': {
         title: 'أداة إعادة تسمية ملفات بالذكاء الاصطناعي وبالدفعات لنظامي Mac وWindows — Zush',
-        description: 'أعد تسمية الملفات دفعة واحدة بالذكاء الاصطناعي، وراقب المجلدات تلقائيا، وأعد تسمية لقطات الشاشة وPDF والصور والفيديوهات والمستندات حسب المحتوى.',
+        description: 'إعادة تسمية بالدفعات بالذكاء الاصطناعي لنظامي Mac وWindows. أعد تسمية لقطات الشاشة وPDF والصور والفيديو ومستندات iWork وOffice حسب محتوى الملف. مجلدات وقوالب. 50 ملفا مجانا.',
       },
       '/mac': {
         title: 'Zush لنظام Mac — أداة إعادة تسمية ملفات بالذكاء الاصطناعي وبالدفعات',

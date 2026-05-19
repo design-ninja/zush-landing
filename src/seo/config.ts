@@ -29,7 +29,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/': {
     ...DEFAULT_META,
     title: 'AI File Renamer & Batch Rename Tool for Mac & Windows — Zush',
-    description: `Batch rename files with AI, watch folders automatically, and rename screenshots, design files, PDFs, photos, audio, videos, iWork and Office documents by content with templates and Naming Blocks. ${APP_CONFIG.free_tier_limit} free files.`,
+    description: `AI batch rename for Mac & Windows. Rename screenshots, PDFs, photos, video, iWork and Office docs by file content. Watch folders, templates. ${APP_CONFIG.free_tier_limit} free files.`,
     robots: 'index, follow',
   },
   '/changelog': {
