@@ -1,5 +1,27 @@
 # Changelog
 
+## [3.0.0] - 2026-05-19
+
+Zush 3 is live!
+
+### Added
+- Added 11 Templates for common file renaming workflows
+- Added a brand-new file name builder with 145 Naming Blocks
+- Added separator controls and drag-and-drop support for building file names
+- Added processing statistics
+- Added support for audio, iWork, and design files
+- Added a monthly Zush PRO plan
+
+### Improved
+- Improved onboarding and Settings
+- Improved file previews for documents, videos, audio, and design files
+- Improved folder monitoring and batch rename progress
+- Improved localization across the app
+
+### Fixed
+- Fixed several purchase, restore, and subscription management edge cases
+- Fixed supported-format and preview handling issues
+
 ## [2.1.0] - 2026-05-11
 
 ### Added
