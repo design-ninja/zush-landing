@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.1.0] - 2026-05-21
+
+### Improved
+- Smarter content-aware AI file naming
+- More reliable metadata handling for audio, video, and documents
+- PRO prices and status now refresh more reliably
+- Clearer PRO screen loading state in the App Store build
+
+### Fixed
+- Fixed purchase activation edge cases after upgrading to PRO
+- Fixed file-backed naming blocks when local metadata is missing
+
 ## [3.0.0] - 2026-05-19
 
 Zush 3 is live!
