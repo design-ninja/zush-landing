@@ -207,8 +207,8 @@ export const WINDOWS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
     title: 'Batch Rename',
     description: 'Batch rename files with AI based on their actual content',
     images: {
-      light: '/images/showcase/windows-original/02-ai-rename-results.webp',
-      dark: '/images/showcase/windows-original/10-dark-mode-results.webp',
+      light: '/images/showcase/windows/batch-rename-light.webp',
+      dark: '/images/showcase/windows/batch-rename-dark.webp',
     },
     video: {
       light: '/videos/windows/zush-batch-rename.mp4',
@@ -221,8 +221,8 @@ export const WINDOWS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
     title: 'Folder Monitoring',
     description: 'Automatically rename new files as they appear',
     images: {
-      light: '/images/showcase/windows-original/09-folder-monitor.webp',
-      dark: '/images/showcase/windows-original/09-folder-monitor.webp',
+      light: '/images/showcase/windows/monitor-light.webp',
+      dark: '/images/showcase/windows/monitor-dark.webp',
     },
     alt: 'Folder monitoring settings in Zush for Windows',
   },
@@ -231,8 +231,8 @@ export const WINDOWS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
     title: 'Activity History',
     description: 'Review recent renames and undo changes when needed',
     images: {
-      light: '/images/showcase/windows-original/03-activity-history.webp',
-      dark: '/images/showcase/windows-original/03-activity-history.webp',
+      light: '/images/showcase/windows/activity-light.webp',
+      dark: '/images/showcase/windows/activity-dark.webp',
     },
     alt: 'Activity history and undo workflow in Zush for Windows',
   },
@@ -241,8 +241,8 @@ export const WINDOWS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
     title: 'Naming & Metadata',
     description: 'Create naming patterns and add searchable metadata',
     images: {
-      light: '/images/showcase/windows-original/04-processing-settings.webp',
-      dark: '/images/showcase/windows-original/04-processing-settings.webp',
+      light: '/images/showcase/windows/naming-light.webp',
+      dark: '/images/showcase/windows/naming-dark.webp',
     },
     alt: 'Naming pattern and metadata settings in Zush for Windows',
   },
@@ -251,8 +251,8 @@ export const WINDOWS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
     title: 'Custom Prompts',
     description: 'Guide filename generation with your own instructions',
     images: {
-      light: '/images/showcase/windows-original/06-rename-rules.webp',
-      dark: '/images/showcase/windows-original/06-rename-rules.webp',
+      light: '/images/showcase/windows/custom-prompts-light.webp',
+      dark: '/images/showcase/windows/custom-prompts-dark.webp',
     },
     alt: 'Custom prompt settings in Zush for Windows',
   },
@@ -261,8 +261,8 @@ export const WINDOWS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
     title: 'BYOK',
     description: 'Connect your own AI provider for unlimited renaming',
     images: {
-      light: '/images/showcase/windows-original/07-cloud-ai-setup.webp',
-      dark: '/images/showcase/windows-original/07-cloud-ai-setup.webp',
+      light: '/images/showcase/windows/byok-light.webp',
+      dark: '/images/showcase/windows/byok-dark.webp',
     },
     alt: 'Bring your own key setup in Zush for Windows',
   },
@@ -271,8 +271,8 @@ export const WINDOWS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
     title: 'Offline AI mode',
     description: 'Process supported files offline with private local models via Ollama',
     images: {
-      light: '/images/showcase/windows-original/08-local-ai-setup.webp',
-      dark: '/images/showcase/windows-original/08-local-ai-setup.webp',
+      light: '/images/showcase/windows/offline-ai-light.webp',
+      dark: '/images/showcase/windows/offline-ai-dark.webp',
     },
     alt: 'Offline AI setup in Zush for Windows',
   },
