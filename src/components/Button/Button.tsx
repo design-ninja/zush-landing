@@ -9,6 +9,7 @@ interface BaseProps {
   variant?: ButtonVariant;
   size?: ButtonSize;
   fluid?: boolean;
+  glass?: boolean;
   isLoading?: boolean;
   children: ReactNode;
   className?: string;
@@ -38,6 +39,7 @@ const Button = ({
   variant = 'primary', 
   size = 'md',
   fluid = false,
+  glass = false,
   isLoading = false,
   children, 
   className = '',
@@ -47,6 +49,7 @@ const Button = ({
     styles.Button,
     styles[`Button_${variant}`],
     styles[`Button_${size}`],
+    glass && styles.Button_glass,
     fluid && styles.Button_fluid,
     isLoading && styles.Button_loading,
     className

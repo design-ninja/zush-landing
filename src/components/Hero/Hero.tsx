@@ -138,6 +138,7 @@ const Hero = ({
               href={secondaryHref}
               variant="primary"
               size="lg"
+              glass
               onClick={() => trackProClick({ source: "hero" })}
             >
               {buyLabel}

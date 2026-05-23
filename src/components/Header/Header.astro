@@ -13,6 +13,7 @@ import {
 } from '@/i18n/config';
 import { getCopy } from '@/i18n/copy';
 import appLinkStyles from '@/components/AppLink/AppLink.module.scss';
+import buttonStyles from '@/components/Button/Button.module.scss';
 import logoStyles from '@/components/Logo/Logo.module.scss';
 import styles from './Header.module.scss';
 
@@ -45,6 +46,14 @@ const languagePaths = shouldUseRouteLanguagePaths
   ) as Partial<Record<Locale, string>>;
 const navLinkClass = [appLinkStyles.AppLink, styles.Header__Link].join(' ');
 const logoClass = [appLinkStyles.AppLink, logoStyles.Logo].join(' ');
+const mobileBuyButtonClass = [
+  appLinkStyles.AppLink,
+  buttonStyles.Button,
+  buttonStyles.Button_primary,
+  buttonStyles.Button_sm,
+  buttonStyles.Button_glass,
+  styles.Header__MobileBuyBtn,
+].join(' ');
 ---
 
 <nav class={styles.Header} data-cta-state='hidden'>
@@ -140,7 +149,7 @@ const logoClass = [appLinkStyles.AppLink, logoStyles.Logo].join(' ');
         />
         <a
           href={pricingHref}
-          class={`${appLinkStyles.AppLink} ${styles.Header__MobileBuyBtn}`}
+          class={mobileBuyButtonClass}
           data-pro-click-source='navbar'
         >
           {copy.buyPro}

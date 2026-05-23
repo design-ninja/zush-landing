@@ -228,37 +228,8 @@
     }
 
     &__MobileBuyBtn {
-        display: none;
-        align-items: center;
-        justify-content: center;
-        min-height: 2.25rem;
-        padding: 0 1rem;
-        border-radius: $radius-full;
-        @include corner-shape-squircle;
-        background-color: var(--primary);
-        color: var(--primary-foreground);
-        font-size: 0.9rem;
-        font-weight: 600;
-        line-height: 1;
+        display: none !important;
+        flex-shrink: 0;
         white-space: nowrap;
-        text-decoration: none;
-        transition:
-            background-color $transition-fast,
-            transform $transition-fast;
-
-        &:hover,
-        &:focus-visible {
-            background-color: var(--primary-hover);
-            color: var(--primary-foreground);
-            outline: none;
-        }
-
-        &:focus-visible {
-            box-shadow: 0 0 0 2px var(--primary-soft);
-        }
-
-        @include mobile {
-            display: inline-flex;
-        }
     }
 }

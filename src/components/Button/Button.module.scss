@@ -80,6 +80,17 @@
         }
     }
 
+    &_glass {
+        @include cta-glass-primary-vars;
+        @include cta-glass-surface;
+        @include cta-glass-gloss;
+        @include cta-glass-content;
+
+        &:hover {
+            @include cta-glass-hover;
+        }
+    }
+
     &_loading {
         opacity: $opacity-disabled;
         cursor: default;

@@ -7,6 +7,7 @@
     align-items: stretch;
     --download-button-height: auto;
     z-index: 1;
+    transition: transform $transition-fast;
 
     &_open {
         z-index: 50;
@@ -65,6 +66,13 @@
     color: var(--download-accent-color, inherit);
 }
 
+.Label {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.22em;
+    min-width: 0;
+}
+
 .Toggle {
     border-top-right-radius: $radius-full;
     border-bottom-right-radius: $radius-full;
@@ -72,7 +80,6 @@
     position: relative;
     align-self: stretch;
 
-    // Subtle divider between main and toggle
     &::before {
         content: '';
         position: absolute;
@@ -80,8 +87,8 @@
         top: 0;
         bottom: 0;
         width: 1px;
-        background-color: currentColor;
-        opacity: 0.22;
+        background-color: var(--download-divider-color, currentColor);
+        opacity: var(--download-divider-opacity, 0.22);
     }
 
     &__Icon,
@@ -138,45 +145,116 @@
 
 // Variants
 .Group_black {
+    @include cta-glass-vars;
+
+    --download-accent-color: var(--secondary);
+    --tertiary: var(--cta-glass-bg);
+    --tertiary-foreground: oklch(1 0 0);
+    --tertiary-hover: var(--cta-glass-bg-hover);
+    --download-divider-color: oklch(1 0 0 / 0.24);
+    --download-divider-opacity: 1;
+
+    @include cta-glass-surface;
+    @include cta-glass-gloss;
+    border-radius: $radius-full;
+    @include corner-shape-squircle;
+    overflow: visible;
+
+    &:hover,
+    &:focus-within {
+        transform: translateY(-0.125rem) scale(1.012);
+        @include cta-glass-hover-surface;
+    }
+
     .Main,
     .Toggle {
-        background-color: var(--tertiary);
-        color: var(--tertiary-foreground);
+        position: relative;
+        z-index: 1;
+        background: transparent;
+        color: inherit;
+        box-shadow: none;
     }
 
-    .Main:hover,
-    .Toggle:hover {
-        background-color: var(--tertiary-hover);
+    .Toggle::before {
+        top: 0.55rem;
+        bottom: 0.55rem;
+        z-index: 2;
     }
 
-    // In dark mode, force pure black with thin gray borders for definition.
-    // Borders sit on the OUTER edges of each child only, so the Main↔Toggle seam
-    // is a single 1px line (the existing ::before divider) instead of doubled borders.
     :global(html[data-theme='dark']) & {
-        $border-color: color-mix(in srgb, white 16%, transparent);
+        box-shadow:
+            inset 0 0 0 1px oklch(1 0 0 / 0.08),
+            0 1.25rem 3.1rem -1.1rem oklch(0 0 0 / 0.62),
+            0 0.65rem 1.65rem -1rem oklch(1 0 0 / 0.16),
+            0 0 0 1px oklch(1 0 0 / 0.03);
+    }
 
-        .Main,
-        .Toggle {
-            background-color: oklch(0 0 0);
-            border-top: 1px solid $border-color;
-            border-bottom: 1px solid $border-color;
-        }
+    svg {
+        position: relative;
+        z-index: 1;
+        filter: drop-shadow(0 0.35rem 0.65rem oklch(0 0 0 / 0.2));
+    }
+}
 
-        .Main {
-            border-left: 1px solid $border-color;
-        }
+.Group_surface_greenGlow {
+    --cta-glass-bg: oklch(0 0 0 / 0.9);
+    --cta-glass-bg-hover: oklch(0 0 0 / 0.96);
+    --cta-glass-glow: oklch(0.78 0.18 148 / 0.36);
+    --cta-glass-spot: oklch(0.72 0.19 148 / 0.3);
+    --cta-glass-spot-hover: oklch(0.72 0.19 148 / 0.38);
+    --cta-glass-shine: oklch(1 0 0 / 0.08);
+    --cta-glass-shine-strong: oklch(1 0 0 / 0.24);
+    --cta-glass-shadow: oklch(0 0 0 / 0.44);
 
-        .Main_single {
-            border-right: 1px solid $border-color;
-        }
+    background:
+        radial-gradient(ellipse at 78% 56%, var(--cta-glass-spot), transparent 44%),
+        linear-gradient(180deg, var(--cta-glass-shine), transparent 38%),
+        var(--cta-glass-bg);
+    box-shadow:
+        inset 0 1px 0 oklch(1 0 0 / 0.18),
+        inset 0 -0.95rem 1.65rem oklch(0 0 0 / 0.24),
+        0 1.35rem 3.2rem -1.25rem var(--cta-glass-shadow),
+        0 0.8rem 2rem -1rem var(--cta-glass-glow);
 
-        .Toggle {
-            border-right: 1px solid $border-color;
-        }
+    &::before {
+        inset: 0.1rem 0.25rem auto;
+        height: 46%;
+        background: linear-gradient(180deg, var(--cta-glass-shine-strong), transparent);
+        opacity: 0.92;
+    }
 
-        .Main:hover,
-        .Toggle:hover {
-            background-color: oklch(0.18 0 0);
+    &:hover,
+    &:focus-within {
+        transform: scale(1.012);
+        background:
+            radial-gradient(ellipse at 78% 56%, var(--cta-glass-spot-hover), transparent 46%),
+            linear-gradient(180deg, var(--cta-glass-shine-strong), transparent 38%),
+            var(--cta-glass-bg-hover);
+        box-shadow:
+            inset 0 1px 0 oklch(1 0 0 / 0.2),
+            inset 0 -1rem 1.8rem oklch(0 0 0 / 0.28),
+            0 1.5rem 3.5rem -1.35rem var(--cta-glass-shadow),
+            0 0.9rem 2.15rem -1.05rem var(--cta-glass-glow);
+    }
+
+    :global(html[data-theme='dark']) & {
+        box-shadow:
+            inset 0 1px 0 oklch(1 0 0 / 0.18),
+            inset 0 0 0 1px oklch(1 0 0 / 0.12),
+            inset 0 -0.95rem 1.65rem oklch(0 0 0 / 0.24),
+            0 0 0 1px oklch(1 0 0 / 0.1),
+            0 1.25rem 3.1rem -1.1rem oklch(0 0 0 / 0.62),
+            0 0.8rem 2rem -1rem var(--cta-glass-glow);
+
+        &:hover,
+        &:focus-within {
+            box-shadow:
+                inset 0 1px 0 oklch(1 0 0 / 0.2),
+                inset 0 0 0 1px oklch(1 0 0 / 0.14),
+                inset 0 -1rem 1.8rem oklch(0 0 0 / 0.28),
+                0 0 0 1px oklch(1 0 0 / 0.12),
+                0 1.5rem 3.5rem -1.35rem oklch(0 0 0 / 0.62),
+                0 0.9rem 2.15rem -1.05rem var(--cta-glass-glow);
         }
     }
 }

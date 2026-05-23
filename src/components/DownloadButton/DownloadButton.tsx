@@ -21,11 +21,13 @@ const MobileDownloadModal = lazy(() => import('@/components/MobileDownloadModal'
 
 type Variant = 'black' | 'primary' | 'ghost';
 type Size = 'sm' | 'md' | 'lg';
+type Surface = 'glass' | 'greenGlow';
 
 interface DownloadButtonProps {
   source: DownloadSource;
   variant?: Variant;
   size?: Size;
+  surface?: Surface;
   label?: string;
   labelAccent?: string;
   className?: string;
@@ -38,15 +40,18 @@ interface DownloadButtonProps {
 }
 
 const renderLabel = (label: string, accent?: string) => {
-  if (!accent) return label;
+  if (!accent) return <span className={styles.Label}>{label}</span>;
   const idx = label.indexOf(accent);
-  if (idx === -1) return label;
+  if (idx === -1) return <span className={styles.Label}>{label}</span>;
+  const before = label.slice(0, idx).trimEnd();
+  const after = label.slice(idx + accent.length).trimStart();
+
   return (
-    <>
-      {label.slice(0, idx)}
+    <span className={styles.Label}>
+      {before && <span>{before}</span>}
       <span className={styles.Accent}>{accent}</span>
-      {label.slice(idx + accent.length)}
-    </>
+      {after && <span>{after}</span>}
+    </span>
   );
 };
 
@@ -64,6 +69,7 @@ const DownloadButton = ({
   source,
   variant = 'black',
   size = 'md',
+  surface = 'glass',
   label = 'Download',
   labelAccent,
   className,
@@ -220,6 +226,7 @@ const DownloadButton = ({
         styles.Group,
         styles[`Group_${variant}`],
         styles[`Group_${size}`],
+        surface !== 'glass' ? styles[`Group_surface_${surface}`] : '',
         !hasDropdownItems ? styles.Group_single : '',
         isOpen ? styles.Group_open : '',
         className,
@@ -241,7 +248,7 @@ const DownloadButton = ({
         onClick={handlePrimaryClick}
       >
         {downloadOS === 'windows' ? <WindowsIcon colored /> : <AppleIcon />}
-        <span>{renderLabel(label, labelAccent)}</span>
+        {renderLabel(label, labelAccent)}
       </a>
       {hasDropdownItems && (
         <button

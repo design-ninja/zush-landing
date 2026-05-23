@@ -14,10 +14,6 @@
     opacity 0.36s ease,
     transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
 
-  // Force true black in any theme (DownloadButton's "black" variant reads these vars).
-  --tertiary: oklch(0 0 0);
-  --tertiary-foreground: oklch(1 0 0);
-  --tertiary-hover: oklch(0.18 0 0);
   --download-accent-color: var(--secondary);
 
   &[data-active='true'] {
@@ -28,12 +24,6 @@
     opacity: 1;
     pointer-events: auto;
     transform: translate(-50%, 0);
-  }
-
-  // Hover lift matching the site's primary button style.
-  a:hover,
-  a:focus-visible {
-    transform: translateY(-0.125rem);
   }
 
   @include mobile {
