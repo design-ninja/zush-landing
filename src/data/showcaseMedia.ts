@@ -1,11 +1,11 @@
-export type DemoVideoTheme = 'light' | 'dark';
+export type ShowcaseTheme = 'light' | 'dark';
 
 interface ThemeAwareMedia {
   light: string;
   dark: string;
 }
 
-export interface DemoVideoAsset {
+export interface ShowcaseVideoAsset {
   id: string;
   title: string;
   description: string;
@@ -13,7 +13,7 @@ export interface DemoVideoAsset {
   posters: ThemeAwareMedia;
 }
 
-export interface DemoScreenshotAsset {
+export interface ShowcaseScreenshotAsset {
   id: string;
   title: string;
   description: string;
@@ -22,12 +22,12 @@ export interface DemoScreenshotAsset {
   alt: string;
 }
 
-export interface ResolvedDemoVideoMedia {
+export interface ResolvedShowcaseVideoMedia {
   source: string;
   poster: string;
 }
 
-export const DEMO_VIDEOS: DemoVideoAsset[] = [
+export const SHOWCASE_VIDEOS: ShowcaseVideoAsset[] = [
   {
     id: 'batch-rename',
     title: 'Batch Rename',
@@ -108,7 +108,7 @@ export const DEMO_VIDEOS: DemoVideoAsset[] = [
   },
 ];
 
-export const MACOS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
+export const MACOS_SHOWCASE_SCREENSHOTS: ShowcaseScreenshotAsset[] = [
   {
     id: 'batch-rename',
     title: 'Batch Rename',
@@ -201,7 +201,7 @@ export const MACOS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
   },
 ];
 
-export const WINDOWS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
+export const WINDOWS_SHOWCASE_SCREENSHOTS: ShowcaseScreenshotAsset[] = [
   {
     id: 'batch-rename',
     title: 'Batch Rename',
@@ -235,6 +235,36 @@ export const WINDOWS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
       dark: '/images/showcase/windows/activity-dark.webp',
     },
     alt: 'Activity history and undo workflow in Zush for Windows',
+  },
+  {
+    id: 'statistics',
+    title: 'Statistics',
+    description: 'See rename totals and recent processing insights',
+    images: {
+      light: '/images/showcase/windows/statistics-light.webp',
+      dark: '/images/showcase/windows/statistics-dark.webp',
+    },
+    alt: 'Rename statistics in Zush for Windows',
+  },
+  {
+    id: 'templates',
+    title: 'Smart Rename Templates',
+    description: 'Reuse setups for invoices, media, screenshots, and more',
+    images: {
+      light: '/images/showcase/windows/templates-light.webp',
+      dark: '/images/showcase/windows/templates-dark.webp',
+    },
+    alt: 'Smart Rename templates in Zush for Windows',
+  },
+  {
+    id: 'naming-blocks',
+    title: 'Naming Blocks',
+    description: 'Build structured names from detected fields and custom formats',
+    images: {
+      light: '/images/showcase/windows/naming-blocks-light.webp',
+      dark: '/images/showcase/windows/naming-blocks-dark.webp',
+    },
+    alt: 'Naming Blocks editor in Zush for Windows',
   },
   {
     id: 'naming',
@@ -278,34 +308,34 @@ export const WINDOWS_DEMO_SCREENSHOTS: DemoScreenshotAsset[] = [
   },
 ];
 
-const DEMO_VIDEO_BY_SRC = Object.fromEntries(
-  DEMO_VIDEOS.flatMap((video) => [
+const SHOWCASE_VIDEO_BY_SRC = Object.fromEntries(
+  SHOWCASE_VIDEOS.flatMap((video) => [
     [video.sources.light, video],
     [video.sources.dark, video],
   ]),
-) as Record<string, DemoVideoAsset>;
+) as Record<string, ShowcaseVideoAsset>;
 
-export function resolveDemoVideoMedia(
-  asset: DemoVideoAsset,
-  theme: DemoVideoTheme,
-): ResolvedDemoVideoMedia {
+export function resolveShowcaseVideoMedia(
+  asset: ShowcaseVideoAsset,
+  theme: ShowcaseTheme,
+): ResolvedShowcaseVideoMedia {
   return {
     source: asset.sources[theme],
     poster: asset.posters[theme],
   };
 }
 
-export function resolveDemoScreenshotMedia(
-  asset: DemoScreenshotAsset,
-  theme: DemoVideoTheme,
+export function resolveShowcaseScreenshotMedia(
+  asset: ShowcaseScreenshotAsset,
+  theme: ShowcaseTheme,
 ): string {
   return asset.images[theme];
 }
 
-export function getDemoVideoBySrc(src?: string | null) {
+export function getShowcaseVideoBySrc(src?: string | null) {
   if (!src) {
     return undefined;
   }
 
-  return DEMO_VIDEO_BY_SRC[src];
+  return SHOWCASE_VIDEO_BY_SRC[src];
 }

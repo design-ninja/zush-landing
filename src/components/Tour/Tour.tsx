@@ -2,11 +2,11 @@ import { useCallback, useEffect, useRef, useState, type CSSProperties } from 're
 import SectionHeader from '../SectionHeader';
 import Text from '@/components/Text';
 import {
-  MACOS_DEMO_SCREENSHOTS,
-  WINDOWS_DEMO_SCREENSHOTS,
-  resolveDemoScreenshotMedia,
-  type DemoVideoTheme,
-} from '@/data/demoVideos';
+  MACOS_SHOWCASE_SCREENSHOTS,
+  WINDOWS_SHOWCASE_SCREENSHOTS,
+  resolveShowcaseScreenshotMedia,
+  type ShowcaseTheme,
+} from '@/data/showcaseMedia';
 import { useOS } from '@/hooks/useOS';
 import type { DownloadOS } from '@/utils/download';
 import styles from './Tour.module.scss';
@@ -27,14 +27,14 @@ interface TourCopy {
 const defaultCopy: TourCopy = {
   title: 'Take a tour of Zush',
   titleAccent: 'Zush',
-  description: 'One short demo per feature — click a tab to see it in action',
+  description: 'One quick showcase per feature. Click a tab to see it in action.',
   switchTo: 'Switch to',
   items: {},
 };
 
 const SLIDE_DURATION_MS = 6500;
 
-const getDocumentTheme = (): DemoVideoTheme => {
+const getDocumentTheme = (): ShowcaseTheme => {
   if (typeof document === 'undefined') {
     return 'light';
   }
@@ -49,15 +49,15 @@ const Tour = ({ forceOS, copy = defaultCopy }: TourProps) => {
   const downloadOS = forceOS ?? detectedOS;
   const isWindowsShowcase = downloadOS === 'windows';
   const [activeFeature, setActiveFeature] = useState(0);
-  const [theme, setTheme] = useState<DemoVideoTheme>('light');
+  const [theme, setTheme] = useState<ShowcaseTheme>('light');
   const [isCarouselPaused, setIsCarouselPaused] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const advanceTimerRef = useRef<number | null>(null);
   const slideStartedAtRef = useRef<number>(0);
   const slideRemainingRef = useRef<number>(SLIDE_DURATION_MS);
   const showcaseItems = isWindowsShowcase
-    ? WINDOWS_DEMO_SCREENSHOTS
-    : MACOS_DEMO_SCREENSHOTS;
+    ? WINDOWS_SHOWCASE_SCREENSHOTS
+    : MACOS_SHOWCASE_SCREENSHOTS;
   const activeScreenshot = showcaseItems[activeFeature] ?? showcaseItems[0];
   const activeItem = activeScreenshot;
   const localizedActiveItem = {
@@ -180,7 +180,7 @@ const Tour = ({ forceOS, copy = defaultCopy }: TourProps) => {
 
         <div className={styles.Tour__ScreenshotWrapper}>
           {showcaseItems.map((item, index) => {
-            const src = resolveDemoScreenshotMedia(item, theme);
+            const src = resolveShowcaseScreenshotMedia(item, theme);
             const isActive = index === activeFeature;
             return (
               <img

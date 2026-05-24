@@ -1,5 +1,5 @@
 ---
-import { getDemoVideoBySrc, resolveDemoVideoMedia } from '@/data/demoVideos';
+import { getShowcaseVideoBySrc, resolveShowcaseVideoMedia } from '@/data/showcaseMedia';
 
 const { src = '', alt = '', ...props } = Astro.props;
 
@@ -7,7 +7,7 @@ if (typeof src !== 'string') {
   throw new Error('BlogMarkdownImage requires a string src');
 }
 
-const demoVideo = src.endsWith('.mp4') ? getDemoVideoBySrc(src) : undefined;
+const showcaseVideo = src.endsWith('.mp4') ? getShowcaseVideoBySrc(src) : undefined;
 const themedScreenshot = getThemedScreenshot(src);
 
 function getThemedScreenshot(src: string) {
@@ -33,16 +33,16 @@ function getThemedScreenshot(src: string) {
 ---
 
 {
-  demoVideo ? (
+  showcaseVideo ? (
     <figure class='markdown-figure markdown-figure--video'>
       <a
-        aria-label={`${alt || demoVideo.title}. Open demo video in a new tab`}
+        aria-label={`${alt || showcaseVideo.title}. Open video in a new tab`}
         class='markdown-video-link markdown-video-link--light'
         data-autoplay-video='true'
-        data-video-label={alt || demoVideo.title}
-        data-video-poster={resolveDemoVideoMedia(demoVideo, 'light').poster}
-        data-video-src={resolveDemoVideoMedia(demoVideo, 'light').source}
-        href={resolveDemoVideoMedia(demoVideo, 'light').source}
+        data-video-label={alt || showcaseVideo.title}
+        data-video-poster={resolveShowcaseVideoMedia(showcaseVideo, 'light').poster}
+        data-video-src={resolveShowcaseVideoMedia(showcaseVideo, 'light').source}
+        href={resolveShowcaseVideoMedia(showcaseVideo, 'light').source}
         rel='noopener noreferrer'
         target='_blank'
       >
@@ -53,19 +53,19 @@ function getThemedScreenshot(src: string) {
           decoding='async'
           height='720'
           loading='lazy'
-          src={resolveDemoVideoMedia(demoVideo, 'light').poster}
+          src={resolveShowcaseVideoMedia(showcaseVideo, 'light').poster}
           width='1280'
         />
-        <span class='markdown-video-badge'>Open demo video</span>
+        <span class='markdown-video-badge'>Open video</span>
       </a>
       <a
-        aria-label={`${alt || demoVideo.title}. Open demo video in a new tab`}
+        aria-label={`${alt || showcaseVideo.title}. Open video in a new tab`}
         class='markdown-video-link markdown-video-link--dark'
         data-autoplay-video='true'
-        data-video-label={alt || demoVideo.title}
-        data-video-poster={resolveDemoVideoMedia(demoVideo, 'dark').poster}
-        data-video-src={resolveDemoVideoMedia(demoVideo, 'dark').source}
-        href={resolveDemoVideoMedia(demoVideo, 'dark').source}
+        data-video-label={alt || showcaseVideo.title}
+        data-video-poster={resolveShowcaseVideoMedia(showcaseVideo, 'dark').poster}
+        data-video-src={resolveShowcaseVideoMedia(showcaseVideo, 'dark').source}
+        href={resolveShowcaseVideoMedia(showcaseVideo, 'dark').source}
         rel='noopener noreferrer'
         target='_blank'
       >
@@ -76,10 +76,10 @@ function getThemedScreenshot(src: string) {
           decoding='async'
           height='720'
           loading='lazy'
-          src={resolveDemoVideoMedia(demoVideo, 'dark').poster}
+          src={resolveShowcaseVideoMedia(showcaseVideo, 'dark').poster}
           width='1280'
         />
-        <span class='markdown-video-badge'>Open demo video</span>
+        <span class='markdown-video-badge'>Open video</span>
       </a>
       {alt && <figcaption>{alt}</figcaption>}
     </figure>
