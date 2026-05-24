@@ -267,16 +267,6 @@ export const WINDOWS_SHOWCASE_SCREENSHOTS: ShowcaseScreenshotAsset[] = [
     alt: 'Naming Blocks editor in Zush for Windows',
   },
   {
-    id: 'naming',
-    title: 'Naming & Metadata',
-    description: 'Create naming patterns and add searchable metadata',
-    images: {
-      light: '/images/showcase/windows/naming-light.webp',
-      dark: '/images/showcase/windows/naming-dark.webp',
-    },
-    alt: 'Naming pattern and metadata settings in Zush for Windows',
-  },
-  {
     id: 'custom-prompts',
     title: 'Custom Prompts',
     description: 'Guide filename generation with your own instructions',

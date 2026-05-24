@@ -49,12 +49,6 @@ const featureOrder = [
     storeName: '06-naming-blocks',
   },
   {
-    id: 'naming',
-    fixture: 'naming',
-    title: 'Naming & Metadata',
-    storeName: '07-naming-metadata',
-  },
-  {
     id: 'custom-prompts',
     fixture: 'custom-prompts',
     title: 'Custom Prompts',
