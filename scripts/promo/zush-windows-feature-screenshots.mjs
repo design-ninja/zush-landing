@@ -194,6 +194,19 @@ const promoAssetSeeds = [
       path.join(appRepo, 'test-assets/documents/9.csv'),
     ],
   },
+  {
+    name: 'wedding.jpg',
+    candidates: [
+      path.join(appRepo, 'test-assets/Files/wedding.jpg'),
+      path.join(appRepo, 'test-assets/images/wedding.jpg'),
+    ],
+  },
+  {
+    name: 'Chat conversation screenshot.png',
+    candidates: [
+      path.join(appRepo, 'test-assets/test-png/Chat conversation screenshot.png'),
+    ],
+  },
 ];
 
 if (args.has('--help') || args.has('-h')) {
