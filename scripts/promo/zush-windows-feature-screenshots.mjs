@@ -31,28 +31,46 @@ const featureOrder = [
     storeName: '03-activity',
   },
   {
+    id: 'statistics',
+    fixture: 'statistics',
+    title: 'Statistics',
+    storeName: '04-statistics',
+  },
+  {
+    id: 'templates',
+    fixture: 'templates',
+    title: 'Templates',
+    storeName: '05-templates',
+  },
+  {
+    id: 'naming-blocks',
+    fixture: 'naming-blocks',
+    title: 'Naming Blocks',
+    storeName: '06-naming-blocks',
+  },
+  {
     id: 'naming',
     fixture: 'naming',
     title: 'Naming & Metadata',
-    storeName: '04-naming-metadata',
+    storeName: '07-naming-metadata',
   },
   {
     id: 'custom-prompts',
     fixture: 'custom-prompts',
     title: 'Custom Prompts',
-    storeName: '05-custom-prompts',
+    storeName: '08-custom-prompts',
   },
   {
     id: 'byok',
     fixture: 'byok',
     title: 'BYOK',
-    storeName: '06-byok',
+    storeName: '09-byok',
   },
   {
     id: 'offline-ai',
     fixture: 'offline-ai',
     title: 'Offline AI mode',
-    storeName: '07-offline-ai',
+    storeName: '10-offline-ai',
   },
 ];
 
@@ -61,20 +79,42 @@ const appRepo = path.resolve(process.env.ZUSH_WINDOWS_APP_REPO ?? defaultAppRepo
 const appProject =
   process.env.ZUSH_WINDOWS_APP_PROJECT ??
   path.join(appRepo, 'src/Zush.Windows.App/Zush.Windows.App.csproj');
-const sourceAssetRoot =
+const fallbackSourceAssetRoots = [
+  path.resolve(repoRoot, '../zush-assets/#test files/Files'),
+  path.join(appRepo, 'test-assets/Files'),
+  path.join(appRepo, 'test-assets/images'),
+];
+const sourceAssetRoot = path.resolve(
   process.env.ZUSH_PROMO_SOURCE_FILES ??
-  path.resolve(repoRoot, '../zush-assets/#test files/Files');
+    firstExistingPath(fallbackSourceAssetRoots) ??
+    fallbackSourceAssetRoots[0],
+);
+loadEnvFiles([
+  path.join(appRepo, '.env'),
+  path.join(appRepo, 'env'),
+  path.join(appRepo, '.env.local'),
+  path.join(repoRoot, '.env'),
+  path.join(repoRoot, 'env'),
+  path.join(repoRoot, '.env.local'),
+]);
 const defaultLandingOutputDir = path.join(repoRoot, 'public/images/showcase/windows');
 const defaultStoreOutputDir = path.resolve(repoRoot, '../zush-assets/Microsoft Store/Windows');
 const tempRoot = path.join(os.tmpdir(), `zush-windows-feature-screenshots-${Date.now()}`);
 const windir = process.env.WINDIR ?? 'C:\\Windows';
+const promoSupabaseUrl = normalizeUrl(
+  process.env.ZUSH_WINDOWS_PROMO_SUPABASE_URL ?? 'http://127.0.0.1:9',
+);
+const promoSupabasePublishableKey =
+  process.env.ZUSH_WINDOWS_PROMO_SUPABASE_PUBLISHABLE_KEY ??
+  'sb_publishable_promo_screenshots_offline';
 
 const targetConfigs = {
   landing: {
     canvas: { width: 2560, height: 1440 },
     extension: 'webp',
     windowWidth: 1660,
-    yBias: -12,
+    yBias: 0,
+    captureCropPx: 2,
   },
   'microsoft-store': {
     // Microsoft Learn: desktop screenshots must be PNG, 1366x768 or larger, <= 50 MB.
@@ -82,9 +122,79 @@ const targetConfigs = {
     canvas: { width: 3840, height: 2160 },
     extension: 'png',
     windowWidth: 2520,
-    yBias: -22,
+    yBias: 0,
+    captureCropPx: 2,
   },
 };
+
+const promoAssetSeeds = [
+  {
+    name: '$_7 copy.jpg',
+    candidates: [
+      path.join(appRepo, 'test-assets/Files/$_7 copy.jpg'),
+      path.join(appRepo, 'test-assets/images/$_7 copy.jpg'),
+      path.join(repoRoot, 'public/images/examples/office.jpg'),
+    ],
+  },
+  {
+    name: '6.pptx',
+    candidates: [
+      path.join(appRepo, 'test-assets/Files/6.pptx'),
+      path.join(appRepo, 'test-assets/documents/6.pptx'),
+    ],
+  },
+  {
+    name: 'Deep_Work_-_Cal_Newport.pdf',
+    candidates: [
+      path.join(appRepo, 'test-assets/Files/Deep_Work_-_Cal_Newport.pdf'),
+      path.join(appRepo, 'test-assets/images/Deep_Work_-_Cal_Newport.pdf'),
+    ],
+  },
+  {
+    name: 'Employee Performance.docx',
+    candidates: [
+      path.join(appRepo, 'test-assets/Files/Employee Performance.docx'),
+      path.join(appRepo, 'test-assets/documents/3.docx'),
+    ],
+  },
+  {
+    name: 'Untitled.xlsx',
+    candidates: [
+      path.join(appRepo, 'test-assets/Files/Untitled.xlsx'),
+      path.join(appRepo, 'test-assets/documents/10.xlsx'),
+    ],
+  },
+  {
+    name: 'apasaric-1388030.jpg',
+    candidates: [
+      path.join(appRepo, 'test-assets/Files/apasaric-1388030.jpg'),
+      path.join(appRepo, 'test-assets/images/pexels-apasaric-1388030.jpg'),
+      path.join(repoRoot, 'public/images/examples/building.jpg'),
+    ],
+  },
+  {
+    name: 'animated.mp4',
+    candidates: [
+      path.join(repoRoot, 'public/videos/windows/zush-batch-rename.mp4'),
+      path.join(repoRoot, 'public/videos/zush-batch-rename.mp4'),
+    ],
+  },
+  {
+    name: 'plus.svg',
+    candidates: [
+      path.join(appRepo, 'test-assets/Files/plus.svg'),
+      path.join(appRepo, 'test-assets/images/plus.svg'),
+      path.join(appRepo, 'test-assets/test-vector/plus.svg'),
+    ],
+  },
+  {
+    name: 'video-metadata.csv',
+    candidates: [
+      path.join(appRepo, 'test-assets/Files/video-metadata.csv'),
+      path.join(appRepo, 'test-assets/documents/9.csv'),
+    ],
+  },
+];
 
 if (args.has('--help') || args.has('-h')) {
   printHelp();
@@ -100,7 +210,6 @@ const targetArg = argValue('--targets') ?? argValue('--target');
 const appExeArg = argValue('--app-exe');
 const buildConfig = argValue('--configuration') ?? 'Debug';
 const runtimeIdentifier = argValue('--runtime') ?? 'win-x64';
-const windowSize = parseSize(argValue('--window-size') ?? '1320x900');
 const settleMs = Number(argValue('--settle-ms') ?? 900);
 const selectedTargets = parseTargets(
   targetArg ?? (args.has('--store') || args.has('--microsoft-store') ? 'microsoft-store' : 'landing,microsoft-store'),
@@ -115,6 +224,15 @@ const selectedThemes = [
 const selectedFeatures = only
   ? featureOrder.filter((feature) => feature.id === only || feature.fixture === only)
   : featureOrder;
+const needsCloudByok = selectedFeatures.some((feature) => feature.fixture === 'byok');
+const needsOllama = selectedFeatures.some((feature) =>
+  feature.fixture === 'offline-ai' || feature.fixture === 'byok',
+);
+const promoCloudCredentials = resolvePromoCloudCredentials({
+  required: needsCloudByok && !args.has('--dry-run'),
+});
+let promoOllamaConfig = null;
+let startedOllamaPid = null;
 const outputDirs = {
   landing: path.resolve(
     landingOutputDirArg ??
@@ -160,6 +278,8 @@ await main();
 
 async function main() {
   assertWindowsHostUnlessDryRun();
+  assertDebugConfiguration();
+  assertOfflineBackendUnlessDryRun();
   if (args.has('--dry-run')) {
     console.log(
       JSON.stringify(
@@ -168,6 +288,10 @@ async function main() {
           themesByTarget,
           features: selectedFeatures.map((feature) => feature.id),
           outputDirs,
+          supabaseUrl: promoSupabaseUrl,
+          sourceAssetRoot,
+          cloudByokProvider: promoCloudCredentials?.provider ?? null,
+          hasCloudByokKey: Boolean(promoCloudCredentials?.apiKey),
         },
         null,
         2,
@@ -177,6 +301,15 @@ async function main() {
   }
 
   const appExe = appExeArg ? path.resolve(appExeArg) : ensureBuiltAndResolveApp();
+  assertDebugAppExecutable(appExe);
+  if (promoCloudCredentials) {
+    await assertPromoCloudConnection(promoCloudCredentials);
+  }
+
+  if (needsOllama) {
+    promoOllamaConfig = await prepareOllamaForPromo();
+  }
+
   const runId = `zush-windows-promo-${process.pid}-${Date.now()}`;
   const assetRoot = copyFixtureAssets(runId);
   const outputs = [];
@@ -201,7 +334,8 @@ async function main() {
       }
     }
   } finally {
-    fs.rmSync(tempRoot, { recursive: true, force: true });
+    cleanupStartedOllama();
+    cleanupTempRoot();
   }
 
   console.log(`Generated ${outputs.length} screenshot${outputs.length === 1 ? '' : 's'}.`);
@@ -219,16 +353,26 @@ Options:
   --landing-output-dir=PATH          Default: public/images/showcase/windows
   --store-output-dir=PATH            Default: ../zush-assets/Microsoft Store/Windows
   --app-exe=PATH                     Use an existing Debug Zush.Windows.App.exe.
-  --skip-build                       Reuse the latest built app exe.
-  --configuration=Debug              dotnet build configuration.
+  --skip-build                       Reuse the latest built Debug app exe.
+  --configuration=Debug              Must stay Debug; promo fixtures are DEBUG-only.
   --runtime=win-x64                  dotnet runtime identifier.
-  --window-size=1320x900             App window size before capture.
   --settle-ms=900                    Extra wait after fixture marker before capture.
   --allow-store-overflow             Allow writing more than 10 Store PNGs.
+  --keep-temp                        Keep temp capture files for debugging.
 
 Environment:
   ZUSH_WINDOWS_APP_REPO              Path to zush-windows.
   ZUSH_PROMO_SOURCE_FILES            Source fixture file directory.
+  .env/env files                     Loaded from zush-windows and zush-landing roots before env lookup.
+  ZUSH_WINDOWS_PROMO_SUPABASE_URL    Local screenshot backend URL. Default: http://127.0.0.1:9
+  ZUSH_WINDOWS_PROMO_SUPABASE_PUBLISHABLE_KEY
+                                      Local publishable key. Default: offline placeholder.
+  ZUSH_WINDOWS_PROMO_AI_PROVIDER      Optional "gemini" or "openai" BYOK provider override.
+  ZUSH_WINDOWS_PROMO_GEMINI_API_KEY   Gemini key for BYOK screenshots. Falls back to GEMINI_API_KEY or GOOGLE_API_KEY.
+  ZUSH_WINDOWS_PROMO_OPENAI_API_KEY   OpenAI key for BYOK screenshots. Falls back to OPENAI_API_KEY.
+  ZUSH_WINDOWS_PROMO_OLLAMA_ENDPOINT  Ollama endpoint. Default: http://127.0.0.1:11434
+  ZUSH_WINDOWS_PROMO_OLLAMA_MODEL     Preferred local model. Defaults to gemma3, or the first installed model.
+  ZUSH_WINDOWS_PROMO_OLLAMA_EXE       Optional ollama executable path.
   ZUSH_WINDOWS_PROMO_LIGHT_WALLPAPER Windows 11 light wallpaper path.
   ZUSH_WINDOWS_PROMO_DARK_WALLPAPER  Windows 11 dark wallpaper path.
 `);
@@ -241,6 +385,221 @@ function assertWindowsHostUnlessDryRun() {
         'Use --help for options or --dry-run to validate argument parsing.',
     );
   }
+}
+
+function assertDebugConfiguration() {
+  if (buildConfig.trim().toLowerCase() !== 'debug') {
+    throw new Error(
+      'Windows promo screenshots must use the Debug configuration so promo fixtures and Pro screenshot state are available.',
+    );
+  }
+}
+
+function assertDebugAppExecutable(appExe) {
+  if (!isDebugAppExecutablePath(appExe)) {
+    throw new Error(
+      `Windows promo screenshots must launch a Debug app build. Refusing app exe: ${appExe}`,
+    );
+  }
+}
+
+function assertOfflineBackendUnlessDryRun() {
+  if (args.has('--dry-run')) {
+    return;
+  }
+
+  if (isLoopbackUrl(promoSupabaseUrl)) {
+    return;
+  }
+
+  throw new Error(
+    `Refusing to run promo screenshots against a non-local Supabase endpoint (${promoSupabaseUrl || '<empty>'}). ` +
+      'Leave ZUSH_WINDOWS_PROMO_SUPABASE_URL unset for the offline blackhole, or point it at a loopback Supabase instance.',
+  );
+}
+
+function resolvePromoCloudCredentials({ required }) {
+  const providerOverride = envValue('ZUSH_WINDOWS_PROMO_AI_PROVIDER')?.toLowerCase();
+  if (providerOverride && !['gemini', 'openai'].includes(providerOverride)) {
+    throw new Error('ZUSH_WINDOWS_PROMO_AI_PROVIDER must be "gemini" or "openai".');
+  }
+
+  const geminiKey =
+    envValue('ZUSH_WINDOWS_PROMO_GEMINI_API_KEY') ??
+    envValue('GEMINI_API_KEY') ??
+    envValue('GOOGLE_API_KEY') ??
+    (providerOverride === 'gemini' ? envValue('ZUSH_WINDOWS_PROMO_CLOUD_API_KEY') : null);
+  const openAiKey =
+    envValue('ZUSH_WINDOWS_PROMO_OPENAI_API_KEY') ??
+    envValue('OPENAI_API_KEY') ??
+    (providerOverride === 'openai' ? envValue('ZUSH_WINDOWS_PROMO_CLOUD_API_KEY') : null);
+
+  if (providerOverride === 'gemini' && geminiKey) {
+    return { provider: 'gemini', apiKey: geminiKey };
+  }
+
+  if (providerOverride === 'openai' && openAiKey) {
+    return { provider: 'openai', apiKey: openAiKey };
+  }
+
+  if (!providerOverride && geminiKey) {
+    return { provider: 'gemini', apiKey: geminiKey };
+  }
+
+  if (!providerOverride && openAiKey) {
+    return { provider: 'openai', apiKey: openAiKey };
+  }
+
+  if (required) {
+    const expected = providerOverride === 'openai'
+      ? 'ZUSH_WINDOWS_PROMO_OPENAI_API_KEY or OPENAI_API_KEY'
+      : providerOverride === 'gemini'
+        ? 'ZUSH_WINDOWS_PROMO_GEMINI_API_KEY, GEMINI_API_KEY, or GOOGLE_API_KEY'
+        : 'GEMINI_API_KEY, GOOGLE_API_KEY, or OPENAI_API_KEY';
+    throw new Error(`BYOK promo screenshots require a Gemini or OpenAI API key in env (${expected}).`);
+  }
+
+  return null;
+}
+
+async function assertPromoCloudConnection(credentials) {
+  const response = credentials.provider === 'openai'
+    ? await fetchWithTimeout('https://api.openai.com/v1/models', {
+      headers: { Authorization: `Bearer ${credentials.apiKey}` },
+    })
+    : await fetchWithTimeout(
+      `https://generativelanguage.googleapis.com/v1beta/models?key=${encodeURIComponent(credentials.apiKey)}`,
+    );
+
+  if (!response.ok) {
+    throw new Error(
+      `BYOK promo ${credentials.provider} key did not pass the live provider check. ` +
+        `Provider returned HTTP ${response.status}.`,
+    );
+  }
+}
+
+async function prepareOllamaForPromo() {
+  const endpoint = normalizeUrl(envValue('ZUSH_WINDOWS_PROMO_OLLAMA_ENDPOINT') ?? 'http://127.0.0.1:11434');
+  let models = await tryFetchOllamaModels(endpoint);
+  if (!models) {
+    startOllamaServer();
+    models = await waitForOllamaModels(endpoint);
+  }
+
+  if (models.length === 0) {
+    throw new Error('Ollama is running, but no local models are installed. Run "ollama pull gemma3" or set ZUSH_WINDOWS_PROMO_OLLAMA_MODEL to an installed model.');
+  }
+
+  const explicitModel = envValue('ZUSH_WINDOWS_PROMO_OLLAMA_MODEL') ?? envValue('OLLAMA_MODEL');
+  const model = selectOllamaModel(models, explicitModel ?? 'gemma3', Boolean(explicitModel));
+  return { endpoint, model };
+}
+
+function startOllamaServer() {
+  const ollamaExe = findOllamaExecutable();
+  if (!ollamaExe) {
+    throw new Error('Ollama is not running and the ollama executable was not found. Install Ollama or set ZUSH_WINDOWS_PROMO_OLLAMA_EXE.');
+  }
+
+  console.log('Starting Ollama with "ollama serve" for AI Setup screenshots...');
+  const child = spawn(ollamaExe, ['serve'], {
+    detached: true,
+    stdio: 'ignore',
+    windowsHide: true,
+  });
+  startedOllamaPid = child.pid;
+  child.unref();
+}
+
+async function waitForOllamaModels(endpoint, timeoutMs = 30_000) {
+  const startedAt = Date.now();
+  while (Date.now() - startedAt < timeoutMs) {
+    const models = await tryFetchOllamaModels(endpoint);
+    if (models) {
+      return models;
+    }
+
+    await wait(750);
+  }
+
+  throw new Error(`Timed out waiting for Ollama at ${endpoint}.`);
+}
+
+async function tryFetchOllamaModels(endpoint) {
+  try {
+    const response = await fetchWithTimeout(ollamaApiUrl(endpoint, '/api/tags'), {}, 2_500);
+    if (!response.ok) {
+      return null;
+    }
+
+    const decoded = await response.json();
+    return Array.isArray(decoded.models)
+      ? decoded.models
+        .map((model) => model?.name)
+        .filter((name) => typeof name === 'string' && name.trim())
+      : [];
+  } catch {
+    return null;
+  }
+}
+
+function selectOllamaModel(models, preferredModel, isExplicit) {
+  const preferred = stripLatestSuffix(preferredModel.trim());
+  const normalized = models.map(stripLatestSuffix);
+  if (normalized.includes(preferred)) {
+    return preferred;
+  }
+
+  if (isExplicit) {
+    throw new Error(
+      `Requested Ollama model "${preferredModel}" is not installed. Installed models: ${models.join(', ')}.`,
+    );
+  }
+
+  return stripLatestSuffix(models[0]);
+}
+
+function findOllamaExecutable() {
+  const explicit = envValue('ZUSH_WINDOWS_PROMO_OLLAMA_EXE');
+  if (explicit && fs.existsSync(explicit)) {
+    return explicit;
+  }
+
+  const whereResult = spawnSync('where.exe', ['ollama'], {
+    encoding: 'utf8',
+    windowsHide: true,
+  });
+  if (whereResult.status === 0) {
+    const candidate = whereResult.stdout
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .find((line) => line && fs.existsSync(line));
+    if (candidate) {
+      return candidate;
+    }
+  }
+
+  return firstExistingPath([
+    path.join(process.env.LOCALAPPDATA ?? '', 'Programs/Ollama/ollama.exe'),
+    path.join(process.env.LOCALAPPDATA ?? '', 'Microsoft/WindowsApps/ollama.exe'),
+    path.join(process.env.ProgramFiles ?? '', 'Ollama/ollama.exe'),
+  ]);
+}
+
+function promoEnvironmentForFeature(feature) {
+  const env = {};
+  if (feature.fixture === 'byok' && promoCloudCredentials) {
+    env.ZUSH_PROMO_SCREENSHOT_BYOK_PROVIDER = promoCloudCredentials.provider;
+    env.ZUSH_PROMO_SCREENSHOT_BYOK_API_KEY = promoCloudCredentials.apiKey;
+  }
+
+  if ((feature.fixture === 'offline-ai' || feature.fixture === 'byok') && promoOllamaConfig) {
+    env.ZUSH_PROMO_SCREENSHOT_LOCAL_AI_ENDPOINT = promoOllamaConfig.endpoint;
+    env.ZUSH_PROMO_SCREENSHOT_LOCAL_AI_MODEL = promoOllamaConfig.model;
+  }
+
+  return env;
 }
 
 function ensureBuiltAndResolveApp() {
@@ -258,11 +617,12 @@ function ensureBuiltAndResolveApp() {
   }
 
   const appExe = findLatestFile(
-    path.join(appRepo, 'src/Zush.Windows.App/bin', buildConfig),
+    path.join(appRepo, 'src/Zush.Windows.App/bin'),
     'Zush.Windows.App.exe',
+    (candidate) => isDebugAppExecutablePath(candidate) && isRuntimeExecutablePath(candidate),
   );
   if (!appExe) {
-    throw new Error(`Could not find built Zush.Windows.App.exe under ${appRepo}`);
+    throw new Error(`Could not find built Debug ${runtimeIdentifier} Zush.Windows.App.exe under ${appRepo}`);
   }
 
   return appExe;
@@ -275,6 +635,7 @@ async function captureFeature({ appExe, feature, theme, runId, assetRoot }) {
   const markerPath = path.join(captureDir, 'fixture-marker.json');
   const capturePath = path.join(captureDir, 'window.png');
   const baseDir = path.join(captureDir, 'app-data');
+  const promoFixtureEnv = promoEnvironmentForFeature(feature);
   const child = spawn(appExe, [], {
     cwd: path.dirname(appExe),
     windowsHide: false,
@@ -283,11 +644,15 @@ async function captureFeature({ appExe, feature, theme, runId, assetRoot }) {
       ZUSH_BASE_DIR: baseDir,
       ZUSH_DISABLE_SENTRY: '1',
       ZUSH_DISABLE_TELEMETRYDECK: '1',
+      ZUSH_SUPABASE_URL: promoSupabaseUrl,
+      ZUSH_SUPABASE_PUBLISHABLE_KEY: promoSupabasePublishableKey,
+      ZUSH_SUPABASE_ANON_KEY: '',
       ZUSH_PROMO_SCREENSHOT_RUN_ID: runId,
       ZUSH_PROMO_SCREENSHOT_FIXTURE: feature.fixture,
       ZUSH_PROMO_SCREENSHOT_THEME: theme,
       ZUSH_PROMO_SCREENSHOT_ASSET_ROOT: assetRoot,
       ZUSH_PROMO_SCREENSHOT_MARKER: markerPath,
+      ...promoFixtureEnv,
     },
     stdio: ['ignore', 'pipe', 'pipe'],
   });
@@ -307,8 +672,6 @@ async function captureFeature({ appExe, feature, theme, runId, assetRoot }) {
     captureWindowWithPowerShell({
       processId: child.pid,
       outputPath: capturePath,
-      width: windowSize.width,
-      height: windowSize.height,
     });
   } catch (error) {
     const detail = [error.message, stdout, stderr].filter(Boolean).join('\n');
@@ -351,7 +714,7 @@ async function waitForFixtureMarker(markerPath, child, timeoutMs = 60_000) {
   throw new Error(`Timed out waiting for fixture marker: ${markerPath}`);
 }
 
-function captureWindowWithPowerShell({ processId, outputPath, width, height }) {
+function captureWindowWithPowerShell({ processId, outputPath }) {
   if (!processId) {
     throw new Error('Zush process id is unavailable.');
   }
@@ -368,10 +731,6 @@ function captureWindowWithPowerShell({ processId, outputPath, width, height }) {
     String(processId),
     '-OutputPath',
     outputPath,
-    '-Width',
-    String(width),
-    '-Height',
-    String(height),
   ]);
 
   if (!fs.existsSync(outputPath)) {
@@ -388,14 +747,20 @@ async function renderComposite({ capture, theme, outputPath, target }) {
     throw new Error(`Could not read capture size: ${capture.path}`);
   }
 
-  const scale = config.windowWidth / metadata.width;
-  const windowWidth = Math.round(metadata.width * scale);
-  const windowHeight = Math.round(metadata.height * scale);
+  const crop = windowCaptureCrop(metadata, config.captureCropPx ?? 0);
+  const scale = config.windowWidth / crop.width;
+  const windowWidth = Math.round(crop.width * scale);
+  const windowHeight = Math.round(crop.height * scale);
   const x = Math.round((canvas.width - windowWidth) / 2);
   const y = Math.round((canvas.height - windowHeight) / 2 + config.yBias);
   const background = await renderBackground(theme, canvas);
   const windowBuffer = await sharp(capture.path)
+    .extract(crop)
     .resize(windowWidth, windowHeight, { fit: 'fill', kernel: sharp.kernel.lanczos3 })
+    .ensureAlpha()
+    .composite([
+      { input: Buffer.from(roundedWindowMaskSvg(windowWidth, windowHeight)), blend: 'dest-in' },
+    ])
     .png()
     .toBuffer();
   const shadow = Buffer.from(shadowSvg(canvas, x, y, windowWidth, windowHeight, theme));
@@ -416,6 +781,23 @@ async function renderComposite({ capture, theme, outputPath, target }) {
   await image
     .webp({ quality: 90, effort: 6, smartSubsample: true })
     .toFile(outputPath);
+}
+
+function windowCaptureCrop(metadata, inset) {
+  const width = metadata.width ?? 0;
+  const height = metadata.height ?? 0;
+  const safeInset = Math.min(
+    Math.max(0, inset),
+    Math.floor((width - 1) / 2),
+    Math.floor((height - 1) / 2),
+  );
+
+  return {
+    left: safeInset,
+    top: safeInset,
+    width: width - (safeInset * 2),
+    height: height - (safeInset * 2),
+  };
 }
 
 async function renderBackground(theme, canvas) {
@@ -486,20 +868,38 @@ function copyFixtureAssets(runId) {
   fs.mkdirSync(targetRoot, { recursive: true });
 
   if (!fs.existsSync(sourceAssetRoot)) {
-    throw new Error(`Missing promo source files directory: ${sourceAssetRoot}`);
+    console.warn(`Warning: promo source files directory is missing, using bundled fallback seeds: ${sourceAssetRoot}`);
+  } else {
+    for (const entry of fs.readdirSync(sourceAssetRoot)) {
+      if (entry.startsWith('.')) {
+        continue;
+      }
+
+      fs.cpSync(path.join(sourceAssetRoot, entry), path.join(targetRoot, entry), {
+        recursive: true,
+      });
+    }
   }
 
-  for (const entry of fs.readdirSync(sourceAssetRoot)) {
-    if (entry.startsWith('.')) {
+  seedMissingPromoAssets(targetRoot);
+
+  return targetRoot;
+}
+
+function seedMissingPromoAssets(targetRoot) {
+  for (const seed of promoAssetSeeds) {
+    const target = path.join(targetRoot, seed.name);
+    if (fs.existsSync(target) && fs.statSync(target).size > 0) {
       continue;
     }
 
-    fs.cpSync(path.join(sourceAssetRoot, entry), path.join(targetRoot, entry), {
-      recursive: true,
-    });
-  }
+    const source = firstExistingPath(seed.candidates);
+    if (!source) {
+      continue;
+    }
 
-  return targetRoot;
+    fs.copyFileSync(source, target);
+  }
 }
 
 function parseTargets(value) {
@@ -550,23 +950,149 @@ function themesForTarget(target, explicit) {
   return target === 'microsoft-store' ? ['light'] : ['light', 'dark'];
 }
 
-function parseSize(value) {
-  const match = /^(\d+)x(\d+)$/i.exec(value.trim());
-  if (!match) {
-    throw new Error(`Invalid --window-size value: ${value}`);
-  }
-
-  return {
-    width: Number(match[1]),
-    height: Number(match[2]),
-  };
-}
-
 function firstExistingPath(paths) {
   return paths.find((candidate) => fs.existsSync(candidate)) ?? null;
 }
 
-function findLatestFile(root, basename) {
+function loadEnvFiles(paths) {
+  for (const envPath of paths) {
+    if (!fs.existsSync(envPath)) {
+      continue;
+    }
+
+    const content = fs.readFileSync(envPath, 'utf8');
+    for (const line of content.split(/\r?\n/)) {
+      const parsed = parseEnvLine(line);
+      if (!parsed || process.env[parsed.key]) {
+        continue;
+      }
+
+      process.env[parsed.key] = parsed.value;
+    }
+  }
+}
+
+function parseEnvLine(line) {
+  const trimmed = line.trim();
+  if (!trimmed || trimmed.startsWith('#')) {
+    return null;
+  }
+
+  const match = /^(?:export\s+)?([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)$/.exec(trimmed);
+  if (!match) {
+    return null;
+  }
+
+  return {
+    key: match[1],
+    value: parseEnvValue(match[2]),
+  };
+}
+
+function parseEnvValue(rawValue) {
+  let value = rawValue.trim();
+  if (!value) {
+    return '';
+  }
+
+  const quote = value[0];
+  if ((quote === '"' || quote === "'") && value.endsWith(quote)) {
+    value = value.slice(1, -1);
+    return quote === '"'
+      ? value
+        .replaceAll('\\n', '\n')
+        .replaceAll('\\r', '\r')
+        .replaceAll('\\t', '\t')
+        .replaceAll('\\"', '"')
+        .replaceAll('\\\\', '\\')
+      : value;
+  }
+
+  const commentIndex = value.search(/\s#/);
+  return (commentIndex >= 0 ? value.slice(0, commentIndex) : value).trim();
+}
+
+async function fetchWithTimeout(url, options = {}, timeoutMs = 8_000) {
+  if (typeof fetch !== 'function') {
+    throw new Error('This script requires a Node.js runtime with fetch support.');
+  }
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(url, {
+      ...options,
+      signal: controller.signal,
+    });
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+function ollamaApiUrl(endpoint, apiPath) {
+  const url = new URL(normalizeUrl(endpoint));
+  url.pathname = apiPath;
+  url.search = '';
+  url.hash = '';
+  return url.toString();
+}
+
+function stripLatestSuffix(model) {
+  return model.endsWith(':latest') ? model.slice(0, -':latest'.length) : model;
+}
+
+function normalizeUrl(value) {
+  return value.trim().replace(/\/+$/, '');
+}
+
+function envValue(name) {
+  const direct = process.env[name]?.trim();
+  if (direct) {
+    return direct;
+  }
+
+  if (process.platform !== 'win32') {
+    return null;
+  }
+
+  const script = [
+    `$name = '${escapePowerShellSingleQuoted(name)}'`,
+    "$value = [Environment]::GetEnvironmentVariable($name, 'User')",
+    "if ([string]::IsNullOrWhiteSpace($value)) { $value = [Environment]::GetEnvironmentVariable($name, 'Machine') }",
+    "if (-not [string]::IsNullOrWhiteSpace($value)) { [Console]::Out.Write($value.Trim()) }",
+  ].join('; ');
+  const result = spawnSync(powerShellExecutable(), ['-NoProfile', '-Command', script], {
+    encoding: 'utf8',
+    windowsHide: true,
+  });
+
+  return result.status === 0 && result.stdout.trim() ? result.stdout.trim() : null;
+}
+
+function escapePowerShellSingleQuoted(value) {
+  return value.replaceAll("'", "''");
+}
+
+function isLoopbackUrl(value) {
+  try {
+    const hostname = new URL(value).hostname.toLowerCase();
+    return ['localhost', '127.0.0.1', '::1', '[::1]'].includes(hostname);
+  } catch {
+    return false;
+  }
+}
+
+function isDebugAppExecutablePath(appExe) {
+  const segments = path.normalize(appExe).toLowerCase().split(/[\\/]+/);
+  return segments.includes('debug');
+}
+
+function isRuntimeExecutablePath(appExe) {
+  const segments = path.normalize(appExe).toLowerCase().split(/[\\/]+/);
+  return segments.includes(runtimeIdentifier.toLowerCase());
+}
+
+function findLatestFile(root, basename, predicate = () => true) {
   if (!fs.existsSync(root)) {
     return null;
   }
@@ -579,7 +1105,7 @@ function findLatestFile(root, basename) {
       const fullPath = path.join(dir, entry.name);
       if (entry.isDirectory()) {
         stack.push(fullPath);
-      } else if (entry.isFile() && entry.name === basename) {
+      } else if (entry.isFile() && entry.name === basename && predicate(fullPath)) {
         matches.push(fullPath);
       }
     }
@@ -633,6 +1159,33 @@ function killProcessTree(pid) {
   }
 }
 
+function cleanupTempRoot() {
+  if (args.has('--keep-temp')) {
+    console.warn(`Kept temp screenshot files at ${tempRoot}`);
+    return;
+  }
+
+  try {
+    fs.rmSync(tempRoot, {
+      recursive: true,
+      force: true,
+      maxRetries: 8,
+      retryDelay: 250,
+    });
+  } catch (error) {
+    console.warn(`Warning: could not remove temp screenshot files at ${tempRoot}: ${error.message}`);
+  }
+}
+
+function cleanupStartedOllama() {
+  if (!startedOllamaPid) {
+    return;
+  }
+
+  killProcessTree(startedOllamaPid);
+  startedOllamaPid = null;
+}
+
 function powerShellExecutable() {
   return process.env.PWSH ?? 'powershell.exe';
 }
@@ -673,6 +1226,12 @@ function shadowSvg(canvas, x, y, width, height, theme) {
 </svg>`;
 }
 
+function roundedWindowMaskSvg(width, height) {
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">
+  <rect x="0" y="0" width="${width}" height="${height}" rx="18" fill="#fff" />
+</svg>`;
+}
+
 function generatedWindowsBackdropSvg(theme, canvas) {
   const dark = theme === 'dark';
   const bg = dark ? '#0b1020' : '#dcecff';
@@ -708,13 +1267,18 @@ function generatedWindowsBackdropSvg(theme, canvas) {
 function powerShellCaptureScript() {
   return String.raw`param(
   [Parameter(Mandatory=$true)][int]$ProcessId,
-  [Parameter(Mandatory=$true)][string]$OutputPath,
-  [Parameter(Mandatory=$true)][int]$Width,
-  [Parameter(Mandatory=$true)][int]$Height
+  [Parameter(Mandatory=$true)][string]$OutputPath
 )
 
+$ErrorActionPreference = 'Stop'
+
+$outputDirectory = Split-Path -Parent $OutputPath
+if (-not [string]::IsNullOrWhiteSpace($outputDirectory)) {
+  [System.IO.Directory]::CreateDirectory($outputDirectory) | Out-Null
+}
+
 Add-Type -AssemblyName System.Drawing
-Add-Type -TypeDefinition @"
+Add-Type -ReferencedAssemblies System.Drawing -TypeDefinition @"
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -725,6 +1289,10 @@ public static class ZushWindowCapture
     private const int DWMWA_EXTENDED_FRAME_BOUNDS = 9;
     private const int SW_RESTORE = 9;
     private const uint SWP_SHOWWINDOW = 0x0040;
+    private const uint SWP_NOSIZE = 0x0001;
+    private const uint SWP_NOMOVE = 0x0002;
+    private static readonly IntPtr HwndTopMost = new IntPtr(-1);
+    private static readonly IntPtr HwndNoTopMost = new IntPtr(-2);
 
     [StructLayout(LayoutKind.Sequential)]
     public struct RECT
@@ -753,15 +1321,23 @@ public static class ZushWindowCapture
     [DllImport("dwmapi.dll")]
     private static extern int DwmGetWindowAttribute(IntPtr hwnd, int dwAttribute, out RECT pvAttribute, int cbAttribute);
 
-    public static void Prepare(IntPtr hwnd, int width, int height)
+    public static void Prepare(IntPtr hwnd)
     {
         ShowWindow(hwnd, SW_RESTORE);
         SetForegroundWindow(hwnd);
+        RECT rect = Bounds(hwnd);
+        int width = Math.Max(1, rect.Right - rect.Left);
+        int height = Math.Max(1, rect.Bottom - rect.Top);
         int screenWidth = GetSystemMetrics(0);
         int screenHeight = GetSystemMetrics(1);
         int x = Math.Max(0, (screenWidth - width) / 2);
         int y = Math.Max(0, (screenHeight - height) / 2);
-        SetWindowPos(hwnd, IntPtr.Zero, x, y, width, height, SWP_SHOWWINDOW);
+        SetWindowPos(hwnd, HwndTopMost, x, y, 0, 0, SWP_SHOWWINDOW | SWP_NOSIZE);
+    }
+
+    public static void ReleaseTopmost(IntPtr hwnd)
+    {
+        SetWindowPos(hwnd, HwndNoTopMost, 0, 0, 0, 0, SWP_SHOWWINDOW | SWP_NOSIZE | SWP_NOMOVE);
     }
 
     public static RECT Bounds(IntPtr hwnd)
@@ -807,8 +1383,15 @@ if ($process.MainWindowHandle -eq 0) {
   throw "Process $ProcessId does not have a main window handle."
 }
 
-[ZushWindowCapture]::Prepare($process.MainWindowHandle, $Width, $Height)
-Start-Sleep -Milliseconds 700
-[ZushWindowCapture]::Capture($process.MainWindowHandle, $OutputPath)
+[ZushWindowCapture]::Prepare($process.MainWindowHandle)
+try {
+  Start-Sleep -Milliseconds 700
+  [ZushWindowCapture]::Capture($process.MainWindowHandle, $OutputPath)
+} finally {
+  [ZushWindowCapture]::ReleaseTopmost($process.MainWindowHandle)
+}
+if (-not (Test-Path $OutputPath)) {
+  throw "Capture did not create output file: $OutputPath"
+}
 `;
 }
