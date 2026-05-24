@@ -1,5 +1,26 @@
 # Changelog
 
+## [3.0.0.0] - 2026-05-24
+### Added
+- Added Smart Rename templates for common workflows like invoices, screenshots, documents, and media
+- Added a naming blocks editor with detected fields, custom formatting, separators, and reusable presets
+- Added a Statistics tab with rename activity totals and recent processing insights
+- Added local Offline AI setup and BYOK cloud provider controls inside the Windows app
+- Added broader analysis coverage for 98 supported file extensions, including audio, video, documents, spreadsheets, presentations, images, RAW files, subtitles, and text formats
+
+### Improved
+- Redesigned the Windows interface for closer parity with the latest Zush experience
+- Improved Batch Rename progress, skipped-file summaries, retry behavior, and editable suggested names
+- Improved document, PDF, video, audio, and image analysis inputs for more useful file names
+- Improved PRO checkout, activation recovery, and subscription management
+- Improved localized UI coverage across supported Store languages
+
+### Fixed
+- Fixed template restore, locked-template indicators, and naming block menu state
+- Fixed batch rename elapsed timers and progress updates during long analysis runs
+- Fixed Paddle checkout error handling before and after the checkout view loads
+
+
 ## [2.0.0] - 2026-05-11
 ### Added
 - Expanded AI analysis support to 90+ image, document, spreadsheet, subtitle, RAW, and video formats
