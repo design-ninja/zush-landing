@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.2.0] - 2026-05-24
+
+### Improved
+- Smarter file names for more document and media types
+- Templates now focus on renaming first, with Finder tags and Spotlight metadata off by default
+- Renaming can skip unused metadata work when tags or Spotlight metadata are disabled
+- More reliable free-tier limit handling and quieter recoverable warnings
+
 ## [3.1.0] - 2026-05-21
 
 ### Improved
