@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.3.0] - 2026-05-25
+
+### Improved
+- Smarter AI names for documents, audio, video, images, and design files
+- More reliable Bring Your Own Key analysis
+- Better fallback handling when an AI provider is busy or unavailable
+- Clearer usage limits, upgrade messages, and translations
+
+### Fixed
+- Fixed several batch rename edge cases
+- Fixed audio analysis routing for Bring Your Own Key users
+
 ## [3.2.0] - 2026-05-24
 
 ### Improved
