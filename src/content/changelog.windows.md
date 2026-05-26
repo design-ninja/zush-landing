@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.1.0.0] - 2026-05-26
+### Improved
+- Added broader design-file support, including PSD and Adobe Illustrator files.
+- Improved previews and AI Rename handling for SVG, images, audio, video, documents, and batch workflows.
+- Made provider errors clearer when cloud or local AI setup needs attention.
+- Refined bundled templates and Store listing text across supported languages.
+
+
 ## [3.0.0.0] - 2026-05-24
 ### Added
 - Added Smart Rename templates for common workflows like invoices, screenshots, documents, and media
