@@ -17,8 +17,8 @@ Zush offers a "🌟 PRO" upgrade that unlocks unlimited AI renames, reusable tem
 We offer free usage plus two paid PRO plans:
 
 - **Zush Free**: 50 credits included. One credit equals one rename.
-- **Zush PRO Monthly**: $8/month + VAT. Includes unlimited PRO renames, reusable templates, Naming Blocks, BYOK (Bring Your Own Key), and Offline AI mode with private local models via Ollama.
-- **Zush PRO One-Time**: $38 + VAT. Includes lifetime access to unlimited PRO renames, reusable templates, Naming Blocks, BYOK, and Offline AI mode.
+- **Zush PRO Monthly**: $8/month. Includes unlimited PRO renames, reusable templates, Naming Blocks, BYOK (Bring Your Own Key), and Offline AI mode with private local models via Ollama.
+- **Zush PRO One-Time**: $38. Includes lifetime access to unlimited PRO renames, reusable templates, Naming Blocks, BYOK, and Offline AI mode.
 
 **3.3 Usage Limits**
 The free version has usage limits for AI-powered cloud features. Paid PRO plans remove the cloud rename limit. We may still apply reasonable abuse prevention and technical safeguards to protect service reliability.

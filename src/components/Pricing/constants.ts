@@ -99,7 +99,7 @@ export const PRICING_PLANS: Plan[] = [
     differentiators: MONTHLY_DIFFERENTIATORS,
     buttonText: 'Start PRO Monthly',
     price: '$8',
-    billing: '/month + VAT',
+    billing: '/month',
     paddlePriceId: PRO_MONTHLY_PADDLE_PRICE_ID,
   },
   {
@@ -109,7 +109,7 @@ export const PRICING_PLANS: Plan[] = [
     differentiators: ONE_TIME_DIFFERENTIATORS,
     buttonText: 'Buy PRO One-Time',
     price: '$38',
-    billing: 'one-time + VAT',
+    billing: 'one-time',
     paddlePriceId: PRO_ONE_TIME_PADDLE_PRICE_ID,
   },
 ];

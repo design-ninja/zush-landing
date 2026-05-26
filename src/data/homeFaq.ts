@@ -55,7 +55,7 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'How does pricing work?',
     answer:
-      'Zush PRO has two paid plans: Monthly for $8/month + VAT, or One-Time for $38 + VAT. Both unlock unlimited PRO renames, BYOK, Offline AI mode, and all PRO features.',
+      'Zush PRO has two paid plans: Monthly for $8/month, or One-Time for $38. Both unlock unlimited PRO renames, BYOK, Offline AI mode, and all PRO features.',
   },
   {
     question: 'What is BYOK (Bring Your Own Key)?',
