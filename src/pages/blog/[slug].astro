@@ -3,7 +3,6 @@ import { Image } from 'astro:assets';
 import { render } from 'astro:content';
 import { Calendar, Glasses } from 'lucide-react';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import BackLink from '@/components/BackLink/BackLink.astro';
 import BlogBreadcrumbs from '@/components/blog/BlogBreadcrumbs.astro';
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogMarkdownH2 from '@/components/blog/BlogMarkdownH2.astro';
@@ -245,9 +244,6 @@ const breadcrumbItems = [
         </section>
       )}
 
-      <footer class={styles.BlogPost__Footer}>
-        <BackLink href='/blog' label='Back to Blog' class={styles.BlogPost__BackLink} />
-      </footer>
     </div>
   </article>
 

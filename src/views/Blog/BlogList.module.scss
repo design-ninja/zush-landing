@@ -5,20 +5,13 @@
   padding: 3.75rem 0;
   min-height: 80vh;
 
-  &_afterBreadcrumbBack {
+  &_afterBreadcrumb {
     padding-top: 2rem;
   }
 
   &__Container {
     @include container;
     max-width: 70rem;
-  }
-
-  &__BreadcrumbBack {
-    @include container;
-
-    max-width: 70rem;
-    padding-top: 0.5rem;
   }
 
   &_underHeader {
