@@ -342,13 +342,13 @@ RenameClick is a desktop application for Mac and Windows that uses local AI for 
 - Free tier limited to 30 credits/month for applying changes
 - Local AI model requires meaningful disk space and RAM (exact requirements not documented publicly)
 - Local model quality may be lower than cloud-based alternatives
-- Undo/rollback capability not confirmed in documentation
+- Undo/redo is available when Auto Flow watch is off
 - No confirmed BYOK support for arbitrary API providers beyond the built-in options
 - Camera RAW formats (CR2, NEF, ARW) not listed in their public format docs
 
 **Naming quality in testing:** Decent for common image and document types when using cloud backends. The built-in local model produced serviceable but less specific names compared to cloud-powered tools. Strong on documents with clear text content thanks to content analysis. EXIF-based naming for photos was a useful addition for photographers.
 
-**Verdict:** The privacy pick. Local AI processing is the real reason to use RenameClick — it matters for legal, medical, or any workflow where files cannot leave the machine. Pro Lifetime is $48 against Zush's $38 one-time, so you pay extra for bundled local-first processing. Worth it if your compliance story requires it.
+**Verdict:** The privacy pick. Local AI processing is the real reason to use RenameClick — it matters for legal, medical, or any workflow where files cannot leave the machine. Pro Lifetime is $48 against Zush's $38 one-time, so you pay extra for bundled local-first processing. Worth it if your compliance story requires it. For the direct head-to-head, see [Zush vs RenameClick](/blog/zush-vs-renameclick).
 
 ---
 
@@ -397,12 +397,12 @@ Riffo is a Mac app and web tool that offers AI-powered file renaming and automat
 | **Free tier** | 50 to start | 25/month | CLI: free, Desktop: 10 credits | 7-day trial (50) | 30/month | Free |
 | **Batch rename** | Yes, with preview | Yes | Yes | Yes, with preview | Yes | Yes |
 | **Auto monitor** | Yes | Yes (Magic Folders) | No | Yes (Watch Folders) | Yes (Auto Flow) | No |
-| **Rollback/undo** | Full history | Yes | No | Yes (full history) | Not confirmed | Not confirmed |
+| **Rollback/undo** | Full history | Yes | No | Yes (full history) | Yes (watch off) | Not confirmed |
 | **Image/design formats** | 41 images + 4 design formats | ~15 | ~4 (Desktop) | ~8 | ~11 | Various |
 | **Document formats** | 37, including iWork | ~10 | ~2 (Desktop) | ~5+ | ~8 | Some |
 | **Video formats** | 16 | Not central | CLI supports video | Listed | Not listed | Not documented |
 | **Custom patterns** | Templates + 145+ Naming Blocks | Yes (templates) | Yes (custom prompts) | Yes (templates + prompts) | Yes (AI instructions) | Limited |
-| **AI provider choice** | 4 providers + BYOK | Fixed | Ollama/LM Studio/OpenAI | 6 providers + BYOK | Local + Cloud (5 providers) | Fixed (cloud) |
+| **AI provider choice** | 4 providers + BYOK | Fixed | Ollama/LM Studio/OpenAI | 6 providers + BYOK | Built-in local + 5 providers | Fixed (cloud) |
 | **Language support** | 60+ | 20+ | Configurable | Multilingual | 14 | Limited |
 | **Finder integration** | Tags + Spotlight | N/A (cross-platform) | No | Tags + Comments | No | No |
 | **Pricing** | $8/mo or $38 one-time / BYOK | $9.95-99.95/mo | CLI free / Desktop $19 | $5-35/mo or BYOK $38 | Free 30/mo, $8/mo or $48 lifetime | Free |
