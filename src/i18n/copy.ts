@@ -1127,13 +1127,13 @@ const EN_COPY: LocaleCopy = {
       breadcrumbLabel: 'Zush for Mac',
       softwareName: 'Zush for Mac',
       softwareDescription:
-        'AI file renamer and batch rename tool for macOS. Rename screenshots, design files, audio, videos, PDFs, photos, iWork, and Office documents with templates, naming blocks, cloud AI, or Offline AI mode via Ollama.',
-      heroTitle: 'AI File Renamer & Batch Rename Tool for Mac',
+        'AI renamer for Mac and batch rename tool for macOS. Rename screenshots, design files, audio, videos, PDFs, photos, iWork, and Office documents with templates, naming blocks, cloud AI, or Offline AI mode via Ollama.',
+      heroTitle: 'AI Renamer for Mac',
       heroSubtitle:
-        'Batch rename screenshots, design files, audio, videos, PDFs, photos, iWork, and Office documents on macOS with AI. Use templates and naming blocks, watch folders automatically, or use Offline AI mode with private local models via Ollama.',
+        'Rename files with AI on Mac: screenshots, design files, audio, videos, PDFs, photos, iWork, and Office documents. Batch rename from Finder, watch folders automatically, or use Offline AI mode with private local models via Ollama.',
       ctaTitle: 'Try Zush free on Mac',
-      ctaSubtitle: 'Install the signed macOS app and start renaming screenshots, design files, audio, videos, PDFs, photos, iWork, and Office documents in minutes.',
-      faqDescription: 'Everything you need to know about Zush for Mac and the rest of the product.',
+      ctaSubtitle: 'Install the signed macOS AI renamer and start renaming screenshots, design files, audio, videos, PDFs, photos, iWork, and Office documents in minutes.',
+      faqDescription: 'Everything you need to know about using Zush as an AI renamer for Mac.',
       features: [
         'AI-powered renaming for screenshots, design files, audio, videos, PDFs, photos, iWork, and Office documents',
         'Folder monitoring with file-type exclusions',
@@ -1148,6 +1148,9 @@ const EN_COPY: LocaleCopy = {
         'Offline AI mode via Ollama',
       ],
       faqs: [
+        { question: 'Can I rename files with AI on Mac?', answer: 'Yes. Zush analyzes supported Mac files by content and suggests readable names before you apply a batch rename. It works with screenshots, PDFs, photos, design files, audio, videos, iWork files, and Office documents.' },
+        { question: 'Is Zush an AI renamer for Mac or a Finder script?', answer: 'Zush is a native macOS app, not a Finder-only script. It gives you drag-and-drop batch renaming, watched folders, editable AI suggestions, custom naming patterns, metadata tags, and one-click undo.' },
+        { question: 'How is Zush different from Apple Intelligence Shortcuts?', answer: 'Apple Intelligence and Shortcuts can be useful for small custom workflows. Zush is built for repeated file cleanup: mixed file types, folder monitoring, review before apply, naming templates, Offline AI mode, and rename history.' },
         { question: 'Does Zush work on Apple Silicon?', answer: 'Yes. Zush runs natively on Apple Silicon and Intel Macs running macOS 15 or newer.' },
         { question: 'Is the app notarized by Apple?', answer: 'Yes. The .dmg is code-signed and notarized, so Gatekeeper opens it normally on supported macOS versions.' },
         { question: 'Can I use Zush offline?', answer: 'Yes. PRO users can enable Offline AI mode with private local models via Ollama.' },

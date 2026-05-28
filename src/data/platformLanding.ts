@@ -29,14 +29,14 @@ export const PLATFORM_LANDING_CONTENT: Record<DownloadOS, PlatformLandingContent
     breadcrumbLabel: 'Zush for Mac',
     softwareName: 'Zush for Mac',
     softwareDescription:
-      'AI-powered file renamer for macOS. Rename screenshots, design files, audio, videos, PDFs, photos, iWork and Office documents with cloud AI, templates, Naming Blocks, or Offline AI mode via Ollama. Native Apple Silicon and Intel support.',
+      'AI renamer for Mac and batch rename tool for macOS. Rename screenshots, design files, audio, videos, PDFs, photos, iWork and Office documents with cloud AI, templates, Naming Blocks, or Offline AI mode via Ollama. Native Apple Silicon and Intel support.',
     operatingSystem: 'macOS 15.0+',
     downloadUrl: DOWNLOAD_URL,
-    heroTitle: 'AI File Renamer for Mac',
+    heroTitle: 'AI Renamer for Mac',
     heroSubtitle:
-      'Rename screenshots, design files, videos, PDFs, photos, iWork, and Office documents on macOS with AI. Use fast cloud models or Offline AI mode with private local models via Ollama.',
+      'Rename files with AI on Mac: screenshots, design files, videos, PDFs, photos, iWork, and Office documents. Use fast cloud models or Offline AI mode with private local models via Ollama.',
     ctaSubtitle:
-      'Install the signed macOS app and start renaming screenshots, design files, videos, PDFs, photos, iWork, and Office documents in minutes.',
+      'Install the signed macOS AI renamer and start renaming screenshots, design files, videos, PDFs, photos, iWork, and Office documents in minutes.',
     features: [
       'AI-powered renaming for screenshots, design files, videos, PDFs, photos, iWork, and Office documents',
       'Folder monitoring with file-type exclusions',

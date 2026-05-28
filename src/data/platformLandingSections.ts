@@ -21,12 +21,12 @@ type PlatformOverrides = Record<
 
 const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
   mac: {
-    featuresTitle: 'How Zush works on macOS',
+    featuresTitle: 'How this AI renamer works on Mac',
     featuresDescription:
-      'Mac-first renaming workflows for Finder, Spotlight, Downloads, screenshots, design files, iWork, audio, videos, and local AI.',
+      'Mac-first AI renaming workflows for Finder, Spotlight, Downloads, screenshots, design files, iWork, audio, videos, and local AI.',
     featureCards: {
       aiAnalysis: {
-        title: 'AI analysis for Mac files',
+        title: 'Rename files with AI on Mac',
         description:
           'Analyze screenshots, Figma, Sketch, Illustrator, PSD, audio, videos, PDFs, HEIC and RAW photos, Office docs, iWork files, and exports without leaving a native macOS workflow.',
       },
@@ -78,7 +78,7 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
       historyNewNames: ['Scanner Receipt.pdf', 'Website Proposal.docx'],
       promptExample: 'Use short Finder-friendly names, keep client names first, and add matching tags.',
     },
-    useCasesTitle: 'Mac workflows Zush cleans up',
+    useCasesTitle: 'Mac file renaming workflows Zush cleans up',
     useCasesDescription:
       'The same app, tuned for the messy folders Mac users touch every day.',
     useCases: {

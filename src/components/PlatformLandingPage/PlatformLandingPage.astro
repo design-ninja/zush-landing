@@ -25,7 +25,7 @@ import { getPlatformFaqCopy } from '@/i18n/platformFaqs';
 import { getPlatformSpecificsCopy } from '@/i18n/platformSpecifics';
 import { getLocalizedPlatformSpecificsContent } from '@/i18n/platformSpecificsContent';
 import { getLocalizedSeoForRoute } from '@/i18n/seo';
-import { APP_CONFIG } from '@/constants';
+import { APP_CONFIG, APP_STORE_URL, WINDOWS_STORE_URL } from '@/constants';
 
 interface Props {
   platform: Extract<DownloadOS, 'mac' | 'windows'>;
@@ -62,14 +62,33 @@ const processorSpec = specifics.systemRequirements.rows.find((row) => row.key ==
 
 const macVersion = parseLatestVersion(macChangelogSource) ?? undefined;
 const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
+const platformKeywords = platform === 'mac'
+  ? [
+      'AI renamer for Mac',
+      'AI file renamer for Mac',
+      'rename files with AI on Mac',
+      'Mac batch rename tool',
+      'macOS file renamer',
+      'offline AI renamer for Mac',
+    ]
+  : [
+      'AI renamer for Windows',
+      'AI file renamer for Windows',
+      'rename files with AI on Windows',
+      'Windows batch rename tool',
+      'Microsoft Store file renamer',
+      'offline AI renamer for Windows',
+    ];
 
 const softwareJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
   '@id': `${SITE_ORIGIN}${pagePath}#software`,
   name: localizedPage.softwareName,
+  alternateName: platformKeywords,
   url: `${SITE_ORIGIN}${pagePath}`,
   description: localizedPage.softwareDescription,
+  keywords: platformKeywords.join(', '),
   applicationCategory: 'UtilitiesApplication',
   applicationSubCategory: 'File Management',
   operatingSystem: page.operatingSystem,
@@ -79,6 +98,7 @@ const softwareJsonLd = {
   softwareVersion: APP_CONFIG.app_version,
   downloadUrl: page.downloadUrl,
   ...(platform === 'windows' ? { installUrl: page.installUrl } : {}),
+  sameAs: [platform === 'mac' ? APP_STORE_URL : WINDOWS_STORE_URL],
   screenshot:
     platform === 'windows'
       ? `${SITE_ORIGIN}/images/showcase/windows-original/01-ai-rename-dropzone.webp`
@@ -108,6 +128,29 @@ const softwareJsonLd = {
   ],
   featureList: localizedPage.features,
 };
+
+const howToJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  '@id': `${SITE_ORIGIN}${pagePath}#how-to`,
+  name: `How to rename files with AI on ${platformLabel}`,
+  description:
+    platform === 'mac'
+      ? 'Use Zush to rename files with AI on Mac: open the app, drop Finder files, review suggested names, and enable watched folders for ongoing cleanup.'
+      : 'Use Zush to rename files with AI on Windows: open the app, drop File Explorer files, review suggested names, and enable watched folders for ongoing cleanup.',
+  totalTime: 'PT1M',
+  tool: {
+    '@type': 'HowToTool',
+    name: 'Zush',
+    url: `${SITE_ORIGIN}${pagePath}`,
+  },
+  step: specifics.quickstart.map((step, index) => ({
+    '@type': 'HowToStep',
+    position: index + 1,
+    name: step.title,
+    text: step.detail,
+  })),
+};
 ---
 
 <BaseLayout
@@ -119,6 +162,7 @@ const softwareJsonLd = {
   disableTopOffset
   jsonLd={[
     softwareJsonLd,
+    howToJsonLd,
     buildFeatureBreadcrumbJsonLd(localizedPage.breadcrumbLabel, pagePath),
     buildFAQPageJsonLd(faqItems),
   ]}
