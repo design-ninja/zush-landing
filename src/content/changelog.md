@@ -1,5 +1,21 @@
 # Changelog
 
+## [3.4.0] - 2026-05-29
+
+### Added
+- Choose a specific model for Bring Your Own Key providers
+
+### Improved
+- Smarter file names for documents, media, images, and design files
+- Faster batch rename preparation
+- More reliable Offline AI and Bring Your Own Key settings
+- Free credits are now counted when files are actually renamed
+
+### Fixed
+- Fixed rename credit and batch rename edge cases
+- Fixed provider settings getting out of sync
+- Fixed several thumbnail and preview reliability issues
+
 ## [3.3.0] - 2026-05-25
 
 ### Improved
