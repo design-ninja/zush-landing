@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.4.1] - 2026-05-30
+
+### Improved
+- Faster first launch with fewer setup prompts
+- More reliable AI fallback during busy usage periods
+- More reliable audio and iWork document analysis
+
+### Fixed
+- Fixed unnecessary Keychain prompts during startup
+- Fixed several batch rename edge cases
+
 ## [3.4.0] - 2026-05-29
 
 ### Added
