@@ -9,6 +9,7 @@ interface PaddleCheckoutOptions {
   };
   customData?: {
     device_id?: string;
+    source?: string;
   };
 }
 
@@ -90,7 +91,7 @@ function getPaddleConfig() {
   const paddleEnv =
     import.meta.env.PUBLIC_PADDLE_ENVIRONMENT ||
     import.meta.env.VITE_PADDLE_ENVIRONMENT ||
-    "sandbox";
+    (import.meta.env.DEV ? "sandbox" : "production");
   const paddleToken =
     import.meta.env.PUBLIC_PADDLE_TOKEN || import.meta.env.VITE_PADDLE_TOKEN;
 
@@ -300,6 +301,67 @@ async function createCheckoutSession(
   }
 }
 
+function buildCheckoutSettings(): PaddleCheckoutOptions["settings"] {
+  const paddleLocale = getCurrentPaddleLocale();
+  return paddleLocale ? { locale: paddleLocale } : undefined;
+}
+
+async function beforeCheckoutOpen(
+  options?: OpenPaddleCheckoutOptions,
+): Promise<void> {
+  if (!options?.onCheckoutOpen) return;
+
+  await options.onCheckoutOpen();
+  await waitForBrowserPaint();
+}
+
+async function openDirectPaddleCheckout(
+  deviceId: string | null | undefined,
+  priceId: string,
+  options?: OpenPaddleCheckoutOptions,
+): Promise<boolean> {
+  const ready = await ensurePaddleReady();
+  if (!ready || !window.Paddle) {
+    console.error("[Paddle] Paddle.js not ready");
+    return false;
+  }
+
+  activeCheckoutSession = null;
+  sessionStorage.removeItem("zush_checkout_session");
+
+  if (deviceId) {
+    sessionStorage.setItem("zush_checkout_device_id", deviceId);
+  } else {
+    sessionStorage.removeItem("zush_checkout_device_id");
+  }
+
+  const checkoutOptions: PaddleCheckoutOptions = {
+    items: [{ priceId, quantity: 1 }],
+    customData: {
+      source: deviceId ? "app" : "landing",
+    },
+  };
+  if (deviceId) {
+    checkoutOptions.customData = {
+      ...checkoutOptions.customData,
+      device_id: deviceId,
+    };
+  }
+
+  const settings = buildCheckoutSettings();
+  if (settings) {
+    checkoutOptions.settings = settings;
+  }
+
+  console.warn(
+    "[Paddle] Opening direct checkout without server transaction:",
+    { deviceId: Boolean(deviceId), priceId },
+  );
+  await beforeCheckoutOpen(options);
+  window.Paddle.Checkout.open(checkoutOptions);
+  return true;
+}
+
 export async function openPaddleCheckout(
   deviceId?: string | null,
   priceId?: string | null,
@@ -318,7 +380,7 @@ export async function openPaddleCheckout(
   const checkoutSession = await checkoutSessionPromise;
   if (!checkoutSession) {
     console.error("[Paddle] Checkout session was not created");
-    return false;
+    return openDirectPaddleCheckout(deviceId, priceId, options);
   }
 
   activeCheckoutSession = checkoutSession.checkout_session;
@@ -347,16 +409,13 @@ export async function openPaddleCheckout(
   const checkoutOptions: PaddleCheckoutOptions = {
     transactionId: checkoutSession.transaction_id,
   };
-  const paddleLocale = getCurrentPaddleLocale();
-  if (paddleLocale) {
-    checkoutOptions.settings = { locale: paddleLocale };
+  const settings = buildCheckoutSettings();
+  if (settings) {
+    checkoutOptions.settings = settings;
   }
 
   console.log("[Paddle] Opening checkout with options:", checkoutOptions);
-  if (options?.onCheckoutOpen) {
-    await options.onCheckoutOpen();
-    await waitForBrowserPaint();
-  }
+  await beforeCheckoutOpen(options);
   window.Paddle.Checkout.open(checkoutOptions);
   return true;
 }

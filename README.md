@@ -32,6 +32,21 @@ pnpm check:astro  # Astro + TS diagnostics
 pnpm check:seo    # Full quality gates (astro + payments + build + html + links)
 ```
 
+### Paddle build safety
+
+`pnpm build` runs `pnpm check:paddle-env` before Astro. Production builds must
+resolve Paddle to `production`, use a `live_` client token, and keep the expected
+production price IDs. This catches `.env.local` sandbox values before they are
+compiled into the public assets.
+
+For a deliberate local sandbox build:
+
+```bash
+ALLOW_SANDBOX_PADDLE_BUILD=1 pnpm build
+# or, for the full local gate:
+ALLOW_SANDBOX_PADDLE_BUILD=1 pnpm check:seo
+```
+
 ## CI and Quality Gates
 
 GitHub Actions workflow: `.github/workflows/quality-gates.yml`

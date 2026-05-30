@@ -58,8 +58,28 @@ function verifyPaddleCheckout() {
   );
   assertMatch(
     src,
-    /settings\s*=\s*\{\s*locale:\s*paddleLocale\s*\}/,
+    /return paddleLocale \? \{\s*locale:\s*paddleLocale\s*\} : undefined/,
     "Checkout no longer passes the current page locale to Paddle",
+  );
+  assertMatch(
+    src,
+    /import\.meta\.env\.DEV \? ["']sandbox["'] : ["']production["']/,
+    "Production Paddle checkout now defaults back to sandbox",
+  );
+  assertMatch(
+    src,
+    /openDirectPaddleCheckout/,
+    "Checkout no longer has a direct Paddle fallback when server checkout fails",
+  );
+  assertMatch(
+    src,
+    /items:\s*\[\{\s*priceId,\s*quantity:\s*1\s*\}\]/,
+    "Direct Paddle fallback no longer opens the selected price",
+  );
+  assertMatch(
+    src,
+    /return openDirectPaddleCheckout\(deviceId,\s*priceId,\s*options\)/,
+    "Checkout no longer falls back to direct Paddle checkout",
   );
   assertMatch(
     src,
