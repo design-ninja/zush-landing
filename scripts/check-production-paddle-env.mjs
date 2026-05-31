@@ -12,6 +12,8 @@ const EXPECTED_ONE_TIME_PRICE_ID = "pri_01ke0rya71hzwhy8y1wdt76v1y";
 
 const ENV_FILES = [
   ".env",
+  // Vite always loads this file. Keep it in the guard so an accidental
+  // recreated sandbox .env.local still fails production builds.
   ".env.local",
   `.env.${MODE}`,
   `.env.${MODE}.local`,

@@ -20,12 +20,14 @@ Marketing website for [Zush](https://zushapp.com), built with Astro and React is
 ```bash
 pnpm install
 pnpm dev
+pnpm dev:sandbox # Explicit Paddle sandbox mode from .env.sandbox
 ```
 
 Useful commands:
 
 ```bash
 pnpm build        # Production build
+pnpm build:sandbox # Local sandbox build
 pnpm preview      # Preview built site
 pnpm lint         # ESLint
 pnpm check:astro  # Astro + TS diagnostics
@@ -36,15 +38,19 @@ pnpm check:seo    # Full quality gates (astro + payments + build + html + links)
 
 `pnpm build` runs `pnpm check:paddle-env` before Astro. Production builds must
 resolve Paddle to `production`, use a `live_` client token, and keep the expected
-production price IDs. This catches `.env.local` sandbox values before they are
+production price IDs. This catches accidental `.env.local` sandbox values before they are
 compiled into the public assets.
 
-For a deliberate local sandbox build:
+Sandbox Paddle values live in `.env.sandbox`. Vite/Astro only load that file in
+explicit sandbox mode, unlike `.env.local`, which Vite loads for every mode.
+
+For deliberate local sandbox runs:
 
 ```bash
-ALLOW_SANDBOX_PADDLE_BUILD=1 pnpm build
+pnpm dev:sandbox
+pnpm build:sandbox
 # or, for the full local gate:
-ALLOW_SANDBOX_PADDLE_BUILD=1 pnpm check:seo
+pnpm check:seo:sandbox
 ```
 
 ## CI and Quality Gates

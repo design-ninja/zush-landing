@@ -22,7 +22,7 @@ If `../zush-assets/#test files/Files` is unavailable, the script falls back to `
 
 The BYOK and Offline AI screenshots use real working inputs. For BYOK, the script reads a Gemini or OpenAI key from env and passes it only to the isolated Debug screenshot process. Gemini is preferred when both are available:
 
-The script also loads `.env`, `env`, and `.env.local` from both the `zush-windows` and `zush-landing` project roots before resolving these variables.
+The script also loads `.env`, `env`, and `.env.local` from the `zush-windows` project root, plus `.env`, `env`, and `.env.sandbox` from the `zush-landing` project root before resolving these variables.
 
 ```powershell
 $env:GEMINI_API_KEY = "..."

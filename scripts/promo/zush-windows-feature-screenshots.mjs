@@ -89,7 +89,7 @@ loadEnvFiles([
   path.join(appRepo, '.env.local'),
   path.join(repoRoot, '.env'),
   path.join(repoRoot, 'env'),
-  path.join(repoRoot, '.env.local'),
+  path.join(repoRoot, '.env.sandbox'),
 ]);
 const defaultLandingOutputDir = path.join(repoRoot, 'public/images/showcase/windows');
 const defaultStoreOutputDir = path.resolve(repoRoot, '../zush-assets/Microsoft Store/Windows');
