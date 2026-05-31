@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.4.2] - 2026-05-31
+
+### Improved
+- More reliable folder access during batch rename
+- Smoother first-run data consent flow
+
+### Fixed
+- Fixed file access prompts while renaming selected files
+- Fixed unwanted Keychain prompts for existing users
+- Fixed the welcome sound on first launch
+
 ## [3.4.1] - 2026-05-30
 
 ### Improved
