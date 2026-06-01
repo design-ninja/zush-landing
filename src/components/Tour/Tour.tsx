@@ -5,6 +5,7 @@ import {
   MACOS_SHOWCASE_SCREENSHOTS,
   WINDOWS_SHOWCASE_SCREENSHOTS,
   resolveShowcaseScreenshotMedia,
+  type ShowcaseScreenshotAsset,
   type ShowcaseTheme,
 } from '@/data/showcaseMedia';
 import { useOS } from '@/hooks/useOS';
@@ -33,7 +34,17 @@ const defaultCopy: TourCopy = {
 };
 
 const SLIDE_DURATION_MS = 6500;
+const POSTER_FADE_MS = 480;
 const RESPONSIVE_IMAGE_WIDTHS = [640, 960, 1280, 1600, 1920, 2560] as const;
+const RESPONSIVE_IMAGE_SIZES = '(max-width: 768px) calc(100vw - 40px), min(1024px, calc(100vw - 64px))';
+
+interface ShowcaseLayer {
+  key: string;
+  index: number;
+  theme: ShowcaseTheme;
+  screenshot: ShowcaseScreenshotAsset;
+  src: string;
+}
 
 const getDocumentTheme = (): ShowcaseTheme => {
   if (typeof document === 'undefined') {
@@ -53,27 +64,71 @@ const getResponsiveSrcSet = (src: string) =>
     .map((width) => `${getResponsiveImagePath(src, width)} ${width}w`)
     .join(', ');
 
+const getShowcaseLayer = (
+  items: ShowcaseScreenshotAsset[],
+  index: number,
+  theme: ShowcaseTheme,
+): ShowcaseLayer => {
+  const screenshot = items[index] ?? items[0];
+  const src = resolveShowcaseScreenshotMedia(screenshot, theme);
+
+  return {
+    key: `${screenshot.id}-${theme}-${src}`,
+    index,
+    theme,
+    screenshot,
+    src,
+  };
+};
+
 const Tour = ({ forceOS, copy = defaultCopy }: TourProps) => {
   const { downloadOS: detectedOS } = useOS();
   const downloadOS = forceOS ?? detectedOS;
   const isWindowsShowcase = downloadOS === 'windows';
+  const showcaseItems = isWindowsShowcase
+    ? WINDOWS_SHOWCASE_SCREENSHOTS
+    : MACOS_SHOWCASE_SCREENSHOTS;
   const [activeFeature, setActiveFeature] = useState(0);
   const [theme, setTheme] = useState<ShowcaseTheme>('light');
   const [isCarouselPaused, setIsCarouselPaused] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [visibleLayer, setVisibleLayer] = useState<ShowcaseLayer>(() =>
+    getShowcaseLayer(showcaseItems, 0, 'light'),
+  );
+  const [leavingLayer, setLeavingLayer] = useState<ShowcaseLayer | null>(null);
   const advanceTimerRef = useRef<number | null>(null);
+  const fadeTimerRef = useRef<number | null>(null);
+  const imageCacheRef = useRef<Set<string>>(new Set());
   const slideStartedAtRef = useRef<number>(0);
   const slideRemainingRef = useRef<number>(SLIDE_DURATION_MS);
-  const showcaseItems = isWindowsShowcase
-    ? WINDOWS_SHOWCASE_SCREENSHOTS
-    : MACOS_SHOWCASE_SCREENSHOTS;
   const activeScreenshot = showcaseItems[activeFeature] ?? showcaseItems[0];
   const activeItem = activeScreenshot;
-  const activeSrc = resolveShowcaseScreenshotMedia(activeScreenshot, theme);
   const localizedActiveItem = {
     ...activeItem,
     ...copy.items[activeItem.id],
   };
+
+  const preloadLayer = useCallback((layer: ShowcaseLayer) => {
+    if (typeof window === 'undefined' || imageCacheRef.current.has(layer.key)) {
+      return Promise.resolve();
+    }
+
+    return new Promise<void>((resolve) => {
+      const image = new Image();
+      image.decoding = 'async';
+      image.sizes = RESPONSIVE_IMAGE_SIZES;
+      image.srcset = getResponsiveSrcSet(layer.src);
+      image.src = getResponsiveImagePath(layer.src, 1280);
+
+      const finish = () => {
+        imageCacheRef.current.add(layer.key);
+        resolve();
+      };
+
+      image.onload = finish;
+      image.onerror = finish;
+    });
+  }, []);
 
   useEffect(() => {
     if (activeFeature >= showcaseItems.length) {
@@ -116,6 +171,63 @@ const Tour = ({ forceOS, copy = defaultCopy }: TourProps) => {
     motionQuery.addEventListener('change', sync);
     return () => motionQuery.removeEventListener('change', sync);
   }, []);
+
+  useEffect(() => {
+    return () => {
+      if (fadeTimerRef.current != null) {
+        window.clearTimeout(fadeTimerRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const targetLayer = getShowcaseLayer(showcaseItems, activeFeature, theme);
+
+    if (targetLayer.key === visibleLayer.key) {
+      return;
+    }
+
+    let isCancelled = false;
+
+    const showLayer = () => {
+      if (isCancelled) {
+        return;
+      }
+
+      if (fadeTimerRef.current != null) {
+        window.clearTimeout(fadeTimerRef.current);
+      }
+
+      setLeavingLayer(prefersReducedMotion ? null : visibleLayer);
+      setVisibleLayer(targetLayer);
+
+      if (!prefersReducedMotion) {
+        fadeTimerRef.current = window.setTimeout(() => {
+          setLeavingLayer(null);
+          fadeTimerRef.current = null;
+        }, POSTER_FADE_MS);
+      }
+    };
+
+    if (prefersReducedMotion) {
+      showLayer();
+    } else {
+      void preloadLayer(targetLayer).then(showLayer);
+    }
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [activeFeature, prefersReducedMotion, preloadLayer, showcaseItems, theme, visibleLayer]);
+
+  useEffect(() => {
+    if (prefersReducedMotion || showcaseItems.length <= 1) {
+      return;
+    }
+
+    const nextIndex = (visibleLayer.index + 1) % showcaseItems.length;
+    void preloadLayer(getShowcaseLayer(showcaseItems, nextIndex, theme));
+  }, [prefersReducedMotion, preloadLayer, showcaseItems, theme, visibleLayer.index]);
 
   const clearAdvanceTimer = useCallback(() => {
     if (advanceTimerRef.current != null) {
@@ -189,18 +301,31 @@ const Tour = ({ forceOS, copy = defaultCopy }: TourProps) => {
         </div>
 
         <div className={styles.Tour__ScreenshotWrapper}>
-          <img
-            key={`${activeScreenshot.id}-${theme}`}
-            src={getResponsiveImagePath(activeSrc, 1280)}
-            srcSet={getResponsiveSrcSet(activeSrc)}
-            sizes='(max-width: 768px) calc(100vw - 40px), min(1024px, calc(100vw - 64px))'
-            alt={copy.items[activeScreenshot.id]?.alt ?? activeScreenshot.alt}
-            className={`${styles.Tour__Poster} ${styles.Tour__Poster_active}`}
-            width={1280}
-            height={720}
-            loading='lazy'
-            decoding='async'
-          />
+          {[leavingLayer, visibleLayer].map((layer) => {
+            if (!layer) {
+              return null;
+            }
+
+            const isVisible = layer.key === visibleLayer.key;
+
+            return (
+              <img
+                key={layer.key}
+                src={getResponsiveImagePath(layer.src, 1280)}
+                srcSet={getResponsiveSrcSet(layer.src)}
+                sizes={RESPONSIVE_IMAGE_SIZES}
+                alt={isVisible ? copy.items[layer.screenshot.id]?.alt ?? layer.screenshot.alt : ''}
+                aria-hidden={isVisible ? undefined : 'true'}
+                className={`${styles.Tour__Poster} ${
+                  isVisible ? styles.Tour__Poster_active : styles.Tour__Poster_leaving
+                }`}
+                width={1280}
+                height={720}
+                loading='lazy'
+                decoding='async'
+              />
+            );
+          })}
         </div>
         <Text
           as='p'
