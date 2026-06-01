@@ -73,7 +73,7 @@ const Hero = ({
     if (!title) {
       return (
         <>
-          <span className={styles.Hero__TitleAccent}>AI File Renamer</span>
+          <span className={styles.Hero__TitleAccent}>File Renamer</span>
           {" "}
           <br />
           for Mac & Windows
@@ -121,7 +121,7 @@ const Hero = ({
           </Heading>
           <Text size="lg" color="subtle" className={styles.Hero__Subtitle}>
             {subtitle ??
-              "AI batch rename for Mac & Windows. Rename screenshots, PDFs, design files, photos, audio, video, iWork and Office documents by file content. Watch folders, save reusable templates, undo any change."}
+              "Batch rename and bulk rename files by content with AI: screenshots, PDFs, photos, videos, audio, design files, iWork and Office documents. Watch folders, reuse templates, and undo any rename."}
           </Text>
 
           <div className={styles.Hero__Buttons}>

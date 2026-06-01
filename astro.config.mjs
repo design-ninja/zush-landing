@@ -10,7 +10,6 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'never',
   redirects: {
-    '/bulk-rename-files': { status: 301, destination: '/batch-rename-files' },
     '/download/mac': { status: 301, destination: '/mac' },
     '/download/windows': { status: 301, destination: '/windows' },
   },

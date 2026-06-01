@@ -11,7 +11,22 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'What is Zush?',
     answer:
-      'Zush is an intelligent desktop application for Mac and Windows that automates the tedious task of renaming files. Using advanced AI, templates, and 145+ Naming Blocks, it analyzes images, design files, audio, videos, and supported documents, including PDFs and iWork files, to generate descriptive, meaningful filenames and metadata.',
+      'Zush is a file renamer for Mac and Windows that automates the tedious task of renaming files. Using advanced AI, templates, and 145+ Naming Blocks, it analyzes images, design files, audio, videos, and supported documents, including PDFs and iWork files, to generate descriptive, meaningful filenames and metadata.',
+  },
+  {
+    question: 'Is Zush a file renamer, batch rename tool, or bulk rename tool?',
+    answer:
+      'Zush is all three. It works as a file renamer for individual files, a batch rename tool for selected folders, and a bulk rename workflow for larger libraries where every file needs a different content-aware name.',
+  },
+  {
+    question: 'How is AI file renaming different from Bulk Rename Utility or Finder?',
+    answer:
+      'Bulk Rename Utility, Finder, and File Explorer are best when the same pattern should be applied to every file. Zush is built for content-aware renaming: it analyzes each screenshot, photo, PDF, document, design file, audio file, or video and suggests a unique descriptive name before you apply the batch.',
+  },
+  {
+    question: 'Can Zush rename files based on content?',
+    answer:
+      'Yes. Zush can rename files based on visual content, extracted document text, PDF context, design previews, audio metadata or transcript context, sampled video frames, and file metadata, depending on the format.',
   },
   {
     question: 'What file formats are supported?',

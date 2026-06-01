@@ -14,15 +14,15 @@ interface Props {
 
 const {
   title = 'New to Zush?',
-  description = 'Zush is an AI file renamer for Mac and Windows. It gives screenshots, PDFs, photos, design files, audio, videos, iWork, and Office documents readable names by content, then keeps folders clean with templates and folder monitoring.',
+  description = 'Zush is a file renamer, AI batch rename tool, and bulk rename workflow for Mac and Windows. It gives screenshots, PDFs, photos, design files, audio, videos, iWork, and Office documents readable names by content, then keeps folders clean with templates and folder monitoring.',
   links = [
-    { href: '/', label: 'How Zush works' },
+    { href: '/batch-rename-tool', label: 'Batch rename tool' },
+    { href: '/file-renamer', label: 'File renamer' },
+    { href: '/bulk-rename-files', label: 'Bulk rename files' },
     { href: '/mac', label: 'Mac app' },
     { href: '/windows', label: 'Windows app' },
-    { href: '/rename-screenshots-with-ai', label: 'Screenshots' },
     { href: '/rename-pdf-with-ai', label: 'PDFs' },
     { href: '/rename-photos-with-ai', label: 'Photos' },
-    { href: '/rename-documents-with-ai', label: 'Documents' },
   ],
 } = Astro.props;
 ---

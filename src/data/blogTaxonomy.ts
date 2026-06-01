@@ -106,10 +106,10 @@ export const BLOG_PUBLIC_TAGS: Record<BlogPublicTagSlug, BlogPublicTagMeta> = {
     slug: 'tool-comparisons',
     label: 'Tool Comparisons',
     description:
-      'Side-by-side comparisons of AI file renamers across Mac, Windows, and cross-platform workflows',
-    seoTitle: 'AI File Renamer Comparisons & Reviews — Zush Blog',
+      'Side-by-side comparisons of file renamers, AI batch rename tools, and bulk rename workflows across Mac, Windows, and cross-platform setups',
+    seoTitle: 'File Renamer Comparisons & Reviews - Zush Blog',
     seoDescription:
-      'Compare AI file renamers across Mac, Windows, pricing, workflow fit, and mixed-file support.',
+      'Compare file renamers, AI batch rename tools, and bulk rename workflows across Mac, Windows, pricing, workflow fit, and mixed-file support.',
   },
   'file-naming': {
     slug: 'file-naming',

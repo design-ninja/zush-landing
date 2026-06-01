@@ -21,12 +21,12 @@ type PlatformOverrides = Record<
 
 const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
   mac: {
-    featuresTitle: 'How this AI renamer works on Mac',
+    featuresTitle: 'How this file renamer works on Mac',
     featuresDescription:
-      'Mac-first AI renaming workflows for Finder, Spotlight, Downloads, screenshots, design files, iWork, audio, videos, and local AI.',
+      'Mac-first file renaming workflows for Finder, Spotlight, Downloads, screenshots, design files, iWork, audio, videos, batch rename, and local AI.',
     featureCards: {
       aiAnalysis: {
-        title: 'Rename files with AI on Mac',
+        title: 'Batch rename files with AI on Mac',
         description:
           'Analyze screenshots, Figma, Sketch, Illustrator, PSD, audio, videos, PDFs, HEIC and RAW photos, Office docs, iWork files, and exports without leaving a native macOS workflow.',
       },
@@ -36,7 +36,7 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
           'Monitor ~/Downloads, Desktop, or a screenshot folder so selected file types get readable names as they arrive.',
       },
       batchRename: {
-        title: 'Batch rename from Finder',
+        title: 'Bulk rename from Finder',
         description:
           'Drag files or folders from Finder into Zush, review every suggested name, then apply the rename in place.',
       },
@@ -117,14 +117,14 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
     },
   },
   windows: {
-    featuresTitle: 'How Zush works on Windows',
+    featuresTitle: 'How this file renamer works on Windows',
     featuresDescription:
-      'Windows-first cleanup for File Explorer, Downloads, screenshots, design files, iWork, videos, Microsoft Store installs, and local AI.',
+      'Windows 11 and Windows 10 bulk rename workflows for File Explorer, Downloads, screenshots, design files, iWork, videos, Microsoft Store installs, and local AI.',
     featureCards: {
       aiAnalysis: {
-        title: 'AI analysis for Windows files',
+        title: 'Bulk rename files on Windows 11 with AI',
         description:
-          'Analyze screenshots, design files, audio, videos, PDFs, photos, Office docs, iWork files, and exports from ordinary Windows folders.',
+          'Analyze screenshots, design files, audio, videos, PDFs, photos, Office docs, iWork files, and exports from ordinary Windows 11 or Windows 10 folders.',
       },
       foldersMonitoring: {
         title: 'Watch Downloads and Screenshots',
@@ -132,7 +132,7 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
           'Monitor Downloads, Pictures\\Screenshots, or work folders so selected file types get useful names automatically.',
       },
       batchRename: {
-        title: 'Batch rename from File Explorer',
+        title: 'Windows batch rename tool',
         description:
           'Drag mixed files from File Explorer into Zush, review the suggestions, then apply every rename in one pass.',
       },
@@ -174,7 +174,7 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
       historyNewNames: ['Medical Lab Results.pdf', 'Apartment Lease 2026.pdf'],
       promptExample: 'Use clear Windows-safe names, keep dates readable, and avoid characters that break sync.',
     },
-    useCasesTitle: 'Windows folders Zush cleans up',
+    useCasesTitle: 'Windows bulk rename workflows Zush cleans up',
     useCasesDescription:
       'Practical cleanup for the file piles that build up in File Explorer.',
     useCases: {
