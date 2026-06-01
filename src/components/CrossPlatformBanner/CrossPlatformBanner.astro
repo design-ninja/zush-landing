@@ -25,7 +25,7 @@ const hasTitleAccent = titleParts.length > 1;
       <span class={styles.CrossPlatformBanner__Eyebrow}>{copy.eyebrow}</span>
       <Heading as='h2' className={styles.CrossPlatformBanner__Title}>
         {hasTitleAccent ? titleParts[0] : copy.title}
-        {hasTitleAccent && <span style="color: var(--secondary)">Zush</span>}
+        {hasTitleAccent && <span class="brand-accent-text">Zush</span>}
         {hasTitleAccent && titleParts.slice(1).join('Zush')}
       </Heading>
       <Text as='p' color='subtle' className={styles.CrossPlatformBanner__Description}>

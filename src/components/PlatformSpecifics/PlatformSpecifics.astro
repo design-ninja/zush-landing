@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import {
   Cpu,
   Download,
@@ -228,18 +229,15 @@ const getStoreAppUrl = (kind: string) => {
                       <span class={styles.PreviewLaunch__WinTitle}>Zush — {launchPlatformLabel}</span>
                     </div>
                     <div class={styles.PreviewLaunch__Body}>
-                      <picture>
-                        <source srcset='/logo-80.webp' type='image/webp' />
-                        <img
-                          src='/logo-80.png'
-                          alt=''
-                          class={styles.PreviewLaunch__AppIcon}
-                          width='32'
-                          height='32'
-                          loading='lazy'
-                          decoding='async'
-                        />
-                      </picture>
+                      <Image
+                        src='/logo-80.webp'
+                        alt=''
+                        class={styles.PreviewLaunch__AppIcon}
+                        width={32}
+                        height={32}
+                        loading='lazy'
+                        decoding='async'
+                      />
                       <div class={styles.PreviewLaunch__Lines}>
                         <span class={styles.PreviewLaunch__Line} data-w='wide'></span>
                         <span class={styles.PreviewLaunch__Line} data-w='medium'></span>
@@ -362,13 +360,13 @@ const getStoreAppUrl = (kind: string) => {
             <article class={styles.ScenarioCard}>
               <div class={styles.FileItem}>
                 {scenario.image ? (
-                  <img
+                  <Image
                     class={styles.FileItem__Image}
                     src={scenario.image}
                     alt=''
                     role='presentation'
-                    width='64'
-                    height='64'
+                    width={64}
+                    height={64}
                     loading='lazy'
                     decoding='async'
                   />

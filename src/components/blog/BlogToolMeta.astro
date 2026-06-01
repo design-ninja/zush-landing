@@ -82,11 +82,14 @@ const linkLabel =
   .blog-tool-meta__link {
     color: var(--primary);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 650;
+    border-radius: 0.22em;
   }
 
-  .blog-tool-meta__link:hover {
-    text-decoration: underline;
+  .blog-tool-meta__link:hover,
+  .blog-tool-meta__link:focus-visible {
+    color: var(--primary-hover);
+    background: var(--primary-soft);
   }
 
   @media (max-width: 600px) {

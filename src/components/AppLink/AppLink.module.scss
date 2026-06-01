@@ -11,10 +11,13 @@
 
   &_legal {
     color: var(--primary);
+    font-weight: 650;
     text-decoration: none;
   }
 
-  &_legal:hover {
+  &_legal:hover,
+  &_legal:focus-visible {
     color: var(--primary-hover);
+    background: var(--primary-soft);
   }
 }

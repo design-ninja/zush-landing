@@ -6,6 +6,32 @@ const VISIBILITY_THRESHOLD = 60;
 // CTA's resting position (roughly button height + bottom offset), hide it to avoid overlap.
 const FOOTER_HIDE_MARGIN = 96;
 
+function syncFocusableState(node: HTMLElement, isVisible: boolean): void {
+  node.querySelectorAll<HTMLElement>('a, button, input, select, textarea, [tabindex]').forEach((element) => {
+    if (isVisible) {
+      if ('floatingOriginalTabindex' in element.dataset) {
+        const original = element.dataset.floatingOriginalTabindex || '';
+
+        if (original) {
+          element.setAttribute('tabindex', original);
+        } else {
+          element.removeAttribute('tabindex');
+        }
+
+        delete element.dataset.floatingOriginalTabindex;
+      }
+
+      return;
+    }
+
+    if (!('floatingOriginalTabindex' in element.dataset)) {
+      element.dataset.floatingOriginalTabindex = element.getAttribute('tabindex') || '';
+    }
+
+    element.setAttribute('tabindex', '-1');
+  });
+}
+
 function syncFloatingDownloadState(): void {
   const node = document.querySelector(FLOATING_SELECTOR);
   if (!(node instanceof HTMLElement)) return;
@@ -15,6 +41,7 @@ function syncFloatingDownloadState(): void {
     node.dataset.active = 'false';
     node.dataset.visible = 'false';
     node.setAttribute('aria-hidden', 'true');
+    syncFocusableState(node, false);
     return;
   }
 
@@ -30,6 +57,7 @@ function syncFloatingDownloadState(): void {
   const shouldShow = pastHero && !footerEncroaching;
   node.dataset.visible = shouldShow ? 'true' : 'false';
   node.setAttribute('aria-hidden', shouldShow ? 'false' : 'true');
+  syncFocusableState(node, shouldShow);
 }
 
 export function bindFloatingDownload(): void {

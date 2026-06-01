@@ -8,6 +8,7 @@
   padding: 0.55rem 1rem;
   background: var(--card);
   color: var(--foreground);
+  font-family: var(--font-family);
   border: 1px solid var(--border);
   border-radius: $radius-md;
   text-decoration: none;
@@ -52,7 +53,7 @@
 
   &__Label {
     font-size: 0.95rem;
-    font-weight: 600;
+    font-weight: 500;
   }
 
   &_sm {

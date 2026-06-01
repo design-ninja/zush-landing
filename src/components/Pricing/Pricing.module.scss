@@ -274,6 +274,7 @@
 
     &__NameZush {
         color: var(--secondary);
+        @include secondary-text-contrast;
     }
 
     &__NamePro {
@@ -329,6 +330,7 @@
 
         svg {
             color: var(--secondary);
+            @include secondary-text-contrast;
             flex-shrink: 0;
         }
     }

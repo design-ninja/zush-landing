@@ -17,7 +17,7 @@ export default defineConfig({
   integrations: [mdx(), react()],
   adapter: vercel({
     webAnalytics: {
-      enabled: true,
+      enabled: false,
     },
   }),
   markdown: {

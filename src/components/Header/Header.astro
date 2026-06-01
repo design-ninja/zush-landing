@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import DownloadButton from '@/components/DownloadButton/DownloadButton';
 import LanguageSwitcher from '@/components/LanguageSwitcher/LanguageSwitcher.astro';
 import type { DownloadOS } from '@/utils/download';
@@ -58,26 +59,17 @@ const mobileBuyButtonClass = [
 
 <nav class={styles.Header} data-cta-state='hidden'>
   <div class={styles.Header__Container}>
-    <a href={homeHref} class={logoClass} aria-label={copy.homeAria ?? 'Go to homepage'}>
-      <picture>
-        <source
-          type='image/webp'
-          srcset='/logo-80.webp 80w, /logo-96.webp 96w'
-          sizes='(max-width: 768px) 40px, 48px'
-        />
-        <img
-          src='/logo-96.png'
-          srcset='/logo-80.png 80w, /logo-96.png 96w'
-          sizes='(max-width: 768px) 40px, 48px'
-          width='48'
-          height='48'
-          alt='Zush Logo'
-          class={logoStyles.Logo__Icon}
-          loading='eager'
-          fetchpriority='high'
-          decoding='async'
-        />
-      </picture>
+    <a href={homeHref} class={logoClass}>
+      <Image
+        src='/logo-96.webp'
+        width={48}
+        height={48}
+        alt=''
+        class={logoStyles.Logo__Icon}
+        loading='eager'
+        fetchpriority='high'
+        decoding='async'
+      />
       <span class={logoStyles.Logo__Text}>Zush</span>
     </a>
 
@@ -137,7 +129,7 @@ const mobileBuyButtonClass = [
 
       <div class={styles.Header__Buttons}>
         <DownloadButton
-          client:load
+          client:idle
           source='navbar'
           variant='black'
           size='sm'

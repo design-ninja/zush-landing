@@ -34,12 +34,23 @@ a {
     text-decoration: none;
 }
 
+.brand-accent-text {
+    color: var(--secondary);
+    @include secondary-text-contrast;
+}
+
 button {
     cursor: pointer;
     border: none;
     outline: none;
     background: none;
-    font-family: inherit;
+    font-family: var(--font-family);
+}
+
+button,
+[role='button'] {
+    font-family: var(--font-family);
+    font-weight: 500;
 }
 
 a,

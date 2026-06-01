@@ -1,7 +1,7 @@
 ---
-import { ClientRouter } from 'astro:transitions';
 import type { SeoMeta } from '@/seo/config';
 import { DEFAULT_OG_IMAGE, getCanonicalUrl } from '@/seo/config';
+import '@fontsource-variable/outfit/wght.css';
 import '@/styles/main.scss';
 import Header from '@/components/Header/Header.astro';
 import Footer from '@/components/Footer/Footer.astro';
@@ -21,40 +21,6 @@ import {
 } from '@/i18n/config';
 import { getCopy } from '@/i18n/copy';
 import Analytics from '@vercel/analytics/astro';
-
-const crossfadeEasing = 'cubic-bezier(0.4, 0, 0.2, 1)';
-const crossfadeDuration = '0.32s';
-
-const mainSlide = {
-  forwards: {
-    old: {
-      name: 'zush-vt-old-forward',
-      duration: crossfadeDuration,
-      easing: crossfadeEasing,
-      fillMode: 'both',
-    },
-    new: {
-      name: 'zush-vt-new-forward',
-      duration: crossfadeDuration,
-      easing: crossfadeEasing,
-      fillMode: 'both',
-    },
-  },
-  backwards: {
-    old: {
-      name: 'zush-vt-old-back',
-      duration: crossfadeDuration,
-      easing: crossfadeEasing,
-      fillMode: 'both',
-    },
-    new: {
-      name: 'zush-vt-new-back',
-      duration: crossfadeDuration,
-      easing: crossfadeEasing,
-      fillMode: 'both',
-    },
-  },
-};
 
 interface Props {
   seo: SeoMeta;
@@ -78,8 +44,6 @@ const {
   locale = DEFAULT_LOCALE,
 } = Astro.props;
 
-const googleAdsId = import.meta.env.PUBLIC_GOOGLE_ADS_ID;
-const shouldLoadGoogleAds = typeof googleAdsId === 'string' && googleAdsId.startsWith('AW-');
 const canonicalUrl = getCanonicalUrl(seo.canonicalPath);
 const { route } = stripLocaleFromPath(seo.canonicalPath);
 const routeLocales = getLocalesForRoute(route);
@@ -102,10 +66,11 @@ const localeRedirectConfig = JSON.stringify({
   pt: LOCALE_META['pt-br'].slug,
   zh: LOCALE_META['zh-cn'].slug,
 });
+const shouldLoadVercelAnalytics = import.meta.env.VERCEL === '1';
 ---
 
 <!doctype html>
-<html lang={localeMeta.lang} dir={localeMeta.dir ?? 'ltr'} transition:animate="none">
+<html lang={localeMeta.lang} dir={localeMeta.dir ?? 'ltr'}>
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
@@ -115,18 +80,6 @@ const localeRedirectConfig = JSON.stringify({
     <link rel="manifest" href="/favicon/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light dark" />
-    <ClientRouter />
-    {shouldLoadGoogleAds && (
-      <>
-        <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${googleAdsId}`}></script>
-        <script is:inline define:vars={{ googleAdsId }}>
-          window.dataLayer = window.dataLayer || [];
-          window.gtag = window.gtag || function gtag(){ window.dataLayer.push(arguments); };
-          window.gtag('js', new Date());
-          window.gtag('config', googleAdsId);
-        </script>
-      </>
-    )}
 
     <script is:inline>
       (() => {
@@ -290,35 +243,6 @@ const localeRedirectConfig = JSON.stringify({
     <meta name="twitter:site" content="@zush_app" />
     <meta name="twitter:creator" content="@zush_app" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Outfit:wght@100..900&display=swap"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Outfit:wght@100..900&display=swap"
-      rel="stylesheet"
-      media="print"
-      onload="this.media='all'"
-    />
-    <noscript>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Outfit:wght@100..900&display=swap"
-        rel="stylesheet"
-      />
-    </noscript>
-
-    {
-      ldItems.map((item) => (
-        <script
-          type="application/ld+json"
-          is:inline
-          set:html={JSON.stringify(item)}
-        />
-      ))
-    }
   </head>
   <body>
     <div class="site-shell">
@@ -327,7 +251,6 @@ const localeRedirectConfig = JSON.stringify({
       <main
         id="main-content"
         class:list={['site-main', { 'site-main_offset': needsTopOffset }]}
-        transition:animate={mainSlide}
       >
         <slot />
       </main>
@@ -435,7 +358,16 @@ const localeRedirectConfig = JSON.stringify({
         });
       </script>
     </div>
-    <Analytics />
+    {shouldLoadVercelAnalytics && <Analytics />}
+    {
+      ldItems.map((item) => (
+        <script
+          type="application/ld+json"
+          is:inline
+          set:html={JSON.stringify(item)}
+        />
+      ))
+    }
   </body>
 </html>
 
@@ -478,59 +410,6 @@ const localeRedirectConfig = JSON.stringify({
 </style>
 
 <style is:global>
-  ::view-transition {
-    background-color: var(--background);
-  }
-
-  ::view-transition-old(*),
-  ::view-transition-new(*) {
-    mix-blend-mode: normal;
-  }
-
-  @keyframes zush-vt-old-forward {
-    from {
-      opacity: 1;
-    }
-
-    to {
-      opacity: 0;
-    }
-  }
-
-  @keyframes zush-vt-new-forward {
-    from {
-      opacity: 0;
-      transform: scale(0.98);
-    }
-
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-
-  @keyframes zush-vt-old-back {
-    from {
-      opacity: 1;
-    }
-
-    to {
-      opacity: 0;
-    }
-  }
-
-  @keyframes zush-vt-new-back {
-    from {
-      opacity: 0;
-      transform: scale(1.02);
-    }
-
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-
   html[data-scroll-reveal='enabled'] [data-scroll-reveal] {
     opacity: 0;
     transform: translate3d(0, 1.5rem, 0);
@@ -555,12 +434,6 @@ const localeRedirectConfig = JSON.stringify({
       opacity: 1;
       transform: none;
       transition: none;
-    }
-
-    ::view-transition-group(*),
-    ::view-transition-old(*),
-    ::view-transition-new(*) {
-      animation-duration: 0s !important;
     }
   }
 </style>

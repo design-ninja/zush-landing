@@ -90,7 +90,7 @@
 
     &__Answer {
         padding: 0 24px 24px;
-        color: var(--muted-foreground);
+        color: var(--foreground);
         line-height: 1.6;
         margin: 0;
         overflow: hidden;
@@ -98,10 +98,13 @@
         a {
             color: var(--primary);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 650;
+            border-radius: 0.22em;
 
-            &:hover {
-                text-decoration: underline;
+            &:hover,
+            &:focus-visible {
+                color: var(--primary-hover);
+                background: var(--primary-soft);
             }
         }
     }

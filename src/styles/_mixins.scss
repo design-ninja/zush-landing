@@ -41,6 +41,20 @@
     text-overflow: ellipsis;
 }
 
+@mixin secondary-text-contrast {
+    @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+        background-image: linear-gradient(var(--secondary), var(--secondary));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    @media (prefers-contrast: more), (forced-colors: active) {
+        color: var(--foreground);
+        background-image: none;
+    }
+}
+
 @mixin shadow($type: 'md') {
     @if $type =='sm' {
         box-shadow: $shadow-sm;

@@ -57,7 +57,7 @@ const renderLabel = (label: string, accent?: string) => {
 
 const DEFAULT_MENU_COPY: DownloadMenuCopy = {
   downloadForMac: 'Download for Mac',
-  windowsTitle: 'Windows (x64/arm64)',
+  windowsTitle: 'Windows',
   macDirectHint: 'Direct .dmg download',
   windowsHint: 'Microsoft Store',
   appStoreTitle: 'Mac App Store',

@@ -33,6 +33,7 @@ const defaultCopy: TourCopy = {
 };
 
 const SLIDE_DURATION_MS = 6500;
+const RESPONSIVE_IMAGE_WIDTHS = [640, 960, 1280, 1600, 1920, 2560] as const;
 
 const getDocumentTheme = (): ShowcaseTheme => {
   if (typeof document === 'undefined') {
@@ -43,6 +44,14 @@ const getDocumentTheme = (): ShowcaseTheme => {
     ? 'dark'
     : 'light';
 };
+
+const getResponsiveImagePath = (src: string, width: number) =>
+  src.replace(/\.webp$/i, `-${width}.webp`);
+
+const getResponsiveSrcSet = (src: string) =>
+  RESPONSIVE_IMAGE_WIDTHS
+    .map((width) => `${getResponsiveImagePath(src, width)} ${width}w`)
+    .join(', ');
 
 const Tour = ({ forceOS, copy = defaultCopy }: TourProps) => {
   const { downloadOS: detectedOS } = useOS();
@@ -60,6 +69,7 @@ const Tour = ({ forceOS, copy = defaultCopy }: TourProps) => {
     : MACOS_SHOWCASE_SCREENSHOTS;
   const activeScreenshot = showcaseItems[activeFeature] ?? showcaseItems[0];
   const activeItem = activeScreenshot;
+  const activeSrc = resolveShowcaseScreenshotMedia(activeScreenshot, theme);
   const localizedActiveItem = {
     ...activeItem,
     ...copy.items[activeItem.id],
@@ -171,7 +181,7 @@ const Tour = ({ forceOS, copy = defaultCopy }: TourProps) => {
           <SectionHeader
             title={
               <>
-                {copy.title.split(copy.titleAccent)[0]}<span style={{ color: 'var(--secondary)' }}>{copy.titleAccent}</span>{copy.title.split(copy.titleAccent).slice(1).join(copy.titleAccent)}
+                {copy.title.split(copy.titleAccent)[0]}<span className='brand-accent-text'>{copy.titleAccent}</span>{copy.title.split(copy.titleAccent).slice(1).join(copy.titleAccent)}
               </>
             }
             description={copy.description}
@@ -179,23 +189,18 @@ const Tour = ({ forceOS, copy = defaultCopy }: TourProps) => {
         </div>
 
         <div className={styles.Tour__ScreenshotWrapper}>
-          {showcaseItems.map((item, index) => {
-            const src = resolveShowcaseScreenshotMedia(item, theme);
-            const isActive = index === activeFeature;
-            return (
-              <img
-                key={item.id}
-                src={src}
-                alt={copy.items[item.id]?.alt ?? item.alt}
-                className={`${styles.Tour__Poster} ${isActive ? styles.Tour__Poster_active : ''}`}
-                width={1280}
-                height={720}
-                loading={index === 0 ? 'eager' : 'lazy'}
-                decoding='async'
-                aria-hidden={!isActive}
-              />
-            );
-          })}
+          <img
+            key={`${activeScreenshot.id}-${theme}`}
+            src={getResponsiveImagePath(activeSrc, 1280)}
+            srcSet={getResponsiveSrcSet(activeSrc)}
+            sizes='(max-width: 768px) calc(100vw - 40px), min(1024px, calc(100vw - 64px))'
+            alt={copy.items[activeScreenshot.id]?.alt ?? activeScreenshot.alt}
+            className={`${styles.Tour__Poster} ${styles.Tour__Poster_active}`}
+            width={1280}
+            height={720}
+            loading='lazy'
+            decoding='async'
+          />
         </div>
         <Text
           as='p'

@@ -31,12 +31,14 @@ const shouldShowMicrosoftStore = hidePlatform !== 'windows';
 
 const sectionTitleClass = [headingStyles.Heading, headingStyles.Heading_h4, styles.Footer__SectionTitle].join(' ');
 const descriptionClass = [textStyles.Text, textStyles.Text_subtle, styles.Footer__Description].join(' ');
-const subtleTextClass = [textStyles.Text, textStyles.Text_subtle].join(' ');
+const bottomTextClass = [textStyles.Text, textStyles.Text_base, styles.Footer__BottomText].join(' ');
 const linkClass = [appLinkStyles.AppLink, styles.Footer__Link].join(' ');
 const socialLinkClass = [appLinkStyles.AppLink, styles.Footer__SocialLink].join(' ');
 const brandClass = [appLinkStyles.AppLink, styles.Footer__Brand].join(' ');
 const footerHref = (route: LocalizedRoute) =>
   getLocalizedPath(route, getLocalesForRoute(route).includes(locale) ? locale : DEFAULT_LOCALE);
+const appStoreVisibleLabel = `${copy.appStoreKicker} ${copy.appStoreLabel}`;
+const microsoftStoreVisibleLabel = `${copy.microsoftStoreKicker} ${copy.microsoftStoreLabel}`;
 ---
 
 <footer class={styles.Footer}>
@@ -55,7 +57,7 @@ const footerHref = (route: LocalizedRoute) =>
             target='_blank'
             rel='noopener noreferrer'
             class={`${appLinkStyles.AppLink} ${styles.Footer__AppStore}`}
-            aria-label={copy.appStoreAria}
+            aria-label={`${appStoreVisibleLabel}: ${copy.appStoreAria}`}
             data-store-os='mac'
             data-store-app-url={APP_STORE_PROTOCOL_URL}
             data-store-web-url={APP_STORE_URL}
@@ -110,7 +112,7 @@ const footerHref = (route: LocalizedRoute) =>
             target='_blank'
             rel='noopener noreferrer'
             class={`${appLinkStyles.AppLink} ${styles.Footer__MicrosoftStore}`}
-            aria-label={copy.microsoftStoreAria}
+            aria-label={`${microsoftStoreVisibleLabel}: ${copy.microsoftStoreAria}`}
             data-store-os='windows'
             data-store-app-url={WINDOWS_STORE_PROTOCOL_URL}
             data-store-web-url={WINDOWS_STORE_URL}
@@ -207,7 +209,7 @@ const footerHref = (route: LocalizedRoute) =>
     </div>
 
     <div class={styles.Footer__Bottom}>
-      <p class={subtleTextClass}>© {new Date().getFullYear()} Zush</p>
+      <p class={bottomTextClass}>© {new Date().getFullYear()} Zush</p>
 
       <div class={styles.Footer__Social}>
         <a
@@ -251,7 +253,7 @@ const footerHref = (route: LocalizedRoute) =>
       </div>
 
       <div class={styles.Footer__BottomLinks}>
-        <p class={subtleTextClass}>
+        <p class={bottomTextClass}>
           {copy.designedBy}
           {' '}
           <a href='https://lirik.pro/en' class={`${appLinkStyles.AppLink} ${appLinkStyles.AppLink_legal}`} target='_blank' rel='noopener noreferrer'>lirik</a>

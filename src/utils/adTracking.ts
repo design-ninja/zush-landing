@@ -6,7 +6,9 @@ type GtagParams = Record<string, string | number | boolean | undefined>;
 
 declare global {
   interface Window {
-    gtag?: (command: 'event' | 'config', target: string, params?: GtagParams) => void;
+    dataLayer?: unknown[];
+    gtag?: (command: 'event' | 'config' | 'js', target: string | Date, params?: GtagParams) => void;
+    __zushGoogleAdsLoading?: boolean;
   }
 }
 
@@ -16,6 +18,30 @@ interface TrackAdDownloadConversionOptions {
   channel: string;
 }
 
+function ensureGoogleAds(): boolean {
+  if (!GOOGLE_ADS_ID || typeof window === 'undefined' || typeof document === 'undefined') {
+    return false;
+  }
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function gtag(...args) {
+    window.dataLayer?.push(args);
+  };
+
+  if (!window.__zushGoogleAdsLoading) {
+    window.__zushGoogleAdsLoading = true;
+    window.gtag('js', new Date());
+    window.gtag('config', GOOGLE_ADS_ID, { send_page_view: false });
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GOOGLE_ADS_ID)}`;
+    document.head.append(script);
+  }
+
+  return true;
+}
+
 export function trackAdDownloadConversion({
   os,
   source,
@@ -23,7 +49,7 @@ export function trackAdDownloadConversion({
 }: TrackAdDownloadConversionOptions): void {
   if (os !== 'mac') return;
   if (!GOOGLE_ADS_ID || !GOOGLE_ADS_DOWNLOAD_CONVERSION_LABEL) return;
-  if (typeof window === 'undefined' || typeof window.gtag !== 'function') return;
+  if (!ensureGoogleAds() || typeof window.gtag !== 'function') return;
 
   window.gtag('event', 'conversion', {
     send_to: `${GOOGLE_ADS_ID}/${GOOGLE_ADS_DOWNLOAD_CONVERSION_LABEL}`,

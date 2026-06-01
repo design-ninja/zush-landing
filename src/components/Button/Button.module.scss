@@ -5,7 +5,7 @@
     all: unset;
     border-radius: $radius-full;
     @include corner-shape-squircle;
-    font-weight: 600;
+    font-weight: 500;
     transition:
         transform $transition-fast,
         background-color $transition-fast,
@@ -18,7 +18,7 @@
     cursor: pointer;
     border: none;
     outline: none;
-    font-family: inherit;
+    font-family: var(--font-family);
     text-decoration: none;
     gap: 0.5rem;
 

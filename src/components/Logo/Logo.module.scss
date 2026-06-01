@@ -39,6 +39,7 @@
         font-weight: 600;
         line-height: 1;
         color: var(--secondary);
+        @include secondary-text-contrast;
         transition: color 0.2s ease;
 
         @include mobile {

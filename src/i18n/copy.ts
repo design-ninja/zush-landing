@@ -930,7 +930,7 @@ const EN_COPY: LocaleCopy = {
   },
   downloadMenu: {
     downloadForMac: 'Download for Mac',
-    windowsTitle: 'Windows (x64/arm64)',
+    windowsTitle: 'Windows',
     macDirectHint: 'Direct .dmg download',
     windowsHint: 'Microsoft Store',
     appStoreTitle: 'Mac App Store',
@@ -2101,7 +2101,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
 const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
   de: {
     downloadForMac: 'Für Mac laden',
-    windowsTitle: 'Windows (x64/arm64)',
+    windowsTitle: 'Windows',
     macDirectHint: 'Direkter .dmg-Download',
     windowsHint: 'Microsoft Store',
     appStoreTitle: 'Mac App Store',
@@ -2110,7 +2110,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
   },
   fr: {
     downloadForMac: 'Télécharger pour Mac',
-    windowsTitle: 'Windows (x64/arm64)',
+    windowsTitle: 'Windows',
     macDirectHint: 'Téléchargement .dmg direct',
     windowsHint: 'Microsoft Store',
     appStoreTitle: 'Mac App Store',
@@ -2119,7 +2119,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
   },
   'pt-br': {
     downloadForMac: 'Baixar para Mac',
-    windowsTitle: 'Windows (x64/arm64)',
+    windowsTitle: 'Windows',
     macDirectHint: 'Download direto .dmg',
     windowsHint: 'Microsoft Store',
     appStoreTitle: 'Mac App Store',
@@ -2128,7 +2128,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
   },
   es: {
     downloadForMac: 'Descargar para Mac',
-    windowsTitle: 'Windows (x64/arm64)',
+    windowsTitle: 'Windows',
     macDirectHint: 'Descarga directa .dmg',
     windowsHint: 'Microsoft Store',
     appStoreTitle: 'Mac App Store',
@@ -2137,7 +2137,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
   },
   nl: {
     downloadForMac: 'Download voor Mac',
-    windowsTitle: 'Windows (x64/arm64)',
+    windowsTitle: 'Windows',
     macDirectHint: 'Directe .dmg-download',
     windowsHint: 'Microsoft Store',
     appStoreTitle: 'Mac App Store',
@@ -2146,7 +2146,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
   },
   it: {
     downloadForMac: 'Scarica per Mac',
-    windowsTitle: 'Windows (x64/arm64)',
+    windowsTitle: 'Windows',
     macDirectHint: 'Download diretto .dmg',
     windowsHint: 'Microsoft Store',
     appStoreTitle: 'Mac App Store',
@@ -2155,7 +2155,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
   },
   ja: {
     downloadForMac: 'Mac 版をダウンロード',
-    windowsTitle: 'Windows (x64/arm64)',
+    windowsTitle: 'Windows',
     macDirectHint: '直接 .dmg ダウンロード',
     windowsHint: 'Microsoft Store',
     appStoreTitle: 'Mac App Store',
@@ -2164,7 +2164,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
   },
   ko: {
     downloadForMac: 'Mac용 다운로드',
-    windowsTitle: 'Windows (x64/arm64)',
+    windowsTitle: 'Windows',
     macDirectHint: '직접 .dmg 다운로드',
     windowsHint: 'Microsoft Store',
     appStoreTitle: 'Mac App Store',
@@ -2173,7 +2173,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
   },
   'zh-cn': {
     downloadForMac: '下载 Mac 版',
-    windowsTitle: 'Windows (x64/arm64)',
+    windowsTitle: 'Windows',
     macDirectHint: '直接下载 .dmg',
     windowsHint: 'Microsoft Store',
     appStoreTitle: 'Mac App Store',
@@ -2182,7 +2182,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
   },
   hi: {
     downloadForMac: 'Mac के लिए download करें',
-    windowsTitle: 'Windows (x64/arm64)',
+    windowsTitle: 'Windows',
     macDirectHint: 'Direct .dmg download',
     windowsHint: 'Microsoft Store',
     appStoreTitle: 'Mac App Store',
@@ -2191,7 +2191,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
   },
   ar: {
     downloadForMac: 'تنزيل لنظام Mac',
-    windowsTitle: 'Windows (x64/arm64)',
+    windowsTitle: 'Windows',
     macDirectHint: 'تنزيل مباشر بصيغة .dmg',
     windowsHint: 'Microsoft Store',
     appStoreTitle: 'Mac App Store',

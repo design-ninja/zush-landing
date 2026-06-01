@@ -54,6 +54,7 @@
 
   &__TitleAccent {
     color: var(--secondary);
+    @include secondary-text-contrast;
   }
 
   &__Search {
@@ -215,7 +216,9 @@
   &__SectionAction {
     color: var(--primary);
     text-decoration: none;
+    font-family: var(--font-family);
     font-size: 0.95rem;
+    font-weight: 500;
 
     &:hover {
       color: var(--primary-hover);
@@ -227,7 +230,6 @@
     border: 0;
     background: transparent;
     cursor: pointer;
-    font: inherit;
   }
 
   &__SectionPosts {

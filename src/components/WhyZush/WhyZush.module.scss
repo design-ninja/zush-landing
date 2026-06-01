@@ -10,6 +10,7 @@
 
   &__TitleAccent {
     color: var(--secondary);
+    @include secondary-text-contrast;
   }
 }
 
@@ -436,6 +437,7 @@
     text-overflow: clip;
     overflow-wrap: anywhere;
     color: var(--secondary);
+    @include secondary-text-contrast;
     font-size: 0.78rem;
     font-weight: 600;
   }

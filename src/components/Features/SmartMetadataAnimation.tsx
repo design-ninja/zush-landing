@@ -130,6 +130,8 @@ export const SmartMetadataAnimation = () => {
               <img
                 src={glitchThumb.src}
                 alt=''
+                loading='lazy'
+                decoding='async'
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />
               <div
