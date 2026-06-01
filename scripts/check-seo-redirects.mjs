@@ -30,8 +30,10 @@ assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/rename-images-w
 assertRedirect('/ai-photo-renamer', '/rename-photos-with-ai');
 assertRedirect('/ai-document-renamer', '/rename-documents-with-ai');
 
-assertRedirect('/rename-files-with-ai/', '/');
-assertRedirect('/rename-files-with-ai', '/');
+assertRedirect('/rename-files-with-ai/', '/batch-rename-files');
+assertRedirect('/rename-files-with-ai', '/batch-rename-files');
 assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/rename-files-with-ai', '/:locale');
+
+assertRedirect('/ai-file-renamer', '/file-renamer');
 
 console.log('[check-seo-redirects] OK: GSC legacy URL redirects validated.');

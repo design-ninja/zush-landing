@@ -16,6 +16,10 @@ const NON_WATCH_VIDEO_ROUTES = new Set([
   '/ai-file-renamer',
   '/ai-image-renamer',
   '/auto-rename-files',
+  '/batch-rename-tool',
+  '/batch-rename-files',
+  '/bulk-rename-files',
+  '/file-renamer',
   '/rename-documents-with-ai',
   '/rename-pdf-with-ai',
   '/rename-photos-with-ai',
@@ -23,6 +27,10 @@ const NON_WATCH_VIDEO_ROUTES = new Set([
 ]);
 const USE_CASES_BLOCK_ROUTES = [
   '/',
+  '/batch-rename-tool',
+  '/batch-rename-files',
+  '/bulk-rename-files',
+  '/file-renamer',
   '/mac',
   '/windows',
   '/rename-documents-with-ai',

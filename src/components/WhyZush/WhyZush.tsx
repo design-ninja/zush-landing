@@ -85,7 +85,7 @@ const defaultCopy: WhyZushCopy = {
   priceTitle: 'One setup for every folder',
   priceDescription: 'Save naming rules for screenshots, expenses, music tracks, client notes, legal files, travel bookings, and monitored folders.',
   priceLabel: '11 built-in',
-  speedEyebrow: 'Sssupafast!',
+  speedEyebrow: 'Batch rename speed',
   speedTitle: 'Renames happen in seconds',
   speedDescription: 'Speed matters because cleanup only sticks if it does not interrupt the real work. Drop files in, review, apply, move on.',
   formatsEyebrow: '100+ supported formats',

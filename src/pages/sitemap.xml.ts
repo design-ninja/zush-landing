@@ -2,7 +2,7 @@ import { execSync } from 'node:child_process';
 import { statSync } from 'node:fs';
 import { join } from 'node:path';
 import { getAllPosts, getAllTags, isSitemapEligibleBlogPost, type BlogPost, type BlogTag } from '@/data/blog';
-import { INDEXABLE_STATIC_ROUTES, FEATURE_ROUTES, SITE_ORIGIN, THIN_CONTENT_THRESHOLD } from '@/seo/config';
+import { INDEXABLE_STATIC_ROUTES, FEATURE_ROUTES, SEARCH_LANDING_ROUTES, SITE_ORIGIN, THIN_CONTENT_THRESHOLD } from '@/seo/config';
 import { DEFAULT_LOCALE, LOCALE_META, LOCALIZATION_PAUSED, LOCALIZED_ROUTES, getAlternatePaths, getLocalesForRoute, getLocalizedPath } from '@/i18n/config';
 
 const BLOG_CONTENT_DIR = join(process.cwd(), 'src', 'content', 'blog');
@@ -76,6 +76,9 @@ function getRouteHints(route: string): { changefreq: Changefreq; priority: strin
     return { changefreq: 'weekly', priority: '1.0' };
   }
   if (route === '/blog') {
+    return { changefreq: 'weekly', priority: '0.9' };
+  }
+  if ((SEARCH_LANDING_ROUTES as readonly string[]).includes(route)) {
     return { changefreq: 'weekly', priority: '0.9' };
   }
   if ((FEATURE_ROUTES as readonly string[]).includes(route)) {

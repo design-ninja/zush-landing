@@ -29,16 +29,16 @@ export const PLATFORM_LANDING_CONTENT: Record<DownloadOS, PlatformLandingContent
     breadcrumbLabel: 'Zush for Mac',
     softwareName: 'Zush for Mac',
     softwareDescription:
-      'AI renamer for Mac and batch rename tool for macOS. Rename screenshots, design files, audio, videos, PDFs, photos, iWork and Office documents with cloud AI, templates, Naming Blocks, or Offline AI mode via Ollama. Native Apple Silicon and Intel support.',
+      'File renamer for Mac and AI batch rename tool for macOS. Batch rename files from Finder, bulk rename mixed folders, and rename screenshots, design files, audio, videos, PDFs, photos, iWork and Office documents by content.',
     operatingSystem: 'macOS 15.0+',
     downloadUrl: DOWNLOAD_URL,
-    heroTitle: 'AI Renamer for Mac',
+    heroTitle: 'File Renamer for Mac',
     heroSubtitle:
-      'Rename files with AI on Mac: screenshots, design files, videos, PDFs, photos, iWork, and Office documents. Use fast cloud models or Offline AI mode with private local models via Ollama.',
+      'Batch rename files with AI on Mac: screenshots, design files, videos, PDFs, photos, iWork, and Office documents. Use fast cloud models or Offline AI mode with private local models via Ollama.',
     ctaSubtitle:
-      'Install the signed macOS AI renamer and start renaming screenshots, design files, videos, PDFs, photos, iWork, and Office documents in minutes.',
+      'Install the signed macOS file renamer and start batch renaming screenshots, design files, videos, PDFs, photos, iWork, and Office documents in minutes.',
     features: [
-      'AI-powered renaming for screenshots, design files, videos, PDFs, photos, iWork, and Office documents',
+      'File renamer for Mac with AI-powered naming for screenshots, design files, videos, PDFs, photos, iWork, and Office documents',
       'Folder monitoring with file-type exclusions',
       'Batch rename with per-file regenerate',
       'Custom prompts for names and metadata tags',
@@ -87,17 +87,17 @@ export const PLATFORM_LANDING_CONTENT: Record<DownloadOS, PlatformLandingContent
     breadcrumbLabel: 'Zush for Windows',
     softwareName: 'Zush for Windows',
     softwareDescription:
-      'AI-powered file renamer for Windows. Rename screenshots, design files, audio, videos, PDFs, photos, iWork and Office documents with descriptive names, templates, and Naming Blocks. Distributed through the Microsoft Store with auto-updates.',
+      'File renamer for Windows 11 and 10 with AI bulk rename and batch rename workflows. Rename screenshots, design files, audio, videos, PDFs, photos, iWork and Office documents by content from ordinary Windows folders.',
     operatingSystem: ['Windows 10', 'Windows 11'],
     downloadUrl: WINDOWS_STORE_URL,
     installUrl: WINDOWS_STORE_URL,
-    heroTitle: 'AI File Renamer for Windows',
+    heroTitle: 'File Renamer for Windows',
     heroSubtitle:
-      'Rename screenshots, design files, videos, PDFs, photos, iWork, and Office documents on Windows with AI. Installs from the Microsoft Store with automatic updates, free to try with no signup.',
+      'Bulk rename files on Windows 11 and 10 with AI: screenshots, design files, videos, PDFs, photos, iWork, and Office documents. Installs from the Microsoft Store with automatic updates, free to try with no signup.',
     ctaSubtitle:
-      'Open the Microsoft Store and start renaming screenshots, design files, videos, PDFs, photos, iWork, and Office documents with the full Windows build.',
+      'Open the Microsoft Store and start using a Windows batch rename tool for screenshots, design files, videos, PDFs, photos, iWork, and Office documents.',
     features: [
-      'AI-powered renaming for screenshots, design files, videos, PDFs, photos, iWork, and Office documents',
+      'File renamer for Windows 11 and 10 with AI-powered bulk rename for screenshots, design files, videos, PDFs, photos, iWork, and Office documents',
       'Folder monitoring with file-type exclusions',
       'Batch rename with per-file regenerate',
       'Custom prompts for names and metadata tags',
