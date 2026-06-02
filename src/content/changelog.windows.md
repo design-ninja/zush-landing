@@ -1,5 +1,10 @@
 # Changelog
 
+## [3.2.1.0] - 2026-06-03
+### Fixed
+- Long BYOK provider keys no longer push action buttons outside the AI Setup card
+
+
 ## [3.2.0.0] - 2026-06-02
 ### Improved
 - BYOK and Offline AI setup now show clearer model status, defaults, and provider diagnostics.
