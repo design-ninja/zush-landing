@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.2.0.0] - 2026-06-02
+### Improved
+- BYOK and Offline AI setup now show clearer model status, defaults, and provider diagnostics.
+- Batch rename application is faster, with fixed elapsed timing and smoother progress updates.
+- Free rename usage and PRO state now stay accurate after rename credit consumption.
+- Fixed first-run folder monitoring defaults, preview fill mode, and Naming Blocks reset badge layout.
+
 ## [3.1.0.0] - 2026-05-26
 ### Improved
 - Added broader design-file support, including PSD and Adobe Illustrator files.
