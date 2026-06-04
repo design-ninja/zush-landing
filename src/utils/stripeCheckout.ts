@@ -30,7 +30,7 @@ function getPrefillEmail(): string | undefined {
 
 async function createCheckoutSession(
   deviceId: string | null | undefined,
-  priceId: string,
+  priceId: string | null | undefined,
   plan: StripeCheckoutPlan,
 ): Promise<CheckoutSessionResponse | null> {
   try {
@@ -40,7 +40,7 @@ async function createCheckoutSession(
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          price_id: priceId,
+          price_id: priceId || undefined,
           plan,
           device_id: deviceId || undefined,
           source: deviceId ? 'app' : 'landing',
@@ -95,11 +95,6 @@ export async function openStripeCheckout(
   priceId?: string | null,
   options?: OpenStripeCheckoutOptions,
 ): Promise<boolean> {
-  if (!priceId) {
-    console.error('[Stripe] Price ID not provided');
-    return false;
-  }
-
   const plan = options?.plan ?? 'one-time';
   const checkoutSession = await createCheckoutSession(deviceId, priceId, plan);
 

@@ -125,9 +125,19 @@ const plans = PRICING_PLANS.map((plan) => {
             </div>
 
             <div class={styles.PricingCard__Price}>
-              <span class={styles.PricingCard__PriceValue}>{plan.price}</span>
+              <span
+                class={styles.PricingCard__PriceValue}
+                data-stripe-price-value={plan.stripePlan}
+              >
+                {plan.price}
+              </span>
               {plan.billing && (
-                <span class={styles.PricingCard__PricePeriod}>{plan.billing}</span>
+                <span
+                  class={styles.PricingCard__PricePeriod}
+                  data-stripe-price-period={plan.stripePlan}
+                >
+                  {plan.billing}
+                </span>
               )}
             </div>
           </div>

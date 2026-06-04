@@ -1,14 +1,10 @@
 // fallow-ignore-file unused-file
-import {
-  PRO_MONTHLY_STRIPE_PRICE_ID,
-  PRO_ONE_TIME_STRIPE_PRICE_ID,
-} from '@/constants/pricing';
 import { getCheckoutParam } from '@/utils/checkoutParams';
 
 let hasOpenedCheckout = false;
 
 type CheckoutPlan = 'monthly' | 'one-time';
-type CheckoutTarget = { priceId: string; plan: CheckoutPlan };
+type CheckoutTarget = { plan: CheckoutPlan };
 
 export function bindCheckoutAutoOpen(): void {
   if (
@@ -39,7 +35,7 @@ export function bindCheckoutAutoOpen(): void {
   window.setTimeout(async () => {
     try {
       const { openStripeCheckout } = await stripeModulePromise;
-      await openStripeCheckout(deviceId, checkoutTarget.priceId, {
+      await openStripeCheckout(deviceId, null, {
         plan: checkoutTarget.plan,
       });
     } catch (error) {
@@ -52,16 +48,12 @@ function getCheckoutTarget(checkout: string | null): CheckoutTarget | null {
   switch (checkout) {
     case 'monthly':
     case 'pro-monthly':
-      return PRO_MONTHLY_STRIPE_PRICE_ID
-        ? { priceId: PRO_MONTHLY_STRIPE_PRICE_ID, plan: 'monthly' }
-        : null;
+      return { plan: 'monthly' };
     case 'one-time':
     case 'onetime':
     case 'lifetime':
     case 'pro':
-      return PRO_ONE_TIME_STRIPE_PRICE_ID
-        ? { priceId: PRO_ONE_TIME_STRIPE_PRICE_ID, plan: 'one-time' }
-        : null;
+      return { plan: 'one-time' };
     default:
       return null;
   }
