@@ -13,8 +13,8 @@ import {
   LucideIcon,
 } from 'lucide-react';
 import {
-  PRO_MONTHLY_PADDLE_PRICE_ID,
-  PRO_ONE_TIME_PADDLE_PRICE_ID,
+  PRO_MONTHLY_STRIPE_PRICE_ID,
+  PRO_ONE_TIME_STRIPE_PRICE_ID,
 } from '@/constants/pricing';
 
 interface Feature {
@@ -37,7 +37,8 @@ interface Plan {
   buttonText: string;
   price: string;
   billing: string;
-  paddlePriceId?: string;
+  stripePriceId?: string;
+  stripePlan: 'monthly' | 'one-time';
 }
 
 export const PRO_FEATURES: Feature[] = [
@@ -100,7 +101,8 @@ export const PRICING_PLANS: Plan[] = [
     buttonText: 'Start PRO Monthly',
     price: '$8',
     billing: '/month',
-    paddlePriceId: PRO_MONTHLY_PADDLE_PRICE_ID,
+    stripePriceId: PRO_MONTHLY_STRIPE_PRICE_ID,
+    stripePlan: 'monthly',
   },
   {
     id: 'one-time',
@@ -110,7 +112,8 @@ export const PRICING_PLANS: Plan[] = [
     buttonText: 'Buy PRO One-Time',
     price: '$38',
     billing: 'one-time',
-    paddlePriceId: PRO_ONE_TIME_PADDLE_PRICE_ID,
+    stripePriceId: PRO_ONE_TIME_STRIPE_PRICE_ID,
+    stripePlan: 'one-time',
   },
 ];
 

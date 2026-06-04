@@ -34,7 +34,7 @@ const paidButtonClass = [
   buttonStyles.Button_glass,
   buttonStyles.Button_fluid,
 ].join(' ');
-const trustLine = copy?.buttonHint ?? '14-day money-back guarantee • Secure via Paddle';
+const trustLine = copy?.buttonHint ?? '14-day money-back guarantee • Secure via Stripe';
 const sharedFeaturesTitle = copy?.sharedFeaturesTitle ?? 'PRO 🌟 Features';
 const rawTitle = copy?.title ?? 'Choose your PRO plan';
 const titleHtml = rawTitle.replace(
@@ -149,8 +149,9 @@ const plans = PRICING_PLANS.map((plan) => {
             <button
               type="button"
               class={paidButtonClass}
-              data-paddle-checkout
-              data-paddle-price-id={plan.paddlePriceId}
+              data-stripe-checkout
+              data-stripe-price-id={plan.stripePriceId}
+              data-stripe-plan={plan.stripePlan}
             >
               <span class={styles.PricingCard__ButtonText}>
                 {plan.buttonText}

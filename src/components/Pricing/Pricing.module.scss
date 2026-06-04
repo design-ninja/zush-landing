@@ -338,13 +338,13 @@
         display: flex;
         flex-direction: column;
 
-        button[data-paddle-checkout] {
+        button[data-stripe-checkout] {
             display: flex;
             width: 100%;
             box-sizing: border-box;
         }
 
-        button[data-paddle-loading='true'] {
+        button[data-stripe-loading='true'] {
             position: relative;
             cursor: progress;
 

@@ -1,10 +1,9 @@
-const PRO_MONTHLY_PRICE_ID = 'pri_01krxnw9dpvm51d3e59g24ep5z';
-const LEGACY_PRO_ONE_TIME_PRICE_ID = 'pri_01ke0rya71hzwhy8y1wdt76v1y';
+export const PRO_MONTHLY_STRIPE_PRICE_ID =
+  import.meta.env.PUBLIC_STRIPE_PRO_MONTHLY_PRICE_ID ||
+  import.meta.env.VITE_STRIPE_PRO_MONTHLY_PRICE_ID ||
+  '';
 
-export const PRO_MONTHLY_PADDLE_PRICE_ID =
-  import.meta.env.PUBLIC_PADDLE_PRO_MONTHLY_PRICE_ID ||
-  PRO_MONTHLY_PRICE_ID;
-
-export const PRO_ONE_TIME_PADDLE_PRICE_ID =
-  import.meta.env.PUBLIC_PADDLE_PRO_ONE_TIME_PRICE_ID ||
-  LEGACY_PRO_ONE_TIME_PRICE_ID;
+export const PRO_ONE_TIME_STRIPE_PRICE_ID =
+  import.meta.env.PUBLIC_STRIPE_PRO_ONE_TIME_PRICE_ID ||
+  import.meta.env.VITE_STRIPE_PRO_ONE_TIME_PRICE_ID ||
+  '';

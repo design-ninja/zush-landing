@@ -80,7 +80,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       updated: 'Zuletzt aktualisiert: 26. April 2026',
       sections: [
         { eyebrow: 'Service', title: 'Beschreibung', body: 'Zush ist ein Desktop-Werkzeug zum Organisieren, Umbenennen und Verwalten von Dateimetadaten mit KI. Dazu gehören Audio-Unterstützung, Templates, Naming Blocks, Stapel-Umbenennung, Ordnerüberwachung, eigene Prompts, BYOK und Offline-KI.' },
-        { eyebrow: 'Lizenz', title: 'Nutzung und Zahlungen', body: 'Du erhältst eine persönliche, nicht übertragbare Lizenz. Zush PRO ist als Monatsplan oder Einmalkauf verfügbar und bietet Zugriff auf Unlimited PRO, BYOK und Offline-KI. Zahlungen werden über Paddle oder Store-Plattformen abgewickelt.' },
+        { eyebrow: 'Lizenz', title: 'Nutzung und Zahlungen', body: 'Du erhältst eine persönliche, nicht übertragbare Lizenz. Zush PRO ist als Monatsplan oder Einmalkauf verfügbar und bietet Zugriff auf Unlimited PRO, BYOK und Offline-KI. Zahlungen werden über Stripe oder Store-Plattformen abgewickelt.' },
         { eyebrow: 'Haftung', title: 'KI-Ergebnisse und Verantwortung', body: 'KI kann falsche oder unerwartete Namen erzeugen. Du bist dafür verantwortlich, Änderungen vor dem Anwenden zu prüfen. Der Dienst wird ohne Gewährleistung bereitgestellt.' },
       ],
     },
@@ -139,7 +139,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       updated: 'Dernière mise à jour: 26 avril 2026',
       sections: [
         { eyebrow: 'Service', title: 'Description', body: 'Zush est un utilitaire desktop pour organiser, renommer et gérer les métadonnées de fichiers avec l’IA: audio, modèles, blocs de nommage, lots, surveillance, prompts personnalisés, BYOK et IA hors ligne.' },
-        { eyebrow: 'Licence', title: 'Utilisation et paiements', body: 'Vous recevez une licence personnelle non transférable. Zush PRO est disponible en abonnement mensuel ou achat unique avec accès à Unlimited PRO, BYOK et à l’IA hors ligne. Les paiements sont traités par Paddle ou les stores.' },
+        { eyebrow: 'Licence', title: 'Utilisation et paiements', body: 'Vous recevez une licence personnelle non transférable. Zush PRO est disponible en abonnement mensuel ou achat unique avec accès à Unlimited PRO, BYOK et à l’IA hors ligne. Les paiements sont traités par Stripe ou les stores.' },
         { eyebrow: 'Responsabilité', title: 'Résultats IA', body: 'L’IA peut produire des noms incorrects ou inattendus. Vous devez vérifier les changements avant de les appliquer. Le service est fourni sans garantie.' },
       ],
     },
@@ -198,7 +198,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       updated: 'Última atualização: 26 de abril de 2026',
       sections: [
         { eyebrow: 'Serviço', title: 'Descrição', body: 'Zush é um utilitário desktop para organizar, renomear e gerenciar metadados de arquivos com IA: áudio, modelos, blocos de nomes, lotes, monitoramento, prompts personalizados, BYOK e IA offline.' },
-        { eyebrow: 'Licença', title: 'Uso e pagamentos', body: 'Você recebe uma licença pessoal e intransferível. Zush PRO está disponível em plano mensal ou compra única com acesso a Unlimited PRO, BYOK e IA offline. Pagamentos são processados por Paddle ou lojas.' },
+        { eyebrow: 'Licença', title: 'Uso e pagamentos', body: 'Você recebe uma licença pessoal e intransferível. Zush PRO está disponível em plano mensal ou compra única com acesso a Unlimited PRO, BYOK e IA offline. Pagamentos são processados por Stripe ou lojas.' },
         { eyebrow: 'Responsabilidade', title: 'Resultados da IA', body: 'A IA pode gerar nomes incorretos ou inesperados. Você deve revisar alterações antes de aplicar. O serviço é fornecido sem garantias.' },
       ],
     },
@@ -257,7 +257,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       updated: 'Última actualización: 26 de abril de 2026',
       sections: [
         { eyebrow: 'Servicio', title: 'Descripción', body: 'Zush es una utilidad de escritorio para organizar, renombrar y gestionar metadatos con IA: audio, plantillas, bloques de nombres, lotes, monitoreo, prompts personalizados, BYOK e IA offline.' },
-        { eyebrow: 'Licencia', title: 'Uso y pagos', body: 'Recibes una licencia personal e intransferible. Zush PRO está disponible como plan mensual o compra única con acceso a Unlimited PRO, BYOK e IA offline. Los pagos se procesan mediante Paddle o tiendas.' },
+        { eyebrow: 'Licencia', title: 'Uso y pagos', body: 'Recibes una licencia personal e intransferible. Zush PRO está disponible como plan mensual o compra única con acceso a Unlimited PRO, BYOK e IA offline. Los pagos se procesan mediante Stripe o tiendas.' },
         { eyebrow: 'Responsabilidad', title: 'Resultados de IA', body: 'La IA puede producir nombres incorrectos o inesperados. Debes revisar los cambios antes de aplicarlos. El servicio se ofrece sin garantías.' },
       ],
     },
@@ -316,7 +316,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       updated: 'Laatst bijgewerkt: 26 april 2026',
       sections: [
         { eyebrow: 'Service', title: 'Beschrijving', body: 'Zush is een desktoptool om bestanden met AI te organiseren, hernoemen en van metadata te voorzien: audio, templates, Naming Blocks, batches, mapbewaking, eigen prompts, BYOK en offline AI.' },
-        { eyebrow: 'Licentie', title: 'Gebruik en betalingen', body: 'Je krijgt een persoonlijke, niet-overdraagbare licentie. Zush PRO is beschikbaar als maandplan of eenmalige aankoop en geeft toegang tot unlimited PRO, BYOK en offline AI. Betalingen lopen via Paddle of stores.' },
+        { eyebrow: 'Licentie', title: 'Gebruik en betalingen', body: 'Je krijgt een persoonlijke, niet-overdraagbare licentie. Zush PRO is beschikbaar als maandplan of eenmalige aankoop en geeft toegang tot unlimited PRO, BYOK en offline AI. Betalingen lopen via Stripe of stores.' },
         { eyebrow: 'Verantwoordelijkheid', title: 'AI-resultaten', body: 'AI kan onjuiste of onverwachte namen maken. Controleer wijzigingen voor toepassing. De service wordt zonder garantie geleverd.' },
       ],
     },
@@ -375,7 +375,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       updated: 'Ultimo aggiornamento: 26 aprile 2026',
       sections: [
         { eyebrow: 'Servizio', title: 'Descrizione', body: 'Zush è un utility desktop per organizzare, rinominare e gestire metadati con IA: audio, modelli, blocchi di nomi, batch, monitoraggio cartelle, prompt personalizzati, BYOK e IA offline.' },
-        { eyebrow: 'Licenza', title: 'Uso e pagamenti', body: 'Ricevi una licenza personale non trasferibile. Zush PRO è disponibile come piano mensile o acquisto unico con accesso a Unlimited PRO, BYOK e IA offline. I pagamenti sono gestiti da Paddle o dagli store.' },
+        { eyebrow: 'Licenza', title: 'Uso e pagamenti', body: 'Ricevi una licenza personale non trasferibile. Zush PRO è disponibile come piano mensile o acquisto unico con accesso a Unlimited PRO, BYOK e IA offline. I pagamenti sono gestiti da Stripe o dagli store.' },
         { eyebrow: 'Responsabilità', title: 'Risultati IA', body: 'L’IA può produrre nomi errati o inattesi. Devi controllare le modifiche prima di applicarle. Il servizio è fornito senza garanzie.' },
       ],
     },
@@ -434,7 +434,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       updated: '最終更新: 2026年4月26日',
       sections: [
         { eyebrow: 'サービス', title: '説明', body: 'Zush は AI でファイル名とメタデータを整理するデスクトップツールです。音声、テンプレート、命名ブロック、一括リネーム、フォルダ監視、カスタムプロンプト、BYOK、Offline AI を含みます。' },
-        { eyebrow: 'ライセンス', title: '利用と支払い', body: '個人用で譲渡不可のライセンスが付与されます。Zush PRO は月額プランまたは買い切りで利用でき、Unlimited PRO、BYOK、Offline AI が含まれます。支払いは Paddle またはストア経由です。' },
+        { eyebrow: 'ライセンス', title: '利用と支払い', body: '個人用で譲渡不可のライセンスが付与されます。Zush PRO は月額プランまたは買い切りで利用でき、Unlimited PRO、BYOK、Offline AI が含まれます。支払いは Stripe またはストア経由です。' },
         { eyebrow: '責任', title: 'AI の結果', body: 'AI は誤った名前や予期しない名前を生成する場合があります。適用前に確認してください。サービスは保証なしで提供されます。' },
       ],
     },
@@ -493,7 +493,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       updated: '마지막 업데이트: 2026년 4월 26일',
       sections: [
         { eyebrow: '서비스', title: '설명', body: 'Zush는 AI로 파일 이름과 메타데이터를 정리하는 데스크톱 도구입니다. 오디오, 템플릿, Naming Blocks, 일괄 이름 변경, 폴더 모니터링, 사용자 프롬프트, BYOK, 오프라인 AI를 포함합니다.' },
-        { eyebrow: '라이선스', title: '사용 및 결제', body: '개인적이고 양도할 수 없는 라이선스가 제공됩니다. Zush PRO는 월간 플랜 또는 일회성 구매로 제공되며 Unlimited PRO, BYOK, 오프라인 AI를 포함합니다. 결제는 Paddle 또는 스토어에서 처리됩니다.' },
+        { eyebrow: '라이선스', title: '사용 및 결제', body: '개인적이고 양도할 수 없는 라이선스가 제공됩니다. Zush PRO는 월간 플랜 또는 일회성 구매로 제공되며 Unlimited PRO, BYOK, 오프라인 AI를 포함합니다. 결제는 Stripe 또는 스토어에서 처리됩니다.' },
         { eyebrow: '책임', title: 'AI 결과', body: 'AI는 잘못되거나 예상치 못한 이름을 만들 수 있습니다. 적용 전 변경을 검토해야 합니다. 서비스는 보증 없이 제공됩니다.' },
       ],
     },
@@ -552,7 +552,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
       updated: '最后更新：2026 年 4 月 26 日',
       sections: [
         { eyebrow: '服务', title: '说明', body: 'Zush 是用 AI 整理、重命名并管理文件元数据的桌面工具，支持音频、模板、命名块、批量重命名、文件夹监控、自定义提示词、BYOK 和离线 AI。' },
-        { eyebrow: '许可', title: '使用与付款', body: '你获得个人、不可转让的使用许可。Zush PRO 提供月付和一次性购买两种方案，包含 unlimited PRO、BYOK 和离线 AI。付款由 Paddle 或应用商店处理。' },
+        { eyebrow: '许可', title: '使用与付款', body: '你获得个人、不可转让的使用许可。Zush PRO 提供月付和一次性购买两种方案，包含 unlimited PRO、BYOK 和离线 AI。付款由 Stripe 或应用商店处理。' },
         { eyebrow: '责任', title: 'AI 结果', body: 'AI 可能生成错误或意外的名称。应用前你需要检查变更。服务按现状提供，不作担保。' },
       ],
     },

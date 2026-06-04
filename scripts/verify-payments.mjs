@@ -19,17 +19,17 @@ function assertFile(relPath, message) {
   }
 }
 
-function verifyPaddleCheckout() {
-  const src = read("src/utils/paddle.ts");
+function verifyStripeCheckout() {
+  const src = read("src/utils/stripeCheckout.ts");
   assertMatch(
     src,
-    /export async function openPaddleCheckout/,
-    "Missing openPaddleCheckout export",
+    /export async function openStripeCheckout/,
+    "Missing openStripeCheckout export",
   );
   assertMatch(
     src,
-    /create-paddle-checkout-session/,
-    "Checkout no longer creates a server-side Paddle session",
+    /create-stripe-checkout-session/,
+    "Checkout no longer creates a server-side Stripe session",
   );
   assertMatch(
     src,
@@ -38,53 +38,8 @@ function verifyPaddleCheckout() {
   );
   assertMatch(
     src,
-    /transactionId:\s*checkoutSession\.transaction_id/,
-    "Checkout no longer opens Paddle by server-created transaction",
-  );
-  assertMatch(
-    src,
-    /paddleScriptPromise/,
-    "Checkout no longer reuses a single Paddle.js loading promise",
-  );
-  assertMatch(
-    src,
-    /waitForPaddleGlobal/,
-    "Checkout no longer waits for the Paddle global before initializing",
-  );
-  assertMatch(
-    src,
-    /return initializePaddle\(\)/,
-    "Checkout readiness can succeed without Paddle.Initialize completing",
-  );
-  assertMatch(
-    src,
-    /return paddleLocale \? \{\s*locale:\s*paddleLocale\s*\} : undefined/,
-    "Checkout no longer passes the current page locale to Paddle",
-  );
-  assertMatch(
-    src,
-    /import\.meta\.env\.DEV \? ["']sandbox["'] : ["']production["']/,
-    "Production Paddle checkout now defaults back to sandbox",
-  );
-  assertMatch(
-    src,
-    /openDirectPaddleCheckout/,
-    "Checkout no longer has a direct Paddle fallback when server checkout fails",
-  );
-  assertMatch(
-    src,
-    /items:\s*\[\{\s*priceId,\s*quantity:\s*1\s*\}\]/,
-    "Direct Paddle fallback no longer opens the selected price",
-  );
-  assertMatch(
-    src,
-    /return openDirectPaddleCheckout\(deviceId,\s*priceId,\s*options\)/,
-    "Checkout no longer falls back to direct Paddle checkout",
-  );
-  assertMatch(
-    src,
-    /"zh-cn":\s*"zh-Hans"/,
-    "Checkout no longer maps Simplified Chinese pages to Paddle's locale code",
+    /window\.location\.href = checkoutSession\.checkout_url/,
+    "Checkout no longer redirects to Stripe-hosted Checkout",
   );
   assertMatch(
     src,
@@ -98,8 +53,8 @@ function verifyPaddleCheckout() {
   );
   assertMatch(
     src,
-    /params\.set\(["']checkout_session["'],\s*activeCheckoutSession\s*\)/,
-    "Thank-you redirect no longer includes checkout session",
+    /stripe_checkout_session_id/,
+    "Stripe Checkout Session id is no longer part of the response contract",
   );
   assertMatch(
     src,
@@ -134,7 +89,7 @@ function verifyAutoOpenFlow() {
   );
   assertMatch(
     src,
-    /getCheckoutPriceId\(checkout\)/,
+    /getCheckoutTarget\(checkout\)/,
     "Auto-open no longer resolves checkout plan to a price",
   );
   assertMatch(
@@ -154,8 +109,13 @@ function verifyAutoOpenFlow() {
   );
   assertMatch(
     src,
-    /openPaddleCheckout\(deviceId,\s*priceId\)/,
-    "Auto-open no longer opens Paddle with the resolved price",
+    /openStripeCheckout\(deviceId,\s*checkoutTarget\.priceId,\s*\{/,
+    "Auto-open no longer opens Stripe with the resolved price",
+  );
+  assertMatch(
+    src,
+    /plan:\s*checkoutTarget\.plan/,
+    "Auto-open no longer passes the resolved Stripe plan",
   );
   assertMatch(
     src,
@@ -186,13 +146,18 @@ function verifyPricingCheckoutFlow() {
 
   assertMatch(
     pricingSrc,
-    /data-paddle-checkout/,
-    "Pricing button no longer exposes the Paddle checkout trigger",
+    /data-stripe-checkout/,
+    "Pricing button no longer exposes the Stripe checkout trigger",
   );
   assertMatch(
     pricingSrc,
-    /data-paddle-price-id=\{plan\.paddlePriceId\}/,
+    /data-stripe-price-id=\{plan\.stripePriceId\}/,
     "Pricing button no longer passes the PRO price id",
+  );
+  assertMatch(
+    pricingSrc,
+    /data-stripe-plan=\{plan\.stripePlan\}/,
+    "Pricing button no longer passes the Stripe plan",
   );
   assertMatch(
     src,
@@ -201,13 +166,18 @@ function verifyPricingCheckoutFlow() {
   );
   assertMatch(
     src,
-    /openPaddleCheckout\(deviceId,\s*priceId,\s*\{/,
-    "Pricing checkout no longer opens Paddle with the selected price",
+    /openStripeCheckout\(deviceId,\s*priceId,\s*\{/,
+    "Pricing checkout no longer opens Stripe with the selected price",
+  );
+  assertMatch(
+    src,
+    /plan,/,
+    "Pricing checkout no longer passes the Stripe plan",
   );
   assertMatch(
     src,
     /onCheckoutOpen:\s*resetCheckoutButton/,
-    "Pricing checkout no longer resets the loading state as Paddle opens",
+    "Pricing checkout no longer resets the loading state before Stripe redirect",
   );
   assertMatch(
     layoutSrc,
@@ -292,13 +262,13 @@ function verifyCriticalRoutes() {
 }
 
 try {
-  verifyPaddleCheckout();
+  verifyStripeCheckout();
   verifyAutoOpenFlow();
   verifyPricingCheckoutFlow();
   verifyActivationAndRecovery();
   verifyCriticalRoutes();
   console.log(
-    "[verify-payments] OK: Paddle, checkout, activation, recovery flows are intact.",
+    "[verify-payments] OK: Stripe checkout, activation, recovery, and portal flows are intact.",
   );
 } catch (error) {
   console.error("[verify-payments] FAILED:", error.message);

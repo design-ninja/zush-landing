@@ -3,23 +3,18 @@ import { getCheckoutParam } from '@/utils/checkoutParams';
 import { trackProClick } from '@/utils/download';
 
 let isPricingCheckoutBound = false;
-let paddleModulePromise: Promise<typeof import('@/utils/paddle')> | null = null;
+let stripeModulePromise: Promise<typeof import('@/utils/stripeCheckout')> | null = null;
 
-const CHECKOUT_LOADING_RESET_EVENTS = new Set([
-  'checkout.loaded',
-  'checkout.closed',
-  'checkout.completed',
-  'checkout.error',
-]);
+type StripeCheckoutPlan = 'monthly' | 'one-time';
 
-function getPaddleModule() {
-  paddleModulePromise ??= import('@/utils/paddle');
-  return paddleModulePromise;
+function getStripeModule() {
+  stripeModulePromise ??= import('@/utils/stripeCheckout');
+  return stripeModulePromise;
 }
 
 function getCheckoutButton(target: EventTarget | null): HTMLButtonElement | null {
   return target instanceof Element
-    ? target.closest<HTMLButtonElement>('[data-paddle-checkout]')
+    ? target.closest<HTMLButtonElement>('[data-stripe-checkout]')
     : null;
 }
 
@@ -27,8 +22,8 @@ function preloadCheckout(target: EventTarget | null): void {
   const checkoutButton = getCheckoutButton(target);
   if (!checkoutButton || checkoutButton.disabled) return;
 
-  void getPaddleModule()
-    .then(({ preloadPaddleCheckout }) => preloadPaddleCheckout())
+  void getStripeModule()
+    .then(({ preloadStripeCheckout }) => preloadStripeCheckout())
     .catch((error) => {
       console.warn('[Pricing] Failed to preload checkout:', error);
     });
@@ -41,13 +36,17 @@ function setCheckoutButtonLoading(
   checkoutButton.disabled = isLoading;
 
   if (isLoading) {
-    checkoutButton.dataset.paddleLoading = 'true';
+    checkoutButton.dataset.stripeLoading = 'true';
     checkoutButton.setAttribute('aria-busy', 'true');
     return;
   }
 
-  delete checkoutButton.dataset.paddleLoading;
+  delete checkoutButton.dataset.stripeLoading;
   checkoutButton.removeAttribute('aria-busy');
+}
+
+function normalizeStripePlan(value: string | undefined): StripeCheckoutPlan | null {
+  return value === 'monthly' || value === 'one-time' ? value : null;
 }
 
 export function bindPricingCheckout(): void {
@@ -67,9 +66,15 @@ export function bindPricingCheckout(): void {
       return;
     }
 
-    const priceId = checkoutButton.dataset.paddlePriceId;
+    const priceId = checkoutButton.dataset.stripePriceId;
     if (!priceId) {
       console.warn('[Pricing] Price ID is missing for PRO checkout');
+      return;
+    }
+
+    const plan = normalizeStripePlan(checkoutButton.dataset.stripePlan);
+    if (!plan) {
+      console.warn('[Pricing] Stripe plan is missing for PRO checkout');
       return;
     }
 
@@ -78,28 +83,22 @@ export function bindPricingCheckout(): void {
 
     setCheckoutButtonLoading(checkoutButton, true);
 
-    let unsubscribeFromPaddleEvents: (() => void) | undefined;
+    let checkoutOpened = false;
     const resetCheckoutButton = () => {
       setCheckoutButtonLoading(checkoutButton, false);
-      unsubscribeFromPaddleEvents?.();
-      unsubscribeFromPaddleEvents = undefined;
     };
 
     try {
       const deviceId = getCheckoutParam('device_id');
-      const { onPaddleCheckoutEvent, openPaddleCheckout } = await getPaddleModule();
-      unsubscribeFromPaddleEvents = onPaddleCheckoutEvent((paddleEvent) => {
-        if (CHECKOUT_LOADING_RESET_EVENTS.has(paddleEvent.name)) {
-          resetCheckoutButton();
-        }
-      });
-      await openPaddleCheckout(deviceId, priceId, {
+      const { openStripeCheckout } = await getStripeModule();
+      checkoutOpened = await openStripeCheckout(deviceId, priceId, {
+        plan,
         onCheckoutOpen: resetCheckoutButton,
       });
     } catch (error) {
       console.error('[Pricing] Failed to open checkout:', error);
     } finally {
-      resetCheckoutButton();
+      if (!checkoutOpened) resetCheckoutButton();
     }
   });
 }

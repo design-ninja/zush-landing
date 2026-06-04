@@ -1,11 +1,14 @@
 // fallow-ignore-file unused-file
 import {
-  PRO_MONTHLY_PADDLE_PRICE_ID,
-  PRO_ONE_TIME_PADDLE_PRICE_ID,
+  PRO_MONTHLY_STRIPE_PRICE_ID,
+  PRO_ONE_TIME_STRIPE_PRICE_ID,
 } from '@/constants/pricing';
 import { getCheckoutParam } from '@/utils/checkoutParams';
 
 let hasOpenedCheckout = false;
+
+type CheckoutPlan = 'monthly' | 'one-time';
+type CheckoutTarget = { priceId: string; plan: CheckoutPlan };
 
 export function bindCheckoutAutoOpen(): void {
   if (
@@ -19,40 +22,46 @@ export function bindCheckoutAutoOpen(): void {
   const checkout = getCheckoutParam('checkout');
   const deviceId = getCheckoutParam('device_id');
 
-  const priceId = getCheckoutPriceId(checkout);
-  if (!priceId) {
+  const checkoutTarget = getCheckoutTarget(checkout);
+  if (!checkoutTarget) {
     return;
   }
 
   hasOpenedCheckout = true;
 
-  const paddleModulePromise = import('@/utils/paddle');
-  void paddleModulePromise
-    .then(({ preloadPaddleCheckout }) => preloadPaddleCheckout())
+  const stripeModulePromise = import('@/utils/stripeCheckout');
+  void stripeModulePromise
+    .then(({ preloadStripeCheckout }) => preloadStripeCheckout())
     .catch((error) => {
       console.warn('[CheckoutAutoOpen] Failed to preload checkout:', error);
     });
 
   window.setTimeout(async () => {
     try {
-      const { openPaddleCheckout } = await paddleModulePromise;
-      await openPaddleCheckout(deviceId, priceId);
+      const { openStripeCheckout } = await stripeModulePromise;
+      await openStripeCheckout(deviceId, checkoutTarget.priceId, {
+        plan: checkoutTarget.plan,
+      });
     } catch (error) {
       console.error('[CheckoutAutoOpen] Failed to open checkout:', error);
     }
   }, 300);
 }
 
-function getCheckoutPriceId(checkout: string | null): string | null {
+function getCheckoutTarget(checkout: string | null): CheckoutTarget | null {
   switch (checkout) {
     case 'monthly':
     case 'pro-monthly':
-      return PRO_MONTHLY_PADDLE_PRICE_ID || null;
+      return PRO_MONTHLY_STRIPE_PRICE_ID
+        ? { priceId: PRO_MONTHLY_STRIPE_PRICE_ID, plan: 'monthly' }
+        : null;
     case 'one-time':
     case 'onetime':
     case 'lifetime':
     case 'pro':
-      return PRO_ONE_TIME_PADDLE_PRICE_ID || null;
+      return PRO_ONE_TIME_STRIPE_PRICE_ID
+        ? { priceId: PRO_ONE_TIME_STRIPE_PRICE_ID, plan: 'one-time' }
+        : null;
     default:
       return null;
   }
