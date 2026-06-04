@@ -11,7 +11,7 @@ import { useOS } from "@/hooks/useOS";
 import type { DownloadMenuCopy } from "@/i18n/copy";
 
 
-export interface HeroProps {
+interface HeroProps {
   title?: ReactNode;
   titleAccent?: string;
   titleHighlight?: string;

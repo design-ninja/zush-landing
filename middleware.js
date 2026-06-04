@@ -2,6 +2,7 @@ const TRACKING_PARAMS_TO_STRIP = ['ref'];
 const REF_TO_UTM_SOURCE_PARAM = 'ref';
 const UTM_SOURCE_PARAM = 'utm_source';
 
+// fallow-ignore-next-line unused-export
 export const config = {
   matcher: '/',
 };

@@ -2,7 +2,7 @@
 import styles from './StoreBadge.module.scss';
 import type { DownloadChannel, DownloadOS, DownloadSource } from '@/utils/download';
 
-export type StoreBadgeKind = 'app-store' | 'microsoft-store' | 'direct-dmg';
+type StoreBadgeKind = 'app-store' | 'microsoft-store' | 'direct-dmg';
 
 interface Props {
   kind: StoreBadgeKind;

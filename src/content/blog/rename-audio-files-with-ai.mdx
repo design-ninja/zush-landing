@@ -10,7 +10,7 @@ tags:
   - "Audio"
   - "File Naming"
 tldr: "AI audio renaming turns weak names like track_01_final.mp3 or voice_memo_042.m4a into searchable filenames by using metadata, recognition, transcript context, and reusable naming templates."
-reviewed: "2026-05-16"
+reviewed: "2026-06-04"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
@@ -54,7 +54,7 @@ That covers common music exports, voice memos, podcast cuts, meeting audio, brow
 
 ## Use templates for repeatable audio names
 
-Templates help when the same kind of audio arrives every week. A podcast folder might use:
+[Templates](/blog/zush-templates-file-renaming-workflows) help when the same kind of audio arrives every week. A podcast folder might use:
 
 `{date}_{guest}_{topic}`
 
@@ -66,7 +66,7 @@ A client calls folder might use:
 
 `{client_name}_{meeting_topic}_{date}`
 
-The point is consistency. AI can infer the subject, and the template keeps the structure predictable across hundreds of files.
+The point is consistency. AI can infer the subject, and the template keeps the structure predictable across hundreds of files. For structured fields such as `{artist}`, `{title}`, and `{bpm}`, read [Naming Blocks: Build Searchable File Names from 145+ Fields](/blog/naming-blocks-file-naming-guide).
 
 ## FAQ
 
@@ -81,3 +81,5 @@ Yes. Audio files can be mixed with supported images, videos, PDFs, Office docume
 ### Is audio support free?
 
 You can try Zush free. Advanced workflows such as reusable templates, BYOK, Offline AI mode, and Naming Blocks are part of Zush PRO.
+
+For choosing between built-in cloud, BYOK, and local processing, read [Cloud AI vs Local AI File Renaming](/blog/cloud-vs-local-ai-file-renaming).

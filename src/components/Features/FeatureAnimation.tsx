@@ -57,7 +57,7 @@ import {
   OFFLINE_AI_HEIGHT,
 } from './OfflineAiAnimation';
 
-export type FeatureAnimationKind =
+type FeatureAnimationKind =
   | 'folders'
   | 'metadata'
   | 'history'

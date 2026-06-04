@@ -79,13 +79,13 @@ export const PRO_FEATURES: Feature[] = [
   },
 ];
 
-export const MONTHLY_DIFFERENTIATORS: Differentiator[] = [
+const MONTHLY_DIFFERENTIATORS: Differentiator[] = [
   { title: 'Cancel anytime', icon: CalendarClock },
   { title: 'Lowest entry price', icon: TrendingDown },
   { title: 'No long-term commitment', icon: RefreshCw },
 ];
 
-export const ONE_TIME_DIFFERENTIATORS: Differentiator[] = [
+const ONE_TIME_DIFFERENTIATORS: Differentiator[] = [
   { title: 'Pay once, use forever', icon: InfinityIcon },
   { title: 'All future updates included', icon: Gift },
   { title: 'Pays off in ~5 months', icon: TrendingDown },

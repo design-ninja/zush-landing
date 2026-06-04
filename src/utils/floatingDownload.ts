@@ -1,3 +1,5 @@
+// Imported from BaseLayout.astro inline script; static import graph tools can miss it.
+// fallow-ignore-file unused-file
 const FLOATING_SELECTOR = '[data-floating-download]';
 const HERO_SELECTOR = '[data-hero-root]';
 const FOOTER_SELECTOR = 'footer';

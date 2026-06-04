@@ -27,7 +27,7 @@ export interface ResolvedShowcaseVideoMedia {
   poster: string;
 }
 
-export const SHOWCASE_VIDEOS: ShowcaseVideoAsset[] = [
+const SHOWCASE_VIDEOS: ShowcaseVideoAsset[] = [
   {
     id: 'batch-rename',
     title: 'Batch Rename',

@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Ollama"
 tldr: "Local AI file renaming uses a model on your own computer to analyze supported files and suggest descriptive filenames. In Zush, Offline AI mode connects to Ollama so supported analysis content stays on device instead of going to Zush cloud or a third-party AI provider."
-reviewed: "2026-04-28"
+reviewed: "2026-06-04"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
@@ -19,7 +19,7 @@ Most file renaming tools fall into two camps: rule-based batch rename utilities 
 
 Local AI file renaming is the third path. Instead of sending analysis content to a cloud model, a desktop app asks a model running on your own computer to describe the file and propose a useful name. In Zush, that workflow is called Offline AI mode, and it uses [Ollama](https://ollama.com/download) as the local model runtime.
 
-If you want the setup page first, start with the [Ollama setup guide](/ollama-setup). If you want the product surface first, see [File Renamer for Mac and Windows](/file-renamer) or [Zush for Mac](/mac).
+If you want the setup page first, start with the [Ollama setup guide](/ollama-setup). If you want the product surface first, see [File Renamer for Mac and Windows](/file-renamer) or [Zush for Mac](/mac). If you are comparing local-first tools, read [Zush vs AI Renamer](/blog/zush-vs-airenamer).
 
 <BlogProductIntro />
 
@@ -96,7 +96,7 @@ Expect these tradeoffs:
 - unsupported file types may still need cloud processing or extracted text
 - an offline workflow still needs local disk space and a running Ollama service
 
-That is why Zush keeps three modes separate: built-in Cloud, BYOK, and Offline AI. You can use local AI when privacy matters, BYOK when you want unlimited cloud processing, and built-in credits when you want the simplest path. For API-key workflows, see [BYOK: Unlimited AI File Renames with Your Own API Key](/blog/byok-ai-file-renaming-unlimited).
+That is why Zush keeps three modes separate: built-in Cloud, BYOK, and Offline AI. You can use local AI when privacy matters, BYOK when you want unlimited cloud processing, and built-in credits when you want the simplest path. For API-key workflows, see [BYOK: Unlimited AI File Renames with Your Own API Key](/blog/byok-ai-file-renaming-unlimited). For the full decision framework, read [Cloud AI vs Local AI File Renaming](/blog/cloud-vs-local-ai-file-renaming).
 
 ## Recommended workflow
 

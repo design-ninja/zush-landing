@@ -1,6 +1,6 @@
 ---
-title: "Best AI File Renamers 2026 for Mac & Windows"
-description: "Compare 8 AI file renamers for Mac and Windows across PDFs, photos, screenshots, videos, documents, folder monitoring, offline AI, and BYOK."
+title: "Best AI File Renamer Tools 2026: 8 Apps Tested"
+description: "Compare Zush, AI Renamer, Renamer.ai, NameQuick and more by pricing, BYOK, offline AI, formats, folder monitoring, and Mac/Windows fit."
 date: "2026-03-23"
 slug: "best-ai-file-renamer-tools-2026"
 platform: "general"
@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Tool Comparisons"
 tldr: "Each AI file renamer wins something different. Pick Zush for mixed-file Mac/Windows workflows, AI Renamer CLI for local-only, NameQuick for Mac-native depth, Renamer.ai or Renamed.to for documents and teams, and Wisfile or Riffo if you want fully free."
-reviewed: "2026-06-03"
+reviewed: "2026-06-04"
 featuredOrder: 1
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -99,16 +99,16 @@ What makes Zush stand out next to the rest of this list:
 
 ![AI Renamer interface (image: airenamer.app)](/images/blog/competitors/ai-renamer.png)
 
-AI Renamer comes in two forms. The open-source CLI runs via Node.js and uses Ollama or LM Studio for local processing. The separate desktop app (airenamer.app) offers a GUI with both local and cloud model options.
+AI Renamer comes in two forms. The open-source CLI runs via Node.js and uses Ollama or LM Studio for local processing. The separate desktop app (airenamer.app) offers a GUI with both local and cloud model options; its current pricing page also advertises OpenAI/custom model support and "all file types" support, while the feature page still gives shorter examples such as images plus PDF/TXT/text files.
 
 **Strengths:**
 
 - CLI is fully free, open source, and local
 - Cross-platform support (CLI on all platforms, desktop on Mac & Windows)
-- Multiple AI backends: Ollama, LM Studio, OpenAI
+- Multiple AI backends: Ollama, LM Studio, OpenAI, and custom model support in the desktop local mode
 - Desktop app adds cloud models (Llama 3.3, GPT-4 Turbo, Llava) for better quality
 - Custom prompts and naming case styles (camelCase, snake_case, etc.)
-- Desktop supports PDF and TXT alongside images
+- Desktop pricing page now advertises all file types; public feature examples still emphasize images plus PDF/TXT/text files
 
 **Limitations:**
 
@@ -116,9 +116,9 @@ AI Renamer comes in two forms. The open-source CLI runs via Node.js and uses Oll
 - Desktop app costs $19 (local) or $10 per 200 credits (cloud)
 - No folder monitoring or automation
 - No undo or rename history
-- Narrower format range than tools like Renamer.ai or Zush
+- No granular public format table for RAW, iWork, design, audio, and video coverage
 
-**Best for:** Privacy-focused users and developers who want local processing with optional cloud quality.
+**Best for:** Privacy-focused users and developers who want local processing with optional cloud quality. For the direct head-to-head, read [Zush vs AI Renamer](/blog/zush-vs-airenamer).
 
 ### 3. Renamer.ai
 
@@ -128,12 +128,12 @@ AI Renamer comes in two forms. The open-source CLI runs via Node.js and uses Oll
 
 ![Renamer.ai desktop app screenshot (image: renamer.ai)](/images/blog/competitors/renamer-ai.png)
 
-Renamer.ai offers both a desktop application and a web interface. The desktop app integrates with your local file system and includes Magic Folders for automatic renaming. It supports 30+ formats with OCR technology.
+Renamer.ai offers both a desktop application and a web interface. The desktop app integrates with your local file system and includes Magic Folders for automatic renaming. Its current batch renamer page emphasizes local-device handling, preview, one-click undo, and 25+ file types with OCR/document analysis.
 
 **Strengths:**
 
 - Desktop app for Windows and Mac plus web interface
-- 30+ formats including images (JPG, PNG, HEIC, TIFF, WebP) and documents (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX)
+- 25+ file types including common documents, spreadsheets, presentations, images, PDFs, and scanned documents
 - Magic Folders for automatic folder monitoring and renaming
 - Undo with preview before applying
 - Custom naming templates with variable builder
@@ -142,10 +142,10 @@ Renamer.ai offers both a desktop application and a web interface. The desktop ap
 **Limitations:**
 
 - Subscription pricing scales steeply ($9.95-99.95/month)
-- Cloud processing raises privacy concerns for sensitive files
+- Public privacy copy now says files stay on the user's computer/device, but it is not a BYOK or local-Ollama workflow
 - Fixed AI provider with no BYOK option
 
-**Best for:** Cross-platform users who work with documents and want folder automation.
+**Best for:** Cross-platform users who work with documents and want folder automation. For pricing and format trade-offs, read [Zush vs Renamer.ai](/blog/zush-vs-renamer-ai).
 
 ### 4. NameQuick
 
@@ -289,20 +289,22 @@ Renamify is a browser-based AI file renaming tool. It handles batch renaming thr
 | Feature | Zush | AI Renamer | Renamer.ai | NameQuick | Wisfile | Riffo | Renamed.to | Renamify |
 |---|---|---|---|---|---|---|---|---|
 | Platform | Mac & Windows | CLI (all) + Desktop (Mac/Win) | Desktop (Win/Mac) + Web | macOS only | Local desktop | macOS + Web | Web + cloud APIs | Web |
-| Image/design formats | 41 images + 4 design formats | ~4 (Desktop) | ~15 | OCR + EXIF, broad | Various | Various | Scanned images | Various |
-| Document formats | 37, including iWork | ~2 (Desktop) | ~10 | 30+ formats | Various | Some | PDF/DOCX/XLSX/PPTX | Limited |
+| Image/design formats | 41 images + 4 design formats | Feature examples + all-file claim | 25+ common formats; no RAW list | OCR + EXIF, broad | Various | Various | Scanned images | Various |
+| Document formats | 37, including iWork | PDF/TXT examples; all-file claim | 25+ docs/images | 30+ formats | Various | Some | PDF/DOCX/XLSX/PPTX | Limited |
 | Video formats | 16 | CLI supports video | Not central | Listed | Not confirmed | Not documented | No | Not documented |
 | Batch rename | Yes | Yes | Yes | Yes | Yes | Yes | Yes (10–10,000) | Yes |
 | Folder monitoring | Yes | No | Yes (Magic Folders) | Yes (Watch folders) | Not confirmed | Not confirmed | Yes (file watcher daemon) | No |
 | Custom patterns | Templates + 145+ Naming Blocks | Yes (custom prompts) | Yes (templates) | Yes (visual builder, 16+ placeholders) | Yes (templates) | Limited | Yes (saved team rules) | No |
 | Undo/rollback | Yes | No | Yes | Yes | Not confirmed | Not confirmed | Yes (review queue) | No |
 | Finder tags | Yes | No | N/A (cross-platform) | Yes | N/A | No | N/A | N/A |
-| Multiple AI providers | 4 providers + BYOK | Ollama/LM Studio/OpenAI | Fixed | OpenAI/Claude/Gemini/OpenRouter/Ollama/LM Studio/MLX | Fixed (local) | Fixed (cloud) | Fixed | Fixed |
+| Multiple AI providers | 4 providers + BYOK | Ollama/LM Studio/OpenAI/custom | Fixed | OpenAI/Claude/Gemini/OpenRouter/Ollama/LM Studio/MLX | Fixed (local) | Fixed (cloud) | Fixed | Fixed |
 | Language support | 60+ | Configurable | 20+ | Multilingual | Unknown | Limited | 20+ | Unknown |
-| Free tier | 50 to start | CLI: free, Desktop: 10 credits | 15/month | 7-day trial (50 files) | Completely free | Free | 50 to start | No free tier |
-| BYOK option | Yes | N/A | No | Yes ($38 self-managed) | N/A | No | No (cloud only) | No |
+| Free tier | 50 to start | CLI: free, Desktop: 10 credits | 25/month | 7-day trial (50 files) | Completely free | Free | 50 to start | No free tier |
+| BYOK option | Yes | OpenAI/custom local-mode support | No | Yes ($38 self-managed) | N/A | No | No (cloud only) | No |
 
 ## Pricing comparison
+
+For a direct subscription-vs-one-time breakdown, see [Zush vs Renamer.ai](/blog/zush-vs-renamer-ai).
 
 | Tool | Free option | Paid option | Annual cost (estimated) | Model |
 |---|---|---|---|---|
@@ -335,7 +337,7 @@ Pricing differences compound. For a heavy user doing ~10,000 renames/year:
 
 For someone renaming 10,000 files a year, Zush One-Time stays a low fixed cost over 5 years while still offering folder monitoring, undo, and BYOK.
 
-Wisfile and Riffo are completely free but trade off folder monitoring confirmation, ongoing development, and broader format support. AI Renamer's CLI is free and open source if you want to set up local models yourself.
+Wisfile and Riffo are completely free but trade off folder monitoring confirmation, ongoing development, and broader format support. AI Renamer's CLI is free and open source if you want to set up local models yourself. If the privacy decision is really cloud vs BYOK vs offline local models, read [Cloud AI vs Local AI File Renaming](/blog/cloud-vs-local-ai-file-renaming).
 
 ![Zush batch rename tool renaming multiple files with AI on Mac](/images/showcase/macos/batch-rename-light.webp)
 

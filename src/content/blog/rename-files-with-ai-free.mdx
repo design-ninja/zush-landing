@@ -10,7 +10,7 @@ tags:
   - "File Organization"
   - "BYOK"
 tldr: "You can rename files with AI for free using Zush's 50 free renames, a BYOK API key for unlimited renames at minimal cost, or open-source tools with local models."
-reviewed: "2026-04-09"
+reviewed: "2026-06-04"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
@@ -29,9 +29,9 @@ This guide covers every practical way to rename files with AI for free in 2026, 
 | Zush free tier | $0 | Low | High | 100+ image + design + document + video + audio formats | Yes |
 | Zush BYOK | API cost only (~$0.001/file) | Medium | High | 100+ image + design + document + video + audio formats | Yes |
 | Riffo | $0 | Low | Medium | Images, PDFs, documents | No |
-| AI Renamer CLI (local) | $0 | High | Medium | Images only | No |
-| AI Renamer Desktop | 10 free credits | Low | Medium-High | Images + PDF, TXT | No |
-| Renamer.ai free tier | $0 (25 files/month) | Low | Medium-High | 30+ formats | Yes (Magic Folders) |
+| AI Renamer CLI (local) | $0 | High | Medium | Images/video via local setup | No |
+| AI Renamer Desktop | 10 free credits | Low | Medium-High | Public examples + all-file claim | No |
+| Renamer.ai free tier | $0 (25 files/month) | Low | Medium-High | 25+ common file types | Yes (Magic Folders) |
 | DIY Python script | API cost only | High | Varies | Whatever you code | No |
 
 Each approach has a sweet spot. The rest of this guide walks through them in detail.
@@ -123,7 +123,7 @@ AI Renamer comes in two forms. The open-source CLI runs AI models locally on you
 
 ### Desktop app (free credits)
 
-The desktop app gives you 10 free credits on signup -- enough to test the workflow. It supports images plus PDF and TXT documents, and offers cloud models (Llama 3.3, GPT-4 Turbo, Llava) for better naming quality. After the free credits, local mode costs $19 one-time or cloud mode costs $10 per 200 credits.
+The desktop app gives you 10 free credits on signup -- enough to test the workflow. Its current pricing page says Local Mode and Cloud Mode support all file types, while the feature page still gives narrower examples such as images plus PDF/TXT/text files. After the free credits, local mode costs $19 one-time or cloud mode costs $10 per 200 credits.
 
 ### Trade-offs
 
@@ -131,18 +131,18 @@ The desktop app gives you 10 free credits on signup -- enough to test the workfl
 - CLI is fully free with no API costs
 - Files never leave your machine in local mode
 - No account required for the CLI
-- Desktop app supports PDF and TXT alongside images
+- Desktop app now markets broader all-file support, with OpenAI/custom model support in Local Mode
 - Custom prompts and naming case styles (camelCase, snake_case, etc.)
 
 **Disadvantages:**
 - CLI requires terminal comfort and Ollama setup (several GB of disk space)
 - Local models produce lower-quality names than cloud models
-- CLI only handles image formats (JPG, PNG, GIF, WEBP)
+- Public format detail is uneven between the CLI, the desktop feature page, and the desktop pricing page
 - No folder monitoring or automation
 - No undo or rename history
 - Desktop app's free credits are limited (10 on signup)
 
-AI Renamer works if privacy is your top priority. The CLI is best for developers comfortable with the terminal; the desktop app is easier to use and supports more formats.
+AI Renamer works if privacy is your top priority. The CLI is best for developers comfortable with the terminal; the desktop app is easier to use and markets broader format support. For the direct trade-off against Zush, read [Zush vs AI Renamer](/blog/zush-vs-airenamer). If you are choosing between free cloud credits, BYOK, and local models, read [Cloud AI vs Local AI File Renaming](/blog/cloud-vs-local-ai-file-renaming).
 
 ![Zush AI rename results on macOS showing content-aware filenames for mixed files](/images/showcase/macos/batch-rename-light.webp)
 
@@ -196,7 +196,7 @@ Renamify (renamify.co) is a web-only tool that requires a paid subscription ($10
 ### Trade-offs
 
 **Advantages:**
-- Renamer.ai's free tier includes 30+ format support and desktop app access
+- Renamer.ai's free tier includes 25+ common file types and desktop app access
 - Riffo is completely free with Auto Foldering
 - Web interfaces require no installation
 

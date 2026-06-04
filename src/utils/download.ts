@@ -178,6 +178,8 @@ const getTrackedDownload = (link: HTMLAnchorElement): TrackDownloadClickOptions 
   return null;
 };
 
+// Imported from BaseLayout.astro inline script; static import graph tools can miss it.
+// fallow-ignore-next-line unused-export
 export function bindDownloadTracking(root: ParentNode = document): void {
   const eventRoot = root as ParentNode & EventTarget;
   if (trackedRoots.has(eventRoot)) return;

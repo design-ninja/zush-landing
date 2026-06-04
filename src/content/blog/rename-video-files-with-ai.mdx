@@ -10,7 +10,7 @@ tags:
   - "Videos"
   - "File Naming"
 tldr: "AI video renaming works by sampling frames from a video, combining that visual context with subtitle files when available, and turning vague names like VID_20260507_184233.mp4 into searchable filenames."
-reviewed: "2026-05-09"
+reviewed: "2026-06-04"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
@@ -59,7 +59,7 @@ Zush 3.0 supports 16 common video formats:
 
 That covers common phone videos, screen recordings, QuickTime exports, camera clips, transport stream files, and older DVD-style video sources. Zush also supports subtitle files such as `.srt` and `.vtt` through its document pipeline, so a folder can contain both the video and its subtitle context.
 
-Zush also supports audio files: `mp3`, `m4a`, `wav`, `flac`, `ogg`, `webm`, and `mpga`. For music, podcasts, voice memos, and meeting recordings, see [Rename Audio with AI](/rename-audio-with-ai).
+Zush also supports audio files: `mp3`, `m4a`, `wav`, `flac`, `ogg`, `webm`, and `mpga`. For music, podcasts, voice memos, and meeting recordings, see [Rename Audio with AI](/rename-audio-with-ai) and [How to Rename Audio Files with AI](/blog/rename-audio-files-with-ai).
 
 ## Why sampled frames are enough
 
@@ -112,6 +112,8 @@ For video files, these patterns usually work:
 
 If your workflow includes many clients, use a client or project prefix. If you are organizing a personal media library, the title alone is often enough.
 
+For repeatable media workflows, see [Zush Templates: Reusable AI File Renaming Workflows](/blog/zush-templates-file-renaming-workflows) and [Naming Blocks: Build Searchable File Names from 145+ Fields](/blog/naming-blocks-file-naming-guide).
+
 ### 5. Use history if something needs to change
 
 AI renaming should be reversible. Zush keeps rename history so you can restore original names if a batch needs another pass.
@@ -153,3 +155,5 @@ Yes, if you have them. Sidecar subtitle files can provide helpful context for ta
 ## Getting started
 
 The fastest test is a folder of 10 to 20 video files with weak names. Drop it into [Zush](/rename-videos-with-ai), review the suggested names, and apply only the names that make the files easier to find. If the workflow helps, add folder monitoring for the places where new recordings or camera imports land.
+
+If the videos are sensitive, compare [Cloud AI vs Local AI File Renaming](/blog/cloud-vs-local-ai-file-renaming) before choosing Cloud, BYOK, or Offline AI mode.
