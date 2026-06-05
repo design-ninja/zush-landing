@@ -42,16 +42,10 @@
 }
 
 @mixin secondary-text-contrast {
-    @supports ((-webkit-background-clip: text) or (background-clip: text)) {
-        background-image: linear-gradient(var(--secondary), var(--secondary));
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-    }
+    color: var(--secondary);
 
     @media (prefers-contrast: more), (forced-colors: active) {
         color: var(--foreground);
-        background-image: none;
     }
 }
 
