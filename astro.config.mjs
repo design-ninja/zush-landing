@@ -15,8 +15,8 @@ export default defineConfig({
   },
   integrations: [mdx(), react()],
   adapter: vercel({
-    // Analytics is injected explicitly via @vercel/analytics/astro in BaseLayout.
-    // Keep adapter-level injection off so Vercel Web Analytics is not added twice.
+    // Analytics is injected explicitly in BaseLayout.
+    // Keep adapter-level Vercel Web Analytics off so it is not added accidentally.
     webAnalytics: {
       enabled: false,
     },

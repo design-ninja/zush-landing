@@ -1,4 +1,3 @@
-import { track } from '@vercel/analytics';
 import {
   APP_STORE_PROTOCOL_URL,
   APP_STORE_URL,
@@ -6,6 +5,7 @@ import {
   WINDOWS_STORE_PROTOCOL_URL,
   WINDOWS_STORE_URL,
 } from '@/constants';
+import { trackAnalyticsEvent } from '@/utils/analytics';
 import { trackAdDownloadConversion } from '@/utils/adTracking';
 
 export type DownloadOS = 'mac' | 'windows';
@@ -66,7 +66,7 @@ export function trackDownloadClick({ os, source, manual, channel }: TrackDownloa
       manual ? 'manual' : 'auto',
     ].join(':');
 
-    track('download_click', {
+    trackAnalyticsEvent('download_click', {
       source: sourceValue,
       os,
       download_source: source,
@@ -204,11 +204,7 @@ export function bindDownloadTracking(root: ParentNode = document): void {
 }
 
 export function trackProClick({ source }: { source: ProClickSource }): void {
-  try {
-    track('pro_click', { source });
-  } catch {
-    // Analytics might not be initialized in dev / tests — never block the click.
-  }
+  trackAnalyticsEvent('pro_click', { source });
 }
 
 const isProClickSource = (value: string | undefined): value is ProClickSource =>

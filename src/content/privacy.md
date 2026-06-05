@@ -62,7 +62,7 @@ We share data with the following service providers:
 - **Cloud Infrastructure:** Supabase (backend database, licensing, and API relay).
 - **Payment Processors:** [Paddle.com](https://www.paddle.com) (direct purchases), [Apple](https://www.apple.com/legal/privacy/) (Mac App Store purchases), [Microsoft](https://privacy.microsoft.com/privacystatement) (Microsoft Store purchases).
 - **Error Tracking:** Sentry (anonymous crash and error reports).
-- **Usage Analytics:** TelemetryDeck (privacy-focused product analytics) and Vercel Web Analytics (privacy-friendly website analytics).
+- **Usage Analytics:** TelemetryDeck (privacy-focused product analytics) and PostHog (privacy-friendly website analytics).
 
 Each third-party provider processes data according to their own privacy policies. We encourage you to review their policies.
 

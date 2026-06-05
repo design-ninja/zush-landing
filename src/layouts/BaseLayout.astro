@@ -20,7 +20,7 @@ import {
   type Locale,
 } from '@/i18n/config';
 import { getCopy } from '@/i18n/copy';
-import Analytics from '@vercel/analytics/astro';
+import PostHogAnalytics from '@/components/PostHogAnalytics.astro';
 
 interface Props {
   seo: SeoMeta;
@@ -66,7 +66,9 @@ const localeRedirectConfig = JSON.stringify({
   pt: LOCALE_META['pt-br'].slug,
   zh: LOCALE_META['zh-cn'].slug,
 });
-const shouldLoadVercelAnalytics = import.meta.env.VERCEL === '1';
+const posthogProjectKey = import.meta.env.PUBLIC_POSTHOG_KEY;
+const posthogApiHost = import.meta.env.PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com';
+const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.posthog.com';
 ---
 
 <!doctype html>
@@ -358,7 +360,13 @@ const shouldLoadVercelAnalytics = import.meta.env.VERCEL === '1';
         });
       </script>
     </div>
-    {shouldLoadVercelAnalytics && <Analytics />}
+    {posthogProjectKey && (
+      <PostHogAnalytics
+        projectKey={posthogProjectKey}
+        apiHost={posthogApiHost}
+        uiHost={posthogUiHost}
+      />
+    )}
     {
       ldItems.map((item) => (
         <script
