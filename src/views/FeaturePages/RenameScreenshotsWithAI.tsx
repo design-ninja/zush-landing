@@ -68,11 +68,11 @@ const jsonLd = buildFeaturePageJsonLd({
 
 const RenameScreenshotsWithAI = () => (
   <FeatureLandingPage
-    h1="Rename Screenshots with AI"
+    h1="Rename Screenshots Automatically with AI"
     h1Accent="Rename Screenshots"
     category="screenshot"
     definitionTitle="What Is AI Screenshot Renaming?"
-    definitionText="Rename screenshots with AI using Zush to replace generic timestamp names with descriptive filenames and optionally auto-rename new captures."
+    definitionText="Rename screenshots automatically with AI using Zush to replace generic timestamp names with descriptive filenames on Mac and Windows."
     showcaseSlides={[
       {
         files: [
@@ -112,9 +112,9 @@ const RenameScreenshotsWithAI = () => (
       { title: 'Zush for Mac', href: '/mac' },
     ]}
     relatedBlogPosts={[
+      { title: 'How to Rename Screenshots Automatically on Mac', href: 'rename-screenshots-automatically-mac' },
       { title: 'How to Rename Screenshots Automatically on Windows', href: 'rename-screenshots-automatically-windows' },
       { title: 'Screenshot Naming Conventions on macOS', href: 'screenshot-naming-conventions-macos' },
-      { title: 'How to Organize Your Downloads Folder on Windows', href: 'organize-downloads-folder-windows' },
     ]}
     jsonLd={jsonLd}
   />
