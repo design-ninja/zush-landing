@@ -151,6 +151,9 @@ const plans = PRICING_PLANS.map((plan) => {
               class={paidButtonClass}
               data-paddle-checkout
               data-paddle-price-id={plan.paddlePriceId}
+              data-pro-plan-id={plan.id}
+              data-pro-plan-price={plan.price}
+              data-pro-plan-billing={plan.billing}
             >
               <span class={styles.PricingCard__ButtonText}>
                 {plan.buttonText}

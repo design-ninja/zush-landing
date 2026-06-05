@@ -60,6 +60,7 @@ let paddleInitialized = false;
 let paddleScriptPromise: Promise<void> | null = null;
 let activeCheckoutSession: string | null = null;
 const paddleEventListeners = new Set<PaddleEventListener>();
+const CHECKOUT_PRICE_ID_KEY = "zush_checkout_price_id";
 
 const PADDLE_LOCALES: Record<string, string> = {
   en: "en",
@@ -328,6 +329,7 @@ async function openDirectPaddleCheckout(
 
   activeCheckoutSession = null;
   sessionStorage.removeItem("zush_checkout_session");
+  sessionStorage.setItem(CHECKOUT_PRICE_ID_KEY, priceId);
 
   if (deviceId) {
     sessionStorage.setItem("zush_checkout_device_id", deviceId);
@@ -388,6 +390,7 @@ export async function openPaddleCheckout(
     "zush_checkout_session",
     checkoutSession.checkout_session,
   );
+  sessionStorage.setItem(CHECKOUT_PRICE_ID_KEY, priceId);
 
   if (deviceId) {
     sessionStorage.setItem("zush_checkout_device_id", deviceId);

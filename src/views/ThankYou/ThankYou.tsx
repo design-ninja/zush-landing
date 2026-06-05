@@ -9,6 +9,8 @@ import Heading from "@/components/Heading";
 import Text from "@/components/Text";
 import { DEFAULT_LOCALE, getLocalizedPath, type Locale } from "@/i18n/config";
 import { getServicePageCopy, type ThankYouCopy } from "@/i18n/servicePages";
+import { trackAnalyticsEvent } from "@/utils/analytics";
+import { getProPlanAnalyticsFromPriceId } from "@/utils/proAnalytics";
 import { SUPABASE_URL } from "@/utils/supabase";
 import styles from "./ThankYou.module.scss";
 
@@ -54,9 +56,11 @@ const ThankYou = ({
       params.get("checkout_session") ||
       sessionStorage.getItem("zush_checkout_session");
     const deviceId = sessionStorage.getItem("zush_checkout_device_id");
+    const checkoutPriceId = sessionStorage.getItem("zush_checkout_price_id");
 
     sessionStorage.removeItem("zush_checkout_session");
     sessionStorage.removeItem("zush_checkout_device_id");
+    sessionStorage.removeItem("zush_checkout_price_id");
 
     if (!checkoutSession) {
       setActivationState(deviceId ? "activated" : "email");
@@ -67,6 +71,27 @@ const ThankYou = ({
     }
 
     let cancelled = false;
+    const trackCompletedPurchase = (status: CheckoutSessionStatus["status"]) => {
+      const trackedKey = `zush_pro_purchase_tracked:${checkoutSession}`;
+      if (sessionStorage.getItem(trackedKey) === "true") return;
+
+      const planAnalytics = getProPlanAnalyticsFromPriceId(checkoutPriceId);
+
+      trackAnalyticsEvent("pro_purchase", {
+        source: deviceId ? "app" : "landing",
+        checkout_completed: true,
+        checkout_session_present: true,
+        device_id_present: Boolean(deviceId),
+        activation_status: status,
+        plan: planAnalytics?.plan,
+        price_usd: planAnalytics?.price_usd,
+        price_label: planAnalytics?.price_label,
+        billing: planAnalytics?.billing,
+        paddle_price_id: planAnalytics?.paddle_price_id ?? checkoutPriceId,
+      });
+
+      sessionStorage.setItem(trackedKey, "true");
+    };
 
     const pollCheckoutSession = async () => {
       for (let attempt = 0; attempt < 12; attempt += 1) {
@@ -84,6 +109,9 @@ const ThankYou = ({
           if (cancelled) return;
 
           if (response.ok && result.completed && result.app_url) {
+            if (result.status !== "expired" && result.status !== "failed") {
+              trackCompletedPurchase(result.status);
+            }
             setActivationState(
               result.device_activated ? "activated" : "activation_ready",
             );
@@ -92,6 +120,9 @@ const ThankYou = ({
           }
 
           if (response.ok && result.completed) {
+            if (result.status !== "expired" && result.status !== "failed") {
+              trackCompletedPurchase(result.status);
+            }
             setActivationState(result.status === "expired" ? "expired" : "email");
             return;
           }

@@ -261,7 +261,7 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
       {includeChrome && <FloatingDownloadCTA forceOS={forceOS} />}
       <script>
         import { bindCheckoutAutoOpen } from '@/utils/checkoutAutoOpen';
-        import { bindDownloadTracking, bindProClickTracking } from '@/utils/download';
+        import { bindDownloadTracking, bindProClickTracking, bindProPlanClickTracking } from '@/utils/download';
         import { bindFloatingDownload } from '@/utils/floatingDownload';
         import { bindPricingCheckout } from '@/utils/pricingCheckout';
         import { bindScrollReveal } from '@/utils/scrollReveal';
@@ -343,6 +343,7 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
         bindFloatingDownload();
         bindLanguageSwitcher();
         bindProClickTracking();
+        bindProPlanClickTracking();
         bindPricingCheckout();
         bindScrollReveal();
         bindScrollToTopButton();
@@ -353,6 +354,7 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
           bindFloatingDownload();
           bindLanguageSwitcher();
           bindProClickTracking();
+          bindProPlanClickTracking();
           bindPricingCheckout();
           bindScrollReveal();
           bindScrollToTopButton();

@@ -46,7 +46,8 @@ export type DownloadSource =
 
 export type DownloadChannel = 'direct' | 'mac-app-store' | 'microsoft-store';
 
-export type ProClickSource = 'hero' | 'navbar' | 'pricing';
+export type ProClickSource = 'hero' | 'navbar';
+export type ProPlanId = 'monthly' | 'one-time';
 
 export interface TrackDownloadClickOptions {
   os: DownloadOS;
@@ -208,7 +209,17 @@ export function trackProClick({ source }: { source: ProClickSource }): void {
 }
 
 const isProClickSource = (value: string | undefined): value is ProClickSource =>
-  value === 'hero' || value === 'navbar' || value === 'pricing';
+  value === 'hero' || value === 'navbar';
+
+const isProPlanId = (value: string | undefined): value is ProPlanId =>
+  value === 'monthly' || value === 'one-time';
+
+const getPriceUsd = (priceLabel: string | undefined): number | undefined => {
+  if (!priceLabel) return undefined;
+
+  const price = Number(priceLabel.replace(/[^\d.]/g, ''));
+  return Number.isFinite(price) ? price : undefined;
+};
 
 // fallow-ignore-next-line unused-export
 export const bindProClickTracking = (root: ParentNode = document) => {
@@ -221,6 +232,31 @@ export const bindProClickTracking = (root: ParentNode = document) => {
     element.dataset.proClickTrackingBound = 'true';
     element.addEventListener('click', () => {
       trackProClick({ source });
+    });
+  });
+};
+
+export const bindProPlanClickTracking = (root: ParentNode = document) => {
+  root.querySelectorAll<HTMLElement>('[data-pro-plan-id]').forEach((element) => {
+    if (element.dataset.proPlanClickTrackingBound === 'true') return;
+
+    const plan = element.dataset.proPlanId;
+    if (!isProPlanId(plan)) return;
+
+    element.dataset.proPlanClickTrackingBound = 'true';
+    element.addEventListener('click', () => {
+      const priceLabel = element.dataset.proPlanPrice;
+
+      trackAnalyticsEvent('pro_plan_click', {
+        source: 'pricing',
+        plan,
+        price_label: priceLabel,
+        price_usd: getPriceUsd(priceLabel),
+        billing: plan === 'monthly' ? 'monthly' : 'one-time',
+        billing_label: element.dataset.proPlanBilling,
+        paddle_price_id: element.dataset.paddlePriceId,
+        button_text: element.textContent?.trim().replace(/\s+/g, ' '),
+      });
     });
   });
 };

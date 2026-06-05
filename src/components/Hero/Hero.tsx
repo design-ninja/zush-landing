@@ -6,7 +6,7 @@ import DownloadButton from "../DownloadButton";
 import Heading from "../Heading";
 import Text from "../Text";
 import styles from "./Hero.module.scss";
-import { trackProClick, type DownloadOS } from "@/utils/download";
+import type { DownloadOS } from "@/utils/download";
 import { useOS } from "@/hooks/useOS";
 import type { DownloadMenuCopy } from "@/i18n/copy";
 
@@ -139,7 +139,7 @@ const Hero = ({
               variant="primary"
               size="lg"
               glass
-              onClick={() => trackProClick({ source: "hero" })}
+              data-pro-click-source="hero"
             >
               {buyLabel}
             </Button>
