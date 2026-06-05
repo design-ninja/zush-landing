@@ -57,6 +57,8 @@
     }
 
     &__Preview {
+        --file-preview-ink: color-mix(in srgb, var(--file-preview-color) 32%, var(--foreground));
+
         width: 4rem;
         height: 4rem;
         border-radius: $radius-sm;
@@ -66,13 +68,15 @@
         align-items: center;
         justify-content: center;
         gap: 0.2rem;
-        color: var(--file-preview-color);
+        color: var(--file-preview-ink);
         background: color-mix(in srgb, var(--file-preview-color) 14%, white);
         position: relative;
         overflow: hidden;
         border: 1px solid color-mix(in srgb, var(--file-preview-color) 22%, white);
 
         :global(html[data-theme='dark']) & {
+            --file-preview-ink: color-mix(in srgb, var(--file-preview-color) 45%, var(--foreground));
+
             background: color-mix(in srgb, var(--file-preview-color) 18%, var(--card));
             border-color: color-mix(in srgb, var(--file-preview-color) 32%, var(--card));
         }
@@ -111,7 +115,6 @@
         line-height: 1;
         letter-spacing: 0.08em;
         font-weight: 800;
-        opacity: 0.95;
     }
 
     &__Content {
