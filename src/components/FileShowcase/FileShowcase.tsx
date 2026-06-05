@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { type CSSProperties, useEffect, useState } from "react";
 import { FileAudio2, FileSpreadsheet, FileText, FileType2, Film, Palette, Presentation } from "lucide-react";
 import { VIDEO_PREVIEW_IMAGES } from "@/data/videoPreviewImages";
 import styles from "./FileShowcase.module.scss";
@@ -146,6 +146,7 @@ interface FileShowcaseProps {
 const FileShowcase = ({ slides: customSlides }: FileShowcaseProps = {}) => {
   const slides = customSlides || defaultSlides;
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [hasAdvanced, setHasAdvanced] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
@@ -164,13 +165,16 @@ const FileShowcase = ({ slides: customSlides }: FileShowcaseProps = {}) => {
   }, []);
 
   useEffect(() => {
-    if (isPaused || prefersReducedMotion) return;
+    if (isPaused || prefersReducedMotion || slides.length <= 1) return;
 
     const interval = setInterval(() => {
+      setHasAdvanced(true);
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 4000);
     return () => clearInterval(interval);
-  }, [isPaused, prefersReducedMotion, slides]);
+  }, [isPaused, prefersReducedMotion, slides.length]);
+
+  const shouldAnimateItems = hasAdvanced && !prefersReducedMotion;
 
   return (
     <div
@@ -180,10 +184,23 @@ const FileShowcase = ({ slides: customSlides }: FileShowcaseProps = {}) => {
     >
       <div key={currentSlide} className={styles.FileShowcase__Grid}>
         {slides[currentSlide].files.map((file, i) => {
+          const itemStyle = shouldAnimateItems
+            ? ({
+                "--item-delay": `${i * 80}ms`,
+              } as CSSProperties)
+            : undefined;
+
           return (
             <div
               key={`${currentSlide}-${i}`}
-              className={`${styles.FileItem} ${prefersReducedMotion ? styles.FileItem_static : ""}`}
+              className={[
+                styles.FileItem,
+                shouldAnimateItems ? styles.FileItem_animated : "",
+                prefersReducedMotion ? styles.FileItem_static : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
+              style={itemStyle}
             >
               {file.img ? (
                 <picture>
