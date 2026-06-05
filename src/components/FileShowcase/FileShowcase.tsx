@@ -1,4 +1,4 @@
-import { CSSProperties, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FileAudio2, FileSpreadsheet, FileText, FileType2, Film, Palette, Presentation } from "lucide-react";
 import { VIDEO_PREVIEW_IMAGES } from "@/data/videoPreviewImages";
 import styles from "./FileShowcase.module.scss";
@@ -180,15 +180,10 @@ const FileShowcase = ({ slides: customSlides }: FileShowcaseProps = {}) => {
     >
       <div key={currentSlide} className={styles.FileShowcase__Grid}>
         {slides[currentSlide].files.map((file, i) => {
-          const itemStyle = {
-            "--item-delay": `${i * 80}ms`,
-          } as CSSProperties;
-
           return (
             <div
               key={`${currentSlide}-${i}`}
               className={`${styles.FileItem} ${prefersReducedMotion ? styles.FileItem_static : ""}`}
-              style={itemStyle}
             >
               {file.img ? (
                 <picture>
