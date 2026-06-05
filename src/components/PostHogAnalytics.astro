@@ -51,6 +51,13 @@ const {
       capture_pageview: false,
       capture_pageleave: true,
       person_profiles: 'identified_only',
+      before_send: (event) => {
+        if (hasPostHogCountryOptOut()) {
+          return null;
+        }
+
+        return event;
+      },
     });
 
     capturePageview();
