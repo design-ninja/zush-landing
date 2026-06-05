@@ -22,8 +22,15 @@ const {
 >
   (() => {
     const TRACKED_HOSTS = new Set(['zushapp.com', 'www.zushapp.com']);
+    const POSTHOG_COUNTRY_OPTOUT_COOKIE = 'zush_posthog_country_optout=1';
+    const hasPostHogCountryOptOut = () =>
+      document.cookie.split(';').some((cookie) => cookie.trim() === POSTHOG_COUNTRY_OPTOUT_COOKIE);
 
-    if (!posthogProjectKey || !TRACKED_HOSTS.has(window.location.hostname)) {
+    if (
+      !posthogProjectKey ||
+      !TRACKED_HOSTS.has(window.location.hostname) ||
+      hasPostHogCountryOptOut()
+    ) {
       return;
     }
 
