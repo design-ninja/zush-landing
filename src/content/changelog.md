@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.4.3] - 2026-06-07
+
+### Improved
+- More reliable monitoring for cloud folders on macOS
+- Clearer privacy settings and Full Disk Access guidance
+- Better translations for settings and template labels
+
 ## [3.4.2] - 2026-05-31
 
 ### Improved
