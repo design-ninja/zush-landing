@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.2.2.0] - 2026-06-07
+### Improved
+- AI Rename now records richer workflow events for file selection, analysis, and rename completion so issues can be diagnosed more accurately.
+- Cloud, local metadata, and PRO rename paths now report workflow progress consistently without double-counting completed renames.
+- Usage metrics keep file names and file paths out of event metadata.
+
+
 ## [3.2.1.0] - 2026-06-03
 ### Fixed
 - Long BYOK provider keys no longer push action buttons outside the AI Setup card
