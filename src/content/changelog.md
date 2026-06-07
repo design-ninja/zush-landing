@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.4.4] - 2026-06-07
+
+### Improved
+- More reliable AI Rename progress and activity reporting
+- Better diagnostics when rename workflows need troubleshooting
+
+### Fixed
+- Fixed usage reporting edge cases for batch rename workflows
+
 ## [3.4.3] - 2026-06-07
 
 ### Improved
