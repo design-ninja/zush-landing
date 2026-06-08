@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.4.5] - 2026-06-08
+
+### Improved
+- More reliable AI Rename activity reporting
+- Reduced background work during batch rename
+
+### Fixed
+- Fixed a crash when regenerating names during batch rename
+
 ## [3.4.4] - 2026-06-07
 
 ### Improved
