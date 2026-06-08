@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.2.3.0] - 2026-06-08
+
+### Improved
+- Improved AI Rename activity reporting.
+- Reduced background work during batch rename.
+- Improved batch rename reliability for larger rename sessions.
+
+
 ## [3.2.2.0] - 2026-06-07
 ### Improved
 - AI Rename now records richer workflow events for file selection, analysis, and rename completion so issues can be diagnosed more accurately.
