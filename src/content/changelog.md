@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.4.6] - 2026-06-09
+
+### Added
+- New welcome screen with clearer privacy information
+
+### Improved
+- More consistent AI Rename language handling
+- Better support for keeping useful details in file names
+- Clearer subscription legal links in the purchase flow
+
+### Fixed
+- Fixed accented characters in AI-suggested file names
+
 ## [3.4.5] - 2026-06-08
 
 ### Improved
