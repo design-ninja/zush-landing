@@ -1,6 +1,6 @@
 ---
-title: "How to Batch Rename Files on Mac: Finder, Automator and AI"
-description: "Batch rename files on Mac step by step with Finder Rename, Name and Index, Automator, Terminal scripts, and AI for screenshots, PDFs, photos, and Downloads."
+title: "Batch Rename Files on Mac: Finder vs Automator vs AI"
+description: "Compare Finder, Automator, Terminal, and AI batch rename on Mac. Pick the right method for photos, screenshots, PDFs, downloads, and mixed folders."
 date: "2026-02-08"
 slug: "batch-rename-files-on-mac-complete-guide"
 platform: "mac"
@@ -9,11 +9,18 @@ tags:
   - "Automation"
   - "File Organization"
 tldr: "Use Finder for simple text edits, Automator for repeatable Mac rules, Terminal for scripted batches, and AI batch renaming when every file needs a unique descriptive name."
-reviewed: "2026-06-04"
+reviewed: "2026-06-10"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: to batch rename files on Mac, use Finder's Rename command for simple text or number changes, Automator for repeatable rules, Terminal for scripted bulk changes, and AI when every file needs a different descriptive name.
+Quick answer: to batch rename files on Mac, use Finder for simple text or number changes, Automator for repeatable rules, Terminal for scripted bulk changes, and AI when every file needs a unique descriptive name based on content.
+
+| Best Mac batch rename method | Use it when | Main limit |
+|---|---|---|
+| Finder Rename | Every file gets the same prefix, suffix, replacement, or number sequence | Cannot read file content |
+| Automator / Shortcuts | You repeat the same rule every week | Pattern-based, not semantic |
+| Terminal scripts | You need regex, metadata, or custom logic | Requires maintenance and mistakes are easy |
+| AI batch rename | Screenshots, PDFs, photos, downloads, and mixed folders need different names | Best with review before applying |
 
 Batch renaming files on Mac is easy when the rename rule is simple and much harder when every file needs a different descriptive name. Finder's **Name and Index** option is enough for `photo-001.jpg`, `photo-002.jpg`, and similar batches. A student renaming a folder of mixed screenshots, PDFs, and downloads into something searchable has a different problem.
 

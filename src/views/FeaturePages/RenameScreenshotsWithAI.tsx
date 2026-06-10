@@ -4,6 +4,11 @@ import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 
 const faqItems = [
   {
+    question: 'How do I rename a screenshot on Mac or Windows?',
+    answer:
+      'Manually, select the screenshot in Finder or File Explorer and rename it like any other file. For automatic descriptive names, point Zush at your screenshot folder, review the AI name pattern once, and let new screenshots get names based on what they show.',
+  },
+  {
     question: 'Can Zush automatically rename screenshots as I take them?',
     answer:
       'Yes. Zush can monitor your Screenshots folder (or any folder you choose) and automatically rename new files as they appear. Just enable folder monitoring and every new screenshot gets an AI-generated name within seconds.',
@@ -68,11 +73,11 @@ const jsonLd = buildFeaturePageJsonLd({
 
 const RenameScreenshotsWithAI = () => (
   <FeatureLandingPage
-    h1="Rename Screenshots Automatically with AI"
+    h1="Rename Screenshots Automatically on Mac and Windows"
     h1Accent="Rename Screenshots"
     category="screenshot"
     definitionTitle="What Is AI Screenshot Renaming?"
-    definitionText="Rename screenshots automatically with AI using Zush to replace generic timestamp names with descriptive filenames on Mac and Windows."
+    definitionText="Rename screenshots automatically with AI using Zush to replace generic Mac and Windows timestamp names with searchable filenames based on the app, page, error, chart, or conversation shown."
     showcaseSlides={[
       {
         files: [
@@ -110,6 +115,7 @@ const RenameScreenshotsWithAI = () => (
       { title: 'Rename Photos with AI', href: '/rename-photos-with-ai' },
       { title: 'Rename PDFs with AI', href: '/rename-pdf-with-ai' },
       { title: 'Zush for Mac', href: '/mac' },
+      { title: 'Zush for Windows', href: '/windows' },
     ]}
     relatedBlogPosts={[
       { title: 'How to Rename Screenshots Automatically on Mac', href: 'rename-screenshots-automatically-mac' },

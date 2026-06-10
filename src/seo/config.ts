@@ -145,9 +145,9 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ogType: 'website',
   },
   '/rename-screenshots-with-ai': {
-    title: 'How to Rename Screenshots Automatically with AI | Zush',
+    title: 'Rename Screenshots Automatically on Mac & Windows | Zush',
     description:
-      'Rename screenshots automatically on Mac and Windows. Zush watches screenshot folders and replaces timestamp filenames with descriptive AI names.',
+      'Rename screenshots automatically on Mac and Windows. Watch screenshot folders and replace timestamp names with searchable AI filenames.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -173,16 +173,16 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ogType: 'website',
   },
   '/mac': {
-    title: 'File Renamer for Mac: Batch Rename Files with AI | Zush',
+    title: 'File Renamer for Mac | Batch Rename Files with AI - Zush',
     description:
-      'File renamer for Mac that batch renames files by content with AI. Rename screenshots, PDFs, photos, videos, audio, design files, iWork and Office docs.',
+      'Batch rename files on Mac with AI. Rename screenshots, PDFs, photos, videos, audio, design files, iWork, and Office docs by content.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/windows': {
-    title: 'File Renamer for Windows: Bulk Rename Files with AI | Zush',
+    title: 'File Renamer for Windows | Bulk Rename Files with AI - Zush',
     description:
-      'File renamer for Windows 11 and 10 that bulk renames files by content with AI. Batch rename screenshots, PDFs, photos, videos, audio, design files, and Office docs.',
+      'Bulk rename files on Windows 11 and 10 with AI. Rename screenshots, PDFs, photos, videos, audio, design files, and Office docs by content.',
     robots: 'index, follow',
     ogType: 'website',
   },
