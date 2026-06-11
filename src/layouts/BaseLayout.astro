@@ -259,7 +259,7 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
       </main>
       {includeChrome && <Footer locale={locale} hidePlatform={footerHidePlatform} />}
       {includeChrome && <ScrollToTopButton />}
-      {includeChrome && <FloatingDownloadCTA forceOS={forceOS} />}
+      {includeChrome && <FloatingDownloadCTA forceOS={forceOS} label={layoutCopy.header.downloadZush} />}
       <script>
         import { bindCheckoutAutoOpen } from '@/utils/checkoutAutoOpen';
         import { bindDownloadTracking, bindProClickTracking, bindProPlanClickTracking } from '@/utils/download';

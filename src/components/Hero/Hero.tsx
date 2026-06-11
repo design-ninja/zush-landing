@@ -23,6 +23,7 @@ interface HeroProps {
   secondaryHref?: string;
   buyLabel?: string;
   downloadLabel?: string;
+  downloadEdgeLabel?: string;
   downloadMenu?: DownloadMenuCopy;
   includeOtherDownloadOS?: boolean;
   trustSignals?: string[];
@@ -55,6 +56,7 @@ const Hero = ({
   secondaryHref = "/#pricing",
   buyLabel = "Buy 🌟 PRO",
   downloadLabel = "Download",
+  downloadEdgeLabel,
   downloadMenu,
   includeOtherDownloadOS = true,
   trustSignals = ["✨ Free to try", "💳 No credit card required"],
@@ -130,6 +132,7 @@ const Hero = ({
               size="lg"
               forceOS={forceOS}
               label={downloadLabel}
+              edgeLabel={downloadEdgeLabel}
               menuCopy={downloadMenu}
               includeOtherOS={includeOtherDownloadOS}
             />

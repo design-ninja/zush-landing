@@ -1,0 +1,20 @@
+.EdgeLabel {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    margin-left: 0.08rem;
+    min-width: 2.7rem;
+    height: 1.35rem;
+    padding: 0 0.42rem;
+    border-radius: 999px;
+    background: oklch(1 0 0 / 0.14);
+    box-shadow:
+        inset 0 1px 0 oklch(1 0 0 / 0.24),
+        inset 0 0 0 1px oklch(1 0 0 / 0.12);
+    color: oklch(0.86 0.19 148);
+    font-size: 0.68rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0;
+}

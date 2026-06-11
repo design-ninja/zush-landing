@@ -10,6 +10,7 @@ import CrossPlatformBanner from '@/components/CrossPlatformBanner/CrossPlatformB
 import EvidenceSignals from '@/components/EvidenceSignals/EvidenceSignals.astro';
 import macChangelogSource from '@/content/changelog.md?raw';
 import windowsChangelogSource from '@/content/changelog.windows.md?raw';
+import { FREE_DOWNLOAD_BADGE_LABEL } from '@/constants';
 import { parseLatestVersion } from '@/utils/version';
 import type { Locale } from '@/i18n/config';
 import type { LocaleCopy } from '@/i18n/copy';
@@ -32,6 +33,7 @@ const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
   subtitle={copy.home.heroSubtitle}
   buyLabel={copy.home.buyPro}
   downloadLabel={copy.header.download}
+  downloadEdgeLabel={FREE_DOWNLOAD_BADGE_LABEL}
   downloadMenu={copy.downloadMenu}
   trustSignals={copy.home.trustSignals}
   secondaryHref={secondaryHref}

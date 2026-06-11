@@ -5,6 +5,7 @@ export const APP_STORE_PROTOCOL_URL = "macappstore://apps.apple.com/app/zush/id6
 export const WINDOWS_STORE_URL = "https://apps.microsoft.com/detail/9ND4WVZSDQ3X";
 export const WINDOWS_STORE_PROTOCOL_URL = "ms-windows-store://pdp/?ProductId=9ND4WVZSDQ3X";
 export const SUPPORT_EMAIL = "support@zushapp.com";
+export const FREE_DOWNLOAD_BADGE_LABEL = "FREE";
 
 // System requirements
 export const MIN_MACOS_VERSION = "Sequoia and newer";

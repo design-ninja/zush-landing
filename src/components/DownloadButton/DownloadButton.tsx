@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import AppleIcon from '@/components/AppleIcon';
 import AppStoreIcon from '@/components/AppStoreIcon';
+import EdgeLabel from '@/components/EdgeLabel';
 import WindowsIcon from '@/components/WindowsIcon';
 import { APP_STORE_PROTOCOL_URL, APP_STORE_URL, WINDOWS_STORE_PROTOCOL_URL, WINDOWS_STORE_URL } from '@/constants';
 import { useOS } from '@/hooks/useOS';
@@ -30,6 +31,7 @@ interface DownloadButtonProps {
   surface?: Surface;
   label?: string;
   labelAccent?: string;
+  edgeLabel?: string;
   className?: string;
   useMobileModal?: boolean;
   forceOS?: DownloadOS;
@@ -72,6 +74,7 @@ const DownloadButton = ({
   surface = 'glass',
   label = 'Download',
   labelAccent,
+  edgeLabel,
   className,
   useMobileModal = true,
   forceOS,
@@ -235,7 +238,13 @@ const DownloadButton = ({
         .join(' ')}
     >
       <a
-        className={[styles.Main, !hasDropdownItems ? styles.Main_single : ''].filter(Boolean).join(' ')}
+        className={[
+          styles.Main,
+          !hasDropdownItems ? styles.Main_single : '',
+          edgeLabel ? styles.Main_withEdgeLabel : '',
+        ]
+          .filter(Boolean)
+          .join(' ')}
         href={primaryHref}
         target='_blank'
         rel='noopener noreferrer'
@@ -249,6 +258,7 @@ const DownloadButton = ({
       >
         {downloadOS === 'windows' ? <WindowsIcon colored /> : <AppleIcon />}
         {renderLabel(label, labelAccent)}
+        {edgeLabel && <EdgeLabel>{edgeLabel}</EdgeLabel>}
       </a>
       {hasDropdownItems && (
         <button
