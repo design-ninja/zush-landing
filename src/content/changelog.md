@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.5.0] - 2026-06-11
+
+### Improved
+- AI Rename now keeps generated names in the source language by default
+- Faster batch renaming for large groups of files
+- Clearing Activity now keeps your rename statistics intact
+- Fewer unnecessary folder access prompts during direct rename
+
+### Fixed
+- Batch rename jobs now finish more reliably after large rename runs
+
 ## [3.4.6] - 2026-06-09
 
 ### Added
