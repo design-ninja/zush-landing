@@ -1,6 +1,6 @@
 ---
 title: "BYOK: Unlimited AI File Renames with Your Own API Key (2026)"
-description: "Learn how to use your own API key for unlimited AI file renaming in Zush. Compare Gemini, Groq, OpenAI, and Claude providers with cost breakdowns."
+description: "Use your own API key for unlimited AI file renaming in Zush. Compare Gemini, Groq, OpenAI, and Claude BYOK setup, privacy, pricing, and cost estimates."
 date: "2026-03-23"
 slug: "byok-ai-file-renaming-unlimited"
 platform: "general"
@@ -8,12 +8,14 @@ topic: "byok"
 tags:
   - "AI File Renaming"
   - "BYOK"
-tldr: "Zush's BYOK feature lets you connect your own API key from Gemini, Groq, OpenAI, or Claude for unlimited cloud AI file renaming. Two of the four providers offer free tiers, and paid usage costs roughly $0.001 per rename or less."
-reviewed: "2026-06-04"
+tldr: "Zush's BYOK feature lets you connect your own API key from Gemini, Groq, OpenAI, or Claude for unlimited cloud AI file renaming. Two of the four providers offer free tiers, and paid usage depends on provider, model, file size, and token use."
+reviewed: "2026-06-12"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: BYOK (Bring Your Own Key) lets you connect your own OpenAI, Gemini, Groq, or Claude API key to Zush so you can use your preferred provider account and pay only the provider per-request cost — typically fractions of a cent per file. If you are deciding between BYOK, built-in cloud credits, and local Ollama processing, start with [Cloud AI vs Local AI File Renaming](/blog/cloud-vs-local-ai-file-renaming).
+Quick answer: BYOK (Bring Your Own Key) lets you connect your own OpenAI, Gemini, Groq, or Claude API key to Zush so you can use your preferred provider account and pay the provider's metered API cost. The final cost depends on provider, model, file size, and token usage. If you are deciding between BYOK, built-in cloud credits, and local Ollama processing, start with [Cloud AI vs Local AI File Renaming](/blog/cloud-vs-local-ai-file-renaming).
+
+Pricing and provider notes last checked June 12, 2026.
 
 Zush includes 50 free AI renames on the free plan, while both PRO plans unlock unlimited PRO renames: $8/month or $38 one-time. If you process large photo libraries, manage client assets at scale, or want provider-level control, there is another option: bring your own API key.
 
@@ -85,7 +87,7 @@ Groq runs AI inference on custom hardware designed for speed. It is one of the f
 OpenAI provides GPT-4o and related models with strong image understanding capabilities.
 
 - **Free tier**: No free tier, but new accounts may receive initial credits.
-- **Paid pricing**: Approximately $0.001 per rename or less, depending on the model and image size.
+- **Paid pricing**: Metered API pricing; the cost depends on model choice, image size, and token usage.
 - **Speed**: Good. Response times are consistent and reliable.
 - **Best for**: Users who already have an OpenAI account or prefer GPT-based models.
 
@@ -94,13 +96,13 @@ OpenAI provides GPT-4o and related models with strong image understanding capabi
 Claude is Anthropic's AI with strong visual understanding and detailed analysis capabilities.
 
 - **Free tier**: No free tier, but new accounts may receive initial credits.
-- **Paid pricing**: Approximately $0.001 per rename or less, depending on the model and file type.
+- **Paid pricing**: Metered API pricing; the cost depends on model choice, file type, and token usage.
 - **Speed**: Good. In our testing Claude wrote the most specific descriptions for screenshots with mixed visual content.
 - **Best for**: Users who want detailed, accurate content descriptions, especially for complex images and documents.
 
 ## Cost breakdown: what unlimited actually costs
 
-Here is what typical usage looks like in real dollar terms. These estimates assume standard image and document sizes for file renaming operations.
+Here is what typical usage can look like in real dollar terms. These are directional estimates, not guarantees, because provider pricing, selected models, file sizes, prompt length, and token usage can change the final bill.
 
 | Provider | 100 renames/month | 500 renames/month | 2,000 renames/month |
 |---|---|---|---|
@@ -111,7 +113,7 @@ Here is what typical usage looks like in real dollar terms. These estimates assu
 
 For context, 500 renames per month covers most active Mac users who take daily screenshots, download files regularly, and import photos weekly. The cost at that volume ranges from free to roughly fifty cents per month.
 
-Even at 2,000 renames per month, which represents heavy professional usage, the total cost is under two dollars with any provider.
+At 2,000 renames per month, heavy professional usage can still be low-cost on efficient models, but treat the table as a planning estimate and confirm current provider pricing before standardizing a workflow.
 
 
 ## Step-by-step setup for each provider
@@ -218,6 +220,6 @@ Your API key is stored locally on your Mac and is only sent to the AI provider y
 
 ## Conclusion
 
-BYOK gives you provider control. If you have already decided content-aware renaming is worth doing and want to route analysis through your own account, a Gemini or Groq key will typically cover your entire year for free. At 2,000 renames per month (heavy professional use), OpenAI and Claude both come in under $2/month.
+BYOK gives you provider control. If you have already decided content-aware renaming is worth doing and want to route analysis through your own account, a Gemini or Groq key may cover light to moderate use within free-tier limits. For heavier OpenAI or Claude usage, use the estimate table as a planning baseline and confirm current provider pricing before committing.
 
 For a comparison of Zush against other tools in this category, see [Best AI File Renamer Tools for Mac Compared](/blog/best-ai-file-renamer-tools-mac-compared) and [Best AI File Renamer Tools 2026](/blog/best-ai-file-renamer-tools-2026). To get started with [Zush](/file-renamer), the free plan includes 50 free renames, PRO gives you unlimited renames, and BYOK lets you use your own provider account.
