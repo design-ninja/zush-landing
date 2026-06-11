@@ -9,6 +9,7 @@ import Heading from "@/components/Heading";
 import Text from "@/components/Text";
 import { DEFAULT_LOCALE, getLocalizedPath, type Locale } from "@/i18n/config";
 import { getServicePageCopy, type ThankYouCopy } from "@/i18n/servicePages";
+import { trackAdPurchaseConversion } from "@/utils/adTracking";
 import { trackAnalyticsEvent } from "@/utils/analytics";
 import { getProPlanAnalyticsFromPriceId } from "@/utils/proAnalytics";
 import { SUPABASE_URL } from "@/utils/supabase";
@@ -88,6 +89,12 @@ const ThankYou = ({
         price_label: planAnalytics?.price_label,
         billing: planAnalytics?.billing,
         paddle_price_id: planAnalytics?.paddle_price_id ?? checkoutPriceId,
+      });
+
+      trackAdPurchaseConversion({
+        transactionId: checkoutSession,
+        value: planAnalytics?.price_usd,
+        currency: "USD",
       });
 
       sessionStorage.setItem(trackedKey, "true");
