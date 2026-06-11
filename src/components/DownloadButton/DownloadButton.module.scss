@@ -158,7 +158,26 @@
     @include cta-glass-gloss;
     border-radius: $radius-full;
     @include corner-shape-squircle;
-    overflow: visible;
+    overflow: hidden;
+
+    &.Group_open {
+        overflow: visible;
+    }
+
+    &:focus-within {
+        outline: 2px solid var(--primary);
+        outline-offset: 3px;
+    }
+
+    .Main:focus-visible,
+    .Toggle:focus-visible {
+        outline: none;
+    }
+
+    &::before {
+        inset: 0 0.25rem auto;
+        height: calc(46% + 0.1rem);
+    }
 
     &:hover,
     &:focus-within {
@@ -217,7 +236,7 @@
         0 0.8rem 2rem -1rem var(--cta-glass-glow);
 
     &::before {
-        inset: 0.1rem 0.25rem auto;
+        inset: 0 0.25rem auto;
         height: 46%;
         background: linear-gradient(180deg, var(--cta-glass-shine-strong), transparent);
         opacity: 0.92;
