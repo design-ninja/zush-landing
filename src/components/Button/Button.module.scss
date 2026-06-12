@@ -3,8 +3,12 @@
 
 .Button {
     all: unset;
+    appearance: none;
+    -webkit-appearance: none;
+    box-sizing: border-box;
     border-radius: $radius-full;
     @include corner-shape-squircle;
+    background-clip: padding-box;
     font-weight: 500;
     transition:
         transform $transition-fast,
@@ -21,6 +25,8 @@
     font-family: var(--font-family);
     text-decoration: none;
     gap: 0.5rem;
+    overflow: hidden;
+    isolation: isolate;
 
     &:focus-visible {
         outline: 2px solid var(--primary);
@@ -85,6 +91,7 @@
         @include cta-glass-surface;
         @include cta-glass-gloss;
         @include cta-glass-content;
+        border-radius: $radius-full;
 
         &:hover {
             @include cta-glass-hover;

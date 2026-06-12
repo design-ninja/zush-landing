@@ -21,6 +21,8 @@
 .Main,
 .Toggle {
     all: unset;
+    appearance: none;
+    -webkit-appearance: none;
     box-sizing: border-box;
     display: inline-flex;
     align-items: center;
@@ -32,6 +34,7 @@
     min-height: var(--download-button-height);
     white-space: nowrap;
     text-decoration: none;
+    background-clip: padding-box;
     transition:
         transform $transition-fast,
         background-color $transition-fast,
@@ -58,6 +61,7 @@
 
     &_single {
         border-radius: $radius-full;
+        overflow: hidden;
         width: 100%;
     }
 
@@ -168,6 +172,7 @@
     @include cta-glass-gloss;
     border-radius: $radius-full;
     @include corner-shape-squircle;
+    background-clip: padding-box;
     overflow: hidden;
 
     &.Group_open {

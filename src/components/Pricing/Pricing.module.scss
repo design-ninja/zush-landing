@@ -342,6 +342,11 @@
             display: flex;
             width: 100%;
             box-sizing: border-box;
+            appearance: none;
+            -webkit-appearance: none;
+            border-radius: $radius-full;
+            background-clip: padding-box;
+            overflow: hidden;
         }
 
         button[data-paddle-loading='true'] {

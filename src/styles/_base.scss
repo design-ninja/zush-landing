@@ -40,15 +40,20 @@ a {
 }
 
 button {
+    appearance: none;
+    -webkit-appearance: none;
     cursor: pointer;
     border: none;
     outline: none;
     background: none;
     font-family: var(--font-family);
+    color: inherit;
 }
 
 button,
 [role='button'] {
+    appearance: none;
+    -webkit-appearance: none;
     font-family: var(--font-family);
     font-weight: 500;
 }
