@@ -33,6 +33,7 @@ LEGACY_AD_GROUP_ID = "193915548417"
 CAMPAIGN_NAME = "Zush Mac Search 2026Q2"
 CAMPAIGN_RESOURCE = f"customers/{CUSTOMER_ID}/campaigns/{CAMPAIGN_ID}"
 LEGACY_AD_GROUP_RESOURCE = f"customers/{CUSTOMER_ID}/adGroups/{LEGACY_AD_GROUP_ID}"
+MAX_CPC_BID_MICROS = 50_000_000
 
 
 @dataclass(frozen=True)
@@ -61,11 +62,29 @@ AD_GROUPS: tuple[AdGroupSpec, ...] = (
         keywords=(
             KeywordSpec("ai file renamer mac", "EXACT"),
             KeywordSpec("ai file renamer mac", "PHRASE"),
+            KeywordSpec("ai file renamer mac", "BROAD"),
             KeywordSpec("ai file renamer for mac", "EXACT"),
             KeywordSpec("ai renamer mac", "EXACT"),
             KeywordSpec("file renamer ai mac", "PHRASE"),
+            KeywordSpec("file renamer", "EXACT"),
+            KeywordSpec("file renamer", "PHRASE"),
+            KeywordSpec("file renamer", "BROAD"),
+            KeywordSpec("file renaming software", "PHRASE"),
+            KeywordSpec("file rename software", "PHRASE"),
+            KeywordSpec("file renamer mac", "BROAD"),
             KeywordSpec("mac file renamer", "EXACT"),
             KeywordSpec("mac file renamer", "PHRASE"),
+            KeywordSpec("mac file renamer", "BROAD"),
+            KeywordSpec("rename files mac", "PHRASE"),
+            KeywordSpec("rename files automatically", "PHRASE"),
+            KeywordSpec("batch file renamer mac", "PHRASE"),
+            KeywordSpec("batch file renamer", "PHRASE"),
+            KeywordSpec("batch file renamer", "BROAD"),
+            KeywordSpec("bulk rename files mac", "PHRASE"),
+            KeywordSpec("bulk file renamer", "PHRASE"),
+            KeywordSpec("rename multiple files", "PHRASE"),
+            KeywordSpec("file renamer app", "PHRASE"),
+            KeywordSpec("file organizer mac", "PHRASE"),
             KeywordSpec("automatic file renamer mac", "EXACT"),
         ),
         headlines=(
@@ -100,10 +119,17 @@ AD_GROUPS: tuple[AdGroupSpec, ...] = (
             KeywordSpec("rename screenshots mac", "EXACT"),
             KeywordSpec("rename screenshots mac", "PHRASE"),
             KeywordSpec("auto rename screenshots mac", "PHRASE"),
+            KeywordSpec("image renamer mac", "PHRASE"),
+            KeywordSpec("image renamer", "PHRASE"),
+            KeywordSpec("photo renamer mac", "PHRASE"),
+            KeywordSpec("photo renamer", "PHRASE"),
+            KeywordSpec("rename images mac", "PHRASE"),
+            KeywordSpec("rename image files", "PHRASE"),
             KeywordSpec("ai photo renamer mac", "EXACT"),
             KeywordSpec("ai photo renamer mac", "PHRASE"),
             KeywordSpec("ai image renamer mac", "EXACT"),
             KeywordSpec("rename photos mac", "PHRASE"),
+            KeywordSpec("rename photos automatically", "PHRASE"),
         ),
         headlines=(
             "Auto-Rename Screenshots",
@@ -132,10 +158,16 @@ AD_GROUPS: tuple[AdGroupSpec, ...] = (
         keywords=(
             KeywordSpec("pdf renamer mac", "EXACT"),
             KeywordSpec("pdf renamer mac", "PHRASE"),
+            KeywordSpec("pdf renamer", "PHRASE"),
             KeywordSpec("rename pdf files mac", "EXACT"),
             KeywordSpec("rename pdf files mac", "PHRASE"),
+            KeywordSpec("rename pdf files", "PHRASE"),
             KeywordSpec("rename pdf files with ai mac", "PHRASE"),
+            KeywordSpec("rename pdf mac", "PHRASE"),
+            KeywordSpec("pdf file renamer mac", "PHRASE"),
             KeywordSpec("ai pdf renamer mac", "EXACT"),
+            KeywordSpec("document renamer", "PHRASE"),
+            KeywordSpec("rename documents automatically", "PHRASE"),
             KeywordSpec("automatic file renamer mac", "PHRASE"),
         ),
         headlines=(
@@ -352,7 +384,7 @@ def ensure_ad_groups(client: GoogleAdsClient) -> dict[str, str]:
             ad_group.campaign = CAMPAIGN_RESOURCE
             ad_group.status = enum_value(client, "AdGroupStatusEnum", "ENABLED")
             ad_group.type_ = enum_value(client, "AdGroupTypeEnum", "SEARCH_STANDARD")
-            ad_group.cpc_bid_micros = 10_000
+            ad_group.cpc_bid_micros = MAX_CPC_BID_MICROS
             ad_group.final_url_suffix = ad_group_final_url_suffix(spec)
             operations.append(op)
         result = service.mutate_ad_groups(customer_id=CUSTOMER_ID, operations=operations)
@@ -419,10 +451,76 @@ def ensure_keywords(client: GoogleAdsClient, ad_groups: dict[str, str]) -> None:
             criterion.status = enum_value(client, "AdGroupCriterionStatusEnum", "ENABLED")
             criterion.keyword.text = keyword.text
             criterion.keyword.match_type = enum_value(client, "KeywordMatchTypeEnum", keyword.match_type)
+            criterion.cpc_bid_micros = MAX_CPC_BID_MICROS
             operations.append(op)
         if operations:
             criterion_service.mutate_ad_group_criteria(customer_id=CUSTOMER_ID, operations=operations)
         print("keywords ready", spec.name, len(operations), "created")
+
+
+def ensure_cpc_caps(client: GoogleAdsClient) -> None:
+    service = client.get_service("GoogleAdsService")
+
+    ad_group_rows = list(
+        service.search(
+            customer_id=CUSTOMER_ID,
+            query=f"""
+            SELECT ad_group.resource_name,
+                   ad_group.cpc_bid_micros
+            FROM ad_group
+            WHERE ad_group.campaign = '{CAMPAIGN_RESOURCE}'
+              AND ad_group.status = ENABLED
+            """,
+        )
+    )
+    ad_group_service = client.get_service("AdGroupService")
+    ad_group_operations = []
+    for row in ad_group_rows:
+        if row.ad_group.cpc_bid_micros == MAX_CPC_BID_MICROS:
+            continue
+        op = client.get_type("AdGroupOperation")
+        ad_group = op.update
+        ad_group.resource_name = row.ad_group.resource_name
+        ad_group.cpc_bid_micros = MAX_CPC_BID_MICROS
+        op.update_mask.CopyFrom(FieldMask(paths=["cpc_bid_micros"]))
+        ad_group_operations.append(op)
+    if ad_group_operations:
+        ad_group_service.mutate_ad_groups(customer_id=CUSTOMER_ID, operations=ad_group_operations)
+    print("ad group CPC caps updated", len(ad_group_operations))
+
+    criterion_rows = list(
+        service.search(
+            customer_id=CUSTOMER_ID,
+            query=f"""
+            SELECT ad_group_criterion.resource_name,
+                   ad_group_criterion.cpc_bid_micros,
+                   ad_group_criterion.effective_cpc_bid_micros
+            FROM ad_group_criterion
+            WHERE ad_group.campaign = '{CAMPAIGN_RESOURCE}'
+              AND ad_group.status = ENABLED
+              AND ad_group_criterion.type = KEYWORD
+              AND ad_group_criterion.negative = FALSE
+              AND ad_group_criterion.status = ENABLED
+            """,
+        )
+    )
+    criterion_service = client.get_service("AdGroupCriterionService")
+    criterion_operations = []
+    for row in criterion_rows:
+        if (
+            row.ad_group_criterion.cpc_bid_micros == MAX_CPC_BID_MICROS
+            and row.ad_group_criterion.effective_cpc_bid_micros <= MAX_CPC_BID_MICROS
+        ):
+            continue
+        op = client.get_type("AdGroupCriterionOperation")
+        criterion = op.update
+        criterion.resource_name = row.ad_group_criterion.resource_name
+        criterion.cpc_bid_micros = MAX_CPC_BID_MICROS
+        op.update_mask.CopyFrom(FieldMask(paths=["cpc_bid_micros"]))
+        criterion_operations.append(op)
+    if criterion_operations:
+        criterion_service.mutate_ad_group_criteria(customer_id=CUSTOMER_ID, operations=criterion_operations)
+    print("keyword CPC caps updated", len(criterion_operations))
 
 
 def ensure_negative_keywords(client: GoogleAdsClient) -> None:
@@ -599,6 +697,7 @@ def main() -> None:
     ad_groups = ensure_ad_groups(client)
     update_ad_group_suffixes(client, ad_groups)
     ensure_keywords(client, ad_groups)
+    ensure_cpc_caps(client)
     ensure_negative_keywords(client)
     replace_campaign_assets(client)
     create_responsive_search_ads(client, ad_groups)

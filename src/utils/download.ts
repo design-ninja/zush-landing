@@ -56,10 +56,96 @@ export interface TrackDownloadClickOptions {
   channel?: DownloadChannel;
 }
 
+const downloadAttributionStorageKey = 'zush_download_attribution';
+const downloadAttributionParams = [
+  'gclid',
+  'gbraid',
+  'wbraid',
+  'utm_source',
+  'utm_medium',
+  'utm_campaign',
+  'utm_content',
+  'utm_term',
+  'utm_device',
+  'utm_matchtype',
+  'utm_id',
+] as const;
+
+type DownloadAttributionParam = typeof downloadAttributionParams[number];
+type DownloadAttributionProperties = Partial<Record<DownloadAttributionParam, string>> & {
+  attribution_landing_path?: string;
+  attribution_landing_url?: string;
+  attribution_referrer?: string;
+};
+
+const hasDownloadAttribution = (properties: DownloadAttributionProperties): boolean =>
+  downloadAttributionParams.some((param) => Boolean(properties[param]));
+
+const getCurrentDownloadAttribution = (): DownloadAttributionProperties => {
+  if (typeof window === 'undefined') return {};
+
+  const url = new URL(window.location.href);
+  const properties: DownloadAttributionProperties = {};
+
+  downloadAttributionParams.forEach((param) => {
+    const value = url.searchParams.get(param);
+    if (value) properties[param] = value;
+  });
+
+  if (!hasDownloadAttribution(properties)) return {};
+
+  properties.attribution_landing_path = `${url.pathname}${url.search}`;
+  properties.attribution_landing_url = url.href;
+  properties.attribution_referrer = document.referrer || undefined;
+
+  return properties;
+};
+
+const getStoredDownloadAttribution = (): DownloadAttributionProperties => {
+  if (typeof window === 'undefined') return {};
+
+  try {
+    const stored = window.sessionStorage.getItem(downloadAttributionStorageKey);
+    if (!stored) return {};
+
+    const properties = JSON.parse(stored) as DownloadAttributionProperties;
+    return hasDownloadAttribution(properties) ? properties : {};
+  } catch {
+    return {};
+  }
+};
+
+const persistCurrentDownloadAttribution = (): DownloadAttributionProperties => {
+  const current = getCurrentDownloadAttribution();
+
+  if (hasDownloadAttribution(current) && typeof window !== 'undefined') {
+    try {
+      window.sessionStorage.setItem(downloadAttributionStorageKey, JSON.stringify(current));
+    } catch {
+      // Storage access can fail in private browsing modes.
+    }
+
+    return current;
+  }
+
+  return getStoredDownloadAttribution();
+};
+
+const getDownloadClickPageProperties = (): Record<string, string | undefined> => {
+  if (typeof window === 'undefined') return {};
+
+  return {
+    page_path: `${window.location.pathname}${window.location.search}`,
+    page_url: window.location.href,
+    referrer: document.referrer || undefined,
+  };
+};
+
 export function trackDownloadClick({ os, source, manual, channel }: TrackDownloadClickOptions): void {
   const resolvedChannel = channel ?? (os === 'windows' ? 'microsoft-store' : 'direct');
 
   try {
+    const attribution = persistCurrentDownloadAttribution();
     const sourceValue = [
       source,
       os,
@@ -73,6 +159,8 @@ export function trackDownloadClick({ os, source, manual, channel }: TrackDownloa
       download_source: source,
       detection: manual ? 'manual' : 'auto',
       channel: resolvedChannel,
+      ...getDownloadClickPageProperties(),
+      ...attribution,
     });
   } catch {
     // Analytics might not be initialized in dev / tests — never block the click.
@@ -182,6 +270,8 @@ const getTrackedDownload = (link: HTMLAnchorElement): TrackDownloadClickOptions 
 // Imported from BaseLayout.astro inline script; static import graph tools can miss it.
 // fallow-ignore-next-line unused-export
 export function bindDownloadTracking(root: ParentNode = document): void {
+  persistCurrentDownloadAttribution();
+
   const eventRoot = root as ParentNode & EventTarget;
   if (trackedRoots.has(eventRoot)) return;
 
