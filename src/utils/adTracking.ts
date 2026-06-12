@@ -50,6 +50,10 @@ function ensureGoogleAds(): boolean {
   return true;
 }
 
+export function initializeGoogleAdsTracking(): void {
+  ensureGoogleAds();
+}
+
 export function trackAdDownloadConversion({
   os,
   source,

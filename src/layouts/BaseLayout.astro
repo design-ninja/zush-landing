@@ -261,6 +261,7 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
       {includeChrome && <ScrollToTopButton />}
       {includeChrome && <FloatingDownloadCTA forceOS={forceOS} label={layoutCopy.header.downloadZush} />}
       <script>
+        import { initializeGoogleAdsTracking } from '@/utils/adTracking';
         import { bindCheckoutAutoOpen } from '@/utils/checkoutAutoOpen';
         import { bindDownloadTracking, bindProClickTracking, bindProPlanClickTracking } from '@/utils/download';
         import { bindFloatingDownload } from '@/utils/floatingDownload';
@@ -339,6 +340,7 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
           });
         };
 
+        initializeGoogleAdsTracking();
         bindCheckoutAutoOpen();
         bindDownloadTracking();
         bindFloatingDownload();
@@ -350,6 +352,7 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
         bindScrollToTopButton();
         bindStoreLinks();
         document.addEventListener('astro:after-swap', () => {
+          initializeGoogleAdsTracking();
           bindCheckoutAutoOpen();
           bindDownloadTracking();
           bindFloatingDownload();
