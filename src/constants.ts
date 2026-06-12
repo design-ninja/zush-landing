@@ -1,5 +1,7 @@
 // App URLs
-export const DOWNLOAD_URL = "https://zushapp.com/releases/Zush.dmg";
+export const MAC_INSTALLER_URL = "https://zushapp.com/releases/Zush.dmg";
+export const MAC_DOWNLOAD_TRACKING_URL = "https://zushapp.com/download/mac";
+export const DOWNLOAD_URL = MAC_DOWNLOAD_TRACKING_URL;
 export const APP_STORE_URL = "https://apps.apple.com/app/zush/id6758432449";
 export const APP_STORE_PROTOCOL_URL = "macappstore://apps.apple.com/app/zush/id6758432449";
 export const WINDOWS_STORE_URL = "https://apps.microsoft.com/detail/9ND4WVZSDQ3X";

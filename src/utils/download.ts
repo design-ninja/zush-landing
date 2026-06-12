@@ -2,11 +2,12 @@ import {
   APP_STORE_PROTOCOL_URL,
   APP_STORE_URL,
   DOWNLOAD_URL,
+  MAC_DOWNLOAD_TRACKING_URL,
+  MAC_INSTALLER_URL,
   WINDOWS_STORE_PROTOCOL_URL,
   WINDOWS_STORE_URL,
 } from '@/constants';
 import { trackAnalyticsEvent } from '@/utils/analytics';
-import { trackAdDownloadConversion } from '@/utils/adTracking';
 
 export type DownloadOS = 'mac' | 'windows';
 
@@ -141,11 +142,14 @@ const getDownloadClickPageProperties = (): Record<string, string | undefined> =>
   };
 };
 
-export function trackDownloadClick({ os, source, manual, channel }: TrackDownloadClickOptions): void {
+export function trackDownloadClick(
+  { os, source, manual, channel }: TrackDownloadClickOptions,
+  attributionOverride?: DownloadAttributionProperties,
+): void {
   const resolvedChannel = channel ?? (os === 'windows' ? 'microsoft-store' : 'direct');
 
   try {
-    const attribution = persistCurrentDownloadAttribution();
+    const attribution = attributionOverride ?? persistCurrentDownloadAttribution();
     const sourceValue = [
       source,
       os,
@@ -165,12 +169,6 @@ export function trackDownloadClick({ os, source, manual, channel }: TrackDownloa
   } catch {
     // Analytics might not be initialized in dev / tests — never block the click.
   }
-
-  trackAdDownloadConversion({
-    os,
-    source,
-    channel: resolvedChannel,
-  });
 }
 
 const isDownloadOS = (value: string | undefined): value is DownloadOS =>
@@ -193,11 +191,40 @@ const normalizeUrl = (value: string | undefined): string => {
 
 const isMacDownloadUrl = (value: string): boolean => {
   if (value === DOWNLOAD_URL) return true;
+  if (value === MAC_DOWNLOAD_TRACKING_URL) return true;
+  if (value === MAC_INSTALLER_URL) return true;
 
   try {
-    return new URL(value).pathname === '/releases/Zush.dmg';
+    const url = new URL(value);
+    return url.pathname === '/download/mac' || url.pathname === '/releases/Zush.dmg';
   } catch {
-    return value.endsWith('/releases/Zush.dmg');
+    return value.endsWith('/download/mac') || value.endsWith('/releases/Zush.dmg');
+  }
+};
+
+const appendAttributionToDownloadLink = (
+  link: HTMLAnchorElement,
+  attribution: DownloadAttributionProperties,
+): void => {
+  if (typeof window === 'undefined' || !hasDownloadAttribution(attribution)) return;
+
+  const href = normalizeUrl(link.href);
+  if (!isMacDownloadUrl(href)) return;
+
+  try {
+    const url = new URL(href);
+    if (url.pathname !== '/download/mac') return;
+
+    downloadAttributionParams.forEach((param) => {
+      const value = attribution[param];
+      if (value && !url.searchParams.has(param)) {
+        url.searchParams.set(param, value);
+      }
+    });
+
+    link.href = url.href;
+  } catch {
+    // Leave the original download URL untouched if URL parsing fails.
   }
 };
 
@@ -287,7 +314,12 @@ export function bindDownloadTracking(root: ParentNode = document): void {
 
     if (event.defaultPrevented && trackedDownload.channel === 'direct') return;
 
-    trackDownloadClick(trackedDownload);
+    const attribution = persistCurrentDownloadAttribution();
+    if (trackedDownload.os === 'mac' && trackedDownload.channel === 'direct') {
+      appendAttributionToDownloadLink(link, attribution);
+    }
+
+    trackDownloadClick(trackedDownload, attribution);
   };
 
   eventRoot.addEventListener('click', handleDownloadActivation);

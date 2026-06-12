@@ -1,5 +1,5 @@
 import type { BlogPost } from '@/data/blog';
-import { APP_CONFIG, DOWNLOAD_URL } from '@/constants';
+import { APP_CONFIG, MAC_INSTALLER_URL } from '@/constants';
 
 export const SITE_ORIGIN = 'https://zushapp.com';
 export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og-image.png`;
@@ -370,7 +370,7 @@ export const HOME_JSON_LD = {
       applicationSubCategory: 'File Management',
       operatingSystem: ['macOS 15.0+', 'Windows 10', 'Windows 11'],
       softwareVersion: APP_CONFIG.app_version,
-      downloadUrl: DOWNLOAD_URL,
+      downloadUrl: MAC_INSTALLER_URL,
       installUrl: 'https://apps.microsoft.com/detail/9ND4WVZSDQ3X',
       image: DEFAULT_OG_IMAGE,
       screenshot: [
