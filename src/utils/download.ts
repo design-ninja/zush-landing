@@ -7,6 +7,7 @@ import {
   WINDOWS_STORE_PROTOCOL_URL,
   WINDOWS_STORE_URL,
 } from '@/constants';
+import { trackAdDownloadConversion } from '@/utils/adTracking';
 import { trackAnalyticsEvent } from '@/utils/analytics';
 
 export type DownloadOS = 'mac' | 'windows';
@@ -169,6 +170,12 @@ export function trackDownloadClick(
   } catch {
     // Analytics might not be initialized in dev / tests — never block the click.
   }
+
+  trackAdDownloadConversion({
+    os,
+    source,
+    channel: resolvedChannel,
+  });
 }
 
 const isDownloadOS = (value: string | undefined): value is DownloadOS =>
