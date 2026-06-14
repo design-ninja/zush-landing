@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.5.1] - 2026-06-14
+
+### Improved
+- More reliable activation and subscription status sync
+- Smoother recovery when account access needs to refresh
+
+### Fixed
+- Fixed a startup issue that could require restarting Zush
+- Fixed welcome window positioning on launch
+
 ## [3.5.0] - 2026-06-11
 
 ### Improved
