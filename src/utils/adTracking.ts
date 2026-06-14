@@ -32,8 +32,8 @@ function ensureGoogleAds(): boolean {
   }
 
   window.dataLayer = window.dataLayer || [];
-  window.gtag = window.gtag || function gtag(...args) {
-    window.dataLayer?.push(args);
+  window.gtag = window.gtag || function gtag() {
+    window.dataLayer?.push(arguments);
   };
 
   if (!window.__zushGoogleAdsLoading) {
@@ -65,6 +65,8 @@ export function trackAdDownloadConversion({
 
   window.gtag('event', 'conversion', {
     send_to: `${GOOGLE_ADS_ID}/${GOOGLE_ADS_DOWNLOAD_CONVERSION_LABEL}`,
+    value: 0,
+    currency: 'THB',
     transport_type: 'beacon',
     event_category: 'download',
     event_label: `${source}:${channel}`,
