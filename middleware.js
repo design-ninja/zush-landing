@@ -8,6 +8,7 @@ const POSTHOG_COUNTRY_OPTOUT_VALUE = '1';
 const POSTHOG_COUNTRY_OPTOUT_MAX_AGE_SECONDS = 60 * 60 * 24 * 7;
 const POSTHOG_COUNTRY_OPTOUT_COUNTRIES = new Set(['TH']);
 const COUNTRY_VARY_HEADER = 'x-vercel-ip-country';
+const LEGACY_POSTHOG_PROXY_HOST = 'e.zushapp.com';
 
 // fallow-ignore-next-line unused-export
 export const config = {
@@ -44,6 +45,10 @@ function buildPostHogCountryOptOutCookie(enabled) {
 function getVisitorCountry(request) {
   const country = geolocation(request).country ?? request.headers.get(COUNTRY_VARY_HEADER);
   return country?.toUpperCase();
+}
+
+function getRequestHost(request) {
+  return request.headers.get('host')?.split(':')[0].toLowerCase();
 }
 
 function getPostHogCountryOptOutCookie(request) {
@@ -89,6 +94,11 @@ function withPostHogCountryOptOutCookie(response, cookie) {
 
 export default function middleware(request) {
   const url = new URL(request.url);
+
+  if (getRequestHost(request) === LEGACY_POSTHOG_PROXY_HOST) {
+    return Response.redirect('https://zushapp.com/', 308);
+  }
+
   const postHogCountryOptOutCookie = getPostHogCountryOptOutCookie(request);
 
   if (url.pathname !== '/') {

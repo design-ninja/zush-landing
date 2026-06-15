@@ -43,6 +43,17 @@ assertRedirect(
   'https://zushapp.com/?utm_source=google',
 );
 
+const legacyPostHogHost = middleware(new Request(
+  'https://e.zushapp.com/some-proxy-path',
+  { headers: { host: 'e.zushapp.com' } },
+));
+assert(legacyPostHogHost instanceof Response, 'Legacy PostHog proxy host should redirect.');
+assert(legacyPostHogHost.status === 308, `Expected 308 for legacy PostHog proxy host, got ${legacyPostHogHost.status}.`);
+assert(
+  legacyPostHogHost.headers.get('location') === 'https://zushapp.com/',
+  `Unexpected legacy PostHog proxy host location: ${legacyPostHogHost.headers.get('location')}`,
+);
+
 const cleanHomepage = middleware(new Request('https://zushapp.com/'));
 assert(cleanHomepage === undefined, 'Clean homepage should continue without middleware redirect.');
 
