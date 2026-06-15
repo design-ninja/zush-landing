@@ -27,8 +27,13 @@ const HoverPlayer = ({
   const wrapperRef = useRef<HTMLDivElement>(null);
   const resetTimerRef = useRef<number | null>(null);
   const [active, setActive] = useState(false);
+  const [hasMounted, setHasMounted] = useState(false);
 
   const aspectRatio = `${width} / ${height}`;
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   const clearResetTimer = useCallback(() => {
     if (resetTimerRef.current !== null) {
@@ -80,8 +85,14 @@ const HoverPlayer = ({
     };
   }, [handleEnter, handleLeave, clearResetTimer]);
 
+  const wrapperStyle = { position: 'relative', width: '100%', aspectRatio } as const;
+
+  if (!hasMounted) {
+    return <div ref={wrapperRef} style={wrapperStyle} aria-hidden />;
+  }
+
   return (
-    <div ref={wrapperRef} style={{ position: 'relative', width: '100%', aspectRatio }}>
+    <div ref={wrapperRef} style={wrapperStyle}>
       <div
         style={{
           position: 'absolute',

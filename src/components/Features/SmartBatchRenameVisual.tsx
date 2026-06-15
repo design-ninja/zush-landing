@@ -15,8 +15,13 @@ const SmartBatchRenameVisual = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const resetTimerRef = useRef<number | null>(null);
   const [active, setActive] = useState(false);
+  const [hasMounted, setHasMounted] = useState(false);
 
   const aspectRatio = `${SMART_BATCH_RENAME_WIDTH} / ${SMART_BATCH_RENAME_HEIGHT}`;
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   const clearResetTimer = useCallback(() => {
     if (resetTimerRef.current !== null) {
@@ -68,8 +73,14 @@ const SmartBatchRenameVisual = () => {
     };
   }, [handleEnter, handleLeave, clearResetTimer]);
 
+  const wrapperStyle = { position: 'relative', width: '100%', aspectRatio } as const;
+
+  if (!hasMounted) {
+    return <div ref={wrapperRef} style={wrapperStyle} aria-hidden />;
+  }
+
   return (
-    <div ref={wrapperRef} style={{ position: 'relative', width: '100%', aspectRatio }}>
+    <div ref={wrapperRef} style={wrapperStyle}>
       <div style={{ position: 'absolute', inset: 0 }} aria-hidden>
         <Player
           component={SmartBatchRenameAnimation}
