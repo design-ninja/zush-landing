@@ -2,7 +2,8 @@ import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
 const ROOT = process.cwd();
-const DIST = join(ROOT, 'dist');
+const DIST_ROOT = join(ROOT, 'dist');
+const DIST = existsSync(join(DIST_ROOT, 'client')) ? join(DIST_ROOT, 'client') : DIST_ROOT;
 const SITE_ORIGIN = 'https://zushapp.com';
 const PRIVATE_ROUTES = new Set([
   '/thank-you',

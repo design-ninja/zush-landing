@@ -11,7 +11,7 @@ const COUNTRY_VARY_HEADER = 'x-vercel-ip-country';
 
 // fallow-ignore-next-line unused-export
 export const config = {
-  matcher: '/((?!.*\\..*).*)',
+  matcher: '/((?!e(?:/|$)|.*\\..*).*)',
 };
 
 function getCookieValue(cookieHeader, name) {

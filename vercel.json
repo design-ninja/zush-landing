@@ -3,6 +3,27 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "e.zushapp.com"
+        }
+      ],
+      "destination": "https://zushapp.com",
+      "permanent": true
+    },
+    {
+      "source": "/e/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/e",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/ai-image-renamer/",
       "destination": "/rename-photos-with-ai",
       "permanent": true
@@ -18,8 +39,8 @@
       "permanent": true
     },
     {
-      "source": "/:path+/",
-      "destination": "/:path+",
+      "source": "/:path((?!e/).+)/",
+      "destination": "/:path*",
       "permanent": true
     },
     {
@@ -163,7 +184,30 @@
       "permanent": true
     }
   ],
+  "rewrites": [
+    {
+      "source": "/e/static/:path(.*)",
+      "destination": "https://us-assets.i.posthog.com/static/:path"
+    },
+    {
+      "source": "/e/array/:path(.*)",
+      "destination": "https://us-assets.i.posthog.com/array/:path"
+    },
+    {
+      "source": "/e/:path(.*)",
+      "destination": "https://us.i.posthog.com/:path"
+    }
+  ],
   "headers": [
+    {
+      "source": "/e/:path(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
     {
       "source": "/(.*)",
       "headers": [

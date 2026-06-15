@@ -8,7 +8,8 @@ import remarkGfm from 'remark-gfm';
 export default defineConfig({
   site: 'https://zushapp.com',
   output: 'static',
-  trailingSlash: 'never',
+  // Vercel handles slash canonicalization so the PostHog proxy path can be excluded.
+  trailingSlash: 'ignore',
   redirects: {
     '/download/windows': { status: 301, destination: '/windows' },
   },

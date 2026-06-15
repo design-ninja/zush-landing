@@ -4,6 +4,8 @@ import { MAC_INSTALLER_URL } from '@/constants';
 export const prerender = false;
 
 const REDIRECT_TIMEOUT_MS = 1200;
+const POSTHOG_PROXY_PATH = '/e';
+const LEGACY_POSTHOG_PROXY_HOST = 'https://e.zushapp.com';
 
 const attributionParams = [
   'gclid',
@@ -31,6 +33,17 @@ type DownloadAttribution = Partial<Record<AttributionParam, string>> & {
 const getEnv = (name: string): string | undefined => {
   const value = (import.meta.env as Record<string, string | undefined>)[name];
   return value && value.trim() ? value.trim() : undefined;
+};
+
+const getPostHogHost = (requestUrl: URL): string => {
+  const configuredHost = getEnv('PUBLIC_POSTHOG_HOST');
+  const host = !configuredHost || configuredHost === LEGACY_POSTHOG_PROXY_HOST
+    ? POSTHOG_PROXY_PATH
+    : configuredHost;
+
+  return host.startsWith('/')
+    ? new URL(host, requestUrl.origin).href
+    : host;
 };
 
 const getRequestHeaders = (request: Request) => ({
@@ -98,11 +111,14 @@ const fetchWithTimeout = async (
   }
 };
 
-const capturePostHogDownload = async (attribution: DownloadAttribution): Promise<void> => {
+const capturePostHogDownload = async (
+  attribution: DownloadAttribution,
+  requestUrl: URL,
+): Promise<void> => {
   const apiKey = getEnv('PUBLIC_POSTHOG_KEY');
   if (!apiKey) return;
 
-  const host = getEnv('PUBLIC_POSTHOG_HOST') || 'https://us.i.posthog.com';
+  const host = getPostHogHost(requestUrl);
   const clickId = getClickId(attribution);
 
   const response = await fetchWithTimeout(`${host.replace(/\/$/, '')}/capture/`, {
@@ -136,7 +152,7 @@ const runBestEffortTracking = async (
   const attribution = collectAttribution(request, eventId);
 
   await Promise.race([
-    capturePostHogDownload(attribution),
+    capturePostHogDownload(attribution, url),
     new Promise((resolve) => setTimeout(resolve, REDIRECT_TIMEOUT_MS)),
   ]);
 };

@@ -1,4 +1,5 @@
 import middleware from '../middleware.js';
+import { config } from '../middleware.js';
 
 function assert(condition, message) {
   if (!condition) {
@@ -47,6 +48,10 @@ assert(cleanHomepage === undefined, 'Clean homepage should continue without midd
 
 const nonHomepageRef = middleware(new Request('https://zushapp.com/blog?ref=producthunt'));
 assert(nonHomepageRef === undefined, 'Non-homepage ref URLs should continue without middleware redirect.');
+assert(
+  config.matcher.includes('e(?:/|$)'),
+  'Middleware matcher must exclude the PostHog proxy path.',
+);
 
 assertNextWithCookie(
   'https://zushapp.com/mac',
