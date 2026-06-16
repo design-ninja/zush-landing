@@ -21,12 +21,12 @@ type PlatformOverrides = Record<
 
 const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
   mac: {
-    featuresTitle: 'How this file renamer works on Mac',
+    featuresTitle: 'How this AI file renamer works on Mac',
     featuresDescription:
-      'Mac-first file renaming workflows for Finder, Spotlight, Downloads, screenshots, design files, iWork, audio, videos, batch rename, and local AI.',
+      'Mac-first AI file renaming workflows for Finder, Spotlight, Downloads, screenshots, design files, iWork, audio, videos, batch rename, and local models.',
     featureCards: {
       aiAnalysis: {
-        title: 'Batch rename files with AI on Mac',
+        title: 'Rename files with AI on Mac',
         description:
           'Analyze screenshots, Figma, Sketch, Illustrator, PSD, audio, videos, PDFs, HEIC and RAW photos, Office docs, iWork files, and exports without leaving a native macOS workflow.',
       },
@@ -117,12 +117,12 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
     },
   },
   windows: {
-    featuresTitle: 'How this file renamer works on Windows',
+    featuresTitle: 'How this AI file renamer works on Windows',
     featuresDescription:
-      'Windows 11 and Windows 10 bulk rename workflows for File Explorer, Downloads, screenshots, design files, iWork, videos, Microsoft Store installs, and local AI.',
+      'Windows 11 and Windows 10 AI file renaming workflows for File Explorer, Downloads, screenshots, design files, iWork, videos, Microsoft Store installs, and local models.',
     featureCards: {
       aiAnalysis: {
-        title: 'Bulk rename files on Windows 11 with AI',
+        title: 'Rename files with AI on Windows 11',
         description:
           'Analyze screenshots, design files, audio, videos, PDFs, photos, Office docs, iWork files, and exports from ordinary Windows 11 or Windows 10 folders.',
       },

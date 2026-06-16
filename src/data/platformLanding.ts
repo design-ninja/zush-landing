@@ -29,16 +29,16 @@ export const PLATFORM_LANDING_CONTENT: Record<DownloadOS, PlatformLandingContent
     breadcrumbLabel: 'Zush for Mac',
     softwareName: 'Zush for Mac',
     softwareDescription:
-      'File renamer for Mac and AI batch rename tool for macOS. Batch rename files from Finder, bulk rename mixed folders, and rename screenshots, design files, audio, videos, PDFs, photos, iWork and Office documents by content.',
+      'AI file renamer for Mac and batch rename tool for macOS. Rename files with AI from Finder, batch rename mixed folders, and clean up screenshots, design files, audio, videos, PDFs, photos, iWork and Office documents by content.',
     operatingSystem: 'macOS 15.0+',
     downloadUrl: DOWNLOAD_URL,
-    heroTitle: 'File Renamer for Mac',
+    heroTitle: 'AI File Renamer for Mac',
     heroSubtitle:
-      'Batch rename files with AI on Mac: screenshots, design files, videos, PDFs, photos, iWork, and Office documents. Use fast cloud models or Offline AI mode with private local models via Ollama.',
+      'Rename files with AI on Mac: batch rename screenshots, design files, videos, PDFs, photos, iWork, and Office documents. Use fast cloud models or Offline AI mode with private local models via Ollama.',
     ctaSubtitle:
-      'Install the signed macOS file renamer and start batch renaming screenshots, design files, videos, PDFs, photos, iWork, and Office documents in minutes.',
+      'Install the signed macOS AI file renamer and start renaming screenshots, design files, videos, PDFs, photos, iWork, and Office documents in minutes.',
     features: [
-      'File renamer for Mac with AI-powered naming for screenshots, design files, videos, PDFs, photos, iWork, and Office documents',
+      'AI file renamer for Mac with content-aware naming for screenshots, design files, videos, PDFs, photos, iWork, and Office documents',
       'Folder monitoring with file-type exclusions',
       'Batch rename with per-file regenerate',
       'Custom prompts for names and metadata tags',
@@ -87,17 +87,17 @@ export const PLATFORM_LANDING_CONTENT: Record<DownloadOS, PlatformLandingContent
     breadcrumbLabel: 'Zush for Windows',
     softwareName: 'Zush for Windows',
     softwareDescription:
-      'File renamer for Windows 11 and 10 with AI bulk rename and batch rename workflows. Rename screenshots, design files, audio, videos, PDFs, photos, iWork and Office documents by content from ordinary Windows folders.',
+      'AI file renamer for Windows 11 and 10 with bulk rename and batch rename workflows. Rename files with AI from ordinary Windows folders, including screenshots, design files, audio, videos, PDFs, photos, iWork and Office documents.',
     operatingSystem: ['Windows 10', 'Windows 11'],
     downloadUrl: WINDOWS_STORE_URL,
     installUrl: WINDOWS_STORE_URL,
-    heroTitle: 'File Renamer for Windows',
+    heroTitle: 'AI File Renamer for Windows',
     heroSubtitle:
-      'Bulk rename files on Windows 11 and 10 with AI: screenshots, design files, videos, PDFs, photos, iWork, and Office documents. Installs from the Microsoft Store with automatic updates, free to try with no signup.',
+      'Rename files with AI on Windows 11 and 10: bulk rename screenshots, design files, videos, PDFs, photos, iWork, and Office documents. Installs from the Microsoft Store with automatic updates, free to try with no signup.',
     ctaSubtitle:
-      'Open the Microsoft Store and start using a Windows batch rename tool for screenshots, design files, videos, PDFs, photos, iWork, and Office documents.',
+      'Open the Microsoft Store and start using an AI file renamer for screenshots, design files, videos, PDFs, photos, iWork, and Office documents.',
     features: [
-      'File renamer for Windows 11 and 10 with AI-powered bulk rename for screenshots, design files, videos, PDFs, photos, iWork, and Office documents',
+      'AI file renamer for Windows 11 and 10 with content-aware bulk rename for screenshots, design files, videos, PDFs, photos, iWork, and Office documents',
       'Folder monitoring with file-type exclusions',
       'Batch rename with per-file regenerate',
       'Custom prompts for names and metadata tags',
