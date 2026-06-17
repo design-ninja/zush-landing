@@ -33,30 +33,30 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     robots: 'index, follow',
   },
   '/batch-rename-tool': {
-    title: 'Batch Rename Tool for Mac & Windows | AI File Renamer - Zush',
+    title: 'AI Batch Rename Tool for Mac & Windows | Zush',
     description:
-      'Use Zush as a batch rename tool for Mac and Windows. Rename mixed folders by content with AI suggestions, naming patterns, review, and undo history.',
+      'Use Zush as an AI batch rename tool for Mac and Windows. Rename mixed folders by content with preview, naming patterns, folder monitoring, and undo.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/file-renamer': {
-    title: 'File Renamer for Mac & Windows | AI Batch Rename - Zush',
+    title: 'AI File Renamer for Mac & Windows | Zush',
     description:
-      'Use Zush as a file renamer for Mac and Windows. Batch rename files, bulk review AI names, monitor folders, use naming patterns, and undo changes.',
+      'Use Zush as an AI file renamer for Mac and Windows. Batch rename screenshots, PDFs, photos, videos, audio, design files, and documents with undo.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/batch-rename-files': {
-    title: 'Batch Rename Files with AI | Mac & Windows - Zush',
+    title: 'Batch Rename Files with AI | Mac & Windows | Zush',
     description:
-      'Batch rename files by content on Mac and Windows. Zush reviews mixed folders, suggests descriptive filenames, applies naming patterns, and keeps undo history.',
+      'Batch rename files with AI on Mac and Windows. Review descriptive names for mixed folders, apply naming patterns, monitor folders, and undo safely.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/bulk-rename-files': {
-    title: 'Bulk Rename Files on Mac & Windows | AI Tool - Zush',
+    title: 'Bulk Rename Files with AI on Mac & Windows | Zush',
     description:
-      'Bulk rename files with AI instead of fixing IMG_, Screenshot, scan, document, and Untitled filenames by hand. Review every name before applying.',
+      'Bulk rename files with AI instead of fixing IMG_, Screenshot, scan, document, and Untitled names by hand. Preview every name and undo any batch.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -175,14 +175,14 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/mac': {
     title: 'AI File Renamer for Mac | Batch Rename Files - Zush',
     description:
-      'Rename files with AI on Mac. Batch rename screenshots, PDFs, photos, videos, audio, design files, iWork and Office docs by content, with review and undo.',
+      'Rename files with AI on Mac. Batch rename screenshots, PDFs, photos, videos, audio, design files, iWork and Office docs with review, tags, and undo.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/windows': {
     title: 'AI File Renamer for Windows | Bulk Rename Files - Zush',
     description:
-      'Rename files with AI on Windows 11 and 10. Bulk rename screenshots, PDFs, photos, videos, audio, design files, and Office docs by content.',
+      'Rename files with AI on Windows 11 and 10. Bulk rename screenshots, PDFs, photos, videos, audio, design files, and Office docs with undo.',
     robots: 'index, follow',
     ogType: 'website',
   },
