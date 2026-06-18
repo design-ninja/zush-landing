@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.5.2] - 2026-06-18
+
+### Improved
+- More reliable AI Rename fallback when cloud AI needs to switch providers
+- Better PDF analysis reliability during fallback processing
+
+### Fixed
+- Removed unavailable Groq models from Bring Your Own Key model choices
+
 ## [3.5.1] - 2026-06-14
 
 ### Improved
