@@ -353,6 +353,23 @@
     }
   }
 
+  &__Status[data-tone='neutral']:not([data-empty='true']) {
+    padding: 0.85rem 0 1.1rem;
+    color: var(--muted-foreground);
+  }
+
+  &__Status[data-tone='neutral'] &__StatusTitle {
+    display: none;
+  }
+
+  &__Status[data-tone='neutral'] &__StatusMessage {
+    animation: review-status-blink 1.1s ease-in-out infinite;
+  }
+
+  &__Status[data-tone='error'] &__StatusTitle {
+    display: none;
+  }
+
   &__Panel[data-state='success'] &__Status {
     min-height: 13rem;
     margin: 0;
@@ -450,12 +467,27 @@
   }
 }
 
+@keyframes review-status-blink {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ReviewModal,
   .ReviewModal[open],
   .ReviewModal[open] .ReviewModal__Panel,
   .ReviewModal[data-closing='true'],
   .ReviewModal[data-closing='true'] .ReviewModal__Panel {
+    animation: none;
+  }
+
+  .ReviewModal__StatusMessage {
     animation: none;
   }
 }

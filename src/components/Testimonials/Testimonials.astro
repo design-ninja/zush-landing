@@ -529,11 +529,14 @@ const copy = copyByLocale[locale] ?? copyByLocale.en;
       };
 
       const closeModal = () => {
-        setStatus('');
-        if (!modal.open) return;
+        if (!modal.open) {
+          setStatus('');
+          return;
+        }
 
         if (prefersReducedMotion.matches) {
           modal.close();
+          setStatus('');
           return;
         }
 
@@ -541,6 +544,7 @@ const copy = copyByLocale[locale] ?? copyByLocale.en;
         window.setTimeout(() => {
           modal.close();
           delete modal.dataset.closing;
+          setStatus('');
         }, 180);
       };
 
@@ -567,7 +571,7 @@ const copy = copyByLocale[locale] ?? copyByLocale.en;
         event.preventDefault();
 
         submitButton.disabled = true;
-        setStatus(form.dataset.sending || 'Sending...');
+        setStatus('', 'neutral', form.dataset.sending || 'Sending...');
 
         const formData = new FormData(form);
         const payload = Object.fromEntries(formData.entries());
@@ -590,7 +594,7 @@ const copy = copyByLocale[locale] ?? copyByLocale.en;
             form.dataset.successDescription || 'After moderation, your review will appear on the site.',
           );
         } catch (error) {
-          setStatus(error instanceof Error ? error.message : (form.dataset.error || 'Could not send the review.'), 'error');
+          setStatus('', 'error', error instanceof Error ? error.message : (form.dataset.error || 'Could not send the review.'));
         } finally {
           submitButton.disabled = false;
         }
