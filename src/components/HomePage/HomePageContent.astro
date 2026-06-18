@@ -8,6 +8,7 @@ import FAQ from '@/components/FAQ';
 import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
 import CrossPlatformBanner from '@/components/CrossPlatformBanner/CrossPlatformBanner.astro';
 import EvidenceSignals from '@/components/EvidenceSignals/EvidenceSignals.astro';
+import Testimonials from '@/components/Testimonials/Testimonials.astro';
 import macChangelogSource from '@/content/changelog.md?raw';
 import windowsChangelogSource from '@/content/changelog.windows.md?raw';
 import { FREE_DOWNLOAD_BADGE_LABEL } from '@/constants';
@@ -42,6 +43,7 @@ const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
   windowsVersion={windowsVersion}
 />
 <Tour client:visible copy={copy.home.showcase} />
+<Testimonials locale={locale} />
 {locale === 'en' && <EvidenceSignals />}
 <Features title={copy.home.featuresTitle} description={copy.home.featuresDescription} copy={copy.home.featureCards} />
 <SupportedFormats

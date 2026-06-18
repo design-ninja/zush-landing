@@ -2,7 +2,7 @@
 // fallow-ignore-file unused-file
 const FLOATING_SELECTOR = '[data-floating-download]';
 const HERO_SELECTOR = '[data-hero-root]';
-const FOOTER_SELECTOR = 'footer';
+const FOOTER_SELECTOR = '[data-site-footer]';
 const VISIBILITY_THRESHOLD = 60;
 // Margin between footer top and the CTA — when the footer starts approaching the
 // CTA's resting position (roughly button height + bottom offset), hide it to avoid overlap.

@@ -10,6 +10,7 @@ export interface FAQCopyItem {
 
 export interface HeaderCopy {
   features: string;
+  reviews: string;
   pricing: string;
   faq: string;
   blog: string;
@@ -919,6 +920,7 @@ const localizedFullHomeFaqItems: Record<Exclude<Locale, 'en' | 'zh-cn'>, FAQCopy
 const EN_COPY: LocaleCopy = {
   header: {
     features: 'Features',
+    reviews: 'Reviews',
     pricing: 'Pricing',
     faq: 'FAQ',
     blog: 'Blog',
@@ -3147,7 +3149,7 @@ const withLocalizedFileExamples = (
 const COPY: Record<Locale, LocaleCopy> = {
   en: base,
   de: localized({
-    header: { features: 'Funktionen', pricing: 'Preise', faq: 'FAQ', blog: 'Blog', buyPro: '🌟 PRO kaufen', download: 'Herunterladen', downloadZush: 'Zush herunterladen', toggleTheme: 'Design wechseln', language: 'Sprache', homeAria: 'Zur Startseite', skipToContent: 'Zum Inhalt springen' },
+    header: { features: 'Funktionen', reviews: 'Bewertungen', pricing: 'Preise', faq: 'FAQ', blog: 'Blog', buyPro: '🌟 PRO kaufen', download: 'Herunterladen', downloadZush: 'Zush herunterladen', toggleTheme: 'Design wechseln', language: 'Sprache', homeAria: 'Zur Startseite', skipToContent: 'Zum Inhalt springen' },
     downloadMenu: localizedDownloadMenu.de,
     footer: {
       description: 'KI-Dateiumbenenner und Stapel-Umbenennungstool für Mac und Windows',
@@ -3211,7 +3213,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   fr: localized({
-    header: { features: 'Fonctions', pricing: 'Tarifs', faq: 'FAQ', blog: 'Blog', buyPro: 'Acheter 🌟 PRO', download: 'Télécharger', downloadZush: 'Télécharger Zush', toggleTheme: 'Changer le thème', language: 'Langue', homeAria: 'Aller à l’accueil', skipToContent: 'Aller au contenu' },
+    header: { features: 'Fonctions', reviews: 'Avis', pricing: 'Tarifs', faq: 'FAQ', blog: 'Blog', buyPro: 'Acheter 🌟 PRO', download: 'Télécharger', downloadZush: 'Télécharger Zush', toggleTheme: 'Changer le thème', language: 'Langue', homeAria: 'Aller à l’accueil', skipToContent: 'Aller au contenu' },
     downloadMenu: localizedDownloadMenu.fr,
     footer: { description: 'Renommeur de fichiers IA et outil de renommage par lot pour Mac et Windows', product: 'Produit', byFileType: 'Par type', resources: 'Ressources', support: 'Support', pricing: 'Tarifs', contactSupport: 'Contacter le support', feedback: 'Fonctions & bugs', terms: 'Conditions', privacy: 'Confidentialité', refund: 'Remboursement', ...localizedFooterDetails.fr },
     home: {
@@ -3252,7 +3254,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   'pt-br': localized({
-    header: { features: 'Recursos', pricing: 'Preços', faq: 'FAQ', blog: 'Blog', buyPro: 'Comprar 🌟 PRO', download: 'Baixar', downloadZush: 'Baixar Zush', toggleTheme: 'Alternar tema', language: 'Idioma', homeAria: 'Ir para o início', skipToContent: 'Pular para o conteúdo' },
+    header: { features: 'Recursos', reviews: 'Avaliações', pricing: 'Preços', faq: 'FAQ', blog: 'Blog', buyPro: 'Comprar 🌟 PRO', download: 'Baixar', downloadZush: 'Baixar Zush', toggleTheme: 'Alternar tema', language: 'Idioma', homeAria: 'Ir para o início', skipToContent: 'Pular para o conteúdo' },
     downloadMenu: localizedDownloadMenu['pt-br'],
     footer: { description: 'Renomeador de arquivos com IA e ferramenta de renomeação em lote para Mac e Windows', product: 'Produto', byFileType: 'Por tipo', resources: 'Recursos', support: 'Suporte', pricing: 'Preços', contactSupport: 'Falar com suporte', feedback: 'Recursos e bugs', terms: 'Termos', privacy: 'Privacidade', refund: 'Reembolso', ...localizedFooterDetails['pt-br'] },
     home: {
@@ -3293,7 +3295,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   es: localized({
-    header: { features: 'Funciones', pricing: 'Precios', faq: 'FAQ', blog: 'Blog', buyPro: 'Comprar 🌟 PRO', download: 'Descargar', downloadZush: 'Descargar Zush', toggleTheme: 'Cambiar tema', language: 'Idioma', homeAria: 'Ir al inicio', skipToContent: 'Saltar al contenido' },
+    header: { features: 'Funciones', reviews: 'Reseñas', pricing: 'Precios', faq: 'FAQ', blog: 'Blog', buyPro: 'Comprar 🌟 PRO', download: 'Descargar', downloadZush: 'Descargar Zush', toggleTheme: 'Cambiar tema', language: 'Idioma', homeAria: 'Ir al inicio', skipToContent: 'Saltar al contenido' },
     downloadMenu: localizedDownloadMenu.es,
     footer: { description: 'Renombrador de archivos con IA y herramienta de renombrado por lotes para Mac y Windows', product: 'Producto', byFileType: 'Por tipo', resources: 'Recursos', support: 'Soporte', pricing: 'Precios', contactSupport: 'Contactar soporte', feedback: 'Funciones y errores', terms: 'Términos', privacy: 'Privacidad', refund: 'Reembolso', ...localizedFooterDetails.es },
     home: {
@@ -3334,7 +3336,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   nl: localized({
-    header: { features: 'Functies', pricing: 'Prijzen', faq: 'FAQ', blog: 'Blog', buyPro: 'Koop 🌟 PRO', download: 'Downloaden', downloadZush: 'Zush downloaden', toggleTheme: 'Thema wisselen', language: 'Taal', homeAria: 'Naar home', skipToContent: 'Naar inhoud' },
+    header: { features: 'Functies', reviews: 'Reviews', pricing: 'Prijzen', faq: 'FAQ', blog: 'Blog', buyPro: 'Koop 🌟 PRO', download: 'Downloaden', downloadZush: 'Zush downloaden', toggleTheme: 'Thema wisselen', language: 'Taal', homeAria: 'Naar home', skipToContent: 'Naar inhoud' },
     downloadMenu: localizedDownloadMenu.nl,
     footer: { description: 'AI-bestandshernoemer en bulk-hernoemtool voor Mac en Windows', product: 'Product', byFileType: 'Per type', resources: 'Bronnen', support: 'Support', pricing: 'Prijzen', contactSupport: 'Support contacteren', feedback: 'Functies & bugs', terms: 'Voorwaarden', privacy: 'Privacy', refund: 'Terugbetaling', ...localizedFooterDetails.nl },
     home: {
@@ -3375,7 +3377,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   it: localized({
-    header: { features: 'Funzioni', pricing: 'Prezzi', faq: 'FAQ', blog: 'Blog', buyPro: 'Acquista 🌟 PRO', download: 'Scarica', downloadZush: 'Scarica Zush', toggleTheme: 'Cambia tema', language: 'Lingua', homeAria: 'Vai alla home', skipToContent: 'Vai al contenuto' },
+    header: { features: 'Funzioni', reviews: 'Recensioni', pricing: 'Prezzi', faq: 'FAQ', blog: 'Blog', buyPro: 'Acquista 🌟 PRO', download: 'Scarica', downloadZush: 'Scarica Zush', toggleTheme: 'Cambia tema', language: 'Lingua', homeAria: 'Vai alla home', skipToContent: 'Vai al contenuto' },
     downloadMenu: localizedDownloadMenu.it,
     footer: { description: 'Rinomina file con IA e strumento di rinomina in batch per Mac e Windows', product: 'Prodotto', byFileType: 'Per tipo', resources: 'Risorse', support: 'Supporto', pricing: 'Prezzi', contactSupport: 'Contatta supporto', feedback: 'Funzioni e bug', terms: 'Termini', privacy: 'Privacy', refund: 'Rimborso', ...localizedFooterDetails.it },
     home: {
@@ -3416,7 +3418,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   ja: localized({
-    header: { features: '機能', pricing: '料金', faq: 'FAQ', blog: 'ブログ', buyPro: '🌟 PROを購入', download: 'ダウンロード', downloadZush: 'Zushをダウンロード', toggleTheme: 'テーマ切替', language: '言語', homeAria: 'ホームへ移動', skipToContent: 'コンテンツへスキップ' },
+    header: { features: '機能', reviews: 'レビュー', pricing: '料金', faq: 'FAQ', blog: 'ブログ', buyPro: '🌟 PROを購入', download: 'ダウンロード', downloadZush: 'Zushをダウンロード', toggleTheme: 'テーマ切替', language: '言語', homeAria: 'ホームへ移動', skipToContent: 'コンテンツへスキップ' },
     downloadMenu: localizedDownloadMenu.ja,
     footer: { description: 'Mac と Windows 向け AI ファイルリネーム兼一括リネームツール', product: '製品', byFileType: 'ファイル別', resources: 'リソース', support: 'サポート', pricing: '料金', contactSupport: 'サポートに連絡', feedback: '機能要望と不具合', terms: '利用規約', privacy: 'プライバシー', refund: '返金ポリシー', ...localizedFooterDetails.ja },
     home: {
@@ -3457,7 +3459,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   ko: localized({
-    header: { features: '기능', pricing: '가격', faq: 'FAQ', blog: '블로그', buyPro: '🌟 PRO 구매', download: '다운로드', downloadZush: 'Zush 다운로드', toggleTheme: '테마 전환', language: '언어', homeAria: '홈으로 이동', skipToContent: '콘텐츠로 건너뛰기' },
+    header: { features: '기능', reviews: '리뷰', pricing: '가격', faq: 'FAQ', blog: '블로그', buyPro: '🌟 PRO 구매', download: '다운로드', downloadZush: 'Zush 다운로드', toggleTheme: '테마 전환', language: '언어', homeAria: '홈으로 이동', skipToContent: '콘텐츠로 건너뛰기' },
     downloadMenu: localizedDownloadMenu.ko,
     footer: { description: 'Mac 및 Windows용 AI 파일 이름 변경 및 일괄 이름 변경 도구', product: '제품', byFileType: '파일 유형별', resources: '리소스', support: '지원', pricing: '가격', contactSupport: '지원 문의', feedback: '기능 및 버그', terms: '이용 약관', privacy: '개인정보', refund: '환불 정책', ...localizedFooterDetails.ko },
     home: {
@@ -3498,7 +3500,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   'zh-cn': localized({
-    header: { features: '功能', pricing: '价格', faq: 'FAQ', blog: '博客', buyPro: '购买 🌟 PRO', download: '下载', downloadZush: '下载 Zush', toggleTheme: '切换主题', language: '语言', homeAria: '前往首页', skipToContent: '跳到内容' },
+    header: { features: '功能', reviews: '评价', pricing: '价格', faq: 'FAQ', blog: '博客', buyPro: '购买 🌟 PRO', download: '下载', downloadZush: '下载 Zush', toggleTheme: '切换主题', language: '语言', homeAria: '前往首页', skipToContent: '跳到内容' },
     downloadMenu: localizedDownloadMenu['zh-cn'],
     footer: {
       description: '适用于 Mac 和 Windows 的 AI 文件重命名与批量重命名工具',
@@ -3643,6 +3645,7 @@ const COPY: Record<Locale, LocaleCopy> = {
   hi: localized({
     header: {
       features: 'Features',
+      reviews: 'Reviews',
       pricing: 'Pricing',
       faq: 'FAQ',
       blog: 'ब्लॉग',
@@ -3787,6 +3790,7 @@ const COPY: Record<Locale, LocaleCopy> = {
   ar: localized({
     header: {
       features: 'الميزات',
+      reviews: 'المراجعات',
       pricing: 'السعر',
       faq: 'FAQ',
       blog: 'المدونة',

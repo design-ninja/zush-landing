@@ -1,0 +1,461 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.Testimonials {
+  --testimonial-star: oklch(0.74 0.17 55);
+
+  padding: 5rem 0 6rem;
+  scroll-margin-top: 8rem;
+  background: var(--background);
+  color: var(--foreground);
+
+  @include mobile {
+    padding: 4rem 0;
+    scroll-margin-top: 6.5rem;
+  }
+
+  &__Container {
+    @include container;
+  }
+
+  &__TitleBrand {
+    display: inline-block;
+    margin-left: 0.14em;
+  }
+
+  &__Grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    align-items: stretch;
+    margin-top: 2.75rem;
+
+    @include tablet {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include small {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__ReviewAction {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+}
+
+.TestimonialCard {
+  min-height: 100%;
+  padding: 1.35rem;
+  border: 1px solid var(--border);
+  border-radius: $radius-lg;
+  background: var(--card);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: var(--foreground);
+  @include shadow('sm');
+
+  &__Stars {
+    display: flex;
+    align-items: center;
+    gap: 0.18rem;
+    color: var(--testimonial-star);
+    font-size: 1.15rem;
+    line-height: 1;
+  }
+
+  &__Quote {
+    margin: 0;
+
+    p {
+      line-height: 1.5;
+    }
+  }
+
+  &__Author {
+    margin: auto 0 0;
+    padding-top: 0.7rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  @include mobile {
+    padding: 1.2rem;
+  }
+}
+
+.ReviewModal {
+  width: min(92vw, 34rem);
+  padding: 0;
+  border: 0;
+  border-radius: $radius-xl;
+  background: transparent;
+  color: var(--foreground);
+
+  &[open] {
+    animation: review-modal-backdrop-in 180ms ease both;
+  }
+
+  &[open] &__Panel {
+    animation: review-modal-panel-in 180ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  &[data-closing='true'] {
+    animation: review-modal-backdrop-out 180ms ease both;
+  }
+
+  &[data-closing='true'] &__Panel {
+    animation: review-modal-panel-out 180ms ease both;
+  }
+
+  &::backdrop {
+    background: oklch(0 0 0 / 0.42);
+    backdrop-filter: blur(0.3rem);
+  }
+
+  &__Panel {
+    position: relative;
+    padding: 1.35rem;
+    border: 1px solid var(--border);
+    border-radius: $radius-xl;
+    background: var(--card);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    @include shadow('lg');
+  }
+
+  &__Panel[data-state='success'] {
+    min-height: 21rem;
+    justify-content: center;
+    gap: 0;
+  }
+
+  &__Panel[data-state='success'] &__Header {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    display: block;
+  }
+
+  &__Panel[data-state='success'] &__Header > div,
+  &__Panel[data-state='success'] &__RatingField,
+  &__Panel[data-state='success'] &__Field,
+  &__Panel[data-state='success'] &__Actions {
+    display: none;
+  }
+
+  &__Panel[data-state='success'] &__Close {
+    margin: 0;
+  }
+
+  &__Header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  &__Description {
+    margin: 0.35rem 0 0;
+  }
+
+  &__Close {
+    width: 2.25rem;
+    height: 2.25rem;
+    margin: -0.45rem -0.5rem 0 0;
+    padding: 0;
+    border-radius: $radius-sm;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--muted-foreground);
+    background: transparent;
+    opacity: 0.72;
+    transition:
+      color $transition-fast,
+      opacity $transition-fast,
+      background-color $transition-fast;
+
+    svg {
+      color: inherit;
+      stroke: currentColor;
+    }
+
+    &:hover {
+      color: var(--muted-foreground);
+      opacity: 1;
+      background: var(--muted);
+    }
+  }
+
+  &__Field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    :global(input) {
+      font: inherit;
+      padding: 0.78rem 0.95rem;
+      font-size: 0.95rem;
+      border-radius: 0.625rem;
+
+      &:focus,
+      &:focus-visible {
+        box-shadow: $shadow-focus;
+        outline: none;
+      }
+
+      &::placeholder {
+        font: inherit;
+      }
+    }
+  }
+
+  &__Input {
+    font: inherit;
+    padding: 0.78rem 0.95rem;
+    font-size: 0.95rem;
+    border-radius: 0.625rem;
+  }
+
+  &__Textarea {
+    @include form-input;
+    font: inherit;
+    padding: 0.85rem 0.95rem;
+    font-size: 0.95rem;
+    width: 100%;
+    min-height: 5.75rem;
+    border-radius: 0.625rem;
+    resize: vertical;
+
+    &:focus,
+    &:focus-visible {
+      box-shadow: $shadow-focus;
+      outline: none;
+    }
+
+    &::placeholder {
+      font: inherit;
+    }
+  }
+
+  &__Honeypot {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  &__RatingField {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  &__RatingLegend {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  &__RatingStars {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 0.15rem;
+    width: fit-content;
+  }
+
+  &__RatingOption {
+    display: inline-flex;
+    cursor: pointer;
+
+    input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+
+    span[aria-hidden='true'] {
+      color: var(--border);
+      font-size: 1.75rem;
+      line-height: 1;
+      transition:
+        color $transition-fast,
+        transform $transition-fast;
+    }
+
+    input:checked ~ span[aria-hidden='true'],
+    &:has(input:checked) ~ & span[aria-hidden='true'],
+    &:hover span[aria-hidden='true'],
+    &:hover ~ & span[aria-hidden='true'] {
+      color: var(--testimonial-star);
+    }
+
+    input:focus-visible ~ span[aria-hidden='true'] {
+      outline: 2px solid var(--primary);
+      outline-offset: 4px;
+      border-radius: $radius-sm;
+    }
+
+    &:hover span[aria-hidden='true'] {
+      transform: translateY(-0.0625rem);
+    }
+  }
+
+  &__RatingLabel {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  &__Status {
+    min-height: 1.2rem;
+    margin: -0.1rem 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.55rem;
+    text-align: center;
+
+    &[data-empty='true'] {
+      display: none;
+    }
+
+    &[data-tone='success'] {
+      color: var(--foreground);
+    }
+
+    &[data-tone='error'] {
+      color: var(--destructive);
+    }
+  }
+
+  &__Panel[data-state='success'] &__Status {
+    min-height: 13rem;
+    margin: 0;
+    padding: 2.5rem 2rem 1.25rem;
+    justify-content: center;
+    color: var(--foreground);
+    font-size: 1.05rem;
+    line-height: 1.55;
+  }
+
+  &__Panel[data-state='success'] &__StatusTitle {
+    max-width: 24rem;
+  }
+
+  &__Panel[data-state='success'] &__StatusMessage {
+    max-width: 24rem;
+    color: var(--muted-foreground);
+  }
+
+  &__StatusIcon {
+    display: none;
+    color: var(--primary);
+    line-height: 0;
+
+    svg {
+      filter: drop-shadow(0 4px 12px color-mix(in oklab, var(--primary) 32%, transparent));
+    }
+  }
+
+  &__Panel[data-state='success'] &__StatusIcon {
+    margin-bottom: 0.35rem;
+  }
+
+  &__Status[data-tone='success'] &__StatusIcon {
+    display: inline-flex;
+  }
+
+  &__StatusMessage {
+    max-width: 100%;
+  }
+
+  &__Actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: -0.2rem;
+
+    @include small {
+      flex-direction: column-reverse;
+    }
+  }
+}
+
+@keyframes review-modal-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes review-modal-panel-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(0.5rem) scale(0.98);
+  }
+}
+
+@keyframes review-modal-backdrop-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes review-modal-backdrop-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ReviewModal,
+  .ReviewModal[open],
+  .ReviewModal[open] .ReviewModal__Panel,
+  .ReviewModal[data-closing='true'],
+  .ReviewModal[data-closing='true'] .ReviewModal__Panel {
+    animation: none;
+  }
+}

@@ -1,0 +1,603 @@
+---
+import { CheckCircle, X } from 'lucide-react';
+import Button from '@/components/Button';
+import FormInput from '@/components/FormInput';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
+import { DEFAULT_LOCALE, type Locale } from '@/i18n/config';
+import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module.scss';
+import styles from './Testimonials.module.scss';
+
+interface Props {
+  locale?: Locale;
+}
+
+interface TestimonialsCopy {
+  title: string;
+  description: string;
+  leaveReview: string;
+  modalTitle: string;
+  modalDescription: string;
+  closeLabel: string;
+  ratingLabel: string;
+  starsLabel: (rating: number) => string;
+  nameLabel: string;
+  emailLabel: string;
+  useCaseLabel: string;
+  useCasePlaceholder: string;
+  reviewLabel: string;
+  reviewPlaceholder: string;
+  cancel: string;
+  send: string;
+  sending: string;
+  successTitle: string;
+  successDescription: string;
+  error: string;
+  cardStarsLabel: string;
+}
+
+const testimonials = [
+  {
+    name: 'Laura Bennett',
+    role: 'Attorney',
+    quote:
+      'Most invoices I get are named invoice.pdf, scan 4.pdf, or some nonsense from the copier. I drop the billing folder into Zush and get names like 2026-05-12 Acme contract review invoice. I still check the list, but the boring part is gone.',
+  },
+  {
+    name: 'Dr. Amir Khan',
+    role: 'Clinic owner',
+    quote:
+      'I keep a separate de-identified archive for follow-up notes. With Offline AI, Zush can name scans by visit date and a short diagnosis phrase. It is not something I run blindly, but it cuts the typing way down.',
+  },
+  {
+    name: 'Elena Morozova',
+    role: 'Photographer',
+    quote:
+      'My Fuji files all start life as DSCF-something. Zush pulls the EXIF date, then adds plain words like Kyoto rain or Miller family porch. When I search an old drive, I do not have to remember the folder name anymore.',
+  },
+  {
+    name: 'Marcus Lee',
+    role: 'Video editor',
+    quote:
+      'B-roll used to be a guessing game: clip_001, export2, final maybe. Zush names clips by what is on screen plus the date. I still fix a few, but I spend a lot less time opening ten videos to find one shot.',
+  },
+];
+
+const copyByLocale: Record<Locale, TestimonialsCopy> = {
+  en: {
+    title: 'What people say about',
+    description: 'A few short notes from people who clean up messy folders with Zush.',
+    leaveReview: 'Leave a review',
+    modalTitle: 'Leave a review',
+    modalDescription: 'Share what kind of folder you cleaned up, how Zush helped, and what made the workflow better or worse.',
+    closeLabel: 'Close review form',
+    ratingLabel: 'Rating',
+    starsLabel: (rating) => `${rating} ${rating === 1 ? 'star' : 'stars'}`,
+    nameLabel: 'Name',
+    emailLabel: 'Email',
+    useCaseLabel: 'Use case',
+    useCasePlaceholder: 'Photographer, lawyer, researcher...',
+    reviewLabel: 'Review',
+    reviewPlaceholder: 'How did Zush help?',
+    cancel: 'Cancel',
+    send: 'Send review',
+    sending: 'Sending...',
+    successTitle: 'Thanks a lot!',
+    successDescription: 'After moderation, your review will appear on the site.',
+    error: 'Could not send the review right now.',
+    cardStarsLabel: '5 out of 5 stars',
+  },
+  de: {
+    title: 'Was Menschen über',
+    description: 'Kurze Notizen von Menschen, die mit Zush chaotische Ordner aufräumen.',
+    leaveReview: 'Bewertung schreiben',
+    modalTitle: 'Bewertung schreiben',
+    modalDescription: 'Teile, welchen Ordner du aufgeräumt hast, wie Zush geholfen hat und was besser oder schlechter lief.',
+    closeLabel: 'Bewertungsformular schließen',
+    ratingLabel: 'Bewertung',
+    starsLabel: (rating) => `${rating} ${rating === 1 ? 'Stern' : 'Sterne'}`,
+    nameLabel: 'Name',
+    emailLabel: 'E-Mail',
+    useCaseLabel: 'Anwendungsfall',
+    useCasePlaceholder: 'Fotograf, Anwalt, Forscher...',
+    reviewLabel: 'Bewertung',
+    reviewPlaceholder: 'Wie hat Zush geholfen?',
+    cancel: 'Abbrechen',
+    send: 'Bewertung senden',
+    sending: 'Wird gesendet...',
+    successTitle: 'Vielen Dank!',
+    successDescription: 'Nach der Moderation wird deine Bewertung auf der Website veröffentlicht.',
+    error: 'Die Bewertung konnte gerade nicht gesendet werden.',
+    cardStarsLabel: '5 von 5 Sternen',
+  },
+  fr: {
+    title: 'Ce que les gens disent de',
+    description: 'Quelques notes courtes de personnes qui rangent des dossiers en désordre avec Zush.',
+    leaveReview: 'Laisser un avis',
+    modalTitle: 'Laisser un avis',
+    modalDescription: 'Expliquez quel type de dossier vous avez rangé, comment Zush a aidé, et ce qui a mieux ou moins bien fonctionné.',
+    closeLabel: 'Fermer le formulaire d’avis',
+    ratingLabel: 'Note',
+    starsLabel: (rating) => `${rating} ${rating === 1 ? 'étoile' : 'étoiles'}`,
+    nameLabel: 'Nom',
+    emailLabel: 'Email',
+    useCaseLabel: 'Cas d’usage',
+    useCasePlaceholder: 'Photographe, avocat, chercheur...',
+    reviewLabel: 'Avis',
+    reviewPlaceholder: 'Comment Zush vous a aidé ?',
+    cancel: 'Annuler',
+    send: 'Envoyer l’avis',
+    sending: 'Envoi...',
+    successTitle: 'Merci beaucoup !',
+    successDescription: 'Après modération, votre avis sera publié sur le site.',
+    error: 'Impossible d’envoyer l’avis pour le moment.',
+    cardStarsLabel: '5 étoiles sur 5',
+  },
+  es: {
+    title: 'Lo que la gente dice sobre',
+    description: 'Algunas notas breves de personas que ordenan carpetas caóticas con Zush.',
+    leaveReview: 'Dejar reseña',
+    modalTitle: 'Dejar reseña',
+    modalDescription: 'Cuenta qué tipo de carpeta ordenaste, cómo ayudó Zush y qué mejoró o empeoró en el flujo.',
+    closeLabel: 'Cerrar formulario de reseña',
+    ratingLabel: 'Valoración',
+    starsLabel: (rating) => `${rating} ${rating === 1 ? 'estrella' : 'estrellas'}`,
+    nameLabel: 'Nombre',
+    emailLabel: 'Email',
+    useCaseLabel: 'Caso de uso',
+    useCasePlaceholder: 'Fotógrafo, abogado, investigador...',
+    reviewLabel: 'Reseña',
+    reviewPlaceholder: '¿Cómo te ayudó Zush?',
+    cancel: 'Cancelar',
+    send: 'Enviar reseña',
+    sending: 'Enviando...',
+    successTitle: 'Muchas gracias.',
+    successDescription: 'Después de la moderación, tu reseña aparecerá en el sitio.',
+    error: 'No se pudo enviar la reseña ahora.',
+    cardStarsLabel: '5 de 5 estrellas',
+  },
+  'pt-br': {
+    title: 'O que as pessoas dizem sobre',
+    description: 'Algumas notas curtas de pessoas que organizam pastas bagunçadas com o Zush.',
+    leaveReview: 'Deixar avaliação',
+    modalTitle: 'Deixar avaliação',
+    modalDescription: 'Conte que tipo de pasta você organizou, como o Zush ajudou e o que ficou melhor ou pior no fluxo.',
+    closeLabel: 'Fechar formulário de avaliação',
+    ratingLabel: 'Avaliação',
+    starsLabel: (rating) => `${rating} ${rating === 1 ? 'estrela' : 'estrelas'}`,
+    nameLabel: 'Nome',
+    emailLabel: 'Email',
+    useCaseLabel: 'Caso de uso',
+    useCasePlaceholder: 'Fotógrafo, advogado, pesquisador...',
+    reviewLabel: 'Avaliação',
+    reviewPlaceholder: 'Como o Zush ajudou?',
+    cancel: 'Cancelar',
+    send: 'Enviar avaliação',
+    sending: 'Enviando...',
+    successTitle: 'Muito obrigado!',
+    successDescription: 'Após a moderação, sua avaliação será publicada no site.',
+    error: 'Não foi possível enviar a avaliação agora.',
+    cardStarsLabel: '5 de 5 estrelas',
+  },
+  it: {
+    title: 'Cosa dicono le persone di',
+    description: 'Alcune brevi note di persone che riordinano cartelle disordinate con Zush.',
+    leaveReview: 'Lascia una recensione',
+    modalTitle: 'Lascia una recensione',
+    modalDescription: 'Racconta che tipo di cartella hai riordinato, come Zush ti ha aiutato e cosa è migliorato o peggiorato.',
+    closeLabel: 'Chiudi il modulo recensione',
+    ratingLabel: 'Valutazione',
+    starsLabel: (rating) => `${rating} ${rating === 1 ? 'stella' : 'stelle'}`,
+    nameLabel: 'Nome',
+    emailLabel: 'Email',
+    useCaseLabel: 'Caso d’uso',
+    useCasePlaceholder: 'Fotografo, avvocato, ricercatore...',
+    reviewLabel: 'Recensione',
+    reviewPlaceholder: 'Come ti ha aiutato Zush?',
+    cancel: 'Annulla',
+    send: 'Invia recensione',
+    sending: 'Invio...',
+    successTitle: 'Grazie mille!',
+    successDescription: 'Dopo la moderazione, la tua recensione sarà pubblicata sul sito.',
+    error: 'Non è stato possibile inviare la recensione ora.',
+    cardStarsLabel: '5 stelle su 5',
+  },
+  nl: {
+    title: 'Wat mensen zeggen over',
+    description: 'Een paar korte notities van mensen die rommelige mappen opruimen met Zush.',
+    leaveReview: 'Review achterlaten',
+    modalTitle: 'Review achterlaten',
+    modalDescription: 'Vertel welk soort map je hebt opgeruimd, hoe Zush hielp en wat beter of minder goed werkte.',
+    closeLabel: 'Reviewformulier sluiten',
+    ratingLabel: 'Beoordeling',
+    starsLabel: (rating) => `${rating} ${rating === 1 ? 'ster' : 'sterren'}`,
+    nameLabel: 'Naam',
+    emailLabel: 'Email',
+    useCaseLabel: 'Use case',
+    useCasePlaceholder: 'Fotograaf, jurist, onderzoeker...',
+    reviewLabel: 'Review',
+    reviewPlaceholder: 'Hoe heeft Zush geholpen?',
+    cancel: 'Annuleren',
+    send: 'Review sturen',
+    sending: 'Verzenden...',
+    successTitle: 'Heel erg bedankt!',
+    successDescription: 'Na moderatie wordt je review op de site geplaatst.',
+    error: 'De review kon nu niet worden verzonden.',
+    cardStarsLabel: '5 van 5 sterren',
+  },
+  hi: {
+    title: 'लोग क्या कहते हैं',
+    description: 'उन लोगों की छोटी notes जो Zush से messy folders साफ करते हैं.',
+    leaveReview: 'Review छोड़ें',
+    modalTitle: 'Review छोड़ें',
+    modalDescription: 'बताएँ आपने किस तरह का folder साफ किया, Zush ने कैसे help की, और workflow में क्या better या worse हुआ.',
+    closeLabel: 'Review form बंद करें',
+    ratingLabel: 'Rating',
+    starsLabel: (rating) => `${rating} ${rating === 1 ? 'star' : 'stars'}`,
+    nameLabel: 'Name',
+    emailLabel: 'Email',
+    useCaseLabel: 'Use case',
+    useCasePlaceholder: 'Photographer, lawyer, researcher...',
+    reviewLabel: 'Review',
+    reviewPlaceholder: 'Zush ने कैसे help की?',
+    cancel: 'Cancel',
+    send: 'Review भेजें',
+    sending: 'Sending...',
+    successTitle: 'Thanks a lot!',
+    successDescription: 'Moderation के बाद आपका review site पर दिखेगा.',
+    error: 'Review अभी नहीं भेजा जा सका.',
+    cardStarsLabel: '5 में से 5 stars',
+  },
+  ja: {
+    title: 'みんなの声：',
+    description: 'Zush で散らかったフォルダを整理している人たちからの短いコメントです。',
+    leaveReview: 'レビューを書く',
+    modalTitle: 'レビューを書く',
+    modalDescription: 'どんなフォルダを整理したか、Zush がどう役立ったか、良かった点や気になった点を教えてください。',
+    closeLabel: 'レビューフォームを閉じる',
+    ratingLabel: '評価',
+    starsLabel: (rating) => `${rating}つ星`,
+    nameLabel: '名前',
+    emailLabel: 'メール',
+    useCaseLabel: '用途',
+    useCasePlaceholder: '写真家、弁護士、研究者...',
+    reviewLabel: 'レビュー',
+    reviewPlaceholder: 'Zush はどう役立ちましたか？',
+    cancel: 'キャンセル',
+    send: 'レビューを送信',
+    sending: '送信中...',
+    successTitle: 'ありがとうございます！',
+    successDescription: 'モデレーション後、レビューはサイトに掲載されます。',
+    error: '現在レビューを送信できません。',
+    cardStarsLabel: '5つ星中5つ星',
+  },
+  ko: {
+    title: '사람들이 말하는',
+    description: 'Zush로 지저분한 폴더를 정리하는 사람들이 남긴 짧은 메모입니다.',
+    leaveReview: '리뷰 남기기',
+    modalTitle: '리뷰 남기기',
+    modalDescription: '어떤 폴더를 정리했는지, Zush가 어떻게 도움이 되었는지, 더 좋아졌거나 아쉬웠던 점을 알려주세요.',
+    closeLabel: '리뷰 양식 닫기',
+    ratingLabel: '평점',
+    starsLabel: (rating) => `${rating}점`,
+    nameLabel: '이름',
+    emailLabel: '이메일',
+    useCaseLabel: '사용 사례',
+    useCasePlaceholder: '사진가, 변호사, 연구자...',
+    reviewLabel: '리뷰',
+    reviewPlaceholder: 'Zush가 어떻게 도움이 되었나요?',
+    cancel: '취소',
+    send: '리뷰 보내기',
+    sending: '보내는 중...',
+    successTitle: '정말 감사합니다!',
+    successDescription: '검토 후 리뷰가 사이트에 게시됩니다.',
+    error: '지금은 리뷰를 보낼 수 없습니다.',
+    cardStarsLabel: '5점 만점에 5점',
+  },
+  'zh-cn': {
+    title: '大家如何评价',
+    description: '几条来自真实用户的短评，他们用 Zush 整理杂乱文件夹。',
+    leaveReview: '留下评价',
+    modalTitle: '留下评价',
+    modalDescription: '说说你整理了什么类型的文件夹、Zush 如何帮到你，以及流程哪里变好或变差。',
+    closeLabel: '关闭评价表单',
+    ratingLabel: '评分',
+    starsLabel: (rating) => `${rating} 星`,
+    nameLabel: '姓名',
+    emailLabel: '邮箱',
+    useCaseLabel: '使用场景',
+    useCasePlaceholder: '摄影师、律师、研究员...',
+    reviewLabel: '评价',
+    reviewPlaceholder: 'Zush 如何帮到你？',
+    cancel: '取消',
+    send: '发送评价',
+    sending: '正在发送...',
+    successTitle: '非常感谢！',
+    successDescription: '审核通过后，你的评价将显示在网站上。',
+    error: '现在无法发送评价。',
+    cardStarsLabel: '5 星满分',
+  },
+  ar: {
+    title: 'ماذا يقول الناس عن',
+    description: 'ملاحظات قصيرة من أشخاص يرتبون المجلدات الفوضوية باستخدام Zush.',
+    leaveReview: 'اترك مراجعة',
+    modalTitle: 'اترك مراجعة',
+    modalDescription: 'أخبرنا ما نوع المجلد الذي رتبته، وكيف ساعدك Zush، وما الذي أصبح أفضل أو أسوأ في سير العمل.',
+    closeLabel: 'إغلاق نموذج المراجعة',
+    ratingLabel: 'التقييم',
+    starsLabel: (rating) => `${rating} ${rating === 1 ? 'نجمة' : 'نجوم'}`,
+    nameLabel: 'الاسم',
+    emailLabel: 'البريد الإلكتروني',
+    useCaseLabel: 'حالة الاستخدام',
+    useCasePlaceholder: 'مصور، محام، باحث...',
+    reviewLabel: 'المراجعة',
+    reviewPlaceholder: 'كيف ساعدك Zush؟',
+    cancel: 'إلغاء',
+    send: 'إرسال المراجعة',
+    sending: 'جار الإرسال...',
+    successTitle: 'شكرا جزيلا!',
+    successDescription: 'بعد المراجعة، سيتم نشر تقييمك على الموقع.',
+    error: 'تعذر إرسال المراجعة الآن.',
+    cardStarsLabel: '5 من 5 نجوم',
+  },
+};
+
+const { locale = DEFAULT_LOCALE } = Astro.props as Props;
+const copy = copyByLocale[locale] ?? copyByLocale.en;
+---
+
+<section id="reviews" class={styles.Testimonials} aria-labelledby="testimonials-title" data-testimonials>
+  <div class={styles.Testimonials__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading id="testimonials-title" as="h2" align="center" className={sectionHeaderStyles.SectionHeader__Title}>
+        {copy.title}<span class={`${styles.Testimonials__TitleBrand} brand-accent-text`}>Zush</span>
+      </Heading>
+      <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>
+        {copy.description}
+      </Text>
+    </div>
+
+    <div class={styles.Testimonials__Grid}>
+      {testimonials.map((testimonial) => (
+        <article class={styles.TestimonialCard}>
+          <div class={styles.TestimonialCard__Stars} aria-label={copy.cardStarsLabel}>
+            {Array.from({ length: 5 }).map(() => (
+              <span aria-hidden="true">★</span>
+            ))}
+          </div>
+          <blockquote class={styles.TestimonialCard__Quote}>
+            <Text as="p" size="md">
+              {testimonial.quote}
+            </Text>
+          </blockquote>
+          <footer class={styles.TestimonialCard__Author}>
+            <Text as="p" size="sm" className={styles.TestimonialCard__Name}>{testimonial.name}</Text>
+            <Text as="p" size="sm" color="subtle">{testimonial.role}</Text>
+          </footer>
+        </article>
+      ))}
+    </div>
+
+    <div class={styles.Testimonials__ReviewAction}>
+      <Button as="button" variant="ghost" size="md" type="button" data-review-open>
+        {copy.leaveReview}
+      </Button>
+    </div>
+  </div>
+
+  <dialog class={styles.ReviewModal} data-review-modal aria-labelledby="review-modal-title">
+    <form
+      class={styles.ReviewModal__Panel}
+      data-review-form
+      data-sending={copy.sending}
+      data-success-title={copy.successTitle}
+      data-success-description={copy.successDescription}
+      data-error={copy.error}
+      method="dialog"
+    >
+      <div class={styles.ReviewModal__Header}>
+        <div>
+          <Heading id="review-modal-title" as="h3" size="h3">{copy.modalTitle}</Heading>
+          <Text as="p" size="sm" color="subtle" className={styles.ReviewModal__Description}>
+            {copy.modalDescription}
+          </Text>
+        </div>
+        <button class={styles.ReviewModal__Close} type="button" aria-label={copy.closeLabel} data-review-close>
+          <X size={22} strokeWidth={2.1} aria-hidden="true" />
+        </button>
+      </div>
+
+      <fieldset class={styles.ReviewModal__RatingField}>
+        <legend class={styles.ReviewModal__RatingLegend}>{copy.ratingLabel}</legend>
+        <div class={styles.ReviewModal__RatingStars} data-rating-stars>
+          {[5, 4, 3, 2, 1].map((rating) => (
+            <label class={styles.ReviewModal__RatingOption}>
+              <input type="radio" name="rating" value={String(rating)} required={rating === 5} />
+              <span aria-hidden="true">★</span>
+              <span class={styles.ReviewModal__RatingLabel}>{copy.starsLabel(rating)}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <label class={styles.ReviewModal__Field}>
+        <Text as="span" size="sm">{copy.nameLabel}</Text>
+        <FormInput className={styles.ReviewModal__Input} name="name" type="text" autoComplete="name" maxLength={80} required />
+      </label>
+
+      <label class={styles.ReviewModal__Field}>
+        <Text as="span" size="sm">{copy.emailLabel}</Text>
+        <FormInput className={styles.ReviewModal__Input} name="email" type="email" autoComplete="email" maxLength={120} required />
+      </label>
+
+      <label class={styles.ReviewModal__Field}>
+        <Text as="span" size="sm">{copy.useCaseLabel}</Text>
+        <FormInput className={styles.ReviewModal__Input} name="useCase" type="text" maxLength={120} placeholder={copy.useCasePlaceholder} required />
+      </label>
+
+      <label class={styles.ReviewModal__Field}>
+        <Text as="span" size="sm">{copy.reviewLabel}</Text>
+        <textarea
+          class={styles.ReviewModal__Textarea}
+          name="review"
+          rows="5"
+          maxlength="1200"
+          placeholder={copy.reviewPlaceholder}
+          required
+        ></textarea>
+      </label>
+
+      <label class={styles.ReviewModal__Honeypot} aria-hidden="true">
+        Website
+        <input name="website" type="text" tabindex="-1" autocomplete="off" />
+      </label>
+
+      <Text
+        as="div"
+        size="sm"
+        color="subtle"
+        className={styles.ReviewModal__Status}
+        data-review-status
+        data-empty="true"
+        role="status"
+        aria-live="polite"
+      >
+        <span class={styles.ReviewModal__StatusIcon} aria-hidden="true">
+          <CheckCircle size={44} strokeWidth={2.1} />
+        </span>
+        <Heading as="h4" size="h4" align="center" className={styles.ReviewModal__StatusTitle}>
+          <span data-review-status-title></span>
+        </Heading>
+        <span class={styles.ReviewModal__StatusMessage} data-review-status-message></span>
+      </Text>
+
+      <div class={styles.ReviewModal__Actions}>
+        <Button as="button" variant="ghost" size="md" type="button" data-review-close>
+          {copy.cancel}
+        </Button>
+        <Button as="button" variant="primary" size="md" type="submit">
+          {copy.send}
+        </Button>
+      </div>
+    </form>
+  </dialog>
+</section>
+
+<script>
+  const bindReviewModal = () => {
+    document.querySelectorAll('[data-testimonials]').forEach((root) => {
+      if (!(root instanceof HTMLElement) || root.dataset.reviewBound === 'true') return;
+
+      const modal = root.querySelector('[data-review-modal]');
+      const form = root.querySelector('[data-review-form]');
+      const status = root.querySelector('[data-review-status]');
+      const statusTitle = root.querySelector('[data-review-status-title]');
+      const statusMessage = root.querySelector('[data-review-status-message]');
+      const openButton = root.querySelector('[data-review-open]');
+      const closeButtons = root.querySelectorAll('[data-review-close]');
+      const submitButton = form instanceof HTMLFormElement
+        ? form.querySelector('button[type="submit"]')
+        : null;
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      if (!(modal instanceof HTMLDialogElement)
+        || !(form instanceof HTMLFormElement)
+        || !(status instanceof HTMLElement)
+        || !(statusTitle instanceof HTMLElement)
+        || !(statusMessage instanceof HTMLElement)
+        || !(openButton instanceof HTMLButtonElement)
+        || !(submitButton instanceof HTMLButtonElement)) {
+        return;
+      }
+
+      root.dataset.reviewBound = 'true';
+
+      const setStatus = (
+        title: string,
+        tone: 'neutral' | 'success' | 'error' = 'neutral',
+        message = '',
+      ) => {
+        statusTitle.textContent = title;
+        statusMessage.textContent = message;
+        status.dataset.tone = tone;
+        status.dataset.empty = title || message ? 'false' : 'true';
+        if (tone === 'success') {
+          form.dataset.state = 'success';
+        } else {
+          delete form.dataset.state;
+        }
+      };
+
+      const closeModal = () => {
+        setStatus('');
+        if (!modal.open) return;
+
+        if (prefersReducedMotion.matches) {
+          modal.close();
+          return;
+        }
+
+        modal.dataset.closing = 'true';
+        window.setTimeout(() => {
+          modal.close();
+          delete modal.dataset.closing;
+        }, 180);
+      };
+
+      openButton.addEventListener('click', () => {
+        setStatus('');
+        delete modal.dataset.closing;
+        modal.showModal();
+      });
+
+      closeButtons.forEach((button) => {
+        button.addEventListener('click', closeModal);
+      });
+
+      modal.addEventListener('click', (event) => {
+        if (event.target === modal) closeModal();
+      });
+
+      modal.addEventListener('cancel', (event) => {
+        event.preventDefault();
+        closeModal();
+      });
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        submitButton.disabled = true;
+        setStatus(form.dataset.sending || 'Sending...');
+
+        const formData = new FormData(form);
+        const payload = Object.fromEntries(formData.entries());
+
+        try {
+          const response = await fetch('/api/review', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+
+          if (!response.ok) {
+            throw new Error(form.dataset.error || 'Could not send the review.');
+          }
+
+          form.reset();
+          setStatus(
+            form.dataset.successTitle || 'Thanks a lot!',
+            'success',
+            form.dataset.successDescription || 'After moderation, your review will appear on the site.',
+          );
+        } catch (error) {
+          setStatus(error instanceof Error ? error.message : (form.dataset.error || 'Could not send the review.'), 'error');
+        } finally {
+          submitButton.disabled = false;
+        }
+      });
+    });
+  };
+
+  bindReviewModal();
+  document.addEventListener('astro:after-swap', bindReviewModal);
+</script>
