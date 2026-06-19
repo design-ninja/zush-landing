@@ -4,8 +4,9 @@
 
 - Campaign: `Zush Mac Search 2026Q2`
 - Google Ads account: `471-469-2966`
-- Budget: `700 THB/day` live test cap
-- Duration: monitor daily until traffic and cost quality are clear
+- Status: paused planning context only; do not inspect or operate Google Ads until explicitly re-enabled
+- Planned budget: `700 THB/day` live test cap
+- Planned duration: monitor daily until traffic and cost quality are clear
 - Primary landing pages: `/mac`, `/rename-screenshots-with-ai`, `/rename-pdf-with-ai`, and `/blog/best-ai-file-renamer-tools-mac-compared`
 - Primary conversion: Mac download click
 - Secondary conversion: purchase
@@ -20,7 +21,7 @@
 - Devices: desktop/computers only where possible; otherwise reduce mobile/tablet bids as far as allowed
 - Bidding: Manual CPC for the launch period while the account has no traffic history
 - Budget: `700 THB/day`; review spend daily before scaling
-- Final URLs: ad-group-specific landing pages with full UTM suffixes from `google-search-keywords.csv`
+- Final URLs: ad-group-specific landing pages from `google-search-keywords.csv`; UTM values come from each row's `utm_content` plus the shared tracking suffix in `scripts/update_zush_mac_search_campaign.py` if Ads work is explicitly re-enabled later
 
 ## Files
 
@@ -29,13 +30,15 @@
 - `google-search-rsa-assets.csv`: responsive search ad copy
 - `google-search-extensions.csv`: sitelinks and callouts
 
-## Google Ads Setup Status
+## Archived Google Ads Setup Snapshot
 
-- Account and billing: configured.
-- Campaign: rebuilt and enabled.
+- Current operating status: Ads are not launched for this feedback loop and should be ignored until explicitly re-enabled.
+- The notes below are an archived setup snapshot, not current operating instructions.
+- Account and billing: previously configured.
+- Campaign: previously rebuilt for testing.
 - Campaign ID: `23816664121`.
-- Daily budget: `700 THB`.
-- Bidding: manual CPC. Active ad groups and keyword-level bids are capped at `50 THB` after the first click cost `139.49 THB` on `[file renamer]`.
+- Planned daily budget: `700 THB`.
+- Historical bidding note: manual CPC. Active ad groups and keyword-level bids were capped at `50 THB` after the first click cost `139.49 THB` on `[file renamer]`.
 - Networks: Google Search only; Search partners cannot be enabled for this account (`CANNOT_TARGET_PARTNER_SEARCH_NETWORK`), and Display expansion remains disabled.
 - Location option: presence only.
 - Devices: desktop bid modifier `1.0`; mobile/tablet bid modifiers `0.1`.
@@ -57,10 +60,10 @@
   - `PUBLIC_GOOGLE_ADS_PURCHASE_CONVERSION_LABEL=R7ihCIWMp6YcEKPRk8dD`
 - Vercel env: added for `Production` and `Development`; add `Preview` if needed for future preview deployment testing.
 
-## Remaining Launch Steps
+## Remaining Steps If Ads Are Re-Enabled
 
-1. Wait until the newly added high-relevance RSA and broadened keywords finish Google Ads review.
-2. Re-check campaign primary status and actual impressions/clicks after Google Ads reporting catches up.
+1. Re-confirm that the user wants Google Ads inspection and operations re-enabled.
+2. Re-check campaign, RSA, keyword, tracking, and conversion status only after that explicit re-enable.
 3. Confirm `Mac download click` still fires from the live `/mac` page and from paid landing pages.
 4. Monitor spend daily; stop or tighten the test if click quality is poor.
 

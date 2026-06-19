@@ -1,6 +1,6 @@
 ---
-title: "Automatic File Organizer for Mac: Hazel, Automator, AI"
-description: "Organize files on Mac automatically with Smart Folders, Hazel, Automator, Shortcuts, and AI. Best setup for Downloads, screenshots, PDFs, and photos."
+title: "Automatic File Organizer for Mac: Hazel Alternative, Automator, AI"
+description: "Organize files on Mac automatically with Smart Folders, Hazel, Automator, Shortcuts, and AI. Compare Hazel alternatives for Downloads, screenshots, PDFs, and photos."
 date: "2026-02-25"
 slug: "automate-file-organization-macos"
 platform: "mac"
@@ -13,7 +13,7 @@ reviewed: "2026-06-17"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: the best automatic file organizer for Mac is a simple stack: Smart Folders to see the mess, Hazel or Automator to route predictable files, and AI file renaming for screenshots, videos, PDFs, documents, photos, and downloads that need content-aware names. If you want AI to organize files for you, start with naming first: searchable filenames make every Finder folder, Smart Folder, and Spotlight search work better.
+Quick answer: the best automatic file organizer for Mac is a simple stack: Smart Folders to see the mess, Hazel or Automator to route predictable files, and AI file renaming for screenshots, videos, PDFs, documents, photos, and downloads that need content-aware names. If you want a Hazel alternative, first decide whether you need rule-based moving, AI naming, or both.
 
 | Mac file organizer | Best at | Not good at |
 |---|---|---|
@@ -23,6 +23,8 @@ Quick answer: the best automatic file organizer for Mac is a simple stack: Smart
 | Zush | AI names for screenshots, PDFs, photos, documents, videos, and downloads | Moving files into complex folder trees |
 
 The fastest practical setup is not a giant rules engine. It is one watched folder, one cleanup rule, and one naming layer: keep Hazel or Automator for predictable routing, then use [Zush for Mac](/mac) when the file itself has to be understood before it can be named.
+
+If you searched for the Hazel official site, go to Noodlesoft. This guide is not Hazel's official documentation. It explains when Hazel is still the right rule engine, when built-in Mac tools are enough, and when an AI file organizer or AI file renamer is a better fit for messy files.
 
 If you want AI to organize files for you on Mac, start with one principle: do not automate everything the same way. Rule-based tools are good at moving files based on predictable conditions. AI is better at naming and classifying visual files whose content cannot be inferred from metadata alone.
 
@@ -178,6 +180,18 @@ Shortcuts is better for one-off automations. Automator is better for complex mul
 ## Hazel: the power tool for rule-based file automation
 
 Hazel is a third-party app ($42 one-time purchase) that monitors folders in the background and applies rules to incoming files. It is the most capable rule engine available on macOS for file organization.
+
+### Is Zush a Hazel alternative?
+
+Zush can be a Hazel alternative only for the naming layer. It is not a full replacement for Hazel's rule engine if your main job is moving files into many folders, deleting old files, or running scripts. Use Hazel when the rule is predictable: file type, date, folder, name pattern, color label, or tag.
+
+Use Zush when Hazel can see that a file is a PDF or image, but cannot understand what the file is about. Examples:
+
+- `scan_0042.pdf` should become `acme-invoice-may-2026.pdf`
+- `Screenshot 2026-06-10 at 14.21.03.png` should become `stripe-dashboard-failed-payment-chart.png`
+- `IMG_4382.HEIC` should become `client-office-whiteboard-session.heic`
+
+The practical Mac setup is often Hazel plus Zush: Hazel watches and routes predictable files, while Zush creates content-aware names for screenshots, PDFs, photos, documents, videos, and downloads.
 
 ### What makes Hazel different
 
