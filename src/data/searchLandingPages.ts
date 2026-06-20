@@ -1,7 +1,12 @@
 import type { FeatureLandingPageProps } from '@/components/FeatureLandingPage';
 import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 
-type SearchLandingSlug = 'batch-rename-tool' | 'file-renamer' | 'batch-rename-files' | 'bulk-rename-files';
+type SearchLandingSlug =
+  | 'batch-rename-tool'
+  | 'file-renamer'
+  | 'batch-rename-files'
+  | 'bulk-rename-files'
+  | 'offline-ai-file-renamer';
 
 const sharedSlides: FeatureLandingPageProps['showcaseSlides'] = [
   {
@@ -100,6 +105,34 @@ const bulkRenameFaq = [
   },
 ];
 
+const offlineRenameFaq = [
+  {
+    question: 'What is an offline AI file renamer?',
+    answer:
+      'An offline AI file renamer uses a local model on your computer to analyze files and suggest better filenames without sending supported file analysis to a cloud AI provider. In Zush, Offline AI mode connects to local Ollama models for private Mac and Windows workflows.',
+  },
+  {
+    question: 'Can Zush rename files locally with Ollama?',
+    answer:
+      'Yes. Zush can use local Ollama models in Offline AI mode for supported files. Install Ollama, pull a vision-capable model, enable Offline AI mode in Zush, and review the generated filenames before applying the batch.',
+  },
+  {
+    question: 'What is the difference between Offline AI and BYOK?',
+    answer:
+      'Offline AI uses a local Ollama model running on your device. BYOK uses your own cloud provider key from Gemini, Groq, OpenAI, or Claude. Both give you more control than the default managed cloud workflow, but Offline AI is the private local-processing option.',
+  },
+  {
+    question: 'Does offline AI renaming work for every file type?',
+    answer:
+      'Offline model quality depends on the model and file type. It works best for visual and preview-based analysis such as screenshots, photos, PDFs, and visible document previews. For the highest naming quality across complex mixed folders, Cloud or BYOK mode may still produce better results.',
+  },
+  {
+    question: 'Can I undo offline AI renames?',
+    answer:
+      'Yes. Zush keeps rename history, so offline-generated names can be reviewed before applying and reverted afterward if a batch needs another pass.',
+  },
+];
+
 export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageProps> = {
   'file-renamer': {
     h1: 'File Renamer for Mac & Windows',
@@ -113,6 +146,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     relatedPages: [
       { title: 'Batch Rename Tool', href: '/batch-rename-tool' },
       { title: 'Bulk Rename Files', href: '/bulk-rename-files' },
+      { title: 'Offline AI File Renamer', href: '/offline-ai-file-renamer' },
       { title: 'Zush for Mac', href: '/mac' },
       { title: 'Zush for Windows', href: '/windows' },
     ],
@@ -162,6 +196,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       { title: 'Batch Rename Files with AI', href: '/batch-rename-files' },
       { title: 'Bulk Rename Files', href: '/bulk-rename-files' },
       { title: 'File Renamer for Mac & Windows', href: '/file-renamer' },
+      { title: 'Offline AI File Renamer', href: '/offline-ai-file-renamer' },
       { title: 'Zush for Windows', href: '/windows' },
     ],
     relatedBlogPosts: [
@@ -209,6 +244,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       { title: 'Batch Rename Tool', href: '/batch-rename-tool' },
       { title: 'File Renamer for Mac & Windows', href: '/file-renamer' },
       { title: 'Bulk Rename Files', href: '/bulk-rename-files' },
+      { title: 'Offline AI File Renamer', href: '/offline-ai-file-renamer' },
       { title: 'Rename PDFs with AI', href: '/rename-pdf-with-ai' },
       { title: 'Rename Photos with AI', href: '/rename-photos-with-ai' },
     ],
@@ -255,6 +291,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     relatedPages: [
       { title: 'Batch Rename Tool', href: '/batch-rename-tool' },
       { title: 'File Renamer for Mac & Windows', href: '/file-renamer' },
+      { title: 'Offline AI File Renamer', href: '/offline-ai-file-renamer' },
       { title: 'Zush for Mac', href: '/mac' },
       { title: 'Zush for Windows', href: '/windows' },
     ],
@@ -285,6 +322,54 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
           'Automatic folder monitoring',
           'Bulk Rename Utility alternative for content-based filenames',
           'Undo and rename history',
+        ],
+      },
+    }),
+  },
+  'offline-ai-file-renamer': {
+    h1: 'Offline AI File Renamer',
+    h1Accent: 'Offline AI',
+    category: 'general',
+    definitionTitle: 'What Is an Offline AI File Renamer?',
+    definitionText:
+      'An offline AI file renamer analyzes files with a local model instead of a cloud provider. Zush supports private local renaming with Ollama, plus BYOK for users who want their own cloud provider key, while keeping preview, folder monitoring, templates, Naming Blocks, and undo history in the same Mac and Windows workflow.',
+    showcaseSlides: sharedSlides,
+    faqItems: offlineRenameFaq,
+    relatedPages: [
+      { title: 'Ollama Offline AI Setup', href: '/ollama-setup' },
+      { title: 'BYOK Setup', href: '/byok-setup' },
+      { title: 'File Renamer for Mac & Windows', href: '/file-renamer' },
+      { title: 'Zush for Mac', href: '/mac' },
+      { title: 'Zush for Windows', href: '/windows' },
+    ],
+    relatedBlogPosts: [
+      { title: 'Local AI File Renaming with Ollama', href: 'local-ai-file-renaming-ollama-guide' },
+      { title: 'Cloud AI vs Local AI File Renaming', href: 'cloud-vs-local-ai-file-renaming' },
+      { title: 'BYOK: Unlimited AI File Renames', href: 'byok-ai-file-renaming-unlimited' },
+    ],
+    jsonLd: buildFeaturePageJsonLd({
+      howTo: {
+        name: 'Rename files offline with Zush and Ollama',
+        description: 'Use Zush as an offline AI file renamer for private local file naming on Mac and Windows.',
+        steps: [
+          { name: 'Install Ollama', text: 'Install Ollama and pull a vision-capable local model such as qwen2.5vl:3b or gemma3:4b.' },
+          { name: 'Enable Offline AI mode', text: 'Open Zush, go to AI Setup, enable Offline AI mode, refresh the model list, and test the local connection.' },
+          { name: 'Review and apply names', text: 'Drop files or folders into Zush, review local AI filename suggestions, and apply the batch with undo history available.' },
+        ],
+      },
+      faqItems: offlineRenameFaq,
+      software: {
+        pagePath: '/offline-ai-file-renamer',
+        description:
+          'Offline AI file renamer for Mac and Windows with local Ollama models, BYOK, preview, folder monitoring, templates, Naming Blocks, and undo history.',
+        featureList: [
+          'Offline AI file renaming with local Ollama models',
+          'BYOK support for Gemini, Groq, OpenAI, and Claude',
+          'Preview every filename before applying changes',
+          'Folder monitoring for automatic rename workflows',
+          'Custom templates and 145+ Naming Blocks',
+          'Undo and rename history',
+          'Works on macOS and Windows',
         ],
       },
     }),

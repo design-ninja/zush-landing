@@ -1,0 +1,14 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import FeatureLandingPageShell from '@/components/FeatureLandingPage/FeatureLandingPageShell.astro';
+import { SEARCH_LANDING_PAGES } from '@/data/searchLandingPages';
+import { getSeoForPath } from '@/seo/config';
+import { buildFeatureBreadcrumbJsonLd } from '@/utils/jsonLd';
+
+const seo = getSeoForPath('/offline-ai-file-renamer');
+const page = SEARCH_LANDING_PAGES['offline-ai-file-renamer'];
+---
+
+<BaseLayout seo={seo} jsonLd={[page.jsonLd, buildFeatureBreadcrumbJsonLd(page.h1, '/offline-ai-file-renamer')]}>
+  <FeatureLandingPageShell {...page} />
+</BaseLayout>

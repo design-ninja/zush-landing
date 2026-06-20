@@ -2,10 +2,23 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import BYOKSetup from '@/views/BYOKSetup';
 import { getSeoForPath } from '@/seo/config';
+import { buildPageBreadcrumbJsonLd, buildWebPageJsonLd } from '@/utils/jsonLd';
 
 const seo = getSeoForPath('/byok-setup');
+const jsonLd = [
+  buildWebPageJsonLd({
+    pagePath: '/byok-setup',
+    title: seo.title,
+    description: seo.description,
+    type: 'TechArticle',
+  }),
+  buildPageBreadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'BYOK Setup', path: '/byok-setup' },
+  ]),
+];
 ---
 
-<BaseLayout seo={seo}>
+<BaseLayout seo={seo} jsonLd={jsonLd}>
   <BYOKSetup />
 </BaseLayout>

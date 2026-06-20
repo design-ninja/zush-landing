@@ -3,12 +3,13 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import { ArrowRight, History, Tags } from 'lucide-react';
 import BlogPostCard from '@/components/blog/BlogPostCard.astro';
 import {
+  type BlogPost,
   getAllPosts,
   getAllTags,
   getBlogIndexSections,
   getRecentBlogPosts,
 } from '@/data/blog';
-import { getSeoForPath } from '@/seo/config';
+import { getSeoForPath, SITE_ORIGIN, toIsoDateTime } from '@/seo/config';
 import headingStyles from '@/components/Heading/Heading.module.scss';
 import textStyles from '@/components/Text/Text.module.scss';
 import backToHomeStyles from '@/components/BackToHome/BackToHome.module.scss';
@@ -20,6 +21,130 @@ const allPosts = await getAllPosts();
 const sections = await getBlogIndexSections();
 const recentPosts = await getRecentBlogPosts(6);
 const allTags = await getAllTags();
+const blogUrl = `${SITE_ORIGIN}/blog`;
+const listedPosts = Array.from(
+  new Map(
+    [...recentPosts, ...sections.flatMap((section) => section.posts)]
+      .map((post) => [post.slug, post]),
+  ).values(),
+);
+const toBlogPostingJsonLd = (post: BlogPost) => {
+  const postUrl = `${SITE_ORIGIN}/blog/${post.slug}`;
+
+  return {
+    '@type': 'BlogPosting',
+    '@id': `${postUrl}#blog-posting`,
+    headline: post.title,
+    url: postUrl,
+    mainEntityOfPage: postUrl,
+    description: post.description,
+    datePublished: toIsoDateTime(post.date),
+    dateModified: toIsoDateTime(post.reviewedAt || post.date),
+    author: {
+      '@type': 'Person',
+      name: post.authorName,
+      url: 'https://lirik.pro/en',
+    },
+    publisher: {
+      '@id': `${SITE_ORIGIN}/#organization`,
+    },
+    isPartOf: {
+      '@id': `${blogUrl}#blog`,
+    },
+    articleSection: post.platform,
+    keywords: post.tags.join(', '),
+  };
+};
+const blogPostItems = listedPosts.map(toBlogPostingJsonLd);
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE_ORIGIN}/#organization`,
+      name: 'Zush',
+      url: SITE_ORIGIN,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_ORIGIN}/logo.png`,
+      },
+      sameAs: [
+        'https://x.com/zush_app',
+        'https://www.youtube.com/@zushapp',
+        'https://www.producthunt.com/products/zush',
+      ],
+    },
+    {
+      '@type': 'Blog',
+      '@id': `${blogUrl}#blog`,
+      name: 'Zush Blog',
+      url: blogUrl,
+      description: seo.description,
+      publisher: {
+        '@id': `${SITE_ORIGIN}/#organization`,
+      },
+      blogPost: blogPostItems.map((post) => ({
+        '@id': post['@id'],
+      })),
+    },
+    {
+      '@type': 'CollectionPage',
+      '@id': `${blogUrl}#webpage`,
+      url: blogUrl,
+      name: seo.title,
+      description: seo.description,
+      isPartOf: {
+        '@id': `${SITE_ORIGIN}/#website`,
+      },
+      about: {
+        '@id': `${SITE_ORIGIN}/#software`,
+      },
+      mainEntity: {
+        '@id': `${blogUrl}#featured-posts`,
+      },
+      breadcrumb: {
+        '@id': `${blogUrl}#breadcrumb`,
+      },
+      inLanguage: 'en',
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': `${blogUrl}#breadcrumb`,
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: SITE_ORIGIN,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Blog',
+          item: blogUrl,
+        },
+      ],
+    },
+    {
+      '@type': 'ItemList',
+      '@id': `${blogUrl}#featured-posts`,
+      name: 'Featured Zush blog posts',
+      description:
+        'Recent and featured guides about AI file renaming, batch renaming, file organization, Mac workflows, and Windows workflows.',
+      numberOfItems: listedPosts.length,
+      itemListElement: listedPosts.map((post, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        url: `${SITE_ORIGIN}/blog/${post.slug}`,
+        name: post.title,
+        item: {
+          '@id': `${SITE_ORIGIN}/blog/${post.slug}#blog-posting`,
+        },
+      })),
+    },
+    ...blogPostItems,
+  ],
+};
 const searchablePosts = allPosts.map((post) => ({
   post,
   searchText: [
@@ -36,7 +161,7 @@ const searchablePosts = allPosts.map((post) => ({
 }));
 ---
 
-<BaseLayout seo={seo} disableTopOffset={true}>
+<BaseLayout seo={seo} disableTopOffset={true} jsonLd={jsonLd}>
   <section class={[styles.BlogList, styles.BlogList_underHeader, styles.BlogList_glowTopRight].join(' ')}>
     <div class={styles.BlogList__Container}>
       <div class={sectionHeaderStyles.SectionHeader}>

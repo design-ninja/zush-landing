@@ -197,6 +197,99 @@ export interface HowToData {
   steps: HowToStepData[];
 }
 
+export interface WebPageJsonLdData {
+  pagePath: string;
+  title: string;
+  description: string;
+  type?: 'WebPage' | 'CollectionPage' | 'TechArticle';
+  dateModified?: string;
+  speakableSelectors?: string[];
+}
+
+export interface BreadcrumbItemData {
+  name: string;
+  path?: string;
+}
+
+export interface ItemListEntryData {
+  name: string;
+  url: string;
+  description?: string;
+}
+
+export function buildWebPageJsonLd(data: WebPageJsonLdData) {
+  const pageUrl = `${SITE_ORIGIN}${data.pagePath}`;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': data.type ?? 'WebPage',
+    '@id': `${pageUrl}#webpage`,
+    name: data.title,
+    description: data.description,
+    url: pageUrl,
+    ...(data.dateModified ? { dateModified: toIsoDateTime(data.dateModified) } : {}),
+    isPartOf: {
+      '@type': 'WebSite',
+      name: 'Zush',
+      url: SITE_ORIGIN,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Zush',
+      url: SITE_ORIGIN,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_ORIGIN}/logo.png`,
+      },
+    },
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: data.speakableSelectors ?? ['h1', 'meta[name="description"]'],
+    },
+  };
+}
+
+export function buildPageBreadcrumbJsonLd(items: BreadcrumbItemData[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      ...(item.path ? { item: `${SITE_ORIGIN}${item.path}` } : {}),
+    })),
+  };
+}
+
+export function buildItemListJsonLd(
+  pagePath: string,
+  name: string,
+  items: ItemListEntryData[],
+) {
+  const pageUrl = `${SITE_ORIGIN}${pagePath}`;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    '@id': `${pageUrl}#item-list`,
+    name,
+    itemListOrder: 'https://schema.org/ItemListOrderDescending',
+    numberOfItems: items.length,
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      url: item.url,
+      item: {
+        '@type': 'BlogPosting',
+        headline: item.name,
+        url: item.url,
+        ...(item.description ? { description: item.description } : {}),
+      },
+    })),
+  };
+}
+
 export function buildHowToJsonLd(data: HowToData, pageUrl: string) {
   return {
     '@context': 'https://schema.org',

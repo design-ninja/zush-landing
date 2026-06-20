@@ -2,10 +2,22 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Legal from '@/views/Legal';
 import { getSeoForPath } from '@/seo/config';
+import { buildPageBreadcrumbJsonLd, buildWebPageJsonLd } from '@/utils/jsonLd';
 
 const seo = getSeoForPath('/privacy-policy');
+const jsonLd = [
+  buildWebPageJsonLd({
+    pagePath: '/privacy-policy',
+    title: seo.title,
+    description: seo.description,
+  }),
+  buildPageBreadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Privacy Policy', path: '/privacy-policy' },
+  ]),
+];
 ---
 
-<BaseLayout seo={seo}>
+<BaseLayout seo={seo} jsonLd={jsonLd}>
   <Legal type="privacy" />
 </BaseLayout>

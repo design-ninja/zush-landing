@@ -50,15 +50,30 @@ function getLastModifiedDate(filePath: string, fallbackDate: string): string {
   return getGitDate(filePath) ?? getFileModifiedDate(filePath) ?? fallbackDate;
 }
 
+function getLatestDate(...dates: (string | null | undefined)[]): string {
+  const validDates = dates
+    .filter((date): date is string => Boolean(date))
+    .map((date) => new Date(date))
+    .filter((date) => !Number.isNaN(date.getTime()))
+    .sort((a, b) => b.getTime() - a.getTime());
+
+  return (validDates[0] ?? new Date('2026-03-01T00:00:00.000Z')).toISOString();
+}
+
 function getBlogPostSourceFile(post: BlogPost): string {
   return join(BLOG_CONTENT_DIR, `${post.slug}.mdx`);
 }
 
 function getBlogPostLastModifiedDate(post: BlogPost): string {
-  return getLastModifiedDate(
+  const sourceLastModified = getLastModifiedDate(
     getBlogPostSourceFile(post),
     new Date(`${post.date}T00:00:00.000Z`).toISOString(),
   );
+  const reviewedAt = post.reviewedAt
+    ? new Date(`${post.reviewedAt}T00:00:00.000Z`).toISOString()
+    : null;
+
+  return getLatestDate(sourceLastModified, reviewedAt);
 }
 
 function getTagLastModifiedDate(tag: BlogTag): string {

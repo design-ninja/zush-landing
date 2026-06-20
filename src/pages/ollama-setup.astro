@@ -2,10 +2,23 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import OllamaSetupView from '@/views/OllamaSetup';
 import { getSeoForPath } from '@/seo/config';
+import { buildPageBreadcrumbJsonLd, buildWebPageJsonLd } from '@/utils/jsonLd';
 
 const seo = getSeoForPath('/ollama-setup');
+const jsonLd = [
+  buildWebPageJsonLd({
+    pagePath: '/ollama-setup',
+    title: seo.title,
+    description: seo.description,
+    type: 'TechArticle',
+  }),
+  buildPageBreadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Ollama Setup', path: '/ollama-setup' },
+  ]),
+];
 ---
 
-<BaseLayout seo={seo}>
+<BaseLayout seo={seo} jsonLd={jsonLd}>
   <OllamaSetupView />
 </BaseLayout>

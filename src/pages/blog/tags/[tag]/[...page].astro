@@ -5,7 +5,8 @@ import BlogBreadcrumbs from '@/components/blog/BlogBreadcrumbs.astro';
 import BlogPagination from '@/components/blog/BlogPagination.astro';
 import BlogPostCard from '@/components/blog/BlogPostCard.astro';
 import { getAllTags, type BlogPost, type BlogTag } from '@/data/blog';
-import type { SeoMeta } from '@/seo/config';
+import { SITE_ORIGIN, type SeoMeta } from '@/seo/config';
+import { buildItemListJsonLd, buildPageBreadcrumbJsonLd, buildWebPageJsonLd } from '@/utils/jsonLd';
 import headingStyles from '@/components/Heading/Heading.module.scss';
 import textStyles from '@/components/Text/Text.module.scss';
 import styles from '@/views/Blog/BlogList.module.scss';
@@ -40,9 +41,34 @@ const breadcrumbItems = [
   { label: 'Tags', href: '/blog/tags' },
   { label: tag.label },
 ];
+const jsonLd = isFirstPage && tag.indexable
+  ? [
+      buildWebPageJsonLd({
+        pagePath: currentPath,
+        title: tag.seoTitle,
+        description: tag.seoDescription,
+        type: 'CollectionPage',
+      }),
+      buildPageBreadcrumbJsonLd([
+        { name: 'Home', path: '/' },
+        { name: 'Blog', path: '/blog' },
+        { name: 'Tags', path: '/blog/tags' },
+        { name: tag.label, path: `/blog/tags/${tag.slug}` },
+      ]),
+      buildItemListJsonLd(
+        currentPath,
+        `${tag.label} articles`,
+        page.data.map((post) => ({
+          name: post.title,
+          description: post.description,
+          url: `${SITE_ORIGIN}/blog/${post.slug}`,
+        })),
+      ),
+    ]
+  : undefined;
 ---
 
-<BaseLayout seo={seo}>
+<BaseLayout seo={seo} jsonLd={jsonLd}>
   <BlogBreadcrumbs items={breadcrumbItems} />
 
   <section class={[styles.BlogList, styles.BlogList_afterBreadcrumb].join(' ')}>

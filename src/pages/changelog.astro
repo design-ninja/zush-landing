@@ -4,11 +4,23 @@ import ChangelogView from '@/views/Changelog';
 import { getSeoForPath } from '@/seo/config';
 import macChangelogSource from '@/content/changelog.md?raw';
 import windowsChangelogSource from '@/content/changelog.windows.md?raw';
+import { buildPageBreadcrumbJsonLd, buildWebPageJsonLd } from '@/utils/jsonLd';
 
 const seo = getSeoForPath('/changelog');
+const jsonLd = [
+  buildWebPageJsonLd({
+    pagePath: '/changelog',
+    title: seo.title,
+    description: seo.description,
+  }),
+  buildPageBreadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Mac Changelog', path: '/changelog' },
+  ]),
+];
 ---
 
-<BaseLayout seo={seo}>
+<BaseLayout seo={seo} jsonLd={jsonLd}>
   <ChangelogView
     macSource={macChangelogSource}
     windowsSource={windowsChangelogSource}

@@ -66,8 +66,8 @@ export interface BlogTag {
   posts: BlogPost[];
 }
 
-const INDEXABLE_TAG_MIN_POSTS = 2;
-const TAG_PAGES_INDEXABLE = false;
+const INDEXABLE_TAG_MIN_POSTS = 7;
+const TAG_PAGES_INDEXABLE = true;
 const WORDS_PER_MINUTE = 200;
 
 function toIsoDate(value: Date): string {
@@ -85,18 +85,29 @@ function countWords(content: string): number {
   return (content.match(/\b[\w'-]+\b/g) ?? []).length;
 }
 
+function isFAQHeading(line: string): boolean {
+  return /^##\s+(?:faq|frequently asked questions)\s*$/i.test(line.trim());
+}
+
+function isTopLevelHeading(line: string): boolean {
+  return /^##\s+\S/.test(line.trim());
+}
+
 function extractFAQ(content: string): FAQItem[] {
-  const faqMatch = content.match(
-    /## (?:FAQ|Frequently Asked Questions)\s*\n([\s\S]*)$/,
-  );
-  if (!faqMatch) return [];
+  const lines = content.split('\n');
+  const faqStartIndex = lines.findIndex(isFAQHeading);
+
+  if (faqStartIndex < 0) return [];
 
   const items: FAQItem[] = [];
-  const lines = faqMatch[1].split('\n');
   let currentQuestion = '';
   let currentAnswer = '';
 
-  for (const line of lines) {
+  for (const line of lines.slice(faqStartIndex + 1)) {
+    if (isTopLevelHeading(line)) {
+      break;
+    }
+
     const questionMatch = line.match(/^###\s+(.+)/);
     if (questionMatch) {
       if (currentQuestion && currentAnswer.trim()) {

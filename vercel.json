@@ -54,6 +54,26 @@
       "permanent": true
     },
     {
+      "source": "/offline-ai-renamer",
+      "destination": "/offline-ai-file-renamer",
+      "permanent": true
+    },
+    {
+      "source": "/local-ai-file-renamer",
+      "destination": "/offline-ai-file-renamer",
+      "permanent": true
+    },
+    {
+      "source": "/ollama-file-renamer",
+      "destination": "/offline-ai-file-renamer",
+      "permanent": true
+    },
+    {
+      "source": "/ai-file-renamer-offline",
+      "destination": "/offline-ai-file-renamer",
+      "permanent": true
+    },
+    {
       "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/ai-file-renamer",
       "destination": "/:locale",
       "permanent": true

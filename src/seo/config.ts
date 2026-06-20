@@ -60,10 +60,24 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     robots: 'index, follow',
     ogType: 'website',
   },
+  '/offline-ai-file-renamer': {
+    title: 'Offline AI File Renamer for Mac & Windows | Zush',
+    description:
+      'Use Zush as an offline AI file renamer with local Ollama models, BYOK, preview, folder monitoring, and undo for private Mac and Windows workflows.',
+    robots: 'index, follow',
+    ogType: 'website',
+  },
   '/changelog': {
     title: 'Changelog — Zush',
     description:
       'Track all updates, new features, and improvements to Zush, the AI-powered file organizer for macOS.',
+    robots: 'index, follow',
+    ogType: 'website',
+  },
+  '/changelog/windows': {
+    title: 'Windows Changelog — Zush',
+    description:
+      'Track Windows updates, Microsoft Store releases, new features, and improvements for Zush, the AI-powered file organizer for Windows.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -98,14 +112,14 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/refund-policy': {
     title: 'Refund Policy — Zush',
     description:
-      "Zush's refund policy. Money-back guarantee details for our AI file organizer.",
+      "Read Zush's refund policy, including money-back guarantee details, eligibility, and support steps for the AI file organizer.",
     robots: 'index, follow',
     ogType: 'website',
   },
   '/blog': {
     title: 'AI File Renaming Tips, Guides & Insights — Zush Blog',
     description:
-      'Practical guides on AI-powered file organization for Mac and Windows. Learn about smart renaming, batch processing, metadata tagging, and workflow automation with Zush.',
+      'Practical guides on AI file renaming, batch processing, metadata, folder monitoring, and file organization workflows for Mac and Windows.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -210,6 +224,7 @@ export const FEATURE_ROUTES = [
   '/file-renamer',
   '/batch-rename-files',
   '/bulk-rename-files',
+  '/offline-ai-file-renamer',
   '/rename-pdf-with-ai',
   '/rename-design-files-with-ai',
   '/rename-documents-with-ai',
@@ -224,6 +239,7 @@ export const SEARCH_LANDING_ROUTES = [
   '/file-renamer',
   '/batch-rename-files',
   '/bulk-rename-files',
+  '/offline-ai-file-renamer',
 ] as const;
 
 function normalizePath(pathname: string): string {
