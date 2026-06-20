@@ -12,6 +12,7 @@ import Testimonials from '@/components/Testimonials/Testimonials.astro';
 import macChangelogSource from '@/content/changelog.md?raw';
 import windowsChangelogSource from '@/content/changelog.windows.md?raw';
 import { FREE_DOWNLOAD_BADGE_LABEL } from '@/constants';
+import { HOME_HERO_BATCH_RENAME_VIDEO } from '@/data/showcaseMedia';
 import { parseLatestVersion } from '@/utils/version';
 import type { Locale } from '@/i18n/config';
 import type { LocaleCopy } from '@/i18n/copy';
@@ -37,15 +38,17 @@ const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
   downloadEdgeLabel={FREE_DOWNLOAD_BADGE_LABEL}
   downloadMenu={copy.downloadMenu}
   trustSignals={copy.home.trustSignals}
+  reviewsHref="#reviews"
+  reviewsLabel={copy.header.reviews}
   secondaryHref={secondaryHref}
-  slides={copy.home.showcaseSlides}
+  videoShowcase={HOME_HERO_BATCH_RENAME_VIDEO}
   macVersion={macVersion}
   windowsVersion={windowsVersion}
 />
 <Tour client:visible copy={copy.home.showcase} />
-<Testimonials locale={locale} />
 {locale === 'en' && <EvidenceSignals />}
 <Features title={copy.home.featuresTitle} description={copy.home.featuresDescription} copy={copy.home.featureCards} />
+<Testimonials locale={locale} />
 <SupportedFormats
   title={copy.home.supportedFormats}
   imagesLabel={copy.home.images}

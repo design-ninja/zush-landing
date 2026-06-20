@@ -724,7 +724,7 @@ const localizedFileExamples: Record<Exclude<Locale, 'en'>, { featureCards: Parti
   },
 };
 
-const localizedFullHomeFaqItems: Record<Exclude<Locale, 'en' | 'zh-cn'>, FAQCopyItem[]> = {
+const localizedFullHomeFaqItems: Partial<Record<Exclude<Locale, 'en'>, FAQCopyItem[]>> = {
   de: [
     { question: 'Was ist Zush?', answer: 'Zush ist eine intelligente Desktop-App für Mac und Windows, die Dateien mit KI automatisch umbenennt. Sie analysiert Bilder, Videos und unterstützte Dokumente, inklusive PDFs, und erzeugt aussagekräftige Dateinamen und Metadaten.' },
     { question: 'Welche Dateiformate werden unterstützt?', answer: 'Zush unterstützt Bilder, Audio, Videos, Screenshots, PDFs, Dokumente, Tabellen, Präsentationen, Textdateien, CSV, SVG und weitere Alltagsformate.' },
@@ -3141,9 +3141,7 @@ const withLocalizedFileExamples = (
   showcaseSlides: localizedFileExamples[locale].showcaseSlides,
   faqItems: details.faqItems?.length === base.home.faqItems.length
     ? details.faqItems
-    : locale === 'zh-cn'
-      ? base.home.faqItems
-      : localizedFullHomeFaqItems[locale],
+    : localizedFullHomeFaqItems[locale] ?? details.faqItems ?? base.home.faqItems,
 });
 
 const COPY: Record<Locale, LocaleCopy> = {

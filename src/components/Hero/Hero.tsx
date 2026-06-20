@@ -1,14 +1,16 @@
 import { Fragment, type ReactNode } from "react";
 import FileShowcase from "../FileShowcase";
 import type { Slide } from "../FileShowcase";
-import Button from "../Button";
 import DownloadButton from "../DownloadButton";
 import Heading from "../Heading";
+import StarRating from "../StarRating";
 import Text from "../Text";
+import HeroVideoShowcase from "./HeroVideoShowcase";
 import styles from "./Hero.module.scss";
 import type { DownloadOS } from "@/utils/download";
 import { useOS } from "@/hooks/useOS";
 import type { DownloadMenuCopy } from "@/i18n/copy";
+import type { HeroVideoShowcaseAsset } from "@/data/showcaseMedia";
 
 
 interface HeroProps {
@@ -17,6 +19,7 @@ interface HeroProps {
   titleHighlight?: string;
   subtitle?: string;
   slides?: Slide[];
+  videoShowcase?: HeroVideoShowcaseAsset;
   as?: "section" | "header";
   compactTopSpacing?: boolean;
   forceOS?: DownloadOS;
@@ -27,6 +30,8 @@ interface HeroProps {
   downloadMenu?: DownloadMenuCopy;
   includeOtherDownloadOS?: boolean;
   trustSignals?: string[];
+  reviewsHref?: string;
+  reviewsLabel?: string;
   macVersion?: string;
   windowsVersion?: string;
 }
@@ -53,15 +58,15 @@ const Hero = ({
   as: Tag = "section",
   compactTopSpacing = false,
   forceOS,
-  secondaryHref = "/#pricing",
-  buyLabel = "Buy 🌟 PRO",
   downloadLabel = "Download",
-  downloadEdgeLabel,
   downloadMenu,
   includeOtherDownloadOS = true,
   trustSignals = ["✨ Free to try", "💳 No credit card required"],
+  reviewsHref,
+  reviewsLabel = "Reviews",
   macVersion,
   windowsVersion,
+  videoShowcase,
 }: HeroProps) => {
   const highlightText = titleHighlight ?? titleAccent;
   const { downloadOS: detectedOS } = useOS();
@@ -118,6 +123,11 @@ const Hero = ({
     >
       <div className={styles.Hero__Container}>
         <div className={styles.Hero__Intro}>
+          {reviewsHref && (
+            <a className={styles.Hero__RatingLink} href={reviewsHref} aria-label={reviewsLabel}>
+              <StarRating decorative />
+            </a>
+          )}
           <Heading as="h1" className={styles.Hero__Title}>
             {renderTitle()}
           </Heading>
@@ -126,40 +136,36 @@ const Hero = ({
               "Batch rename and bulk rename files by content with AI: screenshots, PDFs, photos, videos, audio, design files, iWork and Office documents. Watch folders, reuse templates, and undo any rename."}
           </Text>
 
-          <div className={styles.Hero__Buttons}>
-            <DownloadButton
-              source="hero"
-              size="lg"
-              forceOS={forceOS}
-              label={downloadLabel}
-              edgeLabel={downloadEdgeLabel}
-              menuCopy={downloadMenu}
-              includeOtherOS={includeOtherDownloadOS}
-            />
-            <Button
-              as="link"
-              href={secondaryHref}
-              variant="primary"
-              size="lg"
-              glass
-              data-pro-click-source="hero"
-            >
-              {buyLabel}
-            </Button>
+          <div className={styles.Hero__ActionRow}>
+            <div className={styles.Hero__Buttons}>
+              <DownloadButton
+                source="hero"
+                variant="primaryGlass"
+                size="lg"
+                forceOS={forceOS}
+                label={downloadLabel}
+                menuCopy={downloadMenu}
+                includeOtherOS={includeOtherDownloadOS}
+              />
+            </div>
+            {finalTrustSignals.length > 0 && (
+              <ul className={styles.Hero__TrustRow} aria-label="Trust signals">
+                {finalTrustSignals.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            )}
           </div>
-          {finalTrustSignals.length > 0 && (
-            <ul className={styles.Hero__TrustRow} aria-label="Trust signals">
-              {finalTrustSignals.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          )}
         </div>
 
         <div
           className={`${styles.Hero__ShowcaseWrapper} ${styles.Hero__ShowcaseMotion}`}
         >
-          <FileShowcase slides={slides} />
+          {videoShowcase ? (
+            <HeroVideoShowcase media={videoShowcase} />
+          ) : (
+            <FileShowcase slides={slides} />
+          )}
           <div className={styles.Hero__GlowEffect} />
         </div>
       </div>

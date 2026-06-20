@@ -306,6 +306,56 @@
     }
 }
 
+.Group_primaryGlass {
+    @include cta-glass-primary-vars;
+    @include cta-glass-surface;
+    @include cta-glass-gloss;
+    border-radius: $radius-full;
+    @include corner-shape-squircle;
+    background-clip: padding-box;
+    overflow: hidden;
+
+    &.Group_open {
+        overflow: visible;
+    }
+
+    &:focus-within {
+        outline: 2px solid var(--primary);
+        outline-offset: 3px;
+    }
+
+    &:hover,
+    &:focus-within {
+        @include cta-glass-hover;
+    }
+
+    .Main,
+    .Toggle {
+        position: relative;
+        z-index: 1;
+        background: transparent;
+        color: inherit;
+        box-shadow: none;
+    }
+
+    .Main:focus-visible,
+    .Toggle:focus-visible {
+        outline: none;
+    }
+
+    .Toggle::before {
+        top: 0.55rem;
+        bottom: 0.55rem;
+        z-index: 2;
+    }
+
+    svg {
+        position: relative;
+        z-index: 1;
+        filter: drop-shadow(0 0.35rem 0.65rem oklch(0 0 0 / 0.2));
+    }
+}
+
 .Group_ghost {
     .Main,
     .Toggle {

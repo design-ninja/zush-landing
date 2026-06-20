@@ -23,6 +23,7 @@ interface Props {
   basePath?: string;
   locale?: Locale;
   route?: string;
+  hideDownload?: boolean;
 }
 
 const {
@@ -30,6 +31,7 @@ const {
   basePath = '/',
   locale = DEFAULT_LOCALE,
   route = '/',
+  hideDownload = false,
 } = Astro.props as Props;
 const localeCopy = getCopy(locale);
 const copy = localeCopy.header;
@@ -130,17 +132,19 @@ const mobileBuyButtonClass = [
       <LanguageSwitcher locale={locale} paths={languagePaths} label={copy.language} />
 
       <div class={styles.Header__Buttons}>
-        <DownloadButton
-          client:idle
-          source='navbar'
-          variant='black'
-          size='sm'
-          label={copy.download}
-          menuCopy={localeCopy.downloadMenu}
-          forceOS={forceOS}
-          showDropdown={false}
-          className={styles.Header__DownloadBtn}
-        />
+        {!hideDownload && (
+          <DownloadButton
+            client:idle
+            source='navbar'
+            variant='black'
+            size='sm'
+            label={copy.download}
+            menuCopy={localeCopy.downloadMenu}
+            forceOS={forceOS}
+            showDropdown={false}
+            className={styles.Header__DownloadBtn}
+          />
+        )}
         <a
           href={pricingHref}
           class={mobileBuyButtonClass}

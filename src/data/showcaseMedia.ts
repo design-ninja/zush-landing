@@ -27,6 +27,30 @@ export interface ResolvedShowcaseVideoMedia {
   poster: string;
 }
 
+export interface HeroVideoShowcaseAsset {
+  title: string;
+  description: string;
+  width: number;
+  height: number;
+  sources: ThemeAwareMedia;
+  posters: ThemeAwareMedia;
+}
+
+export const HOME_HERO_BATCH_RENAME_VIDEO: HeroVideoShowcaseAsset = {
+  title: 'Zush batch rename workflow on macOS',
+  description: 'A Zush for Mac window showing AI batch rename analysis, review, and completed rename results for mixed files.',
+  width: 1280,
+  height: 1050,
+  sources: {
+    light: '/videos/hero/zush-batch-rename-mac-window-light.mp4',
+    dark: '/videos/hero/zush-batch-rename-mac-window-dark.mp4',
+  },
+  posters: {
+    light: '/videos/posters/hero-batch-rename-mac-window-light.webp',
+    dark: '/videos/posters/hero-batch-rename-mac-window-dark.webp',
+  },
+};
+
 const SHOWCASE_VIDEOS: ShowcaseVideoAsset[] = [
   {
     id: 'batch-rename',

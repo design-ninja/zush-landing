@@ -7,14 +7,16 @@ import styles from './FloatingDownloadCTA.module.scss';
 interface Props {
   forceOS?: DownloadOS;
   label: string;
+  activateWithoutHero?: boolean;
 }
 
-const { forceOS, label } = Astro.props as Props;
+const { forceOS, label, activateWithoutHero = false } = Astro.props as Props;
 ---
 
 <div
   class={styles.FloatingDownloadCTA}
   data-floating-download
+  data-activate-without-hero={activateWithoutHero ? 'true' : 'false'}
   data-active='false'
   data-visible='false'
   aria-hidden='true'

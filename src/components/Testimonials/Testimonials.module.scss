@@ -2,8 +2,6 @@
 @use '../../styles/mixins' as *;
 
 .Testimonials {
-  --testimonial-star: oklch(0.74 0.17 55);
-
   padding: 5rem 0 6rem;
   scroll-margin-top: 8rem;
   background: var(--background);
@@ -59,12 +57,7 @@
   @include shadow('sm');
 
   &__Stars {
-    display: flex;
-    align-items: center;
-    gap: 0.18rem;
-    color: var(--testimonial-star);
-    font-size: 1.15rem;
-    line-height: 1;
+    --star-rating-size: 1.15rem;
   }
 
   &__Quote {

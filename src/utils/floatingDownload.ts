@@ -38,23 +38,27 @@ function syncFloatingDownloadState(): void {
   const node = document.querySelector(FLOATING_SELECTOR);
   if (!(node instanceof HTMLElement)) return;
 
+  const footer = document.querySelector(FOOTER_SELECTOR);
+  const footerEncroaching = footer instanceof HTMLElement
+    ? footer.getBoundingClientRect().top < window.innerHeight - FOOTER_HIDE_MARGIN
+    : false;
   const hero = document.querySelector(HERO_SELECTOR);
   if (!hero) {
-    node.dataset.active = 'false';
-    node.dataset.visible = 'false';
-    node.setAttribute('aria-hidden', 'true');
-    syncFocusableState(node, false);
+    const canActivateWithoutHero = node.dataset.activateWithoutHero === 'true';
+    const shouldShow = canActivateWithoutHero
+      && window.scrollY > VISIBILITY_THRESHOLD
+      && !footerEncroaching;
+
+    node.dataset.active = canActivateWithoutHero ? 'true' : 'false';
+    node.dataset.visible = shouldShow ? 'true' : 'false';
+    node.setAttribute('aria-hidden', shouldShow ? 'false' : 'true');
+    syncFocusableState(node, shouldShow);
     return;
   }
 
   node.dataset.active = 'true';
   const heroRect = hero.getBoundingClientRect();
   const pastHero = heroRect.bottom <= VISIBILITY_THRESHOLD;
-
-  const footer = document.querySelector(FOOTER_SELECTOR);
-  const footerEncroaching = footer instanceof HTMLElement
-    ? footer.getBoundingClientRect().top < window.innerHeight - FOOTER_HIDE_MARGIN
-    : false;
 
   const shouldShow = pastHero && !footerEncroaching;
   node.dataset.visible = shouldShow ? 'true' : 'false';

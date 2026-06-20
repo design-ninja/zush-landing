@@ -61,6 +61,7 @@ const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
 const shouldAutoDetectLocale = !LOCALIZATION_PAUSED
   && locale === DEFAULT_LOCALE
   && (INDEXABLE_LOCALIZED_ROUTES as readonly string[]).includes(route);
+const shouldActivateFloatingDownloadWithoutHero = route === '/blog' || route.startsWith('/blog/');
 const autoDetectRoute = route;
 const localeRedirectConfig = JSON.stringify({
   ...Object.fromEntries(routeLocales.map((item) => [LOCALE_META[item].lang.toLowerCase(), LOCALE_META[item].slug || ''])),
@@ -255,7 +256,15 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
   <body>
     <div class="site-shell">
       <a class="skip-link" href="#main-content">{layoutCopy.header.skipToContent ?? 'Skip to content'}</a>
-      {includeChrome && <Header forceOS={forceOS} basePath={chromeBasePath} locale={locale} route={route} />}
+      {includeChrome && (
+        <Header
+          forceOS={forceOS}
+          basePath={chromeBasePath}
+          hideDownload={shouldActivateFloatingDownloadWithoutHero}
+          locale={locale}
+          route={route}
+        />
+      )}
       <main
         id="main-content"
         class:list={['site-main', { 'site-main_offset': needsTopOffset }]}
@@ -264,7 +273,13 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
       </main>
       {includeChrome && <Footer locale={locale} hidePlatform={footerHidePlatform} />}
       {includeChrome && <ScrollToTopButton />}
-      {includeChrome && <FloatingDownloadCTA forceOS={forceOS} label={layoutCopy.header.downloadZush} />}
+      {includeChrome && (
+        <FloatingDownloadCTA
+          activateWithoutHero={shouldActivateFloatingDownloadWithoutHero}
+          forceOS={forceOS}
+          label={layoutCopy.header.downloadZush}
+        />
+      )}
       <script>
         import { initializeGoogleAdsTracking } from '@/utils/adTracking';
         import { bindCheckoutAutoOpen } from '@/utils/checkoutAutoOpen';

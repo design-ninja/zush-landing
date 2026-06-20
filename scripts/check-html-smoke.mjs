@@ -26,6 +26,14 @@ const NON_WATCH_VIDEO_ROUTES = new Set([
   '/rename-photos-with-ai',
   '/rename-screenshots-with-ai',
 ]);
+const HOMEPAGE_HERO_VIDEO = {
+  lightSource: '/videos/hero/zush-batch-rename-mac-window-light.mp4',
+  darkSource: '/videos/hero/zush-batch-rename-mac-window-dark.mp4',
+  lightPoster: '/videos/posters/hero-batch-rename-mac-window-light.webp',
+  darkPoster: '/videos/posters/hero-batch-rename-mac-window-dark.webp',
+  width: '1280',
+  height: '1050',
+};
 const USE_CASES_BLOCK_ROUTES = [
   '/',
   '/batch-rename-tool',
@@ -87,6 +95,61 @@ function getJsonLdBlocks(html) {
   return matches.map((match) => match[1] ?? '');
 }
 
+function assertVideoBooleanAttribute(tag, attrName, pathname) {
+  const attrPattern = new RegExp(`\\s${attrName}(?:=""|(?=\\s|>))`, 'i');
+  if (!attrPattern.test(tag)) {
+    fail(`Homepage hero video missing ${attrName} attribute on ${pathname}`);
+  }
+}
+
+function assertHomepageHeroVideo(html, pathname) {
+  const videoTags = html.match(/<video\b[^>]*>/g) ?? [];
+  if (videoTags.length !== 1) {
+    fail(`Homepage should emit exactly one hero <video> tag on ${pathname}`);
+  }
+
+  const videoTag = videoTags[0];
+  assertVideoBooleanAttribute(videoTag, 'autoplay', pathname);
+  assertVideoBooleanAttribute(videoTag, 'muted', pathname);
+  assertVideoBooleanAttribute(videoTag, 'playsinline', pathname);
+  assertVideoBooleanAttribute(videoTag, 'loop', pathname);
+  assertIncludes(
+    videoTag,
+    `preload="metadata"`,
+    `Homepage hero video should preload metadata only on ${pathname}`,
+  );
+  assertIncludes(
+    videoTag,
+    `src="${HOMEPAGE_HERO_VIDEO.lightSource}"`,
+    `Homepage hero video should SSR the light source on ${pathname}`,
+  );
+  assertIncludes(
+    videoTag,
+    `poster="${HOMEPAGE_HERO_VIDEO.lightPoster}"`,
+    `Homepage hero video should SSR the light poster on ${pathname}`,
+  );
+  assertIncludes(
+    videoTag,
+    `width="${HOMEPAGE_HERO_VIDEO.width}"`,
+    `Homepage hero video should include fixed width on ${pathname}`,
+  );
+  assertIncludes(
+    videoTag,
+    `height="${HOMEPAGE_HERO_VIDEO.height}"`,
+    `Homepage hero video should include fixed height on ${pathname}`,
+  );
+  assertIncludes(
+    html,
+    HOMEPAGE_HERO_VIDEO.darkSource,
+    `Homepage hero video should include dark theme source in island props on ${pathname}`,
+  );
+  assertIncludes(
+    html,
+    HOMEPAGE_HERO_VIDEO.darkPoster,
+    `Homepage hero video should include dark theme poster in island props on ${pathname}`,
+  );
+}
+
 const sitemapPath = join(DIST, 'sitemap.xml');
 if (!existsSync(sitemapPath)) {
   fail('sitemap.xml is missing from dist.');
@@ -144,7 +207,11 @@ for (const loc of locs) {
 
   if (NON_WATCH_VIDEO_ROUTES.has(pathname) || pathname.startsWith('/blog/')) {
     if (html.includes('<video')) {
-      fail(`Inline <video> markup should not be present on non-watch page ${pathname}`);
+      if (pathname === '/') {
+        assertHomepageHeroVideo(html, pathname);
+      } else {
+        fail(`Inline <video> markup should not be present on non-watch page ${pathname}`);
+      }
     }
 
     if (html.includes('"@type":"VideoObject"')) {

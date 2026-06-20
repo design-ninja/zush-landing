@@ -9,11 +9,28 @@
   margin-top: 2.5rem;
   padding: 2.5rem;
   border-radius: $radius-xl;
-  background: color-mix(in srgb, var(--primary-soft) 60%, var(--card));
+  background:
+    radial-gradient(circle at 72% 18%, color-mix(in oklch, var(--secondary) 52%, transparent), transparent 34%),
+    linear-gradient(135deg, var(--primary), var(--primary-hover));
   text-align: center;
+  box-shadow:
+    0 1.5rem 3.5rem -2rem color-mix(in oklch, var(--primary) 55%, transparent),
+    inset 0 1px 0 oklch(1 0 0 / 0.18);
 
   @include mobile {
     padding: 2rem 1.5rem;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+    background:
+      linear-gradient(180deg, oklch(1 0 0 / 0.1), oklch(0 0 0 / 0.12)),
+      radial-gradient(circle at 50% 45%, transparent 0 34%, oklch(0 0 0 / 0.12));
+    pointer-events: none;
   }
 
   &[data-placement='early'] {
@@ -30,13 +47,25 @@
     overflow: visible;
   }
 
+  &__Background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    object-fit: cover;
+  }
+
   &__Title {
-    color: var(--foreground);
+    color: oklch(1 0 0);
+    text-shadow: 0 1px 4px oklch(0 0 0 / 0.1);
   }
 
   &__Description {
-    color: var(--muted-foreground);
+    color: oklch(1 0 0 / 0.88);
     max-width: 32rem;
+    text-shadow: 0 1px 4px oklch(0 0 0 / 0.09);
   }
 
   &__Buttons {
@@ -51,8 +80,8 @@
   }
 
   &__Hint {
-    color: var(--muted-foreground);
-    opacity: 0.6;
+    color: oklch(1 0 0 / 0.72);
+    text-shadow: 0 1px 4px oklch(0 0 0 / 0.08);
   }
 
   &__ButtonIcon {

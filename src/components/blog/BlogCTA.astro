@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import ctaBackground from '@/assets/download-cta/try-zush-free-bg.webp';
 import headingStyles from '@/components/Heading/Heading.module.scss';
 import textStyles from '@/components/Text/Text.module.scss';
 import downloadStyles from '@/components/DownloadButton/DownloadButton.module.scss';
@@ -55,6 +57,18 @@ const hintClasses = [
       data-blog-cta-platform='general'
       data-placement={placement}
     >
+      <Image
+        src={ctaBackground}
+        width={1600}
+        height={914}
+        format='webp'
+        quality={78}
+        alt=''
+        class={styles.BlogCTA__Background}
+        loading='lazy'
+        decoding='async'
+        aria-hidden='true'
+      />
       <div class={styles.BlogCTA__Content}>
         <h3
           class={titleClasses}
@@ -109,6 +123,18 @@ const hintClasses = [
     </aside>
   ) : (
     <aside class={styles.BlogCTA} data-placement={placement}>
+      <Image
+        src={ctaBackground}
+        width={1600}
+        height={914}
+        format='webp'
+        quality={78}
+        alt=''
+        class={styles.BlogCTA__Background}
+        loading='lazy'
+        decoding='async'
+        aria-hidden='true'
+      />
       <div class={styles.BlogCTA__Content}>
         <h3 class={titleClasses}>
           {placementTitles[placement](getOSLabel(platform === 'windows' ? 'windows' : 'mac'))}

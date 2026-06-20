@@ -29,6 +29,7 @@
     "youtube:dry-run:hq": "node scripts/youtube-upload.mjs dry-run --config scripts/youtube-videos-hq-light.json",
     "youtube:upload:hq": "node scripts/youtube-upload.mjs upload --config scripts/youtube-videos-hq-light.json",
     "promo:feature-screenshots": "node scripts/promo/zush-feature-screenshots.mjs",
+    "promo:feature-videos": "node scripts/promo/zush-feature-videos.mjs",
     "promo:windows-feature-screenshots": "node scripts/promo/zush-windows-feature-screenshots.mjs"
   },
   "dependencies": {
