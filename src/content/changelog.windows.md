@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.3.0.0] - 2026-06-21
+### Added
+- Added automatic output language matching so AI rename suggestions can follow the primary language of file contents.
+- Added a Preferences toggle for the rename-complete success sound.
+
+### Improved
+- Updated Cloud AI and BYOK model defaults for current provider compatibility.
+- Improved activation link recovery with clearer messages for used or expired links.
+- Made folder monitoring catch-up more resilient around inaccessible folders and unsupported files.
+
+
 ## [3.2.3.0] - 2026-06-08
 
 ### Improved
