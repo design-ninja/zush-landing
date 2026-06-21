@@ -1,18 +1,5 @@
 # Changelog
 
-## [3.5.3] - 2026-06-21
-
-### Added
-- Optional sound feedback after successful renames
-
-### Improved
-- More reliable activation and Keychain handling
-- Smoother monitoring recovery after network changes
-- Cleaner update and installer experience
-
-### Fixed
-- Fixed unwanted Keychain prompts for some existing users
-
 ## [3.5.2] - 2026-06-18
 
 ### Improved
