@@ -1,11 +1,5 @@
 # Changelog
 
-## [3.5.4] - 2026-06-21
-
-### Fixed
-- Fixed an update issue that could prevent some users from continuing after upgrading
-- Improved reliability for saved AI provider keys after app updates
-
 ## [3.5.3] - 2026-06-21
 
 ### Added
