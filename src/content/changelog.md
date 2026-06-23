@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.5.3] - 2026-06-23
+
+### Improved
+- Added one App sounds setting for all Zush sounds
+- Improved checkout reliability during repeated purchase attempts
+
 ## [3.5.2] - 2026-06-18
 
 ### Improved
