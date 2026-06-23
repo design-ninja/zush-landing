@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.3.1.0] - 2026-06-23
+
+### Fixed
+- Fixed folder monitoring so files inside newly moved folders are detected reliably.
+- Reduced duplicate monitoring work when existing watched folders change.
+- Fixed a dialog crash that could happen when editing templates.
+- Preserved custom text blocks in naming patterns when changing case style.
+
+### Improved
+- Added a global Zush sounds preference across all supported interface languages.
+- Matched naming case style menu labels with the macOS app.
+
+
 ## [3.3.0.0] - 2026-06-21
 ### Added
 - Added automatic output language matching so AI rename suggestions can follow the primary language of file contents.
