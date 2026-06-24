@@ -13,6 +13,7 @@ import CrossPlatformBanner from '@/components/CrossPlatformBanner/CrossPlatformB
 import { PLATFORM_LANDING_CONTENT } from '@/data/platformLanding';
 import { getPlatformLandingSections } from '@/data/platformLandingSections';
 import { PLATFORM_SPECIFICS_CONTENT } from '@/data/platformSpecifics';
+import { HOME_HERO_BATCH_RENAME_VIDEO } from '@/data/showcaseMedia';
 import macChangelogSource from '@/content/changelog.md?raw';
 import windowsChangelogSource from '@/content/changelog.windows.md?raw';
 import { parseLatestVersion } from '@/utils/version';
@@ -71,6 +72,8 @@ const platformKeywords = platform === 'mac'
       'file rename tool Mac',
       'AI renamer for Mac',
       'AI file renamer for Mac',
+      'best AI file renamer for Mac',
+      'AI file renamer Mac download',
       'rename files with AI on Mac',
       'Mac batch rename tool',
       'macOS file renamer',
@@ -90,6 +93,10 @@ const platformKeywords = platform === 'mac'
       'Microsoft Store file renamer',
       'offline AI renamer for Windows',
     ];
+
+const platformTrustSignals = platform === 'mac'
+  ? ['Free 50 renames', 'No credit card', 'Preview + undo every batch']
+  : copy.home.trustSignals;
 
 const softwareJsonLd = {
   '@context': 'https://schema.org',
@@ -188,9 +195,10 @@ const howToJsonLd = {
     downloadLabel={copy.header.download}
     downloadMenu={copy.downloadMenu}
     includeOtherDownloadOS={includeOtherDownloadOS}
-    trustSignals={copy.home.trustSignals}
+    trustSignals={platformTrustSignals}
     secondaryHref="#pricing"
     slides={copy.home.showcaseSlides}
+    videoShowcase={platform === 'mac' ? HOME_HERO_BATCH_RENAME_VIDEO : undefined}
     macVersion={macVersion}
     windowsVersion={windowsVersion}
   />

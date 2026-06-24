@@ -1,6 +1,6 @@
 ---
-title: "Batch Rename Files on Mac: Finder Metadata, Automator, AI"
-description: "Batch rename files on Mac with Finder, Automator, Terminal, or AI. Learn metadata behavior, Name and Index, and mixed-folder renaming."
+title: "Batch Rename Files on Mac: Finder, Automator, AI Guide"
+description: "Learn how to batch rename files on Mac with Finder, Automator, Terminal, and AI. Compare Name and Index, metadata limits, and content-aware bulk rename."
 date: "2026-02-08"
 slug: "batch-rename-files-on-mac-complete-guide"
 platform: "mac"
@@ -8,14 +8,14 @@ topic: "automation"
 tags:
   - "Automation"
   - "File Organization"
-tldr: "Use Finder for simple text edits, Automator for repeatable Mac rules, Terminal for scripted batches, and AI batch renaming when every file needs a unique descriptive name."
-reviewed: "2026-06-20"
+tldr: "Use Finder for simple shared rules, Automator or Shortcuts for repeatable Mac workflows, Terminal for scripted batches, and AI batch renaming when each file needs a unique content-aware name."
+reviewed: "2026-06-24"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: to batch rename files on Mac, use Finder for simple text or number changes, Automator for repeatable rules, Terminal for scripted bulk changes, and AI when every file needs a unique descriptive name based on content. Finder changes filenames only; a file rename does not show up as new metadata unless another app writes tags, comments, EXIF, PDF fields, or searchable fields.
+Quick answer: to batch rename files on Mac, use Finder for simple text or number changes, Automator or Shortcuts for repeatable rules, Terminal for scripted bulk changes, and AI when every file needs a unique descriptive name based on content. Finder changes filenames only; a file rename does not show up as new metadata unless another app writes tags, comments, EXIF, PDF fields, or searchable fields.
 
-Reviewed June 17, 2026: this guide was refreshed for current Mac batch rename workflows, including Finder metadata behavior, Automator, Terminal, and AI tools for mixed folders.
+Reviewed June 24, 2026: this guide was refreshed for current Mac batch rename workflows, including Finder metadata behavior, Automator, Shortcuts, Terminal, and AI tools for mixed folders.
 
 Sources checked for this update: [Apple Automator User Guide](https://support.apple.com/guide/automator/welcome/mac), [Apple Shortcuts User Guide for Mac](https://support.apple.com/guide/shortcuts-mac/intro-to-shortcuts-apdf22b0444c/mac), [Apple Developer folder actions documentation](https://developer.apple.com/library/archive/documentation/LanguagesUtilities/Conceptual/MacAutomationScriptingGuide/WatchFolders.html), and [Hazel's official overview](https://www.noodlesoft.com/manual/hazel/hazel-overview/).
 
@@ -27,6 +27,8 @@ Sources checked for this update: [Apple Automator User Guide](https://support.ap
 | AI batch rename | Screenshots, PDFs, photos, downloads, and mixed folders need different names | Best with review before applying |
 
 If your search is specifically about Finder's **Name and Index** option, the important detail is this: the new filename appears in Finder immediately, but macOS does not add extra descriptive metadata just because you renamed the file. Spotlight can search the new filename. Finder tags, comments, EXIF fields, and PDF metadata stay unchanged unless a tool writes them separately.
+
+If you want a Mac app that generates different names for screenshots, PDFs, photos, videos, design files, audio, and documents, use the [Zush AI file renamer for Mac](/mac). This article is the step-by-step tutorial layer for comparing Finder, Automator, Terminal, and AI methods.
 
 ## Does a file rename show in metadata on Mac?
 
@@ -49,7 +51,16 @@ This is the practical guide for "batch rename files on Mac," "bulk rename files 
 > **Looking for the shortest path?** If you need unique descriptive names for every file (not a shared prefix), jump straight to [Batch Rename Files with AI](/batch-rename-files) or the [file renamer for Mac](/mac) — 50 free renames, no signup.
 
 
-<BlogProductIntro />
+<BlogProductIntro
+  title="Need content-aware Mac batch renaming?"
+  description="Zush for Mac batch renames mixed Finder folders by file content, then lets you preview, apply, and undo the full rename batch."
+  links={[
+    { href: '/mac', label: 'AI file renamer for Mac' },
+    { href: '/batch-rename-files', label: 'Batch rename files' },
+    { href: '/batch-rename-tool', label: 'Batch rename tool' },
+    { href: '/offline-ai-file-renamer', label: 'Offline AI renamer' },
+  ]}
+/>
 
 ## Method 1: Finder batch rename files on Mac
 
