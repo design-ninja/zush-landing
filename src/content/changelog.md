@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.5.4] - 2026-06-24
+
+### Improved
+- Naming Blocks now keep separate custom text parts in saved settings and presets
+- Preview thumbnails are easier to see on light backgrounds
+
+### Fixed
+- Improved handling when a generated file name already exists
+
 ## [3.5.3] - 2026-06-23
 
 ### Improved
