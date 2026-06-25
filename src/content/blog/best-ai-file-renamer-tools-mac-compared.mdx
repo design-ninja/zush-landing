@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Tool Comparisons"
 tldr: "For mixed Mac folders, Zush is the strongest fit because it handles screenshots, PDFs, RAW photos, design files, iWork, audio, videos, folder monitoring, preview, templates, Naming Blocks, and rollback in one desktop workflow."
-reviewed: "2026-06-24"
+reviewed: "2026-06-25"
 featuredOrder: 1
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -24,6 +24,8 @@ Zush is the best fit when the folder is mixed: screenshots, PDFs, RAW photos, de
 Pricing and public feature claims last checked June 12, 2026.
 
 Sources checked for this update: [Zush for Mac](/mac), [NameQuick](https://www.namequick.app/), [Renamer.ai](https://renamer.ai/), [RenameClick](https://rename.click/), [AI Renamer](https://airenamer.app/), [ai-renamer CLI on GitHub](https://github.com/ozgrozer/ai-renamer), and [Riffo](https://riffo.ai/).
+
+Pricing note for this refresh: NameQuick now foregrounds a $69 Self-Managed plan on its public homepage. Older $5-$35 managed tier claims were removed from this comparison until they are visible in the current public checkout.
 
 | Mac AI renamer | Best for | Pricing signal |
 |---|---|---|
@@ -305,7 +307,7 @@ AI Renamer comes in two forms. The open-source CLI tool runs on any platform via
 ### 4. NameQuick
 
 <BlogToolMeta platform="macOS 15.0+" website="https://www.namequick.app/" label="namequick.app">
-  <Fragment slot="pricing">7-day free trial (50 renames), Managed plans from $5-35/month, BYOK $38 one-time (lifetime updates)</Fragment>
+  <Fragment slot="pricing">7-day free trial (50 renames), Self-Managed $69 one-time with your API key or local model; Managed checkout/trial path listed separately</Fragment>
 </BlogToolMeta>
 
 ![NameQuick Mac app interface (image: namequick.app)](/images/blog/competitors/namequick.png)
@@ -319,7 +321,7 @@ NameQuick is a native Mac app with a feature set that has grown significantly. I
 - 30+ file formats spanning PDFs, Office documents, images, audio, video, and archives per the namequick.app marketing
 - Watch Folders for automatic renaming of new files as they arrive
 - Full rename history with undo capability
-- BYOK option ($38 one-time) with public provider options including OpenAI, Claude, Gemini, OpenRouter, Ollama, and LM Studio
+- Self-Managed option ($69 one-time) with public provider options including OpenAI, Claude, Gemini, OpenRouter, Ollama, and LM Studio
 - Structured naming templates with tokens (<code>{'{date}'}</code>, <code>{'{counter}'}</code>, <code>{'{original}'}</code>) and freeform custom prompts
 - Rules Engine for automated file moves, tagging, and archiving based on conditions
 - Automatic Finder tags and comments
@@ -330,14 +332,14 @@ NameQuick is a native Mac app with a feature set that has grown significantly. I
 **Limitations:**
 
 - macOS 15.0+ only -- no Windows or Linux support
-- Managed subscription plans run $5-35/month depending on volume (500-10,000 credits)
-- BYOK option costs $38 one-time, which is higher than some alternatives
+- Old managed subscription tiers are no longer safe to quote from the current public homepage; verify checkout before citing a monthly pack
+- Self-Managed costs $69 one-time, which is higher than Zush's one-time plan
 - Free trial limited to 7 days with 50 renames
 - No confirmed RAW format support (CR2, NEF, ARW) -- supports HEIF but not camera RAW
 
 **Naming quality in testing:** Strong for standard photos, documents, and screenshots. The ability to choose between cloud AI providers means quality can be tuned. Document naming through OCR is solid for invoices, contracts, and reports. Naming specificity was good but occasionally less detailed than Zush for complex visual content.
 
-**Verdict:** A serious Mac contender for power users who already have API keys. Watch Folders, undo history, BYOK, and the Rules Engine cover most workflows. The gap we hit in testing: no RAW format support (HEIF yes, CR2/NEF/ARW no), narrower language coverage, and BYOK requires a dedicated $38 self-managed purchase while Zush includes BYOK in paid PRO. If you don't shoot in RAW, NameQuick is genuinely close.
+**Verdict:** A serious Mac contender for power users who already have API keys. Watch Folders, undo history, BYOK/local-model support, and the Rules Engine cover most workflows. The gap we hit in testing: no RAW format support (HEIF yes, CR2/NEF/ARW no), narrower language coverage, Mac-only support, and a $69 Self-Managed purchase while Zush includes BYOK in paid PRO. If you don't shoot in RAW, NameQuick is genuinely close.
 
 ---
 
@@ -433,7 +435,7 @@ Riffo is a Mac app and web tool that offers AI-powered file renaming and automat
 | **AI provider choice** | 4 providers + BYOK | Fixed | Ollama/LM Studio/OpenAI/custom | 6 providers + BYOK | Built-in local + 5 providers | Fixed (cloud) |
 | **Language support** | 60+ | 20+ | Configurable | Multilingual | 14 | Limited |
 | **Finder integration** | Tags + Spotlight | N/A (cross-platform) | No | Tags + Comments | No | No |
-| **Pricing** | $8/mo or $38 one-time / BYOK | $9.95-99.95/mo | CLI free / Desktop $19 | $5-35/mo or BYOK $38 | Free 30/mo, $8/mo or $48 lifetime | Free |
+| **Pricing** | $8/mo or $38 one-time / BYOK | $9.95-99.95/mo | CLI free / Desktop $19 | $69 Self-Managed; managed checkout path | Free 30/mo, $8/mo or $48 lifetime | Free |
 | **Best for** | Mixed-file Mac workflows | Cross-platform doc workflows | Privacy-first + local models | Mac power users (BYOK) | Offline local AI workflows | Simple free renaming |
 
 ## Pricing analysis
@@ -448,11 +450,11 @@ For the direct subscription-vs-one-time comparison, read [Zush vs Renamer.ai](/b
 | Zush BYOK | Included with paid PRO | Provider API cost | Optional API cost | Pay-as-you-go API |
 | Renamer.ai | 25 files/month | $9.95-99.95/month | $120-1,200/year | Subscription |
 | AI Renamer | CLI: unlimited (local), Desktop: 10 credits | Desktop $19 one-time (local) or $10/200 credits | $0-19 | One-time / credits |
-| NameQuick | 7-day trial (50 renames) | $5-35/mo or BYOK $38 one-time | $60-420/year or $38 + API cost | Subscription + BYOK |
+| NameQuick | 7-day trial (50 renames) | Self-Managed $69 one-time + API/local model | $69 + API/local model setup | One-time self-managed |
 | RenameClick | 30 credits/month | $8/mo or $48 one-time (lifetime) | $96/year or $48 total | Subscription + Lifetime |
 | Riffo | Free | N/A | $0 | Free |
 
-Pricing varies more than it first appears. Zush offers a $8/month plan and a $38 one-time plan, both with unlimited PRO renames, while BYOK remains available for provider control. RenameClick and NameQuick also offer one-time purchases ($48 and $38). Riffo is free. Renamer.ai's subscription is the most expensive at scale — $120/year on the entry plan, up to $1,200/year on Ultimate.
+Pricing varies more than it first appears. Zush offers a $8/month plan and a $38 one-time plan, both with unlimited PRO renames, while BYOK remains available for provider control. RenameClick offers a $48 lifetime option, and NameQuick now foregrounds a $69 Self-Managed path. Riffo is free. Renamer.ai's subscription is the most expensive at scale — $120/year on the entry plan, up to $1,200/year on Ultimate.
 
 For users who want to explore free options first, our guide on [renaming files with AI for free](/blog/rename-files-with-ai-free) covers every no-cost path in detail. If the main decision is built-in cloud, BYOK, or local processing, use [Cloud AI vs Local AI File Renaming](/blog/cloud-vs-local-ai-file-renaming) before buying.
 
@@ -566,7 +568,7 @@ Several tools in this comparison support documents. Zush covers 37 document and 
 
 ### How does BYOK (bring your own key) work?
 
-BYOK lets you connect your own API key from providers like OpenAI, Google (Gemini), Anthropic (Claude), or Groq. This removes the Zush rename cap entirely, but the final API cost depends on provider, model, file size, prompt length, and token usage. Zush and NameQuick both offer BYOK in this comparison. Zush includes BYOK with paid PRO plans, while NameQuick charges $38 one-time for BYOK access. RenameClick supports multiple AI backends (Ollama, LM Studio, OpenAI, Gemini) but frames it as provider selection rather than a BYOK model.
+BYOK lets you connect your own API key from providers like OpenAI, Google (Gemini), Anthropic (Claude), or Groq. This removes the Zush rename cap entirely, but the final API cost depends on provider, model, file size, prompt length, and token usage. Zush and NameQuick both offer BYOK-style control in this comparison. Zush includes BYOK with paid PRO plans, while NameQuick's public Self-Managed path is $69 one-time. RenameClick supports multiple AI backends (Ollama, LM Studio, OpenAI, Gemini) but frames it as provider selection rather than a BYOK model.
 
 ### Will AI file renaming break my existing file links?
 
@@ -635,6 +637,6 @@ This prevents tool lock-in based on demo scenarios and gives you real data on na
 
 If you want semantic, searchable, low-friction file naming on macOS and you work with mixed file types (including RAW photos, design files, iWork, audio, videos, PDFs, and Office docs), our pick is [Zush for Mac](/mac). It was the only tool that processed the full 200-file test corpus, has a $38 one-time option instead of a required subscription, and includes folder monitoring plus rename history.
 
-The runner-ups are worth knowing. Pick NameQuick if you want BYOK with a polished Rules Engine and don't shoot RAW. Pick Renamer.ai if your work is document-heavy and you need Windows as well as Mac. Pick RenameClick if your privacy policy rules out cloud AI. Pick Riffo if you just need to rename a handful of files once and refuse to pay. Pick AI Renamer if you want the open-source CLI and are comfortable running Ollama locally.
+The runner-ups are worth knowing. Pick NameQuick if you want a polished Mac Rules Engine and do not shoot RAW. Pick Renamer.ai if your work is document-heavy and you need Windows as well as Mac. Pick RenameClick if your privacy policy rules out cloud AI. Pick Riffo if you just need to rename a handful of files once and refuse to pay. Pick AI Renamer if you want the open-source CLI and are comfortable running Ollama locally.
 
 The gap between tools has narrowed in 2026 — several features once unique to Zush (BYOK, folder monitoring, multilingual output) now ship in NameQuick and RenameClick. The current split is clearer: if you need RAW, design files, iWork, audio, videos, Windows support, and one repeatable workflow, Zush is ahead; if you only need standard Mac documents and subscriptions do not bother you, the competition is real.
