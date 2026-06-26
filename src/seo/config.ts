@@ -187,9 +187,9 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ogType: 'website',
   },
   '/mac': {
-    title: 'AI File Renamer for Mac | Batch Rename Tool - Zush',
+    title: 'AI File Renamer for Mac: 50 Free Renames | Zush',
     description:
-      'Download Zush for Mac. Rename files with AI by content: screenshots, PDFs, photos, design files, audio, video, iWork docs, preview, tags, and undo.',
+      'Download Zush for Mac. Batch rename screenshots, PDFs, photos, videos, audio, and design files with AI. 50 free renames, preview, and undo.',
     robots: 'index, follow',
     ogType: 'website',
   },
