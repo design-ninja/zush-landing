@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.3.2.0] - 2026-06-26
+### Fixed
+- Improved reliability when reopening Zush from a shortcut while it is already running.
+- Made drag-and-drop file handling more resilient.
+- Improved stability for folder monitoring and batch analysis.
+
+### Changed
+- Added subtle themed borders around file previews in AI Rename and Activity.
+
+
 ## [3.3.1.0] - 2026-06-23
 
 ### Fixed
