@@ -991,7 +991,7 @@ const EN_COPY: LocaleCopy = {
       'Rename files with AI by content on Mac and Windows: screenshots, PDFs, photos, videos, audio, design files, iWork and Office documents. Batch rename, watch folders, reuse templates, and undo any rename.',
     buyPro: 'Buy 🌟 PRO',
     trustSignals: ['✨ Get started for FREE', '💳 No credit card required'],
-    featuresTitle: 'AI File Renamer Features',
+    featuresTitle: 'Zush Features',
     featuresDescription: 'One desktop AI file renamer for renaming screenshots, design files, PDFs, photos, audio, videos, documents, and messy mixed folders',
     supportedFormats: 'Supported File Formats',
     images: 'Images',

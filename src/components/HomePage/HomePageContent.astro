@@ -45,9 +45,14 @@ const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
   macVersion={macVersion}
   windowsVersion={windowsVersion}
 />
+<Features
+  title={copy.home.featuresTitle}
+  description={copy.home.featuresDescription}
+  copy={copy.home.featureCards}
+  compactTopSpacing
+/>
 <Tour client:visible copy={copy.home.showcase} />
 {locale === 'en' && <EvidenceSignals />}
-<Features title={copy.home.featuresTitle} description={copy.home.featuresDescription} copy={copy.home.featureCards} />
 <Testimonials locale={locale} />
 <SupportedFormats
   title={copy.home.supportedFormats}

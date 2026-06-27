@@ -22,17 +22,22 @@ interface Props {
   title?: string;
   description?: string;
   copy?: FeatureCardsCopy;
+  compactTopSpacing?: boolean;
 }
 
 const {
   title = 'Zush Features',
   description = 'One desktop file renamer for batch renaming screenshots, design files, PDFs, photos, audio, videos, documents, and messy mixed folders',
   copy = DEFAULT_FEATURE_CARDS_COPY,
+  compactTopSpacing = false,
 } = Astro.props as Props;
 const titleParts = title.split('Zush');
+const className = [styles.Features, compactTopSpacing ? styles.Features_compactTopSpacing : '']
+  .filter(Boolean)
+  .join(' ');
 ---
 
-<section id='features' class={styles.Features}>
+<section id='features' class={className} data-scroll-reveal-skip>
   <div class={styles.Features__Container}>
     <div class={styles.SectionHeader ?? ''} style='text-align: center; margin-bottom: 2rem; max-width: 50rem; margin-left: auto; margin-right: auto;'>
       <Heading as='h2' align='center' style={{ marginBottom: '1.25rem' }}>

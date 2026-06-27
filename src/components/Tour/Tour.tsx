@@ -287,7 +287,7 @@ const Tour = ({ forceOS, copy = defaultCopy }: TourProps) => {
   } as CSSProperties;
 
   return (
-    <section className={styles.Tour} data-scroll-reveal-skip>
+    <section className={styles.Tour} data-scroll-reveal-force>
       <div className={styles.Tour__Container}>
         <div>
           <SectionHeader
