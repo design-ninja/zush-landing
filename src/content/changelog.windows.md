@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.3.3.0] - 2026-06-28
+### Improved
+- PDF renaming now uses richer document context for more specific suggested names.
+- File previews stay stable after renaming, including RAW photo workflows.
+- RAW photo rename handling is safer and avoids unnecessary metadata rewrites.
+- File and folder picker reliability has been improved on Windows.
+
+
 ## [3.3.2.0] - 2026-06-26
 ### Fixed
 - Improved reliability when reopening Zush from a shortcut while it is already running.
