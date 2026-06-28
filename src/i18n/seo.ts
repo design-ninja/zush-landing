@@ -10,9 +10,9 @@ const PLATFORM_SEO: Partial<Record<Locale, Partial<Record<'/mac' | '/windows', {
         'Dateiumbenenner für Mac, der Dateien mit KI nach Inhalt stapelweise umbenennt. Screenshots, PDFs, Fotos, Videos, Audio, Design- und Office-Dateien.',
     },
     '/windows': {
-      title: 'Dateiumbenenner für Windows: Dateien mit KI in bulk umbenennen | Zush',
+      title: 'Dateiumbenenner für Windows: Batch & Bulk Rename mit KI | Zush',
       description:
-        'Dateiumbenenner für Windows 11 und 10, der Dateien mit KI in bulk umbenennt. Screenshots, PDFs, Fotos, Videos, Audio, Design- und Office-Dateien.',
+        'Benenne Dateien unter Windows 11 und 10 mit KI stapelweise um: Screenshots, PDFs, Fotos, Videos, Audio, Design- und Office-Dateien mit Vorschau und Undo.',
     },
   },
   fr: {
@@ -22,9 +22,9 @@ const PLATFORM_SEO: Partial<Record<Locale, Partial<Record<'/mac' | '/windows', {
         'Renommeur de fichiers pour Mac qui renomme les fichiers par lot selon leur contenu avec l’IA : screenshots, PDF, photos, vidéos, audio, design et documents.',
     },
     '/windows': {
-      title: 'Renommeur de fichiers pour Windows : renommage en masse avec l’IA | Zush',
+      title: 'Renommeur de fichiers Windows : batch & bulk rename avec IA | Zush',
       description:
-        'Renommeur de fichiers pour Windows 11 et 10 qui renomme en masse avec l’IA : screenshots, PDF, photos, vidéos, audio, design et documents Office.',
+        'Renommez par lot sur Windows 11 et 10 avec l’IA : screenshots, PDF, photos, vidéos, audio, design et documents Office avec aperçu et annulation.',
     },
   },
   'pt-br': {
@@ -34,9 +34,9 @@ const PLATFORM_SEO: Partial<Record<Locale, Partial<Record<'/mac' | '/windows', {
         'Renomeador de arquivos para Mac que renomeia arquivos em lote pelo conteúdo com IA: screenshots, PDFs, fotos, vídeos, áudio, design e documentos.',
     },
     '/windows': {
-      title: 'Renomeador de arquivos para Windows: renomear em massa com IA | Zush',
+      title: 'Renomeador de arquivos Windows: batch & bulk rename com IA | Zush',
       description:
-        'Renomeador de arquivos para Windows 11 e 10 que renomeia em massa com IA: screenshots, PDFs, fotos, vídeos, áudio, design e documentos Office.',
+        'Renomeie arquivos em lote no Windows 11 e 10 com IA: screenshots, PDFs, fotos, vídeos, áudio, design e documentos Office com prévia e desfazer.',
     },
   },
   es: {
@@ -46,9 +46,9 @@ const PLATFORM_SEO: Partial<Record<Locale, Partial<Record<'/mac' | '/windows', {
         'Renombrador de archivos para Mac que renombra por lotes según el contenido con IA: capturas, PDFs, fotos, videos, audio, diseño y documentos.',
     },
     '/windows': {
-      title: 'Renombrador de archivos para Windows: renombrado masivo con IA | Zush',
+      title: 'Renombrador de archivos Windows: batch & bulk rename con IA | Zush',
       description:
-        'Renombrador de archivos para Windows 11 y 10 que renombra en masa con IA: capturas, PDFs, fotos, videos, audio, diseño y documentos Office.',
+        'Renombra archivos por lotes en Windows 11 y 10 con IA: capturas, PDFs, fotos, videos, audio, diseño y documentos Office con vista previa y deshacer.',
     },
   },
   nl: {
@@ -58,9 +58,9 @@ const PLATFORM_SEO: Partial<Record<Locale, Partial<Record<'/mac' | '/windows', {
         'Bestandshernoemer voor Mac die bestanden batchgewijs op inhoud hernoemt met AI: screenshots, PDFs, foto’s, video’s, audio, design en documenten.',
     },
     '/windows': {
-      title: 'Bestandshernoemer voor Windows: bestanden in bulk hernoemen met AI | Zush',
+      title: 'Bestandshernoemer Windows: batch & bulk rename met AI | Zush',
       description:
-        'Bestandshernoemer voor Windows 11 en 10 die bestanden in bulk hernoemt met AI: screenshots, PDFs, foto’s, video’s, audio, design en documenten.',
+        'Hernoem bestanden batchgewijs op Windows 11 en 10 met AI: screenshots, PDFs, foto’s, video’s, audio, design en documenten met preview en undo.',
     },
   },
   it: {
@@ -70,9 +70,9 @@ const PLATFORM_SEO: Partial<Record<Locale, Partial<Record<'/mac' | '/windows', {
         'Rinomina file per Mac che rinomina in batch in base al contenuto con l’IA: screenshot, PDF, foto, video, audio, design e documenti.',
     },
     '/windows': {
-      title: 'Rinomina file per Windows: rinomina in massa con IA | Zush',
+      title: 'Rinomina file Windows: batch & bulk rename con IA | Zush',
       description:
-        'Rinomina file per Windows 11 e 10 che rinomina in massa con l’IA: screenshot, PDF, foto, video, audio, design e documenti Office.',
+        'Rinomina file in batch su Windows 11 e 10 con l’IA: screenshot, PDF, foto, video, audio, design e documenti Office con anteprima e annulla.',
     },
   },
   ja: {
@@ -82,9 +82,9 @@ const PLATFORM_SEO: Partial<Record<Locale, Partial<Record<'/mac' | '/windows', {
         'Mac向けファイルリネーム。AIで内容に基づいてスクリーンショット、PDF、写真、動画、音声、デザインファイル、文書を一括リネームします。',
     },
     '/windows': {
-      title: 'Windows向けファイルリネーム: AIで大量リネーム | Zush',
+      title: 'Windows向けAIファイルリネーム: 一括・大量リネーム | Zush',
       description:
-        'Windows 11/10向けファイルリネーム。AIでスクリーンショット、PDF、写真、動画、音声、デザインファイル、Office文書を大量リネームします。',
+        'Windows 11/10でAI一括リネーム。スクリーンショット、PDF、写真、動画、音声、デザインファイル、Office文書をプレビューとUndo付きで整理します。',
     },
   },
   ko: {
@@ -94,9 +94,9 @@ const PLATFORM_SEO: Partial<Record<Locale, Partial<Record<'/mac' | '/windows', {
         'Mac용 파일 이름 변경 도구. AI로 내용을 기준으로 스크린샷, PDF, 사진, 비디오, 오디오, 디자인 파일, 문서를 일괄 이름 변경합니다.',
     },
     '/windows': {
-      title: 'Windows용 파일 이름 변경 도구: AI로 대량 이름 변경 | Zush',
+      title: 'Windows용 AI 파일 이름 변경: 일괄 및 대량 변경 | Zush',
       description:
-        'Windows 11 및 10용 파일 이름 변경 도구. AI로 스크린샷, PDF, 사진, 비디오, 오디오, 디자인 파일, Office 문서를 대량 이름 변경합니다.',
+        'Windows 11 및 10에서 AI로 파일을 일괄 변경하세요. 스크린샷, PDF, 사진, 비디오, 오디오, 디자인 파일, Office 문서, 미리보기와 되돌리기 지원.',
     },
   },
   'zh-cn': {
@@ -105,8 +105,8 @@ const PLATFORM_SEO: Partial<Record<Locale, Partial<Record<'/mac' | '/windows', {
       description: 'Mac 文件重命名工具。用 AI 根据内容批量重命名截图、PDF、照片、视频、音频、设计文件和文档。',
     },
     '/windows': {
-      title: 'Windows 文件重命名工具：用 AI 大量重命名文件 | Zush',
-      description: 'Windows 11 和 10 文件重命名工具。用 AI 大量重命名截图、PDF、照片、视频、音频、设计文件和 Office 文档。',
+      title: 'Windows AI 文件重命名工具：批量和大量重命名 | Zush',
+      description: '在 Windows 11 和 10 上用 AI 批量重命名截图、PDF、照片、视频、音频、设计文件和 Office 文档，并支持预览和撤销。',
     },
   },
   hi: {
@@ -116,9 +116,9 @@ const PLATFORM_SEO: Partial<Record<Locale, Partial<Record<'/mac' | '/windows', {
         'Mac file renamer जो AI से content के आधार पर files batch rename करता है: screenshots, PDFs, photos, videos, audio, design files और documents.',
     },
     '/windows': {
-      title: 'Windows के लिए File Renamer: AI से Bulk Rename Files | Zush',
+      title: 'Windows AI File Renamer: Batch & Bulk Rename Files | Zush',
       description:
-        'Windows 11 और 10 file renamer जो AI से files bulk rename करता है: screenshots, PDFs, photos, videos, audio, design files और Office docs.',
+        'Windows 11 और 10 पर AI से files batch और bulk rename करें: screenshots, PDFs, photos, videos, audio, design files और Office docs, preview और undo के साथ.',
     },
   },
   ar: {
@@ -128,9 +128,9 @@ const PLATFORM_SEO: Partial<Record<Locale, Partial<Record<'/mac' | '/windows', {
         'أداة إعادة تسمية ملفات لنظام Mac تعيد تسمية الملفات بالدفعات حسب المحتوى باستخدام الذكاء الاصطناعي: لقطات الشاشة وPDF والصور والفيديو والصوت والتصميم والمستندات.',
     },
     '/windows': {
-      title: 'أداة إعادة تسمية الملفات لنظام Windows: إعادة تسمية جماعية بالذكاء الاصطناعي | Zush',
+      title: 'أداة AI لإعادة تسمية ملفات Windows: دفعات وكميات كبيرة | Zush',
       description:
-        'أداة إعادة تسمية ملفات لنظامي Windows 11 و10 تعيد تسمية الملفات بكميات كبيرة بالذكاء الاصطناعي: لقطات الشاشة وPDF والصور والفيديو والصوت والتصميم ومستندات Office.',
+        'أعد تسمية ملفات Windows 11 و10 بالدفعات باستخدام الذكاء الاصطناعي: لقطات شاشة وPDF وصور وفيديو وصوت وتصميم ومستندات Office مع معاينة وتراجع.',
     },
   },
 };

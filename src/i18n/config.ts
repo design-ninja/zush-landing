@@ -14,11 +14,17 @@ export const DEFAULT_LOCALE = 'en';
  *   - GSC may report localized URLs as "Excluded by noindex"; that is
  *     expected while this pause is enabled
  *
- * Set to `false` (and rebuild) when there is meaningful direct demand
- * from a specific region — at that point also localize pricing /
- * legal / regional copy beyond raw translations.
+ * Keep this `false` when localized pages are ready to be crawled and
+ * included in the sitemap/hreflang clusters.
  */
-export const LOCALIZATION_PAUSED = true;
+export const LOCALIZATION_PAUSED = false;
+
+/**
+ * Keep browser-language redirects off for SEO stability. Users can still
+ * switch language manually, and crawlers can discover localized URLs through
+ * sitemap.xml and hreflang.
+ */
+export const LOCALE_AUTO_DETECT_ENABLED = false;
 
 export const LOCALES = [
   'en',

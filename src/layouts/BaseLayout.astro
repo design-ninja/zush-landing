@@ -12,6 +12,7 @@ import type { DownloadOS } from '@/utils/download';
 import {
   DEFAULT_LOCALE,
   INDEXABLE_LOCALIZED_ROUTES,
+  LOCALE_AUTO_DETECT_ENABLED,
   LOCALE_META,
   LOCALIZATION_PAUSED,
   getLocalesForRoute,
@@ -58,7 +59,8 @@ const ldItems = (Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [])
   .filter(Boolean);
 const isHomePage = route === '/';
 const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
-const shouldAutoDetectLocale = !LOCALIZATION_PAUSED
+const shouldAutoDetectLocale = LOCALE_AUTO_DETECT_ENABLED
+  && !LOCALIZATION_PAUSED
   && locale === DEFAULT_LOCALE
   && (INDEXABLE_LOCALIZED_ROUTES as readonly string[]).includes(route);
 const shouldActivateFloatingDownloadWithoutHero = route === '/blog' || route.startsWith('/blog/');
