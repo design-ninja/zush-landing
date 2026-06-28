@@ -20,6 +20,7 @@ interface HeroProps {
   subtitle?: string;
   slides?: Slide[];
   videoShowcase?: HeroVideoShowcaseAsset;
+  videoShowcaseByOS?: Partial<Record<DownloadOS, HeroVideoShowcaseAsset>>;
   as?: "section" | "header";
   compactTopSpacing?: boolean;
   forceOS?: DownloadOS;
@@ -67,10 +68,12 @@ const Hero = ({
   macVersion,
   windowsVersion,
   videoShowcase,
+  videoShowcaseByOS,
 }: HeroProps) => {
   const highlightText = titleHighlight ?? titleAccent;
   const { downloadOS: detectedOS } = useOS();
   const versionOS = forceOS ?? detectedOS;
+  const selectedVideoShowcase = videoShowcaseByOS?.[versionOS] ?? videoShowcase;
   const platformVersion = versionOS === "windows" ? windowsVersion : macVersion;
   const finalTrustSignals = platformVersion
     ? [`🤖 v${platformVersion}`, ...trustSignals]
@@ -161,8 +164,8 @@ const Hero = ({
         <div
           className={`${styles.Hero__ShowcaseWrapper} ${styles.Hero__ShowcaseMotion}`}
         >
-          {videoShowcase ? (
-            <HeroVideoShowcase media={videoShowcase} />
+          {selectedVideoShowcase ? (
+            <HeroVideoShowcase media={selectedVideoShowcase} />
           ) : (
             <FileShowcase slides={slides} />
           )}

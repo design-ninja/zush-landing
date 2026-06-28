@@ -30,6 +30,7 @@ export interface ResolvedShowcaseVideoMedia {
 export interface HeroVideoShowcaseAsset {
   title: string;
   description: string;
+  frame?: 'mac' | 'windows';
   width: number;
   height: number;
   sources: ThemeAwareMedia;
@@ -39,6 +40,7 @@ export interface HeroVideoShowcaseAsset {
 export const HOME_HERO_BATCH_RENAME_VIDEO: HeroVideoShowcaseAsset = {
   title: 'Zush batch rename workflow on macOS',
   description: 'A Zush for Mac window showing AI batch rename analysis, review, and completed rename results for mixed files.',
+  frame: 'mac',
   width: 1280,
   height: 1050,
   sources: {
@@ -48,6 +50,22 @@ export const HOME_HERO_BATCH_RENAME_VIDEO: HeroVideoShowcaseAsset = {
   posters: {
     light: '/videos/posters/hero-batch-rename-mac-window-light.webp',
     dark: '/videos/posters/hero-batch-rename-mac-window-dark.webp',
+  },
+};
+
+export const WINDOWS_HERO_BATCH_RENAME_VIDEO: HeroVideoShowcaseAsset = {
+  title: 'Zush batch rename workflow on Windows',
+  description: 'A Zush for Windows window showing AI batch rename analysis, review, and completed rename results for mixed files.',
+  frame: 'windows',
+  width: 1778,
+  height: 1388,
+  sources: {
+    light: '/videos/hero/zush-batch-rename-windows-window-light.mp4',
+    dark: '/videos/hero/zush-batch-rename-windows-window-dark.mp4',
+  },
+  posters: {
+    light: '/videos/posters/hero-batch-rename-windows-window-light.png',
+    dark: '/videos/posters/hero-batch-rename-windows-window-dark.png',
   },
 };
 

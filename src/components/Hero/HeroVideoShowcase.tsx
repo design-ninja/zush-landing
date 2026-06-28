@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import type { HeroVideoShowcaseAsset, ShowcaseTheme } from '@/data/showcaseMedia';
 import styles from './Hero.module.scss';
 
@@ -22,6 +22,9 @@ const HeroVideoShowcase = ({ media }: HeroVideoShowcaseProps) => {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const activeSource = media.sources[theme];
   const activePoster = media.posters[theme];
+  const frameStyle = {
+    '--hero-video-aspect-ratio': `${media.width} / ${media.height}`,
+  } as CSSProperties;
 
   useEffect(() => {
     const root = document.documentElement;
@@ -104,7 +107,7 @@ const HeroVideoShowcase = ({ media }: HeroVideoShowcaseProps) => {
   };
 
   return (
-    <figure className={styles.Hero__VideoShowcase}>
+    <figure className={styles.Hero__VideoShowcase} data-frame={media.frame ?? 'mac'} style={frameStyle}>
       <video
         ref={videoRef}
         aria-label={media.title}

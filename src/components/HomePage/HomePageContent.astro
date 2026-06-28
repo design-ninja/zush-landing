@@ -12,7 +12,7 @@ import Testimonials from '@/components/Testimonials/Testimonials.astro';
 import macChangelogSource from '@/content/changelog.md?raw';
 import windowsChangelogSource from '@/content/changelog.windows.md?raw';
 import { FREE_DOWNLOAD_BADGE_LABEL } from '@/constants';
-import { HOME_HERO_BATCH_RENAME_VIDEO } from '@/data/showcaseMedia';
+import { HOME_HERO_BATCH_RENAME_VIDEO, WINDOWS_HERO_BATCH_RENAME_VIDEO } from '@/data/showcaseMedia';
 import { parseLatestVersion } from '@/utils/version';
 import type { Locale } from '@/i18n/config';
 import type { LocaleCopy } from '@/i18n/copy';
@@ -26,6 +26,10 @@ interface Props {
 const { copy, locale, secondaryHref } = Astro.props as Props;
 const macVersion = parseLatestVersion(macChangelogSource) ?? undefined;
 const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
+const heroVideoShowcaseByOS = {
+  mac: HOME_HERO_BATCH_RENAME_VIDEO,
+  windows: WINDOWS_HERO_BATCH_RENAME_VIDEO,
+};
 ---
 
 <Hero
@@ -41,7 +45,7 @@ const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
   reviewsHref="#reviews"
   reviewsLabel={copy.header.reviews}
   secondaryHref={secondaryHref}
-  videoShowcase={HOME_HERO_BATCH_RENAME_VIDEO}
+  videoShowcaseByOS={heroVideoShowcaseByOS}
   macVersion={macVersion}
   windowsVersion={windowsVersion}
 />

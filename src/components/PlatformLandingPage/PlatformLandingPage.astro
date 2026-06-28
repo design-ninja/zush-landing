@@ -13,7 +13,11 @@ import WindowsSeoSection from '@/components/WindowsSeoSection/WindowsSeoSection.
 import { PLATFORM_LANDING_CONTENT } from '@/data/platformLanding';
 import { getPlatformLandingSections } from '@/data/platformLandingSections';
 import { PLATFORM_SPECIFICS_CONTENT } from '@/data/platformSpecifics';
-import { HOME_HERO_BATCH_RENAME_VIDEO, WINDOWS_SHOWCASE_SCREENSHOTS } from '@/data/showcaseMedia';
+import {
+  HOME_HERO_BATCH_RENAME_VIDEO,
+  WINDOWS_HERO_BATCH_RENAME_VIDEO,
+  WINDOWS_SHOWCASE_SCREENSHOTS,
+} from '@/data/showcaseMedia';
 import macChangelogSource from '@/content/changelog.md?raw';
 import windowsChangelogSource from '@/content/changelog.windows.md?raw';
 import { parseLatestVersion } from '@/utils/version';
@@ -240,7 +244,7 @@ const jsonLdItems = [
     trustSignals={platformTrustSignals}
     secondaryHref="#pricing"
     slides={copy.home.showcaseSlides}
-    videoShowcase={platform === 'mac' ? HOME_HERO_BATCH_RENAME_VIDEO : undefined}
+    videoShowcase={platform === 'windows' ? WINDOWS_HERO_BATCH_RENAME_VIDEO : HOME_HERO_BATCH_RENAME_VIDEO}
     macVersion={macVersion}
     windowsVersion={windowsVersion}
   />
