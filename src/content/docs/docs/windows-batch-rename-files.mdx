@@ -1,0 +1,52 @@
+---
+title: Batch Rename Files on Windows with AI
+description: Batch rename files on Windows 11 and 10 with AI. Use Zush to rename screenshots, PDFs, photos, videos, audio, design files, and Office documents.
+lastUpdated: 2026-06-28
+sidebar:
+  order: 2
+  label: Windows batch rename
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Zush is a content-aware batch rename tool for Windows 11 and Windows 10. It is designed for folders where every file needs a different descriptive name, not just the same prefix, counter, or text replacement.
+
+## When to use Zush
+
+Use Zush when a Windows folder includes screenshots, PDFs, photos, Office documents, design files, videos, audio files, exports, or mixed downloads. Zush analyzes each file, suggests a readable filename, lets you review the batch, and keeps rename history for undo.
+
+For simple text rules, PowerRename and Bulk Rename Utility are still useful. For content-aware names, Zush is the better fit because each file can get a unique AI-generated name.
+
+## Rename a Windows folder
+
+<Steps>
+1. Open Zush from the Start menu or Microsoft Store install.
+2. Drag files from File Explorer into the Zush batch rename area.
+3. Review the suggested names and edit any filename inline.
+4. Regenerate individual names if the first suggestion is not specific enough.
+5. Apply the batch. Zush renames the original files in place and records the action in history.
+</Steps>
+
+## Good Windows folders to start with
+
+- `Downloads`
+- `Pictures\Screenshots`
+- OneDrive sync folders
+- Shared project folders
+- Client export folders
+- Audio, video, and subtitle folders
+
+## What Zush changes
+
+Zush changes filenames after you approve the batch. It does not move files into folders automatically, and it does not replace Windows Search with a separate search index. The value is in making filenames and metadata descriptive enough that File Explorer and Windows Search become more useful.
+
+<Aside type="tip">
+For daily cleanup, combine batch rename with <a href="/docs/windows-folder-monitoring/">folder monitoring</a> so new files in Downloads or Screenshots are handled automatically.
+</Aside>
+
+## Related docs
+
+- [Folder monitoring on Windows](/docs/windows-folder-monitoring/)
+- [Search files by content on Windows](/docs/search-files-by-content-windows/)
+- [Supported file types](/docs/supported-file-types/)
+- [Zush for Windows](/windows)

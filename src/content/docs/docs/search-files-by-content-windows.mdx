@@ -1,0 +1,47 @@
+---
+title: Search Files by Content on Windows with Better Filenames
+description: Use content-aware AI filenames and metadata to make Windows files easier to find later in File Explorer and Windows Search.
+lastUpdated: 2026-06-28
+sidebar:
+  order: 4
+  label: Searchable filenames
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Windows Search works best when filenames contain the words you would naturally search for later. Zush helps by analyzing file content during renaming and writing useful context into filenames and metadata.
+
+## What this does
+
+Zush can turn vague names into searchable names:
+
+| Before | Better filename |
+| --- | --- |
+| `IMG_2048.jpg` | `product-packaging-closeup-green-label.jpg` |
+| `screenshot-2026-06-28.png` | `stripe-dashboard-payment-failure-alert.png` |
+| `final.pdf` | `client-contract-q2-renewal-acme.pdf` |
+| `meeting.wav` | `product-planning-call-audio-june-2026.wav` |
+
+## What this does not do
+
+Zush does not replace Windows Search with a separate semantic search index. It analyzes files when renaming them, then stores useful context in the name and metadata so File Explorer and Windows Search have better text to match.
+
+<Aside type="tip">
+For best results, include stable context in your naming template: client, project, document type, date, topic, and file-specific subject.
+</Aside>
+
+## Search-friendly naming pattern
+
+A useful Windows pattern is:
+
+```text
+{topic}-{document_type}-{project_or_client}-{date}
+```
+
+For screenshots and images, use the visible subject. For PDFs and Office files, use the document type and core topic. For audio and video, use metadata, transcript context, subtitles, or sampled frames when available.
+
+## Related docs
+
+- [Batch rename files on Windows](/docs/windows-batch-rename-files/)
+- [Supported file types](/docs/supported-file-types/)
+- [Zush for Windows](/windows)

@@ -1,6 +1,19 @@
+import { getCollection, type CollectionEntry } from 'astro:content';
 import { SITE_ORIGIN } from '@/seo/config';
 
-export function GET() {
+function getDocsRoute(id: string): string {
+  const route = `/${id.replace(/\/index$/, '')}`;
+  const normalizedRoute = route === '/docs/index' ? '/docs' : route;
+  return normalizedRoute.endsWith('/') ? normalizedRoute : `${normalizedRoute}/`;
+}
+
+export async function GET() {
+  const docs = (await getCollection('docs')) as CollectionEntry<'docs'>[];
+  const docsLinks = docs
+    .filter((entry) => entry.id === 'docs' || entry.id === 'docs/index' || entry.id.startsWith('docs/'))
+    .sort((a, b) => (a.data.sidebar.order ?? 999) - (b.data.sidebar.order ?? 999))
+    .map((entry) => `- [${entry.data.title}](${SITE_ORIGIN}${getDocsRoute(entry.id)})`);
+
   const body = [
     '# Zush',
     '',
@@ -15,6 +28,7 @@ export function GET() {
     `- [Offline AI File Renamer](${SITE_ORIGIN}/offline-ai-file-renamer)`,
     `- [Zush for Mac](${SITE_ORIGIN}/mac)`,
     `- [Zush for Windows](${SITE_ORIGIN}/windows)`,
+    `- [Documentation](${SITE_ORIGIN}/docs)`,
     '',
     '## File-Type Workflows',
     '',
@@ -43,6 +57,10 @@ export function GET() {
     `- [Rename Files with Ollama on Mac](${SITE_ORIGIN}/blog/rename-files-with-ollama-mac)`,
     `- [Cloud AI vs Local AI File Renaming](${SITE_ORIGIN}/blog/cloud-vs-local-ai-file-renaming)`,
     `- [BYOK AI File Renaming](${SITE_ORIGIN}/blog/byok-ai-file-renaming-unlimited)`,
+    '',
+    '## Documentation',
+    '',
+    ...docsLinks,
     '',
     '## Evidence and Policies',
     '',

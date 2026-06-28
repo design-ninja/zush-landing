@@ -1,0 +1,44 @@
+---
+title: Offline AI File Renaming on Windows
+description: Use Zush Offline AI mode with local Ollama models for supported private file renaming workflows on Windows.
+lastUpdated: 2026-06-28
+sidebar:
+  order: 6
+  label: Offline AI
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Offline AI mode lets Zush process supported files with local models through Ollama. It is useful for private folders, sensitive client work, and workflows where you want local model execution instead of cloud AI.
+
+## Requirements
+
+- Zush PRO.
+- Windows 10 or Windows 11.
+- Ollama installed locally.
+- Enough memory and disk space for the model you choose.
+
+## Set up Offline AI
+
+<Steps>
+1. Install Ollama on Windows.
+2. Download a compatible local model.
+3. Open Zush settings and enable Offline AI mode.
+4. Run a small test batch before using it on a large folder.
+5. Keep rename history enabled so you can undo a batch if needed.
+</Steps>
+
+## Cloud AI, BYOK, and Offline AI
+
+Cloud AI is usually faster and stronger for broad multimodal analysis. BYOK lets PRO users connect their own Gemini, Groq, OpenAI, or Claude key for unlimited cloud renames through the backend relay. Offline AI keeps supported processing local through Ollama.
+
+<Aside type="note">
+Offline AI support depends on the selected model and file type. For maximum accuracy across images, PDFs, audio, video, and mixed folders, compare results with Cloud AI or BYOK.
+</Aside>
+
+## Related docs
+
+- [BYOK setup](/byok-setup)
+- [Ollama setup](/ollama-setup)
+- [Supported file types](/docs/supported-file-types/)
+- [Zush for Windows](/windows)

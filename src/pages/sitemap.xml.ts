@@ -1,11 +1,13 @@
 import { execSync } from 'node:child_process';
 import { statSync } from 'node:fs';
 import { join } from 'node:path';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import { getAllPosts, getAllTags, isSitemapEligibleBlogPost, type BlogPost, type BlogTag } from '@/data/blog';
 import { INDEXABLE_STATIC_ROUTES, FEATURE_ROUTES, SEARCH_LANDING_ROUTES, SITE_ORIGIN, THIN_CONTENT_THRESHOLD } from '@/seo/config';
 import { DEFAULT_LOCALE, LOCALE_META, LOCALIZATION_PAUSED, LOCALIZED_ROUTES, getAlternatePaths, getLocalesForRoute, getLocalizedPath } from '@/i18n/config';
 
 const BLOG_CONTENT_DIR = join(process.cwd(), 'src', 'content', 'blog');
+const DOCS_CONTENT_DIR = join(process.cwd(), 'src', 'content', 'docs');
 const PAGES_DIR = join(process.cwd(), 'src', 'pages');
 
 function getPageSourceFile(route: string): string {
@@ -64,6 +66,32 @@ function getBlogPostSourceFile(post: BlogPost): string {
   return join(BLOG_CONTENT_DIR, `${post.slug}.mdx`);
 }
 
+function getDocsRoute(entry: CollectionEntry<'docs'>): string {
+  const route = `/${entry.id.replace(/\/index$/, '')}`;
+  const normalizedRoute = route === '/docs/index' ? '/docs' : route;
+  return normalizedRoute.endsWith('/') ? normalizedRoute : `${normalizedRoute}/`;
+}
+
+function getDocsSourceFile(entry: CollectionEntry<'docs'>): string {
+  if (entry.filePath) {
+    return entry.filePath.startsWith('/') ? entry.filePath : join(process.cwd(), entry.filePath);
+  }
+
+  const fallbackId = entry.id === 'docs' ? 'docs/index' : entry.id;
+  return join(DOCS_CONTENT_DIR, `${fallbackId}.mdx`);
+}
+
+function getDocsLastModifiedDate(entry: CollectionEntry<'docs'>): string {
+  const frontmatterDate = entry.data.lastUpdated instanceof Date
+    ? entry.data.lastUpdated.toISOString()
+    : null;
+
+  return getLatestDate(
+    getLastModifiedDate(getDocsSourceFile(entry), frontmatterDate ?? new Date('2026-06-28T00:00:00.000Z').toISOString()),
+    frontmatterDate,
+  );
+}
+
 function getBlogPostLastModifiedDate(post: BlogPost): string {
   const sourceLastModified = getLastModifiedDate(
     getBlogPostSourceFile(post),
@@ -99,6 +127,9 @@ function getRouteHints(route: string): { changefreq: Changefreq; priority: strin
   if ((FEATURE_ROUTES as readonly string[]).includes(route)) {
     return { changefreq: 'weekly', priority: '0.8' };
   }
+  if (route === '/docs' || route.startsWith('/docs/')) {
+    return { changefreq: 'monthly', priority: route === '/docs' ? '0.7' : '0.65' };
+  }
   if (route === '/mac' || route === '/windows') {
     return { changefreq: 'weekly', priority: '0.9' };
   }
@@ -117,6 +148,7 @@ function getRouteHints(route: string): { changefreq: Changefreq; priority: strin
 export async function GET() {
   const staticRoutes = INDEXABLE_STATIC_ROUTES.filter(
     (route) =>
+      route !== '/docs' &&
       route !== '/thank-you' &&
       route !== '/recover' &&
       route !== '/activate' &&
@@ -170,6 +202,22 @@ export async function GET() {
     };
   });
 
+  const docs = (await getCollection('docs')) as CollectionEntry<'docs'>[];
+  const docsEntries = docs
+    .filter((entry) => entry.id === 'docs' || entry.id === 'docs/index' || entry.id.startsWith('docs/'))
+    .map((entry) => {
+    const route = getDocsRoute(entry);
+    const { changefreq, priority } = getRouteHints(route);
+
+    return {
+      loc: `${SITE_ORIGIN}${route}`,
+      route: undefined,
+      lastmod: getDocsLastModifiedDate(entry),
+      changefreq,
+      priority,
+    };
+  });
+
   const tagEntries = (await getAllTags())
     .filter((tag) => tag.indexable)
     .map((tag) => ({
@@ -180,7 +228,7 @@ export async function GET() {
       priority: '0.55',
     }));
 
-  const urls = [...staticEntries.map((entry) => ({ ...entry, route: entry.loc.replace(SITE_ORIGIN, '') || '/' })), ...localizedEntries, ...blogEntries, ...tagEntries]
+  const urls = [...staticEntries.map((entry) => ({ ...entry, route: entry.loc.replace(SITE_ORIGIN, '') || '/' })), ...localizedEntries, ...blogEntries, ...tagEntries, ...docsEntries]
     .map(({ loc, route, lastmod, changefreq, priority }) => {
       const normalizedRoute = !LOCALIZATION_PAUSED && LOCALIZED_ROUTES.includes(route as never)
         ? route
