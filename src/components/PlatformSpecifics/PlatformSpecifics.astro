@@ -87,6 +87,7 @@ const dropZoneHint = isMac ? '~/Downloads' : 'Downloads';
 const watchPaths = isMac
   ? ['~/Screenshots', '~/Downloads']
   : ['Pictures\\Screenshots', 'Downloads'];
+const visibleScenarios = data.scenarios.slice(0, 6);
 const previewReviewRows = data.scenarios.slice(0, 2).map((scenario) => ({
   before: scenario.before,
   after: scenario.after,
@@ -354,7 +355,7 @@ const getStoreAppUrl = (kind: string) => {
       </header>
 
       <div class={styles.ScenarioGrid}>
-        {data.scenarios.map((scenario) => {
+        {visibleScenarios.map((scenario) => {
           const meta = scenario.fileType !== 'image' ? FILE_TYPE_META[scenario.fileType] : null;
           return (
             <article class={styles.ScenarioCard}>

@@ -23,6 +23,7 @@ interface Props {
   description?: string;
   copy?: FeatureCardsCopy;
   compactTopSpacing?: boolean;
+  eagerVisuals?: boolean;
 }
 
 const {
@@ -30,6 +31,7 @@ const {
   description = 'One desktop file renamer for batch renaming screenshots, design files, PDFs, photos, audio, videos, documents, and messy mixed folders',
   copy = DEFAULT_FEATURE_CARDS_COPY,
   compactTopSpacing = false,
+  eagerVisuals = false,
 } = Astro.props as Props;
 const titleParts = title.split('Zush');
 const className = [styles.Features, compactTopSpacing ? styles.Features_compactTopSpacing : '']
@@ -55,7 +57,13 @@ const className = [styles.Features, compactTopSpacing ? styles.Features_compactT
         icon={Sparkles}
       >
         <div class={styles.UI_BatchRename}>
-          <SmartBatchRenameVisual client:visible />
+          {
+            eagerVisuals ? (
+              <SmartBatchRenameVisual client:load />
+            ) : (
+              <SmartBatchRenameVisual client:visible />
+            )
+          }
         </div>
       </BentoCard>
 
@@ -65,7 +73,13 @@ const className = [styles.Features, compactTopSpacing ? styles.Features_compactT
         icon={FolderSync}
       >
         <div class={styles.UI_FeatureAnimation}>
-          <FeatureAnimation kind='folders' client:visible />
+          {
+            eagerVisuals ? (
+              <FeatureAnimation kind='folders' client:load />
+            ) : (
+              <FeatureAnimation kind='folders' client:visible />
+            )
+          }
         </div>
       </BentoCard>
 
@@ -75,7 +89,13 @@ const className = [styles.Features, compactTopSpacing ? styles.Features_compactT
         icon={Tag}
       >
         <div class={styles.UI_FeatureAnimation}>
-          <FeatureAnimation kind='metadata' client:visible />
+          {
+            eagerVisuals ? (
+              <FeatureAnimation kind='metadata' client:load />
+            ) : (
+              <FeatureAnimation kind='metadata' client:visible />
+            )
+          }
         </div>
       </BentoCard>
 
@@ -85,7 +105,13 @@ const className = [styles.Features, compactTopSpacing ? styles.Features_compactT
         icon={History}
       >
         <div class={styles.UI_FeatureAnimation}>
-          <FeatureAnimation kind='history' client:visible />
+          {
+            eagerVisuals ? (
+              <FeatureAnimation kind='history' client:load />
+            ) : (
+              <FeatureAnimation kind='history' client:visible />
+            )
+          }
         </div>
       </BentoCard>
 
@@ -96,7 +122,13 @@ const className = [styles.Features, compactTopSpacing ? styles.Features_compactT
         badge='PRO 🌟'
       >
         <div class={styles.UI_FeatureAnimation}>
-          <FeatureAnimation kind='templates' client:visible />
+          {
+            eagerVisuals ? (
+              <FeatureAnimation kind='templates' client:load />
+            ) : (
+              <FeatureAnimation kind='templates' client:visible />
+            )
+          }
         </div>
       </BentoCard>
 
@@ -107,7 +139,13 @@ const className = [styles.Features, compactTopSpacing ? styles.Features_compactT
         badge='PRO 🌟'
       >
         <div class={styles.UI_FeatureAnimation}>
-          <FeatureAnimation kind='naming-blocks' client:visible />
+          {
+            eagerVisuals ? (
+              <FeatureAnimation kind='naming-blocks' client:load />
+            ) : (
+              <FeatureAnimation kind='naming-blocks' client:visible />
+            )
+          }
         </div>
       </BentoCard>
 
@@ -118,7 +156,13 @@ const className = [styles.Features, compactTopSpacing ? styles.Features_compactT
         badge='PRO 🌟'
       >
         <div class={styles.UI_FeatureAnimation}>
-          <FeatureAnimation kind='prompts' client:visible />
+          {
+            eagerVisuals ? (
+              <FeatureAnimation kind='prompts' client:load />
+            ) : (
+              <FeatureAnimation kind='prompts' client:visible />
+            )
+          }
         </div>
       </BentoCard>
 
@@ -129,7 +173,13 @@ const className = [styles.Features, compactTopSpacing ? styles.Features_compactT
         badge='PRO 🌟'
       >
         <div class={styles.UI_FeatureAnimation}>
-          <FeatureAnimation kind='byok' client:visible />
+          {
+            eagerVisuals ? (
+              <FeatureAnimation kind='byok' client:load />
+            ) : (
+              <FeatureAnimation kind='byok' client:visible />
+            )
+          }
         </div>
       </BentoCard>
 
@@ -140,7 +190,13 @@ const className = [styles.Features, compactTopSpacing ? styles.Features_compactT
         badge='PRO 🌟'
       >
         <div class={styles.UI_FeatureAnimation}>
-          <FeatureAnimation kind='offline-ai' client:visible />
+          {
+            eagerVisuals ? (
+              <FeatureAnimation kind='offline-ai' client:load />
+            ) : (
+              <FeatureAnimation kind='offline-ai' client:visible />
+            )
+          }
         </div>
       </BentoCard>
     </div>

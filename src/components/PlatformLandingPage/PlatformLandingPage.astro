@@ -273,7 +273,23 @@ const jsonLdItems = [
     macVersion={macVersion}
     windowsVersion={windowsVersion}
   />
+  <Features
+    title={platformSections.featuresTitle}
+    description={platformSections.featuresDescription}
+    copy={platformSections.featureCards}
+    eagerVisuals
+  />
   <Tour client:visible forceOS={platform} copy={copy.home.showcase} />
+  {platform === 'windows' && locale === DEFAULT_LOCALE && <WindowsSeoSection />}
+  <PlatformSpecifics platform={platform} locale={locale} />
+  <SupportedFormats
+    title={copy.home.supportedFormats}
+    imagesLabel={copy.home.images}
+    designLabel={copy.home.designLabel}
+    documentsLabel={copy.home.documents}
+    videosLabel={copy.home.videosLabel}
+    audioLabel={copy.home.audioLabel}
+  />
   <DownloadCTA
     forceOS={platform}
     title={localizedPage.ctaTitle}
@@ -282,21 +298,6 @@ const jsonLdItems = [
     downloadLabel={copy.header.download}
     downloadMenu={copy.downloadMenu}
     includeOtherDownloadOS={includeOtherDownloadOS}
-  />
-  {platform === 'windows' && locale === DEFAULT_LOCALE && <WindowsSeoSection />}
-  <PlatformSpecifics platform={platform} locale={locale} />
-  <Features
-    title={platformSections.featuresTitle}
-    description={platformSections.featuresDescription}
-    copy={platformSections.featureCards}
-  />
-  <SupportedFormats
-    title={copy.home.supportedFormats}
-    imagesLabel={copy.home.images}
-    designLabel={copy.home.designLabel}
-    documentsLabel={copy.home.documents}
-    videosLabel={copy.home.videosLabel}
-    audioLabel={copy.home.audioLabel}
   />
   <Pricing copy={copy.pricing} />
   {shouldShowCrossPlatformBanner && <CrossPlatformBanner locale={locale} hidePlatform={platform} />}

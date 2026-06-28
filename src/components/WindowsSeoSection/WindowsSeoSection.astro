@@ -8,6 +8,7 @@ import {
   Search,
 } from 'lucide-react';
 import Heading from '@/components/Heading';
+import PillLink from '@/components/PillLink';
 import Text from '@/components/Text';
 import styles from './WindowsSeoSection.module.scss';
 
@@ -21,36 +22,42 @@ const docsLinks = [
 const cards = [
   {
     icon: ListChecks,
+    tone: 'purple',
     title: 'Batch rename files on Windows',
     body:
       'Drag files from File Explorer, generate names from content, review every suggestion, and apply the full batch with undo history.',
   },
   {
     icon: FolderSearch,
+    tone: 'blue',
     title: 'AI file organizer workflow',
     body:
       'Clean up Downloads, screenshots, OneDrive, invoices, photos, videos, audio, and project exports by writing useful context into filenames.',
   },
   {
     icon: Search,
+    tone: 'teal',
     title: 'Searchable Windows filenames',
     body:
       'Zush turns file content into readable filenames and metadata so File Explorer and Windows Search can surface files without opening each one.',
   },
   {
     icon: MonitorDown,
+    tone: 'green',
     title: 'Microsoft Store install',
     body:
       'Install from the Microsoft Store for Windows 10 and Windows 11, with Store-managed package trust and automatic updates.',
   },
   {
     icon: KeyRound,
+    tone: 'orange',
     title: 'BYOK and Offline AI',
     body:
       'Use bundled cloud AI, connect Gemini, Groq, OpenAI, or Claude with BYOK, or run supported analysis locally with Ollama Offline AI.',
   },
   {
     icon: History,
+    tone: 'pink',
     title: 'PowerRename alternative for content',
     body:
       'Keep rule-based tools for counters and prefixes. Use Zush when screenshots, PDFs, photos, videos, audio, and docs each need a unique name.',
@@ -75,7 +82,7 @@ const cards = [
       {cards.map((card) => {
         const Icon = card.icon;
         return (
-          <article class={styles.WindowsSeoCard}>
+          <article class={styles.WindowsSeoCard} data-tone={card.tone}>
             <span class={styles.WindowsSeoCard__Icon} aria-hidden="true">
               <Icon size={21} strokeWidth={1.8} />
             </span>
@@ -120,7 +127,7 @@ const cards = [
 
     <nav class={styles.WindowsSeoSection__Docs} aria-label="Windows file renaming documentation">
       {docsLinks.map((link) => (
-        <a href={link.href}>{link.label}</a>
+        <PillLink href={link.href} size="md">{link.label}</PillLink>
       ))}
     </nav>
   </div>
