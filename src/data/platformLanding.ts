@@ -97,20 +97,22 @@ export const PLATFORM_LANDING_CONTENT: Record<DownloadOS, PlatformLandingContent
     breadcrumbLabel: 'Zush for Windows',
     softwareName: 'Zush for Windows',
     softwareDescription:
-      'AI file renamer for Windows 11 and 10 with bulk rename and batch rename workflows. Rename files with AI from ordinary Windows folders, including screenshots, design files, audio, videos, PDFs, photos, iWork and Office documents.',
+      'AI file renamer and file organizer workflow for Windows 11 and 10 with bulk rename, batch rename, folder monitoring, searchable filenames, metadata, BYOK, and Offline AI. Rename files with AI from File Explorer folders, including screenshots, design files, audio, videos, PDFs, photos, iWork and Office documents.',
     operatingSystem: ['Windows 10', 'Windows 11'],
     downloadUrl: WINDOWS_STORE_URL,
     installUrl: WINDOWS_STORE_URL,
     heroTitle: 'AI File Renamer for Windows',
     heroSubtitle:
-      'Rename files with AI on Windows 11 and 10: bulk rename screenshots, design files, videos, PDFs, photos, iWork, and Office documents. Installs from the Microsoft Store with automatic updates, free to try with no signup.',
+      'Batch rename files on Windows 11 and 10 with AI: screenshots, design files, videos, PDFs, photos, iWork, Office documents, audio, and messy Downloads folders. Zush turns content into searchable filenames, installs from the Microsoft Store, and includes preview, undo, BYOK, and Offline AI.',
     ctaSubtitle:
-      'Open the Microsoft Store and start using an AI file renamer for screenshots, design files, videos, PDFs, photos, iWork, and Office documents.',
+      'Open the Microsoft Store and start using an AI file renamer for File Explorer folders, screenshots, design files, videos, PDFs, photos, audio, iWork, and Office documents.',
     features: [
-      'AI file renamer for Windows 11 and 10 with content-aware bulk rename for screenshots, design files, videos, PDFs, photos, iWork, and Office documents',
+      'AI file renamer for Windows 11 and 10 with content-aware bulk rename for screenshots, design files, videos, PDFs, photos, audio, iWork, and Office documents',
+      'AI file organizer workflow for Downloads, screenshots, OneDrive folders, shared drives, and project exports',
       'Folder monitoring with file-type exclusions',
       'Batch rename with per-file regenerate',
       'Custom prompts for names and metadata tags',
+      'Searchable filenames and metadata for File Explorer and Windows Search',
       'One-click revert from the Activity log',
       'Microsoft Store install with auto-updates',
       '60+ languages and flexible date formats',
@@ -118,6 +120,31 @@ export const PLATFORM_LANDING_CONTENT: Record<DownloadOS, PlatformLandingContent
       'Offline AI mode - private local models via Ollama',
     ],
     faqs: [
+      {
+        question: 'Can Zush batch rename files on Windows?',
+        answer:
+          'Yes. Zush works as an AI batch rename tool for Windows 11 and 10. Drag files from File Explorer, review AI-generated names for every item, then apply the whole batch with rename history available for undo.',
+      },
+      {
+        question: 'Is Zush a Bulk Rename Utility or PowerRename alternative?',
+        answer:
+          'Yes, when the job needs content-aware filenames instead of a shared text rule. Bulk Rename Utility and PowerRename are strong for prefixes, counters, case changes, and pattern rules. Zush is built for screenshots, PDFs, photos, videos, audio, design files, and documents where each file needs a different descriptive name.',
+      },
+      {
+        question: 'Can Zush organize files on Windows?',
+        answer:
+          'Zush helps organize Windows folders by turning vague filenames into readable, searchable names and by monitoring folders such as Downloads or Pictures\\Screenshots for new supported files. It focuses on naming, metadata, review, and undo rather than moving files into folders automatically.',
+      },
+      {
+        question: 'Does Zush help search files by content on Windows?',
+        answer:
+          'Zush does not replace Windows Search with a separate semantic search index. It analyzes file content during renaming and writes that context into filenames and metadata, so files become easier to find later in File Explorer and Windows Search.',
+      },
+      {
+        question: 'What file types can Zush rename on Windows?',
+        answer:
+          'Zush supports mixed Windows folders with screenshots, JPG/PNG/HEIC/RAW photos, PDFs, Office documents, iWork files, design files such as Figma, Sketch, Illustrator, and PSD, videos, audio, subtitles, text files, CSV, XML, YAML, and more.',
+      },
       {
         question: 'Why is Zush distributed through the Microsoft Store?',
         answer:

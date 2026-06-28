@@ -363,8 +363,7 @@ const getStoreAppUrl = (kind: string) => {
                   <Image
                     class={styles.FileItem__Image}
                     src={scenario.image}
-                    alt=''
-                    role='presentation'
+                    alt={`${scenario.title}: ${scenario.before} renamed to ${scenario.after}`}
                     width={64}
                     height={64}
                     loading='lazy'

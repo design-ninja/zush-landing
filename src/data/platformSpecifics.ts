@@ -334,7 +334,7 @@ export const PLATFORM_SPECIFICS_CONTENT: Record<PlatformSpecificsKey, PlatformSp
       {
         title: 'File Explorer drag-and-drop',
         description:
-          'Drag selected files from File Explorer into Zush, including files from Desktop, Downloads, and ordinary OneDrive folders.',
+          'Drag selected files from File Explorer into Zush, including files from Desktop, Downloads, shared drives, and ordinary OneDrive folders.',
       },
       {
         title: 'Snipping Tool capture',
@@ -344,17 +344,17 @@ export const PLATFORM_SPECIFICS_CONTENT: Record<PlatformSpecificsKey, PlatformSp
       {
         title: 'PowerToys-friendly',
         description:
-          'Zush handles the AI side, PowerToys handles bulk renaming patterns. They live happily next to each other on the same machine.',
+          'Keep PowerToys PowerRename for prefixes, counters, and static rules. Use Zush when every Windows file needs a different name based on screenshots, PDF text, document content, video frames, audio context, or image content.',
       },
       {
-        title: 'OneDrive sync aware',
+        title: 'OneDrive and shared folders',
         description:
-          'Use Zush with normal OneDrive folders and let active sync finish before applying very large rename batches.',
+          'Use Zush with normal OneDrive folders and shared project folders. Let active sync finish before applying very large rename batches.',
       },
       {
         title: 'Windows search index',
         description:
-          'After Zush renames a file, the new filename becomes available to Windows Search when that folder is indexed.',
+          'After Zush renames a file, the descriptive filename becomes available to Windows Search when that folder is indexed.',
       },
       {
         title: 'Light & dark theme',
@@ -377,7 +377,7 @@ export const PLATFORM_SPECIFICS_CONTENT: Record<PlatformSpecificsKey, PlatformSp
         before: 'proposal_draft_approved.pdf',
         after: 'Website Proposal.pdf',
         description:
-          'Watch the Downloads folder. PDFs, ZIPs, signed contracts, and exports from web tools all get readable names as they land — no manual renaming.',
+          'Watch the Downloads folder. PDFs, signed contracts, screenshots, docs, images, and exports from web tools all get readable names as they land - no manual renaming.',
         fileType: 'pdf',
       },
       {

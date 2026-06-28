@@ -1,0 +1,127 @@
+---
+import {
+  FolderSearch,
+  History,
+  KeyRound,
+  ListChecks,
+  MonitorDown,
+  Search,
+} from 'lucide-react';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
+import styles from './WindowsSeoSection.module.scss';
+
+const docsLinks = [
+  { href: '/docs/windows-batch-rename-files', label: 'Batch rename files on Windows' },
+  { href: '/docs/windows-folder-monitoring', label: 'Automate Downloads cleanup' },
+  { href: '/docs/search-files-by-content-windows', label: 'Make Windows files searchable' },
+  { href: '/docs/supported-file-types', label: 'Supported file types' },
+];
+
+const cards = [
+  {
+    icon: ListChecks,
+    title: 'Batch rename files on Windows',
+    body:
+      'Drag files from File Explorer, generate names from content, review every suggestion, and apply the full batch with undo history.',
+  },
+  {
+    icon: FolderSearch,
+    title: 'AI file organizer workflow',
+    body:
+      'Clean up Downloads, screenshots, OneDrive, invoices, photos, videos, audio, and project exports by writing useful context into filenames.',
+  },
+  {
+    icon: Search,
+    title: 'Searchable Windows filenames',
+    body:
+      'Zush turns file content into readable filenames and metadata so File Explorer and Windows Search can surface files without opening each one.',
+  },
+  {
+    icon: MonitorDown,
+    title: 'Microsoft Store install',
+    body:
+      'Install from the Microsoft Store for Windows 10 and Windows 11, with Store-managed package trust and automatic updates.',
+  },
+  {
+    icon: KeyRound,
+    title: 'BYOK and Offline AI',
+    body:
+      'Use bundled cloud AI, connect Gemini, Groq, OpenAI, or Claude with BYOK, or run supported analysis locally with Ollama Offline AI.',
+  },
+  {
+    icon: History,
+    title: 'PowerRename alternative for content',
+    body:
+      'Keep rule-based tools for counters and prefixes. Use Zush when screenshots, PDFs, photos, videos, audio, and docs each need a unique name.',
+  },
+];
+---
+
+<section class={styles.WindowsSeoSection}>
+  <div class={styles.WindowsSeoSection__Container}>
+    <div class={styles.WindowsSeoSection__Header}>
+      <span class={styles.WindowsSeoSection__Eyebrow}>Windows file renaming</span>
+      <Heading as="h2" align="center">
+        Batch rename and organize Windows files by content
+      </Heading>
+      <Text as="p" align="center" color="subtle" className={styles.WindowsSeoSection__Intro}>
+        Zush is built for Windows users who need an AI file renamer, batch rename tool, bulk rename workflow,
+        and practical file organizer for messy File Explorer folders.
+      </Text>
+    </div>
+
+    <div class={styles.WindowsSeoSection__Grid}>
+      {cards.map((card) => {
+        const Icon = card.icon;
+        return (
+          <article class={styles.WindowsSeoCard}>
+            <span class={styles.WindowsSeoCard__Icon} aria-hidden="true">
+              <Icon size={21} strokeWidth={1.8} />
+            </span>
+            <h3 class={styles.WindowsSeoCard__Title}>{card.title}</h3>
+            <p class={styles.WindowsSeoCard__Body}>{card.body}</p>
+          </article>
+        );
+      })}
+    </div>
+
+    <div class={styles.WindowsSeoSection__Comparison}>
+      <div class={styles.WindowsSeoSection__ComparisonIntro}>
+        <h3>When to use Zush instead of PowerRename or Bulk Rename Utility</h3>
+        <p>
+          Traditional Windows rename tools are useful when the old filename already contains the information you need.
+          Zush is the better fit when the new name must come from the file itself.
+        </p>
+      </div>
+      <div class={styles.WindowsSeoTable} role="table" aria-label="Windows rename workflow comparison">
+        <div class={styles.WindowsSeoTable__Row} role="row">
+          <strong role="columnheader">Workflow</strong>
+          <strong role="columnheader">Best fit</strong>
+          <strong role="columnheader">Why</strong>
+        </div>
+        <div class={styles.WindowsSeoTable__Row} role="row">
+          <span role="cell">Add counters, prefixes, or case rules</span>
+          <span role="cell">PowerRename / Bulk Rename Utility</span>
+          <span role="cell">The same rule applies to many filenames.</span>
+        </div>
+        <div class={styles.WindowsSeoTable__Row} role="row">
+          <span role="cell">Rename screenshots, PDFs, photos, videos, audio, or docs by content</span>
+          <span role="cell">Zush for Windows</span>
+          <span role="cell">Every file can get a different descriptive name after AI analysis.</span>
+        </div>
+        <div class={styles.WindowsSeoTable__Row} role="row">
+          <span role="cell">Keep Downloads or screenshots readable over time</span>
+          <span role="cell">Zush folder monitoring</span>
+          <span role="cell">New supported files can be renamed as they arrive, with preview and undo.</span>
+        </div>
+      </div>
+    </div>
+
+    <nav class={styles.WindowsSeoSection__Docs} aria-label="Windows file renaming documentation">
+      {docsLinks.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+    </nav>
+  </div>
+</section>

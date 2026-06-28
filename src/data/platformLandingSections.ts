@@ -119,7 +119,7 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
   windows: {
     featuresTitle: 'How this AI file renamer works on Windows',
     featuresDescription:
-      'Windows 11 and Windows 10 AI file renaming workflows for File Explorer, Downloads, screenshots, design files, iWork, videos, Microsoft Store installs, and local models.',
+      'Windows 11 and Windows 10 AI file renaming workflows for File Explorer, Downloads, screenshots, PDFs, design files, videos, Windows Search, Microsoft Store installs, BYOK, and local Offline AI models.',
     featureCards: {
       aiAnalysis: {
         title: 'Rename files with AI on Windows 11',
@@ -127,24 +127,24 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
           'Analyze screenshots, design files, audio, videos, PDFs, photos, Office docs, iWork files, and exports from ordinary Windows 11 or Windows 10 folders.',
       },
       foldersMonitoring: {
-        title: 'Watch Downloads and Screenshots',
+        title: 'Automate Downloads cleanup',
         description:
-          'Monitor Downloads, Pictures\\Screenshots, or work folders so selected file types get useful names automatically.',
+          'Monitor Downloads, Pictures\\Screenshots, OneDrive, or work folders so new supported files get useful names automatically.',
       },
       batchRename: {
-        title: 'Windows batch rename tool',
+        title: 'Batch rename from File Explorer',
         description:
-          'Drag mixed files from File Explorer into Zush, review the suggestions, then apply every rename in one pass.',
+          'Drag mixed files from File Explorer into Zush, review AI suggestions, then apply every rename in one pass with undo history.',
       },
       customPatterns: {
-        title: 'Windows naming patterns',
+        title: 'PowerRename for content',
         description:
-          'Use date, category, and original-name variables to keep project folders and shared drives consistent.',
+          'Keep PowerRename or Bulk Rename Utility for rule-based changes; use Zush when each Windows file needs a different content-aware name.',
       },
       smartMetadata: {
-        title: 'Searchable Windows folders',
+        title: 'Searchable Windows filenames',
         description:
-          'Create descriptive filenames that are easier to find later through File Explorer and Windows Search.',
+          'Turn file content into readable names and metadata so File Explorer and Windows Search can find documents, screenshots, photos, videos, and PDFs later.',
       },
       renameHistory: {
         title: 'Undo after a batch',

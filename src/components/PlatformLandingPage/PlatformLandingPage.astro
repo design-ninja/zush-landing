@@ -10,10 +10,11 @@ import FAQ from '@/components/FAQ';
 import PlatformGuides from '@/components/PlatformGuides/PlatformGuides.astro';
 import PlatformSpecifics from '@/components/PlatformSpecifics/PlatformSpecifics.astro';
 import CrossPlatformBanner from '@/components/CrossPlatformBanner/CrossPlatformBanner.astro';
+import WindowsSeoSection from '@/components/WindowsSeoSection/WindowsSeoSection.astro';
 import { PLATFORM_LANDING_CONTENT } from '@/data/platformLanding';
 import { getPlatformLandingSections } from '@/data/platformLandingSections';
 import { PLATFORM_SPECIFICS_CONTENT } from '@/data/platformSpecifics';
-import { HOME_HERO_BATCH_RENAME_VIDEO } from '@/data/showcaseMedia';
+import { HOME_HERO_BATCH_RENAME_VIDEO, WINDOWS_SHOWCASE_SCREENSHOTS } from '@/data/showcaseMedia';
 import macChangelogSource from '@/content/changelog.md?raw';
 import windowsChangelogSource from '@/content/changelog.windows.md?raw';
 import { parseLatestVersion } from '@/utils/version';
@@ -89,24 +90,71 @@ const platformKeywords = platform === 'mac'
       'Windows batch rename tool',
       'AI renamer for Windows',
       'AI file renamer for Windows',
+      'AI file organizer for Windows',
+      'automatic file organizer Windows',
       'rename files with AI on Windows',
+      'content-aware file renamer Windows',
+      'Windows File Explorer file renamer',
+      'File Explorer batch rename AI',
+      'PowerRename alternative',
+      'Bulk Rename Utility alternative',
+      'PDF renamer Windows',
+      'screenshot renamer Windows',
+      'photo renamer Windows',
+      'video renamer Windows',
+      'audio file renamer Windows',
+      'design file renamer Windows',
+      'searchable filenames Windows',
+      'Windows Search filenames',
+      'folder monitoring Windows',
       'Microsoft Store file renamer',
       'offline AI renamer for Windows',
+      'local AI file renamer Windows',
     ];
 
 const platformTrustSignals = platform === 'mac'
   ? ['Free 50 renames', 'No credit card', 'Preview + undo every batch']
   : copy.home.trustSignals;
 
+const schemaAlternateNames = locale === DEFAULT_LOCALE
+  ? platformKeywords
+  : [
+      localizedPage.softwareName,
+      localizedPage.heroTitle,
+      localizedPage.breadcrumbLabel,
+    ];
+
+const schemaKeywords = locale === DEFAULT_LOCALE
+  ? platformKeywords
+  : [
+      localizedPage.softwareName,
+      localizedPage.heroTitle,
+      ...localizedPage.features.slice(0, 6),
+    ];
+
+const screenshotJsonLd = platform === 'windows'
+  ? WINDOWS_SHOWCASE_SCREENSHOTS.slice(0, 6).map((item) => ({
+      '@type': 'ImageObject',
+      url: `${SITE_ORIGIN}${item.images.light}`,
+      caption: `${item.title}: ${item.alt}`,
+    }))
+  : [
+      {
+        '@type': 'ImageObject',
+        url: `${SITE_ORIGIN}/images/screenshots/light/zush-main-interface.webp`,
+        caption: 'Zush for Mac AI file renamer interface',
+      },
+    ];
+
 const softwareJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
   '@id': `${SITE_ORIGIN}${pagePath}#software`,
   name: localizedPage.softwareName,
-  alternateName: platformKeywords,
+  alternateName: schemaAlternateNames,
   url: `${SITE_ORIGIN}${pagePath}`,
   description: localizedPage.softwareDescription,
-  keywords: platformKeywords.join(', '),
+  keywords: schemaKeywords.join(', '),
   applicationCategory: 'UtilitiesApplication',
   applicationSubCategory: 'File Management',
   operatingSystem: page.operatingSystem,
@@ -117,10 +165,7 @@ const softwareJsonLd = {
   downloadUrl: page.downloadUrl,
   ...(platform === 'windows' ? { installUrl: page.installUrl } : {}),
   sameAs: [platform === 'mac' ? APP_STORE_URL : WINDOWS_STORE_URL],
-  screenshot:
-    platform === 'windows'
-      ? `${SITE_ORIGIN}/images/showcase/windows-original/01-ai-rename-dropzone.webp`
-      : `${SITE_ORIGIN}/images/screenshots/light/zush-main-interface.webp`,
+  screenshot: screenshotJsonLd,
   offers: [
     {
       '@type': 'Offer',
@@ -147,15 +192,38 @@ const softwareJsonLd = {
   featureList: localizedPage.features,
 };
 
+const windowsVideoJsonLd = platform === 'windows' && locale === DEFAULT_LOCALE
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'VideoObject',
+      '@id': `${SITE_ORIGIN}${pagePath}#batch-rename-video`,
+      name: 'Zush for Windows batch rename workflow',
+      description:
+        'A Zush for Windows demo showing File Explorer files analyzed by AI, reviewed in a batch rename list, and applied with undo history available.',
+      thumbnailUrl: `${SITE_ORIGIN}${WINDOWS_SHOWCASE_SCREENSHOTS[0].images.light}`,
+      contentUrl: `${SITE_ORIGIN}${WINDOWS_SHOWCASE_SCREENSHOTS[0].video?.light ?? '/videos/windows/zush-batch-rename.mp4'}`,
+      embedUrl: `${SITE_ORIGIN}${pagePath}`,
+      publisher: {
+        '@type': 'Organization',
+        name: 'Zush',
+        url: SITE_ORIGIN,
+      },
+    }
+  : null;
+
 const howToJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'HowTo',
   '@id': `${SITE_ORIGIN}${pagePath}#how-to`,
-  name: `How to rename files with AI on ${platformLabel}`,
+  name: locale === DEFAULT_LOCALE
+    ? `How to rename files with AI on ${platformLabel}`
+    : localizedPage.heroTitle,
   description:
-    platform === 'mac'
-      ? 'Use Zush to rename files with AI on Mac: open the app, drop Finder files, review suggested names, and enable watched folders for ongoing cleanup.'
-      : 'Use Zush to rename files with AI on Windows: open the app, drop File Explorer files, review suggested names, and enable watched folders for ongoing cleanup.',
+    locale === DEFAULT_LOCALE
+      ? platform === 'mac'
+        ? 'Use Zush to rename files with AI on Mac: open the app, drop Finder files, review suggested names, and enable watched folders for ongoing cleanup.'
+        : 'Use Zush to rename files with AI on Windows: open the app, drop File Explorer files, review suggested names, and enable watched folders for ongoing cleanup.'
+      : localizedPage.heroSubtitle,
   totalTime: 'PT1M',
   tool: {
     '@type': 'HowToTool',
@@ -169,6 +237,14 @@ const howToJsonLd = {
     text: step.detail,
   })),
 };
+
+const jsonLdItems = [
+  softwareJsonLd,
+  howToJsonLd,
+  buildFeatureBreadcrumbJsonLd(localizedPage.breadcrumbLabel, pagePath),
+  buildFAQPageJsonLd(faqItems),
+  ...(windowsVideoJsonLd ? [windowsVideoJsonLd] : []),
+];
 ---
 
 <BaseLayout
@@ -178,12 +254,7 @@ const howToJsonLd = {
   footerHidePlatform={footerHidePlatform}
   chromeBasePath={pagePath}
   disableTopOffset
-  jsonLd={[
-    softwareJsonLd,
-    howToJsonLd,
-    buildFeatureBreadcrumbJsonLd(localizedPage.breadcrumbLabel, pagePath),
-    buildFAQPageJsonLd(faqItems),
-  ]}
+  jsonLd={jsonLdItems}
 >
   <Hero
     client:load
@@ -212,6 +283,7 @@ const howToJsonLd = {
     downloadMenu={copy.downloadMenu}
     includeOtherDownloadOS={includeOtherDownloadOS}
   />
+  {platform === 'windows' && locale === DEFAULT_LOCALE && <WindowsSeoSection />}
   <PlatformSpecifics platform={platform} locale={locale} />
   <Features
     title={platformSections.featuresTitle}
