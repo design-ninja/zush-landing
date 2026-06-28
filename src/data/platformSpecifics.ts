@@ -391,8 +391,8 @@ export const PLATFORM_SPECIFICS_CONTENT: Record<PlatformSpecificsKey, PlatformSp
       },
       {
         title: 'Outlook email attachments',
-        before: 'product-roadmap.pages',
-        after: 'Product Roadmap Notes.pages',
+        before: 'product-roadmap-draft.docx',
+        after: 'Product Roadmap Notes.docx',
         description:
           'Save attachments into a Zush-watched folder. Word, Excel, PowerPoint, Pages, Numbers, and Keynote files get names from their actual content.',
         fileType: 'doc',

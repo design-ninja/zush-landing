@@ -137,9 +137,9 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
           'Drag mixed files from File Explorer into Zush, review AI suggestions, then apply every rename in one pass with undo history.',
       },
       customPatterns: {
-        title: 'PowerRename for content',
+        title: 'RenameClick alternative for Windows',
         description:
-          'Keep PowerRename or Bulk Rename Utility for rule-based changes; use Zush when each Windows file needs a different content-aware name.',
+          'Compare Zush when you want Microsoft Store distribution, batch review, undo, BYOK, Offline AI, and searchable Windows filenames.',
       },
       smartMetadata: {
         title: 'Searchable Windows filenames',

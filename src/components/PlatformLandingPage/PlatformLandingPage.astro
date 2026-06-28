@@ -1,15 +1,14 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Hero from '@/components/Hero';
-import Tour from '@/components/Tour';
 import Features from '@/components/Features/Features.astro';
 import SupportedFormats from '@/components/SupportedFormats';
 import Pricing from '@/components/Pricing/Pricing.astro';
 import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
 import FAQ from '@/components/FAQ';
+import Testimonials from '@/components/Testimonials/Testimonials.astro';
 import PlatformGuides from '@/components/PlatformGuides/PlatformGuides.astro';
 import PlatformSpecifics from '@/components/PlatformSpecifics/PlatformSpecifics.astro';
-import CrossPlatformBanner from '@/components/CrossPlatformBanner/CrossPlatformBanner.astro';
 import WindowsSeoSection from '@/components/WindowsSeoSection/WindowsSeoSection.astro';
 import { PLATFORM_LANDING_CONTENT } from '@/data/platformLanding';
 import { getPlatformLandingSections } from '@/data/platformLandingSections';
@@ -42,13 +41,12 @@ const localizedPlatformFaq = getPlatformFaqCopy(locale, platform, {
   description: localizedPage.faqDescription,
   items: localizedPage.faqs,
 });
-const faqItems = [...localizedPlatformFaq.items, ...copy.home.faqItems];
+const faqItems = localizedPlatformFaq.items;
 const seo = locale === DEFAULT_LOCALE ? getSeoForPath(page.path) : getLocalizedSeoForRoute(page.path, locale);
 const platformLabel = platform === 'mac' ? 'Mac' : 'Windows';
 const pagePath = getLocalizedPath(page.path, locale);
 const platformSections = getPlatformLandingSections(platform, locale, copy);
 const includeOtherDownloadOS = platform !== 'mac';
-const shouldShowCrossPlatformBanner = platform !== 'mac';
 const footerHidePlatform = platform === 'mac' ? 'windows' : undefined;
 
 const specifics = getLocalizedPlatformSpecificsContent(
@@ -98,6 +96,7 @@ const platformKeywords = platform === 'mac'
       'File Explorer batch rename AI',
       'PowerRename alternative',
       'Bulk Rename Utility alternative',
+      'RenameClick alternative for Windows',
       'PDF renamer Windows',
       'screenshot renamer Windows',
       'photo renamer Windows',
@@ -211,36 +210,8 @@ const windowsVideoJsonLd = platform === 'windows' && locale === DEFAULT_LOCALE
     }
   : null;
 
-const howToJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'HowTo',
-  '@id': `${SITE_ORIGIN}${pagePath}#how-to`,
-  name: locale === DEFAULT_LOCALE
-    ? `How to rename files with AI on ${platformLabel}`
-    : localizedPage.heroTitle,
-  description:
-    locale === DEFAULT_LOCALE
-      ? platform === 'mac'
-        ? 'Use Zush to rename files with AI on Mac: open the app, drop Finder files, review suggested names, and enable watched folders for ongoing cleanup.'
-        : 'Use Zush to rename files with AI on Windows: open the app, drop File Explorer files, review suggested names, and enable watched folders for ongoing cleanup.'
-      : localizedPage.heroSubtitle,
-  totalTime: 'PT1M',
-  tool: {
-    '@type': 'HowToTool',
-    name: 'Zush',
-    url: `${SITE_ORIGIN}${pagePath}`,
-  },
-  step: specifics.quickstart.map((step, index) => ({
-    '@type': 'HowToStep',
-    position: index + 1,
-    name: step.title,
-    text: step.detail,
-  })),
-};
-
 const jsonLdItems = [
   softwareJsonLd,
-  howToJsonLd,
   buildFeatureBreadcrumbJsonLd(localizedPage.breadcrumbLabel, pagePath),
   buildFAQPageJsonLd(faqItems),
   ...(windowsVideoJsonLd ? [windowsVideoJsonLd] : []),
@@ -279,9 +250,9 @@ const jsonLdItems = [
     copy={platformSections.featureCards}
     eagerVisuals
   />
-  <Tour client:visible forceOS={platform} copy={copy.home.showcase} />
+  <Testimonials locale={locale} />
   {platform === 'windows' && locale === DEFAULT_LOCALE && <WindowsSeoSection />}
-  <PlatformSpecifics platform={platform} locale={locale} />
+  <PlatformSpecifics platform={platform} locale={locale} variant="compact" scenarioLimit={4} />
   <SupportedFormats
     title={copy.home.supportedFormats}
     imagesLabel={copy.home.images}
@@ -300,7 +271,6 @@ const jsonLdItems = [
     includeOtherDownloadOS={includeOtherDownloadOS}
   />
   <Pricing copy={copy.pricing} />
-  {shouldShowCrossPlatformBanner && <CrossPlatformBanner locale={locale} hidePlatform={platform} />}
   <PlatformGuides platform={platform} locale={locale} />
   <FAQ
     client:visible

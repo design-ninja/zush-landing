@@ -126,9 +126,9 @@ export const PLATFORM_LANDING_CONTENT: Record<DownloadOS, PlatformLandingContent
           'Yes. Zush works as an AI batch rename tool for Windows 11 and 10. Drag files from File Explorer, review AI-generated names for every item, then apply the whole batch with rename history available for undo.',
       },
       {
-        question: 'Is Zush a Bulk Rename Utility or PowerRename alternative?',
+        question: 'Is Zush a RenameClick alternative for Windows?',
         answer:
-          'Yes, when the job needs content-aware filenames instead of a shared text rule. Bulk Rename Utility and PowerRename are strong for prefixes, counters, case changes, and pattern rules. Zush is built for screenshots, PDFs, photos, videos, audio, design files, and documents where each file needs a different descriptive name.',
+          'Yes. Zush is a strong RenameClick alternative for Windows when you want a Microsoft Store install, batch review before applying names, undo history, BYOK, Offline AI mode, and content-aware filenames for screenshots, PDFs, photos, videos, audio, design files, and documents.',
       },
       {
         question: 'Can Zush organize files on Windows?',
