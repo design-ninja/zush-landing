@@ -1,0 +1,51 @@
+---
+title: BYOK Setup for AI File Renaming
+description: Set up Bring Your Own Key in Zush with Gemini, Groq, OpenAI, or Claude for provider-controlled cloud AI file renaming.
+lastUpdated: 2026-06-28
+sidebar:
+  order: 31
+  label: BYOK
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+BYOK means Bring Your Own Key. Instead of using only Zush-managed cloud credits, PRO users can connect their own AI provider key for cloud analysis.
+
+## Supported providers
+
+- Google Gemini
+- Groq
+- OpenAI
+- Anthropic Claude
+
+API key dashboards:
+
+- [Google AI Studio API keys](https://aistudio.google.com/apikey)
+- [Groq API keys](https://console.groq.com/keys)
+- [OpenAI API keys](https://platform.openai.com/api-keys)
+- [Anthropic API keys](https://console.anthropic.com/settings/keys)
+
+## Set up BYOK
+
+<Steps>
+1. Create an API key in your provider dashboard: [Gemini](https://aistudio.google.com/apikey), [Groq](https://console.groq.com/keys), [OpenAI](https://platform.openai.com/api-keys), or [Claude](https://console.anthropic.com/settings/keys).
+2. Open Zush settings after installing Zush for [Mac](/download/mac) or [Windows](https://apps.microsoft.com/detail/9ND4WVZSDQ3X).
+3. Go to the BYOK or AI provider section.
+4. Choose the provider and paste the key.
+5. Save, validate the key, and run a small test batch.
+</Steps>
+
+## What BYOK changes
+
+BYOK changes who provides the cloud model and who bills usage. Your provider may charge based on its own API pricing. Zush still handles the desktop workflow: adding files, extracting the analysis payload, generating names, previewing, applying, monitoring, and undoing.
+
+<Aside type="note">
+BYOK keys are stored locally in secure platform storage and are sent only as needed to validate the key and process provider requests. See the <a href="/privacy-policy">privacy policy</a> and <a href="/docs/privacy-security/">privacy docs</a> for details.
+</Aside>
+
+## Related docs
+
+- [AI modes](/docs/ai-modes/)
+- [Privacy and security](/docs/privacy-security/)
+- [Pricing and limits](/docs/pricing-limits/)
+- [BYOK setup page](/byok-setup)

@@ -1,0 +1,46 @@
+---
+title: Naming Blocks for Consistent Filenames
+description: Build consistent AI filenames in Zush with 145+ Naming Blocks for dates, original names, counters, document fields, media context, clients, topics, and metadata.
+lastUpdated: 2026-06-28
+sidebar:
+  order: 21
+  label: Naming Blocks
+---
+
+Naming Blocks are reusable filename fields. They let you combine AI-generated context with stable structure, so files from the same workflow follow the same convention. Use them inside a [Template](/docs/templates/) or a one-off [batch rename](/docs/batch-rename-files/).
+
+## Why use Naming Blocks
+
+AI can describe what is inside a file. Naming Blocks keep that description consistent across a folder.
+
+```text
+{date}-{client}-{document_type}-{ai_title}
+```
+
+That pattern can produce names like:
+
+```text
+2026-06-28-acme-contract-renewal-summary.pdf
+2026-06-28-acme-dashboard-payment-error.png
+```
+
+## Common block categories
+
+| Category | Examples |
+| --- | --- |
+| Dates | created date, detected date, custom date format |
+| Original file data | original name, extension, counter |
+| AI context | topic, object, scene, document type, category |
+| Documents | vendor, amount, invoice, contract, report, client |
+| Media | title, frame context, subtitles, transcript, audio metadata |
+| Projects | client, campaign, location, department, status |
+
+## Keep patterns readable
+
+Use enough structure to make files sortable, but not so much that names become hard to scan. For most folders, 3 to 5 blocks are enough. If search is the goal, pair blocks with the [searchable filenames guide](/docs/file-search/).
+
+## Related docs
+
+- [Templates](/docs/templates/)
+- [Metadata and tags](/docs/metadata-tags/)
+- [Find files later](/docs/file-search/)

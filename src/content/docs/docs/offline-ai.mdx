@@ -1,0 +1,49 @@
+---
+title: Offline AI File Renaming with Ollama
+description: Use Zush Offline AI mode with local Ollama models for supported private file renaming workflows on Mac and Windows.
+lastUpdated: 2026-06-28
+sidebar:
+  order: 32
+  label: Offline AI
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Offline AI mode lets Zush process supported analysis locally through Ollama. It is useful for private folders, sensitive client work, or workflows where you prefer local model execution.
+
+## Requirements
+
+- [Zush PRO](/docs/pricing-limits/).
+- Mac or Windows.
+- [Ollama](https://ollama.com/download) installed locally.
+- A compatible local model from the [Ollama setup page](/ollama-setup).
+- Enough memory and disk space for the model you choose.
+
+## Set up Offline AI
+
+<Steps>
+1. Install [Ollama](https://ollama.com/download).
+2. Start Ollama once and download a compatible model from the [Ollama setup guide](/ollama-setup).
+3. Open Zush settings and enable Offline AI mode.
+4. Refresh or select the local model.
+5. Run a small test batch before using it on important folders.
+</Steps>
+
+## Model examples
+
+Common starting points include smaller vision-capable models for speed and larger models for better quality. The [Ollama setup page](/ollama-setup) lists current examples. Model availability and quality change over time, so test on real files before trusting a large monitored folder.
+
+## Limits
+
+Offline AI support depends on file type, model capability, and local hardware. For the broadest mixed-folder accuracy across images, PDFs, audio, video, documents, and design files, compare Offline AI results with Cloud AI or BYOK.
+
+<Aside type="tip">
+Use Offline AI for folders where local processing is the priority. Use BYOK when you want cloud model quality through your own provider account.
+</Aside>
+
+## Related docs
+
+- [AI modes](/docs/ai-modes/)
+- [BYOK](/docs/byok/)
+- [Ollama setup page](/ollama-setup)
+- [Privacy and security](/docs/privacy-security/)

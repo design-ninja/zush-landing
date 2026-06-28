@@ -1,0 +1,49 @@
+---
+title: Folder Monitoring for Automatic File Renaming
+description: Use Zush folder monitoring to rename new supported files automatically in Downloads, Screenshots, iCloud, OneDrive, and project folders on Mac and Windows.
+lastUpdated: 2026-06-28
+sidebar:
+  order: 11
+  label: Folder monitoring
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Folder monitoring lets Zush watch selected folders and rename new supported files as they arrive. [Install Zush](/docs/install-update/) first, then use monitoring when clutter keeps returning after every manual cleanup.
+
+## Good folders to monitor
+
+| Folder | Typical files |
+| --- | --- |
+| Downloads | PDFs, invoices, images, browser exports, archives, receipts |
+| Screenshots | UI captures, support screenshots, design references, bug reports |
+| iCloud or OneDrive | Synced work documents, shared assets, client files |
+| Project export folders | Design exports, videos, audio, subtitles, reports |
+| Camera or media imports | Photos, RAW files, screen recordings, clips |
+
+## Set up monitoring
+
+<Steps>
+1. Open the monitoring workflow in Zush.
+2. Add the folder you want to watch.
+3. Choose included and excluded file types.
+4. Pick the [Template](/docs/templates/), [Naming Blocks](/docs/naming-blocks/), [custom prompt](/docs/custom-prompts/), and [AI mode](/docs/ai-modes/) for that folder.
+5. Keep review and [undo](/docs/undo-history/) enabled until the workflow is proven.
+</Steps>
+
+## Best practices
+
+Start with one folder. Downloads and Screenshots usually show the fastest payoff because they collect unrelated files with weak names. If you need a reusable naming setup first, create a [Template](/docs/templates/).
+
+Use exclusions for temporary files, application caches, installer folders, and formats you do not want renamed. For team folders, confirm the naming convention before you automate it.
+
+<Aside type="caution">
+Folder monitoring is not a folder-moving rule engine. Zush focuses on descriptive filenames, metadata, review, and undo.
+</Aside>
+
+## Related docs
+
+- [Templates](/docs/templates/)
+- [Custom prompts](/docs/custom-prompts/)
+- [Undo history](/docs/undo-history/)
+- [Privacy and security](/docs/privacy-security/)

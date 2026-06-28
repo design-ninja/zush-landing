@@ -2,7 +2,8 @@
 ::backdrop {
   --sl-color-accent-low: #211a68;
   --sl-color-accent: #6155f5;
-  --sl-color-accent-high: #d9d6ff;
+  --sl-color-accent-high: #6155f5;
+  --zush-docs-link: #6155f5;
 }
 
 :root[data-theme='light'],
@@ -10,4 +11,17 @@
   --sl-color-accent-low: #e6e4ff;
   --sl-color-accent: #6155f5;
   --sl-color-accent-high: #2d257f;
+  --zush-docs-link: #6155f5;
+}
+
+.sl-markdown-content a {
+  color: var(--zush-docs-link);
+  text-decoration: none;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.16em;
+}
+
+.sl-markdown-content a:hover,
+.sl-markdown-content a:focus-visible {
+  text-decoration: underline;
 }

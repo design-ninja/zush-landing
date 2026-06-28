@@ -1,0 +1,45 @@
+---
+title: Make Files Easier to Find with Searchable Filenames
+description: Use Zush to create searchable filenames and metadata for Finder, Spotlight, File Explorer, Windows Search, and everyday folder browsing.
+lastUpdated: 2026-06-28
+sidebar:
+  order: 12
+  label: Find files later
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Zush helps you find files later by putting useful content into filenames and metadata. A good name can be scanned in a folder, sorted alphabetically, and matched by Finder, Spotlight, File Explorer, or Windows Search. To build this workflow, use [Naming Blocks](/docs/naming-blocks/) and [metadata settings](/docs/metadata-tags/).
+
+## What this does
+
+Zush can turn vague names into useful names:
+
+| Before | Searchable filename |
+| --- | --- |
+| `IMG_2048.jpg` | `product-packaging-closeup-green-label.jpg` |
+| `Screenshot 2026-06-28.png` | `stripe-dashboard-payment-failure-alert.png` |
+| `final.pdf` | `client-contract-q2-renewal-acme.pdf` |
+| `meeting.wav` | `product-planning-call-audio-june-2026.wav` |
+
+## What this does not do
+
+Zush does not replace Spotlight, Finder search, File Explorer, Windows Search, or a semantic search database. It analyzes files during renaming and writes better text into names and metadata so your existing tools have better signals.
+
+<Aside type="tip">
+Search-friendly names usually include the subject, document type, client or project, and date when the date matters.
+</Aside>
+
+## Suggested pattern
+
+```text
+{topic}-{document_type}-{project_or_client}-{date}
+```
+
+For screenshots and images, use the visible subject. For PDFs and documents, use the document type and core topic. For video and audio, use metadata, transcript context, subtitles, or sampled frames when available. Save the pattern as a [Template](/docs/templates/) if you will use it again.
+
+## Related docs
+
+- [Naming Blocks](/docs/naming-blocks/)
+- [Metadata and tags](/docs/metadata-tags/)
+- [Supported file types](/docs/supported-file-types/)

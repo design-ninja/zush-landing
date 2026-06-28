@@ -1,0 +1,42 @@
+---
+title: Undo History and Safe Rename Review
+description: Use Zush rename history to inspect previous batch rename actions and revert filenames on Mac or Windows when a batch needs another pass.
+lastUpdated: 2026-06-28
+sidebar:
+  order: 13
+  label: Undo history
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Zush is designed around review before apply. Rename history adds a second layer of safety after a [batch rename](/docs/batch-rename-files/) has already been applied.
+
+## What history records
+
+For each rename action, Zush stores the original filename, new filename, folder, and timestamp. This lets you inspect what changed and revert the action when needed.
+
+## Undo a batch
+
+<Steps>
+1. Open the activity or history view in Zush.
+2. Select the batch you want to inspect.
+3. Review the original and new filenames.
+4. Use revert to restore the previous filenames.
+</Steps>
+
+## Safer batch workflows
+
+- Start with a small folder when testing a new [Template](/docs/templates/) or [prompt](/docs/custom-prompts/).
+- Regenerate weak names individually instead of rerunning the whole batch.
+- Keep review enabled for [monitored folders](/docs/folder-monitoring/) until the naming pattern is stable.
+- Avoid applying large batches to shared folders before teammates agree on the naming convention.
+
+<Aside type="tip">
+A 20-file test folder is usually enough to validate the naming style before applying it to hundreds of files.
+</Aside>
+
+## Related docs
+
+- [Batch rename files](/docs/batch-rename-files/)
+- [Folder monitoring](/docs/folder-monitoring/)
+- [Templates](/docs/templates/)

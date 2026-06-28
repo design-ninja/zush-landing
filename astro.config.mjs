@@ -14,11 +14,16 @@ export default defineConfig({
   trailingSlash: 'ignore',
   redirects: {
     '/download/windows': { status: 301, destination: '/windows' },
+    '/docs/windows-batch-rename-files': { status: 301, destination: '/docs/batch-rename-files/' },
+    '/docs/windows-folder-monitoring': { status: 301, destination: '/docs/folder-monitoring/' },
+    '/docs/search-files-by-content-windows': { status: 301, destination: '/docs/file-search/' },
+    '/docs/windows-offline-ai': { status: 301, destination: '/docs/offline-ai/' },
+    '/docs/windows-undo-rename-history': { status: 301, destination: '/docs/undo-history/' },
   },
   integrations: [
     starlight({
       title: 'Zush Docs',
-      description: 'Documentation for Zush AI file renaming on Windows and Mac.',
+      description: 'Documentation for Zush AI file renaming on Mac and Windows.',
       favicon: '/favicon/favicon.ico',
       customCss: ['./src/styles/starlight.css'],
       lastUpdated: true,
@@ -31,8 +36,46 @@ export default defineConfig({
       },
       sidebar: [
         {
-          label: 'Zush Docs',
-          items: [{ autogenerate: { directory: 'docs' } }],
+          label: 'Start here',
+          items: [
+            { label: 'Overview', link: '/docs/' },
+            { label: 'Get started', link: '/docs/get-started/' },
+            { label: 'Install and update', link: '/docs/install-update/' },
+            { label: 'Pricing and limits', link: '/docs/pricing-limits/' },
+          ],
+        },
+        {
+          label: 'Rename workflows',
+          items: [
+            { label: 'Batch rename files', link: '/docs/batch-rename-files/' },
+            { label: 'Folder monitoring', link: '/docs/folder-monitoring/' },
+            { label: 'Find files later', link: '/docs/file-search/' },
+            { label: 'Undo history', link: '/docs/undo-history/' },
+          ],
+        },
+        {
+          label: 'Naming control',
+          items: [
+            { label: 'Templates', link: '/docs/templates/' },
+            { label: 'Naming Blocks', link: '/docs/naming-blocks/' },
+            { label: 'Custom prompts', link: '/docs/custom-prompts/' },
+            { label: 'Metadata and tags', link: '/docs/metadata-tags/' },
+          ],
+        },
+        {
+          label: 'AI and privacy',
+          items: [
+            { label: 'AI modes', link: '/docs/ai-modes/' },
+            { label: 'BYOK', link: '/docs/byok/' },
+            { label: 'Offline AI', link: '/docs/offline-ai/' },
+            { label: 'Privacy and security', link: '/docs/privacy-security/' },
+          ],
+        },
+        {
+          label: 'Reference',
+          items: [
+            { label: 'Supported file types', link: '/docs/supported-file-types/' },
+          ],
         },
         {
           label: 'Product pages',

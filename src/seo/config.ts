@@ -131,9 +131,9 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ogType: 'website',
   },
   '/docs': {
-    title: 'Zush Docs | AI File Renamer Guides for Windows and Mac',
+    title: 'Zush Docs | AI File Renamer Guides for Mac and Windows',
     description:
-      'Documentation for Zush AI file renaming: Windows batch rename workflows, folder monitoring, Offline AI, undo history, and supported file types.',
+      'Documentation for Zush AI file renaming on Mac and Windows: batch rename, folder monitoring, Templates, Naming Blocks, BYOK, Offline AI, metadata, and undo.',
     robots: 'index, follow',
     ogType: 'website',
   },
