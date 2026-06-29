@@ -34,6 +34,7 @@ const HOMEPAGE_HERO_VIDEO = {
   width: '1280',
   height: '1050',
 };
+const ISO_8601_DATE_OR_DATETIME = /^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})?)?$/;
 const USE_CASES_BLOCK_ROUTES = [
   '/',
   '/batch-rename-tool',
@@ -93,6 +94,38 @@ function assertNotIncludes(html, needle, message) {
 function getJsonLdBlocks(html) {
   const matches = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)];
   return matches.map((match) => match[1] ?? '');
+}
+
+function parseJsonLdBlock(block, pathname) {
+  try {
+    return JSON.parse(block);
+  } catch (error) {
+    fail(`Invalid JSON-LD for ${pathname}: ${error.message}`);
+  }
+}
+
+function collectJsonLdObjects(item) {
+  const entries = Array.isArray(item) ? item : [item];
+  return entries.flatMap((entry) => {
+    if (!entry || typeof entry !== 'object') return [];
+    const graphItems = Array.isArray(entry['@graph']) ? collectJsonLdObjects(entry['@graph']) : [];
+    return [entry, ...graphItems];
+  });
+}
+
+function hasJsonLdType(item, type) {
+  const itemType = item['@type'];
+  return Array.isArray(itemType) ? itemType.includes(type) : itemType === type;
+}
+
+function assertVideoObjectUploadDate(jsonLdBlocks, pathname) {
+  const jsonLdItems = jsonLdBlocks.flatMap((block) => collectJsonLdObjects(parseJsonLdBlock(block, pathname)));
+  for (const item of jsonLdItems) {
+    if (!hasJsonLdType(item, 'VideoObject')) continue;
+    if (typeof item.uploadDate !== 'string' || !ISO_8601_DATE_OR_DATETIME.test(item.uploadDate.trim())) {
+      fail(`VideoObject JSON-LD missing valid uploadDate for ${pathname}`);
+    }
+  }
 }
 
 function assertVideoBooleanAttribute(tag, attrName, pathname) {
@@ -174,6 +207,7 @@ for (const loc of locs) {
 
   const html = readFileSync(filePath, 'utf8');
   const jsonLdBlocks = getJsonLdBlocks(html);
+  assertVideoObjectUploadDate(jsonLdBlocks, pathname);
   assertIncludes(html, '<h1', `Missing <h1> in raw HTML for ${pathname}`);
 
   if (html.includes('<div id="root"></div>')) {

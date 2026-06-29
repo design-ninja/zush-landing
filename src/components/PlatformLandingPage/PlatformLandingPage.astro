@@ -195,6 +195,7 @@ const softwareJsonLd = {
   featureList: localizedPage.features,
 };
 
+const WINDOWS_BATCH_RENAME_VIDEO_UPLOAD_DATE = '2026-04-29';
 const windowsVideoJsonLd = platform === 'windows' && locale === DEFAULT_LOCALE
   ? {
       '@context': 'https://schema.org',
@@ -204,6 +205,7 @@ const windowsVideoJsonLd = platform === 'windows' && locale === DEFAULT_LOCALE
       description:
         'A Zush for Windows demo showing File Explorer files analyzed by AI, reviewed in a batch rename list, and applied with undo history available.',
       thumbnailUrl: `${SITE_ORIGIN}${WINDOWS_SHOWCASE_SCREENSHOTS[0].images.light}`,
+      uploadDate: WINDOWS_BATCH_RENAME_VIDEO_UPLOAD_DATE,
       contentUrl: `${SITE_ORIGIN}${WINDOWS_SHOWCASE_SCREENSHOTS[0].video?.light ?? '/videos/windows/zush-batch-rename.mp4'}`,
       embedUrl: `${SITE_ORIGIN}${pagePath}`,
       publisher: {
