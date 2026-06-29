@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.6.0] - 2026-06-29
+
+### Improved
+- AI Rename can now add more files to an analyzed batch without starting over
+- Auto language now follows your macOS language and shows which language will be used
+- Batch progress and drag-and-drop feedback are clearer during AI Rename
+- Settings opens more reliably from the app menu
+
+### Fixed
+- Fixed Auto language handling for Norwegian system language settings
+- Fixed several batch rename edge cases when adding or removing files
+
 ## [3.5.4] - 2026-06-24
 
 ### Improved
