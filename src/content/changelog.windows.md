@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.4.1.0] - 2026-06-30
+
+### Fixed
+- Fixed a startup issue that could prevent Zush from opening correctly for some existing Windows users.
+
+
 ## [3.4.0.0] - 2026-06-30
 ### Improved
 - Automatic output language now follows your Windows language when set to Auto, while keeping explicit language choices saved in templates.
