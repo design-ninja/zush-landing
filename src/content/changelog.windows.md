@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.4.0.0] - 2026-06-30
+### Improved
+- Automatic output language now follows your Windows language when set to Auto, while keeping explicit language choices saved in templates.
+- AI Rename batches can now accept more files before renaming, with clearer drag-and-drop prompts and remaining-slot handling.
+- Completed batches keep the workspace cleaner by hiding the add-files action after all files are renamed.
+
+
 ## [3.3.3.0] - 2026-06-28
 ### Improved
 - PDF renaming now uses richer document context for more specific suggested names.
