@@ -1,6 +1,5 @@
 ---
 import Hero from '@/components/Hero';
-import HomeSeoContent from '@/components/HomeSeoContent/HomeSeoContent.astro';
 import Tour from '@/components/Tour';
 import Features from '@/components/Features/Features.astro';
 import SupportedFormats from '@/components/SupportedFormats';
@@ -50,7 +49,6 @@ const heroVideoShowcaseByOS = {
   macVersion={macVersion}
   windowsVersion={windowsVersion}
 />
-{locale === 'en' && <HomeSeoContent />}
 <Features
   title={copy.home.featuresTitle}
   description={copy.home.featuresDescription}
