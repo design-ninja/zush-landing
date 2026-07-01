@@ -1,7 +1,7 @@
 ---
 title: Offline AI File Renaming with Ollama
-description: Use Zush Offline AI mode with local Ollama models for supported private file renaming workflows on Mac and Windows.
-lastUpdated: 2026-06-28
+description: Set up Zush Offline AI mode with Ollama, download a vision-capable local model, test the connection, and rename supported files locally.
+lastUpdated: 2026-07-01
 sidebar:
   order: 32
   label: Offline AI
@@ -9,37 +9,116 @@ sidebar:
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Offline AI mode lets Zush process supported analysis locally through Ollama. It is useful for private folders, sensitive client work, or workflows where you prefer local model execution.
+Offline AI mode lets Zush process supported file analysis through a local Ollama model instead of a cloud AI provider. It is useful when privacy or offline work matters more than cloud speed.
+
+Use this guide when you want to install Ollama, download a local vision model, connect Zush to it, and test Offline AI mode before using it on real files.
+
+<figure>
+  <img src="/images/showcase/macos/offline-ai-light.webp" alt="Offline AI mode settings in the Zush AI Setup screen with an Ollama model selected and a test button." width="2560" height="1440" loading="lazy" decoding="async" />
+  <figcaption>Offline AI is configured in AI Setup. Enable the mode, select a local Ollama model, refresh the model list, and run a connection test.</figcaption>
+</figure>
+
+## What Offline AI mode means
+
+When Offline AI mode is enabled, supported file analysis runs through your local Ollama server. Zush does not send analysis content to Zush cloud or third-party AI providers in this mode.
+
+You still control:
+
+- which Ollama model is installed
+- where Ollama stores local models
+- when the Ollama app or server is running
+- whether Zush uses Offline AI, BYOK, or managed cloud processing
+
+<Aside type="note">
+Offline AI mode is separate from BYOK. BYOK uses your own cloud provider key. Offline AI uses Ollama on your device.
+</Aside>
 
 ## Requirements
 
-- [Zush PRO](/docs/pricing-limits/).
-- Mac or Windows.
-- [Ollama](https://ollama.com/download) installed locally.
-- A compatible local model from the [Ollama setup page](/ollama-setup).
-- Enough memory and disk space for the model you choose.
+- [Zush PRO](/docs/pricing-limits/)
+- Mac or Windows
+- [Ollama](https://ollama.com/download) installed locally
+- a vision-capable Ollama model
+- enough memory and disk space for the model you choose
 
-## Set up Offline AI
+Zush works best with vision-capable models because many rename jobs involve images, screenshots, PDFs, scans, video frames, or document previews.
+
+## Set up Ollama for Zush
 
 <Steps>
-1. Install [Ollama](https://ollama.com/download).
-2. Start Ollama once and download a compatible model from the [Ollama setup guide](/ollama-setup).
-3. Open Zush settings and enable Offline AI mode.
-4. Refresh or select the local model.
-5. Run a small test batch before using it on important folders.
+1. Download Ollama from the [official Ollama download page](https://ollama.com/download).
+2. Install Ollama and open it once so the local server can start.
+3. Download a vision-capable model. A fast first choice is:
+
+   ```bash
+   ollama pull qwen2.5vl:3b
+   ```
+
+4. If Zush cannot connect to Ollama, start the server from Terminal:
+
+   ```bash
+   ollama serve
+   ```
+
+5. Open Zush.
+6. Go to **AI Setup**.
+7. Turn on **Offline AI mode**.
+8. Click refresh next to the model list.
+9. Select the local model.
+10. Click **Test**.
+11. Run a small batch before using Offline AI on important folders.
 </Steps>
 
-## Model examples
+## Recommended models
 
-Common starting points include smaller vision-capable models for speed and larger models for better quality. The [Ollama setup page](/ollama-setup) lists current examples. Model availability and quality change over time, so test on real files before trusting a large monitored folder.
+The [Ollama setup page](/ollama-setup) recommends these starting points:
+
+| Model | Best for | Command | Notes |
+| --- | --- | --- | --- |
+| `qwen2.5vl:3b` | Speed | `ollama pull qwen2.5vl:3b` | Fastest first choice for everyday screenshots and images |
+| `gemma3:4b` | Balance | `ollama pull gemma3:4b` | Good default when speed and quality both matter |
+| `granite3.2-vision:2b` | Documents | `ollama pull granite3.2-vision:2b` | Compact vision model for document previews, scans, and structured visual content |
+
+You can also choose another vision-capable model from the [Ollama model catalog](https://ollama.com/search?c=vision). Model availability and quality change over time, so test with your own files before automating a large workflow.
+
+## Verify Ollama from Terminal
+
+Use Terminal to confirm Ollama has a model installed:
+
+```bash
+ollama list
+```
+
+If the list is empty, pull a model first:
+
+```bash
+ollama pull qwen2.5vl:3b
+```
+
+If the Zush connection test fails, make sure Ollama is running and that the local host is:
+
+```text
+http://127.0.0.1:11434
+```
+
+## Test before monitoring a folder
+
+Start with a small [batch rename](/docs/batch-rename-files/) and compare the suggested names with Cloud AI or BYOK if accuracy matters. Local models can be excellent for private workflows, but smaller models may be slower or less precise on complex PDFs, mixed media, or long documents.
+
+Once the results look reliable, assign the workflow to [folder monitoring](/docs/folder-monitoring/) or save the setup as a [Template](/docs/templates/).
+
+## Troubleshooting
+
+| Problem | What to check |
+| --- | --- |
+| Zush does not see models | Run `ollama list`. If the list is empty, pull a model, then refresh the model list in Zush |
+| Connection test fails | Make sure Ollama is running and reachable at `http://127.0.0.1:11434` |
+| Processing is too slow | Use a smaller model such as `qwen2.5vl:3b`, close memory-heavy apps, or switch to Cloud AI for large batches |
+| Results are weak | Try `gemma3:4b` or another vision-capable model and test with representative files |
 
 ## Limits
 
-Offline AI support depends on file type, model capability, and local hardware. For the broadest mixed-folder accuracy across images, PDFs, audio, video, documents, and design files, compare Offline AI results with Cloud AI or BYOK.
-
-<Aside type="tip">
-Use Offline AI for folders where local processing is the priority. Use BYOK when you want cloud model quality through your own provider account.
-</Aside>
+Offline AI support depends on file type, model capability, and local hardware. For the broadest mixed-folder accuracy across images, PDFs, audio, video, documents, and design files, compare Offline AI results with managed Cloud AI or [BYOK](/docs/byok/).
 
 ## Related docs
 

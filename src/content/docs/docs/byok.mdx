@@ -1,7 +1,7 @@
 ---
 title: BYOK Setup for AI File Renaming
-description: Set up Bring Your Own Key in Zush with Gemini, Groq, OpenAI, or Claude for provider-controlled cloud AI file renaming.
-lastUpdated: 2026-06-28
+description: Set up Bring Your Own Key in Zush with Gemini, Groq, OpenAI, or Claude, then test cloud AI file renaming with your own provider key.
+lastUpdated: 2026-07-01
 sidebar:
   order: 31
   label: BYOK
@@ -9,43 +9,119 @@ sidebar:
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-BYOK means Bring Your Own Key. Instead of using only Zush-managed cloud credits, PRO users can connect their own AI provider key for cloud analysis.
+BYOK means **Bring Your Own Key**. It lets Zush PRO users connect their own AI provider key for cloud renaming with Gemini, Groq, OpenAI, or Claude.
+
+Use BYOK when you want Zush's desktop workflow, review screen, Templates, Naming Blocks, Monitor, and undo history, but you prefer to pay your own AI provider directly instead of relying only on the managed Zush provider.
+
+<figure>
+  <img src="/images/showcase/macos/byok-light.webp" alt="BYOK settings in the Zush AI Setup screen with Gemini selected, an API key saved, and a test button." width="2560" height="1440" loading="lazy" decoding="async" />
+  <figcaption>BYOK is configured in AI Setup. Choose a provider, paste your key, save it, enable Cloud BYOK, and run a test.</figcaption>
+</figure>
+
+## What BYOK changes
+
+With BYOK enabled, Zush still handles the file workflow:
+
+- add files or monitor a folder
+- extract the analysis payload Zush needs for renaming
+- call the selected AI provider through the BYOK flow
+- generate filenames, tags, and metadata
+- show previews before manual batches are applied
+- keep rename history so you can undo later
+
+The main difference is the provider and billing path. Your AI provider bills usage under its own API pricing. Gemini and Groq often have generous free tiers, while OpenAI and Claude are usually pay as you go. Check the provider's current pricing before running a very large batch.
+
+<Aside type="note">
+Paid PRO plans include unlimited Zush cloud renames. BYOK is optional; use it when you specifically want your own provider account and API key.
+</Aside>
 
 ## Supported providers
 
-- Google Gemini
-- Groq
-- OpenAI
-- Anthropic Claude
-
-API key dashboards:
-
-- [Google AI Studio API keys](https://aistudio.google.com/apikey)
-- [Groq API keys](https://console.groq.com/keys)
-- [OpenAI API keys](https://platform.openai.com/api-keys)
-- [Anthropic API keys](https://console.anthropic.com/settings/keys)
+| Provider | Dashboard | Notes from the setup page |
+| --- | --- | --- |
+| Gemini | [Google AI Studio](https://aistudio.google.com/app/apikey) | Good multimodal quality and a free tier that works for many users |
+| Groq | [Groq Console](https://console.groq.com/keys) | Fast inference and a generous free tier |
+| OpenAI | [OpenAI Platform](https://platform.openai.com/api-keys) | Pay-as-you-go; Zush uses GPT-4o mini for fast, affordable analysis |
+| Claude | [Anthropic Console](https://console.anthropic.com/settings/keys) | Pay-as-you-go; Zush uses Claude Haiku for cost-effective file understanding |
 
 ## Set up BYOK
 
 <Steps>
-1. Create an API key in your provider dashboard: [Gemini](https://aistudio.google.com/apikey), [Groq](https://console.groq.com/keys), [OpenAI](https://platform.openai.com/api-keys), or [Claude](https://console.anthropic.com/settings/keys).
-2. Open Zush settings after installing Zush for [Mac](/download/mac) or [Windows](https://apps.microsoft.com/detail/9ND4WVZSDQ3X).
-3. Go to the BYOK or AI provider section.
-4. Choose the provider and paste the key.
-5. Save, validate the key, and run a small test batch.
+1. Open your provider dashboard: [Google AI Studio](https://aistudio.google.com/app/apikey), [Groq Console](https://console.groq.com/keys), [OpenAI Platform](https://platform.openai.com/api-keys), or [Anthropic Console](https://console.anthropic.com/settings/keys).
+2. Create a new API key and copy it. Most providers show the full key only once.
+3. Open Zush.
+4. Go to **AI Setup**.
+5. Turn on **Cloud (BYOK)** if you want Zush to use your own provider key for cloud renames.
+6. Choose the AI provider.
+7. Paste the API key.
+8. Save the key.
+9. Click **Test** to confirm the provider connection works.
+10. Run a small batch before using BYOK on a large folder or monitored workflow.
 </Steps>
 
-## What BYOK changes
+## Provider-specific steps
 
-BYOK changes who provides the cloud model and who bills usage. Your provider may charge based on its own API pricing. Zush still handles the desktop workflow: adding files, extracting the analysis payload, generating names, previewing, applying, monitoring, and undoing.
+### Gemini
 
-<Aside type="note">
-BYOK keys are stored locally in secure platform storage and are sent only as needed to validate the key and process provider requests. See the <a href="/privacy-policy">privacy policy</a> and <a href="/docs/privacy-security/">privacy docs</a> for details.
-</Aside>
+1. Open [Google AI Studio](https://aistudio.google.com/app/apikey).
+2. Create an API key.
+3. In Zush, choose **Gemini** as the AI Provider.
+4. Paste the key, save it, enable Cloud BYOK, and run **Test**.
+
+Gemini is a good first choice for BYOK because it has strong multimodal capabilities and a free tier suitable for many users.
+
+### Groq
+
+1. Open [Groq Console](https://console.groq.com/keys).
+2. Create an API key.
+3. In Zush, choose **Groq** as the AI Provider.
+4. Paste the key, save it, enable Cloud BYOK, and run **Test**.
+
+Groq is useful when you care about fast cloud inference.
+
+### OpenAI
+
+1. Open [OpenAI Platform API keys](https://platform.openai.com/api-keys).
+2. Create a new secret key.
+3. In Zush, choose **OpenAI** as the AI Provider.
+4. Paste the key, save it, enable Cloud BYOK, and run **Test**.
+
+OpenAI uses pay-as-you-go pricing. Zush uses GPT-4o mini for BYOK file analysis.
+
+### Claude
+
+1. Open [Anthropic Console keys](https://console.anthropic.com/settings/keys).
+2. Create a key.
+3. In Zush, choose **Claude** as the AI Provider.
+4. Paste the key, save it, enable Cloud BYOK, and run **Test**.
+
+Claude uses pay-as-you-go pricing. Zush uses Claude Haiku for BYOK file analysis.
+
+## Test before automation
+
+After BYOK is saved, run a small manual [batch rename](/docs/batch-rename-files/) first. Check that filenames are accurate, the provider does not reject requests, and the cost profile makes sense for your files.
+
+Once the test batch looks right, you can use the same AI setup with [Templates](/docs/templates/) and [folder monitoring](/docs/folder-monitoring/).
+
+## Troubleshooting
+
+| Problem | What to check |
+| --- | --- |
+| Test fails | Confirm the key was copied correctly and belongs to the selected provider |
+| Provider rejects requests | Check provider billing, free-tier limits, rate limits, or account verification |
+| Results differ from Zush Cloud | Different providers and models can describe files differently; test with real files before automating |
+| Costs are higher than expected | Review provider pricing and test with representative batches before monitoring large folders |
+
+## Security and privacy
+
+Your API key is stored locally in secure platform storage. In BYOK mode, analysis requests are relayed through Zush backend infrastructure and then forwarded to your selected provider using your API key. Zush does not store file content after processing as part of normal operation.
+
+For local model processing instead of cloud provider processing, use [Offline AI with Ollama](/docs/offline-ai/).
 
 ## Related docs
 
 - [AI modes](/docs/ai-modes/)
+- [Ollama / Offline AI](/docs/offline-ai/)
 - [Privacy and security](/docs/privacy-security/)
 - [Pricing and limits](/docs/pricing-limits/)
 - [BYOK setup page](/byok-setup)

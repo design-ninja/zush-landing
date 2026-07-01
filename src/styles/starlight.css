@@ -25,3 +25,8 @@
 .sl-markdown-content a:focus-visible {
   text-decoration: underline;
 }
+
+.sl-markdown-content figure > img,
+.sl-markdown-content p > img {
+  border-radius: 12px;
+}
