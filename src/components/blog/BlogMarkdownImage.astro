@@ -9,6 +9,23 @@ if (typeof src !== 'string') {
 
 const showcaseVideo = src.endsWith('.mp4') ? getShowcaseVideoBySrc(src) : undefined;
 const themedScreenshot = getThemedScreenshot(src);
+const inferredImageSize = inferImageSize(src);
+const defaultImageProps = inferredImageSize
+  ? { ...inferredImageSize, ...props }
+  : props;
+
+function inferImageSize(src: string) {
+  const imageSizes: Record<string, { width: string; height: string }> = {
+    '/images/showcase/windows-original/02-ai-rename-results.webp': { width: '1920', height: '1080' },
+    '/images/blog/competitors/ai-renamer.png': { width: '1920', height: '1080' },
+    '/images/blog/competitors/namequick.png': { width: '1200', height: '630' },
+    '/images/blog/competitors/renamer-ai.png': { width: '2400', height: '1260' },
+    '/images/blog/competitors/riffo.png': { width: '1200', height: '630' },
+    '/images/blog/competitors/renameclick.webp': { width: '1924', height: '2020' },
+  };
+
+  return imageSizes[src];
+}
 
 function getThemedScreenshot(src: string) {
   if (src.includes('/screenshots/light/')) {
@@ -111,7 +128,7 @@ function getThemedScreenshot(src: string) {
   ) : (
     <figure class='markdown-figure'>
       <img
-        {...props}
+        {...defaultImageProps}
         alt={alt}
         class='markdown-image'
         decoding='async'

@@ -144,6 +144,8 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     showcaseSlides: sharedSlides,
     faqItems: fileRenamerFaq,
     relatedPages: [
+      { title: 'Zush Docs', href: '/docs/' },
+      { title: 'Naming Blocks Guide', href: '/docs/naming-blocks/' },
       { title: 'Batch Rename Tool', href: '/batch-rename-tool' },
       { title: 'Bulk Rename Files', href: '/bulk-rename-files' },
       { title: 'Offline AI File Renamer', href: '/offline-ai-file-renamer' },
@@ -193,6 +195,8 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     showcaseSlides: sharedSlides,
     faqItems: batchRenameFaq,
     relatedPages: [
+      { title: 'Batch Rename Docs', href: '/docs/batch-rename-files/' },
+      { title: 'Naming Blocks Guide', href: '/docs/naming-blocks/' },
       { title: 'Batch Rename Files with AI', href: '/batch-rename-files' },
       { title: 'Bulk Rename Files', href: '/bulk-rename-files' },
       { title: 'File Renamer for Mac & Windows', href: '/file-renamer' },
@@ -241,6 +245,8 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     showcaseSlides: sharedSlides,
     faqItems: batchRenameFaq,
     relatedPages: [
+      { title: 'Batch Rename Docs', href: '/docs/batch-rename-files/' },
+      { title: 'Templates Guide', href: '/docs/templates/' },
       { title: 'Batch Rename Tool', href: '/batch-rename-tool' },
       { title: 'File Renamer for Mac & Windows', href: '/file-renamer' },
       { title: 'Bulk Rename Files', href: '/bulk-rename-files' },
@@ -289,6 +295,8 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     showcaseSlides: sharedSlides,
     faqItems: bulkRenameFaq,
     relatedPages: [
+      { title: 'Folder Monitoring Docs', href: '/docs/folder-monitoring/' },
+      { title: 'Undo History Docs', href: '/docs/undo-history/' },
       { title: 'Batch Rename Tool', href: '/batch-rename-tool' },
       { title: 'File Renamer for Mac & Windows', href: '/file-renamer' },
       { title: 'Offline AI File Renamer', href: '/offline-ai-file-renamer' },
@@ -336,6 +344,9 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     showcaseSlides: sharedSlides,
     faqItems: offlineRenameFaq,
     relatedPages: [
+      { title: 'Offline AI Docs', href: '/docs/offline-ai/' },
+      { title: 'BYOK Docs', href: '/docs/byok/' },
+      { title: 'Naming Blocks Guide', href: '/docs/naming-blocks/' },
       { title: 'Ollama Offline AI Setup', href: '/ollama-setup' },
       { title: 'BYOK Setup', href: '/byok-setup' },
       { title: 'File Renamer for Mac & Windows', href: '/file-renamer' },
