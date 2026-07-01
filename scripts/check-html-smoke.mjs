@@ -17,10 +17,7 @@ const NON_WATCH_VIDEO_ROUTES = new Set([
   '/ai-file-renamer',
   '/ai-image-renamer',
   '/auto-rename-files',
-  '/batch-rename-tool',
   '/batch-rename-files',
-  '/bulk-rename-files',
-  '/file-renamer',
   '/rename-documents-with-ai',
   '/rename-pdf-with-ai',
   '/rename-photos-with-ai',
@@ -37,10 +34,7 @@ const HOMEPAGE_HERO_VIDEO = {
 const ISO_8601_DATE_OR_DATETIME = /^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})?)?$/;
 const USE_CASES_BLOCK_ROUTES = [
   '/',
-  '/batch-rename-tool',
   '/batch-rename-files',
-  '/bulk-rename-files',
-  '/file-renamer',
   '/mac',
   '/windows',
   '/rename-documents-with-ai',
@@ -192,6 +186,13 @@ const sitemapXml = readFileSync(sitemapPath, 'utf8');
 const locs = parseSitemapLocs(sitemapXml);
 if (locs.length === 0) {
   fail('sitemap.xml has no URLs.');
+}
+for (const consolidatedRoute of ['/file-renamer', '/ai-file-renamer', '/batch-rename-tool', '/bulk-rename-files']) {
+  assertNotIncludes(
+    sitemapXml,
+    `${SITE_ORIGIN}${consolidatedRoute}`,
+    `Consolidated duplicate route leaked into sitemap: ${consolidatedRoute}`,
+  );
 }
 
 for (const loc of locs) {

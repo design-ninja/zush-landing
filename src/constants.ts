@@ -137,3 +137,13 @@ export const APP_CONFIG = {
   min_macos_name: "Sequoia",
   app_version: "3.0",
 };
+
+export const SUPPORTED_FORMAT_EXTENSIONS = Array.from(new Set([
+  ...APP_CONFIG.image_extensions,
+  ...APP_CONFIG.design_extensions,
+  ...APP_CONFIG.document_extensions,
+  ...APP_CONFIG.video_extensions,
+  ...APP_CONFIG.audio_extensions,
+])).sort();
+
+export const SUPPORTED_FORMAT_COUNT = SUPPORTED_FORMAT_EXTENSIONS.length;

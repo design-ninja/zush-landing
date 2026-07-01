@@ -1,0 +1,108 @@
+---
+import Heading from '@/components/Heading';
+import { APP_CONFIG, SUPPORTED_FORMAT_COUNT } from '@/constants';
+import styles from './HomeSeoContent.module.scss';
+
+const proofPoints = [
+  `${SUPPORTED_FORMAT_COUNT} supported file formats across images, documents, PDFs, design files, video, and audio`,
+  `${APP_CONFIG.free_tier_limit} free AI renames before purchase`,
+  '145+ Naming Blocks for repeatable filename conventions',
+  '60+ filename languages and configurable date formats',
+];
+---
+
+<section class={styles.HomeSeoContent} aria-labelledby="ai-file-renamer-overview">
+  <div class={styles.HomeSeoContent__Container}>
+    <div class={styles.HomeSeoContent__Intro}>
+      <p class={styles.HomeSeoContent__Eyebrow}>AI file renamer and organizer</p>
+      <Heading as="h2" align="center" id="ai-file-renamer-overview">
+        AI file renamer that reads files before it names them
+      </Heading>
+      <p class={styles.HomeSeoContent__Description}>
+        Zush is an AI file renamer and organizer for Mac and Windows. Use it to rename
+        files with AI by content: screenshots, PDFs, photos, documents, videos, audio,
+        and design files become clean, searchable filenames you can review, batch apply,
+        monitor, and undo.
+      </p>
+      <p class={styles.HomeSeoContent__Description}>
+        If you are comparing a file renamer AI, smart AI file renamer, content-aware file
+        renamer, PDF renamer, photo renamer, or document renamer, Zush keeps those
+        workflows in one desktop app with 100+ supported formats, including audio and
+        video files most AI renamers do not cover.
+      </p>
+      <p class={styles.HomeSeoContent__Updated}>Last updated July 1, 2026</p>
+    </div>
+
+    <div class={styles.HomeSeoContent__Grid}>
+      <article class={styles.HomeSeoContent__Panel}>
+        <h3 class={styles.HomeSeoContent__PanelTitle}>Rename files with AI by content</h3>
+        <p class={styles.HomeSeoContent__PanelText}>
+          Zush replaces names like IMG_4382, scan_0042.pdf, Screenshot 2026-03-23.png,
+          and Untitled.mov with descriptive names based on what each file contains, not
+          just the old filename or metadata.
+        </p>
+      </article>
+
+      <article class={styles.HomeSeoContent__Panel}>
+        <h3 class={styles.HomeSeoContent__PanelTitle}>Organize and search files by content</h3>
+        <p class={styles.HomeSeoContent__PanelText}>
+          Use Zush as an AI file organizer for Downloads, screenshots, invoices, client
+          folders, photo imports, design exports, screen recordings, and mixed workspaces
+          so Finder, Spotlight, File Explorer, and Windows Search become more useful.
+        </p>
+      </article>
+
+      <article class={styles.HomeSeoContent__Panel}>
+        <h3 class={styles.HomeSeoContent__PanelTitle}>Batch rename, bulk rename, and automate</h3>
+        <ul class={styles.HomeSeoContent__List}>
+          {proofPoints.map((point) => <li>{point}</li>)}
+        </ul>
+      </article>
+    </div>
+
+    <div class={styles.HomeSeoContent__TableBlock}>
+      <div class={styles.HomeSeoContent__TableHeader}>
+        <h3 class={styles.HomeSeoContent__TableTitle}>AI file renamer vs batch rename utility</h3>
+        <p class={styles.HomeSeoContent__TableDescription}>
+          Pattern-based rename tools are useful when every file follows the same rule. Zush is
+          a content-aware AI batch rename tool for folders where every file needs a different
+          name based on its content.
+        </p>
+      </div>
+
+      <div class={styles.HomeSeoContent__TableWrap}>
+        <table class={styles.HomeSeoContent__Table}>
+          <thead>
+            <tr>
+              <th scope="col">Workflow</th>
+              <th scope="col">Zush AI file renamer</th>
+              <th scope="col">Traditional batch rename utility</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Input</td>
+              <td>Mixed folders with screenshots, PDFs, photos, documents, videos, audio, and design files.</td>
+              <td>Files where the current names already contain the information needed for the new names.</td>
+            </tr>
+            <tr>
+              <td>Naming logic</td>
+              <td>AI reads visual content, extracted text, metadata, transcripts, sampled frames, and previews.</td>
+              <td>Find and replace, counters, case changes, date stamps, prefixes, suffixes, or regular expressions.</td>
+            </tr>
+            <tr>
+              <td>Safety</td>
+              <td>Review-first workflow, Activity history, and undo for applied rename batches.</td>
+              <td>Depends on the utility. Many tools require careful previews before applying irreversible rules.</td>
+            </tr>
+            <tr>
+              <td>Best fit</td>
+              <td>Content-aware AI file renaming and file organization on Mac and Windows.</td>
+              <td>Fast mechanical cleanup when one deterministic rule should apply to every selected file.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

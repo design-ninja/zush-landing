@@ -50,7 +50,7 @@ assert.equal(
   'Unexpected trailing-slash redirect destination.',
 );
 
-for (const source of ['/rename-images-with-ai/', '/rename-files-with-ai/']) {
+for (const source of ['/rename-images-with-ai/', '/rename-files-with-ai/', '/batch-rename-tool/', '/bulk-rename-files/']) {
   const sourceIndex = redirects.findIndex((item) => item.source === source);
 
   assert(sourceIndex >= 0, `Missing trailing-slash legacy redirect for ${source}`);
@@ -75,9 +75,16 @@ assertRedirect('/ai-document-renamer', '/rename-documents-with-ai');
 
 assertRedirect('/rename-files-with-ai/', '/batch-rename-files');
 assertRedirect('/rename-files-with-ai', '/batch-rename-files');
+assertRedirect('/batch-rename-tool/', '/batch-rename-files');
+assertRedirect('/batch-rename-tool', '/batch-rename-files');
+assertRedirect('/bulk-rename-files/', '/batch-rename-files');
+assertRedirect('/bulk-rename-files', '/batch-rename-files');
 assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/rename-files-with-ai', '/:locale');
 
-assertRedirect('/ai-file-renamer', '/file-renamer');
+assertRedirect('/file-renamer/', '/');
+assertRedirect('/file-renamer', '/');
+assertRedirect('/ai-file-renamer/', '/');
+assertRedirect('/ai-file-renamer', '/');
 assertHostRedirect('/:path*', 'e.zushapp.com', 'https://zushapp.com');
 assertRedirect(`${POSTHOG_PROXY_PATH}/`, '/');
 assertRedirect(POSTHOG_PROXY_PATH, '/');

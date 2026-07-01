@@ -166,9 +166,8 @@ const microsoftStoreVisibleLabel = `${copy.microsoftStoreKicker} ${copy.microsof
       <div>
         <h4 class={sectionTitleClass}>{copy.product}</h4>
         <ul class={styles.Footer__Links}>
-          <li><a href='/file-renamer' class={linkClass}>{copy.productLinks.fileRenamer}</a></li>
-          <li><a href='/batch-rename-tool' class={linkClass}>{copy.productLinks.batchRename}</a></li>
-          <li><a href='/bulk-rename-files' class={linkClass}>{copy.productLinks.bulkRename}</a></li>
+          <li><a href={footerHref('/')} class={linkClass}>{copy.productLinks.fileRenamer}</a></li>
+          <li><a href='/batch-rename-files' class={linkClass}>{copy.productLinks.batchRename}</a></li>
           <li><a href='/offline-ai-file-renamer' class={linkClass}>Offline AI File Renamer</a></li>
           <li><a href={footerHref('/mac')} class={linkClass}>{copy.productLinks.mac}</a></li>
           <li><a href={footerHref('/windows')} class={linkClass}>{copy.productLinks.windows}</a></li>

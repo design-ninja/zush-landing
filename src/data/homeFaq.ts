@@ -1,5 +1,5 @@
 import type { FAQItem } from '@/data/blog';
-import { APP_CONFIG } from '@/constants';
+import { APP_CONFIG, SUPPORTED_FORMAT_COUNT } from '@/constants';
 
 const imageExtensions = APP_CONFIG.image_extensions.map((e) => e.toUpperCase()).join(', ');
 const designExtensions = APP_CONFIG.design_extensions.map((e) => e.toUpperCase()).join(', ');
@@ -11,12 +11,22 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'What is Zush?',
     answer:
-      'Zush is a file renamer for Mac and Windows that automates the tedious task of renaming files. Using advanced AI, templates, and 145+ Naming Blocks, it analyzes images, design files, audio, videos, and supported documents, including PDFs and iWork files, to generate descriptive, meaningful filenames and metadata.',
+      'Zush is an AI file renamer and organizer for Mac and Windows. It reads screenshots, PDFs, photos, documents, videos, audio, and design files, then generates descriptive filenames you can review, batch apply, monitor, and undo.',
+  },
+  {
+    question: 'Is Zush an AI file renamer and organizer?',
+    answer:
+      'Yes. Zush combines AI file renaming, AI file organization, batch rename, bulk rename, folder monitoring, templates, 145+ Naming Blocks, BYOK, Offline AI mode, and Activity history in one desktop workflow for Mac and Windows.',
+  },
+  {
+    question: 'Can I rename files with AI by content?',
+    answer:
+      'Yes. Zush is built for content-aware AI file renaming. It can rename files by content from visual previews, extracted text, PDF context, design previews, metadata, transcripts, sampled video frames, and supported audio context, depending on the file type.',
   },
   {
     question: 'Is Zush a file renamer, batch rename tool, or bulk rename tool?',
     answer:
-      'Zush is all three. It works as a file renamer for individual files, a batch rename tool for selected folders, and a bulk rename workflow for larger libraries where every file needs a different content-aware name.',
+      'Zush is all three. It works as a file renamer AI workflow for individual files, an AI batch rename tool for selected folders, and a bulk rename workflow for larger libraries where every file needs a different content-aware name.',
   },
   {
     question: 'How is AI file renaming different from Bulk Rename Utility or Finder?',
@@ -26,11 +36,26 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'Can Zush rename files based on content?',
     answer:
-      'Yes. Zush can rename files based on visual content, extracted document text, PDF context, design previews, audio metadata or transcript context, sampled video frames, and file metadata, depending on the format.',
+      'Yes. Zush can rename files based on content from screenshots, photos, PDFs, documents, design previews, audio metadata or transcript context, sampled video frames, and file metadata, depending on the format.',
+  },
+  {
+    question: 'Is there a free AI file renamer for Mac and Windows?',
+    answer:
+      `Yes. Zush includes ${APP_CONFIG.free_tier_limit} free AI renames before purchase, with no credit card required. The free tier lets you test AI-powered content analysis, batch rename, folder monitoring, review, and undo before upgrading to PRO.`,
+  },
+  {
+    question: 'Does Zush work as an AI file renamer for Windows and Mac?',
+    answer:
+      `Yes. Zush runs on macOS ${APP_CONFIG.min_macos_version}+ and Windows 10 / 11. The Mac build is available as a signed .dmg and on the Mac App Store, and the Windows build is available on the Microsoft Store.`,
+  },
+  {
+    question: 'Is Zush an online AI file renamer or an offline AI file renamer?',
+    answer:
+      'Zush supports both cloud and local workflows. Cloud mode gives the broadest AI quality for mixed folders. PRO users can also enable BYOK for their own provider key or Offline AI mode with local Ollama models for supported private workflows.',
   },
   {
     question: 'What file formats are supported?',
-    answer: `Zush supports visual formats: ${imageExtensions}. Supported design formats include ${designExtensions}. Supported document formats include ${documentExtensions}. Supported video formats include ${videoExtensions}. Supported audio formats include ${audioExtensions}. SVG is supported too, so you can organize visual assets, design files, audio, videos, and everyday documents in one workflow.`,
+    answer: `Zush supports ${SUPPORTED_FORMAT_COUNT} unique file extensions across images, design files, documents, videos, and audio. Visual formats include ${imageExtensions}. Supported design formats include ${designExtensions}. Supported document formats include ${documentExtensions}. Supported video formats include ${videoExtensions}. Supported audio formats include ${audioExtensions}. SVG is supported too, so you can organize visual assets, design files, audio, videos, and everyday documents in one workflow.`,
   },
   {
     question: 'How does Zush AI Rename work?',

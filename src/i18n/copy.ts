@@ -100,7 +100,7 @@ export interface FeatureCardsCopy {
 export const DEFAULT_FEATURE_CARDS_COPY: FeatureCardsCopy = {
   aiAnalysis: {
     title: 'Smart Batch Rename',
-    description: 'Batch rename mixed files with smart analysis based on each file type and its actual content, from images, design files, and PDFs to audio, videos, iWork, and Office documents.',
+    description: 'Batch rename mixed folders with smart analysis across 100+ file formats, from images, design files, and PDFs to audio, videos, iWork, and Office documents.',
   },
   foldersMonitoring: {
     title: 'Folders Monitoring',
@@ -942,7 +942,7 @@ const EN_COPY: LocaleCopy = {
     showOptions: 'Show download options for {os}',
   },
   footer: {
-    description: 'AI file renamer, batch rename tool, and bulk rename workflow for Mac and Windows',
+    description: 'AI file renamer and organizer for Mac and Windows',
     product: 'Product',
     byFileType: 'By File Type',
     resources: 'Resources',
@@ -970,7 +970,7 @@ const EN_COPY: LocaleCopy = {
     designedBy: 'Designed by',
     designedWith: 'with',
     productLinks: {
-      fileRenamer: 'File Renamer',
+      fileRenamer: 'AI File Renamer',
       batchRename: 'Batch Rename Tool',
       bulkRename: 'Bulk Rename Files',
       mac: 'Zush for Mac',
@@ -985,14 +985,14 @@ const EN_COPY: LocaleCopy = {
     },
   },
   home: {
-    heroTitle: 'AI File Renamer\nfor Mac & Windows',
-    heroAccent: 'AI File Renamer',
+    heroTitle: 'AI File Renamer & Organizer\nfor Mac & Windows',
+    heroAccent: 'AI File Renamer & Organizer',
     heroSubtitle:
-      'Rename files with AI by content on Mac and Windows: screenshots, PDFs, photos, videos, audio, design files, iWork and Office documents. Batch rename, watch folders, reuse templates, and undo any rename.',
+      'Rename and organize 100+ file formats with AI by content on Mac and Windows: screenshots, PDFs, photos, videos, audio, design files, iWork and Office documents. Batch rename, watch folders, reuse templates, and undo any rename.',
     buyPro: 'Buy 🌟 PRO',
     trustSignals: ['✨ Get started for FREE', '💳 No credit card required'],
-    featuresTitle: 'Zush Features',
-    featuresDescription: 'One desktop AI file renamer for renaming screenshots, design files, PDFs, photos, audio, videos, documents, and messy mixed folders',
+    featuresTitle: 'AI File Renamer Features',
+    featuresDescription: 'One desktop AI file renamer and organizer for 100+ formats: screenshots, design files, PDFs, photos, audio, videos, documents, and messy mixed folders',
     supportedFormats: 'Supported File Formats',
     images: 'Images',
     designLabel: 'Design',
@@ -1000,7 +1000,7 @@ const EN_COPY: LocaleCopy = {
     videosLabel: 'Videos',
     audioLabel: 'Audio',
     downloadTitle: 'Try Zush free',
-    downloadSubtitle: 'Rename files with AI, batch rename folders, and clean up screenshots, design files, PDFs, photos, audio, videos, iWork, and Office documents by content.',
+    downloadSubtitle: 'Rename and organize files with AI, batch rename folders, and clean up screenshots, design files, PDFs, photos, audio, videos, iWork, and Office documents by content.',
     downloadHintPrefix: 'Free · No credit card required',
     useCasesTitle: 'Who Uses Batch File Renaming',
     useCasesDescription: 'Click the role closest to your workflow. Each card goes to the Zush page built for that type of file chaos.',
@@ -1049,8 +1049,8 @@ const EN_COPY: LocaleCopy = {
     whyZush: {
       title: 'Why Zush Wins Against Generic File Renamers',
       titlePlatform: 'Why Zush Wins on {os}',
-      description: 'AI batch renaming, bulk review, templates, naming blocks, audio support, folder monitoring, rollback, BYOK, and Offline AI in one desktop app',
-      descriptionPlatform: 'Native desktop feel, fast batch renaming, templates, naming blocks, audio support, and fewer manual decisions on {os}',
+      description: 'AI batch renaming, 100+ file formats, audio and video support, bulk review, templates, naming blocks, folder monitoring, rollback, BYOK, and Offline AI in one desktop app',
+      descriptionPlatform: 'Native desktop feel, fast batch renaming, 100+ file formats, audio and video support, templates, naming blocks, and fewer manual decisions on {os}',
       nativeEyebrow: 'Desktop-native feel',
       nativeEyebrowPlatform: '{os}-native feel',
       nativeTitle: 'Native, fast, and modern',
@@ -1065,7 +1065,7 @@ const EN_COPY: LocaleCopy = {
       speedTitle: 'Renames happen in seconds',
       speedDescription: 'Speed matters because cleanup only sticks if it does not interrupt the real work. Drop files in, review, apply, move on.',
       formatsEyebrow: '100+ supported formats',
-      formatsTitle: 'Screenshots, PDFs, photos, design files, iWork, audio, documents, and videos',
+      formatsTitle: '100+ formats: screenshots, PDFs, photos, design files, iWork, audio, documents, and videos',
       formatsDescription: 'Supports AVIF, RAW, Sketch, Figma, Illustrator, PSD, Office files, Pages, Numbers, Keynote, PDFs, subtitles, MP3, M4A, WAV, FLAC, and common video formats, so mixed folders can be renamed by actual content instead of file-type silos.',
       controlEyebrow: 'Naming Blocks',
       controlTitle: 'Structured filenames for professional work',
@@ -1134,15 +1134,15 @@ const EN_COPY: LocaleCopy = {
       breadcrumbLabel: 'Zush for Mac',
       softwareName: 'Zush for Mac',
       softwareDescription:
-        'AI file renamer for Mac and batch rename tool for macOS. Rename files with AI from Finder, batch rename mixed folders, and clean up screenshots, design files, audio, videos, PDFs, photos, iWork, and Office documents by content.',
+        'AI file renamer for Mac. Zush reads 100+ formats, including screenshots, PDFs, photos, videos, audio, design files, iWork, and Office documents, then renames files by content with preview and undo.',
       heroTitle: 'AI File Renamer for Mac',
       heroSubtitle:
-        'Rename files with AI on Mac: batch rename screenshots, design files, audio, videos, PDFs, photos, iWork, and Office documents. Drag from Finder, watch folders automatically, or use Offline AI mode with private local models via Ollama.',
+        'Rename files with AI on Mac. Zush reads 100+ formats - screenshots, design files, audio, videos, PDFs, photos, iWork, and Office docs - then renames them by content. Drag from Finder, preview every name, undo any batch, or use Offline AI mode.',
       ctaTitle: 'Try Zush free on Mac',
-      ctaSubtitle: 'Install the signed macOS AI file renamer and start renaming screenshots, design files, audio, videos, PDFs, photos, iWork, and Office documents in minutes.',
+      ctaSubtitle: 'Install the signed macOS AI file renamer and start renaming 100+ formats from Finder folders, including screenshots, design files, audio, videos, PDFs, photos, iWork, and Office documents.',
       faqDescription: 'Everything you need to know about using Zush as an AI file renamer and batch rename tool for Mac.',
       features: [
-        'AI file renamer for Mac with content-aware naming for screenshots, design files, audio, videos, PDFs, photos, iWork, and Office documents',
+        'AI file renamer for Mac with content-aware naming for 100+ formats, including screenshots, design files, audio, videos, PDFs, photos, iWork, and Office documents',
         'Folder monitoring with file-type exclusions',
         'Batch rename with per-file regenerate',
         'Templates for reusable rename setups',
@@ -1155,7 +1155,7 @@ const EN_COPY: LocaleCopy = {
         'Offline AI mode via Ollama',
       ],
       faqs: [
-        { question: 'Can I rename files with AI on Mac?', answer: 'Yes. Zush analyzes supported Mac files by content and suggests readable names before you apply a batch rename. It works with screenshots, PDFs, photos, design files, audio, videos, iWork files, and Office documents.' },
+        { question: 'Can I rename files with AI on Mac?', answer: 'Yes. Zush analyzes 100+ supported Mac file formats by content and suggests readable names before you apply a batch rename. It works with screenshots, PDFs, photos, design files, audio, videos, iWork files, and Office documents.' },
         { question: 'Is Zush a file renamer for Mac or a Finder script?', answer: 'Zush is a native macOS app, not a Finder-only script. It gives you drag-and-drop batch renaming, watched folders, editable AI suggestions, custom naming patterns, metadata tags, and one-click undo.' },
         { question: 'Can Zush bulk rename files on Mac?', answer: 'Yes. You can bulk rename mixed Mac folders from Finder, review every AI-generated name, apply the batch, and roll back changes from rename history if needed.' },
         { question: 'How is Zush different from Apple Intelligence Shortcuts?', answer: 'Apple Intelligence and Shortcuts can be useful for small custom workflows. Zush is built for repeated file cleanup: mixed file types, folder monitoring, review before apply, naming templates, Offline AI mode, and rename history.' },
@@ -1168,15 +1168,15 @@ const EN_COPY: LocaleCopy = {
       breadcrumbLabel: 'Zush for Windows',
       softwareName: 'Zush for Windows',
       softwareDescription:
-        'AI file renamer and file organizer workflow for Windows 11 and 10 with bulk rename, batch rename, folder monitoring, searchable filenames, metadata, BYOK, and Offline AI. Rename files with AI from File Explorer folders, including screenshots, design files, audio, videos, PDFs, photos, iWork, and Office documents.',
+        'AI file renamer for Windows. Zush reads 100+ formats, including screenshots, PDFs, photos, videos, audio, design files, iWork, and Office documents, then renames files by content with preview and undo.',
       heroTitle: 'AI File Renamer for Windows',
       heroSubtitle:
-        'Batch rename files on Windows 11 and 10 with AI: screenshots, design files, videos, PDFs, photos, iWork, Office documents, audio, and messy Downloads folders. Zush turns content into searchable filenames, installs from the Microsoft Store, and includes preview, undo, BYOK, and Offline AI.',
+        'Rename files with AI on Windows 11 and 10. Zush reads 100+ formats - screenshots, design files, audio, videos, PDFs, photos, iWork, Office docs, and Downloads folders - then renames them by content with preview, undo, BYOK, and Offline AI.',
       ctaTitle: 'Try Zush free on Windows',
-      ctaSubtitle: 'Open the Microsoft Store and start using an AI file renamer for File Explorer folders, screenshots, design files, audio, videos, PDFs, photos, iWork, and Office documents.',
+      ctaSubtitle: 'Open the Microsoft Store and start renaming 100+ formats from File Explorer folders, including screenshots, design files, audio, videos, PDFs, photos, iWork, and Office documents.',
       faqDescription: 'Everything you need to know about using Zush as an AI file renamer and bulk rename tool for Windows.',
       features: [
-        'AI file renamer for Windows 11 and 10 with content-aware bulk rename for screenshots, design files, audio, videos, PDFs, photos, iWork, and Office documents',
+        'AI file renamer for Windows 11 and 10 with content-aware bulk rename for 100+ formats, including screenshots, design files, audio, videos, PDFs, photos, iWork, and Office documents',
         'AI file organizer workflow for Downloads, screenshots, OneDrive folders, shared drives, and project exports',
         'Folder monitoring with file-type exclusions',
         'Batch rename with per-file regenerate',
@@ -1208,7 +1208,7 @@ const EN_COPY: LocaleCopy = {
     '/': {
       title: 'AI File Renamer for Mac & Windows | Batch Rename - Zush',
       description:
-        'Rename files with AI by content on Mac and Windows. Batch rename screenshots, PDFs, photos, videos, audio, design files, and documents with review and undo.',
+        'AI file renamer & organizer for Mac & Windows. Zush reads screenshots, PDFs, photos, video, audio, documents, and design files, then renames files by content.',
     },
   },
 };

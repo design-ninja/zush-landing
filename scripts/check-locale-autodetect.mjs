@@ -132,12 +132,12 @@ assertRedirect(
 assertRedirect(
   'French preference preserves route, search, and hash',
   {
-    route: '/ai-file-renamer',
+    route: '/mac',
     languages: ['fr', 'en-US'],
     search: '?checkout=pro',
     hash: '#pricing',
   },
-  '/fr/ai-file-renamer?checkout=pro#pricing',
+  '/fr/mac?checkout=pro#pricing',
 );
 
 assertRedirect(

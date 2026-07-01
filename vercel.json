@@ -39,17 +39,52 @@
       "permanent": true
     },
     {
+      "source": "/batch-rename-tool/",
+      "destination": "/batch-rename-files",
+      "permanent": true
+    },
+    {
+      "source": "/bulk-rename-files/",
+      "destination": "/batch-rename-files",
+      "permanent": true
+    },
+    {
+      "source": "/file-renamer/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/ai-file-renamer/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/:path((?!e/).+)/",
       "destination": "/:path*",
       "permanent": true
     },
     {
+      "source": "/file-renamer",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/ai-file-renamer",
-      "destination": "/file-renamer",
+      "destination": "/",
       "permanent": true
     },
     {
       "source": "/rename-files-with-ai",
+      "destination": "/batch-rename-files",
+      "permanent": true
+    },
+    {
+      "source": "/batch-rename-tool",
+      "destination": "/batch-rename-files",
+      "permanent": true
+    },
+    {
+      "source": "/bulk-rename-files",
       "destination": "/batch-rename-files",
       "permanent": true
     },
