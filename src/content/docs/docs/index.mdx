@@ -12,7 +12,9 @@ import { CardGrid, LinkCard, Aside } from '@astrojs/starlight/components';
 Zush is an AI file renamer for Mac and Windows. It renames files by content, helps you review a batch before applying changes, monitors folders for new files, and keeps rename history so you can undo a batch.
 
 <figure>
-  <img src="/images/showcase/macos/batch-rename-light-1600.webp" alt="Zush for Mac batch rename results showing AI-generated filenames reviewed before applying the rename." width="1600" height="900" loading="lazy" decoding="async" />
+  <video controls muted playsInline preload="metadata" poster="/videos/posters/overview-demo.webp" width="1600" height="900" aria-label="A Zush overview demo showing a batch rename workflow from selecting files to reviewing AI-generated filenames.">
+    <source src="/videos/zush-overview-demo.mp4" type="video/mp4" />
+  </video>
   <figcaption>Start with a manual batch, review the generated names, then apply the rename when the preview looks right.</figcaption>
 </figure>
 
@@ -20,8 +22,14 @@ Zush is an AI file renamer for Mac and Windows. It renames files by content, hel
   <LinkCard title="Get started" href="/docs/get-started/" description="Run your first safe rename batch from Finder or File Explorer." />
   <LinkCard title="Batch rename files" href="/docs/batch-rename-files/" description="Rename mixed folders with AI suggestions, inline edits, and undo history." />
   <LinkCard title="Folder monitoring" href="/docs/folder-monitoring/" description="Automatically rename new supported files in Downloads, Screenshots, iCloud, OneDrive, and project folders." />
+  <LinkCard title="Templates" href="/docs/templates/" description="Save repeatable rename setups for recurring batches and monitored folders." />
+  <LinkCard title="Naming Blocks" href="/docs/naming-blocks/" description="Build consistent filenames from dates, projects, document fields, media context, and AI fields." />
+  <LinkCard title="Custom prompts" href="/docs/custom-prompts/" description="Guide filename style, tags, and metadata with workflow-specific AI instructions." />
   <LinkCard title="AI modes" href="/docs/ai-modes/" description="Choose managed Cloud AI, BYOK with your provider key, or Offline AI with Ollama." />
+  <LinkCard title="BYOK" href="/docs/byok/" description="Connect your own Gemini, Groq, OpenAI, or Claude API key for cloud renaming." />
+  <LinkCard title="Offline AI" href="/docs/offline-ai/" description="Use Ollama for supported local file analysis without cloud AI processing." />
   <LinkCard title="Supported file types" href="/docs/supported-file-types/" description="Check the image, PDF, document, design, video, audio, and text formats Zush can analyze." />
+  <LinkCard title="Privacy and security" href="/docs/privacy-security/" description="Understand what Zush processes, where data goes, and how keys are stored." />
 </CardGrid>
 
 ## What Zush can do

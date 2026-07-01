@@ -25,6 +25,10 @@ export default defineConfig({
       title: 'Zush Docs',
       description: 'Documentation for Zush AI file renaming on Mac and Windows.',
       favicon: '/favicon/favicon.ico',
+      logo: {
+        src: './src/assets/zush-docs-logo.webp',
+        alt: 'Zush',
+      },
       customCss: ['./src/styles/starlight.css'],
       lastUpdated: true,
       pagefind: true,
