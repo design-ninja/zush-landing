@@ -5,7 +5,9 @@ import { SUPPORTED_FORMAT_COUNT } from '@/constants';
 function getDocsRoute(id: string): string {
   const route = `/${id.replace(/\/index$/, '')}`;
   const normalizedRoute = route === '/docs/index' ? '/docs' : route;
-  return normalizedRoute.endsWith('/') ? normalizedRoute : `${normalizedRoute}/`;
+  return normalizedRoute.length > 1 && normalizedRoute.endsWith('/')
+    ? normalizedRoute.slice(0, -1)
+    : normalizedRoute;
 }
 
 export async function GET() {

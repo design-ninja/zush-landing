@@ -69,7 +69,9 @@ function getBlogPostSourceFile(post: BlogPost): string {
 function getDocsRoute(entry: CollectionEntry<'docs'>): string {
   const route = `/${entry.id.replace(/\/index$/, '')}`;
   const normalizedRoute = route === '/docs/index' ? '/docs' : route;
-  return normalizedRoute.endsWith('/') ? normalizedRoute : `${normalizedRoute}/`;
+  return normalizedRoute.length > 1 && normalizedRoute.endsWith('/')
+    ? normalizedRoute.slice(0, -1)
+    : normalizedRoute;
 }
 
 function getDocsSourceFile(entry: CollectionEntry<'docs'>): string {

@@ -11,14 +11,14 @@ export default defineConfig({
   site: 'https://zushapp.com',
   output: 'static',
   // Vercel handles slash canonicalization so the PostHog proxy path can be excluded.
-  trailingSlash: 'ignore',
+  trailingSlash: 'never',
   redirects: {
     '/download/windows': { status: 301, destination: '/windows' },
-    '/docs/windows-batch-rename-files': { status: 301, destination: '/docs/batch-rename-files/' },
-    '/docs/windows-folder-monitoring': { status: 301, destination: '/docs/folder-monitoring/' },
-    '/docs/search-files-by-content-windows': { status: 301, destination: '/docs/file-search/' },
-    '/docs/windows-offline-ai': { status: 301, destination: '/docs/offline-ai/' },
-    '/docs/windows-undo-rename-history': { status: 301, destination: '/docs/undo-history/' },
+    '/docs/windows-batch-rename-files': { status: 301, destination: '/docs/batch-rename-files' },
+    '/docs/windows-folder-monitoring': { status: 301, destination: '/docs/folder-monitoring' },
+    '/docs/search-files-by-content-windows': { status: 301, destination: '/docs/file-search' },
+    '/docs/windows-offline-ai': { status: 301, destination: '/docs/offline-ai' },
+    '/docs/windows-undo-rename-history': { status: 301, destination: '/docs/undo-history' },
   },
   integrations: [
     starlight({
@@ -42,43 +42,43 @@ export default defineConfig({
         {
           label: 'Start here',
           items: [
-            { label: 'Overview', link: '/docs/' },
-            { label: 'Get started', link: '/docs/get-started/' },
-            { label: 'Install and update', link: '/docs/install-update/' },
-            { label: 'Pricing and limits', link: '/docs/pricing-limits/' },
+            { label: 'Overview', link: '/docs' },
+            { label: 'Get started', link: '/docs/get-started' },
+            { label: 'Install and update', link: '/docs/install-update' },
+            { label: 'Pricing and limits', link: '/docs/pricing-limits' },
           ],
         },
         {
           label: 'Rename workflows',
           items: [
-            { label: 'Batch rename files', link: '/docs/batch-rename-files/' },
-            { label: 'Folder monitoring', link: '/docs/folder-monitoring/' },
-            { label: 'Find files later', link: '/docs/file-search/' },
-            { label: 'Undo history', link: '/docs/undo-history/' },
+            { label: 'Batch rename files', link: '/docs/batch-rename-files' },
+            { label: 'Folder monitoring', link: '/docs/folder-monitoring' },
+            { label: 'Find files later', link: '/docs/file-search' },
+            { label: 'Undo history', link: '/docs/undo-history' },
           ],
         },
         {
           label: 'Naming control',
           items: [
-            { label: 'Templates', link: '/docs/templates/' },
-            { label: 'Naming Blocks', link: '/docs/naming-blocks/' },
-            { label: 'Custom prompts', link: '/docs/custom-prompts/' },
-            { label: 'Metadata and tags', link: '/docs/metadata-tags/' },
+            { label: 'Templates', link: '/docs/templates' },
+            { label: 'Naming Blocks', link: '/docs/naming-blocks' },
+            { label: 'Custom prompts', link: '/docs/custom-prompts' },
+            { label: 'Metadata and tags', link: '/docs/metadata-tags' },
           ],
         },
         {
           label: 'AI and privacy',
           items: [
-            { label: 'AI modes', link: '/docs/ai-modes/' },
-            { label: 'BYOK', link: '/docs/byok/' },
-            { label: 'Offline AI', link: '/docs/offline-ai/' },
-            { label: 'Privacy and security', link: '/docs/privacy-security/' },
+            { label: 'AI modes', link: '/docs/ai-modes' },
+            { label: 'BYOK', link: '/docs/byok' },
+            { label: 'Offline AI', link: '/docs/offline-ai' },
+            { label: 'Privacy and security', link: '/docs/privacy-security' },
           ],
         },
         {
           label: 'Reference',
           items: [
-            { label: 'Supported file types', link: '/docs/supported-file-types/' },
+            { label: 'Supported file types', link: '/docs/supported-file-types' },
           ],
         },
         {

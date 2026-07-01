@@ -6,6 +6,7 @@ const DIST_ROOT = join(ROOT, 'dist');
 const DIST = existsSync(join(DIST_ROOT, 'client')) ? join(DIST_ROOT, 'client') : DIST_ROOT;
 const SITE_ORIGIN = 'https://zushapp.com';
 const DYNAMIC_ROUTES = new Set(['/download/mac', '/download/windows']);
+const INTERNAL_ASSET_ATTRS = ['src', 'poster'];
 
 function collectHtmlFiles(dir, acc = []) {
   for (const entry of readdirSync(dir)) {
@@ -50,8 +51,19 @@ function htmlPathForRoute(route) {
   return join(DIST, route.slice(1), 'index.html');
 }
 
+function normalizeInternalAssetPath(value) {
+  if (!value) return null;
+  if (/^(?:https?:)?\/\//i.test(value) || value.startsWith('data:') || value.startsWith('blob:')) return null;
+  if (!value.startsWith('/')) return null;
+
+  const [pathOnly] = value.split(/[?#]/);
+  if (!pathOnly || !/\.[a-z0-9]+$/i.test(pathOnly)) return null;
+  return pathOnly;
+}
+
 const htmlFiles = collectHtmlFiles(DIST);
 const broken = [];
+const brokenAssets = [];
 
 for (const filePath of htmlFiles) {
   const html = readFileSync(filePath, 'utf8');
@@ -71,6 +83,25 @@ for (const filePath of htmlFiles) {
       });
     }
   }
+
+  for (const attr of INTERNAL_ASSET_ATTRS) {
+    const refs = [...html.matchAll(new RegExp(`${attr}="([^"]+)"`, 'g'))].map((m) => m[1]);
+
+    for (const rawRef of refs) {
+      const assetPath = normalizeInternalAssetPath(rawRef);
+      if (!assetPath) continue;
+
+      const targetFile = join(DIST, assetPath.slice(1));
+      if (!existsSync(targetFile)) {
+        brokenAssets.push({
+          from: relative(DIST, filePath),
+          attr,
+          ref: rawRef,
+          target: relative(DIST, targetFile),
+        });
+      }
+    }
+  }
 }
 
 if (broken.length > 0) {
@@ -78,6 +109,13 @@ if (broken.length > 0) {
     console.error(`[broken-link] ${item.from} -> ${item.href} (missing ${item.target})`);
   }
   throw new Error(`Found ${broken.length} broken internal links in dist HTML.`);
+}
+
+if (brokenAssets.length > 0) {
+  for (const item of brokenAssets.slice(0, 100)) {
+    console.error(`[broken-asset] ${item.from} ${item.attr}="${item.ref}" (missing ${item.target})`);
+  }
+  throw new Error(`Found ${brokenAssets.length} broken internal assets in dist HTML.`);
 }
 
 console.log(`[check-internal-links] OK: scanned ${htmlFiles.length} HTML files.`);

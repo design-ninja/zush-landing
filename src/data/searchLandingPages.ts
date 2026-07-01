@@ -90,8 +90,8 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     showcaseSlides: sharedSlides,
     faqItems: batchRenameFaq,
     relatedPages: [
-      { title: 'Batch Rename Docs', href: '/docs/batch-rename-files/' },
-      { title: 'Templates Guide', href: '/docs/templates/' },
+      { title: 'Batch Rename Docs', href: '/docs/batch-rename-files' },
+      { title: 'Templates Guide', href: '/docs/templates' },
       { title: 'AI File Renamer & Organizer', href: '/' },
       { title: 'Offline AI File Renamer', href: '/offline-ai-file-renamer' },
       { title: 'Rename PDFs with AI', href: '/rename-pdf-with-ai' },
@@ -140,9 +140,9 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     showcaseSlides: sharedSlides,
     faqItems: offlineRenameFaq,
     relatedPages: [
-      { title: 'Offline AI Docs', href: '/docs/offline-ai/' },
-      { title: 'BYOK Docs', href: '/docs/byok/' },
-      { title: 'Naming Blocks Guide', href: '/docs/naming-blocks/' },
+      { title: 'Offline AI Docs', href: '/docs/offline-ai' },
+      { title: 'BYOK Docs', href: '/docs/byok' },
+      { title: 'Naming Blocks Guide', href: '/docs/naming-blocks' },
       { title: 'Ollama Offline AI Setup', href: '/ollama-setup' },
       { title: 'BYOK Setup', href: '/byok-setup' },
       { title: 'AI File Renamer & Organizer', href: '/' },
