@@ -27,6 +27,13 @@
 }
 
 .sl-markdown-content figure > img,
+.sl-markdown-content figure > video,
 .sl-markdown-content p > img {
   border-radius: 12px;
+}
+
+.sl-markdown-content figure > video {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
