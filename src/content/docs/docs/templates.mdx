@@ -1,42 +1,145 @@
 ---
 title: Templates for Reusable File Renaming Workflows
-description: Use Zush Templates to save repeatable AI file renaming setups for screenshots, expenses, client files, legal docs, media folders, and monitored folders.
-lastUpdated: 2026-06-28
+description: Create, edit, and apply Zush Templates for repeatable AI file renaming in batch rename, Smart Rename, and folder monitoring workflows.
+lastUpdated: 2026-07-01
 sidebar:
   order: 20
   label: Templates
 ---
 
-Templates save a rename setup so you can reuse it later. They are useful when the same kind of folder arrives every week and needs the same naming structure. Start by running a [batch rename](/docs/batch-rename-files/) with the rules you want, then save that setup as a Template.
+import { Aside, Steps } from '@astrojs/starlight/components';
 
-## What a Template can capture
+Templates save a complete renaming setup so you do not have to rebuild the same workflow every time. A Template can control the filename structure, AI instructions, language, date format, Finder tags, Spotlight metadata, and the settings used by monitored folders.
 
-A Template can combine:
+Use Templates when the same kind of files arrive again and again: screenshots, receipts, client deliverables, design exports, photos, videos, audio files, meeting notes, legal documents, or a Downloads folder that needs regular cleanup.
 
-- naming style and format
-- language and date format
-- [Naming Blocks](/docs/naming-blocks/)
-- [custom rename prompt](/docs/custom-prompts/)
-- metadata and tag preferences
-- file-type behavior for monitored folders
-- [AI mode](/docs/ai-modes/) preferences for the workflow
+<figure>
+  <video controls muted playsInline preload="metadata" poster="/videos/posters/templates-demo.webp" width="1600" height="900" aria-label="A Zush Templates workflow demo showing Smart Rename, reusable Templates, Naming Blocks, and a batch rename using an invoices folder.">
+    <source src="/videos/zush-templates-demo.mp4" type="video/mp4" />
+  </video>
+  <figcaption>Watch the Templates workflow: open Smart Rename, adjust Naming Blocks, then use the setup for a batch rename.</figcaption>
+</figure>
 
-## Good Template examples
+## Open Templates
 
-| Template | Useful for |
+Open **Templates** in the sidebar. Zush shows **Smart Rename** first, followed by reusable workflow templates such as Screenshots, Designer Assets, Bookkeeper Expenses, Photographer Shoots, Video Production, Music Tracks, and Client Meeting Notes.
+
+<figure>
+  <img src="/images/docs/templates-naming-blocks/templates-list.webp" alt="The Templates screen in Zush showing Smart Rename and reusable workflow templates." width="1400" height="1174" loading="lazy" decoding="async" />
+  <figcaption>Templates live in their own section and can be reused from AI Rename and Monitor.</figcaption>
+</figure>
+
+## Smart Rename is the default Template
+
+**Smart Rename** is the default setup for AI Rename. If you do not choose another Template, Zush uses Smart Rename.
+
+Open Smart Rename when you want to change the default behavior for general file cleanup. This is useful if you always want a certain date format, title style, separator, metadata setting, or custom rename prompt.
+
+<figure>
+  <img src="/images/docs/templates-naming-blocks/smart-rename-template-settings.webp" alt="The Smart Rename template settings showing Naming Blocks, localization, metadata, and AI prompts." width="1400" height="1174" loading="lazy" decoding="async" />
+  <figcaption>Smart Rename controls the default Naming Blocks, localization, metadata, and AI prompt settings.</figcaption>
+</figure>
+
+## What a Template can save
+
+| Setting | What it controls |
 | --- | --- |
-| Client deliverables | PDFs, docs, screenshots, design files, video exports |
-| Expense receipts | PDFs, scans, screenshots, emailed receipts |
-| Podcast or audio | WAV, MP3, M4A, transcripts, show notes |
-| Screenshots | Bug reports, UI references, research captures |
-| Photo imports | RAW, HEIC, JPG, campaign or shoot folders |
+| [Naming Blocks](/docs/naming-blocks/) | The filename pattern, such as date, title, client, document type, or original name |
+| Block formatting | Case style, word separators, block order, and separators between blocks |
+| Localization | Language and date format used in generated names |
+| [Custom prompts](/docs/custom-prompts/) | The instructions Zush uses when generating AI parts of a filename |
+| Smart Metadata | Finder tags and Spotlight metadata added to renamed files |
+| Monitoring options | File type behavior and rules used by monitored folders |
+| [AI mode](/docs/ai-modes/) | The AI provider or local/cloud setup used for the workflow |
 
-## Templates and monitoring
+## Create or edit a Template
 
-Templates pair well with [folder monitoring](/docs/folder-monitoring/). A Downloads folder might need general cleanup, while a podcast folder needs guest and topic context. Each monitored folder can follow the naming setup that fits it.
+<Steps>
+1. Open **Templates** from the sidebar.
+2. Click **+** to create a new Template, or open an existing Template to change it.
+3. Give the Template a clear name, icon, and description so it is easy to pick later.
+4. Build the filename pattern with [Naming Blocks](/docs/naming-blocks/).
+5. Set language, date format, metadata, and any custom prompt rules the workflow needs.
+6. Save the Template.
+7. Test it on a small batch before using it on a large folder or a monitored folder.
+</Steps>
+
+<figure>
+  <img src="/images/docs/templates-naming-blocks/template-naming-pattern.webp" alt="A screenshot template configured with Created Date and Title blocks, with a preview filename below." width="1400" height="1308" loading="lazy" decoding="async" />
+  <figcaption>A Template preview shows how the selected blocks will look before you use the Template on real files.</figcaption>
+</figure>
+
+<Aside type="tip">
+Editing a Template changes future renames that use that Template. It does not rename files that were already processed.
+</Aside>
+
+## Apply a Template to batch rename
+
+Use this when you have files ready now and want to review the suggested names before applying them.
+
+<figure>
+  <img src="/images/docs/templates-naming-blocks/ai-rename-dropzone.webp" alt="The AI Rename screen with an empty drop zone for adding files and folders." width="1400" height="1174" loading="lazy" decoding="async" />
+  <figcaption>AI Rename is the manual workflow: choose a Template, add files, review the generated names, then apply the batch.</figcaption>
+</figure>
+
+<Steps>
+1. Open **AI Rename**.
+2. Click the Template button in the top-right corner.
+3. Choose **Smart Rename** or one of your saved Templates.
+4. Add files or folders by drag and drop, or click **Select files...**.
+5. Review the generated names.
+6. Edit any individual filename that needs a correction.
+7. Apply the batch when the preview is ready.
+</Steps>
+
+<figure>
+  <img src="/images/docs/templates-naming-blocks/batch-template-picker.webp" alt="The AI Rename screen with the Template picker open." width="1400" height="1093" loading="lazy" decoding="async" />
+  <figcaption>The Template picker lets one-off batch renames use the same saved workflows as Templates.</figcaption>
+</figure>
+
+## Assign a Template to folder monitoring
+
+Use this when new files keep arriving in the same folder and should follow the same naming convention automatically.
+
+<Steps>
+1. Open **Monitor**.
+2. Add the folder you want Zush to watch, or select an existing monitored folder.
+3. Click the Template button next to that folder.
+4. Choose the Template that matches the folder.
+5. Set monitor options such as subfolders, filename filters, and included file types.
+6. Turn monitoring on when the setup is ready.
+</Steps>
+
+<figure>
+  <img src="/images/docs/templates-naming-blocks/monitor-template-picker.webp" alt="The Monitor screen with a folder selected and the Template picker open." width="1400" height="1142" loading="lazy" decoding="async" />
+  <figcaption>Each monitored folder can use its own Template, so different folders can follow different naming rules.</figcaption>
+</figure>
+
+## Choose the right Template
+
+| Workflow | Good Template pattern |
+| --- | --- |
+| Screenshots | Created date + AI title |
+| Designer assets | Client or brand + project + asset type + platform + variant |
+| Receipts and invoices | Date + vendor + amount + document type |
+| Photo imports | Capture date + client or event + place + subject |
+| Video production | Date + client or project + scene + resolution |
+| Music or audio | Artist + track title + release year + version |
+| Client meeting notes | Meeting date + client + topic + project |
+
+Keep the Template name specific. **Screenshots** is better than **Work files** because it tells you exactly when to use it.
+
+## Best practices
+
+Start with **Smart Rename** for general cleanup. Create a separate Template only when a folder needs a different structure or different AI instructions.
+
+Keep filenames readable. Three to five [Naming Blocks](/docs/naming-blocks/) are usually enough. Add more blocks only when they make files easier to sort, scan, or search.
+
+For automated folders, test the Template with a manual batch first. Once the names look right, assign the same Template to [folder monitoring](/docs/folder-monitoring/).
 
 ## Related docs
 
 - [Naming Blocks](/docs/naming-blocks/)
-- [Custom prompts](/docs/custom-prompts/)
+- [Batch rename files](/docs/batch-rename-files/)
 - [Folder monitoring](/docs/folder-monitoring/)
+- [Custom prompts](/docs/custom-prompts/)

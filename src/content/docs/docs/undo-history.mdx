@@ -1,7 +1,7 @@
 ---
 title: Undo History and Safe Rename Review
 description: Use Zush rename history to inspect previous batch rename actions and revert filenames on Mac or Windows when a batch needs another pass.
-lastUpdated: 2026-06-28
+lastUpdated: 2026-07-01
 sidebar:
   order: 13
   label: Undo history
@@ -10,6 +10,11 @@ sidebar:
 import { Aside, Steps } from '@astrojs/starlight/components';
 
 Zush is designed around review before apply. Rename history adds a second layer of safety after a [batch rename](/docs/batch-rename-files/) has already been applied.
+
+<figure>
+  <img src="/images/showcase/macos/activity-light-1600.webp" alt="The Zush Activity screen showing previous rename actions and status details." width="1600" height="900" loading="lazy" decoding="async" />
+  <figcaption>Activity keeps a record of rename work so you can inspect what happened after a batch runs.</figcaption>
+</figure>
 
 ## What history records
 

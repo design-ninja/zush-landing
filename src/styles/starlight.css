@@ -25,3 +25,25 @@
 .sl-markdown-content a:focus-visible {
   text-decoration: underline;
 }
+
+.site-title {
+  gap: 0.6rem;
+}
+
+.site-title > img {
+  width: 2.625rem;
+  height: 2.625rem;
+  border-radius: 0.375rem;
+}
+
+.sl-markdown-content figure > img,
+.sl-markdown-content figure > video,
+.sl-markdown-content p > img {
+  border-radius: 12px;
+}
+
+.sl-markdown-content figure > video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
