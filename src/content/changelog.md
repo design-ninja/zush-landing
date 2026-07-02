@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.6.1] - 2026-07-02
+
+### Improved
+- AI Rename and Monitor are more reliable during cloud processing
+
+### Fixed
+- Fixed a missing template picker icon on some macOS versions
+
 ## [3.6.0] - 2026-06-29
 
 ### Improved
