@@ -3,6 +3,17 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/:path(.+)/",
+      "has": [
+        {
+          "type": "host",
+          "value": "e.zushapp.com"
+        }
+      ],
+      "destination": "https://zushapp.com/e/:path",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
@@ -10,7 +21,7 @@
           "value": "e.zushapp.com"
         }
       ],
-      "destination": "https://zushapp.com",
+      "destination": "https://zushapp.com/e/:path*",
       "permanent": true
     },
     {

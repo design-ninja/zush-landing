@@ -53,6 +53,13 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     robots: 'index, follow',
     ogType: 'website',
   },
+  '/ai-file-organizer': {
+    title: 'AI File Organizer & Sorter for Mac and Windows | Zush',
+    description:
+      'AI file organizer that sorts and names files by content. Zush reads screenshots, PDFs, invoices, photos, and documents, then organizes them with preview and undo.',
+    robots: 'index, follow',
+    ogType: 'website',
+  },
   '/changelog': {
     title: 'Changelog — Zush',
     description:
@@ -227,6 +234,7 @@ export const FEATURE_ROUTES = [
 export const SEARCH_LANDING_ROUTES = [
   '/batch-rename-files',
   '/offline-ai-file-renamer',
+  '/ai-file-organizer',
 ] as const;
 
 function normalizePath(pathname: string): string {

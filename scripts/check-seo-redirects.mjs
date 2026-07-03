@@ -26,6 +26,21 @@ function assertHostRedirect(source, host, destination) {
   assert.equal(redirect.permanent, true, `Expected permanent redirect for ${host}${source}`);
 }
 
+function assertHostRedirectPrecedence(firstSource, secondSource, host) {
+  const firstIndex = redirects.findIndex((item) =>
+    item.source === firstSource
+    && item.has?.some((condition) => condition.type === 'host' && condition.value === host),
+  );
+  const secondIndex = redirects.findIndex((item) =>
+    item.source === secondSource
+    && item.has?.some((condition) => condition.type === 'host' && condition.value === host),
+  );
+
+  assert(firstIndex >= 0, `Missing host redirect for ${host}${firstSource}`);
+  assert(secondIndex >= 0, `Missing host redirect for ${host}${secondSource}`);
+  assert(firstIndex < secondIndex, `${host}${firstSource} must run before ${host}${secondSource}`);
+}
+
 function assertRewrite(source, destination) {
   const rewrite = rewrites.find((item) => item.source === source);
 
@@ -85,7 +100,9 @@ assertRedirect('/file-renamer/', '/');
 assertRedirect('/file-renamer', '/');
 assertRedirect('/ai-file-renamer/', '/');
 assertRedirect('/ai-file-renamer', '/');
-assertHostRedirect('/:path*', 'e.zushapp.com', 'https://zushapp.com');
+assertHostRedirect('/:path(.+)/', 'e.zushapp.com', 'https://zushapp.com/e/:path');
+assertHostRedirect('/:path*', 'e.zushapp.com', 'https://zushapp.com/e/:path*');
+assertHostRedirectPrecedence('/:path(.+)/', '/:path*', 'e.zushapp.com');
 assertRedirect(`${POSTHOG_PROXY_PATH}/`, '/');
 assertRedirect(POSTHOG_PROXY_PATH, '/');
 

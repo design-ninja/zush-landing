@@ -110,7 +110,9 @@ const FAQ = ({
   );
 
   return (
-    <section id='faq' className={styles.FAQ}>
+    // suppressHydrationWarning: the scroll-reveal script decorates this
+    // section with data attributes before the island hydrates.
+    <section id='faq' className={styles.FAQ} suppressHydrationWarning>
       <div className={styles.FAQ__Container}>
         <SectionHeader
           title={title}

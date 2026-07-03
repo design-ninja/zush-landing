@@ -225,6 +225,23 @@ export interface UseCasesCopy {
   items: Array<{ title: string; description: string }>;
 }
 
+export type HomeWorkflowKey =
+  | 'screenshots'
+  | 'pdfs'
+  | 'photos'
+  | 'documents'
+  | 'design'
+  | 'videos'
+  | 'audio'
+  | 'batch'
+  | 'offline';
+
+export interface HomeWorkflowsCopy {
+  title: string;
+  description: string;
+  items: Record<HomeWorkflowKey, { title: string; description: string }>;
+}
+
 export interface HomeCopy {
   heroTitle: string;
   heroAccent: string;
@@ -252,6 +269,7 @@ export interface HomeCopy {
   speedComparison: SpeedComparisonCopy;
   whyZush: WhyZushCopy;
   useCases: UseCasesCopy;
+  workflows: HomeWorkflowsCopy;
   faqItems: FAQCopyItem[];
   showcaseSlides: Slide[];
 }
@@ -1086,6 +1104,21 @@ const EN_COPY: LocaleCopy = {
         { title: 'Product Managers', description: 'PRDs, meeting notes, spreadsheets, and stakeholder decks — instantly searchable.' },
       ],
     },
+    workflows: {
+      title: 'What can Zush rename?',
+      description: 'Pick a workflow — each page shows how Zush names that file type by its content.',
+      items: {
+        screenshots: { title: 'Rename screenshots', description: '"Screenshot 2026-07-03" becomes a name that says what’s on screen.' },
+        pdfs: { title: 'Rename PDFs & scans', description: 'Invoices, contracts, and scans named by the text inside the document.' },
+        photos: { title: 'Rename photos', description: 'RAW, HEIC, and JPG named by subject and scene.' },
+        documents: { title: 'Rename documents', description: 'Word, Excel, PowerPoint, and iWork files named by topic.' },
+        design: { title: 'Rename design files', description: 'Figma, Sketch, PSD, and exports named by what they contain.' },
+        videos: { title: 'Rename videos', description: 'Recordings and clips named by frames and context.' },
+        audio: { title: 'Rename audio', description: 'MP3, WAV, and voice memos named by sound and metadata.' },
+        batch: { title: 'Batch rename files', description: 'Hundreds of files at once, with preview and one-click undo.' },
+        offline: { title: 'Offline AI renamer', description: 'Local models via Ollama — files never leave your device.' },
+      },
+    },
     faqItems: HOME_FAQ_DATA,
     showcaseSlides: EN_HOME_SHOWCASE_SLIDES,
   },
@@ -1322,6 +1355,7 @@ const localized = (overrides: DeepPartial<LocaleCopy>): LocaleCopy => ({
       ...overrides.home?.useCases,
       items: overrides.home?.useCases?.items ?? base.home.useCases.items,
     },
+    workflows: (overrides.home?.workflows ?? base.home.workflows) as HomeWorkflowsCopy,
     faqItems: overrides.home?.faqItems ?? base.home.faqItems,
     showcaseSlides: overrides.home?.showcaseSlides ?? base.home.showcaseSlides,
   },
@@ -3135,11 +3169,180 @@ const localizedSpeedComparison: Record<Exclude<Locale, 'en'>, SpeedComparisonCop
   },
 };
 
+const localizedWorkflows: Record<Exclude<Locale, 'en'>, HomeWorkflowsCopy> = {
+  de: {
+    title: 'Was kann Zush umbenennen?',
+    description: 'Wähle einen Workflow – jede Seite zeigt, wie Zush diesen Dateityp nach Inhalt benennt.',
+    items: {
+      screenshots: { title: 'Screenshots umbenennen', description: 'Aus „Bildschirmfoto 2026-07-03“ wird ein Name, der sagt, was zu sehen ist.' },
+      pdfs: { title: 'PDFs & Scans umbenennen', description: 'Rechnungen, Verträge und Scans, benannt nach dem Text im Dokument.' },
+      photos: { title: 'Fotos umbenennen', description: 'RAW, HEIC und JPG, benannt nach Motiv und Szene.' },
+      documents: { title: 'Dokumente umbenennen', description: 'Word-, Excel-, PowerPoint- und iWork-Dateien, benannt nach Thema.' },
+      design: { title: 'Designdateien umbenennen', description: 'Figma, Sketch, PSD und Exporte, benannt nach ihrem Inhalt.' },
+      videos: { title: 'Videos umbenennen', description: 'Aufnahmen und Clips, benannt nach Frames und Kontext.' },
+      audio: { title: 'Audio umbenennen', description: 'MP3, WAV und Sprachmemos, benannt nach Klang und Metadaten.' },
+      batch: { title: 'Dateien stapelweise umbenennen', description: 'Hunderte Dateien auf einmal, mit Vorschau und Ein-Klick-Undo.' },
+      offline: { title: 'Offline-KI-Umbenennung', description: 'Lokale Modelle über Ollama – Dateien verlassen nie dein Gerät.' },
+    },
+  },
+  fr: {
+    title: 'Que peut renommer Zush ?',
+    description: 'Choisissez un workflow : chaque page montre comment Zush nomme ce type de fichier selon son contenu.',
+    items: {
+      screenshots: { title: 'Renommer les captures d’écran', description: '« Capture d’écran 2026-07-03 » devient un nom qui décrit ce qui est à l’écran.' },
+      pdfs: { title: 'Renommer les PDF et scans', description: 'Factures, contrats et scans nommés d’après le texte du document.' },
+      photos: { title: 'Renommer les photos', description: 'RAW, HEIC et JPG nommés selon le sujet et la scène.' },
+      documents: { title: 'Renommer les documents', description: 'Fichiers Word, Excel, PowerPoint et iWork nommés par sujet.' },
+      design: { title: 'Renommer les fichiers design', description: 'Figma, Sketch, PSD et exports nommés selon leur contenu.' },
+      videos: { title: 'Renommer les vidéos', description: 'Enregistrements et clips nommés d’après les images et le contexte.' },
+      audio: { title: 'Renommer l’audio', description: 'MP3, WAV et mémos vocaux nommés selon le son et les métadonnées.' },
+      batch: { title: 'Renommer par lots', description: 'Des centaines de fichiers à la fois, avec aperçu et annulation en un clic.' },
+      offline: { title: 'Renommage IA hors ligne', description: 'Modèles locaux via Ollama : les fichiers ne quittent jamais votre appareil.' },
+    },
+  },
+  es: {
+    title: '¿Qué puede renombrar Zush?',
+    description: 'Elige un flujo de trabajo: cada página muestra cómo Zush nombra ese tipo de archivo según su contenido.',
+    items: {
+      screenshots: { title: 'Renombrar capturas de pantalla', description: '«Captura de pantalla 2026-07-03» se convierte en un nombre que describe lo que se ve.' },
+      pdfs: { title: 'Renombrar PDF y escaneos', description: 'Facturas, contratos y escaneos nombrados según el texto del documento.' },
+      photos: { title: 'Renombrar fotos', description: 'RAW, HEIC y JPG nombrados por sujeto y escena.' },
+      documents: { title: 'Renombrar documentos', description: 'Archivos de Word, Excel, PowerPoint e iWork nombrados por tema.' },
+      design: { title: 'Renombrar archivos de diseño', description: 'Figma, Sketch, PSD y exportaciones nombrados según su contenido.' },
+      videos: { title: 'Renombrar vídeos', description: 'Grabaciones y clips nombrados por fotogramas y contexto.' },
+      audio: { title: 'Renombrar audio', description: 'MP3, WAV y notas de voz nombrados por sonido y metadatos.' },
+      batch: { title: 'Renombrar archivos por lotes', description: 'Cientos de archivos a la vez, con vista previa y deshacer con un clic.' },
+      offline: { title: 'Renombrador de IA sin conexión', description: 'Modelos locales con Ollama: los archivos nunca salen de tu equipo.' },
+    },
+  },
+  'pt-br': {
+    title: 'O que o Zush pode renomear?',
+    description: 'Escolha um fluxo de trabalho: cada página mostra como o Zush nomeia esse tipo de arquivo pelo conteúdo.',
+    items: {
+      screenshots: { title: 'Renomear capturas de tela', description: '“Captura de Tela 2026-07-03” vira um nome que diz o que está na tela.' },
+      pdfs: { title: 'Renomear PDFs e digitalizações', description: 'Notas fiscais, contratos e digitalizações nomeados pelo texto do documento.' },
+      photos: { title: 'Renomear fotos', description: 'RAW, HEIC e JPG nomeados por assunto e cena.' },
+      documents: { title: 'Renomear documentos', description: 'Arquivos Word, Excel, PowerPoint e iWork nomeados por tema.' },
+      design: { title: 'Renomear arquivos de design', description: 'Figma, Sketch, PSD e exportações nomeados pelo conteúdo.' },
+      videos: { title: 'Renomear vídeos', description: 'Gravações e clipes nomeados por quadros e contexto.' },
+      audio: { title: 'Renomear áudio', description: 'MP3, WAV e memos de voz nomeados por som e metadados.' },
+      batch: { title: 'Renomear em lote', description: 'Centenas de arquivos de uma vez, com prévia e desfazer em um clique.' },
+      offline: { title: 'Renomeador de IA offline', description: 'Modelos locais via Ollama: os arquivos nunca saem do seu dispositivo.' },
+    },
+  },
+  it: {
+    title: 'Cosa può rinominare Zush?',
+    description: 'Scegli un flusso di lavoro: ogni pagina mostra come Zush nomina quel tipo di file in base al contenuto.',
+    items: {
+      screenshots: { title: 'Rinominare gli screenshot', description: '“Screenshot 2026-07-03” diventa un nome che dice cosa c’è sullo schermo.' },
+      pdfs: { title: 'Rinominare PDF e scansioni', description: 'Fatture, contratti e scansioni nominati in base al testo del documento.' },
+      photos: { title: 'Rinominare le foto', description: 'RAW, HEIC e JPG nominati per soggetto e scena.' },
+      documents: { title: 'Rinominare i documenti', description: 'File Word, Excel, PowerPoint e iWork nominati per argomento.' },
+      design: { title: 'Rinominare i file di design', description: 'Figma, Sketch, PSD ed export nominati in base al contenuto.' },
+      videos: { title: 'Rinominare i video', description: 'Registrazioni e clip nominati in base a fotogrammi e contesto.' },
+      audio: { title: 'Rinominare l’audio', description: 'MP3, WAV e memo vocali nominati per suono e metadati.' },
+      batch: { title: 'Rinominare in blocco', description: 'Centinaia di file alla volta, con anteprima e annulla con un clic.' },
+      offline: { title: 'Rinomina IA offline', description: 'Modelli locali via Ollama: i file non lasciano mai il tuo dispositivo.' },
+    },
+  },
+  nl: {
+    title: 'Wat kan Zush hernoemen?',
+    description: 'Kies een workflow: elke pagina laat zien hoe Zush dat bestandstype op inhoud benoemt.',
+    items: {
+      screenshots: { title: 'Screenshots hernoemen', description: 'Van “Schermafbeelding 2026-07-03” naar een naam die zegt wat er te zien is.' },
+      pdfs: { title: 'PDF’s en scans hernoemen', description: 'Facturen, contracten en scans benoemd naar de tekst in het document.' },
+      photos: { title: 'Foto’s hernoemen', description: 'RAW, HEIC en JPG benoemd naar onderwerp en scène.' },
+      documents: { title: 'Documenten hernoemen', description: 'Word-, Excel-, PowerPoint- en iWork-bestanden benoemd naar onderwerp.' },
+      design: { title: 'Designbestanden hernoemen', description: 'Figma, Sketch, PSD en exports benoemd naar hun inhoud.' },
+      videos: { title: 'Video’s hernoemen', description: 'Opnames en clips benoemd naar beelden en context.' },
+      audio: { title: 'Audio hernoemen', description: 'MP3, WAV en spraakmemo’s benoemd naar geluid en metadata.' },
+      batch: { title: 'Bestanden in bulk hernoemen', description: 'Honderden bestanden tegelijk, met voorbeeld en één-klik ongedaan maken.' },
+      offline: { title: 'Offline AI-hernoemer', description: 'Lokale modellen via Ollama: bestanden verlaten je apparaat nooit.' },
+    },
+  },
+  hi: {
+    title: 'Zush क्या-क्या rename कर सकता है?',
+    description: 'कोई workflow चुनें — हर पेज दिखाता है कि Zush उस file type को उसके कंटेंट के आधार पर कैसे नाम देता है।',
+    items: {
+      screenshots: { title: 'स्क्रीनशॉट rename करें', description: '"Screenshot 2026-07-03" बन जाता है ऐसा नाम जो बताए कि स्क्रीन पर क्या है।' },
+      pdfs: { title: 'PDF और स्कैन rename करें', description: 'इनवॉइस, कॉन्ट्रैक्ट और स्कैन, दस्तावेज़ के टेक्स्ट के आधार पर नामित।' },
+      photos: { title: 'फ़ोटो rename करें', description: 'RAW, HEIC और JPG, विषय और दृश्य के आधार पर नामित।' },
+      documents: { title: 'दस्तावेज़ rename करें', description: 'Word, Excel, PowerPoint और iWork फ़ाइलें, विषय के आधार पर नामित।' },
+      design: { title: 'डिज़ाइन फ़ाइलें rename करें', description: 'Figma, Sketch, PSD और एक्सपोर्ट, उनके कंटेंट के आधार पर नामित।' },
+      videos: { title: 'वीडियो rename करें', description: 'रिकॉर्डिंग और क्लिप, फ़्रेम और संदर्भ के आधार पर नामित।' },
+      audio: { title: 'ऑडियो rename करें', description: 'MP3, WAV और वॉयस मेमो, ध्वनि और मेटाडेटा के आधार पर नामित।' },
+      batch: { title: 'बैच में फ़ाइलें rename करें', description: 'सैकड़ों फ़ाइलें एक साथ, प्रीव्यू और एक-क्लिक undo के साथ।' },
+      offline: { title: 'ऑफ़लाइन AI renamer', description: 'Ollama के ज़रिए लोकल मॉडल — फ़ाइलें कभी आपका डिवाइस नहीं छोड़तीं।' },
+    },
+  },
+  ja: {
+    title: 'Zushは何をリネームできる?',
+    description: 'ワークフローを選ぶと、各ページでそのファイルタイプを内容に基づいて命名する方法がわかります。',
+    items: {
+      screenshots: { title: 'スクリーンショットをリネーム', description: '「スクリーンショット 2026-07-03」が、画面の内容を表す名前になります。' },
+      pdfs: { title: 'PDF・スキャンをリネーム', description: '請求書・契約書・スキャンを、文書内のテキストに基づいて命名。' },
+      photos: { title: '写真をリネーム', description: 'RAW・HEIC・JPGを被写体とシーンで命名。' },
+      documents: { title: '書類をリネーム', description: 'Word・Excel・PowerPoint・iWorkファイルをテーマで命名。' },
+      design: { title: 'デザインファイルをリネーム', description: 'Figma・Sketch・PSD・書き出しファイルを内容で命名。' },
+      videos: { title: '動画をリネーム', description: '録画やクリップをフレームと文脈で命名。' },
+      audio: { title: '音声をリネーム', description: 'MP3・WAV・ボイスメモを音声とメタデータで命名。' },
+      batch: { title: 'ファイルを一括リネーム', description: '数百ファイルを一度に。プレビューとワンクリックで元に戻す機能付き。' },
+      offline: { title: 'オフラインAIリネーマー', description: 'Ollamaによるローカルモデル。ファイルはデバイスの外に出ません。' },
+    },
+  },
+  ko: {
+    title: 'Zush로 무엇의 이름을 바꿀 수 있나요?',
+    description: '워크플로를 선택하면 각 페이지에서 해당 파일 형식을 내용 기반으로 명명하는 방법을 볼 수 있습니다.',
+    items: {
+      screenshots: { title: '스크린샷 이름 바꾸기', description: '"스크린샷 2026-07-03"이 화면 내용을 설명하는 이름으로 바뀝니다.' },
+      pdfs: { title: 'PDF·스캔 이름 바꾸기', description: '청구서, 계약서, 스캔본을 문서 속 텍스트 기반으로 명명.' },
+      photos: { title: '사진 이름 바꾸기', description: 'RAW, HEIC, JPG를 피사체와 장면 기준으로 명명.' },
+      documents: { title: '문서 이름 바꾸기', description: 'Word, Excel, PowerPoint, iWork 파일을 주제별로 명명.' },
+      design: { title: '디자인 파일 이름 바꾸기', description: 'Figma, Sketch, PSD와 내보낸 파일을 내용 기준으로 명명.' },
+      videos: { title: '동영상 이름 바꾸기', description: '녹화와 클립을 프레임과 맥락 기준으로 명명.' },
+      audio: { title: '오디오 이름 바꾸기', description: 'MP3, WAV, 음성 메모를 소리와 메타데이터로 명명.' },
+      batch: { title: '파일 일괄 이름 바꾸기', description: '수백 개 파일을 한 번에, 미리보기와 원클릭 되돌리기 지원.' },
+      offline: { title: '오프라인 AI 리네이머', description: 'Ollama 로컬 모델 사용 — 파일이 기기를 벗어나지 않습니다.' },
+    },
+  },
+  'zh-cn': {
+    title: 'Zush 能重命名什么?',
+    description: '选择一个工作流,每个页面都会展示 Zush 如何按内容为该类型文件命名。',
+    items: {
+      screenshots: { title: '重命名截图', description: '"Screenshot 2026-07-03" 会变成能说明屏幕内容的名称。' },
+      pdfs: { title: '重命名 PDF 和扫描件', description: '发票、合同和扫描件,按文档中的文字命名。' },
+      photos: { title: '重命名照片', description: 'RAW、HEIC 和 JPG,按主体和场景命名。' },
+      documents: { title: '重命名文档', description: 'Word、Excel、PowerPoint 和 iWork 文件,按主题命名。' },
+      design: { title: '重命名设计文件', description: 'Figma、Sketch、PSD 和导出文件,按内容命名。' },
+      videos: { title: '重命名视频', description: '录屏和视频片段,按画面和上下文命名。' },
+      audio: { title: '重命名音频', description: 'MP3、WAV 和语音备忘录,按声音和元数据命名。' },
+      batch: { title: '批量重命名文件', description: '一次处理数百个文件,支持预览和一键撤销。' },
+      offline: { title: '离线 AI 重命名', description: '通过 Ollama 使用本地模型,文件绝不离开你的设备。' },
+    },
+  },
+  ar: {
+    title: 'ما الذي يستطيع Zush إعادة تسميته؟',
+    description: 'اختر سير عمل — تعرض كل صفحة كيف يسمي Zush هذا النوع من الملفات حسب محتواه.',
+    items: {
+      screenshots: { title: 'إعادة تسمية لقطات الشاشة', description: 'يتحول "Screenshot 2026-07-03" إلى اسم يصف ما يظهر على الشاشة.' },
+      pdfs: { title: 'إعادة تسمية ملفات PDF والمستندات الممسوحة', description: 'فواتير وعقود ومستندات ممسوحة تُسمى حسب النص داخل المستند.' },
+      photos: { title: 'إعادة تسمية الصور', description: 'ملفات RAW وHEIC وJPG تُسمى حسب الموضوع والمشهد.' },
+      documents: { title: 'إعادة تسمية المستندات', description: 'ملفات Word وExcel وPowerPoint وiWork تُسمى حسب الموضوع.' },
+      design: { title: 'إعادة تسمية ملفات التصميم', description: 'ملفات Figma وSketch وPSD والتصديرات تُسمى حسب محتواها.' },
+      videos: { title: 'إعادة تسمية الفيديو', description: 'تسجيلات ومقاطع تُسمى حسب الإطارات والسياق.' },
+      audio: { title: 'إعادة تسمية الصوت', description: 'ملفات MP3 وWAV والمذكرات الصوتية تُسمى حسب الصوت والبيانات الوصفية.' },
+      batch: { title: 'إعادة تسمية الملفات دفعةً واحدة', description: 'مئات الملفات في وقت واحد، مع معاينة وتراجع بنقرة واحدة.' },
+      offline: { title: 'إعادة تسمية بالذكاء الاصطناعي دون اتصال', description: 'نماذج محلية عبر Ollama — لا تغادر ملفاتك جهازك أبدًا.' },
+    },
+  },
+};
+
 const withLocalizedFileExamples = (
   locale: Exclude<Locale, 'en'>,
   details: DeepPartial<Pick<HomeCopy, 'featureCards' | 'showcase' | 'speedComparison' | 'whyZush' | 'useCases' | 'faqItems' | 'showcaseSlides'>>,
-): DeepPartial<Pick<HomeCopy, 'featureCards' | 'showcase' | 'speedComparison' | 'whyZush' | 'useCases' | 'faqItems' | 'showcaseSlides'>> => ({
+): DeepPartial<Pick<HomeCopy, 'featureCards' | 'showcase' | 'speedComparison' | 'whyZush' | 'useCases' | 'workflows' | 'faqItems' | 'showcaseSlides'>> => ({
   ...details,
+  workflows: localizedWorkflows[locale],
   featureCards: {
     ...details.featureCards,
     ...localizedFileExamples[locale].featureCards,

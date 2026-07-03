@@ -21,6 +21,7 @@
     "check:seo-redirects": "node scripts/check-seo-redirects.mjs",
     "check:html": "node scripts/check-html-smoke.mjs",
     "check:links": "node scripts/check-internal-links.mjs",
+    "seo:indexnow": "node scripts/indexnow-ping.mjs",
     "check:seo": "pnpm check:astro && pnpm check:locale && pnpm check:payments && pnpm check:seo-middleware && pnpm check:seo-redirects && pnpm build && pnpm check:html && pnpm check:links",
     "check:seo:sandbox": "pnpm check:astro && pnpm check:locale && pnpm check:payments && pnpm check:seo-middleware && pnpm check:seo-redirects && pnpm build:sandbox && pnpm check:html && pnpm check:links",
     "youtube:auth": "node scripts/youtube-upload.mjs auth",

@@ -287,7 +287,9 @@ const Tour = ({ forceOS, copy = defaultCopy }: TourProps) => {
   } as CSSProperties;
 
   return (
-    <section className={styles.Tour} data-scroll-reveal-force>
+    // suppressHydrationWarning: the scroll-reveal script decorates this
+    // section with data attributes before the island hydrates.
+    <section className={styles.Tour} data-scroll-reveal-force suppressHydrationWarning>
       <div className={styles.Tour__Container}>
         <div>
           <SectionHeader

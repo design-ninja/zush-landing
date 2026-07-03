@@ -33,6 +33,20 @@ function assertNextWithCookie(input, headers, expectedCookiePart) {
   );
 }
 
+function assertLegacyPostHogHostRedirect(path, expectedLocation) {
+  const response = middleware(new Request(
+    `https://e.zushapp.com${path}`,
+    { headers: { host: 'e.zushapp.com' } },
+  ));
+
+  assert(response instanceof Response, 'Legacy PostHog proxy host should redirect.');
+  assert(response.status === 308, `Expected 308 for legacy PostHog proxy host, got ${response.status}.`);
+  assert(
+    response.headers.get('location') === expectedLocation,
+    `Unexpected legacy PostHog proxy host location: ${response.headers.get('location')}`,
+  );
+}
+
 assertRedirect('https://zushapp.com/?ref=producthunt', 'https://zushapp.com/?utm_source=producthunt');
 assertRedirect(
   'https://zushapp.com/?checkout=pro&ref=producthunt',
@@ -43,16 +57,12 @@ assertRedirect(
   'https://zushapp.com/?utm_source=google',
 );
 
-const legacyPostHogHost = middleware(new Request(
-  'https://e.zushapp.com/some-proxy-path',
-  { headers: { host: 'e.zushapp.com' } },
-));
-assert(legacyPostHogHost instanceof Response, 'Legacy PostHog proxy host should redirect.');
-assert(legacyPostHogHost.status === 308, `Expected 308 for legacy PostHog proxy host, got ${legacyPostHogHost.status}.`);
-assert(
-  legacyPostHogHost.headers.get('location') === 'https://zushapp.com/',
-  `Unexpected legacy PostHog proxy host location: ${legacyPostHogHost.headers.get('location')}`,
+assertLegacyPostHogHostRedirect(
+  '/some-proxy-path?batch=1',
+  'https://zushapp.com/e/some-proxy-path?batch=1',
 );
+assertLegacyPostHogHostRedirect('/capture/', 'https://zushapp.com/e/capture');
+assertLegacyPostHogHostRedirect('/e/', 'https://zushapp.com/e/e');
 
 const cleanHomepage = middleware(new Request('https://zushapp.com/'));
 assert(cleanHomepage === undefined, 'Clean homepage should continue without middleware redirect.');
@@ -94,4 +104,4 @@ assertNextWithCookie(
   'zush_posthog_country_optout=; Max-Age=0',
 );
 
-console.log('[check-seo-middleware] OK: homepage ref canonicalization and PostHog country opt-out validated.');
+console.log('[check-seo-middleware] OK: homepage ref canonicalization, legacy PostHog redirect, and PostHog country opt-out validated.');

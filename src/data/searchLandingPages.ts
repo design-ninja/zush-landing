@@ -3,7 +3,8 @@ import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 
 type SearchLandingSlug =
   | 'batch-rename-files'
-  | 'offline-ai-file-renamer';
+  | 'offline-ai-file-renamer'
+  | 'ai-file-organizer';
 
 const sharedSlides: FeatureLandingPageProps['showcaseSlides'] = [
   {
@@ -76,6 +77,34 @@ const offlineRenameFaq = [
     question: 'Can I undo offline AI renames?',
     answer:
       'Yes. Zush keeps rename history, so offline-generated names can be reviewed before applying and reverted afterward if a batch needs another pass.',
+  },
+];
+
+const fileOrganizerFaq = [
+  {
+    question: 'What is an AI file organizer?',
+    answer:
+      'An AI file organizer reads what each file contains and turns that into clean, searchable filenames and consistent naming conventions. Instead of sorting by pattern rules alone, Zush analyzes screenshots, PDFs, photos, documents, videos, audio, and design files, then names each one by its content so Finder, Spotlight, and Windows Search can actually find it.',
+  },
+  {
+    question: 'How is an AI file organizer different from an AI file sorter?',
+    answer:
+      'A file sorter moves files into folders; an organizer also fixes the names themselves. Zush focuses on the naming layer: content-aware filenames, templates, and Naming Blocks that keep every folder consistent. Combined with folder monitoring, new files get organized names automatically as they arrive.',
+  },
+  {
+    question: 'Can Zush automatically organize my Downloads folder?',
+    answer:
+      'Yes. Point folder monitoring at Downloads and Zush will name new screenshots, invoices, receipts, and exports by content as they land, using the template you choose. Every change stays in rename history, so you can undo any batch.',
+  },
+  {
+    question: 'Does the AI file organizer work on both Mac and Windows?',
+    answer:
+      'Yes. Zush has a native Mac app (macOS 15+) and a Windows build in the Microsoft Store. Both support content-aware naming, templates, Naming Blocks, folder monitoring, and undo history.',
+  },
+  {
+    question: 'Is my data private when AI organizes my files?',
+    answer:
+      'You choose the mode: managed cloud, BYOK with your own provider key, or Offline AI with local Ollama models so supported file analysis never leaves your device. Files themselves are renamed in place on your disk.',
   },
 ];
 
@@ -177,6 +206,57 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
           'Custom templates and 145+ Naming Blocks',
           'Undo and rename history',
           'Works on macOS and Windows',
+        ],
+      },
+    }),
+  },
+  'ai-file-organizer': {
+    h1: 'AI File Organizer for Mac & Windows',
+    h1Accent: 'AI File Organizer',
+    category: 'general',
+    definitionTitle: 'What Is an AI File Organizer?',
+    definitionText:
+      'An AI file organizer reads what each file contains and turns messy folders into consistently named, searchable libraries. Zush organizes and sorts files by content on Mac and Windows: screenshots, PDFs, invoices, photos, documents, videos, audio, and design files get descriptive names you review before applying, with templates, folder monitoring, and full undo history.',
+    showcaseSlides: sharedSlides,
+    faqItems: fileOrganizerFaq,
+    relatedPages: [
+      { title: 'Folder Monitoring Docs', href: '/docs/folder-monitoring' },
+      { title: 'Templates Guide', href: '/docs/templates' },
+      { title: 'Naming Blocks Guide', href: '/docs/naming-blocks' },
+      { title: 'Batch Rename Files with AI', href: '/batch-rename-files' },
+      { title: 'Offline AI File Renamer', href: '/offline-ai-file-renamer' },
+      { title: 'AI File Renamer & Organizer', href: '/' },
+      { title: 'Zush for Mac', href: '/mac' },
+      { title: 'Zush for Windows', href: '/windows' },
+    ],
+    relatedBlogPosts: [
+      { title: 'Automatic File Organizer for Mac', href: 'automate-file-organization-macos' },
+      { title: 'Best Ways to Organize Photos on Mac', href: 'best-ways-to-organize-photos-on-mac' },
+      { title: 'Declutter Your Mac: File Cleanup Guide', href: 'declutter-your-mac-file-cleanup-guide' },
+    ],
+    jsonLd: buildFeaturePageJsonLd({
+      howTo: {
+        name: 'Organize files with AI',
+        description: 'Use Zush as an AI file organizer and sorter for Mac and Windows folders.',
+        steps: [
+          { name: 'Drop a messy folder into Zush', text: 'Add Downloads, a screenshots folder, a client folder, or any mixed batch of files.' },
+          { name: 'Pick a naming convention', text: 'Use an AI title or combine dates, clients, categories, counters, and metadata with templates and Naming Blocks.' },
+          { name: 'Review, apply, and automate', text: 'Preview every name, apply the batch, then enable folder monitoring so new files get organized automatically.' },
+        ],
+      },
+      faqItems: fileOrganizerFaq,
+      software: {
+        pagePath: '/ai-file-organizer',
+        description:
+          'AI file organizer and sorter for Mac and Windows. Zush names files by content, keeps folders consistent with templates and Naming Blocks, monitors folders, and supports full undo.',
+        featureList: [
+          'AI file organizer for Mac and Windows',
+          'Sort and name files by content, not just by pattern',
+          'Organize screenshots, PDFs, invoices, photos, documents, audio, and videos',
+          'Automatic organization for Downloads via folder monitoring',
+          'Consistent naming conventions with templates and 145+ Naming Blocks',
+          'Preview every filename before applying',
+          'Undo and rename history',
         ],
       },
     }),

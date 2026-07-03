@@ -1,0 +1,79 @@
+---
+title: "Advanced Renamer Review & AI Alternatives for Mac + Windows (2026)"
+description: "Advanced Renamer 4 batch renames with 13 pattern methods on Windows and Mac. See what it's great at, where metadata rules stop, and AI alternatives that read file content."
+date: "2026-07-03"
+slug: "advanced-renamer-alternatives"
+platform: "general"
+topic: "comparisons"
+tags:
+  - "Tool Comparisons"
+  - "File Organization"
+tldr: "Advanced Renamer is a strong pattern-and-metadata batch renamer, now on both Windows and macOS, with 13 renaming methods, EXIF/GPS extraction, preview, and batch undo under a one-time license. It cannot name files by what they contain — for mixed folders where each file needs its own descriptive name, pair it with or replace it with an AI renamer like Zush."
+reviewed: "2026-07-03"
+---
+import BlogHighlight from '@/components/blog/BlogHighlight.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
+
+Quick answer: Advanced Renamer (version 4.23, June 2026) is one of the best <BlogHighlight>pattern-and-metadata batch renamers</BlogHighlight> around, and unlike most classic renamers it now runs on **both Windows and macOS**. It shines when new names can be built from things the file already knows about itself: EXIF date and camera model, GPS location, ID3 tags, timestamps, counters. It cannot look at a screenshot, scan, or document and tell you what it *is* — that's the line where AI renamers take over.
+
+Feature and licensing claims last checked July 3, 2026, against the official [Advanced Renamer site](https://www.advancedrenamer.com/).
+
+<BlogProductIntro />
+
+## What Advanced Renamer does well
+
+- **13 renaming methods you can stack** — add, remove, replace, change case, renumber, or build entirely new names, combined in one batch and previewed before running.
+- **Metadata-driven names** — pull EXIF date/time, image dimensions, camera model, and even GPS data into filenames; great for photographers with `DSC_*.NEF` archives shot on a consistent workflow.
+- **Move and copy rules** — files can be relocated based on their information as part of the same batch.
+- **Batch undo** — regret a run, revert the whole thing.
+- **One-time license** — personal and commercial tiers via Paddle, with free upgrades across the 3.xx–4.xx range and no subscription.
+
+If your photos have reliable EXIF and your desired name is `2026-06-12 14.32 Osaka.jpg`, Advanced Renamer is exactly the right tool.
+
+## Where metadata rules stop
+
+Metadata answers *when, where, and with what* a file was made — not *what it shows or says*. That gap covers most everyday mess:
+
+- Screenshots: EXIF gives you the timestamp you already had, not "Stripe Dashboard Payout Error".
+- Scanned PDFs: creation date says nothing about vendor, contract type, or invoice number inside.
+- Mixed client folders: no counter or GPS tag turns `Untitled.fig` and `meeting_notes_FINAL.docx` into names a teammate can search for.
+
+For those, the name has to come from the content itself — which means AI analysis, not rules. Our guide to [renaming files by content](/blog/rename-files-by-content-guide) shows what that looks like in practice.
+
+## Advanced Renamer vs Zush
+
+<BlogToolMeta platform="Mac (macOS 15+) and Windows 10/11" website="https://zushapp.com/" label="zushapp.com">
+  <Fragment slot="pricing">Free tier (50 renames), PRO <BlogHighlight>$8/month or $38 one-time</BlogHighlight> for unlimited PRO renames, BYOK optional, local Ollama supported</Fragment>
+</BlogToolMeta>
+
+| Dimension | Advanced Renamer | Zush |
+|---|---|---|
+| Platforms | Windows + macOS | Windows + macOS |
+| Renaming logic | 13 pattern/metadata methods | <BlogHighlight>AI reads file content</BlogHighlight>, combined with dates, counters, and metadata via 145+ Naming Blocks |
+| Names from EXIF/GPS/tags | <BlogHighlight>Yes, very strong</BlogHighlight> | Yes (metadata Naming Blocks) |
+| Names from file content | No | Yes — screenshots, PDFs, photos, documents, video, audio, design files |
+| Pricing model | One-time license (personal/commercial tiers) | Free tier; $8/month or $38 one-time |
+| Preview + undo | Yes | Yes (full rename history) |
+| Folder monitoring | No | Yes — auto-name new files as they arrive |
+| Templates for repeat jobs | Method presets | Templates + custom AI prompts |
+
+![Zush AI rename results on macOS showing content-aware filenames for mixed files](/images/showcase/macos/batch-rename-light.webp)
+
+Honest guidance: these two aren't enemies. Advanced Renamer is the better pure metadata engine; Zush exists for the folders where metadata can't tell the files apart. Photographers with disciplined EXIF workflows may want both — Advanced Renamer for shoots, Zush for everything else on the desktop.
+
+## FAQ
+
+**Is Advanced Renamer available for Mac?**
+Yes — Advanced Renamer added a macOS version alongside Windows (current release 4.23, June 2026). Many "Advanced Renamer alternative for Mac" searches predate this.
+
+**Is Advanced Renamer free?**
+No. Licenses are one-time purchases (personal and commercial tiers, sold via Paddle) with free upgrades within the 3.xx–4.xx version range.
+
+**Can Advanced Renamer name files based on their content?**
+No. It builds names from patterns and file metadata such as EXIF, GPS, and ID3 tags. Naming a file by what it shows or says requires AI content analysis — that's what [Zush's batch rename](/batch-rename-files) does, with review before applying and full undo.
+
+**What is the best Advanced Renamer alternative?**
+For metadata-heavy photo work, Advanced Renamer itself is the benchmark. If the reason you're looking for an alternative is that patterns and tags aren't enough for your folders, an AI renamer like [Zush](/) (50 free renames, Mac + Windows) is the alternative that changes the outcome rather than the interface.
+
+Sources checked for this update: [Advanced Renamer](https://www.advancedrenamer.com/) (version, platforms, features, licensing) and [Zush](/) (pricing, platforms, formats).

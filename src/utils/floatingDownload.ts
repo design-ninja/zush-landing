@@ -8,30 +8,15 @@ const VISIBILITY_THRESHOLD = 60;
 // CTA's resting position (roughly button height + bottom offset), hide it to avoid overlap.
 const FOOTER_HIDE_MARGIN = 96;
 
+// Toggle `inert` on the wrapper instead of mutating tabindex on descendants:
+// the wrapper is static Astro HTML, while the descendants belong to a React
+// island — touching them before hydration causes hydration mismatches.
 function syncFocusableState(node: HTMLElement, isVisible: boolean): void {
-  node.querySelectorAll<HTMLElement>('a, button, input, select, textarea, [tabindex]').forEach((element) => {
-    if (isVisible) {
-      if ('floatingOriginalTabindex' in element.dataset) {
-        const original = element.dataset.floatingOriginalTabindex || '';
-
-        if (original) {
-          element.setAttribute('tabindex', original);
-        } else {
-          element.removeAttribute('tabindex');
-        }
-
-        delete element.dataset.floatingOriginalTabindex;
-      }
-
-      return;
-    }
-
-    if (!('floatingOriginalTabindex' in element.dataset)) {
-      element.dataset.floatingOriginalTabindex = element.getAttribute('tabindex') || '';
-    }
-
-    element.setAttribute('tabindex', '-1');
-  });
+  if (isVisible) {
+    node.removeAttribute('inert');
+  } else {
+    node.setAttribute('inert', '');
+  }
 }
 
 function syncFloatingDownloadState(): void {

@@ -9,6 +9,8 @@ const POSTHOG_COUNTRY_OPTOUT_MAX_AGE_SECONDS = 60 * 60 * 24 * 7;
 const POSTHOG_COUNTRY_OPTOUT_COUNTRIES = new Set(['TH']);
 const COUNTRY_VARY_HEADER = 'x-vercel-ip-country';
 const LEGACY_POSTHOG_PROXY_HOST = 'e.zushapp.com';
+const CANONICAL_HOST = 'zushapp.com';
+const POSTHOG_PROXY_PATH = '/e';
 
 // fallow-ignore-next-line unused-export
 export const config = {
@@ -49,6 +51,19 @@ function getVisitorCountry(request) {
 
 function getRequestHost(request) {
   return request.headers.get('host')?.split(':')[0].toLowerCase();
+}
+
+function buildLegacyPostHogProxyRedirectUrl(requestUrl) {
+  const redirectUrl = new URL(requestUrl.href);
+  const pathWithoutTrailingSlash = redirectUrl.pathname === '/'
+    ? ''
+    : redirectUrl.pathname.replace(/\/+$/, '');
+
+  redirectUrl.protocol = 'https:';
+  redirectUrl.host = CANONICAL_HOST;
+  redirectUrl.pathname = `${POSTHOG_PROXY_PATH}${pathWithoutTrailingSlash}`;
+
+  return redirectUrl;
 }
 
 function getPostHogCountryOptOutCookie(request) {
@@ -96,7 +111,7 @@ export default function middleware(request) {
   const url = new URL(request.url);
 
   if (getRequestHost(request) === LEGACY_POSTHOG_PROXY_HOST) {
-    return Response.redirect('https://zushapp.com/', 308);
+    return Response.redirect(buildLegacyPostHogProxyRedirectUrl(url), 308);
   }
 
   const postHogCountryOptOutCookie = getPostHogCountryOptOutCookie(request);
