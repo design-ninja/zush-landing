@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.6.2] - 2026-07-04
+
+### Improved
+- Faster, more reliable batch renaming for large selections
+- Clearer progress and failure summaries during AI Rename
+
+### Fixed
+- Fixed hangs and crashes during Finder tag updates
+- Improved recovery when cloud AI providers fail or time out
+
 ## [3.6.1] - 2026-07-02
 
 ### Improved
