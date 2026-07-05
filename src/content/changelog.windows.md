@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.4.2.0] - 2026-07-05
+### Improved
+- Improved stability when opening Zush from activation links and returning from checkout.
+- Made drag and drop more reliable for files and folders from different Windows sources.
+- Improved folder monitoring reliability and reduced duplicate background work.
+- Improved performance and responsiveness when working with larger rename histories and statistics.
+- Updated app dependencies for security and reliability.
+
+
 ## [3.4.1.0] - 2026-06-30
 
 ### Fixed
