@@ -72,7 +72,12 @@ export const PLATFORM_LANDING_CONTENT: Record<DownloadOS, PlatformLandingContent
       {
         question: 'Do you offer a Mac App Store version?',
         answer:
-          'Yes, a Mac App Store build is available as well. The direct .dmg download above is the recommended way to get the latest release quickly.',
+          'Yes. Zush is available as a direct .dmg, on the Mac App Store, and as a Homebrew cask. The direct .dmg download above is the recommended way to get the latest release quickly.',
+      },
+      {
+        question: 'Can I install Zush with Homebrew?',
+        answer:
+          'Yes. Use `brew install --cask zush` or open the Zush cask page on Homebrew if you manage Mac apps from Terminal.',
       },
       {
         question: 'Where are my files sent?',

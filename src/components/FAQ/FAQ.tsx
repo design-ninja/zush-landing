@@ -48,7 +48,7 @@ const withLinkedAnswer = (item: FAQData): FAQData => {
       answer: (
         <>
           Zush runs on macOS ({APP_CONFIG.min_macos_version} {APP_CONFIG.min_macos_name} and newer) and Windows 10 / 11. See the{' '}
-          <AppLink href="/mac">Mac page</AppLink> for the signed .dmg and Mac App Store options, or the{' '}
+          <AppLink href="/mac">Mac page</AppLink> for the signed .dmg, Mac App Store, and Homebrew options, or the{' '}
           <AppLink href="/windows">Windows page</AppLink> for the Microsoft Store build.
         </>
       ),

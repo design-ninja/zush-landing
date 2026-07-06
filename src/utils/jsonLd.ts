@@ -1,6 +1,6 @@
 import type { BlogPost, FAQItem } from '@/data/blog';
 import { toIsoDateTime } from '@/seo/config';
-import { MAC_INSTALLER_URL, WINDOWS_STORE_URL } from '@/constants';
+import { APP_STORE_URL, HOMEBREW_CASK_URL, MAC_INSTALLER_URL, WINDOWS_STORE_URL } from '@/constants';
 
 const SITE_ORIGIN = 'https://zushapp.com';
 
@@ -137,8 +137,10 @@ function buildSoftwareApplicationJsonLd(data: SoftwareApplicationData) {
     applicationCategory: 'UtilitiesApplication',
     applicationSubCategory: data.applicationSubCategory ?? 'File Management',
     operatingSystem: data.operatingSystem ?? ['macOS 15.0+', 'Windows 10', 'Windows 11'],
-    downloadUrl: data.downloadUrl ?? MAC_INSTALLER_URL,
-    ...(data.installUrl ? { installUrl: data.installUrl } : { installUrl: WINDOWS_STORE_URL }),
+    downloadUrl: data.downloadUrl ?? [MAC_INSTALLER_URL, APP_STORE_URL, HOMEBREW_CASK_URL, WINDOWS_STORE_URL],
+    ...(data.installUrl
+      ? { installUrl: data.installUrl }
+      : { installUrl: [APP_STORE_URL, HOMEBREW_CASK_URL, WINDOWS_STORE_URL] }),
     screenshot: data.screenshot ?? `${SITE_ORIGIN}/og-image.png`,
     offers: (data.offers ?? DEFAULT_SOFTWARE_OFFERS).map((offer) => ({
       '@type': 'Offer',

@@ -46,7 +46,7 @@ export type DownloadSource =
   | 'download-page-windows'
   | 'download-link';
 
-export type DownloadChannel = 'direct' | 'mac-app-store' | 'microsoft-store';
+export type DownloadChannel = 'direct' | 'mac-app-store' | 'microsoft-store' | 'homebrew';
 
 export type ProClickSource = 'hero' | 'navbar';
 export type ProPlanId = 'monthly' | 'one-time';
@@ -182,7 +182,7 @@ const isDownloadOS = (value: string | undefined): value is DownloadOS =>
   value === 'mac' || value === 'windows';
 
 const isDownloadChannel = (value: string | undefined): value is DownloadChannel =>
-  value === 'direct' || value === 'mac-app-store' || value === 'microsoft-store';
+  value === 'direct' || value === 'mac-app-store' || value === 'microsoft-store' || value === 'homebrew';
 
 const trackedRoots = new WeakSet<EventTarget>();
 

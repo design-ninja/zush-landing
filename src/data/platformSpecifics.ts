@@ -1,6 +1,7 @@
 import {
   APP_STORE_URL,
   DOWNLOAD_URL,
+  HOMEBREW_CASK_URL,
   WINDOWS_STORE_URL,
 } from '@/constants';
 import { VIDEO_PREVIEW_IMAGES } from '@/data/videoPreviewImages';
@@ -28,7 +29,7 @@ export interface InstallMethod {
   steps: InstallStep[];
   recommended?: boolean;
   storeBadge: {
-    kind: 'app-store' | 'microsoft-store' | 'direct-dmg';
+    kind: 'app-store' | 'microsoft-store' | 'direct-dmg' | 'homebrew';
     kicker: string;
     label: string;
     ariaLabel: string;
@@ -125,6 +126,24 @@ export const PLATFORM_SPECIFICS_CONTENT: Record<PlatformSpecificsKey, PlatformSp
           kicker: 'Download on the',
           label: 'Mac App Store',
           ariaLabel: 'Open Zush on the Mac App Store',
+        },
+      },
+      {
+        title: 'Homebrew',
+        badge: 'Terminal',
+        href: HOMEBREW_CASK_URL,
+        description:
+          'Homebrew cask install for Mac users who manage apps from Terminal or scripted setup.',
+        steps: [
+          { step: 'Open Terminal', detail: 'Use any shell where Homebrew is already installed and available on your PATH.' },
+          { step: 'Run the cask install', detail: 'Install Zush with `brew install --cask zush`.' },
+          { step: 'Launch Zush', detail: 'Open Zush from Applications, Spotlight, or Launchpad after Homebrew finishes the install.' },
+        ],
+        storeBadge: {
+          kind: 'homebrew',
+          kicker: 'Install with',
+          label: 'Homebrew',
+          ariaLabel: 'Open the Zush Homebrew cask',
         },
       },
     ],

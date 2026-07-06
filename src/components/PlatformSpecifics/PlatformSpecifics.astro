@@ -104,6 +104,7 @@ const previewReviewRows = data.scenarios.slice(0, 2).map((scenario) => ({
 const getInstallDownloadChannel = (kind: string): DownloadChannel => {
   if (kind === 'app-store') return 'mac-app-store';
   if (kind === 'microsoft-store') return 'microsoft-store';
+  if (kind === 'homebrew') return 'homebrew';
   return 'direct';
 };
 

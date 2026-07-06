@@ -46,7 +46,7 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'Does Zush work as an AI file renamer for Windows and Mac?',
     answer:
-      `Yes. Zush runs on macOS ${APP_CONFIG.min_macos_version}+ and Windows 10 / 11. The Mac build is available as a signed .dmg and on the Mac App Store, and the Windows build is available on the Microsoft Store.`,
+      `Yes. Zush runs on macOS ${APP_CONFIG.min_macos_version}+ and Windows 10 / 11. The Mac build is available as a signed .dmg, on the Mac App Store, and through Homebrew, and the Windows build is available on the Microsoft Store.`,
   },
   {
     question: 'Is Zush an online AI file renamer or an offline AI file renamer?',
@@ -109,7 +109,7 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   },
   {
     question: 'Which operating systems are supported?',
-    answer: `Zush runs on macOS (${APP_CONFIG.min_macos_version} ${APP_CONFIG.min_macos_name} and newer) and Windows 10 / 11. The Mac build is distributed as a signed .dmg and on the Mac App Store; the Windows build is available on the Microsoft Store.`,
+    answer: `Zush runs on macOS (${APP_CONFIG.min_macos_version} ${APP_CONFIG.min_macos_name} and newer) and Windows 10 / 11. The Mac build is distributed as a signed .dmg, on the Mac App Store, and through Homebrew; the Windows build is available on the Microsoft Store.`,
   },
   {
     question: 'Which AI model does the app use?',

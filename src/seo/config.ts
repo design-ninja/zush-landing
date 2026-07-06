@@ -2,6 +2,7 @@ import type { BlogPost } from '@/data/blog';
 import {
   APP_CONFIG,
   APP_STORE_URL,
+  HOMEBREW_CASK_URL,
   MAC_INSTALLER_URL,
   SUPPORTED_FORMAT_COUNT,
   WINDOWS_STORE_URL,
@@ -305,6 +306,7 @@ export const HOME_JSON_LD = {
         'https://x.com/zush_app',
         'https://www.youtube.com/@zushapp',
         'https://www.producthunt.com/products/zush',
+        HOMEBREW_CASK_URL,
         APP_STORE_URL,
         WINDOWS_STORE_URL,
       ],
@@ -391,13 +393,14 @@ export const HOME_JSON_LD = {
       applicationSubCategory: 'File Management',
       operatingSystem: ['macOS 15.0+', 'Windows 10', 'Windows 11'],
       softwareVersion: APP_CONFIG.app_version,
-      downloadUrl: [MAC_INSTALLER_URL, APP_STORE_URL, WINDOWS_STORE_URL],
-      installUrl: [APP_STORE_URL, WINDOWS_STORE_URL],
+      downloadUrl: [MAC_INSTALLER_URL, APP_STORE_URL, HOMEBREW_CASK_URL, WINDOWS_STORE_URL],
+      installUrl: [APP_STORE_URL, HOMEBREW_CASK_URL, WINDOWS_STORE_URL],
       sameAs: [
         APP_STORE_URL,
         WINDOWS_STORE_URL,
         'https://www.producthunt.com/products/zush',
         'https://www.youtube.com/@zushapp',
+        HOMEBREW_CASK_URL,
       ],
       image: DEFAULT_OG_IMAGE,
       screenshot: [
