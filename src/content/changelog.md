@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.6.3] - 2026-07-06
+
+### Improved
+- More reliable AI Rename when cloud requests time out
+- More dependable folder monitoring during large file changes
+- Zush now asks App Store users for a rating after successful Pro rename sessions
+
+### Fixed
+- Fixed startup setup after completing onboarding
+- Fixed update prompts in the direct-download version
+- Reduced unnecessary macOS keychain prompts
+
 ## [3.6.2] - 2026-07-04
 
 ### Improved

@@ -6,13 +6,28 @@
         <description>Zush app updates</description>
         <language>en</language>
         <item>
+            <title>3.6.3</title>
+            <pubDate>Mon, 06 Jul 2026 19:43:47 +0700</pubDate>
+            <sparkle:version>115</sparkle:version>
+            <sparkle:shortVersionString>3.6.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<h2>What's New in 3.6.3</h2><ul></ul><p><strong>Improved</strong></p><ul><li>More reliable AI Rename when cloud requests time out</li><li>More dependable folder monitoring during large file changes</li><li>Zush now asks App Store users for a rating after successful Pro rename sessions</li></ul><p><strong>Fixed</strong></p><ul><li>Fixed startup setup after completing onboarding</li><li>Fixed update prompts in the direct-download version</li><li>Reduced unnecessary macOS keychain prompts</li></ul>
+]]></description>
+            <enclosure url="https://zushapp.com/releases/Zush-3.6.3.dmg" length="12480499" type="application/octet-stream" sparkle:edSignature="Aeop3tVd0+Zf17L0X5BSnpWfI8kLZjm8p8cOR0vJnXoqWgxBC4NeRt47NiE4Z6qdH5spWaRyopwAZBVfp7WgDQ=="/>
+            <sparkle:deltas>
+                <enclosure url="https://zushapp.com/releases/Zush115-113.delta" sparkle:deltaFrom="113" length="994746" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="026k7ak7rfNAEqe8G/UeLDoc2VVOGX5oPfVzHCYPJfipHFHEfrjEtOOnw8DGtsj4fR7h3JKj4UUjEj57LPU0AQ=="/>
+                <enclosure url="https://zushapp.com/releases/Zush115-111.delta" sparkle:deltaFrom="111" length="1629306" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="3QibJ0HMoZqgWRwzF4DnUBSM9vGBNCZ0fonvwdIg8OiZB3tGCCDaIPR3dXxwcBycW2SY1fF6Tl4pNbq9xqHODQ=="/>
+                <enclosure url="https://zushapp.com/releases/Zush115-109.delta" sparkle:deltaFrom="109" length="1653242" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="ZzwiHBSH4b7DIEYYZ9CiDfLIWZYmRffZXAptf4zw442e6JLvWnf5froOuqz/CKamJpZS8wOc4vymUPCvHwSWAg=="/>
+                <enclosure url="https://zushapp.com/releases/Zush115-107.delta" sparkle:deltaFrom="107" length="1857298" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="USwwpDz0IM2S+vmW0pRmqQA/i+I2YNWtn8U2oSd95MA4L0ml8Y72rdBIS5yggLiUDSaIIpeJ2M+ipZW6HbFLBA=="/>
+                <enclosure url="https://zushapp.com/releases/Zush115-106.delta" sparkle:deltaFrom="106" length="2001750" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="KwaqAETxawxhmMfNbTKZdC13D8wmmSPAIu7RwckP6j3omtNLGNzuayoRyXkOLv5szfZZM5punXtTHKz84kJ3Cw=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>3.6.2</title>
             <pubDate>Sat, 04 Jul 2026 20:37:06 +0700</pubDate>
             <sparkle:version>113</sparkle:version>
             <sparkle:shortVersionString>3.6.2</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<h2>What's New in 3.6.2</h2><ul></ul><p><strong>Improved</strong></p><ul><li>Faster, more reliable batch renaming for large selections</li><li>Clearer progress and failure summaries during AI Rename</li></ul><p><strong>Fixed</strong></p><ul><li>Fixed hangs and crashes during Finder tag updates</li><li>Improved recovery when cloud AI providers fail or time out</li></ul>
-]]></description>
             <enclosure url="https://zushapp.com/releases/Zush-3.6.2.dmg" length="12476733" type="application/octet-stream" sparkle:edSignature="fBPw8RmhC2apeMWRfk5Gk756E2EYEv7QovD9UCrU2QM7TXany3TLWRAimIKRdcqfKHBOcLyWQooPs+EPXcTkCA=="/>
             <sparkle:deltas>
                 <enclosure url="https://zushapp.com/releases/Zush113-111.delta" sparkle:deltaFrom="111" length="1609326" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="ZF6fZSCF+/KZPrE6uFZWt5wNs0pdzECxBnM27hw02QCkRe3PGk+ASW6C/BCmQd3FYAiuaYPqdVKr/8QS29nwAA=="/>
@@ -35,21 +50,6 @@
                 <enclosure url="https://zushapp.com/releases/Zush111-106.delta" sparkle:deltaFrom="106" length="1674570" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="9tV1p2E/yqJsuRYfzqZms+0q4Ezo/Yq+KlNMLriNnAvpX5dN25zNVCd7B+gDLp4PWD9UjQlwGg6HX1IDNbYxBg=="/>
                 <enclosure url="https://zushapp.com/releases/Zush111-105.delta" sparkle:deltaFrom="105" length="1736738" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="u/EGrDdRCSxKTe02U2zGCdqfsow3NPbaezu9uYoJxMXYXu7Y4ADFk/ju82NCZTvxXkqGcBBNIdsv0a+tgaKsCg=="/>
                 <enclosure url="https://zushapp.com/releases/Zush111-103.delta" sparkle:deltaFrom="103" length="1768974" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="S44LaG2xOaFfnPbFNutczJ4MyIsvFhJhv84gkHtRuKj7g1rc46rdNxyT1mU/RYHJ0wfP2sFxCpU4riWMp466AQ=="/>
-            </sparkle:deltas>
-        </item>
-        <item>
-            <title>3.6.0</title>
-            <pubDate>Mon, 29 Jun 2026 14:39:22 +0700</pubDate>
-            <sparkle:version>109</sparkle:version>
-            <sparkle:shortVersionString>3.6.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://zushapp.com/releases/Zush-3.6.0.dmg" length="12518344" type="application/octet-stream" sparkle:edSignature="DkAHl3ibc46hYO708bn5IFk8ENy0Zv0FnmP/aVEn/RTKr8tetkESNqUsSCpB0189OZuKuB7SQDncW6P2nASHBA=="/>
-            <sparkle:deltas>
-                <enclosure url="https://zushapp.com/releases/Zush109-107.delta" sparkle:deltaFrom="107" length="1370558" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="VlC1aBzeb2ufqDj/3wqkGXnJopxGrcxFiLXarLGOqO8sJ78UTk9oF6c4ZeRKWAmQqi5LVEFg7t+LwFVE8YrpDA=="/>
-                <enclosure url="https://zushapp.com/releases/Zush109-106.delta" sparkle:deltaFrom="106" length="1621550" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="427eXU6UrIOXjMAbGxVGAhRwPbLB9kVzZOTOup6XJdE+Z1XLSt0SQxnkEuBrEXZ/aZoEKqcUevnnG48eSTn7BA=="/>
-                <enclosure url="https://zushapp.com/releases/Zush109-105.delta" sparkle:deltaFrom="105" length="1703602" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="PKWHO6WlT+fgvZ7YPNfXhkIWCJzx2aGr0kwkntxl+U/hqjcoq9sidAxDscZxW9AG1Yy6Xu9gF+YNjJwyRbzqCw=="/>
-                <enclosure url="https://zushapp.com/releases/Zush109-103.delta" sparkle:deltaFrom="103" length="1724010" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="ArchFAv7FQj//5n4+clR/Vb3gwOFLnJZyJCVocXYu0Fw//MeN//SMuhnwV9yDOwGaWgkLjJzepmSJAvwNlQpAQ=="/>
-                <enclosure url="https://zushapp.com/releases/Zush109-101.delta" sparkle:deltaFrom="101" length="1778442" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="jbCbT4PdXiupa3lx6u1rXVfzOyAn1pNviHIHdLt47s+H9OXLQ3gzqqFo+vIxsBcSZVBhidNDbrJFR81Z/2peAg=="/>
             </sparkle:deltas>
         </item>
         <item>
