@@ -170,6 +170,11 @@
         display: flex;
         gap: 2rem;
         align-items: center;
+
+        @include mobile {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
     }
 
     &__SocialLink {
@@ -180,6 +185,18 @@
 
         &:hover {
             color: var(--primary);
+        }
+    }
+
+    &__TaaftBadge {
+        display: inline-flex;
+        align-items: center;
+
+        img {
+            display: block;
+            width: 9.375rem;
+            max-width: min(9.375rem, 72vw);
+            height: auto;
         }
     }
 

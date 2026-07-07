@@ -273,7 +273,13 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
       >
         <slot />
       </main>
-      {includeChrome && <Footer locale={locale} hidePlatform={footerHidePlatform} />}
+      {includeChrome && (
+        <Footer
+          locale={locale}
+          hidePlatform={footerHidePlatform}
+          showTaaftBadge={seo.canonicalPath === '/'}
+        />
+      )}
       {includeChrome && <ScrollToTopButton />}
       {includeChrome && (
         <FloatingDownloadCTA

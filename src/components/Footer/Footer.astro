@@ -23,9 +23,10 @@ import styles from './Footer.module.scss';
 interface Props {
   locale?: Locale;
   hidePlatform?: 'mac' | 'windows';
+  showTaaftBadge?: boolean;
 }
 
-const { locale = DEFAULT_LOCALE, hidePlatform } = Astro.props as Props;
+const { locale = DEFAULT_LOCALE, hidePlatform, showTaaftBadge = false } = Astro.props as Props;
 const copy = getCopy(locale).footer;
 const shouldShowAppStore = hidePlatform !== 'mac';
 const shouldShowMicrosoftStore = hidePlatform !== 'windows';
@@ -269,6 +270,23 @@ const homebrewLabel = 'Zush on Homebrew';
           </svg>
           <span class={styles.Footer__VisuallyHidden}>{homebrewLabel}</span>
         </a>
+
+        {showTaaftBadge && (
+          <a
+            href='https://theresanaiforthat.com/ai/zush-ai-file-renamer-organizer/?ref=featured&v=11558724'
+            target='_blank'
+            rel='nofollow noopener noreferrer'
+            class={styles.Footer__TaaftBadge}
+          >
+            <img
+              width='300'
+              src='https://media.theresanaiforthat.com/featured-on-taaft.png?width=600'
+              alt="Featured on There's An AI For That"
+              loading='lazy'
+              decoding='async'
+            />
+          </a>
+        )}
       </div>
 
       <div class={styles.Footer__BottomLinks}>
