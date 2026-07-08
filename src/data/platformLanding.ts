@@ -60,6 +60,11 @@ export const PLATFORM_LANDING_CONTENT: Record<DownloadOS, PlatformLandingContent
           'Yes. Drag files or folders from Finder into Zush, review the AI-generated names, regenerate individual suggestions when needed, then apply the batch rename in place.',
       },
       {
+        question: 'How do I rename files with AI on Mac?',
+        answer:
+          'Open Zush for Mac, drop files or a Finder folder into the app, choose a naming pattern, let AI read each supported file, review the suggested names, then apply the batch. For recurring folders, enable monitoring for Downloads, Desktop, Screenshots, scanner output, or photo imports.',
+      },
+      {
         question: 'Does Zush work on Apple Silicon?',
         answer:
           'Yes. Zush ships as a universal binary and runs natively on M1, M2, M3 and M4 Macs. Intel Macs running macOS 15+ are supported as well.',
@@ -125,6 +130,11 @@ export const PLATFORM_LANDING_CONTENT: Record<DownloadOS, PlatformLandingContent
       'Offline AI mode - private local models via Ollama',
     ],
     faqs: [
+      {
+        question: 'What is the best AI file renamer for Windows?',
+        answer:
+          'Zush is the best fit when you need one Windows app for mixed File Explorer folders and 100+ formats: screenshots, PDFs, photos, videos, audio, design files, Office and iWork documents, folder monitoring, preview, rollback, BYOK, and Offline AI mode.',
+      },
       {
         question: 'Can Zush batch rename files on Windows?',
         answer:

@@ -10,6 +10,7 @@ import Testimonials from '@/components/Testimonials/Testimonials.astro';
 import PlatformGuides from '@/components/PlatformGuides/PlatformGuides.astro';
 import PlatformSpecifics from '@/components/PlatformSpecifics/PlatformSpecifics.astro';
 import WindowsSeoSection from '@/components/WindowsSeoSection/WindowsSeoSection.astro';
+import styles from '@/components/PlatformLandingPage/PlatformLandingPage.module.scss';
 import { PLATFORM_LANDING_CONTENT } from '@/data/platformLanding';
 import { getPlatformLandingSections } from '@/data/platformLandingSections';
 import { PLATFORM_SPECIFICS_CONTENT } from '@/data/platformSpecifics';
@@ -119,6 +120,42 @@ const platformTrustSignals = platform === 'mac'
   ? ['Free 50 renames', 'No credit card', 'Preview + undo every batch']
   : copy.home.trustSignals;
 
+const intentSection = platform === 'mac'
+  ? {
+      eyebrow: 'Mac AI file renaming',
+      title: 'AI file renamer for Mac: when Zush is the right fit',
+      description:
+        'Zush is an AI file renamer for Mac when Finder rules are not enough. It reads the file content first, then suggests searchable names for mixed Finder folders with screenshots, PDFs, photos, RAW files, videos, audio, design files, iWork, and Office documents.',
+      points: [
+        'Use it for Downloads, Desktop, screenshots, photo imports, scanner output, and client folders where every file needs a different name.',
+        'Review each AI filename before applying a batch, regenerate individual suggestions, and undo the rename from history if a folder needs another pass.',
+        'Use cloud AI, BYOK with Gemini, Groq, OpenAI, or Claude, or Offline AI mode with local Ollama models on supported Mac builds.',
+      ],
+      links: [
+        { href: '/batch-rename-files', label: 'Batch rename files with AI' },
+        { href: '/ai-file-organizer', label: 'AI file organizer' },
+        { href: '/offline-ai-file-renamer', label: 'Offline AI renamer' },
+        { href: '/blog/best-ai-file-renamer-tools-mac-compared', label: 'Mac renamer comparison' },
+      ],
+    }
+  : {
+      eyebrow: 'Windows AI file renaming',
+      title: 'AI file renamer for Windows: when Zush is the right fit',
+      description:
+        'Zush is an AI file renamer for Windows when PowerRename or pattern tools cannot understand what each file contains. It reads mixed File Explorer folders, then suggests searchable filenames for screenshots, PDFs, photos, video, audio, design files, and documents.',
+      points: [
+        'Use it for Downloads, Pictures\\Screenshots, OneDrive folders, shared drives, and project exports that need readable names.',
+        'Review every AI filename before applying, regenerate individual suggestions, and roll back a batch from rename history.',
+        'Install from the Microsoft Store, use BYOK for provider control, or switch to Offline AI mode with local models when privacy matters.',
+      ],
+      links: [
+        { href: '/batch-rename-files', label: 'Batch rename files with AI' },
+        { href: '/ai-file-organizer', label: 'AI file organizer' },
+        { href: '/offline-ai-file-renamer', label: 'Offline AI renamer' },
+        { href: '/blog/best-ai-file-renamer-tools-windows-compared', label: 'Windows renamer comparison' },
+      ],
+    };
+
 const schemaAlternateNames = locale === DEFAULT_LOCALE
   ? platformKeywords
   : [
@@ -216,8 +253,36 @@ const windowsVideoJsonLd = platform === 'windows' && locale === DEFAULT_LOCALE
     }
   : null;
 
+const howToJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  '@id': `${SITE_ORIGIN}${pagePath}#how-to`,
+  name: locale === DEFAULT_LOCALE
+    ? `How to rename files with AI on ${platformLabel}`
+    : localizedPage.heroTitle,
+  description:
+    locale === DEFAULT_LOCALE
+      ? platform === 'mac'
+        ? 'Use Zush to rename files with AI on Mac: open the app, drop Finder files, review suggested names, and enable watched folders for ongoing cleanup.'
+        : 'Use Zush to rename files with AI on Windows: open the app, drop File Explorer files, review suggested names, and enable watched folders for ongoing cleanup.'
+      : localizedPage.heroSubtitle,
+  totalTime: 'PT1M',
+  tool: {
+    '@type': 'HowToTool',
+    name: 'Zush',
+    url: `${SITE_ORIGIN}${pagePath}`,
+  },
+  step: specifics.quickstart.map((step, index) => ({
+    '@type': 'HowToStep',
+    position: index + 1,
+    name: step.title,
+    text: step.detail,
+  })),
+};
+
 const jsonLdItems = [
   softwareJsonLd,
+  howToJsonLd,
   buildFeatureBreadcrumbJsonLd(localizedPage.breadcrumbLabel, pagePath),
   buildFAQPageJsonLd(faqItems),
   ...(windowsVideoJsonLd ? [windowsVideoJsonLd] : []),
@@ -256,6 +321,29 @@ const jsonLdItems = [
     copy={platformSections.featureCards}
     eagerVisuals
   />
+  {locale === DEFAULT_LOCALE && (
+    <section class={styles.IntentSection} aria-labelledby='platform-intent-heading'>
+      <div class={styles.IntentSection__Container}>
+        <div class={styles.IntentSection__Header}>
+          <span class={styles.IntentSection__Eyebrow}>{intentSection.eyebrow}</span>
+          <h2 id='platform-intent-heading' class={styles.IntentSection__Title}>
+            {intentSection.title}
+          </h2>
+          <p class={styles.IntentSection__Body}>{intentSection.description}</p>
+        </div>
+        <ul class={styles.IntentSection__Grid}>
+          {intentSection.points.map((point) => (
+            <li>{point}</li>
+          ))}
+        </ul>
+        <nav class={styles.IntentSection__Links} aria-label={`${platformLabel} file renamer resources`}>
+          {intentSection.links.map((link) => (
+            <a href={link.href}>{link.label}</a>
+          ))}
+        </nav>
+      </div>
+    </section>
+  )}
   <Testimonials locale={locale} />
   {platform === 'windows' && locale === DEFAULT_LOCALE && <WindowsSeoSection />}
   <PlatformSpecifics platform={platform} locale={locale} variant="compact" scenarioLimit={4} />

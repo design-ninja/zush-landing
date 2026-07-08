@@ -14,7 +14,13 @@ import { FileType2 } from 'lucide-react';
 import type { FeatureLandingPageProps } from './FeatureLandingPage';
 import { getPdfDeepDiveCopy } from '@/data/pdfDeepDive';
 import FeatureFAQ from './FeatureFAQ';
-import { DEFAULT_LOCALE, getLocalizedPath, type Locale, type LocalizedRoute } from '@/i18n/config';
+import {
+  DEFAULT_LOCALE,
+  getLocalesForRoute,
+  getLocalizedPath,
+  isLocalizedRoute,
+  type Locale,
+} from '@/i18n/config';
 import { getCopy, type FeatureCopy } from '@/i18n/copy';
 import macChangelogSource from '@/content/changelog.md?raw';
 import windowsChangelogSource from '@/content/changelog.windows.md?raw';
@@ -50,6 +56,12 @@ const shouldRenderPdfDeepDive = category === 'pdf';
 const pdfDeepDive = getPdfDeepDiveCopy(currentLocale);
 const macVersion = parseLatestVersion(macChangelogSource) ?? undefined;
 const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
+const relatedPageHref = (href: string) =>
+  isLocalizedRoute(href) && getLocalesForRoute(href).includes(currentLocale)
+    ? getLocalizedPath(href, currentLocale)
+    : href;
+const relatedPageTitle = (href: string, fallback: string) =>
+  isLocalizedRoute(href) ? currentCopy.featurePages[href]?.h1 ?? fallback : fallback;
 ---
 
 <Breadcrumbs items={breadcrumbItems} />
@@ -178,7 +190,7 @@ const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
             </Heading>
             <div class={styles.RelatedLinks}>
               {relatedPages.map((page) => (
-                <PillLink href={getLocalizedPath(page.href, currentLocale)} withArrow>{currentCopy.featurePages[page.href as LocalizedRoute]?.h1 ?? page.title}</PillLink>
+                <PillLink href={relatedPageHref(page.href)} withArrow>{relatedPageTitle(page.href, page.title)}</PillLink>
               ))}
             </div>
           </>

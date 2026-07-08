@@ -162,7 +162,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/rename-screenshots-with-ai': {
     title: 'Rename Screenshots Automatically on Mac & Windows | Zush',
     description:
-      'AI screenshot renamer for Mac and Windows. Zush reads what each screenshot shows, then replaces timestamp names with searchable filenames.',
+      'AI screenshot renamer for Mac and Windows. Rename screenshots automatically, including Windows screenshot folders, with searchable names, preview, and undo.',
     robots: 'index, follow',
     ogType: 'website',
   },

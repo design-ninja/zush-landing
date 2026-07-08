@@ -233,6 +233,7 @@ export type HomeWorkflowKey =
   | 'design'
   | 'videos'
   | 'audio'
+  | 'organizer'
   | 'batch'
   | 'offline';
 
@@ -990,6 +991,7 @@ const EN_COPY: LocaleCopy = {
     productLinks: {
       fileRenamer: 'AI File Renamer',
       batchRename: 'Batch Rename Tool',
+      organizer: 'AI File Organizer',
       bulkRename: 'Bulk Rename Files',
       mac: 'Zush for Mac',
       windows: 'Zush for Windows',
@@ -1115,6 +1117,7 @@ const EN_COPY: LocaleCopy = {
         design: { title: 'Rename design files', description: 'Figma, Sketch, PSD, and exports named by what they contain.' },
         videos: { title: 'Rename videos', description: 'Recordings and clips named by frames and context.' },
         audio: { title: 'Rename audio', description: 'MP3, WAV, and voice memos named by sound and metadata.' },
+        organizer: { title: 'Organize files with AI', description: 'Clean up Downloads and mixed folders with searchable names.' },
         batch: { title: 'Batch rename files', description: 'Hundreds of files at once, with preview and one-click undo.' },
         offline: { title: 'Offline AI renamer', description: 'Local models via Ollama — files never leave your device.' },
       },
@@ -3181,6 +3184,7 @@ const localizedWorkflows: Record<Exclude<Locale, 'en'>, HomeWorkflowsCopy> = {
       design: { title: 'Designdateien umbenennen', description: 'Figma, Sketch, PSD und Exporte, benannt nach ihrem Inhalt.' },
       videos: { title: 'Videos umbenennen', description: 'Aufnahmen und Clips, benannt nach Frames und Kontext.' },
       audio: { title: 'Audio umbenennen', description: 'MP3, WAV und Sprachmemos, benannt nach Klang und Metadaten.' },
+      organizer: { title: 'Dateien mit KI organisieren', description: 'Räume Downloads und gemischte Ordner mit suchbaren Namen auf.' },
       batch: { title: 'Dateien stapelweise umbenennen', description: 'Hunderte Dateien auf einmal, mit Vorschau und Ein-Klick-Undo.' },
       offline: { title: 'Offline-KI-Umbenennung', description: 'Lokale Modelle über Ollama – Dateien verlassen nie dein Gerät.' },
     },
@@ -3196,6 +3200,7 @@ const localizedWorkflows: Record<Exclude<Locale, 'en'>, HomeWorkflowsCopy> = {
       design: { title: 'Renommer les fichiers design', description: 'Figma, Sketch, PSD et exports nommés selon leur contenu.' },
       videos: { title: 'Renommer les vidéos', description: 'Enregistrements et clips nommés d’après les images et le contexte.' },
       audio: { title: 'Renommer l’audio', description: 'MP3, WAV et mémos vocaux nommés selon le son et les métadonnées.' },
+      organizer: { title: 'Organiser avec l’IA', description: 'Nettoyez téléchargements et dossiers mixtes avec des noms recherchables.' },
       batch: { title: 'Renommer par lots', description: 'Des centaines de fichiers à la fois, avec aperçu et annulation en un clic.' },
       offline: { title: 'Renommage IA hors ligne', description: 'Modèles locaux via Ollama : les fichiers ne quittent jamais votre appareil.' },
     },
@@ -3211,6 +3216,7 @@ const localizedWorkflows: Record<Exclude<Locale, 'en'>, HomeWorkflowsCopy> = {
       design: { title: 'Renombrar archivos de diseño', description: 'Figma, Sketch, PSD y exportaciones nombrados según su contenido.' },
       videos: { title: 'Renombrar vídeos', description: 'Grabaciones y clips nombrados por fotogramas y contexto.' },
       audio: { title: 'Renombrar audio', description: 'MP3, WAV y notas de voz nombrados por sonido y metadatos.' },
+      organizer: { title: 'Organizar con IA', description: 'Limpia descargas y carpetas mixtas con nombres fáciles de buscar.' },
       batch: { title: 'Renombrar archivos por lotes', description: 'Cientos de archivos a la vez, con vista previa y deshacer con un clic.' },
       offline: { title: 'Renombrador de IA sin conexión', description: 'Modelos locales con Ollama: los archivos nunca salen de tu equipo.' },
     },
@@ -3226,6 +3232,7 @@ const localizedWorkflows: Record<Exclude<Locale, 'en'>, HomeWorkflowsCopy> = {
       design: { title: 'Renomear arquivos de design', description: 'Figma, Sketch, PSD e exportações nomeados pelo conteúdo.' },
       videos: { title: 'Renomear vídeos', description: 'Gravações e clipes nomeados por quadros e contexto.' },
       audio: { title: 'Renomear áudio', description: 'MP3, WAV e memos de voz nomeados por som e metadados.' },
+      organizer: { title: 'Organizar com IA', description: 'Limpe Downloads e pastas mistas com nomes pesquisáveis.' },
       batch: { title: 'Renomear em lote', description: 'Centenas de arquivos de uma vez, com prévia e desfazer em um clique.' },
       offline: { title: 'Renomeador de IA offline', description: 'Modelos locais via Ollama: os arquivos nunca saem do seu dispositivo.' },
     },
@@ -3241,6 +3248,7 @@ const localizedWorkflows: Record<Exclude<Locale, 'en'>, HomeWorkflowsCopy> = {
       design: { title: 'Rinominare i file di design', description: 'Figma, Sketch, PSD ed export nominati in base al contenuto.' },
       videos: { title: 'Rinominare i video', description: 'Registrazioni e clip nominati in base a fotogrammi e contesto.' },
       audio: { title: 'Rinominare l’audio', description: 'MP3, WAV e memo vocali nominati per suono e metadati.' },
+      organizer: { title: 'Organizzare con IA', description: 'Pulisci Download e cartelle miste con nomi ricercabili.' },
       batch: { title: 'Rinominare in blocco', description: 'Centinaia di file alla volta, con anteprima e annulla con un clic.' },
       offline: { title: 'Rinomina IA offline', description: 'Modelli locali via Ollama: i file non lasciano mai il tuo dispositivo.' },
     },
@@ -3256,6 +3264,7 @@ const localizedWorkflows: Record<Exclude<Locale, 'en'>, HomeWorkflowsCopy> = {
       design: { title: 'Designbestanden hernoemen', description: 'Figma, Sketch, PSD en exports benoemd naar hun inhoud.' },
       videos: { title: 'Video’s hernoemen', description: 'Opnames en clips benoemd naar beelden en context.' },
       audio: { title: 'Audio hernoemen', description: 'MP3, WAV en spraakmemo’s benoemd naar geluid en metadata.' },
+      organizer: { title: 'Ordenen met AI', description: 'Ruim Downloads en gemengde mappen op met doorzoekbare namen.' },
       batch: { title: 'Bestanden in bulk hernoemen', description: 'Honderden bestanden tegelijk, met voorbeeld en één-klik ongedaan maken.' },
       offline: { title: 'Offline AI-hernoemer', description: 'Lokale modellen via Ollama: bestanden verlaten je apparaat nooit.' },
     },
@@ -3271,6 +3280,7 @@ const localizedWorkflows: Record<Exclude<Locale, 'en'>, HomeWorkflowsCopy> = {
       design: { title: 'डिज़ाइन फ़ाइलें rename करें', description: 'Figma, Sketch, PSD और एक्सपोर्ट, उनके कंटेंट के आधार पर नामित।' },
       videos: { title: 'वीडियो rename करें', description: 'रिकॉर्डिंग और क्लिप, फ़्रेम और संदर्भ के आधार पर नामित।' },
       audio: { title: 'ऑडियो rename करें', description: 'MP3, WAV और वॉयस मेमो, ध्वनि और मेटाडेटा के आधार पर नामित।' },
+      organizer: { title: 'AI से files organize करें', description: 'Downloads और mixed folders को searchable names से साफ करें।' },
       batch: { title: 'बैच में फ़ाइलें rename करें', description: 'सैकड़ों फ़ाइलें एक साथ, प्रीव्यू और एक-क्लिक undo के साथ।' },
       offline: { title: 'ऑफ़लाइन AI renamer', description: 'Ollama के ज़रिए लोकल मॉडल — फ़ाइलें कभी आपका डिवाइस नहीं छोड़तीं।' },
     },
@@ -3286,6 +3296,7 @@ const localizedWorkflows: Record<Exclude<Locale, 'en'>, HomeWorkflowsCopy> = {
       design: { title: 'デザインファイルをリネーム', description: 'Figma・Sketch・PSD・書き出しファイルを内容で命名。' },
       videos: { title: '動画をリネーム', description: '録画やクリップをフレームと文脈で命名。' },
       audio: { title: '音声をリネーム', description: 'MP3・WAV・ボイスメモを音声とメタデータで命名。' },
+      organizer: { title: 'AIでファイル整理', description: 'Downloadsや混在フォルダを検索しやすい名前に整えます。' },
       batch: { title: 'ファイルを一括リネーム', description: '数百ファイルを一度に。プレビューとワンクリックで元に戻す機能付き。' },
       offline: { title: 'オフラインAIリネーマー', description: 'Ollamaによるローカルモデル。ファイルはデバイスの外に出ません。' },
     },
@@ -3301,6 +3312,7 @@ const localizedWorkflows: Record<Exclude<Locale, 'en'>, HomeWorkflowsCopy> = {
       design: { title: '디자인 파일 이름 바꾸기', description: 'Figma, Sketch, PSD와 내보낸 파일을 내용 기준으로 명명.' },
       videos: { title: '동영상 이름 바꾸기', description: '녹화와 클립을 프레임과 맥락 기준으로 명명.' },
       audio: { title: '오디오 이름 바꾸기', description: 'MP3, WAV, 음성 메모를 소리와 메타데이터로 명명.' },
+      organizer: { title: 'AI로 파일 정리', description: 'Downloads와 혼합 폴더를 검색 가능한 이름으로 정리합니다.' },
       batch: { title: '파일 일괄 이름 바꾸기', description: '수백 개 파일을 한 번에, 미리보기와 원클릭 되돌리기 지원.' },
       offline: { title: '오프라인 AI 리네이머', description: 'Ollama 로컬 모델 사용 — 파일이 기기를 벗어나지 않습니다.' },
     },
@@ -3316,6 +3328,7 @@ const localizedWorkflows: Record<Exclude<Locale, 'en'>, HomeWorkflowsCopy> = {
       design: { title: '重命名设计文件', description: 'Figma、Sketch、PSD 和导出文件,按内容命名。' },
       videos: { title: '重命名视频', description: '录屏和视频片段,按画面和上下文命名。' },
       audio: { title: '重命名音频', description: 'MP3、WAV 和语音备忘录,按声音和元数据命名。' },
+      organizer: { title: '用 AI 整理文件', description: '用可搜索名称清理下载和混合文件夹。' },
       batch: { title: '批量重命名文件', description: '一次处理数百个文件,支持预览和一键撤销。' },
       offline: { title: '离线 AI 重命名', description: '通过 Ollama 使用本地模型,文件绝不离开你的设备。' },
     },
@@ -3331,6 +3344,7 @@ const localizedWorkflows: Record<Exclude<Locale, 'en'>, HomeWorkflowsCopy> = {
       design: { title: 'إعادة تسمية ملفات التصميم', description: 'ملفات Figma وSketch وPSD والتصديرات تُسمى حسب محتواها.' },
       videos: { title: 'إعادة تسمية الفيديو', description: 'تسجيلات ومقاطع تُسمى حسب الإطارات والسياق.' },
       audio: { title: 'إعادة تسمية الصوت', description: 'ملفات MP3 وWAV والمذكرات الصوتية تُسمى حسب الصوت والبيانات الوصفية.' },
+      organizer: { title: 'تنظيم الملفات بالذكاء الاصطناعي', description: 'نظّف التنزيلات والمجلدات المختلطة بأسماء قابلة للبحث.' },
       batch: { title: 'إعادة تسمية الملفات دفعةً واحدة', description: 'مئات الملفات في وقت واحد، مع معاينة وتراجع بنقرة واحدة.' },
       offline: { title: 'إعادة تسمية بالذكاء الاصطناعي دون اتصال', description: 'نماذج محلية عبر Ollama — لا تغادر ملفاتك جهازك أبدًا.' },
     },
@@ -3407,7 +3421,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     },
     platforms: localizedPlatforms.de,
     seo: {
-      '/': { title: 'Dateiumbenenner für Mac & Windows | KI-Stapelumbenennung — Zush', description: 'Dateien mit KI nach Inhalt stapelweise und in großen Mengen umbenennen. Screenshots, PDFs, Fotos, Videos, Audio, Designdateien und Dokumente.' },
+      '/': { title: 'KI-Dateiumbenenner für Mac & Windows | Zush', description: 'Dateien mit KI nach Inhalt stapelweise und in großen Mengen umbenennen. Screenshots, PDFs, Fotos, Videos, Audio, Designdateien und Dokumente.' },
     },
     featurePages: localizedFeaturePages('Häufig gestellte Fragen', 'Verwandte Tools', 'Verwandte Anleitungen', [
       { question: 'Kann ich eine Umbenennung rückgängig machen?', answer: 'Ja. Zush speichert den Verlauf, damit du Dateien mit einem Klick auf den ursprünglichen Namen zurücksetzen kannst.' },
@@ -3449,7 +3463,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     },
     pricing: { planName: 'Zush PRO 🌟', planDescription: 'Achat unique • Accès à vie', billing: 'une fois', buttonText: 'Acheter PRO 🌟', buttonHint: 'Garantie 14 jours • Paiement sécurisé via Paddle', features: localizedPricingFeatures.fr, ...localizedPricingExtras.fr },
     platforms: localizedPlatforms.fr,
-    seo: { '/': { title: 'Renommeur de fichiers pour Mac & Windows | Renommage par lot IA — Zush', description: 'Renommez des fichiers par lot et en masse selon leur contenu avec l’IA sur Mac et Windows. Screenshots, PDF, photos, vidéos, audio, design et documents.' } },
+    seo: { '/': { title: 'Renommeur de fichiers IA pour Mac & Windows | Zush', description: 'Renommez des fichiers par lot et en masse selon leur contenu avec l’IA sur Mac et Windows. Screenshots, PDF, photos, vidéos, audio, design et documents.' } },
     featurePages: localizedFeaturePages('Questions fréquentes', 'Outils associés', 'Guides associés', [
       { question: 'Puis-je annuler un renommage ?', answer: 'Oui. Zush conserve un historique pour restaurer le nom d’origine en un clic.' },
     ], [
@@ -3490,7 +3504,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     },
     pricing: { planName: 'Zush PRO 🌟', planDescription: 'Compra única • Acesso vitalício', billing: 'único', buttonText: 'Comprar PRO 🌟', buttonHint: 'Garantia de 14 dias • Seguro via Paddle', features: localizedPricingFeatures['pt-br'], ...localizedPricingExtras['pt-br'] },
     platforms: localizedPlatforms['pt-br'],
-    seo: { '/': { title: 'Renomeador de arquivos para Mac & Windows | Renomeação em lote com IA — Zush', description: 'Renomeie arquivos em lote e em massa pelo conteúdo com IA no Mac e Windows. Screenshots, PDFs, fotos, vídeos, áudio, design e documentos.' } },
+    seo: { '/': { title: 'Renomeador de arquivos com IA para Mac & Windows | Zush', description: 'Renomeie arquivos em lote e em massa pelo conteúdo com IA no Mac e Windows. Screenshots, PDFs, fotos, vídeos, áudio, design e documentos.' } },
     featurePages: localizedFeaturePages('Perguntas frequentes', 'Ferramentas relacionadas', 'Guias relacionados', [
       { question: 'Posso desfazer uma renomeação?', answer: 'Sim. O Zush mantém um histórico para restaurar o nome original com um clique.' },
     ], [
@@ -3531,7 +3545,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     },
     pricing: { planName: 'Zush PRO 🌟', planDescription: 'Compra única • Acceso de por vida', billing: 'una vez', buttonText: 'Comprar PRO 🌟', buttonHint: 'Garantía de 14 días • Seguro con Paddle', features: localizedPricingFeatures.es, ...localizedPricingExtras.es },
     platforms: localizedPlatforms.es,
-    seo: { '/': { title: 'Renombrador de archivos para Mac & Windows | Renombrado por lotes con IA — Zush', description: 'Renombra archivos por lotes y en masa según su contenido con IA en Mac y Windows. Capturas, PDFs, fotos, videos, audio, diseño y documentos.' } },
+    seo: { '/': { title: 'Renombrador de archivos con IA para Mac & Windows | Zush', description: 'Renombra archivos por lotes y en masa según su contenido con IA en Mac y Windows. Capturas, PDFs, fotos, videos, audio, diseño y documentos.' } },
     featurePages: localizedFeaturePages('Preguntas frecuentes', 'Herramientas relacionadas', 'Guías relacionadas', [
       { question: '¿Puedo deshacer un cambio de nombre?', answer: 'Sí. Zush guarda el historial para restaurar el nombre original con un clic.' },
     ], [
@@ -3572,7 +3586,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     },
     pricing: { planName: 'Zush PRO 🌟', planDescription: 'Eenmalige aankoop • Levenslange toegang', billing: 'eenmalig', buttonText: 'Koop PRO 🌟', buttonHint: '14 dagen geld-terug-garantie • Veilig via Paddle', features: localizedPricingFeatures.nl, ...localizedPricingExtras.nl },
     platforms: localizedPlatforms.nl,
-    seo: { '/': { title: 'Bestandshernoemer voor Mac & Windows | AI batch hernoemen — Zush', description: 'Hernoem bestanden batchgewijs en in bulk op inhoud met AI op Mac en Windows. Screenshots, PDFs, foto’s, video’s, audio, design en documenten.' } },
+    seo: { '/': { title: 'AI-bestandshernoemer voor Mac & Windows | Zush', description: 'Hernoem bestanden batchgewijs en in bulk op inhoud met AI op Mac en Windows. Screenshots, PDFs, foto’s, video’s, audio, design en documenten.' } },
     featurePages: localizedFeaturePages('Veelgestelde vragen', 'Gerelateerde tools', 'Gerelateerde gidsen', [
       { question: 'Kan ik een hernoeming ongedaan maken?', answer: 'Ja. Zush bewaart de geschiedenis zodat je met één klik de originele naam herstelt.' },
     ], [
@@ -3613,7 +3627,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     },
     pricing: { planName: 'Zush PRO 🌟', planDescription: 'Acquisto unico • Accesso a vita', billing: 'una tantum', buttonText: 'Acquista PRO 🌟', buttonHint: 'Garanzia 14 giorni • Sicuro con Paddle', features: localizedPricingFeatures.it, ...localizedPricingExtras.it },
     platforms: localizedPlatforms.it,
-    seo: { '/': { title: 'Rinomina file per Mac & Windows | Rinomina batch con IA — Zush', description: 'Rinomina file in batch e in massa in base al contenuto con l’IA su Mac e Windows. Screenshot, PDF, foto, video, audio, design e documenti.' } },
+    seo: { '/': { title: 'Rinomina file con IA per Mac & Windows | Zush', description: 'Rinomina file in batch e in massa in base al contenuto con l’IA su Mac e Windows. Screenshot, PDF, foto, video, audio, design e documenti.' } },
     featurePages: localizedFeaturePages('Domande frequenti', 'Strumenti correlati', 'Guide correlate', [
       { question: 'Posso annullare una rinomina?', answer: 'Sì. Zush conserva la cronologia per ripristinare il nome originale con un clic.' },
     ], [
@@ -3972,7 +3986,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     },
     seo: {
       '/': {
-        title: 'Mac और Windows के लिए File Renamer | AI Batch Rename Tool — Zush',
+        title: 'Mac और Windows AI File Renamer | Zush',
         description: 'AI से content के आधार पर files batch rename और bulk rename करें। Screenshots, PDFs, photos, videos, audio, design files और docs।',
       },
       '/mac': {
@@ -4117,7 +4131,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     },
     seo: {
       '/': {
-        title: 'أداة إعادة تسمية الملفات لنظامي Mac وWindows | إعادة تسمية بالذكاء الاصطناعي — Zush',
+        title: 'إعادة تسمية ملفات Mac وWindows بالذكاء الاصطناعي | Zush',
         description: 'أعد تسمية الملفات بالدفعات وبكميات كبيرة حسب المحتوى باستخدام الذكاء الاصطناعي. يدعم لقطات الشاشة وPDF والصور والفيديو والصوت والتصميم والمستندات.',
       },
       '/mac': {

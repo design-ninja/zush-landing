@@ -2,10 +2,34 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import { unified } from '@astrojs/markdown-remark';
 import react from '@astrojs/react';
+import sitemap from '@astrojs/sitemap';
 import starlight from '@astrojs/starlight';
 import vercel from '@astrojs/vercel';
 import { fileURLToPath } from 'node:url';
 import remarkGfm from 'remark-gfm';
+
+const SITEMAP_EXCLUDED_PATHS = new Set([
+  '/404',
+  '/activate',
+  '/recover',
+  '/thank-you',
+  '/manage-subscription',
+  '/manage-subscription/confirm',
+  '/ai-file-renamer',
+  '/batch-rename-tool',
+  '/bulk-rename-files',
+  '/file-renamer',
+]);
+
+const SITEMAP_EXCLUDED_LOCALIZED_ROUTE = /^\/(?:de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)\/(?:404|activate|recover|thank-you|manage-subscription(?:\/confirm)?)$/;
+
+const shouldIncludeInGeneratedSitemap = (page) => {
+  const { pathname } = new URL(page);
+  if (SITEMAP_EXCLUDED_PATHS.has(pathname)) return false;
+  if (SITEMAP_EXCLUDED_LOCALIZED_ROUTE.test(pathname)) return false;
+  if (pathname.endsWith('.xml') || pathname.endsWith('.txt')) return false;
+  return true;
+};
 
 export default defineConfig({
   site: 'https://zushapp.com',
@@ -21,6 +45,9 @@ export default defineConfig({
     '/docs/windows-undo-rename-history': { status: 301, destination: '/docs/undo-history' },
   },
   integrations: [
+    sitemap({
+      filter: shouldIncludeInGeneratedSitemap,
+    }),
     starlight({
       title: 'Zush Docs',
       description: 'Documentation for Zush AI file renaming on Mac and Windows.',

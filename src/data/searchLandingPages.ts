@@ -121,6 +121,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     relatedPages: [
       { title: 'Batch Rename Docs', href: '/docs/batch-rename-files' },
       { title: 'Templates Guide', href: '/docs/templates' },
+      { title: 'AI File Organizer', href: '/ai-file-organizer' },
       { title: 'AI File Renamer & Organizer', href: '/' },
       { title: 'Offline AI File Renamer', href: '/offline-ai-file-renamer' },
       { title: 'Rename PDFs with AI', href: '/rename-pdf-with-ai' },
@@ -174,6 +175,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       { title: 'Naming Blocks Guide', href: '/docs/naming-blocks' },
       { title: 'Ollama Offline AI Setup', href: '/ollama-setup' },
       { title: 'BYOK Setup', href: '/byok-setup' },
+      { title: 'AI File Organizer', href: '/ai-file-organizer' },
       { title: 'AI File Renamer & Organizer', href: '/' },
       { title: 'Zush for Mac', href: '/mac' },
       { title: 'Zush for Windows', href: '/windows' },

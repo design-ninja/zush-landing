@@ -1,0 +1,99 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.IntentSection {
+  padding: 2rem 0 3rem;
+
+  &__Container {
+    @include container;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  &__Header {
+    max-width: 54rem;
+  }
+
+  &__Eyebrow {
+    display: inline-flex;
+    margin-bottom: 0.75rem;
+    color: var(--primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  &__Title {
+    margin: 0;
+    color: var(--foreground);
+    font-size: 2.4rem;
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: 0;
+
+    @include tablet {
+      font-size: 1.85rem;
+    }
+  }
+
+  &__Body {
+    margin: 1rem 0 0;
+    max-width: 48rem;
+    color: var(--muted-foreground);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  &__Grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include tablet {
+      grid-template-columns: 1fr;
+    }
+
+    li {
+      margin: 0;
+      padding: 1.15rem;
+      border: 1px solid var(--border);
+      border-radius: $radius-lg;
+      background: var(--muted);
+      color: var(--foreground);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+  }
+
+  &__Links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.5rem;
+      padding: 0.65rem 0.95rem;
+      border: 1px solid var(--border);
+      border-radius: $radius-md;
+      color: var(--foreground);
+      background: var(--card);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: border-color 160ms ease, color 160ms ease;
+
+      &:hover,
+      &:focus-visible {
+        border-color: var(--primary);
+        color: var(--primary);
+      }
+    }
+  }
+}

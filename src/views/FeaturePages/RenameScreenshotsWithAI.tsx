@@ -9,6 +9,11 @@ const faqItems = [
       'Manually, select the screenshot in Finder or File Explorer and rename it like any other file. For automatic descriptive names, point Zush at your screenshot folder, review the AI name pattern once, and let new screenshots get names based on what they show.',
   },
   {
+    question: 'How do I rename a screenshot on Windows?',
+    answer:
+      'On Windows, open File Explorer and rename one screenshot manually, or use Zush to watch Pictures\\Screenshots, Downloads, or any folder where screenshots land. Zush reads what the screenshot shows, suggests a searchable name, and keeps rename history so you can undo a batch.',
+  },
+  {
     question: 'Can Zush automatically rename screenshots as I take them?',
     answer:
       'Yes. Zush can monitor your Screenshots folder (or any folder you choose) and automatically rename new files as they appear. Just enable folder monitoring and every new screenshot gets an AI-generated name within seconds.',
@@ -37,9 +42,9 @@ const faqItems = [
 
 const jsonLd = buildFeaturePageJsonLd({
   howTo: {
-    name: 'Rename Screenshots with AI',
+    name: 'Rename screenshots automatically on Mac and Windows',
     description:
-      'Use Zush to automatically rename screenshots based on their visual content using AI.',
+      'Use Zush to automatically rename screenshots on Mac and Windows based on their visual content using AI.',
     steps: [
       {
         name: 'Set up folder monitoring',
@@ -77,7 +82,7 @@ const RenameScreenshotsWithAI = () => (
     h1Accent="Rename Screenshots"
     category="screenshot"
     definitionTitle="What Is AI Screenshot Renaming?"
-    definitionText="Rename screenshots automatically with AI using Zush to replace generic Mac and Windows timestamp names with searchable filenames based on the app, page, error, chart, or conversation shown."
+    definitionText="Rename screenshots automatically with AI using Zush to replace generic Mac and Windows timestamp names with searchable filenames based on the app, page, error, chart, or conversation shown. On Windows, this means screenshots from File Explorer folders such as Pictures\\Screenshots and Downloads can become readable names without manual right-click renaming."
     showcaseSlides={[
       {
         files: [
@@ -112,6 +117,8 @@ const RenameScreenshotsWithAI = () => (
     ]}
     faqItems={faqItems}
     relatedPages={[
+      { title: 'AI File Organizer', href: '/ai-file-organizer' },
+      { title: 'Batch Rename Files with AI', href: '/batch-rename-files' },
       { title: 'Rename Photos with AI', href: '/rename-photos-with-ai' },
       { title: 'Rename PDFs with AI', href: '/rename-pdf-with-ai' },
       { title: 'Zush for Mac', href: '/mac' },
