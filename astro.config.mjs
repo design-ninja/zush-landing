@@ -37,6 +37,8 @@ export default defineConfig({
   // Vercel handles slash canonicalization so the PostHog proxy path can be excluded.
   trailingSlash: 'never',
   redirects: {
+    '/sitemap-index.xml': { status: 301, destination: '/sitemap.xml' },
+    '/sitemap-0.xml': { status: 301, destination: '/sitemap.xml' },
     '/download/windows': { status: 301, destination: '/windows' },
     '/docs/windows-batch-rename-files': { status: 301, destination: '/docs/batch-rename-files' },
     '/docs/windows-folder-monitoring': { status: 301, destination: '/docs/folder-monitoring' },
