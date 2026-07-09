@@ -9,11 +9,11 @@ tags:
   - "AI File Renaming"
   - "Ollama"
 tldr: "Local AI file renaming uses a model on your own computer to analyze supported files and suggest descriptive filenames. In Zush, Offline AI mode connects to Ollama so supported analysis content stays on device instead of going to Zush cloud or a third-party AI provider."
-reviewed: "2026-06-12"
+reviewed: "2026-07-09"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: install Ollama, pull a vision-capable model like LLaVA, then connect it to a local AI rename tool such as Zush Offline AI on Mac. Files stay on your machine and renaming runs without API cost or upload.
+Quick answer: install Ollama, pull a vision-capable model such as `qwen2.5vl:3b`, `gemma3:4b`, or `granite3.2-vision:2b`, then connect it to a local AI rename tool such as Zush Offline AI on Mac. Supported analysis content stays on your machine and renaming runs without provider API cost.
 
 Most file renaming tools fall into two camps: rule-based batch rename utilities and cloud AI tools. Rule-based tools are reliable but blind. Cloud AI tools can understand screenshots, videos, PDFs, photos, and documents, but they require an internet connection and a provider request.
 

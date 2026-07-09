@@ -129,7 +129,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     ],
     relatedBlogPosts: [
       { title: 'Rename Files by Content', href: 'rename-files-by-content-guide' },
-      { title: 'How to Batch Rename Files on Mac', href: 'batch-rename-files-on-mac-complete-guide' },
+      { title: 'Mac batch rename methods', href: 'batch-rename-files-on-mac-complete-guide' },
       { title: 'Auto Rename Files on Mac', href: 'auto-rename-files-mac-guide' },
     ],
     jsonLd: buildFeaturePageJsonLd({

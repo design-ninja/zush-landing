@@ -30,9 +30,9 @@ export const HOW_TO_SCHEMAS: Record<string, HowToData> = {
     ],
   },
   'batch-rename-files-on-mac-complete-guide': {
-    name: 'How to Batch Rename Files on Mac with Finder',
+    name: 'How to Use Finder Rename Items on Mac',
     description:
-      "Use Finder's built-in batch rename tool to rename multiple files at once on macOS. Works on any Mac with macOS Yosemite (10.10) or later, no installation required.",
+      "Use Finder's built-in Rename Items dialog to rename multiple files at once on macOS. Works on any Mac with macOS Yosemite (10.10) or later, no installation required.",
     totalTime: 'PT2M',
     steps: [
       {
