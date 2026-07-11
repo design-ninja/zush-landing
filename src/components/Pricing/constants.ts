@@ -1,12 +1,9 @@
 import {
-  Blocks,
   CalendarClock,
   Cpu,
   Gift,
   Infinity as InfinityIcon,
   KeyRound,
-  Layers3,
-  MessageSquareText,
   RefreshCw,
   Sparkles,
   TrendingDown,
@@ -58,24 +55,6 @@ export const PRO_FEATURES: Feature[] = [
     desc: 'Private local models via Ollama',
     icon: Cpu,
     tone: 'blue',
-  },
-  {
-    title: 'Custom AI Prompts',
-    desc: 'Personalize AI behavior with your own rename and tagging instructions',
-    icon: MessageSquareText,
-    tone: 'purple',
-  },
-  {
-    title: 'Templates',
-    desc: 'Reusable rename setups for AI Rename and Monitor',
-    icon: Layers3,
-    tone: 'pink',
-  },
-  {
-    title: 'Naming Blocks',
-    desc: 'Build names from dates, media, documents, metadata and much more',
-    icon: Blocks,
-    tone: 'teal',
   },
 ];
 

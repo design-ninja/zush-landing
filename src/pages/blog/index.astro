@@ -10,6 +10,7 @@ import {
   getRecentBlogPosts,
 } from '@/data/blog';
 import { HOMEBREW_CASK_URL } from '@/constants';
+import { PRIMARY_AUTHOR } from '@/data/author';
 import { getSeoForPath, SITE_ORIGIN, toIsoDateTime } from '@/seo/config';
 import headingStyles from '@/components/Heading/Heading.module.scss';
 import textStyles from '@/components/Text/Text.module.scss';
@@ -43,8 +44,10 @@ const toBlogPostingJsonLd = (post: BlogPost) => {
     dateModified: toIsoDateTime(post.reviewedAt || post.date),
     author: {
       '@type': 'Person',
-      name: post.authorName,
-      url: 'https://lirik.pro/en',
+      '@id': `${PRIMARY_AUTHOR.url}#person`,
+      name: PRIMARY_AUTHOR.name,
+      alternateName: PRIMARY_AUTHOR.alternateName,
+      url: PRIMARY_AUTHOR.url,
     },
     publisher: {
       '@id': `${SITE_ORIGIN}/#organization`,

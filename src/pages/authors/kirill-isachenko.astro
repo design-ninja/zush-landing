@@ -1,0 +1,84 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AppLink from '@/components/AppLink';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
+import { PRODUCT_FACTS_REVIEWED_AT } from '@/constants';
+import { getAllPosts } from '@/data/blog';
+import { PRIMARY_AUTHOR, getPrimaryAuthorJsonLd } from '@/data/author';
+import { getSeoForPath, SITE_ORIGIN } from '@/seo/config';
+import styles from '@/views/Editorial/EditorialPage.module.scss';
+
+const seo = getSeoForPath('/authors/kirill-isachenko');
+const posts = (await getAllPosts()).slice(0, 8);
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    getPrimaryAuthorJsonLd(),
+    {
+      '@type': 'ProfilePage',
+      '@id': `${PRIMARY_AUTHOR.url}#profile`,
+      url: PRIMARY_AUTHOR.url,
+      name: seo.title,
+      description: seo.description,
+      dateModified: PRODUCT_FACTS_REVIEWED_AT,
+      inLanguage: 'en',
+      mainEntity: { '@id': `${PRIMARY_AUTHOR.url}#person` },
+      isPartOf: { '@id': `${SITE_ORIGIN}/#website` },
+    },
+  ],
+};
+---
+
+<BaseLayout seo={seo} jsonLd={jsonLd}>
+  <main class={styles.Page}>
+    <div class={styles.Container}>
+      <header class={styles.Hero}>
+        <Text as='p' size='sm' color='subtle' className={styles.Flush}>Author and maker</Text>
+        <Heading as='h1' className={styles.Flush}>Kirill Isachenko</Heading>
+      </header>
+      <div class={styles.Profile}>
+        <Image class={styles.Avatar} src='/images/authors/lirik-ava-fancy.webp' width={112} height={112} alt='Kirill Isachenko' loading='eager' />
+        <Text as='p' size='xl' color='subtle' className={styles.Flush}>
+          Also known as lirik. Founder, designer, and software developer of Zush for Mac and Windows.
+        </Text>
+      </div>
+
+      <div class={styles.Grid}>
+        <section class={styles.Card}>
+          <Heading as='h2' size='h3' className={styles.CardTitle}>Work</Heading>
+          <Text as='p' color='subtle' className={styles.CardCopy}>
+            Kirill builds the Zush product and publishes its documentation, release notes, comparison research, and file-renaming methodology.
+          </Text>
+          <div class={styles.Links}>
+            <AppLink href='/about' variant='legal'>About Zush</AppLink>
+            <AppLink href='/methodology' variant='legal'>Methodology</AppLink>
+            <AppLink href={PRIMARY_AUTHOR.externalUrl} rel='me' variant='legal'>Personal website</AppLink>
+          </div>
+        </section>
+
+        <section class={styles.Card}>
+          <Heading as='h2' size='h3' className={styles.CardTitle}>Editorial standard</Heading>
+          <Text as='p' color='subtle' className={styles.CardCopy}>
+            Product and competitor claims should be traceable to public sources, dated, and updated when releases change. Unverified testimonials and unpublished benchmark scores are not presented as evidence.
+          </Text>
+        </section>
+
+        <section class={`${styles.Card} ${styles.CardWide}`}>
+          <Heading as='h2' size='h3' className={styles.CardTitle}>Recent articles</Heading>
+          <ul class={styles.ArticleList}>
+            {posts.map((post) => (
+              <li class={styles.ArticleItem}>
+                <AppLink href={`/blog/${post.slug}`} variant='legal'>{post.title}</AppLink>
+                <Text as='span' size='sm' color='subtle'>
+                  <time datetime={post.reviewedAt || post.date}>{post.reviewedAt || post.date}</time>
+                </Text>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

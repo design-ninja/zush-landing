@@ -1,0 +1,107 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.Page {
+  padding: calc($navbar-height + $space-2xl) 0 $space-3xl;
+}
+
+.Container {
+  @include container;
+  max-width: $content-max-width;
+}
+
+.Hero {
+  display: grid;
+  gap: $space-md;
+  max-width: $content-reading-width;
+}
+
+.Flush {
+  margin: 0;
+}
+
+.Grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: $space-md;
+  margin-top: $space-2xl;
+}
+
+.Card {
+  padding: $space-xl;
+  border: 1px solid var(--border);
+  border-radius: $radius-xl;
+  background: var(--card);
+  color: var(--foreground);
+  @include shadow('sm');
+}
+
+.CardWide {
+  grid-column: 1 / -1;
+}
+
+.CardTitle {
+  margin: 0 0 $space-sm;
+}
+
+.CardCopy {
+  margin: 0;
+}
+
+.CardList {
+  margin: 0;
+  padding-left: $space-lg;
+  color: var(--muted-foreground);
+}
+
+.Links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-sm;
+  margin-top: $space-lg;
+}
+
+.Profile {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: $space-lg;
+  align-items: center;
+  margin-top: $space-xl;
+}
+
+.Avatar {
+  display: block;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.ArticleList {
+  display: grid;
+  gap: $space-sm;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ArticleItem {
+  display: flex;
+  justify-content: space-between;
+  gap: $space-md;
+  padding-bottom: $space-sm;
+  border-bottom: 1px solid var(--border);
+}
+
+@include mobile {
+  .Grid {
+    grid-template-columns: 1fr;
+  }
+
+  .CardWide {
+    grid-column: auto;
+  }
+
+  .ArticleItem {
+    flex-direction: column;
+    gap: $space-xs;
+  }
+}

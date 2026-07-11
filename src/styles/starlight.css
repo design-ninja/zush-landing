@@ -14,6 +14,14 @@
   --zush-docs-link: #6155f5;
 }
 
+.sl-markdown-content a,
+.sidebar-content a,
+.right-sidebar-panel a,
+.pagination-links a,
+#starlight__search .pagefind-ui__result-link {
+  font-weight: var(--font-weight-link);
+}
+
 .sl-markdown-content a {
   color: var(--zush-docs-link);
   text-decoration: none;

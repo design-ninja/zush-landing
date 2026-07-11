@@ -36,6 +36,14 @@ import {
   NAMING_BLOCKS_PREVIEW_FRAME,
 } from './NamingBlocksAnimation';
 import {
+  CustomAiBlocksAnimation,
+  CUSTOM_AI_BLOCKS_DURATION,
+  CUSTOM_AI_BLOCKS_FPS,
+  CUSTOM_AI_BLOCKS_WIDTH,
+  CUSTOM_AI_BLOCKS_HEIGHT,
+  CUSTOM_AI_BLOCKS_PREVIEW_FRAME,
+} from './CustomAiBlocksAnimation';
+import {
   CustomPromptsAnimation,
   CUSTOM_PROMPTS_DURATION,
   CUSTOM_PROMPTS_FPS,
@@ -63,6 +71,7 @@ type FeatureAnimationKind =
   | 'history'
   | 'templates'
   | 'naming-blocks'
+  | 'custom-ai-blocks'
   | 'prompts'
   | 'byok'
   | 'offline-ai';
@@ -107,6 +116,14 @@ const CONFIG = {
     width: NAMING_BLOCKS_WIDTH,
     height: NAMING_BLOCKS_HEIGHT,
     previewFrame: NAMING_BLOCKS_PREVIEW_FRAME,
+  },
+  'custom-ai-blocks': {
+    component: CustomAiBlocksAnimation,
+    duration: CUSTOM_AI_BLOCKS_DURATION,
+    fps: CUSTOM_AI_BLOCKS_FPS,
+    width: CUSTOM_AI_BLOCKS_WIDTH,
+    height: CUSTOM_AI_BLOCKS_HEIGHT,
+    previewFrame: CUSTOM_AI_BLOCKS_PREVIEW_FRAME,
   },
   prompts: {
     component: CustomPromptsAnimation,

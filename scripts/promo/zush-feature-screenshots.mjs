@@ -62,6 +62,8 @@ const features = [
   { id: 'activity', fixture: 'activity' },
   { id: 'templates', fixture: 'templates' },
   { id: 'naming-blocks', fixture: 'naming-blocks' },
+  // Landing-only until Partner Center gains room beyond its 10-screenshot cap.
+  { id: 'custom-ai-blocks', fixture: 'custom-ai-blocks', captureZushExtras: true, landingOnly: true },
   { id: 'naming', fixture: 'naming' },
   { id: 'custom-prompts', fixture: 'custom-prompts', captureZushExtras: true },
   { id: 'byok', fixture: 'byok' },
@@ -532,10 +534,15 @@ function imageSize(imagePath) {
 }
 
 function closeFinderInfoWindows() {
-  run('osascript', [
-    '-e',
-    'tell application "Finder" to close every information window',
-  ]);
+  // Best-effort cleanup: a hung Finder scripting session must not fail the capture run.
+  try {
+    run('osascript', [
+      '-e',
+      'with timeout of 5 seconds\ntell application "Finder" to close every information window\nend timeout',
+    ]);
+  } catch (error) {
+    console.warn(`Skipping Finder info-window cleanup: ${error.message.split('\n')[0]}`);
+  }
 }
 
 async function openFinderInfo(filePath) {
@@ -752,7 +759,7 @@ async function captureFeature({ feature, theme, runId, assetRoot, reuseCurrentFi
   const outputs = [];
 
   for (const target of selectedTargets) {
-    if (target === 'app-store' && theme !== 'light') {
+    if (target === 'app-store' && (theme !== 'light' || feature.landingOnly)) {
       continue;
     }
 

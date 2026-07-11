@@ -9,7 +9,7 @@
   border-radius: $radius-full;
   color: var(--primary);
   text-decoration: none;
-  font-weight: 550;
+  font-weight: $font-weight-link;
   transition: background $transition-fast, color $transition-fast, border-color $transition-fast;
 
   &:hover {

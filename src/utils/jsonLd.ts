@@ -1,6 +1,7 @@
 import type { BlogPost, FAQItem } from '@/data/blog';
 import { toIsoDateTime } from '@/seo/config';
 import { APP_STORE_URL, HOMEBREW_CASK_URL, MAC_INSTALLER_URL, WINDOWS_STORE_URL } from '@/constants';
+import { PRIMARY_AUTHOR } from '@/data/author';
 
 const SITE_ORIGIN = 'https://zushapp.com';
 
@@ -17,10 +18,12 @@ export function buildBlogPostingJsonLd(
     dateModified: toIsoDateTime(post.reviewedAt || post.date),
     author: {
       '@type': 'Person',
-      name: post.authorName,
-      url: 'https://lirik.pro/en',
-      sameAs: ['https://lirik.pro/en'],
-      image: `${SITE_ORIGIN}/images/authors/lirik.png`,
+      '@id': `${PRIMARY_AUTHOR.url}#person`,
+      name: PRIMARY_AUTHOR.name,
+      alternateName: PRIMARY_AUTHOR.alternateName,
+      url: PRIMARY_AUTHOR.url,
+      sameAs: PRIMARY_AUTHOR.sameAs,
+      image: PRIMARY_AUTHOR.image,
       worksFor: {
         '@type': 'Organization',
         name: 'Zush',

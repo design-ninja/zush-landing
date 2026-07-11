@@ -9,6 +9,9 @@ export const WINDOWS_STORE_PROTOCOL_URL = "ms-windows-store://pdp/?ProductId=9ND
 export const HOMEBREW_CASK_URL = "https://formulae.brew.sh/cask/zush";
 export const SUPPORT_EMAIL = "support@zushapp.com";
 export const FREE_DOWNLOAD_BADGE_LABEL = "FREE";
+export const MAC_APP_VERSION = "3.6.3";
+export const WINDOWS_APP_VERSION = "3.4.2.0";
+export const PRODUCT_FACTS_REVIEWED_AT = "2026-07-10";
 
 // System requirements
 export const MIN_MACOS_VERSION = "Sequoia and newer";
@@ -136,7 +139,6 @@ export const APP_CONFIG = {
   refund_period_days: 14,
   min_macos_version: "15.0",
   min_macos_name: "Sequoia",
-  app_version: "3.0",
 };
 
 export const SUPPORTED_FORMAT_EXTENSIONS = Array.from(new Set([

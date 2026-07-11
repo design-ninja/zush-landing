@@ -25,7 +25,7 @@ const faqItems = [
   {
     question: 'Can I create templates for audio filenames?',
     answer:
-      'Yes. PRO users can save templates and combine 145+ Naming Blocks for repeatable names like date-client-topic.m4a, artist-title-bpm.mp3, or episode-guest-segment.wav.',
+      'Yes. You can save templates and combine 145+ Naming Blocks for repeatable names like date-client-topic.m4a, artist-title-bpm.mp3, or episode-guest-segment.wav.',
   },
 ];
 

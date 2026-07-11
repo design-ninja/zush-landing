@@ -25,7 +25,7 @@ const faqItems = [
   {
     question: 'Can I use naming conventions for design handoff?',
     answer:
-      'Yes. PRO users can save templates and combine Naming Blocks for repeatable names like client-project-screen-state.fig or brand-channel-asset-role.psd.',
+      'Yes. You can save templates and combine Naming Blocks for repeatable names like client-project-screen-state.fig or brand-channel-asset-role.psd.',
   },
 ];
 

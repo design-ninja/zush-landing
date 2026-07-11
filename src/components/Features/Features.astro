@@ -9,6 +9,7 @@ import {
   Bot,
   LayoutTemplate,
   Blocks,
+  WandSparkles,
 } from 'lucide-react';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
@@ -68,6 +69,26 @@ const className = [styles.Features, compactTopSpacing ? styles.Features_compactT
       </BentoCard>
 
       <BentoCard
+        title={copy.customAiBlocks.title}
+        description={copy.customAiBlocks.description}
+        icon={WandSparkles}
+        badge='NEW ✨ FREE'
+        class={styles['BentoCard--wide']}
+      >
+        <div class={styles.UI_FeatureAnimation}>
+          <div style='width: 100%; max-width: 24rem;'>
+            {
+              eagerVisuals ? (
+                <FeatureAnimation kind='custom-ai-blocks' client:load />
+              ) : (
+                <FeatureAnimation kind='custom-ai-blocks' client:visible />
+              )
+            }
+          </div>
+        </div>
+      </BentoCard>
+
+      <BentoCard
         title={copy.foldersMonitoring.title}
         description={copy.foldersMonitoring.description}
         icon={FolderSync}
@@ -119,7 +140,6 @@ const className = [styles.Features, compactTopSpacing ? styles.Features_compactT
         title={copy.templates.title}
         description={copy.templates.description}
         icon={LayoutTemplate}
-        badge='PRO 🌟'
       >
         <div class={styles.UI_FeatureAnimation}>
           {
@@ -136,7 +156,6 @@ const className = [styles.Features, compactTopSpacing ? styles.Features_compactT
         title={copy.namingBlocks.title}
         description={copy.namingBlocks.description}
         icon={Blocks}
-        badge='PRO 🌟'
       >
         <div class={styles.UI_FeatureAnimation}>
           {
@@ -153,7 +172,6 @@ const className = [styles.Features, compactTopSpacing ? styles.Features_compactT
         title={copy.customPrompts.title}
         description={copy.customPrompts.description}
         icon={MessageSquareText}
-        badge='PRO 🌟'
       >
         <div class={styles.UI_FeatureAnimation}>
           {
@@ -188,15 +206,18 @@ const className = [styles.Features, compactTopSpacing ? styles.Features_compactT
         description={copy.offlineAi.description}
         icon={Bot}
         badge='PRO 🌟'
+        class={styles['BentoCard--wide']}
       >
         <div class={styles.UI_FeatureAnimation}>
-          {
-            eagerVisuals ? (
-              <FeatureAnimation kind='offline-ai' client:load />
-            ) : (
-              <FeatureAnimation kind='offline-ai' client:visible />
-            )
-          }
+          <div style='width: 100%; max-width: 24rem;'>
+            {
+              eagerVisuals ? (
+                <FeatureAnimation kind='offline-ai' client:load />
+              ) : (
+                <FeatureAnimation kind='offline-ai' client:visible />
+              )
+            }
+          </div>
         </div>
       </BentoCard>
     </div>

@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import MethodologyPage, { METHODOLOGY_FAQS } from '@/components/MethodologyPage/MethodologyPage.astro';
 import FAQ from '@/components/FAQ';
 import { getSeoForPath, toIsoDateTime, SITE_ORIGIN } from '@/seo/config';
+import { getPrimaryAuthorJsonLd, PRIMARY_AUTHOR } from '@/data/author';
 
 const seo = getSeoForPath('/methodology');
 const pageUrl = `${SITE_ORIGIN}/methodology`;
@@ -10,6 +11,7 @@ const pageUrl = `${SITE_ORIGIN}/methodology`;
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
+    getPrimaryAuthorJsonLd(),
     {
       '@type': 'AboutPage',
       '@id': `${pageUrl}#about`,
@@ -19,7 +21,7 @@ const jsonLd = {
         'Public methodology for AI file renaming on Mac and Windows: scoring rubric, benchmark protocol, decision policy, and monthly review cadence.',
       inLanguage: 'en',
       datePublished: toIsoDateTime('2026-01-15'),
-      dateModified: toIsoDateTime('2026-05-19'),
+      dateModified: toIsoDateTime('2026-07-10'),
       isPartOf: { '@id': `${SITE_ORIGIN}/#website` },
       mainEntity: { '@id': `${SITE_ORIGIN}/#software` },
       breadcrumb: {
@@ -35,7 +37,7 @@ const jsonLd = {
         url: SITE_ORIGIN,
         logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/logo.png` },
       },
-      author: { '@type': 'Organization', name: 'Zush', url: SITE_ORIGIN },
+      author: { '@id': `${PRIMARY_AUTHOR.url}#person` },
     },
     {
       '@type': 'FAQPage',

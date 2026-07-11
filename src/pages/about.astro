@@ -1,0 +1,84 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AppLink from '@/components/AppLink';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
+import { APP_STORE_URL, HOMEBREW_CASK_URL, PRODUCT_FACTS_REVIEWED_AT, WINDOWS_STORE_URL } from '@/constants';
+import { PRIMARY_AUTHOR, getPrimaryAuthorJsonLd } from '@/data/author';
+import { getSeoForPath, SITE_ORIGIN } from '@/seo/config';
+import styles from '@/views/Editorial/EditorialPage.module.scss';
+
+const seo = getSeoForPath('/about');
+const pageUrl = `${SITE_ORIGIN}/about`;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'AboutPage',
+      '@id': `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: seo.title,
+      description: seo.description,
+      dateModified: PRODUCT_FACTS_REVIEWED_AT,
+      inLanguage: 'en',
+      isPartOf: { '@id': `${SITE_ORIGIN}/#website` },
+      about: { '@id': `${SITE_ORIGIN}/#organization` },
+      author: { '@id': `${PRIMARY_AUTHOR.url}#person` },
+    },
+    getPrimaryAuthorJsonLd(),
+  ],
+};
+---
+
+<BaseLayout seo={seo} jsonLd={jsonLd}>
+  <main class={styles.Page}>
+    <div class={styles.Container}>
+      <header class={styles.Hero}>
+        <Text as='p' size='sm' color='subtle' className={styles.Flush}>About Zush</Text>
+        <Heading as='h1' className={styles.Flush}>Better filenames for files you need to find again</Heading>
+        <Text as='p' size='xl' color='subtle' className={styles.Flush}>
+          Zush is an AI file renamer for Mac and Windows. It analyzes supported files, suggests descriptive names, and lets you review, batch apply, monitor, and undo changes without moving files between folders.
+        </Text>
+      </header>
+
+      <div class={styles.Grid}>
+        <section class={styles.Card}>
+          <Heading as='h2' size='h3' className={styles.CardTitle}>Who builds Zush</Heading>
+          <Text as='p' color='subtle' className={styles.CardCopy}>
+            Zush is founded, designed, and developed by <AppLink href={PRIMARY_AUTHOR.url} variant='legal'>Kirill Isachenko (lirik)</AppLink>. Product support is available at <AppLink href='mailto:support@zushapp.com' variant='legal'>support@zushapp.com</AppLink>.
+          </Text>
+        </section>
+
+        <section class={styles.Card}>
+          <Heading as='h2' size='h3' className={styles.CardTitle}>What the product does</Heading>
+          <Text as='p' color='subtle' className={styles.CardCopy}>
+            Zush creates content-aware filenames for screenshots, photos, PDFs, documents, design files, video, and audio. It supports cloud AI, your own provider key, and local Ollama models for supported offline workflows.
+          </Text>
+        </section>
+
+        <section class={`${styles.Card} ${styles.CardWide}`}>
+          <Heading as='h2' size='h3' className={styles.CardTitle}>How claims are verified</Heading>
+          <Text as='p' color='subtle' className={styles.CardCopy}>
+            Product claims are tied to public documentation, release notes, store listings, and a published evaluation method. Comparisons identify their sources and review dates. We do not publish benchmark scores or customer testimonials without reproducible evidence or a verifiable source.
+          </Text>
+          <div class={styles.Links}>
+            <AppLink href='/methodology' variant='legal'>Evaluation methodology</AppLink>
+            <AppLink href='/changelog' variant='legal'>Mac changelog</AppLink>
+            <AppLink href='/changelog/windows' variant='legal'>Windows changelog</AppLink>
+            <AppLink href='/privacy-policy' variant='legal'>Privacy policy</AppLink>
+          </div>
+        </section>
+
+        <section class={`${styles.Card} ${styles.CardWide}`}>
+          <Heading as='h2' size='h3' className={styles.CardTitle}>Public product records</Heading>
+          <ul class={styles.CardList}>
+            <li><AppLink href={APP_STORE_URL} variant='legal'>Mac App Store listing</AppLink></li>
+            <li><AppLink href={WINDOWS_STORE_URL} variant='legal'>Microsoft Store listing</AppLink></li>
+            <li><AppLink href={HOMEBREW_CASK_URL} variant='legal'>Homebrew cask</AppLink></li>
+            <li><AppLink href='https://www.producthunt.com/products/zush' variant='legal'>Product Hunt product page</AppLink></li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

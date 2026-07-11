@@ -45,7 +45,7 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        margin: 0 0 0.75rem;
+        margin: 0;
         line-height: 1;
         text-decoration: none;
         filter: drop-shadow(0 0.45rem 0.85rem rgb(233 171 5 / 0.18));
@@ -75,6 +75,46 @@
             margin-left: auto;
             margin-right: auto;
         }
+    }
+
+    &__ProofRow {
+        display: flex;
+        align-items: center;
+        gap: $space-sm;
+        margin: 0 0 $space-sm;
+
+        @include mobile {
+            justify-content: center;
+        }
+    }
+
+    &__OfflineBadge {
+        display: inline-flex;
+        align-items: center;
+        gap: $space-2xs;
+        width: fit-content;
+        max-width: 100%;
+        padding: $space-2xs $space-xs;
+        border: $border-width-hairline solid color-mix(in srgb, var(--success) $accent-border-subtle, var(--border));
+        border-radius: $radius-full;
+        background: var(--tone-green-bg);
+        color: var(--success);
+        transition: border-color $transition-fast;
+
+        &:hover,
+        &:focus-visible {
+            border-color: color-mix(in srgb, var(--success) $accent-border-hover, var(--border));
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+    }
+
+    &__OfflineBadgeIcon {
+        width: $space-sm;
+        height: $space-sm;
+        flex: 0 0 auto;
     }
 
     &__ActionRow {

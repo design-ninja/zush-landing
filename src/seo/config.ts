@@ -3,10 +3,14 @@ import {
   APP_CONFIG,
   APP_STORE_URL,
   HOMEBREW_CASK_URL,
+  MAC_APP_VERSION,
   MAC_INSTALLER_URL,
+  PRODUCT_FACTS_REVIEWED_AT,
   SUPPORTED_FORMAT_COUNT,
+  WINDOWS_APP_VERSION,
   WINDOWS_STORE_URL,
 } from '@/constants';
+import { getPrimaryAuthorJsonLd, PRIMARY_AUTHOR } from '@/data/author';
 
 export const SITE_ORIGIN = 'https://zushapp.com';
 export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og-image.png`;
@@ -27,7 +31,7 @@ type RouteSeoMeta = Omit<SeoMeta, 'canonicalPath'>;
 const DEFAULT_META: RouteSeoMeta = {
   title: 'AI File Renamer & Organizer for Mac and Windows | Zush',
   description:
-    'AI file renamer & organizer for Mac & Windows. Zush reads screenshots, PDFs, photos, video, audio, documents, and design files, then renames files by content.',
+    `AI file renamer for Mac and Windows. Rename ${SUPPORTED_FORMAT_COUNT} formats by content, including RAW photos, PDFs, video, audio, and design files. Preview and undo every batch.`,
   robots: 'noindex, nofollow',
   ogType: 'website',
 };
@@ -37,7 +41,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ...DEFAULT_META,
     title: 'AI File Renamer & Organizer for Mac and Windows | Zush',
     description:
-      'AI file renamer & organizer for Mac & Windows. Zush reads screenshots, PDFs, photos, video, audio, documents, and design files, then renames files by content.',
+      `AI file renamer for Mac and Windows. Rename ${SUPPORTED_FORMAT_COUNT} formats by content, including RAW photos, PDFs, video, audio, and design files. Preview and undo every batch.`,
     robots: 'index, follow',
   },
   '/batch-rename-files': {
@@ -55,9 +59,9 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ogType: 'website',
   },
   '/ai-file-organizer': {
-    title: 'AI File Organizer & Sorter for Mac and Windows | Zush',
+    title: 'AI File Organizer for Mac and Windows | Zush',
     description:
-      'AI file organizer that sorts and names files by content. Zush reads screenshots, PDFs, invoices, photos, and documents, then organizes them with preview and undo.',
+      'AI file organizer for Mac and Windows that creates descriptive, searchable filenames by content. Use templates, folder monitoring, preview, and undo without moving files between folders.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -127,7 +131,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/docs': {
     title: 'Zush Docs | AI File Renamer Guides for Mac and Windows',
     description:
-      'Documentation for Zush AI file renaming on Mac and Windows: batch rename, folder monitoring, Templates, Naming Blocks, BYOK, Offline AI, metadata, and undo.',
+      'Documentation for Zush AI file renaming on Mac and Windows: batch rename, folder monitoring, Templates, Naming Blocks, Custom AI Blocks, BYOK, Offline AI, metadata, and undo.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -135,6 +139,20 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     title: 'AI File Renaming Methodology & Benchmarks — Zush',
     description:
       'How Zush scores AI file renaming on Mac & Windows: 35% accuracy, 20% consistency, 15% automation, 15% safety, 15% fit. Reviewed monthly.',
+    robots: 'index, follow',
+    ogType: 'website',
+  },
+  '/about': {
+    title: 'About Zush | AI File Renamer for Mac and Windows',
+    description:
+      'Learn who builds Zush, why the AI file renamer exists, how product claims are verified, and where to find public releases, policies, and methodology.',
+    robots: 'index, follow',
+    ogType: 'website',
+  },
+  '/authors/kirill-isachenko': {
+    title: 'Kirill Isachenko | Founder and Developer of Zush',
+    description:
+      'Kirill Isachenko (lirik) is the founder, designer, and software developer behind Zush, an AI file renamer for Mac and Windows.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -302,6 +320,9 @@ export const HOME_JSON_LD = {
         url: `${SITE_ORIGIN}/logo.png`,
       },
       email: 'support@zushapp.com',
+      founder: {
+        '@id': `${PRIMARY_AUTHOR.url}#person`,
+      },
       sameAs: [
         'https://x.com/zush_app',
         'https://www.youtube.com/@zushapp',
@@ -311,6 +332,7 @@ export const HOME_JSON_LD = {
         WINDOWS_STORE_URL,
       ],
     },
+    getPrimaryAuthorJsonLd(),
     {
       '@type': 'WebSite',
       '@id': `${SITE_ORIGIN}/#website`,
@@ -329,8 +351,6 @@ export const HOME_JSON_LD = {
       name: 'AI File Renamer & Organizer for Mac and Windows | Zush',
       description:
         `Zush is an AI file renamer and organizer for Mac and Windows that renames ${SUPPORTED_FORMAT_COUNT} supported file formats by content, including screenshots, PDFs, photos, documents, videos, audio, and design files.`,
-      keywords:
-        'AI file renamer, AI file renamer and organizer, file renamer AI, rename files with AI, rename files by content, content-aware file renamer, smart AI file renamer, 100+ file formats, audio file renamer, video file renamer, file renamer for Mac, file renamer for Windows, batch rename tool, bulk rename files, automatic file organizer, AI file organizer, searchable filenames',
       isPartOf: {
         '@id': `${SITE_ORIGIN}/#website`,
       },
@@ -357,7 +377,7 @@ export const HOME_JSON_LD = {
           },
         ],
       },
-      dateModified: '2026-07-01',
+      dateModified: PRODUCT_FACTS_REVIEWED_AT,
       inLanguage: 'en',
     },
     {
@@ -367,19 +387,9 @@ export const HOME_JSON_LD = {
       alternateName: [
         'AI File Renamer',
         'AI File Renamer & Organizer',
-        'File Renamer AI',
-        'Smart AI File Renamer',
         'Content-Aware File Renamer',
-        'Rename Files with AI',
-        'Rename Files by Content',
-        'Batch Rename Tool',
-        'Batch Rename Tool for Mac and Windows',
-        'File Renamer for Mac',
-        'File Renamer for Windows',
-        'AI Batch Rename Tool',
-        'Bulk Rename Tool',
-        'Automatic File Organizer',
-        'AI File Organizer',
+        'Zush for Mac',
+        'Zush for Windows',
       ],
       url: SITE_ORIGIN,
       mainEntityOfPage: {
@@ -387,12 +397,13 @@ export const HOME_JSON_LD = {
       },
       description:
         `AI file renamer and organizer, batch rename tool, bulk rename utility, and automatic file organizer for macOS and Windows. Rename ${SUPPORTED_FORMAT_COUNT} file formats by content, including screenshots, PDFs, photos, documents, videos, audio, and design files, with metadata, templates, folder monitoring, review, and undo.`,
-      keywords:
-        'AI file renamer, AI file renamer and organizer, file renamer AI, rename files with AI, rename files by content, content-aware file renamer, smart AI file renamer, 100+ file formats, mixed file renamer, audio file renamer, video file renamer, file renamer, file organizer, batch rename tool, batch rename files, bulk rename files, AI photo organizer, PDF renamer, photo renamer, document renamer, screenshot renamer, automatic file organizer, AI file organizer, searchable filenames, watch folder',
       applicationCategory: 'UtilitiesApplication',
       applicationSubCategory: 'File Management',
       operatingSystem: ['macOS 15.0+', 'Windows 10', 'Windows 11'],
-      softwareVersion: APP_CONFIG.app_version,
+      softwareVersion: `${MAC_APP_VERSION} (macOS); ${WINDOWS_APP_VERSION} (Windows)`,
+      author: {
+        '@id': `${PRIMARY_AUTHOR.url}#person`,
+      },
       downloadUrl: [MAC_INSTALLER_URL, APP_STORE_URL, HOMEBREW_CASK_URL, WINDOWS_STORE_URL],
       installUrl: [APP_STORE_URL, HOMEBREW_CASK_URL, WINDOWS_STORE_URL],
       sameAs: [
@@ -437,36 +448,36 @@ export const HOME_JSON_LD = {
         },
       ],
       featureList: [
-        'AI-powered file renaming',
         `${SUPPORTED_FORMAT_COUNT} supported file formats across images, design files, documents, video, and audio`,
-        'AI file renamer and organizer for Mac and Windows',
-        'AI file renamer for Mac and Windows',
         'Rename files with AI by content',
-        'Content-aware file renamer for screenshots, PDFs, photos, documents, videos, audio, and design files',
-        'Smart AI file renamer with review and undo',
-        'Audio file renamer for MP3, M4A, WAV, FLAC, OGG, WebM, and MPGA',
-        'Video file renamer for MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV, and VOB',
-        'AI batch file renamer for mixed folders',
-        'File renamer for Mac and Windows',
-        'Bulk rename files by content',
-        'Bulk rename screenshots, design files, PDFs, photos, audio, videos, and documents',
-        'Bulk Rename Utility alternative for content-aware filenames',
-        'Automatic folder monitoring',
-        'Watch folders for new screenshots, downloads, photos, and PDFs',
-        'AI file organizer workflows for Downloads, screenshots, documents, photos, videos, audio, and design files',
-        'Searchable filenames for Finder, Spotlight, File Explorer, and Windows Search',
-        'Smart metadata extraction',
-        'Custom naming patterns',
-        'Batch rename support',
+        'Batch rename mixed folders with preview and undo',
+        'Folder monitoring for new supported files',
+        'Templates and 145+ Naming Blocks',
+        'Custom AI Blocks: user-defined AI extraction fields reusable in any template',
         'Video analysis with sampled frames and subtitles',
         'Design file support for Sketch, Figma, Illustrator, and PSD',
         'iWork support for Pages, Numbers, and Keynote',
-        'RAW format support',
-        'PDF and document analysis',
+        'RAW photo, PDF, and document analysis',
         '60+ language support',
         'Bring Your Own Key (BYOK)',
-        'Offline AI mode - private local models via Ollama',
+        'Offline AI mode with local Ollama models',
       ],
     },
   ],
+};
+
+export const HOME_VIDEO_JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  '@id': `${SITE_ORIGIN}/#batch-rename-video`,
+  name: 'Zush AI batch file renaming workflow on Mac',
+  description:
+    'A Zush demo showing mixed files analyzed by AI, reviewed with content-aware filename suggestions, and renamed as a batch on macOS.',
+  thumbnailUrl: `${SITE_ORIGIN}/videos/posters/hero-batch-rename-mac-window-light.webp`,
+  uploadDate: '2026-06-20T10:17:47+07:00',
+  contentUrl: `${SITE_ORIGIN}/videos/hero/zush-batch-rename-mac-window-light.mp4`,
+  embedUrl: `${SITE_ORIGIN}/`,
+  publisher: {
+    '@id': `${SITE_ORIGIN}/#organization`,
+  },
 };

@@ -31,7 +31,14 @@ import { getPlatformFaqCopy } from '@/i18n/platformFaqs';
 import { getPlatformSpecificsCopy } from '@/i18n/platformSpecifics';
 import { getLocalizedPlatformSpecificsContent } from '@/i18n/platformSpecificsContent';
 import { getLocalizedSeoForRoute } from '@/i18n/seo';
-import { APP_CONFIG, APP_STORE_URL, HOMEBREW_CASK_URL, WINDOWS_STORE_URL } from '@/constants';
+import {
+  APP_CONFIG,
+  APP_STORE_URL,
+  HOMEBREW_CASK_URL,
+  MAC_APP_VERSION,
+  WINDOWS_APP_VERSION,
+  WINDOWS_STORE_URL,
+} from '@/constants';
 
 interface Props {
   platform: Extract<DownloadOS, 'mac' | 'windows'>;
@@ -201,7 +208,7 @@ const softwareJsonLd = {
   ...(processorSpec ? { processorRequirements: processorSpec } : {}),
   ...(memorySpec ? { memoryRequirements: memorySpec } : {}),
   ...(storageSpec ? { storageRequirements: storageSpec } : {}),
-  softwareVersion: APP_CONFIG.app_version,
+  softwareVersion: platform === 'mac' ? MAC_APP_VERSION : WINDOWS_APP_VERSION,
   downloadUrl: platform === 'mac' ? [page.downloadUrl, APP_STORE_URL, HOMEBREW_CASK_URL] : page.downloadUrl,
   installUrl: platform === 'mac' ? [APP_STORE_URL, HOMEBREW_CASK_URL] : page.installUrl,
   sameAs: platform === 'mac' ? [APP_STORE_URL, HOMEBREW_CASK_URL] : [WINDOWS_STORE_URL],

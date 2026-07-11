@@ -48,7 +48,7 @@ const batchRenameFaq = [
   {
     question: 'Can I use custom naming conventions in a batch?',
     answer:
-      'Yes. You can combine AI-generated titles with dates, categories, original names, counters, document fields, client names, invoice details, and other Naming Blocks so every file follows the same convention.',
+      'Yes. You can combine AI-generated titles with dates, categories, original names, counters, document fields, client names, invoice details, and other Naming Blocks so every file follows the same convention. You can also create Custom AI Blocks that extract any detail you describe, such as a brand or case number.',
   },
 ];
 
@@ -218,7 +218,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     category: 'general',
     definitionTitle: 'What Is an AI File Organizer?',
     definitionText:
-      'An AI file organizer reads what each file contains and turns messy folders into consistently named, searchable libraries. Zush organizes and sorts files by content on Mac and Windows: screenshots, PDFs, invoices, photos, documents, videos, audio, and design files get descriptive names you review before applying, with templates, folder monitoring, and full undo history.',
+      'An AI file organizer reads what each file contains and turns messy folders into consistently named, searchable libraries. Zush focuses on the naming layer on Mac and Windows: screenshots, PDFs, invoices, photos, documents, videos, audio, and design files get descriptive names you review before applying, with templates, folder monitoring, and full undo history. Zush renames files in place; it does not move them between folders.',
     showcaseSlides: sharedSlides,
     faqItems: fileOrganizerFaq,
     relatedPages: [
@@ -239,7 +239,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     jsonLd: buildFeaturePageJsonLd({
       howTo: {
         name: 'Organize files with AI',
-        description: 'Use Zush as an AI file organizer and sorter for Mac and Windows folders.',
+        description: 'Use Zush to create descriptive, consistent filenames for Mac and Windows folders without moving files between folders.',
         steps: [
           { name: 'Drop a messy folder into Zush', text: 'Add Downloads, a screenshots folder, a client folder, or any mixed batch of files.' },
           { name: 'Pick a naming convention', text: 'Use an AI title or combine dates, clients, categories, counters, and metadata with templates and Naming Blocks.' },
@@ -250,10 +250,11 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       software: {
         pagePath: '/ai-file-organizer',
         description:
-          'AI file organizer and sorter for Mac and Windows. Zush names files by content, keeps folders consistent with templates and Naming Blocks, monitors folders, and supports full undo.',
+          'AI file organizer for Mac and Windows. Zush names files in place by content, keeps folders consistent with templates and Naming Blocks, monitors folders, and supports full undo without moving files between folders.',
         featureList: [
           'AI file organizer for Mac and Windows',
-          'Sort and name files by content, not just by pattern',
+          'Name files by content, not just by pattern',
+          'Rename files in place without moving them between folders',
           'Organize screenshots, PDFs, invoices, photos, documents, audio, and videos',
           'Automatic organization for Downloads via folder monitoring',
           'Consistent naming conventions with templates and 145+ Naming Blocks',

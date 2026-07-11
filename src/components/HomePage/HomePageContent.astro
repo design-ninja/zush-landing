@@ -31,6 +31,10 @@ const heroVideoShowcaseByOS = {
   mac: HOME_HERO_BATCH_RENAME_VIDEO,
   windows: WINDOWS_HERO_BATCH_RENAME_VIDEO,
 };
+const offlineBadge = {
+  label: copy.home.featureCards.offlineAi.title,
+  modal: copy.home.offlineAiModal,
+};
 ---
 
 <Hero
@@ -43,12 +47,13 @@ const heroVideoShowcaseByOS = {
   downloadEdgeLabel={FREE_DOWNLOAD_BADGE_LABEL}
   downloadMenu={copy.downloadMenu}
   trustSignals={copy.home.trustSignals}
-  reviewsHref="#reviews"
+  reviewsHref='#reviews'
   reviewsLabel={copy.header.reviews}
   secondaryHref={secondaryHref}
   videoShowcaseByOS={heroVideoShowcaseByOS}
   macVersion={macVersion}
   windowsVersion={windowsVersion}
+  offlineBadge={offlineBadge}
 />
 <Features
   title={copy.home.featuresTitle}

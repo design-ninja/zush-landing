@@ -218,7 +218,7 @@
     text-decoration: none;
     font-family: var(--font-family);
     font-size: 0.95rem;
-    font-weight: 500;
+    font-weight: $font-weight-link;
 
     &:hover {
       color: var(--primary-hover);
@@ -355,7 +355,7 @@
     color: var(--primary);
     border-radius: $radius-full;
     font-size: 0.75rem;
-    font-weight: 500;
+    font-weight: $font-weight-link;
     text-decoration: none;
   }
 

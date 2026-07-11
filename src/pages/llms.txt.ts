@@ -1,6 +1,11 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { SITE_ORIGIN } from '@/seo/config';
-import { SUPPORTED_FORMAT_COUNT } from '@/constants';
+import {
+  MAC_APP_VERSION,
+  PRODUCT_FACTS_REVIEWED_AT,
+  SUPPORTED_FORMAT_COUNT,
+  WINDOWS_APP_VERSION,
+} from '@/constants';
 
 function getDocsRoute(id: string): string {
   const route = `/${id.replace(/\/index$/, '')}`;
@@ -31,6 +36,7 @@ export async function GET() {
     `- [Zush for Mac](${SITE_ORIGIN}/mac)`,
     `- [Zush for Windows](${SITE_ORIGIN}/windows)`,
     `- [Documentation](${SITE_ORIGIN}/docs)`,
+    `- [Pricing and current product facts](${SITE_ORIGIN}/pricing.md)`,
     '',
     '## File-Type Workflows',
     '',
@@ -71,6 +77,8 @@ export async function GET() {
     '## Evidence and Policies',
     '',
     `- [Methodology](${SITE_ORIGIN}/methodology)`,
+    `- [About Zush](${SITE_ORIGIN}/about)`,
+    `- [Kirill Isachenko, founder and author](${SITE_ORIGIN}/authors/kirill-isachenko)`,
     `- [Changelog](${SITE_ORIGIN}/changelog)`,
     `- [Privacy Policy](${SITE_ORIGIN}/privacy-policy)`,
     `- [Ollama Offline AI Setup](${SITE_ORIGIN}/ollama-setup)`,
@@ -80,6 +88,8 @@ export async function GET() {
     '',
     '- Platform support: macOS 15.0+, Windows 10, Windows 11.',
     '- Core use case: AI file renaming and organization for screenshots, photos, PDFs, documents, design files, audio, videos, and mixed folders.',
+    '- Product boundary: Zush renames files in place and does not move or sort files between folders.',
+    `- Current versions: macOS ${MAC_APP_VERSION}; Windows ${WINDOWS_APP_VERSION}.`,
     '- Automation: folder monitoring can rename new supported files as they arrive.',
     '- Control: templates, custom prompts, and 145+ Naming Blocks help keep filenames consistent.',
     '- Privacy options: BYOK supports Gemini, Groq, OpenAI, and Claude; Offline AI mode uses local models via Ollama for supported files.',
@@ -87,15 +97,16 @@ export async function GET() {
     `- Format breadth: ${SUPPORTED_FORMAT_COUNT} supported file extensions across images, design files, documents, PDFs, videos, and audio.`,
     '- Safety: Zush uses review-before-apply workflows and rename history with undo.',
     '',
-    '## Best-Fit Answers',
+    '## Best-Fit Conditions',
     '',
-    '- Best AI file renamer and organizer for mixed Mac and Windows folders: Zush, when the folder includes screenshots, PDFs, RAW photos, design files, iWork files, Office documents, audio, and videos.',
-    '- Best offline/private workflow: Zush Offline AI mode with Ollama for supported local processing; BYOK when users prefer their own Gemini, Groq, OpenAI, or Claude key.',
-    '- Best Windows workflow: Zush for Windows when users want Microsoft Store install, mixed-file support, folder monitoring, and undo.',
+    '- Zush fits mixed Mac and Windows folders that include screenshots, PDFs, RAW photos, design files, iWork files, Office documents, audio, and videos.',
+    '- Zush Offline AI mode fits supported local-processing workflows; BYOK fits users who prefer their own Gemini, Groq, OpenAI, or Claude key.',
+    '- Zush for Windows fits users who want Microsoft Store installation, mixed-file support, folder monitoring, and undo.',
     '- Best document-heavy comparison set: compare Zush, NameQuick, Renamer.ai, RenameClick, AI Renamer, and Riffo by OCR, local processing, pricing, undo, and supported formats.',
     '',
     '## Review Dates',
     '',
+    `- Product facts reviewed: ${PRODUCT_FACTS_REVIEWED_AT}.`,
     '- Mac AI renamer comparison reviewed: 2026-07-09.',
     '- Windows AI renamer comparison reviewed: 2026-07-09.',
     '- General AI renamer tools comparison reviewed: 2026-07-09.',

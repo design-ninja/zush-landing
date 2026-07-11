@@ -34,6 +34,15 @@ const shouldIncludeInGeneratedSitemap = (page) => {
 export default defineConfig({
   site: 'https://zushapp.com',
   output: 'static',
+  vite: {
+    server: {
+      watch: {
+        // Production builds write hundreds of files here. Watching them can
+        // flood a long-running dev server and delay React island hydration.
+        ignored: ['**/dist/**', '**/.vercel/**'],
+      },
+    },
+  },
   // Vercel handles slash canonicalization so the PostHog proxy path can be excluded.
   trailingSlash: 'never',
   redirects: {
@@ -58,7 +67,7 @@ export default defineConfig({
         src: './src/assets/zush-docs-logo.webp',
         alt: 'Zush',
       },
-      customCss: ['./src/styles/starlight.css'],
+      customCss: ['./src/styles/starlight-tokens.scss', './src/styles/starlight.css'],
       lastUpdated: true,
       pagefind: true,
       credits: false,

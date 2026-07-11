@@ -37,6 +37,9 @@ export interface MethodologyCopy {
   validationEyebrow: string;
   benchmarkTitle: string;
   steps: string[];
+  evidenceStatusEyebrow?: string;
+  evidenceStatusTitle?: string;
+  evidenceStatusBody?: string;
   policyEyebrow: string;
   decisionPolicyTitle: string;
   decisionPolicyBody: string;
@@ -73,7 +76,7 @@ export const METHODOLOGY_FAQS: MethodologyFaq[] = [
   {
     question: 'How often is the Zush methodology updated?',
     answer:
-      'We review the scoring rubric and benchmark protocol monthly. Material changes are logged in the public changelog with the date and the reason for each update, so anyone can audit how recommendations evolved.',
+      'The protocol is reviewed monthly and the page shows its latest review date. Product releases are logged in the public changelog. Benchmark results are published only when a reproducible run and underlying evidence are ready for review.',
   },
   {
     question: 'What weights does Zush use to score AI file renaming?',
@@ -83,17 +86,17 @@ export const METHODOLOGY_FAQS: MethodologyFaq[] = [
   {
     question: 'Which file types are covered in the benchmark set?',
     answer:
-      'Screenshots, design files (Sketch, Figma, Adobe Illustrator, Photoshop), RAW and HEIC photos, PDFs, iWork (Pages, Numbers, Keynote), Office documents (DOCX, XLSX, PPTX), audio (MP3, M4A, WAV, FLAC), and video (MP4, MOV, screen recordings). No synthetic single-format tests.',
+      'The protocol covers screenshots, design files (Sketch, Figma, Adobe Illustrator, Photoshop), RAW and HEIC photos, PDFs, iWork, Office documents, audio, and video. A published result must use the same mixed-file corpus rather than a synthetic single-format sample.',
   },
   {
     question: 'How does Zush verify that a rename is safe and recoverable?',
     answer:
-      'Every approved workflow must pass rollback, preview, and one-click revert checks across a full batch run on both Mac and Windows builds. Setups that lack recovery behavior are downgraded regardless of how good the naming output looks.',
+      'The protocol requires rollback, preview, and revert checks across a full batch run on both Mac and Windows builds. A workflow that lacks recovery behavior is downgraded regardless of naming quality.',
   },
   {
     question: 'Do you test cloud AI and Offline AI under the same protocol?',
     answer:
-      'Yes. The same mixed-file benchmark is run against cloud providers (Gemini, Groq, OpenAI, Claude) via BYOK and against private local models via Ollama. Operational fit accounts for setup friction and speed differences between modes.',
+      'The protocol requires the same mixed-file corpus, prompts, templates, and scoring rules for cloud providers via BYOK and local models via Ollama. Results are not claimed until those controlled runs and their evidence are published.',
   },
 ];
 
@@ -102,14 +105,14 @@ const defaultCopy: MethodologyCopy = {
   title: 'AI File Renaming Methodology & Benchmarks',
   lead:
     'This page explains how Zush evaluates AI file renaming on Mac and Windows. We publish the scoring rubric, benchmark protocol, and review cadence so recommendations stay reproducible, auditable, and useful for real batch operations across mixed folders.',
-  heroMeta: ['Reviewed monthly', '5 weighted checks', 'Updated 2026-05-19'],
+  heroMeta: ['Reviewed monthly', '5 weighted checks', 'Updated 2026-07-10'],
   governanceEyebrow: 'Governance',
   accountabilityTitle: 'Editorial Accountability',
   factsLabel: 'Editorial accountability facts',
   primaryAuthorLabel: 'Primary author',
-  primaryAuthor: 'Zush Editorial Team',
+  primaryAuthor: 'Kirill Isachenko (lirik)',
   technicalReviewerLabel: 'Technical reviewer',
-  technicalReviewer: 'Zush Product Team',
+  technicalReviewer: 'Kirill Isachenko, product owner',
   updateCadenceLabel: 'Update cadence',
   updateCadence: 'Criteria are reviewed monthly, with material changes logged in',
   changelogLabel: 'the changelog',
@@ -132,8 +135,12 @@ const defaultCopy: MethodologyCopy = {
     'Run controlled rename jobs with identical prompts, templates, and Naming Blocks across cloud AI (Gemini, Groq, OpenAI, Claude) and Offline AI via Ollama.',
     'Score outputs against the rubric and record false positives, ambiguous labels, and any collisions inside batch runs.',
     'Validate rollback, preview, and one-click revert behavior on both Mac and Windows builds before marking a setup production-safe.',
-    'Repeat checks after each release and log material changes in the public changelog with date and reason.',
+    'Publish results only after the run inputs, review date, tested versions, and supporting evidence can be reproduced.',
   ],
+  evidenceStatusEyebrow: 'Evidence status',
+  evidenceStatusTitle: 'No unpublished scores presented as facts',
+  evidenceStatusBody:
+    'This page publishes the evaluation protocol, not a completed benchmark leaderboard. Zush does not claim benchmark scores until the underlying controlled run, tested versions, review date, and evidence can be published together.',
   policyEyebrow: 'Policy',
   decisionPolicyTitle: 'Decision Policy',
   decisionPolicyBody:
@@ -280,6 +287,16 @@ const copy = Astro.props.copy ?? defaultCopy;
               </li>
             ))}
           </ol>
+        </section>
+
+        <section id="evidence-status" class="methodology__card">
+          <div class="methodology__sectionHead">
+            <span class="methodology__eyebrow">{copy.evidenceStatusEyebrow ?? 'Evidence status'}</span>
+            <Heading as="h2" className="methodology__sectionTitle">{copy.evidenceStatusTitle ?? 'No unpublished scores presented as facts'}</Heading>
+          </div>
+          <Text as="p" color="subtle" className="methodology__copy">
+            {copy.evidenceStatusBody ?? 'This page publishes the evaluation protocol, not a completed benchmark leaderboard. Zush does not claim benchmark scores until the controlled run, tested versions, review date, and evidence can be published together.'}
+          </Text>
         </section>
 
       </main>

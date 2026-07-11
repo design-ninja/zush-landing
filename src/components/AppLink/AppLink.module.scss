@@ -1,6 +1,7 @@
 @use '../../styles/variables' as *;
 
 .AppLink {
+  font-weight: $font-weight-link;
   transition: color $transition-fast;
 
   &:focus-visible {
@@ -11,7 +12,6 @@
 
   &_legal {
     color: var(--primary);
-    font-weight: 650;
     text-decoration: none;
   }
 

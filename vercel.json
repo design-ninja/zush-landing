@@ -46,7 +46,7 @@
     },
     {
       "source": "/rename-files-with-ai/",
-      "destination": "/batch-rename-files",
+      "destination": "/",
       "permanent": true
     },
     {
@@ -70,6 +70,11 @@
       "permanent": true
     },
     {
+      "source": "/auto-rename-files/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/:path((?!e/).+)/",
       "destination": "/:path*",
       "permanent": true
@@ -86,7 +91,7 @@
     },
     {
       "source": "/rename-files-with-ai",
-      "destination": "/batch-rename-files",
+      "destination": "/",
       "permanent": true
     },
     {

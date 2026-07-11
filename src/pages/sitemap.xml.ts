@@ -9,6 +9,28 @@ import { DEFAULT_LOCALE, LOCALE_META, LOCALIZATION_PAUSED, LOCALIZED_ROUTES, get
 const BLOG_CONTENT_DIR = join(process.cwd(), 'src', 'content', 'blog');
 const DOCS_CONTENT_DIR = join(process.cwd(), 'src', 'content', 'docs');
 const PAGES_DIR = join(process.cwd(), 'src', 'pages');
+const SEO_CONFIG_FILE = join(process.cwd(), 'src', 'seo', 'config.ts');
+const CONSTANTS_FILE = join(process.cwd(), 'src', 'constants.ts');
+
+const STATIC_ROUTE_DEPENDENCIES: Record<string, string[]> = {
+  '/': [
+    join(process.cwd(), 'src', 'components', 'HomePage', 'HomePageContent.astro'),
+    join(process.cwd(), 'src', 'data', 'homeFaq.ts'),
+    join(process.cwd(), 'src', 'i18n', 'copy.ts'),
+  ],
+  '/mac': [
+    join(process.cwd(), 'src', 'components', 'PlatformLandingPage', 'PlatformLandingPage.astro'),
+    join(process.cwd(), 'src', 'i18n', 'copy.ts'),
+  ],
+  '/windows': [
+    join(process.cwd(), 'src', 'components', 'PlatformLandingPage', 'PlatformLandingPage.astro'),
+    join(process.cwd(), 'src', 'i18n', 'copy.ts'),
+  ],
+  '/batch-rename-files': [join(process.cwd(), 'src', 'data', 'searchLandingPages.ts')],
+  '/offline-ai-file-renamer': [join(process.cwd(), 'src', 'data', 'searchLandingPages.ts')],
+  '/ai-file-organizer': [join(process.cwd(), 'src', 'data', 'searchLandingPages.ts')],
+  '/methodology': [join(process.cwd(), 'src', 'components', 'MethodologyPage', 'MethodologyPage.astro')],
+};
 
 function getPageSourceFile(route: string): string {
   if (route === '/') return join(PAGES_DIR, 'index.astro');
@@ -50,6 +72,18 @@ function getFileModifiedDate(filePath: string): string | null {
 
 function getLastModifiedDate(filePath: string, fallbackDate: string): string {
   return getGitDate(filePath) ?? getFileModifiedDate(filePath) ?? fallbackDate;
+}
+
+function getStaticRouteLastModifiedDate(route: string): string {
+  const fallbackDate = new Date('2026-03-01T00:00:00.000Z').toISOString();
+  const files = [
+    getPageSourceFile(route),
+    SEO_CONFIG_FILE,
+    CONSTANTS_FILE,
+    ...(STATIC_ROUTE_DEPENDENCIES[route] ?? []),
+  ];
+
+  return getLatestDate(...files.map((file) => getLastModifiedDate(file, fallbackDate)));
 }
 
 function getLatestDate(...dates: (string | null | undefined)[]): string {
@@ -160,10 +194,9 @@ export async function GET() {
   const staticEntries = staticRoutes.map((route) => {
     const loc = `${SITE_ORIGIN}${route === '/' ? '/' : route}`;
     const { changefreq, priority } = getRouteHints(route);
-    const sourceFile = getPageSourceFile(route);
     return {
       loc,
-      lastmod: getLastModifiedDate(sourceFile, new Date('2026-03-01T00:00:00.000Z').toISOString()),
+      lastmod: getStaticRouteLastModifiedDate(route),
       changefreq,
       priority,
     };
@@ -177,12 +210,10 @@ export async function GET() {
           const locPath = getLocalizedPath(route, locale);
           const loc = `${SITE_ORIGIN}${locPath}`;
           const { changefreq, priority } = getRouteHints(route);
-          const sourceFile = getPageSourceFile(route);
-
           return {
             loc,
             route,
-            lastmod: getLastModifiedDate(sourceFile, new Date('2026-03-01T00:00:00.000Z').toISOString()),
+            lastmod: getStaticRouteLastModifiedDate(route),
             changefreq,
             priority,
           };
@@ -230,7 +261,20 @@ export async function GET() {
       priority: '0.55',
     }));
 
-  const urls = [...staticEntries.map((entry) => ({ ...entry, route: entry.loc.replace(SITE_ORIGIN, '') || '/' })), ...localizedEntries, ...blogEntries, ...tagEntries, ...docsEntries]
+  const machineReadableEntries = [
+    {
+      loc: `${SITE_ORIGIN}/pricing.md`,
+      route: undefined,
+      lastmod: getLatestDate(
+        getLastModifiedDate(join(PAGES_DIR, 'pricing.md.ts'), new Date('2026-07-10T00:00:00.000Z').toISOString()),
+        getLastModifiedDate(CONSTANTS_FILE, new Date('2026-07-10T00:00:00.000Z').toISOString()),
+      ),
+      changefreq: 'monthly' as Changefreq,
+      priority: '0.5',
+    },
+  ];
+
+  const urls = [...staticEntries.map((entry) => ({ ...entry, route: entry.loc.replace(SITE_ORIGIN, '') || '/' })), ...localizedEntries, ...blogEntries, ...tagEntries, ...docsEntries, ...machineReadableEntries]
     .map(({ loc, route, lastmod, changefreq, priority }) => {
       const normalizedRoute = !LOCALIZATION_PAUSED && LOCALIZED_ROUTES.includes(route as never)
         ? route

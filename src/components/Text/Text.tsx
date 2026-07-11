@@ -3,7 +3,7 @@ import styles from './Text.module.scss';
 
 type TextTag = 'span' | 'div' | 'label' | 'p';
 type TextSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-type TextColor = 'base' | 'subtle';
+type TextColor = 'base' | 'subtle' | 'success';
 type TextAlign = 'left' | 'center' | 'right';
 
 interface TextProps extends HTMLAttributes<HTMLElement> {

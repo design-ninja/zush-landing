@@ -201,6 +201,16 @@ for (const loc of locs) {
     fail(`Private route leaked into sitemap: ${pathname}`);
   }
 
+  if (pathname.endsWith('.md')) {
+    const machineReadablePath = join(DIST, pathname.slice(1));
+    if (!existsSync(machineReadablePath)) {
+      fail(`Sitemap machine-readable route missing output file: ${pathname}`);
+    }
+    const content = readFileSync(machineReadablePath, 'utf8');
+    assertIncludes(content, '# Zush', `Machine-readable product facts missing heading for ${pathname}`);
+    continue;
+  }
+
   const filePath = htmlFileForPath(pathname);
   if (!existsSync(filePath)) {
     fail(`Sitemap route missing HTML file: ${pathname} -> ${filePath}`);
@@ -249,7 +259,7 @@ for (const loc of locs) {
       }
     }
 
-    if (html.includes('"@type":"VideoObject"')) {
+    if (pathname !== '/' && html.includes('"@type":"VideoObject"')) {
       fail(`VideoObject JSON-LD should not be present on non-watch page ${pathname}`);
     }
   }
