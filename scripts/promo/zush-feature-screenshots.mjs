@@ -612,7 +612,9 @@ function captureWindowsForFeature(feature, captureDir) {
       });
     });
 
-  if (feature.id === 'custom-prompts') {
+  // These fixtures present a sheet over the main window; capturing the sheet's
+  // window id returns the full window+sheet group, which becomes the shot.
+  if (feature.id === 'custom-prompts' || feature.id === 'custom-ai-blocks') {
     const mainCapture = captures.find((capture) => capture.role === 'main');
     const promptWindowCapture = captures.find(
       (capture) =>
