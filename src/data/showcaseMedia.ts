@@ -162,6 +162,16 @@ export const MACOS_SHOWCASE_SCREENSHOTS: ShowcaseScreenshotAsset[] = [
     alt: 'Batch rename results in Zush for macOS',
   },
   {
+    id: 'custom-ai-blocks',
+    title: 'Custom AI Blocks',
+    description: 'Describe what AI should extract and reuse it as your own naming block',
+    images: {
+      light: '/images/showcase/macos/custom-ai-blocks-light.webp',
+      dark: '/images/showcase/macos/custom-ai-blocks-dark.webp',
+    },
+    alt: 'Custom AI Blocks in the Naming Blocks picker in Zush for macOS',
+  },
+  {
     id: 'monitor',
     title: 'Folder Monitoring',
     description: 'Automatically rename new files as they appear',
@@ -210,16 +220,6 @@ export const MACOS_SHOWCASE_SCREENSHOTS: ShowcaseScreenshotAsset[] = [
       dark: '/images/showcase/macos/naming-blocks-dark.webp',
     },
     alt: 'Naming Blocks catalog in Zush for macOS',
-  },
-  {
-    id: 'custom-ai-blocks',
-    title: 'Custom AI Blocks',
-    description: 'Describe what AI should extract and reuse it as your own naming block',
-    images: {
-      light: '/images/showcase/macos/custom-ai-blocks-light.webp',
-      dark: '/images/showcase/macos/custom-ai-blocks-dark.webp',
-    },
-    alt: 'Custom AI Blocks in the Naming Blocks picker in Zush for macOS',
   },
   {
     id: 'custom-prompts',
