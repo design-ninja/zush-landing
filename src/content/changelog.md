@@ -1,5 +1,21 @@
 # Changelog
 
+## [3.7.0] - 2026-07-11
+
+### Added
+- Create your own AI-powered Naming Blocks with custom instructions
+
+### Improved
+- Naming Blocks and templates are easier to customize and preview
+- AI Rename has clearer progress, editing, and retry controls
+- Free users can try rename customizations while credits remain
+- More reliable folder monitoring, startup, and settings updates
+
+### Fixed
+- Fixed custom Naming Blocks losing their style while editing
+- Fixed saved Finder bar preferences after app updates
+- Improved audio previews and cloud AI error recovery
+
 ## [3.6.3] - 2026-07-06
 
 ### Improved
