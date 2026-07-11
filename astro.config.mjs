@@ -100,6 +100,7 @@ export default defineConfig({
           items: [
             { label: 'Templates', link: '/docs/templates' },
             { label: 'Naming Blocks', link: '/docs/naming-blocks' },
+            { label: 'Custom AI Blocks', link: '/docs/custom-ai-blocks' },
             { label: 'Custom prompts', link: '/docs/custom-prompts' },
             { label: 'Metadata and tags', link: '/docs/metadata-tags' },
           ],
