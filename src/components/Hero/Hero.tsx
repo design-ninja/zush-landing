@@ -20,6 +20,7 @@ interface HeroProps {
   titleAccent?: string;
   titleHighlight?: string;
   subtitle?: string;
+  subtitleHighlights?: string[];
   slides?: Slide[];
   videoShowcase?: HeroVideoShowcaseAsset;
   videoShowcaseByOS?: Partial<Record<DownloadOS, HeroVideoShowcaseAsset>>;
@@ -56,11 +57,38 @@ const renderTextWithBreaks = (value: string) =>
     </Fragment>
   ));
 
+const renderHighlightedText = (value: string, highlights: string[]) => {
+  const matches = highlights
+    .map((highlight) => ({ highlight, index: value.indexOf(highlight) }))
+    .filter((match) => match.highlight && match.index >= 0)
+    .sort((a, b) => a.index - b.index);
+
+  if (matches.length === 0) return value;
+
+  const parts: ReactNode[] = [];
+  let cursor = 0;
+
+  for (const match of matches) {
+    if (match.index < cursor) continue;
+    if (match.index > cursor) parts.push(value.slice(cursor, match.index));
+    parts.push(
+      <mark className={styles.Hero__SubtitleHighlight} key={`${match.highlight}-${match.index}`}>
+        {match.highlight}
+      </mark>,
+    );
+    cursor = match.index + match.highlight.length;
+  }
+
+  if (cursor < value.length) parts.push(value.slice(cursor));
+  return parts;
+};
+
 const Hero = ({
   title,
   titleAccent,
   titleHighlight,
   subtitle,
+  subtitleHighlights = [],
   slides,
   as: Tag = "section",
   compactTopSpacing = false,
@@ -158,9 +186,21 @@ const Hero = ({
           <Heading as="h1" className={styles.Hero__Title}>
             {renderTitle()}
           </Heading>
-          <Text size="lg" color="subtle" className={styles.Hero__Subtitle}>
-            {subtitle ??
-              "Batch rename and bulk rename files by content with AI: screenshots, PDFs, photos, videos, audio, design files, iWork and Office documents. Watch folders, reuse templates, and undo any rename."}
+          <Text
+            size="lg"
+            color="base"
+            className={[
+              styles.Hero__Subtitle,
+              subtitleHighlights.length > 0 ? styles.Hero__Subtitle_compact : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
+            {renderHighlightedText(
+              subtitle ??
+                "Batch rename and bulk rename files by content with AI: screenshots, PDFs, photos, videos, audio, design files, iWork and Office documents. Watch folders, reuse templates, and undo any rename.",
+              subtitleHighlights,
+            )}
           </Text>
 
           <div className={styles.Hero__ActionRow}>

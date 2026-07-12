@@ -33,6 +33,25 @@ const STATIC_JSX_OVERRIDES: Record<string, React.ReactNode> = {
       <AppLink href="/refund-policy">Refund Policy</AppLink>.
     </>
   ),
+  'Is Zush a Hazel alternative?': (
+    <>
+      For content-aware naming, yes. Hazel is a rule engine that acts on files by conditions like name, date, or kind, while Zush reads what each file actually contains and suggests a descriptive name, then monitors folders and keeps full undo history. Zush also runs on Windows, while Hazel is macOS-only, and many people use both.{' '}
+      <AppLink href="/hazel-alternative">See the full Hazel comparison →</AppLink>
+    </>
+  ),
+  'Is Zush a PowerRename alternative?': (
+    <>
+      Yes, for content-aware renaming. PowerRename in Microsoft PowerToys rewrites filenames with search-and-replace and regular expressions and never looks inside a file, while Zush reads the content of each file and suggests a descriptive name you review before applying. Use PowerRename for uniform mechanical changes and Zush when each file needs its own meaningful name.{' '}
+      <AppLink href="/powerrename-alternative">See the full PowerRename comparison →</AppLink>
+    </>
+  ),
+  'Can Zush rename invoices and receipts on Mac?': (
+    <>
+      Yes. Zush reads invoice and receipt PDFs and photos, pulls the vendor, date, and invoice number with Naming Blocks, and can extract the amount or a tax category with a Custom AI Block. Scanned documents are read with AI vision, and every batch is reviewed before applying with undo history available. See the dedicated{' '}
+      <AppLink href="/rename-invoices-with-ai">invoice</AppLink> and{' '}
+      <AppLink href="/rename-receipts-with-ai">receipt</AppLink> workflows.
+    </>
+  ),
 };
 
 const DEFAULT_TITLE = (

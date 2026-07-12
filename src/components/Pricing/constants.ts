@@ -46,7 +46,7 @@ export const PRO_FEATURES: Feature[] = [
   },
   {
     title: 'Bring Your Own Key',
-    desc: 'Unlimited cloud renames with your AI API key',
+    desc: 'Unlimited cloud renames with your key',
     icon: KeyRound,
     tone: 'green',
   },

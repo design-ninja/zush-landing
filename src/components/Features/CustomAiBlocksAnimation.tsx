@@ -19,6 +19,7 @@ const CUSTOM_CHIP_START = CHIP_ROW_START + 8;
 const PREVIEW_NAME = '2026-07-11_Nike.jpg';
 const PREVIEW_START = CUSTOM_CHIP_START + 12;
 const PREVIEW_END = PREVIEW_START + PREVIEW_NAME.length;
+const RESULT_HOLD_FRAMES = 75;
 
 export const CustomAiBlocksAnimation = () => {
   const frame = useCurrentFrame();
@@ -234,8 +235,8 @@ const Chip = ({ label, progress, accent }: ChipProps) => (
   </span>
 );
 
-export const CUSTOM_AI_BLOCKS_DURATION = PREVIEW_END + 16;
+export const CUSTOM_AI_BLOCKS_DURATION = PREVIEW_END + RESULT_HOLD_FRAMES;
 export const CUSTOM_AI_BLOCKS_FPS = 30;
 export const CUSTOM_AI_BLOCKS_WIDTH = 340;
 export const CUSTOM_AI_BLOCKS_HEIGHT = 220;
-export const CUSTOM_AI_BLOCKS_PREVIEW_FRAME = TYPING_END;
+export const CUSTOM_AI_BLOCKS_PREVIEW_FRAME = PREVIEW_END;

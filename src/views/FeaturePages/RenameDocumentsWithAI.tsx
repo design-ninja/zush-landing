@@ -107,6 +107,8 @@ const RenameDocumentsWithAI = () => (
     ]}
     faqItems={faqItems}
     relatedPages={[
+      { title: 'Rename Word Documents with AI', href: '/rename-word-documents-with-ai' },
+      { title: 'Rename Excel Files with AI', href: '/rename-excel-files-with-ai' },
       { title: 'Rename PDFs with AI', href: '/rename-pdf-with-ai' },
       { title: 'Rename Videos with AI', href: '/rename-videos-with-ai' },
       { title: 'Rename Screenshots with AI', href: '/rename-screenshots-with-ai' },

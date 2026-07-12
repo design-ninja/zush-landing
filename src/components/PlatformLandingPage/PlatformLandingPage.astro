@@ -10,6 +10,7 @@ import Testimonials from '@/components/Testimonials/Testimonials.astro';
 import PlatformGuides from '@/components/PlatformGuides/PlatformGuides.astro';
 import PlatformSpecifics from '@/components/PlatformSpecifics/PlatformSpecifics.astro';
 import WindowsSeoSection from '@/components/WindowsSeoSection/WindowsSeoSection.astro';
+import MacSeoSection from '@/components/MacSeoSection/MacSeoSection.astro';
 import styles from '@/components/PlatformLandingPage/PlatformLandingPage.module.scss';
 import { PLATFORM_LANDING_CONTENT } from '@/data/platformLanding';
 import { getPlatformLandingSections } from '@/data/platformLandingSections';
@@ -89,6 +90,15 @@ const platformKeywords = platform === 'mac'
       'Mac batch rename tool',
       'macOS file renamer',
       'offline AI renamer for Mac',
+      'rename files by content on Mac',
+      'AI file organizer for Mac',
+      'automatic file organizer for Mac',
+      'AI file sorter for Mac',
+      'sort files into folders Mac',
+      'private AI file renamer for Mac',
+      'EXIF photo renamer Mac',
+      'hazel alternative',
+      'custom AI naming blocks',
     ]
   : [
       'file renamer for Windows',
@@ -121,11 +131,19 @@ const platformKeywords = platform === 'mac'
       'Microsoft Store file renamer',
       'offline AI renamer for Windows',
       'local AI file renamer Windows',
+      'rename files by content Windows',
+      'AI file sorter Windows',
+      'sort files into folders Windows',
     ];
 
 const platformTrustSignals = platform === 'mac'
   ? ['Free 50 renames', 'No credit card', 'Preview + undo every batch']
   : copy.home.trustSignals;
+
+const heroOfflineBadge = {
+  label: copy.home.featureCards.offlineAi.title,
+  modal: copy.home.offlineAiModal,
+};
 
 const intentSection = platform === 'mac'
   ? {
@@ -142,6 +160,7 @@ const intentSection = platform === 'mac'
         { href: '/batch-rename-files', label: 'Batch rename files with AI' },
         { href: '/ai-file-organizer', label: 'AI file organizer' },
         { href: '/offline-ai-file-renamer', label: 'Offline AI renamer' },
+        { href: '/hazel-alternative', label: 'Hazel alternative' },
         { href: '/blog/best-ai-file-renamer-tools-mac-compared', label: 'Mac renamer comparison' },
       ],
     }
@@ -159,6 +178,7 @@ const intentSection = platform === 'mac'
         { href: '/batch-rename-files', label: 'Batch rename files with AI' },
         { href: '/ai-file-organizer', label: 'AI file organizer' },
         { href: '/offline-ai-file-renamer', label: 'Offline AI renamer' },
+        { href: '/powerrename-alternative', label: 'PowerRename alternative' },
         { href: '/blog/best-ai-file-renamer-tools-windows-compared', label: 'Windows renamer comparison' },
       ],
     };
@@ -297,7 +317,7 @@ const jsonLdItems = [
 ---
 
 <BaseLayout
-  seo={seo}
+  seo={{ ...seo, keywords: schemaKeywords.join(', ') }}
   locale={locale}
   forceOS={platform}
   footerHidePlatform={footerHidePlatform}
@@ -316,6 +336,9 @@ const jsonLdItems = [
     downloadMenu={copy.downloadMenu}
     includeOtherDownloadOS={includeOtherDownloadOS}
     trustSignals={platformTrustSignals}
+    reviewsHref="#reviews"
+    reviewsLabel={copy.header.reviews}
+    offlineBadge={heroOfflineBadge}
     secondaryHref="#pricing"
     slides={copy.home.showcaseSlides}
     videoShowcase={platform === 'windows' ? WINDOWS_HERO_BATCH_RENAME_VIDEO : HOME_HERO_BATCH_RENAME_VIDEO}
@@ -352,6 +375,7 @@ const jsonLdItems = [
     </section>
   )}
   <Testimonials locale={locale} />
+  {platform === 'mac' && locale === DEFAULT_LOCALE && <MacSeoSection />}
   {platform === 'windows' && locale === DEFAULT_LOCALE && <WindowsSeoSection />}
   <PlatformSpecifics platform={platform} locale={locale} variant="compact" scenarioLimit={4} />
   <SupportedFormats

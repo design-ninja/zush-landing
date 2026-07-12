@@ -15,6 +15,8 @@ const appBinary = path.join(derivedDataPath, 'Build/Products/Debug/Zush.app/Cont
 const sourceAssetRoot =
   process.env.ZUSH_PROMO_SOURCE_FILES ??
   '/Users/lirik/Projects/zush/zush-assets/#test files/Files';
+const backendEnvironment = process.env.ZUSH_PROMO_BACKEND_ENVIRONMENT ?? 'local';
+const promoGeminiApiKey = process.env.ZUSH_PROMO_GEMINI_API_KEY?.trim();
 const defaultLandingOutputDir = path.join(repoRoot, 'public/images/showcase/macos');
 const defaultAppStoreOutputDir = '/Users/lirik/Projects/zush/zush-assets/App Store';
 const tempRoot = path.join(os.tmpdir(), `zush-feature-screenshots-${Date.now()}`);
@@ -62,10 +64,11 @@ const features = [
   { id: 'activity', fixture: 'activity' },
   { id: 'templates', fixture: 'templates' },
   { id: 'naming-blocks', fixture: 'naming-blocks' },
-  // Landing-only until Partner Center gains room beyond its 10-screenshot cap.
-  { id: 'custom-ai-blocks', fixture: 'custom-ai-blocks', captureZushExtras: true, landingOnly: true },
+  { id: 'custom-ai-blocks', fixture: 'custom-ai-blocks', captureZushExtras: true },
   { id: 'naming', fixture: 'naming' },
-  { id: 'custom-prompts', fixture: 'custom-prompts', captureZushExtras: true },
+  // Keep the App Store set to its 10-screenshot limit; Custom AI Blocks takes
+  // this slot because it is the newer feature to highlight there.
+  { id: 'custom-prompts', fixture: 'custom-prompts', captureZushExtras: true, landingOnly: true },
   { id: 'byok', fixture: 'byok' },
   { id: 'offline-ai', fixture: 'offline-ai' },
 ];
@@ -108,6 +111,10 @@ const selectedFeatures = only
   : features;
 let activeZushPid = null;
 
+if (!['local', 'prod'].includes(backendEnvironment)) {
+  throw new Error('ZUSH_PROMO_BACKEND_ENVIRONMENT must be "local" or "prod".');
+}
+
 const targetConfigs = {
   landing: {
     canvas: { width: 2560, height: 1440 },
@@ -117,7 +124,7 @@ const targetConfigs = {
   },
   'app-store': {
     canvas: { width: 2880, height: 1800 },
-    extension: 'jpg',
+    extension: 'png',
     finderGap: Math.round(85 * (2880 / 2560)),
     mainTargetWidth: (feature) =>
       Math.round(2880 * ((feature.mainWidth ?? baseMainWindowWidth) / 2560) * windowZoom),
@@ -134,7 +141,7 @@ const appStoreNames = {
   naming: '07-smart-rename',
   'offline-ai': '08-offline-ai',
   byok: '09-byok',
-  'custom-prompts': '10-custom-prompts',
+  'custom-ai-blocks': '10-custom-ai-blocks',
 };
 
 if (selectedFeatures.length === 0) {
@@ -330,12 +337,12 @@ function startZush(runId) {
     throw new Error(`Zush binary not found: ${appBinary}`);
   }
 
-  run('defaults', ['write', 'com.lirik.Zush', 'debug.backend.environment', 'local']);
-  run('defaults', ['write', 'com.lirik.Zush', 'debugTierOverride.local', '-int', '2']);
+  run('defaults', ['write', 'com.lirik.Zush', 'debug.backend.environment', backendEnvironment]);
+  run('defaults', ['write', 'com.lirik.Zush', `debugTierOverride.${backendEnvironment}`, '-int', '2']);
 
   const before = new Set(zushPids());
   const appBundle = path.resolve(appBinary, '../../..');
-  run('open', [
+  const launchArgs = [
     '-n',
     '-F',
     '--env',
@@ -346,8 +353,12 @@ function startZush(runId) {
     'ZUSH_SENTRY_DSN=',
     '--env',
     'OS_ACTIVITY_MODE=disable',
-    appBundle,
-  ]);
+  ];
+  if (promoGeminiApiKey) {
+    launchArgs.push('--env', `ZUSH_PROMO_GEMINI_API_KEY=${promoGeminiApiKey}`);
+  }
+  launchArgs.push(appBundle);
+  run('open', launchArgs);
 
   return {
     async waitForPid() {
@@ -397,7 +408,8 @@ let userInfo: [String: Any] = [
     "fixture": ${JSON.stringify(fixture)},
     "theme": ${JSON.stringify(theme)},
     "assetRoot": ${JSON.stringify(assetRoot)},
-    "runId": ${JSON.stringify(runId)}${completionMarkerEntry}
+    "runId": ${JSON.stringify(runId)},
+    "backendEnvironment": ${JSON.stringify(backendEnvironment)}${completionMarkerEntry}
 ]
 DistributedNotificationCenter.default().postNotificationName(
     Notification.Name("com.lirik.Zush.debug.promoScreenshotFixture"),
@@ -687,10 +699,14 @@ function renderComposite({ feature, theme, captures, outputPath, target }) {
       '-colorspace',
       'sRGB',
       '-strip',
-      '-sampling-factor',
-      '4:4:4',
-      '-quality',
-      '94',
+      '-alpha',
+      'off',
+      '-define',
+      'png:color-type=2',
+      '-define',
+      'png:compression-level=9',
+      '-define',
+      'png:compression-filter=5',
       outputPath,
     );
   } else {
@@ -702,7 +718,7 @@ function renderComposite({ feature, theme, captures, outputPath, target }) {
 
 function outputNameForTarget({ feature, theme, target }) {
   if (target === 'app-store') {
-    return `${appStoreNames[feature.id] ?? feature.id}.jpg`;
+    return `${appStoreNames[feature.id] ?? feature.id}.png`;
   }
 
   return `${feature.id}-${theme}.webp`;
@@ -728,7 +744,7 @@ async function captureFeature({ feature, theme, runId, assetRoot, reuseCurrentFi
       feature.fixture === 'custom-prompts'
         ? 1600
         : feature.fixture === 'offline-ai'
-          ? 1900
+          ? 5000
           : feature.fixture === 'statistics'
             ? 1800
             : 1100;

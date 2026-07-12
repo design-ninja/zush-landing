@@ -100,6 +100,11 @@
         background: var(--primary-soft);
         color: var(--primary);
         white-space: nowrap;
+
+        &_success {
+            background: color-mix(in srgb, var(--success), transparent 86%);
+            color: var(--success);
+        }
     }
 
     &__Description {

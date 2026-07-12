@@ -10,9 +10,10 @@ interface Props {
   icon: LucideIcon;
   class?: string;
   badge?: string;
+  badgeTone?: 'success';
 }
 
-const { title, description, icon: Icon, class: className, badge } = Astro.props;
+const { title, description, icon: Icon, class: className, badge, badgeTone } = Astro.props;
 ---
 
 <div
@@ -28,7 +29,15 @@ const { title, description, icon: Icon, class: className, badge } = Astro.props;
         <Heading as='h3' className={styles.BentoCard__Title}>
           {title}
         </Heading>
-        {badge && <span class={styles.BentoCard__Badge}>{badge}</span>}
+        {badge && (
+          <span
+            class={`${styles.BentoCard__Badge} ${
+              badgeTone === 'success' ? styles.BentoCard__Badge_success : ''
+            }`}
+          >
+            {badge}
+          </span>
+        )}
       </div>
     </div>
     <Text className={styles.BentoCard__Description} color='subtle'>

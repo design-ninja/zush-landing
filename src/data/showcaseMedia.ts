@@ -33,6 +33,7 @@ export interface HeroVideoShowcaseAsset {
   frame?: 'mac' | 'windows';
   width: number;
   height: number;
+  dimensions?: Record<ShowcaseTheme, { width: number; height: number }>;
   sources: ThemeAwareMedia;
   posters: ThemeAwareMedia;
 }
@@ -43,13 +44,17 @@ export const HOME_HERO_BATCH_RENAME_VIDEO: HeroVideoShowcaseAsset = {
   frame: 'mac',
   width: 1280,
   height: 1050,
+  dimensions: {
+    light: { width: 2082, height: 1638 },
+    dark: { width: 2084, height: 1636 },
+  },
   sources: {
-    light: '/videos/hero/zush-batch-rename-mac-window-light.mp4',
-    dark: '/videos/hero/zush-batch-rename-mac-window-dark.mp4',
+    light: '/videos/hero/zush-invoices-demo-mac-window-light.mp4',
+    dark: '/videos/hero/zush-invoices-demo-mac-window-dark.mp4',
   },
   posters: {
-    light: '/videos/posters/hero-batch-rename-mac-window-light.webp',
-    dark: '/videos/posters/hero-batch-rename-mac-window-dark.webp',
+    light: '/videos/posters/hero-invoices-demo-mac-window-light.webp',
+    dark: '/videos/posters/hero-invoices-demo-mac-window-dark.webp',
   },
 };
 

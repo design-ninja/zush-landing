@@ -15,6 +15,34 @@ import { getPrimaryAuthorJsonLd, PRIMARY_AUTHOR } from '@/data/author';
 export const SITE_ORIGIN = 'https://zushapp.com';
 export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og-image.png`;
 
+export const DEFAULT_KEYWORDS = [
+  'AI file renamer',
+  'AI renamer',
+  'rename files by content',
+  'batch rename files',
+  'bulk file rename',
+  'rename files automatically',
+  'offline AI file renamer',
+  'local AI file renamer',
+  'private AI file renamer',
+  'AI file organizer',
+  'organize files with AI',
+  'automatic file organization',
+  'AI file sorter',
+  'sort files into folders',
+  'AI document organizer',
+  'file renamer for Mac',
+  'file renamer for Windows',
+  'PDF renamer',
+  'rename PDFs by content',
+  'screenshot renamer',
+  'photo renamer',
+  'EXIF photo renamer',
+  'custom file naming rules',
+  'content-aware file naming',
+  'file management tool',
+].join(', ');
+
 export interface SeoMeta {
   title: string;
   description: string;
@@ -24,6 +52,7 @@ export interface SeoMeta {
   ogImage?: string;
   publishedTime?: string;
   modifiedTime?: string;
+  keywords?: string;
 }
 
 type RouteSeoMeta = Omit<SeoMeta, 'canonicalPath'>;
@@ -64,6 +93,60 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'AI file organizer for Mac and Windows that creates descriptive, searchable filenames by content. Use templates, folder monitoring, preview, and undo without moving files between folders.',
     robots: 'index, follow',
     ogType: 'website',
+  },
+  '/hazel-alternative': {
+    title: 'Hazel Alternative with AI File Naming | Zush',
+    description:
+      'Looking for a Hazel alternative that understands file content? Zush watches folders, renames by content with AI, and works on Mac and Windows. Preview and undo.',
+    robots: 'index, follow',
+    ogType: 'website',
+    keywords:
+      'hazel alternative, hazel file organizer, apps like hazel, mac file automation, ai file organizer for mac, folder monitoring mac, rename files automatically mac, sort files into folders mac',
+  },
+  '/powerrename-alternative': {
+    title: 'PowerRename Alternative with AI | Zush for Windows',
+    description:
+      'PowerRename handles patterns; Zush reads file content. AI batch rename for Windows 11 with preview, undo, and searchable names. From the Microsoft Store.',
+    robots: 'index, follow',
+    ogType: 'website',
+    keywords:
+      'powerrename alternative, powertoys rename, batch rename files windows 11, ai file renamer for windows, rename files by content windows, file explorer batch rename, windows batch rename tool',
+  },
+  '/rename-invoices-with-ai': {
+    title: 'Rename Invoices Automatically with AI | Zush',
+    description:
+      'Rename invoice PDFs by vendor, date, and amount — automatically. Zush reads each invoice and applies your naming convention. Preview and undo every batch.',
+    robots: 'index, follow',
+    ogType: 'website',
+    keywords:
+      'rename invoices automatically, invoice renamer, invoice pdf organizer, invoice naming convention, organize invoices, rename pdf invoices, ai invoice organizer, bulk rename invoices',
+  },
+  '/rename-receipts-with-ai': {
+    title: 'Rename & Organize Receipts with AI | Zush',
+    description:
+      'Turn IMG_2041.jpg into a searchable receipt filename with store, date, and amount. AI receipt renaming for tax season and expenses. Mac & Windows.',
+    robots: 'index, follow',
+    ogType: 'website',
+    keywords:
+      'receipt organizer, organize receipts digitally, rename receipts, receipt organization for taxes, expense receipt filing, ai receipt organizer, scan receipt naming',
+  },
+  '/rename-excel-files-with-ai': {
+    title: 'Rename Excel Files with AI by Content | Zush',
+    description:
+      'Bulk rename Excel and spreadsheet files based on what is inside. Zush reads XLSX and CSV content and suggests clear names. Preview and undo. Mac & Windows.',
+    robots: 'index, follow',
+    ogType: 'website',
+    keywords:
+      'rename excel files, bulk rename excel files, rename xlsx by content, rename spreadsheets, excel file naming convention, rename csv files, batch rename excel',
+  },
+  '/rename-word-documents-with-ai': {
+    title: 'Rename Word Documents with AI by Content | Zush',
+    description:
+      'Batch rename Word documents based on their content. Zush reads DOCX files and turns meeting_notes_FINAL_v2 into names you can search. Mac & Windows.',
+    robots: 'index, follow',
+    ogType: 'website',
+    keywords:
+      'rename word documents, batch rename docx, rename word files by content, word document naming convention, bulk rename word documents',
   },
   '/changelog': {
     title: 'Changelog — Zush',

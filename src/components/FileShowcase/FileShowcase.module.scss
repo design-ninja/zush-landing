@@ -89,6 +89,10 @@
             border-color: color-mix(in srgb, var(--file-preview-color) 32%, var(--card));
         }
 
+        &_image {
+            --file-preview-color: var(--tone-purple-fg);
+        }
+
         &_doc {
             --file-preview-color: var(--tone-blue-fg);
         }

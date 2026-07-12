@@ -1,6 +1,6 @@
 ---
 import type { SeoMeta } from '@/seo/config';
-import { DEFAULT_OG_IMAGE, getCanonicalUrl } from '@/seo/config';
+import { DEFAULT_KEYWORDS, DEFAULT_OG_IMAGE, getCanonicalUrl } from '@/seo/config';
 import '@fontsource-variable/inter/wght.css';
 import '@fontsource-variable/outfit/wght.css';
 import '@/styles/main.scss';
@@ -215,6 +215,7 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
 
     <title>{seo.title}</title>
     <meta name="description" content={seo.description} />
+    <meta name="keywords" content={seo.keywords ?? DEFAULT_KEYWORDS} />
     <meta name="robots" content={seo.robots} />
     <link rel="canonical" href={canonicalUrl} />
     {shouldEmitLocaleAlternates && (

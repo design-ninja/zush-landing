@@ -1,0 +1,14 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import FeatureLandingPageShell from '@/components/FeatureLandingPage/FeatureLandingPageShell.astro';
+import { SEARCH_LANDING_PAGES } from '@/data/searchLandingPages';
+import { getSeoForPath } from '@/seo/config';
+import { buildFeatureBreadcrumbJsonLd } from '@/utils/jsonLd';
+
+const seo = getSeoForPath('/hazel-alternative');
+const page = SEARCH_LANDING_PAGES['hazel-alternative'];
+---
+
+<BaseLayout seo={seo} jsonLd={[page.jsonLd, buildFeatureBreadcrumbJsonLd(page.h1, '/hazel-alternative')]}>
+  <FeatureLandingPageShell {...page} />
+</BaseLayout>

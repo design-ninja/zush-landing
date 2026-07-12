@@ -34,15 +34,6 @@ const shouldIncludeInGeneratedSitemap = (page) => {
 export default defineConfig({
   site: 'https://zushapp.com',
   output: 'static',
-  vite: {
-    server: {
-      watch: {
-        // Production builds write hundreds of files here. Watching them can
-        // flood a long-running dev server and delay React island hydration.
-        ignored: ['**/dist/**', '**/.vercel/**'],
-      },
-    },
-  },
   // Vercel handles slash canonicalization so the PostHog proxy path can be excluded.
   trailingSlash: 'never',
   redirects: {
@@ -148,6 +139,18 @@ export default defineConfig({
     }),
   },
   vite: {
+    // Remotion is loaded by client:visible islands. Pre-bundle it at startup so
+    // Vite does not replace its dependency URL after an island has loaded.
+    optimizeDeps: {
+      include: ['@remotion/player', 'remotion'],
+    },
+    server: {
+      watch: {
+        // Production builds write hundreds of files here. Watching them can
+        // flood a long-running dev server and delay React island hydration.
+        ignored: ['**/dist/**', '**/.vercel/**'],
+      },
+    },
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),

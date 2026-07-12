@@ -19,11 +19,16 @@ type PlatformOverrides = Record<
   }
 >;
 
+// NOTE: Features.astro only renders these featureCards keys: aiAnalysis,
+// foldersMonitoring, smartMetadata, renameHistory, customPrompts, byok, offlineAi
+// (plus the animation fields addFolder/analysisNewName/batchNewNames/etc.).
+// The `batchRename` and `customPatterns` cards below are NOT rendered — edit the
+// rendered keys above if you want a copy change to appear on /mac and /windows.
 const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
   mac: {
     featuresTitle: 'How this AI file renamer works on Mac',
     featuresDescription:
-      'Mac-first AI file renaming workflows for Finder, Spotlight, Downloads, screenshots, design files, iWork, audio, videos, batch rename, and local models.',
+      'Mac-first AI file renaming and organizing for Finder, Spotlight, Downloads, screenshots, design files, iWork, audio, videos, batch rename, Custom AI Blocks, and local models — with automatic file organization for Downloads and Screenshots.',
     featureCards: {
       aiAnalysis: {
         title: 'Rename files with AI on Mac',
@@ -41,9 +46,9 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
           'Drag files or folders from Finder into Zush, review every suggested name, then apply the rename in place.',
       },
       customPatterns: {
-        title: 'macOS naming patterns',
+        title: 'Templates and 145+ Naming Blocks',
         description:
-          'Use patterns with dates, categories, and original names so Finder folders stay consistent across projects.',
+          'Combine AI titles with dates, categories, clients, counters, and Photo blocks like date and location so Finder folders stay consistent across projects.',
       },
       smartMetadata: {
         title: 'Finder tags and Spotlight search',
@@ -56,9 +61,9 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
           'Every Mac rename is logged, so you can revert files back to their original names if a batch needs another pass.',
       },
       customPrompts: {
-        title: 'Rules for Finder workflows',
+        title: 'Custom prompts and Custom AI Blocks',
         description:
-          'Tell Zush how to name design source files, invoices, audio, videos, screenshots, and client folders before you apply changes.',
+          'Guide names with custom prompts, and create your own naming fields — client, case number, brand — with Custom AI Blocks to reuse in any template.',
       },
       byok: {
         title: 'BYOK on Mac',
@@ -96,7 +101,7 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
         {
           title: 'Freelancers',
           description:
-            'Clean up invoices, signed PDFs, proposals, and client downloads before archiving them by project.',
+            'Name invoices by vendor and date, then clean up signed PDFs, proposals, and client downloads before archiving them by project.',
         },
         {
           title: 'Developers',
@@ -137,9 +142,9 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
           'Drag mixed files from File Explorer into Zush, review AI suggestions, then apply every rename in one pass with undo history.',
       },
       customPatterns: {
-        title: 'RenameClick alternative for Windows',
+        title: 'Templates and 145+ Naming Blocks',
         description:
-          'Compare Zush when you want Microsoft Store distribution, batch review, undo, BYOK, Offline AI, and searchable Windows filenames.',
+          'Combine AI titles with dates, categories, clients, and counters using templates and Naming Blocks so File Explorer folders and shared drives stay consistent.',
       },
       smartMetadata: {
         title: 'Searchable Windows filenames',
@@ -152,9 +157,9 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
           'Every rename is tracked, so you can roll back a batch without scripts or manual filename recovery.',
       },
       customPrompts: {
-        title: 'Rules for Windows folders',
+        title: 'Custom prompts and Custom AI Blocks',
         description:
-          'Set naming rules for screenshots, design files, audio, videos, invoices, client PDFs, reports, and shared team folders.',
+          'Guide names with custom prompts, and create your own naming fields — client, case number, brand — with Custom AI Blocks to reuse across screenshots, invoices, reports, and shared team folders.',
       },
       byok: {
         title: 'BYOK on Windows',

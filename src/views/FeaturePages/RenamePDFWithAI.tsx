@@ -120,6 +120,8 @@ const RenamePDFWithAI = () => (
     faqItems={faqItems}
     relatedPages={[
       { title: 'Rename Documents with AI', href: '/rename-documents-with-ai' },
+      { title: 'Rename Invoices with AI', href: '/rename-invoices-with-ai' },
+      { title: 'Rename & Organize Receipts with AI', href: '/rename-receipts-with-ai' },
       { title: 'Rename Videos with AI', href: '/rename-videos-with-ai' },
       { title: 'Rename Photos with AI', href: '/rename-photos-with-ai' },
       { title: 'Rename Screenshots with AI', href: '/rename-screenshots-with-ai' },

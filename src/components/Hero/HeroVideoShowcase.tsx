@@ -18,12 +18,19 @@ const getDocumentTheme = (): ShowcaseTheme => {
 
 const HeroVideoShowcase = ({ media }: HeroVideoShowcaseProps) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [theme, setTheme] = useState<ShowcaseTheme>('light');
+  const [theme, setTheme] = useState<ShowcaseTheme | null>(null);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  const activeSource = media.sources[theme];
-  const activePoster = media.posters[theme];
+  const [isVideoReady, setIsVideoReady] = useState(false);
+  const activeSource = theme ? media.sources[theme] : undefined;
+  const activePoster = theme ? media.posters[theme] : undefined;
+  const activeDimensions = theme ? (media.dimensions?.[theme] ?? media) : media;
+  const lightDimensions = media.dimensions?.light ?? media;
+  const darkDimensions = media.dimensions?.dark ?? media;
   const frameStyle = {
-    '--hero-video-aspect-ratio': `${media.width} / ${media.height}`,
+    '--hero-video-aspect-ratio-light': `${lightDimensions.width} / ${lightDimensions.height}`,
+    '--hero-video-aspect-ratio-dark': `${darkDimensions.width} / ${darkDimensions.height}`,
+    '--hero-video-poster-light': `url("${media.posters.light}")`,
+    '--hero-video-poster-dark': `url("${media.posters.dark}")`,
   } as CSSProperties;
 
   useEffect(() => {
@@ -58,13 +65,17 @@ const HeroVideoShowcase = ({ media }: HeroVideoShowcaseProps) => {
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) {
+    if (!video || !activeSource || !activePoster) {
       return;
     }
 
+    setIsVideoReady(false);
     video.poster = activePoster;
 
     if (video.currentSrc.endsWith(activeSource)) {
+      if (video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) {
+        setIsVideoReady(true);
+      }
       return;
     }
 
@@ -113,16 +124,19 @@ const HeroVideoShowcase = ({ media }: HeroVideoShowcaseProps) => {
         aria-label={media.title}
         autoPlay
         className={styles.Hero__Video}
+        data-ready={isVideoReady && !prefersReducedMotion}
+        data-showcase-theme={theme ?? undefined}
         disablePictureInPicture
-        height={media.height}
+        height={activeDimensions.height}
         loop
         muted
+        onCanPlay={() => setIsVideoReady(true)}
         onEnded={handleVideoEnded}
         playsInline
         poster={activePoster}
         preload="metadata"
         src={activeSource}
-        width={media.width}
+        width={activeDimensions.width}
       />
       <figcaption className={styles.Hero__VideoCaption}>
         {media.description}

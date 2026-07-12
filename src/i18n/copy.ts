@@ -261,6 +261,7 @@ export interface HomeCopy {
   heroTitle: string;
   heroAccent: string;
   heroSubtitle: string;
+  heroHighlights: string[];
   buyPro: string;
   trustSignals: string[];
   featuresTitle: string;
@@ -1023,7 +1024,8 @@ const EN_COPY: LocaleCopy = {
     heroTitle: 'AI File Renamer & Organizer\nfor Mac & Windows',
     heroAccent: 'AI File Renamer & Organizer',
     heroSubtitle:
-      'Turn screenshots, PDFs, RAW photos, videos, audio, design files, and documents into names you can find again. Rename 100+ formats on Mac and Windows, review every change, and undo any batch.',
+      'Batch rename files by content with AI. Zush supports 100+ formats across screenshots, PDFs, photos, videos, audio, and documents, extracting exactly the details you choose and turning them into filenames you define. Keep file analysis fully private with Offline AI and Ollama, or bring your own AI provider and model with BYOK.',
+    heroHighlights: ['Batch rename files by content with AI', 'exactly the details you choose', 'fully private with Offline AI and Ollama', 'your own AI provider and model'],
     buyPro: 'Buy 🌟 PRO',
     trustSignals: ['✨ Get started for FREE', '💳 No credit card required'],
     featuresTitle: 'AI File Renamer Features',
@@ -1163,7 +1165,7 @@ const EN_COPY: LocaleCopy = {
     buttonHint: '14-day money-back guarantee • Secure via Paddle',
     features: [
       { title: 'Unlimited PRO renames', desc: 'Remove the cloud rename limit' },
-      { title: 'Bring Your Own Key', desc: 'Unlimited cloud renames with your AI API key' },
+      { title: 'Bring Your Own Key', desc: 'Unlimited cloud renames with your key' },
       { title: 'Offline AI mode', desc: 'Private local models via Ollama' },
     ],
     sharedFeaturesTitle: 'PRO 🌟 Features',
@@ -1198,7 +1200,7 @@ const EN_COPY: LocaleCopy = {
         'AI file renamer for Mac. Zush reads 100+ formats, including screenshots, PDFs, photos, videos, audio, design files, iWork, and Office documents, then renames files by content with preview and undo.',
       heroTitle: 'AI File Renamer for Mac',
       heroSubtitle:
-        'Turn messy Finder folders into descriptive, searchable filenames. Rename 100+ formats by content, review every suggestion, undo any batch, or use local Ollama models in Offline AI mode.',
+        'Turn messy Finder folders into descriptive, searchable filenames. Rename and organize 100+ formats by content, build your own naming fields with Custom AI Blocks, review every suggestion, undo any batch — or go fully private with local Ollama models in Offline AI mode.',
       ctaTitle: 'Try Zush free on Mac',
       ctaSubtitle: 'Install the signed macOS AI file renamer and start renaming 100+ formats from Finder folders, including screenshots, design files, audio, videos, PDFs, photos, iWork, and Office documents.',
       faqDescription: 'Everything you need to know about using Zush as an AI file renamer and batch rename tool for Mac.',
@@ -1208,6 +1210,7 @@ const EN_COPY: LocaleCopy = {
         'Batch rename with per-file regenerate',
         'Templates for reusable rename setups',
         'Naming Blocks with 145+ fields for consistent filenames',
+        'Custom AI Blocks: describe any field — vendor, case number, brand — and reuse it in templates',
         'Custom prompts for names and metadata tags',
         'One-click revert from the Activity log',
         'Native Apple Silicon and Intel build',
@@ -1220,6 +1223,10 @@ const EN_COPY: LocaleCopy = {
         { question: 'Is Zush a file renamer for Mac or a Finder script?', answer: 'Zush is a native macOS app, not a Finder-only script. It gives you drag-and-drop batch renaming, watched folders, editable AI suggestions, custom naming patterns, metadata tags, and one-click undo.' },
         { question: 'Can Zush bulk rename files on Mac?', answer: 'Yes. You can bulk rename mixed Mac folders from Finder, review every AI-generated name, apply the batch, and roll back changes from rename history if needed.' },
         { question: 'How is Zush different from Apple Intelligence Shortcuts?', answer: 'Apple Intelligence and Shortcuts can be useful for small custom workflows. Zush is built for repeated file cleanup: mixed file types, folder monitoring, review before apply, naming templates, Offline AI mode, and rename history.' },
+        { question: 'Can Zush organize files on Mac?', answer: 'Yes. Zush works as an automatic file organizer for Mac by turning vague filenames into readable, searchable names and monitoring folders such as Downloads, Desktop, and Screenshots for new supported files. It focuses on the naming layer and renames files in place rather than moving them between folders, so everything stays easy to find in Finder and Spotlight.' },
+        { question: 'Is Zush a Hazel alternative?', answer: 'For content-aware naming, yes. Hazel is a rule engine that acts on files by conditions like name, date, or kind, while Zush reads what each file actually contains and suggests a descriptive name, then monitors folders and keeps full undo history. Zush also runs on Windows, while Hazel is macOS-only, and many people use both.' },
+        { question: 'Can Zush rename invoices and receipts on Mac?', answer: 'Yes. Zush reads invoice and receipt PDFs and photos, pulls the vendor, date, and invoice number with Naming Blocks, and can extract the amount or a tax category with a Custom AI Block. Scanned documents are read with AI vision, and every batch is reviewed before applying with undo history available.' },
+        { question: 'What are Custom AI Blocks?', answer: 'Custom AI Blocks let you define your own naming field by describing in plain language what Zush should extract from a file — a client name, case number, or brand — and reuse it in any template alongside the 145+ built-in Naming Blocks. They are included in the free version.' },
         { question: 'Does Zush work on Apple Silicon?', answer: 'Yes. Zush runs natively on Apple Silicon and Intel Macs running macOS 15 or newer.' },
         { question: 'Is the app notarized by Apple?', answer: 'Yes. The .dmg is code-signed and notarized, so Gatekeeper opens it normally on supported macOS versions.' },
         { question: 'Can I use Zush offline?', answer: 'Yes. PRO users can enable Offline AI mode with private local models via Ollama.' },
@@ -1232,7 +1239,7 @@ const EN_COPY: LocaleCopy = {
         'AI file renamer for Windows. Zush reads 100+ formats, including screenshots, PDFs, photos, videos, audio, design files, iWork, and Office documents, then renames files by content with preview and undo.',
       heroTitle: 'AI File Renamer for Windows',
       heroSubtitle:
-        'Turn messy File Explorer folders into descriptive, searchable filenames. Rename 100+ formats by content on Windows 10 and 11 with preview, undo, BYOK, and Offline AI.',
+        'Turn messy File Explorer folders into descriptive, searchable filenames. Rename and organize 100+ formats by content on Windows 10 and 11, build your own naming fields with Custom AI Blocks, and undo any batch — with BYOK and private Offline AI when you need it.',
       ctaTitle: 'Try Zush free on Windows',
       ctaSubtitle: 'Open the Microsoft Store and start renaming 100+ formats from File Explorer folders, including screenshots, design files, audio, videos, PDFs, photos, iWork, and Office documents.',
       faqDescription: 'Everything you need to know about using Zush as an AI file renamer and bulk rename tool for Windows.',
@@ -1243,6 +1250,7 @@ const EN_COPY: LocaleCopy = {
         'Batch rename with per-file regenerate',
         'Templates for reusable rename setups',
         'Naming Blocks with 145+ fields for consistent filenames',
+        'Custom AI Blocks: describe any field — vendor, case number, brand — and reuse it in templates',
         'Custom prompts for names and metadata tags',
         'Searchable filenames and metadata for File Explorer and Windows Search',
         'One-click revert from the Activity log',
@@ -1254,6 +1262,8 @@ const EN_COPY: LocaleCopy = {
       faqs: [
         { question: 'Can Zush batch rename files on Windows?', answer: 'Yes. Zush works as an AI batch rename tool for Windows 11 and 10. Drag files from File Explorer, review AI-generated names for every item, then apply the whole batch with rename history available for undo.' },
         { question: 'Is Zush a RenameClick alternative for Windows?', answer: 'Yes. Zush is a strong RenameClick alternative for Windows when you want a Microsoft Store install, batch review before applying names, undo history, BYOK, Offline AI mode, and content-aware filenames for screenshots, PDFs, photos, videos, audio, design files, and documents.' },
+        { question: 'Is Zush a PowerRename alternative?', answer: 'Yes, for content-aware renaming. PowerRename in Microsoft PowerToys rewrites filenames with search-and-replace and regular expressions and never looks inside a file, while Zush reads the content of each file and suggests a descriptive name you review before applying. Use PowerRename for uniform mechanical changes and Zush when each file needs its own meaningful name.' },
+        { question: 'What are Custom AI Blocks?', answer: 'Custom AI Blocks let you define your own naming field by describing in plain language what Zush should extract from a file — a client name, case number, or brand — and reuse it in any template alongside the 145+ built-in Naming Blocks. They are included in the free version.' },
         { question: 'Can Zush organize files on Windows?', answer: 'Zush helps organize Windows folders by turning vague filenames into readable, searchable names and by monitoring folders such as Downloads or Pictures\\Screenshots for new supported files. It focuses on naming, metadata, review, and undo rather than moving files into folders automatically.' },
         { question: 'Does Zush help search files by content on Windows?', answer: 'Zush does not replace Windows Search with a separate semantic search index. It analyzes file content during renaming and writes that context into filenames and metadata, so files become easier to find later in File Explorer and Windows Search.' },
         { question: 'What file types can Zush rename on Windows?', answer: 'Zush supports mixed Windows folders with screenshots, JPG/PNG/HEIC/RAW photos, PDFs, Office documents, iWork files, design files such as Figma, Sketch, Illustrator, and PSD, videos, audio, subtitles, text files, CSV, XML, YAML, and more.' },
@@ -3532,7 +3542,8 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'Dateiumbenenner\nfür Mac & Windows',
       heroAccent: 'Dateiumbenenner',
-      heroSubtitle: 'Dateien stapelweise und in großen Mengen mit KI nach Inhalt umbenennen: Screenshots, PDFs, Fotos, Videos, Audio, Designdateien sowie iWork- und Office-Dokumente. Ordner überwachen, Vorlagen erneut nutzen und jede Umbenennung rückgängig machen.',
+      heroSubtitle: 'Benenne Dateien mit KI stapelweise nach Inhalt um. Zush unterstützt über 100 Formate für Screenshots, PDFs, Fotos, Videos, Audio und Dokumente, extrahiert genau die Details, die du auswählst, und macht daraus Dateinamen nach deinen Vorgaben. Halte die Dateianalyse mit Offline-KI und Ollama vollständig privat oder nutze mit BYOK deinen eigenen KI-Anbieter und dein bevorzugtes Modell.',
+      heroHighlights: ['Benenne Dateien mit KI stapelweise nach Inhalt um', 'genau die Details, die du auswählst', 'mit Offline-KI und Ollama vollständig privat', 'deinen eigenen KI-Anbieter und dein bevorzugtes Modell'],
       buyPro: 'PRO kaufen 🌟',
       trustSignals: ['✨ Kostenlos starten', '💳 Keine Kreditkarte erforderlich'],
       featuresTitle: 'Zush Funktionen',
@@ -3583,7 +3594,8 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'Renommeur de fichiers\npour Mac & Windows',
       heroAccent: 'Renommeur de fichiers',
-      heroSubtitle: 'Renommez des fichiers par lot et en masse selon leur contenu avec l’IA : screenshots, PDF, photos, vidéos, audio, fichiers de design, documents iWork et Office. Surveillez les dossiers, réutilisez des modèles et annulez tout renommage.',
+      heroSubtitle: 'Renommez des fichiers par lot selon leur contenu avec l’IA. Zush prend en charge plus de 100 formats de captures d’écran, PDF, photos, vidéos, audio et documents, extrait exactement les informations que vous choisissez et les transforme en noms de fichiers selon vos règles. Gardez l’analyse des fichiers entièrement privée avec l’IA hors ligne et Ollama, ou utilisez votre propre fournisseur et modèle d’IA grâce au BYOK.',
+      heroHighlights: ['Renommez des fichiers par lot selon leur contenu avec l’IA', 'exactement les informations que vous choisissez', 'entièrement privée avec l’IA hors ligne et Ollama', 'votre propre fournisseur et modèle d’IA'],
       buyPro: 'Acheter PRO 🌟',
       trustSignals: ['✨ Commencez gratuitement', '💳 Sans carte bancaire'],
       featuresTitle: 'Fonctions Zush',
@@ -3624,7 +3636,8 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'Renomeador de arquivos\npara Mac & Windows',
       heroAccent: 'Renomeador de arquivos',
-      heroSubtitle: 'Renomeie arquivos em lote e em massa pelo conteúdo com IA: screenshots, PDFs, fotos, vídeos, áudio, arquivos de design, documentos iWork e Office. Monitore pastas, reutilize templates e desfaça qualquer renomeação.',
+      heroSubtitle: 'Renomeie arquivos em lote por conteúdo com IA. O Zush oferece suporte a mais de 100 formatos de screenshots, PDFs, fotos, vídeos, áudios e documentos, extrai exatamente os detalhes que você escolhe e os transforma em nomes de arquivo definidos por você. Mantenha a análise totalmente privada com IA offline e Ollama, ou use seu próprio provedor e modelo de IA com BYOK.',
+      heroHighlights: ['Renomeie arquivos em lote por conteúdo com IA', 'exatamente os detalhes que você escolhe', 'totalmente privada com IA offline e Ollama', 'seu próprio provedor e modelo de IA'],
       buyPro: 'Comprar PRO 🌟',
       trustSignals: ['✨ Comece grátis', '💳 Sem cartão de crédito'],
       featuresTitle: 'Recursos do Zush',
@@ -3665,7 +3678,8 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'Renombrador de archivos\npara Mac & Windows',
       heroAccent: 'Renombrador de archivos',
-      heroSubtitle: 'Renombra archivos por lotes y en masa según su contenido con IA: capturas, PDFs, fotos, videos, audio, archivos de diseño, documentos iWork y Office. Monitorea carpetas, reutiliza plantillas y deshaz cualquier renombrado.',
+      heroSubtitle: 'Renombra archivos por lotes según su contenido con IA. Zush admite más de 100 formatos de capturas, PDFs, fotos, videos, audio y documentos, extrae exactamente los detalles que eliges y los convierte en nombres de archivo definidos por ti. Mantén el análisis totalmente privado con IA offline y Ollama, o usa tu propio proveedor y modelo de IA con BYOK.',
+      heroHighlights: ['Renombra archivos por lotes según su contenido con IA', 'exactamente los detalles que eliges', 'totalmente privado con IA offline y Ollama', 'tu propio proveedor y modelo de IA'],
       buyPro: 'Comprar PRO 🌟',
       trustSignals: ['✨ Empieza gratis', '💳 Sin tarjeta de crédito'],
       featuresTitle: 'Funciones de Zush',
@@ -3706,7 +3720,8 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'Bestandshernoemer\nvoor Mac & Windows',
       heroAccent: 'Bestandshernoemer',
-      heroSubtitle: 'Hernoem bestanden batchgewijs en in bulk op inhoud met AI: screenshots, PDFs, foto’s, video’s, audio, designbestanden en iWork- en Office-documenten. Bewaak mappen, hergebruik sjablonen en maak elke hernoeming ongedaan.',
+      heroSubtitle: 'Hernoem bestanden in bulk op basis van inhoud met AI. Zush ondersteunt meer dan 100 formaten voor screenshots, pdf’s, foto’s, video’s, audio en documenten, haalt precies de details eruit die jij kiest en zet ze om in bestandsnamen die jij bepaalt. Houd bestandsanalyse volledig privé met Offline AI en Ollama, of gebruik via BYOK je eigen AI-provider en model.',
+      heroHighlights: ['Hernoem bestanden in bulk op basis van inhoud met AI', 'precies de details eruit die jij kiest', 'volledig privé met Offline AI en Ollama', 'je eigen AI-provider en model'],
       buyPro: 'Koop PRO 🌟',
       trustSignals: ['✨ Gratis aan de slag', '💳 Geen creditcard nodig'],
       featuresTitle: 'Zush-functies',
@@ -3747,7 +3762,8 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'Rinomina file\nper Mac & Windows',
       heroAccent: 'Rinomina file',
-      heroSubtitle: 'Rinomina file in batch e in massa in base al contenuto con l’IA: screenshot, PDF, foto, video, audio, file di design, documenti iWork e Office. Monitora cartelle, riusa template e annulla ogni rinomina.',
+      heroSubtitle: 'Rinomina file in batch in base al contenuto con l’IA. Zush supporta oltre 100 formati tra screenshot, PDF, foto, video, audio e documenti, estrae esattamente i dettagli che scegli e li trasforma in nomi file definiti da te. Mantieni l’analisi completamente privata con l’IA offline e Ollama, oppure usa il tuo provider e modello IA con BYOK.',
+      heroHighlights: ['Rinomina file in batch in base al contenuto con l’IA', 'esattamente i dettagli che scegli', 'completamente privata con l’IA offline e Ollama', 'il tuo provider e modello IA'],
       buyPro: 'Acquista PRO 🌟',
       trustSignals: ['✨ Inizia gratis', '💳 Nessuna carta richiesta'],
       featuresTitle: 'Funzioni di Zush',
@@ -3788,7 +3804,8 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'ファイルリネーム\nMac・Windows対応',
       heroAccent: 'ファイルリネーム',
-      heroSubtitle: 'AI で内容に基づいてファイルを一括・大量リネーム: スクリーンショット、PDF、写真、動画、音声、デザインファイル、iWork・Office 文書に対応。フォルダ監視、テンプレート再利用、いつでも取り消しができます。',
+      heroSubtitle: 'AIでファイルを内容に基づいて一括リネーム。Zushはスクリーンショット、PDF、写真、動画、音声、文書など100以上の形式に対応し、指定した情報だけを正確に抽出して、定義したファイル名に変換します。OllamaのオフラインAIでファイル分析を完全にプライベートに保つか、BYOKで自分のAIプロバイダーとモデルを利用できます。',
+      heroHighlights: ['AIでファイルを内容に基づいて一括リネーム', '指定した情報だけを正確に抽出', 'OllamaのオフラインAIでファイル分析を完全にプライベートに', '自分のAIプロバイダーとモデル'],
       buyPro: 'PROを購入 🌟',
       trustSignals: ['✨ 無料で始める', '💳 クレジットカード不要'],
       featuresTitle: 'Zush の機能',
@@ -3829,7 +3846,8 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: '파일 이름 변경 도구\nMac 및 Windows용',
       heroAccent: '파일 이름 변경 도구',
-      heroSubtitle: 'AI로 파일 내용을 기준으로 일괄 및 대량 이름 변경: 스크린샷, PDF, 사진, 비디오, 오디오, 디자인 파일, iWork 및 Office 문서까지 지원합니다. 폴더를 모니터링하고, 템플릿을 재사용하며, 언제든 이름 변경을 되돌릴 수 있습니다.',
+      heroSubtitle: 'AI로 파일 내용을 기준으로 일괄 이름 변경하세요. Zush는 스크린샷, PDF, 사진, 비디오, 오디오, 문서 등 100개 이상의 형식을 지원하며, 사용자가 선택한 세부 정보만 정확히 추출해 원하는 파일 이름으로 바꿉니다. Ollama 기반 오프라인 AI로 파일 분석을 완전히 비공개로 유지하거나, BYOK로 원하는 AI 제공업체와 모델을 사용할 수 있습니다.',
+      heroHighlights: ['AI로 파일 내용을 기준으로 일괄 이름 변경하세요', '사용자가 선택한 세부 정보만 정확히 추출', 'Ollama 기반 오프라인 AI로 파일 분석을 완전히 비공개로', '원하는 AI 제공업체와 모델'],
       buyPro: 'PRO 구매 🌟',
       trustSignals: ['✨ 무료로 시작하기', '💳 카드 필요 없음'],
       featuresTitle: 'Zush 기능',
@@ -3907,7 +3925,8 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: '文件重命名工具\n适用于 Mac 和 Windows',
       heroAccent: '文件重命名工具',
-      heroSubtitle: '用 AI 根据内容批量和大量重命名文件：截图、PDF、照片、视频、音频、设计文件、iWork 和 Office 文档。监控文件夹、复用命名模板，并可随时撤销重命名。',
+      heroSubtitle: '使用 AI 按内容批量重命名文件。Zush 支持截图、PDF、照片、视频、音频和文档等 100 多种格式，可精准提取你选择的信息，并生成由你定义的文件名。使用 Ollama 离线 AI 让文件分析完全私密，或通过 BYOK 连接自己的 AI 提供商和模型。',
+      heroHighlights: ['使用 AI 按内容批量重命名文件', '精准提取你选择的信息', '使用 Ollama 离线 AI 让文件分析完全私密', '自己的 AI 提供商和模型'],
       buyPro: '购买 PRO 🌟',
       trustSignals: ['✨ 免费开始', '💳 无需信用卡'],
       featuresTitle: 'Zush 功能',
@@ -4039,7 +4058,8 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'File Renamer\nMac और Windows के लिए',
       heroAccent: 'File Renamer',
-      heroSubtitle: 'AI से content के आधार पर files batch rename और bulk rename करें: screenshots, PDFs, photos, videos, audio, design files, iWork और Office documents। Folders monitor करें, templates reuse करें, और किसी भी rename को undo करें।',
+      heroSubtitle: 'AI से content के आधार पर files batch rename करें। Zush screenshots, PDFs, photos, videos, audio और documents सहित 100+ formats support करता है, आपकी चुनी हुई details को exactly extract करता है और उन्हें आपके तय किए हुए file names में बदल देता है। Offline AI और Ollama से file analysis पूरी तरह private रखें, या BYOK के साथ अपना AI provider और model use करें।',
+      heroHighlights: ['AI से content के आधार पर files batch rename करें', 'आपकी चुनी हुई details को exactly extract', 'Offline AI और Ollama से file analysis पूरी तरह private', 'अपना AI provider और model'],
       buyPro: 'PRO खरीदें 🌟',
       trustSignals: ['✨ Free में शुरू करें', '💳 Credit card नहीं चाहिए'],
       featuresTitle: 'Zush Features',
@@ -4184,7 +4204,8 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'أداة إعادة تسمية الملفات\nلنظامي Mac وWindows',
       heroAccent: 'أداة إعادة تسمية الملفات',
-      heroSubtitle: 'أعد تسمية الملفات بالدفعات وبكميات كبيرة حسب المحتوى باستخدام الذكاء الاصطناعي: لقطات الشاشة وملفات PDF والصور والفيديو والصوت وملفات التصميم ومستندات iWork وOffice. راقب المجلدات، وأعد استخدام القوالب، وتراجع عن أي إعادة تسمية.',
+      heroSubtitle: 'أعد تسمية الملفات دفعة واحدة حسب المحتوى باستخدام الذكاء الاصطناعي. يدعم Zush أكثر من 100 تنسيق للقطات الشاشة وملفات PDF والصور والفيديو والصوت والمستندات، ويستخرج بدقة التفاصيل التي تختارها ويحوّلها إلى أسماء ملفات تحددها أنت. حافظ على خصوصية تحليل الملفات بالكامل باستخدام الذكاء الاصطناعي دون اتصال وOllama، أو استخدم مزود ونموذج الذكاء الاصطناعي الخاصين بك عبر BYOK.',
+      heroHighlights: ['أعد تسمية الملفات دفعة واحدة حسب المحتوى باستخدام الذكاء الاصطناعي', 'التفاصيل التي تختارها', 'خصوصية تحليل الملفات بالكامل باستخدام الذكاء الاصطناعي دون اتصال وOllama', 'مزود ونموذج الذكاء الاصطناعي الخاصين بك'],
       buyPro: 'شراء PRO 🌟',
       trustSignals: ['✨ ابدأ مجانا', '💳 لا تحتاج إلى بطاقة ائتمان'],
       featuresTitle: 'ميزات Zush',

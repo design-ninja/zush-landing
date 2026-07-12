@@ -1,5 +1,5 @@
 import { type CSSProperties, useEffect, useState } from "react";
-import { FileAudio2, FileSpreadsheet, FileText, FileType2, Film, Palette, Presentation } from "lucide-react";
+import { FileAudio2, FileImage, FileSpreadsheet, FileText, FileType2, Film, Palette, Presentation } from "lucide-react";
 import { VIDEO_PREVIEW_IMAGES } from "@/data/videoPreviewImages";
 import styles from "./FileShowcase.module.scss";
 
@@ -129,6 +129,7 @@ const defaultSlides: Slide[] = [
 ];
 
 const fileTypeConfig = {
+  image: { icon: FileImage, label: "IMG", className: styles.FileItem__Preview_image },
   design: { icon: Palette, label: "FIG", className: styles.FileItem__Preview_design },
   doc: { icon: FileText, label: "DOCX", className: styles.FileItem__Preview_doc },
   sheet: { icon: FileSpreadsheet, label: "XLSX", className: styles.FileItem__Preview_sheet },
@@ -137,7 +138,6 @@ const fileTypeConfig = {
   video: { icon: Film, label: "MP4", className: styles.FileItem__Preview_video },
   audio: { icon: FileAudio2, label: "MP3", className: styles.FileItem__Preview_audio },
 } as const;
-type NonImageFileType = Exclude<FileItem['type'], 'image'>;
 
 interface FileShowcaseProps {
   slides?: Slide[];
@@ -220,8 +220,7 @@ const FileShowcase = ({ slides: customSlides }: FileShowcaseProps = {}) => {
                 </picture>
               ) : (
                 (() => {
-                  const fileType = file.type as NonImageFileType;
-                  const preview = fileTypeConfig[fileType];
+                  const preview = fileTypeConfig[file.type];
                   const Icon = preview.icon;
 
                   return (

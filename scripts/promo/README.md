@@ -6,6 +6,19 @@
 pnpm promo:feature-screenshots
 ```
 
+The macOS capture defaults to the isolated local Debug backend. To recreate the
+production-backed app state, pass the environment explicitly:
+
+```sh
+ZUSH_PROMO_BACKEND_ENVIRONMENT=prod pnpm promo:feature-screenshots --target=landing
+```
+
+The script passes that selection to both the launched app and every promo
+fixture, so a fixture cannot reset the capture back to the local backend.
+
+The `app-store` target writes ten light-theme, lossless PNG screenshots at
+2880×1800 pixels to `../zush-assets/App Store` by default.
+
 ## Windows
 
 Run this on Windows, because the script builds, launches, and captures the WinUI client:

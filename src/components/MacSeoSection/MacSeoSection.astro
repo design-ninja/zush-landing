@@ -1,0 +1,149 @@
+---
+import {
+  FolderSearch,
+  KeyRound,
+  ListChecks,
+  Receipt,
+  Search,
+  WandSparkles,
+} from 'lucide-react';
+import Heading from '@/components/Heading';
+import PillLink from '@/components/PillLink';
+import Text from '@/components/Text';
+import styles from './MacSeoSection.module.scss';
+
+const docsLinks = [
+  { href: '/hazel-alternative', label: 'Hazel alternative' },
+  { href: '/ai-file-organizer', label: 'AI file organizer' },
+  { href: '/docs/folder-monitoring', label: 'Automate Downloads cleanup' },
+  { href: '/docs/naming-blocks', label: 'Naming Blocks' },
+  { href: '/docs/custom-ai-blocks', label: 'Custom AI Blocks' },
+];
+
+const cards = [
+  {
+    icon: ListChecks,
+    tone: 'purple',
+    title: 'Batch rename from Finder',
+    body:
+      'Drag files or folders from Finder, generate names from content, review every suggestion, and apply the full batch with undo history.',
+  },
+  {
+    icon: FolderSearch,
+    tone: 'blue',
+    title: 'Automatic Downloads & Screenshots cleanup',
+    body:
+      'Monitor ~/Downloads, Desktop, or a screenshots folder so new files get readable names as they arrive — automatic file organization without moving files between folders.',
+  },
+  {
+    icon: Search,
+    tone: 'teal',
+    title: 'Searchable names for Finder & Spotlight',
+    body:
+      'Zush writes file content into readable filenames and metadata so Finder and Spotlight can surface files without opening each one.',
+  },
+  {
+    icon: WandSparkles,
+    tone: 'green',
+    title: 'Templates, Naming Blocks & Custom AI Blocks',
+    body:
+      'Combine AI titles with dates, clients, and counters from 145+ Naming Blocks, or describe your own field — client, case number, brand — with a Custom AI Block.',
+  },
+  {
+    icon: KeyRound,
+    tone: 'orange',
+    title: 'Offline AI with Ollama',
+    body:
+      'Use bundled cloud AI, connect Gemini, Groq, OpenAI, or Claude with BYOK, or run supported analysis locally with private Ollama models in Offline AI mode.',
+  },
+  {
+    icon: Receipt,
+    tone: 'pink',
+    title: 'Invoices, receipts, and scans',
+    body:
+      'Name invoice and receipt PDFs and photos by vendor, date, and amount, with scanned documents read by AI vision.',
+    href: '/rename-invoices-with-ai',
+  },
+];
+---
+
+<section class={styles.MacSeoSection}>
+  <div class={styles.MacSeoSection__Container}>
+    <div class={styles.MacSeoSection__Header}>
+      <span class={styles.MacSeoSection__Eyebrow}>Mac file organizing</span>
+      <Heading as="h2" align="center">
+        Automatic file organizer for Mac
+      </Heading>
+      <Text as="p" align="center" color="subtle" className={styles.MacSeoSection__Intro}>
+        Zush is built for Mac users who need an AI file renamer, batch rename tool, and practical
+        file organizer for messy Finder folders — Downloads, screenshots, photos, PDFs, and scans.
+      </Text>
+    </div>
+
+    <div class={styles.MacSeoSection__Grid}>
+      {cards.map((card) => {
+        const Icon = card.icon;
+        return (
+          <article class={styles.MacSeoCard} data-tone={card.tone}>
+            <span class={styles.MacSeoCard__Icon} aria-hidden="true">
+              <Icon size={21} strokeWidth={1.8} />
+            </span>
+            <h3 class={styles.MacSeoCard__Title}>{card.title}</h3>
+            <p class={styles.MacSeoCard__Body}>
+              {card.body}
+              {card.href && (
+                <>
+                  {' '}<a href={card.href}>Learn more →</a>
+                </>
+              )}
+            </p>
+          </article>
+        );
+      })}
+    </div>
+
+    <div class={styles.MacSeoSection__Comparison}>
+      <div class={styles.MacSeoSection__ComparisonIntro}>
+        <h3>When Zush is a Hazel alternative for Mac</h3>
+        <p>
+          Hazel is a rule engine that watches folders and acts on files by conditions like name,
+          date, or kind. Zush works the other way around: it reads what each file actually contains
+          and suggests a descriptive, searchable name.
+        </p>
+        <p>
+          Zush renames files in place rather than moving them between folders or running scripts, it
+          monitors folders and keeps full undo history, and it also runs on Windows — see the full
+          <a href="/hazel-alternative"> Hazel alternative </a> comparison.
+        </p>
+      </div>
+      <div class={styles.MacSeoTable} role="table" aria-label="Mac file organizing comparison">
+        <div class={styles.MacSeoTable__Row} role="row">
+          <strong role="columnheader">Workflow</strong>
+          <strong role="columnheader">Best fit</strong>
+          <strong role="columnheader">Why</strong>
+        </div>
+        <div class={styles.MacSeoTable__Row} role="row">
+          <span role="cell">Name mixed files by what they contain</span>
+          <span role="cell">Zush for Mac</span>
+          <span role="cell">Every file can get a different descriptive name after AI analysis.</span>
+        </div>
+        <div class={styles.MacSeoTable__Row} role="row">
+          <span role="cell">Auto-clean Downloads and Screenshots</span>
+          <span role="cell">Zush for Mac</span>
+          <span role="cell">Folder monitoring names new files by content, with preview and undo.</span>
+        </div>
+        <div class={styles.MacSeoTable__Row} role="row">
+          <span role="cell">Move or tag files by rule, run scripts</span>
+          <span role="cell">Hazel</span>
+          <span role="cell">Rule engines still fit when the logic is about where a file came from.</span>
+        </div>
+      </div>
+    </div>
+
+    <nav class={styles.MacSeoSection__Docs} aria-label="Mac file organizing resources">
+      {docsLinks.map((link) => (
+        <PillLink href={link.href} size="md">{link.label}</PillLink>
+      ))}
+    </nav>
+  </div>
+</section>
