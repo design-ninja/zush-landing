@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.5.0.0] - 2026-07-12
+
+### Added
+- Create reusable Custom AI Blocks that extract client names, brands, invoice fields, case numbers, and other details from file content.
+- Build filenames in the redesigned Naming Blocks editor with search, drag-and-drop ordering, separators, and formatting controls.
+
+### Improved
+- Refined Smart Rename templates and batch rename controls for a clearer review workflow.
+- Improved reliability and feedback across Cloud AI, BYOK, and Offline AI.
+- Improved music sidecar metadata handling for structured naming templates.
+
+
 ## [3.4.2.0] - 2026-07-05
 ### Improved
 - Improved stability when opening Zush from activation links and returning from checkout.
