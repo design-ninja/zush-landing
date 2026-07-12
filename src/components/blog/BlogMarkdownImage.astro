@@ -16,7 +16,6 @@ const defaultImageProps = inferredImageSize
 
 function inferImageSize(src: string) {
   const imageSizes: Record<string, { width: string; height: string }> = {
-    '/images/showcase/windows-original/02-ai-rename-results.webp': { width: '1920', height: '1080' },
     '/images/blog/competitors/ai-renamer.png': { width: '1920', height: '1080' },
     '/images/blog/competitors/namequick.png': { width: '1200', height: '630' },
     '/images/blog/competitors/renamer-ai.png': { width: '2400', height: '1260' },
@@ -40,6 +39,15 @@ function getThemedScreenshot(src: string) {
   if (macosShowcaseMatch) {
     return {
       darkSrc: `/images/showcase/macos/${macosShowcaseMatch[1]}-dark.webp`,
+      height: '1440',
+      width: '2560',
+    };
+  }
+
+  const windowsShowcaseMatch = src.match(/^\/images\/showcase\/windows\/(.+)-light\.webp$/);
+  if (windowsShowcaseMatch) {
+    return {
+      darkSrc: `/images/showcase/windows/${windowsShowcaseMatch[1]}-dark.webp`,
       height: '1440',
       width: '2560',
     };

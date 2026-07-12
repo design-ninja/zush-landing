@@ -499,7 +499,7 @@ export const HOME_JSON_LD = {
       image: DEFAULT_OG_IMAGE,
       screenshot: [
         `${SITE_ORIGIN}/images/screenshots/light/zush-main-interface.webp`,
-        `${SITE_ORIGIN}/images/showcase/windows-original/02-ai-rename-results.webp`,
+        `${SITE_ORIGIN}/images/showcase/windows/batch-rename-light.webp`,
       ],
       offers: [
         {

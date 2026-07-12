@@ -24,12 +24,12 @@ const NON_WATCH_VIDEO_ROUTES = new Set([
   '/rename-screenshots-with-ai',
 ]);
 const HOMEPAGE_HERO_VIDEO = {
-  lightSource: '/videos/hero/zush-batch-rename-mac-window-light.mp4',
-  darkSource: '/videos/hero/zush-batch-rename-mac-window-dark.mp4',
-  lightPoster: '/videos/posters/hero-batch-rename-mac-window-light.webp',
-  darkPoster: '/videos/posters/hero-batch-rename-mac-window-dark.webp',
-  width: '1280',
-  height: '1050',
+  lightSource: '/videos/hero/zush-invoices-demo-mac-window-light.mp4',
+  darkSource: '/videos/hero/zush-invoices-demo-mac-window-dark.mp4',
+  lightPoster: '/videos/posters/hero-invoices-demo-mac-window-light.webp',
+  darkPoster: '/videos/posters/hero-invoices-demo-mac-window-dark.webp',
+  width: '2082',
+  height: '1638',
 };
 const ISO_8601_DATE_OR_DATETIME = /^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})?)?$/;
 const USE_CASES_BLOCK_ROUTES = [

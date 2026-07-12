@@ -18,12 +18,12 @@ const getDocumentTheme = (): ShowcaseTheme => {
 
 const HeroVideoShowcase = ({ media }: HeroVideoShowcaseProps) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [theme, setTheme] = useState<ShowcaseTheme | null>(null);
+  const [theme, setTheme] = useState<ShowcaseTheme>('light');
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [isVideoReady, setIsVideoReady] = useState(false);
-  const activeSource = theme ? media.sources[theme] : undefined;
-  const activePoster = theme ? media.posters[theme] : undefined;
-  const activeDimensions = theme ? (media.dimensions?.[theme] ?? media) : media;
+  const activeSource = media.sources[theme];
+  const activePoster = media.posters[theme];
+  const activeDimensions = media.dimensions?.[theme] ?? media;
   const lightDimensions = media.dimensions?.light ?? media;
   const darkDimensions = media.dimensions?.dark ?? media;
   const frameStyle = {
@@ -65,22 +65,23 @@ const HeroVideoShowcase = ({ media }: HeroVideoShowcaseProps) => {
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || !activeSource || !activePoster) {
+    if (!video) {
       return;
     }
 
     setIsVideoReady(false);
     video.poster = activePoster;
+    video.defaultMuted = true;
+    video.muted = true;
 
     if (video.currentSrc.endsWith(activeSource)) {
       if (video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) {
         setIsVideoReady(true);
       }
-      return;
+    } else {
+      video.src = activeSource;
+      video.load();
     }
-
-    video.src = activeSource;
-    video.load();
 
     if (!prefersReducedMotion) {
       void video.play().catch(() => {
@@ -125,7 +126,7 @@ const HeroVideoShowcase = ({ media }: HeroVideoShowcaseProps) => {
         autoPlay
         className={styles.Hero__Video}
         data-ready={isVideoReady && !prefersReducedMotion}
-        data-showcase-theme={theme ?? undefined}
+        data-showcase-theme={theme}
         disablePictureInPicture
         height={activeDimensions.height}
         loop
