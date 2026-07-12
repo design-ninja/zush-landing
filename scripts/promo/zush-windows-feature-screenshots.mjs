@@ -49,6 +49,12 @@ const featureOrder = [
     storeName: '06-naming-blocks',
   },
   {
+    id: 'custom-ai-blocks',
+    fixture: 'custom-ai-blocks',
+    title: 'Custom AI Blocks',
+    storeName: '07-custom-ai-blocks',
+  },
+  {
     id: 'custom-prompts',
     fixture: 'custom-prompts',
     title: 'Custom Prompts',

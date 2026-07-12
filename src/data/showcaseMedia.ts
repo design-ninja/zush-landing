@@ -324,6 +324,16 @@ export const WINDOWS_SHOWCASE_SCREENSHOTS: ShowcaseScreenshotAsset[] = [
     alt: 'Naming Blocks editor in Zush for Windows',
   },
   {
+    id: 'custom-ai-blocks',
+    title: 'Custom AI Blocks',
+    description: 'Describe what AI should extract and reuse it as your own naming block',
+    images: {
+      light: '/images/showcase/windows/custom-ai-blocks-light.webp',
+      dark: '/images/showcase/windows/custom-ai-blocks-dark.webp',
+    },
+    alt: 'Custom AI Block editor in Zush for Windows',
+  },
+  {
     id: 'custom-prompts',
     title: 'Custom Prompts',
     description: 'Guide filename generation with your own instructions',
