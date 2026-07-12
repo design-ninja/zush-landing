@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.7.1] - 2026-07-12
+
+### Improved
+- Custom rename rules now preserve the title style you request
+- Saved folder access is faster and more reliable
+- Naming Blocks open in a cleaner, more compact view
+
 ## [3.7.0] - 2026-07-11
 
 ### Added
