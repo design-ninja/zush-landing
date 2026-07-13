@@ -105,10 +105,10 @@ Vertical with the strongest product fit: Custom AI Blocks extract vendor, amount
   2. Naming-convention recipes: 3–4 concrete templates (vendor–date, date–vendor–amount, client–invoice-number) built from Naming Blocks + Custom AI Blocks.
   3. Folder monitoring for the Downloads folder → invoices auto-renamed on arrival.
   4. Audience blocks: freelancers (client invoices), small business/accounting (monthly closing), personal (warranties, utilities).
-  5. Privacy note: BYOK and Offline AI mode for sensitive financial documents (link `/offline-ai-file-renamer`, `/byok-setup`).
+  5. Privacy note: BYOK and Offline AI mode for sensitive financial documents (link `/offline-ai-file-renamer`, `/docs/byok`).
   6. FAQ: "Can Zush read the vendor and amount from an invoice?", "Can I set my own invoice naming convention?", "Can invoices be renamed automatically when downloaded?", "Is it private?" (BYOK/offline answer), "Does it work with scanned invoices?" — verify the scanned/OCR answer against actual product capabilities before writing; if unsupported, drop the question.
 - **Links in:** `/rename-pdf-with-ai`, `/blog/rename-pdf-files-automatically`, `/blog/naming-blocks-file-naming-guide`, `/blog/organize-client-files-freelancers-mac`.
-- **Links out:** `/rename-pdf-with-ai`, `/offline-ai-file-renamer`, `/byok-setup`, `/rename-receipts-with-ai` (P4).
+- **Links out:** `/rename-pdf-with-ai`, `/offline-ai-file-renamer`, `/docs/byok`, `/rename-receipts-with-ai` (P4).
 
 ### P4. `/rename-receipts-with-ai` — AI Receipt Renamer & Organizer (same system as P3)
 

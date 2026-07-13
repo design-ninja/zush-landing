@@ -1,7 +1,7 @@
 ---
 title: Offline AI File Renaming with Ollama
 description: Set up Zush Offline AI mode with Ollama, download a vision-capable local model, test the connection, and rename supported files locally.
-lastUpdated: 2026-07-01
+lastUpdated: 2026-07-13
 sidebar:
   order: 32
   label: Offline AI
@@ -14,8 +14,8 @@ Offline AI mode lets Zush process supported file analysis through a local Ollama
 Use this guide when you want to install Ollama, download a local vision model, connect Zush to it, and test Offline AI mode before using it on real files.
 
 <figure>
-  <img src="/images/showcase/macos/offline-ai-light.webp" alt="Offline AI mode settings in the Zush AI Setup screen with an Ollama model selected and a test button." width="2560" height="1440" loading="lazy" decoding="async" />
-  <figcaption>Offline AI is configured in AI Setup. Enable the mode, select a local Ollama model, refresh the model list, and run a connection test.</figcaption>
+  <img src="/images/showcase/macos/offline-ai-light.webp" alt="Offline AI mode settings in the Zush BYOK/Offline tab with an Ollama model selected." width="2560" height="1440" loading="lazy" decoding="async" />
+  <figcaption>Install and start Ollama first, then select its model and enable Offline AI mode in BYOK/Offline.</figcaption>
 </figure>
 
 ## What Offline AI mode means
@@ -38,7 +38,7 @@ Offline AI mode is separate from BYOK. BYOK uses your own cloud provider key. Of
 - [Zush PRO](/docs/pricing-limits)
 - Mac or Windows
 - [Ollama](https://ollama.com/download) installed locally
-- a vision-capable Ollama model
+- at least one installed Ollama model; use a vision-capable model for images and file previews
 - enough memory and disk space for the model you choose
 
 Zush works best with vision-capable models because many rename jobs involve images, screenshots, PDFs, scans, video frames, or document previews.
@@ -47,37 +47,36 @@ Zush works best with vision-capable models because many rename jobs involve imag
 
 <Steps>
 1. Download Ollama from the [official Ollama download page](https://ollama.com/download).
-2. Install Ollama and open it once so the local server can start.
-3. Download a vision-capable model. A fast first choice is:
+2. Install Ollama and open it so the local server starts.
+3. Download a vision-capable model. A compact first choice is:
 
    ```bash
    ollama pull qwen2.5vl:3b
    ```
 
-4. If Zush cannot connect to Ollama, start the server from Terminal:
+4. If Ollama is not already running, start its server from Terminal:
 
    ```bash
    ollama serve
    ```
 
-5. Open Zush.
-6. Go to **AI Setup**.
-7. Turn on **Offline AI mode**.
-8. Click refresh next to the model list.
-9. Select the local model.
-10. Click **Test**.
-11. Run a small batch before using Offline AI on important folders.
+5. Open Zush and select **BYOK/Offline** in the sidebar.
+6. Wait for Zush to detect Ollama. If needed, click refresh next to the model list.
+7. Select the installed local model.
+8. Click **Test** to verify the current host and model.
+9. Turn on **Offline AI mode**. Zush checks that Ollama is reachable and that the selected model is installed before enabling it.
+10. Run a small batch before using Offline AI on important folders.
 </Steps>
 
 ## Recommended models
 
-The [Ollama setup page](/ollama-setup) recommends these starting points:
+These vision-capable models are practical starting points for Zush:
 
 | Model | Best for | Command | Notes |
 | --- | --- | --- | --- |
-| `qwen2.5vl:3b` | Speed | `ollama pull qwen2.5vl:3b` | Fastest first choice for everyday screenshots and images |
-| `gemma3:4b` | Balance | `ollama pull gemma3:4b` | Good default when speed and quality both matter |
-| `granite3.2-vision:2b` | Documents | `ollama pull granite3.2-vision:2b` | Compact vision model for document previews, scans, and structured visual content |
+| [`qwen2.5vl:3b`](https://ollama.com/library/qwen2.5vl:3b) | General visual analysis | `ollama pull qwen2.5vl:3b` | Compact Qwen vision model for screenshots and images |
+| [`gemma3:4b`](https://ollama.com/library/gemma3:4b) | General and multilingual vision | `ollama pull gemma3:4b` | Vision-capable 4B Gemma 3 model |
+| [`granite3.2-vision:2b`](https://ollama.com/library/granite3.2-vision:2b) | Visual documents | `ollama pull granite3.2-vision:2b` | Compact model designed for documents, tables, charts, and diagrams |
 
 You can also choose another vision-capable model from the [Ollama model catalog](https://ollama.com/search?c=vision). Model availability and quality change over time, so test with your own files before automating a large workflow.
 
@@ -113,7 +112,7 @@ Once the results look reliable, assign the workflow to [folder monitoring](/docs
 | --- | --- |
 | Zush does not see models | Run `ollama list`. If the list is empty, pull a model, then refresh the model list in Zush |
 | Connection test fails | Make sure Ollama is running and reachable at `http://127.0.0.1:11434` |
-| Processing is too slow | Use a smaller model such as `qwen2.5vl:3b`, close memory-heavy apps, or switch to Cloud AI for large batches |
+| Processing is too slow | Choose a smaller installed model, close memory-heavy apps, or switch to Cloud AI for large batches |
 | Results are weak | Try `gemma3:4b` or another vision-capable model and test with representative files |
 
 ## Limits
@@ -124,5 +123,4 @@ Offline AI support depends on file type, model capability, and local hardware. F
 
 - [AI modes](/docs/ai-modes)
 - [BYOK](/docs/byok)
-- [Ollama setup page](/ollama-setup)
 - [Privacy and security](/docs/privacy-security)

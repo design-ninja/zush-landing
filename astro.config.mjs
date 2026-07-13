@@ -19,6 +19,8 @@ const SITEMAP_EXCLUDED_PATHS = new Set([
   '/batch-rename-tool',
   '/bulk-rename-files',
   '/file-renamer',
+  '/byok-setup',
+  '/ollama-setup',
 ]);
 
 const SITEMAP_EXCLUDED_LOCALIZED_ROUTE = /^\/(?:de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)\/(?:404|activate|recover|thank-you|manage-subscription(?:\/confirm)?)$/;
@@ -40,6 +42,8 @@ export default defineConfig({
     '/sitemap-index.xml': { status: 301, destination: '/sitemap.xml' },
     '/sitemap-0.xml': { status: 301, destination: '/sitemap.xml' },
     '/download/windows': { status: 301, destination: '/windows' },
+    '/byok-setup': { status: 301, destination: '/docs/byok' },
+    '/ollama-setup': { status: 301, destination: '/docs/offline-ai' },
     '/docs/windows-batch-rename-files': { status: 301, destination: '/docs/batch-rename-files' },
     '/docs/windows-folder-monitoring': { status: 301, destination: '/docs/folder-monitoring' },
     '/docs/search-files-by-content-windows': { status: 301, destination: '/docs/file-search' },

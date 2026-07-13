@@ -9,9 +9,9 @@ export const WINDOWS_STORE_PROTOCOL_URL = "ms-windows-store://pdp/?ProductId=9ND
 export const HOMEBREW_CASK_URL = "https://formulae.brew.sh/cask/zush";
 export const SUPPORT_EMAIL = "support@zushapp.com";
 export const FREE_DOWNLOAD_BADGE_LABEL = "FREE";
-export const MAC_APP_VERSION = "3.6.3";
-export const WINDOWS_APP_VERSION = "3.4.2.0";
-export const PRODUCT_FACTS_REVIEWED_AT = "2026-07-10";
+export const MAC_APP_VERSION = "3.7.1";
+export const WINDOWS_APP_VERSION = "3.5.0.0";
+export const PRODUCT_FACTS_REVIEWED_AT = "2026-07-13";
 
 // System requirements
 export const MIN_MACOS_VERSION = "Sequoia and newer";

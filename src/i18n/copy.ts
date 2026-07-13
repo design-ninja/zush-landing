@@ -43,8 +43,6 @@ export interface FooterCopy {
   blog: string;
   changelog: string;
   methodology: string;
-  byokSetup: string;
-  ollamaSetup: string;
   contactSupport: string;
   feedback: string;
   terms: string;
@@ -986,8 +984,6 @@ const EN_COPY: LocaleCopy = {
     blog: 'Blog',
     changelog: 'Changelog',
     methodology: 'Methodology',
-    byokSetup: 'BYOK Setup Guide',
-    ollamaSetup: 'Ollama Setup Guide',
     contactSupport: 'Contact Support',
     feedback: 'Features & Bug Reports',
     terms: 'Terms of Service',
@@ -1864,8 +1860,6 @@ type FooterVisibleCopy = Pick<
   | 'blog'
   | 'changelog'
   | 'methodology'
-  | 'byokSetup'
-  | 'ollamaSetup'
   | 'appStoreKicker'
   | 'appStoreLabel'
   | 'appStoreAria'
@@ -1885,8 +1879,6 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     blog: 'Blog',
     changelog: 'Änderungen',
     methodology: 'Methodik',
-    byokSetup: 'BYOK-Einrichtung',
-    ollamaSetup: 'Ollama-Einrichtung',
     appStoreKicker: 'Laden im',
     appStoreLabel: 'Mac App Store',
     appStoreAria: 'Zush im Mac App Store laden',
@@ -1913,8 +1905,6 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     blog: 'Blog',
     changelog: 'Journal des changements',
     methodology: 'Méthodologie',
-    byokSetup: 'Guide BYOK',
-    ollamaSetup: 'Guide Ollama',
     appStoreKicker: 'Télécharger sur',
     appStoreLabel: 'Mac App Store',
     appStoreAria: 'Télécharger Zush sur le Mac App Store',
@@ -1941,8 +1931,6 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     blog: 'Blog',
     changelog: 'Novidades',
     methodology: 'Metodologia',
-    byokSetup: 'Guia BYOK',
-    ollamaSetup: 'Guia Ollama',
     appStoreKicker: 'Baixar na',
     appStoreLabel: 'Mac App Store',
     appStoreAria: 'Baixar o Zush na Mac App Store',
@@ -1969,8 +1957,6 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     blog: 'Blog',
     changelog: 'Novedades',
     methodology: 'Metodología',
-    byokSetup: 'Guía BYOK',
-    ollamaSetup: 'Guía de Ollama',
     appStoreKicker: 'Descargar en',
     appStoreLabel: 'Mac App Store',
     appStoreAria: 'Descargar Zush en Mac App Store',
@@ -1997,8 +1983,6 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     blog: 'Blog',
     changelog: 'Wijzigingen',
     methodology: 'Methode',
-    byokSetup: 'BYOK-handleiding',
-    ollamaSetup: 'Ollama-handleiding',
     appStoreKicker: 'Download in de',
     appStoreLabel: 'Mac App Store',
     appStoreAria: 'Download Zush in de Mac App Store',
@@ -2025,8 +2009,6 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     blog: 'Blog',
     changelog: 'Novità',
     methodology: 'Metodologia',
-    byokSetup: 'Guida BYOK',
-    ollamaSetup: 'Guida Ollama',
     appStoreKicker: 'Scarica da',
     appStoreLabel: 'Mac App Store',
     appStoreAria: 'Scarica Zush dal Mac App Store',
@@ -2053,8 +2035,6 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     blog: 'ブログ',
     changelog: '変更履歴',
     methodology: '方法',
-    byokSetup: 'BYOK 設定ガイド',
-    ollamaSetup: 'Ollama 設定ガイド',
     appStoreKicker: 'ダウンロード',
     appStoreLabel: 'Mac App Store',
     appStoreAria: 'Mac App Store で Zush をダウンロード',
@@ -2081,8 +2061,6 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     blog: '블로그',
     changelog: '변경 내역',
     methodology: '방법론',
-    byokSetup: 'BYOK 설정 가이드',
-    ollamaSetup: 'Ollama 설정 가이드',
     appStoreKicker: '다운로드',
     appStoreLabel: 'Mac App Store',
     appStoreAria: 'Mac App Store에서 Zush 다운로드',
@@ -2109,8 +2087,6 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     blog: '博客',
     changelog: '更新日志',
     methodology: '方法说明',
-    byokSetup: 'BYOK 设置指南',
-    ollamaSetup: 'Ollama 设置指南',
     appStoreKicker: '下载于',
     appStoreLabel: 'Mac App Store',
     appStoreAria: '在 Mac App Store 下载 Zush',
@@ -2137,8 +2113,6 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     blog: 'ब्लॉग',
     changelog: 'Changelog',
     methodology: 'Methodology',
-    byokSetup: 'BYOK सेटअप गाइड',
-    ollamaSetup: 'Ollama सेटअप गाइड',
     appStoreKicker: 'डाउनलोड करें',
     appStoreLabel: 'Mac App Store',
     appStoreAria: 'Mac App Store से Zush डाउनलोड करें',
@@ -2165,8 +2139,6 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     blog: 'المدونة',
     changelog: 'سجل التغييرات',
     methodology: 'المنهجية',
-    byokSetup: 'دليل إعداد BYOK',
-    ollamaSetup: 'دليل إعداد Ollama',
     appStoreKicker: 'تنزيل من',
     appStoreLabel: 'Mac App Store',
     appStoreAria: 'تنزيل Zush من Mac App Store',
@@ -3894,8 +3866,6 @@ const COPY: Record<Locale, LocaleCopy> = {
       blog: '博客',
       changelog: '更新日志',
       methodology: '方法说明',
-      byokSetup: 'BYOK 设置指南',
-      ollamaSetup: 'Ollama 设置指南',
       contactSupport: '联系支持',
       feedback: '功能与问题反馈',
       terms: '服务条款',

@@ -178,8 +178,6 @@ export const INDEXABLE_LOCALIZED_ROUTES = [
   '/mac',
   '/windows',
   '/methodology',
-  '/byok-setup',
-  '/ollama-setup',
   '/privacy-policy',
   '/terms-of-service',
   '/refund-policy',

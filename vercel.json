@@ -70,6 +70,26 @@
       "permanent": true
     },
     {
+      "source": "/byok-setup/",
+      "destination": "/docs/byok",
+      "permanent": true
+    },
+    {
+      "source": "/ollama-setup/",
+      "destination": "/docs/offline-ai",
+      "permanent": true
+    },
+    {
+      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/byok-setup/",
+      "destination": "/docs/byok",
+      "permanent": true
+    },
+    {
+      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/ollama-setup/",
+      "destination": "/docs/offline-ai",
+      "permanent": true
+    },
+    {
       "source": "/auto-rename-files/",
       "destination": "/",
       "permanent": true
@@ -87,6 +107,26 @@
     {
       "source": "/ai-file-renamer",
       "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/byok-setup",
+      "destination": "/docs/byok",
+      "permanent": true
+    },
+    {
+      "source": "/ollama-setup",
+      "destination": "/docs/offline-ai",
+      "permanent": true
+    },
+    {
+      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/byok-setup",
+      "destination": "/docs/byok",
+      "permanent": true
+    },
+    {
+      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/ollama-setup",
+      "destination": "/docs/offline-ai",
       "permanent": true
     },
     {

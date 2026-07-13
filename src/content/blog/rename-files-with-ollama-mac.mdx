@@ -17,7 +17,7 @@ Quick answer: rename files locally on Mac with Ollama by installing Ollama, pull
 
 Mac users finally have a practical way to rename files with AI without routing supported analysis content through a cloud provider. Zush Offline AI mode connects to Ollama, which runs a local model on your Mac and returns filename suggestions for screenshots, videos, images, PDFs, and supported documents.
 
-This guide is for the Mac Ollama workflow. Zush for Windows is live, but this article does not assume the Windows Offline AI setup flow is identical. For the current app page, see [Zush for Mac](/mac). For the broader product surface, see [File Renamer for Mac and Windows](/). For the short setup reference, open the [Ollama setup guide](/ollama-setup). If you are comparing local-first alternatives, read [Zush vs AI Renamer](/blog/zush-vs-airenamer).
+This guide is for the Mac Ollama workflow. Zush for Windows is live, but this article does not assume the Windows Offline AI setup flow is identical. For the current app page, see [Zush for Mac](/mac). For the broader product surface, see [File Renamer for Mac and Windows](/). For the short setup reference, open the [Ollama setup guide](/docs/offline-ai). If you are comparing local-first alternatives, read [Zush vs AI Renamer](/blog/zush-vs-airenamer).
 
 <BlogProductIntro />
 
@@ -80,7 +80,7 @@ The default local host used by the setup guide is `http://127.0.0.1:11434`.
 
 ## Step 4: enable Offline AI mode in Zush
 
-Open Zush, go to AI Setup, and switch to Offline AI mode. Refresh the model list, choose the model you installed, and run the connection test.
+Open Zush and go to BYOK/Offline. Refresh the model list, choose the model you installed, run the connection test, and then switch on Offline AI mode.
 
 Offline AI mode is separate from Zush Cloud and BYOK:
 
@@ -134,7 +134,7 @@ For casual photo folders, local AI can replace `IMG_` names with searchable desc
 
 ### Zush does not see any models
 
-Run `ollama list`. If no models appear, pull a model first. Then refresh the model list in Zush AI Setup.
+Run `ollama list`. If no models appear, pull a model first. Then refresh the model list in Zush BYOK/Offline.
 
 ### Connection test fails
 

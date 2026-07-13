@@ -2,8 +2,6 @@ import type { Locale, LocalizedRoute } from '@/i18n/config';
 
 export type StaticLocalizedRoute =
   | '/methodology'
-  | '/byok-setup'
-  | '/ollama-setup'
   | '/privacy-policy'
   | '/terms-of-service'
   | '/refund-policy';
@@ -24,8 +22,6 @@ export interface StaticPageCopy {
 
 const STATIC_LOCALIZED_ROUTES = [
   '/methodology',
-  '/byok-setup',
-  '/ollama-setup',
   '/privacy-policy',
   '/terms-of-service',
   '/refund-policy',
@@ -44,24 +40,6 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
         { eyebrow: 'Verantwortung', title: 'Redaktionelle Prüfung', body: 'Zush bewertet Empfehlungen nach einem festen Prozess. Kriterien werden monatlich geprüft, technische Änderungen werden vom Produktteam kontrolliert und wichtige Aktualisierungen im Changelog dokumentiert.' },
         { eyebrow: 'Bewertung', title: 'Scoring-Modell', body: 'Jeder Testlauf wird nach semantischer Genauigkeit, Konsistenz in Stapeln, Automatisierungstiefe, Sicherheitsfunktionen und Alltagstauglichkeit bewertet.', bullets: ['Aussagekräftige Namen statt generischer Muster', 'Stabile Ergebnisse in gemischten Stapeln', 'Vorschau, Verlauf und Wiederherstellung vor der Empfehlung'] },
         { eyebrow: 'Validierung', title: 'Benchmark-Protokoll', body: 'Wir testen Screenshots, Fotos, PDFs und Office-Dokumente mit gleichen Prompts und prüfen danach Ergebnisse, Fehlgriffe und Wiederherstellung.' },
-      ],
-    },
-    '/byok-setup': {
-      title: 'BYOK-Einrichtung',
-      description: 'Verbinde deinen eigenen KI-Anbieter und nutze unbegrenzte Cloud-Umbenennungen mit Gemini, Groq, OpenAI oder Claude.',
-      sections: [
-        { eyebrow: 'Überblick', title: 'Was ist BYOK?', body: 'BYOK bedeutet Bring Your Own Key. PRO-Nutzer können eigene API-Schlüssel für Cloud-Analysen zum Anbieterpreis verbinden.', bullets: ['Unbegrenzte Cloud-Umbenennungen zum Anbieterpreis', 'Gemini, Groq, OpenAI und Claude werden unterstützt', 'Schlüssel bleiben lokal sicher gespeichert'] },
-        { eyebrow: 'Schritte', title: 'So richtest du es ein', body: 'Erstelle einen API-Schlüssel im Dashboard deines Anbieters, öffne Zush, gehe zu Settings > Preferences > BYOK, wähle den Anbieter, füge den Schlüssel ein und aktiviere BYOK.' },
-        { eyebrow: 'Sicherheit', title: 'Datenkontrolle', body: 'In BYOK werden Analyseanfragen über die Zush-Infrastruktur an deinen Anbieter weitergeleitet. Zush speichert deine Dateiinhalte im normalen Betrieb nicht dauerhaft.' },
-      ],
-    },
-    '/ollama-setup': {
-      title: 'Ollama-Einrichtung',
-      description: 'Nutze den Offline-KI-Modus mit privaten lokalen Modellen über Ollama.',
-      sections: [
-        { eyebrow: 'Privat', title: 'Was Offline-KI bedeutet', body: 'Wenn Offline-KI aktiv ist, laufen unterstützte Datei-Analysen über deinen lokalen Ollama-Server statt über Cloud-Anbieter.' },
-        { eyebrow: 'Installation', title: 'Einrichtungsschritte', body: 'Installiere Ollama, starte die App einmal, lade ein Vision-Modell und aktiviere danach Offline AI mode in Zush.', bullets: ['Schnell: qwen2.5vl:3b', 'Ausgewogen: gemma3:4b', 'Dokumente: granite3.2-vision:2b'] },
-        { eyebrow: 'Hilfe', title: 'Fehlerbehebung', body: 'Wenn Zush keine Modelle sieht, prüfe `ollama list`. Wenn die Verbindung fehlschlägt, stelle sicher, dass Ollama unter http://127.0.0.1:11434 läuft.' },
       ],
     },
     '/privacy-policy': {
@@ -105,24 +83,6 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
         { eyebrow: 'Validation', title: 'Protocole de benchmark', body: 'Nous testons captures, photos, PDF et documents avec les mêmes prompts, puis nous analysons les résultats, erreurs et possibilités de retour arrière.' },
       ],
     },
-    '/byok-setup': {
-      title: 'Guide de configuration BYOK',
-      description: 'Connectez votre propre fournisseur IA pour des renommages cloud illimités avec Gemini, Groq, OpenAI ou Claude.',
-      sections: [
-        { eyebrow: 'Aperçu', title: 'Qu’est-ce que BYOK ?', body: 'BYOK signifie Bring Your Own Key. Les utilisateurs PRO peuvent connecter leurs propres clés API pour des analyses cloud au coût du fournisseur.', bullets: ['Renommages cloud illimités au coût du fournisseur', 'Gemini, Groq, OpenAI et Claude pris en charge', 'Les clés restent stockées localement'] },
-        { eyebrow: 'Étapes', title: 'Configuration', body: 'Créez une clé API dans le tableau de bord du fournisseur, ouvrez Zush, allez dans Settings > Preferences > BYOK, choisissez le fournisseur, collez la clé et activez BYOK.' },
-        { eyebrow: 'Sécurité', title: 'Contrôle des données', body: 'En mode BYOK, les demandes sont relayées par l’infrastructure Zush vers votre fournisseur. Zush ne conserve pas durablement le contenu des fichiers dans le fonctionnement normal.' },
-      ],
-    },
-    '/ollama-setup': {
-      title: 'Guide Ollama',
-      description: 'Utilisez le mode IA hors ligne avec des modèles locaux privés via Ollama.',
-      sections: [
-        { eyebrow: 'Privé', title: 'Ce que signifie l’IA hors ligne', body: 'Lorsque le mode IA hors ligne est activé, l’analyse des fichiers pris en charge passe par votre serveur Ollama local au lieu de fournisseurs cloud.' },
-        { eyebrow: 'Installation', title: 'Étapes de configuration', body: 'Installez Ollama, ouvrez l’app une fois, téléchargez un modèle vision, puis activez Offline AI mode dans Zush.', bullets: ['Rapide: qwen2.5vl:3b', 'Équilibré: gemma3:4b', 'Documents: granite3.2-vision:2b'] },
-        { eyebrow: 'Aide', title: 'Dépannage', body: 'Si Zush ne voit aucun modèle, vérifiez `ollama list`. Si la connexion échoue, assurez-vous qu’Ollama fonctionne sur http://127.0.0.1:11434.' },
-      ],
-    },
     '/privacy-policy': {
       title: 'Politique de confidentialité',
       description: 'Comment Zush traite les fichiers, licences, paiements, analyses et services tiers.',
@@ -162,24 +122,6 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
         { eyebrow: 'Responsabilidade', title: 'Revisão editorial', body: 'O Zush segue um processo de avaliação consistente. Os critérios são revisados mensalmente, mudanças técnicas passam pelo time de produto e atualizações importantes entram no changelog.' },
         { eyebrow: 'Pontuação', title: 'Modelo de avaliação', body: 'Cada teste mede precisão semântica, consistência em lote, automação, controles de segurança e adequação ao uso diário.', bullets: ['Nomes descritivos em vez de padrões genéricos', 'Resultados estáveis em lotes mistos', 'Prévia, histórico e restauração antes da recomendação'] },
         { eyebrow: 'Validação', title: 'Protocolo de benchmark', body: 'Testamos screenshots, fotos, PDFs e documentos com os mesmos prompts, depois avaliamos resultados, erros e reversão.' },
-      ],
-    },
-    '/byok-setup': {
-      title: 'Guia de configuração BYOK',
-      description: 'Conecte seu próprio provedor de IA para renomeações cloud ilimitadas com Gemini, Groq, OpenAI ou Claude.',
-      sections: [
-        { eyebrow: 'Visão geral', title: 'O que é BYOK?', body: 'BYOK significa Bring Your Own Key. Usuários PRO podem conectar suas próprias chaves API para análises cloud pelo custo do provedor.', bullets: ['Renomeações cloud ilimitadas pelo custo do provedor', 'Gemini, Groq, OpenAI e Claude', 'Chaves armazenadas localmente'] },
-        { eyebrow: 'Passos', title: 'Como configurar', body: 'Crie uma chave API no painel do provedor, abra o Zush, vá para Settings > Preferences > BYOK, escolha o provedor, cole a chave e ative BYOK.' },
-        { eyebrow: 'Segurança', title: 'Controle dos dados', body: 'No BYOK, as solicitações passam pela infraestrutura do Zush até seu provedor. O Zush não armazena conteúdo de arquivos de forma permanente na operação normal.' },
-      ],
-    },
-    '/ollama-setup': {
-      title: 'Guia Ollama',
-      description: 'Use o modo IA offline com modelos locais privados via Ollama.',
-      sections: [
-        { eyebrow: 'Privado', title: 'O que significa IA offline', body: 'Com IA offline ativa, a análise de arquivos compatíveis roda pelo servidor Ollama local em vez de provedores cloud.' },
-        { eyebrow: 'Instalação', title: 'Passos de configuração', body: 'Instale o Ollama, abra o app uma vez, baixe um modelo de visão e ative Offline AI mode no Zush.', bullets: ['Rápido: qwen2.5vl:3b', 'Equilibrado: gemma3:4b', 'Documentos: granite3.2-vision:2b'] },
-        { eyebrow: 'Ajuda', title: 'Solução de problemas', body: 'Se o Zush não vê modelos, rode `ollama list`. Se a conexão falhar, confirme que o Ollama está em http://127.0.0.1:11434.' },
       ],
     },
     '/privacy-policy': {
@@ -223,24 +165,6 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
         { eyebrow: 'Validación', title: 'Protocolo de benchmark', body: 'Probamos capturas, fotos, PDFs y documentos con los mismos prompts, y revisamos resultados, errores y reversión.' },
       ],
     },
-    '/byok-setup': {
-      title: 'Guía de configuración BYOK',
-      description: 'Conecta tu propio proveedor de IA para renombrados cloud ilimitados con Gemini, Groq, OpenAI o Claude.',
-      sections: [
-        { eyebrow: 'Resumen', title: '¿Qué es BYOK?', body: 'BYOK significa Bring Your Own Key. Los usuarios PRO pueden conectar sus propias claves API para análisis cloud al coste del proveedor.', bullets: ['Renombrados cloud ilimitados al coste del proveedor', 'Gemini, Groq, OpenAI y Claude', 'Claves guardadas localmente'] },
-        { eyebrow: 'Pasos', title: 'Cómo configurarlo', body: 'Crea una clave API en el panel del proveedor, abre Zush, entra en Settings > Preferences > BYOK, elige proveedor, pega la clave y activa BYOK.' },
-        { eyebrow: 'Seguridad', title: 'Control de datos', body: 'En BYOK, las solicitudes pasan por infraestructura de Zush hacia tu proveedor. Zush no almacena contenido de archivos de forma permanente durante la operación normal.' },
-      ],
-    },
-    '/ollama-setup': {
-      title: 'Guía de Ollama',
-      description: 'Usa el modo IA offline con modelos locales privados mediante Ollama.',
-      sections: [
-        { eyebrow: 'Privado', title: 'Qué significa IA offline', body: 'Con IA offline activa, el análisis de archivos compatibles se ejecuta en tu servidor local de Ollama en lugar de proveedores cloud.' },
-        { eyebrow: 'Instalación', title: 'Pasos de configuración', body: 'Instala Ollama, abre la app una vez, descarga un modelo de visión y activa Offline AI mode en Zush.', bullets: ['Rápido: qwen2.5vl:3b', 'Equilibrado: gemma3:4b', 'Documentos: granite3.2-vision:2b'] },
-        { eyebrow: 'Ayuda', title: 'Solución de problemas', body: 'Si Zush no ve modelos, ejecuta `ollama list`. Si falla la conexión, confirma que Ollama esté en http://127.0.0.1:11434.' },
-      ],
-    },
     '/privacy-policy': {
       title: 'Política de privacidad',
       description: 'Cómo Zush trata archivos, licencia, pagos, analítica y servicios de terceros.',
@@ -280,24 +204,6 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
         { eyebrow: 'Verantwoording', title: 'Redactionele controle', body: 'Zush gebruikt een vast beoordelingsproces. Criteria worden maandelijks herzien, technische wijzigingen worden door het productteam gecontroleerd en belangrijke updates worden vastgelegd.' },
         { eyebrow: 'Score', title: 'Beoordelingsmodel', body: 'Elke test meet semantische nauwkeurigheid, consistentie in bulk, automatisering, veiligheidscontroles en praktische bruikbaarheid.', bullets: ['Beschrijvende namen in plaats van generieke patronen', 'Stabiele resultaten in gemengde batches', 'Preview, geschiedenis en herstel vóór aanbeveling'] },
         { eyebrow: 'Validatie', title: 'Benchmarkprotocol', body: 'We testen screenshots, foto’s, PDFs en documenten met dezelfde prompts en beoordelen daarna resultaten, fouten en herstel.' },
-      ],
-    },
-    '/byok-setup': {
-      title: 'BYOK-handleiding',
-      description: 'Koppel je eigen AI-provider voor onbeperkt cloudhernoemen met Gemini, Groq, OpenAI of Claude.',
-      sections: [
-        { eyebrow: 'Overzicht', title: 'Wat is BYOK?', body: 'BYOK betekent Bring Your Own Key. PRO-gebruikers kunnen eigen API-sleutels koppelen in plaats van Zush-credits te gebruiken.', bullets: ['Onbeperkt cloudhernoemen tegen providerkosten', 'Gemini, Groq, OpenAI en Claude', 'Sleutels blijven lokaal opgeslagen'] },
-        { eyebrow: 'Stappen', title: 'Instellen', body: 'Maak een API-sleutel in het providerdashboard, open Zush, ga naar Settings > Preferences > BYOK, kies de provider, plak de sleutel en activeer BYOK.' },
-        { eyebrow: 'Veiligheid', title: 'Datacontrole', body: 'In BYOK worden analyseverzoeken via Zush-infrastructuur naar je provider gestuurd. Zush bewaart bestandsinhoud normaal niet permanent.' },
-      ],
-    },
-    '/ollama-setup': {
-      title: 'Ollama-handleiding',
-      description: 'Gebruik offline AI met private lokale modellen via Ollama.',
-      sections: [
-        { eyebrow: 'Privé', title: 'Wat offline AI betekent', body: 'Wanneer offline AI actief is, loopt analyse van ondersteunde bestanden via je lokale Ollama-server in plaats van cloudproviders.' },
-        { eyebrow: 'Installatie', title: 'Instappen', body: 'Installeer Ollama, open de app één keer, download een vision-model en activeer Offline AI mode in Zush.', bullets: ['Snel: qwen2.5vl:3b', 'Gebalanceerd: gemma3:4b', 'Documenten: granite3.2-vision:2b'] },
-        { eyebrow: 'Hulp', title: 'Problemen oplossen', body: 'Als Zush geen modellen ziet, voer `ollama list` uit. Mislukt de verbinding, controleer dan http://127.0.0.1:11434.' },
       ],
     },
     '/privacy-policy': {
@@ -341,24 +247,6 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
         { eyebrow: 'Validazione', title: 'Protocollo benchmark', body: 'Testiamo screenshot, foto, PDF e documenti con gli stessi prompt, poi analizziamo risultati, errori e ripristino.' },
       ],
     },
-    '/byok-setup': {
-      title: 'Guida BYOK',
-      description: 'Collega il tuo provider IA per rinomine cloud illimitate con Gemini, Groq, OpenAI o Claude.',
-      sections: [
-        { eyebrow: 'Panoramica', title: 'Cos’è BYOK?', body: 'BYOK significa Bring Your Own Key. Gli utenti PRO possono collegare le proprie chiavi API per analisi cloud al costo del provider.', bullets: ['Rinomine cloud illimitate al costo del provider', 'Gemini, Groq, OpenAI e Claude', 'Chiavi salvate localmente'] },
-        { eyebrow: 'Passaggi', title: 'Configurazione', body: 'Crea una chiave API nel pannello del provider, apri Zush, vai in Settings > Preferences > BYOK, scegli il provider, incolla la chiave e abilita BYOK.' },
-        { eyebrow: 'Sicurezza', title: 'Controllo dati', body: 'In BYOK le richieste passano dall’infrastruttura Zush al tuo provider. Zush non conserva permanentemente il contenuto dei file durante l’uso normale.' },
-      ],
-    },
-    '/ollama-setup': {
-      title: 'Guida Ollama',
-      description: 'Usa la modalità IA offline con modelli locali privati tramite Ollama.',
-      sections: [
-        { eyebrow: 'Privato', title: 'Cosa significa IA offline', body: 'Con IA offline attiva, l’analisi dei file supportati passa dal server Ollama locale invece che da provider cloud.' },
-        { eyebrow: 'Installazione', title: 'Passaggi', body: 'Installa Ollama, apri l’app una volta, scarica un modello vision e abilita Offline AI mode in Zush.', bullets: ['Veloce: qwen2.5vl:3b', 'Bilanciato: gemma3:4b', 'Documenti: granite3.2-vision:2b'] },
-        { eyebrow: 'Aiuto', title: 'Risoluzione problemi', body: 'Se Zush non vede modelli, esegui `ollama list`. Se la connessione fallisce, verifica http://127.0.0.1:11434.' },
-      ],
-    },
     '/privacy-policy': {
       title: 'Informativa sulla privacy',
       description: 'Come Zush gestisce file, licenze, pagamenti, analisi e servizi di terze parti.',
@@ -398,24 +286,6 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
         { eyebrow: '責任', title: '編集レビュー', body: 'Zush は一貫した評価プロセスを使います。基準は毎月見直し、技術的な変更はプロダクトチームが確認し、重要な更新は記録します。' },
         { eyebrow: '評価', title: 'スコアリングモデル', body: '各テストでは意味の正確さ、一括処理での一貫性、自動化、復元性、日常作業での使いやすさを評価します。', bullets: ['汎用パターンではなく内容が分かる名前', '混在ファイルの一括処理でも安定', '推奨前にプレビュー、履歴、復元を確認'] },
         { eyebrow: '検証', title: 'ベンチマーク手順', body: 'スクリーンショット、写真、PDF、文書を同じプロンプトでテストし、結果、誤り、復元動作を確認します。' },
-      ],
-    },
-    '/byok-setup': {
-      title: 'BYOK 設定ガイド',
-      description: 'Gemini、Groq、OpenAI、Claude の自分のキーで無制限のクラウドリネームを使う方法。',
-      sections: [
-        { eyebrow: '概要', title: 'BYOK とは？', body: 'BYOK は Bring Your Own Key の略です。PRO ユーザーは Zush クレジットの代わりに自分の API キーを接続できます。', bullets: ['プロバイダー料金で無制限クラウドリネーム', 'Gemini、Groq、OpenAI、Claude に対応', 'キーはローカルに保存'] },
-        { eyebrow: '手順', title: '設定方法', body: 'プロバイダーのダッシュボードで API キーを作成し、Zush の Settings > Preferences > BYOK でプロバイダーを選択、キーを貼り付けて有効化します。' },
-        { eyebrow: '安全性', title: 'データ管理', body: 'BYOK では分析リクエストが Zush のインフラ経由で選択したプロバイダーに送られます。通常運用で Zush がファイル内容を永続保存することはありません。' },
-      ],
-    },
-    '/ollama-setup': {
-      title: 'Ollama 設定ガイド',
-      description: 'Ollama のローカルモデルで Offline AI モードを使う方法。',
-      sections: [
-        { eyebrow: 'プライベート', title: 'Offline AI の意味', body: 'Offline AI が有効な場合、対応ファイルの分析はクラウドではなくローカルの Ollama サーバーで実行されます。' },
-        { eyebrow: 'インストール', title: '設定手順', body: 'Ollama をインストールして一度起動し、vision モデルをダウンロードして Zush で Offline AI mode を有効にします。', bullets: ['高速: qwen2.5vl:3b', 'バランス: gemma3:4b', '文書向け: granite3.2-vision:2b'] },
-        { eyebrow: 'ヘルプ', title: 'トラブルシューティング', body: 'モデルが見えない場合は `ollama list` を確認します。接続できない場合は http://127.0.0.1:11434 で Ollama が動作しているか確認してください。' },
       ],
     },
     '/privacy-policy': {
@@ -459,24 +329,6 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
         { eyebrow: '검증', title: '벤치마크 절차', body: '스크린샷, 사진, PDF, 문서를 같은 프롬프트로 테스트한 뒤 결과, 오류, 복원 동작을 확인합니다.' },
       ],
     },
-    '/byok-setup': {
-      title: 'BYOK 설정 가이드',
-      description: 'Gemini, Groq, OpenAI, Claude 키로 무제한 클라우드 이름 변경을 사용하는 방법.',
-      sections: [
-        { eyebrow: '개요', title: 'BYOK란?', body: 'BYOK는 Bring Your Own Key의 약자입니다. PRO 사용자는 Zush 크레딧 대신 자신의 API 키를 연결할 수 있습니다.', bullets: ['제공자 비용으로 무제한 클라우드 이름 변경', 'Gemini, Groq, OpenAI, Claude 지원', '키는 로컬에 저장'] },
-        { eyebrow: '단계', title: '설정 방법', body: '제공자 대시보드에서 API 키를 만들고 Zush의 Settings > Preferences > BYOK에서 제공자를 선택한 뒤 키를 붙여넣고 BYOK를 활성화합니다.' },
-        { eyebrow: '보안', title: '데이터 제어', body: 'BYOK에서는 분석 요청이 Zush 인프라를 통해 선택한 제공자로 전달됩니다. Zush는 일반 운영에서 파일 내용을 영구 저장하지 않습니다.' },
-      ],
-    },
-    '/ollama-setup': {
-      title: 'Ollama 설정 가이드',
-      description: 'Ollama의 개인 로컬 모델로 오프라인 AI 모드를 사용하는 방법.',
-      sections: [
-        { eyebrow: '개인 처리', title: '오프라인 AI의 의미', body: '오프라인 AI가 활성화되면 지원 파일 분석이 클라우드 제공자가 아닌 로컬 Ollama 서버에서 실행됩니다.' },
-        { eyebrow: '설치', title: '설정 단계', body: 'Ollama를 설치하고 한 번 실행한 뒤 vision 모델을 다운로드하고 Zush에서 Offline AI mode를 켭니다.', bullets: ['빠름: qwen2.5vl:3b', '균형: gemma3:4b', '문서: granite3.2-vision:2b'] },
-        { eyebrow: '도움말', title: '문제 해결', body: 'Zush가 모델을 찾지 못하면 `ollama list`를 확인하세요. 연결 실패 시 http://127.0.0.1:11434 에서 Ollama가 실행 중인지 확인하세요.' },
-      ],
-    },
     '/privacy-policy': {
       title: '개인정보 처리방침',
       description: 'Zush가 파일, 라이선스, 결제, 분석, 타사 서비스를 처리하는 방식.',
@@ -516,24 +368,6 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
         { eyebrow: '责任', title: '编辑审核', body: 'Zush 使用稳定的评估流程。标准每月复查，技术变更由产品团队确认，重要更新会记录在更新日志中。' },
         { eyebrow: '评分', title: '评分模型', body: '每次测试都会衡量语义准确性、批量一致性、自动化能力、安全控制和日常工作适配度。', bullets: ['生成描述性名称，而不是通用模板', '混合文件批量处理中保持稳定', '推荐前检查预览、历史和恢复能力'] },
         { eyebrow: '验证', title: '基准测试流程', body: '我们用相同提示词测试截图、照片、PDF 和文档，然后检查结果、错误和回滚能力。' },
-      ],
-    },
-    '/byok-setup': {
-      title: 'BYOK 设置指南',
-      description: '连接自己的 AI provider key，通过 Gemini、Groq、OpenAI 或 Claude 使用无限云端重命名。',
-      sections: [
-        { eyebrow: '概览', title: '什么是 BYOK？', body: 'BYOK 是 Bring Your Own Key。PRO 用户可以连接自己的 API key，而不是消耗 Zush credits。', bullets: ['按 provider 成本进行无限云端重命名', '支持 Gemini、Groq、OpenAI 和 Claude', '密钥保存在本地'] },
-        { eyebrow: '步骤', title: '如何设置', body: '在 provider 控制台创建 API key，打开 Zush，进入 Settings > Preferences > BYOK，选择 provider，粘贴密钥并启用 BYOK。' },
-        { eyebrow: '安全', title: '数据控制', body: 'BYOK 模式下，分析请求会通过 Zush 基础设施转发到你选择的 provider。正常运行中 Zush 不会永久保存文件内容。' },
-      ],
-    },
-    '/ollama-setup': {
-      title: 'Ollama 设置指南',
-      description: '通过 Ollama 的私有本地模型使用离线 AI 模式。',
-      sections: [
-        { eyebrow: '私有', title: '离线 AI 的含义', body: '启用离线 AI 后，支持文件的分析会通过你的本地 Ollama server 运行，而不是发送到云端 provider。' },
-        { eyebrow: '安装', title: '设置步骤', body: '安装 Ollama，首次打开应用，下载视觉模型，然后在 Zush 中启用 Offline AI mode。', bullets: ['速度优先：qwen2.5vl:3b', '平衡：gemma3:4b', '文档：granite3.2-vision:2b'] },
-        { eyebrow: '帮助', title: '故障排查', body: '如果 Zush 看不到模型，请运行 `ollama list`。如果连接失败，请确认 Ollama 运行在 http://127.0.0.1:11434。' },
       ],
     },
     '/privacy-policy': {

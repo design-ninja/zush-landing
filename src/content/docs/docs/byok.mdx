@@ -1,7 +1,7 @@
 ---
 title: BYOK Setup for AI File Renaming
 description: Set up Bring Your Own Key in Zush with Gemini, Groq, OpenAI, or Claude, then test cloud AI file renaming with your own provider key.
-lastUpdated: 2026-07-01
+lastUpdated: 2026-07-13
 sidebar:
   order: 31
   label: BYOK
@@ -9,13 +9,13 @@ sidebar:
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-BYOK means **Bring Your Own Key**. It lets Zush PRO users connect their own AI provider key for cloud renaming with Gemini, Groq, OpenAI, or Claude.
+BYOK means **Bring Your Own Key**. It lets Zush PRO users connect their own AI provider key for cloud renaming with Google AI (Gemini), Groq, OpenAI, or Anthropic.
 
 Use BYOK when you want Zush's desktop workflow, review screen, Templates, Naming Blocks, Monitor, and undo history, but you prefer to pay your own AI provider directly instead of relying only on the managed Zush provider.
 
 <figure>
-  <img src="/images/showcase/macos/byok-light.webp" alt="BYOK settings in the Zush AI Setup screen with Gemini selected, an API key saved, and a test button." width="2560" height="1440" loading="lazy" decoding="async" />
-  <figcaption>BYOK is configured in AI Setup. Choose a provider, paste your key, save it, enable Cloud BYOK, and run a test.</figcaption>
+  <img src="/images/showcase/macos/byok-light.webp" alt="Cloud BYOK settings in the Zush BYOK/Offline tab." width="2560" height="1440" loading="lazy" decoding="async" />
+  <figcaption>Choose a provider and paste its API key in the Cloud (BYOK) section. Save and Test appear when they are relevant.</figcaption>
 </figure>
 
 ## What BYOK changes
@@ -29,7 +29,7 @@ With BYOK enabled, Zush still handles the file workflow:
 - show previews before manual batches are applied
 - keep rename history so you can undo later
 
-The main difference is the provider and billing path. Your AI provider bills usage under its own API pricing. Gemini and Groq often have generous free tiers, while OpenAI and Claude are usually pay as you go. Check the provider's current pricing before running a very large batch.
+The main difference is the provider and billing path. Your AI provider bills usage under its current API pricing and account limits. Check the provider's pricing, quota, and model permissions before running a very large batch.
 
 <Aside type="note">
 Paid PRO plans include unlimited Zush cloud renames. BYOK is optional; use it when you specifically want your own provider account and API key.
@@ -37,25 +37,27 @@ Paid PRO plans include unlimited Zush cloud renames. BYOK is optional; use it wh
 
 ## Supported providers
 
-| Provider | Dashboard | Notes from the setup page |
+| Provider in Zush | Dashboard | Notes |
 | --- | --- | --- |
-| Gemini | [Google AI Studio](https://aistudio.google.com/app/apikey) | Good multimodal quality and a free tier that works for many users |
-| Groq | [Groq Console](https://console.groq.com/keys) | Fast inference and a generous free tier |
-| OpenAI | [OpenAI Platform](https://platform.openai.com/api-keys) | Pay-as-you-go; Zush uses GPT-4o mini for fast, affordable analysis |
-| Claude | [Anthropic Console](https://console.anthropic.com/settings/keys) | Pay-as-you-go; Zush uses Claude Haiku for cost-effective file understanding |
+| Google AI | [Google AI Studio](https://aistudio.google.com/app/apikey) | Uses the Gemini API |
+| Groq | [Groq Console](https://console.groq.com/keys) | Uses compatible models available to your Groq project |
+| OpenAI | [OpenAI Platform](https://platform.openai.com/api-keys) | Uses compatible analysis models available to your OpenAI project |
+| Anthropic | [Anthropic Console](https://console.anthropic.com/settings/keys) | Uses compatible Claude models available to your Anthropic account |
+
+Zush loads compatible models after the key is saved. The default model is controlled by current Zush configuration, so the guide does not pin you to a model name that may later change.
 
 ## Set up BYOK
 
 <Steps>
 1. Open your provider dashboard: [Google AI Studio](https://aistudio.google.com/app/apikey), [Groq Console](https://console.groq.com/keys), [OpenAI Platform](https://platform.openai.com/api-keys), or [Anthropic Console](https://console.anthropic.com/settings/keys).
 2. Create a new API key and copy it. Most providers show the full key only once.
-3. Open Zush.
-4. Go to **AI Setup**.
-5. Turn on **Cloud (BYOK)** if you want Zush to use your own provider key for cloud renames.
-6. Choose the AI provider.
-7. Paste the API key.
-8. Save the key.
-9. Click **Test** to confirm the provider connection works.
+3. Open Zush and select **BYOK/Offline** in the sidebar.
+4. In **Cloud (BYOK)**, choose the AI provider.
+5. Paste the API key.
+6. Click **Save**. Saving a valid key turns on Cloud BYOK automatically.
+7. Wait for the compatible model list to load. Keep the current default or choose another available model.
+8. Click **Test** to confirm the selected key and model work.
+9. Confirm the **Cloud (BYOK)** switch is on.
 10. Run a small batch before using BYOK on a large folder or monitored workflow.
 </Steps>
 
@@ -65,37 +67,29 @@ Paid PRO plans include unlimited Zush cloud renames. BYOK is optional; use it wh
 
 1. Open [Google AI Studio](https://aistudio.google.com/app/apikey).
 2. Create an API key.
-3. In Zush, choose **Gemini** as the AI Provider.
-4. Paste the key, save it, enable Cloud BYOK, and run **Test**.
-
-Gemini is a good first choice for BYOK because it has strong multimodal capabilities and a free tier suitable for many users.
+3. In Zush, choose **Google AI** as the AI Provider.
+4. Paste the key and click **Save**. Choose an available model if needed, then run **Test**.
 
 ### Groq
 
 1. Open [Groq Console](https://console.groq.com/keys).
 2. Create an API key.
 3. In Zush, choose **Groq** as the AI Provider.
-4. Paste the key, save it, enable Cloud BYOK, and run **Test**.
-
-Groq is useful when you care about fast cloud inference.
+4. Paste the key and click **Save**. Choose an available model if needed, then run **Test**.
 
 ### OpenAI
 
 1. Open [OpenAI Platform API keys](https://platform.openai.com/api-keys).
 2. Create a new secret key.
 3. In Zush, choose **OpenAI** as the AI Provider.
-4. Paste the key, save it, enable Cloud BYOK, and run **Test**.
-
-OpenAI uses pay-as-you-go pricing. Zush uses GPT-4o mini for BYOK file analysis.
+4. Paste the key and click **Save**. Choose an available model if needed, then run **Test**.
 
 ### Claude
 
 1. Open [Anthropic Console keys](https://console.anthropic.com/settings/keys).
 2. Create a key.
-3. In Zush, choose **Claude** as the AI Provider.
-4. Paste the key, save it, enable Cloud BYOK, and run **Test**.
-
-Claude uses pay-as-you-go pricing. Zush uses Claude Haiku for BYOK file analysis.
+3. In Zush, choose **Anthropic** as the AI Provider.
+4. Paste the key and click **Save**. Choose an available model if needed, then run **Test**.
 
 ## Test before automation
 
@@ -114,7 +108,7 @@ Once the test batch looks right, you can use the same AI setup with [Templates](
 
 ## Security and privacy
 
-Your API key is stored locally in secure platform storage. In BYOK mode, analysis requests are relayed through Zush backend infrastructure and then forwarded to your selected provider using your API key. Zush does not store file content after processing as part of normal operation.
+Your API key is stored locally in secure platform storage. Zush can send it directly to the selected provider to load compatible models and run **Test**. It is also sent transiently to Zush backend when BYOK is enabled and when BYOK analysis is processed; the backend forwards analysis requests to the provider. Zush does not permanently store the key or retain file content after normal processing.
 
 For local model processing instead of cloud provider processing, use [Offline AI with Ollama](/docs/offline-ai).
 
@@ -124,4 +118,3 @@ For local model processing instead of cloud provider processing, use [Offline AI
 - [Ollama / Offline AI](/docs/offline-ai)
 - [Privacy and security](/docs/privacy-security)
 - [Pricing and limits](/docs/pricing-limits)
-- [BYOK setup page](/byok-setup)

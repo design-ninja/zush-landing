@@ -312,8 +312,8 @@ export function getMethodologyCopy(locale: InternalLocale): MethodologyCopy {
       changelog: '/changelog',
       commercialComparison: '/blog/best-ai-file-renamer-tools-mac-compared',
       privacy: getLocalizedPath('/privacy-policy', locale),
-      byok: getLocalizedPath('/byok-setup', locale),
-      ollama: getLocalizedPath('/ollama-setup', locale),
+      byok: '/docs/byok',
+      ollama: '/docs/offline-ai',
     },
   };
 }

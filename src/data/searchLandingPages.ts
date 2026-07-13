@@ -340,8 +340,6 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       { title: 'Offline AI Docs', href: '/docs/offline-ai' },
       { title: 'BYOK Docs', href: '/docs/byok' },
       { title: 'Naming Blocks Guide', href: '/docs/naming-blocks' },
-      { title: 'Ollama Offline AI Setup', href: '/ollama-setup' },
-      { title: 'BYOK Setup', href: '/byok-setup' },
       { title: 'AI File Organizer', href: '/ai-file-organizer' },
       { title: 'AI File Renamer & Organizer', href: '/' },
       { title: 'Zush for Mac', href: '/mac' },
@@ -358,7 +356,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
         description: 'Use Zush as an offline AI file renamer for private local file naming on Mac and Windows.',
         steps: [
           { name: 'Install Ollama', text: 'Install Ollama and pull a vision-capable local model such as qwen2.5vl:3b or gemma3:4b.' },
-          { name: 'Enable Offline AI mode', text: 'Open Zush, go to AI Setup, enable Offline AI mode, refresh the model list, and test the local connection.' },
+          { name: 'Enable Offline AI mode', text: 'Open Zush, go to BYOK/Offline, refresh the model list, select and test the installed model, then enable Offline AI mode.' },
           { name: 'Review and apply names', text: 'Drop files or folders into Zush, review local AI filename suggestions, and apply the batch with undo history available.' },
         ],
       },
@@ -541,7 +539,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       { title: 'Custom AI Blocks Docs', href: '/docs/custom-ai-blocks' },
       { title: 'Naming Blocks Guide', href: '/docs/naming-blocks' },
       { title: 'Offline AI File Renamer', href: '/offline-ai-file-renamer' },
-      { title: 'BYOK Setup', href: '/byok-setup' },
+      { title: 'BYOK Docs', href: '/docs/byok' },
     ],
     relatedBlogPosts: [
       { title: 'Rename PDF Files Automatically', href: 'rename-pdf-files-automatically' },

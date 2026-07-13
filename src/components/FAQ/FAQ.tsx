@@ -23,7 +23,7 @@ const STATIC_JSX_OVERRIDES: Record<string, React.ReactNode> = {
   'What is BYOK (Bring Your Own Key)?': (
     <>
       BYOK lets PRO users connect their own API key from Gemini, Groq, OpenAI, or Claude for unlimited cloud renames. Your key is stored locally in secure platform storage and is sent only when Zush needs to call your selected provider through the backend relay.{' '}
-      <AppLink href="/byok-setup">Learn how to set it up →</AppLink>
+      <AppLink href="/docs/byok">Learn how to set it up →</AppLink>
     </>
   ),
   "Can I get a refund if it doesn't fit my needs?": (
@@ -80,7 +80,7 @@ const withLinkedAnswer = (item: FAQData): FAQData => {
       answer: (
         <>
           Cloud processing requires an internet connection. PRO users can enable Offline AI mode - private local models via Ollama after installing Ollama and downloading a compatible model.{' '}
-          <AppLink href="/ollama-setup">Open the Ollama setup guide →</AppLink>
+          <AppLink href="/docs/offline-ai">Open the Ollama setup guide →</AppLink>
         </>
       ),
     };

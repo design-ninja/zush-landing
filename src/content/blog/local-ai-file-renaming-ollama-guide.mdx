@@ -19,7 +19,7 @@ Most file renaming tools fall into two camps: rule-based batch rename utilities 
 
 Local AI file renaming is the third path. Instead of sending analysis content to a cloud model, a desktop app asks a model running on your own computer to describe the file and propose a useful name. In Zush, that workflow is called Offline AI mode, and it uses [Ollama](https://ollama.com/download) as the local model runtime.
 
-If you want the setup page first, start with the [Ollama setup guide](/ollama-setup). If you want the product surface first, see [File Renamer for Mac and Windows](/) or [Zush for Mac](/mac). If you are comparing local-first tools, read [Zush vs AI Renamer](/blog/zush-vs-airenamer).
+If you want the setup page first, start with the [Ollama setup guide](/docs/offline-ai). If you want the product surface first, see [File Renamer for Mac and Windows](/) or [Zush for Mac](/mac). If you are comparing local-first tools, read [Zush vs AI Renamer](/blog/zush-vs-airenamer).
 
 <BlogProductIntro />
 
@@ -41,7 +41,7 @@ Local AI is not magic and it is not always the fastest option. It is a privacy a
 
 ## How Zush uses Ollama
 
-Ollama is a local runtime for downloading and running AI models. Zush does not bundle a model into the app. Instead, you install Ollama, pull a compatible vision model, then choose that model inside Zush AI Setup.
+Ollama is a local runtime for downloading and running AI models. Zush does not bundle a model into the app. Instead, you install Ollama, pull a compatible vision model, then choose that model in Zush's BYOK/Offline tab.
 
 The typical flow is:
 
@@ -51,7 +51,7 @@ The typical flow is:
 4. Refresh the model list and choose the local model.
 5. Test the connection before renaming important folders.
 
-For the exact setup steps, use [Ollama Setup Guide](/ollama-setup). The guide currently recommends three practical model choices: [qwen2.5vl](https://ollama.com/library/qwen2.5vl), [gemma3](https://ollama.com/library/gemma3), and [granite3.2-vision](https://ollama.com/library/granite3.2-vision).
+For the exact setup steps, use [Ollama Setup Guide](/docs/offline-ai). The guide currently recommends three practical model choices: [qwen2.5vl](https://ollama.com/library/qwen2.5vl), [gemma3](https://ollama.com/library/gemma3), and [granite3.2-vision](https://ollama.com/library/granite3.2-vision).
 
 ## Which model should you start with?
 
@@ -129,7 +129,7 @@ Initial setup requires downloading Ollama and a model. After that, Offline AI mo
 
 ### Is Ollama built into Zush?
 
-No. Ollama is a separate local runtime. You install Ollama, download a model, then connect Zush to the local Ollama service through AI Setup.
+No. Ollama is a separate local runtime. You install Ollama, download a model, then connect Zush to the local Ollama service through BYOK/Offline.
 
 ### Does this work on Windows?
 

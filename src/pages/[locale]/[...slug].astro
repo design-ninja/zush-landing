@@ -5,12 +5,10 @@ import MethodologyPage from '@/components/MethodologyPage/MethodologyPage.astro'
 import PlatformLandingPage from '@/components/PlatformLandingPage/PlatformLandingPage.astro';
 import { getFeaturePageProps } from '@/utils/featurePageProps';
 import ActivateView from '@/views/Activate';
-import BYOKSetup from '@/views/BYOKSetup';
 import Legal from '@/views/Legal';
 import ManageSubscriptionView from '@/views/ManageSubscription';
 import ManageSubscriptionConfirmView from '@/views/ManageSubscription/ManageSubscriptionConfirm';
 import NotFound from '@/views/NotFound/NotFound';
-import OllamaSetupView from '@/views/OllamaSetup';
 import RecoverView from '@/views/Recover';
 import RenameAudioWithAI from '@/views/FeaturePages/RenameAudioWithAI';
 import RenameDesignFilesWithAI from '@/views/FeaturePages/RenameDesignFilesWithAI';
@@ -34,7 +32,6 @@ import { getCopy } from '@/i18n/copy';
 import { getLegalPageCopy, getMethodologyCopy } from '@/i18n/internalPages';
 import { getLocalizedSeoForRoute } from '@/i18n/seo';
 import { getServicePageCopy, isServiceLocalizedRoute } from '@/i18n/servicePages';
-import { getBYOKSetupCopy, getOllamaSetupCopy } from '@/i18n/setupGuides';
 import { getStaticPageCopy, isStaticLocalizedRoute } from '@/i18n/staticPages';
 import { getSeoForPath } from '@/seo/config';
 
@@ -84,8 +81,6 @@ const copy = getCopy(locale);
 const serviceCopy = getServicePageCopy(locale);
 const seo = getLocalizedSeoForRoute(route, locale);
 const localizedPath = getLocalizedPath(route, locale);
-const byokSetupCopy = route === '/byok-setup' ? getBYOKSetupCopy(locale) : null;
-const ollamaSetupCopy = route === '/ollama-setup' ? getOllamaSetupCopy(locale) : null;
 const methodologyCopy = route === '/methodology' ? getMethodologyCopy(locale) : null;
 const legalCopy = route === '/privacy-policy' || route === '/terms-of-service' || route === '/refund-policy'
   ? getLegalPageCopy(locale, route)
@@ -207,28 +202,6 @@ const localizedHomeHref = getLocalizedPath('/', locale);
       chromeBasePath={localizedHomeHref}
     >
       <MethodologyPage copy={methodologyCopy} />
-    </BaseLayout>
-  )
-}
-{
-  byokSetupCopy && staticSeo && (
-    <BaseLayout
-      seo={staticSeo}
-      locale={locale}
-      chromeBasePath={localizedHomeHref}
-    >
-      <BYOKSetup copy={byokSetupCopy} />
-    </BaseLayout>
-  )
-}
-{
-  ollamaSetupCopy && staticSeo && (
-    <BaseLayout
-      seo={staticSeo}
-      locale={locale}
-      chromeBasePath={localizedHomeHref}
-    >
-      <OllamaSetupView copy={ollamaSetupCopy} />
     </BaseLayout>
   )
 }

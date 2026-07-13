@@ -162,20 +162,6 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     robots: 'index, follow',
     ogType: 'website',
   },
-  '/byok-setup': {
-    title: 'BYOK Setup Guide — Zush',
-    description:
-      'Learn how to set up Bring Your Own Key (BYOK) in Zush with Gemini, Groq, OpenAI, or Claude for unlimited AI file processing.',
-    robots: 'index, follow',
-    ogType: 'website',
-  },
-  '/ollama-setup': {
-    title: 'Ollama Setup Guide — Zush',
-    description:
-      'Learn how to set up Ollama in Zush, choose recommended local AI models, and use Offline AI mode for supported files.',
-    robots: 'index, follow',
-    ogType: 'website',
-  },
   '/privacy-policy': {
     title: 'Privacy Policy — Zush',
     description:

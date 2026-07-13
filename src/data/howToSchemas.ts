@@ -21,7 +21,7 @@ export const HOW_TO_SCHEMAS: Record<string, HowToData> = {
       },
       {
         name: 'Enable Offline AI mode in Zush',
-        text: 'Open Zush AI Setup, turn on Offline AI mode, refresh the model list, select the model, and run the connection test.',
+        text: 'Open Zush BYOK/Offline, refresh the model list, select and test the installed model, then turn on Offline AI mode.',
       },
       {
         name: 'Test with a small batch',
