@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.5.1.0] - 2026-07-13
+
+### Fixed
+- Kept template edits synchronized between Templates and AI Rename, including naming blocks, output language, metadata options, and custom instructions.
+- Prevented template-specific changes from overwriting Smart Rename settings.
+
+### Improved
+- Improved Naming Blocks search with expanded matching groups and a clearer empty state.
+
 ## [3.5.0.0] - 2026-07-12
 
 ### Added
