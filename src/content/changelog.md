@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.7.2] - 2026-07-13
+
+### Improved
+- Larger Naming Block setups now keep every custom AI instruction
+- AI Rename and folder monitoring recover more reliably from interruptions
+- AI setup links now open the latest setup guides
+
+### Fixed
+- Fixed occasional freezes around file pickers, sounds, and settings updates
+
 ## [3.7.1] - 2026-07-12
 
 ### Improved
