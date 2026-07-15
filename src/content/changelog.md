@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.7.3] - 2026-07-15
+
+### Improved
+- Folder access now stays active during large batch renames
+- Audio files are processed more reliably during AI Rename
+
+### Fixed
+- Custom AI instructions are validated before a rename starts
+- Saved AI provider settings no longer interfere with free accounts
+
 ## [3.7.2] - 2026-07-13
 
 ### Improved
