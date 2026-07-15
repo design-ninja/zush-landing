@@ -1,0 +1,118 @@
+---
+title: "How to Batch Rename Files in Google Drive with AI (2026)"
+description: "Google Drive can't batch rename files by content. Rename hundreds through Drive for desktop with reviewed AI suggestions, offline files, and automatic sync."
+date: "2026-07-15"
+slug: "batch-rename-google-drive-files"
+platform: "general"
+topic: "automation"
+tags:
+  - "AI File Renaming"
+  - "Automation"
+  - "File Organization"
+  - "PDFs & Documents"
+tldr: "For content-aware Google Drive renaming, make the target folder available offline in Drive for desktop, review a local Zush batch, and let Drive sync the new names. A rename updates file metadata rather than uploading replacement content. Native Google Docs, Sheets, and Slides are a separate case because their local entries are not ordinary content files."
+reviewed: "2026-07-15"
+---
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Quick answer: install Google Drive for desktop, make the target folder available offline, open the local folder in [Zush](/), review the suggested names, and apply. Drive for desktop reflects the changes across devices. The workflow is the same on Mac and Windows.
+
+This is the cloud-folder version of the [AI File Organizer](/ai-file-organizer) workflow. For document-heavy Drive folders, continue with [Rename PDFs with AI](/rename-pdf-with-ai) and [Rename Invoices with AI](/rename-invoices-with-ai); for a wider system, see the [Mac](/blog/automate-file-organization-macos) and [Windows](/blog/automate-file-organization-windows) automation guides.
+
+Google Drive behavior reviewed July 15, 2026 against Google's documentation for [streaming and mirroring files](https://support.google.com/drive/answer/13401938), [file activity and versions](https://support.google.com/drive/answer/2409045), and [metadata-only updates](https://developers.google.com/workspace/drive/api/reference/rest/v3/files/update).
+
+<BlogProductIntro />
+
+## Why the Drive web interface is not enough
+
+Google Drive lets you rename files individually in the web interface. Workspace add-ons and Apps Script can automate mechanical operations such as find and replace, prefixes, or numbering.
+
+Those workflows still need a source field. `Untitled document (7)` can become `invoice-Untitled document (7)`, but a filename rule does not know which vendor, date, or subject appears inside an arbitrary PDF or image. Building an OCR and vision pipeline in Apps Script is possible, but it is a software project rather than a rename command.
+
+When the correct name depends on file content, the simplest analysis surface is the synced desktop copy.
+
+## The desktop-sync approach
+
+Drive for desktop exposes files through Finder or File Explorer. Google supports two modes:
+
+- **Stream files** keeps most content in the cloud and downloads it on demand. Files must be made available offline before reliable content analysis.
+- **Mirror files** keeps a full local copy of My Drive and is always available offline. Shared Drives remain streamed.
+
+Changes made to streamed or mirrored files are reflected across Drive. A filename is metadata: Google's API supports updating metadata through a request that does not include file media, so a rename does not require uploading replacement file content.
+
+Native Google Docs, Sheets, and Slides need separate handling. Their desktop representations are not ordinary PDF, DOCX, or XLSX content files. Rename those in Drive itself; use this workflow for real local files such as PDFs, scans, photos, Office documents, audio, and video.
+
+## Step-by-step: rename Google Drive files by content
+
+### 1. Install Drive for desktop
+
+Sign in and locate My Drive in Finder on macOS or File Explorer on Windows. The exact Windows drive letter depends on your local setup, so do not build automation around `G:` unless you have confirmed it.
+
+### 2. Make the target folder available offline
+
+In streaming mode, right-click the folder and choose the current offline-access option. Wait until the sync status shows that the files are local. In mirror mode, My Drive content is already stored on disk.
+
+### 3. Open the local folder in Zush
+
+Select the files and generate suggestions. Zush can read supported PDF text, scans, images, documents, video frames, and audio metadata. A file such as `scan_0042.pdf` can become `acme-consulting-invoice-may-2026.pdf`.
+
+### 4. Choose a naming pattern
+
+Use a template that matches the folder: `{date}_{vendor}_{doctype}` for finance, `{title}` for mixed content, or a Custom AI Block for a team-specific field. Zush supports filenames in 60+ languages.
+
+### 5. Review and apply
+
+Nothing is renamed until you confirm. After applying, wait for Drive's sync indicator to settle before closing the desktop client or moving the folder. A rename appears in Drive activity, while the file keeps its Drive identity and version history.
+
+### 6. Optionally monitor the folder
+
+If a scanner or teammate regularly adds real files to a synced folder, point Zush monitoring at the local copy. Ensure streamed files are downloaded before analysis. Everyone with access then sees the synced descriptive names.
+
+## Before and after
+
+| Before | After |
+|---|---|
+| `scan_0042.pdf` | `acme-consulting-invoice-may-2026.pdf` |
+| `Untitled attachment 00341.pdf` | `lease-agreement-signed-2026.pdf` |
+| `IMG_4382.jpg` | `booth-setup-trade-show-berlin.jpg` |
+| `document (3).pdf` | `insurance-claim-form-auto.pdf` |
+| `WhatsApp Image 2026-07-01.jpeg` | `warehouse-shelf-damage-report.jpeg` |
+
+Descriptive filenames add a reliable search signal for collaborators and remain useful if the files later leave Google Drive.
+
+## Privacy for work folders
+
+For client or regulated files, choose the processing path deliberately. BYOK sends supported analysis through your own Gemini, Groq, OpenAI, or Claude provider account. Offline AI via Ollama processes supported content on the computer. The storage may still be in Google Drive, but the naming analysis can stay under your control. Compare the options in [Cloud AI vs Local AI File Renaming](/blog/cloud-vs-local-ai-file-renaming).
+
+## Other cloud folders
+
+- [Batch rename files in Dropbox](/blog/batch-rename-dropbox-files)
+- [Batch rename files in iCloud Drive on Mac](/blog/rename-organize-icloud-drive-files)
+
+All three workflows share one rule: download placeholders before content analysis and let the sync client finish after applying names.
+
+## FAQ
+
+### Will renaming break sharing links or version history?
+
+A Drive file keeps a stable file ID while its name is metadata. Rename activity is recorded separately from file-version uploads, so normal links and version history remain associated with the file. In a compliance-sensitive shared workflow, test one representative file before a large batch.
+
+### Does renaming re-upload my files?
+
+No replacement-content upload is required for a metadata-only name update. Drive still has to sync the change, but it does not need to transfer the full binary file again just to update its name.
+
+### Can I rename Google Docs and Sheets this way?
+
+Not as ordinary content files. Their desktop entries are service-linked representations rather than local DOCX or XLSX files with the full content available to a desktop analyzer. Rename native Google files in Drive or export them to a supported format first.
+
+### What about Shared Drives?
+
+Shared Drives can be accessed through Drive for desktop but are streamed rather than mirrored. Make the target files available offline and confirm that your account has permission to rename them.
+
+### Do Workspace add-ons do the same thing?
+
+Most rename add-ons apply rules to filenames or metadata. Use them for predictable find-and-replace, prefixes, and numbering. Use the desktop content-aware route when every file needs a different name based on what it contains.
+
+## Conclusion
+
+Treat the synced Drive folder as a desktop batch surface: make content local, run one reviewed naming pass, and let Drive sync the metadata change. That closes the gap between cloud storage and content-aware filenames without building a custom Drive integration.

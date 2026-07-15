@@ -1,0 +1,112 @@
+---
+title: "How to Batch Rename Files in iCloud Drive on Mac (2026)"
+description: "Batch rename iCloud Drive files, Desktop and Documents, scans, and exports by content on a Mac, then sync descriptive names to iPhone and iPad."
+date: "2026-07-15"
+slug: "rename-organize-icloud-drive-files"
+platform: "mac"
+topic: "automation"
+tags:
+  - "AI File Renaming"
+  - "Automation"
+  - "File Organization"
+  - "PDFs & Documents"
+tldr: "On a Mac, iCloud Drive is available through Finder, so it can become a reviewed batch-renaming surface. Download optimized placeholders, rename scans, exported photos, voice memos, and documents by content, then let iCloud sync the new names to Files on iPhone and iPad."
+reviewed: "2026-07-15"
+---
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Quick answer: open iCloud Drive in Finder, download any cloud-only items with **Download Now**, run a reviewed batch in [Zush for Mac](/mac), and apply. Apple documents that renames made on one device appear automatically on other devices with iCloud Drive enabled.
+
+For scan-heavy folders, see [Rename PDFs with AI](/rename-pdf-with-ai); for exported images, use [Rename Photos with AI](/rename-photos-with-ai).
+
+iCloud behavior reviewed July 15, 2026 against Apple's current documentation for [working with iCloud Drive files on Mac](https://support.apple.com/en-ca/guide/mac-help/-mchl1a02d711/mac), [syncing changes across devices](https://support.apple.com/en-gb/guide/icloud/mm19ef899373/icloud), [Desktop and Documents sync](https://support.apple.com/en-gb/109344), and [Files search on iPhone](https://support.apple.com/guide/iphone/iphe4bff8827/ios).
+
+<BlogProductIntro />
+
+## The iCloud Drive mess is device-shaped
+
+iCloud Drive often fills with files named by devices and apps rather than by people:
+
+- iPhone document scans such as `Scan.pdf` and `Scan 14.pdf`
+- camera and screenshot exports such as `IMG_4382.HEIC`
+- Notes, Goodnotes, Numbers, and voice-memo exports with default titles
+- Desktop and Documents sync carrying years of existing clutter into iCloud
+
+The Files app on iPhone lets you search by a filename, folder name, or document type. A descriptive filename therefore gives you a direct, portable search key instead of relying on a generic scan counter or an app-specific index.
+
+## What Finder can and cannot do
+
+Finder's built-in Rename Items command handles find and replace, appended text, and sequential formats. That is ideal when every selected file needs the same operation.
+
+It cannot infer that `Scan 14.pdf` is a dental invoice while `Scan 15.pdf` is an insurance renewal. Content-aware naming reads each supported file and proposes a distinct result such as `dental-invoice-dr-keller-june-2026.pdf`.
+
+## Step-by-step
+
+### 1. Open iCloud Drive in Finder
+
+Select iCloud Drive in the Finder sidebar. If Desktop and Documents sync is enabled, those folders are part of the same iCloud Drive system and changes appear across signed-in devices.
+
+### 2. Download optimized files
+
+With Optimize Mac Storage enabled, older items may exist only in iCloud. Control-click the target files or folder and choose **Download Now**. For an ongoing monitored folder, use **Keep Downloaded** so content remains available to the local analyzer.
+
+### 3. Run a reviewed batch
+
+Open the folder in Zush and select the files. Review every suggestion before applying. If a name is wrong or too long, edit it in the preview; applied batches remain available in rename history for undo.
+
+### 4. Use a pattern that works on a phone screen
+
+Compact templates are easier to scan in Files. `{doctype}-{vendor}-{date}` produces `invoice-acme-2026-05.pdf`, while `{title}` suits mixed folders. Add a date prefix only when chronological sorting matters.
+
+### 5. Monitor a stable intake folder
+
+If scans always land in the same iCloud Drive folder, keep it downloaded and point Zush monitoring at it. New supported files can receive descriptive names on the Mac, and iCloud syncs those names to iPhone and iPad.
+
+## Before and after
+
+| Before | After |
+|---|---|
+| `Scan 14.pdf` | `dental-invoice-dr-keller-june-2026.pdf` |
+| `Scan 15.pdf` | `car-insurance-renewal-2026.pdf` |
+| `IMG_4382.HEIC` | `passport-photo-page.heic` |
+| `Note - Jul 3.pdf` | `apartment-renovation-quotes-notes.pdf` |
+| `Voice Memo 12.m4a` | `landlord-call-deposit-agreement.m4a` |
+
+Search for a stable keyword such as “insurance” in Files, and the descriptive name gives the document a predictable match on the device where you need it.
+
+## Privacy for personal documents
+
+iCloud Drive often contains IDs, medical documents, contracts, and tax files. Zush gives you three analysis paths: managed cloud, BYOK through your own Gemini, Groq, OpenAI, or Claude account, and Offline AI via a local Ollama model. For the most sensitive supported files, Offline AI keeps analysis on the Mac. Compare the trade-offs in [Cloud AI vs Local AI File Renaming](/blog/cloud-vs-local-ai-file-renaming).
+
+## Other cloud folders
+
+- [Batch rename files in Google Drive](/blog/batch-rename-google-drive-files)
+- [Batch rename files in Dropbox](/blog/batch-rename-dropbox-files)
+
+For the broader Mac system, see [How to Automate File Organization on macOS](/blog/automate-file-organization-macos).
+
+## FAQ
+
+### Will renamed files sync to my iPhone and iPad?
+
+Yes. Apple states that changes made on one device, including renaming a file, automatically appear on other devices using iCloud Drive. Allow sync to finish before checking Files on another device.
+
+### Can I batch rename from the iPhone itself?
+
+Files on iPhone supports individual rename and multi-item file operations, but it does not provide Finder's desktop batch-renaming workflow or content-aware naming across arbitrary iCloud Drive files. Use the Mac for the reviewed batch and the iPhone for the synced result.
+
+### Does this touch my iCloud Photos library?
+
+No. This workflow covers files in iCloud **Drive**, including Files, Desktop, and Documents. iCloud Photos is a separate library. For photos exported into Drive, see [Rename Photos with AI](/rename-photos-with-ai).
+
+### What happens with Optimize Mac Storage?
+
+Cloud-only items must be downloaded before content analysis. After renaming and syncing, macOS may optimize local storage again unless you choose Keep Downloaded. The synced filename remains.
+
+### Is it safe to rename files in Desktop and Documents sync?
+
+A rename is a normal iCloud Drive change and appears across devices. Review suggestions, start with a small batch, and avoid renaming files that an open application is actively editing.
+
+## Conclusion
+
+iCloud Drive does not need a separate cloud renaming integration on a Mac. Finder already provides the local surface: download placeholders, run a reviewed content-aware naming pass, and let iCloud sync the result to every device.

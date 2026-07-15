@@ -129,6 +129,8 @@ const RenamePDFWithAI = () => (
     relatedBlogPosts={[
       { title: 'How to Rename PDF Files Automatically', href: 'rename-pdf-files-automatically' },
       { title: 'How to Rename PDF Files with AI on Windows', href: 'rename-pdf-files-with-ai-windows' },
+      { title: 'Batch Rename PDFs in Google Drive', href: 'batch-rename-google-drive-files' },
+      { title: 'Rename iCloud Drive Files on Mac', href: 'rename-organize-icloud-drive-files' },
       { title: 'How to Rename Files with AI: Step-by-Step Guide', href: 'rename-files-with-ai-guide' },
     ]}
     jsonLd={jsonLd}

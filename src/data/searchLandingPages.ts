@@ -448,6 +448,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     ],
     relatedBlogPosts: [
       { title: 'Automatic File Organizer for Mac', href: 'automate-file-organization-macos' },
+      { title: 'Zush vs Sparkle', href: 'zush-vs-sparkle' },
       { title: 'Folder Monitoring for Automatic Renaming', href: 'folder-monitoring-automatic-file-renaming' },
       { title: 'Declutter Your Mac: File Cleanup Guide', href: 'declutter-your-mac-file-cleanup-guide' },
     ],
@@ -543,6 +544,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     ],
     relatedBlogPosts: [
       { title: 'Rename PDF Files Automatically', href: 'rename-pdf-files-automatically' },
+      { title: 'Batch Rename Google Drive Files', href: 'batch-rename-google-drive-files' },
       { title: 'Naming Blocks File Naming Guide', href: 'naming-blocks-file-naming-guide' },
       { title: 'Organize Client Files for Freelancers', href: 'organize-client-files-freelancers-mac' },
     ],

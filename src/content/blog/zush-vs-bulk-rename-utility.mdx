@@ -1,0 +1,97 @@
+---
+title: "Zush vs Bulk Rename Utility: AI vs Pattern Renaming 2026"
+description: "Bulk Rename Utility vs Zush compared for Windows: regex and patterns vs AI content-aware naming. When the free classic is enough and when it isn't."
+date: "2026-07-15"
+slug: "zush-vs-bulk-rename-utility"
+platform: "windows"
+topic: "comparisons"
+tags:
+  - "AI File Renaming"
+  - "Tool Comparisons"
+  - "File Explorer"
+tldr: "Bulk Rename Utility is the fast, mature choice for one pattern applied to many Windows files: regex, numbering, metadata, and JavaScript. Zush is for batches where every file needs a different name based on its content. Keep BRU for mechanical renames, use Zush for semantic names, or run Zush first and BRU second."
+reviewed: "2026-07-15"
+---
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Quick answer: keep Bulk Rename Utility for prefixes, numbering, case changes, regex substitutions, EXIF, and other mechanical transforms. Use Zush when the problem is `scan_0042.pdf`, `Screenshot 2026-07-15 141104.png`, or `download (7).jpg`—files whose correct name depends on their content rather than an existing pattern.
+
+Start with [Zush for Windows](/windows) or the broader [Batch Rename Files with AI](/batch-rename-files). For a practical Windows walkthrough, see [How to Rename Files with AI on Windows](/blog/rename-files-with-ai-windows-guide).
+
+Bulk Rename Utility version and public feature details last checked July 15, 2026 against the [official product page](https://www.bulkrenameutility.co.uk/), [download page](https://www.bulkrenameutility.co.uk/Download.php), and [version 4.1.0.1 changelog](https://www.bulkrenameutility.co.uk/Downloads/4.1.0.1/BRUChangelog.pdf).
+
+<BlogProductIntro />
+
+## Two different kinds of renaming
+
+Bulk Rename Utility is a Windows rule engine. You define transformations—remove characters, insert text, auto-number, use renaming tags, run regex or JavaScript—and it applies them across the selected files. Version 4.1.0.1 also reads a broad set of EXIF and Windows properties, and can use optional PDF and media metadata.
+
+That model has a ceiling: the input is primarily the old filename and available metadata. If the old name is meaningless, the new name is still limited by the information the rule can reach. `scan_0042.pdf` can become `2026-07-15_scan_0042.pdf`, but a generic pattern cannot reliably invent `acme-consulting-invoice-may-2026.pdf` from the document's meaning.
+
+Zush starts from the file's content: text in PDFs and scans, pixels in screenshots and photos, frames in videos, and supported document structure. AI extracts the subject, vendor, date, scene, or other useful fields, and a template turns them into a consistent filename. You review the result before applying it and can undo it later.
+
+## Head-to-head
+
+| Dimension | Zush | Bulk Rename Utility |
+|---|---|---|
+| Renaming model | Content-aware AI plus templates and Naming Blocks | Rules on names and metadata |
+| Platforms | Windows 10/11 and macOS 15+ | Windows only; current release supports Windows 7–11 and Windows on ARM |
+| Reads content for semantic names | Yes, 100+ formats | Not as a general AI content-description workflow |
+| Regex and JavaScript | Replaced by templates, blocks, and prompts for most naming jobs | Yes, very powerful |
+| EXIF, media, and file properties | Available through Naming Blocks | Extensive metadata and renaming tags |
+| Unique name per file in one batch | Yes, derived from each file | Via metadata, numbering, list input, or custom rules |
+| Preview | Yes | Yes |
+| Undo | Persistent rename history | Explorer undo and generated undo workflows |
+| Folder monitoring | Yes | No built-in watched-folder workflow |
+| Learning curve | Template-driven | Dense, highly configurable interface |
+| Huge mechanical batches | AI analysis takes time per file | Extremely fast |
+| Price | 50 free renames; $8/month or $38 one-time | Free for personal home use; commercial license required for business use |
+
+## Where Bulk Rename Utility wins
+
+- **Mechanical jobs at any scale.** Sequence-numbering thousands of frames, stripping suffixes, converting case, and inserting dates are instant.
+- **Regex and JavaScript.** If your naming logic can be expressed as a rule, BRU gives technical users deep control.
+- **Rich metadata support.** Version 4 expands EXIF, RAW, PDF, MediaInfo, and Windows-property renaming tags.
+- **Free personal use and a portable build.** Home users can run it without a subscription, including from the portable package.
+- **Maturity.** It has a long release history and a workflow optimized for Windows power users.
+
+If that covers your job, you do not need Zush.
+
+## Where Zush wins
+
+- **Mixed folders.** A Downloads folder with invoices, screenshots, photos, and exports does not share one useful pattern. Zush proposes a different name for each file.
+- **Scans and PDFs.** Vendor, document type, and date can come from the document itself rather than from `scan_0042.pdf`.
+- **Screenshots.** File metadata does not describe what is visible on screen; vision analysis can produce `stripe-dashboard-failed-payment-chart.png`.
+- **Ongoing automation.** Folder monitoring can name new files as they arrive.
+- **Approachability.** Templates, prompts, and Naming Blocks replace a dense multi-panel rule setup for semantic naming jobs.
+- **Private AI choices.** Use BYOK with Gemini, Groq, OpenAI, or Claude, or Offline AI via Ollama for supported local analysis.
+
+## The honest workflow: both
+
+Power users can keep both installed. Run Zush for the semantic pass so each file gets a content-derived name, then use BRU for the mechanical pass—padding counters, restructuring dates, or applying a final organization-wide pattern.
+
+For Mac readers, see [Bulk Rename Utility: Mac Options & AI Alternatives](/blog/bulk-rename-utility-alternatives). For Microsoft's rule-based tool, see [PowerRename Alternative with AI](/powerrename-alternative). The broader Windows setup is covered in [How to Automate File Organization on Windows](/blog/automate-file-organization-windows).
+
+## Verdict
+
+- The same transformation applies to every file and you are comfortable with rules: **Bulk Rename Utility**.
+- The name has to come from what is inside each file: **Zush**.
+- You want both semantic names and exact mechanical formatting: **Zush first, BRU second**.
+
+## FAQ
+
+### Is Bulk Rename Utility free?
+
+Yes for personal, private use at home. Business or commercial use requires a commercial license. Zush's free starter tier includes 50 AI renames and does not use the same personal-versus-commercial split.
+
+### Can Bulk Rename Utility rename files based on content?
+
+It can use rich metadata, file properties, list input, PDF/media extensions, and JavaScript logic. It is not a general vision-and-document AI workflow that reads arbitrary mixed files and writes a semantic name for each one. Its AI assistant helps generate regex or JavaScript rules rather than naming files from their visual or document meaning.
+
+### Does Zush replace Bulk Rename Utility?
+
+For content-derived naming, yes. For high-volume mechanical transformations, BRU remains the faster and often cheaper tool. Many Windows power users will get the best result from both.
+
+### Which is safer?
+
+Both provide a preview before the rename. Zush keeps a persistent activity history with one-click rollback; BRU supports preview, Explorer undo, and undo-oriented batch workflows. Test any large job on a small selection first.
