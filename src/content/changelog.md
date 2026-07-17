@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.7.4] - 2026-07-17
+
+### Improved
+- AI Rename now retries suggestions that match the current file name
+- Reanalyze unchanged or failed files together with one click
+- Scanned PDFs keep more visual context for better name suggestions
+- Clearer guidance when macOS Keychain prevents cloud AI from working
+
+### Fixed
+- Batch errors are easier to read and whole-batch failures now show an alert
+
 ## [3.7.3] - 2026-07-15
 
 ### Improved
