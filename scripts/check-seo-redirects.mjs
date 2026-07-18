@@ -84,7 +84,7 @@ for (const source of [`${POSTHOG_PROXY_PATH}/`, POSTHOG_PROXY_PATH]) {
 
 assertRedirect('/rename-images-with-ai/', '/rename-photos-with-ai');
 assertRedirect('/rename-images-with-ai', '/rename-photos-with-ai');
-assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/rename-images-with-ai', '/:locale/rename-photos-with-ai');
+assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/rename-images-with-ai', '/:locale/rename-photos-with-ai');
 assertRedirect('/ai-photo-renamer', '/rename-photos-with-ai');
 assertRedirect('/ai-document-renamer', '/rename-documents-with-ai');
 
@@ -94,7 +94,7 @@ assertRedirect('/batch-rename-tool/', '/batch-rename-files');
 assertRedirect('/batch-rename-tool', '/batch-rename-files');
 assertRedirect('/bulk-rename-files/', '/batch-rename-files');
 assertRedirect('/bulk-rename-files', '/batch-rename-files');
-assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/rename-files-with-ai', '/:locale');
+assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/rename-files-with-ai', '/:locale');
 
 assertRedirect('/file-renamer/', '/');
 assertRedirect('/file-renamer', '/');
@@ -106,15 +106,17 @@ assertRedirect('/byok-setup/', '/docs/byok');
 assertRedirect('/byok-setup', '/docs/byok');
 assertRedirect('/ollama-setup/', '/docs/offline-ai');
 assertRedirect('/ollama-setup', '/docs/offline-ai');
-assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/byok-setup/', '/docs/byok');
-assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/byok-setup', '/docs/byok');
-assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/ollama-setup/', '/docs/offline-ai');
-assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/ollama-setup', '/docs/offline-ai');
+assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/byok-setup/', '/docs/byok');
+assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/byok-setup', '/docs/byok');
+assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/ollama-setup/', '/docs/offline-ai');
+assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/ollama-setup', '/docs/offline-ai');
 assertHostRedirect('/:path(.+)/', 'e.zushapp.com', 'https://zushapp.com/e/:path');
 assertHostRedirect('/:path*', 'e.zushapp.com', 'https://zushapp.com/e/:path*');
 assertHostRedirectPrecedence('/:path(.+)/', '/:path*', 'e.zushapp.com');
 assertRedirect(`${POSTHOG_PROXY_PATH}/`, '/');
 assertRedirect(POSTHOG_PROXY_PATH, '/');
+assertRedirect('/hi', '/');
+assertRedirect('/hi/:path*', '/:path*');
 
 assertRewrite(`${POSTHOG_PROXY_PATH}/static/:path(.*)`, 'https://us-assets.i.posthog.com/static/:path');
 assertRewrite(`${POSTHOG_PROXY_PATH}/array/:path(.*)`, 'https://us-assets.i.posthog.com/array/:path');

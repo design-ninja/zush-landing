@@ -89,13 +89,13 @@ const REQUIREMENT_LABELS: Partial<Record<Locale, Record<SpecKey, string>>> = {
     network: '网络',
     permissions: '权限',
   },
-  hi: {
-    operatingSystem: 'Operating system',
-    processor: 'Processor',
-    memory: 'Memory',
-    diskSpace: 'Disk space',
-    network: 'Network',
-    permissions: 'Permissions',
+  tr: {
+    operatingSystem: 'İşletim sistemi',
+    processor: 'İşlemci',
+    memory: 'Bellek',
+    diskSpace: 'Disk alanı',
+    network: 'Ağ',
+    permissions: 'İzinler',
   },
   ar: {
     operatingSystem: 'نظام التشغيل',
@@ -173,11 +173,11 @@ const REQUIREMENT_TEXT: Partial<Record<Locale, {
     network: '云端重命名需要网络，离线 AI 模式可选',
     permissions: '添加要重命名或监控的文件夹时会请求文件夹访问权限',
   },
-  hi: {
-    memory: 'Minimum 4 GB, Offline AI के लिए 8 GB recommended',
-    diskSpace: (appSize) => `App के लिए ${appSize}, Ollama models के लिए extra space`,
-    network: 'Cloud renames के लिए required, Offline AI mode के लिए optional',
-    permissions: 'Rename या monitoring के लिए folder add करते समय folder access मांगा जाता है',
+  tr: {
+    memory: 'En az 4 GB, Çevrimdışı Yapay Zekâ için 8 GB önerilir',
+    diskSpace: (appSize) => `Uygulama için ${appSize}, Ollama modelleri için ek alan`,
+    network: 'Bulut yeniden adlandırma için gerekli, Çevrimdışı Yapay Zekâ modu için isteğe bağlı',
+    permissions: 'Yeniden adlandırmak veya izlemek için klasör eklediğinizde klasör erişimi istenir',
   },
   ar: {
     memory: '4 GB كحد أدنى، و8 GB موصى بها لوضع الذكاء الاصطناعي دون اتصال',
@@ -342,19 +342,19 @@ const HOMEBREW_INSTALL_METHOD: Partial<Record<Locale, HomebrewInstallCopy>> = {
       ariaLabel: '打开 Zush Homebrew cask',
     },
   },
-  hi: {
+  tr: {
     title: 'Homebrew',
     badge: 'Terminal',
-    description: 'Terminal या scripted setup से Mac apps manage करने वाले users के लिए Homebrew cask install.',
+    description: 'Mac uygulamalarını Terminal veya betikli kurulumla yöneten kullanıcılar için Homebrew cask kurulumu.',
     steps: [
-      { step: 'Terminal खोलें', detail: 'ऐसा shell इस्तेमाल करें जहां Homebrew पहले से installed हो और PATH में available हो.' },
-      { step: 'cask install चलाएँ', detail: '`brew install --cask zush` से Zush install करें.' },
-      { step: 'Zush launch करें', detail: 'Homebrew install पूरा होने के बाद Applications, Spotlight या Launchpad से Zush खोलें.' },
+      { step: 'Terminal’i açın', detail: 'Homebrew’un kurulu ve PATH üzerinden erişilebilir olduğu herhangi bir kabuğu kullanın.' },
+      { step: 'cask kurulumunu çalıştırın', detail: 'Zush’u `brew install --cask zush` ile kurun.' },
+      { step: 'Zush’u başlatın', detail: 'Homebrew kurulumu tamamlandıktan sonra Zush’u Uygulamalar, Spotlight veya Launchpad’den açın.' },
     ],
     storeBadge: {
-      kicker: 'इंस्टॉल करें',
+      kicker: 'Şununla kurun',
       label: 'Homebrew',
-      ariaLabel: 'Zush Homebrew cask खोलें',
+      ariaLabel: 'Zush Homebrew cask sayfasını aç',
     },
   },
   ar: {

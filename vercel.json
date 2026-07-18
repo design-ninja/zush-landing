@@ -35,6 +35,16 @@
       "permanent": true
     },
     {
+      "source": "/hi",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/hi/:path*",
+      "destination": "/:path*",
+      "permanent": true
+    },
+    {
       "source": "/ai-image-renamer/",
       "destination": "/rename-photos-with-ai",
       "permanent": true
@@ -80,12 +90,12 @@
       "permanent": true
     },
     {
-      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/byok-setup/",
+      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/byok-setup/",
       "destination": "/docs/byok",
       "permanent": true
     },
     {
-      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/ollama-setup/",
+      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/ollama-setup/",
       "destination": "/docs/offline-ai",
       "permanent": true
     },
@@ -120,12 +130,12 @@
       "permanent": true
     },
     {
-      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/byok-setup",
+      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/byok-setup",
       "destination": "/docs/byok",
       "permanent": true
     },
     {
-      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/ollama-setup",
+      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/ollama-setup",
       "destination": "/docs/offline-ai",
       "permanent": true
     },
@@ -165,12 +175,12 @@
       "permanent": true
     },
     {
-      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/ai-file-renamer",
+      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/ai-file-renamer",
       "destination": "/:locale",
       "permanent": true
     },
     {
-      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/rename-files-with-ai",
+      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/rename-files-with-ai",
       "destination": "/:locale",
       "permanent": true
     },
@@ -180,12 +190,12 @@
       "permanent": true
     },
     {
-      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/auto-rename-files",
+      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/auto-rename-files",
       "destination": "/:locale",
       "permanent": true
     },
     {
-      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/batch-rename-files",
+      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/batch-rename-files",
       "destination": "/:locale",
       "permanent": true
     },
@@ -200,12 +210,12 @@
       "permanent": true
     },
     {
-      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/ai-image-renamer",
+      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/ai-image-renamer",
       "destination": "/:locale/rename-photos-with-ai",
       "permanent": true
     },
     {
-      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)/rename-images-with-ai",
+      "source": "/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/rename-images-with-ai",
       "destination": "/:locale/rename-photos-with-ai",
       "permanent": true
     },

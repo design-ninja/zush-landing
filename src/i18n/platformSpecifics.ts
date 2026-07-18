@@ -445,46 +445,46 @@ const PLATFORM_SPECIFICS_COPY: Partial<Record<Locale, PlatformSpecificsCopy>> = 
     securityDescriptionWindows:
       'Zush 使用标准的 Microsoft Store 安装流程、Windows 凭据管理器保存密钥，并保持清晰的数据边界。',
   },
-  hi: {
-    systemRequirementsEyebrow: 'Compatibility',
-    installMethodsEyebrow: 'Setup',
-    quickstartEyebrow: 'First run',
-    integrationsEyebrow: 'Integrations',
-    scenariosEyebrow: 'Workflows',
-    securityEyebrow: 'Privacy',
-    systemRequirementsTitle: 'System requirements',
+  tr: {
+    systemRequirementsEyebrow: 'Uyumluluk',
+    installMethodsEyebrow: 'Kurulum',
+    quickstartEyebrow: 'İlk çalıştırma',
+    integrationsEyebrow: 'Entegrasyonlar',
+    scenariosEyebrow: 'İş akışları',
+    securityEyebrow: 'Gizlilik',
+    systemRequirementsTitle: 'Sistem gereksinimleri',
     systemRequirementsDescription:
-      'Install करने से पहले जरूरी details — supported OS versions, CPU architecture, memory और permissions।',
-    installMethodsTitle: 'Install करने के तरीके',
+      'Kurulumdan önce bilmeniz gereken her şey: desteklenen işletim sistemi sürümleri, CPU mimarisi, bellek ve izinler.',
+    installMethodsTitle: 'Kurulum yöntemleri',
     installMethodsDescription:
-      'अपनी software management style के हिसाब से installer चुनें।',
-    installRecommendedBadge: 'Recommended',
-    installCtaLabel: 'Open',
-    quickstartTitle: '60 seconds में start करें',
+      'Yazılımlarınızı yönetme biçiminize uygun yükleyiciyi seçin.',
+    installRecommendedBadge: 'Önerilen',
+    installCtaLabel: 'Aç',
+    quickstartTitle: '60 saniyede başlayın',
     quickstartDescriptionMac:
-      'New download से automatic rename workflow तक, Mac पर पूरी setup छोटी coffee break में हो जाती है।',
+      'Yeni bir indirmeden tam otomatik yeniden adlandırma iş akışına kadar Mac’teki tüm kurulum kısa bir kahve molasında tamamlanır.',
     quickstartDescriptionWindows:
-      'Microsoft Store install से continuous folder monitoring तक, Windows पर पूरी setup छोटी coffee break में हो जाती है।',
-    quickstartDropPrefix: 'Drop करें',
-    quickstartFilesReady: '3 files ready',
-    quickstartWatching: 'Watching on',
-    integrationsTitle: 'Native integrations',
+      'Microsoft Store kurulumundan sürekli klasör izlemeye kadar Windows’taki tüm kurulum kısa bir kahve molasında tamamlanır.',
+    quickstartDropPrefix: 'Şuraya bırakın',
+    quickstartFilesReady: '3 dosya hazır',
+    quickstartWatching: 'İzleniyor',
+    integrationsTitle: 'Yerel entegrasyonlar',
     integrationsDescriptionMac:
-      'Zush macOS के उन parts से जुड़ता है जिन्हें आप रोज use करते हैं — Finder, Shortcuts, Spotlight और screenshots।',
+      'Zush, her gün kullandığınız macOS bileşenleriyle doğrudan entegre olur: Finder, Kestirmeler, Spotlight ve ekran görüntüleri.',
     integrationsDescriptionWindows:
-      'Zush Windows के उन parts से जुड़ता है जिन्हें आप रोज use करते हैं — File Explorer, Snipping Tool, OneDrive और Windows Search।',
-    scenariosTitle: 'Real workflow examples',
+      'Zush, her gün kullandığınız Windows bileşenleriyle doğrudan entegre olur: Dosya Gezgini, Ekran Alıntısı Aracı, OneDrive ve Windows Arama.',
+    scenariosTitle: 'Gerçek iş akışı örnekleri',
     scenariosDescriptionMac:
-      'ये daily Mac workflows हैं जिनके लिए लोग Zush use करते हैं। हर flow watched folder या drag-and-drop जितना simple है।',
+      'İnsanların Zush’u Mac’te her gün kullandığı iş akışları. Her biri izlenen bir klasör veya sürükle-bırak kadar basittir.',
     scenariosDescriptionWindows:
-      'ये daily Windows workflows हैं जिनके लिए लोग Zush use करते हैं। हर flow watched folder या drag-and-drop जितना simple है।',
-    scenariosBeforeLabel: 'Before',
-    scenariosAfterLabel: 'After',
-    securityTitle: 'Security और privacy',
+      'İnsanların Zush’u Windows’ta her gün kullandığı iş akışları. Her biri izlenen bir klasör veya sürükle-bırak kadar basittir.',
+    scenariosBeforeLabel: 'Önce',
+    scenariosAfterLabel: 'Sonra',
+    securityTitle: 'Güvenlik ve gizlilik',
     securityDescriptionMac:
-      'Zush macOS security expectations के हिसाब से बना है: notarized binary, sandboxed App Store option, Keychain में saved keys और clear data boundaries।',
+      'Zush, macOS güvenlik beklentilerine uygun olarak tasarlanmıştır: noter onaylı ikili dosya, korumalı App Store sürümü, Anahtar Zinciri’nde saklanan anahtarlar ve net veri sınırları.',
     securityDescriptionWindows:
-      'Zush standard Microsoft Store install path, keys के लिए Windows Credential Manager और clear data boundaries use करता है।',
+      'Zush standart Microsoft Store kurulum yolunu, anahtarlar için Windows Kimlik Bilgisi Yöneticisi’ni ve net veri sınırlarını kullanır.',
   },
   ar: {
     systemRequirementsEyebrow: 'التوافق',

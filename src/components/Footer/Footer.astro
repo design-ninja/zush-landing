@@ -41,7 +41,7 @@ const footerHref = (route: LocalizedRoute) =>
   getLocalizedPath(route, getLocalesForRoute(route).includes(locale) ? locale : DEFAULT_LOCALE);
 const appStoreVisibleLabel = `${copy.appStoreKicker} ${copy.appStoreLabel}`;
 const microsoftStoreVisibleLabel = `${copy.microsoftStoreKicker} ${copy.microsoftStoreLabel}`;
-const homebrewLabel = 'Zush on Homebrew';
+const homebrewLabel = copy.productLinks.homebrew;
 ---
 
 <footer class={styles.Footer} data-site-footer>
@@ -172,7 +172,7 @@ const homebrewLabel = 'Zush on Homebrew';
           <li><a href={footerHref('/')} class={linkClass}>{copy.productLinks.fileRenamer}</a></li>
           <li><a href='/batch-rename-files' class={linkClass}>{copy.productLinks.batchRename}</a></li>
           <li><a href='/ai-file-organizer' class={linkClass}>{copy.productLinks.organizer}</a></li>
-          <li><a href='/offline-ai-file-renamer' class={linkClass}>Offline AI File Renamer</a></li>
+          <li><a href='/offline-ai-file-renamer' class={linkClass}>{copy.productLinks.offline}</a></li>
           <li><a href={footerHref('/mac')} class={linkClass}>{copy.productLinks.mac}</a></li>
           <li><a href={footerHref('/windows')} class={linkClass}>{copy.productLinks.windows}</a></li>
         </ul>
@@ -196,9 +196,9 @@ const homebrewLabel = 'Zush on Homebrew';
         <ul class={styles.Footer__Links}>
           <li><a href={`${footerHref('/')}#pricing`} class={linkClass}>{copy.pricing}</a></li>
           <li><a href='/blog' class={linkClass}>{copy.blog}</a></li>
-          <li><a href='/docs' class={linkClass}>Docs</a></li>
-          <li><a href='/about' class={linkClass}>About Zush</a></li>
-          <li><a href='/authors/kirill-isachenko' class={linkClass}>Author</a></li>
+          <li><a href='/docs' class={linkClass}>{copy.productLinks.docs}</a></li>
+          <li><a href='/about' class={linkClass}>{copy.productLinks.about}</a></li>
+          <li><a href='/authors/kirill-isachenko' class={linkClass}>{copy.productLinks.author}</a></li>
           <li><a href='/changelog' class={linkClass}>{copy.changelog}</a></li>
           <li><a href={footerHref('/methodology')} class={linkClass}>{copy.methodology}</a></li>
         </ul>

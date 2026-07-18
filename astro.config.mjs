@@ -23,7 +23,7 @@ const SITEMAP_EXCLUDED_PATHS = new Set([
   '/ollama-setup',
 ]);
 
-const SITEMAP_EXCLUDED_LOCALIZED_ROUTE = /^\/(?:de|fr|es|pt-br|nl|it|ja|ko|zh-cn|hi|ar)\/(?:404|activate|recover|thank-you|manage-subscription(?:\/confirm)?)$/;
+const SITEMAP_EXCLUDED_LOCALIZED_ROUTE = /^\/(?:de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)\/(?:404|activate|recover|thank-you|manage-subscription(?:\/confirm)?)$/;
 
 const shouldIncludeInGeneratedSitemap = (page) => {
   const { pathname } = new URL(page);

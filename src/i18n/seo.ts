@@ -109,16 +109,16 @@ const PLATFORM_SEO: Partial<Record<Locale, Partial<Record<'/mac' | '/windows', {
       description: '在 Windows 11 和 10 上用 AI 批量重命名截图、PDF、照片、视频、音频、设计文件和 Office 文档，并支持预览和撤销。',
     },
   },
-  hi: {
+  tr: {
     '/mac': {
-      title: 'Mac AI File Renamer | Zush',
+      title: 'Mac için Yapay Zekâ Dosya Adlandırıcı | Zush',
       description:
-        'Mac file renamer जो AI से content के आधार पर files batch rename करता है: screenshots, PDFs, photos, videos, audio, design files और documents.',
+        'Mac için dosyaları içeriklerine göre yapay zekâyla toplu yeniden adlandırın: ekran görüntüleri, PDF’ler, fotoğraflar, videolar, sesler, tasarım dosyaları ve belgeler.',
     },
     '/windows': {
-      title: 'Windows AI File Renamer | Zush',
+      title: 'Windows için Yapay Zekâ Dosya Adlandırıcı | Zush',
       description:
-        'Windows 11 और 10 पर AI से files batch और bulk rename करें: screenshots, PDFs, photos, videos, audio, design files और Office docs, preview और undo के साथ.',
+        'Windows 11 ve 10’da dosyaları yapay zekâyla toplu yeniden adlandırın: ekran görüntüleri, PDF’ler, fotoğraflar, videolar, sesler, tasarım ve Office belgeleri; önizleme ve geri alma dâhil.',
     },
   },
   ar: {

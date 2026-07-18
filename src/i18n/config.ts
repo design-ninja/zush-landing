@@ -34,7 +34,7 @@ export const LOCALES = [
   'pt-br',
   'it',
   'nl',
-  'hi',
+  'tr',
   'ja',
   'ko',
   'zh-cn',
@@ -145,14 +145,14 @@ export const LOCALE_META: Record<Locale, LocaleMeta> = {
     nativeLabel: '中文',
     flag: '🇨🇳',
   },
-  hi: {
-    locale: 'hi',
-    slug: 'hi',
-    lang: 'hi',
-    ogLocale: 'hi_IN',
-    label: 'Hindi',
-    nativeLabel: 'हिन्दी',
-    flag: '🇮🇳',
+  tr: {
+    locale: 'tr',
+    slug: 'tr',
+    lang: 'tr',
+    ogLocale: 'tr_TR',
+    label: 'Turkish',
+    nativeLabel: 'Türkçe',
+    flag: '🇹🇷',
   },
   ar: {
     locale: 'ar',
@@ -214,7 +214,7 @@ const LANDING_LOCALIZED_ROUTES = [
 
 const LIMITED_LOCALE_ROUTES: Partial<Record<Locale, readonly LocalizedRoute[]>> = {
   ar: LANDING_LOCALIZED_ROUTES,
-  hi: LANDING_LOCALIZED_ROUTES,
+  tr: LANDING_LOCALIZED_ROUTES,
 };
 
 export function isLocale(value: string | undefined): value is Locale {
