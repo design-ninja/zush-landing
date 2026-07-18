@@ -9,7 +9,6 @@ import {
   Monitor,
   Music,
   PenTool,
-  ShieldCheck,
 } from 'lucide-react';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
@@ -45,7 +44,6 @@ const WORKFLOWS: Array<{
   { key: 'videos', route: '/rename-videos-with-ai', icon: Clapperboard, color: 'cyan' },
   { key: 'audio', route: '/rename-audio-with-ai', icon: Music, color: 'purple' },
   { key: 'batch', route: '/batch-rename-files', icon: Layers, color: 'blue' },
-  { key: 'offline', route: '/offline-ai-file-renamer', icon: ShieldCheck, color: 'green' },
 ];
 
 const localizedHref = (route: string): string =>

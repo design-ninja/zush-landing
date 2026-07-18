@@ -1,0 +1,62 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.CloudFolders {
+  padding: 0 0 4rem;
+
+  @include mobile {
+    padding: 0 0 2.5rem;
+  }
+
+  &__Container {
+    @include container;
+  }
+
+  &__List {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__Item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.9rem;
+    background: transparent;
+    color: var(--foreground);
+    border: 1px solid var(--border);
+    border-radius: $radius-full;
+    font-size: 0.8125rem;
+    font-weight: 600;
+  }
+
+  &__Icon {
+    display: inline-flex;
+    align-items: center;
+    height: 1.15rem;
+    flex-shrink: 0;
+
+    // OneDrive's mark is a dense, solid-filled cloud that reads heavier than the
+    // others at the same height — trim it slightly so the row stays balanced.
+    &[data-service='onedrive'] {
+      height: 0.95rem;
+    }
+
+    svg {
+      height: 100%;
+      width: auto;
+      display: block;
+    }
+  }
+
+  &__Label {
+    white-space: nowrap;
+  }
+}

@@ -103,7 +103,7 @@ export const DEFAULT_FEATURE_CARDS_COPY: FeatureCardsCopy = {
   },
   foldersMonitoring: {
     title: 'Folders Monitoring',
-    description: 'Watch one or multiple folders. Zush runs in the background and processes new files automatically.',
+    description: 'Watch one or multiple folders — including iCloud Drive, Google Drive, Dropbox, and OneDrive folders. Zush runs in the background and processes new files automatically.',
   },
   batchRename: {
     title: 'Batch Rename',
@@ -270,6 +270,8 @@ export interface HomeCopy {
   documents: string;
   videosLabel: string;
   audioLabel: string;
+  cloudFoldersTitle: string;
+  cloudFoldersDescription: string;
   downloadTitle: string;
   downloadSubtitle: string;
   downloadHintPrefix: string;
@@ -763,6 +765,7 @@ const localizedFullHomeFaqItems: Partial<Record<Exclude<Locale, 'en'>, FAQCopyIt
     { question: 'Welche Dateiformate werden unterstützt?', answer: 'Zush unterstützt Bilder, Audio, Videos, Screenshots, PDFs, Dokumente, Tabellen, Präsentationen, Textdateien, CSV, SVG und weitere Alltagsformate.' },
     { question: 'Wie funktioniert Zush AI Rename?', answer: 'AI Rename nutzt KI, um Dateien nach ihrem Inhalt umzubenennen. Ziehe einfach eine Sammlung von Dateien in Zush. Sie werden in Sekunden analysiert und umbenannt. Vor dem Anwenden kannst du einzelne Dateinamen prüfen oder neu generieren. Ideal für Screenshots, Designdateien, Audio, Videos, PDFs, iWork-Dokumente und Downloads in einem Durchgang.' },
     { question: 'Wie funktioniert die Ordnerüberwachung?', answer: 'Zush überwacht ausgewählte Ordner im Hintergrund. Neue unterstützte Dateien werden online automatisch analysiert und in Echtzeit umbenannt.' },
+    { question: 'Funktioniert Zush mit Google Drive, Dropbox und iCloud?', answer: 'Ja. Zush verbindet sich nicht mit deinen Cloud-Konten – es benennt Dateien direkt in dem lokalen Ordner um, den deine Cloud-App bereits synchron hält, sodass nichts autorisiert werden muss. Das funktioniert mit iCloud Drive, Google Drive, Dropbox, OneDrive und Box auf dem Mac sowie mit OneDrive-, Google-Drive- und Dropbox-Ordnern unter Windows. Nach der Umbenennung synchronisiert sich der neue Name automatisch auf deine anderen Geräte.' },
     { question: 'Kann ich einen KI-Dateinamen neu generieren?', answer: 'Ja. Wähle die Datei im AI-Rename-Bereich aus und klicke auf Neu generieren, um einen neuen Vorschlag zu erhalten.' },
     { question: 'Kann ich den KI-Prompt für Namen und Tags anpassen?', answer: 'Ja. Du kannst eigene Regeln für Dateinamen und Metadaten-Tags schreiben, zum Beispiel kurze Namen, Motiv zuerst oder nur bestimmte Tags.' },
     { question: 'Sind meine Daten sicher?', answer: 'Deine Originaldateien bleiben auf deinem Computer. Im Cloud-Modus wird nur der nötige Analyseinhalt an den gewählten KI-Anbieter gesendet. Im Offline-KI-Modus verarbeitet Ollama unterstützte Dateien lokal.' },
@@ -782,6 +785,7 @@ const localizedFullHomeFaqItems: Partial<Record<Exclude<Locale, 'en'>, FAQCopyIt
     { question: 'Quels formats sont pris en charge ?', answer: 'Zush prend en charge images, audio, vidéos, captures, PDF, documents, feuilles de calcul, présentations, texte, CSV, SVG et d’autres formats courants.' },
     { question: 'Comment fonctionne Zush AI Rename ?', answer: 'AI Rename utilise l’IA pour renommer les fichiers selon leur contenu. Déposez simplement une collection de fichiers dans Zush : ils sont analysés et renommés en quelques secondes. Vous pouvez vérifier ou régénérer chaque nom avant application. Idéal pour organiser captures d’écran, fichiers de design, audio, vidéos, PDF, documents iWork et téléchargements en une seule passe.' },
     { question: 'Comment fonctionne la surveillance des dossiers ?', answer: 'Zush surveille les dossiers choisis en arrière-plan. Les nouveaux fichiers pris en charge sont analysés et renommés automatiquement lorsque vous êtes en ligne.' },
+    { question: 'Zush fonctionne-t-il avec Google Drive, Dropbox et iCloud ?', answer: 'Oui. Zush ne se connecte pas à vos comptes cloud : il renomme les fichiers directement dans le dossier local que votre application cloud synchronise déjà, donc rien à autoriser. Cela fonctionne avec iCloud Drive, Google Drive, Dropbox, OneDrive et Box sur Mac, ainsi qu’avec les dossiers OneDrive, Google Drive et Dropbox sous Windows. Une fois renommé, le nouveau nom se synchronise automatiquement sur vos autres appareils.' },
     { question: 'Puis-je régénérer un nom généré par l’IA ?', answer: 'Oui. Sélectionnez le fichier dans AI Rename et cliquez sur régénérer pour obtenir une nouvelle proposition.' },
     { question: 'Puis-je personnaliser le prompt de renommage et de tags ?', answer: 'Oui. Vous pouvez écrire vos propres règles pour guider les noms et tags, par exemple noms courts, sujet principal d’abord ou tags imposés.' },
     { question: 'Mes données sont-elles sécurisées ?', answer: 'Vos fichiers originaux restent sur votre ordinateur. En mode cloud, seul le contenu nécessaire à l’analyse est envoyé au fournisseur IA choisi. En mode hors ligne, Ollama traite les fichiers localement.' },
@@ -801,6 +805,7 @@ const localizedFullHomeFaqItems: Partial<Record<Exclude<Locale, 'en'>, FAQCopyIt
     { question: 'Quais formatos são compatíveis?', answer: 'Zush suporta imagens, áudio, vídeos, screenshots, PDFs, documentos, planilhas, apresentações, texto, CSV, SVG e outros formatos comuns.' },
     { question: 'Como funciona o Zush AI Rename?', answer: 'O AI Rename usa IA para renomear arquivos pelo conteúdo. Basta arrastar uma coleção de arquivos para o Zush: eles são analisados e renomeados em segundos. Você pode revisar ou regenerar nomes individuais antes de aplicar. Perfeito para organizar screenshots, arquivos de design, áudio, vídeos, PDFs, documentos iWork e downloads em uma só passada.' },
     { question: 'Como funciona o monitoramento de pastas?', answer: 'Zush monitora pastas escolhidas em segundo plano. Novos arquivos compatíveis são analisados e renomeados automaticamente quando você está online.' },
+    { question: 'O Zush funciona com Google Drive, Dropbox e iCloud?', answer: 'Sim. O Zush não se conecta às suas contas de nuvem — ele renomeia arquivos diretamente na pasta local que seu app de nuvem já mantém sincronizada, sem nada para autorizar. Isso funciona com iCloud Drive, Google Drive, Dropbox, OneDrive e Box no Mac, e com pastas OneDrive, Google Drive e Dropbox no Windows. Depois de renomeado, o novo nome sincroniza automaticamente com seus outros dispositivos.' },
     { question: 'Posso regenerar um nome gerado pela IA?', answer: 'Sim. Selecione o arquivo na área AI Rename e clique em regenerar para receber uma nova sugestão.' },
     { question: 'Posso personalizar o prompt de nomes e tags?', answer: 'Sim. Você pode escrever regras próprias para nomes e tags, como nomes curtos, assunto primeiro ou apenas tags específicas.' },
     { question: 'Meus dados estão seguros?', answer: 'Os arquivos originais ficam no seu computador. No modo cloud, só o conteúdo necessário para análise é enviado ao provedor de IA escolhido. No modo offline, o Ollama processa localmente.' },
@@ -820,6 +825,7 @@ const localizedFullHomeFaqItems: Partial<Record<Exclude<Locale, 'en'>, FAQCopyIt
     { question: '¿Qué formatos son compatibles?', answer: 'Zush admite imágenes, audio, videos, capturas, PDFs, documentos, hojas de cálculo, presentaciones, texto, CSV, SVG y otros formatos habituales.' },
     { question: '¿Cómo funciona Zush AI Rename?', answer: 'AI Rename usa IA para renombrar archivos según su contenido. Solo arrastra una colección de archivos a Zush: se analizan y renombran en segundos. Puedes revisar o regenerar nombres individuales antes de aplicar los cambios. Perfecto para organizar capturas, archivos de diseño, audio, videos, PDFs, documentos iWork y descargas en una sola pasada.' },
     { question: '¿Cómo funciona el monitoreo de carpetas?', answer: 'Zush vigila las carpetas seleccionadas en segundo plano. Los nuevos archivos compatibles se analizan y renombran automáticamente cuando estás online.' },
+    { question: '¿Zush funciona con Google Drive, Dropbox e iCloud?', answer: 'Sí. Zush no se conecta a tus cuentas en la nube: renombra los archivos directamente en la carpeta local que tu app de nube ya mantiene sincronizada, así que no hay nada que autorizar. Esto funciona con iCloud Drive, Google Drive, Dropbox, OneDrive y Box en Mac, y con carpetas de OneDrive, Google Drive y Dropbox en Windows. Una vez renombrado, el nuevo nombre se sincroniza automáticamente con tus otros dispositivos.' },
     { question: '¿Puedo regenerar un nombre generado por IA?', answer: 'Sí. Selecciona el archivo en AI Rename y pulsa regenerar para obtener una nueva sugerencia.' },
     { question: '¿Puedo personalizar el prompt de nombres y etiquetas?', answer: 'Sí. Puedes escribir reglas propias para nombres y etiquetas, por ejemplo nombres cortos, tema principal primero o solo ciertas etiquetas.' },
     { question: '¿Mis datos están seguros?', answer: 'Tus archivos originales permanecen en tu ordenador. En modo cloud, solo se envía al proveedor elegido el contenido necesario para el análisis. En modo offline, Ollama procesa localmente.' },
@@ -839,6 +845,7 @@ const localizedFullHomeFaqItems: Partial<Record<Exclude<Locale, 'en'>, FAQCopyIt
     { question: 'Welke bestandsformaten worden ondersteund?', answer: 'Zush ondersteunt afbeeldingen, audio, video’s, screenshots, PDFs, documenten, spreadsheets, presentaties, tekst, CSV, SVG en andere gangbare formaten.' },
     { question: 'Hoe werkt Zush AI Rename?', answer: 'AI Rename gebruikt AI om bestanden op basis van inhoud te hernoemen. Sleep gewoon een verzameling bestanden naar Zush: ze worden in seconden geanalyseerd en hernoemd. Je kunt individuele bestandsnamen controleren of opnieuw genereren voordat je wijzigingen toepast. Perfect voor screenshots, designbestanden, audio, video’s, PDFs, iWork-documenten en downloads in één keer.' },
     { question: 'Hoe werkt mapbewaking?', answer: 'Zush bewaakt gekozen mappen op de achtergrond. Nieuwe ondersteunde bestanden worden online automatisch geanalyseerd en hernoemd.' },
+    { question: 'Werkt Zush met Google Drive, Dropbox en iCloud?', answer: 'Ja. Zush maakt geen verbinding met je cloudaccounts — het hernoemt bestanden rechtstreeks in de lokale map die je cloudapp al synchroniseert, dus er hoeft niets te worden geautoriseerd. Dit werkt met iCloud Drive, Google Drive, Dropbox, OneDrive en Box op de Mac, en met OneDrive-, Google Drive- en Dropbox-mappen op Windows. Na het hernoemen synchroniseert de nieuwe naam automatisch naar je andere apparaten.' },
     { question: 'Kan ik een AI-bestandsnaam opnieuw genereren?', answer: 'Ja. Selecteer het bestand in AI Rename en klik op opnieuw genereren voor een nieuwe suggestie.' },
     { question: 'Kan ik de AI-prompt voor namen en tags aanpassen?', answer: 'Ja. Je kunt eigen regels schrijven voor namen en metadata-tags, zoals korte namen, onderwerp eerst of alleen bepaalde tags.' },
     { question: 'Zijn mijn gegevens veilig?', answer: 'Je originele bestanden blijven op je computer. In cloudmodus wordt alleen de benodigde analyse-inhoud naar de gekozen AI-provider gestuurd. Offline verwerkt Ollama lokaal.' },
@@ -858,6 +865,7 @@ const localizedFullHomeFaqItems: Partial<Record<Exclude<Locale, 'en'>, FAQCopyIt
     { question: 'Quali formati sono supportati?', answer: 'Zush supporta immagini, audio, video, screenshot, PDF, documenti, fogli di calcolo, presentazioni, testo, CSV, SVG e altri formati comuni.' },
     { question: 'Come funziona Zush AI Rename?', answer: 'AI Rename usa l’IA per rinominare i file in base al contenuto. Trascina semplicemente una raccolta di file in Zush: vengono analizzati e rinominati in pochi secondi. Puoi controllare o rigenerare i singoli nomi prima di applicare le modifiche. Perfetto per organizzare screenshot, file di design, audio, video, PDF, documenti iWork e download in un solo passaggio.' },
     { question: 'Come funziona il monitoraggio cartelle?', answer: 'Zush monitora le cartelle scelte in background. I nuovi file supportati vengono analizzati e rinominati automaticamente quando sei online.' },
+    { question: 'Zush funziona con Google Drive, Dropbox e iCloud?', answer: 'Sì. Zush non si collega ai tuoi account cloud: rinomina i file direttamente nella cartella locale che la tua app cloud tiene già sincronizzata, quindi non c’è nulla da autorizzare. Funziona con iCloud Drive, Google Drive, Dropbox, OneDrive e Box su Mac, e con le cartelle OneDrive, Google Drive e Dropbox su Windows. Una volta rinominato, il nuovo nome si sincronizza automaticamente sugli altri dispositivi.' },
     { question: 'Posso rigenerare un nome generato dall’IA?', answer: 'Sì. Seleziona il file in AI Rename e clicca su rigenera per ottenere una nuova proposta.' },
     { question: 'Posso personalizzare il prompt per nomi e tag?', answer: 'Sì. Puoi scrivere regole personalizzate per nomi e tag, ad esempio nomi brevi, soggetto prima o solo certi tag.' },
     { question: 'I miei dati sono al sicuro?', answer: 'I file originali restano sul computer. In modalità cloud viene inviato solo il contenuto necessario all’analisi. In modalità offline, Ollama elabora localmente.' },
@@ -877,6 +885,7 @@ const localizedFullHomeFaqItems: Partial<Record<Exclude<Locale, 'en'>, FAQCopyIt
     { question: '対応しているファイル形式は？', answer: '画像、動画、スクリーンショット、PDF、文書、表計算、プレゼン、テキスト、CSV、SVG などの一般的な形式に対応しています。' },
     { question: 'Zush AI Rename はどう動きますか？', answer: 'AI Rename は AI を使って内容に基づきファイル名を変更します。ファイルのまとまりを Zush ウィンドウにドラッグ＆ドロップするだけで、数秒で分析され名前が生成されます。適用前に個別のファイル名を確認したり再生成したりできます。スクリーンショット、デザインファイル、音声、動画、PDF、iWork 書類、ダウンロードを一度に整理するのに便利です。' },
     { question: 'フォルダ監視はどう動きますか？', answer: '選択したフォルダをバックグラウンドで監視します。新しい対応ファイルが追加されると、オンライン時に自動分析して名前を変更します。' },
+    { question: 'Zush は Google Drive、Dropbox、iCloud に対応していますか？', answer: 'はい。Zush はクラウドアカウントに接続しません。クラウドアプリがすでに同期しているローカルフォルダ内のファイル名を直接変更するため、認証の必要はありません。Mac では iCloud Drive、Google Drive、Dropbox、OneDrive、Box に対応し、Windows では OneDrive、Google Drive、Dropbox のフォルダに対応しています。リネーム後、新しいファイル名は自動的に他のデバイスに同期されます。' },
     { question: 'AI が生成した名前を再生成できますか？', answer: 'はい。AI Rename でファイルを選び、再生成をクリックすると新しい候補を取得できます。' },
     { question: '名前やタグ用の AI プロンプトをカスタマイズできますか？', answer: 'はい。短い名前、主題を先頭にする、特定タグだけ使うなど、独自ルールを書けます。' },
     { question: 'データは安全ですか？', answer: '元ファイルはコンピュータ上に残ります。クラウドモードでは分析に必要な内容だけを選択した AI プロバイダーへ送信します。オフラインでは Ollama がローカル処理します。' },
@@ -896,6 +905,7 @@ const localizedFullHomeFaqItems: Partial<Record<Exclude<Locale, 'en'>, FAQCopyIt
     { question: '어떤 파일 형식을 지원하나요?', answer: '이미지, 비디오, 스크린샷, PDF, 문서, 스프레드시트, 프레젠테이션, 텍스트, CSV, SVG 등 일반적인 형식을 지원합니다.' },
     { question: 'Zush AI Rename은 어떻게 작동하나요?', answer: 'AI Rename은 AI로 파일 내용을 분석해 이름을 바꿉니다. 파일 모음을 Zush 창에 끌어다 놓기만 하면 몇 초 안에 분석되고 새 이름이 생성됩니다. 변경 사항을 적용하기 전에 개별 파일명을 검토하거나 다시 생성할 수 있습니다. 스크린샷, 디자인 파일, 오디오, 비디오, PDF, iWork 문서, 다운로드를 한 번에 정리하기에 적합합니다.' },
     { question: '폴더 모니터링은 어떻게 작동하나요?', answer: '선택한 폴더를 백그라운드에서 감시합니다. 새 지원 파일이 추가되면 온라인 상태에서 자동 분석하고 이름을 변경합니다.' },
+    { question: 'Zush는 Google Drive, Dropbox, iCloud와 함께 작동하나요?', answer: '예. Zush는 클라우드 계정에 연결하지 않습니다. 클라우드 앱이 이미 동기화하는 로컬 폴더에서 파일 이름을 직접 변경하므로 별도의 인증이 필요 없습니다. Mac에서는 iCloud Drive, Google Drive, Dropbox, OneDrive, Box를 지원하며, Windows에서는 OneDrive, Google Drive, Dropbox 폴더를 지원합니다. 이름을 변경하면 새 이름이 다른 기기에 자동으로 동기화됩니다.' },
     { question: 'AI가 생성한 파일명을 다시 만들 수 있나요?', answer: '예. AI Rename에서 파일을 선택하고 다시 생성을 클릭하면 새 제안을 받을 수 있습니다.' },
     { question: '이름 및 태그용 AI 프롬프트를 사용자 지정할 수 있나요?', answer: '예. 짧은 이름, 주제 먼저, 특정 태그만 사용 같은 사용자 규칙을 작성할 수 있습니다.' },
     { question: '데이터는 안전한가요?', answer: '원본 파일은 컴퓨터에 남아 있습니다. 클라우드 모드에서는 분석에 필요한 내용만 선택한 AI 제공자에게 전송됩니다. 오프라인 모드에서는 Ollama가 로컬에서 처리합니다.' },
@@ -1032,6 +1042,8 @@ const EN_COPY: LocaleCopy = {
     documents: 'Documents',
     videosLabel: 'Videos',
     audioLabel: 'Audio',
+    cloudFoldersTitle: 'Any folder — including your cloud drives',
+    cloudFoldersDescription: 'Zush renames files in any local folder — including the ones iCloud Drive, Google Drive, Dropbox, and OneDrive keep in sync. No accounts to connect.',
     downloadTitle: 'Try Zush free',
     downloadSubtitle: 'Rename and organize files with AI, batch rename folders, and clean up screenshots, design files, PDFs, photos, audio, videos, iWork, and Office documents by content.',
     downloadHintPrefix: 'Free · No credit card required',
@@ -2550,7 +2562,7 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
   de: {
     featureCards: {
       aiAnalysis: { title: 'KI-Analyse', description: 'Fortschrittliche KI analysiert Bilder, Videos und unterstützte Dokumente, inklusive PDFs, und erzeugt automatisch aussagekräftige Dateinamen.' },
-      foldersMonitoring: { title: 'Ordnerüberwachung', description: 'Überwache einen oder mehrere Ordner. Zush läuft im Hintergrund und verarbeitet neue Dateien automatisch.' },
+      foldersMonitoring: { title: 'Ordnerüberwachung', description: 'Überwache einen oder mehrere Ordner — auch iCloud Drive-, Google Drive-, Dropbox- und OneDrive-Ordner. Zush läuft im Hintergrund und verarbeitet neue Dateien automatisch.' },
       batchRename: { title: 'Stapelumbenennung', description: 'Ziehe mehrere Dateien hinein. Zush analysiert und benennt sie in Sekunden um.' },
       templates: { title: 'Templates', description: 'Speichere wiederverwendbare Umbenennungs-Setups für Screenshots, Ausgaben, Musik, Kundenarbeit, Recht, Reisen und überwachte Ordner.' },
       namingBlocks: { title: 'Namensbausteine', description: 'Baue konsistente Dateinamen aus 145+ Bausteinen für Datum, Metadaten, Audio, Fotos, Finanzen, Recht, Reisen, Kunden und KI-Felder.' },
@@ -2584,7 +2596,7 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
   fr: {
     featureCards: {
       aiAnalysis: { title: 'Analyse IA', description: 'L’IA analyse les images, vidéos et documents pris en charge, y compris les PDF, pour créer automatiquement des noms utiles.' },
-      foldersMonitoring: { title: 'Surveillance des dossiers', description: 'Surveillez un ou plusieurs dossiers. Zush traite les nouveaux fichiers automatiquement en arrière-plan.' },
+      foldersMonitoring: { title: 'Surveillance des dossiers', description: 'Surveillez un ou plusieurs dossiers — y compris vos dossiers iCloud Drive, Google Drive, Dropbox et OneDrive. Zush traite les nouveaux fichiers automatiquement en arrière-plan.' },
       batchRename: { title: 'Renommage par lot', description: 'Glissez plusieurs fichiers. Zush les analyse et les renomme en quelques secondes.' },
       templates: { title: 'Modèles', description: 'Enregistrez des réglages réutilisables pour captures, dépenses, pistes audio, clients, juridique, voyages et dossiers surveillés.' },
       namingBlocks: { title: 'Blocs de nommage', description: 'Construisez des noms cohérents avec 145+ blocs pour dates, métadonnées, audio, photos, finance, juridique, voyage, clients et champs IA.' },
@@ -2618,7 +2630,7 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
   'pt-br': {
     featureCards: {
       aiAnalysis: { title: 'Análise com IA', description: 'A IA analisa imagens, vídeos e documentos compatíveis, incluindo PDFs, para gerar nomes úteis automaticamente.' },
-      foldersMonitoring: { title: 'Monitoramento de pastas', description: 'Monitore uma ou várias pastas. O Zush processa novos arquivos automaticamente em segundo plano.' },
+      foldersMonitoring: { title: 'Monitoramento de pastas', description: 'Monitore uma ou várias pastas — incluindo pastas do iCloud Drive, Google Drive, Dropbox e OneDrive. O Zush processa novos arquivos automaticamente em segundo plano.' },
       batchRename: { title: 'Renomeação em lote', description: 'Arraste vários arquivos. O Zush analisa e renomeia tudo em segundos.' },
       templates: { title: 'Modelos', description: 'Salve configurações reutilizáveis para screenshots, despesas, faixas de música, clientes, jurídico, viagens e pastas monitoradas.' },
       namingBlocks: { title: 'Blocos de nomes', description: 'Monte nomes consistentes com 145+ blocos para datas, metadados, áudio, fotos, finanças, jurídico, viagens, clientes e campos de IA.' },
@@ -2652,7 +2664,7 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
   es: {
     featureCards: {
       aiAnalysis: { title: 'Análisis con IA', description: 'La IA analiza imágenes, videos y documentos compatibles, incluidos PDFs, para generar nombres útiles automáticamente.' },
-      foldersMonitoring: { title: 'Monitoreo de carpetas', description: 'Monitorea una o varias carpetas. Zush procesa archivos nuevos automáticamente en segundo plano.' },
+      foldersMonitoring: { title: 'Monitoreo de carpetas', description: 'Monitorea una o varias carpetas, incluidas las de iCloud Drive, Google Drive, Dropbox y OneDrive. Zush procesa archivos nuevos automáticamente en segundo plano.' },
       batchRename: { title: 'Renombrado por lotes', description: 'Arrastra varios archivos. Zush los analiza y renombra en segundos.' },
       templates: { title: 'Plantillas', description: 'Guarda configuraciones reutilizables para capturas, gastos, pistas de música, clientes, legal, viajes y carpetas monitoreadas.' },
       namingBlocks: { title: 'Bloques de nombres', description: 'Crea nombres consistentes con más de 145 bloques para fechas, metadatos, audio, fotos, finanzas, legal, viajes, clientes y campos de IA.' },
@@ -2686,7 +2698,7 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
   nl: {
     featureCards: {
       aiAnalysis: { title: 'AI-analyse', description: 'AI analyseert afbeeldingen, video’s en ondersteunde documenten, inclusief PDFs, en maakt automatisch betekenisvolle bestandsnamen.' },
-      foldersMonitoring: { title: 'Mapbewaking', description: 'Bewaak een of meerdere mappen. Zush verwerkt nieuwe bestanden automatisch op de achtergrond.' },
+      foldersMonitoring: { title: 'Mapbewaking', description: 'Bewaak een of meerdere mappen — ook iCloud Drive-, Google Drive-, Dropbox- en OneDrive-mappen. Zush verwerkt nieuwe bestanden automatisch op de achtergrond.' },
       batchRename: { title: 'Bulk hernoemen', description: 'Sleep meerdere bestanden tegelijk. Zush analyseert en hernoemt ze in seconden.' },
       templates: { title: 'Templates', description: 'Bewaar herbruikbare instellingen voor screenshots, uitgaven, muziektracks, klantwerk, juridisch, reizen en bewaakte mappen.' },
       namingBlocks: { title: 'Naamblokken', description: 'Bouw consistente namen met 145+ blokken voor datums, metadata, audio, foto’s, finance, juridisch, reizen, klanten en AI-velden.' },
@@ -2720,7 +2732,7 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
   it: {
     featureCards: {
       aiAnalysis: { title: 'Analisi IA', description: 'L’IA analizza immagini, video e documenti supportati, inclusi i PDF, per generare automaticamente nomi descrittivi.' },
-      foldersMonitoring: { title: 'Monitoraggio cartelle', description: 'Monitora una o più cartelle. Zush elabora automaticamente i nuovi file in background.' },
+      foldersMonitoring: { title: 'Monitoraggio cartelle', description: 'Monitora una o più cartelle, incluse quelle di iCloud Drive, Google Drive, Dropbox e OneDrive. Zush elabora automaticamente i nuovi file in background.' },
       batchRename: { title: 'Rinomina in batch', description: 'Trascina più file. Zush li analizza e li rinomina in pochi secondi.' },
       templates: { title: 'Modelli', description: 'Salva configurazioni riutilizzabili per screenshot, spese, tracce audio, clienti, legale, viaggi e cartelle monitorate.' },
       namingBlocks: { title: 'Blocchi di denominazione', description: 'Crea nomi coerenti con oltre 145 blocchi per date, metadati, audio, foto, finanza, legale, viaggi, clienti e campi IA.' },
@@ -2754,7 +2766,7 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
   ja: {
     featureCards: {
       aiAnalysis: { title: 'AI 解析', description: 'AI が画像、動画、PDF を含む対応文書を解析し、意味のあるファイル名を自動生成します。' },
-      foldersMonitoring: { title: 'フォルダ監視', description: '1つ以上のフォルダを監視し、新しいファイルをバックグラウンドで自動処理します。' },
+      foldersMonitoring: { title: 'フォルダ監視', description: '1つ以上のフォルダを監視します。iCloud Drive、Google Drive、Dropbox、OneDrive のフォルダも対象です。新しいファイルはバックグラウンドで自動処理されます。' },
       batchRename: { title: '一括リネーム', description: '複数ファイルをドラッグ＆ドロップするだけで、Zush が数秒で解析して名前を変更します。' },
       templates: { title: 'テンプレート', description: 'スクリーンショット、経費、音楽トラック、クライアント作業、法務、旅行、監視フォルダ向けの設定を再利用できます。' },
       namingBlocks: { title: '命名ブロック', description: '日付、メタデータ、音声、写真、財務、法務、旅行、顧客、AI フィールドなど 145+ ブロックで一貫した名前を作れます。' },
@@ -2788,7 +2800,7 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
   ko: {
     featureCards: {
       aiAnalysis: { title: 'AI 분석', description: 'AI가 이미지, 비디오, PDF를 포함한 지원 문서를 분석해 의미 있는 파일 이름을 자동 생성합니다.' },
-      foldersMonitoring: { title: '폴더 모니터링', description: '하나 이상의 폴더를 감시하고 새 파일을 백그라운드에서 자동 처리합니다.' },
+      foldersMonitoring: { title: '폴더 모니터링', description: 'iCloud Drive, Google Drive, Dropbox, OneDrive 폴더를 포함해 하나 이상의 폴더를 감시하고 새 파일을 백그라운드에서 자동 처리합니다.' },
       batchRename: { title: '일괄 이름 변경', description: '여러 파일을 끌어다 놓으면 Zush가 몇 초 만에 분석하고 이름을 변경합니다.' },
       templates: { title: '템플릿', description: '스크린샷, 지출, 음악 트랙, 고객 작업, 법무, 여행, 모니터링 폴더용 이름 변경 설정을 재사용합니다.' },
       namingBlocks: { title: '이름 블록', description: '날짜, 메타데이터, 오디오, 사진, 재무, 법무, 여행, 고객, AI 필드 등 145개 이상 블록으로 일관된 이름을 만듭니다.' },
@@ -3525,6 +3537,8 @@ const COPY: Record<Locale, LocaleCopy> = {
       documents: 'Dokumente',
       videosLabel: 'Videos',
       audioLabel: 'Audio',
+      cloudFoldersTitle: 'Funktioniert, wo deine Dateien liegen',
+      cloudFoldersDescription: 'Zush benennt Dateien direkt in deinen synchronisierten Ordnern von iCloud Drive, Google Drive, Dropbox und OneDrive um. Änderungen synchronisieren sich auf all deine Geräte. Keine Konten zum Verbinden.',
       downloadTitle: 'Zush kostenlos testen',
       downloadSubtitle: 'Dateien stapelweise umbenennen, Ordner überwachen und Screenshots, PDFs, Fotos, Audio, Videos und Dokumente nach Inhalt benennen.',
       downloadHintPrefix: 'Kostenlos · Keine Kreditkarte erforderlich',
@@ -3577,6 +3591,8 @@ const COPY: Record<Locale, LocaleCopy> = {
       documents: 'Documents',
       videosLabel: 'Vidéos',
       audioLabel: 'Audio',
+      cloudFoldersTitle: 'Fonctionne là où sont vos fichiers',
+      cloudFoldersDescription: 'Zush renomme les fichiers directement dans vos dossiers synchronisés iCloud Drive, Google Drive, Dropbox et OneDrive. Les changements se synchronisent sur tous vos appareils. Aucun compte à connecter.',
       downloadTitle: 'Essayez Zush gratuitement',
       downloadSubtitle: 'Renommez les fichiers par lot, surveillez les dossiers et renommez screenshots, PDF, photos, audio, vidéos et documents par contenu.',
       downloadHintPrefix: 'Gratuit · Sans carte bancaire',
@@ -3619,6 +3635,8 @@ const COPY: Record<Locale, LocaleCopy> = {
       documents: 'Documentos',
       videosLabel: 'Vídeos',
       audioLabel: 'Áudio',
+      cloudFoldersTitle: 'Funciona onde seus arquivos estão',
+      cloudFoldersDescription: 'O Zush renomeia arquivos diretamente nas suas pastas sincronizadas do iCloud Drive, Google Drive, Dropbox e OneDrive. As alterações sincronizam com todos os seus dispositivos. Nenhuma conta para conectar.',
       downloadTitle: 'Teste o Zush grátis',
       downloadSubtitle: 'Renomeie arquivos em lote, monitore pastas e renomeie screenshots, PDFs, fotos, áudio, vídeos e documentos por conteúdo.',
       downloadHintPrefix: 'Grátis · Sem cartão de crédito',
@@ -3661,6 +3679,8 @@ const COPY: Record<Locale, LocaleCopy> = {
       documents: 'Documentos',
       videosLabel: 'Videos',
       audioLabel: 'Audio',
+      cloudFoldersTitle: 'Funciona donde están tus archivos',
+      cloudFoldersDescription: 'Zush renombra archivos directamente en tus carpetas sincronizadas de iCloud Drive, Google Drive, Dropbox y OneDrive. Los cambios se sincronizan con todos tus dispositivos. No hay cuentas que conectar.',
       downloadTitle: 'Prueba Zush gratis',
       downloadSubtitle: 'Renombra archivos por lotes, monitorea carpetas y renombra capturas, PDFs, fotos, audio, videos y documentos por contenido.',
       downloadHintPrefix: 'Gratis · Sin tarjeta de crédito',
@@ -3703,6 +3723,8 @@ const COPY: Record<Locale, LocaleCopy> = {
       documents: 'Documenten',
       videosLabel: 'Video’s',
       audioLabel: 'Audio',
+      cloudFoldersTitle: 'Werkt waar je bestanden staan',
+      cloudFoldersDescription: 'Zush hernoemt bestanden rechtstreeks in je gesynchroniseerde mappen van iCloud Drive, Google Drive, Dropbox en OneDrive. Wijzigingen synchroniseren naar al je apparaten. Geen accounts om te koppelen.',
       downloadTitle: 'Probeer Zush gratis',
       downloadSubtitle: 'Hernoem bestanden in bulk, bewaak mappen en hernoem screenshots, PDFs, foto’s, audio, video’s en documenten op inhoud.',
       downloadHintPrefix: 'Gratis · Geen creditcard nodig',
@@ -3745,6 +3767,8 @@ const COPY: Record<Locale, LocaleCopy> = {
       documents: 'Documenti',
       videosLabel: 'Video',
       audioLabel: 'Audio',
+      cloudFoldersTitle: 'Funziona dove vivono i tuoi file',
+      cloudFoldersDescription: 'Zush rinomina i file direttamente nelle tue cartelle sincronizzate di iCloud Drive, Google Drive, Dropbox e OneDrive. Le modifiche si sincronizzano su tutti i tuoi dispositivi. Nessun account da collegare.',
       downloadTitle: 'Prova Zush gratis',
       downloadSubtitle: 'Rinomina file in batch, monitora cartelle e rinomina screenshot, PDF, foto, audio, video e documenti per contenuto.',
       downloadHintPrefix: 'Gratis · Nessuna carta richiesta',
@@ -3787,6 +3811,8 @@ const COPY: Record<Locale, LocaleCopy> = {
       documents: '文書',
       videosLabel: '動画',
       audioLabel: '音声',
+      cloudFoldersTitle: 'ファイルがある場所で動作',
+      cloudFoldersDescription: 'Zush は iCloud Drive、Google Drive、Dropbox、OneDrive の同期済みフォルダ内のファイルを直接リネームします。変更はすべてのデバイスに同期されます。アカウント接続は不要です。',
       downloadTitle: 'Zush を無料で試す',
       downloadSubtitle: 'ファイルを一括リネームし、フォルダを監視し、スクリーンショット、PDF、写真、音声、動画、文書を内容でリネームします。',
       downloadHintPrefix: '無料 · クレジットカード不要',
@@ -3829,6 +3855,8 @@ const COPY: Record<Locale, LocaleCopy> = {
       documents: '문서',
       videosLabel: '비디오',
       audioLabel: '오디오',
+      cloudFoldersTitle: '파일이 있는 곳에서 바로 작동',
+      cloudFoldersDescription: 'Zush는 iCloud Drive, Google Drive, Dropbox, OneDrive의 동기화된 폴더에서 파일 이름을 직접 변경합니다. 변경 사항은 모든 기기에 자동으로 동기화됩니다. 계정을 연결할 필요가 없습니다.',
       downloadTitle: 'Zush 무료 체험',
       downloadSubtitle: '파일을 일괄 이름 변경하고, 폴더를 모니터링하며, 스크린샷, PDF, 사진, 오디오, 비디오, 문서를 내용 기준으로 이름 변경합니다.',
       downloadHintPrefix: '무료 · 카드 필요 없음',

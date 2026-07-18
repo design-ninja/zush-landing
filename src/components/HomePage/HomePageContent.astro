@@ -3,6 +3,7 @@ import Hero from '@/components/Hero';
 import Tour from '@/components/Tour';
 import Features from '@/components/Features/Features.astro';
 import SupportedFormats from '@/components/SupportedFormats';
+import CloudFolders from '@/components/CloudFolders';
 import HomeWorkflows from '@/components/HomeWorkflows/HomeWorkflows.astro';
 import Pricing from '@/components/Pricing/Pricing.astro';
 import FAQ from '@/components/FAQ';
@@ -72,6 +73,10 @@ const offlineBadge = {
   documentsLabel={copy.home.documents}
   videosLabel={copy.home.videosLabel}
   audioLabel={copy.home.audioLabel}
+/>
+<CloudFolders
+  title={copy.home.cloudFoldersTitle}
+  description={copy.home.cloudFoldersDescription}
 />
 <HomeWorkflows copy={copy.home.workflows} locale={locale} />
 <DownloadCTA

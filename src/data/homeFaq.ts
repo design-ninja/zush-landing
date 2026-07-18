@@ -48,6 +48,11 @@ export const HOME_FAQ_DATA: FAQItem[] = [
       'Choose a folder and a rename template, and Zush can process new supported files as they arrive. Monitored renames remain visible in Activity history and can be undone.',
   },
   {
+    question: 'Does Zush work with Google Drive, Dropbox, and iCloud?',
+    answer:
+      "Yes. Zush doesn't connect to your cloud accounts — it renames files directly in the local folder your cloud app already keeps in sync, so there's nothing to authorize. This works with iCloud Drive, Google Drive, Dropbox, OneDrive, and Box on Mac, and with OneDrive, Google Drive, and Dropbox folders on Windows. Once renamed, the new name syncs to your other devices automatically.",
+  },
+  {
     question: 'Can I control the filename format?',
     answer:
       'Yes. You can write custom instructions, save reusable templates, and combine 145+ Naming Blocks for dates, categories, client names, document fields, counters, and other metadata. You can also create Custom AI Blocks: describe what Zush should extract from a file and reuse it as your own naming block in any template. All of these are included in the free version.',
