@@ -89,27 +89,6 @@
     gap: 0.5rem;
   }
 
-  &__HeroMedia {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    margin: 0 0 2rem;
-    overflow: hidden;
-    border-radius: $radius-md;
-    border: 1px solid color-mix(in srgb, var(--border) 84%, transparent);
-    background: var(--muted);
-
-    @include mobile {
-      margin-bottom: 1.5rem;
-    }
-  }
-
-  &__HeroImage {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
   &__Tag {
     padding: 0.25rem 0.75rem;
     background: var(--primary-soft);

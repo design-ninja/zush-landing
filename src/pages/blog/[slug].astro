@@ -20,7 +20,6 @@ import {
   getRelatedPosts,
   normalizeTagSlug,
 } from '@/data/blog';
-import { getBlogThumbnail, getBlogThumbnailAlt } from '@/data/blogThumbnails';
 import { getBlogPublicTagSlug } from '@/data/blogTaxonomy';
 import { BLOG_PLATFORM_LABELS } from '@/data/blogSchema';
 import { getBlogSeo, getCanonicalUrl } from '@/seo/config';
@@ -64,8 +63,6 @@ if (!details) {
 
 const { entry, post, faq } = details;
 const relatedPosts = await getRelatedPosts(post.slug);
-const thumbnail = getBlogThumbnail(post.slug);
-const thumbnailAlt = getBlogThumbnailAlt(post.title);
 const { Content, headings } = await render(entry);
 const toc = headings.filter(
   (item: TocItem) => item.depth === 2 || item.depth === 3,
@@ -301,21 +298,6 @@ const breadcrumbItems = [
           </div>
         )}
       </header>
-
-      <figure class={styles.BlogPost__HeroMedia}>
-        <Image
-          alt={thumbnailAlt}
-          class={styles.BlogPost__HeroImage}
-          decoding='async'
-          fetchpriority='high'
-          height={1086}
-          loading='eager'
-          sizes='(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc(100vw - 4rem), 1152px'
-          src={thumbnail}
-          width={1448}
-          widths={[724, 966, 1086, 1448]}
-        />
-      </figure>
 
       {post.tldr && (
         <div class={styles.BlogPost__Tldr}>
