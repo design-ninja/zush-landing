@@ -1,0 +1,61 @@
+---
+import BlogPostCard from '@/components/blog/BlogPostCard.astro';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
+import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module.scss';
+import { getAllPosts } from '@/data/blog';
+import styles from './HomeBlogHighlights.module.scss';
+
+const FEATURED_SLUGS = [
+  'best-ai-file-renamer-tools-mac-compared',
+  'best-ai-file-renamer-tools-windows-compared',
+  'batch-rename-files-on-mac-complete-guide',
+  'best-ways-to-organize-photos-on-mac',
+] as const;
+
+const posts = await getAllPosts();
+const featured = FEATURED_SLUGS.map((slug) => {
+  const post = posts.find((item) => item.slug === slug);
+
+  if (!post) {
+    throw new Error(`HomeBlogHighlights: missing blog post for slug "${slug}"`);
+  }
+
+  return post;
+});
+---
+
+<section class={styles.HomeBlogHighlights} aria-labelledby="home-blog-title">
+  <div class={styles.HomeBlogHighlights__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading
+        as="h2"
+        align="center"
+        id="home-blog-title"
+        className={sectionHeaderStyles.SectionHeader__Title}
+      >
+        Guides and comparisons
+      </Heading>
+      <Text
+        as="p"
+        size="lg"
+        color="subtle"
+        align="center"
+        className={sectionHeaderStyles.SectionHeader__Description}
+      >
+        How Zush compares with other AI renamers, and how to clean up Mac folders
+        that never had a naming system.
+      </Text>
+    </div>
+
+    <div class={styles.HomeBlogHighlights__Grid}>
+      {featured.map((post) => <BlogPostCard post={post} />)}
+    </div>
+
+    <div class={styles.HomeBlogHighlights__Action}>
+      <a class={styles.HomeBlogHighlights__ActionLink} href="/blog">
+        Read all guides
+      </a>
+    </div>
+  </div>
+</section>

@@ -4,6 +4,7 @@ import Tour from '@/components/Tour';
 import Features from '@/components/Features/Features.astro';
 import SupportedFormats from '@/components/SupportedFormats';
 import CloudFolders from '@/components/CloudFolders';
+import HomeBlogHighlights from '@/components/HomeBlogHighlights/HomeBlogHighlights.astro';
 import HomeWorkflows from '@/components/HomeWorkflows/HomeWorkflows.astro';
 import Pricing from '@/components/Pricing/Pricing.astro';
 import FAQ from '@/components/FAQ';
@@ -79,6 +80,7 @@ const offlineBadge = {
   description={copy.home.cloudFoldersDescription}
 />
 <HomeWorkflows copy={copy.home.workflows} locale={locale} />
+{locale === 'en' && <HomeBlogHighlights />}
 <DownloadCTA
   title={copy.home.downloadTitle}
   subtitle={copy.home.downloadSubtitle}

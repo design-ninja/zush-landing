@@ -1,0 +1,40 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.HomeBlogHighlights {
+  padding: 6.25rem 0;
+
+  &__Container {
+    @include container;
+  }
+
+  &__Grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__Action {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5rem;
+  }
+
+  &__ActionLink {
+    color: var(--primary);
+    font-weight: var(--font-weight-link);
+    text-decoration: none;
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+}
