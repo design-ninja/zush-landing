@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Ollama"
 tldr: "To rename files with Ollama on Mac, install Ollama, pull a vision-capable model, confirm the local service is running, enable Offline AI mode in Zush, and test with a small batch before using it on important folders."
-reviewed: "2026-07-09"
+reviewed: "2026-07-19"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -30,6 +30,19 @@ This guide is for the Mac Ollama workflow. Zush for Windows is live, but this ar
     { href: '/docs/offline-ai', label: 'Offline AI docs' },
   ]}
 />
+
+## Looking to rename an Ollama model instead?
+
+If you arrived here searching for how to rename a model in Ollama, that is a different task: Ollama has no dedicated rename command. The supported approach is to copy the model under the name you want, then remove the original.
+
+```bash
+ollama cp llama3 my-custom-name
+ollama rm llama3
+```
+
+`ollama cp` registers the model under the new name without re-downloading any weights, and `ollama rm` removes the old entry. Run `ollama list` afterwards to confirm only the renamed model is left.
+
+If you are here to rename *files* using a local Ollama model, keep reading.
 
 ## What you need before starting
 
