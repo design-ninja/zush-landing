@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.5.2.0] - 2026-07-19
+
+### Fixed
+- Naming blocks now stay perfectly synchronized between AI Rename and template settings when adding, removing, or reordering blocks.
+
+### Improved
+- Improved reliability and feedback around unexpected app errors and Windows startup settings.
+
+
 ## [3.5.1.0] - 2026-07-13
 
 ### Fixed
