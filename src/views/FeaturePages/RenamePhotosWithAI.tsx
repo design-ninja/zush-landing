@@ -112,6 +112,12 @@ const RenamePhotosWithAI = () => (
       { title: 'Rename PDFs with AI', href: '/rename-pdf-with-ai' },
       { title: 'Zush for Mac', href: '/mac' },
     ]}
+    contextualGuideLink={{
+      before: 'After renaming, use the complete guide to',
+      label: 'how to organize photos on Mac',
+      href: '/blog/best-ways-to-organize-photos-on-mac',
+      after: ' with folders, tags, search, duplicate review, and backups.',
+    }}
     relatedBlogPosts={[
       { title: 'Why Your Photos Are Named IMG and How to Fix It', href: 'why-your-photos-are-named-img-and-how-to-fix-it' },
       { title: 'Rename Photos for Social Media: Better Filenames for Reuse and SEO', href: 'rename-photos-for-social-media' },

@@ -38,6 +38,24 @@
   margin: 0 auto;
 }
 
+.ContextualGuideLink {
+  @include container;
+  max-width: 800px;
+  padding-top: 2rem;
+  text-align: center;
+
+  p {
+    margin: 0;
+    color: var(--muted-foreground);
+    line-height: 1.7;
+  }
+
+  a {
+    color: var(--primary);
+    font-weight: var(--font-weight-link);
+  }
+}
+
 .FAQItem {
   background: var(--card);
   outline: 1px solid var(--border);

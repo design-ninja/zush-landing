@@ -40,6 +40,7 @@ const {
   faqItems,
   relatedBlogPosts,
   relatedPages,
+  contextualGuideLink,
   category = 'general',
 } = Astro.props as FeatureLandingPageProps & LocalizedProps;
 
@@ -166,6 +167,16 @@ const relatedPageTitle = (href: string, fallback: string) =>
         </div>
       </section>
     </>
+  )}
+
+  {currentLocale === DEFAULT_LOCALE && contextualGuideLink && (
+    <div class={styles.ContextualGuideLink}>
+      <p>
+        {contextualGuideLink.before}{' '}
+        <a href={contextualGuideLink.href}>{contextualGuideLink.label}</a>
+        {contextualGuideLink.after ?? ''}
+      </p>
+    </div>
   )}
 
   <section id='faq' class={styles.Section}>

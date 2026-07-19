@@ -11,6 +11,13 @@ interface RelatedLink {
   href: string;
 }
 
+interface ContextualGuideLink {
+  before: string;
+  label: string;
+  href: string;
+  after?: string;
+}
+
 export interface FeatureLandingPageProps {
   h1: string;
   h1Accent?: string;
@@ -20,6 +27,7 @@ export interface FeatureLandingPageProps {
   faqItems: FAQItem[];
   relatedBlogPosts: RelatedLink[];
   relatedPages: RelatedLink[];
+  contextualGuideLink?: ContextualGuideLink;
   jsonLd: object;
   category?: FeatureCategory;
 }
