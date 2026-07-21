@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.5.3.0] - 2026-07-21
+
+### Fixed
+
+- Fixed a crash when creating or editing Custom AI Blocks from the template editor.
+- Improved error handling when opening checkout and activating Zush PRO.
+
+
 ## [3.5.2.0] - 2026-07-19
 
 ### Fixed
