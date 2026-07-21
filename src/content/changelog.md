@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.7.5] - 2026-07-21
+
+### Improved
+- More reliable app update checks, audio analysis, and folder monitoring
+- A less distracting Update Names action
+
+### Fixed
+- Analysis errors no longer interrupt your workflow with a modal
+
 ## [3.7.4] - 2026-07-17
 
 ### Improved
