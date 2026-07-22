@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "dev:sandbox": "astro dev --mode sandbox",
-    "build": "pnpm check:paddle-env && astro build",
+    "build": "node scripts/ensure-git-history.mjs && pnpm check:paddle-env && astro build",
     "build:sandbox": "pnpm check:paddle-env:sandbox && astro build --mode sandbox",
     "preview": "astro preview",
     "lint": "eslint .",
