@@ -9,8 +9,6 @@ import { DEFAULT_LOCALE, LOCALE_META, LOCALIZATION_PAUSED, LOCALIZED_ROUTES, get
 const BLOG_CONTENT_DIR = join(process.cwd(), 'src', 'content', 'blog');
 const DOCS_CONTENT_DIR = join(process.cwd(), 'src', 'content', 'docs');
 const PAGES_DIR = join(process.cwd(), 'src', 'pages');
-const SEO_CONFIG_FILE = join(process.cwd(), 'src', 'seo', 'config.ts');
-const CONSTANTS_FILE = join(process.cwd(), 'src', 'constants.ts');
 
 const STATIC_ROUTE_DEPENDENCIES: Record<string, string[]> = {
   '/': [
@@ -75,11 +73,13 @@ function getLastModifiedDate(filePath: string, fallbackDate: string): string {
 }
 
 function getStaticRouteLastModifiedDate(route: string): string {
+  // Deliberately excludes shared files like seo/config.ts and constants.ts:
+  // including them stamps every route with the latest commit date, which makes
+  // lastmod meaningless to crawlers (Bing ignores sitemaps whose lastmod
+  // changes for all URLs on every deploy).
   const fallbackDate = new Date('2026-03-01T00:00:00.000Z').toISOString();
   const files = [
     getPageSourceFile(route),
-    SEO_CONFIG_FILE,
-    CONSTANTS_FILE,
     ...(STATIC_ROUTE_DEPENDENCIES[route] ?? []),
   ];
 
