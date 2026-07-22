@@ -1,5 +1,4 @@
 import { execSync } from 'node:child_process';
-import { statSync } from 'node:fs';
 import { join } from 'node:path';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { getAllPosts, getAllTags, isSitemapEligibleBlogPost, type BlogPost, type BlogTag } from '@/data/blog';
@@ -60,16 +59,25 @@ function getGitDate(filePath: string): string | null {
   }
 }
 
-function getFileModifiedDate(filePath: string): string | null {
-  try {
-    return statSync(filePath).mtime.toISOString();
-  } catch {
-    return null;
-  }
+function getLastModifiedDate(filePath: string, fallbackDate: string): string {
+  // Deliberately no filesystem-mtime fallback: on a shallow clone (Vercel)
+  // mtime is the checkout time, which drifts every deploy and would re-flag
+  // every affected URL as changed. A stable fallbackDate is better for crawler
+  // trust than a fresh-but-meaningless mtime. `ensure-git-history.mjs`
+  // unshallows the clone at build time so getGitDate normally succeeds.
+  return getGitDate(filePath) ?? fallbackDate;
 }
 
-function getLastModifiedDate(filePath: string, fallbackDate: string): string {
-  return getGitDate(filePath) ?? getFileModifiedDate(filePath) ?? fallbackDate;
+function isShallowClone(): boolean {
+  try {
+    return execSync('git rev-parse --is-shallow-repository', {
+      stdio: ['ignore', 'pipe', 'ignore'],
+    })
+      .toString()
+      .trim() === 'true';
+  } catch {
+    return false;
+  }
 }
 
 function getStaticRouteLastModifiedDate(route: string): string {
@@ -282,7 +290,11 @@ export async function GET() {
     })
     .join('\n');
 
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls}\n</urlset>\n`;
+  // Build-time diagnostic (harmless XML comment, ignored by crawlers): lets us
+  // confirm from the live sitemap whether the deploy had full git history for
+  // accurate lastmod. Safe to remove once verified stable in production.
+  const historyMarker = `<!-- git-history: ${isShallowClone() ? 'shallow (lastmod uses fallback dates)' : 'full'} -->`;
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n${historyMarker}\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls}\n</urlset>\n`;
 
   return new Response(xml, {
     headers: {
