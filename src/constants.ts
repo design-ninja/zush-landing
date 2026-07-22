@@ -10,8 +10,8 @@ export const HOMEBREW_CASK_URL = "https://formulae.brew.sh/cask/zush";
 export const SUPPORT_EMAIL = "support@zushapp.com";
 export const FREE_DOWNLOAD_BADGE_LABEL = "FREE";
 export const MAC_APP_VERSION = "3.8.0";
-export const WINDOWS_APP_VERSION = "3.5.1.0";
-export const PRODUCT_FACTS_REVIEWED_AT = "2026-07-21";
+export const WINDOWS_APP_VERSION = "3.5.3.0";
+export const PRODUCT_FACTS_REVIEWED_AT = "2026-07-22";
 
 // System requirements
 export const MIN_MACOS_VERSION = "Sequoia and newer";

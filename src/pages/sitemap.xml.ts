@@ -261,20 +261,7 @@ export async function GET() {
       priority: '0.55',
     }));
 
-  const machineReadableEntries = [
-    {
-      loc: `${SITE_ORIGIN}/pricing.md`,
-      route: undefined,
-      lastmod: getLatestDate(
-        getLastModifiedDate(join(PAGES_DIR, 'pricing.md.ts'), new Date('2026-07-10T00:00:00.000Z').toISOString()),
-        getLastModifiedDate(CONSTANTS_FILE, new Date('2026-07-10T00:00:00.000Z').toISOString()),
-      ),
-      changefreq: 'monthly' as Changefreq,
-      priority: '0.5',
-    },
-  ];
-
-  const urls = [...staticEntries.map((entry) => ({ ...entry, route: entry.loc.replace(SITE_ORIGIN, '') || '/' })), ...localizedEntries, ...blogEntries, ...tagEntries, ...docsEntries, ...machineReadableEntries]
+  const urls = [...staticEntries.map((entry) => ({ ...entry, route: entry.loc.replace(SITE_ORIGIN, '') || '/' })), ...localizedEntries, ...blogEntries, ...tagEntries, ...docsEntries]
     .map(({ loc, route, lastmod, changefreq, priority }) => {
       const normalizedRoute = !LOCALIZATION_PAUSED && LOCALIZED_ROUTES.includes(route as never)
         ? route

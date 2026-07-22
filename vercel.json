@@ -321,6 +321,15 @@
   ],
   "headers": [
     {
+      "source": "/pricing.md",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, follow"
+        }
+      ]
+    },
+    {
       "source": "/e/:path(.*)",
       "headers": [
         {

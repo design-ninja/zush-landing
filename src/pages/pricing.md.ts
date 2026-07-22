@@ -48,6 +48,7 @@ Canonical product page: ${SITE_ORIGIN}/
     headers: {
       'Cache-Control': 'public, max-age=3600, s-maxage=86400',
       'Content-Type': 'text/markdown; charset=utf-8',
+      'X-Robots-Tag': 'noindex, follow',
     },
   });
 }

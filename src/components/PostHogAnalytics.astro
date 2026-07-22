@@ -44,25 +44,44 @@ const {
       });
     };
 
-    window.posthog.init(posthogProjectKey, {
-      api_host: posthogApiHost,
-      ui_host: posthogUiHost,
-      defaults: '2026-01-30',
-      capture_pageview: false,
-      capture_pageleave: true,
-      person_profiles: 'identified_only',
-      before_send: (event) => {
-        if (hasPostHogCountryOptOut()) {
-          return null;
-        }
-
-        return event;
-      },
-    });
-
     capturePageview();
     document.addEventListener('astro:after-swap', () => {
       window.requestAnimationFrame(capturePageview);
     });
+
+    const initializePostHog = () => {
+      if (hasPostHogCountryOptOut()) return;
+
+      window.posthog.init(posthogProjectKey, {
+        api_host: posthogApiHost,
+        ui_host: posthogUiHost,
+        defaults: '2026-01-30',
+        capture_pageview: false,
+        capture_pageleave: true,
+        person_profiles: 'identified_only',
+        before_send: (event) => {
+          if (hasPostHogCountryOptOut()) {
+            return null;
+          }
+
+          return event;
+        },
+      });
+    };
+
+    const schedulePostHog = () => {
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(initializePostHog, { timeout: 2000 });
+        return;
+      }
+
+      window.setTimeout(initializePostHog, 0);
+    };
+
+    if (document.readyState === 'complete') {
+      schedulePostHog();
+    } else {
+      window.addEventListener('load', schedulePostHog, { once: true });
+    }
   })();
 </script>

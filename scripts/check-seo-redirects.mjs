@@ -121,6 +121,7 @@ assertRedirect('/hi/:path*', '/:path*');
 assertRewrite(`${POSTHOG_PROXY_PATH}/static/:path(.*)`, 'https://us-assets.i.posthog.com/static/:path');
 assertRewrite(`${POSTHOG_PROXY_PATH}/array/:path(.*)`, 'https://us-assets.i.posthog.com/array/:path');
 assertRewrite(`${POSTHOG_PROXY_PATH}/:path(.*)`, 'https://us.i.posthog.com/:path');
+assertHeader('/pricing.md', 'X-Robots-Tag', 'noindex, follow');
 assertHeader(`${POSTHOG_PROXY_PATH}/:path(.*)`, 'X-Robots-Tag', 'noindex, nofollow');
 
 console.log('[check-seo-redirects] OK: GSC legacy URL redirects validated.');

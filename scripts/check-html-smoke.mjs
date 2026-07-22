@@ -194,6 +194,11 @@ for (const consolidatedRoute of ['/file-renamer', '/ai-file-renamer', '/batch-re
     `Consolidated duplicate route leaked into sitemap: ${consolidatedRoute}`,
   );
 }
+assertNotIncludes(
+  sitemapXml,
+  `${SITE_ORIGIN}/pricing.md`,
+  'Machine-readable pricing.md must not be submitted for search indexing.',
+);
 
 for (const loc of locs) {
   const pathname = pathFromLoc(loc);
@@ -236,6 +241,14 @@ for (const loc of locs) {
     '<meta name="robots" content="noindex',
     `Sitemap URL must not emit noindex robots meta: ${pathname}`,
   );
+
+  if (pathname.endsWith('/rename-design-files-with-ai') && pathname !== '/rename-design-files-with-ai') {
+    assertNotIncludes(
+      html,
+      '<title>Rename Design Files with AI · Zush</title>',
+      `Localized design-file page fell back to English metadata: ${pathname}`,
+    );
+  }
 
   if (isBlogPostPath(pathname)) {
     assertIncludes(html, '"@type":"BlogPosting"', `BlogPosting JSON-LD missing for ${pathname}`);
