@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.8.1] - 2026-07-22
+
+### Improved
+- Cloud AI setup now shows compatible models for each provider
+- API keys and provider switching are more reliable
+- Direct-download update checks are clearer
+
+### Fixed
+- Fixed occasional stale model and connection states in Cloud AI settings
+
 ## [3.8.0] - 2026-07-21
 
 ### Added
