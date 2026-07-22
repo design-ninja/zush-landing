@@ -1,5 +1,20 @@
 # Changelog
 
+## [3.6.0.0] - 2026-07-22
+
+### Added
+- Select multiple AI Rename results to update their names, regenerate suggestions, or remove them together
+
+### Improved
+- Clearer guidance when a batch is larger than the available free credits, with remaining files ready to continue after upgrading
+- Refreshed PRO, Bring Your Own Key, and Offline plan details
+- Remaining free renames are now visible at a glance
+- More reliable checkout with automatic retry and a browser fallback
+
+### Fixed
+- Selected files now stay checked while their names are regenerated
+
+
 ## [3.5.3.0] - 2026-07-21
 
 ### Fixed
