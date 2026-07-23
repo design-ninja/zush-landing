@@ -5,6 +5,7 @@ on:
 
 permissions:
   contents: read
+  deployments: read
 
 concurrency:
   group: indexnow-production
@@ -19,8 +20,36 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.deployment.sha }}
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+
+      # Sitemap lastmod ignores shared sources such as src/i18n, so a copy-only
+      # deploy would otherwise submit nothing. Diff against the previously
+      # deployed commit to recover the routes those edits actually changed.
+      - name: Collect files changed since the last production deploy
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD_SHA: ${{ github.event.deployment.sha }}
+        run: |
+          PREV_SHA=$(gh api \
+            "repos/${GITHUB_REPOSITORY}/deployments?environment=production&per_page=100" \
+            --jq '.[].sha' 2>/dev/null \
+            | grep -v "^${HEAD_SHA}$" \
+            | head -n 1 || true)
+
+          if [ -z "$PREV_SHA" ] || ! git cat-file -e "${PREV_SHA}^{commit}" 2>/dev/null; then
+            echo "No usable previous deployment; falling back to the parent commit."
+            PREV_SHA=$(git rev-parse "${HEAD_SHA}^")
+          fi
+
+          echo "Diffing ${PREV_SHA}..${HEAD_SHA}"
+          git diff --name-only "${PREV_SHA}" "${HEAD_SHA}" > changed-files.txt
+          echo "Changed files: $(wc -l < changed-files.txt)"
+          cat changed-files.txt
+
       - name: Submit live sitemap URLs
-        run: node scripts/indexnow-ping.mjs
+        run: node scripts/indexnow-ping.mjs --changed-files changed-files.txt
