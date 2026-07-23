@@ -46,3 +46,7 @@ scripts/.youtube-upload-results.json
 
 # Playwright local artifacts
 test-results/
+
+# Release binaries live on GitHub (design-ninja/zush-releases); served via /releases redirect route.
+# Local copies stay on disk for Sparkle generate_appcast delta generation.
+public/releases/
