@@ -2,6 +2,7 @@ import type { BlogPost } from '@/data/blog';
 import {
   APP_CONFIG,
   APP_STORE_URL,
+  GITHUB_RELEASES_URL,
   HOMEBREW_CASK_URL,
   MAC_APP_VERSION,
   MAC_INSTALLER_URL,
@@ -405,6 +406,7 @@ export const HOME_JSON_LD = {
         'https://x.com/zush_app',
         'https://www.youtube.com/@zushapp',
         'https://www.producthunt.com/products/zush',
+        GITHUB_RELEASES_URL,
         HOMEBREW_CASK_URL,
         APP_STORE_URL,
         WINDOWS_STORE_URL,
@@ -489,6 +491,7 @@ export const HOME_JSON_LD = {
         WINDOWS_STORE_URL,
         'https://www.producthunt.com/products/zush',
         'https://www.youtube.com/@zushapp',
+        GITHUB_RELEASES_URL,
         HOMEBREW_CASK_URL,
       ],
       image: DEFAULT_OG_IMAGE,

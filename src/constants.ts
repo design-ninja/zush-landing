@@ -7,6 +7,7 @@ export const APP_STORE_PROTOCOL_URL = "macappstore://apps.apple.com/app/zush/id6
 export const WINDOWS_STORE_URL = "https://apps.microsoft.com/detail/9ND4WVZSDQ3X";
 export const WINDOWS_STORE_PROTOCOL_URL = "ms-windows-store://pdp/?ProductId=9ND4WVZSDQ3X";
 export const HOMEBREW_CASK_URL = "https://formulae.brew.sh/cask/zush";
+export const GITHUB_RELEASES_URL = "https://github.com/design-ninja/zush-releases";
 export const SUPPORT_EMAIL = "support@zushapp.com";
 export const FREE_DOWNLOAD_BADGE_LABEL = "FREE";
 export const MAC_APP_VERSION = "3.8.1";

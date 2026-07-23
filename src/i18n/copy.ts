@@ -76,6 +76,7 @@ export interface FooterCopy {
   microsoftStoreLabel: string;
   microsoftStoreAria: string;
   followX: string;
+  followGitHub: string;
   followYouTube: string;
   productHunt: string;
   designedBy: string;
@@ -1027,6 +1028,7 @@ const EN_COPY: LocaleCopy = {
     microsoftStoreLabel: 'Microsoft Store',
     microsoftStoreAria: 'Get Zush from the Microsoft Store',
     followX: 'Follow us on X',
+    followGitHub: 'Zush on GitHub',
     followYouTube: 'Follow us on YouTube',
     productHunt: 'Zush on Product Hunt',
     designedBy: 'Designed by',
@@ -1905,6 +1907,7 @@ type FooterVisibleCopy = Pick<
   | 'microsoftStoreLabel'
   | 'microsoftStoreAria'
   | 'followX'
+  | 'followGitHub'
   | 'followYouTube'
   | 'productHunt'
   | 'designedBy'
@@ -1924,6 +1927,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     microsoftStoreLabel: 'Microsoft Store',
     microsoftStoreAria: 'Zush aus dem Microsoft Store laden',
     followX: 'Zush auf X folgen',
+    followGitHub: 'Zush auf GitHub',
     followYouTube: 'Zush auf YouTube folgen',
     productHunt: 'Zush auf Product Hunt',
     designedBy: 'Entworfen von',
@@ -1960,6 +1964,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     microsoftStoreLabel: 'Microsoft Store',
     microsoftStoreAria: 'Obtenir Zush depuis le Microsoft Store',
     followX: 'Suivre Zush sur X',
+    followGitHub: 'Zush sur GitHub',
     followYouTube: 'Suivre Zush sur YouTube',
     productHunt: 'Zush sur Product Hunt',
     designedBy: 'Conçu par',
@@ -1996,6 +2001,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     microsoftStoreLabel: 'Microsoft Store',
     microsoftStoreAria: 'Obter o Zush na Microsoft Store',
     followX: 'Seguir o Zush no X',
+    followGitHub: 'Zush no GitHub',
     followYouTube: 'Seguir o Zush no YouTube',
     productHunt: 'Zush no Product Hunt',
     designedBy: 'Criado por',
@@ -2032,6 +2038,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     microsoftStoreLabel: 'Microsoft Store',
     microsoftStoreAria: 'Obtener Zush desde Microsoft Store',
     followX: 'Seguir Zush en X',
+    followGitHub: 'Zush en GitHub',
     followYouTube: 'Seguir Zush en YouTube',
     productHunt: 'Zush en Product Hunt',
     designedBy: 'Diseñado por',
@@ -2068,6 +2075,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     microsoftStoreLabel: 'Microsoft Store',
     microsoftStoreAria: 'Download Zush via de Microsoft Store',
     followX: 'Volg Zush op X',
+    followGitHub: 'Zush op GitHub',
     followYouTube: 'Volg Zush op YouTube',
     productHunt: 'Zush op Product Hunt',
     designedBy: 'Ontworpen door',
@@ -2104,6 +2112,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     microsoftStoreLabel: 'Microsoft Store',
     microsoftStoreAria: 'Ottieni Zush dal Microsoft Store',
     followX: 'Segui Zush su X',
+    followGitHub: 'Zush su GitHub',
     followYouTube: 'Segui Zush su YouTube',
     productHunt: 'Zush su Product Hunt',
     designedBy: 'Progettato da',
@@ -2140,6 +2149,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     microsoftStoreLabel: 'Microsoft Store',
     microsoftStoreAria: 'Microsoft Store で Zush を入手',
     followX: 'X で Zush をフォロー',
+    followGitHub: 'GitHub の Zush',
     followYouTube: 'YouTube で Zush をフォロー',
     productHunt: 'Product Hunt の Zush',
     designedBy: 'デザイン',
@@ -2176,6 +2186,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     microsoftStoreLabel: 'Microsoft Store',
     microsoftStoreAria: 'Microsoft Store에서 Zush 받기',
     followX: 'X에서 Zush 팔로우',
+    followGitHub: 'GitHub의 Zush',
     followYouTube: 'YouTube에서 Zush 팔로우',
     productHunt: 'Product Hunt의 Zush',
     designedBy: '디자인',
@@ -2212,6 +2223,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     microsoftStoreLabel: 'Microsoft Store',
     microsoftStoreAria: '从 Microsoft Store 获取 Zush',
     followX: '在 X 上关注 Zush',
+    followGitHub: 'GitHub 上的 Zush',
     followYouTube: '在 YouTube 上关注 Zush',
     productHunt: 'Product Hunt 上的 Zush',
     designedBy: '设计',
