@@ -28,6 +28,11 @@ export const HOME_FAQ_DATA: FAQItem[] = [
       `Yes. Zush includes ${APP_CONFIG.free_tier_limit} free AI renames with no credit card required, so you can test content analysis, batch rename, preview, and undo before upgrading.`,
   },
   {
+    question: 'Is my data private?',
+    answer:
+      'Your original files stay on your device. Cloud mode sends only the content needed for analysis, BYOK sends it to the AI provider you choose, and Offline AI with Ollama processes everything locally, so nothing leaves your computer.',
+  },
+  {
     question: 'Which operating systems does Zush support?',
     answer:
       `Zush runs on macOS ${APP_CONFIG.min_macos_version}+ and Windows 10 or 11. The Mac app is available as a signed DMG, from the Mac App Store, and through Homebrew. The Windows app is available from the Microsoft Store.`,
@@ -35,7 +40,7 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'Which file formats are supported?',
     answer:
-      `Zush supports ${SUPPORTED_FORMAT_COUNT} file extensions across images, RAW photos, design files, PDFs, documents, video, and audio. The supported-formats section on this page lists every extension.`,
+      `Zush supports ${SUPPORTED_FORMAT_COUNT} file extensions across images, RAW photos, design files, PDFs, documents, video, and audio — including HEIC, PNG, PDF, DOCX, XLSX, KEY, FIG, PSD, MP4, MOV, MP3, and FLAC.`,
   },
   {
     question: 'Can Zush rename files offline?',
