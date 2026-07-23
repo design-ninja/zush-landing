@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react';
 import type { HeroVideoShowcaseAsset, ShowcaseTheme } from '@/data/showcaseMedia';
 import styles from './Hero.module.scss';
 
@@ -21,6 +21,7 @@ const HeroVideoShowcase = ({ media }: HeroVideoShowcaseProps) => {
   const [theme, setTheme] = useState<ShowcaseTheme>('light');
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [isVideoReady, setIsVideoReady] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const activeSource = media.sources[theme];
   const activePoster = media.posters[theme];
   const activeDimensions = media.dimensions?.[theme] ?? media;
@@ -32,6 +33,18 @@ const HeroVideoShowcase = ({ media }: HeroVideoShowcaseProps) => {
     '--hero-video-poster-light': `url("${media.posters.light}")`,
     '--hero-video-poster-dark': `url("${media.posters.dark}")`,
   } as CSSProperties;
+
+  const playVideo = useCallback(() => {
+    const video = videoRef.current;
+    if (!video) {
+      return;
+    }
+
+    setIsPlaying(true);
+    void video.play().catch(() => {
+      setIsPlaying(false);
+    });
+  }, []);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -84,11 +97,9 @@ const HeroVideoShowcase = ({ media }: HeroVideoShowcaseProps) => {
     }
 
     if (!prefersReducedMotion) {
-      void video.play().catch(() => {
-        // Browsers can still deny autoplay in constrained environments.
-      });
+      playVideo();
     }
-  }, [activePoster, activeSource, prefersReducedMotion]);
+  }, [activePoster, activeSource, playVideo, prefersReducedMotion]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -98,24 +109,35 @@ const HeroVideoShowcase = ({ media }: HeroVideoShowcaseProps) => {
 
     if (prefersReducedMotion) {
       video.pause();
+      setIsPlaying(false);
       return;
     }
 
-    void video.play().catch(() => {
-      // Muted, inline video should autoplay; keeping the poster is the fallback.
-    });
-  }, [prefersReducedMotion]);
+    playVideo();
+  }, [playVideo, prefersReducedMotion]);
 
-  const handleVideoEnded = () => {
+  const togglePlayback = () => {
     const video = videoRef.current;
-    if (!video || prefersReducedMotion) {
+    if (!video) {
+      return;
+    }
+
+    if (video.paused) {
+      playVideo();
+      return;
+    }
+
+    video.pause();
+  };
+
+  const replayVideo = () => {
+    const video = videoRef.current;
+    if (!video) {
       return;
     }
 
     video.currentTime = 0;
-    void video.play().catch(() => {
-      // Keep the poster if playback is blocked after a source/theme switch.
-    });
+    playVideo();
   };
 
   return (
@@ -132,13 +154,45 @@ const HeroVideoShowcase = ({ media }: HeroVideoShowcaseProps) => {
         loop
         muted
         onCanPlay={() => setIsVideoReady(true)}
-        onEnded={handleVideoEnded}
+        onClick={togglePlayback}
+        onPause={() => setIsPlaying(false)}
+        onPlay={() => setIsPlaying(true)}
         playsInline
         poster={activePoster}
         preload="metadata"
         src={activeSource}
         width={activeDimensions.width}
       />
+      <div className={styles.Hero__VideoControls} aria-label='Video controls'>
+        <button
+          type='button'
+          className={`${styles.Hero__VideoControl} ${styles.Hero__VideoControl_iconOnly}`}
+          aria-label={isPlaying ? 'Pause demo' : 'Play demo'}
+          title={isPlaying ? 'Pause' : 'Play'}
+          onClick={togglePlayback}
+        >
+          {isPlaying ? (
+            <span className={`${styles.Hero__VideoControlIcon} ${styles.Hero__VideoControlIcon_pause}`} aria-hidden='true' />
+          ) : (
+            <svg
+              className={styles.Hero__VideoControlPlayIcon}
+              aria-hidden='true'
+              viewBox='0 0 10 12'
+            >
+              <path d='M1.35 0.82C0.67 0.4 0 0.88 0 1.67v8.66c0 0.79 0.67 1.27 1.35 0.85l7.1-4.33c0.74-0.45 0.74-1.55 0-2L1.35 0.82Z' />
+            </svg>
+          )}
+        </button>
+        <button
+          type='button'
+          className={styles.Hero__VideoControl}
+          aria-label='Replay demo'
+          title='Replay'
+          onClick={replayVideo}
+        >
+          <span className={styles.Hero__VideoControlReplayIcon} aria-hidden='true'>↻</span>
+        </button>
+      </div>
       <figcaption className={styles.Hero__VideoCaption}>
         {media.description}
       </figcaption>

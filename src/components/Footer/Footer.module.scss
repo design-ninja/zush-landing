@@ -5,6 +5,7 @@
 .Footer {
     padding: 4rem 0 2rem;
     border-top: 1px solid var(--border);
+    font-size: 0.875rem;
 
     &__Container {
         @include container;
@@ -131,6 +132,7 @@
 
     &__Link {
         color: var(--muted-foreground);
+        font-size: 0.875rem;
         transition: color 0.2s ease;
 
         &:hover,

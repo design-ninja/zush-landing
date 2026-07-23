@@ -1,0 +1,148 @@
+import type { Locale } from './config';
+
+export interface FeatureDemoCopy {
+  smartBatchPromptLabel: string;
+  smartBatchPromptText: string;
+  smartBatchGeneratedNames: [string, string, string];
+  readyLabel: string;
+  noApiKeysLabel: string;
+  noSetupLabel: string;
+  freeToStartLabel: string;
+  localModelReadyLabel: string;
+  offlinePrivacyLabel: string;
+}
+
+export const FEATURE_DEMO_COPY: Record<Locale, FeatureDemoCopy> = {
+  en: {
+    smartBatchPromptLabel: 'Custom AI Prompt',
+    smartBatchPromptText: 'Extract total price in US dollars',
+    smartBatchGeneratedNames: ['Northstar Services Invoice', 'Family Weekend in San Francisco', 'Annual Medical Fitness Certificate'],
+    readyLabel: 'Ready',
+    noApiKeysLabel: 'No API keys',
+    noSetupLabel: 'No setup',
+    freeToStartLabel: 'Free to start',
+    localModelReadyLabel: 'Local model ready',
+    offlinePrivacyLabel: '100% offline · zero data leaves your Mac',
+  },
+  de: {
+    smartBatchPromptLabel: 'Eigener KI-Prompt',
+    smartBatchPromptText: 'Gesamtpreis in US-Dollar extrahieren',
+    smartBatchGeneratedNames: ['Northstar Services Rechnung', 'Familienwochenende in San Francisco', 'Jährliches ärztliches Attest'],
+    readyLabel: 'Bereit',
+    noApiKeysLabel: 'Keine API-Schlüssel',
+    noSetupLabel: 'Keine Einrichtung',
+    freeToStartLabel: 'Kostenlos starten',
+    localModelReadyLabel: 'Lokales Modell bereit',
+    offlinePrivacyLabel: '100 % offline · keine Daten verlassen deinen Mac',
+  },
+  fr: {
+    smartBatchPromptLabel: 'Prompt IA personnalisé',
+    smartBatchPromptText: 'Extraire le prix total en dollars US',
+    smartBatchGeneratedNames: ['Facture Northstar Services', 'Week-end en famille à San Francisco', 'Certificat médical annuel d’aptitude'],
+    readyLabel: 'Prêt',
+    noApiKeysLabel: 'Aucune clé API',
+    noSetupLabel: 'Aucune configuration',
+    freeToStartLabel: 'Démarrage gratuit',
+    localModelReadyLabel: 'Modèle local prêt',
+    offlinePrivacyLabel: '100 % hors ligne · aucune donnée ne quitte votre Mac',
+  },
+  es: {
+    smartBatchPromptLabel: 'Prompt de IA personalizado',
+    smartBatchPromptText: 'Extrae el precio total en dólares estadounidenses',
+    smartBatchGeneratedNames: ['Factura de Northstar Services', 'Fin de semana familiar en San Francisco', 'Certificado médico anual de aptitud'],
+    readyLabel: 'Listo',
+    noApiKeysLabel: 'Sin claves API',
+    noSetupLabel: 'Sin configuración',
+    freeToStartLabel: 'Empieza gratis',
+    localModelReadyLabel: 'Modelo local listo',
+    offlinePrivacyLabel: '100 % sin conexión · ningún dato sale de tu Mac',
+  },
+  'pt-br': {
+    smartBatchPromptLabel: 'Prompt de IA personalizado',
+    smartBatchPromptText: 'Extraia o preço total em dólares americanos',
+    smartBatchGeneratedNames: ['Fatura da Northstar Services', 'Fim de semana em família em San Francisco', 'Atestado médico anual'],
+    readyLabel: 'Pronto',
+    noApiKeysLabel: 'Sem chaves de API',
+    noSetupLabel: 'Sem configuração',
+    freeToStartLabel: 'Comece grátis',
+    localModelReadyLabel: 'Modelo local pronto',
+    offlinePrivacyLabel: '100% offline · nenhum dado sai do seu Mac',
+  },
+  it: {
+    smartBatchPromptLabel: 'Prompt AI personalizzato',
+    smartBatchPromptText: 'Estrai il prezzo totale in dollari USA',
+    smartBatchGeneratedNames: ['Fattura Northstar Services', 'Weekend in famiglia a San Francisco', 'Certificato medico annuale di idoneità'],
+    readyLabel: 'Pronto',
+    noApiKeysLabel: 'Nessuna chiave API',
+    noSetupLabel: 'Nessuna configurazione',
+    freeToStartLabel: 'Inizia gratis',
+    localModelReadyLabel: 'Modello locale pronto',
+    offlinePrivacyLabel: '100% offline · nessun dato lascia il tuo Mac',
+  },
+  nl: {
+    smartBatchPromptLabel: 'Eigen AI-prompt',
+    smartBatchPromptText: 'Haal de totaalprijs in Amerikaanse dollars op',
+    smartBatchGeneratedNames: ['Factuur Northstar Services', 'Familieweekend in San Francisco', 'Jaarlijkse medische geschiktheidsverklaring'],
+    readyLabel: 'Klaar',
+    noApiKeysLabel: 'Geen API-sleutels',
+    noSetupLabel: 'Geen configuratie',
+    freeToStartLabel: 'Gratis starten',
+    localModelReadyLabel: 'Lokaal model klaar',
+    offlinePrivacyLabel: '100% offline · geen gegevens verlaten je Mac',
+  },
+  tr: {
+    smartBatchPromptLabel: 'Özel Yapay Zekâ İstemi',
+    smartBatchPromptText: 'Toplam fiyatı ABD doları olarak çıkar',
+    smartBatchGeneratedNames: ['Northstar Services Faturası', 'San Francisco Aile Hafta Sonu', 'Yıllık Sağlık Uygunluk Belgesi'],
+    readyLabel: 'Hazır',
+    noApiKeysLabel: 'API anahtarı yok',
+    noSetupLabel: 'Kurulum yok',
+    freeToStartLabel: 'Ücretsiz başla',
+    localModelReadyLabel: 'Yerel model hazır',
+    offlinePrivacyLabel: '%100 çevrimdışı · hiçbir veri Mac’inizden çıkmaz',
+  },
+  ja: {
+    smartBatchPromptLabel: 'カスタムAIプロンプト',
+    smartBatchPromptText: '合計金額を米ドルで抽出',
+    smartBatchGeneratedNames: ['Northstar Services 請求書', 'サンフランシスコ家族旅行', '年次健康診断書'],
+    readyLabel: '準備完了',
+    noApiKeysLabel: 'APIキー不要',
+    noSetupLabel: '設定不要',
+    freeToStartLabel: '無料で開始',
+    localModelReadyLabel: 'ローカルモデル準備完了',
+    offlinePrivacyLabel: '100%オフライン · データはMacの外に出ません',
+  },
+  ko: {
+    smartBatchPromptLabel: '사용자 지정 AI 프롬프트',
+    smartBatchPromptText: '총액을 미국 달러로 추출',
+    smartBatchGeneratedNames: ['Northstar Services 청구서', '샌프란시스코 가족 주말 여행', '연간 건강 적합 증명서'],
+    readyLabel: '준비됨',
+    noApiKeysLabel: 'API 키 불필요',
+    noSetupLabel: '설정 불필요',
+    freeToStartLabel: '무료로 시작',
+    localModelReadyLabel: '로컬 모델 준비됨',
+    offlinePrivacyLabel: '100% 오프라인 · 데이터가 Mac을 벗어나지 않음',
+  },
+  'zh-cn': {
+    smartBatchPromptLabel: '自定义 AI 提示词',
+    smartBatchPromptText: '提取以美元表示的总价',
+    smartBatchGeneratedNames: ['Northstar Services 发票', '旧金山家庭周末', '年度健康证明'],
+    readyLabel: '已就绪',
+    noApiKeysLabel: '无需 API 密钥',
+    noSetupLabel: '无需配置',
+    freeToStartLabel: '免费开始',
+    localModelReadyLabel: '本地模型已就绪',
+    offlinePrivacyLabel: '100% 离线 · 数据不会离开你的 Mac',
+  },
+  ar: {
+    smartBatchPromptLabel: 'تعليمات AI مخصصة',
+    smartBatchPromptText: 'استخرج السعر الإجمالي بالدولار الأمريكي',
+    smartBatchGeneratedNames: ['فاتورة Northstar Services', 'عطلة عائلية في سان فرانسيسكو', 'شهادة اللياقة الطبية السنوية'],
+    readyLabel: 'جاهز',
+    noApiKeysLabel: 'دون مفاتيح API',
+    noSetupLabel: 'دون إعداد',
+    freeToStartLabel: 'ابدأ مجانًا',
+    localModelReadyLabel: 'النموذج المحلي جاهز',
+    offlinePrivacyLabel: 'دون اتصال 100% · لا تغادر أي بيانات جهاز Mac',
+  },
+};

@@ -1,4 +1,5 @@
 import HoverPlayer from './HoverPlayer';
+import type { FeatureDemoCopy } from '@/i18n/featureDemoCopy';
 import {
   FoldersMonitoringAnimation,
   FOLDERS_MONITORING_DURATION,
@@ -64,8 +65,15 @@ import {
   OFFLINE_AI_WIDTH,
   OFFLINE_AI_HEIGHT,
 } from './OfflineAiAnimation';
+import {
+  CloudAiAnimation,
+  CLOUD_AI_DURATION,
+  CLOUD_AI_FPS,
+  CLOUD_AI_WIDTH,
+  CLOUD_AI_HEIGHT,
+} from './CloudAiAnimation';
 
-type FeatureAnimationKind =
+export type FeatureAnimationKind =
   | 'folders'
   | 'metadata'
   | 'history'
@@ -74,13 +82,15 @@ type FeatureAnimationKind =
   | 'custom-ai-blocks'
   | 'prompts'
   | 'byok'
-  | 'offline-ai';
+  | 'offline-ai'
+  | 'cloud-ai';
 
 interface FeatureAnimationProps {
   kind: FeatureAnimationKind;
+  demoCopy?: FeatureDemoCopy;
 }
 
-const CONFIG = {
+export const FEATURE_ANIMATION_CONFIG = {
   folders: {
     component: FoldersMonitoringAnimation,
     duration: FOLDERS_MONITORING_DURATION,
@@ -146,10 +156,17 @@ const CONFIG = {
     width: OFFLINE_AI_WIDTH,
     height: OFFLINE_AI_HEIGHT,
   },
+  'cloud-ai': {
+    component: CloudAiAnimation,
+    duration: CLOUD_AI_DURATION,
+    fps: CLOUD_AI_FPS,
+    width: CLOUD_AI_WIDTH,
+    height: CLOUD_AI_HEIGHT,
+  },
 } as const;
 
-const FeatureAnimation = ({ kind }: FeatureAnimationProps) => {
-  const config = CONFIG[kind];
+const FeatureAnimation = ({ kind, demoCopy }: FeatureAnimationProps) => {
+  const config = FEATURE_ANIMATION_CONFIG[kind];
   return (
     <HoverPlayer
       component={config.component}
@@ -158,6 +175,7 @@ const FeatureAnimation = ({ kind }: FeatureAnimationProps) => {
       width={config.width}
       height={config.height}
       previewFrame={'previewFrame' in config ? config.previewFrame : undefined}
+      inputProps={{ demoCopy }}
     />
   );
 };

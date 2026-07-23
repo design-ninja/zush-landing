@@ -126,35 +126,6 @@
         }
     }
 
-    &__OfflineBadge {
-        display: inline-flex;
-        align-items: center;
-        gap: $space-2xs;
-        width: fit-content;
-        max-width: 100%;
-        padding: $space-2xs $space-xs;
-        border: $border-width-hairline solid color-mix(in srgb, var(--success) $accent-border-subtle, var(--border));
-        border-radius: $radius-full;
-        background: var(--tone-green-bg);
-        color: var(--success);
-        transition: border-color $transition-fast;
-
-        &:hover,
-        &:focus-visible {
-            border-color: color-mix(in srgb, var(--success) $accent-border-hover, var(--border));
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            transition: none;
-        }
-    }
-
-    &__OfflineBadgeIcon {
-        width: $space-sm;
-        height: $space-sm;
-        flex: 0 0 auto;
-    }
-
     &__ActionRow {
         display: flex;
         align-items: center;
@@ -302,6 +273,104 @@
         :global(html:not([data-theme='dark'])) &[data-showcase-theme='dark'] {
             opacity: 0;
         }
+    }
+
+    &__VideoControls {
+        position: absolute;
+        z-index: 2;
+        right: 0.75rem;
+        top: 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-0.3rem);
+        transition: opacity $transition-fast, transform $transition-fast;
+
+        .Hero__VideoShowcase:hover &,
+        &:focus-within {
+            opacity: 1;
+            pointer-events: auto;
+            transform: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+
+        @include mobile {
+            right: 0.55rem;
+            top: 0.55rem;
+        }
+    }
+
+    &__VideoControl {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.28rem;
+        min-width: 1.75rem;
+        height: 1.75rem;
+        padding: 0 0.45rem;
+        border: 0;
+        border-radius: $radius-full;
+        color: rgb(255 255 255 / 0.96);
+        background: rgb(18 18 22 / 0.82);
+        box-shadow: 0 0.16rem 0.5rem rgb(0 0 0 / 0.18);
+        font: inherit;
+        font-size: 0.65rem;
+        font-weight: 650;
+        line-height: 1;
+        cursor: pointer;
+        backdrop-filter: blur(0.45rem);
+        transition: background-color $transition-fast, transform $transition-fast;
+
+        &:hover {
+            background: rgb(18 18 22 / 0.94);
+            transform: translateY(-1px);
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+
+        &_iconOnly {
+            width: 1.75rem;
+            padding: 0;
+        }
+    }
+
+    &__VideoControlIcon {
+        display: inline-block;
+        flex: 0 0 auto;
+
+        &_pause {
+            width: 0.52rem;
+            height: 0.68rem;
+            border-right: 0.18rem solid currentColor;
+            border-left: 0.18rem solid currentColor;
+            border-radius: 0.04rem;
+        }
+    }
+
+    &__VideoControlPlayIcon {
+        width: 0.55rem;
+        height: 0.68rem;
+        margin-left: 0.08rem;
+        fill: currentColor;
+    }
+
+    &__VideoControlReplayIcon {
+        display: inline-block;
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 0.8;
     }
 
     &__VideoCaption {

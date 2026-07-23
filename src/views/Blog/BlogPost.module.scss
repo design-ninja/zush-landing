@@ -226,47 +226,13 @@
 
   &__RelatedGrid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
+    max-width: 56rem;
 
     @include mobile {
       grid-template-columns: 1fr;
     }
-  }
-
-  &__RelatedCard {
-    background: var(--muted);
-    border: 1px solid var(--border);
-    border-radius: $radius-lg;
-    padding: 1.25rem;
-    transition: border-color $transition-fast;
-    display: flex;
-    flex-direction: column;
-
-    &:hover {
-      border-color: var(--primary);
-    }
-
-    text-decoration: none;
-    color: inherit;
-  }
-
-  &__RelatedCardTitle {
-    margin-bottom: 0.5rem;
-  }
-
-  &__RelatedCardDesc {
-    flex: 1;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  &__RelatedCardMeta {
-    font-size: 0.75rem;
-    color: var(--muted-foreground);
-    margin-top: 0.75rem;
   }
 
 }

@@ -1,0 +1,45 @@
+---
+import { Image } from 'astro:assets';
+import { BLOG_PLATFORM_LABELS } from '@/data/blogSchema';
+import { formatBlogDate, type BlogPost } from '@/data/blog';
+import { getBlogThumbnail } from '@/data/blogThumbnails';
+import styles from './BlogHighlightCard.module.scss';
+
+interface Props {
+  post: BlogPost;
+}
+
+const { post } = Astro.props;
+---
+
+<article class={styles.BlogHighlightCard}>
+  <a class={styles.BlogHighlightCard__Link} href={`/blog/${post.slug}`}>
+    <Image
+      alt=""
+      aria-hidden="true"
+      class={styles.BlogHighlightCard__Image}
+      decoding="async"
+      loading="lazy"
+      src={getBlogThumbnail(post.slug)}
+      width={88}
+      height={88}
+      densities={[1, 2]}
+    />
+    <span class={styles.BlogHighlightCard__Body}>
+      <span
+        class:list={[
+          styles.BlogHighlightCard__Track,
+          styles[`BlogHighlightCard__Track_${post.platform}`],
+        ]}
+      >
+        {BLOG_PLATFORM_LABELS[post.platform]}
+      </span>
+      <h3 class={styles.BlogHighlightCard__Title}>{post.title}</h3>
+      <span class={styles.BlogHighlightCard__Meta}>
+        <time datetime={post.date}>{formatBlogDate(post.dateValue)}</time>
+        <span aria-hidden="true">·</span>
+        <span>{post.readingTime} min read</span>
+      </span>
+    </span>
+  </a>
+</article>

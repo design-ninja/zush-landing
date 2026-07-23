@@ -50,6 +50,8 @@ const localizedHref = (route: string): string =>
   isLocalizedRoute(route) && getLocalesForRoute(route).includes(locale)
     ? getLocalizedPath(route, locale)
     : route;
+
+const titleParts = copy.title.split('Zush');
 ---
 
 <section class={useCaseStyles.UseCases} aria-labelledby="home-workflows-title">
@@ -61,7 +63,7 @@ const localizedHref = (route: string): string =>
         id="home-workflows-title"
         className={sectionHeaderStyles.SectionHeader__Title}
       >
-        {copy.title}
+        {titleParts[0]}{titleParts.length > 1 ? <span class="brand-accent-text">Zush</span> : null}{titleParts.slice(1).join('Zush')}
       </Heading>
       <Text
         as="p"

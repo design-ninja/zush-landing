@@ -1,16 +1,22 @@
 import { Player, type PlayerRef } from '@remotion/player';
 import { useCallback, useEffect, useRef, useState, type ComponentType } from 'react';
+import type { FeatureDemoCopy } from '@/i18n/featureDemoCopy';
 
 const FADE_OUT_MS = 320;
 
 interface HoverPlayerProps {
-  component: ComponentType<Record<string, never>>;
+  component: ComponentType<FeatureAnimationInputProps>;
   durationInFrames: number;
   fps: number;
   width: number;
   height: number;
   loop?: boolean;
   previewFrame?: number;
+  inputProps?: FeatureAnimationInputProps;
+}
+
+export interface FeatureAnimationInputProps {
+  demoCopy?: FeatureDemoCopy;
 }
 
 const HoverPlayer = ({
@@ -21,11 +27,13 @@ const HoverPlayer = ({
   height,
   loop = false,
   previewFrame,
+  inputProps,
 }: HoverPlayerProps) => {
   const restingFrame = previewFrame ?? Math.max(0, durationInFrames - 1);
   const playerRef = useRef<PlayerRef>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const resetTimerRef = useRef<number | null>(null);
+  const hasPlayedRef = useRef(false);
   const [active, setActive] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
 
@@ -44,10 +52,11 @@ const HoverPlayer = ({
 
   const handleEnter = useCallback(() => {
     const player = playerRef.current;
-    if (!player) return;
+    if (!player || hasPlayedRef.current) return;
     clearResetTimer();
     player.seekTo(0);
     player.play();
+    hasPlayedRef.current = true;
     setActive(true);
   }, [clearResetTimer]);
 
@@ -59,6 +68,7 @@ const HoverPlayer = ({
       if (!player) return;
       player.pause();
       player.seekTo(0);
+      hasPlayedRef.current = false;
       resetTimerRef.current = null;
     }, FADE_OUT_MS);
   }, [clearResetTimer]);
@@ -109,6 +119,7 @@ const HoverPlayer = ({
           compositionWidth={width}
           compositionHeight={height}
           initialFrame={restingFrame}
+          inputProps={inputProps}
           loop={false}
           controls={false}
           showVolumeControls={false}
@@ -135,6 +146,7 @@ const HoverPlayer = ({
           compositionHeight={height}
           loop={loop}
           moveToBeginningWhenEnded={!loop ? false : undefined}
+          inputProps={inputProps}
           controls={false}
           showVolumeControls={false}
           clickToPlay={false}

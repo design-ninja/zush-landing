@@ -10,12 +10,10 @@
 
   &__Grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.25rem;
-
-    @include tablet {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    max-width: 56rem;
+    margin: 0 auto;
 
     @include mobile {
       grid-template-columns: 1fr;

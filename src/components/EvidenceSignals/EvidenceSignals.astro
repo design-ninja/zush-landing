@@ -10,8 +10,7 @@ import Heading from '@/components/Heading';
 import PillLink from '@/components/PillLink';
 import Text from '@/components/Text';
 import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module.scss';
-import formatStyles from '@/components/SupportedFormats/SupportedFormats.module.scss';
-import useCaseStyles from '@/components/UseCases/UseCases.module.scss';
+import styles from './EvidenceSignals.module.scss';
 
 const facts = [
   {
@@ -59,10 +58,10 @@ const sourceLinks = [
 ];
 ---
 
-<section class={useCaseStyles.UseCases}>
-  <div class={useCaseStyles.UseCases__Container}>
+<section class={styles.EvidenceSignals} aria-labelledby="about-zush-title">
+  <div class={styles.EvidenceSignals__Container}>
     <div class={sectionHeaderStyles.SectionHeader}>
-      <Heading as="h2" align="center" className={sectionHeaderStyles.SectionHeader__Title}>
+      <Heading id="about-zush-title" as="h2" align="center" className={sectionHeaderStyles.SectionHeader__Title}>
         What is <span class="brand-accent-text">Zush</span>
       </Heading>
       <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>
@@ -70,33 +69,27 @@ const sourceLinks = [
       </Text>
     </div>
 
-    <div class={`${useCaseStyles.UseCases__Grid} evidenceFactsGrid`}>
+    <dl class={styles.EvidenceSignals__Facts}>
       {facts.map((fact) => {
         const Icon = fact.icon;
 
         return (
-          <article
-            class={`${useCaseStyles.UseCaseCard} ${useCaseStyles[`UseCaseCard_${fact.color}`]} evidenceFactCard evidenceFactCard_${fact.color}`}
-          >
-            <div class={`${useCaseStyles.UseCaseCard__IconWrapper} evidenceFactIcon`}>
-              <Icon size={24} />
-            </div>
-            <Heading as="h3" className={useCaseStyles.UseCaseCard__Title}>
-              {fact.title}
-            </Heading>
-            <Text className={useCaseStyles.UseCaseCard__Description}>
-              {fact.description}
-            </Text>
-          </article>
+          <div class={`${styles.EvidenceSignals__Fact} ${styles[`EvidenceSignals__Fact_${fact.color}`]}`}>
+            <dt class={styles.EvidenceSignals__FactTitle}>
+              <Icon size={20} aria-hidden="true" />
+              <span>{fact.title}</span>
+            </dt>
+            <dd class={styles.EvidenceSignals__FactDescription}>{fact.description}</dd>
+          </div>
         );
       })}
-    </div>
+    </dl>
 
-    <div class={`${formatStyles.SupportedFormats} ${formatStyles.SupportedFormats__Group}`}>
-      <Heading as="h3" size="h4" align="center" className={formatStyles.SupportedFormats__GroupTitle}>
+    <div class={styles.EvidenceSignals__Sources}>
+      <Heading as="h3" size="h4" align="center" className={styles.EvidenceSignals__SourcesTitle}>
         Sources
       </Heading>
-      <div class={formatStyles.SupportedFormats__Tags}>
+      <div class={styles.EvidenceSignals__SourceLinks}>
         {sourceLinks.map((link) => (
           <PillLink
             href={link.href}
@@ -111,58 +104,3 @@ const sourceLinks = [
     </div>
   </div>
 </section>
-
-<style>
-  .evidenceFactsGrid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .evidenceFactsGrid .evidenceFactCard {
-    --fact-accent: var(--tone-green-fg);
-    --fact-card-bg: color-mix(in srgb, var(--fact-accent) 8%, var(--background));
-    --fact-card-border: color-mix(in srgb, var(--fact-accent) 24%, transparent);
-    --fact-icon-bg: color-mix(in srgb, var(--fact-accent) 15%, transparent);
-
-    background: var(--fact-card-bg);
-    border-color: var(--fact-card-border);
-  }
-
-  .evidenceFactsGrid .evidenceFactIcon {
-    background: var(--fact-icon-bg);
-    color: var(--fact-accent);
-  }
-
-  .evidenceFactsGrid .evidenceFactCard_green {
-    --fact-accent: var(--tone-green-fg);
-  }
-
-  .evidenceFactsGrid .evidenceFactCard_blue {
-    --fact-accent: var(--tone-blue-fg);
-  }
-
-  .evidenceFactsGrid .evidenceFactCard_purple {
-    --fact-accent: var(--tone-purple-fg);
-  }
-
-  .evidenceFactsGrid .evidenceFactCard_orange {
-    --fact-accent: var(--tone-orange-fg);
-  }
-
-  :global(html[data-theme='dark']) .evidenceFactsGrid .evidenceFactCard {
-    --fact-card-bg: color-mix(in srgb, var(--fact-accent) 11%, var(--card));
-    --fact-card-border: color-mix(in srgb, var(--fact-accent) 26%, transparent);
-    --fact-icon-bg: color-mix(in srgb, var(--fact-accent) 24%, transparent);
-  }
-
-  @media (max-width: 1024px) {
-    .evidenceFactsGrid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-
-  @media (max-width: 640px) {
-    .evidenceFactsGrid {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>

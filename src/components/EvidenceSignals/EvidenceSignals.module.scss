@@ -1,0 +1,88 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.EvidenceSignals {
+  padding: 4.5rem 0;
+
+  &__Container {
+    @include container;
+  }
+
+  &__Facts {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin: 2.25rem 0 0;
+  }
+
+  &__Fact {
+    min-width: 0;
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+
+    &_green { --fact-accent: var(--tone-green-fg); }
+    &_blue { --fact-accent: var(--tone-blue-fg); }
+    &_purple { --fact-accent: var(--tone-purple-fg); }
+    &_orange { --fact-accent: var(--tone-orange-fg); }
+  }
+
+  &__FactTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    margin: 0;
+    color: var(--foreground);
+    font-family: var(--font-family-heading);
+    font-size: 1rem;
+    font-weight: 550;
+    line-height: 1.25;
+
+    svg {
+      flex: 0 0 auto;
+      color: var(--fact-accent);
+    }
+  }
+
+  &__FactDescription {
+    margin: 0.7rem 0 0;
+    color: var(--muted-foreground);
+    font-size: 0.875rem;
+    line-height: 1.55;
+  }
+
+  &__Sources {
+    margin-top: 1.75rem;
+    padding-top: 1.5rem;
+    text-align: center;
+  }
+
+  &__SourcesTitle {
+    margin: 0 0 1rem;
+  }
+
+  &__SourceLinks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    max-width: 43.75rem;
+    margin: 0 auto;
+  }
+
+  @include tablet {
+    &__Facts {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+  }
+
+  @include small {
+    &__Facts {
+      grid-template-columns: 1fr;
+    }
+
+    &__Fact {
+      padding: 1.125rem 0;
+    }
+  }
+}

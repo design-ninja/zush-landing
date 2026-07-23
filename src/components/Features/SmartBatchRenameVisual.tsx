@@ -1,19 +1,26 @@
 import { Player, type PlayerRef } from '@remotion/player';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import type { FeatureDemoCopy } from '@/i18n/featureDemoCopy';
 import {
   SmartBatchRenameAnimation,
   SMART_BATCH_RENAME_DURATION,
   SMART_BATCH_RENAME_FPS,
   SMART_BATCH_RENAME_HEIGHT,
+  SMART_BATCH_RENAME_PREVIEW_FRAME,
   SMART_BATCH_RENAME_WIDTH,
 } from './SmartBatchRenameAnimation';
 
 const FADE_OUT_MS = 320;
 
-const SmartBatchRenameVisual = () => {
+interface SmartBatchRenameVisualProps {
+  demoCopy?: FeatureDemoCopy;
+}
+
+const SmartBatchRenameVisual = ({ demoCopy }: SmartBatchRenameVisualProps) => {
   const playerRef = useRef<PlayerRef>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const resetTimerRef = useRef<number | null>(null);
+  const hasPlayedRef = useRef(false);
   const [active, setActive] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
 
@@ -32,10 +39,11 @@ const SmartBatchRenameVisual = () => {
 
   const handleEnter = useCallback(() => {
     const player = playerRef.current;
-    if (!player) return;
+    if (!player || hasPlayedRef.current) return;
     clearResetTimer();
     player.seekTo(0);
     player.play();
+    hasPlayedRef.current = true;
     setActive(true);
   }, [clearResetTimer]);
 
@@ -47,6 +55,7 @@ const SmartBatchRenameVisual = () => {
       if (!player) return;
       player.pause();
       player.seekTo(0);
+      hasPlayedRef.current = false;
       resetTimerRef.current = null;
     }, FADE_OUT_MS);
   }, [clearResetTimer]);
@@ -88,6 +97,8 @@ const SmartBatchRenameVisual = () => {
           fps={SMART_BATCH_RENAME_FPS}
           compositionWidth={SMART_BATCH_RENAME_WIDTH}
           compositionHeight={SMART_BATCH_RENAME_HEIGHT}
+          initialFrame={SMART_BATCH_RENAME_PREVIEW_FRAME}
+          inputProps={{ demoCopy }}
           loop={false}
           controls={false}
           showVolumeControls={false}
@@ -114,6 +125,7 @@ const SmartBatchRenameVisual = () => {
           compositionHeight={SMART_BATCH_RENAME_HEIGHT}
           loop={false}
           moveToBeginningWhenEnded={false}
+          inputProps={{ demoCopy }}
           controls={false}
           showVolumeControls={false}
           clickToPlay={false}

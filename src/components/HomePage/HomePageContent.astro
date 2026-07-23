@@ -34,10 +34,6 @@ const heroVideoShowcaseByOS = {
   mac: HOME_HERO_BATCH_RENAME_VIDEO,
   windows: WINDOWS_HERO_BATCH_RENAME_VIDEO,
 };
-const offlineBadge = {
-  label: copy.home.featureCards.offlineAi.title,
-  modal: copy.home.offlineAiModal,
-};
 ---
 
 <Hero
@@ -57,14 +53,15 @@ const offlineBadge = {
   videoShowcaseByOS={heroVideoShowcaseByOS}
   macVersion={macVersion}
   windowsVersion={windowsVersion}
-  offlineBadge={offlineBadge}
 />
 <Features
   title={copy.home.featuresTitle}
   description={copy.home.featuresDescription}
   copy={copy.home.featureCards}
+  locale={locale}
   compactTopSpacing
 />
+<CloudFolders title={copy.home.cloudFoldersTitle} />
 <Tour client:visible copy={copy.home.showcase} />
 {locale === 'en' && <EvidenceSignals />}
 <Testimonials locale={locale} />
@@ -76,10 +73,6 @@ const offlineBadge = {
   documentsLabel={copy.home.documents}
   videosLabel={copy.home.videosLabel}
   audioLabel={copy.home.audioLabel}
-/>
-<CloudFolders
-  title={copy.home.cloudFoldersTitle}
-  description={copy.home.cloudFoldersDescription}
 />
 <HomeWorkflows copy={copy.home.workflows} locale={locale} />
 {locale === 'en' && <HomeBlogHighlights />}

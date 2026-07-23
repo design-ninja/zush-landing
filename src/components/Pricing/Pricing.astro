@@ -1,5 +1,6 @@
 ---
 import SectionHeader from '@/components/SectionHeader';
+import StarRating from '@/components/StarRating';
 import Text from '@/components/Text';
 import buttonStyles from '@/components/Button/Button.module.scss';
 import { PRICING_PLANS, PRO_FEATURES } from './constants';
@@ -18,24 +19,31 @@ interface Props {
     description: string;
     buttonHint: string;
     features: Array<{ title: string; desc: string }>;
-    sharedFeaturesTitle?: string;
-    monthlyDifferentiators?: string[];
     oneTimeDifferentiators?: string[];
     monthlyPlan?: PlanCopy;
     oneTimePlan?: PlanCopy;
+    bestValueBadge?: string;
+    trustedByLine?: string;
   };
 }
 
 const { copy } = Astro.props as Props;
-const paidButtonClass = [
+const featuredButtonClass = [
   buttonStyles.Button,
   buttonStyles.Button_primary,
-  buttonStyles.Button_lg,
+  buttonStyles.Button_md,
   buttonStyles.Button_glass,
   buttonStyles.Button_fluid,
 ].join(' ');
+const regularButtonClass = [
+  buttonStyles.Button,
+  buttonStyles.Button_ghost,
+  buttonStyles.Button_md,
+  buttonStyles.Button_fluid,
+].join(' ');
 const trustLine = copy?.buttonHint ?? '14-day money-back guarantee • Secure via Paddle';
-const sharedFeaturesTitle = copy?.sharedFeaturesTitle ?? 'PRO 🌟 Features';
+const bestValueBadge = copy?.bestValueBadge ?? 'Best value';
+const trustedByLine = copy?.trustedByLine ?? 'Trusted by 1,500+ users';
 const rawTitle = copy?.title ?? 'Choose your PRO plan';
 const titleHtml = rawTitle.replace(
   /\bPRO\b/,
@@ -46,109 +54,146 @@ const sharedFeatures = PRO_FEATURES.map((feature, index) => ({
   title: copy?.features[index]?.title ?? feature.title,
   desc: copy?.features[index]?.desc ?? feature.desc,
 }));
+const oneTimeDiffs = copy?.oneTimeDifferentiators;
 const plans = PRICING_PLANS.map((plan) => {
-  const localizedDifferentiators =
-    plan.id === 'monthly' ? copy?.monthlyDifferentiators : copy?.oneTimeDifferentiators;
   const planCopy: PlanCopy | undefined =
     plan.id === 'monthly' ? copy?.monthlyPlan : copy?.oneTimePlan;
+  const featured = plan.id === 'one-time';
 
   return {
     ...plan,
+    featured,
     titleSuffix: planCopy?.titleSuffix ?? plan.titleSuffix,
     description: planCopy?.description ?? plan.description,
     buttonText: planCopy?.buttonText ?? plan.buttonText,
     billing: planCopy?.billing ?? plan.billing,
-    differentiators: plan.differentiators.map((differentiator, index) => ({
-      ...differentiator,
-      title: localizedDifferentiators?.[index] ?? differentiator.title,
-    })),
+    // The pays-off line lives in the localized one-time differentiators (last item).
+    priceNote: featured
+      ? oneTimeDiffs?.[oneTimeDiffs.length - 1] ?? plan.priceNote
+      : undefined,
   };
 });
 ---
 
 <section id="pricing" class={styles.Pricing}>
   <div class={styles.Pricing__Container}>
+    <img
+      class={styles.Pricing__AppIcon}
+      src="/logo-96.png"
+      alt=""
+      width="96"
+      height="96"
+      loading="lazy"
+      decoding="async"
+    />
     <SectionHeader
       titleHtml={titleHtml}
       description={copy?.description ?? 'Monthly flexibility or one-time lifetime access. Both plans unlock unlimited PRO.'}
+      className={styles.Pricing__Header}
     />
 
     <div class={styles.Pricing__Layout}>
-      <div class={styles.Pricing__Shared}>
-        <div class={styles.Pricing__SharedHeader}>
-          <h3
-            class={styles.Pricing__SharedTitle}
-            set:html={sharedFeaturesTitle.replace(
-              /\bPRO\b/,
-              `<span class="${styles.Pricing__SharedTitlePro}">PRO</span>`,
-            )}
-          />
-        </div>
+      <ul class={styles.Pricing__SharedList}>
+        {sharedFeatures.map((feature) => {
+          const Icon = feature.icon;
 
-        <ul class={styles.Pricing__SharedList}>
-          {sharedFeatures.map((feature) => {
-            const Icon = feature.icon;
+          return (
+            <li class={styles.Pricing__SharedFeature} data-tone={feature.tone}>
+              <span class={styles.Pricing__SharedFeatureIcon}>
+                <Icon size={20} aria-hidden="true" />
+              </span>
+              <span class={styles.Pricing__SharedFeatureCopy}>
+                <span class={styles.Pricing__SharedFeatureTitle}>{feature.title}</span>
+                <span class={styles.Pricing__SharedFeatureDesc}>{feature.desc}</span>
+              </span>
+            </li>
+          );
+        })}
+      </ul>
 
-            return (
-              <li class={styles.Pricing__SharedFeature} data-tone={feature.tone}>
-                <span class={styles.Pricing__SharedFeatureIcon}>
-                  <Icon size={20} aria-hidden="true" />
-                </span>
-                <span class={styles.Pricing__SharedFeatureCopy}>
-                  <span class={styles.Pricing__SharedFeatureTitle}>{feature.title}</span>
-                  <span class={styles.Pricing__SharedFeatureDesc}>{feature.desc}</span>
-                </span>
-              </li>
-            );
-          })}
-        </ul>
+      <div class={styles.Pricing__Trusted}>
+        <svg class={styles.Pricing__Laurel} viewBox="0 0 28 58" fill="currentColor" aria-hidden="true">
+          <defs>
+            <path id="zush-laurel-leaf-a" d="M0 0 C-2.1 -2.6 -2.1 -6 0 -8.6 C2.1 -6 2.1 -2.6 0 0 Z" />
+          </defs>
+          <use href="#zush-laurel-leaf-a" transform="translate(19 52.5) rotate(-72)" />
+          <use href="#zush-laurel-leaf-a" transform="translate(14.5 45.5) rotate(-62)" />
+          <use href="#zush-laurel-leaf-a" transform="translate(16 46.5) rotate(-12) scale(0.85)" />
+          <use href="#zush-laurel-leaf-a" transform="translate(11.5 37.5) rotate(-52)" />
+          <use href="#zush-laurel-leaf-a" transform="translate(13.2 38.5) rotate(-4) scale(0.85)" />
+          <use href="#zush-laurel-leaf-a" transform="translate(10 29.5) rotate(-42)" />
+          <use href="#zush-laurel-leaf-a" transform="translate(11.8 30.5) rotate(4) scale(0.85)" />
+          <use href="#zush-laurel-leaf-a" transform="translate(10.6 21.5) rotate(-32)" />
+          <use href="#zush-laurel-leaf-a" transform="translate(12.4 22.3) rotate(12) scale(0.85)" />
+          <use href="#zush-laurel-leaf-a" transform="translate(12 13.5) rotate(-22)" />
+          <use href="#zush-laurel-leaf-a" transform="translate(13.8 14) rotate(18) scale(0.85)" />
+          <use href="#zush-laurel-leaf-a" transform="translate(14.4 7) rotate(-6)" />
+        </svg>
+        <span class={styles.Pricing__TrustedContent}>
+          <StarRating decorative className={styles.Pricing__TrustedStars} />
+          <span class={styles.Pricing__TrustedLabel}>{trustedByLine}</span>
+        </span>
+        <svg class={`${styles.Pricing__Laurel} ${styles.Pricing__Laurel_mirrored}`} viewBox="0 0 28 58" fill="currentColor" aria-hidden="true">
+          <defs>
+            <path id="zush-laurel-leaf-b" d="M0 0 C-2.1 -2.6 -2.1 -6 0 -8.6 C2.1 -6 2.1 -2.6 0 0 Z" />
+          </defs>
+          <use href="#zush-laurel-leaf-b" transform="translate(19 52.5) rotate(-72)" />
+          <use href="#zush-laurel-leaf-b" transform="translate(14.5 45.5) rotate(-62)" />
+          <use href="#zush-laurel-leaf-b" transform="translate(16 46.5) rotate(-12) scale(0.85)" />
+          <use href="#zush-laurel-leaf-b" transform="translate(11.5 37.5) rotate(-52)" />
+          <use href="#zush-laurel-leaf-b" transform="translate(13.2 38.5) rotate(-4) scale(0.85)" />
+          <use href="#zush-laurel-leaf-b" transform="translate(10 29.5) rotate(-42)" />
+          <use href="#zush-laurel-leaf-b" transform="translate(11.8 30.5) rotate(4) scale(0.85)" />
+          <use href="#zush-laurel-leaf-b" transform="translate(10.6 21.5) rotate(-32)" />
+          <use href="#zush-laurel-leaf-b" transform="translate(12.4 22.3) rotate(12) scale(0.85)" />
+          <use href="#zush-laurel-leaf-b" transform="translate(12 13.5) rotate(-22)" />
+          <use href="#zush-laurel-leaf-b" transform="translate(13.8 14) rotate(18) scale(0.85)" />
+          <use href="#zush-laurel-leaf-b" transform="translate(14.4 7) rotate(-6)" />
+        </svg>
       </div>
 
       <div class={styles.Pricing__Plans}>
         {plans.map((plan) => (
-        <div class={styles.PricingCard} id={plan.id === 'monthly' ? 'pro' : undefined}>
-          <div class={styles.PricingCard__Top}>
-            <div class={styles.PricingCard__Header}>
-              <h3 class={styles.PricingCard__Name}>
-                <span class={styles.PricingCard__NameZush}>Zush</span>{' '}
-                <span class={styles.PricingCard__NamePro}>PRO</span>{' '}
-                <span>{plan.titleSuffix}</span>
-              </h3>
-              <Text
-                as="p"
-                size="sm"
-                color="subtle"
-                className={styles.PricingCard__Description}
-              >
-                {plan.description}
-              </Text>
-            </div>
+        <article
+          class:list={[styles.PricingCard, plan.featured && styles.PricingCard_featured]}
+          id={plan.id === 'monthly' ? 'pro' : undefined}
+        >
+          {plan.featured && (
+            <span class={styles.PricingCard__Badge}>{bestValueBadge}</span>
+          )}
 
-            <div class={styles.PricingCard__Price}>
+          <header class={styles.PricingCard__Header}>
+            <h3 class={styles.PricingCard__Name}>
+              <span class={styles.PricingCard__NamePro}>PRO</span>{' '}
+              <span class={styles.PricingCard__NameStar} aria-hidden="true">🌟</span>{' '}
+              <span>{plan.titleSuffix}</span>
+            </h3>
+            <Text
+              as="p"
+              size="sm"
+              color="subtle"
+              className={styles.PricingCard__Description}
+            >
+              {plan.description}
+            </Text>
+          </header>
+
+          <div class={styles.PricingCard__Pricing}>
+            <p class={styles.PricingCard__Price}>
               <span class={styles.PricingCard__PriceValue}>{plan.price}</span>
               {plan.billing && (
                 <span class={styles.PricingCard__PricePeriod}>{plan.billing}</span>
               )}
-            </div>
+            </p>
+            {plan.priceNote && (
+              <p class={styles.PricingCard__PriceNote}>{plan.priceNote}</p>
+            )}
           </div>
-
-          <ul class={styles.PricingCard__Differentiators}>
-            {plan.differentiators.map((differentiator) => {
-              const Icon = differentiator.icon;
-
-              return (
-                <li class={styles.PricingCard__Differentiator}>
-                  <Icon size={20} aria-hidden="true" />
-                  <span>{differentiator.title}</span>
-                </li>
-              );
-            })}
-          </ul>
 
           <div class={styles.PricingCard__ButtonWrapper}>
             <button
               type="button"
-              class={paidButtonClass}
+              class={plan.featured ? featuredButtonClass : regularButtonClass}
               data-paddle-checkout
               data-paddle-price-id={plan.paddlePriceId}
               data-pro-plan-id={plan.id}
@@ -160,7 +205,7 @@ const plans = PRICING_PLANS.map((plan) => {
               </span>
             </button>
           </div>
-        </div>
+        </article>
         ))}
       </div>
     </div>

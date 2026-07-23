@@ -1,10 +1,8 @@
-import { Fragment, type ReactNode, useState } from "react";
-import { ShieldCheck } from "lucide-react";
+import { Fragment, type ReactNode } from "react";
 import FileShowcase from "../FileShowcase";
 import type { Slide } from "../FileShowcase";
 import DownloadButton from "../DownloadButton";
 import Heading from "../Heading";
-import OfflineAiModal, { type OfflineAiModalCopy } from "../OfflineAiModal";
 import StarRating from "../StarRating";
 import Text from "../Text";
 import HeroVideoShowcase from "./HeroVideoShowcase";
@@ -38,10 +36,6 @@ interface HeroProps {
   reviewsLabel?: string;
   macVersion?: string;
   windowsVersion?: string;
-  offlineBadge?: {
-    label: string;
-    modal: OfflineAiModalCopy;
-  };
 }
 
 const renderTextWithBreaks = (value: string) =>
@@ -103,10 +97,8 @@ const Hero = ({
   windowsVersion,
   videoShowcase,
   videoShowcaseByOS,
-  offlineBadge,
 }: HeroProps) => {
   const highlightText = titleHighlight ?? titleAccent;
-  const [isOfflineModalOpen, setIsOfflineModalOpen] = useState(false);
   const { downloadOS: detectedOS } = useOS();
   const versionOS = forceOS ?? detectedOS;
   const selectedVideoShowcase = videoShowcaseByOS?.[versionOS] ?? videoShowcase;
@@ -162,25 +154,11 @@ const Hero = ({
     >
       <div className={styles.Hero__Container}>
         <div className={styles.Hero__Intro}>
-          {(reviewsHref || offlineBadge) && (
+          {reviewsHref && (
             <div className={styles.Hero__ProofRow}>
-              {reviewsHref && (
-                <a className={styles.Hero__RatingLink} href={reviewsHref} aria-label={reviewsLabel}>
-                  <StarRating decorative />
-                </a>
-              )}
-              {offlineBadge && (
-                <button
-                  type="button"
-                  className={styles.Hero__OfflineBadge}
-                  aria-haspopup="dialog"
-                  aria-expanded={isOfflineModalOpen}
-                  onClick={() => setIsOfflineModalOpen(true)}
-                >
-                  <ShieldCheck className={styles.Hero__OfflineBadgeIcon} aria-hidden="true" />
-                  <Text as="span" size="xs" color="success">{offlineBadge.label}</Text>
-                </button>
-              )}
+              <a className={styles.Hero__RatingLink} href={reviewsHref} aria-label={reviewsLabel}>
+                <StarRating decorative />
+              </a>
             </div>
           )}
           <Heading as="h1" className={styles.Hero__Title}>
@@ -236,13 +214,6 @@ const Hero = ({
           <div className={styles.Hero__GlowEffect} />
         </div>
       </div>
-      {offlineBadge && (
-        <OfflineAiModal
-          copy={offlineBadge.modal}
-          isOpen={isOfflineModalOpen}
-          onClose={() => setIsOfflineModalOpen(false)}
-        />
-      )}
     </Tag>
   );
 };

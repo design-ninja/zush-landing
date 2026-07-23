@@ -1,5 +1,6 @@
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from 'remotion';
 import { Check, ShieldCheck } from 'lucide-react';
+import { FEATURE_DEMO_COPY, type FeatureDemoCopy } from '@/i18n/featureDemoCopy';
 
 const PRIMARY = 'var(--primary)';
 const SUCCESS = 'var(--success)';
@@ -11,7 +12,11 @@ const DOWNLOAD_START = 26;
 const DOWNLOAD_END = 60;
 const READY_AT = 62;
 
-export const OfflineAiAnimation = () => {
+interface OfflineAiAnimationProps {
+  demoCopy?: FeatureDemoCopy;
+}
+
+export const OfflineAiAnimation = ({ demoCopy = FEATURE_DEMO_COPY.en }: OfflineAiAnimationProps) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -169,7 +174,7 @@ export const OfflineAiAnimation = () => {
                   }}
                 >
                   <Check size={13} strokeWidth={3} />
-                  Local model ready
+                  {demoCopy.localModelReadyLabel}
                 </div>
               ) : null}
             </div>
@@ -193,7 +198,7 @@ export const OfflineAiAnimation = () => {
           }}
         >
           <ShieldCheck size={14} strokeWidth={2.4} />
-          100% offline · zero data leaves your Mac
+          {demoCopy.offlinePrivacyLabel}
         </div>
       </div>
     </AbsoluteFill>

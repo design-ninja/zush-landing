@@ -1,64 +1,47 @@
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from 'remotion';
-import { FileText, Image as ImageIcon, Sparkles, Check } from 'lucide-react';
-import type { ComponentType, CSSProperties } from 'react';
-
-const PdfIcon = ({ size = 20, strokeWidth = 2.2 }: { size?: number; strokeWidth?: number; color?: string }) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox='0 0 24 24'
-    fill='none'
-    stroke='currentColor'
-    strokeWidth={strokeWidth}
-    strokeLinecap='round'
-    strokeLinejoin='round'
-  >
-    <path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z' />
-    <polyline points='14 2 14 8 20 8' />
-    <text
-      x='12'
-      y='18'
-      fontSize='6'
-      fontWeight='700'
-      fill='currentColor'
-      stroke='none'
-      textAnchor='middle'
-      fontFamily='Inter, sans-serif'
-    >
-      PDF
-    </text>
-  </svg>
-);
+import {
+  ArrowDown,
+  ArrowRight,
+  Check,
+  FileText,
+  Image as ImageIcon,
+  ReceiptText,
+  Sparkles,
+} from 'lucide-react';
+import type { ComponentType } from 'react';
+import { FEATURE_DEMO_COPY, type FeatureDemoCopy } from '@/i18n/featureDemoCopy';
 
 interface FileEntry {
   icon: ComponentType<{ size?: number; strokeWidth?: number; color?: string }>;
   tint: string;
   oldName: string;
-  newName: string;
-  swapAt: number;
+  aiTitle: string;
+  revealAt: number;
+  customValue?: string;
 }
 
 const FILES: FileEntry[] = [
   {
-    icon: FileText,
-    tint: '#2563eb',
-    oldName: 'Document1 (3).docx',
-    newName: 'Q1_Strategy_Notes.docx',
-    swapAt: 28,
+    icon: ReceiptText,
+    tint: '#dc2626',
+    oldName: 'invoice_8742.pdf',
+    aiTitle: 'Northstar Services Invoice',
+    customValue: '$59.99',
+    revealAt: 18,
   },
   {
     icon: ImageIcon,
     tint: 'var(--success)',
-    oldName: 'Screenshot 19.45.png',
-    newName: 'Bali_Sunset_Beach.png',
-    swapAt: 40,
+    oldName: 'IMG_5831.png',
+    aiTitle: 'Family Weekend in San Francisco',
+    revealAt: 32,
   },
   {
-    icon: PdfIcon,
-    tint: '#dc2626',
-    oldName: 'doc_FINAL_v3.pdf',
-    newName: 'Investor_Update_Deck.pdf',
-    swapAt: 52,
+    icon: FileText,
+    tint: '#2563eb',
+    oldName: 'document (14).docx',
+    aiTitle: 'Annual Medical Fitness Certificate',
+    revealAt: 46,
   },
 ];
 
@@ -66,34 +49,41 @@ const PRIMARY = 'var(--primary)';
 const PRIMARY_SOFT = 'var(--primary-soft)';
 const SUCCESS = 'var(--success)';
 const MUTED = 'var(--muted-foreground)';
+const FG = 'var(--foreground)';
 const BG = 'var(--background)';
 const BORDER = 'var(--border)';
+const PROMPT_REVEAL_AT = 62;
 
-export const SmartBatchRenameAnimation = () => {
+interface SmartBatchRenameAnimationProps {
+  demoCopy?: FeatureDemoCopy;
+}
+
+export const SmartBatchRenameAnimation = ({ demoCopy = FEATURE_DEMO_COPY.en }: SmartBatchRenameAnimationProps) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const files = FILES.map((file, index) => ({
+    ...file,
+    aiTitle: demoCopy.smartBatchGeneratedNames[index] ?? file.aiTitle,
+  }));
 
   return (
-    <AbsoluteFill
-      style={{
-        background: 'transparent',
-        padding: 8,
-        fontFamily: 'inherit',
-      }}
-    >
+    <AbsoluteFill style={{ background: 'transparent', padding: 8, fontFamily: 'inherit' }}>
       <div
         style={{
           position: 'relative',
+          boxSizing: 'border-box',
           width: '100%',
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
-          gap: 12,
-          justifyContent: 'center',
+          alignItems: 'center',
+          justifyContent: 'flex-start',
+          gap: 9,
+          paddingTop: 66,
         }}
       >
-        {FILES.map((file, i) => (
-          <FileRow key={i} file={file} frame={frame} fps={fps} />
+        {files.map((file) => (
+          <FileRow key={file.oldName} file={file} frame={frame} fps={fps} demoCopy={demoCopy} />
         ))}
       </div>
     </AbsoluteFill>
@@ -104,14 +94,14 @@ interface FileRowProps {
   file: FileEntry;
   frame: number;
   fps: number;
+  demoCopy: FeatureDemoCopy;
 }
 
-const FileRow = ({ file, frame, fps }: FileRowProps) => {
+const FileRow = ({ file, frame, fps, demoCopy }: FileRowProps) => {
   const Icon = file.icon;
-  const { swapAt, oldName, newName, tint } = file;
-
-  const scanStart = swapAt - 14;
-  const scanEnd = swapAt - 2;
+  const { revealAt, oldName, aiTitle, tint, customValue } = file;
+  const scanStart = revealAt - 10;
+  const scanEnd = revealAt - 2;
   const scanProgress = interpolate(frame, [scanStart, scanEnd], [0, 1], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
@@ -128,185 +118,226 @@ const FileRow = ({ file, frame, fps }: FileRowProps) => {
     [0, 1, 0],
     { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' },
   );
-
-  const strike = interpolate(frame, [swapAt - 4, swapAt + 2], [0, 1], {
-    extrapolateLeft: 'clamp',
-    extrapolateRight: 'clamp',
-  });
-
-  const oldOpacity = interpolate(frame, [swapAt + 1, swapAt + 8], [1, 0], {
-    extrapolateLeft: 'clamp',
-    extrapolateRight: 'clamp',
-  });
-
-  const newProgress = spring({
-    frame: frame - swapAt - 2,
+  const resultProgress = spring({
+    frame: frame - revealAt,
     fps,
-    config: { damping: 14, mass: 0.6 },
-    durationInFrames: 16,
+    config: { damping: 14, mass: 0.55 },
+    durationInFrames: 14,
   });
-
-  const newTranslateY = (1 - newProgress) * 10;
-  const newOpacity = newProgress;
-
   const checkProgress = spring({
-    frame: frame - swapAt - 6,
+    frame: frame - revealAt - 5,
     fps,
-    config: { damping: 10, mass: 0.4 },
+    config: { damping: 11, mass: 0.4 },
     durationInFrames: 10,
   });
-
-  const showCheck = frame > swapAt + 2;
-  const rowGlow = scanGlow * 0.5;
-
-  const containerStyle: CSSProperties = {
-    position: 'relative',
-    display: 'flex',
-    alignItems: 'center',
-    gap: 12,
-    padding: '12px 14px',
-    background: BG,
-    border: `1px solid ${BORDER}`,
-    borderRadius: 14,
-    boxShadow: `0 1px 3px rgba(0,0,0,0.05), 0 0 0 ${rowGlow * 3}px color-mix(in srgb, var(--primary), transparent 78%)`,
-    overflow: 'hidden',
-  };
+  const promptProgress = frame >= PROMPT_REVEAL_AT
+    ? spring({
+        frame: frame - PROMPT_REVEAL_AT,
+        fps,
+        config: { damping: 14, mass: 0.55 },
+        durationInFrames: 14,
+      })
+    : 0;
+  const showCheck = frame > revealAt + 2;
 
   return (
-    <div style={containerStyle}>
+    <div
+      style={{
+        position: 'relative',
+        width: 'fit-content',
+        maxWidth: '100%',
+        display: 'grid',
+        gridTemplateColumns: '34px max-content 18px max-content 18px',
+        alignItems: 'center',
+        gap: 9,
+        minHeight: 55,
+        padding: '8px 11px',
+        background: BG,
+        border: `1px solid ${BORDER}`,
+        borderRadius: 13,
+        boxShadow: `0 1px 3px rgba(0,0,0,0.035), 0 0 0 ${scanGlow * 3}px color-mix(in srgb, var(--primary), transparent 82%)`,
+        overflow: customValue ? 'visible' : 'hidden',
+      }}
+    >
       <div
         aria-hidden
         style={{
           position: 'absolute',
-          top: 0,
-          bottom: 0,
+          insetBlock: 0,
           left: `${scanProgress * 100}%`,
-          width: 36,
-          marginLeft: -18,
-          background: `linear-gradient(90deg, transparent, color-mix(in srgb, ${PRIMARY}, transparent 35%), transparent)`,
+          width: 38,
+          marginLeft: -19,
+          background: `linear-gradient(90deg, transparent, color-mix(in srgb, ${PRIMARY}, transparent 38%), transparent)`,
           opacity: scanOpacity,
           mixBlendMode: 'screen',
           pointerEvents: 'none',
         }}
       />
-      <div
+
+      <span
         style={{
-          width: 36,
-          height: 36,
+          width: 34,
+          height: 34,
           borderRadius: 10,
-          background: `color-mix(in srgb, ${tint}, transparent 80%)`,
+          background: `color-mix(in srgb, ${tint}, transparent 82%)`,
           color: tint,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          flexShrink: 0,
         }}
       >
-        <Icon size={20} strokeWidth={2.2} />
-      </div>
+        <Icon size={18} strokeWidth={2.2} />
+      </span>
 
-      <div
+      <span
         style={{
-          flex: 1,
           minWidth: 0,
-          position: 'relative',
-          height: 24,
+          color: MUTED,
+          fontSize: 10.5,
+          whiteSpace: 'nowrap',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+        }}
+      >
+        {oldName}
+      </span>
+
+      <ArrowRight size={13} color={MUTED} strokeWidth={1.8} />
+
+      <span
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 3,
+          minWidth: 0,
+          opacity: resultProgress,
+          transform: `translateX(${(1 - resultProgress) * 8}px)`,
+          whiteSpace: 'nowrap',
+          overflow: 'visible',
         }}
       >
         <span
           style={{
-            position: 'absolute',
-            inset: 0,
-            display: 'flex',
-            alignItems: 'center',
-            fontSize: 14,
-            color: MUTED,
-            opacity: oldOpacity,
-            whiteSpace: 'nowrap',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-          }}
-        >
-          {oldName}
-          <span
-            aria-hidden
-            style={{
-              position: 'absolute',
-              left: 0,
-              top: '50%',
-              height: 1.5,
-              width: `${strike * 100}%`,
-              background: MUTED,
-              transform: 'translateY(-50%)',
-            }}
-          />
-        </span>
-
-        <span
-          style={{
-            position: 'absolute',
-            inset: 0,
-            display: 'flex',
-            alignItems: 'center',
-            fontSize: 14,
+            flexShrink: 0,
+            padding: '4px 5px',
+            borderRadius: 7,
+            background: PRIMARY_SOFT,
             color: PRIMARY,
-            opacity: newOpacity,
-            transform: `translateY(${newTranslateY}px)`,
-            whiteSpace: 'nowrap',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
+            fontSize: 10.5,
+            letterSpacing: '-0.015em',
           }}
         >
+          {aiTitle}
+        </span>
+        {customValue ? (
           <span
             style={{
-              background: PRIMARY_SOFT,
-              padding: '3px 9px',
+              position: 'relative',
+              flexShrink: 0,
+              padding: '4px 5px',
               borderRadius: 7,
-              maxWidth: '100%',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              whiteSpace: 'nowrap',
+              background: 'color-mix(in srgb, var(--success), transparent 88%)',
+              color: SUCCESS,
+              fontSize: 8.25,
+              fontWeight: 650,
             }}
           >
-            {newName}
+            {frame >= PROMPT_REVEAL_AT ? (
+              <span
+                style={{
+                  position: 'absolute',
+                  left: '50%',
+                  bottom: 38,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: 4,
+                  zIndex: 3,
+                  opacity: promptProgress,
+                  transform: `translate(-50%, ${(1 - promptProgress) * -8}px)`,
+                  pointerEvents: 'none',
+                }}
+              >
+                <span
+                  style={{
+                    color: FG,
+                    fontSize: 10,
+                    fontWeight: 650,
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  {demoCopy.smartBatchPromptLabel}
+                </span>
+                <span
+                  style={{
+                    position: 'relative',
+                    padding: '6px 9px',
+                    border: `1px solid ${BORDER}`,
+                    borderRadius: 8,
+                    background: BG,
+                    color: MUTED,
+                    fontSize: 9.5,
+                    fontWeight: 500,
+                    lineHeight: 1,
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  {demoCopy.smartBatchPromptText}
+                  <span
+                    aria-hidden
+                    style={{
+                      marginLeft: 1,
+                      color: PRIMARY,
+                      opacity: 1,
+                    }}
+                  >
+                    |
+                  </span>
+                  <ArrowDown
+                    size={12}
+                    color={SUCCESS}
+                    strokeWidth={2.4}
+                    style={{
+                      position: 'absolute',
+                      left: '50%',
+                      bottom: -13,
+                      transform: 'translateX(-50%)',
+                    }}
+                  />
+                </span>
+              </span>
+            ) : null}
+            {customValue}
           </span>
-        </span>
-      </div>
+        ) : null}
+      </span>
 
       {showCheck ? (
-        <div
+        <span
           style={{
-            width: 20,
-            height: 20,
+            width: 12,
+            height: 12,
             borderRadius: 999,
             background: SUCCESS,
             color: 'var(--success-foreground, #ffffff)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            flexShrink: 0,
             transform: `scale(${checkProgress})`,
             opacity: checkProgress,
           }}
         >
-          <Check size={13} strokeWidth={3} />
-        </div>
+          <Check size={8} strokeWidth={2.8} />
+        </span>
       ) : (
-        <Sparkles
-          size={18}
-          color={PRIMARY}
-          strokeWidth={2}
-          style={{
-            opacity: scanGlow,
-            flexShrink: 0,
-          }}
-        />
+        <Sparkles size={15} color={PRIMARY} strokeWidth={2} style={{ opacity: scanGlow }} />
       )}
     </div>
   );
 };
 
-export const SMART_BATCH_RENAME_DURATION = 76;
+export const SMART_BATCH_RENAME_DURATION = 78;
 export const SMART_BATCH_RENAME_FPS = 30;
-export const SMART_BATCH_RENAME_WIDTH = 340;
-export const SMART_BATCH_RENAME_HEIGHT = 220;
+export const SMART_BATCH_RENAME_WIDTH = 560;
+export const SMART_BATCH_RENAME_HEIGHT = 270;
+export const SMART_BATCH_RENAME_PREVIEW_FRAME = 60;

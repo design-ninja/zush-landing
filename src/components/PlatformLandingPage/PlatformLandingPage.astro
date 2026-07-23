@@ -140,11 +140,6 @@ const platformTrustSignals = platform === 'mac'
   ? ['Free 50 renames', 'No credit card', 'Preview + undo every batch']
   : copy.home.trustSignals;
 
-const heroOfflineBadge = {
-  label: copy.home.featureCards.offlineAi.title,
-  modal: copy.home.offlineAiModal,
-};
-
 const intentSection = platform === 'mac'
   ? {
       eyebrow: 'Mac AI file renaming',
@@ -340,7 +335,6 @@ const jsonLdItems = [
     trustSignals={platformTrustSignals}
     reviewsHref="#reviews"
     reviewsLabel={copy.header.reviews}
-    offlineBadge={heroOfflineBadge}
     secondaryHref="#pricing"
     slides={copy.home.showcaseSlides}
     videoShowcase={platform === 'windows' ? WINDOWS_HERO_BATCH_RENAME_VIDEO : HOME_HERO_BATCH_RENAME_VIDEO}
@@ -351,6 +345,7 @@ const jsonLdItems = [
     title={platformSections.featuresTitle}
     description={platformSections.featuresDescription}
     copy={platformSections.featureCards}
+    locale={locale}
   />
   {locale === DEFAULT_LOCALE && (
     <section class={styles.IntentSection} aria-labelledby='platform-intent-heading'>

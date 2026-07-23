@@ -98,6 +98,9 @@ export interface FeatureCardsCopy {
   customPrompts: { title: string; description: string };
   byok: { title: string; description: string };
   offlineAi: { title: string; description: string };
+  cloudAi: { title: string; description: string };
+  bandTitle: string;
+  bandSubtitle: string;
   addFolder: string;
   promptRules: string;
   customBadge: string;
@@ -121,7 +124,7 @@ export interface FeatureCardsCopy {
 export const DEFAULT_FEATURE_CARDS_COPY: FeatureCardsCopy = {
   aiAnalysis: {
     title: 'Smart Batch Rename',
-    description: 'Batch rename mixed folders with smart analysis across 100+ file formats, from images, design files, and PDFs to audio, videos, iWork, and Office documents.',
+    description: 'Analyze and rename 100+ file formats in one batch, from images and PDFs to audio, video, and Office files.',
   },
   foldersMonitoring: {
     title: 'Folders Monitoring',
@@ -141,7 +144,7 @@ export const DEFAULT_FEATURE_CARDS_COPY: FeatureCardsCopy = {
   },
   customAiBlocks: {
     title: 'Custom AI Blocks',
-    description: 'Describe what Zush should extract from a file — brand, client, case number, or any detail — and reuse it as your own naming block in any template. Included in the free version.',
+    description: 'Describe any detail for Zush to extract, then reuse it as a Custom AI Block in any template.',
   },
   audioSupport: {
     title: 'Audio Support',
@@ -171,6 +174,12 @@ export const DEFAULT_FEATURE_CARDS_COPY: FeatureCardsCopy = {
     title: 'Private Offline AI',
     description: 'Run supported file analysis locally with Ollama. No analysis content goes to Zush cloud or third-party AI providers.',
   },
+  cloudAi: {
+    title: 'Cloud AI',
+    description: 'Works out of the box — no setup, no API keys. Drop files and Zush renames them with cloud AI right away.',
+  },
+  bandTitle: '3 ways to run Zush AI',
+  bandSubtitle: 'Cloud AI that works out of the box, your own API key, or fully offline with Ollama.',
   addFolder: 'Add Folder',
   promptRules: 'Prompt rules',
   customBadge: 'Custom',
@@ -334,6 +343,8 @@ export interface PricingCopy {
   oneTimeDifferentiators?: string[];
   monthlyPlan?: PricingPlanCopy;
   oneTimePlan?: PricingPlanCopy;
+  bestValueBadge?: string;
+  trustedByLine?: string;
 }
 
 export interface PlatformCopy {
@@ -1063,17 +1074,17 @@ const EN_COPY: LocaleCopy = {
     buyPro: 'Buy 🌟 PRO',
     trustSignals: ['✨ Get started for FREE', '💳 No credit card required'],
     featuresTitle: 'AI File Renamer Features',
-    featuresDescription: 'Rename mixed folders by content, keep filenames consistent, and stay in control with preview, templates, folder monitoring, and undo.',
+    featuresDescription: 'Turn messy filenames into clear, consistent names with previews, templates, folder monitoring, and one-click undo.',
     supportedFormats: 'Supported File Formats',
     images: 'Images',
     designLabel: 'Design',
     documents: 'Documents',
     videosLabel: 'Videos',
     audioLabel: 'Audio',
-    cloudFoldersTitle: 'Any folder — including your cloud drives',
+    cloudFoldersTitle: 'Works with cloud folders',
     cloudFoldersDescription: 'Zush renames files in any local folder — including the ones iCloud Drive, Google Drive, Dropbox, and OneDrive keep in sync. No accounts to connect.',
     downloadTitle: 'Try Zush free',
-    downloadSubtitle: 'Rename and organize files with AI, batch rename folders, and clean up screenshots, design files, PDFs, photos, audio, videos, iWork, and Office documents by content.',
+    downloadSubtitle: 'Rename and organize files with AI, monitor folders, and clean up screenshots, design files, PDFs, photos, audio, videos, iWork, and Office documents by content.',
     downloadHintPrefix: 'Free · No credit card required',
     useCasesTitle: 'Who Uses Batch File Renaming',
     useCasesDescription: 'Click the role closest to your workflow. Each card goes to the Zush page built for that type of file chaos.',
@@ -1152,7 +1163,7 @@ const EN_COPY: LocaleCopy = {
       speedDescription: 'Speed matters because cleanup only sticks if it does not interrupt the real work. Drop files in, review, apply, move on.',
       formatsEyebrow: '100+ supported formats',
       formatsTitle: '100+ formats: screenshots, PDFs, photos, design files, iWork, audio, documents, and videos',
-      formatsDescription: 'Supports AVIF, RAW, Sketch, Figma, Illustrator, PSD, Office files, Pages, Numbers, Keynote, PDFs, subtitles, MP3, M4A, WAV, FLAC, and common video formats, so mixed folders can be renamed by actual content instead of file-type silos.',
+      formatsDescription: 'Supports AVIF, RAW, Sketch, Figma, Illustrator, PSD, Office files, Pages, Numbers, Keynote, PDFs, subtitles, MP3, M4A, WAV, FLAC, and common video formats for content-aware renaming in one batch.',
       controlEyebrow: 'Naming Blocks',
       controlTitle: 'Structured filenames for professional work',
       controlDescription: 'Professionals can build their own filename patterns from blocks that match their work. AI reads each file and fills those blocks with the details they chose, like client, date, invoice number, location, or project.',
@@ -1227,6 +1238,8 @@ const EN_COPY: LocaleCopy = {
       buttonText: 'Buy PRO 🌟 One-Time',
       billing: 'one-time',
     },
+    bestValueBadge: 'Best value',
+    trustedByLine: 'Trusted by 1,500+ users',
   },
   platforms: {
     mac: {
@@ -2260,6 +2273,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     microsoftStoreLabel: 'Microsoft Store',
     microsoftStoreAria: 'Zush’u Microsoft Store’dan edinin',
     followX: 'Zush’u X’te takip edin',
+    followGitHub: 'Zush’u GitHub’da takip edin',
     followYouTube: 'Zush’u YouTube’da takip edin',
     productHunt: 'Product Hunt’ta Zush',
     designedBy: 'Tasarım',
@@ -2296,6 +2310,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     microsoftStoreLabel: 'Microsoft Store',
     microsoftStoreAria: 'الحصول على Zush من Microsoft Store',
     followX: 'تابع Zush على X',
+    followGitHub: 'تابع Zush على GitHub',
     followYouTube: 'تابع Zush على YouTube',
     productHunt: 'Zush على Product Hunt',
     designedBy: 'تصميم',
@@ -2492,6 +2507,8 @@ type PricingExtrasCopy = Pick<
   | 'oneTimeDifferentiators'
   | 'monthlyPlan'
   | 'oneTimePlan'
+  | 'bestValueBadge'
+  | 'trustedByLine'
 >;
 
 const localizedPricingExtras: Record<Exclude<Locale, 'en'>, PricingExtrasCopy> = {
@@ -2513,6 +2530,8 @@ const localizedPricingExtras: Record<Exclude<Locale, 'en'>, PricingExtrasCopy> =
       buttonText: 'PRO One-Time kaufen',
       billing: 'einmalig',
     },
+    bestValueBadge: 'Bestes Angebot',
+    trustedByLine: 'Über 1.500 Nutzer vertrauen Zush',
   },
   fr: {
     title: 'Choisis ton plan PRO',
@@ -2532,6 +2551,8 @@ const localizedPricingExtras: Record<Exclude<Locale, 'en'>, PricingExtrasCopy> =
       buttonText: 'Acheter PRO One-Time',
       billing: 'paiement unique',
     },
+    bestValueBadge: 'Meilleure offre',
+    trustedByLine: 'Plus de 1 500 utilisateurs nous font confiance',
   },
   'pt-br': {
     title: 'Escolha seu plano PRO',
@@ -2551,6 +2572,8 @@ const localizedPricingExtras: Record<Exclude<Locale, 'en'>, PricingExtrasCopy> =
       buttonText: 'Comprar PRO One-Time',
       billing: 'pagamento único',
     },
+    bestValueBadge: 'Melhor custo-benefício',
+    trustedByLine: 'Mais de 1.500 usuários confiam no Zush',
   },
   es: {
     title: 'Elige tu plan PRO',
@@ -2570,6 +2593,8 @@ const localizedPricingExtras: Record<Exclude<Locale, 'en'>, PricingExtrasCopy> =
       buttonText: 'Comprar PRO One-Time',
       billing: 'pago único',
     },
+    bestValueBadge: 'La mejor oferta',
+    trustedByLine: 'Más de 1.500 usuarios confían en Zush',
   },
   nl: {
     title: 'Kies je PRO-plan',
@@ -2589,6 +2614,8 @@ const localizedPricingExtras: Record<Exclude<Locale, 'en'>, PricingExtrasCopy> =
       buttonText: 'Koop PRO 🌟 One-Time',
       billing: 'eenmalig',
     },
+    bestValueBadge: 'Beste deal',
+    trustedByLine: 'Vertrouwd door 1.500+ gebruikers',
   },
   it: {
     title: 'Scegli il tuo piano PRO',
@@ -2608,6 +2635,8 @@ const localizedPricingExtras: Record<Exclude<Locale, 'en'>, PricingExtrasCopy> =
       buttonText: 'Acquista PRO One-Time',
       billing: 'pagamento unico',
     },
+    bestValueBadge: 'Più conveniente',
+    trustedByLine: 'Scelto da oltre 1.500 utenti',
   },
   ja: {
     title: 'PRO プランを選択',
@@ -2627,6 +2656,8 @@ const localizedPricingExtras: Record<Exclude<Locale, 'en'>, PricingExtrasCopy> =
       buttonText: 'PRO One-Time を購入',
       billing: '買い切り',
     },
+    bestValueBadge: 'ベストバリュー',
+    trustedByLine: '1,500人以上のユーザーに信頼されています',
   },
   ko: {
     title: 'PRO 플랜을 선택하세요',
@@ -2646,6 +2677,8 @@ const localizedPricingExtras: Record<Exclude<Locale, 'en'>, PricingExtrasCopy> =
       buttonText: 'PRO One-Time 구매',
       billing: '일회성',
     },
+    bestValueBadge: '최고의 가치',
+    trustedByLine: '1,500명 이상의 사용자가 신뢰합니다',
   },
   'zh-cn': {
     title: '选择你的 PRO 方案',
@@ -2665,6 +2698,8 @@ const localizedPricingExtras: Record<Exclude<Locale, 'en'>, PricingExtrasCopy> =
       buttonText: '购买 PRO One-Time',
       billing: '一次性',
     },
+    bestValueBadge: '超值之选',
+    trustedByLine: '超过 1,500 位用户信赖',
   },
   tr: {
     title: 'PRO planınızı seçin',
@@ -2684,6 +2719,8 @@ const localizedPricingExtras: Record<Exclude<Locale, 'en'>, PricingExtrasCopy> =
       buttonText: 'PRO One-Time satın al',
       billing: 'tek seferlik',
     },
+    bestValueBadge: 'En avantajlı',
+    trustedByLine: '1.500’den fazla kullanıcı Zush’a güveniyor',
   },
   ar: {
     title: 'اختر خطة PRO الخاصة بك',
@@ -2703,18 +2740,20 @@ const localizedPricingExtras: Record<Exclude<Locale, 'en'>, PricingExtrasCopy> =
       buttonText: 'اشترِ PRO One-Time',
       billing: 'دفعة واحدة',
     },
+    bestValueBadge: 'أفضل قيمة',
+    trustedByLine: 'موثوق من أكثر من 1500 مستخدم',
   },
 };
 
 const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeCopy, 'featureCards' | 'offlineAiModal' | 'showcase' | 'speedComparison' | 'whyZush' | 'useCases' | 'faqItems' | 'showcaseSlides'>>> = {
   de: {
     featureCards: {
-      aiAnalysis: { title: 'KI-Analyse', description: 'Fortschrittliche KI analysiert Bilder, Videos und unterstützte Dokumente, inklusive PDFs, und erzeugt automatisch aussagekräftige Dateinamen.' },
+      aiAnalysis: { title: 'KI-Analyse', description: 'Analysiere und benenne über 100 Dateiformate in einem Durchgang um – von Bildern und PDFs bis zu Audio-, Video- und Office-Dateien.' },
       foldersMonitoring: { title: 'Ordnerüberwachung', description: 'Überwache einen oder mehrere Ordner — auch iCloud Drive-, Google Drive-, Dropbox- und OneDrive-Ordner. Zush läuft im Hintergrund und verarbeitet neue Dateien automatisch.' },
       batchRename: { title: 'Stapelumbenennung', description: 'Ziehe mehrere Dateien hinein. Zush analysiert und benennt sie in Sekunden um.' },
       templates: { title: 'Templates', description: 'Speichere wiederverwendbare Umbenennungs-Setups für Screenshots, Ausgaben, Musik, Kundenarbeit, Recht, Reisen und überwachte Ordner.' },
       namingBlocks: { title: 'Namensbausteine', description: 'Baue konsistente Dateinamen aus 145+ Bausteinen für Datum, Metadaten, Audio, Fotos, Finanzen, Recht, Reisen, Kunden und KI-Felder.' },
-      customAiBlocks: { title: 'Eigene KI-Bausteine', description: 'Beschreibe, was Zush aus einer Datei extrahieren soll — Marke, Kunde, Aktenzeichen oder jedes andere Detail — und nutze es als eigenen Namensbaustein in jedem Template. In der Gratis-Version enthalten.' },
+      customAiBlocks: { title: 'Eigene KI-Bausteine', description: 'Beschreibe das gewünschte Detail, das Zush extrahieren soll, und verwende es anschließend als eigenen KI-Baustein in jedem Template.' },
       audioSupport: { title: 'Audio-Unterstützung', description: 'Benenne MP3, M4A, WAV, FLAC, OGG, WebM und MPGA mit eingebetteten Metadaten, Erkennung, Transkripten und Audio-Feldern.' },
       customPatterns: { title: 'Eigene Muster', description: 'Lege eigene Namensmuster mit Variablen wie {title}, {original}, {date}, {time} oder {category} fest.' },
       smartMetadata: { title: 'Smarte Metadaten', description: 'Finder-Tags und Spotlight-Metadaten automatisch setzen, damit Dateien sofort auffindbar sind.' },
@@ -2722,6 +2761,8 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       customPrompts: { title: 'Eigene KI-Prompts', description: 'Definiere Regeln für Namen, Tags und Metadaten, damit die KI deinem Workflow folgt.' },
       byok: { title: 'Eigener API-Schlüssel', description: 'Verbinde Gemini, Groq, OpenAI oder Claude für unbegrenzte Cloud-Umbenennungen. Schlüssel bleiben lokal gespeichert.' },
       offlineAi: { title: 'Offline-KI-Modus', description: 'Private lokale Modelle über Ollama. Unterstützte Dateien offline verarbeiten, ohne Inhalte an Cloud-Anbieter zu senden.' },
+      cloudAi: { title: 'Cloud-KI', description: 'Funktioniert sofort — ohne Einrichtung und ohne API-Schlüssel. Dateien reinziehen, Zush benennt sie direkt mit Cloud-KI um.' },
+      bandTitle: '3 Wege, Zush AI zu nutzen', bandSubtitle: 'Cloud-KI direkt einsatzbereit, dein eigener API-Schlüssel oder komplett offline mit Ollama.',
       addFolder: 'Ordner hinzufügen', promptRules: 'Prompt-Regeln', customBadge: 'Eigen', templateActive: 'Aktives Template', templateNames: ['Screenshots', 'Musiktitel', 'Kunden-Meetingnotizen'], namingBlockLabels: ['{date}', '{client_name}', '{artist}', '{bpm}', '{invoice_number}', '{title}'], apiKeyConnected: 'API-Schlüssel verbunden', terminal: 'Terminal', localModelReady: 'Lokales Modell bereit', today: 'Heute', undo: 'Rückgängig', audioNewNames: ['LoFi_Piano_Loop_92BPM.mp3', 'Kunden_Erstgespraech.m4a'],
     },
     offlineAiModal: {
@@ -2737,18 +2778,18 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       closeLabel: 'Schließen',
     },
     showcase: { title: 'Mach eine Tour durch Zush', titleAccent: 'Zush', description: 'Eine kurze Demo pro Feature — klick auf einen Tab, um es in Aktion zu sehen', playShowcase: 'Demo abspielen', switchTo: 'Wechseln zu', items: { 'batch-rename': { title: 'KI-Stapelumbenennung', description: 'Dateien nach echtem Inhalt gesammelt prüfen und umbenennen' }, monitor: { title: 'Ordnerüberwachung', description: 'Ordner überwachen und neue Dateien automatisch benennen' }, activity: { title: 'Aktivitätsverlauf', description: 'Letzte Umbenennungen prüfen und Änderungen rückgängig machen' }, statistics: { title: 'Statistiken', description: 'Umbenennungsvolumen, Anteil der Ordnerüberwachung, Aktivität und Dateityp-Trends ansehen' }, templates: { title: 'Vorlagen', description: 'Wiederverwendbare Setups für KI-Umbenennung und Ordnerüberwachung speichern' }, tags: { title: 'Smarte Tags', description: 'Tags für schnellere Dateisuche generieren' }, 'naming-blocks': { title: 'Namensbausteine', description: 'Dateinamen aus dem Inhalt deiner Dateien mit 145+ vorgefertigten Bausteinen erstellen' }, 'custom-ai-blocks': { title: 'Eigene KI-Bausteine', description: 'Beschreibe, was die KI extrahieren soll, und nutze es als eigenen Namensbaustein' }, multilanguage: { title: 'Mehrsprachig', description: 'Dateinamen in mehr als 60 Sprachen erzeugen' }, 'custom-prompts': { title: 'Eigene Prompts', description: 'Dateinamen mit eigenen Anweisungen steuern' }, byok: { title: 'BYOK', description: 'Eigenen KI-Anbieter für unbegrenztes Umbenennen verbinden' }, 'offline-ai': { title: 'Offline-KI-Umbenennung', description: 'Private lokale Modelle über Ollama für unterstützte Dateien nutzen' } } },
-    whyZush: { title: 'Warum Zush gegen generische Dateiumbenenner gewinnt', titlePlatform: 'Warum Zush auf {os} überzeugt', description: 'KI-Stapelumbenennung, automatische Ordnerüberwachung, Rückgängig, BYOK, Offline-KI und gemischte Formate in einer Desktop-App', descriptionPlatform: 'Natives Desktop-Gefühl, schnelles Umbenennen, Einmalpreis und weniger Entscheidungen auf {os}', nativeEyebrow: 'Desktop-natives Gefühl', nativeEyebrowPlatform: '{os}-natives Gefühl', nativeTitle: 'Nativ, schnell und modern', nativeDescription: 'Zush fühlt sich wie eine echte Desktop-App an: schnell geöffnet, klar bedienbar und visuell passend zu deinem System.', nativeDescriptionPlatform: 'Zush fühlt sich wie eine echte native {os}-App an: schnell geöffnet, klar bedienbar und visuell passend zu deinem System.', pricingTrustItems: ['✨ Kostenlos testen', '∞ Unbegrenztes PRO', '↩️ 14 Tage Rückerstattung'], priceEyebrow: 'Reusable templates', priceTitle: 'One setup for every folder', priceDescription: 'Save naming rules for screenshots, expenses, music tracks, client notes, legal files, travel bookings, and monitored folders.', priceLabel: '11 built-in', speedEyebrow: 'Superschnell', speedTitle: 'Umbenennung in Sekunden', speedDescription: 'Aufräumen funktioniert nur, wenn es die Arbeit nicht stört. Dateien reinziehen, prüfen, anwenden, weiterarbeiten.', formatsEyebrow: '100+ unterstützte Formate', formatsTitle: 'Screenshots, PDFs, Fotos, Audio, Dokumente und Videos', formatsDescription: 'Unterstützt AVIF, RAW, Office-Dateien, PDFs, Untertitel, MP3, M4A, WAV, FLAC und gängige Videoformate für gemischte Ordner.', controlEyebrow: 'Namensbausteine', controlTitle: 'Strukturierte Dateinamen für professionelle Arbeit', controlDescription: 'Profis bauen ihre eigenen Dateinamen-Muster aus Bausteinen, die zu ihrer Arbeit passen. KI liest jede Datei und füllt diese Bausteine mit den gewählten Details wie Kunde, Datum, Rechnungsnummer, Ort oder Projekt.', workflowSteps: ['Fotografen: Datum, Kunde, Shoot, Szene', 'Ärzte: Besuchsart, Datum, Aktentyp', 'Buchhalter: Lieferant, Rechnung, Zeitraum'] },
+    whyZush: { title: 'Warum Zush gegen generische Dateiumbenenner gewinnt', titlePlatform: 'Warum Zush auf {os} überzeugt', description: 'KI-Stapelumbenennung, automatische Ordnerüberwachung, Rückgängig, BYOK, Offline-KI und gemischte Formate in einer Desktop-App', descriptionPlatform: 'Natives Desktop-Gefühl, schnelles Umbenennen, Einmalpreis und weniger Entscheidungen auf {os}', nativeEyebrow: 'Desktop-natives Gefühl', nativeEyebrowPlatform: '{os}-natives Gefühl', nativeTitle: 'Nativ, schnell und modern', nativeDescription: 'Zush fühlt sich wie eine echte Desktop-App an: schnell geöffnet, klar bedienbar und visuell passend zu deinem System.', nativeDescriptionPlatform: 'Zush fühlt sich wie eine echte native {os}-App an: schnell geöffnet, klar bedienbar und visuell passend zu deinem System.', pricingTrustItems: ['✨ Kostenlos testen', '∞ Unbegrenztes PRO', '↩️ 14 Tage Rückerstattung'], priceEyebrow: 'Reusable templates', priceTitle: 'One setup for every folder', priceDescription: 'Save naming rules for screenshots, expenses, music tracks, client notes, legal files, travel bookings, and monitored folders.', priceLabel: '11 built-in', speedEyebrow: 'Superschnell', speedTitle: 'Umbenennung in Sekunden', speedDescription: 'Aufräumen funktioniert nur, wenn es die Arbeit nicht stört. Dateien reinziehen, prüfen, anwenden, weiterarbeiten.', formatsEyebrow: '100+ unterstützte Formate', formatsTitle: 'Screenshots, PDFs, Fotos, Audio, Dokumente und Videos', formatsDescription: 'Unterstützt AVIF, RAW, Office-Dateien, PDFs, Untertitel, MP3, M4A, WAV, FLAC und gängige Videoformate für die inhaltsbasierte Stapelumbenennung.', controlEyebrow: 'Namensbausteine', controlTitle: 'Strukturierte Dateinamen für professionelle Arbeit', controlDescription: 'Profis bauen ihre eigenen Dateinamen-Muster aus Bausteinen, die zu ihrer Arbeit passen. KI liest jede Datei und füllt diese Bausteine mit den gewählten Details wie Kunde, Datum, Rechnungsnummer, Ort oder Projekt.', workflowSteps: ['Fotografen: Datum, Kunde, Shoot, Szene', 'Ärzte: Besuchsart, Datum, Aktentyp', 'Buchhalter: Lieferant, Rechnung, Zeitraum'] },
     useCases: { items: [{ title: 'Designer', description: 'Finde Mockups, UI-Elemente und Referenzen in Sekunden statt in hunderten Screenshots zu suchen.' }, { title: 'Fotografen', description: 'Organisiere große Fotobibliotheken mit Unterstützung für RAW-Formate wie CR2, NEF, ARW, DNG, RAF und RW2.' }, { title: 'Marketing & SMM', description: 'Halte Kampagnen, Exporte, Screenshots und Assets sauber organisiert und schnell auffindbar.' }, { title: 'Entwickler', description: 'Screenshots für Doku, Bugreports und PR-Reviews bleiben geordnet und leicht auffindbar.' }, { title: 'Content Creator', description: 'Thumbnails, B-Roll-Referenzen und visuelle Assets bleiben übersichtlich organisiert.' }, { title: 'Product Manager', description: 'PRDs, Meeting-Notizen, Tabellen und Stakeholder-Decks werden sofort durchsuchbar.' }] },
     faqItems: [{ question: 'Was ist Zush?', answer: 'Zush ist eine KI-Desktop-App für Mac und Windows, die Dateien automatisch nach Inhalt umbenennt.' }, { question: 'Welche Dateiformate werden unterstützt?', answer: 'Zush unterstützt Bilder, Audio, Videos, Screenshots, PDFs, Dokumente, Tabellen, Präsentationen, Textdateien, CSV und mehr.' }, { question: 'Kann ich eine Umbenennung rückgängig machen?', answer: 'Ja. Zush speichert den Verlauf, damit du ursprüngliche Dateinamen mit einem Klick wiederherstellen kannst.' }, { question: 'Funktioniert Zush offline?', answer: 'Cloud-Verarbeitung benötigt Internet. PRO-Nutzer können Offline-KI mit lokalen Ollama-Modellen verwenden.' }, { question: 'Wie funktioniert der Preis?', answer: 'Zush PRO hat zwei bezahlte Optionen: monatlich für 8  einmalig für 38  beide mit Unlimited PRO, BYOK und Offline-KI.' }],
   },
   fr: {
     featureCards: {
-      aiAnalysis: { title: 'Analyse IA', description: 'L’IA analyse les images, vidéos et documents pris en charge, y compris les PDF, pour créer automatiquement des noms utiles.' },
+      aiAnalysis: { title: 'Analyse IA', description: 'Analysez et renommez plus de 100 formats de fichiers en une seule fois, des images et PDF aux fichiers audio, vidéo et Office.' },
       foldersMonitoring: { title: 'Surveillance des dossiers', description: 'Surveillez un ou plusieurs dossiers — y compris vos dossiers iCloud Drive, Google Drive, Dropbox et OneDrive. Zush traite les nouveaux fichiers automatiquement en arrière-plan.' },
       batchRename: { title: 'Renommage par lot', description: 'Glissez plusieurs fichiers. Zush les analyse et les renomme en quelques secondes.' },
       templates: { title: 'Modèles', description: 'Enregistrez des réglages réutilisables pour captures, dépenses, pistes audio, clients, juridique, voyages et dossiers surveillés.' },
       namingBlocks: { title: 'Blocs de nommage', description: 'Construisez des noms cohérents avec 145+ blocs pour dates, métadonnées, audio, photos, finance, juridique, voyage, clients et champs IA.' },
-      customAiBlocks: { title: 'Blocs IA personnalisés', description: 'Décrivez ce que Zush doit extraire d’un fichier — marque, client, numéro de dossier ou tout autre détail — et réutilisez-le comme votre propre bloc de nommage dans n’importe quel modèle. Inclus dans la version gratuite.' },
+      customAiBlocks: { title: 'Blocs IA personnalisés', description: 'Décrivez le détail que Zush doit extraire, puis réutilisez-le comme bloc IA personnalisé dans n’importe quel modèle.' },
       audioSupport: { title: 'Prise en charge audio', description: 'Renommez MP3, M4A, WAV, FLAC, OGG, WebM et MPGA avec métadonnées intégrées, reconnaissance, transcriptions et champs audio.' },
       customPatterns: { title: 'Modèles personnalisés', description: 'Créez vos propres modèles avec des variables comme {title}, {original}, {date}, {time} ou {category}.' },
       smartMetadata: { title: 'Métadonnées intelligentes', description: 'Ajoutez automatiquement des tags Finder et des métadonnées Spotlight pour retrouver les fichiers plus vite.' },
@@ -2756,6 +2797,8 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       customPrompts: { title: 'Prompts IA personnalisés', description: 'Définissez les règles de noms, tags et métadonnées pour adapter l’IA à votre workflow.' },
       byok: { title: 'Votre propre clé API', description: 'Connectez Gemini, Groq, OpenAI ou Claude pour des renommages cloud illimités. Les clés restent stockées localement.' },
       offlineAi: { title: 'Mode IA hors ligne', description: 'Modèles locaux privés via Ollama. Traitez les fichiers pris en charge sans envoyer leur contenu au cloud.' },
+      cloudAi: { title: 'IA cloud', description: 'Fonctionne immédiatement — sans configuration ni clé API. Déposez vos fichiers, Zush les renomme aussitôt avec l’IA cloud.' },
+      bandTitle: '3 façons d’utiliser l’IA de Zush', bandSubtitle: 'IA cloud prête à l’emploi, votre propre clé API ou entièrement hors ligne avec Ollama.',
       addFolder: 'Ajouter un dossier', promptRules: 'Règles du prompt', customBadge: 'Personnalisé', templateActive: 'Modèle actif', templateNames: ['Captures', 'Pistes audio', 'Notes client'], namingBlockLabels: ['{date}', '{client_name}', '{artist}', '{bpm}', '{invoice_number}', '{title}'], apiKeyConnected: 'Clé API connectée', terminal: 'Terminal', localModelReady: 'Modèle local prêt', today: 'Aujourd’hui', undo: 'Annuler', audioNewNames: ['Boucle_piano_lofi_92BPM.mp3', 'Appel_decouverte_client.m4a'],
     },
     offlineAiModal: {
@@ -2777,12 +2820,12 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
   },
   'pt-br': {
     featureCards: {
-      aiAnalysis: { title: 'Análise com IA', description: 'A IA analisa imagens, vídeos e documentos compatíveis, incluindo PDFs, para gerar nomes úteis automaticamente.' },
+      aiAnalysis: { title: 'Análise com IA', description: 'Analise e renomeie mais de 100 formatos de arquivo em um só lote, de imagens e PDFs a arquivos de áudio, vídeo e Office.' },
       foldersMonitoring: { title: 'Monitoramento de pastas', description: 'Monitore uma ou várias pastas — incluindo pastas do iCloud Drive, Google Drive, Dropbox e OneDrive. O Zush processa novos arquivos automaticamente em segundo plano.' },
       batchRename: { title: 'Renomeação em lote', description: 'Arraste vários arquivos. O Zush analisa e renomeia tudo em segundos.' },
       templates: { title: 'Modelos', description: 'Salve configurações reutilizáveis para screenshots, despesas, faixas de música, clientes, jurídico, viagens e pastas monitoradas.' },
       namingBlocks: { title: 'Blocos de nomes', description: 'Monte nomes consistentes com 145+ blocos para datas, metadados, áudio, fotos, finanças, jurídico, viagens, clientes e campos de IA.' },
-      customAiBlocks: { title: 'Blocos de IA personalizados', description: 'Descreva o que o Zush deve extrair de um arquivo — marca, cliente, número de processo ou qualquer detalhe — e reutilize como seu próprio bloco de nome em qualquer modelo. Incluído na versão gratuita.' },
+      customAiBlocks: { title: 'Blocos de IA personalizados', description: 'Descreva o detalhe que o Zush deve extrair e reutilize-o como um Bloco de IA personalizado em qualquer modelo.' },
       audioSupport: { title: 'Suporte a áudio', description: 'Renomeie MP3, M4A, WAV, FLAC, OGG, WebM e MPGA com metadados, reconhecimento, transcrições e campos de áudio.' },
       customPatterns: { title: 'Padrões personalizados', description: 'Defina padrões com variáveis como {title}, {original}, {date}, {time} ou {category}.' },
       smartMetadata: { title: 'Metadados inteligentes', description: 'Adicione tags do Finder e metadados do Spotlight automaticamente para encontrar arquivos mais rápido.' },
@@ -2790,6 +2833,8 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       customPrompts: { title: 'Prompts de IA personalizados', description: 'Crie regras de nomes, tags e metadados para adaptar a IA ao seu fluxo.' },
       byok: { title: 'Use sua própria chave', description: 'Conecte Gemini, Groq, OpenAI ou Claude para renomeações ilimitadas. As chaves ficam salvas localmente.' },
       offlineAi: { title: 'Modo IA offline', description: 'Modelos locais privados via Ollama. Processe arquivos compatíveis sem enviar conteúdo para a nuvem.' },
+      cloudAi: { title: 'IA na nuvem', description: 'Funciona de imediato — sem configuração e sem chaves de API. Solte os arquivos e o Zush os renomeia na hora com IA na nuvem.' },
+      bandTitle: '3 formas de usar a IA do Zush', bandSubtitle: 'IA na nuvem pronta para usar, sua própria chave de API ou totalmente offline com Ollama.',
       addFolder: 'Adicionar pasta', promptRules: 'Regras do prompt', customBadge: 'Personalizado', templateActive: 'Modelo ativo', templateNames: ['Screenshots', 'Faixas de música', 'Notas de cliente'], namingBlockLabels: ['{date}', '{client_name}', '{artist}', '{bpm}', '{invoice_number}', '{title}'], apiKeyConnected: 'Chave API conectada', terminal: 'Terminal', localModelReady: 'Modelo local pronto', today: 'Hoje', undo: 'Desfazer', audioNewNames: ['Loop_piano_lofi_92BPM.mp3', 'Chamada_descoberta_cliente.m4a'],
     },
     offlineAiModal: {
@@ -2811,12 +2856,12 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
   },
   es: {
     featureCards: {
-      aiAnalysis: { title: 'Análisis con IA', description: 'La IA analiza imágenes, videos y documentos compatibles, incluidos PDFs, para generar nombres útiles automáticamente.' },
+      aiAnalysis: { title: 'Análisis con IA', description: 'Analiza y renombra más de 100 formatos de archivo en un solo lote, desde imágenes y PDF hasta archivos de audio, vídeo y Office.' },
       foldersMonitoring: { title: 'Monitoreo de carpetas', description: 'Monitorea una o varias carpetas, incluidas las de iCloud Drive, Google Drive, Dropbox y OneDrive. Zush procesa archivos nuevos automáticamente en segundo plano.' },
       batchRename: { title: 'Renombrado por lotes', description: 'Arrastra varios archivos. Zush los analiza y renombra en segundos.' },
       templates: { title: 'Plantillas', description: 'Guarda configuraciones reutilizables para capturas, gastos, pistas de música, clientes, legal, viajes y carpetas monitoreadas.' },
       namingBlocks: { title: 'Bloques de nombres', description: 'Crea nombres consistentes con más de 145 bloques para fechas, metadatos, audio, fotos, finanzas, legal, viajes, clientes y campos de IA.' },
-      customAiBlocks: { title: 'Bloques de IA personalizados', description: 'Describe qué debe extraer Zush de un archivo — marca, cliente, número de expediente o cualquier detalle — y reutilízalo como tu propio bloque de nombre en cualquier plantilla. Incluido en la versión gratuita.' },
+      customAiBlocks: { title: 'Bloques de IA personalizados', description: 'Describe el dato que Zush debe extraer y reutilízalo como un bloque de IA personalizado en cualquier plantilla.' },
       audioSupport: { title: 'Soporte de audio', description: 'Renombra MP3, M4A, WAV, FLAC, OGG, WebM y MPGA con metadatos, reconocimiento, transcripciones y campos de audio.' },
       customPatterns: { title: 'Patrones personalizados', description: 'Define patrones con variables como {title}, {original}, {date}, {time} o {category}.' },
       smartMetadata: { title: 'Metadatos inteligentes', description: 'Agrega tags de Finder y metadatos de Spotlight automáticamente para encontrar archivos más rápido.' },
@@ -2824,6 +2869,8 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       customPrompts: { title: 'Prompts de IA personalizados', description: 'Define reglas de nombres, tags y metadatos para adaptar la IA a tu flujo.' },
       byok: { title: 'Trae tu propia clave', description: 'Conecta Gemini, Groq, OpenAI o Claude para renombrados cloud ilimitados. Las claves se guardan localmente.' },
       offlineAi: { title: 'Modo IA offline', description: 'Modelos locales privados vía Ollama. Procesa archivos compatibles sin enviar contenido a la nube.' },
+      cloudAi: { title: 'IA en la nube', description: 'Funciona desde el primer momento — sin configuración ni claves API. Suelta los archivos y Zush los renombra al instante con IA en la nube.' },
+      bandTitle: '3 formas de usar la IA de Zush', bandSubtitle: 'IA en la nube lista para usar, tu propia clave API o completamente sin conexión con Ollama.',
       addFolder: 'Añadir carpeta', promptRules: 'Reglas del prompt', customBadge: 'Personalizado', templateActive: 'Plantilla activa', templateNames: ['Capturas', 'Pistas de música', 'Notas de cliente'], namingBlockLabels: ['{date}', '{client_name}', '{artist}', '{bpm}', '{invoice_number}', '{title}'], apiKeyConnected: 'Clave API conectada', terminal: 'Terminal', localModelReady: 'Modelo local listo', today: 'Hoy', undo: 'Deshacer', audioNewNames: ['Loop_piano_lofi_92BPM.mp3', 'Llamada_descubrimiento_cliente.m4a'],
     },
     offlineAiModal: {
@@ -2845,12 +2892,12 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
   },
   nl: {
     featureCards: {
-      aiAnalysis: { title: 'AI-analyse', description: 'AI analyseert afbeeldingen, video’s en ondersteunde documenten, inclusief PDFs, en maakt automatisch betekenisvolle bestandsnamen.' },
+      aiAnalysis: { title: 'AI-analyse', description: 'Analyseer en hernoem meer dan 100 bestandsformaten in één batch, van afbeeldingen en pdf’s tot audio-, video- en Office-bestanden.' },
       foldersMonitoring: { title: 'Mapbewaking', description: 'Bewaak een of meerdere mappen — ook iCloud Drive-, Google Drive-, Dropbox- en OneDrive-mappen. Zush verwerkt nieuwe bestanden automatisch op de achtergrond.' },
       batchRename: { title: 'Bulk hernoemen', description: 'Sleep meerdere bestanden tegelijk. Zush analyseert en hernoemt ze in seconden.' },
       templates: { title: 'Templates', description: 'Bewaar herbruikbare instellingen voor screenshots, uitgaven, muziektracks, klantwerk, juridisch, reizen en bewaakte mappen.' },
       namingBlocks: { title: 'Naamblokken', description: 'Bouw consistente namen met 145+ blokken voor datums, metadata, audio, foto’s, finance, juridisch, reizen, klanten en AI-velden.' },
-      customAiBlocks: { title: 'Eigen AI-blokken', description: 'Beschrijf wat Zush uit een bestand moet halen — merk, klant, dossiernummer of elk ander detail — en hergebruik het als je eigen naamblok in elke template. Inbegrepen in de gratis versie.' },
+      customAiBlocks: { title: 'Eigen AI-blokken', description: 'Beschrijf welk detail Zush moet uitlezen en gebruik het daarna als een eigen AI-blok in elke template.' },
       audioSupport: { title: 'Audio-ondersteuning', description: 'Hernoem MP3, M4A, WAV, FLAC, OGG, WebM en MPGA met metadata, herkenning, transcripties en audio-specifieke velden.' },
       customPatterns: { title: 'Eigen patronen', description: 'Stel eigen naamgevingspatronen in met variabelen zoals {title}, {original}, {date}, {time} of {category}.' },
       smartMetadata: { title: 'Slimme metadata', description: 'Voeg automatisch Finder-tags en Spotlight-metadata toe zodat bestanden snel vindbaar zijn.' },
@@ -2858,6 +2905,8 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       customPrompts: { title: 'Eigen AI-prompts', description: 'Stel regels in voor namen, tags en metadata zodat AI je workflow volgt.' },
       byok: { title: 'Eigen sleutel gebruiken', description: 'Koppel Gemini, Groq, OpenAI of Claude voor onbeperkt cloud-hernoemen. Sleutels blijven lokaal opgeslagen.' },
       offlineAi: { title: 'Offline AI-modus', description: 'Private lokale modellen via Ollama. Verwerk ondersteunde bestanden zonder inhoud naar de cloud te sturen.' },
+      cloudAi: { title: 'Cloud-AI', description: 'Werkt direct — zonder configuratie en zonder API-sleutels. Sleep bestanden erin en Zush hernoemt ze meteen met cloud-AI.' },
+      bandTitle: '3 manieren om Zush AI te gebruiken', bandSubtitle: 'Cloud-AI die direct werkt, je eigen API-sleutel of volledig offline met Ollama.',
       addFolder: 'Map toevoegen', promptRules: 'Promptregels', customBadge: 'Eigen', templateActive: 'Actieve template', templateNames: ['Screenshots', 'Muziektracks', 'Klantnotities'], namingBlockLabels: ['{date}', '{client_name}', '{artist}', '{bpm}', '{invoice_number}', '{title}'], apiKeyConnected: 'API-sleutel gekoppeld', terminal: 'Terminal', localModelReady: 'Lokaal model klaar', today: 'Vandaag', undo: 'Ongedaan maken', audioNewNames: ['LoFi_pianoloop_92BPM.mp3', 'Klantkennismaking_gesprek.m4a'],
     },
     offlineAiModal: {
@@ -2879,12 +2928,12 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
   },
   it: {
     featureCards: {
-      aiAnalysis: { title: 'Analisi IA', description: 'L’IA analizza immagini, video e documenti supportati, inclusi i PDF, per generare automaticamente nomi descrittivi.' },
+      aiAnalysis: { title: 'Analisi IA', description: 'Analizza e rinomina oltre 100 formati di file in un unico batch, da immagini e PDF a file audio, video e Office.' },
       foldersMonitoring: { title: 'Monitoraggio cartelle', description: 'Monitora una o più cartelle, incluse quelle di iCloud Drive, Google Drive, Dropbox e OneDrive. Zush elabora automaticamente i nuovi file in background.' },
       batchRename: { title: 'Rinomina in batch', description: 'Trascina più file. Zush li analizza e li rinomina in pochi secondi.' },
       templates: { title: 'Modelli', description: 'Salva configurazioni riutilizzabili per screenshot, spese, tracce audio, clienti, legale, viaggi e cartelle monitorate.' },
       namingBlocks: { title: 'Blocchi di denominazione', description: 'Crea nomi coerenti con oltre 145 blocchi per date, metadati, audio, foto, finanza, legale, viaggi, clienti e campi IA.' },
-      customAiBlocks: { title: 'Blocchi IA personalizzati', description: 'Descrivi cosa Zush deve estrarre da un file — brand, cliente, numero di pratica o qualsiasi dettaglio — e riusalo come tuo blocco di denominazione in qualsiasi modello. Incluso nella versione gratuita.' },
+      customAiBlocks: { title: 'Blocchi IA personalizzati', description: 'Descrivi il dettaglio che Zush deve estrarre e riutilizzalo come blocco AI personalizzato in qualsiasi modello.' },
       audioSupport: { title: 'Supporto audio', description: 'Rinomina MP3, M4A, WAV, FLAC, OGG, WebM e MPGA con metadati, riconoscimento, trascrizioni e campi audio.' },
       customPatterns: { title: 'Pattern personalizzati', description: 'Imposta pattern con variabili come {title}, {original}, {date}, {time} o {category}.' },
       smartMetadata: { title: 'Metadati intelligenti', description: 'Aggiungi automaticamente tag Finder e metadati Spotlight per trovare subito i file.' },
@@ -2892,6 +2941,8 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       customPrompts: { title: 'Prompt IA personalizzati', description: 'Definisci regole per nomi, tag e metadati, così l’IA segue il tuo flusso.' },
       byok: { title: 'Usa la tua chiave', description: 'Collega Gemini, Groq, OpenAI o Claude per rinomine cloud illimitate. Le chiavi restano locali.' },
       offlineAi: { title: 'Modalità IA offline', description: 'Modelli locali privati via Ollama. Elabora file supportati senza inviare contenuti al cloud.' },
+      cloudAi: { title: 'IA cloud', description: 'Funziona subito — senza configurazione e senza chiavi API. Trascina i file e Zush li rinomina immediatamente con l’IA cloud.' },
+      bandTitle: '3 modi per usare l’IA di Zush', bandSubtitle: 'IA cloud pronta all’uso, la tua chiave API o completamente offline con Ollama.',
       addFolder: 'Aggiungi cartella', promptRules: 'Regole prompt', customBadge: 'Personalizzato', templateActive: 'Modello attivo', templateNames: ['Screenshot', 'Tracce audio', 'Note cliente'], namingBlockLabels: ['{date}', '{client_name}', '{artist}', '{bpm}', '{invoice_number}', '{title}'], apiKeyConnected: 'Chiave API collegata', terminal: 'Terminale', localModelReady: 'Modello locale pronto', today: 'Oggi', undo: 'Annulla', audioNewNames: ['Loop_piano_lofi_92BPM.mp3', 'Chiamata_scoperta_cliente.m4a'],
     },
     offlineAiModal: {
@@ -2913,12 +2964,12 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
   },
   ja: {
     featureCards: {
-      aiAnalysis: { title: 'AI 解析', description: 'AI が画像、動画、PDF を含む対応文書を解析し、意味のあるファイル名を自動生成します。' },
+      aiAnalysis: { title: 'AI 解析', description: '画像やPDFから音声、動画、Officeファイルまで、100種類以上のファイル形式を一括で解析して名前を変更します。' },
       foldersMonitoring: { title: 'フォルダ監視', description: '1つ以上のフォルダを監視します。iCloud Drive、Google Drive、Dropbox、OneDrive のフォルダも対象です。新しいファイルはバックグラウンドで自動処理されます。' },
       batchRename: { title: '一括リネーム', description: '複数ファイルをドラッグ＆ドロップするだけで、Zush が数秒で解析して名前を変更します。' },
       templates: { title: 'テンプレート', description: 'スクリーンショット、経費、音楽トラック、クライアント作業、法務、旅行、監視フォルダ向けの設定を再利用できます。' },
       namingBlocks: { title: '命名ブロック', description: '日付、メタデータ、音声、写真、財務、法務、旅行、顧客、AI フィールドなど 145+ ブロックで一貫した名前を作れます。' },
-      customAiBlocks: { title: 'カスタム AI ブロック', description: 'ファイルから抽出したい内容 — ブランド、クライアント、案件番号などあらゆる項目 — を言葉で指定し、自分専用の命名ブロックとしてどのテンプレートでも再利用できます。無料版でも利用可能。' },
+      customAiBlocks: { title: 'カスタム AI ブロック', description: 'Zushに抽出してほしい詳細を指示し、カスタムAIブロックとしてどのテンプレートでも再利用できます。' },
       audioSupport: { title: '音声対応', description: 'MP3、M4A、WAV、FLAC、OGG、WebM、MPGA をメタデータ、認識、文字起こし、音声フィールドでリネームできます。' },
       customPatterns: { title: 'カスタムパターン', description: '{title}、{original}、{date}、{time}、{category} などの変数で独自の命名ルールを作れます。' },
       smartMetadata: { title: 'スマートメタデータ', description: 'Finder タグや Spotlight メタデータを自動追加し、自然な検索ですぐに見つけられます。' },
@@ -2926,6 +2977,8 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       customPrompts: { title: 'カスタム AI プロンプト', description: '名前、タグ、メタデータのルールを設定し、AI の出力を自分のワークフローに合わせます。' },
       byok: { title: '自分のキーを使用', description: 'Gemini、Groq、OpenAI、Claude を接続して無制限にクラウドリネーム。キーはローカルに安全保存されます。' },
       offlineAi: { title: 'オフライン AI モード', description: 'Ollama 経由のプライベートなローカルモデルで、対応ファイルをクラウドに送らず処理できます。' },
+      cloudAi: { title: 'クラウド AI', description: '設定も API キーも不要で、すぐに使えます。ファイルをドロップすれば、Zush がクラウド AI で即座にリネームします。' },
+      bandTitle: 'Zush AI を使う 3 つの方法', bandSubtitle: 'すぐ使えるクラウド AI、自分の API キー、または Ollama による完全オフライン。',
       addFolder: 'フォルダを追加', promptRules: 'プロンプトルール', customBadge: 'カスタム', templateActive: '有効なテンプレート', templateNames: ['スクリーンショット', '音楽トラック', 'クライアント議事録'], namingBlockLabels: ['{date}', '{client_name}', '{artist}', '{bpm}', '{invoice_number}', '{title}'], apiKeyConnected: 'APIキー接続済み', terminal: 'ターミナル', localModelReady: 'ローカルモデル準備完了', today: '今日', undo: '元に戻す', audioNewNames: ['ローファイピアノループ_92BPM.mp3', 'クライアント初回ヒアリング.m4a'],
     },
     offlineAiModal: {
@@ -2947,12 +3000,12 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
   },
   ko: {
     featureCards: {
-      aiAnalysis: { title: 'AI 분석', description: 'AI가 이미지, 비디오, PDF를 포함한 지원 문서를 분석해 의미 있는 파일 이름을 자동 생성합니다.' },
+      aiAnalysis: { title: 'AI 분석', description: '이미지와 PDF부터 오디오, 비디오, Office 파일까지 100개 이상의 파일 형식을 한 번에 분석하고 이름을 변경합니다.' },
       foldersMonitoring: { title: '폴더 모니터링', description: 'iCloud Drive, Google Drive, Dropbox, OneDrive 폴더를 포함해 하나 이상의 폴더를 감시하고 새 파일을 백그라운드에서 자동 처리합니다.' },
       batchRename: { title: '일괄 이름 변경', description: '여러 파일을 끌어다 놓으면 Zush가 몇 초 만에 분석하고 이름을 변경합니다.' },
       templates: { title: '템플릿', description: '스크린샷, 지출, 음악 트랙, 고객 작업, 법무, 여행, 모니터링 폴더용 이름 변경 설정을 재사용합니다.' },
       namingBlocks: { title: '이름 블록', description: '날짜, 메타데이터, 오디오, 사진, 재무, 법무, 여행, 고객, AI 필드 등 145개 이상 블록으로 일관된 이름을 만듭니다.' },
-      customAiBlocks: { title: '사용자 지정 AI 블록', description: '파일에서 추출할 내용 — 브랜드, 고객, 사건 번호 등 어떤 세부 정보든 — 을 설명하면 나만의 이름 블록이 되어 어떤 템플릿에서든 재사용할 수 있습니다. 무료 버전에도 포함됩니다.' },
+      customAiBlocks: { title: '사용자 지정 AI 블록', description: 'Zush가 추출할 세부 정보를 설명하고, 이를 사용자 지정 AI 블록으로 만들어 어떤 템플릿에서든 다시 사용하세요.' },
       audioSupport: { title: '오디오 지원', description: 'MP3, M4A, WAV, FLAC, OGG, WebM, MPGA를 메타데이터, 인식, 전사, 오디오 필드로 이름 변경합니다.' },
       customPatterns: { title: '사용자 지정 패턴', description: '{title}, {original}, {date}, {time}, {category} 같은 변수로 이름 규칙을 만들 수 있습니다.' },
       smartMetadata: { title: '스마트 메타데이터', description: 'Finder 태그와 Spotlight 메타데이터를 자동 추가해 파일을 더 빨리 찾을 수 있습니다.' },
@@ -2960,6 +3013,8 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       customPrompts: { title: '사용자 지정 AI 프롬프트', description: '이름, 태그, 메타데이터 규칙을 설정해 AI 결과를 작업 방식에 맞춥니다.' },
       byok: { title: '내 키 가져오기', description: 'Gemini, Groq, OpenAI, Claude를 연결해 무제한 클라우드 이름 변경을 사용합니다. 키는 로컬에 저장됩니다.' },
       offlineAi: { title: '오프라인 AI 모드', description: 'Ollama를 통한 개인 로컬 모델로 지원 파일을 클라우드 전송 없이 처리합니다.' },
+      cloudAi: { title: '클라우드 AI', description: '설정도 API 키도 필요 없이 바로 작동합니다. 파일을 끌어다 놓으면 Zush가 클라우드 AI로 즉시 이름을 바꿔줍니다.' },
+      bandTitle: 'Zush AI를 사용하는 3가지 방법', bandSubtitle: '바로 쓸 수 있는 클라우드 AI, 내 API 키 연결, 또는 Ollama로 완전 오프라인.',
       addFolder: '폴더 추가', promptRules: '프롬프트 규칙', customBadge: '사용자 지정', templateActive: '활성 템플릿', templateNames: ['스크린샷', '음악 트랙', '고객 미팅 노트'], namingBlockLabels: ['{date}', '{client_name}', '{artist}', '{bpm}', '{invoice_number}', '{title}'], apiKeyConnected: 'API 키 연결됨', terminal: '터미널', localModelReady: '로컬 모델 준비됨', today: '오늘', undo: '되돌리기', audioNewNames: ['로파이_피아노_루프_92BPM.mp3', '고객_디스커버리_콜.m4a'],
     },
     offlineAiModal: {
@@ -2981,12 +3036,12 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
   },
   tr: {
     featureCards: {
-      aiAnalysis: { title: 'Yapay zekâ analizi', description: 'Gelişmiş yapay zekâ; görselleri, videoları ve PDF’ler dâhil desteklenen belgeleri analiz ederek anlamlı dosya adlarını otomatik oluşturur.' },
+      aiAnalysis: { title: 'Yapay zekâ analizi', description: 'Görsel ve PDF’lerden ses, video ve Office dosyalarına kadar 100’den fazla dosya biçimini tek seferde analiz edip yeniden adlandırın.' },
       foldersMonitoring: { title: 'Klasör izleme', description: 'Bir veya birden fazla klasörü izleyin. Zush arka planda çalışır ve yeni dosyaları otomatik olarak işler.' },
       batchRename: { title: 'Toplu yeniden adlandırma', description: 'Birden fazla dosyayı sürükleyip bırakın. Zush dosyaları saniyeler içinde analiz eder ve adlarını değiştirir.' },
       templates: { title: 'Şablonlar', description: 'Ekran görüntüleri, giderler, müzik parçaları, müşteri çalışmaları, yasal dosyalar, seyahat rezervasyonları ve izlenen klasörler için yeniden kullanılabilir ayarlar kaydedin.' },
       namingBlocks: { title: 'Adlandırma Blokları', description: 'Tarih, meta veri, ses, fotoğraf, finans, hukuk, seyahat, müşteri ve yapay zekâ alanları için 145’ten fazla blokla tutarlı dosya adları oluşturun.' },
-      customAiBlocks: { title: 'Özel Yapay Zekâ Blokları', description: 'Zush’un dosyadan ne çıkarması gerektiğini açıklayın — marka, müşteri, dava numarası veya başka bir ayrıntı — ve bunu kendi adlandırma bloğunuz olarak her şablonda yeniden kullanın. Ücretsiz sürüme dâhildir.' },
+      customAiBlocks: { title: 'Özel Yapay Zekâ Blokları', description: 'Zush’un çıkarmasını istediğiniz ayrıntıyı tarif edin ve bunu her şablonda Özel Yapay Zekâ Bloğu olarak yeniden kullanın.' },
       audioSupport: { title: 'Ses desteği', description: 'MP3, M4A, WAV, FLAC, OGG, WebM ve MPGA dosyalarını meta veri, tanıma, transkript ve ses alanlarıyla yeniden adlandırın.' },
       customPatterns: { title: 'Özel kalıplar', description: '{title}, {original}, {date}, {time} veya {category} gibi değişkenlerle kendi dosya adı kalıbınızı oluşturun.' },
       smartMetadata: { title: 'Akıllı meta veri', description: 'Finder etiketlerini ve Spotlight meta verilerini otomatik ekleyerek dosyaları doğal aramayla anında bulun.' },
@@ -2994,6 +3049,8 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       customPrompts: { title: 'Özel yapay zekâ istemleri', description: 'Adlar, etiketler ve meta veriler için kurallar belirleyerek yapay zekâ çıktısını tarzınıza ve iş akışınıza uyarlayın.' },
       byok: { title: 'Kendi anahtarınızı kullanın', description: 'Sınırsız bulut yeniden adlandırma için kendi Gemini, Groq, OpenAI veya Claude API anahtarınızı bağlayın. Anahtarlar yerel ve güvenli depolamada tutulur.' },
       offlineAi: { title: 'Çevrimdışı Yapay Zekâ modu', description: 'Ollama aracılığıyla özel yerel modeller. Desteklenen dosyaları analiz içeriğini Zush bulutuna veya yapay zekâ sağlayıcılarına göndermeden işleyin.' },
+      cloudAi: { title: 'Bulut yapay zekâ', description: 'Kurulum ve API anahtarı gerektirmeden hemen çalışır. Dosyaları bırak, Zush bulut yapay zekâsıyla anında yeniden adlandırsın.' },
+      bandTitle: 'Zush yapay zekâsını kullanmanın 3 yolu', bandSubtitle: 'Kutudan çıktığı gibi çalışan bulut yapay zekâsı, kendi API anahtarın veya Ollama ile tamamen çevrimdışı.',
       addFolder: 'Klasör ekle',
       promptRules: 'İstem kuralları',
       customBadge: 'Özel',
@@ -3060,7 +3117,7 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       speedDescription: 'Düzen, gerçek işinizi yavaşlatmadığında kalıcı olur. Dosyaları bırakın, inceleyin, uygulayın ve devam edin.',
       formatsEyebrow: '100’den fazla desteklenen biçim',
       formatsTitle: 'Ekran görüntüleri, PDF’ler, fotoğraflar, sesler, belgeler ve videolar',
-      formatsDescription: 'AVIF, RAW, Office dosyaları, PDF’ler, altyazılar, MP3, M4A, WAV, FLAC ve yaygın video biçimleri desteklenir; karma klasörler gerçek içeriğe göre adlandırılır.',
+      formatsDescription: 'AVIF, RAW, Office dosyaları, PDF’ler, altyazılar, MP3, M4A, WAV, FLAC ve yaygın video biçimleri tek bir içerik odaklı toplu işlemde desteklenir.',
       controlEyebrow: 'Adlandırma Blokları',
       controlTitle: 'Profesyonel işler için yapılandırılmış dosya adları',
       controlDescription: 'Profesyoneller kendi işlerine uygun bloklarla dosya adı kalıplarını oluşturabilir. Yapay zekâ her dosyayı okur ve blokları seçtiğiniz ayrıntılarla — müşteri, tarih, fatura numarası, konum veya proje — doldurur.',
@@ -3079,12 +3136,12 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
   },
   'zh-cn': {
     featureCards: {
-      aiAnalysis: { title: 'AI 分析', description: '高级 AI 会分析图片、视频和支持的文档（包括 PDF），自动生成有意义、易搜索的文件名。' },
+      aiAnalysis: { title: 'AI 分析', description: '一次批量分析并重命名 100 多种文件格式，涵盖图片、PDF、音频、视频和 Office 文件。' },
       foldersMonitoring: { title: '文件夹监控', description: '监控一个或多个文件夹。Zush 会在后台自动处理新加入的文件。' },
       batchRename: { title: '批量重命名', description: '一次拖入多个文件。Zush 会在几秒内完成分析并批量重命名。' },
       templates: { title: '模板', description: '为截图、报销、音乐轨道、客户工作、法律文件、旅行预订和监控文件夹保存可复用设置。' },
       namingBlocks: { title: '命名块', description: '用 145+ 个命名块构建一致文件名，覆盖日期、元数据、音频、照片、财务、法律、旅行、客户和 AI 字段。' },
-      customAiBlocks: { title: '自定义 AI 块', description: '描述 Zush 应从文件中提取的内容——品牌、客户、案件编号或任何细节——并将其作为你自己的命名块在任何模板中复用。免费版即可使用。' },
+      customAiBlocks: { title: '自定义 AI 块', description: '描述希望 Zush 提取的具体信息，然后将其作为自定义 AI 块在任意模板中复用。' },
       audioSupport: { title: '音频支持', description: '使用内嵌元数据、识别、转录和音频字段重命名 MP3、M4A、WAV、FLAC、OGG、WebM 和 MPGA。' },
       customPatterns: { title: '自定义命名模式', description: '用 {title}、{original}、{date}、{time} 或 {category} 等变量设置自己的文件名规则。' },
       smartMetadata: { title: '智能元数据', description: '自动添加 Finder 标签和 Spotlight 元数据，让文件可以用自然搜索快速找到。' },
@@ -3092,6 +3149,8 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       customPrompts: { title: '自定义 AI 提示词', description: '设置命名、标签和元数据规则，让 AI 输出符合你的风格和工作流。' },
       byok: { title: '使用自己的密钥', description: '连接 Gemini、Groq、OpenAI 或 Claude，实现无限云端重命名。密钥会安全保存在本地。' },
       offlineAi: { title: '离线 AI 模式', description: '通过 Ollama 使用私有本地模型。处理支持的文件时无需把分析内容发送到云端。' },
+      cloudAi: { title: '云端 AI', description: '开箱即用——无需配置、无需 API 密钥。拖入文件，Zush 立即用云端 AI 重命名。' },
+      bandTitle: '使用 Zush AI 的 3 种方式', bandSubtitle: '开箱即用的云端 AI、接入自己的 API 密钥，或通过 Ollama 完全离线。',
       addFolder: '添加文件夹', promptRules: '提示词规则', customBadge: '自定义', templateActive: '当前模板', templateNames: ['截图', '音乐轨道', '客户会议笔记'], namingBlockLabels: ['{date}', '{client_name}', '{artist}', '{bpm}', '{invoice_number}', '{title}'], apiKeyConnected: 'API 密钥已连接', terminal: '终端', localModelReady: '本地模型已就绪', today: '今天', undo: '撤销', audioNewNames: ['低保真钢琴循环_92BPM.mp3', '客户需求访谈.m4a'],
       analysisNewName: '巴厘岛_日落_海滩.png',
       batchNewNames: ['看板界面.png', '招聘计划笔记.docx', '投资人更新演示.pptx'],
@@ -3157,12 +3216,12 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
   },
   ar: {
     featureCards: {
-      aiAnalysis: { title: 'تحليل بالذكاء الاصطناعي', description: 'يحلل الذكاء الاصطناعي الصور والفيديوهات والمستندات المدعومة، بما في ذلك PDF، لإنشاء أسماء ملفات واضحة ومفيدة تلقائيا.' },
+      aiAnalysis: { title: 'تحليل بالذكاء الاصطناعي', description: 'حلّل وأعد تسمية أكثر من 100 تنسيق ملف في دفعة واحدة، من الصور وملفات PDF إلى ملفات الصوت والفيديو وOffice.' },
       foldersMonitoring: { title: 'مراقبة المجلدات', description: 'راقب مجلدا واحدا أو عدة مجلدات. يعمل Zush في الخلفية ويعالج الملفات الجديدة تلقائيا.' },
       batchRename: { title: 'إعادة تسمية دفعة واحدة', description: 'اسحب عدة ملفات مرة واحدة. يحللها Zush ويعيد تسميتها كلها خلال ثوان.' },
       templates: { title: 'القوالب', description: 'احفظ إعدادات قابلة لإعادة الاستخدام للقطات الشاشة والمصاريف والمقاطع الصوتية وعملاء العمل والملفات القانونية والسفر والمجلدات المراقبة.' },
       namingBlocks: { title: 'كتل التسمية', description: 'أنشئ أسماء متسقة من أكثر من 145 كتلة للتواريخ والبيانات الوصفية والصوت والصور والمال والقانون والسفر والعملاء وحقول AI.' },
-      customAiBlocks: { title: 'كتل AI مخصصة', description: 'صف ما يجب أن يستخرجه Zush من الملف — علامة تجارية، عميل، رقم قضية أو أي تفصيل آخر — ثم أعد استخدامه ككتلة تسمية خاصة بك في أي قالب. متاح في النسخة المجانية.' },
+      customAiBlocks: { title: 'كتل AI مخصصة', description: 'صِف التفصيل الذي تريد من Zush استخراجه، ثم أعد استخدامه ككتلة AI مخصصة في أي قالب.' },
       audioSupport: { title: 'دعم الصوت', description: 'أعد تسمية MP3 وM4A وWAV وFLAC وOGG وWebM وMPGA باستخدام البيانات الوصفية والتعرف والنصوص وحقول الصوت.' },
       customPatterns: { title: 'أنماط مخصصة', description: 'أنشئ نمط تسمية خاصا بك باستخدام متغيرات مثل {title} أو {original} أو {date} أو {time} أو {category}.' },
       smartMetadata: { title: 'بيانات وصفية ذكية', description: 'أضف وسوم Finder وبيانات Spotlight تلقائيا، لتجد الملفات بسرعة عبر البحث الطبيعي.' },
@@ -3170,6 +3229,8 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       customPrompts: { title: 'تعليمات AI مخصصة', description: 'حدد قواعد الأسماء والوسوم والبيانات الوصفية حتى تتبع نتائج الذكاء الاصطناعي أسلوبك وسير عملك.' },
       byok: { title: 'استخدم مفتاحك الخاص', description: 'اربط مفتاح API الخاص بك من Gemini أو Groq أو OpenAI أو Claude لإعادة تسمية غير محدودة عبر السحابة. يتم حفظ المفاتيح محليا بأمان.' },
       offlineAi: { title: 'وضع Offline AI', description: 'نماذج محلية خاصة عبر Ollama. عالج الملفات المدعومة دون إرسال محتوى التحليل إلى سحابة Zush أو مزودي الذكاء الاصطناعي.' },
+      cloudAi: { title: 'الذكاء السحابي', description: 'يعمل فورًا — دون إعداد أو مفاتيح API. أسقط الملفات وسيعيد Zush تسميتها مباشرةً بالذكاء السحابي.' },
+      bandTitle: '3 طرق لاستخدام ذكاء Zush الاصطناعي', bandSubtitle: 'ذكاء سحابي جاهز فورًا، أو مفتاح API الخاص بك، أو دون اتصال تمامًا عبر Ollama.',
       addFolder: 'إضافة مجلد',
       promptRules: 'قواعد التعليمات',
       customBadge: 'مخصص',
@@ -3236,7 +3297,7 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       speedDescription: 'ينجح تنظيم الملفات عندما لا يقطع عملك. أسقط الملفات، راجع، طبّق، ثم تابع.',
       formatsEyebrow: '100+ صيغة مدعومة',
       formatsTitle: 'لقطات الشاشة وPDF والصور والصوت والمستندات والفيديوهات',
-      formatsDescription: 'يدعم AVIF وRAW وملفات Office وPDF والترجمات وMP3 وM4A وWAV وFLAC وصيغ الفيديو الشائعة، حتى يمكن تسمية المجلدات المختلطة حسب محتواها الحقيقي.',
+      formatsDescription: 'يدعم AVIF وRAW وملفات Office وPDF والترجمات وMP3 وM4A وWAV وFLAC وصيغ الفيديو الشائعة لإعادة تسمية الملفات حسب المحتوى في دفعة واحدة.',
       controlEyebrow: 'كتل التسمية',
       controlTitle: 'أسماء ملفات منظمة للعمل المهني',
       controlDescription: 'يستطيع المحترفون بناء أنماط أسماء ملفاتهم من كتل تناسب عملهم. يقرأ الذكاء الاصطناعي كل ملف ويملأ تلك الكتل بالتفاصيل التي اختاروها مثل العميل والتاريخ ورقم الفاتورة والموقع أو المشروع.',
@@ -3679,13 +3740,13 @@ const COPY: Record<Locale, LocaleCopy> = {
       buyPro: 'PRO kaufen 🌟',
       trustSignals: ['✨ Kostenlos starten', '💳 Keine Kreditkarte erforderlich'],
       featuresTitle: 'Zush Funktionen',
-      featuresDescription: 'Ein Desktop-KI-Dateiumbenenner für Screenshots, PDFs, Fotos, Audio, Videos, Dokumente und gemischte Ordner',
+      featuresDescription: 'Verwandle unübersichtliche Dateinamen mit Vorschau, Templates, Ordnerüberwachung und Rückgängig-Funktion in klare, einheitliche Namen.',
       supportedFormats: 'Unterstützte Dateiformate',
       images: 'Bilder',
       documents: 'Dokumente',
       videosLabel: 'Videos',
       audioLabel: 'Audio',
-      cloudFoldersTitle: 'Jeder Ordner — auch deine Cloud-Speicher',
+      cloudFoldersTitle: 'Funktioniert mit deinen Cloud-Ordnern',
       cloudFoldersDescription: 'Zush benennt Dateien in jedem lokalen Ordner um — auch in denen, die iCloud Drive, Google Drive, Dropbox und OneDrive synchron halten. Keine Konten zum Verbinden.',
       downloadTitle: 'Zush kostenlos testen',
       downloadSubtitle: 'Dateien stapelweise umbenennen, Ordner überwachen und Screenshots, PDFs, Fotos, Audio, Videos und Dokumente nach Inhalt benennen.',
@@ -3734,13 +3795,13 @@ const COPY: Record<Locale, LocaleCopy> = {
       buyPro: 'Acheter PRO 🌟',
       trustSignals: ['✨ Commencez gratuitement', '💳 Sans carte bancaire'],
       featuresTitle: 'Fonctions Zush',
-      featuresDescription: 'Un renommeur de fichiers IA desktop pour screenshots, PDF, photos, audio, vidéos, documents et dossiers mixtes',
+      featuresDescription: 'Transformez les noms de fichiers désordonnés en noms clairs et cohérents grâce aux aperçus, aux modèles, à la surveillance des dossiers et à l’annulation en un clic.',
       supportedFormats: 'Formats pris en charge',
       images: 'Images',
       documents: 'Documents',
       videosLabel: 'Vidéos',
       audioLabel: 'Audio',
-      cloudFoldersTitle: 'N’importe quel dossier — vos espaces cloud inclus',
+      cloudFoldersTitle: 'Compatible avec vos dossiers cloud',
       cloudFoldersDescription: 'Zush renomme les fichiers dans n’importe quel dossier local — y compris ceux que synchronisent iCloud Drive, Google Drive, Dropbox et OneDrive. Aucun compte à connecter.',
       downloadTitle: 'Essayez Zush gratuitement',
       downloadSubtitle: 'Renommez les fichiers par lot, surveillez les dossiers et renommez screenshots, PDF, photos, audio, vidéos et documents par contenu.',
@@ -3779,13 +3840,13 @@ const COPY: Record<Locale, LocaleCopy> = {
       buyPro: 'Comprar PRO 🌟',
       trustSignals: ['✨ Comece grátis', '💳 Sem cartão de crédito'],
       featuresTitle: 'Recursos do Zush',
-      featuresDescription: 'Um renomeador de arquivos com IA para screenshots, PDFs, fotos, áudio, vídeos, documentos e pastas mistas',
+      featuresDescription: 'Transforme nomes de arquivos confusos em nomes claros e consistentes com prévias, modelos, monitoramento de pastas e desfazer em um clique.',
       supportedFormats: 'Formatos compatíveis',
       images: 'Imagens',
       documents: 'Documentos',
       videosLabel: 'Vídeos',
       audioLabel: 'Áudio',
-      cloudFoldersTitle: 'Qualquer pasta — incluindo seus drives na nuvem',
+      cloudFoldersTitle: 'Funciona com suas pastas na nuvem',
       cloudFoldersDescription: 'O Zush renomeia arquivos em qualquer pasta local — incluindo as que o iCloud Drive, Google Drive, Dropbox e OneDrive mantêm sincronizadas. Nenhuma conta para conectar.',
       downloadTitle: 'Teste o Zush grátis',
       downloadSubtitle: 'Renomeie arquivos em lote, monitore pastas e renomeie screenshots, PDFs, fotos, áudio, vídeos e documentos por conteúdo.',
@@ -3824,13 +3885,13 @@ const COPY: Record<Locale, LocaleCopy> = {
       buyPro: 'Comprar PRO 🌟',
       trustSignals: ['✨ Empieza gratis', '💳 Sin tarjeta de crédito'],
       featuresTitle: 'Funciones de Zush',
-      featuresDescription: 'Un renombrador de archivos con IA para capturas, PDFs, fotos, audio, videos, documentos y carpetas mixtas',
+      featuresDescription: 'Convierte nombres de archivo desordenados en nombres claros y coherentes con vistas previas, plantillas, monitorización de carpetas y deshacer en un clic.',
       supportedFormats: 'Formatos compatibles',
       images: 'Imágenes',
       documents: 'Documentos',
       videosLabel: 'Videos',
       audioLabel: 'Audio',
-      cloudFoldersTitle: 'Cualquier carpeta, incluidas tus unidades en la nube',
+      cloudFoldersTitle: 'Funciona con tus carpetas en la nube',
       cloudFoldersDescription: 'Zush renombra archivos en cualquier carpeta local, incluidas las que iCloud Drive, Google Drive, Dropbox y OneDrive mantienen sincronizadas. No hay cuentas que conectar.',
       downloadTitle: 'Prueba Zush gratis',
       downloadSubtitle: 'Renombra archivos por lotes, monitorea carpetas y renombra capturas, PDFs, fotos, audio, videos y documentos por contenido.',
@@ -3869,13 +3930,13 @@ const COPY: Record<Locale, LocaleCopy> = {
       buyPro: 'Koop PRO 🌟',
       trustSignals: ['✨ Gratis aan de slag', '💳 Geen creditcard nodig'],
       featuresTitle: 'Zush-functies',
-      featuresDescription: 'Een desktop AI-bestandshernoemer voor screenshots, PDFs, foto’s, audio, video’s, documenten en gemengde mappen',
+      featuresDescription: 'Maak rommelige bestandsnamen helder en consistent met voorbeelden, templates, mapbewaking en ongedaan maken met één klik.',
       supportedFormats: 'Ondersteunde bestandsformaten',
       images: 'Afbeeldingen',
       documents: 'Documenten',
       videosLabel: 'Video’s',
       audioLabel: 'Audio',
-      cloudFoldersTitle: 'Elke map — ook je cloudopslag',
+      cloudFoldersTitle: 'Werkt met je cloudmappen',
       cloudFoldersDescription: 'Zush hernoemt bestanden in elke lokale map — ook die iCloud Drive, Google Drive, Dropbox en OneDrive gesynchroniseerd houden. Geen accounts om te koppelen.',
       downloadTitle: 'Probeer Zush gratis',
       downloadSubtitle: 'Hernoem bestanden in bulk, bewaak mappen en hernoem screenshots, PDFs, foto’s, audio, video’s en documenten op inhoud.',
@@ -3914,13 +3975,13 @@ const COPY: Record<Locale, LocaleCopy> = {
       buyPro: 'Acquista PRO 🌟',
       trustSignals: ['✨ Inizia gratis', '💳 Nessuna carta richiesta'],
       featuresTitle: 'Funzioni di Zush',
-      featuresDescription: 'Un rinomina file IA desktop per screenshot, PDF, foto, audio, video, documenti e cartelle miste',
+      featuresDescription: 'Trasforma nomi di file disordinati in nomi chiari e coerenti con anteprime, modelli, monitoraggio delle cartelle e annullamento con un clic.',
       supportedFormats: 'Formati supportati',
       images: 'Immagini',
       documents: 'Documenti',
       videosLabel: 'Video',
       audioLabel: 'Audio',
-      cloudFoldersTitle: 'Qualsiasi cartella, cloud inclusi',
+      cloudFoldersTitle: 'Funziona con le tue cartelle cloud',
       cloudFoldersDescription: 'Zush rinomina i file in qualsiasi cartella locale, comprese quelle che iCloud Drive, Google Drive, Dropbox e OneDrive mantengono sincronizzate. Nessun account da collegare.',
       downloadTitle: 'Prova Zush gratis',
       downloadSubtitle: 'Rinomina file in batch, monitora cartelle e rinomina screenshot, PDF, foto, audio, video e documenti per contenuto.',
@@ -3959,13 +4020,13 @@ const COPY: Record<Locale, LocaleCopy> = {
       buyPro: 'PROを購入 🌟',
       trustSignals: ['✨ 無料で始める', '💳 クレジットカード不要'],
       featuresTitle: 'Zush の機能',
-      featuresDescription: 'スクリーンショット、PDF、写真、音声、動画、文書、混在フォルダ向けのデスクトップAIファイルリネーム',
+      featuresDescription: 'プレビュー、テンプレート、フォルダ監視、ワンクリックの取り消しで、乱雑なファイル名を明確で統一された名前に整えます。',
       supportedFormats: '対応ファイル形式',
       images: '画像',
       documents: '文書',
       videosLabel: '動画',
       audioLabel: '音声',
-      cloudFoldersTitle: 'どんなフォルダでも — クラウドも含めて',
+      cloudFoldersTitle: 'クラウドフォルダにも対応',
       cloudFoldersDescription: 'Zush はどんなローカルフォルダのファイルもリネームします。iCloud Drive、Google Drive、Dropbox、OneDrive が同期しているフォルダも対象です。アカウント接続は不要です。',
       downloadTitle: 'Zush を無料で試す',
       downloadSubtitle: 'ファイルを一括リネームし、フォルダを監視し、スクリーンショット、PDF、写真、音声、動画、文書を内容でリネームします。',
@@ -4004,13 +4065,13 @@ const COPY: Record<Locale, LocaleCopy> = {
       buyPro: 'PRO 구매 🌟',
       trustSignals: ['✨ 무료로 시작하기', '💳 카드 필요 없음'],
       featuresTitle: 'Zush 기능',
-      featuresDescription: '스크린샷, PDF, 사진, 오디오, 비디오, 문서, 혼합 폴더를 위한 데스크톱 AI 파일 이름 변경 도구',
+      featuresDescription: '미리보기, 템플릿, 폴더 모니터링, 원클릭 실행 취소로 복잡한 파일 이름을 명확하고 일관되게 정리하세요.',
       supportedFormats: '지원 파일 형식',
       images: '이미지',
       documents: '문서',
       videosLabel: '비디오',
       audioLabel: '오디오',
-      cloudFoldersTitle: '모든 폴더 — 클라우드 드라이브 포함',
+      cloudFoldersTitle: '클라우드 폴더에서도 작동',
       cloudFoldersDescription: 'Zush는 모든 로컬 폴더의 파일 이름을 변경합니다. iCloud Drive, Google Drive, Dropbox, OneDrive가 동기화하는 폴더도 포함됩니다. 계정을 연결할 필요가 없습니다.',
       downloadTitle: 'Zush 무료 체험',
       downloadSubtitle: '파일을 일괄 이름 변경하고, 폴더를 모니터링하며, 스크린샷, PDF, 사진, 오디오, 비디오, 문서를 내용 기준으로 이름 변경합니다.',
@@ -4062,7 +4123,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       buyPro: '购买 PRO 🌟',
       trustSignals: ['✨ 免费开始', '💳 无需信用卡'],
       featuresTitle: 'Zush 功能',
-      featuresDescription: '面向截图、PDF、照片、音频、视频、文档和混合文件夹的桌面 AI 文件重命名工具',
+      featuresDescription: '通过预览、模板、文件夹监控和一键撤销，把杂乱的文件名整理成清晰统一的名称。',
       supportedFormats: '支持的文件格式',
       images: '图片',
       documents: '文档',
@@ -4196,7 +4257,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       buyPro: 'PRO satın al 🌟',
       trustSignals: ['✨ Ücretsiz başlayın', '💳 Kredi kartı gerekmez'],
       featuresTitle: 'Zush Özellikleri',
-      featuresDescription: 'Ekran görüntüleri, PDF’ler, fotoğraflar, sesler, videolar, belgeler ve karma klasörler için masaüstü yapay zekâ dosya adlandırıcı',
+      featuresDescription: 'Önizlemeler, şablonlar, klasör izleme ve tek tıkla geri alma ile dağınık dosya adlarını açık ve tutarlı hâle getirin.',
       supportedFormats: 'Desteklenen dosya biçimleri',
       images: 'Görseller',
       documents: 'Belgeler',
@@ -4343,7 +4404,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       buyPro: 'شراء PRO 🌟',
       trustSignals: ['✨ ابدأ مجانا', '💳 لا تحتاج إلى بطاقة ائتمان'],
       featuresTitle: 'ميزات Zush',
-      featuresDescription: 'أداة سطح مكتب لإعادة تسمية لقطات الشاشة وملفات PDF والصور والصوت والفيديوهات والمستندات والمجلدات المختلطة بالذكاء الاصطناعي',
+      featuresDescription: 'حوّل أسماء الملفات الفوضوية إلى أسماء واضحة ومتسقة باستخدام المعاينات والقوالب ومراقبة المجلدات والتراجع بنقرة واحدة.',
       supportedFormats: 'صيغ الملفات المدعومة',
       images: 'الصور',
       documents: 'المستندات',

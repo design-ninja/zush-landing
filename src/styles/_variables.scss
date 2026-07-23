@@ -1,3 +1,5 @@
+$brand-green: oklch(0.7556 0.2082 146.98);
+
 // Light Mode
 $background: oklch(1 0 0);
 $foreground: oklch(0.15 0.015 265);
@@ -13,7 +15,7 @@ $primary-foreground: oklch(1 0 0);
 $primary-hover: oklch(0.61 0.25 279.31);
 $primary-soft: oklch(0.5595 0.2296 279.31 / 0.1);
 
-$secondary: oklch(0.7556 0.2082 146.98);
+$secondary: $brand-green;
 $secondary-text: oklch(0.46 0.13 147);
 $secondary-foreground: oklch(1 0 0);
 $secondary-hover: oklch(0.8 0.22 146.98);
@@ -27,7 +29,7 @@ $border: oklch(0.92 0.003 265);
 $glass: oklch(1 0 0 / 0.7);
 $glass-border: oklch(0 0 0 / 0.05);
 
-$success: oklch(0.7557 0.208 146.92);
+$success: $brand-green;
 $success-foreground: oklch(1 0 0);
 $destructive: oklch(0.6 0.2 25);
 $destructive-foreground: oklch(1 0 0);
@@ -46,8 +48,8 @@ $h-cyan: 195;
 $tone-orange-fg:  oklch(0.74 0.17 55);
 $tone-orange-bg:  oklch(0.74 0.17 55 / 0.16);
 
-$tone-green-fg:   oklch(0.7557 0.208 147);
-$tone-green-bg:   oklch(0.7557 0.208 147 / 0.14);
+$tone-green-fg:   $brand-green;
+$tone-green-bg:   oklch(0.7556 0.2082 146.98 / 0.14);
 
 $tone-blue-fg:    oklch(0.62 0.2 252);
 $tone-blue-bg:    oklch(0.62 0.2 252 / 0.14);
@@ -88,8 +90,8 @@ $dark-primary-foreground: oklch(1 0 0);
 $dark-primary-hover: oklch(0.66 0.27 279.31);
 $dark-primary-soft: oklch(0.61 0.25 279.31 / 0.2);
 
-$dark-secondary: oklch(0.7556 0.2082 146.98);
-$dark-secondary-text: oklch(0.76 0.17 147);
+$dark-secondary: $brand-green;
+$dark-secondary-text: $brand-green;
 $dark-secondary-foreground: oklch(1 0 0);
 $dark-secondary-hover: oklch(0.8 0.22 146.98);
 
@@ -102,7 +104,7 @@ $dark-border: oklch(0.28 0.01 285);
 $dark-glass: oklch(0.2 0.01 285 / 0.7);
 $dark-glass-border: oklch(1 0 0 / 0.1);
 
-$dark-success: oklch(0.7 0.17 160);
+$dark-success: $brand-green;
 $dark-success-foreground: oklch(0.15 0 0);
 $dark-destructive: oklch(0.65 0.2 25);
 $dark-destructive-foreground: oklch(1 0 0);
@@ -111,8 +113,8 @@ $dark-destructive-foreground: oklch(1 0 0);
 $dark-tone-orange-fg:  oklch(0.8 0.16 55);
 $dark-tone-orange-bg:  oklch(0.8 0.16 55 / 0.22);
 
-$dark-tone-green-fg:   oklch(0.8 0.18 147);
-$dark-tone-green-bg:   oklch(0.8 0.18 147 / 0.2);
+$dark-tone-green-fg:   $brand-green;
+$dark-tone-green-bg:   oklch(0.7556 0.2082 146.98 / 0.2);
 
 $dark-tone-blue-fg:    oklch(0.72 0.18 252);
 $dark-tone-blue-bg:    oklch(0.72 0.18 252 / 0.2);

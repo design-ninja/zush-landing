@@ -2,7 +2,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--star-rating-gap, 0.18rem);
-  color: #e9ab05;
+  color: #fc0;
   font-size: var(--star-rating-size, 1.15rem);
   line-height: 1;
   letter-spacing: 0;
@@ -11,4 +11,6 @@
 /* Keeps every star as an independent flex item so spacing is controlled by gap. */
 .StarRating__Star {
   display: block;
+  width: 1em;
+  height: 1em;
 }

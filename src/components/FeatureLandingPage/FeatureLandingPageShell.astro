@@ -84,7 +84,7 @@ const relatedPageTitle = (href: string, fallback: string) =>
   />
 
   <Tour client:visible copy={currentCopy.home.showcase} />
-  <Features title={currentCopy.home.featuresTitle} description={currentCopy.home.featuresDescription} copy={currentCopy.home.featureCards} />
+  <Features title={currentCopy.home.featuresTitle} description={currentCopy.home.featuresDescription} copy={currentCopy.home.featureCards} locale={currentLocale} />
   <SupportedFormats
     category={category}
     title={currentCopy.home.supportedFormats}

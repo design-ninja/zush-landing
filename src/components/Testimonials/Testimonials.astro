@@ -70,7 +70,7 @@ const copy = copyByLocale[locale] ?? copyByLocale.en!;
         <article class={styles.TestimonialCard}>
           <StarRating className={styles.TestimonialCard__Stars} label={copy.stars} />
           <blockquote class={styles.TestimonialCard__Quote}>
-            <Text as='p' size='md'>{testimonial.quote}</Text>
+            <Text as='p' size='sm'>{testimonial.quote}</Text>
           </blockquote>
           <footer class={styles.TestimonialCard__Author}>
             <Text as='p' size='sm' className={styles.TestimonialCard__Name}>{testimonial.name}</Text>

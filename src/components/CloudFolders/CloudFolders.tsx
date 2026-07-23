@@ -3,7 +3,6 @@ import styles from './CloudFolders.module.scss';
 
 interface CloudFoldersProps {
   title: string;
-  description: string;
 }
 
 interface CloudServiceItem {
@@ -76,11 +75,11 @@ const CloudServiceIcon = ({ id }: { id: string }) => {
   }
 };
 
-const CloudFolders = ({ title, description }: CloudFoldersProps) => {
+const CloudFolders = ({ title }: CloudFoldersProps) => {
   return (
     <section className={styles.CloudFolders}>
       <div className={styles.CloudFolders__Container}>
-        <SectionHeader title={title} description={description} />
+        <SectionHeader title={title} level='h3' className={styles.CloudFolders__Header} />
 
         <ul className={styles.CloudFolders__List}>
           {CLOUD_SERVICES.map((service) => (

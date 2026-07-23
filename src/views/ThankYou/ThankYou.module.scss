@@ -14,10 +14,10 @@
     }
 
     &__SuccessIcon {
-        color: #22c55e;
+        color: var(--secondary);
 
         svg {
-            filter: drop-shadow(0 4px 12px rgba(34, 197, 94, 0.3));
+            filter: drop-shadow(0 4px 12px color-mix(in srgb, var(--secondary) 30%, transparent));
         }
     }
 
