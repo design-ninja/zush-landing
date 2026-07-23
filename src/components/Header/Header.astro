@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import DownloadButton from '@/components/DownloadButton/DownloadButton';
 import LanguageSwitcher from '@/components/LanguageSwitcher/LanguageSwitcher.astro';
 import type { DownloadOS } from '@/utils/download';
@@ -63,10 +62,10 @@ const mobileBuyButtonClass = [
 <nav class={styles.Header} data-cta-state='hidden'>
   <div class={styles.Header__Container}>
     <a href={homeHref} class={logoClass}>
-      <Image
+      <img
         src='/logo-96.webp'
-        width={48}
-        height={48}
+        width='48'
+        height='48'
         alt=''
         class={logoStyles.Logo__Icon}
         loading='eager'

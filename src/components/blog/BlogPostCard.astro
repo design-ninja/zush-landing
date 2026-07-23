@@ -20,7 +20,7 @@ const thumbnail = getBlogThumbnail(post.slug);
   <a class={styles.BlogList__PostLink} href={`/blog/${post.slug}`}>
     <div class={styles.BlogList__PostMedia} aria-hidden='true'>
       <Image
-        alt=''
+        alt={post.title}
         class={styles.BlogList__PostImage}
         decoding='async'
         height={543}

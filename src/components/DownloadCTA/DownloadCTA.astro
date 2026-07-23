@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { getImage } from 'astro:assets';
 import ctaBackground from '@/assets/download-cta/try-zush-free-bg.webp';
 import DownloadButton from '@/components/DownloadButton/DownloadButton';
 import Heading from '@/components/Heading';
@@ -32,17 +32,24 @@ const {
 
 const resolvedTitle = title ?? 'Try Zush free';
 const downloadOS = forceOS ?? 'mac';
+// Rendered as a plain <img> so the empty alt is serialized as alt="" — the
+// Image component emits a bare `alt`, which some crawlers read as missing.
+const background = await getImage({
+  src: ctaBackground,
+  width: 1600,
+  height: 914,
+  format: 'webp',
+  quality: 78,
+});
 ---
 
 <section class:list={[styles.Section, className]}>
   <div class={styles.Container}>
     <div class={styles.Card}>
-      <Image
-        src={ctaBackground}
-        width={1600}
-        height={914}
-        format="webp"
-        quality={78}
+      <img
+        src={background.src}
+        width="1600"
+        height="914"
         alt=""
         class={styles.Background}
         loading="lazy"

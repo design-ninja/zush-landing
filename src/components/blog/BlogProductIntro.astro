@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 
 interface Link {
   href: string;
@@ -29,10 +28,10 @@ const {
 <aside class='blog-product-intro'>
   <div class='blog-product-intro__row'>
     <a class='blog-product-intro__logo' href='/' aria-label='Zush homepage'>
-      <Image
+      <img
         src='/logo-96.webp'
-        width={56}
-        height={56}
+        width='56'
+        height='56'
         alt=''
         loading='lazy'
         decoding='async'

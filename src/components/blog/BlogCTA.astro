@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { getImage } from 'astro:assets';
 import ctaBackground from '@/assets/download-cta/try-zush-free-bg.webp';
 import headingStyles from '@/components/Heading/Heading.module.scss';
 import textStyles from '@/components/Text/Text.module.scss';
@@ -47,6 +47,15 @@ const hintClasses = [
   textStyles.Text_subtle,
   styles.BlogCTA__Hint,
 ].join(' ');
+// Rendered as a plain <img> so the empty alt is serialized as alt="" — the
+// Image component emits a bare `alt`, which some crawlers read as missing.
+const background = await getImage({
+  src: ctaBackground,
+  width: 1600,
+  height: 914,
+  format: 'webp',
+  quality: 78,
+});
 ---
 
 {
@@ -57,12 +66,10 @@ const hintClasses = [
       data-blog-cta-platform='general'
       data-placement={placement}
     >
-      <Image
-        src={ctaBackground}
-        width={1600}
-        height={914}
-        format='webp'
-        quality={78}
+      <img
+        src={background.src}
+        width='1600'
+        height='914'
         alt=''
         class={styles.BlogCTA__Background}
         loading='lazy'
@@ -123,12 +130,10 @@ const hintClasses = [
     </aside>
   ) : (
     <aside class={styles.BlogCTA} data-placement={placement}>
-      <Image
-        src={ctaBackground}
-        width={1600}
-        height={914}
-        format='webp'
-        quality={78}
+      <img
+        src={background.src}
+        width='1600'
+        height='914'
         alt=''
         class={styles.BlogCTA__Background}
         loading='lazy'
