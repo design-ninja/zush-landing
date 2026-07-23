@@ -146,6 +146,10 @@
         padding: 0.35rem;
         transition: background-color 0.2s ease, color 0.2s ease;
 
+        @include mobile {
+            display: none;
+        }
+
         @media (max-width: 390px) {
             padding: 0.25rem;
         }

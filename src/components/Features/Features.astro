@@ -17,6 +17,7 @@ interface Props {
   copy?: FeatureCardsCopy;
   compactTopSpacing?: boolean;
   eagerVisuals?: boolean;
+  includeBand?: boolean;
   locale?: Locale;
 }
 
@@ -26,12 +27,16 @@ const {
   copy = DEFAULT_FEATURE_CARDS_COPY,
   compactTopSpacing = false,
   eagerVisuals = false,
+  includeBand = true,
   locale = DEFAULT_LOCALE,
 } = Astro.props as Props;
 const demoCopy = FEATURE_DEMO_COPY[locale];
 const titleParts = title.split('Zush');
 const bandTitleParts = copy.bandTitle.split('Zush');
 const className = [styles.Features, compactTopSpacing ? styles.Features_compactTopSpacing : '']
+  .filter(Boolean)
+  .join(' ');
+const switcherClassName = [styles.SwitcherSection, includeBand ? '' : styles.SwitcherSection_tight]
   .filter(Boolean)
   .join(' ');
 
@@ -83,6 +88,7 @@ const switcherItems: FeatureSwitcherItem[] = [
     </div>
 
     <!-- Tier 2: differentiators band -->
+    {includeBand && (
     <div class={styles.Band}>
       <div class={styles.Band__Header}>
         <Heading as='h3' size='h2' align='center' className={styles.Band__Title}>
@@ -146,9 +152,10 @@ const switcherItems: FeatureSwitcherItem[] = [
         </BentoCard>
       </div>
     </div>
+    )}
 
     <!-- Tier 3: everyday tools switcher -->
-    <div class={styles.SwitcherSection}>
+    <div class={switcherClassName}>
       {
         eagerVisuals ? (
           <FeatureSwitcher items={switcherItems} client:load />

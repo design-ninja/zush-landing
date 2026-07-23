@@ -1,0 +1,92 @@
+---
+import { Bot, Cloud, KeyRound } from 'lucide-react';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
+import { DEFAULT_LOCALE, type Locale } from '@/i18n/config';
+import { DEFAULT_FEATURE_CARDS_COPY, type FeatureCardsCopy } from '@/i18n/copy';
+import { FEATURE_DEMO_COPY } from '@/i18n/featureDemoCopy';
+import BentoCard from './BentoCard.astro';
+import FeatureAnimation from './FeatureAnimation';
+import featureStyles from './Features.module.scss';
+import styles from './WaysToRun.module.scss';
+
+interface Props {
+  copy?: FeatureCardsCopy;
+  eagerVisuals?: boolean;
+  locale?: Locale;
+}
+
+const {
+  copy = DEFAULT_FEATURE_CARDS_COPY,
+  eagerVisuals = false,
+  locale = DEFAULT_LOCALE,
+} = Astro.props as Props;
+const demoCopy = FEATURE_DEMO_COPY[locale];
+const bandTitleParts = copy.bandTitle.split('Zush');
+---
+
+<section id='ways-to-run' class={styles.WaysToRun} data-scroll-reveal-skip>
+  <div class={styles.WaysToRun__Container}>
+    <div class={featureStyles.Band__Header}>
+      <Heading as='h2' size='h2' align='center' className={featureStyles.Band__Title}>
+        {bandTitleParts[0]}{bandTitleParts.length > 1 ? <span class={featureStyles.Features__TitleAccent}>Zush</span> : null}{bandTitleParts.slice(1).join('Zush')}
+      </Heading>
+      <Text as='p' color='subtle' align='center' className={featureStyles.Band__Subtitle}>
+        {copy.bandSubtitle}
+      </Text>
+    </div>
+    <div class={featureStyles.Band__Grid}>
+      <BentoCard
+        title={copy.cloudAi.title}
+        description={copy.cloudAi.description}
+        icon={Cloud}
+        badge='FREE'
+        badgeTone='success'
+      >
+        <div class={featureStyles.UI_FeatureAnimation}>
+          {
+            eagerVisuals ? (
+              <FeatureAnimation kind='cloud-ai' demoCopy={demoCopy} client:load />
+            ) : (
+              <FeatureAnimation kind='cloud-ai' demoCopy={demoCopy} client:visible />
+            )
+          }
+        </div>
+      </BentoCard>
+
+      <BentoCard
+        title={copy.byok.title}
+        description={copy.byok.description}
+        icon={KeyRound}
+        badge='PRO 🌟'
+      >
+        <div class={featureStyles.UI_FeatureAnimation}>
+          {
+            eagerVisuals ? (
+              <FeatureAnimation kind='byok' demoCopy={demoCopy} client:load />
+            ) : (
+              <FeatureAnimation kind='byok' demoCopy={demoCopy} client:visible />
+            )
+          }
+        </div>
+      </BentoCard>
+
+      <BentoCard
+        title={copy.offlineAi.title}
+        description={copy.offlineAi.description}
+        icon={Bot}
+        badge='PRO 🌟'
+      >
+        <div class={featureStyles.UI_FeatureAnimation}>
+          {
+            eagerVisuals ? (
+              <FeatureAnimation kind='offline-ai' demoCopy={demoCopy} client:load />
+            ) : (
+              <FeatureAnimation kind='offline-ai' demoCopy={demoCopy} client:visible />
+            )
+          }
+        </div>
+      </BentoCard>
+    </div>
+  </div>
+</section>

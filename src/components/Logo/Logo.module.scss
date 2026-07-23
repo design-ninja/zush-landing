@@ -36,16 +36,12 @@
 
     &__Text {
         display: block;
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         font-weight: 600;
         line-height: 1;
         color: var(--secondary);
         @include secondary-text-contrast;
         transition: color 0.2s ease;
-
-        @include mobile {
-            font-size: 1.6rem;
-        }
 
         @media (max-width: 390px) {
             font-size: 1.35rem;

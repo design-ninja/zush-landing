@@ -2,6 +2,7 @@
 import Hero from '@/components/Hero';
 import Tour from '@/components/Tour';
 import Features from '@/components/Features/Features.astro';
+import WaysToRun from '@/components/Features/WaysToRun.astro';
 import SupportedFormats from '@/components/SupportedFormats';
 import CloudFolders from '@/components/CloudFolders';
 import HomeBlogHighlights from '@/components/HomeBlogHighlights/HomeBlogHighlights.astro';
@@ -54,11 +55,13 @@ const heroVideoShowcaseByOS = {
   macVersion={macVersion}
   windowsVersion={windowsVersion}
 />
+<WaysToRun copy={copy.home.featureCards} locale={locale} />
 <Features
   title={copy.home.featuresTitle}
   description={copy.home.featuresDescription}
   copy={copy.home.featureCards}
   locale={locale}
+  includeBand={false}
   compactTopSpacing
 />
 <CloudFolders title={copy.home.cloudFoldersTitle} />

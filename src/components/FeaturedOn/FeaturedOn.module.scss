@@ -44,11 +44,9 @@
   height: 54px;
   color: var(--foreground);
   text-decoration: none;
-  opacity: 0.75;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: transform 0.2s ease;
 
   &:hover {
-    opacity: 1;
     transform: translateY(-2px);
   }
 

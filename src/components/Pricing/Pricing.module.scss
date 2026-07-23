@@ -3,9 +3,13 @@
 @use '../../styles/mixins' as *;
 
 .Pricing {
-    padding: 2.5rem 0 2.25rem;
+    padding: 4.75rem 0 4.5rem;
     background-color: var(--muted);
     scroll-margin-top: calc($navbar-height - 4rem);
+
+    @include mobile {
+        padding: 3.25rem 0 3rem;
+    }
 
     &__Container {
         @include container;
@@ -153,7 +157,7 @@
         align-items: center;
         justify-content: center;
         gap: 0.8rem;
-        margin: 0.15rem 0;
+        margin: 1.6rem 0;
         color: var(--muted-foreground);
     }
 
@@ -245,6 +249,8 @@
     @include mobile {
         padding: 1.4rem 1.25rem 1.25rem;
         min-height: 0;
+        // Shorter than square on mobile, but tall enough for content to fit
+        aspect-ratio: 4 / 3;
     }
 
     &_featured {

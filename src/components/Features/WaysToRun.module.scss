@@ -1,0 +1,15 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.WaysToRun {
+    padding: 4.25rem 0;
+    scroll-margin-top: calc($navbar-height + 1rem);
+
+    @include mobile {
+        padding: 3.25rem 0;
+    }
+
+    &__Container {
+        @include container;
+    }
+}

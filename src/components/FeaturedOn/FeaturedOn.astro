@@ -81,7 +81,10 @@ const catalogs = [
   {
     name: 'ToolPilot',
     href: 'https://www.toolpilot.ai/',
-    icon: '/images/featured-on/toolpilot.png',
+    // Square brand mark from https://www.toolpilot.ai/pages/brand-guidelines (currentColor, theme-adaptive)
+    iconSvg:
+      'm432,288h-180v180h-36V72h216c19.88,0,36,16.12,36,36v144c0,19.88-16.12,36-36,36ZM36,72h144v324h-36V108H0V0h288v36H36v36Zm252,180v36h-36V108h180v144h-144Z',
+    iconViewBox: '0 0 468 468',
   },
   {
     name: "There's An AI For That",
@@ -111,6 +114,12 @@ const title = titleByLocale[locale] ?? titleByLocale.en!;
             <span class={styles.FeaturedOnItem__Icon}>
               <svg width='26' height='26' viewBox='0 0 24 24' fill='currentColor' aria-hidden='true'>
                 <path d='M13.604 8.4h-3.405V12h3.405a1.8 1.8 0 0 0 0-3.6zM12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm1.604 14.4h-3.405V18H7.801V6h5.804a4.2 4.2 0 0 1 0 8.4z' />
+              </svg>
+            </span>
+          ) : catalog.iconSvg ? (
+            <span class={styles.FeaturedOnItem__Icon}>
+              <svg width='24' height='24' viewBox={catalog.iconViewBox} fill='currentColor' fill-rule='evenodd' aria-hidden='true'>
+                <path d={catalog.iconSvg} />
               </svg>
             </span>
           ) : (
