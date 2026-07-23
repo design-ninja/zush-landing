@@ -58,7 +58,7 @@ const copy = copyByLocale[locale] ?? copyByLocale.en!;
   <div class={styles.Testimonials__Container}>
     <div class={sectionHeaderStyles.SectionHeader}>
       <Heading id='testimonials-title' as='h2' align='center' className={sectionHeaderStyles.SectionHeader__Title}>
-        {copy.title}<span class={`${styles.Testimonials__TitleBrand} brand-accent-text`}>Zush</span>
+        {copy.title}{' '}<span class={`${styles.Testimonials__TitleBrand} brand-accent-text`}>Zush</span>
       </Heading>
       <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
         {copy.description}

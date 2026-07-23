@@ -98,9 +98,9 @@ const { locale = DEFAULT_LOCALE } = Astro.props as Props;
 const title = titleByLocale[locale] ?? titleByLocale.en!;
 ---
 
-<section class={styles.FeaturedOn} aria-label={title}>
+<section class={styles.FeaturedOn} aria-labelledby='featured-on-title'>
   <div class={styles.FeaturedOn__Container}>
-    <p class={styles.FeaturedOn__Title}>{title}</p>
+    <h2 id='featured-on-title' class={styles.FeaturedOn__Title}>{title}</h2>
 
     <div class={styles.FeaturedOn__Items}>
       {catalogs.map((catalog) => (

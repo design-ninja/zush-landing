@@ -79,7 +79,7 @@ const CloudFolders = ({ title }: CloudFoldersProps) => {
   return (
     <section className={styles.CloudFolders}>
       <div className={styles.CloudFolders__Container}>
-        <SectionHeader title={title} level='h3' className={styles.CloudFolders__Header} />
+        <SectionHeader title={title} level='h2' size='h3' className={styles.CloudFolders__Header} />
 
         <ul className={styles.CloudFolders__List}>
           {CLOUD_SERVICES.map((service) => (

@@ -8,6 +8,7 @@ interface SectionHeaderProps {
   titleHtml?: string;
   description?: string;
   level?: 'h1' | 'h2' | 'h3';
+  size?: 'h1' | 'h2' | 'h3' | 'h4';
   className?: string;
 }
 
@@ -16,11 +17,12 @@ const SectionHeader = ({
   titleHtml,
   description,
   level = 'h2',
+  size,
   className = ''
 }: SectionHeaderProps) => {
   return (
     <div className={`${styles.SectionHeader} ${className}`}>
-      <Heading as={level} align="center" className={styles.SectionHeader__Title}>
+      <Heading as={level} size={size} align="center" className={styles.SectionHeader__Title}>
         {titleHtml ? <span dangerouslySetInnerHTML={{ __html: titleHtml }} /> : title}
       </Heading>
       {description && (

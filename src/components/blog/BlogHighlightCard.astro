@@ -15,8 +15,7 @@ const { post } = Astro.props;
 <article class={styles.BlogHighlightCard}>
   <a class={styles.BlogHighlightCard__Link} href={`/blog/${post.slug}`}>
     <Image
-      alt=""
-      aria-hidden="true"
+      alt={post.title}
       class={styles.BlogHighlightCard__Image}
       decoding="async"
       loading="lazy"
