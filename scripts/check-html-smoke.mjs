@@ -85,6 +85,25 @@ function assertNotIncludes(html, needle, message) {
   if (html.includes(needle)) fail(message);
 }
 
+function assertPostHogInitializationOrder() {
+  const componentPath = join(ROOT, 'src/components/PostHogAnalytics.astro');
+  const source = readFileSync(componentPath, 'utf8');
+  const initIndex = source.indexOf('window.posthog.init(');
+  const captureIndex = source.indexOf('capturePageview();');
+
+  if (initIndex === -1) fail('PostHog initialization is missing.');
+  if (captureIndex === -1) fail('Initial PostHog pageview capture is missing.');
+  if (captureIndex < initIndex) {
+    fail('PostHog pageview capture must run after initialization.');
+  }
+
+  assertIncludes(
+    source,
+    "typeof window.posthog?.capture !== 'function'",
+    'PostHog pageview capture must tolerate an unavailable SDK.',
+  );
+}
+
 function getJsonLdBlocks(html) {
   const matches = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)];
   return matches.map((match) => match[1] ?? '');
@@ -176,6 +195,8 @@ function assertHomepageHeroVideo(html, pathname) {
     `Homepage hero video should include dark theme poster in island props on ${pathname}`,
   );
 }
+
+assertPostHogInitializationOrder();
 
 const sitemapPath = join(DIST, 'sitemap.xml');
 if (!existsSync(sitemapPath)) {
