@@ -8,7 +8,8 @@ type SearchLandingSlug =
   | 'hazel-alternative'
   | 'powerrename-alternative'
   | 'rename-invoices-with-ai'
-  | 'rename-receipts-with-ai';
+  | 'rename-receipts-with-ai'
+  | 'automate-downloads-folder';
 
 const invoiceSlides: FeatureLandingPageProps['showcaseSlides'] = [
   {
@@ -275,7 +276,111 @@ const receiptRenameFaq = [
   },
 ];
 
+const downloadsFolderSlides: FeatureLandingPageProps['showcaseSlides'] = [
+  {
+    files: [
+      { before: 'download (7).pdf', after: 'Cloudflare – 2026-07 – Invoice.pdf', type: 'pdf' },
+      { before: 'Screenshot 2026-07-14.png', after: 'Stripe Payouts Dashboard.png', type: 'image' },
+      { before: 'document (3).pdf', after: 'Apartment Lease Renewal 2026.pdf', type: 'pdf' },
+      { before: 'export (1).xlsx', after: 'Q2 Ad Spend Report.xlsx', type: 'sheet' },
+      { before: 'attachment.pdf', after: 'Delta – 2026-08-02 – Boarding Pass.pdf', type: 'pdf' },
+      { before: 'unnamed.jpg', after: 'Team Offsite Group Photo.jpg', type: 'image' },
+    ],
+  },
+  {
+    files: [
+      { before: 'invoice_copy (2).pdf', after: 'AWS – 2026-06 – Invoice.pdf', type: 'pdf' },
+      { before: 'Screen Shot 2026-07-03.png', after: 'Figma Pricing Page Redesign.png', type: 'image' },
+      { before: 'scan_0042.pdf', after: 'Dental Insurance Claim Form.pdf', type: 'pdf' },
+      { before: 'GMT20260701-recording.mp4', after: 'Client Kickoff Call July.mp4', type: 'video' },
+      { before: 'ticket.pdf', after: 'Coldplay – 2026-09-14 – Tickets.pdf', type: 'pdf' },
+      { before: 'IMG_8817.HEIC', after: 'Whiteboard Sprint Planning.heic', type: 'image' },
+    ],
+  },
+];
+
+const downloadsFolderFaq = [
+  {
+    question: 'How does Zush automate the Downloads folder?',
+    answer:
+      'Point folder monitoring at Downloads and Zush names every new file by content as it arrives — an invoice PDF becomes "Cloudflare – 2026-07 – Invoice.pdf", a screenshot becomes a description of what it shows. Files are renamed in place using the template you choose, and every change stays in rename history.',
+  },
+  {
+    question: 'Does Zush move downloads into folders?',
+    answer:
+      'No. Zush renames files in place and never moves them, so it cannot break paths or workflows. If you also want files routed into folders, pair Zush with a mover such as Hazel on Mac: let the mover handle where files go and Zush handle what they are called. Searchable names make any folder structure work better.',
+  },
+  {
+    question: 'Which kinds of downloads work best?',
+    answer:
+      'PDFs such as invoices, receipts, tickets, and statements; screenshots and images; Office documents and spreadsheets; audio and video. Zush supports 104 file extensions and leaves unsupported files untouched.',
+  },
+  {
+    question: 'Can the Downloads folder use its own naming template?',
+    answer:
+      'Yes. Each monitored folder has its own template, so Downloads can use a vendor-date-category convention while Screenshots uses a simple AI title. Templates combine Naming Blocks — dates, vendors, amounts, counters — and Custom AI Blocks that extract any detail you describe.',
+  },
+  {
+    question: 'Is monitoring my Downloads folder private?',
+    answer:
+      'You choose the mode: managed cloud, BYOK with your own provider key, or Offline AI with local Ollama models so supported file analysis never leaves your device. Files are renamed in place on your disk.',
+  },
+  {
+    question: 'Does this work on both Mac and Windows?',
+    answer:
+      'Yes. Zush has a native Mac app (macOS 15+) and a Windows build in the Microsoft Store. Folder monitoring, templates, Naming Blocks, and undo history work on both.',
+  },
+];
+
 export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageProps> = {
+  'automate-downloads-folder': {
+    h1: 'Automate Your Downloads Folder with AI',
+    h1Accent: 'Downloads Folder',
+    category: 'general',
+    definitionTitle: 'What Does Automating the Downloads Folder Mean?',
+    definitionText:
+      'An automated Downloads folder gives every new file a clear, searchable name the moment it lands. Zush watches Downloads on Mac and Windows and renames new files in place by reading their content — invoices, receipts, screenshots, exports, and documents — using the template you choose, with every change kept in undo history. Instead of a graveyard of download (7).pdf and Screenshot 2026 files, you get filenames you can actually search.',
+    showcaseSlides: downloadsFolderSlides,
+    faqItems: downloadsFolderFaq,
+    relatedPages: [
+      { title: 'Folder Monitoring Docs', href: '/docs/folder-monitoring' },
+      { title: 'AI File Organizer', href: '/ai-file-organizer' },
+      { title: 'Batch Rename Files with AI', href: '/batch-rename-files' },
+      { title: 'Hazel Alternative', href: '/hazel-alternative' },
+      { title: 'AI File Renamer & Organizer', href: '/' },
+      { title: 'Rename Invoices with AI', href: '/rename-invoices-with-ai' },
+    ],
+    relatedBlogPosts: [
+      { title: 'Organize the Downloads Folder on Mac', href: 'how-to-organize-downloads-folder-mac' },
+      { title: 'Organize the Downloads Folder on Windows', href: 'organize-downloads-folder-windows' },
+      { title: 'Folder Monitoring for Automatic Renaming', href: 'folder-monitoring-automatic-file-renaming' },
+    ],
+    jsonLd: buildFeaturePageJsonLd({
+      howTo: {
+        name: 'Automate your Downloads folder with Zush',
+        description: 'Use Zush folder monitoring to name new downloads by content on Mac and Windows.',
+        steps: [
+          { name: 'Add Downloads to Monitor', text: 'Open the Monitor tab in Zush and point it at your Downloads folder.' },
+          { name: 'Choose a naming template', text: 'Use a simple AI title or combine dates, vendors, categories, and other Naming Blocks into one convention.' },
+          { name: 'Let new files name themselves', text: 'New downloads are renamed in place as they arrive. Review the rename history and undo any batch.' },
+        ],
+      },
+      faqItems: downloadsFolderFaq,
+      software: {
+        pagePath: '/automate-downloads-folder',
+        description:
+          'Downloads folder automation for Mac and Windows. Zush monitors Downloads and names every new file by content — invoices, receipts, screenshots, and documents — with preview and undo.',
+        featureList: [
+          'Automatic content-aware names for new downloads',
+          'Folder monitoring on macOS and Windows',
+          'Invoice, receipt, screenshot, and document naming',
+          'Per-folder templates with Naming Blocks',
+          'Renames in place — files are never moved',
+          'Undo and rename history',
+        ],
+      },
+    }),
+  },
   'batch-rename-files': {
     h1: 'Batch Rename Files with AI',
     h1Accent: 'Batch Rename Files',
@@ -291,6 +396,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       { title: 'AI File Organizer', href: '/ai-file-organizer' },
       { title: 'AI File Renamer & Organizer', href: '/' },
       { title: 'Offline AI File Renamer', href: '/offline-ai-file-renamer' },
+      { title: 'Automate Your Downloads Folder', href: '/automate-downloads-folder' },
       { title: 'Rename PDFs with AI', href: '/rename-pdf-with-ai' },
       { title: 'Rename Photos with AI', href: '/rename-photos-with-ai' },
     ],
@@ -441,6 +547,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     relatedPages: [
       { title: 'AI File Organizer', href: '/ai-file-organizer' },
       { title: 'Folder Monitoring Docs', href: '/docs/folder-monitoring' },
+      { title: 'Automate Your Downloads Folder', href: '/automate-downloads-folder' },
       { title: 'Naming Blocks Guide', href: '/docs/naming-blocks' },
       { title: 'Batch Rename Files with AI', href: '/batch-rename-files' },
       { title: 'AI File Renamer & Organizer', href: '/' },

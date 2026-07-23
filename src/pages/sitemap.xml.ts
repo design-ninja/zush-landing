@@ -26,6 +26,7 @@ const STATIC_ROUTE_DEPENDENCIES: Record<string, string[]> = {
   '/batch-rename-files': [join(process.cwd(), 'src', 'data', 'searchLandingPages.ts')],
   '/offline-ai-file-renamer': [join(process.cwd(), 'src', 'data', 'searchLandingPages.ts')],
   '/ai-file-organizer': [join(process.cwd(), 'src', 'data', 'searchLandingPages.ts')],
+  '/automate-downloads-folder': [join(process.cwd(), 'src', 'data', 'searchLandingPages.ts')],
   '/methodology': [join(process.cwd(), 'src', 'components', 'MethodologyPage', 'MethodologyPage.astro')],
 };
 

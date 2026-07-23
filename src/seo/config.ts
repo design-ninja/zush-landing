@@ -74,9 +74,9 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     robots: 'index, follow',
   },
   '/batch-rename-files': {
-    title: 'Batch Rename Files with AI | Batch Rename Tool | Zush',
+    title: 'Batch & Bulk Rename Files with AI | Rename Tool | Zush',
     description:
-      'Batch rename files with AI. Zush reads screenshots, PDFs, photos, video, audio, documents, and design files, then renames mixed folders by content.',
+      'Batch rename or bulk rename files with AI. Zush reads screenshots, PDFs, photos, video, audio, documents, and design files, then renames mixed folders by content.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -102,6 +102,15 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ogType: 'website',
     keywords:
       'hazel alternative, hazel file organizer, apps like hazel, mac file automation, ai file organizer for mac, folder monitoring mac, rename files automatically mac, sort files into folders mac',
+  },
+  '/automate-downloads-folder': {
+    title: 'Automate Your Downloads Folder with AI Naming | Zush',
+    description:
+      'Zush watches your Downloads folder and names every new file by content — invoices, screenshots, receipts, PDFs — automatically, with preview and undo.',
+    robots: 'index, follow',
+    ogType: 'website',
+    keywords:
+      'automate downloads folder, organize downloads folder, downloads folder cleanup, auto rename downloads, rename new files automatically, folder monitoring app, downloads folder mac, downloads folder windows',
   },
   '/powerrename-alternative': {
     title: 'PowerRename Alternative with AI | Zush for Windows',
