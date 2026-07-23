@@ -12,6 +12,7 @@ import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
 import CrossPlatformBanner from '@/components/CrossPlatformBanner/CrossPlatformBanner.astro';
 import EvidenceSignals from '@/components/EvidenceSignals/EvidenceSignals.astro';
 import Testimonials from '@/components/Testimonials/Testimonials.astro';
+import FeaturedOn from '@/components/FeaturedOn/FeaturedOn.astro';
 import macChangelogSource from '@/content/changelog.md?raw';
 import windowsChangelogSource from '@/content/changelog.windows.md?raw';
 import { FREE_DOWNLOAD_BADGE_LABEL } from '@/constants';
@@ -67,6 +68,7 @@ const offlineBadge = {
 <Tour client:visible copy={copy.home.showcase} />
 {locale === 'en' && <EvidenceSignals />}
 <Testimonials locale={locale} />
+<FeaturedOn locale={locale} />
 <SupportedFormats
   title={copy.home.supportedFormats}
   imagesLabel={copy.home.images}

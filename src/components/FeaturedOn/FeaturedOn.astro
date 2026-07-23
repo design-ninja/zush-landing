@@ -1,0 +1,132 @@
+---
+import { DEFAULT_LOCALE, type Locale } from '@/i18n/config';
+import styles from './FeaturedOn.module.scss';
+
+interface Props {
+  locale?: Locale;
+}
+
+const titleByLocale: Partial<Record<Locale, string>> = {
+  en: 'Featured on',
+  fr: 'Présenté sur',
+  de: 'Bekannt aus',
+  es: 'Destacado en',
+  'pt-br': 'Em destaque em',
+  it: 'In evidenza su',
+  nl: 'Uitgelicht op',
+  tr: 'Öne çıktığı platformlar',
+  ja: '掲載カタログ',
+  ko: '소개된 곳',
+  'zh-cn': '收录平台',
+  ar: 'مذكور في',
+};
+
+const catalogs = [
+  {
+    name: 'Product Hunt',
+    href: 'https://www.producthunt.com/products/zush',
+    modifier: styles.FeaturedOnItem_producthunt,
+  },
+  {
+    name: 'AlternativeTo',
+    href: 'https://alternativeto.net/software/zush/',
+    icon: '/images/featured-on/alternativeto.svg',
+  },
+  {
+    name: 'Stork.AI',
+    href: 'https://www.stork.ai/en/zush',
+    icon: '/images/featured-on/stork.png',
+  },
+  {
+    name: 'ProductDirs',
+    href: 'https://productdirs.com/projects/zush',
+    icon: '/images/featured-on/productdirs.svg',
+  },
+  {
+    name: 'Capterra',
+    href: 'https://www.capterra.com/p/10042644/Zush/',
+    icon: '/images/featured-on/capterra.png',
+  },
+  {
+    name: 'MacUpdate',
+    href: 'https://www.macupdate.com/app/mac/65417/zush',
+    icon: '/images/featured-on/macupdate.png',
+  },
+  {
+    name: 'MacApp.Supply',
+    href: 'https://macapp.supply/app/zush',
+    icon: '/images/featured-on/macapp-supply.png',
+  },
+  {
+    name: 'GetApp',
+    href: 'https://www.getapp.com/all-software/a/zush/',
+    icon: '/images/featured-on/getapp.png',
+  },
+  {
+    name: 'SaaSHub',
+    href: 'https://www.saashub.com/zush',
+    icon: '/images/featured-on/saashub.png',
+  },
+  {
+    name: 'Uneed',
+    href: 'https://www.uneed.best/tool/zush',
+    icon: '/images/featured-on/uneed.png',
+  },
+  // Dang.ai and ToolPilot listings require a dofollow cross-link to their homepage
+  {
+    name: 'Dang.ai',
+    href: 'https://dang.ai',
+    icon: '/images/featured-on/dang.png',
+  },
+  {
+    name: 'ToolPilot',
+    href: 'https://www.toolpilot.ai/',
+    icon: '/images/featured-on/toolpilot.png',
+  },
+  {
+    name: "There's An AI For That",
+    href: 'https://theresanaiforthat.com/ai/zush-ai-file-renamer-organizer/?ref=featured&v=11558724',
+    icon: '/images/featured-on/taaft.png',
+    nofollow: true,
+  },
+];
+
+const { locale = DEFAULT_LOCALE } = Astro.props as Props;
+const title = titleByLocale[locale] ?? titleByLocale.en!;
+---
+
+<section class={styles.FeaturedOn} aria-label={title}>
+  <div class={styles.FeaturedOn__Container}>
+    <p class={styles.FeaturedOn__Title}>{title}</p>
+
+    <div class={styles.FeaturedOn__Items}>
+      {catalogs.map((catalog) => (
+        <a
+          href={catalog.href}
+          class={`${styles.FeaturedOnItem} ${catalog.modifier ?? ''}`}
+          target='_blank'
+          rel={catalog.nofollow ? 'nofollow noopener noreferrer' : 'noopener noreferrer'}
+        >
+          {catalog.name === 'Product Hunt' ? (
+            <span class={styles.FeaturedOnItem__Icon}>
+              <svg width='26' height='26' viewBox='0 0 24 24' fill='currentColor' aria-hidden='true'>
+                <path d='M13.604 8.4h-3.405V12h3.405a1.8 1.8 0 0 0 0-3.6zM12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm1.604 14.4h-3.405V18H7.801V6h5.804a4.2 4.2 0 0 1 0 8.4z' />
+              </svg>
+            </span>
+          ) : (
+            <img
+              class={styles.FeaturedOnItem__Logo}
+              src={catalog.icon}
+              alt=''
+              width='26'
+              height='26'
+              loading='lazy'
+              decoding='async'
+            />
+          )}
+          <span class={styles.FeaturedOnItem__Label}>{catalog.name}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

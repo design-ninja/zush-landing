@@ -1,0 +1,87 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.FeaturedOn {
+  padding: $space-2xl 0;
+  background: var(--background);
+  color: var(--foreground);
+
+  &__Container {
+    @include container;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-lg;
+  }
+
+  &__Title {
+    margin: 0;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted-foreground, var(--foreground));
+    opacity: 0.7;
+  }
+
+  &__Items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: $space-lg $space-2xl;
+
+    @include small {
+      gap: $space-md $space-xl;
+    }
+  }
+}
+
+.FeaturedOnItem {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-sm;
+  height: 54px;
+  color: var(--foreground);
+  text-decoration: none;
+  opacity: 0.75;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+
+  &__Icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    color: var(--fo-brand, currentColor);
+  }
+
+  &__Logo {
+    display: block;
+    flex-shrink: 0;
+    height: 26px;
+    width: auto;
+    border-radius: 6px;
+  }
+
+  &__Label {
+    font-size: 1rem;
+    font-weight: 700;
+    white-space: nowrap;
+    letter-spacing: -0.01em;
+  }
+
+  &_producthunt {
+    --fo-brand: #ff6154;
+  }
+
+  @include small {
+    height: 48px;
+
+    &__Label {
+      font-size: 0.9375rem;
+    }
+  }
+}
