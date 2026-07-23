@@ -55,7 +55,7 @@ const heroVideoShowcaseByOS = {
   macVersion={macVersion}
   windowsVersion={windowsVersion}
 />
-<WaysToRun copy={copy.home.featureCards} locale={locale} />
+<EvidenceSignals locale={locale} />
 <Features
   title={copy.home.featuresTitle}
   description={copy.home.featuresDescription}
@@ -64,11 +64,8 @@ const heroVideoShowcaseByOS = {
   includeBand={false}
   compactTopSpacing
 />
+<WaysToRun copy={copy.home.featureCards} locale={locale} />
 <CloudFolders title={copy.home.cloudFoldersTitle} />
-<Tour client:visible copy={copy.home.showcase} />
-{locale === 'en' && <EvidenceSignals />}
-<Testimonials locale={locale} />
-<FeaturedOn locale={locale} />
 <SupportedFormats
   title={copy.home.supportedFormats}
   imagesLabel={copy.home.images}
@@ -77,8 +74,16 @@ const heroVideoShowcaseByOS = {
   videosLabel={copy.home.videosLabel}
   audioLabel={copy.home.audioLabel}
 />
+<Tour client:visible copy={copy.home.showcase} />
+<Testimonials locale={locale} />
 <HomeWorkflows copy={copy.home.workflows} locale={locale} />
-{locale === 'en' && <HomeBlogHighlights />}
+<Pricing copy={copy.pricing} />
+<FAQ
+  client:visible
+  title={copy.home.faqTitle}
+  description={copy.home.faqDescription}
+  items={copy.home.faqItems}
+/>
 <DownloadCTA
   title={copy.home.downloadTitle}
   subtitle={copy.home.downloadSubtitle}
@@ -87,10 +92,5 @@ const heroVideoShowcaseByOS = {
   downloadMenu={copy.downloadMenu}
 />
 <CrossPlatformBanner locale={locale} />
-<Pricing copy={copy.pricing} />
-<FAQ
-  client:visible
-  title={copy.home.faqTitle}
-  description={copy.home.faqDescription}
-  items={copy.home.faqItems}
-/>
+{locale === 'en' && <HomeBlogHighlights />}
+<FeaturedOn locale={locale} />
