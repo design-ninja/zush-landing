@@ -16,7 +16,7 @@ import Testimonials from '@/components/Testimonials/Testimonials.astro';
 import FeaturedOn from '@/components/FeaturedOn/FeaturedOn.astro';
 import macChangelogSource from '@/content/changelog.md?raw';
 import windowsChangelogSource from '@/content/changelog.windows.md?raw';
-import { FREE_DOWNLOAD_BADGE_LABEL } from '@/constants';
+import { FREE_DOWNLOAD_BADGE_LABEL, HERO_AI_MODES } from '@/constants';
 import { HOME_HERO_BATCH_RENAME_VIDEO, WINDOWS_HERO_BATCH_RENAME_VIDEO } from '@/data/showcaseMedia';
 import { parseLatestVersion } from '@/utils/version';
 import type { Locale } from '@/i18n/config';
@@ -48,6 +48,7 @@ const heroVideoShowcaseByOS = {
   downloadEdgeLabel={FREE_DOWNLOAD_BADGE_LABEL}
   downloadMenu={copy.downloadMenu}
   trustSignals={copy.home.trustSignals}
+  aiModes={HERO_AI_MODES}
   reviewsHref='#reviews'
   reviewsLabel={copy.header.reviews}
   secondaryHref={secondaryHref}

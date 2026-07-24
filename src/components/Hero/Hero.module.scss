@@ -118,12 +118,40 @@
     &__ProofRow {
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
         gap: $space-sm;
         margin: 0 0 $space-sm;
 
         @include mobile {
             justify-content: center;
         }
+    }
+
+    &__ModeRow {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.4rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        @include mobile {
+            justify-content: center;
+        }
+    }
+
+    &__ModeBadge {
+        padding: 0.25rem 0.6rem;
+        border: 1px solid var(--border);
+        border-radius: $radius-full;
+        background: var(--card);
+        font-size: 0.75rem;
+        font-weight: 600;
+        line-height: 1.25;
+        letter-spacing: 0.01em;
+        color: var(--muted-foreground);
+        white-space: nowrap;
     }
 
     &__ActionRow {

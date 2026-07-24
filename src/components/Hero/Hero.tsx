@@ -32,6 +32,7 @@ interface HeroProps {
   downloadMenu?: DownloadMenuCopy;
   includeOtherDownloadOS?: boolean;
   trustSignals?: string[];
+  aiModes?: string[];
   reviewsHref?: string;
   reviewsLabel?: string;
   macVersion?: string;
@@ -91,6 +92,7 @@ const Hero = ({
   downloadMenu,
   includeOtherDownloadOS = true,
   trustSignals = ["✨ Free to try", "💳 No credit card required"],
+  aiModes = [],
   reviewsHref,
   reviewsLabel = "Reviews",
   macVersion,
@@ -154,11 +156,22 @@ const Hero = ({
     >
       <div className={styles.Hero__Container}>
         <div className={styles.Hero__Intro}>
-          {reviewsHref && (
+          {(reviewsHref || aiModes.length > 0) && (
             <div className={styles.Hero__ProofRow}>
-              <a className={styles.Hero__RatingLink} href={reviewsHref} aria-label={reviewsLabel}>
-                <StarRating decorative />
-              </a>
+              {reviewsHref && (
+                <a className={styles.Hero__RatingLink} href={reviewsHref} aria-label={reviewsLabel}>
+                  <StarRating decorative />
+                </a>
+              )}
+              {aiModes.length > 0 && (
+                <ul className={styles.Hero__ModeRow} aria-label="AI modes">
+                  {aiModes.map((mode) => (
+                    <li className={styles.Hero__ModeBadge} key={mode}>
+                      {mode}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           )}
           <Heading as="h1" className={styles.Hero__Title}>

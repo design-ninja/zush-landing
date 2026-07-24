@@ -10,6 +10,7 @@ export const HOMEBREW_CASK_URL = "https://formulae.brew.sh/cask/zush";
 export const GITHUB_RELEASES_URL = "https://github.com/design-ninja/zush-releases";
 export const SUPPORT_EMAIL = "support@zushapp.com";
 export const FREE_DOWNLOAD_BADGE_LABEL = "FREE";
+export const HERO_AI_MODES = ["Cloud AI", "BYOK", "Offline"];
 export const MAC_APP_VERSION = "3.8.1";
 export const WINDOWS_APP_VERSION = "3.6.0.0";
 export const PRODUCT_FACTS_REVIEWED_AT = "2026-07-22";
