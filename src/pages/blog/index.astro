@@ -9,9 +9,9 @@ import {
   getBlogIndexSections,
   getRecentBlogPosts,
 } from '@/data/blog';
-import { HOMEBREW_CASK_URL } from '@/constants';
 import { PRIMARY_AUTHOR } from '@/data/author';
 import { getSeoForPath, SITE_ORIGIN, toIsoDateTime } from '@/seo/config';
+import { SOFTWARE_REF } from '@/seo/entity';
 import headingStyles from '@/components/Heading/Heading.module.scss';
 import textStyles from '@/components/Text/Text.module.scss';
 import backToHomeStyles from '@/components/BackToHome/BackToHome.module.scss';
@@ -64,22 +64,6 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'Organization',
-      '@id': `${SITE_ORIGIN}/#organization`,
-      name: 'Zush',
-      url: SITE_ORIGIN,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${SITE_ORIGIN}/logo.png`,
-      },
-      sameAs: [
-        'https://x.com/zush_app',
-        'https://www.youtube.com/@zushapp',
-        'https://www.producthunt.com/products/zush',
-        HOMEBREW_CASK_URL,
-      ],
-    },
-    {
       '@type': 'Blog',
       '@id': `${blogUrl}#blog`,
       name: 'Zush Blog',
@@ -101,9 +85,7 @@ const jsonLd = {
       isPartOf: {
         '@id': `${SITE_ORIGIN}/#website`,
       },
-      about: {
-        '@id': `${SITE_ORIGIN}/#software`,
-      },
+      about: SOFTWARE_REF,
       mainEntity: {
         '@id': `${blogUrl}#featured-posts`,
       },

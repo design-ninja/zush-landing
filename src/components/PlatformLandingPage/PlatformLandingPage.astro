@@ -24,6 +24,7 @@ import macChangelogSource from '@/content/changelog.md?raw';
 import windowsChangelogSource from '@/content/changelog.windows.md?raw';
 import { parseLatestVersion } from '@/utils/version';
 import { getSeoForPath, SITE_ORIGIN } from '@/seo/config';
+import { ORGANIZATION_REF } from '@/seo/entity';
 import { buildFAQPageJsonLd, buildFeatureBreadcrumbJsonLd } from '@/utils/jsonLd';
 import type { DownloadOS } from '@/utils/download';
 import { DEFAULT_LOCALE, getLocalizedPath, type Locale } from '@/i18n/config';
@@ -269,11 +270,7 @@ const windowsVideoJsonLd = platform === 'windows' && locale === DEFAULT_LOCALE
       uploadDate: WINDOWS_BATCH_RENAME_VIDEO_UPLOAD_DATE,
       contentUrl: `${SITE_ORIGIN}${WINDOWS_SHOWCASE_SCREENSHOTS[0].video?.light ?? '/videos/windows/zush-batch-rename.mp4'}`,
       embedUrl: `${SITE_ORIGIN}${pagePath}`,
-      publisher: {
-        '@type': 'Organization',
-        name: 'Zush',
-        url: SITE_ORIGIN,
-      },
+      publisher: ORGANIZATION_REF,
     }
   : null;
 

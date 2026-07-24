@@ -7,11 +7,14 @@ import {
   MAC_APP_VERSION,
   MAC_INSTALLER_URL,
   PRODUCT_FACTS_REVIEWED_AT,
+  PRODUCT_HUNT_URL,
   SUPPORTED_FORMAT_COUNT,
   WINDOWS_APP_VERSION,
   WINDOWS_STORE_URL,
+  YOUTUBE_CHANNEL_URL,
 } from '@/constants';
 import { getPrimaryAuthorJsonLd, PRIMARY_AUTHOR } from '@/data/author';
+import { ORGANIZATION_REF, WEBSITE_REF } from '@/seo/entity';
 
 export const SITE_ORIGIN = 'https://zushapp.com';
 export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og-image.png`;
@@ -389,41 +392,7 @@ export { THIN_CONTENT_THRESHOLD };
 export const HOME_JSON_LD = {
   '@context': 'https://schema.org',
   '@graph': [
-    {
-      '@type': 'Organization',
-      '@id': `${SITE_ORIGIN}/#organization`,
-      name: 'Zush',
-      url: SITE_ORIGIN,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${SITE_ORIGIN}/logo.png`,
-      },
-      email: 'support@zushapp.com',
-      founder: {
-        '@id': `${PRIMARY_AUTHOR.url}#person`,
-      },
-      sameAs: [
-        'https://x.com/zush_app',
-        'https://www.youtube.com/@zushapp',
-        'https://www.producthunt.com/products/zush',
-        GITHUB_RELEASES_URL,
-        HOMEBREW_CASK_URL,
-        APP_STORE_URL,
-        WINDOWS_STORE_URL,
-      ],
-    },
     getPrimaryAuthorJsonLd(),
-    {
-      '@type': 'WebSite',
-      '@id': `${SITE_ORIGIN}/#website`,
-      url: SITE_ORIGIN,
-      name: 'Zush',
-      alternateName: 'Zush AI File Renamer',
-      publishingPrinciples: `${SITE_ORIGIN}/methodology`,
-      publisher: {
-        '@id': `${SITE_ORIGIN}/#organization`,
-      },
-    },
     {
       '@type': 'WebPage',
       '@id': `${SITE_ORIGIN}/#webpage`,
@@ -431,9 +400,7 @@ export const HOME_JSON_LD = {
       name: 'AI File Renamer & Organizer for Mac and Windows | Zush',
       description:
         `Zush is an AI file renamer and organizer for Mac and Windows that renames ${SUPPORTED_FORMAT_COUNT} supported file formats by content, including screenshots, PDFs, photos, documents, videos, audio, and design files.`,
-      isPartOf: {
-        '@id': `${SITE_ORIGIN}/#website`,
-      },
+      isPartOf: WEBSITE_REF,
       about: {
         '@id': `${SITE_ORIGIN}/#software`,
       },
@@ -484,13 +451,14 @@ export const HOME_JSON_LD = {
       author: {
         '@id': `${PRIMARY_AUTHOR.url}#person`,
       },
+      publisher: ORGANIZATION_REF,
       downloadUrl: [MAC_INSTALLER_URL, APP_STORE_URL, HOMEBREW_CASK_URL, WINDOWS_STORE_URL],
       installUrl: [APP_STORE_URL, HOMEBREW_CASK_URL, WINDOWS_STORE_URL],
       sameAs: [
         APP_STORE_URL,
         WINDOWS_STORE_URL,
-        'https://www.producthunt.com/products/zush',
-        'https://www.youtube.com/@zushapp',
+        PRODUCT_HUNT_URL,
+        YOUTUBE_CHANNEL_URL,
         GITHUB_RELEASES_URL,
         HOMEBREW_CASK_URL,
       ],

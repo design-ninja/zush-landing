@@ -5,7 +5,15 @@ import {
   Gift,
   Languages,
 } from 'lucide-react';
-import { APP_CONFIG, APP_STORE_URL, SUPPORTED_FORMAT_COUNT, WINDOWS_STORE_URL } from '@/constants';
+import {
+  APP_CONFIG,
+  APP_STORE_URL,
+  CRUNCHBASE_URL,
+  LINKEDIN_COMPANY_URL,
+  PRODUCT_HUNT_URL,
+  SUPPORTED_FORMAT_COUNT,
+  WINDOWS_STORE_URL,
+} from '@/constants';
 import Heading from '@/components/Heading';
 import PillLink from '@/components/PillLink';
 import Text from '@/components/Text';
@@ -76,7 +84,9 @@ const sourceLinks = [
   { href: localizedHref('/privacy-policy'), label: copy.links.privacy },
   { href: APP_STORE_URL, label: 'Mac App Store', external: true },
   { href: WINDOWS_STORE_URL, label: 'Microsoft Store', external: true },
-  { href: 'https://www.producthunt.com/products/zush', label: 'Product Hunt', external: true },
+  { href: PRODUCT_HUNT_URL, label: 'Product Hunt', external: true },
+  { href: LINKEDIN_COMPANY_URL, label: 'LinkedIn', external: true },
+  { href: CRUNCHBASE_URL, label: 'Crunchbase', external: true },
 ];
 ---
 

@@ -9,6 +9,14 @@ export const WINDOWS_STORE_PROTOCOL_URL = "ms-windows-store://pdp/?ProductId=9ND
 export const HOMEBREW_CASK_URL = "https://formulae.brew.sh/cask/zush";
 export const GITHUB_RELEASES_URL = "https://github.com/design-ninja/zush-releases";
 export const SUPPORT_EMAIL = "support@zushapp.com";
+
+// Public profiles — used as sameAs so search engines and LLMs resolve them to one entity
+export const X_PROFILE_URL = "https://x.com/zush_app";
+export const YOUTUBE_CHANNEL_URL = "https://www.youtube.com/@zushapp";
+export const PRODUCT_HUNT_URL = "https://www.producthunt.com/products/zush";
+export const CRUNCHBASE_URL = "https://www.crunchbase.com/organization/zush-4de8";
+export const LINKEDIN_COMPANY_URL = "https://www.linkedin.com/company/zush-ai-file-renamer";
+
 export const FREE_DOWNLOAD_BADGE_LABEL = "FREE";
 export const HERO_AI_MODES = ["Cloud AI", "BYOK", "Offline"];
 export const MAC_APP_VERSION = "3.8.1";

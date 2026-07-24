@@ -2,6 +2,7 @@ import type { BlogPost, FAQItem } from '@/data/blog';
 import { toIsoDateTime } from '@/seo/config';
 import { APP_STORE_URL, HOMEBREW_CASK_URL, MAC_INSTALLER_URL, WINDOWS_STORE_URL } from '@/constants';
 import { PRIMARY_AUTHOR } from '@/data/author';
+import { ORGANIZATION_REF, WEBSITE_REF } from '@/seo/entity';
 
 const SITE_ORIGIN = 'https://zushapp.com';
 
@@ -24,11 +25,7 @@ export function buildBlogPostingJsonLd(
       url: PRIMARY_AUTHOR.url,
       sameAs: PRIMARY_AUTHOR.sameAs,
       image: PRIMARY_AUTHOR.image,
-      worksFor: {
-        '@type': 'Organization',
-        name: 'Zush',
-        url: SITE_ORIGIN,
-      },
+      worksFor: ORGANIZATION_REF,
     },
     ...(post.reviewerName
       ? {
@@ -38,15 +35,7 @@ export function buildBlogPostingJsonLd(
           },
         }
       : {}),
-    publisher: {
-      '@type': 'Organization',
-      name: 'Zush',
-      url: SITE_ORIGIN,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${SITE_ORIGIN}/logo.png`,
-      },
-    },
+    publisher: ORGANIZATION_REF,
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': pageUrl,
@@ -58,11 +47,7 @@ export function buildBlogPostingJsonLd(
       '@type': 'Blog',
       '@id': `${SITE_ORIGIN}/blog`,
       name: 'Zush Blog',
-      publisher: {
-        '@type': 'Organization',
-        name: 'Zush',
-        url: SITE_ORIGIN,
-      },
+      publisher: ORGANIZATION_REF,
     },
   };
 }
@@ -139,6 +124,7 @@ function buildSoftwareApplicationJsonLd(data: SoftwareApplicationData) {
     description: data.description,
     applicationCategory: 'UtilitiesApplication',
     applicationSubCategory: data.applicationSubCategory ?? 'File Management',
+    publisher: ORGANIZATION_REF,
     operatingSystem: data.operatingSystem ?? ['macOS 15.0+', 'Windows 10', 'Windows 11'],
     downloadUrl: data.downloadUrl ?? [MAC_INSTALLER_URL, APP_STORE_URL, HOMEBREW_CASK_URL, WINDOWS_STORE_URL],
     ...(data.installUrl
@@ -233,20 +219,8 @@ export function buildWebPageJsonLd(data: WebPageJsonLdData) {
     description: data.description,
     url: pageUrl,
     ...(data.dateModified ? { dateModified: toIsoDateTime(data.dateModified) } : {}),
-    isPartOf: {
-      '@type': 'WebSite',
-      name: 'Zush',
-      url: SITE_ORIGIN,
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Zush',
-      url: SITE_ORIGIN,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${SITE_ORIGIN}/logo.png`,
-      },
-    },
+    isPartOf: WEBSITE_REF,
+    publisher: ORGANIZATION_REF,
     speakable: {
       '@type': 'SpeakableSpecification',
       cssSelector: data.speakableSelectors ?? ['h1', 'meta[name="description"]'],

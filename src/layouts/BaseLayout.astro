@@ -1,6 +1,7 @@
 ---
 import type { SeoMeta } from '@/seo/config';
 import { DEFAULT_KEYWORDS, DEFAULT_OG_IMAGE, getCanonicalUrl } from '@/seo/config';
+import { SITE_ENTITY_JSON_LD } from '@/seo/entity';
 import '@fontsource-variable/inter/wght.css';
 import '@fontsource-variable/outfit/wght.css';
 import '@/styles/main.scss';
@@ -55,8 +56,10 @@ const shouldEmitLocaleAlternates = !LOCALIZATION_PAUSED
 const localeMeta = LOCALE_META[locale];
 const layoutCopy = getCopy(locale);
 const ogImage = seo.ogImage || DEFAULT_OG_IMAGE;
-const ldItems = (Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [])
-  .filter(Boolean);
+const ldItems = [
+  SITE_ENTITY_JSON_LD,
+  ...(Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : []),
+].filter(Boolean);
 const isHomePage = route === '/';
 const needsTopOffset = includeChrome && !isHomePage && !disableTopOffset;
 const shouldAutoDetectLocale = LOCALE_AUTO_DETECT_ENABLED

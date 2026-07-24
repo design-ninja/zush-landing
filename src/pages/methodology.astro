@@ -4,6 +4,7 @@ import MethodologyPage, { METHODOLOGY_FAQS } from '@/components/MethodologyPage/
 import FAQ from '@/components/FAQ';
 import { getSeoForPath, toIsoDateTime, SITE_ORIGIN } from '@/seo/config';
 import { getPrimaryAuthorJsonLd, PRIMARY_AUTHOR } from '@/data/author';
+import { ORGANIZATION_REF, SOFTWARE_REF } from '@/seo/entity';
 
 const seo = getSeoForPath('/methodology');
 const pageUrl = `${SITE_ORIGIN}/methodology`;
@@ -23,7 +24,7 @@ const jsonLd = {
       datePublished: toIsoDateTime('2026-01-15'),
       dateModified: toIsoDateTime('2026-07-10'),
       isPartOf: { '@id': `${SITE_ORIGIN}/#website` },
-      mainEntity: { '@id': `${SITE_ORIGIN}/#software` },
+      mainEntity: SOFTWARE_REF,
       breadcrumb: {
         '@type': 'BreadcrumbList',
         itemListElement: [
@@ -31,12 +32,7 @@ const jsonLd = {
           { '@type': 'ListItem', position: 2, name: 'Methodology', item: pageUrl },
         ],
       },
-      publisher: {
-        '@type': 'Organization',
-        name: 'Zush',
-        url: SITE_ORIGIN,
-        logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/logo.png` },
-      },
+      publisher: ORGANIZATION_REF,
       author: { '@id': `${PRIMARY_AUTHOR.url}#person` },
     },
     {

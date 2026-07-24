@@ -273,11 +273,11 @@ for (const loc of locs) {
 
   if (isBlogPostPath(pathname)) {
     assertIncludes(html, '"@type":"BlogPosting"', `BlogPosting JSON-LD missing for ${pathname}`);
+    // The Organization and WebSite nodes are site-wide identity nodes emitted on every
+    // page by BaseLayout, so `/#organization` and `/#website` are expected here.
+    // Homepage-specific page and product nodes still must not leak into blog posts.
     const hasHomepageIds = jsonLdBlocks.some(
-      (block) =>
-        block.includes('/#organization') ||
-        block.includes('/#website') ||
-        block.includes('/#software'),
+      (block) => block.includes('/#software') || block.includes('"https://zushapp.com/#webpage"'),
     );
     if (hasHomepageIds) {
       fail(`Homepage schema leaked into blog page ${pathname}`);
