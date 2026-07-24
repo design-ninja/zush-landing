@@ -32,7 +32,11 @@ type DownloadAttribution = Partial<Record<AttributionParam, string>> & {
 };
 
 const getEnv = (name: string): string | undefined => {
-  const value = (import.meta.env as Record<string, string | undefined>)[name];
+  // import.meta.env only reliably carries PUBLIC_* vars; runtime secrets on
+  // Vercel serverless live in process.env, so check both.
+  const value = (import.meta.env as Record<string, string | undefined>)[name] ??
+    (globalThis as { process?: { env?: Record<string, string | undefined> } })
+      .process?.env?.[name];
   return value && value.trim() ? value.trim() : undefined;
 };
 
@@ -188,10 +192,11 @@ const capturePostHogDownload = async (
 };
 
 const getClientIp = (request: Request): string | undefined => {
-  const forwardedFor = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim();
-  const ip = request.headers.get('cf-connecting-ip')?.trim()
-    || request.headers.get('x-real-ip')?.trim()
-    || forwardedFor;
+  // Only Vercel-managed headers. cf-connecting-ip is NOT set by Vercel, so a
+  // client could supply it and poison attribution with an arbitrary address.
+  const ip = request.headers.get('x-real-ip')?.trim()
+    || request.headers.get('x-vercel-forwarded-for')?.split(',')[0]?.trim()
+    || request.headers.get('x-forwarded-for')?.split(',')[0]?.trim();
 
   return ip && ip.length > 0 ? ip.slice(0, 128) : undefined;
 };
