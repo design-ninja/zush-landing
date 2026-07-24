@@ -1,6 +1,5 @@
 import type { APIRoute } from 'astro';
 import { MAC_INSTALLER_URL } from '@/constants';
-import { SUPABASE_URL } from '@/utils/supabase';
 
 export const prerender = false;
 
@@ -191,64 +190,6 @@ const capturePostHogDownload = async (
   }
 };
 
-const getClientIp = (request: Request): string | undefined => {
-  // Only Vercel-managed headers. cf-connecting-ip is NOT set by Vercel, so a
-  // client could supply it and poison attribution with an arbitrary address.
-  const ip = request.headers.get('x-real-ip')?.trim()
-    || request.headers.get('x-vercel-forwarded-for')?.split(',')[0]?.trim()
-    || request.headers.get('x-forwarded-for')?.split(',')[0]?.trim();
-
-  return ip && ip.length > 0 ? ip.slice(0, 128) : undefined;
-};
-
-/**
- * Records the click server-side so an in-app purchase made days later can be
- * traced back to this visit. Nothing can be embedded in the signed installer,
- * so the hashed client IP is the only link between the two — the IP is sent
- * once and hashed on arrival, never stored raw.
- */
-const recordDownloadClick = async (
-  request: Request,
-  attribution: DownloadAttribution,
-  sessionDistinctId: string | undefined,
-): Promise<void> => {
-  const sharedSecret = getEnv('DOWNLOAD_ATTRIBUTION_SECRET');
-  const clientIp = getClientIp(request);
-  if (!sharedSecret || !clientIp) return;
-
-  // Only marketing params travel onward — no user agent, no full request URL.
-  const marketingAttribution: Record<string, string> = {};
-  attributionParams.forEach((param) => {
-    const value = attribution[param];
-    if (value) marketingAttribution[param] = value;
-  });
-  if (attribution.referrer) {
-    marketingAttribution.referrer = attribution.referrer.slice(0, 512);
-  }
-
-  const response = await fetchWithTimeout(
-    `${SUPABASE_URL}/functions/v1/record-download-click`,
-    {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-        'x-zush-download-secret': sharedSecret,
-      },
-      body: JSON.stringify({
-        client_ip: clientIp,
-        posthog_distinct_id: sessionDistinctId,
-        os: 'mac',
-        attribution: marketingAttribution,
-      }),
-    },
-    REDIRECT_TIMEOUT_MS,
-  );
-
-  if (!response.ok) {
-    console.warn('Download attribution record failed', response.status);
-  }
-};
-
 const runBestEffortTracking = async (
   request: Request,
   eventId: string,
@@ -259,12 +200,9 @@ const runBestEffortTracking = async (
   const attribution = collectAttribution(request, eventId);
   const sessionDistinctId = getPostHogDistinctIdFromCookie(request);
 
-  // Both calls share one timeout budget so tracking never delays the redirect.
+  // Capped so tracking never delays the redirect.
   await Promise.race([
-    Promise.allSettled([
-      capturePostHogDownload(attribution, url, sessionDistinctId),
-      recordDownloadClick(request, attribution, sessionDistinctId),
-    ]),
+    capturePostHogDownload(attribution, url, sessionDistinctId),
     new Promise((resolve) => setTimeout(resolve, REDIRECT_TIMEOUT_MS)),
   ]);
 };
