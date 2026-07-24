@@ -1,4 +1,5 @@
 // fallow-ignore-file unused-file
+import { getAnalyticsDistinctId } from "@/utils/analytics";
 import { SUPABASE_URL } from "@/utils/supabase";
 
 interface PaddleCheckoutOptions {
@@ -283,6 +284,7 @@ async function createCheckoutSession(
           price_id: priceId,
           device_id: deviceId || undefined,
           source: deviceId ? "app" : "landing",
+          posthog_distinct_id: getAnalyticsDistinctId() || undefined,
         }),
       },
     );
