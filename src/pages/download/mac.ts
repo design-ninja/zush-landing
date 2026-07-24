@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { MAC_INSTALLER_URL } from '@/constants';
+import { SUPABASE_URL } from '@/utils/supabase';
 
 export const prerender = false;
 
@@ -31,7 +32,11 @@ type DownloadAttribution = Partial<Record<AttributionParam, string>> & {
 };
 
 const getEnv = (name: string): string | undefined => {
-  const value = (import.meta.env as Record<string, string | undefined>)[name];
+  // import.meta.env only reliably carries PUBLIC_* vars; runtime secrets on
+  // Vercel serverless live in process.env, so check both.
+  const value = (import.meta.env as Record<string, string | undefined>)[name] ??
+    (globalThis as { process?: { env?: Record<string, string | undefined> } })
+      .process?.env?.[name];
   return value && value.trim() ? value.trim() : undefined;
 };
 
@@ -50,6 +55,38 @@ const getRequestHeaders = (request: Request) => ({
   referrer: request.headers.get('referer') || undefined,
   userAgent: request.headers.get('user-agent') || undefined,
 });
+
+/**
+ * This route is same-origin, so the browser sends PostHog's own cookie along
+ * with it. Reusing that distinct_id keeps the download in the visitor's
+ * existing session instead of stranding it under a freshly minted id.
+ */
+const getPostHogDistinctIdFromCookie = (request: Request): string | undefined => {
+  const apiKey = getEnv('PUBLIC_POSTHOG_KEY');
+  const cookieHeader = request.headers.get('cookie');
+  if (!apiKey || !cookieHeader) return undefined;
+
+  const cookiePrefix = `ph_${apiKey}_posthog=`;
+  const rawValue = cookieHeader
+    .split(';')
+    .map((part) => part.trim())
+    .find((part) => part.startsWith(cookiePrefix))
+    ?.slice(cookiePrefix.length);
+
+  if (!rawValue) return undefined;
+
+  try {
+    const parsed = JSON.parse(decodeURIComponent(rawValue)) as {
+      distinct_id?: unknown;
+    };
+    return typeof parsed.distinct_id === 'string' && parsed.distinct_id.trim()
+      ? parsed.distinct_id.trim()
+      : undefined;
+  } catch {
+    // Cookie shape is PostHog's to change; a miss just costs us the session join.
+    return undefined;
+  }
+};
 
 const copyAttributionParams = (
   target: Partial<Record<AttributionParam, string>>,
@@ -114,12 +151,20 @@ const fetchWithTimeout = async (
 const capturePostHogDownload = async (
   attribution: DownloadAttribution,
   requestUrl: URL,
+  sessionDistinctId: string | undefined,
 ): Promise<void> => {
   const apiKey = getEnv('PUBLIC_POSTHOG_KEY');
   if (!apiKey) return;
 
   const host = getPostHogHost(requestUrl);
   const clickId = getClickId(attribution);
+  const distinctId = sessionDistinctId
+    ?? (clickId ? `ads:${clickId.value}` : `download:${attribution.event_id}`);
+  const distinctIdOrigin = sessionDistinctId
+    ? 'posthog_cookie'
+    : clickId
+      ? 'ad_click_id'
+      : 'download_event_id';
 
   const response = await fetchWithTimeout(`${host.replace(/\/$/, '')}/capture/`, {
     method: 'POST',
@@ -127,18 +172,80 @@ const capturePostHogDownload = async (
     body: JSON.stringify({
       api_key: apiKey,
       event: 'server_download_click',
-      distinct_id: clickId ? `ads:${clickId.value}` : `download:${attribution.event_id}`,
+      distinct_id: distinctId,
       properties: {
         ...attribution,
         os: 'mac',
         channel: 'direct',
         installer_url: MAC_INSTALLER_URL,
+        distinct_id_origin: distinctIdOrigin,
+        // Matches the landing's `person_profiles: 'identified_only'` so server
+        // events do not create profiles the browser deliberately skips.
+        $process_person_profile: false,
       },
     }),
   }, REDIRECT_TIMEOUT_MS);
 
   if (!response.ok) {
     console.warn('PostHog download capture failed', response.status);
+  }
+};
+
+const getClientIp = (request: Request): string | undefined => {
+  // Only Vercel-managed headers. cf-connecting-ip is NOT set by Vercel, so a
+  // client could supply it and poison attribution with an arbitrary address.
+  const ip = request.headers.get('x-real-ip')?.trim()
+    || request.headers.get('x-vercel-forwarded-for')?.split(',')[0]?.trim()
+    || request.headers.get('x-forwarded-for')?.split(',')[0]?.trim();
+
+  return ip && ip.length > 0 ? ip.slice(0, 128) : undefined;
+};
+
+/**
+ * Records the click server-side so an in-app purchase made days later can be
+ * traced back to this visit. Nothing can be embedded in the signed installer,
+ * so the hashed client IP is the only link between the two — the IP is sent
+ * once and hashed on arrival, never stored raw.
+ */
+const recordDownloadClick = async (
+  request: Request,
+  attribution: DownloadAttribution,
+  sessionDistinctId: string | undefined,
+): Promise<void> => {
+  const sharedSecret = getEnv('DOWNLOAD_ATTRIBUTION_SECRET');
+  const clientIp = getClientIp(request);
+  if (!sharedSecret || !clientIp) return;
+
+  // Only marketing params travel onward — no user agent, no full request URL.
+  const marketingAttribution: Record<string, string> = {};
+  attributionParams.forEach((param) => {
+    const value = attribution[param];
+    if (value) marketingAttribution[param] = value;
+  });
+  if (attribution.referrer) {
+    marketingAttribution.referrer = attribution.referrer.slice(0, 512);
+  }
+
+  const response = await fetchWithTimeout(
+    `${SUPABASE_URL}/functions/v1/record-download-click`,
+    {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'x-zush-download-secret': sharedSecret,
+      },
+      body: JSON.stringify({
+        client_ip: clientIp,
+        posthog_distinct_id: sessionDistinctId,
+        os: 'mac',
+        attribution: marketingAttribution,
+      }),
+    },
+    REDIRECT_TIMEOUT_MS,
+  );
+
+  if (!response.ok) {
+    console.warn('Download attribution record failed', response.status);
   }
 };
 
@@ -150,9 +257,14 @@ const runBestEffortTracking = async (
   if (url.searchParams.get('dry_run') === '1') return;
 
   const attribution = collectAttribution(request, eventId);
+  const sessionDistinctId = getPostHogDistinctIdFromCookie(request);
 
+  // Both calls share one timeout budget so tracking never delays the redirect.
   await Promise.race([
-    capturePostHogDownload(attribution, url),
+    Promise.allSettled([
+      capturePostHogDownload(attribution, url, sessionDistinctId),
+      recordDownloadClick(request, attribution, sessionDistinctId),
+    ]),
     new Promise((resolve) => setTimeout(resolve, REDIRECT_TIMEOUT_MS)),
   ]);
 };
