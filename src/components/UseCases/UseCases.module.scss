@@ -83,11 +83,11 @@
     flex-shrink: 0;
   }
 
+  // Typography is owned by <Heading size="h4"> — a font-size here would tie with
+  // .Heading_h4 on specificity and resolve differently in dev vs. the prod bundle.
   &__Title {
     margin: 0;
     align-self: end;
-    font-size: 1rem;
-    line-height: 1.25;
     color: var(--foreground);
   }
 
