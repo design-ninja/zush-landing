@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Tool Comparisons"
 tldr: "The right Windows AI renamer depends on whether you need a Microsoft Store install, document support, screenshots, PDFs, videos, audio, BYOK, offline AI, folder monitoring, and undo. Zush is the strongest fit when you want one desktop workflow instead of a collection of scripts."
-reviewed: "2026-07-15"
+reviewed: "2026-07-24"
 featuredOrder: 1
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
@@ -18,17 +18,17 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 Quick answer: if you want the broad product page rather than a comparison, start with the [Zush AI file renamer for Mac and Windows](/). If you only need Windows, go to [Zush for Windows](/windows). This article is the comparison layer: it evaluates Windows AI renaming apps by install path, pricing, file-type coverage, local AI, BYOK, folder monitoring, and rollback.
 
-Pricing and public feature details last checked July 9, 2026.
+**Last verified: July 24, 2026** for RenameClick, AI Renamer, and Renamer.ai; FilesDesk was last checked July 9, 2026.
 
-Sources checked for this update: [Zush for Windows on Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X), [FilesDesk](https://filesdesk.app/), [FilesDesk pricing](https://filesdesk.app/pricing), [FilesDesk docs](https://filesdesk.app/docs), [RenameClick](https://rename.click/), [AI Renamer](https://airenamer.app/), [ai-renamer CLI on GitHub](https://github.com/ozgrozer/ai-renamer), and [Renamer.ai](https://renamer.ai/).
+Sources checked for this update: [Zush for Windows on Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X), [FilesDesk](https://filesdesk.app/), [FilesDesk pricing](https://filesdesk.app/pricing), [FilesDesk docs](https://filesdesk.app/docs), [RenameClick](https://rename.click/) and its [supported file types docs](https://rename.click/docs/getting-started/supported-files), [AI Renamer](https://airenamer.app/), the separate [ai-renamer CLI repository on GitHub](https://github.com/ozgrozer/ai-renamer), and [Renamer.ai](https://renamer.ai/).
 
 | Windows AI renamer | Best for | Watch out for |
 |---|---|---|
 | Zush | Mixed folders, screenshots, PDFs, videos, documents, folder monitoring, undo | Desktop workflow, not browser-only |
 | FilesDesk | Low-cost BYOK/local or managed AI on Windows and Mac | Public docs do not show a detailed RAW/design/audio/video matrix |
-| RenameClick | Local-first renaming, AI Search, and folder sorting | Public format list focuses on common images and documents |
-| AI Renamer | Local-model experiments and CLI users | Less opinionated daily folder automation |
-| Renamer.ai | Document-heavy OCR workflows with Magic Folders | Subscription pricing at higher volume |
+| RenameClick | Local-first renaming, AI Search, and folder sorting | No video, RAW, or design formats; prices are quoted before VAT |
+| AI Renamer | The cheapest local-model desktop app at $19 | No documented folder monitoring or undo; cloud renames are metered |
+| Renamer.ai | Document and vector (EPS, SVG, AI) workflows with Magic Folders | Metered subscription at every tier |
 | DIY PowerShell/Python | Custom engineering pipelines | You maintain retries, duplicate names, and rollback |
 
 The short version: use [Zush for Windows](/windows) if you want a Microsoft Store app with the broadest published mixed-format coverage, use RenameClick or FilesDesk if local-first/BYOK cost is the main requirement, use Renamer.ai if document automation is the core workflow, and use scripts only if maintaining the workflow is part of the job. For the product workflow, read the [batch rename docs](/docs/batch-rename-files), [folder monitoring docs](/docs/folder-monitoring), and [Naming Blocks guide](/docs/naming-blocks).
@@ -110,21 +110,23 @@ Best for: Windows users who want a cheap BYOK/local or managed-credit workflow a
 
 ![RenameClick desktop app interface (image: rename.click)](/images/blog/competitors/renameclick.webp)
 
-RenameClick is the strongest local-first Windows competitor. Its public page lists common image and document formats, built-in local AI, Ollama, LM Studio, optional cloud providers, AI Search, and Downloads-folder automation that can rename, categorize, and move new files.
+RenameClick is the strongest local-first Windows competitor, and it is a genuine desktop app on both platforms rather than a wrapped web tool — its own site describes it as "built for real folders on macOS and Windows, not a cloud upload workflow." It ships built-in local AI, Ollama, LM Studio, optional cloud providers, AI Search, full undo/redo, and Downloads-folder automation that can rename, categorize, and move new files. Its documented formats now cover 10 image types, 20+ document types (PDF, DOCX, JSON, XML, YAML, HTML, SQL, subtitles, ICS/VCF and more), and 5 audio types with local speech transcription.
 
-Best for: Windows users who prioritize offline/local analysis, AI Search, and folder sorting. The checked public format list does not include RAW camera files, videos, audio, archives, or design files like Sketch/Figma/PSD, so Zush remains the safer fit for broad mixed-media folders.
+Best for: Windows users who prioritize offline/local analysis, AI Search, and folder sorting. The checked format list does not include RAW camera files or design files like Sketch/Figma/PSD, and video files, archives, and executables are explicitly unsupported, so Zush remains the safer fit for broad mixed-media folders. Note also that Pro pricing is quoted before VAT.
 
-## 4. AI Renamer Desktop / CLI
+## 4. AI Renamer
 
-<BlogToolMeta platform="Desktop on Windows, plus CLI workflows" website="https://airenamer.app/" label="airenamer.app">
-  <Fragment slot="pricing">CLI free/open source; Desktop Local Mode $19 one-time, Cloud Mode $10 per 200 credits, 10 free credits</Fragment>
+<BlogToolMeta platform="Desktop on Windows and Mac; a separate open-source CLI shares the name" website="https://airenamer.app/" label="airenamer.app">
+  <Fragment slot="pricing">Local Mode $19 one-time, Cloud Mode $10 per 200 credits, 10 free credits. The pricing page lists no CLI or open-source tier.</Fragment>
 </BlogToolMeta>
 
 ![AI Renamer interface (image: airenamer.app)](/images/blog/competitors/ai-renamer.png)
 
-AI Renamer is attractive if local-model experimentation is your priority. The CLI is flexible for developers, and the desktop app is better than a script if you still want a GUI. The current desktop pricing page advertises all-file support plus Ollama, LM Studio, OpenAI, and custom model support, while the public feature examples still emphasize images plus PDF/TXT/text files. The trade-off is that the workflow is less opinionated for mixed desktop housekeeping than Zush: no public folder monitoring, no public rename history, and less granular format documentation for RAW, Office, iWork, design, audio, and video workflows.
+Two projects share this name and it is worth keeping them apart. The commercial app at airenamer.app sells Local Mode at $19 one-time and Cloud Mode at $10 per 200 credits, with 10 free credits on signup — its pricing page advertises no CLI and no open-source edition. The free, GPL-3.0 [`ozgrozer/ai-renamer`](https://github.com/ozgrozer/ai-renamer) CLI on GitHub is an unrelated project that renames images and videos through Ollama, LM Studio, or an OpenAI key.
 
-Best for: developers or users who care more about model plumbing than folder automation. If local-first processing and folder routing matter more than broad file-type support, also compare [Zush vs RenameClick](/blog/zush-vs-renameclick).
+The paid app is attractive if a cheap local-model GUI is your priority. Its pricing page advertises all-file support plus Ollama, LM Studio, OpenAI, and custom model support, while the public feature examples still emphasize images plus PDF/TXT/text files. The trade-off is that the workflow is less opinionated for mixed desktop housekeeping than Zush: no public folder monitoring, no public rename history, and no granular format documentation for RAW, Office, iWork, design, audio, and video workflows.
+
+Best for: users who want the lowest one-time price for local processing and care more about model plumbing than folder automation. If local-first processing and folder routing matter more than broad file-type support, also compare [Zush vs RenameClick](/blog/zush-vs-renameclick).
 
 ## 5. Renamer.ai
 
@@ -134,7 +136,7 @@ Best for: developers or users who care more about model plumbing than folder aut
 
 ![Renamer.ai desktop app screenshot (image: renamer.ai)](/images/blog/competitors/renamer-ai.png)
 
-Renamer.ai is convenient when you want to test a few files without installing anything, and the desktop app adds Magic Folders, preview, one-click undo, and document-heavy OCR workflows. Its current FAQ lists 30+ formats and 20+ languages. Its public FAQ says files are transmitted for extraction and AI analysis, then deleted after processing, so the privacy story is not the same as BYOK or local Ollama. The main trade-off is subscription pricing and no BYOK/local-Ollama provider choice. For the direct pricing comparison, read [Zush vs Renamer.ai](/blog/zush-vs-renamer-ai).
+Renamer.ai is convenient when you want to test a few files without installing anything, and the desktop app adds Magic Folders, preview, one-click undo, and document-heavy OCR workflows. Its current FAQ lists 30+ formats and 20+ languages, including EPS, SVG, and AI (Illustrator) vectors — though not PSD, Sketch, or Figma. Every tier is metered by files per month, from 200 on Pro to 5,000 on Ultimate. Its public FAQ says files are transmitted for extraction and AI analysis, then deleted after processing, so the privacy story is not the same as BYOK or local Ollama. The main trade-off is subscription pricing and no BYOK/local-Ollama provider choice. For the direct pricing comparison, read [Zush vs Renamer.ai](/blog/zush-vs-renamer-ai).
 
 Best for: Windows users with document-heavy OCR workflows who are comfortable with subscription pricing.
 

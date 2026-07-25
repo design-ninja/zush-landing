@@ -10,11 +10,11 @@ tags:
   - "File Organization"
   - "BYOK"
 tldr: "You can rename files with AI for free using Zush's 50 free renames, a BYOK API key for unlimited renames at minimal cost, or open-source tools with local models."
-reviewed: "2026-07-19"
+reviewed: "2026-07-24"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: free AI file renaming on Mac and Windows works through three paths — Zush free tier (50 renames), the open-source AI Renamer CLI with Ollama for unlimited local processing, or BYOK with a free-tier API like Google Gemini for cloud quality at near-zero cost.
+Quick answer: free AI file renaming on Mac and Windows works through three paths — Zush free tier (50 renames), the open-source [`ozgrozer/ai-renamer`](https://github.com/ozgrozer/ai-renamer) CLI with Ollama for unlimited local processing, or BYOK with a free-tier API like Google Gemini for cloud quality at near-zero cost.
 
 You do not need to pay a subscription to rename files with AI. There are several genuinely free paths, each with different trade-offs in quality, setup effort, and file format support.
 
@@ -38,7 +38,7 @@ This guide covers every practical way to rename files with AI for free in 2026, 
 | Zush free tier | $0 | Low | High | 100+ image + design + document + video + audio formats | Yes |
 | Zush BYOK | API cost only (~$0.001/file) | Medium | High | 100+ image + design + document + video + audio formats | Yes |
 | Riffo | $0 | Low | Medium | Images, PDFs, documents | No |
-| AI Renamer CLI (local) | $0 | High | Medium | Images/video via local setup | No |
+| `ai-renamer` CLI (local, GPL-3.0) | $0 | High | Medium | Images/video via local setup | No |
 | AI Renamer Desktop | 10 free credits | Low | Medium-High | Public examples + all-file claim | No |
 | Renamer.ai free tier | $0 (25 files/month) | Low | Medium-High | 25+ common file types | Yes (Magic Folders) |
 | DIY Python script | API cost only | High | Varies | Whatever you code | No |
@@ -121,13 +121,13 @@ For a broader comparison of tools and pricing, see [AI renamer tools comparison]
 
 ## Option 3: AI Renamer (CLI + Desktop app)
 
-AI Renamer comes in two forms. The open-source CLI runs AI models locally on your machine using Ollama -- completely free with no API calls leaving your computer. The separate desktop app (airenamer.app) offers a GUI with both local and cloud options, including 10 free credits on signup.
+Two unrelated projects share this name, and only one of them is free. [`ozgrozer/ai-renamer`](https://github.com/ozgrozer/ai-renamer) is a GPL-3.0 Node.js CLI on GitHub that runs AI models locally through Ollama -- completely free, with no API calls leaving your computer. The commercial desktop app at airenamer.app is a different product: it offers a GUI with local and cloud options and gives 10 free credits on signup, but its pricing page lists no CLI and no open-source tier.
 
 ### CLI setup process
 
 1. Install Ollama from [ollama.ai](https://ollama.ai).
 2. Download a vision-capable model such as `qwen2.5vl:3b`, `gemma3:4b`, or another model your hardware can run comfortably.
-3. Install AI Renamer CLI via npm.
+3. Install the `ai-renamer` CLI via npm (`npx ai-renamer /path` also works).
 4. Point it at your files and let the local model generate names.
 
 ### Desktop app (free credits)
@@ -137,9 +137,9 @@ The desktop app gives you 10 free credits on signup -- enough to test the workfl
 ### Trade-offs
 
 **Advantages:**
-- CLI is fully free with no API costs
+- The GitHub CLI is fully free with no API costs
 - Files never leave your machine in local mode
-- No account required for the CLI
+- No account required for the CLI (the paid desktop app does require a signup)
 - Desktop app now markets broader all-file support, with OpenAI/custom model support in Local Mode
 - Custom prompts and naming case styles (camelCase, snake_case, etc.)
 
@@ -151,7 +151,7 @@ The desktop app gives you 10 free credits on signup -- enough to test the workfl
 - No undo or rename history
 - Desktop app's free credits are limited (10 on signup)
 
-AI Renamer works if privacy is your top priority. The CLI is best for developers comfortable with the terminal; the desktop app is easier to use and markets broader format support. For the direct trade-off against Zush, read [Zush vs AI Renamer](/blog/zush-vs-airenamer). If you are choosing between free cloud credits, BYOK, and local models, read [Cloud AI vs Local AI File Renaming](/blog/cloud-vs-local-ai-file-renaming).
+AI Renamer works if privacy is your top priority. The free GitHub CLI is best for developers comfortable with the terminal; the $19 desktop app is easier to use and markets broader format support, but it is a paid product, not the open-source one. For the direct trade-off against Zush, read [Zush vs AI Renamer](/blog/zush-vs-airenamer). If you are choosing between free cloud credits, BYOK, and local models, read [Cloud AI vs Local AI File Renaming](/blog/cloud-vs-local-ai-file-renaming).
 
 ![Zush AI rename results on macOS showing content-aware filenames for mixed files](/images/showcase/macos/batch-rename-light.webp)
 
@@ -200,7 +200,7 @@ Renamify (renamify.co) is a web-only tool that requires a paid subscription ($10
 ### How the free options work
 
 1. Renamer.ai: sign up for the free plan (25 files/month) and use the web interface or download the desktop app.
-2. Riffo (riffo.ai): download the free Mac app or use the web demo -- completely free with no confirmed usage cap.
+2. Riffo (riffo.ai): download the free Mac app or use the web demo. The homepage says it is free and publishes no pricing page, so there is also no stated usage cap either way.
 
 ### Trade-offs
 
@@ -213,7 +213,7 @@ Renamify (renamify.co) is a web-only tool that requires a paid subscription ($10
 - Renamer.ai free tier is limited to 25 files/month
 - Files are uploaded to remote servers (privacy concern)
 - Renamify has no free option at all
-- Riffo has limited format documentation and no undo
+- Riffo publishes no format list, no undo statement, and no pricing page
 
 For light usage, Renamer.ai's 25 free renames or Riffo's completely free app are viable starting points. For more volume, Zush's free tier (50 to start) or BYOK option is more practical.
 

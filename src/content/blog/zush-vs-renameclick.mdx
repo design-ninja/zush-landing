@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Tool Comparisons"
 tldr: "Pick Zush if you want the broadest mixed-file coverage: RAW photos, design files, iWork, audio, videos, 60+ languages, BYOK, templates, Naming Blocks, monitoring, and a lower $38 one-time PRO plan. Pick RenameClick if you want local AI by default, built-in file sorting, AI Search by content, EXIF-heavy patterns, and a privacy-first workflow even before connecting cloud providers."
-reviewed: "2026-07-19"
+reviewed: "2026-07-24"
 featuredOrder: 5
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -19,11 +19,11 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 Quick answer: Zush is the better fit for broad mixed-file renaming across Mac and Windows: <BlogHighlight>100+ supported formats</BlogHighlight>, including RAW photos, HEIC, design files, iWork, audio, videos, documents, subtitles, and Office files, with PRO pricing at <BlogHighlight>$8/month or $38 one-time</BlogHighlight>. RenameClick is the better fit if your first requirement is local-first processing out of the box: it bundles a local Qwen3-VL model, supports AI Search, can rename and sort files into folders, and costs $8+ VAT/month or $48+ VAT lifetime.
 
-Pricing and public feature details last checked July 8, 2026. RenameClick's public page lists Pro Monthly and Pro Lifetime offers.
+**Last verified: July 24, 2026**, against rename.click's own pricing page and documentation.
 
-Sources checked for this update: [Zush](/) and [RenameClick](https://rename.click/), including public pricing, offline/local AI, Auto Flow, AI Search, file-format, and undo details.
+Sources checked for this update: [Zush](/) and [RenameClick](https://rename.click/), including public pricing, offline/local AI, Auto Flow, AI Search, undo, and its [supported file types documentation](https://rename.click/docs/getting-started/supported-files).
 
-If you are searching "Zush vs RenameClick", the decision is not simply "cloud vs local". Both products run on Mac and Windows, both have folder automation, both can use local AI, and both offer one-time purchases. The split is clearer than that: Zush is broader as a file-type and naming-workflow tool; RenameClick is more local-first and more organizer/search oriented.
+If you are searching "Zush vs RenameClick", the decision is not simply "cloud vs local". Both ship desktop-native apps for Mac and Windows — RenameClick describes itself as "built for real folders on macOS and Windows, not a cloud upload workflow" — both have folder automation, both can use local AI, both have undo, and both offer one-time purchases. The split is clearer than that: Zush is broader as a file-type and naming-workflow tool; RenameClick is more local-first and more organizer/search oriented.
 
 <BlogProductIntro
   title="Comparing file-type coverage and pricing?"
@@ -47,15 +47,15 @@ If you are searching "Zush vs RenameClick", the decision is not simply "cloud vs
 | Processing options | Cloud AI, BYOK, or Offline AI via Ollama | <BlogHighlight>Built-in local AI by default</BlogHighlight> |
 | Local model bundled | No, use Ollama setup | Yes, Qwen3-VL local model after download |
 | AI providers | Gemini, Groq, OpenAI, Claude, Ollama offline | Built-in local, OpenAI, Gemini, Alibaba Cloud Qwen, LM Studio, Ollama |
-| Image/design formats | 41 image formats + 4 design formats, including RAW, HEIC, AVIF, Sketch, Figma, AI, PSD | JPG/JPEG, PNG, GIF, WebP, BMP, SVG, HEIC, HEIF, TIFF/TIF |
+| Image/design formats | 41 image formats + 4 design formats, including RAW, HEIC, AVIF, Sketch, Figma, AI, PSD | JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF; no design files |
 | RAW support | <BlogHighlight>Yes (CR2, CR3, NEF, ARW, DNG, ORF, RAF, RW2, PEF, SRW, SR2)</BlogHighlight> | Not listed publicly |
-| Document formats | 37 document/PDF formats, including iWork | PDF, DOC, DOCX, TXT, MD, CSV, RTF, ODT |
+| Document formats | 37 document/PDF formats, including iWork | PDF, DOC/DOCX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, logs, SQL, SRT/VTT, ICS/VCF |
 | Video formats | 16 common formats | Not supported per docs |
-| Audio formats | MP3, M4A, WAV, FLAC, OGG, WebM, MPGA | Not supported per docs |
+| Audio formats | MP3, M4A, WAV, FLAC, OGG, WebM, MPGA | MP3, WAV, FLAC, M4A, AAC with local speech transcription |
 | Folder monitoring | Yes | Yes, Auto Flow |
 | Sorting / moving files | Rename plus tags/metadata; not a folder sorter | <BlogHighlight>Rename, categorize, and move files</BlogHighlight> |
 | AI Search by content | No dedicated AI Search; Finder tags + Spotlight metadata | <BlogHighlight>Dedicated AI Search workspace</BlogHighlight> |
-| Undo | Yes, full activity history | Yes, undo/redo when Watch is off |
+| Undo | Yes, full activity history | Yes, full undo/redo per docs |
 | Naming controls | Templates, 145+ Naming Blocks, custom prompts | Format patterns, EXIF placeholders, custom instructions |
 | Languages | 60+ | Multilingual; docs say 14 output languages |
 
@@ -83,7 +83,7 @@ Pricing is simple: $8/month or $38 one-time for PRO. Both paid plans unlock unli
 
 RenameClick is a local-first desktop app for macOS and Windows. Its core pitch is privacy: after the one-time local model download, its built-in Qwen3-VL provider can process files on the device without an API key or internet connection. It also supports LM Studio and Ollama for local server workflows, plus OpenAI, Google Gemini, and Alibaba Cloud Qwen when you explicitly connect cloud API keys. RenameClick notes that cloud providers are not available in the Mac App Store version; use the direct download if those providers matter.
 
-RenameClick is not only a renamer. It is closer to a file organizer: it can rename files, categorize them, move them into folders, run Auto Flow watch rules, search by content with AI Search, and build names from EXIF/date placeholders. Its docs list supported images and documents only: common images including HEIC/HEIF/TIFF/SVG and documents including PDF, DOC, DOCX, TXT, MD, CSV, RTF, and ODT. The docs explicitly list video, audio, archives, executables, and app bundles as unsupported.
+RenameClick is not only a renamer. It is closer to a file organizer: it can rename files, categorize them, move them into folders, run Auto Flow watch rules, search by content with AI Search, and build names from EXIF/date placeholders. Its supported-files documentation now covers three categories: common images (JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF), a long document list (PDF, DOC/DOCX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, logs, SQL, SRT/VTT, ICS/VCF), and audio (MP3, WAV, FLAC, M4A, AAC) with local speech transcription. Video files, other audio codecs, archives, and executables are explicitly listed as unsupported.
 
 ## Pricing reality
 
@@ -105,13 +105,13 @@ For paid use, Zush is $10 cheaper on the lifetime path before tax. RenameClick j
 
 ### Zush is broader for real mixed folders
 
-Zush supports RAW photo formats, design files, audio, videos, iWork files, Office files, subtitles, and data/text formats. That is the practical advantage if your folders are messy because they are real: screenshots beside phone photos, camera RAWs beside PDFs, Figma/Sketch/PSD files beside Keynote/Pages documents, and video/audio files beside meeting notes.
+Zush supports RAW photo formats, design files, audio, videos, iWork files, Office files, subtitles, and data/text formats. That is the practical advantage if your folders are messy because they are real: screenshots beside phone photos, camera RAWs beside PDFs, Figma/Sketch/PSD files beside Keynote/Pages documents, and video files beside meeting notes. Audio is no longer part of that gap — RenameClick handles common audio formats now — but RAW, design files, iWork, and video still are.
 
-### RenameClick covers common images and documents
+### RenameClick covers common images, a wide document list, and now audio
 
-RenameClick covers common image and document workflows well: JPG/JPEG, PNG, GIF, WebP, BMP, SVG, HEIC, HEIF, TIFF/TIF, PDF, DOC/DOCX, TXT, Markdown, CSV, RTF, and ODT. It also has useful document processing details: text extraction for text PDFs and Office documents, vision fallback for scanned PDFs, and configurable document text trim limits.
+RenameClick covers common image and document workflows well — JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF, plus PDF, DOC/DOCX, TXT, Markdown, CSV, RTF, ODT, JSON, XML, YAML, HTML, logs, SQL, subtitles, and calendar/contact files — and it has added audio (MP3, WAV, FLAC, M4A, AAC) with local speech transcription. It also has useful document processing details: text extraction for text PDFs and Office documents, vision fallback for scanned PDFs, and configurable document text trim limits.
 
-The gap is around specialized and media-heavy formats. RenameClick's docs do not list camera RAW formats, video files, audio files, archives, or design files like Sketch/Figma/PSD as supported. If those formats matter, Zush is safer.
+The gap is around media and design formats. RenameClick's docs do not list camera RAW formats or design files like Sketch/Figma/PSD, and they explicitly call video files, archives, and executables unsupported. If those formats matter, Zush is safer.
 
 ## Offline AI and providers
 
@@ -146,7 +146,7 @@ For discovery inside chaotic folders, RenameClick's AI Search is a meaningful di
 
 **Pick Zush if:**
 
-- You need the broadest format coverage, especially RAW photos, design files, audio, videos, iWork, and subtitles
+- You need the broadest format coverage, especially RAW photos, design files, videos, iWork, and subtitles
 - You want a cheaper lifetime plan: $38 one-time instead of $48+ VAT
 - You want BYOK with Gemini, Groq, OpenAI, or Claude included in paid PRO
 - You need 60+ output languages
@@ -166,7 +166,7 @@ For discovery inside chaotic folders, RenameClick's AI Search is a meaningful di
 
 ## Migration tip
 
-If you are coming from RenameClick to Zush, test the files that RenameClick does not publicly cover first: RAW photos, design files, audio, videos, and iWork documents. If those are the reason you are switching, the difference will be obvious quickly. If you already use a cloud provider key, add it in Zush BYOK and keep provider costs separate from the desktop app.
+If you are coming from RenameClick to Zush, test the files that RenameClick does not publicly cover first: RAW photos, design files, videos, and iWork documents. If those are the reason you are switching, the difference will be obvious quickly. If you already use a cloud provider key, add it in Zush BYOK and keep provider costs separate from the desktop app.
 
 If you are coming from Zush to RenameClick, start with the free plan and test the local model on a representative folder. Pay attention to hardware: RenameClick recommends 16 GB system RAM and uses a multi-GB local model. If the built-in model is too generic for your files, try LM Studio, Ollama, or a cloud provider before judging the workflow.
 
@@ -190,7 +190,7 @@ RenameClick's public supported-file list does not include camera RAW formats lik
 
 ### Does RenameClick support video or audio files?
 
-No, not according to its current docs. RenameClick lists common image and document formats and explicitly calls video, audio, archives, executables, and app bundles unsupported. Zush supports common video and audio formats.
+Audio yes, video no. Its docs now list MP3, WAV, FLAC, M4A, and AAC with local speech transcription, while video files (`.mp4`, `.mov`, `.mkv`, `.webm`), other audio codecs, archives, and executables are explicitly unsupported. Zush supports 16 video formats alongside its audio list.
 
 ### Which has better folder automation?
 
@@ -200,7 +200,7 @@ It depends on the goal. Zush is better for automatic naming with templates and N
 
 Both products are serious, and the overlap is real: Mac + Windows, AI batch rename, folder monitoring, local AI, provider choice, undo, and one-time pricing.
 
-Choose <BlogHighlight>Zush</BlogHighlight> if the folder is messy because it contains many file types. RAW photos, design files, iWork docs, audio, videos, subtitles, and 60+ languages are where Zush pulls ahead.
+Choose <BlogHighlight>Zush</BlogHighlight> if the folder is messy because it contains many file types. RAW photos, design files, iWork docs, videos, subtitles, and 60+ languages are where Zush pulls ahead.
 
 Choose <BlogHighlight>RenameClick</BlogHighlight> if the folder is messy because it needs private local analysis, semantic search, and folder routing. Its built-in local model, AI Search, Auto Flow rows, EXIF patterns, and folder sorting are the reasons to pick it.
 

@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Tool Comparisons"
 tldr: "Pick Zush if you want Mac + Windows support, 100+ formats including RAW/HEIC/design/iWork/audio, templates, Naming Blocks, and BYOK included with paid PRO. Pick NameQuick if you are Mac-only, want deep Finder integration with Watch Folders + Rules Engine, and prefer a wider AI provider menu."
-reviewed: "2026-07-19"
+reviewed: "2026-07-24"
 featuredOrder: 3
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -17,9 +17,9 @@ import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
-Quick answer: Zush is <BlogHighlight>$8/month or $38 one-time</BlogHighlight> for Mac and Windows with 100+ supported image, design, document, video, and audio formats, including RAW photos, Sketch/Figma/Illustrator/PSD, iWork documents, videos, and MP3/M4A/WAV audio. NameQuick is <BlogHighlight>macOS only</BlogHighlight> and now publicly foregrounds a $69 Self-Managed plan where you bring your own API key or local model. Choose Zush for cross-platform coverage, published RAW/design/iWork/audio support, and simpler lifetime pricing. Choose NameQuick for Mac-native depth, Watch Folders, and a Rules Engine.
+Quick answer: Zush is <BlogHighlight>$8/month or $38 one-time</BlogHighlight> for Mac and Windows with 100+ supported image, design, document, video, and audio formats, including RAW photos, Sketch/Figma/Illustrator/PSD, iWork documents, videos, and MP3/M4A/WAV audio. NameQuick is <BlogHighlight>macOS only</BlogHighlight> and sells two ways: a Managed plan from <BlogHighlight>$12/mo metered by renames</BlogHighlight> (500 / 2,000 / 5,000 / 10,000 per month) or a $69 one-time Self-Managed license for one device where you bring your own API key or local model. Choose Zush for cross-platform coverage, published RAW/design/iWork/audio support, and unmetered lifetime pricing. Choose NameQuick for Mac-native depth, Watch Folders, and a Rules Engine.
 
-Pricing and public feature details last checked July 8, 2026.
+**Last verified: July 24, 2026**, against namequick.app's own product and pricing pages.
 
 Sources checked for this update: [Zush](/) and [NameQuick](https://www.namequick.app/), including public pricing, platform, provider, folder monitoring, undo, and format-support details.
 
@@ -40,20 +40,21 @@ If you are searching "Zush vs NameQuick", you are choosing between two paid AI f
 
 | Dimension | Zush | NameQuick |
 |---|---|---|
-| Pricing | <BlogHighlight>$8/month or $38 one-time</BlogHighlight> | Managed path listed at $12/mo or $12/year; $69 one-time Self-Managed |
-| Free tier | 50 renames to start | 7-day trial (50 renames) |
+| Pricing | <BlogHighlight>$8/month or $38 one-time</BlogHighlight> | Managed from $12/mo; $69 one-time Self-Managed (1 device, lifetime updates) |
+| Metering | <BlogHighlight>None on paid PRO</BlogHighlight> | Managed is metered at 500 / 2,000 / 5,000 / 10,000 renames per month; Self-Managed is not |
+| Free tier | 50 renames to start | 14-day trial with 50 renames |
 | 5-year cost (one-time path) | <BlogHighlight>$38 total</BlogHighlight> | $69 + API/local model setup |
-| Platforms | Mac + Windows | <BlogHighlight>macOS only</BlogHighlight> |
+| Platforms | Mac + Windows | <BlogHighlight>macOS only</BlogHighlight> (Windows wait list) |
 | Image and design formats | 41 image formats + 4 design formats (RAW, HEIC, AVIF, Sketch, Figma, AI, PSD) | 30+ formats spanning categories |
 | RAW support | <BlogHighlight>Yes (11 variants)</BlogHighlight> | Not listed publicly |
 | Document formats | 37 document/PDF formats, including iWork | Office docs covered |
 | Video formats | 16 common formats | Listed as part of 30+ formats |
 | Audio formats | 7 common formats | Listed as part of 30+ formats |
-| AI providers | 4 (Gemini, Groq, OpenAI, Claude) | <BlogHighlight>6 public options</BlogHighlight> (OpenAI, OpenRouter, Claude, Gemini, Ollama, LM Studio) |
+| AI providers | 4 (Gemini, Groq, OpenAI, Claude) | <BlogHighlight>7 public options</BlogHighlight> (OpenAI, OpenRouter, Claude, Gemini, Ollama, LM Studio, MLX) |
 | BYOK | <BlogHighlight>Included with paid PRO</BlogHighlight> | $69 Self-Managed, then bring your key or local model |
 | Folder monitoring | Yes | Yes (Watch Folders) |
 | Undo | Yes (full history) | Yes (one-click revert) |
-| Local AI | Ollama on supported Mac builds | Ollama, LM Studio |
+| Local AI | Ollama on supported Mac builds | Ollama, LM Studio, MLX |
 | Languages | 60+ | Multilingual (count not stated) |
 | Rules Engine | Templates, 145+ Naming Blocks, custom prompts | Yes (move/tag/archive based on conditions) |
 | Finder tags | Yes | Yes (with Comments) |
@@ -72,15 +73,17 @@ For Mac users, there is also Offline AI mode via Ollama where files never leave 
 
 ## NameQuick
 
-<BlogToolMeta platform="macOS only" website="https://www.namequick.app/" label="namequick.app">
-  <Fragment slot="pricing">Managed path listed at $12/mo or $12/year; Self-Managed $69 one-time with 7-day / 50-rename trial; bring your own API key or local model.</Fragment>
+<BlogToolMeta platform="macOS only (Windows on a wait list)" website="https://www.namequick.app/" label="namequick.app">
+  <Fragment slot="pricing">Managed from $12/mo, metered at 500 / 2,000 / 5,000 / 10,000 renames per month; Self-Managed $69 one-time for 1 device with lifetime updates and BYOK; 14-day trial with 50 renames.</Fragment>
 </BlogToolMeta>
 
 ![NameQuick Mac app interface (image: namequick.app)](/images/blog/competitors/namequick.png)
 
-NameQuick is a Mac-only AI file renamer whose current public homepage lists a Managed path at $12/mo or $12/year and a Self-Managed plan at $69 one-time. The Self-Managed plan is the BYOK/local-model path: you bring your own cloud API key or run a local model on your Mac. The old $5/$10/$20/$35 monthly tier table is no longer the safe comparison copy.
+NameQuick is a Mac-only AI file renamer with two distinct purchase paths. **Managed starts at $12/mo and is metered by volume** — the public tiers run 500, 2,000, 5,000, and 10,000 renames per month, so the plan you need is decided by how many files you actually process, not by which features you want. **Self-Managed is $69 one-time**, covers one device, includes lifetime updates, and is the BYOK/local-model path: you bring your own cloud API key or run a local model on your Mac and pay the provider directly.
 
-Their AI provider menu is broader than most: OpenAI, OpenRouter, Claude, Gemini, Ollama, and LM Studio — six public options including two local options. The privacy story is strong: "EU-routed & encrypted" with "no permanent storage" and "data is never used to train AI" per their site.
+Their AI provider menu is broader than most: OpenAI, OpenRouter, Claude, Gemini, Ollama, LM Studio, and MLX — seven public options, three of them local. The privacy story is strong: "EU-routed & encrypted" with "no permanent storage" and "data is never used to train AI" per their site.
+
+Two things worth stating plainly, because comparison posts often get them wrong: NameQuick has **Watch Folders** for monitoring directories and **one-click Undo & Recovery** on any rename. Neither automation nor rollback is a Zush-only capability in this matchup.
 
 The Rules Engine is one of NameQuick's distinct features — beyond renaming, it can move, tag, archive, and reorganize files automatically based on conditions you define.
 
@@ -93,11 +96,11 @@ For someone using either tool steadily over 5 years (light to moderate use, ~5,0
 | <BlogHighlight>Zush Pro One-Time</BlogHighlight> | <BlogHighlight>$38</BlogHighlight> | <BlogHighlight>$38</BlogHighlight> | <BlogHighlight>$38</BlogHighlight> |
 | Zush BYOK with optional API cost | $38 + optional API | $38 + optional API | $38 + optional API |
 | NameQuick Self-Managed (BYOK/local) | $69 + API/local setup | $69 + API/local setup | $69 + API/local setup |
-| NameQuick Managed | Public page lists $12/mo or $12/year | $12/mo path compounds; $12/year path should be verified at checkout | Verify checkout before purchasing |
+| NameQuick Managed (entry tier) | From $144/year at $12/mo | From $432 | From $720 |
 
-For BYOK-heavy paths, Zush is now cheaper at the one-time entry point. Zush's $38 One-Time plan includes the full PRO desktop workflow and Mac + Windows support, while NameQuick's public Self-Managed path is $69 and is Mac-only.
+For BYOK-heavy paths, Zush is cheaper at the one-time entry point. Zush's $38 One-Time plan includes the full PRO desktop workflow and Mac + Windows support, while NameQuick's Self-Managed path is $69, Mac-only, and limited to one device.
 
-For Managed users, verify NameQuick's current checkout before purchasing. The public homepage no longer supports the old $5/month comparison as a stable statement.
+For Managed users, the number that matters is the meter, not the headline. $12/mo buys the 500-renames-per-month tier; heavier volume moves you up through the 2,000, 5,000, and 10,000 tiers. If your renaming is spiky — a 4,000-file photo import one month, nothing the next — a metered plan prices the peak, while an unmetered one-time plan does not.
 
 If you are choosing on platform and format coverage, Zush wins. NameQuick's value comes from things Zush intentionally does not chase as deeply: more AI provider options, a richer Rules Engine for file operations, and Mac-native polish.
 
@@ -117,7 +120,7 @@ NameQuick mentions audio, video, and archives as part of its 30+ formats. Zush 3
 
 ## AI provider menu
 
-NameQuick publicly lists six AI backends: OpenAI, OpenRouter, Claude, Gemini, Ollama, and LM Studio. Zush supports 4 cloud providers: Gemini, Groq, OpenAI, and Claude — plus Ollama for the Offline AI mode.
+NameQuick publicly lists seven AI backends: OpenAI, OpenRouter, Claude, Gemini, Ollama, LM Studio, and MLX. Zush supports 4 cloud providers: Gemini, Groq, OpenAI, and Claude — plus Ollama for the Offline AI mode.
 
 The big differentiators:
 
@@ -138,7 +141,7 @@ The big differentiators:
 **Pick NameQuick if:**
 
 - You are Mac-only
-- You want the richer AI provider menu (OpenRouter and LM Studio)
+- You want the richer AI provider menu (OpenRouter, LM Studio, and MLX)
 - You want a real Rules Engine for conditional moves/tags/archives, not just renaming
 - You handle archive files that need renaming
 - EU data routing matters for your compliance story
@@ -163,7 +166,7 @@ In Zush, BYOK is included with paid PRO plans — no separate BYOK purchase. In 
 
 ### Does Zush support all NameQuick AI providers?
 
-No. Zush supports 4 cloud providers (Gemini, Groq, OpenAI, Claude) plus Ollama for the Offline AI mode. NameQuick publicly lists OpenAI, OpenRouter, Claude, Gemini, Ollama, and LM Studio. If specific providers matter, especially OpenRouter or LM Studio, NameQuick is broader.
+No. Zush supports 4 cloud providers (Gemini, Groq, OpenAI, Claude) plus Ollama for the Offline AI mode. NameQuick publicly lists OpenAI, OpenRouter, Claude, Gemini, Ollama, LM Studio, and MLX. If specific providers matter, especially OpenRouter, LM Studio, or MLX on Apple Silicon, NameQuick is broader.
 
 ### Does NameQuick support RAW photos?
 
