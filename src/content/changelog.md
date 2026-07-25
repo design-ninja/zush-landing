@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.8.2] - 2026-07-25
+
+### Improved
+- The template picker opens short: Smart Rename plus the templates you used recently, with the rest one click away under "All templates"
+- The edit action in the picker now names the template it opens, so you always know what you are about to change
+- Example filenames moved into tooltips, keeping the list compact and easy to scan
+
 ## [3.8.1] - 2026-07-22
 
 ### Improved
