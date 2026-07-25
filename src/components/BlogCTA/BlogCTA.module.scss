@@ -45,6 +45,21 @@
     position: relative;
     z-index: 2;
     overflow: visible;
+
+    // The shared Heading/Text classes set theme colors with the same
+    // specificity, so scope these under Content to keep the text readable
+    // over the gradient in both light and dark themes.
+    .BlogCTA__Title {
+      color: oklch(1 0 0);
+    }
+
+    .BlogCTA__Description {
+      color: oklch(1 0 0 / 0.88);
+    }
+
+    .BlogCTA__Hint {
+      color: oklch(1 0 0 / 0.72);
+    }
   }
 
   &__Background {
@@ -58,12 +73,10 @@
   }
 
   &__Title {
-    color: oklch(1 0 0);
     text-shadow: 0 1px 4px oklch(0 0 0 / 0.1);
   }
 
   &__Description {
-    color: oklch(1 0 0 / 0.88);
     max-width: 32rem;
     text-shadow: 0 1px 4px oklch(0 0 0 / 0.09);
   }
@@ -80,7 +93,6 @@
   }
 
   &__Hint {
-    color: oklch(1 0 0 / 0.72);
     text-shadow: 0 1px 4px oklch(0 0 0 / 0.08);
   }
 
