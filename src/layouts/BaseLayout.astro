@@ -19,6 +19,7 @@ import {
   getLocalesForRoute,
   getLocalizedPath,
   isLocalizedRoute,
+  isSeoExcludedLocalizedRoute,
   stripLocaleFromPath,
   type Locale,
 } from '@/i18n/config';
@@ -52,6 +53,9 @@ const { route } = stripLocaleFromPath(seo.canonicalPath);
 const routeLocales = getLocalesForRoute(route);
 const shouldEmitLocaleAlternates = !LOCALIZATION_PAUSED
   && isLocalizedRoute(route)
+  // The English page is still indexable, but its translations are not: pointing
+  // hreflang at noindex URLs invalidates the whole cluster.
+  && !isSeoExcludedLocalizedRoute(route)
   && seo.robots !== 'noindex, nofollow';
 const localeMeta = LOCALE_META[locale];
 const layoutCopy = getCopy(locale);

@@ -4,7 +4,7 @@ import { dirname, join, relative, sep } from 'node:path';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { getAllPosts, getAllTags, isSitemapEligibleBlogPost, type BlogPost, type BlogTag } from '@/data/blog';
 import { INDEXABLE_STATIC_ROUTES, FEATURE_ROUTES, SEARCH_LANDING_ROUTES, SITE_ORIGIN, THIN_CONTENT_THRESHOLD } from '@/seo/config';
-import { DEFAULT_LOCALE, LOCALE_META, LOCALIZATION_PAUSED, LOCALIZED_ROUTES, getAlternatePaths, getLocalesForRoute, getLocalizedPath } from '@/i18n/config';
+import { DEFAULT_LOCALE, LOCALE_META, LOCALIZATION_PAUSED, LOCALIZED_ROUTES, getAlternatePaths, getLocalesForRoute, getLocalizedPath, isSeoExcludedLocalizedRoute } from '@/i18n/config';
 
 const BLOG_CONTENT_DIR = join(process.cwd(), 'src', 'content', 'blog');
 const DOCS_CONTENT_DIR = join(process.cwd(), 'src', 'content', 'docs');
@@ -308,6 +308,10 @@ export async function GET() {
     ? []
     : LOCALIZED_ROUTES
       .filter((route) => INDEXABLE_STATIC_ROUTES.includes(route))
+      // Legal boilerplate and the methodology explainer stay English-only in search;
+      // their localized versions are noindex, so listing them here would contradict
+      // the page itself and break the hreflang cluster.
+      .filter((route) => !isSeoExcludedLocalizedRoute(route))
       .flatMap((route) =>
         getLocalesForRoute(route).filter((locale) => locale !== DEFAULT_LOCALE).map((locale) => {
           const locPath = getLocalizedPath(route, locale);
@@ -366,7 +370,9 @@ export async function GET() {
 
   const urls = [...staticEntries.map((entry) => ({ ...entry, route: entry.loc.replace(SITE_ORIGIN, '') || '/' })), ...localizedEntries, ...blogEntries, ...tagEntries, ...docsEntries]
     .map(({ loc, route, lastmod, changefreq, priority }) => {
-      const normalizedRoute = !LOCALIZATION_PAUSED && LOCALIZED_ROUTES.includes(route as never)
+      const normalizedRoute = !LOCALIZATION_PAUSED
+        && LOCALIZED_ROUTES.includes(route as never)
+        && !isSeoExcludedLocalizedRoute(route as string)
         ? route
         : undefined;
       const alternates = normalizedRoute

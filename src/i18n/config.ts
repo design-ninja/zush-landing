@@ -183,6 +183,26 @@ export const INDEXABLE_LOCALIZED_ROUTES = [
   '/refund-policy',
 ] as const;
 
+/**
+ * Localized routes that stay reachable through the language switcher but are kept
+ * out of search: legal boilerplate and the methodology explainer have no search
+ * demand in any language, while their translations made up a quarter of the
+ * localized index on a domain where crawlers are still selective about what they
+ * keep. English versions remain indexable — only the non-default locales are
+ * excluded (noindex + no sitemap entry + no hreflang, same treatment as
+ * LOCALIZATION_PAUSED gives every locale).
+ */
+export const SEO_EXCLUDED_LOCALIZED_ROUTES = [
+  '/methodology',
+  '/privacy-policy',
+  '/terms-of-service',
+  '/refund-policy',
+] as const;
+
+export function isSeoExcludedLocalizedRoute(route: string): boolean {
+  return (SEO_EXCLUDED_LOCALIZED_ROUTES as readonly string[]).includes(route);
+}
+
 const PRIVATE_LOCALIZED_ROUTES = [
   '/activate',
   '/recover',

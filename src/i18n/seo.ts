@@ -1,5 +1,5 @@
 import { getSeoForPath, type SeoMeta } from '@/seo/config';
-import { DEFAULT_LOCALE, LOCALIZATION_PAUSED, getLocalizedPath, type Locale, type LocalizedRoute } from '@/i18n/config';
+import { DEFAULT_LOCALE, LOCALIZATION_PAUSED, getLocalizedPath, isSeoExcludedLocalizedRoute, type Locale, type LocalizedRoute } from '@/i18n/config';
 import { getCopy } from '@/i18n/copy';
 
 const PLATFORM_SEO: Partial<Record<Locale, Partial<Record<'/mac' | '/windows', { title: string; description: string }>>>> = {
@@ -150,7 +150,8 @@ export function getLocalizedSeoForRoute(route: LocalizedRoute, locale: Locale): 
       : null;
 
   const isNonDefaultLocale = locale !== DEFAULT_LOCALE;
-  const robots = LOCALIZATION_PAUSED && isNonDefaultLocale
+  const robots = isNonDefaultLocale
+    && (LOCALIZATION_PAUSED || isSeoExcludedLocalizedRoute(route))
     ? 'noindex, nofollow'
     : seo.robots;
 
