@@ -1,5 +1,6 @@
 import { execSync } from 'node:child_process';
-import { join } from 'node:path';
+import { existsSync, readFileSync, statSync } from 'node:fs';
+import { dirname, join, relative, sep } from 'node:path';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { getAllPosts, getAllTags, isSitemapEligibleBlogPost, type BlogPost, type BlogTag } from '@/data/blog';
 import { INDEXABLE_STATIC_ROUTES, FEATURE_ROUTES, SEARCH_LANDING_ROUTES, SITE_ORIGIN, THIN_CONTENT_THRESHOLD } from '@/seo/config';
@@ -9,26 +10,107 @@ const BLOG_CONTENT_DIR = join(process.cwd(), 'src', 'content', 'blog');
 const DOCS_CONTENT_DIR = join(process.cwd(), 'src', 'content', 'docs');
 const PAGES_DIR = join(process.cwd(), 'src', 'pages');
 
-const STATIC_ROUTE_DEPENDENCIES: Record<string, string[]> = {
-  '/': [
-    join(process.cwd(), 'src', 'components', 'HomePage', 'HomePageContent.astro'),
-    join(process.cwd(), 'src', 'data', 'homeFaq.ts'),
-    join(process.cwd(), 'src', 'i18n', 'copy.ts'),
-  ],
-  '/mac': [
-    join(process.cwd(), 'src', 'components', 'PlatformLandingPage', 'PlatformLandingPage.astro'),
-    join(process.cwd(), 'src', 'i18n', 'copy.ts'),
-  ],
-  '/windows': [
-    join(process.cwd(), 'src', 'components', 'PlatformLandingPage', 'PlatformLandingPage.astro'),
-    join(process.cwd(), 'src', 'i18n', 'copy.ts'),
-  ],
-  '/batch-rename-files': [join(process.cwd(), 'src', 'data', 'searchLandingPages.ts')],
-  '/offline-ai-file-renamer': [join(process.cwd(), 'src', 'data', 'searchLandingPages.ts')],
-  '/ai-file-organizer': [join(process.cwd(), 'src', 'data', 'searchLandingPages.ts')],
-  '/automate-downloads-folder': [join(process.cwd(), 'src', 'data', 'searchLandingPages.ts')],
-  '/methodology': [join(process.cwd(), 'src', 'components', 'MethodologyPage', 'MethodologyPage.astro')],
+const SRC_DIR = join(process.cwd(), 'src');
+
+// Which modules are allowed to move a route's lastmod. Copy and data only:
+// a route's date must react to text changes (i18n/copy.ts, data/searchLandingPages.ts,
+// views/FeaturePages/*), but must NOT react to shared layout/UI edits — a tweak in
+// Hero or Pricing would otherwise restamp every URL on the same deploy, which is
+// exactly the pattern Bing distrusts. The graph is still traversed *through*
+// components (that is how a page reaches copy.ts via its shell); those files just
+// don't contribute a date.
+const CONTENT_SOURCE_PREFIXES = ['data', 'i18n', 'views', 'content'];
+
+// Sits in a content directory but holds routing/locale plumbing, not copy: it is
+// imported by nearly every page, so letting it contribute a date would restamp the
+// whole sitemap on an unrelated edit.
+const EXCLUDED_CONTENT_SOURCES = new Set([join(SRC_DIR, 'i18n', 'config.ts')]);
+
+// Page-specific markup that holds copy inline rather than importing it, so it
+// cannot be discovered through the content-module rule above.
+const EXTRA_ROUTE_DEPENDENCIES: Record<string, string[]> = {
+  '/': [join(SRC_DIR, 'components', 'HomePage', 'HomePageContent.astro')],
+  '/mac': [join(SRC_DIR, 'components', 'PlatformLandingPage', 'PlatformLandingPage.astro')],
+  '/windows': [join(SRC_DIR, 'components', 'PlatformLandingPage', 'PlatformLandingPage.astro')],
+  '/methodology': [join(SRC_DIR, 'components', 'MethodologyPage', 'MethodologyPage.astro')],
 };
+
+const IMPORT_SPECIFIER_PATTERN = /(?:from\s*|import\s*\(\s*)['"]([^'"]+)['"]/g;
+const RESOLVE_EXTENSIONS = ['', '.ts', '.tsx', '.astro', '.mdx', '.md', '.js', '.jsx'];
+const RESOLVE_INDEX_FILES = ['index.ts', 'index.tsx', 'index.astro'];
+const MAX_IMPORT_DEPTH = 5;
+
+const importCache = new Map<string, string[]>();
+const gitDateCache = new Map<string, string | null>();
+
+function resolveSpecifier(specifier: string, importerFile: string): string | null {
+  // Strip Vite query suffixes like `?raw`, and ignore packages and asset URLs.
+  const cleaned = specifier.split('?')[0];
+  if (!cleaned.startsWith('@/') && !cleaned.startsWith('.')) return null;
+
+  const base = cleaned.startsWith('@/')
+    ? join(SRC_DIR, cleaned.slice(2))
+    : join(dirname(importerFile), cleaned);
+
+  for (const extension of RESOLVE_EXTENSIONS) {
+    const candidate = `${base}${extension}`;
+    if (existsSync(candidate) && statSync(candidate).isFile()) return candidate;
+  }
+  for (const indexFile of RESOLVE_INDEX_FILES) {
+    const candidate = join(base, indexFile);
+    if (existsSync(candidate)) return candidate;
+  }
+
+  return null;
+}
+
+function getDirectImports(file: string): string[] {
+  const cached = importCache.get(file);
+  if (cached) return cached;
+
+  let resolved: string[] = [];
+  try {
+    const source = readFileSync(file, 'utf8');
+    const specifiers = [...source.matchAll(IMPORT_SPECIFIER_PATTERN)].map((match) => match[1]);
+    resolved = [...new Set(specifiers)]
+      .map((specifier) => resolveSpecifier(specifier, file))
+      .filter((candidate): candidate is string => Boolean(candidate));
+  } catch {
+    resolved = [];
+  }
+
+  importCache.set(file, resolved);
+  return resolved;
+}
+
+function isContentSource(file: string): boolean {
+  if (EXCLUDED_CONTENT_SOURCES.has(file)) return false;
+  const relativePath = relative(SRC_DIR, file);
+  if (relativePath.startsWith('..')) return false;
+  const [topLevelDir] = relativePath.split(sep);
+  return CONTENT_SOURCE_PREFIXES.includes(topLevelDir);
+}
+
+function collectContentDependencies(entryFile: string): string[] {
+  const visited = new Set<string>([entryFile]);
+  const dependencies = new Set<string>();
+  let frontier = [entryFile];
+
+  for (let depth = 0; depth < MAX_IMPORT_DEPTH && frontier.length > 0; depth += 1) {
+    const next: string[] = [];
+    for (const file of frontier) {
+      for (const imported of getDirectImports(file)) {
+        if (visited.has(imported)) continue;
+        visited.add(imported);
+        if (isContentSource(imported)) dependencies.add(imported);
+        next.push(imported);
+      }
+    }
+    frontier = next;
+  }
+
+  return [...dependencies];
+}
 
 function getPageSourceFile(route: string): string {
   if (route === '/') return join(PAGES_DIR, 'index.astro');
@@ -47,6 +129,15 @@ function escapeXml(value: string): string {
 }
 
 function getGitDate(filePath: string): string | null {
+  const cached = gitDateCache.get(filePath);
+  if (cached !== undefined) return cached;
+
+  const date = readGitDate(filePath);
+  gitDateCache.set(filePath, date);
+  return date;
+}
+
+function readGitDate(filePath: string): string | null {
   try {
     const output = execSync(`git log -1 --format=%cI -- ${JSON.stringify(filePath)}`, {
       stdio: ['ignore', 'pipe', 'ignore'],
@@ -82,14 +173,17 @@ function isShallowClone(): boolean {
 }
 
 function getStaticRouteLastModifiedDate(route: string): string {
-  // Deliberately excludes shared files like seo/config.ts and constants.ts:
-  // including them stamps every route with the latest commit date, which makes
-  // lastmod meaningless to crawlers (Bing ignores sitemaps whose lastmod
-  // changes for all URLs on every deploy).
+  // Derived from the page's own import graph, so a route reacts to edits in the
+  // copy/data modules it actually renders (i18n/copy.ts, data/searchLandingPages.ts,
+  // views/FeaturePages/*) without having to be listed by hand. Shared plumbing
+  // (seo/config.ts, layouts, UI components) deliberately contributes no date —
+  // see CONTENT_SOURCE_PREFIXES.
   const fallbackDate = new Date('2026-03-01T00:00:00.000Z').toISOString();
+  const pageFile = getPageSourceFile(route);
   const files = [
-    getPageSourceFile(route),
-    ...(STATIC_ROUTE_DEPENDENCIES[route] ?? []),
+    pageFile,
+    ...collectContentDependencies(pageFile),
+    ...(EXTRA_ROUTE_DEPENDENCIES[route] ?? []),
   ];
 
   return getLatestDate(...files.map((file) => getLastModifiedDate(file, fallbackDate)));
