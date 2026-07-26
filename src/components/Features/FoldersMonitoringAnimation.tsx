@@ -252,7 +252,8 @@ const FloatingFile = ({ opacity, translateY, oldOpacity, newOpacity }: FloatingF
       >
         <img
           src={sunsetThumb.src}
-          alt=''
+          alt='Sunset photo thumbnail'
+          aria-hidden='true'
           loading='lazy'
           decoding='async'
           style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}

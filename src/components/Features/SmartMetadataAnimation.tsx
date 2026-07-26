@@ -129,7 +129,8 @@ export const SmartMetadataAnimation = () => {
             >
               <img
                 src={glitchThumb.src}
-                alt=''
+                alt='Photo thumbnail'
+                aria-hidden='true'
                 loading='lazy'
                 decoding='async'
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}

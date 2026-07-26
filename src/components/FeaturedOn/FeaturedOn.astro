@@ -126,7 +126,8 @@ const title = titleByLocale[locale] ?? titleByLocale.en!;
             <img
               class={styles.FeaturedOnItem__Logo}
               src={catalog.icon}
-              alt=''
+              alt={`${catalog.name} logo`}
+              aria-hidden='true'
               width='26'
               height='26'
               loading='lazy'

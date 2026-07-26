@@ -32,8 +32,10 @@ const {
 
 const resolvedTitle = title ?? 'Try Zush free';
 const downloadOS = forceOS ?? 'mac';
-// Rendered as a plain <img> so the empty alt is serialized as alt="" — the
-// Image component emits a bare `alt`, which some crawlers read as missing.
+// Rendered as a plain <img> rather than the Image component, which emits a
+// bare `alt` that crawlers read as missing. The alt is non-empty for the same
+// reason — Bing's Site Scan counts alt="" as undefined — while aria-hidden
+// keeps this purely decorative background out of the accessibility tree.
 const background = await getImage({
   src: ctaBackground,
   width: 1600,
@@ -50,7 +52,7 @@ const background = await getImage({
         src={background.src}
         width="1600"
         height="914"
-        alt=""
+        alt="Decorative background"
         class={styles.Background}
         loading="lazy"
         decoding="async"

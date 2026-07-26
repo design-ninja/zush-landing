@@ -210,7 +210,8 @@ const FileShowcase = ({ slides: customSlides }: FileShowcaseProps = {}) => {
                   />
                   <img
                     src={file.img}
-                    alt=""
+                    alt={file.after}
+                    aria-hidden="true"
                     className={styles.FileItem__Image}
                     width={64}
                     height={64}

@@ -73,7 +73,8 @@ function getThemedScreenshot(src: string) {
       >
         <img
           {...props}
-          alt=''
+          alt={alt || showcaseVideo.title}
+          aria-hidden='true'
           class='markdown-video-poster markdown-video-poster--light'
           decoding='async'
           height='720'
@@ -96,7 +97,8 @@ function getThemedScreenshot(src: string) {
       >
         <img
           {...props}
-          alt=''
+          alt={alt || showcaseVideo.title}
+          aria-hidden='true'
           class='markdown-video-poster markdown-video-poster--dark'
           decoding='async'
           height='720'
