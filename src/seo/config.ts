@@ -65,8 +65,21 @@ const DEFAULT_META: RouteSeoMeta = {
   title: 'AI File Renamer & Organizer for Mac and Windows | Zush',
   description:
     `AI file renamer for Mac and Windows. Rename ${SUPPORTED_FORMAT_COUNT} formats by content, including RAW photos, PDFs, video, audio, and design files. Preview and undo every batch.`,
-  robots: 'noindex, nofollow',
+  robots: 'index, follow',
   ogType: 'website',
+};
+
+/**
+ * Explicit meta for routes that must stay out of search. These used to inherit a
+ * `noindex` default, which meant every new page shipped closed until someone
+ * remembered to add a ROUTE_META entry — a silent failure that costs weeks of
+ * indexation. The default now opts pages in, so the pages that need to stay out
+ * have to say so here. Keep the robots string byte-identical: BaseLayout
+ * compares against it to decide whether to emit hreflang alternates.
+ */
+const PRIVATE_META: RouteSeoMeta = {
+  ...DEFAULT_META,
+  robots: 'noindex, nofollow',
 };
 
 const ROUTE_META: Record<string, RouteSeoMeta> = {
@@ -301,11 +314,11 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     robots: 'index, follow',
     ogType: 'website',
   },
-  '/thank-you': DEFAULT_META,
-  '/recover': DEFAULT_META,
-  '/activate': DEFAULT_META,
-  '/manage-subscription': DEFAULT_META,
-  '/manage-subscription/confirm': DEFAULT_META,
+  '/thank-you': PRIVATE_META,
+  '/recover': PRIVATE_META,
+  '/activate': PRIVATE_META,
+  '/manage-subscription': PRIVATE_META,
+  '/manage-subscription/confirm': PRIVATE_META,
 };
 
 const PRIVATE_ROUTES = [
