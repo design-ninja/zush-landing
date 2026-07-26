@@ -93,7 +93,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/batch-rename-files': {
     title: 'Batch & Bulk Rename Files with AI | Rename Tool | Zush',
     description:
-      'Batch rename or bulk rename files with AI. Zush reads screenshots, PDFs, photos, video, audio, documents, and design files, then renames mixed folders by content.',
+      'Batch and bulk rename files with AI. Zush reads screenshots, PDFs, photos, video, audio, and documents, then renames a mixed folder by what each file holds.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -107,7 +107,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/ai-file-organizer': {
     title: 'AI File Organizer for Mac and Windows | Zush',
     description:
-      'AI file organizer for Mac and Windows that creates descriptive, searchable filenames by content. Use templates, folder monitoring, preview, and undo without moving files between folders.',
+      'AI file organizer for Mac and Windows. Zush gives every file a descriptive, searchable name by content, with templates, folder monitoring, preview, and undo.',
     robots: 'index, follow',
     ogType: 'website',
   },

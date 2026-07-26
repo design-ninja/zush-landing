@@ -67,7 +67,7 @@ const PLATFORM_SEO: Partial<Record<Locale, Partial<Record<'/mac' | '/windows', {
     '/mac': {
       title: 'Rinomina file con IA per Mac | Zush',
       description:
-        'Rinomina file per Mac che rinomina in batch in base al contenuto con l’IA: screenshot, PDF, foto, video, audio, design e documenti, con anteprima e annullamento.',
+        'Rinomina file per Mac che rinomina in batch in base al contenuto con l’IA: screenshot, PDF, foto, video, audio, design e documenti, con anteprima.',
     },
     '/windows': {
       title: 'Rinomina file con IA per Windows | Zush',
@@ -113,19 +113,19 @@ const PLATFORM_SEO: Partial<Record<Locale, Partial<Record<'/mac' | '/windows', {
     '/mac': {
       title: 'Mac için Yapay Zekâ Dosya Adlandırıcı | Zush',
       description:
-        'Mac için dosyaları içeriklerine göre yapay zekâyla toplu yeniden adlandırın: ekran görüntüleri, PDF’ler, fotoğraflar, videolar, sesler, tasarım dosyaları ve belgeler.',
+        'Mac için dosyaları içeriklerine göre yapay zekâyla toplu yeniden adlandırın: ekran görüntüleri, PDF’ler, fotoğraflar, videolar, sesler ve belgeler.',
     },
     '/windows': {
       title: 'Windows için Yapay Zekâ Dosya Adlandırıcı | Zush',
       description:
-        'Windows 11 ve 10’da dosyaları yapay zekâyla toplu yeniden adlandırın: ekran görüntüleri, PDF’ler, fotoğraflar, videolar, sesler, tasarım ve Office belgeleri; önizleme ve geri alma dâhil.',
+        'Windows 11 ve 10’da dosyaları yapay zekâyla toplu yeniden adlandırın: ekran görüntüleri, PDF’ler, videolar ve Office belgeleri; önizleme ve geri alma dâhil.',
     },
   },
   ar: {
     '/mac': {
       title: 'إعادة تسمية ملفات Mac بالذكاء الاصطناعي | Zush',
       description:
-        'أداة إعادة تسمية ملفات لنظام Mac تعيد تسمية الملفات بالدفعات حسب المحتوى باستخدام الذكاء الاصطناعي: لقطات الشاشة وPDF والصور والفيديو والصوت والتصميم والمستندات.',
+        'أداة إعادة تسمية ملفات لنظام Mac تعيد تسمية الملفات بالدفعات حسب المحتوى باستخدام الذكاء الاصطناعي: لقطات الشاشة وPDF والصور والفيديو والمستندات.',
     },
     '/windows': {
       title: 'إعادة تسمية ملفات Windows بالذكاء الاصطناعي | Zush',
