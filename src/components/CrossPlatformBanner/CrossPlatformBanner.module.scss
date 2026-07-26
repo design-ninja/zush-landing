@@ -87,7 +87,7 @@
 
   &:hover {
     transform: translateY(-3px);
-    border-color: color-mix(in oklch, var(--primary) 35%, var(--border));
+    @include card-hover-ring(color-mix(in oklch, var(--primary) 35%, var(--border)));
 
     &::after {
       box-shadow: 0 0 0 6px var(--primary-soft);

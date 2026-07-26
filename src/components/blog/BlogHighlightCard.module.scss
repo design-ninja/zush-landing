@@ -23,8 +23,10 @@
 
     &:hover {
       transform: translateY(-0.125rem);
-      border-color: color-mix(in srgb, var(--primary), var(--border) 55%);
-      @include shadow('md');
+      @include card-hover-ring(
+        color-mix(in srgb, var(--primary), var(--border) 55%),
+        $shadow-md
+      );
     }
 
     @media (prefers-reduced-motion: reduce) {

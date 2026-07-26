@@ -61,10 +61,10 @@
   outline: 1px solid var(--border);
   border-radius: 16px;
   overflow: hidden;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, outline-color 0.3s ease;
+  transition: box-shadow 0.3s ease, outline 0.3s ease;
 
   &:hover {
-    border-color: var(--primary-soft);
+    @include card-hover-outline(var(--primary-soft));
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
   }
 
