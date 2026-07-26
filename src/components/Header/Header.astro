@@ -41,6 +41,10 @@ const pricingHref = `${basePath}#pricing`;
 const faqHref = `${basePath}#faq`;
 const homeHref = getLocalizedPath('/', locale);
 const blogHref = '/blog';
+// Blog posts, the archive, tag pages, and the SEO landing pages exist in English
+// only. Offering a language menu there used to dump the visitor on a translated
+// homepage instead of the page they were reading, so it is hidden entirely.
+const showLanguageSwitcher = isLocalizedRoute(route);
 const shouldUseRouteLanguagePaths = isLocalizedRoute(route) && route !== '/404';
 const languagePaths = shouldUseRouteLanguagePaths
   ? getAlternatePaths(route)
@@ -131,7 +135,11 @@ const mobileBuyButtonClass = [
         </svg>
       </button>
 
-      <LanguageSwitcher locale={locale} paths={languagePaths} label={copy.language} />
+      {
+        showLanguageSwitcher && (
+          <LanguageSwitcher locale={locale} paths={languagePaths} label={copy.language} />
+        )
+      }
 
       <div class={styles.Header__Buttons}>
         {!hideDownload && (
