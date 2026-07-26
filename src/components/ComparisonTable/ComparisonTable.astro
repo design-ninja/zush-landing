@@ -1,0 +1,45 @@
+---
+import Heading from '@/components/Heading';
+import type { ComparisonTableProps } from './types';
+import styles from './ComparisonTable.module.scss';
+
+const { eyebrow, title, intro, headers, rows } = Astro.props as ComparisonTableProps;
+
+const head = {
+  tool: headers?.tool ?? 'Tool',
+  bestFor: headers?.bestFor ?? 'Best for',
+  gap: headers?.gap ?? 'Where it stops',
+};
+---
+
+<section class={styles.Comparison}>
+  <div class={styles.Comparison__Container}>
+    <div class={styles.Comparison__Header}>
+      {eyebrow && <p class={styles.Comparison__Eyebrow}>{eyebrow}</p>}
+      <Heading as='h2' align='center'>{title}</Heading>
+      {intro && <p class={styles.Comparison__Intro}>{intro}</p>}
+    </div>
+
+    <div class={styles.Comparison__Scroll}>
+      <table class={styles.Comparison__Table}>
+        <caption class={styles.Comparison__Caption}>{title}</caption>
+        <thead>
+          <tr>
+            <th scope='col'>{head.tool}</th>
+            <th scope='col'>{head.bestFor}</th>
+            <th scope='col'>{head.gap}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr>
+              <th scope='row'>{row.tool}</th>
+              <td>{row.bestFor}</td>
+              <td>{row.gap}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

@@ -1,5 +1,6 @@
 ---
 import Breadcrumbs from '@/components/Breadcrumbs';
+import ComparisonTable from '@/components/ComparisonTable/ComparisonTable.astro';
 import PillLink from '@/components/PillLink';
 import Features from '@/components/Features/Features.astro';
 import Heading from '@/components/Heading';
@@ -41,6 +42,8 @@ const {
   relatedBlogPosts,
   relatedPages,
   contextualGuideLink,
+  comparison,
+  forceOS,
   category = 'general',
 } = Astro.props as FeatureLandingPageProps & LocalizedProps;
 
@@ -69,6 +72,7 @@ const relatedPageTitle = (href: string, fallback: string) =>
 <article class={styles.Page}>
   <Hero
     as='header'
+    forceOS={forceOS}
     title={pageCopy?.h1 ?? h1}
     titleAccent={pageCopy?.accent ?? h1Accent}
     subtitle={pageCopy?.definitionText ?? definitionText}
@@ -95,6 +99,7 @@ const relatedPageTitle = (href: string, fallback: string) =>
     audioLabel={currentCopy.home.audioLabel}
   />
   <DownloadCTA
+    forceOS={forceOS}
     title={currentCopy.home.downloadTitle}
     subtitle={currentCopy.home.downloadSubtitle}
     hintPrefix={currentCopy.home.downloadHintPrefix}
@@ -102,6 +107,10 @@ const relatedPageTitle = (href: string, fallback: string) =>
     downloadMenu={currentCopy.downloadMenu}
   />
   <CrossPlatformBanner locale={currentLocale} />
+
+  {currentLocale === DEFAULT_LOCALE && comparison && (
+    <ComparisonTable {...comparison} />
+  )}
 
   {shouldRenderPdfDeepDive && (
     <>

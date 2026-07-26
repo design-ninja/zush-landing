@@ -1,4 +1,5 @@
 import type { FeatureLandingPageProps } from '@/components/FeatureLandingPage';
+import { APP_CONFIG, SUPPORTED_FORMAT_COUNT } from '@/constants';
 import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 
 type SearchLandingSlug =
@@ -339,9 +340,38 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     category: 'general',
     definitionTitle: 'What Does Automating the Downloads Folder Mean?',
     definitionText:
-      'An automated Downloads folder gives every new file a clear, searchable name the moment it lands. Zush watches Downloads on Mac and Windows and renames new files in place by reading their content — invoices, receipts, screenshots, exports, and documents — using the template you choose, with every change kept in undo history. Instead of a graveyard of download (7).pdf and Screenshot 2026 files, you get filenames you can actually search.',
+      'Zush watches your Downloads folder on Mac and Windows and renames each new file by its content, so download (7).pdf lands as something you can search for.',
     showcaseSlides: downloadsFolderSlides,
     faqItems: downloadsFolderFaq,
+    comparison: {
+      eyebrow: 'Downloads folder cleanup compared',
+      title: 'What each Downloads folder fix actually solves',
+      intro:
+        `Most Downloads advice solves storage or sorting, not findability. A file you can search for needs a name that says what it is. Zush reads ${SUPPORTED_FORMAT_COUNT} formats and names each new file as it lands, in 60+ languages, with the first ${APP_CONFIG.free_tier_limit} renames free.`,
+      headers: { tool: 'Approach', bestFor: 'Best for', gap: 'Where it stops' },
+      rows: [
+        {
+          tool: 'Storage Sense',
+          bestFor: 'Reclaiming disk space by deleting Downloads files that have sat unopened past a cutoff you set',
+          gap: 'It decides what to remove, never what anything is called — the files you keep are still named download (7).pdf.',
+        },
+        {
+          tool: 'Sorting by file type',
+          bestFor: 'Splitting a flat folder into Documents, Images, and Installers so it stops looking like a dump',
+          gap: 'Moves the problem one level down: a folder of forty PDFs named scan_0042.pdf is no easier to search than a mixed folder was.',
+        },
+        {
+          tool: 'Manual triage',
+          bestFor: 'Small volumes, and the only approach that gets names exactly right every time',
+          gap: 'It competes with everything else you do, so it holds for about a week and the backlog quietly returns.',
+        },
+        {
+          tool: 'Zush folder monitoring',
+          bestFor: 'Naming every new file by what it contains, the moment it lands, with undo history for the whole folder',
+          gap: 'It names files in place rather than filing them away, so you still choose the folder structure you want.',
+        },
+      ],
+    },
     relatedPages: [
       { title: 'Folder Monitoring Docs', href: '/docs/folder-monitoring' },
       { title: 'AI File Organizer', href: '/ai-file-organizer' },
@@ -539,6 +569,10 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     h1: 'The Hazel Alternative That Reads Your Files',
     h1Accent: 'Hazel Alternative',
     category: 'general',
+    // Hazel is macOS-only. This page happened to render Mac buttons because the
+    // detection default is Mac; state it so a change to that default cannot
+    // silently break it.
+    forceOS: 'mac',
     definitionTitle: 'Zush vs Hazel: Rules vs Content',
     definitionText:
       'Hazel is a rule engine for macOS: it watches folders and acts on files based on conditions you write, such as name patterns, dates, or kind. Zush works the other way around — it reads what each file actually contains and suggests a descriptive, searchable name. Zush also monitors folders so new files are named as they arrive, keeps every batch in undo history, and runs on both Mac and Windows, while Hazel is macOS-only. Rules ask where a file came from; AI asks what is inside it.',
@@ -588,11 +622,45 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     h1: 'The PowerRename Alternative That Understands Your Files',
     h1Accent: 'PowerRename Alternative',
     category: 'general',
+    // PowerRename only exists in Windows PowerToys, so a Mac download button
+    // here is wrong for every visitor and for anything reading the static HTML.
+    forceOS: 'windows',
     definitionTitle: 'Zush vs PowerRename: Find-and-Replace vs Content',
+    // The full PowerRename-vs-Zush breakdown lives in the comparison table
+    // below the fold, so the hero only has to state the split.
     definitionText:
-      'PowerRename, part of Microsoft PowerToys, rewrites filenames with search-and-replace and regular expressions — it never looks inside a file. Zush reads the content of each file on Windows and suggests a descriptive, searchable name based on what it contains, then lets you review every name before applying. Use PowerRename for uniform mechanical changes; use Zush when each file needs a different, meaningful name.',
+      'PowerRename, part of Microsoft PowerToys, rewrites filenames by pattern. Zush reads inside each Windows file and gives it a searchable name.',
     showcaseSlides: sharedSlides,
     faqItems: powerRenameAlternativeFaq,
+    comparison: {
+      eyebrow: 'Windows rename tools compared',
+      title: 'Where each Windows rename tool stops',
+      intro:
+        `Every tool below is good at something. The split is simple: pattern tools rewrite the name you already have, while Zush reads the file and writes a new one. Zush covers ${SUPPORTED_FORMAT_COUNT} formats across images, documents, video, audio, and design files, names them in 60+ languages, and the first ${APP_CONFIG.free_tier_limit} renames are free.`,
+      headers: { tool: 'Tool', bestFor: 'Best for', gap: 'Where it stops' },
+      rows: [
+        {
+          tool: 'PowerRename (PowerToys)',
+          bestFor: 'Find-and-replace, regular expressions, counters, and date variables applied to a whole selection at once',
+          gap: 'It works from filenames and file attributes and never opens the file, so two scans that both arrived as scan_004.pdf come out just as indistinguishable as they went in.',
+        },
+        {
+          tool: 'File Explorer rename (F2)',
+          bestFor: 'Numbering a single folder of similar files in a few keystrokes',
+          gap: 'Produces Photo (1), Photo (2), Photo (3) — enough to keep names unique, never enough to find one of them again.',
+        },
+        {
+          tool: 'Rule-based renamers',
+          bestFor: 'Multi-step rules you configure once and reuse on folders that always look the same',
+          gap: 'The rule has to be written before the tool sees the files, so a mixed folder still needs you to sort it into predictable batches first.',
+        },
+        {
+          tool: 'Zush',
+          bestFor: 'Mixed folders where every file needs its own descriptive name, with a preview of each name and undo for the whole batch',
+          gap: 'It reads the file to name it, so it runs as a desktop app on the folder rather than as a one-key shortcut on a selection.',
+        },
+      ],
+    },
     relatedPages: [
       { title: 'Batch Rename Files with AI', href: '/batch-rename-files' },
       { title: 'AI File Organizer', href: '/ai-file-organizer' },
@@ -637,7 +705,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     category: 'pdf',
     definitionTitle: 'What Is AI Invoice Renaming?',
     definitionText:
-      'AI invoice renaming reads each invoice and turns a filename like "download (7).pdf" into "Cloudflare – 2026-06 – Invoice". Zush reads the vendor, date, and invoice number from invoice PDFs, plus any field you define with a Custom AI Block such as the amount, then applies your naming convention across the whole batch. Scanned invoices are read with AI vision, folder monitoring names new invoices as they arrive, and every change is reversible from rename history.',
+      'AI invoice renaming reads each invoice PDF and turns "download (7).pdf" into "Cloudflare – 2026-06 – Invoice", using the vendor, date, and number it finds inside.',
     showcaseSlides: invoiceSlides,
     faqItems: invoiceRenameFaq,
     relatedPages: [
@@ -687,7 +755,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     category: 'pdf',
     definitionTitle: 'What Is AI Receipt Renaming?',
     definitionText:
-      'AI receipt renaming turns a phone photo named IMG_2041.jpg or a PDF into a searchable filename like "Whole Foods – 2026-06-03 Receipt". Zush reads receipts whether they are HEIC and JPG photos or PDF and email exports, pulls the store, date, and amount, and can add a Custom AI Block for a tax or expense category. You review every name before applying, and undo history keeps a batch reversible — ideal for tax season and expense reports on Mac and Windows.',
+      'AI receipt renaming turns IMG_2041.jpg into "Whole Foods – 2026-06-03 Receipt", pulling the store, date, and amount from receipt photos and PDFs.',
     showcaseSlides: receiptSlides,
     faqItems: receiptRenameFaq,
     relatedPages: [

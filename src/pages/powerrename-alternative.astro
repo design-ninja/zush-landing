@@ -9,6 +9,6 @@ const seo = getSeoForPath('/powerrename-alternative');
 const page = SEARCH_LANDING_PAGES['powerrename-alternative'];
 ---
 
-<BaseLayout seo={seo} jsonLd={[page.jsonLd, buildFeatureBreadcrumbJsonLd(page.h1, '/powerrename-alternative')]}>
+<BaseLayout seo={seo} forceOS={page.forceOS} jsonLd={[page.jsonLd, buildFeatureBreadcrumbJsonLd(page.h1, '/powerrename-alternative')]}>
   <FeatureLandingPageShell {...page} />
 </BaseLayout>

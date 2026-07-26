@@ -8,6 +8,7 @@ import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
 import FAQ from '@/components/FAQ';
 import Testimonials from '@/components/Testimonials/Testimonials.astro';
 import PlatformGuides from '@/components/PlatformGuides/PlatformGuides.astro';
+import ComparisonTable from '@/components/ComparisonTable/ComparisonTable.astro';
 import PlatformSpecifics from '@/components/PlatformSpecifics/PlatformSpecifics.astro';
 import WindowsSeoSection from '@/components/WindowsSeoSection/WindowsSeoSection.astro';
 import MacSeoSection from '@/components/MacSeoSection/MacSeoSection.astro';
@@ -15,6 +16,7 @@ import styles from '@/components/PlatformLandingPage/PlatformLandingPage.module.
 import { PLATFORM_LANDING_CONTENT } from '@/data/platformLanding';
 import { getPlatformLandingSections } from '@/data/platformLandingSections';
 import { PLATFORM_SPECIFICS_CONTENT } from '@/data/platformSpecifics';
+import { WINDOWS_COMPARISON } from '@/data/windowsComparison';
 import {
   HOME_HERO_BATCH_RENAME_VIDEO,
   WINDOWS_HERO_BATCH_RENAME_VIDEO,
@@ -370,6 +372,7 @@ const jsonLdItems = [
   <Testimonials locale={locale} />
   {platform === 'mac' && locale === DEFAULT_LOCALE && <MacSeoSection />}
   {platform === 'windows' && locale === DEFAULT_LOCALE && <WindowsSeoSection />}
+  {platform === 'windows' && locale === DEFAULT_LOCALE && <ComparisonTable {...WINDOWS_COMPARISON} />}
   <PlatformSpecifics platform={platform} locale={locale} variant="compact" scenarioLimit={4} />
   <SupportedFormats
     title={copy.home.supportedFormats}

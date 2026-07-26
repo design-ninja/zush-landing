@@ -1,5 +1,7 @@
+import type { ComparisonTableProps } from '@/components/ComparisonTable/types';
 import type { Slide } from '@/components/FileShowcase';
 import type { FeatureCategory } from '@/data/featureContent';
+import type { DownloadOS } from '@/utils/download';
 
 interface FAQItem {
   question: string;
@@ -28,6 +30,14 @@ export interface FeatureLandingPageProps {
   relatedBlogPosts: RelatedLink[];
   relatedPages: RelatedLink[];
   contextualGuideLink?: ContextualGuideLink;
+  comparison?: ComparisonTableProps;
+  /**
+   * Pin the download UI to one OS. Without it the buttons fall back to runtime
+   * detection, which server-renders as Mac — wrong in the static HTML that
+   * crawlers and AI extractors read, on pages whose whole subject is one
+   * platform. Set it only where the topic itself implies the OS.
+   */
+  forceOS?: DownloadOS;
   jsonLd: object;
   category?: FeatureCategory;
 }

@@ -295,3 +295,51 @@
     padding: 4rem 2rem;
     color: var(--muted-foreground);
 }
+
+// Table styling shared by MDX blog tables and the comparison tables on landing
+// pages. Comparison tables are the same object wherever they appear, so they
+// should not drift into two lookalike stylesheets.
+@mixin content-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+}
+
+@mixin content-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+
+    th,
+    td {
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid var(--border);
+        text-align: left;
+        line-height: 1.5;
+        color: var(--muted-foreground);
+    }
+
+    thead th {
+        font-weight: 600;
+        font-size: 0.8125rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--muted-foreground);
+        background: var(--muted);
+    }
+
+    // Markdown tables put a td in the first column; a comparison table uses a
+    // row header there. Both read as the row label, so both get the emphasis.
+    tbody tr > :is(th, td):first-child {
+        color: var(--foreground);
+        font-weight: 500;
+    }
+
+    tbody tr:last-child > :is(th, td) {
+        border-bottom: none;
+    }
+
+    tbody tr:hover {
+        background: var(--muted);
+    }
+}
