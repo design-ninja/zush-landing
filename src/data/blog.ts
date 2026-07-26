@@ -45,6 +45,24 @@ export interface BlogPostDetails {
   faq: FAQItem[];
 }
 
+/**
+ * One post as the client-side blog search sees it. `body` is the full article as
+ * plain text, so the search covers what a post actually says, not just its title
+ * and frontmatter.
+ */
+export interface BlogSearchDoc {
+  slug: string;
+  title: string;
+  description: string;
+  tldr: string;
+  tags: string[];
+  platform: BlogPlatform;
+  topic: BlogTopic;
+  date: string;
+  readingTime: number;
+  body: string;
+}
+
 export interface BlogSection {
   platform: BlogPlatform;
   title: string;
@@ -78,6 +96,32 @@ function sanitizeBody(body: string): string {
   return body
     .replace(/^import\s.+$/gm, '')
     .replace(/^export\s.+$/gm, '')
+    .trim();
+}
+
+/**
+ * Turn MDX into searchable prose: drop code blocks, JSX tags, and markdown
+ * punctuation, but keep the text inside inline components such as
+ * `<BlogHighlight>` — that is where a lot of the comparison copy lives.
+ */
+function toSearchText(body: string): string {
+  return body
+    .replace(/^import\s.+$/gm, '')
+    .replace(/^export\s.+$/gm, '')
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/<\/?[A-Za-z][^>]*>/g, ' ')
+    .replace(/\{[^{}]*\}/g, ' ')
+    .replace(/^\s{0,3}[-*+]\s+/gm, ' ')
+    .replace(/^\s{0,3}#{1,6}\s+/gm, ' ')
+    .replace(/^\s{0,3}>\s?/gm, ' ')
+    // Emphasis and code markers sit tight against the words they wrap, so they
+    // are dropped rather than replaced with a space.
+    .replace(/[*`~]+/g, '')
+    .replace(/\|/g, ' ')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/\s+/g, ' ')
     .trim();
 }
 
@@ -347,6 +391,27 @@ export async function getRelatedPosts(slug: string, limit = 3): Promise<BlogPost
   }
 
   return selected.slice(0, limit);
+}
+
+export async function getBlogSearchIndex(): Promise<BlogSearchDoc[]> {
+  const entries = await getSortedEntries();
+
+  return entries.map((entry) => {
+    const post = toBlogPost(entry);
+
+    return {
+      slug: post.slug,
+      title: post.title,
+      description: post.description,
+      tldr: post.tldr,
+      tags: post.tags,
+      platform: post.platform,
+      topic: post.topic,
+      date: post.date,
+      readingTime: post.readingTime,
+      body: toSearchText(entry.body),
+    };
+  });
 }
 
 export async function getRecentBlogPosts(limit = 6): Promise<BlogPost[]> {

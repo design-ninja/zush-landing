@@ -1,0 +1,475 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlogBreadcrumbs from '@/components/blog/BlogBreadcrumbs.astro';
+import { ArrowLeft, Search, X } from 'lucide-react';
+import { getAllTags } from '@/data/blog';
+import type { SeoMeta } from '@/seo/config';
+import headingStyles from '@/components/Heading/Heading.module.scss';
+import textStyles from '@/components/Text/Text.module.scss';
+import styles from '@/views/Blog/BlogSearch.module.scss';
+
+const tags = (await getAllTags()).slice(0, 10);
+
+// Search result URLs are thin and endlessly variable, so they stay out of the
+// index. `follow` keeps the links on the page crawlable if a bot does land here.
+const seo: SeoMeta = {
+  title: 'Search the Zush Blog',
+  description:
+    'Search every Zush blog post by title, topic, or anything written inside the article — AI file renaming guides, comparisons, and Mac and Windows workflows.',
+  canonicalPath: '/blog/search',
+  robots: 'noindex, follow',
+  ogType: 'website',
+};
+const breadcrumbItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Search' },
+];
+---
+
+<BaseLayout seo={seo}>
+  <BlogBreadcrumbs items={breadcrumbItems} />
+
+  <section class={styles.BlogSearch}>
+    <div class={styles.BlogSearch__Container}>
+      <h1
+        class={[headingStyles.Heading, headingStyles.Heading_h1, styles.BlogSearch__Title].join(' ')}
+      >
+        Search Results
+      </h1>
+      <p
+        class={[
+          textStyles.Text,
+          textStyles.Text_lg,
+          textStyles.Text_subtle,
+          styles.BlogSearch__Intro,
+        ].join(' ')}
+      >
+        Find what you are looking for across the whole blog.
+      </p>
+
+      <form
+        action='/blog/search'
+        class={styles.BlogSearch__Form}
+        data-blog-search-form
+        method='get'
+        role='search'
+      >
+        <div class={styles.BlogSearch__Field}>
+          <span class={styles.BlogSearch__FieldIcon} aria-hidden='true'>
+            <Search size={18} strokeWidth={2.2} />
+          </span>
+          <input
+            aria-label='Search the Zush blog'
+            autocomplete='off'
+            class={styles.BlogSearch__Input}
+            data-blog-search-input
+            id='blog-search'
+            name='q'
+            placeholder='Search for anything, e.g. "ollama", "raw photos", "invoice"'
+            spellcheck='false'
+            type='search'
+          />
+          <button
+            aria-label='Clear search'
+            class={styles.BlogSearch__Clear}
+            data-blog-search-clear
+            hidden
+            type='button'
+          >
+            <X aria-hidden='true' size={16} strokeWidth={2.4} />
+          </button>
+        </div>
+        <button class={styles.BlogSearch__Submit} type='submit'>Search</button>
+      </form>
+
+      <p
+        class={[textStyles.Text, textStyles.Text_md, styles.BlogSearch__Status].join(' ')}
+        aria-live='polite'
+        data-blog-search-status
+      >
+        Type a keyword and press Enter, or pick a topic below.
+      </p>
+
+      <div class={styles.BlogSearch__Results} data-blog-search-results hidden></div>
+
+      <div class={styles.BlogSearch__Fallback} data-blog-search-fallback>
+        <h2
+          class={[
+            headingStyles.Heading,
+            headingStyles.Heading_h4,
+            styles.BlogSearch__FallbackTitle,
+          ].join(' ')}
+        >
+          Popular topics
+        </h2>
+        <div class={styles.BlogSearch__Chips}>
+          {
+            tags.map((tag) => (
+              <a class={styles.BlogSearch__Chip} href={`/blog/tags/${tag.slug}`}>
+                {tag.label}
+              </a>
+            ))
+          }
+        </div>
+        <div class={styles.BlogSearch__Links}>
+          <a class={[styles.BlogSearch__Link, styles.BlogSearch__LinkBack].join(' ')} href='/blog'>
+            <ArrowLeft aria-hidden='true' size={16} strokeWidth={2.2} />
+            <span>Back to Blog</span>
+          </a>
+          <a class={styles.BlogSearch__Link} href='/blog/archive'>Browse the full archive</a>
+          <a class={styles.BlogSearch__Link} href='/blog/tags'>All tags</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    interface SearchDoc {
+      slug: string;
+      title: string;
+      description: string;
+      tldr: string;
+      tags: string[];
+      platform: 'general' | 'mac' | 'windows';
+      topic: string;
+      date: string;
+      readingTime: number;
+      body: string;
+    }
+
+    interface PreparedDoc extends SearchDoc {
+      titleLower: string;
+      metaLower: string;
+      tagsLower: string;
+      bodyLower: string;
+      hayLower: string;
+      timestamp: number;
+    }
+
+    const PLATFORM_LABELS: Record<SearchDoc['platform'], string> = {
+      general: 'General',
+      mac: 'Mac',
+      windows: 'Windows',
+    };
+    const SNIPPET_BEFORE = 90;
+    const SNIPPET_LENGTH = 260;
+    const MAX_RESULTS = 40;
+
+    const form = document.querySelector<HTMLFormElement>('[data-blog-search-form]');
+    const input = document.querySelector<HTMLInputElement>('[data-blog-search-input]');
+    const status = document.querySelector<HTMLElement>('[data-blog-search-status]');
+    const results = document.querySelector<HTMLElement>('[data-blog-search-results]');
+    const fallback = document.querySelector<HTMLElement>('[data-blog-search-fallback]');
+    const clearButton = document.querySelector<HTMLButtonElement>('[data-blog-search-clear]');
+
+    let docsPromise: Promise<PreparedDoc[]> | null = null;
+
+    function prepare(doc: SearchDoc): PreparedDoc {
+      const tagsLower = doc.tags.join(' ').toLowerCase();
+      const metaLower = `${doc.description} ${doc.tldr}`.toLowerCase();
+      const titleLower = doc.title.toLowerCase();
+      const bodyLower = doc.body.toLowerCase();
+
+      return {
+        ...doc,
+        titleLower,
+        metaLower,
+        tagsLower,
+        bodyLower,
+        hayLower: `${titleLower} ${metaLower} ${tagsLower} ${doc.platform} ${doc.topic} ${bodyLower}`,
+        timestamp: new Date(`${doc.date}T00:00:00Z`).getTime(),
+      };
+    }
+
+    function loadDocs(): Promise<PreparedDoc[]> {
+      if (!docsPromise) {
+        docsPromise = fetch('/blog/search-index.json')
+          .then((response) => {
+            if (!response.ok) throw new Error(`Search index failed: ${response.status}`);
+            return response.json();
+          })
+          .then((data: { posts: SearchDoc[] }) => data.posts.map(prepare))
+          .catch((error) => {
+            docsPromise = null;
+            throw error;
+          });
+      }
+
+      return docsPromise;
+    }
+
+    function escapeRegExp(value: string): string {
+      return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    function countOccurrences(haystack: string, needle: string): number {
+      let count = 0;
+      let index = haystack.indexOf(needle);
+
+      while (index !== -1 && count < 10) {
+        count += 1;
+        index = haystack.indexOf(needle, index + needle.length);
+      }
+
+      return count;
+    }
+
+    function scoreDoc(doc: PreparedDoc, terms: string[], phrase: string): number {
+      let score = 0;
+
+      for (const term of terms) {
+        // Every term has to appear somewhere, so results narrow as you type more.
+        if (!doc.hayLower.includes(term)) return 0;
+
+        if (doc.titleLower.includes(term)) score += 12;
+        if (doc.tagsLower.includes(term)) score += 6;
+        if (doc.metaLower.includes(term)) score += 4;
+        score += countOccurrences(doc.bodyLower, term);
+      }
+
+      if (phrase.length > 2 && terms.length > 1) {
+        if (doc.titleLower.includes(phrase)) score += 30;
+        else if (doc.bodyLower.includes(phrase)) score += 10;
+      }
+
+      return score;
+    }
+
+    function buildSnippet(doc: PreparedDoc, terms: string[]): string {
+      let firstIndex = -1;
+
+      for (const term of terms) {
+        const index = doc.bodyLower.indexOf(term);
+        if (index !== -1 && (firstIndex === -1 || index < firstIndex)) {
+          firstIndex = index;
+        }
+      }
+
+      if (firstIndex === -1) {
+        return doc.description;
+      }
+
+      let start = Math.max(0, firstIndex - SNIPPET_BEFORE);
+      if (start > 0) {
+        const space = doc.body.indexOf(' ', start);
+        if (space !== -1 && space - start < 30) start = space + 1;
+      }
+
+      let end = Math.min(doc.body.length, start + SNIPPET_LENGTH);
+      if (end < doc.body.length) {
+        // Never cut mid-word.
+        const space = doc.body.lastIndexOf(' ', end);
+        if (space > start + SNIPPET_LENGTH / 2) end = space;
+      }
+
+      const raw = doc.body.slice(start, end).trim();
+
+      return `${start > 0 ? '…' : ''}${raw}${end < doc.body.length ? '…' : ''}`;
+    }
+
+    function appendHighlighted(target: HTMLElement, text: string, terms: string[]): void {
+      if (terms.length === 0) {
+        target.append(text);
+        return;
+      }
+
+      const pattern = new RegExp(`(${terms.map(escapeRegExp).join('|')})`, 'gi');
+      const parts = text.split(pattern);
+
+      parts.forEach((part, index) => {
+        if (!part) return;
+
+        // `split` with a capture group puts the matched terms at the odd indexes.
+        if (index % 2 === 1) {
+          const mark = document.createElement('mark');
+          mark.textContent = part;
+          target.append(mark);
+          return;
+        }
+
+        target.append(part);
+      });
+    }
+
+    function formatDate(date: string): string {
+      try {
+        return new Date(`${date}T00:00:00Z`).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          timeZone: 'UTC',
+        });
+      } catch {
+        return date;
+      }
+    }
+
+    function renderResult(doc: PreparedDoc, terms: string[]): HTMLElement {
+      // The whole card is the link, so there is no nested anchor inside it.
+      const item = document.createElement('a');
+      item.className = 'blog-search-result';
+      item.href = `/blog/${doc.slug}`;
+
+      const title = document.createElement('h2');
+      title.className = 'blog-search-result-title';
+      appendHighlighted(title, doc.title, terms);
+
+      const snippet = document.createElement('p');
+      snippet.className = 'blog-search-result-snippet';
+      appendHighlighted(snippet, buildSnippet(doc, terms), terms);
+
+      const meta = document.createElement('div');
+      meta.className = 'blog-search-result-meta';
+
+      const track = document.createElement('span');
+      track.className = `blog-search-result-track blog-search-result-track-${doc.platform}`;
+      track.textContent = PLATFORM_LABELS[doc.platform] ?? doc.platform;
+      meta.append(track);
+
+      const date = document.createElement('span');
+      date.textContent = formatDate(doc.date);
+      meta.append(date);
+
+      const reading = document.createElement('span');
+      reading.textContent = `${doc.readingTime} min read`;
+      meta.append(reading);
+
+      item.append(title, snippet, meta);
+
+      return item;
+    }
+
+    function syncClearButton(): void {
+      if (clearButton) clearButton.hidden = (input?.value.length ?? 0) === 0;
+    }
+
+    function setStatusText(text: string): void {
+      if (!status) return;
+      status.textContent = text;
+      status.hidden = text.length === 0;
+    }
+
+    function trackSearch(query: string, matches: number): void {
+      const posthog = (window as unknown as { posthog?: { capture?: (event: string, props?: Record<string, unknown>) => void } }).posthog;
+      posthog?.capture?.('blog_search', { query, results: matches });
+    }
+
+    function showIdleState(): void {
+      if (results) {
+        results.replaceChildren();
+        results.hidden = true;
+      }
+      if (fallback) fallback.hidden = false;
+      setStatusText('Type a keyword and press Enter, or pick a topic below.');
+      document.title = 'Search the Zush Blog';
+    }
+
+    function render(query: string, docs: PreparedDoc[]): number {
+      const phrase = query.toLowerCase();
+      const terms = [...new Set(phrase.split(/\s+/).filter((term) => term.length > 1))];
+
+      if (terms.length === 0) {
+        showIdleState();
+        return 0;
+      }
+
+      const ranked = docs
+        .map((doc) => ({ doc, score: scoreDoc(doc, terms, phrase) }))
+        .filter((entry) => entry.score > 0)
+        .sort((a, b) => b.score - a.score || b.doc.timestamp - a.doc.timestamp);
+      const shown = ranked.slice(0, MAX_RESULTS);
+
+      if (results) {
+        results.replaceChildren(...shown.map((entry) => renderResult(entry.doc, terms)));
+        results.hidden = shown.length === 0;
+      }
+
+      if (fallback) fallback.hidden = shown.length > 0;
+
+      if (ranked.length === 0) {
+        setStatusText(`No posts match “${query}”. Try a shorter query, or browse the topics below.`);
+      } else if (ranked.length > shown.length) {
+        setStatusText(`Top ${shown.length} of ${ranked.length} posts for “${query}”`);
+      } else {
+        setStatusText(`${ranked.length} ${ranked.length === 1 ? 'post' : 'posts'} for “${query}”`);
+      }
+
+      document.title = `“${query}” — Zush Blog search`;
+
+      return ranked.length;
+    }
+
+    function runSearch(query: string): void {
+      const trimmed = query.trim();
+
+      if (input) input.value = trimmed;
+      syncClearButton();
+
+      if (trimmed.length === 0) {
+        showIdleState();
+        return;
+      }
+
+      setStatusText('Searching…');
+
+      loadDocs()
+        .then((docs) => {
+          // A newer query may have started while the index was loading.
+          const current = new URLSearchParams(window.location.search).get('q')?.trim() ?? '';
+          if (current !== trimmed) return;
+
+          trackSearch(trimmed, render(trimmed, docs));
+        })
+        .catch(() => {
+          setStatusText('Search is unavailable right now. Browse the archive or tags below.');
+          if (fallback) fallback.hidden = false;
+        });
+    }
+
+    function queryFromLocation(): string {
+      return new URLSearchParams(window.location.search).get('q')?.trim() ?? '';
+    }
+
+    form?.addEventListener('submit', (event) => {
+      if (!input) return;
+
+      event.preventDefault();
+
+      const query = input.value.trim();
+      const nextUrl = query
+        ? `${window.location.pathname}?q=${encodeURIComponent(query)}`
+        : window.location.pathname;
+
+      if (nextUrl !== `${window.location.pathname}${window.location.search}`) {
+        window.history.pushState({}, '', nextUrl);
+      }
+
+      runSearch(query);
+    });
+
+    input?.addEventListener('input', syncClearButton);
+
+    clearButton?.addEventListener('click', () => {
+      if (input) input.value = '';
+      window.history.pushState({}, '', window.location.pathname);
+      runSearch('');
+      input?.focus();
+    });
+
+    window.addEventListener('popstate', () => {
+      runSearch(queryFromLocation());
+    });
+
+    const initialQuery = queryFromLocation();
+
+    if (initialQuery) {
+      runSearch(initialQuery);
+    } else {
+      input?.focus();
+      // Warm the index while the visitor is typing their first query.
+      loadDocs().catch(() => {});
+    }
+  </script>
+
+</BaseLayout>

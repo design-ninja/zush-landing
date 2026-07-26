@@ -58,19 +58,73 @@
   }
 
   &__Search {
+    display: flex;
+    gap: 0.75rem;
+    align-items: stretch;
     width: 100%;
     margin: 0 0 2rem;
+
+    @include mobile {
+      flex-direction: column;
+    }
+  }
+
+  &__SearchField {
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  &__SearchIcon {
+    position: absolute;
+    left: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    color: var(--muted-foreground);
+    pointer-events: none;
   }
 
   &__SearchInput {
     @include form-input;
 
     width: 100%;
+    padding-left: 3rem;
     background: color-mix(in srgb, var(--muted) 72%, var(--background));
+
+    // Chrome's own clear button ships a blue gradient that ignores the theme.
+    &::-webkit-search-cancel-button {
+      appearance: none;
+      display: none;
+    }
   }
 
-  &__SearchStatus {
-    display: none;
+  &__SearchSubmit {
+    padding: 0 1.75rem;
+    border: 1px solid transparent;
+    border-radius: $radius-full;
+    background: var(--primary);
+    color: var(--primary-foreground);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+      background $transition-fast,
+      transform $transition-fast;
+
+    &:hover {
+      background: var(--primary-hover);
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+
+    @include mobile {
+      padding: 0.9rem 1.75rem;
+    }
   }
 
   &__Sections {
@@ -112,10 +166,11 @@
     color: inherit;
     transition:
       border-color $transition-fast,
+      box-shadow $transition-fast,
       transform $transition-fast;
 
     &:hover {
-      border-color: var(--primary);
+      @include card-hover-ring;
       transform: translateY(-1px);
     }
   }
@@ -152,17 +207,6 @@
 
     @include mobile {
       padding: 1.5rem 0;
-    }
-  }
-
-  &__SearchResults {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding-bottom: 3rem;
-    border-bottom: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
-
-    &[hidden] {
-      display: none;
     }
   }
 
@@ -225,13 +269,6 @@
     }
   }
 
-  &__SectionActionButton {
-    padding: 0;
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-  }
-
   &__SectionPosts {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -253,9 +290,11 @@
       box-shadow $transition-fast;
 
     &:hover {
-      border-color: color-mix(in srgb, var(--primary) 30%, var(--border));
+      @include card-hover-ring(
+        color-mix(in srgb, var(--primary) 30%, var(--border)),
+        0 18px 48px rgba(15, 23, 42, 0.08)
+      );
       transform: translateY(-2px);
-      box-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
     }
   }
 
@@ -385,10 +424,11 @@
     text-decoration: none;
     transition:
       border-color $transition-fast,
+      box-shadow $transition-fast,
       transform $transition-fast;
 
     &:hover {
-      border-color: var(--primary);
+      @include card-hover-ring;
       transform: translateY(-1px);
     }
   }

@@ -83,6 +83,15 @@ const WEBSITE_JSON_LD = {
   alternateName: 'Zush AI File Renamer',
   publishingPrinciples: `${SITE_ORIGIN}/methodology`,
   publisher: ORGANIZATION_REF,
+  // The only site-wide search surface is the blog search page.
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${SITE_ORIGIN}/blog/search?q={search_term_string}`,
+    },
+    'query-input': 'required name=search_term_string',
+  },
 };
 
 /**

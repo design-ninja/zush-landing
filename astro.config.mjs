@@ -21,6 +21,7 @@ const SITEMAP_EXCLUDED_PATHS = new Set([
   '/file-renamer',
   '/byok-setup',
   '/ollama-setup',
+  '/blog/search',
 ]);
 
 const SITEMAP_EXCLUDED_LOCALIZED_ROUTE = /^\/(?:de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)\/(?:404|activate|recover|thank-you|manage-subscription(?:\/confirm)?)$/;

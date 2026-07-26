@@ -1,10 +1,9 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { ArrowRight, History, Tags } from 'lucide-react';
+import { ArrowRight, History, Search, Tags } from 'lucide-react';
 import BlogPostCard from '@/components/blog/BlogPostCard.astro';
 import {
   type BlogPost,
-  getAllPosts,
   getAllTags,
   getBlogIndexSections,
   getRecentBlogPosts,
@@ -19,7 +18,6 @@ import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module
 import styles from '@/views/Blog/BlogList.module.scss';
 
 const seo = getSeoForPath('/blog');
-const allPosts = await getAllPosts();
 const sections = await getBlogIndexSections();
 const recentPosts = await getRecentBlogPosts(6);
 const allTags = await getAllTags();
@@ -132,20 +130,6 @@ const jsonLd = {
     ...blogPostItems,
   ],
 };
-const searchablePosts = allPosts.map((post) => ({
-  post,
-  searchText: [
-    post.title,
-    post.description,
-    post.tldr,
-    post.platform,
-    post.topic,
-    ...post.tags,
-  ]
-    .filter(Boolean)
-    .join(' ')
-    .toLowerCase(),
-}));
 ---
 
 <BaseLayout seo={seo} disableTopOffset={true} jsonLd={jsonLd}>
@@ -176,20 +160,26 @@ const searchablePosts = allPosts.map((post) => ({
         </p>
       </div>
 
-      <div class={styles.BlogList__Search} data-blog-search-root>
-        <input
-          class={styles.BlogList__SearchInput}
-          data-blog-search-input
-          id='blog-search'
-          name='q'
-          placeholder='Search by title, tag, workflow, or platform'
-          spellcheck='false'
-          type='search'
-        />
-        <p class={styles.BlogList__SearchStatus} data-blog-search-status hidden></p>
-      </div>
+      <form action='/blog/search' class={styles.BlogList__Search} method='get' role='search'>
+        <div class={styles.BlogList__SearchField}>
+          <span class={styles.BlogList__SearchIcon} aria-hidden='true'>
+            <Search size={18} strokeWidth={2.2} />
+          </span>
+          <input
+            aria-label='Search the Zush blog'
+            autocomplete='off'
+            class={styles.BlogList__SearchInput}
+            id='blog-search'
+            name='q'
+            placeholder='Search all posts…'
+            spellcheck='false'
+            type='search'
+          />
+        </div>
+        <button class={styles.BlogList__SearchSubmit} type='submit'>Search</button>
+      </form>
 
-      <div class={styles.BlogList__IntroLinks} data-blog-search-default>
+      <div class={styles.BlogList__IntroLinks}>
         <a class={styles.BlogList__IntroCard} href='/blog/archive'>
           <h2
             class={[
@@ -248,68 +238,7 @@ const searchablePosts = allPosts.map((post) => ({
         </a>
       </div>
 
-      <section
-        class={[styles.BlogList__Section, styles.BlogList__SearchResults].join(' ')}
-        data-blog-search-results
-        hidden
-      >
-        <div class={styles.BlogList__SectionHeader}>
-          <div class={styles.BlogList__SectionTitleRow}>
-            <h2
-              class={[
-                headingStyles.Heading,
-                headingStyles.Heading_h3,
-                styles.BlogList__SectionTitle,
-              ].join(' ')}
-            >
-              Search Results
-            </h2>
-            <span class={styles.BlogList__SectionCount} data-blog-search-count>0</span>
-          </div>
-        </div>
-        <p
-          class={[
-            textStyles.Text,
-            textStyles.Text_md,
-            textStyles.Text_subtle,
-            styles.BlogList__SectionDescription,
-          ].join(' ')}
-          data-blog-search-summary
-        >
-          Matching posts will appear here
-        </p>
-        <div class={styles.BlogList__SectionActions}>
-          <button
-            class={[styles.BlogList__SectionAction, styles.BlogList__SectionActionButton].join(' ')}
-            data-blog-search-clear
-            hidden
-            type='button'
-          >
-            Clear search
-          </button>
-          <a class={styles.BlogList__SectionAction} href='/blog/archive'>
-            Browse archive
-          </a>
-        </div>
-        <div class={styles.BlogList__SectionPosts}>
-          {
-            searchablePosts.map(({ post, searchText }) => (
-              <div data-blog-search-item data-search={searchText}>
-                <BlogPostCard post={post} />
-              </div>
-            ))
-          }
-        </div>
-        <p
-          class={[textStyles.Text, textStyles.Text_md, styles.BlogList__Empty].join(' ')}
-          data-blog-search-empty
-          hidden
-        >
-          No posts found. Try a different keyword or browse the archive
-        </p>
-      </section>
-
-      <div class={styles.BlogList__Sections} data-blog-search-default>
+      <div class={styles.BlogList__Sections}>
         <section class={styles.BlogList__Section}>
           <div class={styles.BlogList__SectionHeader}>
             <div class={styles.BlogList__SectionTitleRow}>
@@ -397,106 +326,4 @@ const searchablePosts = allPosts.map((post) => ({
     </div>
   </section>
 
-  <script is:inline data-astro-rerun>
-    (() => {
-      const initBlogSearch = () => {
-        const root = document.querySelector('[data-blog-search-root]');
-        if (!(root instanceof HTMLElement) || root.dataset.blogSearchBound === 'true') return;
-
-        const input = root.querySelector('[data-blog-search-input]');
-        const status = root.querySelector('[data-blog-search-status]');
-        const resultsSection = document.querySelector('[data-blog-search-results]');
-        const resultItems = Array.from(document.querySelectorAll('[data-blog-search-item]'));
-        const defaultSections = Array.from(document.querySelectorAll('[data-blog-search-default]'));
-        const count = document.querySelector('[data-blog-search-count]');
-        const summary = document.querySelector('[data-blog-search-summary]');
-        const empty = document.querySelector('[data-blog-search-empty]');
-        const clearButton = document.querySelector('[data-blog-search-clear]');
-
-        if (
-          !(input instanceof HTMLInputElement) ||
-          !(status instanceof HTMLElement) ||
-          !(resultsSection instanceof HTMLElement) ||
-          !(count instanceof HTMLElement) ||
-          !(summary instanceof HTMLElement) ||
-          !(empty instanceof HTMLElement) ||
-          !(clearButton instanceof HTMLButtonElement)
-        ) {
-          return;
-        }
-
-        root.dataset.blogSearchBound = 'true';
-
-        const applySearch = () => {
-          const params = new URLSearchParams(window.location.search);
-          const query = input.value.trim().toLowerCase();
-          let matches = 0;
-
-          resultItems.forEach((item) => {
-            const searchable = item.getAttribute('data-search') || '';
-            const visible = query.length > 0 && searchable.includes(query);
-            item.hidden = !visible;
-
-            if (visible) {
-              matches += 1;
-            }
-          });
-
-          const searching = query.length > 0;
-          resultsSection.hidden = !searching;
-          clearButton.hidden = !searching;
-          empty.hidden = !searching || matches > 0;
-
-          defaultSections.forEach((section) => {
-            if (section instanceof HTMLElement) {
-              section.hidden = searching;
-            }
-          });
-
-          if (searching) {
-            count.textContent = String(matches);
-            summary.textContent =
-              matches === 1
-                ? `1 post matching "${input.value.trim()}".`
-                : `${matches} posts matching "${input.value.trim()}".`;
-            status.textContent = 'Filtering all blog posts in real time';
-            params.set('q', input.value.trim());
-          } else {
-            count.textContent = '0';
-            summary.textContent = 'Matching posts will appear here';
-            status.textContent = 'Search across all blog posts';
-            params.delete('q');
-          }
-
-          const nextQuery = params.toString();
-          const nextUrl = nextQuery
-            ? `${window.location.pathname}?${nextQuery}`
-            : window.location.pathname;
-          window.history.replaceState({}, '', nextUrl);
-        };
-
-        input.value = new URLSearchParams(window.location.search).get('q') || '';
-        input.addEventListener('input', applySearch);
-        clearButton.addEventListener('click', () => {
-          input.value = '';
-          input.focus();
-          applySearch();
-        });
-        applySearch();
-      };
-
-      window.__zushInitBlogSearch = initBlogSearch;
-
-      if (!window.__zushBlogSearchPageLoadBound) {
-        window.__zushBlogSearchPageLoadBound = true;
-        document.addEventListener('astro:page-load', () => {
-          if (typeof window.__zushInitBlogSearch === 'function') {
-            window.__zushInitBlogSearch();
-          }
-        });
-      }
-
-      initBlogSearch();
-    })();
-  </script>
 </BaseLayout>
