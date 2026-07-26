@@ -67,7 +67,7 @@ const PLATFORM_SEO: Partial<Record<Locale, Partial<Record<'/mac' | '/windows', {
     '/mac': {
       title: 'Rinomina file con IA per Mac | Zush',
       description:
-        'Rinomina file per Mac che rinomina in batch in base al contenuto con l’IA: screenshot, PDF, foto, video, audio, design e documenti.',
+        'Rinomina file per Mac che rinomina in batch in base al contenuto con l’IA: screenshot, PDF, foto, video, audio, design e documenti, con anteprima e annullamento.',
     },
     '/windows': {
       title: 'Rinomina file con IA per Windows | Zush',

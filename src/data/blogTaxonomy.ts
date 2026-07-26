@@ -37,7 +37,7 @@ export const BLOG_PUBLIC_TAGS: Record<BlogPublicTagSlug, BlogPublicTagMeta> = {
       'Guides and explainers on using AI to rename files, screenshots, videos, photos, and documents',
     seoTitle: 'AI File Renaming Guides & Workflows — Zush Blog',
     seoDescription:
-      'Browse Zush guides on AI file renaming across screenshots, videos, photos, PDFs, and mixed-file workflows on desktop.',
+      'Guides to renaming files with AI on Mac and Windows: screenshots, videos, photos, PDFs, and mixed folders, with previews and reversible batches.',
   },
   automation: {
     slug: 'automation',
@@ -46,7 +46,7 @@ export const BLOG_PUBLIC_TAGS: Record<BlogPublicTagSlug, BlogPublicTagMeta> = {
       'Folder monitoring, auto-rename workflows, batch jobs, and set-it-and-forget-it cleanup systems',
     seoTitle: 'File Automation Guides & Auto-Rename Workflows — Zush Blog',
     seoDescription:
-      'Learn how to automate file renaming and folder cleanup with batch workflows, folder monitoring, and desktop automation.',
+      'Guides to automating file renaming and folder cleanup: watch folders, batch workflows, and the desktop automation that keeps Downloads from filling up again.',
   },
   'file-organization': {
     slug: 'file-organization',
@@ -55,7 +55,7 @@ export const BLOG_PUBLIC_TAGS: Record<BlogPublicTagSlug, BlogPublicTagMeta> = {
       'Practical systems for organizing downloads, client files, school files, and everyday folders',
     seoTitle: 'File Organization Guides & Folder Cleanup Tips — Zush Blog',
     seoDescription:
-      'Browse file organization guides for downloads, client work, school files, and desktop folder cleanup on Mac and Windows.',
+      'File organization guides for Mac and Windows: downloads, client work, school files, and desktop cleanup systems that survive more than a week of real use.',
   },
   photos: {
     slug: 'photos',
@@ -64,7 +64,7 @@ export const BLOG_PUBLIC_TAGS: Record<BlogPublicTagSlug, BlogPublicTagMeta> = {
       'Photo naming, image workflow, photo organization, and creator workflows for large image libraries',
     seoTitle: 'Photo Naming & Organization Guides — Zush Blog',
     seoDescription:
-      'Photo naming, photo organization, and image workflow guides for photographers, creators, and desktop users.',
+      'Photo naming and organization guides for photographers and creators: RAW and HEIC workflows, library structure, and filenames that search can actually find.',
   },
   videos: {
     slug: 'videos',
@@ -118,7 +118,7 @@ export const BLOG_PUBLIC_TAGS: Record<BlogPublicTagSlug, BlogPublicTagMeta> = {
       'Naming conventions, searchable filenames, and structure rules for cleaner file systems',
     seoTitle: 'File Naming Conventions & Searchable Filenames — Zush Blog',
     seoDescription:
-      'Guides to file naming conventions, searchable filenames, and better naming systems for files and folders.',
+      'Guides to file naming conventions and searchable filenames: what to put in a name, what to leave out, and how to keep a system consistent across a whole team.',
   },
   templates: {
     slug: 'templates',

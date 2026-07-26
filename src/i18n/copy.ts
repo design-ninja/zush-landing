@@ -3794,7 +3794,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       },
       '/rename-photos-with-ai': {
         title: 'KI-Fotoorganizer & Bild-Umbenenner für Mac | Zush',
-        description: 'KI-Foto-Umbenenner. Zush liest HEIC, RAW, AVIF, JPG, SVG, TIFF und weitere Bilder und benennt Fotos nach Motiv, Szene und Kontext um.',
+        description: 'KI-Foto-Umbenenner. Zush liest HEIC, RAW, AVIF, JPG und TIFF und benennt Fotos nach Motiv, Szene und Kontext um. Mit Vorschau und Rückgängig.',
       },
       '/rename-videos-with-ai': {
         title: 'Videos mit KI umbenennen · MP4, MOV, Clips | Zush',
@@ -3948,7 +3948,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       },
       '/rename-videos-with-ai': {
         title: 'Renomear vídeos com IA · MP4, MOV, gravações | Zush',
-        description: 'Renomeador de vídeo com IA. O Zush lê MP4, MOV, M4V, MPEG, MTS, VOB, legendas e frames amostrados e renomeia os vídeos pelo conteúdo.',
+        description: 'Renomeador de vídeo com IA. O Zush lê MP4, MOV, MPEG, MTS, legendas e frames amostrados e renomeia os vídeos pelo conteúdo, com prévia e desfazer.',
       },
       '/rename-audio-with-ai': {
         title: 'Renomear áudio com IA · MP3, M4A, WAV, FLAC | Zush',

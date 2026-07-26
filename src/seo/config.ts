@@ -100,7 +100,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/offline-ai-file-renamer': {
     title: 'Offline AI File Renamer for Mac & Windows | Zush',
     description:
-      'Offline AI file renamer for Mac and Windows. Zush uses local Ollama models to rename supported files by content with preview and undo.',
+      'Offline AI file renamer for Mac and Windows. Zush runs local Ollama models, so nothing leaves your machine. Rename by content with preview and undo.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -177,35 +177,35 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/changelog': {
     title: 'Changelog — Zush',
     description:
-      'Track all updates, new features, and improvements to Zush, the AI-powered file organizer for macOS.',
+      'Every Zush release for Mac and Windows: new AI renaming features, newly supported formats, fixes, and improvements, with dates and version numbers.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/changelog/windows': {
     title: 'Windows Changelog — Zush',
     description:
-      'Track Windows updates, Microsoft Store releases, new features, and improvements for Zush, the AI-powered file organizer for Windows.',
+      'Every Zush release for Windows and the Microsoft Store: new AI renaming features, newly supported formats, fixes, and improvements, with version numbers.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/privacy-policy': {
     title: 'Privacy Policy — Zush',
     description:
-      "Read Zush's privacy policy. Learn how we handle your data, file content, and personal information.",
+      'How Zush handles your files and personal data: what leaves your device, what never does, how AI providers are used, and how to run Offline AI mode instead.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/terms-of-service': {
     title: 'Terms of Service — Zush',
     description:
-      "Read Zush's terms of service for using our AI-powered file organization app for macOS and Windows.",
+      'The terms for using Zush on Mac and Windows: licence and subscription rules, acceptable use, refunds, liability, and how changes to these terms are made.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/refund-policy': {
     title: 'Refund Policy — Zush',
     description:
-      "Read Zush's refund policy, including money-back guarantee details, eligibility, and support steps for the AI file organizer.",
+      'Zush refund policy: the money-back guarantee window, what qualifies, how Mac App Store and Microsoft Store purchases differ, and how to request a refund.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -247,21 +247,21 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/authors/kirill-isachenko': {
     title: 'Kirill Isachenko | Founder and Developer of Zush',
     description:
-      'Kirill Isachenko (lirik) is the founder, designer, and software developer behind Zush, an AI file renamer for Mac and Windows.',
+      'Kirill Isachenko (lirik) is the founder, designer, and developer of Zush, an AI file renamer for Mac and Windows. How the product is built and what it verifies.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/rename-pdf-with-ai': {
     title: 'Rename PDF Files with AI | Content-Based PDF Renamer - Zush',
     description:
-      'AI PDF renamer. Zush reads invoices, contracts, scans, receipts, and reports, then renames PDF files by content with searchable names.',
+      'AI PDF renamer for Mac and Windows. Zush reads invoices, contracts, scans, and receipts, then renames PDFs by content. Preview each name, undo any batch.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/rename-documents-with-ai': {
     title: 'Rename Documents with AI · Office, iWork, Text · Zush',
     description:
-      'AI document renamer. Zush reads Office, iWork, text, CSV, XML, YAML, email, and subtitle files, then renames documents by content.',
+      'AI document renamer for Mac and Windows. Zush reads Word, Excel, iWork, and text files, then turns meeting_notes_FINAL_v2 into a name you can search for.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -282,21 +282,21 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/rename-photos-with-ai': {
     title: 'AI Photo Organizer & Image Renamer for Mac | Zush',
     description:
-      'AI photo renamer. Zush reads HEIC, RAW, AVIF, JPG, SVG, TIFF, and other images, then renames photos by content.',
+      'AI photo renamer for Mac and Windows. Zush looks inside HEIC, RAW, JPG, and TIFF images and names each one for what it shows. Preview and undo included.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/rename-videos-with-ai': {
     title: 'Rename Videos with AI · MP4, MOV, Screen Recordings · Zush',
     description:
-      'AI video renamer. Zush reads MP4, MOV, M4V, MPEG, MTS, VOB, subtitles, and sampled frames, then renames videos by content.',
+      'AI video renamer for Mac and Windows. Zush samples frames and reads subtitles from MP4, MOV, and MTS files, then renames each video by what is in it.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/rename-audio-with-ai': {
     title: 'Rename Audio with AI · MP3, M4A, WAV, FLAC · Zush',
     description:
-      'AI audio file renamer. Zush reads MP3, M4A, WAV, FLAC, OGG, WebM, and MPGA metadata or transcripts, then renames audio by content.',
+      'AI audio file renamer for Mac and Windows. Zush reads MP3, M4A, WAV, and FLAC metadata or their transcripts, then renames each file by what it contains.',
     robots: 'index, follow',
     ogType: 'website',
   },
