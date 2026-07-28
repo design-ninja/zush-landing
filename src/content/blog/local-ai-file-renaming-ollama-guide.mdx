@@ -1,6 +1,6 @@
 ---
-title: "Local AI File Renaming with Ollama: Offline Workflow"
-description: "Learn how local AI file renaming with Ollama works in Zush, when to use Offline AI mode, which models matter, and how it compares with cloud renaming."
+title: "Local AI File Renaming: Private, Offline, No Cloud Uploads"
+description: "How local AI file renaming keeps files on your own machine: when offline mode is worth the tradeoff, what it handles well, and where cloud AI is still stronger."
 date: "2026-04-28"
 slug: "local-ai-file-renaming-ollama-guide"
 platform: "general"
@@ -8,18 +8,18 @@ topic: "local-ai"
 tags:
   - "AI File Renaming"
   - "Ollama"
-tldr: "Local AI file renaming uses a model on your own computer to analyze supported files and suggest descriptive filenames. In Zush, Offline AI mode connects to Ollama so supported analysis content stays on device instead of going to Zush cloud or a third-party AI provider."
-reviewed: "2026-07-19"
+tldr: "Local AI file renaming uses a model on your own computer to analyze supported files and suggest descriptive filenames, so analysis content stays on device instead of going to a cloud service or a third-party AI provider. It trades some quality and speed for privacy and predictable cost."
+reviewed: "2026-07-28"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: install Ollama, pull a vision-capable model such as `qwen2.5vl:3b`, `gemma3:4b`, or `granite3.2-vision:2b`, then connect it to a local AI rename tool such as Zush Offline AI on Mac. Supported analysis content stays on your machine and renaming runs without provider API cost.
+Quick answer: local AI file renaming runs the model that reads your files on your own computer, so nothing about their content is sent anywhere. You give up some quality and speed against the best cloud models, and you gain privacy, offline capability, and no per-file provider cost.
 
 Most file renaming tools fall into two camps: rule-based batch rename utilities and cloud AI tools. Rule-based tools are reliable but blind. Cloud AI tools can understand screenshots, videos, PDFs, photos, and documents, but they require an internet connection and a provider request.
 
-Local AI file renaming is the third path. Instead of sending analysis content to a cloud model, a desktop app asks a model running on your own computer to describe the file and propose a useful name. In Zush, that workflow is called Offline AI mode, and it uses [Ollama](https://ollama.com/download) as the local model runtime.
+Local AI file renaming is the third path. Instead of sending analysis content to a cloud model, a desktop app asks a model running on your own computer to describe the file and propose a useful name. In Zush that workflow is called Offline AI mode; the local model runtime it uses is [Ollama](https://ollama.com/download).
 
-If you want the setup page first, start with the [Ollama setup guide](/docs/offline-ai). If you want the product surface first, see [File Renamer for Mac and Windows](/) or [Zush for Mac](/mac). If you are comparing local-first tools, read [Zush vs AI Renamer](/blog/zush-vs-airenamer).
+This page is the decision guide — whether local processing is the right mode for your files at all. If you have already decided and want the commands, follow the [step-by-step Ollama setup for Mac](/blog/rename-files-with-ollama-mac) or the shorter [Offline AI setup reference](/docs/offline-ai). For the product surface, see [File Renamer for Mac and Windows](/) or [Zush for Mac](/mac). If you are comparing local-first tools, read [Zush vs AI Renamer](/blog/zush-vs-airenamer).
 
 <BlogProductIntro
   title="Need renaming that never leaves your machine?"
@@ -60,7 +60,7 @@ The typical flow is:
 4. Refresh the model list and choose the local model.
 5. Test the connection before renaming important folders.
 
-For the exact setup steps, use [Ollama Setup Guide](/docs/offline-ai). The guide currently recommends three practical model choices: [qwen2.5vl](https://ollama.com/library/qwen2.5vl), [gemma3](https://ollama.com/library/gemma3), and [granite3.2-vision](https://ollama.com/library/granite3.2-vision).
+Each of those five steps is written out, with the Terminal commands and the checks that catch a misconfigured install, in [how to rename files with Ollama on Mac](/blog/rename-files-with-ollama-mac). The condensed reference is the [Ollama Setup Guide](/docs/offline-ai). The guide currently recommends three practical model choices: [qwen2.5vl](https://ollama.com/library/qwen2.5vl), [gemma3](https://ollama.com/library/gemma3), and [granite3.2-vision](https://ollama.com/library/granite3.2-vision).
 
 ## Which model should you start with?
 

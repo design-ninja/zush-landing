@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Ollama"
 tldr: "To rename files with Ollama on Mac, install Ollama, pull a vision-capable model, confirm the local service is running, enable Offline AI mode in Zush, and test with a small batch before using it on important folders."
-reviewed: "2026-07-19"
+reviewed: "2026-07-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -18,7 +18,7 @@ Quick answer: rename files locally on Mac with Ollama by installing Ollama, pull
 
 Mac users finally have a practical way to rename files with AI without routing supported analysis content through a cloud provider. Zush Offline AI mode connects to Ollama, which runs a local model on your Mac and returns filename suggestions for screenshots, videos, images, PDFs, and supported documents.
 
-This guide is for the Mac Ollama workflow. Zush for Windows is live, but this article does not assume the Windows Offline AI setup flow is identical. For the current app page, see [Zush for Mac](/mac). For the broader product surface, see [File Renamer for Mac and Windows](/). For the short setup reference, open the [Ollama setup guide](/docs/offline-ai). If you are comparing local-first alternatives, read [Zush vs AI Renamer](/blog/zush-vs-airenamer).
+This guide is the hands-on Mac setup tutorial for Ollama: install, pull a model, connect, test. If you are still deciding whether to run models locally at all, read [when local AI file renaming is worth the tradeoff](/blog/local-ai-file-renaming-ollama-guide) first and come back here for the commands. Zush for Windows is live, but this article does not assume the Windows Offline AI setup flow is identical. For the current app page, see [Zush for Mac](/mac). For the broader product surface, see [File Renamer for Mac and Windows](/). For the short setup reference, open the [Ollama setup guide](/docs/offline-ai). If you are comparing local-first alternatives, read [Zush vs AI Renamer](/blog/zush-vs-airenamer).
 
 <BlogProductIntro
   title="Want local models without writing a script?"
@@ -111,7 +111,7 @@ Offline AI mode is separate from Zush Cloud and BYOK:
 | BYOK | Unlimited cloud renames with your own provider key | Yes |
 | Offline AI | Private local model processing for supported files | No, after setup |
 
-If you process a lot of files and still want cloud models, read [BYOK: Unlimited AI File Renames with Your Own API Key](/blog/byok-ai-file-renaming-unlimited). If you want the broad overview, read [Local AI File Renaming with Ollama](/blog/local-ai-file-renaming-ollama-guide) and [Cloud AI vs Local AI File Renaming](/blog/cloud-vs-local-ai-file-renaming).
+If you process a lot of files and still want cloud models, read [BYOK: Unlimited AI File Renames with Your Own API Key](/blog/byok-ai-file-renaming-unlimited). If you are not yet sure local processing is the right mode for your files, step back to [when local AI file renaming is worth the tradeoff](/blog/local-ai-file-renaming-ollama-guide), which covers what local models handle well and where cloud AI is still stronger, or the broader [Cloud AI vs Local AI File Renaming](/blog/cloud-vs-local-ai-file-renaming).
 
 ## Step 5: test with a small batch
 

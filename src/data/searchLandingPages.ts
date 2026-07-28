@@ -482,7 +482,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       { title: 'Zush for Windows', href: '/windows' },
     ],
     relatedBlogPosts: [
-      { title: 'Local AI File Renaming with Ollama', href: 'local-ai-file-renaming-ollama-guide' },
+      { title: 'Local AI File Renaming: Private and Offline', href: 'local-ai-file-renaming-ollama-guide' },
       { title: 'Cloud AI vs Local AI File Renaming', href: 'cloud-vs-local-ai-file-renaming' },
       { title: 'BYOK: Unlimited AI File Renames', href: 'byok-ai-file-renaming-unlimited' },
     ],
