@@ -69,6 +69,7 @@ export interface MethodologyCopy {
     privacy: string;
     byok: string;
     ollama: string;
+    author: string;
   };
 }
 
@@ -188,6 +189,7 @@ const defaultCopy: MethodologyCopy = {
     privacy: '/privacy-policy',
     byok: '/docs/byok',
     ollama: '/docs/offline-ai',
+    author: '/authors/kirill-isachenko',
   },
 };
 
@@ -230,7 +232,9 @@ const copy = Astro.props.copy ?? defaultCopy;
           <div class="methodology__facts" role="list" aria-label={copy.factsLabel}>
             <div class="methodology__fact" role="listitem">
               <span class="methodology__factLabel">{copy.primaryAuthorLabel}</span>
-              <Text as="p">{copy.primaryAuthor}</Text>
+              <Text as="p">
+                <AppLink href={copy.paths.author} variant="legal">{copy.primaryAuthor}</AppLink>
+              </Text>
             </div>
             <div class="methodology__fact" role="listitem">
               <span class="methodology__factLabel">{copy.technicalReviewerLabel}</span>

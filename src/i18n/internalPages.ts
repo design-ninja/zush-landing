@@ -314,6 +314,7 @@ export function getMethodologyCopy(locale: InternalLocale): MethodologyCopy {
       privacy: getLocalizedPath('/privacy-policy', locale),
       byok: '/docs/byok',
       ollama: '/docs/offline-ai',
+      author: '/authors/kirill-isachenko',
     },
   };
 }
