@@ -175,6 +175,7 @@ export const INDEXABLE_LOCALIZED_ROUTES = [
   '/rename-photos-with-ai',
   '/rename-videos-with-ai',
   '/rename-audio-with-ai',
+  '/batch-rename-files',
   '/mac',
   '/windows',
   '/methodology',
@@ -237,6 +238,10 @@ const LIMITED_LOCALE_ROUTES: Partial<Record<Locale, readonly LocalizedRoute[]>> 
   tr: LANDING_LOCALIZED_ROUTES,
 };
 
+const ROUTE_LOCALES: Partial<Record<LocalizedRoute, readonly Locale[]>> = {
+  '/batch-rename-files': ['en', 'de'],
+};
+
 export function isLocale(value: string | undefined): value is Locale {
   return Boolean(value && (LOCALES as readonly string[]).includes(value));
 }
@@ -284,8 +289,10 @@ export function getAlternatePaths(route: string): Partial<Record<Locale, string>
 
 export function getLocalesForRoute(route: string): readonly Locale[] {
   const normalizedRoute = normalizeRoute(route);
+  const routeLocales = ROUTE_LOCALES[normalizedRoute as LocalizedRoute];
 
   return LOCALES.filter((locale) => {
+    if (routeLocales && !routeLocales.includes(locale)) return false;
     const limitedRoutes = LIMITED_LOCALE_ROUTES[locale];
     return !limitedRoutes || (limitedRoutes as readonly string[]).includes(normalizedRoute);
   });

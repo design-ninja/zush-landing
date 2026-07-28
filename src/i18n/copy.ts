@@ -3804,18 +3804,54 @@ const COPY: Record<Locale, LocaleCopy> = {
         title: 'Audio mit KI umbenennen · MP3, M4A, WAV, FLAC | Zush',
         description: 'KI-Audio-Umbenenner. Zush liest Metadaten oder Transkripte von MP3, M4A, WAV, FLAC, OGG, WebM und MPGA und benennt Audiodateien nach Inhalt um.',
       },
+      '/batch-rename-files': {
+        title: 'Dateien stapelweise umbenennen mit KI | Zush',
+        description: 'Benenne viele Dateien auf Mac und Windows mit KI stapelweise nach Inhalt um. Prüfe jeden Vorschlag vorab und mache ganze Stapel rückgängig.',
+      },
     },
-    featurePages: localizedFeaturePages('Häufig gestellte Fragen', 'Verwandte Tools', 'Verwandte Anleitungen', [
-      { question: 'Kann ich eine Umbenennung rückgängig machen?', answer: 'Ja. Zush speichert den Verlauf, damit du Dateien mit einem Klick auf den ursprünglichen Namen zurücksetzen kannst.' },
-    ], [
-      ['/rename-pdf-with-ai', 'PDFs mit KI umbenennen', 'Benenne Rechnungen, Verträge, Scans und Formulare nach Text und Kontext im PDF.'],
-      ['/rename-design-files-with-ai', 'Designdateien mit KI umbenennen', 'Benenne Sketch-, Figma-.fig-, Adobe-Illustrator-.ai- und PSD-Dateien anhand von Vorschau und Projektkontext um.'],
-      ['/rename-documents-with-ai', 'Dokumente mit KI umbenennen', 'Benenne DOCX, XLSX, PPTX, TXT, CSV und E-Mails nach ihrem Inhalt.'],
-      ['/rename-screenshots-with-ai', 'Screenshots mit KI umbenennen', 'Ersetze generische Screenshot-Namen durch nützliche Namen basierend auf dem Inhalt.'],
-      ['/rename-photos-with-ai', 'Fotos mit KI umbenennen', 'Benenne HEIC-, RAW-, JPG- und andere Fotos nach Motiv, Szene und Kontext.'],
-      ['/rename-videos-with-ai', 'Videos mit KI umbenennen', 'Benenne MP4, MOV, Screen Recordings und Clips nach Frames, Kontext und Untertiteln.'],
-      ['/rename-audio-with-ai', 'Audio mit KI umbenennen', 'Benenne MP3, M4A, WAV, FLAC, OGG, WebM und MPGA nach Metadaten, Erkennung und Transkriptkontext.'],
-    ]),
+    featurePages: {
+      ...localizedFeaturePages('Häufig gestellte Fragen', 'Verwandte Tools', 'Verwandte Anleitungen', [
+        { question: 'Kann ich eine Umbenennung rückgängig machen?', answer: 'Ja. Zush speichert den Verlauf, damit du Dateien mit einem Klick auf den ursprünglichen Namen zurücksetzen kannst.' },
+      ], [
+        ['/rename-pdf-with-ai', 'PDFs mit KI umbenennen', 'Benenne Rechnungen, Verträge, Scans und Formulare nach Text und Kontext im PDF.'],
+        ['/rename-design-files-with-ai', 'Designdateien mit KI umbenennen', 'Benenne Sketch-, Figma-.fig-, Adobe-Illustrator-.ai- und PSD-Dateien anhand von Vorschau und Projektkontext um.'],
+        ['/rename-documents-with-ai', 'Dokumente mit KI umbenennen', 'Benenne DOCX, XLSX, PPTX, TXT, CSV und E-Mails nach ihrem Inhalt.'],
+        ['/rename-screenshots-with-ai', 'Screenshots mit KI umbenennen', 'Ersetze generische Screenshot-Namen durch nützliche Namen basierend auf dem Inhalt.'],
+        ['/rename-photos-with-ai', 'Fotos mit KI umbenennen', 'Benenne HEIC-, RAW-, JPG- und andere Fotos nach Motiv, Szene und Kontext.'],
+        ['/rename-videos-with-ai', 'Videos mit KI umbenennen', 'Benenne MP4, MOV, Screen Recordings und Clips nach Frames, Kontext und Untertiteln.'],
+        ['/rename-audio-with-ai', 'Audio mit KI umbenennen', 'Benenne MP3, M4A, WAV, FLAC, OGG, WebM und MPGA nach Metadaten, Erkennung und Transkriptkontext.'],
+      ]),
+      '/batch-rename-files': {
+        h1: 'Dateien stapelweise mit KI umbenennen',
+        accent: 'stapelweise',
+        definitionText: 'Zush benennt viele Dateien in einem Arbeitsgang um und erzeugt für jede Datei einen eigenen Namen aus ihrem Inhalt. Ziehe gemischte Ordner mit Screenshots, Fotos, PDFs, Dokumenten, Videos, Audio und Designdateien hinein, prüfe alle Vorschläge und wende den Stapel erst dann an.',
+        faqTitle: 'Häufig gestellte Fragen',
+        relatedToolsTitle: 'Verwandte Tools',
+        relatedGuidesTitle: 'Verwandte Anleitungen',
+        faqItems: [
+          {
+            question: 'Wie kann ich viele Dateien gleichzeitig mit KI umbenennen?',
+            answer: 'Ziehe Dateien oder einen ganzen Ordner in Zush, wähle ein Namensmuster und lass den Inhalt analysieren. Prüfe die vorgeschlagenen Namen einzeln und wende anschließend den gesamten Stapel an.',
+          },
+          {
+            question: 'Wann ist KI besser als die Umbenennen-Funktion im Finder?',
+            answer: 'Nutze den Finder, wenn alle Dateien dieselbe mechanische Änderung brauchen, etwa ein Präfix oder eine Nummer. Nutze KI, wenn jede Datei einen anderen beschreibenden Namen aus ihrem eigenen Inhalt erhalten soll.',
+          },
+          {
+            question: 'Funktioniert das Stapel-Umbenennen auf Mac und Windows?',
+            answer: 'Ja. Zush läuft auf macOS und Windows und unterstützt auf beiden Plattformen inhaltsbasierte Namen, Vorlagen, Naming Blocks, Ordnerüberwachung und einen Umbenennungsverlauf.',
+          },
+          {
+            question: 'Kann ich eigene Namenskonventionen verwenden?',
+            answer: 'Ja. Kombiniere KI-Titel mit Datum, Kategorie, Zähler, ursprünglichem Namen, Dokumentfeldern und eigenen Naming Blocks. So folgen alle Dateien demselben Muster, obwohl jede einen anderen Inhalt hat.',
+          },
+          {
+            question: 'Kann ich einen ganzen Stapel rückgängig machen?',
+            answer: 'Ja. Zush speichert den Umbenennungsverlauf. Du kannst die vorgeschlagenen Namen vor dem Anwenden prüfen und einen bereits ausgeführten Stapel später wieder auf die ursprünglichen Namen zurücksetzen.',
+          },
+        ],
+      },
+    },
   }),
   fr: localized({
     header: { features: 'Fonctions', reviews: 'Avis', pricing: 'Tarifs', faq: 'FAQ', blog: 'Blog', buyPro: 'Acheter 🌟 PRO', download: 'Télécharger', downloadZush: 'Télécharger Zush', toggleTheme: 'Changer le thème', language: 'Langue', homeAria: 'Aller à l’accueil', skipToContent: 'Aller au contenu' },

@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import FeatureLandingPageShell from '@/components/FeatureLandingPage/FeatureLandingPageShell.astro';
 import MethodologyPage from '@/components/MethodologyPage/MethodologyPage.astro';
 import PlatformLandingPage from '@/components/PlatformLandingPage/PlatformLandingPage.astro';
+import { SEARCH_LANDING_PAGES } from '@/data/searchLandingPages';
 import { getFeaturePageProps } from '@/utils/featurePageProps';
 import ActivateView from '@/views/Activate';
 import Legal from '@/views/Legal';
@@ -18,7 +19,7 @@ import RenamePhotosWithAI from '@/views/FeaturePages/RenamePhotosWithAI';
 import RenameScreenshotsWithAI from '@/views/FeaturePages/RenameScreenshotsWithAI';
 import RenameVideosWithAI from '@/views/FeaturePages/RenameVideosWithAI';
 import ThankYouView from '@/views/ThankYou';
-import { buildFeatureBreadcrumbJsonLd } from '@/utils/jsonLd';
+import { buildFeatureBreadcrumbJsonLd, buildFeaturePageJsonLd } from '@/utils/jsonLd';
 import {
   LOCALIZED_ROUTES,
   getLocalesForRoute,
@@ -103,6 +104,7 @@ const serviceSeo = isServiceLocalizedRoute(route)
     }
   : null;
 const localizedHomeHref = getLocalizedPath('/', locale);
+const batchRenamePage = SEARCH_LANDING_PAGES['batch-rename-files'];
 ---
 
 {route === '/mac' && <PlatformLandingPage platform="mac" locale={locale} />}
@@ -222,6 +224,67 @@ const localizedHomeHref = getLocalizedPath('/', locale);
       />
     </BaseLayout>
   )
+}
+{
+  route === '/batch-rename-files' && (() => {
+    const localizedCopy = copy.featurePages[route];
+    const localizedPage = {
+      ...batchRenamePage,
+      relatedPages: [
+        { title: 'Dokumentation zum Stapel-Umbenennen', href: '/docs/batch-rename-files' },
+        { title: 'Vorlagen-Anleitung', href: '/docs/templates' },
+        { title: 'KI-Dateiorganisator', href: '/ai-file-organizer' },
+        { title: 'KI-Dateiumbenenner', href: '/' },
+        { title: 'Offline-KI-Dateiumbenenner', href: '/offline-ai-file-renamer' },
+        { title: 'Downloads-Ordner automatisieren', href: '/automate-downloads-folder' },
+        { title: 'PDFs mit KI umbenennen', href: '/rename-pdf-with-ai' },
+        { title: 'Fotos mit KI umbenennen', href: '/rename-photos-with-ai' },
+      ],
+    };
+    const faqItems = localizedCopy?.faqItems ?? batchRenamePage.faqItems;
+    const pageJsonLd = buildFeaturePageJsonLd({
+      howTo: {
+        name: 'Dateien mit KI stapelweise umbenennen',
+        description: 'Mit Zush viele Dateien auf Mac und Windows anhand ihres Inhalts umbenennen.',
+        steps: [
+          { name: 'Dateien hinzufügen', text: 'Ziehe Dateien, Ordner oder einen gemischten Downloads-Ordner in Zush.' },
+          { name: 'Namensmuster wählen', text: 'Nutze einen KI-Titel oder kombiniere Datum, Kategorie, Zähler und weitere Naming Blocks.' },
+          { name: 'Prüfen und anwenden', text: 'Prüfe jeden Namensvorschlag und wende anschließend den gesamten Stapel an.' },
+        ],
+      },
+      faqItems,
+      software: {
+        pagePath: localizedPath,
+        description: 'KI-Werkzeug zum Stapel-Umbenennen für Mac und Windows, mit Vorschau, Vorlagen, Naming Blocks, Ordnerüberwachung und Rückgängig-Funktion.',
+        featureList: [
+          'Dateien auf Mac und Windows stapelweise umbenennen',
+          'Inhaltsbasierte Namen für gemischte Ordner',
+          'Vorschau vor dem Anwenden',
+          'Eigene Namenskonventionen und Vorlagen',
+          'Ordnerüberwachung für neue Dateien',
+          'Umbenennungsverlauf und Rückgängig-Funktion',
+        ],
+      },
+    });
+
+    return (
+      <BaseLayout
+        seo={seo}
+        locale={locale}
+        chromeBasePath={localizedHomeHref}
+        jsonLd={[
+          pageJsonLd,
+          buildFeatureBreadcrumbJsonLd(localizedCopy?.h1 ?? batchRenamePage.h1, localizedPath),
+        ]}
+      >
+        <FeatureLandingPageShell
+          {...localizedPage}
+          locale={locale}
+          localizedCopy={localizedCopy}
+        />
+      </BaseLayout>
+    );
+  })()
 }
 {
   route in FEATURE_VIEWS && (() => {
