@@ -33,6 +33,7 @@ import { DEFAULT_LOCALE, getLocalizedPath, type Locale } from '@/i18n/config';
 import { getCopy } from '@/i18n/copy';
 import { getPlatformFaqCopy } from '@/i18n/platformFaqs';
 import { getPlatformSpecificsCopy } from '@/i18n/platformSpecifics';
+import { PRO_PRICING } from '@/constants/pricing';
 import { getLocalizedPlatformSpecificsContent } from '@/i18n/platformSpecificsContent';
 import { getLocalizedSeoForRoute } from '@/i18n/seo';
 import {
@@ -244,14 +245,14 @@ const softwareJsonLd = {
     {
       '@type': 'Offer',
       name: 'Zush PRO Monthly',
-      price: '8',
+      price: PRO_PRICING.monthly.schemaPrice,
       priceCurrency: 'USD',
       description: 'Monthly subscription. Unlimited PRO renames plus BYOK and Offline AI mode.',
     },
     {
       '@type': 'Offer',
       name: 'Zush PRO One-Time',
-      price: '38',
+      price: PRO_PRICING.oneTime.schemaPrice,
       priceCurrency: 'USD',
       description: 'One-time purchase. Unlimited PRO renames plus BYOK and Offline AI mode.',
     },

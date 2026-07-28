@@ -1,4 +1,5 @@
 import type { Locale } from '@/i18n/config';
+import { PRO_PRICING } from '@/constants/pricing';
 
 export interface EvidenceSignalsCopy {
   title: string;
@@ -32,7 +33,7 @@ const EN: EvidenceSignalsCopy = {
   description:
     'Zush is an AI file renamer and organizer for Mac and Windows. It batch renames files by content across {count} supported formats, with bulk review, templates, folder monitoring, BYOK, and one-click revert.',
   freeTitle: 'Free to try',
-  freeDescription: '{limit} free AI renames — no signup, no credit card. PRO from $38 one-time or $8/month.',
+  freeDescription: `{limit} free AI renames — no signup, no credit card. PRO from ${PRO_PRICING.oneTime.label} one-time or ${PRO_PRICING.monthly.label}/month.`,
   blocksTitle: '145+ Naming Blocks',
   blocksDescription:
     'Build filenames from dates, metadata, audio details, finance fields, clients, travel, legal, and AI-detected context.',
@@ -65,7 +66,7 @@ const COPY: Record<Locale, EvidenceSignalsCopy> = {
     description:
       'Zush ist ein KI-Datei-Umbenenner und -Organizer für Mac und Windows. Er benennt Dateien anhand ihres Inhalts stapelweise um — {count} unterstützte Formate, mit Massenprüfung, Vorlagen, Ordnerüberwachung, BYOK und Rückgängig per Klick.',
     freeTitle: 'Kostenlos testen',
-    freeDescription: '{limit} kostenlose KI-Umbenennungen — ohne Registrierung und Kreditkarte. PRO ab 38 $ einmalig oder 8 $/Monat.',
+    freeDescription: `{limit} kostenlose KI-Umbenennungen — ohne Registrierung und Kreditkarte. PRO ab ${PRO_PRICING.oneTime.usd} $ einmalig oder ${PRO_PRICING.monthly.usd} $/Monat.`,
     blocksTitle: '145+ Namensbausteine',
     blocksDescription:
       'Baue Dateinamen aus Datum, Metadaten, Audiodetails, Finanzfeldern, Kunden, Reisen, Recht und KI-erkanntem Kontext.',
@@ -95,7 +96,7 @@ const COPY: Record<Locale, EvidenceSignalsCopy> = {
     description:
       'Zush est un renommeur et organisateur de fichiers par IA pour Mac et Windows. Il renomme les fichiers par lot selon leur contenu — {count} formats pris en charge, avec vérification groupée, modèles, surveillance de dossiers, BYOK et retour en un clic.',
     freeTitle: 'Essai gratuit',
-    freeDescription: '{limit} renommages par IA gratuits — sans inscription ni carte bancaire. PRO dès 38 $ en achat unique ou 8 $/mois.',
+    freeDescription: `{limit} renommages par IA gratuits — sans inscription ni carte bancaire. PRO dès ${PRO_PRICING.oneTime.usd} $ en achat unique ou ${PRO_PRICING.monthly.usd} $/mois.`,
     blocksTitle: '145+ blocs de nommage',
     blocksDescription:
       'Composez vos noms de fichiers à partir de dates, métadonnées, détails audio, champs financiers, clients, voyages, mentions légales et contexte détecté par l’IA.',
@@ -125,7 +126,7 @@ const COPY: Record<Locale, EvidenceSignalsCopy> = {
     description:
       'Zush es un renombrador y organizador de archivos con IA para Mac y Windows. Renombra archivos por lotes según su contenido — {count} formatos compatibles, con revisión masiva, plantillas, monitorización de carpetas, BYOK y deshacer en un clic.',
     freeTitle: 'Prueba gratuita',
-    freeDescription: '{limit} renombrados con IA gratis — sin registro ni tarjeta de crédito. PRO desde 38 $ en pago único u 8 $/mes.',
+    freeDescription: `{limit} renombrados con IA gratis — sin registro ni tarjeta de crédito. PRO desde ${PRO_PRICING.oneTime.usd} $ en pago único u ${PRO_PRICING.monthly.usd} $/mes.`,
     blocksTitle: '145+ bloques de nombrado',
     blocksDescription:
       'Crea nombres de archivo a partir de fechas, metadatos, detalles de audio, campos financieros, clientes, viajes, datos legales y contexto detectado por la IA.',
@@ -155,7 +156,7 @@ const COPY: Record<Locale, EvidenceSignalsCopy> = {
     description:
       'O Zush é um renomeador e organizador de arquivos com IA para Mac e Windows. Ele renomeia arquivos em lote pelo conteúdo — {count} formatos compatíveis, com revisão em massa, modelos, monitoramento de pastas, BYOK e desfazer com um clique.',
     freeTitle: 'Teste grátis',
-    freeDescription: '{limit} renomeações com IA grátis — sem cadastro nem cartão de crédito. PRO a partir de US$ 38 (pagamento único) ou US$ 8/mês.',
+    freeDescription: `{limit} renomeações com IA grátis — sem cadastro nem cartão de crédito. PRO a partir de US$ ${PRO_PRICING.oneTime.usd} (pagamento único) ou US$ ${PRO_PRICING.monthly.usd}/mês.`,
     blocksTitle: '145+ blocos de nomeação',
     blocksDescription:
       'Monte nomes de arquivo com datas, metadados, detalhes de áudio, campos financeiros, clientes, viagens, dados jurídicos e contexto detectado pela IA.',
@@ -185,7 +186,7 @@ const COPY: Record<Locale, EvidenceSignalsCopy> = {
     description:
       'Zush è un rinominatore e organizzatore di file con IA per Mac e Windows. Rinomina i file in blocco in base al contenuto — {count} formati supportati, con revisione di massa, modelli, monitoraggio cartelle, BYOK e ripristino con un clic.',
     freeTitle: 'Prova gratuita',
-    freeDescription: '{limit} rinomine con IA gratuite — senza registrazione né carta di credito. PRO da 38 $ una tantum o 8 $/mese.',
+    freeDescription: `{limit} rinomine con IA gratuite — senza registrazione né carta di credito. PRO da ${PRO_PRICING.oneTime.usd} $ una tantum o ${PRO_PRICING.monthly.usd} $/mese.`,
     blocksTitle: '145+ blocchi di denominazione',
     blocksDescription:
       'Costruisci i nomi dei file da date, metadati, dettagli audio, campi finanziari, clienti, viaggi, dati legali e contesto rilevato dall’IA.',
@@ -215,7 +216,7 @@ const COPY: Record<Locale, EvidenceSignalsCopy> = {
     description:
       'Zush is een AI-bestandshernoemer en -organizer voor Mac en Windows. Het hernoemt bestanden in bulk op basis van inhoud — {count} ondersteunde formaten, met massacontrole, sjablonen, mapbewaking, BYOK en herstellen met één klik.',
     freeTitle: 'Gratis proberen',
-    freeDescription: '{limit} gratis AI-hernoemingen — zonder registratie of creditcard. PRO vanaf $ 38 eenmalig of $ 8/maand.',
+    freeDescription: `{limit} gratis AI-hernoemingen — zonder registratie of creditcard. PRO vanaf $ ${PRO_PRICING.oneTime.usd} eenmalig of $ ${PRO_PRICING.monthly.usd}/maand.`,
     blocksTitle: '145+ naamblokken',
     blocksDescription:
       'Stel bestandsnamen samen uit datums, metadata, audiodetails, financiële velden, klanten, reizen, juridische gegevens en door AI herkende context.',
@@ -245,7 +246,7 @@ const COPY: Record<Locale, EvidenceSignalsCopy> = {
     description:
       'Zush, Mac ve Windows için yapay zekâ destekli bir dosya yeniden adlandırma ve düzenleme aracıdır. Dosyaları içeriğine göre toplu olarak yeniden adlandırır — {count} desteklenen biçim, toplu inceleme, şablonlar, klasör izleme, BYOK ve tek tıkla geri alma.',
     freeTitle: 'Ücretsiz deneyin',
-    freeDescription: '{limit} ücretsiz yapay zekâ yeniden adlandırma — kayıt veya kredi kartı gerekmez. PRO tek seferlik 38 $ veya ayda 8 $.',
+    freeDescription: `{limit} ücretsiz yapay zekâ yeniden adlandırma — kayıt veya kredi kartı gerekmez. PRO tek seferlik ${PRO_PRICING.oneTime.usd} $ veya ayda ${PRO_PRICING.monthly.usd} $.`,
     blocksTitle: '145+ adlandırma bloğu',
     blocksDescription:
       'Dosya adlarını tarihlerden, meta verilerden, ses ayrıntılarından, finans alanlarından, müşterilerden, seyahat ve hukuk verilerinden ve yapay zekânın algıladığı bağlamdan oluşturun.',
@@ -275,7 +276,7 @@ const COPY: Record<Locale, EvidenceSignalsCopy> = {
     description:
       'Zush は Mac と Windows 向けの AI ファイルリネーム・整理ツールです。ファイルの内容をもとに {count} 種類の形式を一括リネームし、まとめて確認、テンプレート、フォルダ監視、BYOK、ワンクリックで元に戻す機能を備えています。',
     freeTitle: '無料で試せる',
-    freeDescription: '無料で {limit} 件の AI リネームが可能 — 登録もクレジットカードも不要。PRO は買い切り $38 または月額 $8 から。',
+    freeDescription: `無料で {limit} 件の AI リネームが可能 — 登録もクレジットカードも不要。PRO は買い切り ${PRO_PRICING.oneTime.label} または月額 ${PRO_PRICING.monthly.label} から。`,
     blocksTitle: '145 以上のネーミングブロック',
     blocksDescription:
       '日付、メタデータ、音声情報、金融項目、クライアント、旅行、法務、AI が検出した文脈からファイル名を組み立てられます。',
@@ -305,7 +306,7 @@ const COPY: Record<Locale, EvidenceSignalsCopy> = {
     description:
       'Zush는 Mac과 Windows용 AI 파일 이름 변경 및 정리 도구입니다. 파일 내용을 기반으로 {count}개 형식을 일괄 변경하며, 대량 검토, 템플릿, 폴더 모니터링, BYOK, 원클릭 되돌리기를 지원합니다.',
     freeTitle: '무료로 사용해 보기',
-    freeDescription: '무료 AI 이름 변경 {limit}회 — 가입이나 신용카드가 필요 없습니다. PRO는 일시불 $38 또는 월 $8부터.',
+    freeDescription: `무료 AI 이름 변경 {limit}회 — 가입이나 신용카드가 필요 없습니다. PRO는 일시불 ${PRO_PRICING.oneTime.label} 또는 월 ${PRO_PRICING.monthly.label}부터.`,
     blocksTitle: '145개 이상의 네이밍 블록',
     blocksDescription:
       '날짜, 메타데이터, 오디오 정보, 금융 항목, 고객, 여행, 법률 정보와 AI가 인식한 맥락으로 파일 이름을 구성하세요.',
@@ -335,7 +336,7 @@ const COPY: Record<Locale, EvidenceSignalsCopy> = {
     description:
       'Zush 是一款面向 Mac 和 Windows 的 AI 文件重命名与整理工具。它按文件内容批量重命名，支持 {count} 种格式，并提供批量核对、模板、文件夹监控、BYOK 和一键撤销。',
     freeTitle: '免费试用',
-    freeDescription: '免费 {limit} 次 AI 重命名 — 无需注册或信用卡。PRO 版一次性购买 38 美元起，或每月 8 美元。',
+    freeDescription: `免费 {limit} 次 AI 重命名 — 无需注册或信用卡。PRO 版一次性购买 ${PRO_PRICING.oneTime.usd} 美元起，或每月 ${PRO_PRICING.monthly.usd} 美元。`,
     blocksTitle: '145+ 命名模块',
     blocksDescription:
       '可用日期、元数据、音频信息、财务字段、客户、差旅、法务以及 AI 识别的上下文来拼装文件名。',
@@ -365,7 +366,7 @@ const COPY: Record<Locale, EvidenceSignalsCopy> = {
     description:
       'Zush هو أداة لإعادة تسمية الملفات وتنظيمها بالذكاء الاصطناعي على Mac وWindows. يعيد تسمية الملفات دفعة واحدة حسب محتواها — {count} صيغة مدعومة، مع مراجعة مجمّعة وقوالب ومراقبة للمجلدات ودعم BYOK وتراجع بنقرة واحدة.',
     freeTitle: 'جرّبه مجانًا',
-    freeDescription: '{limit} عملية إعادة تسمية مجانية بالذكاء الاصطناعي — دون تسجيل أو بطاقة ائتمان. النسخة PRO تبدأ من 38 دولارًا دفعة واحدة أو 8 دولارات شهريًا.',
+    freeDescription: `{limit} عملية إعادة تسمية مجانية بالذكاء الاصطناعي — دون تسجيل أو بطاقة ائتمان. النسخة PRO تبدأ من ${PRO_PRICING.oneTime.usd} دولارًا دفعة واحدة أو ${PRO_PRICING.monthly.usd} دولارات شهريًا.`,
     blocksTitle: 'أكثر من 145 وحدة تسمية',
     blocksDescription:
       'كوّن أسماء الملفات من التواريخ والبيانات الوصفية وتفاصيل الصوت والحقول المالية والعملاء والسفر والبيانات القانونية والسياق الذي يكتشفه الذكاء الاصطناعي.',

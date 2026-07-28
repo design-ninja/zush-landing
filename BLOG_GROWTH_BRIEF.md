@@ -137,7 +137,7 @@ pnpm build
 
 - No slug/URL/meta-title changes, no sitemap/robots/hreflang/vercel.json edits, no localization of the blog.
 - No more than one inline CTA per post; don't stack boxes back-to-back.
-- Don't invent product claims: Zush facts you may use — renames by content: screenshots, PDFs, photos (incl. HEIC/RAW), design files, iWork/Office docs, audio, video; batch preview before applying; rename history with undo; folder monitoring; templates and 145+ Naming Blocks; BYOK; Offline AI mode; Free tier = 50 renames, no signup; PRO from $8/month or $38 one-time; macOS 15+ and Windows 10/11.
+- Don't invent product claims: Zush facts you may use — renames by content: screenshots, PDFs, photos (incl. HEIC/RAW), design files, iWork/Office docs, audio, video; batch preview before applying; rename history with undo; folder monitoring; templates and 145+ Naming Blocks; BYOK; Offline AI mode; Free tier = 50 renames, no signup; PRO from $10/month or $48 one-time; macOS 15+ and Windows 10/11.
 - Don't remove or rewrite existing content sections; extend and place, surgically.
 
 ## 6. Deliverables & commit plan

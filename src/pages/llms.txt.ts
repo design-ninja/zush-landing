@@ -6,6 +6,7 @@ import {
   SUPPORTED_FORMAT_COUNT,
   WINDOWS_APP_VERSION,
 } from '@/constants';
+import { PRO_PRICING_SUMMARY } from '@/constants/pricing';
 
 function getDocsRoute(id: string): string {
   const route = `/${id.replace(/\/index$/, '')}`;
@@ -100,7 +101,7 @@ export async function GET() {
     '- Automation: folder monitoring can rename new supported files as they arrive.',
     '- Control: templates, custom prompts, and 145+ Naming Blocks help keep filenames consistent.',
     '- Privacy options: BYOK supports Gemini, Groq, OpenAI, and Claude; Offline AI mode uses local models via Ollama for supported files.',
-    '- Pricing: free starter tier with 50 AI renames, $8/month PRO, or $38 one-time PRO.',
+    `- Pricing: free starter tier with 50 AI renames, ${PRO_PRICING_SUMMARY} PRO.`,
     `- Format breadth: ${SUPPORTED_FORMAT_COUNT} supported file extensions across images, design files, documents, PDFs, videos, and audio.`,
     '- Safety: Zush uses review-before-apply workflows and rename history with undo.',
     '',

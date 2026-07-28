@@ -7,6 +7,7 @@ import {
   getRelatedPosts,
   getTranslationsBySlug,
 } from '@/data/blog';
+import { PRO_PRICING } from '@/constants/pricing';
 import type { BlogLocale } from '@/data/blogSchema';
 import { getBlogSeo, getCanonicalUrl } from '@/seo/config';
 import {
@@ -93,14 +94,14 @@ const macAiRenamerComparisonJsonLd = post.slug === 'best-ai-file-renamer-tools-m
               {
                 '@type': 'Offer',
                 name: 'Zush PRO Monthly',
-                price: '8',
+                price: PRO_PRICING.monthly.schemaPrice,
                 priceCurrency: 'USD',
                 description: 'Monthly PRO plan.',
               },
               {
                 '@type': 'Offer',
                 name: 'Zush PRO One-Time',
-                price: '38',
+                price: PRO_PRICING.oneTime.schemaPrice,
                 priceCurrency: 'USD',
                 description: 'One-time PRO plan.',
               },

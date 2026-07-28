@@ -1,5 +1,6 @@
 import type { FAQItem } from '@/data/blog';
 import { APP_CONFIG, SUPPORTED_FORMAT_COUNT } from '@/constants';
+import { PRO_PRICING } from '@/constants/pricing';
 
 export const HOME_FAQ_DATA: FAQItem[] = [
   {
@@ -70,6 +71,6 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'How much does Zush PRO cost?',
     answer:
-      'Zush PRO costs $8 per month or $38 as a one-time purchase. Both plans include unlimited PRO renames, BYOK, Offline AI mode, and all PRO features. Eligible purchases include a 14-day refund period.',
+      `Zush PRO costs ${PRO_PRICING.monthly.label} per month or ${PRO_PRICING.oneTime.label} as a one-time purchase. Both plans include unlimited PRO renames, BYOK, Offline AI mode, and all PRO features. Eligible purchases include a 14-day refund period.`,
   },
 ];

@@ -9,6 +9,7 @@ import { getDownloadUrl, getOSLabel, getShortRequirements } from '@/utils/downlo
 import type { BlogPlatform } from '@/data/blogSchema';
 import BlogOSIcon from '@/components/blog/BlogOSIcon.astro';
 import styles from '@/components/BlogCTA/BlogCTA.module.scss';
+import { PRO_PRICING_SUMMARY } from '@/constants/pricing';
 
 type BlogCTAPlacement = 'early' | 'inline' | 'footer';
 
@@ -31,7 +32,7 @@ const placementDescriptions: Record<BlogCTAPlacement, string> = {
   inline:
     'Batch rename files, monitor folders, and keep documents, design files, screenshots, photos, audio, videos, and PDFs searchable with descriptive names and metadata.',
   footer:
-    'AI batch renaming, automatic folder monitoring, and search-friendly names. 50 free renames to start — PRO from $8/month or $38 one-time.',
+    `AI batch renaming, automatic folder monitoring, and search-friendly names. 50 free renames to start — PRO from ${PRO_PRICING_SUMMARY}.`,
 };
 
 const titleClasses = [headingStyles.Heading, headingStyles.Heading_h3, styles.BlogCTA__Title].join(' ');

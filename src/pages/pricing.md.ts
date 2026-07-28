@@ -6,6 +6,7 @@ import {
   WINDOWS_APP_VERSION,
 } from '@/constants';
 import { SITE_ORIGIN } from '@/seo/config';
+import { PRO_PRICING } from '@/constants/pricing';
 
 export function GET() {
   const body = `# Zush pricing and product facts
@@ -17,8 +18,8 @@ Canonical product page: ${SITE_ORIGIN}/
 ## Plans
 
 - Free starter: $0; includes ${APP_CONFIG.free_tier_limit} AI renames; no credit card required. Templates, Naming Blocks, Custom AI Blocks, and custom AI prompts are included free.
-- Zush PRO Monthly: $8 USD per month.
-- Zush PRO One-Time: $38 USD as a one-time purchase.
+- Zush PRO Monthly: ${PRO_PRICING.monthly.label} USD per month.
+- Zush PRO One-Time: ${PRO_PRICING.oneTime.label} USD as a one-time purchase.
 - Both paid plans include unlimited PRO renames, BYOK, and Offline AI mode.
 - Refund period: ${APP_CONFIG.refund_period_days} days, subject to the published refund policy at ${SITE_ORIGIN}/refund-policy.
 

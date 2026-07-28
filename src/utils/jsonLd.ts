@@ -3,6 +3,7 @@ import { toIsoDateTime } from '@/seo/config';
 import { APP_STORE_URL, HOMEBREW_CASK_URL, MAC_INSTALLER_URL, WINDOWS_STORE_URL } from '@/constants';
 import { PRIMARY_AUTHOR } from '@/data/author';
 import { ORGANIZATION_REF, WEBSITE_REF } from '@/seo/entity';
+import { PRO_PRICING } from '@/constants/pricing';
 
 const SITE_ORIGIN = 'https://zushapp.com';
 
@@ -102,13 +103,13 @@ const DEFAULT_SOFTWARE_OFFERS: SoftwareOfferData[] = [
   },
   {
     name: 'Zush PRO Monthly',
-    price: '8',
+    price: PRO_PRICING.monthly.schemaPrice,
     priceCurrency: 'USD',
     description: 'Monthly subscription. Unlimited PRO renames plus BYOK and Offline AI mode.',
   },
   {
     name: 'Zush PRO One-Time',
-    price: '38',
+    price: PRO_PRICING.oneTime.schemaPrice,
     priceCurrency: 'USD',
     description: 'One-time purchase. Unlimited PRO renames plus BYOK and Offline AI mode.',
   },

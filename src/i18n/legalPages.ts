@@ -1,4 +1,5 @@
 import type { Locale } from '@/i18n/config';
+import { PRO_PRICING } from '@/constants/pricing';
 
 type InternalLocale = Exclude<Locale, 'en'>;
 export type LegalRoute = '/privacy-policy' | '/terms-of-service' | '/refund-policy';
@@ -108,7 +109,7 @@ Zush bietet ein "🌟 PRO"-Upgrade, das unbegrenzte PRO-Umbenennungen, BYOK, Off
 Wir bieten kostenlose Nutzung plus zwei bezahlte PRO-Pläne:
 
 - **Zush Free**: 50 Credits enthalten. Ein Credit entspricht einer Umbenennung.
-- **Zush PRO**: Monthly für $8/Monat oder One-Time für $38. Beide enthalten unbegrenzte PRO-Umbenennungen, BYOK und Offline-KI-Modus.
+- **Zush PRO**: Monthly für ${PRO_PRICING.monthly.label}/Monat oder One-Time für ${PRO_PRICING.oneTime.label}. Beide enthalten unbegrenzte PRO-Umbenennungen, BYOK und Offline-KI-Modus.
 
 Die kostenlosen Credits sind einmalig und werden nicht zurückgesetzt. Bezahlte PRO-Pläne entfernen das Cloud-Umbenennungslimit; BYOK und Offline-KI bleiben verfügbar, wo unterstützt.
 
@@ -287,7 +288,7 @@ Zush propose une mise à niveau "🌟 PRO" qui débloque les renommages PRO illi
 Nous proposons une utilisation gratuite plus deux offres PRO payantes :
 
 - **Zush Free** : 50 crédits inclus. Un crédit équivaut à un renommage.
-- **Zush PRO** : Monthly à 8 $/mois ou One-Time à 38 $. Les deux incluent les renommages PRO illimités, BYOK et le mode IA hors ligne.
+- **Zush PRO** : Monthly à ${PRO_PRICING.monthly.usd} $/mois ou One-Time à ${PRO_PRICING.oneTime.usd} $. Les deux incluent les renommages PRO illimités, BYOK et le mode IA hors ligne.
 
 Les crédits gratuits sont uniques et ne se réinitialisent pas. Les offres PRO payantes suppriment la limite de renommage cloud; BYOK et l’IA hors ligne restent disponibles lorsque pris en charge.
 
@@ -466,7 +467,7 @@ O Zush oferece um upgrade "🌟 PRO" que desbloqueia renomeações PRO ilimitada
 Oferecemos uso gratuito mais dois planos PRO pagos:
 
 - **Zush Free**: 50 créditos incluídos. Um crédito equivale a uma renomeação.
-- **Zush PRO**: Monthly por $8/mês ou One-Time por $38. Ambos incluem renomeações PRO ilimitadas, BYOK e modo IA offline.
+- **Zush PRO**: Monthly por ${PRO_PRICING.monthly.label}/mês ou One-Time por ${PRO_PRICING.oneTime.label}. Ambos incluem renomeações PRO ilimitadas, BYOK e modo IA offline.
 
 Os créditos gratuitos são únicos e não são redefinidos. Planos PRO pagos removem o limite de renomeação cloud; BYOK e IA offline continuam disponíveis quando compatíveis.
 
@@ -645,7 +646,7 @@ Zush ofrece una actualización "🌟 PRO" que desbloquea renombrados PRO ilimita
 Ofrecemos uso gratuito más dos planes PRO pagos:
 
 - **Zush Free**: 50 créditos incluidos. Un crédito equivale a un renombrado.
-- **Zush PRO**: Monthly por $8/mes o One-Time por $38. Ambos incluyen renombrados PRO ilimitados, BYOK y modo IA offline.
+- **Zush PRO**: Monthly por ${PRO_PRICING.monthly.label}/mes o One-Time por ${PRO_PRICING.oneTime.label}. Ambos incluyen renombrados PRO ilimitados, BYOK y modo IA offline.
 
 Los créditos gratuitos son de un solo uso y no se reinician. Los planes PRO pagos eliminan el límite de renombrado cloud; BYOK y la IA offline siguen disponibles donde corresponda.
 
@@ -824,7 +825,7 @@ Zush biedt een "🌟 PRO"-upgrade die onbeperkte PRO-hernoemingen, BYOK, Offline
 We bieden gratis gebruik plus twee betaalde PRO-plannen:
 
 - **Zush Free**: 50 credits inbegrepen. Eén credit is gelijk aan één hernoeming.
-- **Zush PRO**: Monthly voor $8/maand of One-Time voor $38. Beide bevatten onbeperkte PRO-hernoemingen, BYOK en Offline AI.
+- **Zush PRO**: Monthly voor ${PRO_PRICING.monthly.label}/maand of One-Time voor ${PRO_PRICING.oneTime.label}. Beide bevatten onbeperkte PRO-hernoemingen, BYOK en Offline AI.
 
 Gratis credits zijn eenmalig en worden niet gereset. Betaalde PRO-plannen verwijderen de cloudhernoemlimiet; BYOK en Offline AI blijven beschikbaar waar ondersteund.
 
@@ -1003,7 +1004,7 @@ Zush offre un upgrade "🌟 PRO" che sblocca rinomine PRO illimitate, BYOK, IA o
 Offriamo uso gratuito più due piani PRO a pagamento:
 
 - **Zush Free**: 50 crediti inclusi. Un credito equivale a una rinomina.
-- **Zush PRO**: Monthly a 8 $/mese oppure One-Time a 38 $. Entrambi includono rinomine PRO illimitate, BYOK e modalità IA offline.
+- **Zush PRO**: Monthly a ${PRO_PRICING.monthly.usd} $/mese oppure One-Time a ${PRO_PRICING.oneTime.usd} $. Entrambi includono rinomine PRO illimitate, BYOK e modalità IA offline.
 
 I crediti gratuiti sono una tantum e non si azzerano. I piani PRO a pagamento rimuovono il limite di rinomina cloud; BYOK e IA offline restano disponibili dove supportati.
 
@@ -1182,7 +1183,7 @@ Zush は、無制限の PRO リネーム、BYOK、Offline AI、複数フォル�
 当社は無料利用に加えて 2 つの有料 PRO プランを提供します。
 
 - **Zush Free**: 50 クレジットを含みます。1 クレジットは 1 リネームです。
-- **Zush PRO**: Monthly（月額 8 ドル）または One-Time（38 ドル）。どちらも無制限の PRO リネーム、BYOK、オフライン AI モードを含みます。
+- **Zush PRO**: Monthly（月額 ${PRO_PRICING.monthly.usd} ドル）または One-Time（${PRO_PRICING.oneTime.usd} ドル）。どちらも無制限の PRO リネーム、BYOK、オフライン AI モードを含みます。
 
 無料クレジットは一回限りでリセットされません。有料 PRO プランではクラウドリネーム制限が解除され、対応している場合は BYOK と Offline AI を利用できます。
 
@@ -1361,7 +1362,7 @@ Zush는 무제한 PRO 이름 변경, BYOK, 오프라인 AI, 여러 폴더 모니
 무료 사용과 두 가지 유료 PRO 플랜을 제공합니다.
 
 - **Zush Free**: 50 크레딧 포함. 1 크레딧은 1회 이름 변경입니다.
-- **Zush PRO**: Monthly 월 $8 또는 One-Time $38. 둘 다 무제한 PRO 이름 변경, BYOK, 오프라인 AI 모드를 포함합니다.
+- **Zush PRO**: Monthly 월 ${PRO_PRICING.monthly.label} 또는 One-Time ${PRO_PRICING.oneTime.label}. 둘 다 무제한 PRO 이름 변경, BYOK, 오프라인 AI 모드를 포함합니다.
 
 무료 크레딧은 일회성이며 초기화되지 않습니다. 유료 PRO 플랜은 클라우드 이름 변경 제한을 제거하며, BYOK와 오프라인 AI는 지원되는 경우 계속 사용할 수 있습니다.
 
@@ -1541,7 +1542,7 @@ Zush 提供 "🌟 PRO" 升级，解锁无限 PRO 重命名、BYOK、离线 AI、
 我们提供免费使用以及两个付费 PRO 方案：
 
 - **Zush Free**：包含 50 个额度。1 个额度等于 1 次重命名。
-- **Zush PRO**：Monthly 每月 $8，或 One-Time $38。两者都包含无限 PRO 重命名、BYOK 和离线 AI 模式。
+- **Zush PRO**：Monthly 每月 ${PRO_PRICING.monthly.label}，或 One-Time ${PRO_PRICING.oneTime.label}。两者都包含无限 PRO 重命名、BYOK 和离线 AI 模式。
 
 免费额度为一次性额度，不会重置。付费 PRO 方案会移除云端重命名限制；BYOK 和离线 AI 在支持时可继续使用。
 

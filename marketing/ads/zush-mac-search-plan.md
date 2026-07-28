@@ -48,7 +48,7 @@
   - `PDF Docs Downloads Mac`
   - `Alternatives Competitors`
 - Legacy mixed ad group and legacy stale RSA removed from serving.
-- Current approved RSA and assets are aligned to Zush 3.0-era positioning: 50 included AI renames, $8/month, $38 one-time, BYOK, Offline AI, native macOS app.
+- Current approved RSA and assets are aligned to Zush 3.0-era positioning: 50 included AI renames, $10/month, $48 one-time, BYOK, Offline AI, native macOS app.
 - Added a high-relevance core RSA with pinned `Mac File Renamer` headline on 2026-06-12; it may temporarily remain under review.
 - Added broader launch keywords such as `file renamer`, `batch file renamer`, `bulk file renamer`, `pdf renamer`, `image renamer`, and `photo renamer` on 2026-06-12; new keywords may temporarily remain under review.
 - Ad Preview note: `Your ad is probably being shown at times, but was not shown for this particular diagnosis` is an auction-level message, not a campaign blocker. Verify live health primarily through campaign/ad/keyword statuses and real impressions.

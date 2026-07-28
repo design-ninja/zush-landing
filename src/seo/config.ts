@@ -15,6 +15,7 @@ import {
 } from '@/constants';
 import { getPrimaryAuthorJsonLd, PRIMARY_AUTHOR } from '@/data/author';
 import { ORGANIZATION_REF, WEBSITE_REF } from '@/seo/entity';
+import { PRO_PRICING } from '@/constants/pricing';
 
 export const SITE_ORIGIN = 'https://zushapp.com';
 export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og-image.png`;
@@ -492,7 +493,7 @@ export const HOME_JSON_LD = {
         },
         {
           '@type': 'Offer',
-          price: '8',
+          price: PRO_PRICING.monthly.schemaPrice,
           priceCurrency: 'USD',
           name: 'Zush PRO Monthly',
           availability: 'https://schema.org/InStock',
@@ -501,7 +502,7 @@ export const HOME_JSON_LD = {
         },
         {
           '@type': 'Offer',
-          price: '38',
+          price: PRO_PRICING.oneTime.schemaPrice,
           priceCurrency: 'USD',
           name: 'Zush PRO One-Time',
           availability: 'https://schema.org/InStock',

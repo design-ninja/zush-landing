@@ -6,6 +6,7 @@ import { buildFAQPageJsonLd } from '@/utils/jsonLd';
 import { getCopy } from '@/i18n/copy';
 import { getLocalizedSeoForRoute } from '@/i18n/seo';
 import { getLocaleBasePath, LOCALES, type Locale } from '@/i18n/config';
+import { PRO_PRICING } from '@/constants/pricing';
 
 export function getStaticPaths() {
   return LOCALES
@@ -35,14 +36,14 @@ const localizedJsonLd = {
           },
           {
             '@type': 'Offer',
-            price: '8',
+            price: PRO_PRICING.monthly.schemaPrice,
             priceCurrency: 'USD',
             name: 'Zush PRO Monthly',
             description: 'Monthly subscription. Unlimited PRO renames, BYOK, and Offline AI mode.',
           },
           {
             '@type': 'Offer',
-            price: '38',
+            price: PRO_PRICING.oneTime.schemaPrice,
             priceCurrency: 'USD',
             name: 'Zush PRO One-Time',
             description: 'One-time purchase. Unlimited PRO renames, BYOK, and Offline AI mode.',

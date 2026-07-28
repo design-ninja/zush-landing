@@ -26,6 +26,12 @@ from google.protobuf.field_mask_pb2 import FieldMask
 
 
 ROOT = Path(__file__).resolve().parents[3]
+with (ROOT / "src/constants/pricingData.json").open(encoding="utf-8") as pricing_file:
+    PRICING_DATA = json.load(pricing_file)
+
+MONTHLY_PRICE_USD = PRICING_DATA["monthly"]["usd"]
+ONE_TIME_PRICE_USD = PRICING_DATA["oneTime"]["usd"]
+
 CUSTOMER_ID = "4714692966"
 CAMPAIGN_ID = "23816664121"
 LEGACY_AD_GROUP_ID = "193915548417"
@@ -95,7 +101,7 @@ AD_GROUPS: tuple[AdGroupSpec, ...] = (
             "Zush PDF Photo Renamer",
             "Zush Folder Monitoring",
             "Zush BYOK Offline AI",
-            "Zush Pro $38 One-Time",
+            f"Zush Pro ${ONE_TIME_PRICE_USD} One-Time",
             "Zush 50 AI Renames",
             "Zush Files Stay on Mac",
             "Zush for Apple Silicon",
@@ -180,7 +186,7 @@ AD_GROUPS: tuple[AdGroupSpec, ...] = (
             "PDF, DOCX, XLSX Support",
             "Files Stay on Your Mac",
             "Native macOS App",
-            "One-Time $38 Pro",
+            f"One-Time ${ONE_TIME_PRICE_USD} Pro",
         ),
         descriptions=(
             "Rename PDFs, documents, screenshots and downloads by their content on Mac.",
@@ -210,7 +216,7 @@ AD_GROUPS: tuple[AdGroupSpec, ...] = (
             "Zush for Mac",
             "Native macOS App",
             "50 AI Renames Included",
-            "One-Time $38 Pro",
+            f"One-Time ${ONE_TIME_PRICE_USD} Pro",
             "Files Stay on Your Mac",
             "BYOK and Offline AI",
         ),
@@ -269,8 +275,8 @@ CALLOUTS: tuple[str, ...] = (
     "50 AI Renames",
     "No Signup",
     "No Credit Card",
-    "Monthly $8 Pro",
-    "One-Time $38 Pro",
+    f"Monthly ${MONTHLY_PRICE_USD} Pro",
+    f"One-Time ${ONE_TIME_PRICE_USD} Pro",
     "Signed .dmg",
     "Mac App Store Option",
     "Apple Silicon + Intel",

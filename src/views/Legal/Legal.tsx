@@ -5,6 +5,7 @@ import Heading from '@/components/Heading';
 import Text from '@/components/Text';
 import styles from './Legal.module.scss';
 import '@/styles/markdown-content.scss';
+import { resolvePricingTokens } from '@/constants/pricing';
 
 import tosContent from '@/content/tos.md?raw';
 import privacyContent from '@/content/privacy.md?raw';
@@ -35,7 +36,7 @@ const LegalMarkdownLink = ({ href = '', className, ...props }: LegalMarkdownLink
 };
 
 const contentMap: Record<string, string> = {
-  tos: tosContent,
+  tos: resolvePricingTokens(tosContent),
   privacy: privacyContent,
   refund: refundContent
 };

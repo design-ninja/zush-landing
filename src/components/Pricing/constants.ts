@@ -2,6 +2,7 @@ import { Cpu, KeyRound, Sparkles, LucideIcon } from 'lucide-react';
 import {
   PRO_MONTHLY_PADDLE_PRICE_ID,
   PRO_ONE_TIME_PADDLE_PRICE_ID,
+  PRO_PRICING,
 } from '@/constants/pricing';
 
 interface Feature {
@@ -49,7 +50,7 @@ export const PRICING_PLANS: Plan[] = [
     titleSuffix: 'Monthly',
     description: 'Flexible monthly plan',
     buttonText: 'Start PRO Monthly',
-    price: '$8',
+    price: PRO_PRICING.monthly.label,
     billing: '/month',
     paddlePriceId: PRO_MONTHLY_PADDLE_PRICE_ID,
   },
@@ -58,7 +59,7 @@ export const PRICING_PLANS: Plan[] = [
     titleSuffix: 'One-Time',
     description: 'Pay once for lifetime access',
     buttonText: 'Buy PRO One-Time',
-    price: '$38',
+    price: PRO_PRICING.oneTime.label,
     billing: 'one-time',
     priceNote: 'Pays off in ~5 months',
     paddlePriceId: PRO_ONE_TIME_PADDLE_PRICE_ID,
