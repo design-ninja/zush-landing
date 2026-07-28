@@ -9,7 +9,7 @@ tags:
   - "Automation"
   - "File Organization"
 tldr: "Automate Mac file organization in layers: Smart Folders for visibility, Automator or Shortcuts for simple routing, Hazel for complex rules, and Zush for content-aware names on messy screenshots, PDFs, photos, and downloads."
-reviewed: "2026-07-15"
+reviewed: "2026-07-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -26,7 +26,7 @@ Sources checked for this update: [Apple Automator User Guide](https://support.ap
 |---|---|---|
 | Smart Folders | Finding files without moving them | Renaming or routing files |
 | Automator / Shortcuts | Simple repeatable rules for Downloads or screenshots | Understanding what a file shows or says |
-| Hazel | Powerful rule-based folder monitoring | Semantic names for messy mixed files |
+| Hazel | Powerful rule-based folder monitoring — the strongest Mac file organizer for routing | Semantic names for messy mixed files |
 | Zush | AI names for screenshots, PDFs, photos, documents, videos, and downloads | Moving files into complex folder trees |
 
 The fastest practical setup is not a giant rules engine. It is one watched folder, one cleanup rule, and one naming layer: keep Hazel or Automator for predictable routing, then use [Zush for Mac](/mac) when the file itself has to be understood before it can be named.
@@ -200,9 +200,11 @@ If you are on macOS Ventura or later, Shortcuts can replace Automator for many t
 Shortcuts is better for one-off automations. Automator is better for complex multi-step workflows that need shell script access. For a thorough walkthrough of Automator-based file renaming, see our [Automator rename files guide](/blog/macos-automator-rename-files-guide).
 
 
-## Hazel: the power tool for rule-based file automation
+## Hazel: the rule-based file organizer for Mac
 
-Hazel is a third-party app ($42 one-time purchase) that monitors folders in the background and applies rules to incoming files. It is the most capable rule engine available on macOS for file organization.
+Hazel is a third-party app ($42 one-time purchase) that monitors folders in the background and applies rules to incoming files. As a Mac file organizer it is the most capable rule engine available: it watches folders continuously, matches on metadata, and moves, tags, archives, or scripts against whatever arrives.
+
+What it does not do is read files. Hazel organizes by attributes it can see from the outside — extension, date, folder, tag, name pattern — which covers routing completely and covers naming not at all. If you are weighing it against a content-aware tool, the head-to-head is on the [Hazel alternative comparison](/hazel-alternative); the rest of this section is about getting the most out of Hazel itself.
 
 ### Is Zush a Hazel alternative?
 
@@ -228,7 +230,7 @@ If you are comparing "Hazel alternative" options from search results, separate t
 | Rename screenshots, scans, photos, and videos by content | [Zush for Mac](/mac) | AI can understand what the file shows or says before generating the filename |
 | Combine routing and content-aware names | Hazel or Automator plus Zush | Rename first, then route the cleaner filenames with rules |
 
-Choose Hazel when the folder logic is the hard part. Choose Zush when the filename is the hard part. Use both when you want automatic routing and content-aware names.
+Choose Hazel when the folder logic is the hard part. Choose Zush when the filename is the hard part. Use both when you want automatic routing and content-aware names. For the feature-by-feature version of that split — rules, watched folders, naming, pricing — see [Zush as a Hazel alternative](/hazel-alternative).
 
 ### What makes Hazel different
 
