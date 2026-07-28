@@ -62,6 +62,7 @@ export interface TrackDownloadClickOptions {
 }
 
 const downloadAttributionStorageKey = 'zush_download_attribution';
+const sessionAttributionStorageKey = 'zush_session_attribution_v1';
 const downloadAttributionParams = [
   'gclid',
   'gbraid',
@@ -75,13 +76,25 @@ const downloadAttributionParams = [
   'utm_matchtype',
   'utm_id',
 ] as const;
+const sessionAttributionParams = [
+  'session_source',
+  'session_medium',
+  'session_evidence',
+  'session_referring_domain',
+  'session_landing_path',
+  'attribution_schema_version',
+] as const;
 
 type DownloadAttributionParam = typeof downloadAttributionParams[number];
+type SessionAttributionParam = typeof sessionAttributionParams[number];
 type DownloadAttributionProperties = Partial<Record<DownloadAttributionParam, string>> & {
   attribution_landing_path?: string;
   attribution_landing_url?: string;
   attribution_referrer?: string;
 };
+type SessionAttributionProperties = Partial<Record<SessionAttributionParam, string>>;
+type DownloadEventAttributionProperties =
+  DownloadAttributionProperties & SessionAttributionProperties;
 
 const hasDownloadAttribution = (properties: DownloadAttributionProperties): boolean =>
   downloadAttributionParams.some((param) => Boolean(properties[param]));
@@ -136,6 +149,34 @@ const persistCurrentDownloadAttribution = (): DownloadAttributionProperties => {
   return getStoredDownloadAttribution();
 };
 
+const getStoredSessionAttribution = (): SessionAttributionProperties => {
+  if (typeof window === 'undefined') return {};
+
+  try {
+    const stored = window.sessionStorage.getItem(sessionAttributionStorageKey);
+    if (!stored) return {};
+
+    const parsed = JSON.parse(stored) as Record<string, unknown>;
+    const properties: SessionAttributionProperties = {};
+
+    sessionAttributionParams.forEach((param) => {
+      const value = parsed[param];
+      if (typeof value === 'string' && value.trim()) {
+        properties[param] = value.trim().slice(0, 200);
+      }
+    });
+
+    return properties;
+  } catch {
+    return {};
+  }
+};
+
+const getDownloadEventAttribution = (): DownloadEventAttributionProperties => ({
+  ...getStoredSessionAttribution(),
+  ...persistCurrentDownloadAttribution(),
+});
+
 const getDownloadClickPageProperties = (): Record<string, string | undefined> => {
   if (typeof window === 'undefined') return {};
 
@@ -148,12 +189,12 @@ const getDownloadClickPageProperties = (): Record<string, string | undefined> =>
 
 export function trackDownloadClick(
   { os, source, manual, channel }: TrackDownloadClickOptions,
-  attributionOverride?: DownloadAttributionProperties,
+  attributionOverride?: DownloadEventAttributionProperties,
 ): void {
   const resolvedChannel = channel ?? (os === 'windows' ? 'microsoft-store' : 'direct');
 
   try {
-    const attribution = attributionOverride ?? persistCurrentDownloadAttribution();
+    const attribution = attributionOverride ?? getDownloadEventAttribution();
     const sourceValue = [
       source,
       os,
@@ -214,9 +255,14 @@ const isMacDownloadUrl = (value: string): boolean => {
 
 const appendAttributionToDownloadLink = (
   link: HTMLAnchorElement,
-  attribution: DownloadAttributionProperties,
+  attribution: DownloadEventAttributionProperties,
 ): void => {
-  if (typeof window === 'undefined' || !hasDownloadAttribution(attribution)) return;
+  if (
+    typeof window === 'undefined'
+    || (!hasDownloadAttribution(attribution) && !attribution.session_source)
+  ) {
+    return;
+  }
 
   const href = normalizeUrl(link.href);
   if (!isMacDownloadUrl(href)) return;
@@ -226,6 +272,12 @@ const appendAttributionToDownloadLink = (
     if (url.pathname !== '/download/mac') return;
 
     downloadAttributionParams.forEach((param) => {
+      const value = attribution[param];
+      if (value && !url.searchParams.has(param)) {
+        url.searchParams.set(param, value);
+      }
+    });
+    sessionAttributionParams.forEach((param) => {
       const value = attribution[param];
       if (value && !url.searchParams.has(param)) {
         url.searchParams.set(param, value);
@@ -324,7 +376,7 @@ export function bindDownloadTracking(root: ParentNode = document): void {
 
     if (event.defaultPrevented && trackedDownload.channel === 'direct') return;
 
-    const attribution = persistCurrentDownloadAttribution();
+    const attribution = getDownloadEventAttribution();
     if (trackedDownload.os === 'mac' && trackedDownload.channel === 'direct') {
       appendAttributionToDownloadLink(link, attribution);
     }

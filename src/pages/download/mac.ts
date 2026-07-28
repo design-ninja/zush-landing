@@ -19,6 +19,12 @@ const attributionParams = [
   'utm_device',
   'utm_matchtype',
   'utm_id',
+  'session_source',
+  'session_medium',
+  'session_evidence',
+  'session_referring_domain',
+  'session_landing_path',
+  'attribution_schema_version',
 ] as const;
 
 type AttributionParam = (typeof attributionParams)[number];

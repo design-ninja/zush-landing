@@ -22,6 +22,9 @@ const {
 >
   (() => {
     const TRACKED_HOSTS = new Set(['zushapp.com', 'www.zushapp.com']);
+    const ATTRIBUTION_STORAGE_KEY = 'zush_session_attribution_v1';
+    const ATTRIBUTION_SCHEMA_VERSION = '2026-07-28';
+    const ATTRIBUTION_SESSION_TIMEOUT_MS = 30 * 60 * 1000;
     const POSTHOG_COUNTRY_OPTOUT_COOKIE = 'zush_posthog_country_optout=1';
     const hasPostHogCountryOptOut = () =>
       document.cookie.split(';').some((cookie) => cookie.trim() === POSTHOG_COUNTRY_OPTOUT_COOKIE);
@@ -36,6 +39,103 @@ const {
 
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
 
+    const cleanAttributionValue = (value) => {
+      if (typeof value !== 'string') return '';
+      return value.trim().toLowerCase().slice(0, 200);
+    };
+
+    const getExternalReferringDomain = () => {
+      if (!document.referrer) return '';
+
+      try {
+        const domain = cleanAttributionValue(new URL(document.referrer).hostname);
+        return domain && !TRACKED_HOSTS.has(domain) ? domain : '';
+      } catch {
+        return '';
+      }
+    };
+
+    const buildSessionAttribution = () => {
+      const url = new URL(window.location.href);
+      const utmSource = cleanAttributionValue(url.searchParams.get('utm_source'));
+      const utmMedium = cleanAttributionValue(url.searchParams.get('utm_medium'));
+      const externalReferringDomain = getExternalReferringDomain();
+      const googleClickId = ['gclid', 'gbraid', 'wbraid']
+        .find((param) => url.searchParams.has(param));
+      const hasFacebookClickId = url.searchParams.has('fbclid');
+
+      let source = 'direct_unknown';
+      let medium = '(none)';
+      let evidence = 'no_campaign_or_referrer';
+
+      if (utmSource) {
+        source = utmSource;
+        medium = utmMedium || 'campaign';
+        evidence = 'utm_source';
+      } else if (googleClickId) {
+        source = 'google_ads';
+        medium = 'cpc';
+        evidence = googleClickId;
+      } else if (hasFacebookClickId) {
+        source = 'facebook';
+        medium = 'social_click';
+        evidence = 'fbclid';
+      } else if (externalReferringDomain) {
+        source = externalReferringDomain;
+        medium = 'referral';
+        evidence = 'external_referrer';
+      }
+
+      return {
+        session_source: source,
+        session_medium: medium,
+        session_evidence: evidence,
+        session_referring_domain: externalReferringDomain || '$direct',
+        session_landing_path: window.location.pathname,
+        attribution_schema_version: ATTRIBUTION_SCHEMA_VERSION,
+      };
+    };
+
+    const getSessionAttribution = () => {
+      const currentAttribution = buildSessionAttribution();
+      const now = Date.now();
+
+      try {
+        const stored = window.sessionStorage.getItem(ATTRIBUTION_STORAGE_KEY);
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          if (
+            parsed &&
+            typeof parsed.session_source === 'string' &&
+            parsed.attribution_schema_version === ATTRIBUTION_SCHEMA_VERSION &&
+            typeof parsed.last_seen_at === 'number' &&
+            now - parsed.last_seen_at < ATTRIBUTION_SESSION_TIMEOUT_MS &&
+            currentAttribution.session_evidence === 'no_campaign_or_referrer'
+          ) {
+            const { last_seen_at: _lastSeenAt, ...attribution } = parsed;
+            window.sessionStorage.setItem(
+              ATTRIBUTION_STORAGE_KEY,
+              JSON.stringify({ ...attribution, last_seen_at: now }),
+            );
+            return attribution;
+          }
+        }
+      } catch {
+        // Storage can be unavailable in private browsing modes.
+      }
+
+      try {
+        window.sessionStorage.setItem(
+          ATTRIBUTION_STORAGE_KEY,
+          JSON.stringify({ ...currentAttribution, last_seen_at: now }),
+        );
+      } catch {
+        // The event still receives attribution when storage is unavailable.
+      }
+
+      return currentAttribution;
+    };
+
     const capturePageview = () => {
       if (typeof window.posthog?.capture !== 'function') return;
 
@@ -43,6 +143,7 @@ const {
         $current_url: window.location.href,
         $pathname: window.location.pathname,
         page_title: document.title,
+        ...getSessionAttribution(),
       });
     };
 
@@ -63,6 +164,17 @@ const {
 
           return event;
         },
+      });
+
+      const sessionAttribution = getSessionAttribution();
+      window.posthog.register_for_session(sessionAttribution);
+      window.posthog.register_once({
+        first_touch_source: sessionAttribution.session_source,
+        first_touch_medium: sessionAttribution.session_medium,
+        first_touch_evidence: sessionAttribution.session_evidence,
+        first_touch_referring_domain: sessionAttribution.session_referring_domain,
+        first_touch_landing_path: sessionAttribution.session_landing_path,
+        first_touch_attribution_schema_version: ATTRIBUTION_SCHEMA_VERSION,
       });
 
       capturePageview();
