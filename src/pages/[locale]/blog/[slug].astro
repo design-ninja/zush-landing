@@ -1,0 +1,107 @@
+---
+import BlogPostLayout, { type TranslationLink } from '@/components/blog/BlogPostLayout.astro';
+import type { AlternateLink } from '@/layouts/BaseLayout.astro';
+import {
+  getBlogPostBySlug,
+  getTranslatedPosts,
+  getTranslatedRelatedPosts,
+} from '@/data/blog';
+import type { BlogLocale } from '@/data/blogSchema';
+import { getBlogSeo, getCanonicalUrl } from '@/seo/config';
+import {
+  buildBlogPostingJsonLd,
+  buildBreadcrumbJsonLd,
+  buildFAQPageJsonLd,
+} from '@/utils/jsonLd';
+import { LOCALE_META, type Locale } from '@/i18n/config';
+import { TRANSLATION_LINK_LABEL, getBlogPostCopy } from '@/i18n/blogPost';
+
+/**
+ * Translated blog posts. This file is more specific than `[locale]/[...slug].astro`,
+ * so Astro routes `/de/blog/<slug>` here without touching the localized-route
+ * machinery. Paths come from the posts themselves — a new locale is a frontmatter
+ * change, not a code change.
+ */
+export async function getStaticPaths() {
+  const posts = await getTranslatedPosts();
+
+  return posts.map((post) => ({
+    params: { locale: LOCALE_META[post.locale as Locale].slug, slug: post.slug },
+    props: { postLocale: post.locale },
+  }));
+}
+
+const { slug } = Astro.params;
+const { postLocale } = Astro.props as { postLocale: BlogLocale };
+
+if (!slug) {
+  throw new Error('Missing blog slug');
+}
+
+const details = await getBlogPostBySlug(slug, postLocale);
+
+if (!details) {
+  throw new Error(`Unknown ${postLocale} blog slug: ${slug}`);
+}
+
+const { entry, post, faq } = details;
+
+if (!post.translationOf) {
+  throw new Error(`Translated post "${post.slug}" is missing translationOf`);
+}
+
+const localeMeta = LOCALE_META[post.locale as Locale];
+const basePath = `/${localeMeta.slug}`;
+const blogPath = `${basePath}/blog/${post.slug}`;
+const englishPath = `/blog/${post.translationOf}`;
+
+const relatedPosts = await getTranslatedRelatedPosts(post);
+const englishDetails = await getBlogPostBySlug(post.translationOf);
+
+const seo = {
+  ...getBlogSeo(post),
+  canonicalPath: blogPath,
+};
+const canonicalUrl = getCanonicalUrl(blogPath);
+
+const alternates: AlternateLink[] =
+  seo.robots === 'noindex, nofollow'
+    ? []
+    : [
+        { hreflang: 'en', href: getCanonicalUrl(englishPath) },
+        { hreflang: localeMeta.lang, href: canonicalUrl },
+      ];
+
+const jsonLd =
+  seo.robots === 'noindex, nofollow'
+    ? []
+    : [
+        buildBlogPostingJsonLd(post, canonicalUrl, localeMeta.lang),
+        // No localized blog index exists, so the trail is home > post.
+        buildBreadcrumbJsonLd(post.title, canonicalUrl, [
+          { name: getBlogPostCopy(post.locale).breadcrumbHome, item: getCanonicalUrl(basePath) },
+        ]),
+        ...(faq.length > 0 ? [buildFAQPageJsonLd(faq)] : []),
+      ];
+
+const translationLink: TranslationLink | undefined = englishDetails
+  ? {
+      label: TRANSLATION_LINK_LABEL.en,
+      href: englishPath,
+      title: englishDetails.post.title,
+      lang: 'en',
+    }
+  : undefined;
+---
+
+<BlogPostLayout
+  entry={entry}
+  post={post}
+  relatedPosts={relatedPosts}
+  seo={seo}
+  jsonLd={jsonLd}
+  chromeLocale={post.locale as Locale}
+  chromeBasePath={basePath}
+  alternates={alternates}
+  translationLink={translationLink}
+/>

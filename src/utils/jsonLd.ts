@@ -9,12 +9,14 @@ const SITE_ORIGIN = 'https://zushapp.com';
 export function buildBlogPostingJsonLd(
   post: BlogPost,
   pageUrl = `${SITE_ORIGIN}/blog/${post.slug}`,
+  inLanguage = 'en',
 ) {
   return {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.description,
+    inLanguage,
     datePublished: toIsoDateTime(post.date),
     dateModified: toIsoDateTime(post.reviewedAt || post.date),
     author: {
@@ -289,26 +291,36 @@ export function buildHowToJsonLd(data: HowToData, pageUrl: string) {
   };
 }
 
-export function buildBreadcrumbJsonLd(postTitle: string, pageUrl: string) {
+export interface BreadcrumbCrumb {
+  name: string;
+  item: string;
+}
+
+/**
+ * Defaults to the English Home > Blog trail. Translated posts pass their own
+ * trail, because there is no localized blog index to point the middle crumb at.
+ */
+export function buildBreadcrumbJsonLd(
+  postTitle: string,
+  pageUrl: string,
+  trail: BreadcrumbCrumb[] = [
+    { name: 'Home', item: SITE_ORIGIN },
+    { name: 'Blog', item: `${SITE_ORIGIN}/blog` },
+  ],
+) {
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
+      ...trail.map((crumb, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: crumb.name,
+        item: crumb.item,
+      })),
       {
         '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: SITE_ORIGIN,
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Blog',
-        item: `${SITE_ORIGIN}/blog`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
+        position: trail.length + 1,
         name: postTitle,
         item: pageUrl,
       },

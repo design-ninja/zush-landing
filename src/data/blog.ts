@@ -6,9 +6,12 @@ import {
 } from '@/data/blogTaxonomy';
 import {
   BLOG_PLATFORM_META,
+  type BlogLocale,
   type BlogPlatform,
   type BlogTopic,
 } from '@/data/blogSchema';
+
+export const DEFAULT_BLOG_LOCALE: BlogLocale = 'en';
 
 export type BlogEntry = CollectionEntry<'blog'>;
 
@@ -37,6 +40,9 @@ export interface BlogPost {
   noindex: boolean;
   canonical?: string;
   featuredOrder?: number;
+  locale: BlogLocale;
+  /** For a translated post: the English slug it translates. */
+  translationOf?: string;
 }
 
 export interface BlogPostDetails {
@@ -195,11 +201,11 @@ export function normalizeTagSlug(value: string): string {
     .replace(/^-+|-+$/g, '');
 }
 
-export function formatBlogDate(value: string | Date): string {
+export function formatBlogDate(value: string | Date, dateLocale = 'en-US'): string {
   const date = typeof value === 'string' ? new Date(`${value}T00:00:00`) : value;
 
   try {
-    return date.toLocaleDateString('en-US', {
+    return date.toLocaleDateString(dateLocale, {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
@@ -234,20 +240,114 @@ function toBlogPost(entry: BlogEntry): BlogPost {
     noindex: entry.data.noindex === true,
     canonical: entry.data.canonical || undefined,
     featuredOrder: entry.data.featuredOrder,
+    locale: entry.data.locale,
+    translationOf: entry.data.translationOf || undefined,
   };
 }
 
+/**
+ * Fail the build rather than ship a half-wired translation: every non-English
+ * post must declare the English slug it translates, that slug must exist, and no
+ * two posts may claim the same (locale, translationOf) pair. A silent break here
+ * would produce one-sided hreflang, which Google ignores entirely.
+ */
+function assertTranslationIntegrity(entries: BlogEntry[]): void {
+  const englishSlugs = new Set(
+    entries
+      .filter((entry) => entry.data.locale === DEFAULT_BLOG_LOCALE)
+      .map((entry) => entry.data.slug),
+  );
+  const seen = new Set<string>();
+
+  for (const entry of entries) {
+    if (entry.data.locale === DEFAULT_BLOG_LOCALE) {
+      continue;
+    }
+
+    const { locale, slug, translationOf } = entry.data;
+
+    if (!translationOf) {
+      throw new Error(
+        `Blog post "${slug}" has locale "${locale}" but no translationOf. Every non-${DEFAULT_BLOG_LOCALE} post must name the English slug it translates.`,
+      );
+    }
+
+    if (!englishSlugs.has(translationOf)) {
+      throw new Error(
+        `Blog post "${slug}" declares translationOf "${translationOf}", which is not an existing English blog slug.`,
+      );
+    }
+
+    const pair = `${locale}::${translationOf}`;
+    if (seen.has(pair)) {
+      throw new Error(
+        `Duplicate translation: two "${locale}" posts both translate "${translationOf}". Each English post may have at most one translation per locale.`,
+      );
+    }
+    seen.add(pair);
+  }
+}
+
+async function getAllEntries(): Promise<BlogEntry[]> {
+  const entries = await getCollection('blog');
+  assertTranslationIntegrity(entries);
+  return entries;
+}
+
+async function getEntriesForLocale(locale: BlogLocale): Promise<BlogEntry[]> {
+  return sortEntriesByDate(
+    (await getAllEntries()).filter((entry: BlogEntry) => entry.data.locale === locale),
+  );
+}
+
+/**
+ * English posts only. Every English listing surface (index, archive, tags,
+ * related, search index, sitemap tag pages) goes through this, so translations
+ * cannot leak into them.
+ */
 async function getSortedEntries(): Promise<BlogEntry[]> {
-  return sortEntriesByDate(await getCollection('blog'));
+  return getEntriesForLocale(DEFAULT_BLOG_LOCALE);
 }
 
 export async function getAllPosts(): Promise<BlogPost[]> {
   return (await getSortedEntries()).map(toBlogPost);
 }
 
-export async function getBlogPostBySlug(slug: string): Promise<BlogPostDetails | undefined> {
-  const entry = (await getCollection('blog')).find(
-    (item: BlogEntry) => item.data.slug === slug,
+/** Posts authored in one locale. For `en` this is identical to getAllPosts(). */
+export async function getLocalizedPosts(locale: BlogLocale): Promise<BlogPost[]> {
+  return (await getEntriesForLocale(locale)).map(toBlogPost);
+}
+
+/** Every non-English post, across all translated locales. */
+export async function getTranslatedPosts(): Promise<BlogPost[]> {
+  return sortEntriesByDate(
+    (await getAllEntries()).filter(
+      (entry: BlogEntry) => entry.data.locale !== DEFAULT_BLOG_LOCALE,
+    ),
+  ).map(toBlogPost);
+}
+
+/** Translations of one English post, keyed by their locale. */
+export async function getTranslationsBySlug(
+  englishSlug: string,
+): Promise<Partial<Record<BlogLocale, BlogPost>>> {
+  const translations: Partial<Record<BlogLocale, BlogPost>> = {};
+
+  for (const post of await getTranslatedPosts()) {
+    if (post.translationOf === englishSlug) {
+      translations[post.locale] = post;
+    }
+  }
+
+  return translations;
+}
+
+export async function getBlogPostBySlug(
+  slug: string,
+  locale: BlogLocale = DEFAULT_BLOG_LOCALE,
+): Promise<BlogPostDetails | undefined> {
+  const entry = (await getAllEntries()).find(
+    (item: BlogEntry) => item.data.slug === slug && item.data.locale === locale,
   );
 
   if (!entry) {
@@ -391,6 +491,49 @@ export async function getRelatedPosts(slug: string, limit = 3): Promise<BlogPost
   }
 
   return selected.slice(0, limit);
+}
+
+/**
+ * Related posts for a translated post, staying inside its own language: take the
+ * ranking computed for the English source, then keep only those English posts
+ * that have a translation in the same locale. Never links a German reader out to
+ * an English article from the "related" block.
+ */
+export async function getTranslatedRelatedPosts(
+  post: BlogPost,
+  limit = 3,
+): Promise<BlogPost[]> {
+  if (post.locale === DEFAULT_BLOG_LOCALE || !post.translationOf) {
+    return [];
+  }
+
+  const siblings = await getLocalizedPosts(post.locale);
+  const bySourceSlug = new Map(
+    siblings
+      .filter((sibling) => sibling.translationOf)
+      .map((sibling) => [sibling.translationOf as string, sibling]),
+  );
+
+  const englishRanking = await getRelatedPosts(
+    post.translationOf,
+    Math.max(limit * 4, 12),
+  );
+
+  const selected: BlogPost[] = [];
+
+  for (const englishPost of englishRanking) {
+    const translated = bySourceSlug.get(englishPost.slug);
+
+    if (translated && translated.slug !== post.slug) {
+      selected.push(translated);
+    }
+
+    if (selected.length >= limit) {
+      break;
+    }
+  }
+
+  return selected;
 }
 
 export async function getBlogSearchIndex(): Promise<BlogSearchDoc[]> {

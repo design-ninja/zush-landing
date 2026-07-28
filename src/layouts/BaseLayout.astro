@@ -26,6 +26,11 @@ import {
 import { getCopy } from '@/i18n/copy';
 import PostHogAnalytics from '@/components/PostHogAnalytics.astro';
 
+export interface AlternateLink {
+  hreflang: string;
+  href: string;
+}
+
 interface Props {
   seo: SeoMeta;
   jsonLd?: object | object[];
@@ -35,6 +40,12 @@ interface Props {
   chromeBasePath?: string;
   disableTopOffset?: boolean;
   locale?: Locale;
+  /**
+   * Explicit hreflang cluster, for pages whose translations are not driven by
+   * LOCALIZED_ROUTES (blog posts). When provided it replaces the localized-route
+   * logic entirely, and x-default is derived from the `en` entry.
+   */
+  alternates?: AlternateLink[];
 }
 
 const {
@@ -46,12 +57,16 @@ const {
   chromeBasePath = '/',
   disableTopOffset = false,
   locale = DEFAULT_LOCALE,
+  alternates,
 } = Astro.props;
 
 const canonicalUrl = getCanonicalUrl(seo.canonicalPath);
 const { route } = stripLocaleFromPath(seo.canonicalPath);
 const routeLocales = getLocalesForRoute(route);
-const shouldEmitLocaleAlternates = !LOCALIZATION_PAUSED
+const explicitAlternates = alternates && alternates.length > 0 ? alternates : null;
+const explicitXDefault = explicitAlternates?.find((item) => item.hreflang === 'en')?.href;
+const shouldEmitLocaleAlternates = !explicitAlternates
+  && !LOCALIZATION_PAUSED
   && isLocalizedRoute(route)
   // The English page is still indexable, but its translations are not: pointing
   // hreflang at noindex URLs invalidates the whole cluster.
@@ -239,6 +254,12 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
     )}
     {shouldEmitLocaleAlternates && (
       <link rel="alternate" hreflang="x-default" href={getCanonicalUrl(getLocalizedPath(route, DEFAULT_LOCALE))} />
+    )}
+    {explicitAlternates && explicitAlternates.map((item) => (
+      <link rel="alternate" hreflang={item.hreflang} href={item.href} />
+    ))}
+    {explicitXDefault && (
+      <link rel="alternate" hreflang="x-default" href={explicitXDefault} />
     )}
 
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />

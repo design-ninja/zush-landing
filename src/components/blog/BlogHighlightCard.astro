@@ -3,23 +3,33 @@ import { Image } from 'astro:assets';
 import { BLOG_PLATFORM_LABELS } from '@/data/blogSchema';
 import { formatBlogDate, type BlogPost } from '@/data/blog';
 import { getBlogThumbnail } from '@/data/blogThumbnails';
+import { getBlogPostCopy } from '@/i18n/blogPost';
 import styles from './BlogHighlightCard.module.scss';
 
 interface Props {
   post: BlogPost;
+  /** Locale prefix of the surrounding page, e.g. '/' or '/de'. */
+  basePath?: string;
 }
 
-const { post } = Astro.props;
+const { post, basePath = '/' } = Astro.props;
+
+const prefix = basePath === '/' ? '' : basePath.replace(/\/$/, '');
+const href = `${prefix}/blog/${post.slug}`;
+const copy = getBlogPostCopy(post.locale);
+// Translations reuse their English source's thumbnail rather than duplicating
+// the asset under a German slug.
+const thumbnailSlug = post.translationOf ?? post.slug;
 ---
 
 <article class={styles.BlogHighlightCard}>
-  <a class={styles.BlogHighlightCard__Link} href={`/blog/${post.slug}`}>
+  <a class={styles.BlogHighlightCard__Link} href={href}>
     <Image
       alt={post.title}
       class={styles.BlogHighlightCard__Image}
       decoding="async"
       loading="lazy"
-      src={getBlogThumbnail(post.slug)}
+      src={getBlogThumbnail(thumbnailSlug)}
       width={88}
       height={88}
       densities={[1, 2]}
@@ -35,9 +45,9 @@ const { post } = Astro.props;
       </span>
       <h3 class={styles.BlogHighlightCard__Title}>{post.title}</h3>
       <span class={styles.BlogHighlightCard__Meta}>
-        <time datetime={post.date}>{formatBlogDate(post.dateValue)}</time>
+        <time datetime={post.date}>{formatBlogDate(post.dateValue, copy.dateLocale)}</time>
         <span aria-hidden="true">·</span>
-        <span>{post.readingTime} min read</span>
+        <span>{copy.readingTime(post.readingTime)}</span>
       </span>
     </span>
   </a>

@@ -2,7 +2,7 @@ import { execSync } from 'node:child_process';
 import { existsSync, readFileSync, statSync } from 'node:fs';
 import { dirname, join, relative, sep } from 'node:path';
 import { getCollection, type CollectionEntry } from 'astro:content';
-import { getAllPosts, getAllTags, isSitemapEligibleBlogPost, type BlogPost, type BlogTag } from '@/data/blog';
+import { getAllPosts, getAllTags, getTranslatedPosts, isSitemapEligibleBlogPost, type BlogPost, type BlogTag } from '@/data/blog';
 import { INDEXABLE_STATIC_ROUTES, FEATURE_ROUTES, SEARCH_LANDING_ROUTES, SITE_ORIGIN, THIN_CONTENT_THRESHOLD } from '@/seo/config';
 import { DEFAULT_LOCALE, LOCALE_META, LOCALIZATION_PAUSED, LOCALIZED_ROUTES, getAlternatePaths, getLocalesForRoute, getLocalizedPath, isSeoExcludedLocalizedRoute } from '@/i18n/config';
 
@@ -200,7 +200,9 @@ function getLatestDate(...dates: (string | null | undefined)[]): string {
 }
 
 function getBlogPostSourceFile(post: BlogPost): string {
-  return join(BLOG_CONTENT_DIR, `${post.slug}.mdx`);
+  // `id` is the collection path without extension, so this resolves translations
+  // living in a locale subdirectory as well as flat English posts.
+  return join(BLOG_CONTENT_DIR, `${post.id}.mdx`);
 }
 
 function getDocsRoute(entry: CollectionEntry<'docs'>): string {
@@ -252,6 +254,11 @@ function getTagLastModifiedDate(tag: BlogTag): string {
 }
 
 type Changefreq = 'daily' | 'weekly' | 'monthly' | 'yearly';
+
+interface AlternateLink {
+  hreflang: string;
+  href: string;
+}
 
 function getRouteHints(route: string): { changefreq: Changefreq; priority: string } {
   if (route === '/') {
@@ -330,6 +337,41 @@ export async function GET() {
   const posts = (await getAllPosts()).filter((post) =>
     isSitemapEligibleBlogPost(post, THIN_CONTENT_THRESHOLD),
   );
+
+  // Translated posts and the hreflang clusters they form with their English
+  // source. Only sitemap-eligible translations join a cluster: listing a page
+  // that is itself excluded would advertise an alternate crawlers will drop.
+  const translatedPosts = (await getTranslatedPosts()).filter((post) =>
+    isSitemapEligibleBlogPost(post, THIN_CONTENT_THRESHOLD),
+  );
+  const translationsByEnglishSlug = new Map<string, BlogPost[]>();
+
+  for (const post of translatedPosts) {
+    if (!post.translationOf) continue;
+    const group = translationsByEnglishSlug.get(post.translationOf) ?? [];
+    group.push(post);
+    translationsByEnglishSlug.set(post.translationOf, group);
+  }
+
+  const getTranslationPath = (post: BlogPost) =>
+    `/${LOCALE_META[post.locale as keyof typeof LOCALE_META].slug}/blog/${post.slug}`;
+
+  const buildTranslationCluster = (englishSlug: string): AlternateLink[] | undefined => {
+    const group = translationsByEnglishSlug.get(englishSlug);
+
+    if (!group || group.length === 0) {
+      return undefined;
+    }
+
+    return [
+      { hreflang: 'en', href: `${SITE_ORIGIN}/blog/${englishSlug}` },
+      ...group.map((post) => ({
+        hreflang: LOCALE_META[post.locale as keyof typeof LOCALE_META].lang,
+        href: `${SITE_ORIGIN}${getTranslationPath(post)}`,
+      })),
+    ];
+  };
+
   const blogEntries = posts.map((post) => {
     const loc = `${SITE_ORIGIN}/blog/${post.slug}`;
 
@@ -339,8 +381,18 @@ export async function GET() {
       lastmod: getBlogPostLastModifiedDate(post),
       changefreq: 'monthly' as Changefreq,
       priority: '0.7',
+      alternateLinks: buildTranslationCluster(post.slug),
     };
   });
+
+  const translatedBlogEntries = translatedPosts.map((post) => ({
+    loc: `${SITE_ORIGIN}${getTranslationPath(post)}`,
+    route: undefined,
+    lastmod: getBlogPostLastModifiedDate(post),
+    changefreq: 'monthly' as Changefreq,
+    priority: '0.7',
+    alternateLinks: buildTranslationCluster(post.translationOf as string),
+  }));
 
   const docs = (await getCollection('docs')) as CollectionEntry<'docs'>[];
   const docsEntries = docs
@@ -368,23 +420,37 @@ export async function GET() {
       priority: '0.55',
     }));
 
-  const urls = [...staticEntries.map((entry) => ({ ...entry, route: entry.loc.replace(SITE_ORIGIN, '') || '/' })), ...localizedEntries, ...blogEntries, ...tagEntries, ...docsEntries]
-    .map(({ loc, route, lastmod, changefreq, priority }) => {
-      const normalizedRoute = !LOCALIZATION_PAUSED
+  const urls = [...staticEntries.map((entry) => ({ ...entry, route: entry.loc.replace(SITE_ORIGIN, '') || '/' })), ...localizedEntries, ...blogEntries, ...translatedBlogEntries, ...tagEntries, ...docsEntries]
+    .map((entry) => {
+      const { loc, route, lastmod, changefreq, priority } = entry;
+      const alternateLinks = (entry as { alternateLinks?: AlternateLink[] }).alternateLinks;
+      const normalizedRoute = !alternateLinks
+        && !LOCALIZATION_PAUSED
         && LOCALIZED_ROUTES.includes(route as never)
         && !isSeoExcludedLocalizedRoute(route as string)
         ? route
         : undefined;
-      const alternates = normalizedRoute
-        ? Object.entries(getAlternatePaths(normalizedRoute))
-          .map(([locale, path]) => {
-            const hreflang = LOCALE_META[locale as keyof typeof LOCALE_META].lang;
-            return `    <xhtml:link rel="alternate" hreflang="${escapeXml(hreflang)}" href="${escapeXml(`${SITE_ORIGIN}${path}`)}" />`;
-          })
+      // Explicit clusters (blog translation pairs) win over the localized-route
+      // machinery, which only knows about LOCALIZED_ROUTES.
+      const alternates = alternateLinks
+        ? alternateLinks
+          .map((item) => `    <xhtml:link rel="alternate" hreflang="${escapeXml(item.hreflang)}" href="${escapeXml(item.href)}" />`)
           .join('\n')
-        : '';
-      const xDefault = normalizedRoute
-        ? `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(`${SITE_ORIGIN}${getLocalizedPath(normalizedRoute, DEFAULT_LOCALE)}`)}" />`
+        : normalizedRoute
+          ? Object.entries(getAlternatePaths(normalizedRoute))
+            .map(([locale, path]) => {
+              const hreflang = LOCALE_META[locale as keyof typeof LOCALE_META].lang;
+              return `    <xhtml:link rel="alternate" hreflang="${escapeXml(hreflang)}" href="${escapeXml(`${SITE_ORIGIN}${path}`)}" />`;
+            })
+            .join('\n')
+          : '';
+      const xDefaultHref = alternateLinks
+        ? alternateLinks.find((item) => item.hreflang === 'en')?.href
+        : normalizedRoute
+          ? `${SITE_ORIGIN}${getLocalizedPath(normalizedRoute, DEFAULT_LOCALE)}`
+          : undefined;
+      const xDefault = xDefaultHref
+        ? `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(xDefaultHref)}" />`
         : '';
 
       return `  <url>\n    <loc>${escapeXml(loc)}</loc>${alternates ? `\n${alternates}${xDefault}` : ''}\n    <lastmod>${escapeXml(lastmod)}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`;

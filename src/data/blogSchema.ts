@@ -3,6 +3,15 @@ import { z } from 'astro/zod';
 const BLOG_PLATFORM_VALUES = ['general', 'mac', 'windows'] as const;
 export type BlogPlatform = (typeof BLOG_PLATFORM_VALUES)[number];
 
+/**
+ * Locales a blog post can be authored in. English is the default and the only
+ * locale that appears in the blog index, archive, tag pages, and search index.
+ * Adding a locale here is deliberately a one-line change — the routing, hreflang,
+ * and sitemap machinery is locale-agnostic.
+ */
+const BLOG_LOCALE_VALUES = ['en', 'de'] as const;
+export type BlogLocale = (typeof BLOG_LOCALE_VALUES)[number];
+
 const BLOG_TOPIC_VALUES = [
   'ai-renaming',
   'automation',
@@ -74,4 +83,12 @@ export const blogCollectionSchema = z.object({
   reviewed: z.coerce.date().optional(),
   noindex: z.coerce.boolean().optional(),
   canonical: z.string().optional(),
+  locale: z.enum(BLOG_LOCALE_VALUES).default('en'),
+  /**
+   * For a non-English post: the English `slug` this post translates. Required in
+   * practice — `assertTranslationIntegrity` in src/data/blog.ts throws at build
+   * time when it is missing, points at an unknown English slug, or collides with
+   * another translation into the same locale.
+   */
+  translationOf: z.string().optional(),
 });

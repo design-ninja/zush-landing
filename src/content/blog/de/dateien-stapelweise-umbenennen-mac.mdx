@@ -1,0 +1,516 @@
+---
+title: "Dateien am Mac stapelweise umbenennen: 4 Methoden im Vergleich (2026)"
+description: "Mehrere Dateien gleichzeitig umbenennen am Mac – mit Finder, Automator, Kurzbefehlen oder KI. Schritt für Schritt erklärt, inklusive Rückgängig-Funktion."
+date: "2026-02-08"
+slug: "dateien-stapelweise-umbenennen-mac"
+platform: "mac"
+topic: "automation"
+tags:
+  - "Automation"
+  - "File Organization"
+tldr: "Nimm den Finder für einfache Regeln, die für alle Dateien gleich gelten, Automator oder Kurzbefehle für wiederkehrende Abläufe, das Terminal für skriptgesteuerte Stapel – und KI-Umbenennung, wenn jede Datei einen eigenen Namen aus ihrem Inhalt braucht."
+reviewed: "2026-07-28"
+locale: "de"
+translationOf: "batch-rename-files-on-mac-complete-guide"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Kurze Antwort: Um am Mac mehrere Dateien gleichzeitig umzubenennen, markierst du sie im Finder, klickst mit der rechten Maustaste und wählst **Umbenennen**. Im Dialog stehen dir **Text ersetzen**, **Text hinzufügen** und **Format** zur Verfügung. Für eine Regel, die du regelmäßig brauchst, nimmst du Automator oder Kurzbefehle, für Logik mit regulären Ausdrücken das Terminal – und KI dann, wenn jede Datei einen eigenen, beschreibenden Namen aus ihrem Inhalt bekommen soll.
+
+Der Finder ist die schnellste Methode für durchnummerierte Stapel und gemeinsame Präfixe. Automator und Kurzbefehle lohnen sich bei wiederkehrenden Abläufen. Das Terminal ist die richtige Wahl, wenn du reguläre Ausdrücke oder Metadaten-Logik brauchst. Ein KI-Umbenenner passt dann, wenn Screenshots, PDFs, Downloads, Fotos oder gemischte Ordner jeweils einen anderen, auffindbaren Namen brauchen.
+
+Wenn der letzte Fall auf deinen Ordner zutrifft: [Dateien stapelweise umbenennen](/batch-rename-files) oder [Zush für Mac](/de/mac). Die [Dokumentation zum Stapel-Umbenennen](/docs/batch-rename-files) erklärt Vorschau und Rückgängig-Funktion, die [Naming Blocks](/docs/naming-blocks) die wiederverwendbaren Namensmuster.
+
+Geprüft am 28. Juli 2026: Dieser Leitfaden wurde für die aktuellen Mac-Abläufe überarbeitet – Verhalten von „Name und Index" im Finder, Sortierreihenfolge, Grenzen bei Metadaten, Automator, Kurzbefehle, Terminal und KI-Werkzeuge für gemischte Ordner.
+
+Geprüfte Quellen für diese Aktualisierung: [Apple: Ordner, Dateien und Festplatten auf dem Mac umbenennen](https://support.apple.com/de-de/guide/mac-help/mchlp1144/mac), [Apple: Automator-Benutzerhandbuch](https://support.apple.com/de-de/guide/automator/welcome/mac), [Apple: Kurzbefehle-Benutzerhandbuch für den Mac](https://support.apple.com/de-de/guide/shortcuts-mac/apdf22b0444c/mac) und die [offizielle Hazel-Übersicht](https://www.noodlesoft.com/manual/hazel/hazel-overview/).
+
+| Methode am Mac | Wann sie passt | Die wichtigste Grenze |
+|---|---|---|
+| Finder: Umbenennen | Alle Dateien bekommen dasselbe Präfix, Suffix, dieselbe Ersetzung oder Nummerierung | Kann den Dateiinhalt nicht lesen |
+| Automator / Kurzbefehle | Du wiederholst dieselbe Regel jede Woche | Musterbasiert, nicht inhaltlich |
+| Terminal-Skripte | Du brauchst reguläre Ausdrücke, Metadaten oder eigene Logik | Wartungsaufwand, Fehler passieren schnell |
+| KI-Umbenennung | Screenshots, PDFs, Fotos, Downloads und gemischte Ordner brauchen unterschiedliche Namen | Am besten mit Vorschau vor dem Anwenden |
+
+Wenn dich speziell der Modus **Format** mit fortlaufendem Index interessiert, ist dieses Detail wichtig: Der neue Dateiname erscheint sofort im Finder, aber macOS ergänzt nicht automatisch zusätzliche beschreibende Metadaten, nur weil du die Datei umbenannt hast. Spotlight findet den neuen Namen. Tags, Kommentare, EXIF-Felder und PDF-Metadaten bleiben unverändert, solange kein Programm sie separat schreibt.
+
+Der Finder nummeriert außerdem in der Reihenfolge der aktuellen Auswahl. Sortiere den Ordner also so, wie die Reihenfolge am Ende aussehen soll, bevor du den Index vergibst. Soll `foto-001.jpg` das älteste Bild sein, sortierst du vorher nach Erstellungsdatum. Soll die Reihenfolge der aktuellen Finder-Ansicht entsprechen, prüfst du erst die sichtbare Reihenfolge und benennst dann um.
+
+Wenn du eine Mac-App suchst, die für Screenshots, PDFs, Fotos, Videos, Designdateien, Audio und Dokumente jeweils eigene Namen erzeugt, nimm den [KI-Dateiumbenenner Zush für Mac](/de/mac). Dieser Artikel ist die Schritt-für-Schritt-Ebene für den Vergleich von Finder, Automator, Terminal und KI.
+
+## Ändert das Umbenennen die Metadaten am Mac?
+
+In der Regel nicht. Ein Dateiname am Mac ist Teil des Pfads und nicht dasselbe wie EXIF-Daten, Finder-Tags, Spotlight-Kommentare, PDF-Titelfelder oder Office-Dokumenteigenschaften. Wenn du `IMG_4382.jpg` in `kunde-buero-whiteboard.jpg` umbenennst, finden Finder und Spotlight den neuen Namen – Kameramodell, Aufnahmedatum, GPS-Daten und die übrigen eingebetteten Foto-Metadaten ändern sich dadurch aber nicht.
+
+Diese Unterscheidung hilft bei der Wahl der Methode:
+
+- **Finder im Modus „Format"**, wenn du nur sichtbare Dateinamen wie `rechnung-001.pdf` brauchst.
+- **Automator oder Terminal**, wenn die Metadaten bereits existieren und du sie in den Dateinamen übernehmen willst.
+- **KI-Umbenennung**, wenn der nützliche Name erst aus dem Inhalt entstehen muss – etwa was ein Screenshot zeigt oder was in einer PDF-Rechnung steht.
+
+Wenn du beides brauchst, saubere Dateinamen und durchsuchbaren Kontext, nimm ein Werkzeug, das den Namen bewusst setzt und zusätzlich Tags oder Metadaten schreiben kann. Ein einfaches Umbenennen im Finder reicht dafür nicht.
+
+Dateien am Mac stapelweise umzubenennen ist einfach, solange die Regel einfach ist – und deutlich schwieriger, sobald jede Datei einen eigenen beschreibenden Namen braucht. Für `foto-001.jpg`, `foto-002.jpg` und ähnliche Stapel genügt der Modus „Format" mit fortlaufendem Index. Wer einen Ordner mit gemischten Screenshots, PDFs und Downloads durchsuchbar machen will, hat ein anderes Problem. Und wenn der Stapel überwiegend aus Fotos besteht, deckt der Leitfaden [Fotos am Mac organisieren](/de/blog/fotos-organisieren-mac) Ordner, Datumsformate, Tags und Backups rund um das Umbenennen ab.
+
+Deshalb gibt es kein einziges bestes Werkzeug für jede Situation. Dieser Leitfaden behandelt vier Ansätze im Detail: das eingebaute Umbenennen im Finder, Automator-Arbeitsabläufe, Terminal-Skripte und KI-gestütztes Umbenennen. Jeder Abschnitt enthält eine Anleitung und echte Beispiele, damit du die Methode wählen kannst, die zu deinem tatsächlichen Problem passt.
+
+> **Du willst den kürzesten Weg?** Wenn jede Datei einen eigenen beschreibenden Namen braucht (und nicht nur ein gemeinsames Präfix), springst du direkt zu [Dateien stapelweise umbenennen](/batch-rename-files) oder zum [Dateiumbenenner für Mac](/de/mac) – 50 kostenlose Umbenennungen, keine Registrierung.
+
+
+<BlogProductIntro
+  title="Stapel-Umbenennen am Mac, das den Inhalt versteht?"
+  description="Zush für Mac benennt gemischte Finder-Ordner anhand des Dateiinhalts um – mit Vorschau, Anwenden und Rückgängig für den ganzen Stapel."
+  links={[
+    { href: '/de/mac', label: 'KI-Umbenenner für Mac' },
+    { href: '/ai-file-organizer', label: 'KI-Dateiorganisator' },
+    { href: '/batch-rename-files', label: 'Dateien stapelweise umbenennen' },
+    { href: '/offline-ai-file-renamer', label: 'Offline-KI-Umbenenner' },
+    { href: '/docs/naming-blocks', label: 'Naming-Blocks-Doku' },
+  ]}
+/>
+
+![Zush-Vorschau beim Stapel-Umbenennen mit KI-generierten Namen für einen gemischten Ordner](/images/showcase/macos/batch-rename-light.webp)
+
+## Methode 1: Umbenennen im Finder
+
+Der Finder hat eine eingebaute Funktion zum Stapel-Umbenennen, die die meisten Mac-Nutzer nie entdecken. Sie kann drei Dinge: Text in Dateinamen ersetzen, Text vor oder hinter den bestehenden Namen setzen und Namen mit einer fortlaufenden Nummer oder einem Zähler formatieren.
+
+### Wann sich das Umbenennen im Finder lohnt
+
+- Eine gemeinsame Zeichenfolge über viele Dateien hinweg ersetzen (zum Beispiel `IMG_` durch `urlaub-`)
+- Ein Datum als Präfix oder einen Projektnamen als Suffix ergänzen
+- Eine Gruppe von Dateien fortlaufend nummerieren (etwa `foto-001.jpg`, `foto-002.jpg`)
+- Jede Umbenennung, bei der für alle Dateien dieselbe Regel gilt
+
+### Schritt für Schritt: mehrere Dateien im Finder umbenennen
+
+**Schritt 1: Dateien auswählen.**
+Öffne den Ordner mit den Dateien. Wähle mit Cmd+A alle aus oder klicke die erste Datei an und dann mit gedrückter Umschalttaste die letzte. Einzelne Dateien wählst du mit gedrückter Cmd-Taste.
+
+**Schritt 2: Den Dialog öffnen.**
+Klicke mit der rechten Maustaste (oder Ctrl+Klick) auf eine der ausgewählten Dateien und wähle **Umbenennen**. Alternativ über die Menüleiste: **Ablage** > **Umbenennen**. Es öffnet sich der Dialog „Finder-Objekte umbenennen".
+
+**Schritt 3: Den Modus wählen.**
+Oben im Dialog gibt es ein Einblendmenü mit drei Optionen:
+
+- **Text ersetzen** – Eine Zeichenfolge im aktuellen Namen suchen und durch eine andere ersetzen.
+- **Text hinzufügen** – Text vor oder hinter jeden Dateinamen setzen.
+- **Format** – Den kompletten Namen durch einen Grundnamen plus Index, Zähler oder Datum ersetzen.
+
+**Schritt 4: Einstellen und prüfen.**
+Fülle die Felder aus. Der Finder zeigt unten eine Vorschau des neuen Namens, sodass du das Ergebnis vor dem Bestätigen kontrollieren kannst.
+
+**Schritt 5: Auf „Umbenennen" klicken.**
+Alle ausgewählten Dateien werden sofort umbenannt. Ist etwas schiefgegangen, machst du mit Cmd+Z den gesamten Stapel unmittelbar danach rückgängig.
+
+### Beispiele aus dem Finder
+
+#### Modus „Text ersetzen"
+
+Du hast einen Stapel Produktbilder von einem Lieferanten heruntergeladen, und alle beginnen mit einem Herstellerkürzel, das du nicht brauchst.
+
+| Vorher | Nachher |
+|---|---|
+| `VNDX-001_blaues-modul.png` | `blaues-modul.png` |
+| `VNDX-001_rotes-modul.png` | `rotes-modul.png` |
+| `VNDX-001_gruenes-modul.png` | `gruenes-modul.png` |
+
+Einstellung: Suchen nach `VNDX-001_`, Ersetzen durch (leer lassen).
+
+#### Modus „Text hinzufügen"
+
+Du willst einem Satz Projektdateien den Projektnamen voranstellen.
+
+| Vorher | Nachher |
+|---|---|
+| `startseite-hero.psd` | `acme-relaunch_startseite-hero.psd` |
+| `ueber-uns-bereich.psd` | `acme-relaunch_ueber-uns-bereich.psd` |
+| `footer-layout.psd` | `acme-relaunch_footer-layout.psd` |
+
+Einstellung: Text hinzufügen `acme-relaunch_`, vor dem Namen.
+
+#### Modus „Format"
+
+Du hast 50 Fotos auf einer Veranstaltung gemacht und willst saubere, nummerierte Namen.
+
+| Vorher | Nachher |
+|---|---|
+| `IMG_7823.jpg` | `betriebsausflug-001.jpg` |
+| `IMG_7824.jpg` | `betriebsausflug-002.jpg` |
+| `IMG_7825.jpg` | `betriebsausflug-003.jpg` |
+
+Einstellung: Namensformat wählen, **Index** nach dem Namen hinzufügen, im Feld „Eigenes Format" `betriebsausflug-` eintragen und als Startzahl 1 angeben.
+
+### Grenzen des Finder-Umbenennens
+
+Der Finder wendet dieselbe Regel auf jede ausgewählte Datei an. Er kann keiner Datei einen eigenen, aus dem Inhalt abgeleiteten Namen geben. Reguläre Ausdrücke, bedingte Logik oder metadatengesteuerte Benennung sind ebenfalls nicht möglich. Dafür brauchst du ein anderes Werkzeug.
+
+### Ändert das Finder-Umbenennen die Metadaten?
+
+Nein. Beim Umbenennen im Finder ändert sich ausschließlich der Dateiname. Der neue Name ist im Finder, in Spotlight, in Öffnen-Dialogen und im Pfad sichtbar – EXIF-Metadaten, Finder-Tags, Finder-Kommentare, PDF-Titelfelder oder Dokumenteigenschaften werden dabei nicht geschrieben.
+
+Das ist wichtig, wenn Dateien später auffindbar bleiben sollen:
+
+| Feld | Ändert sich beim Finder-Umbenennen? | Auswirkung auf die Suche |
+|---|---|---|
+| Dateiname | Ja | Spotlight und die Finder-Suche finden den neuen Namen |
+| Pfad | Ja | Der Pfad enthält sofort den neuen Namen |
+| Finder-Tags | Nein | Tags müssen separat gesetzt werden |
+| Finder-Kommentare | Nein | Kommentare müssen separat gesetzt werden |
+| EXIF- und Kameradaten | Nein | Foto-Metadaten bleiben unverändert |
+| PDF- oder Office-Eigenschaften | Nein | Titel- und Autorenfelder bleiben unverändert |
+
+Wenn dir sauberere Dateinamen reichen, genügt der Finder. Willst du zusätzlich sinnvolle Namen, Tags und Metadaten für gemischte Screenshots, PDFs, Fotos und Dokumente, nimm einen KI-Umbenenner, der Namen und Metadaten bewusst schreibt. Zush unterstützt [Finder-Tags und Spotlight-taugliche Metadaten](/de/mac) zusätzlich zu den KI-generierten Dateinamen.
+
+
+## Methode 2: Automator-Arbeitsabläufe
+
+Automator ist ein Automatisierungswerkzeug von macOS, mit dem du mehrstufige Arbeitsabläufe ohne Programmierkenntnisse baust. Beim Umbenennen kann es mehr als der Finder: Du kannst mehrere Umbenennungsschritte verketten, Metadaten wie das Erstellungsdatum verwenden und den Arbeitsablauf an einen Ordner hängen, sodass er automatisch läuft.
+
+### Wann sich Automator lohnt
+
+- Du brauchst dieselbe Regel regelmäßig (wöchentliche Exporte, wiederkehrende Berichte)
+- Du willst Umbenennen mit anderen Aktionen kombinieren (verschieben, Endung ändern)
+- Du brauchst Benennung anhand von Metadaten (Erstellungsdatum, Dateigröße, Bildmaße)
+- Du willst ein Programm zum Draufziehen für Kolleginnen und Kollegen ohne Technikbezug
+
+### Schritt für Schritt: einen Umbenennungs-Arbeitsablauf bauen
+
+**Schritt 1: Automator öffnen.**
+Starte Automator über „Programme" oder Spotlight (Cmd+Leertaste, „Automator" eingeben). Wähle beim Start **Neues Dokument**.
+
+**Schritt 2: Den Typ wählen.**
+Je nach Einsatzzweck:
+
+- **Arbeitsablauf** – Läuft manuell in Automator. Gut zum Testen.
+- **Programm** – Eine eigenständige App, auf die du Dateien ziehst. Gut für gelegentliche Nutzung.
+- **Ordneraktion** – Hängt an einem bestimmten Ordner und läuft automatisch, sobald neue Dateien ankommen. Gut für dauerhafte Automatisierung.
+- **Schnellaktion** – Erscheint im Kontextmenü des Finders. Gut für den Bedarfsfall.
+
+Zum Stapel-Umbenennen sind **Programm** oder **Ordneraktion** am praktischsten.
+
+**Schritt 3: Die Umbenennungsaktion hinzufügen.**
+Suche links nach „Finder-Objekte umbenennen" und zieh die Aktion nach rechts in den Arbeitsablauf. Automator fragt, ob vorher ein Kopierschritt eingefügt werden soll, um die Originale zu erhalten. Klicke „Nicht hinzufügen", wenn direkt umbenannt werden soll, oder „Hinzufügen", wenn du Sicherungskopien möchtest.
+
+**Schritt 4: Die Regel einstellen.**
+Die Aktion „Finder-Objekte umbenennen" kennt mehrere Modi:
+
+- **Datum oder Uhrzeit hinzufügen** – Setzt Erstellungs- oder Änderungsdatum vor oder hinter den Namen. Praktisch für chronologisch sortierte Exporte.
+- **Groß-/Kleinschreibung ändern** – Wandelt Namen in Klein-, Groß- oder Anfangsbuchstaben um.
+- **Suchen und Ersetzen** – Wie „Text ersetzen" im Finder, aber mit anderen Aktionen kombinierbar.
+- **Fortlaufend nummerieren** – Ergänzt jede Datei um eine Indexnummer.
+- **Text ersetzen** – Tauscht eine Zeichenfolge gegen eine andere.
+
+Du kannst mehrere Umbenennungsaktionen hintereinander stapeln: erst `IMG_` durch nichts ersetzen, dann das Erstellungsdatum voranstellen, dann alles in Kleinbuchstaben umwandeln.
+
+**Schritt 5: Eingabe ergänzen.**
+Beim Typ „Arbeitsablauf" setzt du oben die Aktion „Bestimmte Finder-Objekte abfragen" ein und ziehst deine Dateien hinein. Bei „Programm" und „Ordneraktion" kommen die Dateien automatisch herein.
+
+**Schritt 6: Testen.**
+Klicke oben rechts auf „Ausführen" und prüfe das Ergebnis im Finder. Ist etwas schiefgelaufen, hilft Cmd+Z im Finder.
+
+**Schritt 7: Sichern.**
+Sichere den Arbeitsablauf unter einem sprechenden Namen wie „Kundenexporte umbenennen". Ein Programm legst du im Programme-Ordner oder auf dem Schreibtisch ab; eine Ordneraktion hängt sich an den gewählten Ordner.
+
+### Automator-Beispiel: Kundenlieferungen mit Datum
+
+Eine Designerin exportiert wöchentlich Dateien für Kunden und will das Exportdatum als Präfix.
+
+| Vorher | Nachher |
+|---|---|
+| `startseite-entwurf-v3.pdf` | `2026-02-08_startseite-entwurf-v3.pdf` |
+| `mobile-navigation-prototyp.pdf` | `2026-02-08_mobile-navigation-prototyp.pdf` |
+| `markenrichtlinien-update.pdf` | `2026-02-08_markenrichtlinien-update.pdf` |
+
+Arbeitsablauf: Bestimmte Finder-Objekte abfragen > Finder-Objekte umbenennen (Datum oder Uhrzeit hinzufügen, Hinzufügedatum, vor dem Namen, Format JJJJ-MM-TT, Trennzeichen Unterstrich).
+
+### Grenzen von Automator
+
+Automator arbeitet musterbasiert. Das funktioniert gut, wenn alle Dateien derselben Regel folgen sollen. Automator kann aber nicht in eine PDF hineinsehen und entscheiden, dass der Dateiname `steuererklaerung-2025.pdf` statt `scan_003.pdf` lauten sollte. Eine KI-Anbindung gibt es nicht, und die Zuverlässigkeit über macOS-Updates hinweg ist unbeständig geworden. Apple verlagert seine Investitionen erkennbar zu Kurzbefehlen, die einen Teil derselben Aufgaben mit anderer Oberfläche lösen.
+
+### Kurzbefehle: wo Apple heute investiert
+
+Kurzbefehle sind seit macOS Monterey Teil des Systems und werden von Apple aktiv weiterentwickelt. Für das Stapel-Umbenennen decken sie das meiste ab, was „Finder-Objekte umbenennen" kann – nur mit anderem Bauprinzip: Du baust eine kleine Schleife statt eine einzelne Aktion zu konfigurieren.
+
+Ein minimaler Kurzbefehl zum Stapel-Umbenennen sieht so aus:
+
+1. Neuen Kurzbefehl anlegen und als Eingabe **Dateien** aus **Schnellaktionen** festlegen.
+2. Die Aktion **Für jedes wiederholen** hinzufügen und die **Kurzbefehleingabe** übergeben.
+3. Innerhalb der Schleife **Datei umbenennen** einsetzen, als Datei das **Wiederholungselement** wählen und den neuen Namen mit **Text** zusammenbauen – etwa aus einem **Datum formatieren**-Ergebnis, einem Unterstrich und dem Wiederholungsindex.
+4. In den Details des Kurzbefehls **Als Schnellaktion verwenden** aktivieren und **Finder** ankreuzen.
+
+Danach taucht der Kurzbefehl im Kontextmenü des Finders unter **Schnellaktionen** auf: Dateien markieren, Kurzbefehl ausführen, fertig.
+
+Zwei Grenzen sind in der Praxis wichtig. Kurzbefehle bleiben musterbasiert – sie können einen Namen aus Datum, Zähler oder vorhandenem Text zusammensetzen, aber nicht erkennen, dass eine PDF ein Mietvertrag ist. Und eine Umbenennung durch einen Kurzbefehl steht nicht im Widerrufs-Stapel des Finders: Cmd+Z macht sie nicht rückgängig. Teste also zuerst an einem kopierten Ordner.
+
+Nimm Automator, wenn du bereits funktionierende Arbeitsabläufe hast oder eine Ordneraktion brauchst. Nimm Kurzbefehle für alles Neue, weil Apple diesen Weg weiterentwickelt.
+
+## Methode 3: Terminal-Skripte
+
+Wenn du dich auf der Kommandozeile wohlfühlst, geben dir Shell-Skripte die meiste Kontrolle. Du kannst reguläre Ausdrücke, Bedingungen, Schleifen und alle Metadaten nutzen, die über Kommandozeilenwerkzeuge erreichbar sind.
+
+### Wann sich Skripte lohnen
+
+- Du brauchst Mustererkennung mit regulären Ausdrücken (etwa Datumsangaben aus Dateinamen ziehen)
+- Du willst anhand von Metadaten umbenennen (EXIF-Daten, PDF-Eigenschaften)
+- Du brauchst bedingte Logik (nur Dateien umbenennen, die bestimmten Kriterien entsprechen)
+- Du arbeitest ohnehin im Terminal
+
+### Einfaches Umbenennen mit einer Schleife
+
+Alle `.jpeg`-Dateien in `.jpg` umbenennen:
+
+```bash
+for f in *.jpeg; do
+  mv "$f" "${f%.jpeg}.jpg"
+done
+```
+
+### Text im Dateinamen ersetzen
+
+Leerzeichen durch Bindestriche ersetzen, für alle Dateien im aktuellen Verzeichnis:
+
+```bash
+for f in *\ *; do
+  mv "$f" "${f// /-}"
+done
+```
+
+### Ein Datum aus den Metadaten voranstellen
+
+Jedem JPEG das EXIF-Aufnahmedatum voranstellen, mit `exiftool`:
+
+```bash
+for f in *.jpg; do
+  date=$(exiftool -d "%Y-%m-%d" -DateTimeOriginal -s3 "$f")
+  mv "$f" "${date}_${f}"
+done
+```
+
+Vorher und nachher:
+
+| Vorher | Nachher |
+|---|---|
+| `IMG_4201.jpg` | `2026-01-15_IMG_4201.jpg` |
+| `IMG_4202.jpg` | `2026-01-15_IMG_4202.jpg` |
+| `IMG_4203.jpg` | `2026-01-16_IMG_4203.jpg` |
+
+### Fortlaufende Nummerierung mit führenden Nullen
+
+Einen Satz Dateien mit Präfix und nullengefüllter Nummer umbenennen:
+
+```bash
+counter=1
+for f in *.png; do
+  mv "$f" "$(printf 'folie-%03d.png' $counter)"
+  counter=$((counter + 1))
+done
+```
+
+| Vorher | Nachher |
+|---|---|
+| `Bildschirmfoto 2026-02-01.png` | `folie-001.png` |
+| `Bildschirmfoto 2026-02-02.png` | `folie-002.png` |
+| `Bildschirmfoto 2026-02-03.png` | `folie-003.png` |
+
+### Das Kommando `rename` (Perl-Variante)
+
+Wenn du das Perl-Werkzeug `rename` über Homebrew installierst (`brew install rename`), bekommst du reguläre Ausdrücke in einem einzigen Befehl:
+
+```bash
+rename 's/IMG_/urlaub-/' *.jpg
+```
+
+Damit wird `IMG_` in jedem `.jpg`-Dateinamen im aktuellen Verzeichnis durch `urlaub-` ersetzt.
+
+### Grenzen von Skripten
+
+Skripte sind mächtig, verlangen aber technisches Wissen. Ein Tippfehler kann die Dateinamen eines ganzen Verzeichnisses zerstören, ohne Rückgängig-Funktion. Teste deshalb immer an einer Kopie oder stelle `echo` vor `mv`, um vorher zu sehen, was passieren würde:
+
+```bash
+for f in *.jpg; do
+  echo "mv $f -> urlaub-${f#IMG_}"
+done
+```
+
+Skripte teilen außerdem die Grundbeschränkung von Finder und Automator: Sie wenden Regeln an, sie verstehen nichts. Ein Skript kann nicht in ein Bild sehen und entscheiden, was darauf zu sehen ist. Dafür brauchst du KI.
+
+## Methode 4: KI-gestützte, inhaltsbasierte Umbenennung
+
+KI-Umbenennung unterscheidet sich grundlegend von allem oben. Statt ein Muster oder eine Regel auf Dateinamen anzuwenden, analysiert sie den Inhalt jeder Datei und erzeugt daraus einen beschreibenden Namen. Aus einem Screenshot eines Stripe-Dashboards wird `stripe-monatsumsatz-diagramm.png`. Aus einer gescannten PDF wird `mietvertrag-wohnung-2026.pdf`. Aus einem heruntergeladenen Foto wird `golden-gate-bridge-nebelmorgen.jpg`.
+
+
+### Wann sich KI-Umbenennung lohnt
+
+- Screenshots mit Zeitstempelnamen, die nichts über den Inhalt sagen
+- Gescannte Dokumente und PDFs mit Namen wie `scan_001.pdf`
+- Heruntergeladene Bilder mit nichtssagenden Namen wie `download.jpg` oder `IMG_4392.heic`
+- Jeder Ordner, in dem Dateinamen beschreiben sollen, was tatsächlich drinsteckt
+
+### So funktioniert es
+
+1. Du wählst Dateien aus oder zeigst dem Programm einen Ordner
+2. Die KI analysiert jede Datei: liest Text in Dokumenten, erkennt Objekte und Szenen in Bildern, wertet Videobilder aus und versteht Oberflächenelemente in Screenshots
+3. Sie erzeugt für jede Datei einen beschreibenden Namen aus dem Inhalt
+4. Die Dateien werden einzeln umbenannt, jede mit einem eigenen Namen
+
+Das ist der entscheidende Unterschied zu allen anderen Methoden: Jede Datei bekommt ihren eigenen Namen aus ihrem eigenen Inhalt, statt ein gemeinsames Muster für die ganze Gruppe.
+
+### Vorher und nachher: echte Beispiele
+
+#### Screenshots
+
+| Vorher | Nachher |
+|---|---|
+| `Bildschirmfoto 2026-02-08 um 09.14.22.png` | `figma-kasse-mobil-wireframe.png` |
+| `Bildschirmfoto 2026-02-08 um 09.18.44.png` | `stripe-dashboard-monatsumsatz.png` |
+| `Bildschirmfoto 2026-02-08 um 10.02.11.png` | `slack-designteam-feedback-thread.png` |
+| `Bildschirmfoto 2026-02-08 um 10.45.33.png` | `vscode-typescript-buildfehler-log.png` |
+| `Bildschirmfoto 2026-02-08 um 14.05.19.png` | `notion-sprintplanung-board-woche-6.png` |
+
+#### Dokumente und PDFs
+
+| Vorher | Nachher |
+|---|---|
+| `scan_001.pdf` | `mietvertrag-wohnung-2026.pdf` |
+| `download.pdf` | `steuerformular-acme-beratung.pdf` |
+| `Dokument (3).pdf` | `quartalsbericht-vertrieb-q4-2025.pdf` |
+| `anhang.pdf` | `rechnung-7842-webdesign-leistungen.pdf` |
+
+#### Fotos und Bilder
+
+| Vorher | Nachher |
+|---|---|
+| `IMG_4201.jpg` | `golden-gate-bridge-sonnenuntergang.jpg` |
+| `IMG_4202.jpg` | `fishermans-wharf-strassenkuenstler.jpg` |
+| `DSC_0087.jpg` | `teamessen-italienisches-restaurant.jpg` |
+| `photo_2026.heic` | `wanderweg-mammutbaumwald.heic` |
+| `download (1).jpg` | `blaues-sofa-midcentury.jpg` |
+
+
+### KI-Umbenennung mit Zush
+
+[Zush, der KI-Umbenenner für Mac](/de/mac), ist genau für diese Art des Umbenennens gebaut. Er verarbeitet Bilder, Screenshots, Videos, PDFs und Dokumente mit inhaltlicher Analyse. Du kannst Dateien im Stapel umbenennen, eine Ordnerüberwachung für neue Dateien einrichten und das Namensmuster um Datum, Kategorie oder eigene Präfixe erweitern.
+
+Für dauerhafte Automatisierung [überwacht Zush für Mac Ordner](/de/mac) wie Schreibtisch oder Downloads und benennt neue Dateien beim Eintreffen um. Aus dem Stapel-Umbenennen wird so ein Hintergrundprozess.
+
+Wenn Datenschutz oder die Wahl des Anbieters entscheidend sind, sieh dir vorher den [Offline-KI-Umbenenner](/offline-ai-file-renamer) an.
+
+<BlogCTA placement='inline' platform='mac' />
+
+## Vergleich: Methoden zum Stapel-Umbenennen am Mac
+
+| Merkmal | Finder | Automator | Kurzbefehle | Skripte | KI (Zush) |
+|---|---|---|---|---|---|
+| Schwierigkeit | Einfach | Mittel | Mittel | Hoch | Einfach |
+| Text ersetzen | Ja | Ja | Ja | Ja | Ja |
+| Präfix/Suffix ergänzen | Ja | Ja | Ja | Ja | Ja |
+| Fortlaufende Nummerierung | Ja | Ja | Ja (Wiederholungsindex) | Ja | Ja |
+| Reguläre Ausdrücke | Nein | Nein | Nein | Ja | Nein |
+| Benennung aus Metadaten | Nein | Ja | Ja (Dateidaten) | Ja | Eingeschränkt |
+| Benennung aus Inhalt | Nein | Nein | Nein | Nein | Ja |
+| Ordnerüberwachung | Nein | Ja (Ordneraktionen) | Nein (Ordneraktion nutzen) | Ja (cron/launchd) | Ja |
+| Rückgängig | Ja (Cmd+Z) | Ja (mit Kopierschritt) | Nein | Nein (ohne Sicherung) | Ja |
+| Bei Bildern | Nur Muster | Nur Muster | Nur Muster | Nur Muster | Liest den Bildinhalt |
+| Bei PDFs | Nur Muster | Nur Muster | Nur Muster | Nur Muster | Liest den PDF-Text |
+| Gemischte Dateitypen | Eine Regel für alle | Eine Regel für alle | Eine Regel für alle | Bedingte Logik möglich | Jede Datei einzeln benannt |
+| Kosten | Kostenlos | Kostenlos | Kostenlos | Kostenlos | Kostenlose Stufe + Bezahlpläne |
+
+Was passt, hängt davon ab, was du umbenennst und warum. Wenn alle Dateien dieselbe Textänderung brauchen, ist der Finder in zehn Sekunden fertig. Wenn jede Datei einen eigenen beschreibenden Namen braucht, ist KI die einzige Methode, bei der du nicht jede Datei selbst öffnen und dir einen Namen ausdenken musst.
+
+## Häufige Fehler beim Stapel-Umbenennen
+
+### Die Dateiendung vergessen
+
+Bei Skripten passiert es leicht, dass die Endung wegfällt oder überschrieben wird. Eine Datei, die von `bericht.pdf` zu `quartalsbericht` (ohne `.pdf`) wird, öffnet sich per Doppelklick nicht mehr richtig. Erhalte die Endung immer in deiner Logik.
+
+### Nicht an einer Kopie testen
+
+Umbenennen ist destruktiv. Wenn du ein falsches Muster auf 500 Dateien anwendest, kann das Rückgängigmachen mühsam oder unmöglich sein – besonders bei Skripten. Kopiere eine kleine Auswahl in einen Testordner, benenne dort um und prüfe das Ergebnis, bevor du die Originale anfasst.
+
+### Problematische Zeichen verwenden
+
+Vermeide unter macOS diese Zeichen in Dateinamen: `/`, `:` und Nullbytes. macOS ist zwar toleranter als Windows, aber Namen mit Sonderzeichen machen Probleme beim Synchronisieren in die Cloud, beim Übertragen auf externe Laufwerke und beim Austausch mit Windows- oder Linux-Nutzern. Umlaute funktionieren am Mac zuverlässig, sorgen beim Austausch über Systemgrenzen hinweg aber weiterhin für die meisten Kodierungsprobleme – bleib im Zweifel bei Buchstaben ohne Umlaut, Zahlen, Bindestrichen und Unterstrichen.
+
+### Die falsche Methode für das Problem
+
+„Text ersetzen" auf einen Ordner gemischter Screenshots anzuwenden ist Zeitverschwendung, weil jeder Screenshot etwas anderes zeigt. Umgekehrt ist KI übertrieben, wenn nur `IMG_` durch `urlaub-` ersetzt werden soll. Wähle das Werkzeug passend zur Aufgabe.
+
+### Die Sortierreihenfolge ignorieren
+
+Wenn du eine bestimmte Reihenfolge brauchst, nutze führende Nullen (`001`, `002`, nicht `1`, `2`). Ohne Auffüllen sortiert der Finder die Datei `10` zwischen `1` und `2`, weil alphabetisch und nicht numerisch sortiert wird. Nimm mindestens drei Stellen für Sammlungen unter 1.000 Dateien.
+
+## Tipps für bessere Ergebnisse
+
+### Erst eine Namenskonvention festlegen
+
+Entscheide vor dem Umbenennen, wie deine Namen aussehen sollen. Bindestriche oder Unterstriche? Kleinschreibung oder gemischt? Datum voran oder nicht? Mit einer festen Konvention benennst du einmal um, und die Namen bleiben brauchbar.
+
+### Dateien vor dem Umbenennen gruppieren
+
+Versuche nicht, einen ganzen Ordner mit gemischten Dateitypen in einem Durchgang umzubenennen. Trenne Fotos von Dokumenten von Screenshots und benenne jede Gruppe mit dem passenden Werkzeug und Muster um. So landet kein Fotoschema auf einer PDF.
+
+### Cmd+Z sofort nutzen
+
+Das Finder-Umbenennen lässt sich mit Cmd+Z rückgängig machen, aber nur unmittelbar danach. Führst du vorher andere Finder-Aktionen aus, ist der Verlauf weitergerückt. Prüfe das Ergebnis direkt nach dem Umbenennen.
+
+### Methoden kombinieren
+
+Ordner aus der Praxis brauchen oft mehr als einen Ansatz. Du kannst mit dem Finder ein gemeinsames Präfix entfernen und dann mit [Zush Dateien am Mac stapelweise umbenennen](/de/mac) lassen, um für die Dateien beschreibende Namen zu erzeugen, bei denen es auf den Inhalt ankommt. Fortlaufende Nummerierung für Veranstaltungsfotos, KI für Screenshots und Automator für wiederkehrende Exporte können im selben Arbeitsablauf nebeneinander bestehen.
+
+### Den Downloads-Ordner sauber halten
+
+Der Downloads-Ordner ist die häufigste Quelle schlecht benannter Dateien. Wenn du das Umbenennen für Downloads automatisierst, sammelt sich das Chaos gar nicht erst an.
+
+## Häufige Fragen
+
+### Was ist der schnellste Weg, mehrere Dateien am Mac umzubenennen?
+
+Der Finder, sofern alle Dateien dieselbe Änderung bekommen: Dateien markieren, rechte Maustaste, **Umbenennen**, dann **Text ersetzen**, **Text hinzufügen** oder **Format** wählen und anwenden. Das dauert etwa zehn Sekunden, unabhängig von der Anzahl der Dateien, und braucht keine Installation. Schnellster Weg ist das aber nur, solange eine Regel für den ganzen Stapel passt – wenn jede Datei einen eigenen beschreibenden Namen braucht, kann der Finder die Aufgabe gar nicht lösen, und ein KI-Umbenenner ist trotz Installation der schnellere Weg.
+
+### Wie benenne ich am Mac mehrere Dateien um, ohne etwas zu installieren?
+
+Mit der eingebauten Funktion des Finders. Dateien markieren, rechte Maustaste, **Umbenennen** wählen. Du kannst Text ersetzen, Text hinzufügen oder Namen fortlaufend nummerieren. Das funktioniert auf jedem Mac ab macOS Yosemite (10.10) ohne Download.
+
+### Kann der Finder Dateien anhand ihres Inhalts umbenennen?
+
+Nein. Das Umbenennen im Finder ist strikt musterbasiert. Es kann Zeichenfolgen ersetzen, Präfixe oder Suffixe ergänzen und fortlaufend nummerieren, aber nicht analysieren, was in einer Datei steht. Für inhaltsbasierte Namen brauchst du ein KI-Werkzeug, das Bilder, Videos und Dokumente lesen kann.
+
+![Zush-Aktivitätsbereich mit Umbenennungsverlauf und Rückgängig-Schaltflächen](/images/showcase/macos/activity-light.webp)
+
+### Ergänzt der Modus „Format" Metadaten am Mac?
+
+Nein. Der Modus „Format" ändert nur den Dateinamen und den sichtbaren Pfad. Finder-Tags, Finder-Kommentare, EXIF-Metadaten, PDF-Metadaten oder Office-Dokumenteigenschaften werden nicht ergänzt. Spotlight findet den neuen Namen, für tiefer liegende Metadaten brauchst du ein eigenes Werkzeug.
+
+### Lässt sich ein Stapel-Umbenennen am Mac rückgängig machen?
+
+Ja, wenn du den Finder benutzt hast. Direkt nach dem Umbenennen machst du mit Cmd+Z den gesamten Vorgang rückgängig, und alle Dateien bekommen ihre alten Namen zurück. Das funktioniert nur als unmittelbar nächste Aktion. Bei Terminal-Skripten gibt es kein eingebautes Rückgängig – teste dort immer an Kopien oder sichere vorher eine Liste der ursprünglichen Dateinamen.
+
+### Wie benenne ich Fotos am Mac mit Datum um?
+
+Für das Erstellungsdatum als Präfix ist die Automator-Aktion „Datum oder Uhrzeit hinzufügen" am einfachsten. Für das EXIF-Aufnahmedatum aus den Kameradaten nimmst du ein Terminal-Skript mit `exiftool`. Für Datum plus inhaltlichen Namen kombiniert ein KI-Werkzeug wie Zush Datumsmuster mit der Inhaltsanalyse.
+
+### Wie benenne ich hunderte Screenshots am Mac um?
+
+Für einfache Änderungen wie „Bildschirmfoto" durch einen Projektnamen zu ersetzen, erledigt das der Finder in Sekunden. Damit jeder Screenshot einen Namen aus seinem Inhalt bekommt, nimmst du KI-Umbenennung: alle Screenshots markieren, die KI jedes Bild analysieren lassen und Namen wie `slack-designreview-thread.png` statt `Bildschirmfoto 2026-02-08 um 10.45.33.png` erhalten. Für künftige Screenshots richtest du eine Ordnerüberwachung ein.
+
+### Kann ich PDFs anhand ihres Inhalts umbenennen?
+
+Ja, mit KI-Umbenennung. Die KI liest den Text jeder PDF und erzeugt daraus einen Dateinamen, der das Thema beschreibt. Aus einer gescannten Rechnung namens `scan_042.pdf` wird `rechnung-7842-webdesign-leistungen-maerz-2026.pdf`.
+
+### Ändert das Umbenennen Metadaten oder Erstellungsdaten?
+
+Eine Datei im Finder oder über Automator umzubenennen ändert weder Erstellungsdatum noch Änderungsdatum oder interne Metadaten. Der Inhalt bleibt identisch, nur der Dateiname im Dateisystem ändert sich. Manche Cloud-Dienste behandeln eine Umbenennung allerdings wie einen neuen Upload – prüfe nach großen Stapeln in synchronisierten Ordnern den Synchronisationsstatus.
+
+### Welche Namenskonvention sollte ich verwenden?
+
+Kleinbuchstaben, Bindestriche zwischen den Wörtern und Datumsangaben im ISO-Format (JJJJ-MM-TT), wenn die zeitliche Reihenfolge zählt. Vermeide Leerzeichen, Sonderzeichen und vage Bezeichnungen wie `final-v2`. Eine einheitliche Konvention macht Dateien sortierbar, durchsuchbar und über Betriebssysteme hinweg übertragbar.
+
+## Fazit
+
+Stapel-Umbenennen am Mac ist kein einzelner Arbeitsablauf, sondern eine Reihe davon – und der richtige Ansatz hängt davon ab, welche Art von Umbenennung du tatsächlich brauchst.
+
+Für schnelle Textersetzungen und fortlaufende Nummern erledigt der Finder das ohne Einrichtung in Sekunden. Für wiederkehrende Regeln, die automatisch laufen, geben dir Automator und Kurzbefehle Ordneraktionen und Metadatenzugriff. Für reguläre Ausdrücke und volle Kontrolle erlauben Terminal-Skripte alles, was das Dateisystem hergibt. Und für das schwierigste Problem – jeder Datei einen eigenen beschreibenden Namen aus ihrem tatsächlichen Inhalt zu geben – schließen KI-Werkzeuge die Lücke, die keine musterbasierte Methode erreicht.
+
+Nimm das einfachste Werkzeug, das zum echten Problem passt. Den Finder, wenn er reicht. Skripte, wenn es sein muss. Und KI, wenn die Dateinamen etwas bedeuten sollen.
