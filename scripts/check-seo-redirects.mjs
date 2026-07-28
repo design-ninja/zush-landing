@@ -95,6 +95,13 @@ assertRedirect('/batch-rename-tool', '/batch-rename-files');
 assertRedirect('/bulk-rename-files/', '/batch-rename-files');
 assertRedirect('/bulk-rename-files', '/batch-rename-files');
 assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/rename-files-with-ai', '/:locale');
+assertRedirect('/:locale(fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/batch-rename-files', '/:locale');
+assert(
+  !redirects.some((item) =>
+    item.source === '/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/batch-rename-files'
+  ),
+  'German batch rename landing page must not be captured by a locale redirect.',
+);
 
 assertRedirect('/file-renamer/', '/');
 assertRedirect('/file-renamer', '/');
