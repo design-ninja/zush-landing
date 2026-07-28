@@ -10,7 +10,7 @@ tags:
   - "File Naming"
   - "AI File Renaming"
 tldr: "Naming Blocks are reusable fields such as date, client_name, artist, invoice_number, bpm, and title. Zush 3.0 includes 145+ blocks across 19 categories so filenames stay consistent without manual typing."
-reviewed: "2026-07-19"
+reviewed: "2026-07-28"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
@@ -46,6 +46,18 @@ Naming Blocks make those roles explicit:
 
 Zush fills the blocks from metadata, extracted content, AI analysis, and the original file context.
 
+## Where each block gets its value
+
+Blocks are not all the same kind of thing, and knowing which kind you are adding tells you how reliable the result will be.
+
+**Filesystem and metadata blocks** read something that already exists on disk: created date, modified date, extension, parent folder, original filename, image resolution, audio artist and album fields. These are exact. If a photo has no EXIF capture date, the block comes back empty rather than guessed.
+
+**Counter and date blocks** are generated at rename time: a sequence number, the rename date, the year, the month. They are always available, which makes them safe fallbacks when a folder is inconsistent.
+
+**AI blocks** are derived from the file content: title, topic, scene, document type, vendor, amount, invoice number, client. These are the blocks that turn `scan_004.pdf` into something searchable, and they are also the ones worth checking in the preview before you apply a large batch.
+
+The practical rule: anchor a pattern with at least one exact block so the filename is still useful when the AI has little to work with. `{date}_{title}` degrades gracefully. `{title}` alone does not.
+
 ## 145+ blocks across 19 categories
 
 The full block set covers everyday file organization and specialized workflows:
@@ -74,6 +86,85 @@ If you want the workflow layer around these fields, read [Zush Templates: Reusab
 | `{vendor}_{invoice_number}_{date}` | `figma_inv-2034_2026-05-16.pdf` |
 | `{location}_{subject}_{date}` | `tokyo_station-night-rain_2026-05-16.jpg` |
 
+## Before and after, by block type
+
+The value of a block is easiest to see against the name the file arrived with.
+
+### Finance blocks: vendor, amount, invoice number
+
+Accounting folders are the strongest case for blocks, because the details you search by are printed inside the document and never in the filename.
+
+| Before | Pattern | After |
+|---|---|---|
+| `scan_0042.pdf` | `{vendor}_{invoice_number}_{date}` | `figma_inv-2034_2026-05-16.pdf` |
+| `download (3).pdf` | `{vendor}_{amount}_{date}` | `aws_412-80-usd_2026-04-30.pdf` |
+| `attachment.pdf` | `{date}_{document_type}_{vendor}` | `2026-03-11_receipt_apple-store.pdf` |
+
+Sorting by name now sorts by vendor, and a Spotlight search for an invoice number lands on the file directly.
+
+### Photo blocks: date, location, subject
+
+| Before | Pattern | After |
+|---|---|---|
+| `IMG_4382.HEIC` | `{date}_{subject}` | `2026-07-12_family-picnic-riverside.heic` |
+| `DSC_0087.NEF` | `{location}_{subject}_{date}` | `tokyo_station-night-rain_2026-05-16.nef` |
+| `photo_2026.heic` | `{date}_{event}_{subject}` | `2026-06-02_wedding_first-dance.heic` |
+
+The date block here reads the capture date from EXIF, not the day you happened to run the rename — which is why an imported archive still sorts correctly.
+
+### Audio blocks: artist, title, version
+
+| Before | Pattern | After |
+|---|---|---|
+| `track01.wav` | `{artist}_{title}_{version}` | `luma_night-drive_master-v2.wav` |
+| `Voice Memo 14.m4a` | `{date}_{client_name}_{title}` | `2026-05-16_acme_contract-review-call.m4a` |
+| `export_final.mp3` | `{artist}_{title}_{bpm}` | `luma_lo-fi-piano-loop_92bpm.mp3` |
+
+### Client-work blocks: client, project, document type
+
+| Before | Pattern | After |
+|---|---|---|
+| `Document (3).pdf` | `{client_name}_{project}_{document_type}` | `acme_site-rebuild_statement-of-work.pdf` |
+| `v2 FINAL final.psd` | `{client_name}_{project}_{title}_{version}` | `acme_site-rebuild_hero-banner_v2.psd` |
+| `Screenshot 2026-05-16 at 10.02.11.png` | `{date}_{client_name}_{title}` | `2026-05-16_acme_checkout-error-state.png` |
+
+## Template recipes worth copying
+
+These are starting points, not final answers. Each one is three to five blocks, which is the range where filenames stay scannable.
+
+| Folder | Pattern | Why this order |
+|---|---|---|
+| Screenshots | `{date}_{title}` | Chronological by default, description second |
+| Receipts and invoices | `{date}_{vendor}_{amount}` | Sorts by month, groups by vendor within it |
+| Client deliverables | `{client_name}_{project}_{document_type}_{title}` | Groups by client first, because that is how the folder is browsed |
+| Photo imports | `{date}_{event}_{location}_{title}` | Date-first keeps a mixed import in shot order |
+| Video and B-roll | `{project}_{scene}_{title}_{resolution}` | Project-first, because scenes only mean something inside one project |
+| Podcast and audio | `{artist}_{title}_{version}` | Version last so revisions sit next to each other |
+
+Start with the first two or three blocks and add more only when you catch yourself opening files to tell them apart.
+
+## Block order decides whether the name sorts or searches
+
+Both goals are legitimate, and they pull in opposite directions.
+
+Put a date block **first** when the folder is a timeline: screenshots, receipts, camera imports, meeting recordings. Alphabetical sort then equals chronological sort in both Finder and File Explorer, with no extra work — provided the date is ISO-formatted (`2026-05-16`, not `16-05-2026`).
+
+Put the grouping block first — client, project, vendor — when the folder is a collection rather than a timeline. Everything for one client sits together, and the date moves later in the name where it still reads fine.
+
+Put AI-generated title or topic blocks **last**. They are the most variable part of the name, so leading with them scatters related files across the sort order.
+
+One block to use sparingly: `{original_name}`. Keeping the old name alongside a new one doubles the length and reintroduces the noise you were trying to remove. Add it only when you need to trace files back to a source system.
+
+## Where blocks are the wrong tool
+
+Blocks compose a name from fields. They do not decide that two files belong in different folders, and they cannot invent a detail that is not in the file. Three cases where a pattern will disappoint you:
+
+- **Empty-source blocks.** A scanned page with no readable text gives an AI block very little; the preview will show it, and the fix is usually a shorter pattern for that folder rather than a longer one.
+- **Folders with genuinely mixed purposes.** A Downloads folder holding installers, invoices, and holiday photos has no single good pattern. Split it first, then apply a template per group.
+- **Names that need to match an external system.** If a filename has to match a case number or an asset ID exactly, use the exact metadata block or a custom block for it, and check the preview — an AI-derived approximation is not good enough for a system of record.
+
+The full block picker, formatting options, and the preview behavior are documented in the [Naming Blocks docs](/docs/naming-blocks), and the [batch rename docs](/docs/batch-rename-files) cover reviewing and undoing a batch before it lands.
+
 ## Why this helps search
 
 Search tools are strongest when filenames contain the words people actually remember. Naming Blocks make sure the useful details appear in the filename every time, not only when someone has the patience to type them manually.
@@ -89,3 +180,19 @@ No. Naming Blocks work across supported file types, including images, PDFs, docu
 ### Can I combine Naming Blocks with AI prompts?
 
 Yes. Prompts guide what the AI should extract or emphasize, while Naming Blocks control where those details land in the final filename.
+
+### What happens when a block has no value for a file?
+
+The block resolves to nothing rather than to a placeholder or a guess. That is why patterns built only from AI blocks can produce thin names on difficult files, and why it is worth anchoring a pattern with a date or counter block that is always available.
+
+### How many blocks should a pattern have?
+
+Three to five for most folders. Two is usually enough for screenshots and imports. Past five, filenames get long enough that Finder truncates them in column view and the extra detail stops paying for itself.
+
+### Do Naming Blocks work with folder monitoring?
+
+Yes. A template with its own block pattern can be attached to a watched folder, so files are named the same way whether you rename a batch by hand or the folder processes them as they arrive.
+
+### Can I reuse one block pattern across several folders?
+
+Yes — that is what templates are for. Save the pattern once and apply it wherever it fits, rather than rebuilding it per batch. [Zush Templates](/blog/zush-templates-file-renaming-workflows) covers that workflow layer.

@@ -9,7 +9,7 @@ tags:
   - "Automation"
   - "File Organization"
 tldr: "Use Finder for simple shared rules, Automator or Shortcuts for repeatable Mac workflows, Terminal for scripted batches, and AI batch renaming when each file needs a unique content-aware name."
-reviewed: "2026-07-15"
+reviewed: "2026-07-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -20,7 +20,7 @@ Finder is the fastest method for numbered batches and shared prefixes. Automator
 
 If that last case matches your folder, use [Batch Rename Files with AI](/batch-rename-files) or [Zush for Mac](/mac). The [batch rename docs](/docs/batch-rename-files) cover review and undo, while [Naming Blocks](/docs/naming-blocks) explain reusable filename patterns.
 
-Reviewed July 15, 2026: this guide was refreshed for current Mac batch rename workflows, including Finder Name and Index behavior, sort order, metadata limits, Automator, Shortcuts, Terminal, and AI tools for mixed folders.
+Reviewed July 28, 2026: this guide was refreshed for current Mac batch rename workflows, including Finder Name and Index behavior, sort order, metadata limits, Automator, Shortcuts, Terminal, and AI tools for mixed folders. This update adds a full Shortcuts walkthrough — Apple's actively developed automation tool — alongside the existing Automator method.
 
 Sources checked for this update: [Apple Automator User Guide](https://support.apple.com/guide/automator/welcome/mac), [Apple Shortcuts User Guide for Mac](https://support.apple.com/guide/shortcuts-mac/intro-to-shortcuts-apdf22b0444c/mac), [Apple Developer folder actions documentation](https://developer.apple.com/library/archive/documentation/LanguagesUtilities/Conceptual/MacAutomationScriptingGuide/WatchFolders.html), and [Hazel's official overview](https://www.noodlesoft.com/manual/hazel/hazel-overview/).
 
@@ -233,6 +233,23 @@ Automator is pattern-based. It works well when every file should follow the same
 
 For the full step-by-step on how to [Automator rename files on Mac](/blog/macos-automator-rename-files-guide) automatically, read the dedicated Automator guide.
 
+### Shortcuts: where Apple is putting the effort now
+
+Shortcuts ships with macOS Monterey and later and is the tool Apple is actively developing, so it is worth knowing even if your existing Automator workflows still run. For batch renaming it covers most of what "Rename Finder Items" does, with a different assembly model: you build a small loop instead of configuring one action.
+
+A minimal batch rename shortcut looks like this:
+
+1. Start a new shortcut and set **Receive** input to **Files** from **Quick Actions**.
+2. Add **Repeat with Each**, passing in **Shortcut Input**.
+3. Inside the loop, add **Rename File**, set the file to **Repeat Item**, and build the new name with **Text** — for example a **Format Date** result, an underscore, and the repeat index.
+4. In the shortcut details pane, enable **Use as Quick Action** and tick **Finder**.
+
+The shortcut then appears in Finder's right-click **Quick Actions** submenu, so you select the files, run it, and the whole batch is renamed in place.
+
+Two limits matter in practice. Shortcuts is still pattern-based — it can compose a name from a date, a counter, or existing text, but it cannot decide that a PDF is a lease agreement. And a rename performed by Shortcuts is not on Finder's undo stack, so Cmd+Z will not reverse it; test on a copied folder first.
+
+Choose Automator if you already have working `.workflow` files or need a Folder Action; choose Shortcuts for anything new, because it is the path Apple keeps updating.
+
 ## Method 3: Terminal scripts to bulk rename files on Mac
 
 If you are comfortable with the command line, shell scripts give you the most control over batch renaming on Mac. You can use regex, conditionals, loops, and any metadata available through command-line tools.
@@ -388,21 +405,21 @@ For a detailed comparison of AI renaming tools, see [Mac AI renamer tools compar
 
 ## Comparison: Mac batch rename methods
 
-| Feature | Finder | Automator | Scripts | AI (Zush) |
-|---|---|---|---|---|
-| Difficulty | Easy | Medium | Hard | Easy |
-| Replace text | Yes | Yes | Yes | Yes |
-| Add prefix/suffix | Yes | Yes | Yes | Yes |
-| Sequential numbering | Yes | Yes | Yes | Yes |
-| Regex support | No | No | Yes | No |
-| Metadata-based naming | No | Yes | Yes | Limited |
-| Content-aware naming | No | No | No | Yes |
-| Folder monitoring | No | Yes (Folder Actions) | Yes (with cron/launchd) | Yes |
-| Undo support | Yes (Cmd+Z) | Yes (if copy step added) | No (without backup) | Yes |
-| Works on images | Pattern only | Pattern only | Pattern only | Reads image content |
-| Works on PDFs | Pattern only | Pattern only | Pattern only | Reads PDF text |
-| Handles mixed file types | Same rule for all | Same rule for all | Conditional logic possible | Each file named individually |
-| Cost | Free | Free | Free | Free tier + paid plans |
+| Feature | Finder | Automator | Shortcuts | Scripts | AI (Zush) |
+|---|---|---|---|---|---|
+| Difficulty | Easy | Medium | Medium | Hard | Easy |
+| Replace text | Yes | Yes | Yes | Yes | Yes |
+| Add prefix/suffix | Yes | Yes | Yes | Yes | Yes |
+| Sequential numbering | Yes | Yes | Yes (Repeat Index) | Yes | Yes |
+| Regex support | No | No | No | Yes | No |
+| Metadata-based naming | No | Yes | Yes (file dates) | Yes | Limited |
+| Content-aware naming | No | No | No | No | Yes |
+| Folder monitoring | No | Yes (Folder Actions) | No (use a Folder Action) | Yes (with cron/launchd) | Yes |
+| Undo support | Yes (Cmd+Z) | Yes (if copy step added) | No | No (without backup) | Yes |
+| Works on images | Pattern only | Pattern only | Pattern only | Pattern only | Reads image content |
+| Works on PDFs | Pattern only | Pattern only | Pattern only | Pattern only | Reads PDF text |
+| Handles mixed file types | Same rule for all | Same rule for all | Same rule for all | Conditional logic possible | Each file named individually |
+| Cost | Free | Free | Free | Free | Free tier + paid plans |
 
 The right choice depends on what you are renaming and why. If every file needs the same text change, Finder takes 10 seconds. If every file needs a unique descriptive name, AI is the only option that does not require you to open each file and think of a name yourself.
 
@@ -451,6 +468,10 @@ Real-world folders often need more than one approach. You might use Finder to st
 The Downloads folder is the most common source of poorly named files. Setting up automatic renaming for downloads prevents the mess from accumulating. See [How to Organize Your Downloads Folder on Mac](/blog/how-to-organize-downloads-folder-mac) for a complete strategy.
 
 ## FAQ
+
+### What is the fastest way to batch rename files on Mac?
+
+Finder is the fastest way when every file gets the same change: select the files, right-click, choose Rename, pick Replace Text, Add Text, or Format, and apply. That is about ten seconds for any number of files and needs no setup or downloads. It is only the fastest when one rule fits the whole batch — if each file needs a different descriptive name, Finder cannot do the job at all and an AI renamer that reads file content is the faster route despite the extra install.
 
 ### How do I batch rename files on Mac without installing anything?
 

@@ -10,7 +10,7 @@ tags:
   - "Automation"
   - "File Naming"
 tldr: "Templates save your preferred rename setup so recurring folders can use the same naming structure, AI prompt, fields, and formatting without rebuilding the workflow every time."
-reviewed: "2026-07-19"
+reviewed: "2026-07-28"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
@@ -65,6 +65,54 @@ Templates are useful for recurring folders such as:
 | Invoices | `{vendor}_{invoice_number}_{date}` |
 | Screenshots | `{app}_{screen}_{task}` |
 | Legal files | `{counterparty}_{document_type}_{date}` |
+
+## Three worked templates
+
+A pattern on its own is only half a template. These three show the whole setup — blocks, formatting, and where the template gets applied — for workflows that recur often enough to be worth saving.
+
+### 1. Screenshot capture folder
+
+**Problem:** the screenshot folder fills with `Screenshot 2026-05-16 at 10.02.11.png`, and nothing in that name says which app or which bug.
+
+**Template:**
+
+- Naming Blocks: `{date}` then `{app}` then `{title}`
+- Formatting: lower case, hyphen separator, ISO date
+- Applied to: a monitored folder pointed at wherever macOS or Windows drops screenshots
+
+**Result:** `2026-05-16-figma-checkout-mobile-wireframe.png`, `2026-05-16-stripe-monthly-revenue-chart.png`.
+
+Date first keeps the folder in capture order; the app block is what makes a later search for "stripe" work at all. Two content blocks are enough here — screenshots are usually looked up by "when and what app", not by a long description.
+
+### 2. Expenses and receipts
+
+**Problem:** receipts arrive from email, downloads, and a scanner, all named by whatever system produced them, and at tax time none of them are findable.
+
+**Template:**
+
+- Naming Blocks: `{date}` then `{vendor}` then `{amount}`
+- Formatting: ISO date, lower case, hyphen separator
+- Applied to: a batch run over the year's receipt folder, then the same template attached to the folder for new arrivals
+
+**Result:** `2026-04-30-aws-412-80-usd.pdf`, `2026-03-11-apple-store-89-00-usd.pdf`.
+
+Sorting by name now sorts by month, and every vendor total is visible without opening a single file. Review this one in the preview before applying — vendor and amount are read out of the document, and a low-quality scan is where they go wrong.
+
+### 3. Client deliverables
+
+**Problem:** three clients, overlapping project names, and files called `v2 FINAL final.psd`.
+
+**Template:**
+
+- Naming Blocks: `{client_name}` then `{project}` then `{document_type}` then `{title}`
+- Formatting: lower case, underscore between sections
+- Applied to: each client's working folder, per batch at handoff time
+
+**Result:** `acme_site-rebuild_statement-of-work.pdf`, `acme_site-rebuild_hero-banner-dark.psd`.
+
+Client comes first because that is how the folder is actually browsed. The date is deliberately absent — for deliverables the version and document type matter more than the day, and the file system already tracks modification dates.
+
+For field-by-field detail on the blocks used above, see [Naming Blocks](/blog/naming-blocks-file-naming-guide) or the [Templates docs](/docs/templates).
 
 ## Why templates pair well with folder monitoring
 
