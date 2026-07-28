@@ -1,5 +1,25 @@
 # Changelog
 
+## [3.7.0.0] - 2026-07-28
+
+### Added
+- Turkish interface language.
+
+### Improved
+- The template picker now opens with Smart Rename and your recently used templates, with the full catalog one click away under "All templates".
+- Each template row shows a filename example on hover, and the edit action names the template it will open.
+- Large batch renames and undo no longer freeze the window while files are moved on disk.
+- Refreshed the PRO plan cards with clearer wording about unlimited cloud renames and using your own AI provider key.
+
+### Changed
+- Hindi is no longer offered as an interface language or as a filename output language.
+
+### Fixed
+- Closing Zush no longer crashes or leaves the app running in the background.
+- Removed false "not responding" reports after waking the computer from sleep.
+- More reliable checkout when the built-in browser component is unavailable, with a cleaner fallback to your default browser.
+
+
 ## [3.6.0.0] - 2026-07-22
 
 ### Added
