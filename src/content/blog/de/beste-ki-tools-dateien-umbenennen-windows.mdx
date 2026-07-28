@@ -1,0 +1,189 @@
+---
+title: "Dateien umbenennen unter Windows: 6 KI-Tools im Test (2026)"
+description: "6 KI-Tools zum Umbenennen von Dateien unter Windows im Vergleich: Zush, FilesDesk, RenameClick und mehr – Preise, Offline-KI, BYOK und Rückgängig-Funktion."
+date: "2026-04-23"
+slug: "beste-ki-tools-dateien-umbenennen-windows"
+platform: "windows"
+topic: "comparisons"
+tags:
+  - "AI File Renaming"
+  - "Tool Comparisons"
+tldr: "Welches KI-Tool zum Umbenennen unter Windows passt, hängt davon ab, ob du eine Installation über den Microsoft Store, Dokumentunterstützung, Screenshots, PDFs, Videos, Audio, BYOK, Offline-KI, Ordnerüberwachung und eine Rückgängig-Funktion brauchst. Zush passt am besten, wenn du einen einzigen Desktop-Ablauf statt einer Sammlung von Skripten willst."
+reviewed: "2026-07-28"
+locale: "de"
+translationOf: "best-ai-file-renamer-tools-windows-compared"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
+
+Kurze Antwort: Wenn du die Produktseite statt eines Vergleichs suchst, fang beim [KI-Dateiumbenenner Zush für Mac und Windows](/de) an. Geht es dir nur um Windows, dann bei [Zush für Windows](/de/windows). Dieser Artikel ist die Vergleichsebene: Er bewertet KI-Umbenennungs-Apps für Windows nach Installationsweg, Preis, Dateiformatabdeckung, lokaler KI, BYOK, Ordnerüberwachung und Rückgängig-Funktion.
+
+**Zuletzt geprüft: 24. Juli 2026** für RenameClick, AI Renamer und Renamer.ai; FilesDesk wurde zuletzt am 9. Juli 2026 geprüft.
+
+Geprüfte Quellen für diese Aktualisierung: [Zush für Windows im Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X), [FilesDesk](https://filesdesk.app/), [FilesDesk-Preise](https://filesdesk.app/pricing), [FilesDesk-Dokumentation](https://filesdesk.app/docs), [RenameClick](https://rename.click/) und die [Dokumentation der unterstützten Dateitypen](https://rename.click/docs/getting-started/supported-files), [AI Renamer](https://airenamer.app/), das separate [ai-renamer-CLI-Repository auf GitHub](https://github.com/ozgrozer/ai-renamer) und [Renamer.ai](https://renamer.ai/).
+
+| KI-Umbenenner für Windows | Am besten für | Worauf du achten solltest |
+|---|---|---|
+| Zush | Gemischte Ordner, Screenshots, PDFs, Videos, Dokumente, Ordnerüberwachung, Rückgängig | Desktop-Ablauf, nicht rein browserbasiert |
+| FilesDesk | Günstige BYOK-/lokale oder verwaltete KI unter Windows und Mac | Die öffentliche Dokumentation zeigt keine detaillierte Matrix für RAW, Design, Audio und Video |
+| RenameClick | Lokale Verarbeitung, KI-Suche und Ordnersortierung | Keine Video-, RAW- oder Designformate; Preise verstehen sich zzgl. MwSt. |
+| AI Renamer | Die günstigste Desktop-App mit lokalem Modell für 19 $ | Keine dokumentierte Ordnerüberwachung oder Rückgängig-Funktion; Cloud-Umbenennungen sind kontingentiert |
+| Renamer.ai | Dokument- und Vektorabläufe (EPS, SVG, AI) mit Magic Folders | Kontingentiertes Abo in jeder Stufe |
+| Eigenes PowerShell/Python | Individuelle Pipelines für Entwickler | Wiederholungen, doppelte Namen und Rückgängig pflegst du selbst |
+
+Die Kurzfassung: [Zush für Windows](/de/windows), wenn du eine Microsoft-Store-App mit der breitesten dokumentierten Formatabdeckung willst; RenameClick oder FilesDesk, wenn lokale Verarbeitung beziehungsweise BYOK-Kosten das Hauptkriterium sind; Renamer.ai, wenn Dokumentautomatisierung der Kern deines Ablaufs ist; und Skripte nur dann, wenn deren Pflege Teil deiner Arbeit ist.
+
+Wenn du zwar Windows-Dateiumbenenner, Werkzeuge zum Massenumbenennen oder inhaltsbasierte KI-Apps vergleichst, bist du meist über die Neugierphase hinaus. Das Problem ist schon real: Screenshots sammeln sich unter Zeitstempeln, PDFs kommen als `scan_004.pdf` an, in den Downloads liegt `final-v2-wirklich-final.docx`, und der Datei-Explorer wird unübersichtlich.
+
+Die Kaufentscheidung teilt sich meist in drei Richtungen: lokale beziehungsweise Offline-Verarbeitung, Anbieterkontrolle über BYOK oder eine pflegeleichte Windows-Desktop-App mit Vorschau und Rückgängig-Funktion. Diese Seite hält diese Abwägungen sichtbar, weil der Preis allein nichts darüber sagt, ob sich ein Umbenennungsstapel sicher zurücknehmen lässt.
+
+Verglichen werden Zush, FilesDesk, RenameClick, AI Renamer, Renamer.ai und eine selbst gebaute PowerShell-/Python-Pipeline. Es geht nicht darum, jedes Projekt im Internet aufzulisten, sondern darum, welche Möglichkeiten je nach Ablauf, Dateitypen und Bereitschaft zur Einrichtung sinnvoll sind.
+
+## Was ist ein KI-Dateiumbenenner?
+
+Ein KI-Dateiumbenenner ist ein Werkzeug, das liest, was in einer Datei steht, und daraus einen beschreibenden Dateinamen schreibt – statt eine gemeinsame Regel auf eine ganze Auswahl anzuwenden. Es sieht sich den Text eines Dokuments an, den sichtbaren Inhalt eines Bildes oder Screenshots oder einzelne Videobilder und schlägt für jede Datei einen anderen Namen vor: Aus `scan_004.pdf` wird `rechnung-7842-webdesign-leistungen.pdf`. Die Kategorie existiert, weil regelbasierte Werkzeuge zum Massenumbenennen die einzige Frage nicht beantworten können, auf die es in einem unübersichtlichen Ordner ankommt: Was ist das für eine Datei?
+
+Alles Weitere vergleicht die Windows-Apps dieser Kategorie anhand der praktischen Unterschiede – Installationsweg, Formatabdeckung, ob die KI lokal läuft und ob sich ein Stapel prüfen und zurücknehmen lässt.
+
+<BlogProductIntro
+  title="Du suchst die Windows-App?"
+  description="Zush für Windows ist die Microsoft-Store-App für KI-Umbenennung, Stapelprüfung, Ordnerüberwachung, BYOK und Rückgängig – für Screenshots, PDFs, Fotos, Videos, Audio und Dokumente."
+  links={[
+    { href: '/de/windows', label: 'KI-Umbenenner für Windows' },
+    { href: '/de', label: 'Dateiumbenenner' },
+    { href: '/offline-ai-file-renamer', label: 'Offline-KI-Umbenenner' },
+    { href: '/docs/byok', label: 'BYOK einrichten' },
+    { href: '/docs/naming-blocks', label: 'Naming-Blocks-Doku' },
+  ]}
+/>
+
+![Zush-Vorschau beim Stapel-Umbenennen mit KI-generierten Namen für einen gemischten Windows-Ordner](/images/showcase/windows/batch-rename-light.webp)
+
+## Worauf es unter Windows ankommt
+
+Die Windows-spezifischen Prüfpunkte unterscheiden sich leicht von denen am Mac:
+
+- **Passt es zum Datei-Explorer?** Fühlt sich die App in einem Windows-Ablauf nativ an oder ist sie nur eine verpackte Weboberfläche?
+- **Dokumente und Videos:** Screenshots sind einfach; PDFs, DOCX, XLSX, MP4-/MOV-Clips und gemischte Downloads-Ordner sind die eigentliche Prüfung.
+- **Automatisierung:** Einmaliges Stapel-Umbenennen ist nützlich, aber erst die automatische Ordnerüberwachung verhindert, dass das Chaos zurückkommt.
+- **Rückgängig und Prüfung:** Hunderte Dateien ohne Rückweg umzubenennen ist leichtsinnig.
+- **Store oder vertrauenswürdige Installation:** Viele Windows-Nutzer bevorzugen den Microsoft Store, weil Updates dann automatisch laufen.
+- **Windows-Suche:** Beschreibende Dateinamen und Metadaten zählen, wenn du die Suche später tatsächlich nutzt.
+
+Wenn dahinter die Frage steht, wie du unter Windows Dateien stapelweise umbenennst, fang bei [Zush für Windows](/de/windows) und der [Dokumentation zum Stapel-Umbenennen](/docs/batch-rename-files) an. Geht es darum, Dateien später wiederzufinden, hilft [durchsuchbare Dateinamen](/docs/file-search).
+
+Wenn es dir allgemeiner darum geht, Downloads, Screenshots, PDFs und gemischte Ordner in Ordnung zu halten, nimm zusätzlich zu diesem Vergleich den [KI-Dateiorganisator](/ai-file-organizer).
+
+## 1. Zush
+
+<BlogToolMeta platform="Windows 10 / 11 über den Microsoft Store" website="https://zushapp.com/windows" label="zushapp.com/windows">
+  <Fragment slot="pricing">Kostenlos (50 Umbenennungen zum Start), Pro 8 $/Monat oder 38 $ einmalig, BYOK bei bezahltem PRO enthalten</Fragment>
+</BlogToolMeta>
+
+[Zush für Windows](/de/windows) ist die stärkste Wahl, wenn du eine einzige Windows-App für Screenshots, Videos, PDFs, Fotos, Designdateien, iWork- und Office-Dokumente sowie Audio brauchst statt eines eigenen Werkzeugs pro Format. Es arbeitet im selben Desktop-Ablauf als Dateiumbenenner, KI-Umbenenner, Stapelumbenenner, Massenumbenennungswerkzeug, PDF-Umbenenner, Fotoumbenenner, Screenshot-Umbenenner, Videoumbenenner, Audioumbenenner, Designdatei-Umbenenner und Dokumentumbenenner – mit Vorlagen, mehr als 145 Naming Blocks, Ordnerüberwachung, eigenen Prompts, Rücknahme per Klick und BYOK.
+
+Was unter Windows heraussticht:
+
+- Installation über den Microsoft Store mit automatischen Updates
+- Unterstützung gemischter Dateien über Bild-, Design-, Video-, Audio- und Dokumentabläufe hinweg
+- Passt gut zu Screenshot-Ordnern, Exporten, Downloads und gescannten PDFs
+- Native ARM64- und x64-Pakete im Store
+- Klarer Prüfen-vor-Anwenden-Ablauf mit Rückgängig-Funktion
+
+Am besten für: Windows-Nutzer, die ein Werkzeug für den Alltag wollen und kein einmaliges Experiment.
+
+<BlogCTA placement='inline' platform='windows' />
+
+## 2. FilesDesk
+
+<BlogToolMeta platform="Desktop unter Windows und Mac" website="https://filesdesk.app/" label="filesdesk.app">
+  <Fragment slot="pricing">15 kostenlose Credits; monatlich 5 $ für 500 Credits oder 15 $ für 2.000 Credits; Lifetime 20 $ einmalig mit BYOK/lokaler KI</Fragment>
+</BlogToolMeta>
+
+FilesDesk hat den niedrigsten veröffentlichten Einmalpreis in diesem Windows-Feld. Die Preisseite nennt einen Lifetime-Weg für 20 $ mit BYOK oder lokaler KI sowie verwaltete Monatscredits für 5 $ und 15 $ pro Monat. Die Dokumentation führt Watch Folders, eigene Vorlagen, Stapelverarbeitung und mehrere KI-Anbieter auf.
+
+Am besten für: Windows-Nutzer, die einen günstigen BYOK-, lokalen oder credit-basierten Ablauf wollen und deren Dateien überwiegend Fotos, PDFs, Rechnungen, Belege, Verträge, Screenshots und gängige Dokumente sind. Bevor du dich damit für gemischte Mediensammlungen entscheidest, prüfe die Unterstützung für RAW, Designdateien, Audio, Video und iWork an deinen eigenen Dateien – die geprüfte Dokumentation veröffentlicht keine detaillierte Formatmatrix.
+
+## 3. RenameClick
+
+<BlogToolMeta platform="Desktop unter Windows und Mac" website="https://rename.click/" label="rename.click">
+  <Fragment slot="pricing">Kostenlos mit unbegrenzter Analyse und 30 Anwendungs-Credits/Monat; Pro monatlich 8 $ zzgl. MwSt.; Pro Lifetime 48 $ zzgl. MwSt. einmalig</Fragment>
+</BlogToolMeta>
+
+![Oberfläche der RenameClick-Desktop-App (Bild: rename.click)](/images/blog/competitors/renameclick.webp)
+
+RenameClick ist der stärkste lokal arbeitende Windows-Konkurrent und auf beiden Plattformen eine echte Desktop-App statt einer verpackten Weboberfläche – die eigene Website beschreibt sie als „built for real folders on macOS and Windows, not a cloud upload workflow". Sie bringt eingebaute lokale KI, Ollama, LM Studio, optionale Cloud-Anbieter, KI-Suche, vollständiges Rückgängig/Wiederholen und eine Automatisierung für den Downloads-Ordner mit, die neue Dateien umbenennen, einordnen und verschieben kann. Die dokumentierten Formate umfassen inzwischen 10 Bildtypen, mehr als 20 Dokumenttypen (PDF, DOCX, JSON, XML, YAML, HTML, SQL, Untertitel, ICS/VCF und weitere) sowie 5 Audiotypen mit lokaler Sprachtranskription.
+
+Am besten für: Windows-Nutzer, denen Offline- beziehungsweise lokale Analyse, KI-Suche und Ordnersortierung am wichtigsten sind. Die geprüfte Formatliste enthält keine RAW-Kameradateien und keine Designdateien wie Sketch, Figma oder PSD; Videodateien, Archive und ausführbare Dateien werden ausdrücklich nicht unterstützt. Für breit gemischte Medienordner bleibt Zush deshalb die sicherere Wahl. Beachte außerdem, dass die Pro-Preise ohne Mehrwertsteuer angegeben sind.
+
+## 4. AI Renamer
+
+<BlogToolMeta platform="Desktop unter Windows und Mac; ein separates Open-Source-CLI trägt denselben Namen" website="https://airenamer.app/" label="airenamer.app">
+  <Fragment slot="pricing">Local Mode 19 $ einmalig, Cloud Mode 10 $ für 200 Credits, 10 kostenlose Credits. Die Preisseite nennt keine CLI- oder Open-Source-Stufe.</Fragment>
+</BlogToolMeta>
+
+![Oberfläche von AI Renamer (Bild: airenamer.app)](/images/blog/competitors/ai-renamer.png)
+
+Zwei Projekte teilen sich diesen Namen, und es lohnt sich, sie auseinanderzuhalten. Die kommerzielle App unter airenamer.app verkauft den Local Mode für 19 $ einmalig und den Cloud Mode für 10 $ pro 200 Credits, mit 10 kostenlosen Credits bei der Anmeldung – ihre Preisseite bewirbt weder ein CLI noch eine Open-Source-Ausgabe. Das kostenlose, GPL-3.0-lizenzierte CLI [`ozgrozer/ai-renamer`](https://github.com/ozgrozer/ai-renamer) auf GitHub ist ein unabhängiges Projekt, das Bilder und Videos über Ollama, LM Studio oder einen OpenAI-Schlüssel umbenennt.
+
+Die bezahlte App ist attraktiv, wenn eine günstige Oberfläche für lokale Modelle im Vordergrund steht. Ihre Preisseite wirbt mit Unterstützung für alle Dateitypen sowie Ollama, LM Studio, OpenAI und eigene Modelle, während die öffentlichen Funktionsbeispiele weiterhin Bilder sowie PDF-, TXT- und Textdateien betonen. Der Nachteil: Der Ablauf ist für den gemischten Alltag am Schreibtisch weniger durchdacht als bei Zush – keine öffentlich dokumentierte Ordnerüberwachung, kein öffentlich dokumentierter Umbenennungsverlauf und keine detaillierte Formatdokumentation für RAW-, Office-, iWork-, Design-, Audio- und Videoabläufe.
+
+Am besten für: Nutzer, die den niedrigsten Einmalpreis für lokale Verarbeitung suchen und sich mehr für die Modellanbindung interessieren als für Ordnerautomatisierung.
+
+## 5. Renamer.ai
+
+<BlogToolMeta platform="Web-App + Desktop (Windows und Mac)" website="https://renamer.ai/" label="renamer.ai">
+  <Fragment slot="pricing">Kostenlos 25 Dateien/Monat; Pro 9,95 $/Monat, Power User 29,95 $/Monat, Ultimate 99,95 $/Monat</Fragment>
+</BlogToolMeta>
+
+![Screenshot der Renamer.ai-Desktop-App (Bild: renamer.ai)](/images/blog/competitors/renamer-ai.png)
+
+Renamer.ai ist praktisch, wenn du ein paar Dateien testen willst, ohne etwas zu installieren; die Desktop-App ergänzt Magic Folders, Vorschau, Rücknahme per Klick und dokumentlastige OCR-Abläufe. Die aktuelle FAQ nennt mehr als 30 Formate und über 20 Sprachen, darunter die Vektorformate EPS, SVG und AI (Illustrator) – jedoch nicht PSD, Sketch oder Figma. Jede Stufe ist nach Dateien pro Monat kontingentiert, von 200 bei Pro bis 5.000 bei Ultimate. Laut öffentlicher FAQ werden Dateien zur Extraktion und KI-Analyse übertragen und nach der Verarbeitung gelöscht – die Datenschutzlage ist also eine andere als bei BYOK oder lokalem Ollama. Der Hauptnachteil sind das Abomodell und die fehlende Wahl zwischen BYOK und lokalem Ollama.
+
+Am besten für: Windows-Nutzer mit dokumentlastigen OCR-Abläufen, die mit einem Abo einverstanden sind.
+
+## 6. Eigene Python- oder PowerShell-Pipeline
+
+Du kannst deinen Umbenennungsablauf unter Windows selbstverständlich selbst bauen. Das Grundmuster:
+
+1. Dateien aus einem Ordner lesen
+2. Bild- oder Textdaten an ein KI-Modell schicken
+3. Die Ausgabe in einen sicheren Dateinamen umwandeln
+4. Lokal umbenennen
+
+Das klingt einfach, bis Wiederholungsversuche, fehlerhafte Modellausgaben, doppelte Namen, Rückgängig, Zugangsdaten und Windows-Pfad-Sonderfälle dazukommen. Für viele wird das Skript zum eigentlichen Projekt, statt das Projekt zu lösen.
+
+Am besten für: technisch versierte Nutzer, denen die Pflege eigener Werkzeuge Freude macht.
+
+## Fazit
+
+Wenn du das beste KI-Umbenennungswerkzeug für breit gemischte Windows-Ordner suchst, ist [Zush für Windows](/de/windows) derzeit die klarste Empfehlung. Es passt am besten, wenn deine Ordner Screenshots, Videos, Fotos, Designdateien, Audio, PDFs, iWork- und Office-Dokumente mischen und du Stapel-Umbenennen, Vorlagen, Naming Blocks, Überwachung und Rücknahme willst, ohne dir ein eigenes System zu bauen. Ist lokale Analyse oder Ordnersortierung wichtiger als breite Medienabdeckung, sieh dir RenameClick an. Zählt der niedrigste BYOK-Einmalpreis, sieh dir FilesDesk an.
+
+Zur Produktdokumentation: [Dateien stapelweise umbenennen](/docs/batch-rename-files), [automatisches Umbenennen mit Ordnerüberwachung](/docs/folder-monitoring) und [unterstützte Dateitypen](/docs/supported-file-types).
+
+## Häufige Fragen
+
+### Kann ich BYOK oder Offline-KI unter Windows nutzen?
+
+Ja. Zush für Windows enthält BYOK für Gemini, Groq, OpenAI und Claude in den bezahlten PRO-Plänen, sodass du dein eigenes Anbieterkonto statt mitgelieferter Credits verwenden kannst. Der Offline-KI-Modus gehört zur selben Produktfamilie und ist für private Abläufe mit lokalen Modellen gedacht; wenn Datenschutz oder lokale Ollama-Verarbeitung entscheidend sind, sieh dir die Seite [Offline-KI-Umbenenner](/offline-ai-file-renamer) an.
+
+### Was ist Software zum KI-gestützten Umbenennen?
+
+Solche Software analysiert den Dateiinhalt und erzeugt daraus automatisch beschreibende Dateinamen. Ein normales Werkzeug zum Massenumbenennen kann Text ersetzen oder Nummern ergänzen; ein KI-Umbenenner kann sich einen Screenshot, eine PDF, ein Dokument, ein Bild, ein Videobild oder einen Audiokontext ansehen und für jede Datei einen eigenen sinnvollen Namen vorschlagen.
+
+### Ist das etwas anderes als ein normales Werkzeug zum Massenumbenennen?
+
+Ja. Ein normales Massenumbenennungswerkzeug wendet eine gemeinsame Regel auf viele Dateien an. Unter Windows ist das meist [PowerRename](https://learn.microsoft.com/de-de/windows/powertoys/powerrename), das PowerToys-Werkzeug für Suchen und Ersetzen, reguläre Ausdrücke sowie Datums- und Attributvariablen über die im Datei-Explorer markierten Dateien hinweg. Es öffnet die Datei nie und kann deshalb eine Rechnung nicht von einer Garantiekarte unterscheiden, wenn beide als `scan_004.pdf` ankommen. Ein KI-Umbenenner erzeugt Namen aus dem Dateiinhalt und sollte dir erlauben, den Stapel vorher zu prüfen und danach zurückzunehmen. Bei Windows-Ordnern mit gemischten Screenshots, PDFs, Fotos, Videos, Audio und Office-Dateien zählt dieser Prüf-und-Rücknahme-Ablauf mehr als reine Geschwindigkeit.
+
+### Gibt es eine native Windows-App und nicht nur ein Browser-Werkzeug?
+
+Ja. [Zush für Windows](/de/windows) wird über den Microsoft Store installiert und ist für den Desktop gebaut, nicht für Hochladen-und-Herunterladen im Browser.
+
+### Was, wenn ich vor allem Screenshots umbenenne?
+
+Dann zählt der Screenshot-Ablauf mehr als der allgemeine Vergleich. Für gemischte Ordner am Mac beschreibt [Dateien am Mac stapelweise umbenennen](/de/blog/dateien-stapelweise-umbenennen-mac) den vergleichbaren Ablauf Schritt für Schritt.
+
+### Was, wenn ich vor allem PDFs und Downloads umbenenne?
+
+Dann haben Dokumentunterstützung und Automatisierung Vorrang. Wie du einen überquellenden Downloads-Ordner dauerhaft in den Griff bekommst, steht unter [Downloads-Ordner aufräumen](/de/blog/downloads-ordner-aufraeumen-mac); den Ablauf zum Werkzeug selbst findest du unter [Dateien stapelweise umbenennen](/batch-rename-files).
