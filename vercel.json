@@ -330,6 +330,15 @@
       ]
     },
     {
+      "source": "/llms.txt",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, follow"
+        }
+      ]
+    },
+    {
       "source": "/e/:path(.*)",
       "headers": [
         {

@@ -125,6 +125,9 @@ export async function GET() {
   return new Response(body, {
     headers: {
       'Content-Type': 'text/plain; charset=utf-8',
+      // The file is for LLM crawlers, not for Search: it duplicates the sitemap
+      // in prose and only ever lands in "Crawled - currently not indexed".
+      'X-Robots-Tag': 'noindex, follow',
     },
   });
 }
