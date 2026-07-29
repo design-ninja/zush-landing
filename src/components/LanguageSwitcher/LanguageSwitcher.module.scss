@@ -26,15 +26,19 @@
   min-width: 0;
   border: none;
   border-radius: $radius-full;
-  background-color: transparent;
+  // Translucent white so the header's blur shows through; dark theme gets a
+  // low-alpha white wash instead, which reads as a lighter surface there.
+  background-color: oklch(1 0 0 / 0.55);
   color: var(--foreground);
   cursor: pointer;
   font-family: var(--font-family);
   font-size: 0.9rem;
   font-weight: 500;
   line-height: 1.25;
-  // Matches --download-button-height for the `sm` DownloadButton beside it.
-  min-height: 1.95rem;
+  // Matches the DownloadButton beside it. Its height is not
+  // --download-button-height (1.95rem) but its 24px OS icon plus the 0.35rem
+  // vertical padding of `.Main` — 2.2rem.
+  min-height: 2.2rem;
   padding: 0 0.5rem 0 0.6rem;
   transition:
     background-color $transition-fast,
@@ -49,10 +53,19 @@
     padding: 0 0.65rem 0 0.75rem;
   }
 
+  :global(html[data-theme='dark']) & {
+    background-color: oklch(1 0 0 / 0.08);
+  }
+
   &:hover,
   &:focus-visible {
-    background-color: var(--muted);
+    background-color: oklch(1 0 0 / 0.8);
     outline: none;
+  }
+
+  :global(html[data-theme='dark']) &:hover,
+  :global(html[data-theme='dark']) &:focus-visible {
+    background-color: oklch(1 0 0 / 0.14);
   }
 
   &:focus-visible {
