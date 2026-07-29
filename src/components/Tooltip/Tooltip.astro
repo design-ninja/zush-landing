@@ -1,0 +1,21 @@
+---
+import styles from './Tooltip.module.scss';
+
+interface Props {
+  /** Text shown on hover. Pass copy that is already localized. */
+  label: string;
+  class?: string;
+}
+
+const { label, class: className } = Astro.props as Props;
+---
+
+{/*
+  Renders as a direct child of the element it describes — that element must be
+  `position: relative`, since the bubble is absolutely positioned against it.
+
+  `aria-hidden` is deliberate: triggers are expected to carry their own
+  accessible name (an `aria-label`, or visible text). Without it, an icon button
+  labelled the same way would be announced twice.
+*/}
+<span class={[styles.Tooltip, className].filter(Boolean).join(' ')} aria-hidden='true'>{label}</span>

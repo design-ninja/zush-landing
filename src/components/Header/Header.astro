@@ -36,7 +36,7 @@ const localeCopy = getCopy(locale);
 const copy = localeCopy.header;
 
 const featuresHref = `${basePath}#features`;
-const reviewsHref = `${basePath}#reviews`;
+const securityHref = `${basePath}#ways-to-run`;
 const pricingHref = `${basePath}#pricing`;
 const faqHref = `${basePath}#faq`;
 const homeHref = getLocalizedPath('/', locale);
@@ -85,7 +85,7 @@ const mobileBuyButtonClass = [
 
     <nav class={styles.Header__Nav} aria-label="Primary navigation">
       <a href={featuresHref} class={navLinkClass}>{copy.features}</a>
-      <a href={reviewsHref} class={navLinkClass}>{copy.reviews}</a>
+      <a href={securityHref} class={navLinkClass}>{copy.security}</a>
       <a href={pricingHref} class={navLinkClass}>{copy.pricing}</a>
       <a href={faqHref} class={navLinkClass}>{copy.faq}</a>
       <a href={blogHref} class={navLinkClass}>{copy.blog}</a>

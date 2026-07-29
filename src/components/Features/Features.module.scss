@@ -91,6 +91,9 @@
 
 .Band {
     margin-top: 4.5rem;
+    // Carries the #ways-to-run anchor on pages that render the band inline
+    // (platform landing pages); the fixed header would otherwise cover its title.
+    scroll-margin-top: calc($navbar-height + 1rem);
 
     @include mobile {
         margin-top: 3.5rem;

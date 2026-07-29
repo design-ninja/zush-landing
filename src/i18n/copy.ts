@@ -11,7 +11,11 @@ export interface FAQCopyItem {
 
 export interface HeaderCopy {
   features: string;
+  // `reviews` is still the aria-label for the hero star rating, which links to
+  // the testimonials section. The nav slot it used to occupy now points at the
+  // "3 ways to run Zush AI" band instead.
   reviews: string;
+  security: string;
   pricing: string;
   faq: string;
   blog: string;
@@ -81,6 +85,7 @@ export interface FooterCopy {
   followLinkedIn: string;
   followYouTube: string;
   productHunt: string;
+  googleWorkspace: string;
   designedBy: string;
   designedWith: string;
   productLinks: FooterProductLinks;
@@ -178,9 +183,9 @@ export const DEFAULT_FEATURE_CARDS_COPY: FeatureCardsCopy = {
   },
   cloudAi: {
     title: 'Cloud AI',
-    description: 'Works out of the box — no setup, no API keys. Drop files and Zush renames them with cloud AI right away.',
+    description: 'Goes through our relay to a commercial AI provider, under their standard API terms. The relay exists so the API key can’t be pulled out of the app.',
   },
-  bandTitle: '3 ways to run Zush AI: Cloud, BYOK, or Offline',
+  bandTitle: '3 secure ways to run Zush',
   bandSubtitle: 'Cloud AI that works out of the box, your own API key, or fully offline with Ollama.',
   addFolder: 'Add Folder',
   promptRules: 'Prompt rules',
@@ -999,6 +1004,7 @@ const EN_COPY: LocaleCopy = {
   header: {
     features: 'Features',
     reviews: 'Reviews',
+    security: 'Security',
     pricing: 'Pricing',
     faq: 'FAQ',
     blog: 'Blog',
@@ -1045,6 +1051,7 @@ const EN_COPY: LocaleCopy = {
     followLinkedIn: 'Zush on LinkedIn',
     followYouTube: 'Follow us on YouTube',
     productHunt: 'Zush on Product Hunt',
+    googleWorkspace: 'Zush on Google Workspace Marketplace',
     designedBy: 'Designed by',
     designedWith: 'with',
     productLinks: {
@@ -1214,8 +1221,8 @@ const EN_COPY: LocaleCopy = {
     buttonText: 'Buy PRO 🌟',
     buttonHint: '14-day money-back guarantee • Secure via Paddle',
     features: [
-      { title: 'Unlimited PRO renames', desc: 'Remove the cloud rename limit' },
-      { title: 'Bring Your Own Key', desc: 'Unlimited cloud renames with your key' },
+      { title: 'Unlimited Cloud Renames', desc: 'Rename without limits using Cloud AI' },
+      { title: 'Bring Your Own Key', desc: 'Use your own OpenAI, Gemini, Claude or Groq key' },
       { title: 'Offline AI mode', desc: 'Private local models via Ollama' },
     ],
     sharedFeaturesTitle: 'PRO 🌟 Features',
@@ -1927,6 +1934,7 @@ type FooterVisibleCopy = Pick<
   | 'followLinkedIn'
   | 'followYouTube'
   | 'productHunt'
+  | 'googleWorkspace'
   | 'designedBy'
   | 'designedWith'
   | 'productLinks'
@@ -1948,6 +1956,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     followLinkedIn: 'Zush auf LinkedIn',
     followYouTube: 'Zush auf YouTube folgen',
     productHunt: 'Zush auf Product Hunt',
+    googleWorkspace: 'Zush im Google Workspace Marketplace',
     designedBy: 'Entworfen von',
     designedWith: 'mit',
     productLinks: {
@@ -1986,6 +1995,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     followLinkedIn: 'Zush sur LinkedIn',
     followYouTube: 'Suivre Zush sur YouTube',
     productHunt: 'Zush sur Product Hunt',
+    googleWorkspace: 'Zush sur Google Workspace Marketplace',
     designedBy: 'Conçu par',
     designedWith: 'avec',
     productLinks: {
@@ -2024,6 +2034,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     followLinkedIn: 'Zush no LinkedIn',
     followYouTube: 'Seguir o Zush no YouTube',
     productHunt: 'Zush no Product Hunt',
+    googleWorkspace: 'Zush no Google Workspace Marketplace',
     designedBy: 'Criado por',
     designedWith: 'com',
     productLinks: {
@@ -2062,6 +2073,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     followLinkedIn: 'Zush en LinkedIn',
     followYouTube: 'Seguir Zush en YouTube',
     productHunt: 'Zush en Product Hunt',
+    googleWorkspace: 'Zush en Google Workspace Marketplace',
     designedBy: 'Diseñado por',
     designedWith: 'con',
     productLinks: {
@@ -2100,6 +2112,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     followLinkedIn: 'Zush op LinkedIn',
     followYouTube: 'Volg Zush op YouTube',
     productHunt: 'Zush op Product Hunt',
+    googleWorkspace: 'Zush op Google Workspace Marketplace',
     designedBy: 'Ontworpen door',
     designedWith: 'met',
     productLinks: {
@@ -2138,6 +2151,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     followLinkedIn: 'Zush su LinkedIn',
     followYouTube: 'Segui Zush su YouTube',
     productHunt: 'Zush su Product Hunt',
+    googleWorkspace: 'Zush su Google Workspace Marketplace',
     designedBy: 'Progettato da',
     designedWith: 'con',
     productLinks: {
@@ -2176,6 +2190,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     followLinkedIn: 'LinkedIn の Zush',
     followYouTube: 'YouTube で Zush をフォロー',
     productHunt: 'Product Hunt の Zush',
+    googleWorkspace: 'Google Workspace Marketplace の Zush',
     designedBy: 'デザイン',
     designedWith: 'と',
     productLinks: {
@@ -2214,6 +2229,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     followLinkedIn: 'LinkedIn의 Zush',
     followYouTube: 'YouTube에서 Zush 팔로우',
     productHunt: 'Product Hunt의 Zush',
+    googleWorkspace: 'Google Workspace Marketplace의 Zush',
     designedBy: '디자인',
     designedWith: '와 함께',
     productLinks: {
@@ -2252,6 +2268,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     followLinkedIn: 'LinkedIn 上的 Zush',
     followYouTube: '在 YouTube 上关注 Zush',
     productHunt: 'Product Hunt 上的 Zush',
+    googleWorkspace: 'Google Workspace Marketplace 上的 Zush',
     designedBy: '设计',
     designedWith: '用',
     productLinks: {
@@ -2290,6 +2307,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     followLinkedIn: 'Zush’u LinkedIn’de takip edin',
     followYouTube: 'Zush’u YouTube’da takip edin',
     productHunt: 'Product Hunt’ta Zush',
+    googleWorkspace: 'Google Workspace Marketplace’te Zush',
     designedBy: 'Tasarım',
     designedWith: 'ile',
     productLinks: {
@@ -2328,6 +2346,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     followLinkedIn: 'تابع Zush على LinkedIn',
     followYouTube: 'تابع Zush على YouTube',
     productHunt: 'Zush على Product Hunt',
+    googleWorkspace: 'Zush على Google Workspace Marketplace',
     designedBy: 'تصميم',
     designedWith: 'بواسطة',
     productLinks: {
@@ -2457,58 +2476,58 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
 
 const localizedPricingFeatures: Record<Exclude<Locale, 'en'>, PricingCopy['features']> = {
   de: simpleFeatures([
-    ['Unbegrenzte PRO-Umbenennungen', 'Bezahlte Pläne entfernen das Cloud-Umbenennungslimit'],
-    ['BYOK - eigener Schlüssel', 'Nutze deinen Provider-Schlüssel für unbegrenzte Cloud-Umbenennungen'],
+    ['Unbegrenzte Cloud-Umbenennungen', 'Ohne Limit umbenennen mit Cloud-KI'],
+    ['Bring Your Own Key', 'Nutze deinen eigenen OpenAI-, Gemini-, Claude- oder Groq-Schlüssel'],
     ['Offline-KI-Modus', 'Private lokale Modelle über Ollama'],
   ]),
   fr: simpleFeatures([
-    ['Renommages PRO illimités', 'Les offres payantes retirent la limite de renommage cloud'],
-    ['BYOK - votre propre clé', 'Utilisez la clé de votre fournisseur pour des renommages cloud illimités'],
+    ['Renommages cloud illimités', 'Renommez sans limite avec l’IA cloud'],
+    ['Bring Your Own Key', 'Utilisez votre propre clé OpenAI, Gemini, Claude ou Groq'],
     ['Mode IA hors ligne', 'Modèles locaux privés via Ollama'],
   ]),
   'pt-br': simpleFeatures([
-    ['Renomeações PRO ilimitadas', 'Planos pagos removem o limite de renomeação na nuvem'],
-    ['BYOK - sua própria chave', 'Use a chave do seu provedor para renomeações ilimitadas na nuvem'],
+    ['Renomeações ilimitadas na nuvem', 'Renomeie sem limites usando IA na nuvem'],
+    ['Bring Your Own Key', 'Use sua própria chave OpenAI, Gemini, Claude ou Groq'],
     ['Modo IA offline', 'Modelos locais privados via Ollama'],
   ]),
   es: simpleFeatures([
-    ['Renombrados PRO ilimitados', 'Los planes de pago eliminan el límite de renombrado en la nube'],
-    ['BYOK - tu propia clave', 'Usa la clave de tu proveedor para renombrados ilimitados en la nube'],
+    ['Renombrados ilimitados en la nube', 'Renombra sin límites con IA en la nube'],
+    ['Bring Your Own Key', 'Usa tu propia clave de OpenAI, Gemini, Claude o Groq'],
     ['Modo IA sin conexión', 'Modelos locales privados mediante Ollama'],
   ]),
   nl: simpleFeatures([
-    ['Onbeperkte PRO-hernoemingen', 'Betaalde plannen verwijderen de cloudlimiet'],
-    ['BYOK - je eigen sleutel', 'Gebruik je provider-sleutel voor onbeperkt hernoemen in de cloud'],
+    ['Onbeperkt hernoemen in de cloud', 'Hernoem zonder limiet met cloud-AI'],
+    ['Bring Your Own Key', 'Gebruik je eigen OpenAI-, Gemini-, Claude- of Groq-sleutel'],
     ['Offline AI-modus', 'Privé lokale modellen via Ollama'],
   ]),
   it: simpleFeatures([
-    ['Rinomine PRO illimitate', 'I piani a pagamento rimuovono il limite cloud'],
-    ['BYOK - la tua chiave', 'Usa la chiave del tuo provider per rinomine cloud illimitate'],
+    ['Rinomine cloud illimitate', 'Rinomina senza limiti con l’IA cloud'],
+    ['Bring Your Own Key', 'Usa la tua chiave OpenAI, Gemini, Claude o Groq'],
     ['Modalità IA offline', 'Modelli locali privati tramite Ollama'],
   ]),
   ja: simpleFeatures([
-    ['無制限の PRO リネーム', '有料プランではクラウドリネーム制限がなくなります'],
-    ['BYOK - 自分のキー', '自分のプロバイダーキーでクラウドリネームを無制限に実行'],
+    ['無制限のクラウドリネーム', 'クラウド AI で上限なくリネーム'],
+    ['Bring Your Own Key', '自分の OpenAI・Gemini・Claude・Groq キーを利用'],
     ['オフライン AI モード', 'Ollama によるプライベートなローカルモデル'],
   ]),
   ko: simpleFeatures([
-    ['무제한 PRO 이름 변경', '유료 플랜은 클라우드 이름 변경 제한을 제거합니다'],
-    ['BYOK - 내 키 사용', '내 제공업체 키로 클라우드 이름 변경을 무제한 사용'],
+    ['무제한 클라우드 이름 변경', '클라우드 AI로 제한 없이 이름 변경'],
+    ['Bring Your Own Key', '내 OpenAI, Gemini, Claude, Groq 키 사용'],
     ['오프라인 AI 모드', 'Ollama를 통한 비공개 로컬 모델'],
   ]),
   'zh-cn': simpleFeatures([
-    ['无限 PRO 重命名', '付费方案移除云端重命名限制'],
-    ['BYOK - 使用自己的密钥', '用自己的服务商密钥进行无限云端重命名'],
+    ['无限云端重命名', '使用云端 AI 不限量重命名'],
+    ['Bring Your Own Key', '使用你自己的 OpenAI、Gemini、Claude 或 Groq 密钥'],
     ['离线 AI 模式', '通过 Ollama 使用私有本地模型'],
   ]),
   tr: simpleFeatures([
-    ['Sınırsız PRO yeniden adlandırma', 'Ücretli planlar bulut yeniden adlandırma sınırını kaldırır'],
-    ['BYOK - kendi anahtarınızı kullanın', 'Sınırsız bulut yeniden adlandırma için sağlayıcı anahtarınızı kullanın'],
+    ['Sınırsız bulut yeniden adlandırma', 'Bulut yapay zekâsıyla sınırsız yeniden adlandırın'],
+    ['Bring Your Own Key', 'Kendi OpenAI, Gemini, Claude veya Groq anahtarınızı kullanın'],
     ['Çevrimdışı Yapay Zekâ modu', 'Ollama aracılığıyla özel yerel modeller'],
   ]),
   ar: simpleFeatures([
-    ['إعادة تسمية PRO غير محدودة', 'الخطط المدفوعة تزيل حد إعادة التسمية السحابية'],
-    ['BYOK - استخدم مفتاحك الخاص', 'استخدم مفتاح مزودك لإعادة تسمية غير محدودة عبر السحابة'],
+    ['إعادة تسمية سحابية غير محدودة', 'أعد التسمية بلا حدود عبر الذكاء السحابي'],
+    ['Bring Your Own Key', 'استخدم مفتاحك الخاص من OpenAI أو Gemini أو Claude أو Groq'],
     ['وضع Offline AI', 'نماذج محلية خاصة عبر Ollama'],
   ]),
 };
@@ -2776,8 +2795,8 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       customPrompts: { title: 'Eigene KI-Prompts', description: 'Definiere Regeln für Namen, Tags und Metadaten, damit die KI deinem Workflow folgt.' },
       byok: { title: 'Eigener API-Schlüssel', description: 'Verbinde Gemini, Groq, OpenAI oder Claude für unbegrenzte Cloud-Umbenennungen. Schlüssel bleiben lokal gespeichert.' },
       offlineAi: { title: 'Offline-KI-Modus', description: 'Private lokale Modelle über Ollama. Unterstützte Dateien offline verarbeiten, ohne Inhalte an Cloud-Anbieter zu senden.' },
-      cloudAi: { title: 'Cloud-KI', description: 'Funktioniert sofort — ohne Einrichtung und ohne API-Schlüssel. Dateien reinziehen, Zush benennt sie direkt mit Cloud-KI um.' },
-      bandTitle: '3 Wege, Zush AI zu nutzen: Cloud, BYOK oder Offline', bandSubtitle: 'Cloud-KI direkt einsatzbereit, dein eigener API-Schlüssel oder komplett offline mit Ollama.',
+      cloudAi: { title: 'Cloud-KI', description: 'Läuft über unser Relay zu einem kommerziellen KI-Anbieter, zu dessen üblichen API-Bedingungen. Das Relay sorgt dafür, dass der API-Schlüssel nicht aus der App extrahiert werden kann.' },
+      bandTitle: '3 sichere Wege, Zush zu nutzen', bandSubtitle: 'Cloud-KI direkt einsatzbereit, dein eigener API-Schlüssel oder komplett offline mit Ollama.',
       addFolder: 'Ordner hinzufügen', promptRules: 'Prompt-Regeln', customBadge: 'Eigen', templateActive: 'Aktives Template', templateNames: ['Screenshots', 'Musiktitel', 'Kunden-Meetingnotizen'], namingBlockLabels: ['{date}', '{client_name}', '{artist}', '{bpm}', '{invoice_number}', '{title}'], apiKeyConnected: 'API-Schlüssel verbunden', terminal: 'Terminal', localModelReady: 'Lokales Modell bereit', today: 'Heute', undo: 'Rückgängig', audioNewNames: ['LoFi_Piano_Loop_92BPM.mp3', 'Kunden_Erstgespraech.m4a'],
     },
     offlineAiModal: {
@@ -2811,8 +2830,8 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       customPrompts: { title: 'Prompts IA personnalisés', description: 'Définissez les règles de noms, tags et métadonnées pour adapter l’IA à votre workflow.' },
       byok: { title: 'Votre propre clé API', description: 'Connectez Gemini, Groq, OpenAI ou Claude pour des renommages cloud illimités. Les clés restent stockées localement.' },
       offlineAi: { title: 'Mode IA hors ligne', description: 'Modèles locaux privés via Ollama. Traitez les fichiers pris en charge sans envoyer leur contenu au cloud.' },
-      cloudAi: { title: 'IA cloud', description: 'Fonctionne immédiatement — sans configuration ni clé API. Déposez vos fichiers, Zush les renomme aussitôt avec l’IA cloud.' },
-      bandTitle: '3 façons d’utiliser l’IA de Zush : cloud, BYOK ou hors ligne', bandSubtitle: 'IA cloud prête à l’emploi, votre propre clé API ou entièrement hors ligne avec Ollama.',
+      cloudAi: { title: 'IA cloud', description: 'Passe par notre relais vers un fournisseur d’IA commercial, selon ses conditions d’API standard. Le relais existe pour que la clé API ne puisse pas être extraite de l’app.' },
+      bandTitle: '3 façons sécurisées d’utiliser Zush', bandSubtitle: 'IA cloud prête à l’emploi, votre propre clé API ou entièrement hors ligne avec Ollama.',
       addFolder: 'Ajouter un dossier', promptRules: 'Règles du prompt', customBadge: 'Personnalisé', templateActive: 'Modèle actif', templateNames: ['Captures', 'Pistes audio', 'Notes client'], namingBlockLabels: ['{date}', '{client_name}', '{artist}', '{bpm}', '{invoice_number}', '{title}'], apiKeyConnected: 'Clé API connectée', terminal: 'Terminal', localModelReady: 'Modèle local prêt', today: 'Aujourd’hui', undo: 'Annuler', audioNewNames: ['Boucle_piano_lofi_92BPM.mp3', 'Appel_decouverte_client.m4a'],
     },
     offlineAiModal: {
@@ -2846,8 +2865,8 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       customPrompts: { title: 'Prompts de IA personalizados', description: 'Crie regras de nomes, tags e metadados para adaptar a IA ao seu fluxo.' },
       byok: { title: 'Use sua própria chave', description: 'Conecte Gemini, Groq, OpenAI ou Claude para renomeações ilimitadas. As chaves ficam salvas localmente.' },
       offlineAi: { title: 'Modo IA offline', description: 'Modelos locais privados via Ollama. Processe arquivos compatíveis sem enviar conteúdo para a nuvem.' },
-      cloudAi: { title: 'IA na nuvem', description: 'Funciona de imediato — sem configuração e sem chaves de API. Solte os arquivos e o Zush os renomeia na hora com IA na nuvem.' },
-      bandTitle: '3 formas de usar a IA do Zush: nuvem, BYOK ou offline', bandSubtitle: 'IA na nuvem pronta para usar, sua própria chave de API ou totalmente offline com Ollama.',
+      cloudAi: { title: 'IA na nuvem', description: 'Passa pelo nosso relay até um provedor de IA comercial, sob os termos de API padrão dele. O relay existe para que a chave de API não possa ser extraída do app.' },
+      bandTitle: '3 formas seguras de usar o Zush', bandSubtitle: 'IA na nuvem pronta para usar, sua própria chave de API ou totalmente offline com Ollama.',
       addFolder: 'Adicionar pasta', promptRules: 'Regras do prompt', customBadge: 'Personalizado', templateActive: 'Modelo ativo', templateNames: ['Screenshots', 'Faixas de música', 'Notas de cliente'], namingBlockLabels: ['{date}', '{client_name}', '{artist}', '{bpm}', '{invoice_number}', '{title}'], apiKeyConnected: 'Chave API conectada', terminal: 'Terminal', localModelReady: 'Modelo local pronto', today: 'Hoje', undo: 'Desfazer', audioNewNames: ['Loop_piano_lofi_92BPM.mp3', 'Chamada_descoberta_cliente.m4a'],
     },
     offlineAiModal: {
@@ -2881,8 +2900,8 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       customPrompts: { title: 'Prompts de IA personalizados', description: 'Define reglas de nombres, tags y metadatos para adaptar la IA a tu flujo.' },
       byok: { title: 'Trae tu propia clave', description: 'Conecta Gemini, Groq, OpenAI o Claude para renombrados cloud ilimitados. Las claves se guardan localmente.' },
       offlineAi: { title: 'Modo IA offline', description: 'Modelos locales privados vía Ollama. Procesa archivos compatibles sin enviar contenido a la nube.' },
-      cloudAi: { title: 'IA en la nube', description: 'Funciona desde el primer momento — sin configuración ni claves API. Suelta los archivos y Zush los renombra al instante con IA en la nube.' },
-      bandTitle: '3 formas de usar la IA de Zush: nube, BYOK o sin conexión', bandSubtitle: 'IA en la nube lista para usar, tu propia clave API o completamente sin conexión con Ollama.',
+      cloudAi: { title: 'IA en la nube', description: 'Pasa por nuestro relay hacia un proveedor de IA comercial, bajo sus términos de API estándar. El relay existe para que la clave API no pueda extraerse de la app.' },
+      bandTitle: '3 formas seguras de usar Zush', bandSubtitle: 'IA en la nube lista para usar, tu propia clave API o completamente sin conexión con Ollama.',
       addFolder: 'Añadir carpeta', promptRules: 'Reglas del prompt', customBadge: 'Personalizado', templateActive: 'Plantilla activa', templateNames: ['Capturas', 'Pistas de música', 'Notas de cliente'], namingBlockLabels: ['{date}', '{client_name}', '{artist}', '{bpm}', '{invoice_number}', '{title}'], apiKeyConnected: 'Clave API conectada', terminal: 'Terminal', localModelReady: 'Modelo local listo', today: 'Hoy', undo: 'Deshacer', audioNewNames: ['Loop_piano_lofi_92BPM.mp3', 'Llamada_descubrimiento_cliente.m4a'],
     },
     offlineAiModal: {
@@ -2916,8 +2935,8 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       customPrompts: { title: 'Eigen AI-prompts', description: 'Stel regels in voor namen, tags en metadata zodat AI je workflow volgt.' },
       byok: { title: 'Eigen sleutel gebruiken', description: 'Koppel Gemini, Groq, OpenAI of Claude voor onbeperkt cloud-hernoemen. Sleutels blijven lokaal opgeslagen.' },
       offlineAi: { title: 'Offline AI-modus', description: 'Private lokale modellen via Ollama. Verwerk ondersteunde bestanden zonder inhoud naar de cloud te sturen.' },
-      cloudAi: { title: 'Cloud-AI', description: 'Werkt direct — zonder configuratie en zonder API-sleutels. Sleep bestanden erin en Zush hernoemt ze meteen met cloud-AI.' },
-      bandTitle: '3 manieren om Zush AI te gebruiken: cloud, BYOK of offline', bandSubtitle: 'Cloud-AI die direct werkt, je eigen API-sleutel of volledig offline met Ollama.',
+      cloudAi: { title: 'Cloud-AI', description: 'Loopt via onze relay naar een commerciële AI-aanbieder, onder diens standaard API-voorwaarden. De relay zorgt ervoor dat de API-sleutel niet uit de app te halen is.' },
+      bandTitle: '3 veilige manieren om Zush te gebruiken', bandSubtitle: 'Cloud-AI die direct werkt, je eigen API-sleutel of volledig offline met Ollama.',
       addFolder: 'Map toevoegen', promptRules: 'Promptregels', customBadge: 'Eigen', templateActive: 'Actieve template', templateNames: ['Screenshots', 'Muziektracks', 'Klantnotities'], namingBlockLabels: ['{date}', '{client_name}', '{artist}', '{bpm}', '{invoice_number}', '{title}'], apiKeyConnected: 'API-sleutel gekoppeld', terminal: 'Terminal', localModelReady: 'Lokaal model klaar', today: 'Vandaag', undo: 'Ongedaan maken', audioNewNames: ['LoFi_pianoloop_92BPM.mp3', 'Klantkennismaking_gesprek.m4a'],
     },
     offlineAiModal: {
@@ -2951,8 +2970,8 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       customPrompts: { title: 'Prompt IA personalizzati', description: 'Definisci regole per nomi, tag e metadati, così l’IA segue il tuo flusso.' },
       byok: { title: 'Usa la tua chiave', description: 'Collega Gemini, Groq, OpenAI o Claude per rinomine cloud illimitate. Le chiavi restano locali.' },
       offlineAi: { title: 'Modalità IA offline', description: 'Modelli locali privati via Ollama. Elabora file supportati senza inviare contenuti al cloud.' },
-      cloudAi: { title: 'IA cloud', description: 'Funziona subito — senza configurazione e senza chiavi API. Trascina i file e Zush li rinomina immediatamente con l’IA cloud.' },
-      bandTitle: '3 modi per usare l’IA di Zush: cloud, BYOK o offline', bandSubtitle: 'IA cloud pronta all’uso, la tua chiave API o completamente offline con Ollama.',
+      cloudAi: { title: 'IA cloud', description: 'Passa dal nostro relay a un provider di IA commerciale, secondo i suoi termini API standard. Il relay serve a impedire che la chiave API venga estratta dall’app.' },
+      bandTitle: '3 modi sicuri per usare Zush', bandSubtitle: 'IA cloud pronta all’uso, la tua chiave API o completamente offline con Ollama.',
       addFolder: 'Aggiungi cartella', promptRules: 'Regole prompt', customBadge: 'Personalizzato', templateActive: 'Modello attivo', templateNames: ['Screenshot', 'Tracce audio', 'Note cliente'], namingBlockLabels: ['{date}', '{client_name}', '{artist}', '{bpm}', '{invoice_number}', '{title}'], apiKeyConnected: 'Chiave API collegata', terminal: 'Terminale', localModelReady: 'Modello locale pronto', today: 'Oggi', undo: 'Annulla', audioNewNames: ['Loop_piano_lofi_92BPM.mp3', 'Chiamata_scoperta_cliente.m4a'],
     },
     offlineAiModal: {
@@ -2986,8 +3005,8 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       customPrompts: { title: 'カスタム AI プロンプト', description: '名前、タグ、メタデータのルールを設定し、AI の出力を自分のワークフローに合わせます。' },
       byok: { title: '自分のキーを使用', description: 'Gemini、Groq、OpenAI、Claude を接続して無制限にクラウドリネーム。キーはローカルに安全保存されます。' },
       offlineAi: { title: 'オフライン AI モード', description: 'Ollama 経由のプライベートなローカルモデルで、対応ファイルをクラウドに送らず処理できます。' },
-      cloudAi: { title: 'クラウド AI', description: '設定も API キーも不要で、すぐに使えます。ファイルをドロップすれば、Zush がクラウド AI で即座にリネームします。' },
-      bandTitle: 'Zush AI を使う 3 つの方法：クラウド、BYOK、オフライン', bandSubtitle: 'すぐ使えるクラウド AI、自分の API キー、または Ollama による完全オフライン。',
+      cloudAi: { title: 'クラウド AI', description: '当社のリレー経由で商用 AI プロバイダーに接続し、その標準 API 規約に従います。リレーがあるのは、API キーをアプリから取り出せないようにするためです。' },
+      bandTitle: 'Zush を安全に使う 3 つの方法', bandSubtitle: 'すぐ使えるクラウド AI、自分の API キー、または Ollama による完全オフライン。',
       addFolder: 'フォルダを追加', promptRules: 'プロンプトルール', customBadge: 'カスタム', templateActive: '有効なテンプレート', templateNames: ['スクリーンショット', '音楽トラック', 'クライアント議事録'], namingBlockLabels: ['{date}', '{client_name}', '{artist}', '{bpm}', '{invoice_number}', '{title}'], apiKeyConnected: 'APIキー接続済み', terminal: 'ターミナル', localModelReady: 'ローカルモデル準備完了', today: '今日', undo: '元に戻す', audioNewNames: ['ローファイピアノループ_92BPM.mp3', 'クライアント初回ヒアリング.m4a'],
     },
     offlineAiModal: {
@@ -3021,8 +3040,8 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       customPrompts: { title: '사용자 지정 AI 프롬프트', description: '이름, 태그, 메타데이터 규칙을 설정해 AI 결과를 작업 방식에 맞춥니다.' },
       byok: { title: '내 키 가져오기', description: 'Gemini, Groq, OpenAI, Claude를 연결해 무제한 클라우드 이름 변경을 사용합니다. 키는 로컬에 저장됩니다.' },
       offlineAi: { title: '오프라인 AI 모드', description: 'Ollama를 통한 개인 로컬 모델로 지원 파일을 클라우드 전송 없이 처리합니다.' },
-      cloudAi: { title: '클라우드 AI', description: '설정도 API 키도 필요 없이 바로 작동합니다. 파일을 끌어다 놓으면 Zush가 클라우드 AI로 즉시 이름을 바꿔줍니다.' },
-      bandTitle: 'Zush AI를 사용하는 3가지 방법: 클라우드, BYOK, 오프라인', bandSubtitle: '바로 쓸 수 있는 클라우드 AI, 내 API 키 연결, 또는 Ollama로 완전 오프라인.',
+      cloudAi: { title: '클라우드 AI', description: '자체 릴레이를 거쳐 상용 AI 제공업체로 연결되며, 해당 업체의 표준 API 약관을 따릅니다. 릴레이는 API 키를 앱에서 빼낼 수 없도록 하기 위해 존재합니다.' },
+      bandTitle: 'Zush를 안전하게 사용하는 3가지 방법', bandSubtitle: '바로 쓸 수 있는 클라우드 AI, 내 API 키 연결, 또는 Ollama로 완전 오프라인.',
       addFolder: '폴더 추가', promptRules: '프롬프트 규칙', customBadge: '사용자 지정', templateActive: '활성 템플릿', templateNames: ['스크린샷', '음악 트랙', '고객 미팅 노트'], namingBlockLabels: ['{date}', '{client_name}', '{artist}', '{bpm}', '{invoice_number}', '{title}'], apiKeyConnected: 'API 키 연결됨', terminal: '터미널', localModelReady: '로컬 모델 준비됨', today: '오늘', undo: '되돌리기', audioNewNames: ['로파이_피아노_루프_92BPM.mp3', '고객_디스커버리_콜.m4a'],
     },
     offlineAiModal: {
@@ -3056,8 +3075,8 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       customPrompts: { title: 'Özel yapay zekâ istemleri', description: 'Adlar, etiketler ve meta veriler için kurallar belirleyerek yapay zekâ çıktısını tarzınıza ve iş akışınıza uyarlayın.' },
       byok: { title: 'Kendi anahtarınızı kullanın', description: 'Sınırsız bulut yeniden adlandırma için kendi Gemini, Groq, OpenAI veya Claude API anahtarınızı bağlayın. Anahtarlar yerel ve güvenli depolamada tutulur.' },
       offlineAi: { title: 'Çevrimdışı Yapay Zekâ modu', description: 'Ollama aracılığıyla özel yerel modeller. Desteklenen dosyaları analiz içeriğini Zush bulutuna veya yapay zekâ sağlayıcılarına göndermeden işleyin.' },
-      cloudAi: { title: 'Bulut yapay zekâ', description: 'Kurulum ve API anahtarı gerektirmeden hemen çalışır. Dosyaları bırak, Zush bulut yapay zekâsıyla anında yeniden adlandırsın.' },
-      bandTitle: 'Zush yapay zekâsını kullanmanın 3 yolu: bulut, BYOK veya çevrimdışı', bandSubtitle: 'Kutudan çıktığı gibi çalışan bulut yapay zekâsı, kendi API anahtarın veya Ollama ile tamamen çevrimdışı.',
+      cloudAi: { title: 'Bulut yapay zekâ', description: 'İsteği kendi relay’imiz üzerinden ticari bir yapay zekâ sağlayıcısına iletir; sağlayıcının standart API koşulları geçerlidir. Relay, API anahtarının uygulamadan çıkarılamaması için vardır.' },
+      bandTitle: 'Zush’u güvenle kullanmanın 3 yolu', bandSubtitle: 'Kutudan çıktığı gibi çalışan bulut yapay zekâsı, kendi API anahtarın veya Ollama ile tamamen çevrimdışı.',
       addFolder: 'Klasör ekle',
       promptRules: 'İstem kuralları',
       customBadge: 'Özel',
@@ -3175,8 +3194,8 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       customPrompts: { title: '自定义 AI 提示词', description: '设置命名、标签和元数据规则，让 AI 输出符合你的风格和工作流。' },
       byok: { title: '使用自己的密钥', description: '连接 Gemini、Groq、OpenAI 或 Claude，实现无限云端重命名。密钥会安全保存在本地。' },
       offlineAi: { title: '离线 AI 模式', description: '通过 Ollama 使用私有本地模型。处理支持的文件时无需把分析内容发送到云端。' },
-      cloudAi: { title: '云端 AI', description: '开箱即用——无需配置、无需 API 密钥。拖入文件，Zush 立即用云端 AI 重命名。' },
-      bandTitle: '使用 Zush AI 的 3 种方式：云端、BYOK 或离线', bandSubtitle: '开箱即用的云端 AI、接入自己的 API 密钥，或通过 Ollama 完全离线。',
+      cloudAi: { title: '云端 AI', description: '通过我们的中继连接到商用 AI 提供商，遵循其标准 API 条款。中继的作用是让 API 密钥无法从应用中被提取。' },
+      bandTitle: '安全使用 Zush 的 3 种方式', bandSubtitle: '开箱即用的云端 AI、接入自己的 API 密钥，或通过 Ollama 完全离线。',
       addFolder: '添加文件夹', promptRules: '提示词规则', customBadge: '自定义', templateActive: '当前模板', templateNames: ['截图', '音乐轨道', '客户会议笔记'], namingBlockLabels: ['{date}', '{client_name}', '{artist}', '{bpm}', '{invoice_number}', '{title}'], apiKeyConnected: 'API 密钥已连接', terminal: '终端', localModelReady: '本地模型已就绪', today: '今天', undo: '撤销', audioNewNames: ['低保真钢琴循环_92BPM.mp3', '客户需求访谈.m4a'],
       analysisNewName: '巴厘岛_日落_海滩.png',
       batchNewNames: ['看板界面.png', '招聘计划笔记.docx', '投资人更新演示.pptx'],
@@ -3236,8 +3255,8 @@ const localizedHomeDetails: Record<Exclude<Locale, 'en'>, DeepPartial<Pick<HomeC
       customPrompts: { title: 'تعليمات AI مخصصة', description: 'حدد قواعد الأسماء والوسوم والبيانات الوصفية حتى تتبع نتائج الذكاء الاصطناعي أسلوبك وسير عملك.' },
       byok: { title: 'استخدم مفتاحك الخاص', description: 'اربط مفتاح API الخاص بك من Gemini أو Groq أو OpenAI أو Claude لإعادة تسمية غير محدودة عبر السحابة. يتم حفظ المفاتيح محليا بأمان.' },
       offlineAi: { title: 'وضع Offline AI', description: 'نماذج محلية خاصة عبر Ollama. عالج الملفات المدعومة دون إرسال محتوى التحليل إلى سحابة Zush أو مزودي الذكاء الاصطناعي.' },
-      cloudAi: { title: 'الذكاء السحابي', description: 'يعمل فورًا — دون إعداد أو مفاتيح API. أسقط الملفات وسيعيد Zush تسميتها مباشرةً بالذكاء السحابي.' },
-      bandTitle: '3 طرق لاستخدام ذكاء Zush الاصطناعي: السحابة أو BYOK أو دون اتصال', bandSubtitle: 'ذكاء سحابي جاهز فورًا، أو مفتاح API الخاص بك، أو دون اتصال تمامًا عبر Ollama.',
+      cloudAi: { title: 'الذكاء السحابي', description: 'يمر عبر المُرحِّل الخاص بنا إلى مزوّد ذكاء اصطناعي تجاري، وفق شروط واجهته البرمجية القياسية. وجود المُرحِّل يمنع استخراج مفتاح API من التطبيق.' },
+      bandTitle: '3 طرق آمنة لاستخدام Zush', bandSubtitle: 'ذكاء سحابي جاهز فورًا، أو مفتاح API الخاص بك، أو دون اتصال تمامًا عبر Ollama.',
       addFolder: 'إضافة مجلد',
       promptRules: 'قواعد التعليمات',
       customBadge: 'مخصص',
@@ -3723,7 +3742,7 @@ const withLocalizedFileExamples = (
 const COPY: Record<Locale, LocaleCopy> = {
   en: base,
   de: localized({
-    header: { features: 'Funktionen', reviews: 'Bewertungen', pricing: 'Preise', faq: 'FAQ', blog: 'Blog', buyPro: '🌟 PRO kaufen', download: 'Herunterladen', downloadZush: 'Zush herunterladen', toggleTheme: 'Design wechseln', language: 'Sprache', homeAria: 'Zur Startseite', skipToContent: 'Zum Inhalt springen' },
+    header: { features: 'Funktionen', reviews: 'Bewertungen', security: 'Sicherheit', pricing: 'Preise', faq: 'FAQ', blog: 'Blog', buyPro: '🌟 PRO kaufen', download: 'Herunterladen', downloadZush: 'Zush herunterladen', toggleTheme: 'Design wechseln', language: 'Sprache', homeAria: 'Zur Startseite', skipToContent: 'Zum Inhalt springen' },
     downloadMenu: localizedDownloadMenu.de,
     footer: {
       description: 'KI-Dateiumbenenner und Stapel-Umbenennungstool für Mac und Windows',
@@ -3855,7 +3874,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     },
   }),
   fr: localized({
-    header: { features: 'Fonctions', reviews: 'Avis', pricing: 'Tarifs', faq: 'FAQ', blog: 'Blog', buyPro: 'Acheter 🌟 PRO', download: 'Télécharger', downloadZush: 'Télécharger Zush', toggleTheme: 'Changer le thème', language: 'Langue', homeAria: 'Aller à l’accueil', skipToContent: 'Aller au contenu' },
+    header: { features: 'Fonctions', reviews: 'Avis', security: 'Sécurité', pricing: 'Tarifs', faq: 'FAQ', blog: 'Blog', buyPro: 'Acheter 🌟 PRO', download: 'Télécharger', downloadZush: 'Télécharger Zush', toggleTheme: 'Changer le thème', language: 'Langue', homeAria: 'Aller à l’accueil', skipToContent: 'Aller au contenu' },
     downloadMenu: localizedDownloadMenu.fr,
     footer: { description: 'Renommeur de fichiers IA et outil de renommage par lot pour Mac et Windows', product: 'Produit', byFileType: 'Par type', resources: 'Ressources', support: 'Support', pricing: 'Tarifs', contactSupport: 'Contacter le support', feedback: 'Fonctions & bugs', terms: 'Conditions', privacy: 'Confidentialité', refund: 'Remboursement', ...localizedFooterDetails.fr },
     home: {
@@ -3930,7 +3949,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   'pt-br': localized({
-    header: { features: 'Recursos', reviews: 'Avaliações', pricing: 'Preços', faq: 'FAQ', blog: 'Blog', buyPro: 'Comprar 🌟 PRO', download: 'Baixar', downloadZush: 'Baixar Zush', toggleTheme: 'Alternar tema', language: 'Idioma', homeAria: 'Ir para o início', skipToContent: 'Pular para o conteúdo' },
+    header: { features: 'Recursos', reviews: 'Avaliações', security: 'Segurança', pricing: 'Preços', faq: 'FAQ', blog: 'Blog', buyPro: 'Comprar 🌟 PRO', download: 'Baixar', downloadZush: 'Baixar Zush', toggleTheme: 'Alternar tema', language: 'Idioma', homeAria: 'Ir para o início', skipToContent: 'Pular para o conteúdo' },
     downloadMenu: localizedDownloadMenu['pt-br'],
     footer: { description: 'Renomeador de arquivos com IA e ferramenta de renomeação em lote para Mac e Windows', product: 'Produto', byFileType: 'Por tipo', resources: 'Recursos', support: 'Suporte', pricing: 'Preços', contactSupport: 'Falar com suporte', feedback: 'Recursos e bugs', terms: 'Termos', privacy: 'Privacidade', refund: 'Reembolso', ...localizedFooterDetails['pt-br'] },
     home: {
@@ -4005,7 +4024,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   es: localized({
-    header: { features: 'Funciones', reviews: 'Reseñas', pricing: 'Precios', faq: 'FAQ', blog: 'Blog', buyPro: 'Comprar 🌟 PRO', download: 'Descargar', downloadZush: 'Descargar Zush', toggleTheme: 'Cambiar tema', language: 'Idioma', homeAria: 'Ir al inicio', skipToContent: 'Saltar al contenido' },
+    header: { features: 'Funciones', reviews: 'Reseñas', security: 'Seguridad', pricing: 'Precios', faq: 'FAQ', blog: 'Blog', buyPro: 'Comprar 🌟 PRO', download: 'Descargar', downloadZush: 'Descargar Zush', toggleTheme: 'Cambiar tema', language: 'Idioma', homeAria: 'Ir al inicio', skipToContent: 'Saltar al contenido' },
     downloadMenu: localizedDownloadMenu.es,
     footer: { description: 'Renombrador de archivos con IA y herramienta de renombrado por lotes para Mac y Windows', product: 'Producto', byFileType: 'Por tipo', resources: 'Recursos', support: 'Soporte', pricing: 'Precios', contactSupport: 'Contactar soporte', feedback: 'Funciones y errores', terms: 'Términos', privacy: 'Privacidad', refund: 'Reembolso', ...localizedFooterDetails.es },
     home: {
@@ -4080,7 +4099,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   nl: localized({
-    header: { features: 'Functies', reviews: 'Reviews', pricing: 'Prijzen', faq: 'FAQ', blog: 'Blog', buyPro: 'Koop 🌟 PRO', download: 'Downloaden', downloadZush: 'Zush downloaden', toggleTheme: 'Thema wisselen', language: 'Taal', homeAria: 'Naar home', skipToContent: 'Naar inhoud' },
+    header: { features: 'Functies', reviews: 'Reviews', security: 'Beveiliging', pricing: 'Prijzen', faq: 'FAQ', blog: 'Blog', buyPro: 'Koop 🌟 PRO', download: 'Downloaden', downloadZush: 'Zush downloaden', toggleTheme: 'Thema wisselen', language: 'Taal', homeAria: 'Naar home', skipToContent: 'Naar inhoud' },
     downloadMenu: localizedDownloadMenu.nl,
     footer: { description: 'AI-bestandshernoemer en bulk-hernoemtool voor Mac en Windows', product: 'Product', byFileType: 'Per type', resources: 'Bronnen', support: 'Support', pricing: 'Prijzen', contactSupport: 'Support contacteren', feedback: 'Functies & bugs', terms: 'Voorwaarden', privacy: 'Privacy', refund: 'Terugbetaling', ...localizedFooterDetails.nl },
     home: {
@@ -4155,7 +4174,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   it: localized({
-    header: { features: 'Funzioni', reviews: 'Recensioni', pricing: 'Prezzi', faq: 'FAQ', blog: 'Blog', buyPro: 'Acquista 🌟 PRO', download: 'Scarica', downloadZush: 'Scarica Zush', toggleTheme: 'Cambia tema', language: 'Lingua', homeAria: 'Vai alla home', skipToContent: 'Vai al contenuto' },
+    header: { features: 'Funzioni', reviews: 'Recensioni', security: 'Sicurezza', pricing: 'Prezzi', faq: 'FAQ', blog: 'Blog', buyPro: 'Acquista 🌟 PRO', download: 'Scarica', downloadZush: 'Scarica Zush', toggleTheme: 'Cambia tema', language: 'Lingua', homeAria: 'Vai alla home', skipToContent: 'Vai al contenuto' },
     downloadMenu: localizedDownloadMenu.it,
     footer: { description: 'Rinomina file con IA e strumento di rinomina in batch per Mac e Windows', product: 'Prodotto', byFileType: 'Per tipo', resources: 'Risorse', support: 'Supporto', pricing: 'Prezzi', contactSupport: 'Contatta supporto', feedback: 'Funzioni e bug', terms: 'Termini', privacy: 'Privacy', refund: 'Rimborso', ...localizedFooterDetails.it },
     home: {
@@ -4230,7 +4249,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   ja: localized({
-    header: { features: '機能', reviews: 'レビュー', pricing: '料金', faq: 'FAQ', blog: 'ブログ', buyPro: '🌟 PROを購入', download: 'ダウンロード', downloadZush: 'Zushをダウンロード', toggleTheme: 'テーマ切替', language: '言語', homeAria: 'ホームへ移動', skipToContent: 'コンテンツへスキップ' },
+    header: { features: '機能', reviews: 'レビュー', security: 'セキュリティ', pricing: '料金', faq: 'FAQ', blog: 'ブログ', buyPro: '🌟 PROを購入', download: 'ダウンロード', downloadZush: 'Zushをダウンロード', toggleTheme: 'テーマ切替', language: '言語', homeAria: 'ホームへ移動', skipToContent: 'コンテンツへスキップ' },
     downloadMenu: localizedDownloadMenu.ja,
     footer: { description: 'Mac と Windows 向け AI ファイルリネーム兼一括リネームツール', product: '製品', byFileType: 'ファイル別', resources: 'リソース', support: 'サポート', pricing: '料金', contactSupport: 'サポートに連絡', feedback: '機能要望と不具合', terms: '利用規約', privacy: 'プライバシー', refund: '返金ポリシー', ...localizedFooterDetails.ja },
     home: {
@@ -4305,7 +4324,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   ko: localized({
-    header: { features: '기능', reviews: '리뷰', pricing: '가격', faq: 'FAQ', blog: '블로그', buyPro: '🌟 PRO 구매', download: '다운로드', downloadZush: 'Zush 다운로드', toggleTheme: '테마 전환', language: '언어', homeAria: '홈으로 이동', skipToContent: '콘텐츠로 건너뛰기' },
+    header: { features: '기능', reviews: '리뷰', security: '보안', pricing: '가격', faq: 'FAQ', blog: '블로그', buyPro: '🌟 PRO 구매', download: '다운로드', downloadZush: 'Zush 다운로드', toggleTheme: '테마 전환', language: '언어', homeAria: '홈으로 이동', skipToContent: '콘텐츠로 건너뛰기' },
     downloadMenu: localizedDownloadMenu.ko,
     footer: { description: 'Mac 및 Windows용 AI 파일 이름 변경 및 일괄 이름 변경 도구', product: '제품', byFileType: '파일 유형별', resources: '리소스', support: '지원', pricing: '가격', contactSupport: '지원 문의', feedback: '기능 및 버그', terms: '이용 약관', privacy: '개인정보', refund: '환불 정책', ...localizedFooterDetails.ko },
     home: {
@@ -4380,7 +4399,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   'zh-cn': localized({
-    header: { features: '功能', reviews: '评价', pricing: '价格', faq: 'FAQ', blog: '博客', buyPro: '购买 🌟 PRO', download: '下载', downloadZush: '下载 Zush', toggleTheme: '切换主题', language: '语言', homeAria: '前往首页', skipToContent: '跳到内容' },
+    header: { features: '功能', reviews: '评价', security: '安全', pricing: '价格', faq: 'FAQ', blog: '博客', buyPro: '购买 🌟 PRO', download: '下载', downloadZush: '下载 Zush', toggleTheme: '切换主题', language: '语言', homeAria: '前往首页', skipToContent: '跳到内容' },
     downloadMenu: localizedDownloadMenu['zh-cn'],
     footer: {
       description: '适用于 Mac 和 Windows 的 AI 文件重命名与批量重命名工具',
@@ -4532,6 +4551,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     header: {
       features: 'Özellikler',
       reviews: 'Yorumlar',
+      security: 'Güvenlik',
       pricing: 'Fiyatlandırma',
       faq: 'SSS',
       blog: 'Blog',
@@ -4707,6 +4727,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     header: {
       features: 'الميزات',
       reviews: 'المراجعات',
+      security: 'الأمان',
       pricing: 'السعر',
       faq: 'FAQ',
       blog: 'المدونة',

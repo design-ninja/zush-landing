@@ -1,0 +1,44 @@
+.Tooltip {
+    position: absolute;
+    bottom: calc(100% + 0.5rem);
+    left: 50%;
+    z-index: 5;
+    width: max-content;
+    // Long labels would otherwise run past the viewport on triggers near the
+    // page edge, and `body` clips overflow-x rather than scrolling.
+    max-width: 11rem;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.4rem;
+    background: var(--foreground);
+    color: var(--background);
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.3;
+    text-align: center;
+    opacity: 0;
+    transform: translate(-50%, 0.25rem);
+    pointer-events: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+// Keyed off the parent's state rather than a specific trigger class, so any
+// trigger can host a tooltip without its stylesheet knowing this component
+// exists. `.Tooltip` is still a local class, so CSS modules scopes it normally.
+@media (hover: hover) and (pointer: fine) {
+    :hover > .Tooltip {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+// Kept outside the hover query so keyboard users get it on every device.
+:focus-visible > .Tooltip {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .Tooltip {
+        transition: none;
+    }
+}

@@ -90,17 +90,15 @@
   }
 }
 
+// The two-letter locale code. It is short enough to keep at every width, so the
+// trigger always says which language is active rather than only showing a flag.
 .LanguageSwitcher__Current {
-  display: none;
   min-width: 0;
-  overflow: hidden;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   line-height: 1.25;
-  text-overflow: ellipsis;
   white-space: nowrap;
-
-  @include mobile {
-    display: inline;
-  }
 }
 
 .LanguageSwitcher__Icon {
@@ -181,10 +179,6 @@
       width: 1.4rem;
       height: 1.05rem;
     }
-  }
-
-  .LanguageSwitcher__Current {
-    display: none;
   }
 }
 

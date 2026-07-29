@@ -38,6 +38,9 @@ const availableOptions = LOCALES
   }))
   .filter((option): option is AvailableLanguageOption => Boolean(option.path));
 const currentFlagSvg = FLAG_SVGS[locale];
+// "EN", "DE", "PT" — the region half of pt-br / zh-cn is dropped, since the flag
+// beside it already carries that distinction and the trigger has no room for it.
+const currentLocaleCode = locale.split('-')[0].toUpperCase();
 ---
 
 <div
@@ -56,7 +59,7 @@ const currentFlagSvg = FLAG_SVGS[locale];
     <span class={styles.LanguageSwitcher__Flag} aria-hidden="true">
       {currentFlagSvg ? <Fragment set:html={currentFlagSvg} /> : currentLocaleMeta.flag}
     </span>
-    <span class={styles.LanguageSwitcher__Current}>{currentLocaleMeta.nativeLabel}</span>
+    <span class={styles.LanguageSwitcher__Current}>{currentLocaleCode}</span>
     <svg
       class={styles.LanguageSwitcher__Icon}
       data-language-icon

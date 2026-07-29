@@ -16,6 +16,8 @@ export const YOUTUBE_CHANNEL_URL = "https://www.youtube.com/@zushapp";
 export const PRODUCT_HUNT_URL = "https://www.producthunt.com/products/zush";
 export const CRUNCHBASE_URL = "https://www.crunchbase.com/organization/zush-4de8";
 export const LINKEDIN_COMPANY_URL = "https://www.linkedin.com/company/zush-ai-file-renamer";
+export const GOOGLE_WORKSPACE_MARKETPLACE_URL =
+  "https://workspace.google.com/marketplace/app/zush_ai_renamer/865259549983";
 
 export const FREE_DOWNLOAD_BADGE_LABEL = "FREE";
 export const HERO_AI_MODES = ["Cloud AI", "BYOK", "Offline"];

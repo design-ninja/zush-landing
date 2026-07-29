@@ -180,6 +180,8 @@
     }
 
     &__SocialLink {
+        // Containing block for the <Tooltip> each of these links hosts.
+        position: relative;
         display: flex;
         align-items: center;
         color: var(--muted-foreground);
@@ -207,15 +209,4 @@
         }
     }
 
-    &__VisuallyHidden {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-    }
 }

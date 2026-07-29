@@ -95,7 +95,7 @@ export const CloudAiAnimation = ({ demoCopy = FEATURE_DEMO_COPY.en }: CloudAiAni
           <span style={{ display: 'inline-flex', color: PRIMARY }}>
             <Cloud size={16} strokeWidth={2.2} />
           </span>
-          <span style={{ fontWeight: 600 }}>Zush Cloud AI</span>
+          <span style={{ fontWeight: 600 }}>Cloud AI</span>
           <span
             style={{
               marginLeft: 'auto',
