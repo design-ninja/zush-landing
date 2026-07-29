@@ -1,0 +1,40 @@
+---
+import styles from './DemoVideo.module.scss';
+
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props as Props;
+
+// Two recordings of the same demo, one per theme. Both are rendered and CSS
+// picks the active one — the hidden element is `display: none`, so it never
+// autoplays and stays at metadata-only download.
+const VARIANTS = [
+  { theme: 'light', src: '/videos/demo-light.mp4', poster: '/videos/posters/demo-light.webp' },
+  { theme: 'dark', src: '/videos/demo-dark.mp4', poster: '/videos/posters/demo-dark.webp' },
+] as const;
+---
+
+<!-- Opted out of the scroll-reveal fade: the demo sits right under the hero
+     and should already be on screen when the page paints. -->
+<section class={styles.DemoVideo} aria-label={label} data-scroll-reveal-skip>
+  <div class={styles.DemoVideo__Container}>
+    <div class={styles.DemoVideo__Frame}>
+      {VARIANTS.map(({ theme, src, poster }) => (
+        <video
+          class={styles.DemoVideo__Video}
+          data-demo-theme={theme}
+          src={src}
+          poster={poster}
+          autoplay
+          loop
+          muted
+          playsinline
+          preload="metadata"
+          aria-label={label}
+        ></video>
+      ))}
+    </div>
+  </div>
+</section>

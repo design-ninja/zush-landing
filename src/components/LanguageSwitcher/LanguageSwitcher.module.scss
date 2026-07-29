@@ -24,17 +24,18 @@
   justify-content: center;
   gap: 0.3rem;
   min-width: 0;
-  border: 1px solid var(--border);
+  border: none;
   border-radius: $radius-full;
-  @include corner-shape-squircle;
-  background-color: var(--background);
+  background-color: transparent;
   color: var(--foreground);
   cursor: pointer;
   font-family: var(--font-family);
   font-size: 0.9rem;
   font-weight: 500;
   line-height: 1.25;
-  padding: 0.42rem 0.55rem 0.42rem 0.65rem;
+  // Matches --download-button-height for the `sm` DownloadButton beside it.
+  min-height: 1.95rem;
+  padding: 0 0.5rem 0 0.6rem;
   transition:
     background-color $transition-fast,
     border-color $transition-fast,
@@ -45,12 +46,11 @@
   @include mobile {
     gap: 0.45rem;
     min-width: 7.6rem;
-    padding: 0.48rem 0.65rem 0.48rem 0.75rem;
+    padding: 0 0.65rem 0 0.75rem;
   }
 
   &:hover,
   &:focus-visible {
-    border-color: var(--primary);
     background-color: var(--muted);
     outline: none;
   }
@@ -117,7 +117,6 @@
   max-width: min(18rem, calc(100vw - 2rem));
   border: 1px solid var(--border);
   border-radius: $radius-lg;
-  @include corner-shape-squircle;
   background-color: var(--background);
   color: var(--foreground);
   padding: 0.35rem;

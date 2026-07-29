@@ -2,8 +2,49 @@
 @use "../../styles/mixins" as *;
 
 .Hero {
+    position: relative;
+    // Own stacking context, otherwise the z-index:-1 bloom below lands behind
+    // the opaque body background and never paints.
+    isolation: isolate;
     padding: 9.5rem 0 3.75rem;
     overflow-x: clip;
+
+    // Wide, flat purple bloom hugging the top edge of the page, behind the
+    // header. Modelled on revone.app, toned down for the light theme.
+    &::before {
+        content: '';
+        position: absolute;
+        top: -12rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(100rem, 165%);
+        height: 30rem;
+        background: radial-gradient(
+            ellipse 50% 50% at 50% 50%,
+            color-mix(in oklch, var(--primary) 88%, transparent),
+            transparent 68%
+        );
+        filter: blur(3rem);
+        opacity: 0.85;
+        pointer-events: none;
+        z-index: -1;
+
+        // Dark theme can carry the full-strength bloom the reference uses.
+        :global(html[data-theme='dark']) & {
+            background: radial-gradient(
+                ellipse 50% 50% at 50% 50%,
+                color-mix(in oklch, var(--primary) 92%, transparent),
+                transparent 68%
+            );
+            opacity: 0.9;
+        }
+
+        @include mobile {
+            top: -8rem;
+            height: 20rem;
+            opacity: 0.3;
+        }
+    }
 
     @include mobile {
         padding: 7.25rem 0 2.5rem;
@@ -29,7 +70,70 @@
         }
     }
 
-    &__Title {
+    // Single-column variant: the showcase moves out of the hero into its own
+    // section below, so the intro gets the full width and centers.
+    &_centered {
+        .Hero__Container {
+            grid-template-columns: 1fr;
+            justify-items: center;
+            text-align: center;
+        }
+
+        .Hero__Intro {
+            max-width: 52rem;
+        }
+
+        .Hero__ProofRow,
+        .Hero__ModeRow,
+        .Hero__Buttons,
+        .Hero__TrustRow {
+            justify-content: center;
+        }
+
+        // Rating on top, mode tags stacked underneath it.
+        .Hero__ProofRow {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        // Button on its own line, trust signals centered underneath it.
+        .Hero__ActionRow {
+            flex-direction: column;
+            align-items: center;
+            gap: 0.65rem;
+        }
+
+        .Hero__Subtitle {
+            max-width: 42rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        // All trust signals sit on one line; the base styles push the last one
+        // onto its own row, which only makes sense in the two-column layout.
+        .Hero__TrustRow {
+            max-width: none;
+
+            li:last-child {
+                flex-basis: auto;
+            }
+        }
+    }
+
+    &__Intro {
+        min-width: 0;
+    }
+
+    // Both platform CTAs: flat black, no gloss highlight.
+    &__PlatformButton {
+        &::before {
+            display: none;
+        }
+    }
+
+    // Nested under the root class so the size wins over Heading_h1.
+    & &__Title {
+        font-size: clamp(2.4rem, 5.5vw, 3.5rem);
         margin-bottom: 1rem;
         text-wrap: pretty;
 
@@ -63,7 +167,7 @@
     }
 
     &__TitleAccent {
-        color: var(--primary);
+        color: inherit;
     }
 
     &__Subtitle {
@@ -83,36 +187,9 @@
     }
 
     &__SubtitleHighlight {
-        display: inline-block;
-        padding: 0.025em 0.08em 0.03em;
-        margin: -0.025em -0.02em -0.03em;
-        color: oklch(0.14 0.01 285);
+        color: inherit;
         font-weight: inherit;
-        line-height: 1.08;
-        white-space: nowrap;
-        background: rgb(250 204 21 / 0.74);
-        -webkit-box-decoration-break: clone;
-        box-decoration-break: clone;
-
-        :global(html[data-theme='dark']) & {
-            background: #e9ab05;
-        }
-
-        @include mobile {
-            display: inline;
-            white-space: normal;
-        }
-
-        @media (prefers-contrast: more), (forced-colors: active) {
-            padding: 0;
-            margin: 0;
-            color: var(--foreground);
-            background: none;
-            text-decoration: underline;
-            text-decoration-thickness: 0.16em;
-            text-decoration-color: var(--primary);
-            text-underline-offset: 0.12em;
-        }
+        background: none;
     }
 
     &__ProofRow {
@@ -143,14 +220,14 @@
 
     &__ModeBadge {
         padding: 0.25rem 0.6rem;
-        border: 1px solid var(--border);
+        border: none;
         border-radius: $radius-full;
-        background: var(--card);
+        background: var(--primary-soft);
         font-size: 0.75rem;
         font-weight: 600;
         line-height: 1.25;
         letter-spacing: 0.01em;
-        color: var(--muted-foreground);
+        color: var(--primary);
         white-space: nowrap;
     }
 
@@ -207,7 +284,9 @@
         padding: 0;
         margin: 0;
         font-size: 0.875rem;
-        color: var(--muted-foreground);
+        // Lighter than --muted-foreground: this line sits under the CTAs and
+        // should read as a footnote, not as body copy.
+        color: color-mix(in oklch, var(--muted-foreground) 62%, var(--background));
         max-width: 18rem;
 
         li {

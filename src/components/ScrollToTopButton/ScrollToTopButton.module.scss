@@ -14,7 +14,6 @@
   height: 3rem;
   border: 1px solid var(--glass-border);
   border-radius: $radius-full;
-  @include corner-shape-squircle;
   color: var(--foreground);
   box-shadow:
     0 1.25rem 2.5rem color-mix(in srgb, var(--foreground) 14%, transparent),

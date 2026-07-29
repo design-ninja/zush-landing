@@ -108,11 +108,6 @@
     outline: 2px solid $color;
 }
 
-@mixin corner-shape-squircle {
-    -webkit-corner-shape: squircle;
-    corner-shape: squircle;
-}
-
 @mixin cta-glass-vars(
     $bg: oklch(0 0 0 / 0.88),
     $bg-hover: oklch(0 0 0 / 0.95),
@@ -199,9 +194,8 @@
         0 0.8rem 2rem -1.1rem var(--cta-glass-glow);
 }
 
-@mixin cta-glass-hover($scale: 1.012) {
+@mixin cta-glass-hover {
     @include cta-glass-hover-surface;
-    transform: translateY(-0.125rem) scale($scale);
 }
 
 // Centered page layout (for Activate, Recover, ThankYou, ManageSubscription pages)

@@ -30,6 +30,7 @@ export interface HeaderCopy {
 
 export interface DownloadMenuCopy {
   downloadForMac: string;
+  downloadForWindows: string;
   windowsTitle: string;
   macDirectHint: string;
   windowsHint: string;
@@ -1018,6 +1019,7 @@ const EN_COPY: LocaleCopy = {
   },
   downloadMenu: {
     downloadForMac: 'Download for Mac',
+    downloadForWindows: 'Download for Windows',
     windowsTitle: 'Windows',
     macDirectHint: 'Direct .dmg download',
     windowsHint: 'Microsoft Store',
@@ -1079,10 +1081,10 @@ const EN_COPY: LocaleCopy = {
     heroTitle: 'AI File Renamer & Organizer\nfor Mac & Windows',
     heroAccent: 'AI File Renamer & Organizer',
     heroSubtitle:
-      'Batch rename files by content with AI. Zush supports 100+ formats across screenshots, PDFs, photos, videos, audio, and documents, extracting exactly the details you choose and turning them into filenames you define. Keep file analysis fully private with Offline AI and Ollama, or bring your own AI provider and model with BYOK.',
-    heroHighlights: ['Batch rename files by content with AI', 'exactly the details you choose', 'fully private with Offline AI and Ollama', 'your own AI provider and model'],
+      'Batch rename files by content with AI. Zush supports 100+ formats across screenshots, PDFs, photos, videos, audio, and documents, extracting exactly the details you choose and turning them into filenames you define.',
+    heroHighlights: ['Batch rename files by content with AI', 'exactly the details you choose'],
     buyPro: 'Buy 🌟 PRO',
-    trustSignals: ['✨ Get started for FREE', '💳 No credit card required'],
+    trustSignals: ['Get started for free, no credit card required'],
     featuresTitle: 'AI File Renamer Features',
     featuresDescription: 'Turn messy filenames into clear, consistent names with previews, templates, folder monitoring, and one-click undo.',
     supportedFormats: 'Supported File Formats',
@@ -2375,6 +2377,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
 const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
   de: {
     downloadForMac: 'Für Mac laden',
+    downloadForWindows: 'Für Windows laden',
     windowsTitle: 'Windows',
     macDirectHint: 'Direkter .dmg-Download',
     windowsHint: 'Microsoft Store',
@@ -2384,6 +2387,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
   },
   fr: {
     downloadForMac: 'Télécharger pour Mac',
+    downloadForWindows: 'Télécharger pour Windows',
     windowsTitle: 'Windows',
     macDirectHint: 'Téléchargement .dmg direct',
     windowsHint: 'Microsoft Store',
@@ -2393,6 +2397,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
   },
   'pt-br': {
     downloadForMac: 'Baixar para Mac',
+    downloadForWindows: 'Baixar para Windows',
     windowsTitle: 'Windows',
     macDirectHint: 'Download direto .dmg',
     windowsHint: 'Microsoft Store',
@@ -2402,6 +2407,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
   },
   es: {
     downloadForMac: 'Descargar para Mac',
+    downloadForWindows: 'Descargar para Windows',
     windowsTitle: 'Windows',
     macDirectHint: 'Descarga directa .dmg',
     windowsHint: 'Microsoft Store',
@@ -2411,6 +2417,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
   },
   nl: {
     downloadForMac: 'Download voor Mac',
+    downloadForWindows: 'Download voor Windows',
     windowsTitle: 'Windows',
     macDirectHint: 'Directe .dmg-download',
     windowsHint: 'Microsoft Store',
@@ -2420,6 +2427,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
   },
   it: {
     downloadForMac: 'Scarica per Mac',
+    downloadForWindows: 'Scarica per Windows',
     windowsTitle: 'Windows',
     macDirectHint: 'Download diretto .dmg',
     windowsHint: 'Microsoft Store',
@@ -2429,6 +2437,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
   },
   ja: {
     downloadForMac: 'Mac 版をダウンロード',
+    downloadForWindows: 'Windows 版をダウンロード',
     windowsTitle: 'Windows',
     macDirectHint: '直接 .dmg ダウンロード',
     windowsHint: 'Microsoft Store',
@@ -2438,6 +2447,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
   },
   ko: {
     downloadForMac: 'Mac용 다운로드',
+    downloadForWindows: 'Windows용 다운로드',
     windowsTitle: 'Windows',
     macDirectHint: '직접 .dmg 다운로드',
     windowsHint: 'Microsoft Store',
@@ -2447,6 +2457,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
   },
   'zh-cn': {
     downloadForMac: '下载 Mac 版',
+    downloadForWindows: '下载 Windows 版',
     windowsTitle: 'Windows',
     macDirectHint: '直接下载 .dmg',
     windowsHint: 'Microsoft Store',
@@ -2456,6 +2467,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
   },
   tr: {
     downloadForMac: 'Mac için indirin',
+    downloadForWindows: 'Windows için indirin',
     windowsTitle: 'Windows',
     macDirectHint: 'Doğrudan .dmg indirme',
     windowsHint: 'Microsoft Store',
@@ -2465,6 +2477,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
   },
   ar: {
     downloadForMac: 'تنزيل لنظام Mac',
+    downloadForWindows: 'تنزيل لنظام Windows',
     windowsTitle: 'Windows',
     macDirectHint: 'تنزيل مباشر بصيغة .dmg',
     windowsHint: 'Microsoft Store',
@@ -3761,10 +3774,10 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'Dateiumbenenner\nfür Mac & Windows',
       heroAccent: 'Dateiumbenenner',
-      heroSubtitle: 'Benenne Dateien mit KI stapelweise nach Inhalt um. Zush unterstützt über 100 Formate für Screenshots, PDFs, Fotos, Videos, Audio und Dokumente, extrahiert genau die Details, die du auswählst, und macht daraus Dateinamen nach deinen Vorgaben. Halte die Dateianalyse mit Offline-KI und Ollama vollständig privat oder nutze mit BYOK deinen eigenen KI-Anbieter und dein bevorzugtes Modell.',
-      heroHighlights: ['Benenne Dateien mit KI stapelweise nach Inhalt um', 'genau die Details, die du auswählst', 'mit Offline-KI und Ollama vollständig privat', 'deinen eigenen KI-Anbieter und dein bevorzugtes Modell'],
+      heroSubtitle: 'Benenne Dateien mit KI stapelweise nach Inhalt um. Zush unterstützt über 100 Formate für Screenshots, PDFs, Fotos, Videos, Audio und Dokumente, extrahiert genau die Details, die du auswählst, und macht daraus Dateinamen nach deinen Vorgaben.',
+      heroHighlights: ['Benenne Dateien mit KI stapelweise nach Inhalt um', 'genau die Details, die du auswählst'],
       buyPro: 'PRO kaufen 🌟',
-      trustSignals: ['✨ Kostenlos starten', '💳 Keine Kreditkarte erforderlich'],
+      trustSignals: ['Kostenlos starten, keine Kreditkarte erforderlich'],
       featuresTitle: 'Zush Funktionen',
       featuresDescription: 'Verwandle unübersichtliche Dateinamen mit Vorschau, Templates, Ordnerüberwachung und Rückgängig-Funktion in klare, einheitliche Namen.',
       supportedFormats: 'Unterstützte Dateiformate',
@@ -3880,10 +3893,10 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'Renommeur de fichiers\npour Mac & Windows',
       heroAccent: 'Renommeur de fichiers',
-      heroSubtitle: 'Renommez des fichiers par lot selon leur contenu avec l’IA. Zush prend en charge plus de 100 formats de captures d’écran, PDF, photos, vidéos, audio et documents, extrait exactement les informations que vous choisissez et les transforme en noms de fichiers selon vos règles. Gardez l’analyse des fichiers entièrement privée avec l’IA hors ligne et Ollama, ou utilisez votre propre fournisseur et modèle d’IA grâce au BYOK.',
-      heroHighlights: ['Renommez des fichiers par lot selon leur contenu avec l’IA', 'exactement les informations que vous choisissez', 'entièrement privée avec l’IA hors ligne et Ollama', 'votre propre fournisseur et modèle d’IA'],
+      heroSubtitle: 'Renommez des fichiers par lot selon leur contenu avec l’IA. Zush prend en charge plus de 100 formats de captures d’écran, PDF, photos, vidéos, audio et documents, extrait exactement les informations que vous choisissez et les transforme en noms de fichiers selon vos règles.',
+      heroHighlights: ['Renommez des fichiers par lot selon leur contenu avec l’IA', 'exactement les informations que vous choisissez'],
       buyPro: 'Acheter PRO 🌟',
-      trustSignals: ['✨ Commencez gratuitement', '💳 Sans carte bancaire'],
+      trustSignals: ['Commencez gratuitement, sans carte bancaire'],
       featuresTitle: 'Fonctions Zush',
       featuresDescription: 'Transformez les noms de fichiers désordonnés en noms clairs et cohérents grâce aux aperçus, aux modèles, à la surveillance des dossiers et à l’annulation en un clic.',
       supportedFormats: 'Formats pris en charge',
@@ -3955,10 +3968,10 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'Renomeador de arquivos\npara Mac & Windows',
       heroAccent: 'Renomeador de arquivos',
-      heroSubtitle: 'Renomeie arquivos em lote por conteúdo com IA. O Zush oferece suporte a mais de 100 formatos de screenshots, PDFs, fotos, vídeos, áudios e documentos, extrai exatamente os detalhes que você escolhe e os transforma em nomes de arquivo definidos por você. Mantenha a análise totalmente privada com IA offline e Ollama, ou use seu próprio provedor e modelo de IA com BYOK.',
-      heroHighlights: ['Renomeie arquivos em lote por conteúdo com IA', 'exatamente os detalhes que você escolhe', 'totalmente privada com IA offline e Ollama', 'seu próprio provedor e modelo de IA'],
+      heroSubtitle: 'Renomeie arquivos em lote por conteúdo com IA. O Zush oferece suporte a mais de 100 formatos de screenshots, PDFs, fotos, vídeos, áudios e documentos, extrai exatamente os detalhes que você escolhe e os transforma em nomes de arquivo definidos por você.',
+      heroHighlights: ['Renomeie arquivos em lote por conteúdo com IA', 'exatamente os detalhes que você escolhe'],
       buyPro: 'Comprar PRO 🌟',
-      trustSignals: ['✨ Comece grátis', '💳 Sem cartão de crédito'],
+      trustSignals: ['Comece grátis, sem cartão de crédito'],
       featuresTitle: 'Recursos do Zush',
       featuresDescription: 'Transforme nomes de arquivos confusos em nomes claros e consistentes com prévias, modelos, monitoramento de pastas e desfazer em um clique.',
       supportedFormats: 'Formatos compatíveis',
@@ -4030,10 +4043,10 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'Renombrador de archivos\npara Mac & Windows',
       heroAccent: 'Renombrador de archivos',
-      heroSubtitle: 'Renombra archivos por lotes según su contenido con IA. Zush admite más de 100 formatos de capturas, PDFs, fotos, videos, audio y documentos, extrae exactamente los detalles que eliges y los convierte en nombres de archivo definidos por ti. Mantén el análisis totalmente privado con IA offline y Ollama, o usa tu propio proveedor y modelo de IA con BYOK.',
-      heroHighlights: ['Renombra archivos por lotes según su contenido con IA', 'exactamente los detalles que eliges', 'totalmente privado con IA offline y Ollama', 'tu propio proveedor y modelo de IA'],
+      heroSubtitle: 'Renombra archivos por lotes según su contenido con IA. Zush admite más de 100 formatos de capturas, PDFs, fotos, videos, audio y documentos, extrae exactamente los detalles que eliges y los convierte en nombres de archivo definidos por ti.',
+      heroHighlights: ['Renombra archivos por lotes según su contenido con IA', 'exactamente los detalles que eliges'],
       buyPro: 'Comprar PRO 🌟',
-      trustSignals: ['✨ Empieza gratis', '💳 Sin tarjeta de crédito'],
+      trustSignals: ['Empieza gratis, sin tarjeta de crédito'],
       featuresTitle: 'Funciones de Zush',
       featuresDescription: 'Convierte nombres de archivo desordenados en nombres claros y coherentes con vistas previas, plantillas, monitorización de carpetas y deshacer en un clic.',
       supportedFormats: 'Formatos compatibles',
@@ -4105,10 +4118,10 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'Bestandshernoemer\nvoor Mac & Windows',
       heroAccent: 'Bestandshernoemer',
-      heroSubtitle: 'Hernoem bestanden in bulk op basis van inhoud met AI. Zush ondersteunt meer dan 100 formaten voor screenshots, pdf’s, foto’s, video’s, audio en documenten, haalt precies de details eruit die jij kiest en zet ze om in bestandsnamen die jij bepaalt. Houd bestandsanalyse volledig privé met Offline AI en Ollama, of gebruik via BYOK je eigen AI-provider en model.',
-      heroHighlights: ['Hernoem bestanden in bulk op basis van inhoud met AI', 'precies de details eruit die jij kiest', 'volledig privé met Offline AI en Ollama', 'je eigen AI-provider en model'],
+      heroSubtitle: 'Hernoem bestanden in bulk op basis van inhoud met AI. Zush ondersteunt meer dan 100 formaten voor screenshots, pdf’s, foto’s, video’s, audio en documenten, haalt precies de details eruit die jij kiest en zet ze om in bestandsnamen die jij bepaalt.',
+      heroHighlights: ['Hernoem bestanden in bulk op basis van inhoud met AI', 'precies de details eruit die jij kiest'],
       buyPro: 'Koop PRO 🌟',
-      trustSignals: ['✨ Gratis aan de slag', '💳 Geen creditcard nodig'],
+      trustSignals: ['Gratis aan de slag, geen creditcard nodig'],
       featuresTitle: 'Zush-functies',
       featuresDescription: 'Maak rommelige bestandsnamen helder en consistent met voorbeelden, templates, mapbewaking en ongedaan maken met één klik.',
       supportedFormats: 'Ondersteunde bestandsformaten',
@@ -4180,10 +4193,10 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'Rinomina file\nper Mac & Windows',
       heroAccent: 'Rinomina file',
-      heroSubtitle: 'Rinomina file in batch in base al contenuto con l’IA. Zush supporta oltre 100 formati tra screenshot, PDF, foto, video, audio e documenti, estrae esattamente i dettagli che scegli e li trasforma in nomi file definiti da te. Mantieni l’analisi completamente privata con l’IA offline e Ollama, oppure usa il tuo provider e modello IA con BYOK.',
-      heroHighlights: ['Rinomina file in batch in base al contenuto con l’IA', 'esattamente i dettagli che scegli', 'completamente privata con l’IA offline e Ollama', 'il tuo provider e modello IA'],
+      heroSubtitle: 'Rinomina file in batch in base al contenuto con l’IA. Zush supporta oltre 100 formati tra screenshot, PDF, foto, video, audio e documenti, estrae esattamente i dettagli che scegli e li trasforma in nomi file definiti da te.',
+      heroHighlights: ['Rinomina file in batch in base al contenuto con l’IA', 'esattamente i dettagli che scegli'],
       buyPro: 'Acquista PRO 🌟',
-      trustSignals: ['✨ Inizia gratis', '💳 Nessuna carta richiesta'],
+      trustSignals: ['Inizia gratis, nessuna carta richiesta'],
       featuresTitle: 'Funzioni di Zush',
       featuresDescription: 'Trasforma nomi di file disordinati in nomi chiari e coerenti con anteprime, modelli, monitoraggio delle cartelle e annullamento con un clic.',
       supportedFormats: 'Formati supportati',
@@ -4255,10 +4268,10 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'ファイルリネーム\nMac・Windows対応',
       heroAccent: 'ファイルリネーム',
-      heroSubtitle: 'AIでファイルを内容に基づいて一括リネーム。Zushはスクリーンショット、PDF、写真、動画、音声、文書など100以上の形式に対応し、指定した情報だけを正確に抽出して、定義したファイル名に変換します。OllamaのオフラインAIでファイル分析を完全にプライベートに保つか、BYOKで自分のAIプロバイダーとモデルを利用できます。',
-      heroHighlights: ['AIでファイルを内容に基づいて一括リネーム', '指定した情報だけを正確に抽出', 'OllamaのオフラインAIでファイル分析を完全にプライベートに', '自分のAIプロバイダーとモデル'],
+      heroSubtitle: 'AIでファイルを内容に基づいて一括リネーム。Zushはスクリーンショット、PDF、写真、動画、音声、文書など100以上の形式に対応し、指定した情報だけを正確に抽出して、定義したファイル名に変換します。',
+      heroHighlights: ['AIでファイルを内容に基づいて一括リネーム', '指定した情報だけを正確に抽出'],
       buyPro: 'PROを購入 🌟',
-      trustSignals: ['✨ 無料で始める', '💳 クレジットカード不要'],
+      trustSignals: ['無料で始める、クレジットカード不要'],
       featuresTitle: 'Zush の機能',
       featuresDescription: 'プレビュー、テンプレート、フォルダ監視、ワンクリックの取り消しで、乱雑なファイル名を明確で統一された名前に整えます。',
       supportedFormats: '対応ファイル形式',
@@ -4330,10 +4343,10 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: '파일 이름 변경 도구\nMac 및 Windows용',
       heroAccent: '파일 이름 변경 도구',
-      heroSubtitle: 'AI로 파일 내용을 기준으로 일괄 이름 변경하세요. Zush는 스크린샷, PDF, 사진, 비디오, 오디오, 문서 등 100개 이상의 형식을 지원하며, 사용자가 선택한 세부 정보만 정확히 추출해 원하는 파일 이름으로 바꿉니다. Ollama 기반 오프라인 AI로 파일 분석을 완전히 비공개로 유지하거나, BYOK로 원하는 AI 제공업체와 모델을 사용할 수 있습니다.',
-      heroHighlights: ['AI로 파일 내용을 기준으로 일괄 이름 변경하세요', '사용자가 선택한 세부 정보만 정확히 추출', 'Ollama 기반 오프라인 AI로 파일 분석을 완전히 비공개로', '원하는 AI 제공업체와 모델'],
+      heroSubtitle: 'AI로 파일 내용을 기준으로 일괄 이름 변경하세요. Zush는 스크린샷, PDF, 사진, 비디오, 오디오, 문서 등 100개 이상의 형식을 지원하며, 사용자가 선택한 세부 정보만 정확히 추출해 원하는 파일 이름으로 바꿉니다.',
+      heroHighlights: ['AI로 파일 내용을 기준으로 일괄 이름 변경하세요', '사용자가 선택한 세부 정보만 정확히 추출'],
       buyPro: 'PRO 구매 🌟',
-      trustSignals: ['✨ 무료로 시작하기', '💳 카드 필요 없음'],
+      trustSignals: ['무료로 시작하기, 카드 필요 없음'],
       featuresTitle: 'Zush 기능',
       featuresDescription: '미리보기, 템플릿, 폴더 모니터링, 원클릭 실행 취소로 복잡한 파일 이름을 명확하고 일관되게 정리하세요.',
       supportedFormats: '지원 파일 형식',
@@ -4418,10 +4431,10 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: '文件重命名工具\n适用于 Mac 和 Windows',
       heroAccent: '文件重命名工具',
-      heroSubtitle: '使用 AI 按内容批量重命名文件。Zush 支持截图、PDF、照片、视频、音频和文档等 100 多种格式，可精准提取你选择的信息，并生成由你定义的文件名。使用 Ollama 离线 AI 让文件分析完全私密，或通过 BYOK 连接自己的 AI 提供商和模型。',
-      heroHighlights: ['使用 AI 按内容批量重命名文件', '精准提取你选择的信息', '使用 Ollama 离线 AI 让文件分析完全私密', '自己的 AI 提供商和模型'],
+      heroSubtitle: '使用 AI 按内容批量重命名文件。Zush 支持截图、PDF、照片、视频、音频和文档等 100 多种格式，可精准提取你选择的信息，并生成由你定义的文件名。',
+      heroHighlights: ['使用 AI 按内容批量重命名文件', '精准提取你选择的信息'],
       buyPro: '购买 PRO 🌟',
-      trustSignals: ['✨ 免费开始', '💳 无需信用卡'],
+      trustSignals: ['免费开始，无需信用卡'],
       featuresTitle: 'Zush 功能',
       featuresDescription: '通过预览、模板、文件夹监控和一键撤销，把杂乱的文件名整理成清晰统一的名称。',
       supportedFormats: '支持的文件格式',
@@ -4581,10 +4594,10 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'Dosya Adlandırıcı\nMac ve Windows için',
       heroAccent: 'Dosya Adlandırıcı',
-      heroSubtitle: 'Dosyaları içeriklerine göre yapay zekâyla toplu yeniden adlandırın. Zush; ekran görüntüleri, PDF’ler, fotoğraflar, videolar, sesler ve belgeler dâhil 100’den fazla biçimi destekler, seçtiğiniz ayrıntıları tam olarak çıkarır ve belirlediğiniz dosya adlarına dönüştürür. Dosya analizini Çevrimdışı Yapay Zekâ ve Ollama ile tamamen gizli tutun veya BYOK ile kendi yapay zekâ sağlayıcınızı ve modelinizi kullanın.',
-      heroHighlights: ['Dosyaları içeriklerine göre yapay zekâyla toplu yeniden adlandırın', 'Seçtiğiniz ayrıntıları tam olarak çıkarın', 'Dosya analizini Çevrimdışı Yapay Zekâ ve Ollama ile tamamen gizli tutun', 'Kendi yapay zekâ sağlayıcınızı ve modelinizi kullanın'],
+      heroSubtitle: 'Dosyaları içeriklerine göre yapay zekâyla toplu yeniden adlandırın. Zush; ekran görüntüleri, PDF’ler, fotoğraflar, videolar, sesler ve belgeler dâhil 100’den fazla biçimi destekler, seçtiğiniz ayrıntıları tam olarak çıkarır ve belirlediğiniz dosya adlarına dönüştürür.',
+      heroHighlights: ['Dosyaları içeriklerine göre yapay zekâyla toplu yeniden adlandırın'],
       buyPro: 'PRO satın al 🌟',
-      trustSignals: ['✨ Ücretsiz başlayın', '💳 Kredi kartı gerekmez'],
+      trustSignals: ['Ücretsiz başlayın, kredi kartı gerekmez'],
       featuresTitle: 'Zush Özellikleri',
       featuresDescription: 'Önizlemeler, şablonlar, klasör izleme ve tek tıkla geri alma ile dağınık dosya adlarını açık ve tutarlı hâle getirin.',
       supportedFormats: 'Desteklenen dosya biçimleri',
@@ -4757,10 +4770,10 @@ const COPY: Record<Locale, LocaleCopy> = {
     home: {
       heroTitle: 'أداة إعادة تسمية الملفات\nلنظامي Mac وWindows',
       heroAccent: 'أداة إعادة تسمية الملفات',
-      heroSubtitle: 'أعد تسمية الملفات دفعة واحدة حسب المحتوى باستخدام الذكاء الاصطناعي. يدعم Zush أكثر من 100 تنسيق للقطات الشاشة وملفات PDF والصور والفيديو والصوت والمستندات، ويستخرج بدقة التفاصيل التي تختارها ويحوّلها إلى أسماء ملفات تحددها أنت. حافظ على خصوصية تحليل الملفات بالكامل باستخدام الذكاء الاصطناعي دون اتصال وOllama، أو استخدم مزود ونموذج الذكاء الاصطناعي الخاصين بك عبر BYOK.',
-      heroHighlights: ['أعد تسمية الملفات دفعة واحدة حسب المحتوى باستخدام الذكاء الاصطناعي', 'التفاصيل التي تختارها', 'خصوصية تحليل الملفات بالكامل باستخدام الذكاء الاصطناعي دون اتصال وOllama', 'مزود ونموذج الذكاء الاصطناعي الخاصين بك'],
+      heroSubtitle: 'أعد تسمية الملفات دفعة واحدة حسب المحتوى باستخدام الذكاء الاصطناعي. يدعم Zush أكثر من 100 تنسيق للقطات الشاشة وملفات PDF والصور والفيديو والصوت والمستندات، ويستخرج بدقة التفاصيل التي تختارها ويحوّلها إلى أسماء ملفات تحددها أنت.',
+      heroHighlights: ['أعد تسمية الملفات دفعة واحدة حسب المحتوى باستخدام الذكاء الاصطناعي', 'التفاصيل التي تختارها'],
       buyPro: 'شراء PRO 🌟',
-      trustSignals: ['✨ ابدأ مجانا', '💳 لا تحتاج إلى بطاقة ائتمان'],
+      trustSignals: ['ابدأ مجانا، لا تحتاج إلى بطاقة ائتمان'],
       featuresTitle: 'ميزات Zush',
       featuresDescription: 'حوّل أسماء الملفات الفوضوية إلى أسماء واضحة ومتسقة باستخدام المعاينات والقوالب ومراقبة المجلدات والتراجع بنقرة واحدة.',
       supportedFormats: 'صيغ الملفات المدعومة',

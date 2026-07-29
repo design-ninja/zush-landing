@@ -2,46 +2,60 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
+// Frosted white glass pill: geometry follows revone.app's nav, surface is white
+// so the purple bloom behind it stays behind it instead of tinting the panel.
 .Header {
-    @include glass-morphism;
-    @include corner-shape-squircle;
     position: fixed;
-    top: 0.75rem;
+    top: 1.25rem;
     left: 0;
     right: 0;
     margin-inline: auto;
-    width: calc(100% - 1.5rem);
-    max-width: $container-max-width;
+    width: fit-content;
+    max-width: calc(100% - 1.5rem);
     z-index: 1000;
     height: $navbar-height;
-    border: 1px solid var(--glass-border);
+    background-color: oklch(1 0 0 / 0.6);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid oklch(1 0 0 / 0.65);
     border-radius: $radius-full;
-    box-shadow: 0 1px 2px oklch(0 0 0 / 0.04);
+    box-shadow:
+        inset 0 1px 0 oklch(1 0 0 / 0.9),
+        0 0.5rem 1.75rem -0.85rem oklch(0 0 0 / 0.18);
+    // No overflow clipping: the language menu drops out below the pill.
+
+    :global(html[data-theme='dark']) & {
+        background-color: oklch(1 0 0 / 0.07);
+        border-color: oklch(1 0 0 / 0.1);
+        box-shadow:
+            inset 0 1px 0 oklch(1 0 0 / 0.1),
+            0 0.5rem 1.75rem -0.85rem oklch(0 0 0 / 0.5);
+    }
 
     @include mobile {
         position: absolute;
         top: 0.5rem;
         width: calc(100% - 1rem);
-        border-radius: $radius-xl;
+        max-width: none;
+        border-radius: $radius-full;
     }
 
     &__Container {
-        @include container;
-        display: grid;
-        width: 100%;
-        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        // Content-driven width: tight edge padding, the width comes from the
+        // gaps separating logo / nav / actions.
+        display: flex;
         align-items: center;
+        justify-content: center;
         height: 100%;
-        gap: 1.5rem;
+        gap: 4.5rem;
+        padding: 0 1rem 0 1.5rem;
 
         > a:first-child {
-            justify-self: start;
             min-width: 0;
         }
 
         @include tablet {
-            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-            gap: 1rem;
+            gap: 2rem;
         }
 
         @include mobile {
@@ -216,18 +230,24 @@
         }
     }
 
+    // The leading OS icon pulls the label left; extra right padding puts the
+    // text back in the optical centre of the pill. Qualified with `.Header` so
+    // this outweighs `.Group_sm .Main` (two classes) inside DownloadButton.
+    & &__DownloadBtn {
+        > a,
+        > button {
+            gap: 0.4rem;
+            padding-left: 0.65rem;
+            padding-right: 1.1rem;
+        }
+    }
+
     &__DownloadBtn {
         @include tablet {
             display: none !important;
         }
 
         @include mobile {
-            display: none !important;
-        }
-
-        // Hidden on landing pages (anything that renders a Hero).
-        // The floating download CTA at the bottom takes over there.
-        :global(body:has([data-hero-root])) & {
             display: none !important;
         }
     }

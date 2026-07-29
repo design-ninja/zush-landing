@@ -18,11 +18,7 @@
     }
 
     &__TitleAccent {
-        color: var(--secondary);
-
-        @media (prefers-contrast: more), (forced-colors: active) {
-            color: var(--foreground);
-        }
+        color: inherit;
     }
 }
 

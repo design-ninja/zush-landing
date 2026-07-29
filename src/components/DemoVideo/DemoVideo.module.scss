@@ -1,0 +1,56 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.DemoVideo {
+    padding: 0 0 3.75rem;
+
+    @include mobile {
+        padding: 0 0 2.5rem;
+    }
+
+    &__Container {
+        @include container;
+        position: relative;
+        isolation: isolate;
+    }
+
+    &__Frame {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 2548 / 1434;
+        overflow: hidden;
+        border-radius: clamp(1.1rem, 1.8vw, 1.4rem);
+        background-color: var(--muted);
+        box-shadow: 0 1.6rem 3.75rem -2rem oklch(0 0 0 / 0.32);
+        transform: translateZ(0);
+
+        @include mobile {
+            border-radius: 1.1rem;
+            box-shadow: 0 1rem 2.5rem -1.75rem oklch(0 0 0 / 0.28);
+        }
+    }
+
+    &__Video {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background: var(--muted);
+
+        // Only the recording matching the active theme is laid out; the other
+        // stays `display: none`, so it neither autoplays nor downloads.
+        &[data-demo-theme='dark'] {
+            display: none;
+        }
+
+        :global(html[data-theme='dark']) & {
+            &[data-demo-theme='light'] {
+                display: none;
+            }
+
+            &[data-demo-theme='dark'] {
+                display: block;
+            }
+        }
+    }
+}
