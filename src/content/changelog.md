@@ -1,5 +1,24 @@
 # Changelog
 
+## [3.8.3] - 2026-07-29
+
+### Added
+- Pick files to rename straight from the File menu, or with Command-O
+- The main window reopens at the size and position you left it
+
+### Improved
+- When the AI suggests the name a file already has, the row now says it is trying again
+- Clearer messages when a provider turns down your API key
+- PRO and Offline AI messages now appear in your language
+
+### Fixed
+- Very long AI names no longer stop a file from being renamed
+- The file list no longer freezes while it previews files on network or external drives
+- Folder monitoring now pauses when your AI provider is unavailable instead of retrying without end
+- Renames no longer fail when the AI service answers with nothing
+- Purchase problems in the PRO window are now shown instead of failing quietly
+- The notification permission status refreshes when you come back to Zush
+
 ## [3.8.2] - 2026-07-25
 
 ### Improved

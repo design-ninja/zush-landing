@@ -21,7 +21,7 @@ export const GOOGLE_WORKSPACE_MARKETPLACE_URL =
 
 export const FREE_DOWNLOAD_BADGE_LABEL = "FREE";
 export const HERO_AI_MODES = ["Cloud AI", "BYOK", "Offline"];
-export const MAC_APP_VERSION = "3.8.2";
+export const MAC_APP_VERSION = "3.8.3";
 export const WINDOWS_APP_VERSION = "3.7.0.0";
 export const PRODUCT_FACTS_REVIEWED_AT = "2026-07-29";
 
