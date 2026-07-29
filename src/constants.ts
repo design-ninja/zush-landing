@@ -20,8 +20,8 @@ export const LINKEDIN_COMPANY_URL = "https://www.linkedin.com/company/zush-ai-fi
 export const FREE_DOWNLOAD_BADGE_LABEL = "FREE";
 export const HERO_AI_MODES = ["Cloud AI", "BYOK", "Offline"];
 export const MAC_APP_VERSION = "3.8.2";
-export const WINDOWS_APP_VERSION = "3.6.0.0";
-export const PRODUCT_FACTS_REVIEWED_AT = "2026-07-25";
+export const WINDOWS_APP_VERSION = "3.7.0.0";
+export const PRODUCT_FACTS_REVIEWED_AT = "2026-07-29";
 
 // System requirements
 export const MIN_MACOS_VERSION = "Sequoia and newer";

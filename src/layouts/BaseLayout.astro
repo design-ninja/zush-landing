@@ -396,18 +396,7 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
           });
         };
 
-        initializeGoogleAdsTracking();
-        bindCheckoutAutoOpen();
-        bindDownloadTracking();
-        bindFloatingDownload();
-        bindLanguageSwitcher();
-        bindProClickTracking();
-        bindProPlanClickTracking();
-        bindPricingCheckout();
-        bindScrollReveal();
-        bindScrollToTopButton();
-        bindStoreLinks();
-        document.addEventListener('astro:after-swap', () => {
+        const bindInteractiveControls = () => {
           initializeGoogleAdsTracking();
           bindCheckoutAutoOpen();
           bindDownloadTracking();
@@ -416,9 +405,24 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
           bindProClickTracking();
           bindProPlanClickTracking();
           bindPricingCheckout();
-          bindScrollReveal();
           bindScrollToTopButton();
           bindStoreLinks();
+        };
+
+        const scheduleInteractiveControls = () => {
+          if ('requestIdleCallback' in window) {
+            window.requestIdleCallback(bindInteractiveControls, { timeout: 1500 });
+            return;
+          }
+
+          globalThis.setTimeout(bindInteractiveControls, 0);
+        };
+
+        bindScrollReveal();
+        scheduleInteractiveControls();
+        document.addEventListener('astro:after-swap', () => {
+          bindScrollReveal();
+          scheduleInteractiveControls();
         });
       </script>
     </div>
