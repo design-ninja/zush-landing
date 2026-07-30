@@ -56,6 +56,35 @@
   }
 }
 
+.DirectAnswer {
+  padding-bottom: 0;
+
+  &__Container {
+    @include container;
+    max-width: 800px;
+  }
+
+  &__Answer {
+    margin: 1rem 0 0;
+    color: var(--muted-foreground);
+    line-height: 1.7;
+  }
+
+  &__Steps {
+    display: grid;
+    gap: 0.75rem;
+    margin: 1.25rem 0 0;
+    padding-left: 1.5rem;
+    color: var(--muted-foreground);
+    line-height: 1.6;
+
+    li::marker {
+      color: var(--primary);
+      font-weight: 700;
+    }
+  }
+}
+
 .FAQItem {
   background: var(--card);
   outline: 1px solid var(--border);
