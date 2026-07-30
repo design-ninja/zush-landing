@@ -9,6 +9,7 @@ import {
 } from '@/data/blog';
 import { PRO_PRICING } from '@/constants/pricing';
 import type { BlogLocale } from '@/data/blogSchema';
+import { buildAppAggregateRatingJsonLd } from '@/seo/appRating';
 import { getBlogSeo, getCanonicalUrl } from '@/seo/config';
 import {
   buildBlogPostingJsonLd,
@@ -75,6 +76,7 @@ const macAiRenamerComparisonJsonLd = post.slug === 'best-ai-file-renamer-tools-m
             operatingSystem: ['macOS 15.0+', 'Windows 10', 'Windows 11'],
             description:
               'AI file renamer for Mac with content-aware batch rename, preview, folder monitoring, templates, 145+ Naming Blocks, BYOK, Offline AI mode, and rollback history.',
+            ...buildAppAggregateRatingJsonLd(),
             featureList: [
               'Mixed-folder AI file renaming',
               'RAW, HEIC, PDF, Office, iWork, design, audio, and video support',

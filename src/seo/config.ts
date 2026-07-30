@@ -14,6 +14,7 @@ import {
   YOUTUBE_CHANNEL_URL,
 } from '@/constants';
 import { getPrimaryAuthorJsonLd, PRIMARY_AUTHOR } from '@/data/author';
+import { buildAppAggregateRatingJsonLd } from '@/seo/appRating';
 import { ORGANIZATION_REF, WEBSITE_REF } from '@/seo/entity';
 import { PRO_PRICING } from '@/constants/pricing';
 
@@ -481,6 +482,7 @@ export const HOME_JSON_LD = {
         `${SITE_ORIGIN}/images/screenshots/light/zush-main-interface.webp`,
         `${SITE_ORIGIN}/images/showcase/windows/batch-rename-light.webp`,
       ],
+      ...buildAppAggregateRatingJsonLd(),
       offers: [
         {
           '@type': 'Offer',
