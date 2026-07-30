@@ -20,9 +20,9 @@ export const GOOGLE_WORKSPACE_MARKETPLACE_URL =
   "https://workspace.google.com/marketplace/app/zush_ai_renamer/865259549983";
 
 export const FREE_DOWNLOAD_BADGE_LABEL = "FREE";
-export const MAC_APP_VERSION = "3.8.3";
+export const MAC_APP_VERSION = "3.8.4";
 export const WINDOWS_APP_VERSION = "3.7.0.0";
-export const PRODUCT_FACTS_REVIEWED_AT = "2026-07-29";
+export const PRODUCT_FACTS_REVIEWED_AT = "2026-07-30";
 
 // System requirements
 export const MIN_MACOS_VERSION = "Sequoia and newer";

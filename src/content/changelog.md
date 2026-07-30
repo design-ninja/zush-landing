@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.8.4] - 2026-07-30
+
+### Improved
+- Custom AI Blocks now keep exactly the format you ask for
+- PDF and document analysis is more reliable when an AI service is temporarily unavailable
+- Folder monitoring starts more smoothly with saved folders
+- Updated support for the latest Gemini models
+
+### Fixed
+- Zush now retries automatically when an AI service returns an empty answer
+
 ## [3.8.3] - 2026-07-29
 
 ### Added
