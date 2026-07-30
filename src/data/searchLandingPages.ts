@@ -412,12 +412,12 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     }),
   },
   'batch-rename-files': {
-    h1: 'Batch Rename Files with AI',
+    h1: 'Batch Rename Files on Mac & Windows with AI',
     h1Accent: 'Batch Rename Files',
     category: 'general',
     definitionTitle: 'What Is an AI Batch Rename Tool?',
     definitionText:
-      'An AI batch rename tool renames many files in one workflow while giving each file a content-aware name. Zush batch renames and bulk renames mixed folders on Mac and Windows by reading screenshots, photos, PDFs, documents, videos, audio, and design files, then letting you review every name before applying changes.',
+      'An AI batch rename tool renames many files in one workflow while giving each file a content-aware name. Zush reads screenshots, photos, PDFs, documents, videos, audio, and design files in mixed folders, then lets you review every name before applying changes.',
     showcaseSlides: sharedSlides,
     faqItems: batchRenameFaq,
     relatedPages: [

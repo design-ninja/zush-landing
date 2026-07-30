@@ -92,9 +92,9 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     robots: 'index, follow',
   },
   '/batch-rename-files': {
-    title: 'Batch & Bulk Rename Files with AI | Rename Tool | Zush',
+    title: 'Batch & Bulk Rename Files on Mac & Windows with AI | Zush',
     description:
-      'Batch and bulk rename files with AI. Zush reads screenshots, PDFs, photos, video, audio, and documents, then renames a mixed folder by what each file holds.',
+      'Batch and bulk rename files on Mac & Windows with AI. Zush reads mixed folders by content, then lets you preview, apply, and undo every filename.',
     robots: 'index, follow',
     ogType: 'website',
   },
