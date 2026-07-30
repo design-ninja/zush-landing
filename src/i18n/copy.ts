@@ -62,12 +62,20 @@ export interface FooterProductLinks {
   about: string;
   author: string;
   homebrew: string;
+  hazelAlternative: string;
+  powerRenameAlternative: string;
+  automateDownloads: string;
+  renameInvoices: string;
+  renameReceipts: string;
+  renameExcel: string;
+  renameWord: string;
 }
 
 export interface FooterCopy {
   description: string;
   product: string;
   byFileType: string;
+  compareAndAutomate: string;
   resources: string;
   support: string;
   pricing: string;
@@ -1038,6 +1046,7 @@ const EN_COPY: LocaleCopy = {
     description: 'AI file renamer and organizer for Mac and Windows',
     product: 'Product',
     byFileType: 'By File Type',
+    compareAndAutomate: 'Compare & Automate',
     resources: 'Resources',
     support: 'Support',
     pricing: 'Pricing',
@@ -1082,6 +1091,13 @@ const EN_COPY: LocaleCopy = {
       about: 'About Zush',
       author: 'Author',
       homebrew: 'Zush on Homebrew',
+      hazelAlternative: 'Hazel Alternative',
+      powerRenameAlternative: 'PowerRename Alternative',
+      automateDownloads: 'Automate Downloads',
+      renameInvoices: 'Rename Invoices',
+      renameReceipts: 'Rename Receipts',
+      renameExcel: 'Rename Excel Files',
+      renameWord: 'Rename Word Documents',
     },
   },
   home: {
@@ -1947,6 +1963,7 @@ type FooterVisibleCopy = Pick<
   | 'googleWorkspace'
   | 'designedBy'
   | 'designedWith'
+  | 'compareAndAutomate'
   | 'productLinks'
 >;
 
@@ -1969,6 +1986,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     googleWorkspace: 'Zush im Google Workspace Marketplace',
     designedBy: 'Entworfen von',
     designedWith: 'mit',
+    compareAndAutomate: 'Vergleichen & automatisieren',
     productLinks: {
       fileRenamer: 'KI-Dateiumbenenner',
       batchRename: 'Stapel-Umbenennung',
@@ -1988,6 +2006,13 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       about: 'Über Zush',
       author: 'Autor',
       homebrew: 'Zush auf Homebrew',
+      hazelAlternative: 'Hazel-Alternative',
+      powerRenameAlternative: 'PowerRename-Alternative',
+      automateDownloads: 'Downloads automatisieren',
+      renameInvoices: 'Rechnungen umbenennen',
+      renameReceipts: 'Belege umbenennen',
+      renameExcel: 'Excel-Dateien umbenennen',
+      renameWord: 'Word-Dokumente umbenennen',
     },
   },
   fr: {
@@ -2008,6 +2033,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     googleWorkspace: 'Zush sur Google Workspace Marketplace',
     designedBy: 'Conçu par',
     designedWith: 'avec',
+    compareAndAutomate: 'Comparer et automatiser',
     productLinks: {
       fileRenamer: 'Renommeur de fichiers IA',
       batchRename: 'Renommage par lot',
@@ -2027,6 +2053,13 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       about: 'À propos de Zush',
       author: 'Auteur',
       homebrew: 'Zush sur Homebrew',
+      hazelAlternative: 'Alternative à Hazel',
+      powerRenameAlternative: 'Alternative à PowerRename',
+      automateDownloads: 'Automatiser les téléchargements',
+      renameInvoices: 'Renommer les factures',
+      renameReceipts: 'Renommer les reçus',
+      renameExcel: 'Renommer les fichiers Excel',
+      renameWord: 'Renommer les documents Word',
     },
   },
   'pt-br': {
@@ -2047,6 +2080,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     googleWorkspace: 'Zush no Google Workspace Marketplace',
     designedBy: 'Criado por',
     designedWith: 'com',
+    compareAndAutomate: 'Comparar e automatizar',
     productLinks: {
       fileRenamer: 'Renomeador de arquivos com IA',
       batchRename: 'Renomeação em lote',
@@ -2066,6 +2100,13 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       about: 'Sobre o Zush',
       author: 'Autor',
       homebrew: 'Zush no Homebrew',
+      hazelAlternative: 'Alternativa ao Hazel',
+      powerRenameAlternative: 'Alternativa ao PowerRename',
+      automateDownloads: 'Automatizar downloads',
+      renameInvoices: 'Renomear faturas',
+      renameReceipts: 'Renomear recibos',
+      renameExcel: 'Renomear arquivos Excel',
+      renameWord: 'Renomear documentos Word',
     },
   },
   es: {
@@ -2086,6 +2127,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     googleWorkspace: 'Zush en Google Workspace Marketplace',
     designedBy: 'Diseñado por',
     designedWith: 'con',
+    compareAndAutomate: 'Comparar y automatizar',
     productLinks: {
       fileRenamer: 'Renombrador de archivos con IA',
       batchRename: 'Renombrado por lotes',
@@ -2105,6 +2147,13 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       about: 'Acerca de Zush',
       author: 'Autor',
       homebrew: 'Zush en Homebrew',
+      hazelAlternative: 'Alternativa a Hazel',
+      powerRenameAlternative: 'Alternativa a PowerRename',
+      automateDownloads: 'Automatizar descargas',
+      renameInvoices: 'Renombrar facturas',
+      renameReceipts: 'Renombrar recibos',
+      renameExcel: 'Renombrar archivos Excel',
+      renameWord: 'Renombrar documentos Word',
     },
   },
   nl: {
@@ -2125,6 +2174,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     googleWorkspace: 'Zush op Google Workspace Marketplace',
     designedBy: 'Ontworpen door',
     designedWith: 'met',
+    compareAndAutomate: 'Vergelijken en automatiseren',
     productLinks: {
       fileRenamer: 'AI-bestandshernoemer',
       batchRename: 'Batch-hernoemtool',
@@ -2144,6 +2194,13 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       about: 'Over Zush',
       author: 'Auteur',
       homebrew: 'Zush op Homebrew',
+      hazelAlternative: 'Hazel-alternatief',
+      powerRenameAlternative: 'PowerRename-alternatief',
+      automateDownloads: 'Downloads automatiseren',
+      renameInvoices: 'Facturen hernoemen',
+      renameReceipts: 'Bonnen hernoemen',
+      renameExcel: 'Excel-bestanden hernoemen',
+      renameWord: 'Word-documenten hernoemen',
     },
   },
   it: {
@@ -2164,6 +2221,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     googleWorkspace: 'Zush su Google Workspace Marketplace',
     designedBy: 'Progettato da',
     designedWith: 'con',
+    compareAndAutomate: 'Confronta e automatizza',
     productLinks: {
       fileRenamer: 'Rinomina file con IA',
       batchRename: 'Rinomina in batch',
@@ -2183,6 +2241,13 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       about: 'Informazioni su Zush',
       author: 'Autore',
       homebrew: 'Zush su Homebrew',
+      hazelAlternative: 'Alternativa a Hazel',
+      powerRenameAlternative: 'Alternativa a PowerRename',
+      automateDownloads: 'Automatizza i download',
+      renameInvoices: 'Rinomina fatture',
+      renameReceipts: 'Rinomina ricevute',
+      renameExcel: 'Rinomina file Excel',
+      renameWord: 'Rinomina documenti Word',
     },
   },
   ja: {
@@ -2203,6 +2268,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     googleWorkspace: 'Google Workspace Marketplace の Zush',
     designedBy: 'デザイン',
     designedWith: 'と',
+    compareAndAutomate: '比較と自動化',
     productLinks: {
       fileRenamer: 'AI ファイルリネーマー',
       batchRename: '一括リネームツール',
@@ -2222,6 +2288,13 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       about: 'Zush について',
       author: '著者',
       homebrew: 'Homebrew の Zush',
+      hazelAlternative: 'Hazel の代替',
+      powerRenameAlternative: 'PowerRename の代替',
+      automateDownloads: 'ダウンロードを自動化',
+      renameInvoices: '請求書をリネーム',
+      renameReceipts: '領収書をリネーム',
+      renameExcel: 'Excel ファイルをリネーム',
+      renameWord: 'Word 文書をリネーム',
     },
   },
   ko: {
@@ -2242,6 +2315,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     googleWorkspace: 'Google Workspace Marketplace의 Zush',
     designedBy: '디자인',
     designedWith: '와 함께',
+    compareAndAutomate: '비교 및 자동화',
     productLinks: {
       fileRenamer: 'AI 파일 이름 변경',
       batchRename: '일괄 이름 변경 도구',
@@ -2261,6 +2335,13 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       about: 'Zush 소개',
       author: '작성자',
       homebrew: 'Homebrew의 Zush',
+      hazelAlternative: 'Hazel 대안',
+      powerRenameAlternative: 'PowerRename 대안',
+      automateDownloads: '다운로드 자동화',
+      renameInvoices: '송장 이름 변경',
+      renameReceipts: '영수증 이름 변경',
+      renameExcel: 'Excel 파일 이름 변경',
+      renameWord: 'Word 문서 이름 변경',
     },
   },
   'zh-cn': {
@@ -2281,6 +2362,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     googleWorkspace: 'Google Workspace Marketplace 上的 Zush',
     designedBy: '设计',
     designedWith: '用',
+    compareAndAutomate: '比较与自动化',
     productLinks: {
       fileRenamer: 'AI 文件重命名工具',
       batchRename: '批量重命名工具',
@@ -2300,6 +2382,13 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       about: '关于 Zush',
       author: '作者',
       homebrew: 'Homebrew 上的 Zush',
+      hazelAlternative: 'Hazel 替代方案',
+      powerRenameAlternative: 'PowerRename 替代方案',
+      automateDownloads: '自动整理下载',
+      renameInvoices: '重命名发票',
+      renameReceipts: '重命名收据',
+      renameExcel: '重命名 Excel 文件',
+      renameWord: '重命名 Word 文档',
     },
   },
   tr: {
@@ -2320,6 +2409,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     googleWorkspace: 'Google Workspace Marketplace’te Zush',
     designedBy: 'Tasarım',
     designedWith: 'ile',
+    compareAndAutomate: 'Karşılaştır ve otomatikleştir',
     productLinks: {
       fileRenamer: 'Yapay zekâ dosya adlandırıcı',
       batchRename: 'Toplu yeniden adlandırma aracı',
@@ -2339,6 +2429,13 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       about: 'Zush hakkında',
       author: 'Yazar',
       homebrew: 'Homebrew’da Zush',
+      hazelAlternative: 'Hazel alternatifi',
+      powerRenameAlternative: 'PowerRename alternatifi',
+      automateDownloads: 'İndirmeleri otomatikleştir',
+      renameInvoices: 'Faturaları yeniden adlandır',
+      renameReceipts: 'Makbuzları yeniden adlandır',
+      renameExcel: 'Excel dosyalarını adlandır',
+      renameWord: 'Word belgelerini adlandır',
     },
   },
   ar: {
@@ -2359,6 +2456,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     googleWorkspace: 'Zush على Google Workspace Marketplace',
     designedBy: 'تصميم',
     designedWith: 'بواسطة',
+    compareAndAutomate: 'المقارنة والأتمتة',
     productLinks: {
       fileRenamer: 'إعادة تسمية الملفات بالذكاء الاصطناعي',
       batchRename: 'أداة إعادة التسمية بالدفعات',
@@ -2378,6 +2476,13 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       about: 'حول Zush',
       author: 'المؤلف',
       homebrew: 'Zush على Homebrew',
+      hazelAlternative: 'بديل Hazel',
+      powerRenameAlternative: 'بديل PowerRename',
+      automateDownloads: 'أتمتة التنزيلات',
+      renameInvoices: 'إعادة تسمية الفواتير',
+      renameReceipts: 'إعادة تسمية الإيصالات',
+      renameExcel: 'إعادة تسمية ملفات Excel',
+      renameWord: 'إعادة تسمية مستندات Word',
     },
   },
 };
