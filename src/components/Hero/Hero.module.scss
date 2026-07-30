@@ -87,7 +87,13 @@
     & &__Title {
         font-size: clamp(2.4rem, 5.5vw, 3.5rem);
         margin-bottom: 1rem;
-        text-wrap: pretty;
+        // The copy already carries its own line breaks (heroTitle uses \n), so
+        // the heading needs plain greedy wrapping and nothing else. Both
+        // `balance` from the base h1 rule and `pretty` let the engine pick its
+        // own break points, and Safari optimises the accent span on its own —
+        // it split "AI File Renamer & Organizer" across two lines while Chrome
+        // kept it on one. `wrap` makes every engine honour the authored break.
+        text-wrap: wrap;
 
         @include mobile {
             margin-bottom: 0.875rem;
@@ -105,10 +111,10 @@
         line-height: 1;
         text-decoration: none;
         filter: drop-shadow(0 0.45rem 0.85rem rgb(233 171 5 / 0.18));
-        transition: transform $transition-fast;
+        transition: opacity $transition-fast;
 
         &:hover {
-            transform: translateY(-1px);
+            opacity: 0.85;
         }
 
         &:focus-visible {

@@ -45,10 +45,10 @@
   height: 54px;
   color: var(--foreground);
   text-decoration: none;
-  transition: transform 0.2s ease;
+  transition: opacity 0.2s ease;
 
   &:hover {
-    transform: translateY(-2px);
+    opacity: 0.75;
   }
 
   &__Icon {

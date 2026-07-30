@@ -23,7 +23,11 @@
         border-radius: clamp(1.1rem, 1.8vw, 1.4rem);
         background-color: var(--muted);
         box-shadow: 0 1.6rem 3.75rem -2rem oklch(0 0 0 / 0.32);
-        transform: translateZ(0);
+        // `translateZ(0)` used to sit here and promoted the frame to its own
+        // compositing layer. Safari then clips the video against that layer
+        // with an aliased rounded rect, so the corners come out jagged.
+        // `isolation` gives the same stacking context without the promotion.
+        isolation: isolate;
 
         @include mobile {
             border-radius: 1.1rem;
@@ -37,6 +41,9 @@
         height: 100%;
         object-fit: contain;
         background: var(--muted);
+        // Round the video itself as well, so its own antialiased corners are
+        // what the eye reads rather than the parent's clip edge.
+        border-radius: inherit;
 
         // Only the recording matching the active theme is laid out; the other
         // stays `display: none`, so it neither autoplays nor downloads.

@@ -7,9 +7,7 @@
     align-items: stretch;
     --download-button-height: auto;
     z-index: 1;
-    transition:
-        transform $transition-fast,
-        box-shadow $transition-normal;
+    transition: box-shadow $transition-normal;
 
     &_open {
         z-index: 50;
@@ -37,8 +35,8 @@
     white-space: nowrap;
     text-decoration: none;
     background-clip: padding-box;
+    // No `transform` here on purpose — the button must stay put on hover.
     transition:
-        transform $transition-fast,
         background-color $transition-fast,
         color $transition-fast,
         box-shadow $transition-fast,

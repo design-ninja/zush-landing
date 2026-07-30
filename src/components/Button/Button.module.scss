@@ -9,8 +9,9 @@
     border-radius: $radius-full;
     background-clip: padding-box;
     font-weight: 500;
+    // No `transform` here on purpose: buttons must not shift position on
+    // hover, so there is nothing positional left to animate.
     transition:
-        transform $transition-fast,
         background-color $transition-fast,
         color $transition-fast,
         box-shadow $transition-fast,
@@ -86,6 +87,5 @@
         opacity: $opacity-disabled;
         cursor: default;
         pointer-events: none;
-        transform: none;
     }
 }
