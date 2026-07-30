@@ -14,9 +14,9 @@ import { PRIMARY_AUTHOR } from '@/data/author';
 
 const SITE_ORIGIN = 'https://zushapp.com';
 
-export const ORGANIZATION_ID = `${SITE_ORIGIN}/#organization`;
-export const WEBSITE_ID = `${SITE_ORIGIN}/#website`;
-export const SOFTWARE_ID = `${SITE_ORIGIN}/#software`;
+const ORGANIZATION_ID = `${SITE_ORIGIN}/#organization`;
+const WEBSITE_ID = `${SITE_ORIGIN}/#website`;
+const SOFTWARE_ID = `${SITE_ORIGIN}/#software`;
 
 /** Reference to the single Organization node emitted on every page by BaseLayout. */
 export const ORGANIZATION_REF = { '@id': ORGANIZATION_ID } as const;
@@ -40,7 +40,7 @@ export const SOFTWARE_REF = {
  * Keep this list in sync with the profiles themselves — pricing, platforms, and
  * descriptions that contradict the site weaken the entity link instead of helping it.
  */
-export const ORGANIZATION_SAME_AS = [
+const ORGANIZATION_SAME_AS = [
   X_PROFILE_URL,
   YOUTUBE_CHANNEL_URL,
   PRODUCT_HUNT_URL,

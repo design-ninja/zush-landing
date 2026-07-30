@@ -51,8 +51,8 @@ export type DownloadSource =
 
 export type DownloadChannel = 'direct' | 'mac-app-store' | 'microsoft-store' | 'homebrew';
 
-export type ProClickSource = 'hero' | 'navbar';
-export type ProPlanId = 'monthly' | 'one-time';
+type ProClickSource = 'hero' | 'navbar';
+type ProPlanId = 'monthly' | 'one-time';
 
 export interface TrackDownloadClickOptions {
   os: DownloadOS;
@@ -388,7 +388,7 @@ export function bindDownloadTracking(root: ParentNode = document): void {
   eventRoot.addEventListener('auxclick', handleDownloadActivation);
 }
 
-export function trackProClick({ source }: { source: ProClickSource }): void {
+function trackProClick({ source }: { source: ProClickSource }): void {
   trackAnalyticsEvent('pro_click', { source });
 }
 
@@ -420,6 +420,7 @@ export const bindProClickTracking = (root: ParentNode = document) => {
   });
 };
 
+// fallow-ignore-next-line unused-export
 export const bindProPlanClickTracking = (root: ParentNode = document) => {
   root.querySelectorAll<HTMLElement>('[data-pro-plan-id]').forEach((element) => {
     if (element.dataset.proPlanClickTrackingBound === 'true') return;

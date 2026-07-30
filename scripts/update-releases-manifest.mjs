@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// fallow-ignore-file unused-file
 // Adds the current release's files to the manifest behind the
 // zushapp.com/releases/* redirect route (src/pages/releases/[...file].ts).
 // Called by zush-app/scripts/release.sh after the GitHub release is published.

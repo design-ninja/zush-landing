@@ -26,7 +26,3 @@ export function getBlogThumbnail(slug: string): ImageMetadata {
 
   return thumbnail;
 }
-
-export function getBlogThumbnailAlt(title: string): string {
-  return `${title} abstract blog thumbnail`;
-}

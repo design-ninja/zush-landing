@@ -193,7 +193,7 @@ export const INDEXABLE_LOCALIZED_ROUTES = [
  * excluded (noindex + no sitemap entry + no hreflang, same treatment as
  * LOCALIZATION_PAUSED gives every locale).
  */
-export const SEO_EXCLUDED_LOCALIZED_ROUTES = [
+const SEO_EXCLUDED_LOCALIZED_ROUTES = [
   '/methodology',
   '/privacy-policy',
   '/terms-of-service',

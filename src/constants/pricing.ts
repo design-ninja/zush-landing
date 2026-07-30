@@ -16,14 +16,6 @@ export const PRO_PRICING = {
   oneTime: createUsdPrice(pricingData.oneTime.usd),
 } as const;
 
-export function getProMonthlyCost(years: number): number {
-  return PRO_PRICING.monthly.usd * 12 * years;
-}
-
-export function formatUsd(amount: number): string {
-  return `$${amount}`;
-}
-
 export const PRO_PRICING_SUMMARY =
   `${PRO_PRICING.monthly.label}/month or ${PRO_PRICING.oneTime.label} one-time`;
 
