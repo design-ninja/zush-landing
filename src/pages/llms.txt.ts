@@ -58,6 +58,7 @@ export async function GET() {
     `- [Hazel Alternative with AI](${SITE_ORIGIN}/hazel-alternative)`,
     `- [Automate Your Downloads Folder](${SITE_ORIGIN}/automate-downloads-folder)`,
     `- [PowerRename Alternative with AI](${SITE_ORIGIN}/powerrename-alternative)`,
+    `- [Best AI File Organizers for Mac](${SITE_ORIGIN}/blog/best-ai-file-organizers-mac)`,
     `- [Mac AI renamer comparison 2026](${SITE_ORIGIN}/blog/best-ai-file-renamer-tools-mac-compared)`,
     `- [Windows AI renamer comparison](${SITE_ORIGIN}/blog/best-ai-file-renamer-tools-windows-compared)`,
     `- [AI renamer tools comparison](${SITE_ORIGIN}/blog/best-ai-file-renamer-tools-2026)`,

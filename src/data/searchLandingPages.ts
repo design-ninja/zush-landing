@@ -533,10 +533,17 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       { title: 'Zush for Windows', href: '/windows' },
     ],
     relatedBlogPosts: [
+      { title: 'Best AI File Organizers for Mac', href: 'best-ai-file-organizers-mac' },
       { title: 'Automatic File Organizer for Mac', href: 'automate-file-organization-macos' },
       { title: 'Best Ways to Organize Photos on Mac', href: 'best-ways-to-organize-photos-on-mac' },
       { title: 'Declutter Your Mac: File Cleanup Guide', href: 'declutter-your-mac-file-cleanup-guide' },
     ],
+    contextualGuideLink: {
+      before: 'Comparing apps before you choose a workflow? See the',
+      label: 'best AI file organizers for Mac',
+      href: '/blog/best-ai-file-organizers-mac',
+      after: 'for a verification-first breakdown of renaming, moving, local AI, undo, and pricing.',
+    },
     jsonLd: buildFeaturePageJsonLd({
       howTo: {
         name: 'Organize files with AI',
