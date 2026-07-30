@@ -73,6 +73,7 @@ export async function GET() {
     '## Workflow Guides',
     '',
     `- [Mac batch rename methods](${SITE_ORIGIN}/blog/batch-rename-files-on-mac-complete-guide)`,
+    `- [Automatically Rename Invoices with AI](${SITE_ORIGIN}/blog/automatically-rename-invoices-ai)`,
     `- [Rename Files by Content](${SITE_ORIGIN}/blog/rename-files-by-content-guide)`,
     `- [Automatic File Organizer for Mac](${SITE_ORIGIN}/blog/automate-file-organization-macos)`,
     `- [Rename Files with Ollama on Mac](${SITE_ORIGIN}/blog/rename-files-with-ollama-mac)`,

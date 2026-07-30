@@ -127,10 +127,17 @@ const RenamePDFWithAI = () => (
       { title: 'Rename Screenshots with AI', href: '/rename-screenshots-with-ai' },
     ]}
     relatedBlogPosts={[
+      { title: 'How to Automatically Rename Invoices with AI', href: 'automatically-rename-invoices-ai' },
       { title: 'How to Rename PDF Files Automatically', href: 'rename-pdf-files-automatically' },
       { title: 'How to Rename PDF Files with AI on Windows', href: 'rename-pdf-files-with-ai-windows' },
       { title: 'How to Rename Files with AI: Step-by-Step Guide', href: 'rename-files-with-ai-guide' },
     ]}
+    contextualGuideLink={{
+      before: 'Working with vendor bills rather than mixed PDFs? Use the',
+      label: 'invoice auto-renaming guide',
+      href: '/blog/automatically-rename-invoices-ai',
+      after: 'for accounting Templates, field extraction, and bulk PDF tool comparisons.',
+    }}
     jsonLd={jsonLd}
   />
 );

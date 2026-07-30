@@ -18,6 +18,7 @@ const BLOG_THUMBNAILS = Object.fromEntries(
 ) as Record<string, ImageMetadata>;
 
 const BLOG_THUMBNAIL_ALIASES: Record<string, string> = {
+  'automatically-rename-invoices-ai': 'rename-pdf-files-automatically',
   'best-ai-file-organizers-mac': 'automate-file-organization-macos',
 };
 

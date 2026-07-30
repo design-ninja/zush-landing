@@ -724,10 +724,17 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       { title: 'BYOK Docs', href: '/docs/byok' },
     ],
     relatedBlogPosts: [
+      { title: 'How to Automatically Rename Invoices with AI', href: 'automatically-rename-invoices-ai' },
       { title: 'Rename PDF Files Automatically', href: 'rename-pdf-files-automatically' },
       { title: 'Naming Blocks File Naming Guide', href: 'naming-blocks-file-naming-guide' },
       { title: 'Organize Client Files for Freelancers', href: 'organize-client-files-freelancers-mac' },
     ],
+    contextualGuideLink: {
+      before: 'Need the complete accounting workflow? Follow the',
+      label: 'guide to automatically renaming invoices with AI',
+      href: '/blog/automatically-rename-invoices-ai',
+      after: 'for naming Templates, review steps, and web-versus-desktop tool comparisons.',
+    },
     jsonLd: buildFeaturePageJsonLd({
       howTo: {
         name: 'Rename invoices automatically with AI',
@@ -774,10 +781,17 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       { title: 'Offline AI File Renamer', href: '/offline-ai-file-renamer' },
     ],
     relatedBlogPosts: [
+      { title: 'How to Automatically Rename Invoices with AI', href: 'automatically-rename-invoices-ai' },
       { title: 'Naming Blocks File Naming Guide', href: 'naming-blocks-file-naming-guide' },
       { title: 'Rename PDF Files Automatically', href: 'rename-pdf-files-automatically' },
       { title: 'Organize Client Files for Freelancers', href: 'organize-client-files-freelancers-mac' },
     ],
+    contextualGuideLink: {
+      before: 'Receipts and invoices can share one reviewed intake process; see how to',
+      label: 'automatically rename invoices with AI',
+      href: '/blog/automatically-rename-invoices-ai',
+      after: 'and adapt the same vendor-date-amount convention for receipt photos and PDFs.',
+    },
     jsonLd: buildFeaturePageJsonLd({
       howTo: {
         name: 'Rename and organize receipts with AI',
