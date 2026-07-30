@@ -175,7 +175,10 @@
 [data-theme='light'] {
     .NotFound {
         &__Image {
-            filter: grayscale(100%) contrast(0.8);
+            // Custom property so the CSS minifier can't collapse the space
+            // between the two filter functions into an invalid value.
+            --image-filter: grayscale(100%) contrast(0.8);
+            filter: var(--image-filter);
             opacity: 0.4;
         }
     }
