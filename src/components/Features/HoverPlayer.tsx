@@ -15,7 +15,7 @@ interface HoverPlayerProps {
   inputProps?: FeatureAnimationInputProps;
 }
 
-export interface FeatureAnimationInputProps {
+interface FeatureAnimationInputProps {
   demoCopy?: FeatureDemoCopy;
 }
 

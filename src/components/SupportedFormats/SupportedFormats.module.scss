@@ -29,7 +29,8 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.5rem;
-    max-width: 700px;
+    // No local cap: the extension pills use the full page container, so long
+    // groups like Images and Documents take fewer rows.
     margin: 0 auto;
   }
 

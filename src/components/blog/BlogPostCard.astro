@@ -1,79 +1,51 @@
 ---
 import { Image } from 'astro:assets';
-import { Calendar, Glasses } from 'lucide-react';
-import headingStyles from '@/components/Heading/Heading.module.scss';
-import textStyles from '@/components/Text/Text.module.scss';
 import { BLOG_PLATFORM_LABELS } from '@/data/blogSchema';
 import { formatBlogDate, type BlogPost } from '@/data/blog';
 import { getBlogThumbnail } from '@/data/blogThumbnails';
-import styles from '@/views/Blog/BlogList.module.scss';
+import { getBlogPostCopy } from '@/i18n/blogPost';
+import styles from './BlogPostCard.module.scss';
 
 interface Props {
   post: BlogPost;
+  /** Locale prefix of the surrounding page, e.g. '/' or '/de'. */
+  basePath?: string;
 }
 
-const { post } = Astro.props;
-const thumbnail = getBlogThumbnail(post.slug);
+const { post, basePath = '/' } = Astro.props;
+
+const prefix = basePath === '/' ? '' : basePath.replace(/\/$/, '');
+const href = `${prefix}/blog/${post.slug}`;
+const copy = getBlogPostCopy(post.locale);
+// Translations reuse their English source's thumbnail rather than duplicating
+// the asset under a German slug.
+const thumbnail = getBlogThumbnail(post.translationOf ?? post.slug);
 ---
 
-<article class={styles.BlogList__Post}>
-  <a class={styles.BlogList__PostLink} href={`/blog/${post.slug}`}>
-    <div class={styles.BlogList__PostMedia} aria-hidden='true'>
-      <Image
-        alt={post.title}
-        class={styles.BlogList__PostImage}
-        decoding='async'
-        height={543}
-        loading='lazy'
-        sizes='(max-width: 767px) calc(100vw - 2rem), (max-width: 1200px) calc((100vw - 5rem) / 2), 520px'
-        src={thumbnail}
-        width={724}
-        widths={[360, 520, 724, 1040]}
-      />
-    </div>
-    <span
-      class={[
-        styles.BlogList__Track,
-        styles[`BlogList__Track_${post.platform}`],
-      ].join(' ')}
-    >
-      {BLOG_PLATFORM_LABELS[post.platform]}
+<article class={styles.BlogPostCard}>
+  <a class={styles.BlogPostCard__Link} href={href}>
+    <Image
+      alt=''
+      aria-hidden='true'
+      class={styles.BlogPostCard__Image}
+      decoding='async'
+      densities={[1, 2]}
+      height={126}
+      loading='lazy'
+      src={thumbnail}
+      width={168}
+    />
+    <span class={styles.BlogPostCard__Body}>
+      <span class={styles.BlogPostCard__Track}>
+        {BLOG_PLATFORM_LABELS[post.platform]}
+      </span>
+      <h3 class={styles.BlogPostCard__Title}>{post.title}</h3>
+      <span class={styles.BlogPostCard__Description}>{post.description}</span>
+      <span class={styles.BlogPostCard__Meta}>
+        <time datetime={post.date}>{formatBlogDate(post.dateValue, copy.dateLocale)}</time>
+        <span aria-hidden='true'>·</span>
+        <span>{copy.readingTime(post.readingTime)}</span>
+      </span>
     </span>
-    <h3
-      class={[
-        headingStyles.Heading,
-        headingStyles.Heading_h4,
-        styles.BlogList__PostTitle,
-      ].join(' ')}
-    >
-      {post.title}
-    </h3>
-    <p
-      class={[
-        textStyles.Text,
-        textStyles.Text_md,
-        textStyles.Text_subtle,
-        styles.BlogList__PostDescription,
-      ].join(' ')}
-    >
-      {post.description}
-    </p>
-    {post.tags.length > 0 && (
-      <div class={styles.BlogList__PostTags}>
-        {post.tags.slice(0, 3).map((tag) => (
-          <span class={styles.BlogList__Tag}>{tag}</span>
-        ))}
-      </div>
-    )}
-    <div class={styles.BlogList__PostMeta}>
-      <span class={styles.BlogList__PostMetaItem}>
-        <Calendar aria-hidden='true' size={15} strokeWidth={2} />
-        <time datetime={post.date}>{formatBlogDate(post.dateValue)}</time>
-      </span>
-      <span class={styles.BlogList__PostMetaItem}>
-        <Glasses aria-hidden='true' size={15} strokeWidth={2} />
-        <span>{post.readingTime} min read</span>
-      </span>
-    </div>
   </a>
 </article>

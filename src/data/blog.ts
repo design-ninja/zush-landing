@@ -11,7 +11,7 @@ import {
   type BlogTopic,
 } from '@/data/blogSchema';
 
-export const DEFAULT_BLOG_LOCALE: BlogLocale = 'en';
+const DEFAULT_BLOG_LOCALE: BlogLocale = 'en';
 
 export type BlogEntry = CollectionEntry<'blog'>;
 
@@ -314,7 +314,7 @@ export async function getAllPosts(): Promise<BlogPost[]> {
 }
 
 /** Posts authored in one locale. For `en` this is identical to getAllPosts(). */
-export async function getLocalizedPosts(locale: BlogLocale): Promise<BlogPost[]> {
+async function getLocalizedPosts(locale: BlogLocale): Promise<BlogPost[]> {
   return (await getEntriesForLocale(locale)).map(toBlogPost);
 }
 

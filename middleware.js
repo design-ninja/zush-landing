@@ -12,7 +12,6 @@ const LEGACY_POSTHOG_PROXY_HOST = 'e.zushapp.com';
 const CANONICAL_HOST = 'zushapp.com';
 const POSTHOG_PROXY_PATH = '/e';
 
-// fallow-ignore-next-line unused-export
 export const config = {
   matcher: '/((?!e(?:/|$)|.*\\..*).*)',
 };

@@ -20,7 +20,6 @@ export const GOOGLE_WORKSPACE_MARKETPLACE_URL =
   "https://workspace.google.com/marketplace/app/zush_ai_renamer/865259549983";
 
 export const FREE_DOWNLOAD_BADGE_LABEL = "FREE";
-export const HERO_AI_MODES = ["Cloud AI", "BYOK", "Offline"];
 export const MAC_APP_VERSION = "3.8.3";
 export const WINDOWS_APP_VERSION = "3.7.0.0";
 export const PRODUCT_FACTS_REVIEWED_AT = "2026-07-29";
@@ -153,7 +152,7 @@ export const APP_CONFIG = {
   min_macos_name: "Sequoia",
 };
 
-export const SUPPORTED_FORMAT_EXTENSIONS = Array.from(new Set([
+const SUPPORTED_FORMAT_EXTENSIONS = Array.from(new Set([
   ...APP_CONFIG.image_extensions,
   ...APP_CONFIG.design_extensions,
   ...APP_CONFIG.document_extensions,

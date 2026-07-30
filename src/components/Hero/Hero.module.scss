@@ -2,11 +2,11 @@
 @use "../../styles/mixins" as *;
 
 .Hero {
-    padding: 9.5rem 0 3.75rem;
-    overflow-x: clip;
+    @include page-top-bloom;
+    padding: 10.5rem 0 2.25rem;
 
     @include mobile {
-        padding: 7.25rem 0 2.5rem;
+        padding: 8rem 0 1.5rem;
     }
 
     &__Container {
@@ -29,9 +29,71 @@
         }
     }
 
-    &__Title {
+    // Single-column variant: the showcase moves out of the hero into its own
+    // section below, so the intro gets the full width and centers.
+    &_centered {
+        .Hero__Container {
+            grid-template-columns: 1fr;
+            justify-items: center;
+            text-align: center;
+        }
+
+        .Hero__Intro {
+            max-width: 52rem;
+        }
+
+        .Hero__ProofRow,
+        .Hero__ModeRow,
+        .Hero__Buttons,
+        .Hero__TrustRow {
+            justify-content: center;
+        }
+
+        // Rating on top, mode tags stacked underneath it.
+        .Hero__ProofRow {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        // Button on its own line, trust signals centered underneath it.
+        .Hero__ActionRow {
+            flex-direction: column;
+            align-items: center;
+            gap: 0.65rem;
+        }
+
+        .Hero__Subtitle {
+            max-width: 42rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        // All trust signals sit on one line; the base styles push the last one
+        // onto its own row, which only makes sense in the two-column layout.
+        .Hero__TrustRow {
+            max-width: none;
+
+            li:last-child {
+                flex-basis: auto;
+            }
+        }
+    }
+
+    &__Intro {
+        min-width: 0;
+    }
+
+    // Nested under the root class so the size wins over Heading_h1.
+    & &__Title {
+        font-size: clamp(2.4rem, 5.5vw, 3.5rem);
         margin-bottom: 1rem;
-        text-wrap: pretty;
+        // The copy already carries its own line breaks (heroTitle uses \n), so
+        // the heading needs plain greedy wrapping and nothing else. Both
+        // `balance` from the base h1 rule and `pretty` let the engine pick its
+        // own break points, and Safari optimises the accent span on its own —
+        // it split "AI File Renamer & Organizer" across two lines while Chrome
+        // kept it on one. `wrap` makes every engine honour the authored break.
+        text-wrap: wrap;
 
         @include mobile {
             margin-bottom: 0.875rem;
@@ -49,10 +111,10 @@
         line-height: 1;
         text-decoration: none;
         filter: drop-shadow(0 0.45rem 0.85rem rgb(233 171 5 / 0.18));
-        transition: transform $transition-fast;
+        transition: opacity $transition-fast;
 
         &:hover {
-            transform: translateY(-1px);
+            opacity: 0.85;
         }
 
         &:focus-visible {
@@ -63,7 +125,7 @@
     }
 
     &__TitleAccent {
-        color: var(--primary);
+        color: inherit;
     }
 
     &__Subtitle {
@@ -83,36 +145,9 @@
     }
 
     &__SubtitleHighlight {
-        display: inline-block;
-        padding: 0.025em 0.08em 0.03em;
-        margin: -0.025em -0.02em -0.03em;
-        color: oklch(0.14 0.01 285);
+        color: inherit;
         font-weight: inherit;
-        line-height: 1.08;
-        white-space: nowrap;
-        background: rgb(250 204 21 / 0.74);
-        -webkit-box-decoration-break: clone;
-        box-decoration-break: clone;
-
-        :global(html[data-theme='dark']) & {
-            background: #e9ab05;
-        }
-
-        @include mobile {
-            display: inline;
-            white-space: normal;
-        }
-
-        @media (prefers-contrast: more), (forced-colors: active) {
-            padding: 0;
-            margin: 0;
-            color: var(--foreground);
-            background: none;
-            text-decoration: underline;
-            text-decoration-thickness: 0.16em;
-            text-decoration-color: var(--primary);
-            text-underline-offset: 0.12em;
-        }
+        background: none;
     }
 
     &__ProofRow {
@@ -143,14 +178,14 @@
 
     &__ModeBadge {
         padding: 0.25rem 0.6rem;
-        border: 1px solid var(--border);
+        border: none;
         border-radius: $radius-full;
-        background: var(--card);
+        background: var(--primary-soft);
         font-size: 0.75rem;
         font-weight: 600;
         line-height: 1.25;
         letter-spacing: 0.01em;
-        color: var(--muted-foreground);
+        color: var(--primary);
         white-space: nowrap;
     }
 
@@ -207,7 +242,9 @@
         padding: 0;
         margin: 0;
         font-size: 0.875rem;
-        color: var(--muted-foreground);
+        // Lighter than --muted-foreground: this line sits under the CTAs and
+        // should read as a footnote, not as body copy.
+        color: color-mix(in oklch, var(--muted-foreground) 62%, var(--background));
         max-width: 18rem;
 
         li {
@@ -229,188 +266,6 @@
         position: relative;
         width: 100%;
         isolation: isolate;
-    }
-
-    &__VideoShowcase {
-        --hero-video-aspect-ratio: var(--hero-video-aspect-ratio-light, 1280 / 1050);
-
-        position: relative;
-        width: min(100%, 45rem);
-        aspect-ratio: var(--hero-video-aspect-ratio);
-        margin: 0 0 0 auto;
-        overflow: hidden;
-        border-radius: clamp(1.1rem, 1.8vw, 1.4rem);
-        border: 1px solid var(--border);
-        background-color: var(--muted);
-        background-image: var(--hero-video-poster-light);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-        box-shadow: 0 1.6rem 3.75rem -2rem oklch(0 0 0 / 0.32);
-        transform: translateZ(0);
-
-        :global(html[data-theme='dark']) & {
-            --hero-video-aspect-ratio: var(--hero-video-aspect-ratio-dark, 1280 / 1050);
-
-            background-image: var(--hero-video-poster-dark);
-        }
-
-        &[data-frame='mac']::after {
-            position: absolute;
-            z-index: 1;
-            inset: 0;
-            border-radius: inherit;
-            box-shadow: inset 0 0 0 2px var(--background);
-            pointer-events: none;
-            content: '';
-        }
-
-        @include mobile {
-            width: min(100%, 34rem);
-            margin: 1.25rem auto 0;
-            border-radius: 1.1rem;
-            box-shadow: 0 1rem 2.5rem -1.75rem oklch(0 0 0 / 0.28);
-        }
-
-        &[data-frame='windows'] {
-            --hero-video-crop-scale: 1.008;
-
-            border-radius: clamp(0.35rem, 0.7vw, 0.55rem);
-
-            @include mobile {
-                border-radius: 0.5rem;
-            }
-        }
-    }
-
-    &__Video {
-        display: block;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        object-fit: contain;
-        background: var(--muted);
-        transform: scale(var(--hero-video-crop-scale, 1));
-        transform-origin: center;
-
-        &[data-ready='true'] {
-            opacity: 1;
-        }
-
-        :global(html[data-theme='dark']) &[data-showcase-theme='light'],
-        :global(html:not([data-theme='dark'])) &[data-showcase-theme='dark'] {
-            opacity: 0;
-        }
-    }
-
-    &__VideoControls {
-        position: absolute;
-        z-index: 2;
-        right: 0.75rem;
-        top: 0.75rem;
-        display: flex;
-        align-items: center;
-        gap: 0.25rem;
-        opacity: 0;
-        pointer-events: none;
-        transform: translateY(-0.3rem);
-        transition: opacity $transition-fast, transform $transition-fast;
-
-        .Hero__VideoShowcase:hover &,
-        &:focus-within {
-            opacity: 1;
-            pointer-events: auto;
-            transform: none;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            transition: none;
-        }
-
-        @include mobile {
-            right: 0.55rem;
-            top: 0.55rem;
-        }
-    }
-
-    &__VideoControl {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.28rem;
-        min-width: 1.75rem;
-        height: 1.75rem;
-        padding: 0 0.45rem;
-        border: 0;
-        border-radius: $radius-full;
-        color: rgb(255 255 255 / 0.96);
-        background: rgb(18 18 22 / 0.82);
-        box-shadow: 0 0.16rem 0.5rem rgb(0 0 0 / 0.18);
-        font: inherit;
-        font-size: 0.65rem;
-        font-weight: 650;
-        line-height: 1;
-        cursor: pointer;
-        backdrop-filter: blur(0.45rem);
-        transition: background-color $transition-fast, transform $transition-fast;
-
-        &:hover {
-            background: rgb(18 18 22 / 0.94);
-            transform: translateY(-1px);
-        }
-
-        &:focus-visible {
-            outline: 2px solid var(--primary);
-            outline-offset: 2px;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            transition: none;
-        }
-
-        &_iconOnly {
-            width: 1.75rem;
-            padding: 0;
-        }
-    }
-
-    &__VideoControlIcon {
-        display: inline-block;
-        flex: 0 0 auto;
-
-        &_pause {
-            width: 0.52rem;
-            height: 0.68rem;
-            border-right: 0.18rem solid currentColor;
-            border-left: 0.18rem solid currentColor;
-            border-radius: 0.04rem;
-        }
-    }
-
-    &__VideoControlPlayIcon {
-        width: 0.55rem;
-        height: 0.68rem;
-        margin-left: 0.08rem;
-        fill: currentColor;
-    }
-
-    &__VideoControlReplayIcon {
-        display: inline-block;
-        font-size: 1rem;
-        font-weight: 700;
-        line-height: 0.8;
-    }
-
-    &__VideoCaption {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
     }
 
     &__Intro {

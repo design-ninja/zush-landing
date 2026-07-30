@@ -34,8 +34,7 @@ a {
 }
 
 .brand-accent-text {
-    color: var(--secondary);
-    @include secondary-text-contrast;
+    color: inherit;
 }
 
 button {
@@ -73,7 +72,9 @@ h4,
 h5,
 h6 {
     font-family: var(--font-family-heading);
-    font-weight: 550;
+    font-weight: 600;
+    // Inter's display optical size — tighter spacing, finer joins.
+    font-variation-settings: 'opsz' 32;
     text-wrap: balance;
 }
 

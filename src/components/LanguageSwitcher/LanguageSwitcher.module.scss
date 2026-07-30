@@ -24,17 +24,22 @@
   justify-content: center;
   gap: 0.3rem;
   min-width: 0;
-  border: 1px solid var(--border);
+  border: none;
   border-radius: $radius-full;
-  @include corner-shape-squircle;
-  background-color: var(--background);
+  // Translucent white so the header's blur shows through; dark theme gets a
+  // low-alpha white wash instead, which reads as a lighter surface there.
+  background-color: oklch(1 0 0 / 0.55);
   color: var(--foreground);
   cursor: pointer;
   font-family: var(--font-family);
   font-size: 0.9rem;
   font-weight: 500;
   line-height: 1.25;
-  padding: 0.42rem 0.55rem 0.42rem 0.65rem;
+  // Matches the DownloadButton beside it. Its height is not
+  // --download-button-height (1.95rem) but its 24px OS icon plus the 0.35rem
+  // vertical padding of `.Main` — 2.2rem.
+  min-height: 2.2rem;
+  padding: 0 0.5rem 0 0.6rem;
   transition:
     background-color $transition-fast,
     border-color $transition-fast,
@@ -45,14 +50,22 @@
   @include mobile {
     gap: 0.45rem;
     min-width: 7.6rem;
-    padding: 0.48rem 0.65rem 0.48rem 0.75rem;
+    padding: 0 0.65rem 0 0.75rem;
+  }
+
+  :global(html[data-theme='dark']) & {
+    background-color: oklch(1 0 0 / 0.08);
   }
 
   &:hover,
   &:focus-visible {
-    border-color: var(--primary);
-    background-color: var(--muted);
+    background-color: oklch(1 0 0 / 0.8);
     outline: none;
+  }
+
+  :global(html[data-theme='dark']) &:hover,
+  :global(html[data-theme='dark']) &:focus-visible {
+    background-color: oklch(1 0 0 / 0.14);
   }
 
   &:focus-visible {
@@ -117,7 +130,6 @@
   max-width: min(18rem, calc(100vw - 2rem));
   border: 1px solid var(--border);
   border-radius: $radius-lg;
-  @include corner-shape-squircle;
   background-color: var(--background);
   color: var(--foreground);
   padding: 0.35rem;
@@ -182,6 +194,8 @@
   }
 }
 
+// The pill also carries the Download button and the burger below 768px, so the
+// trigger shrinks to little more than the locale code and the chevron.
 @media (max-width: 390px) {
   .LanguageSwitcher__Button {
     gap: 0.25rem;
@@ -202,6 +216,13 @@
   .LanguageSwitcher__Icon {
     width: 1rem;
     height: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .LanguageSwitcher__Button {
+    min-width: 0;
+    padding: 0.4rem 0.32rem 0.4rem 0.42rem;
   }
 }
 

@@ -50,6 +50,7 @@ function ensureGoogleAds(): boolean {
   return true;
 }
 
+// fallow-ignore-next-line unused-export
 export function initializeGoogleAdsTracking(): void {
   ensureGoogleAds();
 }

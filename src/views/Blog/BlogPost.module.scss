@@ -7,7 +7,7 @@
 
   &__Container {
     @include container;
-    max-width: 72rem;
+    max-width: $blog-container-max-width;
   }
 
   &__Header {

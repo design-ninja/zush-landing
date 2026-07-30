@@ -10,6 +10,7 @@ import { useIsMobile } from '@/hooks/useIsMobile';
 import { getPreferredStoreHref, handleStoreLinkClick } from '@/utils/storeLinks';
 import type { DownloadMenuCopy } from '@/i18n/copy';
 import {
+  type DownloadChannel,
   type DownloadOS,
   type DownloadSource,
   getDownloadUrl,
@@ -20,7 +21,7 @@ import styles from './DownloadButton.module.scss';
 
 const MobileDownloadModal = lazy(() => import('@/components/MobileDownloadModal'));
 
-type Variant = 'black' | 'primary' | 'primaryGlass' | 'ghost';
+type Variant = 'black' | 'primary' | 'ghost';
 type Size = 'sm' | 'md' | 'lg';
 type Surface = 'glass' | 'greenGlow';
 
@@ -37,6 +38,11 @@ interface DownloadButtonProps {
   forceOS?: DownloadOS;
   showDropdown?: boolean;
   includeOtherOS?: boolean;
+  /**
+   * Install channel the main link points at. `mac-app-store` turns the button
+   * into a standalone App Store link — no dropdown, no mobile modal.
+   */
+  channel?: Extract<DownloadChannel, 'direct' | 'mac-app-store'>;
   menuCopy?: DownloadMenuCopy;
   onPrimaryClick?: (event: { os: DownloadOS; source: DownloadSource }) => void;
 }
@@ -59,10 +65,12 @@ const renderLabel = (label: string, accent?: string) => {
 
 const DEFAULT_MENU_COPY: DownloadMenuCopy = {
   downloadForMac: 'Download for Mac',
+  downloadForWindows: 'Download for Windows',
   windowsTitle: 'Windows',
   macDirectHint: 'Direct .dmg download',
   windowsHint: 'Microsoft Store',
   appStoreTitle: 'Mac App Store',
+  appStoreCta: 'Get from AppStore',
   appStoreHint: 'Install via App Store',
   showOptions: 'Show download options for {os}',
 };
@@ -80,6 +88,7 @@ const DownloadButton = ({
   forceOS,
   showDropdown = true,
   includeOtherOS = true,
+  channel = 'direct',
   menuCopy = DEFAULT_MENU_COPY,
   onPrimaryClick,
 }: DownloadButtonProps) => {
@@ -91,21 +100,28 @@ const DownloadButton = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const wrapRef = useRef<HTMLDivElement>(null);
 
+  const isAppStoreChannel = channel === 'mac-app-store';
   const downloadUrl = getDownloadUrl(downloadOS);
-  const primaryHref = downloadOS === 'windows'
-    ? getPreferredStoreHref({
-        os: 'windows',
-        runtimeOS: detectedOS,
-        appUrl: WINDOWS_STORE_PROTOCOL_URL,
-        webUrl: WINDOWS_STORE_URL,
-      })
-    : downloadUrl;
   const appStoreHref = getPreferredStoreHref({
     os: 'mac',
     runtimeOS: detectedOS,
     appUrl: APP_STORE_PROTOCOL_URL,
     webUrl: APP_STORE_URL,
   });
+  // The standalone App Store button keeps the crawlable https URL in the markup;
+  // the click handler still hops to macappstore:// on a Mac. Omitting the
+  // data-store-* attrs also keeps the global bindStoreLinks() pass off a link
+  // React already handles.
+  const primaryHref = isAppStoreChannel
+    ? APP_STORE_URL
+    : downloadOS === 'windows'
+      ? getPreferredStoreHref({
+          os: 'windows',
+          runtimeOS: detectedOS,
+          appUrl: WINDOWS_STORE_PROTOCOL_URL,
+          webUrl: WINDOWS_STORE_URL,
+        })
+      : downloadUrl;
   const otherOS = getOtherOS(downloadOS);
   const otherOSLabel = getOSLabel(otherOS);
 
@@ -130,6 +146,16 @@ const DownloadButton = ({
 
   const handlePrimaryClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     onPrimaryClick?.({ os: downloadOS, source });
+
+    if (isAppStoreChannel) {
+      handleStoreLinkClick(event, {
+        os: 'mac',
+        appUrl: APP_STORE_PROTOCOL_URL,
+        webUrl: APP_STORE_URL,
+      });
+      return;
+    }
+
     if (useMobileModal && isMobile) {
       event.preventDefault();
       setHasLoadedModal(true);
@@ -220,7 +246,7 @@ const DownloadButton = ({
       ? [renderAppStoreMenuItem(), renderOtherOSMenuItem()]
       : [renderAppStoreMenuItem()];
   })();
-  const hasDropdownItems = showDropdown && menuItems.length > 0;
+  const hasDropdownItems = showDropdown && !isAppStoreChannel && menuItems.length > 0;
 
   return (
     <div
@@ -248,15 +274,27 @@ const DownloadButton = ({
         href={primaryHref}
         target='_blank'
         rel='noopener noreferrer'
-        data-store-os={downloadOS === 'windows' ? 'windows' : undefined}
-        data-store-app-url={downloadOS === 'windows' ? WINDOWS_STORE_PROTOCOL_URL : undefined}
-        data-store-web-url={downloadOS === 'windows' ? WINDOWS_STORE_URL : undefined}
-        data-download-os={downloadOS}
+        data-store-os={downloadOS === 'windows' && !isAppStoreChannel ? 'windows' : undefined}
+        data-store-app-url={
+          downloadOS === 'windows' && !isAppStoreChannel ? WINDOWS_STORE_PROTOCOL_URL : undefined
+        }
+        data-store-web-url={
+          downloadOS === 'windows' && !isAppStoreChannel ? WINDOWS_STORE_URL : undefined
+        }
+        data-download-os={isAppStoreChannel ? 'mac' : downloadOS}
         data-download-source={source}
-        data-download-channel={downloadOS === 'windows' ? 'microsoft-store' : 'direct'}
+        data-download-channel={
+          isAppStoreChannel ? 'mac-app-store' : downloadOS === 'windows' ? 'microsoft-store' : 'direct'
+        }
         onClick={handlePrimaryClick}
       >
-        {downloadOS === 'windows' ? <WindowsIcon colored /> : <AppleIcon />}
+        {isAppStoreChannel ? (
+          <AppStoreIcon size={22} />
+        ) : downloadOS === 'windows' ? (
+          <WindowsIcon colored />
+        ) : (
+          <AppleIcon />
+        )}
         {renderLabel(label, labelAccent)}
         {edgeLabel && <EdgeLabel>{edgeLabel}</EdgeLabel>}
       </a>

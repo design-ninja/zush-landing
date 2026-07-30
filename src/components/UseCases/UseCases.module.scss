@@ -48,6 +48,19 @@
   &_pink { --h: var(--h-pink); }
   &_cyan { --h: var(--h-cyan); }
 
+  // Monochrome variant: no tinted plate behind the icon and no per-file-type hue.
+  // A nine-card grid of tinted plates reads as a colour swatch, so sections that
+  // long turn the marker off and let the titles carry the scanning.
+  &_plain {
+    .UseCaseCard__IconWrapper {
+      width: auto;
+      height: auto;
+      border-radius: 0;
+      background: none;
+      color: var(--primary);
+    }
+  }
+
   &_linked {
     transition: background-color 0.18s ease;
 

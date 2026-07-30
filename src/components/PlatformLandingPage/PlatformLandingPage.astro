@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Hero from '@/components/Hero';
+import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
 import Features from '@/components/Features/Features.astro';
 import SupportedFormats from '@/components/SupportedFormats';
 import Pricing from '@/components/Pricing/Pricing.astro';
@@ -18,8 +19,8 @@ import { getPlatformLandingSections } from '@/data/platformLandingSections';
 import { PLATFORM_SPECIFICS_CONTENT } from '@/data/platformSpecifics';
 import { WINDOWS_COMPARISON } from '@/data/windowsComparison';
 import {
-  HOME_HERO_BATCH_RENAME_VIDEO,
-  WINDOWS_HERO_BATCH_RENAME_VIDEO,
+  MAC_DEMO_VIDEO,
+  WINDOWS_DEMO_VIDEO,
   WINDOWS_SHOWCASE_SCREENSHOTS,
 } from '@/data/showcaseMedia';
 import macChangelogSource from '@/content/changelog.md?raw';
@@ -139,10 +140,6 @@ const platformKeywords = platform === 'mac'
       'AI file sorter Windows',
       'sort files into folders Windows',
     ];
-
-const platformTrustSignals = platform === 'mac'
-  ? ['Free 50 renames', 'No credit card', 'Preview + undo every batch']
-  : copy.home.trustSignals;
 
 const intentSection = platform === 'mac'
   ? {
@@ -331,15 +328,18 @@ const jsonLdItems = [
     buyLabel={copy.home.buyPro}
     downloadLabel={copy.header.download}
     downloadMenu={copy.downloadMenu}
-    includeOtherDownloadOS={includeOtherDownloadOS}
-    trustSignals={platformTrustSignals}
-    reviewsHref="#reviews"
-    reviewsLabel={copy.header.reviews}
+    showDownloadDropdown={false}
+    appStoreLabel={platform === 'mac' ? copy.downloadMenu.appStoreCta : undefined}
+    trustSignals={copy.home.trustSignals}
+    aiModes={copy.home.heroModes}
     secondaryHref="#pricing"
-    slides={copy.home.showcaseSlides}
-    videoShowcase={platform === 'windows' ? WINDOWS_HERO_BATCH_RENAME_VIDEO : HOME_HERO_BATCH_RENAME_VIDEO}
+    centered
     macVersion={macVersion}
     windowsVersion={windowsVersion}
+  />
+  <DemoVideo
+    label={copy.home.showcase.title}
+    media={platform === 'windows' ? WINDOWS_DEMO_VIDEO : MAC_DEMO_VIDEO}
   />
   <Features
     title={platformSections.featuresTitle}

@@ -26,6 +26,11 @@ $tertiary-hover: oklch(0.15 0 0);
 
 $border: oklch(0.92 0.003 265);
 
+// Cool grey for decorative icons. The other greys sit at 0.003–0.015 chroma and
+// read neutral; this one carries enough blue to look deliberately cold without
+// becoming a tint.
+$icon-muted: oklch(0.7 0.032 252);
+
 $glass: oklch(1 0 0 / 0.7);
 $glass-border: oklch(0 0 0 / 0.05);
 
@@ -100,6 +105,7 @@ $dark-tertiary-foreground: oklch(1 0 0);
 $dark-tertiary-hover: oklch(0.36 0.01 285);
 
 $dark-border: oklch(0.28 0.01 285);
+$dark-icon-muted: oklch(0.62 0.03 252);
 
 $dark-glass: oklch(0.2 0.01 285 / 0.7);
 $dark-glass-border: oklch(1 0 0 / 0.1);
@@ -142,13 +148,24 @@ $dark-tone-magenta-bg: oklch(0.72 0.22 320 / 0.2);
 
 // Typography
 $font-family: 'Inter Variable', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-$font-family-heading: 'Outfit Variable', 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+$font-family-heading: $font-family;
 $font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+// Button type scale. Shared by <Button> and <DownloadButton>: size decides the
+// text size, variant decides the colour, and neither component owns the numbers.
+// The hero CTAs are `lg`, so that value is what "button text like the hero" means.
+$button-font-size-sm: 0.8125rem;
+$button-font-size-md: 0.9rem;
+$button-font-size-lg: 0.975rem;
+
 $font-weight-regular: 400;
 $font-weight-link: $font-weight-regular;
 
 // Spacing
 $container-max-width: 80rem;
+// Blog pages run narrower than the marketing pages. The header pill, the
+// breadcrumbs and the post/list containers all key off this so their edges line
+// up — change it in one place, not four.
+$blog-container-max-width: 72rem;
 $content-max-width: 60rem;
 $content-reading-width: 48rem;
 $container-padding: 2rem;

@@ -2,13 +2,11 @@
 import type { SeoMeta } from '@/seo/config';
 import { DEFAULT_KEYWORDS, DEFAULT_OG_IMAGE, getCanonicalUrl } from '@/seo/config';
 import { SITE_ENTITY_JSON_LD } from '@/seo/entity';
-import '@fontsource-variable/inter/wght.css';
-import '@fontsource-variable/outfit/wght.css';
+import '@fontsource-variable/inter/opsz.css';
 import '@/styles/main.scss';
 import Header from '@/components/Header/Header.astro';
 import Footer from '@/components/Footer/Footer.astro';
 import ScrollToTopButton from '@/components/ScrollToTopButton/ScrollToTopButton.astro';
-import FloatingDownloadCTA from '@/components/FloatingDownloadCTA/FloatingDownloadCTA.astro';
 import type { DownloadOS } from '@/utils/download';
 import {
   DEFAULT_LOCALE,
@@ -85,7 +83,6 @@ const shouldAutoDetectLocale = LOCALE_AUTO_DETECT_ENABLED
   && !LOCALIZATION_PAUSED
   && locale === DEFAULT_LOCALE
   && (INDEXABLE_LOCALIZED_ROUTES as readonly string[]).includes(route);
-const shouldActivateFloatingDownloadWithoutHero = route === '/blog' || route.startsWith('/blog/');
 const autoDetectRoute = route;
 const localeRedirectConfig = JSON.stringify({
   ...Object.fromEntries(routeLocales.map((item) => [LOCALE_META[item].lang.toLowerCase(), LOCALE_META[item].slug || ''])),
@@ -294,7 +291,6 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
         <Header
           forceOS={forceOS}
           basePath={chromeBasePath}
-          hideDownload={shouldActivateFloatingDownloadWithoutHero}
           locale={locale}
           route={route}
         />
@@ -309,18 +305,10 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
         <Footer locale={locale} hidePlatform={footerHidePlatform} />
       )}
       {includeChrome && <ScrollToTopButton />}
-      {includeChrome && (
-        <FloatingDownloadCTA
-          activateWithoutHero={shouldActivateFloatingDownloadWithoutHero}
-          forceOS={forceOS}
-          label={layoutCopy.header.downloadZush}
-        />
-      )}
       <script>
         import { initializeGoogleAdsTracking } from '@/utils/adTracking';
         import { bindCheckoutAutoOpen } from '@/utils/checkoutAutoOpen';
         import { bindDownloadTracking, bindProClickTracking, bindProPlanClickTracking } from '@/utils/download';
-        import { bindFloatingDownload } from '@/utils/floatingDownload';
         import { bindPricingCheckout } from '@/utils/pricingCheckout';
         import { bindScrollReveal } from '@/utils/scrollReveal';
         import { bindScrollToTopButton } from '@/utils/scrollToTop';
@@ -400,7 +388,6 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
           initializeGoogleAdsTracking();
           bindCheckoutAutoOpen();
           bindDownloadTracking();
-          bindFloatingDownload();
           bindLanguageSwitcher();
           bindProClickTracking();
           bindProPlanClickTracking();

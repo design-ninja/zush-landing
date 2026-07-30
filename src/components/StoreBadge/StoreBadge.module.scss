@@ -12,12 +12,11 @@
   border: 1px solid var(--border);
   border-radius: $radius-md;
   text-decoration: none;
-  transition: transform $transition-fast, border-color $transition-fast, background-color $transition-fast, box-shadow $transition-fast;
+  transition: border-color $transition-fast, background-color $transition-fast, box-shadow $transition-fast;
   box-shadow: inset 0 1px 0 color-mix(in srgb, white, transparent 30%);
 
   &:hover,
   &:focus-visible {
-    transform: translateY(-1px);
     border-color: color-mix(in srgb, var(--border), var(--foreground) 12%);
     background: color-mix(in srgb, var(--card), var(--muted) 10%);
     box-shadow:

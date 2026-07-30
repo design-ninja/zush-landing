@@ -5,12 +5,9 @@ import DownloadButton from "../DownloadButton";
 import Heading from "../Heading";
 import StarRating from "../StarRating";
 import Text from "../Text";
-import HeroVideoShowcase from "./HeroVideoShowcase";
 import styles from "./Hero.module.scss";
 import type { DownloadOS } from "@/utils/download";
-import { useOS } from "@/hooks/useOS";
 import type { DownloadMenuCopy } from "@/i18n/copy";
-import type { HeroVideoShowcaseAsset } from "@/data/showcaseMedia";
 
 
 interface HeroProps {
@@ -20,9 +17,17 @@ interface HeroProps {
   subtitle?: string;
   subtitleHighlights?: string[];
   slides?: Slide[];
-  videoShowcase?: HeroVideoShowcaseAsset;
-  videoShowcaseByOS?: Partial<Record<DownloadOS, HeroVideoShowcaseAsset>>;
   as?: "section" | "header";
+  /**
+   * Drops the showcase column and centers the intro. Pages using this render
+   * their own media block below the hero.
+   */
+  centered?: boolean;
+  /**
+   * Renders one button per platform instead of a single OS-detected button
+   * with a dropdown. Only makes sense where no OS is forced.
+   */
+  splitByOS?: boolean;
   compactTopSpacing?: boolean;
   forceOS?: DownloadOS;
   secondaryHref?: string;
@@ -31,6 +36,9 @@ interface HeroProps {
   downloadEdgeLabel?: string;
   downloadMenu?: DownloadMenuCopy;
   includeOtherDownloadOS?: boolean;
+  showDownloadDropdown?: boolean;
+  /** Renders a second CTA linking straight to the Mac App Store. */
+  appStoreLabel?: string;
   trustSignals?: string[];
   aiModes?: string[];
   reviewsHref?: string;
@@ -86,28 +94,22 @@ const Hero = ({
   subtitleHighlights = [],
   slides,
   as: Tag = "section",
+  centered = false,
+  splitByOS = false,
   compactTopSpacing = false,
   forceOS,
   downloadLabel = "Download",
   downloadMenu,
   includeOtherDownloadOS = true,
-  trustSignals = ["✨ Free to try", "💳 No credit card required"],
+  showDownloadDropdown = true,
+  appStoreLabel,
+  trustSignals = ["Get started for free, no credit card required"],
   aiModes = [],
   reviewsHref,
   reviewsLabel = "Reviews",
-  macVersion,
-  windowsVersion,
-  videoShowcase,
-  videoShowcaseByOS,
 }: HeroProps) => {
   const highlightText = titleHighlight ?? titleAccent;
-  const { downloadOS: detectedOS } = useOS();
-  const versionOS = forceOS ?? detectedOS;
-  const selectedVideoShowcase = videoShowcaseByOS?.[versionOS] ?? videoShowcase;
-  const platformVersion = versionOS === "windows" ? windowsVersion : macVersion;
-  const finalTrustSignals = platformVersion
-    ? [`🤖 v${platformVersion}`, ...trustSignals]
-    : trustSignals;
+  const finalTrustSignals = trustSignals;
 
   const renderTitle = () => {
     if (!title) {
@@ -149,6 +151,7 @@ const Hero = ({
       data-hero-root
       className={[
         styles.Hero,
+        centered ? styles.Hero_centered : "",
         compactTopSpacing ? styles.Hero_compactTopSpacing : "",
       ]
         .filter(Boolean)
@@ -179,7 +182,7 @@ const Hero = ({
           </Heading>
           <Text
             size="lg"
-            color="base"
+            color="subtle"
             className={[
               styles.Hero__Subtitle,
               subtitleHighlights.length > 0 ? styles.Hero__Subtitle_compact : "",
@@ -196,15 +199,51 @@ const Hero = ({
 
           <div className={styles.Hero__ActionRow}>
             <div className={styles.Hero__Buttons}>
-              <DownloadButton
-                source="hero"
-                variant="primaryGlass"
-                size="lg"
-                forceOS={forceOS}
-                label={downloadLabel}
-                menuCopy={downloadMenu}
-                includeOtherOS={includeOtherDownloadOS}
-              />
+              {splitByOS ? (
+                <>
+                  <DownloadButton
+                    source="hero"
+                    variant="black"
+                    size="lg"
+                    forceOS="mac"
+                    showDropdown={false}
+                    label={downloadMenu?.downloadForMac ?? "Download for Mac"}
+                  />
+                  <DownloadButton
+                    source="hero"
+                    variant="black"
+                    size="lg"
+                    forceOS="windows"
+                    showDropdown={false}
+                    label={downloadMenu?.downloadForWindows ?? "Download for Windows"}
+                  />
+                </>
+              ) : (
+                <>
+                  <DownloadButton
+                    source="hero"
+                    variant="black"
+                    size="lg"
+                    forceOS={forceOS}
+                    label={downloadLabel}
+                    menuCopy={downloadMenu}
+                    showDropdown={showDownloadDropdown}
+                    includeOtherOS={includeOtherDownloadOS}
+                  />
+                  {appStoreLabel && (
+                    <DownloadButton
+                      source="hero"
+                      variant="black"
+                      size="lg"
+                      forceOS="mac"
+                      channel="mac-app-store"
+                      showDropdown={false}
+                      useMobileModal={false}
+                      label={appStoreLabel}
+                    />
+                  )}
+                </>
+              )}
             </div>
             {finalTrustSignals.length > 0 && (
               <ul className={styles.Hero__TrustRow} aria-label="Trust signals">
@@ -216,16 +255,14 @@ const Hero = ({
           </div>
         </div>
 
-        <div
-          className={`${styles.Hero__ShowcaseWrapper} ${styles.Hero__ShowcaseMotion}`}
-        >
-          {selectedVideoShowcase ? (
-            <HeroVideoShowcase media={selectedVideoShowcase} />
-          ) : (
+        {!centered && (
+          <div
+            className={`${styles.Hero__ShowcaseWrapper} ${styles.Hero__ShowcaseMotion}`}
+          >
             <FileShowcase slides={slides} />
-          )}
-          <div className={styles.Hero__GlowEffect} />
-        </div>
+            <div className={styles.Hero__GlowEffect} />
+          </div>
+        )}
       </div>
     </Tag>
   );

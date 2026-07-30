@@ -31,7 +31,11 @@ const {
 } = Astro.props as Props;
 
 const resolvedTitle = title ?? 'Try Zush free';
-const downloadOS = forceOS ?? 'mac';
+// Without a forced OS the CTA offers both platforms, so the hint has to name
+// both requirements rather than speak for macOS alone.
+const requirements = forceOS
+  ? getShortRequirements(forceOS)
+  : `${getShortRequirements('mac')} · ${getShortRequirements('windows')}`;
 // Rendered as a plain <img> rather than the Image component, which emits a
 // bare `alt` that crawlers read as missing. The alt is non-empty for the same
 // reason — Bing's Site Scan counts alt="" as undefined — while aria-hidden
@@ -62,18 +66,40 @@ const background = await getImage({
         <Heading as="h2" className={styles.Title}>{resolvedTitle}</Heading>
         <Text as="p" className={styles.Subtitle} color="subtle">{subtitle}</Text>
         <div class={styles.Buttons}>
-          <DownloadButton
-            client:visible
-            source="download-cta"
-            size="lg"
-            forceOS={forceOS}
-            label={downloadLabel}
-            menuCopy={downloadMenu}
-            includeOtherOS={includeOtherDownloadOS}
-          />
+          {forceOS ? (
+            <DownloadButton
+              client:visible
+              source="download-cta"
+              size="lg"
+              forceOS={forceOS}
+              showDropdown={false}
+              label={downloadLabel}
+              menuCopy={downloadMenu}
+              includeOtherOS={includeOtherDownloadOS}
+            />
+          ) : (
+            <Fragment>
+              <DownloadButton
+                client:visible
+                source="download-cta"
+                size="lg"
+                forceOS="mac"
+                showDropdown={false}
+                label={downloadMenu?.downloadForMac ?? 'Download for Mac'}
+              />
+              <DownloadButton
+                client:visible
+                source="download-cta"
+                size="lg"
+                forceOS="windows"
+                showDropdown={false}
+                label={downloadMenu?.downloadForWindows ?? 'Download for Windows'}
+              />
+            </Fragment>
+          )}
         </div>
         <Text as="p" size="xs" color="subtle" className={styles.Hint}>
-          {hintPrefix} · {getShortRequirements(downloadOS)}
+          {hintPrefix} · {requirements}
         </Text>
       </div>
     </div>

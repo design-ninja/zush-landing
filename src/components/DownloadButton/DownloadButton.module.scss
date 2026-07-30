@@ -7,7 +7,7 @@
     align-items: stretch;
     --download-button-height: auto;
     z-index: 1;
-    transition: transform $transition-fast;
+    transition: box-shadow $transition-normal;
 
     &_open {
         z-index: 50;
@@ -35,8 +35,8 @@
     white-space: nowrap;
     text-decoration: none;
     background-clip: padding-box;
+    // No `transform` here on purpose — the button must stay put on hover.
     transition:
-        transform $transition-fast,
         background-color $transition-fast,
         color $transition-fast,
         box-shadow $transition-fast,
@@ -53,7 +53,6 @@
     gap: 0.5rem;
     border-top-left-radius: $radius-full;
     border-bottom-left-radius: $radius-full;
-    @include corner-shape-squircle;
 
     svg {
         flex-shrink: 0;
@@ -85,7 +84,6 @@
 .Toggle {
     border-top-right-radius: $radius-full;
     border-bottom-right-radius: $radius-full;
-    @include corner-shape-squircle;
     position: relative;
     align-self: stretch;
 
@@ -112,48 +110,48 @@
 
 // Sizes
 .Group_sm {
-    --download-button-height: 2.25rem;
+    --download-button-height: 1.95rem;
 
     .Main {
-        padding: 0.45rem 1rem;
-        font-size: 0.9rem;
+        padding: 0.35rem 0.85rem;
+        font-size: $button-font-size-sm;
     }
 
     .Toggle {
-        padding: 0 0.6rem;
+        padding: 0 0.5rem;
     }
 }
 
 .Group_md {
-    --download-button-height: 2.75rem;
+    --download-button-height: 2.35rem;
 
     .Main {
-        padding: 0.85rem 1.5rem;
-        font-size: 1rem;
+        padding: 0.7rem 1.25rem;
+        font-size: $button-font-size-md;
     }
 
     .Toggle {
-        padding: 0 0.75rem;
-        font-size: 1rem;
+        padding: 0 0.65rem;
+        font-size: $button-font-size-md;
     }
 }
 
 .Group_lg {
-    --download-button-height: 3.625rem;
+    --download-button-height: 3rem;
 
     .Main {
-        padding: 1rem 2rem;
-        font-size: 1.1rem;
+        padding: 0.85rem 1.65rem;
+        font-size: $button-font-size-lg;
     }
 
     .Main_withEdgeLabel {
-        padding-left: 1.55rem;
-        padding-right: 1.15rem;
+        padding-left: 1.3rem;
+        padding-right: 0.95rem;
     }
 
     .Toggle {
-        padding: 0 0.95rem;
-        font-size: 1.1rem;
+        padding: 0 0.8rem;
+        font-size: $button-font-size-lg;
     }
 }
 
@@ -167,11 +165,13 @@
     --tertiary-hover: var(--cta-glass-bg-hover);
     --download-divider-color: oklch(1 0 0 / 0.24);
     --download-divider-opacity: 1;
+    // Stronger than the shared default (0.2): on a black pill the top highlight
+    // is the only thing giving the surface any shape.
+    --cta-glass-shine-strong: #{oklch(1 0 0 / 0.32)};
 
     @include cta-glass-surface;
     @include cta-glass-gloss;
     border-radius: $radius-full;
-    @include corner-shape-squircle;
     background-clip: padding-box;
     overflow: hidden;
 
@@ -194,10 +194,34 @@
         height: calc(46% + 0.1rem);
     }
 
+    // The hover surface is a gradient stack, and gradients do not interpolate,
+    // so swapping `background` on :hover snaps. It is painted as an overlay
+    // instead and its opacity is what animates.
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0;
+        background:
+            radial-gradient(circle at 74% 54%, var(--cta-glass-spot-hover), transparent 34%),
+            linear-gradient(180deg, var(--cta-glass-shine-strong), transparent 38%),
+            var(--cta-glass-bg-hover);
+        transition: opacity $transition-normal;
+    }
+
+    &:hover::after,
+    &:focus-within::after {
+        opacity: 1;
+    }
+
     &:hover,
     &:focus-within {
-        transform: translateY(-0.125rem) scale(1.012);
-        @include cta-glass-hover-surface;
+        box-shadow:
+            0 1.5rem 3.5rem -1.35rem var(--cta-glass-shadow),
+            0 0.8rem 2rem -1.1rem var(--cta-glass-glow);
     }
 
     .Main,
@@ -215,12 +239,14 @@
         z-index: 2;
     }
 
+    // On a near-black page the button's own fill is almost the background, so the
+    // ring is what separates them. Kept brighter here than in the light theme.
     :global(html[data-theme='dark']) & {
         box-shadow:
-            inset 0 0 0 1px oklch(1 0 0 / 0.08),
+            inset 0 0 0 1px oklch(1 0 0 / 0.2),
             0 1.25rem 3.1rem -1.1rem oklch(0 0 0 / 0.62),
             0 0.65rem 1.65rem -1rem oklch(1 0 0 / 0.16),
-            0 0 0 1px oklch(1 0 0 / 0.03);
+            0 0 0 1px oklch(1 0 0 / 0.1);
     }
 
     svg {
@@ -259,7 +285,6 @@
 
     &:hover,
     &:focus-within {
-        transform: scale(1.012);
         background:
             radial-gradient(ellipse at 78% 56%, var(--cta-glass-spot-hover), transparent 46%),
             linear-gradient(180deg, var(--cta-glass-shine-strong), transparent 38%),
@@ -306,55 +331,6 @@
     }
 }
 
-.Group_primaryGlass {
-    @include cta-glass-primary-vars;
-    @include cta-glass-surface;
-    @include cta-glass-gloss;
-    border-radius: $radius-full;
-    @include corner-shape-squircle;
-    background-clip: padding-box;
-    overflow: hidden;
-
-    &.Group_open {
-        overflow: visible;
-    }
-
-    &:focus-within {
-        outline: 2px solid var(--primary);
-        outline-offset: 3px;
-    }
-
-    &:hover,
-    &:focus-within {
-        @include cta-glass-hover;
-    }
-
-    .Main,
-    .Toggle {
-        position: relative;
-        z-index: 1;
-        background: transparent;
-        color: inherit;
-        box-shadow: none;
-    }
-
-    .Main:focus-visible,
-    .Toggle:focus-visible {
-        outline: none;
-    }
-
-    .Toggle::before {
-        top: 0.55rem;
-        bottom: 0.55rem;
-        z-index: 2;
-    }
-
-    svg {
-        position: relative;
-        z-index: 1;
-        filter: drop-shadow(0 0.35rem 0.65rem oklch(0 0 0 / 0.2));
-    }
-}
 
 .Group_ghost {
     .Main,
@@ -382,7 +358,6 @@
     color: var(--foreground);
     border: 1px solid var(--border);
     border-radius: $radius-lg;
-    @include corner-shape-squircle;
     padding: 0.35rem;
     box-shadow: 0 20px 45px -20px rgba(0, 0, 0, 0.25), 0 2px 6px rgba(0, 0, 0, 0.06);
     animation: menuFadeIn 120ms ease-out;
@@ -438,7 +413,7 @@
 
     &__Title {
         font-weight: 500;
-        font-size: 0.9rem;
+        font-size: $button-font-size-md;
         color: var(--foreground);
     }
 

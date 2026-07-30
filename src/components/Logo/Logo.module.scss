@@ -16,16 +16,15 @@
 
     &__Icon {
         display: block;
-        width: 3rem;
-        height: 3rem;
-        border-radius: 1em;
-        @include corner-shape-squircle;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 0.5rem;
         object-fit: contain;
         transition: transform 0.2s ease;
 
         @include mobile {
-            width: 2.5rem;
-            height: 2.5rem;
+            width: 2.15rem;
+            height: 2.15rem;
         }
 
         @media (max-width: 390px) {
@@ -36,11 +35,10 @@
 
     &__Text {
         display: block;
-        font-size: 1.6rem;
+        font-size: 1.4rem;
         font-weight: 600;
         line-height: 1;
-        color: var(--secondary);
-        @include secondary-text-contrast;
+        color: var(--primary);
         transition: color 0.2s ease;
 
         @media (max-width: 390px) {

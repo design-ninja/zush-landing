@@ -27,51 +27,41 @@ export interface ResolvedShowcaseVideoMedia {
   poster: string;
 }
 
-export interface HeroVideoShowcaseAsset {
-  title: string;
-  description: string;
-  frame?: 'mac' | 'windows';
-  width: number;
-  height: number;
-  dimensions?: Record<ShowcaseTheme, { width: number; height: number }>;
+export interface DemoVideoAsset {
   sources: ThemeAwareMedia;
   posters: ThemeAwareMedia;
+  width: number;
+  height: number;
 }
 
-export const HOME_HERO_BATCH_RENAME_VIDEO: HeroVideoShowcaseAsset = {
-  title: 'Zush batch rename workflow on macOS',
-  description: 'A Zush for Mac window showing AI batch rename analysis, review, and completed rename results for mixed files.',
-  frame: 'mac',
-  width: 1280,
-  height: 1050,
-  dimensions: {
-    light: { width: 2082, height: 1638 },
-    dark: { width: 2084, height: 1636 },
-  },
+// The full-desktop demo recording that sits under the hero on the homepage and
+// on /mac. Both are macOS captures.
+export const MAC_DEMO_VIDEO: DemoVideoAsset = {
   sources: {
-    light: '/videos/hero/zush-invoices-demo-mac-window-light.mp4',
-    dark: '/videos/hero/zush-invoices-demo-mac-window-dark.mp4',
+    light: '/videos/demo-light.mp4',
+    dark: '/videos/demo-dark.mp4',
   },
   posters: {
-    light: '/videos/posters/hero-invoices-demo-mac-window-light.webp',
-    dark: '/videos/posters/hero-invoices-demo-mac-window-dark.webp',
+    light: '/videos/posters/demo-light.webp',
+    dark: '/videos/posters/demo-dark.webp',
   },
+  width: 2548,
+  height: 1434,
 };
 
-export const WINDOWS_HERO_BATCH_RENAME_VIDEO: HeroVideoShowcaseAsset = {
-  title: 'Zush batch rename workflow on Windows',
-  description: 'A Zush for Windows window showing AI batch rename analysis, review, and completed rename results for mixed files.',
-  frame: 'windows',
-  width: 1778,
-  height: 1388,
+// The Windows desktop capture exists in one theme only, so both entries point at
+// the same recording and DemoVideo renders it once.
+export const WINDOWS_DEMO_VIDEO: DemoVideoAsset = {
   sources: {
-    light: '/videos/hero/zush-batch-rename-windows-window-light.mp4',
-    dark: '/videos/hero/zush-batch-rename-windows-window-dark.mp4',
+    light: '/videos/windows/zush-batch-rename.mp4',
+    dark: '/videos/windows/zush-batch-rename.mp4',
   },
   posters: {
-    light: '/videos/posters/hero-batch-rename-windows-window-light.png',
-    dark: '/videos/posters/hero-batch-rename-windows-window-dark.png',
+    light: '/videos/posters/demo-windows.webp',
+    dark: '/videos/posters/demo-windows.webp',
   },
+  width: 1920,
+  height: 1080,
 };
 
 const SHOWCASE_VIDEOS: ShowcaseVideoAsset[] = [
