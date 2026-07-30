@@ -412,12 +412,12 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     }),
   },
   'batch-rename-files': {
-    h1: 'Batch Rename Files with AI',
+    h1: 'Batch Rename Files on Mac & Windows with AI',
     h1Accent: 'Batch Rename Files',
     category: 'general',
     definitionTitle: 'What Is an AI Batch Rename Tool?',
     definitionText:
-      'An AI batch rename tool renames many files in one workflow while giving each file a content-aware name. Zush batch renames and bulk renames mixed folders on Mac and Windows by reading screenshots, photos, PDFs, documents, videos, audio, and design files, then letting you review every name before applying changes.',
+      'An AI batch rename tool renames many files in one workflow while giving each file a content-aware name. Zush reads screenshots, photos, PDFs, documents, videos, audio, and design files in mixed folders, then lets you review every name before applying changes.',
     showcaseSlides: sharedSlides,
     faqItems: batchRenameFaq,
     relatedPages: [
@@ -533,10 +533,17 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       { title: 'Zush for Windows', href: '/windows' },
     ],
     relatedBlogPosts: [
+      { title: 'Best AI File Organizers for Mac', href: 'best-ai-file-organizers-mac' },
       { title: 'Automatic File Organizer for Mac', href: 'automate-file-organization-macos' },
       { title: 'Best Ways to Organize Photos on Mac', href: 'best-ways-to-organize-photos-on-mac' },
       { title: 'Declutter Your Mac: File Cleanup Guide', href: 'declutter-your-mac-file-cleanup-guide' },
     ],
+    contextualGuideLink: {
+      before: 'Comparing apps before you choose a workflow? See the',
+      label: 'best AI file organizers for Mac',
+      href: '/blog/best-ai-file-organizers-mac',
+      after: 'for a verification-first breakdown of renaming, moving, local AI, undo, and pricing.',
+    },
     jsonLd: buildFeaturePageJsonLd({
       howTo: {
         name: 'Organize files with AI',
@@ -717,10 +724,17 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       { title: 'BYOK Docs', href: '/docs/byok' },
     ],
     relatedBlogPosts: [
+      { title: 'How to Automatically Rename Invoices with AI', href: 'automatically-rename-invoices-ai' },
       { title: 'Rename PDF Files Automatically', href: 'rename-pdf-files-automatically' },
       { title: 'Naming Blocks File Naming Guide', href: 'naming-blocks-file-naming-guide' },
       { title: 'Organize Client Files for Freelancers', href: 'organize-client-files-freelancers-mac' },
     ],
+    contextualGuideLink: {
+      before: 'Need the complete accounting workflow? Follow the',
+      label: 'guide to automatically renaming invoices with AI',
+      href: '/blog/automatically-rename-invoices-ai',
+      after: 'for naming Templates, review steps, and web-versus-desktop tool comparisons.',
+    },
     jsonLd: buildFeaturePageJsonLd({
       howTo: {
         name: 'Rename invoices automatically with AI',
@@ -767,10 +781,17 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       { title: 'Offline AI File Renamer', href: '/offline-ai-file-renamer' },
     ],
     relatedBlogPosts: [
+      { title: 'How to Automatically Rename Invoices with AI', href: 'automatically-rename-invoices-ai' },
       { title: 'Naming Blocks File Naming Guide', href: 'naming-blocks-file-naming-guide' },
       { title: 'Rename PDF Files Automatically', href: 'rename-pdf-files-automatically' },
       { title: 'Organize Client Files for Freelancers', href: 'organize-client-files-freelancers-mac' },
     ],
+    contextualGuideLink: {
+      before: 'Receipts and invoices can share one reviewed intake process; see how to',
+      label: 'automatically rename invoices with AI',
+      href: '/blog/automatically-rename-invoices-ai',
+      after: 'and adapt the same vendor-date-amount convention for receipt photos and PDFs.',
+    },
     jsonLd: buildFeaturePageJsonLd({
       howTo: {
         name: 'Rename and organize receipts with AI',

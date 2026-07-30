@@ -20,6 +20,12 @@ interface ContextualGuideLink {
   after?: string;
 }
 
+interface DirectAnswerSection {
+  heading: string;
+  answer: string;
+  steps: string[];
+}
+
 export interface FeatureLandingPageProps {
   h1: string;
   h1Accent?: string;
@@ -30,6 +36,7 @@ export interface FeatureLandingPageProps {
   relatedBlogPosts: RelatedLink[];
   relatedPages: RelatedLink[];
   contextualGuideLink?: ContextualGuideLink;
+  directAnswerSection?: DirectAnswerSection;
   comparison?: ComparisonTableProps;
   /**
    * Pin the download UI to one OS. Without it the buttons fall back to runtime

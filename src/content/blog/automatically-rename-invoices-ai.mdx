@@ -1,0 +1,228 @@
+---
+title: "How to Automatically Rename Invoices with AI (2026 Guide)"
+description: "Automatically rename invoices by vendor, date, number, and amount with AI. Compare manual, rule-based, web, and desktop PDF workflows."
+date: "2026-07-30"
+slug: "automatically-rename-invoices-ai"
+platform: "general"
+topic: "documents"
+tags:
+  - "Automation"
+  - "PDFs & Documents"
+  - "File Naming"
+tldr: "To automatically rename invoices, use Zush to read each PDF or scan, extract the vendor, date, invoice number, and amount, preview the names, and apply one reversible batch."
+reviewed: "2026-07-30"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Quick answer: to automatically rename invoices, use a content-aware AI tool that reads each PDF or scan, extracts the vendor, date, invoice number, and amount, and applies one consistent filename Template. Zush does this on Mac and Windows with batch preview, reusable Naming Blocks, folder monitoring, and undo.
+
+An invoice folder usually starts with a few understandable files and ends with `invoice.pdf`, `download (7).pdf`, `scan_0042.pdf`, and `INV-final-v2.pdf`. The information needed for a good name is already inside each document, but a manual or pattern-based rename cannot use it without someone opening the file.
+
+This guide is invoice-specific. If your folder contains contracts, reports, academic papers, and other generic PDFs, use the broader [automatic PDF renaming guide](/blog/rename-pdf-files-automatically). For the commercial workflow, start with [rename invoices with AI](/rename-invoices-with-ai).
+
+**Last verified: July 30, 2026.** Competitor claims in the comparison were checked against the official [Renamed.to](https://www.renamed.to/) and [Renamer.ai](https://renamer.ai/) product and pricing pages on that date. Accuracy figures are vendor claims, not independent benchmarks.
+
+<BlogProductIntro
+  title="Want every invoice named the same way?"
+  description="Zush reads invoice PDFs and scans, extracts the fields you choose, previews the full batch, and applies a reusable naming Template with undo on Mac and Windows."
+  links={[
+    { href: '/rename-invoices-with-ai', label: 'AI invoice renamer' },
+    { href: '/rename-receipts-with-ai', label: 'Rename receipts' },
+    { href: '/rename-pdf-with-ai', label: 'AI PDF renamer' },
+    { href: '/docs/naming-blocks', label: 'Naming Blocks' },
+  ]}
+/>
+
+<BlogCTA placement='inline' platform='general' />
+
+## Why invoice filenames become vendor_date_amount chaos
+
+Invoices arrive from email, vendor portals, cloud drives, scanners, messaging apps, and accounting exports. Each source uses its own default:
+
+- a portal sends `download.pdf`
+- a scanner creates `scan_0042.pdf`
+- an email attachment is simply `invoice.pdf`
+- accounting software exports `INV-938102.pdf`
+- a colleague adds `final`, `new`, or `use-this-one`
+
+The common workaround is to open every file, read the header, and type a filename such as `2026-07-18_Acme_INV-1042_1250-00-USD.pdf`. That works for five invoices. It breaks down for a monthly backlog, a bookkeeping handoff, or a shared AP inbox.
+
+A durable invoice name should answer the retrieval questions people actually ask:
+
+1. Who sent it?
+2. What date or accounting period does it belong to?
+3. What invoice number distinguishes it?
+4. What amount and currency help confirm the match?
+
+The filename does not need every field. It needs enough stable information to sort chronologically, search by vendor, and distinguish near-duplicates.
+
+## Three approaches to invoice renaming
+
+| Approach | Reads invoice content? | Works in batches? | Good for | Main limitation |
+|---|---|---|---|---|
+| Manual rename | A person reads it | Slowly | A few one-off files | Repetitive and inconsistent |
+| Rule-based rename | Only predictable existing text or metadata | Yes | Clean exports with stable patterns | Cannot infer missing vendor, date, or amount |
+| Content-based AI | Yes: embedded text, OCR, or vision | Yes | Mixed PDFs and scans | Requires review and a clear naming Template |
+
+### 1. Manual renaming
+
+Manual renaming gives full control and needs no new software. Open the invoice, copy the vendor and date, rename the file, and repeat. It remains sensible for one or two documents where the cost of setup is higher than the work.
+
+The failure mode is consistency. One person writes `Acme`, another writes `Acme-Corp`, and a third puts the date at the end. Search and chronological sorting become unreliable even though every individual name looked reasonable.
+
+### 2. Rule-based renaming
+
+A rule-based tool can transform existing names with find-and-replace, regular expressions, counters, dates, or metadata. If every export already looks like `vendor_20260718_1042.pdf`, a rule can normalize separators and field order without AI.
+
+Rules cannot recover facts that are absent from the original name. `scan_0042.pdf` contains no visible vendor or invoice number for a regex to match. OCR plus a custom script can bridge that gap, but then you own extraction errors, duplicate-name handling, retries, and rollback.
+
+### 3. Content-based AI renaming
+
+Content-based AI reads the invoice instead of trusting its current filename. Text-based PDFs expose an embedded text layer. Scanned PDFs and receipt photos require OCR or vision. The extracted facts then feed a Template that controls output order, separators, date format, case, and optional fields.
+
+This approach fits mixed real-world folders because each file can receive a different name while following the same convention. The important safety features are preview, manual correction, collision handling, and undo.
+
+## How to automatically rename invoices with Zush
+
+Zush renames files in place; it does not move invoices between folders. The steps below work on Mac and Windows.
+
+### 1. Copy a small test batch
+
+Start with 10–20 representative files rather than the entire accounting archive. Include a text PDF, a scanned invoice, two invoices from the same vendor, a credit note, a foreign-currency invoice, and one low-quality scan. Keep the originals in a backup folder during the test.
+
+### 2. Add the invoice folder
+
+Open [Zush's invoice renamer](/rename-invoices-with-ai) and add the files or folder. Zush extracts available PDF text and can use visual analysis for scanned documents. Password-protected or unreadable files should stay in a review queue rather than receiving guessed names.
+
+### 3. Build the filename Template
+
+Use built-in Naming Blocks for stable fields and a Custom AI Block for any detail not already available. A practical pattern is:
+
+```text
+{invoice-date}_{vendor}_{invoice-number}_{amount}_{currency}
+```
+
+Keep optional fields optional. If an invoice has no reliable number, a clean `2026-07-18_Acme_1250-00-USD.pdf` is better than inserting a fabricated identifier.
+
+### 4. Review every proposed name
+
+Check vendor spelling, document date versus payment due date, decimal separators, currency, and invoice number. AI confidence is not accounting evidence. The original PDF remains the source of truth, and the preview is where you correct ambiguous fields.
+
+### 5. Apply the batch and keep undo
+
+Apply the reviewed names. Zush records the change in rename history, so the batch can be reverted if the Template needs another pass. Renaming changes only the filename; it does not alter PDF text, annotations, bookmarks, signatures, or form fields.
+
+### 6. Monitor the incoming folder
+
+Once the manual test is reliable, assign the same Template to folder monitoring. Point it at the folder where browser downloads, scanner output, or synced AP documents arrive. Test new arrivals in review mode before treating the workflow as hands-off.
+
+## Invoice naming templates for accounting
+
+The best pattern depends on how the folder is retrieved and handed off.
+
+### Chronological bookkeeping
+
+```text
+{invoice-date}_{vendor}_{invoice-number}
+```
+
+Before: `download (7).pdf`  
+After: `2026-07-18_Cloudflare_INV-1042.pdf`
+
+This pattern sorts by document date and keeps vendor search simple. It is a strong default for monthly accounting folders.
+
+### Vendor-first accounts payable
+
+```text
+{vendor}_{invoice-date}_{invoice-number}_{amount}_{currency}
+```
+
+Before: `INV-00921.pdf`  
+After: `Figma_2026-07-02_INV-00921_144-00-USD.pdf`
+
+Lead with the vendor when most retrieval starts with "find every invoice from this supplier." Add amount and currency when they help disambiguate recurring invoices.
+
+### Client or entity split
+
+```text
+{entity}_{vendor}_{invoice-date}_{invoice-number}
+```
+
+Before: `scan_0042.pdf`  
+After: `Acme-LLC_AWS_2026-06-30_784291.pdf`
+
+This works for bookkeepers handling several legal entities in one intake folder. Use a fixed entity vocabulary so `Acme LLC`, `Acme`, and `Acme-Limited` do not fragment search.
+
+### Accounting period plus document type
+
+```text
+{year}-{month}_{vendor}_{document-type}_{invoice-number}
+```
+
+Before: `statement_final.pdf`  
+After: `2026-06_Adobe_Invoice_88310.pdf`
+
+This keeps month folders visually consistent and helps separate invoices, credit notes, statements, and receipts.
+
+<a id="renamed-to-vs-renamer-ai-bulk-pdf"></a>
+
+## Renamed.to vs Renamer.ai vs desktop apps for bulk PDF renaming
+
+Renamed.to and Renamer.ai both use AI to read document content, but their workflows and billing models differ from a desktop app such as Zush.
+
+| Tool | Workflow | Pricing verified July 30, 2026 | Automation and storage | Best fit |
+|---|---|---|---|---|
+| Renamed.to | Web upload, connected cloud storage, and API | 50 documents/mo free; $9/1,000 or $49/10,000 credits | Drive/Dropbox/OneDrive and API; pay per document | Browser/cloud and API document workflows |
+| Renamer.ai | Web plus Mac/Windows desktop app | 25 files/mo free; $9.95/200, $29.95/1,000, $99.95/5,000 per month | Magic Folders; vendor FAQ says desktop content is sent for extraction/AI then deleted | Metered OCR workflows across many document and vector formats |
+| Zush | Mac/Windows desktop app | 50 renames to start; $10/mo or $48 one-time, paid PRO unmetered | Renames local files in place; monitoring, BYOK, Offline AI, undo | High-volume desktop batches and reusable local-folder Templates |
+
+[Renamed.to](https://www.renamed.to/) advertises 95%+ accuracy by default and 100% with review for supported document types. That is the vendor's claim, not an independent test. Its current pricing is pay-as-you-go rather than subscription-based: 50 free documents per month, then credit packs valid for 12 months. It also advertises automatic folder organization, cloud-storage connections, and a REST API.
+
+[Renamer.ai](https://renamer.ai/) offers a web interface and a desktop app with Magic Folders, templates, preview, and undo. Its pricing is a monthly file allowance at every paid tier. The official FAQ lists 30+ formats, including documents, images, spreadsheets, presentations, and EPS/SVG/AI vectors. Its public privacy explanation says desktop files are transmitted for extraction and AI analysis, then deleted after processing.
+
+Zush is the desktop choice when the invoice backlog is large enough that a per-file allowance is undesirable, or when BYOK and local Ollama processing matter. Zush PRO includes unmetered managed cloud renaming without requiring an API key, while BYOK and Offline AI remain optional. Unlike Renamed.to's folder-organization workflow, Zush does not move files.
+
+Choose Renamed.to for a browser, connected-storage, or API workflow. Choose Renamer.ai for metered cross-platform OCR and Magic Folders. Choose Zush when the working set already lives in Mac or Windows folders and you want reusable Templates, review, monitoring, and rollback without a monthly rename meter.
+
+## Receipts are the same pattern with less predictable input
+
+Receipts use the same core fields—merchant, date, amount, currency, and category—but arrive more often as HEIC or JPG photos, narrow thermal-paper scans, or image-only PDFs. Lighting, folds, faded ink, and handwritten tips make extraction less predictable.
+
+Use a receipt Template such as:
+
+```text
+{purchase-date}_{merchant}_{amount}_{currency}_{expense-category}
+```
+
+Keep a review queue for low-confidence images and never treat an AI-generated tax category as accounting advice. The [receipt renaming workflow](/rename-receipts-with-ai) handles photos and PDFs, while the [AI PDF renamer](/rename-pdf-with-ai) covers broader contracts, reports, and scanned documents.
+
+## Common mistakes
+
+**Using the due date as the invoice date.** Decide which date drives the filename and document it in the Template.
+
+**Trusting amount extraction without review.** Subtotals, tax, balance due, and paid amount can all appear on the same page.
+
+**Making names too long.** Keep the fields that help retrieval. The whole invoice already preserves every other detail.
+
+**Moving files before naming is stable.** If Hazel or another router depends on the new filename, test naming first, then enable movement as a separate step.
+
+**Skipping collision tests.** Two invoices from the same vendor on the same date need an invoice number, amount, or counter to stay unique.
+
+## FAQ
+
+### How do I automatically rename invoices?
+
+Use Zush to add an invoice folder, extract the vendor, date, invoice number, and amount, apply those fields through a reusable Template, review the proposed names, and then enable folder monitoring for future arrivals.
+
+### Can AI rename scanned invoice PDFs?
+
+Yes. Zush can use visual analysis when a PDF is an image scan without selectable text. Scan quality still matters, so review vendor names, dates, invoice numbers, amounts, and currencies before applying the batch.
+
+### What is the best invoice filename format?
+
+A strong default is `YYYY-MM-DD_Vendor_Invoice-Number.pdf`. Add amount and currency when they help distinguish recurring invoices, and add a legal entity when one intake folder serves several businesses.
+
+### Does renaming an invoice change the PDF?
+
+No. Zush changes the filename on disk, not the PDF content. Text, signatures, annotations, bookmarks, form fields, and page order remain unchanged, though external systems that reference the old path may need updating.

@@ -13,9 +13,13 @@
 
     &__Grid {
         display: grid;
-        grid-template-columns: 1.4fr repeat(4, 1fr);
-        gap: 2.5rem;
+        grid-template-columns: 1.4fr repeat(5, minmax(0, 1fr));
+        gap: 2rem;
         margin-bottom: 6rem;
+
+        @include tablet {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
 
         @include mobile {
             grid-template-columns: 1fr;

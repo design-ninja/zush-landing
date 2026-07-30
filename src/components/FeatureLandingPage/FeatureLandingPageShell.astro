@@ -42,6 +42,7 @@ const {
   relatedBlogPosts,
   relatedPages,
   contextualGuideLink,
+  directAnswerSection,
   comparison,
   forceOS,
   category = 'general',
@@ -186,6 +187,20 @@ const relatedPageTitle = (href: string, fallback: string) =>
         {contextualGuideLink.after ?? ''}
       </p>
     </div>
+  )}
+
+  {currentLocale === DEFAULT_LOCALE && directAnswerSection && (
+    <section class={`${styles.Section} ${styles.DirectAnswer}`}>
+      <div class={styles.DirectAnswer__Container}>
+        <Heading as='h2' align='left'>
+          {directAnswerSection.heading}
+        </Heading>
+        <p class={styles.DirectAnswer__Answer}>{directAnswerSection.answer}</p>
+        <ol class={styles.DirectAnswer__Steps}>
+          {directAnswerSection.steps.map((step) => <li>{step}</li>)}
+        </ol>
+      </div>
+    </section>
   )}
 
   <section id='faq' class={styles.Section}>

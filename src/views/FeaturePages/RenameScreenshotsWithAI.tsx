@@ -9,9 +9,9 @@ const faqItems = [
       'Manually, select the screenshot in Finder or File Explorer and rename it like any other file. For automatic descriptive names, point Zush at your screenshot folder, review the AI name pattern once, and let new screenshots get names based on what they show.',
   },
   {
-    question: 'How do I rename a screenshot on Windows?',
+    question: 'How do I rename a screenshot on Windows 11?',
     answer:
-      'On Windows, open File Explorer and rename one screenshot manually, or use Zush to watch Pictures\\Screenshots, Downloads, or any folder where screenshots land. Zush reads what the screenshot shows, suggests a searchable name, and keeps rename history so you can undo a batch.',
+      'For one screenshot, select it in File Explorer and press F2, or right-click it and choose Rename, then type the new filename and press Enter. For a batch, add Pictures\\Screenshots, Downloads, or another screenshot folder to Zush so AI can suggest searchable names from what each image shows; review the list before applying it.',
   },
   {
     question: 'Can Zush automatically rename screenshots as I take them?',
@@ -116,6 +116,16 @@ const RenameScreenshotsWithAI = () => (
       },
     ]}
     faqItems={faqItems}
+    directAnswerSection={{
+      heading: 'How to rename a screenshot on Windows 11',
+      answer:
+        'For one screenshot in Windows 11, select it in File Explorer and press F2, or right-click it and choose Rename, then type the new filename and press Enter. For a batch, add the screenshot folder to Zush so AI can propose descriptive names from each image’s content; review the list before applying changes.',
+      steps: [
+        'Open File Explorer and go to Pictures\\Screenshots, Downloads, or the folder where Snipping Tool saves your captures.',
+        'To rename one file, select it, press F2 (or right-click and choose Rename), type the new name, and press Enter.',
+        'To rename a batch by content, add the folder to Zush, let it analyze the screenshots, review the proposed names, and apply the batch with undo available.',
+      ],
+    }}
     relatedPages={[
       { title: 'AI File Organizer', href: '/ai-file-organizer' },
       { title: 'Batch Rename Files with AI', href: '/batch-rename-files' },

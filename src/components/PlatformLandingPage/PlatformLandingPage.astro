@@ -26,6 +26,7 @@ import {
 import macChangelogSource from '@/content/changelog.md?raw';
 import windowsChangelogSource from '@/content/changelog.windows.md?raw';
 import { parseLatestVersion } from '@/utils/version';
+import { buildAppAggregateRatingJsonLd } from '@/seo/appRating';
 import { getSeoForPath, SITE_ORIGIN } from '@/seo/config';
 import { ORGANIZATION_REF } from '@/seo/entity';
 import { buildFAQPageJsonLd, buildFeatureBreadcrumbJsonLd } from '@/utils/jsonLd';
@@ -231,6 +232,7 @@ const softwareJsonLd = {
   installUrl: platform === 'mac' ? [APP_STORE_URL, HOMEBREW_CASK_URL] : page.installUrl,
   sameAs: platform === 'mac' ? [APP_STORE_URL, HOMEBREW_CASK_URL] : [WINDOWS_STORE_URL],
   screenshot: screenshotJsonLd,
+  ...buildAppAggregateRatingJsonLd(),
   offers: [
     {
       '@type': 'Offer',

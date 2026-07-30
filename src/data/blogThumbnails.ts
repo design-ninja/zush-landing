@@ -17,8 +17,13 @@ const BLOG_THUMBNAILS = Object.fromEntries(
   }),
 ) as Record<string, ImageMetadata>;
 
+const BLOG_THUMBNAIL_ALIASES: Record<string, string> = {
+  'automatically-rename-invoices-ai': 'rename-pdf-files-automatically',
+  'best-ai-file-organizers-mac': 'automate-file-organization-macos',
+};
+
 export function getBlogThumbnail(slug: string): ImageMetadata {
-  const thumbnail = BLOG_THUMBNAILS[slug];
+  const thumbnail = BLOG_THUMBNAILS[BLOG_THUMBNAIL_ALIASES[slug] ?? slug];
 
   if (!thumbnail) {
     throw new Error(`Missing blog thumbnail for slug: ${slug}`);

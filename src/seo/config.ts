@@ -14,6 +14,7 @@ import {
   YOUTUBE_CHANNEL_URL,
 } from '@/constants';
 import { getPrimaryAuthorJsonLd, PRIMARY_AUTHOR } from '@/data/author';
+import { buildAppAggregateRatingJsonLd } from '@/seo/appRating';
 import { ORGANIZATION_REF, WEBSITE_REF } from '@/seo/entity';
 import { PRO_PRICING } from '@/constants/pricing';
 
@@ -92,9 +93,9 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     robots: 'index, follow',
   },
   '/batch-rename-files': {
-    title: 'Batch & Bulk Rename Files with AI | Rename Tool | Zush',
+    title: 'Batch & Bulk Rename Files on Mac & Windows with AI | Zush',
     description:
-      'Batch and bulk rename files with AI. Zush reads screenshots, PDFs, photos, video, audio, and documents, then renames a mixed folder by what each file holds.',
+      'Batch and bulk rename files on Mac & Windows with AI. Zush reads mixed folders by content, then lets you preview, apply, and undo every filename.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -481,6 +482,7 @@ export const HOME_JSON_LD = {
         `${SITE_ORIGIN}/images/screenshots/light/zush-main-interface.webp`,
         `${SITE_ORIGIN}/images/showcase/windows/batch-rename-light.webp`,
       ],
+      ...buildAppAggregateRatingJsonLd(),
       offers: [
         {
           '@type': 'Offer',

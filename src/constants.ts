@@ -24,6 +24,15 @@ export const MAC_APP_VERSION = "3.8.4";
 export const WINDOWS_APP_VERSION = "3.7.0.0";
 export const PRODUCT_FACTS_REVIEWED_AT = "2026-07-30";
 
+export interface AppRating {
+  ratingValue: number;
+  ratingCount: number;
+  source: string;
+}
+
+// Keep disabled until a public app store has a defensible, verifiable rating count.
+export const APP_RATING = null as AppRating | null;
+
 // System requirements
 export const MIN_MACOS_VERSION = "Sequoia and newer";
 export const MIN_WINDOWS_VERSION = "Windows 10 and newer";

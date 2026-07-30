@@ -2,6 +2,7 @@ import type { BlogPost, FAQItem } from '@/data/blog';
 import { toIsoDateTime } from '@/seo/config';
 import { APP_STORE_URL, HOMEBREW_CASK_URL, MAC_INSTALLER_URL, WINDOWS_STORE_URL } from '@/constants';
 import { PRIMARY_AUTHOR } from '@/data/author';
+import { buildAppAggregateRatingJsonLd } from '@/seo/appRating';
 import { ORGANIZATION_REF, WEBSITE_REF } from '@/seo/entity';
 import { PRO_PRICING } from '@/constants/pricing';
 
@@ -134,6 +135,7 @@ function buildSoftwareApplicationJsonLd(data: SoftwareApplicationData) {
       ? { installUrl: data.installUrl }
       : { installUrl: [APP_STORE_URL, HOMEBREW_CASK_URL, WINDOWS_STORE_URL] }),
     screenshot: data.screenshot ?? `${SITE_ORIGIN}/og-image.png`,
+    ...buildAppAggregateRatingJsonLd(),
     offers: (data.offers ?? DEFAULT_SOFTWARE_OFFERS).map((offer) => ({
       '@type': 'Offer',
       ...(offer.name ? { name: offer.name } : {}),
