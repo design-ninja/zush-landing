@@ -73,6 +73,22 @@ const menuLinkClass = [appLinkStyles.AppLink, styles.Header__MenuLink].join(' ')
 const isBlogRoute = route === '/blog' || route.startsWith('/blog/');
 ---
 
+<!--
+  The frosted-glass blur is authored inline. `is:inline` opts the block out of
+  Astro's CSS pipeline (no scoping, bundling, or minification), so it ships
+  verbatim. Routed through Header.module.scss the build mangled it — the space in
+  `blur(24px) saturate(180%)` collapsed into an invalid value, and the unprefixed
+  declaration was dropped from the prefix pair, leaving only the -webkit- one that
+  Chrome ignores. Both consequences killed the blur on prod. Keep both prefixes:
+  Safari < 18 needs -webkit-, everything else uses the unprefixed property.
+-->
+<style is:inline>
+  [data-header-root] {
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    backdrop-filter: blur(24px) saturate(180%);
+  }
+</style>
+
 <nav
   class:list={[styles.Header, isBlogRoute && styles.Header_wide]}
   data-header-root

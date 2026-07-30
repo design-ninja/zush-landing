@@ -15,13 +15,11 @@
     z-index: 1000;
     height: $navbar-height;
     background-color: oklch(1 0 0 / 0.6);
-    // The value lives in a custom property so the CSS minifier can't collapse
-    // the space between the two filter functions. Inlined, the prod build
-    // serialized `blur(24px)saturate(180%)` — invalid, so the blur dropped on
-    // prod while dev (unminified) still showed it.
-    --nav-backdrop: blur(24px) saturate(180%);
-    backdrop-filter: var(--nav-backdrop);
-    -webkit-backdrop-filter: var(--nav-backdrop);
+    // backdrop-filter lives in an `is:inline` <style> in Header.astro, not here.
+    // The build's CSS pipeline mangled it in this module: it collapsed the space
+    // in `blur(24px) saturate(180%)` and dropped the unprefixed declaration from
+    // the prefix pair, leaving only `-webkit-backdrop-filter` (which Chrome
+    // ignores) — so the blur vanished on prod while dev (unminified) was fine.
     border: none;
     border-radius: $radius-full;
     box-shadow: none;
