@@ -49,7 +49,10 @@
             color-mix(in oklch, var(--primary) 88%, transparent),
             transparent 68%
         );
-        filter: blur(3rem);
+        // Safari can rerasterize the entire isolated Hero subtree when a
+        // descendant animates while this large filtered layer is present.
+        // The radial gradient already supplies a soft falloff without a
+        // compositing filter.
         opacity: 0.85;
         pointer-events: none;
         z-index: -1;
