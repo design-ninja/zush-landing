@@ -7,7 +7,9 @@
     align-items: stretch;
     --download-button-height: auto;
     z-index: 1;
-    transition: transform $transition-fast;
+    transition:
+        transform $transition-fast,
+        box-shadow $transition-normal;
 
     &_open {
         z-index: 50;
@@ -114,7 +116,7 @@
 
     .Main {
         padding: 0.35rem 0.85rem;
-        font-size: 0.8125rem;
+        font-size: $button-font-size-sm;
     }
 
     .Toggle {
@@ -127,12 +129,12 @@
 
     .Main {
         padding: 0.7rem 1.25rem;
-        font-size: 0.9rem;
+        font-size: $button-font-size-md;
     }
 
     .Toggle {
         padding: 0 0.65rem;
-        font-size: 0.9rem;
+        font-size: $button-font-size-md;
     }
 }
 
@@ -141,7 +143,7 @@
 
     .Main {
         padding: 0.85rem 1.65rem;
-        font-size: 0.975rem;
+        font-size: $button-font-size-lg;
     }
 
     .Main_withEdgeLabel {
@@ -151,7 +153,7 @@
 
     .Toggle {
         padding: 0 0.8rem;
-        font-size: 0.975rem;
+        font-size: $button-font-size-lg;
     }
 }
 
@@ -165,6 +167,9 @@
     --tertiary-hover: var(--cta-glass-bg-hover);
     --download-divider-color: oklch(1 0 0 / 0.24);
     --download-divider-opacity: 1;
+    // Stronger than the shared default (0.2): on a black pill the top highlight
+    // is the only thing giving the surface any shape.
+    --cta-glass-shine-strong: #{oklch(1 0 0 / 0.32)};
 
     @include cta-glass-surface;
     @include cta-glass-gloss;
@@ -191,9 +196,34 @@
         height: calc(46% + 0.1rem);
     }
 
+    // The hover surface is a gradient stack, and gradients do not interpolate,
+    // so swapping `background` on :hover snaps. It is painted as an overlay
+    // instead and its opacity is what animates.
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0;
+        background:
+            radial-gradient(circle at 74% 54%, var(--cta-glass-spot-hover), transparent 34%),
+            linear-gradient(180deg, var(--cta-glass-shine-strong), transparent 38%),
+            var(--cta-glass-bg-hover);
+        transition: opacity $transition-normal;
+    }
+
+    &:hover::after,
+    &:focus-within::after {
+        opacity: 1;
+    }
+
     &:hover,
     &:focus-within {
-        @include cta-glass-hover-surface;
+        box-shadow:
+            0 1.5rem 3.5rem -1.35rem var(--cta-glass-shadow),
+            0 0.8rem 2rem -1.1rem var(--cta-glass-glow);
     }
 
     .Main,
@@ -211,12 +241,14 @@
         z-index: 2;
     }
 
+    // On a near-black page the button's own fill is almost the background, so the
+    // ring is what separates them. Kept brighter here than in the light theme.
     :global(html[data-theme='dark']) & {
         box-shadow:
-            inset 0 0 0 1px oklch(1 0 0 / 0.08),
+            inset 0 0 0 1px oklch(1 0 0 / 0.2),
             0 1.25rem 3.1rem -1.1rem oklch(0 0 0 / 0.62),
             0 0.65rem 1.65rem -1rem oklch(1 0 0 / 0.16),
-            0 0 0 1px oklch(1 0 0 / 0.03);
+            0 0 0 1px oklch(1 0 0 / 0.1);
     }
 
     svg {
@@ -301,70 +333,6 @@
     }
 }
 
-// Flat black surface, same tone as the `black` variant.
-.Group_primaryGlass {
-    @include cta-glass-vars;
-
-    position: relative;
-    isolation: isolate;
-    border-radius: $radius-full;
-    background: var(--cta-glass-bg);
-    backdrop-filter: blur(22px) saturate(1.4);
-    -webkit-backdrop-filter: blur(22px) saturate(1.4);
-    color: oklch(1 0 0);
-    border: 1px solid oklch(1 0 0 / 0.08);
-    background-clip: padding-box;
-    overflow: hidden;
-    box-shadow:
-        inset 0 2px 1px oklch(1 0 0 / 0.12),
-        0 0.7rem 1.9rem -1rem oklch(0 0 0 / 0.34);
-    transition:
-        background-color $transition-fast,
-        box-shadow $transition-fast;
-
-    &.Group_open {
-        overflow: visible;
-    }
-
-    &:focus-within {
-        outline: 2px solid var(--primary);
-        outline-offset: 3px;
-    }
-
-    &:hover,
-    &:focus-within {
-        background: var(--cta-glass-bg-hover);
-        box-shadow:
-            inset 0 2px 1px oklch(1 0 0 / 0.18),
-            0 0.9rem 2.2rem -1rem oklch(0 0 0 / 0.4);
-    }
-
-    .Main,
-    .Toggle {
-        position: relative;
-        z-index: 1;
-        background: transparent;
-        color: inherit;
-        box-shadow: none;
-    }
-
-    .Main:focus-visible,
-    .Toggle:focus-visible {
-        outline: none;
-    }
-
-    .Toggle::before {
-        top: 0.55rem;
-        bottom: 0.55rem;
-        z-index: 2;
-    }
-
-    svg {
-        position: relative;
-        z-index: 1;
-        filter: drop-shadow(0 0.35rem 0.65rem oklch(0 0 0 / 0.2));
-    }
-}
 
 .Group_ghost {
     .Main,
@@ -447,7 +415,7 @@
 
     &__Title {
         font-weight: 500;
-        font-size: 0.9rem;
+        font-size: $button-font-size-md;
         color: var(--foreground);
     }
 

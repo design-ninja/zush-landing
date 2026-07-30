@@ -5,12 +5,9 @@ import DownloadButton from "../DownloadButton";
 import Heading from "../Heading";
 import StarRating from "../StarRating";
 import Text from "../Text";
-import HeroVideoShowcase from "./HeroVideoShowcase";
 import styles from "./Hero.module.scss";
 import type { DownloadOS } from "@/utils/download";
-import { useOS } from "@/hooks/useOS";
 import type { DownloadMenuCopy } from "@/i18n/copy";
-import type { HeroVideoShowcaseAsset } from "@/data/showcaseMedia";
 
 
 interface HeroProps {
@@ -20,8 +17,6 @@ interface HeroProps {
   subtitle?: string;
   subtitleHighlights?: string[];
   slides?: Slide[];
-  videoShowcase?: HeroVideoShowcaseAsset;
-  videoShowcaseByOS?: Partial<Record<DownloadOS, HeroVideoShowcaseAsset>>;
   as?: "section" | "header";
   /**
    * Drops the showcase column and centers the intro. Pages using this render
@@ -41,6 +36,9 @@ interface HeroProps {
   downloadEdgeLabel?: string;
   downloadMenu?: DownloadMenuCopy;
   includeOtherDownloadOS?: boolean;
+  showDownloadDropdown?: boolean;
+  /** Renders a second CTA linking straight to the Mac App Store. */
+  appStoreLabel?: string;
   trustSignals?: string[];
   aiModes?: string[];
   reviewsHref?: string;
@@ -103,17 +101,14 @@ const Hero = ({
   downloadLabel = "Download",
   downloadMenu,
   includeOtherDownloadOS = true,
+  showDownloadDropdown = true,
+  appStoreLabel,
   trustSignals = ["Get started for free, no credit card required"],
   aiModes = [],
   reviewsHref,
   reviewsLabel = "Reviews",
-  videoShowcase,
-  videoShowcaseByOS,
 }: HeroProps) => {
   const highlightText = titleHighlight ?? titleAccent;
-  const { downloadOS: detectedOS } = useOS();
-  const showcaseOS = forceOS ?? detectedOS;
-  const selectedVideoShowcase = videoShowcaseByOS?.[showcaseOS] ?? videoShowcase;
   const finalTrustSignals = trustSignals;
 
   const renderTitle = () => {
@@ -212,8 +207,7 @@ const Hero = ({
                     size="lg"
                     forceOS="mac"
                     showDropdown={false}
-                    className={styles.Hero__PlatformButton}
-                    label={downloadLabel}
+                    label={downloadMenu?.downloadForMac ?? "Download for Mac"}
                   />
                   <DownloadButton
                     source="hero"
@@ -221,20 +215,34 @@ const Hero = ({
                     size="lg"
                     forceOS="windows"
                     showDropdown={false}
-                    className={styles.Hero__PlatformButton}
-                    label={downloadLabel}
+                    label={downloadMenu?.downloadForWindows ?? "Download for Windows"}
                   />
                 </>
               ) : (
-                <DownloadButton
-                  source="hero"
-                  variant="primaryGlass"
-                  size="lg"
-                  forceOS={forceOS}
-                  label={downloadLabel}
-                  menuCopy={downloadMenu}
-                  includeOtherOS={includeOtherDownloadOS}
-                />
+                <>
+                  <DownloadButton
+                    source="hero"
+                    variant="black"
+                    size="lg"
+                    forceOS={forceOS}
+                    label={downloadLabel}
+                    menuCopy={downloadMenu}
+                    showDropdown={showDownloadDropdown}
+                    includeOtherOS={includeOtherDownloadOS}
+                  />
+                  {appStoreLabel && (
+                    <DownloadButton
+                      source="hero"
+                      variant="black"
+                      size="lg"
+                      forceOS="mac"
+                      channel="mac-app-store"
+                      showDropdown={false}
+                      useMobileModal={false}
+                      label={appStoreLabel}
+                    />
+                  )}
+                </>
               )}
             </div>
             {finalTrustSignals.length > 0 && (
@@ -251,11 +259,7 @@ const Hero = ({
           <div
             className={`${styles.Hero__ShowcaseWrapper} ${styles.Hero__ShowcaseMotion}`}
           >
-            {selectedVideoShowcase ? (
-              <HeroVideoShowcase media={selectedVideoShowcase} />
-            ) : (
-              <FileShowcase slides={slides} />
-            )}
+            <FileShowcase slides={slides} />
             <div className={styles.Hero__GlowEffect} />
           </div>
         )}

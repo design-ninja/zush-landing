@@ -17,7 +17,8 @@
     &__Frame {
         position: relative;
         width: 100%;
-        aspect-ratio: 2548 / 1434;
+        // Set per recording by DemoVideo.astro.
+        aspect-ratio: var(--demo-video-aspect-ratio, 2548 / 1434);
         overflow: hidden;
         border-radius: clamp(1.1rem, 1.8vw, 1.4rem);
         background-color: var(--muted);

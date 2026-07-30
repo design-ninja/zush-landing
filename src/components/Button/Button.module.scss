@@ -32,21 +32,21 @@
         outline-offset: 3px;
     }
 
-    // Sizes
+    // Sizes own geometry and text size only — never colour.
     &_sm {
         padding: 0.5rem 1.05rem;
-        font-size: 0.8125rem;
+        font-size: $button-font-size-sm;
         height: 1.15rem;
     }
 
     &_md {
         padding: 0.8rem 1.25rem;
-        font-size: 0.9rem;
+        font-size: $button-font-size-md;
     }
 
     &_lg {
         padding: 0.85rem 1.65rem;
-        font-size: 0.975rem;
+        font-size: $button-font-size-lg;
     }
 
     &_fluid {
@@ -79,18 +79,6 @@
 
         &:hover {
             background-color: var(--primary-soft);
-        }
-    }
-
-    &_glass {
-        @include cta-glass-primary-vars;
-        @include cta-glass-surface;
-        @include cta-glass-gloss;
-        @include cta-glass-content;
-        border-radius: $radius-full;
-
-        &:hover {
-            @include cta-glass-hover;
         }
     }
 

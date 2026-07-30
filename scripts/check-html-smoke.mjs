@@ -23,13 +23,16 @@ const NON_WATCH_VIDEO_ROUTES = new Set([
   '/rename-photos-with-ai',
   '/rename-screenshots-with-ai',
 ]);
-const HOMEPAGE_HERO_VIDEO = {
-  lightSource: '/videos/hero/zush-invoices-demo-mac-window-light.mp4',
-  darkSource: '/videos/hero/zush-invoices-demo-mac-window-dark.mp4',
-  lightPoster: '/videos/posters/hero-invoices-demo-mac-window-light.webp',
-  darkPoster: '/videos/posters/hero-invoices-demo-mac-window-dark.webp',
-  width: '2082',
-  height: '1638',
+// Mirrors MAC_DEMO_VIDEO in src/data/showcaseMedia.ts, rendered by DemoVideo.
+const HOMEPAGE_DEMO_VIDEO = {
+  light: {
+    source: '/videos/demo-light.mp4',
+    poster: '/videos/posters/demo-light.webp',
+  },
+  dark: {
+    source: '/videos/demo-dark.mp4',
+    poster: '/videos/posters/demo-dark.webp',
+  },
 };
 const ISO_8601_DATE_OR_DATETIME = /^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})?)?$/;
 const USE_CASES_BLOCK_ROUTES = [
@@ -150,50 +153,46 @@ function assertVideoBooleanAttribute(tag, attrName, pathname) {
 
 function assertHomepageHeroVideo(html, pathname) {
   const videoTags = html.match(/<video\b[^>]*>/g) ?? [];
-  if (videoTags.length !== 1) {
-    fail(`Homepage should emit exactly one hero <video> tag on ${pathname}`);
+  // One recording per theme; CSS keeps the inactive one at `display: none`.
+  if (videoTags.length !== 2) {
+    fail(`Homepage should emit exactly two demo <video> tags on ${pathname}`);
   }
 
-  const videoTag = videoTags[0];
-  assertVideoBooleanAttribute(videoTag, 'autoplay', pathname);
-  assertVideoBooleanAttribute(videoTag, 'muted', pathname);
-  assertVideoBooleanAttribute(videoTag, 'playsinline', pathname);
-  assertVideoBooleanAttribute(videoTag, 'loop', pathname);
-  assertIncludes(
-    videoTag,
-    `preload="metadata"`,
-    `Homepage hero video should preload metadata only on ${pathname}`,
-  );
-  assertIncludes(
-    videoTag,
-    `src="${HOMEPAGE_HERO_VIDEO.lightSource}"`,
-    `Homepage hero video should SSR the light source on ${pathname}`,
-  );
-  assertIncludes(
-    videoTag,
-    `poster="${HOMEPAGE_HERO_VIDEO.lightPoster}"`,
-    `Homepage hero video should SSR the light poster on ${pathname}`,
-  );
-  assertIncludes(
-    videoTag,
-    `width="${HOMEPAGE_HERO_VIDEO.width}"`,
-    `Homepage hero video should include fixed width on ${pathname}`,
-  );
-  assertIncludes(
-    videoTag,
-    `height="${HOMEPAGE_HERO_VIDEO.height}"`,
-    `Homepage hero video should include fixed height on ${pathname}`,
-  );
-  assertIncludes(
-    html,
-    HOMEPAGE_HERO_VIDEO.darkSource,
-    `Homepage hero video should include dark theme source in island props on ${pathname}`,
-  );
-  assertIncludes(
-    html,
-    HOMEPAGE_HERO_VIDEO.darkPoster,
-    `Homepage hero video should include dark theme poster in island props on ${pathname}`,
-  );
+  for (const videoTag of videoTags) {
+    assertVideoBooleanAttribute(videoTag, 'autoplay', pathname);
+    assertVideoBooleanAttribute(videoTag, 'muted', pathname);
+    assertVideoBooleanAttribute(videoTag, 'playsinline', pathname);
+    assertVideoBooleanAttribute(videoTag, 'loop', pathname);
+    assertIncludes(
+      videoTag,
+      `preload="metadata"`,
+      `Homepage demo video should preload metadata only on ${pathname}`,
+    );
+  }
+
+  const [lightTag, darkTag] = videoTags;
+  const themedTags = [
+    { tag: lightTag, theme: 'light' },
+    { tag: darkTag, theme: 'dark' },
+  ];
+
+  for (const { tag, theme } of themedTags) {
+    assertIncludes(
+      tag,
+      `data-demo-theme="${theme}"`,
+      `Homepage demo video should mark the ${theme} recording on ${pathname}`,
+    );
+    assertIncludes(
+      tag,
+      `src="${HOMEPAGE_DEMO_VIDEO[theme].source}"`,
+      `Homepage demo video should SSR the ${theme} source on ${pathname}`,
+    );
+    assertIncludes(
+      tag,
+      `poster="${HOMEPAGE_DEMO_VIDEO[theme].poster}"`,
+      `Homepage demo video should SSR the ${theme} poster on ${pathname}`,
+    );
+  }
 }
 
 assertPostHogInitializationOrder();

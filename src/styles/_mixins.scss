@@ -25,6 +25,53 @@
     border-bottom: 1px solid var(--glass-border);
 }
 
+// Wide, flat brand bloom hugging the top edge of the page, painted behind the
+// header. Modelled on revone.app, toned down for the light theme.
+//
+// The host needs its own stacking context: without `isolation: isolate` the
+// z-index:-1 layer lands behind the opaque body background and never paints.
+// Horizontal clipping only — the bloom deliberately overflows the top edge.
+@mixin page-top-bloom {
+    position: relative;
+    isolation: isolate;
+    overflow-x: clip;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -12rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(100rem, 165%);
+        height: 30rem;
+        background: radial-gradient(
+            ellipse 50% 50% at 50% 50%,
+            color-mix(in oklch, var(--primary) 88%, transparent),
+            transparent 68%
+        );
+        filter: blur(3rem);
+        opacity: 0.85;
+        pointer-events: none;
+        z-index: -1;
+
+        // Dark theme can carry the full-strength bloom the reference uses.
+        :global(html[data-theme='dark']) & {
+            background: radial-gradient(
+                ellipse 50% 50% at 50% 50%,
+                color-mix(in oklch, var(--primary) 92%, transparent),
+                transparent 68%
+            );
+            opacity: 0.9;
+        }
+
+        @include mobile {
+            top: -8rem;
+            height: 20rem;
+            opacity: 0.3;
+        }
+    }
+}
+
 @mixin container {
     max-width: $container-max-width;
     margin: 0 auto;

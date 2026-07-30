@@ -194,6 +194,8 @@
   }
 }
 
+// The pill also carries the Download button and the burger below 768px, so the
+// trigger shrinks to little more than the locale code and the chevron.
 @media (max-width: 390px) {
   .LanguageSwitcher__Button {
     gap: 0.25rem;
@@ -214,6 +216,13 @@
   .LanguageSwitcher__Icon {
     width: 1rem;
     height: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .LanguageSwitcher__Button {
+    min-width: 0;
+    padding: 0.4rem 0.32rem 0.4rem 0.42rem;
   }
 }
 

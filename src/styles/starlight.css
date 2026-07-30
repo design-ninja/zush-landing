@@ -55,3 +55,18 @@
   max-width: 100%;
   height: auto;
 }
+
+/* The overview demo ships as two recordings, one per theme. Starlight defaults
+   to dark and marks light with :root[data-theme='light'], so the inactive one is
+   display:none — it never autoplays and stays at metadata-only download. */
+.zush-demo-video[data-demo-theme='light'] {
+  display: none;
+}
+
+:root[data-theme='light'] .zush-demo-video[data-demo-theme='light'] {
+  display: block;
+}
+
+:root[data-theme='light'] .zush-demo-video[data-demo-theme='dark'] {
+  display: none;
+}

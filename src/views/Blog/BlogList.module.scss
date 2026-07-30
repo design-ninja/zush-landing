@@ -11,7 +11,7 @@
 
   &__Container {
     @include container;
-    max-width: 70rem;
+    max-width: $blog-container-max-width;
   }
 
   &_underHeader {
@@ -22,29 +22,10 @@
     }
   }
 
+  // Same brand bloom as the homepage hero, from the shared mixin — this used to
+  // be a green corner glow of its own.
   &_glowTopRight {
-    position: relative;
-    overflow: clip;
-
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: max(2rem, calc((100vw - 70rem) / 2));
-      width: 13rem;
-      height: 13rem;
-      background: var(--secondary);
-      filter: blur(6.25rem);
-      opacity: 0.22;
-      pointer-events: none;
-      z-index: 0;
-
-      @include mobile {
-        top: 0;
-        right: -1.5rem;
-        opacity: 0.16;
-      }
-    }
+    @include page-top-bloom;
 
     .BlogList__Container {
       position: relative;
@@ -103,8 +84,8 @@
     padding: 0 1.75rem;
     border: 1px solid transparent;
     border-radius: $radius-full;
-    background: var(--primary);
-    color: var(--primary-foreground);
+    background: var(--tertiary);
+    color: var(--tertiary-foreground);
     font-family: var(--font-family);
     font-size: 1rem;
     font-weight: 600;
@@ -114,7 +95,7 @@
       transform $transition-fast;
 
     &:hover {
-      background: var(--primary-hover);
+      background: var(--tertiary-hover);
     }
 
     &:active {
@@ -268,133 +249,11 @@
     }
   }
 
+  // Post rows carry their own styling; see BlogPostCard.module.scss.
   &__SectionPosts {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-
-    @include mobile {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  &__Post {
-    background: var(--background);
-    border: 1px solid var(--border);
-    border-radius: $radius-xl;
-    overflow: hidden;
-    transition:
-      border-color $transition-fast,
-      transform $transition-fast,
-      box-shadow $transition-fast;
-
-    &:hover {
-      @include card-hover-ring(
-        color-mix(in srgb, var(--primary) 30%, var(--border)),
-        0 18px 48px rgba(15, 23, 42, 0.08)
-      );
-      transform: translateY(-2px);
-    }
-  }
-
-  &__PostLink {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    padding: 0;
-    color: inherit;
-    overflow: hidden;
-  }
-
-  &__PostMedia {
-    aspect-ratio: 4 / 3;
-    width: 100%;
-    overflow: hidden;
-    border-radius: $radius-xl $radius-xl 0 0;
-    border-bottom: 1px solid color-mix(in srgb, var(--border) 82%, transparent);
-    background: var(--muted);
-  }
-
-  &__PostImage {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  &__Track {
-    --track-hue: var(--h-purple);
-
-    display: inline-flex;
-    align-self: flex-start;
-    margin: 1.35rem 1.5rem 0.85rem;
-    padding: 0.32rem 0.7rem;
-    border-radius: $radius-full;
-    background: oklch(var(--case-bg-l) var(--case-bg-c) var(--track-hue));
-    color: oklch(var(--case-icon-l) var(--case-icon-c) var(--track-hue));
-    border: 1px solid oklch(var(--case-icon-bg-l) var(--case-icon-bg-c) var(--track-hue));
-    font-size: 0.75rem;
-    font-weight: 600;
-
-    &_general {
-      --track-hue: var(--h-cyan);
-    }
-
-    &_mac {
-      --track-hue: var(--h-purple);
-    }
-
-    &_windows {
-      --track-hue: var(--h-blue);
-    }
-  }
-
-  &__PostTitle {
-    margin: 0 1.5rem 0.75rem;
-    color: var(--foreground);
-  }
-
-  &__PostDescription {
-    color: var(--muted-foreground);
-    margin: 0 1.5rem 1rem;
-  }
-
-  &__PostMeta {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-top: auto;
-    padding: 0 1.5rem 1.5rem;
-    color: var(--muted-foreground);
-    font-size: 0.875rem;
-  }
-
-  &__PostMetaItem {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    min-width: 0;
-
-    svg {
-      flex: 0 0 auto;
-    }
-  }
-
-  &__PostTags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: 0.25rem 1.5rem 0.9rem;
-  }
-
-  &__Tag {
-    padding: 0.25rem 0.75rem;
-    background: var(--primary-soft);
-    color: var(--primary);
-    border-radius: $radius-full;
-    font-size: 0.75rem;
-    font-weight: $font-weight-link;
-    text-decoration: none;
+    grid-template-columns: 1fr;
+    gap: 0;
   }
 
   &__TagCloud {

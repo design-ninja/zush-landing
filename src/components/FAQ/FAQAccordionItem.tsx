@@ -26,7 +26,9 @@ const FAQAccordionItem = memo(
         onClick={onClick}
         aria-expanded={isOpen}
       >
-        <Heading as='h3' className={classes.FAQItem__Question}>
+        {/* h3 for the outline, h4 visual size from the shared type scale — the
+            weight comes from <Heading>, not from the FAQ stylesheets. */}
+        <Heading as='h3' size='h4' className={classes.FAQItem__Question}>
           {question}
         </Heading>
         <ChevronDown size={24} className={classes.FAQItem__Icon} />

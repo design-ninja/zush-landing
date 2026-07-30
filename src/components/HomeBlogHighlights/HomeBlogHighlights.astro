@@ -1,7 +1,7 @@
 ---
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
-import BlogHighlightCard from '@/components/blog/BlogHighlightCard.astro';
+import BlogPostCard from '@/components/blog/BlogPostCard.astro';
 import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module.scss';
 import { getAllPosts } from '@/data/blog';
 import styles from './HomeBlogHighlights.module.scss';
@@ -48,9 +48,9 @@ const featured = FEATURED_SLUGS.map((slug) => {
       </Text>
     </div>
 
-    <div class={styles.HomeBlogHighlights__Grid}>
+    <div class={styles.HomeBlogHighlights__List}>
       {featured.map((post) => (
-        <BlogHighlightCard post={post} />
+        <BlogPostCard post={post} />
       ))}
     </div>
 

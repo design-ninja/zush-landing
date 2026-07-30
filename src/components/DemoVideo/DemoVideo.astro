@@ -1,32 +1,45 @@
 ---
 import styles from './DemoVideo.module.scss';
+import { MAC_DEMO_VIDEO, type DemoVideoAsset } from '@/data/showcaseMedia';
 
 interface Props {
   label: string;
+  media?: DemoVideoAsset;
 }
 
-const { label } = Astro.props as Props;
+const { label, media = MAC_DEMO_VIDEO } = Astro.props as Props;
 
 // Two recordings of the same demo, one per theme. Both are rendered and CSS
 // picks the active one — the hidden element is `display: none`, so it never
-// autoplays and stays at metadata-only download.
+// autoplays and stays at metadata-only download. A recording that exists in a
+// single theme is rendered once and shown in both themes.
+//
+// Neither file has an audio track, which is also why the native controls show
+// no volume slider: browsers omit it when there is nothing to mute.
+const isThemeAware = media.sources.light !== media.sources.dark;
 const VARIANTS = [
-  { theme: 'light', src: '/videos/demo-light.mp4', poster: '/videos/posters/demo-light.webp' },
-  { theme: 'dark', src: '/videos/demo-dark.mp4', poster: '/videos/posters/demo-dark.webp' },
-] as const;
+  { theme: isThemeAware ? 'light' : 'any', src: media.sources.light, poster: media.posters.light },
+  ...(isThemeAware
+    ? [{ theme: 'dark', src: media.sources.dark, poster: media.posters.dark }]
+    : []),
+];
+
+const frameStyle = { '--demo-video-aspect-ratio': `${media.width} / ${media.height}` };
 ---
 
 <!-- Opted out of the scroll-reveal fade: the demo sits right under the hero
      and should already be on screen when the page paints. -->
 <section class={styles.DemoVideo} aria-label={label} data-scroll-reveal-skip>
   <div class={styles.DemoVideo__Container}>
-    <div class={styles.DemoVideo__Frame}>
+    <div class={styles.DemoVideo__Frame} style={frameStyle}>
       {VARIANTS.map(({ theme, src, poster }) => (
         <video
           class={styles.DemoVideo__Video}
           data-demo-theme={theme}
           src={src}
           poster={poster}
+          controls
+          controlslist="nodownload"
           autoplay
           loop
           muted

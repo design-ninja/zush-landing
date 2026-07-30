@@ -24,6 +24,8 @@ export interface HeaderCopy {
   downloadZush: string;
   toggleTheme: string;
   language: string;
+  /** Burger-menu label; falls back to 'Menu' where a locale has none. */
+  menu?: string;
   homeAria?: string;
   skipToContent?: string;
 }
@@ -35,6 +37,8 @@ export interface DownloadMenuCopy {
   macDirectHint: string;
   windowsHint: string;
   appStoreTitle: string;
+  /** Hero CTA label, distinct from appStoreTitle used in the dropdown. */
+  appStoreCta: string;
   appStoreHint: string;
   showOptions: string;
 }
@@ -299,6 +303,7 @@ export interface HomeCopy {
   heroAccent: string;
   heroSubtitle: string;
   heroHighlights: string[];
+  heroModes: string[];
   buyPro: string;
   trustSignals: string[];
   featuresTitle: string;
@@ -1009,11 +1014,12 @@ const EN_COPY: LocaleCopy = {
     pricing: 'Pricing',
     faq: 'FAQ',
     blog: 'Blog',
-    buyPro: 'Buy 🌟 PRO',
+    buyPro: 'Buy PRO',
     download: 'Download',
     downloadZush: 'Download Zush',
     toggleTheme: 'Toggle theme',
     language: 'Language',
+    menu: 'Menu',
     homeAria: 'Go to homepage',
     skipToContent: 'Skip to content',
   },
@@ -1024,6 +1030,7 @@ const EN_COPY: LocaleCopy = {
     macDirectHint: 'Direct .dmg download',
     windowsHint: 'Microsoft Store',
     appStoreTitle: 'Mac App Store',
+    appStoreCta: 'Get from AppStore',
     appStoreHint: 'Install via App Store',
     showOptions: 'Show download options for {os}',
   },
@@ -1083,8 +1090,9 @@ const EN_COPY: LocaleCopy = {
     heroSubtitle:
       'Batch rename files by content with AI. Zush supports 100+ formats across screenshots, PDFs, photos, videos, audio, and documents, extracting exactly the details you choose and turning them into filenames you define.',
     heroHighlights: ['Batch rename files by content with AI', 'exactly the details you choose'],
-    buyPro: 'Buy 🌟 PRO',
+    buyPro: 'Buy PRO',
     trustSignals: ['Get started for free, no credit card required'],
+    heroModes: ['Cloud AI', 'BYOK', 'Offline', '100+ formats'],
     featuresTitle: 'AI File Renamer Features',
     featuresDescription: 'Turn messy filenames into clear, consistent names with previews, templates, folder monitoring, and one-click undo.',
     supportedFormats: 'Supported File Formats',
@@ -1220,7 +1228,7 @@ const EN_COPY: LocaleCopy = {
     planName: 'Zush PRO 🌟',
     planDescription: 'Monthly or one-time • Unlimited PRO',
     billing: 'monthly or one-time',
-    buttonText: 'Buy PRO 🌟',
+    buttonText: 'Buy PRO',
     buttonHint: '14-day money-back guarantee • Secure via Paddle',
     features: [
       { title: 'Unlimited Cloud Renames', desc: 'Rename without limits using Cloud AI' },
@@ -1241,13 +1249,13 @@ const EN_COPY: LocaleCopy = {
     monthlyPlan: {
       titleSuffix: 'Monthly',
       description: 'Flexible monthly plan',
-      buttonText: 'Start PRO 🌟 Monthly',
+      buttonText: 'Start PRO Monthly',
       billing: '/month',
     },
     oneTimePlan: {
       titleSuffix: 'One-Time',
       description: 'Pay once for lifetime access',
-      buttonText: 'Buy PRO 🌟 One-Time',
+      buttonText: 'Buy PRO One-Time',
       billing: 'one-time',
     },
     bestValueBadge: 'Best value',
@@ -1261,7 +1269,7 @@ const EN_COPY: LocaleCopy = {
         'AI file renamer for Mac. Zush reads 100+ formats, including screenshots, PDFs, photos, videos, audio, design files, iWork, and Office documents, then renames files by content with preview and undo.',
       heroTitle: 'AI File Renamer for Mac',
       heroSubtitle:
-        'Turn messy Finder folders into descriptive, searchable filenames. Rename and organize 100+ formats by content, build your own naming fields with Custom AI Blocks, review every suggestion, undo any batch — or go fully private with local Ollama models in Offline AI mode.',
+        'Batch rename and organize Finder files by content: screenshots, PDFs, photos, videos, and 100+ formats. Review every AI suggestion, undo any batch, or go fully private with Offline AI.',
       ctaTitle: 'Try Zush free on Mac',
       ctaSubtitle: 'Install the signed macOS AI file renamer and start renaming 100+ formats from Finder folders, including screenshots, design files, audio, videos, PDFs, photos, iWork, and Office documents.',
       faqDescription: 'Everything you need to know about using Zush as an AI file renamer and batch rename tool for Mac.',
@@ -1300,7 +1308,7 @@ const EN_COPY: LocaleCopy = {
         'AI file renamer for Windows. Zush reads 100+ formats, including screenshots, PDFs, photos, videos, audio, design files, iWork, and Office documents, then renames files by content with preview and undo.',
       heroTitle: 'AI File Renamer for Windows',
       heroSubtitle:
-        'Turn messy File Explorer folders into descriptive, searchable filenames. Rename and organize 100+ formats by content on Windows 10 and 11, build your own naming fields with Custom AI Blocks, and undo any batch — with BYOK and private Offline AI when you need it.',
+        'Bulk rename and organize File Explorer files by content on Windows 11 and 10: screenshots, PDFs, photos, and 100+ formats. Review every suggestion, undo any batch, or go private with Offline AI.',
       ctaTitle: 'Try Zush free on Windows',
       ctaSubtitle: 'Open the Microsoft Store and start renaming 100+ formats from File Explorer folders, including screenshots, design files, audio, videos, PDFs, photos, iWork, and Office documents.',
       faqDescription: 'Everything you need to know about using Zush as an AI file renamer and bulk rename tool for Windows.',
@@ -2382,6 +2390,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
     macDirectHint: 'Direkter .dmg-Download',
     windowsHint: 'Microsoft Store',
     appStoreTitle: 'Mac App Store',
+    appStoreCta: 'Im AppStore laden',
     appStoreHint: 'Über App Store installieren',
     showOptions: 'Download-Optionen für {os} anzeigen',
   },
@@ -2392,6 +2401,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
     macDirectHint: 'Téléchargement .dmg direct',
     windowsHint: 'Microsoft Store',
     appStoreTitle: 'Mac App Store',
+    appStoreCta: 'Obtenir sur AppStore',
     appStoreHint: 'Installer via l’App Store',
     showOptions: 'Afficher les options de téléchargement pour {os}',
   },
@@ -2402,6 +2412,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
     macDirectHint: 'Download direto .dmg',
     windowsHint: 'Microsoft Store',
     appStoreTitle: 'Mac App Store',
+    appStoreCta: 'Baixar na AppStore',
     appStoreHint: 'Instalar pela App Store',
     showOptions: 'Mostrar opções de download para {os}',
   },
@@ -2412,6 +2423,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
     macDirectHint: 'Descarga directa .dmg',
     windowsHint: 'Microsoft Store',
     appStoreTitle: 'Mac App Store',
+    appStoreCta: 'Obtener en AppStore',
     appStoreHint: 'Instalar desde App Store',
     showOptions: 'Mostrar opciones de descarga para {os}',
   },
@@ -2422,6 +2434,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
     macDirectHint: 'Directe .dmg-download',
     windowsHint: 'Microsoft Store',
     appStoreTitle: 'Mac App Store',
+    appStoreCta: 'Download in AppStore',
     appStoreHint: 'Installeren via App Store',
     showOptions: 'Downloadopties voor {os} tonen',
   },
@@ -2432,6 +2445,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
     macDirectHint: 'Download diretto .dmg',
     windowsHint: 'Microsoft Store',
     appStoreTitle: 'Mac App Store',
+    appStoreCta: 'Scarica su AppStore',
     appStoreHint: 'Installa tramite App Store',
     showOptions: 'Mostra opzioni di download per {os}',
   },
@@ -2442,6 +2456,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
     macDirectHint: '直接 .dmg ダウンロード',
     windowsHint: 'Microsoft Store',
     appStoreTitle: 'Mac App Store',
+    appStoreCta: 'AppStore で入手',
     appStoreHint: 'App Store からインストール',
     showOptions: '{os} のダウンロードオプションを表示',
   },
@@ -2452,6 +2467,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
     macDirectHint: '직접 .dmg 다운로드',
     windowsHint: 'Microsoft Store',
     appStoreTitle: 'Mac App Store',
+    appStoreCta: 'AppStore에서 받기',
     appStoreHint: 'App Store로 설치',
     showOptions: '{os} 다운로드 옵션 표시',
   },
@@ -2462,6 +2478,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
     macDirectHint: '直接下载 .dmg',
     windowsHint: 'Microsoft Store',
     appStoreTitle: 'Mac App Store',
+    appStoreCta: '从 AppStore 获取',
     appStoreHint: '通过 App Store 安装',
     showOptions: '显示 {os} 下载选项',
   },
@@ -2472,6 +2489,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
     macDirectHint: 'Doğrudan .dmg indirme',
     windowsHint: 'Microsoft Store',
     appStoreTitle: 'Mac App Store',
+    appStoreCta: 'AppStore’dan al',
     appStoreHint: 'App Store’dan yükleyin',
     showOptions: '{os} indirme seçeneklerini göster',
   },
@@ -2482,6 +2500,7 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
     macDirectHint: 'تنزيل مباشر بصيغة .dmg',
     windowsHint: 'Microsoft Store',
     appStoreTitle: 'Mac App Store',
+    appStoreCta: 'احصل عليه من AppStore',
     appStoreHint: 'التثبيت عبر App Store',
     showOptions: 'عرض خيارات التنزيل لـ {os}',
   },
@@ -2652,13 +2671,13 @@ const localizedPricingExtras: Record<Exclude<Locale, 'en'>, PricingExtrasCopy> =
     monthlyPlan: {
       titleSuffix: 'Monthly',
       description: 'Flexibel maandelijks plan',
-      buttonText: 'Start PRO 🌟 Monthly',
+      buttonText: 'Start PRO Monthly',
       billing: '/maand',
     },
     oneTimePlan: {
       titleSuffix: 'One-Time',
       description: 'Betaal één keer voor levenslange toegang',
-      buttonText: 'Koop PRO 🌟 One-Time',
+      buttonText: 'Koop PRO One-Time',
       billing: 'eenmalig',
     },
     bestValueBadge: 'Beste deal',
@@ -3755,7 +3774,7 @@ const withLocalizedFileExamples = (
 const COPY: Record<Locale, LocaleCopy> = {
   en: base,
   de: localized({
-    header: { features: 'Funktionen', reviews: 'Bewertungen', security: 'Sicherheit', pricing: 'Preise', faq: 'FAQ', blog: 'Blog', buyPro: '🌟 PRO kaufen', download: 'Herunterladen', downloadZush: 'Zush herunterladen', toggleTheme: 'Design wechseln', language: 'Sprache', homeAria: 'Zur Startseite', skipToContent: 'Zum Inhalt springen' },
+    header: { features: 'Funktionen', reviews: 'Bewertungen', security: 'Sicherheit', pricing: 'Preise', faq: 'FAQ', blog: 'Blog', buyPro: 'PRO kaufen', download: 'Herunterladen', downloadZush: 'Zush herunterladen', toggleTheme: 'Design wechseln', language: 'Sprache', menu: 'Menü', homeAria: 'Zur Startseite', skipToContent: 'Zum Inhalt springen' },
     downloadMenu: localizedDownloadMenu.de,
     footer: {
       description: 'KI-Dateiumbenenner und Stapel-Umbenennungstool für Mac und Windows',
@@ -3776,8 +3795,9 @@ const COPY: Record<Locale, LocaleCopy> = {
       heroAccent: 'Dateiumbenenner',
       heroSubtitle: 'Benenne Dateien mit KI stapelweise nach Inhalt um. Zush unterstützt über 100 Formate für Screenshots, PDFs, Fotos, Videos, Audio und Dokumente, extrahiert genau die Details, die du auswählst, und macht daraus Dateinamen nach deinen Vorgaben.',
       heroHighlights: ['Benenne Dateien mit KI stapelweise nach Inhalt um', 'genau die Details, die du auswählst'],
-      buyPro: 'PRO kaufen 🌟',
+      buyPro: 'PRO kaufen',
       trustSignals: ['Kostenlos starten, keine Kreditkarte erforderlich'],
+      heroModes: ['Cloud-KI', 'BYOK', 'Offline', '100+ Formate'],
       featuresTitle: 'Zush Funktionen',
       featuresDescription: 'Verwandle unübersichtliche Dateinamen mit Vorschau, Templates, Ordnerüberwachung und Rückgängig-Funktion in klare, einheitliche Namen.',
       supportedFormats: 'Unterstützte Dateiformate',
@@ -3801,7 +3821,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       planName: 'Zush PRO 🌟',
       planDescription: 'Einmalkauf • Lebenslanger Zugriff',
       billing: 'einmalig',
-      buttonText: 'PRO kaufen 🌟',
+      buttonText: 'PRO kaufen',
       buttonHint: '14 Tage Geld-zurück-Garantie • Sicher über Paddle',
       features: localizedPricingFeatures.de,
       ...localizedPricingExtras.de,
@@ -3887,7 +3907,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     },
   }),
   fr: localized({
-    header: { features: 'Fonctions', reviews: 'Avis', security: 'Sécurité', pricing: 'Tarifs', faq: 'FAQ', blog: 'Blog', buyPro: 'Acheter 🌟 PRO', download: 'Télécharger', downloadZush: 'Télécharger Zush', toggleTheme: 'Changer le thème', language: 'Langue', homeAria: 'Aller à l’accueil', skipToContent: 'Aller au contenu' },
+    header: { features: 'Fonctions', reviews: 'Avis', security: 'Sécurité', pricing: 'Tarifs', faq: 'FAQ', blog: 'Blog', buyPro: 'Acheter PRO', download: 'Télécharger', downloadZush: 'Télécharger Zush', toggleTheme: 'Changer le thème', language: 'Langue', menu: 'Menu', homeAria: 'Aller à l’accueil', skipToContent: 'Aller au contenu' },
     downloadMenu: localizedDownloadMenu.fr,
     footer: { description: 'Renommeur de fichiers IA et outil de renommage par lot pour Mac et Windows', product: 'Produit', byFileType: 'Par type', resources: 'Ressources', support: 'Support', pricing: 'Tarifs', contactSupport: 'Contacter le support', feedback: 'Fonctions & bugs', terms: 'Conditions', privacy: 'Confidentialité', refund: 'Remboursement', ...localizedFooterDetails.fr },
     home: {
@@ -3895,8 +3915,9 @@ const COPY: Record<Locale, LocaleCopy> = {
       heroAccent: 'Renommeur de fichiers',
       heroSubtitle: 'Renommez des fichiers par lot selon leur contenu avec l’IA. Zush prend en charge plus de 100 formats de captures d’écran, PDF, photos, vidéos, audio et documents, extrait exactement les informations que vous choisissez et les transforme en noms de fichiers selon vos règles.',
       heroHighlights: ['Renommez des fichiers par lot selon leur contenu avec l’IA', 'exactement les informations que vous choisissez'],
-      buyPro: 'Acheter PRO 🌟',
+      buyPro: 'Acheter PRO',
       trustSignals: ['Commencez gratuitement, sans carte bancaire'],
+      heroModes: ['IA cloud', 'BYOK', 'Hors ligne', '100+ formats'],
       featuresTitle: 'Fonctions Zush',
       featuresDescription: 'Transformez les noms de fichiers désordonnés en noms clairs et cohérents grâce aux aperçus, aux modèles, à la surveillance des dossiers et à l’annulation en un clic.',
       supportedFormats: 'Formats pris en charge',
@@ -3916,7 +3937,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       faqDescription: 'Tout ce qu’il faut savoir sur Zush',
       ...withLocalizedFileExamples('fr', localizedHomeDetails.fr),
     },
-    pricing: { planName: 'Zush PRO 🌟', planDescription: 'Achat unique • Accès à vie', billing: 'une fois', buttonText: 'Acheter PRO 🌟', buttonHint: 'Garantie 14 jours • Paiement sécurisé via Paddle', features: localizedPricingFeatures.fr, ...localizedPricingExtras.fr },
+    pricing: { planName: 'Zush PRO 🌟', planDescription: 'Achat unique • Accès à vie', billing: 'une fois', buttonText: 'Acheter PRO', buttonHint: 'Garantie 14 jours • Paiement sécurisé via Paddle', features: localizedPricingFeatures.fr, ...localizedPricingExtras.fr },
     platforms: localizedPlatforms.fr,
     seo: {
       '/': { title: 'Renommeur de fichiers IA pour Mac & Windows | Zush', description: 'Renommez des fichiers par lot et en masse selon leur contenu avec l’IA sur Mac et Windows. Screenshots, PDF, photos, vidéos, audio, design et documents.' },
@@ -3962,7 +3983,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   'pt-br': localized({
-    header: { features: 'Recursos', reviews: 'Avaliações', security: 'Segurança', pricing: 'Preços', faq: 'FAQ', blog: 'Blog', buyPro: 'Comprar 🌟 PRO', download: 'Baixar', downloadZush: 'Baixar Zush', toggleTheme: 'Alternar tema', language: 'Idioma', homeAria: 'Ir para o início', skipToContent: 'Pular para o conteúdo' },
+    header: { features: 'Recursos', reviews: 'Avaliações', security: 'Segurança', pricing: 'Preços', faq: 'FAQ', blog: 'Blog', buyPro: 'Comprar PRO', download: 'Baixar', downloadZush: 'Baixar Zush', toggleTheme: 'Alternar tema', language: 'Idioma', menu: 'Menu', homeAria: 'Ir para o início', skipToContent: 'Pular para o conteúdo' },
     downloadMenu: localizedDownloadMenu['pt-br'],
     footer: { description: 'Renomeador de arquivos com IA e ferramenta de renomeação em lote para Mac e Windows', product: 'Produto', byFileType: 'Por tipo', resources: 'Recursos', support: 'Suporte', pricing: 'Preços', contactSupport: 'Falar com suporte', feedback: 'Recursos e bugs', terms: 'Termos', privacy: 'Privacidade', refund: 'Reembolso', ...localizedFooterDetails['pt-br'] },
     home: {
@@ -3970,8 +3991,9 @@ const COPY: Record<Locale, LocaleCopy> = {
       heroAccent: 'Renomeador de arquivos',
       heroSubtitle: 'Renomeie arquivos em lote por conteúdo com IA. O Zush oferece suporte a mais de 100 formatos de screenshots, PDFs, fotos, vídeos, áudios e documentos, extrai exatamente os detalhes que você escolhe e os transforma em nomes de arquivo definidos por você.',
       heroHighlights: ['Renomeie arquivos em lote por conteúdo com IA', 'exatamente os detalhes que você escolhe'],
-      buyPro: 'Comprar PRO 🌟',
+      buyPro: 'Comprar PRO',
       trustSignals: ['Comece grátis, sem cartão de crédito'],
+      heroModes: ['IA na nuvem', 'BYOK', 'Offline', '100+ formatos'],
       featuresTitle: 'Recursos do Zush',
       featuresDescription: 'Transforme nomes de arquivos confusos em nomes claros e consistentes com prévias, modelos, monitoramento de pastas e desfazer em um clique.',
       supportedFormats: 'Formatos compatíveis',
@@ -3991,7 +4013,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       faqDescription: 'Tudo que você precisa saber sobre o Zush',
       ...withLocalizedFileExamples('pt-br', localizedHomeDetails['pt-br']),
     },
-    pricing: { planName: 'Zush PRO 🌟', planDescription: 'Compra única • Acesso vitalício', billing: 'único', buttonText: 'Comprar PRO 🌟', buttonHint: 'Garantia de 14 dias • Seguro via Paddle', features: localizedPricingFeatures['pt-br'], ...localizedPricingExtras['pt-br'] },
+    pricing: { planName: 'Zush PRO 🌟', planDescription: 'Compra única • Acesso vitalício', billing: 'único', buttonText: 'Comprar PRO', buttonHint: 'Garantia de 14 dias • Seguro via Paddle', features: localizedPricingFeatures['pt-br'], ...localizedPricingExtras['pt-br'] },
     platforms: localizedPlatforms['pt-br'],
     seo: {
       '/': { title: 'Renomeador de arquivos com IA para Mac & Windows | Zush', description: 'Renomeie arquivos em lote e em massa pelo conteúdo com IA no Mac e Windows. Screenshots, PDFs, fotos, vídeos, áudio, design e documentos.' },
@@ -4037,7 +4059,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   es: localized({
-    header: { features: 'Funciones', reviews: 'Reseñas', security: 'Seguridad', pricing: 'Precios', faq: 'FAQ', blog: 'Blog', buyPro: 'Comprar 🌟 PRO', download: 'Descargar', downloadZush: 'Descargar Zush', toggleTheme: 'Cambiar tema', language: 'Idioma', homeAria: 'Ir al inicio', skipToContent: 'Saltar al contenido' },
+    header: { features: 'Funciones', reviews: 'Reseñas', security: 'Seguridad', pricing: 'Precios', faq: 'FAQ', blog: 'Blog', buyPro: 'Comprar PRO', download: 'Descargar', downloadZush: 'Descargar Zush', toggleTheme: 'Cambiar tema', language: 'Idioma', menu: 'Menú', homeAria: 'Ir al inicio', skipToContent: 'Saltar al contenido' },
     downloadMenu: localizedDownloadMenu.es,
     footer: { description: 'Renombrador de archivos con IA y herramienta de renombrado por lotes para Mac y Windows', product: 'Producto', byFileType: 'Por tipo', resources: 'Recursos', support: 'Soporte', pricing: 'Precios', contactSupport: 'Contactar soporte', feedback: 'Funciones y errores', terms: 'Términos', privacy: 'Privacidad', refund: 'Reembolso', ...localizedFooterDetails.es },
     home: {
@@ -4045,8 +4067,9 @@ const COPY: Record<Locale, LocaleCopy> = {
       heroAccent: 'Renombrador de archivos',
       heroSubtitle: 'Renombra archivos por lotes según su contenido con IA. Zush admite más de 100 formatos de capturas, PDFs, fotos, videos, audio y documentos, extrae exactamente los detalles que eliges y los convierte en nombres de archivo definidos por ti.',
       heroHighlights: ['Renombra archivos por lotes según su contenido con IA', 'exactamente los detalles que eliges'],
-      buyPro: 'Comprar PRO 🌟',
+      buyPro: 'Comprar PRO',
       trustSignals: ['Empieza gratis, sin tarjeta de crédito'],
+      heroModes: ['IA en la nube', 'BYOK', 'Sin conexión', '100+ formatos'],
       featuresTitle: 'Funciones de Zush',
       featuresDescription: 'Convierte nombres de archivo desordenados en nombres claros y coherentes con vistas previas, plantillas, monitorización de carpetas y deshacer en un clic.',
       supportedFormats: 'Formatos compatibles',
@@ -4066,7 +4089,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       faqDescription: 'Todo lo que necesitas saber sobre Zush',
       ...withLocalizedFileExamples('es', localizedHomeDetails.es),
     },
-    pricing: { planName: 'Zush PRO 🌟', planDescription: 'Compra única • Acceso de por vida', billing: 'una vez', buttonText: 'Comprar PRO 🌟', buttonHint: 'Garantía de 14 días • Seguro con Paddle', features: localizedPricingFeatures.es, ...localizedPricingExtras.es },
+    pricing: { planName: 'Zush PRO 🌟', planDescription: 'Compra única • Acceso de por vida', billing: 'una vez', buttonText: 'Comprar PRO', buttonHint: 'Garantía de 14 días • Seguro con Paddle', features: localizedPricingFeatures.es, ...localizedPricingExtras.es },
     platforms: localizedPlatforms.es,
     seo: {
       '/': { title: 'Renombrador de archivos con IA para Mac & Windows | Zush', description: 'Renombra archivos por lotes y en masa según su contenido con IA en Mac y Windows. Capturas, PDFs, fotos, videos, audio, diseño y documentos.' },
@@ -4112,7 +4135,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   nl: localized({
-    header: { features: 'Functies', reviews: 'Reviews', security: 'Beveiliging', pricing: 'Prijzen', faq: 'FAQ', blog: 'Blog', buyPro: 'Koop 🌟 PRO', download: 'Downloaden', downloadZush: 'Zush downloaden', toggleTheme: 'Thema wisselen', language: 'Taal', homeAria: 'Naar home', skipToContent: 'Naar inhoud' },
+    header: { features: 'Functies', reviews: 'Reviews', security: 'Beveiliging', pricing: 'Prijzen', faq: 'FAQ', blog: 'Blog', buyPro: 'Koop PRO', download: 'Downloaden', downloadZush: 'Zush downloaden', toggleTheme: 'Thema wisselen', language: 'Taal', menu: 'Menu', homeAria: 'Naar home', skipToContent: 'Naar inhoud' },
     downloadMenu: localizedDownloadMenu.nl,
     footer: { description: 'AI-bestandshernoemer en bulk-hernoemtool voor Mac en Windows', product: 'Product', byFileType: 'Per type', resources: 'Bronnen', support: 'Support', pricing: 'Prijzen', contactSupport: 'Support contacteren', feedback: 'Functies & bugs', terms: 'Voorwaarden', privacy: 'Privacy', refund: 'Terugbetaling', ...localizedFooterDetails.nl },
     home: {
@@ -4120,8 +4143,9 @@ const COPY: Record<Locale, LocaleCopy> = {
       heroAccent: 'Bestandshernoemer',
       heroSubtitle: 'Hernoem bestanden in bulk op basis van inhoud met AI. Zush ondersteunt meer dan 100 formaten voor screenshots, pdf’s, foto’s, video’s, audio en documenten, haalt precies de details eruit die jij kiest en zet ze om in bestandsnamen die jij bepaalt.',
       heroHighlights: ['Hernoem bestanden in bulk op basis van inhoud met AI', 'precies de details eruit die jij kiest'],
-      buyPro: 'Koop PRO 🌟',
+      buyPro: 'Koop PRO',
       trustSignals: ['Gratis aan de slag, geen creditcard nodig'],
+      heroModes: ['Cloud-AI', 'BYOK', 'Offline', '100+ formaten'],
       featuresTitle: 'Zush-functies',
       featuresDescription: 'Maak rommelige bestandsnamen helder en consistent met voorbeelden, templates, mapbewaking en ongedaan maken met één klik.',
       supportedFormats: 'Ondersteunde bestandsformaten',
@@ -4141,7 +4165,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       faqDescription: 'Alles wat je over Zush moet weten',
       ...withLocalizedFileExamples('nl', localizedHomeDetails.nl),
     },
-    pricing: { planName: 'Zush PRO 🌟', planDescription: 'Eenmalige aankoop • Levenslange toegang', billing: 'eenmalig', buttonText: 'Koop PRO 🌟', buttonHint: '14 dagen geld-terug-garantie • Veilig via Paddle', features: localizedPricingFeatures.nl, ...localizedPricingExtras.nl },
+    pricing: { planName: 'Zush PRO 🌟', planDescription: 'Eenmalige aankoop • Levenslange toegang', billing: 'eenmalig', buttonText: 'Koop PRO', buttonHint: '14 dagen geld-terug-garantie • Veilig via Paddle', features: localizedPricingFeatures.nl, ...localizedPricingExtras.nl },
     platforms: localizedPlatforms.nl,
     seo: {
       '/': { title: 'AI-bestandshernoemer voor Mac & Windows | Zush', description: 'Hernoem bestanden batchgewijs en in bulk op inhoud met AI op Mac en Windows. Screenshots, PDFs, foto’s, video’s, audio, design en documenten.' },
@@ -4187,7 +4211,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   it: localized({
-    header: { features: 'Funzioni', reviews: 'Recensioni', security: 'Sicurezza', pricing: 'Prezzi', faq: 'FAQ', blog: 'Blog', buyPro: 'Acquista 🌟 PRO', download: 'Scarica', downloadZush: 'Scarica Zush', toggleTheme: 'Cambia tema', language: 'Lingua', homeAria: 'Vai alla home', skipToContent: 'Vai al contenuto' },
+    header: { features: 'Funzioni', reviews: 'Recensioni', security: 'Sicurezza', pricing: 'Prezzi', faq: 'FAQ', blog: 'Blog', buyPro: 'Acquista PRO', download: 'Scarica', downloadZush: 'Scarica Zush', toggleTheme: 'Cambia tema', language: 'Lingua', menu: 'Menu', homeAria: 'Vai alla home', skipToContent: 'Vai al contenuto' },
     downloadMenu: localizedDownloadMenu.it,
     footer: { description: 'Rinomina file con IA e strumento di rinomina in batch per Mac e Windows', product: 'Prodotto', byFileType: 'Per tipo', resources: 'Risorse', support: 'Supporto', pricing: 'Prezzi', contactSupport: 'Contatta supporto', feedback: 'Funzioni e bug', terms: 'Termini', privacy: 'Privacy', refund: 'Rimborso', ...localizedFooterDetails.it },
     home: {
@@ -4195,8 +4219,9 @@ const COPY: Record<Locale, LocaleCopy> = {
       heroAccent: 'Rinomina file',
       heroSubtitle: 'Rinomina file in batch in base al contenuto con l’IA. Zush supporta oltre 100 formati tra screenshot, PDF, foto, video, audio e documenti, estrae esattamente i dettagli che scegli e li trasforma in nomi file definiti da te.',
       heroHighlights: ['Rinomina file in batch in base al contenuto con l’IA', 'esattamente i dettagli che scegli'],
-      buyPro: 'Acquista PRO 🌟',
+      buyPro: 'Acquista PRO',
       trustSignals: ['Inizia gratis, nessuna carta richiesta'],
+      heroModes: ['IA cloud', 'BYOK', 'Offline', '100+ formati'],
       featuresTitle: 'Funzioni di Zush',
       featuresDescription: 'Trasforma nomi di file disordinati in nomi chiari e coerenti con anteprime, modelli, monitoraggio delle cartelle e annullamento con un clic.',
       supportedFormats: 'Formati supportati',
@@ -4216,7 +4241,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       faqDescription: 'Tutto quello che devi sapere su Zush',
       ...withLocalizedFileExamples('it', localizedHomeDetails.it),
     },
-    pricing: { planName: 'Zush PRO 🌟', planDescription: 'Acquisto unico • Accesso a vita', billing: 'una tantum', buttonText: 'Acquista PRO 🌟', buttonHint: 'Garanzia 14 giorni • Sicuro con Paddle', features: localizedPricingFeatures.it, ...localizedPricingExtras.it },
+    pricing: { planName: 'Zush PRO 🌟', planDescription: 'Acquisto unico • Accesso a vita', billing: 'una tantum', buttonText: 'Acquista PRO', buttonHint: 'Garanzia 14 giorni • Sicuro con Paddle', features: localizedPricingFeatures.it, ...localizedPricingExtras.it },
     platforms: localizedPlatforms.it,
     seo: {
       '/': { title: 'Rinomina file con IA per Mac & Windows | Zush', description: 'Rinomina file in batch e in massa in base al contenuto con l’IA su Mac e Windows. Screenshot, PDF, foto, video, audio, design e documenti.' },
@@ -4262,7 +4287,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   ja: localized({
-    header: { features: '機能', reviews: 'レビュー', security: 'セキュリティ', pricing: '料金', faq: 'FAQ', blog: 'ブログ', buyPro: '🌟 PROを購入', download: 'ダウンロード', downloadZush: 'Zushをダウンロード', toggleTheme: 'テーマ切替', language: '言語', homeAria: 'ホームへ移動', skipToContent: 'コンテンツへスキップ' },
+    header: { features: '機能', reviews: 'レビュー', security: 'セキュリティ', pricing: '料金', faq: 'FAQ', blog: 'ブログ', buyPro: 'PROを購入', download: 'ダウンロード', downloadZush: 'Zushをダウンロード', toggleTheme: 'テーマ切替', language: '言語', menu: 'メニュー', homeAria: 'ホームへ移動', skipToContent: 'コンテンツへスキップ' },
     downloadMenu: localizedDownloadMenu.ja,
     footer: { description: 'Mac と Windows 向け AI ファイルリネーム兼一括リネームツール', product: '製品', byFileType: 'ファイル別', resources: 'リソース', support: 'サポート', pricing: '料金', contactSupport: 'サポートに連絡', feedback: '機能要望と不具合', terms: '利用規約', privacy: 'プライバシー', refund: '返金ポリシー', ...localizedFooterDetails.ja },
     home: {
@@ -4270,8 +4295,9 @@ const COPY: Record<Locale, LocaleCopy> = {
       heroAccent: 'ファイルリネーム',
       heroSubtitle: 'AIでファイルを内容に基づいて一括リネーム。Zushはスクリーンショット、PDF、写真、動画、音声、文書など100以上の形式に対応し、指定した情報だけを正確に抽出して、定義したファイル名に変換します。',
       heroHighlights: ['AIでファイルを内容に基づいて一括リネーム', '指定した情報だけを正確に抽出'],
-      buyPro: 'PROを購入 🌟',
+      buyPro: 'PROを購入',
       trustSignals: ['無料で始める、クレジットカード不要'],
+      heroModes: ['クラウドAI', 'BYOK', 'オフライン', '100以上の形式'],
       featuresTitle: 'Zush の機能',
       featuresDescription: 'プレビュー、テンプレート、フォルダ監視、ワンクリックの取り消しで、乱雑なファイル名を明確で統一された名前に整えます。',
       supportedFormats: '対応ファイル形式',
@@ -4291,7 +4317,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       faqDescription: 'Zush について知っておきたいこと',
       ...withLocalizedFileExamples('ja', localizedHomeDetails.ja),
     },
-    pricing: { planName: 'Zush PRO 🌟', planDescription: '買い切り • 永続アクセス', billing: '買い切り', buttonText: 'PRO を購入 🌟', buttonHint: '14日間返金保証 • Paddleで安全決済', features: localizedPricingFeatures.ja, ...localizedPricingExtras.ja },
+    pricing: { planName: 'Zush PRO 🌟', planDescription: '買い切り • 永続アクセス', billing: '買い切り', buttonText: 'PRO を購入', buttonHint: '14日間返金保証 • Paddleで安全決済', features: localizedPricingFeatures.ja, ...localizedPricingExtras.ja },
     platforms: localizedPlatforms.ja,
     seo: {
       '/': { title: 'Mac・Windows対応 ファイルリネーム | AI 一括リネームツール — Zush', description: 'AI で内容に基づいてファイルを一括・大量リネーム。スクリーンショット、PDF、写真、動画、音声、デザインファイル、文書に対応。' },
@@ -4337,7 +4363,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   ko: localized({
-    header: { features: '기능', reviews: '리뷰', security: '보안', pricing: '가격', faq: 'FAQ', blog: '블로그', buyPro: '🌟 PRO 구매', download: '다운로드', downloadZush: 'Zush 다운로드', toggleTheme: '테마 전환', language: '언어', homeAria: '홈으로 이동', skipToContent: '콘텐츠로 건너뛰기' },
+    header: { features: '기능', reviews: '리뷰', security: '보안', pricing: '가격', faq: 'FAQ', blog: '블로그', buyPro: 'PRO 구매', download: '다운로드', downloadZush: 'Zush 다운로드', toggleTheme: '테마 전환', language: '언어', menu: '메뉴', homeAria: '홈으로 이동', skipToContent: '콘텐츠로 건너뛰기' },
     downloadMenu: localizedDownloadMenu.ko,
     footer: { description: 'Mac 및 Windows용 AI 파일 이름 변경 및 일괄 이름 변경 도구', product: '제품', byFileType: '파일 유형별', resources: '리소스', support: '지원', pricing: '가격', contactSupport: '지원 문의', feedback: '기능 및 버그', terms: '이용 약관', privacy: '개인정보', refund: '환불 정책', ...localizedFooterDetails.ko },
     home: {
@@ -4345,8 +4371,9 @@ const COPY: Record<Locale, LocaleCopy> = {
       heroAccent: '파일 이름 변경 도구',
       heroSubtitle: 'AI로 파일 내용을 기준으로 일괄 이름 변경하세요. Zush는 스크린샷, PDF, 사진, 비디오, 오디오, 문서 등 100개 이상의 형식을 지원하며, 사용자가 선택한 세부 정보만 정확히 추출해 원하는 파일 이름으로 바꿉니다.',
       heroHighlights: ['AI로 파일 내용을 기준으로 일괄 이름 변경하세요', '사용자가 선택한 세부 정보만 정확히 추출'],
-      buyPro: 'PRO 구매 🌟',
+      buyPro: 'PRO 구매',
       trustSignals: ['무료로 시작하기, 카드 필요 없음'],
+      heroModes: ['클라우드 AI', 'BYOK', '오프라인', '100개 이상 형식'],
       featuresTitle: 'Zush 기능',
       featuresDescription: '미리보기, 템플릿, 폴더 모니터링, 원클릭 실행 취소로 복잡한 파일 이름을 명확하고 일관되게 정리하세요.',
       supportedFormats: '지원 파일 형식',
@@ -4366,7 +4393,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       faqDescription: 'Zush에 대해 알아야 할 모든 것',
       ...withLocalizedFileExamples('ko', localizedHomeDetails.ko),
     },
-    pricing: { planName: 'Zush PRO 🌟', planDescription: '일회성 구매 • 평생 이용', billing: '일회성', buttonText: 'PRO 구매 🌟', buttonHint: '14일 환불 보장 • Paddle 보안 결제', features: localizedPricingFeatures.ko, ...localizedPricingExtras.ko },
+    pricing: { planName: 'Zush PRO 🌟', planDescription: '일회성 구매 • 평생 이용', billing: '일회성', buttonText: 'PRO 구매', buttonHint: '14일 환불 보장 • Paddle 보안 결제', features: localizedPricingFeatures.ko, ...localizedPricingExtras.ko },
     platforms: localizedPlatforms.ko,
     seo: {
       '/': { title: 'Mac 및 Windows용 파일 이름 변경 도구 | AI 일괄 이름 변경 — Zush', description: 'AI로 파일 내용을 기준으로 일괄 및 대량 이름 변경. 스크린샷, PDF, 사진, 비디오, 오디오, 디자인 파일, 문서 지원.' },
@@ -4412,7 +4439,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     ]),
   }),
   'zh-cn': localized({
-    header: { features: '功能', reviews: '评价', security: '安全', pricing: '价格', faq: 'FAQ', blog: '博客', buyPro: '购买 🌟 PRO', download: '下载', downloadZush: '下载 Zush', toggleTheme: '切换主题', language: '语言', homeAria: '前往首页', skipToContent: '跳到内容' },
+    header: { features: '功能', reviews: '评价', security: '安全', pricing: '价格', faq: 'FAQ', blog: '博客', buyPro: '购买 PRO', download: '下载', downloadZush: '下载 Zush', toggleTheme: '切换主题', language: '语言', menu: '菜单', homeAria: '前往首页', skipToContent: '跳到内容' },
     downloadMenu: localizedDownloadMenu['zh-cn'],
     footer: {
       description: '适用于 Mac 和 Windows 的 AI 文件重命名与批量重命名工具',
@@ -4433,8 +4460,9 @@ const COPY: Record<Locale, LocaleCopy> = {
       heroAccent: '文件重命名工具',
       heroSubtitle: '使用 AI 按内容批量重命名文件。Zush 支持截图、PDF、照片、视频、音频和文档等 100 多种格式，可精准提取你选择的信息，并生成由你定义的文件名。',
       heroHighlights: ['使用 AI 按内容批量重命名文件', '精准提取你选择的信息'],
-      buyPro: '购买 PRO 🌟',
+      buyPro: '购买 PRO',
       trustSignals: ['免费开始，无需信用卡'],
+      heroModes: ['云端 AI', 'BYOK', '离线', '100+ 种格式'],
       featuresTitle: 'Zush 功能',
       featuresDescription: '通过预览、模板、文件夹监控和一键撤销，把杂乱的文件名整理成清晰统一的名称。',
       supportedFormats: '支持的文件格式',
@@ -4456,7 +4484,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       planName: 'Zush PRO 🌟',
       planDescription: '一次性购买 • 永久访问',
       billing: '一次性',
-      buttonText: '购买 PRO 🌟',
+      buttonText: '购买 PRO',
       buttonHint: '14 天退款保证 • Paddle 安全支付',
       features: localizedPricingFeatures['zh-cn'],
       ...localizedPricingExtras['zh-cn'],
@@ -4568,11 +4596,12 @@ const COPY: Record<Locale, LocaleCopy> = {
       pricing: 'Fiyatlandırma',
       faq: 'SSS',
       blog: 'Blog',
-      buyPro: '🌟 PRO satın al',
+      buyPro: 'PRO satın al',
       download: 'İndir',
       downloadZush: 'Zush’u indir',
       toggleTheme: 'Temayı değiştir',
       language: 'Dil',
+      menu: 'Menü',
       homeAria: 'Ana sayfaya git',
       skipToContent: 'Ana içeriğe geç',
     },
@@ -4596,8 +4625,9 @@ const COPY: Record<Locale, LocaleCopy> = {
       heroAccent: 'Dosya Adlandırıcı',
       heroSubtitle: 'Dosyaları içeriklerine göre yapay zekâyla toplu yeniden adlandırın. Zush; ekran görüntüleri, PDF’ler, fotoğraflar, videolar, sesler ve belgeler dâhil 100’den fazla biçimi destekler, seçtiğiniz ayrıntıları tam olarak çıkarır ve belirlediğiniz dosya adlarına dönüştürür.',
       heroHighlights: ['Dosyaları içeriklerine göre yapay zekâyla toplu yeniden adlandırın'],
-      buyPro: 'PRO satın al 🌟',
+      buyPro: 'PRO satın al',
       trustSignals: ['Ücretsiz başlayın, kredi kartı gerekmez'],
+      heroModes: ['Bulut AI', 'BYOK', 'Çevrimdışı', '100+ biçim'],
       featuresTitle: 'Zush Özellikleri',
       featuresDescription: 'Önizlemeler, şablonlar, klasör izleme ve tek tıkla geri alma ile dağınık dosya adlarını açık ve tutarlı hâle getirin.',
       supportedFormats: 'Desteklenen dosya biçimleri',
@@ -4619,7 +4649,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       planName: 'Zush PRO 🌟',
       planDescription: 'Monthly veya One-Time • Sınırsız PRO',
       billing: `ayda ${PRO_PRICING.monthly.usd} USD’den başlar`,
-      buttonText: 'PRO satın al 🌟',
+      buttonText: 'PRO satın al',
       buttonHint: '14 gün para iade garantisi • Paddle ile güvenli ödeme',
       features: localizedPricingFeatures.tr,
       ...localizedPricingExtras.tr,
@@ -4744,11 +4774,12 @@ const COPY: Record<Locale, LocaleCopy> = {
       pricing: 'السعر',
       faq: 'FAQ',
       blog: 'المدونة',
-      buyPro: 'شراء 🌟 PRO',
+      buyPro: 'شراء PRO',
       download: 'تنزيل',
       downloadZush: 'تنزيل Zush',
       toggleTheme: 'تبديل السمة',
       language: 'اللغة',
+      menu: 'القائمة',
       homeAria: 'الانتقال إلى الصفحة الرئيسية',
       skipToContent: 'تخطي إلى المحتوى',
     },
@@ -4772,8 +4803,9 @@ const COPY: Record<Locale, LocaleCopy> = {
       heroAccent: 'أداة إعادة تسمية الملفات',
       heroSubtitle: 'أعد تسمية الملفات دفعة واحدة حسب المحتوى باستخدام الذكاء الاصطناعي. يدعم Zush أكثر من 100 تنسيق للقطات الشاشة وملفات PDF والصور والفيديو والصوت والمستندات، ويستخرج بدقة التفاصيل التي تختارها ويحوّلها إلى أسماء ملفات تحددها أنت.',
       heroHighlights: ['أعد تسمية الملفات دفعة واحدة حسب المحتوى باستخدام الذكاء الاصطناعي', 'التفاصيل التي تختارها'],
-      buyPro: 'شراء PRO 🌟',
+      buyPro: 'شراء PRO',
       trustSignals: ['ابدأ مجانا، لا تحتاج إلى بطاقة ائتمان'],
+      heroModes: ['ذكاء اصطناعي سحابي', 'BYOK', 'دون اتصال', 'أكثر من 100 تنسيق'],
       featuresTitle: 'ميزات Zush',
       featuresDescription: 'حوّل أسماء الملفات الفوضوية إلى أسماء واضحة ومتسقة باستخدام المعاينات والقوالب ومراقبة المجلدات والتراجع بنقرة واحدة.',
       supportedFormats: 'صيغ الملفات المدعومة',
@@ -4795,7 +4827,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       planName: 'Zush PRO 🌟',
       planDescription: 'شراء لمرة واحدة • وصول دائم',
       billing: 'مرة واحدة',
-      buttonText: 'شراء PRO 🌟',
+      buttonText: 'شراء PRO',
       buttonHint: 'ضمان استرداد 14 يوما • دفع آمن عبر Paddle',
       features: localizedPricingFeatures.ar,
       ...localizedPricingExtras.ar,

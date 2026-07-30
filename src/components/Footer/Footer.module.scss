@@ -27,8 +27,7 @@
     &__Brand {
         font-size: 1.5rem;
         font-weight: 600;
-        color: var(--secondary);
-        @include secondary-text-contrast;
+        color: var(--primary);
         margin-bottom: 1rem;
         display: block;
     }
@@ -179,12 +178,15 @@
         }
     }
 
-    &__SocialLink {
+    // Qualified with `.Footer` so it outweighs `&__Bottom a` above, which is a
+    // class plus a type selector and would otherwise paint these brand-purple.
+    & &__SocialLink {
         // Containing block for the <Tooltip> each of these links hosts.
         position: relative;
         display: flex;
         align-items: center;
-        color: var(--muted-foreground);
+        // Cool grey: these are secondary wayfinding, not calls to action.
+        color: var(--icon-muted);
         transition: color 0.2s;
 
         svg {

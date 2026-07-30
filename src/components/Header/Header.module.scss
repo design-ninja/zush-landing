@@ -26,8 +26,34 @@
         background-color: oklch(1 0 0 / 0.07);
     }
 
+    // Blog pages are left-aligned prose inside the page container, so a pill
+    // sized to its own content reads as misaligned against it. There the pill
+    // spans the container and pushes its groups to the edges instead.
+    &_wide {
+        width: calc(100% - 1.5rem);
+        max-width: $blog-container-max-width;
+
+        .Header__Container {
+            justify-content: space-between;
+            gap: 1.5rem;
+            padding-inline: $container-padding;
+        }
+
+        @include mobile {
+            width: calc(100% - 1rem);
+            max-width: none;
+
+            .Header__Container {
+                gap: 0.75rem;
+                padding-inline: 1rem;
+            }
+        }
+    }
+
     @include mobile {
-        position: absolute;
+        // Sticky on phones too: the pill is the only download CTA once the hero
+        // has scrolled past, so it has to stay in view.
+        position: fixed;
         top: 0.5rem;
         width: calc(100% - 1rem);
         max-width: none;
@@ -44,7 +70,8 @@
         gap: 4.5rem;
         padding: 0 1rem 0 1.5rem;
 
-        > a:first-child {
+        // The logo is the only direct anchor child.
+        > a {
             min-width: 0;
         }
 
@@ -55,13 +82,23 @@
         @include mobile {
             display: flex;
             justify-content: space-between;
-            gap: 0.75rem;
-            padding-left: 1rem;
+            gap: 0.6rem;
+            padding-left: 0.7rem;
             padding-right: 1rem;
+
+            // Burger and logo stay paired on the left; the free space collects
+            // after the logo so the actions keep hugging the right edge. The
+            // burger and the Download button never shrink, so under heavy page
+            // zoom the logo is the part that gives way — clipped, not spilling
+            // out of the pill.
+            > a {
+                margin-right: auto;
+                overflow: hidden;
+            }
         }
 
         @media (max-width: 390px) {
-            padding-left: 0.85rem;
+            padding-left: 0.55rem;
             padding-right: 0.85rem;
         }
 
@@ -169,6 +206,15 @@
             outline: none;
         }
 
+        // --muted is a dark surface in the dark theme, so the hover wash turned
+        // into a black disc on the pill. Same translucent white as the language
+        // switcher instead.
+        :global(html[data-theme='dark']) &:hover,
+        :global(html[data-theme='dark']) &:focus-visible {
+            background-color: oklch(1 0 0 / 0.14);
+            color: oklch(1 0 0);
+        }
+
         &:focus-visible {
             box-shadow: 0 0 0 2px var(--primary);
         }
@@ -197,30 +243,6 @@
 
         @include mobile {
             gap: 0.6rem;
-            max-width: 18rem;
-            margin-left: 0;
-            opacity: 1;
-            transform: none;
-            transition:
-                max-width 0.42s cubic-bezier(0.4, 0, 0.2, 1),
-                margin-left 0.42s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.32s ease,
-                transform 0.32s ease;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            transition: none;
-        }
-    }
-
-    &[data-cta-state='hidden'] &__Buttons {
-        @include mobile {
-            max-width: 0;
-            margin-left: 0;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(-4px);
-            pointer-events: none;
         }
     }
 
@@ -234,21 +256,285 @@
             padding-left: 0.65rem;
             padding-right: 1.1rem;
         }
+
+        @include mobile {
+            // Taller than the desktop `sm` pill so the tap target matches the
+            // burger beside it.
+            --download-button-height: 2.2rem;
+
+            > a,
+            > button {
+                padding-left: 0.7rem;
+                padding-right: 1rem;
+            }
+        }
+
+        @media (max-width: 390px) {
+            > a,
+            > button {
+                padding-left: 0.6rem;
+                padding-right: 0.8rem;
+            }
+        }
+
+        // Long labels ("Herunterladen", "Descargar") would push the pill past
+        // the viewport on the narrowest phones.
+        @media (max-width: 360px) {
+            > a,
+            > button {
+                gap: 0.3rem;
+                padding-left: 0.5rem;
+                padding-right: 0.65rem;
+                font-size: 0.75rem;
+            }
+        }
     }
 
     &__DownloadBtn {
+        // 768–960px keeps the trimmed layout: the nav links win the space there.
         @include tablet {
             display: none !important;
         }
 
         @include mobile {
-            display: none !important;
+            display: inline-flex !important;
+            flex-shrink: 0;
         }
     }
 
-    &__MobileBuyBtn {
-        display: none !important;
+    // Desktop-only: on phones the languages collapse into the picker inside the
+    // burger panel, which frees the pill for the Download button.
+    &__Lang {
+        display: inline-flex;
+        align-items: center;
+
+        @include mobile {
+            display: none;
+        }
+    }
+
+    &__MenuToggle {
+        all: unset;
+        display: none;
+        align-items: center;
+        justify-content: center;
         flex-shrink: 0;
-        white-space: nowrap;
+        width: 2.2rem;
+        height: 2.2rem;
+        border-radius: $radius-full;
+        color: var(--foreground);
+        cursor: pointer;
+        transition: background-color 0.2s ease, color 0.2s ease;
+
+        @include mobile {
+            display: inline-flex;
+        }
+
+        &:hover,
+        &:focus-visible {
+            background-color: var(--muted);
+            outline: none;
+        }
+
+        &:focus-visible {
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+    }
+
+    &__MenuIcon {
+        position: relative;
+        display: block;
+        width: 1.15rem;
+        height: 0.8rem;
+
+        > span {
+            position: absolute;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 2px;
+            border-radius: 2px;
+            background-color: currentColor;
+            transition: transform 0.24s ease, opacity 0.18s ease;
+
+            &:nth-child(1) {
+                top: 0;
+            }
+
+            &:nth-child(2) {
+                top: calc(50% - 1px);
+            }
+
+            &:nth-child(3) {
+                bottom: 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            > span {
+                transition: none;
+            }
+        }
+    }
+
+    &[data-menu-open='true'] &__MenuIcon {
+        > span:nth-child(1) {
+            transform: translateY(calc(0.4rem - 1px)) rotate(45deg);
+        }
+
+        > span:nth-child(2) {
+            opacity: 0;
+        }
+
+        > span:nth-child(3) {
+            transform: translateY(calc(-0.4rem + 1px)) rotate(-45deg);
+        }
+    }
+
+    &__Menu {
+        display: none;
+        position: absolute;
+        top: calc(100% + 0.5rem);
+        left: 0;
+        right: 0;
+        z-index: 90;
+        flex-direction: column;
+        gap: 0.5rem;
+        max-height: calc(100dvh - 6rem);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        border: 1px solid var(--border);
+        border-radius: $radius-md;
+        background-color: var(--background);
+        color: var(--foreground);
+        padding: 0.6rem;
+        box-shadow: 0 12px 26px -18px oklch(0 0 0 / 0.16), 0 1px 3px oklch(0 0 0 / 0.04);
+    }
+
+    &[data-menu-open='true'] &__Menu {
+        @include mobile {
+            display: flex;
+            animation: headerMenuFadeIn 140ms ease-out;
+        }
+    }
+
+    &__MenuNav {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__MenuLink {
+        display: flex;
+        align-items: center;
+        border-radius: $radius-md;
+        color: inherit;
+        font-size: 1rem;
+        padding: 0.7rem 0.65rem;
+        text-decoration: none;
+        transition: background-color 0.2s ease, color 0.2s ease;
+
+        &:hover,
+        &:focus-visible {
+            background-color: var(--muted);
+            color: var(--primary);
+            outline: none;
+        }
+    }
+
+    &__MenuFooter {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        border-top: 1px solid var(--border);
+        padding-top: 0.6rem;
+    }
+
+    &__MenuThemeToggle {
+        all: unset;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        border-radius: $radius-md;
+        color: inherit;
+        cursor: pointer;
+        font-family: var(--font-family);
+        font-size: 0.9rem;
+        font-weight: $font-weight-link;
+        padding: 0.6rem 0.65rem;
+        transition: background-color 0.2s ease, color 0.2s ease;
+
+        &:hover,
+        &:focus-visible {
+            background-color: var(--muted);
+            color: var(--primary);
+            outline: none;
+        }
+    }
+
+    // The row is a label, so a tap anywhere on it opens the native picker.
+    &__MenuLang {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        border-radius: $radius-md;
+        color: inherit;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: $font-weight-link;
+        padding: 0.6rem 0.65rem;
+        transition: background-color 0.2s ease, color 0.2s ease;
+
+        &:hover,
+        &:focus-within {
+            background-color: var(--muted);
+        }
+    }
+
+    &__MenuLangIcon,
+    &__MenuLangChevron {
+        flex-shrink: 0;
+        color: var(--muted-foreground);
+    }
+
+    &__MenuLangLabel {
+        flex: 1;
+        min-width: 0;
+    }
+
+    // Native control: the OS wheel keeps the panel free of a 12-item list.
+    &__MenuLangSelect {
+        appearance: none;
+        -webkit-appearance: none;
+        border: none;
+        background: transparent;
+        color: var(--muted-foreground);
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 0.85rem;
+        font-weight: 500;
+        max-width: 9rem;
+        padding: 0;
+        text-align: right;
+        text-overflow: ellipsis;
+
+        &:focus-visible {
+            outline: none;
+        }
+
+        option {
+            color: var(--foreground);
+        }
+    }
+}
+
+@keyframes headerMenuFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
