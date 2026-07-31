@@ -1,0 +1,221 @@
+---
+import { ArrowRight, ArrowUpRight, FileArchive, Download, Play } from 'lucide-react';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AppLink from '@/components/AppLink';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
+import {
+  APP_STORE_URL,
+  HOMEBREW_CASK_URL,
+  PRODUCT_FACTS_REVIEWED_AT,
+  SUPPORTED_FORMAT_COUNT,
+  WINDOWS_STORE_URL,
+} from '@/constants';
+import { PRIMARY_AUTHOR, getPrimaryAuthorJsonLd } from '@/data/author';
+import { MACOS_SHOWCASE_SCREENSHOTS, MAC_DEMO_VIDEO } from '@/data/showcaseMedia';
+import { getSeoForPath, SITE_ORIGIN } from '@/seo/config';
+import styles from '@/views/Press/PressPage.module.scss';
+
+const seo = getSeoForPath('/press');
+const pageUrl = `${SITE_ORIGIN}/press`;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: seo.title,
+      description: seo.description,
+      dateModified: PRODUCT_FACTS_REVIEWED_AT,
+      inLanguage: 'en',
+      isPartOf: { '@id': `${SITE_ORIGIN}/#website` },
+      about: { '@id': `${SITE_ORIGIN}/#organization` },
+      author: { '@id': `${PRIMARY_AUTHOR.url}#person` },
+    },
+    getPrimaryAuthorJsonLd(),
+  ],
+};
+
+const facts = [
+  { term: 'Developer', value: 'Kirill Isachenko, independent' },
+  { term: 'Price', value: 'Free version with 50 AI renames. PRO is $48 one time or $10 per month, cloud AI included, nothing metered.' },
+  { term: 'AI modes', value: 'Built-in cloud, your own API key (Gemini, Groq, OpenAI, Claude), or local Ollama models with no network at all.' },
+  { term: 'Formats', value: `${SUPPORTED_FORMAT_COUNT} supported file formats` },
+  { term: 'Requirements', value: 'macOS Sequoia or newer. The Mac App Store download is about 9 MB.' },
+  { term: 'Sandboxing', value: 'The Mac App Store build is sandboxed. The direct build updates through Sparkle and is not sandboxed.' },
+  { term: 'File safety', value: 'Zush renames files in place. It never moves, sorts, or uploads them; in cloud mode only extracted text or a preview goes to the model.' },
+];
+
+// Same list the homepage "Take a tour" section renders, so a screenshot added
+// there shows up here too. The stored path is the full-size one; the numbered
+// variants next to it are the responsive renditions.
+const atWidth = (src: string, width: number) => src.replace(/\.webp$/, `-${width}.webp`);
+const screenshots = MACOS_SHOWCASE_SCREENSHOTS.map((shot) => ({
+  name: shot.title,
+  light: shot.images.light,
+  dark: shot.images.dark,
+}));
+
+const productLinks = [
+  { label: 'Mac App Store listing', href: APP_STORE_URL },
+  { label: 'Microsoft Store listing', href: WINDOWS_STORE_URL },
+  { label: 'Homebrew cask', href: HOMEBREW_CASK_URL },
+  { label: 'Mac changelog', href: '/changelog' },
+  { label: 'Evaluation methodology', href: '/methodology' },
+];
+---
+
+<BaseLayout seo={seo} jsonLd={jsonLd}>
+  <main class={styles.Press}>
+    <div class={styles.Press__Container}>
+      <header class={styles.Press__Hero}>
+        <Text as='p' size='sm' color='subtle' className={styles.Press__Flush}>Zush press kit</Text>
+        <Heading as='h1' className={styles.Press__Flush}>Assets and facts for covering Zush</Heading>
+        <Text as='p' size='xl' color='subtle' className={styles.Press__Flush}>
+          Everything on this page may be used in articles, videos, and reviews about Zush without asking first. For anything missing, write to <AppLink href='mailto:support@zushapp.com' variant='legal'>support@zushapp.com</AppLink>.
+        </Text>
+      </header>
+
+      <div class={styles.Press__Sections}>
+        <section class={styles.Press__Section}>
+          <Heading as='h2' size='h3' className={styles.Press__SectionTitle}>Boilerplate</Heading>
+          <div class={styles.Press__Body}>
+            <Text as='p' color='subtle' className={styles.Press__Copy}>
+              Zush is an AI file renamer for Mac and Windows. It reads what is inside a file, then suggests a searchable name for it: screenshots, PDFs, camera RAW photos, Sketch, Figma and Photoshop files, video, and audio.
+            </Text>
+            <Text as='p' color='subtle' className={styles.Press__Copy}>
+              Users describe what to extract in plain words, and that description becomes a reusable block in a naming template, so a folder of files like invoice_copy.pdf can become 2026-06_Datadog_340USD.pdf in one pass. Every batch shows a preview and can be undone.
+            </Text>
+            <Text as='p' color='subtle' className={styles.Press__Copy}>
+              The Mac app is written in SwiftUI and AppKit by <AppLink href={PRIMARY_AUTHOR.url} variant='legal'>Kirill Isachenko</AppLink>; the Windows app is a separate native app, not a port.
+            </Text>
+          </div>
+        </section>
+
+        <section class={styles.Press__Section}>
+          <Heading as='h2' size='h3' className={styles.Press__SectionTitle}>Facts</Heading>
+          <dl class={`${styles.Press__Body} ${styles.Press__Facts}`}>
+            {facts.map((fact) => (
+              <div class={styles.Press__Fact}>
+                <dt class={styles.Press__FactTerm}>{fact.term}</dt>
+                <dd class={styles.Press__FactValue}>{fact.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+
+        <section class={styles.Press__Section}>
+          <Heading as='h2' size='h3' className={styles.Press__SectionTitle}>Download assets</Heading>
+          <div class={`${styles.Press__Body} ${styles.Press__Assets}`}>
+            <a class={styles.Press__Asset} href='/press/zush-press-kit.zip' download>
+              <span class={`${styles.Press__AssetMedia} ${styles.Press__AssetMedia_archive}`}>
+                <FileArchive aria-hidden='true' size={30} strokeWidth={1.6} />
+              </span>
+              <span class={styles.Press__AssetInfo}>
+                <span class={styles.Press__AssetName}>Full press kit</span>
+                <span class={styles.Press__AssetMeta}>
+                  Logo, app icon, all {screenshots.length} screenshots in light and dark, and the demo video. 5 MB
+                </span>
+              </span>
+              <Download aria-hidden='true' size={18} strokeWidth={2} className={styles.Press__AssetIcon} />
+            </a>
+
+            <a class={styles.Press__Asset} href={MAC_DEMO_VIDEO.sources.light} download>
+              <span class={styles.Press__AssetMedia}>
+                <img
+                  class={styles.Press__AssetImg}
+                  src={MAC_DEMO_VIDEO.posters.light}
+                  alt=''
+                  loading='lazy'
+                  width={MAC_DEMO_VIDEO.width}
+                  height={MAC_DEMO_VIDEO.height}
+                />
+                <span class={styles.Press__AssetPlay}>
+                  <Play aria-hidden='true' size={18} strokeWidth={2} />
+                </span>
+              </span>
+              <span class={styles.Press__AssetInfo}>
+                <span class={styles.Press__AssetName}>Overview demo</span>
+                <span class={styles.Press__AssetMeta}>
+                  48 s: drag in a folder, preview names, apply the batch. mp4
+                </span>
+              </span>
+              <Download aria-hidden='true' size={18} strokeWidth={2} className={styles.Press__AssetIcon} />
+            </a>
+          </div>
+        </section>
+
+        <section class={styles.Press__Section}>
+          <Heading as='h2' size='h3' className={styles.Press__SectionTitle}>Screenshots</Heading>
+          <div class={`${styles.Press__Body} ${styles.Press__Screenshots}`}>
+            {screenshots.map((shot) => (
+              <div class={styles.Press__Shot}>
+                <div class={styles.Press__ShotThumbs}>
+                  <a
+                    class={styles.Press__ShotThumb}
+                    href={atWidth(shot.light, 2560)}
+                    aria-label={`${shot.name}, light, 2560 px`}
+                    download
+                  >
+                    <img
+                      class={styles.Press__ShotImg}
+                      src={atWidth(shot.light, 640)}
+                      alt=''
+                      loading='lazy'
+                      width='640'
+                      height='360'
+                    />
+                  </a>
+                  <a
+                    class={styles.Press__ShotThumb}
+                    href={atWidth(shot.dark, 2560)}
+                    aria-label={`${shot.name}, dark, 2560 px`}
+                    download
+                  >
+                    <img
+                      class={styles.Press__ShotImg}
+                      src={atWidth(shot.dark, 640)}
+                      alt=''
+                      loading='lazy'
+                      width='640'
+                      height='360'
+                    />
+                  </a>
+                </div>
+                <Text as='p' size='sm' className={styles.Press__ShotName}>{shot.name} — light and dark, 2560 px</Text>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section class={styles.Press__Section}>
+          <Heading as='h2' size='h3' className={styles.Press__SectionTitle}>Product links</Heading>
+          <ul class={`${styles.Press__Body} ${styles.Press__List}`}>
+            {productLinks.map((link) => {
+              // Up-right for links that leave the site, straight for our own pages.
+              const Arrow = link.href.startsWith('http') ? ArrowUpRight : ArrowRight;
+              return (
+                <li>
+                  <AppLink href={link.href} variant='legal' className={styles.Press__ProductLink}>
+                    {link.label}
+                    <Arrow aria-hidden='true' size={15} strokeWidth={2} />
+                  </AppLink>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+
+        <section class={styles.Press__Section}>
+          <Heading as='h2' size='h3' className={styles.Press__SectionTitle}>Review licenses</Heading>
+          <div class={styles.Press__Body}>
+            <Text as='p' color='subtle' className={styles.Press__Copy}>
+              Journalists and reviewers can request a free lifetime PRO license for testing at <AppLink href='mailto:support@zushapp.com' variant='legal'>support@zushapp.com</AppLink>. No conditions attached to coverage; critical reviews keep their key.
+            </Text>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

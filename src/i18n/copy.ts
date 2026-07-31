@@ -60,6 +60,7 @@ export interface FooterProductLinks {
   audio: string;
   docs: string;
   about: string;
+  press: string;
   author: string;
   homebrew: string;
   hazelAlternative: string;
@@ -1089,6 +1090,7 @@ const EN_COPY: LocaleCopy = {
       audio: 'Rename Audio',
       docs: 'Docs',
       about: 'About Zush',
+      press: 'Press Kit',
       author: 'Author',
       homebrew: 'Zush on Homebrew',
       hazelAlternative: 'Hazel Alternative',
@@ -2004,6 +2006,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       audio: 'Audio umbenennen',
       docs: 'Dokumentation',
       about: 'Über Zush',
+      press: 'Pressebereich',
       author: 'Autor',
       homebrew: 'Zush auf Homebrew',
       hazelAlternative: 'Hazel-Alternative',
@@ -2051,6 +2054,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       audio: 'Renommer l’audio',
       docs: 'Documentation',
       about: 'À propos de Zush',
+      press: 'Espace presse',
       author: 'Auteur',
       homebrew: 'Zush sur Homebrew',
       hazelAlternative: 'Alternative à Hazel',
@@ -2098,6 +2102,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       audio: 'Renomear áudio',
       docs: 'Documentação',
       about: 'Sobre o Zush',
+      press: 'Kit de imprensa',
       author: 'Autor',
       homebrew: 'Zush no Homebrew',
       hazelAlternative: 'Alternativa ao Hazel',
@@ -2145,6 +2150,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       audio: 'Renombrar audio',
       docs: 'Documentación',
       about: 'Acerca de Zush',
+      press: 'Kit de prensa',
       author: 'Autor',
       homebrew: 'Zush en Homebrew',
       hazelAlternative: 'Alternativa a Hazel',
@@ -2192,6 +2198,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       audio: 'Audio hernoemen',
       docs: 'Documentatie',
       about: 'Over Zush',
+      press: 'Perskit',
       author: 'Auteur',
       homebrew: 'Zush op Homebrew',
       hazelAlternative: 'Hazel-alternatief',
@@ -2239,6 +2246,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       audio: 'Rinomina audio',
       docs: 'Documentazione',
       about: 'Informazioni su Zush',
+      press: 'Kit stampa',
       author: 'Autore',
       homebrew: 'Zush su Homebrew',
       hazelAlternative: 'Alternativa a Hazel',
@@ -2286,6 +2294,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       audio: '音声をリネーム',
       docs: 'ドキュメント',
       about: 'Zush について',
+      press: 'プレスキット',
       author: '著者',
       homebrew: 'Homebrew の Zush',
       hazelAlternative: 'Hazel の代替',
@@ -2333,6 +2342,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       audio: '오디오 이름 변경',
       docs: '문서',
       about: 'Zush 소개',
+      press: '프레스 킷',
       author: '작성자',
       homebrew: 'Homebrew의 Zush',
       hazelAlternative: 'Hazel 대안',
@@ -2380,6 +2390,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       audio: '重命名音频',
       docs: '文档',
       about: '关于 Zush',
+      press: '媒体资料',
       author: '作者',
       homebrew: 'Homebrew 上的 Zush',
       hazelAlternative: 'Hazel 替代方案',
@@ -2427,6 +2438,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       audio: 'Ses dosyalarını yeniden adlandır',
       docs: 'Dokümantasyon',
       about: 'Zush hakkında',
+      press: 'Basın kiti',
       author: 'Yazar',
       homebrew: 'Homebrew’da Zush',
       hazelAlternative: 'Hazel alternatifi',
@@ -2474,6 +2486,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       audio: 'إعادة تسمية الصوت',
       docs: 'التوثيق',
       about: 'حول Zush',
+      press: 'الملف الصحفي',
       author: 'المؤلف',
       homebrew: 'Zush على Homebrew',
       hazelAlternative: 'بديل Hazel',

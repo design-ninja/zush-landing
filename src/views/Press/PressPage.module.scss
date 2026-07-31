@@ -1,0 +1,274 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.Press {
+  // Same brand bloom the homepage hero uses, pulled further up so it stays
+  // behind the navbar instead of bleeding into the section content — this
+  // page sits under BaseLayout's own navbar-offset padding on top of its
+  // own, so the mixin's default offset lands noticeably lower here than it
+  // does on the homepage Hero (which has no extra ancestor padding).
+  @include page-top-bloom;
+
+  &::before {
+    top: -18rem;
+
+    @include mobile {
+      top: -13.5rem;
+    }
+  }
+
+  padding: calc($navbar-height + $space-2xl) 0 $space-3xl;
+
+  @include mobile {
+    padding-top: calc($navbar-height + $space-xl);
+  }
+
+  &__Container {
+    @include container;
+
+    position: relative;
+    z-index: 1;
+    max-width: $content-max-width;
+  }
+
+  &__Hero {
+    display: grid;
+    gap: $space-md;
+    max-width: $content-reading-width;
+  }
+
+  &__Flush {
+    margin: 0;
+  }
+
+  &__Sections {
+    display: grid;
+    margin-top: $space-2xl;
+  }
+
+  &__Section {
+    padding: $space-xl 0;
+
+    @include mobile {
+      padding: $space-lg 0;
+    }
+  }
+
+  &__SectionTitle {
+    margin: 0 0 $space-md;
+  }
+
+  &__Body {
+    display: grid;
+    gap: $space-md;
+    max-width: $content-reading-width;
+  }
+
+  &__Copy {
+    margin: 0;
+  }
+
+  &__List {
+    display: grid;
+    gap: $space-sm;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: var(--muted-foreground);
+  }
+
+  &__Facts {
+    gap: 0;
+  }
+
+  &__Fact {
+    display: grid;
+    grid-template-columns: minmax(0, 9rem) minmax(0, 1fr);
+    gap: $space-md;
+    padding: $space-sm 0;
+
+    & + & {
+      border-top: 1px solid var(--border);
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: $space-2xs;
+    }
+  }
+
+  &__FactTerm {
+    margin: 0;
+    color: var(--foreground);
+    font-weight: 500;
+  }
+
+  &__FactValue {
+    margin: 0;
+    color: var(--muted-foreground);
+  }
+
+  &__Assets {
+    display: grid;
+    gap: 0;
+    max-width: none;
+    border-top: 1px solid var(--border);
+  }
+
+  // Borderless rows on hairlines, matching the rhythm of the sections and
+  // the facts list. The whole row is the download target.
+  &__Asset {
+    display: grid;
+    grid-template-columns: 8rem minmax(0, 1fr) auto;
+    align-items: center;
+    gap: $space-md;
+    padding: $space-md 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--foreground);
+    text-decoration: none;
+
+    @include mobile {
+      grid-template-columns: 5.5rem minmax(0, 1fr) auto;
+      gap: $space-sm;
+      padding: $space-sm 0;
+    }
+  }
+
+  &__AssetMedia {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: border-color $transition-fast;
+
+    .Press__Asset:hover &,
+    .Press__Asset:focus-visible & {
+      border-color: var(--primary);
+    }
+  }
+
+  &__AssetMedia_archive {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-color: transparent;
+    background: var(--primary-soft);
+    color: var(--primary);
+  }
+
+  &__AssetImg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: var(--muted);
+  }
+
+  &__AssetPlay {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: $radius-full;
+    background: var(--glass);
+    color: var(--foreground);
+  }
+
+  &__AssetInfo {
+    display: grid;
+    gap: $space-2xs;
+    min-width: 0;
+  }
+
+  &__AssetName {
+    font-weight: 500;
+    transition: color $transition-fast;
+
+    .Press__Asset:hover &,
+    .Press__Asset:focus-visible & {
+      color: var(--primary);
+    }
+  }
+
+  &__AssetMeta {
+    color: var(--muted-foreground);
+    font-size: 0.875rem;
+  }
+
+  &__AssetIcon {
+    flex: 0 0 auto;
+    color: var(--muted-foreground);
+    transition: color $transition-fast;
+
+    .Press__Asset:hover &,
+    .Press__Asset:focus-visible & {
+      color: var(--primary);
+    }
+  }
+
+  &__ProductLink {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2xs;
+  }
+
+  &__Screenshots {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: $space-lg;
+    max-width: none;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__Shot {
+    display: grid;
+    gap: $space-xs;
+  }
+
+  &__ShotThumbs {
+    display: flex;
+    align-items: flex-start;
+    gap: $space-xs;
+  }
+
+  // Aspect ratio lives on the link, not the image: the image then simply
+  // fills it, which keeps the thumbnail box the same height in every row.
+  &__ShotThumb {
+    display: block;
+    flex: 1 1 0;
+    min-width: 0;
+    aspect-ratio: 16 / 9;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: border-color $transition-fast;
+
+    &:hover,
+    &:focus-visible {
+      border-color: var(--primary);
+    }
+  }
+
+  &__ShotImg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: var(--muted);
+  }
+
+  &__ShotName {
+    margin: 0;
+    color: var(--muted-foreground);
+  }
+}

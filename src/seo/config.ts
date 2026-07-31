@@ -239,6 +239,13 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     robots: 'index, follow',
     ogType: 'website',
   },
+  '/press': {
+    title: 'Zush Press Kit | Assets, Facts, and Review Licenses',
+    description:
+      'Press kit for Zush, the AI file renamer for Mac and Windows: boilerplate, product facts, logo, screenshots, demo videos, and review license requests.',
+    robots: 'index, follow',
+    ogType: 'website',
+  },
   '/about': {
     title: 'About Zush | AI File Renamer for Mac and Windows',
     description:
