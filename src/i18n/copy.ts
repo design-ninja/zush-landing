@@ -70,6 +70,8 @@ export interface FooterProductLinks {
   renameReceipts: string;
   renameExcel: string;
   renameWord: string;
+  renameScanned: string;
+  forAccountants: string;
 }
 
 export interface FooterCopy {
@@ -1100,6 +1102,8 @@ const EN_COPY: LocaleCopy = {
       renameReceipts: 'Rename Receipts',
       renameExcel: 'Rename Excel Files',
       renameWord: 'Rename Word Documents',
+      renameScanned: 'Rename Scanned Documents',
+      forAccountants: 'Zush for Accountants',
     },
   },
   home: {
@@ -2016,6 +2020,8 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       renameReceipts: 'Belege umbenennen',
       renameExcel: 'Excel-Dateien umbenennen',
       renameWord: 'Word-Dokumente umbenennen',
+      renameScanned: 'Scans umbenennen',
+      forAccountants: 'Zush für Buchhalter',
     },
   },
   fr: {
@@ -2064,6 +2070,8 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       renameReceipts: 'Renommer les reçus',
       renameExcel: 'Renommer les fichiers Excel',
       renameWord: 'Renommer les documents Word',
+      renameScanned: 'Renommer les scans',
+      forAccountants: 'Zush pour les comptables',
     },
   },
   'pt-br': {
@@ -2112,6 +2120,8 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       renameReceipts: 'Renomear recibos',
       renameExcel: 'Renomear arquivos Excel',
       renameWord: 'Renomear documentos Word',
+      renameScanned: 'Renomear digitalizações',
+      forAccountants: 'Zush para contadores',
     },
   },
   es: {
@@ -2160,6 +2170,8 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       renameReceipts: 'Renombrar recibos',
       renameExcel: 'Renombrar archivos Excel',
       renameWord: 'Renombrar documentos Word',
+      renameScanned: 'Renombrar documentos escaneados',
+      forAccountants: 'Zush para contadores',
     },
   },
   nl: {
@@ -2208,6 +2220,8 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       renameReceipts: 'Bonnen hernoemen',
       renameExcel: 'Excel-bestanden hernoemen',
       renameWord: 'Word-documenten hernoemen',
+      renameScanned: 'Scans hernoemen',
+      forAccountants: 'Zush voor accountants',
     },
   },
   it: {
@@ -2256,6 +2270,8 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       renameReceipts: 'Rinomina ricevute',
       renameExcel: 'Rinomina file Excel',
       renameWord: 'Rinomina documenti Word',
+      renameScanned: 'Rinomina scansioni',
+      forAccountants: 'Zush per commercialisti',
     },
   },
   ja: {
@@ -2304,6 +2320,8 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       renameReceipts: '領収書をリネーム',
       renameExcel: 'Excel ファイルをリネーム',
       renameWord: 'Word 文書をリネーム',
+      renameScanned: 'スキャン文書をリネーム',
+      forAccountants: '会計士向けZush',
     },
   },
   ko: {
@@ -2352,6 +2370,8 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       renameReceipts: '영수증 이름 변경',
       renameExcel: 'Excel 파일 이름 변경',
       renameWord: 'Word 문서 이름 변경',
+      renameScanned: '스캔 문서 이름 변경',
+      forAccountants: '회계사를 위한 Zush',
     },
   },
   'zh-cn': {
@@ -2400,6 +2420,8 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       renameReceipts: '重命名收据',
       renameExcel: '重命名 Excel 文件',
       renameWord: '重命名 Word 文档',
+      renameScanned: '重命名扫描件',
+      forAccountants: '面向会计师的 Zush',
     },
   },
   tr: {
@@ -2448,6 +2470,8 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       renameReceipts: 'Makbuzları yeniden adlandır',
       renameExcel: 'Excel dosyalarını adlandır',
       renameWord: 'Word belgelerini adlandır',
+      renameScanned: 'Taranan belgeleri yeniden adlandır',
+      forAccountants: 'Muhasebeciler için Zush',
     },
   },
   ar: {
@@ -2496,6 +2520,8 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       renameReceipts: 'إعادة تسمية الإيصالات',
       renameExcel: 'إعادة تسمية ملفات Excel',
       renameWord: 'إعادة تسمية مستندات Word',
+      renameScanned: 'إعادة تسمية المستندات الممسوحة ضوئيًا',
+      forAccountants: 'Zush للمحاسبين',
     },
   },
 };

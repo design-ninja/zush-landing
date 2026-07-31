@@ -102,6 +102,15 @@ export default defineConfig({
           ],
         },
         {
+          label: 'Template gallery',
+          items: [
+            { label: 'Invoices', link: '/docs/templates/invoices' },
+            { label: 'Receipts & expenses', link: '/docs/templates/receipts-expenses' },
+            { label: 'Medical records', link: '/docs/templates/medical-records' },
+            { label: 'Legal documents', link: '/docs/templates/legal-documents' },
+          ],
+        },
+        {
           label: 'AI and privacy',
           items: [
             { label: 'AI modes', link: '/docs/ai-modes' },

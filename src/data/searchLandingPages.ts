@@ -10,6 +10,10 @@ type SearchLandingSlug =
   | 'powerrename-alternative'
   | 'rename-invoices-with-ai'
   | 'rename-receipts-with-ai'
+  | 'rename-scanned-documents'
+  | 'for-accountants'
+  | 'for-medical'
+  | 'for-legal'
   | 'automate-downloads-folder';
 
 const invoiceSlides: FeatureLandingPageProps['showcaseSlides'] = [
@@ -55,6 +59,205 @@ const receiptSlides: FeatureLandingPageProps['showcaseSlides'] = [
       { before: 'receipt (2).jpg', after: '2026-06-07 – Parking – 18 USD.jpg', type: 'image' },
       { before: 'IMG_3033.jpg', after: '2026-06-08 – Hardware – 240 USD.jpg', type: 'image' },
     ],
+  },
+];
+
+const scannedDocumentSlides: FeatureLandingPageProps['showcaseSlides'] = [
+  {
+    files: [
+      { before: 'Scan0001.pdf', after: 'Acme Supply – 2026-06 – Invoice.pdf', type: 'pdf' },
+      { before: 'Scan0002.pdf', after: 'Lease Agreement – 12 Main St – 2026.pdf', type: 'pdf' },
+      { before: 'img20260612_10331290.pdf', after: 'Blue Cross – EOB – 2026-06-12.pdf', type: 'pdf' },
+      { before: 'Scanned Document 4.pdf', after: 'W-9 – Rivera Consulting – 2026.pdf', type: 'pdf' },
+      { before: 'CCF_000135.pdf', after: 'Insurance Policy – Auto – 2026-2027.pdf', type: 'pdf' },
+      { before: 'doc00421720260612103455.pdf', after: 'Utility Bill – Electric – 2026-06.pdf', type: 'pdf' },
+    ],
+  },
+  {
+    files: [
+      { before: 'Scan_0042.pdf', after: '2026-06-10 – Receipt – Office Depot.pdf', type: 'pdf' },
+      { before: 'Scan_0043.pdf', after: '2026-06-11 – Contract – NDA – Vertex.pdf', type: 'pdf' },
+      { before: 'Scan_0044.pdf', after: '2026-06-11 – Bank Statement – May.pdf', type: 'pdf' },
+      { before: 'Scan_0045.pdf', after: '2026-06-12 – Tax – 1099-NEC – 2025.pdf', type: 'pdf' },
+      { before: 'Scan_0046.pdf', after: '2026-06-12 – Referral Letter – Dr Chen.pdf', type: 'pdf' },
+      { before: 'Scan_0047.pdf', after: '2026-06-13 – Warranty – Dishwasher.pdf', type: 'pdf' },
+    ],
+  },
+];
+
+const scannedDocumentFaq = [
+  {
+    question: 'How do I rename scanned documents automatically?',
+    answer:
+      'Drop the scans into Zush or point folder monitoring at your scanner output folder. Zush reads each scan with AI vision, extracts the document type, party, and date, and proposes a name that follows your Template. You review the batch and apply it with undo available.',
+  },
+  {
+    question: 'Do scanned PDFs need an OCR text layer first?',
+    answer:
+      'No. When a PDF is a page image with no selectable text, Zush falls back to AI vision that reads the page image directly. Scans from ScanSnap, Brother, Epson, Canon, and HP scanners work without a separate OCR pass.',
+  },
+  {
+    question: 'Can Zush watch my scanner folder and rename new scans as they arrive?',
+    answer:
+      'Yes. Assign a Template to the folder your scanner saves into, and Zush renames each new Scan0001.pdf as it lands — the same convention every time, with rename history so any batch can be reverted.',
+  },
+  {
+    question: 'What about sensitive scans like medical or financial documents?',
+    answer:
+      'Zush supports private modes: BYOK sends analysis to your own API account, and Offline AI mode uses local Ollama models so supported files never leave the machine. Filenames and folder structures always stay local.',
+  },
+];
+
+const accountantSlides: FeatureLandingPageProps['showcaseSlides'] = [
+  {
+    files: [
+      { before: 'download (7).pdf', after: '2026-06-12 – Acme Supply – INV-10234 – 1,204 USD.pdf', type: 'pdf' },
+      { before: 'Scan0001.pdf', after: '2026-06-03 – Cloudflare – CF-88112 – 96 USD.pdf', type: 'pdf' },
+      { before: 'IMG_2041.jpg', after: '2026-06-03 – Whole Foods – 84 USD – Meals.jpg', type: 'image' },
+      { before: 'statement_final.pdf', after: '2026-05-31 – Bank Statement – First National.pdf', type: 'pdf' },
+      { before: 'attachment (3).pdf', after: '2026-06-05 – Payroll Report – May.pdf', type: 'pdf' },
+      { before: 'doc.pdf', after: '2026-06-08 – W-9 – Rivera Consulting.pdf', type: 'pdf' },
+    ],
+  },
+  {
+    files: [
+      { before: 'Scan_0042.pdf', after: 'Vertex GmbH – 2026-06 – INV-0088 – PAID.pdf', type: 'pdf' },
+      { before: 'Scan_0043.pdf', after: 'Meridian LLC – 2026-06 – INV-0089 – SENT.pdf', type: 'pdf' },
+      { before: 'receipt_email.pdf', after: '2026-06-02 – Uber – 34 USD – Travel.pdf', type: 'pdf' },
+      { before: 'export (1).xlsx', after: '2026-Q2 – Expense Summary – Vertex.xlsx', type: 'sheet' },
+      { before: 'scan.pdf', after: '2026-06-10 – 1099-NEC – Rivera Consulting.pdf', type: 'pdf' },
+      { before: 'bill.pdf', after: '2026-06-04 – Utility – Electric – 210 USD.pdf', type: 'pdf' },
+    ],
+  },
+];
+
+const accountantFaq = [
+  {
+    question: 'How does Zush help accountants and bookkeepers?',
+    answer:
+      'Zush reads every invoice, receipt, statement, and scan, and renames it to your convention — vendor, date, invoice number, amount — in reviewed batches with undo. Folder monitoring keeps client intake folders continuously named, so month-end close starts from a folder that is already an inventory.',
+  },
+  {
+    question: 'Can each client have their own naming convention?',
+    answer:
+      'Yes. Templates are reusable setups — one per client or one shared across all clients. A Template controls the filename structure, date format, vendor spelling, and any Custom AI Block fields like expense categories.',
+  },
+  {
+    question: 'Does it work with scanned paper documents?',
+    answer:
+      'Yes. When a scan has no text layer, Zush reads the page image with AI vision, so scanner output like Scan0001.pdf follows the same convention as born-digital PDFs — no separate OCR pass.',
+  },
+  {
+    question: 'Is client financial data kept private?',
+    answer:
+      'Renaming happens in place on your disk — Zush never uploads or stores your files. For analysis, choose your posture: managed cloud AI, BYOK through your own API account, or Offline AI with local models so supported files never leave the machine.',
+  },
+  {
+    question: 'Does Zush charge per document?',
+    answer:
+      'No. Paid PRO is unmetered — $10/month or $48 one-time for unlimited renames. There are no per-file credits, so re-running a folder after a convention change costs nothing. The first 50 renames are free to evaluate.',
+  },
+];
+
+const medicalSlides: FeatureLandingPageProps['showcaseSlides'] = [
+  {
+    files: [
+      { before: 'Scan0001.pdf', after: 'MRN-48211 – 2026-06-12 – Lab Results.pdf', type: 'pdf' },
+      { before: 'Scan0002.pdf', after: 'MRN-48211 – 2026-06-12 – Referral – Cardiology.pdf', type: 'pdf' },
+      { before: 'fax_received.pdf', after: 'MRN-30177 – 2026-05-30 – Imaging – Chest X-Ray.pdf', type: 'pdf' },
+      { before: 'Scan0003.pdf', after: 'MRN-30177 – 2026-06-02 – EOB – Blue Cross.pdf', type: 'pdf' },
+      { before: 'Scanned Document 4.pdf', after: 'MRN-51402 – 2026-06-05 – Intake Form.pdf', type: 'pdf' },
+      { before: 'doc_20260608.pdf', after: 'MRN-51402 – 2026-06-08 – Consent – Procedure.pdf', type: 'pdf' },
+    ],
+  },
+  {
+    files: [
+      { before: 'Scan_0051.pdf', after: 'ACC-2210 – 2026-06-03 – Claim – Denial.pdf', type: 'pdf' },
+      { before: 'Scan_0052.pdf', after: 'ACC-2210 – 2026-06-04 – ERA – Aetna.pdf', type: 'pdf' },
+      { before: 'attachment (2).pdf', after: 'MRN-48211 – 2026-06-10 – Rx Record.pdf', type: 'pdf' },
+      { before: 'IMG_5120.jpg', after: 'MRN-30177 – 2026-06-11 – Insurance Card.jpg', type: 'image' },
+      { before: 'letter.pdf', after: 'MRN-51402 – 2026-06-12 – Correspondence – Lab.pdf', type: 'pdf' },
+      { before: 'Scan_0060.pdf', after: 'MRN-51402 – 2026-06-13 – Progress Note.pdf', type: 'pdf' },
+    ],
+  },
+];
+
+const medicalFaq = [
+  {
+    question: 'Can Zush rename patient records without uploading them anywhere?',
+    answer:
+      'Yes. In Offline AI mode, Zush analyzes supported files with local Ollama models on Mac or Windows — records are read and renamed entirely on the machine. Renaming always happens in place on your disk; Zush never uploads or stores your files.',
+  },
+  {
+    question: 'How does Zush keep patient names out of filenames?',
+    answer:
+      'Your Template defines what a filename contains. The recommended pattern uses the MRN or account number, the date of service, and a record type — extracted from the document by AI — so filenames never expose patient names in sync logs, attachment lines, or search indexes. The batch preview lets you confirm before anything is applied.',
+  },
+  {
+    question: 'Does it handle scanned records and faxes?',
+    answer:
+      'Yes. Most records enter as scanner or fax output with no text layer. Zush reads the page image with AI vision — no separate OCR pass — and extracts the identifier, date of service, and record type from what is printed on the page.',
+  },
+  {
+    question: 'Is Zush HIPAA compliant?',
+    answer:
+      'No software tool makes a practice HIPAA-compliant by itself — compliance lives in your organization’s safeguards and agreements. What Zush provides is a renaming step designed not to create new disclosure paths: local Offline AI processing, in-place renaming with no file uploads, and identifier-based naming patterns. Review the setup with whoever owns compliance in your practice.',
+  },
+  {
+    question: 'Can the scanner folder be renamed automatically?',
+    answer:
+      'Yes. Assign a Template to folder monitoring on the folder your scanner or fax software saves into, and each new document is renamed to your convention as it arrives — with preview batches and rename history for reverting.',
+  },
+];
+
+const legalSlides: FeatureLandingPageProps['showcaseSlides'] = [
+  {
+    files: [
+      { before: 'Document(1).pdf', after: '2026-0142 – 2026-05-29 – Answer – Meridian LLC.pdf', type: 'pdf' },
+      { before: 'Scan_0042.pdf', after: '2026-0142 – 2026-03-02 – Engagement Letter – Vertex.pdf', type: 'pdf' },
+      { before: 'download (3).pdf', after: '2026-0142 – 2026-05-06 – Complaint – SDNY.pdf', type: 'pdf' },
+      { before: 'Agreement (clean).docx', after: '2026-0142 – 2026-06-11 – Settlement – Meridian.docx', type: 'doc' },
+      { before: 'scan.pdf', after: '2026-0158 – 2026-06-01 – NDA – Executed – Northwind.pdf', type: 'pdf' },
+      { before: 'attachment.pdf', after: '2026-0158 – 2026-06-04 – Motion – Continuance.pdf', type: 'pdf' },
+    ],
+  },
+  {
+    files: [
+      { before: 'efiling_conf_88213.pdf', after: '2026-0158 – 2026-06-09 – Filing Receipt – SDNY.pdf', type: 'pdf' },
+      { before: 'ltr_draft_final2.docx', after: '2026-0142 – 2026-06-10 – Demand Letter – v03.docx', type: 'doc' },
+      { before: 'Scan_0044.pdf', after: '2026-0158 – 2026-06-11 – Exhibit B – Invoice Set.pdf', type: 'pdf' },
+      { before: 'doc (7).pdf', after: '2026-0142 – 2026-06-12 – Order – Discovery.pdf', type: 'pdf' },
+      { before: 'notes_meeting.docx', after: '2026-0142 – 2026-06-12 – Memo – Deposition Prep.docx', type: 'doc' },
+      { before: 'Scan_0048.pdf', after: '2026-0158 – 2026-06-13 – Correspondence – Counsel.pdf', type: 'pdf' },
+    ],
+  },
+];
+
+const legalFaq = [
+  {
+    question: 'How does Zush name legal documents?',
+    answer:
+      'Zush reads each filing, contract, or scan and extracts the matter number, the document’s own date, the document type, and the parties — then applies your convention, so a matter folder sorted by name reads as the case chronology. Every batch is previewed before applying and can be reverted.',
+  },
+  {
+    question: 'Is it safe for confidential client documents?',
+    answer:
+      'Choose the mode that matches your confidentiality posture: Offline AI analyzes supported files with local models so client documents never leave the machine, and BYOK routes analysis through your firm’s own AI provider account under its terms. Files are renamed in place — nothing is uploaded or stored by Zush.',
+  },
+  {
+    question: 'Can it extract our matter numbers?',
+    answer:
+      'Yes. A Custom AI Block is a plain-language extraction rule — for example "the matter number, formatted YYYY-NNNN" — that becomes a reusable block in your naming pattern, alongside date, document type, and party.',
+  },
+  {
+    question: 'What about court filings and scanner output?',
+    answer:
+      'Both are the intake problem Zush automates: e-filing downloads named by case-number hash and Scan_0042.pdf from the office scanner. Folder monitoring on the download and scan folders renames each arrival to your convention, reading image-only scans with AI vision.',
+  },
+  {
+    question: 'Does Zush handle Word documents and drafts, not just PDFs?',
+    answer:
+      'Yes. Zush reads DOCX and other Office and iWork formats as well as PDFs and scans, so counterparty drafts like "Agreement (clean).docx" get proper matter-date-type names alongside filed PDFs.',
   },
 ];
 
@@ -725,9 +928,9 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     ],
     relatedBlogPosts: [
       { title: 'How to Automatically Rename Invoices with AI', href: 'automatically-rename-invoices-ai' },
+      { title: 'Invoice File Naming Convention', href: 'invoice-file-naming-convention' },
       { title: 'Rename PDF Files Automatically', href: 'rename-pdf-files-automatically' },
       { title: 'Naming Blocks File Naming Guide', href: 'naming-blocks-file-naming-guide' },
-      { title: 'Organize Client Files for Freelancers', href: 'organize-client-files-freelancers-mac' },
     ],
     contextualGuideLink: {
       before: 'Need the complete accounting workflow? Follow the',
@@ -815,6 +1018,234 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
           'Batch process a backlog of mixed receipts',
           'Private modes: BYOK and Offline AI',
           'Preview every filename and undo any batch',
+        ],
+      },
+    }),
+  },
+  'rename-scanned-documents': {
+    h1: 'Rename Scanned Documents Automatically',
+    h1Accent: 'Scanned Documents',
+    category: 'pdf',
+    definitionTitle: 'What Is Automatic Scan Renaming?',
+    definitionText:
+      'Automatic scan renaming reads each scanned page with AI vision and turns "Scan0001.pdf" into "Acme Supply – 2026-06 – Invoice", using the document type, party, and date it finds on the page — no separate OCR pass required.',
+    showcaseSlides: scannedDocumentSlides,
+    faqItems: scannedDocumentFaq,
+    relatedPages: [
+      { title: 'Rename PDFs with AI', href: '/rename-pdf-with-ai' },
+      { title: 'Rename & Organize Invoices with AI', href: '/rename-invoices-with-ai' },
+      { title: 'Rename & Organize Receipts with AI', href: '/rename-receipts-with-ai' },
+      { title: 'Folder Monitoring Docs', href: '/docs/folder-monitoring' },
+      { title: 'Offline AI File Renamer', href: '/offline-ai-file-renamer' },
+      { title: 'Naming Blocks Guide', href: '/docs/naming-blocks' },
+    ],
+    relatedBlogPosts: [
+      { title: 'Rename Scanned Documents Automatically', href: 'rename-scanned-documents-automatically' },
+      { title: 'Rename PDF Files Automatically', href: 'rename-pdf-files-automatically' },
+      { title: 'How to Automatically Rename Invoices with AI', href: 'automatically-rename-invoices-ai' },
+      { title: 'Folder Monitoring for Automatic Renaming', href: 'folder-monitoring-automatic-file-renaming' },
+    ],
+    contextualGuideLink: {
+      before: 'Coming from a document scanner? Follow the',
+      label: 'guide to renaming scanned documents automatically',
+      href: '/blog/rename-scanned-documents-automatically',
+      after: 'for scanner-specific defaults, naming conventions, and a watch-folder setup.',
+    },
+    jsonLd: buildFeaturePageJsonLd({
+      howTo: {
+        name: 'Rename scanned documents automatically',
+        description: 'Use Zush to name scanner output by document type, party, and date on Mac and Windows.',
+        steps: [
+          { name: 'Add your scans', text: 'Drop a folder of scanned PDFs, or point folder monitoring at the folder your scanner saves into.' },
+          { name: 'Build a scan template', text: 'Combine document type, vendor or party, and date Naming Blocks — add a Custom AI Block for case numbers or categories.' },
+          { name: 'Review and apply', text: 'Preview every proposed name, adjust the template if needed, and apply the batch with undo history available.' },
+        ],
+      },
+      faqItems: scannedDocumentFaq,
+      software: {
+        pagePath: '/rename-scanned-documents',
+        description:
+          'AI scan renamer for Mac and Windows. Zush reads scanned PDFs with AI vision — no OCR pass needed — and names them by document type, party, and date, with folder monitoring and undo.',
+        applicationSubCategory: 'Document Management',
+        featureList: [
+          'Rename Scan0001.pdf files by what each page actually says',
+          'AI vision reads image-only scans without an OCR text layer',
+          'Works with ScanSnap, Brother, Epson, Canon, and HP scanner output',
+          'Automatic renaming for scanner folders via folder monitoring',
+          'Consistent conventions with Templates and Naming Blocks',
+          'Private modes: BYOK and Offline AI',
+          'Preview every filename and undo any batch',
+        ],
+      },
+    }),
+  },
+  'for-accountants': {
+    h1: 'Zush for Accountants and Bookkeepers',
+    h1Accent: 'Accountants',
+    category: 'pdf',
+    definitionTitle: 'What Does Zush Do for Accounting Work?',
+    definitionText:
+      'Zush reads every invoice, receipt, statement, and scan in a client folder and renames it to your convention — "download (7).pdf" becomes "2026-06-12 – Acme Supply – INV-10234 – 1,204 USD" — so reconciliation and close start from folders that are already inventories.',
+    showcaseSlides: accountantSlides,
+    faqItems: accountantFaq,
+    relatedPages: [
+      { title: 'Rename & Organize Invoices with AI', href: '/rename-invoices-with-ai' },
+      { title: 'Rename & Organize Receipts with AI', href: '/rename-receipts-with-ai' },
+      { title: 'Rename Scanned Documents', href: '/rename-scanned-documents' },
+      { title: 'Invoice Template Setup', href: '/docs/templates/invoices' },
+      { title: 'Folder Monitoring Docs', href: '/docs/folder-monitoring' },
+      { title: 'Offline AI File Renamer', href: '/offline-ai-file-renamer' },
+    ],
+    relatedBlogPosts: [
+      { title: 'Invoice File Naming Convention', href: 'invoice-file-naming-convention' },
+      { title: 'How to Organize Invoices and Receipts', href: 'how-to-organize-invoices-and-receipts' },
+      { title: 'Rename Invoices for QuickBooks & Xero', href: 'rename-invoices-for-quickbooks-xero' },
+      { title: 'How to Organize Tax Documents', href: 'how-to-organize-tax-documents' },
+    ],
+    contextualGuideLink: {
+      before: 'Building the full filing system? Start with',
+      label: 'how to organize invoices and receipts',
+      href: '/blog/how-to-organize-invoices-and-receipts',
+      after: 'for the intake-rename-archive loop this page automates.',
+    },
+    jsonLd: buildFeaturePageJsonLd({
+      howTo: {
+        name: 'Set up AI document renaming for accounting work',
+        description: 'Use Zush to keep client invoices, receipts, and scans named to one convention on Mac and Windows.',
+        steps: [
+          { name: 'Route documents to one intake folder', text: 'Email saves, portal downloads, scanner output, and receipt photos all land in one monitored folder per client.' },
+          { name: 'Build a client Template', text: 'Combine date, vendor, invoice number, and amount Naming Blocks; add a Custom AI Block for expense categories.' },
+          { name: 'Review and apply batches', text: 'Preview every proposed name, apply with undo history, and let folder monitoring handle new arrivals.' },
+        ],
+      },
+      faqItems: accountantFaq,
+      software: {
+        pagePath: '/for-accountants',
+        description:
+          'AI document renamer for accountants and bookkeepers on Mac and Windows. Zush names invoices, receipts, statements, and scans by vendor, date, number, and amount — unmetered, with preview, undo, and private local modes.',
+        applicationSubCategory: 'Accounting Document Management',
+        featureList: [
+          'Rename invoices, receipts, and statements by content',
+          'Read scans and receipt photos with AI vision',
+          'Per-client Templates with consistent vendor spellings',
+          'Expense categories via Custom AI Blocks',
+          'Folder monitoring for continuous client intake',
+          'Unmetered paid plans — no per-document credits',
+          'Private modes: BYOK and Offline AI',
+        ],
+      },
+    }),
+  },
+  'for-medical': {
+    h1: 'Zush for Medical Practices',
+    h1Accent: 'Medical',
+    category: 'pdf',
+    definitionTitle: 'What Does Zush Do for Records Work?',
+    definitionText:
+      'Zush reads every scanned record, fax, and intake form — with AI vision, no OCR pass — and names it by identifier, date of service, and record type, keeping patient names out of filenames. In Offline AI mode, files never leave the machine.',
+    showcaseSlides: medicalSlides,
+    faqItems: medicalFaq,
+    relatedPages: [
+      { title: 'Rename Scanned Documents', href: '/rename-scanned-documents' },
+      { title: 'Medical Records Template Setup', href: '/docs/templates/medical-records' },
+      { title: 'Offline AI File Renamer', href: '/offline-ai-file-renamer' },
+      { title: 'Privacy & Security Docs', href: '/docs/privacy-security' },
+      { title: 'Folder Monitoring Docs', href: '/docs/folder-monitoring' },
+      { title: 'Zush for Accountants', href: '/for-accountants' },
+    ],
+    relatedBlogPosts: [
+      { title: 'Medical Records File Naming: HIPAA-Safe Patterns', href: 'medical-records-file-naming-convention' },
+      { title: 'Rename Scanned Documents Automatically', href: 'rename-scanned-documents-automatically' },
+      { title: 'Local AI File Renaming: Private and Offline', href: 'local-ai-file-renaming-ollama-guide' },
+      { title: 'Cloud AI vs Local AI File Renaming', href: 'cloud-vs-local-ai-file-renaming' },
+    ],
+    contextualGuideLink: {
+      before: 'Choosing the naming pattern first? Read',
+      label: 'HIPAA-safe medical records file naming',
+      href: '/blog/medical-records-file-naming-convention',
+      after: 'for the identifier-date-type convention this page automates.',
+    },
+    jsonLd: buildFeaturePageJsonLd({
+      howTo: {
+        name: 'Set up private AI renaming for medical records',
+        description: 'Use Zush to name scanned records by identifier, date of service, and record type on Mac and Windows — locally.',
+        steps: [
+          { name: 'Enable Offline AI mode', text: 'Analysis runs on local Ollama models, so supported files are processed entirely on the machine.' },
+          { name: 'Build a records Template', text: 'Combine an identifier Custom AI Block (MRN or account number), the date of service, and a record-type vocabulary.' },
+          { name: 'Review and monitor', text: 'Preview each batch to confirm no patient names appear, then assign the Template to the scanner folder.' },
+        ],
+      },
+      faqItems: medicalFaq,
+      software: {
+        pagePath: '/for-medical',
+        description:
+          'AI document renamer for medical practices on Mac and Windows. Zush names scanned records by identifier, date of service, and record type — with local Offline AI, in-place renaming, and no file uploads.',
+        applicationSubCategory: 'Medical Records Management',
+        featureList: [
+          'Name records by MRN, date of service, and record type',
+          'Keep patient names out of filenames',
+          'Read scans and faxes with AI vision — no OCR pass',
+          'Offline AI mode: files never leave the machine',
+          'Preview every batch before applying, with undo',
+          'Folder monitoring for scanner and fax folders',
+          'In-place renaming — no uploads, no file storage',
+        ],
+      },
+    }),
+  },
+  'for-legal': {
+    h1: 'Zush for Legal Teams',
+    h1Accent: 'Legal',
+    category: 'pdf',
+    definitionTitle: 'What Does Zush Do for Legal Files?',
+    definitionText:
+      'Zush reads every filing, contract, draft, and scan, extracts the matter number, date, document type, and party, and names the batch to your convention — so a sorted matter folder reads as the case chronology.',
+    showcaseSlides: legalSlides,
+    faqItems: legalFaq,
+    relatedPages: [
+      { title: 'Rename PDFs with AI', href: '/rename-pdf-with-ai' },
+      { title: 'Legal Documents Template Setup', href: '/docs/templates/legal-documents' },
+      { title: 'Rename Scanned Documents', href: '/rename-scanned-documents' },
+      { title: 'Rename Word Documents with AI', href: '/rename-word-documents-with-ai' },
+      { title: 'Offline AI File Renamer', href: '/offline-ai-file-renamer' },
+      { title: 'Custom AI Blocks Docs', href: '/docs/custom-ai-blocks' },
+    ],
+    relatedBlogPosts: [
+      { title: 'Legal File Naming Conventions', href: 'legal-file-naming-conventions' },
+      { title: 'Rename Scanned Documents Automatically', href: 'rename-scanned-documents-automatically' },
+      { title: 'Rename PDF Files Automatically', href: 'rename-pdf-files-automatically' },
+      { title: 'Cloud AI vs Local AI File Renaming', href: 'cloud-vs-local-ai-file-renaming' },
+    ],
+    contextualGuideLink: {
+      before: 'Defining the firm convention first? Read the',
+      label: 'legal file naming conventions guide',
+      href: '/blog/legal-file-naming-conventions',
+      after: 'for matter-based patterns, versioning rules, and what stays out of filenames.',
+    },
+    jsonLd: buildFeaturePageJsonLd({
+      howTo: {
+        name: 'Set up AI document renaming for legal work',
+        description: 'Use Zush to keep filings, contracts, and scans named by matter, date, type, and party on Mac and Windows.',
+        steps: [
+          { name: 'Choose the confidentiality posture', text: 'Offline AI keeps analysis fully local; BYOK routes it through the firm’s own provider account.' },
+          { name: 'Build a matter Template', text: 'Combine a matter-number Custom AI Block with date, document-type, and party blocks.' },
+          { name: 'Automate intake', text: 'Point folder monitoring at the e-filing download folder and the scanner output, review batches, apply with undo.' },
+        ],
+      },
+      faqItems: legalFaq,
+      software: {
+        pagePath: '/for-legal',
+        description:
+          'AI document renamer for law firms and legal teams on Mac and Windows. Zush names filings, contracts, and scans by matter, date, type, and party — with local Offline AI, preview, and undo.',
+        applicationSubCategory: 'Legal Document Management',
+        featureList: [
+          'Name documents by matter number, date, type, and party',
+          'Extract firm-specific fields with Custom AI Blocks',
+          'Read court filings, drafts (DOCX), and scans alike',
+          'Matter folders that sort into case chronologies',
+          'Offline AI and BYOK for confidential documents',
+          'Folder monitoring for e-filing and scanner intake',
+          'Preview every batch before applying, with undo',
         ],
       },
     }),

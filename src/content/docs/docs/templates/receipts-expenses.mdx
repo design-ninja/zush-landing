@@ -1,0 +1,53 @@
+---
+title: Receipt & Expense Template for AI File Renaming
+description: A ready-to-build Zush Template for receipts and expenses — store, date, amount, and expense category extracted from receipt photos, PDFs, and scans.
+lastUpdated: 2026-07-31
+sidebar:
+  order: 22
+  label: "Template: Receipts"
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+This template turns receipt photos (`IMG_2041.jpg`), emailed PDFs, and scans into expense records you can reconcile from the filename: store, date, amount, and an optional category from your own list.
+
+## Naming pattern
+
+```
+{Detected Date} – {Vendor} – {Amount} – {Category}
+```
+
+| Block | Source | Example |
+| --- | --- | --- |
+| Detected Date | The purchase date on the receipt | `2026-06-03` |
+| Vendor | The store or merchant | `Whole Foods` |
+| Amount | Total with currency code | `84 USD` |
+| Category | Custom AI Block choosing from your expense categories | `Meals` |
+
+## Before and after
+
+| Before | After |
+| --- | --- |
+| `IMG_2041.jpg` | `2026-06-03 – Whole Foods – 84 USD – Meals.jpg` |
+| `scan_receipt.pdf` | `2026-06-01 – Amazon – 129 USD – Hardware.pdf` |
+| `receipt (2).jpg` | `2026-06-07 – Shell Gas – 52 USD – Travel.jpg` |
+
+## Build it
+
+<Steps>
+1. Create a Template named "Receipts & Expenses" (or start from the built-in Bookkeeper Expenses template and adjust it).
+2. Add **Detected Date**, **Vendor**, and **Amount** [Naming Blocks](/docs/naming-blocks); set the date format to `YYYY-MM-DD`.
+3. Add a [Custom AI Block](/docs/custom-ai-blocks) with your category list — for example "Software, Travel, Meals, Office Supplies, Hardware, Parking".
+4. Test on a mixed batch: a photographed paper receipt, an emailed PDF, and a scan. AI vision reads photos and image-only scans directly.
+5. Assign the Template to [folder monitoring](/docs/folder-monitoring) on the synced folder where receipt photos and downloads land.
+</Steps>
+
+<Aside type="tip">
+Photograph paper receipts into one cloud-synced folder from your phone; the monitored Template names them as they sync. HEIC photos are supported — no conversion step.
+</Aside>
+
+## Related
+
+- [Rename and organize receipts with AI](/rename-receipts-with-ai) — the full receipt workflow
+- [How to organize invoices and receipts](/blog/how-to-organize-invoices-and-receipts) — the filing system around the names
+- [How to organize tax documents](/blog/how-to-organize-tax-documents) — the year-end version of this workflow

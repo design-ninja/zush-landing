@@ -1,0 +1,55 @@
+---
+title: Medical Records Template for AI File Renaming
+description: A ready-to-build Zush Template for medical records — identifier, date of service, and record type, designed to keep patient names out of filenames and files on the machine.
+lastUpdated: 2026-07-31
+sidebar:
+  order: 23
+  label: "Template: Medical"
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+This template names records by an internal identifier, the date of service, and a record type — and deliberately keeps patient names out of filenames, because filenames surface in sync logs, email attachment lines, and search indexes. It is designed to run in Offline AI mode so records never leave the machine.
+
+<Aside type="caution">
+A naming convention supports good records handling; it does not by itself make any workflow HIPAA-compliant. Compliance is a property of your organization's safeguards and agreements. Review this setup with whoever owns compliance in your practice.
+</Aside>
+
+## Naming pattern
+
+```
+{Patient ID} – {Detected Date} – {Document Type} – {Detail}
+```
+
+| Block | Source | Example |
+| --- | --- | --- |
+| Patient ID | Custom AI Block extracting the MRN or account number printed on the document | `MRN-48211` |
+| Detected Date | The date of service or the document's own date | `2026-06-12` |
+| Document Type | AI-detected type from a fixed vocabulary | `Lab Results` |
+| Detail | Optional Custom AI Block — specialty, payer, study type. Keep it PHI-free. | `Cardiology` |
+
+## Before and after
+
+| Before | After |
+| --- | --- |
+| `Scan0001.pdf` | `MRN-48211 – 2026-06-12 – Lab Results.pdf` |
+| `Scan0002.pdf` | `MRN-48211 – 2026-06-12 – Referral – Cardiology.pdf` |
+| `fax_20260530.pdf` | `MRN-30177 – 2026-05-30 – Imaging – Chest X-Ray.pdf` |
+
+## Build it
+
+<Steps>
+1. Enable [Offline AI mode](/docs/offline-ai) so analysis runs on local models and supported files stay on the machine. BYOK under your own provider agreement is the alternative posture.
+2. Create a Template named "Medical Records".
+3. Add a [Custom AI Block](/docs/custom-ai-blocks) for the identifier: "the medical record number or account number printed on the document, formatted MRN-XXXXX".
+4. Add **Detected Date** (format `YYYY-MM-DD`) and a Custom AI Block for the record type with your vocabulary: "Lab Results, Imaging, Referral, Consult Note, Intake, Consent, EOB, Rx Record, Correspondence".
+5. Test on a copied batch and **review every proposed name before applying** — for records, the preview is a control, not a convenience: confirm no patient names appear.
+6. Assign the Template to [folder monitoring](/docs/folder-monitoring) on the scanner output folder.
+</Steps>
+
+## Related
+
+- [Zush for medical practices](/for-medical) — the full records workflow
+- [Privacy and security](/docs/privacy-security) — exactly what each AI mode transmits
+- [Medical records naming guide](/blog/medical-records-file-naming-convention) — the full reasoning and HIPAA context
+- [Rename scanned documents](/rename-scanned-documents) — the scanner intake workflow

@@ -1,0 +1,92 @@
+---
+title: "Rename Invoices for QuickBooks & Xero: Clean Attachments"
+description: "Why invoices should be renamed before uploading to QuickBooks or Xero, the naming convention that speeds up matching, and how to automate it with AI."
+date: "2026-07-31"
+slug: "rename-invoices-for-quickbooks-xero"
+platform: "general"
+topic: "documents"
+tags:
+  - "Automation"
+  - "PDFs & Documents"
+  - "File Naming"
+tldr: "Rename invoices to date – vendor – number – amount before they reach QuickBooks or Xero: attachments keep their filenames, so a clean name makes every future lookup readable. Zush automates the renaming step between your intake folder and the accounting upload."
+reviewed: "2026-07-31"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Quick answer: rename invoices **before** they go into QuickBooks, Xero, or any accounting system — to `YYYY-MM-DD – Vendor – InvoiceNumber – Amount.pdf`. Accounting software attaches the file as-is, so `download (7).pdf` stays `download (7).pdf` forever in the transaction record. Zush automates the renaming pass: point it at the folder where invoices land, and every file is ledger-ready by the time you upload it.
+
+The accounting system is the system of record for *transactions* — but the attached source document keeps whatever filename it arrived with, and that filename resurfaces every time anyone downloads an attachment, exports records for an accountant, or pulls documentation during an audit. A five-second naming pass up front decides whether those future moments are self-explanatory or archaeological.
+
+This guide covers where renaming fits in a QuickBooks/Xero workflow. For the convention itself, see the [invoice naming guide](/blog/invoice-file-naming-convention); for the wider filing system, [organizing invoices and receipts](/blog/how-to-organize-invoices-and-receipts).
+
+<BlogProductIntro
+  title="Ledger-ready filenames before the upload?"
+  description="Zush reads each invoice PDF or scan, extracts vendor, date, number, and amount, and renames the batch to your convention — so what lands in QuickBooks or Xero is already labeled."
+  links={[
+    { href: '/rename-invoices-with-ai', label: 'AI invoice renamer' },
+    { href: '/docs/folder-monitoring', label: 'Folder monitoring' },
+    { href: '/rename-scanned-documents', label: 'Rename scanned documents' },
+    { href: '/docs/templates', label: 'Templates' },
+  ]}
+/>
+
+<BlogCTA placement='inline' platform='general' />
+
+## Why filenames still matter inside accounting software
+
+It is tempting to think the accounting system makes filenames irrelevant — it OCRs the document, fills the transaction fields, and links everything. Day-to-day, that is true. The filename matters at the boundaries:
+
+- **Downloads and exports.** Pull an attachment back out — for an accountant, a dispute, a due-diligence folder — and the original filename is what you get. An export of a year's attachments with source names is a folder of `document.pdf` and `scan_0042.pdf`.
+- **Review queues.** Both QuickBooks and Xero show uploaded-document lists by filename while they await matching. A queue of readable names (`2026-06 – Cloudflare – 96 USD`) is reviewable at a glance; a queue of `attachment (3).pdf` requires opening each one.
+- **The local archive.** The accounting system should not be the only place your source documents exist. The folder you keep locally — your audit-proof, subscription-proof copy — is only useful if its files are named. Renaming before upload gives both copies the same clean identity.
+- **Email-in workflows.** Forwarding invoices to your books' intake email sends the filename along; a named file is identifiable in the processing queue even before extraction runs.
+
+## The convention, tuned for accounting
+
+The [standard invoice convention](/blog/invoice-file-naming-convention) works unchanged:
+
+```
+2026-06-12 – Acme Supply – INV-10234 – 1,204 USD.pdf
+```
+
+Two accounting-specific notes:
+
+- **Match the vendor spelling to your vendor list.** If the ledger says "Acme Supply Co", make the filename say it too — consistency between filename and vendor record removes one mental translation during matching, and a Zush Template can encode the canonical spelling.
+- **Keep the amount.** During bank-feed matching, the amount in the filename lets you match an unlinked transaction to its document without opening either. It is the single highest-value token for reconciliation work.
+
+## The workflow: intake → rename → upload → archive
+
+1. **Intake.** All invoices land in one folder — email saves, portal downloads, [scanner output](/rename-scanned-documents). One folder, all sources.
+2. **Rename.** [Zush](/rename-invoices-with-ai) reads each file (AI vision for scans) and applies the convention with [folder monitoring](/docs/folder-monitoring), or in a manual preview-and-apply batch if you prefer eyes on every name.
+3. **Upload.** Drag the renamed files into QuickBooks' or Xero's document intake, or email them to your books' intake address. Their OCR does its transaction extraction exactly as before — renaming changes nothing about that — but the queue and the stored attachments are now labeled.
+4. **Archive.** Move the same files into your local year folder. Both systems of record — the ledger and the folder — now hold identically named copies, which is what makes cross-checking trivial.
+
+The renaming pass adds no manual step: monitoring runs it while files sit in intake, and the review is a batch skim rather than per-file typing.
+
+## What about receipt-capture apps?
+
+Phone-capture tools (including the ones built into accounting apps) shortcut paper straight into the ledger, which is convenient — and leaves your local archive without a copy. A middle path that keeps both: photograph receipts into a synced folder, let the same renaming pass name them (`2026-06-03 – Whole Foods – 84 USD – Receipt.jpg`), and upload from there. The [receipt workflow](/rename-receipts-with-ai) covers the naming side.
+
+## FAQ
+
+### Should I rename invoices before or after uploading to QuickBooks or Xero?
+
+Before. Attachments keep the filename they were uploaded with, so renaming first means the readable name exists everywhere: the processing queue, the stored attachment, any future export, and your local archive.
+
+### Does renaming affect how QuickBooks or Xero reads the invoice?
+
+No. Their extraction reads the document's content, not its filename. Renaming changes what humans see in queues, attachment lists, and exports — the machine pipeline is unaffected either way.
+
+### Can Zush rename invoices automatically as they arrive?
+
+Yes. Assign an invoice Template to the folder where invoices land and folder monitoring renames each arrival — text PDFs and scans alike — with preview and undo. The uploaded copy is then already in your convention.
+
+### Do I still need a local invoice archive if everything is in my accounting system?
+
+Keeping one is cheap insurance: subscriptions lapse, exports lose structure, and audits ask for source documents on their own terms. A named local folder costs a monthly drag-and-drop and removes the dependency.
+
+### What filename convention works best for accounting attachments?
+
+`YYYY-MM-DD – Vendor – InvoiceNumber – Amount.pdf`, with the vendor spelled exactly as in your vendor list. Date-first keeps every listing chronological; the number ties the file to the ledger entry; the amount enables no-open reconciliation.

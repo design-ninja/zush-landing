@@ -33,6 +33,38 @@ export const HOW_TO_SCHEMAS: Record<string, HowToData> = {
       },
     ],
   },
+  'rename-scanned-documents-automatically': {
+    name: 'How to Rename Scanned Documents Automatically',
+    description:
+      'Use Zush on Mac or Windows to read scans with AI vision, apply a document-type naming convention, review the batch, and monitor the scanner folder.',
+    totalTime: 'PT10M',
+    steps: [
+      {
+        name: 'Copy a small test batch of scans',
+        text: 'Start with 10 to 20 representative scanned PDFs and keep the originals in a backup folder while you tune the workflow.',
+      },
+      {
+        name: 'Add the scans to Zush',
+        text: 'Drop the files or folder into Zush so image-only scans are read with AI vision and text PDFs are read directly.',
+      },
+      {
+        name: 'Build a scan naming template',
+        text: 'Combine the document date, document type, and vendor or party with Naming Blocks, plus a Custom AI Block for any custom field.',
+      },
+      {
+        name: 'Review every proposed filename',
+        text: 'Check document types, party spellings, and dates in the preview, and hand-name any illegible scans the AI flagged with generic titles.',
+      },
+      {
+        name: 'Apply the batch with undo available',
+        text: 'Apply the reviewed names and keep rename history available so the batch can be reverted if the template needs another pass.',
+      },
+      {
+        name: 'Monitor the scanner folder',
+        text: 'Assign the tested template to folder monitoring so every new scan is renamed to the same convention as it arrives.',
+      },
+    ],
+  },
   'rename-files-with-ollama-mac': {
     name: 'How to Rename Files with Ollama on Mac',
     description:

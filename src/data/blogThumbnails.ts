@@ -20,6 +20,15 @@ const BLOG_THUMBNAILS = Object.fromEntries(
 const BLOG_THUMBNAIL_ALIASES: Record<string, string> = {
   'automatically-rename-invoices-ai': 'rename-pdf-files-automatically',
   'best-ai-file-organizers-mac': 'automate-file-organization-macos',
+  'rename-scanned-documents-automatically': 'rename-pdf-files-automatically',
+  'invoice-file-naming-convention': 'file-naming-conventions-best-practices',
+  'medical-records-file-naming-convention': 'file-naming-conventions-best-practices',
+  'legal-file-naming-conventions': 'file-naming-conventions-best-practices',
+  'best-file-renamer-tools': 'best-ai-file-renamer-tools-2026',
+  'how-to-organize-invoices-and-receipts': 'organize-client-files-freelancers-mac',
+  'how-to-organize-tax-documents': 'declutter-your-mac-file-cleanup-guide',
+  'rename-invoices-for-quickbooks-xero': 'rename-pdf-files-automatically',
+  'zush-vs-renamed-to': 'best-ai-file-renamer-tools-2026',
 };
 
 export function getBlogThumbnail(slug: string): ImageMetadata {

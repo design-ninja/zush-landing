@@ -1,0 +1,53 @@
+---
+title: Invoice Template for AI File Renaming
+description: A ready-to-build Zush Template for invoices — vendor, date, invoice number, and amount extracted from each PDF or scan into one consistent naming convention.
+lastUpdated: 2026-07-31
+sidebar:
+  order: 21
+  label: "Template: Invoices"
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+This template names every invoice by what is printed on it: the vendor, the invoice date, the invoice number, and optionally the amount. It works on born-digital PDFs and on scanner output — image-only scans are read with AI vision.
+
+## Naming pattern
+
+```
+{Detected Date} – {Vendor} – {Invoice Number} – {Amount}
+```
+
+| Block | Source | Example |
+| --- | --- | --- |
+| Detected Date | The invoice date printed in the document (not the file date) | `2026-06-12` |
+| Vendor | The issuing company, normalized to one spelling | `Acme Supply` |
+| Invoice Number | Exactly as printed, prefix included | `INV-10234` |
+| Amount | Total with currency code — optional but useful for reconciliation | `1,204 USD` |
+
+## Before and after
+
+| Before | After |
+| --- | --- |
+| `download (7).pdf` | `2026-06-12 – Acme Supply – INV-10234 – 1,204 USD.pdf` |
+| `Scan0001.pdf` | `2026-06-03 – Cloudflare – CF-88112 – 96 USD.pdf` |
+| `invoice_copy.pdf` | `2026-05-28 – Rippling – RIP-2026-1180 – 4,830 USD.pdf` |
+
+## Build it
+
+<Steps>
+1. Open **Templates** in the sidebar and create a new Template named "Invoices".
+2. In the naming pattern, add the **Detected Date**, **Vendor**, **Invoice Number**, and **Amount** [Naming Blocks](/docs/naming-blocks); set the date format to `YYYY-MM-DD`.
+3. Optional: add a [Custom AI Block](/docs/custom-ai-blocks) for an expense category — describe your category list ("Software, Travel, Meals, Hardware") and the AI assigns one per invoice.
+4. Run a test batch of 10–20 mixed invoices, review the preview, and adjust block order or separators.
+5. Assign the Template to [folder monitoring](/docs/folder-monitoring) on the folder where invoices land.
+</Steps>
+
+<Aside type="tip">
+Invoices without a printed number (common for small vendors) simply leave the block empty — date plus vendor plus amount is almost always unique. The preview catches the rare collision.
+</Aside>
+
+## Related
+
+- [Rename invoices with AI](/rename-invoices-with-ai) — the full invoice workflow
+- [Invoice file naming convention](/blog/invoice-file-naming-convention) — why these fields, in this order
+- [Rename scanned documents](/rename-scanned-documents) — scanner-specific setup

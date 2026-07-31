@@ -1,0 +1,126 @@
+---
+title: "Invoice File Naming Convention: Examples That Scale (2026)"
+description: "A practical invoice naming convention for accountants and bookkeepers: date, vendor, invoice number, amount — with examples, AP/AR variants, and automation."
+date: "2026-07-31"
+slug: "invoice-file-naming-convention"
+platform: "general"
+topic: "naming"
+tags:
+  - "File Naming"
+  - "PDFs & Documents"
+  - "File Organization"
+tldr: "The invoice naming convention that scales is YYYY-MM-DD – Vendor – InvoiceNumber – Amount.pdf: it sorts chronologically, links each file to the ledger through the invoice number, and lets a bookkeeper verify amounts without opening files. Zush applies it automatically by reading each invoice."
+reviewed: "2026-07-31"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Quick answer: name invoices `YYYY-MM-DD – Vendor – InvoiceNumber – Amount.pdf`, for example `2026-06-12 – Acme Supply – INV-10234 – 1,204 USD.pdf`. The ISO date sorts every folder chronologically, the invoice number is the primary key that ties the file to your ledger, and the amount lets anyone match a bank feed line without opening the file. Zush reads each invoice and applies this convention automatically.
+
+A naming convention sounds like bureaucracy until month-end close. Then it decides whether "find the missing Figma invoice from May" takes four seconds of typing in a search box or twenty minutes of opening `download (7).pdf` files one by one. This guide is the convention itself — the components, the order, and the edge cases. For the tooling that applies it automatically, see the [invoice renaming guide](/blog/automatically-rename-invoices-ai).
+
+<BlogProductIntro
+  title="Want the convention applied without the typing?"
+  description="Zush reads vendor, date, invoice number, and amount from each PDF or scan and renames whole folders to your exact convention — preview first, undo after."
+  links={[
+    { href: '/rename-invoices-with-ai', label: 'AI invoice renamer' },
+    { href: '/rename-scanned-documents', label: 'Rename scanned documents' },
+    { href: '/docs/naming-blocks', label: 'Naming Blocks' },
+    { href: '/docs/templates', label: 'Templates' },
+  ]}
+/>
+
+<BlogCTA placement='inline' platform='general' />
+
+## The four components, in order
+
+### 1. Date — ISO, and the invoice's own date
+
+`YYYY-MM-DD` first. It is the only date format that sorts chronologically as plain text, in every file manager, on every OS, and in every document portal your files will ever be exported to.
+
+Use the **invoice date printed on the document**, not the date you downloaded or scanned it. The two differ constantly — a May invoice paid in June should sort into May. This is also the component manual renaming gets wrong most often, because it requires opening the file; a content-aware renamer reads it from the page.
+
+If your volume is low and month precision is enough, `YYYY-MM` keeps names shorter: `2026-06 – Cloudflare – Invoice.pdf`.
+
+### 2. Vendor — one canonical spelling
+
+`Acme Supply`, never a mix of `ACME`, `acme-supply`, and `Acme Supply Co.` in the same folder. Inconsistent vendor spellings quietly break both alphabetical grouping and search: a filter for "Acme Supply" misses half the files.
+
+Decide the canonical form once — the name as it appears in your accounting system is the safe choice — and put it in the convention. This is the strongest argument for automating the rename: a Template applies one spelling forever, while five people renaming by hand produce five spellings.
+
+### 3. Invoice number — the primary key
+
+The invoice number is what definitively links a PDF to a transaction in the ledger. Amounts repeat, dates repeat, vendors repeat — `INV-10234` does not. Include it exactly as printed, prefix and all.
+
+It also solves duplicate names for free: two same-day invoices from the same vendor stay distinct without `(1)` suffixes.
+
+### 4. Amount — the glanceable check
+
+`1,204 USD` at the end is optional but earns its space in accounts-payable work: reconciling a bank feed line means scanning filenames, not opening PDFs. Include the currency code when you handle more than one currency; `1,204` alone is ambiguous across EUR and USD vendors.
+
+## The convention, assembled
+
+```
+YYYY-MM-DD – Vendor – InvoiceNumber – Amount.pdf
+
+2026-06-12 – Acme Supply – INV-10234 – 1,204 USD.pdf
+2026-06-03 – Cloudflare – CF-88112 – 96 USD.pdf
+2026-05-28 – Rippling – RIP-2026-1180 – 4,830 USD.pdf
+```
+
+Variants that come up:
+
+- **Accounts receivable (your own invoices):** lead with the client instead of the vendor, and add a status token you update on payment: `2026-06-01 – Vertex GmbH – INV-0088 – 2,400 EUR – PAID.pdf`. The status-in-filename pattern works because AR folders are small and actively managed; skip it for AP, where it goes stale.
+- **Client-partitioned bookkeeping:** when one bookkeeper serves many clients, the client belongs in the *folder*, not the filename — `Clients/Vertex/2026/…` — so filenames stay identical in structure across clients.
+- **Expense categories:** a trailing category token (`– Software`, `– Travel`) helps small businesses that file by category instead of vendor. In Zush this is a one-line Custom AI Block: describe the category list, and the AI assigns one per invoice.
+
+## Separators and characters that survive every system
+
+- Use spaces with `–` dashes (readable) or hyphens/underscores (safest for scripts and legacy ERP imports). Pick one; never mix.
+- No characters from the forbidden set `/ \ : * ? " < > |` — vendor names with slashes or ampersands get normalized (`AT&T` → `ATT` or `AT-T`).
+- Keep total length under ~100 characters; deep folder paths plus long names can still hit path limits on Windows sync clients.
+
+The broader rules — versioning, safe separators, search behavior — are covered in the [file naming conventions guide](/blog/file-naming-conventions-best-practices).
+
+## Folder structure: shallow beats clever
+
+The filename carries the facts; folders should only carry the partition you actually browse by. Two levels are enough for almost everyone:
+
+```
+Invoices/
+  2026/
+    2026-06-12 – Acme Supply – INV-10234 – 1,204 USD.pdf
+```
+
+Resist vendor subfolders — with descriptive filenames, search and sort already group by vendor, and a `Vendors/Acme/2026/…` tree just multiplies the places a file can be misfiled.
+
+## Applying it to a live folder (and a backlog)
+
+Adopting a convention has two costs: renaming the backlog, and keeping discipline on every new arrival. Both automate:
+
+1. **Backlog:** drop the invoice archive into [Zush](/rename-invoices-with-ai), pick or build an invoice Template with [Naming Blocks](/docs/naming-blocks) (date, vendor, invoice number, amount), review the preview, and apply the batch — with undo history if the convention needs a second pass.
+2. **New arrivals:** point [folder monitoring](/docs/folder-monitoring) at Downloads or the scanner output folder. Each new invoice — text PDF or [scan read by AI vision](/rename-scanned-documents) — gets the same convention the moment it lands.
+
+The convention stops being a policy people follow and becomes a property the folder just has.
+
+## FAQ
+
+### What is the best file naming convention for invoices?
+
+`YYYY-MM-DD – Vendor – InvoiceNumber – Amount.pdf`. The ISO date sorts chronologically, the vendor groups files for the eye, the invoice number ties the file to the ledger, and the amount enables bank-feed matching without opening PDFs.
+
+### Should the invoice number or the date come first?
+
+Date first. Folders are browsed chronologically far more often than by number, and the invoice number still works from any position via search. Number-first layouts only make sense inside per-vendor folders, which flat descriptive naming makes unnecessary.
+
+### How do I handle invoices without an invoice number?
+
+Receipts and some small-vendor invoices have none. Fall back to `YYYY-MM-DD – Vendor – Amount.pdf` — date plus vendor plus amount is almost always unique. Zush leaves the block empty rather than inventing a number, and the preview step catches the few true collisions.
+
+### Can I rename hundreds of old invoices to a new convention at once?
+
+Yes. A content-aware renamer reads each PDF or scan, extracts the fields, and applies the convention in one reviewed batch. In Zush the whole backlog is a preview-and-apply pass with undo, not a weekend of typing.
+
+### Do scanned paper invoices work with automatic naming?
+
+Yes. When a scan has no text layer, Zush reads the page image with AI vision, so `Scan0001.pdf` from the office scanner follows the same convention as a born-digital PDF. See the [scanned documents workflow](/rename-scanned-documents).

@@ -149,6 +149,42 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     keywords:
       'rename invoices automatically, invoice renamer, invoice pdf organizer, invoice naming convention, organize invoices, rename pdf invoices, ai invoice organizer, bulk rename invoices',
   },
+  '/for-accountants': {
+    title: 'Zush for Accountants & Bookkeepers | AI Document Renamer',
+    description:
+      'Name every invoice, receipt, statement, and scan to one convention — automatically. Unmetered AI renaming with preview, undo, and local privacy modes.',
+    robots: 'index, follow',
+    ogType: 'website',
+    keywords:
+      'document management for accountants, accounting document organization, bookkeeper file naming, invoice organization software, rename accounting files, organize client documents bookkeeping',
+  },
+  '/for-medical': {
+    title: 'Zush for Medical Practices | Private AI Record Renaming',
+    description:
+      'Name scanned records by MRN, date of service, and record type — with local AI, so files never leave the machine. Preview every batch. Mac & Windows.',
+    robots: 'index, follow',
+    ogType: 'website',
+    keywords:
+      'medical records file naming, rename medical records, organize patient files, medical document management, hipaa file naming, rename scanned medical records, clinic document organization',
+  },
+  '/for-legal': {
+    title: 'Zush for Legal Teams | AI Document Renamer for Law Firms',
+    description:
+      'Name filings, contracts, and scans by matter, date, type, and party — automatically. Offline AI for confidential documents. Preview and undo every batch.',
+    robots: 'index, follow',
+    ogType: 'website',
+    keywords:
+      'legal document naming, rename legal documents, law firm file naming, legal file management, matter number file naming, organize case files, legal document management software mac',
+  },
+  '/rename-scanned-documents': {
+    title: 'Rename Scanned Documents Automatically | Zush',
+    description:
+      'Turn Scan0001.pdf into a searchable filename. Zush reads each scan with AI vision — no OCR pass — and names it by document type, party, and date. Mac & Windows.',
+    robots: 'index, follow',
+    ogType: 'website',
+    keywords:
+      'rename scanned documents, automatically rename scans, scan renamer, rename scan files, scansnap rename files, scanner file naming, rename scanned pdf, organize scanned documents',
+  },
   '/rename-receipts-with-ai': {
     title: 'Rename & Organize Receipts with AI | Zush',
     description:

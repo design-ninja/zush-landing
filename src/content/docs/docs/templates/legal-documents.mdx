@@ -1,0 +1,57 @@
+---
+title: Legal Documents Template for AI File Renaming
+description: A ready-to-build Zush Template for legal files — matter number, date, document type, party, and version extracted from filings, contracts, and scans.
+lastUpdated: 2026-07-31
+sidebar:
+  order: 24
+  label: "Template: Legal"
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+This template names legal documents by matter number, document date, type, and party — so a sorted folder reads as the chronology of the engagement. It handles court-stamped filings, counterparty drafts, and the scanner's `Scan_0042.pdf` alike.
+
+## Naming pattern
+
+```
+{Matter Number} – {Detected Date} – {Document Type} – {Party}
+```
+
+| Block | Source | Example |
+| --- | --- | --- |
+| Matter Number | Custom AI Block extracting your client-matter number as formatted in your system | `2026-0142` |
+| Detected Date | The document's own date — execution, filing stamp, or letter date | `2026-06-11` |
+| Document Type | AI-detected type from your vocabulary | `NDA` |
+| Party | The counterparty, court, or correspondent | `Vertex GmbH` |
+
+Version markers (`v01`, `executed`, `as-filed`) are best managed at draft time; the template's job is intake — naming what arrives.
+
+## Before and after
+
+| Before | After |
+| --- | --- |
+| `Document(1).pdf` | `2026-0142 – 2026-05-29 – Answer – Meridian LLC.pdf` |
+| `Scan_0042.pdf` | `2026-0142 – 2026-03-02 – Engagement Letter – Vertex GmbH.pdf` |
+| `Agreement (clean).docx` | `2026-0142 – 2026-06-11 – Settlement Agreement – Meridian LLC.docx` |
+
+## Build it
+
+<Steps>
+1. Choose your confidentiality posture first: [Offline AI mode](/docs/offline-ai) keeps analysis fully local; [BYOK](/docs/byok) routes it through the firm's own provider account.
+2. Create a Template named "Legal Intake".
+3. Add a [Custom AI Block](/docs/custom-ai-blocks) for the matter number: "the matter or case number, formatted YYYY-NNNN; leave empty if absent".
+4. Add **Detected Date** (`YYYY-MM-DD`), a Custom AI Block for document type ("Complaint, Answer, Motion, Order, NDA, MSA, Engagement Letter, Correspondence, Memo, Exhibit"), and one for the party.
+5. Test on a copied batch of mixed intake — a filing, a draft from counsel, a scan — and review the preview.
+6. Assign the Template to [folder monitoring](/docs/folder-monitoring) on the e-filing download folder and the scanner output folder.
+</Steps>
+
+<Aside type="tip">
+Keep privileged descriptions out of the pattern — type and party identify a document without disclosing substance in directory listings and attachment lines.
+</Aside>
+
+## Related
+
+- [Zush for legal teams](/for-legal) — the full legal intake workflow
+- [Legal file naming conventions](/blog/legal-file-naming-conventions) — the full convention with versioning rules
+- [Rename PDFs with AI](/rename-pdf-with-ai) — the general PDF workflow
+- [Privacy and security](/docs/privacy-security) — what each AI mode transmits
