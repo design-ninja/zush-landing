@@ -68,7 +68,7 @@ const jsonLd = isFirstPage && tag.indexable
   : undefined;
 ---
 
-<BaseLayout seo={seo} jsonLd={jsonLd}>
+<BaseLayout seo={seo} jsonLd={jsonLd} headerWidth='wide'>
   <BlogBreadcrumbs items={breadcrumbItems} />
 
   <section class={[styles.BlogList, styles.BlogList_afterBreadcrumb].join(' ')}>

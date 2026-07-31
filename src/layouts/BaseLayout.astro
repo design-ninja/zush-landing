@@ -5,6 +5,7 @@ import { SITE_ENTITY_JSON_LD } from '@/seo/entity';
 import '@fontsource-variable/inter/opsz.css';
 import '@/styles/main.scss';
 import Header from '@/components/Header/Header.astro';
+import type { HeaderWidth } from '@/components/Header/types';
 import Footer from '@/components/Footer/Footer.astro';
 import ScrollToTopButton from '@/components/ScrollToTopButton/ScrollToTopButton.astro';
 import type { DownloadOS } from '@/utils/download';
@@ -39,6 +40,11 @@ interface Props {
   disableTopOffset?: boolean;
   locale?: Locale;
   /**
+   * Desktop width of the header pill. Pages in the wider blog container pass
+   * `wide`; everything else lines up with the 60rem content container.
+   */
+  headerWidth?: HeaderWidth;
+  /**
    * Explicit hreflang cluster, for pages whose translations are not driven by
    * LOCALIZED_ROUTES (blog posts). When provided it replaces the localized-route
    * logic entirely, and x-default is derived from the `en` entry.
@@ -55,6 +61,7 @@ const {
   chromeBasePath = '/',
   disableTopOffset = false,
   locale = DEFAULT_LOCALE,
+  headerWidth = 'default',
   alternates,
 } = Astro.props;
 
@@ -293,6 +300,7 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
           basePath={chromeBasePath}
           locale={locale}
           route={route}
+          width={headerWidth}
         />
       )}
       <main

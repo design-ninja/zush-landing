@@ -15,6 +15,7 @@ import {
 import { getCopy } from '@/i18n/copy';
 import appLinkStyles from '@/components/AppLink/AppLink.module.scss';
 import logoStyles from '@/components/Logo/Logo.module.scss';
+import type { HeaderWidth } from './types';
 import styles from './Header.module.scss';
 
 interface Props {
@@ -23,6 +24,12 @@ interface Props {
   locale?: Locale;
   route?: string;
   hideDownload?: boolean;
+  /**
+   * How wide the pill is on desktop. `default` matches the 60rem content
+   * container most pages use; `wide` matches the 72rem blog container. Phones
+   * ignore it — there the pill always spans the viewport.
+   */
+  width?: HeaderWidth;
 }
 
 const {
@@ -31,6 +38,7 @@ const {
   locale = DEFAULT_LOCALE,
   route = '/',
   hideDownload = false,
+  width = 'default',
 } = Astro.props as Props;
 const localeCopy = getCopy(locale);
 const copy = localeCopy.header;
@@ -68,9 +76,6 @@ const languageOptions = LOCALES
 const navLinkClass = [appLinkStyles.AppLink, styles.Header__Link].join(' ');
 const logoClass = [appLinkStyles.AppLink, logoStyles.Logo].join(' ');
 const menuLinkClass = [appLinkStyles.AppLink, styles.Header__MenuLink].join(' ');
-// Blog pages are left-aligned prose in a page container. A pill sized to its own
-// content floats out of step with that, so there it spans the container instead.
-const isBlogRoute = route === '/blog' || route.startsWith('/blog/');
 ---
 
 <!--
@@ -90,7 +95,7 @@ const isBlogRoute = route === '/blog' || route.startsWith('/blog/');
 </style>
 
 <nav
-  class:list={[styles.Header, isBlogRoute && styles.Header_wide]}
+  class:list={[styles.Header, width === 'wide' && styles.Header_wide]}
   data-header-root
   data-menu-open='false'
 >

@@ -57,14 +57,16 @@
         pointer-events: none;
         z-index: -1;
 
-        // Dark theme can carry the full-strength bloom the reference uses.
+        // On the near-black dark background the same bloom reads far brighter
+        // than it does on white, so it is dialled back to sit behind the pill
+        // instead of lighting it up.
         :global(html[data-theme='dark']) & {
             background: radial-gradient(
                 ellipse 50% 50% at 50% 50%,
-                color-mix(in oklch, var(--primary) 92%, transparent),
+                color-mix(in oklch, var(--primary) 60%, transparent),
                 transparent 68%
             );
-            opacity: 0.9;
+            opacity: 0.45;
         }
 
         @include mobile {

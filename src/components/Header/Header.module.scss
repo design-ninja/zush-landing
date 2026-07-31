@@ -4,14 +4,19 @@
 
 // Frosted white glass pill: geometry follows revone.app's nav, surface is white
 // so the purple bloom behind it stays behind it instead of tinting the panel.
+//
+// Width comes from the `width` prop, not from the route: the pill spans a
+// container and pushes its groups to the edges, so it lines up with the page
+// content underneath it. `default` matches the 60rem content container;
+// `_wide` matches the 72rem blog container.
 .Header {
     position: fixed;
     top: 1.25rem;
     left: 0;
     right: 0;
     margin-inline: auto;
-    width: fit-content;
-    max-width: calc(100% - 1.5rem);
+    width: calc(100% - 1.5rem);
+    max-width: $content-max-width;
     z-index: 1000;
     height: $navbar-height;
     background-color: oklch(1 0 0 / 0.6);
@@ -29,28 +34,9 @@
         background-color: oklch(1 0 0 / 0.07);
     }
 
-    // Blog pages are left-aligned prose inside the page container, so a pill
-    // sized to its own content reads as misaligned against it. There the pill
-    // spans the container and pushes its groups to the edges instead.
+    // Blog posts and the archive sit in the wider 72rem container.
     &_wide {
-        width: calc(100% - 1.5rem);
         max-width: $blog-container-max-width;
-
-        .Header__Container {
-            justify-content: space-between;
-            gap: 1.5rem;
-            padding-inline: $container-padding;
-        }
-
-        @include mobile {
-            width: calc(100% - 1rem);
-            max-width: none;
-
-            .Header__Container {
-                gap: 0.75rem;
-                padding-inline: 1rem;
-            }
-        }
     }
 
     @include mobile {
@@ -64,14 +50,14 @@
     }
 
     &__Container {
-        // Content-driven width: tight edge padding, the width comes from the
-        // gaps separating logo / nav / actions.
+        // The pill spans its container, so the three groups are pushed to the
+        // edges instead of being packed around a content-sized centre.
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
         height: 100%;
-        gap: 4.5rem;
-        padding: 0 1rem 0 1.5rem;
+        gap: 1.5rem;
+        padding-inline: $container-padding;
 
         // The logo is the only direct anchor child.
         > a {
@@ -79,7 +65,8 @@
         }
 
         @include tablet {
-            gap: 2rem;
+            gap: 1rem;
+            padding-inline: 1.25rem;
         }
 
         @include mobile {
