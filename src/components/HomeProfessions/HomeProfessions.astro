@@ -1,0 +1,92 @@
+---
+import { Briefcase, Calculator, Scale, Stethoscope } from 'lucide-react';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
+import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module.scss';
+import useCaseStyles from '@/components/UseCases/UseCases.module.scss';
+import styles from './HomeProfessions.module.scss';
+
+// English-only section (rendered when locale === 'en'), like HomeBlogHighlights.
+const PROFESSIONS: Array<{
+  title: string;
+  description: string;
+  example: { before: string; after: string };
+  route: string;
+  icon: typeof Calculator;
+}> = [
+  {
+    title: 'Accountants & bookkeepers',
+    description: 'Invoices, receipts, and statements named by vendor, date, number, and amount — ready for reconciliation.',
+    example: { before: 'download (7).pdf', after: '2026-06-12 – Acme Supply – INV-10234.pdf' },
+    route: '/for-accountants',
+    icon: Calculator,
+  },
+  {
+    title: 'Medical practices',
+    description: 'Scanned records named by identifier, date of service, and record type — with a local AI mode, so files never leave the machine.',
+    example: { before: 'Scan0001.pdf', after: 'MRN-48211 – 2026-06-12 – Lab Results.pdf' },
+    route: '/for-medical',
+    icon: Stethoscope,
+  },
+  {
+    title: 'Legal teams',
+    description: 'Filings, contracts, and correspondence named by matter, date, type, and party — the folder reads as the case chronology.',
+    example: { before: 'Document(1).pdf', after: '2026-0142 – 2026-05-29 – Answer – Meridian.pdf' },
+    route: '/for-legal',
+    icon: Scale,
+  },
+  {
+    title: 'Freelancers & studios',
+    description: 'Client deliverables, briefs, and exports named by client, project, and content — searchable long after the handoff.',
+    example: { before: 'final_v2 (1).pdf', after: 'Vertex – Brand Refresh – Proposal.pdf' },
+    route: '/batch-rename-files',
+    icon: Briefcase,
+  },
+];
+---
+
+<section class={useCaseStyles.UseCases} aria-labelledby="home-professions-title">
+  <div class={useCaseStyles.UseCases__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading
+        as="h2"
+        align="center"
+        id="home-professions-title"
+        className={sectionHeaderStyles.SectionHeader__Title}
+      >
+        Who uses <span class="brand-accent-text">Zush</span>?
+      </Heading>
+      <Text
+        as="p"
+        size="lg"
+        color="subtle"
+        align="center"
+        className={sectionHeaderStyles.SectionHeader__Description}
+      >
+        Every profession has its own naming convention. Zush reads each document — including scans — and applies yours.
+      </Text>
+    </div>
+
+    <div class={`${useCaseStyles.UseCases__Grid} ${styles.Professions__Grid}`}>
+      {PROFESSIONS.map(({ title, description, example, route, icon: Icon }) => (
+        <a
+          class={`${useCaseStyles.UseCaseCard} ${useCaseStyles.UseCaseCard_plain} ${useCaseStyles.UseCaseCard_linked}`}
+          href={route}
+        >
+          <div class={useCaseStyles.UseCaseCard__IconWrapper}>
+            <Icon size={24} />
+          </div>
+          <Heading as="h3" size="h4" className={useCaseStyles.UseCaseCard__Title}>
+            {title}
+          </Heading>
+          <Text className={useCaseStyles.UseCaseCard__Description}>
+            {description}
+          </Text>
+          <p class={styles.Professions__Example}>
+            {example.before} → {example.after}
+          </p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

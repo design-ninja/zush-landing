@@ -1,0 +1,26 @@
+@use '../../styles/mixins' as *;
+
+// Four profession cards read best as a 2×2 grid; the UseCases default of three
+// columns would leave a hole in the last row. Doubled class: this rule ties with
+// `.UseCases__Grid` on specificity otherwise, and which wins would depend on
+// bundle order (same trap as documented in UseCases.module.scss).
+.Professions__Grid.Professions__Grid {
+  grid-template-columns: repeat(2, 1fr);
+
+  @include small {
+    grid-template-columns: 1fr;
+  }
+}
+
+// The before → after filename sits in the card's content column. Without an
+// explicit placement the grid would auto-flow it into the 2.5rem icon column.
+.Professions__Example {
+  grid-column: 2;
+  margin: 0.375rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--muted-foreground);
+  overflow-wrap: anywhere;
+}
+
