@@ -8,7 +8,10 @@ const BG = 'var(--background)';
 const BORDER = 'var(--border)';
 const SUCCESS = 'var(--success)';
 
-const KEY_FULL = 'sk-••••••••••••••••XYZ';
+const KEY_PREFIX = 'sk-';
+const KEY_SUFFIX = 'XYZ';
+const KEY_DOTS = 16;
+const KEY_LENGTH = KEY_PREFIX.length + KEY_DOTS + KEY_SUFFIX.length;
 const TYPING_START = 4;
 const CHARS_PER_FRAME = 1.4;
 const LOADING_START = 28;
@@ -23,9 +26,11 @@ export const ByokAnimation = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  const visibleChars = Math.max(0, Math.min(KEY_FULL.length, Math.floor((frame - TYPING_START) * CHARS_PER_FRAME)));
-  const typedKey = KEY_FULL.slice(0, visibleChars);
-  const typingDone = visibleChars >= KEY_FULL.length;
+  const visibleChars = Math.max(0, Math.min(KEY_LENGTH, Math.floor((frame - TYPING_START) * CHARS_PER_FRAME)));
+  const typedPrefix = KEY_PREFIX.slice(0, visibleChars);
+  const typedDots = Math.max(0, Math.min(KEY_DOTS, visibleChars - KEY_PREFIX.length));
+  const typedSuffix = KEY_SUFFIX.slice(0, Math.max(0, visibleChars - KEY_PREFIX.length - KEY_DOTS));
+  const typingDone = visibleChars >= KEY_LENGTH;
 
   const cursorBlink = Math.floor(frame / 5) % 2 === 0 ? 1 : 0;
   const cursorOpacity = typingDone ? 0 : cursorBlink;
@@ -88,7 +93,32 @@ export const ByokAnimation = () => {
               alignItems: 'center',
             }}
           >
-            {typedKey || <span style={{ opacity: 0.5 }}>sk-...</span>}
+            {visibleChars === 0 ? <span style={{ opacity: 0.5 }}>sk-...</span> : null}
+            {typedPrefix}
+            {typedDots > 0 ? (
+              <span
+                aria-hidden
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 3,
+                  margin: '0 2px',
+                }}
+              >
+                {Array.from({ length: typedDots }, (_, i) => (
+                  <span
+                    key={i}
+                    style={{
+                      width: 4.5,
+                      height: 4.5,
+                      borderRadius: 999,
+                      background: 'currentColor',
+                    }}
+                  />
+                ))}
+              </span>
+            ) : null}
+            {typedSuffix}
             <span
               aria-hidden
               style={{
