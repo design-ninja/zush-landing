@@ -3,6 +3,15 @@
 
 .Page {
   min-height: 80vh;
+
+  // The hero's purple bloom (page-top-bloom, top: -12rem) is positioned
+  // relative to the hero element. On these landings the breadcrumbs bar and
+  // the compact hero padding push the hero ~7rem further down the page than
+  // on the homepage, which drags the glow down onto the file cards. Pull it
+  // back up so it hugs the top of the viewport like the homepage hero.
+  [data-hero-root]::before {
+    top: -19rem;
+  }
 }
 
 // Sections

@@ -9,6 +9,6 @@ const seo = getSeoForPath('/batch-rename-files');
 const page = SEARCH_LANDING_PAGES['batch-rename-files'];
 ---
 
-<BaseLayout seo={seo} jsonLd={[page.jsonLd, buildFeatureBreadcrumbJsonLd(page.h1, '/batch-rename-files')]}>
+<BaseLayout seo={seo} headerWidth="container" jsonLd={[page.jsonLd, buildFeatureBreadcrumbJsonLd(page.h1, '/batch-rename-files')]}>
   <FeatureLandingPageShell {...page} />
 </BaseLayout>

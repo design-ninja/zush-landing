@@ -95,7 +95,11 @@ const menuLinkClass = [appLinkStyles.AppLink, styles.Header__MenuLink].join(' ')
 </style>
 
 <nav
-  class:list={[styles.Header, width === 'wide' && styles.Header_wide]}
+  class:list={[
+    styles.Header,
+    width === 'wide' && styles.Header_wide,
+    width === 'container' && styles.Header_container,
+  ]}
   data-header-root
   data-menu-open='false'
 >

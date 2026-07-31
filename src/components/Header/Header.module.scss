@@ -39,6 +39,12 @@
         max-width: $blog-container-max-width;
     }
 
+    // Feature landings: the hero grid sits in the full 80rem page container,
+    // so the pill matches it edge-to-edge.
+    &_container {
+        max-width: $container-max-width;
+    }
+
     @include mobile {
         // Sticky on phones too: the pill is the only download CTA once the hero
         // has scrolled past, so it has to stay in view.

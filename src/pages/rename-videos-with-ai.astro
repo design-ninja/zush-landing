@@ -10,6 +10,6 @@ const seo = getSeoForPath('/rename-videos-with-ai');
 const featurePage = getFeaturePageProps(RenameVideosWithAI);
 ---
 
-<BaseLayout seo={seo} jsonLd={[featurePage.jsonLd, buildFeatureBreadcrumbJsonLd(featurePage.h1, '/rename-videos-with-ai')]}>
+<BaseLayout seo={seo} headerWidth="container" jsonLd={[featurePage.jsonLd, buildFeatureBreadcrumbJsonLd(featurePage.h1, '/rename-videos-with-ai')]}>
   <FeatureLandingPageShell {...featurePage} />
 </BaseLayout>

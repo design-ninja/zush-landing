@@ -9,6 +9,6 @@ const seo = getSeoForPath('/automate-downloads-folder');
 const page = SEARCH_LANDING_PAGES['automate-downloads-folder'];
 ---
 
-<BaseLayout seo={seo} jsonLd={[page.jsonLd, buildFeatureBreadcrumbJsonLd(page.h1, '/automate-downloads-folder')]}>
+<BaseLayout seo={seo} headerWidth="container" jsonLd={[page.jsonLd, buildFeatureBreadcrumbJsonLd(page.h1, '/automate-downloads-folder')]}>
   <FeatureLandingPageShell {...page} />
 </BaseLayout>

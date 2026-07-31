@@ -272,6 +272,7 @@ const batchRenamePage = SEARCH_LANDING_PAGES['batch-rename-files'];
         seo={seo}
         locale={locale}
         chromeBasePath={localizedHomeHref}
+        headerWidth="container"
         jsonLd={[
           pageJsonLd,
           buildFeatureBreadcrumbJsonLd(localizedCopy?.h1 ?? batchRenamePage.h1, localizedPath),
@@ -296,6 +297,7 @@ const batchRenamePage = SEARCH_LANDING_PAGES['batch-rename-files'];
         seo={seo}
         locale={locale}
         chromeBasePath={localizedPath}
+        headerWidth="container"
         jsonLd={[
           featurePage.jsonLd,
           buildFeatureBreadcrumbJsonLd(localizedCopy?.h1 ?? featurePage.h1, localizedPath),

@@ -10,6 +10,6 @@ const seo = getSeoForPath('/rename-excel-files-with-ai');
 const featurePage = getFeaturePageProps(RenameExcelFilesWithAI);
 ---
 
-<BaseLayout seo={seo} jsonLd={[featurePage.jsonLd, buildFeatureBreadcrumbJsonLd(featurePage.h1, '/rename-excel-files-with-ai')]}>
+<BaseLayout seo={seo} headerWidth="container" jsonLd={[featurePage.jsonLd, buildFeatureBreadcrumbJsonLd(featurePage.h1, '/rename-excel-files-with-ai')]}>
   <FeatureLandingPageShell {...featurePage} />
 </BaseLayout>

@@ -4,6 +4,10 @@
   @include container;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
+  // The landing hero's bloom now overflows up into the breadcrumbs area and,
+  // being later in the DOM, would paint over this text. Lift the bar above it.
+  position: relative;
+  z-index: 1;
 
   @include mobile {
     padding-top: 0.75rem;
