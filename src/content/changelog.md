@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.8.5] - 2026-08-01
+
+### Improved
+- Larger, easier-to-click checkboxes in AI Rename
+- Rename ready files while other items in the batch are still being analyzed
+- Clearer selection layout and smaller warning icons
+
+### Fixed
+- Fixed checkbox clicks for very wide image previews
+- A completed rename no longer appears to fail if Activity or usage syncing is temporarily unavailable
+
 ## [3.8.4] - 2026-07-30
 
 ### Improved
