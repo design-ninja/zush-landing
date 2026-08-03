@@ -1,0 +1,148 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// Light hero on the page background: centred intro, photo framed underneath.
+// No surface-token overrides and no scrim — the section follows the page theme
+// exactly like the homepage hero.
+.Hero {
+    @include page-top-bloom;
+
+    // Centred breadcrumbs sit above this hero, so the shared bloom (positioned
+    // relative to the hero top) lands lower than it does on the homepage. Pull
+    // it up so the headline sits in its lower half, matching the homepage.
+    &::before {
+        top: -18rem;
+    }
+
+    padding: 4rem 0 3.5rem;
+
+    @include tablet {
+        padding: 3rem 0 3rem;
+    }
+
+    @include mobile {
+        padding: 2.25rem 0 2.25rem;
+    }
+
+    &__Container {
+        @include container;
+    }
+
+    &__Intro {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        // Match the homepage centred hero: the intro caps the h1's width.
+        max-width: 52rem;
+        margin-inline: auto;
+    }
+
+    // Category + platform, so a first-time visitor knows what Zush is before
+    // reading the benefit headline.
+    &__Eyebrow {
+        display: inline-block;
+        margin: 0 0 $space-md;
+        padding: 0.3rem 0.8rem;
+        border-radius: $radius-full;
+        background: var(--primary-soft);
+        color: var(--primary);
+        font-size: 0.8125rem;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+    }
+
+    &__Actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $space-md;
+        margin-top: $space-xl;
+    }
+
+    &__Buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: $space-sm;
+    }
+
+    // Understated footnote under the CTAs — same treatment as the homepage
+    // hero's "Get started for free, no credit card required": lighter than
+    // --muted-foreground so it reads as a footnote, not body copy.
+    &__TrustRow {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        gap: 0.4rem;
+        margin: $space-md 0 0;
+        padding: 0;
+        list-style: none;
+        font-size: 0.875rem;
+        white-space: nowrap;
+        color: color-mix(in oklch, var(--muted-foreground) 62%, var(--background));
+
+        li + li::before {
+            content: '·';
+            margin-right: 0.4rem;
+            opacity: 0.6;
+        }
+
+        // One tight line on desktop; wrap only if a small screen forces it.
+        @include mobile {
+            flex-wrap: wrap;
+            font-size: 0.8125rem;
+        }
+    }
+
+    // Same framing as the homepage demo video: rounded, soft-shadowed, and
+    // clipped so the photo's own corners never alias against the parent.
+    &__Frame {
+        position: relative;
+        margin-top: $space-2xl;
+        overflow: hidden;
+        border-radius: clamp(1.1rem, 1.8vw, 1.4rem);
+        background-color: var(--muted);
+        box-shadow: 0 1.6rem 3.75rem -2rem oklch(0 0 0 / 0.32);
+        isolation: isolate;
+
+        @include mobile {
+            margin-top: $space-xl;
+            border-radius: 1.1rem;
+            box-shadow: 0 1rem 2.5rem -1.75rem oklch(0 0 0 / 0.28);
+        }
+    }
+
+    &__Photo {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: inherit;
+
+        @include mobile {
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            object-position: 62% 50%;
+        }
+    }
+}
+
+// Doubled classes, same reason as documented in UseCases.module.scss: these
+// elements also carry a shared component class (`.Heading_h1`, `.Text_lg`) that
+// declares the same properties, so a single class here would tie on
+// specificity and the winner would depend on bundle order.
+//
+// Title and subtitle mirror the homepage hero exactly: same clamp, same wrap,
+// same 42rem subtitle cap. The width comes from the 52rem intro above.
+.Hero__Title.Hero__Title {
+    margin: 0 0 $space-md;
+    font-size: clamp(2.4rem, 5.5vw, 3.5rem);
+    text-wrap: balance;
+}
+
+.Hero__Subtitle.Hero__Subtitle {
+    margin: 0;
+    max-width: 42rem;
+    text-wrap: pretty;
+}

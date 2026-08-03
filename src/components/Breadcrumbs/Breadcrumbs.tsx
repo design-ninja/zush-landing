@@ -7,11 +7,12 @@ interface BreadcrumbItem {
 
 interface BreadcrumbsProps {
   items: BreadcrumbItem[];
+  align?: 'start' | 'center';
 }
 
-const Breadcrumbs = ({ items }: BreadcrumbsProps) => (
+const Breadcrumbs = ({ items, align = 'start' }: BreadcrumbsProps) => (
   <nav className={styles.Breadcrumbs} aria-label="Breadcrumb">
-    <ol className={styles.Breadcrumbs__List}>
+    <ol className={styles.Breadcrumbs__List} data-align={align}>
       {items.map((item, i) => {
         const isLast = i === items.length - 1;
         return (

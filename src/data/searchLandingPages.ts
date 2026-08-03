@@ -12,7 +12,6 @@ type SearchLandingSlug =
   | 'rename-receipts-with-ai'
   | 'rename-scanned-documents'
   | 'for-accountants'
-  | 'for-medical'
   | 'for-legal'
   | 'automate-downloads-folder';
 
@@ -156,57 +155,6 @@ const accountantFaq = [
     question: 'Does Zush charge per document?',
     answer:
       'No. Paid PRO is unmetered — $10/month or $48 one-time for unlimited renames. There are no per-file credits, so re-running a folder after a convention change costs nothing. The first 50 renames are free to evaluate.',
-  },
-];
-
-const medicalSlides: FeatureLandingPageProps['showcaseSlides'] = [
-  {
-    files: [
-      { before: 'Scan0001.pdf', after: 'MRN-48211 – 2026-06-12 – Lab Results.pdf', type: 'pdf' },
-      { before: 'Scan0002.pdf', after: 'MRN-48211 – 2026-06-12 – Referral – Cardiology.pdf', type: 'pdf' },
-      { before: 'fax_received.pdf', after: 'MRN-30177 – 2026-05-30 – Imaging – Chest X-Ray.pdf', type: 'pdf' },
-      { before: 'Scan0003.pdf', after: 'MRN-30177 – 2026-06-02 – EOB – Blue Cross.pdf', type: 'pdf' },
-      { before: 'Scanned Document 4.pdf', after: 'MRN-51402 – 2026-06-05 – Intake Form.pdf', type: 'pdf' },
-      { before: 'doc_20260608.pdf', after: 'MRN-51402 – 2026-06-08 – Consent – Procedure.pdf', type: 'pdf' },
-    ],
-  },
-  {
-    files: [
-      { before: 'Scan_0051.pdf', after: 'ACC-2210 – 2026-06-03 – Claim – Denial.pdf', type: 'pdf' },
-      { before: 'Scan_0052.pdf', after: 'ACC-2210 – 2026-06-04 – ERA – Aetna.pdf', type: 'pdf' },
-      { before: 'attachment (2).pdf', after: 'MRN-48211 – 2026-06-10 – Rx Record.pdf', type: 'pdf' },
-      { before: 'IMG_5120.jpg', after: 'MRN-30177 – 2026-06-11 – Insurance Card.jpg', type: 'image' },
-      { before: 'letter.pdf', after: 'MRN-51402 – 2026-06-12 – Correspondence – Lab.pdf', type: 'pdf' },
-      { before: 'Scan_0060.pdf', after: 'MRN-51402 – 2026-06-13 – Progress Note.pdf', type: 'pdf' },
-    ],
-  },
-];
-
-const medicalFaq = [
-  {
-    question: 'Can Zush rename patient records without uploading them anywhere?',
-    answer:
-      'Yes. In Offline AI mode, Zush analyzes supported files with local Ollama models on Mac or Windows — records are read and renamed entirely on the machine. Renaming always happens in place on your disk; Zush never uploads or stores your files.',
-  },
-  {
-    question: 'How does Zush keep patient names out of filenames?',
-    answer:
-      'Your Template defines what a filename contains. The recommended pattern uses the MRN or account number, the date of service, and a record type — extracted from the document by AI — so filenames never expose patient names in sync logs, attachment lines, or search indexes. The batch preview lets you confirm before anything is applied.',
-  },
-  {
-    question: 'Does it handle scanned records and faxes?',
-    answer:
-      'Yes. Most records enter as scanner or fax output with no text layer. Zush reads the page image with AI vision — no separate OCR pass — and extracts the identifier, date of service, and record type from what is printed on the page.',
-  },
-  {
-    question: 'Is Zush HIPAA compliant?',
-    answer:
-      'No software tool makes a practice HIPAA-compliant by itself — compliance lives in your organization’s safeguards and agreements. What Zush provides is a renaming step designed not to create new disclosure paths: local Offline AI processing, in-place renaming with no file uploads, and identifier-based naming patterns. Review the setup with whoever owns compliance in your practice.',
-  },
-  {
-    question: 'Can the scanner folder be renamed automatically?',
-    answer:
-      'Yes. Assign a Template to folder monitoring on the folder your scanner or fax software saves into, and each new document is renamed to your convention as it arrives — with preview batches and rename history for reverting.',
   },
 ];
 
@@ -1132,63 +1080,6 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
           'Folder monitoring for continuous client intake',
           'Unmetered paid plans — no per-document credits',
           'Private modes: BYOK and Offline AI',
-        ],
-      },
-    }),
-  },
-  'for-medical': {
-    h1: 'Zush for Medical Practices',
-    h1Accent: 'Medical',
-    category: 'pdf',
-    definitionTitle: 'What Does Zush Do for Records Work?',
-    definitionText:
-      'Zush reads every scanned record, fax, and intake form — with AI vision, no OCR pass — and names it by identifier, date of service, and record type, keeping patient names out of filenames. In Offline AI mode, files never leave the machine.',
-    showcaseSlides: medicalSlides,
-    faqItems: medicalFaq,
-    relatedPages: [
-      { title: 'Rename Scanned Documents', href: '/rename-scanned-documents' },
-      { title: 'Medical Records Template Setup', href: '/docs/templates/medical-records' },
-      { title: 'Offline AI File Renamer', href: '/offline-ai-file-renamer' },
-      { title: 'Privacy & Security Docs', href: '/docs/privacy-security' },
-      { title: 'Folder Monitoring Docs', href: '/docs/folder-monitoring' },
-      { title: 'Zush for Accountants', href: '/for-accountants' },
-    ],
-    relatedBlogPosts: [
-      { title: 'Medical Records File Naming: HIPAA-Safe Patterns', href: 'medical-records-file-naming-convention' },
-      { title: 'Rename Scanned Documents Automatically', href: 'rename-scanned-documents-automatically' },
-      { title: 'Local AI File Renaming: Private and Offline', href: 'local-ai-file-renaming-ollama-guide' },
-      { title: 'Cloud AI vs Local AI File Renaming', href: 'cloud-vs-local-ai-file-renaming' },
-    ],
-    contextualGuideLink: {
-      before: 'Choosing the naming pattern first? Read',
-      label: 'HIPAA-safe medical records file naming',
-      href: '/blog/medical-records-file-naming-convention',
-      after: 'for the identifier-date-type convention this page automates.',
-    },
-    jsonLd: buildFeaturePageJsonLd({
-      howTo: {
-        name: 'Set up private AI renaming for medical records',
-        description: 'Use Zush to name scanned records by identifier, date of service, and record type on Mac and Windows — locally.',
-        steps: [
-          { name: 'Enable Offline AI mode', text: 'Analysis runs on local Ollama models, so supported files are processed entirely on the machine.' },
-          { name: 'Build a records Template', text: 'Combine an identifier Custom AI Block (MRN or account number), the date of service, and a record-type vocabulary.' },
-          { name: 'Review and monitor', text: 'Preview each batch to confirm no patient names appear, then assign the Template to the scanner folder.' },
-        ],
-      },
-      faqItems: medicalFaq,
-      software: {
-        pagePath: '/for-medical',
-        description:
-          'AI document renamer for medical practices on Mac and Windows. Zush names scanned records by identifier, date of service, and record type — with local Offline AI, in-place renaming, and no file uploads.',
-        applicationSubCategory: 'Medical Records Management',
-        featureList: [
-          'Name records by MRN, date of service, and record type',
-          'Keep patient names out of filenames',
-          'Read scans and faxes with AI vision — no OCR pass',
-          'Offline AI mode: files never leave the machine',
-          'Preview every batch before applying, with undo',
-          'Folder monitoring for scanner and fax folders',
-          'In-place renaming — no uploads, no file storage',
         ],
       },
     }),

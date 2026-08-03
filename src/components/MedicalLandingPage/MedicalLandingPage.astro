@@ -1,0 +1,230 @@
+---
+import { ArrowRight, Bot, Cloud, KeyRound } from 'lucide-react';
+import CloudFolders from '@/components/CloudFolders';
+import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
+import BentoCard from '@/components/Features/BentoCard.astro';
+import FeatureAnimation from '@/components/Features/FeatureAnimation';
+import featureStyles from '@/components/Features/Features.module.scss';
+import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
+import FAQ from '@/components/FAQ';
+import Heading from '@/components/Heading';
+import Pricing from '@/components/Pricing/Pricing.astro';
+import StarRating from '@/components/StarRating';
+import Text from '@/components/Text';
+import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module.scss';
+import testimonialStyles from '@/components/Testimonials/Testimonials.module.scss';
+import { getCopy } from '@/i18n/copy';
+import { FEATURE_DEMO_COPY } from '@/i18n/featureDemoCopy';
+import {
+  MEDICAL_AUDIENCES,
+  MEDICAL_FAQ,
+  MEDICAL_PAINS,
+  MEDICAL_PRIVACY_MODES,
+  MEDICAL_PRIVACY_NOTE,
+  MEDICAL_TESTIMONIALS,
+  MEDICAL_WORKFLOW,
+} from '@/data/medicalLanding';
+import MedicalFieldExplorer from './MedicalFieldExplorer';
+import MedicalHero from './MedicalHero.astro';
+import styles from './MedicalLandingPage.module.scss';
+
+// English-only page: no locale prop, no localized copy lookup beyond the
+// shared Pricing block, which is the same everywhere.
+const copy = getCopy('en');
+
+const demoCopy = FEATURE_DEMO_COPY.en;
+const PRIVACY_ICONS = { cloud: Cloud, byok: KeyRound, offline: Bot } as const;
+---
+
+<MedicalHero />
+
+{/* Real app UI right after the hero: the doctor photo sets the scene, this
+    shows the actual Zush window doing the work. */}
+<DemoVideo label='Zush renaming a folder of files' />
+
+{/* 1 — the three complaints. Open three-column layout, big ghost numbers,
+    hairline dividers — no cards. */}
+<section class={styles.Pains} aria-labelledby='medical-pains-title'>
+  <div class={styles.Pains__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as='h2' align='center' id='medical-pains-title' className={sectionHeaderStyles.SectionHeader__Title}>
+        Sound familiar?
+      </Heading>
+      <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
+        Three things go wrong between the scanner tray and the chart. The rest of this page is the answer to each, in order.
+      </Text>
+    </div>
+
+    <ol class={styles.Pains__List}>
+      {MEDICAL_PAINS.map((pain, index) => (
+        <li class={styles.Pain}>
+          <span class={styles.Pain__Index} aria-hidden='true'>{`0${index + 1}`}</span>
+          <h3 class={styles.Pain__Title}>{pain.title}</h3>
+          <p class={styles.Pain__Description}>{pain.description}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+{/* 2 — the signature section: reads everything ↔ names safely. */}
+<section id='fields' class={styles.Fields} aria-labelledby='medical-fields-title'>
+  <div class={styles.Fields__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as='h2' align='center' id='medical-fields-title' className={sectionHeaderStyles.SectionHeader__Title}>
+        Zush reads the page like you do
+      </Heading>
+      <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
+        It reads every field on the page. You choose which ones go into the filename — it&rsquo;s your naming, your call.
+      </Text>
+    </div>
+
+    {/* Interactive: pick a field chip, the demo below shows where it lands.
+        client:load so the click works the moment the section is reached. */}
+    <MedicalFieldExplorer client:load />
+  </div>
+</section>
+
+{/* 3 — privacy. Same bento pattern as the homepage "3 secure ways to run Zush",
+    with records-specific copy and the matching hover-play demos. */}
+<section id='privacy' class={styles.Privacy} aria-labelledby='medical-privacy-title'>
+  <div class={styles.Privacy__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as='h2' align='center' id='medical-privacy-title' className={sectionHeaderStyles.SectionHeader__Title}>
+        Your files never leave the machine
+      </Heading>
+      <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
+        Three ways to run the AI, from managed cloud to fully offline. Whatever you pick, renaming happens in place — Zush never uploads or stores your files.
+      </Text>
+    </div>
+
+    <div class={featureStyles.Band__Grid}>
+      {MEDICAL_PRIVACY_MODES.map((mode) => (
+        <BentoCard
+          title={mode.title}
+          description={mode.description}
+          icon={PRIVACY_ICONS[mode.id]}
+          badge={mode.badge}
+          badgeTone={mode.badgeTone}
+        >
+          <div class={featureStyles.UI_FeatureAnimation}>
+            <FeatureAnimation kind={mode.kind} demoCopy={demoCopy} client:visible />
+          </div>
+        </BentoCard>
+      ))}
+    </div>
+
+    <p class={styles.Privacy__Note}>
+      {MEDICAL_PRIVACY_NOTE}{' '}
+      <a class={styles.ArrowLink} href='/docs/privacy-security'>
+        Read how the modes handle data
+        <ArrowRight size={15} aria-hidden='true' />
+      </a>
+    </p>
+  </div>
+</section>
+
+{/* 4 — workflow. Hero's secondary CTA anchors here. */}
+<section id='workflow' class={styles.Workflow} aria-labelledby='medical-workflow-title'>
+  <div class={styles.Workflow__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as='h2' align='center' id='medical-workflow-title' className={sectionHeaderStyles.SectionHeader__Title}>
+        From scanner tray to filed chart in three steps
+      </Heading>
+      <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
+        Set it up once per folder. After that the only manual step is reading the preview.
+      </Text>
+    </div>
+
+    <ol class={styles.Workflow__Steps}>
+      {MEDICAL_WORKFLOW.map((step, index) => (
+        <li class={styles.WorkflowStep}>
+          <span class={styles.WorkflowStep__Number} aria-hidden='true'>{index + 1}</span>
+          <h3 class={styles.WorkflowStep__Title}>{step.title}</h3>
+          <p class={styles.WorkflowStep__Description}>{step.description}</p>
+        </li>
+      ))}
+    </ol>
+
+    <div class={styles.Workflow__Links}>
+      <a class={styles.ArrowLink} href='/docs/templates/medical-records'>
+        Build the records template step-by-step
+        <ArrowRight size={15} aria-hidden='true' />
+      </a>
+      <a class={styles.ArrowLink} href='/rename-scanned-documents'>
+        How scanned-document renaming works
+        <ArrowRight size={15} aria-hidden='true' />
+      </a>
+    </div>
+  </div>
+</section>
+
+<CloudFolders title={copy.home.cloudFoldersTitle} />
+
+{/* 5 — who runs it. Simple three-up: who + one line, no file examples. */}
+<section class={styles.Audiences} aria-labelledby='medical-audiences-title'>
+  <div class={styles.Audiences__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as='h2' align='center' id='medical-audiences-title' className={sectionHeaderStyles.SectionHeader__Title}>
+        Who it&rsquo;s for
+      </Heading>
+      <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
+        Same app, three different piles of paper.
+      </Text>
+    </div>
+
+    <ul class={styles.Audiences__List}>
+      {MEDICAL_AUDIENCES.map((audience) => (
+        <li class={styles.Audience}>
+          <h3 class={styles.Audience__Title}>{audience.title}</h3>
+          <p class={styles.Audience__Description}>{audience.description}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+{/* 7 — persona testimonials, house pattern. */}
+<section id='reviews' class={testimonialStyles.Testimonials} aria-labelledby='medical-testimonials-title'>
+  <div class={testimonialStyles.Testimonials__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as='h2' align='center' id='medical-testimonials-title' className={sectionHeaderStyles.SectionHeader__Title}>
+        What clinicians say
+      </Heading>
+      <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
+        Feedback from people who file records for a living.
+      </Text>
+    </div>
+
+    <div class={`${testimonialStyles.Testimonials__Grid} ${styles.Testimonials__Grid}`}>
+      {MEDICAL_TESTIMONIALS.map((testimonial) => (
+        <article class={testimonialStyles.TestimonialCard}>
+          <StarRating className={testimonialStyles.TestimonialCard__Stars} label='5 out of 5 stars' />
+          <blockquote class={testimonialStyles.TestimonialCard__Quote}>
+            <Text as='p' size='sm'>{testimonial.quote}</Text>
+          </blockquote>
+          <footer class={testimonialStyles.TestimonialCard__Author}>
+            <Text as='p' size='sm' className={testimonialStyles.TestimonialCard__Name}>{testimonial.name}</Text>
+            <Text as='p' size='sm' color='subtle'>{testimonial.role}</Text>
+          </footer>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<Pricing copy={copy.pricing} />
+
+<FAQ
+  client:visible
+  items={MEDICAL_FAQ}
+  title='Medical records, answered'
+  description='The questions practices ask before they let anything near a records folder.'
+/>
+
+<div class={styles.FinalCta}>
+  <DownloadCTA
+    title='Try Zush on one folder of scans'
+    subtitle='Point it at yesterday’s intake, read the proposed names, and undo the batch if you do not like them. Offline AI keeps the whole run on your machine.'
+  />
+</div>
