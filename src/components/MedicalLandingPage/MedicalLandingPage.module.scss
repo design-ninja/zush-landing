@@ -11,6 +11,21 @@
     }
 }
 
+// Pull the app demo up so its top overlaps the hero photo's faded bottom edge.
+.HeroDemo {
+    position: relative;
+    z-index: 1;
+    margin-top: -0.5rem;
+
+    @include tablet {
+        margin-top: 0;
+    }
+
+    @include mobile {
+        margin-top: 0;
+    }
+}
+
 // Shared link conventions for the page, so every link reads the same way.
 // Standalone "learn more" links use the arrow style (primary, underline on
 // hover only). Inline prose links use a quiet underline — the site's blog

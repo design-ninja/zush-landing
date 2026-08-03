@@ -14,7 +14,7 @@ export const MEDICAL_PAGE_PATH = '/for-medical';
 export const MEDICAL_PAGE_TITLE = 'Zush for Medical Practices';
 
 export const MEDICAL_HERO = {
-  eyebrow: 'AI file renamer & organizer · Mac & Windows',
+  eyebrow: 'AI file renamer & organizer',
   titleLead: 'Patient records that ',
   titleAccent: 'name themselves',
   subtitle:

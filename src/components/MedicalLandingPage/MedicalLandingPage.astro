@@ -38,9 +38,11 @@ const PRIVACY_ICONS = { cloud: Cloud, byok: KeyRound, offline: Bot } as const;
 
 <MedicalHero />
 
-{/* Real app UI right after the hero: the doctor photo sets the scene, this
-    shows the actual Zush window doing the work. */}
-<DemoVideo label='Zush renaming a folder of files' />
+{/* Real app UI, pulled up to overlap the hero photo's faded bottom edge: the
+    doctor photo sets the scene, this shows the actual Zush window at work. */}
+<div class={styles.HeroDemo}>
+  <DemoVideo label='Zush renaming a folder of files' />
+</div>
 
 {/* 1 — the three complaints. Open three-column layout, big ghost numbers,
     hairline dividers — no cards. */}

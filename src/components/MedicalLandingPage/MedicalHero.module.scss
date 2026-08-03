@@ -1,31 +1,70 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
-// Light hero on the page background: centred intro, photo framed underneath.
-// No surface-token overrides and no scrim — the section follows the page theme
-// exactly like the homepage hero.
+// Full-bleed photo hero. The photo fills the section and runs under the floating
+// header; a theme-aware scrim keeps the dark hero text legible, and the photo
+// fades into the page background at the bottom (white in light theme, dark in
+// dark theme) so the demo video can sit over the fade.
 .Hero {
-    @include page-top-bloom;
-
-    // Centred breadcrumbs sit above this hero, so the shared bloom (positioned
-    // relative to the hero top) lands lower than it does on the homepage. Pull
-    // it up so the headline sits in its lower half, matching the homepage.
-    &::before {
-        top: -18rem;
-    }
-
-    padding: 4rem 0 3.5rem;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: min(86vh, 48rem);
+    display: flex;
+    // Content sits in the lower half so the doctor's face stays clear above it;
+    // the modest bottom padding keeps the demo video close underneath.
+    align-items: flex-end;
+    padding: calc($navbar-height + 3rem) 0 4.5rem;
 
     @include tablet {
-        padding: 3rem 0 3rem;
+        min-height: min(80vh, 40rem);
+        padding: calc($navbar-height + 2.5rem) 0 4rem;
     }
 
     @include mobile {
-        padding: 2.25rem 0 2.25rem;
+        min-height: 34rem;
+        padding: calc($navbar-height + 2rem) 0 3.5rem;
+    }
+
+    &__Media {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+    }
+
+    &__Photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 70% 42%;
+
+        @include mobile {
+            object-position: 62% 40%;
+        }
+    }
+
+    // Light wash for text legibility + a hard fade to the page background at the
+    // bottom. `var(--background)` makes both theme-aware.
+    &__Scrim {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background:
+            linear-gradient(
+                180deg,
+                color-mix(in srgb, var(--background), transparent 20%) 0%,
+                color-mix(in srgb, var(--background), transparent 40%) 26%,
+                color-mix(in srgb, var(--background), transparent 42%) 50%,
+                color-mix(in srgb, var(--background), transparent 20%) 72%,
+                color-mix(in srgb, var(--background), transparent 4%) 88%,
+                var(--background) 100%
+            );
     }
 
     &__Container {
         @include container;
+
+        width: 100%;
     }
 
     &__Intro {
@@ -33,13 +72,10 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
-        // Match the homepage centred hero: the intro caps the h1's width.
         max-width: 52rem;
         margin-inline: auto;
     }
 
-    // Category + platform, so a first-time visitor knows what Zush is before
-    // reading the benefit headline.
     &__Eyebrow {
         display: inline-block;
         margin: 0 0 $space-md;
@@ -67,9 +103,6 @@
         gap: $space-sm;
     }
 
-    // Understated footnote under the CTAs — same treatment as the homepage
-    // hero's "Get started for free, no credit card required": lighter than
-    // --muted-foreground so it reads as a footnote, not body copy.
     &__TrustRow {
         display: flex;
         flex-wrap: nowrap;
@@ -81,7 +114,7 @@
         list-style: none;
         font-size: 0.875rem;
         white-space: nowrap;
-        color: color-mix(in oklch, var(--muted-foreground) 62%, var(--background));
+        color: var(--muted-foreground);
 
         li + li::before {
             content: '·';
@@ -89,41 +122,9 @@
             opacity: 0.6;
         }
 
-        // One tight line on desktop; wrap only if a small screen forces it.
         @include mobile {
             flex-wrap: wrap;
             font-size: 0.8125rem;
-        }
-    }
-
-    // Same framing as the homepage demo video: rounded, soft-shadowed, and
-    // clipped so the photo's own corners never alias against the parent.
-    &__Frame {
-        position: relative;
-        margin-top: $space-2xl;
-        overflow: hidden;
-        border-radius: clamp(1.1rem, 1.8vw, 1.4rem);
-        background-color: var(--muted);
-        box-shadow: 0 1.6rem 3.75rem -2rem oklch(0 0 0 / 0.32);
-        isolation: isolate;
-
-        @include mobile {
-            margin-top: $space-xl;
-            border-radius: 1.1rem;
-            box-shadow: 0 1rem 2.5rem -1.75rem oklch(0 0 0 / 0.28);
-        }
-    }
-
-    &__Photo {
-        display: block;
-        width: 100%;
-        height: auto;
-        border-radius: inherit;
-
-        @include mobile {
-            aspect-ratio: 4 / 3;
-            object-fit: cover;
-            object-position: 62% 50%;
         }
     }
 }
@@ -133,16 +134,18 @@
 // declares the same properties, so a single class here would tie on
 // specificity and the winner would depend on bundle order.
 //
-// Title and subtitle mirror the homepage hero exactly: same clamp, same wrap,
-// same 42rem subtitle cap. The width comes from the 52rem intro above.
+// Same clamp / wrap / 42rem cap as the homepage hero; a soft shadow keeps the
+// text crisp over the photo.
 .Hero__Title.Hero__Title {
     margin: 0 0 $space-md;
     font-size: clamp(2.4rem, 5.5vw, 3.5rem);
     text-wrap: balance;
+    text-shadow: 0 1px 10px color-mix(in srgb, var(--background), transparent 25%);
 }
 
 .Hero__Subtitle.Hero__Subtitle {
     margin: 0;
     max-width: 42rem;
     text-wrap: pretty;
+    text-shadow: 0 1px 8px color-mix(in srgb, var(--background), transparent 35%);
 }

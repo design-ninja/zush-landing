@@ -7,16 +7,26 @@ import { MEDICAL_HERO } from '@/data/medicalLanding';
 import heroPhoto from '@/assets/landing/medical-hero.webp';
 import styles from './MedicalHero.module.scss';
 
-// Light hero on the page background: centred intro, photo framed underneath.
-// The photo is not a backdrop, so it needs no scrim and the section inherits
-// the page theme in both light and dark.
-//
-// The photo goes through astro:assets `<Image>` for build-time optimisation
-// (responsive srcset, correct dimensions). The frame caps at the container
-// width (~1216px), so widths stop at the source's native 1408.
+// Full-bleed photo hero: the doctor photo fills the top of the page and runs
+// under the floating header (the page passes `disableTopOffset`). A theme-aware
+// scrim lightens it just enough for the dark hero text to read, and the photo
+// fades into the page background at the bottom so the demo video can overlap it.
 ---
 
 <section class={styles.Hero} aria-labelledby='medical-hero-title'>
+  <div class={styles.Hero__Media} aria-hidden='true'>
+    <Image
+      class={styles.Hero__Photo}
+      src={heroPhoto}
+      alt={MEDICAL_HERO.photo.alt}
+      widths={[640, 960, 1216, 1408]}
+      sizes='100vw'
+      loading='eager'
+      decoding='async'
+    />
+  </div>
+  <div class={styles.Hero__Scrim} aria-hidden='true'></div>
+
   <div class={styles.Hero__Container}>
     <div class={styles.Hero__Intro}>
       <p class={styles.Hero__Eyebrow}>{MEDICAL_HERO.eyebrow}</p>
@@ -53,18 +63,6 @@ import styles from './MedicalHero.module.scss';
       <ul class={styles.Hero__TrustRow} aria-label='Why practices run it locally'>
         {MEDICAL_HERO.trustLine.map((item) => <li>{item}</li>)}
       </ul>
-    </div>
-
-    <div class={styles.Hero__Frame}>
-      <Image
-        class={styles.Hero__Photo}
-        src={heroPhoto}
-        alt={MEDICAL_HERO.photo.alt}
-        widths={[640, 960, 1216, 1408]}
-        sizes='(max-width: 78rem) 100vw, 1216px'
-        loading='eager'
-        decoding='async'
-      />
     </div>
   </div>
 </section>
