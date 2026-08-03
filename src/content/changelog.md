@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.9.0] - 2026-08-03
+
+### Added
+- Use your own AI provider key or private Ollama models on every plan
+- Download the first recommended Ollama model with one click
+
+### Improved
+- The free plan now includes 50 renames across Cloud, BYOK, and Offline AI
+- Clearer AI setup and provider switching
+- More reliable analysis for documents, audio, video, and design files
+
 ## [3.8.5] - 2026-08-01
 
 ### Improved
