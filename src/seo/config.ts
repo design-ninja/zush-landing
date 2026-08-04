@@ -534,7 +534,7 @@ export const HOME_JSON_LD = {
           priceCurrency: 'USD',
           availability: 'https://schema.org/InStock',
           url: SITE_ORIGIN,
-          description: `Free tier with ${APP_CONFIG.free_tier_limit} AI renames`,
+          description: `Free tier with ${APP_CONFIG.free_tier_limit} AI renames across Cloud AI, BYOK, and Offline AI`,
         },
         {
           '@type': 'Offer',
@@ -543,7 +543,7 @@ export const HOME_JSON_LD = {
           name: 'Zush PRO Monthly',
           availability: 'https://schema.org/InStock',
           url: `${SITE_ORIGIN}/#pricing`,
-          description: 'Monthly subscription. Unlimited PRO renames, all features, BYOK, and Offline AI mode.',
+          description: 'Monthly subscription with unlimited renames across Cloud AI, BYOK, and Offline AI.',
         },
         {
           '@type': 'Offer',
@@ -552,7 +552,7 @@ export const HOME_JSON_LD = {
           name: 'Zush PRO One-Time',
           availability: 'https://schema.org/InStock',
           url: `${SITE_ORIGIN}/#pricing`,
-          description: 'One-time purchase. Unlimited PRO renames, all features, BYOK, and Offline AI mode.',
+          description: 'One-time purchase with unlimited renames across Cloud AI, BYOK, and Offline AI.',
         },
       ],
       featureList: [

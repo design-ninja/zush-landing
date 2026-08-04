@@ -22,7 +22,7 @@ export const GOOGLE_WORKSPACE_MARKETPLACE_URL =
 export const FREE_DOWNLOAD_BADGE_LABEL = "FREE";
 export const MAC_APP_VERSION = "3.9.0";
 export const WINDOWS_APP_VERSION = "3.7.0.0";
-export const PRODUCT_FACTS_REVIEWED_AT = "2026-08-03";
+export const PRODUCT_FACTS_REVIEWED_AT = "2026-08-04";
 
 export interface AppRating {
   ratingValue: number;

@@ -1,4 +1,4 @@
-import { Cpu, KeyRound, Sparkles, LucideIcon } from 'lucide-react';
+import { Sparkles, LucideIcon } from 'lucide-react';
 import {
   PRO_MONTHLY_PADDLE_PRICE_ID,
   PRO_ONE_TIME_PADDLE_PRICE_ID,
@@ -25,22 +25,10 @@ interface Plan {
 
 export const PRO_FEATURES: Feature[] = [
   {
-    title: 'Unlimited PRO renames',
-    desc: 'Remove the cloud rename limit',
+    title: 'Unlimited AI Renames',
+    desc: 'Remove the 50-rename limit across Cloud AI, BYOK, and Offline AI',
     icon: Sparkles,
     tone: 'orange',
-  },
-  {
-    title: 'Bring Your Own Key',
-    desc: 'Unlimited cloud renames with your key',
-    icon: KeyRound,
-    tone: 'green',
-  },
-  {
-    title: 'Offline AI mode',
-    desc: 'Private local models via Ollama',
-    icon: Cpu,
-    tone: 'blue',
   },
 ];
 

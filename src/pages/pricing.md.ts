@@ -17,10 +17,10 @@ Canonical product page: ${SITE_ORIGIN}/
 
 ## Plans
 
-- Free starter: $0; includes ${APP_CONFIG.free_tier_limit} AI renames; no credit card required. Templates, Naming Blocks, Custom AI Blocks, and custom AI prompts are included free.
+- Free starter: $0; includes ${APP_CONFIG.free_tier_limit} AI renames shared across managed Cloud AI, BYOK, and Offline AI; no credit card required. Templates, Naming Blocks, Custom AI Blocks, and custom AI prompts are included free.
 - Zush PRO Monthly: ${PRO_PRICING.monthly.label} USD per month.
 - Zush PRO One-Time: ${PRO_PRICING.oneTime.label} USD as a one-time purchase.
-- Both paid plans include unlimited PRO renames, BYOK, and Offline AI mode.
+- BYOK and Offline AI are available on every plan. Both paid plans remove the ${APP_CONFIG.free_tier_limit}-rename limit across Cloud AI, BYOK, and Offline AI.
 - Refund period: ${APP_CONFIG.refund_period_days} days, subject to the published refund policy at ${SITE_ORIGIN}/refund-policy.
 
 ## Current public versions

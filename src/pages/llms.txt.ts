@@ -116,7 +116,7 @@ export async function GET() {
     '- Automation: folder monitoring can rename new supported files as they arrive.',
     '- Control: templates, custom prompts, and 145+ Naming Blocks help keep filenames consistent.',
     '- Privacy options: BYOK supports Gemini, Groq, OpenAI, and Claude; Offline AI mode uses local models via Ollama for supported files.',
-    `- Pricing: free starter tier with 50 AI renames, ${PRO_PRICING_SUMMARY} PRO.`,
+    `- Pricing: FREE includes 50 AI renames shared across Cloud AI, BYOK, and Offline AI; ${PRO_PRICING_SUMMARY} PRO removes the rename limit.`,
     `- Format breadth: ${SUPPORTED_FORMAT_COUNT} supported file extensions across images, design files, documents, PDFs, videos, and audio.`,
     '- Safety: Zush uses review-before-apply workflows and rename history with undo.',
     '',

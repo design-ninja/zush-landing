@@ -1,6 +1,6 @@
 ---
-title: "BYOK: Unlimited AI File Renames with Your Own API Key (2026)"
-description: "Use your own API key for unlimited AI file renaming in Zush. Compare Gemini, Groq, OpenAI, and Claude BYOK setup, privacy, pricing, and cost estimates."
+title: "BYOK AI File Renaming with Your Own API Key (2026)"
+description: "Use your own API key for AI file renaming in Zush. Compare Gemini, Groq, OpenAI, and Claude setup, privacy, pricing, the 50-rename free limit, and unlimited PRO."
 date: "2026-03-23"
 slug: "byok-ai-file-renaming-unlimited"
 platform: "general"
@@ -8,8 +8,8 @@ topic: "byok"
 tags:
   - "AI File Renaming"
   - "BYOK"
-tldr: "Zush's BYOK feature lets you connect your own API key from Gemini, Groq, OpenAI, or Claude for unlimited cloud AI file renaming. Two of the four providers offer free tiers, and paid usage depends on provider, model, file size, and token use."
-reviewed: "2026-07-19"
+tldr: "Zush BYOK lets you connect your own Gemini, Groq, OpenAI, or Claude key on every plan. FREE includes 50 renames shared across Cloud AI, BYOK, and Offline AI; PRO removes the Zush rename limit. Provider usage is billed separately."
+reviewed: "2026-08-04"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
@@ -17,14 +17,14 @@ Quick answer: BYOK (Bring Your Own Key) lets you connect your own OpenAI, Gemini
 
 Pricing and provider notes last checked June 12, 2026.
 
-Zush includes 50 free AI renames on the free plan, while both PRO plans unlock unlimited PRO renames: $10/month or $48 one-time. If you process large photo libraries, manage client assets at scale, or want provider-level control, there is another option: bring your own API key.
+Zush includes 50 free AI renames shared across Cloud AI, BYOK, and Offline AI. Both PRO plans remove that limit for $10/month or $48 one-time. BYOK is available on every plan when you want provider-level control or prefer to pay your AI provider directly.
 
 BYOK (Bring Your Own Key) means you connect your personal API key from a supported AI provider to [Zush](/). In current Mac builds, the key is stored locally in macOS Keychain. When BYOK is enabled, Zush relays the analysis request through its backend to your selected provider using your key for that request, the provider returns a descriptive name, and you pay the provider directly at their standard API rates. There is no Zush markup.
 
 
 <BlogProductIntro
-  title="Want unlimited renames on your own API key?"
-  description="Zush BYOK mode sends files to your own Gemini, OpenAI, Groq, or Claude key, so volume is billed by your provider instead of a subscription tier."
+  title="Want to use your own AI provider?"
+  description="Zush BYOK mode is available on FREE and PRO. FREE shares a 50-rename limit across all AI modes, while PRO removes the Zush limit."
   links={[
     { href: '/', label: 'AI file renamer' },
     { href: '/offline-ai-file-renamer', label: 'Offline AI renamer' },
@@ -43,7 +43,7 @@ When you use Zush's built-in credits, the AI processing happens through Zush's i
 
 The practical result:
 
-- No monthly or lifetime rename limits
+- 50 shared renames on FREE, or no Zush rename limit on PRO
 - You pay the AI provider directly at their published rates
 - You choose which provider and model to use
 - You can switch providers at any time
@@ -51,9 +51,9 @@ The practical result:
 
 ## Why BYOK matters
 
-### Unlimited processing
+### Free access and unlimited PRO
 
-The most obvious benefit. Whether you need to rename 500 files this week or 50,000 over the next year, there is no cap. The only limit is your API quota with the provider, and most providers offer generous limits or no hard cap at all.
+BYOK is available from the free plan: its renames count toward the same 50-rename allowance as Cloud AI and Offline AI. PRO removes the Zush limit, so higher-volume workflows are then governed only by the selected provider's quota, billing, and model availability.
 
 ### Cost control
 
@@ -110,7 +110,7 @@ Claude is Anthropic's AI with strong visual understanding and detailed analysis 
 - **Speed**: Good. In our testing Claude wrote the most specific descriptions for screenshots with mixed visual content.
 - **Best for**: Users who want detailed, accurate content descriptions, especially for complex images and documents.
 
-## Cost breakdown: what unlimited actually costs
+## Cost breakdown: what provider usage costs
 
 Here is what typical usage can look like in real dollar terms. These are directional estimates, not guarantees, because provider pricing, selected models, file sizes, prompt length, and token usage can change the final bill.
 
@@ -215,11 +215,11 @@ Claude tends to write longer, more context-aware descriptions. If you work with 
 
 You are not locked in. You can change your API key or provider in Zush Settings at any point. Some users start with Gemini's free tier and switch to OpenAI or Claude later when they want different output characteristics. Your rename history and naming patterns are preserved regardless of which provider you use.
 
-![Zush BYOK demo showing unlimited AI-powered file renaming with your own provider key](/videos/zush-byok.mp4)
+![Zush BYOK demo showing AI-powered file renaming with your own provider key](/videos/zush-byok.mp4)
 
 ## BYOK and folder monitoring
 
-BYOK pairs naturally with folder monitoring. When you combine the two, you get a fully automatic, unlimited rename pipeline: files arrive in monitored folders, Zush detects them, sends them to your chosen AI provider, and renames them with zero manual input and zero rename cap.
+BYOK pairs naturally with folder monitoring. Files arrive in monitored folders, Zush detects them, sends the analysis request to your chosen AI provider, and renames them with zero manual input. FREE uses the shared 50-rename allowance; PRO removes the Zush rename cap.
 
 This is the most hands-off setup available. For a detailed guide on folder monitoring, see the post on [automatic file renaming with folder monitoring](/blog/folder-monitoring-automatic-file-renaming).
 
@@ -232,4 +232,4 @@ Your API key is stored locally on your Mac and is only sent to the AI provider y
 
 BYOK gives you provider control. If you have already decided content-aware renaming is worth doing and want to route analysis through your own account, a Gemini or Groq key may cover light to moderate use within free-tier limits. For heavier OpenAI or Claude usage, use the estimate table as a planning baseline and confirm current provider pricing before committing.
 
-For a comparison of Zush against other tools in this category, see [Mac AI renamer tools comparison](/blog/best-ai-file-renamer-tools-mac-compared) and [AI renamer tools comparison](/blog/best-ai-file-renamer-tools-2026). To get started with [Zush](/), the free plan includes 50 free renames, PRO gives you unlimited renames, and BYOK lets you use your own provider account.
+For a comparison of Zush against other tools in this category, see [Mac AI renamer tools comparison](/blog/best-ai-file-renamer-tools-mac-compared) and [AI renamer tools comparison](/blog/best-ai-file-renamer-tools-2026). To get started with [Zush](/), FREE includes 50 renames across Cloud AI, BYOK, and Offline AI; PRO removes the limit.

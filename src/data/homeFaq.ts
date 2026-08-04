@@ -26,7 +26,7 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'Is Zush free to try?',
     answer:
-      `Yes. Zush includes ${APP_CONFIG.free_tier_limit} free AI renames with no credit card required, so you can test content analysis, batch rename, preview, and undo before upgrading.`,
+      `Yes. Zush includes ${APP_CONFIG.free_tier_limit} free AI renames with no credit card required across Cloud AI, BYOK, and Offline AI, so you can test the full workflow before upgrading.`,
   },
   {
     question: 'Is my data private?',
@@ -46,7 +46,7 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'Can Zush rename files offline?',
     answer:
-      'Yes. PRO users can use Offline AI mode with compatible local Ollama models for supported files. Cloud mode remains available for broader mixed-file workflows, and BYOK supports Gemini, Groq, OpenAI, and Claude.',
+      'Yes. Offline AI is available on the free plan with compatible local Ollama models for supported files. It shares the 50-rename free limit with Cloud AI and BYOK; PRO removes that limit.',
   },
   {
     question: 'How does folder monitoring work?',
@@ -71,6 +71,6 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'How much does Zush PRO cost?',
     answer:
-      `Zush PRO costs ${PRO_PRICING.monthly.label} per month or ${PRO_PRICING.oneTime.label} as a one-time purchase. Both plans include unlimited PRO renames, BYOK, Offline AI mode, and all PRO features. Eligible purchases include a 14-day refund period.`,
+      `Zush PRO costs ${PRO_PRICING.monthly.label} per month or ${PRO_PRICING.oneTime.label} as a one-time purchase. BYOK and Offline AI are already available within the ${APP_CONFIG.free_tier_limit}-rename free limit; both PRO plans remove that limit across every AI mode. Eligible purchases include a 14-day refund period.`,
   },
 ];

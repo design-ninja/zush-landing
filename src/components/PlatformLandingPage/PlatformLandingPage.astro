@@ -151,7 +151,7 @@ const intentSection = platform === 'mac'
       points: [
         'Use it for Downloads, Desktop, screenshots, photo imports, scanner output, and client folders where every file needs a different name.',
         'Review each AI filename before applying a batch, regenerate individual suggestions, and undo the rename from history if a folder needs another pass.',
-        'Use cloud AI, BYOK with Gemini, Groq, OpenAI, or Claude, or Offline AI mode with local Ollama models on supported Mac builds.',
+        'Use cloud AI, BYOK with Gemini, Groq, OpenAI, or Claude, or Offline AI mode with local Ollama models on Mac and Windows.',
       ],
       links: [
         { href: '/', label: 'AI file renamer for Mac & Windows' },
@@ -246,14 +246,14 @@ const softwareJsonLd = {
       name: 'Zush PRO Monthly',
       price: PRO_PRICING.monthly.schemaPrice,
       priceCurrency: 'USD',
-      description: 'Monthly subscription. Unlimited PRO renames plus BYOK and Offline AI mode.',
+      description: 'Monthly subscription with unlimited renames across Cloud AI, BYOK, and Offline AI.',
     },
     {
       '@type': 'Offer',
       name: 'Zush PRO One-Time',
       price: PRO_PRICING.oneTime.schemaPrice,
       priceCurrency: 'USD',
-      description: 'One-time purchase. Unlimited PRO renames plus BYOK and Offline AI mode.',
+      description: 'One-time purchase with unlimited renames across Cloud AI, BYOK, and Offline AI.',
     },
   ],
   featureList: localizedPage.features,

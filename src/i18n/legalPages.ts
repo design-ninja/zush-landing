@@ -53,8 +53,8 @@ Wir verwenden die erfassten Informationen, um:
 Zush sendet Datei-Analyse-Payloads zur Analyse an Drittanbieter-KI-Dienste:
 
 - **Standardablauf:** Datei-Analyseanfragen werden über Zush-Server an Groq (primär) und Google Gemini (Fallback) gesendet.
-- **Bring Your Own Key (BYOK):** PRO-Nutzer können eigene API-Schlüssel für Groq, Google Gemini, OpenAI oder Anthropic Claude konfigurieren. BYOK-Schlüssel werden lokal im macOS-Schlüsselbund gespeichert. Im BYOK-Modus wird der Schlüssel nur zur Validierung und Verarbeitung von KI-Anfragen an das Zush-Backend und den ausgewählten KI-Anbieter gesendet. Das Zush-Backend speichert BYOK-API-Schlüssel nicht dauerhaft.
-- **Offline-KI-Modus:** PRO-Nutzer können unterstützte Dateien mit privaten lokalen Modellen via Ollama verarbeiten. Im Offline-KI-Modus werden Datei-Inhalte auf dem Gerät des Nutzers verarbeitet und nicht zur Analyse an Zush-Server oder Drittanbieter-KI gesendet. Zush kann weiterhin Backend-Dienste für Lizenzierung, Updates, Support oder nicht-inhaltliche Betriebsprüfungen kontaktieren.
+- **Bring Your Own Key (BYOK):** Nutzer aller Pläne können eigene API-Schlüssel für Groq, Google Gemini, OpenAI oder Anthropic Claude konfigurieren. BYOK-Schlüssel werden lokal im macOS-Schlüsselbund gespeichert. Im BYOK-Modus wird der Schlüssel nur zur Validierung und Verarbeitung von KI-Anfragen an das Zush-Backend und den ausgewählten KI-Anbieter gesendet. Das Zush-Backend speichert BYOK-API-Schlüssel nicht dauerhaft.
+- **Offline-KI-Modus:** Nutzer aller Pläne können unterstützte Dateien mit privaten lokalen Modellen via Ollama verarbeiten. Im Offline-KI-Modus werden Datei-Inhalte auf dem Gerät des Nutzers verarbeitet und nicht zur Analyse an Zush-Server oder Drittanbieter-KI gesendet. Zush kann weiterhin Backend-Dienste für Lizenzierung, Updates, Support oder nicht-inhaltliche Betriebsprüfungen kontaktieren.
 
 **Was in Cloud- und BYOK-Modi gesendet wird:** Je nach Dateityp kann dies ein komprimiertes Vorschaubild, eine Design-Vorschau, gesampelte Videoframes, Untertitelkontext, extrahierter Dokumenttext, eine temporäre iWork-PDF-Vorschau, Audiometadaten, Transkriptkontext, begrenzte Audiodaten bei erforderlicher Transkription oder eine kompakte Inhaltszusammenfassung sein, zusammen mit MIME-Typ, Dateierweiterung, Spracheinstellung, Regenerate- und BYOK-Einstellungen, einer anonymen Gerätekennung und benutzerdefinierten Umbenennungs- oder Tagging-Prompts, die du übermittelst. Einige Anfragen können auch grundlegende Dateimetadaten wie den Dateinamen enthalten, um bessere Umbenennungsvorschläge zu erzeugen.
 
@@ -103,15 +103,15 @@ Wir gewähren dir eine persönliche, nicht ausschließliche, nicht übertragbare
 ### 3. Käufe und Zahlungen
 
 **3.1 🌟 PRO-Version**
-Zush bietet ein "🌟 PRO"-Upgrade, das unbegrenzte PRO-Umbenennungen, BYOK, Offline-KI, Überwachung mehrerer Ordner und erweiterte Metadatenfunktionen freischaltet. Aktuelle Preise werden in der App und auf der Website angezeigt.
+FREE umfasst 50 Umbenennungen gemeinsam für Cloud-KI, BYOK und Offline-KI. Das "🌟 PRO"-Upgrade entfernt dieses Limit und bietet die aktuellen erweiterten PRO-Funktionen. Aktuelle Preise werden in der App und auf der Website angezeigt.
 
 **3.2 Preispläne**
 Wir bieten kostenlose Nutzung plus zwei bezahlte PRO-Pläne:
 
-- **Zush Free**: 50 Credits enthalten. Ein Credit entspricht einer Umbenennung.
-- **Zush PRO**: Monthly für ${PRO_PRICING.monthly.label}/Monat oder One-Time für ${PRO_PRICING.oneTime.label}. Beide enthalten unbegrenzte PRO-Umbenennungen, BYOK und Offline-KI-Modus.
+- **Zush Free**: 50 Umbenennungen gemeinsam für Cloud-KI, BYOK und Offline-KI.
+- **Zush PRO**: Monthly für ${PRO_PRICING.monthly.label}/Monat oder One-Time für ${PRO_PRICING.oneTime.label}. Beide entfernen das Umbenennungslimit für Cloud-KI, BYOK und Offline-KI.
 
-Die kostenlosen Credits sind einmalig und werden nicht zurückgesetzt. Bezahlte PRO-Pläne entfernen das Cloud-Umbenennungslimit; BYOK und Offline-KI bleiben verfügbar, wo unterstützt.
+Das FREE-Limit von 50 Umbenennungen gilt gemeinsam für Cloud-KI, BYOK und Offline-KI und wird nicht zurückgesetzt. Bezahlte PRO-Pläne entfernen dieses Limit.
 
 **3.3 Nutzungslimits**
 Die kostenlose Version hat Nutzungslimits für KI-gestützte Cloud-Funktionen. Bezahlte PRO-Pläne entfernen das Cloud-Umbenennungslimit, vorbehaltlich fairer technischer Schutzmaßnahmen. Aktuelle Limits werden in der Anwendung angezeigt.
@@ -232,8 +232,8 @@ Nous utilisons les informations collectées pour :
 Zush envoie des charges utiles d’analyse de fichiers à des services IA tiers :
 
 - **Flux par défaut :** les requêtes d’analyse sont envoyées via les serveurs Zush à Groq (principal) et Google Gemini (secours).
-- **Bring Your Own Key (BYOK) :** les utilisateurs PRO peuvent configurer leurs propres clés API pour Groq, Google Gemini, OpenAI ou Anthropic Claude. Les clés BYOK sont stockées localement dans le trousseau macOS. En mode BYOK, la clé est envoyée au backend Zush et au fournisseur IA sélectionné uniquement pour valider la clé et traiter les requêtes IA. Le backend Zush ne stocke pas durablement les clés API BYOK.
-- **Mode IA hors ligne :** les utilisateurs PRO peuvent traiter les fichiers pris en charge avec des modèles locaux privés via Ollama. En mode IA hors ligne, le contenu d’analyse est traité sur l’appareil de l’utilisateur et n’est pas envoyé aux serveurs Zush ni aux fournisseurs IA tiers pour analyse. Zush peut encore contacter des services backend pour la licence, les mises à jour, le support ou des contrôles opérationnels ne portant pas sur le contenu.
+- **Bring Your Own Key (BYOK) :** les utilisateurs de toutes les offres peuvent configurer leurs propres clés API pour Groq, Google Gemini, OpenAI ou Anthropic Claude. Les clés BYOK sont stockées localement dans le trousseau macOS. En mode BYOK, la clé est envoyée au backend Zush et au fournisseur IA sélectionné uniquement pour valider la clé et traiter les requêtes IA. Le backend Zush ne stocke pas durablement les clés API BYOK.
+- **Mode IA hors ligne :** les utilisateurs de toutes les offres peuvent traiter les fichiers pris en charge avec des modèles locaux privés via Ollama. En mode IA hors ligne, le contenu d’analyse est traité sur l’appareil de l’utilisateur et n’est pas envoyé aux serveurs Zush ni aux fournisseurs IA tiers pour analyse. Zush peut encore contacter des services backend pour la licence, les mises à jour, le support ou des contrôles opérationnels ne portant pas sur le contenu.
 
 **Ce qui est envoyé en modes Cloud et BYOK :** selon le type de fichier, cela peut inclure une image d’aperçu compressée, un aperçu design, des images vidéo échantillonnées, du contexte de sous-titres, du texte extrait, un aperçu PDF temporaire iWork, des métadonnées audio, du contexte de transcription, une charge audio limitée si la transcription est requise, ou un résumé compact du contenu, avec le type MIME, l’extension, la préférence de langue, les paramètres de régénération et BYOK, un identifiant d’appareil anonyme, et tout prompt personnalisé de renommage ou de tagging soumis. Certaines requêtes peuvent aussi inclure des métadonnées de base comme le nom du fichier afin de générer de meilleures suggestions.
 
@@ -282,15 +282,15 @@ Nous vous accordons une licence personnelle, non exclusive, non transférable et
 ### 3. Achats et paiements
 
 **3.1 Version 🌟 PRO**
-Zush propose une mise à niveau "🌟 PRO" qui débloque les renommages PRO illimités, BYOK, l’IA hors ligne, la surveillance de plusieurs dossiers et les fonctions avancées de métadonnées. Les prix actuels sont affichés dans l’application et sur le site.
+FREE inclut 50 renommages partagés entre IA cloud, BYOK et IA hors ligne. La mise à niveau "🌟 PRO" supprime cette limite et inclut les fonctions PRO avancées actuelles. Les prix actuels sont affichés dans l’application et sur le site.
 
 **3.2 Offres tarifaires**
 Nous proposons une utilisation gratuite plus deux offres PRO payantes :
 
-- **Zush Free** : 50 crédits inclus. Un crédit équivaut à un renommage.
-- **Zush PRO** : Monthly à ${PRO_PRICING.monthly.usd} $/mois ou One-Time à ${PRO_PRICING.oneTime.usd} $. Les deux incluent les renommages PRO illimités, BYOK et le mode IA hors ligne.
+- **Zush Free** : 50 renommages partagés entre IA cloud, BYOK et IA hors ligne.
+- **Zush PRO** : Monthly à ${PRO_PRICING.monthly.usd} $/mois ou One-Time à ${PRO_PRICING.oneTime.usd} $. Les deux suppriment la limite de renommage pour l’IA cloud, BYOK et l’IA hors ligne.
 
-Les crédits gratuits sont uniques et ne se réinitialisent pas. Les offres PRO payantes suppriment la limite de renommage cloud; BYOK et l’IA hors ligne restent disponibles lorsque pris en charge.
+La limite FREE de 50 renommages est partagée entre IA cloud, BYOK et IA hors ligne et ne se réinitialise pas. Les offres PRO payantes suppriment cette limite.
 
 **3.3 Limites d’usage**
 La version gratuite comporte des limites d’usage pour les fonctions cloud assistées par IA. Les offres PRO payantes suppriment la limite de renommage cloud, sous réserve de protections techniques raisonnables. Les limites actuelles sont affichées dans l’application.
@@ -411,8 +411,8 @@ Usamos as informações coletadas para:
 O Zush envia cargas de análise de arquivos a serviços de IA de terceiros:
 
 - **Fluxo padrão:** solicitações de análise são enviadas pelos servidores do Zush para Groq (principal) e Google Gemini (fallback).
-- **Bring Your Own Key (BYOK):** usuários PRO podem configurar suas próprias chaves de API para Groq, Google Gemini, OpenAI ou Anthropic Claude. As chaves BYOK são armazenadas localmente no macOS Keychain. No modo BYOK, a chave é enviada ao backend do Zush e ao provedor selecionado apenas para validar a chave e processar solicitações de IA. O backend do Zush não armazena chaves BYOK permanentemente.
-- **Modo IA offline:** usuários PRO podem processar arquivos compatíveis com modelos locais privados via Ollama. No modo IA offline, o conteúdo de análise é processado no dispositivo do usuário e não é enviado aos servidores do Zush nem a provedores de IA de terceiros para análise. O Zush ainda pode contatar serviços de backend para licenciamento, atualizações, suporte ou verificações operacionais sem conteúdo.
+- **Bring Your Own Key (BYOK):** usuários de todos os planos podem configurar suas próprias chaves de API para Groq, Google Gemini, OpenAI ou Anthropic Claude. As chaves BYOK são armazenadas localmente no macOS Keychain. No modo BYOK, a chave é enviada ao backend do Zush e ao provedor selecionado apenas para validar a chave e processar solicitações de IA. O backend do Zush não armazena chaves BYOK permanentemente.
+- **Modo IA offline:** usuários de todos os planos podem processar arquivos compatíveis com modelos locais privados via Ollama. No modo IA offline, o conteúdo de análise é processado no dispositivo do usuário e não é enviado aos servidores do Zush nem a provedores de IA de terceiros para análise. O Zush ainda pode contatar serviços de backend para licenciamento, atualizações, suporte ou verificações operacionais sem conteúdo.
 
 **O que é enviado nos modos Cloud e BYOK:** dependendo do tipo de arquivo, isso pode incluir uma imagem de prévia compactada, texto extraído do documento ou um resumo compacto do conteúdo, além de tipo MIME, extensão, preferência de idioma, configurações de regeneração e BYOK, identificador anônimo do dispositivo e qualquer prompt personalizado de renomeação ou tags enviado. Algumas solicitações também podem incluir metadados básicos, como o nome do arquivo, para gerar sugestões melhores.
 
@@ -461,15 +461,15 @@ Concedemos a você uma licença pessoal, não exclusiva, intransferível e limit
 ### 3. Compras e pagamentos
 
 **3.1 Versão 🌟 PRO**
-O Zush oferece um upgrade "🌟 PRO" que desbloqueia renomeações PRO ilimitadas, BYOK, IA offline, monitoramento de várias pastas e recursos avançados de metadados. Os preços atuais são exibidos no aplicativo e no site.
+O FREE inclui 50 renomeações compartilhadas entre Cloud AI, BYOK e IA offline. O upgrade "🌟 PRO" remove esse limite e inclui os recursos PRO avançados atuais. Os preços atuais são exibidos no aplicativo e no site.
 
 **3.2 Planos de preço**
 Oferecemos uso gratuito mais dois planos PRO pagos:
 
-- **Zush Free**: 50 créditos incluídos. Um crédito equivale a uma renomeação.
-- **Zush PRO**: Monthly por ${PRO_PRICING.monthly.label}/mês ou One-Time por ${PRO_PRICING.oneTime.label}. Ambos incluem renomeações PRO ilimitadas, BYOK e modo IA offline.
+- **Zush Free**: 50 renomeações compartilhadas entre Cloud AI, BYOK e IA offline.
+- **Zush PRO**: Monthly por ${PRO_PRICING.monthly.label}/mês ou One-Time por ${PRO_PRICING.oneTime.label}. Ambos removem o limite de renomeações em Cloud AI, BYOK e IA offline.
 
-Os créditos gratuitos são únicos e não são redefinidos. Planos PRO pagos removem o limite de renomeação cloud; BYOK e IA offline continuam disponíveis quando compatíveis.
+O limite FREE de 50 renomeações é compartilhado entre Cloud AI, BYOK e IA offline e não é redefinido. Os planos PRO pagos removem esse limite.
 
 **3.3 Limites de uso**
 A versão gratuita tem limites de uso para recursos cloud com IA. Planos PRO pagos removem o limite de renomeação cloud, sujeitos a salvaguardas técnicas razoáveis. Os limites atuais são exibidos no aplicativo.
@@ -590,8 +590,8 @@ Usamos la información recopilada para:
 Zush envía payloads de análisis de archivos a servicios de IA de terceros:
 
 - **Flujo predeterminado:** las solicitudes de análisis se envían mediante servidores de Zush a Groq (principal) y Google Gemini (respaldo).
-- **Bring Your Own Key (BYOK):** usuarios PRO pueden configurar sus propias claves API para Groq, Google Gemini, OpenAI o Anthropic Claude. Las claves BYOK se almacenan localmente en macOS Keychain. En modo BYOK, la clave se envía al backend de Zush y al proveedor seleccionado solo para validar la clave y procesar solicitudes de IA. El backend de Zush no almacena permanentemente claves API BYOK.
-- **Modo IA offline:** usuarios PRO pueden procesar archivos compatibles con modelos locales privados mediante Ollama. En modo IA offline, el contenido de análisis se procesa en el dispositivo del usuario y no se envía a servidores de Zush ni a proveedores de IA externos para análisis. Zush puede seguir contactando servicios backend para licencias, actualizaciones, soporte o comprobaciones operativas sin contenido.
+- **Bring Your Own Key (BYOK):** usuarios de todos los planes pueden configurar sus propias claves API para Groq, Google Gemini, OpenAI o Anthropic Claude. Las claves BYOK se almacenan localmente en macOS Keychain. En modo BYOK, la clave se envía al backend de Zush y al proveedor seleccionado solo para validar la clave y procesar solicitudes de IA. El backend de Zush no almacena permanentemente claves API BYOK.
+- **Modo IA offline:** usuarios de todos los planes pueden procesar archivos compatibles con modelos locales privados mediante Ollama. En modo IA offline, el contenido de análisis se procesa en el dispositivo del usuario y no se envía a servidores de Zush ni a proveedores de IA externos para análisis. Zush puede seguir contactando servicios backend para licencias, actualizaciones, soporte o comprobaciones operativas sin contenido.
 
 **Qué se envía en modos Cloud y BYOK:** según el tipo de archivo, puede incluir una imagen de vista previa comprimida, texto extraído del documento o un resumen compacto del contenido, junto con tipo MIME, extensión, preferencia de idioma, ajustes de regeneración y BYOK, identificador anónimo del dispositivo y cualquier prompt personalizado de renombrado o etiquetado que envíes. Algunas solicitudes también pueden incluir metadatos básicos como el nombre de archivo para generar mejores sugerencias.
 
@@ -640,15 +640,15 @@ Te otorgamos una licencia personal, no exclusiva, intransferible y limitada para
 ### 3. Compras y pagos
 
 **3.1 Versión 🌟 PRO**
-Zush ofrece una actualización "🌟 PRO" que desbloquea renombrados PRO ilimitados, BYOK, IA offline, monitoreo de múltiples carpetas y funciones avanzadas de metadatos. Los precios actuales se muestran en la app y en el sitio web.
+FREE incluye 50 renombrados compartidos entre Cloud AI, BYOK e IA offline. La actualización "🌟 PRO" elimina ese límite e incluye las funciones PRO avanzadas actuales. Los precios actuales se muestran en la app y en el sitio web.
 
 **3.2 Planes de precios**
 Ofrecemos uso gratuito más dos planes PRO pagos:
 
-- **Zush Free**: 50 créditos incluidos. Un crédito equivale a un renombrado.
-- **Zush PRO**: Monthly por ${PRO_PRICING.monthly.label}/mes o One-Time por ${PRO_PRICING.oneTime.label}. Ambos incluyen renombrados PRO ilimitados, BYOK y modo IA offline.
+- **Zush Free**: 50 renombrados compartidos entre Cloud AI, BYOK e IA offline.
+- **Zush PRO**: Monthly por ${PRO_PRICING.monthly.label}/mes o One-Time por ${PRO_PRICING.oneTime.label}. Ambos eliminan el límite de renombrados en Cloud AI, BYOK e IA offline.
 
-Los créditos gratuitos son de un solo uso y no se reinician. Los planes PRO pagos eliminan el límite de renombrado cloud; BYOK y la IA offline siguen disponibles donde corresponda.
+El límite FREE de 50 renombrados se comparte entre Cloud AI, BYOK e IA offline y no se reinicia. Los planes PRO pagos eliminan ese límite.
 
 **3.3 Límites de uso**
 La versión gratuita tiene límites de uso para funciones cloud con IA. Los planes PRO pagos eliminan el límite de renombrado cloud, sujetos a protecciones técnicas razonables. Los límites actuales se muestran en la aplicación.
@@ -769,8 +769,8 @@ We gebruiken de verzamelde informatie om:
 Zush stuurt bestandsanalyse-payloads naar externe AI-diensten voor analyse:
 
 - **Standaardflow:** bestandsanalyseverzoeken worden via Zush-servers verzonden naar Groq (primair) en Google Gemini (fallback).
-- **Bring Your Own Key (BYOK):** PRO-gebruikers kunnen eigen API-sleutels configureren voor Groq, Google Gemini, OpenAI of Anthropic Claude. BYOK-sleutels worden lokaal opgeslagen in macOS Keychain. In BYOK-modus wordt de sleutel alleen naar de Zush-backend en de gekozen AI-provider verzonden om de sleutel te valideren en AI-verzoeken te verwerken. De Zush-backend slaat BYOK API-sleutels niet permanent op.
-- **Offline AI-modus:** PRO-gebruikers kunnen ondersteunde bestanden verwerken met private lokale modellen via Ollama. In Offline AI wordt bestandsanalyse-inhoud verwerkt op het apparaat van de gebruiker en niet naar Zush-servers of externe AI-providers gestuurd voor analyse. Zush kan nog steeds backenddiensten contacteren voor licenties, updates, support of operationele controles zonder inhoud.
+- **Bring Your Own Key (BYOK):** Gebruikers van elk abonnement kunnen eigen API-sleutels configureren voor Groq, Google Gemini, OpenAI of Anthropic Claude. BYOK-sleutels worden lokaal opgeslagen in macOS Keychain. In BYOK-modus wordt de sleutel alleen naar de Zush-backend en de gekozen AI-provider verzonden om de sleutel te valideren en AI-verzoeken te verwerken. De Zush-backend slaat BYOK API-sleutels niet permanent op.
+- **Offline AI-modus:** Gebruikers van elk abonnement kunnen ondersteunde bestanden verwerken met private lokale modellen via Ollama. In Offline AI wordt bestandsanalyse-inhoud verwerkt op het apparaat van de gebruiker en niet naar Zush-servers of externe AI-providers gestuurd voor analyse. Zush kan nog steeds backenddiensten contacteren voor licenties, updates, support of operationele controles zonder inhoud.
 
 **Wat wordt verzonden in Cloud- en BYOK-modi:** afhankelijk van het bestandstype kan dit een gecomprimeerde preview-afbeelding, designpreview, bemonsterde videoframes, ondertitelcontext, geëxtraheerde documenttekst, tijdelijke iWork-PDF-preview, audiometadata, transcriptcontext, een begrensde audiopayload wanneer transcriptie nodig is, of compacte inhoudssamenvatting omvatten, samen met MIME-type, bestandsextensie, taalvoorkeur, regenerate- en BYOK-instellingen, een anonieme apparaat-ID en aangepaste hernoem- of taggingprompts die je indient. Sommige verzoeken kunnen ook basale bestandsmetadata bevatten, zoals de bestandsnaam, om betere suggesties te genereren.
 
@@ -819,15 +819,15 @@ We verlenen je een persoonlijke, niet-exclusieve, niet-overdraagbare, beperkte l
 ### 3. Aankopen en betalingen
 
 **3.1 🌟 PRO-versie**
-Zush biedt een "🌟 PRO"-upgrade die onbeperkte PRO-hernoemingen, BYOK, Offline AI, bewaking van meerdere mappen en geavanceerde metadatafuncties ontgrendelt. Actuele prijzen worden in de app en op de website getoond.
+FREE bevat 50 hernoemingen die worden gedeeld door Cloud AI, BYOK en Offline AI. De "🌟 PRO"-upgrade verwijdert die limiet en bevat de huidige geavanceerde PRO-functies. Actuele prijzen worden in de app en op de website getoond.
 
 **3.2 Prijsplannen**
 We bieden gratis gebruik plus twee betaalde PRO-plannen:
 
-- **Zush Free**: 50 credits inbegrepen. Eén credit is gelijk aan één hernoeming.
-- **Zush PRO**: Monthly voor ${PRO_PRICING.monthly.label}/maand of One-Time voor ${PRO_PRICING.oneTime.label}. Beide bevatten onbeperkte PRO-hernoemingen, BYOK en Offline AI.
+- **Zush Free**: 50 hernoemingen gedeeld door Cloud AI, BYOK en Offline AI.
+- **Zush PRO**: Monthly voor ${PRO_PRICING.monthly.label}/maand of One-Time voor ${PRO_PRICING.oneTime.label}. Beide verwijderen de hernoemlimiet voor Cloud AI, BYOK en Offline AI.
 
-Gratis credits zijn eenmalig en worden niet gereset. Betaalde PRO-plannen verwijderen de cloudhernoemlimiet; BYOK en Offline AI blijven beschikbaar waar ondersteund.
+De FREE-limiet van 50 hernoemingen wordt gedeeld door Cloud AI, BYOK en Offline AI en wordt niet gereset. Betaalde PRO-plannen verwijderen die limiet.
 
 **3.3 Gebruikslimieten**
 De gratis versie heeft gebruikslimieten voor AI-gestuurde cloudfuncties. Betaalde PRO-plannen verwijderen de cloudhernoemlimiet, behoudens redelijke technische waarborgen. Actuele limieten worden in de applicatie getoond.
@@ -948,8 +948,8 @@ Usiamo le informazioni raccolte per:
 Zush invia payload di analisi dei file a servizi IA di terze parti:
 
 - **Flusso predefinito:** le richieste di analisi vengono inviate tramite server Zush a Groq (primario) e Google Gemini (fallback).
-- **Bring Your Own Key (BYOK):** gli utenti PRO possono configurare le proprie chiavi API per Groq, Google Gemini, OpenAI o Anthropic Claude. Le chiavi BYOK sono archiviate localmente nel Portachiavi macOS. In modalità BYOK, la chiave viene inviata al backend Zush e al provider IA selezionato solo per validare la chiave ed elaborare le richieste IA. Il backend Zush non memorizza permanentemente le chiavi API BYOK.
-- **Modalità IA offline:** gli utenti PRO possono elaborare file supportati con modelli locali privati via Ollama. In modalità IA offline, il contenuto di analisi viene elaborato sul dispositivo dell’utente e non viene inviato ai server Zush o a provider IA di terze parti per l’analisi. Zush può comunque contattare servizi backend per licenze, aggiornamenti, supporto o controlli operativi non legati al contenuto.
+- **Bring Your Own Key (BYOK):** gli utenti di tutti i piani possono configurare le proprie chiavi API per Groq, Google Gemini, OpenAI o Anthropic Claude. Le chiavi BYOK sono archiviate localmente nel Portachiavi macOS. In modalità BYOK, la chiave viene inviata al backend Zush e al provider IA selezionato solo per validare la chiave ed elaborare le richieste IA. Il backend Zush non memorizza permanentemente le chiavi API BYOK.
+- **Modalità IA offline:** gli utenti di tutti i piani possono elaborare file supportati con modelli locali privati via Ollama. In modalità IA offline, il contenuto di analisi viene elaborato sul dispositivo dell’utente e non viene inviato ai server Zush o a provider IA di terze parti per l’analisi. Zush può comunque contattare servizi backend per licenze, aggiornamenti, supporto o controlli operativi non legati al contenuto.
 
 **Cosa viene inviato nelle modalità Cloud e BYOK:** a seconda del tipo di file, può includere un’immagine di anteprima compressa, testo estratto dal documento o un riepilogo compatto del contenuto, insieme a tipo MIME, estensione, preferenza lingua, impostazioni regenerate e BYOK, identificatore anonimo del dispositivo e qualsiasi prompt personalizzato di rinomina o tagging inviato. Alcune richieste possono includere anche metadati di base come il nome del file per generare suggerimenti migliori.
 
@@ -998,15 +998,15 @@ Ti concediamo una licenza personale, non esclusiva, non trasferibile e limitata 
 ### 3. Acquisti e pagamenti
 
 **3.1 Versione 🌟 PRO**
-Zush offre un upgrade "🌟 PRO" che sblocca rinomine PRO illimitate, BYOK, IA offline, monitoraggio di più cartelle e funzioni avanzate di metadati. I prezzi correnti sono mostrati nell’app e sul sito.
+FREE include 50 rinomine condivise tra Cloud AI, BYOK e IA offline. L’upgrade "🌟 PRO" rimuove questo limite e include le attuali funzioni PRO avanzate. I prezzi correnti sono mostrati nell’app e sul sito.
 
 **3.2 Piani tariffari**
 Offriamo uso gratuito più due piani PRO a pagamento:
 
-- **Zush Free**: 50 crediti inclusi. Un credito equivale a una rinomina.
-- **Zush PRO**: Monthly a ${PRO_PRICING.monthly.usd} $/mese oppure One-Time a ${PRO_PRICING.oneTime.usd} $. Entrambi includono rinomine PRO illimitate, BYOK e modalità IA offline.
+- **Zush Free**: 50 rinomine condivise tra Cloud AI, BYOK e IA offline.
+- **Zush PRO**: Monthly a ${PRO_PRICING.monthly.usd} $/mese oppure One-Time a ${PRO_PRICING.oneTime.usd} $. Entrambi rimuovono il limite di rinomina per Cloud AI, BYOK e IA offline.
 
-I crediti gratuiti sono una tantum e non si azzerano. I piani PRO a pagamento rimuovono il limite di rinomina cloud; BYOK e IA offline restano disponibili dove supportati.
+Il limite FREE di 50 rinomine è condiviso tra Cloud AI, BYOK e IA offline e non si azzera. I piani PRO rimuovono questo limite.
 
 **3.3 Limiti d’uso**
 La versione gratuita ha limiti d’uso per le funzioni cloud con IA. I piani PRO a pagamento rimuovono il limite di rinomina cloud, soggetti a ragionevoli salvaguardie tecniche. I limiti correnti sono mostrati nell’applicazione.
@@ -1127,8 +1127,8 @@ AI プロンプトエディタやその他のプロンプトカスタマイズ�
 Zush はファイル分析ペイロードを第三者 AI サービスへ送信します。
 
 - **デフォルトフロー:** ファイル分析リクエストは Zush サーバー経由で Groq（主）および Google Gemini（フォールバック）へ送信されます。
-- **Bring Your Own Key (BYOK):** PRO ユーザーは Groq、Google Gemini、OpenAI、Anthropic Claude 用の独自 API キーを設定できます。BYOK キーは macOS Keychain にローカル保存されます。BYOK モードでは、キーの検証と AI リクエスト処理に必要な場合にのみ、Zush バックエンドおよび選択された AI プロバイダーへ送信されます。Zush バックエンドは BYOK API キーを永続保存しません。
-- **オフライン AI モード:** PRO ユーザーは Ollama 経由のプライベートなローカルモデルで対応ファイルを処理できます。オフライン AI モードでは、ファイル分析内容はユーザーのデバイス上で処理され、分析のために Zush サーバーや第三者 AI プロバイダーへ送信されません。Zush はライセンス、更新、サポート、内容を伴わない運用確認のためにバックエンドサービスへ接続する場合があります。
+- **Bring Your Own Key (BYOK):** すべてのプランのユーザーは Groq、Google Gemini、OpenAI、Anthropic Claude 用の独自 API キーを設定できます。BYOK キーは macOS Keychain にローカル保存されます。BYOK モードでは、キーの検証と AI リクエスト処理に必要な場合にのみ、Zush バックエンドおよび選択された AI プロバイダーへ送信されます。Zush バックエンドは BYOK API キーを永続保存しません。
+- **オフライン AI モード:** すべてのプランのユーザーは Ollama 経由のプライベートなローカルモデルで対応ファイルを処理できます。オフライン AI モードでは、ファイル分析内容はユーザーのデバイス上で処理され、分析のために Zush サーバーや第三者 AI プロバイダーへ送信されません。Zush はライセンス、更新、サポート、内容を伴わない運用確認のためにバックエンドサービスへ接続する場合があります。
 
 **Cloud および BYOK モードで送信される内容:** ファイル種別に応じて、圧縮プレビュー画像、抽出されたドキュメントテキスト、またはコンパクトな内容要約、MIME タイプ、拡張子、言語設定、再生成および BYOK 設定、匿名デバイス識別子、送信したカスタムリネームまたはタグ付けプロンプトが含まれる場合があります。より良い候補生成のため、ファイル名などの基本メタデータが含まれる場合もあります。
 
@@ -1177,15 +1177,15 @@ Zush は、人工知能（AI）を使ってファイルの整理、リネーム�
 ### 3. 購入と支払い
 
 **3.1 🌟 PRO バージョン**
-Zush は、無制限の PRO リネーム、BYOK、Offline AI、複数フォルダ監視、高度なメタデータ機能を解除する "🌟 PRO" アップグレードを提供します。現在の価格はアプリおよびウェブサイトに表示されます。
+FREE では Cloud AI、BYOK、Offline AI 共通で 50 回リネームできます。"🌟 PRO" アップグレードはこの上限を解除し、現在の高度な PRO 機能を含みます。現在の価格はアプリおよびウェブサイトに表示されます。
 
 **3.2 料金プラン**
 当社は無料利用に加えて 2 つの有料 PRO プランを提供します。
 
-- **Zush Free**: 50 クレジットを含みます。1 クレジットは 1 リネームです。
-- **Zush PRO**: Monthly（月額 ${PRO_PRICING.monthly.usd} ドル）または One-Time（${PRO_PRICING.oneTime.usd} ドル）。どちらも無制限の PRO リネーム、BYOK、オフライン AI モードを含みます。
+- **Zush Free**: Cloud AI、BYOK、オフライン AI 共通で 50 回リネームできます。
+- **Zush PRO**: Monthly（月額 ${PRO_PRICING.monthly.usd} ドル）または One-Time（${PRO_PRICING.oneTime.usd} ドル）。どちらも Cloud AI、BYOK、オフライン AI 共通のリネーム上限を解除します。
 
-無料クレジットは一回限りでリセットされません。有料 PRO プランではクラウドリネーム制限が解除され、対応している場合は BYOK と Offline AI を利用できます。
+FREE の 50 回上限は Cloud AI、BYOK、Offline AI 共通で、リセットされません。有料 PRO プランはこの上限を解除します。
 
 **3.3 利用制限**
 無料版には AI クラウド機能の利用制限があります。有料 PRO プランでは、合理的な技術的保護措置の範囲でクラウドリネーム制限が解除されます。現在の制限はアプリ内に表示されます。
@@ -1306,8 +1306,8 @@ AI 프롬프트 편집기 또는 기타 프롬프트 사용자 지정 기능을 
 Zush는 파일 분석 payload를 타사 AI 서비스로 전송합니다.
 
 - **기본 흐름:** 파일 분석 요청은 Zush 서버를 통해 Groq(기본) 및 Google Gemini(대체)로 전송됩니다.
-- **Bring Your Own Key (BYOK):** PRO 사용자는 Groq, Google Gemini, OpenAI, Anthropic Claude용 자체 API 키를 구성할 수 있습니다. BYOK 키는 macOS Keychain에 로컬 저장됩니다. BYOK 모드에서 키는 키 검증 및 AI 요청 처리에 필요한 경우에만 Zush 백엔드와 선택한 AI 제공자에게 전송됩니다. Zush 백엔드는 BYOK API 키를 영구 저장하지 않습니다.
-- **오프라인 AI 모드:** PRO 사용자는 Ollama를 통한 개인 로컬 모델로 지원 파일을 처리할 수 있습니다. 오프라인 AI 모드에서는 파일 분석 콘텐츠가 사용자의 기기에서 처리되며 분석을 위해 Zush 서버나 타사 AI 제공자에게 전송되지 않습니다. Zush는 라이선스, 업데이트, 지원 또는 콘텐츠가 아닌 운영 점검을 위해 백엔드 서비스에 계속 접속할 수 있습니다.
+- **Bring Your Own Key (BYOK):** 모든 플랜의 사용자는 Groq, Google Gemini, OpenAI, Anthropic Claude용 자체 API 키를 구성할 수 있습니다. BYOK 키는 macOS Keychain에 로컬 저장됩니다. BYOK 모드에서 키는 키 검증 및 AI 요청 처리에 필요한 경우에만 Zush 백엔드와 선택한 AI 제공자에게 전송됩니다. Zush 백엔드는 BYOK API 키를 영구 저장하지 않습니다.
+- **오프라인 AI 모드:** 모든 플랜의 사용자는 Ollama를 통한 개인 로컬 모델로 지원 파일을 처리할 수 있습니다. 오프라인 AI 모드에서는 파일 분석 콘텐츠가 사용자의 기기에서 처리되며 분석을 위해 Zush 서버나 타사 AI 제공자에게 전송되지 않습니다. Zush는 라이선스, 업데이트, 지원 또는 콘텐츠가 아닌 운영 점검을 위해 백엔드 서비스에 계속 접속할 수 있습니다.
 
 **Cloud 및 BYOK 모드에서 전송되는 항목:** 파일 유형에 따라 압축 미리보기 이미지, 추출된 문서 텍스트 또는 간결한 콘텐츠 요약, MIME 타입, 파일 확장자, 언어 설정, 재생성 및 BYOK 설정, 익명 기기 식별자, 제출한 사용자 지정 이름 변경 또는 태그 프롬프트가 포함될 수 있습니다. 더 나은 이름 제안을 생성하기 위해 파일 이름 같은 기본 파일 메타데이터가 포함될 수도 있습니다.
 
@@ -1356,15 +1356,15 @@ Zush는 인공지능(AI)을 사용해 사용자가 파일을 정리, 이름 변�
 ### 3. 구매 및 결제
 
 **3.1 🌟 PRO 버전**
-Zush는 무제한 PRO 이름 변경, BYOK, 오프라인 AI, 여러 폴더 모니터링, 고급 메타데이터 기능을 해제하는 "🌟 PRO" 업그레이드를 제공합니다. 현재 가격은 앱과 웹사이트에 표시됩니다.
+FREE는 Cloud AI, BYOK, 오프라인 AI에서 공통으로 50회 이름 변경을 제공합니다. "🌟 PRO" 업그레이드는 이 제한을 제거하고 현재의 고급 PRO 기능을 포함합니다. 현재 가격은 앱과 웹사이트에 표시됩니다.
 
 **3.2 가격 플랜**
 무료 사용과 두 가지 유료 PRO 플랜을 제공합니다.
 
-- **Zush Free**: 50 크레딧 포함. 1 크레딧은 1회 이름 변경입니다.
-- **Zush PRO**: Monthly 월 ${PRO_PRICING.monthly.label} 또는 One-Time ${PRO_PRICING.oneTime.label}. 둘 다 무제한 PRO 이름 변경, BYOK, 오프라인 AI 모드를 포함합니다.
+- **Zush Free**: Cloud AI, BYOK, 오프라인 AI에서 공통으로 50회 이름 변경을 제공합니다.
+- **Zush PRO**: Monthly 월 ${PRO_PRICING.monthly.label} 또는 One-Time ${PRO_PRICING.oneTime.label}. 둘 다 Cloud AI, BYOK, 오프라인 AI의 이름 변경 제한을 제거합니다.
 
-무료 크레딧은 일회성이며 초기화되지 않습니다. 유료 PRO 플랜은 클라우드 이름 변경 제한을 제거하며, BYOK와 오프라인 AI는 지원되는 경우 계속 사용할 수 있습니다.
+FREE의 50회 제한은 Cloud AI, BYOK, 오프라인 AI에서 공유되며 초기화되지 않습니다. 유료 PRO 플랜은 이 제한을 제거합니다.
 
 **3.3 사용 제한**
 무료 버전에는 AI 기반 클라우드 기능 사용 제한이 있습니다. 유료 PRO 플랜은 합리적인 기술적 보호 장치에 따라 클라우드 이름 변경 제한을 제거합니다. 현재 제한은 애플리케이션에 표시됩니다.
@@ -1486,8 +1486,8 @@ Zush PRO는 월간 플랜 또는 일회성 구매로 제공됩니다. 구매일�
 Zush 会将文件分析 payload 发送给第三方 AI 服务进行分析：
 
 - **默认流程：** 文件分析请求会通过 Zush 服务器发送给 Groq（主要）和 Google Gemini（备用）。
-- **Bring Your Own Key (BYOK)：** PRO 用户可以为 Groq、Google Gemini、OpenAI 或 Anthropic Claude 配置自己的 API 密钥。BYOK 密钥会存储在 macOS Keychain 本地。BYOK 模式下，密钥只会在验证密钥和处理 AI 请求时发送给 Zush 后端和所选 AI 提供商。Zush 后端不会永久存储 BYOK API 密钥。
-- **离线 AI 模式：** PRO 用户可以通过 Ollama 的私有本地模型处理支持的文件。在离线 AI 模式下，文件分析内容会在用户设备上处理，不会发送给 Zush 服务器或第三方 AI 提供商进行分析。Zush 仍可能为许可证、更新、支持或非内容类运营检查而联系后端服务。
+- **Bring Your Own Key (BYOK)：** 所有方案的用户都可以为 Groq、Google Gemini、OpenAI 或 Anthropic Claude 配置自己的 API 密钥。BYOK 密钥会存储在 macOS Keychain 本地。BYOK 模式下，密钥只会在验证密钥和处理 AI 请求时发送给 Zush 后端和所选 AI 提供商。Zush 后端不会永久存储 BYOK API 密钥。
+- **离线 AI 模式：** 所有方案的用户都可以通过 Ollama 的私有本地模型处理支持的文件。在离线 AI 模式下，文件分析内容会在用户设备上处理，不会发送给 Zush 服务器或第三方 AI 提供商进行分析。Zush 仍可能为许可证、更新、支持或非内容类运营检查而联系后端服务。
 
 **Cloud 和 BYOK 模式下会发送的内容：** 根据文件类型，这可能包括压缩预览图、设计预览、采样视频帧、字幕上下文、提取的文档文本、临时 iWork PDF 预览、音频元数据、转录上下文、转录所需的受限音频 payload 或紧凑内容摘要，以及 MIME 类型、文件扩展名、语言偏好、重新生成和 BYOK 设置、匿名设备标识符，以及你提交的任何自定义重命名或标签提示词。某些请求还可能包含基本文件元数据，例如用于生成更好重命名建议的文件名。
 
@@ -1536,15 +1536,15 @@ Zush 是一款适用于 macOS 和 Windows 的桌面工具，旨在帮助用户�
 ### 3. 购买和付款
 
 **3.1 🌟 PRO 版本**
-Zush 提供 "🌟 PRO" 升级，解锁无限 PRO 重命名、BYOK、离线 AI、多文件夹监控和高级元数据功能。当前价格会显示在应用和网站上。
+FREE 在 Cloud AI、BYOK 和离线 AI 之间共享 50 次重命名。"🌟 PRO" 升级会移除此限制，并包含当前的高级 PRO 功能。当前价格会显示在应用和网站上。
 
 **3.2 价格计划**
 我们提供免费使用以及两个付费 PRO 方案：
 
-- **Zush Free**：包含 50 个额度。1 个额度等于 1 次重命名。
-- **Zush PRO**：Monthly 每月 ${PRO_PRICING.monthly.label}，或 One-Time ${PRO_PRICING.oneTime.label}。两者都包含无限 PRO 重命名、BYOK 和离线 AI 模式。
+- **Zush Free**：在 Cloud AI、BYOK 和离线 AI 之间共享 50 次重命名。
+- **Zush PRO**：Monthly 每月 ${PRO_PRICING.monthly.label}，或 One-Time ${PRO_PRICING.oneTime.label}。两者都会移除 Cloud AI、BYOK 和离线 AI 的重命名限制。
 
-免费额度为一次性额度，不会重置。付费 PRO 方案会移除云端重命名限制；BYOK 和离线 AI 在支持时可继续使用。
+FREE 的 50 次限制由 Cloud AI、BYOK 和离线 AI 共享，且不会重置。付费 PRO 方案会移除此限制。
 
 **3.3 使用限制**
 免费版对 AI 云端功能有使用限制。付费 PRO 方案会在合理技术保护措施范围内移除云端重命名限制。当前限制会显示在应用中。
