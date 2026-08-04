@@ -16,6 +16,7 @@ export const YOUTUBE_CHANNEL_URL = "https://www.youtube.com/@zushapp";
 export const PRODUCT_HUNT_URL = "https://www.producthunt.com/products/zush";
 export const CRUNCHBASE_URL = "https://www.crunchbase.com/organization/zush-4de8";
 export const LINKEDIN_COMPANY_URL = "https://www.linkedin.com/company/zush-ai-file-renamer";
+export const FACEBOOK_PROFILE_URL = "https://www.facebook.com/profile.php?id=61592905765874";
 export const GOOGLE_WORKSPACE_MARKETPLACE_URL =
   "https://workspace.google.com/marketplace/app/zush_ai_renamer/865259549983";
 

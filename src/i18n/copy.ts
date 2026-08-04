@@ -99,6 +99,7 @@ export interface FooterCopy {
   followX: string;
   followGitHub: string;
   followLinkedIn: string;
+  followFacebook: string;
   followYouTube: string;
   productHunt: string;
   googleWorkspace: string;
@@ -1070,6 +1071,7 @@ const EN_COPY: LocaleCopy = {
     followX: 'Follow us on X',
     followGitHub: 'Zush on GitHub',
     followLinkedIn: 'Zush on LinkedIn',
+    followFacebook: 'Zush on Facebook',
     followYouTube: 'Follow us on YouTube',
     productHunt: 'Zush on Product Hunt',
     googleWorkspace: 'Zush on Google Workspace Marketplace',
@@ -1962,6 +1964,7 @@ type FooterVisibleCopy = Pick<
   | 'followX'
   | 'followGitHub'
   | 'followLinkedIn'
+  | 'followFacebook'
   | 'followYouTube'
   | 'productHunt'
   | 'googleWorkspace'
@@ -1985,6 +1988,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     followX: 'Zush auf X folgen',
     followGitHub: 'Zush auf GitHub',
     followLinkedIn: 'Zush auf LinkedIn',
+    followFacebook: 'Zush auf Facebook',
     followYouTube: 'Zush auf YouTube folgen',
     productHunt: 'Zush auf Product Hunt',
     googleWorkspace: 'Zush im Google Workspace Marketplace',
@@ -2035,6 +2039,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     followX: 'Suivre Zush sur X',
     followGitHub: 'Zush sur GitHub',
     followLinkedIn: 'Zush sur LinkedIn',
+    followFacebook: 'Zush sur Facebook',
     followYouTube: 'Suivre Zush sur YouTube',
     productHunt: 'Zush sur Product Hunt',
     googleWorkspace: 'Zush sur Google Workspace Marketplace',
@@ -2085,6 +2090,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     followX: 'Seguir o Zush no X',
     followGitHub: 'Zush no GitHub',
     followLinkedIn: 'Zush no LinkedIn',
+    followFacebook: 'Zush no Facebook',
     followYouTube: 'Seguir o Zush no YouTube',
     productHunt: 'Zush no Product Hunt',
     googleWorkspace: 'Zush no Google Workspace Marketplace',
@@ -2135,6 +2141,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     followX: 'Seguir Zush en X',
     followGitHub: 'Zush en GitHub',
     followLinkedIn: 'Zush en LinkedIn',
+    followFacebook: 'Zush en Facebook',
     followYouTube: 'Seguir Zush en YouTube',
     productHunt: 'Zush en Product Hunt',
     googleWorkspace: 'Zush en Google Workspace Marketplace',
@@ -2185,6 +2192,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     followX: 'Volg Zush op X',
     followGitHub: 'Zush op GitHub',
     followLinkedIn: 'Zush op LinkedIn',
+    followFacebook: 'Zush op Facebook',
     followYouTube: 'Volg Zush op YouTube',
     productHunt: 'Zush op Product Hunt',
     googleWorkspace: 'Zush op Google Workspace Marketplace',
@@ -2235,6 +2243,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     followX: 'Segui Zush su X',
     followGitHub: 'Zush su GitHub',
     followLinkedIn: 'Zush su LinkedIn',
+    followFacebook: 'Zush su Facebook',
     followYouTube: 'Segui Zush su YouTube',
     productHunt: 'Zush su Product Hunt',
     googleWorkspace: 'Zush su Google Workspace Marketplace',
@@ -2285,6 +2294,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     followX: 'X で Zush をフォロー',
     followGitHub: 'GitHub の Zush',
     followLinkedIn: 'LinkedIn の Zush',
+    followFacebook: 'Facebook の Zush',
     followYouTube: 'YouTube で Zush をフォロー',
     productHunt: 'Product Hunt の Zush',
     googleWorkspace: 'Google Workspace Marketplace の Zush',
@@ -2335,6 +2345,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     followX: 'X에서 Zush 팔로우',
     followGitHub: 'GitHub의 Zush',
     followLinkedIn: 'LinkedIn의 Zush',
+    followFacebook: 'Facebook의 Zush',
     followYouTube: 'YouTube에서 Zush 팔로우',
     productHunt: 'Product Hunt의 Zush',
     googleWorkspace: 'Google Workspace Marketplace의 Zush',
@@ -2385,6 +2396,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     followX: '在 X 上关注 Zush',
     followGitHub: 'GitHub 上的 Zush',
     followLinkedIn: 'LinkedIn 上的 Zush',
+    followFacebook: 'Facebook 上的 Zush',
     followYouTube: '在 YouTube 上关注 Zush',
     productHunt: 'Product Hunt 上的 Zush',
     googleWorkspace: 'Google Workspace Marketplace 上的 Zush',
@@ -2435,6 +2447,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     followX: 'Zush’u X’te takip edin',
     followGitHub: 'Zush’u GitHub’da takip edin',
     followLinkedIn: 'Zush’u LinkedIn’de takip edin',
+    followFacebook: 'Zush’u Facebook’ta takip edin',
     followYouTube: 'Zush’u YouTube’da takip edin',
     productHunt: 'Product Hunt’ta Zush',
     googleWorkspace: 'Google Workspace Marketplace’te Zush',
@@ -2485,6 +2498,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
     followX: 'تابع Zush على X',
     followGitHub: 'تابع Zush على GitHub',
     followLinkedIn: 'تابع Zush على LinkedIn',
+    followFacebook: 'تابع Zush على Facebook',
     followYouTube: 'تابع Zush على YouTube',
     productHunt: 'Zush على Product Hunt',
     googleWorkspace: 'Zush على Google Workspace Marketplace',
