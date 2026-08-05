@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { spawnSync } from 'node:child_process';
+import { spawn, spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -17,6 +17,8 @@ const sourceAssetRoot =
   '/Users/lirik/Projects/zush/zush-assets/#test files/Files';
 const backendEnvironment = process.env.ZUSH_PROMO_BACKEND_ENVIRONMENT ?? 'local';
 const promoGeminiApiKey = process.env.ZUSH_PROMO_GEMINI_API_KEY?.trim();
+const promoOllamaEndpoint = process.env.ZUSH_PROMO_OLLAMA_ENDPOINT ?? 'http://127.0.0.1:11434';
+const promoOllamaModel = process.env.ZUSH_PROMO_OLLAMA_MODEL ?? 'qwen2.5vl:3b';
 const defaultLandingOutputDir = path.join(repoRoot, 'public/images/showcase/macos');
 const defaultAppStoreOutputDir = '/Users/lirik/Projects/zush/zush-assets/App Store';
 const tempRoot = path.join(os.tmpdir(), `zush-feature-screenshots-${Date.now()}`);
@@ -110,6 +112,7 @@ const selectedFeatures = only
   ? features.filter((feature) => feature.id === only || feature.fixture === only)
   : features;
 let activeZushPid = null;
+let startedOllamaProcess = null;
 
 if (!['local', 'prod'].includes(backendEnvironment)) {
   throw new Error('ZUSH_PROMO_BACKEND_ENVIRONMENT must be "local" or "prod".');
@@ -210,6 +213,58 @@ function commandExists(command) {
 
 function wait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function fetchOllamaModels() {
+  try {
+    const response = await fetch(`${promoOllamaEndpoint.replace(/\/$/, '')}/api/tags`, {
+      signal: AbortSignal.timeout(2500),
+    });
+    if (!response.ok) {
+      return null;
+    }
+    const payload = await response.json();
+    return Array.isArray(payload.models)
+      ? payload.models.map((model) => model?.name).filter(Boolean)
+      : [];
+  } catch {
+    return null;
+  }
+}
+
+async function prepareOllamaForPromo() {
+  let models = await fetchOllamaModels();
+  if (!models) {
+    if (!commandExists('ollama')) {
+      throw new Error('Ollama is not running and the ollama executable was not found.');
+    }
+    console.log('Starting Ollama with "ollama serve" for Offline AI screenshots...');
+    startedOllamaProcess = spawn('ollama', ['serve'], { stdio: 'ignore' });
+    for (let attempt = 0; attempt < 40 && !models; attempt += 1) {
+      await wait(750);
+      models = await fetchOllamaModels();
+    }
+  }
+
+  if (!models) {
+    stopStartedOllama();
+    throw new Error(`Timed out waiting for Ollama at ${promoOllamaEndpoint}.`);
+  }
+  if (!models.includes(promoOllamaModel)) {
+    stopStartedOllama();
+    throw new Error(
+      `Ollama model ${promoOllamaModel} is not installed. Installed models: ${models.join(', ') || 'none'}.`,
+    );
+  }
+  console.log(`Ollama is ready with ${promoOllamaModel}.`);
+}
+
+function stopStartedOllama() {
+  if (!startedOllamaProcess) {
+    return;
+  }
+  startedOllamaProcess.kill('SIGTERM');
+  startedOllamaProcess = null;
 }
 
 function firstExistingAssetPath(paths) {
@@ -803,6 +858,10 @@ async function main() {
 
   ensureBuilt();
 
+  if (selectedFeatures.some((feature) => feature.id === 'offline-ai')) {
+    await prepareOllamaForPromo();
+  }
+
   const originalDarkMode = getSystemDarkMode();
   const runId = `zush-promo-${process.pid}-${Date.now()}`;
   const assetRoot = copyFixtureAssets(runId);
@@ -837,6 +896,7 @@ async function main() {
     closeFinderInfoWindows();
     setSystemDarkMode(originalDarkMode);
     app.kill();
+    stopStartedOllama();
   }
 
   console.log(`Generated ${outputs.length} screenshot${outputs.length === 1 ? '' : 's'}.`);

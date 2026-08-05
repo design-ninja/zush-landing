@@ -19,6 +19,10 @@ fixture, so a fixture cannot reset the capture back to the local backend.
 The `app-store` target writes ten light-theme, lossless PNG screenshots at
 2880×1800 pixels to `../zush-assets/App Store` by default.
 
+When Offline AI is selected, the script checks Ollama at `http://127.0.0.1:11434`,
+starts `ollama serve` when necessary, and waits for the screenshot model. Override
+the defaults with `ZUSH_PROMO_OLLAMA_ENDPOINT` and `ZUSH_PROMO_OLLAMA_MODEL`.
+
 ## Windows
 
 Run this on Windows, because the script builds, launches, and captures the WinUI client:
