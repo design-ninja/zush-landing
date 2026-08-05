@@ -1,5 +1,22 @@
 # Changelog
 
+## [3.9.1] - 2026-08-05
+
+### Added
+- Read and rename legacy Excel files in the older .xls format
+
+### Improved
+- Offline AI now sizes each request to fit your model, so long documents and scans no longer fail partway
+- AI Setup is now called AI Modes, with a clearer description of each option
+- Your remaining free renames now show as a countdown ring
+- The whole AI mode row is clickable, and the setup links stay available while you read them
+
+### Fixed
+- Ollama problems now explain what actually went wrong instead of showing a generic message
+- Title formatting no longer leaves underscores inside names
+- Files that failed analysis keep their actions, so you can retry them from the row menu
+- Better contrast for the "Best value" badge in dark mode
+
 ## [3.9.0] - 2026-08-03
 
 ### Added
