@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Hero from '@/components/Hero';
 import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
 import Features from '@/components/Features/Features.astro';
+import Tour from '@/components/Tour';
 import SupportedFormats from '@/components/SupportedFormats';
 import Pricing from '@/components/Pricing/Pricing.astro';
 import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
@@ -349,6 +350,9 @@ const jsonLdItems = [
     copy={platformSections.featureCards}
     locale={locale}
   />
+  {platform === 'windows' && (
+    <Tour client:visible forceOS="windows" copy={copy.home.showcase} />
+  )}
   {locale === DEFAULT_LOCALE && (
     <section class={styles.IntentSection} aria-labelledby='platform-intent-heading'>
       <div class={styles.IntentSection__Container}>
