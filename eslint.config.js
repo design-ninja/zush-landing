@@ -26,11 +26,4 @@ export default defineConfig([
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
     },
   },
-  {
-    // Edge middleware reads build-time env vars via process.env.
-    files: ['middleware.js', 'scripts/**/*.{js,mjs}'],
-    languageOptions: {
-      globals: { ...globals.browser, ...globals.node },
-    },
-  },
 ])
