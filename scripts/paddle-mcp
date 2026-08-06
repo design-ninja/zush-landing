@@ -2,13 +2,13 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-MCP_BIN="$ROOT_DIR/.mcp/google-ads-mcp/bin/google-ads-mcp"
+MCP_BIN="$ROOT_DIR/node_modules/.bin/paddle"
 
 [[ -x "$MCP_BIN" ]] || {
-  echo "Google Ads MCP binary not found: $MCP_BIN" >&2
+  echo "Pinned Paddle MCP binary not found. Run pnpm install without secrets." >&2
   exit 1
 }
 
 exec "$ROOT_DIR/scripts/with-1password.sh" \
-  --env-file .env.1password.google-ads-mcp \
+  --env-file .env.1password.paddle-mcp \
   -- "$MCP_BIN" "$@"

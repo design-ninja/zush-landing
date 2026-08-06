@@ -8,8 +8,8 @@ This script is intentionally idempotent for campaign structure:
 - replaces campaign-level asset associations,
 - adds campaign-level negative keywords when missing.
 
-Secrets are loaded from the local .env and Google ADC file; nothing sensitive is
-printed.
+Secrets are read from the process environment and Google ADC file; nothing
+sensitive is printed. Use scripts/with-1password.sh for local operations.
 """
 
 from __future__ import annotations
@@ -19,7 +19,6 @@ import os
 from dataclasses import dataclass
 from pathlib import Path
 
-from dotenv import load_dotenv
 from google.ads.googleads.client import GoogleAdsClient
 from google.ads.googleads.errors import GoogleAdsException
 from google.protobuf.field_mask_pb2 import FieldMask
@@ -288,7 +287,6 @@ CALLOUTS: tuple[str, ...] = (
 
 
 def load_client() -> GoogleAdsClient:
-    load_dotenv(ROOT / ".env")
     adc_path = Path(os.environ["GOOGLE_APPLICATION_CREDENTIALS"]).expanduser()
     adc = json.loads(adc_path.read_text())
     config = {

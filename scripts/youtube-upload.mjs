@@ -12,8 +12,6 @@ const AUTH_URL = 'https://accounts.google.com/o/oauth2/v2/auth';
 const TOKEN_URL = 'https://oauth2.googleapis.com/token';
 const YOUTUBE_UPLOAD_SCOPE = 'https://www.googleapis.com/auth/youtube.upload';
 const VALID_PRIVACY_STATUSES = new Set(['private', 'unlisted', 'public']);
-const SHELL_ENV_KEYS = new Set(Object.keys(process.env));
-
 function usage() {
   console.log(`Usage:
   pnpm youtube:auth
@@ -59,31 +57,6 @@ function readJson(path, fallback = undefined) {
 function writeJson(path, value) {
   mkdirSync(dirname(path), { recursive: true });
   writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`);
-}
-
-function loadEnvFile(path) {
-  if (!existsSync(path)) return;
-
-  const source = readFileSync(path, 'utf8');
-  for (const rawLine of source.split(/\r?\n/)) {
-    const line = rawLine.trim();
-    if (!line || line.startsWith('#')) continue;
-
-    const match = line.match(/^([A-Za-z_][A-Za-z0-9_]*)=(.*)$/);
-    if (!match) continue;
-
-    const [, key, rawValue] = match;
-    if (SHELL_ENV_KEYS.has(key)) continue;
-
-    const value = rawValue
-      .trim()
-      .replace(/^['"]|['"]$/g, '');
-    process.env[key] = value;
-  }
-}
-
-function loadLocalEnv() {
-  loadEnvFile(join(ROOT, '.env'));
 }
 
 function parseArgs(argv) {
@@ -565,7 +538,6 @@ function mimeForFile(path, fallback) {
 }
 
 async function main() {
-  loadLocalEnv();
   const options = parseArgs(process.argv.slice(2));
 
   switch (options.command) {
