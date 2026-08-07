@@ -1,0 +1,150 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.Explorer {
+    display: grid;
+    grid-template-columns: minmax(0, 0.82fr) minmax(25rem, 1.18fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: center;
+    max-width: 60rem;
+    margin: $space-2xl auto 0;
+
+    @include tablet {
+        grid-template-columns: minmax(0, 1fr);
+        max-width: 42rem;
+    }
+
+    &__Label {
+        margin: 0 0 $space-md;
+        color: var(--muted-foreground);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+    }
+
+    &__Chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+    }
+}
+
+.FieldChip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    min-height: 2.5rem;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 0.72rem;
+    background: var(--background);
+    color: var(--muted-foreground);
+    font: inherit;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 160ms ease, background 160ms ease, color 160ms ease, transform 160ms ease;
+
+    &:hover {
+        border-color: color-mix(in srgb, var(--primary), transparent 55%);
+        color: var(--foreground);
+        transform: translateY(-1px);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+    }
+
+    &_selected {
+        border-color: color-mix(in srgb, var(--primary), transparent 45%);
+        background: var(--primary-soft);
+        color: var(--primary);
+    }
+
+    &__Check {
+        display: grid;
+        place-items: center;
+        width: 1.05rem;
+        height: 1.05rem;
+        border: 1px solid currentColor;
+        border-radius: 0.32rem;
+    }
+}
+
+.Preview {
+    padding: 1.3rem;
+    border: 1px solid var(--border);
+    border-radius: 1.35rem;
+    background: color-mix(in srgb, var(--muted), var(--background) 52%);
+    box-shadow: 0 1.5rem 4rem color-mix(in srgb, var(--foreground), transparent 94%);
+
+    &__Header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    &__Icon {
+        display: grid;
+        place-items: center;
+        width: 2.65rem;
+        height: 2.65rem;
+        border-radius: 0.72rem;
+        background: color-mix(in srgb, #ef4444, transparent 88%);
+        color: color-mix(in srgb, #ef4444, var(--foreground) 28%);
+    }
+
+    &__Label {
+        margin: 0 0 0.28rem;
+        color: var(--muted-foreground);
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+    }
+
+    &__Before,
+    &__After {
+        margin: 0;
+        font-family: var(--font-mono);
+    }
+
+    &__Before {
+        color: var(--muted-foreground);
+        font-size: 0.75rem;
+        text-decoration: line-through;
+    }
+
+    &__Divider {
+        display: block;
+        height: 1px;
+        margin: 1.1rem 0;
+        background: var(--border);
+    }
+
+    &__After {
+        min-height: 2.7rem;
+        color: var(--foreground);
+        font-size: clamp(0.8rem, 2vw, 0.95rem);
+        font-weight: 650;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+    }
+
+    &__Note {
+        margin: 1rem 0 0;
+        padding-top: 0.9rem;
+        border-top: 1px solid var(--border);
+        color: var(--muted-foreground);
+        font-size: 0.75rem;
+        line-height: 1.55;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .FieldChip {
+        transition: none;
+    }
+}

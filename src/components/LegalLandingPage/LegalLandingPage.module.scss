@@ -1,0 +1,298 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.HeroDemo {
+    position: relative;
+    z-index: 1;
+    margin-top: -0.5rem;
+
+    @include tablet {
+        margin-top: 0;
+    }
+}
+
+.FinalCta {
+    padding-bottom: $space-3xl;
+
+    @include mobile {
+        padding-bottom: 3.25rem;
+    }
+}
+
+.SectionEyebrow {
+    margin: 0 0 $space-md;
+    color: var(--primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+
+.ArrowLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    white-space: nowrap;
+
+    &:hover {
+        text-decoration: underline;
+        text-underline-offset: 0.15em;
+    }
+}
+
+.Audiences {
+    padding: $space-3xl 0;
+
+    @include mobile {
+        padding: 3.25rem 0;
+    }
+
+    &__Container {
+        @include container;
+    }
+
+    &__Intro {
+        max-width: 42rem;
+        margin: 0 auto $space-2xl;
+        text-align: center;
+    }
+
+    &__Title.Audiences__Title {
+        margin: 0 0 $space-md;
+        text-wrap: balance;
+    }
+
+    &__Description.Audiences__Description {
+        margin: 0;
+        line-height: 1.65;
+        text-wrap: pretty;
+    }
+
+    &__List {
+        max-width: 60rem;
+        margin: 0 auto;
+        padding: 0;
+        border-top: 1px solid var(--border);
+        list-style: none;
+    }
+}
+
+.Audience {
+    display: grid;
+    grid-template-columns: minmax(11rem, 0.55fr) minmax(0, 1.45fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+
+    &__Label {
+        color: var(--foreground);
+        font-size: 0.875rem;
+        font-weight: 700;
+    }
+
+    &__Title {
+        margin: 0 0 0.55rem;
+        color: var(--foreground);
+        font-size: 1.18rem;
+        line-height: 1.35;
+    }
+
+    &__Description {
+        margin: 0;
+        color: var(--muted-foreground);
+        font-size: 0.9375rem;
+        line-height: 1.65;
+    }
+
+    &__Example {
+        display: block;
+        margin-top: 0.8rem;
+        color: color-mix(in srgb, var(--primary), var(--foreground) 22%);
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+    }
+
+    @include mobile {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0.8rem;
+        padding: 1.6rem 0;
+    }
+}
+
+.Fields,
+.Privacy,
+.Workflow,
+.Documents {
+    padding: $space-3xl 0;
+
+    @include mobile {
+        padding: 3.25rem 0;
+    }
+
+    &__Container {
+        @include container;
+    }
+}
+
+.Fields {
+    scroll-margin-top: calc($navbar-height + $space-lg);
+    background: color-mix(in srgb, var(--muted), transparent 38%);
+}
+
+.Privacy {
+    scroll-margin-top: calc($navbar-height + $space-lg);
+
+    &__Note {
+        max-width: 48rem;
+        margin: $space-xl auto 0;
+        color: var(--muted-foreground);
+        font-size: 0.85rem;
+        line-height: 1.7;
+        text-align: center;
+    }
+}
+
+.Workflow {
+    scroll-margin-top: calc($navbar-height + $space-lg);
+    background: color-mix(in srgb, var(--muted), transparent 52%);
+
+    &__Steps {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: clamp(1.5rem, 4vw, 3.5rem);
+        margin: $space-2xl 0 0;
+        padding: 0;
+        list-style: none;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 1rem;
+            left: 16.6%;
+            right: 16.6%;
+            height: 1px;
+            background: var(--border);
+        }
+
+        @include tablet {
+            grid-template-columns: minmax(0, 1fr);
+            max-width: 34rem;
+            margin-inline: auto;
+
+            &::before {
+                display: none;
+            }
+        }
+    }
+
+    &__Links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: $space-sm $space-xl;
+        margin-top: $space-2xl;
+    }
+}
+
+.WorkflowStep {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    &__Label {
+        position: relative;
+        z-index: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 5.5rem;
+        min-height: 2rem;
+        padding: 0.35rem 0.75rem;
+        border: 1px solid color-mix(in srgb, var(--primary), transparent 72%);
+        border-radius: $radius-full;
+        background: var(--background);
+        color: var(--primary);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    &__Title {
+        margin: $space-md 0 0.45rem;
+        color: var(--foreground);
+        font-size: 1.05rem;
+    }
+
+    &__Description {
+        margin: 0;
+        color: var(--muted-foreground);
+        font-size: 0.875rem;
+        line-height: 1.65;
+    }
+}
+
+.Documents {
+    &__Grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0;
+        max-width: 60rem;
+        margin: $space-2xl auto 0;
+        border-top: 1px solid var(--border);
+        border-left: 1px solid var(--border);
+
+        @include tablet {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        @include mobile {
+            grid-template-columns: minmax(0, 1fr);
+        }
+    }
+}
+
+.DocumentType {
+    min-width: 0;
+    padding: 1.5rem;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+
+    &__Title {
+        margin: 0 0 0.55rem;
+        color: var(--foreground);
+        font-size: 1rem;
+    }
+
+    &__Description {
+        min-height: 4.4rem;
+        margin: 0;
+        color: var(--muted-foreground);
+        font-size: 0.82rem;
+        line-height: 1.6;
+    }
+
+    &__Example {
+        display: block;
+        margin-top: 1rem;
+        color: color-mix(in srgb, var(--primary), var(--foreground) 22%);
+        font-family: var(--font-mono);
+        font-size: 0.67rem;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+    }
+
+    @include mobile {
+        &__Description {
+            min-height: 0;
+        }
+    }
+}

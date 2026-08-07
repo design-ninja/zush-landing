@@ -1,14 +1,27 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import FeatureLandingPageShell from '@/components/FeatureLandingPage/FeatureLandingPageShell.astro';
-import { SEARCH_LANDING_PAGES } from '@/data/searchLandingPages';
+import LegalLandingPage from '@/components/LegalLandingPage/LegalLandingPage.astro';
+import { LEGAL_JSON_LD, LEGAL_PAGE_PATH } from '@/data/legalLanding';
 import { getSeoForPath } from '@/seo/config';
-import { buildFeatureBreadcrumbJsonLd } from '@/utils/jsonLd';
+import { buildFeatureBreadcrumbJsonLd, buildWebPageJsonLd } from '@/utils/jsonLd';
 
-const seo = getSeoForPath('/for-legal');
-const page = SEARCH_LANDING_PAGES['for-legal'];
+const seo = getSeoForPath(LEGAL_PAGE_PATH);
+const pageJsonLd = buildWebPageJsonLd({
+  pagePath: LEGAL_PAGE_PATH,
+  title: 'Legal Document File Renamer for Law Firms',
+  description: seo.description,
+});
 ---
 
-<BaseLayout seo={seo} headerWidth="container" jsonLd={[page.jsonLd, buildFeatureBreadcrumbJsonLd(page.h1, '/for-legal')]}>
-  <FeatureLandingPageShell {...page} />
+<BaseLayout
+  seo={seo}
+  headerWidth='container'
+  disableTopOffset
+  jsonLd={[
+    pageJsonLd,
+    LEGAL_JSON_LD,
+    buildFeatureBreadcrumbJsonLd('Legal Document File Renamer', LEGAL_PAGE_PATH),
+  ]}
+>
+  <LegalLandingPage />
 </BaseLayout>

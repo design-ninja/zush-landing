@@ -168,9 +168,9 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'medical records file naming, rename medical records, organize patient files, medical document management, hipaa file naming, rename scanned medical records, clinic document organization',
   },
   '/for-legal': {
-    title: 'Zush for Legal Teams | AI Document Renamer for Law Firms',
+    title: 'Legal Document File Renamer for Law Firms | Zush',
     description:
-      'Name filings, contracts, and scans by matter, date, type, and party — automatically. Offline AI for confidential documents. Preview and undo every batch.',
+      'Automatically rename filings, contracts, drafts, and scans by matter, date, type, and party. Offline AI, firm-controlled BYOK, preview, and undo.',
     robots: 'index, follow',
     ogType: 'website',
     keywords:

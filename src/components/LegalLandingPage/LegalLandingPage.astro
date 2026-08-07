@@ -1,0 +1,193 @@
+---
+import { ArrowRight, Bot, Cloud, KeyRound } from 'lucide-react';
+import CloudFolders from '@/components/CloudFolders';
+import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
+import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
+import FAQ from '@/components/FAQ';
+import BentoCard from '@/components/Features/BentoCard.astro';
+import FeatureAnimation from '@/components/Features/FeatureAnimation';
+import featureStyles from '@/components/Features/Features.module.scss';
+import Heading from '@/components/Heading';
+import Pricing from '@/components/Pricing/Pricing.astro';
+import Text from '@/components/Text';
+import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module.scss';
+import {
+  LEGAL_AUDIENCES,
+  LEGAL_DOCUMENT_TYPES,
+  LEGAL_FAQ,
+  LEGAL_PRIVACY_MODES,
+  LEGAL_WORKFLOW,
+} from '@/data/legalLanding';
+import { getCopy } from '@/i18n/copy';
+import { FEATURE_DEMO_COPY } from '@/i18n/featureDemoCopy';
+import { LegalFieldExplorer } from './LegalFieldExplorer';
+import LegalHero from './LegalHero.astro';
+import styles from './LegalLandingPage.module.scss';
+
+const copy = getCopy('en');
+const demoCopy = FEATURE_DEMO_COPY.en;
+const PRIVACY_ICONS = { cloud: Cloud, byok: KeyRound, offline: Bot } as const;
+---
+
+<LegalHero />
+
+<div class={styles.HeroDemo}>
+  <DemoVideo label='Zush proposing chronological names for legal documents in a matter folder' />
+</div>
+
+<section class={styles.Audiences} aria-labelledby='legal-audiences-title'>
+  <div class={styles.Audiences__Container}>
+    <div class={styles.Audiences__Intro}>
+      <p class={styles.SectionEyebrow}>Where it fits</p>
+      <Heading as='h2' id='legal-audiences-title' className={styles.Audiences__Title}>
+        One naming system for the work around your DMS
+      </Heading>
+      <Text as='p' color='subtle' className={styles.Audiences__Description}>
+        Zush organizes the file layer before documents enter a matter workspace, while they move between teams, and when they are exported for archive.
+      </Text>
+    </div>
+
+    <ul class={styles.Audiences__List}>
+      {LEGAL_AUDIENCES.map((audience) => (
+        <li class={styles.Audience}>
+          <div class={styles.Audience__Label}>{audience.label}</div>
+          <div class={styles.Audience__Content}>
+            <h3 class={styles.Audience__Title}>{audience.title}</h3>
+            <p class={styles.Audience__Description}>{audience.description}</p>
+            <code class={styles.Audience__Example}>{audience.example}</code>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<section id='fields' class={styles.Fields} aria-labelledby='legal-fields-title'>
+  <div class={styles.Fields__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as='h2' align='center' id='legal-fields-title' className={sectionHeaderStyles.SectionHeader__Title}>
+        Make the filename carry the matter context
+      </Heading>
+      <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
+        Pick the fields your firm uses to retrieve documents. Zush reads them from the file; the Template controls which ones appear and in what order.
+      </Text>
+    </div>
+    <LegalFieldExplorer client:visible />
+  </div>
+</section>
+
+<section id='privacy' class={styles.Privacy} aria-labelledby='legal-privacy-title'>
+  <div class={styles.Privacy__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as='h2' align='center' id='legal-privacy-title' className={sectionHeaderStyles.SectionHeader__Title}>
+        Choose the processing path for each workflow
+      </Heading>
+      <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
+        Keep supported analysis on the machine, route it through the provider account your firm controls, or use managed Cloud AI for general documents.
+      </Text>
+    </div>
+
+    <div class={featureStyles.Band__Grid}>
+      {LEGAL_PRIVACY_MODES.map((mode) => (
+        <BentoCard
+          title={mode.title}
+          description={mode.description}
+          icon={PRIVACY_ICONS[mode.id]}
+          badge={mode.badge}
+          badgeTone={'badgeTone' in mode ? mode.badgeTone : undefined}
+        >
+          <div class={featureStyles.UI_FeatureAnimation}>
+            <FeatureAnimation kind={mode.kind} demoCopy={demoCopy} client:visible />
+          </div>
+        </BentoCard>
+      ))}
+    </div>
+
+    <p class={styles.Privacy__Note}>
+      Zush renames files in place and does not store them. Your firm remains responsible for choosing the processing mode that matches its policies and client obligations.{' '}
+      <a class={styles.ArrowLink} href='/docs/privacy-security'>
+        Read how each mode handles data
+        <ArrowRight size={15} aria-hidden='true' />
+      </a>
+    </p>
+  </div>
+</section>
+
+<section id='workflow' class={styles.Workflow} aria-labelledby='legal-workflow-title'>
+  <div class={styles.Workflow__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as='h2' align='center' id='legal-workflow-title' className={sectionHeaderStyles.SectionHeader__Title}>
+        From intake folder to reliable chronology
+      </Heading>
+      <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
+        Start with a copied matter folder, refine the Template against real documents, and only then assign it to recurring intake.
+      </Text>
+    </div>
+
+    <ol class={styles.Workflow__Steps}>
+      {LEGAL_WORKFLOW.map((step) => (
+        <li class={styles.WorkflowStep}>
+          <span class={styles.WorkflowStep__Label}>{step.label}</span>
+          <h3 class={styles.WorkflowStep__Title}>{step.title}</h3>
+          <p class={styles.WorkflowStep__Description}>{step.description}</p>
+        </li>
+      ))}
+    </ol>
+
+    <div class={styles.Workflow__Links}>
+      <a class={styles.ArrowLink} href='/docs/templates/legal-documents'>
+        Build a legal document Template
+        <ArrowRight size={15} aria-hidden='true' />
+      </a>
+      <a class={styles.ArrowLink} href='/docs/folder-monitoring'>
+        Set up folder monitoring
+        <ArrowRight size={15} aria-hidden='true' />
+      </a>
+      <a class={styles.ArrowLink} href='/blog/legal-file-naming-conventions'>
+        Read the legal naming conventions guide
+        <ArrowRight size={15} aria-hidden='true' />
+      </a>
+    </div>
+  </div>
+</section>
+
+<CloudFolders title={copy.home.cloudFoldersTitle} />
+
+<section class={styles.Documents} aria-labelledby='legal-document-types-title'>
+  <div class={styles.Documents__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as='h2' align='center' id='legal-document-types-title' className={sectionHeaderStyles.SectionHeader__Title}>
+        Legal documents Zush can rename automatically
+      </Heading>
+      <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
+        Use a separate Template for each practice workflow, while keeping the same matter-first logic across PDFs, Word documents, and scans.
+      </Text>
+    </div>
+
+    <div class={styles.Documents__Grid}>
+      {LEGAL_DOCUMENT_TYPES.map((documentType) => (
+        <article class={styles.DocumentType}>
+          <h3 class={styles.DocumentType__Title}>{documentType.title}</h3>
+          <p class={styles.DocumentType__Description}>{documentType.description}</p>
+          <code class={styles.DocumentType__Example}>{documentType.example}</code>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<Pricing copy={copy.pricing} />
+
+<FAQ
+  client:visible
+  items={LEGAL_FAQ}
+  title='Legal document renaming, answered'
+  description='How matter Templates, confidential processing modes, scanner folders, preview, and undo fit a legal document workflow.'
+/>
+
+<div class={styles.FinalCta}>
+  <DownloadCTA
+    title='Try Zush on a copied matter folder'
+    subtitle='Start with filings, drafts, and scans from one matter. Review the proposed chronology, refine the Template, and undo the batch if the convention needs another pass.'
+  />
+</div>
