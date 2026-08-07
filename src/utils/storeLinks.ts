@@ -1,3 +1,5 @@
+import { trackAnalyticsEvent } from '@/utils/analytics';
+
 export type StoreOS = 'mac' | 'windows';
 
 interface StoreLinkTarget {
@@ -17,6 +19,23 @@ interface StoreLinkClickEvent {
 }
 
 const STORE_FALLBACK_DELAY_MS = 1500;
+
+interface StoreAttemptAnalytics {
+  os: StoreOS;
+  source?: string;
+}
+
+const getStoreAttemptProperties = ({ os, source }: StoreAttemptAnalytics) => ({
+  os,
+  channel: os === 'windows' ? 'microsoft-store' : 'mac-app-store',
+  download_source: source ?? 'store-link',
+  ...(typeof window === 'undefined'
+    ? {}
+    : {
+        page_path: `${window.location.pathname}${window.location.search}`,
+        page_url: window.location.href,
+      }),
+});
 
 const detectRuntimeStoreOS = (): StoreOS | null => {
   if (typeof navigator === 'undefined') return null;
@@ -38,7 +57,12 @@ const detectRuntimeStoreOS = (): StoreOS | null => {
 const isModifiedClick = (event: StoreLinkClickEvent): boolean =>
   event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
 
-const attemptNativeStoreOpen = ({ appUrl, webUrl }: Required<Pick<StoreLinkTarget, 'appUrl' | 'webUrl'>>) => {
+const attemptNativeStoreOpen = ({
+  appUrl,
+  webUrl,
+  os,
+  source,
+}: Required<Pick<StoreLinkTarget, 'appUrl' | 'webUrl' | 'os'>> & Pick<StoreAttemptAnalytics, 'source'>) => {
   if (typeof window === 'undefined' || typeof document === 'undefined') return;
 
   let fallbackTimer: number | null = null;
@@ -71,10 +95,16 @@ const attemptNativeStoreOpen = ({ appUrl, webUrl }: Required<Pick<StoreLinkTarge
   fallbackTimer = window.setTimeout(() => {
     cleanup();
 
+    trackAnalyticsEvent('store_web_fallback', {
+      ...getStoreAttemptProperties({ os, source }),
+      fallback_reason: 'protocol_timeout',
+    });
+
     // The fallback stays in the current tab to avoid popup blockers after the delay.
     window.location.assign(webUrl);
   }, STORE_FALLBACK_DELAY_MS);
 
+  trackAnalyticsEvent('store_protocol_attempt', getStoreAttemptProperties({ os, source }));
   window.location.assign(appUrl);
 };
 
@@ -101,7 +131,12 @@ export const handleStoreLinkClick = (
   }
 
   event.preventDefault();
-  attemptNativeStoreOpen({ appUrl, webUrl });
+  attemptNativeStoreOpen({
+    appUrl,
+    webUrl,
+    os,
+    source: event.currentTarget.dataset.downloadSource,
+  });
 };
 
 // fallow-ignore-next-line unused-export

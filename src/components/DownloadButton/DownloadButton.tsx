@@ -44,7 +44,11 @@ interface DownloadButtonProps {
    */
   channel?: Extract<DownloadChannel, 'direct' | 'mac-app-store'>;
   menuCopy?: DownloadMenuCopy;
-  onPrimaryClick?: (event: { os: DownloadOS; source: DownloadSource }) => void;
+  onPrimaryClick?: (event: {
+    os: DownloadOS;
+    source: DownloadSource;
+    nativeStoreAttempted: boolean;
+  }) => void;
 }
 
 const renderLabel = (label: string, accent?: string) => {
@@ -69,6 +73,8 @@ const DEFAULT_MENU_COPY: DownloadMenuCopy = {
   windowsTitle: 'Windows',
   macDirectHint: 'Direct .dmg download',
   windowsHint: 'Microsoft Store',
+  windowsTrialHint: 'Free to try · Windows 10/11 · Microsoft Store',
+  windowsWebFallback: 'Open Microsoft Store in your browser',
   appStoreTitle: 'Mac App Store',
   appStoreCta: 'Get from AppStore',
   appStoreHint: 'Install via App Store',
@@ -145,7 +151,10 @@ const DownloadButton = ({
   }, [isOpen, showDropdown]);
 
   const handlePrimaryClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    onPrimaryClick?.({ os: downloadOS, source });
+    const isModifiedClick = event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
+    const nativeStoreAttempted =
+      !isMobile && !isModifiedClick && downloadOS === 'windows' && detectedOS === 'windows';
+    onPrimaryClick?.({ os: downloadOS, source, nativeStoreAttempted });
 
     if (isAppStoreChannel) {
       handleStoreLinkClick(event, {
