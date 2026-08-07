@@ -46,11 +46,6 @@ interface HeroProps {
   reviewsLabel?: string;
   macVersion?: string;
   windowsVersion?: string;
-  platformLinks?: {
-    ariaLabel: string;
-    mac: { href: string; label: string };
-    windows: { href: string; label: string };
-  };
 }
 
 const renderTextWithBreaks = (value: string) =>
@@ -113,7 +108,6 @@ const Hero = ({
   aiModes = [],
   reviewsHref,
   reviewsLabel = "Reviews",
-  platformLinks,
 }: HeroProps) => {
   const [showWindowsWebFallback, setShowWindowsWebFallback] = useState(false);
   const highlightText = titleHighlight ?? titleAccent;
@@ -218,9 +212,6 @@ const Hero = ({
                       showDropdown={false}
                       label={downloadMenu?.downloadForMac ?? "Download for Mac"}
                     />
-                    <span className={styles.Hero__PlatformHint}>
-                      {downloadMenu?.macDirectHint ?? "Direct .dmg download"}
-                    </span>
                   </div>
                   <div className={styles.Hero__PlatformAction}>
                     <DownloadButton
@@ -234,9 +225,6 @@ const Hero = ({
                         if (nativeStoreAttempted) setShowWindowsWebFallback(true);
                       }}
                     />
-                    <span className={styles.Hero__PlatformHint}>
-                      {downloadMenu?.windowsTrialHint ?? "Free to try · Windows 10/11 · Microsoft Store"}
-                    </span>
                     {showWindowsWebFallback && (
                       <a
                         className={styles.Hero__StoreFallbackLink}
@@ -285,13 +273,6 @@ const Hero = ({
                   <li key={item}>{item}</li>
                 ))}
               </ul>
-            )}
-            {platformLinks && (
-              <nav className={styles.Hero__PlatformLinks} aria-label={platformLinks.ariaLabel}>
-                <a href={platformLinks.mac.href}>{platformLinks.mac.label}</a>
-                <span aria-hidden="true">·</span>
-                <a href={platformLinks.windows.href}>{platformLinks.windows.label}</a>
-              </nav>
             )}
           </div>
         </div>
