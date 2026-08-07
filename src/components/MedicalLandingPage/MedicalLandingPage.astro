@@ -1,5 +1,9 @@
 ---
+import { Image } from 'astro:assets';
 import { ArrowRight, Bot, Cloud, KeyRound } from 'lucide-react';
+import audienceBillingImage from '@/assets/landing/medical-audience-billing.webp';
+import audienceFrontDeskImage from '@/assets/landing/medical-audience-front-desk.webp';
+import audienceOwnerImage from '@/assets/landing/medical-audience-owner.webp';
 import CloudFolders from '@/components/CloudFolders';
 import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
 import BentoCard from '@/components/Features/BentoCard.astro';
@@ -34,6 +38,20 @@ const copy = getCopy('en');
 
 const demoCopy = FEATURE_DEMO_COPY.en;
 const PRIVACY_ICONS = { cloud: Cloud, byok: KeyRound, offline: Bot } as const;
+const AUDIENCE_IMAGES = {
+  clinic: {
+    src: audienceOwnerImage,
+    alt: 'Small-practice physician speaking with a patient in a consultation room',
+  },
+  frontdesk: {
+    src: audienceFrontDeskImage,
+    alt: 'Practice manager scanning intake documents at a medical front desk',
+  },
+  billing: {
+    src: audienceBillingImage,
+    alt: 'Medical billing specialist reviewing paperwork beside a laptop',
+  },
+} as const;
 ---
 
 <MedicalHero />
@@ -48,14 +66,14 @@ const PRIVACY_ICONS = { cloud: Cloud, byok: KeyRound, offline: Bot } as const;
   />
 </div>
 
-{/* 1 — who runs it. Simple stacked rows: who + one line. */}
 <section class={styles.Audiences} aria-labelledby='medical-audiences-title'>
   <div class={styles.Audiences__Container}>
-    <div class={sectionHeaderStyles.SectionHeader}>
-      <Heading as='h2' align='center' id='medical-audiences-title' className={sectionHeaderStyles.SectionHeader__Title}>
+    <div class={styles.Audiences__Intro}>
+      <p class={styles.Audiences__Eyebrow}>Who it’s for</p>
+      <Heading as='h2' id='medical-audiences-title' className={styles.Audiences__Title}>
         Built for small medical practices and document-heavy teams
       </Heading>
-      <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
+      <Text as='p' color='subtle' className={styles.Audiences__Description}>
         The same file-renaming workflow fits clinical intake, front-desk scanning, and medical billing without replacing the EHR.
       </Text>
     </div>
@@ -63,8 +81,23 @@ const PRIVACY_ICONS = { cloud: Cloud, byok: KeyRound, offline: Bot } as const;
     <ul class={styles.Audiences__List}>
       {MEDICAL_AUDIENCES.map((audience) => (
         <li class={styles.Audience}>
-          <h3 class={styles.Audience__Title}>{audience.title}</h3>
-          <p class={styles.Audience__Description}>{audience.description}</p>
+          <div class={styles.Audience__Media}>
+            <Image
+              src={AUDIENCE_IMAGES[audience.icon].src}
+              alt={AUDIENCE_IMAGES[audience.icon].alt}
+              class={styles.Audience__Image}
+              widths={[240, 360, 480, 720, 960]}
+              sizes='(max-width: 640px) 100vw, 11rem'
+              format='webp'
+              quality={78}
+              loading='lazy'
+              decoding='async'
+            />
+          </div>
+          <div class={styles.Audience__Content}>
+            <h3 class={styles.Audience__Title}>{audience.title}</h3>
+            <p class={styles.Audience__Description}>{audience.description}</p>
+          </div>
         </li>
       ))}
     </ul>

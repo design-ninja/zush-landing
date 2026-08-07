@@ -395,9 +395,6 @@
     }
 }
 
-// ---------------------------------------------------------------------------
-// Audiences — stacked rows: who on the left, one line on the right
-// ---------------------------------------------------------------------------
 .Audiences {
     padding: $space-3xl 0;
 
@@ -407,47 +404,102 @@
 
     &__Container {
         @include container;
+
+        display: grid;
+        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.25fr);
+        align-items: start;
+        gap: clamp(3rem, 7vw, 6rem);
+
+        @include tablet {
+            grid-template-columns: minmax(0, 1fr);
+            gap: $space-2xl;
+        }
+    }
+
+    &__Intro {
+        position: sticky;
+        top: calc($navbar-height + $space-xl);
+        max-width: 27rem;
+
+        @include tablet {
+            position: static;
+            max-width: 38rem;
+        }
+    }
+
+    &__Eyebrow {
+        margin: 0 0 $space-md;
+        font-size: 0.75rem;
+        font-weight: 600;
+        line-height: 1.3;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--primary);
+    }
+
+    &__Title {
+        margin: 0;
+        text-wrap: balance;
+    }
+
+    &__Description {
+        margin: $space-md 0 0;
+        max-width: 24rem;
+        line-height: 1.65;
     }
 
     &__List {
-        max-width: 52rem;
-        margin: $space-2xl auto 0;
+        margin: 0;
         padding: 0;
         list-style: none;
+        border-top: 1px solid var(--border);
     }
 }
 
 .Audience {
     display: grid;
-    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.4fr);
-    align-items: baseline;
-    gap: $space-xl;
+    grid-template-columns: 11rem minmax(0, 1fr);
+    align-items: center;
+    gap: $space-lg;
     padding: $space-lg 0;
     border-bottom: 1px solid var(--border);
 
-    &:first-child {
-        padding-top: 0;
-    }
-
-    &:last-child {
-        border-bottom: none;
-        padding-bottom: 0;
-    }
-
     @include tablet {
+        grid-template-columns: 9rem minmax(0, 1fr);
+    }
+
+    @include small {
         grid-template-columns: minmax(0, 1fr);
-        gap: 0.4rem;
+        gap: $space-md;
+    }
+
+    &__Media {
+        aspect-ratio: 3 / 2;
+        border-radius: 0.875rem;
+        overflow: hidden;
+        background: var(--muted);
+    }
+
+    &__Image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__Content {
+        min-width: 0;
     }
 
     &__Title {
         margin: 0;
-        font-size: 1.0625rem;
+        font-size: 1rem;
         font-weight: 600;
         color: var(--foreground);
     }
 
     &__Description {
-        margin: 0;
+        margin: $space-sm 0 0;
         font-size: 0.9375rem;
         line-height: 1.6;
         color: var(--muted-foreground);

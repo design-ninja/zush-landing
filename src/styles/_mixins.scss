@@ -87,6 +87,32 @@
     }
 }
 
+@mixin hero-trust-row {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    white-space: nowrap;
+    color: color-mix(in oklch, var(--muted-foreground) 62%, var(--background));
+
+    li + li::before {
+        content: '·';
+        margin-right: 0.4rem;
+        opacity: 0.6;
+    }
+
+    @include mobile {
+        flex-wrap: wrap;
+        font-size: 0.8125rem;
+    }
+}
+
 @mixin text-ellipsis {
     white-space: nowrap;
     overflow: hidden;
