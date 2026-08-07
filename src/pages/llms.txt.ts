@@ -55,6 +55,7 @@ export async function GET() {
     `- [Rename Scanned Documents Automatically](${SITE_ORIGIN}/rename-scanned-documents)`,
     `- [Zush for Accountants & Bookkeepers](${SITE_ORIGIN}/for-accountants)`,
     `- [Zush for Medical Practices](${SITE_ORIGIN}/for-medical)`,
+    `- [Zush for Photographers & Videographers](${SITE_ORIGIN}/for-photographers)`,
     `- [Zush for Legal Teams](${SITE_ORIGIN}/for-legal)`,
     '',
     '## Comparisons and Buying Guides',

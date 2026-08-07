@@ -169,6 +169,16 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     keywords:
       'medical records file renamer, rename scanned medical records, medical document renamer, AI file renamer for medical records, offline AI medical document renamer, medical file renamer for clinics',
   },
+  '/for-photographers': {
+    title: 'AI File Renamer for Photographers & Videographers | Zush',
+    description:
+      'Rename RAW photos, JPEGs, and video clips by project, date, subject, scene, and take. Batch workflows for photographers and videographers on Mac and Windows.',
+    robots: 'index, follow',
+    ogType: 'website',
+    ogImage: `${SITE_ORIGIN}/images/landing/photographers-file-renamer.webp`,
+    keywords:
+      'AI file renamer for photographers, photo file naming software, video file renamer, batch rename RAW photos, rename video clips by content, photographer file naming workflow, videographer file organization, media file renamer',
+  },
   '/for-legal': {
     title: 'Organize Legal Documents with AI | Zush for Law Firms',
     description:

@@ -1,0 +1,42 @@
+---
+import PhotographersLandingPage from '@/components/PhotographersLandingPage/PhotographersLandingPage.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import {
+  PHOTOGRAPHERS_JSON_LD,
+  PHOTOGRAPHERS_PAGE_PATH,
+  PHOTOGRAPHERS_PAGE_TITLE,
+} from '@/data/photographersLanding';
+import { getCopy } from '@/i18n/copy';
+import { getSeoForPath } from '@/seo/config';
+import { buildFeatureBreadcrumbJsonLd, buildWebPageJsonLd } from '@/utils/jsonLd';
+
+const seo = getSeoForPath(PHOTOGRAPHERS_PAGE_PATH);
+const header = getCopy('en').header;
+const pageJsonLd = buildWebPageJsonLd({
+  pagePath: PHOTOGRAPHERS_PAGE_PATH,
+  title: PHOTOGRAPHERS_PAGE_TITLE,
+  description: seo.description,
+  mainEntityId: `https://zushapp.com${PHOTOGRAPHERS_PAGE_PATH}#software`,
+});
+
+const headerNav = [
+  { href: '#fields', label: header.features },
+  { href: '#privacy', label: header.security },
+  { href: '#pricing', label: header.pricing },
+  { href: '#faq', label: header.faq },
+  { href: '/blog', label: header.blog },
+];
+---
+
+<BaseLayout
+  seo={seo}
+  headerNav={headerNav}
+  disableTopOffset
+  jsonLd={[
+    pageJsonLd,
+    PHOTOGRAPHERS_JSON_LD,
+    buildFeatureBreadcrumbJsonLd(PHOTOGRAPHERS_PAGE_TITLE, PHOTOGRAPHERS_PAGE_PATH),
+  ]}
+>
+  <PhotographersLandingPage />
+</BaseLayout>
