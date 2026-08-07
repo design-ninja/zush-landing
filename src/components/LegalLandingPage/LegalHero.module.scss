@@ -1,335 +1,130 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
+// Full-bleed photo hero. The photo fills the section and runs under the floating
+// header; a theme-aware scrim keeps the dark hero text legible, and the photo
+// fades into the page background at the bottom (white in light theme, dark in
+// dark theme) so the demo video can sit over the fade.
 .Hero {
     position: relative;
     isolation: isolate;
     overflow: hidden;
-    padding: calc($navbar-height + 4rem) 0 5rem;
-    background:
-        linear-gradient(180deg, color-mix(in srgb, var(--primary), transparent 93%), transparent 58%),
-        var(--background);
+    min-height: min(86vh, 48rem);
+    display: flex;
+    // Content sits in the lower half so the attorney's face stays clear above it;
+    // the modest bottom padding keeps the demo video close underneath.
+    align-items: flex-end;
+    padding: calc($navbar-height + 3rem) 0 4.5rem;
 
     @include tablet {
-        padding: calc($navbar-height + 3rem) 0 4rem;
+        min-height: min(80vh, 40rem);
+        padding: calc($navbar-height + 2.5rem) 0 4rem;
     }
 
     @include mobile {
-        padding: calc($navbar-height + 2.25rem) 0 3.25rem;
+        min-height: 34rem;
+        padding: calc($navbar-height + 2rem) 0 3.5rem;
     }
 
-    &__Glow {
+    &__Media {
         position: absolute;
+        inset: 0;
+        z-index: -2;
+    }
+
+    &__Photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 70% 42%;
+
+        @include mobile {
+            object-position: 62% 40%;
+        }
+    }
+
+    // Light wash for text legibility + a hard fade to the page background at the
+    // bottom. `var(--background)` makes both theme-aware.
+    &__Scrim {
+        position: absolute;
+        inset: 0;
         z-index: -1;
-        width: min(56rem, 70vw);
-        aspect-ratio: 1;
-        top: -28rem;
-        right: -8rem;
-        border-radius: 50%;
-        background: radial-gradient(circle, color-mix(in srgb, var(--primary), transparent 72%), transparent 68%);
-        filter: blur(12px);
-        pointer-events: none;
+        background:
+            linear-gradient(
+                180deg,
+                color-mix(in srgb, var(--background), transparent 20%) 0%,
+                color-mix(in srgb, var(--background), transparent 40%) 26%,
+                color-mix(in srgb, var(--background), transparent 42%) 50%,
+                color-mix(in srgb, var(--background), transparent 20%) 72%,
+                color-mix(in srgb, var(--background), transparent 4%) 88%,
+                var(--background) 100%
+            );
     }
 
     &__Container {
         @include container;
 
-        display: grid;
-        grid-template-columns: minmax(0, 0.9fr) minmax(28rem, 1.1fr);
-        align-items: center;
-        gap: clamp(2.5rem, 6vw, 5.5rem);
-
-        @include tablet {
-            grid-template-columns: minmax(0, 1fr);
-            max-width: 46rem;
-        }
+        width: 100%;
     }
 
-    &__Copy {
-        min-width: 0;
+    &__Intro {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: 52rem;
+        margin-inline: auto;
     }
 
     &__Eyebrow {
-        display: inline-flex;
+        display: inline-block;
         margin: 0 0 $space-md;
-        padding: 0.34rem 0.82rem;
-        border: 1px solid color-mix(in srgb, var(--primary), transparent 78%);
+        padding: 0.3rem 0.8rem;
         border-radius: $radius-full;
-        background: color-mix(in srgb, var(--primary-soft), transparent 12%);
+        background: var(--primary-soft);
         color: var(--primary);
         font-size: 0.8125rem;
-        font-weight: 650;
+        font-weight: 600;
         letter-spacing: 0.01em;
     }
 
     &__Actions {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        gap: 0.8rem;
+        align-items: center;
+        gap: 0.65rem;
         margin-top: $space-xl;
-
-        @include tablet {
-            align-items: center;
-        }
     }
 
     &__Buttons {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
         gap: $space-sm;
-
-        @include mobile {
-            justify-content: center;
-        }
     }
 
     &__TrustRow {
-        display: flex;
-        flex-wrap: nowrap;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 0.4rem;
-        margin: 0;
-        padding: 0;
-        color: color-mix(in oklch, var(--muted-foreground) 62%, var(--background));
-        font-size: 0.875rem;
-        list-style: none;
-        white-space: nowrap;
-
-        li + li::before {
-            content: '·';
-            margin-right: 0.4rem;
-            opacity: 0.6;
-        }
-
-        @include tablet {
-            justify-content: center;
-        }
-
-        @include mobile {
-            flex-wrap: wrap;
-            font-size: 0.8125rem;
-        }
-    }
-
-    @include tablet {
-        &__Copy {
-            text-align: center;
-        }
+        @include hero-trust-row;
     }
 }
 
+// Doubled classes, same reason as documented in UseCases.module.scss: these
+// elements also carry a shared component class (`.Heading_h1`, `.Text_lg`) that
+// declares the same properties, so a single class here would tie on
+// specificity and the winner would depend on bundle order.
+//
+// Same clamp / wrap / 42rem cap as the homepage hero; a soft shadow keeps the
+// text crisp over the photo.
 .Hero__Title.Hero__Title {
     margin: 0 0 $space-md;
-    max-width: 38rem;
-    font-size: clamp(2.65rem, 5.6vw, 4.7rem);
-    line-height: 0.98;
-    letter-spacing: -0.052em;
+    font-size: clamp(2.4rem, 5.5vw, 3.5rem);
     text-wrap: balance;
-
-    @include tablet {
-        margin-inline: auto;
-    }
+    text-shadow: 0 1px 10px color-mix(in srgb, var(--background), transparent 25%);
 }
 
 .Hero__Subtitle.Hero__Subtitle {
-    max-width: 36rem;
     margin: 0;
-    line-height: 1.65;
+    max-width: 42rem;
     text-wrap: pretty;
-
-    @include tablet {
-        margin-inline: auto;
-    }
-}
-
-.Matter {
-    min-width: 0;
-    border: 1px solid color-mix(in srgb, var(--border), var(--foreground) 6%);
-    border-radius: 1.5rem;
-    background: color-mix(in srgb, var(--background), var(--muted) 34%);
-    box-shadow:
-        0 2.25rem 5rem color-mix(in srgb, var(--foreground), transparent 90%),
-        inset 0 1px 0 color-mix(in srgb, white, transparent 62%);
-    overflow: hidden;
-
-    &__Topbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: $space-md;
-        padding: 1.1rem 1.25rem;
-        border-bottom: 1px solid var(--border);
-    }
-
-    &__Label {
-        margin: 0 0 0.2rem;
-        color: var(--muted-foreground);
-        font-size: 0.6875rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-    }
-
-    &__Title {
-        margin: 0;
-        color: var(--foreground);
-        font-size: 0.9375rem;
-        font-weight: 700;
-    }
-
-    &__Status {
-        flex-shrink: 0;
-        padding: 0.28rem 0.62rem;
-        border-radius: $radius-full;
-        background: color-mix(in srgb, var(--success), transparent 87%);
-        color: color-mix(in srgb, var(--success), var(--foreground) 22%);
-        font-size: 0.6875rem;
-        font-weight: 700;
-    }
-
-    &__ColumnLabels {
-        display: grid;
-        grid-template-columns: minmax(0, 0.65fr) minmax(0, 1fr);
-        gap: 2.25rem;
-        padding: 0.75rem 1.25rem 0.35rem 4.5rem;
-        color: var(--muted-foreground);
-        font-size: 0.6875rem;
-        font-weight: 650;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-    }
-
-    &__Files {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        margin: 0;
-        padding: 0.4rem 0.75rem 0.85rem;
-        list-style: none;
-    }
-
-    &__Footer {
-        display: flex;
-        justify-content: space-between;
-        gap: $space-md;
-        padding: 0.85rem 1.25rem;
-        border-top: 1px solid var(--border);
-        color: var(--muted-foreground);
-        font-size: 0.75rem;
-    }
-
-    &__Undo {
-        color: var(--primary);
-        font-weight: 600;
-    }
-
-    @include mobile {
-        border-radius: 1.15rem;
-
-        &__ColumnLabels {
-            display: none;
-        }
-
-        &__Files {
-            padding-top: 0.8rem;
-        }
-
-        &__Footer {
-            flex-direction: column;
-            gap: 0.2rem;
-        }
-    }
-}
-
-.MatterFile {
-    display: grid;
-    grid-template-columns: 2.75rem minmax(0, 0.65fr) 1rem minmax(0, 1fr);
-    align-items: center;
-    gap: 0.65rem;
-    min-height: 4.1rem;
-    padding: 0.65rem 0.75rem;
-    border: 1px solid var(--border);
-    border-radius: 0.9rem;
-    background: var(--background);
-    animation: matter-row-in 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: var(--row-delay);
-
-    &__Type {
-        display: grid;
-        place-items: center;
-        width: 2.5rem;
-        height: 2.8rem;
-        border-radius: 0.65rem;
-        background: color-mix(in srgb, #ef4444, transparent 88%);
-        color: color-mix(in srgb, #ef4444, var(--foreground) 32%);
-        font-size: 0.58rem;
-        font-weight: 800;
-        letter-spacing: 0.035em;
-
-        &_docx {
-            background: color-mix(in srgb, #0ea5e9, transparent 87%);
-            color: color-mix(in srgb, #0ea5e9, var(--foreground) 30%);
-        }
-    }
-
-    &__Before,
-    &__After {
-        min-width: 0;
-        font-family: var(--font-mono);
-        font-size: 0.7rem;
-        line-height: 1.42;
-    }
-
-    &__Before {
-        color: var(--muted-foreground);
-        text-decoration: line-through;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
-    &__Arrow {
-        color: var(--primary);
-        font-size: 0.85rem;
-    }
-
-    &__After {
-        color: var(--foreground);
-        font-weight: 650;
-        overflow-wrap: anywhere;
-    }
-
-    @include mobile {
-        grid-template-columns: 2.75rem minmax(0, 1fr);
-        gap: 0.3rem 0.65rem;
-        min-height: 0;
-
-        &__Type {
-            grid-row: 1 / 3;
-        }
-
-        &__Before,
-        &__After {
-            font-size: 0.65rem;
-        }
-
-        &__Arrow {
-            display: none;
-        }
-    }
-}
-
-@keyframes matter-row-in {
-    from {
-        opacity: 0;
-        transform: translateY(0.5rem);
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .MatterFile {
-        animation: none;
-    }
+    text-shadow: 0 1px 8px color-mix(in srgb, var(--background), transparent 35%);
 }

@@ -1,223 +1,246 @@
 import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 
 export const LEGAL_PAGE_PATH = '/for-legal';
+export const LEGAL_PAGE_TITLE = 'Organize Legal Documents with AI';
 
 export const LEGAL_HERO = {
-  eyebrow: 'Legal document file renamer',
-  titleLead: 'Turn every matter folder into a ',
-  titleAccent: 'case chronology',
+  eyebrow: 'For law firms and legal teams',
+  titleLead: 'Organize legal documents ',
+  titleAccent: 'with AI',
   subtitle:
-    'Zush reads filings, agreements, drafts, and scans, then names each file by matter, date, document type, party, or any field your firm defines. Preview every batch before it changes and undo it anytime.',
+    'Turn pleadings, contracts, correspondence, discovery, and scans into searchable, matter-based case files. Zush works with your existing folders, shared drives, and DMS exports on Mac or Windows.',
   trustLine: [
-    'Local Offline AI',
-    'Firm-controlled BYOK',
-    'Preview and undo every batch',
+    'Works with your existing folders',
+    'Offline AI for confidential files',
+    'Preview before every rename',
   ],
+  photo: {
+    alt: 'An attorney organizing legal case documents at a desktop computer',
+  },
 } as const;
 
-export type LegalFileType = 'pdf' | 'docx';
-
-export const LEGAL_HERO_FILES = [
-  {
-    before: 'download (3).pdf',
-    after: '2026-0142 – 2026-05-06 – Complaint – SDNY.pdf',
-    type: 'pdf' as LegalFileType,
-  },
-  {
-    before: 'ltr_draft_final2.docx',
-    after: '2026-0142 – 2026-06-10 – Demand Letter – v03.docx',
-    type: 'docx' as LegalFileType,
-  },
-  {
-    before: 'doc (7).pdf',
-    after: '2026-0142 – 2026-06-12 – Order – Discovery.pdf',
-    type: 'pdf' as LegalFileType,
-  },
-  {
-    before: 'Scan_0048.pdf',
-    after: '2026-0142 – 2026-06-13 – Correspondence – Counsel.pdf',
-    type: 'pdf' as LegalFileType,
-  },
-] as const;
-
-export const LEGAL_AUDIENCES = [
-  {
-    label: 'Litigation teams',
-    title: 'A folder that reads in procedural order',
-    description:
-      'E-filing downloads, correspondence, orders, exhibits, and scanner output share one matter-first convention, so sorting by name reveals the sequence of the case.',
-    example: '2026-0142 – 2026-06-12 – Order – Discovery.pdf',
-  },
-  {
-    label: 'Transactional practices',
-    title: 'Drafts and executed copies stay distinct',
-    description:
-      'Name agreements by client, agreement type, counterparty, status, and version without asking every author to type the same pattern by hand.',
-    example: 'Northwind – NDA – Meridian – Executed – 2026-06-01.pdf',
-  },
-  {
-    label: 'Legal operations',
-    title: 'One convention across every intake channel',
-    description:
-      'Apply reusable Templates to email saves, download folders, shared drives, and scanner output while keeping preview and undo in the workflow.',
-    example: '2026-0158 – 2026-06-09 – Filing Receipt – SDNY.pdf',
-  },
-] as const;
-
 export interface LegalField {
-  id: string;
   label: string;
-  example: string;
+  before: string;
+  after: string;
+  emphasis?: string;
 }
 
 export const LEGAL_FIELDS: LegalField[] = [
-  { id: 'matter', label: 'Matter number', example: '2026-0142' },
-  { id: 'date', label: 'Document date', example: '2026-06-12' },
-  { id: 'type', label: 'Document type', example: 'Order' },
-  { id: 'subject', label: 'Subject', example: 'Discovery' },
-  { id: 'party', label: 'Party', example: 'Meridian LLC' },
-  { id: 'status', label: 'Status', example: 'Executed' },
-  { id: 'version', label: 'Version', example: 'v03' },
-  { id: 'court', label: 'Court / venue', example: 'SDNY' },
+  { label: 'Matter number', before: 'document (7).pdf', after: '2026-0142 – 2026-06-12 – Discovery Order', emphasis: '2026-0142' },
+  { label: 'Document date', before: 'scan_0048.pdf', after: '2026-0142 – 2026-06-13 – Counsel Letter', emphasis: '2026-06-13' },
+  { label: 'Document type', before: 'download (3).pdf', after: '2026-0142 – 2026-05-06 – Complaint', emphasis: 'Complaint' },
+  { label: 'Client', before: 'signed_final.pdf', after: 'Northwind – 2026-06-01 – NDA – Executed', emphasis: 'Northwind' },
+  { label: 'Party / Counterparty', before: 'contract_v2.docx', after: 'Northwind – NDA – Meridian – Draft v02', emphasis: 'Meridian' },
+  { label: 'Court / Venue', before: 'efile.pdf', after: '2026-0142 – 2026-05-29 – Answer – SDNY', emphasis: 'SDNY' },
+  { label: 'Status', before: 'agreement.pdf', after: 'Northwind – Services Agreement – Executed', emphasis: 'Executed' },
+  { label: 'Version', before: 'ltr_draft_final2.docx', after: '2026-0142 – Demand Letter – v03', emphasis: 'v03' },
+  { label: 'Author / Counsel', before: 'correspondence.pdf', after: '2026-0142 – 2026-06-13 – Letter – J. Chen', emphasis: 'J. Chen' },
+  { label: 'Custom field — describe it in plain language', before: 'Scan0091.pdf', after: '2026-0158 – Exhibit B – Invoice Set', emphasis: 'Exhibit B' },
 ];
 
-export const LEGAL_PRIVACY_MODES = [
+export interface LegalPrivacyMode {
+  id: 'cloud' | 'byok' | 'offline';
+  kind: 'cloud-ai' | 'byok' | 'offline-ai';
+  title: string;
+  badge?: string;
+  badgeTone?: 'success';
+  description: string;
+}
+
+export const LEGAL_PRIVACY_MODES: LegalPrivacyMode[] = [
   {
     id: 'offline',
     kind: 'offline-ai',
     title: 'Offline AI with local models',
-    badge: 'For confidential work',
-    badgeTone: 'success' as const,
+    badge: 'Keep files on the machine',
+    badgeTone: 'success',
     description:
-      'Analyze supported documents with local Ollama models on the Mac or Windows PC where they are stored. File content is not sent to Zush or an AI provider.',
+      'Organize supported case files with local Ollama models on the Mac or Windows PC where they are stored. Document content is not sent to Zush or an AI provider.',
   },
   {
     id: 'byok',
     kind: 'byok',
-    title: 'Firm-controlled BYOK',
-    badge: 'Your provider account',
+    title: 'Use your firm’s AI account',
+    badge: 'BYOK',
     description:
-      'Use the AI provider account, key, and model your firm controls. The key stays in secure local storage and your team chooses the provider used for analysis.',
+      'Connect the AI provider account and model approved by your firm. The API key stays in secure local storage, while the provider processes the documents you choose.',
   },
   {
     id: 'cloud',
     kind: 'cloud-ai',
-    title: 'Managed Cloud AI',
+    title: 'Start with managed AI',
     badge: 'Fastest setup',
     description:
-      'Use the managed service for general documents when it matches your firm’s policy. Files are renamed in place and are not stored by Zush.',
+      'Use Zush-managed AI for non-confidential documents and quick evaluation. Choose Offline AI or BYOK when client files require a different processing policy.',
   },
-] as const;
+];
+
+export const LEGAL_PRIVACY_NOTE =
+  'Zush never becomes the repository for your case files: it renames documents in place and does not store them. Your firm chooses how document content is processed for each workflow.';
 
 export const LEGAL_WORKFLOW = [
   {
-    label: 'Template',
-    title: 'Define the firm convention once',
+    title: 'Define the matter naming rule',
     description:
-      'Combine matter number, date, document type, party, status, and Custom AI Blocks in the order your team already uses.',
+      'Build a Template from the client or matter number, document date, type, party, status, version, and any field your practice uses.',
   },
   {
-    label: 'Review',
-    title: 'Read every proposed filename',
+    title: 'Run it on intake or an archive',
     description:
-      'Zush shows the full batch before applying it. Regenerate a weak result, edit one name, or stop the run without changing the source files.',
+      'Organize a copied case folder, downloaded filings, scanner output, or a DMS export without moving the documents into a new platform.',
   },
   {
-    label: 'Monitor',
-    title: 'Keep intake folders organized',
+    title: 'Approve the matter-ready filenames',
     description:
-      'Assign the Template to e-filing downloads or scanner output, then let the same convention handle new arrivals with rename history and undo.',
+      'Review the whole batch, correct exceptions, and apply it with rename history. Then monitor recurring intake folders with the same rule.',
   },
-] as const;
+];
 
 export const LEGAL_DOCUMENT_TYPES = [
   {
     title: 'Court filings',
-    description: 'Complaints, answers, motions, orders, notices, and e-filing receipts.',
-    example: '2026-0142 – 2026-05-29 – Answer – Meridian LLC.pdf',
+    description:
+      'Name complaints, answers, motions, orders, notices, and e-filing receipts by matter, date, document type, and venue.',
+    example: '2026-0142 – 2026-05-29 – Answer – SDNY.pdf',
   },
   {
     title: 'Contracts and agreements',
-    description: 'Drafts, redlines, clean copies, and executed agreements across matters.',
+    description:
+      'Keep drafts, redlines, clean copies, and executed agreements distinct across clients and counterparties.',
     example: 'Northwind – NDA – Meridian – Executed – 2026-06-01.pdf',
   },
   {
     title: 'Correspondence',
-    description: 'Demand letters, client letters, and communications with opposing counsel.',
+    description:
+      'Organize demand letters, client letters, and communications with opposing counsel in chronological order.',
     example: '2026-0142 – 2026-06-10 – Demand Letter – v03.docx',
   },
   {
     title: 'Discovery and exhibits',
-    description: 'Productions, responses, exhibit sets, deposition materials, and evidence scans.',
+    description:
+      'Name productions, responses, exhibit sets, deposition materials, and evidence scans by matter-specific fields.',
     example: '2026-0158 – 2026-06-11 – Exhibit B – Invoice Set.pdf',
   },
   {
     title: 'Internal work product',
-    description: 'Research, interview notes, strategy memos, and deposition preparation.',
+    description:
+      'Apply the same convention to research, interview notes, strategy memos, and deposition preparation files.',
     example: '2026-0142 – 2026-06-12 – Memo – Deposition Prep.docx',
   },
   {
     title: 'Scanner output',
-    description: 'Image-only PDFs and paper correspondence with no useful source filename.',
+    description:
+      'Turn image-only PDFs and paper correspondence with generic source names into searchable matter files.',
     example: '2026-0158 – 2026-06-13 – Correspondence – Counsel.pdf',
   },
-] as const;
+];
+
+export interface LegalAudience {
+  title: string;
+  description: string;
+  icon: 'attorney' | 'paralegal' | 'operations';
+}
+
+export const LEGAL_AUDIENCES: LegalAudience[] = [
+  {
+    title: 'Small firms working from shared folders',
+    description:
+      'Keep case files understandable across Finder, File Explorer, OneDrive, Dropbox, or a network drive without buying another document repository.',
+    icon: 'attorney',
+  },
+  {
+    title: 'Litigation and paralegal teams',
+    description:
+      'Turn downloaded pleadings, productions, exhibits, correspondence, and scanner output into a chronological matter folder before filing or review.',
+    icon: 'paralegal',
+  },
+  {
+    title: 'Legal ops and DMS administrators',
+    description:
+      'Standardize filenames at intake, migration, and export so documents keep their context when they move between systems or leave the DMS.',
+    icon: 'operations',
+  },
+];
+
+export const LEGAL_ORGANIZATION_OUTCOMES = [
+  {
+    title: 'Find the right document before opening it',
+    description:
+      'Matter number, document type, party, and status turn a folder listing into a useful index instead of a wall of downloads and scan numbers.',
+  },
+  {
+    title: 'Read the case chronology at a glance',
+    description:
+      'Put the document date in a consistent ISO format and the matter folder sorts into a timeline of filings, letters, agreements, and events.',
+  },
+  {
+    title: 'Preserve context outside the DMS',
+    description:
+      'Self-describing filenames remain useful in email attachments, client exports, shared drives, discovery sets, and closed-matter archives.',
+  },
+];
 
 export const LEGAL_FAQ = [
   {
-    question: 'How does Zush name legal documents?',
+    question: 'What is the best way to organize legal documents?',
     answer:
-      'Zush reads each filing, contract, draft, or scan and extracts the fields your Template asks for — such as matter number, document date, document type, party, status, or version. It then proposes a complete filename for review before anything changes.',
+      'Organize documents by client and matter, then use a consistent filename built from the matter number, document date, document type, party, and version or status. This makes each folder searchable and chronological while keeping the convention portable across shared drives, exports, and document management systems.',
   },
   {
-    question: 'Can legal documents be processed without leaving the machine?',
+    question: 'Can AI organize legal documents automatically?',
     answer:
-      'Yes. Offline AI uses supported local Ollama models on Mac or Windows, so document analysis stays on that machine. BYOK is also available when your firm prefers to route analysis through its own AI provider account and key.',
+      'Yes. Zush reads the contents of PDFs, Word documents, and scans, extracts the fields defined in your Template, and proposes consistent filenames for the batch. A person reviews the results before any filenames change.',
   },
   {
-    question: 'Does Zush store client files?',
+    question: 'Does Zush replace legal document management software?',
     answer:
-      'No. Zush renames files in place and does not store them. The AI processing path depends on the mode you choose: managed Cloud AI, firm-controlled BYOK, or local Offline AI.',
+      'No. Zush is an organization layer for the documents around your DMS: intake folders, shared drives, downloaded filings, scanner output, migration batches, and exports. It renames files in place and does not provide document storage, access control, legal research, or matter management.',
   },
   {
-    question: 'Can it extract our matter numbers?',
+    question: 'Can Zush organize confidential case files without uploading them?',
     answer:
-      'Yes. A Custom AI Block is a reusable plain-language extraction rule, such as “the matter number, formatted YYYY-NNNN.” Put that block anywhere in a Template alongside date, document type, party, or other fields.',
+      'Yes. In Offline AI mode, supported files are analyzed with local Ollama models on Mac or Windows, so document content stays on that machine. Zush renames files in place and does not store them.',
   },
   {
-    question: 'What about court filings and scanner output?',
+    question: 'How can a law firm organize old case files?',
     answer:
-      'Zush handles both e-filing downloads and image-only scanner PDFs. Folder monitoring can watch those intake folders, while AI vision reads scanned pages without a separate OCR workflow.',
+      'Start with a copied closed-matter folder, define a Template for the fields already present in those documents, and preview the proposed names in batches. Once the rule is reliable, apply it to the archive with rename history available for undo.',
   },
   {
-    question: 'Does Zush handle Word documents and drafts, not just PDFs?',
+    question: 'Can Zush extract matter numbers from legal documents?',
     answer:
-      'Yes. Zush reads DOCX and other supported Office and iWork formats as well as PDFs and scans, so drafts can use the same matter, date, document-type, status, and version convention as filed documents.',
+      'Yes. Add a Custom AI Block that describes the matter or case number and its required format. The block can appear alongside document date, type, party, venue, status, version, or other firm-specific fields in the naming Template.',
   },
   {
-    question: 'Can a batch be reviewed or reversed?',
+    question: 'Does it organize court filings and scanned legal documents?',
     answer:
-      'Yes. Every proposed filename is shown before applying. Rename history can undo an applied batch, which makes it safe to refine a Template and run the copied test folder again.',
+      'Yes. Zush can read e-filing PDFs and image-only scanner output with AI vision, without a separate OCR step. Folder monitoring can watch the locations where those documents arrive.',
+  },
+  {
+    question: 'Can it distinguish drafts, redlines, and executed copies?',
+    answer:
+      'Yes. Include status and version fields in a transactional Template so each proposed filename identifies whether the document is a draft, redline, clean copy, or executed agreement.',
   },
 ];
 
 export const LEGAL_JSON_LD = buildFeaturePageJsonLd({
   howTo: {
-    name: 'Set up AI document renaming for legal work',
+    name: 'How to organize legal documents automatically with AI',
     description:
-      'Use Zush to keep filings, contracts, drafts, and scans named by matter, date, type, and party on Mac and Windows.',
+      'Use Zush to organize pleadings, agreements, correspondence, discovery, and scans into searchable, matter-based case files.',
     steps: [
       {
-        name: 'Choose the processing mode',
-        text: 'Use local Offline AI, firm-controlled BYOK, or managed Cloud AI according to the policy that applies to the documents.',
+        name: 'Define the matter naming convention',
+        text: 'Choose the matter number, date, document type, party, status, version, and firm-specific fields that make each file identifiable.',
       },
       {
-        name: 'Build a matter Template',
-        text: 'Combine matter number, date, document type, party, status, version, and any firm-specific Custom AI Blocks.',
+        name: 'Organize an intake or archive folder',
+        text: 'Run the Template on a copied case folder, downloaded filings, scanner output, shared drive, or document management system export.',
       },
       {
-        name: 'Review and monitor intake',
-        text: 'Preview every proposed filename, apply with undo history, and assign the Template to e-filing or scanner folders.',
+        name: 'Review and apply the filenames',
+        text: 'Check the proposed batch, correct exceptions, apply it with undo history, and reuse the same Template for recurring intake.',
       },
     ],
   },
@@ -225,16 +248,16 @@ export const LEGAL_JSON_LD = buildFeaturePageJsonLd({
   software: {
     pagePath: LEGAL_PAGE_PATH,
     description:
-      'AI document renamer for law firms and legal teams on Mac and Windows. Zush names filings, contracts, drafts, and scans by matter, date, type, party, and firm-specific fields.',
-    applicationSubCategory: 'Legal Document Management',
+      'AI legal document organizer for law firms on Mac and Windows. Zush turns inconsistent filenames into searchable, matter-based case files without replacing the firm’s document management system.',
+    applicationSubCategory: 'Legal File Organization Software',
     featureList: [
-      'Name legal documents by matter, date, type, party, status, and version',
+      'Organize legal documents into searchable, matter-based case files',
+      'Standardize filenames across folders, shared drives, and DMS exports',
       'Extract firm-specific fields with Custom AI Blocks',
       'Read PDFs, Word documents, and image-only scans',
       'Offline AI mode with local Ollama models',
       'BYOK through a provider account controlled by the firm',
       'Preview every batch before applying, with undo history',
-      'Folder monitoring for e-filing downloads and scanner output',
     ],
   },
 });

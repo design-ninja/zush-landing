@@ -1,20 +1,36 @@
 ---
+import { Image } from 'astro:assets';
+import heroPhoto from '@/assets/landing/legal-hero.webp';
 import DownloadButton from '@/components/DownloadButton';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
-import { LEGAL_HERO, LEGAL_HERO_FILES } from '@/data/legalLanding';
+import { LEGAL_HERO } from '@/data/legalLanding';
 import styles from './LegalHero.module.scss';
 ---
 
-<section class={styles.Hero} aria-labelledby='legal-hero-title'>
-  <div class={styles.Hero__Glow} aria-hidden='true'></div>
+<section class={styles.Hero} aria-labelledby="legal-hero-title">
+  <div class={styles.Hero__Media} aria-hidden="true">
+    <Image
+      class={styles.Hero__Photo}
+      src={heroPhoto}
+      alt={LEGAL_HERO.photo.alt}
+      widths={[640, 960, 1216, 1408]}
+      sizes="100vw"
+      loading="eager"
+      decoding="async"
+    />
+  </div>
+  <div class={styles.Hero__Scrim} aria-hidden="true"></div>
+
   <div class={styles.Hero__Container}>
-    <div class={styles.Hero__Copy}>
+    <div class={styles.Hero__Intro}>
       <p class={styles.Hero__Eyebrow}>{LEGAL_HERO.eyebrow}</p>
-      <Heading as='h1' id='legal-hero-title' className={styles.Hero__Title}>
-        {LEGAL_HERO.titleLead}<span class='brand-accent-text'>{LEGAL_HERO.titleAccent}</span>
+
+      <Heading as="h1" align="center" id="legal-hero-title" className={styles.Hero__Title}>
+        {LEGAL_HERO.titleLead}<span class="brand-accent-text">{LEGAL_HERO.titleAccent}</span>
       </Heading>
-      <Text as='p' size='lg' color='subtle' className={styles.Hero__Subtitle}>
+
+      <Text as="p" size="lg" color="subtle" align="center" className={styles.Hero__Subtitle}>
         {LEGAL_HERO.subtitle}
       </Text>
 
@@ -22,57 +38,25 @@ import styles from './LegalHero.module.scss';
         <div class={styles.Hero__Buttons}>
           <DownloadButton
             client:visible
-            source='hero'
-            size='lg'
-            forceOS='mac'
+            source="hero"
+            size="lg"
+            forceOS="mac"
             showDropdown={false}
-            label='Download for Mac'
+            label="Download for Mac"
           />
           <DownloadButton
             client:visible
-            source='hero'
-            size='lg'
-            forceOS='windows'
+            source="hero"
+            size="lg"
+            forceOS="windows"
             showDropdown={false}
-            label='Download for Windows'
+            label="Download for Windows"
           />
         </div>
-        <ul class={styles.Hero__TrustRow} aria-label='Controls for legal document workflows'>
+
+        <ul class={styles.Hero__TrustRow} aria-label="Controls for legal document workflows">
           {LEGAL_HERO.trustLine.map((item) => <li>{item}</li>)}
         </ul>
-      </div>
-    </div>
-
-    <div class={styles.Matter} aria-label='Example matter folder transformed into a chronological file list'>
-      <div class={styles.Matter__Topbar}>
-        <div>
-          <p class={styles.Matter__Label}>Matter folder</p>
-          <p class={styles.Matter__Title}>2026-0142 · Meridian LLC</p>
-        </div>
-        <span class={styles.Matter__Status}>Ready to review</span>
-      </div>
-
-      <div class={styles.Matter__ColumnLabels} aria-hidden='true'>
-        <span>Source file</span>
-        <span>Proposed name</span>
-      </div>
-
-      <ul class={styles.Matter__Files}>
-        {LEGAL_HERO_FILES.map((file, index) => (
-          <li class={styles.MatterFile} style={`--row-delay: ${index * 90}ms`}>
-            <span class:list={[styles.MatterFile__Type, file.type === 'docx' && styles.MatterFile__Type_docx]}>
-              {file.type.toUpperCase()}
-            </span>
-            <span class={styles.MatterFile__Before}>{file.before}</span>
-            <span class={styles.MatterFile__Arrow} aria-hidden='true'>→</span>
-            <span class={styles.MatterFile__After}>{file.after}</span>
-          </li>
-        ))}
-      </ul>
-
-      <div class={styles.Matter__Footer}>
-        <span>4 filenames proposed</span>
-        <span class={styles.Matter__Undo}>Preview first · Undo anytime</span>
       </div>
     </div>
   </div>

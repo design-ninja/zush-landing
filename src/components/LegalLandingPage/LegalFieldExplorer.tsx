@@ -1,72 +1,67 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { Check, FileText } from 'lucide-react';
 import { LEGAL_FIELDS } from '@/data/legalLanding';
 import styles from './LegalFieldExplorer.module.scss';
 
-const INITIAL_FIELDS = ['matter', 'date', 'type', 'subject'];
+const splitEmphasis = (after: string, emphasis?: string) => {
+  if (!emphasis) return { pre: after, hit: '', post: '' };
+  const index = after.indexOf(emphasis);
+  if (index < 0) return { pre: after, hit: '', post: '' };
+
+  return {
+    pre: after.slice(0, index),
+    hit: emphasis,
+    post: after.slice(index + emphasis.length),
+  };
+};
 
 export const LegalFieldExplorer = () => {
-  const [selectedFields, setSelectedFields] = useState<string[]>(INITIAL_FIELDS);
-
-  const proposedName = useMemo(() => {
-    const values = LEGAL_FIELDS
-      .filter((field) => selectedFields.includes(field.id))
-      .map((field) => field.example);
-
-    return `${values.length > 0 ? values.join(' – ') : 'Choose at least one field'}.pdf`;
-  }, [selectedFields]);
-
-  const toggleField = (fieldId: string) => {
-    setSelectedFields((current) => (
-      current.includes(fieldId)
-        ? current.filter((id) => id !== fieldId)
-        : [...current, fieldId]
-    ));
-  };
+  const [selected, setSelected] = useState(0);
+  const field = LEGAL_FIELDS[selected];
+  const { pre, hit, post } = splitEmphasis(field.after, field.emphasis);
 
   return (
     <div className={styles.Explorer}>
-      <div className={styles.Explorer__Fields}>
-        <p className={styles.Explorer__Label}>Fields in this Template</p>
-        <div className={styles.Explorer__Chips}>
-          {LEGAL_FIELDS.map((field) => {
-            const isSelected = selectedFields.includes(field.id);
+      <p className={styles.Explorer__Label}>Tap a field to see the result</p>
 
-            return (
-              <button
-                key={field.id}
-                type="button"
-                className={`${styles.FieldChip} ${isSelected ? styles.FieldChip_selected : ''}`}
-                aria-pressed={isSelected}
-                onClick={() => toggleField(field.id)}
-              >
-                <span className={styles.FieldChip__Check} aria-hidden="true">
-                  {isSelected && <Check size={13} strokeWidth={2.8} />}
-                </span>
-                <span>{field.label}</span>
-              </button>
-            );
-          })}
+      <div className={styles.Explorer__Chips} role="tablist" aria-label="Fields Zush reads">
+        {LEGAL_FIELDS.map((item, index) => (
+          <button
+            key={item.label}
+            type="button"
+            role="tab"
+            aria-selected={index === selected}
+            className={styles.Explorer__Chip}
+            data-active={index === selected ? 'true' : undefined}
+            onClick={() => setSelected(index)}
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
+
+      <div className={styles.Explorer__Stage}>
+        <div key={selected} className={styles.Card}>
+          <span className={styles.Card__Icon} aria-hidden="true">
+            <FileText size={18} strokeWidth={2.2} />
+          </span>
+          <span className={styles.Card__Before}>{field.before}</span>
+          <span className={styles.Card__Arrow} aria-hidden="true">→</span>
+          <span className={styles.Card__After}>
+            {pre}
+            {hit && <span className={styles.Card__Hit}>{hit}</span>}
+            {post}
+          </span>
+          <span className={styles.Card__Check} aria-hidden="true">
+            <Check size={11} strokeWidth={3} />
+          </span>
         </div>
       </div>
 
-      <div className={styles.Preview} aria-live="polite">
-        <div className={styles.Preview__Header}>
-          <span className={styles.Preview__Icon}><FileText size={18} aria-hidden="true" /></span>
-          <div>
-            <p className={styles.Preview__Label}>Source file</p>
-            <p className={styles.Preview__Before}>doc (7).pdf</p>
-          </div>
-        </div>
-        <span className={styles.Preview__Divider} aria-hidden="true"></span>
-        <div>
-          <p className={styles.Preview__Label}>Proposed filename</p>
-          <p className={styles.Preview__After}>{proposedName}</p>
-        </div>
-        <p className={styles.Preview__Note}>
-          Custom AI Blocks can extract any additional field your firm describes in plain language.
-        </p>
-      </div>
+      <p className={styles.Explorer__Hint}>
+        Your Template decides which fields appear in the filename. Run the extraction locally
+        with Offline AI, or through the provider account your firm controls with BYOK.
+      </p>
     </div>
   );
 };

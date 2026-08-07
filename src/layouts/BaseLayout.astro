@@ -44,6 +44,8 @@ interface Props {
    * `wide`; everything else lines up with the 60rem content container.
    */
   headerWidth?: HeaderWidth;
+  /** Override the primary nav for standalone pages with in-page sections. */
+  headerNav?: { href: string; label: string }[];
   /**
    * Explicit hreflang cluster, for pages whose translations are not driven by
    * LOCALIZED_ROUTES (blog posts). When provided it replaces the localized-route
@@ -62,6 +64,7 @@ const {
   disableTopOffset = false,
   locale = DEFAULT_LOCALE,
   headerWidth = 'default',
+  headerNav,
   alternates,
 } = Astro.props;
 
@@ -301,6 +304,7 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
           locale={locale}
           route={route}
           width={headerWidth}
+          navItems={headerNav}
         />
       )}
       <main

@@ -1,26 +1,36 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import LegalLandingPage from '@/components/LegalLandingPage/LegalLandingPage.astro';
-import { LEGAL_JSON_LD, LEGAL_PAGE_PATH } from '@/data/legalLanding';
+import { LEGAL_JSON_LD, LEGAL_PAGE_PATH, LEGAL_PAGE_TITLE } from '@/data/legalLanding';
 import { getSeoForPath } from '@/seo/config';
+import { getCopy } from '@/i18n/copy';
 import { buildFeatureBreadcrumbJsonLd, buildWebPageJsonLd } from '@/utils/jsonLd';
 
 const seo = getSeoForPath(LEGAL_PAGE_PATH);
+const header = getCopy('en').header;
 const pageJsonLd = buildWebPageJsonLd({
   pagePath: LEGAL_PAGE_PATH,
-  title: 'Legal Document File Renamer for Law Firms',
+  title: LEGAL_PAGE_TITLE,
   description: seo.description,
 });
+
+const headerNav = [
+  { href: '#fields', label: header.features },
+  { href: '#privacy', label: header.security },
+  { href: '#pricing', label: header.pricing },
+  { href: '#faq', label: header.faq },
+  { href: '/blog', label: header.blog },
+];
 ---
 
 <BaseLayout
   seo={seo}
-  headerWidth='container'
+  headerNav={headerNav}
   disableTopOffset
   jsonLd={[
     pageJsonLd,
     LEGAL_JSON_LD,
-    buildFeatureBreadcrumbJsonLd('Legal Document File Renamer', LEGAL_PAGE_PATH),
+    buildFeatureBreadcrumbJsonLd(LEGAL_PAGE_TITLE, LEGAL_PAGE_PATH),
   ]}
 >
   <LegalLandingPage />

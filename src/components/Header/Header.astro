@@ -18,6 +18,11 @@ import logoStyles from '@/components/Logo/Logo.module.scss';
 import type { HeaderWidth } from './types';
 import styles from './Header.module.scss';
 
+interface NavItem {
+  href: string;
+  label: string;
+}
+
 interface Props {
   forceOS?: DownloadOS;
   basePath?: string;
@@ -30,6 +35,7 @@ interface Props {
    * ignore it — there the pill always spans the viewport.
    */
   width?: HeaderWidth;
+  navItems?: NavItem[];
 }
 
 const {
@@ -39,6 +45,7 @@ const {
   route = '/',
   hideDownload = false,
   width = 'default',
+  navItems: navItemsOverride,
 } = Astro.props as Props;
 const localeCopy = getCopy(locale);
 const copy = localeCopy.header;
@@ -49,7 +56,7 @@ const pricingHref = `${basePath}#pricing`;
 const faqHref = `${basePath}#faq`;
 const homeHref = getLocalizedPath('/', locale);
 const blogHref = '/blog';
-const navItems = [
+const navItems = navItemsOverride ?? [
   { href: featuresHref, label: copy.features },
   { href: securityHref, label: copy.security },
   { href: pricingHref, label: copy.pricing },

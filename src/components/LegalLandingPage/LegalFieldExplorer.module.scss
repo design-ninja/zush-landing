@@ -2,149 +2,192 @@
 @use '../../styles/mixins' as *;
 
 .Explorer {
-    display: grid;
-    grid-template-columns: minmax(0, 0.82fr) minmax(25rem, 1.18fr);
-    gap: clamp(2rem, 6vw, 5rem);
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    max-width: 60rem;
+    text-align: center;
+    max-width: 46rem;
     margin: $space-2xl auto 0;
-
-    @include tablet {
-        grid-template-columns: minmax(0, 1fr);
-        max-width: 42rem;
-    }
 
     &__Label {
         margin: 0 0 $space-md;
-        color: var(--muted-foreground);
         font-size: 0.75rem;
-        font-weight: 700;
-        letter-spacing: 0.07em;
+        font-weight: 600;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
+        color: var(--muted-foreground);
     }
 
     &__Chips {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.55rem;
+        justify-content: center;
+        gap: 0.5rem;
     }
-}
 
-.FieldChip {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    min-height: 2.5rem;
-    padding: 0.55rem 0.75rem;
-    border: 1px solid var(--border);
-    border-radius: 0.72rem;
-    background: var(--background);
-    color: var(--muted-foreground);
-    font: inherit;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: border-color 160ms ease, background 160ms ease, color 160ms ease, transform 160ms ease;
-
-    &:hover {
-        border-color: color-mix(in srgb, var(--primary), transparent 55%);
+    // Selectable tag-buttons — the same pill as <Tag mono>, plus states.
+    &__Chip {
+        padding: 0.4rem 0.75rem;
+        border: 1px solid var(--border);
+        border-radius: $radius-full;
+        background: var(--muted);
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        line-height: 1.3;
         color: var(--foreground);
-        transform: translateY(-1px);
+        white-space: nowrap;
+        cursor: pointer;
+        transition: background-color $transition-fast, border-color $transition-fast, color $transition-fast;
+
+        &:hover {
+            border-color: color-mix(in oklch, var(--primary), transparent 55%);
+        }
+
+        &[data-active='true'] {
+            background: var(--primary-soft);
+            border-color: color-mix(in oklch, var(--primary), transparent 45%);
+            color: var(--primary);
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
     }
 
-    &:focus-visible {
-        outline: 2px solid var(--primary);
-        outline-offset: 2px;
+    &__Stage {
+        width: 100%;
+        max-width: 40rem;
+        margin: $space-xl auto 0;
+        padding: $space-lg;
+        border-radius: 1.25rem;
+        background: var(--muted);
+
+        @include mobile {
+            padding: $space-md;
+        }
     }
 
-    &_selected {
-        border-color: color-mix(in srgb, var(--primary), transparent 45%);
-        background: var(--primary-soft);
-        color: var(--primary);
-    }
-
-    &__Check {
-        display: grid;
-        place-items: center;
-        width: 1.05rem;
-        height: 1.05rem;
-        border: 1px solid currentColor;
-        border-radius: 0.32rem;
+    &__Hint {
+        max-width: 34rem;
+        margin: $space-lg auto 0;
+        font-size: 0.8125rem;
+        line-height: 1.55;
+        color: var(--muted-foreground);
     }
 }
 
-.Preview {
-    padding: 1.3rem;
+.Card {
+    display: grid;
+    grid-template-columns: 34px max-content 16px minmax(0, 1fr) 16px;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    background: var(--background);
     border: 1px solid var(--border);
-    border-radius: 1.35rem;
-    background: color-mix(in srgb, var(--muted), var(--background) 52%);
-    box-shadow: 0 1.5rem 4rem color-mix(in srgb, var(--foreground), transparent 94%);
+    border-radius: 13px;
+    text-align: left;
+    animation: card-in 260ms ease both;
 
-    &__Header {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
+    @include mobile {
+        grid-template-columns: 28px minmax(0, 1fr);
+        grid-auto-rows: auto;
+        row-gap: 6px;
     }
 
     &__Icon {
-        display: grid;
-        place-items: center;
-        width: 2.65rem;
-        height: 2.65rem;
-        border-radius: 0.72rem;
-        background: color-mix(in srgb, #ef4444, transparent 88%);
-        color: color-mix(in srgb, #ef4444, var(--foreground) 28%);
-    }
-
-    &__Label {
-        margin: 0 0 0.28rem;
-        color: var(--muted-foreground);
-        font-size: 0.68rem;
-        font-weight: 700;
-        letter-spacing: 0.07em;
-        text-transform: uppercase;
-    }
-
-    &__Before,
-    &__After {
-        margin: 0;
-        font-family: var(--font-mono);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        background: color-mix(in srgb, #dc2626, transparent 88%);
+        color: #dc2626;
     }
 
     &__Before {
-        color: var(--muted-foreground);
+        font-family: var(--font-mono);
         font-size: 0.75rem;
+        color: var(--muted-foreground);
         text-decoration: line-through;
+        white-space: nowrap;
+
+        @include mobile {
+            grid-column: 2;
+        }
     }
 
-    &__Divider {
-        display: block;
-        height: 1px;
-        margin: 1.1rem 0;
-        background: var(--border);
+    &__Arrow {
+        color: var(--muted-foreground);
+
+        @include mobile {
+            display: none;
+        }
     }
 
     &__After {
-        min-height: 2.7rem;
-        color: var(--foreground);
-        font-size: clamp(0.8rem, 2vw, 0.95rem);
-        font-weight: 650;
-        line-height: 1.5;
-        overflow-wrap: anywhere;
+        justify-self: start;
+        max-width: 100%;
+        padding: 5px 9px;
+        border-radius: 8px;
+        background: var(--primary-soft);
+        color: var(--primary);
+        font-family: var(--font-mono);
+        font-size: 0.8125rem;
+        letter-spacing: -0.01em;
+        // Keep the proposed name on one line; the strings are sized to fit.
+        white-space: nowrap;
+        animation: after-in 320ms 80ms ease both;
+
+        @include mobile {
+            grid-column: 2;
+            white-space: normal;
+        }
     }
 
-    &__Note {
-        margin: 1rem 0 0;
-        padding-top: 0.9rem;
-        border-top: 1px solid var(--border);
-        color: var(--muted-foreground);
-        font-size: 0.75rem;
-        line-height: 1.55;
+    &__Hit {
+        font-weight: 700;
+        text-decoration: underline;
+        text-decoration-color: color-mix(in srgb, var(--primary), transparent 55%);
+        text-underline-offset: 0.2em;
+    }
+
+    &__Check {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 16px;
+        height: 16px;
+        border-radius: 999px;
+        background: var(--success);
+        color: #fff;
+        animation: after-in 320ms 160ms ease both;
+
+        @include mobile {
+            display: none;
+        }
     }
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .FieldChip {
-        transition: none;
+@keyframes card-in {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes after-in {
+    from {
+        opacity: 0;
+        transform: translateX(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
