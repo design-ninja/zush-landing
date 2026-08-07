@@ -45,6 +45,11 @@ interface Props {
    */
   headerWidth?: HeaderWidth;
   /**
+   * Override the header's primary nav. Standalone landings pass their own
+   * on-page section anchors so the links don't jump back to the homepage.
+   */
+  headerNav?: { href: string; label: string }[];
+  /**
    * Explicit hreflang cluster, for pages whose translations are not driven by
    * LOCALIZED_ROUTES (blog posts). When provided it replaces the localized-route
    * logic entirely, and x-default is derived from the `en` entry.
@@ -62,6 +67,7 @@ const {
   disableTopOffset = false,
   locale = DEFAULT_LOCALE,
   headerWidth = 'default',
+  headerNav,
   alternates,
 } = Astro.props;
 
@@ -301,6 +307,7 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
           locale={locale}
           route={route}
           width={headerWidth}
+          navItems={headerNav}
         />
       )}
       <main

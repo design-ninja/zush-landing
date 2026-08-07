@@ -82,7 +82,7 @@ export async function GET() {
     `- [Automatically Rename Invoices with AI](${SITE_ORIGIN}/blog/automatically-rename-invoices-ai)`,
     `- [Rename Scanned Documents Automatically](${SITE_ORIGIN}/blog/rename-scanned-documents-automatically)`,
     `- [Invoice File Naming Convention](${SITE_ORIGIN}/blog/invoice-file-naming-convention)`,
-    `- [Medical Records File Naming (HIPAA-Safe)](${SITE_ORIGIN}/blog/medical-records-file-naming-convention)`,
+    `- [Organize Scanned Medical Records in a Small Practice](${SITE_ORIGIN}/blog/how-to-organize-scanned-medical-records-small-practice)`,
     `- [Legal File Naming Conventions](${SITE_ORIGIN}/blog/legal-file-naming-conventions)`,
     `- [How to Organize Invoices and Receipts](${SITE_ORIGIN}/blog/how-to-organize-invoices-and-receipts)`,
     `- [How to Organize Tax Documents](${SITE_ORIGIN}/blog/how-to-organize-tax-documents)`,

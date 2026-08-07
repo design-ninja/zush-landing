@@ -1,5 +1,5 @@
 ---
-import { getImage } from 'astro:assets';
+import { Image } from 'astro:assets';
 import ctaBackground from '@/assets/download-cta/try-zush-free-bg.webp';
 import DownloadButton from '@/components/DownloadButton/DownloadButton';
 import Heading from '@/components/Heading';
@@ -36,26 +36,17 @@ const resolvedTitle = title ?? 'Try Zush free';
 const requirements = forceOS
   ? getShortRequirements(forceOS)
   : `${getShortRequirements('mac')} · ${getShortRequirements('windows')}`;
-// Rendered as a plain <img> rather than the Image component, which emits a
-// bare `alt` that crawlers read as missing. The alt is non-empty for the same
-// reason — Bing's Site Scan counts alt="" as undefined — while aria-hidden
-// keeps this purely decorative background out of the accessibility tree.
-const background = await getImage({
-  src: ctaBackground,
-  width: 1600,
-  height: 914,
-  format: 'webp',
-  quality: 78,
-});
 ---
 
 <section class:list={[styles.Section, className]}>
   <div class={styles.Container}>
     <div class={styles.Card}>
-      <img
-        src={background.src}
-        width="1600"
-        height="914"
+      <Image
+        src={ctaBackground}
+        width={1600}
+        height={914}
+        format="webp"
+        quality={78}
         alt="Decorative background"
         class={styles.Background}
         loading="lazy"

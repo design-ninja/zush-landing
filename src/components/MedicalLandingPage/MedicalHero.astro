@@ -1,0 +1,68 @@
+---
+import { Image } from 'astro:assets';
+import DownloadButton from '@/components/DownloadButton';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
+import { MEDICAL_HERO } from '@/data/medicalLanding';
+import heroPhoto from '@/assets/landing/medical-hero.webp';
+import styles from './MedicalHero.module.scss';
+
+// Full-bleed photo hero: the doctor photo fills the top of the page and runs
+// under the floating header (the page passes `disableTopOffset`). A theme-aware
+// scrim lightens it just enough for the dark hero text to read, and the photo
+// fades into the page background at the bottom so the demo video can overlap it.
+---
+
+<section class={styles.Hero} aria-labelledby='medical-hero-title'>
+  <div class={styles.Hero__Media} aria-hidden='true'>
+    <Image
+      class={styles.Hero__Photo}
+      src={heroPhoto}
+      alt={MEDICAL_HERO.photo.alt}
+      widths={[640, 960, 1216, 1408]}
+      sizes='100vw'
+      loading='eager'
+      decoding='async'
+    />
+  </div>
+  <div class={styles.Hero__Scrim} aria-hidden='true'></div>
+
+  <div class={styles.Hero__Container}>
+    <div class={styles.Hero__Intro}>
+      <p class={styles.Hero__Eyebrow}>{MEDICAL_HERO.eyebrow}</p>
+
+      <Heading as='h1' align='center' id='medical-hero-title' className={styles.Hero__Title}>
+        {MEDICAL_HERO.titleLead}<span class='brand-accent-text'>{MEDICAL_HERO.titleAccent}</span>
+      </Heading>
+
+      <Text as='p' size='lg' color='subtle' align='center' className={styles.Hero__Subtitle}>
+        {MEDICAL_HERO.subtitle}
+      </Text>
+
+      <div class={styles.Hero__Actions}>
+        <div class={styles.Hero__Buttons}>
+          <DownloadButton
+            client:visible
+            source='hero'
+            size='lg'
+            forceOS='mac'
+            showDropdown={false}
+            label='Download for Mac'
+          />
+          <DownloadButton
+            client:visible
+            source='hero'
+            size='lg'
+            forceOS='windows'
+            showDropdown={false}
+            label='Download for Windows'
+          />
+        </div>
+
+        <ul class={styles.Hero__TrustRow} aria-label='Why practices run it locally'>
+          {MEDICAL_HERO.trustLine.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

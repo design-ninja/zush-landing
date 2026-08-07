@@ -159,13 +159,14 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'document management for accountants, accounting document organization, bookkeeper file naming, invoice organization software, rename accounting files, organize client documents bookkeeping',
   },
   '/for-medical': {
-    title: 'Zush for Medical Practices | Private AI Record Renaming',
+    title: 'Medical Records File Renamer with Offline AI | Zush',
     description:
-      'Name scanned records by MRN, date of service, and record type — with local AI, so files never leave the machine. Preview every batch. Mac & Windows.',
+      'Automatically rename scanned medical records by MRN, date of service, and document type. Offline AI or organization-controlled BYOK, with preview and undo.',
     robots: 'index, follow',
     ogType: 'website',
+    ogImage: `${SITE_ORIGIN}/images/landing/medical-records-file-renamer.webp`,
     keywords:
-      'medical records file naming, rename medical records, organize patient files, medical document management, hipaa file naming, rename scanned medical records, clinic document organization',
+      'medical records file renamer, rename scanned medical records, medical document renamer, AI file renamer for medical records, offline AI medical document renamer, medical file renamer for clinics',
   },
   '/for-legal': {
     title: 'Zush for Legal Teams | AI Document Renamer for Law Firms',
