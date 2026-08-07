@@ -180,13 +180,13 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'AI file renamer for photographers, photo file naming software, video file renamer, batch rename RAW photos, rename video clips by content, photographer file naming workflow, videographer file organization, media file renamer',
   },
   '/for-legal': {
-    title: 'Organize Legal Documents with AI | Zush for Law Firms',
+    title: 'AI Legal Document Renamer for Law Firms | Zush',
     description:
-      'Organize case files, contracts, pleadings, and scans with AI. Create searchable filenames, work with your DMS, and run locally on Mac or Windows.',
+      'Rename and organize case files, contracts, pleadings, and scans with AI. Create searchable filenames, work with your DMS, and run locally on Mac or Windows.',
     robots: 'index, follow',
     ogType: 'website',
     keywords:
-      'legal document organizer, organize legal documents, legal file organization, organize case files, AI document organizer for lawyers, law firm document management workflow, matter file organization, legal document naming software',
+      'AI legal document renamer, rename legal documents, legal document organizer, organize legal documents, legal file organization, organize case files, law firm document management workflow, matter file organization, legal document naming software',
   },
   '/rename-scanned-documents': {
     title: 'Rename Scanned Documents Automatically | Zush',

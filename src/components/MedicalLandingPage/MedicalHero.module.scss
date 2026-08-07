@@ -113,18 +113,15 @@
 // declares the same properties, so a single class here would tie on
 // specificity and the winner would depend on bundle order.
 //
-// Same clamp / wrap / 42rem cap as the homepage hero; a soft shadow keeps the
-// text crisp over the photo.
+// Same clamp / wrap / 42rem cap as the homepage hero.
 .Hero__Title.Hero__Title {
     margin: 0 0 $space-md;
     font-size: clamp(2.4rem, 5.5vw, 3.5rem);
     text-wrap: balance;
-    text-shadow: 0 1px 10px color-mix(in srgb, var(--background), transparent 25%);
 }
 
 .Hero__Subtitle.Hero__Subtitle {
     margin: 0;
     max-width: 42rem;
     text-wrap: pretty;
-    text-shadow: 0 1px 8px color-mix(in srgb, var(--background), transparent 35%);
 }

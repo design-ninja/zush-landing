@@ -1,21 +1,21 @@
 import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 
 export const LEGAL_PAGE_PATH = '/for-legal';
-export const LEGAL_PAGE_TITLE = 'Organize Legal Documents with AI';
+export const LEGAL_PAGE_TITLE = 'AI Legal Document Renamer for Law Firms';
 
 export const LEGAL_HERO = {
   eyebrow: 'For law firms and legal teams',
-  titleLead: 'Organize legal documents ',
-  titleAccent: 'with AI',
+  titleLead: 'Rename legal documents by ',
+  titleAccent: 'matter, date, and type',
   subtitle:
-    'Turn pleadings, contracts, correspondence, discovery, and scans into searchable, matter-based case files. Zush works with your existing folders, shared drives, and DMS exports on Mac or Windows.',
+    'Zush reads pleadings, contracts, correspondence, discovery, and scans, then gives them consistent, searchable filenames. Use it with existing folders, shared drives, and DMS exports on Mac or Windows.',
   trustLine: [
     'Works with your existing folders',
     'Offline AI for confidential files',
     'Preview before every rename',
   ],
   photo: {
-    alt: 'An attorney organizing legal case documents at a desktop computer',
+    alt: 'A young attorney reviewing case documents at a desktop computer in her office',
   },
 } as const;
 
@@ -248,7 +248,7 @@ export const LEGAL_JSON_LD = buildFeaturePageJsonLd({
   software: {
     pagePath: LEGAL_PAGE_PATH,
     description:
-      'AI legal document organizer for law firms on Mac and Windows. Zush turns inconsistent filenames into searchable, matter-based case files without replacing the firm’s document management system.',
+      'AI legal document renamer and organizer for law firms on Mac and Windows. Zush turns inconsistent filenames into searchable, matter-based case files without replacing the firm’s document management system.',
     applicationSubCategory: 'Legal File Organization Software',
     featureList: [
       'Organize legal documents into searchable, matter-based case files',
