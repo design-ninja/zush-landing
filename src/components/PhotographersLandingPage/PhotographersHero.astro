@@ -1,0 +1,65 @@
+---
+import { Image } from 'astro:assets';
+import heroPhoto from '@/assets/landing/photographers-hero.webp';
+import DownloadButton from '@/components/DownloadButton';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
+import { PHOTOGRAPHERS_HERO } from '@/data/photographersLanding';
+import styles from '../MedicalLandingPage/MedicalHero.module.scss';
+---
+
+<section class={styles.Hero} aria-labelledby="photographers-hero-title">
+  <div class={styles.Hero__Media} aria-hidden="true">
+    <Image
+      class={styles.Hero__Photo}
+      src={heroPhoto}
+      alt={PHOTOGRAPHERS_HERO.photo.alt}
+      widths={[640, 960, 1216, 1408]}
+      sizes="100vw"
+      format="webp"
+      quality={82}
+      loading="eager"
+      decoding="async"
+    />
+  </div>
+  <div class={styles.Hero__Scrim} aria-hidden="true"></div>
+
+  <div class={styles.Hero__Container}>
+    <div class={styles.Hero__Intro}>
+      <p class={styles.Hero__Eyebrow}>{PHOTOGRAPHERS_HERO.eyebrow}</p>
+
+      <Heading as="h1" align="center" id="photographers-hero-title" className={styles.Hero__Title}>
+        {PHOTOGRAPHERS_HERO.titleLead}<span class="brand-accent-text">{PHOTOGRAPHERS_HERO.titleAccent}</span>
+      </Heading>
+
+      <Text as="p" size="lg" color="subtle" align="center" className={styles.Hero__Subtitle}>
+        {PHOTOGRAPHERS_HERO.subtitle}
+      </Text>
+
+      <div class={styles.Hero__Actions}>
+        <div class={styles.Hero__Buttons}>
+          <DownloadButton
+            client:visible
+            source="hero"
+            size="lg"
+            forceOS="mac"
+            showDropdown={false}
+            label="Download for Mac"
+          />
+          <DownloadButton
+            client:visible
+            source="hero"
+            size="lg"
+            forceOS="windows"
+            showDropdown={false}
+            label="Download for Windows"
+          />
+        </div>
+
+        <ul class={styles.Hero__TrustRow} aria-label="Photo and video workflow controls">
+          {PHOTOGRAPHERS_HERO.trustLine.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

@@ -79,7 +79,7 @@ Tax documents arrive as portal PDFs with names like `TaxForm_2025_FINAL(2).pdf`,
 - **Scanned paper works without an OCR pass**: [AI vision reads the page image](/rename-scanned-documents), so the shoebox-of-paper backlog is a scan-then-batch job, not a data-entry job.
 - Each batch is **previewed and reversible** — worth its weight during season, when a mis-sorted 1099 costs real money.
 
-A note on sensitivity: tax documents carry SSNs and account numbers. Zush's **Offline AI mode** analyzes supported files with local models on Mac or Windows so nothing leaves the machine, and **BYOK** keeps analysis under your own API account — pick the posture that fits. Filenames should follow the same hygiene: form type and issuer, never an SSN or full account number, for the [same leakage reasons as medical records](/blog/medical-records-file-naming-convention).
+A note on sensitivity: tax documents carry SSNs and account numbers. Zush's **Offline AI mode** analyzes supported files with local models on Mac or Windows so nothing leaves the machine, and **BYOK** keeps analysis under your own API account — pick the posture that fits. Filenames should follow the same hygiene: form type and issuer, never an SSN or full account number. Medical teams can apply the same local-or-BYOK choice in the dedicated [medical records workflow](/for-medical).
 
 ## The backlog: seven years in one afternoon
 

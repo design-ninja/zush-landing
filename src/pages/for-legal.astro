@@ -1,14 +1,37 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import FeatureLandingPageShell from '@/components/FeatureLandingPage/FeatureLandingPageShell.astro';
-import { SEARCH_LANDING_PAGES } from '@/data/searchLandingPages';
+import LegalLandingPage from '@/components/LegalLandingPage/LegalLandingPage.astro';
+import { LEGAL_JSON_LD, LEGAL_PAGE_PATH, LEGAL_PAGE_TITLE } from '@/data/legalLanding';
 import { getSeoForPath } from '@/seo/config';
-import { buildFeatureBreadcrumbJsonLd } from '@/utils/jsonLd';
+import { getCopy } from '@/i18n/copy';
+import { buildFeatureBreadcrumbJsonLd, buildWebPageJsonLd } from '@/utils/jsonLd';
 
-const seo = getSeoForPath('/for-legal');
-const page = SEARCH_LANDING_PAGES['for-legal'];
+const seo = getSeoForPath(LEGAL_PAGE_PATH);
+const header = getCopy('en').header;
+const pageJsonLd = buildWebPageJsonLd({
+  pagePath: LEGAL_PAGE_PATH,
+  title: LEGAL_PAGE_TITLE,
+  description: seo.description,
+});
+
+const headerNav = [
+  { href: '#fields', label: header.features },
+  { href: '#privacy', label: header.security },
+  { href: '#pricing', label: header.pricing },
+  { href: '#faq', label: header.faq },
+  { href: '/blog', label: header.blog },
+];
 ---
 
-<BaseLayout seo={seo} headerWidth="container" jsonLd={[page.jsonLd, buildFeatureBreadcrumbJsonLd(page.h1, '/for-legal')]}>
-  <FeatureLandingPageShell {...page} />
+<BaseLayout
+  seo={seo}
+  headerNav={headerNav}
+  disableTopOffset
+  jsonLd={[
+    pageJsonLd,
+    LEGAL_JSON_LD,
+    buildFeatureBreadcrumbJsonLd(LEGAL_PAGE_TITLE, LEGAL_PAGE_PATH),
+  ]}
+>
+  <LegalLandingPage />
 </BaseLayout>

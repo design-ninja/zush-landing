@@ -1,0 +1,269 @@
+---
+import { Image } from 'astro:assets';
+import { ArrowRight, Bot, Cloud, KeyRound } from 'lucide-react';
+import audienceBillingImage from '@/assets/landing/medical-audience-billing.webp';
+import audienceFrontDeskImage from '@/assets/landing/medical-audience-front-desk.webp';
+import audienceOwnerImage from '@/assets/landing/medical-audience-owner.webp';
+import CloudFolders from '@/components/CloudFolders';
+import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
+import BentoCard from '@/components/Features/BentoCard.astro';
+import FeatureAnimation from '@/components/Features/FeatureAnimation';
+import featureStyles from '@/components/Features/Features.module.scss';
+import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
+import FAQ from '@/components/FAQ';
+import Heading from '@/components/Heading';
+import Pricing from '@/components/Pricing/Pricing.astro';
+import StarRating from '@/components/StarRating';
+import Text from '@/components/Text';
+import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module.scss';
+import testimonialStyles from '@/components/Testimonials/Testimonials.module.scss';
+import { getCopy } from '@/i18n/copy';
+import { FEATURE_DEMO_COPY } from '@/i18n/featureDemoCopy';
+import {
+  MEDICAL_AUDIENCES,
+  MEDICAL_DOCUMENT_TYPES,
+  MEDICAL_FAQ,
+  MEDICAL_PRIVACY_MODES,
+  MEDICAL_PRIVACY_NOTE,
+  MEDICAL_TESTIMONIALS,
+  MEDICAL_WORKFLOW,
+} from '@/data/medicalLanding';
+import MedicalFieldExplorer from './MedicalFieldExplorer';
+import MedicalHero from './MedicalHero.astro';
+import styles from './MedicalLandingPage.module.scss';
+
+// English-only page: no locale prop, no localized copy lookup beyond the
+// shared Pricing block, which is the same everywhere.
+const copy = getCopy('en');
+
+const demoCopy = FEATURE_DEMO_COPY.en;
+const PRIVACY_ICONS = { cloud: Cloud, byok: KeyRound, offline: Bot } as const;
+const AUDIENCE_IMAGES = {
+  clinic: {
+    src: audienceOwnerImage,
+    alt: 'Small-practice physician speaking with a patient in a consultation room',
+  },
+  frontdesk: {
+    src: audienceFrontDeskImage,
+    alt: 'Practice manager scanning intake documents at a medical front desk',
+  },
+  billing: {
+    src: audienceBillingImage,
+    alt: 'Medical billing specialist reviewing paperwork beside a laptop',
+  },
+} as const;
+---
+
+<MedicalHero />
+
+{/* Real app UI, pulled up to overlap the hero photo's faded bottom edge: the
+    doctor photo sets the scene, this shows the actual Zush window at work. */}
+<div class={styles.HeroDemo}>
+  <DemoVideo
+    label='Zush renaming a folder of scanned medical records'
+  />
+</div>
+
+<section class={styles.Audiences} aria-labelledby='medical-audiences-title'>
+  <div class={styles.Audiences__Container}>
+    <div class={styles.Audiences__Intro}>
+      <p class={styles.Audiences__Eyebrow}>Who it’s for</p>
+      <Heading as='h2' id='medical-audiences-title' className={styles.Audiences__Title}>
+        Built for small medical practices and document-heavy teams
+      </Heading>
+      <Text as='p' color='subtle' className={styles.Audiences__Description}>
+        The same file-renaming workflow fits clinical intake, front-desk scanning, and medical billing without replacing the EHR.
+      </Text>
+    </div>
+
+    <ul class={styles.Audiences__List}>
+      {MEDICAL_AUDIENCES.map((audience) => (
+        <li class={styles.Audience}>
+          <div class={styles.Audience__Media}>
+            <Image
+              src={AUDIENCE_IMAGES[audience.icon].src}
+              alt={AUDIENCE_IMAGES[audience.icon].alt}
+              class={styles.Audience__Image}
+              widths={[240, 360, 480, 720, 960]}
+              sizes='(max-width: 640px) 100vw, 11rem'
+              format='webp'
+              quality={78}
+              loading='lazy'
+              decoding='async'
+            />
+          </div>
+          <div class={styles.Audience__Content}>
+            <h3 class={styles.Audience__Title}>{audience.title}</h3>
+            <p class={styles.Audience__Description}>{audience.description}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+{/* 2 — the signature section: reads everything ↔ names safely. */}
+<section id='fields' class={styles.Fields} aria-labelledby='medical-fields-title'>
+  <div class={styles.Fields__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as='h2' align='center' id='medical-fields-title' className={sectionHeaderStyles.SectionHeader__Title}>
+        Choose the fields for every medical record filename
+      </Heading>
+      <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
+        Zush reads the visible content of each scan or document. Your Template selects the internal ID, date, document type, or custom field used in the final name.
+      </Text>
+    </div>
+
+    {/* Interactive: pick a field chip, the demo below shows where it lands.
+        client:load so the click works the moment the section is reached. */}
+    <MedicalFieldExplorer client:visible />
+  </div>
+</section>
+
+{/* 3 — privacy. Same bento pattern as the homepage "3 secure ways to run Zush",
+    with records-specific copy and the matching hover-play demos. */}
+<section id='privacy' class={styles.Privacy} aria-labelledby='medical-privacy-title'>
+  <div class={styles.Privacy__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as='h2' align='center' id='medical-privacy-title' className={sectionHeaderStyles.SectionHeader__Title}>
+        Offline and BYOK processing for medical documents
+      </Heading>
+      <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
+        Run supported analysis with local Ollama models, or route it through the AI provider account and key your organization controls. Zush renames files in place and does not store them.
+      </Text>
+    </div>
+
+    <div class={featureStyles.Band__Grid}>
+      {MEDICAL_PRIVACY_MODES.map((mode) => (
+        <BentoCard
+          title={mode.title}
+          description={mode.description}
+          icon={PRIVACY_ICONS[mode.id]}
+          badge={mode.badge}
+          badgeTone={mode.badgeTone}
+        >
+          <div class={featureStyles.UI_FeatureAnimation}>
+            <FeatureAnimation kind={mode.kind} demoCopy={demoCopy} client:visible />
+          </div>
+        </BentoCard>
+      ))}
+    </div>
+
+    <p class={styles.Privacy__Note}>
+      {MEDICAL_PRIVACY_NOTE}{' '}
+      <a class={styles.ArrowLink} href='/docs/privacy-security'>
+        Read how the modes handle data
+        <ArrowRight size={15} aria-hidden='true' />
+      </a>
+    </p>
+  </div>
+</section>
+
+{/* 4 — workflow. Hero's secondary CTA anchors here. */}
+<section id='workflow' class={styles.Workflow} aria-labelledby='medical-workflow-title'>
+  <div class={styles.Workflow__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as='h2' align='center' id='medical-workflow-title' className={sectionHeaderStyles.SectionHeader__Title}>
+        Automatically rename records from scanner and fax folders
+      </Heading>
+      <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
+        Set up one medical records Template, monitor the intake folder, and review each proposed batch before anything changes.
+      </Text>
+    </div>
+
+    <ol class={styles.Workflow__Steps}>
+      {MEDICAL_WORKFLOW.map((step, index) => (
+        <li class={styles.WorkflowStep}>
+          <span class={styles.WorkflowStep__Number} aria-hidden='true'>{index + 1}</span>
+          <h3 class={styles.WorkflowStep__Title}>{step.title}</h3>
+          <p class={styles.WorkflowStep__Description}>{step.description}</p>
+        </li>
+      ))}
+    </ol>
+
+    <div class={styles.Workflow__Links}>
+      <a class={styles.ArrowLink} href='/docs/templates/medical-records'>
+        Build the records template step-by-step
+        <ArrowRight size={15} aria-hidden='true' />
+      </a>
+      <a class={styles.ArrowLink} href='/rename-scanned-documents'>
+        How scanned-document renaming works
+        <ArrowRight size={15} aria-hidden='true' />
+      </a>
+      <a class={styles.ArrowLink} href='/blog/how-to-organize-scanned-medical-records-small-practice'>
+        Organize a small practice scan workflow
+        <ArrowRight size={15} aria-hidden='true' />
+      </a>
+    </div>
+  </div>
+</section>
+
+<CloudFolders title={copy.home.cloudFoldersTitle} />
+
+<section class={styles.Documents} aria-labelledby='medical-document-types-title'>
+  <div class={styles.Documents__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as='h2' align='center' id='medical-document-types-title' className={sectionHeaderStyles.SectionHeader__Title}>
+        Medical documents Zush can rename automatically
+      </Heading>
+      <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
+        Use one Template for clinical records and another for billing paperwork. Each flow keeps its own fields and naming pattern without changing the original documents.
+      </Text>
+    </div>
+
+    <div class={styles.Documents__Grid}>
+      {MEDICAL_DOCUMENT_TYPES.map((documentType) => (
+        <article class={styles.DocumentType}>
+          <h3 class={styles.DocumentType__Title}>{documentType.title}</h3>
+          <p class={styles.DocumentType__Description}>{documentType.description}</p>
+          <code class={styles.DocumentType__Example}>{documentType.example}</code>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+{/* 7 — persona testimonials, house pattern. */}
+<section id='reviews' class={testimonialStyles.Testimonials} aria-labelledby='medical-testimonials-title'>
+  <div class={testimonialStyles.Testimonials__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as='h2' align='center' id='medical-testimonials-title' className={sectionHeaderStyles.SectionHeader__Title}>
+        What clinicians say
+      </Heading>
+      <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
+        Feedback from people who file records for a living.
+      </Text>
+    </div>
+
+    <div class={`${testimonialStyles.Testimonials__Grid} ${styles.Testimonials__Grid}`}>
+      {MEDICAL_TESTIMONIALS.map((testimonial) => (
+        <article class={testimonialStyles.TestimonialCard}>
+          <StarRating className={testimonialStyles.TestimonialCard__Stars} label='5 out of 5 stars' />
+          <blockquote class={testimonialStyles.TestimonialCard__Quote}>
+            <Text as='p' size='sm'>{testimonial.quote}</Text>
+          </blockquote>
+          <footer class={testimonialStyles.TestimonialCard__Author}>
+            <Text as='p' size='sm' className={testimonialStyles.TestimonialCard__Name}>{testimonial.name}</Text>
+            <Text as='p' size='sm' color='subtle'>{testimonial.role}</Text>
+          </footer>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<Pricing copy={copy.pricing} />
+
+<FAQ
+  client:visible
+  items={MEDICAL_FAQ}
+  title='Medical record file renaming, answered'
+  description='How local models, organization-controlled BYOK, scanner folders, Templates, preview, and undo fit a medical document workflow.'
+/>
+
+<div class={styles.FinalCta}>
+  <DownloadCTA
+    title='Try Zush on one folder of scans'
+    subtitle='Point it at yesterday’s intake, read the proposed names, and undo the batch if you do not like them. Offline AI keeps the whole run on your machine.'
+  />
+</div>

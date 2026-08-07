@@ -12,7 +12,7 @@ import { Aside, Steps } from '@astrojs/starlight/components';
 This template names records by an internal identifier, the date of service, and a record type — and deliberately keeps patient names out of filenames, because filenames surface in sync logs, email attachment lines, and search indexes. It is designed to run in Offline AI mode so records never leave the machine.
 
 <Aside type="caution">
-A naming convention supports good records handling; it does not by itself make any workflow HIPAA-compliant. Compliance is a property of your organization's safeguards and agreements. Review this setup with whoever owns compliance in your practice.
+This is a starting Template, not an organization-wide policy. Review the fields, access controls, and AI mode with whoever owns records and security decisions in your practice before applying it to a production folder.
 </Aside>
 
 ## Naming pattern
@@ -26,7 +26,7 @@ A naming convention supports good records handling; it does not by itself make a
 | Patient ID | Custom AI Block extracting the MRN or account number printed on the document | `MRN-48211` |
 | Detected Date | The date of service or the document's own date | `2026-06-12` |
 | Document Type | AI-detected type from a fixed vocabulary | `Lab Results` |
-| Detail | Optional Custom AI Block — specialty, payer, study type. Keep it PHI-free. | `Cardiology` |
+| Detail | Optional Custom AI Block — specialty, payer, or study type. Include it only when it belongs in your organization's filename policy. | `Cardiology` |
 
 ## Before and after
 
@@ -51,5 +51,5 @@ A naming convention supports good records handling; it does not by itself make a
 
 - [Zush for medical practices](/for-medical) — the full records workflow
 - [Privacy and security](/docs/privacy-security) — exactly what each AI mode transmits
-- [Medical records naming guide](/blog/medical-records-file-naming-convention) — the full reasoning and HIPAA context
+- [Organize scanned medical records in a small practice](/blog/how-to-organize-scanned-medical-records-small-practice) — a practical scanner and intake workflow
 - [Rename scanned documents](/rename-scanned-documents) — the scanner intake workflow

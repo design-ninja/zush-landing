@@ -200,6 +200,7 @@ export interface WebPageJsonLdData {
   type?: 'WebPage' | 'CollectionPage' | 'TechArticle';
   dateModified?: string;
   speakableSelectors?: string[];
+  mainEntityId?: string;
 }
 
 export interface BreadcrumbItemData {
@@ -226,6 +227,7 @@ export function buildWebPageJsonLd(data: WebPageJsonLdData) {
     ...(data.dateModified ? { dateModified: toIsoDateTime(data.dateModified) } : {}),
     isPartOf: WEBSITE_REF,
     publisher: ORGANIZATION_REF,
+    ...(data.mainEntityId ? { mainEntity: { '@id': data.mainEntityId } } : {}),
     speakable: {
       '@type': 'SpeakableSpecification',
       cssSelector: data.speakableSelectors ?? ['h1', 'meta[name="description"]'],

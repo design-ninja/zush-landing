@@ -1,0 +1,9 @@
+@use '../../styles/mixins' as *;
+
+.HeroPhotoPosition {
+    object-position: 50% 42%;
+
+    @include mobile {
+        object-position: 38% 40%;
+    }
+}

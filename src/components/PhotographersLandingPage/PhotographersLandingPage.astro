@@ -1,0 +1,248 @@
+---
+import { Image } from 'astro:assets';
+import { ArrowRight, Bot, Cloud, KeyRound } from 'lucide-react';
+import audiencePhotographerImage from '@/assets/landing/photographers-audience-photographer.webp';
+import audienceStudioImage from '@/assets/landing/photographers-audience-studio.webp';
+import audienceVideographerImage from '@/assets/landing/photographers-audience-videographer.webp';
+import CloudFolders from '@/components/CloudFolders';
+import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
+import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
+import FAQ from '@/components/FAQ';
+import BentoCard from '@/components/Features/BentoCard.astro';
+import FeatureAnimation from '@/components/Features/FeatureAnimation';
+import featureStyles from '@/components/Features/Features.module.scss';
+import Heading from '@/components/Heading';
+import Pricing from '@/components/Pricing/Pricing.astro';
+import Text from '@/components/Text';
+import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module.scss';
+import testimonialStyles from '@/components/Testimonials/Testimonials.module.scss';
+import {
+  PHOTOGRAPHERS_AUDIENCES,
+  PHOTOGRAPHERS_FAQ,
+  PHOTOGRAPHERS_MEDIA_TYPES,
+  PHOTOGRAPHERS_OUTCOMES,
+  PHOTOGRAPHERS_PRIVACY_MODES,
+  PHOTOGRAPHERS_PRIVACY_NOTE,
+  PHOTOGRAPHERS_WORKFLOW,
+} from '@/data/photographersLanding';
+import { getCopy } from '@/i18n/copy';
+import { FEATURE_DEMO_COPY } from '@/i18n/featureDemoCopy';
+import styles from '../MedicalLandingPage/MedicalLandingPage.module.scss';
+import { PhotographersFieldExplorer } from './PhotographersFieldExplorer';
+import PhotographersHero from './PhotographersHero.astro';
+
+const copy = getCopy('en');
+const demoCopy = FEATURE_DEMO_COPY.en;
+const PRIVACY_ICONS = { cloud: Cloud, byok: KeyRound, offline: Bot } as const;
+const AUDIENCE_IMAGES = {
+  photographer: {
+    src: audiencePhotographerImage,
+    alt: 'A professional photographer sorting a wedding shoot at a studio computer',
+  },
+  videographer: {
+    src: audienceVideographerImage,
+    alt: 'A videographer reviewing footage in a compact editing suite',
+  },
+  studio: {
+    src: audienceStudioImage,
+    alt: 'A studio producer organizing photo and video drives at a shared workspace',
+  },
+} as const;
+---
+
+<PhotographersHero />
+
+<div class={styles.HeroDemo}>
+  <DemoVideo label="Zush batch renaming photo and video files by their content" />
+</div>
+
+<section class={styles.Audiences} aria-labelledby="photographers-audiences-title">
+  <div class={styles.Audiences__Container}>
+    <div class={styles.Audiences__Intro}>
+      <p class={styles.Audiences__Eyebrow}>Built for visual workflows</p>
+      <Heading as="h2" id="photographers-audiences-title" className={styles.Audiences__Title}>
+        From card ingest to client delivery, keep every filename useful
+      </Heading>
+      <Text as="p" color="subtle" className={styles.Audiences__Description}>
+        Use the same naming layer across stills, footage, exports, and archives without replacing the creative tools your team already knows.
+      </Text>
+    </div>
+
+    <ul class={styles.Audiences__List}>
+      {PHOTOGRAPHERS_AUDIENCES.map((audience) => (
+        <li class={styles.Audience}>
+          <div class={styles.Audience__Media}>
+            <Image
+              src={AUDIENCE_IMAGES[audience.icon].src}
+              alt={AUDIENCE_IMAGES[audience.icon].alt}
+              class={styles.Audience__Image}
+              widths={[240, 360, 480, 720, 960]}
+              sizes="(max-width: 640px) 100vw, 11rem"
+              format="webp"
+              quality={78}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class={styles.Audience__Content}>
+            <h3 class={styles.Audience__Title}>{audience.title}</h3>
+            <p class={styles.Audience__Description}>{audience.description}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<section id="fields" class={styles.Fields} aria-labelledby="photographers-fields-title">
+  <div class={styles.Fields__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as="h2" align="center" id="photographers-fields-title" className={sectionHeaderStyles.SectionHeader__Title}>
+        Build filenames from the details your studio searches
+      </Heading>
+      <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>
+        Zush combines visible content, available metadata, sampled video frames, and your own instructions. Your Template decides which fields appear and in what order.
+      </Text>
+    </div>
+
+    <PhotographersFieldExplorer client:visible />
+  </div>
+</section>
+
+<section id="privacy" class={styles.Privacy} aria-labelledby="photographers-privacy-title">
+  <div class={styles.Privacy__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as="h2" align="center" id="photographers-privacy-title" className={sectionHeaderStyles.SectionHeader__Title}>
+        Choose how each client shoot is analyzed
+      </Heading>
+      <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>
+        Start with managed AI, connect the provider account your studio controls, or run supported visual analysis locally for private and unreleased work.
+      </Text>
+    </div>
+
+    <div class={featureStyles.Band__Grid}>
+      {PHOTOGRAPHERS_PRIVACY_MODES.map((mode) => (
+        <BentoCard
+          title={mode.title}
+          description={mode.description}
+          icon={PRIVACY_ICONS[mode.id]}
+          badge={mode.badge}
+          badgeTone={mode.badgeTone}
+        >
+          <div class={featureStyles.UI_FeatureAnimation}>
+            <FeatureAnimation kind={mode.kind} demoCopy={demoCopy} client:visible />
+          </div>
+        </BentoCard>
+      ))}
+    </div>
+
+    <p class={styles.Privacy__Note}>
+      {PHOTOGRAPHERS_PRIVACY_NOTE}{' '}
+      <a class={styles.ArrowLink} href="/docs/ai-modes">
+        Compare the three AI modes
+        <ArrowRight size={15} aria-hidden="true" />
+      </a>
+    </p>
+  </div>
+</section>
+
+<section id="workflow" class={styles.Workflow} aria-labelledby="photographers-workflow-title">
+  <div class={styles.Workflow__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as="h2" align="center" id="photographers-workflow-title" className={sectionHeaderStyles.SectionHeader__Title}>
+        Batch rename a shoot without rebuilding your workflow
+      </Heading>
+      <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>
+        Keep Lightroom, Capture One, your NLE, and your storage layout. Add one reusable naming step around the folders where media already lands.
+      </Text>
+    </div>
+
+    <ol class={styles.Workflow__Steps}>
+      {PHOTOGRAPHERS_WORKFLOW.map((step, index) => (
+        <li class={styles.WorkflowStep}>
+          <span class={styles.WorkflowStep__Number} aria-hidden="true">{index + 1}</span>
+          <h3 class={styles.WorkflowStep__Title}>{step.title}</h3>
+          <p class={styles.WorkflowStep__Description}>{step.description}</p>
+        </li>
+      ))}
+    </ol>
+
+    <div class={styles.Workflow__Links}>
+      <a class={styles.ArrowLink} href="/rename-photos-with-ai">
+        See how Zush renames photos
+        <ArrowRight size={15} aria-hidden="true" />
+      </a>
+      <a class={styles.ArrowLink} href="/rename-videos-with-ai">
+        See how Zush renames video clips
+        <ArrowRight size={15} aria-hidden="true" />
+      </a>
+      <a class={styles.ArrowLink} href="/docs/templates">
+        Build a reusable naming Template
+        <ArrowRight size={15} aria-hidden="true" />
+      </a>
+    </div>
+  </div>
+</section>
+
+<CloudFolders title={copy.home.cloudFoldersTitle} />
+
+<section class={styles.Documents} aria-labelledby="photographers-media-types-title">
+  <div class={styles.Documents__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as="h2" align="center" id="photographers-media-types-title" className={sectionHeaderStyles.SectionHeader__Title}>
+        One naming workflow for stills, footage, and deliverables
+      </Heading>
+      <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>
+        Use separate Templates for capture media and exports, or apply one studio convention across a mixed project folder.
+      </Text>
+    </div>
+
+    <div class={styles.Documents__Grid}>
+      {PHOTOGRAPHERS_MEDIA_TYPES.map((mediaType) => (
+        <article class={styles.DocumentType}>
+          <h3 class={styles.DocumentType__Title}>{mediaType.title}</h3>
+          <p class={styles.DocumentType__Description}>{mediaType.description}</p>
+          <code class={styles.DocumentType__Example}>{mediaType.example}</code>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section id="outcomes" class={testimonialStyles.Testimonials} aria-labelledby="photographers-outcomes-title">
+  <div class={testimonialStyles.Testimonials__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as="h2" align="center" id="photographers-outcomes-title" className={sectionHeaderStyles.SectionHeader__Title}>
+        What better media filenames change
+      </Heading>
+      <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>
+        The payoff is not cosmetic. It is media that stays understandable before import, during collaboration, and after delivery.
+      </Text>
+    </div>
+
+    <div class={`${testimonialStyles.Testimonials__Grid} ${styles.Testimonials__Grid}`}>
+      {PHOTOGRAPHERS_OUTCOMES.map((outcome) => (
+        <article class={testimonialStyles.TestimonialCard}>
+          <h3 class={testimonialStyles.TestimonialCard__Name}>{outcome.title}</h3>
+          <Text as="p" size="sm" color="subtle">{outcome.description}</Text>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<Pricing copy={copy.pricing} />
+
+<FAQ
+  client:visible
+  items={PHOTOGRAPHERS_FAQ}
+  title="Photo and video file renaming, answered"
+  description="How Zush handles RAW photos, video clips, Templates, processing modes, batch review, existing creative tools, and undo."
+/>
+
+<div class={styles.FinalCta}>
+  <DownloadCTA
+    title="Try Zush on one copied shoot folder"
+    subtitle="Start with a small set of RAW photos or clips, review the proposed names, refine the Template, and undo the batch if it needs another pass."
+  />
+</div>

@@ -150,31 +150,43 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'rename invoices automatically, invoice renamer, invoice pdf organizer, invoice naming convention, organize invoices, rename pdf invoices, ai invoice organizer, bulk rename invoices',
   },
   '/for-accountants': {
-    title: 'Zush for Accountants & Bookkeepers | AI Document Renamer',
+    title: 'AI File Renamer for Accountants & Bookkeepers | Zush',
     description:
-      'Name every invoice, receipt, statement, and scan to one convention — automatically. Unmetered AI renaming with preview, undo, and local privacy modes.',
+      'Automatically rename invoices, receipts, statements, tax forms, and scans by vendor, date, number, and amount. Client Templates, Offline AI, preview, and undo.',
     robots: 'index, follow',
     ogType: 'website',
+    ogImage: `${SITE_ORIGIN}/images/landing/accountants-file-renamer.webp`,
     keywords:
-      'document management for accountants, accounting document organization, bookkeeper file naming, invoice organization software, rename accounting files, organize client documents bookkeeping',
+      'AI file renamer for accountants, accounting document renamer, bookkeeper file naming, rename invoices automatically, organize client accounting documents, invoice file naming software, receipt renamer for bookkeepers',
   },
   '/for-medical': {
-    title: 'Zush for Medical Practices | Private AI Record Renaming',
+    title: 'Medical Records File Renamer with Offline AI | Zush',
     description:
-      'Name scanned records by MRN, date of service, and record type — with local AI, so files never leave the machine. Preview every batch. Mac & Windows.',
+      'Automatically rename scanned medical records by MRN, date of service, and document type. Offline AI or organization-controlled BYOK, with preview and undo.',
     robots: 'index, follow',
     ogType: 'website',
+    ogImage: `${SITE_ORIGIN}/images/landing/medical-records-file-renamer.webp`,
     keywords:
-      'medical records file naming, rename medical records, organize patient files, medical document management, hipaa file naming, rename scanned medical records, clinic document organization',
+      'medical records file renamer, rename scanned medical records, medical document renamer, AI file renamer for medical records, offline AI medical document renamer, medical file renamer for clinics',
+  },
+  '/for-photographers': {
+    title: 'AI File Renamer for Photographers & Videographers | Zush',
+    description:
+      'Rename RAW photos, JPEGs, and video clips by project, date, subject, scene, and take. Batch workflows for photographers and videographers on Mac and Windows.',
+    robots: 'index, follow',
+    ogType: 'website',
+    ogImage: `${SITE_ORIGIN}/images/landing/photographers-file-renamer.webp`,
+    keywords:
+      'AI file renamer for photographers, photo file naming software, video file renamer, batch rename RAW photos, rename video clips by content, photographer file naming workflow, videographer file organization, media file renamer',
   },
   '/for-legal': {
-    title: 'Zush for Legal Teams | AI Document Renamer for Law Firms',
+    title: 'AI Legal Document Renamer for Law Firms | Zush',
     description:
-      'Name filings, contracts, and scans by matter, date, type, and party — automatically. Offline AI for confidential documents. Preview and undo every batch.',
+      'Rename and organize case files, contracts, pleadings, and scans with AI. Create searchable filenames, work with your DMS, and run locally on Mac or Windows.',
     robots: 'index, follow',
     ogType: 'website',
     keywords:
-      'legal document naming, rename legal documents, law firm file naming, legal file management, matter number file naming, organize case files, legal document management software mac',
+      'AI legal document renamer, rename legal documents, legal document organizer, organize legal documents, legal file organization, organize case files, law firm document management workflow, matter file organization, legal document naming software',
   },
   '/rename-scanned-documents': {
     title: 'Rename Scanned Documents Automatically | Zush',

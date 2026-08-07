@@ -5,9 +5,16 @@ import { MAC_DEMO_VIDEO, type DemoVideoAsset } from '@/data/showcaseMedia';
 interface Props {
   label: string;
   media?: DemoVideoAsset;
+  autoplay?: boolean;
+  preload?: 'none' | 'metadata' | 'auto';
 }
 
-const { label, media = MAC_DEMO_VIDEO } = Astro.props as Props;
+const {
+  label,
+  media = MAC_DEMO_VIDEO,
+  autoplay = true,
+  preload = 'metadata',
+} = Astro.props as Props;
 
 // Two recordings of the same demo, one per theme. Both are rendered and CSS
 // picks the active one — the hidden element is `display: none`, so it never
@@ -40,11 +47,11 @@ const frameStyle = { '--demo-video-aspect-ratio': `${media.width} / ${media.heig
           poster={poster}
           controls
           controlslist="nodownload"
-          autoplay
+          autoplay={autoplay}
           loop
           muted
           playsinline
-          preload="metadata"
+          preload={preload}
           aria-label={label}
         ></video>
       ))}
