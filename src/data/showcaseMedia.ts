@@ -49,19 +49,18 @@ export const MAC_DEMO_VIDEO: DemoVideoAsset = {
   height: 1434,
 };
 
-// The Windows desktop capture exists in one theme only, so both entries point at
-// the same recording and DemoVideo renders it once.
+// The Windows desktop demo has matching recordings and posters for both themes.
 export const WINDOWS_DEMO_VIDEO: DemoVideoAsset = {
   sources: {
     light: '/videos/windows/zush-batch-rename.mp4',
-    dark: '/videos/windows/zush-batch-rename.mp4',
+    dark: '/videos/windows/zush-batch-rename-dark.mp4',
   },
   posters: {
     light: '/videos/posters/demo-windows.webp',
-    dark: '/videos/posters/demo-windows.webp',
+    dark: '/videos/posters/demo-windows-dark.webp',
   },
-  width: 1920,
-  height: 1080,
+  width: 2674,
+  height: 1506,
 };
 
 const SHOWCASE_VIDEOS: ShowcaseVideoAsset[] = [
@@ -259,7 +258,7 @@ export const WINDOWS_SHOWCASE_SCREENSHOTS: ShowcaseScreenshotAsset[] = [
     },
     video: {
       light: '/videos/windows/zush-batch-rename.mp4',
-      dark: '/videos/windows/zush-batch-rename.mp4',
+      dark: '/videos/windows/zush-batch-rename-dark.mp4',
     },
     alt: 'Batch rename workflow in Zush for Windows',
   },
