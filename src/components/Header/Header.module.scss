@@ -19,19 +19,18 @@
     max-width: $content-max-width;
     z-index: 1000;
     height: $navbar-height;
-    background-color: oklch(1 0 0 / 0.6);
+    background-color: oklch(1 0 0 / 0.3);
     // backdrop-filter lives in an `is:inline` <style> in Header.astro, not here.
-    // The build's CSS pipeline mangled it in this module: it collapsed the space
-    // in `blur(24px) saturate(180%)` and dropped the unprefixed declaration from
-    // the prefix pair, leaving only `-webkit-backdrop-filter` (which Chrome
-    // ignores) — so the blur vanished on prod while dev (unminified) was fine.
+    // The build's CSS pipeline dropped the unprefixed declaration from the
+    // prefix pair, leaving only `-webkit-backdrop-filter` (which Chrome ignores),
+    // so the blur vanished on prod while dev (unminified) was fine.
     border: none;
     border-radius: $radius-full;
     box-shadow: none;
     // No overflow clipping: the language menu drops out below the pill.
 
     :global(html[data-theme='dark']) & {
-        background-color: oklch(1 0 0 / 0.07);
+        background-color: oklch(0 0 0 / 0.24);
     }
 
     // Blog posts and the archive sit in the wider 72rem container.

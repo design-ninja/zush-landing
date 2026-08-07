@@ -9,6 +9,73 @@
         padding: 8rem 0 1.5rem;
     }
 
+    &_natureBackground {
+        &::before {
+            content: none;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-position: center 60%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        :global(html[data-theme='light']) &::after {
+            background-image:
+                linear-gradient(
+                    to bottom,
+                    rgb(255 255 255 / 0.2) 0%,
+                    rgb(255 255 255 / 0.3) 56%,
+                    var(--background) 100%
+                ),
+                linear-gradient(
+                    to right,
+                    color-mix(in srgb, var(--background) 48%, transparent) 0%,
+                    transparent 18%,
+                    transparent 82%,
+                    color-mix(in srgb, var(--background) 48%, transparent) 100%
+                ),
+                url('../../assets/landing/home-hero-light.webp');
+        }
+
+        :global(html[data-theme='dark']) &::after {
+            background-image:
+                linear-gradient(
+                    to bottom,
+                    rgb(4 5 13 / 0.24) 0%,
+                    rgb(4 5 13 / 0.4) 56%,
+                    var(--background) 100%
+                ),
+                linear-gradient(
+                    to right,
+                    color-mix(in srgb, var(--background) 50%, transparent) 0%,
+                    transparent 18%,
+                    transparent 82%,
+                    color-mix(in srgb, var(--background) 50%, transparent) 100%
+                ),
+                url('../../assets/landing/home-hero-dark.webp');
+        }
+
+        .Hero__Subtitle,
+        .Hero__SoftpediaPrefix,
+        .Hero__TrustRow {
+            color: #000;
+        }
+
+        :global(html[data-theme='dark']) & {
+            .Hero__Subtitle,
+            .Hero__SoftpediaPrefix,
+            .Hero__TrustRow {
+                color: #fff;
+            }
+        }
+    }
+
     &__Container {
         @include container;
         display: grid;
@@ -142,7 +209,7 @@
         padding: 0.35rem 0.65rem;
         border: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
         border-radius: $radius-full;
-        background: color-mix(in srgb, var(--card) 72%, transparent);
+        background: color-mix(in srgb, var(--card) 34%, transparent);
         color: var(--text-subtle);
         font-size: 0.75rem;
         font-weight: 600;
@@ -153,7 +220,7 @@
         &:hover {
             border-color: color-mix(in srgb, var(--foreground) 28%, var(--border));
             color: var(--foreground);
-            background: var(--card);
+            background: color-mix(in srgb, var(--card) 58%, transparent);
         }
 
         &:focus-visible {

@@ -25,6 +25,8 @@ interface HeroProps {
    * their own media block below the hero.
    */
   centered?: boolean;
+  /** Adds the theme-specific homepage nature photo. */
+  natureBackground?: boolean;
   /**
    * Renders one button per platform instead of a single OS-detected button
    * with a dropdown. Only makes sense where no OS is forced.
@@ -99,6 +101,7 @@ const Hero = ({
   slides,
   as: Tag = "section",
   centered = false,
+  natureBackground = false,
   splitByOS = false,
   compactTopSpacing = false,
   forceOS,
@@ -159,6 +162,7 @@ const Hero = ({
       className={[
         styles.Hero,
         centered ? styles.Hero_centered : "",
+        natureBackground ? styles.Hero_natureBackground : "",
         compactTopSpacing ? styles.Hero_compactTopSpacing : "",
       ]
         .filter(Boolean)
