@@ -150,13 +150,14 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'rename invoices automatically, invoice renamer, invoice pdf organizer, invoice naming convention, organize invoices, rename pdf invoices, ai invoice organizer, bulk rename invoices',
   },
   '/for-accountants': {
-    title: 'Zush for Accountants & Bookkeepers | AI Document Renamer',
+    title: 'AI File Renamer for Accountants & Bookkeepers | Zush',
     description:
-      'Name every invoice, receipt, statement, and scan to one convention — automatically. Unmetered AI renaming with preview, undo, and local privacy modes.',
+      'Automatically rename invoices, receipts, statements, tax forms, and scans by vendor, date, number, and amount. Client Templates, Offline AI, preview, and undo.',
     robots: 'index, follow',
     ogType: 'website',
+    ogImage: `${SITE_ORIGIN}/images/landing/accountants-file-renamer.webp`,
     keywords:
-      'document management for accountants, accounting document organization, bookkeeper file naming, invoice organization software, rename accounting files, organize client documents bookkeeping',
+      'AI file renamer for accountants, accounting document renamer, bookkeeper file naming, rename invoices automatically, organize client accounting documents, invoice file naming software, receipt renamer for bookkeepers',
   },
   '/for-medical': {
     title: 'Medical Records File Renamer with Offline AI | Zush',

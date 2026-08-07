@@ -1,0 +1,254 @@
+---
+import { Image } from 'astro:assets';
+import { ArrowRight, Bot, Cloud, KeyRound } from 'lucide-react';
+import audienceBookkeeperImage from '@/assets/landing/accountants-audience-bookkeeper.webp';
+import audienceOwnerImage from '@/assets/landing/accountants-audience-practice-owner.webp';
+import audienceTeamImage from '@/assets/landing/accountants-audience-team.webp';
+import CloudFolders from '@/components/CloudFolders';
+import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
+import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
+import FAQ from '@/components/FAQ';
+import BentoCard from '@/components/Features/BentoCard.astro';
+import FeatureAnimation from '@/components/Features/FeatureAnimation';
+import featureStyles from '@/components/Features/Features.module.scss';
+import Heading from '@/components/Heading';
+import Pricing from '@/components/Pricing/Pricing.astro';
+import StarRating from '@/components/StarRating';
+import Text from '@/components/Text';
+import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module.scss';
+import testimonialStyles from '@/components/Testimonials/Testimonials.module.scss';
+import {
+  ACCOUNTANTS_AUDIENCES,
+  ACCOUNTANTS_FAQ,
+  ACCOUNTANTS_PRIVACY_MODES,
+  ACCOUNTANTS_PRIVACY_NOTE,
+  ACCOUNTANTS_TESTIMONIALS,
+  ACCOUNTANTS_WORKFLOW,
+  ACCOUNTING_DOCUMENT_TYPES,
+} from '@/data/accountantsLanding';
+import { getCopy } from '@/i18n/copy';
+import { FEATURE_DEMO_COPY } from '@/i18n/featureDemoCopy';
+import styles from '@/components/MedicalLandingPage/MedicalLandingPage.module.scss';
+import { AccountantsFieldExplorer } from './AccountantsFieldExplorer';
+import AccountantsHero from './AccountantsHero.astro';
+
+const copy = getCopy('en');
+const demoCopy = FEATURE_DEMO_COPY.en;
+const PRIVACY_ICONS = { cloud: Cloud, byok: KeyRound, offline: Bot } as const;
+const AUDIENCE_IMAGES = {
+  'practice-owner': {
+    src: audienceOwnerImage,
+    alt: 'Accounting practice owner discussing organized financial documents with a small-business client',
+  },
+  bookkeeper: {
+    src: audienceBookkeeperImage,
+    alt: 'Independent bookkeeper organizing invoices and receipts beside a document scanner',
+  },
+  team: {
+    src: audienceTeamImage,
+    alt: 'Two client accounting professionals reviewing source documents together',
+  },
+} as const;
+---
+
+<AccountantsHero />
+
+<div class={styles.HeroDemo}>
+  <DemoVideo label='Zush renaming a folder of invoices, receipts, and accounting documents' />
+</div>
+
+<section class={styles.Audiences} aria-labelledby='accountants-audiences-title'>
+  <div class={styles.Audiences__Container}>
+    <div class={styles.Audiences__Intro}>
+      <p class={styles.Audiences__Eyebrow}>Who it’s for</p>
+      <Heading as='h2' id='accountants-audiences-title' className={styles.Audiences__Title}>
+        Built for accountants, bookkeepers, and client accounting teams
+      </Heading>
+      <Text as='p' color='subtle' className={styles.Audiences__Description}>
+        The same file-renaming workflow fits recurring client intake, receipt processing, reconciliation support, and month-end close.
+      </Text>
+    </div>
+
+    <ul class={styles.Audiences__List}>
+      {ACCOUNTANTS_AUDIENCES.map((audience) => (
+        <li class={styles.Audience}>
+          <div class={styles.Audience__Media}>
+            <Image
+              src={AUDIENCE_IMAGES[audience.image].src}
+              alt={AUDIENCE_IMAGES[audience.image].alt}
+              class={styles.Audience__Image}
+              widths={[240, 360, 480, 720, 960]}
+              sizes='(max-width: 640px) 100vw, 11rem'
+              format='webp'
+              quality={78}
+              loading='lazy'
+              decoding='async'
+            />
+          </div>
+          <div class={styles.Audience__Content}>
+            <h3 class={styles.Audience__Title}>{audience.title}</h3>
+            <p class={styles.Audience__Description}>{audience.description}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<section id='fields' class={styles.Fields} aria-labelledby='accountants-fields-title'>
+  <div class={styles.Fields__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as='h2' align='center' id='accountants-fields-title' className={sectionHeaderStyles.SectionHeader__Title}>
+        Choose the fields for every accounting filename
+      </Heading>
+      <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
+        Zush reads the visible content of each document. Your Template selects the vendor, date, invoice number, amount, category, tax period, or custom field used in the final name.
+      </Text>
+    </div>
+    <AccountantsFieldExplorer client:visible />
+  </div>
+</section>
+
+<section id='privacy' class={styles.Privacy} aria-labelledby='accountants-privacy-title'>
+  <div class={styles.Privacy__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as='h2' align='center' id='accountants-privacy-title' className={sectionHeaderStyles.SectionHeader__Title}>
+        Choose how financial documents are processed
+      </Heading>
+      <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
+        Start quickly with managed Cloud AI, route analysis through your firm’s provider account with BYOK, or keep supported document analysis on the machine with local Offline AI.
+      </Text>
+    </div>
+
+    <div class={featureStyles.Band__Grid}>
+      {ACCOUNTANTS_PRIVACY_MODES.map((mode) => (
+        <BentoCard
+          title={mode.title}
+          description={mode.description}
+          icon={PRIVACY_ICONS[mode.id]}
+          badge={mode.badge}
+          badgeTone={mode.badgeTone}
+        >
+          <div class={featureStyles.UI_FeatureAnimation}>
+            <FeatureAnimation kind={mode.kind} demoCopy={demoCopy} client:visible />
+          </div>
+        </BentoCard>
+      ))}
+    </div>
+
+    <p class={styles.Privacy__Note}>
+      {ACCOUNTANTS_PRIVACY_NOTE}{' '}
+      <a class={styles.ArrowLink} href='/docs/privacy-security'>
+        Read how the modes handle data
+        <ArrowRight size={15} aria-hidden='true' />
+      </a>
+    </p>
+  </div>
+</section>
+
+<section id='workflow' class={styles.Workflow} aria-labelledby='accountants-workflow-title'>
+  <div class={styles.Workflow__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as='h2' align='center' id='accountants-workflow-title' className={sectionHeaderStyles.SectionHeader__Title}>
+        Automatically rename files from client intake folders
+      </Heading>
+      <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
+        Set up a client Template, monitor the intake folder, and review each proposed batch before anything changes.
+      </Text>
+    </div>
+
+    <ol class={styles.Workflow__Steps}>
+      {ACCOUNTANTS_WORKFLOW.map((step, index) => (
+        <li class={styles.WorkflowStep}>
+          <span class={styles.WorkflowStep__Number} aria-hidden='true'>{index + 1}</span>
+          <h3 class={styles.WorkflowStep__Title}>{step.title}</h3>
+          <p class={styles.WorkflowStep__Description}>{step.description}</p>
+        </li>
+      ))}
+    </ol>
+
+    <div class={styles.Workflow__Links}>
+      <a class={styles.ArrowLink} href='/docs/templates/invoices'>
+        Build an invoice Template step-by-step
+        <ArrowRight size={15} aria-hidden='true' />
+      </a>
+      <a class={styles.ArrowLink} href='/rename-invoices-with-ai'>
+        How invoice renaming works
+        <ArrowRight size={15} aria-hidden='true' />
+      </a>
+      <a class={styles.ArrowLink} href='/blog/how-to-organize-invoices-and-receipts'>
+        Organize the intake-to-archive workflow
+        <ArrowRight size={15} aria-hidden='true' />
+      </a>
+    </div>
+  </div>
+</section>
+
+<CloudFolders title={copy.home.cloudFoldersTitle} />
+
+<section class={styles.Documents} aria-labelledby='accounting-document-types-title'>
+  <div class={styles.Documents__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as='h2' align='center' id='accounting-document-types-title' className={sectionHeaderStyles.SectionHeader__Title}>
+        Accounting documents Zush can rename automatically
+      </Heading>
+      <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
+        Use separate Templates for payables, receipts, tax documents, and close support. Each workflow keeps its own fields and naming pattern without changing the original content.
+      </Text>
+    </div>
+
+    <div class={styles.Documents__Grid}>
+      {ACCOUNTING_DOCUMENT_TYPES.map((documentType) => (
+        <article class={styles.DocumentType}>
+          <h3 class={styles.DocumentType__Title}>{documentType.title}</h3>
+          <p class={styles.DocumentType__Description}>{documentType.description}</p>
+          <code class={styles.DocumentType__Example}>{documentType.example}</code>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section id='reviews' class={testimonialStyles.Testimonials} aria-labelledby='accountants-testimonials-title'>
+  <div class={testimonialStyles.Testimonials__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as='h2' align='center' id='accountants-testimonials-title' className={sectionHeaderStyles.SectionHeader__Title}>
+        How accounting teams put Zush to work
+      </Heading>
+      <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
+        Illustrative workflows based on common accounting document patterns.
+      </Text>
+    </div>
+
+    <div class={`${testimonialStyles.Testimonials__Grid} ${styles.Testimonials__Grid}`}>
+      {ACCOUNTANTS_TESTIMONIALS.map((testimonial) => (
+        <article class={testimonialStyles.TestimonialCard}>
+          <StarRating className={testimonialStyles.TestimonialCard__Stars} label='5 out of 5 stars' />
+          <blockquote class={testimonialStyles.TestimonialCard__Quote}>
+            <Text as='p' size='sm'>{testimonial.quote}</Text>
+          </blockquote>
+          <footer class={testimonialStyles.TestimonialCard__Author}>
+            <Text as='p' size='sm' className={testimonialStyles.TestimonialCard__Name}>{testimonial.name}</Text>
+            <Text as='p' size='sm' color='subtle'>{testimonial.role}</Text>
+          </footer>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<Pricing copy={copy.pricing} />
+
+<FAQ
+  client:visible
+  items={ACCOUNTANTS_FAQ}
+  title='Accounting file renaming, answered'
+  description='How client Templates, folder monitoring, local Offline AI, BYOK, preview, undo, and unmetered renaming fit an accounting document workflow.'
+/>
+
+<div class={styles.FinalCta}>
+  <DownloadCTA
+    title='Try Zush on one client intake folder'
+    subtitle='Add a copied batch of invoices or receipts, read the proposed names, and undo the rename if the Template needs another pass.'
+  />
+</div>
