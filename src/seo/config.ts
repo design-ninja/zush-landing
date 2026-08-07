@@ -15,6 +15,7 @@ import {
 } from '@/constants';
 import { getPrimaryAuthorJsonLd, PRIMARY_AUTHOR } from '@/data/author';
 import { buildAppAggregateRatingJsonLd } from '@/seo/appRating';
+import { buildSoftpediaReviewJsonLd } from '@/seo/softpediaReview';
 import { ORGANIZATION_REF, WEBSITE_REF } from '@/seo/entity';
 import { PRO_PRICING } from '@/constants/pricing';
 
@@ -538,6 +539,7 @@ export const HOME_JSON_LD = {
         `${SITE_ORIGIN}/images/showcase/windows/batch-rename-light.webp`,
       ],
       ...buildAppAggregateRatingJsonLd(),
+      ...buildSoftpediaReviewJsonLd(),
       offers: [
         {
           '@type': 'Offer',

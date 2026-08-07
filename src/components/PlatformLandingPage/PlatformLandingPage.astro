@@ -39,6 +39,8 @@ import { getPlatformSpecificsCopy } from '@/i18n/platformSpecifics';
 import { PRO_PRICING } from '@/constants/pricing';
 import { getLocalizedPlatformSpecificsContent } from '@/i18n/platformSpecificsContent';
 import { getLocalizedSeoForRoute } from '@/i18n/seo';
+import { SOFTPEDIA_REVIEW_ARIA_LABELS } from '@/i18n/softpediaReview';
+import { buildSoftpediaReviewJsonLd } from '@/seo/softpediaReview';
 import {
   APP_CONFIG,
   APP_STORE_URL,
@@ -234,6 +236,7 @@ const softwareJsonLd = {
   sameAs: platform === 'mac' ? [APP_STORE_URL, HOMEBREW_CASK_URL] : [WINDOWS_STORE_URL],
   screenshot: screenshotJsonLd,
   ...buildAppAggregateRatingJsonLd(),
+  ...buildSoftpediaReviewJsonLd(),
   offers: [
     {
       '@type': 'Offer',
@@ -339,6 +342,7 @@ const jsonLdItems = [
     centered
     macVersion={macVersion}
     windowsVersion={windowsVersion}
+    softpediaReviewAriaLabel={SOFTPEDIA_REVIEW_ARIA_LABELS[locale]}
   />
   <DemoVideo
     label={copy.home.showcase.title}

@@ -9,6 +9,7 @@ import styles from "./Hero.module.scss";
 import type { DownloadOS } from "@/utils/download";
 import type { DownloadMenuCopy } from "@/i18n/copy";
 import { WINDOWS_STORE_URL } from "@/constants";
+import { SOFTPEDIA_REVIEW_URL } from "@/constants";
 
 
 interface HeroProps {
@@ -46,6 +47,7 @@ interface HeroProps {
   reviewsLabel?: string;
   macVersion?: string;
   windowsVersion?: string;
+  softpediaReviewAriaLabel?: string;
 }
 
 const renderTextWithBreaks = (value: string) =>
@@ -108,6 +110,7 @@ const Hero = ({
   aiModes = [],
   reviewsHref,
   reviewsLabel = "Reviews",
+  softpediaReviewAriaLabel,
 }: HeroProps) => {
   const [showWindowsWebFallback, setShowWindowsWebFallback] = useState(false);
   const highlightText = titleHighlight ?? titleAccent;
@@ -161,6 +164,22 @@ const Hero = ({
     >
       <div className={styles.Hero__Container}>
         <div className={styles.Hero__Intro}>
+          {softpediaReviewAriaLabel && (
+            <a
+              className={styles.Hero__SoftpediaReview}
+              href={SOFTPEDIA_REVIEW_URL}
+              target="_blank"
+              rel="noopener noreferrer external"
+              aria-label={softpediaReviewAriaLabel}
+            >
+              <span className={styles.Hero__SoftpediaPrefix}>Reviewed by</span>
+              <span className={styles.Hero__SoftpediaLogo} aria-hidden="true" />
+              <span className={styles.Hero__SoftpediaStars} aria-hidden="true">
+                <span className={styles.Hero__SoftpediaStar} />
+              </span>
+              <span className={styles.Hero__SoftpediaScore}>4.5</span>
+            </a>
+          )}
           {(reviewsHref || aiModes.length > 0) && (
             <div className={styles.Hero__ProofRow}>
               {reviewsHref && (

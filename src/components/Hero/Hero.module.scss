@@ -132,6 +132,72 @@
         color: inherit;
     }
 
+    &__SoftpediaReview {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.45rem;
+        min-height: 2rem;
+        margin: 0 0 1rem;
+        padding: 0.35rem 0.65rem;
+        border: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
+        border-radius: $radius-full;
+        background: color-mix(in srgb, var(--card) 72%, transparent);
+        color: var(--text-subtle);
+        font-size: 0.75rem;
+        font-weight: 600;
+        line-height: 1;
+        text-decoration: none;
+        transition: border-color $transition-fast, color $transition-fast, background $transition-fast;
+
+        &:hover {
+            border-color: color-mix(in srgb, var(--foreground) 28%, var(--border));
+            color: var(--foreground);
+            background: var(--card);
+        }
+
+        &:focus-visible {
+            outline: 2px solid color-mix(in srgb, var(--primary) 62%, transparent);
+            outline-offset: 0.2rem;
+        }
+    }
+
+    &__SoftpediaLogo {
+        width: 4.4rem;
+        height: 0.72rem;
+        flex: 0 0 auto;
+        background: currentColor;
+        mask: url('/images/featured-on/softpedia.svg') center / contain no-repeat;
+    }
+
+    &__SoftpediaPrefix {
+        color: var(--text-subtle);
+        font-weight: 500;
+        white-space: nowrap;
+    }
+
+    &__SoftpediaStars {
+        display: inline-flex;
+        margin-right: -0.32rem;
+        color: #fc0;
+    }
+
+    &__SoftpediaStar {
+        width: 1.05rem;
+        height: 1.05rem;
+        background: currentColor;
+        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.8 14.8 8.6 21.2 9.5 16.6 14 17.7 20.3 12 17.3 6.3 20.3 7.4 14 2.8 9.5 9.2 8.6Z'/%3E%3C/svg%3E") center / contain no-repeat;
+    }
+
+    &__SoftpediaScore {
+        display: inline-flex;
+        align-items: center;
+        height: 1.05rem;
+        line-height: 1.05rem;
+        color: var(--foreground);
+        font-variant-numeric: tabular-nums;
+    }
+
     &__Subtitle {
         margin-bottom: 1.75rem;
         max-width: 31.25rem;

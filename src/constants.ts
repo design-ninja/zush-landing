@@ -19,6 +19,8 @@ export const LINKEDIN_COMPANY_URL = "https://www.linkedin.com/company/zush-ai-fi
 export const FACEBOOK_PROFILE_URL = "https://www.facebook.com/profile.php?id=61592905765874";
 export const GOOGLE_WORKSPACE_MARKETPLACE_URL =
   "https://workspace.google.com/marketplace/app/zush_ai_renamer/865259549983";
+export const SOFTPEDIA_REVIEW_URL =
+  "https://www.softpedia.com/get/Artificial-Intelligence-Generative-AI/Zush.shtml";
 
 export const FREE_DOWNLOAD_BADGE_LABEL = "FREE";
 export const MAC_APP_VERSION = "3.9.1";

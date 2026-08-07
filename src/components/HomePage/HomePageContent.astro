@@ -21,6 +21,7 @@ import windowsChangelogSource from '@/content/changelog.windows.md?raw';
 import { parseLatestVersion } from '@/utils/version';
 import type { Locale } from '@/i18n/config';
 import type { LocaleCopy } from '@/i18n/copy';
+import { SOFTPEDIA_REVIEW_ARIA_LABELS } from '@/i18n/softpediaReview';
 
 interface Props {
   copy: LocaleCopy;
@@ -49,6 +50,7 @@ const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
   splitByOS
   macVersion={macVersion}
   windowsVersion={windowsVersion}
+  softpediaReviewAriaLabel={SOFTPEDIA_REVIEW_ARIA_LABELS[locale]}
 />
 <DemoVideo label={copy.home.showcase.title} />
 <EvidenceSignals locale={locale} />
