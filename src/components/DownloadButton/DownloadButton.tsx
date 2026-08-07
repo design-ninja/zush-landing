@@ -192,8 +192,8 @@ const DownloadButton = ({
       role='menuitem'
       className={styles.Menu__Item}
       href={otherUrl}
-      target='_blank'
-      rel='noopener noreferrer'
+      target={otherOS === 'windows' ? '_blank' : undefined}
+      rel={otherOS === 'windows' ? 'noopener noreferrer' : undefined}
       data-download-os={otherOS}
       data-download-source={source}
       data-download-channel={otherOS === 'windows' ? 'microsoft-store' : 'direct'}
@@ -247,6 +247,7 @@ const DownloadButton = ({
       : [renderAppStoreMenuItem()];
   })();
   const hasDropdownItems = showDropdown && !isAppStoreChannel && menuItems.length > 0;
+  const opensExternalDestination = isAppStoreChannel || downloadOS === 'windows';
 
   return (
     <div
@@ -272,8 +273,8 @@ const DownloadButton = ({
           .filter(Boolean)
           .join(' ')}
         href={primaryHref}
-        target='_blank'
-        rel='noopener noreferrer'
+        target={opensExternalDestination ? '_blank' : undefined}
+        rel={opensExternalDestination ? 'noopener noreferrer' : undefined}
         data-store-os={downloadOS === 'windows' && !isAppStoreChannel ? 'windows' : undefined}
         data-store-app-url={
           downloadOS === 'windows' && !isAppStoreChannel ? WINDOWS_STORE_PROTOCOL_URL : undefined

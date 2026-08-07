@@ -137,8 +137,6 @@ const MobileDownloadModal = ({ isOpen, onClose }: MobileDownloadModalProps) => {
           <a
             className={styles.MobileDownloadModal__Option}
             href={DOWNLOAD_URL}
-            target='_blank'
-            rel='noopener noreferrer'
             data-download-os='mac'
             data-download-source='mobile-modal'
             data-download-channel='direct'

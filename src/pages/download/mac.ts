@@ -1,4 +1,5 @@
 import type { APIRoute } from 'astro';
+import { waitUntil } from '@vercel/functions';
 import { MAC_INSTALLER_URL } from '@/constants';
 
 export const prerender = false;
@@ -206,21 +207,17 @@ const runBestEffortTracking = async (
   const attribution = collectAttribution(request, eventId);
   const sessionDistinctId = getPostHogDistinctIdFromCookie(request);
 
-  // Capped so tracking never delays the redirect.
-  await Promise.race([
-    capturePostHogDownload(attribution, url, sessionDistinctId),
-    new Promise((resolve) => setTimeout(resolve, REDIRECT_TIMEOUT_MS)),
-  ]);
+  await capturePostHogDownload(attribution, url, sessionDistinctId);
 };
 
-export const GET: APIRoute = async ({ request }) => {
+export const GET: APIRoute = ({ request }) => {
   const eventId = globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random()}`;
 
-  try {
-    await runBestEffortTracking(request, eventId);
-  } catch (error) {
-    console.warn('Download tracking failed', error instanceof Error ? error.message : 'unknown');
-  }
+  waitUntil(
+    runBestEffortTracking(request, eventId).catch((error) => {
+      console.warn('Download tracking failed', error instanceof Error ? error.message : 'unknown');
+    }),
+  );
 
   return new Response(null, {
     status: 302,
