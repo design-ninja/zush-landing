@@ -81,67 +81,6 @@
 }
 
 // ---------------------------------------------------------------------------
-// Pains — open three-up with ghost numbers, no cards
-// ---------------------------------------------------------------------------
-.Pains {
-    padding: $space-3xl 0;
-
-    @include mobile {
-        padding: 3.25rem 0;
-    }
-
-    &__Container {
-        @include container;
-    }
-
-    &__List {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: $space-2xl;
-        margin: $space-2xl 0 0;
-        padding: 0;
-        list-style: none;
-
-        @include tablet {
-            grid-template-columns: minmax(0, 1fr);
-            gap: $space-xl;
-        }
-    }
-}
-
-.Pain {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-
-    &__Index {
-        font-size: 2.25rem;
-        font-weight: 700;
-        line-height: 1;
-        letter-spacing: -0.02em;
-        // Readable in both themes — 78% transparent all but vanished on the
-        // dark background.
-        color: color-mix(in oklch, var(--primary), transparent 40%);
-    }
-
-    &__Title {
-        margin: $space-md 0 0;
-        font-size: 1.0625rem;
-        font-weight: 600;
-        color: var(--foreground);
-    }
-
-    &__Description {
-        margin: $space-sm 0 0;
-        max-width: 22rem;
-        font-size: 0.9375rem;
-        line-height: 1.6;
-        color: var(--muted-foreground);
-    }
-}
-
-// ---------------------------------------------------------------------------
 // Fields — one centred top-down story: reads every field → you pick what lands
 // in the name → examples → the principle. No two-column split, no boxes.
 // ---------------------------------------------------------------------------
@@ -386,6 +325,73 @@
         font-size: 0.9375rem;
         line-height: 1.6;
         color: var(--muted-foreground);
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Medical document types — compact, scan-friendly cards below the shared
+// cloud-folders band. The examples make each use case concrete without adding
+// another interactive island.
+// ---------------------------------------------------------------------------
+.Documents {
+    padding: $space-3xl 0;
+
+    @include mobile {
+        padding: 3.25rem 0;
+    }
+
+    &__Container {
+        @include container;
+    }
+
+    &__Grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: $space-lg;
+        margin-top: $space-2xl;
+
+        @include tablet {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        @include mobile {
+            grid-template-columns: minmax(0, 1fr);
+        }
+    }
+}
+
+.DocumentType {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: $space-lg;
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    background: var(--card);
+
+    &__Title {
+        margin: 0;
+        font-size: 1.0625rem;
+        font-weight: 600;
+        color: var(--foreground);
+    }
+
+    &__Description {
+        margin: $space-sm 0 0;
+        font-size: 0.875rem;
+        line-height: 1.6;
+        color: var(--muted-foreground);
+    }
+
+    &__Example {
+        display: block;
+        margin-top: auto;
+        padding-top: $space-md;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        line-height: 1.55;
+        color: var(--primary);
+        overflow-wrap: anywhere;
     }
 }
 

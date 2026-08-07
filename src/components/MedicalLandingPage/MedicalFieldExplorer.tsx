@@ -3,10 +3,9 @@ import { Check, FileText } from 'lucide-react';
 import { MEDICAL_FIELDS } from '@/data/medicalLanding';
 import styles from './MedicalFieldExplorer.module.scss';
 
-// Interactive version of the "reads every field" section: the chips are
-// buttons, and picking one drives the single rename demo below it. Any field
-// can go in the name — it's the user's choice; the privacy guarantee is the run
-// mode (Offline AI), not filename hygiene.
+// Interactive version of the field-extraction section: the chips are buttons,
+// and picking one drives the single rename demo below it. The examples stay
+// within the practical internal-ID/date/type convention used across the page.
 
 // Split `after` around the emphasised substring so the matched part can be
 // highlighted without dangerouslySetInnerHTML.
@@ -18,8 +17,8 @@ const splitEmphasis = (after: string, emphasis?: string) => {
 };
 
 const MedicalFieldExplorer = () => {
-  // Default to MRN — the identifier the convention is built around.
-  const [selected, setSelected] = useState(1);
+  // Default to the internal identifier the convention is built around.
+  const [selected, setSelected] = useState(0);
   const field = MEDICAL_FIELDS[selected];
   const { pre, hit, post } = splitEmphasis(field.after, field.emphasis);
 
@@ -65,8 +64,8 @@ const MedicalFieldExplorer = () => {
       </div>
 
       <p className={styles.Explorer__Hint}>
-        Build the filename you want from any field on the page. In Offline AI mode it all runs
-        locally — none of it ever leaves your machine.
+        Your Template decides which fields appear in the filename. Run the extraction locally
+        with Offline AI, or through the provider account your organization controls with BYOK.
       </p>
     </div>
   );

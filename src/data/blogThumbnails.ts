@@ -22,7 +22,7 @@ const BLOG_THUMBNAIL_ALIASES: Record<string, string> = {
   'best-ai-file-organizers-mac': 'automate-file-organization-macos',
   'rename-scanned-documents-automatically': 'rename-pdf-files-automatically',
   'invoice-file-naming-convention': 'file-naming-conventions-best-practices',
-  'medical-records-file-naming-convention': 'file-naming-conventions-best-practices',
+  'how-to-organize-scanned-medical-records-small-practice': 'file-naming-conventions-best-practices',
   'legal-file-naming-conventions': 'file-naming-conventions-best-practices',
   'best-file-renamer-tools': 'best-ai-file-renamer-tools-2026',
   'how-to-organize-invoices-and-receipts': 'organize-client-files-freelancers-mac',

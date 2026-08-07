@@ -3,35 +3,33 @@ import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 // English-only landing data for /for-medical. The page is not in
 // LOCALIZED_ROUTES, so copy lives here rather than in src/i18n/copy.ts.
 //
-// Messaging direction (deliberate): the privacy story is NOT about hiding data
-// in filenames. The doctor names files however they want — any field on the
-// page can go in the name. The guarantee is the run mode: with Offline AI
-// (local Ollama) the files never leave the machine and nothing is transmitted.
-// Nothing here claims HIPAA compliance — no tool makes a practice compliant by
-// itself; what Offline AI provides is that records stay local.
+// This is the primary search landing for medical workflows. Privacy messaging
+// stays grounded in product mechanics: Offline AI runs local Ollama models,
+// BYOK uses an account and key controlled by the organization, and every rename
+// is previewed before it is applied in place.
 
 export const MEDICAL_PAGE_PATH = '/for-medical';
-export const MEDICAL_PAGE_TITLE = 'Zush for Medical Practices';
+export const MEDICAL_PAGE_TITLE = 'Medical Records File Renamer';
 
 export const MEDICAL_HERO = {
-  eyebrow: 'AI file renamer & organizer',
-  titleLead: 'Patient records that ',
-  titleAccent: 'name themselves',
+  eyebrow: 'Medical records file renamer',
+  titleLead: 'Rename medical records by ',
+  titleAccent: 'MRN, date, and type',
   subtitle:
-    'Zush reads every scan, fax, and lab report and names it by the details you choose — patient, date, record type. With Offline AI it all runs on your machine: nothing is uploaded, nothing leaves. Review the batch, apply, undo anytime.',
+    'Zush automatically renames scanned medical records, faxes, lab reports, and intake forms using the fields your practice chooses. Run local Ollama models with Offline AI, or connect the provider account your organization controls with BYOK. Preview every batch and undo anytime.',
   secondaryCta: {
     label: 'See how a practice sets it up',
     href: '#workflow',
   },
   trustLine: [
-    'Offline AI mode',
-    'Files never leave the machine',
-    'Get started for free',
+    'Local Offline AI',
+    'Organization-controlled BYOK',
+    'Preview and undo every batch',
   ],
   // Imported as an astro:assets module in MedicalHero; only the alt text lives
   // here.
   photo: {
-    alt: 'A physician at a desk reviewing scanned patient records on a monitor',
+    alt: 'A physician using a desktop computer to organize scanned medical records',
   },
 } as const;
 
@@ -45,34 +43,11 @@ export const MEDICAL_DEMO = {
     'Real scanner output on the left, the names Zush proposes on the right — every batch is reviewed before anything is applied.',
 } as const;
 
-export interface MedicalPain {
-  title: string;
-  description: string;
-}
-
-export const MEDICAL_PAINS: MedicalPain[] = [
-  {
-    title: 'The scanner names nothing.',
-    description:
-      'Scan0001.pdf, Scan0002.pdf, Scan0003.pdf. A day of intake is a folder of mystery files that only opens one at a time.',
-  },
-  {
-    title: 'Nothing is searchable.',
-    description:
-      'To find one lab result or referral you open files one at a time. A folder of scans is a filing cabinet with the labels torn off.',
-  },
-  {
-    title: 'Cloud tools are a non-starter.',
-    description:
-      'A web renamer means uploading patient records to someone else’s server. For records you keep in-house, that’s the whole problem — the files should never leave the building.',
-  },
-];
-
 export interface MedicalField {
   label: string;
   /** The scanner default the interactive demo starts from. */
   before: string;
-  /** The proposed filename the demo reveals (always identifier-safe). */
+  /** The proposed filename the demo reveals. */
   after: string;
   /** Substring of `after` to highlight (fields that land in the name). */
   emphasis?: string;
@@ -80,25 +55,23 @@ export interface MedicalField {
 
 // `after` values are kept short enough to sit on one line in the demo card.
 export const MEDICAL_FIELDS: MedicalField[] = [
-  { label: 'Patient name', before: 'Scan0001.pdf', after: 'Jordan Miles – 2026-06-12 – Lab Results', emphasis: 'Jordan Miles' },
   { label: 'MRN / Patient ID', before: 'Scan0001.pdf', after: 'MRN-48211 – 2026-06-12 – Lab Results', emphasis: 'MRN-48211' },
-  { label: 'Date of birth', before: 'Scan0002.pdf', after: 'Jordan Miles – DOB 1974-03-02 – Intake', emphasis: 'DOB 1974-03-02' },
   { label: 'Date of service', before: 'Scan0002.pdf', after: 'MRN-48211 – 2026-06-12 – Lab Results', emphasis: '2026-06-12' },
   { label: 'Record type', before: 'fax_received.pdf', after: 'MRN-30177 – 2026-05-30 – Chest X-Ray', emphasis: 'Chest X-Ray' },
   { label: 'Referring provider', before: 'referral.pdf', after: 'MRN-30177 – 2026-06-02 – Dr Chen', emphasis: 'Dr Chen' },
   { label: 'Specialty', before: 'consult_note.pdf', after: 'MRN-30177 – 2026-06-02 – Cardiology', emphasis: 'Cardiology' },
-  { label: 'Blood type', before: 'Scan0003.pdf', after: 'MRN-30177 – 2026-06-02 – O+ Panel', emphasis: 'O+' },
-  { label: 'Diagnosis', before: 'Scan_0044.pdf', after: 'MRN-30177 – 2026-06-02 – Hypertension', emphasis: 'Hypertension' },
   { label: 'Payer / Insurance', before: 'eob.pdf', after: 'ACC-2210 – 2026-06-04 – Blue Cross', emphasis: 'Blue Cross' },
   { label: 'Claim #', before: 'Scan_0052.pdf', after: 'ACC-2210 – 2026-06-04 – Claim 88213', emphasis: 'Claim 88213' },
   { label: 'Amount', before: 'statement.pdf', after: 'ACC-2210 – 2026-06-04 – Aetna $1,240', emphasis: '$1,240' },
+  { label: 'Procedure code', before: 'procedure.pdf', after: 'MRN-51402 – 2026-06-05 – CPT 93000', emphasis: 'CPT 93000' },
+  { label: 'Document date', before: 'outside_records.pdf', after: 'MRN-51402 – 2026-06-05 – Outside Records', emphasis: '2026-06-05' },
   { label: 'Custom field — describe it in plain language', before: 'doc_20260608.pdf', after: 'MRN-51402 – 2026-06-05 – Consent Form', emphasis: 'Consent Form' },
 ];
 
 export const MEDICAL_FIELDS_FOOTNOTE =
-  'Custom AI Blocks extract any field you can describe — “the ordering physician”, “the CPT code”, “left or right side”.';
+  'Custom AI Blocks can extract any field you describe — “the ordering physician”, “the procedure code”, or “the signed date”. Your Template decides which fields become part of the filename.';
 
-export const MEDICAL_FILENAME_PATTERN = '{Patient ID} – {Date of service} – {Record type}';
+export const MEDICAL_FILENAME_PATTERN = '{Internal ID} – {Date of service} – {Document type}';
 
 // Identifier-based only. Carried over from the medicalSlides pairs that used to
 // live in searchLandingPages.ts.
@@ -108,10 +81,8 @@ export const MEDICAL_FILENAME_EXAMPLES = [
   { before: 'Scanned Document 4.pdf', after: 'MRN-51402 – 2026-06-05 – Intake Form.pdf' },
 ];
 
-// The three run modes, ordered least-to-most private, each paired with the
-// matching homepage Remotion demo (kind → FeatureAnimation). Same bento-card
-// pattern as the homepage "3 secure ways to run Zush" section, with records-
-// specific copy.
+// The three run modes, with the medical-first recommendations shown before the
+// managed cloud option. Each mode is paired with the matching homepage demo.
 export interface MedicalPrivacyMode {
   id: 'cloud' | 'byok' | 'offline';
   kind: 'cloud-ai' | 'byok' | 'offline-ai';
@@ -123,34 +94,34 @@ export interface MedicalPrivacyMode {
 
 export const MEDICAL_PRIVACY_MODES: MedicalPrivacyMode[] = [
   {
-    id: 'cloud',
-    kind: 'cloud-ai',
-    title: 'Cloud AI',
-    badge: 'Default',
+    id: 'offline',
+    kind: 'offline-ai',
+    title: 'Offline AI with local models',
+    badge: 'Recommended for records',
+    badgeTone: 'success',
     description:
-      'Managed cloud AI reads the document content under the provider’s standard terms. Filenames and folder structure never leave your disk — but for records you are obligated to keep in-house, use a local mode instead.',
+      'Local Ollama models analyze supported scans and documents on the Mac or Windows PC where they are stored. File content is not sent to Zush or a third-party AI provider.',
   },
   {
     id: 'byok',
     kind: 'byok',
-    title: 'Bring Your Own Key',
-    badge: 'Your account',
+    title: 'Organization-controlled BYOK',
+    badge: 'Your provider account',
     description:
-      'Route analysis through your practice’s own OpenAI, Anthropic, or Google account, under the agreement — and any BAA — you already hold with that provider. The key stays in secure local storage.',
+      'Route analysis through the AI provider account and API key your organization controls. The key stays in secure local storage, and your team chooses the provider and model used for the workflow.',
   },
   {
-    id: 'offline',
-    kind: 'offline-ai',
-    title: 'Private Offline AI',
-    badge: 'Recommended for records',
-    badgeTone: 'success',
+    id: 'cloud',
+    kind: 'cloud-ai',
+    title: 'Managed Cloud AI',
+    badge: 'For general files',
     description:
-      'Analysis runs on local Ollama models on Mac and Windows. A scan is read, named, and filed on the same machine it was scanned to — nothing about the document reaches Zush or any third-party AI provider.',
+      'Managed cloud processing is available for ordinary files. For medical document workflows, use Offline AI or your organization’s BYOK setup according to the policy your team follows.',
   },
 ];
 
 export const MEDICAL_PRIVACY_NOTE =
-  'No tool makes a practice HIPAA-compliant by itself — but with Offline AI the records never leave the machine they were scanned to, and nothing about them is transmitted anywhere.';
+  'Use Offline AI when document content must stay on the machine. Use BYOK when your organization routes analysis through its own provider account and key. In every mode, Zush renames files in place and does not store them.';
 
 export const MEDICAL_WORKFLOW = [
   {
@@ -161,7 +132,7 @@ export const MEDICAL_WORKFLOW = [
   {
     title: 'Review the proposed names',
     description:
-      'The preview is a control, not a formality: read the batch, confirm no patient names made it into a filename, regenerate anything that looks wrong.',
+      'The preview is a control, not a formality: read the batch, confirm only approved fields appear in each filename, and regenerate anything that looks wrong.',
   },
   {
     title: 'Apply with undo',
@@ -170,54 +141,48 @@ export const MEDICAL_WORKFLOW = [
   },
 ];
 
-export interface MedicalFeature {
+export interface MedicalDocumentType {
   title: string;
   description: string;
-  icon: 'folder' | 'scan' | 'template' | 'blocks' | 'history' | 'layouts';
-  href?: string;
+  example: string;
 }
 
-export const MEDICAL_FEATURES: MedicalFeature[] = [
+export const MEDICAL_DOCUMENT_TYPES: MedicalDocumentType[] = [
   {
-    title: 'Folder monitoring',
+    title: 'Scanned patient records',
     description:
-      'Assign a Template to the scanner or fax output folder. Every new document that lands is named to the same convention.',
-    icon: 'folder',
-    href: '/docs/folder-monitoring',
+      'Turn scanner output and archive exports into consistent filenames built from an internal ID, service date, and document type.',
+    example: 'MRN-48211 – 2026-06-12 – Progress Note.pdf',
   },
   {
-    title: 'AI vision for image-only scans',
+    title: 'Lab reports',
     description:
-      'Most records arrive as page images with no text layer. Zush reads the page directly — no separate OCR pass to run or maintain.',
-    icon: 'scan',
-    href: '/rename-scanned-documents',
+      'Read image-only lab PDFs and name them by the identifier, date of service, and report type without a separate OCR workflow.',
+    example: 'MRN-48211 – 2026-06-12 – Lab Results.pdf',
   },
   {
-    title: 'Templates per document flow',
+    title: 'Referrals and faxed documents',
     description:
-      'Clinical records and billing paperwork want different names. Keep one Template for charts and another for claims, EOBs, and ERAs.',
-    icon: 'template',
-    href: '/docs/templates/medical-records',
+      'Identify incoming referrals, consultation letters, and faxed records, then apply the same naming pattern used by the rest of the practice.',
+    example: 'MRN-30177 – 2026-06-02 – Referral – Cardiology.pdf',
   },
   {
-    title: 'Custom AI Blocks',
+    title: 'Intake and consent forms',
     description:
-      'Describe the field in plain language — “the ordering physician”, “the CPT code” — and it becomes part of the filename.',
-    icon: 'blocks',
-    href: '/docs/custom-ai-blocks',
+      'Extract the form type and signed date from front-desk scans so every intake batch follows one reusable Template.',
+    example: 'MRN-51402 – 2026-06-05 – Consent Form.pdf',
   },
   {
-    title: 'Undo and rename history',
+    title: 'Imaging and consult reports',
     description:
-      'Every applied batch is reversible. Nothing about a rename is one-way, which is what makes running it on records reasonable.',
-    icon: 'history',
+      'Name imaging reports, specialist notes, and outside records by the fields your team uses to retrieve them later.',
+    example: 'MRN-30177 – 2026-05-30 – Imaging – Chest X-Ray.pdf',
   },
   {
-    title: 'Charts-style and intake-style folders',
+    title: 'EOBs, ERAs, and claim correspondence',
     description:
-      'Whether the folder tree is one directory per patient or one directory per intake day, the same filename pattern sorts correctly inside it.',
-    icon: 'layouts',
-    href: '/blog/medical-records-file-naming-convention',
+      'Use a separate billing Template for payer documents, account references, remittances, and claim correspondence.',
+    example: 'ACC-2210 – 2026-06-04 – ERA – Aetna.pdf',
   },
 ];
 
@@ -287,9 +252,9 @@ export const MEDICAL_FAQ = [
       'Yes. In Offline AI mode, Zush analyzes supported files with local Ollama models on Mac or Windows — records are read and renamed entirely on the machine. Renaming always happens in place on your disk; Zush never uploads or stores your files.',
   },
   {
-    question: 'Can I put the patient name or diagnosis in the filename?',
+    question: 'How should a practice structure medical record filenames?',
     answer:
-      'Yes — you decide what goes in the name. Zush reads every field on the page, and a Template controls which ones it uses: MRN, date of service, record type, patient name, diagnosis, or a field you describe in plain language. In Offline AI mode none of it leaves your machine, so the naming choice is entirely yours, with a batch preview before anything is applied.',
+      'A practical starting pattern is internal ID, date of service, and document type. Your organization decides the exact naming policy, and a Zush Template applies it consistently. Keep details that do not need to appear in a folder listing inside the document, and review the proposed batch before applying it.',
   },
   {
     question: 'Does it handle scanned records and faxes?',
@@ -307,9 +272,9 @@ export const MEDICAL_FAQ = [
       'Zush organizes the file layer around the EHR — scanner and fax output, exported records, attachments waiting to be imported, archive folders. It does not connect to, read from, or modify an EHR system. If a document lives inside the EHR, Zush is not involved; if it lives in a folder, Zush can name it.',
   },
   {
-    question: 'Is Zush HIPAA compliant?',
+    question: 'Which AI mode should a medical practice use?',
     answer:
-      'No software tool makes a practice HIPAA-compliant by itself — compliance lives in your organization’s safeguards and agreements. What Zush provides is a renaming step that can run entirely on your machine: Offline AI processing with local Ollama models, in-place renaming with no file uploads, and nothing transmitted to Zush or any third party. Review the setup with whoever owns compliance in your practice.',
+      'Use Offline AI when supported document analysis must remain on the machine; it runs local Ollama models on Mac or Windows. Use BYOK when your organization wants analysis routed through its own AI provider account and API key. Your team chooses the mode that matches its internal policy.',
   },
   {
     question: 'Will the naming convention still make sense after we change systems?',
@@ -325,9 +290,9 @@ export const MEDICAL_FAQ = [
 
 export const MEDICAL_JSON_LD = buildFeaturePageJsonLd({
   howTo: {
-    name: 'Set up private AI renaming for medical records',
+    name: 'Set up AI file renaming for scanned medical records',
     description:
-      'Use Zush to name scanned records by the fields you choose on Mac and Windows — locally, with Offline AI so files never leave the machine.',
+      'Use Zush to name scanned medical records by internal ID, date of service, and document type with local Offline AI or an organization-controlled BYOK account.',
     steps: [
       {
         name: 'Enable Offline AI mode',
@@ -348,11 +313,11 @@ export const MEDICAL_JSON_LD = buildFeaturePageJsonLd({
     pagePath: MEDICAL_PAGE_PATH,
     description:
       'AI document renamer for medical practices on Mac and Windows. Zush names scanned records by the fields you choose — with local Offline AI so files never leave the machine, plus in-place renaming and no file uploads.',
-    applicationSubCategory: 'Medical Records Management',
+    applicationSubCategory: 'Medical Document File Renaming',
     featureList: [
       'Name records by the fields you choose — MRN, date, record type, and more',
-      'Offline AI mode: files never leave the machine',
-      'Nothing transmitted to Zush or any third-party AI provider',
+      'Offline AI mode with local Ollama models on Mac and Windows',
+      'BYOK through an AI provider account and key controlled by the organization',
       'Read scans and faxes with AI vision — no OCR pass',
       'Preview every batch before applying, with undo',
       'Folder monitoring for scanner and fax folders',

@@ -17,8 +17,8 @@ import { getCopy } from '@/i18n/copy';
 import { FEATURE_DEMO_COPY } from '@/i18n/featureDemoCopy';
 import {
   MEDICAL_AUDIENCES,
+  MEDICAL_DOCUMENT_TYPES,
   MEDICAL_FAQ,
-  MEDICAL_PAINS,
   MEDICAL_PRIVACY_MODES,
   MEDICAL_PRIVACY_NOTE,
   MEDICAL_TESTIMONIALS,
@@ -41,31 +41,33 @@ const PRIVACY_ICONS = { cloud: Cloud, byok: KeyRound, offline: Bot } as const;
 {/* Real app UI, pulled up to overlap the hero photo's faded bottom edge: the
     doctor photo sets the scene, this shows the actual Zush window at work. */}
 <div class={styles.HeroDemo}>
-  <DemoVideo label='Zush renaming a folder of files' />
+  <DemoVideo
+    label='Zush renaming a folder of scanned medical records'
+    autoplay={false}
+    preload='none'
+  />
 </div>
 
-{/* 1 — the three complaints. Open three-column layout, big ghost numbers,
-    hairline dividers — no cards. */}
-<section class={styles.Pains} aria-labelledby='medical-pains-title'>
-  <div class={styles.Pains__Container}>
+{/* 1 — who runs it. Simple stacked rows: who + one line. */}
+<section class={styles.Audiences} aria-labelledby='medical-audiences-title'>
+  <div class={styles.Audiences__Container}>
     <div class={sectionHeaderStyles.SectionHeader}>
-      <Heading as='h2' align='center' id='medical-pains-title' className={sectionHeaderStyles.SectionHeader__Title}>
-        Sound familiar?
+      <Heading as='h2' align='center' id='medical-audiences-title' className={sectionHeaderStyles.SectionHeader__Title}>
+        Built for small medical practices and document-heavy teams
       </Heading>
       <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
-        Three things go wrong between the scanner tray and the chart. The rest of this page is the answer to each, in order.
+        The same file-renaming workflow fits clinical intake, front-desk scanning, and medical billing without replacing the EHR.
       </Text>
     </div>
 
-    <ol class={styles.Pains__List}>
-      {MEDICAL_PAINS.map((pain, index) => (
-        <li class={styles.Pain}>
-          <span class={styles.Pain__Index} aria-hidden='true'>{`0${index + 1}`}</span>
-          <h3 class={styles.Pain__Title}>{pain.title}</h3>
-          <p class={styles.Pain__Description}>{pain.description}</p>
+    <ul class={styles.Audiences__List}>
+      {MEDICAL_AUDIENCES.map((audience) => (
+        <li class={styles.Audience}>
+          <h3 class={styles.Audience__Title}>{audience.title}</h3>
+          <p class={styles.Audience__Description}>{audience.description}</p>
         </li>
       ))}
-    </ol>
+    </ul>
   </div>
 </section>
 
@@ -74,16 +76,16 @@ const PRIVACY_ICONS = { cloud: Cloud, byok: KeyRound, offline: Bot } as const;
   <div class={styles.Fields__Container}>
     <div class={sectionHeaderStyles.SectionHeader}>
       <Heading as='h2' align='center' id='medical-fields-title' className={sectionHeaderStyles.SectionHeader__Title}>
-        Zush reads the page like you do
+        Choose the fields for every medical record filename
       </Heading>
       <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
-        It reads every field on the page. You choose which ones go into the filename — it&rsquo;s your naming, your call.
+        Zush reads the visible content of each scan or document. Your Template selects the internal ID, date, document type, or custom field used in the final name.
       </Text>
     </div>
 
     {/* Interactive: pick a field chip, the demo below shows where it lands.
         client:load so the click works the moment the section is reached. */}
-    <MedicalFieldExplorer client:load />
+    <MedicalFieldExplorer client:visible />
   </div>
 </section>
 
@@ -93,10 +95,10 @@ const PRIVACY_ICONS = { cloud: Cloud, byok: KeyRound, offline: Bot } as const;
   <div class={styles.Privacy__Container}>
     <div class={sectionHeaderStyles.SectionHeader}>
       <Heading as='h2' align='center' id='medical-privacy-title' className={sectionHeaderStyles.SectionHeader__Title}>
-        Your files never leave the machine
+        Offline and BYOK processing for medical documents
       </Heading>
       <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
-        Three ways to run the AI, from managed cloud to fully offline. Whatever you pick, renaming happens in place — Zush never uploads or stores your files.
+        Run supported analysis with local Ollama models, or route it through the AI provider account and key your organization controls. Zush renames files in place and does not store them.
       </Text>
     </div>
 
@@ -131,10 +133,10 @@ const PRIVACY_ICONS = { cloud: Cloud, byok: KeyRound, offline: Bot } as const;
   <div class={styles.Workflow__Container}>
     <div class={sectionHeaderStyles.SectionHeader}>
       <Heading as='h2' align='center' id='medical-workflow-title' className={sectionHeaderStyles.SectionHeader__Title}>
-        From scanner tray to filed chart in three steps
+        Automatically rename records from scanner and fax folders
       </Heading>
       <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
-        Set it up once per folder. After that the only manual step is reading the preview.
+        Set up one medical records Template, monitor the intake folder, and review each proposed batch before anything changes.
       </Text>
     </div>
 
@@ -157,32 +159,36 @@ const PRIVACY_ICONS = { cloud: Cloud, byok: KeyRound, offline: Bot } as const;
         How scanned-document renaming works
         <ArrowRight size={15} aria-hidden='true' />
       </a>
+      <a class={styles.ArrowLink} href='/blog/how-to-organize-scanned-medical-records-small-practice'>
+        Organize a small practice scan workflow
+        <ArrowRight size={15} aria-hidden='true' />
+      </a>
     </div>
   </div>
 </section>
 
 <CloudFolders title={copy.home.cloudFoldersTitle} />
 
-{/* 5 — who runs it. Simple three-up: who + one line, no file examples. */}
-<section class={styles.Audiences} aria-labelledby='medical-audiences-title'>
-  <div class={styles.Audiences__Container}>
+<section class={styles.Documents} aria-labelledby='medical-document-types-title'>
+  <div class={styles.Documents__Container}>
     <div class={sectionHeaderStyles.SectionHeader}>
-      <Heading as='h2' align='center' id='medical-audiences-title' className={sectionHeaderStyles.SectionHeader__Title}>
-        Who it&rsquo;s for
+      <Heading as='h2' align='center' id='medical-document-types-title' className={sectionHeaderStyles.SectionHeader__Title}>
+        Medical documents Zush can rename automatically
       </Heading>
       <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
-        Same app, three different piles of paper.
+        Use one Template for clinical records and another for billing paperwork. Each flow keeps its own fields and naming pattern without changing the original documents.
       </Text>
     </div>
 
-    <ul class={styles.Audiences__List}>
-      {MEDICAL_AUDIENCES.map((audience) => (
-        <li class={styles.Audience}>
-          <h3 class={styles.Audience__Title}>{audience.title}</h3>
-          <p class={styles.Audience__Description}>{audience.description}</p>
-        </li>
+    <div class={styles.Documents__Grid}>
+      {MEDICAL_DOCUMENT_TYPES.map((documentType) => (
+        <article class={styles.DocumentType}>
+          <h3 class={styles.DocumentType__Title}>{documentType.title}</h3>
+          <p class={styles.DocumentType__Description}>{documentType.description}</p>
+          <code class={styles.DocumentType__Example}>{documentType.example}</code>
+        </article>
       ))}
-    </ul>
+    </div>
   </div>
 </section>
 
@@ -220,8 +226,8 @@ const PRIVACY_ICONS = { cloud: Cloud, byok: KeyRound, offline: Bot } as const;
 <FAQ
   client:visible
   items={MEDICAL_FAQ}
-  title='Medical records, answered'
-  description='The questions practices ask before they let anything near a records folder.'
+  title='Medical record file renaming, answered'
+  description='How local models, organization-controlled BYOK, scanner folders, Templates, preview, and undo fit a medical document workflow.'
 />
 
 <div class={styles.FinalCta}>
