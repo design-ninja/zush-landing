@@ -39,7 +39,8 @@
         }
 
         .Hero__Intro {
-            max-width: 52rem;
+            width: 100%;
+            max-width: 70rem;
         }
 
         .Hero__ProofRow,
@@ -47,6 +48,18 @@
         .Hero__Buttons,
         .Hero__TrustRow {
             justify-content: center;
+        }
+
+        .Hero__Buttons {
+            width: max-content;
+            max-width: 100%;
+            flex-wrap: nowrap;
+
+            @include mobile {
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+            }
         }
 
         // Rating on top, mode tags stacked underneath it.
@@ -68,15 +81,6 @@
             margin-right: auto;
         }
 
-        // All trust signals sit on one line; the base styles push the last one
-        // onto its own row, which only makes sense in the two-column layout.
-        .Hero__TrustRow {
-            max-width: none;
-
-            li:last-child {
-                flex-basis: auto;
-            }
-        }
     }
 
     &__Intro {
@@ -222,16 +226,7 @@
         min-width: min(100%, 13.5rem);
     }
 
-    &__PlatformHint {
-        max-width: 18rem;
-        font-size: 0.75rem;
-        line-height: 1.35;
-        color: var(--text-subtle);
-        text-wrap: balance;
-    }
-
-    &__StoreFallbackLink,
-    &__PlatformLinks a {
+    &__StoreFallbackLink {
         color: var(--text-subtle);
         text-decoration: underline;
         text-underline-offset: 0.2em;
@@ -245,15 +240,6 @@
         max-width: 18rem;
         font-size: 0.75rem;
         line-height: 1.35;
-    }
-
-    &__PlatformLinks {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.55rem;
-        font-size: 0.875rem;
-        color: var(--text-subtle);
     }
 
     &__OtherOS {
@@ -278,28 +264,25 @@
 
     &__TrustRow {
         display: flex;
-        flex-wrap: wrap;
-        gap: 0.35rem 0.625rem;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        gap: 0.4rem;
         list-style: none;
         padding: 0;
         margin: 0;
         font-size: 0.875rem;
-        // Lighter than --muted-foreground: this line sits under the CTAs and
-        // should read as a footnote, not as body copy.
+        white-space: nowrap;
         color: color-mix(in oklch, var(--muted-foreground) 62%, var(--background));
-        max-width: 18rem;
 
-        li {
-            white-space: nowrap;
-
-            &:last-child {
-                flex-basis: 100%;
-            }
+        li + li::before {
+            content: '·';
+            margin-right: 0.4rem;
+            opacity: 0.6;
         }
 
         @include mobile {
-            justify-content: center;
-            gap: 0.5rem 0.75rem;
+            flex-wrap: wrap;
             font-size: 0.8125rem;
         }
     }
