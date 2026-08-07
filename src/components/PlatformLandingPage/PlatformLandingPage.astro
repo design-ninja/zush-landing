@@ -39,7 +39,7 @@ import { getPlatformSpecificsCopy } from '@/i18n/platformSpecifics';
 import { PRO_PRICING } from '@/constants/pricing';
 import { getLocalizedPlatformSpecificsContent } from '@/i18n/platformSpecificsContent';
 import { getLocalizedSeoForRoute } from '@/i18n/seo';
-import { SOFTPEDIA_REVIEW_ARIA_LABELS } from '@/i18n/softpediaReview';
+import { SOFTPEDIA_RATED_BY_LABELS, SOFTPEDIA_REVIEW_ARIA_LABELS } from '@/i18n/softpediaReview';
 import { buildSoftpediaReviewJsonLd } from '@/seo/softpediaReview';
 import {
   APP_CONFIG,
@@ -342,6 +342,7 @@ const jsonLdItems = [
     centered
     macVersion={macVersion}
     windowsVersion={windowsVersion}
+    softpediaRatedByLabel={SOFTPEDIA_RATED_BY_LABELS[locale]}
     softpediaReviewAriaLabel={SOFTPEDIA_REVIEW_ARIA_LABELS[locale]}
   />
   <DemoVideo

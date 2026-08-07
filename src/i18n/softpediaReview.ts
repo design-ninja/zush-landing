@@ -1,5 +1,20 @@
 import type { Locale } from '@/i18n/config';
 
+export const SOFTPEDIA_RATED_BY_LABELS: Record<Locale, string> = {
+  en: 'Rated by',
+  de: 'Bewertet von',
+  fr: 'Évalué par',
+  es: 'Valorado por',
+  'pt-br': 'Avaliado por',
+  it: 'Valutato da',
+  nl: 'Beoordeeld door',
+  tr: 'Değerlendiren',
+  ja: '評価元',
+  ko: '평가 기관',
+  'zh-cn': '评分来源',
+  ar: 'بتقييم من',
+};
+
 export const SOFTPEDIA_REVIEW_ARIA_LABELS: Record<Locale, string> = {
   en: 'Read the Softpedia review of Zush, rated 4.5 out of 5',
   de: 'Softpedia-Test von Zush mit 4,5 von 5 Punkten lesen',

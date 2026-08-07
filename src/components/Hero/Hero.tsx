@@ -47,6 +47,7 @@ interface HeroProps {
   reviewsLabel?: string;
   macVersion?: string;
   windowsVersion?: string;
+  softpediaRatedByLabel?: string;
   softpediaReviewAriaLabel?: string;
 }
 
@@ -110,6 +111,7 @@ const Hero = ({
   aiModes = [],
   reviewsHref,
   reviewsLabel = "Reviews",
+  softpediaRatedByLabel,
   softpediaReviewAriaLabel,
 }: HeroProps) => {
   const [showWindowsWebFallback, setShowWindowsWebFallback] = useState(false);
@@ -172,7 +174,9 @@ const Hero = ({
               rel="noopener noreferrer external"
               aria-label={softpediaReviewAriaLabel}
             >
-              <span className={styles.Hero__SoftpediaPrefix}>Reviewed by</span>
+              {softpediaRatedByLabel && (
+                <span className={styles.Hero__SoftpediaPrefix}>{softpediaRatedByLabel}</span>
+              )}
               <span className={styles.Hero__SoftpediaLogo} aria-hidden="true" />
               <span className={styles.Hero__SoftpediaStars} aria-hidden="true">
                 <span className={styles.Hero__SoftpediaStar} />
