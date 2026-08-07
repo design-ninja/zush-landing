@@ -1,4 +1,4 @@
-import { Fragment, type ReactNode } from "react";
+import { Fragment, useState, type ReactNode } from "react";
 import FileShowcase from "../FileShowcase";
 import type { Slide } from "../FileShowcase";
 import DownloadButton from "../DownloadButton";
@@ -8,6 +8,7 @@ import Text from "../Text";
 import styles from "./Hero.module.scss";
 import type { DownloadOS } from "@/utils/download";
 import type { DownloadMenuCopy } from "@/i18n/copy";
+import { WINDOWS_STORE_URL } from "@/constants";
 
 
 interface HeroProps {
@@ -45,6 +46,11 @@ interface HeroProps {
   reviewsLabel?: string;
   macVersion?: string;
   windowsVersion?: string;
+  platformLinks?: {
+    ariaLabel: string;
+    mac: { href: string; label: string };
+    windows: { href: string; label: string };
+  };
 }
 
 const renderTextWithBreaks = (value: string) =>
@@ -107,7 +113,9 @@ const Hero = ({
   aiModes = [],
   reviewsHref,
   reviewsLabel = "Reviews",
+  platformLinks,
 }: HeroProps) => {
+  const [showWindowsWebFallback, setShowWindowsWebFallback] = useState(false);
   const highlightText = titleHighlight ?? titleAccent;
   const finalTrustSignals = trustSignals;
 
@@ -201,22 +209,48 @@ const Hero = ({
             <div className={styles.Hero__Buttons}>
               {splitByOS ? (
                 <>
-                  <DownloadButton
-                    source="hero"
-                    variant="black"
-                    size="lg"
-                    forceOS="mac"
-                    showDropdown={false}
-                    label={downloadMenu?.downloadForMac ?? "Download for Mac"}
-                  />
-                  <DownloadButton
-                    source="hero"
-                    variant="black"
-                    size="lg"
-                    forceOS="windows"
-                    showDropdown={false}
-                    label={downloadMenu?.downloadForWindows ?? "Download for Windows"}
-                  />
+                  <div className={styles.Hero__PlatformAction}>
+                    <DownloadButton
+                      source="hero"
+                      variant="black"
+                      size="lg"
+                      forceOS="mac"
+                      showDropdown={false}
+                      label={downloadMenu?.downloadForMac ?? "Download for Mac"}
+                    />
+                    <span className={styles.Hero__PlatformHint}>
+                      {downloadMenu?.macDirectHint ?? "Direct .dmg download"}
+                    </span>
+                  </div>
+                  <div className={styles.Hero__PlatformAction}>
+                    <DownloadButton
+                      source="hero"
+                      variant="black"
+                      size="lg"
+                      forceOS="windows"
+                      showDropdown={false}
+                      label={downloadMenu?.downloadForWindows ?? "Download for Windows"}
+                      onPrimaryClick={({ nativeStoreAttempted }) => {
+                        if (nativeStoreAttempted) setShowWindowsWebFallback(true);
+                      }}
+                    />
+                    <span className={styles.Hero__PlatformHint}>
+                      {downloadMenu?.windowsTrialHint ?? "Free to try · Windows 10/11 · Microsoft Store"}
+                    </span>
+                    {showWindowsWebFallback && (
+                      <a
+                        className={styles.Hero__StoreFallbackLink}
+                        href={WINDOWS_STORE_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        data-download-os="windows"
+                        data-download-source="hero-windows-web-fallback"
+                        data-download-channel="microsoft-store"
+                      >
+                        {downloadMenu?.windowsWebFallback ?? "Open Microsoft Store in your browser"}
+                      </a>
+                    )}
+                  </div>
                 </>
               ) : (
                 <>
@@ -251,6 +285,13 @@ const Hero = ({
                   <li key={item}>{item}</li>
                 ))}
               </ul>
+            )}
+            {platformLinks && (
+              <nav className={styles.Hero__PlatformLinks} aria-label={platformLinks.ariaLabel}>
+                <a href={platformLinks.mac.href}>{platformLinks.mac.label}</a>
+                <span aria-hidden="true">·</span>
+                <a href={platformLinks.windows.href}>{platformLinks.windows.label}</a>
+              </nav>
             )}
           </div>
         </div>

@@ -18,9 +18,8 @@ import Testimonials from '@/components/Testimonials/Testimonials.astro';
 import FeaturedOn from '@/components/FeaturedOn/FeaturedOn.astro';
 import macChangelogSource from '@/content/changelog.md?raw';
 import windowsChangelogSource from '@/content/changelog.windows.md?raw';
-import { FREE_DOWNLOAD_BADGE_LABEL } from '@/constants';
 import { parseLatestVersion } from '@/utils/version';
-import type { Locale } from '@/i18n/config';
+import { getLocalizedPath, type Locale } from '@/i18n/config';
 import type { LocaleCopy } from '@/i18n/copy';
 
 interface Props {
@@ -42,7 +41,6 @@ const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
   subtitleHighlights={copy.home.heroHighlights}
   buyLabel={copy.home.buyPro}
   downloadLabel={copy.header.download}
-  downloadEdgeLabel={FREE_DOWNLOAD_BADGE_LABEL}
   downloadMenu={copy.downloadMenu}
   trustSignals={copy.home.trustSignals}
   aiModes={copy.home.heroModes}
@@ -51,6 +49,11 @@ const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
   splitByOS
   macVersion={macVersion}
   windowsVersion={windowsVersion}
+  platformLinks={{
+    ariaLabel: copy.header.downloadZush,
+    mac: { href: getLocalizedPath('/mac', locale), label: copy.footer.productLinks.mac },
+    windows: { href: getLocalizedPath('/windows', locale), label: copy.footer.productLinks.windows },
+  }}
 />
 <DemoVideo label={copy.home.showcase.title} />
 <EvidenceSignals locale={locale} />
