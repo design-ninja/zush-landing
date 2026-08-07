@@ -1,0 +1,130 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// Full-bleed photo hero. The photo fills the section and runs under the floating
+// header; a theme-aware scrim keeps the dark hero text legible, and the photo
+// fades into the page background at the bottom (white in light theme, dark in
+// dark theme) so the demo video can sit over the fade.
+.Hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: min(86vh, 48rem);
+    display: flex;
+    // Content sits in the lower half so the attorney's face stays clear above it;
+    // the modest bottom padding keeps the demo video close underneath.
+    align-items: flex-end;
+    padding: calc($navbar-height + 3rem) 0 4.5rem;
+
+    @include tablet {
+        min-height: min(80vh, 40rem);
+        padding: calc($navbar-height + 2.5rem) 0 4rem;
+    }
+
+    @include mobile {
+        min-height: 34rem;
+        padding: calc($navbar-height + 2rem) 0 3.5rem;
+    }
+
+    &__Media {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+    }
+
+    &__Photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 70% 42%;
+
+        @include mobile {
+            object-position: 62% 40%;
+        }
+    }
+
+    // Light wash for text legibility + a hard fade to the page background at the
+    // bottom. `var(--background)` makes both theme-aware.
+    &__Scrim {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background:
+            linear-gradient(
+                180deg,
+                color-mix(in srgb, var(--background), transparent 20%) 0%,
+                color-mix(in srgb, var(--background), transparent 40%) 26%,
+                color-mix(in srgb, var(--background), transparent 42%) 50%,
+                color-mix(in srgb, var(--background), transparent 20%) 72%,
+                color-mix(in srgb, var(--background), transparent 4%) 88%,
+                var(--background) 100%
+            );
+    }
+
+    &__Container {
+        @include container;
+
+        width: 100%;
+    }
+
+    &__Intro {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: 52rem;
+        margin-inline: auto;
+    }
+
+    &__Eyebrow {
+        display: inline-block;
+        margin: 0 0 $space-md;
+        padding: 0.3rem 0.8rem;
+        border-radius: $radius-full;
+        background: var(--primary-soft);
+        color: var(--primary);
+        font-size: 0.8125rem;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+    }
+
+    &__Actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.65rem;
+        margin-top: $space-xl;
+    }
+
+    &__Buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: $space-sm;
+    }
+
+    &__TrustRow {
+        @include hero-trust-row;
+    }
+}
+
+// Doubled classes, same reason as documented in UseCases.module.scss: these
+// elements also carry a shared component class (`.Heading_h1`, `.Text_lg`) that
+// declares the same properties, so a single class here would tie on
+// specificity and the winner would depend on bundle order.
+//
+// Same clamp / wrap / 42rem cap as the homepage hero; a soft shadow keeps the
+// text crisp over the photo.
+.Hero__Title.Hero__Title {
+    margin: 0 0 $space-md;
+    font-size: clamp(2.4rem, 5.5vw, 3.5rem);
+    text-wrap: balance;
+    text-shadow: 0 1px 10px color-mix(in srgb, var(--background), transparent 25%);
+}
+
+.Hero__Subtitle.Hero__Subtitle {
+    margin: 0;
+    max-width: 42rem;
+    text-wrap: pretty;
+    text-shadow: 0 1px 8px color-mix(in srgb, var(--background), transparent 35%);
+}

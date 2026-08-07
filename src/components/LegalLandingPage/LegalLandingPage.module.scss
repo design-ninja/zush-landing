@@ -1,0 +1,523 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// The CrossPlatformBanner used to provide the breathing room between the final
+// CTA and the footer; without it the CTA needs its own bottom air.
+.FinalCta {
+    padding-bottom: $space-3xl;
+
+    @include mobile {
+        padding-bottom: 3.25rem;
+    }
+}
+
+// Pull the app demo up so its top overlaps the hero photo's faded bottom edge.
+.HeroDemo {
+    position: relative;
+    z-index: 1;
+    margin-top: -0.5rem;
+
+    @include tablet {
+        margin-top: 0;
+    }
+
+    @include mobile {
+        margin-top: 0;
+    }
+}
+
+// Shared link conventions for the page, so every link reads the same way.
+// Standalone "learn more" links use the arrow style (primary, underline on
+// hover only). Inline prose links use a quiet underline — the site's blog
+// convention — never a permanent-underline standalone "web link".
+.ArrowLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--primary);
+    white-space: nowrap;
+
+    &:hover {
+        text-decoration: underline;
+        text-underline-offset: 0.15em;
+    }
+}
+
+.InlineLink {
+    color: var(--primary);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
+// ---------------------------------------------------------------------------
+// Live demo — centred, minimally framed (homepage demo treatment, not a card)
+// ---------------------------------------------------------------------------
+.Showcase {
+    padding: $space-2xl 0 $space-3xl;
+
+    @include mobile {
+        padding: $space-xl 0 2.5rem;
+    }
+
+    &__Container {
+        @include container;
+    }
+
+    &__Stage {
+        position: relative;
+        max-width: 40rem;
+        margin: $space-xl auto 0;
+        border-radius: 1.25rem;
+        background: var(--muted);
+        overflow: hidden;
+        isolation: isolate;
+
+        @include mobile {
+            border-radius: 1rem;
+        }
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Fields — one centred top-down story: reads every field → you pick what lands
+// in the name → examples → the principle. No two-column split, no boxes.
+// ---------------------------------------------------------------------------
+.Fields {
+    padding: $space-3xl 0;
+    scroll-margin-top: calc($navbar-height + $space-lg);
+
+    @include mobile {
+        padding: 3.25rem 0;
+    }
+
+    &__Container {
+        @include container;
+    }
+
+    &__Flow {
+        max-width: 46rem;
+        margin: $space-2xl auto 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    &__Label {
+        margin: 0 0 $space-md;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted-foreground);
+    }
+
+    // Tags come from the shared <Tag> component; this only lays them out.
+    &__Chips {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    // The naming pattern is the focal element: a soft primary surface with the
+    // pattern in mono, preceded by a small eyebrow.
+    &__Pattern {
+        margin: $space-2xl 0 0;
+        padding: $space-lg $space-xl;
+        border-radius: 1rem;
+        background: var(--primary-soft);
+
+        @include mobile {
+            padding: $space-md $space-lg;
+        }
+    }
+
+    &__PatternLabel {
+        margin: 0 0 0.5rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: color-mix(in oklch, var(--primary), var(--foreground) 12%);
+    }
+
+    &__PatternValue {
+        margin: 0;
+        font-family: var(--font-mono);
+        font-size: 1.25rem;
+        line-height: 1.4;
+        font-weight: 600;
+        color: var(--primary);
+        overflow-wrap: anywhere;
+
+        @include mobile {
+            font-size: 1rem;
+        }
+    }
+
+    &__Examples {
+        display: inline-flex;
+        flex-direction: column;
+        gap: 0.55rem;
+        margin: $space-xl 0 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    &__Example {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+    }
+
+    &__ExampleBefore {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        color: var(--muted-foreground);
+        text-decoration: line-through;
+    }
+
+    &__ExampleArrow {
+        flex-shrink: 0;
+        color: var(--muted-foreground);
+    }
+
+    &__ExampleAfter {
+        font-family: var(--font-mono);
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--foreground);
+        overflow-wrap: anywhere;
+    }
+
+    &__Caption {
+        max-width: 40rem;
+        margin: $space-2xl 0 0;
+        font-size: 0.8125rem;
+        line-height: 1.6;
+        color: var(--muted-foreground);
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Privacy — the homepage "3 secure ways to run Zush" bento pattern (cards +
+// hover-play demos come from the shared Features components). This block only
+// owns the section rhythm and the honesty note under the grid.
+// ---------------------------------------------------------------------------
+.Privacy {
+    padding: $space-3xl 0;
+    scroll-margin-top: calc($navbar-height + $space-lg);
+
+    @include mobile {
+        padding: 3.25rem 0;
+    }
+
+    &__Container {
+        @include container;
+    }
+
+    &__Note {
+        max-width: 46rem;
+        margin: $space-xl auto 0;
+        text-align: center;
+        font-size: 0.875rem;
+        line-height: 1.65;
+        color: var(--muted-foreground);
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Workflow — horizontal stepper with a connector line, no cards
+// ---------------------------------------------------------------------------
+.Workflow {
+    padding: $space-3xl 0;
+    scroll-margin-top: calc($navbar-height + $space-lg);
+
+    @include mobile {
+        padding: 3.25rem 0;
+    }
+
+    &__Container {
+        @include container;
+    }
+
+    &__Steps {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: $space-xl;
+        margin: $space-2xl 0 0;
+        padding: 0;
+        list-style: none;
+
+        // The hairline that threads the three numbers together.
+        &::before {
+            content: '';
+            position: absolute;
+            top: 1rem;
+            left: 16.66%;
+            right: 16.66%;
+            height: 1px;
+            background: var(--border);
+
+            @include tablet {
+                display: none;
+            }
+        }
+
+        @include tablet {
+            grid-template-columns: minmax(0, 1fr);
+            gap: $space-lg;
+        }
+    }
+
+    &__Links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: $space-sm $space-xl;
+        margin-top: $space-2xl;
+        text-align: center;
+    }
+}
+
+.WorkflowStep {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    @include tablet {
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    &__Number {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        border-radius: $radius-full;
+        border: 1px solid color-mix(in oklch, var(--primary), transparent 55%);
+        background: var(--background);
+        color: var(--primary);
+        font-size: 0.9375rem;
+        font-weight: 700;
+    }
+
+    &__Title {
+        margin: $space-md 0 0;
+        font-size: 1.0625rem;
+        font-weight: 600;
+        color: var(--foreground);
+    }
+
+    &__Description {
+        margin: 0.4rem 0 0;
+        max-width: 22rem;
+        font-size: 0.9375rem;
+        line-height: 1.6;
+        color: var(--muted-foreground);
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Legal document types — compact, scan-friendly cards below the shared
+// cloud-folders band. The examples make each use case concrete without adding
+// another interactive island.
+// ---------------------------------------------------------------------------
+.Documents {
+    padding: $space-3xl 0;
+
+    @include mobile {
+        padding: 3.25rem 0;
+    }
+
+    &__Container {
+        @include container;
+    }
+
+    &__Grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: $space-lg;
+        margin-top: $space-2xl;
+
+        @include tablet {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        @include mobile {
+            grid-template-columns: minmax(0, 1fr);
+        }
+    }
+}
+
+.DocumentType {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: $space-lg;
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    background: var(--card);
+
+    &__Title {
+        margin: 0;
+        font-size: 1.0625rem;
+        font-weight: 600;
+        color: var(--foreground);
+    }
+
+    &__Description {
+        margin: $space-sm 0 0;
+        font-size: 0.875rem;
+        line-height: 1.6;
+        color: var(--muted-foreground);
+    }
+
+    &__Example {
+        display: block;
+        margin-top: auto;
+        padding-top: $space-md;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        line-height: 1.55;
+        color: var(--primary);
+        overflow-wrap: anywhere;
+    }
+}
+
+.Audiences {
+    padding: $space-3xl 0;
+
+    @include mobile {
+        padding: 3.25rem 0;
+    }
+
+    &__Container {
+        @include container;
+
+        display: grid;
+        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.25fr);
+        align-items: start;
+        gap: clamp(3rem, 7vw, 6rem);
+
+        @include tablet {
+            grid-template-columns: minmax(0, 1fr);
+            gap: $space-2xl;
+        }
+    }
+
+    &__Intro {
+        position: sticky;
+        top: calc($navbar-height + $space-xl);
+        max-width: 27rem;
+
+        @include tablet {
+            position: static;
+            max-width: 38rem;
+        }
+    }
+
+    &__Eyebrow {
+        margin: 0 0 $space-md;
+        font-size: 0.75rem;
+        font-weight: 600;
+        line-height: 1.3;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--primary);
+    }
+
+    &__Title {
+        margin: 0;
+        text-wrap: balance;
+    }
+
+    &__Description {
+        margin: $space-md 0 0;
+        max-width: 24rem;
+        line-height: 1.65;
+    }
+
+    &__List {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        border-top: 1px solid var(--border);
+    }
+}
+
+.Audience {
+    display: grid;
+    grid-template-columns: 11rem minmax(0, 1fr);
+    align-items: center;
+    gap: $space-lg;
+    padding: $space-lg 0;
+    border-bottom: 1px solid var(--border);
+
+    @include tablet {
+        grid-template-columns: 9rem minmax(0, 1fr);
+    }
+
+    @include small {
+        grid-template-columns: minmax(0, 1fr);
+        gap: $space-md;
+    }
+
+    &__Media {
+        aspect-ratio: 3 / 2;
+        border-radius: 0.875rem;
+        overflow: hidden;
+        background: var(--muted);
+    }
+
+    &__Image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__Content {
+        min-width: 0;
+    }
+
+    &__Title {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--foreground);
+    }
+
+    &__Description {
+        margin: $space-sm 0 0;
+        font-size: 0.9375rem;
+        line-height: 1.6;
+        color: var(--muted-foreground);
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Testimonials grid — the shared 4-up narrowed to this page's three personas.
+// Doubled class so it beats `.Testimonials__Grid` regardless of bundle order.
+// ---------------------------------------------------------------------------
+.Testimonials__Grid.Testimonials__Grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    @include tablet {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include small {
+        grid-template-columns: 1fr;
+    }
+}

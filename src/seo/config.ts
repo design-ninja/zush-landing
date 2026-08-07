@@ -170,13 +170,13 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'medical records file renamer, rename scanned medical records, medical document renamer, AI file renamer for medical records, offline AI medical document renamer, medical file renamer for clinics',
   },
   '/for-legal': {
-    title: 'Zush for Legal Teams | AI Document Renamer for Law Firms',
+    title: 'Organize Legal Documents with AI | Zush for Law Firms',
     description:
-      'Name filings, contracts, and scans by matter, date, type, and party — automatically. Offline AI for confidential documents. Preview and undo every batch.',
+      'Organize case files, contracts, pleadings, and scans with AI. Create searchable filenames, work with your DMS, and run locally on Mac or Windows.',
     robots: 'index, follow',
     ogType: 'website',
     keywords:
-      'legal document naming, rename legal documents, law firm file naming, legal file management, matter number file naming, organize case files, legal document management software mac',
+      'legal document organizer, organize legal documents, legal file organization, organize case files, AI document organizer for lawyers, law firm document management workflow, matter file organization, legal document naming software',
   },
   '/rename-scanned-documents': {
     title: 'Rename Scanned Documents Automatically | Zush',
