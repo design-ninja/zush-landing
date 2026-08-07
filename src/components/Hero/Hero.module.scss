@@ -206,12 +206,54 @@
 
     &__Buttons {
         display: flex;
+        align-items: flex-start;
         gap: 1rem;
         flex-wrap: wrap;
 
         @include mobile {
             justify-content: center;
         }
+    }
+
+    &__PlatformAction {
+        display: grid;
+        justify-items: center;
+        gap: 0.4rem;
+        min-width: min(100%, 13.5rem);
+    }
+
+    &__PlatformHint {
+        max-width: 18rem;
+        font-size: 0.75rem;
+        line-height: 1.35;
+        color: var(--text-subtle);
+        text-wrap: balance;
+    }
+
+    &__StoreFallbackLink,
+    &__PlatformLinks a {
+        color: var(--text-subtle);
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
+
+        &:hover {
+            color: var(--primary);
+        }
+    }
+
+    &__StoreFallbackLink {
+        max-width: 18rem;
+        font-size: 0.75rem;
+        line-height: 1.35;
+    }
+
+    &__PlatformLinks {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.55rem;
+        font-size: 0.875rem;
+        color: var(--text-subtle);
     }
 
     &__OtherOS {
