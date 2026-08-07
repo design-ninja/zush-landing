@@ -15,7 +15,7 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
       items: [
         { question: 'Funktioniert Zush auf Apple Silicon?', answer: 'Ja. Zush läuft nativ auf Apple Silicon und Intel Macs mit macOS 15 oder neuer.' },
         { question: 'Ist die App von Apple notariell beglaubigt?', answer: 'Ja. Die .dmg ist codesigniert und notariell beglaubigt, sodass Gatekeeper sie auf unterstützten macOS-Versionen normal öffnet.' },
-        { question: 'Kann ich Zush offline nutzen?', answer: 'Ja. PRO-Nutzer können den Offline-KI-Modus mit privaten lokalen Modellen über Ollama aktivieren.' },
+        { question: 'Kann ich Zush offline nutzen?', answer: 'Ja. Nutzer aller Pläne können den Offline-KI-Modus mit privaten lokalen Modellen über Ollama aktivieren. FREE umfasst 50 Umbenennungen in allen KI-Modi; PRO entfernt das Limit.' },
       ],
     },
     windows: {
@@ -33,7 +33,7 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
       items: [
         { question: 'Zush fonctionne-t-il sur Apple Silicon ?', answer: 'Oui. Zush fonctionne nativement sur les Mac Apple Silicon et Intel avec macOS 15 ou plus récent.' },
         { question: 'L’app est-elle notarisée par Apple ?', answer: 'Oui. Le .dmg est signé et notarisé, donc Gatekeeper l’ouvre normalement sur les versions macOS prises en charge.' },
-        { question: 'Puis-je utiliser Zush hors ligne ?', answer: 'Oui. Les utilisateurs PRO peuvent activer le mode IA hors ligne avec des modèles locaux privés via Ollama.' },
+        { question: 'Puis-je utiliser Zush hors ligne ?', answer: 'Oui. Les utilisateurs de toutes les offres peuvent activer le mode IA hors ligne avec des modèles locaux privés via Ollama. FREE inclut 50 renommages partagés entre tous les modes; PRO supprime la limite.' },
       ],
     },
     windows: {
@@ -51,7 +51,7 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
       items: [
         { question: 'O Zush funciona em Apple Silicon?', answer: 'Sim. O Zush roda nativamente em Macs Apple Silicon e Intel com macOS 15 ou mais recente.' },
         { question: 'O app é notarizado pela Apple?', answer: 'Sim. O .dmg é assinado e notarizado, então o Gatekeeper o abre normalmente nas versões compatíveis do macOS.' },
-        { question: 'Posso usar o Zush offline?', answer: 'Sim. Usuários PRO podem ativar o modo IA offline com modelos locais privados via Ollama.' },
+        { question: 'Posso usar o Zush offline?', answer: 'Sim. Usuários de todos os planos podem ativar o modo IA offline com modelos locais privados via Ollama. O FREE inclui 50 renomeações compartilhadas entre todos os modos; o PRO remove o limite.' },
       ],
     },
     windows: {
@@ -69,7 +69,7 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
       items: [
         { question: '¿Zush funciona en Apple Silicon?', answer: 'Sí. Zush se ejecuta de forma nativa en Macs Apple Silicon e Intel con macOS 15 o posterior.' },
         { question: '¿La app está notarizada por Apple?', answer: 'Sí. El .dmg está firmado y notarizado, por lo que Gatekeeper lo abre normalmente en versiones compatibles de macOS.' },
-        { question: '¿Puedo usar Zush sin conexión?', answer: 'Sí. Los usuarios PRO pueden activar el modo IA offline con modelos locales privados mediante Ollama.' },
+        { question: '¿Puedo usar Zush sin conexión?', answer: 'Sí. Los usuarios de todos los planes pueden activar el modo IA offline con modelos locales privados mediante Ollama. FREE incluye 50 renombrados compartidos entre todos los modos; PRO elimina el límite.' },
       ],
     },
     windows: {
@@ -87,7 +87,7 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
       items: [
         { question: 'Werkt Zush op Apple Silicon?', answer: 'Ja. Zush draait native op Apple Silicon- en Intel-Macs met macOS 15 of nieuwer.' },
         { question: 'Is de app door Apple genotariseerd?', answer: 'Ja. De .dmg is code-signed en genotariseerd, zodat Gatekeeper deze normaal opent op ondersteunde macOS-versies.' },
-        { question: 'Kan ik Zush offline gebruiken?', answer: 'Ja. PRO-gebruikers kunnen Offline AI inschakelen met private lokale modellen via Ollama.' },
+        { question: 'Kan ik Zush offline gebruiken?', answer: 'Ja. Gebruikers van elk abonnement kunnen Offline AI inschakelen met private lokale modellen via Ollama. FREE bevat 50 hernoemingen voor alle modi; PRO verwijdert de limiet.' },
       ],
     },
     windows: {
@@ -105,7 +105,7 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
       items: [
         { question: 'Zush funziona su Apple Silicon?', answer: 'Sì. Zush gira in modo nativo su Mac Apple Silicon e Intel con macOS 15 o versioni successive.' },
         { question: 'L’app è notarizzata da Apple?', answer: 'Sì. Il file .dmg è firmato e notarizzato, quindi Gatekeeper lo apre normalmente sulle versioni macOS supportate.' },
-        { question: 'Posso usare Zush offline?', answer: 'Sì. Gli utenti PRO possono attivare la modalità IA offline con modelli locali privati tramite Ollama.' },
+        { question: 'Posso usare Zush offline?', answer: 'Sì. Gli utenti di tutti i piani possono attivare la modalità IA offline con modelli locali privati tramite Ollama. FREE include 50 rinomine condivise tra tutte le modalità; PRO rimuove il limite.' },
       ],
     },
     windows: {
@@ -123,7 +123,7 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
       items: [
         { question: 'Zush は Apple Silicon で動作しますか？', answer: 'はい。Zush は macOS 15 以降の Apple Silicon Mac と Intel Mac でネイティブに動作します。' },
         { question: 'アプリは Apple によって notarize されていますか？', answer: 'はい。.dmg はコード署名と notarization 済みなので、対応する macOS では Gatekeeper から通常どおり開けます。' },
-        { question: 'Zush はオフラインで使えますか？', answer: 'はい。PRO ユーザーは Ollama のプライベートなローカルモデルでオフライン AI モードを有効にできます。' },
+        { question: 'Zush はオフラインで使えますか？', answer: 'はい。すべてのプランのユーザーは Ollama のプライベートなローカルモデルでオフライン AI モードを有効にできます。 FREE は全モード共通 50 回、PRO は無制限です。' },
       ],
     },
     windows: {
@@ -141,7 +141,7 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
       items: [
         { question: 'Zush는 Apple Silicon에서 작동하나요?', answer: '예. Zush는 macOS 15 이상을 실행하는 Apple Silicon 및 Intel Mac에서 네이티브로 작동합니다.' },
         { question: '앱은 Apple 공증을 받았나요?', answer: '예. .dmg는 코드 서명 및 공증이 완료되어 지원되는 macOS 버전에서 Gatekeeper가 정상적으로 열 수 있습니다.' },
-        { question: 'Zush를 오프라인으로 사용할 수 있나요?', answer: '예. PRO 사용자는 Ollama를 통한 개인 로컬 모델로 오프라인 AI 모드를 활성화할 수 있습니다.' },
+        { question: 'Zush를 오프라인으로 사용할 수 있나요?', answer: '예. 모든 플랜의 사용자는 Ollama를 통한 개인 로컬 모델로 오프라인 AI 모드를 활성화할 수 있습니다. FREE는 모든 모드에서 공통 50회이며 PRO는 제한을 제거합니다.' },
       ],
     },
     windows: {
@@ -159,7 +159,7 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
       items: [
         { question: 'Zush 支持 Apple Silicon 吗？', answer: '支持。Zush 可在 Apple Silicon 和 Intel Mac 上原生运行，要求 macOS 15 或更新版本。' },
         { question: '应用经过 Apple 公证吗？', answer: '是的。.dmg 已签名并通过公证，Gatekeeper 可以在受支持的 macOS 版本上正常打开。' },
-        { question: '可以离线使用 Zush 吗？', answer: '可以。PRO 用户可以通过 Ollama 的私有本地模型启用离线 AI 模式。' },
+        { question: '可以离线使用 Zush 吗？', answer: '可以。所有方案的用户都可以通过 Ollama 的私有本地模型启用离线 AI 模式。 FREE 在所有模式间共享 50 次，PRO 会移除限制。' },
       ],
     },
     windows: {

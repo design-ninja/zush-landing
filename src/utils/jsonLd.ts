@@ -100,19 +100,19 @@ const DEFAULT_SOFTWARE_OFFERS: SoftwareOfferData[] = [
     name: 'Free',
     price: '0',
     priceCurrency: 'USD',
-    description: 'Free tier with 50 AI renames',
+    description: 'Free tier with 50 AI renames across Cloud AI, BYOK, and Offline AI',
   },
   {
     name: 'Zush PRO Monthly',
     price: PRO_PRICING.monthly.schemaPrice,
     priceCurrency: 'USD',
-    description: 'Monthly subscription. Unlimited PRO renames plus BYOK and Offline AI mode.',
+    description: 'Monthly subscription with unlimited renames across Cloud AI, BYOK, and Offline AI.',
   },
   {
     name: 'Zush PRO One-Time',
     price: PRO_PRICING.oneTime.schemaPrice,
     priceCurrency: 'USD',
-    description: 'One-time purchase. Unlimited PRO renames plus BYOK and Offline AI mode.',
+    description: 'One-time purchase with unlimited renames across Cloud AI, BYOK, and Offline AI.',
   },
 ];
 

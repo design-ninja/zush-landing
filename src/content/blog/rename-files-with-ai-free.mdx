@@ -9,20 +9,20 @@ tags:
   - "AI File Renaming"
   - "File Organization"
   - "BYOK"
-tldr: "You can rename files with AI for free using Zush's 50 free renames, a BYOK API key for unlimited renames at minimal cost, or open-source tools with local models."
-reviewed: "2026-07-24"
+tldr: "Zush FREE includes 50 renames shared across Cloud AI, BYOK, and Offline AI. Open-source local tools can offer unlimited processing, while Zush PRO removes the app's rename limit."
+reviewed: "2026-08-04"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: free AI file renaming on Mac and Windows works through three paths — Zush free tier (50 renames), the open-source [`ozgrozer/ai-renamer`](https://github.com/ozgrozer/ai-renamer) CLI with Ollama for unlimited local processing, or BYOK with a free-tier API like Google Gemini for cloud quality at near-zero cost.
+Quick answer: Zush FREE provides 50 renames on Mac and Windows, shared across managed Cloud AI, BYOK with your provider key, and Offline AI with Ollama. For more than 50 Zush renames, PRO removes the app limit; open-source local tools remain another unlimited option.
 
 You do not need to pay a subscription to rename files with AI. There are several genuinely free paths, each with different trade-offs in quality, setup effort, and file format support.
 
-This guide covers every practical way to rename files with AI for free in 2026, from zero-setup options to power-user approaches that unlock unlimited renaming at negligible cost.
+This guide covers practical ways to rename files with AI for free in 2026, from Zush's three free processing modes to open-source local tools.
 
 <BlogProductIntro
   title="Want to try AI renaming without paying?"
-  description="Zush includes 50 free renames with no signup, and BYOK mode lets you keep going on your own API key instead of a subscription."
+  description="Zush includes 50 free renames with no signup across Cloud AI, BYOK, and Offline AI. PRO removes the rename limit."
   links={[
     { href: '/', label: 'AI file renamer' },
     { href: '/mac', label: 'Zush for Mac' },
@@ -49,7 +49,7 @@ Each approach has a sweet spot. The rest of this guide walks through them in det
 
 ## Option 1: Zush free tier (easiest start)
 
-[Zush](/) includes 50 free renames. No credit card, no trial period, no feature restrictions. You get the same AI-powered content analysis, batch rename, folder monitoring, and undo capabilities as paid users.
+[Zush](/) includes 50 free renames. No credit card, no trial period, and BYOK and Offline AI are included alongside managed Cloud AI. All three modes share the same 50-rename allowance.
 
 ### What 50 free renames covers
 
@@ -67,9 +67,9 @@ Each approach has a sweet spot. The rest of this guide walks through them in det
 
 The free tier is the fastest way to try AI file renaming without paying or signing up for a trial. If 50 renames covers your initial cleanup, you never need to pay anything.
 
-## Option 2: Zush BYOK (unlimited at near-zero cost)
+## Option 2: Zush BYOK on the free plan
 
-BYOK stands for Bring Your Own Key. Instead of using Zush's built-in AI credits, you connect your own API key from a supported provider. This removes the monthly rename cap entirely.
+BYOK stands for Bring Your Own Key. You connect your own API key from a supported provider and use it within the same 50-rename FREE allowance. PRO removes the Zush rename limit; provider quotas and API costs still apply.
 
 ### Supported providers
 
@@ -80,7 +80,7 @@ BYOK stands for Bring Your Own Key. Instead of using Zush's built-in AI credits,
 
 ### What it costs in practice
 
-The cost per file rename through BYOK is provider-dependent and changes with model, file size, prompt length, and token usage. In practice it can be fractions of a cent per file on efficient models, but confirm current provider pricing before estimating a large batch. For a deeper cost walkthrough, see [BYOK: Unlimited AI File Renames with Your Own API Key](/blog/byok-ai-file-renaming-unlimited).
+The cost per file rename through BYOK is provider-dependent and changes with model, file size, prompt length, and token usage. In practice it can be fractions of a cent per file on efficient models, but confirm current provider pricing before estimating a large batch. For a deeper walkthrough, see [BYOK AI File Renaming with Your Own API Key](/blog/byok-ai-file-renaming-unlimited).
 
 Google Gemini is the cheapest default because it offers a free tier of API calls. If your monthly rename volume is moderate (under a few hundred files), you typically pay nothing beyond the Zush app itself, which is free.
 
@@ -90,7 +90,7 @@ Google Gemini is the cheapest default because it offers a free tier of API calls
 2. Select your preferred AI provider.
 3. Paste your API key from that provider's dashboard.
 4. Zush now uses your key for all rename operations.
-5. No monthly cap applies. You can rename as many files as your API allows.
+5. BYOK renames count toward the shared 50-rename FREE allowance; PRO removes the Zush limit.
 
 ### Getting an API key
 
@@ -113,9 +113,9 @@ Each provider has a slightly different process, but the pattern is the same:
 3. Add credit balance.
 4. Copy the key into Zush.
 
-The BYOK approach gives you the full Zush experience, including batch rename, folder monitoring, custom patterns, Finder tags, 60+ language support, and rename history, with no cap on usage.
+The BYOK approach gives you the full Zush workflow, including batch rename, folder monitoring, custom patterns, Finder tags, 60+ language support, and rename history. FREE includes 50 shared renames; PRO removes the Zush cap.
 
-![Zush BYOK demo showing unlimited file renaming with your own AI provider key](/videos/zush-byok.mp4)
+![Zush BYOK demo showing file renaming with your own AI provider key](/videos/zush-byok.mp4)
 
 For a broader comparison of tools and pricing, see [AI renamer tools comparison](/blog/best-ai-file-renamer-tools-2026).
 
@@ -221,7 +221,7 @@ For light usage, Renamer.ai's 25 free renames or Riffo's completely free app are
 
 ### For most Mac users
 
-Start with the Zush free tier. It requires no technical setup, handles the widest range of file formats, and includes automation and undo. If you need more than 50 free renames, add a BYOK key and the cap disappears.
+Start with Zush FREE. It requires no technical setup, handles the widest range of file formats, and includes Cloud AI, BYOK, Offline AI, automation, and undo within the shared 50-rename limit. If you need more volume, PRO removes the cap.
 
 ### For privacy-focused users
 
@@ -262,7 +262,7 @@ The point at which you outgrow free depends on your volume.
 
 - **Light or one-off use:** The Zush free tier is sufficient.
 - **Moderate ongoing use (50-500 files/month):** BYOK with Gemini keeps costs under $1/month.
-- **Heavy use (500+ files/month):** Zush PRO unlocks unlimited renames with a $10/month plan or a $48 one-time plan. BYOK is optional when you want provider control.
+- **Heavy use (500+ files/month):** Zush PRO removes the rename limit with a $10/month plan or a $48 one-time plan. BYOK remains available on FREE and PRO when you want provider control.
 
 The progression from free to paid is smooth. You do not lose any features or need to reconfigure anything.
 

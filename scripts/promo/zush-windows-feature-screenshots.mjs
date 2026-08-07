@@ -93,9 +93,6 @@ loadEnvFiles([
   path.join(appRepo, '.env'),
   path.join(appRepo, 'env'),
   path.join(appRepo, '.env.local'),
-  path.join(repoRoot, '.env'),
-  path.join(repoRoot, 'env'),
-  path.join(repoRoot, '.env.sandbox'),
 ]);
 const defaultLandingOutputDir = path.join(repoRoot, 'public/images/showcase/windows');
 const defaultStoreOutputDir = path.resolve(repoRoot, '../zush-assets/Microsoft Store/Windows');
@@ -1323,6 +1320,21 @@ public static class ZushWindowCapture
     private static extern bool SetForegroundWindow(IntPtr hWnd);
 
     [DllImport("user32.dll")]
+    private static extern IntPtr GetForegroundWindow();
+
+    [DllImport("user32.dll")]
+    private static extern bool BringWindowToTop(IntPtr hWnd);
+
+    [DllImport("user32.dll")]
+    private static extern uint GetWindowThreadProcessId(IntPtr hWnd, IntPtr processId);
+
+    [DllImport("user32.dll")]
+    private static extern bool AttachThreadInput(uint idAttach, uint idAttachTo, bool fAttach);
+
+    [DllImport("kernel32.dll")]
+    private static extern uint GetCurrentThreadId();
+
+    [DllImport("user32.dll")]
     private static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
 
     [DllImport("user32.dll")]
@@ -1333,6 +1345,42 @@ public static class ZushWindowCapture
 
     [DllImport("dwmapi.dll")]
     private static extern int DwmGetWindowAttribute(IntPtr hwnd, int dwAttribute, out RECT pvAttribute, int cbAttribute);
+
+    // Windows refuses SetForegroundWindow when another process owns the foreground, and the
+    // capture is a screen scrape, so without this the shot can contain the wrong window.
+    public static bool ForceForeground(IntPtr hwnd)
+    {
+        uint currentThread = GetCurrentThreadId();
+        for (int attempt = 0; attempt < 12; attempt++)
+        {
+            ShowWindow(hwnd, SW_RESTORE);
+            uint foregroundThread = GetWindowThreadProcessId(GetForegroundWindow(), IntPtr.Zero);
+            bool attached = foregroundThread != 0
+                && foregroundThread != currentThread
+                && AttachThreadInput(currentThread, foregroundThread, true);
+            try
+            {
+                BringWindowToTop(hwnd);
+                SetForegroundWindow(hwnd);
+            }
+            finally
+            {
+                if (attached)
+                {
+                    AttachThreadInput(currentThread, foregroundThread, false);
+                }
+            }
+
+            if (GetForegroundWindow() == hwnd)
+            {
+                return true;
+            }
+
+            System.Threading.Thread.Sleep(250);
+        }
+
+        return GetForegroundWindow() == hwnd;
+    }
 
     public static void Prepare(IntPtr hwnd)
     {
@@ -1399,6 +1447,11 @@ if ($process.MainWindowHandle -eq 0) {
 [ZushWindowCapture]::Prepare($process.MainWindowHandle)
 try {
   Start-Sleep -Milliseconds 700
+  if (-not [ZushWindowCapture]::ForceForeground($process.MainWindowHandle)) {
+    throw "Could not bring the Zush window to the foreground; a screen capture would show the wrong window."
+  }
+
+  Start-Sleep -Milliseconds 300
   [ZushWindowCapture]::Capture($process.MainWindowHandle, $OutputPath)
 } finally {
   [ZushWindowCapture]::ReleaseTopmost($process.MainWindowHandle)

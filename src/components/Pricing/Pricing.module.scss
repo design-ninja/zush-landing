@@ -41,123 +41,12 @@
         margin: 0 auto;
     }
 
-    &__SharedList {
-        @include glass-morphism;
-        list-style: none;
-        margin: 0;
-        padding: 1.1rem 0.75rem;
-        border: 1px solid var(--border);
-        border-radius: $radius-lg;
-        display: grid;
-        grid-template-columns: minmax(0, 0.98fr) minmax(0, 1.12fr) minmax(0, 0.94fr);
-        @include shadow('sm');
-
-        @include mobile {
-            grid-template-columns: 1fr;
-            padding: 0.5rem 1rem;
-        }
-    }
-
-    &__SharedFeature {
-        display: flex;
-        align-items: center;
-        gap: 0.7rem;
-        padding: 0.15rem 0.85rem;
-        --feature-color: var(--tone-green-fg);
-        --feature-bg: var(--tone-green-bg);
-
-        & + & {
-            border-inline-start: 1px solid var(--border);
-
-            @include mobile {
-                border-inline-start: none;
-                border-block-start: 1px solid var(--border);
-            }
-        }
-
-        @include mobile {
-            padding: 0.75rem 0;
-        }
-
-        &[data-tone='orange'] {
-            --feature-color: var(--tone-orange-fg);
-            --feature-bg: var(--tone-orange-bg);
-        }
-
-        &[data-tone='green'] {
-            --feature-color: var(--tone-green-fg);
-            --feature-bg: var(--tone-green-bg);
-        }
-
-        &[data-tone='blue'] {
-            --feature-color: var(--tone-blue-fg);
-            --feature-bg: var(--tone-blue-bg);
-        }
-
-        &[data-tone='purple'] {
-            --feature-color: var(--tone-purple-fg);
-            --feature-bg: var(--tone-purple-bg);
-        }
-
-        &[data-tone='pink'] {
-            --feature-color: var(--tone-pink-fg);
-            --feature-bg: var(--tone-pink-bg);
-        }
-
-        &[data-tone='teal'] {
-            --feature-color: var(--tone-teal-fg);
-            --feature-bg: var(--tone-teal-bg);
-        }
-
-        &[data-tone='coffee'] {
-            --feature-color: var(--tone-coffee-fg);
-            --feature-bg: var(--tone-coffee-bg);
-        }
-    }
-
-    &__SharedFeatureIcon {
-        width: 2.4rem;
-        height: 2.4rem;
-        flex-shrink: 0;
-        border-radius: 0.7rem;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--feature-color);
-        background: var(--feature-bg);
-
-        svg {
-            width: 1.35rem;
-            height: 1.35rem;
-        }
-    }
-
-    &__SharedFeatureCopy {
-        display: flex;
-        flex-direction: column;
-        gap: 0.1rem;
-        min-width: 0;
-    }
-
-    &__SharedFeatureTitle {
-        font-weight: 600;
-        font-size: 0.92rem;
-        color: var(--foreground);
-        line-height: 1.25;
-    }
-
-    &__SharedFeatureDesc {
-        font-size: 0.8rem;
-        color: var(--muted-foreground);
-        line-height: 1.35;
-    }
-
     &__Trusted {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 0.8rem;
-        margin: 1.6rem 0;
+        margin: 0.3rem 0 1.2rem;
         color: var(--muted-foreground);
     }
 
@@ -221,7 +110,7 @@
     border: 1px solid var(--border);
     border-radius: $radius-xl;
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto 1fr auto auto;
     height: 100%;
     min-height: 19rem;
     position: relative;
@@ -336,8 +225,23 @@
     &__PriceNote {
         margin: 0.3rem 0 0;
         font-size: 0.82rem;
+        font-weight: 400;
+        color: color-mix(in srgb, var(--muted-foreground), transparent 30%);
+    }
+
+    &__Benefit {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.45rem;
+        margin: 0 0 1rem;
+        color: var(--primary);
+        font-size: 0.9rem;
         font-weight: 500;
-        color: var(--muted-foreground);
+
+        svg {
+            flex-shrink: 0;
+        }
     }
 
     &__ButtonWrapper {

@@ -304,12 +304,16 @@ const breadcrumbItems = [
               link.dataset.storeAppUrl = link.dataset.storeAppUrlWindows;
               link.dataset.downloadOs = 'windows';
               link.dataset.downloadChannel = 'microsoft-store';
+              link.target = '_blank';
+              link.rel = 'noopener noreferrer';
               bindStoreLink(link);
             } else {
               delete link.dataset.storeOs;
               delete link.dataset.storeAppUrl;
               link.dataset.downloadOs = 'mac';
               link.dataset.downloadChannel = 'direct';
+              link.removeAttribute('target');
+              link.removeAttribute('rel');
             }
           }
 

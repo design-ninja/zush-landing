@@ -48,11 +48,11 @@ const titleHtml = rawTitle.replace(
   /\bPRO\b/,
   `<span class="${styles.Pricing__TitlePro}">PRO</span>`,
 );
-const sharedFeatures = PRO_FEATURES.map((feature, index) => ({
-  ...feature,
-  title: copy?.features[index]?.title ?? feature.title,
-  desc: copy?.features[index]?.desc ?? feature.desc,
-}));
+const proFeature = {
+  ...PRO_FEATURES[0],
+  title: copy?.features[0]?.title ?? PRO_FEATURES[0].title,
+};
+const ProFeatureIcon = proFeature.icon;
 const oneTimeDiffs = copy?.oneTimeDifferentiators;
 const plans = PRICING_PLANS.map((plan) => {
   const planCopy: PlanCopy | undefined =
@@ -93,24 +93,6 @@ const plans = PRICING_PLANS.map((plan) => {
     />
 
     <div class={styles.Pricing__Layout}>
-      <ul class={styles.Pricing__SharedList}>
-        {sharedFeatures.map((feature) => {
-          const Icon = feature.icon;
-
-          return (
-            <li class={styles.Pricing__SharedFeature} data-tone={feature.tone}>
-              <span class={styles.Pricing__SharedFeatureIcon}>
-                <Icon size={20} aria-hidden="true" />
-              </span>
-              <span class={styles.Pricing__SharedFeatureCopy}>
-                <span class={styles.Pricing__SharedFeatureTitle}>{feature.title}</span>
-                <span class={styles.Pricing__SharedFeatureDesc}>{feature.desc}</span>
-              </span>
-            </li>
-          );
-        })}
-      </ul>
-
       <div class={styles.Pricing__Trusted}>
         <svg class={styles.Pricing__Laurel} viewBox="0 0 28 58" fill="currentColor" aria-hidden="true">
           <defs>
@@ -188,6 +170,11 @@ const plans = PRICING_PLANS.map((plan) => {
             {plan.priceNote && (
               <p class={styles.PricingCard__PriceNote}>{plan.priceNote}</p>
             )}
+          </div>
+
+          <div class={styles.PricingCard__Benefit}>
+            <ProFeatureIcon size={18} aria-hidden="true" />
+            <span>{proFeature.title}</span>
           </div>
 
           <div class={styles.PricingCard__ButtonWrapper}>

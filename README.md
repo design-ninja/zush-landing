@@ -17,21 +17,52 @@ Marketing website for [Zush](https://zushapp.com), built with Astro and React is
 
 ## Local Development
 
+Install dependencies without exposing any secrets to lifecycle scripts:
+
 ```bash
 pnpm install
-pnpm dev
-pnpm dev:sandbox # Explicit Paddle sandbox mode from .env.sandbox
 ```
+
+Run commands through the checked-in 1Password wrapper. Reference files contain
+only `op://` links; resolved values exist only in the child process environment:
+
+```bash
+./scripts/with-1password.sh \
+  --env-file .env.1password \
+  --env-file .env.1password.local \
+  -- pnpm dev
+
+./scripts/with-1password.sh \
+  --env-file .env.1password.sandbox \
+  -- pnpm dev:sandbox
+```
+
+The default `.env.1password` profile exposes only public website runtime values.
+Use `.env.1password.operations` explicitly for trusted operational scripts; do
+not run package installation or untrusted npm/pnpm scripts with that profile.
 
 Useful commands:
 
 ```bash
-pnpm build        # Production build
-pnpm build:sandbox # Local sandbox build
-pnpm preview      # Preview built site
-pnpm lint         # ESLint
-pnpm check:astro  # Astro + TS diagnostics
-pnpm check:seo    # Full quality gates (astro + payments + build + html + links)
+./scripts/with-1password.sh -- pnpm build # Production build
+./scripts/with-1password.sh --env-file .env.1password.sandbox -- pnpm build:sandbox
+pnpm preview     # Preview built site
+pnpm lint        # ESLint
+pnpm check:astro # Astro + TS diagnostics
+```
+
+Run the full SEO gate through the matching production or sandbox profile.
+
+### Local MCP servers
+
+GSC, Google Ads, and Paddle MCP launchers use dedicated least-privilege
+1Password profiles. Paddle MCP is pinned in `pnpm-lock.yaml`; install packages
+without any secret profile before starting it.
+
+```bash
+./scripts/gsc-mcp
+./scripts/google-ads-mcp
+./scripts/paddle-mcp
 ```
 
 ### Paddle build safety
@@ -41,16 +72,17 @@ resolve Paddle to `production`, use a `live_` client token, and keep the expecte
 production price IDs. This catches accidental `.env.local` sandbox values before they are
 compiled into the public assets.
 
-Sandbox Paddle values live in `.env.sandbox`. Vite/Astro only load that file in
-explicit sandbox mode, unlike `.env.local`, which Vite loads for every mode.
+Sandbox Paddle values live in the `Zush Landing Sandbox Environment` 1Password
+item and are referenced by `.env.1password.sandbox`. They are injected only for
+explicit sandbox commands.
 
 For deliberate local sandbox runs:
 
 ```bash
-pnpm dev:sandbox
-pnpm build:sandbox
+./scripts/with-1password.sh --env-file .env.1password.sandbox -- pnpm dev:sandbox
+./scripts/with-1password.sh --env-file .env.1password.sandbox -- pnpm build:sandbox
 # or, for the full local gate:
-pnpm check:seo:sandbox
+./scripts/with-1password.sh --env-file .env.1password.sandbox -- pnpm check:seo:sandbox
 ```
 
 ## CI and Quality Gates

@@ -148,7 +148,7 @@ const en: ServicePageCopy = {
     checkingTitle: 'Finalizing your purchase...',
     successTitle: 'Thank you for your purchase!',
     checkingText: "We're confirming your payment. This usually takes a few seconds.",
-    activatedText: 'Your Zush PRO is active. Enjoy unlimited PRO renames, BYOK, and Offline AI mode.',
+    activatedText: 'Your Zush PRO is active. Enjoy unlimited renames across Cloud AI, BYOK, and Offline AI.',
     activationReadyText: "We're opening Zush to activate PRO on this device.",
     expiredText: "We couldn't finish automatic activation from this browser session. We've sent an activation email to you.",
     expiredNoticeBeforeAction: 'Open the email and click the',

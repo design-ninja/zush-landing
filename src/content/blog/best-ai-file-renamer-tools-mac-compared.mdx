@@ -194,7 +194,7 @@ This is the category this post focuses on. The following reviews cover every not
 ### 1. Zush
 
 <BlogToolMeta platform="macOS (Sequoia and newer), plus Windows" website="https://zushapp.com/" label="zushapp.com">
-  <Fragment slot="pricing">Free tier (50 renames to start), Pro $10/month or $48 one-time with unlimited PRO renames, BYOK optional, Local Ollama on supported Mac builds</Fragment>
+  <Fragment slot="pricing">Free tier (50 renames to start), Pro $10/month or $48 one-time with unlimited PRO renames, BYOK optional, Offline AI via Ollama on Mac and Windows</Fragment>
 </BlogToolMeta>
 
 [Zush for Mac](/mac) is a native macOS app built specifically for AI-powered file renaming. Our main reason for putting it first is published format breadth: 100+ formats across images, design files, documents, videos, and audio. That includes HEIC, AVIF, SVG, RAW camera files, Sketch, Figma .fig, Illustrator .ai, PSD, PDFs, Office files, iWork files, OpenDocument files, subtitle files, MP3, M4A, WAV, FLAC, and common video formats like MP4 and MOV. Real Mac workflows mix iPhone photos, voice memos, camera RAW files, design assets, scanned PDFs, office documents, subtitles, and screen recordings in the same folders.
@@ -212,14 +212,14 @@ This is the category this post focuses on. The following reviews cover every not
 - Support for 60+ output languages
 - Complete rename history with one-click revert on any file
 - One-time pricing instead of monthly subscriptions
-- BYOK (bring your own key) option for unlimited cloud renames at bare API cost
+- BYOK (bring your own key) option with direct provider billing
 - Local Ollama mode for supported offline processing on Mac
 
 **Limitations:**
 
 - Desktop app rather than a browser-only workflow
 - Cloud and BYOK processing require internet; Local Ollama can process supported files on device
-- Free tier caps at 50 free renames (though BYOK removes this)
+- FREE caps at 50 renames shared across Cloud AI, BYOK, and Offline AI; PRO removes the cap
 
 ![Zush AI rename results with five files showing before and after names and green checkmarks](/images/showcase/macos/batch-rename-light.webp)
 
@@ -448,7 +448,7 @@ For the direct subscription-vs-one-time comparison, read [Zush vs Renamer.ai](/b
 | Tool | Free option | Paid option | Annual cost (estimated) | Model |
 |---|---|---|---|---|
 | Zush | 50 renames to start | $10/month or $48 one-time | $48 one-time or $120/year monthly | Monthly or one-time PRO, unmetered |
-| Zush BYOK | Included with paid PRO | Provider API cost | Optional API cost | Pay-as-you-go API |
+| Zush BYOK | Available on every plan | Provider API cost | Optional API cost | Pay-as-you-go API |
 | Renamer.ai | 25 files/month | $9.95-99.95/month | $120-1,200/year | Metered subscription |
 | AI Renamer | 10 credits on signup | $19 one-time (Local Mode) or $10/200 credits (Cloud) | $19, or $0.05 per cloud rename | One-time local / metered credits |
 | NameQuick | 14-day trial (50 renames) | Managed from $12/mo, or Self-Managed $69 one-time + API/local model | $144+/year Managed, or $69 + API/local setup | Metered managed or one-time self-managed |
@@ -488,7 +488,7 @@ You work with RAW files (CR2, NEF, ARW, DNG), HEIC from iPhone, client documents
 
 **Best pick: Zush or AI Renamer**
 
-If privacy and local processing are non-negotiable, AI Renamer's $19 Local Mode (or the free `ozgrozer/ai-renamer` CLI) keeps everything on your machine. If you value broad document, screenshot, design, audio, video, and RAW support, Zush with paid PRO BYOK gives you control over the AI provider inside a desktop review-and-undo workflow. Zush's BYOK option also appeals to engineers who already have API keys from OpenAI, Anthropic, Google, or Groq.
+If privacy and local processing are non-negotiable, AI Renamer's $19 Local Mode (or the free `ozgrozer/ai-renamer` CLI) keeps everything on your machine. If you value broad document, screenshot, design, audio, video, and RAW support, Zush with BYOK on any plan gives you control over the AI provider inside a desktop review-and-undo workflow. Zush's BYOK option also appeals to engineers who already have API keys from OpenAI, Anthropic, Google, or Groq.
 
 ### You are a student or researcher
 
@@ -542,7 +542,7 @@ Several tools in this comparison support documents. Zush covers 37 document and 
 
 ### How does BYOK (bring your own key) work?
 
-BYOK lets you connect your own API key from providers like OpenAI, Google (Gemini), Anthropic (Claude), or Groq. This removes the Zush rename cap entirely, but the final API cost depends on provider, model, file size, prompt length, and token usage. Zush and NameQuick both offer BYOK-style control in this comparison. Zush includes BYOK with paid PRO plans, while NameQuick's Self-Managed path is $69 one-time for one device and lists OpenAI, Claude, Gemini, OpenRouter, Ollama, LM Studio, and MLX. RenameClick supports multiple AI backends (Ollama, LM Studio, OpenAI, Gemini, Alibaba Cloud Qwen) but frames it as provider selection rather than a BYOK model. AI Renamer's $19 Local Mode lists OpenAI and custom model support alongside Ollama and LM Studio.
+BYOK lets you connect your own API key from providers like OpenAI, Google (Gemini), Anthropic (Claude), or Groq. On FREE, BYOK shares the 50-rename allowance; PRO removes the Zush cap, but the final API cost depends on provider, model, file size, prompt length, and token usage. Zush and NameQuick both offer BYOK-style control in this comparison. Zush includes BYOK on every plan, while NameQuick's Self-Managed path is $69 one-time for one device and lists OpenAI, Claude, Gemini, OpenRouter, Ollama, LM Studio, and MLX. RenameClick supports multiple AI backends (Ollama, LM Studio, OpenAI, Gemini, Alibaba Cloud Qwen) but frames it as provider selection rather than a BYOK model. AI Renamer's $19 Local Mode lists OpenAI and custom model support alongside Ollama and LM Studio.
 
 ### Will AI file renaming break my existing file links?
 

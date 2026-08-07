@@ -635,7 +635,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     relatedBlogPosts: [
       { title: 'Local AI File Renaming: Private and Offline', href: 'local-ai-file-renaming-ollama-guide' },
       { title: 'Cloud AI vs Local AI File Renaming', href: 'cloud-vs-local-ai-file-renaming' },
-      { title: 'BYOK: Unlimited AI File Renames', href: 'byok-ai-file-renaming-unlimited' },
+      { title: 'BYOK AI File Renaming', href: 'byok-ai-file-renaming-unlimited' },
     ],
     jsonLd: buildFeaturePageJsonLd({
       howTo: {

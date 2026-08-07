@@ -1,5 +1,44 @@
 # Changelog
 
+## [3.9.1] - 2026-08-05
+
+### Added
+- Read and rename legacy Excel files in the older .xls format
+
+### Improved
+- Offline AI now sizes each request to fit your model, so long documents and scans no longer fail partway
+- AI Setup is now called AI Modes, with a clearer description of each option
+- Your remaining free renames now show as a countdown ring
+- The whole AI mode row is clickable, and the setup links stay available while you read them
+
+### Fixed
+- Ollama problems now explain what actually went wrong instead of showing a generic message
+- Title formatting no longer leaves underscores inside names
+- Files that failed analysis keep their actions, so you can retry them from the row menu
+- Better contrast for the "Best value" badge in dark mode
+
+## [3.9.0] - 2026-08-03
+
+### Added
+- Use your own AI provider key or private Ollama models on every plan
+- Download the first recommended Ollama model with one click
+
+### Improved
+- The free plan now includes 50 renames across Cloud, BYOK, and Offline AI
+- Clearer AI setup and provider switching
+- More reliable analysis for documents, audio, video, and design files
+
+## [3.8.5] - 2026-08-01
+
+### Improved
+- Larger, easier-to-click checkboxes in AI Rename
+- Rename ready files while other items in the batch are still being analyzed
+- Clearer selection layout and smaller warning icons
+
+### Fixed
+- Fixed checkbox clicks for very wide image previews
+- A completed rename no longer appears to fail if Activity or usage syncing is temporarily unavailable
+
 ## [3.8.4] - 2026-07-30
 
 ### Improved

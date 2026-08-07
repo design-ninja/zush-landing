@@ -11,17 +11,17 @@ We grant you a personal, non-exclusive, non-transferable, limited license to use
 ### 3. Purchases and Payments
 
 **3.1 🌟 PRO Version**
-Zush offers a "🌟 PRO" upgrade that unlocks unlimited AI renames, monitoring of multiple folders, BYOK, Offline AI mode, and advanced metadata features. Current pricing is displayed in the app and on the website.
+Zush offers a free plan with 50 renames shared across Cloud AI, BYOK, and Offline AI. The "🌟 PRO" upgrade removes that rename limit and includes the current advanced PRO features. Current pricing is displayed in the app and on the website.
 
 **3.2 Pricing Plans**
 We offer free usage plus two paid PRO plans:
 
-- **Zush Free**: 50 credits included. One credit equals one rename.
-- **Zush PRO Monthly**: {{zush_monthly_price}}/month. Includes unlimited PRO renames, BYOK (Bring Your Own Key), and Offline AI mode with private local models via Ollama.
-- **Zush PRO One-Time**: {{zush_one_time_price}}. Includes lifetime access to unlimited PRO renames, BYOK, and Offline AI mode.
+- **Zush Free**: 50 renames shared across Cloud AI, BYOK, and Offline AI.
+- **Zush PRO Monthly**: {{zush_monthly_price}}/month. Removes the rename limit across Cloud AI, BYOK (Bring Your Own Key), and Offline AI with private local models via Ollama.
+- **Zush PRO One-Time**: {{zush_one_time_price}}. Includes lifetime access without the Zush rename limit across Cloud AI, BYOK, and Offline AI.
 
 **3.3 Usage Limits**
-The free version has usage limits for AI-powered cloud features. Paid PRO plans remove the cloud rename limit. We may still apply reasonable abuse prevention and technical safeguards to protect service reliability.
+The free version has a shared 50-rename limit across Cloud AI, BYOK, and Offline AI. Paid PRO plans remove that rename limit. We may still apply reasonable abuse prevention and technical safeguards to protect service reliability.
 
 **3.5 Merchant of Record**
 Our order process is conducted by our online reseller [Paddle.com](https://www.paddle.com). Paddle is the Merchant of Record for all our orders. Paddle provides all customer service inquiries and handles returns.

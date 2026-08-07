@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Minimal MCP server for Google Search Console using the local OAuth setup."""
+"""Minimal MCP server for Google Search Console using process environment."""
 
 from __future__ import annotations
 
@@ -11,27 +11,10 @@ from pathlib import Path
 from typing import Any
 
 
-ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_GSC_CLIENT_DIR = Path("/Users/lirik/Projects/ai-marketing-skills/seo-ops")
 
 
-def load_env_file(path: Path) -> None:
-    if not path.exists():
-        return
-
-    for line in path.read_text().splitlines():
-        line = line.strip()
-        if not line or line.startswith("#") or "=" not in line:
-            continue
-        key, value = line.split("=", 1)
-        key = key.strip()
-        value = value.strip().strip('"').strip("'")
-        if key and key not in os.environ:
-            os.environ[key] = value
-
-
 def load_gsc_client():
-    load_env_file(Path(os.environ.get("GSC_ENV_FILE", ROOT / ".env")))
     client_dir = Path(os.environ.get("GSC_CLIENT_DIR", DEFAULT_GSC_CLIENT_DIR))
     if str(client_dir) not in sys.path:
         sys.path.insert(0, str(client_dir))

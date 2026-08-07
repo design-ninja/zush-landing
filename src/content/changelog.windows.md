@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.8.0.0] - 2026-08-06
+
+### Added
+- Choose Cloud AI, your own provider key, or Offline AI during the new AI Setup experience.
+- Install or start Ollama from Zush and download the recommended local model with live progress.
+
+### Improved
+- BYOK, Offline AI, Smart Rename templates, Naming Blocks, and custom prompts are now available on the Free plan; PRO removes rename limits across all AI modes.
+- More reliable file-ready detection, CSV and TSV handling, legacy Office document analysis, filename validation, and credit synchronization after successful renames.
+- Refined onboarding, AI mode settings, and PRO screens for a clearer setup and upgrade experience.
+
+
 ## [3.7.0.0] - 2026-07-28
 
 ### Added
