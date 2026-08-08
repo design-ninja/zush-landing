@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.8.2.0] - 2026-08-08
+
+### Improved
+- Batch Rename now handles unchanged and capitalization-only names more reliably, including correct credit use and undo history.
+- Amounts in invoices and documents are recognized more consistently across regional number formats.
+- AI mode setup and provider selection states are clearer and more reliable.
+
+
 ## [3.8.1.0] - 2026-08-08
 
 ### Improved
