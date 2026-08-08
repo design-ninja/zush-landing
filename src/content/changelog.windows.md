@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.8.1.0] - 2026-08-08
+
+### Improved
+- Monitored folders now reconnect automatically after a drive or folder becomes available again, and Zush catches up recent files created while monitoring was paused.
+- Custom AI Blocks now preserve the exact formatting requested in their instructions.
+- Monitoring warnings and unavailable-folder states are clearer and display better in narrow windows.
+
+
 ## [3.8.0.0] - 2026-08-06
 
 ### Added
