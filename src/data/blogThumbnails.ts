@@ -25,6 +25,7 @@ const BLOG_THUMBNAIL_ALIASES: Record<string, string> = {
   'how-to-organize-scanned-medical-records-small-practice': 'file-naming-conventions-best-practices',
   'legal-file-naming-conventions': 'file-naming-conventions-best-practices',
   'best-file-renamer-tools': 'best-ai-file-renamer-tools-2026',
+  'how-to-safely-batch-rename-files': 'batch-rename-files-on-mac-complete-guide',
   'how-to-organize-invoices-and-receipts': 'organize-client-files-freelancers-mac',
   'how-to-organize-tax-documents': 'declutter-your-mac-file-cleanup-guide',
   'rename-invoices-for-quickbooks-xero': 'rename-pdf-files-automatically',
