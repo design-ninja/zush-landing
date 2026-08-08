@@ -10,23 +10,23 @@ tags:
   - "PDFs & Documents"
   - "File Organization"
 tldr: "The invoice naming convention that scales is YYYY-MM-DD – Vendor – InvoiceNumber – Amount.pdf: it sorts chronologically, links each file to the ledger through the invoice number, and lets a bookkeeper verify amounts without opening files. Zush applies it automatically by reading each invoice."
-reviewed: "2026-07-31"
+reviewed: "2026-08-08"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
 Quick answer: name invoices `YYYY-MM-DD – Vendor – InvoiceNumber – Amount.pdf`, for example `2026-06-12 – Acme Supply – INV-10234 – 1,204 USD.pdf`. The ISO date sorts every folder chronologically, the invoice number is the primary key that ties the file to your ledger, and the amount lets anyone match a bank feed line without opening the file. Zush reads each invoice and applies this convention automatically.
 
-A naming convention sounds like bureaucracy until month-end close. Then it decides whether "find the missing Figma invoice from May" takes four seconds of typing in a search box or twenty minutes of opening `download (7).pdf` files one by one. This guide is the convention itself — the components, the order, and the edge cases. For the tooling that applies it automatically, see the [invoice renaming guide](/blog/automatically-rename-invoices-ai).
+A naming convention sounds like bureaucracy until month-end close. Then it decides whether "find the missing Figma invoice from May" takes four seconds of typing in a search box or twenty minutes of opening `download (7).pdf` files one by one. This guide explains the convention itself — the components, order, and edge cases. Accountants and bookkeepers who want the complete product workflow should see [Zush for accountants and bookkeepers](/for-accountants); for a tooling walkthrough, use the [invoice renaming guide](/blog/automatically-rename-invoices-ai).
 
 <BlogProductIntro
   title="Want the convention applied without the typing?"
   description="Zush reads vendor, date, invoice number, and amount from each PDF or scan and renames whole folders to your exact convention — preview first, undo after."
   links={[
+    { href: '/for-accountants', label: 'Zush for accountants' },
     { href: '/rename-invoices-with-ai', label: 'AI invoice renamer' },
     { href: '/rename-scanned-documents', label: 'Rename scanned documents' },
     { href: '/docs/naming-blocks', label: 'Naming Blocks' },
-    { href: '/docs/templates', label: 'Templates' },
   ]}
 />
 
