@@ -9,7 +9,7 @@ tags:
   - "Automation"
   - "File Organization"
 tldr: "Use Finder for simple shared rules, Automator or Shortcuts for repeatable Mac workflows, Terminal for scripted batches, and AI batch renaming when each file needs a unique content-aware name."
-reviewed: "2026-07-29"
+reviewed: "2026-08-08"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -330,7 +330,7 @@ This replaces `IMG_` with `vacation-` in every `.jpg` filename in the current di
 
 ### Script limitations
 
-Scripts are powerful but require technical knowledge. A typo in a rename script can damage filenames across an entire directory with no undo. Always test on a copy of your files first, or use `echo` before `mv` to preview what will happen:
+Scripts are powerful but require technical knowledge. A typo in a rename script can damage filenames across an entire directory with no undo. Always test on a copy of your files first, or use `echo` before `mv` to preview what will happen. The full [safe batch file renaming guide](/blog/how-to-safely-batch-rename-files) explains dry runs, extension and collision checks, linked-file risks, and recovery options across GUI tools and scripts:
 
 ```bash
 for f in *.jpg; do
