@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.9.2] - 2026-08-08
+
+### Added
+- Create folders directly while choosing files or a watched folder
+
+### Improved
+- Get started faster with a shorter first-run setup
+- File pickers now stay in front of Zush windows
+- Clearer provider selection when switching AI modes
+
+### Fixed
+- More reliable rename handling when a file already has its Zush name
+
 ## [3.9.1] - 2026-08-05
 
 ### Added
