@@ -1,0 +1,90 @@
+---
+interface Link {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  title?: string;
+  description?: string;
+  links?: Link[];
+}
+
+const {
+  title = 'Preview first. Undo if you change your mind.',
+  description = 'Zush shows every proposed filename before anything changes. Apply only the names you approve, then use History to restore previous names when needed.',
+  links = [
+    { href: '/blog/how-to-safely-batch-rename-files', label: 'Safe batch rename guide' },
+    { href: '/docs/undo-history', label: 'How History and undo work' },
+  ],
+} = Astro.props;
+---
+
+<aside class='blog-safety-note'>
+  <span class='blog-safety-note__eyebrow'>Safe workflow</span>
+  <strong class='blog-safety-note__title'>{title}</strong>
+  <p>{description}</p>
+  <div class='blog-safety-note__links'>
+    {
+      links.map((link) => (
+        <a
+          href={link.href}
+          data-article-cta
+          data-article-cta-label={link.label}
+          data-article-cta-placement='safety-note'
+        >
+          {link.label}<span aria-hidden='true'>→</span>
+        </a>
+      ))
+    }
+  </div>
+</aside>
+
+<style is:global>
+  .blog-safety-note {
+    margin: 1.75rem 0 2rem;
+    padding: 1.1rem 1.2rem;
+    border: 1px solid color-mix(in srgb, #22c55e 32%, var(--border));
+    border-radius: 0.85rem;
+    background: color-mix(in srgb, #22c55e 7%, var(--card));
+  }
+
+  .blog-safety-note__eyebrow {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: #15803d;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .blog-safety-note__title {
+    display: block;
+    color: var(--foreground);
+    font-size: 1rem;
+  }
+
+  .blog-safety-note p {
+    margin: 0.45rem 0 0.75rem;
+    color: var(--muted-foreground);
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .blog-safety-note__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+  }
+
+  .blog-safety-note__links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--primary);
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+</style>

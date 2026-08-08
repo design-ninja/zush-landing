@@ -37,6 +37,14 @@
     transform: translate(-50%, 0);
 }
 
+// Social icon tooltips near the viewport edges can widen the mobile page even
+// while transparent. The trigger already carries an accessible aria-label.
+@media (max-width: 600px) {
+    .Tooltip {
+        display: none;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .Tooltip {
         transition: none;

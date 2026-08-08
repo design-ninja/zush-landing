@@ -272,6 +272,9 @@ for (const loc of locs) {
 
   if (isBlogPostPath(pathname)) {
     assertIncludes(html, '"@type":"BlogPosting"', `BlogPosting JSON-LD missing for ${pathname}`);
+    if (/<img\b[^>]*\bsrc="[^"]+\.mp4(?:\?[^\"]*)?"/i.test(html)) {
+      fail(`MP4 source rendered as an image instead of a poster link on ${pathname}`);
+    }
     // The Organization and WebSite nodes are site-wide identity nodes emitted on every
     // page by BaseLayout, so `/#organization` and `/#website` are expected here.
     // Homepage-specific page and product nodes still must not leak into blog posts.
