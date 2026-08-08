@@ -10,7 +10,7 @@ tags:
   - "PDFs & Documents"
   - "File Naming"
 tldr: "To automatically rename invoices, use Zush to read each PDF or scan, extract the vendor, date, invoice number, and amount, preview the names, and apply one reversible batch."
-reviewed: "2026-07-30"
+reviewed: "2026-08-08"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -19,7 +19,7 @@ Quick answer: to automatically rename invoices, use a content-aware AI tool that
 
 An invoice folder usually starts with a few understandable files and ends with `invoice.pdf`, `download (7).pdf`, `scan_0042.pdf`, and `INV-final-v2.pdf`. The information needed for a good name is already inside each document, but a manual or pattern-based rename cannot use it without someone opening the file.
 
-This guide is invoice-specific. If your folder contains contracts, reports, academic papers, and other generic PDFs, use the broader [automatic PDF renaming guide](/blog/rename-pdf-files-automatically). For the commercial workflow, start with [rename invoices with AI](/rename-invoices-with-ai); for the convention itself — which fields, in which order — see the [invoice file naming convention guide](/blog/invoice-file-naming-convention).
+This guide is the educational, invoice-specific walkthrough. Accountants and bookkeepers comparing the complete client-document workflow should start with [Zush for accountants and bookkeepers](/for-accountants). For the focused invoice product, use [rename invoices with AI](/rename-invoices-with-ai); for the convention itself — which fields, in which order — see the [invoice file naming convention guide](/blog/invoice-file-naming-convention). If your folder contains contracts, reports, academic papers, and other generic PDFs, use the broader [automatic PDF renaming guide](/blog/rename-pdf-files-automatically).
 
 **Last verified: July 30, 2026.** Competitor claims in the comparison were checked against the official [Renamed.to](https://www.renamed.to/) and [Renamer.ai](https://renamer.ai/) product and pricing pages on that date. Accuracy figures are vendor claims, not independent benchmarks.
 
@@ -27,10 +27,10 @@ This guide is invoice-specific. If your folder contains contracts, reports, acad
   title="Want every invoice named the same way?"
   description="Zush reads invoice PDFs and scans, extracts the fields you choose, previews the full batch, and applies a reusable naming Template with undo on Mac and Windows."
   links={[
+    { href: '/for-accountants', label: 'Zush for accountants' },
     { href: '/rename-invoices-with-ai', label: 'AI invoice renamer' },
     { href: '/rename-receipts-with-ai', label: 'Rename receipts' },
     { href: '/rename-pdf-with-ai', label: 'AI PDF renamer' },
-    { href: '/docs/naming-blocks', label: 'Naming Blocks' },
   ]}
 />
 
