@@ -104,6 +104,19 @@ const SHOWCASE_VIDEOS: ShowcaseVideoAsset[] = [
     },
   },
   {
+    id: 'tags',
+    title: 'Smart Tags',
+    description: 'Add searchable Finder tags and metadata to files on Mac',
+    sources: {
+      light: '/videos/zush-tags.mp4',
+      dark: '/videos/zush-tags.mp4',
+    },
+    posters: {
+      light: '/videos/posters/tags.webp',
+      dark: '/videos/posters/tags.webp',
+    },
+  },
+  {
     id: 'custom-prompts',
     title: 'Custom Prompts',
     description: 'Guide filename generation with your own instructions',

@@ -1,6 +1,6 @@
 ---
-title: "File Naming Conventions: Best Practices for Searchable Files"
-description: "Learn practical file naming conventions for searchable files, SEO image names, sorting, collaboration, AI-assisted naming, photos, videos, PDFs, and documents."
+title: "File Naming Conventions: Rules, Examples & Templates"
+description: "Use practical file naming conventions, copy-ready templates, and real examples for documents, photos, projects, dates, versions, and searchable files."
 date: "2026-03-05"
 slug: "file-naming-conventions-best-practices"
 platform: "general"
@@ -9,10 +9,14 @@ tags:
   - "File Organization"
   - "File Naming"
 tldr: "A good file naming convention is simple, descriptive, searchable, and consistent: lowercase words, predictable separators, ISO dates when needed, and no vague names like `final-final-v2`."
-reviewed: "2026-07-19"
+reviewed: "2026-08-08"
 featuredOrder: 3
 ---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogCopyPatterns from '@/components/blog/BlogCopyPatterns.astro';
+import BlogMarkdownImage from '@/components/blog/BlogMarkdownImage.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSafetyNote from '@/components/blog/BlogSafetyNote.astro';
 
 Quick answer: a good file naming convention is descriptive, hyphenated, sortable, searchable, and consistent. Lead with `YYYY-MM-DD` when chronology matters, otherwise lead with subject. Use kebab-case, avoid spaces and special characters, and stick to one rule across teams.
 
@@ -20,24 +24,49 @@ A solid file naming convention saves time every time you search, sort, or share 
 
 For most people, that means descriptive lowercase names, hyphens or underscores, ISO dates when dates matter, and version numbers instead of vague labels. If your hardest files are images, videos, screenshots, PDFs, or documents, [Zush file renamer](/) can automate the naming step so the convention is easier to maintain.
 
-For repeatable AI-assisted structures, read [Naming Blocks](/blog/naming-blocks-file-naming-guide) and [Zush Templates](/blog/zush-templates-file-renaming-workflows). If you are comparing tools first, start with [AI renamer tools comparison](/blog/best-ai-file-renamer-tools-2026).
+## Copy-ready file naming templates
 
+Choose the pattern that matches how you expect to find the file later. Copy it as a starting point, then remove fields your workflow does not need.
 
-<BlogProductIntro
-  title="Want a naming convention that applies itself?"
-  description="Zush turns a convention into a reusable pattern with 145+ Naming Blocks for dates, metadata, clients, and AI-detected content, then applies it across whole folders."
-  links={[
-    { href: '/', label: 'AI file renamer' },
-    { href: '/batch-rename-files', label: 'Batch rename files' },
-    { href: '/ai-file-organizer', label: 'AI file organizer' },
-    { href: '/docs/naming-blocks', label: 'Naming Blocks' },
+<BlogCopyPatterns
+  patterns={[
+    {
+      label: 'Dated documents',
+      useCase: 'Reports, meeting notes, contracts',
+      value: 'YYYY-MM-DD_subject_document-type_version.ext',
+      example: '2026-08-08_q3-budget_report_v2.pdf',
+    },
+    {
+      label: 'Project files',
+      useCase: 'Design, marketing, client work',
+      value: 'project_asset-description_variant_version.ext',
+      example: 'checkout-redesign_hero-banner_dark_v3.psd',
+    },
+    {
+      label: 'Photos and video',
+      useCase: 'Events, shoots, travel libraries',
+      value: 'YYYY-MM-DD_event_description_sequence.ext',
+      example: '2026-08-08_product-launch_keynote_0042.jpg',
+    },
+    {
+      label: 'Invoices and receipts',
+      useCase: 'Finance and bookkeeping',
+      value: 'YYYY-MM-DD_vendor_document-number.ext',
+      example: '2026-08-08_acme_invoice-1048.pdf',
+    },
   ]}
 />
 
-## The rules that work almost everywhere
+For repeatable AI-assisted structures, read [Naming Blocks](/blog/naming-blocks-file-naming-guide) and [Zush Templates](/blog/zush-templates-file-renaming-workflows). If you are comparing tools first, start with the [AI renamer tools comparison](/blog/best-ai-file-renamer-tools-2026).
+
+## Five file naming rules that work almost everywhere
 
 
-![Zush naming pattern configuration with format template and localization options](/images/showcase/macos/naming-light.webp)
+<BlogMarkdownImage
+  src='/images/showcase/macos/naming-light.webp'
+  alt='Zush naming pattern configuration with format template and localization options'
+  priority
+/>
 
 ### 1. Be descriptive first
 
@@ -76,6 +105,17 @@ If the date belongs in the filename, use `YYYY-MM-DD`. That keeps chronological 
 ### 5. Use version numbers instead of "final"
 
 A file named `final` is rarely final. `v2`, `v3`, and `v4` are much clearer than `final-final-really-final`.
+
+<BlogProductIntro
+  title="Want a naming convention that applies itself?"
+  description="Zush turns a convention into a reusable pattern with 145+ Naming Blocks for dates, metadata, clients, and AI-detected content. Preview every proposed name before applying it, then restore earlier names from History if needed."
+  links={[
+    { href: '/batch-rename-files', label: 'Batch rename files' },
+    { href: '/blog/how-to-safely-batch-rename-files', label: 'Preview and undo guide' },
+    { href: '/docs/naming-blocks', label: 'Naming Blocks' },
+    { href: '/docs/undo-history', label: 'Undo History' },
+  ]}
+/>
 
 ## Recommended patterns by workflow
 
@@ -145,6 +185,13 @@ If your current library is messy, do not rename everything at once.
 4. Automate the inflow of new images, videos, and screenshots
 
 That last step is what keeps the system from collapsing again. The combination of a naming convention plus automatic AI-assisted naming is much more durable than occasional cleanup sprints.
+
+<BlogSafetyNote
+  title="Test the convention on a small batch first"
+  description="Preview the complete old-name → new-name list before applying a convention to a folder. Zush keeps completed rename operations in History so you can restore previous names instead of repairing mistakes by hand."
+/>
+
+<BlogCTA placement='inline' platform='general' />
 
 ![Zush naming patterns demo applying consistent file naming conventions automatically](/videos/zush-naming-pattern.mp4)
 

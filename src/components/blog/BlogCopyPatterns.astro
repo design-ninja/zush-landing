@@ -1,0 +1,120 @@
+---
+interface Pattern {
+  label: string;
+  useCase: string;
+  value: string;
+  example: string;
+}
+
+interface Props {
+  patterns: Pattern[];
+}
+
+const { patterns } = Astro.props;
+---
+
+<div class='blog-copy-patterns'>
+  {
+    patterns.map((pattern) => (
+      <article class='blog-copy-pattern'>
+        <div class='blog-copy-pattern__head'>
+          <div>
+            <strong>{pattern.label}</strong>
+            <span>{pattern.useCase}</span>
+          </div>
+          <button
+            type='button'
+            class='blog-copy-pattern__button'
+            data-copy-pattern
+            data-copy-label={pattern.label}
+            data-copy-value={pattern.value}
+            aria-label={`Copy ${pattern.label} naming pattern`}
+          >
+            Copy
+          </button>
+        </div>
+        <code class='blog-copy-pattern__value'>{pattern.value}</code>
+        <p class='blog-copy-pattern__example'>Example: <code>{pattern.example}</code></p>
+      </article>
+    ))
+  }
+</div>
+
+<style is:global>
+  .blog-copy-patterns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+    margin: 1.25rem 0 2rem;
+  }
+
+  .blog-copy-pattern {
+    min-width: 0;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 0.85rem;
+    background: var(--card);
+  }
+
+  .blog-copy-pattern__head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .blog-copy-pattern__head div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .blog-copy-pattern__head span,
+  .blog-copy-pattern__example {
+    color: var(--muted-foreground);
+    font-size: 0.82rem;
+    line-height: 1.45;
+  }
+
+  .blog-copy-pattern__button {
+    flex: 0 0 auto;
+    padding: 0.38rem 0.65rem;
+    border: 1px solid color-mix(in srgb, var(--primary) 35%, var(--border));
+    border-radius: 9999px;
+    background: color-mix(in srgb, var(--primary) 8%, var(--card));
+    color: var(--primary);
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .blog-copy-pattern__button:hover {
+    background: color-mix(in srgb, var(--primary) 14%, var(--card));
+  }
+
+  .blog-copy-pattern__button[data-copy-state='copied'] {
+    border-color: color-mix(in srgb, #22c55e 45%, var(--border));
+    color: #15803d;
+  }
+
+  .blog-copy-pattern__value {
+    display: block;
+    overflow-x: auto;
+    padding: 0.65rem 0.75rem;
+    border-radius: 0.55rem;
+    background: color-mix(in srgb, var(--foreground) 5%, var(--card));
+    white-space: nowrap;
+  }
+
+  .blog-copy-pattern__example {
+    margin: 0.65rem 0 0;
+  }
+
+  @media (max-width: 640px) {
+    .blog-copy-patterns {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

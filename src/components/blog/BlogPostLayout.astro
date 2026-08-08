@@ -187,7 +187,11 @@ const breadcrumbItems = [
             {toc
               .filter((item: TocItem) => item.depth === 2)
               .map((item: TocItem) => (
-                <a class={styles.BlogPost__MobileTocLink} href={`#${item.slug}`}>
+                <a
+                  class={styles.BlogPost__MobileTocLink}
+                  href={`#${item.slug}`}
+                  data-article-toc-link
+                >
                   {item.text}
                 </a>
               ))}
@@ -217,6 +221,7 @@ const breadcrumbItems = [
                       item.depth === 3 ? styles.BlogPost__TocLink_subtle : '',
                     ].join(' ')}
                     href={`#${item.slug}`}
+                    data-article-toc-link
                   >
                     {item.text}
                   </a>
@@ -255,6 +260,7 @@ const breadcrumbItems = [
 
   <script>
     import { bindStoreLink, bindStoreLinks } from '@/utils/storeLinks';
+    import { trackAnalyticsEvent } from '@/utils/analytics';
 
     (() => {
       const detectDownloadOS = () => {
@@ -338,6 +344,60 @@ const breadcrumbItems = [
         });
 
       bindStoreLinks();
+
+      const analyticsWindow = window as Window & { __zushBlogAnalyticsBound?: boolean };
+      if (!analyticsWindow.__zushBlogAnalyticsBound) {
+        analyticsWindow.__zushBlogAnalyticsBound = true;
+
+        document.addEventListener('click', async (event) => {
+          const target = event.target instanceof Element ? event.target : null;
+          if (!target) return;
+
+          const tocLink = target.closest('[data-article-toc-link]');
+          if (tocLink instanceof HTMLAnchorElement) {
+            trackAnalyticsEvent('article_toc_click', {
+              article_path: window.location.pathname,
+              section_id: tocLink.hash.replace(/^#/, ''),
+            });
+          }
+
+          const articleCta = target.closest('[data-article-cta]');
+          if (articleCta instanceof HTMLAnchorElement) {
+            trackAnalyticsEvent('article_cta_click', {
+              article_path: window.location.pathname,
+              label: articleCta.dataset.articleCtaLabel || articleCta.textContent?.trim(),
+              placement: articleCta.dataset.articleCtaPlacement || 'unknown',
+              target_url: articleCta.href,
+            });
+          }
+
+          const copyButton = target.closest('[data-copy-pattern]');
+          if (!(copyButton instanceof HTMLButtonElement)) return;
+
+          const value = copyButton.dataset.copyValue;
+          if (!value) return;
+
+          try {
+            await navigator.clipboard.writeText(value);
+            copyButton.dataset.copyState = 'copied';
+            copyButton.textContent = 'Copied';
+            trackAnalyticsEvent('copy_naming_template', {
+              article_path: window.location.pathname,
+              label: copyButton.dataset.copyLabel || 'unknown',
+              value,
+            });
+            window.setTimeout(() => {
+              copyButton.dataset.copyState = '';
+              copyButton.textContent = 'Copy';
+            }, 1800);
+          } catch {
+            trackAnalyticsEvent('copy_naming_template_failed', {
+              article_path: window.location.pathname,
+              label: copyButton.dataset.copyLabel || 'unknown',
+            });
+          }
+        });
+      }
     })();
   </script>
 </BaseLayout>

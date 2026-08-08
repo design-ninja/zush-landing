@@ -46,7 +46,13 @@ const {
   <div class='blog-product-intro__links'>
     {
       links.map((link) => (
-        <a class='blog-product-intro__link' href={link.href}>
+        <a
+          class='blog-product-intro__link'
+          href={link.href}
+          data-article-cta
+          data-article-cta-label={link.label}
+          data-article-cta-placement='product-intro'
+        >
           {link.label}
           <span aria-hidden='true'>→</span>
         </a>

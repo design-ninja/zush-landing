@@ -107,6 +107,9 @@ const background = await getImage({
               data-download-os='mac'
               data-download-source={`blog-cta-${placement}`}
               data-download-channel='direct'
+              data-article-cta
+              data-article-cta-label='Download'
+              data-article-cta-placement={`download-${placement}`}
               href={getDownloadUrl('mac')}
             >
               <span class={styles.BlogCTA__ButtonIcon} data-blog-cta-icon='mac'>
@@ -163,6 +166,9 @@ const background = await getImage({
               data-download-os={platform === 'windows' ? 'windows' : 'mac'}
               data-download-source={`blog-cta-${placement}`}
               data-download-channel={platform === 'windows' ? 'microsoft-store' : 'direct'}
+              data-article-cta
+              data-article-cta-label='Download'
+              data-article-cta-placement={`download-${placement}`}
               rel={platform === 'windows' ? 'noopener noreferrer' : undefined}
               target={platform === 'windows' ? '_blank' : undefined}
             >

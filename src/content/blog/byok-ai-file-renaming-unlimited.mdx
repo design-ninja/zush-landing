@@ -1,6 +1,6 @@
 ---
-title: "BYOK AI File Renaming with Your Own API Key (2026)"
-description: "Use your own API key for AI file renaming in Zush. Compare Gemini, Groq, OpenAI, and Claude setup, privacy, pricing, the 50-rename free limit, and unlimited PRO."
+title: "BYOK AI File Renaming: Setup, Providers & Costs (2026)"
+description: "Set up BYOK file renaming with Gemini, Groq, OpenAI, or Claude. Compare provider costs, privacy, the 50-rename free limit, and unlimited PRO."
 date: "2026-03-23"
 slug: "byok-ai-file-renaming-unlimited"
 platform: "general"
@@ -8,18 +8,37 @@ topic: "byok"
 tags:
   - "AI File Renaming"
   - "BYOK"
-tldr: "Zush BYOK lets you connect your own Gemini, Groq, OpenAI, or Claude key on every plan. FREE includes 50 renames shared across Cloud AI, BYOK, and Offline AI; PRO removes the Zush rename limit. Provider usage is billed separately."
-reviewed: "2026-08-04"
+tldr: "Zush BYOK supports Gemini, Groq, OpenAI, and Claude keys. BYOK is available on FREE, but the 50 shared renames still apply; unlimited Zush renames require PRO, and provider usage is billed separately."
+reviewed: "2026-08-08"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: BYOK (Bring Your Own Key) lets you connect your own OpenAI, Gemini, Groq, or Claude API key to Zush so you can use your preferred provider account and pay the provider's metered API cost. The final cost depends on provider, model, file size, and token usage. If you are deciding between BYOK, built-in cloud credits, and local Ollama processing, start with [Cloud AI vs Local AI File Renaming](/blog/cloud-vs-local-ai-file-renaming).
+Quick answer: BYOK (Bring Your Own Key) lets you connect your own OpenAI, Gemini, Groq, or Claude API key to Zush and pay that provider directly. **BYOK does not make the FREE plan unlimited:** FREE still includes 50 shared AI renames, while PRO removes the Zush rename limit. Provider quotas and charges remain separate.
 
 Pricing and provider notes last checked June 12, 2026.
 
-Zush includes 50 free AI renames shared across Cloud AI, BYOK, and Offline AI. Both PRO plans remove that limit for $10/month or $48 one-time. BYOK is available on every plan when you want provider-level control or prefer to pay your AI provider directly.
+If you are deciding between BYOK, built-in cloud credits, and local Ollama processing, start with [Cloud AI vs Local AI File Renaming](/blog/cloud-vs-local-ai-file-renaming).
 
-BYOK (Bring Your Own Key) means you connect your personal API key from a supported AI provider to [Zush](/). In current Mac builds, the key is stored locally in macOS Keychain. When BYOK is enabled, Zush relays the analysis request through its backend to your selected provider using your key for that request, the provider returns a descriptive name, and you pay the provider directly at their standard API rates. There is no Zush markup.
+## Choose a BYOK provider
+
+| Provider | Best starting point | Free API tier | Typical reason to choose it |
+|---|---|---|---|
+| **Gemini** | Most first-time BYOK users | Yes, subject to Google limits | Low-cost multimodal image and document analysis |
+| **Groq** | Speed-focused workflows | Yes, subject to Groq limits | Fast inference for supported models |
+| **OpenAI** | Existing OpenAI API users | Usually paid usage | Familiar GPT models and account controls |
+| **Claude** | Detailed visual descriptions | Usually paid usage | Specific descriptions for visually complex files |
+
+Provider plans, models, prices, and rate limits can change. Confirm the current terms in the provider dashboard before processing a large batch.
+
+## Five-minute BYOK setup
+
+1. Create an API key in the provider's official dashboard.
+2. Open Zush and go to **Settings → BYOK / API Key**.
+3. Select the provider and paste the key.
+4. Run the connection test.
+5. Add a small sample batch and review the proposed filenames before applying them.
+
+In current Mac builds, the key is stored locally in macOS Keychain. When BYOK is enabled, Zush relays the analysis request through its backend to your selected provider using your key for that request. The provider returns the result and bills your account at its standard API rates; Zush does not add a provider-usage markup.
 
 
 <BlogProductIntro

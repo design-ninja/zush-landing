@@ -1,7 +1,9 @@
 ---
 import { getShowcaseVideoBySrc, resolveShowcaseVideoMedia } from '@/data/showcaseMedia';
 
-const { src = '', alt = '', ...props } = Astro.props;
+const { src = '', alt = '', priority = false, ...props } = Astro.props;
+const loading = priority ? 'eager' : 'lazy';
+const fetchpriority = priority ? 'high' : undefined;
 
 if (typeof src !== 'string') {
   throw new Error('BlogMarkdownImage requires a string src');
@@ -77,8 +79,9 @@ function getThemedScreenshot(src: string) {
           aria-hidden='true'
           class='markdown-video-poster markdown-video-poster--light'
           decoding='async'
+          fetchpriority={fetchpriority}
           height='720'
-          loading='lazy'
+          loading={loading}
           src={resolveShowcaseVideoMedia(showcaseVideo, 'light').poster}
           width='1280'
         />
@@ -101,8 +104,9 @@ function getThemedScreenshot(src: string) {
           aria-hidden='true'
           class='markdown-video-poster markdown-video-poster--dark'
           decoding='async'
+          fetchpriority={fetchpriority}
           height='720'
-          loading='lazy'
+          loading={loading}
           src={resolveShowcaseVideoMedia(showcaseVideo, 'dark').poster}
           width='1280'
         />
@@ -117,8 +121,9 @@ function getThemedScreenshot(src: string) {
         alt={alt}
         class='markdown-image markdown-image--screenshot markdown-image--light'
         decoding='async'
+        fetchpriority={fetchpriority}
         height={themedScreenshot.height}
-        loading='lazy'
+        loading={loading}
         src={src}
         width={themedScreenshot.width}
       />
@@ -128,8 +133,9 @@ function getThemedScreenshot(src: string) {
         aria-hidden='true'
         class='markdown-image markdown-image--screenshot markdown-image--dark'
         decoding='async'
+        fetchpriority={fetchpriority}
         height={themedScreenshot.height}
-        loading='lazy'
+        loading={loading}
         src={themedScreenshot.darkSrc}
         width={themedScreenshot.width}
       />
@@ -142,7 +148,8 @@ function getThemedScreenshot(src: string) {
         alt={alt}
         class='markdown-image'
         decoding='async'
-        loading='lazy'
+        fetchpriority={fetchpriority}
+        loading={loading}
         src={src}
       />
       {alt && <figcaption>{alt}</figcaption>}

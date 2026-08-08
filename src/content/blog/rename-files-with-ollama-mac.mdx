@@ -9,12 +9,27 @@ tags:
   - "AI File Renaming"
   - "Ollama"
 tldr: "To rename files with Ollama on Mac, install Ollama, pull a vision-capable model, confirm the local service is running, enable Offline AI mode in Zush, and test with a small batch before using it on important folders."
-reviewed: "2026-07-29"
+reviewed: "2026-08-08"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
 Quick answer: rename files locally on Mac with Ollama by installing Ollama, pulling a vision-capable model such as `qwen2.5vl:3b`, `gemma3:4b`, or `granite3.2-vision:2b`, then enabling Offline AI mode in Zush. Supported analysis content stays on your device and there are no provider API costs.
+
+## Choose your Ollama task
+
+| What you want to do | Start here |
+| --- | --- |
+| Use Ollama to generate descriptive filenames | [Follow the five-step local setup](#rename-files-with-ollama-on-mac-quick-setup) |
+| Change the name of an Ollama model | [Use `ollama cp`, then remove the old alias](#rename-an-ollama-model-with-ollama-cp) |
+
+## Rename files with Ollama on Mac: quick setup
+
+1. Install and open [Ollama for macOS](https://ollama.com/download).
+2. Pull one vision model: `ollama pull qwen2.5vl:3b`.
+3. Confirm it is available with `ollama list`.
+4. In Zush, open **BYOK / Offline**, refresh the model list, select the model, and run the connection test.
+5. Preview a small batch before applying names to an important folder.
 
 Mac users finally have a practical way to rename files with AI without routing supported analysis content through a cloud provider. Zush Offline AI mode connects to Ollama, which runs a local model on your Mac and returns filename suggestions for screenshots, videos, images, PDFs, and supported documents.
 
@@ -31,7 +46,7 @@ This guide is the hands-on Mac setup tutorial for Ollama: install, pull a model,
   ]}
 />
 
-## Looking to rename an Ollama model instead?
+## Rename an Ollama model with ollama cp
 
 If you arrived here searching for how to rename a model in Ollama, that is a different task: Ollama has no dedicated rename command. The supported approach is to copy the model under the name you want, then remove the original.
 
