@@ -1,0 +1,204 @@
+---
+title: "Real Estate Document Naming Convention: Examples"
+description: "A real estate document naming convention for agreements, inspections, title files, disclosures, and closings, with property-based filename examples."
+date: "2026-08-10"
+slug: "real-estate-document-naming-convention"
+platform: "general"
+topic: "naming"
+tags:
+  - "File Naming"
+  - "PDFs & Documents"
+  - "File Organization"
+tldr: "Name transaction documents Address - YYYY-MM-DD - DocumentType - Party - Status.ext. The address keeps every deal file together, the document date builds a timeline, and explicit type and status labels distinguish a draft offer from an executed agreement."
+reviewed: "2026-08-10"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Quick answer: name real estate documents `PropertyAddress - YYYY-MM-DD - DocumentType - Party - Status.ext`. A signed purchase agreement might become `742 Evergreen Terrace - 2026-06-12 - Purchase Agreement - Johnson to Smith - Executed.pdf`. The property address keeps the transaction together, the document date creates a useful timeline, and the type and status tell you which file matters without opening it.
+
+This guide is about the filename convention itself. For the folder structure around an active deal, use the [real estate transaction file organization guide](/blog/how-to-organize-real-estate-transaction-files). To automate generic e-signature downloads, see [how to rename DocuSign files by property address](/blog/rename-docusign-files-by-property-address). The complete product workflow is on [Zush for real estate professionals](/for-real-estate).
+
+<BlogProductIntro
+  title="Turn portal IDs into property-ready filenames"
+  description="Zush reads agreements, disclosures, inspection reports, title files, appraisals, scans, and property photos, then applies the address-based convention you define. Preview first, undo after, and use Offline AI when files need to stay on the machine."
+  links={[
+    { href: '/for-real-estate', label: 'Zush for real estate professionals' },
+    { href: '/rename-pdf-with-ai', label: 'AI PDF renamer' },
+    { href: '/rename-scanned-documents', label: 'Rename scanned documents' },
+    { href: '/docs/custom-ai-blocks', label: 'Custom AI Blocks' },
+  ]}
+/>
+
+<BlogCTA placement='inline' platform='general' />
+
+## The recommended field order
+
+Use this as the full pattern, then remove fields that do not help your brokerage:
+
+```
+PropertyAddress - YYYY-MM-DD - DocumentType - Party - Status.ext
+```
+
+Examples:
+
+```
+742 Evergreen Terrace - 2026-06-01 - Offer - Johnson - Submitted.pdf
+742 Evergreen Terrace - 2026-06-03 - Counteroffer - Smith - Signed.pdf
+742 Evergreen Terrace - 2026-06-08 - Inspection Report - Allstate Inspections.pdf
+742 Evergreen Terrace - 2026-06-12 - Purchase Agreement - Johnson to Smith - Executed.pdf
+742 Evergreen Terrace - 2026-07-02 - Closing Disclosure - Final.pdf
+```
+
+The order matters. A folder sorted by name groups every file for the address first. Within that group, the ISO date creates the transaction chronology. The document type and status resolve the common question: is this the offer, the counter, or the copy everyone signed?
+
+## 1. Start with one normalized property address
+
+The address is the transaction key. Pick one form and keep it identical across agreements, inspections, title records, lender documents, closing files, and property media.
+
+Good:
+
+```
+742 Evergreen Terrace
+88 Harbor Lane Unit 4B
+1520 Oak Street
+```
+
+Avoid mixing `742 Evergreen Ter`, `742 Evergreen Terrace`, and `742 Evergreen Tr.` in the same deal. Search treats those as different strings, and the folder stops grouping cleanly. If a transaction ID or MLS number is more stable in your office, put it before the address:
+
+```
+TX-2026-0184 - 742 Evergreen Terrace - 2026-06-12 - Purchase Agreement.pdf
+```
+
+## 2. Use the document date, not the download date
+
+Use the date shown on the document: execution date for a signed agreement, report date for an inspection, issue date for a title commitment, or effective date for a disclosure. The moment someone downloaded the PDF does not describe the transaction.
+
+Write dates as `YYYY-MM-DD`. That format sorts chronologically in Finder, File Explorer, Dropbox, OneDrive, and most transaction exports without depending on regional date settings.
+
+## 3. Keep document types controlled
+
+A short fixed vocabulary is more useful than free-form descriptions. A purchase workflow might use:
+
+- Offer
+- Counteroffer
+- Purchase Agreement
+- Addendum
+- Seller Disclosure
+- Inspection Report
+- Repair Request
+- Appraisal
+- Title Commitment
+- Closing Disclosure
+- Settlement Statement
+- Recorded Deed
+
+Choose one label per concept. If half the team uses `Inspection`, another uses `Home Inspection`, and a third uses `Inspection Report`, search and sorting become less predictable.
+
+## 4. Add parties only when they remove ambiguity
+
+Party names help when a folder holds several offers, multiple buyers, or documents exchanged between a buyer and seller. They add less value inside a transaction folder that already belongs to one client.
+
+Useful patterns include:
+
+```
+742 Evergreen Terrace - Offer - Johnson - Submitted.pdf
+742 Evergreen Terrace - Purchase Agreement - Johnson to Smith - Executed.pdf
+```
+
+Keep sensitive details out of the filename. A filename appears in sync logs, email attachment lines, search indexes, and recent-file lists. The property, document type, and party are usually enough; financial account numbers, government identifiers, access codes, and private negotiation notes belong inside the document.
+
+## 5. Make status factual
+
+Use status labels that describe what happened:
+
+- Draft
+- Submitted
+- Countered
+- Signed
+- Executed
+- Superseded
+- Recorded
+
+Avoid `final`, `final2`, and `final_revised`. A transaction changes too often for “final” to remain true. `Executed` and `Recorded` describe actual milestones and remain meaningful years later.
+
+When multiple drafts must remain together, add a zero-padded version before the status:
+
+```
+742 Evergreen Terrace - Purchase Agreement - v01 - Draft.pdf
+742 Evergreen Terrace - Purchase Agreement - v02 - Countered.pdf
+742 Evergreen Terrace - Purchase Agreement - Executed.pdf
+```
+
+## Naming examples by document group
+
+### Agreements and addenda
+
+```
+742 Evergreen Terrace - 2026-06-12 - Purchase Agreement - Executed.pdf
+742 Evergreen Terrace - 2026-06-15 - Financing Addendum - Signed.pdf
+```
+
+### Inspections and repairs
+
+```
+742 Evergreen Terrace - 2026-06-08 - Inspection Report.pdf
+742 Evergreen Terrace - 2026-06-10 - Repair Request - Submitted.pdf
+742 Evergreen Terrace - 2026-06-17 - Roof Repair Receipt.pdf
+```
+
+### Title and closing
+
+```
+742 Evergreen Terrace - 2026-06-05 - Title Commitment.pdf
+742 Evergreen Terrace - 2026-07-02 - Closing Disclosure - Final.pdf
+742 Evergreen Terrace - 2026-07-03 - Deed - Recorded.pdf
+```
+
+### Property photos
+
+Property media needs different fields but should keep the same normalized address:
+
+```
+88 Harbor Lane - Exterior Front - Day - 01.jpg
+88 Harbor Lane - Kitchen - Wide - 01.jpg
+88 Harbor Lane - Inspection - Water Heater - 01.jpg
+```
+
+Use a separate photo Template rather than forcing camera files into the document pattern. Zush can rename supported [photos by content](/rename-photos-with-ai) and keep the address as a shared field across both workflows.
+
+## Apply the convention without typing every name
+
+Incoming transaction files rarely arrive ready for the pattern. E-signature downloads use envelope IDs, title portals return internal references, inspectors send `report.pdf`, and office scanners produce `Scan0001.pdf`.
+
+In Zush, build one real estate Template with the standard Naming Blocks plus Custom AI Blocks for fields such as:
+
+- the full property address in the brokerage’s preferred format;
+- the real estate document type from an approved list;
+- the execution, inspection, issue, or closing date shown on the document;
+- the buyer, seller, agent, or title company when needed;
+- the transaction status, but only when the document supports it.
+
+Run the Template on a copied transaction folder first. Review every proposed filename before applying it. When the convention is reliable, use [folder monitoring](/docs/folder-monitoring) on the intake location where downloads and scans arrive.
+
+## FAQ
+
+### What is the best naming convention for real estate documents?
+
+Use property address, ISO document date, controlled document type, optional party, and factual status: `Address - YYYY-MM-DD - DocumentType - Party - Status.ext`. This groups a transaction, sorts it chronologically, and distinguishes drafts from signed or recorded copies.
+
+### Should the property address or client name come first?
+
+Use the property address first for transaction work because one client may buy or sell more than one property. Add the client or party later only when it resolves ambiguity. A brokerage transaction ID can precede the address when it is the office’s primary reference.
+
+### How should DocuSign filenames be renamed?
+
+Replace the envelope-style filename with the property address, actual document type, execution date, and status found inside the PDF. The [DocuSign renaming guide](/blog/rename-docusign-files-by-property-address) covers the intake and automation steps separately.
+
+### Should listing photos use the same convention as transaction PDFs?
+
+They should share the normalized property address but use media-specific fields such as room, view, shot type, and sequence number. Keep a photo Template separate from the transaction-document Template.
+
+### Can AI apply the convention to an old closing archive?
+
+Yes. Run a content-aware naming Template on a copied archive, review the proposed property, type, and date fields, then apply the batch with undo history. Handle one address or one year at a time so exceptions remain easy to verify.

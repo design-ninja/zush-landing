@@ -1,7 +1,7 @@
 import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 
 export const ACCOUNTANTS_PAGE_PATH = '/for-accountants';
-export const ACCOUNTANTS_PAGE_TITLE = 'AI File Renamer for Accountants and Bookkeepers';
+export const ACCOUNTANTS_PAGE_TITLE = 'Accounting Document Management with AI File Renaming';
 
 export const ACCOUNTANTS_HERO = {
   eyebrow: 'AI file renamer for accountants',
@@ -192,6 +192,11 @@ export const ACCOUNTANTS_TESTIMONIALS = [
 ] as const;
 
 export const ACCOUNTANTS_FAQ = [
+  {
+    question: 'Does Zush replace accounting document management software?',
+    answer:
+      'No. Zush is the file-naming layer around your existing accounting stack. It renames invoices, receipts, statements, scans, downloads, and exports in place, but it does not store client records, control access, approve bills, post transactions, or replace a document management system, QuickBooks, Xero, or your firm’s portal.',
+  },
   {
     question: 'How does Zush help accountants and bookkeepers?',
     answer:

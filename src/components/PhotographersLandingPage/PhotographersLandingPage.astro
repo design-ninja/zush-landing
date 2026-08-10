@@ -13,6 +13,7 @@ import FeatureAnimation from '@/components/Features/FeatureAnimation';
 import featureStyles from '@/components/Features/Features.module.scss';
 import Heading from '@/components/Heading';
 import Pricing from '@/components/Pricing/Pricing.astro';
+import ProfessionGuides from '@/components/ProfessionGuides/ProfessionGuides.astro';
 import Text from '@/components/Text';
 import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module.scss';
 import testimonialStyles from '@/components/Testimonials/Testimonials.module.scss';
@@ -238,6 +239,18 @@ const AUDIENCE_IMAGES = {
   items={PHOTOGRAPHERS_FAQ}
   title="Photo and video file renaming, answered"
   description="How Zush handles RAW photos, video clips, Templates, processing modes, batch review, existing creative tools, and undo."
+/>
+
+<ProfessionGuides
+  id="photography-guides"
+  title="Photo and video organization guides"
+  description="Naming and archive workflows for RAW shoots, photo libraries, client exports, and video clips."
+  slugs={[
+    'ai-photo-renamer-guide',
+    'best-ways-to-organize-photos-on-mac',
+    'rename-video-files-with-ai',
+    'digital-photo-organization-mistakes-to-avoid',
+  ]}
 />
 
 <div class={styles.FinalCta}>

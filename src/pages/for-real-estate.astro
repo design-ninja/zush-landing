@@ -1,22 +1,23 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import MedicalLandingPage from '@/components/MedicalLandingPage/MedicalLandingPage.astro';
-import { MEDICAL_JSON_LD, MEDICAL_PAGE_PATH, MEDICAL_PAGE_TITLE } from '@/data/medicalLanding';
+import RealEstateLandingPage from '@/components/RealEstateLandingPage/RealEstateLandingPage.astro';
+import {
+  REAL_ESTATE_JSON_LD,
+  REAL_ESTATE_PAGE_PATH,
+  REAL_ESTATE_PAGE_TITLE,
+} from '@/data/realEstateLanding';
 import { getSeoForPath } from '@/seo/config';
 import { getCopy } from '@/i18n/copy';
 import { buildFeatureBreadcrumbJsonLd, buildWebPageJsonLd } from '@/utils/jsonLd';
 
-const seo = getSeoForPath(MEDICAL_PAGE_PATH);
+const seo = getSeoForPath(REAL_ESTATE_PAGE_PATH);
 const header = getCopy('en').header;
 const pageJsonLd = buildWebPageJsonLd({
-  pagePath: MEDICAL_PAGE_PATH,
-  title: MEDICAL_PAGE_TITLE,
+  pagePath: REAL_ESTATE_PAGE_PATH,
+  title: REAL_ESTATE_PAGE_TITLE,
   description: seo.description,
-  mainEntityId: `https://zushapp.com${MEDICAL_PAGE_PATH}#software`,
 });
 
-// Nav points at this landing's own sections, so the links scroll in-page
-// instead of jumping back to the homepage.
 const headerNav = [
   { href: '#fields', label: header.features },
   { href: '#privacy', label: header.security },
@@ -32,9 +33,9 @@ const headerNav = [
   disableTopOffset
   jsonLd={[
     pageJsonLd,
-    MEDICAL_JSON_LD,
-    buildFeatureBreadcrumbJsonLd(MEDICAL_PAGE_TITLE, MEDICAL_PAGE_PATH),
+    REAL_ESTATE_JSON_LD,
+    buildFeatureBreadcrumbJsonLd(REAL_ESTATE_PAGE_TITLE, REAL_ESTATE_PAGE_PATH),
   ]}
 >
-  <MedicalLandingPage />
+  <RealEstateLandingPage />
 </BaseLayout>

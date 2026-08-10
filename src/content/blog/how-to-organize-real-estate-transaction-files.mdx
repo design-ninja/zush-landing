@@ -1,0 +1,185 @@
+---
+title: "How to Organize Real Estate Transaction Files"
+description: "A practical folder system for real estate transaction files: intake, contract, inspections, title, lender documents, closing package, and closed-deal archive."
+date: "2026-08-10"
+slug: "how-to-organize-real-estate-transaction-files"
+platform: "general"
+topic: "organization"
+tags:
+  - "File Organization"
+  - "PDFs & Documents"
+  - "Automation"
+tldr: "Create one root folder per property transaction, separate intake from verified records, group documents by transaction stage, and move the completed package into a read-only closed-deal archive. Use property-based filenames so files retain context when emailed or exported."
+reviewed: "2026-08-10"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Quick answer: create one root folder per property transaction, keep an `00 Intake` folder for unreviewed downloads, organize verified files by transaction stage, and move the final package into a closed-deal archive. The folder structure answers where a file belongs; a [property-based naming convention](/blog/real-estate-document-naming-convention) makes each file understandable when it leaves that folder.
+
+This guide covers the folder and handoff workflow. For automatic cleanup of e-signature downloads, see [rename DocuSign files by property address](/blog/rename-docusign-files-by-property-address). For Zush’s complete real estate workflow, including property media and Offline AI, visit [Zush for real estate professionals](/for-real-estate).
+
+<BlogProductIntro
+  title="Give every transaction file an address before it is filed"
+  description="Zush reads downloads, scans, inspection reports, title files, appraisals, closing documents, and property photos, then renames them to a reusable address-based Template. It works beside your existing transaction platform and folders."
+  links={[
+    { href: '/for-real-estate', label: 'Zush for real estate professionals' },
+    { href: '/docs/folder-monitoring', label: 'Folder monitoring' },
+    { href: '/rename-scanned-documents', label: 'Rename scanned documents' },
+    { href: '/docs/privacy-security', label: 'Privacy and processing modes' },
+  ]}
+/>
+
+<BlogCTA placement='inline' platform='general' />
+
+## The transaction folder structure
+
+Use one root folder for one deal. Lead with a brokerage transaction ID if your system has one, then the normalized property address:
+
+```
+Active Transactions/
+  TX-2026-0184 - 742 Evergreen Terrace/
+    00 Intake/
+    01 Agency and Client/
+    02 Offers and Contract/
+    03 Disclosures/
+    04 Inspections and Repairs/
+    05 Financing and Appraisal/
+    06 Title and Escrow/
+    07 Closing Package/
+    08 Property Media/
+```
+
+The numbers keep folders in transaction order. `00 Intake` is intentionally first because it is a queue, not an archive. A file stays there until someone has identified it, checked that it belongs to the property, and given it a useful name.
+
+Do not create a deep tree for its own sake. If a small transaction has twelve documents, combine stages. The structure should reduce decisions, not add them.
+
+## 1. Separate intake from the official transaction record
+
+Downloads, email attachments, scanner output, inspection photos, and lender requests arrive with weak filenames and uncertain status. Putting them directly into the final folders creates two problems: duplicates look authoritative, and nobody can tell what has been reviewed.
+
+Route new files into one staging location:
+
+```
+00 Intake/
+  DocuSign_892347234.pdf
+  download (8).pdf
+  Scan_20260605_094511.pdf
+  IMG_4821.jpg
+```
+
+The review step should answer four questions:
+
+1. Which property does this belong to?
+2. What kind of document or media is it?
+3. Is it a draft, submitted copy, executed copy, or superseded version?
+4. Which stage folder should hold the accepted copy?
+
+Zush handles the identification and naming layer. It does not decide whether a document satisfies a brokerage checklist, replace a transaction coordinator, or move files into stage folders.
+
+## 2. Keep agreements and amendments together
+
+Offers, counters, addenda, and the executed purchase agreement tell one contractual story. Keep them in `02 Offers and Contract`, with factual statuses in the filenames:
+
+```
+02 Offers and Contract/
+  742 Evergreen Terrace - 2026-06-01 - Offer - Submitted.pdf
+  742 Evergreen Terrace - 2026-06-03 - Counteroffer - Signed.pdf
+  742 Evergreen Terrace - 2026-06-12 - Purchase Agreement - Executed.pdf
+  742 Evergreen Terrace - 2026-06-15 - Financing Addendum - Signed.pdf
+```
+
+Keep superseded drafts only when policy or the transaction requires them. Mark them clearly instead of leaving several identical `final` files in the active folder. Your broker, regulator, insurer, or counsel determines retention requirements; the folder system only makes the chosen policy easier to apply.
+
+## 3. Group inspections with the resulting repair record
+
+An inspection workflow usually produces more than one report. The useful unit is the sequence from finding to resolution:
+
+```
+04 Inspections and Repairs/
+  742 Evergreen Terrace - 2026-06-08 - Inspection Report.pdf
+  742 Evergreen Terrace - 2026-06-10 - Repair Request - Submitted.pdf
+  742 Evergreen Terrace - 2026-06-14 - Seller Response - Signed.pdf
+  742 Evergreen Terrace - 2026-06-17 - Roof Repair Receipt.pdf
+```
+
+Property photos taken during inspection can stay in a subfolder here, while polished listing media belongs in `08 Property Media`. Both should keep the normalized address so a copied image still identifies its property.
+
+## 4. Keep lender, title, and escrow files distinct
+
+Financing, title, and escrow involve different senders and different deadlines. Separate folders prevent a new title commitment from disappearing among lender requests, and they make the closing package easier to assemble.
+
+```
+05 Financing and Appraisal/
+  742 Evergreen Terrace - 2026-06-18 - Appraisal.pdf
+  742 Evergreen Terrace - 2026-06-22 - Loan Approval Letter.pdf
+
+06 Title and Escrow/
+  742 Evergreen Terrace - 2026-06-05 - Title Commitment.pdf
+  742 Evergreen Terrace - 2026-06-25 - Settlement Statement - Draft.pdf
+```
+
+Wire instructions and documents containing account information need extra care. Keep unnecessary financial details out of filenames, follow the brokerage’s approved delivery channel, and restrict access through the system that stores the files. A file renamer does not provide access control.
+
+## 5. Build the closing package from verified copies
+
+`07 Closing Package` should contain only the accepted copies used for closing and post-close reference. It is not another downloads folder.
+
+A package may include the executed agreement and addenda, required disclosures, inspection resolution, appraisal, title documents, closing disclosure, settlement statement, and recorded documents. The exact checklist depends on the deal, brokerage, and jurisdiction.
+
+Keep the package flat when possible. Consistent names make the set readable without another index:
+
+```
+07 Closing Package/
+  742 Evergreen Terrace - 2026-06-12 - Purchase Agreement - Executed.pdf
+  742 Evergreen Terrace - 2026-06-15 - Financing Addendum - Signed.pdf
+  742 Evergreen Terrace - 2026-06-18 - Appraisal.pdf
+  742 Evergreen Terrace - 2026-07-02 - Closing Disclosure - Final.pdf
+  742 Evergreen Terrace - 2026-07-03 - Deed - Recorded.pdf
+```
+
+## 6. Close the deal without destroying the working record
+
+After the transaction closes:
+
+1. Finish the required brokerage or regulatory checklist in the system responsible for it.
+2. Confirm that the archive contains accepted copies rather than unresolved downloads.
+3. Remove unnecessary duplicates according to policy.
+4. Move the root folder from `Active Transactions` to the appropriate year in `Closed Transactions`.
+5. Apply the organization’s access, backup, and retention rules.
+
+```
+Closed Transactions/
+  2026/
+    TX-2026-0184 - 742 Evergreen Terrace/
+```
+
+Do not treat a local folder as the only official record unless that matches the brokerage’s policy. Zush works on the file layer around a transaction system; it does not replace the system’s permissions, audit trail, retention controls, or compliance workflow.
+
+## Automate the repetitive intake step
+
+A folder structure fails when incoming files never receive enough context to leave `00 Intake`. Use a Zush Template that extracts the property address, document date, controlled type, party, status, and transaction ID. Run it first on a copied batch, then point [folder monitoring](/docs/folder-monitoring) at the intake folder once the results are dependable.
+
+For files with client, financial, or transaction details, choose the processing mode deliberately. Offline AI analyzes supported files with local models on Mac or Windows, while BYOK uses the provider account controlled by the brokerage. The [privacy documentation](/docs/privacy-security) explains what each mode processes.
+
+## FAQ
+
+### What folders should a real estate transaction have?
+
+Start with Intake, Agency and Client, Offers and Contract, Disclosures, Inspections and Repairs, Financing and Appraisal, Title and Escrow, Closing Package, and Property Media. Combine stages for simple deals rather than maintaining empty folders.
+
+### Should transaction files be organized by client or property?
+
+Use one root folder per property transaction. A client may participate in several transactions, while agreements, inspections, title records, and photos usually belong to one property and one deal. Add a transaction ID when the brokerage uses one.
+
+### Where should DocuSign downloads go first?
+
+Put them in `00 Intake` until the property, document type, parties, execution date, and status have been verified. The [DocuSign file renaming guide](/blog/rename-docusign-files-by-property-address) explains how to automate that step without claiming a native integration.
+
+### Should property photos live with transaction documents?
+
+Keep listing and inspection media in a dedicated media folder under the same property root. Use a photo-specific naming Template, but retain the same normalized address used by the PDFs.
+
+### Does this replace a transaction management system?
+
+No. The folder workflow covers files that arrive before, beside, or outside a transaction system. Deadlines, permissions, signatures, compliance checklists, communication, and the official transaction record remain in the systems your brokerage approves.

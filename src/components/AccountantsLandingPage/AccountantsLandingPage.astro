@@ -13,6 +13,7 @@ import FeatureAnimation from '@/components/Features/FeatureAnimation';
 import featureStyles from '@/components/Features/Features.module.scss';
 import Heading from '@/components/Heading';
 import Pricing from '@/components/Pricing/Pricing.astro';
+import ProfessionGuides from '@/components/ProfessionGuides/ProfessionGuides.astro';
 import StarRating from '@/components/StarRating';
 import Text from '@/components/Text';
 import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module.scss';
@@ -244,6 +245,18 @@ const AUDIENCE_IMAGES = {
   items={ACCOUNTANTS_FAQ}
   title='Accounting file renaming, answered'
   description='How client Templates, folder monitoring, local Offline AI, BYOK, preview, undo, and unmetered renaming fit an accounting document workflow.'
+/>
+
+<ProfessionGuides
+  id="accounting-guides"
+  title="Accounting document guides"
+  description="Naming conventions and intake workflows for invoices, receipts, tax forms, and the files that sit around QuickBooks or Xero."
+  slugs={[
+    'invoice-file-naming-convention',
+    'automatically-rename-invoices-ai',
+    'how-to-organize-invoices-and-receipts',
+    'rename-invoices-for-quickbooks-xero',
+  ]}
 />
 
 <div class={styles.FinalCta}>

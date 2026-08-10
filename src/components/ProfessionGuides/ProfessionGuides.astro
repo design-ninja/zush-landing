@@ -1,0 +1,59 @@
+---
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
+import BlogPostCard from '@/components/blog/BlogPostCard.astro';
+import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module.scss';
+import { getAllPosts } from '@/data/blog';
+import styles from './ProfessionGuides.module.scss';
+
+interface Props {
+  id: string;
+  title: string;
+  description: string;
+  slugs: readonly string[];
+}
+
+const { id, title, description, slugs } = Astro.props as Props;
+const posts = await getAllPosts();
+const guides = slugs.map((slug) => {
+  const post = posts.find((item) => item.slug === slug);
+
+  if (!post) {
+    throw new Error(`ProfessionGuides: missing blog post for slug "${slug}"`);
+  }
+
+  return post;
+});
+---
+
+<section class={styles.Guides} aria-labelledby={`${id}-title`}>
+  <div class={styles.Guides__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading
+        as="h2"
+        align="center"
+        id={`${id}-title`}
+        className={sectionHeaderStyles.SectionHeader__Title}
+      >
+        {title}
+      </Heading>
+      <Text
+        as="p"
+        size="lg"
+        color="subtle"
+        align="center"
+        className={sectionHeaderStyles.SectionHeader__Description}
+      >
+        {description}
+      </Text>
+    </div>
+
+    <div class={styles.Guides__List}>
+      {guides.map((post) => <BlogPostCard post={post} />)}
+    </div>
+
+    <div class={styles.Guides__Action}>
+      <a class={styles.Guides__ActionLink} href="/blog">Browse all Zush guides</a>
+    </div>
+  </div>
+</section>
