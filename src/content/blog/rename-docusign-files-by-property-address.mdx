@@ -1,0 +1,175 @@
+---
+title: "Rename DocuSign Files by Property Address Automatically"
+description: "Rename DocuSign PDF downloads by property address, document type, execution date, parties, and status with a reviewed AI file-renaming workflow."
+date: "2026-08-10"
+slug: "rename-docusign-files-by-property-address"
+platform: "general"
+topic: "automation"
+tags:
+  - "Automation"
+  - "PDFs & Documents"
+  - "File Naming"
+tldr: "Save DocuSign PDFs into one intake folder, use a Template that extracts property address, document type, execution date, parties, and status, then review the proposed filenames before applying them. Zush renames the downloaded files in place and does not require a native DocuSign integration."
+reviewed: "2026-08-10"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Quick answer: save DocuSign PDFs into one intake folder, then run a Zush Template that extracts the property address, document type, execution date, parties, and status from each PDF. Review the proposed filenames before applying them. `DocuSign_892347234.pdf` can become `742 Evergreen Terrace - Purchase Agreement - Executed - 2026-06-12.pdf` without a native DocuSign integration.
+
+This article covers the automation step for e-signature downloads. Use the [real estate document naming convention](/blog/real-estate-document-naming-convention) to decide the field order first. Use the [transaction file organization guide](/blog/how-to-organize-real-estate-transaction-files) for the folders that receive the renamed files. The full workflow is on [Zush for real estate professionals](/for-real-estate).
+
+<BlogProductIntro
+  title="Make every e-signature download identify its property"
+  description="Zush reads downloaded agreement PDFs, extracts the fields in your real estate Template, and proposes property-ready filenames in a batch you can inspect and undo. Files remain in the folders you already use."
+  links={[
+    { href: '/for-real-estate', label: 'Zush for real estate professionals' },
+    { href: '/rename-pdf-with-ai', label: 'AI PDF renamer' },
+    { href: '/docs/folder-monitoring', label: 'Folder monitoring' },
+    { href: '/docs/templates', label: 'Build a Template' },
+  ]}
+/>
+
+<BlogCTA placement='inline' platform='general' />
+
+## Why DocuSign download names become a filing problem
+
+An e-signature service needs a unique envelope or document identifier. An agent needs to know which property, agreement, parties, and version a PDF represents. Those are different naming jobs.
+
+A downloads folder can quickly contain files like:
+
+```
+DocuSign_892347234.pdf
+DocuSign_893118476.pdf
+DocuSign_891005823.pdf
+Complete_with_DocuSign_Agreement.pdf
+Complete_with_DocuSign_Agreement (1).pdf
+```
+
+The files are valid, but the names cannot answer “which one is the executed purchase agreement for 742 Evergreen Terrace?” Search also has little useful filename text to match.
+
+The fix is not a giant manual lookup table. The property address, title, dates, and parties already appear inside the signed PDF. A content-aware naming step turns that information into the filename.
+
+## Step 1: Choose the exact output pattern
+
+For transaction agreements, start with:
+
+```
+PropertyAddress - DocumentType - Status - YYYY-MM-DD.ext
+```
+
+Add parties when a property folder can contain several offers:
+
+```
+PropertyAddress - DocumentType - Buyer to Seller - Status - YYYY-MM-DD.ext
+```
+
+Examples:
+
+```
+742 Evergreen Terrace - Offer - Johnson - Submitted - 2026-06-01.pdf
+742 Evergreen Terrace - Counteroffer - Smith - Signed - 2026-06-03.pdf
+742 Evergreen Terrace - Purchase Agreement - Johnson to Smith - Executed - 2026-06-12.pdf
+88 Harbor Lane - Listing Agreement - Executed - 2026-05-27.pdf
+```
+
+Do not put envelope IDs, access codes, financial account numbers, or private negotiation notes into the output name unless an organizational policy specifically requires them.
+
+## Step 2: Create one intake folder
+
+Choose a folder where downloaded e-signature PDFs wait for review:
+
+```
+Real Estate Intake/
+  DocuSign_892347234.pdf
+  DocuSign_893118476.pdf
+```
+
+This can live in Downloads, a local transaction workspace, OneDrive, Dropbox, or another synced folder. Zush renames files in place. It does not upload them into a transaction platform or move them into property folders.
+
+Start with manual batches. Folder monitoring is useful later, after the Template has produced dependable results on real examples from the brokerage.
+
+## Step 3: Build the extraction Template
+
+Add the fields needed by the output pattern:
+
+1. **Property address**: ask for the complete subject-property address, normalized to the brokerage’s preferred form.
+2. **Document type**: limit output to useful labels such as Offer, Counteroffer, Purchase Agreement, Addendum, Listing Agreement, Disclosure, or Lease.
+3. **Execution date**: use the date shown by the signatures or completion certificate, not the browser download date.
+4. **Parties**: include buyer, seller, landlord, tenant, or client only when the name helps distinguish files.
+5. **Status**: return a factual label such as Submitted, Signed, Executed, Superseded, or Voided when the document supports it.
+
+Standard Naming Blocks handle dates and reusable text. [Custom AI Blocks](/docs/custom-ai-blocks) can describe real estate-specific fields in plain language.
+
+## Step 4: Review the batch before renaming
+
+Do not treat AI extraction as an unattended transaction decision. Preview the entire batch and verify:
+
+- the property address matches the subject property rather than a party’s mailing address;
+- the document type is specific enough;
+- the date comes from the document, not the envelope download;
+- the status is supported by the signatures or completion information;
+- the selected parties are spelled consistently;
+- duplicate or superseded copies are not being presented as the current agreement.
+
+Correct the Template rather than fixing the same class of error one file at a time. Apply the rename only when the batch reads like the transaction record you expect. Zush keeps rename history so the batch can be undone.
+
+## Step 5: Handle drafts, completed copies, and duplicates
+
+The same agreement may arrive several times. Use a factual progression:
+
+```
+742 Evergreen Terrace - Purchase Agreement - v01 - Draft.pdf
+742 Evergreen Terrace - Purchase Agreement - v02 - Countered.pdf
+742 Evergreen Terrace - Purchase Agreement - Executed - 2026-06-12.pdf
+```
+
+A duplicate download of the executed PDF should not become a new version merely because the operating system appended `(1)`. Compare it with the accepted copy according to the brokerage’s process, then keep or remove it under that policy.
+
+Zush does not determine which copy is legally controlling. It extracts content and proposes filenames; the agent, coordinator, broker, or approved transaction system remains responsible for the record.
+
+## Step 6: Monitor new downloads only after testing
+
+Once the Template handles offers, counters, listing agreements, addenda, and completed agreements reliably, assign it to the intake folder through [folder monitoring](/docs/folder-monitoring).
+
+The resulting flow is:
+
+1. Download the completed or incoming PDF to the intake folder.
+2. Zush detects the new file and reads it with the assigned Template.
+3. Review the proposed address-based filename.
+4. Apply the rename.
+5. File the verified copy in the correct transaction folder or approved system.
+
+There is no direct DocuSign integration in this workflow. That boundary is useful: the e-signature platform handles signatures and envelopes, while Zush handles the local filename after download.
+
+## Privacy choices for signed transaction files
+
+Signed agreements can contain personal, financial, and transaction details. Choose a processing mode that matches the brokerage’s policy:
+
+- **Offline AI** analyzes supported files with local Ollama models on Mac or Windows, so the document content stays on that machine.
+- **BYOK** sends analysis through the provider account and API key controlled by the organization.
+- **Managed Cloud AI** offers the fastest setup for material the team permits in that mode.
+
+Zush renames the file in place and does not store it. It does not replace access controls, retention rules, compliance review, or the protections in the transaction management system. See the [privacy and security documentation](/docs/privacy-security) for the exact processing boundaries.
+
+## FAQ
+
+### Can DocuSign automatically name downloaded files by property address?
+
+The workflow described here adds a separate content-aware naming step after download. Zush reads the PDF, extracts the property address and other selected fields, and proposes the new local filename. It does not require or claim a native DocuSign integration.
+
+### Can Zush tell whether an agreement is executed?
+
+Zush can extract a status when the PDF’s signatures, completion information, or document wording supports it. A person should verify that status in the preview before applying the filename. Zush does not make legal determinations about which agreement controls.
+
+### Will Zush move the renamed PDF into a property folder?
+
+No. Zush renames files in place. Keep the intake and filing steps separate, or use the organization tools approved by the brokerage to move the verified copy afterward.
+
+### What if the PDF contains more than one property address?
+
+Write the Custom AI Block to request the subject property address, not mailing, notice, or party addresses. Test the Template on copied examples and verify the highlighted result before applying the batch.
+
+### Can signed PDFs be renamed offline?
+
+Yes, for formats supported by Offline AI. Local Ollama models analyze the file on the Mac or Windows PC where it is stored. Always confirm that this mode and the local model meet the organization’s accuracy and processing requirements.

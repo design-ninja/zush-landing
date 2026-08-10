@@ -13,6 +13,7 @@ import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
 import FAQ from '@/components/FAQ';
 import Heading from '@/components/Heading';
 import Pricing from '@/components/Pricing/Pricing.astro';
+import ProfessionGuides from '@/components/ProfessionGuides/ProfessionGuides.astro';
 import StarRating from '@/components/StarRating';
 import Text from '@/components/Text';
 import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module.scss';
@@ -259,6 +260,17 @@ const AUDIENCE_IMAGES = {
   items={MEDICAL_FAQ}
   title='Medical record file renaming, answered'
   description='How local models, organization-controlled BYOK, scanner folders, Templates, preview, and undo fit a medical document workflow.'
+/>
+
+<ProfessionGuides
+  id="medical-guides"
+  title="Medical document organization guides"
+  description="Practical scanner, naming, and privacy workflows for small practices handling records outside the EHR."
+  slugs={[
+    'how-to-organize-scanned-medical-records-small-practice',
+    'rename-scanned-documents-automatically',
+    'cloud-vs-local-ai-file-renaming',
+  ]}
 />
 
 <div class={styles.FinalCta}>

@@ -1,0 +1,37 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.Guides {
+  padding: $space-3xl 0;
+
+  @include mobile {
+    padding: 3.25rem 0;
+  }
+
+  &__Container {
+    @include container;
+  }
+
+  &__List {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 56rem;
+    margin: $space-xl auto 0;
+  }
+
+  &__Action {
+    display: flex;
+    justify-content: center;
+    margin-top: $space-xl;
+  }
+
+  &__ActionLink {
+    color: var(--primary);
+    font-weight: var(--font-weight-link);
+    text-decoration: none;
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+}

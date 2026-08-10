@@ -17,6 +17,10 @@
         gap: 2rem;
         margin-bottom: 6rem;
 
+        &_withProfessions {
+            grid-template-columns: 1.4fr repeat(6, minmax(0, 1fr));
+        }
+
         @include tablet {
             grid-template-columns: repeat(3, minmax(0, 1fr));
         }

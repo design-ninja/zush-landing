@@ -151,7 +151,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'rename invoices automatically, invoice renamer, invoice pdf organizer, invoice naming convention, organize invoices, rename pdf invoices, ai invoice organizer, bulk rename invoices',
   },
   '/for-accountants': {
-    title: 'AI File Renamer for Accountants & Bookkeepers | Zush',
+    title: 'Accounting Document Management with AI File Renaming | Zush',
     description:
       'Automatically rename invoices, receipts, statements, tax forms, and scans by vendor, date, number, and amount. Client Templates, Offline AI, preview, and undo.',
     robots: 'index, follow',
@@ -161,14 +161,14 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'AI file renamer for accountants, accounting document renamer, bookkeeper file naming, rename invoices automatically, organize client accounting documents, invoice file naming software, receipt renamer for bookkeepers',
   },
   '/for-medical': {
-    title: 'Medical Records File Renamer with Offline AI | Zush',
+    title: 'Healthcare Document Management with Offline AI File Renaming | Zush',
     description:
-      'Automatically rename scanned medical records by MRN, date of service, and document type. Offline AI or organization-controlled BYOK, with preview and undo.',
+      'Healthcare document management for medical practices: rename scans, faxes, lab reports, and intake forms with Offline AI, preview, and undo.',
     robots: 'index, follow',
     ogType: 'website',
     ogImage: `${SITE_ORIGIN}/images/landing/medical-records-file-renamer.webp`,
     keywords:
-      'medical records file renamer, rename scanned medical records, medical document renamer, AI file renamer for medical records, offline AI medical document renamer, medical file renamer for clinics',
+      'healthcare document management, medical document management, medical records file renamer, rename scanned medical records, medical document renamer, offline AI medical document renamer, medical file renamer for clinics',
   },
   '/for-photographers': {
     title: 'AI File Renamer for Photographers & Videographers | Zush',
@@ -181,13 +181,24 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'AI file renamer for photographers, photo file naming software, video file renamer, batch rename RAW photos, rename video clips by content, photographer file naming workflow, videographer file organization, media file renamer',
   },
   '/for-legal': {
-    title: 'AI Legal Document Renamer for Law Firms | Zush',
+    title: 'Legal Document Management with Offline AI File Renaming | Zush',
     description:
       'Rename and organize case files, contracts, pleadings, and scans with AI. Create searchable filenames, work with your DMS, and run locally on Mac or Windows.',
     robots: 'index, follow',
     ogType: 'website',
+    ogImage: `${SITE_ORIGIN}/images/landing/legal-document-renamer.webp`,
     keywords:
       'AI legal document renamer, rename legal documents, legal document organizer, organize legal documents, legal file organization, organize case files, law firm document management workflow, matter file organization, legal document naming software',
+  },
+  '/for-real-estate': {
+    title: 'Real Estate Document Management with AI File Renaming | Zush',
+    description:
+      'Rename purchase agreements, inspections, title files, appraisals, closing documents, and property photos by address, date, type, party, and status.',
+    robots: 'index, follow',
+    ogType: 'website',
+    ogImage: `${SITE_ORIGIN}/images/landing/real-estate-document-management.webp`,
+    keywords:
+      'real estate document management, real estate file organization, rename real estate documents, property transaction file naming, organize closing documents, rename DocuSign files, real estate document renamer, property file naming software',
   },
   '/rename-scanned-documents': {
     title: 'Rename Scanned Documents Automatically | Zush',

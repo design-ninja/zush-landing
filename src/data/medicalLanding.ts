@@ -9,14 +9,14 @@ import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 // is previewed before it is applied in place.
 
 export const MEDICAL_PAGE_PATH = '/for-medical';
-export const MEDICAL_PAGE_TITLE = 'Medical Records File Renamer';
+export const MEDICAL_PAGE_TITLE = 'Healthcare Document Management with Offline AI File Renaming';
 
 export const MEDICAL_HERO = {
-  eyebrow: 'Medical records file renamer',
-  titleLead: 'Rename medical records by ',
+  eyebrow: 'Healthcare document management for medical practices',
+  titleLead: 'Rename healthcare documents by ',
   titleAccent: 'MRN, date, and type',
   subtitle:
-    'Zush automatically renames scanned medical records, faxes, lab reports, and intake forms using the fields your practice chooses. Run local Ollama models with Offline AI, or connect the provider account your organization controls with BYOK. Preview every batch and undo anytime.',
+    'Zush handles the filename layer of healthcare document management: it renames scanned medical records, faxes, lab reports, and intake forms using the fields your practice chooses. It works alongside your EHR with local Offline AI or organization-controlled BYOK, plus batch preview and undo.',
   secondaryCta: {
     label: 'See how a practice sets it up',
     href: '#workflow',
@@ -247,9 +247,14 @@ export const MEDICAL_PRICING_PREFACE =
 
 export const MEDICAL_FAQ = [
   {
+    question: 'Is Zush HIPAA compliant?',
+    answer:
+      'Zush does not claim that the app by itself makes a workflow HIPAA compliant. Offline AI keeps supported file analysis on the workstation, but compliance also depends on device security, access controls, backups, retention, filename policy, and your organization’s procedures. Have your privacy or security lead review the complete workflow before processing protected health information.',
+  },
+  {
     question: 'Can Zush rename patient records without uploading them anywhere?',
     answer:
-      'Yes. In Offline AI mode, Zush analyzes supported files with local Ollama models on Mac or Windows — records are read and renamed entirely on the machine. Renaming always happens in place on your disk; Zush never uploads or stores your files.',
+      'Yes. In Offline AI mode, Zush analyzes supported files with local Ollama models on Mac or Windows — records are read and renamed entirely on the machine. File content is not sent to Zush or a third-party AI provider, and Zush does not store the files.',
   },
   {
     question: 'How should a practice structure medical record filenames?',
@@ -267,9 +272,9 @@ export const MEDICAL_FAQ = [
       'Typical office scans — printed lab reports, faxed referrals, forms with handwritten fields — are read reliably. Dense handwritten notes and badly skewed or faint pages are not: those come back with a generic name instead of a wrong one, and the preview is where you catch them before anything is applied.',
   },
   {
-    question: 'Does Zush work with our EHR?',
+    question: 'Does Zush replace healthcare document management software or our EHR?',
     answer:
-      'Zush organizes the file layer around the EHR — scanner and fax output, exported records, attachments waiting to be imported, archive folders. It does not connect to, read from, or modify an EHR system. If a document lives inside the EHR, Zush is not involved; if it lives in a folder, Zush can name it.',
+      'No. Zush handles the filename layer around an EHR or document management system — scanner and fax output, exported records, attachments waiting to be imported, and archive folders. It does not connect to, read from, or modify the EHR itself. If a document lives inside the EHR, Zush is not involved; if it lives in a folder, Zush can name it.',
   },
   {
     question: 'Which AI mode should a medical practice use?',

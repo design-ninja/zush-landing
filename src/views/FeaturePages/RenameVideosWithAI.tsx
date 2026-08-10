@@ -103,6 +103,7 @@ const RenameVideosWithAI = () => (
       { title: 'Rename Documents with AI', href: '/rename-documents-with-ai' },
     ]}
     relatedBlogPosts={[
+      { title: 'How to Rename Video Files with AI', href: 'rename-video-files-with-ai' },
       { title: 'How to Rename Files with AI', href: 'rename-files-with-ai-guide' },
       { title: 'Folder Monitoring for Auto File Renaming', href: 'folder-monitoring-automatic-file-renaming' },
       { title: 'Best AI File Renamers 2026', href: 'best-ai-file-renamer-tools-2026' },

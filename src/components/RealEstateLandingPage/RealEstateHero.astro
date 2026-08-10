@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets';
+import heroPhoto from '@/assets/landing/real-estate-hero.webp';
+import DownloadButton from '@/components/DownloadButton';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
+import { REAL_ESTATE_HERO } from '@/data/realEstateLanding';
+import styles from '@/components/LegalLandingPage/LegalHero.module.scss';
+---
+
+<section class={styles.Hero} aria-labelledby="real-estate-hero-title">
+  <div class={styles.Hero__Media} aria-hidden="true">
+    <Image
+      class={styles.Hero__Photo}
+      src={heroPhoto}
+      alt={REAL_ESTATE_HERO.photo.alt}
+      widths={[640, 960, 1216, 1408]}
+      sizes="100vw"
+      loading="eager"
+      decoding="async"
+    />
+  </div>
+  <div class={styles.Hero__Scrim} aria-hidden="true"></div>
+
+  <div class={styles.Hero__Container}>
+    <div class={styles.Hero__Intro}>
+      <p class={styles.Hero__Eyebrow}>{REAL_ESTATE_HERO.eyebrow}</p>
+
+      <Heading as="h1" align="center" id="real-estate-hero-title" className={styles.Hero__Title}>
+        {REAL_ESTATE_HERO.titleLead}<span class="brand-accent-text">{REAL_ESTATE_HERO.titleAccent}</span>
+      </Heading>
+
+      <Text as="p" size="lg" color="subtle" align="center" className={styles.Hero__Subtitle}>
+        {REAL_ESTATE_HERO.subtitle}
+      </Text>
+
+      <div class={styles.Hero__Actions}>
+        <div class={styles.Hero__Buttons}>
+          <DownloadButton
+            client:visible
+            source="hero"
+            size="lg"
+            forceOS="mac"
+            showDropdown={false}
+            label="Download for Mac"
+          />
+          <DownloadButton
+            client:visible
+            source="hero"
+            size="lg"
+            forceOS="windows"
+            showDropdown={false}
+            label="Download for Windows"
+          />
+        </div>
+
+        <ul class={styles.Hero__TrustRow} aria-label="Controls for real estate document workflows">
+          {REAL_ESTATE_HERO.trustLine.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

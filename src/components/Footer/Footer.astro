@@ -47,11 +47,19 @@ const footerHref = (route: LocalizedRoute) =>
 const appStoreVisibleLabel = `${copy.appStoreKicker} ${copy.appStoreLabel}`;
 const microsoftStoreVisibleLabel = `${copy.microsoftStoreKicker} ${copy.microsoftStoreLabel}`;
 const homebrewLabel = copy.productLinks.homebrew;
+const showProfessionLinks = locale === DEFAULT_LOCALE;
+const professionLinks = [
+  { href: '/for-accountants', label: 'Accountants & Bookkeepers' },
+  { href: '/for-medical', label: 'Medical Practices' },
+  { href: '/for-legal', label: 'Legal Teams' },
+  { href: '/for-real-estate', label: 'Real Estate Professionals' },
+  { href: '/for-photographers', label: 'Photographers & Videographers' },
+] as const;
 ---
 
 <footer class={styles.Footer} data-site-footer>
   <div class={styles.Footer__Container}>
-    <div class={styles.Footer__Grid}>
+    <div class={`${styles.Footer__Grid} ${showProfessionLinks ? styles.Footer__Grid_withProfessions : ''}`}>
       <div>
         <a href={footerHref('/')} class={brandClass}>Zush</a>
         <p class={descriptionClass}>
@@ -196,6 +204,17 @@ const homebrewLabel = copy.productLinks.homebrew;
         </ul>
       </div>
 
+      {showProfessionLinks && (
+        <div>
+          <h4 class={sectionTitleClass}>For Professionals</h4>
+          <ul class={styles.Footer__Links}>
+            {professionLinks.map((link) => (
+              <li><a href={link.href} class={linkClass}>{link.label}</a></li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       <div>
         <h4 class={sectionTitleClass}>{copy.compareAndAutomate}</h4>
         <ul class={styles.Footer__Links}>
@@ -207,7 +226,6 @@ const homebrewLabel = copy.productLinks.homebrew;
           <li><a href='/rename-excel-files-with-ai' class={linkClass}>{copy.productLinks.renameExcel}</a></li>
           <li><a href='/rename-word-documents-with-ai' class={linkClass}>{copy.productLinks.renameWord}</a></li>
           <li><a href='/rename-scanned-documents' class={linkClass}>{copy.productLinks.renameScanned}</a></li>
-          <li><a href='/for-accountants' class={linkClass}>{copy.productLinks.forAccountants}</a></li>
         </ul>
       </div>
 
