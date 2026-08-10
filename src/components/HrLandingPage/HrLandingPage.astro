@@ -1,0 +1,260 @@
+---
+import { Image } from 'astro:assets';
+import { ArrowRight, Bot, Cloud, KeyRound } from 'lucide-react';
+import audienceGeneralistImage from '@/assets/landing/hr-audience-generalist.webp';
+import audienceOperationsImage from '@/assets/landing/hr-audience-operations.webp';
+import audienceRecruitingImage from '@/assets/landing/hr-audience-recruiting.webp';
+import CloudFolders from '@/components/CloudFolders';
+import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
+import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
+import FAQ from '@/components/FAQ';
+import BentoCard from '@/components/Features/BentoCard.astro';
+import FeatureAnimation from '@/components/Features/FeatureAnimation';
+import featureStyles from '@/components/Features/Features.module.scss';
+import Heading from '@/components/Heading';
+import Pricing from '@/components/Pricing/Pricing.astro';
+import ProfessionGuides from '@/components/ProfessionGuides/ProfessionGuides.astro';
+import Text from '@/components/Text';
+import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module.scss';
+import testimonialStyles from '@/components/Testimonials/Testimonials.module.scss';
+import {
+  HR_AUDIENCES,
+  HR_DOCUMENT_TYPES,
+  HR_FAQ,
+  HR_ORGANIZATION_OUTCOMES,
+  HR_PRIVACY_MODES,
+  HR_PRIVACY_NOTE,
+  HR_WORKFLOW,
+} from '@/data/hrLanding';
+import { getCopy } from '@/i18n/copy';
+import { FEATURE_DEMO_COPY } from '@/i18n/featureDemoCopy';
+import { HrFieldExplorer } from './HrFieldExplorer';
+import HrHero from './HrHero.astro';
+import styles from '@/components/LegalLandingPage/LegalLandingPage.module.scss';
+
+const copy = getCopy('en');
+const demoCopy = FEATURE_DEMO_COPY.en;
+const PRIVACY_ICONS = { cloud: Cloud, byok: KeyRound, offline: Bot } as const;
+const AUDIENCE_IMAGES = {
+  generalist: {
+    src: audienceGeneralistImage,
+    alt: 'HR generalist discussing onboarding documents with a new employee',
+  },
+  recruiting: {
+    src: audienceRecruitingImage,
+    alt: 'Recruiting coordinator reviewing candidate application documents',
+  },
+  operations: {
+    src: audienceOperationsImage,
+    alt: 'People operations lead organizing employee records at a shared workspace',
+  },
+} as const;
+---
+
+<HrHero />
+
+<div class={styles.HeroDemo}>
+  <DemoVideo label="Zush organizing HR documents into searchable employee and candidate files" />
+</div>
+
+<section class={styles.Audiences} aria-labelledby="hr-audiences-title">
+  <div class={styles.Audiences__Container}>
+    <div class={styles.Audiences__Intro}>
+      <p class={styles.Audiences__Eyebrow}>HR file organization</p>
+      <Heading as="h2" id="hr-audiences-title" className={styles.Audiences__Title}>
+        When files move between people systems, filenames carry the context
+      </Heading>
+      <Text as="p" color="subtle" className={styles.Audiences__Description}>
+        Zush helps people teams organize the documents that live before, beside, and outside an ATS or HRIS.
+      </Text>
+    </div>
+
+    <ul class={styles.Audiences__List}>
+      {HR_AUDIENCES.map((audience) => (
+        <li class={styles.Audience}>
+          <div class={styles.Audience__Media}>
+            <Image
+              src={AUDIENCE_IMAGES[audience.icon].src}
+              alt={AUDIENCE_IMAGES[audience.icon].alt}
+              class={styles.Audience__Image}
+              widths={[240, 360, 480, 720, 960]}
+              sizes="(max-width: 640px) 100vw, 11rem"
+              format="webp"
+              quality={78}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class={styles.Audience__Content}>
+            <h3 class={styles.Audience__Title}>{audience.title}</h3>
+            <p class={styles.Audience__Description}>{audience.description}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<section id="fields" class={styles.Fields} aria-labelledby="hr-fields-title">
+  <div class={styles.Fields__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as="h2" align="center" id="hr-fields-title" className={sectionHeaderStyles.SectionHeader__Title}>
+        Turn every HR folder into a searchable people record
+      </Heading>
+      <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>
+        Extract the employee or candidate ID, document date, type, role, department, effective date, period, and status already inside each file. Your Template decides what appears in the filename and in which order.
+      </Text>
+    </div>
+
+    <HrFieldExplorer client:visible />
+  </div>
+</section>
+
+<section id="privacy" class={styles.Privacy} aria-labelledby="hr-privacy-title">
+  <div class={styles.Privacy__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as="h2" align="center" id="hr-privacy-title" className={sectionHeaderStyles.SectionHeader__Title}>
+        Organize sensitive HR documents on your terms
+      </Heading>
+      <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>
+        Choose local processing, your organization’s approved AI provider, or Zush-managed AI based on the documents in the workflow. Source files stay where your team already keeps them.
+      </Text>
+    </div>
+
+    <div class={featureStyles.Band__Grid}>
+      {HR_PRIVACY_MODES.map((mode) => (
+        <BentoCard
+          title={mode.title}
+          description={mode.description}
+          icon={PRIVACY_ICONS[mode.id]}
+          badge={mode.badge}
+          badgeTone={mode.badgeTone}
+        >
+          <div class={featureStyles.UI_FeatureAnimation}>
+            <FeatureAnimation kind={mode.kind} demoCopy={demoCopy} client:visible />
+          </div>
+        </BentoCard>
+      ))}
+    </div>
+
+    <p class={styles.Privacy__Note}>
+      {HR_PRIVACY_NOTE}{' '}
+      <a class={styles.ArrowLink} href="/docs/privacy-security">
+        Read how the modes handle data
+        <ArrowRight size={15} aria-hidden="true" />
+      </a>
+    </p>
+  </div>
+</section>
+
+<section id="workflow" class={styles.Workflow} aria-labelledby="hr-workflow-title">
+  <div class={styles.Workflow__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as="h2" align="center" id="hr-workflow-title" className={sectionHeaderStyles.SectionHeader__Title}>
+        Add consistent file organization to the HR tools you already use
+      </Heading>
+      <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>
+        Use Zush as the naming layer between email, recruiting downloads, scanners, shared folders, and your ATS or HRIS.
+      </Text>
+    </div>
+
+    <ol class={styles.Workflow__Steps}>
+      {HR_WORKFLOW.map((step, index) => (
+        <li class={styles.WorkflowStep}>
+          <span class={styles.WorkflowStep__Number} aria-hidden="true">{index + 1}</span>
+          <h3 class={styles.WorkflowStep__Title}>{step.title}</h3>
+          <p class={styles.WorkflowStep__Description}>{step.description}</p>
+        </li>
+      ))}
+    </ol>
+
+    <div class={styles.Workflow__Links}>
+      <a class={styles.ArrowLink} href="/blog/hr-employee-file-naming-convention">
+        Build an employee file naming convention
+        <ArrowRight size={15} aria-hidden="true" />
+      </a>
+      <a class={styles.ArrowLink} href="/blog/organize-employee-onboarding-documents">
+        Organize onboarding document intake
+        <ArrowRight size={15} aria-hidden="true" />
+      </a>
+      <a class={styles.ArrowLink} href="/blog/organize-candidate-files-recruiting">
+        Organize candidate and recruiting files
+        <ArrowRight size={15} aria-hidden="true" />
+      </a>
+    </div>
+  </div>
+</section>
+
+<CloudFolders title={copy.home.cloudFoldersTitle} />
+
+<section class={styles.Documents} aria-labelledby="hr-document-types-title">
+  <div class={styles.Documents__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as="h2" align="center" id="hr-document-types-title" className={sectionHeaderStyles.SectionHeader__Title}>
+        One organizer for files across the employee lifecycle
+      </Heading>
+      <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>
+        Create separate naming rules for recruiting, onboarding, employee changes, performance, policy acknowledgments, and offboarding while keeping a consistent people-based structure.
+      </Text>
+    </div>
+
+    <div class={styles.Documents__Grid}>
+      {HR_DOCUMENT_TYPES.map((documentType) => (
+        <article class={styles.DocumentType}>
+          <h3 class={styles.DocumentType__Title}>{documentType.title}</h3>
+          <p class={styles.DocumentType__Description}>{documentType.description}</p>
+          <code class={styles.DocumentType__Example}>{documentType.example}</code>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section id="organization-outcomes" class={testimonialStyles.Testimonials} aria-labelledby="hr-outcomes-title">
+  <div class={testimonialStyles.Testimonials__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as="h2" align="center" id="hr-outcomes-title" className={sectionHeaderStyles.SectionHeader__Title}>
+        What better HR file organization changes
+      </Heading>
+      <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>
+        The goal is not prettier filenames. It is a people record that remains understandable wherever an approved workflow sends the document.
+      </Text>
+    </div>
+
+    <div class={`${testimonialStyles.Testimonials__Grid} ${styles.Testimonials__Grid}`}>
+      {HR_ORGANIZATION_OUTCOMES.map((outcome) => (
+        <article class={testimonialStyles.TestimonialCard}>
+          <h3 class={testimonialStyles.TestimonialCard__Name}>{outcome.title}</h3>
+          <Text as="p" size="sm" color="subtle">{outcome.description}</Text>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<Pricing copy={copy.pricing} />
+
+<FAQ
+  client:visible
+  items={HR_FAQ}
+  title="HR document organization, answered"
+  description="How AI file organization works with employee folders, recruiting downloads, HRIS and ATS exports, sensitive records, preview, and undo."
+/>
+
+<ProfessionGuides
+  id="hr-guides"
+  title="HR document organization guides"
+  description="Naming conventions and intake workflows for employee, candidate, and onboarding documents."
+  slugs={[
+    'hr-employee-file-naming-convention',
+    'organize-employee-onboarding-documents',
+    'organize-candidate-files-recruiting',
+  ]}
+/>
+
+<div class={styles.FinalCta}>
+  <DownloadCTA
+    title="Organize one copied HR folder with Zush"
+    subtitle="Start with a folder of recruiting downloads, onboarding forms, or exported employee documents. Review the proposed filenames, refine the naming rule, and undo the batch if it needs another pass."
+  />
+</div>
