@@ -190,6 +190,16 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     keywords:
       'AI legal document renamer, rename legal documents, legal document organizer, organize legal documents, legal file organization, organize case files, law firm document management workflow, matter file organization, legal document naming software',
   },
+  '/for-hr': {
+    title: 'HR Document Management with Offline AI File Renaming | Zush',
+    description:
+      'Rename and organize employee, candidate, onboarding, review, and policy files with AI. Searchable HR filenames, Offline AI, preview, and undo on Mac or Windows.',
+    robots: 'index, follow',
+    ogType: 'website',
+    ogImage: `${SITE_ORIGIN}/images/landing/hr-document-management.webp`,
+    keywords:
+      'HR document management, employee file naming convention, HR document organizer, organize employee files, onboarding document management, recruiting file organization, AI HR document renamer, offline AI HR documents, HR file naming software',
+  },
   '/for-real-estate': {
     title: 'Real Estate Document Management with AI File Renaming | Zush',
     description:

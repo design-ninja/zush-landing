@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import accountantImage from '@/assets/landing/accountants-hero.webp';
+import hrImage from '@/assets/landing/hr-hero.webp';
 import legalImage from '@/assets/landing/legal-hero.webp';
 import medicalImage from '@/assets/landing/medical-hero.webp';
 import photographerImage from '@/assets/landing/photographers-hero.webp';
@@ -36,6 +37,13 @@ const PROFESSIONS: Array<{
     route: '/for-legal',
     image: legalImage,
     imageAlt: 'Attorney reviewing legal documents at a desktop computer',
+  },
+  {
+    title: 'HR & people teams',
+    description: 'Candidate, onboarding, review, and policy files named by employee, date, type, role, period, and status.',
+    route: '/for-hr',
+    image: hrImage,
+    imageAlt: 'HR professionals reviewing onboarding documents in a modern office',
   },
   {
     title: 'Photographers & videographers',

@@ -1,0 +1,161 @@
+---
+title: "HR Employee File Naming Convention: Examples and Rules (2026)"
+description: "A practical HR document naming convention for employee files: employee ID, date, document type, period, and status, with examples and automation steps."
+date: "2026-08-10"
+slug: "hr-employee-file-naming-convention"
+platform: "general"
+topic: "naming"
+tags:
+  - "File Naming"
+  - "PDFs & Documents"
+  - "File Organization"
+tldr: "Name HR documents EmployeeID – YYYY-MM-DD – DocumentType – PeriodOrStatus.ext. The internal ID connects the file to the system of record, the ISO date preserves chronology, a controlled document type makes folders scannable, and a factual period or status distinguishes versions without exposing unnecessary personal data."
+reviewed: "2026-08-10"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Quick answer: a durable HR employee file naming convention is `EmployeeID – YYYY-MM-DD – DocumentType – PeriodOrStatus.ext`. For example: `EMP-1042 – 2026-08-03 – Benefits Enrollment – Signed.pdf`. The employee ID connects the file to the HRIS record, the ISO date sorts chronologically, the document type says what the file is, and the final field distinguishes a review period, effective date, or completed status.
+
+Keep the filename useful but deliberately boring. It should help an authorized person identify a record without opening it, while avoiding personal details that do not belong in a folder listing. The HRIS, ATS, or approved records platform remains the system of record; the filename is the portable index for intake folders, exports, migration batches, and controlled shared storage.
+
+People teams comparing the complete workflow can start with [Zush for HR teams](/for-hr). For adjacent workflows, see the guides to [organizing onboarding documents](/blog/organize-employee-onboarding-documents) and [organizing candidate files](/blog/organize-candidate-files-recruiting).
+
+<BlogProductIntro
+  title="Turn exported HR files into records you can identify at a glance"
+  description="Zush reads PDFs, Word documents, images, and scans, extracts the employee ID, document date, type, period, and status, and proposes consistent filenames — with preview, undo, Offline AI, and BYOK."
+  links={[
+    { href: '/for-hr', label: 'Zush for HR teams' },
+    { href: '/rename-documents-with-ai', label: 'AI document renamer' },
+    { href: '/rename-scanned-documents', label: 'Rename scanned documents' },
+    { href: '/docs/custom-ai-blocks', label: 'Custom AI Blocks' },
+  ]}
+/>
+
+<BlogCTA placement='inline' platform='general' />
+
+## The five useful parts of an HR filename
+
+### 1. Employee ID first
+
+Use the stable internal identifier from the HRIS, not a name that may change or be duplicated. `EMP-1042` groups the employee's documents in a sorted export and still points back to the system of record when the file moves through an approved workflow.
+
+If the source document does not contain the employee ID, do not guess it from a name. Add the ID during a controlled intake step or keep the file in an exception queue until the identity is confirmed.
+
+### 2. Document date in ISO format
+
+Use `YYYY-MM-DD` because it sorts correctly on every desktop file system. Pick the date that describes the document's business meaning: signed date for an acknowledgment, issue date for a letter, effective date for an employment change, or period end for a review.
+
+Do not substitute download, scan, or migration date merely because it is easy to capture. Those timestamps describe the file operation, not the HR event.
+
+### 3. Document type from a controlled vocabulary
+
+A short approved list prevents the same record from appearing as `Comp Change`, `Salary Letter`, and `Pay Update`. Start with the actual workflows your team handles:
+
+- Offer Letter
+- Employment Agreement
+- Tax Form
+- Benefits Enrollment
+- Policy Acknowledgment
+- Performance Review
+- Promotion Letter
+- Leave Document
+- Training Certificate
+- Equipment Agreement
+- Exit Document
+
+The useful rule is one concept, one label. Add a new label only when existing categories cannot describe the record.
+
+### 4. Period or effective date when it adds meaning
+
+Some HR documents need a second time marker. A performance review may use `2026 H1`; a compensation letter may use `Effective 2026-09-01`; a training record may use an expiry date. Include the field when two documents of the same type would otherwise look identical.
+
+### 5. Factual status, not version folklore
+
+Use statuses that represent an observable state: `Draft`, `Sent`, `Signed`, `Acknowledged`, `Completed`, or `Superseded`. Avoid `final`, `new`, and `latest`, because those labels stop being true as soon as the workflow changes.
+
+## Recommended patterns by document family
+
+Employee lifecycle records:
+
+```
+EMP-1042 – 2026-08-03 – Offer Letter – Signed.pdf
+EMP-1042 – 2026-08-05 – Benefits Enrollment – Completed.pdf
+EMP-1042 – 2026-09-01 – Promotion Letter – Effective 2026-09-01.pdf
+```
+
+Performance and development:
+
+```
+EMP-1042 – Performance Review – 2026 H1 – Completed.pdf
+EMP-1042 – Development Plan – 2026 H2.pdf
+EMP-1042 – Security Training – Completed 2026-07-22.pdf
+```
+
+Policy acknowledgments:
+
+```
+EMP-1186 – 2026-07-22 – Code of Conduct – Acknowledged.pdf
+EMP-1186 – 2026-07-22 – Security Policy – Acknowledged.pdf
+```
+
+## What should stay out of an HR filename
+
+- **Government identifiers, bank details, or benefit selections.** A filename is visible in places where the document body may not be.
+- **Medical, leave, or investigation detail.** Use a broad approved document type and keep sensitive context inside the controlled record.
+- **Manager commentary.** `Performance Review` is enough; the assessment belongs in the document.
+- **Unnecessary full names.** Prefer the internal employee ID when the folder or system already resolves identity.
+- **Retention or deletion instructions.** Those belong in the records policy and system controls, not an informal filename suffix.
+
+Naming does not create access control. Store files only in systems and locations approved for the record type, and follow the organization's privacy, retention, legal-hold, and deletion rules.
+
+## Separate employee and candidate conventions
+
+Candidates do not have employee IDs, and many never become employees. Keep the recruiting convention separate:
+
+```
+Rivera Sofia – Product Designer – Resume – 2026-07-18.pdf
+Rivera Sofia – Product Designer – Interview Scorecard – Round 02.pdf
+Rivera Sofia – Product Designer – Offer – Signed.pdf
+```
+
+When a candidate is hired, do not simply copy the entire recruiting folder into the employee record. Move only the records required by the organization's policy, assign the employee ID, and rename them under the employee convention. The [candidate file organization guide](/blog/organize-candidate-files-recruiting) covers that handoff in detail.
+
+## Apply the convention to existing files with AI
+
+The difficult files are not the documents HR creates deliberately. They are ATS downloads, scanner output, signed PDFs returned by email, and export packages named with hashes or counters.
+
+[Zush](/for-hr) reads each file and proposes a filename built from a reusable Template. Custom AI Blocks can describe organization-specific fields such as “the employee ID in format EMP-NNNN,” “the effective date, not the signature date,” or “the review period as YYYY H1 or YYYY H2.”
+
+Use this rollout sequence:
+
+1. Copy 10–20 representative documents into a test folder.
+2. Choose Offline AI, the organization's BYOK provider account, or managed AI for non-sensitive samples.
+3. Build separate Templates for employee records, recruiting, and onboarding when their fields differ.
+4. Review every proposed filename and refine ambiguous extraction instructions.
+5. Apply the batch only after exceptions are corrected.
+6. Verify rename history and undo before expanding to a larger archive.
+
+Zush renames files in place. It does not replace the HRIS, ATS, document repository, access controls, or retention process.
+
+## FAQ
+
+### Should employee names appear in HR filenames?
+
+Prefer the stable employee ID when the approved folder or system already resolves identity. Add a name only if the file routinely leaves that context and the organization's privacy policy permits it. Avoid exposing more personal information than identification requires.
+
+### Which date belongs in the filename?
+
+Use the date that describes the record: signature date, issue date, effective date, or period end. Do not default to scan or download date unless the workflow specifically treats receipt date as the record date.
+
+### How should HR name performance reviews?
+
+Use `EmployeeID – Performance Review – ReviewPeriod – Status`, for example `EMP-1042 – Performance Review – 2026 H1 – Completed.pdf`. The review period is more useful than the day the PDF happened to be downloaded.
+
+### Can AI rename scanned HR forms?
+
+Yes. Zush can analyze image-only PDFs and photographed documents with AI vision, extract the fields in the Template, and propose names for review without requiring a separate OCR pass.
+
+### Can the analysis stay on the HR computer?
+
+For supported files, Offline AI uses a local Ollama model on Mac or Windows, so document content stays on that machine. BYOK routes analysis through the provider account and key controlled by the organization.
