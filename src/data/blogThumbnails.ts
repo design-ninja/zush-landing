@@ -20,6 +20,7 @@ const BLOG_THUMBNAILS = Object.fromEntries(
 const BLOG_THUMBNAIL_ALIASES: Record<string, string> = {
   'automatically-rename-invoices-ai': 'rename-pdf-files-automatically',
   'best-ai-file-organizers-mac': 'automate-file-organization-macos',
+  'best-photo-organizing-software-mac': 'best-ways-to-organize-photos-on-mac',
   'rename-scanned-documents-automatically': 'rename-pdf-files-automatically',
   'invoice-file-naming-convention': 'file-naming-conventions-best-practices',
   'how-to-organize-scanned-medical-records-small-practice': 'file-naming-conventions-best-practices',
