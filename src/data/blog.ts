@@ -131,8 +131,19 @@ function toSearchText(body: string): string {
     .trim();
 }
 
-function countWords(content: string): number {
-  return (content.match(/\b[\w'-]+\b/g) ?? []).length;
+function countWords(content: string, locale: BlogLocale = DEFAULT_BLOG_LOCALE): number {
+  // `\w` is ASCII-only in JavaScript, so the previous counter treated complete
+  // Arabic, CJK, and other non-Latin articles as thin content. Intl.Segmenter
+  // provides locale-aware word boundaries and keeps sitemap eligibility and
+  // reading-time metadata consistent across every supported language.
+  const Segmenter = (Intl as unknown as {
+    Segmenter: new (
+      locale: string,
+      options: { granularity: 'word' },
+    ) => { segment: (input: string) => Iterable<{ isWordLike?: boolean }> };
+  }).Segmenter;
+  const segmenter = new Segmenter(locale, { granularity: 'word' });
+  return [...segmenter.segment(content)].filter((segment) => segment.isWordLike).length;
 }
 
 function isFAQHeading(line: string): boolean {
@@ -217,7 +228,7 @@ export function formatBlogDate(value: string | Date, dateLocale = 'en-US'): stri
 
 function toBlogPost(entry: BlogEntry): BlogPost {
   const sanitizedBody = sanitizeBody(entry.body);
-  const wordCount = countWords(sanitizedBody);
+  const wordCount = countWords(sanitizedBody, entry.data.locale);
   const reviewedDateValue = entry.data.reviewed ?? entry.data.date;
 
   return {
