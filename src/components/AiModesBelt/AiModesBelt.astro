@@ -1,0 +1,724 @@
+---
+import {
+  Check,
+  ChevronRight,
+  Cloud,
+  Cpu,
+  KeyRound,
+  Languages,
+  LockKeyhole,
+  MoveRight,
+  Sparkles,
+} from 'lucide-react';
+import type { AiModesBeltCopy } from '@/i18n/homeBelts';
+
+interface Props {
+  copy: AiModesBeltCopy;
+  embedded?: boolean;
+}
+
+const { copy, embedded = false } = Astro.props;
+const languages = ['English', 'Español', 'Deutsch', 'Français', 'Português', '日本語', '한국어', '中文', 'Русский', 'العربية'];
+const demoRenames = [
+  { from: 'IMG_4032.heic', to: '2026-04-team-offsite-photo.heic' },
+  { from: 'Scan 12.pdf', to: 'acme-invoice-1042-2026-03.pdf' },
+  { from: 'Screenshot 07-11.png', to: 'zush-pricing-page-mockup.png' },
+];
+---
+
+<section class:list={['ai-modes', { 'ai-modes--embedded': embedded }]} aria-labelledby="ai-modes-title">
+  <div class="ai-modes__container">
+    <header class="ai-modes__header">
+      <p class="ai-modes__eyebrow"><Sparkles size={15} aria-hidden="true" />{copy.eyebrow}</p>
+      <h2 id="ai-modes-title">{copy.title}</h2>
+      <p class="ai-modes__intro">{copy.description}</p>
+    </header>
+
+    <div class="ai-modes__grid">
+      <article class="mode-card mode-card--offline">
+        <div class="mode-card__topline">
+          <span class="mode-card__icon mode-card__icon--green"><Cpu size={24} aria-hidden="true" /></span>
+          <span class="mode-card__badge"><LockKeyhole size={13} aria-hidden="true" />{copy.offlineBadge}</span>
+        </div>
+        <h3>{copy.offlineTitle}</h3>
+        <p>{copy.offlineDescription}</p>
+
+        <div class="offline-demo" aria-hidden="true">
+          <div class="offline-demo__bar">
+            <span class="offline-demo__model">
+              <span class="offline-demo__pulse"></span>
+              <span translate="no">ollama · llama3.2</span>
+            </span>
+          </div>
+          <div class="offline-demo__rows">
+            {demoRenames.map((file, index) => (
+              <div class="demo-row" style={`--demo-delay: ${index * 0.45}s`}>
+                <span class="demo-row__old" translate="no">{file.from}</span>
+                <MoveRight size={13} aria-hidden="true" />
+                <span class="demo-row__new">
+                  <Check size={12} aria-hidden="true" />
+                  <span class="demo-row__name" translate="no">{file.to}</span>
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="mode-card__footer">
+          <span class="mode-card__privacy"><Check size={15} aria-hidden="true" />{copy.offlinePrivacy}</span>
+          <a href="/docs/offline-ai">{copy.offlineLink}<ChevronRight size={16} aria-hidden="true" /></a>
+        </div>
+      </article>
+
+      <article class="mode-card mode-card--cloud">
+        <div class="mode-card__topline">
+          <span class="mode-card__icon mode-card__icon--purple"><Cloud size={24} aria-hidden="true" /></span>
+          <span class="mode-card__badge">{copy.cloudBadge}</span>
+        </div>
+        <h3>{copy.cloudTitle}</h3>
+        <p>{copy.cloudDescription}</p>
+
+        <div class="cloud-options">
+          <div class="cloud-option">
+            <span class="cloud-option__mark"><Sparkles size={17} aria-hidden="true" /></span>
+            <span class="cloud-option__text">
+              <strong>{copy.managedTitle}</strong>
+              <small>{copy.managedDescription}</small>
+            </span>
+          </div>
+          <div class="cloud-option cloud-option--byok">
+            <span class="cloud-option__mark"><KeyRound size={17} aria-hidden="true" /></span>
+            <span class="cloud-option__text">
+              <strong>{copy.byokTitle}</strong>
+              <small>{copy.byokDescription}</small>
+            </span>
+          </div>
+        </div>
+
+        <a class="mode-card__link" href="/docs/byok">{copy.byokLink}<ChevronRight size={16} aria-hidden="true" /></a>
+      </article>
+    </div>
+
+    <div class="language-strip">
+      <div class="language-strip__copy">
+        <span class="language-strip__icon"><Languages size={22} aria-hidden="true" /></span>
+        <span>
+          <strong>{copy.languagesTitle}</strong>
+          <small>{copy.languagesDescription}</small>
+        </span>
+      </div>
+      <div class="language-strip__marquee" aria-label={copy.languagesTitle}>
+        <div class="language-strip__track">
+          <div class="language-strip__group">
+            {languages.map((language) => <span translate="no">{language}</span>)}
+          </div>
+          <div class="language-strip__group" aria-hidden="true">
+            {languages.map((language) => <span translate="no">{language}</span>)}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  @use '../../styles/variables' as *;
+  @use '../../styles/mixins' as *;
+
+  .ai-modes {
+    padding: 4rem 0 1.25rem;
+
+    &--embedded {
+      margin-top: 4.5rem;
+      padding: 0;
+    }
+
+    &__container {
+      @include container;
+    }
+
+    &--embedded &__container {
+      width: 100%;
+      max-width: none;
+      padding: 0;
+    }
+
+    &__header {
+      max-width: 48rem;
+      margin: 0 auto 2.25rem;
+      text-align: center;
+    }
+
+    &__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin: 0 0 0.85rem;
+      color: var(--primary);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      scroll-margin-top: calc(#{$navbar-height} + 1rem);
+      color: var(--foreground);
+      font-family: $font-family-heading;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      text-wrap: balance;
+    }
+
+    &__intro {
+      max-width: 42rem;
+      margin: 1rem auto 0;
+      color: var(--muted-foreground);
+      font-size: 1.05rem;
+      line-height: 1.65;
+      text-wrap: pretty;
+    }
+
+    &__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 1rem;
+    }
+  }
+
+  .mode-card {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    padding: 1.75rem;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: $radius-xl;
+    background: var(--card);
+    box-shadow: $shadow-sm;
+    transition:
+      transform 420ms cubic-bezier(0.34, 1.56, 0.64, 1),
+      border-color $transition-fast,
+      box-shadow $transition-normal;
+
+    &:hover {
+      transform: translateY(-0.25rem);
+      box-shadow: $shadow-md;
+    }
+
+    &--offline {
+      background:
+        radial-gradient(circle at 92% 8%, color-mix(in srgb, var(--tone-green-fg) 15%, transparent), transparent 34%),
+        var(--card);
+
+      &:hover {
+        border-color: color-mix(in srgb, var(--tone-green-fg) 32%, var(--border));
+      }
+    }
+
+    &--cloud {
+      background:
+        radial-gradient(circle at 92% 8%, color-mix(in srgb, var(--primary) 12%, transparent), transparent 34%),
+        var(--card);
+
+      &:hover {
+        border-color: color-mix(in srgb, var(--primary) 32%, var(--border));
+      }
+    }
+
+    &__topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    &__icon {
+      display: inline-flex;
+      width: 3rem;
+      height: 3rem;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      border-radius: 0.95rem;
+
+      &--green {
+        color: var(--tone-green-fg);
+        background: var(--tone-green-bg);
+      }
+
+      &--purple {
+        color: var(--tone-purple-fg);
+        background: var(--tone-purple-bg);
+      }
+    }
+
+    &__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.65rem;
+      border: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
+      border-radius: $radius-full;
+      background: color-mix(in srgb, var(--background) 82%, transparent);
+      color: var(--muted-foreground);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.045em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    h3 {
+      margin: 0;
+      color: var(--foreground);
+      font-family: $font-family-heading;
+      font-size: clamp(1.35rem, 2vw, 1.7rem);
+      line-height: 1.18;
+      text-wrap: balance;
+    }
+
+    > p {
+      max-width: 39rem;
+      margin: 0.75rem 0 0;
+      color: var(--muted-foreground);
+      line-height: 1.6;
+      text-wrap: pretty;
+    }
+
+    &__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: auto;
+      padding-top: 1.5rem;
+    }
+
+    &__privacy {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--tone-green-fg);
+      font-size: 0.83rem;
+      font-weight: 650;
+    }
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      color: var(--primary);
+      font-size: 0.86rem;
+      font-weight: 650;
+      text-decoration: none;
+      transition: color $transition-fast;
+      touch-action: manipulation;
+
+      svg {
+        transition: transform $transition-fast;
+      }
+
+      &:hover {
+        color: var(--primary-hover);
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
+
+        svg {
+          transform: translateX(0.14rem);
+        }
+      }
+
+      &:focus-visible {
+        border-radius: 0.3rem;
+        outline: 0.18rem solid color-mix(in srgb, var(--primary) 32%, transparent);
+        outline-offset: 0.18rem;
+      }
+    }
+
+    &__link {
+      align-self: flex-start;
+      margin-top: 1rem;
+    }
+  }
+
+  .offline-demo {
+    overflow: hidden;
+    margin-top: 1.4rem;
+    border: 1px solid color-mix(in srgb, var(--border) 85%, transparent);
+    border-radius: $radius-md;
+    background: color-mix(in srgb, var(--background) 78%, transparent);
+
+    &__bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.55rem 0.85rem;
+      border-bottom: 1px solid color-mix(in srgb, var(--border) 85%, transparent);
+      background: color-mix(in srgb, var(--muted) 65%, transparent);
+    }
+
+    &__model {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--muted-foreground);
+      font-family: $font-mono;
+      font-size: 0.68rem;
+      white-space: nowrap;
+    }
+
+    &__pulse {
+      width: 0.45rem;
+      height: 0.45rem;
+      flex: 0 0 auto;
+      border-radius: $radius-full;
+      background: var(--tone-green-fg);
+      animation: demo-pulse 2.4s ease-out infinite;
+    }
+
+    &__rows {
+      display: grid;
+      gap: 0.6rem;
+      padding: 0.75rem 0.85rem;
+    }
+  }
+
+  .demo-row {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: $font-mono;
+    font-size: 0.72rem;
+
+    > svg {
+      flex: 0 0 auto;
+      color: color-mix(in srgb, var(--muted-foreground) 55%, transparent);
+    }
+
+    &__old {
+      overflow: hidden;
+      flex: 0 1 auto;
+      min-width: 0;
+      color: var(--muted-foreground);
+      opacity: 0.45;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      animation: demo-old 7s ease infinite;
+      animation-delay: var(--demo-delay, 0s);
+    }
+
+    &__new {
+      display: inline-flex;
+      min-width: 0;
+      align-items: center;
+      gap: 0.32rem;
+      color: var(--foreground);
+      font-weight: 500;
+      animation: demo-new 7s ease infinite;
+      animation-delay: var(--demo-delay, 0s);
+
+      svg {
+        flex: 0 0 auto;
+        color: var(--tone-green-fg);
+      }
+    }
+
+    &__name {
+      @include text-ellipsis;
+    }
+  }
+
+  @keyframes demo-old {
+    0%,
+    8% {
+      opacity: 1;
+    }
+
+    16%,
+    84% {
+      opacity: 0.45;
+    }
+
+    94%,
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes demo-new {
+    0%,
+    8% {
+      opacity: 0;
+      transform: translateY(0.25rem);
+    }
+
+    16%,
+    84% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    94%,
+    100% {
+      opacity: 0;
+      transform: translateY(0.25rem);
+    }
+  }
+
+  @keyframes demo-pulse {
+    0% {
+      box-shadow: 0 0 0 0 color-mix(in srgb, var(--tone-green-fg) 45%, transparent);
+    }
+
+    70%,
+    100% {
+      box-shadow: 0 0 0 0.4rem transparent;
+    }
+  }
+
+  .cloud-options {
+    display: grid;
+    gap: 0.55rem;
+    margin-top: 1.25rem;
+  }
+
+  .cloud-option {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.72rem 0.8rem;
+    border: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
+    border-radius: $radius-sm;
+    background: color-mix(in srgb, var(--background) 70%, transparent);
+    transition: border-color $transition-fast, background $transition-fast;
+
+    &:hover {
+      border-color: color-mix(in srgb, var(--primary) 24%, var(--border));
+      background: color-mix(in srgb, var(--background) 88%, transparent);
+    }
+
+    &__mark {
+      display: inline-flex;
+      width: 2rem;
+      height: 2rem;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      border-radius: 0.65rem;
+      color: var(--primary);
+      background: var(--primary-soft);
+    }
+
+    &--byok &__mark {
+      color: var(--tone-blue-fg);
+      background: var(--tone-blue-bg);
+    }
+
+    &__text {
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      gap: 0.1rem;
+
+      strong {
+        color: var(--foreground);
+        font-size: 0.9rem;
+      }
+
+      small {
+        color: var(--muted-foreground);
+        font-size: 0.75rem;
+        line-height: 1.35;
+      }
+    }
+  }
+
+  .language-strip {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(17rem, 0.78fr) minmax(0, 1.22fr);
+    gap: 1.25rem;
+    align-items: center;
+    overflow: hidden;
+    margin-top: 1rem;
+    padding: 1.3rem 1.5rem;
+    border-radius: 2rem;
+    background:
+      radial-gradient(circle at 4% 0, color-mix(in srgb, var(--tone-cyan-fg) 13%, transparent), transparent 32%),
+      radial-gradient(circle at 96% 100%, color-mix(in srgb, var(--primary) 11%, transparent), transparent 34%),
+      var(--muted);
+
+    &__copy {
+      display: flex;
+      min-width: 0;
+      align-items: center;
+      gap: 0.8rem;
+
+      > span:last-child {
+        display: flex;
+        min-width: 0;
+        flex-direction: column;
+        gap: 0.18rem;
+      }
+
+      strong {
+        color: var(--foreground);
+        font-family: $font-family-heading;
+        font-size: 1rem;
+      }
+
+      small {
+        color: var(--muted-foreground);
+        font-size: 0.75rem;
+        line-height: 1.35;
+        text-wrap: pretty;
+      }
+    }
+
+    &__icon {
+      display: inline-flex;
+      width: 2.5rem;
+      height: 2.5rem;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      border-radius: 0.9rem;
+      color: var(--primary);
+      background: color-mix(in srgb, var(--primary-soft) 86%, var(--background));
+    }
+
+    &__marquee {
+      min-width: 0;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+      mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+
+      &:hover .language-strip__track {
+        animation-play-state: paused;
+      }
+    }
+
+    &__track {
+      display: flex;
+      width: max-content;
+      animation: language-marquee 32s linear infinite;
+    }
+
+    &__group {
+      display: flex;
+      gap: 0.36rem;
+      padding-inline-end: 0.36rem;
+
+      span {
+        padding: 0.28rem 0.55rem;
+        border: 1px solid color-mix(in srgb, var(--primary) 10%, transparent);
+        border-radius: $radius-full;
+        background: color-mix(in srgb, var(--background) 62%, transparent);
+        color: color-mix(in srgb, var(--foreground) 78%, transparent);
+        font-family: $font-mono;
+        font-size: 0.68rem;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  @keyframes language-marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @include tablet {
+    .ai-modes__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .language-strip {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @include mobile {
+    .ai-modes {
+      padding: 3rem 0 0.75rem;
+
+      &__header {
+        margin-bottom: 1.65rem;
+      }
+
+      &__intro {
+        font-size: 0.98rem;
+      }
+    }
+
+    .ai-modes--embedded {
+      margin-top: 3.25rem;
+      padding: 0;
+    }
+
+    .mode-card {
+      padding: 1.25rem;
+
+      &__footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    .demo-row__old {
+      max-width: 34%;
+    }
+
+    .language-strip {
+      padding: 1rem;
+
+      &__copy {
+        align-items: flex-start;
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mode-card,
+    .mode-card a,
+    .mode-card a svg,
+    .cloud-option {
+      transition: none;
+    }
+
+    .mode-card:hover {
+      transform: none;
+    }
+
+    .demo-row__old,
+    .demo-row__new,
+    .offline-demo__pulse {
+      animation: none;
+    }
+
+    .language-strip__marquee {
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
+
+    .language-strip__track {
+      width: auto;
+      animation: none;
+    }
+
+    .language-strip__group {
+      flex-wrap: wrap;
+
+      &[aria-hidden] {
+        display: none;
+      }
+    }
+  }
+</style>

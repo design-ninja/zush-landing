@@ -1,0 +1,223 @@
+---
+title: "파일 이름 규칙 모범 사례: 원칙과 예시"
+description: "문서, 사진, 프로젝트, 날짜, 버전 및 검색 가능한 파일에 대한 실용적인 파일 명명 규칙, 복사 가능한 템플릿, 실제 예제를 사용하세요."
+date: "2026-03-05"
+slug: "file-naming-conventions-best-practices-ko"
+locale: "ko"
+translationOf: "file-naming-conventions-best-practices"
+platform: "general"
+topic: "naming"
+tags:
+  - "파일 구성"
+  - "파일 이름 지정"
+tldr: "좋은 파일 명명 규칙은 간단하고 설명적이며 검색 가능하고 일관적입니다. 즉, 소문자 단어, 예측 가능한 구분 기호, 필요한 경우 ISO 날짜를 사용하고 `final-final-v2`와 같은 모호한 이름은 사용하지 않습니다."
+reviewed: "2026-08-08"
+featuredOrder: 3
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogCopyPatterns from '@/components/blog/BlogCopyPatterns.astro';
+import BlogMarkdownImage from '@/components/blog/BlogMarkdownImage.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSafetyNote from '@/components/blog/BlogSafetyNote.astro';
+
+빠른 답변: 좋은 파일 명명 규칙은 설명적이고, 하이픈을 사용하고, 정렬 가능하고, 검색 가능하며 일관성이 있어야 합니다. 연대순이 중요한 경우 `YYYY-MM-DD`로 진행하고, 그렇지 않은 경우 주제로 진행합니다. 케밥 케이스를 사용하고, 공백과 특수 문자를 피하고, 팀 전체에서 하나의 규칙을 고수하세요.
+
+확실한 파일 명명 규칙은 파일을 검색, 정렬 또는 공유할 때마다 시간을 절약해 줍니다. 최고의 컨벤션은 가장 영리한 것이 아닙니다. 실제 업무 전반에 걸쳐 일관되게 적용할 수 있는 것입니다.
+
+대부분의 사람들에게 이는 설명이 포함된 소문자 이름, 하이픈 또는 밑줄, 날짜가 중요한 ISO 날짜, 모호한 레이블 대신 버전 번호를 의미합니다. 가장 어려운 파일이 이미지, 비디오, 스크린샷, PDF 또는 문서인 경우 [Zush 파일 이름 바꾸기](/)는 명명 단계를 자동화하여 규칙을 더 쉽게 유지할 수 있습니다.
+
+## 복사 가능한 파일 이름 지정 템플릿
+
+나중에 파일을 찾을 것으로 예상되는 방법과 일치하는 패턴을 선택하십시오. 이를 시작점으로 복사한 다음 워크플로에 필요하지 않은 필드를 제거하세요.
+
+<BlogCopyPatterns
+  patterns={[
+    {
+      label: 'Dated documents',
+      useCase: 'Reports, meeting notes, contracts',
+      value: 'YYYY-MM-DD_subject_document-type_version.ext',
+      example: '2026-08-08_q3-budget_report_v2.pdf',
+    },
+    {
+      label: 'Project files',
+      useCase: 'Design, marketing, client work',
+      value: 'project_asset-description_variant_version.ext',
+      example: 'checkout-redesign_hero-banner_dark_v3.psd',
+    },
+    {
+      label: 'Photos and video',
+      useCase: 'Events, shoots, travel libraries',
+      value: 'YYYY-MM-DD_event_description_sequence.ext',
+      example: '2026-08-08_product-launch_keynote_0042.jpg',
+    },
+    {
+      label: 'Invoices and receipts',
+      useCase: 'Finance and bookkeeping',
+      value: 'YYYY-MM-DD_vendor_document-number.ext',
+      example: '2026-08-08_acme_invoice-1048.pdf',
+    },
+  ]}
+/>
+
+반복 가능한 AI 지원 구조에 대해서는 [블록 명명](/blog/naming-blocks-file-naming-guide) 및 [Zush 템플릿](/blog/zush-templates-file-renaming-workflows)를 읽어보세요. 먼저 도구를 비교하는 경우 [AI 이름 바꾸기 도구 비교](/blog/best-ai-file-renamer-tools-2026)부터 시작하십시오.
+
+## 거의 모든 곳에서 적용되는 5가지 파일 명명 규칙
+
+<BlogMarkdownImage
+  src='/images/showcase/macos/naming-light.webp'
+alt='형식 템플릿 및 현지화 옵션을 사용한 Zush 이름 지정 패턴 구성'
+  priority
+/>
+
+### 1. 먼저 설명을 작성하세요.
+
+파일 이름은 파일을 열지 않고도 파일이 무엇인지 알려주어야 합니다.
+
+좋음:
+
+- `2026-03-05-q1-campaign-report.pdf`
+- `checkout-flow-mobile-wireframe.png`
+- `johnson-wedding-first-dance-0042.jpg`
+
+나쁨:
+
+- `document-final.pdf`
+- `image1.png`
+- `stuff-new-v2.docx`
+
+### 2. 구조를 예측 가능하게 유지하세요
+
+유사한 파일이 동일한 패턴을 따르면 혼란스러운 대신 정렬이 유용해집니다.
+
+일반적인 패턴:
+
+- `YYYY-MM-DD_description.ext`
+- `project_description_version.ext`
+- `client_asset_description.ext`
+
+### 3. 안전한 구분자를 사용하세요
+
+하이픈은 읽기 쉽고 웹 친화적이기 때문에 대부분의 작업 흐름에서 가장 쉬운 기본값입니다. 밑줄도 작동합니다. macOS에서는 공백이 허용되지만 URL, 스크립트 및 일부 공유 작업 흐름에서는 마찰이 발생합니다.
+
+### 4. 날짜가 중요한 경우 ISO 날짜를 사용하세요
+
+날짜가 파일 이름에 속하면 `YYYY-MM-DD`를 사용하세요. 파일을 알파벳순으로 정렬하면 시간순으로 유지됩니다.
+
+### 5. "최종" 대신 버전 번호를 사용하세요.
+
+`final`라는 파일이 최종 파일인 경우는 거의 없습니다. `v2`, `v3` 및 `v4`는 `final-final-really-final`보다 훨씬 더 명확합니다.
+
+<BlogProductIntro
+  title="자체적으로 적용되는 명명 규칙을 원하십니까?"
+  description="Zush는 날짜, 메타데이터, 클라이언트 및 AI 감지 콘텐츠에 대한 145개 이상의 명명 블록을 사용하여 규칙을 재사용 가능한 패턴으로 바꿉니다. 제안된 모든 이름을 적용하기 전에 미리 본 다음 필요한 경우 기록에서 이전 이름을 복원하세요."
+  links={[
+    { href: '/batch-rename-files', label: '일괄 이름 바꾸기 파일' },
+    { href: '/blog/how-to-safely-batch-rename-files', label: '미리보기 및 실행 취소 가이드' },
+    { href: '/docs/naming-blocks', label: '블록 명명' },
+    { href: '/docs/undo-history', label: '실행 취소 기록' },
+  ]}
+/>
+
+## 워크플로별 추천 패턴
+
+### 사진
+
+다음과 같은 패턴을 사용하세요.
+
+`YYYY-MM-DD_event_description_sequence.ext`
+
+예:
+
+`2026-03-05_johnson-wedding_first-dance_0042.jpg`
+
+### 디자인 및 창작 작업
+
+다음과 같은 패턴을 사용하세요.
+
+`project_asset_description_version.ext`
+
+예:
+
+`checkout-redesign_hero-banner_dark_v3.psd`
+
+명명 패턴은 단 하나의 레이어입니다. [Mac의 디자이너를 위한 디지털 자산 관리](/blog/digital-asset-management-designers-mac)는 패턴이 내부에 있어야 하는 폴더 구조, 버전 관리 및 내보내기 규칙을 다룹니다.
+
+### 비즈니스 문서
+
+다음과 같은 패턴을 사용하세요.
+
+`YYYY-MM-DD_department_document-description.ext`
+
+예:
+
+`2026-03-05_marketing_q1-campaign-report.pdf`
+
+전문적인 서류 작업에는 더 깊은 규칙이 적용됩니다. [송장 이름 지정](/blog/invoice-file-naming-convention), [의료 기록 파일 이름 바꾸기](/for-medical) 및 [합법적인 파일 이름 지정](/blog/legal-file-naming-conventions)에 대한 전용 가이드를 참조하세요.
+
+### 스크린샷 및 내보내기
+
+다음과 같은 패턴을 사용하세요.
+
+`context_description.ext`
+
+예:
+
+`figma-mobile-checkout-flow.png`
+
+## 이름 짓기가 가장 어려운 파일은 이미지, 동영상, 문서입니다.
+
+이미지와 문서는 대부분의 명명 시스템이 무너지는 부분입니다. 카메라는 카운터를 사용합니다. macOS 스크린샷은 타임스탬프를 사용합니다. 다운로드는 소스 사이트에서 제공한 것과 함께 도착합니다. 이메일 첨부 파일에는 `document.pdf` 또는 `report.docx`와 같은 일반 이름이 있는 경우가 많습니다.
+
+![AI가 생성한 설명 파일 이름을 보여주는 Zush 때문에 이름이 나올 것입니다.](/images/showcase/macos/batch-rename-light.webp)
+
+이것이 바로 이러한 파일 형식에 대해 명명 자동화가 가장 중요한 이유입니다. 규칙을 직접 정의할 수 있지만 설명 부분을 수동으로 생성하는 것은 느립니다. [Zush](https://zushapp.com)와 같은 도구는 AI를 사용하여 파일에 포함된 내용을 인식한 다음 그 위에 일관된 패턴을 적용함으로써 이를 실용적으로 만듭니다.
+
+Mac 관련 이미지 작업 흐름은 [macOS에서 AI로 이미지 이름을 바꾸는 방법](/blog/how-to-rename-images-with-ai-on-macos)를 참조하세요. Windows 명명 계층을 원하면 [검색 가능한 폴더에 대한 Windows 파일 명명 규칙](/blog/windows-file-naming-conventions-searchable-folders)를 계속 진행하세요.
+
+## 간단한 구현 계획
+
+현재 라이브러리가 지저분한 경우 모든 이름을 한 번에 바꾸지 마십시오.
+
+1. 가장 자주 사용하는 폴더를 선택하세요.
+2. 각 파일 형식에 대해 하나의 명명 패턴을 정의합니다.
+3. 가장 고통스러운 백로그의 이름을 먼저 바꾸십시오.
+4. 새로운 이미지, 비디오, 스크린샷 유입 자동화
+
+마지막 단계는 시스템이 다시 붕괴되는 것을 방지하는 것입니다. 명명 규칙과 자동 AI 지원 명명을 결합하면 가끔 정리 스프린트를 수행하는 것보다 훨씬 내구성이 좋습니다.
+
+<BlogSafetyNote
+  title="먼저 소규모 배치로 규칙을 테스트해 보세요."
+  description="폴더에 규칙을 적용하기 전에 전체 이전 이름 → 새 이름 목록을 미리 봅니다. Zush는 완료된 이름 바꾸기 작업을 기록에 보관하므로 실수를 직접 수정하는 대신 이전 이름을 복원할 수 있습니다."
+/>
+
+<BlogCTA placement='inline' platform='general' />
+
+![제트 파일 형식 규칙을 자동으로 적용하는 Zush 제트 패턴 템플릿](/videos/zush-naming-pattern.mp4)
+
+## 피해야 할 일반적인 실수
+
+- 폴더마다 다른 패턴 사용
+- 너무 공격적으로 줄여서 파일 이름이 불명확해짐
+- 일관성을 깨뜨리는 공백과 구두점을 유지합니다.
+- 콘텐츠 대신 상태(`new`, `latest`, `final`)별로 파일 이름 지정
+- 파일 이름 자체가 약한 경우 폴더에만 의존
+
+## 결론
+
+가장 좋은 파일 명명 규칙은 명확성과 일관성의 균형을 맞추는 것입니다. 설명적인 단어, 예측 가능한 구분 기호, 유용할 경우 ISO 날짜, 파일이 발전할 경우 버전 번호를 사용하세요.
+
+병목 현상이 이미지, 비디오, PDF, 스프레드시트 또는 문서의 이름을 지정하는 경우 [Zush](https://zushapp.com)는 설명 부분을 자동으로 처리하고 대규모로 규칙을 더 쉽게 적용할 수 있도록 해줍니다.
+
+## FAQ
+
+### 대부분의 사람들에게 가장 적합한 파일 명명 규칙은 무엇입니까?
+
+대부분의 사람들에게는 하이픈과 선택적 ISO 날짜가 포함된 소문자 설명 패턴이 시간이 지나도 일관성을 유지하는 가장 쉬운 방법입니다.
+
+### 하이픈이나 밑줄을 사용해야 하나요?
+
+둘 다 작동합니다. 하이픈은 일반적으로 웹 환경에서 읽기 쉽고 친숙합니다.
+
+### AI가 파일 명명 규칙에 도움을 줄 수 있나요?
+
+그렇습니다. AI는 파일 이름의 설명 부분을 수동으로 작성해야 하는 이미지, 스크린샷, 비디오, PDF 및 문서(DOCX, PPTX, XLSX)에 특히 유용합니다.

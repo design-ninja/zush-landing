@@ -1,0 +1,227 @@
+---
+title: "Convenciones de nomenclatura de archivos: reglas, ejemplos y plantillas"
+description: "Utilice convenciones prácticas de nomenclatura de archivos, plantillas listas para copiar y ejemplos reales para documentos, fotografías, proyectos, fechas, versiones y archivos con capacidad de búsqueda."
+date: "2026-03-05"
+slug: "convenciones-nombres-archivos-mejores-practicas"
+platform: "general"
+topic: "naming"
+tags:
+  - "Organización de archivos"
+  - "Nomenclatura de archivos"
+tldr: "Una buena convención de nomenclatura de archivos es simple, descriptiva, con capacidad de búsqueda y consistente: palabras en minúsculas, separadores predecibles, fechas ISO cuando sea necesario y sin nombres vagos como `final-final-v2`."
+reviewed: "2026-08-08"
+featuredOrder: 3
+locale: "es"
+translationOf: "file-naming-conventions-best-practices"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogCopyPatterns from '@/components/blog/BlogCopyPatterns.astro';
+import BlogMarkdownImage from '@/components/blog/BlogMarkdownImage.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSafetyNote from '@/components/blog/BlogSafetyNote.astro';
+
+Respuesta rápida: una buena convención de nomenclatura de archivos es descriptiva, con guiones, ordenable, buscable y coherente. Comience con `YYYY-MM-DD` cuando la cronología importe; de ​​lo contrario, comience con el tema. Utilice kebab-case, evite espacios y caracteres especiales y cumpla con una regla en todos los equipos.
+
+Una convención sólida de nomenclatura de archivos ahorra tiempo cada vez que busca, ordena o comparte un archivo. La mejor convención no es la más inteligente. Es el que puede aplicar de manera consistente en el trabajo real.
+
+Para la mayoría de las personas, eso significa nombres descriptivos en minúsculas, guiones o guiones bajos, fechas ISO cuando las fechas importan y números de versión en lugar de etiquetas vagas. Si sus archivos más difíciles son imágenes, videos, capturas de pantalla, archivos PDF o documentos, [Zush file rename](/) puede automatizar el paso de nomenclatura para que la convención sea más fácil de mantener.
+
+## Plantillas de nombres de archivos listas para copiar
+
+Elija el patrón que coincida con cómo espera encontrar el archivo más adelante. Cópielo como punto de partida y luego elimine los campos que su flujo de trabajo no necesita.
+
+<BlogCopyPatterns
+  patterns={[
+    {
+      label: 'Documentos fechados',
+      useCase: 'Informes, notas de reuniones, contratos',
+      valor: 'AAAA-MM-DD_subject_document-type_version.ext',
+      ejemplo: '2026-08-08_q3-budget_report_v2.pdf',
+    },
+    {
+      label: 'Archivos de proyecto',
+      useCase: 'Diseño, marketing, trabajo con clientes',
+      valor: 'project_asset-description_variant_version.ext',
+      ejemplo: 'checkout-redesign_hero-banner_dark_v3.psd',
+    },
+    {
+      label: 'Fotos y vídeo',
+      useCase: 'Eventos, sesiones fotográficas, bibliotecas de viajes',
+      valor: 'AAAA-MM-DD_event_description_sequence.ext',
+      ejemplo: '2026-08-08_product-launch_keynote_0042.jpg',
+    },
+    {
+      label: 'Facturas y recibos',
+      useCase: 'Finanzas y contabilidad',
+      valor: 'AAAA-MM-DD_vendor_document-number.ext',
+      ejemplo: '2026-08-08_acme_invoice-1048.pdf',
+    },
+  ]}
+/>
+
+Para estructuras repetibles asistidas por IA, lea [Naming Blocks](/blog/naming-blocks-file-naming-guide) y [Zush Templates](/blog/zush-templates-file-renaming-workflows). Si primero está comparando herramientas, comience con la [Comparación de herramientas de cambio de nombre de IA](/blog/best-ai-file-renamer-tools-2026).
+
+## Cinco reglas de nomenclatura de archivos que funcionan en casi todas partes
+
+
+<BlogMarkdownImage
+  src='/images/showcase/macos/naming-light.webp'
+  alt='Configuración de patrones de nombres en Zush con plantilla de formato y opciones de idioma'
+  prioridad
+/>
+
+### 1. Sea descriptivo primero
+
+Un nombre de archivo debería indicarle cuál es el archivo sin abrirlo.
+
+Bueno:
+
+- `2026-03-05-q1-campaign-report.pdf`
+- `checkout-flow-mobile-wireframe.png`
+- `johnson-wedding-first-dance-0042.jpg`
+
+Malo:
+
+- `document-final.pdf`
+- `image1.png`
+- `stuff-new-v2.docx`
+
+### 2. Mantenga la estructura predecible
+
+Cuando archivos similares siguen el mismo patrón, la clasificación se vuelve útil en lugar de caótica.
+
+Patrones comunes:
+
+- `YYYY-MM-DD_description.ext`
+- `project_description_version.ext`
+- `client_asset_description.ext`
+
+### 3. Utilice separadores seguros
+
+Los guiones son el valor predeterminado más sencillo para la mayoría de los flujos de trabajo porque son legibles y compatibles con la web. Los guiones bajos también funcionan. Los espacios son aceptables en macOS, pero crean fricciones en las URL, scripts y algunos flujos de trabajo compartidos.
+
+### 4. Utilice fechas ISO cuando las fechas importen
+
+Si la fecha pertenece al nombre del archivo, utilice `YYYY-MM-DD`. Mantiene el orden cronológico cuando los archivos se ordenan alfabéticamente.
+
+### 5. Utilice números de versión en lugar de "final"
+
+Un archivo llamado `final` rara vez es definitivo. `v2`, `v3` y `v4` son mucho más claros que `final-final-really-final`.
+
+<BlogProductIntro
+  title="¿Quiere una convención de nomenclatura que se aplique sola?"
+  description="Zush convierte una convención en un patrón reutilizable con más de 145 bloques de nombres para fechas, metadatos, clientes y contenido detectado por IA. Obtenga una vista previa de cada nombre propuesto antes de aplicarlo, luego restaure los nombres anteriores del Historial si es necesario."
+  links={[
+    { href: '/batch-rename-files', label: 'Cambiar el nombre de archivos por lotes' },
+    { href: '/blog/how-to-safely-batch-rename-files', label: 'Guía de vista previa y deshacer' },
+    { href: '/docs/naming-blocks', label: 'Nombrar bloques' },
+    { href: '/docs/undo-history', label: 'Deshacer historial' },
+  ]}
+/>
+
+## Patrones recomendados por flujo de trabajo
+
+### Fotografía
+
+Utilice un patrón como:
+
+`YYYY-MM-DD_event_description_sequence.ext`
+
+Ejemplo:
+
+`2026-03-05_johnson-wedding_first-dance_0042.jpg`
+
+### Diseño y trabajo creativo.
+
+Utilice un patrón como:
+
+`project_asset_description_version.ext`
+
+Ejemplo:
+
+`checkout-redesign_hero-banner_dark_v3.psd`
+
+El patrón de nombres es solo una capa. [La gestión de activos digitales para diseñadores en Mac](/blog/digital-asset-management-designers-mac) cubre la estructura de carpetas, el control de versiones y la disciplina de exportación en la que debe ubicarse el patrón.
+
+### Documentos comerciales
+
+Utilice un patrón como:
+
+`YYYY-MM-DD_department_document-description.ext`
+
+Ejemplo:
+
+`2026-03-05_marketing_q1-campaign-report.pdf`
+
+El trámite profesional tiene sus propias convenciones más profundas: consulte las guías dedicadas a [nombramiento de facturas](/blog/invoice-file-naming-convention), [renombrado de archivos de registros médicos](/for-medical) y [nombramiento de archivos legales](/blog/legal-file-naming-conventions).
+
+### Capturas de pantalla y exportaciones
+
+Utilice un patrón como:
+
+`context_description.ext`
+
+Ejemplo:
+
+`figma-mobile-checkout-flow.png`
+
+
+## Los archivos más difíciles de nombrar son imágenes, vídeos y documentos.
+
+Las imágenes y los documentos son donde la mayoría de los sistemas de nombres fallan. Las cámaras utilizan contadores. Las capturas de pantalla de macOS utilizan marcas de tiempo. Las descargas llegan con lo que les proporcionó el sitio de origen. Los archivos adjuntos de correo electrónico suelen tener nombres genéricos como `document.pdf` o `report.docx`.
+
+![Resultados del cambio de nombre por lotes de Zush que muestran nombres de archivos descriptivos generados por IA](/images/showcase/macos/batch-rename-light.webp)
+
+
+Es por eso que la automatización de nombres es más importante para estos tipos de archivos. Puede definir una convención usted mismo, pero generar la parte descriptiva manualmente es lento. Herramientas como [Zush](https://zushapp.com) lo hacen práctico al usar IA para reconocer lo que contiene el archivo y luego aplicar un patrón consistente encima.
+
+Para conocer un flujo de trabajo de imágenes específico de Mac, consulte [Cómo cambiar el nombre de imágenes con IA en macOS](/blog/how-to-rename-images-with-ai-on-macos). Si desea la capa de nombres de Windows, continúe con [Convenciones de nombres de archivos de Windows para carpetas con capacidad de búsqueda](/blog/windows-file-naming-conventions-searchable-folders).
+
+## Un plan de implementación simple
+
+Si su biblioteca actual está desordenada, no cambie el nombre de todo a la vez.
+
+1. Elija las carpetas que utiliza con más frecuencia
+2. Defina un patrón de nomenclatura para cada tipo de archivo.
+3. Cambie primero el nombre del trabajo pendiente más doloroso
+4. Automatiza la entrada de nuevas imágenes, vídeos y capturas de pantalla.
+
+Ese último paso es lo que evita que el sistema vuelva a colapsar. La combinación de una convención de nomenclatura más una denominación automática asistida por IA es mucho más duradera que los sprints de limpieza ocasionales.
+
+<BlogSafetyNote
+  title="Pruebe primero la convención en un lote pequeño"
+  description="Obtenga una vista previa de la lista completa de nombres antiguos → nombres nuevos antes de aplicar una convención a una carpeta. Zush mantiene las operaciones de cambio de nombre completadas en el Historial para que puedas restaurar nombres anteriores en lugar de reparar los errores a mano."
+/>
+
+<BlogCTA placement='inline' platform='generales' />
+
+![Demostración de patrones de nomenclatura de Zush que aplican convenciones de nomenclatura de archivos coherentes automáticamente](/videos/zush-naming-pattern.mp4)
+
+## Errores comunes a evitar
+
+- Usando diferentes patrones en cada carpeta.
+- Abreviar tan agresivamente que los nombres de archivos se vuelven crípticos
+- Mantener espacios y puntuación que rompan la coherencia.
+- Nombrar archivos por estado (`new`, `latest`, `final`) en lugar de contenido
+- Depender únicamente de las carpetas cuando los nombres de los archivos en sí son débiles
+
+
+## Conclusión
+
+La mejor convención de nomenclatura de archivos es aquella que equilibra la claridad con la coherencia. Utilice palabras descriptivas, separadores predecibles, fechas ISO cuando sean útiles y números de versión cuando los archivos evolucionen.
+
+Si su cuello de botella es nombrar imágenes, videos, archivos PDF, hojas de cálculo o documentos, [Zush](https://zushapp.com) puede manejar la parte descriptiva automáticamente y hacer que la convención sea más fácil de aplicar a escala.
+
+## Preguntas frecuentes
+
+### ¿Cuál es la mejor convención de nomenclatura de archivos para la mayoría de las personas?
+
+Para la mayoría de las personas, un patrón descriptivo en minúsculas con guiones y fechas ISO opcionales es lo más fácil de mantener coherente a lo largo del tiempo.
+
+### ¿Debo utilizar guiones o guiones bajos?
+
+Ambos funcionan. Los guiones suelen ser más fáciles de leer y más amigables en contextos web.
+
+### ¿Puede la IA ayudar con las convenciones de nomenclatura de archivos?
+
+Sí. La IA es especialmente útil para imágenes, capturas de pantalla, vídeos, archivos PDF y documentos (DOCX, PPTX, XLSX) donde, de otro modo, la parte descriptiva del nombre del archivo tendría que escribirse manualmente.

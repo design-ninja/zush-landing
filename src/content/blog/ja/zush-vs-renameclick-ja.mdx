@@ -1,0 +1,213 @@
+---
+title: "ZushとRenameClickを比較：どちらを選ぶべき？"
+description: "ZushとRenameClickを、料金、オフラインAI、Mac・Windows対応、ファイル形式、フォルダ自動化、AI検索、BYOK、取り消し機能で比較します。"
+date: "2026-05-27"
+slug: "zush-vs-renameclick-ja"
+locale: "ja"
+translationOf: "zush-vs-renameclick"
+platform: "general"
+topic: "comparisons"
+tags:
+  - "AI ファイルの名前変更"
+  - "ツールの比較"
+tldr: "RAW 写真、デザイン ファイル、iWork、オーディオ、ビデオ、60 以上の言語、BYOK、テンプレート、ネーミング ブロック、モニタリング、および 48 ドルの低価格の 1 回限りの PRO プランなど、最も広範囲の混合ファイルをカバーしたい場合は、Zush をお選びください。デフォルトのローカル AI、組み込みのファイル並べ替え、コンテンツによる AI 検索、EXIF を多用するパターン、クラウド プロバイダーに接続する前であってもプライバシー優先のワークフローが必要な場合は、RenameClick を選択してください。"
+reviewed: "2026-08-07"
+featuredOrder: 5
+---
+import BlogHighlight from '@/components/blog/BlogHighlight.astro';
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
+
+クイックアンサー: Zush は、Mac と Windows での幅広い混合ファイルの名前変更に適しています: <BlogHighlight>100 以上のサポート対象形式 </BlogHighlight> (RAW 写真、HEIC、デザイン ファイル、iWork、オーディオ、ビデオ、ドキュメント、字幕、Office ファイルを含む)、PRO 価格は <BlogHighlight> 月額 10 ドルまたは 48 ドルワンタイム</BlogHighlight>。最初の要件がすぐに使用できるローカルファースト処理である場合は、RenameClick の方が適しています。ローカルの Qwen3-VL モデルがバンドルされ、AI 検索をサポートし、ファイルの名前変更とフォルダーへの並べ替えが可能で、料金は月額 $8+ VAT または $48+ VAT の生涯費用です。
+
+**最終検証日: 2026 年 7 月 24 日**、rename.click 独自の価格設定ページおよびドキュメントに対して。
+
+このアップデートについてチェックされたソース: [Zush](/) および [RenameClick](https://rename.click/) (公開価格設定、オフライン/ローカル AI、自動フロー、AI 検索、元に戻す)、およびその [サポートされているファイルタイプのドキュメント](https://rename.click/docs/getting-started/supported-files) を含みます。
+
+RenameClick 自体を検索する場合は、公式サイトは [名前変更.クリック](https://rename.click/) です。このページは独立した機能比較であり、RenameClick のドキュメントではありません。
+
+どちらの製品も、Mac および Windows 用のデスクトップ アプリを出荷し、ローカル AI をサポートし、フォルダーを監視し、元に戻す履歴を保持し、1 回限りの価格を提供します。より広範囲の混合ファイルをカバーし、反復可能な命名システムを使用するには、Zush を選択してください。バンドルされたローカル モデル、セマンティック AI 検索、名前変更とフォルダー ルーティングの自動化を行うには、RenameClick を選択します。
+
+## RenameClick vs Zush: 迅速な判断
+
+|寸法 |Zush |RenameClick |
+|---|---|---|
+|価格 | <BlogHighlight>$10/月または $48 1 回 </BlogHighlight> | $8+ VAT/月または $48+ VAT/生涯 |
+|無料枠 |開始までに 50 回の名前変更 |無制限の AI 分析、30 クレジット/月を適用 |
+| 5 年間のコスト (1 回限りのパス) | <BlogHighlight>$48 合計</BlogHighlight> |合計 $48+ VAT |
+|プラットフォーム | Mac + Windows | Mac + Windows |
+|処理オプション | Ollama 経由のクラウド AI、BYOK、またはオフライン AI | <BlogHighlight>デフォルトで組み込まれたローカル AI </BlogHighlight> |
+|ローカルモデルがバンドルされています |いいえ、Ollama セットアップを使用します。はい、ダウンロード後の Qwen3-VL ローカル モデル |
+| AIプロバイダー | Gemini、Groq、OpenAI、Claude、Ollama オフライン |組み込みローカル、OpenAI、Gemini、Alibaba Cloud Qwen、LM Studio、Ollama |
+|画像・デザインフォーマット | RAW、HEIC、AVIF、Sketch、Figma、AI、PSD を含む 41 の画像フォーマット + 4 つのデザインフォーマット | JPEG、PNG、GIF、WebP、AVIF、BMP、SVG、HEIC、HEIF、TIFF。デザインファイルがありません |
+| RAW サポート | <BlogHighlight>はい (CR2、CR3、NEF、ARW、DNG、ORF、RAF、RW2、PEF、SRW、SR2)</BlogHighlight> |非公開 |
+|文書フォーマット | iWork を含む 37 のドキュメント/PDF フォーマット | PDF、DOC/DOCX、TXT、MD、CSV、RTF、ODT、JSON、XML、YAML、HTML、ログ、SQL、SRT/VTT、ICS/VCF |
+|ビデオ形式 | 16 の一般的な形式 |ドキュメントごとにサポートされていません |
+|オーディオ形式 | MP3、M4A、WAV、FLAC、OGG、WebM、MPGA | MP3、WAV、FLAC、M4A、AAC、ローカル音声文字起こし付き |
+|フォルダー監視 |はい |はい、自動フロー |
+|ファイルの並べ替え/移動 |タグ/メタデータの名前を変更します。フォルダーソーターではありません | <BlogHighlight>ファイルの名前変更、分類、および移動</BlogHighlight> |
+| AI コンテンツから検索 |専用の AI 検索はありません。 Finder タグ + Spotlight メタデータ | <BlogHighlight>専用 AI 検索ワークスペース</BlogHighlight> |
+|元に戻す |はい、完全なアクティビティ履歴 |はい、ドキュメントごとに完全に元に戻す/やり直します。
+|コントロールの名前付け |テンプレート、145 以上のネーミング ブロック、カスタム プロンプト |フォーマット パターン、EXIF プレースホルダー、カスタム命令 |
+|言語 | 60歳以上 |多言語対応。ドキュメントには 14 の出力言語があると記載されています。
+
+<BlogProductIntro
+  title="ファイルタイプの対応範囲と価格を比較しますか?"
+  description="Zush は、スクリーンショット、PDF、RAW 写真、デザイン ファイル、iWork、オーディオ、およびフォルダー監視、BYOK、オフライン AI モード、および Mac と Windows にわたるアンドゥを備えたビデオをカバーします。"
+  links={[
+    { href: '/', label: 'AIファイルリネーム機能' },
+    { href: '/mac', label: 'Zush for Mac' },
+    { href: '/windows', label: 'Windows用Zush' },
+    { href: '/docs/supported-file-types', label: 'サポートされているファイルの種類' },
+  ]}
+/>
+
+## Zush
+
+<BlogToolMeta platform="Mac (macOS 15+) and Windows 10/11" website="https://zushapp.com/" label="zushapp.com">
+  <Fragment slot="pricing">無料枠 (名前変更 50 回)、Pro <BlogHighlight>$10/月、または無制限の PRO 名前変更の場合は $48 の 1 回限り </BlogHighlight>、API コスト (Gemini/Groq/OpenAI/Claude) で BYOK オプション、Ollama 経由のオフライン AI</Fragment>
+</BlogToolMeta>
+
+![Zush AI の名前変更結果には、説明的な適当な名前と緑色のチェックマークが付いたファイルが表示されます](/images/showcase/macos/batch-rename-light.webp)
+
+Zush は、混合フォルダー用のデスクトップ AI ファイル名変更ツールです。現在の製品の対象範囲は幅広く、画像、RAW 写真、デザイン ファイル、ドキュメント、iWork および Office ファイル、字幕、ビデオ、オーディオにわたる 100 以上のフォーマットがあります。また、テンプレート、145 以上のネーミング ブロック、カスタム プロンプト、フォルダー監視、完全な名前変更履歴、Finder タグ、Spotlight 対応メタデータ、BYOK、Ollama 経由のオフライン AI も備えています。
+
+この比較で重要な点は、Zush がファイル タイプのサイロを強制しないことです。 `IMG_4821.HEIC`、`_DSC0019.NEF`、`checkout-flow.fig`、`voice-memo.m4a`、`client-brief.pages`、`recording.mov`、および `invoice.pdf` のフォルダーは、1 つのワークフロー内に留まることができます。
+
+価格はシンプルで、PRO の場合は月額 10 ドル、または 1 回限り 48 ドルです。どちらの有料プランでも、Cloud AI、BYOK、Offline AI にわたる名前変更の制限が削除されます。テンプレート、ネーミング ブロック、カスタム プロンプトは無料で含まれています。
+
+## RenameClick
+
+<BlogToolMeta platform="Desktop app (macOS and Windows)" website="https://rename.click/" label="rename.click">
+  <Fragment slot="pricing">無制限の AI 分析と 30 クレジット/月の適用が可能な無料プラン。プロ月額 $8+ VAT/月;プロライフタイム $48+ VAT 1 回限り</Fragment>
+</BlogToolMeta>
+
+![RenameClick デスクトップ アプリ インターフェイス (画像: rename.click)](/images/blog/competitors/renameclick.webp)
+
+RenameClick は、macOS および Windows 用のローカルファーストのデスクトップ アプリです。その中核となるのはプライバシーです。ローカル モデルを 1 回ダウンロードした後は、内蔵の Qwen3-VL プロバイダーが API キーやインターネット接続なしでデバイス上のファイルを処理できます。また、ローカル サーバー ワークフロー用の LM Studio と Ollama に加え、クラウド API キーを明示的に接続する場合は OpenAI、Google Gemini、Alibaba Cloud Qwen もサポートします。 RenameClick は、クラウド プロバイダーは Mac App Store バージョンでは利用できないことに注意しています。これらのプロバイダーが重要な場合は、直接ダウンロードを使用してください。
+
+RenameClick は単なる名前変更ツールではありません。これはファイル オーガナイザーに近いもので、ファイルの名前変更、分類、フォルダーへの移動、自動フロー監視ルールの実行、AI 検索によるコンテンツによる検索、EXIF/日付プレースホルダーからの名前の構築が可能です。サポートされるファイルのドキュメントは、一般的な画像 (JPEG、PNG、GIF、WebP、AVIF、BMP、SVG、HEIC、HEIF、TIFF)、長いドキュメント リスト (PDF、CSV、RTF、ODT、JSON、XML、YAML、HTML、ログ、SQL、SRT/VTT、ICS/VCF)、およびオーディオ (MP3、WAV、 FLAC、M4A、AAC）ローカル音声文字起こし付き。ビデオ ファイル、その他のオーディオ コーデック、アーカイブ、および実行可能ファイルは、サポートされていないものとして明示的にリストされています。
+
+## 価格設定の現実
+
+1 回限りのプランはほぼ同じなので、価格だけで比較全体を決める必要はありません。
+
+|パス | 1年目 | 3年 | 5年 |
+|---|---|---|---|
+| <BlogHighlight>Zush Pro ワンタイム</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> |
+|Zush プロ マンスリー | $120 | $360 | 600ドル |
+|オプションの API コストを伴う Zush BYOK | $48 + オプションの API | $48 + オプションの API | $48 + オプションの API |
+| RenameClick Pro のライフタイム | 48 ドル以上の付加価値税 | 48 ドル以上の付加価値税 | 48 ドル以上の付加価値税 |
+| RenameClick Pro 月額 | 96 ドル以上の付加価値税 | 288 ドル以上の付加価値税 | 480 ドル以上の付加価値税 |
+
+RenameClick の無料プランは、AI 分析が無制限で、名前変更または移動がディスクに適用された場合にのみクレジットが消費されるため、提案のプレビューにさらに寛大です。 Zush では、最初に 50 回の無料の名前変更が提供されます。完全な名前変更フローをテストしたいだけの場合は、これがより簡単です。
+
+有料使用の場合、どちらの生涯プランも基本価格は同じ 48 ドルですが、RenameClick には VAT が追加されますが、Zush には追加の VAT 追加料金が記載されていません。 RenameClick は、バンドルされたローカル モデル、AI 検索、または自動フォルダー並べ替えを特に重視する場合、その追加の税込みコストを正当化できます。
+
+## フォーマットのサポート
+
+### Zush は実際の混合フォルダーに対してより広範です
+
+Zush は、RAW 写真形式、デザイン ファイル、オーディオ、ビデオ、iWork ファイル、Office ファイル、字幕、データ/テキスト形式をサポートしています。これは、フォルダが本物であるために乱雑である場合に実際的な利点です。スクリーンショットは携帯電話の写真の横に、カメラ RAW は PDF の横に、Figma/Sketch/PSD ファイルは Keynote/Pages ドキュメントの横に、ビデオ ファイルは会議メモの横にあります。オーディオはもはやそのギャップの一部ではありません。RenameClick は一般的なオーディオ形式を処理できるようになりました。しかし、RAW、デザイン ファイル、iWork、ビデオは依然として含まれています。
+
+### RenameClick は一般的な画像、広範なドキュメント リスト、そして音声もカバーします
+
+RenameClick は、一般的な画像とドキュメントのワークフロー (JPEG、PNG、GIF、WebP、AVIF、BMP、SVG、HEIC、HEIF、TIFF、PDF、DOC/DOCX、TXT、Markdown、CSV、RTF、ODT、JSON、XML、YAML、HTML、ログ、SQL、字幕、カレンダー/連絡先ファイル) を十分にカバーしており、オーディオ (MP3、WAV、FLAC、M4A、AAC) も追加されています。ローカル音声の文字起こし付き。また、テキスト PDF および Office ドキュメントのテキスト抽出、スキャンされた PDF のビジョン フォールバック、構成可能なドキュメント テキスト トリム制限など、便利なドキュメント処理の詳細も備えています。
+
+ギャップはメディアとデザイン形式にあります。 RenameClick のドキュメントには、カメラ RAW 形式や Sketch/Figma/PSD などのデザイン ファイルは記載されておらず、ビデオ ファイル、アーカイブ、実行可能ファイルはサポートされていないと明示的に記載されています。これらの形式が重要な場合は、Zush の方が安全です。
+
+## オフライン AI とプロバイダー
+
+ローカルファーストの動作をすぐに実行したい場合は、RenameClick が優先されます。ローカル プロバイダーがデフォルトであり、モデルは製品フローの一部としてバンドルされており、ドキュメントではモデルのダウンロード後のオフラインでの使用について説明されています。API キーも API コストもかかりません。また、コンテキスト サイズ、温度、プロンプトの長さ、テキスト トリム、バッチ ファイル制限などの高度なローカル AI 設定も公開します。
+
+クラウドプロバイダーの選択と大容量の BYOK を重視する場合は、Zush が勝ちます。 Zush は、キーをローカルに保存して BYOK を通じて Gemini、Groq、OpenAI、Claude をサポートし、ローカル処理が優先される場合は Ollama 経由でオフライン AI をサポートします。 Groq と Claude は注目すべき Zush 側のオプションです。組み込みの Qwen3-VL、Alibaba Cloud Qwen、および LM Studio は、RenameClick 側のオプションです。
+
+トレードオフは簡単です。
+
+- RenameClick: ローカル AI はデフォルトの製品 ID です。
+- Zush: BYOK と幅広いフォーマットをカバーするデフォルトの製品アイデンティティであり、Ollama はオフライン ワークフローで利用できます。
+
+## 自動化と組織化
+
+どちらのツールもフォルダーを監視できますが、強調する結果は異なります。
+
+Zush フォルダー監視は、再利用可能なテンプレートと名前ブロックを使用した自動 AI 名前変更を中心に構築されています。これは、ダウンロードのクリーンアップ、スクリーンショット、定期的なクライアント フォルダー、および新しいファイルが到着したときに検索可能な名前を付ける必要がある予測可能な命名規則に適しています。
+
+RenameClick Auto Flow は、むしろルール行システムです。各行には、独自のソース フォルダー、宛先フォルダー、命名形式、カスタム指示、言語、並べ替えプリセット、再帰設定、および自動適用設定を含めることができます。複数の行を同時に実行し、ファイルが安定するまで処理前に待機し、宛先フォルダー内でのループ処理を回避し、無料プランのクレジットがなくなったときに一時停止することができます。
+
+自動化の目標が「ファイル名を一貫して変更する」ことである場合は、Zush の方がクリーンです。自動化の目標が「ファイルの名前を変更してフォルダー構造にルーティングする」ことである場合は、RenameClick の方が強力です。
+
+## 検索、メタデータ、取得
+
+Zush は、意味のあるファイル名の生成、Finder タグの追加、Spotlight 対応のメタデータの作成によって検索を支援します。これは、すでに Finder/Spotlight で検索しており、ファイル名に最も重要なコンテキストを伝えることを望んでいる Mac ユーザーに適しています。
+
+RenameClick は、別の AI Search ワークスペースを追加します。ファイル名のキーワードだけでなく、コンテンツの意味でも検索できます。たとえば、元のファイル名が `scan_001.pdf` であっても、請求書の検索では PDF スキャンと一致することがあります。 AI Search は名前変更/移動の目的では読み取り専用ですが、ファイルを表示したり、結果を除外したり、アイテムをゴミ箱に移動したりすることができます。
+
+混沌としたフォルダー内での発見には、RenameClick の AI 検索が有意義な差別化要因となります。ファイルを OS 全体で長期検索可能なアセットに変換するには、Zush のファイル名 + タグ + メタデータのワークフローが日常のレイヤーとしてより優れています。
+
+## ユースケース別に選ぶ
+
+**次の場合は Zush を選択してください:**
+
+- 特に RAW 写真、デザインファイル、ビデオ、iWork、字幕など、幅広いフォーマットをカバーする必要がある
+- より安価な生涯プランが必要です: 48 ドル + VAT ではなく、1 回限り 48 ドル
+- すべてのプランで Gemini、Groq、OpenAI、または Claude による BYOK を利用したい
+- 60 以上の出力言語が必要です
+- 繰り返し可能なファイル名構造用のテンプレートと 145 個以上のネーミング ブロックが必要
+- ローカル モデルのハードウェアを最初に考慮せずに、Mac と Windows で 1 つの名前変更ワークフローが必要な場合
+
+**次の場合は RenameClickしてください:**
+
+- デフォルトのパスとしてバンドルされたローカル AI モデルが必要な場合
+- ファイルの内容による AI 検索が必要です
+- ファイルの名前を変更して、同じオートメーション内のフォルダーに移動したい
+- EXIF を多く含む写真の命名パターンに依存している
+- LM Studio、Ollama、または Qwen ベースのワークフローを好む場合
+- ファイルの種類の幅よりもデフォルトでのオフラインの方が重要な、機密の法律文書、医療文書、または個人文書を処理している場合
+
+購入する前に、同じ 10 個の代表的なファイルをテスト フォルダーにコピーし、両方の無料ワークフローで実行します。名前の品質、プレビューの明瞭さ、処理時間、サポートされていない形式、バッチ全体を元に戻す機能を比較します。
+
+<BlogCTA placement='inline' platform='general' />
+
+## 移行のヒント
+
+RenameClick から Zush にアクセスしている場合は、まず、RenameClick が公開していないファイル (RAW 写真、デザイン ファイル、ビデオ、iWork ドキュメント) をテストしてください。これらが切り替えの理由である場合、違いはすぐに明らかになるでしょう。すでにクラウド プロバイダー キーを使用している場合は、それを Zush BYOK に追加し、プロバイダーのコストをデスクトップ アプリとは別にしておきます。
+
+Zush から RenameClick に移行する場合は、無料プランから始めて、代表的なフォルダーでローカル モデルをテストしてください。ハードウェアに注意してください: RenameClick は 16 GB のシステム RAM を推奨し、マルチ GB のローカル モデルを使用します。組み込みモデルがファイルにとって汎用的すぎる場合は、ワークフローを判断する前に、LM Studio、Ollama、またはクラウドプロバイダーを試してください。
+
+## よくある質問
+
+### RenameClick は Zush より安いですか?
+
+それはプランと現地の付加価値税によって異なります。 Zush は月額 10 ドル、または 1 回限り 48 ドルです。 RenameClick は月額 $8+ VAT、または生涯 $48+ VAT です。多くの市場では VAT 後の月々の合計額は近いですが、Zush はどちらも 48 ドルから始まり、RenameClick には VAT が追加されるため、生涯チェックアウト総額が低くなります。
+
+### RenameClick はオフラインでも動作しますか?
+
+はい。 RenameClick はローカルファーストです。ローカル モデルがダウンロードされると、組み込みローカル プロバイダーはインターネットなし、API キーなし、API コストなしで実行できます。クラウド プロバイダーには、インターネットと独自のプロバイダー キーが必要です。
+
+### Zush はオフラインでも動作しますか?
+
+はい、Ollama 経由のオフライン AI モード経由で可能です。違いは、Zush が独自のローカル モデルをデフォルト パスとしてバンドルしないことです。 Ollama をセットアップし、互換性のあるローカル モデルを選択します。
+
+### RenameClick は RAW 写真をサポートしていますか?
+
+RenameClick の公開サポート ファイル リストには、CR2、CR3、NEF、ARW、DNG、ORF、RAF、RW2、PEF、SRW、SR2 などのカメラ RAW 形式は含まれていません。 Zush はこれらの RAW 形式を明示的にサポートしています。
+
+### RenameClick はビデオまたはオーディオ ファイルをサポートしていますか?
+
+音声はあり、ビデオはありません。そのドキュメントには、ローカル音声文字起こしを含む MP3、WAV、FLAC、M4A、および AAC がリストされていますが、ビデオ ファイル (`.mp4`、`.mov`、`.mkv`、`.webm`)、その他のオーディオ コーデック、アーカイブ、および実行可能ファイルは明示的にサポートされていません。 Zush は、オーディオ リストとともに 16 のビデオ形式をサポートしています。
+
+### フォルダーの自動化に優れているのはどれですか?
+
+それは目標によって異なります。 Zush は、テンプレートとネーミング ブロックを使用した自動ネーミングに適しています。 RenameClick は、Auto Flow がファイルの名前を変更し、分類し、宛先フォルダーに移動できるため、フォルダー ルーティングに適しています。
+
+## 評決
+
+どちらの製品も真剣であり、Mac + Windows、AI バッチ名前変更、フォルダ監視、ローカル AI、プロバイダーの選択、元に戻す、ワンタイム価格など、重複する部分が実際にあります。
+
+多くの種類のファイルが含まれているためにフォルダーが乱雑である場合は、<BlogHighlight>Zush</BlogHighlight> を選択します。 RAW 写真、デザイン ファイル、iWork ドキュメント、ビデオ、字幕、および 60 以上の言語で、Zush は先を行っています。
+
+フォルダーが乱雑な場合は、プライベート ローカル分析、セマンティック検索、フォルダー ルーティングが必要なため、<BlogHighlight>RenameClick</BlogHighlight> を選択します。内蔵のローカル モデル、AI 検索、自動フロー行、EXIF パターン、フォルダーの並べ替えが、これを選択する理由です。
+
+より広範な市場の見方については、[Mac AI リネーム機能の比較](/blog/best-ai-file-renamer-tools-mac-compared)、[AIリネーム市場の比較](/blog/best-ai-file-renamer-tools-2026)、および [Zush vs NameQuick](/blog/zush-vs-namequick) を参照してください。

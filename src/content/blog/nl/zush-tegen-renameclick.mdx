@@ -1,0 +1,215 @@
+---
+title: "RenameClick vs Zush: prijzen, offline AI en formaten (2026)"
+description: "Vergelijk RenameClick en Zush op prijs, offline AI, Mac- en Windows-ondersteuning, bestandsformaten, mapautomatisering, AI Search, BYOK en undo."
+date: "2026-05-27"
+slug: "zush-tegen-renameclick"
+platform: "general"
+topic: "comparisons"
+tags:
+  - "AI File Renaming"
+  - "Tool Comparisons"
+tldr: "Kies Zush voor de breedste dekking van gemengde bestanden: RAW-foto's, designbestanden, iWork, audio, video, 60+ talen, BYOK, Templates, Naming Blocks, monitoring en een goedkoper eenmalig PRO-abonnement van $48. Kies RenameClick voor standaard lokale AI, ingebouwde bestandsordening, AI Search op inhoud, EXIF-patronen en een privacygerichte workflow zonder cloudprovider."
+reviewed: "2026-08-07"
+featuredOrder: 5
+locale: "nl"
+translationOf: "zush-vs-renameclick"
+---
+import BlogHighlight from '@/components/blog/BlogHighlight.astro';
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
+
+Kort antwoord: Zush past beter bij het hernoemen van uiteenlopende bestanden op Mac en Windows, met <BlogHighlight>100+ ondersteunde formaten</BlogHighlight>, waaronder RAW, HEIC, design, iWork, audio, video, documenten, ondertiteling en Office. PRO kost <BlogHighlight>$10 per maand of eenmalig $48</BlogHighlight>. RenameClick is geschikter als lokale verwerking direct moet werken: het bevat een lokaal Qwen3-VL-model, AI Search en het hernoemen en sorteren naar mappen, voor $8 + btw per maand of eenmalig $48 + btw.
+
+**Laatst gecontroleerd: 24 juli 2026**, aan de hand van de officiële prijspagina en documentatie van rename.click.
+
+Geraadpleegde bronnen: [Zush](/) en [RenameClick](https://rename.click/), inclusief openbare informatie over prijzen, lokale/offline AI, Auto Flow, AI Search, undo en de [documentatie over ondersteunde bestandstypen](https://rename.click/docs/getting-started/supported-files).
+
+Zoek je RenameClick zelf, dan is [rename.click](https://rename.click/) de officiële site. Dit is een onafhankelijke vergelijking, geen documentatie van RenameClick.
+
+Beide producten hebben desktopapps voor Mac en Windows, ondersteunen lokale AI, bewaken mappen, bewaren een undo-geschiedenis en bieden een eenmalige aankoop. Kies Zush voor meer gemengde formaten en herbruikbare naamsystemen. Kies RenameClick voor een ingebouwd lokaal model, semantische AI Search en automatisering die hernoemt én naar mappen routeert.
+
+## RenameClick vs Zush: snel oordeel
+
+| Onderdeel | Zush | RenameClick |
+|---|---|---|
+| Prijs | <BlogHighlight>$10 per maand of eenmalig $48</BlogHighlight> | $8 + btw per maand of eenmalig $48 + btw |
+| Gratis versie | 50 hernoemingen om te starten | Onbeperkte AI-analyse, 30 uitvoercredits per maand |
+| Kosten over 5 jaar, eenmalig | <BlogHighlight>$48 totaal</BlogHighlight> | $48 + btw totaal |
+| Platformen | Mac + Windows | Mac + Windows |
+| Verwerking | Cloud AI, BYOK of Offline AI via Ollama | <BlogHighlight>Standaard ingebouwde lokale AI</BlogHighlight> |
+| Lokaal model inbegrepen | Nee, instellen via Ollama | Ja, Qwen3-VL na download |
+| AI-providers | Gemini, Groq, OpenAI, Claude, offline Ollama | Ingebouwd lokaal, OpenAI, Gemini, Alibaba Cloud Qwen, LM Studio, Ollama |
+| Afbeeldingen/design | 41 afbeeldings- en 4 designformaten, inclusief RAW, HEIC, AVIF, Sketch, Figma, AI, PSD | JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF; geen designbestanden |
+| RAW | <BlogHighlight>Ja (CR2, CR3, NEF, ARW, DNG, ORF, RAF, RW2, PEF, SRW, SR2)</BlogHighlight> | Niet openbaar vermeld |
+| Documenten | 37 document-/pdf-formaten, inclusief iWork | PDF, DOC/DOCX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, logs, SQL, SRT/VTT, ICS/VCF |
+| Video | 16 gangbare formaten | Volgens de documentatie niet ondersteund |
+| Audio | MP3, M4A, WAV, FLAC, OGG, WebM, MPGA | MP3, WAV, FLAC, M4A, AAC met lokale transcriptie |
+| Mapbewaking | Ja | Ja, Auto Flow |
+| Sorteren/verplaatsen | Hernoemen plus tags/metadata; geen mapsorteerder | <BlogHighlight>Hernoemt, categoriseert en verplaatst</BlogHighlight> |
+| AI Search op inhoud | Geen aparte AI Search; Finder-tags + Spotlight-metadata | <BlogHighlight>Aparte AI Search-werkruimte</BlogHighlight> |
+| Undo | Ja, volledige activiteitengeschiedenis | Ja, volledig undo/redo volgens de documentatie |
+| Naamcontrole | Templates, 145+ Naming Blocks, eigen prompts | Patronen, EXIF-velden, eigen instructies |
+| Talen | 60+ | Meertalig; 14 uitvoertalen volgens de documentatie |
+
+<BlogProductIntro
+  title="Vergelijk je formaatdekking en prijzen?"
+  description="Zush ondersteunt screenshots, pdf's, RAW-foto's, design, iWork, audio en video, met mapbewaking, BYOK, Offline AI en undo op Mac en Windows."
+  links={[
+    { href: '/', label: 'AI-bestandshernoemer' },
+    { href: '/mac', label: 'Zush voor Mac' },
+    { href: '/windows', label: 'Zush voor Windows' },
+    { href: '/docs/supported-file-types', label: 'Ondersteunde bestandstypen' },
+  ]}
+/>
+
+## Zush
+
+<BlogToolMeta platform="Mac (macOS 15+) en Windows 10/11" website="https://zushapp.com/" label="zushapp.com">
+  <Fragment slot="pricing">Gratis (50 hernoemingen), Pro <BlogHighlight>$10 per maand of eenmalig $48</BlogHighlight> voor onbeperkte PRO-hernoemingen, optionele BYOK tegen API-kosten (Gemini/Groq/OpenAI/Claude), Offline AI via Ollama</Fragment>
+</BlogToolMeta>
+
+![Zush-resultaten met beschrijvende namen voor en na het hernoemen en groene vinkjes](/images/showcase/macos/batch-rename-light.webp)
+
+Zush is een AI-bestandshernoemer voor gemengde mappen. Het ondersteunt 100+ formaten: afbeeldingen, RAW-foto's, design, documenten, iWork en Office, ondertiteling, video en audio. Verder biedt het Templates, 145+ Naming Blocks, eigen prompts, mapbewaking, volledige geschiedenis, Finder-tags, Spotlight-vriendelijke metadata, BYOK en Offline AI via Ollama.
+
+Belangrijk is dat Zush bestanden niet per formaat in aparte workflows opsluit. Een map met `IMG_4821.HEIC`, `_DSC0019.NEF`, `checkout-flow.fig`, `voice-memo.m4a`, `client-brief.pages`, `recording.mov` en `invoice.pdf` kan in één workflow blijven.
+
+De prijs is eenvoudig: $10 per maand of eenmalig $48 voor PRO. Beide betaalde opties verwijderen de limiet voor Cloud AI, BYOK en Offline AI. Templates, Naming Blocks en eigen prompts blijven gratis inbegrepen.
+
+## RenameClick
+
+<BlogToolMeta platform="Desktopapp (macOS en Windows)" website="https://rename.click/" label="rename.click">
+  <Fragment slot="pricing">Gratis met onbeperkte AI-analyse en 30 uitvoercredits per maand; Pro Monthly $8 + btw per maand; Pro Lifetime eenmalig $48 + btw</Fragment>
+</BlogToolMeta>
+
+![Desktopinterface van RenameClick (afbeelding: rename.click)](/images/blog/competitors/renameclick.webp)
+
+RenameClick is een local-first desktopapp voor macOS en Windows. Na de eerste download verwerkt de ingebouwde Qwen3-VL-provider bestanden op het apparaat, zonder API-key of internet. Ook LM Studio en Ollama worden ondersteund, naast OpenAI, Google Gemini en Alibaba Cloud Qwen als je bewust cloudkeys koppelt. Cloudproviders zijn niet beschikbaar in de Mac App Store-versie; gebruik de directe download wanneer die belangrijk zijn.
+
+RenameClick is meer dan een hernoemer. Het kan bestanden hernoemen, categoriseren en verplaatsen, Auto Flow-regels uitvoeren, op betekenis zoeken met AI Search en namen bouwen met EXIF-/datumvelden. De documentatie omvat gangbare afbeeldingen (JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF), veel documenten (PDF, DOC/DOCX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, logs, SQL, SRT/VTT, ICS/VCF) en audio (MP3, WAV, FLAC, M4A, AAC) met lokale transcriptie. Video, andere audiocodecs, archieven en uitvoerbare bestanden worden expliciet uitgesloten.
+
+## De werkelijke kosten
+
+De eenmalige opties liggen te dicht bij elkaar om alleen de prijs te laten beslissen:
+
+| Optie | 1 jaar | 3 jaar | 5 jaar |
+|---|---|---|---|
+| <BlogHighlight>Zush Pro Eenmalig</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> |
+| Zush Pro Monthly | $120 | $360 | $600 |
+| Zush BYOK met optionele API-kosten | $48 + optionele API | $48 + optionele API | $48 + optionele API |
+| RenameClick Pro Lifetime | $48 + btw | $48 + btw | $48 + btw |
+| RenameClick Pro Monthly | $96 + btw | $288 + btw | $480 + btw |
+
+De gratis versie van RenameClick is ruimer voor het bekijken van voorstellen: de analyse is onbeperkt en pas bij uitvoeren van een hernoeming of verplaatsing worden credits gebruikt. Zush geeft 50 gratis hernoemingen, wat eenvoudiger is om de volledige workflow te testen.
+
+Beide levenslange licenties beginnen bij $48, maar RenameClick telt btw erbij op terwijl Zush geen toeslag vermeldt. Dat kan het waard zijn als het ingebouwde lokale model, AI Search of automatisch sorteren naar mappen zwaar weegt.
+
+## Ondersteunde formaten
+
+### Zush is breder voor echt gemengde mappen
+
+Zush ondersteunt RAW, design, audio, video, iWork, Office, ondertiteling en tekst-/dataformaten. Dat is praktisch bij echte mappen: screenshots naast telefoonfoto's, RAW naast pdf's, Figma/Sketch/PSD naast Keynote/Pages en video naast vergadernotities. Audio is geen verschil meer; RenameClick ondersteunt nu gangbare audio. RAW, design, iWork en video blijven wel onderscheidend.
+
+### RenameClick ondersteunt gangbare afbeeldingen, veel documenten en nu ook audio
+
+RenameClick verwerkt JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF, plus PDF, DOC/DOCX, TXT, Markdown, CSV, RTF, ODT, JSON, XML, YAML, HTML, logs, SQL, ondertiteling en kalender-/contactbestanden. Ook MP3, WAV, FLAC, M4A en AAC met lokale transcriptie zijn toegevoegd. Voor documenten zijn er tekstextractie, vision fallback voor gescande pdf's en instelbare tekstlimieten.
+
+Het verschil zit in media en design. De documentatie noemt geen camera-RAW of Sketch/Figma/PSD en sluit video, archieven en uitvoerbare bestanden expliciet uit. Als die formaten tellen, is Zush veiliger.
+
+## Offline AI en providers
+
+RenameClick wint als lokale verwerking meteen moet werken. De lokale provider is standaard, het model hoort bij de productflow en werkt na download zonder API-key of API-kosten. Local AI-instellingen omvatten contextgrootte, temperatuur, promptlengte, tekstafkapping en batchlimieten.
+
+Zush wint als keuzevrijheid in cloudproviders en BYOK voor grote volumes zwaarder wegen. Zush ondersteunt Gemini, Groq, OpenAI en Claude via BYOK, bewaart keys lokaal en biedt Offline AI via Ollama. Groq en Claude zijn uniek aan Zush-zijde; ingebouwd Qwen3-VL, Alibaba Cloud Qwen en LM Studio aan RenameClick-zijde.
+
+De afweging:
+
+- RenameClick: lokale AI vormt de standaard productidentiteit.
+- Zush: BYOK en brede formaatdekking staan centraal, met Ollama voor offline workflows.
+
+## Automatisering en organisatie
+
+Beide bewaken mappen, maar met verschillende doelen.
+
+Zush-mapbewaking automatiseert AI-hernoemen met herbruikbare Templates en Naming Blocks. Dat past bij Downloads, screenshots, terugkerende klantmappen en vaste conventies waarbij nieuwe bestanden direct doorzoekbaar moeten worden.
+
+RenameClick Auto Flow werkt met regels per rij. Iedere rij kan een bron, bestemming, naamformaat, instructies, taal, sorteerpreset, recursiviteit en Auto Apply krijgen. Meerdere rijen draaien tegelijk, wachten tot bestanden stabiel zijn, voorkomen lussen in doelmappen en pauzeren wanneer gratis credits op zijn.
+
+Voor ‘consequent hernoemen’ is Zush directer. Voor ‘hernoemen en daarna naar een mappenstructuur routeren’ is RenameClick sterker.
+
+## Zoeken, metadata en terugvinden
+
+Zush verbetert terugvinden met duidelijke namen, Finder-tags en Spotlight-metadata. Dat past bij gebruikers die al via Finder of Spotlight zoeken en de belangrijkste context in de bestandsnaam willen bewaren.
+
+RenameClick heeft daarnaast een aparte AI Search-werkruimte die op inhoudsbetekenis zoekt. Een zoekopdracht naar facturen kan bijvoorbeeld `scan_001.pdf` vinden. AI Search is alleen-lezen voor hernoemen/verplaatsen, maar kan bestanden tonen, resultaten uitsluiten of items naar de prullenmand verplaatsen.
+
+Voor verkenning van chaotische mappen is AI Search een echt voordeel. Om bestanden langdurig in het hele OS doorzoekbaar te maken, is de combinatie naam + tag + metadata van Zush dagelijks sterker.
+
+## Kies op basis van gebruik
+
+**Kies Zush als:**
+
+- je RAW, design, video, iWork en ondertiteling nodig hebt;
+- je eenmalig $48 verkiest boven $48 + btw;
+- je BYOK met Gemini, Groq, OpenAI of Claude in elk abonnement wilt;
+- je 60+ uitvoertalen nodig hebt;
+- je Templates en 145+ Naming Blocks wilt;
+- je dezelfde workflow op Mac en Windows wilt zonder eerst over lokale hardware na te denken.
+
+**Kies RenameClick als:**
+
+- je standaard een ingebouwd lokaal model wilt;
+- AI Search op bestandsinhoud nodig is;
+- dezelfde automatisering moet hernoemen én verplaatsen;
+- je veel EXIF-patronen gebruikt;
+- je LM Studio, Ollama of Qwen verkiest;
+- juridische, medische of privébestanden standaard offline moeten blijven.
+
+Kopieer voor aankoop dezelfde tien representatieve bestanden naar een testmap en gebruik beide gratis workflows. Vergelijk naamkwaliteit, duidelijkheid van de preview, snelheid, geweigerde formaten en het terugdraaien van de volledige batch.
+
+<BlogCTA placement='inline' platform='general' />
+
+## Migratietip
+
+Stap je van RenameClick over op Zush, test dan eerst wat RenameClick niet openbaar ondersteunt: RAW, design, video en iWork. Als die formaten de reden zijn, is het verschil snel duidelijk. Voeg een bestaande cloudkey toe aan Zush BYOK en houd providerkosten gescheiden van de app.
+
+Stap je van Zush over op RenameClick, begin dan gratis en test het lokale model met een representatieve map. RenameClick adviseert 16 GB RAM en gebruikt een model van meerdere GB. Probeer LM Studio, Ollama of een cloudprovider als het ingebouwde model te algemeen blijkt.
+
+## Veelgestelde vragen
+
+### Is RenameClick goedkoper dan Zush?
+
+Dat hangt af van abonnement en lokale btw. Zush kost $10 per maand of eenmalig $48. RenameClick kost $8 + btw per maand of eenmalig $48 + btw. Maandbedragen liggen na belasting dicht bij elkaar; Zush heeft het lagere levenslange afrekenbedrag.
+
+### Werkt RenameClick offline?
+
+Ja. Na download werkt de lokale provider zonder internet, API-key of API-kosten. Cloudproviders vereisen internet en je eigen key.
+
+### Werkt Zush offline?
+
+Ja, via Offline AI met Ollama. Zush levert alleen niet standaard een eigen lokaal model mee: je installeert Ollama en kiest een compatibel model.
+
+### Ondersteunt RenameClick RAW-foto's?
+
+De openbare lijst bevat geen CR2, CR3, NEF, ARW, DNG, ORF, RAF, RW2, PEF, SRW of SR2. Zush ondersteunt die RAW-formaten expliciet.
+
+### Ondersteunt RenameClick video of audio?
+
+Audio wel, video niet. De documentatie noemt MP3, WAV, FLAC, M4A en AAC met lokale transcriptie. Video (`.mp4`, `.mov`, `.mkv`, `.webm`), andere audiocodecs, archieven en uitvoerbare bestanden worden niet ondersteund. Zush ondersteunt naast audio 16 videoformaten.
+
+### Wie heeft betere mapautomatisering?
+
+Dat hangt af van het doel. Zush is beter voor automatisch benoemen met Templates en Naming Blocks. RenameClick is sterker in routering, omdat Auto Flow kan hernoemen, categoriseren en naar bestemmingen verplaatsen.
+
+## Oordeel
+
+Beide producten zijn serieus en overlappen: Mac + Windows, AI-batchhernoemen, mapbewaking, lokale AI, providerkeuze, undo en eenmalige aanschaf.
+
+Kies <BlogHighlight>Zush</BlogHighlight> als de map rommelig is door veel bestandstypen. RAW, design, iWork, video, ondertiteling en 60+ talen geven Zush de voorsprong.
+
+Kies <BlogHighlight>RenameClick</BlogHighlight> als privé lokale analyse, semantisch zoeken en maproutering centraal staan. Het ingebouwde model, AI Search, Auto Flow-regels, EXIF-patronen en mapsortering maken dan het verschil.
+
+Kortom: RenameClick kiest voor lokaal, RenameClick voegt semantisch zoeken toe, RenameClick kan bestanden verplaatsen en RenameClick bewaart undo voor de workflow. RenameClick ondersteunt daarnaast EXIF-patronen, RenameClick automatiseert routering met Auto Flow en RenameClick houdt de analyse desgewenst op het apparaat.
+
+Bekijk voor een bredere vergelijking ook [AI-hernoemtools voor Mac](/blog/best-ai-file-renamer-tools-mac-compared), de [marktvergelijking voor 2026](/blog/best-ai-file-renamer-tools-2026) en [Zush vs NameQuick](/blog/zush-vs-namequick).

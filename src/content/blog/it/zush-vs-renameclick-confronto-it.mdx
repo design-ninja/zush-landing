@@ -1,0 +1,213 @@
+---
+title: "RenameClick vs Zush: prezzi, IA offline e formati (2026)"
+description: "Confronta RenameClick e Zush per prezzi, IA offline, Mac e Windows, formati, automazione cartelle, ricerca IA, BYOK e annullamento."
+date: "2026-05-27"
+slug: "zush-vs-renameclick-confronto-it"
+locale: "it"
+translationOf: "zush-vs-renameclick"
+platform: "general"
+topic: "comparisons"
+tags:
+  - "Rinomina file con IA"
+  - "Confronti tra strumenti"
+tldr: "Scegli Zush per la più ampia copertura di file misti: RAW, design, iWork, audio, video, oltre 60 lingue, BYOK, modelli, blocchi di denominazione, monitoraggio e PRO a 48 $ una tantum. Scegli RenameClick per IA locale predefinita, ordinamento integrato, ricerca IA per contenuto, schemi EXIF e privacy fin dall'inizio."
+reviewed: "2026-08-07"
+featuredOrder: 5
+---
+import BlogHighlight from '@/components/blog/BlogHighlight.astro';
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
+
+Risposta rapida: Zush è più adatto alla rinomina di file misti su Mac e Windows, con <BlogHighlight>oltre 100 formati supportati</BlogHighlight>, tra cui foto RAW, HEIC, design, iWork, audio, video, documenti, sottotitoli e file Office; PRO costa <BlogHighlight>10 $/mese o 48 $ una tantum</BlogHighlight>. RenameClick è migliore se la priorità è un'elaborazione locale pronta all'uso: include un modello Qwen3-VL locale, supporta la ricerca IA, rinomina e ordina i file nelle cartelle e costa 8 $ + IVA/mese o 48 $ + IVA a vita.
+
+**Ultima verifica: 24 luglio 2026**, sulla pagina prezzi e nella documentazione di rename.click.
+
+Fonti verificate per l'aggiornamento: [Zush](/) e [RenameClick](https://rename.click/), inclusi prezzi pubblici, IA offline/locale, Auto Flow, ricerca IA, annullamento e [documentazione sui tipi di file supportati](https://rename.click/docs/getting-started/supported-files).
+
+Se cerchi RenameClick, il sito ufficiale è [rename.click](https://rename.click/). Questa pagina è un confronto indipendente delle funzionalità, non la documentazione di RenameClick.
+
+Entrambi offrono app desktop per Mac e Windows, supportano IA locale, monitorano cartelle, conservano la cronologia di annullamento e prevedono un pagamento unico. Scegli Zush per una copertura più ampia di file misti e sistemi di denominazione ripetibili. Scegli RenameClick per il modello locale incluso, la ricerca IA semantica e l'automazione che rinomina e smista nelle cartelle.
+
+## RenameClick vs Zush: verdetto rapido
+
+| Aspetto | Zush | RenameClick |
+|---|---|---|
+| Prezzi | <BlogHighlight>10 $/mese o 48 $ una tantum</BlogHighlight> | 8 $ + IVA/mese o 48 $ + IVA a vita |
+| Piano gratuito | 50 rinomine iniziali | Analisi IA illimitate, 30 crediti di applicazione/mese |
+| Costo in 5 anni (una tantum) | <BlogHighlight>48 $ totali</BlogHighlight> | 48 $ + IVA totali |
+| Piattaforme | Mac + Windows | Mac + Windows |
+| Opzioni di elaborazione | IA cloud, BYOK o IA offline tramite Ollama | <BlogHighlight>IA locale integrata come predefinita</BlogHighlight> |
+| Modello locale incluso | No, richiede configurazione Ollama | Sì, modello Qwen3-VL locale dopo il download |
+| Provider IA | Gemini, Groq, OpenAI, Claude, Ollama offline | Locale integrato, OpenAI, Gemini, Alibaba Cloud Qwen, LM Studio, Ollama |
+| Formati immagine/design | 41 formati immagine + 4 design, inclusi RAW, HEIC, AVIF, Sketch, Figma, AI, PSD | JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF; nessun file di design |
+| Supporto RAW | <BlogHighlight>Sì (CR2, CR3, NEF, ARW, DNG, ORF, RAF, RW2, PEF, SRW, SR2)</BlogHighlight> | Non elencato pubblicamente |
+| Formati documenti | 37 formati documenti/PDF, incluso iWork | PDF, DOC/DOCX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, log, SQL, SRT/VTT, ICS/VCF |
+| Formati video | 16 formati comuni | Non supportati secondo la documentazione |
+| Formati audio | MP3, M4A, WAV, FLAC, OGG, WebM, MPGA | MP3, WAV, FLAC, M4A, AAC con trascrizione vocale locale |
+| Monitoraggio cartelle | Sì | Sì, Auto Flow |
+| Ordinamento / spostamento | Rinomina più tag/metadati; non ordina in cartelle | <BlogHighlight>Rinomina, classifica e sposta file</BlogHighlight> |
+| Ricerca IA per contenuto | Nessuna ricerca IA dedicata; tag Finder + metadati Spotlight | <BlogHighlight>Spazio di lavoro dedicato alla ricerca IA</BlogHighlight> |
+| Annullamento | Sì, cronologia completa delle attività | Sì, annullamento/ripetizione completi secondo la documentazione |
+| Controlli dei nomi | Modelli, oltre 145 blocchi di denominazione, prompt personalizzati | Schemi di formato, segnaposto EXIF, istruzioni personalizzate |
+| Lingue | Oltre 60 | Multilingue; la documentazione indica 14 lingue di output |
+
+<BlogProductIntro
+  title="Stai confrontando formati e prezzi?"
+  description="Zush copre screenshot, PDF, foto RAW, design, iWork, audio e video con monitoraggio cartelle, BYOK, IA offline e annullamento su Mac e Windows."
+  links={[
+    { href: '/', label: 'Rinominatore di file con IA' },
+    { href: '/mac', label: 'Zush for Mac' },
+    { href: '/windows', label: 'Zush for Windows' },
+    { href: '/docs/supported-file-types', label: 'Tipi di file supportati' },
+  ]}
+/>
+
+## Zush
+
+<BlogToolMeta platform="Mac (macOS 15+) e Windows 10/11" website="https://zushapp.com/" label="zushapp.com">
+  <Fragment slot="pricing">Piano gratuito (50 rinomine), Pro <BlogHighlight>10 $/mese o 48 $ una tantum</BlogHighlight> per rinomine PRO illimitate, BYOK opzionale al costo API (Gemini/Groq/OpenAI/Claude), IA offline tramite Ollama</Fragment>
+</BlogToolMeta>
+
+![Risultati della rinomina IA Zush con nomi descrittivi prima e dopo e segni di spunta verdi](/images/showcase/macos/batch-rename-light.webp)
+
+Zush è un rinominatore desktop con IA per cartelle miste. L'offerta attuale è ampia: oltre 100 formati tra immagini, foto RAW, file di design, documenti, iWork e Office, sottotitoli, video e audio. Offre anche modelli, oltre 145 blocchi di denominazione, prompt personalizzati, monitoraggio delle cartelle, cronologia completa, tag Finder, metadati compatibili con Spotlight, BYOK e IA offline tramite Ollama.
+
+In questo confronto è importante che Zush non imponga compartimenti per tipo. Una cartella con `IMG_4821.HEIC`, `_DSC0019.NEF`, `checkout-flow.fig`, `voice-memo.m4a`, `client-brief.pages`, `recording.mov` e `invoice.pdf` può restare in un unico flusso.
+
+Il prezzo è semplice: 10 $/mese o 48 $ una tantum per PRO. Entrambi i piani a pagamento eliminano il limite nelle modalità IA cloud, BYOK e IA offline. Modelli, blocchi di denominazione e prompt personalizzati sono inclusi gratis.
+
+## RenameClick
+
+<BlogToolMeta platform="App desktop (macOS e Windows)" website="https://rename.click/" label="rename.click">
+  <Fragment slot="pricing">Piano gratuito con analisi IA illimitate e 30 crediti di applicazione/mese; Pro Monthly 8 $ + IVA/mese; Pro Lifetime 48 $ + IVA una tantum</Fragment>
+</BlogToolMeta>
+
+![Interfaccia dell'app desktop RenameClick (immagine: rename.click)](/images/blog/competitors/renameclick.webp)
+
+RenameClick è un'app desktop per macOS e Windows orientata al locale. Il punto centrale è la privacy: dopo aver scaricato una volta il modello, il provider Qwen3-VL integrato elabora i file sul dispositivo senza chiave API né internet. Supporta anche LM Studio e Ollama per server locali, oltre a OpenAI, Google Gemini e Alibaba Cloud Qwen quando colleghi esplicitamente chiavi API cloud. RenameClick segnala che i provider cloud non sono disponibili nella versione Mac App Store; usa il download diretto se ti servono.
+
+RenameClick non è soltanto un rinominatore, ma si avvicina a un organizzatore: rinomina, classifica, sposta nelle cartelle, esegue regole di monitoraggio Auto Flow, cerca per contenuto con la ricerca IA e costruisce nomi da segnaposto EXIF/data. La documentazione dei file supportati copre ora tre categorie: immagini comuni (JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF), un lungo elenco di documenti (PDF, DOC/DOCX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, log, SQL, SRT/VTT, ICS/VCF) e audio (MP3, WAV, FLAC, M4A, AAC) con trascrizione vocale locale. Video, altri codec audio, archivi ed eseguibili sono esplicitamente indicati come non supportati.
+
+## La realtà dei prezzi
+
+I piani una tantum sono così vicini che il prezzo da solo non dovrebbe decidere il confronto:
+
+| Percorso | Anno 1 | 3 anni | 5 anni |
+|---|---|---|---|
+| <BlogHighlight>Zush Pro una tantum</BlogHighlight> | <BlogHighlight>48 $</BlogHighlight> | <BlogHighlight>48 $</BlogHighlight> | <BlogHighlight>48 $</BlogHighlight> |
+| Zush Pro mensile | 120 $ | 360 $ | 600 $ |
+| Zush BYOK con costo API opzionale | 48 $ + API opzionale | 48 $ + API opzionale | 48 $ + API opzionale |
+| RenameClick Pro Lifetime | 48 $ + IVA | 48 $ + IVA | 48 $ + IVA |
+| RenameClick Pro Monthly | 96 $ + IVA | 288 $ + IVA | 480 $ + IVA |
+
+Il piano gratuito di RenameClick è più generoso per vedere le proposte, perché l'analisi IA è illimitata e i crediti vengono consumati soltanto applicando al disco una rinomina o uno spostamento. Zush offre 50 rinomine gratuite iniziali, una soluzione più semplice per provare il flusso completo.
+
+Per l'uso a pagamento, entrambi i piani a vita hanno un prezzo base di 48 $, ma RenameClick aggiunge l'IVA mentre Zush non elenca un sovrapprezzo IVA. RenameClick può giustificare il costo aggiuntivo se per te contano in particolare il modello locale incluso, la ricerca IA o l'ordinamento automatico nelle cartelle.
+
+## Formati supportati
+
+### Zush è più ampio per le vere cartelle miste
+
+Zush supporta formati fotografici RAW, file di design, audio, video, iWork, Office, sottotitoli e formati dati/testo. È un vantaggio pratico se le cartelle sono disordinate proprio perché reali: screenshot accanto a foto del telefono, RAW accanto a PDF, file Figma/Sketch/PSD accanto a documenti Keynote/Pages e video accanto ad appunti delle riunioni. L'audio non fa più parte del divario, perché RenameClick gestisce ora i formati comuni, ma RAW, design, iWork e video sì.
+
+### RenameClick copre immagini comuni, molti documenti e ora anche audio
+
+RenameClick copre bene i flussi comuni di immagini e documenti — JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF, oltre a PDF, DOC/DOCX, TXT, Markdown, CSV, RTF, ODT, JSON, XML, YAML, HTML, log, SQL, sottotitoli e file calendario/contatti — e ha aggiunto audio (MP3, WAV, FLAC, M4A, AAC) con trascrizione vocale locale. Offre anche dettagli utili per i documenti: estrazione del testo da PDF testuali e Office, ripiego sulla visione per PDF scansionati e limiti configurabili al testo analizzato.
+
+Il divario riguarda formati multimediali e di design. La documentazione di RenameClick non elenca RAW delle fotocamere o file Sketch/Figma/PSD e indica esplicitamente video, archivi ed eseguibili come non supportati. Se questi formati contano, Zush è più sicuro.
+
+## IA offline e provider
+
+RenameClick vince se vuoi subito un comportamento orientato al locale. Il provider locale è predefinito, il modello è incluso nel flusso del prodotto e la documentazione descrive l'uso offline dopo il download, senza chiave né costi API. Espone anche impostazioni locali avanzate come dimensione del contesto, temperatura, lunghezza del prompt, riduzione del testo e limiti dei file batch.
+
+Zush vince se contano di più la scelta del provider cloud e BYOK ad alto volume. Supporta Gemini, Groq, OpenAI e Claude tramite BYOK, con chiavi archiviate localmente, e offre IA offline tramite Ollama quando l'elaborazione locale è prioritaria. Groq e Claude distinguono Zush; Qwen3-VL integrato, Alibaba Cloud Qwen e LM Studio distinguono RenameClick.
+
+Il compromesso è semplice:
+
+- RenameClick: l'IA locale è l'identità predefinita del prodotto.
+- Zush: BYOK e ampia copertura dei formati sono l'identità predefinita, con Ollama disponibile per i flussi offline.
+
+## Automazione e organizzazione
+
+Entrambi possono monitorare cartelle, ma puntano a risultati diversi.
+
+Il monitoraggio Zush ruota attorno alla rinomina automatica con IA, modelli riutilizzabili e blocchi di denominazione. È adatto alla pulizia di Download, screenshot, cartelle ricorrenti dei clienti e convenzioni prevedibili, dove i nuovi file devono ricevere nomi ricercabili all'arrivo.
+
+Auto Flow di RenameClick è piuttosto un sistema di righe-regola. Ogni riga può avere cartella sorgente, destinazione, formato del nome, istruzioni, lingua, preset di ordinamento, ricorsione e Auto Apply propri. Può eseguire più righe insieme, attendere che i file si stabilizzino prima dell'elaborazione, evitare cicli nelle destinazioni e fermarsi quando finiscono i crediti gratuiti.
+
+Se l'obiettivo è «rinominare coerentemente», Zush è più lineare. Se è «rinominare e smistare in strutture di cartelle», RenameClick è più forte.
+
+## Ricerca, metadati e recupero
+
+Zush facilita il recupero generando nomi significativi, aggiungendo tag Finder e scrivendo metadati compatibili con Spotlight. È adatto a utenti Mac che già cercano con Finder/Spotlight e vogliono che il nome contenga il contesto principale.
+
+RenameClick aggiunge uno spazio separato di ricerca IA. Permette di cercare per significato del contenuto, non solo per parole nel nome. Per esempio, una ricerca di fatture può trovare scansioni PDF anche se il nome originale è `scan_001.pdf`. La ricerca IA è in sola lettura rispetto a rinomina e spostamento, ma può mostrare file, escludere risultati o spostare elementi nel cestino.
+
+Per scoprire contenuti in cartelle caotiche, la ricerca IA di RenameClick è un elemento distintivo. Per trasformare i file in risorse ricercabili a lungo termine nel sistema operativo, il flusso nome + tag + metadati di Zush è il livello quotidiano migliore.
+
+## Scegliere per caso d'uso
+
+**Scegli Zush se:**
+
+- Ti serve la copertura più ampia, soprattutto per RAW, design, video, iWork e sottotitoli
+- Vuoi un piano a vita più economico: 48 $ una tantum anziché 48 $ + IVA
+- Vuoi BYOK con Gemini, Groq, OpenAI o Claude disponibile in ogni piano
+- Ti servono oltre 60 lingue di output
+- Vuoi modelli e oltre 145 blocchi di denominazione per strutture ripetibili
+- Vuoi un unico flusso su Mac e Windows senza pensare prima all'hardware per il modello locale
+
+**Scegli RenameClick se:**
+
+- Vuoi un modello IA locale incluso come percorso predefinito
+- Ti serve la ricerca IA in base al contenuto
+- Vuoi rinominare e spostare nelle cartelle con la stessa automazione
+- Dipendi da schemi fotografici ricchi di dati EXIF
+- Preferisci flussi basati su LM Studio, Ollama o Qwen
+- Elabori documenti legali, medici o privati sensibili, dove l'offline predefinito conta più dell'ampiezza dei formati
+
+Prima dell'acquisto, copia gli stessi dieci file rappresentativi in una cartella di prova ed eseguili in entrambi i flussi gratuiti. Confronta qualità dei nomi, chiarezza dell'anteprima, tempi, formati non supportati e possibilità di annullare l'intero batch.
+
+<BlogCTA placement='inline' platform='general' />
+
+## Suggerimento per la migrazione
+
+Se passi da RenameClick a Zush, prova prima i file che RenameClick non copre pubblicamente: foto RAW, design, video e documenti iWork. Se sono il motivo del passaggio, la differenza sarà subito evidente. Se usi già una chiave cloud, aggiungila in Zush BYOK e mantieni separati i costi del provider da quelli dell'app desktop.
+
+Se passi da Zush a RenameClick, inizia dal piano gratuito e prova il modello locale su una cartella rappresentativa. Considera l'hardware: RenameClick consiglia 16 GB di RAM e usa un modello locale di vari GB. Se quello integrato è troppo generico, prova LM Studio, Ollama o un provider cloud prima di giudicare il flusso.
+
+## Domande frequenti
+
+### RenameClick costa meno di Zush?
+
+Dipende dal piano e dall'IVA locale. Zush costa 10 $/mese o 48 $ una tantum. RenameClick costa 8 $ + IVA/mese o 48 $ + IVA a vita. In molti mercati i totali mensili sono vicini dopo l'IVA, mentre Zush ha il totale a vita più basso perché entrambi partono da 48 $ e RenameClick aggiunge l'IVA.
+
+### RenameClick funziona offline?
+
+Sì. RenameClick è orientato al locale. Dopo il download del modello, il provider integrato funziona senza internet, chiave API o costi API. I provider cloud richiedono internet e una chiave propria.
+
+### Zush funziona offline?
+
+Sì, tramite la modalità IA offline via Ollama. La differenza è che Zush non include un modello locale proprio come percorso predefinito: configuri Ollama e scegli un modello compatibile.
+
+### RenameClick supporta le foto RAW?
+
+L'elenco pubblico di RenameClick non include formati RAW come CR2, CR3, NEF, ARW, DNG, ORF, RAF, RW2, PEF, SRW o SR2. Zush li supporta esplicitamente.
+
+### RenameClick supporta file video o audio?
+
+Audio sì, video no. La documentazione elenca MP3, WAV, FLAC, M4A e AAC con trascrizione vocale locale, mentre video (`.mp4`, `.mov`, `.mkv`, `.webm`), altri codec audio, archivi ed eseguibili non sono esplicitamente supportati. Zush supporta 16 formati video oltre all'elenco audio.
+
+### Quale offre l'automazione delle cartelle migliore?
+
+Dipende dall'obiettivo. Zush è migliore per la denominazione automatica con modelli e blocchi di denominazione. RenameClick è migliore per lo smistamento, perché Auto Flow rinomina, classifica e sposta nelle destinazioni.
+
+## Verdetto
+
+Entrambi sono prodotti seri e la sovrapposizione è reale: Mac + Windows, rinomina batch con IA, monitoraggio cartelle, IA locale, scelta del provider, annullamento e pagamento unico.
+
+Scegli <BlogHighlight>Zush</BlogHighlight> se la cartella è disordinata perché contiene molti tipi di file. Foto RAW, design, documenti iWork, video, sottotitoli e oltre 60 lingue sono i campi in cui Zush è avanti.
+
+Scegli <BlogHighlight>RenameClick</BlogHighlight> se la cartella richiede analisi locale privata, ricerca semantica e smistamento. Modello locale integrato, ricerca IA, righe Auto Flow, schemi EXIF e ordinamento delle cartelle sono i motivi per sceglierlo.
+
+Per una panoramica più ampia su Zush consulta il [confronto dei rinominatori IA per Mac](/blog/best-ai-file-renamer-tools-mac-compared), il [confronto del mercato dei rinominatori IA](/blog/best-ai-file-renamer-tools-2026) e [Zush vs NameQuick](/blog/zush-vs-namequick).

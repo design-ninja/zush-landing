@@ -1,0 +1,223 @@
+---
+title: "Bestandsnaamconventies: regels, voorbeelden en sjablonen"
+description: "Gebruik praktische naamconventies, kopieerbare patronen en voorbeelden voor documenten, foto's, projecten, datums, versies en zoeken."
+date: "2026-03-05"
+slug: "bestandsnaamconventies-praktische-tips"
+platform: "general"
+topic: "naming"
+tags:
+  - "File Organization"
+  - "File Naming"
+tldr: "Een goede bestandsnaamconventie is eenvoudig, beschrijvend, doorzoekbaar en consistent: kleine letters, voorspelbare scheidingstekens, ISO-datums waar nodig en geen vage namen als `final-final-v2`."
+reviewed: "2026-08-08"
+featuredOrder: 3
+locale: "nl"
+translationOf: "file-naming-conventions-best-practices"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogCopyPatterns from '@/components/blog/BlogCopyPatterns.astro';
+import BlogMarkdownImage from '@/components/blog/BlogMarkdownImage.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSafetyNote from '@/components/blog/BlogSafetyNote.astro';
+
+Kort antwoord: een goede bestandsnaamconventie is beschrijvend, gebruikt koppeltekens, sorteert en zoekt gemakkelijk en blijft consistent. Begin met `YYYY-MM-DD` wanneer tijdsvolgorde belangrijk is, anders met het onderwerp. Gebruik kebab-case, vermijd spaties en speciale tekens en hanteer in het hele team dezelfde regel.
+
+Een sterke conventie bespaart tijd bij iedere zoek-, sorteer- en deelactie. De beste is niet de slimste, maar degene die je zonder uitzonderingen in het echte werk kunt volhouden.
+
+Voor de meeste mensen betekent dat beschrijvende woorden in kleine letters, koppeltekens of underscores, nuttige ISO-datums en versienummers in plaats van vage labels. Zijn afbeeldingen, video, screenshots, pdf's of documenten het lastigst, dan automatiseert de [Zush-hernoemtool](/) dit werk en helpt hij de conventie vol te houden.
+
+## Kopieerbare naamtemplates
+
+Kies het patroon op basis van hoe je het bestand later zoekt. Kopieer het en verwijder velden die je niet nodig hebt.
+
+<BlogCopyPatterns
+  patterns={[
+    {
+      label: 'Gedateerde documenten',
+      useCase: 'Rapporten, notulen, contracten',
+      value: 'YYYY-MM-DD_onderwerp_documenttype_versie.ext',
+      example: '2026-08-08_budget-q3_rapport_v2.pdf',
+    },
+    {
+      label: 'Projectbestanden',
+      useCase: 'Design, marketing, klantwerk',
+      value: 'project_asset-beschrijving_variant_versie.ext',
+      example: 'checkout-redesign_hero-banner_donker_v3.psd',
+    },
+    {
+      label: 'Foto en video',
+      useCase: 'Evenementen, shoots, reizen',
+      value: 'YYYY-MM-DD_evenement_beschrijving_volgnummer.ext',
+      example: '2026-08-08_productlancering_keynote_0042.jpg',
+    },
+    {
+      label: 'Facturen en bonnetjes',
+      useCase: 'Financiën en boekhouding',
+      value: 'YYYY-MM-DD_leverancier_documentnummer.ext',
+      example: '2026-08-08_acme_factuur-1048.pdf',
+    },
+  ]}
+/>
+
+Lees voor herbruikbare, AI-ondersteunde structuren [Naming Blocks](/blog/naming-blocks-file-naming-guide) en [Zush Templates](/blog/zush-templates-file-renaming-workflows). Wil je eerst tools vergelijken, bekijk dan de [vergelijking van AI-hernoemtools](/blog/best-ai-file-renamer-tools-2026).
+
+## Vijf regels die bijna overal werken
+
+<BlogMarkdownImage
+  src='/images/showcase/macos/naming-light.webp'
+  alt='Zush-instelling voor een naamgevingspatroon met formaatsjabloon en taalopties'
+  priority
+/>
+
+### 1. Beschrijf eerst
+
+De naam moet zonder openen vertellen wat het bestand is.
+
+Goed:
+
+- `2026-03-05-campagnerapport-q1.pdf`
+- `checkout-flow-wireframe-mobile.png`
+- `bruiloft-johnson-eerste-dans-0042.jpg`
+
+Slecht:
+
+- `document-final.pdf`
+- `image1.png`
+- `nieuw-ding-v2.docx`
+
+### 2. Houd de structuur voorspelbaar
+
+Als vergelijkbare bestanden hetzelfde patroon volgen, wordt sorteren nuttig in plaats van chaotisch.
+
+Gangbare patronen:
+
+- `YYYY-MM-DD_beschrijving.ext`
+- `project_beschrijving_versie.ext`
+- `klant_asset_beschrijving.ext`
+
+### 3. Gebruik veilige scheidingstekens
+
+Koppeltekens zijn standaard de beste keuze: leesbaar en geschikt voor het web. Underscores werken ook. macOS accepteert spaties, maar die zijn onhandig in URL's, scripts en sommige gedeelde workflows.
+
+### 4. Gebruik ISO-datums wanneer de datum telt
+
+Hoort een datum in de naam, gebruik dan `YYYY-MM-DD`. Alfabetisch sorteren behoudt zo automatisch de chronologische volgorde.
+
+### 5. Kies versies in plaats van ‘final’
+
+Een bestand met `final` in de naam is dat zelden. `v2`, `v3` en `v4` zijn veel duidelijker dan `final-final-echt-final`.
+
+<BlogProductIntro
+  title="Een conventie die zichzelf toepast?"
+  description="Zush zet een conventie om in een herbruikbaar patroon met 145+ Naming Blocks voor datums, metadata, klanten en door AI herkende inhoud. Bekijk iedere naam vooraf en herstel oude namen zo nodig vanuit History."
+  links={[
+    { href: '/batch-rename-files', label: 'Bestanden in batches hernoemen' },
+    { href: '/blog/how-to-safely-batch-rename-files', label: 'Handleiding voor preview en undo' },
+    { href: '/docs/naming-blocks', label: 'Naming Blocks' },
+    { href: '/docs/undo-history', label: 'Undo History' },
+  ]}
+/>
+
+## Aanbevolen patronen per workflow
+
+### Fotografie
+
+Gebruik:
+
+`YYYY-MM-DD_evenement_beschrijving_volgnummer.ext`
+
+Voorbeeld:
+
+`2026-03-05_bruiloft-johnson_eerste-dans_0042.jpg`
+
+### Design en creatie
+
+Gebruik:
+
+`project_asset_beschrijving_versie.ext`
+
+Voorbeeld:
+
+`checkout-redesign_hero-banner_donker_v3.psd`
+
+Het patroon is maar één laag. [Digital asset management voor designers op Mac](/blog/digital-asset-management-designers-mac) behandelt de mappenstructuur, versies en exportdiscipline eromheen.
+
+### Zakelijke documenten
+
+Gebruik:
+
+`YYYY-MM-DD_afdeling_documentbeschrijving.ext`
+
+Voorbeeld:
+
+`2026-03-05_marketing_campagnerapport-q1.pdf`
+
+Zakelijke documenten verdienen eigen regels: [factuurnamen](/blog/invoice-file-naming-convention), [medische dossiers](/for-medical) en [juridische dossiers](/blog/legal-file-naming-conventions).
+
+### Screenshots en exports
+
+Gebruik:
+
+`context_beschrijving.ext`
+
+Voorbeeld:
+
+`figma_checkout-flow-mobile.png`
+
+## Afbeeldingen, video's en documenten zijn het lastigst te benoemen
+
+Naamgevingssystemen mislukken vaak bij deze bestanden. Camera's gebruiken tellers, macOS-screenshots tijdstempels, downloads de naam van de website en bijlagen algemene namen als `document.pdf` of `report.docx`.
+
+![Zush-resultaten met beschrijvende, door AI gemaakte namen](/images/showcase/macos/batch-rename-light.webp)
+
+Juist daarom is automatisering hier nuttig. Een conventie definiëren is eenvoudig, maar het beschrijvende deel steeds handmatig schrijven kost tijd. Tools als [Zush](https://zushapp.com) herkennen inhoud met AI en passen daarna een consistent patroon toe.
+
+Volg voor afbeeldingen op Mac [afbeeldingen hernoemen met AI op macOS](/blog/how-to-rename-images-with-ai-on-macos). Ga voor Windows verder met [Windows-conventies voor doorzoekbare mappen](/blog/windows-file-naming-conventions-searchable-folders).
+
+## Eenvoudig invoeringsplan
+
+Hernoem een rommelige bibliotheek niet in één keer.
+
+1. Kies de meest gebruikte mappen.
+2. Definieer één patroon per bestandstype.
+3. Verwerk eerst de hinderlijkste achterstand.
+4. Automatiseer nieuw binnenkomende afbeeldingen, video's en screenshots.
+
+De laatste stap voorkomt dat het systeem opnieuw instort. Een conventie gekoppeld aan automatisch AI-hernoemen houdt beter stand dan incidentele opruimacties.
+
+<BlogSafetyNote
+  title="Test eerst met een kleine batch"
+  description="Bekijk de volledige lijst oude naam → nieuwe naam voordat je een conventie op een map toepast. Zush bewaart voltooide acties in History, zodat je oude namen kunt herstellen in plaats van fouten handmatig te repareren."
+/>
+
+<BlogCTA placement='inline' platform='general' />
+
+![Demonstratie waarin Zush automatisch consistente naamconventies toepast](/videos/zush-naming-pattern.mp4)
+
+## Veelgemaakte fouten
+
+- In iedere map een ander patroon gebruiken.
+- Zo sterk afkorten dat namen onbegrijpelijk worden.
+- Spaties en leestekens bewaren die consistentie verstoren.
+- Benoemen op status (`nieuw`, `laatste`, `final`) in plaats van inhoud.
+- Alleen op mappen vertrouwen terwijl namen vaag blijven.
+
+## Conclusie
+
+De beste conventie brengt duidelijkheid en consistentie in balans. Gebruik beschrijvende woorden, voorspelbare scheidingstekens, nuttige ISO-datums en versienummers voor bestanden die veranderen.
+
+Als het knelpunt het benoemen van afbeeldingen, video's, pdf's, spreadsheets of documenten is, automatiseert [Zush](https://zushapp.com) het beschrijvende deel en past het de conventie op schaal toe.
+
+## Veelgestelde vragen
+
+### Welke conventie past bij de meeste mensen?
+
+Een beschrijvend patroon in kleine letters, met koppeltekens en optionele ISO-datums, is het eenvoudigst vol te houden.
+
+### Moet ik koppeltekens of underscores gebruiken?
+
+Beide werken. Koppeltekens zijn doorgaans leesbaarder en geschikter voor het web.
+
+### Kan AI helpen een conventie toe te passen?
+
+Ja. Vooral bij afbeeldingen, screenshots, video's, pdf's en DOCX-, PPTX- of XLSX-documenten, waar je anders het beschrijvende deel handmatig moet schrijven.

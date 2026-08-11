@@ -221,6 +221,19 @@ const alternates: AlternateLink[] | undefined =
       ]
     : undefined;
 
+const languagePaths: Partial<Record<Locale, string>> | undefined =
+  translationLocales.length > 0
+    ? {
+        en: blogPath,
+        ...Object.fromEntries(
+          translationLocales.map((locale) => [
+            locale,
+            `/${LOCALE_META[locale as Locale].slug}/blog/${translations[locale]!.slug}`,
+          ]),
+        ),
+      }
+    : undefined;
+
 const firstTranslationLocale = translationLocales[0];
 const firstTranslation = firstTranslationLocale ? translations[firstTranslationLocale] : undefined;
 const translationLink: TranslationLink | undefined =
@@ -244,5 +257,6 @@ const translationLink: TranslationLink | undefined =
   chromeBasePath='/'
   blogIndexHref='/blog'
   alternates={alternates}
+  languagePaths={languagePaths}
   translationLink={translationLink}
 />

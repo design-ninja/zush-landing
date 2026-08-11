@@ -3,7 +3,8 @@ import Heading from '@/components/Heading';
 import Text from '@/components/Text';
 import BlogPostCard from '@/components/blog/BlogPostCard.astro';
 import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module.scss';
-import { getAllPosts } from '@/data/blog';
+import { getAllPosts, getTranslationsBySlug, type BlogPost } from '@/data/blog';
+import { getLocaleBasePath, type Locale } from '@/i18n/config';
 import styles from './ProfessionGuides.module.scss';
 
 interface Props {
@@ -11,11 +12,12 @@ interface Props {
   title: string;
   description: string;
   slugs: readonly string[];
+  locale?: Locale;
 }
 
-const { id, title, description, slugs } = Astro.props as Props;
+const { id, title, description, slugs, locale = 'en' } = Astro.props as Props;
 const posts = await getAllPosts();
-const guides = slugs.map((slug) => {
+const englishGuides = slugs.map((slug) => {
   const post = posts.find((item) => item.slug === slug);
 
   if (!post) {
@@ -24,9 +26,34 @@ const guides = slugs.map((slug) => {
 
   return post;
 });
+let guides: BlogPost[] = englishGuides;
+
+if (locale !== 'en') {
+  guides = (
+    await Promise.all(
+      englishGuides.map(async (post) => (await getTranslationsBySlug(post.slug))[locale]),
+    )
+  ).filter((post): post is BlogPost => Boolean(post));
+}
+
+const basePath = getLocaleBasePath(locale);
+const browseLabels: Record<Locale, string> = {
+  en: 'Browse all Zush guides',
+  fr: 'Voir tous les guides Zush',
+  de: 'Alle Zush-Anleitungen ansehen',
+  es: 'Ver todas las guías de Zush',
+  'pt-br': 'Ver todos os guias da Zush',
+  it: 'Vedi tutte le guide Zush',
+  nl: 'Alle Zush-handleidingen bekijken',
+  tr: 'Tüm Zush rehberlerine göz atın',
+  ja: 'Zushのすべてのガイドを見る',
+  ko: '모든 Zush 가이드 보기',
+  'zh-cn': '浏览所有 Zush 指南',
+  ar: 'تصفّح جميع أدلة Zush',
+};
 ---
 
-<section class={styles.Guides} aria-labelledby={`${id}-title`}>
+{guides.length > 0 && <section class={styles.Guides} aria-labelledby={`${id}-title`}>
   <div class={styles.Guides__Container}>
     <div class={sectionHeaderStyles.SectionHeader}>
       <Heading
@@ -49,11 +76,11 @@ const guides = slugs.map((slug) => {
     </div>
 
     <div class={styles.Guides__List}>
-      {guides.map((post) => <BlogPostCard post={post} />)}
+      {guides.map((post) => <BlogPostCard post={post} basePath={basePath} />)}
     </div>
 
     <div class={styles.Guides__Action}>
-      <a class={styles.Guides__ActionLink} href="/blog">Browse all Zush guides</a>
+      <a class={styles.Guides__ActionLink} href="/blog">{browseLabels[locale]}</a>
     </div>
   </div>
-</section>
+</section>}

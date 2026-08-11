@@ -55,6 +55,8 @@ interface Props {
    * logic entirely, and x-default is derived from the `en` entry.
    */
   alternates?: AlternateLink[];
+  /** Explicit same-page language paths for the header switcher on routes outside LOCALIZED_ROUTES. */
+  languagePaths?: Partial<Record<Locale, string>>;
 }
 
 const {
@@ -69,6 +71,7 @@ const {
   headerWidth = 'default',
   headerNav,
   alternates,
+  languagePaths,
 } = Astro.props;
 
 const canonicalUrl = getCanonicalUrl(seo.canonicalPath);
@@ -308,6 +311,7 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
           route={route}
           width={headerWidth}
           navItems={headerNav}
+          languagePaths={languagePaths}
         />
       )}
       <main

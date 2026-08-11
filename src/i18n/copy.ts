@@ -1272,7 +1272,7 @@ const EN_COPY: LocaleCopy = {
       'All future updates included',
       'Pays off in ~5 months',
     ],
-    monthlyPlan: {
+  monthlyPlan: {
       titleSuffix: 'Monthly',
       description: 'Flexible monthly plan',
       buttonText: 'Start PRO Monthly',
@@ -2831,7 +2831,7 @@ const localizedPricingExtras: Record<Exclude<Locale, 'en'>, PricingExtrasCopy> =
     monthlyPlan: {
       titleSuffix: 'Monthly',
       description: 'Flexibel maandelijks plan',
-      buttonText: 'Start PRO Monthly',
+      buttonText: 'Start maandelijks PRO',
       billing: '/maand',
     },
     oneTimePlan: {
@@ -3988,7 +3988,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     },
     platforms: localizedPlatforms.de,
     seo: {
-      '/': { title: 'KI-Dateiumbenenner für Mac & Windows | Zush', description: 'Dateien mit KI nach Inhalt stapelweise und in großen Mengen umbenennen. Screenshots, PDFs, Fotos, Videos, Audio, Designdateien und Dokumente.' },
+      '/': { title: 'KI-Dateiumbenenner & -organisator für Mac und Windows | Zush', description: 'KI-Dateiumbenenner für Mac und Windows. Benenne 104 Formate nach Inhalt um, darunter RAW-Fotos, PDFs, Video-, Audio- und Designdateien. Vorschau und Undo für jeden Stapel.' },
       '/rename-pdf-with-ai': {
         title: 'PDFs mit KI umbenennen · Rechnungen, Verträge | Zush',
         description: 'KI-PDF-Umbenenner. Zush liest Rechnungen, Verträge, Scans, Belege und Berichte und benennt PDF-Dateien nach Inhalt in durchsuchbare Namen um.',
@@ -4100,7 +4100,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     pricing: { planName: 'Zush PRO 🌟', planDescription: 'Achat unique • Accès à vie', billing: 'une fois', buttonText: 'Acheter PRO', buttonHint: 'Garantie 14 jours • Paiement sécurisé via Paddle', features: localizedPricingFeatures.fr, ...localizedPricingExtras.fr },
     platforms: localizedPlatforms.fr,
     seo: {
-      '/': { title: 'Renommeur de fichiers IA pour Mac & Windows | Zush', description: 'Renommez des fichiers par lot et en masse selon leur contenu avec l’IA sur Mac et Windows. Screenshots, PDF, photos, vidéos, audio, design et documents.' },
+      '/': { title: 'Renommeur et organiseur de fichiers IA pour Mac et Windows | Zush', description: 'Renommeur de fichiers IA pour Mac et Windows. Renommez 104 formats selon leur contenu, dont photos RAW, PDF, vidéos, audio et fichiers de design. Aperçu et annulation pour chaque lot.' },
       '/rename-pdf-with-ai': {
         title: 'Renommer des PDF avec l’IA · Factures, contrats | Zush',
         description: 'Renommeur de PDF par IA. Zush lit factures, contrats, scans, reçus et rapports, puis renomme les fichiers PDF selon leur contenu en noms consultables.',
@@ -4176,7 +4176,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     pricing: { planName: 'Zush PRO 🌟', planDescription: 'Compra única • Acesso vitalício', billing: 'único', buttonText: 'Comprar PRO', buttonHint: 'Garantia de 14 dias • Seguro via Paddle', features: localizedPricingFeatures['pt-br'], ...localizedPricingExtras['pt-br'] },
     platforms: localizedPlatforms['pt-br'],
     seo: {
-      '/': { title: 'Renomeador de arquivos com IA para Mac & Windows | Zush', description: 'Renomeie arquivos em lote e em massa pelo conteúdo com IA no Mac e Windows. Screenshots, PDFs, fotos, vídeos, áudio, design e documentos.' },
+      '/': { title: 'Renomeador e organizador de arquivos com IA para Mac e Windows | Zush', description: 'Renomeador de arquivos com IA para Mac e Windows. Renomeie 104 formatos pelo conteúdo, incluindo fotos RAW, PDFs, vídeo, áudio e arquivos de design. Prévia e desfazer em cada lote.' },
       '/rename-pdf-with-ai': {
         title: 'Renomear PDFs com IA · Notas e contratos | Zush',
         description: 'Renomeador de PDF com IA. O Zush lê notas fiscais, contratos, scans, recibos e relatórios e renomeia os PDFs pelo conteúdo com nomes fáceis de buscar.',
@@ -4252,7 +4252,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     pricing: { planName: 'Zush PRO 🌟', planDescription: 'Compra única • Acceso de por vida', billing: 'una vez', buttonText: 'Comprar PRO', buttonHint: 'Garantía de 14 días • Seguro con Paddle', features: localizedPricingFeatures.es, ...localizedPricingExtras.es },
     platforms: localizedPlatforms.es,
     seo: {
-      '/': { title: 'Renombrador de archivos con IA para Mac & Windows | Zush', description: 'Renombra archivos por lotes y en masa según su contenido con IA en Mac y Windows. Capturas, PDFs, fotos, videos, audio, diseño y documentos.' },
+      '/': { title: 'Renombrador y organizador de archivos con IA para Mac y Windows | Zush', description: 'Renombrador de archivos con IA para Mac y Windows. Renombra 104 formatos según su contenido, incluidas fotos RAW, PDF, video, audio y archivos de diseño. Vista previa y deshacer en cada lote.' },
       '/rename-pdf-with-ai': {
         title: 'Renombrar PDF con IA · Facturas y contratos | Zush',
         description: 'Renombrador de PDF con IA. Zush lee facturas, contratos, escaneos, recibos e informes, y renombra los archivos PDF por contenido con nombres buscables.',
@@ -4328,7 +4328,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     pricing: { planName: 'Zush PRO 🌟', planDescription: 'Eenmalige aankoop • Levenslange toegang', billing: 'eenmalig', buttonText: 'Koop PRO', buttonHint: '14 dagen geld-terug-garantie • Veilig via Paddle', features: localizedPricingFeatures.nl, ...localizedPricingExtras.nl },
     platforms: localizedPlatforms.nl,
     seo: {
-      '/': { title: 'AI-bestandshernoemer voor Mac & Windows | Zush', description: 'Hernoem bestanden batchgewijs en in bulk op inhoud met AI op Mac en Windows. Screenshots, PDFs, foto’s, video’s, audio, design en documenten.' },
+      '/': { title: 'AI-bestandshernoemer en -organisator voor Mac en Windows | Zush', description: 'AI-bestandshernoemer voor Mac en Windows. Hernoem 104 formaten op inhoud, waaronder RAW-foto’s, PDF’s, video, audio en ontwerpbestanden. Preview en undo voor elke batch.' },
       '/rename-pdf-with-ai': {
         title: 'PDF hernoemen met AI · Facturen en contracten | Zush',
         description: 'AI-PDF-hernoemer. Zush leest facturen, contracten, scans, bonnen en rapporten en hernoemt PDF-bestanden op inhoud met goed doorzoekbare namen.',
@@ -4404,7 +4404,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     pricing: { planName: 'Zush PRO 🌟', planDescription: 'Acquisto unico • Accesso a vita', billing: 'una tantum', buttonText: 'Acquista PRO', buttonHint: 'Garanzia 14 giorni • Sicuro con Paddle', features: localizedPricingFeatures.it, ...localizedPricingExtras.it },
     platforms: localizedPlatforms.it,
     seo: {
-      '/': { title: 'Rinomina file con IA per Mac & Windows | Zush', description: 'Rinomina file in batch e in massa in base al contenuto con l’IA su Mac e Windows. Screenshot, PDF, foto, video, audio, design e documenti.' },
+      '/': { title: 'Rinomina e organizza file con IA per Mac e Windows | Zush', description: 'Rinomina file con IA per Mac e Windows. Rinomina 104 formati in base al contenuto, tra cui foto RAW, PDF, video, audio e file di design. Anteprima e annullamento per ogni batch.' },
       '/rename-pdf-with-ai': {
         title: 'Rinominare PDF con l’IA · Fatture e contratti | Zush',
         description: 'Rinominatore di PDF con IA. Zush legge fatture, contratti, scansioni, ricevute e report e rinomina i file PDF in base al contenuto con nomi ricercabili.',
@@ -4480,7 +4480,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     pricing: { planName: 'Zush PRO 🌟', planDescription: '買い切り • 永続アクセス', billing: '買い切り', buttonText: 'PRO を購入', buttonHint: '14日間返金保証 • Paddleで安全決済', features: localizedPricingFeatures.ja, ...localizedPricingExtras.ja },
     platforms: localizedPlatforms.ja,
     seo: {
-      '/': { title: 'Mac・Windows対応 ファイルリネーム | AI 一括リネームツール — Zush', description: 'AI で内容に基づいてファイルを一括・大量リネーム。スクリーンショット、PDF、写真、動画、音声、デザインファイル、文書に対応。' },
+      '/': { title: 'Mac・Windows向けAIファイルリネーム＆整理ツール | Zush', description: 'Mac・Windows向けAIファイルリネーム。RAW写真、PDF、動画、音声、デザインファイルを含む104形式を内容に基づいてリネーム。すべてのバッチでプレビューと取り消しが可能です。' },
       '/rename-pdf-with-ai': {
         title: 'AIでPDFをリネーム · 請求書・契約書・スキャン | Zush',
         description: 'AI PDF リネームツール。Zush が請求書、契約書、スキャン、領収書、レポートを読み取り、PDF ファイルを内容に基づいて検索しやすい名前にリネームします。',
@@ -4556,7 +4556,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     pricing: { planName: 'Zush PRO 🌟', planDescription: '일회성 구매 • 평생 이용', billing: '일회성', buttonText: 'PRO 구매', buttonHint: '14일 환불 보장 • Paddle 보안 결제', features: localizedPricingFeatures.ko, ...localizedPricingExtras.ko },
     platforms: localizedPlatforms.ko,
     seo: {
-      '/': { title: 'Mac 및 Windows용 파일 이름 변경 도구 | AI 일괄 이름 변경 — Zush', description: 'AI로 파일 내용을 기준으로 일괄 및 대량 이름 변경. 스크린샷, PDF, 사진, 비디오, 오디오, 디자인 파일, 문서 지원.' },
+      '/': { title: 'Mac 및 Windows용 AI 파일 이름 변경 및 정리 도구 | Zush', description: 'Mac 및 Windows용 AI 파일 이름 변경 도구입니다. RAW 사진, PDF, 비디오, 오디오, 디자인 파일을 포함한 104개 형식을 내용에 따라 변경하고 모든 배치를 미리 보고 되돌릴 수 있습니다.' },
       '/rename-pdf-with-ai': {
         title: 'AI로 PDF 이름 변경 · 청구서, 계약서, 스캔 | Zush',
         description: 'AI PDF 이름 변경 도구. Zush가 청구서, 계약서, 스캔 문서, 영수증, 보고서를 읽고 PDF 파일을 내용 기준으로 검색하기 쉬운 이름으로 변경합니다.',
@@ -4704,7 +4704,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       },
     },
     seo: {
-      '/': { title: '适用于 Mac 和 Windows 的文件重命名工具 | AI 批量重命名 — Zush', description: '用 AI 根据内容批量和大量重命名文件。支持截图、PDF、照片、视频、音频、设计文件和文档。' },
+      '/': { title: 'Mac 和 Windows AI 文件重命名与整理工具 | Zush', description: '适用于 Mac 和 Windows 的 AI 文件重命名工具。按内容重命名 104 种格式，包括 RAW 照片、PDF、视频、音频和设计文件；每个批次均可预览和撤销。' },
       '/mac': { title: 'Mac 文件重命名工具：用 AI 批量重命名文件 | Zush', description: 'Mac 文件重命名工具。用 AI 根据内容批量重命名截图、PDF、照片、视频、音频、设计文件和文档。' },
       '/windows': { title: 'Windows 文件重命名工具：用 AI 大量重命名文件 | Zush', description: 'Windows 11 和 10 文件重命名工具。用 AI 大量重命名截图、PDF、照片、视频、音频、设计文件和 Office 文档。' },
       '/rename-pdf-with-ai': {
@@ -4874,8 +4874,8 @@ const COPY: Record<Locale, LocaleCopy> = {
     },
     seo: {
       '/': {
-        title: 'Mac ve Windows için Yapay Zekâ Dosya Adlandırıcı | Zush',
-        description: 'Dosyaları içeriklerine göre yapay zekâyla toplu yeniden adlandırın. Ekran görüntüleri, PDF’ler, fotoğraflar, videolar, sesler, tasarım dosyaları ve belgeler.',
+        title: 'Mac ve Windows için Yapay Zekâ Dosya Adlandırıcı ve Düzenleyici | Zush',
+        description: 'Mac ve Windows için yapay zekâ dosya adlandırıcı. RAW fotoğraflar, PDF’ler, video, ses ve tasarım dosyaları dâhil 104 formatı içeriğe göre adlandırın; her toplu işlemi önizleyin ve geri alın.',
       },
       '/mac': {
         title: 'Mac Dosya Adlandırıcı: Yapay Zekâyla Toplu Yeniden Adlandırma | Zush',
@@ -5052,8 +5052,8 @@ const COPY: Record<Locale, LocaleCopy> = {
     },
     seo: {
       '/': {
-        title: 'إعادة تسمية ملفات Mac وWindows بالذكاء الاصطناعي | Zush',
-        description: 'أعد تسمية الملفات بالدفعات وبكميات كبيرة حسب المحتوى باستخدام الذكاء الاصطناعي. يدعم لقطات الشاشة وPDF والصور والفيديو والصوت والتصميم والمستندات.',
+        title: 'إعادة تسمية الملفات وتنظيمها بالذكاء الاصطناعي لنظامي Mac وWindows | Zush',
+        description: 'أداة إعادة تسمية ملفات بالذكاء الاصطناعي لنظامي Mac وWindows. أعد تسمية 104 تنسيقات حسب المحتوى، منها صور RAW وPDF والفيديو والصوت وملفات التصميم، مع معاينة كل دفعة والتراجع عنها.',
       },
       '/mac': {
         title: 'أداة إعادة تسمية الملفات لنظام Mac: إعادة تسمية بالدفعات بالذكاء الاصطناعي | Zush',

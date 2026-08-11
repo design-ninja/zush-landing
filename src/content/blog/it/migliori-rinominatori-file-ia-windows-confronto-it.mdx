@@ -1,0 +1,190 @@
+---
+title: "Miglior rinominatore di file con IA per Windows: 6 app testate (2026)"
+description: "Confronta 6 rinominatori IA per Windows per installazione, IA locale, formati, automazione, annullamento, prezzi e uso gratuito prima di scegliere."
+date: "2026-04-23"
+slug: "migliori-rinominatori-file-ia-windows-confronto-it"
+locale: "it"
+translationOf: "best-ai-file-renamer-tools-windows-compared"
+platform: "windows"
+topic: "comparisons"
+tags:
+  - "Rinomina file con IA"
+  - "Confronti tra strumenti"
+tldr: "Il rinominatore IA giusto per Windows dipende dalla necessità di installazione dal Microsoft Store, supporto di documenti, screenshot, PDF, video e audio, BYOK, IA offline, monitoraggio cartelle e annullamento. Zush è la scelta più completa se vuoi un unico flusso desktop anziché una raccolta di script."
+reviewed: "2026-08-08"
+featuredOrder: 1
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
+
+Risposta rapida: Zush è il miglior rinominatore IA per Windows quando una cartella contiene screenshot, PDF, documenti Office, foto, file di design, audio e video. RenameClick è più forte per IA locale inclusa e smistamento in cartelle, mentre FilesDesk è l’opzione BYOK più economica. Prima di scegliere, confronta installazione, formati, automazione, anteprima e ripristino.
+
+**Ultima verifica: 24 luglio 2026** per RenameClick, AI Renamer e Renamer.ai; FilesDesk è stato controllato il 9 luglio 2026.
+
+Fonti controllate: [Zush per Windows nel Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X), [FilesDesk](https://filesdesk.app/), [prezzi FilesDesk](https://filesdesk.app/pricing), [documentazione FilesDesk](https://filesdesk.app/docs), [RenameClick](https://rename.click/) e la relativa [documentazione sui formati](https://rename.click/docs/getting-started/supported-files), [AI Renamer](https://airenamer.app/), il repository separato [ai-renamer CLI su GitHub](https://github.com/ozgrozer/ai-renamer) e [Renamer.ai](https://renamer.ai/).
+
+| App | Installazione Windows | Opzioni IA | Copertura pubblicata | Automazione | Ripristino | Prezzo iniziale |
+|---|---|---|---|---|---|---|
+| Zush | Microsoft Store, x64 e ARM64 | Cloud gestito, BYOK, Ollama | Immagini, RAW, design, documenti, audio, video | Monitoraggio cartelle | Cronologia completa | 50 gratis; $10/mese o $48 una tantum |
+| FilesDesk | Desktop Windows | Gestita, BYOK, locale | Immagini e documenti comuni; verifica i formati specialistici | Watch Folders | Da verificare nel tuo flusso | 15 crediti; $20 a vita BYOK/locale |
+| RenameClick | Desktop Windows | Locale incluso, Ollama, LM Studio, BYOK cloud | Immagini, documenti, audio; nessun supporto RAW, design o video pubblicato | Auto Flow rinomina e sposta | Annulla/ripeti completo | 30 applicazioni/mese; $48+IVA a vita |
+| AI Renamer | Desktop Windows | Locale o cloud a consumo | Gli esempi pubblici privilegiano immagini e documenti testuali | Non documentata pubblicamente | Non documentato pubblicamente | Modalità locale $19 |
+| Renamer.ai | Web e desktop Windows | Cloud gestito | Oltre 30 formati, focus su documenti e vettoriali | Magic Folders | Annullamento in un clic | 25 file/mese gratis; $9,95/mese |
+| PowerShell/Python fai da te | Script o attività pianificata | Provider/modello scelto da te | Qualsiasi cosa implementi | Totalmente personalizzata | Devi costruirlo | Il software può essere gratis; la manutenzione no |
+
+Abbiamo verificato ogni opzione sugli stessi criteri: installazione Windows, file misti, disponibilità locale/BYOK, automazione delle cartelle monitorate, anteprima, ripristino e costo a volumi realistici. Prezzi e documentazione dei fornitori sono la fonte primaria; le funzioni non supportate o non documentate vengono indicate senza inferenze.
+
+Questo confronto risponde all’intento di ricerca `best` e `compared`. Se hai già scelto Zush e vuoi il download nativo, vai direttamente a [Zush per Windows](/windows).
+
+## Che cos’è un rinominatore di file con IA?
+
+Un rinominatore IA legge ciò che si trova in un file e crea un nome descrittivo, anziché applicare una sola regola all’intera selezione. Esamina il testo di un documento, il contenuto visibile di un’immagine o screenshot oppure fotogrammi campionati da un video, quindi propone un nome diverso per ogni file: `scan_004.pdf` diventa `invoice-7842-webdesign-services.pdf`. Gli strumenti batch basati su regole non sanno rispondere alla domanda più importante in una cartella disordinata: che cos’è questo file?
+
+Di seguito confrontiamo le differenze pratiche tra le app Windows: installazione, tipi di file, esecuzione locale dell’IA, possibilità di controllare e annullare un batch. Usa la [checklist per una rinomina batch sicura](/blog/how-to-safely-batch-rename-files) per provare ogni candidato sugli stessi file e verificare anteprima, collisioni, estensioni e recupero.
+
+<BlogProductIntro
+  title="Cerchi l’app per Windows?"
+  description="Zush per Windows è l’app del Microsoft Store per rinomina IA, controllo batch, monitoraggio cartelle, BYOK e annullamento su screenshot, PDF, foto, video, audio e documenti."
+  links={[
+    { href: '/windows', label: 'Rinominatore IA per Windows' },
+    { href: '/', label: 'Rinominatore di file' },
+    { href: '/offline-ai-file-renamer', label: 'Rinominatore Offline AI' },
+    { href: '/docs/byok', label: 'Configurazione BYOK' },
+    { href: '/docs/naming-blocks', label: 'Documentazione dei blocchi di denominazione' },
+  ]}
+/>
+
+![Anteprima della rinomina batch di Zush con nomi IA per una cartella Windows mista](/images/showcase/windows/batch-rename-light.webp)
+
+## Che cosa conta su Windows
+
+I controlli specifici per Windows sono leggermente diversi da quelli per Mac:
+
+- **Integrazione con File Explorer (Esplora file)**: l’app sembra nativa nel flusso Windows o è soltanto un’interfaccia web racchiusa?
+- **Supporto di documenti e video**: gli screenshot sono semplici; la vera prova sono PDF, DOCX, XLSX, clip MP4/MOV e cartelle Download miste.
+- **Automazione**: la rinomina batch occasionale è utile, ma il monitoraggio automatico impedisce il ritorno del disordine.
+- **Annullamento e revisione**: rinominare centinaia di file senza ripristino è imprudente.
+- **Store o installazione affidabile**: molti utenti preferiscono il Microsoft Store con aggiornamenti gestiti.
+- **Compatibilità con Windows Search**: nomi descrittivi e metadati contano se userai la ricerca.
+
+Se la tua esigenza è «rinominare file in batch su Windows», parti da [Zush per Windows](/windows) e dalla [guida alla rinomina batch](/docs/batch-rename-files). Se il problema è ritrovare i file, leggi la guida ai [nomi ricercabili](/docs/file-search).
+
+Se devi mantenere organizzati Download, screenshot, PDF e cartelle miste, affianca al confronto l’[organizzatore di file con IA](/ai-file-organizer).
+
+## 1. Zush
+
+<BlogToolMeta platform="Windows 10 / 11 tramite Microsoft Store" website="https://zushapp.com/windows" label="zushapp.com/windows">
+  <Fragment slot="pricing">Gratis (50 rinomine iniziali), Pro $10/mese o $48 una tantum, BYOK disponibile in ogni piano</Fragment>
+</BlogToolMeta>
+
+[Zush per Windows](/windows) è la scelta più completa quando vuoi un unico flusso controllabile per screenshot, video, PDF, foto, design, audio e documenti Office. Modelli e oltre 145 blocchi di denominazione mantengono i nomi coerenti; il monitoraggio gestisce i nuovi arrivi; anteprima e cronologia rendono reversibili i grandi batch. Cloud gestito, BYOK e Ollama coprono diverse esigenze di privacy e provider.
+
+Perché si distingue su Windows:
+
+- installazione dal Microsoft Store e aggiornamenti automatici
+- supporto misto per immagini, design, video, audio e documenti
+- adatto a screenshot, esportazioni, Download e PDF scansionati
+- pacchetti Store nativi ARM64 e x64
+- controllo chiaro prima dell’applicazione, con annullamento
+
+Ideale per: utenti Windows che vogliono uno strumento quotidiano, non un esperimento occasionale.
+
+Installa Zush dal Microsoft Store, prova gli stessi dieci file misti del confronto e conferma ogni nome proposto prima di applicare il batch.
+
+<BlogCTA placement='inline' platform='windows' />
+
+## 2. FilesDesk
+
+<BlogToolMeta platform="Desktop su Windows e Mac" website="https://filesdesk.app/" label="filesdesk.app">
+  <Fragment slot="pricing">15 crediti gratuiti; mensile $5/mese per 500 crediti o $15/mese per 2.000 crediti; Lifetime $20 una tantum con BYOK/IA locale</Fragment>
+</BlogToolMeta>
+
+FilesDesk ha il prezzo una tantum più basso pubblicato in questo gruppo Windows. La pagina prezzi indica Lifetime a $20 per BYOK o IA locale, oltre a crediti gestiti mensili da $5 e $15. La documentazione elenca Watch Folders, modelli personalizzati, batch e più provider IA.
+
+Ideale per: utenti Windows che vogliono un flusso BYOK/locale economico o crediti gestiti e lavorano soprattutto con foto, PDF, fatture, ricevute, contratti, screenshot e documenti comuni. Prima di usarlo con librerie miste, verifica RAW, design, audio, video e iWork sui tuoi file: la documentazione controllata non pubblica una matrice dettagliata.
+
+## 3. RenameClick
+
+<BlogToolMeta platform="Desktop su Windows e Mac" website="https://rename.click/" label="rename.click">
+  <Fragment slot="pricing">Gratis con analisi illimitate e 30 crediti di applicazione/mese; Pro Monthly $8+IVA/mese; Pro Lifetime $48+IVA una tantum</Fragment>
+</BlogToolMeta>
+
+![Interfaccia desktop di RenameClick (immagine: rename.click)](/images/blog/competitors/renameclick.webp)
+
+RenameClick è il concorrente Windows local-first più forte ed è una vera app desktop su entrambe le piattaforme, non uno strumento web racchiuso: il sito la descrive come «costruita per cartelle reali su macOS e Windows, non per un flusso di caricamento cloud». Include IA locale, Ollama, LM Studio, provider cloud facoltativi, AI Search, annulla/ripeti completo e automazione della cartella Download per rinominare, classificare e spostare nuovi file. I formati documentati coprono 10 tipi di immagine, oltre 20 documenti e 5 tipi audio con trascrizione locale.
+
+Ideale per: utenti Windows che privilegiano analisi offline/locale, AI Search e smistamento in cartelle. L’elenco non comprende RAW né design come Sketch/Figma/PSD; video, archivi ed eseguibili sono esplicitamente esclusi. Zush resta quindi più sicuro per cartelle multimediali molto miste. I prezzi Pro sono inoltre indicati al netto dell’IVA.
+
+## 4. AI Renamer
+
+<BlogToolMeta platform="Desktop su Windows e Mac; una CLI open source separata condivide il nome" website="https://airenamer.app/" label="airenamer.app">
+  <Fragment slot="pricing">Local Mode $19 una tantum, Cloud Mode $10 ogni 200 crediti, 10 crediti gratuiti. La pagina prezzi non elenca CLI né piano open source.</Fragment>
+</BlogToolMeta>
+
+![Interfaccia di AI Renamer (immagine: airenamer.app)](/images/blog/competitors/ai-renamer.png)
+
+Due progetti condividono il nome e vanno distinti. L’app commerciale airenamer.app vende Local Mode a $19 una tantum e Cloud Mode a $10 ogni 200 crediti, con 10 crediti alla registrazione; non pubblicizza CLI né edizione open source. La CLI gratuita GPL-3.0 [`ozgrozer/ai-renamer`](https://github.com/ozgrozer/ai-renamer) su GitHub è un progetto non correlato che rinomina immagini e video tramite Ollama, LM Studio o una chiave OpenAI.
+
+L’app a pagamento è interessante se cerchi una GUI economica con modello locale. La pagina prezzi dichiara supporto di tutti i file e di Ollama, LM Studio, OpenAI e modelli personalizzati, mentre gli esempi pubblici privilegiano immagini e PDF/TXT/testo. Rispetto a Zush, il flusso è meno strutturato per l’ordine desktop misto: nessun monitoraggio o cronologia pubblici e nessuna documentazione granulare per RAW, Office, iWork, design, audio e video.
+
+Ideale per: chi vuole il prezzo una tantum più basso per l’elaborazione locale e dà più importanza alla configurazione del modello che all’automazione delle cartelle. Se elaborazione local-first e smistamento contano più dell’ampiezza dei formati, confronta anche [Zush vs RenameClick](/blog/zush-vs-renameclick).
+
+## 5. Renamer.ai
+
+<BlogToolMeta platform="App web + desktop (Windows e Mac)" website="https://renamer.ai/" label="renamer.ai">
+  <Fragment slot="pricing">Gratis 25 file/mese; Pro $9,95/mese, Power User $29,95/mese, Ultimate $99,95/mese</Fragment>
+</BlogToolMeta>
+
+![Schermata dell’app desktop Renamer.ai (immagine: renamer.ai)](/images/blog/competitors/renamer-ai.png)
+
+Renamer.ai è comodo per provare pochi file senza installare nulla; l’app desktop aggiunge Magic Folders, anteprima, annullamento in un clic e flussi OCR documentali. Le FAQ elencano oltre 30 formati e 20 lingue, inclusi vettoriali EPS, SVG e AI (Illustrator), ma non PSD, Sketch o Figma. Ogni piano conta i file mensili, da 200 con Pro a 5.000 con Ultimate. Le FAQ affermano che i file vengono trasmessi per estrazione e analisi e poi eliminati: la privacy non equivale a BYOK o Ollama locale. I compromessi principali sono abbonamento e assenza di scelta BYOK/Ollama. Leggi [Zush vs Renamer.ai](/blog/zush-vs-renamer-ai); per **Renamed.to vs Renamer.ai** sulle fatture, consulta la [sezione sulla rinomina PDF in massa](/blog/automatically-rename-invoices-ai#renamed-to-vs-renamer-ai-bulk-pdf).
+
+Ideale per: utenti Windows con flussi OCR incentrati sui documenti che accettano il prezzo in abbonamento.
+
+## 6. Pipeline Python o PowerShell fai da te
+
+Puoi certamente creare il tuo flusso di rinomina su Windows. Lo schema di base è:
+
+1. leggere i file da una cartella
+2. inviare immagini o testo a un modello IA
+3. ripulire l’output in un nome file sicuro
+4. rinominare in locale
+
+Sembra semplice finché non aggiungi nuovi tentativi, output errati, nomi duplicati, annullamento, credenziali e casi limite dei percorsi Windows. Per molti lo script diventa il progetto anziché risolverlo.
+
+Ideale per: utenti tecnici che amano mantenere i propri strumenti.
+
+## Verdetto
+
+Se vuoi il miglior rinominatore IA per ampie cartelle miste, oggi [Zush per Windows](/windows) è la raccomandazione più chiara. È adatto quando mescoli screenshot, video, foto, design, audio, PDF, iWork e Office e vuoi batch, modelli, blocchi di denominazione, monitoraggio e ripristino senza costruire un sistema. Se analisi local-first o smistamento contano più della copertura, confronta RenameClick. Se la priorità è il prezzo BYOK una tantum più basso, confronta FilesDesk.
+
+Per un tutorial più ampio, leggi [come rinominare file con l’IA su Windows](/blog/rename-files-with-ai-windows-guide). Se il problema principale è l’automazione, continua con [rinominare automaticamente file su Windows](/blog/auto-rename-files-windows-guide).
+
+Per la documentazione consulta [rinomina batch](/docs/batch-rename-files), [rinomina automatica con monitoraggio](/docs/folder-monitoring) e [tipi di file supportati](/docs/supported-file-types).
+
+## FAQ
+
+### Posso usare BYOK o Offline AI su Windows?
+
+Sì. Zush per Windows include in ogni piano BYOK per Gemini, Groq, OpenAI e Claude, più Offline AI con Ollama. FREE comprende 50 rinomine condivise tra Cloud AI, BYOK e Offline AI; PRO elimina il limite.
+
+### Che cos’è un software di rinomina IA?
+
+Un software di rinomina IA analizza il contenuto e genera automaticamente nomi descrittivi. Un normale strumento batch sostituisce testo o aggiunge numeri; un rinominatore IA può esaminare screenshot, PDF, documenti, immagini, fotogrammi o contesto audio e suggerire un nome significativo diverso per ogni file.
+
+### Un «file renamer AI» è diverso da una normale utility batch?
+
+Sì. Una normale utility applica una regola condivisa a molti file. Su Windows significa spesso [PowerRename](https://learn.microsoft.com/en-us/windows/powertoys/powerrename), l’utility PowerToys per trova e sostituisci, regex e variabili di data o attributo nella selezione di File Explorer (Esplora file). Non apre il contenuto, quindi non distingue una fattura da una garanzia se entrambe si chiamano `scan_004.pdf`. Un rinominatore IA genera nomi dal contenuto e dovrebbe offrire anteprima, applicazione e annullamento. Nelle cartelle Windows con screenshot, PDF, foto, video, audio e Office, revisione e annullamento contano più della velocità pura. Il [confronto con PowerRename](/powerrename-alternative) spiega dove vince ogni approccio.
+
+### Esiste un’app Windows nativa, non soltanto uno strumento web?
+
+Sì. [Zush per Windows](/windows) si installa dal Microsoft Store ed è progettato per il desktop, non per sessioni web di caricamento e download.
+
+### E se rinomino soprattutto screenshot?
+
+In quel caso il flusso dedicato conta più del confronto generico. Leggi [come rinominare automaticamente gli screenshot su Windows](/blog/rename-screenshots-automatically-windows).
+
+### E se rinomino soprattutto PDF e download?
+
+Allora dai priorità a supporto documentale e automazione. Parti da [come rinominare PDF con l’IA su Windows](/blog/rename-pdf-files-with-ai-windows) e [come organizzare la cartella Download su Windows](/blog/organize-downloads-folder-windows).

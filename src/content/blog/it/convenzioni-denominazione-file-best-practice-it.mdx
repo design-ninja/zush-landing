@@ -1,0 +1,223 @@
+---
+title: "Convenzioni per i nomi file: regole, esempi e modelli"
+description: "Usa convenzioni pratiche per i nomi file, modelli pronti da copiare ed esempi reali per documenti, foto, progetti, date, versioni e file facili da cercare."
+date: "2026-03-05"
+slug: "convenzioni-denominazione-file-best-practice-it"
+locale: "it"
+translationOf: "file-naming-conventions-best-practices"
+platform: "general"
+topic: "naming"
+tags:
+  - "Organizzazione dei file"
+  - "Denominazione dei file"
+tldr: "Una buona convenzione per i nomi file è semplice, descrittiva, ricercabile e coerente: parole minuscole, separatori prevedibili, date ISO quando servono e niente nomi vaghi come `finale-finale-v2`."
+reviewed: "2026-08-08"
+featuredOrder: 3
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogCopyPatterns from '@/components/blog/BlogCopyPatterns.astro';
+import BlogMarkdownImage from '@/components/blog/BlogMarkdownImage.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSafetyNote from '@/components/blog/BlogSafetyNote.astro';
+
+Risposta rapida: una buona convenzione per i nomi file deve essere descrittiva, usare trattini, consentire ordinamento e ricerca ed essere applicata con coerenza. Inizia con `YYYY-MM-DD` quando la cronologia è importante; negli altri casi metti per primo il soggetto. Usa il kebab-case, evita spazi e caratteri speciali e adotta un’unica regola in tutto il team.
+
+Una convenzione solida fa risparmiare tempo ogni volta che cerchi, ordini o condividi un file. La migliore non è quella più ingegnosa, ma quella che riesci ad applicare con costanza nel lavoro reale.
+
+Per la maggior parte delle persone significa usare nomi descrittivi in minuscolo, trattini o underscore, date ISO quando sono rilevanti e numeri di versione al posto di etichette vaghe. Se i file più difficili sono immagini, video, screenshot, PDF o documenti, [Zush per rinominare file](/) può automatizzare la denominazione e rendere più semplice il rispetto della convenzione.
+
+## Modelli pronti da copiare per i nomi file
+
+Scegli lo schema in base al modo in cui pensi di cercare il file in futuro. Copialo come punto di partenza, quindi elimina i campi non necessari per il tuo flusso.
+
+<BlogCopyPatterns
+  patterns={[
+    {
+      label: 'Documenti con data',
+      useCase: 'Report, verbali di riunione, contratti',
+      value: 'YYYY-MM-DD_oggetto_tipo-documento_versione.ext',
+      example: '2026-08-08_budget-q3_report_v2.pdf',
+    },
+    {
+      label: 'File di progetto',
+      useCase: 'Design, marketing, lavori per clienti',
+      value: 'progetto_descrizione-risorsa_variante_versione.ext',
+      example: 'redesign-checkout_banner-hero_scuro_v3.psd',
+    },
+    {
+      label: 'Foto e video',
+      useCase: 'Eventi, servizi fotografici, archivi di viaggio',
+      value: 'YYYY-MM-DD_evento_descrizione_sequenza.ext',
+      example: '2026-08-08_lancio-prodotto_keynote_0042.jpg',
+    },
+    {
+      label: 'Fatture e ricevute',
+      useCase: 'Amministrazione e contabilità',
+      value: 'YYYY-MM-DD_fornitore_numero-documento.ext',
+      example: '2026-08-08_acme_fattura-1048.pdf',
+    },
+  ]}
+/>
+
+Per strutture ripetibili assistite dall’IA, leggi [Blocchi di denominazione](/blog/naming-blocks-file-naming-guide) e [Modelli Zush](/blog/zush-templates-file-renaming-workflows). Se vuoi prima confrontare gli strumenti, parti dal [confronto degli strumenti IA per rinominare file](/blog/best-ai-file-renamer-tools-2026).
+
+## Cinque regole per i nomi file che funzionano quasi sempre
+
+<BlogMarkdownImage
+  src='/images/showcase/macos/naming-light.webp'
+  alt='Configurazione dello schema di denominazione Zush con modello di formato e opzioni di localizzazione'
+  priority
+/>
+
+### 1. Dai priorità alla descrizione
+
+Il nome deve spiegare che cosa contiene il file senza doverlo aprire.
+
+Esempi corretti:
+
+- `2026-03-05-report-campagna-q1.pdf`
+- `wireframe-mobile-flusso-checkout.png`
+- `matrimonio-johnson-primo-ballo-0042.jpg`
+
+Esempi da evitare:
+
+- `documento-finale.pdf`
+- `immagine1.png`
+- `roba-nuova-v2.docx`
+
+### 2. Mantieni prevedibile la struttura
+
+Quando file simili seguono lo stesso schema, l’ordinamento diventa utile anziché caotico.
+
+Schemi comuni:
+
+- `YYYY-MM-DD_descrizione.ext`
+- `progetto_descrizione_versione.ext`
+- `cliente_risorsa_descrizione.ext`
+
+### 3. Usa separatori sicuri
+
+I trattini sono l’opzione predefinita più semplice per molti flussi, perché sono leggibili e adatti al web. Anche gli underscore funzionano. Gli spazi sono accettati da macOS, ma creano attrito negli URL, negli script e in alcuni flussi condivisi.
+
+### 4. Usa le date ISO quando la data è importante
+
+Se la data deve comparire nel nome, usa `YYYY-MM-DD`. In questo modo l’ordine cronologico viene mantenuto anche quando i file sono ordinati alfabeticamente.
+
+### 5. Usa numeri di versione invece di «finale»
+
+Un file chiamato `finale` raramente lo è davvero. `v2`, `v3` e `v4` sono molto più chiari di `finale-finale-davvero-finale`.
+
+<BlogProductIntro
+  title="Vuoi una convenzione che si applichi da sola?"
+  description="Zush trasforma una convenzione in uno schema riutilizzabile con oltre 145 blocchi di denominazione per date, metadati, clienti e contenuti rilevati dall’IA. Controlla ogni nome proposto prima di applicarlo, quindi ripristina dalla Cronologia i nomi precedenti se necessario."
+  links={[
+    { href: '/batch-rename-files', label: 'Rinomina file in batch' },
+    { href: '/blog/how-to-safely-batch-rename-files', label: 'Guida ad anteprima e annullamento' },
+    { href: '/docs/naming-blocks', label: 'Blocchi di denominazione' },
+    { href: '/docs/undo-history', label: 'Cronologia di annullamento' },
+  ]}
+/>
+
+## Schemi consigliati per tipo di lavoro
+
+### Fotografia
+
+Usa uno schema come:
+
+`YYYY-MM-DD_evento_descrizione_sequenza.ext`
+
+Esempio:
+
+`2026-03-05_matrimonio-johnson_primo-ballo_0042.jpg`
+
+### Design e lavori creativi
+
+Usa uno schema come:
+
+`progetto_risorsa_descrizione_versione.ext`
+
+Esempio:
+
+`redesign-checkout_banner-hero_scuro_v3.psd`
+
+Lo schema è solo uno dei livelli. [Gestione delle risorse digitali per designer su Mac](/blog/digital-asset-management-designers-mac) spiega la struttura delle cartelle, il versionamento e la disciplina delle esportazioni in cui inserirlo.
+
+### Documenti aziendali
+
+Usa uno schema come:
+
+`YYYY-MM-DD_reparto_descrizione-documento.ext`
+
+Esempio:
+
+`2026-03-05_marketing_report-campagna-q1.pdf`
+
+La documentazione professionale richiede convenzioni più specifiche: consulta le guide dedicate alla [denominazione delle fatture](/blog/invoice-file-naming-convention), alla [rinomina delle cartelle cliniche](/for-medical) e ai [nomi dei file legali](/blog/legal-file-naming-conventions).
+
+### Screenshot ed esportazioni
+
+Usa uno schema come:
+
+`contesto_descrizione.ext`
+
+Esempio:
+
+`figma-flusso-checkout-mobile.png`
+
+## I file più difficili da denominare sono immagini, video e documenti
+
+È soprattutto con immagini e documenti che molti sistemi di denominazione falliscono. Le fotocamere usano contatori. Gli screenshot di macOS usano data e ora. I download mantengono il nome assegnato dal sito di origine. Gli allegati e-mail hanno spesso nomi generici come `document.pdf` o `report.docx`.
+
+![Risultati della rinomina in batch di Zush con nomi descrittivi generati dall’IA](/images/showcase/macos/batch-rename-light.webp)
+
+Per questo l’automazione è particolarmente utile con tali formati. Puoi definire personalmente una convenzione, ma generare a mano la parte descrittiva è lento. Strumenti come [Zush](https://zushapp.com) rendono il processo pratico: usano l’IA per riconoscere il contenuto e vi applicano uno schema coerente.
+
+Per un flusso dedicato alle immagini su Mac, consulta [Come rinominare immagini con l’IA su macOS](/blog/how-to-rename-images-with-ai-on-macos). Per la denominazione su Windows, continua con [Convenzioni per nomi file e cartelle ricercabili in Windows](/blog/windows-file-naming-conventions-searchable-folders).
+
+## Un piano di applicazione semplice
+
+Se il tuo archivio è disordinato, non rinominare tutto in una volta.
+
+1. Scegli le cartelle che usi più spesso
+2. Definisci uno schema per ogni tipo di file
+3. Rinomina prima l’arretrato più problematico
+4. Automatizza l’arrivo di nuove immagini, video e screenshot
+
+L’ultimo passaggio impedisce al sistema di diventare di nuovo caotico. L’abbinamento di una convenzione e della denominazione automatica assistita dall’IA è molto più duraturo delle pulizie occasionali.
+
+<BlogSafetyNote
+  title="Prova prima la convenzione su un piccolo batch"
+  description="Controlla l’elenco completo nome precedente → nome nuovo prima di applicare una convenzione a una cartella. Zush conserva nella Cronologia le rinomine completate, così puoi ripristinare i nomi precedenti invece di correggere manualmente gli errori."
+/>
+
+<BlogCTA placement='inline' platform='general' />
+
+![Demo degli schemi di Zush che applica automaticamente convenzioni coerenti ai nomi file](/videos/zush-naming-pattern.mp4)
+
+## Errori comuni da evitare
+
+- Usare schemi diversi in ogni cartella
+- Abbreviare così tanto da rendere incomprensibili i nomi
+- Mantenere spazi e punteggiatura che rompono la coerenza
+- Denominare i file in base allo stato (`nuovo`, `più-recente`, `finale`) anziché al contenuto
+- Affidarsi solo alle cartelle quando i nomi file non sono informativi
+
+## Conclusione
+
+La migliore convenzione è quella che bilancia chiarezza e coerenza. Usa parole descrittive, separatori prevedibili, date ISO quando utili e numeri di versione quando i file evolvono.
+
+Se il collo di bottiglia è denominare immagini, video, PDF, fogli di calcolo o documenti, [Zush](https://zushapp.com) può gestire automaticamente la parte descrittiva e rendere più semplice l’applicazione della convenzione su larga scala.
+
+## Domande frequenti
+
+### Qual è la migliore convenzione per i nomi file per la maggior parte delle persone?
+
+Per molti utenti, lo schema più facile da mantenere nel tempo è descrittivo, in minuscolo, con trattini e date ISO facoltative.
+
+### È meglio usare trattini o underscore?
+
+Entrambi funzionano. Di solito i trattini sono più leggibili e più adatti ai contesti web.
+
+### L’IA può aiutare ad applicare convenzioni ai nomi file?
+
+Sì. L’IA è particolarmente utile per immagini, screenshot, video, PDF e documenti (DOCX, PPTX, XLSX), nei quali la parte descrittiva del nome dovrebbe altrimenti essere scritta a mano.

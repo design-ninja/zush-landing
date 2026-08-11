@@ -1,0 +1,223 @@
+---
+title: "文件命名规范最佳实践：规则与示例"
+description: "使用实用的文件命名约定、可复制的模板以及文档、照片、项目、日期、版本和可搜索文件的真实示例。"
+date: "2026-03-05"
+slug: "file-naming-conventions-best-practices-cn"
+locale: "zh-cn"
+translationOf: "file-naming-conventions-best-practices"
+platform: "general"
+topic: "naming"
+tags:
+  - "文件组织"
+  - "文件命名"
+tldr: "一个好的文件命名约定是简单的、描述性的、可搜索的和一致的：小写单词、可预测的分隔符、需要时的 ISO 日期，并且没有像 `final-final-v2` 这样模糊的名称。"
+reviewed: "2026-08-08"
+featuredOrder: 3
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogCopyPatterns from '@/components/blog/BlogCopyPatterns.astro';
+import BlogMarkdownImage from '@/components/blog/BlogMarkdownImage.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSafetyNote from '@/components/blog/BlogSafetyNote.astro';
+
+快速回答：一个好的文件命名约定是描述性的、连字符的、可排序的、可搜索的和一致的。当时间顺序很重要时，以 `YYYY-MM-DD` 开头，否则以主题开头。使用短横线命名法，避免空格和特殊字符，并在整个团队中遵守一项规则。
+
+可靠的文件命名约定可以在您每次搜索、排序或共享文件时节省时间。最好的惯例并不是最聪明的惯例。这是一种可以在实际工作中一致应用的方法。
+
+对于大多数人来说，这意味着描述性的小写名称、连字符或下划线、重要的 ISO 日期以及版本号，而不是模糊的标签。如果您最难的文件是图像、视频、屏幕截图、PDF 或文档，[Zush文件重命名](/) 可以自动执行命名步骤，使约定更易于维护。
+
+## 复制就绪的文件命名模板
+
+选择与您希望以后查找文件的方式相匹配的模式。将其复制为起点，然后删除工作流程不需要的字段。
+
+<BlogCopyPatterns
+  patterns={[
+    {
+      label: 'Dated documents',
+      useCase: 'Reports, meeting notes, contracts',
+      value: 'YYYY-MM-DD_subject_document-type_version.ext',
+      example: '2026-08-08_q3-budget_report_v2.pdf',
+    },
+    {
+      label: 'Project files',
+      useCase: 'Design, marketing, client work',
+      value: 'project_asset-description_variant_version.ext',
+      example: 'checkout-redesign_hero-banner_dark_v3.psd',
+    },
+    {
+      label: 'Photos and video',
+      useCase: 'Events, shoots, travel libraries',
+      value: 'YYYY-MM-DD_event_description_sequence.ext',
+      example: '2026-08-08_product-launch_keynote_0042.jpg',
+    },
+    {
+      label: 'Invoices and receipts',
+      useCase: 'Finance and bookkeeping',
+      value: 'YYYY-MM-DD_vendor_document-number.ext',
+      example: '2026-08-08_acme_invoice-1048.pdf',
+    },
+  ]}
+/>
+
+对于可重复的人工智能辅助结构，请阅读 [命名块](/blog/naming-blocks-file-naming-guide) 和 [Zush模板](/blog/zush-templates-file-renaming-workflows)。如果您首先比较工具，请从 [AI重命名工具比较](/blog/best-ai-file-renamer-tools-2026) 开始。
+
+## 五种几乎适用于任何地方的文件命名规则
+
+<BlogMarkdownImage
+  src='/images/showcase/macos/naming-light.webp'
+alt='包含格式模板和本地化选项的 Zush 命名模式配置'
+  priority
+/>
+
+### 1. 首先进行描述
+
+文件名应该告诉您该文件是什么，而无需打开它。
+
+好的：
+
+- `2026-03-05-q1-campaign-report.pdf`
+- `checkout-flow-mobile-wireframe.png`
+- `johnson-wedding-first-dance-0042.jpg`
+
+坏的：
+
+- `document-final.pdf`
+- `image1.png`
+- `stuff-new-v2.docx`
+
+### 2. 保持结构可预测
+
+当相似的文件遵循相同的模式时，排序就变得有用而不是混乱。
+
+常见模式：
+
+- `YYYY-MM-DD_description.ext`
+- `project_description_version.ext`
+- `client_asset_description.ext`
+
+### 3. 使用安全分隔符
+
+连字符是大多数工作流程中最简单的默认值，因为它们可读且网络友好。下划线也有效。空格在 macOS 上是可以接受的，但会在 URL、脚本和一些共享工作流程中产生摩擦。
+
+### 4. 当日期很重要时使用 ISO 日期
+
+如果文件名中包含日期，请使用 `YYYY-MM-DD`。当文件按字母顺序排序时，这会保持时间顺序。
+
+### 5. 使用版本号而不是“最终版本”
+
+名为 `final` 的文件很少是最终的。 `v2`、`v3`和`v4`比`final-final-really-final`清晰得多。
+
+<BlogProductIntro
+  title="想要一个适用的命名约定吗？"
+  description="Zush 将约定转变为可重用的模式，具有 145 多个用于日期、元数据、客户端和 AI 检测内容的命名块。在应用之前预览每个建议的名称，然后根据需要从历史记录中恢复较早的名称。"
+  links={[
+    { href: '/batch-rename-files', label: '批量重命名文件' },
+    { href: '/blog/how-to-safely-batch-rename-files', label: '预览和撤消指南' },
+    { href: '/docs/naming-blocks', label: '命名块' },
+    { href: '/docs/undo-history', label: '撤消历史记录' },
+  ]}
+/>
+
+## 按工作流程推荐的模式
+
+### ＃＃＃ 摄影
+
+使用如下模式：
+
+`YYYY-MM-DD_event_description_sequence.ext`
+
+例子：
+
+`2026-03-05_johnson-wedding_first-dance_0042.jpg`
+
+### 设计和创意工作
+
+使用如下模式：
+
+`project_asset_description_version.ext`
+
+例子：
+
+`checkout-redesign_hero-banner_dark_v3.psd`
+
+命名模式只有一层。 [设计师数字资产管理Mac](/blog/digital-asset-management-designers-mac) 涵盖了模式必须位于其中的文件夹结构、版本控制和导出规则。
+
+### 商业文件
+
+使用如下模式：
+
+`YYYY-MM-DD_department_document-description.ext`
+
+例子：
+
+`2026-03-05_marketing_q1-campaign-report.pdf`
+
+专业文书工作有其更深层次的惯例：请参阅 [发票命名](/blog/invoice-file-naming-convention)、[病历文件重命名](/for-medical) 和 [合法文件命名](/blog/legal-file-naming-conventions) 的专用指南。
+
+### 截图和导出
+
+使用如下模式：
+
+`context_description.ext`
+
+例子：
+
+`figma-mobile-checkout-flow.png`
+
+## 最难命名的文件是图像、视频和文档
+
+图像和文档是大多数命名系统崩溃的地方。相机使用计数器。 macOS 屏幕截图使用时间戳。下载随源站点提供的内容一起到达。电子邮件附件通常具有通用名称，例如 `document.pdf` 或 `report.docx`。
+
+![Zush批量重命名结果显示AI生成的描述性文件名](/images/showcase/macos/batch-rename-light.webp)
+
+这就是为什么命名自动化对于这些文件类型最重要。您可以自己定义约定，但手动生成描述性部​​分很慢。像 [Zush](https://zushapp.com) 这样的工具通过使用 AI 识别文件包含的内容，然后在顶部应用一致的模式，使这一点变得实用。
+
+有关 Mac 特定的图像工作流程，请参阅 [如何在macOS上使用AI重命名图像](/blog/how-to-rename-images-with-ai-on-macos)。如果您需要 Windows 命名层，请继续 [Windows可搜索文件夹的文件命名约定](/blog/windows-file-naming-conventions-searchable-folders)。
+
+## 一个简单的实施计划
+
+如果您当前的库很混乱，请不要立即重命名所有内容。
+
+1. 选择您最常使用的文件夹
+2. 为每种文件类型定义一种命名模式
+3. 首先重命名最痛苦的积压工作
+4. 自动输入新图像、视频和屏幕截图
+
+最后一步是防止系统再次崩溃的原因。命名约定与自动人工智能辅助命名的结合比偶尔的清理冲刺要持久得多。
+
+<BlogSafetyNote
+  title="首先小批量测试约定"
+  description="在将约定应用于文件夹之前预览完整的旧名称→新名称列表。 Zush 在历史记录中保留已完成的重命名操作，以便您可以恢复以前的名称，而不是手动修复错误。"
+/>
+
+<BlogCTA placement='inline' platform='general' />
+
+![Zush命名模式演示自动应用一致的文件命名约定](/videos/zush-naming-pattern.mp4)
+
+## 要避免的常见错误
+
+- 在每个文件夹中使用不同的图案
+- 过度缩写，导致文件名变得神秘
+- 保留破坏一致性的空格和标点符号
+- 按状态（`new`、`latest`、`final`）而不是内容命名文件
+- 当文件名本身很弱时仅依赖文件夹
+
+## ＃＃ 结论
+
+最好的文件命名约定是平衡清晰度和一致性的约定。使用描述性词语、可预测的分隔符、有用的 ISO 日期以及文件演变时的版本号。
+
+如果您的瓶颈是命名图像、视频、PDF、电子表格或文档，[Zush](https://zushapp.com) 可以自动处理描述性部分，并使约定更容易大规模应用。
+
+## ＃＃ 常问问题
+
+### 对于大多数人来说，最好的文件命名约定是什么？
+
+对于大多数人来说，带有连字符和可选 ISO 日期的小写描述模式最容易随着时间的推移保持一致。
+
+### 我应该使用连字符还是下划线？
+
+两者都有效。在网络环境中，连字符通常更易于阅读且更友好。
+
+### AI 可以帮助解决文件命名约定吗？
+
+是的。 AI 对于图像、屏幕截图、视频、PDF 和文档（DOCX、PPTX、XLSX）特别有用，否则需要手动编写文件名的描述性部分。

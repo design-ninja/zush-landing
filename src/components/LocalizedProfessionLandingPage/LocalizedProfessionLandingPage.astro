@@ -1,0 +1,265 @@
+---
+import { Image } from 'astro:assets';
+import { ArrowRight, Bot, Cloud, KeyRound } from 'lucide-react';
+import accountantsHero from '@/assets/landing/accountants-hero.webp';
+import medicalHero from '@/assets/landing/medical-hero.webp';
+import photographersHero from '@/assets/landing/photographers-hero.webp';
+import legalHero from '@/assets/landing/legal-hero.webp';
+import hrHero from '@/assets/landing/hr-hero.webp';
+import realEstateHero from '@/assets/landing/real-estate-hero.webp';
+import BentoCard from '@/components/Features/BentoCard.astro';
+import CloudFolders from '@/components/CloudFolders';
+import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
+import DownloadButton from '@/components/DownloadButton';
+import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
+import FAQ from '@/components/FAQ';
+import FeatureAnimation from '@/components/Features/FeatureAnimation';
+import Heading from '@/components/Heading';
+import Pricing from '@/components/Pricing/Pricing.astro';
+import ProfessionGuides from '@/components/ProfessionGuides/ProfessionGuides.astro';
+import StarRating from '@/components/StarRating';
+import Text from '@/components/Text';
+import { FEATURE_DEMO_COPY } from '@/i18n/featureDemoCopy';
+import { getCopy } from '@/i18n/copy';
+import type { Locale } from '@/i18n/config';
+import type { ProfessionKey, ProfessionPageCopy } from '@/i18n/professions/types';
+import ProfessionFieldExplorer from './ProfessionFieldExplorer';
+import featureStyles from '@/components/Features/Features.module.scss';
+import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module.scss';
+import testimonialStyles from '@/components/Testimonials/Testimonials.module.scss';
+import heroStyles from '@/components/LegalLandingPage/LegalHero.module.scss';
+import styles from '@/components/LegalLandingPage/LegalLandingPage.module.scss';
+
+interface Props {
+  profession: ProfessionKey;
+  locale: Exclude<Locale, 'en'>;
+  page: ProfessionPageCopy;
+}
+
+const { profession, locale, page } = Astro.props as Props;
+const localeCopy = getCopy(locale);
+const demoCopy = FEATURE_DEMO_COPY[locale];
+const heroImages = {
+  accountants: accountantsHero,
+  medical: medicalHero,
+  photographers: photographersHero,
+  legal: legalHero,
+  hr: hrHero,
+  'real-estate': realEstateHero,
+} as const;
+const modeIcons = {
+  'cloud-ai': Cloud,
+  byok: KeyRound,
+  'offline-ai': Bot,
+} as const;
+---
+
+<section class={heroStyles.Hero} aria-labelledby={`${profession}-hero-title`}>
+  <div class={heroStyles.Hero__Media} aria-hidden="true">
+    <Image
+      class={heroStyles.Hero__Photo}
+      src={heroImages[profession]}
+      alt={page.hero.photoAlt}
+      widths={[640, 960, 1216, 1408]}
+      sizes="100vw"
+      loading="eager"
+      decoding="async"
+    />
+  </div>
+  <div class={heroStyles.Hero__Scrim} aria-hidden="true"></div>
+  <div class={heroStyles.Hero__Container}>
+    <div class={heroStyles.Hero__Intro}>
+      <p class={heroStyles.Hero__Eyebrow}>{page.hero.eyebrow}</p>
+      <Heading as="h1" align="center" id={`${profession}-hero-title`} className={heroStyles.Hero__Title}>
+        {page.hero.titleLead.trimEnd()}{locale === 'ja' || locale === 'zh-cn' ? '' : ' '}<span class="brand-accent-text">{page.hero.titleAccent.trimStart()}</span>
+      </Heading>
+      <Text as="p" size="lg" color="subtle" align="center" className={heroStyles.Hero__Subtitle}>
+        {page.hero.subtitle}
+      </Text>
+      <div class={heroStyles.Hero__Actions}>
+        <div class={heroStyles.Hero__Buttons}>
+          <DownloadButton client:visible source="hero" size="lg" forceOS="mac" showDropdown={false} label={page.hero.downloadMac} />
+          <DownloadButton client:visible source="hero" size="lg" forceOS="windows" showDropdown={false} label={page.hero.downloadWindows} />
+        </div>
+        <ul class={heroStyles.Hero__TrustRow} aria-label={page.hero.trustAria}>
+          {page.hero.trustLine.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class={styles.HeroDemo}><DemoVideo label={page.demoLabel} /></div>
+
+<section class={styles.Audiences} aria-labelledby={`${profession}-audiences-title`}>
+  <div class={styles.Audiences__Container}>
+    <div class={styles.Audiences__Intro}>
+      {page.audiences.eyebrow && <p class={styles.Audiences__Eyebrow}>{page.audiences.eyebrow}</p>}
+      <Heading as="h2" id={`${profession}-audiences-title`} className={styles.Audiences__Title}>{page.audiences.title}</Heading>
+      <Text as="p" color="subtle" className={styles.Audiences__Description}>{page.audiences.description}</Text>
+    </div>
+    <ul class={styles.Audiences__List}>
+      {page.audiences.items.map((item) => (
+        <li class={styles.Audience}>
+          <div class={styles.Audience__Content}>
+            <h3 class={styles.Audience__Title}>{item.title}</h3>
+            <p class={styles.Audience__Description}>{item.description}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<section id="fields" class={styles.Fields} aria-labelledby={`${profession}-fields-title`}>
+  <div class={styles.Fields__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as="h2" align="center" id={`${profession}-fields-title`} className={sectionHeaderStyles.SectionHeader__Title}>{page.fields.title}</Heading>
+      <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>{page.fields.description}</Text>
+    </div>
+    <ProfessionFieldExplorer
+      client:visible
+      fields={page.fields.items}
+      instruction={page.fields.instruction}
+      ariaLabel={page.fields.ariaLabel}
+      hint={page.fields.hint}
+    />
+    {page.fields.footnote && <p class={styles.Privacy__Note}>{page.fields.footnote}</p>}
+  </div>
+</section>
+
+<section id="privacy" class={styles.Privacy} aria-labelledby={`${profession}-privacy-title`}>
+  <div class={styles.Privacy__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as="h2" align="center" id={`${profession}-privacy-title`} className={sectionHeaderStyles.SectionHeader__Title}>{page.privacy.title}</Heading>
+      <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>{page.privacy.description}</Text>
+    </div>
+    <div class={featureStyles.Band__Grid}>
+      {page.privacy.items.map((item) => {
+        const kind = item.kind ?? 'cloud-ai';
+        const Icon = modeIcons[kind];
+        return (
+          <BentoCard title={item.title} description={item.description} icon={Icon} badge={item.badge} badgeTone={item.badgeTone}>
+            <div class={featureStyles.UI_FeatureAnimation}><FeatureAnimation kind={kind} demoCopy={demoCopy} client:visible /></div>
+          </BentoCard>
+        );
+      })}
+    </div>
+    <p class={styles.Privacy__Note}>
+      {page.privacy.note}{' '}
+      <a class={styles.ArrowLink} href="/docs/privacy-security">{page.privacy.docsLinkLabel}<ArrowRight size={15} aria-hidden="true" /></a>
+    </p>
+  </div>
+</section>
+
+<section id="workflow" class={styles.Workflow} aria-labelledby={`${profession}-workflow-title`}>
+  <div class={styles.Workflow__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as="h2" align="center" id={`${profession}-workflow-title`} className={sectionHeaderStyles.SectionHeader__Title}>{page.workflow.title}</Heading>
+      <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>{page.workflow.description}</Text>
+    </div>
+    <ol class={styles.Workflow__Steps}>
+      {page.workflow.items.map((item, index) => (
+        <li class={styles.WorkflowStep}>
+          <span class={styles.WorkflowStep__Number} aria-hidden="true">{index + 1}</span>
+          <h3 class={styles.WorkflowStep__Title}>{item.title}</h3>
+          <p class={styles.WorkflowStep__Description}>{item.description}</p>
+        </li>
+      ))}
+    </ol>
+    {page.workflow.links && page.workflow.links.length > 0 && (
+      <div class={styles.Workflow__Links}>
+        {page.workflow.links.map((link) => (
+          <a class={styles.ArrowLink} href={link.href}>{link.label}<ArrowRight size={15} aria-hidden="true" /></a>
+        ))}
+      </div>
+    )}
+  </div>
+</section>
+
+<CloudFolders title={localeCopy.home.cloudFoldersTitle} />
+
+<section class={styles.Documents} aria-labelledby={`${profession}-documents-title`}>
+  <div class={styles.Documents__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as="h2" align="center" id={`${profession}-documents-title`} className={sectionHeaderStyles.SectionHeader__Title}>{page.documents.title}</Heading>
+      <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>{page.documents.description}</Text>
+    </div>
+    <div class={styles.Documents__Grid}>
+      {page.documents.items.map((item) => (
+        <article class={styles.DocumentType}>
+          <h3 class={styles.DocumentType__Title}>{item.title}</h3>
+          <p class={styles.DocumentType__Description}>{item.description}</p>
+          {item.example && <code class={styles.DocumentType__Example}>{item.example}</code>}
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+{page.outcomes && (
+  <section class={testimonialStyles.Testimonials} aria-labelledby={`${profession}-outcomes-title`}>
+    <div class={testimonialStyles.Testimonials__Container}>
+      <div class={sectionHeaderStyles.SectionHeader}>
+        <Heading as="h2" align="center" id={`${profession}-outcomes-title`} className={sectionHeaderStyles.SectionHeader__Title}>{page.outcomes.title}</Heading>
+        <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>{page.outcomes.description}</Text>
+      </div>
+      <div class={`${testimonialStyles.Testimonials__Grid} ${styles.Testimonials__Grid}`}>
+        {page.outcomes.items.map((item) => (
+          <article class={testimonialStyles.TestimonialCard}>
+            <h3 class={testimonialStyles.TestimonialCard__Name}>{item.title}</h3>
+            <Text as="p" size="sm" color="subtle">{item.description}</Text>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+{page.testimonials && page.testimonials.length > 0 && (
+  <section id="reviews" class={testimonialStyles.Testimonials} aria-labelledby={`${profession}-testimonials-title`}>
+    <div class={testimonialStyles.Testimonials__Container}>
+      <div class={sectionHeaderStyles.SectionHeader}>
+        <Heading as="h2" align="center" id={`${profession}-testimonials-title`} className={sectionHeaderStyles.SectionHeader__Title}>
+          {page.testimonialsTitle ?? page.pageTitle}
+        </Heading>
+        {page.testimonialsDescription && (
+          <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>
+            {page.testimonialsDescription}
+          </Text>
+        )}
+      </div>
+      <div class={`${testimonialStyles.Testimonials__Grid} ${styles.Testimonials__Grid}`}>
+        {page.testimonials.map((testimonial) => (
+          <article class={testimonialStyles.TestimonialCard}>
+            <StarRating
+              className={testimonialStyles.TestimonialCard__Stars}
+              label={page.testimonialsRatingAria}
+              decorative={!page.testimonialsRatingAria}
+            />
+            <blockquote class={testimonialStyles.TestimonialCard__Quote}>
+              <Text as="p" size="sm">{testimonial.quote}</Text>
+            </blockquote>
+            <footer class={testimonialStyles.TestimonialCard__Author}>
+              <Text as="p" size="sm" className={testimonialStyles.TestimonialCard__Name}>{testimonial.name}</Text>
+              <Text as="p" size="sm" color="subtle">{testimonial.role}</Text>
+            </footer>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<Pricing copy={localeCopy.pricing} />
+<FAQ client:visible items={page.faq.items} title={page.faq.title} description={page.faq.description} />
+{page.guides && (
+  <ProfessionGuides
+    id={`${profession}-guides`}
+    title={page.guides.title}
+    description={page.guides.description}
+    slugs={page.guides.slugs}
+    locale={locale}
+  />
+)}
+<div class={styles.FinalCta}><DownloadCTA title={page.finalCta.title} subtitle={page.finalCta.subtitle} /></div>

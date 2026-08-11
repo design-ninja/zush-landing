@@ -49,6 +49,7 @@ interface Props {
   /** Omitted for locales that have no blog index — the Blog crumb is then dropped. */
   blogIndexHref?: string;
   alternates?: AlternateLink[];
+  languagePaths?: Partial<Record<Locale, string>>;
   translationLink?: TranslationLink;
 }
 
@@ -62,6 +63,7 @@ const {
   chromeBasePath = '/',
   blogIndexHref,
   alternates,
+  languagePaths,
   translationLink,
 } = Astro.props;
 
@@ -96,6 +98,7 @@ const breadcrumbItems = [
   locale={chromeLocale}
   chromeBasePath={chromeBasePath}
   alternates={alternates}
+  languagePaths={languagePaths}
   headerWidth='wide'
 >
   <BlogBreadcrumbs items={breadcrumbItems} />

@@ -5,11 +5,24 @@ import hrImage from '@/assets/landing/hr-hero.webp';
 import legalImage from '@/assets/landing/legal-hero.webp';
 import medicalImage from '@/assets/landing/medical-hero.webp';
 import photographerImage from '@/assets/landing/photographers-hero.webp';
+import realEstateImage from '@/assets/landing/real-estate-hero.webp';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
 import styles from './HomeProfessions.module.scss';
+import { getLocalizedPath, type Locale } from '@/i18n/config';
+import type { HomeCopy } from '@/i18n/copy';
+import type { ProfessionKey, ProfessionLocaleCopy } from '@/i18n/professions/types';
 
-// English-only section (rendered when locale === 'en'), like HomeBlogHighlights.
+interface Props {
+  locale?: Locale;
+  homeCopy?: HomeCopy;
+  professionCopy?: ProfessionLocaleCopy;
+}
+
+const { locale = 'en', homeCopy, professionCopy } = Astro.props as Props;
+
+// English source cards; localized homepages replace these with locale-owned
+// profession titles, descriptions, routes, and image alternatives below.
 const PROFESSIONS: Array<{
   title: string;
   description: string;
@@ -52,19 +65,68 @@ const PROFESSIONS: Array<{
     image: photographerImage,
     imageAlt: 'Photographer and videographer reviewing a shoot together in a studio',
   },
+  {
+    title: 'Real estate teams',
+    description: 'Agreements, disclosures, inspections, appraisals, and property photos named by address, date, type, party, and status.',
+    route: '/for-real-estate',
+    image: realEstateImage,
+    imageAlt: 'Real estate professional reviewing transaction documents at a laptop',
+  },
 ];
+
+const professionImages = {
+  accountants: accountantImage,
+  medical: medicalImage,
+  photographers: photographerImage,
+  legal: legalImage,
+  hr: hrImage,
+  'real-estate': realEstateImage,
+} as const;
+const professionOrder: ProfessionKey[] = ['accountants', 'medical', 'legal', 'hr', 'photographers', 'real-estate'];
+const localizedProfessions = professionCopy
+  ? professionOrder.map((key) => {
+      const page = professionCopy[key];
+      return {
+        title: page.pageTitle,
+        description: page.seo.description,
+        route: getLocalizedPath(page.path, locale),
+        image: professionImages[key],
+        imageAlt: page.hero.photoAlt,
+      };
+    })
+  : null;
+const professions = localizedProfessions ?? PROFESSIONS;
+const professionEyebrows: Record<Locale, string> = {
+  en: 'Who it’s for',
+  fr: 'Pour les professionnels',
+  de: 'Für Profis',
+  es: 'Para profesionales',
+  'pt-br': 'Para profissionais',
+  it: 'Per i professionisti',
+  nl: 'Voor professionals',
+  tr: 'Profesyoneller için',
+  ja: 'プロフェッショナル向け',
+  ko: '전문가를 위한',
+  'zh-cn': '面向专业人士',
+  ar: 'للمحترفين',
+};
+const eyebrow = professionEyebrows[locale];
+const title = locale === 'en' ? 'Built for people who work with files all day' : homeCopy?.useCasesTitle;
+const description = locale === 'en'
+  ? 'Every profession has its own naming convention. Zush reads each file and applies yours without replacing the tools or folders you already use.'
+  : homeCopy?.useCasesDescription;
 ---
 
 <section class={styles.Professions} aria-labelledby="home-professions-title">
   <div class={styles.Professions__Container}>
     <div class={styles.Professions__Intro}>
-      <p class={styles.Professions__Eyebrow}>Who it’s for</p>
+      <p class={styles.Professions__Eyebrow}>{eyebrow}</p>
       <Heading
         as="h2"
         id="home-professions-title"
         className={styles.Professions__Title}
       >
-        Built for people who work with files all day
+        {title}
       </Heading>
       <Text
         as="p"
@@ -72,12 +134,12 @@ const PROFESSIONS: Array<{
         color="subtle"
         className={styles.Professions__Description}
       >
-        Every profession has its own naming convention. Zush reads each file and applies yours without replacing the tools or folders you already use.
+        {description}
       </Text>
     </div>
 
     <div class={styles.Professions__List}>
-      {PROFESSIONS.map(({ title, description, route, image, imageAlt }) => (
+      {professions.map(({ title, description, route, image, imageAlt }) => (
         <a class={styles.Profession} href={route}>
           <div class={styles.Profession__Media}>
             <Image

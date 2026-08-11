@@ -1,0 +1,223 @@
+---
+title: "Dosya Adlandırma Kuralları: En İyi Uygulamalar ve Örnekler"
+description: "Belgeler, fotoğraflar, projeler, tarihler, sürümler ve aranabilir dosyalar için pratik dosya adlandırma kurallarını, kopyalamaya hazır şablonları ve gerçek örnekleri kullanın."
+date: "2026-03-05"
+slug: "dosya-adlandirma-kurallari-en-iyi-uygulamalar"
+locale: "tr"
+translationOf: "file-naming-conventions-best-practices"
+platform: "general"
+topic: "naming"
+tags:
+  - "Dosya Organizasyonu"
+  - "Dosya Adlandırma"
+tldr: "İyi bir dosya adlandırma kuralı basit, açıklayıcı, aranabilir ve tutarlıdır: küçük harfli sözcükler, tahmin edilebilir ayırıcılar, gerektiğinde ISO tarihleri ve `final-final-v2` gibi belirsiz adların olmaması."
+reviewed: "2026-08-08"
+featuredOrder: 3
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogCopyPatterns from '@/components/blog/BlogCopyPatterns.astro';
+import BlogMarkdownImage from '@/components/blog/BlogMarkdownImage.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSafetyNote from '@/components/blog/BlogSafetyNote.astro';
+
+Hızlı cevap: İyi bir dosya adlandırma kuralı açıklayıcı, tireli, sıralanabilir, aranabilir ve tutarlıdır. Kronoloji önemli olduğunda `YYYY-MM-DD` ile başlayın, aksi takdirde konuyla başlayın. Kebap vakasını kullanın, boşluklardan ve özel karakterlerden kaçının ve takımlar arasında tek bir kurala bağlı kalın.
+
+Sağlam bir dosya adlandırma kuralı, bir dosyayı her aradığınızda, sıraladığınızda veya paylaştığınızda zaman kazandırır. En iyi kongre en akıllıca olanı değildir. Gerçek işte tutarlı bir şekilde uygulayabileceğiniz şey budur.
+
+Çoğu kişi için bu, açıklayıcı küçük harfler, kısa çizgiler veya alt çizgiler, tarihlerin önemli olduğu ISO tarihleri ve belirsiz etiketler yerine sürüm numaraları anlamına gelir. En zor dosyalarınız resimler, videolar, ekran görüntüleri, PDF'ler veya belgelerse [Zush dosya yeniden adlandırıcı](/), kuralın korunmasını kolaylaştırmak için adlandırma adımını otomatikleştirebilir.
+
+## Kopyalamaya hazır dosya adlandırma şablonları
+
+Dosyayı daha sonra bulmayı umduğunuz şekilde eşleşen deseni seçin. Başlangıç ​​noktası olarak kopyalayın ve ardından iş akışınızın ihtiyaç duymadığı alanları kaldırın.
+
+<BlogCopyPatterns
+  patterns={[
+    {
+      label: 'Dated documents',
+      useCase: 'Reports, meeting notes, contracts',
+      value: 'YYYY-MM-DD_subject_document-type_version.ext',
+      example: '2026-08-08_q3-budget_report_v2.pdf',
+    },
+    {
+      label: 'Project files',
+      useCase: 'Design, marketing, client work',
+      value: 'project_asset-description_variant_version.ext',
+      example: 'checkout-redesign_hero-banner_dark_v3.psd',
+    },
+    {
+      label: 'Photos and video',
+      useCase: 'Events, shoots, travel libraries',
+      value: 'YYYY-MM-DD_event_description_sequence.ext',
+      example: '2026-08-08_product-launch_keynote_0042.jpg',
+    },
+    {
+      label: 'Invoices and receipts',
+      useCase: 'Finance and bookkeeping',
+      value: 'YYYY-MM-DD_vendor_document-number.ext',
+      example: '2026-08-08_acme_invoice-1048.pdf',
+    },
+  ]}
+/>
+
+Tekrarlanabilir yapay zeka destekli yapılar için [Blokları Adlandırma](/blog/naming-blocks-file-naming-guide) ve [Zush Şablonları](/blog/zush-templates-file-renaming-workflows)'yi okuyun. Önce takımları karşılaştırıyorsanız [AI yeniden adlandırma araçları karşılaştırması](/blog/best-ai-file-renamer-tools-2026) ile başlayın.
+
+## Neredeyse her yerde çalışan beş dosya adlandırma kuralı
+
+<BlogMarkdownImage
+  src='/images/showcase/macos/naming-light.webp'
+alt='Biçim şablonu ve yerelleştirme seçenekleriyle Zush adlandırma düzeni yapılandırması'
+  priority
+/>
+
+### 1. Önce açıklayıcı olun
+
+Bir dosya adı, dosyayı açmadan size ne olduğunu söylemelidir.
+
+İyi:
+
+-`2026-03-05-q1-campaign-report.pdf`
+-`checkout-flow-mobile-wireframe.png`
+-`johnson-wedding-first-dance-0042.jpg`
+
+Kötü:
+
+-`document-final.pdf`
+-`image1.png`
+-`stuff-new-v2.docx`
+
+### 2. Yapıyı öngörülebilir tutun
+
+Benzer dosyalar aynı düzeni takip ettiğinde, sıralama kaotik olmak yerine kullanışlı hale gelir.
+
+Ortak desenler:
+
+-`YYYY-MM-DD_description.ext`
+-`project_description_version.ext`
+-`client_asset_description.ext`
+
+### 3. Güvenli ayırıcılar kullanın
+
+Kısa çizgiler, okunabilir ve web dostu olduklarından çoğu iş akışı için en kolay varsayılandır. Alt çizgi de işe yarar. MacOS'ta boşluklar kabul edilebilir ancak URL'lerde, komut dosyalarında ve bazı paylaşılan iş akışlarında uyuşmazlıklara neden olur.
+
+### 4. Tarihler önemli olduğunda ISO tarihlerini kullanın
+
+Tarih dosya adına aitse `YYYY-MM-DD` kullanın. Bu, dosyalar alfabetik olarak sıralandığında kronolojik sırayı korur.
+
+### 5. "Son" yerine sürüm numaralarını kullanın
+
+`final` adlı bir dosya nadiren nihaidir. `v2`, `v3` ve `v4`, `final-final-really-final`'den çok daha nettir.
+
+<BlogProductIntro
+  title="Kendi kendine uygulanan bir adlandırma kuralı mı istiyorsunuz?"
+  description="Zush, tarihler, meta veriler, istemciler ve yapay zeka tarafından algılanan içerik için 145'ten fazla Adlandırma Bloğuyla bir kuralı yeniden kullanılabilir bir modele dönüştürür. Önerilen her adı uygulamadan önce önizleyin, ardından gerekirse daha önceki adları Geçmiş'ten geri yükleyin."
+  links={[
+    { href: '/batch-rename-files', label: 'Dosyaları toplu olarak yeniden adlandırma' },
+    { href: '/blog/how-to-safely-batch-rename-files', label: 'Kılavuzu önizleyin ve geri alın' },
+    { href: '/docs/naming-blocks', label: 'Blokları Adlandırma' },
+    { href: '/docs/undo-history', label: 'Geçmişi Geri Al' },
+  ]}
+/>
+
+## İş akışına göre önerilen modeller
+
+### Fotoğrafçılık
+
+Şunun gibi bir desen kullanın:
+
+`YYYY-MM-DD_event_description_sequence.ext`
+
+Örnek:
+
+`2026-03-05_johnson-wedding_first-dance_0042.jpg`
+
+### Tasarım ve yaratıcı çalışma
+
+Şunun gibi bir desen kullanın:
+
+`project_asset_description_version.ext`
+
+Örnek:
+
+`checkout-redesign_hero-banner_dark_v3.psd`
+
+Adlandırma modeli yalnızca bir katmandır. [Mac'de tasarımcılar için dijital varlık yönetimi](/blog/digital-asset-management-designers-mac), desenin içinde bulunması gereken klasör yapısını, sürüm oluşturmayı ve dışa aktarma disiplinini kapsar.
+
+### İş belgeleri
+
+Şunun gibi bir desen kullanın:
+
+`YYYY-MM-DD_department_document-description.ext`
+
+Örnek:
+
+`2026-03-05_marketing_q1-campaign-report.pdf`
+
+Profesyonel evrak işleri kendi derin geleneklerini kazanır: [fatura adlandırma](/blog/invoice-file-naming-convention), [tıbbi kayıt dosyasının yeniden adlandırılması](/for-medical) ve [yasal dosya adlandırma](/blog/legal-file-naming-conventions) için özel kılavuzlara bakın.
+
+### Ekran görüntüleri ve dışa aktarmalar
+
+Şunun gibi bir desen kullanın:
+
+`context_description.ext`
+
+Örnek:
+
+`figma-mobile-checkout-flow.png`
+
+## Adlandırılması en zor dosyalar resimler, videolar ve belgelerdir
+
+Görüntüler ve belgeler çoğu adlandırma sisteminin çöktüğü yerdir. Kameralar sayaçları kullanır. macOS ekran görüntüleri zaman damgalarını kullanır. İndirmeler, kaynak sitenin onlara verdiği şeyle birlikte gelir. E-posta ekleri genellikle `document.pdf` veya `report.docx` gibi genel adlara sahiptir.
+
+![Zush toplu yeniden adlandırma sonuçlarını gösteren yapay zeka tarafından piyasaya sürülen açıklayıcı dosya reklamları](/images/showcase/macos/batch-rename-light.webp)
+
+Bu nedenle otomasyonun adlandırılması bu dosya türleri için en önemli şeydir. Bir kuralı kendiniz tanımlayabilirsiniz ancak açıklayıcı kısmı manuel olarak oluşturmak yavaştır. [Zush](https://zushapp.com) gibi araçlar, dosyanın ne içerdiğini tanımak için yapay zekayı kullanarak ve ardından dosyanın üstüne tutarlı bir desen uygulayarak bunu pratik hale getirir.
+
+Mac'e özgü bir görüntü iş akışı için bkz. [MacOS'ta Görüntüleri AI ile Yeniden Adlandırma](/blog/how-to-rename-images-with-ai-on-macos). Windows adlandırma katmanını istiyorsanız [Windows Aranabilir Klasörler için Dosya Adlandırma Kuralları](/blog/windows-file-naming-conventions-searchable-folders) ile devam edin.
+
+## Basit bir uygulama planı
+
+Mevcut kitaplığınız dağınıksa her şeyi aynı anda yeniden adlandırmayın.
+
+1. En sık kullandığınız klasörleri seçin
+2. Her dosya türü için bir adlandırma modeli tanımlayın
+3. Önce en acı verici birikimi yeniden adlandırın
+4. Yeni görsellerin, videoların ve ekran görüntülerinin akışını otomatikleştirin
+
+Bu son adım, sistemin tekrar çökmesini önleyen şeydir. Adlandırma kuralı ile otomatik yapay zeka destekli adlandırmanın birleşimi, ara sıra yapılan temizleme sprintlerinden çok daha dayanıklıdır.
+
+<BlogSafetyNote
+  title="Kuralı önce küçük bir parti üzerinde test edin"
+  description="Bir klasöre kural uygulamadan önce eski ad → yeni ad listesinin tamamını önizleyin. Zush, tamamlanmış yeniden adlandırma işlemlerini Geçmiş'te tutar, böylece hataları elle onarmak yerine önceki adları geri yükleyebilirsiniz."
+/>
+
+<BlogCTA placement='inline' platform='general' />
+
+![Tutarlı dosya isimlendirmesini otomatik olarak uygulayan Zush isimli kalıpları demosu](/videos/zush-naming-pattern.mp4)
+
+## Kaçınılması gereken yaygın hatalar
+
+- Her klasörde farklı desenlerin kullanılması
+- Dosya adlarının şifreli hale gelmesine neden olacak kadar agresif kısaltmalar yapmak
+- Tutarlılığı bozan boşluklara ve noktalama işaretlerine dikkat etmek
+- Dosyaları içerik yerine duruma (`new`, `latest`, `final`) göre adlandırma
+- Dosya adları zayıf olduğunda yalnızca klasörlere güvenmek
+
+## Sonuç
+
+En iyi dosya adlandırma kuralı, netlik ile tutarlılığı dengeleyen kuraldır. Açıklayıcı sözcükler, öngörülebilir ayırıcılar, faydalı olduğunda ISO tarihlerini ve dosyalar geliştikçe sürüm numaralarını kullanın.
+
+Görüntüleri, videoları, PDF'leri, e-tabloları veya belgeleri adlandırmada zorluk yaşıyorsanız [Zush](https://zushapp.com), tanımlayıcı kısmı otomatik olarak işleyebilir ve kuralın geniş ölçekte uygulanmasını kolaylaştırabilir.
+
+## SSS
+
+### Çoğu kişi için en iyi dosya adlandırma kuralı nedir?
+
+Çoğu kişi için, kısa çizgiler ve isteğe bağlı ISO tarihleri içeren küçük harfli açıklayıcı bir desen, zaman içinde tutarlılığı korumanın en kolay yoludur.
+
+### Kısa çizgi mi yoksa alt çizgi mi kullanmalıyım?
+
+İkisi de çalışıyor. Kısa çizgilerin okunması genellikle daha kolaydır ve web bağlamlarında daha dostçadır.
+
+### Yapay zeka, dosya adlandırma kurallarına yardımcı olabilir mi?
+
+Evet. Yapay zeka özellikle dosya adının açıklayıcı kısmının manuel olarak yazılması gereken resimler, ekran görüntüleri, videolar, PDF'ler ve belgeler (DOCX, PPTX, XLSX) için kullanışlıdır.

@@ -1,0 +1,618 @@
+---
+title: "Mac 最佳 AI 文件重命名工具对比（2026）"
+description: "比较 6 个适用于 Mac 的 AI 文件重命名器：定价、本地 AI、RAW 支持、撤消、文件覆盖范围以及 Zush、NameQuick、RenameClick 等的免费试用版。"
+date: "2026-02-28"
+slug: "mac-ai-file-renamer-comparison-cn"
+locale: "zh-cn"
+translationOf: "best-ai-file-renamer-tools-mac-compared"
+platform: "mac"
+topic: "comparisons"
+tags:
+  - "AI文件重命名"
+  - "工具比较"
+tldr: "对于混合 Mac 文件夹，Zush 是最适合的，因为它可以在一个桌面工作流程中处理屏幕截图、PDF、RAW 照片、设计文件、iWork、音频、视频、文件夹监控、预览、模板、命名块和回滚。"
+reviewed: "2026-08-08"
+featuredOrder: 1
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
+
+快速回答：如果您想要商业Mac产品页面，请从[Zush for Mac](/mac)开始。本文是通过定价、文件类型覆盖范围、本地 AI、BYOK、文件夹监控和回滚来决定 Mac AI 重命名应用程序的比较层。
+
+对于 Mac 上的内容感知 AI 文件重命名，如果您想下载应用程序而不是比较替代方案，请使用 [Zush Mac 产品页面](/mac)。本文是比较层：它解释了 Zush、NameQuick、Renamer.ai、AI Renamer、RenameClick 或 Riffo 何时有意义。
+
+当文件夹混合时，Zush 是最合适的：屏幕截图、PDF、RAW 照片、设计文件、iWork 文件、Office 文档、音频和视频可以在重命名任何内容之前批量查看。对于文档繁重的 OCR 工作流程，选择 NameQuick 或 Renamer.ai；当本地处理是决定因素时，选择 RenameClick 或 AI Renamer；对于仅限 Mac 的简单免费试用，选择 Riffo。如果您的购买限制确实是“如何计费”，请跳至 [计量与非计量故障](#metered-vs-unmetered-the-real-structural-split)。
+
+**最后验证时间：2026 年 7 月 24 日。** 下面的每项定价和功能声明均在该日期针对每个供应商自己的产品、定价和文档页面进行了重新检查。
+
+检查此更新的来源：[Zush for Mac](/mac)、[NameQuick](https://www.namequick.app/)、[Renamer.ai](https://renamer.ai/)、[RenameClick](https://rename.click/) 及其 [支持的文件类型文档](https://rename.click/docs/getting-started/supported-files)、[AI Renamer](https://airenamer.app/)、单独的 [GitHub上的ai-renamer CLI存储库](https://github.com/ozgrozer/ai-renamer) 和 [Riffo](https://riffo.ai/)。以下事实仅使用公共产品/定价/文档页面；此次刷新中删除了不受支持的基准测试数字。
+
+| Mac AI 重命名器 |最适合 |定价信号|
+|---|---|---|
+|Zush |混合文件夹、RAW 照片、屏幕截图、PDF、设计文件、音频、视频、iWork、自动化 |免费入门版，每月 10 美元，或一次性 48 美元 — 付费 PRO 没有每月重命名计量表 |
+|Renamer.ai |使用 Magic Folders 的 OCR/文档和矢量工作流程 |计量订阅：按文件量计算 $9.95-99.95 美元/月 |
+|NameQuick | Mac 原生深度、监视文件夹和规则引擎 |管理费用为 12 美元/月（按重命名计量）或 69 美元一次性自我管理 (BYOK) |
+|RenameClick |本地优先处理、AI 搜索和文件夹排序 |免费套餐适用；每月 8 美元+增值税或终生 48 美元+增值税，不计量 |
+| AI Renamer |低成本本地模型桌面应用程序 |一次性本地 19 美元，或每 200 个云积分 10 美元 |
+|Riffo|仅限 Mac 的免费“提交前试用”|自由定位；没有公布定价页面
+
+此比较涵盖 Zush、Renamer.ai、NameQuick、RenameClick、AI Renamer 和 Riffo，因此您可以按工作流程进行选择，而不是按功能计数营销进行选择。如果您专门搜索 **NameQuick 与 Zush** 或 NameQuick 是否是正确的 Mac AI 文件重命名器，请使用专用的 [Zush与NameQuick比较](/blog/zush-vs-namequick)。此页面范围更广：它比较 Mac 类别。
+
+如果您正在比较 Mac 文件重命名器、批量重命名工具或内容感知 AI 应用程序，您通常会尝试解决以下四个问题之一：
+
+- 您的文件具有无意义的名称（`IMG_`、`Screenshot`、`Document (3)`）
+- 手动重命名在文件夹规模上太慢
+- 每周都会进行清理工作
+- PDF、屏幕截图、照片、视频、音频、设计资源和文档混合在同一文件夹中
+
+此比较是为商业意图查询而构建的，您需要具体的决定，而不是广泛的功能列表。它基于当前的公共产品页面、定价页面和文档，而不是未来源的基准数据。编辑标准参见[我们的方法页面](/methodology)。
+
+如果您已经知道需要产品页面，请从 [Mac的AI文件重命名器](/mac) 或跨平台 [Mac的AI文件重命名器和Windows](/) 开始。有关确切的批次意图，请参阅 [批量重命名工具](/batch-rename-files)。正在寻找 Windows 工具？请参阅 [Windows AI重命名器比较](/blog/best-ai-file-renamer-tools-windows-compared)。想要跨所有平台获得更广泛的市场视野吗？请参阅 [AI重命名器市场比较](/blog/best-ai-file-renamer-tools-2026)。本文旨在比较 Mac 替代方案并阐明其适用性。
+
+<BlogProductIntro
+  title="正在寻找 Mac 应用程序？"
+  description="Zush for Mac 是 macOS 上 AI 文件重命名的商业产品页面：下载签名的应用程序、按内容批量重命名 Finder 文件夹、预览每个名称以及撤消任何重命名。"
+  links={[
+    { href: '/mac', label: 'Mac AI 重命名器' },
+    { href: '/ai-file-organizer', label: 'AI文件管理器' },
+    { href: '/batch-rename-files', label: '批量重命名工具' },
+    { href: '/', label: '文件重命名器' },
+    { href: '/offline-ai-file-renamer', label: '离线AI重命名' },
+  ]}
+/>
+
+![Zush批量重命名预览显示AI为混合文件夹生成的名称](/images/showcase/macos/batch-rename-light.webp)
+
+## Mac 文件重命名应用程序：快速决策
+
+对于混合文件 macOS 工作流程，我们的选择是 [Zush for Mac](/mac)。决定性的公共信号包括记录的 RAW 照片支持、Sketch/Figma/PSD 和 iWork/音频/视频覆盖、可重复使用的模板、145 多个命名块、批量审查、完整的重命名历史记录、BYOK 以及 48 美元的一次性 PRO 选项（无每月重命名表）。文件夹监控和撤消也在列表中，但它们不再是区别 - NameQuick 和 RenameClick 都是等效的。
+
+如果您只需要更改前缀/后缀，Finder 就足够了。如果您需要在一个 Mac 工作流程中使用内容感知的 PDF 重命名器、照片重命名器、屏幕截图重命名器、视频重命名器、音频重命名器、设计文件重命名器和文档重命名器，那么您需要 AI 工具，而 Zush 正是我们在进行下面的比较后找到的地方。如果您的文件夹主要是照片而不是混合文件，请参阅 [如何在Mac上组织照片](/blog/best-ways-to-organize-photos-on-mac) 了解重命名器周围的完整文件夹、命名和备份系统。
+
+## 如何选择 Mac 文件重命名应用程序
+
+大多数比较都过度重视特征计数。在实际工作流程中，这些标准决定结果：
+
+|标准|为什么它在生产中很重要？
+|---|---|
+|命名品质|坏名字会破坏可搜索性和信任度
+|格式覆盖范围| Mac 工作流程默认是混合的（HEIC、RAW、PDF、DOCX）|
+|吞吐量|文件夹规模批量重命名必须快速 |
+|安全|没有回滚=操作风险高|
+|自动化|没有自动文件夹监控，混乱又回来了 |
+|定价模式|订阅复合成本；一次性付款不可以|
+
+对于安全行背后的实用测试协议，请在比较重要文件夹上的应用程序之前使用 [预览和撤消指南批量重命名](/blog/how-to-safely-batch-rename-files)。
+
+## 之前和之后：最好的 Mac 文件重命名器应该生成什么
+
+在深入研究各个工具之前，先介绍一下优秀的 AI 文件重命名所产生的结果。这些示例反映了您应该从内容感知重命名器获得的输出类型，而不仅仅是基于模式的重命名器。
+
+### 截图
+
+|之前 |之后|
+|---|---|
+| `Screenshot 2026-02-14 at 10.32.15 AM.png` | `slack-conversation-project-timeline-update.png` |
+| `Screenshot 2026-02-14 at 10.33.01 AM.png` | `figma-dashboard-wireframe-mobile-v2.png` |
+| `Screen Shot 2026-01-22.png` | `xcode-build-error-missing-framework.png` |
+
+### 照片
+
+|之前 |之后|
+|---|---|
+| `IMG_4821.HEIC` | `golden-gate-bridge-fog-morning-view.heic` |
+| `DSC_0093.NEF` | `portrait-woman-natural-light-studio.nef` |
+| `P1040772.CR2` | `autumn-forest-trail-overhead-canopy.cr2` |
+
+### 文件
+
+|之前 |之后|
+|---|---|
+| `Document (3).pdf` | `quarterly-revenue-report-q4-2025.pdf` |
+| `scan0042.pdf` | `signed-lease-agreement-apartment-3b.pdf` |
+| `download.docx` | `project-proposal-website-redesign-acme.docx` |
+
+### 下载文件夹混乱
+
+|之前 |之后|
+|---|---|
+| `file.zip` | `react-component-library-v3.2.zip` |
+| `Invoice-38291.pdf` | `invoice-cloudflare-december-2025.pdf` |
+| `Untitled.xlsx` | `employee-onboarding-checklist-2026.xlsx` |
+
+无意义的文件名和描述性的文件名之间的差距是将 AI 重命名与简单的查找和替换区分开来的。本次比较中的每个工具都尝试进行这种转换，但它们在一致性、格式支持和命名质量方面差异很大。
+
+## 工具类：每个类擅长什么
+
+在查看各个 AI 工具之前，了解 Mac 上文件重命名的四种主要方法以及每种方法的故障点会有所帮助。
+
+### Finder 和内置重命名工具
+
+强用于：
+
+- 批量替换文本
+- 添加前缀或后缀
+- 应用数字序列
+
+弱于：
+
+- 基于内容的语义、每个文件命名
+- 屏幕截图和 PDF 的内容感知文件名
+- 除了初始重命名之外的任何类型的自动化
+
+Finder 是预安装的、免费且可靠的。如果您只需在文件夹中将“IMG_”更改为“Vacation-2026-”，它就可以很好地处理。但它无法查看文件内部并决定如何称呼它。
+
+### 元数据驱动的重命名器
+
+强用于：
+
+- EXIF 日期和基于相机的模式
+- 具有可预测元数据的结构化照片管道
+
+弱于：
+
+- 当元数据较差或丢失时的描述性命名
+- 文档意义提取
+- iPhone 屏幕截图（没有有用的 EXIF 数据）
+
+对于想要日期相机序列模式的摄影师来说，A Better Finder Rename 或 ExifRenamer 等工具非常有用。一旦元数据不可靠，他们就会崩溃。
+
+### 脚本管道
+
+强用于：
+
+- 正则表达式对命名模式的大量控制
+- 具有自定义规则的工程工作流程
+- 与 CI/CD 或自动化工具集成
+
+弱于：
+
+- 设置和维护成本
+- 跨团队可用性（非技术用户无法使用它们）
+- 适应混合文件夹内容
+
+如果您擅长编写 Python 和管理 API 密钥，则可以构建自定义 AI 重命名管道。代价是维护负担和缺乏用于预览和撤消的 GUI。有关 Automator 和脚本方法的更多信息，请参阅 [我们的macOS自动化指南](/blog/auto-rename-files-mac-guide)。
+
+### AI 重命名工具
+
+强用于：
+
+- 使用视觉和语言模型对内容进行语义命名
+- 混合文件夹，其中每个文件需要不同的名称
+- 文件夹监控的持续自动化
+
+弱于：
+
+- 如果您只需要静态文本转换，那就太过分了
+- 需要互联网（除非使用本地型号）
+
+这是本文重点关注的类别。以下评论涵盖了 2026 年适用于 Mac 的所有著名 AI 重命名器。
+
+---
+
+## 单独的工具评论
+
+### 1.Zush
+
+<BlogToolMeta platform="macOS (Sequoia and newer), plus Windows" website="https://zushapp.com/" label="zushapp.com">
+  <Fragment slot="pricing">免费套餐（从 50 次重命名开始）、Pro 版 10 美元/月或一次性 48 美元，无限制的 PRO 重命名、BYOK 可选、在 Mac 和 Windows 上通过 Ollama 进行离线 AI</Fragment>
+</BlogToolMeta>
+
+[Zush for Mac](/mac) 是一款专为 AI 支持的文件重命名而构建的本机 macOS 应用程序。我们将其放在第一位的主要原因是发布的格式广度：涵盖图像、设计文件、文档、视频和音频的 100 多种格式。其中包括 HEIC、AVIF、SVG、RAW 相机文件、Sketch、Figma .fig、Illustrator .ai、PSD、PDF、Office 文件、iWork 文件、OpenDocument 文件、字幕文件、MP3、M4A、WAV、FLAC 以及 MP4 和 MOV 等常见视频格式。 Real Mac 工作流程将 iPhone 照片、语音备忘录、相机 RAW 文件、设计资源、扫描的 PDF、办公文档、字幕和屏幕录制混合在同一文件夹中。
+
+**工作原理：** 您将文件或文件夹放入 Zush，它使用 AI 视觉和语言模型分析每个文件的内容，生成描述性文件名，并让您在应用之前预览每个建议的名称。您还可以设置文件夹监视，以便自动重命名监视目录中的新文件。
+
+**优点：**
+
+- 跨图像、设计文件、文档、视频、音频和混合文件类型的内容感知命名
+- 在应用任何更改之前批量重命名并提供完整预览
+- 文件夹监控以自动、持续地重命名新文件
+- 可重复使用的模板和 145 多个用于控制文件名结构的命名块
+- 智能Finder标签和 Spotlight 友好的元数据集成
+- 多个AI提供商可供选择：Gemini、Groq、OpenAI、Claude
+- 支持 60 多种输出语言
+- 通过一键还原任何文件来完成重命名历史记录
+- 一次性定价而不是按月订阅
+- BYOK（自带密钥）选项，可直接向提供商计费
+- 本地 Ollama 模式支持 Mac 上的离线处理
+
+**限制：**
+
+- 桌面应用程序而不是仅浏览器的工作流程
+- 云和 BYOK 处理需要互联网；本地 Ollama 可以处理设备上支持的文件
+- Cloud AI、BYOK 和 Offline AI 之间共享的免费重命名上限为 50 次； PRO 去掉盖子
+
+![Zush AI重命名结果包含五个文件，显示名称和之后绿色复选标记](/images/showcase/macos/batch-rename-light.webp)
+
+**结论：** 如果您使用的不仅仅是 JPEG，请选择 Zush。为我们做出决定的组合是：完整的 RAW 支持、Sketch/Figma/Illustrator/PSD 和 iWork/音频/视频覆盖、模板、命名块、回滚历史记录以及 48 美元的一次性选项（不计量您重命名的文件数量）。有关产品页面，请参阅 [File Renamer for Mac](/mac) 或更广泛的 [File Renamer for Mac和Windows](/)。如果 NameQuick 是您最接近的替代方案，请阅读专用的 [Zush vs NameQuick AI文件重命名器对比](/blog/zush-vs-namequick)。
+
+<BlogCTA placement='inline' platform='mac' />
+
+---
+
+### 2.Renamer.ai
+
+<BlogToolMeta platform="Desktop app (Windows & Mac) + Web interface" website="https://renamer.ai/" label="renamer.ai">
+  <Fragment slot="pricing">免费（25 个文件/月）、Pro 版 9.95 美元/月（200 个文件）、Power 29.95 美元/月（1,000 个文件）、Ultimate 99.95 美元/月（5,000 个文件）</Fragment>
+</BlogToolMeta>
+
+![Renamer.ai桌面应用程序屏幕截图（图片：renamer.ai）](/images/blog/competitors/renamer-ai.png)
+
+Renamer.ai 提供适用于 Windows 和 Mac 的桌面应用程序以及用于基于浏览器快速重命名的 Web 界面。该桌面应用程序与您的本地文件系统集成，并包括用于自动重命名的神奇文件夹等功能。其当前的公共页面强调预览、一键撤消、30 多种文件格式、OCR/文档分析和临时处理，而不是 BYOK 或本地模型控制。
+
+**工作原理：** 安装桌面应用程序或使用 Web 界面。将文件拖入，通过预览查看 AI 生成的名称，然后应用。神奇文件夹功能可以监视指定的文件夹，并在文件到达时自动重命名它们。
+
+**优点：**
+
+- 适用于 Windows 和 Mac 的桌面应用程序，具有本地文件系统集成，以及用于快速访问的 Web 界面
+- 根据当前 Renamer.ai 常见问题解答，支持 30 多种格式，包括常见文档、电子表格、演示文稿、图像和电子邮件文件
+- 真实矢量覆盖：EPS、SVG 和 AI (Adobe Illustrator) 已明确列出，因此“设计文件支持”本身并不是 Zush 与 Renamer.ai 的区别 — Sketch、Figma <code>.fig</code> 和 PSD 是
+- 用于自动文件夹监控和重命名的神奇文件夹
+- 在应用更改之前预览撤消功能
+- 带有拖放变量生成器的自定义命名模板（文档类型、日期、公司名称、发票号码）
+- OCR技术读取文档内容
+- 20 多种语言支持，自动语言检测
+- 定价页面列出了每月 25 个免费文件，付费等级从 9.95 美元/月到 99.95 美元/月不等
+
+**限制：**
+
+- 每个付费层的订阅定价，按文件数量计量，成本随数量急剧增加（200 至 5,000 个文件为 9.95-99.95 美元/月）
+- 公共常见问题解答语言称传输文件进行提取和人工智能分析，然后在处理后删除；它不是 BYOK 或本地 Ollama 工作流程
+- 修复了人工智能提供商无法选择您自己的模型或使用本地后端的问题
+- 没有 BYOK 选项来控制大批量成本
+- 魔法文件夹和全功能访问所需的桌面应用程序；网络界面更加有限
+
+**结论：** 一个强大的跨平台选项，具有强大的文档支持和文件夹自动化功能。订阅定价是主要的缺点——每年的费用从 120 美元到 1,200 美元不等，具体取决于数量，与一次性购买替代方案相比，这会增加费用。最适合主要在 Mac 和 Windows 上处理文本较多的文档的用户。如需直接定价比较，请阅读 [Zush vs Renamer.ai](/blog/zush-vs-renamer-ai)。
+
+---
+
+### 3.AI Renamer
+
+<BlogToolMeta platform="Desktop app (Mac & Windows)" website="https://airenamer.app/" label="airenamer.app">
+  <Fragment slot="pricing">本地模式一次性 19 美元，云模式每 200 个积分 10 美元（每次重命名 1 个积分），注册时免费获得 10 个积分。 aireenamer.app 定价页面未列出 CLI 或开源层。</Fragment>
+</BlogToolMeta>
+
+![AI Renamer界面（图片：airenamer.app）](/images/blog/competitors/ai-renamer.png)
+
+**两种不同的产品共用这个名称，只有一种是付费应用程序。** airenamer.app 上的 AI Renamer 是一款商业 Mac 和 Windows 桌面应用程序：其定价页面列出的本地模式一次为 19 美元，云模式为每 200 个信用点 10 美元（每个重命名 1 个信用点），注册时可免费获得 10 个信用点，仅此而已。它不宣传 CLI 或开源版本。另外，[`ozgrozer/ai-renamer`](https://github.com/ozgrozer/ai-renamer) 是 GitHub 上的免费 G​​PL-3.0 Node.js CLI，可使用 Ollama、LM Studio 或 OpenAI 密钥重命名图像和视频。不同的项目，不同的团队。如果您在任何地方读到“AI Renamer 是免费且开源的”，那么该声明是关于 GitHub CLI 的，而不是关于 19 美元的应用程序。
+
+**工作原理：** 对于桌面应用程序，将文件拖入，选择本地模式（Ollama、LM Studio、OpenAI 或自定义模型）或云模式积分，查看建议的名称并应用。对于 CLI，通过 `npx ai-renamer /path` 安装，将其指向支持视觉的本地模型，然后针对目录运行它；它支持自定义提示和输出大小写样式（camelCase、snake_case、kebab-case）。
+
+**优点：**
+
+- 本次比较中一次性桌面最低价格为 19 美元，可无限本地重命名
+- 本地模式列出了 Ollama、LM Studio、OpenAI 和自定义模型支持，因此文件可以保留在计算机上
+- 根据定价页面，云积分永不过期，注册时可免费获得 10 个
+- 单独的开源 CLI (GPL-3.0) 是开发人员真正免费的本地路径
+- 用于控制输出格式的自定义提示和命名大小写样式
+
+**限制：**
+
+- 公共格式细节参差不齐：定价页面声称所有文件类型，而功能页面仍然只提供图像加上 PDF/TXT/文本示例，没有细粒度的 RAW、Office、iWork、设计、音频或视频列表
+- 未检查官方页面上的文件夹监控或自动化
+- 检查官方页面上没有撤消或重命名历史记录
+- 云模式按计费：每 200 次重命名按文件夹规模累加 10 美元
+- CLI 是一个独立的项目，有自己的权衡：终端设置、几 GB 的本地模型文件、没有 GUI 预览、没有文档解析
+
+**结论：** 桌面应用程序是这里最便宜的一次性 GUI，如果处理必须保留在设备上，则本地模式是真正的答案。首先根据您自己的文件夹验证格式覆盖范围，因为所有文件类型声明不受已发布的格式列表的支持，并且如果批次出错则无法撤消。此行中的自由路径是 GitHub CLI，而不是应用程序。有关免费选项的更多信息，请参阅 [如何用AI免费重命名文件](/blog/rename-files-with-ai-free)，或阅读直接 [Zush vs AI Renamer](/blog/zush-vs-airenamer) 比较。
+
+---
+
+### 4.NameQuick
+
+<BlogToolMeta platform="macOS 15.0+ (Windows on a wait list)" website="https://www.namequick.app/" label="namequick.app">
+  <Fragment slot="pricing">管理费用为 12 美元/月，按级别每月重命名 500 / 2,000 / 5,000 / 10,000 次；自助管理 1 台设备一次性 69 美元，终身更新和 BYOK； 14 天试用，可重命名 50 次</Fragment>
+</BlogToolMeta>
+
+![NameQuick Mac应用程序界面（图片：namequick.app）](/images/blog/competitors/namequick.png)
+
+NameQuick 是一款原生 Mac 应用程序，在功能上是 Zush 最接近的竞争对手。它支持 30 多种文件格式，通过监视文件夹提供文件夹监控，包括对任何重命名进行一键撤消和恢复，添加内容搜索和自动组织，并将 OpenAI、Claude、Gemini、OpenRouter、Ollama、LM Studio 和 MLX 列为自我管理计划上的提供商选项。
+
+两条路径，它们的定价逻辑不同。 **托管起价为 12 美元/月，按计量** — 公共等级为每月 500、2,000、5,000 和 10,000 次重命名，因此您的账单是数量的函数。 **自我管理一次性价格为 69 美元**，一台设备具有终身更新，之后您可以携带自己的 API 密钥或运行本地模型并直接向提供商付款（或者在本地根本不支付任何费用）。
+
+**工作原理：** 将文件拖到应用程序中或设置监视文件夹以进行自动处理。 NameQuick 使用您选择的 AI 提供商分析文件内容，生成描述性名称，并让您在应用之前进行预览。它还包括一个规则引擎，用于根据条件移动、标记和归档文件。
+
+**优点：**
+
+- 30 多种文件格式，涵盖 PDF、Office 文档、图像、音频、视频和档案（按名称quick.app marketing）
+- 监视文件夹，用于在新文件到达时自动重命名它们 - 与 Zush 文件夹监视相同的自动化类别
+- 对任何重命名一键撤消和恢复，因此批量批次是可逆的
+- 自我管理的 BYOK 路径，具有异常广泛的提供商列表：OpenAI、Claude、Gemini、OpenRouter、Ollama、LM Studio 和 MLX
+- 带标记的结构化命名模板（<code>{'{date}'}</code>、<code>{'{counter}'}</code>、 <code>{'{original}'}</code>) 和自由格式自定义提示
+- 规则引擎，用于根据条件自动移动文件、标记和归档
+- 内容搜索可按文件中的单词查找文件，并自动组织到文件夹中
+- 自动Finder标签和评论
+- 内置 OCR，用于扫描文档并从照片中提取 EXIF
+- 多语言重命名输出
+
+**限制：**
+
+- 仅限 macOS - 目前没有 Windows 版本（该网站提供等待名单），也没有 Linux
+- 托管计划按每月重命名计量；如果您的流量很大，您需要的级别就是您支付的级别
+- 自我管理一次性费用为 69 美元，而 Zush 为 48 美元，仅限 1 台设备，并且仍然需要您自己的 API 密钥或本地模型设置
+- 没有确认的 RAW 格式支持（CR2、NEF、ARW）——支持 HEIF 但不支持相机 RAW
+
+**结论：** Mac 的有力竞争者，而“Zush 独自一人”的地方通常是错误的：监视文件夹和一键撤消都在这里。真正的差距在于平台、计量和显式格式覆盖范围：NameQuick 仅适用于 Mac，其管理计划计量重命名，并且不公开枚举相机 RAW 变体，而 Zush 也在 Windows 上运行，发布 RAW/设计/iWork/音频/视频覆盖范围，并且不计量付费 PRO 上的重命名。如果您只使用 Mac 并且已经持有 API 密钥，NameQuick 确实很接近。
+
+---
+
+### 5.RenameClick
+
+<BlogToolMeta platform="Desktop apps for macOS and Windows (their site calls it a desktop-native, local-first workflow)" website="https://rename.click/" label="rename.click">
+  <Fragment slot="pricing">免费套餐，无限制分析，每月 30 个应用积分；专业版每月 8 美元 + 增值税/月； Pro 终身 48 美元 + 一次性增值税</Fragment>
+</BlogToolMeta>
+
+![RenameClick 桌面应用程序界面（图片：rename.click）](/images/blog/competitors/renameclick.webp)
+
+RenameClick 为 macOS 和 Windows 提供了专用的桌面应用程序，并将自己描述为“桌面原生”和“为 macOS 和 Windows 上的真实文件夹构建，而不是云上传工作流程”——值得明确说明，因为称其为通用跨平台包装器歪曲了该产品。它捆绑了一个约 4 GB 的本地模型，首次使用时下载，然后离线工作，并且支持其他后端：Ollama、LM Studio、OpenAI、Google Gemini 和阿里云 Qwen。自动流程添加了文件夹监视。
+
+免费套餐是其定价中有趣的部分：**分析不受限制，仅应用重命名或移动就会花费积分**，每月 30 个。 Pro 移除仪表的价格为每月 8 美元 + 增值税或终身 48 美元 + 增值税。
+
+**工作原理：** 安装桌面应用程序、将文件拖入或设置自动流以监视文件夹。 RenameClick 使用本地 AI 模型（或您选择的后端）分析文件，生成名称，并让您在应用之前进行检查。它还包括使用预设或自定义类别将文件自动分类到文件夹中。
+
+**优点：**
+
+- 具有离线功能，并具有捆绑的本地 AI 模型 - 默认情况下，文件永远不会离开您的计算机
+- 格式覆盖范围比以前更广泛：10 种图像格式（JPEG、PNG、GIF、WebP、AVIF、BMP、SVG、HEIC、HEIF、TIFF）、长文档列表（PDF、DOC/DOCX、TXT、MD、CSV、RTF、ODT、JSON、XML、YAML、HTML、日志、SQL、SRT/VTT、ICS/VCF）和 5 种音频格式（MP3、WAV、FLAC、 M4A、AAC），具有本地语音转录功能
+- 免费套餐仅适用于已应用的更改，因此您无需花费积分即可评估命名质量
+- 自动流文件夹监控，用于自动重命名和组织
+- 多个AI后端：内置本地模型、Ollama、LM Studio、OpenAI、Google Gemini、阿里云 Qwen
+- 根据他们的文档，对操作的完全撤消/重做支持
+- 用于控制命名行为和执行约定的自定义 AI 指令
+- 照片文件名的 EXIF 元数据占位符 (<code>{'$exif{date}'}</code>、<code>{'$exif{camera}'}</code>, <code>{'$exif{city}'}</code>)
+- 自动将文件分类到文件夹中
+- 14种输出语言
+- Pro 终身选项（一次性 48 美元 + 增值税）可避免持续的订阅费用
+
+**限制：**
+
+- 免费套餐每月仅适用 30 次重命名或移动
+- 本地 AI 模型需要大约 4 GB 磁盘和 4 GB RAM 用于捆绑模型
+- 本地模型质量可能低于基于云的替代方案
+- 视频文件、档案和可执行文件在其文档中明确列为不受支持
+- 相机 RAW 格式（CR2、NEF、ARW）和设计文件（PSD、Sketch、Figma）未在其公共格式文档中列出
+- Mac App Store 版本中不提供云提供商
+- 价格不含增值税，因此欧洲大部分地区的实际终身成本高于 48 美元
+
+**结论：** 隐私选择，而且比一年前更强，现在支持音频和更长的文档列表。本地人工智能处理是使用它的真正原因——它对于法律、医疗或文件无法离开机器的任何工作流程都很重要。 Pro Lifetime 的价格为 48 美元 + 增值税，而 Zush 的一次性价格为 48 美元，因此您需要为捆绑的本地优先处理支付一点额外费用，并且放弃视频、RAW 和设计格式。对于直接的正面交锋，请参见[Zush vs RenameClick](/blog/zush-vs-renameclick)。
+
+---
+
+### 6.Riffo
+
+<BlogToolMeta platform="macOS + web demo" website="https://riffo.ai/" label="riffo.ai">
+  <Fragment slot="pricing">主页说免费；未找到定价页面或已发布的等级</Fragment>
+</BlogToolMeta>
+
+![Riffo Mac 应用程序界面（图片：riffo.ai）](/images/blog/competitors/riffo.png)
+
+Riffo 是这里最薄的条目，原因是文档而不是产品质量。其主页提供了 Mac 下载和在线演示，描述了 AI 批量文件重命名以及使用 AI 将文件分类到文件夹中，并表示该产品是免费的。除此之外，几乎没有什么需要验证的：**在 2026 年 7 月 24 日检查的页面上没有定价页面，没有支持的格式列表，没有撤消语句，也没有文件夹监控语句**。我们之前在这里描述了其处理基础设施；该声明无法从该网站重新获得，因此已被删除而不是重复。
+
+**工作原理：** 下载 Mac 应用程序或使用在线演示。将文件拖入，查看 AI 生成的名称并应用。 Riffo 还宣传自动将文件分类到文件夹中。
+
+**优点：**
+
+- 公共主页将 Riffo 定位为免费
+- 干净的拖放界面
+- 自动文件夹自动将文件组织到分类的子文件夹中
+- 可定制的重命名语言
+
+**限制：**
+
+- macOS 仅适用于桌面应用程序（官方页面上未检查 Windows 版本）
+- 依赖于云——所有处理都需要互联网
+- 没有发布支持的格式列表，因此您无法在安装前检查文件类型
+- 没有确认的文件夹监控以进行自动重命名
+- 没有确认的撤消或重命名历史记录
+- 没有 BYOK 选项来选择您自己的 AI 提供商
+- 没有公开的定价页面，因此“免费”没有规定的限制，也没有规定的承诺
+
+**结论：** 将 Riffo 视为零风险实验，而不是构建工作流程的工具。如果它能够很好地命名您的文件，那么您无需花费任何成本。但由于没有发布的格式、没有记录的撤消操作以及没有定价页面，因此无法将其与此列表的其余部分进行逐个功能比较，我们不会假装不是这样。
+
+---
+
+## 功能比较
+
+|特色 |Zush |Renamer.ai | AI Renamer |NameQuick |RenameClick |Riffo|
+|---|---|---|---|---|---|---|
+| **平台** | macOS + Windows |桌面 (Win/Mac) + 网页 |桌面（Mac/Win）| macOS（Windows 等候名单）|桌面本机 (Mac/Win) | macOS + 网络 |
+| **免费套餐** | 50 起步 | 25/月 | 10 学分 | 14 天试用（50 次重命名）|无限分析 + 30 次申请/月 |免费，无规定限制 |
+| **计量？** |付费 PRO 没有 |是的，按每个级别的文件/月 |云模式是； $19 本地模式管理是（500-10,000/月）；自我管理 否 |免费套餐是的；亲没有|没有说明 |
+| **批量重命名** |是的，有预览 |是的 |是的 |是的，有预览 |是的 |是的 |
+| **自动监控** |是的 |是（魔术文件夹）|没有 |是（监视文件夹）|是（自动流程）|未确认 |
+| **回滚/撤消** |完整历史 |是的 |未列出 |是（一键撤消和恢复）|是（根据文档完全撤消/重做）|未确认 |
+| **图像/设计格式** | 41 张图像 + 4 种设计格式（Sketch、Figma、AI、PSD）| 30 多种格式，包括EPS/SVG/AI 向量；没有 RAW、PSD、Sketch 或 Figma |功能示例+全文件声明| 〜8；没有 RAW 列表 | 10 张图片；没有 RAW 或设计文件 |没有记录|
+| **文档格式** | 37，包括 iWork | 30 多个文档/电子表格/演示文稿/电子邮件 | PDF/TXT 示例；全文件声明 | 〜5+ 与 OCR | 20+ 包括JSON/XML/YAML/HTML/SQL/字幕 |没有记录|
+| **音频/视频** | 7 个音频 + 16 个视频 |不是中心|未列出（CLI 可以播放视频）|列入 30+ | 5 个带转录的音频；视频不受支持 |没有记录|
+| **定制图案** |模板 + 145+ 命名块 |是（模板）|是（自定义提示）|是（模板+提示+规则引擎）|是（AI指令）|有限公司|
+| **人工智能提供商的选择** | 4 家提供商 + BYOK |固定| Ollama/LM Studio/OpenAI/自定义 | 7 个选项 + BYOK 自我管理 |内置本地 + 5 个提供商 |固定（云）|
+| **语言支持** | 60+ | 20+ |可配置|多语言 | 14 | 14有限公司|
+| **Finder 集成** |标签+聚光灯|不适用（跨平台）|没有 |标签 + 评论 |上下文菜单 |没有 |
+| **定价** | 10 美元/月或 48 美元一次性/BYOK | $9.95-99.95/月 |一次性本地 19 美元或 10/200 美元积分 | $12/月+ 托管或 $69 自我管理 |免费 30/月，每月 8 美元+增值税或终生 48 美元+增值税 |免费|
+| **最适合** |混合文件 Mac 工作流程 |跨平台文档 + 矢量工作流程 |最便宜的本地模型 GUI | Mac 高级用户 (BYOK) |离线本地人工智能工作流程 |简单免费重命名 |
+
+## 计量与非计量：真正的结构划分
+
+功能清单将这些工具模糊在一起。计费没有。计量是这一类别中最明显的结构划分，当一个文件夹容纳 4,000 个文件而不是 40 个文件时，它实际上决定了您的成本：
+
+- **计量：** Renamer.ai 每层（200 至 5,000 个文件/月）、NameQuick Managed（500 至 10,000 个重命名/月）、AI Renamer 云模式（每 200 个积分 10 美元）、RenameClick 的免费层（30 个适用/月）。
+- **不计量：** RenameClick Pro、NameQuick 自管理、AI Renamer 本地模式和 Zush 付费 PRO。
+
+在不计量组中，还有第二个值得一提的部分：RenameClick Pro、NameQuick 自管理和 AI Renamer 本地模式都希望您携带自己的密钥或为 AI 本身运行本地模型。 Zush 是一款无需 API 密钥即可进行托管云重命名的产品，同时如果您需要的话，仍然可以提供 BYOK 和离线 AI。对于根本不想考虑提供商帐户的人来说，这是实际的区别。
+
+## 定价分析
+
+定价比大多数比较帖子所承认的更重要，因为文件重命名不是一次性任务。混乱又回来了。您使用一次的工具与您每周使用的工具的购买决策是不同的。
+
+有关直接订阅与一次性的比较，请阅读 [Zush vs Renamer.ai](/blog/zush-vs-renamer-ai)。
+
+|工具|免费选项|付费选项 |年度成本（估计）|型号|
+|---|---|---|---|---|
+|Zush | 50 次重命名即将开始 | 10 美元/月或一次性 48 美元 |一次性 48 美元或每月 120 美元/年 |每月或一次性 PRO，不计量 |
+|Zush BYOK |每个计划均可用 |提供商 API 成本 |可选 API 成本 |按量付费 API |
+|Renamer.ai | 25 个文件/月 | 9.95-99.95 美元/月 | $120-1,200/年 |计量订阅 |
+| AI Renamer |注册即可获得 10 个积分 |一次性 19 美元（本地模式）或 10/200 美元积分（云）| 19 美元，或每次云重命名 0.05 美元 |一次性本地/计量积分 |
+|NameQuick | 14 天试用（50 次重命名）|管理起价 12 美元/月，或自我管理一次性 69 美元 + API/本地模型 | 144 美元以上/年托管，或 69 美元+ API/本地设置 |计量管理或一次性自我管理 |
+|RenameClick |无限分析 + 30 次申请/月 |每月 8 美元+增值税或一次性 48 美元+增值税（终身）| $96+增值税/年或 $48+增值税总计 |订阅或终身，不限流量 |
+|Riffo|免费|没有发表 | 0 美元 |免费，无公开条款 |
+
+定价的差异比最初显示的要大，而且页面上的数字并不是您支付的数字。 Zush 提供 10 美元/月或 48 美元/次的价格，均提供不限流量的 PRO 重命名和 BYOK 供提供商控制。 RenameClick 的生命周期价格为 48 美元**加上增值税**，这在欧洲大部分地区实际上超过了 48 美元。 NameQuick 分为每月 12 美元起的计量托管计划和仅限一台设备的 69 美元一次性自我管理许可证。 AI Renamer 是最便宜的 GUI，本地处理一次性价格为 19 美元，云重命名每次收费 5 美分。 Renamer.ai 的规模是最昂贵的 - 入门计划为 120 美元/年，终极版高达 1,200 美元/年 - 并且对每个级别的文件进行计量。
+
+对于想要首先探索免费选项的用户，我们的 [免费使用AI重命名文件](/blog/rename-files-with-ai-free) 指南详细介绍了每条免费路径。如果主要决定是内置云、BYOK 或本地处理，请在购买前使用 [云AI与本地AI文件重命名](/blog/cloud-vs-local-ai-file-renaming)。
+
+## 这个比较的来源
+
+此刷新使用于 **2026 年 7 月 24 日**检查的公共产品、定价、文档和常见问题解答页面。它不包括私人基准分数或未发布的测试语料库指标。
+
+|工具|使用来源支持的事实 |
+|---|---|
+|Zush |本地产品页面和存储库数据，用于定价、平台支持、支持的格式、BYOK、离线 AI、文件夹监控、撤消和命名块 |
+|NameQuick |公共主页，包含 12 美元/月的托管计量层、69 美元的自我管理条款、14 天/50 次重命名试用、30 多种格式/OCR、监视文件夹、撤消和恢复、内容搜索、包括 OpenRouter 和 MLX 的提供商列表以及 Windows 等待列表 |
+|Renamer.ai |具有文件配额的公共主页定价层、30 多种格式列表（包括 EPS/SVG/AI 矢量）、Magic 文件夹、桌面/Web 平台声明、20 多种语言以及 OCR/文档工作流程副本 |
+| AI Renamer | aireenamer.app 定价页面，本地模式为 19 美元，云模式为 10/200 美元积分，以及 10 个免费积分 — 它没有列出 CLI 或开源层；用于 CLI、Ollama、LM Studio 和 ffmpeg 视频笔记的单独 `ozgrozer/ai-renamer` GitHub 存储库 (GPL-3.0) |
+|RenameClick |官方主页和定价文档，包括增值税措辞、免费信用计量、桌面本机定位、本地模型大小和 RAM、支持的文件页面（图像、文档、音频）、明确不支持的类别、自动流程、AI 搜索和撤消/重做 |
+|Riffo|仅限官方主页：Mac下载、网页演示、批量重命名、文件夹分类、自由定位。未找到定价页面、格式列表、撤消或监控语句 |
+
+如果竞争对手没有公开列出某项功能，本文会说“未公开列出”或“未确认”，而不是假设支持。在我们之前发布的声明中，我们无法再获取来源——Riffo 的处理基础设施以及 airenamer.app 产品的开源层——该声明已被删除而不是重述。
+
+## 谁应该使用哪个工具
+
+不同的工作流程需要不同的工具。以下是基于最常见的 Mac 用户配置文件的决策矩阵。
+
+### 您是摄影师或创意专业人士
+
+**最佳选择：Zush**
+
+您可以使用 RAW 文件（CR2、NEF、ARW、DNG）、iPhone 中的 HEIC、客户文档、设计资源，有时还可以使用音频或视频导出。您需要导入会话的批处理和工作文件夹的持续自动化。 Zush 公开列出了这些类别和文件夹监控。有关特定于图像的工作流程的更多信息，请参阅 [如何在macOS上使用AI重命名图像](/blog/how-to-rename-images-with-ai-on-macos)。如果设计资产而不是照片在您的文件夹中占主导地位，[Mac上的设计师数字资产管理](/blog/digital-asset-management-designers-mac) 会涵盖重命名器插入的结构。
+
+### 您是开发人员或工程师
+
+**最佳选择：Zush 或 AI Renamer**
+
+如果隐私和本地处理是不可协商的，AI Renamer 的 19 美元本地模式（或免费的 `ozgrozer/ai-renamer` CLI）可以将所有内容保留在您的计算机上。如果您重视广泛的文档、屏幕截图、设计、音频、视频和 RAW 支持，任何套餐中的 Zush 和 BYOK 都可以让您在桌面审查和撤消工作流程中控制 AI 提供商。 Zush 的 BYOK 选项还吸引了已经拥有 OpenAI、Anthropic、Google 或 Groq API 密钥的工程师。
+
+### 您是学生或研究员
+
+**最佳选择：Zush（免费套餐）**
+
+您有数百个 PDF、讲座屏幕截图和研究文档。 50 个免费重命名的免费套餐涵盖了轻度持续使用，批处理可处理整个学期文件积累的清理。文档格式支持（PDF、DOCX、XLSX）对于学术工作流程至关重要。
+
+### 您需要快速一次性重命名
+
+**最佳选择：Riffo 或 Renamer.ai（网络界面）**
+
+Riffo 将产品定位为免费并提供网络演示。 Renamer.ai 的 Web 界面可让您重命名少量文件，而无需安装任何内容。两者都是一次性任务的合理起点。
+
+### 您对隐私敏感
+
+**最佳选择：RenameClick 或 AI Renamer**
+
+RenameClick 在您的计算机上运行本地 AI 模型，涵盖图像、文档和音频，而无需将文件发送到云端。 AI Renamer 的 19 美元本地模式在 GUI 中执行相同的操作，GitHub 上单独的 `ozgrozer/ai-renamer` CLI 是免费的、GPL-3.0 且基于终端。 RenameClick 提供更广泛的文档格式支持和更完善的应用程序； AI Renamer更便宜。
+
+### 您可以在 Mac 和 Windows 上工作
+
+**最佳选择：RenameClick 或 Renamer.ai**
+
+RenameClick 为 Mac 和 Windows 提供了具有本地 AI 处理功能的桌面本机应用程序。 Renamer.ai 还可以通过其桌面应用程序在这两个平台上运行。对于文档密集型和矢量工作流程，Renamer.ai 的 30 多种格式、OCR 重点、EPS/SVG/AI 支持和魔术文件夹更强大。对于隐私优先的工作流程，RenameClick 的本地处理是与众不同的。如果您需要同一批次的 RAW、Sketch/Figma/PSD、iWork、视频或音频，Zush 还涵盖这两个平台。
+
+## 常见问题
+
+### NameQuick 是一款适用于 macOS 的优秀 AI 文件重命名器吗？
+
+是的。 NameQuick 是一款功能强大的专注于 macOS 的 AI 文件重命名器，适用于文档繁重的工作流程、自定义规则以及想要 Mac 原生设置的用户 - 而且它确实具有监视文件夹和一键撤消功能，因此这些都不是排除它的理由。当同一文件夹混合 RAW 照片、设计文件、屏幕截图、PDF、iWork 文件、Office 文档、音频和视频时，当 Windows 支持很重要时，或者当您不想像 NameQuick 的托管计划那样计量重命名时，Zush 更适合。
+
+### 如果我不需要 AI，我应该在 Mac 上使用什么？
+
+如果每个文件都需要相同的规则，Finder 的内置重命名工具通常就足够了。使用专业批处理工具来处理正则表达式、EXIF 或严格的元数据模式。仅当每个文件根据其显示或包含的内容需要不同的描述性名称时，才使用 AI 文件重命名器。
+
+### Mac 上最好的免费 AI 文件重命名器是什么？
+
+Riffo 将自己定位为免费，并在公共主页上提供批量重命名和文件夹分类功能，但它没有发布任何格式、限制或撤消声明。 Zush 提供 50 种免费重命名功能，包括批处理、文件夹监控和回滚。 RenameClick 的免费套餐不同寻常且有用：分析不受限制，并且只有应用的重命名才会花费 30 个月的积分。 GitHub 上的 `ozgrozer/ai-renamer` CLI 是完全免费和开源的，但需要本地模型设置 - 请注意，付费的 Airenamer.app 产品是一个不同的项目，并且不是免费的。有关免费选项的完整详细信息，请参阅我们的 [免费使用AI重命名文件指南](/blog/rename-files-with-ai-free)。
+
+### AI 文件重命名器可以处理 CR2 和 NEF 等 RAW 照片吗？
+
+不要以为他们可以。在检查此更新的公共页面中，Zush 明确列出了 CR2、CR3、NEF、ARW、DNG、ORF、RAF、RW2、PEF、SRW 和 SR2。 NameQuick 列出了 30 多种格式，未列举 RAW 相机变体； Renamer.ai 列出了常见图像以及 EPS/SVG/AI 矢量，但没有 RAW 相机文件； RenameClick 的支持文件页面列出了常见图像，包括 AVIF/HEIC/HEIF/TIFF，但不包括 RAW。
+
+### 使用 AI 批量重命名文件安全吗？
+
+这取决于该工具是否提供回滚。 Zush、Renamer.ai、NameQuick（一键撤消和恢复）和 RenameClick（根据其文档进行完全撤消/重做）都可以让您将文件恢复为其原始名称。没有记录撤消的工具（AI Renamer 和 Riffo）对于批量操作来说会带来更大的风险。在处理整个库之前，请务必先测试小样本。
+
+### AI 文件重命名器可以处理 PDF 和文档吗？
+
+此比较中的几个工具支持文档。 Zush 涵盖 37 种文档和 PDF 相关格式（PDF、DOCX、XLSX、PPTX、TXT、CSV、TSV、JSON、XML/YAML、EML、SRT、VTT、OpenDocument 等）。 Renamer.ai 销售 30 多种文件格式，并支持 OCR 文档。 NameQuick 使用内置 OCR 处理 PDF、Word、Excel 和 Pages。 RenameClick 的文档列表比以前更长：PDF、DOC/DOCX、TXT、MD、CSV、RTF、ODT、JSON、XML、YAML、HTML、日志、SQL、SRT/VTT 和 ICS/VCF。 AI Renamer 的定价页面推销全文件支持，但其公开功能示例仍然强调 PDF/TXT/文本文件。 Riffo 根本没有发布任何格式列表。
+
+### BYOK（自带密钥）如何运作？
+
+BYOK 允许您连接来自 OpenAI、Google (Gemini)、Anthropic (Claude) 或 Groq 等提供商的自己的 API 密钥。在 FREE 中，BYOK 共享 50 次重命名限额； PRO 取消了 Zush 上限，但最终的 API 成本取决于提供商、型号、文件大小、提示长度和令牌使用情况。在此比较中，Zush 和 NameQuick 都提供 BYOK 式控制。 Zush 的每个套餐都包含 BYOK，而 NameQuick 的自我管理路径一次设备价格为 69 美元，并列出了 OpenAI、Claude、Gemini、OpenRouter、Ollama、LM Studio 和 MLX。 RenameClick 支持多个 AI 后端（Ollama、LM Studio、OpenAI、Gemini、阿里云 Qwen），但将其视为提供商选择而不是 BYOK 模型。 AI Renamer 的 19 美元本地模式列出了 OpenAI 和自定义模型支持以及 Ollama 和 LM Studio。
+
+### AI 文件重命名会破坏我现有的文件链接吗？
+
+重命名文件会更改其路径，这可能会破坏其他应用程序中的链接。 Zush 通过其回滚功能缓解了这一问题，该功能可让您立即恢复任何重命名。对于基于 Finder 的工作流程，Spotlight 会快速重新索引重命名的文件，因此搜索可以继续进行。如果您的文件被其他软件（例如 CMS 或 DAM 系统）引用，请先进行小批量测试。
+
+### AI 生成的文件名有多准确？
+
+准确性取决于文件类型、型号、提示、OCR 质量以及该工具是否允许您在应用名称之前检查和更正名称。此刷新不会发布基准准确性分数，因为本文中不包含可重现的测试集。对于购买决策，请优先考虑预览、撤消、重复处理和对实际文件格式的支持。
+
+### 我可以用英语以外的语言重命名文件吗？
+
+Zush 支持 60 多种语言生成的文件名，使其成为多语言工作流程的最广泛选择。 Renamer.ai 支持 20 多种语言，RenameClick 支持 14 种语言，NameQuick 提供多语言输出，无需说明计数。 AI Renamer 的语言支持取决于所使用的模型。
+
+## 替代方案仍然有意义的地方
+
+在以下情况下使用 Finder 或基本工具：
+
+- 您只需要一次前缀/后缀转换
+- 文件名已经很有意义了
+- 不需要语义理解
+
+在以下情况下使用脚本：
+
+- 你需要严格的正则表达式合同
+- 您的团队可以随着时间的推移维护工具
+- 您正在集成到更大的自动化管道中
+
+在以下情况下使用 Renamer.ai 的 Web 界面或 Riffo：
+
+- 您需要将一些文件重命名一次
+- 您无法在机器上安装软件或想要免费选项
+
+在以下情况下使用 AI 重命名：
+
+- 文件名含义对于搜索和检索很重要
+- 文件夹内容混合且嘈杂
+- 需要面向未来的自动化
+
+## 成本价值框架
+
+文件命名的隐藏成本是检索摩擦，而不是重命名操作。
+
+如果一个团队每天花几分钟时间重新查找命名不当的文件，那么即使数量不大，准确的 AI 命名工作流程通常也会很快获得回报。单个 `Screenshot 2026-02-14 at 10.32.15 AM.png` Renamed.to `slack-conversation-project-timeline-update.png` 可以节省每次有人在 Spotlight 中搜索它的时间。
+
+这就是为什么决策质量应该基于持续的运营影响，而不仅仅是首次运行的便利性。一次性定价（例如 Zush 的 48 美元一次性计划）比无论您是否重命名文件都向您收费的订阅更符合这一现实。
+
+## 建议买家推出
+
+1. 从一个有噪音的文件夹（`Downloads` 或 `Screenshots`）开始。
+2. 处理具有代表性的样本文件夹。
+3. 重命名后检查命名质量和可搜索性。
+4. 通过恢复一些文件来验证回滚行为。
+5. 仅在质量基线可接受后才启用监控。
+6. 如果您期望持续进行大量重命名，请考虑 BYOK。
+
+这可以防止基于演示场景的工具锁定，并在提交之前为您提供有关命名质量的真实数据。
+
+## 相关阅读
+
+- [Mac的AI文件重命名器](/mac)
+- [自动重命名文件Mac：最佳工具和方法](/blog/auto-rename-files-mac-guide)
+- [如何在macOS上使用AI重命名图像](/blog/how-to-rename-images-with-ai-on-macos)
+- [如何免费使用AI重命名文件](/blog/rename-files-with-ai-free)
+
+## 最终推荐
+
+如果您希望在 macOS 上进行语义化、可搜索、低摩擦的文件命名，并且需要处理混合文件类型（包括 RAW 照片、设计文件、iWork、音频、视频、PDF 和 Office 文档），我们的选择是 [Zush for Mac](/mac)。在此比较中，它具有最广泛的已发布混合格式覆盖范围，一次性选项 48 美元，而不是必需的订阅、文件夹监控和重命名历史记录。
+
+亚军值得了解。如果您想要一个完善的 Mac 规则引擎，不拍摄 RAW，并且要么适合托管重命名层，要么已经持有 69 美元自我管理许可证的 API 密钥，请选择 NameQuick。如果您的作品包含大量文档或矢量（EPS、SVG、AI）并且您需要 Windows 和 Mac，请选择 Renamer.ai。如果您的隐私政策排除了云 AI 并且您可以在没有视频、RAW 和设计格式的情况下生活，请选择 RenameClick。如果您只需要重命名一次少数文件并拒绝付费，请选择 Riffo。如果您想要最便宜的本地 GUI，请选择 AI Renamer，价格为 19 美元；如果您喜欢从终端运行 Ollama，请选择其无关的开源 CLI。
+
+到 2026 年，工具之间的差距已经缩小——一些曾经是 Zush 独有的功能（BYOK、文件夹监控、撤消历史记录、多语言输出）现在在 NameQuick 和 RenameClick 中提供，并且我们已经更正了本页面的其他暗示。两次分裂仍然决定了它。在格式上：RAW、Sketch/Figma/PSD、iWork、音频和视频在一个工作流程中仍然是 Zush，而其他人只涵盖了较小的一部分。计费方面：Renamer.ai、NameQuick Managed 和 AI Renamer Cloud 都会向您计费，而 Zush 付费 PRO、NameQuick Self-Managed、RenameClick Pro 和 AI Renamer Local Mode 则不会 — 而其中，Zush 是唯一一款包含托管云重命名且无需您携带 API 密钥的产品。

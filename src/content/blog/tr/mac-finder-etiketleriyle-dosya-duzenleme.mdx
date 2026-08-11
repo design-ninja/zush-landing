@@ -1,0 +1,304 @@
+---
+title: "Mac’te Finder Etiketleriyle Dosyaları Düzenleme Rehberi"
+description: "Adım adım talimatlar, kopyalanabilir aramalar, pratik örnekler ve sorun giderme ipuçlarıyla Mac'te Finder etiketlerini, Akıllı Klasörleri ve Spotlight'ı kullanın."
+date: "2026-02-15"
+slug: "mac-finder-etiketleriyle-dosya-duzenleme"
+locale: "tr"
+translationOf: "finder-tags-guide-organize-files-mac"
+platform: "mac"
+topic: "search"
+tags:
+  - "Dosya Organizasyonu"
+tldr: "Finder etiketleri, Akıllı Klasörler ve Spotlight, birlikte en iyi şekilde çalışan üç yerleşik macOS aracıdır. Etiketler klasörler arası anlam katar, Akıllı Klasörler dinamik görünümler oluşturur ve Spotlight her şeyi arar, ancak üçü de yararlı adlara ve meta verilere sahip dosyalara bağlıdır."
+reviewed: "2026-08-08"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogCopyPatterns from '@/components/blog/BlogCopyPatterns.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSafetyNote from '@/components/blog/BlogSafetyNote.astro';
+
+Hızlı cevap: Finder etiketleri, klasörler arasında çalışan renk kodlu etiketlerdir. Klasörler arası erişim için bunları kullanın (`urgent`, `invoice`, `reference`), etiketli dosyaları otomatik olarak toplamak için Akıllı Klasörler ile birleştirin ve daha sonra aramak için Spotlight'ı kullanın.
+
+## Mac dosya arama görevinizi seçin
+
+| Yapmam gereken… | Doğrudan | Sonuç |
+|---|---|---|
+| Farklı klasörlerdeki dosyaları etiketleyin | [Finder etiketleri](#finder-tags-cross-folder-organization-without-moving-files) | Yeniden kullanılabilir bir durum veya proje etiketi |
+| Otomatik olarak güncellenen bir dosya görünümü oluşturun | [Akıllı Klasörler](#smart-folders-dynamic-views-without-moving-files) | Kendini güncelleyen kayıtlı bir arama |
+| Hemen bir dosya bulun | [Gündem](#spotlight-fast-search-across-your-entire-mac) | Türe, etikete, tarihe veya ada göre hızlı sorgulama |
+| Genel dosyaları aranabilir hale getirin | [Açıklayıcı dosya adları](#why-filenames-matter-more-than-any-of-these-tools) | Her Mac aracında işe yarayan arama terimleri |
+
+macOS, çoğu kişinin ayrı ayrı kullandığı üç güçlü dosya arama ve düzenleme aracı içerir. Finder etiketleri, Akıllı Klasörler ve Spotlight'ın her biri, dosya alma bulmacasının farklı bir parçasını çözer ve birlikte kullanıldıklarında çok daha etkili hale gelirler.
+
+Bu kılavuz, üç aracın tamamını, her birinin nasıl doğru şekilde ayarlanacağını ve Mac dosyalarının daha sonra bulunmasını kolaylaştırmak için bunların okunabilir dosya adlarıyla nasıl birleştirileceğini kapsar.
+
+Adları genel olduğundan dosyalarınızın aranması zorsa bu sistemi [Mac'de AI dosyasını yeniden adlandırma](/blog/how-to-rename-images-with-ai-on-macos), [Blokları Adlandırma](/blog/naming-blocks-file-naming-guide) veya daha geniş [Mac AI yeniden adlandırıcı karşılaştırması](/blog/best-ai-file-renamer-tools-mac-compared) ile eşleştirin.
+
+## Finder etiketleri: dosyaları taşımadan klasörler arası düzenleme
+
+Finder etiketleri, Mac'teki dosyaları yeni klasörlere taşımadan düzenlemenin en basit yollarından biridir. Etiketli bir dosya orijinal konumunda kalmaya devam edebilir ancak aynı zamanda tüm sisteminizde renge veya etiket adına göre aranabilir hale gelir.
+
+### Etiketler nasıl uygulanır ve bulunur?
+
+1. Finder'da bir veya daha fazla dosya seçin.
+2. Seçime sağ tıklayın ve **Etiketler**'i seçin.
+3. Mevcut bir rengi seçin veya `to-review` gibi kullanışlı bir ad yazın.
+4. Finder kenar çubuğundan etiketi açın veya `⌘Space` tuşuna basın ve `tag:to-review`'yi arayın.
+
+Daha hızlı etiketleme için bir dosya seçin ve macOS menü çubuğundan **Dosya → Etiketler**'i seçin. Etiket adlarını kısa ve daha sonra arayacağınız bir eyleme bağlı tutun.
+
+![MacOS'ta birden fazla dosyanın seçildiği Finder Etiket Ekle aç pencere](/images/blog/finder-add-tags-macos.jpg)
+
+Bu ekran görüntüsündeki etiketler Mac'in sistem dilini takip ediyor ancak etiket düğmesi, renk seçenekleri ve metin alanı aynı konumlarda kalıyor.
+
+### Finder etiketleri ne işe yarar?
+
+Etiketler, bir dosyanın birden çok kategoriye veya tek bir klasör yoluna tam olarak sığmayan iş akışlarına ait olduğu klasörler arası organizasyon için en iyi sonucu verir.
+
+Yararlı etiket örnekleri:
+
+- **Durum etiketleri**: `urgent`, `waiting`, `approved`, `to-review`
+- **Proje etiketleri**: `client-alpha`, `website-redesign`, `q2-campaign`
+- **İş akışı etiketleri**: `needs-edit`, `published`, `archived`
+- **İçerik etiketleri**: `reference`, `screenshot`, `export`
+
+### Etiketler ne işe yarar
+
+Çok fazla etiket oluşturduğunuzda etiketlerin kullanışlılığı sona erer. Şunlardan kaçının:
+
+- uygulamayı unuttuğunuz onlarca örtüşen kategori
+- zaten klasör yolundan açıkça görülen bilgileri kopyalayan etiketler
+- aslında arama veya filtreleme için asla kullanmadığınız etiketler
+
+İyi bir sistemde 50 değil 5 ila 10 aktif etiket bulunur.
+
+### En iyi pratik etiket sistemleri
+
+**Durum tabanlı etiketler** eylem odaklı iş akışlarında iyi çalışır:
+
+| Etiket | Anlamı |
+|---|---|
+| `Action` | Derhal ilgilenilmesi gerekiyor |
+| `Waiting` | Başka biri tarafından engellendi |
+| `In Progress` | Şu anda üzerinde çalışılıyor |
+| `Done` | Tamamlandı, arşivlenmeye hazır |
+
+**Proje tabanlı etiketler**, ilgili dosyalar birkaç farklı klasörde bulunduğunda ve bunları bir araya getirmeniz gerektiğinde kullanışlıdır.
+
+`screenshot`, `export` veya `raw-photo` gibi **medya türü etiketler**, klasör yapısının tek başına dosyanın iş akışınızdaki rolünü yansıtmadığı durumlarda yardımcı olur.
+
+![Zush akıllı etiketler demosu, Finder etiketlerini Mac'teki dosyalara otomatik olarak uygular](/videos/zush-tags.mp4)
+
+<BlogProductIntro
+  title="Etiketler yalnızca dosya adları bir şeyler söylediğinde yardımcı olur"
+  description="Zush, Mac dosyalarına içeriklerinden açıklayıcı adlar verir ve aynı zamanda Finder meta verilerini de yazabilir. Önerilen adları uygulamadan önce inceleyin, ardından gerektiğinde daha önceki adları Geçmiş'ten geri yükleyin."
+  links={[
+    { href: '/docs/metadata-tags', label: 'Meta veriler ve etiketler' },
+    { href: '/blog/how-to-safely-batch-rename-files', label: 'Kılavuzu önizleyin ve geri alın' },
+    { href: '/mac', label: 'Mac için Zush' },
+  ]}
+/>
+
+## Akıllı Klasörler: dosyaları taşımadan dinamik görünümler
+
+Mac'teki Akıllı Klasörler normal klasörler değildir. Kriterlerinizle eşleşen dosyaları gerçek zamanlı olarak gösteren kayıtlı aramalardır. Akıllı Klasörler yalnızca dosyalara referans verdiği için, bir dosya kopyalanmadan birden fazla Akıllı Klasörde görünebilir; bunları hiçbir zaman taşımaz veya kopyalamaz.
+
+### Akıllı Klasörler ne işe yarar
+
+Dosya sisteminizin dinamik, her zaman güncellenen görünümlerini istediğinizde en iyi şekilde çalışırlar:
+
+- son 7 günün tüm güncel görüntüleri
+- 10 MB'tan büyük tüm PDF'ler
+- `urgent` etiketli tüm dosyalar
+- bu hafta değiştirilen tüm belgeler
+- belirli bir proje klasöründeki tüm ekran görüntüleri
+
+### Akıllı Klasör nasıl oluşturulur
+
+1. Finder'ı açın
+2. **Dosya → Yeni Akıllı Klasör**'ü seçin (veya `⌥⌘N` tuşuna basın)
+3. Tür, tarih, ad veya etiket gibi kriterleri eklemek için `+` düğmesini tıklayın.
+4. Sonuçları daraltmak için birden fazla kriteri birleştirin
+5. **Kaydet**'i tıklayın ve hızlı erişim için isteğe bağlı olarak Finder kenar çubuğuna ekleyin
+
+![MacOS'ta kapsam ve ölçüm denetimleriyle Finder Akıllı Klasör Araması](/images/blog/finder-create-smart-folder-macos.jpg)
+
+Arama kapsamı üst kısımda görünür ve sağdaki `+` kontrolü başka bir kural ekler. Arayüz etiketleri Mac'inizin sistem dilini takip eder.
+
+### Kullanılacak en iyi kriter
+
+| Kriterler | Kullanım örneği |
+|---|---|
+| `Kind` | Resimlere, PDF'lere, klasörlere, belgelere, sunumlara göre filtreleyin |
+| `Date Modified` | Yakın zamanda değiştirilen dosyaları bulun |
+| `Date Created` | Belirli bir döneme ait dosyaları bulun |
+| `Name Contains` | Kısmi dosya adlarını eşleştir |
+| `Tag` | Etiketli dosyaları tüm klasörlerde görüntüleyin |
+| `File Size` | Temizlemek için büyük dosyaları bulun |
+
+![Zush sistemleri izleme ayarları için otomatik dosya yeniden adlandırma](/images/showcase/macos/monitor-light.webp)
+
+### Akıllı Klasörler + Finder etiketleri
+
+Akıllı Klasörler, etiketlerle birleştirildiğinde çok daha kullanışlı hale gelir. Bu kombinasyon, orijinallerin bulunduğu yeri değiştirmeden "tüm acil dosyalar" veya "tüm inceleme varlıkları" gibi görünümler sunar.
+
+Örnek Akıllı Klasör ayarları:
+
+- **"İnceleme Kuyruğu"** — Tür Resim + Etiket `to-review`'dir
+- **"Son Büyük Dosyalar"** — Değiştirilme Tarihi son 7 gün içindedir + Boyut 50 MB'tan büyüktür
+- **"Müşteri Teslim Edilebilirleri"** — Etiket `client-alpha` + Tür Klasör Değildir
+
+## Spotlight: Mac'inizin tamamında hızlı arama
+
+Spotlight, Mac'te dosyaları bulmanın en hızlı yoludur. `⌘Space` tuşuna basın, birkaç kelime yazın ve sonuçlar neredeyse anında görünecektir. Ancak Spotlight yalnızca arayabileceği meta veriler kadar iyi çalışır. Dosyalarınızda yararlı adlar, etiketler ve tarihler varsa Spotlight anında kullanıma hazırdır. Her şey `IMG_4382` ve `document (7)` ise arama neredeyse işe yaramaz hale gelir.
+
+### En kullanışlı Spotlight arama operatörleri
+
+Spotlight, doğal dili ve yapılandırılmış sorguları destekler:
+
+| Sorgu | Ne bulur |
+|---|---|
+| `kind:image beach` | Dosya adında veya meta verisinde "plaj" bulunan resimler |
+| `kind:pdf contract` | "Sözleşme" içeren PDF'ler |
+| `date:2026-03 kind:image` | Mart 2026'da oluşturulan görseller |
+| `tag:urgent` | "acil" etiketli dosyalar |
+| `tag:red` | Kırmızı renk etiketine sahip dosyalar |
+| `invoice 2026` | Hem "fatura" hem de "2026" ile eşleşen herhangi bir dosya |
+
+<BlogCopyPatterns
+  patterns={[
+    {
+      label: 'Tagged review queue',
+      useCase: 'Find files waiting for review',
+      value: 'tag:to-review',
+      example: 'tag:to-review',
+    },
+    {
+      label: 'Project PDFs',
+      useCase: 'Find one document type by topic',
+      value: 'kind:pdf project-name',
+      example: 'kind:pdf northwind',
+    },
+    {
+      label: 'Dated images',
+      useCase: 'Narrow a photo or screenshot search',
+      value: 'date:2026-08 kind:image',
+      example: 'date:2026-08 kind:image',
+    },
+    {
+      label: 'Large recent files',
+      useCase: 'Start a storage cleanup in Finder search',
+      value: 'kind:document date:this month',
+      example: 'kind:document date:this month',
+    },
+  ]}
+/>
+
+### Spotlight ve Finder araması ne zaman kullanılmalı?
+
+**Spotlight**, kabaca ne aradığınızı bildiğinizde hızlı, sistem çapında aramalar için en iyisidir.
+
+**Finder araması** aynı anda birden fazla filtreye ihtiyaç duyduğunuzda (örneğin, görüntü türü artı tarih artı klasör kapsamı) veya Mac'inizin tamamı yerine belirli bir klasör içinde arama yapmak istediğinizde daha iyidir.
+
+### Neden Spotlight bazen zayıf hissettiriyor?
+
+Spotlight dosyalarınızı görsel olarak anlamıyor. Metin tabanlı meta verileri arar: dosya adları, etiketler, Finder yorumları ve dosya özellikleri. `IMG_8392.HEIC` adlı bir gün batımı fotoğrafı, kendiniz daha iyi meta veriler eklemediğiniz sürece Spotlight tarafından neredeyse görünmez. Kitaplığınızdaki en büyük suçlu fotoğraflarsa, [Mac kılavuzunda fotoğraflar nasıl organize edilir](/blog/best-ways-to-organize-photos-on-mac) bunların etrafında eksiksiz bir adlandırma, etiketleme ve yedekleme sistemi oluşturur.
+
+Aramanın bozuk gibi görünmesinin en yaygın nedeni budur: Dosyalarda Spotlight'ın eşleştireceği yararlı metin yoktur.
+
+![Format şablonu ve yerelleştirme seçenekleriyle Zush olarak adlandırılan model ayarları](/images/showcase/macos/naming-light.webp)
+
+## Üç aracın tümü birlikte nasıl çalışır?
+
+Gerçek güç, etiketleri, Akıllı Klasörleri ve Spotlight'ı tek bir erişim sisteminde birleştirmekten gelir:
+
+1. **Etiketler** klasör sınırlarını aşan anlamlar katar
+2. **Akıllı Klasörler** etiketlere, tarihlere, türlere ve dosya adlarına göre kalıcı dinamik görünümler oluşturur
+3. **Spotlight** her şeyde anında arama sağlar
+
+İçerik ekibi için örnek iş akışı:
+
+1. Gelen dosyaları geldiklerinde `to-review` olarak etiketleyin
+2. `to-review` etiketli dosyaları gösteren "İnceleme Kuyruğu" adında bir Akıllı Klasör oluşturun
+3. İnceledikten sonra etiketi `approved` veya `done` olarak değiştirin
+4. Gerektiğinde belirli bir dosyayı ada göre hızlı bir şekilde bulmak için Spotlight'ı kullanın
+
+Bu sistem, klasör yapınızı yeniden düzenlemenize gerek kalmadan çalışır. Dosyalar oldukları yerde kalır; Etiketler ve Akıllı Klasörler bunun üzerinde dinamik bir katman sağlar.
+
+<BlogSafetyNote
+  title="Orijinalleri riske atmadan önce yeniden adlandırın"
+  description="Genel adlar Spotlight'ı engelliyorsa, küçük bir grubu test edin ve önerilen her dosya adını uygulamadan önce inceleyin. Zush History, daha önceki adların geri yüklenebilmesi için tamamlanan değişikliklerin kaydını tutar."
+/>
+
+<BlogCTA placement='inline' platform='mac' />
+
+## Dosya adları neden bu araçların herhangi birinden daha önemli?
+
+Etiketler, Akıllı Klasörler ve Spotlight'ın tümü aynı şeye bağlıdır: yararlı meta verilere. Ve herhangi bir dosyanın sahip olduğu en etkili meta veri, dosya adıdır.
+
+`IMG_4822.HEIC` adlı bir dosya:
+
+- Spotlight'a görünmez (faydalı arama terimi yok)
+- Akıllı Klasörlerde taranması zor (ne olduğunu bilmek için onu açmanız gerekir)
+- geniş ölçekte akıllıca etiketlemek imkansızdır (her birini önizlemeniz gerekir)
+
+`sunset-pacific-coast-hwy-march-2026.heic` adlı bir dosya:
+
+- Spotlight'ta anında bulunabilir
+- herhangi bir Akıllı Klasör görünümünde taranabilir
+- etiketsiz kendi kendini belgeleme
+
+Açıklayıcı adlandırmanın iyi bir Mac dosya düzenleme sisteminin temeli olmasının nedeni budur. Görüntü ağırlıklı kitaplıklar için [Zush Mac için AI yeniden adlandırıcı](/mac), zayıf dosya adlarını otomatik olarak tanımlayıcı adlara dönüştürebilir; bu da Spotlight'ı, Akıllı Klasörleri ve etiketleri önemli ölçüde daha etkili hale getirir.
+
+![Zush toplu olarak yeniden adlandırma, dosyaların Yapay Zeka tarafından kurulumu açıklayıcı reklamlarla Spotlight'ta aranabilmesini sağlar](/images/showcase/macos/batch-rename-light.webp)
+
+## Daha iyi dosya arama için en iyi uygulamalar
+
+1. **Açıklayıcı dosya adları kullanın** — bu, en yüksek etkiye sahip tek iyileştirmedir
+2. **Etiket sayınızı küçük tutun** — maksimum 5 ila 10 etkin etiket
+3. **Yinelenen görünümler için Akıllı Klasörler oluşturun** — inceleme kuyrukları, en son büyük dosyalar, projeye genel bakışlar
+4. **Spotlight operatörlerini kullanın** — `kind:`, `date:`, `tag:` dar sonuçları hızlı bir şekilde elde edin
+5. **Spotlight endeksinizi yalnızca sonuçlar açıkça bozulduğunda yeniden oluşturun** - normal bir alışkanlık olarak değil
+6. **Etiketleri Akıllı Klasörlerle birleştirin** — bu, yeniden düzenlemeye gerek kalmadan dinamik klasörler arası görünümler sağlar
+
+## Finder etiketleri, Akıllı Klasörler ve Spotlight ile ilgili sorunları giderme
+
+### Finder kenar çubuğunda bir etiket eksik
+
+**Finder → Ayarlar → Etiketler**'i açın, etiketi etkinleştirin ve ardından Favori Etiketler alanına sürükleyin. Etiket, kenar çubuğundan gizlenmiş olsa bile dosyalarda hâlâ mevcut olabilir.
+
+### Akıllı Klasör beklenen dosyaları göstermiyor
+
+Akıllı Klasörü açın ve önce arama kapsamını kontrol edin. Bir klasörle sınırlı olan kaydedilmiş bir arama, başka bir yerde eşleşen dosyaları döndürmez. Daha sonra, çelişen kural açıkça ortaya çıkana kadar kriterleri birer birer kaldırın.
+
+### Spotlight, Finder'ın görebileceği bir dosyayı bulamıyor
+
+Dosya konumunun **Sistem Ayarları → Spotlight → Arama Gizliliği** altında hariç tutulmadığını doğrulayın. Yalnızca genel medya dosyaları eksikse tüm Spotlight dizinini yeniden oluşturmadan önce açıklayıcı dosya adları veya etiketler ekleyin.
+
+### `tag:` aramaları çok fazla sonuç döndürüyor
+
+Etiketi başka bir operatörle (örneğin `tag:urgent kind:pdf` veya `tag:client-alpha date:this month`) birleştirin. Etkin etiketleri, her biri yararlı bir geri alma eylemini temsil edecek kadar spesifik tutun.
+
+## SSS
+
+### Mac'imdeki tüm görselleri hızlı bir şekilde nasıl bulabilirim?
+
+Spotlight'ı (`⌘Space`) açın ve `kind:image` yazın ve ardından herhangi bir açıklayıcı terim yazın. Daha geniş sonuçlar için Tür Görüntüdür kriteriyle bir Akıllı Klasör oluşturun ve ardından isteğe bağlı olarak tarihe veya klasöre göre daraltın.
+
+### Varsayılan renklerin ötesinde özel Finder etiketleri oluşturabilir miyim?
+
+Evet. Herhangi bir dosyaya sağ tıklayın, Etiketler'e tıklayın ve herhangi bir özel etiket adını yazın. Özel etiketler, tıpkı varsayılan renk etiketleri gibi, Spotlight araması (`tag:your-tag-name`) ve Akıllı Klasörler ile çalışır.
+
+### Akıllı Klasörler ile normal klasörler arasındaki fark nedir?
+
+Normal klasörler dosyalar içerir. Akıllı Klasörler kayıtlı aramalardır; yalnızca kriterlerinizle eşleşen dosyaları görüntülerler. Bir dosyayı normal bir klasöre taşımak, konumunu değiştirir. Akıllı Klasöre ölçüt eklemek hiçbir dosyayı taşımaz.
+
+### Spotlight neden fotoğraflarımı bulamıyor?
+
+Spotlight, resim içeriğini değil metin meta verilerini arar. Fotoğraflarınız `IMG_4822` olarak adlandırılmışsa Spotlight'ın eşleştirebileceği hiçbir yararlı şey yoktur. Fotoğrafları açıklayıcı dosya adlarıyla yeniden adlandırın veya aranabilir hale getirmek için Finder etiketlerini kullanın.
+
+## Sonuç
+
+Finder etiketleri, Akıllı Klasörler ve Spotlight zaten her Mac'te yerleşiktir. Gerçek yükseltme, bunları birlikte kullanmak ve onlara çalışacakları daha iyi malzeme vermekten gelir. Güçlü dosya adları, küçük bir dizi amaca yönelik etiket ve iyi tasarlanmış birkaç Akıllı Klasör, macOS'u gerçekten güçlü bir dosya alma sistemine dönüştürür.
+
+Zayıf dosya adları darboğaz oluşturuyorsa [Mac için Zush](/mac), Mac'inizdeki diğer tüm araçların daha iyi çalışması için adlandırma tarafını düzeltebilir.

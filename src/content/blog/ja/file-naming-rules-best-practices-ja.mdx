@@ -1,0 +1,223 @@
+---
+title: "ファイル命名規則のベストプラクティス：ルールと実例"
+description: "検索しやすく長く使えるファイル命名規則を、文書・写真・プロジェクトの実例で解説。日付、版数、区切り文字、再利用できるテンプレートも紹介します。"
+date: "2026-03-05"
+slug: "file-naming-rules-best-practices-ja"
+locale: "ja"
+translationOf: "file-naming-conventions-best-practices"
+platform: "general"
+topic: "naming"
+tags:
+  - "ファイル構成"
+  - "ファイルの命名"
+tldr: "適切なファイル命名規則は、シンプル、記述的、検索可能、一貫性のあるものです。つまり、小文字の単語、予測可能な区切り文字、必要に応じて ISO 日付を使用し、`final-final-v2` のような曖昧な名前を付けないでください。"
+reviewed: "2026-08-08"
+featuredOrder: 3
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogCopyPatterns from '@/components/blog/BlogCopyPatterns.astro';
+import BlogMarkdownImage from '@/components/blog/BlogMarkdownImage.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSafetyNote from '@/components/blog/BlogSafetyNote.astro';
+
+簡単な答え: 適切なファイル命名規則は、説明的で、ハイフンで区切られ、並べ替え可能で、検索可能で、一貫性のあるものです。時系列が重要な場合は `YYYY-MM-DD` で先頭に置き、そうでない場合は件名で先頭に置きます。ケバブケースを使用し、スペースや特殊文字を避け、チーム間で 1 つのルールを守ります。
+
+確実なファイル命名規則により、ファイルの検索、並べ替え、共有を行うたびに時間を節約できます。最良の規約が最も賢い規約ではありません。これは、実際の仕事全体に一貫して適用できるものです。
+
+ほとんどの人にとって、それは、わかりやすい小文字の名前、ハイフンまたはアンダースコア、日付が重要な場合の ISO 日付、および曖昧なラベルの代わりのバージョン番号を意味します。最も難しいファイルが画像、ビデオ、スクリーンショット、PDF、またはドキュメントである場合、[Zush ファイルリネーム](/) は命名ステップを自動化できるため、規則の維持が容易になります。
+
+## コピー可能なファイル命名テンプレート
+
+後でファイルを検索する方法に一致するパターンを選択してください。これを開始点としてコピーし、ワークフローに必要のないフィールドを削除します。
+
+<BlogCopyPatterns
+  patterns={[
+    {
+      label: 'Dated documents',
+      useCase: 'Reports, meeting notes, contracts',
+      value: 'YYYY-MM-DD_subject_document-type_version.ext',
+      example: '2026-08-08_q3-budget_report_v2.pdf',
+    },
+    {
+      label: 'Project files',
+      useCase: 'Design, marketing, client work',
+      value: 'project_asset-description_variant_version.ext',
+      example: 'checkout-redesign_hero-banner_dark_v3.psd',
+    },
+    {
+      label: 'Photos and video',
+      useCase: 'Events, shoots, travel libraries',
+      value: 'YYYY-MM-DD_event_description_sequence.ext',
+      example: '2026-08-08_product-launch_keynote_0042.jpg',
+    },
+    {
+      label: 'Invoices and receipts',
+      useCase: 'Finance and bookkeeping',
+      value: 'YYYY-MM-DD_vendor_document-number.ext',
+      example: '2026-08-08_acme_invoice-1048.pdf',
+    },
+  ]}
+/>
+
+反復可能な AI 支援構造については、[ネーミングブロック](/blog/naming-blocks-file-naming-guide) および [Zush テンプレート](/blog/zush-templates-file-renaming-workflows) を参照してください。最初にツールを比較する場合は、[AIリネームツールの比較](/blog/best-ai-file-renamer-tools-2026) から始めてください。
+
+## ほぼどこでも機能する 5 つのファイル命名規則
+
+<BlogMarkdownImage
+  src='/images/showcase/macos/naming-light.webp'
+alt='フォーマットテンプレートとローカライズオプションを備えた Zush の命名パターン設定'
+  priority
+/>
+
+### 1. 最初に説明的にする
+
+ファイル名によって、開かなくてもファイルが何であるかがわかるはずです。
+
+良い:
+
+- `2026-03-05-q1-campaign-report.pdf`
+- `checkout-flow-mobile-wireframe.png`
+- `johnson-wedding-first-dance-0042.jpg`
+
+悪い:
+
+- `document-final.pdf`
+- `image1.png`
+- `stuff-new-v2.docx`
+
+### 2. 構造を予測可能な状態に保つ
+
+類似したファイルが同じパターンに従っている場合、並べ替えは無秩序ではなく便利になります。
+
+よくあるパターン:
+
+- `YYYY-MM-DD_description.ext`
+- `project_description_version.ext`
+- `client_asset_description.ext`
+
+### 3. 安全なセパレータを使用する
+
+ハイフンは読みやすく Web に適しているため、ほとんどのワークフローにとって最も簡単なデフォルトです。アンダースコアも機能します。 macOS ではスペースを使用できますが、URL、スクリプト、および一部の共有ワークフローで摩擦が生じます。
+
+### 4. 日付が重要な場合は ISO 日付を使用する
+
+日付がファイル名に含まれる場合は、`YYYY-MM-DD` を使用します。ファイルをアルファベット順に並べ替えると、時系列が維持されます。
+
+### 5. 「最終版」の代わりにバージョン番号を使用します。
+
+`final` という名前のファイルが最終的なものになることはほとんどありません。 `v2`、`v3`、および `v4` は、`final-final-really-final` よりもはるかに明確です。
+
+<BlogProductIntro
+  title="そのまま適用される命名規則が必要ですか?"
+  description="Zush は、日付、メタデータ、クライアント、AI で検出されたコンテンツの 145 以上の命名ブロックを使用して、慣例を再利用可能なパターンに変えます。提案されたすべての名前を適用する前にプレビューし、必要に応じて履歴から以前の名前を復元します。"
+  links={[
+    { href: '/batch-rename-files', label: 'ファイル名の一括変更' },
+    { href: '/blog/how-to-safely-batch-rename-files', label: 'プレビューと元に戻すガイド' },
+    { href: '/docs/naming-blocks', label: 'ネーミングブロック' },
+    { href: '/docs/undo-history', label: '元に戻す履歴' },
+  ]}
+/>
+
+## ワークフロー別の推奨パターン
+
+### 写真
+
+次のようなパターンを使用します。
+
+`YYYY-MM-DD_event_description_sequence.ext`
+
+例:
+
+`2026-03-05_johnson-wedding_first-dance_0042.jpg`
+
+### デザインとクリエイティブな仕事
+
+次のようなパターンを使用します。
+
+`project_asset_description_version.ext`
+
+例:
+
+`checkout-redesign_hero-banner_dark_v3.psd`
+
+命名パターンは 1 層のみです。 [Mac のデザイナー向けデジタル資産管理](/blog/digital-asset-management-designers-mac) は、パターンが内部に存在する必要があるフォルダー構造、バージョン管理、エクスポート規則をカバーしています。
+
+### ビジネス文書
+
+次のようなパターンを使用します。
+
+`YYYY-MM-DD_department_document-description.ext`
+
+例:
+
+`2026-03-05_marketing_q1-campaign-report.pdf`
+
+専門的な事務処理には、独自のより深い規則があります。[請求書の名前付け](/blog/invoice-file-naming-convention)、[医療記録ファイルの名前変更](/for-medical)、および [合法的なファイル命名](/blog/legal-file-naming-conventions) の専用ガイドを参照してください。
+
+### スクリーンショットとエクスポート
+
+次のようなパターンを使用します。
+
+`context_description.ext`
+
+例:
+
+`figma-mobile-checkout-flow.png`
+
+## 名前を付けるのが最も難しいファイルは画像、ビデオ、ドキュメントです
+
+画像とドキュメントは、ほとんどの命名システムが機能しない場所です。カメラはカウンターを使用します。 macOS のスクリーンショットではタイムスタンプが使用されます。ダウンロードは、ソース サイトが提供したものと一緒に届きます。電子メールの添付ファイルには、`document.pdf` や `report.docx` などの一般的な名前が付いていることがよくあります。
+
+![AIが生成したわかりやすいファイル名を示す Zush バッチの名前変更結果](/images/showcase/macos/batch-rename-light.webp)
+
+このため、これらのファイル タイプでは、名前付けの自動化が最も重要になります。規則を自分で定義することもできますが、説明部分を手動で生成すると時間がかかります。 [Zush](https://zushapp.com) のようなツールは、AI を使用してファイルの内容を認識し、一貫したパターンを適用することでこれを実用化します。
+
+Mac 固有の画像ワークフローについては、[macOS で AI を使用して画像の名前を変更する方法](/blog/how-to-rename-images-with-ai-on-macos) を参照してください。 Windows 命名層が必要な場合は、[Windows 検索可能なフォルダーのファイル命名規則](/blog/windows-file-naming-conventions-searchable-folders) に進みます。
+
+## 簡単な実装計画
+
+現在のライブラリが乱雑な場合は、一度にすべての名前を変更しないでください。
+
+1. 最も頻繁に使用するフォルダーを選択します
+2. ファイルの種類ごとに 1 つの命名パターンを定義します。
+3. 最も苦痛なバックログの名前を最初に変更します
+4. 新しい画像、ビデオ、スクリーンショットの流入を自動化する
+
+この最後のステップが、システムが再び崩壊するのを防ぐものです。命名規則と AI 支援による自動命名を組み合わせることで、時折クリーンアップ スプリントを行うよりもはるかに耐久性が高くなります。
+
+<BlogSafetyNote
+  title="最初に小さなバッチで規則をテストします"
+  description="フォルダーに規則を適用する前に、完全な古い名前→新しい名前のリストをプレビューします。 Zush は完了した名前変更操作を履歴に保存するため、間違いを手動で修正する代わりに以前の名前を復元できます。"
+/>
+
+<BlogCTA placement='inline' platform='general' />
+
+![一貫したファイル命名規則を自動的に適用する Zush 命名パターンのデモ](/videos/zush-naming-pattern.mp4)
+
+## 避けるべきよくある間違い
+
+- フォルダーごとに異なるパターンを使用する
+- あまりにも積極的に省略すると、ファイル名がわかりにくくなります
+- 一貫性を損なうスペースや句読点を保持する
+- 内容ではなくステータス (`new`、`latest`、`final`) によってファイルに名前を付けます
+- ファイル名自体が弱い場合はフォルダーのみに依存する
+
+## 結論
+
+最良のファイル命名規則は、明瞭さと一貫性のバランスをとるものです。説明的な単語、予測可能な区切り記号、役立つ場合は ISO 日付、ファイルが進化する場合はバージョン番号を使用します。
+
+ボトルネックが画像、ビデオ、PDF、スプレッドシート、またはドキュメントの命名である場合、[Zush](https://zushapp.com) は説明部分を自動的に処理し、規則を大規模に適用しやすくします。
+
+## よくある質問
+
+### ほとんどの人にとって最適なファイル命名規則は何ですか?
+
+ほとんどの人にとって、ハイフンとオプションの ISO 日付を使用した小文字の説明パターンは、長期にわたって一貫性を保つのが最も簡単です。
+
+### ハイフンまたはアンダースコアを使用する必要がありますか?
+
+どちらも機能します。通常、Web コンテキストではハイフンの方が読みやすく、親しみやすいです。
+
+### AI はファイルの命名規則に役立つでしょうか?
+
+はい。 AI は、ファイル名の説明部分を手動で記述する必要がある画像、スクリーンショット、ビデオ、PDF、ドキュメント (DOCX、PPTX、XLSX) に特に役立ちます。

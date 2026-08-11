@@ -7,6 +7,7 @@ import { getCopy } from '@/i18n/copy';
 import { getLocalizedSeoForRoute } from '@/i18n/seo';
 import { getLocaleBasePath, LOCALES, type Locale } from '@/i18n/config';
 import { PRO_PRICING } from '@/constants/pricing';
+import { getLocalizedContent } from '@/i18n/localizedContent';
 
 export function getStaticPaths() {
   return LOCALES
@@ -14,8 +15,9 @@ export function getStaticPaths() {
     .map((locale) => ({ params: { locale } }));
 }
 
-const locale = Astro.params.locale as Locale;
-const copy = getCopy(locale);
+const locale = Astro.params.locale as Exclude<Locale, 'en'>;
+const localizedContent = getLocalizedContent(locale);
+const copy = { ...getCopy(locale), home: localizedContent.home };
 const seo = getLocalizedSeoForRoute('/', locale);
 const chromeBasePath = getLocaleBasePath(locale);
 const localizedJsonLd = {
@@ -64,5 +66,10 @@ const localizedJsonLd = {
   locale={locale}
   chromeBasePath={chromeBasePath}
 >
-  <HomePageContent copy={copy} locale={locale} secondaryHref="#pricing" />
+  <HomePageContent
+    copy={copy}
+    locale={locale}
+    secondaryHref="#pricing"
+    professionCopy={localizedContent.professions}
+  />
 </BaseLayout>

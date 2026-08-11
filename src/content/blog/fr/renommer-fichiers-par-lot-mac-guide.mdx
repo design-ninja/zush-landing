@@ -1,0 +1,483 @@
+---
+title: "Renommer des fichiers par lots sur Mac : 4 méthodes éprouvées (2026)"
+description: "Renommez des lots sur Mac avec Finder, Shortcuts, Terminal ou IA. Choisissez la méthode adaptée aux numéros, règles répétées et dossiers mixtes."
+date: "2026-02-08"
+slug: "renommer-fichiers-par-lot-mac-guide"
+platform: "mac"
+topic: "automation"
+tags:
+  - "Automation"
+  - "File Organization"
+tldr: "Utilisez Finder pour une règle commune simple, Automator ou Shortcuts pour les flux Mac répétables, Terminal pour les scripts et l'IA lorsque chaque fichier exige un nom unique fondé sur son contenu."
+reviewed: "2026-08-08"
+locale: "fr"
+translationOf: "batch-rename-files-on-mac-complete-guide"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Réponse rapide : sélectionnez les fichiers dans Finder, clic droit, **Renommer**, puis **Remplacer du texte**, **Ajouter du texte** ou **Format**. Automator et Shortcuts conviennent aux règles répétées, Terminal aux scripts, et l'IA lorsque chaque élément doit recevoir un nom descriptif différent.
+
+Finder est le plus rapide pour numéros et préfixes communs. Automator/Shortcuts automatisent les mêmes règles, Terminal ajoute regex et métadonnées, et une IA traite captures, PDF, téléchargements, photos et dossiers mixtes d'après leur contenu.
+
+Pour ce dernier cas, utilisez [Renommer des fichiers par lots avec l'IA](/batch-rename-files) ou [Zush pour Mac](/mac). La [documentation des lots](/docs/batch-rename-files) traite validation et annulation, tandis que [Naming Blocks](/docs/naming-blocks) définit les motifs réutilisables.
+
+Mise à jour du 28 juillet 2026 : comportement Name and Index, ordre de tri, métadonnées, Automator, Shortcuts, Terminal et IA ont été revérifiés. Un flux Shortcuts complet a été ajouté.
+
+Sources : [guide Apple Automator](https://support.apple.com/guide/automator/welcome/mac), [guide Apple Shortcuts](https://support.apple.com/guide/shortcuts-mac/intro-to-shortcuts-apdf22b0444c/mac), [actions de dossier Apple Developer](https://developer.apple.com/library/archive/documentation/LanguagesUtilities/Conceptual/MacAutomationScriptingGuide/WatchFolders.html) et [présentation Hazel](https://www.noodlesoft.com/manual/hazel/hazel-overview/).
+
+| Méthode Mac | À utiliser quand | Limite |
+|---|---|---|
+| Finder Rename | Même préfixe, suffixe, remplacement ou séquence | Ne lit pas le contenu |
+| Automator/Shortcuts | Même règle chaque semaine | Motifs, pas sémantique |
+| Scripts Terminal | Regex, métadonnées ou logique personnalisée | Maintenance et erreurs faciles |
+| Lots IA | Captures, PDF, photos, téléchargements et dossiers mixtes | Prévisualisation recommandée |
+
+Dans Finder, **Name and Index** change immédiatement le nom visible, mais n'ajoute aucune métadonnée descriptive. Spotlight trouve le nouveau nom ; tags Finder, commentaires, EXIF et propriétés PDF restent inchangés.
+
+Finder numérote selon l'ordre actuel de sélection. Triez d'abord par date de création si `photo-001.jpg` doit être la plus ancienne, puis vérifiez l'ordre visible avant de renommer.
+
+Pour des noms différents sur captures, PDF, photos, vidéos, design, audio et documents, utilisez l'[outil Zush pour Mac](/mac). Ce guide compare pas à pas Finder, Automator, Terminal et IA.
+
+## Un nouveau nom apparaît-il dans les métadonnées Mac ?
+
+Généralement non. Le nom appartient au chemin du fichier ; il ne correspond ni aux données EXIF, ni aux tags/commentaires Finder, ni au titre PDF ou aux propriétés Office. Renommer `IMG_4382.jpg` en `client-office-whiteboard.jpg` rend le nom recherchable dans Finder et Spotlight, mais ne modifie ni appareil, date de prise de vue, GPS ou autres métadonnées intégrées.
+
+- **Finder Name and Index** : noms visibles comme `invoice-001.pdf`.
+- **Automator ou Terminal** : copier des métadonnées existantes dans le nom.
+- **IA** : déduire le nom du contenu d'une capture ou facture PDF.
+
+Pour obtenir à la fois nom propre et contexte recherchable, choisissez un outil qui écrit intentionnellement noms, tags ou métadonnées.
+
+Un lot simple comme `photo-001.jpg` diffère d'un dossier mêlant captures, PDF et téléchargements. Si le lot est surtout photographique, le guide [organiser ses photos sur Mac](/blog/best-ways-to-organize-photos-on-mac) couvre dossiers, dates, tags et sauvegarde.
+
+Ce tutoriel détaille quatre approches : Finder, Automator, scripts Terminal et IA. Si vous voulez directement l'app, ouvrez l'[outil de renommage par lots](/batch-rename-files).
+
+> **Chemin le plus court :** pour un nom unique par fichier, passez à [Renommer par lots avec l'IA](/batch-rename-files) ou à l'[outil Mac](/mac) — 50 renommages gratuits.
+
+<BlogProductIntro
+  title="Besoin de lots Mac fondés sur le contenu ?"
+  description="Zush renomme les dossiers Finder mixtes d'après le contenu, puis permet de prévisualiser, appliquer et annuler tout le lot."
+  links={[
+    { href: '/mac', label: 'Outil IA Mac' },
+    { href: '/ai-file-organizer', label: 'Organisateur IA' },
+    { href: '/batch-rename-files', label: 'Renommer par lots' },
+    { href: '/offline-ai-file-renamer', label: 'IA hors ligne' },
+    { href: '/docs/naming-blocks', label: 'Documentation Naming Blocks' },
+  ]}
+/>
+
+![Prévisualisation Zush de noms IA pour un dossier mixte](/images/showcase/macos/batch-rename-light.webp)
+
+## Méthode 1 : Renommer dans Finder
+
+Finder intègre trois modes : remplacer un texte, ajouter du texte avant/après le nom et formater avec une séquence.
+
+### Quand utiliser le renommage par lots Finder
+
+- Remplacer une chaîne commune, par exemple `IMG_` par `vacances-`.
+- Ajouter date ou suffixe projet.
+- Numéroter `photo-001.jpg`, `photo-002.jpg`.
+- Appliquer exactement la même règle à chaque fichier.
+
+### Étapes : renommer plusieurs fichiers dans Finder
+
+**1. Sélectionner.** `Cmd+A`, Shift-clic pour une plage, Cmd-clic pour des éléments isolés.
+
+**2. Ouvrir la boîte de dialogue.** Clic droit sur la sélection, **Renommer**, ou **Fichier > Renommer**.
+
+**3. Choisir le mode.**
+
+- **Remplacer du texte** : chercher et substituer.
+- **Ajouter du texte** : ajouter avant ou après.
+- **Format** : nom de base plus numéro, compteur ou date.
+
+**4. Configurer et prévisualiser.** Finder montre le résultat avant validation.
+
+**5. Cliquer sur Renommer.** En cas d'erreur, `Cmd+Z` immédiatement.
+
+### Exemples de renommage Finder
+
+#### Mode Remplacer du texte
+
+| Avant | Après |
+|---|---|
+| `VNDX-001_blue-widget.png` | `blue-widget.png` |
+| `VNDX-001_red-widget.png` | `red-widget.png` |
+| `VNDX-001_green-widget.png` | `green-widget.png` |
+
+Chercher `VNDX-001_`, remplacer par vide.
+
+#### Mode Ajouter du texte
+
+| Avant | Après |
+|---|---|
+| `homepage-hero.psd` | `acme-redesign_homepage-hero.psd` |
+| `about-section.psd` | `acme-redesign_about-section.psd` |
+| `footer-layout.psd` | `acme-redesign_footer-layout.psd` |
+
+Ajouter `acme-redesign_` avant le nom.
+
+#### Mode Format
+
+| Avant | Après |
+|---|---|
+| `IMG_7823.jpg` | `company-retreat-001.jpg` |
+| `IMG_7824.jpg` | `company-retreat-002.jpg` |
+| `IMG_7825.jpg` | `company-retreat-003.jpg` |
+
+Name and Index, format `company-retreat-`, départ 1.
+
+### Limites du traitement par lots Finder
+
+Finder applique une règle commune. Il ne génère pas un nom descriptif différent par contenu, ni regex, conditions ou métadonnées avancées. [Bulk Rename Utility sur Mac](/blog/bulk-rename-utility-alternatives) n'existe pas pour macOS ; [Advanced Renamer](/blog/advanced-renamer-alternatives) couvre motifs et métadonnées, pas la compréhension du contenu.
+
+### Le renommage Finder change-t-il les métadonnées ?
+
+Non. Seuls nom et chemin changent.
+
+| Champ | Modifié ? | Effet recherche |
+|---|---|---|
+| Nom | Oui | Finder et Spotlight trouvent le nouveau nom |
+| Chemin | Oui | Nouveau chemin immédiat |
+| Tags Finder | Non | À ajouter séparément |
+| Commentaires Finder | Non | À ajouter séparément |
+| EXIF | Non | Métadonnées photo intactes |
+| Propriétés PDF/Office | Non | Titre/auteur intacts |
+
+Pour noms sémantiques et contexte recherchable, utilisez une IA capable d'écrire volontairement métadonnées et [tags Finder compatibles Spotlight](/mac).
+
+Définissez d'abord de [bonnes conventions de nommage](/blog/file-naming-conventions-best-practices).
+
+## Méthode 2 : flux Automator
+
+Automator construit des flux à plusieurs étapes sans coder. Il enchaîne renommage, métadonnées et actions de dossier.
+
+### Quand utiliser Automator
+
+- Règle hebdomadaire récurrente.
+- Renommage plus déplacement ou conversion.
+- Nom fondé sur date, taille ou dimensions existantes.
+- App glisser-déposer pour une équipe non technique.
+
+### Étapes : construire un flux Automator
+
+**1.** Ouvrez Automator et créez un document.
+
+**2.** Choisissez : Workflow manuel, Application glisser-déposer, Action de dossier automatique ou Quick Action dans Finder.
+
+**3.** Ajoutez **Rename Finder Items**. Automator propose de copier d'abord les originaux.
+
+**4.** Configurez : Add Date or Time, Change Case, Find and Replace, Make Sequential ou Replace Text. Plusieurs actions peuvent s'enchaîner.
+
+**5.** Pour un Workflow, ajoutez Get Specified Finder Items ; Application et Folder Action reçoivent l'entrée automatiquement.
+
+**6.** Testez, contrôlez dans Finder et utilisez `Cmd+Z` si disponible.
+
+**7.** Enregistrez sous un nom explicite.
+
+### Exemple Automator : livrables client préfixés par date
+
+| Avant | Après |
+|---|---|
+| `homepage-mockup-v3.pdf` | `2026-02-08_homepage-mockup-v3.pdf` |
+| `mobile-nav-prototype.pdf` | `2026-02-08_mobile-nav-prototype.pdf` |
+| `brand-guidelines-update.pdf` | `2026-02-08_brand-guidelines-update.pdf` |
+
+Flux : Get Specified Finder Items > Rename Finder Items > Add Date or Time > Date Added > Before Name > `YYYY-MM-DD`.
+
+### Limites d'Automator
+
+Automator applique des motifs et ne comprend pas qu'un PDF est une déclaration fiscale. Apple investit désormais davantage dans Shortcuts. Le [guide Automator dédié](/blog/macos-automator-rename-files-guide) fournit les étapes complètes.
+
+### Shortcuts : l'outil désormais privilégié par Apple
+
+Depuis macOS Monterey, Shortcuts couvre la plupart des besoins avec une boucle :
+
+1. Recevoir des **Files** depuis **Quick Actions**.
+2. Ajouter **Repeat with Each** sur Shortcut Input.
+3. Dans la boucle, **Rename File** sur Repeat Item et construire le nom avec date, underscore et index.
+4. Activer **Use as Quick Action** et **Finder**.
+
+Le raccourci apparaît dans le sous-menu Quick Actions de Finder.
+
+Deux limites : Shortcuts reste fondé sur les motifs et une opération Shortcuts n'entre pas dans la pile d'annulation Finder. Testez une copie. Gardez Automator pour les `.workflow` existants et Folder Actions ; préférez Shortcuts pour les nouveaux flux.
+
+## Méthode 3 : scripts Terminal pour renommer en masse
+
+Les scripts offrent regex, conditions, boucles et accès aux métadonnées en ligne de commande.
+
+### Quand utiliser les scripts
+
+- Regex et extraction de dates.
+- EXIF ou propriétés PDF.
+- Conditions sur un sous-ensemble.
+- Équipe à l'aise dans Terminal.
+
+### Renommage simple avec une boucle
+
+```bash
+for f in *.jpeg; do
+  mv "$f" "${f%.jpeg}.jpg"
+done
+```
+
+### Remplacer du texte dans les noms
+
+```bash
+for f in *\ *; do
+  mv "$f" "${f// /-}"
+done
+```
+
+### Ajouter une date depuis les métadonnées
+
+```bash
+for f in *.jpg; do
+  date=$(exiftool -d "%Y-%m-%d" -DateTimeOriginal -s3 "$f")
+  mv "$f" "${date}_${f}"
+done
+```
+
+| Avant | Après |
+|---|---|
+| `IMG_4201.jpg` | `2026-01-15_IMG_4201.jpg` |
+| `IMG_4202.jpg` | `2026-01-15_IMG_4202.jpg` |
+| `IMG_4203.jpg` | `2026-01-16_IMG_4203.jpg` |
+
+### Numérotation séquentielle avec zéros
+
+```bash
+counter=1
+for f in *.png; do
+  mv "$f" "$(printf 'slide-%03d.png' $counter)"
+  counter=$((counter + 1))
+done
+```
+
+| Avant | Après |
+|---|---|
+| `Screen Shot 2026-02-01.png` | `slide-001.png` |
+| `Screen Shot 2026-02-02.png` | `slide-002.png` |
+| `Screen Shot 2026-02-03.png` | `slide-003.png` |
+
+### Utiliser la commande `rename` basée sur Perl
+
+Après `brew install rename` :
+
+```bash
+rename 's/IMG_/vacation-/' *.jpg
+```
+
+### Limites des scripts
+
+Une faute peut détériorer tout un dossier sans annulation. Testez une copie ou remplacez `mv` par `echo`. La [checklist de sécurité](/blog/how-to-safely-batch-rename-files) couvre dry runs, extensions, collisions, liens et récupération.
+
+```bash
+for f in *.jpg; do
+  echo "mv $f -> vacation-${f#IMG_}"
+done
+```
+
+Les scripts appliquent des règles ; ils ne comprennent pas l'image.
+
+## Méthode 4 : renommage IA fondé sur le contenu
+
+L'IA analyse chaque fichier. Une capture Stripe devient `stripe-monthly-revenue-chart.png`, un scan `apartment-lease-agreement-2026.pdf`, une photo `golden-gate-bridge-foggy-morning.jpg`.
+
+### Quand utiliser le renommage IA
+
+- Captures horodatées sans description.
+- Scans/PDF comme `scan_001.pdf`.
+- Images téléchargées comme `download.jpg`.
+- Dossiers dont chaque fichier exige un nom propre.
+
+### Fonctionnement
+
+1. Sélectionner des fichiers ou un dossier.
+2. Lire texte, objets, scènes, images vidéo ou interfaces.
+3. Générer un nom descriptif par fichier.
+4. Appliquer chaque nom individuellement.
+
+### Avant/après : exemples réels avec IA
+
+#### Captures d'écran
+
+| Avant | Après |
+|---|---|
+| `Screenshot 2026-02-08 at 09.14.22.png` | `figma-checkout-page-mobile-wireframe.png` |
+| `Screenshot 2026-02-08 at 09.18.44.png` | `stripe-dashboard-monthly-revenue.png` |
+| `Screenshot 2026-02-08 at 10.02.11.png` | `slack-design-team-feedback-thread.png` |
+| `Screenshot 2026-02-08 at 10.45.33.png` | `vscode-typescript-build-error-log.png` |
+| `Screenshot 2026-02-08 at 14.05.19.png` | `notion-sprint-planning-board-week-6.png` |
+
+#### Documents et PDF
+
+| Avant | Après |
+|---|---|
+| `scan_001.pdf` | `apartment-lease-agreement-2026.pdf` |
+| `download.pdf` | `w9-tax-form-acme-consulting.pdf` |
+| `Document (3).pdf` | `quarterly-sales-report-q4-2025.pdf` |
+| `attachment.pdf` | `invoice-7842-webdesign-services.pdf` |
+
+#### Photos et images
+
+| Avant | Après |
+|---|---|
+| `IMG_4201.jpg` | `golden-gate-bridge-sunset-view.jpg` |
+| `IMG_4202.jpg` | `fishermans-wharf-street-performer.jpg` |
+| `DSC_0087.jpg` | `team-dinner-italian-restaurant.jpg` |
+| `photo_2026.heic` | `hiking-trail-redwood-forest.heic` |
+| `download (1).jpg` | `blue-mid-century-modern-sofa.jpg` |
+
+### Renommage IA avec Zush
+
+[Zush pour Mac](/mac) traite images, captures, vidéos, PDF et documents, par lots et en surveillance. Les motifs ajoutent dates, catégories ou préfixes.
+
+La surveillance [Zush pour Mac](/mac) renomme les nouveaux fichiers du Bureau ou de Téléchargements en arrière-plan.
+
+Comparez les [outils IA Mac](/blog/best-ai-file-renamer-tools-mac-compared) et [Cloud AI vs Local AI](/blog/cloud-vs-local-ai-file-renaming).
+
+<BlogCTA placement='inline' platform='mac' />
+
+## Comparatif des méthodes de lots Mac
+
+| Fonction | Finder | Automator | Shortcuts | Scripts | IA (Zush) |
+|---|---|---|---|---|---|
+| Difficulté | Facile | Moyenne | Moyenne | Difficile | Facile |
+| Remplacer texte | Oui | Oui | Oui | Oui | Oui |
+| Préfixe/suffixe | Oui | Oui | Oui | Oui | Oui |
+| Numérotation | Oui | Oui | Repeat Index | Oui | Oui |
+| Regex | Non | Non | Non | Oui | Non |
+| Métadonnées | Non | Oui | Dates | Oui | Limité |
+| Compréhension | Non | Non | Non | Non | Oui |
+| Surveillance | Non | Folder Actions | Non | cron/launchd | Oui |
+| Annulation | Cmd+Z | Avec copie | Non | Avec sauvegarde | Oui |
+| Images | Motifs | Motifs | Motifs | Motifs | Lit le contenu |
+| PDF | Motifs | Motifs | Motifs | Motifs | Lit le texte |
+| Types mixtes | Même règle | Même règle | Même règle | Conditions | Nom individuel |
+| Coût | Gratuit | Gratuit | Gratuit | Gratuit | Gratuit + offres payantes |
+
+Si une règle commune suffit, Finder prend dix secondes. Pour un nom unique par contenu, l'IA évite d'ouvrir chaque fichier.
+
+## Erreurs courantes lors du renommage par lots
+
+### Oublier l'extension
+
+Un script transformant `report.pdf` en `quarterly-report` peut empêcher l'ouverture par double-clic. Préservez toujours l'extension.
+
+### Ne pas tester sur une copie
+
+Une mauvaise règle sur 500 fichiers peut être impossible à annuler. Testez un petit dossier.
+
+### Utiliser des caractères problématiques
+
+Évitez `/`, `:` et octets nuls. Préférez lettres, chiffres, traits d'union et underscores pour le cloud et Windows/Linux.
+
+### Choisir la mauvaise méthode
+
+Finder Replace Text est mauvais pour des captures toutes différentes ; l'IA est inutile pour remplacer simplement `IMG_`.
+
+### Ignorer l'ordre de tri
+
+Utilisez `001`, `002` plutôt que `1`, `2` : Finder trie alphabétiquement et placerait `10` entre `1` et `2`.
+
+## Conseils pour de meilleurs résultats
+
+### Définir d'abord une convention
+
+Choisissez traits d'union ou underscores, casse et date. Lire les [bonnes pratiques de nommage](/blog/file-naming-conventions-best-practices).
+
+### Regrouper les fichiers avant de renommer
+
+Séparez photos, documents et captures afin d'appliquer le bon motif à chaque groupe.
+
+### Utiliser immédiatement l'annulation Finder
+
+`Cmd+Z` fonctionne juste après l'opération. Vérifiez sans attendre.
+
+### Combiner les méthodes pour les tâches complexes
+
+Finder peut retirer un préfixe commun, puis [Zush renommer le lot Mac](/mac) selon le contenu. Automator peut rester réservé aux exports récurrents.
+
+### Garder Téléchargements propre
+
+Automatisez l'arrivée des noms faibles. Voir [organiser Téléchargements sur Mac](/blog/how-to-organize-downloads-folder-mac).
+
+## FAQ
+
+### Quel est le moyen le plus rapide de renommer un lot sur Mac ?
+
+Finder lorsque la même modification s'applique à tout : sélection, clic droit, Renommer, mode, validation. Si chaque nom doit différer, une IA est plus rapide malgré l'installation.
+
+### Comment renommer un lot sans rien installer ?
+
+Utilisez Finder : sélection, clic droit, **Renommer**, puis remplacer, ajouter ou formater. Disponible depuis macOS Yosemite.
+
+### Finder peut-il renommer d'après le contenu ?
+
+Non. Finder ne fait que motifs, préfixes, suffixes et numéros. Une IA est nécessaire pour lire images, vidéos et documents.
+
+![Historique Zush avec annulation de chaque fichier](/images/showcase/macos/activity-light.webp)
+
+### Finder Name and Index ajoute-t-il des métadonnées ?
+
+Non. Il change nom et chemin, pas tags/commentaires Finder, EXIF, PDF ou propriétés Office. Spotlight trouve le nouveau nom.
+
+### Peut-on annuler un renommage par lots ?
+
+Dans Finder, `Cmd+Z` immédiatement restaure tout le lot. Les scripts Terminal n'ont pas d'annulation intégrée : gardez copies ou liste des anciens noms.
+
+### Comment renommer des photos avec des dates ?
+
+Automator Add Date or Time pour la date de fichier, `exiftool` pour la prise de vue, et Zush pour date plus description du contenu.
+
+### Comment renommer des centaines de captures ?
+
+Finder remplace rapidement « Screenshot » par un projet. Pour un nom propre à chaque image, utilisez une IA et activez la surveillance. Voir [renommer automatiquement les captures Mac](/blog/rename-screenshots-automatically-mac).
+
+### Puis-je renommer des PDF selon leur contenu ?
+
+Oui, une IA lit le texte et transforme `scan_042.pdf` en un nom de facture descriptif. Voir le [flux PDF automatique](/blog/rename-pdf-files-automatically).
+
+### Le renommage change-t-il métadonnées ou dates ?
+
+Finder et Automator ne changent ni création, modification ou contenu interne. Certains services cloud peuvent resynchroniser le fichier ; vérifiez après un grand lot.
+
+### Quelle convention utiliser ?
+
+Minuscules, traits d'union et dates ISO `YYYY-MM-DD` lorsque l'ordre compte. Évitez espaces, caractères spéciaux et `final-v2`. Voir les [bonnes pratiques](/blog/file-naming-conventions-best-practices).
+
+## Conclusion
+
+Le bon outil dépend du problème. Finder suffit aux remplacements et numéros ; Automator/Shortcuts aux règles répétées ; Terminal aux regex ; l'IA à un nom descriptif unique par contenu.
+
+Choisissez la méthode la plus simple qui convient : Finder si possible, scripts si nécessaire, IA si les noms doivent réellement signifier quelque chose.
+
+**Checklist finale avant validation**
+
+- Finder : trier la vue avant de sélectionner.
+- Finder : vérifier le premier fichier de la séquence.
+- Finder : vérifier le dernier fichier de la séquence.
+- Finder : confirmer que les extensions restent visibles.
+- Finder : prévisualiser le mode Replace Text.
+- Finder : prévisualiser le mode Add Text.
+- Finder : prévisualiser le mode Format.
+- Finder : choisir `001` plutôt que `1` pour un grand lot.
+- Finder : conserver une copie d'essai.
+- Finder : contrôler les collisions de noms.
+- Finder : vérifier la casse du préfixe.
+- Finder : vérifier les espaces et séparateurs.
+- Finder : confirmer l'ordre par date si nécessaire.
+- Finder : confirmer l'ordre par nom si nécessaire.
+- Finder : ne pas supposer que les tags seront modifiés.
+- Finder : ne pas supposer que les données EXIF seront modifiées.
+- Finder : ne pas supposer que les propriétés PDF seront modifiées.
+- Finder : contrôler la recherche Spotlight après l'opération.
+- Finder : utiliser `Cmd+Z` avant toute autre action en cas d'erreur.
+- Finder : vérifier la synchronisation cloud.
+- Finder : tester les fichiers référencés par d'autres apps.
+- Finder : séparer photos, documents et captures.
+- Finder : réserver les scripts aux règles plus complexes.
+- Finder : réserver l'IA aux noms réellement différents.
+- Finder : comparer le résultat avec Zush lorsque le contenu doit déterminer le nom.
