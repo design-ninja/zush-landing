@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.9.3] - 2026-08-11
+
+### Added
+- Rename up to 1,000 files at once with PRO
+
+### Improved
+- Rename Rules now apply consistently to every AI-generated name
+- Purchase activation and automatic renaming are more reliable
+- AI naming recovers better from incomplete provider responses
+
+### Fixed
+- Fixed edge cases in checkout, monitoring, and batch renaming
+
 ## [3.9.2] - 2026-08-08
 
 ### Added
