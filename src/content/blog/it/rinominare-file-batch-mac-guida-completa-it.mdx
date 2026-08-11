@@ -1,0 +1,522 @@
+---
+title: "Come rinominare file in batch su Mac: 4 metodi collaudati (2026)"
+description: "Rinomina file in batch su Mac con Finder, Comandi Rapidi, Terminale o IA. Scegli il metodo giusto per numerazione, regole ripetibili e cartelle miste."
+date: "2026-02-08"
+slug: "rinominare-file-batch-mac-guida-completa-it"
+locale: "it"
+translationOf: "batch-rename-files-on-mac-complete-guide"
+platform: "mac"
+topic: "automation"
+tags:
+  - "Automazione"
+  - "Organizzazione dei file"
+tldr: "Usa Finder per semplici regole condivise, Automator o Comandi Rapidi per flussi Mac ripetibili, Terminale per batch con script e la rinomina IA quando ogni file richiede un nome unico basato sul contenuto."
+reviewed: "2026-08-08"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Risposta rapida: per rinominare file in batch su Mac, selezionali in Finder, fai clic destro, scegli **Rinomina**, quindi usa **Sostituisci testo**, **Aggiungi testo** o **Formato**. Usa Automator o Comandi Rapidi per regole ripetute, Terminale per la logica con script e l’IA quando ogni file richiede un nome descrittivo diverso in base al contenuto.
+
+Finder è il metodo più rapido per batch numerati e prefissi condivisi. Automator e Comandi Rapidi sono migliori per flussi ripetibili. Terminale è ideale per regex o logica basata sui metadati. Un rinominatore IA è adatto quando screenshot, PDF, download, foto o cartelle miste richiedono ciascuno un nome ricercabile diverso.
+
+Se è il tuo caso, usa [Rinomina file in batch con l’IA](/batch-rename-files) o [Zush per Mac](/mac). La [documentazione della rinomina batch](/docs/batch-rename-files) spiega controllo e annullamento; i [blocchi di denominazione](/docs/naming-blocks) illustrano gli schemi riutilizzabili.
+
+Revisione del 28 luglio 2026: la guida è stata aggiornata per gli attuali flussi batch su Mac, inclusi comportamento di Nome e indice in Finder, ordine, limiti dei metadati, Automator, Comandi Rapidi, Terminale e strumenti IA per cartelle miste. L’aggiornamento aggiunge una procedura completa per Comandi Rapidi, lo strumento di automazione sviluppato attivamente da Apple, accanto ad Automator.
+
+Fonti controllate: [Guida utente di Apple Automator](https://support.apple.com/guide/automator/welcome/mac), [Guida utente di Comandi Rapidi per Mac](https://support.apple.com/guide/shortcuts-mac/intro-to-shortcuts-apdf22b0444c/mac), [documentazione Apple Developer sulle azioni cartella](https://developer.apple.com/library/archive/documentation/LanguagesUtilities/Conceptual/MacAutomationScriptingGuide/WatchFolders.html) e [panoramica ufficiale di Hazel](https://www.noodlesoft.com/manual/hazel/hazel-overview/).
+
+| Metodo batch su Mac | Quando usarlo | Limite principale |
+|---|---|---|
+| Rinomina di Finder | Tutti i file ricevono lo stesso prefisso, suffisso, sostituzione o sequenza | Non legge il contenuto |
+| Automator / Comandi Rapidi | Ripeti ogni settimana la stessa regola | Basato su schemi, non semantico |
+| Script di Terminale | Servono regex, metadati o logica personalizzata | Richiede manutenzione ed è facile sbagliare |
+| Rinomina batch IA | Screenshot, PDF, foto, download e cartelle miste richiedono nomi diversi | Meglio controllare prima di applicare |
+
+Se cerchi specificamente l’opzione **Nome e indice** di Finder, il dettaglio importante è questo: il nuovo nome appare subito in Finder, ma macOS non aggiunge metadati descrittivi soltanto perché hai rinominato il file. Spotlight può cercare il nuovo nome. Tag e commenti Finder, campi EXIF e metadati PDF restano invariati, salvo che uno strumento li scriva separatamente.
+
+Finder numera inoltre i file nell’ordine della selezione corrente. Prima di usare Nome e indice, ordina la cartella come vuoi che appaia la sequenza finale. Se `photo-001.jpg` deve essere l’immagine più vecchia, ordina per Data di creazione prima di selezionare il batch. Se la sequenza deve corrispondere alla vista corrente, conferma prima l’ordine visibile in Finder.
+
+Se vuoi un’app Mac che generi nomi diversi per screenshot, PDF, foto, video, design, audio e documenti, usa il [rinominatore IA Zush per Mac](/mac). Questo articolo confronta passo passo Finder, Automator, Terminale e IA.
+
+## La rinomina di un file compare nei metadati su Mac?
+
+Di solito no. Il nome fa parte del percorso e non coincide con dati EXIF, tag Finder, commenti Spotlight, titoli PDF o proprietà Office. Se rinomini `IMG_4382.jpg` in `client-office-whiteboard.jpg`, Finder e Spotlight trovano il nuovo nome, ma modello della fotocamera, data di scatto, GPS e altri metadati incorporati non cambiano.
+
+La distinzione è utile quando scegli il metodo batch:
+
+- Usa **Nome e indice di Finder** quando servono soltanto nomi visibili come `invoice-001.pdf`.
+- Usa **Automator o Terminale** quando i metadati esistono già e vuoi copiarli nei nomi.
+- Usa la **rinomina batch IA** quando il nome utile deve derivare dal contenuto, per esempio da ciò che mostra uno screenshot o dice una fattura PDF.
+
+Se vuoi nomi puliti e contesto ricercabile, scegli uno strumento che crei intenzionalmente il nome e possa aggiungere tag o metadati. La semplice rinomina di Finder non basta.
+
+La rinomina batch su Mac è facile con una regola semplice e molto più difficile quando ogni file richiede un nome descrittivo diverso. **Nome e indice** di Finder basta per `photo-001.jpg`, `photo-002.jpg` e batch simili. Uno studente che deve rendere ricercabile una cartella mista di screenshot, PDF e download affronta un problema diverso. Se il batch è soprattutto fotografico, la guida su [come organizzare le foto su Mac](/blog/best-ways-to-organize-photos-on-mac) copre cartelle, date, tag e backup attorno alla rinomina.
+
+Non esiste quindi un solo strumento migliore per ogni situazione. La guida tratta quattro approcci: rinomina integrata di Finder, flussi Automator, script di Terminale e rinomina IA. Ogni sezione offre istruzioni passo passo ed esempi reali per scegliere il metodo adatto.
+
+Il tutorial risponde alle ricerche pratiche sulla rinomina batch Mac: regole Finder semplici, flussi Automator ripetibili, script shell e IA quando ogni file richiede un nome unico. Se sai già di volere il flusso nell’app, vai allo [strumento batch](/batch-rename-files).
+
+> **Cerchi il percorso più breve?** Se ti servono nomi descrittivi unici per ogni file, non un prefisso condiviso, passa direttamente a [Rinomina file in batch con l’IA](/batch-rename-files) o al [rinominatore per Mac](/mac): 50 rinomine gratis, senza registrazione.
+
+
+<BlogProductIntro
+  title="Ti serve una rinomina batch Mac basata sul contenuto?"
+  description="Zush per Mac rinomina in batch le cartelle miste di Finder in base al contenuto, quindi consente di controllare, applicare e annullare l’intero batch."
+  links={[
+    { href: '/mac', label: 'Rinominatore IA per Mac' },
+    { href: '/ai-file-organizer', label: 'Organizzatore di file con IA' },
+    { href: '/batch-rename-files', label: 'Rinomina file in batch' },
+    { href: '/offline-ai-file-renamer', label: 'Rinominatore Offline AI' },
+    { href: '/docs/naming-blocks', label: 'Documentazione dei blocchi di denominazione' },
+  ]}
+/>
+
+![Anteprima della rinomina batch di Zush con nomi IA per una cartella mista](/images/showcase/macos/batch-rename-light.webp)
+
+## Metodo 1: Rinomina elementi di Finder
+
+Finder integra uno strumento batch che molti utenti Mac non scoprono mai. Gestisce tre tipi di rinomina: sostituire testo, aggiungerlo prima o dopo il nome esistente e formattare i nomi con numero o contatore sequenziale.
+
+### Quando usare la rinomina batch di Finder
+
+- Sostituire una stringa comune in molti file, per esempio `IMG_` con `vacation-`
+- Aggiungere un prefisso data o un suffisso progetto
+- Numerare i file in sequenza, per esempio `photo-001.jpg`, `photo-002.jpg`
+- Qualsiasi rinomina che applichi la stessa regola a tutti i file
+
+### Procedura: rinominare file in batch in Finder
+
+**Passaggio 1: seleziona i file.**
+Apri la cartella. Seleziona tutto con Cmd+A oppure un intervallo facendo clic sul primo file e poi Maiusc+clic sull’ultimo. Per singoli file, tieni premuto Cmd e fai clic su ciascuno.
+
+**Passaggio 2: apri la finestra di rinomina.**
+Fai clic destro, o Ctrl+clic, su un file selezionato e scegli «Rinomina…». Puoi anche usare la barra dei menu di Finder: File > Rinomina.
+
+**Passaggio 3: scegli la modalità.**
+Il menu a comparsa offre tre opzioni:
+
+- **Sostituisci testo**: trova una stringa e sostituiscila.
+- **Aggiungi testo**: aggiunge testo prima o dopo ogni nome.
+- **Formato**: sostituisce il nome con una base più numero, contatore o data.
+
+**Passaggio 4: configura e controlla.**
+Compila i campi. Finder mostra un’anteprima del nuovo nome prima dell’applicazione. Controlla il risultato.
+
+**Passaggio 5: fai clic su Rinomina.**
+Tutti i file vengono rinominati subito. Se sbagli, premi immediatamente Cmd+Z in Finder per annullare l’intero batch.
+
+### Esempi di rinomina con Finder
+
+#### Modalità Sostituisci testo
+
+Hai scaricato immagini di prodotto da un fornitore e tutte iniziano con un codice non necessario.
+
+| Prima | Dopo |
+|---|---|
+| `VNDX-001_blue-widget.png` | `blue-widget.png` |
+| `VNDX-001_red-widget.png` | `red-widget.png` |
+| `VNDX-001_green-widget.png` | `green-widget.png` |
+
+Impostazioni: Trova `VNDX-001_`, Sostituisci con (vuoto).
+
+#### Modalità Aggiungi testo
+
+Vuoi aggiungere il nome del progetto come prefisso a una serie di consegne.
+
+| Prima | Dopo |
+|---|---|
+| `homepage-hero.psd` | `acme-redesign_homepage-hero.psd` |
+| `about-section.psd` | `acme-redesign_about-section.psd` |
+| `footer-layout.psd` | `acme-redesign_footer-layout.psd` |
+
+Impostazioni: Aggiungi testo `acme-redesign_`, Prima del nome.
+
+#### Modalità Formato
+
+Hai scattato 50 foto a un evento e vuoi nomi numerati puliti.
+
+| Prima | Dopo |
+|---|---|
+| `IMG_7823.jpg` | `company-retreat-001.jpg` |
+| `IMG_7824.jpg` | `company-retreat-002.jpg` |
+| `IMG_7825.jpg` | `company-retreat-003.jpg` |
+
+Impostazioni: Formato nome: Nome e indice, Formato personalizzato: `company-retreat-`, Inizia numeri da: 1.
+
+### Limiti della rinomina batch di Finder
+
+Finder applica la stessa regola a ogni file selezionato. Non assegna a ciascuno un nome descrittivo unico in base al contenuto e non gestisce regex, logica condizionale o nomi guidati dai metadati. Serve quindi un altro strumento. Chi arriva da Windows cerca spesso [Bulk Rename Utility su Mac](/blog/bulk-rename-utility-alternatives), che non esiste per macOS; [Advanced Renamer](/blog/advanced-renamer-alternatives) copre schemi e metadati su entrambe le piattaforme, ma nessuno dei due denomina in base al contenuto.
+
+### La rinomina batch di Finder modifica i metadati?
+
+No. La rinomina batch di Finder modifica soltanto il nome, visibile in Finder, Spotlight, finestre Apri e percorso. Non scrive automaticamente metadati EXIF, tag Finder, commenti Finder, titoli PDF o proprietà dei documenti.
+
+La distinzione conta per mantenere i file ricercabili:
+
+| Campo | Modificato dalla rinomina Finder? | Effetto sulla ricerca |
+|---|---|---|
+| Nome file | Sì | Spotlight e Finder trovano il nuovo nome |
+| Percorso | Sì | Riflette immediatamente il nuovo nome |
+| Tag Finder | No | Vanno aggiunti separatamente |
+| Commenti Finder | No | Vanno aggiunti separatamente |
+| EXIF / metadati fotocamera | No | I metadati fotografici restano invariati |
+| Proprietà PDF o Office | No | Titolo e autore restano invariati |
+
+Se servono soltanto nomi più puliti, Finder basta. Per nomi semantici, tag e metadati su screenshot, PDF, foto e documenti misti, usa un rinominatore IA che scriva intenzionalmente nomi e metadati ricercabili. Zush supporta [tag Finder e metadati compatibili con Spotlight](/mac) insieme ai nomi generati dall’IA.
+
+Per impostare convenzioni efficaci, consulta [Convenzioni per i nomi file: best practice per ogni flusso](/blog/file-naming-conventions-best-practices).
+
+
+## Metodo 2: flussi Automator
+
+Automator è uno strumento macOS per creare flussi in più passaggi senza codice. Offre più potenza di Finder: concatena azioni, usa metadati come la data di creazione e collega il flusso a una cartella per eseguirlo automaticamente.
+
+### Quando usare Automator
+
+- Devi applicare regolarmente la stessa regola, per esportazioni settimanali o report ricorrenti
+- Vuoi combinare la rinomina con spostamenti o modifica delle estensioni
+- Servono nomi basati su data di creazione, dimensione file o dimensioni immagine
+- Vuoi un’app drag-and-drop per membri non tecnici
+
+### Procedura: creare un flusso di rinomina in Automator
+
+**Passaggio 1: apri Automator.**
+Avvialo da Applicazioni o Spotlight (Cmd+Spazio, digita «Automator»). Scegli «Nuovo documento».
+
+**Passaggio 2: seleziona il tipo di flusso.**
+Scegli in base all’uso:
+
+- **Flusso di lavoro**: esecuzione manuale in Automator, utile per i test.
+- **Applicazione**: crea un’app su cui trascinare file, utile occasionalmente.
+- **Azione cartella**: collegata a una cartella, si avvia sui nuovi file.
+- **Azione rapida**: appare nel menu contestuale di Finder per l’uso su richiesta.
+
+Per la rinomina batch, **Applicazione** o **Azione cartella** sono le scelte più pratiche.
+
+**Passaggio 3: aggiungi l’azione di rinomina.**
+Cerca «Rinomina elementi del Finder» nella barra laterale e trascinala a destra. Automator chiede se aggiungere prima «Copia elementi del Finder» per conservare gli originali. Scegli «Non aggiungere» per rinominare sul posto o «Aggiungi» per mantenere copie.
+
+**Passaggio 4: configura la regola.**
+L’azione offre diverse modalità:
+
+- **Aggiungi data o ora**: inserisce prima o dopo la data di creazione o modifica.
+- **Modifica maiuscole/minuscole**: converte il nome.
+- **Trova e sostituisci**: come Finder, ma concatenabile.
+- **Rendi sequenziale**: aggiunge un indice.
+- **Sostituisci testo**: scambia una stringa con un’altra.
+
+Puoi impilare più azioni: sostituisci `IMG_` con una stringa vuota, aggiungi la data di creazione come prefisso, quindi converti in minuscolo.
+
+**Passaggio 5: aggiungi l’input.**
+Per un Flusso aggiungi in alto «Ottieni elementi del Finder specificati» e trascina i file. Applicazione e Azione cartella ricevono automaticamente i file.
+
+**Passaggio 6: prova il flusso.**
+Fai clic su Esegui in alto a destra e controlla in Finder. Se qualcosa non va, premi Cmd+Z in Finder.
+
+**Passaggio 7: salva.**
+Usa un nome descrittivo come «Rinomina esportazioni cliente». Salva l’Applicazione in Applicazioni o sulla Scrivania; un’Azione cartella viene collegata alla cartella specificata.
+
+### Esempio Automator: consegne cliente con prefisso data
+
+Un designer esporta file ogni settimana e vuole anteporre la data.
+
+| Prima | Dopo |
+|---|---|
+| `homepage-mockup-v3.pdf` | `2026-02-08_homepage-mockup-v3.pdf` |
+| `mobile-nav-prototype.pdf` | `2026-02-08_mobile-nav-prototype.pdf` |
+| `brand-guidelines-update.pdf` | `2026-02-08_brand-guidelines-update.pdf` |
+
+Flusso: Ottieni elementi del Finder specificati > Rinomina elementi del Finder (Aggiungi data o ora, Data aggiunta, Prima del nome, formato YYYY-MM-DD, separatore underscore).
+
+### Limiti di Automator
+
+Automator è basato su schemi e funziona quando tutti i file seguono la stessa regola. Non può leggere un PDF e decidere che debba chiamarsi `tax-return-2025.pdf` anziché `scan_003.pdf`. Non integra IA e la sua affidabilità tra aggiornamenti macOS è diventata irregolare. Apple sta investendo in Comandi Rapidi, che gestisce attività simili con un’interfaccia diversa.
+
+Per la procedura completa consulta la guida a [rinominare automaticamente file su Mac con Automator](/blog/macos-automator-rename-files-guide).
+
+### Comandi Rapidi: lo strumento su cui Apple investe oggi
+
+Comandi Rapidi è incluso da macOS Monterey ed è sviluppato attivamente da Apple, quindi vale la pena conoscerlo anche se i flussi Automator funzionano ancora. Per la rinomina batch copre quasi tutto ciò che fa «Rinomina elementi del Finder», ma costruendo un piccolo ciclo anziché configurare una singola azione.
+
+Un comando rapido minimo è così composto:
+
+1. Crea un comando e imposta **Ricevi** su **File** da **Azioni rapide**.
+2. Aggiungi **Ripeti con ogni elemento**, passando **Input del comando rapido**.
+3. Nel ciclo aggiungi **Rinomina file**, imposta **Elemento ripetizione** e costruisci il nome con **Testo**, per esempio **Formatta data**, underscore e indice.
+4. Nei dettagli abilita **Usa come azione rapida** e seleziona **Finder**.
+
+Il comando appare nel sottomenu **Azioni rapide** di Finder: selezioni i file, lo esegui e l’intero batch viene rinominato sul posto.
+
+Due limiti sono importanti. Comandi Rapidi resta basato su schemi: combina data, contatore o testo esistente, ma non decide che un PDF è un contratto di locazione. Inoltre la rinomina non entra nella cronologia di annullamento di Finder, quindi Cmd+Z non la ripristina; prova prima su una copia.
+
+Scegli Automator se possiedi file `.workflow` funzionanti o ti serve un’Azione cartella; per i nuovi flussi scegli Comandi Rapidi, la soluzione che Apple continua ad aggiornare.
+
+## Metodo 3: script di Terminale per rinominare file in massa su Mac
+
+Se hai dimestichezza con la riga di comando, gli script di shell offrono il massimo controllo sulla rinomina batch su Mac. Puoi usare espressioni regolari, condizioni, cicli e qualsiasi metadato accessibile dagli strumenti a riga di comando.
+
+### Quando usare gli script
+
+- Ti serve una corrispondenza basata su espressioni regolari, per esempio per estrarre le date dai nomi dei file
+- Vuoi rinominare in base ai metadati dei file, come dati EXIF o proprietà dei PDF
+- Ti serve una logica condizionale, per rinominare soltanto i file che rispettano determinati criteri
+- Hai già dimestichezza con Terminale
+
+### Rinomina di base con un ciclo
+
+Trasforma l'estensione di tutti i file `.jpeg` in `.jpg`:
+
+```bash
+for f in *.jpeg; do
+  mv "$f" "${f%.jpeg}.jpg"
+done
+```
+
+### Sostituire testo nei nomi dei file
+
+Sostituisci gli spazi con trattini in tutti i nomi dei file della directory corrente:
+
+```bash
+for f in *\ *; do
+  mv "$f" "${f// /-}"
+done
+```
+
+### Aggiungere come prefisso una data dai metadati
+
+Usa `exiftool` per anteporre a ogni JPEG la data di creazione EXIF:
+
+```bash
+for f in *.jpg; do
+  date=$(exiftool -d "%Y-%m-%d" -DateTimeOriginal -s3 "$f")
+  mv "$f" "${date}_${f}"
+done
+```
+
+Prima e dopo:
+
+| Prima | Dopo |
+|---|---|
+| `IMG_4201.jpg` | `2026-01-15_IMG_4201.jpg` |
+| `IMG_4202.jpg` | `2026-01-15_IMG_4202.jpg` |
+| `IMG_4203.jpg` | `2026-01-16_IMG_4203.jpg` |
+
+### Numerazione sequenziale con zeri iniziali
+
+Rinomina un gruppo di file con un prefisso e numeri completati da zeri iniziali:
+
+```bash
+counter=1
+for f in *.png; do
+  mv "$f" "$(printf 'slide-%03d.png' $counter)"
+  counter=$((counter + 1))
+done
+```
+
+| Prima | Dopo |
+|---|---|
+| `Screen Shot 2026-02-01.png` | `slide-001.png` |
+| `Screen Shot 2026-02-02.png` | `slide-002.png` |
+| `Screen Shot 2026-02-03.png` | `slide-003.png` |
+
+### Usare il comando `rename` basato su Perl
+
+Installando l'utility Perl `rename` tramite Homebrew (`brew install rename`), puoi usare le espressioni regolari in un solo comando:
+
+```bash
+rename 's/IMG_/vacation-/' *.jpg
+```
+
+Il comando sostituisce `IMG_` con `vacation-` nel nome di ogni file `.jpg` della directory corrente.
+
+### Limiti degli script
+
+Gli script sono potenti, ma richiedono competenze tecniche. Un errore di battitura può rovinare i nomi di tutti i file di una directory senza possibilità di annullamento. Fai sempre una prova su una copia oppure usa `echo` prima di `mv` per vedere in anteprima che cosa accadrà. La guida completa alla [rinomina batch sicura dei file](/blog/how-to-safely-batch-rename-files) spiega simulazioni, controlli di estensioni e collisioni, rischi per i file collegati e opzioni di ripristino sia negli strumenti grafici sia negli script:
+
+```bash
+for f in *.jpg; do
+  echo "mv $f -> vacation-${f#IMG_}"
+done
+```
+
+Gli script condividono inoltre il limite fondamentale di Finder e Automator: applicano regole, ma non comprendono i contenuti. Uno script non può osservare un'immagine e stabilire che cosa raffigura. Per rinominare in base al contenuto serve l'IA.
+
+## Metodo 4: rinomina in base al contenuto assistita dall'IA
+
+La rinomina con IA è diversa da tutti i metodi precedenti. Anziché applicare uno schema o una regola ai nomi, analizza il contenuto effettivo di ogni file e genera un nome descrittivo in base a ciò che rileva. Lo screenshot di una dashboard Stripe diventa `stripe-monthly-revenue-chart.png`. Un PDF scansionato diventa `apartment-lease-agreement-2026.pdf`. Una foto scaricata diventa `golden-gate-bridge-foggy-morning.jpg`.
+
+
+### Quando usare la rinomina con IA
+
+- Screenshot con nomi basati sulla data e sull'ora che non dicono nulla sul contenuto
+- Documenti scansionati e PDF con nomi come `scan_001.pdf`
+- Immagini scaricate con nomi privi di significato come `download.jpg` o `IMG_4392.heic`
+- Qualsiasi cartella in cui i nomi dovrebbero descrivere il contenuto effettivo dei file
+
+### Come funziona
+
+1. Selezioni i file oppure indichi allo strumento una cartella
+2. L'IA analizza ogni file: legge il testo dei documenti, riconosce oggetti e scene nelle immagini, esamina fotogrammi dei video e comprende gli elementi dell'interfaccia negli screenshot
+3. Genera per ogni file un nome descrittivo basato sul contenuto
+4. I file vengono rinominati singolarmente, ciascuno con un nome univoco che ne rispecchia il contenuto
+
+Questa è la differenza fondamentale rispetto a tutti gli altri metodi: ogni file riceve un nome basato sul proprio contenuto, non su uno schema comune applicato all'intero gruppo.
+
+### Prima e dopo: esempi reali di rinomina con IA
+
+#### Screenshot
+
+| Prima | Dopo |
+|---|---|
+| `Screenshot 2026-02-08 at 09.14.22.png` | `figma-checkout-page-mobile-wireframe.png` |
+| `Screenshot 2026-02-08 at 09.18.44.png` | `stripe-dashboard-monthly-revenue.png` |
+| `Screenshot 2026-02-08 at 10.02.11.png` | `slack-design-team-feedback-thread.png` |
+| `Screenshot 2026-02-08 at 10.45.33.png` | `vscode-typescript-build-error-log.png` |
+| `Screenshot 2026-02-08 at 14.05.19.png` | `notion-sprint-planning-board-week-6.png` |
+
+#### Documenti e PDF
+
+| Prima | Dopo |
+|---|---|
+| `scan_001.pdf` | `apartment-lease-agreement-2026.pdf` |
+| `download.pdf` | `w9-tax-form-acme-consulting.pdf` |
+| `Document (3).pdf` | `quarterly-sales-report-q4-2025.pdf` |
+| `attachment.pdf` | `invoice-7842-webdesign-services.pdf` |
+
+#### Foto e immagini
+
+| Prima | Dopo |
+|---|---|
+| `IMG_4201.jpg` | `golden-gate-bridge-sunset-view.jpg` |
+| `IMG_4202.jpg` | `fishermans-wharf-street-performer.jpg` |
+| `DSC_0087.jpg` | `team-dinner-italian-restaurant.jpg` |
+| `photo_2026.heic` | `hiking-trail-redwood-forest.heic` |
+| `download (1).jpg` | `blue-mid-century-modern-sofa.jpg` |
+
+
+### Rinomina con IA usando Zush
+
+[Zush, rinominatore di file con IA per Mac](/mac), è progettato appositamente per questo tipo di operazione su Mac. Gestisce immagini, screenshot, video, PDF e documenti analizzandone il contenuto con l'IA. Puoi rinominare file in batch, monitorare le cartelle per rinominare automaticamente i nuovi elementi e personalizzare lo schema dei nomi inserendo date, categorie o prefissi.
+
+Per un'automazione continua, [Zush per Mac monitora cartelle](/mac) come Scrivania o Download e rinomina i nuovi file appena arrivano. La rinomina batch diventa così un processo in background che mantiene ordinati i file senza interventi manuali.
+
+Per un confronto dettagliato degli strumenti di rinomina con IA, consulta il [confronto tra rinominatori con IA per Mac](/blog/best-ai-file-renamer-tools-mac-compared). Se la scelta dipende soprattutto dalla privacy o dal controllo sul fornitore, confronta la [rinomina dei file con IA cloud e IA locale](/blog/cloud-vs-local-ai-file-renaming) prima di definire il flusso di lavoro.
+
+<BlogCTA placement='inline' platform='mac' />
+
+## Confronto tra i metodi di rinomina batch su Mac
+
+| Funzionalità | Finder | Automator | Comandi Rapidi | Script | IA (Zush) |
+|---|---|---|---|---|---|
+| Difficoltà | Facile | Media | Media | Alta | Facile |
+| Sostituzione del testo | Sì | Sì | Sì | Sì | Sì |
+| Aggiunta di prefisso/suffisso | Sì | Sì | Sì | Sì | Sì |
+| Numerazione sequenziale | Sì | Sì | Sì (Indice ripetizione) | Sì | Sì |
+| Supporto delle regex | No | No | No | Sì | No |
+| Nomi basati sui metadati | No | Sì | Sì (date dei file) | Sì | Limitato |
+| Nomi basati sul contenuto | No | No | No | No | Sì |
+| Monitoraggio delle cartelle | No | Sì (Azioni cartella) | No (usa un'Azione cartella) | Sì (con cron/launchd) | Sì |
+| Possibilità di annullare | Sì (Cmd+Z) | Sì (se è stato aggiunto un passaggio di copia) | No | No (senza backup) | Sì |
+| Funziona con le immagini | Solo schemi | Solo schemi | Solo schemi | Solo schemi | Legge il contenuto dell'immagine |
+| Funziona con i PDF | Solo schemi | Solo schemi | Solo schemi | Solo schemi | Legge il testo dei PDF |
+| Gestisce tipi di file diversi | Stessa regola per tutti | Stessa regola per tutti | Stessa regola per tutti | Possibile logica condizionale | Ogni file viene nominato singolarmente |
+| Costo | Gratis | Gratis | Gratis | Gratis | Piano gratuito e piani a pagamento |
+
+La scelta giusta dipende da che cosa devi rinominare e perché. Se tutti i file richiedono la stessa modifica testuale, Finder impiega 10 secondi. Se invece ognuno necessita di un nome descrittivo univoco, l'IA è l'unica opzione che non ti obbliga ad aprire ogni file e inventare personalmente un nome.
+
+## Errori comuni nella rinomina batch
+
+### Dimenticare l'estensione del file
+
+Quando si usano gli script, eliminare o sovrascrivere per errore le estensioni è un problema frequente. Un file rinominato da `report.pdf` a `quarterly-report` senza `.pdf` non si aprirà correttamente con un doppio clic. Conserva sempre l'estensione nella logica di rinomina.
+
+### Non fare prima una prova su una copia
+
+La rinomina è un'operazione distruttiva. Se applichi uno schema errato a 500 file, tornare indietro può essere laborioso o impossibile, soprattutto con gli script. Copia un piccolo campione in una cartella di prova, esegui lì la rinomina e verifica i risultati prima di intervenire sugli originali.
+
+### Usare caratteri che creano problemi
+
+Evita questi caratteri nei nomi dei file su macOS: `/`, `:` e byte nulli. Anche se macOS è più permissivo di Windows, i caratteri speciali possono causare problemi durante la sincronizzazione con un archivio cloud, il trasferimento su unità esterne o la condivisione con utenti Windows o Linux. Usa lettere, numeri, trattini e underscore.
+
+### Applicare al problema il metodo sbagliato
+
+Usare «Sostituisci testo» di Finder per rinominare una cartella di screenshot diversi è una perdita di tempo, perché ciascuno mostra qualcosa di differente. Al contrario, ricorrere all'IA per un gruppo di file in cui basta sostituire `IMG_` con `vacation-` è eccessivo. Scegli lo strumento in base all'attività concreta.
+
+### Ignorare l'ordinamento
+
+Se i file devono seguire un ordine preciso, usa numeri con zeri iniziali (`001`, `002`, non `1`, `2`). Senza questi zeri, in Finder il file `10` si colloca tra `1` e `2`, perché l'ordinamento è alfabetico e non numerico. Per raccolte con meno di 1000 file usa almeno tre cifre.
+
+## Consigli per ottenere risultati migliori dalla rinomina batch
+
+### Definire prima una convenzione di denominazione
+
+Prima di rinominare qualsiasi elemento, definisci una convenzione. Userai trattini o underscore? Solo minuscole o maiuscole e minuscole? La data come prefisso oppure no? Con una convenzione chiara rinomini i file una sola volta e i nomi restano utili. Per approfondire, leggi [Convenzioni per i nomi dei file: best practice per qualsiasi flusso di lavoro](/blog/file-naming-conventions-best-practices).
+
+### Raggruppare i file prima di rinominarli
+
+Non cercare di rinominare in un unico passaggio un'intera cartella con tipi di file diversi. Separa foto, documenti e screenshot, quindi rinomina ogni gruppo in batch con lo strumento e lo schema appropriati. Eviterai così di applicare a un PDF una convenzione pensata per le foto, o viceversa.
+
+### Usare subito la funzione Annulla di Finder
+
+La rinomina batch di Finder può essere annullata con Cmd+Z, ma soltanto subito dopo l'operazione. Se prima esegui altre azioni in Finder, la cronologia di annullamento passa oltre. Controlla il risultato immediatamente e annulla subito se qualcosa non va.
+
+### Combinare più metodi per le attività complesse
+
+Le cartelle reali richiedono spesso più di un approccio. Puoi usare Finder per eliminare un prefisso comune, quindi [rinominare i file in batch su Mac con Zush](/mac) e generare nomi descrittivi per quelli da identificare in base al contenuto. La numerazione sequenziale per le foto di un evento, la rinomina con IA per gli screenshot e Automator per le esportazioni ricorrenti possono convivere nello stesso flusso di lavoro.
+
+### Mantenere ordinata la cartella Download
+
+La cartella Download è la fonte più comune di file con nomi poco utili. Configurare la rinomina automatica degli elementi scaricati impedisce che il disordine si accumuli. Consulta [Come organizzare la cartella Download su Mac](/blog/how-to-organize-downloads-folder-mac) per una strategia completa.
+
+## Domande frequenti
+
+### Qual è il modo più veloce per rinominare file in batch su Mac?
+
+Finder è il metodo più veloce quando tutti i file devono ricevere la stessa modifica: selezionali, fai clic con il tasto destro, scegli Rinomina, quindi Sostituisci testo, Aggiungi testo o Formato e applica. Servono circa dieci secondi indipendentemente dal numero di file, senza configurazioni o download. È però il più rapido solo quando un'unica regola vale per tutto il batch: se ogni file richiede un nome descrittivo diverso, Finder non può svolgere il lavoro e un rinominatore con IA che legge i contenuti risulta più veloce nonostante l'installazione aggiuntiva.
+
+### Come posso rinominare file in batch su Mac senza installare nulla?
+
+Usa lo strumento di rinomina integrato in Finder. Seleziona i file, fai clic con il tasto destro e scegli «Rinomina...» dal menu contestuale. Puoi sostituire o aggiungere testo e formattare i nomi con numeri sequenziali. Funziona senza download su qualsiasi Mac con macOS Yosemite (10.10) o versioni successive.
+
+### Finder può rinominare i file in base al contenuto?
+
+No. La rinomina batch di Finder si basa esclusivamente su schemi. Può sostituire stringhe di testo, aggiungere prefissi o suffissi e applicare una numerazione sequenziale, ma non può analizzare ciò che contiene un file. Per assegnare a ogni elemento un nome descrittivo univoco basato sul contenuto serve uno strumento con IA capace di leggere immagini, video e documenti.
+
+![Scheda Attività di Zush con cronologia delle rinomine e pulsanti per annullare ogni operazione](/images/showcase/macos/activity-light.webp)
+
+### Nome e indice di Finder aggiunge metadati su Mac?
+
+No. Nome e indice di Finder modifica soltanto il nome del file e il percorso visibile. Non aggiunge tag di Finder o commenti di Finder, metadati EXIF o PDF né proprietà dei documenti Office. Spotlight può cercare il nuovo nome, ma per intervenire sui metadati più approfonditi serve uno strumento separato.
+
+### È possibile annullare una rinomina batch su Mac?
+
+Sì, se usi Finder. Subito dopo una rinomina batch premi Cmd+Z per annullare l'intera operazione: tutti i file tornano ai nomi originali. L'annullamento è disponibile soltanto come azione immediatamente successiva. Gli script di Terminale non offrono invece una funzione integrata per tornare indietro, quindi provali sempre prima su copie oppure salva l'elenco dei nomi originali prima di eseguirli.
+
+### Qual è il modo migliore per rinominare le foto con le date su Mac?
+
+Per aggiungere come prefisso la data di creazione del file, la soluzione più semplice è l'azione di rinomina «Aggiungi data o ora» di Automator. Per inserire la data di scatto EXIF ricavata dai metadati della fotocamera, usa uno script di Terminale con `exiftool`. Per unire le date a nomi descrittivi del contenuto, uno strumento con IA come Zush può combinare gli schemi di data con l'analisi dei file.
+
+### Come posso rinominare centinaia di screenshot su Mac?
+
+Per modifiche semplici, come sostituire «Screenshot» con il nome di un progetto, Finder impiega pochi secondi. Per assegnare invece a ogni screenshot un nome descrittivo basato su ciò che mostra, usa la rinomina con IA. Seleziona tutte le immagini e lascia che l'IA le analizzi: otterrai nomi come `slack-design-review-thread.png` anziché `Screenshot 2026-02-08 at 10.45.33.png`. Per rinominare automaticamente gli screenshot futuri, configura il monitoraggio di una cartella. Consulta [Come rinominare automaticamente gli screenshot su Mac](/blog/rename-screenshots-automatically-mac).
+
+### Posso rinominare PDF in batch in base al loro contenuto?
+
+Sì, con gli strumenti di rinomina basati sull'IA. L'IA legge il testo di ogni PDF e genera un nome che rispecchia l'argomento del documento. Una fattura scansionata chiamata `scan_042.pdf` diventa `invoice-7842-webdesign-services-march-2026.pdf`. Per la procedura completa consulta [Come rinominare automaticamente i PDF: flusso con IA per le cartelle ricorrenti](/blog/rename-pdf-files-automatically).
+
+### La rinomina batch modifica i metadati o le date di creazione dei file?
+
+Rinominare un file in Finder o tramite Automator non ne modifica la data di creazione, la data di modifica o i metadati interni. Il contenuto rimane identico: cambia soltanto il nome nel file system. Alcuni servizi di sincronizzazione cloud possono però considerare la rinomina come un nuovo caricamento; dopo aver modificato grandi batch in cartelle sincronizzate, controlla quindi lo stato della sincronizzazione.
+
+### Quale convenzione dovrei usare per i file rinominati in batch?
+
+Usa lettere minuscole, trattini tra le parole e date in formato ISO (YYYY-MM-DD) quando l'ordine cronologico è importante. Evita spazi, caratteri speciali ed etichette vaghe come `final-v2`. Una convenzione coerente rende i file ordinabili, ricercabili e trasferibili tra sistemi operativi. Per indicazioni dettagliate consulta [Convenzioni per i nomi dei file: best practice](/blog/file-naming-conventions-best-practices).
+
+## Conclusione
+
+La rinomina batch su Mac non è un unico flusso di lavoro, ma un insieme di procedure. L'approccio giusto dipende dal tipo di modifica di cui hai davvero bisogno.
+
+Finder gestisce in pochi secondi e senza configurazione le sostituzioni rapide di testo e la numerazione sequenziale. Per regole ripetibili da eseguire automaticamente, Automator offre maggiore potenza grazie alle Azioni cartella e all'accesso ai metadati. Per espressioni regolari e controllo completo, gli script di Terminale permettono tutto ciò che il file system consente. Infine, per la sfida più difficile — assegnare a ciascun file un nome descrittivo univoco basato sul contenuto effettivo — gli strumenti con IA colmano una lacuna che nessun metodo basato su schemi può risolvere.
+
+Scegli lo strumento più semplice adatto al problema reale. Usa Finder quando puoi, gli script quando devi e l'IA quando i nomi dei file devono comunicare qualcosa.

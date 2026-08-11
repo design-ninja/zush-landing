@@ -5,6 +5,7 @@ import {
   getBlogPostBySlug,
   getTranslatedPosts,
   getTranslatedRelatedPosts,
+  getTranslationsBySlug,
 } from '@/data/blog';
 import type { BlogLocale } from '@/data/blogSchema';
 import { getBlogSeo, getCanonicalUrl } from '@/seo/config';
@@ -57,6 +58,8 @@ const englishPath = `/blog/${post.translationOf}`;
 
 const relatedPosts = await getTranslatedRelatedPosts(post);
 const englishDetails = await getBlogPostBySlug(post.translationOf);
+const translations = await getTranslationsBySlug(post.translationOf);
+const translationLocales = Object.keys(translations) as BlogLocale[];
 
 const seo = {
   ...getBlogSeo(post),
@@ -69,8 +72,23 @@ const alternates: AlternateLink[] =
     ? []
     : [
         { hreflang: 'en', href: getCanonicalUrl(englishPath) },
-        { hreflang: localeMeta.lang, href: canonicalUrl },
+        ...translationLocales.map((locale) => ({
+          hreflang: LOCALE_META[locale as Locale].lang,
+          href: getCanonicalUrl(
+            `/${LOCALE_META[locale as Locale].slug}/blog/${translations[locale]!.slug}`,
+          ),
+        })),
       ];
+
+const languagePaths: Partial<Record<Locale, string>> = {
+  en: englishPath,
+  ...Object.fromEntries(
+    translationLocales.map((locale) => [
+      locale,
+      `/${LOCALE_META[locale as Locale].slug}/blog/${translations[locale]!.slug}`,
+    ]),
+  ),
+};
 
 const jsonLd =
   seo.robots === 'noindex, nofollow'
@@ -103,5 +121,6 @@ const translationLink: TranslationLink | undefined = englishDetails
   chromeLocale={post.locale as Locale}
   chromeBasePath={basePath}
   alternates={alternates}
+  languagePaths={languagePaths}
   translationLink={translationLink}
 />

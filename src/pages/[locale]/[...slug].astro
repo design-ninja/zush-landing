@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import FeatureLandingPageShell from '@/components/FeatureLandingPage/FeatureLandingPageShell.astro';
 import MethodologyPage from '@/components/MethodologyPage/MethodologyPage.astro';
 import PlatformLandingPage from '@/components/PlatformLandingPage/PlatformLandingPage.astro';
+import LocalizedProfessionLandingPage from '@/components/LocalizedProfessionLandingPage/LocalizedProfessionLandingPage.astro';
 import { SEARCH_LANDING_PAGES } from '@/data/searchLandingPages';
 import { getFeaturePageProps } from '@/utils/featurePageProps';
 import ActivateView from '@/views/Activate';
@@ -19,7 +20,7 @@ import RenamePhotosWithAI from '@/views/FeaturePages/RenamePhotosWithAI';
 import RenameScreenshotsWithAI from '@/views/FeaturePages/RenameScreenshotsWithAI';
 import RenameVideosWithAI from '@/views/FeaturePages/RenameVideosWithAI';
 import ThankYouView from '@/views/ThankYou';
-import { buildFeatureBreadcrumbJsonLd, buildFeaturePageJsonLd } from '@/utils/jsonLd';
+import { buildFeatureBreadcrumbJsonLd, buildFeaturePageJsonLd, buildWebPageJsonLd } from '@/utils/jsonLd';
 import {
   LOCALIZED_ROUTES,
   getLocalesForRoute,
@@ -35,6 +36,8 @@ import { getLocalizedSeoForRoute } from '@/i18n/seo';
 import { getServicePageCopy, isServiceLocalizedRoute } from '@/i18n/servicePages';
 import { getStaticPageCopy, isStaticLocalizedRoute } from '@/i18n/staticPages';
 import { getSeoForPath } from '@/seo/config';
+import { getLocalizedContent } from '@/i18n/localizedContent';
+import { getProfessionKeyForRoute } from '@/i18n/professions/types';
 
 const FEATURE_VIEWS = {
   '/rename-pdf-with-ai': RenamePDFWithAI,
@@ -105,10 +108,73 @@ const serviceSeo = isServiceLocalizedRoute(route)
   : null;
 const localizedHomeHref = getLocalizedPath('/', locale);
 const batchRenamePage = SEARCH_LANDING_PAGES['batch-rename-files'];
+const professionKey = getProfessionKeyForRoute(route);
+const professionPage = professionKey
+  ? getLocalizedContent(locale as Exclude<Locale, 'en'>).professions[professionKey]
+  : null;
+const professionSeo = professionPage
+  ? {
+      ...getSeoForPath(route),
+      ...professionPage.seo,
+      canonicalPath: localizedPath,
+      robots: 'index, follow',
+    }
+  : null;
+const professionHeaderNav = professionPage
+  ? [
+      { href: '#fields', label: copy.header.features },
+      { href: '#privacy', label: copy.header.security },
+      { href: '#pricing', label: copy.header.pricing },
+      { href: '#faq', label: copy.header.faq },
+      { href: '/blog', label: copy.header.blog },
+    ]
+  : undefined;
 ---
 
 {route === '/mac' && <PlatformLandingPage platform="mac" locale={locale} />}
 {route === '/windows' && <PlatformLandingPage platform="windows" locale={locale} />}
+{
+  professionKey && professionPage && professionSeo && (
+    <BaseLayout
+      seo={professionSeo}
+      locale={locale}
+      chromeBasePath={localizedHomeHref}
+      headerNav={professionHeaderNav}
+      disableTopOffset
+      jsonLd={[
+        buildWebPageJsonLd({
+          pagePath: localizedPath,
+          title: professionPage.pageTitle,
+          description: professionPage.seo.description,
+          mainEntityId: `https://zushapp.com${localizedPath}#software`,
+        }),
+        buildFeaturePageJsonLd({
+          howTo: {
+            name: professionPage.workflow.title,
+            description: professionPage.workflow.description,
+            steps: professionPage.workflow.items.map((item) => ({
+              name: item.title,
+              text: item.description,
+            })),
+          },
+          faqItems: professionPage.faq.items,
+          software: {
+            pagePath: localizedPath,
+            description: professionPage.seo.description,
+            featureList: professionPage.documents.items.map((item) => item.title),
+          },
+        }),
+        buildFeatureBreadcrumbJsonLd(professionPage.pageTitle, localizedPath, copy.header.homeAria),
+      ]}
+    >
+      <LocalizedProfessionLandingPage
+        profession={professionKey}
+        locale={locale as Exclude<Locale, 'en'>}
+        page={professionPage}
+      />
+    </BaseLayout>
+  )
+}
 {
   route === '/activate' && serviceSeo && (
     <BaseLayout seo={serviceSeo} locale={locale} chromeBasePath={localizedHomeHref}>

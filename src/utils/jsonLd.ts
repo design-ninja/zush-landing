@@ -336,6 +336,7 @@ export function buildBreadcrumbJsonLd(
 export function buildFeatureBreadcrumbJsonLd(
   pageTitle: string,
   pagePath: string,
+  homeLabel = 'Home',
 ) {
   return {
     '@context': 'https://schema.org',
@@ -344,7 +345,7 @@ export function buildFeatureBreadcrumbJsonLd(
       {
         '@type': 'ListItem',
         position: 1,
-        name: 'Home',
+        name: homeLabel,
         item: SITE_ORIGIN,
       },
       {

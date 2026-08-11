@@ -1,0 +1,223 @@
+---
+title: "Conventions de nommage des fichiers : règles, exemples et modèles"
+description: "Adoptez des conventions pratiques, des modèles prêts à copier et des exemples pour documents, photos, projets, dates, versions et recherche."
+date: "2026-03-05"
+slug: "conventions-nommage-fichiers-bonnes-pratiques"
+platform: "general"
+topic: "naming"
+tags:
+  - "File Organization"
+  - "File Naming"
+tldr: "Une bonne convention de nommage est simple, descriptive, recherchable et cohérente : mots en minuscules, séparateurs prévisibles, dates ISO si nécessaire, et aucun nom vague comme `final-final-v2`."
+reviewed: "2026-08-08"
+featuredOrder: 3
+locale: "fr"
+translationOf: "file-naming-conventions-best-practices"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogCopyPatterns from '@/components/blog/BlogCopyPatterns.astro';
+import BlogMarkdownImage from '@/components/blog/BlogMarkdownImage.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSafetyNote from '@/components/blog/BlogSafetyNote.astro';
+
+Réponse rapide : une bonne convention de nommage est descriptive, utilise des traits d'union, se trie et se recherche facilement, et reste cohérente. Commencez par `YYYY-MM-DD` lorsque la chronologie compte, sinon par le sujet. Utilisez le kebab-case, évitez espaces et caractères spéciaux, et gardez la même règle dans toute l'équipe.
+
+Une convention solide fait gagner du temps à chaque recherche, tri ou partage. La meilleure n'est pas la plus ingénieuse, mais celle qui s'applique sans exception au travail réel.
+
+Pour la plupart des gens, cela signifie des mots descriptifs en minuscules, des traits d'union ou underscores, des dates ISO utiles et des versions plutôt que des libellés vagues. Si les fichiers les plus difficiles sont des images, vidéos, captures, PDF ou documents, l'[outil de renommage Zush](/) automatise cette étape et facilite le maintien de la convention.
+
+## Modèles de noms prêts à copier
+
+Choisissez le motif selon la façon dont vous chercherez le fichier. Copiez-le, puis retirez les champs inutiles.
+
+<BlogCopyPatterns
+  patterns={[
+    {
+      label: 'Documents datés',
+      useCase: 'Rapports, comptes rendus, contrats',
+      value: 'YYYY-MM-DD_sujet_type-document_version.ext',
+      example: '2026-08-08_budget-t3_rapport_v2.pdf',
+    },
+    {
+      label: 'Fichiers de projet',
+      useCase: 'Design, marketing, travail client',
+      value: 'projet_description-ressource_variante_version.ext',
+      example: 'refonte-checkout_banniere-hero_sombre_v3.psd',
+    },
+    {
+      label: 'Photos et vidéo',
+      useCase: 'Événements, séances, voyages',
+      value: 'YYYY-MM-DD_evenement_description_sequence.ext',
+      example: '2026-08-08_lancement-produit_conference_0042.jpg',
+    },
+    {
+      label: 'Factures et reçus',
+      useCase: 'Finance et comptabilité',
+      value: 'YYYY-MM-DD_fournisseur_numero-document.ext',
+      example: '2026-08-08_acme_facture-1048.pdf',
+    },
+  ]}
+/>
+
+Pour des structures assistées par IA et réutilisables, lisez [Naming Blocks](/blog/naming-blocks-file-naming-guide) et [Zush Templates](/blog/zush-templates-file-renaming-workflows). Pour comparer d'abord les outils, consultez le [comparatif des outils IA](/blog/best-ai-file-renamer-tools-2026).
+
+## Cinq règles qui fonctionnent presque partout
+
+<BlogMarkdownImage
+  src='/images/showcase/macos/naming-light.webp'
+  alt='Configuration du motif de nommage Zush avec modèle de format et options de langue'
+  priority
+/>
+
+### 1. Décrire avant tout
+
+Le nom doit indiquer ce qu'est le fichier sans l'ouvrir.
+
+Bon :
+
+- `2026-03-05-rapport-campagne-t1.pdf`
+- `parcours-checkout-wireframe-mobile.png`
+- `mariage-johnson-premiere-danse-0042.jpg`
+
+Mauvais :
+
+- `document-final.pdf`
+- `image1.png`
+- `truc-nouveau-v2.docx`
+
+### 2. Garder une structure prévisible
+
+Quand les fichiers similaires suivent le même motif, le tri devient utile plutôt que chaotique.
+
+Motifs courants :
+
+- `YYYY-MM-DD_description.ext`
+- `projet_description_version.ext`
+- `client_ressource_description.ext`
+
+### 3. Utiliser des séparateurs sûrs
+
+Les traits d'union sont le meilleur choix par défaut : lisibles et adaptés au web. Les underscores fonctionnent aussi. Les espaces sont acceptés par macOS, mais gênent dans les URL, scripts et certains flux partagés.
+
+### 4. Employer les dates ISO quand la date compte
+
+Si la date appartient au nom, utilisez `YYYY-MM-DD`. L'ordre chronologique est alors conservé lors d'un tri alphabétique.
+
+### 5. Préférer les versions à « final »
+
+Un fichier nommé `final` l'est rarement. `v2`, `v3` et `v4` sont bien plus clairs que `final-final-vraiment-final`.
+
+<BlogProductIntro
+  title="Une convention qui s'applique toute seule ?"
+  description="Zush transforme une convention en motif réutilisable avec plus de 145 Naming Blocks pour dates, métadonnées, clients et contenu détecté par IA. Prévisualisez chaque nom, puis restaurez les anciens depuis History si nécessaire."
+  links={[
+    { href: '/batch-rename-files', label: 'Renommer par lots' },
+    { href: '/blog/how-to-safely-batch-rename-files', label: 'Guide prévisualisation et annulation' },
+    { href: '/docs/naming-blocks', label: 'Naming Blocks' },
+    { href: '/docs/undo-history', label: 'Undo History' },
+  ]}
+/>
+
+## Motifs recommandés selon le flux
+
+### Photographie
+
+Utilisez :
+
+`YYYY-MM-DD_evenement_description_sequence.ext`
+
+Exemple :
+
+`2026-03-05_mariage-johnson_premiere-danse_0042.jpg`
+
+### Design et création
+
+Utilisez :
+
+`projet_ressource_description_version.ext`
+
+Exemple :
+
+`refonte-checkout_banniere-hero_sombre_v3.psd`
+
+Le motif n'est qu'une couche. La [gestion des ressources numériques pour designers sur Mac](/blog/digital-asset-management-designers-mac) traite l'arborescence, les versions et la discipline d'export qui l'entourent.
+
+### Documents professionnels
+
+Utilisez :
+
+`YYYY-MM-DD_service_description-document.ext`
+
+Exemple :
+
+`2026-03-05_marketing_rapport-campagne-t1.pdf`
+
+Les documents professionnels méritent des règles dédiées : [nommage des factures](/blog/invoice-file-naming-convention), [dossiers médicaux](/for-medical) et [dossiers juridiques](/blog/legal-file-naming-conventions).
+
+### Captures et exports
+
+Utilisez :
+
+`contexte_description.ext`
+
+Exemple :
+
+`figma-parcours-checkout-mobile.png`
+
+## Images, vidéos et documents sont les plus difficiles à nommer
+
+Les systèmes échouent souvent sur ces fichiers. Les appareils utilisent des compteurs, les captures macOS des horodatages, les téléchargements le nom fourni par le site et les pièces jointes des noms génériques comme `document.pdf` ou `report.docx`.
+
+![Résultats Zush avec noms descriptifs générés par IA](/images/showcase/macos/batch-rename-light.webp)
+
+C'est pourquoi l'automatisation est particulièrement utile ici. Définir la convention est simple, mais rédiger manuellement la partie descriptive est lent. Des outils comme [Zush](https://zushapp.com) reconnaissent le contenu par IA puis appliquent un motif cohérent.
+
+Pour les images sur Mac, suivez [renommer des images avec l'IA sous macOS](/blog/how-to-rename-images-with-ai-on-macos). Pour Windows, continuez avec [conventions Windows pour des dossiers recherchables](/blog/windows-file-naming-conventions-searchable-folders).
+
+## Plan de mise en œuvre simple
+
+Si votre bibliothèque est désordonnée, ne renommez pas tout d'un coup.
+
+1. Choisissez les dossiers les plus utilisés.
+2. Définissez un motif par type de fichier.
+3. Traitez d'abord le retard le plus pénible.
+4. Automatisez l'arrivée des nouvelles images, vidéos et captures.
+
+Cette dernière étape empêche le système de s'effondrer à nouveau. Une convention associée au nommage IA automatique dure mieux que des nettoyages occasionnels.
+
+<BlogSafetyNote
+  title="Tester d'abord sur un petit lot"
+  description="Prévisualisez la liste complète ancien nom → nouveau nom avant d'appliquer une convention à un dossier. Zush conserve les opérations terminées dans History afin de restaurer les anciens noms au lieu de réparer les erreurs à la main."
+/>
+
+<BlogCTA placement='inline' platform='general' />
+
+![Démonstration Zush appliquant automatiquement des conventions cohérentes](/videos/zush-naming-pattern.mp4)
+
+## Erreurs courantes à éviter
+
+- Utiliser un motif différent dans chaque dossier.
+- Abréger au point de rendre les noms incompréhensibles.
+- Garder des espaces et signes de ponctuation qui brisent la cohérence.
+- Nommer selon le statut (`nouveau`, `dernier`, `final`) plutôt que le contenu.
+- Compter seulement sur les dossiers lorsque les noms restent vagues.
+
+## Conclusion
+
+La meilleure convention équilibre clarté et cohérence. Utilisez des mots descriptifs, des séparateurs prévisibles, des dates ISO utiles et des numéros de version pour les fichiers qui évoluent.
+
+Si le goulet d'étranglement est le nommage d'images, vidéos, PDF, feuilles de calcul ou documents, [Zush](https://zushapp.com) automatise la partie descriptive et applique la convention à grande échelle.
+
+## FAQ
+
+### Quelle convention convient à la plupart des gens ?
+
+Un motif descriptif en minuscules, avec traits d'union et dates ISO facultatives, reste le plus simple à maintenir.
+
+### Faut-il utiliser des traits d'union ou des underscores ?
+
+Les deux fonctionnent. Les traits d'union sont généralement plus lisibles et plus adaptés au web.
+
+### L'IA peut-elle aider à appliquer une convention ?
+
+Oui. Elle est particulièrement utile pour les images, captures, vidéos, PDF et documents DOCX, PPTX ou XLSX dont la partie descriptive devrait autrement être rédigée à la main.

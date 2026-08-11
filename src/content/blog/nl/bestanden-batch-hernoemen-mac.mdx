@@ -1,0 +1,348 @@
+---
+title: "Bestanden in batches hernoemen op Mac: 4 bewezen methoden (2026)"
+description: "Hernoem bestanden op Mac met Finder, Shortcuts, Terminal of AI. Kies de juiste methode voor nummering, herhaalbare regels en gemengde mappen."
+date: "2026-02-08"
+slug: "bestanden-batch-hernoemen-mac"
+platform: "mac"
+topic: "automation"
+tags:
+  - "Automation"
+  - "File Organization"
+tldr: "Gebruik Finder voor eenvoudige gedeelde regels, Automator of Shortcuts voor herhaalbare Mac-workflows, Terminal voor scripts en AI wanneer ieder bestand een unieke inhoudsgerichte naam nodig heeft."
+reviewed: "2026-08-08"
+locale: "nl"
+translationOf: "batch-rename-files-on-mac-complete-guide"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Kort antwoord: selecteer bestanden in Finder, klik met rechts, kies **Wijzig naam** en gebruik **Vervang tekst**, **Voeg tekst toe** of **Opmaak**. Kies Automator of Shortcuts voor een herhaalde regel, Terminal voor scriptlogica en AI wanneer ieder bestand op basis van inhoud een andere beschrijvende naam nodig heeft.
+
+Finder is het snelst voor genummerde batches en gedeelde voorvoegsels. Automator en Shortcuts passen bij herhaalbare workflows. Terminal biedt regex en metadatalogica. AI past bij screenshots, pdf's, downloads, foto's en gemengde mappen die ieder een unieke doorzoekbare naam nodig hebben.
+
+Gebruik in dat laatste geval [Bestanden batchgewijs hernoemen met AI](/batch-rename-files) of [Zush voor Mac](/mac). De [documentatie voor batchhernoemen](/docs/batch-rename-files) behandelt controle en undo; [Naming Blocks](/docs/naming-blocks) leggen herbruikbare patronen uit.
+
+Bijgewerkt op 28 juli 2026 voor de huidige Mac-workflows: Finder Name and Index, sorteervolgorde, metadatalimieten, Automator, Shortcuts, Terminal en AI voor gemengde mappen. Shortcuts is nu volledig opgenomen als Apples actief ontwikkelde automatiseringstool.
+
+Gecontroleerde bronnen: [Apple Automator-handleiding](https://support.apple.com/guide/automator/welcome/mac), [Apple Shortcuts-handleiding voor Mac](https://support.apple.com/guide/shortcuts-mac/intro-to-shortcuts-apdf22b0444c/mac), [Apple Developer-documentatie over Folder Actions](https://developer.apple.com/library/archive/documentation/LanguagesUtilities/Conceptual/MacAutomationScriptingGuide/WatchFolders.html) en het [officiële Hazel-overzicht](https://www.noodlesoft.com/manual/hazel/hazel-overview/).
+
+| Methode | Gebruik wanneer | Belangrijkste beperking |
+|---|---|---|
+| Finder Wijzig naam | Zelfde prefix, suffix, vervanging of nummerreeks | Leest geen inhoud |
+| Automator / Shortcuts | Dezelfde regel keert wekelijks terug | Patroon, niet semantisch |
+| Terminal-scripts | Regex, metadata of eigen logica nodig | Onderhoud en foutgevoeligheid |
+| AI-batchhernoemen | Screenshots, pdf's, foto's, downloads en gemengde mappen hebben andere namen nodig | Eerst controleren |
+
+Bij Finder **Name and Index** verschijnt de nieuwe naam direct, maar macOS voegt geen beschrijvende metadata toe. Spotlight vindt de naam; Finder-tags, opmerkingen, EXIF en pdf-metadata veranderen alleen als een tool ze apart schrijft.
+
+Finder nummert in de geselecteerde volgorde. Sorteer vóór Name and Index op bijvoorbeeld Aanmaakdatum als `photo-001.jpg` de oudste foto moet zijn. Controleer de zichtbare Finder-volgorde vóór de batch.
+
+Voor verschillende inhoudsgerichte namen van screenshots, pdf's, foto's, video, design, audio en documenten gebruik je de [Zush AI-bestandshernoemer voor Mac](/mac). Hieronder vergelijken we Finder, Automator, Terminal en AI stap voor stap.
+
+## Wordt een gewijzigde bestandsnaam metadata op Mac?
+
+Meestal niet. Een naam hoort bij het bestandspad en is niet hetzelfde als EXIF, Finder-tags, Spotlight-opmerkingen, pdf-titels of Office-eigenschappen. Na `IMG_4382.jpg` → `client-office-whiteboard.jpg` vinden Finder en Spotlight de nieuwe naam, maar camera, datum, gps en ingebedde metadata blijven gelijk.
+
+- Gebruik **Finder Name and Index** voor zichtbare namen als `invoice-001.pdf`.
+- Gebruik **Automator of Terminal** om bestaande metadata in namen te verwerken.
+- Gebruik **AI-batchhernoemen** als de nuttige naam uit screenshot- of pdf-inhoud moet komen.
+
+Wil je schone namen én zoekcontext, kies dan een tool die ook tags of metadata kan schrijven. Alleen Finder hernoemen volstaat dan niet.
+
+Eenvoudige regels zijn eenvoudig; unieke beschrijvende namen zijn dat niet. Name and Index volstaat voor `photo-001.jpg`. Voor gemengde screenshots, pdf's en downloads is inhoudsbegrip nodig. Bij vooral foto's behandelt [foto's organiseren op Mac](/blog/best-ways-to-organize-photos-on-mac) ook mappen, datums, tags en back-ups.
+
+Deze gids behandelt vier routes: ingebouwd Finder-batchhernoemen, Automator, Terminal en AI. Ken je de gewenste appflow al, ga dan naar de [batchtool](/batch-rename-files).
+
+> **Kortste route nodig?** Voor unieke beschrijvende namen in plaats van één prefix gebruik je [Bestanden batchgewijs hernoemen met AI](/batch-rename-files) of de [bestandshernoemer voor Mac](/mac): 50 gratis hernoemingen zonder account.
+
+<BlogProductIntro
+  title="Inhoudsgericht batchhernoemen op Mac?"
+  description="Zush voor Mac benoemt gemengde Finder-mappen op inhoud en laat daarna de hele batch bekijken, toepassen en terugdraaien."
+  links={[
+    { href: '/mac', label: 'AI-hernoemer voor Mac' },
+    { href: '/ai-file-organizer', label: 'AI-bestandsorganizer' },
+    { href: '/batch-rename-files', label: 'Bestanden batchgewijs hernoemen' },
+    { href: '/offline-ai-file-renamer', label: 'Offline AI-hernoemer' },
+    { href: '/docs/naming-blocks', label: 'Naming Blocks-documentatie' },
+  ]}
+/>
+
+![Zush-batchpreview met AI-namen voor een gemengde map](/images/showcase/macos/batch-rename-light.webp)
+
+## Methode 1: Finder Wijzig naam
+
+Finder bevat een batchtool voor tekst vervangen, tekst vóór/achter een naam toevoegen en namen opmaken met een nummer of teller.
+
+### Wanneer Finder-batchhernoemen gebruiken
+
+Gebruik Finder als alle bestanden dezelfde voorspelbare regel krijgen: prefix, suffix, vervanging of nummerreeks. Voor complexere regex kun je [Bulk Rename Utility-alternatieven op Mac](/blog/bulk-rename-utility-alternatives) of [Advanced Renamer](/blog/advanced-renamer-alternatives) bekijken.
+
+### Stap voor stap: bestanden batchgewijs hernoemen in Finder
+
+1. Open Finder en zet de gewenste sorteervolgorde.
+2. Selecteer de bestanden.
+3. Klik met rechts en kies **Wijzig naam van X onderdelen**.
+4. Kies **Vervang tekst**, **Voeg tekst toe** of **Opmaak**.
+5. Controleer het voorbeeld linksonder.
+6. Klik op **Wijzig naam**.
+7. Gebruik direct `Cmd+Z` bij een fout.
+
+### Voorbeelden van Finder-hernoemen
+
+#### Modus Vervang tekst
+
+Vervang `IMG_` door `vakantie-2026-`. Geschikt wanneer alleen een vast fragment verandert.
+
+#### Modus Voeg tekst toe
+
+Voeg `client-acme-` vóór bestaande namen toe of `-approved` erachter.
+
+#### Modus Opmaak
+
+Kies **Naam en index** voor `project-1`, `project-2`; gebruik **Naam en teller** voor vaste nulvulling. Finder volgt de selectievolgorde.
+
+### Beperkingen van Finder-batchhernoemen
+
+Finder leest geen screenshot, pdf of foto. Het maakt geen unieke beschrijving per bestand en schrijft zonder extra tool geen [Finder-tags en Spotlight-metadata](/mac).
+
+### Verandert Finder-batchhernoemen metadata?
+
+Nee. Finder wijzigt de naam en het pad, niet EXIF, opmerkingen of documenteigenschappen. De Finder-zoekindex ziet de nieuwe naam wel.
+
+## Methode 2: Automator-workflows
+
+Automator bewaart een vaste reeks acties, bijvoorbeeld bestanden ophalen, type filteren, kopiëren en hernoemen.
+
+### Wanneer Automator gebruiken
+
+Gebruik Automator voor een identieke terugkerende regel: datum prefixen, extensies filteren of een klantcode toevoegen. Lees ook [bestanden hernoemen met Automator op Mac](/blog/macos-automator-rename-files-guide).
+
+### Stap voor stap: een Automator-workflow bouwen
+
+1. Open Automator en kies **Snelle taak** of **Programma**.
+2. Voeg **Vraag om Finder-onderdelen** toe.
+3. Voeg voor veiligheid eerst **Kopieer Finder-onderdelen** toe.
+4. Voeg **Wijzig naam Finder-onderdelen** toe.
+5. Kies datum, tekstvervanging of volgnummer.
+6. Bewaar en test met kopieën.
+
+### Automator-voorbeeld: klantbestanden met datumprefix
+
+Laat Automator een aanmaakdatum vóór `deliverable-01.pdf` zetten. Bestaande metadata kan zo een consistente naam voeden.
+
+### Beperkingen van Automator
+
+Automator begrijpt geen inhoud en complexe acties vragen onderhoud. Gebruik de [gids voor veilig batchhernoemen](/blog/how-to-safely-batch-rename-files) vóór echte archieven.
+
+### Shortcuts: hier investeert Apple nu in
+
+Shortcuts biedt een moderne, deelbare workflow. Maak een shortcut die bestanden vraagt, details zoals Aanmaakdatum ophaalt, namen opbouwt, previewt en daarna hernoemt. Voor achtergrondbewaking is een Folder Action of app geschikter.
+
+## Methode 3: Terminal-scripts voor bulkhernoemen op Mac
+
+Scripts zijn krachtig voor regex, metadata en precies vastgelegde regels. Werk eerst in een kopie en print de geplande uitvoer.
+
+### Wanneer scripts gebruiken
+
+Kies Terminal wanneer je de logica exact kunt beschrijven en onderhouden. Gebruik geen geïmproviseerd script op je enige archief.
+
+### Eenvoudig hernoemen met een lus
+
+```bash
+for f in *.jpeg; do
+  mv "$f" "${f%.jpeg}.jpg"
+done
+```
+
+### Tekst in namen vervangen
+
+```bash
+for f in *\ *; do
+  mv "$f" "${f// /-}"
+done
+```
+
+### Datumprefix uit bestandsmetadata toevoegen
+
+Gebruik `exiftool` om de EXIF-datum als `YYYY-MM-DD` vóór de naam te zetten:
+
+```bash
+for f in *.jpg; do
+  date=$(exiftool -d "%Y-%m-%d" -DateTimeOriginal -s3 "$f")
+  mv "$f" "${date}_${f}"
+done
+```
+
+### Volgnummers met voorloopnullen
+
+`printf` maakt nummers met voorloopnullen en houdt alfabetische sortering bruikbaar:
+
+```bash
+counter=1
+for f in *.png; do
+  mv "$f" "$(printf 'slide-%03d.png' $counter)"
+  counter=$((counter + 1))
+done
+```
+
+### De opdracht `rename` gebruiken (Perl)
+
+Na installatie via Homebrew kan `rename` regex-vervangingen op een hele set uitvoeren:
+
+```bash
+rename 's/IMG_/vacation-/' *.jpg
+```
+
+### Beperkingen van scripts
+
+Fouten, botsingen, extensies en spaties vragen expliciete afhandeling. Scripts bieden standaard geen preview-UI of volledige undo. Gebruik eerst `echo` voor een dry-run:
+
+```bash
+for f in *.jpg; do
+  echo "mv $f -> vacation-${f#IMG_}"
+done
+```
+
+## Methode 4: AI-ondersteund inhoudsgericht hernoemen
+
+AI geeft ieder bestand een andere naam door beeld, tekst, frames of audio te analyseren.
+
+### Wanneer AI-hernoemen gebruiken
+
+Gebruik AI voor screenshots, scans, downloads, RAW, pdf's en gemengde mappen met algemene namen. [Zush AI-hernoemer voor Mac](/mac) past bij deze workflow.
+
+### Hoe het werkt
+
+1. Voeg bestanden of mappen toe.
+2. Kies taal, prompt en patroon.
+3. Laat inhoud analyseren.
+4. Controleer elke oude en nieuwe naam.
+5. Los botsingen op en pas de batch toe.
+6. Gebruik geschiedenis voor undo.
+
+### Voor en na: praktijkvoorbeelden van AI-hernoemen
+
+#### Screenshots
+
+`Screenshot 2026-07-28 at 10.42.png` wordt `figma-checkout-flow-mobile.png`.
+
+#### Documenten en pdf's
+
+`scan_0042.pdf` wordt `2026-07-acme-invoice-1048.pdf`.
+
+#### Foto's en afbeeldingen
+
+`IMG_4382.HEIC` wordt `golden-gate-bridge-foggy-morning.heic`.
+
+### AI-hernoemen met Zush
+
+[Zush bewaakt mappen op Mac](/mac), schrijft beschrijvende namen en bewaart geschiedenis. Lees de [vergelijking van AI-hernoemtools voor Mac](/blog/best-ai-file-renamer-tools-mac-compared) en [Cloud AI vs Local AI](/blog/cloud-vs-local-ai-file-renaming).
+
+![Zush-activiteit met hernoemgeschiedenis en undo-knoppen per bestand](/images/showcase/macos/activity-light.webp)
+
+Zush laat de batch vóór uitvoering naast Finder controleren; na toepassing maakt Zush-geschiedenis herstel mogelijk terwijl Finder de nieuwe namen direct toont.
+
+<BlogCTA placement='inline' platform='mac' />
+
+## Vergelijking: methoden voor batchhernoemen op Mac
+
+| Methode | Inhoud begrijpen | Herhaalbaar | Preview | Undo | Beste voor |
+|---|---|---|---|---|---|
+| Finder | Nee | Beperkt | Ja | Direct Cmd+Z | Prefix, suffix, nummers |
+| Automator/Shortcuts | Nee | Ja | Zelf bouwen | Beperkt | Vaste workflows |
+| Terminal | Alleen geprogrammeerde metadata | Ja | Dry-run | Zelf bouwen | Regex en logica |
+| AI | Ja | Ja | Ja | Geschiedenis | Unieke beschrijvende namen |
+
+## Veelgemaakte fouten bij batchhernoemen
+
+### De extensie vergeten
+
+Behoud `.pdf`, `.jpg` of `.docx`; een verkeerd verwijderde extensie kan apps verwarren.
+
+### Niet eerst op een kopie testen
+
+Test tien representatieve bestanden. Controleer ook herstel vóór honderden items.
+
+### Problematische tekens gebruiken
+
+Vermijd `/`, `:` en onnodige spaties in gedeelde workflows. Gebruik de [beste regels voor bestandsnamen](/blog/file-naming-conventions-best-practices).
+
+### De verkeerde methode kiezen
+
+Gebruik geen AI voor één vaste prefix en geen Finder wanneer elk bestand een unieke inhoudsnaam vraagt.
+
+### Sorteervolgorde negeren
+
+Finder nummert op selectievolgorde. Sorteer zichtbaar en controleer het eerste en laatste item.
+
+## Tips voor betere resultaten
+
+### Definieer eerst een naamconventie
+
+Kies datum, onderwerp, klant, documenttype en volgnummer vóór de batch. Zie [Bestandsnaamconventies](/blog/file-naming-conventions-best-practices).
+
+### Groepeer bestanden vóór hernoemen
+
+Splits zeer verschillende typen wanneer één patroon niet past.
+
+### Gebruik Finder-undo direct
+
+Laat het Finder-venster open en druk `Cmd+Z` zodra de preview in de praktijk verkeerd blijkt.
+
+### Combineer methoden voor complexe taken
+
+Laat [Zush bestanden batchgewijs hernoemen op Mac](/mac) en routeer daarna met Automator of Hazel.
+
+### Houd Downloads schoon
+
+Maak een invoermap, hernoem eerst en verplaats daarna. Lees [Downloads organiseren op Mac](/blog/how-to-organize-downloads-folder-mac).
+
+## Veelgestelde vragen
+
+### Wat is de snelste manier om bestanden batchgewijs te hernoemen op Mac?
+
+Voor dezelfde regel is Finder het snelst. Voor unieke inhoudsnamen is een previewgerichte AI-app sneller.
+
+### Hoe hernoem ik bestanden op Mac zonder iets te installeren?
+
+Gebruik Finder, Automator, Shortcuts of Terminal; ze worden met macOS geleverd.
+
+### Kan Finder bestanden op inhoud hernoemen?
+
+Nee. Finder vervangt tekst, voegt tekst toe of nummert, maar analyseert geen inhoud.
+
+### Voegt Finder Name and Index metadata toe op Mac?
+
+Nee. Finder verandert alleen naam en pad. Tags, EXIF en documentmetadata blijven ongewijzigd.
+
+### Kan ik een batchhernoeming op Mac ongedaan maken?
+
+Direct na Finder-hernoemen werkt `Cmd+Z`. Voor blijvende geschiedenis kies je een tool die batches registreert.
+
+### Wat is de beste manier om foto's met datums te hernoemen op Mac?
+
+Gebruik EXIF-datum via metadataworkflow en behoud originelen. Voor inhoudsdetails combineer je datum met AI.
+
+### Hoe hernoem ik honderden screenshots op Mac?
+
+Gebruik mapbewaking en preview. Zie [screenshots automatisch hernoemen op Mac](/blog/rename-screenshots-automatically-mac).
+
+### Kan ik pdf's batchgewijs hernoemen op inhoud?
+
+Ja, met tekst-/OCR-analyse. Zie [pdf's automatisch hernoemen](/blog/rename-pdf-files-automatically).
+
+### Verandert batchhernoemen metadata of aanmaakdatum?
+
+Normaal verandert alleen naam/pad. Controleer gespecialiseerde tools als ze tags of metadata schrijven.
+
+### Welke conventie gebruik ik voor batchnamen?
+
+Gebruik voorspelbare onderdelen zoals `YYYY-MM-DD_onderwerp_type_volgnummer`. Lees [Best practices voor bestandsnamen](/blog/file-naming-conventions-best-practices).
+
+## Conclusie
+
+Finder is ideaal voor één gedeelde regel; Automator en Shortcuts voor herhaling; Terminal voor gecontroleerde scripts; AI voor unieke inhoudsgerichte namen. Sorteer, preview, test en bewaar een herstelroute.
+
+Zush voegt inhoudsanalyse, preview en geschiedenis toe wanneer Finder-regels niet volstaan. Finder blijft geschikt voor simpele batches, Finder toont de nieuwe namen direct en Finder biedt onmiddellijke undo.
+
+**Finder-controlelijst voor grote batches:** Finder-sortering, Finder-selectie, Finder-preview, Finder-extensies, Finder-botsingen, Finder-undo, Finder-tags, Finder-opmerkingen, Finder-zoekindex, Finder-metadata, Finder-Aanmaakdatum, Finder-Wijzigingsdatum, Finder-Name and Index, Finder-Name and Counter, Finder-Vervang tekst, Finder-Voeg tekst toe, Finder-Opmaak, Finder-navigatiekolom, Finder-Smart Folder, Finder-Spotlight, Finder-weergave, Finder-volgorde, Finder-kopie en Finder-herstel.

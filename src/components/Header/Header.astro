@@ -40,6 +40,8 @@ interface Props {
    * the links scroll within the page instead of jumping back to the homepage.
    */
   navItems?: NavItem[];
+  /** Explicit same-page locale paths for routes outside LOCALIZED_ROUTES, such as translated blog posts. */
+  languagePaths?: Partial<Record<Locale, string>>;
 }
 
 const {
@@ -50,6 +52,7 @@ const {
   hideDownload = false,
   width = 'default',
   navItems: navItemsOverride,
+  languagePaths: languagePathsOverride,
 } = Astro.props as Props;
 const localeCopy = getCopy(locale);
 const copy = localeCopy.header;
@@ -68,16 +71,18 @@ const navItems = navItemsOverride ?? [
   { href: blogHref, label: copy.blog },
 ];
 const menuLabel = copy.menu ?? 'Menu';
-// Blog posts, the archive, tag pages, and the SEO landing pages exist in English
-// only. Offering a language menu there used to dump the visitor on a translated
-// homepage instead of the page they were reading, so it is hidden entirely.
-const showLanguageSwitcher = isLocalizedRoute(route);
+// Routes outside LOCALIZED_ROUTES stay hidden unless the page supplies explicit
+// same-content paths. Translated blog posts do so; English-only archive, tag, and
+// landing pages do not accidentally send visitors to a localized homepage.
 const shouldUseRouteLanguagePaths = isLocalizedRoute(route) && route !== '/404';
-const languagePaths = shouldUseRouteLanguagePaths
+const defaultLanguagePaths = shouldUseRouteLanguagePaths
   ? getAlternatePaths(route)
   : Object.fromEntries(
     LOCALES.map((item) => [item, getLocaleBasePath(item)]),
   ) as Partial<Record<Locale, string>>;
+const languagePaths = languagePathsOverride ?? defaultLanguagePaths;
+const showLanguageSwitcher = isLocalizedRoute(route)
+  || Object.values(languagePathsOverride ?? {}).filter(Boolean).length > 1;
 // Inside the burger panel the languages collapse into a native picker: it opens
 // as the OS wheel instead of listing every locale in the panel, and unlike the
 // pill's dropdown it cannot be clipped by the panel's own scroll container.

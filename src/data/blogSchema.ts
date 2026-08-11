@@ -1,4 +1,5 @@
 import { z } from 'astro/zod';
+import { LOCALES, type Locale } from '@/i18n/config';
 
 const BLOG_PLATFORM_VALUES = ['general', 'mac', 'windows'] as const;
 export type BlogPlatform = (typeof BLOG_PLATFORM_VALUES)[number];
@@ -9,8 +10,8 @@ export type BlogPlatform = (typeof BLOG_PLATFORM_VALUES)[number];
  * Adding a locale here is deliberately a one-line change — the routing, hreflang,
  * and sitemap machinery is locale-agnostic.
  */
-const BLOG_LOCALE_VALUES = ['en', 'de'] as const;
-export type BlogLocale = (typeof BLOG_LOCALE_VALUES)[number];
+const BLOG_LOCALE_VALUES = LOCALES;
+export type BlogLocale = Locale;
 
 const BLOG_TOPIC_VALUES = [
   'ai-renaming',

@@ -1,0 +1,239 @@
+---
+title: "Tags Finder sur Mac : organiser et retrouver ses fichiers"
+description: "Utilisez correctement les tags Finder : marquez les fichiers, créez des dossiers intelligents et retrouvez tout plus vite avec Spotlight."
+date: "2026-02-15"
+slug: "tags-finder-organiser-fichiers-mac"
+platform: "mac"
+topic: "search"
+tags:
+  - "File Organization"
+tldr: "Tags Finder, dossiers intelligents et Spotlight répondent à trois besoins : les tags ajoutent un contexte transversal, les dossiers intelligents créent des vues à jour et Spotlight recherche noms et métadonnées."
+reviewed: "2026-08-08"
+locale: "fr"
+translationOf: "finder-tags-guide-organize-files-mac"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogCopyPatterns from '@/components/blog/BlogCopyPatterns.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+import BlogSafetyNote from '@/components/blog/BlogSafetyNote.astro';
+
+Réponse rapide : les tags Finder sont des marqueurs colorés ou nommés qui fonctionnent indépendamment de l'emplacement. Gardez quelques tags explicites comme `urgent`, `attente` ou `reference`, rassemblez-les dans des dossiers intelligents, puis recherchez avec le gestionnaire de fichiers ou Spotlight.
+
+macOS fournit trois couches complémentaires : tags, dossiers intelligents et Spotlight. Les fichiers restent dans leurs dossiers de projet, tandis que les tags rendent visibles d'autres relations.
+
+Si des noms génériques bloquent la recherche, combinez ce système avec le guide [renommer des fichiers par lots sur Mac](/de/blog/dateien-stapelweise-umbenennen-mac), les [Naming Blocks](/blog/naming-blocks-file-naming-guide) ou le [renommage IA sur Mac](/de/mac).
+
+## Choisir la bonne méthode de recherche sur Mac
+
+| Tâche | Meilleur point de départ | Résultat |
+|---|---|---|
+| Marquer des fichiers répartis dans plusieurs dossiers | [Tags Finder](#tags-finder-organiser-sans-deplacer) | Un statut ou projet réutilisable |
+| Construire une vue mise à jour automatiquement | [Dossiers intelligents](#dossiers-intelligents-des-vues-dynamiques-sans-deplacer) | Une recherche enregistrée qui se met à jour |
+| Trouver immédiatement un fichier | [Spotlight](#spotlight-recherche-rapide-sur-tout-le-mac) | Requête par type, tag, date ou nom |
+| Rendre les fichiers génériques recherchables | [Noms descriptifs](#pourquoi-les-noms-comptent-plus-que-ces-outils) | Des mots-clés utilisables partout |
+
+<BlogProductIntro
+  title="Les tags aident surtout quand les noms ont du sens"
+  description="Zush génère des noms descriptifs depuis le contenu et peut écrire des métadonnées Finder. Spotlight et les dossiers intelligents deviennent alors nettement plus utiles."
+  links={[
+    { href: '/ai-file-organizer', label: 'Organisateur de fichiers IA' },
+    { href: '/de/mac', label: 'Zush pour Mac' },
+    { href: '/de/rename-screenshots-with-ai', label: 'Renommer les captures' },
+    { href: '/docs/metadata-tags', label: 'Métadonnées et tags' },
+  ]}
+/>
+
+## Tags Finder : organiser sans déplacer
+
+Un tag Finder ajoute une marque à un fichier ou dossier. L'élément reste à sa place, mais réapparaît par son nom ou sa couleur dans d'autres vues.
+
+C'est utile lorsqu'un fichier appartient à plusieurs contextes. Une facture peut dépendre d'un projet client et porter le statut `attente`, sans être dupliquée.
+
+![Fenêtre Finder pour ajouter des tags à plusieurs fichiers sous macOS](/images/blog/finder-add-tags-macos.jpg)
+
+### Comment appliquer et retrouver les tags
+
+1. Sélectionnez un ou plusieurs fichiers dans Finder.
+2. Clic droit, puis **Tags**.
+3. Choisissez une couleur ou saisissez un nom.
+4. Cliquez ensuite sur le tag dans la barre latérale ou recherchez son nom.
+
+Sous **Finder → Réglages → Tags**, choisissez ceux qui apparaissent dans la barre latérale et le menu contextuel.
+
+### À quoi servent le mieux les tags Finder
+
+- **Statut :** `urgent`, `attente`, `en-cours`, `termine` ;
+- **Projet :** `client-alpha`, `refonte-site`, `campagne-t2` ;
+- **Flux :** `a-valider`, `approuve`, `archive` ;
+- **Contenu :** `reference`, `capture`, `export`.
+
+Cinq à dix tags actifs valent mieux qu'une longue liste de synonymes.
+
+### À quoi les tags ne servent pas
+
+Ils ne doivent pas reproduire toute l'arborescence ni stocker chaque propriété possible. Trop de tags proches rendent la recherche et la maintenance incertaines.
+
+### Les meilleurs systèmes de tags pratiques
+
+| Tag | Signification |
+|---|---|
+| `Action` | Prochaine tâche |
+| `Attente` | Dépend d'une autre personne |
+| `En cours` | Travail actif |
+| `Terminé` | Prêt pour l'archive |
+
+Les tags de projet sont utiles lorsque les fichiers liés se trouvent à plusieurs endroits.
+
+![Démonstration Zush appliquant automatiquement des tags Finder sur Mac](/videos/zush-tags.mp4)
+
+## Dossiers intelligents : des vues dynamiques sans déplacer
+
+Un dossier intelligent enregistre des critères de recherche et affiche toujours les fichiers qui y correspondent. Aucun original n'est déplacé ou dupliqué.
+
+### À quoi servent les dossiers intelligents
+
+Ils construisent des vues récurrentes : images récentes, gros fichiers, PDF à valider ou éléments portant un tag donné.
+
+### Comment créer un dossier intelligent
+
+1. Ouvrez Finder.
+2. Choisissez **Fichier → Nouveau dossier intelligent** ou `⌥⌘N`.
+3. Cliquez sur `+` et ajoutez type, date, nom ou tag.
+4. Combinez les critères.
+5. Cliquez sur **Enregistrer** et ajoutez la vue à la barre latérale.
+
+![Recherche Finder pour dossier intelligent avec portée et critères](/images/blog/finder-create-smart-folder-macos.jpg)
+
+### Les meilleurs critères à utiliser
+
+| Critère | Usage |
+|---|---|
+| Type | Images, PDF, dossiers ou documents |
+| Date de modification | Fichiers récemment travaillés |
+| Date de création | Période précise |
+| Nom contient | Partie du nom |
+| Tags | Éléments marqués dans plusieurs dossiers |
+| Taille | Gros fichiers à nettoyer |
+
+![Surveillance de dossier Zush pour renommage automatique](/images/showcase/macos/monitor-light.webp)
+
+### Dossiers intelligents + tags Finder
+
+- **À valider :** type image + tag `a-valider` ;
+- **Gros fichiers récents :** sept derniers jours + plus de 50 Mo ;
+- **Livrables client :** tag `client-alpha` + type différent de dossier.
+
+Une modification de tag met automatiquement la vue à jour.
+
+## Spotlight : recherche rapide sur tout le Mac
+
+Ouvrez Spotlight avec `⌘Espace`. Il est efficace quand noms, tags et métadonnées sont explicites ; `IMG_4382.HEIC` ou `Document (7).pdf` ne fournissent aucun mot utile.
+
+### Les opérateurs Spotlight les plus utiles
+
+| Requête | Résultat |
+|---|---|
+| `kind:pdf contrat` | PDF contenant « contrat » |
+| `date:2026-03 kind:image` | Images de mars 2026 |
+| `tag:urgent` | Fichiers tagués « urgent » |
+| `facture 2026` | Fichiers correspondant aux deux termes |
+
+<BlogCopyPatterns
+  patterns={[
+    { label: 'File de validation', useCase: 'Trouver les fichiers en attente', value: 'tag:a-valider', example: 'tag:a-valider' },
+    { label: 'PDF de projet', useCase: 'Trouver un type par sujet', value: 'kind:pdf nom-projet', example: 'kind:pdf northwind' },
+    { label: 'Images datées', useCase: 'Limiter une recherche photo', value: 'date:2026-08 kind:image', example: 'date:2026-08 kind:image' },
+    { label: 'Gros fichiers récents', useCase: 'Commencer le nettoyage', value: 'kind:document date:this month', example: 'kind:document date:this month' },
+  ]}
+/>
+
+### Quand utiliser Spotlight ou la recherche Finder
+
+**Spotlight** convient aux recherches rapides à l'échelle du système. **La recherche Finder** est préférable pour combiner plusieurs critères, limiter un dossier ou enregistrer la requête.
+
+### Pourquoi Spotlight paraît parfois faible
+
+Spotlight recherche des métadonnées textuelles : noms, tags, commentaires Finder et propriétés. Il ne comprend pas visuellement un coucher de soleil nommé `IMG_8392.HEIC`. Si les photos sont le principal problème, le guide [organiser ses photos sur Mac](/blog/best-ways-to-organize-photos-on-mac) relie nommage, tags et sauvegarde.
+
+![Motif Zush avec modèle et options de langue](/images/showcase/macos/naming-light.webp)
+
+## Comment les trois outils fonctionnent ensemble
+
+1. Les **tags** ajoutent un sens transversal.
+2. Les **dossiers intelligents** créent des vues durables et dynamiques.
+3. **Spotlight** retrouve rapidement un élément par nom ou métadonnées.
+
+Exemple : les nouveaux fichiers reçoivent `a-valider`, une vue réunit ce tag, puis il devient `approuve` ou `termine`. Les fichiers restent dans leur arborescence.
+
+<BlogSafetyNote
+  title="Renommer d'abord sans risquer les originaux"
+  description="Quand les noms génériques bloquent Spotlight, testez un petit lot et contrôlez chaque proposition. L'historique Zush conserve les changements afin de restaurer les anciens noms."
+/>
+
+<BlogCTA placement='inline' platform='mac' />
+
+## Pourquoi les noms comptent plus que ces outils
+
+Un tag explique un statut, pas le sujet. Comparez :
+
+- `IMG_4822.HEIC` : aucun motif, lieu ou événement ;
+- `2026-03-12_coucher-soleil-lac-annecy.heic` : date et contenu recherchables.
+
+Un bon nom reste visible dans chaque vue, fonctionne hors du Mac et survit à la perte des tags lors d'une copie.
+
+[Zush pour Mac](/de/mac) remplace les noms génériques selon le contenu, ce qui améliore Spotlight et les dossiers intelligents.
+
+![Zush transforme un lot en noms recherchables dans Spotlight](/images/showcase/macos/batch-rename-light.webp)
+
+## Bonnes pratiques pour une meilleure recherche
+
+1. Utilisez des noms descriptifs comme base.
+2. Limitez-vous à cinq ou dix tags actifs.
+3. Réservez les tags aux statuts et contextes transversaux.
+4. Créez des dossiers intelligents seulement pour les vues récurrentes.
+5. Supprimez ou fusionnez les tags inutilisés.
+6. Gardez le fichier compréhensible même sans tag.
+
+## Résoudre les problèmes de tags Finder, dossiers intelligents et Spotlight
+
+### Un tag manque dans la barre latérale Finder
+
+Ouvrez **Finder → Réglages → Tags**, activez-le et vérifiez les doublons ou variations d'orthographe.
+
+### Un dossier intelligent ne montre pas les fichiers attendus
+
+Contrôlez la portée, puis les groupes ET/OU. Retirez un critère à la fois pour trouver celui qui exclut les résultats.
+
+### Spotlight ne trouve pas un fichier visible dans Finder
+
+Vérifiez l'indexation du disque et la présence réelle du mot recherché dans le nom ou les métadonnées. Les volumes externes peuvent être retardés.
+
+### Les recherches `tag:` renvoient trop de résultats
+
+Ajoutez type, date ou projet, par exemple `tag:urgent kind:pdf 2026`.
+
+## FAQ
+
+### Comment trouver rapidement toutes les images sur mon Mac ?
+
+Dans la recherche Finder, choisissez **Type est Image**, puis filtrez par date, tag ou dossier. Enregistrez la requête comme dossier intelligent si elle revient souvent.
+
+### Puis-je créer des tags Finder personnalisés au-delà des couleurs ?
+
+Oui. Clic droit, **Tags**, puis saisissez un nom. Ils fonctionnent comme les couleurs dans la recherche et les dossiers intelligents.
+
+### Quelle différence entre dossier intelligent et dossier normal ?
+
+Un dossier normal contient des fichiers. Un dossier intelligent affiche les résultats actuels d'une recherche enregistrée sans déplacer les originaux.
+
+### Pourquoi Spotlight ne trouve-t-il pas mes photos ?
+
+Il manque souvent des mots recherchables. Un nom descriptif ou un tag précis rend le motif accessible à la recherche textuelle.
+
+## Conclusion
+
+Les tags Finder ne remplacent pas les dossiers : ils ajoutent une couche souple de statut et de contexte. Avec dossiers intelligents, Spotlight et noms lisibles, le système reste maintenable lorsque la bibliothèque grandit.
+
+Finder reste le point de contrôle des fichiers, Finder enregistre les recherches complexes et Finder permet de vérifier les tags avant de les automatiser.
+
+Si les noms faibles sont le goulet d'étranglement, [Zush pour Mac](/de/mac) améliore la couche de nommage afin que les outils macOS fonctionnent mieux.

@@ -21,15 +21,17 @@ import windowsChangelogSource from '@/content/changelog.windows.md?raw';
 import { parseLatestVersion } from '@/utils/version';
 import type { Locale } from '@/i18n/config';
 import type { LocaleCopy } from '@/i18n/copy';
+import type { ProfessionLocaleCopy } from '@/i18n/professions/types';
 import { SOFTPEDIA_RATED_BY_LABELS, SOFTPEDIA_REVIEW_ARIA_LABELS } from '@/i18n/softpediaReview';
 
 interface Props {
   copy: LocaleCopy;
   locale: Locale;
   secondaryHref?: string;
+  professionCopy?: ProfessionLocaleCopy;
 }
 
-const { copy, locale, secondaryHref } = Astro.props as Props;
+const { copy, locale, secondaryHref, professionCopy } = Astro.props as Props;
 const macVersion = parseLatestVersion(macChangelogSource) ?? undefined;
 const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
 ---
@@ -65,7 +67,9 @@ const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
   compactTopSpacing
 />
 <WaysToRun copy={copy.home.featureCards} locale={locale} />
-{locale === 'en' && <HomeProfessions />}
+{(locale === 'en' || professionCopy) && (
+  <HomeProfessions locale={locale} homeCopy={copy.home} professionCopy={professionCopy} />
+)}
 <CloudFolders title={copy.home.cloudFoldersTitle} />
 <SupportedFormats
   title={copy.home.supportedFormats}
