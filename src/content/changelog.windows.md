@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.8.3.0] - 2026-08-12
+
+### Improved
+- Improved reliability when monitoring and renaming PDFs, including files on network and removable drives.
+- Made large rename queues and temporarily unavailable files more resilient.
+
+### Fixed
+- Fixed an issue where cleared batch items could start regenerating again.
+
+
 ## [3.8.2.0] - 2026-08-08
 
 ### Improved
