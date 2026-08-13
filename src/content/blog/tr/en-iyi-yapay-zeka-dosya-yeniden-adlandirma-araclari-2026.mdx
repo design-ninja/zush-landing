@@ -11,7 +11,7 @@ tags:
   - "AI Dosyasını Yeniden Adlandırma"
   - "Takım Karşılaştırmaları"
 tldr: "Her AI dosya yeniden adlandırıcısı farklı bir şey kazanır. Geniş karma dosya Mac/Windows iş akışları için Zush'u, düşük maliyetli yerel/BYOK alternatifleri için FilesDesk veya RenameClick'i, Mac yerel derinliği için NameQuick'i, bulut belgeleri için Renamed.to'yu ve ücretsiz seçenekler istiyorsanız Wisfile veya Riffo'yu seçin."
-reviewed: "2026-08-08"
+reviewed: "2026-08-13"
 featuredOrder: 1
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -23,7 +23,7 @@ Hızlı karar: İçeriğe duyarlı dosya yeniden adlandırma ürününü istiyor
 
 Ana sorgu gizlilikse [Çevrimdışı AI dosya yeniden adlandırıcı](/offline-ai-file-renamer)'yi kullanın. Sağlayıcı kontrolü ana sorgu ise [BYOK kurulum kılavuzu](/docs/byok)'yi kullanın. Kötü toplu yeniden adlandırma riski belirleyici faktörse [önizleme ve geri alma ile dosyaları güvenli bir şekilde toplu olarak yeniden adlandırma](/blog/how-to-safely-batch-rename-files)'yi okuyun. Hala satıcıları karşılaştırıyorsanız aşağıdaki bölümler tüm pazarı dosya kapsamına, platforma, fiyatlandırmaya ve güvenliğe göre ayırmaktadır.
 
-**Son doğrulama: 24 Temmuz 2026** RenameClick, NameQuick, Renamer.ai, AI Renamer ve Riffo için; FilesDesk, Wisfile ve Renamed.to en son 9 Temmuz 2026'da kontrol edildi.
+**Son doğrulama: 13 Ağustos 2026** FilesDesk için; 24 Temmuz 2026 RenameClick, NameQuick, Renamer.ai, AI Renamer ve Riffo için; 9 Temmuz 2026 Wisfile ve Renamed.to için.
 
 Bu güncelleme için kontrol edilen kaynaklar arasında [Zush](/), [FilesDesk](https://filesdesk.app/pricing), [FilesDesk belgeleri](https://filesdesk.app/docs), [RenameClick](https://rename.click/) ve [desteklenen dosya türleri belgeleri](https://rename.click/docs/getting-started/supported-files), [NameQuick](https://www.namequick.app/), [Renamer.ai](https://renamer.ai/) için resmi ürün, fiyatlandırma, belgeler veya depo sayfaları yer alır. [AI Renamer](https://airenamer.app/), ayrı [GitHub'de ai-renamer CLI deposu](https://github.com/ozgrozer/ai-renamer), [Wisfile](https://www.wisfile.ai/), [Riffo](https://riffo.ai/) ve [Renamed.to](https://www.renamed.to/).
 
@@ -140,8 +140,10 @@ Zush'u bu listenin geri kalanının yanında öne çıkaran şey:
 
 ### 2. FilesDesk
 
+Doğrudan karşılaştırma: Zush vs [FilesDesk](/blog/zush-vs-filesdesk). Zush One-Time, kredi sınırı olmadan yönetilen AI içerir.
+
 <BlogToolMeta platform="Mac and Windows" website="https://filesdesk.app/" label="filesdesk.app">
-  <Fragment slot="pricing">15 ücretsiz kredi; 500 kredi için aylık 5 ABD Doları/ay veya 2.000 kredi için aylık 15 ABD Doları; BYOK/yerel yapay zeka ile ömür boyu tek seferlik 20 ABD doları</Fragment>
+  <Fragment slot="pricing">15 ücretsiz kredi; 500 kredi için aylık 8 ABD Doları/ay veya 2.000 kredi için aylık 20 ABD Doları; yerel yapay zeka ile ömür boyu tek seferlik 40 ABD doları</Fragment>
 </BlogToolMeta>
 
 FilesDesk gerçek bir platformlar arası rakiptir çünkü kendi fiyatlandırması ve belgeleri artık Zush ile aynı satın alma tetikleyicilerini hedeflemektedir: Mac + Windows, yerel veya yönetilen yapay zeka, BYOK, İzleme Klasörleri, şablonlar, toplu işleme ve düşük ömür boyu fiyat.
@@ -152,14 +154,14 @@ FilesDesk gerçek bir platformlar arası rakiptir çünkü kendi fiyatlandırmas
 - Herkese açık dokümanlar İzleme Klasörlerini, özel şablonları, toplu işlemeyi ve birden fazla AI sağlayıcısını listeler
 - Ömür boyu yol Claude, Gemini, OpenAI, OpenRouter, Ollama ve vLLM'yi destekler
 - Ömür boyu yol, dosyaların cihazda kaldığını ve çevrimdışı çalıştığını söylüyor
-- Düşük giriş fiyatı: Kendi Kendini Yöneten Ömür Boyu için tek seferlik 20$
+- Self-Managed Lifetime, BYOK veya yerel modelle tek seferlik 40 $
 
 **Sınırlamalar:**
 
 - Ömür boyu lisans, kendi API anahtarınızı veya yerel bir modeli gerektirir; yönetilen AI kredileri yalnızca aboneliğe yöneliktir
 - Herkese açık belgeler, Zush'un format listesiyle karşılaştırılabilecek ayrıntılı bir desteklenen format matrisi sağlamaz
 - Güncellemeler, ömür boyu güncellemeler olarak değil, Ömür Boyu'na dahil 12 ay olarak listelenir
-- Kontrol edilen belgelerde genel RAW, iWork, tasarım dosyası, ses veya video kapsam listesi bulunamadı
+- RAW, iWork veya uzman tasarım formatları için ayrıntılı genel liste yoktur; SSS yaygın ses ve video formatlarını doğrular
 
 **Şunlar için en iyisi:** Çok düşük maliyetli bir Mac/Windows BYOK veya yerel AI dosya yeniden adlandırıcı isteyen ve dosya türü kapsamını kendi örnek klasörlerine göre doğrulama konusunda rahat olan kullanıcılar.
 
@@ -364,12 +366,12 @@ Renamed.to bulut/ekip seçeneğidir. Belgeleri analiz eder ve bunları mevcut Go
 | Platformu | Mac ve Windows | Mac ve Windows | Mac ve Windows (masaüstü-yerel) | Masaüstü (Mac/Win) | Masaüstü (Win/Mac) + Web | yalnızca macOS | Yerel masaüstü | macOS + Web demosu | Web + bulut entegrasyonları |
 | Resim/tasarım formatları | 41 görsel + 4 tasarım formatı | Fotoğraflar/resimler; ayrıntılı matris bulunamadı | 10 görüntü formatı; RAW/tasarım listesi yok | Özellik örnekleri + tüm dosya bildirimi | 30'dan fazla format dahil. EPS/SVG/AI vektörleri; RAW yok | 30'dan fazla format | Kamuya açıklanmadı | Belgelenmemiş | Taranan görüntüler/belgeler |
 | Belge formatları | 37, iWork dahil | Fotoğraflar, PDF'ler, faturalar, makbuzlar, sözleşmeler, ekran görüntüleri | 20+ dahil. PDF/DOCX/JSON/XML/YAML/HTML/SQL/altyazılar | PDF/TXT örnekleri; tüm dosya beyanı | 30'dan fazla belge/resim/vektör/e-posta | PDF'ler, Sayfalar, Ofis, OCR | Kamuya açıklanmadı | Belgelenmemiş | PDF/Word/Excel/PowerPoint |
-| Ses / video | 7 ses + 16 video | İşaretlenen dokümanlarda listelenmiyor | Transkripsiyonlu 5 ses; video desteklenmiyor | Listelenmemiş (ayrı CLI video yapar) | Merkezi değil | Yalnızca geniş kategori | Onaylanmadı | Belgelenmemiş | Hayır |
+| Ses / video | 7 ses + 16 video | Yaygın ses ve video formatları listeleniyor | Transkripsiyonlu 5 ses; video desteklenmiyor | Listelenmemiş (ayrı CLI video yapar) | Merkezi değil | Yalnızca geniş kategori | Onaylanmadı | Belgelenmemiş | Hayır |
 | Ölçülü mü? | Ücretli PRO'da hayır | Yönetilen krediler evet; Ömür boyu hayır | Ücretsiz katman evet; Pro hayır | Bulut evet; 19 $ Yerel hayır | Evet, her seviyede | Yönetildi evet; Kendi Kendini Yöneten hayır | Hayır | Belirtilmedi | Evet, kredi |
 | Toplu yeniden adlandırma | Evet | Evet | Evet | Evet | Evet | Evet | Evet | Evet | Evet |
 | Klasör izleme | Evet | Evet (Klasörleri İzle) | Evet (Otomatik Akış) | Kamu açıklaması yok | Evet (Sihirli Klasörler) | Evet (Klasörleri İzle) | Onaylanmadı | Onaylanmadı | Evet (izlenen bulut klasörleri) |
 | Özel desenler | Şablonlar + 145+ Adlandırma Blokları | Şablonlar | Formatlar + talimatlar | Özel istemler/durum stilleri | Şablonlar | Ön ayarlar/şablonlar/istemler | Kamuya açıklanmadı | Sınırlı | Kaydedilen takım kuralları/istemleri |
-| Geri al/geri al | Evet | Kontrol edilen belgelerde onaylanmadı | Evet, belgelere göre tam geri alma/yeniden yapma | Kamu açıklaması yok | Evet | Evet, tek tıklamayla Geri Al ve Kurtarma | Onaylanmadı | Onaylanmadı | İş akışını gözden geçirme/güvenme |
+| Geri al/geri al | Evet | Evet, Processing History üzerinden | Evet, belgelere göre tam geri alma/yeniden yapma | Kamu açıklaması yok | Evet | Evet, tek tıklamayla Geri Al ve Kurtarma | Onaylanmadı | Onaylanmadı | İş akışını gözden geçirme/güvenme |
 | Çoklu AI sağlayıcıları | İkizler/Groq/OpenAI/Claude + Ollama | Claude/Gemini/OpenAI/OpenRouter/Ollama/vLLM | Yerleşik yerel/Ollama/LM Studio/OpenAI/Gemini/Qwen | Ollama/LM Studio/OpenAI/özel | Sabit | OpenAI/OpenRouter/Claude/Gemini/Ollama/LM Studio/MLX | Sabit yerel | Sabit bulut | Sabit bulut |
 | Ücretsiz katman | 50 başlangıç ​​| 15 kredi | Sınırsız analiz + 30 uygulama kredisi/ay | Kayıt sırasında 10 kredi | 25/ay | 14 günlük deneme, 50 yeniden adlandırma | Ücretsiz | Serbest konumlandırılmış ana sayfa | 50 belge/ay |
 | BYOK/yerel seçeneği | Evet | Ömür boyu plan | Evet/sağlayıcı seçimi | Evet/yerel/özel | Herkese açık değil BYOK | Kendi Kendini Yöneten | Yerel | Herkese açık değil BYOK | Hayır |
@@ -382,7 +384,7 @@ Doğrudan abonelik ve tek seferlik abonelik karşılaştırması için bkz. [Zus
 |---|---|---|---|---|
 | Zush | Başlamak için 50 yeniden adlandırma | <BlogHighlight> Aylık 10$ veya tek seferlik 48$</BlogHighlight> | <BlogHighlight> Tek seferlik 48 ABD Doları veya aylık 120 ABD Doları/yıl</BlogHighlight> | Aylık veya bir kerelik PRO |
 | Zush BYOK | Her planda mevcuttur | Sağlayıcı API maliyeti | İsteğe bağlı API maliyeti | Kullandıkça öde API'si |
-| FilesDesk | 15 kredi | Aylık 5 ABD Doları, aylık 15 ABD Doları veya 20 ABD Doları Ömür Boyu BYOK/yerel | 20 $ Ömür boyu yol veya 60-180 $/yıl abonelikler | Abonelik veya kendi kendini yöneten ömür boyu |
+| FilesDesk | 15 kredi | Aylık 8 ABD Doları, aylık 20 ABD Doları veya 40 ABD Doları Ömür Boyu BYOK/yerel | 40 $ Ömür boyu yol veya 96-240 $/yıl abonelikler | Abonelik veya kendi kendini yöneten ömür boyu |
 | RenameClick | Sınırsız analiz + 30 uygulama kredisi/ay | Aylık 8$+ KDV veya Ömür Boyu 48$+ KDV | Ömür boyu 48$+ KDV veya aylık 96$+ KDV/yıl | Abonelik veya ömür boyu |
 | AI Renamer | Kayıt sırasında 10 kredi | Masaüstü Tek seferlik 19 ABD Doları (Yerel Mod) veya 10/200 ABD Doları bulut kredisi | Bulut yeniden adlandırma başına 19 ABD Doları veya 0,05 ABD Doları | Bir kerelik yerel / ölçülü krediler |
 | Renamer.ai | 25 dosya/ay | $9,95–99,95/ay | 120–1.200$/yıl | Ölçülü abonelik |
@@ -400,7 +402,7 @@ Fiyat farklılıkları birleşiyor. Yılda ~10.000 yeniden adlandırma yapan yo�
 | <BlogHighlight>Zush Pro Tek Seferlik</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> |
 | Zush Pro Aylık | 120$ | 360$ | 600$ |
 | Zush BYOK | İsteğe bağlı API maliyeti | İsteğe bağlı API maliyeti | İsteğe bağlı API maliyeti |
-| FilesDesk Ömür Boyu | 20 $ | 20 $ | 20 $ |
+| FilesDesk Ömür Boyu | 40 $ | 40 $ | 40 $ |
 | RenameClick Pro Ömür Boyu | 48$+ KDV | 48$+ KDV | 48$+ KDV |
 | AI Renamer Masaüstü | 19$ | 19$ | 19$ |
 | NameQuick Kendi Kendini Yöneten | 69$ + API/yerel kurulum | 69$ + API/yerel kurulum | 69$ + API/yerel kurulum |
@@ -408,7 +410,7 @@ Fiyat farklılıkları birleşiyor. Yılda ~10.000 yeniden adlandırma yapan yo�
 | Renamer.ai Pro | 119$ | 358$ | 597$ |
 | Renamer.ai Gücü | 359$ | 1.078 $ | 1.797$ |
 
-Yılda 10.000 dosyayı yeniden adlandıran biri için tek seferlik araçlar aboneliklerden çok daha ucuzdur. FilesDesk, bu sette yayınlanan en düşük tek seferlik giriş fiyatıdır; Zush, geniş, açık karma ortam formatı kapsamı ve geri alma/klasör izleme belgeleriyle en düşük düzeyde yayınlanan tek seferlik seçenektir.
+Yılda 10.000 dosya için AI Renamer Local Mode 19 $ ile yayınlanan en ucuz ücretli tek seferlik seçenektir, FilesDesk Self-Managed 40 $'dır ve Zush 48 $ karşılığında sınırsız yönetilen AI, geniş medya kapsamı, geri alma ve klasör izleme içerir.
 
 Wisfile ve Riffo serbest konumlu seçeneklerdir ancak izleme, geri alma ve geniş format desteği etrafında kamuya açık dokümantasyon derinliğinden ödün verirler. AI Renamer satırındaki ücretsiz ve açık kaynak yolu, 19 ABD doları tutarındaki airenamer.app ürünü değil, GitHub'daki ayrı `ozgrozer/ai-renamer` CLI'dir. Gizlilik kararı gerçekten bulut, BYOK ve çevrimdışı yerel modeller arasındaysa [Bulut AI ve Yerel AI Dosya Yeniden Adlandırma Karşılaştırması](/blog/cloud-vs-local-ai-file-renaming)'yi okuyun.
 
@@ -418,7 +420,7 @@ Wisfile ve Riffo serbest konumlu seçeneklerdir ancak izleme, geri alma ve geni�
 
 **Mac veya Windows'ta yayınlanan en geniş karma dosya kapsamını istiyorsanız:** <BlogHighlight>Zush Tek Seferlik fiyat 48</BlogHighlight>. Tam RAW desteği (CR2, NEF, ARW, DNG), tasarım dosyaları, iWork dosyaları, ses, 37 belge ve PDF ile ilgili format, 16 video formatı, klasör izleme, geri alma, şablonlar, Adlandırma Blokları ve sınırsız PRO yeniden adlandırma.
 
-**Yayınlanan en düşük tek seferlik giriş fiyatını istiyorsanız:** FilesDesk Ömür Boyu 20 ABD dolarıdır; kontrol edilen belgelerinin RAW, tasarım, iWork, ses ve video dosyaları için aynı ayrıntılı format matrisini yayınlamadığı uyarısı.
+**Yayınlanan en düşük ücretli tek seferlik fiyatı istiyorsanız:** AI Renamer Local Mode 19 $'dır. FilesDesk Self-Managed 40 $ olup API anahtarı veya yerel model gerektirir; Zush One-Time 48 $'dır ve sınırsız yönetilen bulut yeniden adlandırma içerir.
 
 **Mac kullanıyorsanız ve derin Finder entegrasyonu istiyorsanız:** NameQuick. Güçlü şablon oluşturucu, Finder etiketleri, geniş AI sağlayıcı desteği; 69 $ + kendi API anahtarınız veya yerel modeliniz.
 
@@ -470,6 +472,6 @@ Araç önizleme ve geri alma sağladığında daha güvenlidir. Toplu AI yeniden
 
 2026'daki AI dosya yeniden adlandırma alanı kalabalık değil ancak farklılaştırılmış ve her birinin üstündeki araçlar farklı bir şey kazanıyor.
 
-Karışık dosya iş akışlarına sahip Mac ve Windows kullanıcıları için [Zush](https://zushapp.com/), en güçlü yayınlanmış format seçimidir: RAW, HEIC, tasarım dosyaları, iWork belgeleri, ses, videolar, PDF'ler, şablonlar, Adlandırma Blokları, BYOK, klasör izleme ve tek bir masaüstü iş akışında geri alma. 20 $ BYOK/yerel kullanım ömrü yolu en önemliyse ve dosya türleriniz onun belgelerine uyuyorsa FilesDesk'i seçin. Yerel öncelikli analiz, AI Arama ve klasör sıralama geniş medya desteğinden daha önemliyse RenameClick'i seçin. Mac'te yerel derinlik için NameQuick'i seçin. Google Drive veya Dropbox'ta bulut öncelikli belge çalışması için Renamed.to'yu seçin. Magic Folders abonelik otomasyonu için Renamer.ai'yi seçin. Daha hafif genel belgelere sahip ücretsiz başlangıç ​​noktaları olarak Wisfile veya Riffo'yu seçin.
+Karışık dosya iş akışlarına sahip Mac ve Windows kullanıcıları için [Zush](https://zushapp.com/), en güçlü yayınlanmış format seçimidir: RAW, HEIC, tasarım dosyaları, iWork belgeleri, ses, videolar, PDF'ler, şablonlar, Adlandırma Blokları, BYOK, klasör izleme ve tek bir masaüstü iş akışında geri alma. 40 $ BYOK/yerel kullanım ömrü yolu en önemliyse ve dosya türleriniz onun belgelerine uyuyorsa FilesDesk'i seçin. Yerel öncelikli analiz, AI Arama ve klasör sıralama geniş medya desteğinden daha önemliyse RenameClick'i seçin. Mac'te yerel derinlik için NameQuick'i seçin. Google Drive veya Dropbox'ta bulut öncelikli belge çalışması için Renamed.to'yu seçin. Magic Folders abonelik otomasyonu için Renamer.ai'yi seçin. Daha hafif genel belgelere sahip ücretsiz başlangıç ​​noktaları olarak Wisfile veya Riffo'yu seçin.
 
 Kararınız dört soruya bağlı: Hangi platformlara ihtiyacınız var? Hangi dosya türleri aslında klasörlerinize giriyor? Bir kez mi ödemek istiyorsunuz yoksa sonsuza kadar mı ödemek istiyorsunuz? Toplu olarak yeniden adlandırdığınızda bir güvenlik ağı (geri alma, geri alma) ödemeye değer mi?

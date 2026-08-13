@@ -11,23 +11,23 @@ tags:
   - "AI ファイルの名前変更"
   - "ツールの比較"
 tldr: "適切な Windows AI 名前変更ツールは、Microsoft Store のインストール、ドキュメント サポート、スクリーンショット、PDF、ビデオ、オーディオ、BYOK、オフライン AI、フォルダー監視、および元に戻す機能が必要かどうかによって異なります。 Zush は、スクリプトのコレクションではなく 1 つのデスクトップ ワークフローが必要な場合に最も適しています。"
-reviewed: "2026-08-08"
+reviewed: "2026-08-13"
 featuredOrder: 1
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
-簡単な答え: Zush は、1 つのフォルダーにスクリーンショット、PDF、Office ドキュメント、写真、デザイン ファイル、オーディオ、ビデオが含まれている場合に Windows で最適な AI ファイル名変更ツールです。 RenameClick はバンドルされたローカル AI とフォルダーの並べ替えに優れていますが、FilesDesk は最も低コストの BYOK エントリです。選択する前に、インストール パス、サポートされている形式、自動化、プレビュー、ロールバックを比較してください。
+簡単な答え: 比較した 6 つの Windows アプリでは、混在フォルダーに Zush、組み込みローカル AI とフォルダー振り分けに RenameClick が適し、FilesDesk は $40 の Self-Managed BYOK/ローカルライセンスを提供します。導入方法、形式、自動化、取り消し、マネージド AI の上限を比較してください。
 
-**最終確認日: 2026 年 7 月 24 日** (RenameClick、AI Renamer、および Renamer.ai)。 FilesDesk の最終チェック日は 2026 年 7 月 9 日でした。
+**最終確認日: 2026 年 8 月 13 日**（FilesDesk）。RenameClick、AI Renamer、Renamer.ai は 2026 年 7 月 24 日に確認しました。
 
 このアップデートについてチェックされたソース: [Microsoft Store の Windows の Zush](https://apps.microsoft.com/detail/9ND4WVZSDQ3X)、[FilesDesk](https://filesdesk.app/)、[FilesDeskの価格](https://filesdesk.app/pricing)、[FilesDesk ドキュメント](https://filesdesk.app/docs)、[RenameClick](https://rename.click/) とその [サポートされているファイル形式のドキュメント](https://rename.click/docs/getting-started/supported-files)、[AI Renamer](https://airenamer.app/)、別の [GitHub の ai-renamer CLI リポジトリ](https://github.com/ozgrozer/ai-renamer)、 [Renamer.ai](https://renamer.ai/)。
 
 |アプリ | Windows のインストール | AI オプション |公開された報道 |自動化 |ロールバック |開始価格 |
 |---|---|---|---|---|---|---|
 |Zush | Microsoft ストア、x64 および ARM64 |マネージド クラウド、BYOK、Ollama |画像、RAW、デザイン、ドキュメント、オーディオ、ビデオ |フォルダー監視 |完全な名前変更履歴 | 50個無料。月額 $10 または 1 回あたり $48 |
-|FilesDesk | Windows デスクトップ |マネージド、BYOK、ローカル |一般的な画像とドキュメント。スペシャリスト形式を検証する |監視フォルダー |ワークフローを確認する | 15 クレジット。 $20 生涯 BYOK/ローカル |
+|FilesDesk | Windows デスクトップ |マネージド、BYOK、ローカル |一般的な画像、文書、動画、音声。RAW・デザイン・iWork は要確認 |Watch Folders |Processing History から取り消し |15 クレジット。月額 $8 または Lifetime $40 |
 |RenameClick | Windows デスクトップ |バンドルされたローカル、Ollama、LM Studio、クラウド BYOK |画像、文書、音声。公開された RAW、デザイン、またはビデオのサポートはありません。 Auto Flow は名前変更と移動が可能 |完全に元に戻す/やり直す | 30 件/月が適用されます。 $48+ VAT 生涯 |
 | AI Renamer | Windows デスクトップ |ローカルまたは従量制のクラウド |画像とテキストドキュメントを強調した公開例 |公に文書化されていない |公に文書化されていない | $19 ローカルモード |
 | Renamer.ai | Web および Windows デスクトップ |マネージドクラウド | 30 以上のフォーマット、ドキュメントとベクターに焦点を当てる |マジックフォルダー |ワンクリックで元に戻す | 25 ファイル/月は無料。 $9.95/月 |
@@ -96,11 +96,13 @@ Microsoft Store から Zush をインストールし、比較に使用したの�
 
 ## 2. FilesDesk
 
+Zush vs [FilesDesk](/blog/zush-vs-filesdesk)
+
 <BlogToolMeta platform="Desktop on Windows and Mac" website="https://filesdesk.app/" label="filesdesk.app">
-  <Fragment slot="pricing">15 の無料クレジット。 500 クレジットの場合は月額 5 ドル、2,000 クレジットの場合は月額 15 ドル。 BYOK/ローカル AI を使用した場合、生涯 $20 1 回限り</Fragment>
+  <Fragment slot="pricing">15 の無料クレジット。 500 クレジットの場合は月額 8 ドル、2,000 クレジットの場合は月額 20 ドル。 BYOK/ローカル AI を使用した場合、生涯 $40 1 回限り</Fragment>
 </BlogToolMeta>
 
-FilesDesk は、この Windows セットで公開されている 1 回限りのエントリー価格の中で最も低い価格です。その価格ページには、BYOK またはローカル AI の 20 ドルのライフタイム パスに加えて、月額 5 ドルと月額 15 ドルの管理された月額クレジットが記載されています。そのドキュメントには、監視フォルダー、カスタム テンプレート、バッチ処理、および複数の AI プロバイダーがリストされています。
+FilesDesk は BYOK またはローカル AI 向けの $40 Self-Managed ライセンスに加え、月額 $8 で 500 件、$20 で 2,000 件のマネージド提案を提供します。ドキュメントでは Watch Folders、テンプレート、バッチ処理、複数プロバイダー、Processing History からの取り消しを確認でき、FAQ には一般的な画像・文書・動画・音声形式が掲載されています。
 
 最適な用途: 安価な BYOK/ローカルまたはマネージド クレジット ワークフローを希望し、ファイルのほとんどが写真、PDF、請求書、領収書、契約書、スクリーンショット、および一般的な文書である Windows ユーザー。混合メディア ライブラリとして選択する前に、RAW、デザイン ファイル、オーディオ、ビデオ、および iWork のサポートを独自のファイルに対して確認してください。これは、チェックしたドキュメントには詳細な形式マトリックスが公開されていないためです。
 
@@ -157,7 +159,7 @@ Windows 上で独自の名前変更ワークフローを構築することがで
 
 ## 評決
 
-広範囲に混合されたフォルダーに最適な Windows AI ファイルリネーム機能が必要な場合は、現時点で [Zush の場合 Windows](/windows) が最も明確な推奨事項です。これは、フォルダーにスクリーンショット、ビデオ、写真、デザイン ファイル、オーディオ、PDF、iWork ファイル、Office ドキュメントが混在していて、独自のシステムを構築せずに名前変更、テンプレート、ネーミング ブロック、監視、ロールバックを一括で実行したい場合に最適です。広範囲のメディア報道よりもローカルファースト分析やフォルダーの並べ替えが重要な場合は、RenameClick と比較してください。 1 回限りの BYOK エントリー価格の安さを優先する場合は、FilesDesk を比較してください。
+幅広い混在フォルダーには、現時点で [Windows 向け Zush](/windows) が最も明確な推奨です。ローカル分析やフォルダー振り分けを優先するなら RenameClick、無制限のマネージド AI より低価格の Self-Managed ライセンスを優先するなら FilesDesk を比較してください。
 
 比較ではなくより広範なチュートリアルが必要な場合は、[Windows で AI を使用してファイルの名前を変更する方法](/blog/rename-files-with-ai-windows-guide) をお読みください。主な問題が自動化である場合は、次の [Windows でのファイルの自動名前変更](/blog/auto-rename-files-windows-guide) に進みます。
 

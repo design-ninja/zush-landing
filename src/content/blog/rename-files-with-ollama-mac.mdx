@@ -1,6 +1,6 @@
 ---
 title: "Rename Files with Ollama on Mac: Offline AI Setup (2026)"
-description: "Rename files with Ollama on Mac using private local AI in Zush. Includes setup, vision models, and the ollama cp method to rename a model."
+description: "Rename files with Ollama on Mac using private local AI in Zush. Follow the setup, choose a vision model, test the connection, and review a safe batch."
 date: "2026-04-28"
 slug: "rename-files-with-ollama-mac"
 platform: "mac"
@@ -9,19 +9,12 @@ tags:
   - "AI File Renaming"
   - "Ollama"
 tldr: "To rename files with Ollama on Mac, install Ollama, pull a vision-capable model, confirm the local service is running, enable Offline AI mode in Zush, and test with a small batch before using it on important folders."
-reviewed: "2026-08-08"
+reviewed: "2026-08-13"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
 Quick answer: rename files locally on Mac with Ollama by installing Ollama, pulling a vision-capable model such as `qwen2.5vl:3b`, `gemma3:4b`, or `granite3.2-vision:2b`, then enabling Offline AI mode in Zush. Supported analysis content stays on your device and there are no provider API costs.
-
-## Choose your Ollama task
-
-| What you want to do | Start here |
-| --- | --- |
-| Use Ollama to generate descriptive filenames | [Follow the five-step local setup](#rename-files-with-ollama-on-mac-quick-setup) |
-| Change the name of an Ollama model | [Use `ollama cp`, then remove the old alias](#rename-an-ollama-model-with-ollama-cp) |
 
 ## Rename files with Ollama on Mac: quick setup
 
@@ -45,17 +38,6 @@ This guide is the hands-on Mac setup tutorial for Ollama: install, pull a model,
     { href: '/docs/offline-ai', label: 'Offline AI docs' },
   ]}
 />
-
-## Rename an Ollama model with ollama cp
-
-If you arrived here searching for how to rename a model in Ollama, that is a different task: Ollama has no dedicated rename command. The supported approach is to copy the model under the name you want, then remove the original.
-
-```bash
-ollama cp llama3 my-custom-name
-ollama rm llama3
-```
-
-If you are here to rename *files* using a local Ollama model, keep reading.
 
 ## What you need before starting
 

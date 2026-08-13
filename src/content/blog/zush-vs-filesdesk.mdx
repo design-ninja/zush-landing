@@ -1,6 +1,6 @@
 ---
 title: "Zush vs FilesDesk: Unlimited vs Credits, Formats, Pricing"
-description: "Zush vs FilesDesk: compare Zush $48 one-time unlimited vs FilesDesk credit plans ($5/mo for 500 credits) and $20 BYOK lifetime, formats, monitoring, and undo."
+description: "Compare Zush vs FilesDesk pricing, managed credits, BYOK, local AI, file formats, folder monitoring, and undo for AI file renaming on Mac and Windows."
 date: "2026-07-03"
 slug: "zush-vs-filesdesk"
 platform: "general"
@@ -8,16 +8,17 @@ topic: "comparisons"
 tags:
   - "AI File Renaming"
   - "Tool Comparisons"
-tldr: "Both are AI file renamers for Mac and Windows. Pick Zush for unlimited renames without counting credits ($10/month or $48 one-time), 100+ formats including RAW, design, iWork, video, and audio, templates, Naming Blocks, and folder monitoring. Pick FilesDesk if you want the cheapest managed entry point ($5/month for 500 credits) or a $20 BYOK lifetime and mostly rename documents, invoices, and photos."
-reviewed: "2026-07-19"
+tldr: "Both are AI file renamers for Mac and Windows. Pick Zush for unlimited managed renames, broad RAW/design/iWork coverage, templates, Naming Blocks, and folder monitoring. Pick FilesDesk for a lower-cost $40 self-managed license, metered managed credits, Ollama or vLLM, and documented image, document, audio, and video support."
+reviewed: "2026-08-13"
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
-Quick answer: Zush and FilesDesk are the two most directly comparable AI file renamers — both run on Mac and Windows, both name files by content, both offer cloud, BYOK, and local Ollama modes. The structural difference is the meter: Zush PRO is <BlogHighlight>unlimited renames for $10/month or $48 one-time</BlogHighlight>, while FilesDesk meters managed plans in credits (<BlogHighlight>1 credit = 1 filename suggestion</BlogHighlight>; 500 for $5/month, 2,000 for $15/month) and reserves its $20 lifetime for BYOK users with their own AI key or local model.
+Quick answer: Zush and FilesDesk are closely matched cross-platform AI file renamers: both support managed AI, BYOK, local models, watched folders, templates, processing history, and mixed files. The structural difference is the meter. Zush PRO provides <BlogHighlight>unlimited managed renames for $10/month or $48 one-time</BlogHighlight>.
+FilesDesk charges <BlogHighlight>$8/month for 500 managed credits or $20/month for 2,000</BlogHighlight>, while its $40 Lifetime license requires your own API key or local model.
 
-Pricing and public feature details last checked July 8, 2026.
+Pricing and public feature details last checked August 13, 2026.
 
 Sources checked for this update: [Zush](/), [FilesDesk](https://filesdesk.app/), [FilesDesk pricing](https://filesdesk.app/pricing), and [FilesDesk docs](https://filesdesk.app/docs), including public pricing, platform, provider, Watch Folders, and format-support details.
 
@@ -36,19 +37,19 @@ Sources checked for this update: [Zush](/), [FilesDesk](https://filesdesk.app/),
 
 | Dimension | Zush | FilesDesk |
 |---|---|---|
-| Pricing | <BlogHighlight>$10/month or $48 one-time, unlimited PRO renames</BlogHighlight> | $5/month (500 credits), $15/month (2,000 credits), $20 lifetime BYOK-only |
+| Pricing | <BlogHighlight>$10/month or $48 one-time, unlimited renames</BlogHighlight> | $8/month (500 credits), $20/month (2,000 credits), $40 lifetime BYOK/local |
 | Metering | Unlimited — no counting | <BlogHighlight>Credit-based</BlogHighlight>: 1 credit per filename suggestion |
 | Free tier | 50 renames, no signup | 15 credits trial, no credit card |
-| 5-year cost (one-time path) | $48 total, managed cloud included | $20 + your own API costs or local model setup |
+| 5-year cost (one-time path) | $48 total, managed cloud included | $40 + your own API costs or local model setup |
 | Platforms | Mac (macOS 15+) + Windows 10/11 | Mac + Windows |
-| Format coverage | <BlogHighlight>100+ formats</BlogHighlight>: 41 image incl. RAW/HEIC/AVIF, 4 design (Sketch, Figma, AI, PSD), 37 document incl. iWork, 16 video, 7 audio | Photos, PDFs, invoices, receipts, contracts, screenshots (documents-first focus) |
-| Video and audio renaming | <BlogHighlight>Yes</BlogHighlight> | Not publicly listed |
+| Format coverage | <BlogHighlight>100+ formats</BlogHighlight>: 41 image incl. RAW/HEIC/AVIF, 4 design (Sketch, Figma, AI, PSD), 37 document incl. iWork, 16 video, 7 audio | Images, PDF/Office documents, video, and audio; no detailed RAW/design/iWork matrix |
+| Video and audio renaming | <BlogHighlight>Yes</BlogHighlight> | Yes: common video and audio formats are listed in the FAQ |
 | Design files (Figma/Sketch/PSD) | <BlogHighlight>Yes</BlogHighlight> | Not publicly listed |
 | AI providers (BYOK) | Gemini, Groq, OpenAI, Claude | Claude, OpenAI, Gemini, OpenRouter |
 | Local AI | Ollama | Ollama, vLLM |
 | Folder monitoring | <BlogHighlight>Yes — auto-name new files</BlogHighlight> | Yes (Watch Folders) |
 | Naming conventions | Templates, 145+ Naming Blocks, custom prompts | Naming templates |
-| Undo | Yes, full rename history | Not publicly listed |
+| Undo | Yes, full rename history | Yes, through Processing History |
 | Devices per license | Per standard license terms | 1 device (lifetime plan) |
 | Money-back guarantee | 14 days | 3 days |
 | Checkout | Paddle | Razorpay |
@@ -67,30 +68,32 @@ The pricing is deliberately boring: unlimited PRO renames either as a subscripti
 
 ## FilesDesk
 
-FilesDesk positions itself as the plug-and-play option: 15 free credits in 60 seconds with no API keys, then $5/month for 500 credits or $15/month for 2,000, processed in memory and never stored. Its focus is documents-first renaming — invoices, receipts, contracts, scans, screenshots, photos — with useful template presets for those cases. The $20 lifetime plan is genuinely cheap but comes with real constraints: BYOK-only (you bring a Claude/OpenAI/Gemini/OpenRouter key or run Ollama/vLLM locally), 1 device, and 12 months of updates.
+FilesDesk positions itself as the plug-and-play credit option: 15 free credits with no API key, then $8/month for 500 credits or $20/month for 2,000, processed in memory and never stored.
+Its FAQ now explicitly lists common images, PDFs and Office documents, MP4/MOV/AVI/MKV/WebM video, and MP3/WAV/FLAC/AAC/M4A audio. Processing History can undo completed renames. The $40 Lifetime plan remains self-managed: bring a Claude/OpenAI/Gemini/OpenRouter key or run Ollama/vLLM locally, with one device and 12 months of updates.
 
-Where FilesDesk is a good fit: light users who rename a few hundred documents a month and want the lowest managed entry price, or tinkerers happy to run their own models against a one-time $20.
+Where FilesDesk is a good fit: light users whose volume fits a managed credit tier, or users who want a lower-cost self-managed license and are happy to supply an API key or local model.
 
 ## How to choose
 
 - **You rename a lot, or in bursts** — credit meters punish exactly the moments you need the tool most (a 1,500-file photo import is 3 months of FilesDesk Basic credits in one afternoon). Zush unlimited wins.
-- **Your folders go beyond documents** — video, audio, RAW, and design files are publicly supported in Zush and not listed by FilesDesk.
+- **Your folders include specialist formats** — both tools list common video and audio support, but Zush also publishes explicit RAW camera, design, and iWork coverage that FilesDesk does not enumerate.
 - **You want automation** — both products list folder monitoring/watch-folder workflows; Zush pairs it with full rename history and unlimited PRO renames.
-- **You want the cheapest possible entry** — FilesDesk's $5/month managed plan and $20 BYOK lifetime undercut everyone, including Zush, if the credit budget and document focus fit your usage.
+- **You want a lower-cost self-managed license** — FilesDesk Lifetime costs $40 versus Zush One-Time at $48, but FilesDesk requires your own API key or local model while Zush includes unlimited managed cloud renaming.
 - **Safety net** — both let you try free without a card; Zush's money-back window is 14 days vs FilesDesk's 3.
 
 ## FAQ
 
 **Is FilesDesk cheaper than Zush?**
-At entry, yes: $5/month vs $10/month. Over time it depends on volume — Zush's $48 one-time buys unlimited managed renames, while FilesDesk's $20 lifetime requires your own AI key (ongoing API costs or a local model) and covers 1 device with 12 months of updates.
+Its $8 managed tier includes 500 credits rather than unlimited renames.
+That costs less than Zush Monthly at $10, while FilesDesk Lifetime is $40 versus Zush One-Time at $48; the FilesDesk license requires your own AI key or local model and covers one device with 12 months of updates.
 
 **Do both work offline?**
 Both support local models: Zush via Ollama, FilesDesk via Ollama or vLLM. Offline quality in both cases depends on the local model you run.
 
 **Which supports more file types?**
-Zush publishes a concrete list of 100+ formats including RAW photos, design files, iWork, video, and audio. FilesDesk's public materials focus on photos, PDFs, invoices, receipts, contracts, and screenshots.
+Both document video and audio support. Zush publishes a broader concrete list of 100+ formats including RAW photos, design files, and iWork, while FilesDesk lists common image, PDF/Office, video, and audio formats without the same RAW/design/iWork matrix.
 
 **Can I undo renames in both?**
-Zush keeps full rename history with one-click revert. FilesDesk does not publicly document an undo feature — check before running large batches.
+Yes. Zush keeps full rename history with one-click revert, and FilesDesk documents undo from Processing History.
 
 Also comparing other tools? See [Zush vs NameQuick](/blog/zush-vs-namequick), [Zush vs Renamer.ai](/blog/zush-vs-renamer-ai), and the full [AI renamer roundup](/blog/best-ai-file-renamer-tools-2026).

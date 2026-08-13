@@ -11,23 +11,23 @@ tags:
   - "AI文件重命名"
   - "工具比较"
 tldr: "正确的 Windows AI 重命名器取决于您是否需要 Microsoft Store 安装、文档支持、屏幕截图、PDF、视频、音频、BYOK、离线 AI、文件夹监控和撤消。当您想要一个桌面工作流程而不是一组脚本时，Zush 是最合适的选择。"
-reviewed: "2026-08-08"
+reviewed: "2026-08-13"
 featuredOrder: 1
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
-快速回答：当一个文件夹包含屏幕截图、PDF、Office 文档、照片、设计文件、音频和视频时，Zush 是适用于 Windows 的最佳 AI 文件重命名器。 RenameClick 对于捆绑本地 AI 和文件夹排序功能更强，而 FilesDesk 是成本最低的 BYOK 条目。在选择之前比较安装路径、支持的格式、自动化、预览和回滚。
+快速回答：在比较的 6 款 Windows 应用中，Zush 更适合混合文件夹，RenameClick 更适合捆绑本地 AI 和文件夹排序，FilesDesk 则提供 40 美元的 Self-Managed BYOK/本地许可证。请比较安装方式、格式、自动化、撤销和托管 AI 限额。
 
-**最后验证时间：2026 年 7 月 24 日** RenameClick、AI Renamer 和 Renamer.ai； FilesDesk 上次检查时间为 2026 年 7 月 9 日。
+**最后验证时间：2026 年 8 月 13 日** FilesDesk；RenameClick、AI Renamer 和 Renamer.ai 于 2026 年 7 月 24 日验证。
 
 检查此更新的来源：[Zush for Windows Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X)、[FilesDesk](https://filesdesk.app/)、[FilesDesk 定价](https://filesdesk.app/pricing)、[FilesDesk 文档](https://filesdesk.app/docs)、[RenameClick](https://rename.click/) 及其 [支持的文件类型文档](https://rename.click/docs/getting-started/supported-files)、[AI Renamer](https://airenamer.app/)、单独的 [ai-renamer CLI 存储库GitHub](https://github.com/ozgrozer/ai-renamer) 和[Renamer.ai](https://renamer.ai/)。
 
 |应用程序 | Windows 安装 |人工智能选项 |发表的报道 |自动化|回滚 |起拍价 |
 |---|---|---|---|---|---|---|
 |Zush | Microsoft Store、x64 和 ARM64 |托管云、BYOK、Ollama |图像、RAW、设计、文档、音频、视频 |文件夹监控 |完整的重命名历史 | 50免费； 10 美元/月或 48 美元一次 |
-|FilesDesk| Windows 桌面 |托管、BYOK、本地 |常用图像和文档；验证专业格式|观看文件夹 |验证您的工作流程 | 15个学分；终身 BYOK/本地 20 美元 |
+|FilesDesk| Windows 桌面 |托管、BYOK、本地 |常用图像、文档、视频和音频；RAW/设计/iWork 需验证 |Watch Folders |通过 Processing History 撤销 |15 积分；每月 8 美元或 Lifetime 40 美元 |
 |RenameClick | Windows 桌面 |捆绑本地、Ollama、LM Studio、云 BYOK |图片、文档、音频；没有发布的 RAW、设计或视频支持 |自动流程可以重命名和移动 |完全撤消/重做 | 30 份申请/月； 48 美元+ 增值税有效期 |
 | AI Renamer | Windows 桌面 |本地或计量云 |公共示例强调图像和文本文档 |没有公开记录|没有公开记录|本地模式 19 美元 |
 |Renamer.ai | Web 和 Windows 桌面 |托管云| 30 多种格式、文档和矢量焦点 |神奇文件夹|一键撤消| 25 个文件/月免费； $9.95/月 |
@@ -96,11 +96,13 @@ Windows 特定的检查与 Mac 略有不同：
 
 ## 2. FilesDesk
 
+Zush vs [FilesDesk](/blog/zush-vs-filesdesk)
+
 <BlogToolMeta platform="Desktop on Windows and Mac" website="https://filesdesk.app/" label="filesdesk.app">
-  <Fragment slot="pricing">15 个免费积分；每月 500 个积分为 5 美元/月，2,000 个积分为每月 15 美元；使用 BYOK/本地 AI 终身一次性 20 美元</Fragment>
+  <Fragment slot="pricing">15 个免费积分；每月 500 个积分为 8 美元/月，2,000 个积分为每月 20 美元；使用 BYOK/本地 AI 终身一次性 40 美元</Fragment>
 </BlogToolMeta>
 
-FilesDesk 是该 Windows 系列中已发布的一次性入门价格最低的产品。其定价页面列出了 BYOK 或本地 AI 的 20 美元终身路径，以及 5 美元/月和 15 美元/月的托管每月积分。它的文档列出了监视文件夹、自定义模板、批处理和多个 AI 提供程序。
+FilesDesk 提供 40 美元的 BYOK/本地 AI Self-Managed 许可证，也提供每月 8 美元的 500 条或每月 20 美元的 2,000 条托管建议。文档确认支持 Watch Folders、模板、批处理、多 AI 提供商及通过 Processing History 撤销；FAQ 还列出常用图像、文档、视频和音频格式。
 
 最适合：想要廉价的 BYOK/本地或托管信用工作流程且其文件主要是照片、PDF、发票、收据、合同、屏幕截图和常见文档的 Windows 用户。在为混合媒体库选择它之前，请根据您自己的文件验证对 RAW、设计文件、音频、视频和 iWork 的支持，因为检查的文档不会发布详细的格式矩阵。
 
@@ -157,7 +159,7 @@ RenameClick 是最强大的本地优先 Windows 竞争对手，它是两个平�
 
 ## 判决
 
-如果您想要适用于广泛混合文件夹的最佳 Windows AI 文件重命名器，[Zush for Windows](/windows) 是目前最明确的推荐。当您的文件夹包含屏幕截图、视频、照片、设计文件、音频、PDF、iWork 文件和 Office 文档，并且您希望批量重命名、模板、命名块、监控和回滚而无需构建自己的系统时，它是最适合的。如果本地优先分析或文件夹排序比广泛的媒体报道更重要，请比较 RenameClick。如果优先考虑最低的一次性 BYOK 入门价格，请比较 FilesDesk。
+对于广泛的混合文件夹，[Zush for Windows](/windows) 目前是最明确的推荐。若本地分析或文件夹排序比媒体覆盖更重要，请比较 RenameClick；若更看重低成本 Self-Managed 许可证，而不是内含的无限托管 AI，请比较 FilesDesk。
 
 如果您想要更广泛的教程而不是比较，请阅读 [如何Windows上的AI重命名文件](/blog/rename-files-with-ai-windows-guide)。如果您的主要烦恼是自动化，请转到 [Windows上的自动重命名文件](/blog/auto-rename-files-windows-guide)。
 

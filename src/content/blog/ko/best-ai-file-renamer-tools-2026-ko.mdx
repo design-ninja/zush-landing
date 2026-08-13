@@ -11,7 +11,7 @@ tags:
   - "AI 파일 이름 바꾸기"
   - "도구 비교"
 tldr: "각 AI 파일 이름 변경자는 서로 다른 결과를 얻습니다. 광범위한 혼합 파일 Mac/Windows 워크플로에는 Zush를 선택하고, 저렴한 로컬/BYOK 대안에는 FilesDesk 또는 RenameClick을, Mac 기본 깊이에는 NameQuick을, 클라우드 문서에는 Renamed.to를, 무료 옵션을 원하는 경우 Wisfile 또는 Riffo를 선택하세요."
-reviewed: "2026-08-08"
+reviewed: "2026-08-13"
 featuredOrder: 1
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -23,7 +23,7 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 개인 정보 보호가 주요 쿼리인 경우 [오프라인 AI 파일 이름 바꾸기](/offline-ai-file-renamer)를 사용하세요. 공급자 제어가 기본 쿼리인 경우 [BYOK 설정 가이드](/docs/byok)를 사용합니다. 잘못된 대량 이름 변경의 위험이 결정 요인인 경우 [미리보기 및 실행 취소를 통해 파일 이름을 안전하게 일괄적으로 바꾸는 방법](/blog/how-to-safely-batch-rename-files)를 읽어보세요. 여전히 공급업체를 비교하고 있다면 아래 섹션에서 파일 범위, 플랫폼, 가격 및 안전성을 기준으로 전체 시장을 구분합니다.
 
-**마지막 확인 날짜: 2026년 7월 24일** RenameClick, NameQuick, Renamer.ai, AI Renamer 및 Riffo의 경우; FilesDesk, Wisfile 및 Renamed.to는 2026년 7월 9일에 마지막으로 확인되었습니다.
+**마지막 확인 날짜: 2026년 8월 13일** FilesDesk; RenameClick, NameQuick, Renamer.ai, AI Renamer 및 Riffo는 2026년 7월 24일, Wisfile과 Renamed.to는 2026년 7월 9일에 확인했습니다.
 
 이 업데이트에 대해 확인된 소스에는 [Zush](/), [FilesDesk](https://filesdesk.app/pricing), [FilesDesk 문서](https://filesdesk.app/docs), [RenameClick](https://rename.click/) 및 해당 [지원되는 파일 형식 문서](https://rename.click/docs/getting-started/supported-files), [NameQuick](https://www.namequick.app/), [Renamer.ai](https://renamer.ai/)에 대한 공식 제품, 가격, 문서 또는 저장소 페이지가 포함됩니다. [AI Renamer](https://airenamer.app/), 별도의 [GitHub의 ai-renamer CLI Riffo지토리](https://github.com/ozgrozer/ai-renamer), [Wisfile](https://www.wisfile.ai/), [리포](https://riffo.ai/) 및 [Renamed.to](https://www.renamed.to/).
 
@@ -140,8 +140,10 @@ AI 파일 이름 바꾸기 기능은 실험적인 호기심에서 실용적인 �
 
 ### 2. FilesDesk
 
+직접 비교: Zush vs [FilesDesk](/blog/zush-vs-filesdesk). Zush One-Time은 크레딧 제한 없는 관리형 AI를 포함하며, 최저 일회성 선택지는 AI Renamer Local Mode입니다.
+
 <BlogToolMeta platform="Mac and Windows" website="https://filesdesk.app/" label="filesdesk.app">
-  <Fragment slot="pricing">15개의 무료 크레딧 500크레딧의 경우 월 $5/월, 2,000크레딧의 경우 월 $15 BYOK/로컬 AI 사용 시 평생 $20(1회)</Fragment>
+  <Fragment slot="pricing">15개의 무료 크레딧 500크레딧의 경우 월 $8/월, 2,000크레딧의 경우 월 $20 로컬 AI 사용 시 평생 $40(1회)</Fragment>
 </BlogToolMeta>
 
 FilesDesk는 자체 가격 및 문서가 이제 Zush와 동일한 구매 트리거(Mac + Windows, 로컬 또는 관리형 AI, BYOK, 감시 폴더, 템플릿, 일괄 처리 및 낮은 평생 가격)를 목표로 하기 때문에 진정한 크로스 플랫폼 경쟁자입니다.
@@ -152,14 +154,14 @@ FilesDesk는 자체 가격 및 문서가 이제 Zush와 동일한 구매 트리�
 - 공개 문서 목록 감시 폴더, 사용자 정의 템플릿, 일괄 처리 및 다중 AI 제공자
 - 평생 경로는 Claude, Gemini, OpenAI, OpenRouter, Ollama 및 vLLM을 지원합니다.
 - 수명 경로는 파일이 장치에 유지되고 오프라인으로 작동함을 나타냅니다.
-- 저렴한 시작 가격: 평생 자체 관리형의 경우 1회 $20
+- Self-Managed Lifetime은 BYOK 또는 로컬 모델을 사용하는 일회성 $40
 
 **제한사항:**
 
 - 평생 라이센스에는 자체 API 키 또는 로컬 모델이 필요합니다. 관리형 AI 크레딧은 구독 전용입니다.
 - 공개 문서는 Zush의 형식 목록과 비교할 수 있는 자세한 지원 형식 매트릭스를 제공하지 않습니다.
 - 업데이트는 평생 업데이트가 아닌 평생에 포함된 12개월로 나열됩니다.
-- 확인된 문서에는 공개 RAW, iWork, 디자인 파일, 오디오 또는 비디오 적용 범위 목록이 없습니다.
+- RAW, iWork 또는 전문 디자인 형식의 자세한 공개 목록은 없지만 FAQ는 일반 오디오 및 비디오 형식을 확인합니다.
 
 **최적의 대상:** 매우 저렴한 Mac/Windows BYOK 또는 로컬 AI 파일 이름 변경 프로그램을 원하고 자신의 샘플 폴더를 기준으로 파일 형식 범위를 확인하는 데 능숙한 사용자.
 
@@ -364,12 +366,12 @@ Renamed.to는 클라우드/팀 옵션입니다. 문서를 분석하고 기존 Go
 | 플랫폼 | 맥과 윈도우 | 맥과 윈도우 | Mac 및 Windows(데스크톱 기본) | 데스크탑(Mac/Win) | 데스크탑(Win/Mac) + 웹 | macOS만 해당 | 로컬 데스크탑 | macOS + 웹 데모 | 웹 + 클라우드 통합 |
 | 이미지/디자인 형식 | 이미지 41개 + 디자인 형식 4개 | 사진/이미지 자세한 매트릭스를 찾을 수 없습니다 | 10가지 이미지 형식; RAW/디자인 목록 없음 | 기능 예제 + 전체 파일 설명 | 30개 이상의 형식 포함 EPS/SVG/AI 벡터; RAW 없음 | 30개 이상의 형식 | 공개적으로 자세히 설명되지 않음 | 문서화되지 않음 | 스캔된 이미지/문서 |
 | 문서 형식 | 37개(iWork 포함) | 사진, PDF, 송장, 영수증, 계약서, 스크린샷 | 20+ 포함 PDF/DOCX/JSON/XML/YAML/HTML/SQL/자막 | PDF/TXT 예시; 모든 파일 문 | 30개 이상의 문서/이미지/벡터/이메일 | PDF, 페이지, 오피스, OCR | 공개적으로 자세히 설명되지 않음 | 문서화되지 않음 | PDF/워드/엑셀/파워포인트 |
-| 오디오/비디오 | 오디오 7개 + 비디오 16개 | 확인된 문서에 나열되지 않음 | 전사된 오디오 5개; 비디오가 지원되지 않음 | 나열되지 않음(별도의 CLI가 비디오를 제공함) | 중앙이 아님 | 광범위한 카테고리만 | 확인되지 않음 | 문서화되지 않음 | 아니요 |
+| 오디오/비디오 | 오디오 7개 + 비디오 16개 | 일반 오디오 및 비디오 형식 명시 | 전사된 오디오 5개; 비디오가 지원되지 않음 | 나열되지 않음(별도의 CLI가 비디오를 제공함) | 중앙이 아님 | 광범위한 카테고리만 | 확인되지 않음 | 문서화되지 않음 | 아니요 |
 | 측정되었나요? | 유료 PRO에서는 아니요 | 관리 크레딧 예; 평생 아니오 | 무료 등급 예; 프로 아니오 | 클라우드 예; $19 현지 번호 | 예, 모든 계층에서 | 예, 관리됩니다. 자체 관리 아니요 | 아니요 | 명시되지 않음 | 예, 크레딧 |
 | 일괄 이름 바꾸기 | 예 | 예 | 예 | 예 | 예 | 예 | 예 | 예 | 예 |
 | 폴더 모니터링 | 예 | 예(감시 폴더) | 예(자동 흐름) | 공개 성명 없음 | 예(매직 폴더) | 예(감시 폴더) | 확인되지 않음 | 확인되지 않음 | 예(클라우드 폴더 감시) |
 | 사용자 정의 패턴 | 템플릿 + 145개 이상의 명명 블록 | 템플릿 | 형식 + 지침 | 사용자 정의 프롬프트/케이스 스타일 | 템플릿 | 사전 설정/템플릿/프롬프트 | 공개적으로 자세히 설명되지 않음 | 한정 | 저장된 팀 규칙/프롬프트 |
-| 실행 취소/롤백 | 예 | 확인된 문서에서 확인되지 않음 | 예, 문서별로 전체 실행 취소/다시 실행 | 공개 성명 없음 | 예 | 예, 원클릭 실행 취소 및 복구 | 확인되지 않음 | 확인되지 않음 | 검토/신뢰 워크플로 |
+| 실행 취소/롤백 | 예 | 예, Processing History에서 가능 | 예, 문서별로 전체 실행 취소/다시 실행 | 공개 성명 없음 | 예 | 예, 원클릭 실행 취소 및 복구 | 확인되지 않음 | 확인되지 않음 | 검토/신뢰 워크플로 |
 | 여러 AI 제공업체 | Gemini/Groq/OpenAI/Claude + Ollama | 클로드/제미니/OpenAI/OpenRouter/Ollama/vLLM | 내장 로컬/Ollama/LM Studio/OpenAI/Gemini/Qwen | Ollama/LM 스튜디오/OpenAI/커스텀 | 고정 | OpenAI/OpenRouter/Claude/Gemini/Ollama/LM Studio/MLX | 로컬 고정 | 고정 클라우드 | 고정 클라우드 |
 | 무료 등급 | 50명부터 시작 | 15학점 | 무제한 분석 + 월 30 크레딧 적용 | 가입 시 10학점 | 25/월 | 14일 평가판, 50개 이름 변경 | 무료 | 자유로운 위치의 홈페이지 | 문서 50개/월 |
 | BYOK/로컬 옵션 | 예 | 평생 계획 | 예/공급자 선택 | 예/로컬/사용자 정의 | 공개 BYOK 없음 | 자체 관리 | 지역 | 공개 BYOK 없음 | 아니요 |
@@ -382,7 +384,7 @@ Renamed.to는 클라우드/팀 옵션입니다. 문서를 분석하고 기존 Go
 |---|---|---|---|---|
 | Zush | 50개의 이름 변경 시작 | <BlogHighlight>$10/월 또는 $48 일회성</BlogHighlight> | <BlogHighlight>$48 일회성 또는 월 $120/년</BlogHighlight> | 월별 또는 일회성 PRO |
 | Zush BYOK | 모든 플랜에서 이용 가능 | 공급자 API 비용 | 선택적 API 비용 | 종량제 API |
-| FilesDesk | 15학점 | $5/월, $15/월 또는 $20 평생 BYOK/로컬 | $20 평생 경로 또는 $60-$180/년 구독 | 구독 또는 자체 관리 평생 |
+| FilesDesk | 15학점 | $8/월, $20/월 또는 $40 평생 BYOK/로컬 | $40 평생 경로 또는 $96-$240/년 구독 | 구독 또는 자체 관리 평생 |
 | 이름 RenameClick | 무제한 분석 + 월 30 크레딧 적용 | $8+ VAT/월 또는 $48+ VAT 평생 | $48+ VAT 평생 또는 $96+ VAT/년 월간 | 구독 또는 평생 |
 | AI Renamer | 가입 시 10학점 | 데스크탑 $19 일회성(로컬 모드) 또는 $10/200 클라우드 크레딧 | $19 또는 클라우드 이름 변경당 $0.05 | 일회성 로컬/종량제 크레딧 |
 | Renamer.ai | 25개 파일/월 | $9.95~99.95/월 | $120~1,200/년 | 종량제 구독 |
@@ -400,7 +402,7 @@ Renamed.to는 클라우드/팀 옵션입니다. 문서를 분석하고 기존 Go
 | <BlogHighlight>Zush 프로 원타임</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> |
 | Zush 프로 월간 | $120 | $360 | $600 |
 | Zush BYOK | 선택적 API 비용 | 선택적 API 비용 | 선택적 API 비용 |
-| FilesDesk 수명 | $20 | $20 | $20 |
+| FilesDesk 수명 | $40 | $40 | $40 |
 | RenameClick Pro 평생 | $48+ 부가가치세 | $48+ 부가가치세 | $48+ 부가가치세 |
 | AI Renamer 데스크탑 | $19 | $19 | $19 |
 | NameQuick 자체 관리 | $69 + API/로컬 설정 | $69 + API/로컬 설정 | $69 + API/로컬 설정 |
@@ -418,7 +420,7 @@ Wisfile과 Riffo는 자유로운 옵션이지만 모니터링, 실행 취소 및
 
 **Mac 또는 Windows에서 가장 광범위하게 게시된 혼합 파일 범위를 원하는 경우:** <BlogHighlight>Zush 일회성 $48</BlogHighlight>. 전체 RAW 지원(CR2, NEF, ARW, DNG), 디자인 파일, iWork 파일, 오디오, 37가지 문서 및 PDF 관련 형식, 16가지 비디오 형식, 폴더 모니터링, 롤백, 템플릿, 명명 블록 및 무제한 PRO 이름 변경.
 
-**가장 낮은 게시된 일회성 항목 가격을 원하는 경우:** FilesDesk 수명은 20달러입니다. 단, 확인된 문서는 RAW, 디자인, iWork, 오디오 및 비디오 파일에 대해 동일한 세부 형식 매트릭스를 게시하지 않는다는 점을 주의해야 합니다.
+**게시된 유료 일회성 최저가를 원하는 경우:** AI Renamer Local Mode는 $19입니다. FilesDesk Self-Managed는 $40이며 API 키 또는 로컬 모델이 필요하고, Zush One-Time은 $48에 무제한 관리형 클라우드 이름 변경이 포함됩니다.
 
 **Mac을 사용하고 있으며 Finder 통합을 원하는 경우:** NameQuick. 강력한 템플릿 빌더, Finder 태그, 광범위한 AI 제공업체 지원; $69 + 자체 API 키 또는 로컬 모델.
 
@@ -470,6 +472,6 @@ BYOK는 자신의 열쇠를 가져오는 것을 의미합니다. 앱의 관리�
 
 2026년의 AI 파일 이름 바꾸기 공간은 붐비지 않지만 차별화되며, 각각 위의 도구는 서로 다른 것을 얻습니다.
 
-혼합 파일 작업 흐름을 사용하는 Mac 및 Windows 사용자의 경우 [Zush](https://zushapp.com/)는 RAW, HEIC, 디자인 파일, iWork 문서, 오디오, 비디오, PDF, 템플릿, 명명 블록, BYOK, 폴더 모니터링 및 실행 취소를 하나의 데스크톱 작업 흐름에서 수행할 수 있는 가장 강력한 게시 형식 선택입니다. $20 BYOK/로컬 수명 경로가 가장 중요하고 파일 형식이 문서에 적합하다면 FilesDesk를 선택하세요. 광범위한 미디어 지원보다 로컬 우선 분석, AI 검색 및 폴더 정렬이 더 중요한 경우 RenameClick을 선택하세요. Mac 기본 깊이를 보려면 NameQuick을 선택하세요. Google Drive 또는 Dropbox에서 클라우드 우선 문서 작업을 위해 Renamed.to를 선택하세요. Magic Folders 구독 자동화를 위해 Renamer.ai를 선택하세요. 더 가벼운 공개 문서의 무료 시작점으로 Wisfile 또는 Riffo를 선택하세요.
+혼합 파일 작업 흐름을 사용하는 Mac 및 Windows 사용자의 경우 [Zush](https://zushapp.com/)는 RAW, HEIC, 디자인 파일, iWork 문서, 오디오, 비디오, PDF, 템플릿, 명명 블록, BYOK, 폴더 모니터링 및 실행 취소를 하나의 데스크톱 작업 흐름에서 수행할 수 있는 가장 강력한 게시 형식 선택입니다. $40 BYOK/로컬 수명 경로가 가장 중요하고 파일 형식이 문서에 적합하다면 FilesDesk를 선택하세요. 광범위한 미디어 지원보다 로컬 우선 분석, AI 검색 및 폴더 정렬이 더 중요한 경우 RenameClick을 선택하세요. Mac 기본 깊이를 보려면 NameQuick을 선택하세요. Google Drive 또는 Dropbox에서 클라우드 우선 문서 작업을 위해 Renamed.to를 선택하세요. Magic Folders 구독 자동화를 위해 Renamer.ai를 선택하세요. 더 가벼운 공개 문서의 무료 시작점으로 Wisfile 또는 Riffo를 선택하세요.
 
 귀하의 결정은 다음 네 가지 질문으로 귀결됩니다. 어떤 플랫폼이 필요합니까? 실제로 폴더에 어떤 파일 형식이 저장되나요? 한 번만 지불하시겠습니까, 아니면 영원히 지불하시겠습니까? 대량 이름 변경 시 안전망(실행 취소, 롤백)을 지불할 가치가 있나요?

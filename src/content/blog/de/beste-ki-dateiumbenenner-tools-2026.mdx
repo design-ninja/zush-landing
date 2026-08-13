@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Tool Comparisons"
 tldr: "Jeder KI-Dateiumbenenner hat andere Stärken. Zush eignet sich für gemischte Mac-/Windows-Workflows, FilesDesk oder RenameClick für günstige lokale beziehungsweise BYOK-Alternativen, NameQuick für Mac-native Tiefe, Renamed.to für Cloud-Dokumente und Wisfile oder Riffo als kostenlose Optionen."
-reviewed: "2026-08-08"
+reviewed: "2026-08-13"
 featuredOrder: 1
 locale: "de"
 translationOf: "best-ai-file-renamer-tools-2026"
@@ -23,7 +23,7 @@ Kurzfazit: Wenn du Dateien anhand ihres Inhalts umbenennen möchtest, beginne mi
 
 Ist Datenschutz das Hauptthema, nutze den [Offline-KI-Dateiumbenenner](/offline-ai-file-renamer). Geht es um die Kontrolle des KI-Anbieters, lies die [BYOK-Einrichtungsanleitung](/docs/byok). Wenn ein fehlerhafter Massenlauf das größte Risiko ist, erfährst du hier, [wie Dateien mit Vorschau und Rückgängig-Funktion sicher stapelweise umbenannt werden](/blog/how-to-safely-batch-rename-files). Die folgenden Abschnitte ordnen den Markt nach Formatabdeckung, Plattform, Preis und Sicherheit.
 
-**Zuletzt geprüft: 24. Juli 2026** für RenameClick, NameQuick, Renamer.ai, AI Renamer und Riffo; FilesDesk, Wisfile und Renamed.to wurden zuletzt am 9. Juli 2026 geprüft.
+**Zuletzt geprüft: 13. August 2026** für FilesDesk; 24. Juli 2026 für RenameClick, NameQuick, Renamer.ai, AI Renamer und Riffo; 9. Juli 2026 für Wisfile und Renamed.to.
 
 Geprüfte Quellen waren offizielle Produkt-, Preis-, Dokumentations- oder Repository-Seiten von [Zush](/), [FilesDesk](https://filesdesk.app/pricing), [FilesDesk Docs](https://filesdesk.app/docs), [RenameClick](https://rename.click/) und dessen [Dokumentation unterstützter Dateitypen](https://rename.click/docs/getting-started/supported-files), [NameQuick](https://www.namequick.app/), [Renamer.ai](https://renamer.ai/), [AI Renamer](https://airenamer.app/), dem separaten [ai-renamer-CLI-Repository auf GitHub](https://github.com/ozgrozer/ai-renamer), [Wisfile](https://www.wisfile.ai/), [Riffo](https://riffo.ai/) und [Renamed.to](https://www.renamed.to/).
 
@@ -137,8 +137,10 @@ Das hebt Zush hervor:
 
 ### 2. FilesDesk
 
+Direkter Vergleich: Zush vs [FilesDesk](/blog/zush-vs-filesdesk). Zush One-Time bündelt verwaltete KI ohne Credit-Limit.
+
 <BlogToolMeta platform="Mac und Windows" website="https://filesdesk.app/" label="filesdesk.app">
-  <Fragment slot="pricing">15 kostenlose Credits; monatlich 5 $ für 500 oder 15 $ für 2.000 Credits; Lifetime einmalig 20 $ mit BYOK/lokaler KI</Fragment>
+  <Fragment slot="pricing">15 kostenlose Credits; monatlich 8 $ für 500 oder 20 $ für 2.000 Credits; Lifetime einmalig 40 $ mit lokaler KI</Fragment>
 </BlogToolMeta>
 
 FilesDesk ist ein echter plattformübergreifender Wettbewerber. Preis- und Dokumentationsseiten adressieren dieselben Kaufkriterien wie Zush: Mac + Windows, lokale oder verwaltete KI, BYOK, Watch Folders, Templates, Stapelverarbeitung und günstiger Lifetime-Preis.
@@ -149,14 +151,14 @@ FilesDesk ist ein echter plattformübergreifender Wettbewerber. Preis- und Dokum
 - Watch Folders, eigene Templates, Stapelverarbeitung und mehrere KI-Anbieter
 - Lifetime unterstützt Claude, Gemini, OpenAI, OpenRouter, Ollama und vLLM
 - Laut Anbieter bleiben Dateien bei Lifetime auf dem Gerät; Offline-Nutzung möglich
-- Niedriger Einstiegspreis von einmalig 20 $ für Self-Managed Lifetime
+- Self-Managed Lifetime für einmalig 40 $ mit BYOK oder lokalem Modell
 
 **Einschränkungen:**
 
 - Lifetime erfordert eigenen API-Schlüssel oder lokales Modell; verwaltete Credits nur im Abo
 - Keine detaillierte öffentliche Formatmatrix wie bei Zush
 - Lifetime enthält laut Liste 12 Monate Updates, nicht lebenslange Updates
-- In der geprüften Dokumentation keine klare Liste für RAW, iWork, Design, Audio oder Video
+- Keine klare Liste für RAW, iWork oder spezielle Designformate; die FAQ bestätigt gängige Audio- und Videoformate
 
 **Am besten für:** Nutzer, die einen sehr günstigen BYOK-/Local-AI-Umbenenner für Mac und Windows suchen und die eigenen Dateitypen mit einem Testordner prüfen können.
 
@@ -326,12 +328,12 @@ Renamed.to ist die Cloud-/Team-Option. Es analysiert Dokumente und benennt sie i
 | Plattform | Mac & Windows | Mac & Windows | Mac & Windows, nativ | Desktop Mac/Win | Desktop Win/Mac + Web | Nur macOS | Lokaler Desktop | macOS + Web-Demo | Web + Cloud-Integrationen |
 | Bild/Design | 41 Bilder + 4 Designformate | Fotos/Bilder; keine Matrix | 10 Bilder; kein RAW/Design | Beispiele + „alle Dateien“ | 30+ inkl. EPS/SVG/AI; kein RAW | 30+ Formate | Nicht detailliert | Nicht dokumentiert | Gescannte Bilder/Dokumente |
 | Dokumente | 37, einschließlich iWork | Fotos, PDFs, Rechnungen, Belege, Verträge, Screenshots | 20+ inkl. PDF/DOCX/JSON/XML/YAML/HTML/SQL/Untertitel | PDF/TXT-Beispiele | 30+ Dokumente/Bilder/Vektoren/E-Mail | PDF, Pages, Office, OCR | Nicht detailliert | Nicht dokumentiert | PDF/Word/Excel/PowerPoint |
-| Audio/Video | 7 Audio + 16 Video | Nicht gelistet | 5 Audio mit Transkription; kein Video | Nicht gelistet; separates CLI mit Video | Nicht zentral | Nur breite Kategorie | Nicht bestätigt | Nicht dokumentiert | Nein |
+| Audio/Video | 7 Audio + 16 Video | Gängige Audio- und Videoformate gelistet | 5 Audio mit Transkription; kein Video | Nicht gelistet; separates CLI mit Video | Nicht zentral | Nur breite Kategorie | Nicht bestätigt | Nicht dokumentiert | Nein |
 | Mengenlimit | Kein Limit in PRO | Managed ja, Lifetime nein | Kostenlos ja, Pro nein | Cloud ja, 19-$-Local nein | In jedem Tarif | Managed ja, Self-Managed nein | Nein | Nicht angegeben | Credits |
 | Stapelumbenennung | Ja | Ja | Ja | Ja | Ja | Ja | Ja | Ja | Ja |
 | Ordnerüberwachung | Ja | Watch Folders | Auto Flow | Keine öffentliche Aussage | Magic Folders | Watch Folders | Nicht bestätigt | Nicht bestätigt | Überwachte Cloud-Ordner |
 | Eigene Muster | Templates + 145+ Naming Blocks | Templates | Formate + Anweisungen | Prompts/Schreibweisen | Templates | Presets/Templates/Prompts | Nicht detailliert | Begrenzt | Gespeicherte Teamregeln/Prompts |
-| Rückgängig | Ja | Nicht bestätigt | Vollständig laut Docs | Keine Aussage | Ja | Undo & Recovery | Nicht bestätigt | Nicht bestätigt | Prüfung/Konfidenz |
+| Rückgängig | Ja | Ja, über Processing History | Vollständig laut Docs | Keine Aussage | Ja | Undo & Recovery | Nicht bestätigt | Nicht bestätigt | Prüfung/Konfidenz |
 | KI-Anbieter | Gemini/Groq/OpenAI/Claude + Ollama | Claude/Gemini/OpenAI/OpenRouter/Ollama/vLLM | Lokal/Ollama/LM Studio/OpenAI/Gemini/Qwen | Ollama/LM Studio/OpenAI/eigen | Fest | OpenAI/OpenRouter/Claude/Gemini/Ollama/LM Studio/MLX | Fest lokal | Fest Cloud | Fest Cloud |
 | Kostenlos | 50 zum Start | 15 Credits | Unbegrenzte Analyse + 30 Anwendungen/Monat | 10 Start-Credits | 25/Monat | 14 Tage, 50 Namen | Kostenlos | Als kostenlos positioniert | 50 Dokumente zum Start |
 | BYOK/lokal | Ja | Lifetime | Ja | Ja | Kein öffentliches BYOK | Self-Managed | Lokal | Kein öffentliches BYOK | Nein |
@@ -344,7 +346,7 @@ Einen direkten Vergleich zwischen Abo und Einmalkauf bietet [Zush vs. Renamer.ai
 |---|---|---|---|---|
 | Zush | 50 zum Start | <BlogHighlight>10 $/Monat oder einmalig 48 $</BlogHighlight> | <BlogHighlight>einmalig 48 $ oder 120 $/Jahr monatlich</BlogHighlight> | Monatlich oder einmalig PRO |
 | Zush BYOK | In jedem Tarif | Provider-API-Kosten | Optionale API-Kosten | Pay-as-you-go-API |
-| FilesDesk | 15 Credits | 5 $/Monat, 15 $/Monat oder 20 $ Lifetime BYOK/lokal | 20 $ Lifetime oder 60–180 $/Jahr | Abo oder Self-Managed Lifetime |
+| FilesDesk | 15 Credits | 8 $/Monat, 20 $/Monat oder 40 $ Lifetime BYOK/lokal | 40 $ Lifetime oder 96–240 $/Jahr | Abo oder Self-Managed Lifetime |
 | RenameClick | Unbegrenzte Analyse + 30 Anwendungen/Monat | 8 $ zzgl. MwSt./Monat oder 48 $ zzgl. MwSt. Lifetime | 48 $ zzgl. MwSt. Lifetime oder 96 $ zzgl. MwSt./Jahr | Abo oder Lifetime |
 | AI Renamer | 10 Start-Credits | Desktop Local einmalig 19 $ oder 10 $/200 Cloud-Credits | 19 $ oder 0,05 $ je Cloud-Umbenennung | Einmalig lokal / Credits |
 | Renamer.ai | 25 Dateien/Monat | 9,95–99,95 $/Monat | 120–1.200 $/Jahr | Mengenabhängiges Abo |
@@ -362,7 +364,7 @@ Für einen intensiven Nutzer mit etwa 10.000 Umbenennungen pro Jahr summieren si
 | <BlogHighlight>Zush Pro One-Time</BlogHighlight> | <BlogHighlight>48 $</BlogHighlight> | <BlogHighlight>48 $</BlogHighlight> | <BlogHighlight>48 $</BlogHighlight> |
 | Zush Pro Monthly | 120 $ | 360 $ | 600 $ |
 | Zush BYOK | Optionale API-Kosten | Optionale API-Kosten | Optionale API-Kosten |
-| FilesDesk Lifetime | 20 $ | 20 $ | 20 $ |
+| FilesDesk Lifetime | 40 $ | 40 $ | 40 $ |
 | RenameClick Pro Lifetime | 48 $ zzgl. MwSt. | 48 $ zzgl. MwSt. | 48 $ zzgl. MwSt. |
 | AI Renamer Desktop | 19 $ | 19 $ | 19 $ |
 | NameQuick Self-Managed | 69 $ + API/lokal | 69 $ + API/lokal | 69 $ + API/lokal |
@@ -370,7 +372,7 @@ Für einen intensiven Nutzer mit etwa 10.000 Umbenennungen pro Jahr summieren si
 | Renamer.ai Pro | 119 $ | 358 $ | 597 $ |
 | Renamer.ai Power | 359 $ | 1.078 $ | 1.797 $ |
 
-Bei 10.000 Dateien pro Jahr bleiben Einmalkäufe erheblich günstiger als Abos. FilesDesk hat den niedrigsten veröffentlichten Einmal-Einstiegspreis; Zush ist die günstigste veröffentlichte Einmaloption mit breiter, expliziter Medienformat-Abdeckung sowie dokumentierter Rückgängig-Funktion und Ordnerüberwachung.
+Bei 10.000 Dateien pro Jahr ist AI Renamer Local Mode mit 19 $ der günstigste veröffentlichte bezahlte Einmalkauf, FilesDesk Self-Managed kostet 40 $, und Zush bietet für 48 $ zusätzlich unbegrenzte verwaltete KI, breite Medienabdeckung, Undo und Ordnerüberwachung.
 
 Wisfile und Riffo sind kostenlose Startpunkte, bieten aber weniger öffentliche Details zu Überwachung, Rückgängig und Formaten. Der kostenlose Open-Source-Weg in der AI-Renamer-Zeile ist das separate `ozgrozer/ai-renamer` CLI auf GitHub, nicht die 19-$-App airenamer.app. Wenn die eigentliche Datenschutzfrage Cloud vs. BYOK vs. lokale Modelle lautet, lies [Cloud AI vs. lokale KI beim Umbenennen](/blog/cloud-vs-local-ai-file-renaming).
 
@@ -380,7 +382,7 @@ Wisfile und Riffo sind kostenlose Startpunkte, bieten aber weniger öffentliche 
 
 **Breiteste veröffentlichte Unterstützung gemischter Dateien unter Mac oder Windows:** <BlogHighlight>Zush One-Time für 48 $</BlogHighlight>. RAW, Design, iWork, Audio, 37 Dokument-/PDF-Formate, 16 Videoformate, Ordnerüberwachung, Rollback, Templates und Naming Blocks.
 
-**Niedrigster veröffentlichter Einmal-Einstiegspreis:** FilesDesk Lifetime für 20 $, mit dem Hinweis, dass die geprüften Docs keine ebenso genaue Matrix für RAW, Design, iWork, Audio und Video liefern.
+**Niedrigster veröffentlichter bezahlter Einmal-Einstiegspreis:** AI Renamer Local Mode für 19 $. FilesDesk Self-Managed kostet 40 $ und verlangt einen API-Key oder ein lokales Modell; Zush One-Time kostet 48 $ und enthält unbegrenztes verwaltetes Cloud-Umbenennen.
 
 **Mac mit tiefer Finder-Integration:** NameQuick. Starker Template Builder, Finder-Tags und viele KI-Anbieter; 69 $ plus eigener API-Schlüssel oder lokales Modell.
 
@@ -432,7 +434,7 @@ Sicherer wird es durch Vorschau und Rollback. Hunderte Namen sollten nie blind a
 
 Der Markt für KI-Dateiumbenenner ist 2026 überschaubar, aber klar differenziert.
 
-Für gemischte Mac-/Windows-Workflows bietet [Zush](https://zushapp.com/) die stärkste veröffentlichte Formatabdeckung: RAW, HEIC, Design, iWork, Audio, Video, PDFs, Templates, Naming Blocks, BYOK, Ordnerüberwachung und Rückgängig in einer Desktop-App. FilesDesk ist interessant, wenn der lokale/BYOK-Lifetime-Weg für 20 $ entscheidend ist und deine Formate passen. RenameClick überzeugt mit Local-first-Analyse, AI Search und Ordnersortierung, NameQuick mit Mac-nativer Tiefe, Renamed.to mit Cloud-Dokumenten in Google Drive oder Dropbox, Renamer.ai mit Magic Folders und Wisfile oder Riffo als kostenlose Einstiege mit weniger öffentlicher Dokumentation.
+Für gemischte Mac-/Windows-Workflows bietet [Zush](https://zushapp.com/) die stärkste veröffentlichte Formatabdeckung: RAW, HEIC, Design, iWork, Audio, Video, PDFs, Templates, Naming Blocks, BYOK, Ordnerüberwachung und Rückgängig in einer Desktop-App. FilesDesk ist interessant, wenn der lokale/BYOK-Lifetime-Weg für 40 $ entscheidend ist und deine Formate passen. RenameClick überzeugt mit Local-first-Analyse, AI Search und Ordnersortierung, NameQuick mit Mac-nativer Tiefe, Renamed.to mit Cloud-Dokumenten in Google Drive oder Dropbox, Renamer.ai mit Magic Folders und Wisfile oder Riffo als kostenlose Einstiege mit weniger öffentlicher Dokumentation.
 
 Vier Fragen entscheiden: Welche Plattformen brauchst du? Welche Dateitypen landen wirklich in deinen Ordnern? Möchtest du einmal oder dauerhaft zahlen? Ist dir ein Sicherheitsnetz aus Rückgängig und Rollback bei Massenumbenennungen den Preis wert?
 
