@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.8.4.0] - 2026-08-14
+
+### Improved
+- Zush now includes the required app runtimes, so a separate Microsoft .NET Desktop Runtime installation is no longer needed.
+- Improved startup responsiveness, file previews, and monitored folders on slow or temporarily unavailable drives.
+- Offline AI with Ollama now detects models more reliably, validates image support, retries incomplete responses, and shows clearer setup errors.
+
+### Fixed
+- Fixed launch failures on some Windows 10 PCs.
+- Restored notifications when newer Windows notification services are unavailable.
+- Fixed intermittent stalls and stale status updates during Offline AI setup and folder monitoring.
+
+
 ## [3.8.3.0] - 2026-08-12
 
 ### Improved
