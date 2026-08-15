@@ -45,7 +45,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
     '/privacy-policy': {
       title: 'Datenschutz',
       description: 'Wie Zush Dateiinhalt, Lizenzdaten, Zahlungen, Analysen und Drittanbieter verarbeitet.',
-      updated: 'Zuletzt aktualisiert: 27. April 2026',
+      updated: 'Zuletzt aktualisiert: 15. August 2026',
       sections: [
         { eyebrow: 'Daten', title: 'Welche Informationen verarbeitet werden', body: 'Zush verarbeitet ausgewählte oder überwachte Dateien, um KI-gestützte Namen, Tags und Metadaten zu erzeugen. Je nach Dateityp werden Vorschauen, extrahierter Text, kompakte Zusammenfassungen, Audio-Metadaten oder Transkripte verwendet.' },
         { eyebrow: 'KI', title: 'Cloud, BYOK und Offline-Modus', body: 'Im Standardmodus laufen Analysen über Zush-Server zu KI-Anbietern. Mit BYOK verwendest du deinen eigenen Anbieter. Im Offline-KI-Modus werden unterstützte Inhalte lokal über Ollama verarbeitet.' },
@@ -86,7 +86,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
     '/privacy-policy': {
       title: 'Politique de confidentialité',
       description: 'Comment Zush traite les fichiers, licences, paiements, analyses et services tiers.',
-      updated: 'Dernière mise à jour: 27 avril 2026',
+      updated: 'Dernière mise à jour: 15 août 2026',
       sections: [
         { eyebrow: 'Données', title: 'Informations traitées', body: 'Zush traite les fichiers que vous sélectionnez ou surveillez pour générer des noms, tags et métadonnées avec l’IA. Selon le type, cela peut utiliser des aperçus, du texte extrait, des résumés compacts, des métadonnées audio ou des transcriptions.' },
         { eyebrow: 'IA', title: 'Cloud, BYOK et hors ligne', body: 'Par défaut, l’analyse passe par les serveurs Zush vers des fournisseurs IA. Avec BYOK, vous utilisez votre propre fournisseur. En mode hors ligne, les contenus pris en charge sont traités localement via Ollama.' },
@@ -127,7 +127,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
     '/privacy-policy': {
       title: 'Política de privacidade',
       description: 'Como o Zush lida com arquivos, licença, pagamentos, análises e serviços terceiros.',
-      updated: 'Última atualização: 27 de abril de 2026',
+      updated: 'Última atualização: 15 de agosto de 2026',
       sections: [
         { eyebrow: 'Dados', title: 'Informações processadas', body: 'O Zush processa arquivos selecionados ou monitorados para gerar nomes, tags e metadados com IA. Dependendo do tipo, usa prévias, texto extraído, resumos compactos, metadados de áudio ou transcrições.' },
         { eyebrow: 'IA', title: 'Cloud, BYOK e offline', body: 'Por padrão, análises passam pelos servidores do Zush para provedores de IA. Com BYOK, você usa seu próprio provedor. No offline, conteúdos compatíveis são processados localmente via Ollama.' },
@@ -168,7 +168,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
     '/privacy-policy': {
       title: 'Política de privacidad',
       description: 'Cómo Zush trata archivos, licencia, pagos, analítica y servicios de terceros.',
-      updated: 'Última actualización: 27 de abril de 2026',
+      updated: 'Última actualización: 15 de agosto de 2026',
       sections: [
         { eyebrow: 'Datos', title: 'Información procesada', body: 'Zush procesa archivos seleccionados o vigilados para generar nombres, etiquetas y metadatos con IA. Según el tipo, usa vistas previas, texto extraído, resúmenes compactos, metadatos de audio o transcripciones.' },
         { eyebrow: 'IA', title: 'Cloud, BYOK y offline', body: 'Por defecto, los análisis pasan por servidores de Zush hacia proveedores de IA. Con BYOK usas tu propio proveedor. En offline, el contenido compatible se procesa localmente con Ollama.' },
@@ -209,7 +209,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
     '/privacy-policy': {
       title: 'Privacybeleid',
       description: 'Hoe Zush omgaat met bestanden, licenties, betalingen, analyse en externe services.',
-      updated: 'Laatst bijgewerkt: 27 april 2026',
+      updated: 'Laatst bijgewerkt: 15 augustus 2026',
       sections: [
         { eyebrow: 'Data', title: 'Welke informatie wordt verwerkt', body: 'Zush verwerkt geselecteerde of bewaakte bestanden om AI-namen, tags en metadata te maken. Afhankelijk van het type gebruikt Zush previews, geëxtraheerde tekst, compacte samenvattingen, audiometadata of transcripties.' },
         { eyebrow: 'AI', title: 'Cloud, BYOK en offline', body: 'Standaard lopen analyses via Zush-servers naar AI-providers. Met BYOK gebruik je je eigen provider. Offline wordt ondersteunde inhoud lokaal via Ollama verwerkt.' },
@@ -250,7 +250,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
     '/privacy-policy': {
       title: 'Informativa sulla privacy',
       description: 'Come Zush gestisce file, licenze, pagamenti, analisi e servizi di terze parti.',
-      updated: 'Ultimo aggiornamento: 27 aprile 2026',
+      updated: 'Ultimo aggiornamento: 15 agosto 2026',
       sections: [
         { eyebrow: 'Dati', title: 'Informazioni elaborate', body: 'Zush elabora file selezionati o monitorati per generare nomi, tag e metadati con IA. In base al tipo usa anteprime, testo estratto, riassunti compatti, metadati audio o trascrizioni.' },
         { eyebrow: 'IA', title: 'Cloud, BYOK e offline', body: 'Di default le analisi passano dai server Zush a provider IA. Con BYOK usi il tuo provider. Offline elabora contenuti supportati localmente via Ollama.' },
@@ -291,7 +291,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
     '/privacy-policy': {
       title: 'プライバシーポリシー',
       description: 'Zush がファイル、ライセンス、支払い、分析、外部サービスを扱う方法。',
-      updated: '最終更新: 2026年4月27日',
+      updated: '最終更新: 2026年8月15日',
       sections: [
         { eyebrow: 'データ', title: '処理される情報', body: 'Zush は選択または監視されたファイルを処理し、AI による名前、タグ、メタデータを生成します。種類によりプレビュー、抽出テキスト、要約、音声メタデータ、文字起こしを利用できます。' },
         { eyebrow: 'AI', title: 'クラウド、BYOK、オフライン', body: '標準では Zush サーバー経由で AI プロバイダーに分析を送ります。BYOK では自分のプロバイダーを使い、オフラインでは Ollama でローカル処理します。' },
@@ -332,7 +332,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
     '/privacy-policy': {
       title: '개인정보 처리방침',
       description: 'Zush가 파일, 라이선스, 결제, 분석, 타사 서비스를 처리하는 방식.',
-      updated: '마지막 업데이트: 2026년 4월 27일',
+      updated: '마지막 업데이트: 2026년 8월 15일',
       sections: [
         { eyebrow: '데이터', title: '처리되는 정보', body: 'Zush는 선택하거나 모니터링하는 파일을 처리해 AI 이름, 태그, 메타데이터를 생성합니다. 파일 유형에 따라 미리보기, 추출 텍스트, 요약, 오디오 메타데이터, 전사를 사용할 수 있습니다.' },
         { eyebrow: 'AI', title: '클라우드, BYOK, 오프라인', body: '기본적으로 분석은 Zush 서버를 거쳐 AI 제공자로 전달됩니다. BYOK는 자신의 제공자를 사용하고, 오프라인은 Ollama로 로컬 처리합니다.' },
@@ -373,7 +373,7 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
     '/privacy-policy': {
       title: '隐私政策',
       description: 'Zush 如何处理文件、许可证、支付、分析和第三方服务。',
-      updated: '最后更新：2026 年 4 月 27 日',
+      updated: '最后更新：2026 年 8 月 15 日',
       sections: [
         { eyebrow: '数据', title: '处理哪些信息', body: 'Zush 会处理你选择或监控的文件，用 AI 生成名称、标签和元数据。根据文件类型，音频还可使用元数据或转录上下文。' },
         { eyebrow: 'AI', title: '云端、BYOK 与离线', body: '默认情况下，分析会通过 Zush 服务器发送给 AI provider。BYOK 使用你自己的 provider。离线模式会通过 Ollama 在本地处理支持的内容。' },

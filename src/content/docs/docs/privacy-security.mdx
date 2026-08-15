@@ -1,7 +1,7 @@
 ---
 title: Privacy and Security in Zush
 description: Understand what Zush processes in Cloud AI, BYOK, and Offline AI modes, including file previews, extracted text, metadata, provider requests, and local processing.
-lastUpdated: 2026-07-31
+lastUpdated: 2026-08-15
 sidebar:
   order: 33
   label: Privacy and security
@@ -41,7 +41,7 @@ If you handle documents under confidentiality or regulatory obligations — pati
 
 - **Offline AI** processes supported files entirely on your device with local models. Nothing about the file content is transmitted. This is the mode to prefer for regulated content.
 - **BYOK** sends analysis to your own provider account (OpenAI, Anthropic, or Google) under the agreement your organization has with that provider.
-- **Cloud mode** uses Zush's managed AI processing and is designed for general files, not documents you are obligated to keep in-house.
+- **Cloud mode** uses Zush's managed AI processing through Groq, Google Gemini, or Alibaba Cloud Model Studio (Qwen) and is designed for general files, not documents you are obligated to keep in-house. Qwen requests may use a Global service deployment scope where encrypted transient inference data can be processed outside the selected US region, including within or outside China; static request data remains in the selected US region.
 
 In every mode, renaming happens in place on your disk: Zush never uploads, moves, or stores your files, and filenames and folder structure stay local.
 
