@@ -25,8 +25,7 @@ const thumbnail = getBlogThumbnail(post.translationOf ?? post.slug);
 <article class={styles.BlogPostCard}>
   <a class={styles.BlogPostCard__Link} href={href}>
     <Image
-      alt=''
-      aria-hidden='true'
+      alt={`${post.title} guide thumbnail`}
       class={styles.BlogPostCard__Image}
       decoding='async'
       densities={[1, 2]}
