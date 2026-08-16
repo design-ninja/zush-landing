@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.8.5.0] - 2026-08-16
+
+### Improved
+- Batch AI renames and selected suggestion updates now run faster, especially for larger sets of files.
+- Free-credit limits are clearer: Zush shows the upgrade screen immediately when no credits remain and after the last credit is used.
+- The usage ring now animates as credits change, and AI mode and template controls keep their state more reliably.
+
+### Fixed
+- Canceling AI Rename now stops analysis and clears the current list.
+- Fixed startup-to-tray state, notification sound preferences, and Windows 10 visual fallbacks.
+- Improved reliability for monitored folders, file metadata, and temporary network failures.
+
+
 ## [3.8.4.0] - 2026-08-14
 
 ### Improved
