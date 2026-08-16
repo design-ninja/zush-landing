@@ -314,6 +314,39 @@ for (const route of PRIVATE_ROUTES) {
   );
 }
 
+const photoOrganizationGuidePath = '/blog/best-ways-to-organize-photos-on-mac';
+const photoOrganizationGuideHtml = readFileSync(
+  htmlFileForPath(photoOrganizationGuidePath),
+  'utf8',
+);
+assertIncludes(
+  photoOrganizationGuideHtml,
+  '"@type":"HowTo"',
+  `HowTo JSON-LD missing for ${photoOrganizationGuidePath}`,
+);
+assertIncludes(
+  photoOrganizationGuideHtml,
+  '"name":"How to Organize Photos on Mac in 7 Steps"',
+  `Photo organization HowTo name missing for ${photoOrganizationGuidePath}`,
+);
+for (const productPath of ['/rename-photos-with-ai', '/mac', '/for-photographers', '/ai-file-organizer']) {
+  assertIncludes(
+    photoOrganizationGuideHtml,
+    `href="${productPath}"`,
+    `Product path ${productPath} missing from ${photoOrganizationGuidePath}`,
+  );
+}
+
+const namingGuidePath = '/blog/file-naming-conventions-best-practices';
+const namingGuideHtml = readFileSync(htmlFileForPath(namingGuidePath), 'utf8');
+for (const productPath of ['/batch-rename-files', '/ai-file-organizer', '/mac', '/windows']) {
+  assertIncludes(
+    namingGuideHtml,
+    `href="${productPath}"`,
+    `Product path ${productPath} missing from ${namingGuidePath}`,
+  );
+}
+
 const homepageHtml = readFileSync(join(DIST, 'index.html'), 'utf8');
 const homepageJsonLdBlocks = getJsonLdBlocks(homepageHtml).map((block) => JSON.parse(block));
 const homepageFaq = homepageJsonLdBlocks.find((item) => item['@type'] === 'FAQPage');

@@ -269,4 +269,39 @@ export const HOW_TO_SCHEMAS: Record<string, HowToData> = {
       },
     ],
   },
+  'best-ways-to-organize-photos-on-mac': {
+    name: 'How to Organize Photos on Mac in 7 Steps',
+    description:
+      'Choose Apple Photos, Finder, or a hybrid library, then use a durable folder structure, descriptive filenames, portable dates, focused tags, retrieval tests, and a 3-2-1 backup.',
+    steps: [
+      {
+        name: 'Choose the library',
+        text: 'Use Apple Photos for timeline browsing and albums, Finder for direct file access, or a hybrid setup when personal and work images need different systems.',
+      },
+      {
+        name: 'Create one durable structure',
+        text: 'Use a Year/Month/Event or Year/Project folder structure instead of adding new folders whenever the library feels messy.',
+      },
+      {
+        name: 'Rename generic files',
+        text: 'Replace IMG, DSC, and Screenshot filenames with names that describe the subject, event, client, or location.',
+      },
+      {
+        name: 'Keep dates portable',
+        text: 'Include the capture or project date in important filenames so the context survives exports, sharing, and folder moves.',
+      },
+      {
+        name: 'Use a small tag vocabulary',
+        text: 'Reserve Finder tags for status, client, or project labels that need to work across folders.',
+      },
+      {
+        name: 'Test retrieval',
+        text: 'Search for a real photo in Spotlight without browsing folders. If you cannot find it, improve the filename or metadata.',
+      },
+      {
+        name: 'Back up with the 3-2-1 rule',
+        text: 'Keep three copies of the photo library on two storage types, with one copy stored off-device or off-site.',
+      },
+    ],
+  },
 };
