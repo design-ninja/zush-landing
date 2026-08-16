@@ -105,9 +105,50 @@ const RenamePhotosWithAI = () => (
         ],
       },
     ]}
+    directAnswerSection={{
+      heading: 'How do you rename photos by what they show?',
+      answer:
+        'Use content-aware photo renaming when camera metadata cannot describe the scene. Zush analyzes the visible content of HEIC, JPG, TIFF, AVIF, and major RAW formats, proposes a distinct searchable name for each image, and lets you combine that description with dates, counters, or project fields before applying the batch.',
+      steps: [
+        'Import a representative set of photos, including the RAW and HEIC formats used in the real library.',
+        'Choose whether the filename should lead with a date, event, client, subject, or AI description.',
+        'Review duplicate handling and ambiguous scenes, then apply the batch with undo history available.',
+      ],
+    }}
+    comparison={{
+      eyebrow: 'Photo naming approaches compared',
+      title: 'Choose metadata rules or visual content by the job',
+      intro:
+        'Dates and camera metadata are ideal for chronological archives. Visual analysis is useful when the filename must describe the subject, location, document, product, or event visible in each image.',
+      headers: { tool: 'Approach', bestFor: 'Best for', gap: 'Where it stops' },
+      rows: [
+        {
+          tool: 'Finder batch rename',
+          bestFor: 'Adding one shared event label or number sequence to a selected photo set',
+          gap: 'Every image receives the same pattern, so the filename still cannot describe what is visible in each frame.',
+        },
+        {
+          tool: 'EXIF-based renamers',
+          bestFor: 'Date, camera, lens, and sequence conventions for consistent photography workflows',
+          gap: 'Metadata can say when and how a photo was taken, but not that it shows a product, person, landmark, or receipt.',
+        },
+        {
+          tool: 'Apple Photos and DAM software',
+          bestFor: 'Library search, albums, faces, locations, edits, and catalog metadata',
+          gap: 'The catalog may understand the image while the exported file keeps a generic IMG_ or camera filename.',
+        },
+        {
+          tool: 'Zush',
+          bestFor: 'Searchable filenames for mixed HEIC, RAW, JPG, TIFF, screenshots, and exported image folders',
+          gap: 'Visual analysis is unnecessary when a strict date-camera-sequence convention already meets the retrieval need.',
+        },
+      ],
+    }}
     faqItems={faqItems}
     relatedPages={[
       { title: 'Rename Screenshots with AI', href: '/rename-screenshots-with-ai' },
+      { title: 'Batch Rename Files with AI', href: '/batch-rename-files' },
+      { title: 'Offline AI File Renamer', href: '/offline-ai-file-renamer' },
       { title: 'Rename Videos with AI', href: '/rename-videos-with-ai' },
       { title: 'Rename PDFs with AI', href: '/rename-pdf-with-ai' },
       { title: 'Zush for Mac', href: '/mac' },

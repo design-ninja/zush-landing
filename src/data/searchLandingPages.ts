@@ -571,6 +571,45 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       'An AI batch rename tool renames many files in one workflow while giving each file a content-aware name. Zush reads screenshots, photos, PDFs, documents, videos, audio, and design files in mixed folders, then lets you review every name before applying changes.',
     showcaseSlides: sharedSlides,
     faqItems: batchRenameFaq,
+    directAnswerSection: {
+      heading: 'How do you batch rename files by content?',
+      answer:
+        `Use a content-aware batch renamer when every file needs a different name. Zush reads ${SUPPORTED_FORMAT_COUNT} formats on Mac and Windows, proposes a searchable filename for each item, and keeps the entire batch reviewable before anything changes. Pattern tools remain better when every file only needs the same prefix, replacement, or sequence.`,
+      steps: [
+        'Add a representative mixed folder instead of starting with the entire archive.',
+        'Choose an AI title or a reusable template with dates, categories, clients, counters, and metadata.',
+        'Review collisions and weak suggestions, apply the batch, and keep rename history until the folder is verified.',
+      ],
+    },
+    comparison: {
+      eyebrow: 'Batch rename methods compared',
+      title: 'Choose the rename method by what must change',
+      intro:
+        'No single batch rename method is best for every folder. The deciding question is whether all files need one mechanical rule or whether each file needs a different name based on its contents.',
+      headers: { tool: 'Method', bestFor: 'Best for', gap: 'Where it stops' },
+      rows: [
+        {
+          tool: 'Finder / File Explorer',
+          bestFor: 'Replacing text, adding one prefix, or numbering a selection with the same rule',
+          gap: 'It works from the current filename and cannot tell one invoice, screenshot, or photo from another.',
+        },
+        {
+          tool: 'Shortcuts / PowerRename',
+          bestFor: 'Repeatable pattern rules, regular expressions, dates, counters, and metadata already present in the file',
+          gap: 'The useful naming logic must be known in advance; mixed folders still need to be sorted into predictable groups.',
+        },
+        {
+          tool: 'Scripts and CLI tools',
+          bestFor: 'Engineering workflows that need custom logic, metadata extraction, or integration with other automation',
+          gap: 'They require maintenance and normally cannot infer a distinct descriptive title from every visual or document.',
+        },
+        {
+          tool: 'Zush',
+          bestFor: 'Mixed folders where every file needs its own content-aware name, with preview, templates, and undo',
+          gap: 'Content analysis is unnecessary overhead when one simple deterministic rename rule already solves the batch.',
+        },
+      ],
+    },
     relatedPages: [
       { title: 'Batch Rename Docs', href: '/docs/batch-rename-files' },
       { title: 'Templates Guide', href: '/docs/templates' },
@@ -584,6 +623,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     relatedBlogPosts: [
       { title: 'Rename Files by Content', href: 'rename-files-by-content-guide' },
       { title: 'Mac batch rename methods', href: 'batch-rename-files-on-mac-complete-guide' },
+      { title: 'Preview and Undo a Batch Rename Safely', href: 'how-to-safely-batch-rename-files' },
       { title: 'Auto Rename Files on Mac', href: 'auto-rename-files-mac-guide' },
     ],
     jsonLd: buildFeaturePageJsonLd({

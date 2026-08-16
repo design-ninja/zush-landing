@@ -117,6 +117,16 @@ const RenamePDFWithAI = () => (
         ],
       },
     ]}
+    directAnswerSection={{
+      heading: 'How do you rename PDFs from their contents?',
+      answer:
+        'Use a PDF renamer that reads the document instead of applying one rule to the old filename. Zush extracts text from born-digital PDFs, analyzes visible pages in scanned PDFs, proposes names from fields such as vendor, document type, date, and subject, then lets you review the whole batch before applying it.',
+      steps: [
+        'Start with 10 to 20 representative PDFs, including scans and text-based documents.',
+        'Choose the fields that make the folder searchable, such as vendor, date, document type, or counterparty.',
+        'Review names and collisions, apply the batch, and keep rename history until the documents are verified.',
+      ],
+    }}
     faqItems={faqItems}
     relatedPages={[
       { title: 'Rename Documents with AI', href: '/rename-documents-with-ai' },
@@ -129,6 +139,7 @@ const RenamePDFWithAI = () => (
     relatedBlogPosts={[
       { title: 'How to Automatically Rename Invoices with AI', href: 'automatically-rename-invoices-ai' },
       { title: 'How to Rename PDF Files Automatically', href: 'rename-pdf-files-automatically' },
+      { title: 'How to Rename PDF Files with AI on Mac', href: 'rename-pdf-files-with-ai-mac' },
       { title: 'How to Rename PDF Files with AI on Windows', href: 'rename-pdf-files-with-ai-windows' },
       { title: 'How to Rename Files with AI: Step-by-Step Guide', href: 'rename-files-with-ai-guide' },
     ]}
