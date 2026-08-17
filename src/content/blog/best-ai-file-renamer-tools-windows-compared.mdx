@@ -1,6 +1,6 @@
 ---
 title: "Windows AI Renamer Comparison: 7 Apps Compared (2026)"
-description: "Compare 7 Windows AI renaming apps by install method, local AI, file formats, automation, undo, pricing, free use, and managed-credit limits before choosing."
+description: "Compare 7 Windows AI renaming apps by naming control, ready-made templates, Rename History, file formats, automation, pricing, and key limitations."
 date: "2026-04-23"
 slug: "best-ai-file-renamer-tools-windows-compared"
 platform: "windows"
@@ -8,29 +8,30 @@ topic: "comparisons"
 tags:
   - "AI File Renaming"
   - "Tool Comparisons"
-tldr: "The right Windows AI renamer depends on whether you need a Microsoft Store install, document support, screenshots, PDFs, videos, audio, BYOK, offline AI, folder monitoring, and undo. Zush is the strongest fit when you want one desktop workflow instead of a collection of scripts."
+tldr: "Zush has the most configurable AI naming workflow in this Windows comparison: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting and localization controls, plus Rename History with batch revert. Several apps support local AI, so privacy mode is treated as parity rather than a unique advantage."
 reviewed: "2026-08-17"
 featuredOrder: 1
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
-Quick answer: among the seven Windows AI renaming approaches compared here, start with Zush for mixed folders containing screenshots, PDFs, Office documents, photos, design files, audio, and video. It combines a Microsoft Store install, 100+ published formats, managed cloud AI, BYOK, Offline AI, monitoring, preview, and undo. The remaining entries are included only to clarify pricing and workflow differences.
+Quick answer: among the seven Windows AI renaming approaches compared here, start with Zush when you want to control the convention rather than accept a generic AI title. Ready-made Templates combine with 145+ Naming Blocks, Custom AI Blocks, case, separators, dates, language and metadata; Rename History records each applied change and can restore the batch. Its Microsoft Store install and 100+ published formats cover the rest of a mixed Windows folder.
 
 **Last verified: August 17, 2026** for NameQuick; August 13, 2026 for FilesDesk; July 24, 2026 for RenameClick, AI Renamer, and Renamer.ai.
 
 Sources checked for this update: [Zush for Windows on Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X), [FilesDesk](https://filesdesk.app/), [FilesDesk pricing](https://filesdesk.app/pricing), [FilesDesk docs](https://filesdesk.app/docs), [RenameClick](https://rename.click/) and its [supported file types docs](https://rename.click/docs/getting-started/supported-files), [AI Renamer](https://airenamer.app/), the separate [ai-renamer CLI repository on GitHub](https://github.com/ozgrozer/ai-renamer), [Renamer.ai](https://renamer.ai/), and [NameQuick](https://www.namequick.app/).
 
-| App | Windows install | AI options | Published coverage | Automation | Rollback | Starting price |
+| App | Naming control | Published coverage | Automation | Recovery | Starting price | Main limitation |
 |---|---|---|---|---|---|---|
-| Zush | Microsoft Store, x64 and ARM64 | Managed cloud, BYOK, Ollama | Images, RAW, design, documents, audio, video | Folder monitoring | Full rename history | 50 free; $10/mo or $48 once |
-| FilesDesk | Windows desktop | Managed, BYOK, local | Common images, documents, video, and audio; verify RAW/design/iWork | Watch Folders | Rename-history undo | 15 credits; $8/mo or $40 lifetime |
-| RenameClick | Windows desktop | Bundled local, Ollama, LM Studio, cloud BYOK | Images, documents, audio; no published RAW, design, or video support | Auto Flow can rename and move | Full undo/redo | 30 applies/mo; $48+ VAT lifetime |
-| AI Renamer | Windows desktop | Local or metered cloud | Public examples emphasize images and text documents | Not publicly documented | Not publicly documented | $19 local mode |
-| Renamer.ai | Web and Windows desktop | Managed cloud | 30+ formats, document and vector focus | Magic Folders | One-click undo | 25 files/mo free; $9.95/mo |
-| NameQuick | Windows download; feature parity not fully documented | Managed or self-managed providers | 30+ format categories; verify Windows-specific support | Watch Folders and Rules are vendor-listed | One-click undo is vendor-listed | Managed trial 250/14 days; from $12/mo; $69 self-managed |
-| DIY PowerShell/Python | Script or scheduled task | Your chosen provider/model | Whatever you implement | Fully custom | You must build it | Software may be free; maintenance is not |
+| Zush | <BlogHighlight>Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata</BlogHighlight> | Images, RAW, design, documents, audio, video | Folder monitoring | Full Rename History with batch revert | 50 free; $10/mo or $48 once | Desktop-only workflow |
+| FilesDesk | Naming templates | Common images, documents, video, and audio | Watch Folders | Processing History undo | 15 credits; USD 8/month or USD 40 lifetime | Managed plans meter every filename suggestion; lifetime requires BYOK/local setup |
+| RenameClick | Format patterns, EXIF placeholders, custom instructions | Images, documents, audio | Auto Flow can rename and move | Full undo/redo | 30 applies/mo; $48+ VAT lifetime | No published RAW, design, or video support |
+| AI Renamer | Custom prompts | Public examples emphasize images and text documents | Not publicly documented | Not publicly documented | $19 local mode | No documented folder monitoring or Rename History |
+| Renamer.ai | Templates for document workflows | 30+ formats, document and vector focus | Magic Folders | One-click undo | 25 files/mo free; $9.95/mo | Every paid tier is metered and there is no published BYOK option |
+| NameQuick | Presets, prompts, and Rules | 30+ format categories | Watch Folders and Rules are vendor-listed | One-click undo is vendor-listed | Managed trial 250/14 days; from $12/mo; $69 self-managed | No complete public Windows feature-and-format matrix |
+| DIY PowerShell/Python | Whatever you build | Whatever you implement | Fully custom | You must build it | Software may be free | You own validation, collisions, credentials, maintenance, and rollback |
 
 This is a source-backed comparison, not an independent benchmark of all seven entries. We checked the same decision points in vendor-owned pricing and documentation: Windows install method, mixed-file support, local/BYOK availability, watched-folder automation, preview, rollback, and pricing. Unsupported or undocumented features are marked instead of inferred.
 
@@ -42,11 +43,11 @@ This comparison owns the `best` and `compared` search intent. If you have alread
 
 An AI file renamer is a tool that reads what is inside a file and writes a filename describing it, instead of applying one shared rule to a whole selection. It looks at the text of a document, the visible content of an image or screenshot, or sampled frames of a video, then proposes a different name for each file — `scan_004.pdf` becomes `invoice-7842-webdesign-services.pdf`. The category exists because rule-based bulk rename tools cannot answer the only question that matters in a messy folder: what is this file?
 
-Everything below compares the Windows apps in this category on the practical differences — install path, file-type coverage, whether the AI runs locally, and whether a batch can be reviewed and undone. Use the [safe batch rename checklist](/blog/how-to-safely-batch-rename-files) to test each candidate with the same files and verify its preview, collision handling, extension safety, and recovery path.
+Everything below compares the Windows apps in this category on the practical differences — naming control, ready-to-use workflows, file-type coverage, automation, and whether a batch can be reviewed and undone. Local AI appears in several products and is not scored as a unique advantage. Use the [safe batch rename checklist](/blog/how-to-safely-batch-rename-files) to test each candidate with the same files and verify its preview, collision handling, extension safety, and recovery path.
 
 <BlogProductIntro
   title="Looking for the Windows app?"
-  description="Zush for Windows is the Microsoft Store app for AI file renaming, batch review, folder monitoring, BYOK, and undo across screenshots, PDFs, photos, videos, audio, and documents."
+  description="Build the convention with ready-made Templates, 145+ Naming Blocks and Custom AI Blocks, preview the batch, then restore applied names from Rename History if needed."
   links={[
     { href: '/windows', label: 'Windows AI renamer' },
     { href: '/', label: 'File renamer' },
@@ -79,7 +80,7 @@ If the broader task is keeping Downloads, screenshots, PDFs, and mixed folders o
   <Fragment slot="pricing">Free (50 renames to start), Pro $10/month or $48 one-time, BYOK available on every plan</Fragment>
 </BlogToolMeta>
 
-[Zush for Windows](/windows) is the strongest pick when you need one reviewable workflow for screenshots, videos, PDFs, photos, design assets, audio, and Office documents. Templates and 145+ Naming Blocks keep names consistent; folder monitoring handles new arrivals; preview and rename history make large batches reversible. Managed cloud AI, BYOK, and Ollama cover different privacy and provider requirements.
+[Zush for Windows](/windows) is the strongest pick when you need one reviewable and highly configurable workflow for screenshots, videos, PDFs, photos, design assets, audio, and Office documents. Ready-made Templates and 145+ Naming Blocks define the structure; Custom AI Blocks extract fields that built-in blocks do not cover; formatting, localization, tags, and metadata keep the result consistent. Folder monitoring handles new arrivals, while Rename History records original and new names, folder, and timestamp so an applied batch can be reverted.
 
 Why it stands out on Windows:
 
@@ -87,7 +88,8 @@ Why it stands out on Windows:
 - mixed-file support across image, design, video, audio, and document workflows
 - good fit for screenshot folders, exports, downloads, and scanned PDFs
 - native ARM64 and x64 Store packages
-- clear review-before-apply flow with undo
+- ready-made workflow Templates that can be adapted and assigned per monitored folder
+- clear review-before-apply flow plus persistent Rename History with revert
 
 Best for: Windows users who want a daily tool, not a one-off experiment.
 
@@ -104,7 +106,7 @@ Install Zush from the Microsoft Store, test a copied sample of ten mixed files, 
 FilesDesk offers a $40 Lifetime path for BYOK or local AI, plus managed monthly credits at $8/month for 500 suggestions or $20/month for 2,000.
 Its docs list Watch Folders, custom templates, batch processing, multiple AI providers, and undo through Processing History. The FAQ now explicitly lists common images, PDF/Office documents, video, and audio formats. See the direct [Zush vs FilesDesk comparison](/blog/zush-vs-filesdesk) for the pricing and provider trade-offs.
 
-Best for: Windows users who want a lower-cost BYOK/local license or a managed-credit workflow. Before choosing it for specialist libraries, verify RAW camera, design, and iWork formats against your own files because the checked docs do not publish the same detailed matrix for those categories.
+Best for: Windows users who specifically need an OpenRouter or vLLM path. Main limitation: managed usage is metered, the lifetime plan requires BYOK/local setup, and the checked docs do not publish the same RAW/design/iWork matrix as Zush.
 
 ## 3. RenameClick
 
@@ -167,7 +169,7 @@ Best for: engineering-minded users who enjoy maintaining their own tooling.
 
 ## Verdict
 
-For broad mixed folders, [Zush for Windows](/windows) is the clearest recommendation right now. It fits folders containing screenshots, videos, photos, design files, audio, PDFs, iWork files, and Office documents when you want batch review, templates, Naming Blocks, monitoring, and rollback without building your own system. If local-first analysis or folder sorting matters more than broad media coverage, compare RenameClick. If a lower-cost self-managed license matters more than bundled unlimited managed AI, compare FilesDesk.
+For broad mixed folders, [Zush for Windows](/windows) is the clearest recommendation right now. It has the most configurable naming workflow documented here: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, monitoring, preview, and Rename History with batch revert. It also covers screenshots, videos, photos, design files, audio, PDFs, iWork files, and Office documents. Local AI is available in several apps and should be treated as a privacy requirement, not the main differentiator.
 
 If you want a broader tutorial instead of a comparison, read [How to Rename Files with AI on Windows](/blog/rename-files-with-ai-windows-guide). If your main pain is automation, go next to [Auto Rename Files on Windows](/blog/auto-rename-files-windows-guide).
 
