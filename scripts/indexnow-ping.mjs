@@ -29,6 +29,39 @@ const ENDPOINT = 'https://api.indexnow.org/indexnow';
 const MAX_URLS = 10000;
 const RECENT_HOURS = Number(process.env.INDEXNOW_RECENT_HOURS ?? 48);
 
+// SEO stabilization guard requested for the 17-23 Aug 2026 observation
+// window. These routes were changed by 181a683, 347c092, 2179ac and da26c50
+// and must not receive another IndexNow ping until 24 Aug in Bangkok.
+const STABILIZATION_END = new Date('2026-08-24T00:00:00+07:00').getTime();
+const STABILIZATION_ROUTES = new Set([
+  '/blog/best-ways-to-organize-photos-on-mac',
+  '/blog/file-naming-conventions-best-practices',
+  '/batch-rename-files',
+  '/rename-pdf-with-ai',
+  '/rename-photos-with-ai',
+  '/de/rename-videos-with-ai',
+  '/ja',
+  '/ja/windows',
+  '/ja/rename-pdf-with-ai',
+  '/ja/rename-videos-with-ai',
+  '/ja/rename-photos-with-ai',
+  '/ja/rename-screenshots-with-ai',
+  '/ko',
+  '/ko/mac',
+  '/ko/windows',
+  '/ko/rename-photos-with-ai',
+  '/ko/rename-screenshots-with-ai',
+  '/ko/rename-videos-with-ai',
+  '/ko/rename-pdf-with-ai',
+  '/ko/rename-documents-with-ai',
+  '/zh-cn',
+  '/zh-cn/mac',
+  '/zh-cn/windows',
+  '/zh-cn/rename-photos-with-ai',
+  '/zh-cn/rename-screenshots-with-ai',
+  '/ar/rename-screenshots-with-ai',
+]);
+
 async function getSitemapEntries() {
   const response = await fetch(SITEMAP_URL);
   if (!response.ok) {
@@ -62,6 +95,17 @@ const LOCALE_SLUGS = ['fr', 'de', 'es', 'pt-br', 'it', 'nl', 'tr', 'ja', 'ko', '
 
 function routeOf(url) {
   return new URL(url).pathname.replace(/\/$/, '') || '/';
+}
+
+function applyStabilizationGuard(urls, now = Date.now()) {
+  if (now >= STABILIZATION_END) return urls;
+
+  const allowed = urls.filter((url) => !STABILIZATION_ROUTES.has(routeOf(url)));
+  const blockedCount = urls.length - allowed.length;
+  if (blockedCount > 0) {
+    console.log(`[indexnow] Stabilization guard: withheld ${blockedCount} protected URL(s) until 24 Aug 2026, Asia/Bangkok.`);
+  }
+  return allowed;
 }
 
 // Selects a route in every language: /mac also picks up /de/mac.
@@ -145,7 +189,7 @@ async function main() {
     urlList = [...new Set([...byLastmod, ...byFiles])];
   }
 
-  urlList = urlList.slice(0, MAX_URLS);
+  urlList = applyStabilizationGuard(urlList).slice(0, MAX_URLS);
 
   if (urlList.length === 0) {
     console.log('[indexnow] No changed URLs to submit; skipping ping.');
