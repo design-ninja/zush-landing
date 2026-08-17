@@ -1116,7 +1116,7 @@ const EN_COPY: LocaleCopy = {
     heroTitle: 'AI File Renamer & Organizer\nfor Mac & Windows',
     heroAccent: 'AI File Renamer & Organizer',
     heroSubtitle:
-      'Batch rename files by content with AI. Zush supports 100+ formats across screenshots, PDFs, photos, videos, audio, and documents, extracting exactly the details you choose and turning them into filenames you define.',
+      'Batch rename files by content with AI. Preview every filename, undo changes anytime, and keep your files private. Zush supports 100+ formats across screenshots, PDFs, photos, videos, audio, and documents.',
     heroHighlights: ['Batch rename files by content with AI', 'exactly the details you choose'],
     buyPro: 'Buy PRO',
     trustSignals: ['Get started for free', 'No registration', 'No credit card required'],
