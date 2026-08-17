@@ -1,6 +1,6 @@
 ---
-title: "AIファイルリネームアプリ比較：オフライン・BYOK・クラウド（2026年）"
-description: "AIファイルリネームアプリを、Mac・Windows対応、ローカルAI、BYOK、クラウド連携、料金、対応形式、プレビュー、フォルダ監視、取り消し機能で比較します。"
+title: "AI Renamer アプリの比較 2026: ネーミング、安全性、価格"
+description: "チェック済みの公開ソースを使用して、命名制御、既製のテンプレート、名前変更履歴、形式、自動化、価格設定、AI オプションによって AI 名前変更アプリを比較します。"
 date: "2026-03-23"
 slug: "ai-file-renamer-best-2026-ja"
 locale: "ja"
@@ -10,8 +10,8 @@ topic: "comparisons"
 tags:
   - "AI ファイルの名前変更"
   - "ツールの比較"
-tldr: "各 AI ファイル リネーム機能は異なるものを獲得します。 Mac/Windows 混合ファイルの幅広いワークフローには Zush を、低コストのローカル/BYOK の代替には FilesDesk または RenameClick、Mac ネイティブの深さには NameQuick、クラウド ドキュメントには Renamed.to、そして無料のオプションが必要な場合には Wisfile または Riffo を選択してください。"
-reviewed: "2026-08-13"
+tldr: "この比較で最も構成可能な AI 命名ワークフローの Zush から始めます。既製の Templates、145+ Naming Blocks、Custom AI Blocks、書式設定およびローカリゼーション コントロールに加え、適用されたバッチを復元できる Rename History です。ローカル AI はいくつかの比較対象製品で利用できるため、Zush のみの利点ではなく、プライバシー オプションとして扱われます。"
+reviewed: "2026-08-17"
 featuredOrder: 1
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -19,459 +19,464 @@ import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
-簡単な結論: コンテンツを認識してファイル名を変更する製品が必要な場合は、[Zush](/) から始めてください。このページは、アプリ、価格モデル、オフライン AI、BYOK、クラウド ストレージ ワークフローをすでに比較検討している購入者向けの比較レイヤーです。
+簡単な結論: 最終的な規則の制御を放棄せずに、コンテンツに応じたファイル名の変更を行いたい場合は、[Zush](/) から始めてください。ここでの最も明らかな利点は、既成の Templates、145+ Naming Blocks、Custom AI Blocks、ブロックごとの書式設定、ローカリゼーション、メタデータ設定、および永続的な Rename History の組み合わせです。このページは、命名管理、安全性、フォーマット、自動化、価格を比較検討する購入者向けの比較レイヤーです。
 
-プライバシーが主なクエリの場合は、[オフラインAIファイルリネーム機能](/offline-ai-file-renamer) を使用します。プロバイダー コントロールがメイン クエリの場合は、[BYOK セットアップガイド](/docs/byok) を使用します。不適切な一括名前変更のリスクが決定要因である場合は、[プレビューと元に戻す機能を使用してファイルの名前を安全に一括変更する方法](/blog/how-to-safely-batch-rename-files) をお読みください。まだベンダーを比較している場合は、以下のセクションで、ファイルの対象範囲、プラットフォーム、価格設定、安全性によって市場全体を分類します。
+プライバシーが主なクエリの場合は、 [オフラインAIファイルリネーム機能](/offline-ai-file-renamer)。プロバイダー コントロールがメイン クエリの場合は、 [BYOK セットアップガイド](/docs/byok)。不適切な一括名前変更のリスクが決定要因である場合は、以下をお読みください。 [プレビューと元に戻す機能を使用してファイルの名前を安全に一括変更する方法](/blog/how-to-safely-batch-rename-files)。まだベンダーを比較している場合は、以下のセクションで、ファイルの対象範囲、プラットフォーム、価格設定、安全性によって市場全体を分類します。
 
-**最終確認日: 2026 年 8 月 13 日**（FilesDesk）。RenameClick、NameQuick、Renamer.ai、AI Renamer、Riffo は 2026 年 7 月 24 日、Wisfile と Renamed.to は 2026 年 7 月 9 日に確認しました。
+**最終確認日: 8月 17, 2026** のために NameQuick; 8月 13, 2026 のために FilesDesk; 7月 24, 2026 のために RenameClick, Renamer.ai, AI Renamer、 そして Riffo; Wisfile そして Renamed.to 最後にチェックされたのは7月でした 9, 2026.
 
-このアップデートについてチェックされたソースには、[Zush](/)、[FilesDesk](https://filesdesk.app/pricing)、[FilesDesk ドキュメント](https://filesdesk.app/docs)、[RenameClick](https://rename.click/) およびその [サポートされているファイル形式のドキュメント](https://rename.click/docs/getting-started/supported-files)、[NameQuick](https://www.namequick.app/)、[Renamer.ai](https://renamer.ai/) の公式製品、価格設定、ドキュメント、またはリポジトリ ページが含まれます。 [AI Renamer](https://airenamer.app/)、別の [GitHub の ai-renamer CLI リポジトリ](https://github.com/ozgrozer/ai-renamer)、[Wisfile](https://www.wisfile.ai/)、[Riffo](https://riffo.ai/)、および [Renamed.to](https://www.renamed.to/)。
+このアップデートについてチェックされたソースには、公式製品、価格設定、ドキュメント、またはリポジトリ ページが含まれます。 [Zush](/), [FilesDesk](https://filesdesk.app/pricing), [FilesDesk ドキュメント](https://filesdesk.app/docs), [RenameClick](https://rename.click/) そしてその [サポートされているファイル形式のドキュメント](https://rename.click/docs/getting-started/supported-files), [NameQuick](https://www.namequick.app/), [Renamer.ai](https://renamer.ai/), [AI Renamer](https://airenamer.app/)、別個の [aiリネーム CLI GitHub 上のリポジトリ](https://github.com/ozgrozer/ai-renamer), [Wisfile](https://www.wisfile.ai/), [Riffo](https://riffo.ai/)、 そして [Renamed.to](https://www.renamed.to/).
+
+**ベンチマークステータス:** この記事はソースに裏付けられたものであり、独立した製品テストではありません。一般の [ベンチマーク シミュレーション証拠パック](/benchmarks/ai-file-renamer-simulation-2026/README.md) 提案されたものを示します 300-レコードコーパス、SHA-256 マニフェスト、固定設定、3 回繰り返し raw- データ形式、集計、制限事項。シミュレーションは実行されませんでした Zush または競合他社の製品スコアとして使用してはなりません。
 
 ユースケース別の簡単な選択:
 
-- **Mac および Windows 上の混合ファイル (RAW + HEIC + デザイン + iWork + オーディオ + ビデオ):** Zush
-- **ローカルのみ / プライバシー優先:** RenameClick、FilesDesk Lifetime、AI Renamer ローカル モード (または別の `ai-renamer` CLI)、または Wisfile
-- **デスクトップ アプリを使用したオフライン AI ファイル名前変更:** RenameClick、FilesDesk Lifetime、Mac および Windows の Zush、NameQuick Self-Managed、または AI Renamer
-- **AI ファイル リネームとオーガナイザー ワークフロー:** 名前付けとフォルダー監視のための Zush。マジックフォルダー用の Renamer.ai; NameQuick for Mac 監視フォルダー
-- **Mac ネイティブで Finder と緊密に統合:** NameQuick
-- **ドキュメントの多いワークフローまたはチーム ワークフロー:** Renamer.ai または Renamed.to
-- **無料の開始点:** Wisfile、Riffo、Renamer.ai Starter、Renamed.to 無料クレジット、または Zush 無料名前変更
+- **最も構成可能な名前付けワークフロー:** Zush — 既製 Templates, 145+ Naming Blocks, Custom AI Blocks、書式設定、ローカリゼーション、メタデータ、フォルダーごと Template 割り当て
+- **最も安全に再現可能 Zush ワークフロー:** 適用する前にプレビューし、適用されたバッチを検査して復元します。 Rename History
+- **混合ファイル (RAW + HEIC + デザイン + iWork + オーディオ + ビデオ) on Mac & Windows:** Zush
+- **AI ファイルリネーム機能とオーガナイザーのワークフロー:** Zush ネーミングとフォルダー監視用。他の製品は、異なる監視フォルダーまたはルーティング モデルを追加します
+- **Mac-ディープなネイティブ Finder 統合：** NameQuick
+- **ドキュメントの多いワークフローまたはチームのワークフロー:** Renamer.ai or Renamed.to
+- **低リスクの最初の検査:** 使用 Zush's 50 まず、コピーされた代表フォルダーの名前を変更し、提案された名前を検査し、 Rename History 何かを自動化する前に
+- **ローカルのみ / プライバシー最優先:** いくつかのエントリはローカル モデルをサポートします。 Zush, RenameClick, FilesDesk, NameQuick, AI Renamer、 そして Wisfile;ローカル AI を独自の機能として扱うのではなく、ワークフロー全体を比較する
 
-それぞれが何かを勝ち取ります。適切な選択は、プラットフォーム、実際にフォルダーに配置されるファイルの種類、および 1 回限りの支払い、サブスクリプション、または従量課金制のいずれを希望するかによって異なります。
+適切な選択は、プラットフォーム、実際にフォルダーに配置されるファイルの種類、および 1 回限りの支払い、サブスクリプション、または従量課金制のいずれを希望するかによって異なります。最小の代表的なバッチから開始し、フォルダーの支払いや自動化を行う前に結果を検証します。
 
-AI ファイルリネーム機能は、実験的な珍品から実用的なツールになりました。このカテゴリは十分に成熟しており、AI の品質だけでなく、フォーマットのサポート、名前の一括変更速度、フォルダーの監視、価格設定、プラットフォームへの適合性においても、オプション間に実際の違いが存在するようになりました。
+AI ファイルリネーム機能は、フォーマットのサポート、レビューと元に戻す保護機能、フォルダーの監視、価格設定、プラットフォームへの適合性において大きく異なります。製品は共有コーパスで個別にベンチマークされていないため、この記事では品質スコアを割り当てません。
 
-この比較では、公開ソースを使用して 2026 年に知っておく価値のあるコア ツールと、2026 年 7 月 24 日に再検証された競合他社のエントリを取り上げます。また、混同されることが多い類似の検索意図も分離しています。つまり、AI 名前変更アプリ、AI バッチ名前変更ツール、自動ファイル名変更、PDF 名変更、写真名変更、スクリーンショット名変更、ビデオ名変更、ドキュメント名変更、クラウド ストレージ名変更、オフライン AI ワークフローなどです。
+この比較では、ベンダー所有の製品、価格設定、ドキュメント、およびリポジトリ ソースを使用します。また、AI 名前変更アプリ、AI バッチ名前変更ツール、自動ファイル名変更機能、ドキュメント名前変更機能、クラウド ストレージ名前変更機能、オフライン AI ワークフローなど、混同されることが多い検索意図も分離されます。
 
-プラットフォーム固有の比較が必要な場合は、[Mac AI リネームアプリの比較](/blog/best-ai-file-renamer-tools-mac-compared) または [Windows AI リネームアプリの比較](/blog/best-ai-file-renamer-tools-windows-compared) にアクセスしてください。このページは意図的に広い範囲を保っています。
+プラットフォーム固有の比較が必要な場合は、次のサイトにアクセスしてください。 [Mac AI renamer アプリの比較](/blog/best-ai-file-renamer-tools-mac-compared) or [Windows AI renamer アプリの比較](/blog/best-ai-file-renamer-tools-windows-compared)。このページは意図的に広い範囲を保っています。
 
-## オフライン AI、BYOK、およびオーガナイザーの意図
+## ネーミング制御、リカバリ、AIモード
 
-「AI file renamer」を検索すると、次の 3 つの異なる意味が含まれることがよくあります。
+「AI file renamer」を検索すると、さまざまなジョブが混在することがよくあります。最も重要な分かれ目は、クラウドとローカル (いくつかの製品はローカル モデルを提供しています) ではなく、ユーザーが命名規則をどれだけ正確に定義し、適用後に復元できるかということです。
 
-|検索意図 |何を探すか |強力なフィット感 |
+| 検索意図 | 何を探すか | 強く適合 |
 |---|---|---|
-|オフライン AI ファイルリネーム機能 |ローカル モデルのサポート、サポートされているファイルのクラウド アップロードなし、適用前のプレビュー | RenameClick、FilesDesk Lifetime、AI Renamer ローカル モード、`ai-renamer` CLI、Wisfile、Mac および Windows 上の Zush、NameQuick セルフマネージド |
-| BYOK AI ファイル名変更ツール |独自の Gemini、OpenAI、Claude、Groq、OpenRouter、またはローカル エンドポイント キーを使用する | Zush、FilesDesk Lifetime、NameQuick セルフマネージド、RenameClick、AI Renamer ローカル モード |
-| AIファイルリネーム＆オーガナイザー |フォルダー監視、フォルダー監視、テンプレート、名前変更履歴、ロールバック | Zush、RenameClick、FilesDesk、Renamer.ai、NameQuick |
-|クラウドストレージファイルリネーム | Google ドライブ、Dropbox、OneDrive、チーム ルール、ドキュメント ワークフロー |に名前変更されました。
+| 構成可能な AI 命名 | 既製のワークフロー、構造化されたファイル名フィールド、カスタム AI 抽出、書式設定、言語、メタデータ | Zush には、この比較で最も詳細に文書化された組み合わせがあります: Templates、145+ Naming Blocks、Custom AI Blocks、フォーマット、ローカリゼーション、およびメタデータ |
+| 安全なバッチ名前変更 | 適用前のプレビューに加え、元の名前と新しい名前の永続的な記録とバッチ復帰パス | Zush は、元の名前、新しい名前、フォルダー、およびタイムスタンプを Rename History に記録します。いくつかの競合他社も元に戻す | を文書化しています。
+| オフライン AI ファイル リネーム機能 | ローカル モデルのサポート、サポートされているファイルのクラウド アップロードなし、適用前のプレビュー | RenameClick、FilesDesk ライフタイム、AI Renamer ローカル モード、`ai-renamer` CLI、Wisfile、Mac および Windows、NameQuick セルフマネージド | の Zush
+| BYOK AI ファイル リネーム | 独自の Gemini、OpenAI、Claude、Groq、OpenRouter、またはローカル エンドポイント キーを使用| Zush、FilesDesk ライフタイム、NameQuick セルフマネージド、RenameClick、AI Renamer ローカル モード |
+| AI ファイルリネーム & オーガナイザー | フォルダー監視、フォルダー監視、テンプレート、名前変更履歴、ロールバック | Zush、RenameClick、FilesDesk、Renamer.ai、 NameQuick |
+| クラウド ストレージ ファイル名変更機能 | Google Drive、Dropbox、OneDrive、チーム ルール、ドキュメント ワークフロー | Renamed.to |
 
-プライバシーを優先する場合は、オフライン AI と BYOK から始めてください。定期的なクリーンアップを優先する場合は、フォルダーの監視から始めて元に戻します。検索を優先する場合は、Finder、Windows Search、Spotlight、およびクラウド ドライブが後で実際に一致できる、わかりやすいファイル名がツールによって生成されることを確認してください。
+ローカル AI は便利なプライバシー オプションですが、このカテゴリにおける独自の Zush の利点ではありません。一貫した検索可能な名前を優先する場合は、ネーミング コントロールと Templates から始めます。定期的なクリーンアップを優先する場合は、フォルダーの監視、プレビュー、および文書化された回復パスが必要です。
 
-### 意図に応じて次にどこに行くべきか
+### 意図的に次にどこに行くか
 
-|あなたのクエリが次のような場合... |最高の次のページ |
+| クエリが次の場合... | 最適な次のページ |
 |---|---|
-| 「AIファイルリネーム」 | [Mac および Windows の AI ファイルリネーム機能](/) |
-| 「AIファイルリネームMac」 | [Mac の AI ファイルリネーム機能](/mac) |
-| 「AI ファイルリネーム Windows」 | [Windows の AI ファイルリネーム機能](/windows) |
+| 「AI ファイル リネーム」 | [AI ファイル リネーム (Mac および Windows)](/) |
+| 「AIファイルリネーム機能」 Mac" | [AI ファイルリネーム機能 Mac](/mac) |
+| 「AIファイルリネーム機能」 Windows" | [AI ファイルリネーム機能 Windows](/windows) |
 | 「オフラインAIファイルリネーム機能」 | [オフラインAIファイルリネーム機能](/offline-ai-file-renamer) |
-| 「AIファイルオーガナイザー」 | [AIファイルオーガナイザー](/ai-file-organizer) |
-| "BYOK ファイルリネーム" | [BYOK セットアップガイド](/docs/byok) |
-| "名前一括変更ツール" | [一括名前変更ツール](/batch-rename-files) |
+| 「AI ファイル オーガナイザー」 | [AI ファイル オーガナイザー](/ai-file-organizer) |
+| "BYOK ファイルリネーム機能」 | [BYOK セットアップガイド](/docs/byok) |
+| "名前一括変更ツール" | [名前一括変更ツール](/batch-rename-files) |
 
 <BlogProductIntro
   title="製品パスを選択してください"
-  description="Zush には、Mac、Windows、オフライン AI、BYOK セットアップ、バッチ名前変更インテント用の個別のランディング ページがあります。この比較を使用して選択し、ワークフローに一致するページに移動します。"
+  description="Zush には、Mac、Windows、オフライン AI、BYOK セットアップ、およびバッチ名前変更インテント用の個別のランディング ページがあります。この比較を使用して選択し、ワークフローに一致するページに移動します。"
   links={[
-    { href: '/', label: 'AIファイルリネーム機能' },
-    { href: '/ai-file-organizer', label: 'AIファイルオーガナイザー' },
-    { href: '/mac', label: 'Macアプリ' },
-    { href: '/windows', label: 'Windowsアプリ' },
-    { href: '/offline-ai-file-renamer', label: 'オフラインAI' },
+    { href: '/', label: 'AI file renamer' },
+    { href: '/ai-file-organizer', label: 'AI file organizer' },
+    { href: '/mac', label: 'Mac app' },
+    { href: '/windows', label: 'Windows app' },
+    { href: '/offline-ai-file-renamer', label: 'Offline AI' },
   ]}
 />
 
-## 何を評価するか
+## 何を評価するのか
 
 ツールを比較する前に、日常の使用において実際に何が重要かを理解してください。
 
-|基準 |なぜそれが重要なのか |
+| 基準 | それが重要な理由 |
 |---|---|
-|コンテンツの認識 |ツールは、ファイルの内容に基づいてファイルに名前を付ける必要があります。
-|フォーマットのサポート |実際のフォルダーには JPG だけでなく、HEIC、RAW、PDF、DOCX も含まれています。
-|バッチ処理 |実際のバッチ ファイル名変更機能では、内容に応じた多くの名前を一度にプレビューして適用する必要があります。
-|自動化 |自動フォルダー監視により、混乱が再発するのを防ぎます。
-|元に戻す/ロールバック |名前の一括変更にはセーフティ ネットが必要です。
-|価格設定の透明性 |コミットする前に、支払う金額を把握してください |
-|プラットフォーム | Mac、Windows、Linux、またはクロスプラットフォーム |
+| コンテンツ認識 | ツールは、ファイルの内容に基づいてファイルに名前を付ける必要があります |
+| 命名制御 | AI の提案には、依然として予測可能な構造、フィールド、書式設定、および言語が必要 |
+| 既製のワークフロー | Templates セットアップ時間を短縮し、繰り返されるジョブの一貫性を維持 |
+| 形式のサポート | 実フォルダーには、JPG | だけでなく、HEIC、RAW、PDF、DOCX が含まれます
+| バッチ処理 | 実際のバッチ ファイル名変更機能では、多くの内容に応じた名前を一度にプレビューして適用する必要があります |
+| 自動化 | フォルダーの自動監視により、乱雑な状態が戻るのを防ぎます |
+| 元に戻す/ロールバック | 一括名前変更にはセーフティネットが必要 |
+| 価格の透明性 | コミットする前に支払う金額を把握する |
+| プラットフォーム | Mac、Windows、Linux、またはクロスプラットフォーム |
 
 ## 比較したツール
 
 ### 1. Zush
 
 <BlogToolMeta platform="Mac and Windows" website="https://zushapp.com/" label="zushapp.com">
-  <Fragment slot="pricing">無料 (開始は 50 回の名前変更)、Pro <BlogHighlight>$10/月、または無制限の PRO 名前変更の場合は $48 の 1 回限り </BlogHighlight>、API コストで BYOK オプション、Mac および Windows の Ollama 経由のオフライン AI</Fragment>
+  <Fragment slot="pricing">Free (50 renames 始める), Pro <BlogHighlight>$10/month or $48 一度</BlogHighlight> 無制限に PRO 名前を変更し、 BYOK でオプション API コスト、オフラインAI経由 Ollama on Mac そして Windows</Fragment>
 </BlogToolMeta>
 
-![Zush AI の名前変更結果には、説明的な適当な名前と緑色のチェックマークが付いたファイルが表示されます](/images/showcase/macos/batch-rename-light.webp)
+![Zush AI による名前変更の結果には、説明的な前後の名前と緑色のチェックマークが付いたファイルが表示されます](/images/showcase/macos/batch-rename-light.webp)
 
-[Zush Mac および Windows のファイル名変更機能](/) は、さまざまな種類のファイルを処理し、画像、デザイン ファイル、ドキュメント、ビデオ、オーディオ用の個別の名前変更ツールではなく、1 つのデスクトップ ワークフローを必要とするユーザーに最適です。 100 を超える形式をサポートしています: 41 の画像形式 (HEIC、AVIF、SVG、RAW を含む)、4 つのデザイン形式 (Sketch、Figma .fig、Adobe Illustrator .ai、PSD)、37 のドキュメントおよび PDF 関連形式 (PDF、Office、iWork、OpenDocument、テキスト、データ、電子メール、および字幕ファイル)、16 のビデオ形式 (MP4、MOV、M4V、 MPEG、3GP、TS、MTS、M2TS、DV、および VOB）、および 7 つのオーディオ形式（MP3、M4A、WAV、FLAC、OGG、WebM、および MPGA を含む）。実際のワークフローでは、電話の写真、カメラの RAW ファイル、デザイン アセット、スキャンした PDF、オフィス ドキュメント、字幕、画面録画、オーディオ ファイルが同じフォルダー内に混在するため、その幅広さが重要になります。ビデオは、これらのツールのほとんどが完全にスキップするカテゴリです。 [AIで動画ファイルの名前を変更する方法](/blog/rename-video-files-with-ai) では、リネーム機能がクリップから実際に何を読み取るかを説明します。
+[Zush ファイルリネーム機能 Mac そして Windows](/) は、さまざまな種類のファイルを扱い、画像、デザイン ファイル、ドキュメント、ビデオ、オーディオ用の個別の名前変更ツールではなく、1 つのデスクトップ ワークフローを必要とするユーザーに最適です。サポートします 100+ formats: 41 画像フォーマット (含む HEIC, AVIF、SVG、および RAW), 4 デザインフォーマット (Sketch, Figma .fig、Adobe Illustrator .ai、および PSD), 37 文書と PDF関連フォーマット (PDF, Office, iWork、OpenDocument、テキスト、データ、電子メール、および字幕ファイル), 16 ビデオ形式 (含む MP4, MOV、M4V、MPEG、3GP、TS、MTS、M2TS、DV、VOB)、 そして 7 オーディオ形式 (含む MP3, M4A, WAV, FLAC、OGG、 WebM、 そして MPGA)。実際のワークフローには携帯電話の写真とカメラが混在するため、その幅広さが重要です RAW ファイル、デザインアセット、スキャンされた PDF、 office ドキュメント、字幕、画面録画、オーディオ ファイルを同じフォルダーに保存します。ビデオは、これらのツールのほとんどが完全にスキップするカテゴリです。 [AIで動画ファイルの名前を変更する方法](/blog/rename-video-files-with-ai) リネーム機能が実際にクリップから何を読み取るかを説明します。
 
 Zush がこのリストの他の部分と比べて際立っている理由は次のとおりです。
 
-- <BlogHighlight>**月額 10 ドルまたは 1 回限り 48 ドル** — 毎月の柔軟性または永久アクセス </BlogHighlight> を選択します。
-- <BlogHighlight variant="accent">**幅広い混合フォーマットをカバー**</BlogHighlight> — RAW、HEIC、デザイン ファイル、iWork、オーディオ、ビデオ、PDF、Office ドキュメント、字幕サイドカーを 1 つのワークフローでサポートします。
-- <BlogHighlight variant="accent">**レビュー最初のバッチ ワークフロー**</BlogHighlight> — 変更を適用する前に名前をプレビューし、バッチを元に戻す必要がある場合は名前変更履歴を使用します。
+- <BlogHighlight>**この比較で最も構成可能な名前付けワークフロー**</BlogHighlight> — 既製 Templates, 145+ Naming Blocks, Custom AI Blocks、カスタム プロンプト、ブロック順序、大文字と小文字、区切り記号、日付形式、言語、 Finder タグと、 Spotlight メタデータ。
+- <BlogHighlight variant="accent">**Templates すぐに使用でき、簡単に適応できるもの**</BlogHighlight> — Smart Rename、スクリーンショット、デザイナー資産、簿記経費、写真家撮影、ビデオ制作、音楽トラック、クライアント会議メモが組み込まれています。それぞれをバッチで再利用したり、監視対象のフォルダーに割り当てることができます。
+- <BlogHighlight variant="accent">**Rename History 実際のリカバリコンテキストを使用**</BlogHighlight> — プレビューして適用した後、 Activity 元の名前、新しい名前、フォルダー、およびタイムスタンプが保持されるため、適用されたバッチを検査して元に戻すことができます。
+- <BlogHighlight>**$10/month or $48 一度** — 毎月の柔軟性または生涯アクセスを選択します</BlogHighlight>.
+- <BlogHighlight variant="accent">**幅広い混合フォーマットをカバー**</BlogHighlight> — RAW, HEIC、デザインファイル、 iWork、オーディオ、ビデオ、PDF、 Office ドキュメントと字幕サイドカーを 1 つのワークフローで作成できます。
+- <BlogHighlight variant="accent">**レビュー最初のバッチ ワークフロー**</BlogHighlight> — 変更を適用して使用する前に名前をプレビューします。 rename history バッチを元に戻す必要がある場合。
 
 **強み:**
 
-- 画像、デザインファイル、ドキュメント、ビデオ、オーディオにわたるコンテンツを意識した名前付け
+- 画像、デザイン ファイル、ドキュメント、ビデオ、オーディオにわたるコンテンツを意識した名前付け
 - 適用前にプレビューで名前を一括変更
 - 新しいファイルの自動名前変更のためのフォルダー監視
-- 再利用可能なテンプレートと、繰り返し可能なファイル名構造のための 145 以上の命名ブロック
+- 再利用可能なテンプレートと、反復可能なファイル名構造用の 145+ Naming Blocks
 - 検索しやすい名前、メタデータ、カスタム プロンプト
 - 複数の AI プロバイダー: Gemini、Groq、OpenAI、Claude
 - Mac および Windows でのローカル Ollama 処理
-- 60 以上の言語をサポート
+- 60+ languages のサポート
 - 完全に元に戻す機能を備えた履歴の名前変更
-- サブスクリプションではなく、1回限りの価格設定
+- サブスクリプションではなく、1 回限りの価格設定
 
 **制限事項:**
 
-- ブラウザ専用ツールではなく、ネイティブ デスクトップ ワークフロー
-- クラウドおよび BYOK 処理にはインターネットが必要です。ローカル Ollama はデバイス上でサポートされているファイルを処理できます
+- ブラウザ専用ツールではなく、ネイティブのデスクトップ ワークフロー
+- Cloud および BYOK の処理にはインターネットが必要です。ローカルの Ollama はデバイス上でサポートされているファイルを処理できます
 
-**こんな方に最適:** ファイル タイプが混在していて、1 回限りのクリーンアップと継続的な自動化の両方を希望し、一度だけ支払いたい Mac および Windows ユーザー。
+**以下に最適:** Mac そして Windows ファイル タイプが混在していて、1 回限りのクリーンアップと継続的な自動化の両方を希望し、一度だけ支払うことを希望するユーザー。
 
-**Zush についてさらに詳しく:** [ファイルリネーム機能](/) · [ファイル名の一括変更](/batch-rename-files) · [Mac のファイル名変更機能](/mac) · [Windows のファイル名変更機能](/windows) · [PDF の名前を変更する](/rename-pdf-with-ai) · [写真の名前を変更する](/rename-photos-with-ai)
+**詳しくはこちら Zush:** [ファイルリネーム機能](/) · [ファイル名の一括変更](/batch-rename-files) · [ファイルリネーム機能 Mac](/mac) · [ファイルリネーム機能 Windows](/windows) · [PDF の名前を変更する](/rename-pdf-with-ai) · [写真の名前を変更する](/rename-photos-with-ai)
 
 <BlogCTA placement='inline' platform='general' />
 
 ### 2. FilesDesk
 
-直接比較: Zush vs [FilesDesk](/blog/zush-vs-filesdesk)。Zush One-Time はクレジット上限なしのマネージド AI を含みます。
-
 <BlogToolMeta platform="Mac and Windows" website="https://filesdesk.app/" label="filesdesk.app">
-  <Fragment slot="pricing">15 の無料クレジット。 500 クレジットの場合は月額 8 ドル、2,000 クレジットの場合は月額 20 ドル。 ローカル AI を使用した場合、生涯 $40 1 回限り</Fragment>
+<Fragment slot="pricing">15 の無料クレジット; 500 credits の場合は毎月 $8/mo、または 2、000 credits の場合は $20/mo。ライフタイム $40 ワンタイム (BYOK/ローカル AI</Fragment>)
 </BlogToolMeta>
 
-FilesDesk は、真のクロスプラットフォームの競合相手です。独自の価格設定とドキュメントが、Mac + Windows、ローカルまたはマネージド AI、BYOK、ウォッチ フォルダー、テンプレート、バッチ処理、そして低生涯価格など、Zush と同じ購入トリガーをターゲットにしているためです。
+FilesDesk 同様のものを対象としているため、含まれています Mac + Windows マネージド AI を使用したワークフロー、 BYOK/ローカルモード、 Watch Folders, templates、バッチ処理、および Processing History。その主な制限は構造的なものです。管理された提案は従量制ですが、ライフタイムパスには独自のものが必要です。 API キーまたはローカル モデル。直接的なトレードオフについては、以下を参照してください。 [Zush vs FilesDesk](/blog/zush-vs-filesdesk).
 
 **強み:**
 
-- Mac および Windows デスクトップ アプリ
-- パブリック ドキュメント リストのウォッチ フォルダー、カスタム テンプレート、バッチ処理、および複数の AI プロバイダー
-- ライフタイム パスは、Claude、Gemini、OpenAI、OpenRouter、Ollama、および vLLM をサポートします
-- ライフタイム パスでは、ファイルはデバイス上に残り、オフラインで動作することが示されます
-- Self-Managed Lifetime は買い切り $40 で、BYOK またはローカルモデルを使用
+- Mac そして Windows デスクトップアプリ
+- パブリック ドキュメント リスト Watch Folders、カスタム テンプレート、バッチ処理、および複数の AI プロバイダー
+- ライフタイム パスは、Claude、Gemini、OpenAI、OpenRouter、Ollama、および vLLM をサポートします。
+- ライフタイム パスによると、ファイルはデバイス上に残り、オフラインで動作すると表示されます
+- Processing History 完了した名前変更を記録し、元に戻すことをサポートします
+- FAQ には、一般的な画像、ドキュメント、ビデオ、オーディオ形式がリストされています
 
 **制限事項:**
 
-- 生涯ライセンスには独自の API キーまたはローカル モデルが必要です。マネージド AI クレジットはサブスクリプションのみです
-- パブリック ドキュメントには、Zush の形式リストに相当する詳細なサポート形式マトリックスが提供されていません。
-- アップデートは、生涯アップデートではなく、ライフタイムに含まれる 12 か月としてリストされます。
-- RAW、iWork、特殊なデザイン形式の詳細な公開一覧はありませんが、FAQ は一般的な音声・動画形式を確認しています
+- ライフタイム ライセンスには、独自の API キーまたはローカル モデルが必要です。マネージド AI クレジットはサブスクリプションのみです
+- 公開ドキュメントには、Zush の形式リストに相当する詳細なサポート形式マトリックスが提供されていません
+- アップデートは、ライフタイムアップデートではなくライフタイムに含まれる12 monthsとしてリストされます。
+- 公開された RAW、iWork、または専門家の設計ファイル カバレッジ リストがチェックされたドキュメントに見つかりません
 
-**こんな方に最適:** 非常に低コストの Mac/Windows BYOK またはローカル AI ファイル リネーム機能を必要とし、ファイル タイプのカバレッジを自分のサンプル フォルダと照合して確認することに抵抗がないユーザー。
+**以下に最適:** 必要なプロバイダーが次のユーザー OpenRouter or vLLM 従量制の管理使用量または自己管理のセットアップを受け入れる人。 **主な制限:** 詳細な公開はありません RAW/デザイン/iWork マトリックスがあり、ライフタイム パス上にバンドルされたマネージド AI はありません。
 
-### 3.RenameClick
+### 3. RenameClick
 
 <BlogToolMeta platform="Desktop app (macOS and Windows)" website="https://rename.click/" label="rename.click">
-  <Fragment slot="pricing">無料で無制限の分析と 30 クレジット/月の適用が可能です。プロ月額 $8+ VAT/月;プロライフタイム $48+ VAT 1 回限り</Fragment>
+<Fragment slot="pricing">無制限の分析が無料で、30 はクレジット/月を適用します。プロ月額 $8+ VAT/月;プロライフタイム $48+ VAT 1 回限り </Fragment>
 </BlogToolMeta>
 
-![RenameClick デスクトップ アプリ インターフェイス (画像: rename.click)](/images/blog/competitors/renameclick.webp)
+![RenameClick デスクトップアプリのインターフェース (画像: 名前を変更.click)](/images/blog/competitors/renameclick.webp)
 
-RenameClick は、このセットの中で最も強力なローカル ファースト オーガナイザーの競合他社です。 macOS と Windows 用のデスクトップ ネイティブ アプリを出荷しています。同社のサイトには、「クラウド アップロード ワークフローではなく、macOS と Windows 上の実際のフォルダー用に構築されている」と記載されています。組み込みのローカル AI、Ollama、LM Studio、オプションのクラウド プロバイダー、AI 検索、ファイルの名前変更と移動の自動化が含まれています。
+RenameClick は、AI Search および rename-plus-folder-routing ワークフローに含まれています。ローカル AI を内蔵した macOS および Windows、Ollama、LM Studio、オプションのクラウド プロバイダー、および Auto Flow 用のデスクトップ アプリが同梱されています。ローカル処理は、Zush を含むいくつかの製品でサポートされているため、利点として扱われません。主な制限は、対応範囲が狭いことです。文書化されたカメラ RAW、デザイン、ビデオのサポートがないことです。
 
 **強み:**
 
-- デスクトップネイティブの Mac および Windows アプリ
-- ダウンロード後にオフラインで動作する、バンドルされた ~4 GB のローカル モデルを備えたローカルファースト ランタイム
+- デスクトップネイティブ Mac および Windows アプリ
+- ダウンロード後にオフラインで動作する、バンドルされた ~4 GB ローカル モデルを備えた - ローカルファースト ランタイム
 - Ollama および LM Studio に加え、オプションの OpenAI、Google AI/Gemini、および Alibaba Cloud Qwen プロバイダーをサポート
-- 形式リストには、10 の画像形式、20 以上のドキュメント形式 (JSON、XML、YAML、HTML、SQL、字幕、ICS/VCF を含む)、およびローカル音声文字起こし付きの 5 つの音声形式が含まれます。
-- 無料利用枠のメーターは変更のみを適用します: 分析は無制限、1 か月あたり 30 件適用されます
+- 形式リストには、10画像形式、20+ドキュメント形式(（JSON、XML、YAML、HTMLを含む）が含まれます。 SQL、字幕、ICS/VCF)、および 5 オーディオ形式 (ローカル音声文字起こし付き)
 - ドキュメントによる完全な元に戻す/やり直しのサポート
-- コンテンツによる AI 検索と Auto Flow フォルダー自動化
-- ローカル処理のための明確なシステム要件
+- コンテンツ別の - AI Search および Auto Flow フォルダーの自動化
+- ローカル処理のシステム要件をクリアする
 
 **制限事項:**
 
-- パブリック形式のリストには、カメラ RAW、ビデオ、アーカイブ、または Sketch/Figma/PSD などのデザイン ファイルは含まれていません。ビデオ、アーカイブ、実行可能ファイルは明示的にサポートされていません。
-- クラウドプロバイダーはMac App Storeバージョンでは利用できません
-- 1回限りのプランは48ドル+VATで、Zushの1回限りのプランである48ドルを上回ります
+- パブリック形式リストには、カメラ RAW、ビデオ、アーカイブ、または Sketch/Figma/PSD などのデザイン ファイルは含まれません — ビデオ、アーカイブ、実行可能ファイルは明示的にサポートされていません
+- Cloud プロバイダーは、Mac App Store バージョンでは利用できません
+- ワンタイム プランは、$48 + VAT で、Zush の $48 ワンタイム プランを上回ります。
 
-**最適な用途:** 広範な混合メディア形式のサポートよりも、ローカルファースト処理、AI 検索、フォルダーの並べ替えを優先するユーザー。
+**以下に最適:** 特に必要なユーザー AI Search または rename-plus-folder-routing です。 **主な制限:** その公開ドキュメントではビデオが除外されており、リストされていません RAW またはデザインフォーマット。
 
-### 4.AI Renamer
+### 4. AI Renamer
 
 <BlogToolMeta platform="Desktop app (Mac & Windows); a separate open-source CLI shares the name" website="https://airenamer.app/" label="airenamer.app">
-  <Fragment slot="pricing">デスクトップ: 1 回限り 19 ドル (ローカル モード)、200 クレジットあたり 10 ドル (クラウド モード)、10 クレジットは無料です。価格ページには CLI やオープンソース層は記載されていません。</Fragment>
+<Fragment slot="pricing">デスクトップ: $19 ワンタイム (ローカル モード)、200 creditsごとの$10 (クラウド モード)、 10 の無料クレジット。価格ページには、CLI またはオープンソース層がリストされていません。</Fragment>
 </BlogToolMeta>
 
-![AI Renamer インターフェイス (画像: airenamer.app)](/images/blog/competitors/ai-renamer.png)
+![AI Renamer インタフェース (画像：airenamer.app)](/images/blog/competitors/ai-renamer.png)
 
-2 つの別個のプロジェクトがこの名前を共有しており、それらを混同すると、有料製品が提供する内容が誇張されます。 **AI Renamer (airenamer.app)** は商用 Mac および Windows デスクトップ アプリで、その価格ページには、1 回あたり 19 ドルのローカル モード、200 クレジットあたり 10 ドルのクラウド モード、およびサインアップ時の 10 クレジットの無料という 3 つの内容が記載されています。 CLI やオープンソース版は宣伝していません。 **`ozgrozer/ai-renamer`** は、GitHub 上にある無関係の無料の GPL-3.0 Node.js CLI で、Ollama、LM Studio、または OpenAI キーで実行され、画像とビデオを (ffmpeg 経由で) 処理します。 「AI Renamer は無料でオープンソースです」と表示されている場合、それは 19 ドルのアプリではなく、GitHub プロジェクトです。
+2 つの別個のプロジェクトがこの名前を共有しており、それらを混同すると、有料製品が提供する内容が誇張されます。 **AI Renamer airenamer.appで** コマーシャルです Mac そして Windows デスクトップ アプリの価格ページには、次の 3 つのことが正確に記載されています。 ローカル モード $19 1 回限りのクラウド モード $10 あたり 200 credits、 そして 10 free サインアップ時のクレジット。いいえを宣伝します CLI オープンソース版はありません。 **`ozgrozer/ai-renamer`** 無関係です free GPL-3.0 Node.js CLI で実行される GitHub 上 Ollama, LM Studio, or an OpenAI キーを押して画像とビデオを処理します (ffmpeg経由)。 「」を見るとAI Renamer is free そしてオープンソース」、それは GitHub プロジェクトであり、 $19 アプリ。
 
 **強み:**
 
-- このセットの 1 回限りのデスクトップの最も安い価格: 無制限のローカル名前変更で 19 ドル
-- ローカル モードでは、Ollama、LM Studio、OpenAI、およびカスタム モデルのサポートがリストされます。
-- クラウド クレジットは価格設定ページごとに有効期限がなく、サインアップ時に 10 個が無料です
-- 個別の GPL-3.0 CLI は、開発者にとって真に無料のローカル パスです
-- カスタム プロンプトと命名ケース スタイル (camelCase、snake_case など)
+- ローカル モード リスト Ollama、LM Studio、OpenAI、およびカスタム モデルのサポート
+- Cloud クレジットは価格設定ページごとに期限切れになることはなく、10 はサインアップ時に無料です
+- 別の GPL-3.0 CLI は、開発者向けの真に無料のローカル パスです。
+- カスタム プロンプトと命名ケース スタイル (camelCase、snake_case など )
 
 **制限事項:**
 
-- 価格ページにはすべてのファイル タイプが記載されていますが、機能ページには依然として画像と PDF/TXT/テキストの例のみが表示されます。公開された形式のリストはありません
-- クラウド モードは 200 回の名前変更ごとに 10 ドル課金されます
-- ページ上のフォルダー監視または自動化はチェックされていません
-- チェックされたページの元に戻す履歴や名前変更履歴はありません
+- 価格ページにはすべてのファイル タイプが記載されていますが、特集ページには依然として画像と PDF/TXT/テキストの例のみが表示されます。公開された形式のリストはありません
+- クラウド モードは、200 renames ごとに $10 で課金されます。
+- ページ上のフォルダー監視または自動化がチェックされていません
+- チェックされたページの元に戻すまたは名前変更の履歴はありません
 - CLI は別のプロジェクトです: 端末セットアップ、数 GB のローカル モデル、GUI なし、ドキュメント解析なし
 
-**最適な用途:** オプションのクラウド品質によるローカル処理を必要とする、プライバシーを重視するユーザーおよび開発者。直接の対戦については、[Zush vs AI Renamer](/blog/zush-vs-airenamer) を読んでください。
+**以下に最適:** プライバシーを重視し、オプションのクラウド品質によるローカル処理を必要とするユーザーと開発者。直接対決については、以下をお読みください。 [Zush vs AI Renamer](/blog/zush-vs-airenamer).
 
 ### 5. Renamer.ai
 
 <BlogToolMeta platform="Desktop app (Windows & Mac) + Web interface" website="https://renamer.ai/" label="renamer.ai">
-  <Fragment slot="pricing">無料 (25 ファイル/月)、Pro $9.95/月 (200 ファイル)、パワー $29.95/月 (1,000 ファイル)、Ultimate $99.95/月 (5,000 ファイル)</Fragment>
+  <Fragment slot="pricing">Free (25 files/月), Pro $9.95/mo (200 files)、 力 $29.95/mo (1,000 files)、 究極の $99.95/mo (5,000 files)</Fragment>
 </BlogToolMeta>
 
-![Renamer.ai デスクトップ アプリのスクリーンショット (画像: renamer.ai)](/images/blog/competitors/renamer-ai.png)
+![Renamer.ai デスクトップアプリのスクリーンショット (画像： renamer.ai)](/images/blog/competitors/renamer-ai.png)
 
-Renamer.ai は、デスクトップ アプリケーションと Web インターフェイスの両方を提供します。デスクトップ アプリはローカル ファイル システムと統合され、自動名前変更用の Magic Folders が含まれています。現在の FAQ には 30 以上の形式がリストされており、製品ページでは BYOK やローカル モデルのワークフローではなく、プレビュー、ワンクリックで元に戻す、OCR/ドキュメント分析、一時処理に重点が置かれています。
+Renamer.ai は、デスクトップ アプリケーションと Web インターフェイスの両方を提供します。デスクトップ アプリはローカル ファイル システムと統合され、自動名前変更用の Magic Folders が含まれています。現在の FAQ には 30+ formats がリストされており、製品ページでは、BYOK やローカル モデルのワークフローではなく、プレビュー、ワンクリックで元に戻す、OCR/ドキュメント分析、一時処理を強調しています。
 
 **強み:**
 
 - Windows および Mac 用のデスクトップ アプリと Web インターフェイス
-- 一般的なドキュメント、スプレッドシート、プレゼンテーション、画像、電子メール ファイルを含む 30 以上のファイル形式
-- ベクトルの範囲は実際です: EPS、SVG、AI (Adobe Illustrator) が明示的にリストされています。 Sketch、Figma、PSD はサポートされていません。
-- 自動フォルダー監視と名前変更のための Magic Folders
-- 適用前にプレビューで元に戻す
+- 一般的なドキュメント、スプレッドシート、プレゼンテーション、画像、電子メール ファイルなどの - 30+ file 形式
+- Vector の範囲は実際です。EPS、SVG、AI (Adobe Illustrator) は明示的にリストされています。 Sketch、Figma、および PSD はありません。
+- Magic Folders (フォルダーの自動監視と名前変更用)
+- 適用前に - Undo プレビューを表示
 - 変数ビルダーを使用したカスタム命名テンプレート
-- 20 以上の言語をサポート
+- 20+ language サポート
 
 **制限事項:**
 
-- サブスクリプション価格は大幅に変動します (月額 9.95 ～ 99.95 ドル)
-- 公開 FAQ の文言では、ファイルは抽出と AI 分析のために送信され、処理後に削除されると述べられています。 BYOK またはローカル Ollama ワークフローではありません
-- BYOK オプションがない AI プロバイダーを修正
+- サブスクリプションの価格は大幅に変動する ($9.95-99.95/month)
+- パブリック FAQ の文言では、ファイルは抽出と AI 分析のために送信され、処理後に削除されると記載されています。 BYOK またはローカル Ollama ワークフローではありません
+- BYOK オプションのない AI プロバイダーを修正しました
 
-**最適な用途:** ドキュメントを操作し、フォルダーの自動化を必要とするクロスプラットフォーム ユーザー。価格と形式のトレードオフについては、[Zush vs Renamer.ai](/blog/zush-vs-renamer-ai) をご覧ください。
+**以下に最適:** ドキュメントを操作し、フォルダーの自動化を必要とするクロスプラットフォーム ユーザー。価格とフォーマットのトレードオフについては、以下をお読みください。 [Zush vs Renamer.ai](/blog/zush-vs-renamer-ai).
 
 ### 6. NameQuick
 
-<BlogToolMeta platform="macOS only (Windows on a wait list)" website="https://www.namequick.app/" label="namequick.app">
-  <Fragment slot="pricing">14 日間のトライアル (50 回の名前変更)。月額 12 ドルから管理され、月額 500 / 2,000 / 5,000 / 10,000 件の名前変更に従量制されます。セルフマネージド 1 デバイスにつき 1 回限り 69 ドル (生涯更新と独自の API キーまたはローカル モデルを含む)</Fragment>
+<BlogToolMeta platform="Mac and Windows downloads" website="https://www.namequick.app/" label="namequick.app">
+<Fragment slot="pricing">マネージド トライアル: 14 days の 250 renames。自己管理トライアル: 50 renames; $12/mo から 500 / 2、000 / 5、000 / 10、000 renames で管理されます。独自の API キーまたはローカル モデル </Fragment> を使用した 1 デバイスの自己管理型 $69 ワンタイム
 </BlogToolMeta>
 
-![NameQuick Mac アプリのインターフェイス (画像: namequick.app)](/images/blog/competitors/namequick.png)
-
-NameQuick は、Finder の統合に重点を置いた洗練された Mac ネイティブ AI リネーム機能です。 OCR、Pages、画像、一般に公開されている Office ファイルが組み込まれている 30 以上の形式をサポートしています。 Finder タグ、コメント、履歴、多言語出力、グローバル ショートカットにより、第一級の macOS 市民であるかのように感じられます。
+NameQuick は、Windows および Mac のダウンロードを公開するようになりました。文書化された Mac ワークフローは、Finder 統合、Watch Folders、ルール、元に戻す、OCR、および 30+ format カテゴリをカバーしています。ベンダーはプラットフォームごとの完全なマトリックスを公開していないため、この比較では、Mac 固有の機能がすべて Windows に存在することを前提としていません。
 
 **強み:**
 
-- 幅広い AI プロバイダーのサポート: OpenAI、OpenRouter、Claude、Gemini、Ollama、LM Studio、セルフマネージド プランの MLX
-- 69 ドルのセルフマネージド プランによる BYOK/ローカル モデル オプション
-- フォルダーの監視 + サブフォルダーへの自動整理
-- ネイティブ Finder タグ、コメント、グローバル ホットキー
+- 幅広い AI プロバイダーのサポート: 自己管理プランの OpenAI、OpenRouter、Claude、Gemini、Ollama、LM Studio、および MLX
+- BYOK/local-model オプション経由 $69 自己管理プラン
+- Watch Folders + サブフォルダーへの自動整理
+- ネイティブ Finder タグ、コメント、およびグローバル ホットキー
 - ワンクリックで元に戻すと回復、さらにコンテンツ検索とコミット前のプレビュー
 - カスタム AI プロンプトと多言語サポート
 
 **制限事項:**
 
-- macOS のみ — Windows はまだビルドされていません (待機リスト)、Linux もありません
-- マネージド プランは月ごとの名前変更 (500 / 2,000 / 5,000 / 10,000 階層) によって測定されるため、コストは機能ではなくボリュームに応じて決まります。
-- 69 ドルのセルフマネージド パスは、Zush の 48 ドルのワンタイム プランよりも前払い料金が高く、1 台のデバイスを対象としていますが、独自の API キーまたはローカル モデルのセットアップが必要です。
+- Linux ビルドは公開されておらず、Windows と Mac の機能の同等性は完全には文書化されていません
+- マネージド プランは月ごとの名前変更によって課金されます (500 / 2,000 / 5,000 / 10、000 階層 ) のため、コストは機能ではなくボリュームに比例します。
+- $69 セルフマネージド パスは、Zush の $48 ワンタイム プランよりも前払い料金が高く、1 つのデバイスをカバーしますが、独自の API キーまたはローカル モデルのセットアップが必要です。
 
-**こんな人に最適:** Finder との緊密な統合を希望し、69 ドルと独自の API キーまたはローカル モデルを喜んで支払う Mac パワー ユーザー。直接プラットフォームと BYOK のトレードオフについては、[Zush vs NameQuick](/blog/zush-vs-namequick) を参照してください。
+**次の場合を考慮してください。** 文書化された Finder ワークフローまたはその自己管理プロバイダー リストが不可欠です。直接の価格設定とフォーマットのトレードオフについては、以下をお読みください。 [Zush vs NameQuick](/blog/zush-vs-namequick).
 
 ### 7. Wisfile
 
 <BlogToolMeta platform="Local desktop app" website="https://www.wisfile.ai/" label="wisfile.ai">
-  <Fragment slot="pricing">完全に無料</Fragment>
+<Fragment slot="pricing">完全無料</Fragment>
 </BlogToolMeta>
 
-![Wisfile ローカル ファイル リネーム インターフェイス (画像: wisfile.ai)](/images/blog/competitors/wisfile.webp)
+![Wisfile ローカルファイルリネームインターフェイス (画像： wisfile.ai)](/images/blog/competitors/wisfile.webp)
 
-Wisfile は、完全にローカルな AI ファイル名変更およびオーガナイザーです。同サイトによると、このサービスは完全にユーザーのデバイス上で実行され、クラウドへの依存はなく、料金も発生せず、データもマシンから流出しないという。
+Wisfile は、完全にローカルな AI ファイルリネームおよびオーガナイザーです。同サイトによると、このサービスは完全にユーザーのデバイス上で実行され、クラウドへの依存はなく、料金も発生せず、マシンからデータが流出することもない。
 
 **強み:**
 
-- マーケティング サイトごとに完全に無料
+- 100% free マーケティングサイトごとに
 - 完全にローカル処理 — クラウドなし、マーケティング サイトごとのデータ漏洩なし
 - サインアップやアカウントは必要ありません
 
 **制限事項:**
 
-- サポートされているファイル形式とプラットフォームの詳細が公開サイトに十分に文書化されていない
+- サポートされているファイル形式とプラットフォームの詳細は、公開サイトに十分に文書化されていません
 - 継続的な自動名前変更のためのフォルダー監視は確認されていません
-- 元に戻す履歴や名前変更履歴は確認されていません
+- 元に戻すまたは名前変更の履歴は確認されていません
 - 公開ドキュメントとコミュニティからのフィードバックが限られた新しいツール
 
-**こんな方に最適:** クラウドに依存せず、完全に無料で完全にローカルな AI ファイル リネーム機能を必要とするユーザー。
+**以下に最適:** ユーザーは、簡単に文書化されたローカル ツールを試してみる準備をしました。 **主な制限:** 確認されていないフォーマット マトリクス、フォルダー監視、または Rename History.
 
 ### 8. Riffo
 
 <BlogToolMeta platform="macOS + Web demo" website="https://riffo.ai/" label="riffo.ai">
-  <Fragment slot="pricing">無料</Fragment>
+<Fragment slot="pricing">無料</Fragment>
 </BlogToolMeta>
 
-![Riffo Mac アプリのインターフェイス (画像: riffo.ai)](/images/blog/competitors/riffo.png)
+![Riffo Mac アプリのインターフェース (画像： riffo.ai)](/images/blog/competitors/riffo.png)
 
-Riffo は、AI を活用したファイルの名前変更とフォルダー整理のための Mac アプリおよび Web デモです。同社の公開ホームページでは、この製品を無料であると位置づけており、ファイル名の一括変更とファイルのフォルダーへの分類を示しています。それ以外には、検証する必要があることはほとんどありません。チェックされたページには、価格設定ページ、形式リスト、元に戻すステートメント、およびフォルダー監視ステートメントはありません。
+Riffo は、AI を活用したファイルの名前変更とフォルダーの整理のための Mac アプリおよび Web デモです。同社の公開ホームページでは、この製品を無料として位置づけており、ファイル名の一括変更とファイルのフォルダーへの分類を示しています。それ以外には、検証すべきことはほとんどありません。チェックされたページには、価格設定ページ、形式リスト、元に戻すステートメント、およびフォルダー監視ステートメントはありません。
 
 **強み:**
 
-- 公開ホームページでは Riffo を無料であると位置づけています
-- クリーンなドラッグアンドドロップインターフェイス
+- 公開ホームページでは Riffo を無料と位置づけています
+- クリーンなドラッグ アンド ドロップ インターフェイス
 - ファイルを自動的にサブフォルダーに分類する自動フォルダー化
 - カスタマイズ可能な名前変更言語
 
 **制限事項:**
 
-- macOS はデスクトップ アプリのみ (ページ上の Windows バージョンはチェックされていません)
-- すべての処理をクラウドに依存
-- 進行中の自動化のためのフォルダー監視は確認されていません
-- 元に戻す履歴や名前変更履歴は確認されていません
-- サポートされている形式のリストが公開されていないため、ファイルの種類を事前に確認することができません
-- 価格ページが公開されていないため、「無料」には明示された制限や約束がありません
+- macOS デスクトップ アプリのみ (no Windows チェックしたページのバージョン)
+- すべての処理がクラウドに依存
+- 進行中の自動化に対するフォルダー監視は確認されていません
+- 元に戻すまたは名前変更の履歴は確認されていません
+- サポートされている形式のリストが公開されていないため、ファイルの種類を事前に確認できません
+- 価格ページは公開されていないため、「無料」には明示された制限や約束はありません
 
-**こんな方に最適:** 自動フォルダー整理機能を備えた無料のシンプルな AI リネーム機能を必要とする Mac ユーザー。
+**以下に最適:** Mac ユーザーは単純な名前変更とフォルダーの分類を評価します。 **主な制限:** 公開された形式リスト、元に戻すステートメント、監視ステートメント、または安定した価格条件はありません。
 
-### 9. 名前を変更しました。
+### 9. Renamed.to
 
 <BlogToolMeta platform="Web app + cloud integrations (Google Drive, Dropbox, OneDrive); REST API, CLI, file watcher daemon; Zapier, Make, n8n" website="https://www.renamed.to/" label="renamed.to">
-  <Fragment slot="pricing">50 個のドキュメントを無料で開始できます (毎月のリセットなし、クレジットは 12 か月間有効です)。従量課金制クレジット パック ($9/1,000 = 各 $0.009、$49/10,000 = 各 $0.0049)。クレジットの有効期限は 12 か月です。 30日間の返金</Fragment>
+  <Fragment slot="pricing">Free 50 始めるための書類 (毎月のリセットはありません。有効なクレジット 12 months);従量課金制クレジット パック ($9/1,000 = $0.009 それぞれ、 $49/10,000 = $0.0049 それぞれ); 12-月のクレジット有効期限; 30-当日返金</Fragment>
 </BlogToolMeta>
 
-![Renamed.to Web アプリ インターフェイス (画像: renamed.to)](/images/blog/competitors/renamed-to.png)
+![Renamed.to ウェブアプリのインターフェース (画像： renamed.to)](/images/blog/competitors/renamed-to.png)
 
 Renamed.to はクラウド/チーム オプションです。既存の Google Drive、Dropbox、または OneDrive 内でドキュメントを分析し、名前を変更します。ファイルはストレージ内に残り、Renamed のサーバーに保存されることはありません。信頼スコアリングを使用すると、確実性の高い名前変更を自動的に適用し、残りを確認できます。
 
 **強み:**
 
 - 主要なクラウド ストレージ プラットフォームとのネイティブ統合
-- 名前変更ごとに支払い、サブスクリプションなし、クレジットは 12 か月間有効期限なし
-- 50 件のドキュメントを無料で開始 (12 か月有効)
-- エッジケースに対する手動レビューによる信頼スコアリング
+- 名前変更ごとに支払い、サブスクリプションなし、12 months のクレジットは期限切れになりません
+- Free 50 始めるための書類 (12-月の有効期限)
+- エッジケースの手動レビューによる信頼スコアリング
 - 保存された命名規則はチーム間で共有可能
-- REST API、CLI、ファイル監視デーモン、Zapier/Make/n8n
-- サイトは 20 以上の言語と 95% 以上のドキュメント ワークフローの精度を宣伝しています
-- 一度に 10 ～ 10,000 個のファイルをバッチ処理
+- REST API, CLI、ファイル監視デーモン、Zapier/Make/n8n
+- Site は、ドキュメント ワークフローで 20+ languages および 95%+ の精度を宣伝します
+- 10～10、000 filesを一度にバッチ処理
 
 **制限事項:**
 
 - ネイティブ デスクトップ アプリなし - ウェブファースト
-- ドキュメント中心 (PDF、DOCX、XLSX、PPTX、スキャン画像); RAW または HEIC 写真のワークフロー向けに構築されていない
+- ドキュメント中心 (PDF、DOCX、XLSX、PPTX、スキャン画像); RAW または HEIC 写真ワークフロー用に構築されていません
 - クラウド処理のみ。完全にローカルな AI を必要とするユーザー向けではありません
 
-**最適な対象:** すでに Google ドライブ / Dropbox を使用していて、従量課金制の名前変更の自動化を希望している会計士、運用チーム、簿記担当者。
+**以下に最適:** すでに Google ドライブ / Dropbox を使用していて、従量課金制の名前変更の自動化を希望している会計士、運用チーム、簿記担当者。
 
 ## 機能比較表
 
-|特集 |Zush |FilesDesk |RenameClick | AI Renamer | Renamer.ai |NameQuick |ウィスファイル |Riffo |に名前変更されました。
+| 機能 | Zush | FilesDesk | RenameClick | AI Renamer | Renamer.ai | NameQuick | Wisfile | Riffo | Renamed.to |
 |---|---|---|---|---|---|---|---|---|---|
-|プラットフォーム | Mac と Windows | Mac と Windows | Mac および Windows (デスクトップネイティブ) |デスクトップ (Mac/Win) |デスクトップ (Win/Mac) + Web | macOS のみ |ローカルデスクトップ | macOS + Web デモ | Web + クラウド統合 |
-|画像・デザインフォーマット | 41 枚の画像 + 4 つのデザイン形式 |写真/画像;詳細なマトリックスが見つかりません | 10 種類の画像フォーマット。 RAW/デザインリストなし |機能の例 + すべてのファイルのステートメント | 30 以上のフォーマットEPS/SVG/AI ベクトル。 RAWなし | 30 以上のフォーマット |詳細は公表されていない |文書化されていない |スキャンした画像/文書 |
-|文書フォーマット | iWork を含む 37 |写真、PDF、請求書、領収書、契約書、スクリーンショット | 20以上（含む） PDF/DOCX/JSON/XML/YAML/HTML/SQL/字幕 | PDF/TXT の例。すべてのファイルのステートメント | 30 個以上のドキュメント/画像/ベクター/メール | PDF、Pages、Office、OCR |詳細は公表されていない |文書化されていない | PDF/Word/Excel/PowerPoint |
-|オーディオ/ビデオ | 7 オーディオ + 16 ビデオ |一般的な音声・動画形式を掲載 | 5 音声文字起こし付き。ビデオはサポートされていません |リストされていません (ビデオは別の CLI で実行されます) |中心ではない |大分類のみ |未確認 |文書化されていない |いいえ |
-|メーター制？ |有料PROではいいえ |マネージド クレジット はい。生涯ノー |無料利用枠あり。プロ番号 |クラウドはい。 $19 現地なし |はい、すべての層で可能です。はい、管理されています。自己管理なし |いいえ |記載なし |はい、クレジットします |
-|名前の一括変更 |はい |はい |はい |はい |はい |はい |はい |はい |はい |
-|フォルダー監視 |はい |はい (フォルダーの監視) |はい (自動フロー) |公的な声明はありません |はい (マジックフォルダー) |はい (フォルダーの監視) |未確認 |未確認 |はい (クラウド フォルダーを監視) |
-|カスタムパターン |テンプレート + 145 以上の命名ブロック |テンプレート |フォーマット + 説明 |カスタム プロンプト/ケース スタイル |テンプレート |プリセット/テンプレート/プロンプト |詳細は公表されていない |限定 |保存されたチーム ルール/プロンプト |
-|元に戻す/ロールバック |はい |はい、Processing History から可能 |はい、ドキュメントごとに完全に元に戻す/やり直します。公的な声明はありません |はい |はい、ワンクリックで元に戻して復元 |未確認 |未確認 |レビュー/信頼性ワークフロー |
-|複数の AI プロバイダー |ジェミニ/Groq/OpenAI/クロード + Ollama |クロード/ジェミニ/OpenAI/OpenRouter/Ollama/vLLM |組み込みローカル/Ollama/LM Studio/OpenAI/Gemini/Qwen | Ollama/LM Studio/OpenAI/カスタム |修正済み | OpenAI/OpenRouter/Claude/Gemini/Ollama/LM Studio/MLX |固定ローカル |固定雲 |固定雲 |
-|無料枠 |開始まで 50 | 15 クレジット |無制限の分析 + 30 クレジット/月を適用 |サインアップ時に 10 クレジット | 25/月 | 14 日間のトライアル、50 回の名前変更 |無料 |自由に配置できるホームページ | 50 ドキュメント/月 |
-| BYOK/ローカル オプション |はい |ライフタイムプラン |はい/プロバイダーの選択 |はい/ローカル/カスタム |パブリック BYOK なし |自己管理 |ローカル |パブリック BYOK なし |いいえ |
+| プラットフォーム | Mac & Windows | Mac & Windows | Mac & Windows (デスクトップネイティブ) | デスクトップ (Mac/勝つ) | デスクトップ (勝つ/Mac) + ウェブ | Mac & Windows;パリティが完全に文書化されていない | ローカルデスクトップ | macOS + Web デモ | ウェブとクラウドの統合 |
+| 画像/デザイン形式 | 41 画像 + 4 デザイン形式 | 写真/画像;詳細なマトリックスが見つかりません。 | 10 画像形式。いいえ RAW/デザインリスト | フィーチャー例 + 全ファイルステートメント | 30+ formats 含むEPS/SVG/AI ベクトル。いいえ RAW | 30+ formats | 詳細は公開されていません | 文書化されていません | スキャンされた画像/ドキュメント |
+| ドキュメント形式 | 37 (iWork を含む) | 写真、PDF、請求書、領収書、契約書、スクリーンショット | 20+ (含む) PDF/DOCX/JSON/XML/YAML/HTML/SQL/字幕 | PDF/TXT の例; all-file ステートメント | 30+ docs/images/vectors/email | PDF、Pages、Office、OCR | 詳細は公開されていません | 文書化されていません| PDF/ワード/エクセル/パワーポイント |
+| オーディオ/ビデオ | 7 オーディオ + 16 ビデオ | 一般的なオーディオおよびビデオ形式のリスト | 5 音声（文字起こし付き）。ビデオはサポートされていません | リストされていません (別の CLI はビデオを行います ) | 中央ではありません | 広いカテゴリのみ | 未確認 | 文書化されていません| いいえ |
+| 従量制ですか? | 支払い済みの場合はいいえ PRO | マネージド クレジットはあります。無期限 いいえ | 無料利用枠 はい。 Pro いいえ | クラウド はい。 $19 ローカル いいえ | はい、すべての層で | マネージド はい。自己管理 いいえ | いいえ | 記載なし | はい、クレジットあり |
+| 名前一括変更 | ○ | ○ | ○ | ○ | ○ | ○ | ○ | はい | はい |
+| フォルダー監視 | はい | はい (Watch Folders) | はい (Auto Flow) | 公的声明はありません | はい (Magic Folders) | はい (Watch Folders) | 未確認 | 未確認 | はい (監視されたクラウドフォルダー) |
+| カスタム パターン | Templates + 145+ Naming Blocks | Templates | フォーマット + 説明 | カスタムプロンプト/ケース スタイル | Templates | プリセット/テンプレート/プロンプト | 詳細は公開されていません | 限定的 | 保存されたチーム ルール/プロンプト |
+| 元に戻す/ロールバック | はい | はい、Processing History を通じて | はい、ドキュメントごとに完全に元に戻す/やり直し | パブリック ステートメントなし | はい| はい、ワンクリックで元に戻して復元 | 未確認 | 未確認 | レビュー/信頼性ワークフロー |
+| 複数の AI プロバイダー | Gemini/Groq/OpenAI/Claude + Ollama | Claude/Gemini/OpenAI/OpenRouter/Ollama/vLLM | 内蔵ローカル/Ollama/LM Studio/OpenAI/Gemini/Qwen | Ollama/LM Studio/OpenAI/カスタム| 固定 | OpenAI/OpenRouter/Claude/Gemini/Ollama/LM Studio/MLX | 固定ローカル | 固定クラウド | 固定クラウド |
+| 無料枠 | 50 で開始 | 15 credits | 無制限の分析 + 30 クレジット/月適用 |サインアップ時 10 credits | 25/月 | 管理対象: 250/14 days;セルフマネージド: 50 トライアルの名前が | 無料 | 自由に配置されたホームページ | 50 ドキュメントが | を開始します
+| BYOK/ローカル オプション | はい | ライフタイム プラン | はい/プロバイダー選択 | はい/ローカル/カスタム | パブリックなし BYOK | セルフマネージド | ローカル | パブリックなし BYOK | なし |
 
 ## 価格比較
 
-直接のサブスクリプションと 1 回限りの内訳については、[Zush vs Renamer.ai](/blog/zush-vs-renamer-ai) を参照してください。
+直接のサブスクリプションと 1 回限りの内訳については、を参照してください。 [Zush vs Renamer.ai](/blog/zush-vs-renamer-ai).
 
-|ツール |無料オプション |有料オプション |年間コスト (推定) |モデル |
+| ツール | 無料オプション | 有料オプション | 年間費用 (推定) | モデル |
 |---|---|---|---|---|
-|Zush |開始までに 50 回の名前変更 | <BlogHighlight>$10/月または $48 1 回 </BlogHighlight> | <BlogHighlight>$48 1 回または $120/年/月 </BlogHighlight> |毎月または 1 回限りの PRO |
-|ZushBYOK |すべてのプランで利用可能 |プロバイダー API のコスト |オプションの API コスト |従量課金制 API |
-|FilesDesk | 15 クレジット | $8/月、$20/月、または $40 生涯 BYOK/ローカル | $40 の生涯パスまたは $96 ～ $240/年サブスクリプション |サブスクリプションまたは自己管理の有効期間 |
-|RenameClick |無制限の分析 + 30 クレジット/月を適用 |月額 $8+ VAT または $48+ VAT 生涯 |生涯 48 ドル以上の VAT、または月額 96 ドル以上の VAT/年 |サブスクリプションまたは生涯 |
-| AI Renamer |サインアップ時に 10 クレジット |デスクトップ $19 の 1 回限り (ローカル モード) または $10/200 のクラウド クレジット | $19、またはクラウドの名前変更ごとに $0.05 | 1 回限りのローカル/従量制クレジット |
-| Renamer.ai | 25 ファイル/月 | $9.95–99.95/月 | 120 ～ 1,200 ドル/年 |従量制サブスクリプション |
-|NameQuick | 14 日間のトライアル、50 回の名前変更 |月額 12 ドル (従量制) またはセルフマネージド 1 回限りの 69 ドル + API/ローカル モデルから管理 | $144+/年 マネージド、または $69+ API/ローカル セットアップ |従量制の管理または 1 回限りの自己管理 |
-|ウィスファイル |完全無料 |該当なし | $0 |無料 |
-|Riffo |無料 |該当なし | $0 |無料 |
-|に名前変更されました。開始まで 50 | $9 / 1,000 (各 $0.009)、$49 / 10,000 (各 $0.0049) |音量に応じて異なります。 ~$49 で 10,000 件の名前変更をカバー |従量課金制クレジット |
+| Zush | 50 renames 始める | <BlogHighlight>$10/month or $48 一度</BlogHighlight> | <BlogHighlight>$48 1回限りまたは $120/year 毎月</BlogHighlight> | 毎月または一度限り PRO |
+| Zush BYOK | すべてのプランで利用可能 | プロバイダー API コスト | オプション API コスト| 従量課金制 API |
+| FilesDesk | 15 credits | $8/mo、$20/mo、または $40 ライフタイム BYOK/ローカル| $40 ライフタイム パスまたは $96-$240/year サブスクリプション | サブスクリプションまたは自己管理のライフタイム |
+| RenameClick | 無制限の分析 + 30 クレジット/月適用 | $8+ VAT/月 または $48+ VAT ライフタイム | $48+ VAT 生涯または $96+ VAT/年/月 | サブスクリプションまたは生涯 |
+| AI Renamer | サインアップ時の 10 credits | デスクトップ $19 ワンタイム (ローカル モード ) または$10/200 クラウド クレジット | $19、またはクラウド名変更ごとの $0.05 | 1 回限りのローカル/従量制クレジット |
+| Renamer.ai | 25 files/月 | $9.95–99.95/month | $120–1、200/年| 従量制サブスクリプション |
+| NameQuick | 管理対象: 250 renames/14 days;セルフマネージド: 50 トライアルの名前が $12/mo から管理された | (metered) またはセルフマネージド $69 ワンタイム + API/ローカル モデル| $144+/年マネージド、または $69 + API/ローカルセットアップ | 従量制課金マネージドまたは 1 回限りのセルフマネージド |
+| Wisfile | 完全無料 | N/A | $0 | 無料 |
+| Riffo | 無料 | 該当なし | $0 | 無料 |
+| Renamed.to | 50 で開始 | $9 / 1、000 ($0.009各)、$49 / 10、000 ($0.0049 各) | ボリュームによって異なります。 ~$49 は 10,000 件の名前変更をカバーします | 従量課金制クレジット |
 
-### 5 年間でどうなるか
+### これが終わったらどうなるか 5 years
 
-価格差はさらに複雑になります。年間約 10,000 回の名前変更を行うヘビー ユーザーの場合:
+価格差はさらに複雑になります。 ~10,000 renames/年を実行するヘビー ユーザーの場合:
 
-|ツール | 1年目 | 3年 | 5年 |
+| ツール | 年 1 | 3 years | 5 years |
 |---|---|---|---|
-| <BlogHighlight>Zush Pro ワンタイム</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> |
-|Zush プロ マンスリー | $120 | $360 | 600ドル |
-|ZushBYOK |オプションの API コスト |オプションの API コスト |オプションの API コスト |
-| FilesDesk の存続期間 | 40ドル | 40ドル | 40ドル |
-| RenameClick Pro のライフタイム | 48 ドル以上の付加価値税 | 48 ドル以上の付加価値税 | 48 ドル以上の付加価値税 |
+| <BlogHighlight>Zush Pro 一度</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> |
+| Zush プロ マンスリー | $120 | $360 | $600 |
+| Zush BYOK | オプションの API コスト | オプションの API コスト | オプションの API コスト|
+| FilesDesk ライフタイム | $40 | $40 | $40 |
+| RenameClick プロライフタイム | $48+ VAT | $48+ VAT | $48+ VAT |
 | AI Renamer デスクトップ | $19 | $19 | $19 |
-|NameQuick セルフマネージド | $69 + API/ローカルセットアップ | $69 + API/ローカルセットアップ | $69 + API/ローカルセットアップ |
-|名前を変更しました。to (10,000 クレジット) | $49 | $147 | $245 |
+| NameQuick セルフマネージド | $69 + API/ローカル セットアップ | $69 + API/ローカル セットアップ| $69 + API/ローカルセットアップ |
+| Renamed.to (10K クレジット) | $49 | $147 | $245 |
 | Renamer.ai プロ | $119 | $358 | $597 |
-| Renamer.ai パワー | $359 | $1,078 | $1,797 |
+| Renamer.ai パワー | $359 | $1、078 | $1、797 |
 
-年間 10,000 ファイルを処理する場合、公開されている有料買い切りの最安は AI Renamer Local Mode の $19、FilesDesk Self-Managed は $40、Zush は $48 で無制限のマネージド AI、幅広いメディア対応、取り消し、フォルダー監視を含みます。
+10、000 files の名前を 1 年ごとに変更する人にとって、決定的な価格設定の事実は、使用量が従量制であるかどうかです。 Zush は、従量課金制のマネージド クラウドの名前変更と、幅広い混合メディア カバレッジ、構成可能な Templates、モニタリング、および完全な Rename History を組み合わせた 1 回限りのオプションです。競合他社のステッカー価格が低いことは、マネージド AI が削除されたり、使用量が計測されたり、文書化されたワークフローの安全対策が省略されたりするため、利点として扱われません。
 
-Wisfile と Riffo は自由に配置できるオプションですが、監視、元に戻す、および広範な形式のサポートに関する公開ドキュメントの深さはトレードオフになります。 AI Renamer の行にある無料のオープンソース パスは、19 ドルの airenamer.app 製品ではなく、GitHub 上の別の `ozgrozer/ai-renamer` CLI です。プライバシーに関する決定が実際にクラウドか BYOK かオフライン ローカル モデルである場合は、[クラウド AI とローカル AI のファイル名変更](/blog/cloud-vs-local-ai-file-renaming) をお読みください。
+Wisfile そして Riffo は free- に位置付けられたオプションですが、監視、元に戻す、および広範な形式のサポートに関する公開ドキュメントの深さはトレードオフになります。の free-およびオープンソースのパス AI Renamer 行は別です `ozgrozer/ai-renamer` CLI ではなく、GitHub 上で $19 airenamer.app 製品。プライバシーに関する決定が本当にクラウドかどうかである場合 BYOK 対オフライン ローカル モデル、読み取り [クラウド AI とローカル AI のファイル名変更](/blog/cloud-vs-local-ai-file-renaming).
 
-![Mac 上の AI を使用して複数のファイルの名前を変更する Zush バッチ名変更ツール](/images/showcase/macos/batch-rename-light.webp)
+![Zush 一括名前変更ツール AI をオンにして複数のファイルの名前を変更する Mac](/images/showcase/macos/batch-rename-light.webp)
 
 ## 選び方
 
-**Mac または Windows で公開されている混合ファイルを最も広範囲にカバーしたい場合:** <BlogHighlight>Zush ワンタイム $48</BlogHighlight>。 RAW の完全サポート (CR2、NEF、ARW、DNG)、デザイン ファイル、iWork ファイル、オーディオ、37 のドキュメントおよび PDF 関連形式、16 のビデオ形式、フォルダー監視、ロールバック、テンプレート、ネーミング ブロック、および無制限の PRO 名前変更。
+**AI がすべてのファイル名を構築する方法を最大限に制御したい場合は、次のようにします。** <BlogHighlight>Zush</BlogHighlight>。既製品から始める Template、 組み​​合わせる 145+ Naming Blocks と Custom AI Blocks、順序、大文字と小文字、区切り記号、日付形式、言語、タグ、メタデータを設定し、結果をプレビューして、適用されたバッチを元に戻せるようにします。 Rename History.
 
-**公開されている有料買い切りの最安を求める場合:** AI Renamer Local Mode は $19。FilesDesk Self-Managed は $40 で API キーまたはローカルモデルが必要、Zush One-Time は $48 で無制限のマネージドクラウド名前変更を含みます。
+**公開されている混合ファイルを最も広範囲にカバーしたい場合は、 Mac or Windows:** <BlogHighlight>Zush ワンタイム $48</BlogHighlight>。満杯 RAW サポート (CR2、NEF、ARW、DNG)、デザインファイル、 iWork ファイル、オーディオ、 37 文書と PDF関連フォーマット、 16 ビデオ形式、フォルダー監視、ロールバック、 Templates, Naming Blocks、無制限 PRO 名前を変更します。
 
-**Mac を使用していて、Finder との緊密な統合が必要な場合:** NameQuick。強力なテンプレート ビルダー、Finder タグ、広範な AI プロバイダーのサポート。 $69 + 独自の API キーまたはローカル モデル。
+**If a Mac-特定の Finder ワークフローが決定的な要件です。** 確認する NameQuickさんの現在 Mac 構築して比較する $69 自己管理パス Zush's $48 1回限りのプラン。
 
-**プライバシーが最優先の場合:** RenameClick、FilesDesk Lifetime、AI Renamer の 19 ドルのローカル モード、または Wisfile。 RenameClick と FilesDesk は、より洗練されたデスクトップ ルートです。 GitHub 上の無料の `ozgrozer/ai-renamer` CLI がターミナル ルートです。
+**プライバシーが最優先の場合:** この比較では、ローカル処理はいくつかの製品で利用できます。 Zush。これをベースライン要件として扱い、残りの部分 (名前付け制御、サポートされている形式、プレビュー、リカバリ、自動化、および価格) を比較します。
 
-**バンドルされたクレジットよりもプロバイダーの制御が重要な場合:** Zush BYOK または NameQuick 自己管理。 Gemini、Groq、OpenAI、または Claude を Zush ワークフローに導入する場合は、[BYOK セットアップ](/docs/byok) から始めます。
+**バンドルされたクレジットよりもプロバイダーの制御が重要な場合:** Zush BYOK or NameQuick 自己管理。から始める [BYOK 設定](/docs/byok) 持っていきたい場合は Gemini, Groq, OpenAI, or Claude に Zush ワークフロー。
 
-**クロスプラットフォームのドキュメント自動化が必要な場合:** Renamer.ai (デスクトップ + Magic Folders を使用した Web) または Renamed.to (Web + Google Drive/Dropbox/OneDrive 統合)。 Renamed.to は、信頼スコアリングと保存されたルールを備えた、より優れたチーム オプションです。
+**クロスプラットフォームのドキュメント自動化が必要な場合:** Renamer.ai (デスクトップ + ウェブ付き Magic Folders) or Renamed.to (ウェブ + Google Drive/Dropbox/OneDrive の統合). Renamed.to 信頼性スコアリングと保存されたルールを備えた、より優れたチーム オプションです。
 
-**無料オプションが必要な場合:** Wisfile (ローカル処理)、Riffo (Mac/Web デモ)、Renamer.ai Starter、Renamed.to の無料クレジット、または Zush の無料スターターの名前変更。無料利用枠を実際の月間ボリュームと比較して確認してください。
+**支払う前にワークフローを検証したい場合:** から始める Zush's 50 renames コピーされた混合フォルダー上にあります。チェック Template コントロール、サポートされていない形式、プレビュー品質、 Rename History 有料プランを選択する前にパスを復元してください。
 
-**いくつかのファイルの名前を一度変更する必要がある場合:** Renamer.ai の Web インターフェイスまたは Renamed.to の無料枠を使用すると、デスクトップのインストールを回避できます。 Riffo の Web デモは、もう 1 つの簡単なテスト パスです。
 
-## 無料の AI ファイルリネーム機能についてはどうですか?
+## どうですか free AIファイルリネーム機能？
 
 このリストにあるすべてのツールには、何らかの無料オプションがあります。本当の問題は、無料利用枠がワークフローに十分であるかどうかです。
 
-Zush FREE では、Cloud AI、BYOK、オフライン AI 全体で共有される 50 件の名前変更が可能です。有料 PRO ではその制限が削除されますが、BYOK プロバイダーの使用量は引き続き Gemini、Groq、OpenAI、または Claude によって個別に請求されます。
+Zush FREE は、クラウド AI、BYOK、オフライン AI 全体で共有される 50 renames を与えます。有料の PRO ではその制限が削除されますが、BYOK プロバイダーの使用量は、Gemini、Groq、OpenAI、または Claude によって別途請求されます。
 
 AI Renamer は完全に無料ですが、ローカルのハードウェアとセットアップが必要です。ブラウザ ツールでは、制限付きの無料アップロードが提供されます。
 
-![各ファイルの「元に戻す」ボタン付きの名前変更履歴を表示する「Zushアクティビティ」タブ](/images/showcase/macos/activity-light.webp)
+![Zush activity タブの表示 rename history ファイルごとに元に戻すボタン付き](/images/showcase/macos/activity-light.webp)
 
-無料オプションの完全なガイドについては、[2026 年に AI でファイルの名前を無料で変更する方法](/blog/rename-files-with-ai-free) をご覧ください。
+完全なガイドについては、 free オプション、読んでください [AI を使用してファイルの名前を変更する方法 Free in 2026](/blog/rename-files-with-ai-free).
 
 ## よくある質問
 
-### Mac と Windows の混合フォルダーに最も強いアプリはどれですか?
+### 混合に最も強いアプリはどれですか Mac そして Windows フォルダ?
 
-Mac と Windows が混在するフォルダーの場合、フォルダーに RAW 写真、デザイン ファイル、iWork および Office ドキュメント、ビデオ、オーディオ、スクリーンショット、PDF が 1 つのワークフローに含まれている場合、Zush が最も適しています。フォルダーのほとんどが一般的な画像やドキュメントである場合は、プライバシー、自動化、および価格設定に応じて、FilesDesk、RenameClick、Renamer.ai、または NameQuick も適している可能性があります。
+Mac フォルダーと Windows フォルダーが混在している場合、フォルダーに RAW 写真、デザイン ファイル、iWork および Office ドキュメント、ビデオ、オーディオ、スクリーンショット、PDF が 1 つのワークフローに含まれている場合、Zush が最も適しています。フォルダーのほとんどが一般的な画像とドキュメントである場合は、プライバシー、自動化、および価格設定に応じて、FilesDesk、RenameClick、Renamer.ai、または NameQuick も適合する可能性があります。
 
-### 最も強力なオフライン AI ワークフローはどれですか?
+### どのオフライン AI ワークフローが最も強力ですか?
 
-最適なオフライン AI ファイル リネーム機能は、完成したアプリが必要か、それともローカル CLI が必要かによって異なります。 Zush は、サポートされているファイルのローカル Ollama モデルを使用したオフライン AI モードをサポートしていますが、AI Renamer の 19 ドルのローカル モード、個別の `ai-renamer` CLI、および Wisfile は、より多くのセットアップやより狭いワークフロー範囲に慣れているユーザー向けのローカルファーストのオプションです。
+最適なオフライン AI ファイル リネーム機能は、完成したアプリが必要か、それともローカルの CLI が必要かによって異なります。 Zush は、サポートされているファイルのローカル Ollama モデルを使用したオフライン AI モードをサポートしますが、AI Renamer の $19 ローカル モード、別の `ai-renamer` CLI、および Wisfile は、慣れているユーザー向けのローカル ファースト オプションです。セットアップが増えるか、ワークフローの対象範囲が狭くなります。
 
-### ファイル名変更における BYOK とは何を意味しますか?
+### どういうことですか BYOK ファイル名の変更を意味しますか？
 
-BYOK は、自分のキーを持参することを意味します。アプリのマネージド AI プロバイダーを使用する代わりに、ツールに応じて独自の Gemini、Groq、OpenAI、Claude、OpenRouter、Ollama、または同様のプロバイダー アカウントに接続します。 BYOK は、プロバイダーの制御、予測可能な API 請求、または大量の名前変更が必要な場合に役立ちます。
+BYOK は、自分のキーを持参することを意味します。アプリのマネージド AI プロバイダーを使用する代わりに、独自の Gemini、Groq、OpenAI、Claude、OpenRouter、Ollama、またはツールに応じて同様のプロバイダー アカウントに接続します。 BYOK は、プロバイダー制御、予測可能な API 請求、または大量の名前変更が必要な場合に便利です。
 
-### AI ファイルリネーム機能はファイルオーガナイザーでもありますか?
+### AI ファイル リネーム機能はファイル オーガナイザーでもありますか?
 
-時々。ファイルリネーム機能はファイル名を変更します。ファイル オーガナイザーは、フォルダーの移動、並べ替え、タグ付け、監視を行うこともあります。 Zush は、コンテンツを意識した名前付けとフォルダー監視、テンプレート、名前付けブロック、Finder タグ、および元に戻すことに重点を置いています。 RenameClick と FilesDesk は、より明示的なオーガナイザー/検索またはテンプレート主導のローカル/BYOK の角度を追加しますが、Renamer.ai と Renamed.to はドキュメントの自動化に重点を置いています。
+時々。ファイルリネーム機能はファイル名を変更します。ファイル オーガナイザーは、フォルダーの移動、並べ替え、タグ付け、監視を行うこともできます。 Zush は、コンテンツを意識した命名とフォルダー監視、テンプレート、Naming Blocks、Finder タグ、および元に戻すことに重点を置いています。 RenameClick と FilesDesk は、より明示的なオーガナイザー/検索またはテンプレート駆動のローカル/BYOK アングルを追加しますが、Renamer.ai と Renamed.to はドキュメントの自動化に重点を置いています。
 
 ### AI を使用してファイルの名前を一括変更しても安全ですか?
 
-ツールがプレビューとロールバックを提供するとより安全です。一括 AI 名前変更では、何百ものファイル名を盲目的に適用するべきではありません。提案された名前をすべて表示し、重複を処理し、拡張子を保持し、名前変更履歴を保持して、不適切なバッチを元に戻せるツールを使用します。
+ツールがプレビューとロールバックを提供するとより安全です。一括 AI 名前変更では、何百ものファイル名を盲目的に適用してはなりません。提案されたすべての名前を表示し、重複を処理し、拡張子を保持し、名前変更履歴を保持するツールを使用して、不適切なバッチを元に戻せるようにします。
+
 
 ## 評決
 
-2026 年の AI ファイルリネームの分野は混雑していませんが、差別化されており、上記のツールはそれぞれ異なるものを獲得しています。
+2026 の AI ファイル リネーム スペースは混雑していませんが、差別化されており、上記のツールはそれぞれ異なるものを獲得します。
 
-ファイルが混在するワークフローを使用する Mac および Windows ユーザーにとって、[Zush](https://zushapp.com/) は最も強力な公開フォーマットの選択肢です。RAW、HEIC、デザイン ファイル、iWork ドキュメント、オーディオ、ビデオ、PDF、テンプレート、ネーミング ブロック、BYOK、フォルダー モニタリング、および元に戻す機能を 1 つのデスクトップ ワークフローで実行できます。 $40 BYOK/ローカル ライフタイム パスが最も重要であり、ファイル タイプがそのドキュメントに適合する場合は、FilesDesk を選択してください。幅広いメディアのサポートよりも、ローカルファースト分析、AI 検索、フォルダーの並べ替えが重要な場合は、RenameClick を選択してください。 Mac ネイティブの深さの場合は、NameQuick を選択します。 Google Drive や Dropbox でクラウドファーストのドキュメント作業を行う場合は、Renamed.to を選択してください。 Magic Folders サブスクリプションの自動化には Renamer.ai を選択します。軽量な公開ドキュメントを無料で利用できる出発点として、Wisfile または Riffo を選択してください。
+のために Mac そして Windows 混合ファイルワークフローを使用するユーザー、 [Zush](https://zushapp.com/) この比較では、最も明確に公開されている適合性と最も構成可能な命名システムが文書化されています。 Templates, 145+ Naming Blocks, Custom AI Blocks プロンプト、書式設定とローカリゼーションのコントロール、メタデータ、プレビュー、 Rename History バッチ復帰付き。その 100+ format 補償範囲と従量制の有料プランは、その中核となるワークフローを強化します。ローカル AI は引き続き利用可能ですが、ここでは選択する理由ではなく、プライバシーの共有オプションとして提示されています。 Zush.
 
-決定は 4 つの質問によって決まります。どのプラットフォームが必要ですか?実際にフォルダーに配置されるファイルの種類はどれですか?一度支払いますか、それとも永久に支払いますか?名前を一括変更する場合、セーフティ ネット (元に戻す、ロールバック) にお金を払う価値はありますか?
+決定は次の 4 つの質問によって決まります。どのプラットフォームが必要ですか?実際にフォルダーに配置されるファイルの種類はどれですか? 1 回限りのプランが必要ですか、それとも定期的なクレジットが必要ですか?完全なバッチをプレビューして元に戻すことはできますか?代表的なファイルのコピーで [50 の無料の Zush 名前変更](/) から始めて、提案された名前がワークフローに適合する場合にのみ料金を支払います。
