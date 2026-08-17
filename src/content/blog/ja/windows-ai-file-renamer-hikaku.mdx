@@ -1,6 +1,6 @@
 ---
-title: "Windows向けAIファイルリネームアプリ6選を比較（2026年）"
-description: "Windows向けAIファイルリネームアプリ6製品を、導入方法、ローカルAI、対応形式、自動化、取り消し機能、料金、無料枠で比較します。"
+title: "Windows AI Renamer 比較： 7 比較したアプリ (2026)"
+description: "7 Windows AI 名前変更アプリを、名前付けコントロール、既製のテンプレート、Rename History、ファイル形式、自動化、価格設定、主要な制限によって比較します。"
 date: "2026-04-23"
 slug: "windows-ai-file-renamer-hikaku"
 locale: "ja"
@@ -10,148 +10,160 @@ topic: "comparisons"
 tags:
   - "AI ファイルの名前変更"
   - "ツールの比較"
-tldr: "適切な Windows AI 名前変更ツールは、Microsoft Store のインストール、ドキュメント サポート、スクリーンショット、PDF、ビデオ、オーディオ、BYOK、オフライン AI、フォルダー監視、および元に戻す機能が必要かどうかによって異なります。 Zush は、スクリプトのコレクションではなく 1 つのデスクトップ ワークフローが必要な場合に最も適しています。"
-reviewed: "2026-08-13"
+tldr: "Zush は、この Windows の比較で最も構成可能な AI 命名ワークフローを備えています。既製の Templates、145+ Naming Blocks、Custom AI Blocks、書式設定とローカリゼーションのコントロール、さらにバッチ付きの Rename History元に戻す。いくつかのアプリはローカル AI をサポートしているため、プライバシー モードは独自の利点ではなく同等のものとして扱われます。"
+reviewed: "2026-08-17"
 featuredOrder: 1
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
-簡単な答え: 比較した 6 つの Windows アプリでは、混在フォルダーに Zush、組み込みローカル AI とフォルダー振り分けに RenameClick が適し、FilesDesk は $40 の Self-Managed BYOK/ローカルライセンスを提供します。導入方法、形式、自動化、取り消し、マネージド AI の上限を比較してください。
+簡単な答え: ここで比較した 7 つの Windows AI 名前変更アプローチのうち、一般的な AI タイトルを受け入れるのではなく、規則を制御したい場合は、Zush から始めます。既製の Templates は、145+ Naming Blocks、Custom AI Blocks、大文字小文字、区切り文字、日付、言語、メタデータと結合します。 Rename History は、適用された各変更を記録し、バッチを復元できます。 Microsoft Store インストールおよび 100+ 公開フォーマットは、混合 Windows フォルダーの残りの部分をカバーします。
 
-**最終確認日: 2026 年 8 月 13 日**（FilesDesk）。RenameClick、AI Renamer、Renamer.ai は 2026 年 7 月 24 日に確認しました。
+**最終確認日: 8月 17, 2026** のために NameQuick; 8月 13, 2026 のために FilesDesk; 7月 24, 2026 のために RenameClick, AI Renamer、 そして Renamer.ai.
 
-このアップデートについてチェックされたソース: [Microsoft Store の Windows の Zush](https://apps.microsoft.com/detail/9ND4WVZSDQ3X)、[FilesDesk](https://filesdesk.app/)、[FilesDeskの価格](https://filesdesk.app/pricing)、[FilesDesk ドキュメント](https://filesdesk.app/docs)、[RenameClick](https://rename.click/) とその [サポートされているファイル形式のドキュメント](https://rename.click/docs/getting-started/supported-files)、[AI Renamer](https://airenamer.app/)、別の [GitHub の ai-renamer CLI リポジトリ](https://github.com/ozgrozer/ai-renamer)、 [Renamer.ai](https://renamer.ai/)。
+このアップデートに関してチェックされたソース: [Zush のために Windows on Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X), [FilesDesk](https://filesdesk.app/), [FilesDesk 価格設定](https://filesdesk.app/pricing), [FilesDesk ドキュメント](https://filesdesk.app/docs), [RenameClick](https://rename.click/) そしてその [サポートされているファイル形式のドキュメント](https://rename.click/docs/getting-started/supported-files), [AI Renamer](https://airenamer.app/)、別個の [aiリネーム CLI GitHub 上のリポジトリ](https://github.com/ozgrozer/ai-renamer), [Renamer.ai](https://renamer.ai/)、 そして [NameQuick](https://www.namequick.app/).
 
-|アプリ | Windows のインストール | AI オプション |公開された報道 |自動化 |ロールバック |開始価格 |
+| アプリ | ネーミングコントロール | 公開範囲 | 自動化 | リカバリ | 開始価格 | 主な制限 |
 |---|---|---|---|---|---|---|
-|Zush | Microsoft ストア、x64 および ARM64 |マネージド クラウド、BYOK、Ollama |画像、RAW、デザイン、ドキュメント、オーディオ、ビデオ |フォルダー監視 |完全な名前変更履歴 | 50個無料。月額 $10 または 1 回あたり $48 |
-|FilesDesk | Windows デスクトップ |マネージド、BYOK、ローカル |一般的な画像、文書、動画、音声。RAW・デザイン・iWork は要確認 |Watch Folders |Processing History から取り消し |15 クレジット。月額 $8 または Lifetime $40 |
-|RenameClick | Windows デスクトップ |バンドルされたローカル、Ollama、LM Studio、クラウド BYOK |画像、文書、音声。公開された RAW、デザイン、またはビデオのサポートはありません。 Auto Flow は名前変更と移動が可能 |完全に元に戻す/やり直す | 30 件/月が適用されます。 $48+ VAT 生涯 |
-| AI Renamer | Windows デスクトップ |ローカルまたは従量制のクラウド |画像とテキストドキュメントを強調した公開例 |公に文書化されていない |公に文書化されていない | $19 ローカルモード |
-| Renamer.ai | Web および Windows デスクトップ |マネージドクラウド | 30 以上のフォーマット、ドキュメントとベクターに焦点を当てる |マジックフォルダー |ワンクリックで元に戻す | 25 ファイル/月は無料。 $9.95/月 |
-| DIY PowerShell/Python |スクリプトまたはスケジュールされたタスク |選択したプロバイダー/モデル |何を実装しても |フルカスタム |それを構築する必要があります |ソフトウェアは無料の場合もあります。メンテナンスはありません |
+| Zush | <BlogHighlight>既製品 Templates、145+ Naming Blocks、Custom AI Blocks、フォーマット、ローカリゼーション、メタデータ</BlogHighlight> | 画像、RAW、デザイン、ドキュメント、オーディオ、ビデオ | フォルダー監視 | フル Rename History バッチ復帰付き | 50 無料。 $10/mo または $48 1 回 | デスクトップのみのワークフロー |
+| FilesDesk | 命名テンプレート | 一般的な画像、ドキュメント、ビデオ、オーディオ | Watch Folders | Processing History 元に戻す| 15 credits; USD 8/月 または USD 40 ライフタイム | 管理プランでは、すべてのファイル名の提案が測定されます。有効期間には BYOK/ローカル セットアップ | が必要です
+| RenameClick | フォーマットパターン、EXIF プレースホルダー、カスタム命令 | 画像、ドキュメント、オーディオ | Auto Flow は名前変更と移動が可能 | フル元に戻す/やり直し | 30 は毎月適用されます。 $48+ VAT 有効期間 | 公開された RAW、デザイン、またはビデオのサポートはありません |
+| AI Renamer | カスタム プロンプト | 公開されている例では、画像とテキスト ドキュメントが強調されています | 公開されていません | 公開されていません | $19 ローカル モード| フォルダー監視が文書化されていない、または Rename History |
+| Renamer.ai | Templates ドキュメントワークフロー用 | 30+ formats、ドキュメントおよびベクトルのフォーカス | Magic Folders | ワンクリックで元に戻す | 25 files/mo free; $9.95/mo | すべての有料レベルは従量制であり、公開されたものはありません BYOK オプション |
+| NameQuick | プリセット、プロンプト、およびルール | 30+ format カテゴリ | Watch Folders およびルールはベンダーリストに掲載されています | ワンクリックundo はベンダーにリストされている | マネージド トライアル 250/14 days です。 $12/moから; $69 セルフマネージド | 完全なパブリックなし Windows 機能と形式のマトリックス |
+| DIY PowerShell/Python | 何を構築しても | 何を実装しても | 完全にカスタム | 自分で構築する必要があります | ソフトウェアは無料かもしれません | 検証、衝突、認証情報、メンテナンス、ロールバック |
 
-Windows のインストール方法、混合ファイルのサポート、ローカル/BYOK の可用性、監視フォルダーの自動化、プレビュー、ロールバック、現実的な量でのコストなど、同じ決定点に基づいて各オプションをチェックしました。ベンダーが所有する価格設定とドキュメントが真実の情報源でした。サポートされていない機能や文書化されていない機能は、推測されずにマークされます。
+これはソースに裏付けられた比較であり、7 つのエントリすべての独立したベンチマークではありません。私たちは、ベンダー所有の価格設定とドキュメントでも同じ決定点を確認しました。Windows インストール方法、混合ファイルのサポート、ローカル/BYOK の可用性、監視フォルダーの自動化、プレビュー、ロールバック、価格設定です。サポートされていない機能または文書化されていない機能は、推測されずにマークされます。
 
-この比較は、`best` および `compared` の検索意図を所有します。すでに Zush を選択していて、ネイティブのダウンロード パスが必要な場合は、[Zush の場合 Windows](/windows) に直接アクセスしてください。
+一般の人々 [ベンチマーク シミュレーション証拠パック](/benchmarks/ai-file-renamer-simulation-2026/README.md) 計画されたコーパスマニフェスト、SHA-を検証します。256 ハッシュ、固定シード、設定、3 つの繰り返し、 raw-結果スキーマ、および集計パイプライン。これは明示的にシミュレートされています。デスクトップ アプリケーションや Web アプリケーションは実行されておらず、モデル化された行は製品の品​​質、精度、速度の証拠ではありません。
+
+この比較では、 `best` そして `compared` 検索意図。すでに選択している場合 Zush ネイティブのダウンロード パスが必要な場合は、直接次の場所に移動します。 [Zush のために Windows](/windows).
 
 ## AI ファイルリネーム機能とは何ですか?
 
 AI ファイル リネーム機能は、1 つの共有ルールを選択範囲全体に適用するのではなく、ファイルの内容を読み取り、それを説明するファイル名を書き込むツールです。ドキュメントのテキスト、画像やスクリーンショットの表示コンテンツ、またはビデオのサンプル フレームを調べて、各ファイルに異なる名前を提案します (`scan_004.pdf` は `invoice-7842-webdesign-services.pdf` になります)。このカテゴリが存在するのは、ルールベースの一括名前変更ツールでは、乱雑なフォルダー内で重要な唯一の質問「このファイルは何ですか?」に答えることができないためです。
 
-以下では、インストール パス、ファイル タイプの範囲、AI がローカルで実行されるかどうか、バッチを確認して元に戻せるかどうかなど、実際的な違いに関してこのカテゴリの Windows アプリを比較しています。 [安全な一括名前変更チェックリスト](/blog/how-to-safely-batch-rename-files) を使用して、同じファイルで各候補をテストし、そのプレビュー、衝突処理、拡張子の安全性、および回復パスを検証します。
+以下のすべてを比較します Windows このカテゴリのアプリでは、名前付け制御、すぐに使用できるワークフロー、ファイル タイプの適用範囲、自動化、バッチのレビューと元に戻せるかどうかなどの実際的な違いについて説明します。ローカル AI はいくつかの製品に使用されていますが、独自の利点としては評価されません。を使用します。 [安全な一括名前変更チェックリスト](/blog/how-to-safely-batch-rename-files) 同じファイルを使用して各候補をテストし、そのプレビュー、衝突処理、拡張子の安全性、および回復パスを検証します。
 
 <BlogProductIntro
   title="Windows アプリをお探しですか?"
-  description="Zush for Windows は、AI ファイルの名前変更、バッチ レビュー、フォルダーの監視、BYOK、スクリーンショット、PDF、写真、ビデオ、オーディオ、ドキュメントの元に戻すための Microsoft Store アプリです。"
+  description="既製の Templates、145+ Naming Blocks、および Custom AI Blocks を使用して規則を構築し、バッチをプレビューして、必要に応じて Rename History から適用された名前を復元します。"
   links={[
-    { href: '/windows', label: 'Windows AI リネーム機能' },
-    { href: '/', label: 'ファイルリネーム機能' },
-    { href: '/offline-ai-file-renamer', label: 'オフライン AI リネーム機能' },
-    { href: '/docs/byok', label: 'BYOK セットアップ' },
-    { href: '/docs/naming-blocks', label: 'ネーミングブロックのドキュメント' },
+    { href: '/windows', label: 'Windows AI renamer' },
+    { href: '/', label: 'File renamer' },
+    { href: '/offline-ai-file-renamer', label: 'Offline AI renamer' },
+    { href: '/docs/byok', label: 'BYOK setup' },
+    { href: '/docs/naming-blocks', label: 'Naming Blocks docs' },
   ]}
 />
 
-![混合 Windows 確定の AI 生成された名前を示す Zush バッチ名変更プレビュー](/images/showcase/windows/batch-rename-light.webp)
+![Zush AI が混合した名前を表示する一括名前変更プレビュー Windows フォルダ](/images/showcase/windows/batch-rename-light.webp)
 
-## Windows で重要なこと
+## 何が重要なのか Windows
 
-Windows 固有のチェックは Mac とは少し異なります。
+Windows 固有のチェックは、Mac とは若干異なります。
 
-- **File Explorerの適合性**: アプリは Windows ワークフローでネイティブに感じられますか、それとも単にラップされた Web UI ですか?
-- **ドキュメントとビデオのサポート**: スクリーンショットは簡単です。 PDF、DOCX、XLSX、MP4/MOV クリップ、および混合ダウンロード フォルダーが実際のテストです。
-- **自動化**: 1 回限りのバッチ名前変更は便利ですが、フォルダーの自動監視が混乱の再発を防ぎます。
-- **元に戻して確認**: ロールバックせずに何百ものファイルの名前を変更するのは無謀です。
-- **ストアまたは信頼できるインストール**: 多くの Windows ユーザーは、更新が処理される Microsoft Store インストールを好みます。
-- **Windows 検索の使いやすさ**: 後で実際に検索を使用する場合、わかりやすいファイル名とメタデータが重要です。
+- **File Explorer フィット**: アプリはネイティブな感じですか? Windows ワークフローですか、それとも単にラップされた Web UI ですか?
+- **ドキュメントとビデオのサポート**: スクリーンショットは簡単です。 PDF、 DOCX, XLSX, MP4/MOV クリップ、および混合ダウンロード フォルダーが実際のテストです。
+- **オートメーション**: 1 回限りの一括名前変更は便利ですが、フォルダーの自動監視が混乱の再発を防ぎます。
+- **元に戻して確認する**: ロールバックせずに何百ものファイルの名前を変更するのは無謀です。
+- **ストアまたは信頼できるインストール**： 多くの Windows ユーザーは Microsoft Store 更新を処理してインストールします。
+- **Windows 検索のフレンドリーさ**: 後で実際に検索を使用する場合、わかりやすいファイル名とメタデータが重要になります。
 
-クリーンアップの背後にあるクエリが「Windows 上のファイルの名前を一括変更」である場合は、[Zush の場合 Windows](/windows) と [ファイル名のバッチ変更ガイド](/docs/batch-rename-files) から始めます。問題が後でファイルを見つけることにある場合は、[検索可能なファイル名](/docs/file-search) をお読みください。
+クリーンアップの背後にあるクエリが「ファイルの名前を一括変更する」である場合、 Windows"から始めてください [Zush のために Windows](/windows) そして [ファイル名のバッチ変更ガイド](/docs/batch-rename-files)。問題が後でファイルを見つけることにある場合は、次をお読みください。 [検索可能なファイル名](/docs/file-search).
 
-ダウンロード、スクリーンショット、PDF、および混合フォルダーを整理することがより広範なタスクである場合は、この Windows 比較と併せて [AIファイルオーガナイザー](/ai-file-organizer) を使用してください。
+ダウンロード、スクリーンショット、PDF、および混合フォルダーを整理することがより広範なタスクである場合は、この Windows の比較と併せて、[AI ファイル オーガナイザー](/ai-file-organizer) を使用してください。
 
 ## 1. Zush
 
 <BlogToolMeta platform="Windows 10 / 11 via Microsoft Store" website="https://zushapp.com/windows" label="zushapp.com/windows">
-  <Fragment slot="pricing">無料 (最初は 50 回の名前変更)、Pro 月額 10 ドルまたは 1 回限り 48 ドル、すべてのプランで BYOK が利用可能</Fragment>
+<Fragment slot="pricing">無料 (50 renames で開始)、Pro $10/month または $48 1 回限り、BYOK はすべてのプランで利用可能</Fragment>
 </BlogToolMeta>
 
-[Zush の場合 Windows](/windows) は、スクリーンショット、ビデオ、PDF、写真、デザイン アセット、オーディオ、Office ドキュメントのレビュー可能な 1 つのワークフローが必要な場合に最適です。テンプレートと 145 以上の命名ブロックにより、名前の一貫性が保たれます。フォルダー監視は新着情報を処理します。履歴のプレビューと名前変更により、大きなバッチを元に戻すことができます。マネージド クラウド AI、BYOK、Ollama は、さまざまなプライバシーとプロバイダーの要件に対応します。
+[Zush のために Windows](/windows) スクリーンショット、ビデオ、PDF、写真、デザイン資産、オーディオなどのレビュー可能で高度に構成可能な 1 つのワークフローが必要な場合に最適です。 Office 書類。既製 Templates そして 145+ Naming Blocks 構造を定義する。 Custom AI Blocks 組み込みブロックがカバーしていないフィールドを抽出します。フォーマット、ローカリゼーション、タグ、メタデータにより、結果の一貫性が保たれます。フォルダー監視は新着情報を処理しますが、 Rename History 元の名前と新しい名前、フォルダー、タイムスタンプを記録するため、適用されたバッチを元に戻すことができます。
 
 Windows で目立つ理由:
 
-- Microsoft Storeのインストールと自動アップデート
+- Microsoft Store インストールと自動アップデート
 - 画像、デザイン、ビデオ、オーディオ、ドキュメントのワークフローにわたる混合ファイルのサポート
-- スクリーンショットフォルダー、エクスポート、ダウンロード、スキャンされた PDF に適しています
+- スクリーンショット フォルダー、エクスポート、ダウンロード、スキャンされた PDF に適しています
 - ネイティブ ARM64 および x64 ストア パッケージ
-- 元に戻すことで適用前のレビューフローをクリア
+- 監視フォルダーごとに調整して割り当てることができる既製のワークフロー Templates
+- 適用前レビューの明確なフローと、取り消しを伴う永続的な Rename History
 
-最適な用途: 1 回限りの実験ではなく、毎日のツールを必要とする Windows ユーザー。
+最適な対象: 1 回限りの実験ではなく、毎日のツールを必要とする Windows ユーザー。
 
-Microsoft Store から Zush をインストールし、比較に使用したのと同じ 10 個の混合ファイルをテストし、バッチを適用する前に提案されたすべての名前を確認します。
+Microsoft Store から Zush をインストールし、10 個の混合ファイルのコピーされたサンプルをテストし、バッチを適用する前に提案されたすべての名前を確認します。
 
 <BlogCTA placement='inline' platform='windows' />
 
 ## 2. FilesDesk
 
-Zush vs [FilesDesk](/blog/zush-vs-filesdesk)
-
 <BlogToolMeta platform="Desktop on Windows and Mac" website="https://filesdesk.app/" label="filesdesk.app">
-  <Fragment slot="pricing">15 の無料クレジット。 500 クレジットの場合は月額 8 ドル、2,000 クレジットの場合は月額 20 ドル。 BYOK/ローカル AI を使用した場合、生涯 $40 1 回限り</Fragment>
+<Fragment slot="pricing">15 の無料クレジット; 500 credits の場合は毎月 $8/mo、または 2、000 credits の場合は $20/mo。ライフタイム $40 ワンタイム (BYOK/ローカル AI</Fragment>)
 </BlogToolMeta>
 
-FilesDesk は BYOK またはローカル AI 向けの $40 Self-Managed ライセンスに加え、月額 $8 で 500 件、$20 で 2,000 件のマネージド提案を提供します。ドキュメントでは Watch Folders、テンプレート、バッチ処理、複数プロバイダー、Processing History からの取り消しを確認でき、FAQ には一般的な画像・文書・動画・音声形式が掲載されています。
+FilesDesk は、BYOK またはローカル AI の $40 ライフタイム パスに加えて、500 提案の場合は $8/month、または提案の場合は $20/month で管理される月次クレジットを提供します。 2、000。
+そのドキュメントリスト Watch Folders、 カスタム templates、バッチ処理、複数の AI プロバイダー、および元に戻す Processing History。 FAQ には一般的なイメージが明示的にリストされています。 PDF/Office ドキュメント、ビデオ、オーディオ形式。直接見る [Zush vs FilesDesk 比較](/blog/zush-vs-filesdesk) 価格とプロバイダーのトレードオフについて。
 
-最適な用途: 安価な BYOK/ローカルまたはマネージド クレジット ワークフローを希望し、ファイルのほとんどが写真、PDF、請求書、領収書、契約書、スクリーンショット、および一般的な文書である Windows ユーザー。混合メディア ライブラリとして選択する前に、RAW、デザイン ファイル、オーディオ、ビデオ、および iWork のサポートを独自のファイルに対して確認してください。これは、チェックしたドキュメントには詳細な形式マトリックスが公開されていないためです。
+最適な対象: OpenRouter または vLLM パスを特に必要とする Windows ユーザー。主な制限: 管理された使用量は従量制であり、ライフタイム プランには BYOK/ローカル セットアップが必要で、チェックされたドキュメントは Zush と同じ RAW/design/iWork マトリックスを公開しません。
 
 ## 3. RenameClick
 
 <BlogToolMeta platform="Desktop on Windows and Mac" website="https://rename.click/" label="rename.click">
-  <Fragment slot="pricing">無料で無制限の分析と 30 クレジット/月の適用が可能です。プロ月額 $8+ VAT/月;プロライフタイム $48+ VAT 1 回限り</Fragment>
+<Fragment slot="pricing">無制限の分析が無料で、30 はクレジット/月を適用します。プロ月額 $8+ VAT/月;プロライフタイム $48+ VAT 1 回限り </Fragment>
 </BlogToolMeta>
 
-![RenameClick デスクトップ アプリ インターフェイス (画像: rename.click)](/images/blog/competitors/renameclick.webp)
+RenameClick は、組み込みのローカル AI、オプションの Ollama、LM Studio、クラウド プロバイダー、元に戻す/やり直し、ファイルの名前変更や移動ができる自動化を備えた Windows デスクトップ アプリを公開します。チェックされた形式のドキュメントには画像、ドキュメント、オーディオがリストされていますが、RAW カメラ、デザイン、およびビデオのサポートは公開されていません。
 
-RenameClick は、ローカル ファーストの Windows の最強の競合他社であり、ラップされた Web ツールではなく、両方のプラットフォームで利用できる本物のデスクトップ アプリです。同社自身のサイトでは、これを「クラウド アップロード ワークフローではなく、macOS と Windows 上の実際のフォルダー用に構築された」と説明しています。組み込みのローカル AI、Ollama、LM Studio、オプションのクラウド プロバイダー、AI 検索、完全な元に戻す/やり直し、および新しいファイルの名前変更、分類、移動を行うことができるダウンロード フォルダーの自動化が同梱されています。その文書化された形式は、10 種類の画像、20 種類以上のドキュメント タイプ (PDF、DOCX、JSON、XML、YAML、HTML、SQL、字幕、ICS/VCF など)、およびローカル音声文字起こし付きの 5 種類の音声タイプをカバーしています。
-
-最適な用途: オフライン/ローカル分析、AI 検索、フォルダーの並べ替えを優先する Windows ユーザー。チェックされた形式のリストには、RAW カメラ ファイルや Sketch/Figma/PSD などのデザイン ファイルは含まれておらず、ビデオ ファイル、アーカイブ、および実行可能ファイルは明示的にサポートされていないため、Zush は引き続き広範な混合メディア フォルダーに安全に適合します。 Pro の価格は VAT 前の価格であることにも注意してください。
+ローカル分析またはフォルダー ルーティング モデルが、幅広い混合メディアの範囲よりも重要な場合にのみ検討してください。 Pro の価格は VAT 前の価格です。 RAW、デザイン、ビデオ、オーディオ、ドキュメント、スクリーンショット フォルダーが混在している場合は、これらのカテゴリが明示的に文書化されているため、最初に Zush をテストします。
 
 ## 4. AI Renamer
 
 <BlogToolMeta platform="Desktop on Windows and Mac; a separate open-source CLI shares the name" website="https://airenamer.app/" label="airenamer.app">
-  <Fragment slot="pricing">ローカル モードは 1 回につき 19 ドル、クラウド モードは 200 クレジットあたり 10 ドル、10 クレジットは無料です。価格ページには CLI やオープンソース層が記載されていません。</Fragment>
+<Fragment slot="pricing">ローカル モード $19 1 回、クラウド モード $10 (200 credits、10 の無料クレジットごと)。価格ページには、CLI またはオープンソース層が記載されていません。</Fragment>
 </BlogToolMeta>
 
-![AI Renamer インターフェイス (画像: airenamer.app)](/images/blog/competitors/ai-renamer.png)
+![AI Renamer インタフェース (画像：airenamer.app)](/images/blog/competitors/ai-renamer.png)
 
-2 つのプロジェクトがこの名前を共有しているため、分けておく価値があります。 airenamer.app の商用アプリは、ローカル モードを 1 回限り 19 ドルで販売し、クラウド モードを 200 クレジットあたり 10 ドルで販売し、サインアップすると 10 クレジットが無料になります。価格ページには CLI やオープンソース エディションが宣伝されていません。 GitHub 上の無料の GPL-3.0 [`ozgrozer/ai-renamer`](https://github.com/ozgrozer/ai-renamer) CLI は、Ollama、LM Studio、または OpenAI キーを介して画像とビデオの名前を変更する、無関係なプロジェクトです。
+2 つのプロジェクトがこの名前を共有しているため、分けておく価値があります。商用アプリ (airenamer.app) では、ローカル モードを販売しています。 $19 ワンタイムおよびクラウドモード $10 あたり 200 credits、 と 10 free サインアップ時にクレジット — 価格ページにはクレジットなしと宣伝されています CLI オープンソース版はありません。の free, GPL-3.0 [`ozgrozer/ai-renamer`](https://github.com/ozgrozer/ai-renamer) CLI GitHub 上の画像とビデオの名前を変更する無関係なプロジェクトです。 Ollama, LM Studio, or an OpenAI 鍵。
 
-安価なローカルモデルの GUI を優先する場合は、有料アプリが魅力的です。その価格ページでは、全ファイルのサポートに加えて Ollama、LM Studio、OpenAI、カスタム モデルのサポートを宣伝していますが、公開されている機能の例では依然として画像と PDF/TXT/テキスト ファイルを強調しています。その代償として、このワークフローは、Zush ほど混合デスクトップのハウスキーピングに対して意見が強くないという点があります。パブリック フォルダーの監視、パブリックの名前変更履歴、RAW、Office、iWork、デザイン、オーディオ、ビデオのワークフローに関する詳細な形式のドキュメントはありません。
+安価なローカルモデルの GUI を優先する場合は、有料アプリが魅力的です。その価格設定ページでは、全ファイルのサポートに加えて Ollama、LM Studio、OpenAI、カスタム モデルのサポートを宣伝していますが、公開機能の例では依然として画像と PDF/TXT/テキスト ファイルを強調しています。そのトレードオフは、ワークフローが Zush よりも混合デスクトップ ハウスキーピングに対して意見が少ないことです。パブリック フォルダーの監視やパブリックの名前変更履歴がなく、RAW、Office、iWork、デザイン、オーディオ、ビデオのワークフローに関する詳細な形式のドキュメントもありません。
 
-最適な用途: ローカル処理の 1 回限りの価格を最低価格で希望し、フォルダーの自動化よりもモデルの配管を重視するユーザー。広範なファイル タイプのサポートよりもローカル優先処理とフォルダー ルーティングが重要な場合は、[Zush vs RenameClick](/blog/zush-vs-renameclick) も比較してください。
+こんな方に最適: ローカル処理の一回限りの価格を最低価格で希望し、フォルダーの自動化よりもモデルの配管を重視するユーザー。広範なファイル タイプのサポートよりもローカル ファースト処理とフォルダー ルーティングが重要な場合は、以下も比較してください。 [Zush vs RenameClick](/blog/zush-vs-renameclick).
 
 ## 5. Renamer.ai
 
 <BlogToolMeta platform="Web app + desktop (Windows & Mac)" website="https://renamer.ai/" label="renamer.ai">
-  <Fragment slot="pricing">毎月 25 ファイルまで無料。プロ $9.95/月、パワーユーザー $29.95/月、アルティメット $99.95/月</Fragment>
+  <Fragment slot="pricing">Free 25 files/月; Pro $9.95/mo、パワーユーザー $29.95/mo、 究極の $99.95/mo</Fragment>
 </BlogToolMeta>
 
-![Renamer.ai デスクトップ アプリのスクリーンショット (画像: renamer.ai)](/images/blog/competitors/renamer-ai.png)
+![Renamer.ai デスクトップアプリのスクリーンショット (画像： renamer.ai)](/images/blog/competitors/renamer-ai.png)
 
-Renamer.ai は、何もインストールせずにいくつかのファイルをテストしたい場合に便利です。また、デスクトップ アプリには、Magic Folders、プレビュー、ワンクリックで元に戻す機能、およびドキュメントを大量に使用する OCR ワークフローが追加されています。現在の FAQ には、EPS、SVG、AI (Illustrator) ベクターを含む 30 以上のフォーマットと 20 以上の言語がリストされていますが、PSD、Sketch、Figma は含まれていません。各レベルは、Pro の 200 から Ultimate の 5,000 まで、月あたりのファイル数によって測定されます。その公開FAQには、ファイルは抽出とAI分析のために送信され、処理後に削除されるため、プライバシーの話はBYOKやローカルのOllamaと同じではないと述べています。主なトレードオフは、サブスクリプション価格と、BYOK/ローカル Ollama プロバイダーの選択がないことです。価格の直接比較については、[Zush vs Renamer.ai](/blog/zush-vs-renamer-ai) をお読みください。請求書に焦点を当てた **Renamed.to と Renamer.ai** の比較には、[PDF の一括名前変更セクション](/blog/automatically-rename-invoices-ai#renamed-to-vs-renamer-ai-bulk-pdf) を使用します。
+Renamer.ai 何もインストールせずにいくつかのファイルをテストしたい場合に便利で、デスクトップ アプリには Magic Folders、プレビュー、ワンクリックで元に戻す、および大量のドキュメント OCR ワークフロー。現在の FAQ リスト 30+ formats そして 20+ languages、EPS、SVG、AI を含む (イラストレーター) ベクトル — ただしそうではありません PSD, Sketch, or Figma。すべての階層は、月ごとにファイル単位で測定されます。 200 on Pro to 5,000 アルティメットで。公開されている FAQ によれば、ファイルは抽出と AI 分析のために送信され、処理後に削除されるため、プライバシーに関する話は同じではありません。 BYOK または地元の Ollama。主なトレードオフはサブスクリプション価格と、 BYOK/地元-Ollama プロバイダーの選択。価格の直接比較については、以下をお読みください。 [Zush vs Renamer.ai](/blog/zush-vs-renamer-ai);請求書重視の場合 **Renamed.to vs Renamer.ai** 比較するには、 [バルク PDF セクションの名前変更](/blog/automatically-rename-invoices-ai#renamed-to-vs-renamer-ai-bulk-pdf).
 
-最適な対象: ドキュメントの多い OCR ワークフローを使用し、サブスクリプション価格に慣れている Windows ユーザー。
+こんな方に最適: ドキュメントの多い OCR ワークフローを使用し、サブスクリプション価格に慣れている Windows ユーザー。
 
-## 6. DIY Python または PowerShell パイプライン
+## 6. NameQuick
 
-Windows 上で独自の名前変更ワークフローを構築することができます。基本的なパターンは次のとおりです。
+<BlogToolMeta platform="Windows and Mac downloads" website="https://www.namequick.app/" label="namequick.app">
+<Fragment slot="pricing">マネージド トライアル: 14 days の 250 renames。 $12/mo から毎月の手当で管理されます。自己管理トライアル: 50 renames;自己管理型 $69 1 台のデバイスに 1 回限り、さらに独自の API キーまたはローカル モデル </Fragment>
+</BlogToolMeta>
 
-1. フォルダーからファイルを読み取る
-2. 画像またはテキストのペイロードを AI モデルに送信します
-3. 出力を安全なファイル名にサニタイズします。
-4. ローカルで名前を変更する
+NameQuick は、Windows ダウンロードを公開するようになりました。そのサイトには、Watch Folders、ルール、コンテンツ検索、元に戻す、および 30+ format のカテゴリがリストされていますが、完全な Windows と Mac の機能マトリックスは提供されていません。現在の Windows ビルドで確認されない限り、Finder、MLX、およびその他のプラットフォーム固有のクレームを Mac 機能として扱います。
+
+自己管理プロバイダー リストまたはルール ワークフローが不可欠であり、Windows でそれらの機能を検証している場合は、それを検討してください。 Zush は、広範な混合ファイル Windows サポート、Microsoft Store 配信、およびマネージド クラウドにまたがる 1 つのワークフロー、BYOK、オフライン AI、モニタリング、プレビュー、および元に戻すための、より直接的に文書化された選択肢として残ります。
+
+## 7。 DIY Python または PowerShell パイプライン
+
+Windows では独自の名前変更ワークフローを構築できます。基本的なパターンは次のとおりです。
+
+1。フォルダーからファイルを読み取る
+2。画像またはテキストのペイロードを AI モデルに送信する
+3。出力を安全なファイル名にサニタイズする
+4。ローカルで名前を変更する
 
 再試行、不正なモデル出力、重複した名前、元に戻す、資格情報、および Windows パスのエッジ ケースを追加するまでは、これは簡単に思えます。多くのユーザーにとって、スクリプトはプロジェクトを解決するのではなく、プロジェクトになります。
 
@@ -159,34 +171,34 @@ Windows 上で独自の名前変更ワークフローを構築することがで
 
 ## 評決
 
-幅広い混在フォルダーには、現時点で [Windows 向け Zush](/windows) が最も明確な推奨です。ローカル分析やフォルダー振り分けを優先するなら RenameClick、無制限のマネージド AI より低価格の Self-Managed ライセンスを優先するなら FilesDesk を比較してください。
+広範な混合フォルダーの場合、 [Zush のために Windows](/windows) 現時点で最も明確な推奨事項です。ここに記載されている最も構成可能な名前付けワークフローがあります: 既製 Templates, 145+ Naming Blocks, Custom AI Blocks、フォーマット、ローカリゼーション、メタデータ、モニタリング、プレビュー、 Rename History バッチ復帰付き。スクリーンショット、ビデオ、写真、デザインファイル、オーディオ、PDF、 iWork ファイル、および Office 書類。ローカル AI はいくつかのアプリで利用できますが、主な差別化要因ではなく、プライバシー要件として扱う必要があります。
 
-比較ではなくより広範なチュートリアルが必要な場合は、[Windows で AI を使用してファイルの名前を変更する方法](/blog/rename-files-with-ai-windows-guide) をお読みください。主な問題が自動化である場合は、次の [Windows でのファイルの自動名前変更](/blog/auto-rename-files-windows-guide) に進みます。
+比較ではなくより広範なチュートリアルが必要な場合は、以下をお読みください。 [AI をオンにしてファイルの名前を変更する方法 Windows](/blog/rename-files-with-ai-windows-guide)。主な問題が自動化である場合は、次の項目に進んでください。 [ファイル名の自動変更オン Windows](/blog/auto-rename-files-windows-guide).
 
-製品ドキュメントについては、[ファイルの名前をバッチ変更する](/docs/batch-rename-files)、[フォルダー監視による自動ファイル名変更](/docs/folder-monitoring)、および [サポートされているファイルの種類](/docs/supported-file-types) を参照してください。
+製品ドキュメントについては、次を参照してください。 [ファイルの名前をバッチ変更する](/docs/batch-rename-files), [フォルダー監視による自動ファイル名変更](/docs/folder-monitoring)、 そして [サポートされているファイルの種類](/docs/supported-file-types).
 
 ## よくある質問
 
-### Windows で BYOK またはオフライン AI を使用できますか?
+### 使ってもいいですか BYOK またはオフラインAIオン Windows?
 
-はい。 Zush for Windows には、Gemini、Groq、OpenAI、Claude の BYOK に加えて、すべてのプランに Ollama によるオフライン AI が含まれています。無料には、Cloud AI、BYOK、オフライン AI 全体で共有される 50 件の名前変更が含まれます。 PRO では制限が解除されます。
+はい。 Windows の Zush には、Gemini、Groq、OpenAI、および Claude の BYOK と、すべてのプランの Ollama を備えたオフライン AI が含まれます。 FREE には、クラウド AI、BYOK、オフライン AI 全体で共有される 50 renames が含まれます。 PRO は制限を削除します。
 
-### AIリネームソフトとは何ですか?
+### とは何ですか AI renamer ソフトウェア？
 
 AI リネーム ソフトウェアはファイルの内容を分析し、わかりやすいファイル名を自動的に生成します。通常の一括名前変更ツールはテキストを置き換えたり、数字を追加したりできますが、AI リネーム機能はスクリーンショット、PDF、ドキュメント、画像、ビデオ フレーム、またはオーディオ コンテキストを調べて、ファイルごとに異なる意味のある名前を提案できます。
 
-### 「file renamer AI」は通常の一括名前変更ユーティリティとは異なりますか?
+### 「file renamer AI」は通常の一括リネームユーティリティとは違いますか？
 
-はい。通常の一括名前変更ユーティリティは、多くのファイルに共有ルールを適用します。 Windows では通常、[PowerRename](https://learn.microsoft.com/en-us/windows/powertoys/powerrename) を意味します。File Explorerで選択したものに対して検索と置換、正規表現、日付または属性変数を実行する PowerToys ユーティリティです。ファイルは決して開かれないため、両方が `scan_004.pdf` として到着した場合、請求書と保証書を区別することはできません。ファイルリネーム AI ツールはファイルの内容から名前を生成し、バッチをプレビュー、適用、および元に戻すことができるようにする必要があります。スクリーンショット、PDF、写真、ビデオ、オーディオ、Office ファイルが混在する Windows フォルダーの場合、生の名前変更速度よりもレビューと元に戻すワークフローの方が重要です。 [PowerRename 代替比較](/powerrename-alternative) では、各アプローチがどのような点で優れているのかを説明します。
+はい。通常の一括名前変更ユーティリティは、多くのファイルに共有ルールを適用します。の上 Windows それは通常意味します [PowerRename](https://learn.microsoft.com/en-us/windows/powertoys/powerrename)、で選択したもの全体にわたって検索と置換、正規表現、日付または属性変数を実行する PowerToys ユーティリティ File Explorer。ファイルが開かれることはないため、請求書と保証書が両方とも届いたときに区別することはできません。 `scan_004.pdf`。ファイルリネーム AI ツールはファイルの内容から名前を生成し、バッチをプレビュー、適用、および元に戻すことができるようにする必要があります。のために Windows スクリーンショット、PDF、写真、ビデオ、オーディオなどが混在するフォルダー Office レビューと元に戻すワークフローが重要なファイル raw 速度の名前を変更します。の [PowerRename 代替比較](/powerrename-alternative) それぞれのアプローチが成功する場所をカバーします。
 
-### 単なるブラウザー ツールではなく、ネイティブ Windows アプリはありますか?
+### ネイティブはいますか Windows 単なるブラウザツールではなくアプリですか？
 
-はい。 [Zush の場合 Windows](/windows) は Microsoft Store を通じてインストールされ、アップロードおよびダウンロードの Web セッションではなくデスクトップでの使用を目的として構築されています。
+はい。 [Zush のために Windows](/windows) を通じてインストールします Microsoft Store また、アップロードとダウンロードの Web セッションではなく、デスクトップでの使用を目的として構築されています。
 
-### スクリーンショットの名前をほとんど変更する場合はどうすればよいですか?
+### ほとんどのスクリーンショットの名前を変更するとどうなりますか?
 
-その場合、一般的な比較よりもスクリーンショットのワークフローが重要になります。 [Windows でスクリーンショットの名前を自動的に変更する方法](/blog/rename-screenshots-automatically-windows) を読み取ります。
+その場合、一般的な比較よりもスクリーンショットのワークフローが重要になります。読む [スクリーンショットの名前を自動的に変更する方法 Windows](/blog/rename-screenshots-automatically-windows).
 
-### PDF とダウンロードの名前を変更することが多い場合はどうすればよいですか?
+### 主に PDF の名前を変更してダウンロードする場合はどうすればよいでしょうか?
 
-次に、ドキュメントのサポートと自動化を優先します。 [Windows で AI を使用して PDF ファイルの名前を変更する方法](/blog/rename-pdf-files-with-ai-windows) および [Windows でダウンロード フォルダーを整理する方法](/blog/organize-downloads-folder-windows) から始めます。
+次に、ドキュメントのサポートと自動化を優先します。から始める [名前を変更する方法 PDF AI がオンになっているファイル Windows](/blog/rename-pdf-files-with-ai-windows) そして [ダウンロードフォルダーを整理する方法 Windows](/blog/organize-downloads-folder-windows).

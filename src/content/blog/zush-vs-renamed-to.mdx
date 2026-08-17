@@ -1,6 +1,6 @@
 ---
 title: "Zush vs Renamed.to (2026): Desktop App vs Cloud Credits"
-description: "Compare Zush vs Renamed.to: $10/month or $48 one-time desktop app vs pay-per-document cloud credits, format coverage, privacy modes, and automation."
+description: "Compare Zush vs Renamed.to by naming control, ready-made templates, Rename History, formats, automation, metering, and documented limitations."
 date: "2026-07-31"
 slug: "zush-vs-renamed-to"
 platform: "general"
@@ -8,20 +8,20 @@ topic: "comparisons"
 tags:
   - "AI File Renaming"
   - "Tool Comparisons"
-tldr: "Pick Zush for a Mac/Windows desktop app with unmetered paid renaming, 100+ formats including RAW photos and design files, folder monitoring, and local Offline AI. Pick Renamed.to if you work inside Google Drive, Dropbox, or OneDrive and prefer pay-per-document credits for document-only volume."
-reviewed: "2026-07-31"
+tldr: "Pick Zush for the most configurable naming workflow in this comparison: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, and Rename History with batch revert. Renamed.to is cloud-only, document-scoped, metered per file, and does not document equivalent post-apply recovery."
+reviewed: "2026-08-17"
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
-Quick answer: Zush is a <BlogHighlight>Mac and Windows desktop app</BlogHighlight> at $10/month or $48 one-time for unlimited PRO renames, covering 100+ image, document, design, audio, and video formats with folder monitoring, undo, BYOK, and local Offline AI. Renamed.to is a <BlogHighlight>web service with cloud-storage integrations</BlogHighlight> priced per document ($9 per 1,000 credits, $49 per 10,000, valid 12 months), focused on document workflows inside Google Drive, Dropbox, and OneDrive. The real decision is desktop-local versus cloud-integrated, and unmetered versus per-file billing.
+Quick answer: choose Zush when you need to design and reuse a precise naming convention. Ready-made Templates combine with 145+ Naming Blocks, Custom AI Blocks, formatting, localization and metadata; Rename History records original and new names, folder and timestamp and can restore an applied batch. Renamed.to is a cloud-storage document workflow with narrower formats, per-document metering, cloud-only processing, and no equivalent documented post-apply Rename History.
 
 **Last verified: July 31, 2026**, against [Renamed.to's pricing page](https://www.renamed.to/) and product pages.
 
 <BlogProductIntro
-  title="Prefer files renamed on your machine, not in a cloud queue?"
-  description="Zush runs on Mac and Windows, reads scans with AI vision, renames unlimited files on paid PRO, and offers BYOK and local Offline AI for private workflows."
+  title="Want a reusable naming system with recovery?"
+  description="Start with a ready-made Template, use 145+ Naming Blocks and Custom AI Blocks, preview the batch, then restore applied names from Rename History."
   links={[
     { href: '/', label: 'AI file renamer' },
     { href: '/rename-scanned-documents', label: 'Rename scanned documents' },
@@ -40,14 +40,16 @@ Quick answer: Zush is a <BlogHighlight>Mac and Windows desktop app</BlogHighligh
 | Formats | 100+: images incl. RAW/HEIC, PDFs, Office/iWork, design, audio, video | Document-focused: PDF, DOCX, XLSX, PPTX, scanned images |
 | Where files are processed | On your machine; analysis via cloud AI, BYOK, or fully local Offline AI | In the cloud, inside your Drive/Dropbox/OneDrive storage |
 | Local/offline option | <BlogHighlight>Yes — Offline AI with local Ollama models</BlogHighlight> | No — cloud processing only |
-| Automation | Folder monitoring on any local/synced folder, Templates | File watcher daemon, REST API, CLI, Zapier/Make/n8n |
-| Undo | Full rename history with revert | Review/confidence flow before applying |
+| Naming control | <BlogHighlight>Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata</BlogHighlight> | Saved rules for document workflows |
+| Automation | Folder monitoring on any local/synced folder, per-folder Templates | File watcher daemon, REST API, CLI, Zapier/Make/n8n |
+| Recovery | Full Rename History with original/new name, folder, timestamp, and revert | Review/confidence flow before applying; no equivalent post-apply history documented |
+| Main limitation | Desktop-only | Cloud-only, document-scoped, metered per file, no equivalent post-apply history documented |
 
 ## What each tool actually is
 
 ### Zush: a desktop renamer with private modes
 
-[Zush](/) installs on the Mac or PC where your files already live. It reads each file — text PDFs directly, [scans via AI vision](/rename-scanned-documents), photos, design files, audio, video — and applies your naming convention through [Templates and Naming Blocks](/docs/naming-blocks), with batch preview and undo. [Folder monitoring](/docs/folder-monitoring) keeps Downloads or a scanner folder continuously named.
+[Zush](/) installs on the Mac or PC where your files already live. Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, prompts, formatting, localization, tags and metadata define the convention; the AI fills content-aware fields instead of inventing the whole name. The same Template works in a reviewed batch or [folder monitoring](/docs/folder-monitoring). Rename History keeps original and new names, folder and timestamp and can restore an applied batch.
 
 Three analysis modes set the privacy posture: managed cloud AI (default), BYOK through your own API account, and Offline AI with local Ollama models — the last one keeps supported files entirely on the machine.
 
@@ -55,13 +57,13 @@ Three analysis modes set the privacy posture: managed cloud AI (default), BYOK t
 
 [Renamed.to](https://www.renamed.to/) connects to Google Drive, Dropbox, or OneDrive and renames documents where they live in cloud storage — files stay in your storage rather than moving to Renamed's servers, and confidence scoring routes uncertain names to review. Access is browser-first, with a REST API, CLI, watcher daemon, and Zapier/Make/n8n hooks for pipeline builders. Billing is per document: credit packs valid for 12 months, no subscription.
 
-It is genuinely good at what it scopes itself to: document files, in the cloud, at volume, for teams that live in shared drives.
+Its scope is narrow: document files in cloud storage. The main drawback is that photos, design files, audio, and video sit outside that scope, every processed document consumes credits, and the checked pages do not document a Zush-style post-apply Rename History.
 
 ## Pricing: unmetered vs per-file arithmetic
 
-Renamed.to's credits are cheap per unit ($0.0049–$0.009 per document) — the question is whether your volume is bounded. A bookkeeping practice running 2,000 documents a month spends roughly $10–18/month at pack rates, forever, and every re-run of a batch (new convention, fixed template) bills again.
+Renamed.to charges $0.0049–$0.009 per document. The important point is not that the unit price is low; it is that every run and re-run consumes credits. A bookkeeping practice processing 2,000 documents a month keeps paying for volume and pays again when a convention changes.
 
-Zush's paid PRO is unmetered: $10/month while you need it, or <BlogHighlight>$48 once</BlogHighlight>. Re-running a folder because you changed the convention costs nothing, which changes how freely you iterate on Templates. For high-volume document work the one-time license crosses over within the first months; for occasional small batches, Renamed.to's pay-as-you-go can be the cheaper entry.
+Zush's paid PRO is unmetered: $10/month while you need it, or <BlogHighlight>$48 once</BlogHighlight>. Re-running a folder because you changed the convention costs nothing, which changes how freely you iterate on Templates. Competitor sticker price is not treated as an advantage because it buys a narrower, metered workflow.
 
 Both offer 50 free units to evaluate with.
 
@@ -79,10 +81,10 @@ Zush can run the entire pipeline locally: Offline AI mode analyzes supported fil
 
 ## Pick by use case
 
-- **Bookkeeping practice living in Google Drive, documents only, moderate volume** → Renamed.to's integrations fit naturally; compare credit spend against Zush's flat $48 at your volume.
+- **Bookkeeping practice living in Google Drive, documents only, API integration mandatory** → Renamed.to may fit that narrow requirement, but it remains cloud-only, document-scoped, and metered per file.
 - **Invoices, receipts, and scans on a desktop, plus everything else in the folder** → [Zush](/rename-invoices-with-ai): one app, unmetered, undo, and the scanner workflow built in.
 - **Regulated or confidential documents** → Zush Offline AI; cloud-only processing is the disqualifier on the other side.
-- **API-first pipeline automation in cloud storage** → Renamed.to's REST/CLI/watcher tooling is its strongest card.
+- **API-first pipeline automation in cloud storage** → consider Renamed.to only when REST/CLI integration is mandatory and its cloud-only processing, document scope, and missing post-apply history are acceptable.
 - **Photos, design files, audio, video in the mix** → Zush; they're outside Renamed.to's document scope.
 
 ## FAQ
@@ -109,4 +111,4 @@ Zush does — RAW/HEIC photos, audio with transcription, video, design files. Re
 
 ## Verdict
 
-Renamed.to is the strongest cloud-native, pay-per-document option in the field — right for teams whose documents live in shared drives and whose volume is occasional or API-driven. Zush is the desktop generalist: one unmetered license, every format on disk, scanner-to-archive automation, and the only fully local mode of the two. If your files are on a Mac or PC and privacy or volume matters, Zush is the default; if your world is a shared Google Drive, evaluate Renamed.to against the flat $48 and see which arithmetic wins.
+Zush is the default in this comparison because it gives the user more control and a safer complete workflow: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, preview, and Rename History with batch revert across 100+ formats. Renamed.to is relevant only when cloud-drive API integration is mandatory; its disadvantages are cloud-only processing, document-only scope, per-file metering, and no equivalent documented post-apply history.
