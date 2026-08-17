@@ -8,8 +8,8 @@ topic: "comparisons"
 tags:
   - "AI File Renaming"
   - "Tool Comparisons"
-tldr: "Pick Zush if you want Mac + Windows support, 100+ formats including RAW/HEIC/design/iWork/audio, templates, Naming Blocks, and BYOK available on every plan. Pick NameQuick if you are Mac-only, want deep Finder integration with Watch Folders + Rules Engine, and prefer a wider AI provider menu."
-reviewed: "2026-07-24"
+tldr: "Choose Zush for a documented Mac + Windows workflow, 100+ formats including RAW/HEIC/design/iWork/audio, managed cloud AI, BYOK, Offline AI, folder monitoring, and unmetered paid plans. NameQuick now also offers Mac and Windows downloads, but publishes a different pricing model and a narrower format matrix."
+reviewed: "2026-08-17"
 featuredOrder: 3
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -17,17 +17,17 @@ import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
-Quick answer: Zush is <BlogHighlight>$10/month or $48 one-time</BlogHighlight> for Mac and Windows with 100+ supported image, design, document, video, and audio formats, including RAW photos, Sketch/Figma/Illustrator/PSD, iWork documents, videos, and MP3/M4A/WAV audio. NameQuick is <BlogHighlight>macOS only</BlogHighlight> and sells two ways: a Managed plan from <BlogHighlight>$12/mo metered by renames</BlogHighlight> (500 / 2,000 / 5,000 / 10,000 per month) or a $69 one-time Self-Managed license for one device where you bring your own API key or local model. Choose Zush for cross-platform coverage, published RAW/design/iWork/audio support, and unmetered lifetime pricing. Choose NameQuick for Mac-native depth, Watch Folders, and a Rules Engine.
+Quick answer: choose Zush when you want one documented Mac + Windows workflow for mixed files, with managed cloud AI, BYOK, Offline AI, folder monitoring, preview, and undo. Zush costs <BlogHighlight>$10/month or $48 one-time</BlogHighlight>, and paid PRO renames are unmetered. NameQuick now also publishes Mac and Windows downloads; its Managed plan starts at $12/month with monthly rename allowances, while Self-Managed costs $69 one-time for one device and requires your own API key or local model.
 
-**Last verified: July 24, 2026**, against namequick.app's own product and pricing pages.
+**Last verified: August 17, 2026**, against namequick.app's own product and pricing pages. NameQuick's site now offers both Windows and Mac downloads; platform-specific feature parity is not inferred where its public page does not separate the two builds.
 
 Sources checked for this update: [Zush](/) and [NameQuick](https://www.namequick.app/), including public pricing, platform, provider, folder monitoring, undo, and format-support details.
 
-If you are searching "Zush vs NameQuick", you are choosing between two paid AI file renamers that are closer in spirit than most: both have BYOK, folder monitoring, undo, and content-aware naming. The difference is mostly platform support, pricing model, public format coverage, and feature depth on macOS specifically.
+If you are searching "Zush vs NameQuick", compare the workflow you can verify rather than a feature count. The clearest differences are pricing, published format coverage, managed-versus-self-managed AI, and how much platform-specific behavior each vendor documents.
 
 <BlogProductIntro
-  title="Need Windows as well as Mac?"
-  description="Zush runs on both platforms with BYOK, Offline AI mode, folder monitoring, and rollback history, at $10/month or $48 one-time."
+  title="Try the same mixed folder in Zush"
+  description="Zush runs on Mac and Windows with 50 free renames across Cloud AI, BYOK, and Offline AI. Preview every proposed name before applying the batch."
   links={[
     { href: '/', label: 'AI file renamer' },
     { href: '/mac', label: 'Zush for Mac' },
@@ -42,9 +42,9 @@ If you are searching "Zush vs NameQuick", you are choosing between two paid AI f
 |---|---|---|
 | Pricing | <BlogHighlight>$10/month or $48 one-time</BlogHighlight> | Managed from $12/mo; $69 one-time Self-Managed (1 device, lifetime updates) |
 | Metering | <BlogHighlight>None on paid PRO</BlogHighlight> | Managed is metered at 500 / 2,000 / 5,000 / 10,000 renames per month; Self-Managed is not |
-| Free tier | 50 renames to start | 14-day trial with 50 renames |
+| Free tier | 50 renames to start | Managed trial: 250 renames for 14 days; Self-Managed trial: 50 renames |
 | 5-year cost (one-time path) | <BlogHighlight>$48 total</BlogHighlight> | $69 + API/local model setup |
-| Platforms | Mac + Windows | <BlogHighlight>macOS only</BlogHighlight> (Windows wait list) |
+| Platforms | Mac + Windows | Mac + Windows downloads published; feature parity is not separately documented |
 | Image and design formats | 41 image formats + 4 design formats (RAW, HEIC, AVIF, Sketch, Figma, AI, PSD) | 30+ formats spanning categories |
 | RAW support | <BlogHighlight>Yes (11 variants)</BlogHighlight> | Not listed publicly |
 | Document formats | 37 document/PDF formats, including iWork | Office docs covered |
@@ -73,19 +73,15 @@ For Mac users, there is also Offline AI mode via Ollama where files never leave 
 
 ## NameQuick
 
-<BlogToolMeta platform="macOS only (Windows on a wait list)" website="https://www.namequick.app/" label="namequick.app">
-  <Fragment slot="pricing">Managed from $12/mo, metered at 500 / 2,000 / 5,000 / 10,000 renames per month; Self-Managed $69 one-time for 1 device with lifetime updates and BYOK; 14-day trial with 50 renames.</Fragment>
+<BlogToolMeta platform="Mac and Windows downloads" website="https://www.namequick.app/" label="namequick.app">
+  <Fragment slot="pricing">Managed from $12/mo, metered at 500 / 2,000 / 5,000 / 10,000 renames per month; Self-Managed $69 one-time for 1 device with lifetime updates and BYOK/local models; Managed trial includes 250 renames for 14 days, while the Self-Managed trial includes 50.</Fragment>
 </BlogToolMeta>
 
-![NameQuick Mac app interface (image: namequick.app)](/images/blog/competitors/namequick.png)
+NameQuick publishes Windows and Mac downloads with two purchase paths. **Managed starts at $12/mo and is metered by volume** at 500, 2,000, 5,000, or 10,000 renames per month. **Self-Managed is $69 one-time** for one device and is the BYOK/local-model path. Its current public page does not provide a separate Windows-versus-Mac feature matrix, so this comparison does not assume that every Finder, MLX, or platform-specific feature is identical on Windows.
 
-NameQuick is a Mac-only AI file renamer with two distinct purchase paths. **Managed starts at $12/mo and is metered by volume** — the public tiers run 500, 2,000, 5,000, and 10,000 renames per month, so the plan you need is decided by how many files you actually process, not by which features you want. **Self-Managed is $69 one-time**, covers one device, includes lifetime updates, and is the BYOK/local-model path: you bring your own cloud API key or run a local model on your Mac and pay the provider directly.
+NameQuick publicly lists OpenAI, OpenRouter, Claude, Gemini, Ollama, LM Studio, and MLX for its self-managed workflow. Its privacy statements, provider availability, and Windows feature support are vendor-published claims and should be checked against the current build before purchase.
 
-Their AI provider menu is broader than most: OpenAI, OpenRouter, Claude, Gemini, Ollama, LM Studio, and MLX — seven public options, three of them local. The privacy story is strong: "EU-routed & encrypted" with "no permanent storage" and "data is never used to train AI" per their site.
-
-Two things worth stating plainly, because comparison posts often get them wrong: NameQuick has **Watch Folders** for monitoring directories and **one-click Undo & Recovery** on any rename. Neither automation nor rollback is a Zush-only capability in this matchup.
-
-The Rules Engine is one of NameQuick's distinct features — beyond renaming, it can move, tag, archive, and reorganize files automatically based on conditions you define.
+Its public Mac workflow includes Watch Folders, Undo & Recovery, and conditional Rules that can move, tag, or archive files. Zush deliberately focuses on naming files in place; it does not claim to replace a general file-routing rules engine.
 
 ## Pricing reality
 
@@ -98,11 +94,11 @@ For someone using either tool steadily over 5 years (light to moderate use, ~5,0
 | NameQuick Self-Managed (BYOK/local) | $69 + API/local setup | $69 + API/local setup | $69 + API/local setup |
 | NameQuick Managed (entry tier) | From $144/year at $12/mo | From $432 | From $720 |
 
-For BYOK-heavy paths, Zush is cheaper at the one-time entry point. Zush's $48 One-Time plan includes the full PRO desktop workflow and Mac + Windows support, while NameQuick's Self-Managed path is $69, Mac-only, and limited to one device.
+For BYOK-heavy paths, Zush has the lower published one-time entry price. Zush's $48 One-Time plan includes the PRO desktop workflow on Mac and Windows, while NameQuick's Self-Managed path is $69 for one device plus any provider cost.
 
 For Managed users, the number that matters is the meter, not the headline. $12/mo buys the 500-renames-per-month tier; heavier volume moves you up through the 2,000, 5,000, and 10,000 tiers. If your renaming is spiky — a 4,000-file photo import one month, nothing the next — a metered plan prices the peak, while an unmetered one-time plan does not.
 
-If you are choosing on platform and format coverage, Zush wins. NameQuick's value comes from things Zush intentionally does not chase as deeply: more AI provider options, a richer Rules Engine for file operations, and Mac-native polish.
+If you are choosing by mixed-file coverage and an unmetered paid plan, Zush has the clearer documented fit. It publishes support for 100+ formats and keeps managed cloud, BYOK, Offline AI, monitoring, preview, and undo in the same Mac and Windows workflow.
 
 ## Format support
 
@@ -138,11 +134,10 @@ The big differentiators:
 - You want Groq as a cloud-provider option
 - You want BYOK available on the same FREE or PRO plan
 
-**Pick NameQuick if:**
+**Consider NameQuick if:**
 
-- You are Mac-only
-- You want the richer AI provider menu (OpenRouter, LM Studio, and MLX)
-- You want a real Rules Engine for conditional moves/tags/archives, not just renaming
+- You need OpenRouter, LM Studio, or MLX and have verified support on your platform
+- You want conditional moves, tags, or archives in the same vendor workflow
 - You handle archive files that need renaming
 - EU data routing matters for your compliance story
 
@@ -150,19 +145,17 @@ The big differentiators:
 
 ## Migration tip
 
-If you are coming from NameQuick to Zush: install Zush, run the 5-file demo on a sample folder, then choose Monthly or One-Time PRO if it fits. If you were on the BYOK plan, you already have an API key — paste it into Zush's BYOK settings and continue with no API change.
-
-If you are coming from Zush to NameQuick (rare, given pricing): if you need OpenRouter or LM Studio specifically, NameQuick adds those. Otherwise the migration mostly just costs more.
+If you are comparing an existing setup with Zush, copy five representative files into a test folder and run the free Zush workflow first. Check the proposed names, format coverage, and undo history before changing any monitored folder. If you already use a supported Gemini, Groq, OpenAI, or Claude key, you can reuse it in Zush BYOK.
 
 ## FAQ
 
 ### Does NameQuick run on Windows?
 
-No. NameQuick is macOS only. If you need a Windows app, Zush has one in the Microsoft Store.
+Yes. NameQuick's current product page offers both Windows and Mac downloads. It does not publish a complete platform-by-platform feature matrix, so verify Windows support for any Mac-specific feature you need. Zush publishes a native Microsoft Store build and documents the same core renaming, BYOK, Offline AI, monitoring, preview, and undo workflow for Windows.
 
 ### Is BYOK free in both tools?
 
-In Zush, BYOK is available on every plan plans — no separate BYOK purchase. In NameQuick, the public Self-Managed plan is $69 one-time, after which you bring your own API key or local model.
+In Zush, BYOK is available on every plan — no separate BYOK purchase. In NameQuick, the public Self-Managed plan is $69 one-time, after which you bring your own API key or local model.
 
 ### Does Zush support all NameQuick AI providers?
 
@@ -181,6 +174,8 @@ Both tools integrate with Finder tags. NameQuick adds Finder Comments, the Rules
 Both tools have BYOK, folder monitoring, undo, and content-aware naming. The decision splits clearly:
 
 - For cross-platform (Mac + Windows), broad 100+ format coverage, RAW + HEIC + design + iWork + audio support, and BYOK available on every plan: <BlogHighlight>Zush at $10/month or $48 one-time</BlogHighlight>.
-- For Mac-only users who want the deepest macOS integration, broader provider choice including OpenRouter and LM Studio, and a Rules Engine: NameQuick.
+- If you require NameQuick-specific providers or routing rules, verify those features in the current build for your operating system before deciding.
+
+For most mixed-file Mac and Windows workflows, start with Zush FREE and test 50 renames before paying for either approach.
 
 For the broader market view, see [AI renamer market comparison](/blog/best-ai-file-renamer-tools-2026) and [Mac AI renamer comparison](/blog/best-ai-file-renamer-tools-mac-compared).

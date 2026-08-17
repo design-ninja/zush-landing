@@ -1,0 +1,16 @@
+{
+  "generatedAt": "2026-08-17T09:30:00+07:00",
+  "simulation": true,
+  "executedApplications": false,
+  "seed": 20260817,
+  "corpusSize": 300,
+  "repeatCount": 3,
+  "namingPattern": "YYYY-MM-DD_Organization_Document-Type_Reference.ext",
+  "inputPolicy": "Synthetic text-derived fixtures embedded in corpus.jsonl as base64.",
+  "scoring": {
+    "validFilename": "1 when the modeled output preserves the extension and excludes reserved path characters.",
+    "exactMatch": "1 when the modeled output equals expectedFilename byte-for-byte.",
+    "semanticScore0To3": "Seeded synthetic score: 0 unusable, 1 partial, 2 useful with edits, 3 matches expected fields.",
+    "latencyMs": "Synthetic modeled latency; not wall-clock application performance."
+  }
+}
