@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.9.4] - 2026-08-17
+
+### Added
+- Open the active AI mode directly from the usage area
+
+### Improved
+- Better PDF and iWork document analysis, including support for your own OpenAI and Claude keys
+- Custom AI fields now preserve visible formatting such as currency symbols, separators, and decimal precision
+
+### Fixed
+- Emoji are preserved in generated filenames
+- Zush stays in the menu bar when it starts at login
+- The App Sounds setting now applies consistently
+
 ## [3.9.3] - 2026-08-11
 
 ### Added
