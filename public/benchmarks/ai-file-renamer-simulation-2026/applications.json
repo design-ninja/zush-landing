@@ -1,0 +1,65 @@
+{
+  "generatedAt": "2026-08-17T09:30:00+07:00",
+  "simulation": true,
+  "executedApplications": false,
+  "note": "Named applications are future independent-test targets only. No application was run for this simulation.",
+  "targetApplications": [
+    {
+      "name": "Zush",
+      "declaredVersions": {
+        "macOS": "3.9.3",
+        "Windows": "3.8.5.0"
+      },
+      "versionSource": "https://zushapp.com/pricing.md",
+      "executed": false
+    },
+    {
+      "name": "FilesDesk",
+      "declaredVersions": null,
+      "versionSource": "https://filesdesk.app/",
+      "executed": false
+    },
+    {
+      "name": "RenameClick",
+      "declaredVersions": {
+        "vendorPage": "2.14.10"
+      },
+      "versionSource": "https://rename.click/",
+      "executed": false
+    },
+    {
+      "name": "NameQuick",
+      "declaredVersions": null,
+      "versionSource": "https://www.namequick.app/",
+      "executed": false
+    },
+    {
+      "name": "Renamer.ai",
+      "declaredVersions": null,
+      "versionSource": "https://renamer.ai/",
+      "executed": false
+    }
+  ],
+  "simulationRunners": [
+    {
+      "id": "sim-reference-workflow",
+      "version": "1.0.0",
+      "profile": "high-recall modeled output"
+    },
+    {
+      "id": "sim-cloud-baseline",
+      "version": "1.0.0",
+      "profile": "generic cloud modeled output"
+    },
+    {
+      "id": "sim-local-baseline",
+      "version": "1.0.0",
+      "profile": "generic local modeled output"
+    },
+    {
+      "id": "sim-rule-baseline",
+      "version": "1.0.0",
+      "profile": "content-blind rules modeled output"
+    }
+  ]
+}

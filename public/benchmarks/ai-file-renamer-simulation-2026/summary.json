@@ -1,0 +1,50 @@
+{
+  "generatedAt": "2026-08-17T09:30:00+07:00",
+  "simulation": true,
+  "results": [
+    {
+      "runner": "sim-reference-workflow",
+      "simulation": true,
+      "executedApplication": false,
+      "rows": 900,
+      "validFilenameRate": 0.9967,
+      "exactMatchRate": 0.8811,
+      "averageSemanticScore0To3": 2.9744,
+      "averageModeledLatencyMs": 523.94,
+      "failureRate": 0.0022
+    },
+    {
+      "runner": "sim-cloud-baseline",
+      "simulation": true,
+      "executedApplication": false,
+      "rows": 900,
+      "validFilenameRate": 0.9878,
+      "exactMatchRate": 0.7856,
+      "averageSemanticScore0To3": 2.8956,
+      "averageModeledLatencyMs": 737.61,
+      "failureRate": 0.0056
+    },
+    {
+      "runner": "sim-local-baseline",
+      "simulation": true,
+      "executedApplication": false,
+      "rows": 900,
+      "validFilenameRate": 0.9622,
+      "exactMatchRate": 0.6333,
+      "averageSemanticScore0To3": 2.68,
+      "averageModeledLatencyMs": 972.12,
+      "failureRate": 0.02
+    },
+    {
+      "runner": "sim-rule-baseline",
+      "simulation": true,
+      "executedApplication": false,
+      "rows": 900,
+      "validFilenameRate": 0.9956,
+      "exactMatchRate": 0.2078,
+      "averageSemanticScore0To3": 1.5744,
+      "averageModeledLatencyMs": 90.71,
+      "failureRate": 0.0011
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 ---
 title: "How to Rename Files with AI for Free in 2026"
-description: "Learn how to rename files with AI for free using Zush's free tier, BYOK API keys, open-source tools, and scripts without paying for subscriptions."
+description: "Try AI file renaming free with Zush on Mac or Windows. Compare Cloud AI, BYOK, Offline AI, and open-source setup without unsupported cost or quality claims."
 date: "2026-03-23"
 slug: "rename-files-with-ai-free"
 platform: "general"
@@ -9,266 +9,177 @@ tags:
   - "AI File Renaming"
   - "File Organization"
   - "BYOK"
-tldr: "Zush FREE includes 50 renames shared across Cloud AI, BYOK, and Offline AI. Open-source local tools can offer unlimited processing, while Zush PRO removes the app's rename limit."
-reviewed: "2026-08-04"
+tldr: "Zush FREE includes 50 renames shared across Cloud AI, BYOK, and Offline AI on Mac and Windows. Start with copies of representative files, review every proposed name, and choose a paid plan only if the workflow fits."
+reviewed: "2026-08-17"
 ---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: Zush FREE provides 50 renames on Mac and Windows, shared across managed Cloud AI, BYOK with your provider key, and Offline AI with Ollama. For more than 50 Zush renames, PRO removes the app limit; open-source local tools remain another unlimited option.
+Quick answer: [Zush FREE](/) includes 50 AI file renames on Mac and Windows. The allowance is shared across managed Cloud AI, BYOK with your own provider key, and Offline AI with Ollama. You can preview proposed names before applying them and use rename history to undo a batch. No quality ranking is claimed here because the available workflows have not been independently benchmarked on the same files.
 
-You do not need to pay a subscription to rename files with AI. There are several genuinely free paths, each with different trade-offs in quality, setup effort, and file format support.
-
-This guide covers practical ways to rename files with AI for free in 2026, from Zush's three free processing modes to open-source local tools.
+The safest way to try an AI file renamer for free is to copy 10 representative files into a test folder, run one naming pattern, inspect every suggestion, and undo the batch once. That small test tells you more than a feature list while keeping original files untouched.
 
 <BlogProductIntro
-  title="Want to try AI renaming without paying?"
-  description="Zush includes 50 free renames with no signup across Cloud AI, BYOK, and Offline AI. PRO removes the rename limit."
+  title="Try your first 50 AI renames free"
+  description="Install Zush on Mac or Windows, add a copied test folder, and review every proposed filename before applying the batch. Cloud AI, BYOK, and Offline AI share the same free allowance."
   links={[
-    { href: '/', label: 'AI file renamer' },
+    { href: '/', label: 'Try Zush free' },
     { href: '/mac', label: 'Zush for Mac' },
     { href: '/windows', label: 'Zush for Windows' },
     { href: '/docs/pricing-limits', label: 'Pricing and limits' },
   ]}
 />
 
-## The free options at a glance
+## What “free AI file renaming” can mean
 
-| Method | Cost | Setup effort | Quality | Formats | Automation |
-|---|---|---|---|---|---|
-| Zush free tier | $0 | Low | High | 100+ image + design + document + video + audio formats | Yes |
-| Zush BYOK | API cost only (~$0.001/file) | Medium | High | 100+ image + design + document + video + audio formats | Yes |
-| Riffo | $0 | Low | Medium | Images, PDFs, documents | No |
-| `ai-renamer` CLI (local, GPL-3.0) | $0 | High | Medium | Images/video via local setup | No |
-| AI Renamer Desktop | 10 free credits | Low | Medium-High | Public examples + all-file claim | No |
-| Renamer.ai free tier | $0 (25 files/month) | Low | Medium-High | 25+ common file types | Yes (Magic Folders) |
-| DIY Python script | API cost only | High | Varies | Whatever you code | No |
+Free offers are not interchangeable. Some include managed AI, some require your own provider account, and some run a local model on hardware you already own.
 
-Each approach has a sweet spot. The rest of this guide walks through them in detail.
+| Free path | App allowance | Extra requirement | Preview and undo | Best first test |
+|---|---:|---|---|---|
+| Zush Cloud AI | 50 shared Zush renames | Internet connection | Yes | Fastest no-key setup |
+| Zush BYOK | 50 shared Zush renames | Supported provider key; provider charges or quotas may apply | Yes | Provider control |
+| Zush Offline AI | 50 shared Zush renames | Ollama, a compatible local model, disk space, and suitable hardware | Yes | Files that should stay on device |
+| Open-source local CLI | No app meter if the project is fully local | Terminal setup, model download, and self-maintained safety checks | Depends on the project | Technical users testing a copied folder |
+| DIY script | No app meter | Development time plus any model or API cost | Only if you build it | Learning or a narrow one-off task |
 
+The table compares workflow requirements, not naming quality. A quality comparison would require a fixed corpus, identical inputs, recorded versions, repeat runs, and a published scoring rubric.
 
+## Option 1: start with Zush Cloud AI
 
-## Option 1: Zush free tier (easiest start)
+[Zush](/) provides 50 free renames without requiring a separate AI provider account. Add files or a folder, let Zush propose descriptive names, review the preview, and apply only the names you accept.
 
-[Zush](/) includes 50 free renames. No credit card, no trial period, and BYOK and Offline AI are included alongside managed Cloud AI. All three modes share the same 50-rename allowance.
+Use copies for the first run:
 
-### What 50 free renames covers
+1. Create a folder named `Zush Test`.
+2. Copy in 10 files that represent your real workload: a screenshot, photo, PDF, spreadsheet, document, audio file, video, design asset, scan, and unknown download.
+3. Run the default naming workflow.
+4. Check whether extensions remain correct and duplicate names are handled.
+5. Apply the batch, confirm the files still open, and test undo from rename history.
 
-- A weekly cleanup of your Downloads folder
-- Ongoing screenshot management if you take 10-12 screenshots a week
-- A monthly photo import session
-- Testing the workflow before deciding if you need more volume
-
-### How to use it
-
-1. Download Zush from [zushapp.com](https://zushapp.com).
-2. Open the app and drag in files or select a folder.
-3. Zush analyzes each file and proposes descriptive names.
-4. Review the preview and click rename.
-
-The free tier is the fastest way to try AI file renaming without paying or signing up for a trial. If 50 renames covers your initial cleanup, you never need to pay anything.
-
-## Option 2: Zush BYOK on the free plan
-
-BYOK stands for Bring Your Own Key. You connect your own API key from a supported provider and use it within the same 50-rename FREE allowance. PRO removes the Zush rename limit; provider quotas and API costs still apply.
-
-### Supported providers
-
-- **Google Gemini** - generous free tier, very low paid pricing
-- **Groq** - fast inference, competitive pricing
-- **OpenAI** - GPT-4o and other models
-- **Anthropic Claude** - strong vision capabilities
-
-### What it costs in practice
-
-The cost per file rename through BYOK is provider-dependent and changes with model, file size, prompt length, and token usage. In practice it can be fractions of a cent per file on efficient models, but confirm current provider pricing before estimating a large batch. For a deeper walkthrough, see [BYOK AI File Renaming with Your Own API Key](/blog/byok-ai-file-renaming-unlimited).
-
-Google Gemini is the cheapest default because it offers a free tier of API calls. If your monthly rename volume is moderate (under a few hundred files), you typically pay nothing beyond the Zush app itself, which is free.
-
-### How to set it up
-
-1. Open Zush and go to settings.
-2. Select your preferred AI provider.
-3. Paste your API key from that provider's dashboard.
-4. Zush now uses your key for all rename operations.
-5. BYOK renames count toward the shared 50-rename FREE allowance; PRO removes the Zush limit.
-
-### Getting an API key
-
-Each provider has a slightly different process, but the pattern is the same:
-
-**Google Gemini:**
-1. Go to [ai.google.dev](https://ai.google.dev).
-2. Sign in and create an API key.
-3. Copy the key into Zush.
-
-**OpenAI:**
-1. Go to [platform.openai.com](https://platform.openai.com).
-2. Navigate to API keys and create a new key.
-3. Add a small credit balance (even $5 covers thousands of renames).
-4. Copy the key into Zush.
-
-**Anthropic:**
-1. Go to [console.anthropic.com](https://console.anthropic.com).
-2. Create an API key.
-3. Add credit balance.
-4. Copy the key into Zush.
-
-The BYOK approach gives you the full Zush workflow, including batch rename, folder monitoring, custom patterns, Finder tags, 60+ language support, and rename history. FREE includes 50 shared renames; PRO removes the Zush cap.
-
-![Zush BYOK demo showing file renaming with your own AI provider key](/videos/zush-byok.mp4)
-
-For a broader comparison of tools and pricing, see [AI renamer tools comparison](/blog/best-ai-file-renamer-tools-2026).
-
-## Option 3: AI Renamer (CLI + Desktop app)
-
-Two unrelated projects share this name, and only one of them is free. [`ozgrozer/ai-renamer`](https://github.com/ozgrozer/ai-renamer) is a GPL-3.0 Node.js CLI on GitHub that runs AI models locally through Ollama -- completely free, with no API calls leaving your computer. The commercial desktop app at airenamer.app is a different product: it offers a GUI with local and cloud options and gives 10 free credits on signup, but its pricing page lists no CLI and no open-source tier.
-
-### CLI setup process
-
-1. Install Ollama from [ollama.ai](https://ollama.ai).
-2. Download a vision-capable model such as `qwen2.5vl:3b`, `gemma3:4b`, or another model your hardware can run comfortably.
-3. Install the `ai-renamer` CLI via npm (`npx ai-renamer /path` also works).
-4. Point it at your files and let the local model generate names.
-
-### Desktop app (free credits)
-
-The desktop app gives you 10 free credits on signup -- enough to test the workflow. Its current pricing page says Local Mode and Cloud Mode support all file types, while the feature page still gives narrower examples such as images plus PDF/TXT/text files. After the free credits, local mode costs $19 one-time or cloud mode costs $10 per 200 credits.
-
-### Trade-offs
-
-**Advantages:**
-- The GitHub CLI is fully free with no API costs
-- Files never leave your machine in local mode
-- No account required for the CLI (the paid desktop app does require a signup)
-- Desktop app now markets broader all-file support, with OpenAI/custom model support in Local Mode
-- Custom prompts and naming case styles (camelCase, snake_case, etc.)
-
-**Disadvantages:**
-- CLI requires terminal comfort and Ollama setup (several GB of disk space)
-- Local models produce lower-quality names than cloud models
-- Public format detail is uneven between the CLI, the desktop feature page, and the desktop pricing page
-- No folder monitoring or automation
-- No undo or rename history
-- Desktop app's free credits are limited (10 on signup)
-
-AI Renamer works if privacy is your top priority. The free GitHub CLI is best for developers comfortable with the terminal; the $19 desktop app is easier to use and markets broader format support, but it is a paid product, not the open-source one. For the direct trade-off against Zush, read [Zush vs AI Renamer](/blog/zush-vs-airenamer). If you are choosing between free cloud credits, BYOK, and local models, read [Cloud AI vs Local AI File Renaming](/blog/cloud-vs-local-ai-file-renaming).
+This method measures fit without exposing a production folder to an unfamiliar workflow. If the proposed names are not useful, revise the Template or prompt before spending more of the free allowance.
 
 ![Zush AI rename results on macOS showing content-aware filenames for mixed files](/images/showcase/macos/batch-rename-light.webp)
 
-## Option 4: DIY script with a free API tier
+## Option 2: use BYOK on the free plan
 
-If you are comfortable writing code, you can build a basic AI file renamer with a Python script and a vision API.
+BYOK means “bring your own key.” Zush supports Gemini, Groq, OpenAI, and Claude provider keys. BYOK uses the same 50-renames FREE allowance; PRO removes the Zush app limit, while provider quotas and charges remain separate.
 
-### Basic approach
+BYOK is useful when you want to:
 
-```
-1. List files in a directory
-2. For each image, encode as base64 and send to a vision API
-3. For each document, extract text and send to a language model
-4. Parse the response into a clean filename
-5. Rename the file
-```
+- choose a specific supported provider or model;
+- keep provider billing separate from the desktop app;
+- use an existing organization account or quota;
+- compare model output while keeping the same Zush preview, Template, monitoring, and undo workflow.
 
-### Which APIs have free tiers
+There is no honest universal “cost per file.” Provider cost depends on the model, input size, extracted text or image payload, output length, cached tokens, and current provider pricing. Check the provider's live pricing page and measure a representative batch before estimating monthly cost.
 
-- **Google Gemini** offers a free tier with rate limits that covers moderate usage
-- **Groq** offers free access with rate limits
+### Reproducible BYOK cost estimate
 
-### Trade-offs
+For a 20-file sample, record:
 
-**Advantages:**
-- Full control over naming logic
-- Free within API rate limits
-- Educational if you want to understand how it works
+1. provider and exact model name;
+2. input and output tokens or billed units;
+3. image or document processing charges, if separate;
+4. failed or repeated requests;
+5. total provider charge shown in the provider dashboard.
 
-**Disadvantages:**
-- Significant development time
-- No GUI, no preview, no undo
-- You handle error cases, rate limits, and edge cases yourself
-- No batch preview to catch bad names before they apply
-- You maintain the script as APIs change
-- Does not handle format conversion, metadata, or Finder integration
+Then calculate:
 
-A DIY script is best treated as a learning exercise or a one-off cleanup tool. For daily use, the maintenance overhead usually exceeds the savings.
+`estimated monthly provider cost = sample cost ÷ successful sample files × expected monthly files`
 
-## Option 5: Renamer.ai free tier and browser tools
+This is an estimate, not an independent benchmark. Model pricing and file complexity can change the result.
 
-Renamer.ai offers 25 free file renames per month. It is not just a browser tool -- it also has a desktop app for Windows and Mac with Magic Folders automation. The web interface is useful for quick, no-install access.
+For setup instructions, use the [Zush BYOK guide](/docs/byok).
 
-Renamify (renamify.co) is a web-only tool that requires a paid subscription ($10/month or $96/year) with no free tier.
+## Option 3: use Zush Offline AI with Ollama
 
-### How the free options work
+Offline AI runs a compatible model through Ollama on your computer for supported analysis. It avoids sending the file to a managed cloud model, but it requires a model download, local disk space, memory, and enough compute for acceptable speed.
 
-1. Renamer.ai: sign up for the free plan (25 files/month) and use the web interface or download the desktop app.
-2. Riffo (riffo.ai): download the free Mac app or use the web demo. The homepage says it is free and publishes no pricing page, so there is also no stated usage cap either way.
+The practical trade-offs are hardware-specific:
 
-### Trade-offs
+- a smaller model usually downloads and runs more easily;
+- a larger model may require more memory and take longer;
+- image, document, audio, and video workflows do not have identical requirements;
+- local output should still be reviewed before applying a batch.
 
-**Advantages:**
-- Renamer.ai's free tier includes 25+ common file types and desktop app access
-- Riffo is completely free with Auto Foldering
-- Web interfaces require no installation
+Zush keeps the same preview and undo workflow across Cloud AI, BYOK, and Offline AI, so you can compare modes with the same copied files. See the [Offline AI file renamer guide](/offline-ai-file-renamer) for the current setup path.
 
-**Disadvantages:**
-- Renamer.ai free tier is limited to 25 files/month
-- Files are uploaded to remote servers (privacy concern)
-- Renamify has no free option at all
-- Riffo publishes no format list, no undo statement, and no pricing page
+<BlogCTA placement='inline' platform='general' />
 
-For light usage, Renamer.ai's 25 free renames or Riffo's completely free app are viable starting points. For more volume, Zush's free tier (50 to start) or BYOK option is more practical.
+## Option 4: open-source or DIY local renaming
 
-## Comparing the free approaches
+Technical users can build a free local path around Ollama. One example is the GPL-3.0 [`ozgrozer/ai-renamer`](https://github.com/ozgrozer/ai-renamer) command-line project. It is separate from similarly named commercial desktop products.
 
-### For most Mac users
+Before using any CLI on real files, verify:
 
-Start with Zush FREE. It requires no technical setup, handles the widest range of file formats, and includes Cloud AI, BYOK, Offline AI, automation, and undo within the shared 50-rename limit. If you need more volume, PRO removes the cap.
+- whether it previews changes before renaming;
+- how it handles duplicate or invalid filenames;
+- whether it preserves file extensions;
+- whether it produces a reversible log;
+- which formats the current version actually reads;
+- which local model and prompt were used.
 
-### For privacy-focused users
+A minimal DIY script needs file extraction, model calls, filename sanitization, collision handling, retry logic, extension preservation, logging, and rollback. If those safeguards are missing, “free” shifts the cost from money to development and recovery time.
 
-AI Renamer with local models keeps everything on your machine. Accept the trade-offs in naming quality and format support.
+## How to choose the free path
 
-### For developers
+Choose by constraint:
 
-A DIY script is fast to prototype and useful for understanding the technology. It is not a replacement for a proper tool if you rename files regularly.
+- **Fastest start:** Zush Cloud AI, because no provider key or local model is required.
+- **Provider control:** Zush BYOK with a supported key.
+- **On-device analysis:** Zush Offline AI with Ollama and compatible hardware.
+- **Terminal-first experimentation:** a maintained open-source CLI on copies of non-critical files.
+- **Learning project:** a DIY script with an explicit rename log and rollback step.
 
-### For occasional use
+For most people, the first decision is not which model is theoretically best. It is whether the proposed filenames are useful, reviewable, and reversible on the files they actually manage.
 
-Browser tools handle a few files without any setup.
+## Make 50 free renames useful
 
+Use the allowance where content analysis adds value:
 
-## Making the most of 50 free renames
+- screenshots with timestamp-only names;
+- scanned PDFs and downloaded documents;
+- mixed photo or design exports;
+- audio or video files with weak source names;
+- recurring files that can reuse one Template.
 
-If you stick with the Zush free tier, here is how to maximize it:
+Do not spend AI renames on files that only need a simple counter or fixed prefix. Test a Template on a small batch before enabling folder monitoring.
 
-### Prioritize high-value files
+## When the free allowance is not enough
 
-Rename the files that cause the most friction when searching. Screenshots and downloaded files with random names are usually the top candidates.
+Zush PRO removes the app's rename limit at $10/month or $48 one-time. Managed Cloud AI remains included; BYOK provider usage remains subject to the provider's own pricing, and Offline AI remains dependent on local hardware.
 
-### Batch similar files together
+Before upgrading, review your activity history:
 
-Processing related files in one session is more efficient than renaming individual files across the month.
+1. How many proposed names did you accept without editing?
+2. Which file types produced useful results?
+3. Did one Template work across a recurring folder?
+4. Did preview and undo behave as expected?
 
-### Use folder monitoring selectively
+Upgrade only if the answers support a recurring workflow, not because a generic comparison labels one model “high quality.”
 
-Set folder monitoring on your most problematic folder, like Downloads or Screenshots. Let Zush handle the worst offenders automatically and use remaining renames for manual batches.
+## FAQ
 
-### Combine with manual naming for simple cases
+### Is Zush free on both Mac and Windows?
 
-If a file just needs a date prefix or a client code, rename it manually. Save AI renames for files where the content analysis actually adds value.
+Yes. Zush FREE includes 50 renames shared across Cloud AI, BYOK, and Offline AI on Mac and Windows.
 
-## When free is not enough
+### Do I need an API key to try Zush?
 
-The point at which you outgrow free depends on your volume.
+No. Managed Cloud AI does not require your own provider key. BYOK is optional when you want provider control.
 
-- **Light or one-off use:** The Zush free tier is sufficient.
-- **Moderate ongoing use (50-500 files/month):** BYOK with Gemini keeps costs under $1/month.
-- **Heavy use (500+ files/month):** Zush PRO removes the rename limit with a $10/month plan or a $48 one-time plan. BYOK remains available on FREE and PRO when you want provider control.
+### Is Offline AI unlimited on the free plan?
 
-The progression from free to paid is smooth. You do not lose any features or need to reconfigure anything.
+No. Cloud AI, BYOK, and Offline AI share the same 50-renames FREE allowance. Paid PRO removes the Zush app limit.
 
-For setup guides on configuring BYOK providers, see [BYOK Setup Guide](/docs/byok).
+### How can I compare naming quality fairly?
 
+Use copied files, the same naming instruction, recorded app and model versions, at least three runs, and a published scoring rubric. Without those inputs, quality labels are opinions rather than reproducible evidence.
 
-## Getting started
+### Can I undo AI-renamed files?
 
-Download [Zush](/) and rename your first batch with the 50-rename free tier. Under two minutes of setup. If the generated names match what you would have typed manually, you already know the tool works for you — and PRO removes the rename limit when you need to scale up.
+Zush keeps rename history so an applied batch can be reverted. Always test undo on copied files before monitoring an important folder.
+
+## Try Zush free
+
+[Download Zush](/), copy 10 representative files into a test folder, and use the 50 free renames to check the full preview-and-undo workflow. If the names fit, reuse the Template on a real folder; if they do not, you have tested the product without paying or changing the originals.

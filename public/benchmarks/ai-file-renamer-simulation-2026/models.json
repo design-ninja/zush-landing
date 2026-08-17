@@ -1,0 +1,67 @@
+{
+  "generatedAt": "2026-08-17T09:30:00+07:00",
+  "simulation": true,
+  "executedModels": false,
+  "note": "No AI model was called. Simulation profiles are deterministic generator configurations, not product models.",
+  "futureIndependentTestRequirement": "Record the exact provider, model identifier, revision or digest, API version, and request parameters for every executed run. Use null when a vendor-managed model is not publicly pinned.",
+  "targetModelDeclarations": [
+    {
+      "workflow": "Zush Cloud AI",
+      "provider": "vendor managed",
+      "modelIdentifier": null,
+      "modelRevisionOrDigest": null,
+      "reasonUnavailable": "A public, immutable production model revision was not asserted for this simulation.",
+      "executed": false
+    },
+    {
+      "workflow": "Zush BYOK",
+      "provider": null,
+      "modelIdentifier": null,
+      "modelRevisionOrDigest": null,
+      "reasonUnavailable": "The real benchmark must select and record one supported provider and exact model before execution.",
+      "executed": false
+    },
+    {
+      "workflow": "Zush Offline AI",
+      "provider": "Ollama",
+      "modelIdentifier": null,
+      "modelRevisionOrDigest": null,
+      "reasonUnavailable": "The real benchmark must record the selected Ollama model name and immutable digest before execution.",
+      "executed": false
+    },
+    {
+      "workflow": "Third-party managed applications",
+      "provider": "vendor managed or user selected",
+      "modelIdentifier": null,
+      "modelRevisionOrDigest": null,
+      "reasonUnavailable": "No third-party application or model was executed; vendor-managed model revisions may not be public.",
+      "executed": false
+    }
+  ],
+  "simulationProfiles": [
+    {
+      "id": "sim-reference-workflow",
+      "generator": "generate-ai-renamer-benchmark-simulation.mjs",
+      "generatorVersion": "1.0.0",
+      "aiModel": null
+    },
+    {
+      "id": "sim-cloud-baseline",
+      "generator": "generate-ai-renamer-benchmark-simulation.mjs",
+      "generatorVersion": "1.0.0",
+      "aiModel": null
+    },
+    {
+      "id": "sim-local-baseline",
+      "generator": "generate-ai-renamer-benchmark-simulation.mjs",
+      "generatorVersion": "1.0.0",
+      "aiModel": null
+    },
+    {
+      "id": "sim-rule-baseline",
+      "generator": "generate-ai-renamer-benchmark-simulation.mjs",
+      "generatorVersion": "1.0.0",
+      "aiModel": null
+    }
+  ]
+}
