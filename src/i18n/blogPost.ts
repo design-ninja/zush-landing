@@ -175,3 +175,24 @@ export const TRANSLATION_LINK_LABEL: Record<BlogLocale, string> = {
   'zh-cn': '阅读中文版',
   ar: 'اقرأ بالعربية',
 };
+
+/**
+ * Which translation the visible link points at when a post has several.
+ * Ordered by addressable audience for this site (de is the active locale
+ * experiment and the largest non-EN market), not alphabetically — otherwise
+ * `ar` wins on every fully translated post and an Arabic invitation tops
+ * English articles read mostly from the US.
+ */
+export const TRANSLATION_LINK_PRIORITY: BlogLocale[] = [
+  'de',
+  'fr',
+  'es',
+  'pt-br',
+  'it',
+  'nl',
+  'ja',
+  'ko',
+  'zh-cn',
+  'tr',
+  'ar',
+];

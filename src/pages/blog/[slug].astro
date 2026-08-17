@@ -19,7 +19,7 @@ import {
 } from '@/utils/jsonLd';
 import { HOW_TO_SCHEMAS } from '@/data/howToSchemas';
 import { LOCALE_META, type Locale } from '@/i18n/config';
-import { TRANSLATION_LINK_LABEL } from '@/i18n/blogPost';
+import { TRANSLATION_LINK_LABEL, TRANSLATION_LINK_PRIORITY } from '@/i18n/blogPost';
 
 export async function getStaticPaths() {
   const posts = await getAllPosts();
@@ -234,7 +234,8 @@ const languagePaths: Partial<Record<Locale, string>> | undefined =
       }
     : undefined;
 
-const firstTranslationLocale = translationLocales[0];
+const firstTranslationLocale =
+  TRANSLATION_LINK_PRIORITY.find((locale) => locale in translations) ?? translationLocales[0];
 const firstTranslation = firstTranslationLocale ? translations[firstTranslationLocale] : undefined;
 const translationLink: TranslationLink | undefined =
   firstTranslationLocale && firstTranslation
