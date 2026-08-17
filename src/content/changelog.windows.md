@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.8.6.0] - 2026-08-17
+
+### Added
+- PDFs can now be sent directly to supported Bring Your Own Key providers for richer analysis while keeping visual previews.
+
+### Improved
+- Custom AI Blocks are easier to read and edit with better-sized menus and controls.
+- AI Rename stays more responsive during network changes, slow file access, and preference updates.
+
+### Fixed
+- Fixed occasional UI stalls when opening previews, restoring the window, playing the completion sound, or updating AI Rename settings.
+
 ## [3.8.5.0] - 2026-08-16
 
 ### Improved
