@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.8.7.0] - 2026-08-18
+
+### Improved
+- Smart Metadata now adapts to each file format and generates descriptions and tags only when they can be saved safely.
+- Folder monitoring now uses every remaining free rename credit and makes it clearer when an upgrade is needed.
+- Generated names preserve valid punctuation, apostrophes, acronyms, and case formatting more reliably.
+
+### Fixed
+- Added clearer feedback when an AI content filter blocks a file, and fixed a template icon fallback on Windows 10.
+
+
 ## [3.8.6.0] - 2026-08-17
 
 ### Added
