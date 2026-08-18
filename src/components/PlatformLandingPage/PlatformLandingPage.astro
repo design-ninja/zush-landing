@@ -3,6 +3,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import Hero from '@/components/Hero';
 import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
 import Features from '@/components/Features/Features.astro';
+import WaysToRun from '@/components/Features/WaysToRun.astro';
+import EvidenceSignals from '@/components/EvidenceSignals/EvidenceSignals.astro';
 import Tour from '@/components/Tour';
 import SupportedFormats from '@/components/SupportedFormats';
 import Pricing from '@/components/Pricing/Pricing.astro';
@@ -150,11 +152,11 @@ const intentSection = platform === 'mac'
       eyebrow: 'Mac AI file renaming',
       title: 'AI file renamer for Mac: when Zush is the right fit',
       description:
-        'Zush is an AI file renamer for Mac when Finder rules are not enough. It reads the file content first, then suggests searchable names for mixed Finder folders with screenshots, PDFs, photos, RAW files, videos, audio, design files, iWork, and Office documents.',
+        'Zush is an AI file renamer for Mac when every Finder folder needs its own naming convention. Choose the fields and their order, let AI extract the details, review every proposed name, and apply only when you are ready.',
       points: [
-        'Use it for Downloads, Desktop, screenshots, photo imports, scanner output, and client folders where every file needs a different name.',
-        'Review each AI filename before applying a batch, regenerate individual suggestions, and undo the rename from history if a folder needs another pass.',
-        'Use cloud AI, BYOK with Gemini, Groq, OpenAI, or Claude, or Offline AI mode with local Ollama models on Mac and Windows.',
+        'Build reusable patterns from content, metadata, dates, counters, custom instructions, and your own AI fields.',
+        'Preview each filename, regenerate individual suggestions, and restore the originals with one-click undo.',
+        'Choose Zush Cloud, your own Gemini, Groq, OpenAI, or Claude key, or supported local models through Offline AI.',
       ],
       links: [
         { href: '/', label: 'AI file renamer for Mac & Windows' },
@@ -169,11 +171,11 @@ const intentSection = platform === 'mac'
       eyebrow: 'Windows AI file renaming',
       title: 'AI file renamer for Windows: when Zush is the right fit',
       description:
-        'Zush is an AI file renamer for Windows when PowerRename or pattern tools cannot understand what each file contains. It reads mixed File Explorer folders, then suggests searchable filenames for screenshots, PDFs, photos, video, audio, design files, and documents.',
+        'Zush is an AI file renamer for Windows when every File Explorer folder needs its own naming convention. Choose the fields and their order, let AI extract the details, review every proposed name, and apply only when you are ready.',
       points: [
-        'Use it for Downloads, Pictures\\Screenshots, OneDrive folders, shared drives, and project exports that need readable names.',
-        'Review every AI filename before applying, regenerate individual suggestions, and roll back a batch from rename history.',
-        'Install from the Microsoft Store, use BYOK for provider control, or switch to Offline AI mode with local models when privacy matters.',
+        'Build reusable patterns from content, metadata, dates, counters, custom instructions, and your own AI fields.',
+        'Preview each filename, regenerate individual suggestions, and restore the originals with one-click undo.',
+        'Choose Zush Cloud, your own Gemini, Groq, OpenAI, or Claude key, or supported local models through Offline AI.',
       ],
       links: [
         { href: '/', label: 'AI file renamer for Mac & Windows' },
@@ -354,7 +356,10 @@ const jsonLdItems = [
     description={platformSections.featuresDescription}
     copy={platformSections.featureCards}
     locale={locale}
+    includeBand={false}
   />
+  <WaysToRun copy={platformSections.featureCards} locale={locale} />
+  <EvidenceSignals locale={locale} variant="control" />
   {platform === 'windows' && (
     <Tour client:visible forceOS="windows" copy={copy.home.showcase} />
   )}
@@ -386,6 +391,7 @@ const jsonLdItems = [
   {platform === 'windows' && locale === DEFAULT_LOCALE && <WindowsSeoSection />}
   {platform === 'windows' && locale === DEFAULT_LOCALE && <ComparisonTable {...WINDOWS_COMPARISON} />}
   <PlatformSpecifics platform={platform} locale={locale} variant="compact" scenarioLimit={4} />
+  <EvidenceSignals locale={locale} variant="facts" />
   <SupportedFormats
     title={copy.home.supportedFormats}
     imagesLabel={copy.home.images}

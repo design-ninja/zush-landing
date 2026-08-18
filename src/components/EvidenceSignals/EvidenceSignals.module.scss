@@ -4,6 +4,10 @@
 .EvidenceSignals {
   padding: 2rem 0 4.5rem;
 
+  &_sourcesOnly {
+    padding: 3rem 0 2rem;
+  }
+
   &__Container {
     @include container;
   }
@@ -58,7 +62,7 @@
   }
 
   &__Sources {
-    margin-top: 0.75rem;
+    margin-top: 0;
     padding-top: 0.75rem;
     text-align: center;
   }

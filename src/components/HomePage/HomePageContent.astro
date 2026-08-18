@@ -57,7 +57,6 @@ const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
   natureBackground
 />
 <DemoVideo label={copy.home.showcase.title} />
-<EvidenceSignals locale={locale} />
 <Features
   title={copy.home.featuresTitle}
   description={copy.home.featuresDescription}
@@ -67,21 +66,14 @@ const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
   compactTopSpacing
 />
 <WaysToRun copy={copy.home.featureCards} locale={locale} />
+<EvidenceSignals locale={locale} variant="control" />
 {(locale === 'en' || professionCopy) && (
   <HomeProfessions locale={locale} homeCopy={copy.home} professionCopy={professionCopy} />
 )}
-<CloudFolders title={copy.home.cloudFoldersTitle} />
-<SupportedFormats
-  title={copy.home.supportedFormats}
-  imagesLabel={copy.home.images}
-  designLabel={copy.home.designLabel}
-  documentsLabel={copy.home.documents}
-  videosLabel={copy.home.videosLabel}
-  audioLabel={copy.home.audioLabel}
-/>
-<Tour client:visible copy={copy.home.showcase} />
-<Testimonials locale={locale} />
 <HomeWorkflows copy={copy.home.workflows} locale={locale} />
+<CloudFolders title={copy.home.cloudFoldersTitle} />
+<Testimonials locale={locale} />
+<Tour client:visible copy={copy.home.showcase} />
 <Pricing copy={copy.pricing} />
 <FAQ
   client:visible
@@ -98,4 +90,14 @@ const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
 />
 <CrossPlatformBanner locale={locale} />
 {locale === 'en' && <HomeBlogHighlights />}
+<EvidenceSignals locale={locale} variant="facts" />
+<SupportedFormats
+  title={copy.home.supportedFormats}
+  imagesLabel={copy.home.images}
+  designLabel={copy.home.designLabel}
+  documentsLabel={copy.home.documents}
+  videosLabel={copy.home.videosLabel}
+  audioLabel={copy.home.audioLabel}
+/>
+<EvidenceSignals locale={locale} variant="sources" />
 <FeaturedOn locale={locale} />
