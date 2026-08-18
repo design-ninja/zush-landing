@@ -65,9 +65,9 @@ export interface SeoMeta {
 type RouteSeoMeta = Omit<SeoMeta, 'canonicalPath'>;
 
 const DEFAULT_META: RouteSeoMeta = {
-  title: 'AI File Renamer & Organizer for Mac and Windows | Zush',
+  title: 'AI File Renamer with Custom Rules for Mac & Windows | Zush',
   description:
-    `AI file renamer for Mac and Windows. Rename ${SUPPORTED_FORMAT_COUNT} formats by content, including RAW photos, PDFs, video, audio, and design files. Preview and undo every batch.`,
+    'Zush is an AI file renamer for Mac and Windows. Set custom naming rules, preview every change, undo any batch, or keep analysis on-device with Offline AI.',
   robots: 'index, follow',
   ogType: 'website',
 };
@@ -88,9 +88,9 @@ const PRIVATE_META: RouteSeoMeta = {
 const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/': {
     ...DEFAULT_META,
-    title: 'AI File Renamer & Organizer for Mac and Windows | Zush',
+    title: 'AI File Renamer with Custom Rules for Mac & Windows | Zush',
     description:
-      `AI file renamer for Mac and Windows. Rename ${SUPPORTED_FORMAT_COUNT} formats by content, including RAW photos, PDFs, video, audio, and design files. Preview and undo every batch.`,
+      'Zush is an AI file renamer for Mac and Windows. Set custom naming rules, preview every change, undo any batch, or keep analysis on-device with Offline AI.',
     robots: 'index, follow',
   },
   '/batch-rename-files': {
@@ -380,16 +380,16 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ogType: 'website',
   },
   '/mac': {
-    title: 'AI File Renamer for Mac | Rename Files by Content | Zush',
+    title: 'AI File Renamer for Mac with Custom Rules | Zush',
     description:
-      `AI file renamer for Mac. Zush reads screenshots, PDFs, photos, video, audio, and design files, then renames files by content. ${SUPPORTED_FORMAT_COUNT} formats, preview, and undo.`,
+      'Zush is an AI file renamer for Mac. Set custom naming rules, preview every change, undo any batch, or keep supported analysis on-device with Offline AI.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/windows': {
-    title: 'AI File Renamer for Windows | Rename Files by Content | Zush',
+    title: 'AI File Renamer for Windows with Custom Rules | Zush',
     description:
-      `AI file renamer for Windows. Zush reads screenshots, PDFs, photos, video, audio, and design files, then renames files by content. ${SUPPORTED_FORMAT_COUNT} formats and undo.`,
+      'Zush is an AI file renamer for Windows. Set custom naming rules, preview every change, undo any batch, or keep supported analysis on-device with Offline AI.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -489,9 +489,9 @@ export const HOME_JSON_LD = {
       '@type': 'WebPage',
       '@id': `${SITE_ORIGIN}/#webpage`,
       url: SITE_ORIGIN,
-      name: 'AI File Renamer & Organizer for Mac and Windows | Zush',
+      name: 'AI File Renamer with Custom Rules for Mac & Windows | Zush',
       description:
-        `Zush is an AI file renamer and organizer for Mac and Windows that renames ${SUPPORTED_FORMAT_COUNT} supported file formats by content, including screenshots, PDFs, photos, documents, videos, audio, and design files.`,
+        'Zush is an AI file renamer for Mac and Windows. Set custom naming rules, preview every change, undo any batch, or keep analysis on-device with Offline AI.',
       isPartOf: WEBSITE_REF,
       about: {
         '@id': `${SITE_ORIGIN}/#software`,
@@ -535,7 +535,7 @@ export const HOME_JSON_LD = {
         '@id': `${SITE_ORIGIN}/#webpage`,
       },
       description:
-        `AI file renamer and organizer, batch rename tool, bulk rename utility, and automatic file organizer for macOS and Windows. Rename ${SUPPORTED_FORMAT_COUNT} file formats by content, including screenshots, PDFs, photos, documents, videos, audio, and design files, with metadata, templates, folder monitoring, review, and undo.`,
+        'Zush is an AI file renamer for macOS and Windows that builds filenames from file content, metadata, dates, custom prompts, and 145+ reusable naming blocks. Users preview changes before applying them, can undo any batch, and choose Cloud AI, BYOK, or Offline AI through Ollama.',
       applicationCategory: 'UtilitiesApplication',
       applicationSubCategory: 'File Management',
       operatingSystem: ['macOS 15.0+', 'Windows 10', 'Windows 11'],
