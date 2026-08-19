@@ -34,9 +34,7 @@ const RECENT_HOURS = Number(process.env.INDEXNOW_RECENT_HOURS ?? 48);
 // and must not receive another IndexNow ping until 24 Aug in Bangkok.
 const STABILIZATION_END = new Date('2026-08-24T00:00:00+07:00').getTime();
 const STABILIZATION_ROUTES = new Set([
-  '/blog/best-ways-to-organize-photos-on-mac',
   '/blog/file-naming-conventions-best-practices',
-  '/batch-rename-files',
   '/rename-pdf-with-ai',
   '/rename-photos-with-ai',
   '/de/rename-videos-with-ai',
