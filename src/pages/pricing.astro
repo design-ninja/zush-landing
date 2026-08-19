@@ -1,0 +1,92 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Pricing from '@/components/Pricing/Pricing.astro';
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
+import { APP_CONFIG, PRODUCT_FACTS_REVIEWED_AT } from '@/constants';
+import { PRO_PRICING } from '@/constants/pricing';
+import { getCopy } from '@/i18n/copy';
+import { getSeoForPath, SITE_ORIGIN } from '@/seo/config';
+import { ORGANIZATION_REF, SOFTWARE_REF, WEBSITE_REF } from '@/seo/entity';
+import styles from '@/views/Editorial/EditorialPage.module.scss';
+
+const seo = getSeoForPath('/pricing');
+const copy = getCopy('en');
+const pageUrl = `${SITE_ORIGIN}/pricing`;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: seo.title,
+      description: seo.description,
+      dateModified: PRODUCT_FACTS_REVIEWED_AT,
+      inLanguage: 'en',
+      isPartOf: WEBSITE_REF,
+      about: SOFTWARE_REF,
+      mainEntity: { '@id': `${SITE_ORIGIN}/#software` },
+      breadcrumb: {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_ORIGIN },
+          { '@type': 'ListItem', position: 2, name: 'Pricing', item: pageUrl },
+        ],
+      },
+    },
+    {
+      ...SOFTWARE_REF,
+      mainEntityOfPage: { '@id': `${pageUrl}#webpage` },
+      publisher: ORGANIZATION_REF,
+      offers: [
+        {
+          '@type': 'Offer',
+          name: 'Free starter',
+          price: '0',
+          priceCurrency: 'USD',
+          availability: 'https://schema.org/InStock',
+          url: pageUrl,
+          description: `Free tier with ${APP_CONFIG.free_tier_limit} AI renames across Cloud AI, BYOK, and Offline AI.`,
+        },
+        {
+          '@type': 'Offer',
+          name: 'Zush PRO Monthly',
+          price: PRO_PRICING.monthly.schemaPrice,
+          priceCurrency: 'USD',
+          availability: 'https://schema.org/InStock',
+          url: pageUrl,
+          description: 'Monthly plan with unlimited renames across Cloud AI, BYOK, and Offline AI.',
+        },
+        {
+          '@type': 'Offer',
+          name: 'Zush PRO One-Time',
+          price: PRO_PRICING.oneTime.schemaPrice,
+          priceCurrency: 'USD',
+          availability: 'https://schema.org/InStock',
+          url: pageUrl,
+          description: 'One-time purchase with lifetime access and unlimited renames across Cloud AI, BYOK, and Offline AI.',
+        },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout seo={seo} jsonLd={jsonLd}>
+  <main>
+    <div class={styles.Page}>
+      <div class={styles.Container}>
+        <header class={styles.Hero}>
+          <Text as='p' size='sm' color='subtle' className={styles.Flush}>Zush plans</Text>
+          <Heading as='h1' className={styles.Flush}>Zush pricing</Heading>
+          <Text as='p' size='xl' color='subtle' className={styles.Flush}>
+            Start free with {APP_CONFIG.free_tier_limit} AI renames. Upgrade to unlimited PRO for {PRO_PRICING.monthly.label} per month or pay {PRO_PRICING.oneTime.label} once for lifetime access. Every plan includes Cloud AI, BYOK, and Offline AI on Mac and Windows.
+          </Text>
+        </header>
+      </div>
+    </div>
+
+    <Pricing copy={copy.pricing} />
+  </main>
+</BaseLayout>

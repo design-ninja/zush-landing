@@ -54,13 +54,16 @@ function getRequestHost(request) {
 
 function buildLegacyPostHogProxyRedirectUrl(requestUrl) {
   const redirectUrl = new URL(requestUrl.href);
+  const isRootRequest = redirectUrl.pathname === '/';
   const pathWithoutTrailingSlash = redirectUrl.pathname === '/'
     ? ''
     : redirectUrl.pathname.replace(/\/+$/, '');
 
   redirectUrl.protocol = 'https:';
   redirectUrl.host = CANONICAL_HOST;
-  redirectUrl.pathname = `${POSTHOG_PROXY_PATH}${pathWithoutTrailingSlash}`;
+  redirectUrl.pathname = isRootRequest
+    ? '/'
+    : `${POSTHOG_PROXY_PATH}${pathWithoutTrailingSlash}`;
 
   return redirectUrl;
 }

@@ -117,8 +117,10 @@ assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/byok-setup/', '
 assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/byok-setup', '/docs/byok');
 assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/ollama-setup/', '/docs/offline-ai');
 assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/ollama-setup', '/docs/offline-ai');
+assertHostRedirect('/', 'e.zushapp.com', 'https://zushapp.com/');
 assertHostRedirect('/:path(.+)/', 'e.zushapp.com', 'https://zushapp.com/e/:path');
 assertHostRedirect('/:path*', 'e.zushapp.com', 'https://zushapp.com/e/:path*');
+assertHostRedirectPrecedence('/', '/:path*', 'e.zushapp.com');
 assertHostRedirectPrecedence('/:path(.+)/', '/:path*', 'e.zushapp.com');
 assertRedirect(`${POSTHOG_PROXY_PATH}/`, '/');
 assertRedirect(POSTHOG_PROXY_PATH, '/');

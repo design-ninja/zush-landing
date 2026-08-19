@@ -93,6 +93,15 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'Zush is an AI file renamer for Mac and Windows. Set custom naming rules, preview every change, undo any batch, or keep analysis on-device with Offline AI.',
     robots: 'index, follow',
   },
+  '/pricing': {
+    title: 'Zush Pricing: Free, Monthly, and Lifetime Plans',
+    description:
+      'Compare Zush pricing. Start free with 50 AI renames, choose unlimited PRO monthly, or pay once for lifetime access on Mac and Windows.',
+    robots: 'index, follow',
+    ogType: 'website',
+    keywords:
+      'zush pricing, ai file renamer pricing, file renamer price, ai renamer free plan, lifetime ai file renamer, zush pro',
+  },
   '/batch-rename-files': {
     title: 'Batch & Bulk Rename Files on Mac & Windows with AI | Zush',
     description:
@@ -577,7 +586,7 @@ export const HOME_JSON_LD = {
           priceCurrency: 'USD',
           name: 'Zush PRO Monthly',
           availability: 'https://schema.org/InStock',
-          url: `${SITE_ORIGIN}/#pricing`,
+          url: `${SITE_ORIGIN}/pricing`,
           description: 'Monthly subscription with unlimited renames across Cloud AI, BYOK, and Offline AI.',
         },
         {
@@ -586,7 +595,7 @@ export const HOME_JSON_LD = {
           priceCurrency: 'USD',
           name: 'Zush PRO One-Time',
           availability: 'https://schema.org/InStock',
-          url: `${SITE_ORIGIN}/#pricing`,
+          url: `${SITE_ORIGIN}/pricing`,
           description: 'One-time purchase with unlimited renames across Cloud AI, BYOK, and Offline AI.',
         },
       ],

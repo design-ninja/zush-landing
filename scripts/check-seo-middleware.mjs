@@ -57,6 +57,7 @@ assertRedirect(
   'https://zushapp.com/?utm_source=google',
 );
 
+assertLegacyPostHogHostRedirect('/', 'https://zushapp.com/');
 assertLegacyPostHogHostRedirect(
   '/some-proxy-path?batch=1',
   'https://zushapp.com/e/some-proxy-path?batch=1',
