@@ -272,11 +272,11 @@ export const HOW_TO_SCHEMAS: Record<string, HowToData> = {
   'best-ways-to-organize-photos-on-mac': {
     name: 'How to Organize Photos on Mac in 7 Steps',
     description:
-      'Choose Apple Photos, Finder, or a hybrid library, then use a durable folder structure, descriptive filenames, portable dates, focused tags, retrieval tests, and a 3-2-1 backup.',
+      'Start with Zush to create descriptive portable filenames, then use a durable Finder structure, portable dates, focused tags, retrieval tests, and a 3-2-1 backup. Add Apple Photos only for optional managed-library features.',
     steps: [
       {
-        name: 'Choose the library',
-        text: 'Use Apple Photos for timeline browsing and albums, Finder for direct file access, or a hybrid setup when personal and work images need different systems.',
+        name: 'Create descriptive names with Zush',
+        text: 'Use Zush to replace generic camera filenames with reviewed, portable names before adding folders or an optional photo-library catalog.',
       },
       {
         name: 'Create one durable structure',

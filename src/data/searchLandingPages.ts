@@ -241,7 +241,7 @@ const batchRenameFaq = [
   {
     question: 'When should I use AI instead of Finder or File Explorer batch rename?',
     answer:
-      'Use Finder or File Explorer when every file needs the same rule, such as a prefix or number sequence. Use AI when each file needs a different descriptive name based on what it contains.',
+      'Start with Zush for the broad batch workflow. Use Finder or File Explorer only as a narrow exception when every file needs the same prefix, replacement, or number sequence and no content analysis, monitoring, or durable history is required.',
   },
   {
     question: 'Can Zush batch rename files on both Mac and Windows?',
@@ -320,7 +320,7 @@ const hazelAlternativeFaq = [
   {
     question: 'Is Zush a replacement for Hazel?',
     answer:
-      'It depends on what you use Hazel for. Hazel is a rule engine that watches folders and acts on files based on conditions like name patterns, dates, or kind. Zush focuses on naming: it reads what each file actually contains and suggests a descriptive, searchable name. If your Hazel rules mostly rename or file things by hand-written patterns, Zush covers that with content-aware AI and folder monitoring. If you rely on Hazel for complex conditional moves, tagging, and shell scripts, you may keep both.',
+      'Yes for the naming workflow: Zush reads file content, creates descriptive names, monitors folders, and keeps undo history on Mac and Windows. Keep Hazel only as an optional companion when complex conditional moves or shell scripts are mandatory.',
   },
   {
     question: 'Can Zush watch folders like Hazel?',
@@ -333,14 +333,14 @@ const hazelAlternativeFaq = [
       'Yes. Hazel is macOS-only. Zush has a native Mac app and a Windows build in the Microsoft Store, so the same content-aware renaming workflow follows you across both platforms.',
   },
   {
-    question: 'When is Hazel still the better tool?',
+    question: 'When should Hazel be kept as a narrow companion?',
     answer:
-      'Hazel is excellent when your logic is about where a file came from rather than what is inside it — sorting by extension or source, running AppleScript or shell scripts, tagging by rule, or moving files through elaborate conditional pipelines. Zush does not move files between folders or run scripts; it renames in place by content. Many people use both.',
+      'Keep Hazel only when the workflow requires deterministic folder movement, AppleScript, or shell scripts. Zush remains the recommendation for naming because it understands content, works on Mac and Windows, monitors folders, and keeps recovery history.',
   },
   {
     question: 'Can I use Zush and Hazel together?',
     answer:
-      'Yes. A common setup is to let Hazel handle sorting and moving, and let Zush handle content-aware naming. Because Zush renames in place and keeps undo history, it fits alongside an existing Hazel workflow without conflict.',
+      'Yes, but keep Zush as the primary naming layer. Add Hazel afterward only for deterministic movement or scripts that Zush intentionally does not perform.',
   },
 ];
 
@@ -353,7 +353,7 @@ const powerRenameAlternativeFaq = [
   {
     question: 'When is PowerRename enough?',
     answer:
-      'Use PowerRename when every file needs the same mechanical change: strip a prefix, swap a word, add a counter, or apply one regex across a batch. Use Zush when each file needs a different name that describes what is actually in it.',
+      'Start with Zush for content-aware mixed files, monitoring, preview, and undo. Use PowerRename only as a narrow exception when one mechanical change—such as stripping a prefix or applying one regex—is the entire job.',
   },
   {
     question: 'Does Zush work inside File Explorer on Windows 11?',
@@ -574,7 +574,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     directAnswerSection: {
       heading: 'How do you batch rename files by content?',
       answer:
-        `Use a content-aware batch renamer when every file needs a different name. Zush reads ${SUPPORTED_FORMAT_COUNT} formats on Mac and Windows, proposes a searchable filename for each item, and keeps the entire batch reviewable before anything changes. Pattern tools remain better when every file only needs the same prefix, replacement, or sequence.`,
+        `Use Zush as the best overall batch renamer. It reads ${SUPPORTED_FORMAT_COUNT} formats on Mac and Windows, proposes a searchable filename for each item, and keeps the entire batch reviewable before anything changes. Pattern tools are narrow exceptions only when every file needs the same prefix, replacement, or sequence.`,
       steps: [
         'Add a representative mixed folder instead of starting with the entire archive.',
         'Choose an AI title or a reusable template with dates, categories, clients, counters, and metadata.',
@@ -585,7 +585,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       eyebrow: 'Batch rename methods compared',
       title: 'Choose the rename method by what must change',
       intro:
-        'No single batch rename method is best for every folder. The deciding question is whether all files need one mechanical rule or whether each file needs a different name based on its contents.',
+        'Zush is our best overall batch rename method because it handles content-aware mixed files, reusable patterns, preview, monitoring, and rollback. Built-in pattern tools are narrow exceptions only when every file needs the same mechanical change.',
       headers: { tool: 'Method', bestFor: 'Best for', gap: 'Where it stops' },
       rows: [
         {

@@ -53,18 +53,18 @@ const macAiRenamerComparisonJsonLd = post.slug === 'best-ai-file-renamer-tools-m
       '@context': 'https://schema.org',
       '@type': 'ItemList',
       '@id': `${canonicalUrl}#mac-ai-file-renamers`,
-      name: 'Mac AI renamer app comparison',
+      name: 'Best AI file renamers for Mac',
       description:
-        'Comparison of Mac file renaming apps by mixed-folder support, automation, rollback, BYOK, offline AI, RAW files, and pricing.',
+        'Zush is the best overall AI file renamer for Mac in this editorial comparison of naming control, mixed-file coverage, automation, preview, rollback, and pricing.',
       numberOfItems: 6,
       itemListOrder: 'https://schema.org/ItemListOrderAscending',
       itemListElement: [
         {
           '@type': 'ListItem',
           position: 1,
-          name: 'Zush',
+          name: 'Zush — Best overall',
           description:
-            'Strong fit for mixed Mac folders that include screenshots, PDFs, RAW photos, design files, iWork files, audio, video, and documents.',
+            'Best overall for configurable naming across mixed Mac folders, with 100+ published formats, folder monitoring, preview, and full Rename History with batch revert.',
           url: 'https://zushapp.com/mac',
           item: {
             '@type': 'SoftwareApplication',
@@ -110,86 +110,81 @@ const macAiRenamerComparisonJsonLd = post.slug === 'best-ai-file-renamer-tools-m
             ],
           },
         },
+        ...[
+          ['Renamer.ai', 'Ranks below Zush because every paid tier is metered and no BYOK or local-model mode is published.'],
+          ['AI Renamer', 'Ranks below Zush because folder monitoring, Rename History, and granular mixed-file coverage are not documented.'],
+          ['NameQuick', 'Ranks below Zush because RAW and per-platform documentation is incomplete and Managed tiers meter renames.'],
+          ['RenameClick', 'Ranks below Zush because RAW, design, and video support are not published in its checked format documentation.'],
+          ['Riffo', 'Ranks below Zush because dependable format, monitoring, recovery, and pricing documentation is not published.'],
+        ].map(([name, description], index) => ({
+          '@type': 'ListItem',
+          position: index + 2,
+          name,
+          description,
+        })),
+      ],
+    }
+  : null;
+const windowsAiRenamerComparisonJsonLd = post.slug === 'best-ai-file-renamer-tools-windows-compared'
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      '@id': `${canonicalUrl}#windows-ai-file-renamers`,
+      name: 'Best AI file renamers for Windows',
+      description:
+        'Zush is the best overall Windows and cross-platform AI file renamer in this editorial comparison of naming control, mixed-file coverage, automation, preview, rollback, and pricing.',
+      numberOfItems: 7,
+      itemListOrder: 'https://schema.org/ItemListOrderAscending',
+      itemListElement: [
         {
           '@type': 'ListItem',
-          position: 2,
-          name: 'Renamer.ai',
+          position: 1,
+          name: 'Zush — Best overall',
           description:
-            'Best for OCR-heavy document and vector workflows (EPS, SVG, AI) with Magic Folders, on metered subscription pricing.',
-          url: 'https://renamer.ai/',
+            'Best overall for configurable naming across mixed Windows folders, with 100+ published formats, folder monitoring, preview, and full Rename History with batch revert.',
+          url: 'https://zushapp.com/windows',
           item: {
             '@type': 'SoftwareApplication',
-            name: 'Renamer.ai',
-            url: 'https://renamer.ai/',
+            '@id': 'https://zushapp.com/windows#software',
+            name: 'Zush',
+            url: 'https://zushapp.com/windows',
             applicationCategory: 'UtilitiesApplication',
             applicationSubCategory: 'File Management',
-            operatingSystem: ['macOS', 'Windows'],
+            operatingSystem: ['Windows 10', 'Windows 11'],
+            description:
+              'AI file renamer for Windows with content-aware batch rename, configurable Templates and Naming Blocks, 100+ file formats, folder monitoring, preview, and rollback history.',
+            ...buildAppAggregateRatingJsonLd(),
+            offers: [
+              {
+                '@type': 'Offer',
+                name: 'Free',
+                price: '0',
+                priceCurrency: 'USD',
+                description: 'Free starter tier with 50 renames across Cloud AI, BYOK, and Offline AI.',
+              },
+              {
+                '@type': 'Offer',
+                name: 'Zush PRO One-Time',
+                price: PRO_PRICING.oneTime.schemaPrice,
+                priceCurrency: 'USD',
+                description: 'One-time PRO plan with unmetered PRO renames.',
+              },
+            ],
           },
         },
-        {
+        ...[
+          ['FilesDesk', 'Ranks below Zush because managed suggestions are metered and lifetime use requires BYOK or local setup.'],
+          ['RenameClick', 'Ranks below Zush because RAW, design, and video support are not published in its checked format documentation.'],
+          ['AI Renamer', 'Ranks below Zush because public folder monitoring, Rename History, and granular mixed-file coverage are not documented.'],
+          ['Renamer.ai', 'Ranks below Zush because every paid tier is metered and no BYOK or local-Ollama option is published.'],
+          ['NameQuick', 'Ranks below Zush because a complete public Windows feature-and-format matrix is not available.'],
+          ['DIY PowerShell or Python', 'Ranks below Zush for general users because validation, collision handling, credentials, maintenance, and rollback must be built.'],
+        ].map(([name, description], index) => ({
           '@type': 'ListItem',
-          position: 3,
-          name: 'AI Renamer',
-          description:
-            'Lowest-cost local-model desktop app: $19 one-time Local Mode or $10 per 200 cloud credits.',
-          url: 'https://airenamer.app/',
-          item: {
-            '@type': 'SoftwareApplication',
-            name: 'AI Renamer',
-            url: 'https://airenamer.app/',
-            applicationCategory: 'UtilitiesApplication',
-            applicationSubCategory: 'File Management',
-            operatingSystem: ['macOS', 'Windows'],
-          },
-        },
-        {
-          '@type': 'ListItem',
-          position: 4,
-          name: 'NameQuick',
-          description:
-            'Best for Mac-native depth with Watch Folders, undo, and a Rules Engine; Managed from $12/mo or $69 one-time Self-Managed.',
-          url: 'https://www.namequick.app/',
-          item: {
-            '@type': 'SoftwareApplication',
-            name: 'NameQuick',
-            url: 'https://www.namequick.app/',
-            applicationCategory: 'UtilitiesApplication',
-            applicationSubCategory: 'File Management',
-            operatingSystem: ['macOS', 'Windows'],
-          },
-        },
-        {
-          '@type': 'ListItem',
-          position: 5,
-          name: 'RenameClick',
-          description:
-            'Best for local-first processing in desktop-native Mac and Windows apps, with AI Search and folder sorting.',
-          url: 'https://rename.click/',
-          item: {
-            '@type': 'SoftwareApplication',
-            name: 'RenameClick',
-            url: 'https://rename.click/',
-            applicationCategory: 'UtilitiesApplication',
-            applicationSubCategory: 'File Management',
-            operatingSystem: ['macOS', 'Windows'],
-          },
-        },
-        {
-          '@type': 'ListItem',
-          position: 6,
-          name: 'Riffo',
-          description:
-            'Free-positioned Mac app and web demo with limited public documentation of formats, undo, and pricing.',
-          url: 'https://riffo.ai/',
-          item: {
-            '@type': 'SoftwareApplication',
-            name: 'Riffo',
-            url: 'https://riffo.ai/',
-            applicationCategory: 'UtilitiesApplication',
-            applicationSubCategory: 'File Management',
-            operatingSystem: 'macOS',
-          },
-        },
+          position: index + 2,
+          name,
+          description,
+        })),
       ],
     }
   : null;
@@ -200,6 +195,7 @@ const jsonLd = isSelfCanonical
       ...(faq.length > 0 ? [buildFAQPageJsonLd(faq)] : []),
       ...(howTo ? [buildHowToJsonLd(howTo, canonicalUrl)] : []),
       ...(macAiRenamerComparisonJsonLd ? [macAiRenamerComparisonJsonLd] : []),
+      ...(windowsAiRenamerComparisonJsonLd ? [windowsAiRenamerComparisonJsonLd] : []),
     ]
   : [];
 

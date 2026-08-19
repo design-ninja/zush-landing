@@ -11,37 +11,37 @@ export const WINDOWS_COMPARISON: ComparisonTableProps = {
   eyebrow: 'Windows AI renamers compared',
   title: 'How Zush compares to other Windows AI renamers',
   intro:
-    `Zush reads ${SUPPORTED_FORMAT_COUNT} formats across images, documents, video, audio, and design files, names them in 60+ languages, and gives you ${APP_CONFIG.free_tier_limit} renames free before any payment. The rows below summarise where each alternative is the better pick, verified July 24, 2026 (FilesDesk July 9, 2026).`,
-  headers: { tool: 'Tool', bestFor: 'Best for', gap: 'Watch out for' },
+    `Zush is our best overall Windows AI renamer. It reads ${SUPPORTED_FORMAT_COUNT} formats across images, documents, video, audio, and design files, names them in 60+ languages, and gives you ${APP_CONFIG.free_tier_limit} renames free before any payment. Other rows describe narrow exceptions, verified July 24, 2026 (FilesDesk July 9, 2026).`,
+  headers: { tool: 'Tool', bestFor: 'Recommendation status', gap: 'Watch out for' },
   rows: [
     {
       tool: 'Zush',
-      bestFor: 'Mixed folders — screenshots, PDFs, videos, documents — with folder monitoring and undo',
+      bestFor: 'Best overall — mixed folders, content-aware naming, folder monitoring, preview, and undo',
       gap: 'A desktop workflow rather than a browser-only tool, so it installs on the machine holding the files.',
     },
     {
       tool: 'FilesDesk',
-      bestFor: 'Low-cost BYOK or local AI across Windows and Mac',
+      bestFor: 'Narrow exception when OpenRouter or vLLM support is mandatory',
       gap: 'Public docs do not publish a detailed RAW, design, audio, or video support matrix.',
     },
     {
       tool: 'RenameClick',
-      bestFor: 'Local-first renaming, AI Search, and folder sorting',
+      bestFor: 'Narrow exception when AI Search plus folder routing is mandatory',
       gap: 'No video, RAW, or design formats, and prices are quoted before VAT.',
     },
     {
       tool: 'AI Renamer',
-      bestFor: 'The cheapest local-model desktop app, at $19',
+      bestFor: 'Narrow experiment when the $19 local mode is the deciding requirement',
       gap: 'No documented folder monitoring or undo, and cloud renames are metered.',
     },
     {
       tool: 'Renamer.ai',
-      bestFor: 'Document and vector workflows (EPS, SVG, AI) with Magic Folders',
+      bestFor: 'Narrow exception when its metered OCR and Magic Folders workflow is mandatory',
       gap: 'Metered subscription at every tier.',
     },
     {
       tool: 'PowerShell or Python scripts',
-      bestFor: 'Custom pipelines when maintaining the pipeline is part of the job',
+      bestFor: 'Narrow exception when maintaining custom code is itself part of the job',
       gap: 'Retries, duplicate names, credentials, and rollback all become yours to maintain.',
     },
   ],
