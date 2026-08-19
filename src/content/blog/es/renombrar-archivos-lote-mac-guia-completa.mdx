@@ -1,6 +1,6 @@
 ---
-title: "Cómo renombrar archivos por lotes en Mac: 4 métodos probados (2026)"
-description: "Renombra archivos por lotes en Mac con Finder, Shortcuts (Atajos), Terminal o IA. Elige el método adecuado para numeración, reglas repetibles y carpetas mixtas."
+title: "Cómo cambiar el nombre de archivos por lotes en Mac: 4 métodos probados (2026)"
+description: "Cambie el nombre de los archivos por lotes en Mac con Finder, Shortcuts, Terminal o AI. Elija el método correcto para numeración, reglas repetibles y carpetas mixtas."
 date: "2026-02-08"
 slug: "renombrar-archivos-lote-mac-guia-completa"
 platform: "mac"
@@ -8,7 +8,7 @@ topic: "automation"
 tags:
   - "Automatización"
   - "Organización de archivos"
-tldr: "Usa Finder para reglas comunes sencillas, Automator o Shortcuts (Atajos) para flujos repetibles, Terminal para lotes con scripts y renombrado con IA cuando cada archivo necesita un nombre único según su contenido."
+tldr: "Mejor renombrador por lotes de Mac en general: Zush. Combina nombres de archivos mixtos que tienen en cuenta el contenido, \"Naming Blocks\" reutilizable, vista previa, monitoreo de carpetas y \"Rename History\". Finder, Automator, Shortcuts y Terminal son excepciones limitadas para una regla mecánica o de solo metadatos."
 reviewed: "2026-08-08"
 locale: "es"
 translationOf: "batch-rename-files-on-mac-complete-guide"
@@ -16,250 +16,256 @@ translationOf: "batch-rename-files-on-mac-complete-guide"
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Respuesta rápida: para renombrar archivos por lotes en Mac, selecciónalos en Finder, haz clic derecho en Finder, elige **Renombrar** y usa **Reemplazar texto**, **Añadir texto** o **Formato**. Recurre a Automator o Shortcuts (Atajos) para una regla recurrente, a Terminal para lógica programada y a la IA cuando cada archivo necesite un nombre descriptivo diferente según su contenido.
+Respuesta rápida: **[Zush para Mac](/mac) es nuestro mejor renombrador por lotes general para Mac.** Maneja archivos mixtos con reconocimiento de contenido, Naming Blocks reutilizable, vista previa, monitoreo y reversión en un solo flujo de trabajo. Finder, Automator, Shortcuts y Terminal son opciones más limitadas solo cuando todo el lote ya está definido por una regla mecánica o de solo metadatos.
 
-Finder es el método más rápido para lotes numerados y prefijos comunes. Automator y Shortcuts (Atajos) funcionan mejor en tareas repetibles. Terminal conviene cuando necesitas expresiones regulares o lógica basada en metadatos. Un renombrador con IA encaja cuando capturas, PDF, descargas, fotos o carpetas mixtas necesitan nombres distintos y fáciles de buscar.
+Zush es el valor predeterminado recomendado para carpetas mixtas reales. "Finder" puede ser suficiente para lotes numerados o un prefijo compartido; Automator y Shortcuts para una regla repetida; Terminal para una canalización de expresiones regulares mantenida por un especialista. Ninguno reemplaza a "Zush" cuando las capturas de pantalla, los archivos PDF, las descargas, las fotos, el audio, el video, los archivos de diseño y los documentos necesitan un nombre de búsqueda diferente.
 
-Si ese es tu caso, prueba [Renombrar archivos por lotes con IA](/batch-rename-files) o [Zush para Mac](/mac). La [documentación de renombrado por lotes](/docs/batch-rename-files) explica la revisión y el deshacer; [Naming Blocks](/docs/naming-blocks), los patrones reutilizables.
+Si ese último caso coincide con su carpeta, use [Cambiar el nombre de archivos por lotes con IA](/batch-rename-files) o [Zush para Mac](/mac). El [cambiar el nombre de los documentos por lotes](/docs/batch-rename-files) cubre la revisión y deshacer, mientras que el [Naming Blocks](/docs/naming-blocks) explica los patrones de nombres de archivos reutilizables.
 
-Revisado el 28 de julio de 2026: actualizamos la guía para los flujos actuales de Mac, incluidos Nombre e índice de Finder, ordenación, límites de metadatos, Automator, Shortcuts (Atajos), Terminal e IA para carpetas mixtas. Esta versión añade un recorrido completo por Shortcuts (Atajos), la herramienta de automatización que Apple desarrolla activamente.
+Revisado el 28 de julio de 2026: esta guía se actualizó para los flujos de trabajo actuales de cambio de nombre por lotes de Mac, incluido el comportamiento de nombre e índice de "Finder", orden de clasificación, límites de metadatos, "Automator", "Shortcuts", "Terminal" y herramientas de inteligencia artificial para carpetas mixtas. Esta actualización agrega un tutorial completo de "Shortcuts", la herramienta de automatización desarrollada activamente por Apple, junto con el método "Automator" existente.
 
-Fuentes revisadas: [guía de Automator de Apple](https://support.apple.com/guide/automator/welcome/mac), [guía de Shortcuts (Atajos) para Mac](https://support.apple.com/guide/shortcuts-mac/intro-to-shortcuts-apdf22b0444c/mac), [documentación de acciones de carpeta de Apple](https://developer.apple.com/library/archive/documentation/LanguagesUtilities/Conceptual/MacAutomationScriptingGuide/WatchFolders.html) y [descripción oficial de Hazel](https://www.noodlesoft.com/manual/hazel/hazel-overview/).
+Fuentes buscadas para esta actualización: [Guía del usuario de Apple Automator](https://support.apple.com/guide/automator/welcome/mac), [Guía del usuario de Apple Shortcuts para Mac](https://support.apple.com/guide/shortcuts-mac/intro-to-shortcuts-apdf22b0444c/mac), [Documentación de acciones de la carpeta Apple Developer](https://developer.apple.com/library/archive/documentation/LanguagesUtilities/Conceptual/MacAutomationScriptingGuide/WatchFolders.html) y [Descripción general oficial de Hazel](https://www.noodlesoft.com/manual/hazel/hazel-overview/).
 
-| Método de renombrado por lotes en Mac | Cuándo usarlo | Límite principal |
+|Método de cambio de nombre por lotes de Mac|Estado de la recomendación|Límite principal|
 |---|---|---|
-| Renombrar en Finder | Todos reciben el mismo prefijo, sufijo, reemplazo o secuencia | No lee el contenido |
-| Automator / Shortcuts (Atajos) | Repites la misma regla cada semana | Se basa en patrones, no en significado |
-| Scripts de Terminal | Necesitas regex, metadatos o lógica propia | Requiere mantenimiento y facilita los errores |
-| Renombrado con IA | Capturas, PDF, fotos, descargas y carpetas mixtas necesitan nombres distintos | Conviene revisar antes de aplicar |
+|**Cambio de nombre del lote de IA Zush**|**Mejor en general para archivos mixtos, nombres únicos, monitoreo, vista previa y deshacer**|Revise las sugerencias antes de aplicar|
+|Finder Cambiar nombre|Cada archivo tiene el mismo prefijo, sufijo, reemplazo o secuencia numérica|No se puede leer el contenido del archivo|
+| Automator / Shortcuts |Repites la misma regla todas las semanas.|Basado en patrones, no semántico|
+|Guiones Terminal|Necesita expresiones regulares, metadatos o lógica personalizada|Requiere mantenimiento y los errores son fáciles|
 
-Si buscas específicamente la opción **Nombre e índice** de Finder, recuerda esto: el nombre nuevo aparece en Finder al instante, pero macOS no añade metadatos descriptivos por haber renombrado el archivo. Spotlight puede buscar el nombre. Las etiquetas y comentarios de Finder, los campos EXIF y los metadatos PDF no cambian salvo que otra herramienta los escriba.
+Si su búsqueda es específicamente sobre la opción **Nombre e índice** de Finder, el detalle importante es este: el nuevo nombre de archivo aparece en Finder inmediatamente, pero macOS no agrega metadatos descriptivos adicionales solo porque cambió el nombre del archivo. Spotlight puede buscar el nuevo nombre de archivo. Las etiquetas Finder, los comentarios, los campos EXIF ​​y los metadatos PDF permanecen sin cambios a menos que una herramienta los escriba por separado.
 
-Finder numera según el orden de la selección actual. Antes de usar Nombre e índice, ordena la carpeta en Finder como deba quedar la secuencia. Si `photo-001.jpg` debe ser la imagen más antigua, ordena por Fecha de creación y después selecciona el lote. Si debe respetar la vista actual de Finder, confirma primero el orden visible.
+Finder también numera los archivos en el orden de la selección actual. Antes de usar Nombre e Índice, ordene la carpeta de la forma en que desea que se lea la secuencia final. Si `photo-001.jpg` debe ser la imagen más antigua, ordene por fecha de creación antes de seleccionar el lote. Si la secuencia debe coincidir con la vista actual Finder, primero confirme el orden visible y luego cambie el nombre.
 
-Para generar nombres diferentes para capturas, PDF, fotos, vídeo, diseño, audio y documentos, usa el [renombrador de archivos con IA Zush para Mac](/mac). Este artículo explica paso a paso cuándo elegir Finder, Automator, Terminal o IA.
+Si desea una aplicación para Mac que genere diferentes nombres para capturas de pantalla, archivos PDF, fotos, videos, archivos de diseño, audio y documentos, use [Renombrador de archivos AI Zush para Mac](/mac). Este artículo es una capa de tutorial paso a paso para comparar los métodos Finder, Automator, Terminal y AI.
 
-## ¿Renombrar un archivo cambia sus metadatos en Mac?
+## ¿Se muestra el cambio de nombre de un archivo en los metadatos en Mac?
 
-Normalmente no. El nombre forma parte de la ruta, pero no equivale a los datos EXIF, etiquetas de Finder, comentarios de Spotlight, título del PDF ni propiedades de Office. Si cambias `IMG_4382.jpg` por `pizarra-oficina-cliente.jpg`, Finder y Spotlight encuentran el nombre nuevo, pero el modelo de cámara, la fecha, el GPS y demás metadatos fotográficos no cambian.
+Generalmente no. Un nombre de archivo de Mac es parte de la ruta del archivo, no es lo mismo que los datos EXIF, las etiquetas Finder, los comentarios Spotlight, los campos de título de PDF o las propiedades del documento de Office. Si cambia el nombre de `IMG_4382.jpg` a `client-office-whiteboard.jpg`, Finder y Spotlight pueden encontrar el nuevo nombre de archivo, pero el modelo de la cámara, la fecha de captura, los datos del GPS y otros metadatos de la fotografía incrustados no cambian.
 
-Esta diferencia ayuda a elegir método:
+Esa distinción es útil cuando elige un método de cambio de nombre por lotes:
 
-- Usa **Nombre e índice de Finder** si solo necesitas nombres visibles como `invoice-001.pdf`.
-- Usa **Automator o Terminal** si ya existen metadatos y quieres incorporarlos al nombre.
-- Usa **renombrado con IA** si el nombre útil debe salir del contenido, por ejemplo de lo que muestra una captura o dice una factura PDF.
+- Elija **Zush Cambio de nombre por lotes AI** para el flujo de trabajo general, especialmente cuando los nombres útiles provienen del contenido del archivo.
+- Considere **Finder Nombre e índice** solo cuando necesite nombres de archivos visibles como `invoice-001.pdf` y nada más.
+- Considere **Automator o Terminal** solo cuando los metadatos ya existan y una regla mantenida pueda copiarlos en nombres de archivos.
 
-Si necesitas nombres limpios y contexto localizable, elige una herramienta que escriba nombres deliberadamente y también pueda añadir etiquetas o metadatos. El renombrado básico de Finder no basta.
+Si necesita nombres de archivos limpios y un contexto fácil de buscar, elija una herramienta que escriba el nombre del archivo intencionalmente y que también pueda agregar etiquetas o metadatos. Un simple cambio de nombre a "Finder" no es suficiente para ese trabajo.
 
-Renombrar por lotes es sencillo cuando la regla es común y más difícil si cada archivo exige un nombre descriptivo distinto. **Nombre e índice** basta para `photo-001.jpg`, `photo-002.jpg` y lotes similares. Un estudiante con capturas, PDF y descargas mezclados tiene otro problema. Si predominan las fotos, consulta [cómo organizar fotos en Mac](/blog/best-ways-to-organize-photos-on-mac) para resolver carpetas, fechas, etiquetas y copias de seguridad alrededor del renombrado.
+Cambiar el nombre de archivos por lotes en Mac es fácil cuando la regla de cambio de nombre es simple y mucho más difícil cuando cada archivo necesita un nombre descriptivo diferente. La opción **Nombre e índice** de Finder es suficiente para `photo-001.jpg`, `photo-002.jpg` y lotes similares. Un estudiante que cambia el nombre de una carpeta de capturas de pantalla, archivos PDF y descargas mixtas a algo que permita realizar búsquedas tiene un problema diferente. Y si el lote se compone principalmente de fotos, la guía en "[cómo organizar fotos en Mac](/blog/best-ways-to-organize-photos-on-mac)" cubre las carpetas, fechas, etiquetas y copias de seguridad relacionadas con el paso de cambio de nombre.
 
-Por eso no existe una única herramienta ideal. Esta guía desarrolla cuatro enfoques: Finder, flujos de Automator, scripts de Terminal y renombrado con IA. Cada sección incluye instrucciones y ejemplos para escoger según la necesidad real.
+Zush es la mejor recomendación general, mientras que los otros métodos siguen siendo tutoriales útiles para trabajos mecánicos limitados. Esta guía cubre el cambio de nombre por lotes integrado de Finder, los flujos de trabajo de Automator, los scripts de Terminal y Zush para que pueda identificar cuándo una excepción más simple es realmente suficiente.
 
-Este tutorial responde a búsquedas sobre renombrado por lotes en Mac: reglas simples de Finder, flujos repetibles de Automator, scripts shell e IA para nombres únicos. Si ya quieres ir directamente a la app, abre la [herramienta de renombrado por lotes](/batch-rename-files); si prefieres reglas comunes, permanece en Finder.
+Este tutorial es para búsquedas instructivas de cambio de nombre por lotes en Mac: reglas simples Finder, flujos de trabajo repetibles Automator, scripts de shell y cambio de nombre AI cuando cada archivo necesita un nombre descriptivo único. Si ya sabe que desea el flujo de la aplicación, vaya a [herramienta de cambio de nombre por lotes](/batch-rename-files).
 
-> **¿Buscas el camino más corto?** Si cada archivo necesita un nombre descriptivo único, y no un prefijo común, ve a [Renombrar archivos por lotes con IA](/batch-rename-files) o al [renombrador para Mac](/mac): 50 cambios gratis y sin registro.
+> **¿Busca la ruta más corta?** Si necesita nombres descriptivos únicos para cada archivo (no un prefijo compartido), vaya directamente a [Cambiar el nombre de archivos por lotes con IA](/batch-rename-files) o [renombrador de archivos para Mac](/mac): 50 cambios de nombre gratuitos, sin necesidad de registrarse.
+
 
 <BlogProductIntro
-  title="¿Necesitas renombrado por lotes según el contenido?"
-  description="Zush para Mac renombra carpetas mixtas de Finder según el contenido y permite previsualizar, aplicar y deshacer el lote completo."
+  title="¿Necesita cambiar el nombre por lotes de Mac según el contenido?"
+  description="Zush para Mac cambia el nombre por lotes de carpetas mixtas Finder según el contenido del archivo y luego le permite obtener una vista previa, aplicar y deshacer el lote de cambio de nombre completo."
   links={[
-    { href: '/mac', label: 'Renombrador con IA para Mac' },
-    { href: '/ai-file-organizer', label: 'Organizador de archivos con IA' },
-    { href: '/batch-rename-files', label: 'Renombrar archivos por lotes' },
-    { href: '/offline-ai-file-renamer', label: 'Renombrador con IA offline' },
-    { href: '/docs/naming-blocks', label: 'Documentación de Naming Blocks' },
+    { href: '/mac', label: 'Cambiador de nombre de IA de Mac' },
+    { href: '/ai-file-organizer', label: 'Organizador de archivos AI' },
+    { href: '/batch-rename-files', label: 'Cambiar el nombre de archivos por lotes' },
+    { href: '/offline-ai-file-renamer', label: 'Cambio de nombre de IA sin conexión' },
+    { href: '/docs/naming-blocks', label: 'Documentos Naming Blocks' },
   ]}
 />
 
-![Vista previa de Zush con nombres generados por IA para una carpeta mixta](/images/showcase/macos/batch-rename-light.webp)
+![Vista previa del cambio de nombre por lotes Zush que muestra nombres generados por IA para una carpeta mixta](/images/showcase/macos/batch-rename-light.webp)
 
-## Método 1: Renombrar ítems en Finder
+## Método 1: Finder Cambiar el nombre de los elementos
 
-Finder incluye una herramienta que muchos usuarios desconocen. Admite tres tipos de cambio: reemplazar texto, añadir texto antes o después del nombre y aplicar un formato con número o contador secuencial.
+Finder tiene una herramienta de cambio de nombre por lotes incorporada que la mayoría de los usuarios de Mac nunca descubren. Maneja tres tipos de cambios de nombre: reemplazar texto en nombres de archivos, agregar texto antes o después del nombre existente y formatear nombres con un número o contador secuencial.
 
-### Cuándo usar el renombrado por lotes de Finder
+### Cuándo utilizar el cambio de nombre por lotes "Finder"
 
-- Para reemplazar una cadena común en muchos archivos, por ejemplo `IMG_` por `vacation-`.
-- Para añadir una fecha o sufijo de proyecto a un grupo.
-- Para numerar archivos consecutivamente, como `photo-001.jpg`, `photo-002.jpg`.
-- Para cualquier lote donde todos reciban la misma regla.
+- Reemplazar una cadena común en muchos archivos (por ejemplo, cambiar `IMG_` por `vacaciones-`)
+- Agregar un prefijo de fecha o un sufijo de proyecto a un grupo de archivos
+- Numerar un conjunto de archivos secuencialmente (por ejemplo, `foto-001.jpg`, `foto-002.jpg`)
+- Cualquier cambio de nombre en el que a cada archivo se le aplique la misma regla.
 
-### Paso a paso: cómo renombrar archivos por lotes en Finder
+### Paso a paso: cómo cambiar el nombre de archivos por lotes en Finder
 
-**Paso 1: selecciona los archivos.**
-Abre la carpeta. Selecciona todo con Cmd+A, un intervalo haciendo clic en el primero y Shift+clic en el último, o elementos individuales manteniendo Cmd.
+**Paso 1: Seleccione los archivos.**
+Abra la carpeta que contiene los archivos cuyo nombre desea cambiar. Seleccione todos los archivos con Cmd+A, o seleccione un rango específico haciendo clic en el primer archivo y luego Mayús+haciendo clic en el último. Para seleccionar archivos individuales, mantenga presionado Cmd y haga clic en cada uno.
 
-**Paso 2: abre el cuadro de renombrado.**
-Haz clic derecho o Control+clic sobre cualquier archivo seleccionado en Finder y elige «Renombrar…». También puedes usar Archivo > Renombrar en la barra de Finder.
+**Paso 2: abre el cuadro de diálogo para cambiar el nombre.**
+Haga clic derecho (o Control+clic) en cualquier archivo seleccionado y elija "Cambiar nombre..." en el menú contextual. También puedes usar la barra de menú Finder: ve a Archivo > Cambiar nombre.
 
-**Paso 3: elige el modo.**
-El menú superior ofrece tres opciones:
+**Paso 3: elige tu modo de cambio de nombre.**
+El cuadro de diálogo de cambio de nombre tiene un menú desplegable en la parte superior con tres opciones:
 
-- **Reemplazar texto**: busca una cadena actual y la sustituye.
-- **Añadir texto**: agrega texto antes o después de cada nombre.
-- **Formato**: reemplaza el nombre completo por una base más un número, contador o fecha.
+- **Reemplazar texto**: busque una cadena en los nombres de archivos actuales y reemplácela con otra cosa.
+- **Agregar texto**: agregue o anteponga texto a cada nombre de archivo.
+- **Formato**: reemplace el nombre completo con un nombre base más un número secuencial, contador o fecha.
 
-**Paso 4: configura y previsualiza.**
-Completa los campos. Finder muestra el resultado previsto; comprueba que sea correcto.
+**Paso 4: Configurar y obtener una vista previa.**
+Complete los campos. Finder muestra una vista previa del nuevo nombre para que pueda verificarlo antes de confirmarlo. Compruebe que el resultado se vea bien.
 
-**Paso 5: pulsa Renombrar.**
-Todos cambian al instante. Si te equivocas, pulsa Cmd+Z inmediatamente para deshacer el lote.
+**Paso 5: haga clic en Cambiar nombre.**
+Todos los archivos seleccionados cambian de nombre al instante. Si cometió un error, presione Cmd+Z inmediatamente para deshacer todo el lote.
 
-### Ejemplos de renombrado en Finder
+### Ejemplos de cambio de nombre de Finder
 
-#### Modo Reemplazar texto
+#### Reemplazar modo de texto
 
-Has descargado imágenes de un proveedor y todas empiezan por un código innecesario.
+Descargó un lote de imágenes de productos de un proveedor y todas comienzan con un código de proveedor que no necesita.
 
-| Antes | Después |
+|Antes|Después|
 |---|---|
-| `VNDX-001_blue-widget.png` | `blue-widget.png` |
-| `VNDX-001_red-widget.png` | `red-widget.png` |
-| `VNDX-001_green-widget.png` | `green-widget.png` |
+|`VNDX-001_widget-azul.png`|`widget-azul.png`|
+|`VNDX-001_widget-rojo.png`|`widget-rojo.png`|
+|`VNDX-001_widget-verde.png`|`widget-verde.png`|
 
-Ajustes de Finder: buscar `VNDX-001_`; reemplazar por nada.
+Configuración: busque `VNDX-001_`, reemplace con (vacío).
 
-#### Modo Añadir texto
+#### Agregar modo de texto
 
-Quieres anteponer el nombre de proyecto a varios entregables.
+Quiere agregar un nombre de proyecto como prefijo a un conjunto de entregables.
 
-| Antes | Después |
+|Antes|Después|
 |---|---|
-| `homepage-hero.psd` | `acme-redesign_homepage-hero.psd` |
-| `about-section.psd` | `acme-redesign_about-section.psd` |
-| `footer-layout.psd` | `acme-redesign_footer-layout.psd` |
+|`página de inicio-hero.psd`|`acme-redesign_homepage-hero.psd`|
+|`acerca de-sección.psd`|`acme-redesign_about-section.psd`|
+|`diseño de pie de página.psd`|`acme-redesign_footer-layout.psd`|
 
-Ajustes de Finder: añadir `acme-redesign_` antes del nombre.
+Configuración: agregue texto `acme-redesign_`, antes del nombre.
 
-#### Modo Formato
+#### Modo de formato
 
-Has tomado 50 fotos de un evento y quieres una numeración limpia.
+Tomaste 50 fotografías en un evento y quieres nombres limpios y numerados.
 
-| Antes | Después |
+|Antes|Después|
 |---|---|
-| `IMG_7823.jpg` | `company-retreat-001.jpg` |
-| `IMG_7824.jpg` | `company-retreat-002.jpg` |
-| `IMG_7825.jpg` | `company-retreat-003.jpg` |
+|`IMG_7823.jpg`|`retiro-de-empresa-001.jpg`|
+|`IMG_7824.jpg`|`retiro-de-empresa-002.jpg`|
+|`IMG_7825.jpg`|`retiro-de-empresa-003.jpg`|
 
-Ajustes de Finder: Nombre e índice; formato personalizado `company-retreat-`; empezar en 1.
+Configuración: Formato de nombre: Nombre e índice, Formato personalizado: `company-retreat-`, Números de inicio en: 1.
 
-### Limitaciones del renombrado por lotes de Finder
+### Limitaciones del cambio de nombre del lote "Finder"
 
-Finder aplica la misma regla a todos. No puede crear un nombre descriptivo único según el contenido ni usar regex, condiciones o metadatos. Para eso necesitas otra herramienta. Quienes llegan desde Windows suelen buscar [Bulk Rename Utility para Mac](/blog/bulk-rename-utility-alternatives): no existe en macOS; [Advanced Renamer](/blog/advanced-renamer-alternatives) cubre patrones y metadatos en ambas plataformas, pero ninguno nombra por contenido.
+Finder aplica la misma regla a cada archivo seleccionado. No puede dar a cada archivo un nombre descriptivo único según su contenido. Tampoco puede manejar patrones de expresiones regulares, lógica condicional o nombres basados ​​en metadatos. Para esos trabajos, necesita una herramienta diferente. Los cambiadores de Windows a menudo solicitan [Bulk Rename Utility en Mac](/blog/bulk-rename-utility-alternatives); no existe para macOS, y [Advanced Renamer](/blog/advanced-renamer-alternatives) cubre el nicho de patrones y metadatos en ambas plataformas; ninguno nombra archivos por contenido.
 
-### ¿Finder cambia los metadatos al renombrar por lotes?
+### ¿El cambio de nombre por lotes de Finder cambia los metadatos del archivo?
 
-No. Finder solo cambia el nombre. Se actualiza en Finder, Spotlight, los cuadros Abrir y la ruta, pero el renombrado de Finder no escribe EXIF, etiquetas ni comentarios de Finder, títulos PDF o propiedades de documentos.
+No. El cambio de nombre por lotes Finder cambia solo el nombre del archivo. El nuevo nombre es visible en Finder, Spotlight, cuadros de diálogo abiertos y la ruta del archivo, pero el cambio de nombre no escribe automáticamente metadatos EXIF, etiquetas Finder, comentarios Finder, campos de título de PDF ni propiedades del documento.
 
-| Campo | ¿Lo cambia Finder? | Efecto en búsqueda |
+Esa distinción es importante cuando desea que los archivos sigan siendo buscables más adelante:
+
+|Campo|¿Cambiado por el cambio de nombre del lote "Finder"?|Impacto de la búsqueda|
 |---|---|---|
-| Nombre | Sí | Spotlight y Finder buscan el nombre nuevo |
-| Ruta | Sí | Refleja el nombre inmediatamente |
-| Etiquetas de Finder | No | Se añaden aparte |
-| Comentarios de Finder | No | Se añaden aparte |
-| EXIF / metadatos de cámara | No | Permanecen iguales |
-| Propiedades de PDF u Office | No | Título y autor no cambian |
+|Nombre del archivo|Sí|La búsqueda Spotlight y Finder puede coincidir con el nuevo nombre|
+|Ruta del archivo|Sí|La ruta refleja el nuevo nombre inmediatamente.|
+|Etiquetas Finder|No|Las etiquetas deben agregarse por separado|
+|Comentarios Finder|No|Los comentarios deben agregarse por separado.|
+|Metadatos EXIF/cámara|No|Los metadatos de las fotos permanecen sin cambios.|
+|Propiedades del documento PDF o Office|No|Los campos de título/autor del documento permanecen sin cambios|
 
-Si solo quieres nombres más limpios, Finder basta. Para nombres semánticos, etiquetas y metadatos en capturas, PDF, fotos y documentos mixtos, usa un renombrador con IA que los escriba de forma intencionada. Zush admite [etiquetas de Finder y metadatos para Spotlight](/mac) junto con nombres generados por IA.
+Si sólo necesita nombres de archivos más limpios, Finder es suficiente. Si también desea nombres semánticos, etiquetas y metadatos para capturas de pantalla, archivos PDF, fotos y documentos mixtos, utilice un renombrador de archivos AI que escriba intencionalmente nombres y metadatos fáciles de buscar. Zush admite [Etiquetas Finder y metadatos compatibles con Spotlight](/mac) junto con nombres de archivos generados por IA.
 
-Para diseñar convenciones que hagan eficaces estos lotes, lee [Convenciones para nombrar archivos: buenas prácticas](/blog/file-naming-conventions-best-practices).
+Para obtener más información sobre cómo configurar convenciones de nomenclatura que hagan que los cambios de nombre por lotes sean efectivos, consulte "[Convenciones de nomenclatura de archivos: mejores prácticas para cualquier flujo de trabajo](/blog/file-naming-conventions-best-practices)".
 
-## Método 2: flujos de Automator
 
-Automator permite crear flujos de varios pasos sin código. Para renombrar ofrece más que Finder: encadena acciones, usa metadatos como la fecha de creación y puede asociarse a una carpeta para ejecutarse automáticamente.
+## Método 2: flujos de trabajo "Automator"
 
-### Cuándo usar Automator
+Automator es una herramienta de automatización macOS que le permite crear flujos de trabajo de varios pasos sin escribir código. Para cambiar el nombre de archivos, proporciona más potencia que Finder porque puede encadenar múltiples acciones de cambio de nombre, usar metadatos como la fecha de creación y adjuntar el flujo de trabajo a una carpeta para que se ejecute automáticamente.
 
-- Repites la misma regla con regularidad: exportaciones semanales o informes recurrentes.
-- Quieres combinar renombrado con mover archivos o cambiar extensiones.
-- Necesitas nombres basados en fecha, tamaño o dimensiones.
-- Quieres una aplicación de arrastrar y soltar para un equipo no técnico.
+### Cuándo usar "Automator"
 
-### Paso a paso: crear un flujo de renombrado en Automator
+- Necesita que se aplique la misma regla de cambio de nombre con regularidad (exportaciones semanales, informes recurrentes)
+- Quieres combinar el cambio de nombre con otras acciones (mover archivos, cambiar extensiones)
+- Necesita nombres basados ​​en metadatos (fecha de creación, tamaño de archivo, dimensiones de la imagen)
+- Quieres una aplicación de arrastrar y soltar para miembros del equipo no técnicos
 
-**Paso 1: abre Automator.**
-Inícialo desde Aplicaciones o Spotlight (Cmd+Espacio y escribe «Automator») y elige «Nuevo documento».
+### Paso a paso: creación de un flujo de trabajo de cambio de nombre en Automator
 
-**Paso 2: selecciona el tipo de flujo.**
+**Paso 1: Abra Automator.**
+Inicie Automator desde Aplicaciones o Spotlight (Cmd+Espacio, escriba "Automator"). Elija "Nuevo documento" cuando se le solicite.
 
-- **Flujo de trabajo**: ejecución manual en Automator, útil para probar.
-- **Aplicación**: app independiente a la que arrastras archivos.
-- **Acción de carpeta**: vinculada a una carpeta y ejecutada al añadir archivos.
-- **Acción rápida**: aparece en el menú contextual de Finder.
+**Paso 2: seleccione el tipo de flujo de trabajo.**
+Elija uno de estos según su caso de uso:
 
-Para lotes, **Aplicación** o **Acción de carpeta** suelen ser las opciones más prácticas.
+- **Flujo de trabajo**: se ejecuta manualmente desde Automator. Bueno para probar.
+- **Aplicación**: crea una aplicación independiente a la que puedes arrastrar archivos. Bueno para uso ocasional.
+- **Acción de carpeta**: adjunta a una carpeta específica. Se ejecuta automáticamente cuando se agregan nuevos archivos. Bueno para la automatización continua.
+- **Acción rápida**: aparece en el menú contextual del botón derecho en Finder. Bueno para uso bajo demanda.
 
-**Paso 3: añade la acción de renombrado.**
-Busca «Renombrar ítems del Finder» en la barra lateral y arrástrala al flujo. Automator preguntará si quieres añadir antes «Copiar ítems del Finder» para conservar originales. Elige «No añadir» para trabajar en el sitio o «Añadir» para crear copias.
+Para cambiar el nombre por lotes, **Aplicación** o **Acción de carpeta** son las opciones más prácticas.
 
-**Paso 4: configura la regla.**
+**Paso 3: agregue la acción de cambio de nombre.**
+En la barra lateral izquierda, busque "Cambiar el nombre de los elementos Finder". Arrástrelo al área de flujo de trabajo a la derecha. Automator le preguntará si desea agregar primero el paso "Copiar elementos Finder" para conservar los originales. Haga clic en "No agregar" si desea cambiar el nombre en su lugar, o en "Agregar" si desea conservar copias de seguridad.
 
-- **Añadir fecha u hora**: antepone o añade fecha de creación o modificación.
-- **Cambiar mayúsculas/minúsculas**: convierte a minúsculas, mayúsculas o título.
-- **Buscar y reemplazar**: como Finder, pero combinable con otras acciones.
-- **Hacer secuencial**: incorpora un índice.
-- **Reemplazar texto**: sustituye una cadena.
+**Paso 4: Configurar la regla de cambio de nombre.**
+La acción "Cambiar nombre de elementos Finder" tiene varios modos:
 
-Puedes apilar acciones. Por ejemplo: elimina `IMG_`, antepone la fecha de creación y convierte todo a minúsculas.
+- **Agregar fecha u hora**: anteponga o agregue la fecha de creación o modificación del archivo. Útil para organizar las exportaciones cronológicamente.
+- **Cambiar mayúsculas**: convierte nombres de archivos a minúsculas, mayúsculas o títulos.
+- **Buscar y reemplazar**: igual que Reemplazar texto de Finder, pero se puede encadenar con otras acciones.
+- **Hacer secuencial**: agregue un número de índice a cada archivo.
+- **Reemplazar texto**: cambia una cadena por otra.
 
-**Paso 5: añade la entrada.**
-En un Flujo de trabajo, coloca arriba «Obtener ítems del Finder especificados» y arrastra los archivos. En una Aplicación o Acción de carpeta, se pasan automáticamente.
+Puede apilar varias acciones de cambio de nombre en secuencia. Por ejemplo: primero reemplace `IMG_` con una cadena vacía, luego agregue la fecha de creación como prefijo, luego cambie el caso a minúsculas.
 
-**Paso 6: pruébalo.**
-Pulsa Ejecutar arriba a la derecha y revisa Finder. Si falla, usa Cmd+Z en Finder.
+**Paso 5: Agregar entrada.**
+Si elige un flujo de trabajo, agregue la acción "Obtener elementos Finder especificados" en la parte superior y arrastre sus archivos a ella. Si elige una acción de aplicación o carpeta, los archivos se pasan automáticamente.
 
-**Paso 7: guarda.**
-Usa un nombre claro como «Renombrar exportaciones de clientes». Guarda la Aplicación en Aplicaciones o Escritorio; la Acción de carpeta queda asociada a la carpeta elegida.
+**Paso 6: Pruebe el flujo de trabajo.**
+Haga clic en el botón Ejecutar en la parte superior derecha. Verifique los resultados en Finder. Si algo salió mal, presione Cmd+Z en Finder para deshacer.
 
-### Ejemplo de Automator: entregables con prefijo de fecha
+**Paso 7: Guardar.**
+Guárdelo con un nombre descriptivo como "Cambiar nombre de exportaciones de clientes". Si creó una aplicación, guárdela en su carpeta de Aplicaciones o en su Escritorio. Si creó una acción de carpeta, se adjunta a la carpeta que especificó.
 
-Un diseñador exporta cada semana y quiere anteponer la fecha.
+### Ejemplo de cambio de nombre de Automator: entregables del cliente con prefijo de fecha
 
-| Antes | Después |
+Un diseñador exporta archivos para clientes cada semana y quiere que tengan el prefijo de la fecha de exportación.
+
+|Antes|Después|
 |---|---|
-| `homepage-mockup-v3.pdf` | `2026-02-08_homepage-mockup-v3.pdf` |
-| `mobile-nav-prototype.pdf` | `2026-02-08_mobile-nav-prototype.pdf` |
-| `brand-guidelines-update.pdf` | `2026-02-08_brand-guidelines-update.pdf` |
+|`página-de-inicio-mockup-v3.pdf`|`2026-02-08_página-de-inicio-mockup-v3.pdf`|
+|`prototipo-de-nav-móvil.pdf`|`2026-02-08_prototipo-de-nav-móvil.pdf`|
+|`actualización-de-directrices-de-marca.pdf`|`2026-02-08_actualización-de-directrices-de-marca.pdf`|
 
-Flujo: Obtener ítems especificados > Renombrar ítems del Finder (Añadir fecha u hora, Fecha de adición, Antes del nombre, YYYY-MM-DD, separador de guion bajo).
+Flujo de trabajo: obtener elementos Finder especificados > cambiar el nombre de los elementos Finder (agregar fecha u hora, fecha de adición, antes del nombre, formato AAAA-MM-DD, guión bajo separador).
 
 ### Limitaciones de Automator
 
-Automator se basa en patrones. Automator no puede leer un PDF y decidir que debe llamarse `tax-return-2025.pdf` en lugar de `scan_003.pdf`. Tampoco integra IA y su fiabilidad entre versiones de macOS ha sido irregular. Apple desplaza su inversión hacia Shortcuts (Atajos), que resuelve tareas similares con otra interfaz.
+Automator se basa en patrones. Funciona bien cuando todos los archivos deben seguir la misma regla. No puede mirar un PDF y decidir que el nombre del archivo debe ser "tax-return-2025.pdf" en lugar de "scan_003.pdf". Tampoco tiene integración de IA y su confiabilidad en las actualizaciones de "macOS" se ha vuelto inconsistente. Apple ha estado dirigiendo su inversión hacia el "Shortcuts", que maneja algunas de las mismas tareas pero con una interfaz diferente.
 
-Consulta la guía dedicada para [renombrar archivos automáticamente con Automator](/blog/macos-automator-rename-files-guide).
+Para conocer el paso a paso completo sobre cómo utilizar "[Automator cambiar el nombre de archivos en Mac](/blog/macos-automator-rename-files-guide)" automáticamente, lea la guía dedicada a "Automator".
 
-### Shortcuts (Atajos): la herramienta en la que Apple invierte ahora
+### Shortcuts: donde Apple está poniendo el esfuerzo ahora
 
-Shortcuts (Atajos) viene con macOS Monterey y posteriores y Apple lo desarrolla activamente. Shortcuts cubre buena parte de «Renombrar ítems del Finder», pero se construye como un pequeño bucle.
+Shortcuts viene con macOS Monterey y posteriores y es la herramienta que Apple está desarrollando activamente, por lo que vale la pena saberlo incluso si sus flujos de trabajo existentes de Automator aún se ejecutan. Para el cambio de nombre por lotes, cubre la mayor parte de lo que hace "Cambiar nombre de elementos Finder", con un modelo de ensamblaje diferente: se crea un pequeño bucle en lugar de configurar una acción.
 
-Un atajo mínimo funciona así:
+Un atajo mínimo para cambiar el nombre por lotes se ve así:
 
-1. Crea un atajo y configura **Recibir** archivos desde **Acciones rápidas**.
-2. Añade **Repetir con cada uno** y pasa la **Entrada del atajo**.
-3. Dentro, añade **Renombrar archivo**, usa **Ítem repetido** y construye el nombre con **Texto**, por ejemplo fecha formateada, guion bajo e índice.
-4. En los detalles, activa **Usar como acción rápida** y marca **Finder**.
+1. Inicie un nuevo acceso directo y configure **Recibir** entrada en **Archivos** desde **Acciones rápidas**.
+2. Agregue **Repetir con cada uno**, pasando **Entrada de acceso directo**.
+3. Dentro del bucle, agregue **Cambiar nombre de archivo**, establezca el archivo en **Repetir elemento** y cree el nuevo nombre con **Texto**; por ejemplo, un resultado de **Formato de fecha**, un guión bajo y el índice de repetición.
+4. En el panel de detalles del acceso directo, habilite **Usar como acción rápida** y marque **Finder**.
 
-Después aparece en Acciones rápidas del menú contextual: seleccionas los archivos, lo ejecutas y cambia todo en el sitio.
+El acceso directo luego aparece en el submenú **Acciones rápidas** del botón derecho del ratón de Finder, por lo que selecciona los archivos, lo ejecuta y todo el lote cambia de nombre en su lugar.
 
-Dos límites importan. Shortcuts (Atajos) sigue basándose en patrones: compone fechas, contadores o texto existente, pero no deduce que un PDF es un contrato. Además, sus cambios no entran en la pila de deshacer de Finder, así que Cmd+Z no los revierte; prueba primero con una copia.
+En la práctica, dos límites importan. Shortcuts todavía se basa en patrones: puede componer un nombre a partir de una fecha, un contador o un texto existente, pero no puede decidir si un PDF es un contrato de arrendamiento. Y un cambio de nombre realizado por Shortcuts no está en la pila de deshacer de Finder, por lo que Cmd+Z no lo revertirá; Pruebe primero en una carpeta copiada.
 
-Elige Automator si ya tienes archivos `.workflow` o necesitas una Acción de carpeta; para algo nuevo, elige Shortcuts (Atajos) porque es la vía que Apple continúa actualizando.
+Elija Automator si ya tiene archivos `.workflow` en funcionamiento o necesita una acción de carpeta; elija Shortcuts para cualquier cosa nueva, porque es la ruta que Apple sigue actualizando.
 
-## Método 3: scripts de Terminal para renombrar archivos en Mac
+## Método 3: scripts Terminal para cambiar el nombre de archivos de forma masiva en Mac
 
-Si te manejas con la línea de comandos, los scripts shell ofrecen el máximo control. Puedes usar regex, condiciones, bucles y cualquier metadato accesible desde herramientas de consola.
+Si se siente cómodo con la línea de comando, los scripts de shell le brindan el mayor control sobre el cambio de nombre por lotes en Mac. Puede utilizar expresiones regulares, condicionales, bucles y cualquier metadato disponible a través de herramientas de línea de comandos.
 
-### Cuándo usar scripts
+### Cuando usar guiones
 
-- Necesitas patrones con expresiones regulares, como extraer fechas del nombre.
-- Quieres renombrar según EXIF o propiedades PDF.
-- Necesitas condiciones y solo deben cambiar ciertos archivos.
-- Ya trabajas con comodidad en Terminal.
+- Necesita una coincidencia de patrones basada en expresiones regulares (por ejemplo, extraer fechas de nombres de archivos)
+- Quiere cambiar el nombre según los metadatos del archivo (datos EXIF, propiedades de PDF)
+- Necesita lógica condicional (cambiar el nombre sólo de los archivos que cumplan ciertos criterios)
+- Ya te sientes cómodo en Terminal
 
-### Renombrado básico con un bucle
+### Cambio de nombre básico con un bucle
 
-Cambia todos los `.jpeg` a `.jpg`:
+Cambie el nombre de todos los archivos `.jpeg` a `.jpg`:
 
 ```bash
 for f in *.jpeg; do
@@ -267,9 +273,9 @@ for f in *.jpeg; do
 done
 ```
 
-### Reemplazar texto en nombres
+### Reemplazar texto en nombres de archivos
 
-Sustituye espacios por guiones en el directorio actual:
+Reemplace espacios con guiones en todos los nombres de archivos en el directorio actual:
 
 ```bash
 for f in *\ *; do
@@ -277,9 +283,9 @@ for f in *\ *; do
 done
 ```
 
-### Añadir una fecha desde los metadatos
+### Agregar un prefijo de fecha a partir de los metadatos del archivo
 
-Antepone a cada JPEG su fecha EXIF con `exiftool`:
+Prefije cada JPEG con su fecha de creación EXIF ​​usando `exiftool`:
 
 ```bash
 for f in *.jpg; do
@@ -288,15 +294,17 @@ for f in *.jpg; do
 done
 ```
 
-| Antes | Después |
+Antes y después:
+
+|Antes|Después|
 |---|---|
-| `IMG_4201.jpg` | `2026-01-15_IMG_4201.jpg` |
-| `IMG_4202.jpg` | `2026-01-15_IMG_4202.jpg` |
-| `IMG_4203.jpg` | `2026-01-16_IMG_4203.jpg` |
+|`IMG_4201.jpg`|`2026-01-15_IMG_4201.jpg`|
+|`IMG_4202.jpg`|`2026-01-15_IMG_4202.jpg`|
+|`IMG_4203.jpg`|`2026-01-16_IMG_4203.jpg`|
 
-### Numeración secuencial con ceros
+### Numeración secuencial con relleno de ceros
 
-Añade un prefijo y números de tres dígitos:
+Cambie el nombre de un conjunto de archivos con un prefijo y números rellenos con ceros:
 
 ```bash
 counter=1
@@ -306,25 +314,25 @@ for f in *.png; do
 done
 ```
 
-| Antes | Después |
+|Antes|Después|
 |---|---|
-| `Screen Shot 2026-02-01.png` | `slide-001.png` |
-| `Screen Shot 2026-02-02.png` | `slide-002.png` |
-| `Screen Shot 2026-02-03.png` | `slide-003.png` |
+|`Captura de pantalla 2026-02-01.png`|`diapositiva-001.png`|
+|`Captura de pantalla 2026-02-02.png`|`diapositiva-002.png`|
+|`Captura de pantalla 2026-02-03.png`|`diapositiva-003.png`|
 
-### Usar el comando `rename` basado en Perl
+### Usando el comando `rename` (basado en Perl)
 
-Si instalas `rename` con Homebrew (`brew install rename`), obtienes regex en una sola orden:
+Si instala la utilidad Perl `rename` a través de Homebrew (`brew install rename`), obtendrá soporte para expresiones regulares con un solo comando:
 
 ```bash
 rename 's/IMG_/vacation-/' *.jpg
 ```
 
-Esto reemplaza `IMG_` por `vacation-` en todos los `.jpg` del directorio.
+Esto reemplaza `IMG_` con `vacation-` en cada nombre de archivo `.jpg` en el directorio actual.
 
-### Limitaciones de los scripts
+### Limitaciones del guión
 
-Son potentes, pero requieren conocimientos. Un error tipográfico puede dañar los nombres de todo un directorio sin posibilidad de deshacer. Prueba siempre con copias o sustituye `mv` por `echo` para previsualizar. La [guía para renombrar lotes de forma segura](/blog/how-to-safely-batch-rename-files) explica simulaciones, extensiones, colisiones, vínculos y recuperación en interfaces y scripts:
+Los scripts son poderosos pero requieren conocimientos técnicos. Un error tipográfico en un script de cambio de nombre puede dañar los nombres de archivos en todo un directorio sin deshacerlo. Siempre pruebe primero con una copia de sus archivos, o use `echo` antes de `mv` para obtener una vista previa de lo que sucederá. El [guía segura para cambiar el nombre de archivos por lotes](/blog/how-to-safely-batch-rename-files) completo explica ejecuciones en seco, comprobaciones de extensiones y colisiones, riesgos de archivos vinculados y opciones de recuperación en herramientas y scripts GUI:
 
 ```bash
 for f in *.jpg; do
@@ -332,181 +340,181 @@ for f in *.jpg; do
 done
 ```
 
-Además, los scripts comparten el límite de Finder y Automator: aplican reglas, no entienden el contenido. No pueden mirar una imagen y decidir qué muestra. Para eso necesitas IA.
+Los scripts también comparten la misma limitación fundamental que "Finder" y "Automator": aplican reglas, no comprensión. Un guión no puede mirar una imagen y decidir qué muestra. Para cambiar el nombre según el contenido, necesita IA.
 
-## Método 4: renombrado asistido por IA según el contenido
+## Método 4: cambio de nombre basado en inteligencia artificial
 
-La IA analiza el contenido real de cada archivo y genera un nombre descriptivo. Una captura de Stripe puede convertirse en `stripe-monthly-revenue-chart.png`; un PDF escaneado, en `apartment-lease-agreement-2026.pdf`; y una foto descargada, en `golden-gate-bridge-foggy-morning.jpg`.
+El cambio de nombre de la IA es diferente de todos los métodos anteriores. En lugar de aplicar un patrón o regla a los nombres de archivos, analiza el contenido real de cada archivo y genera un nombre descriptivo basado en lo que encuentra. Una captura de pantalla de un panel de Stripe se convierte en `stripe-monthly-revenue-chart.png`. Un PDF escaneado se convierte en "acuerdo-de-arrendamiento-de-apartamento-2026.pdf". Una foto descargada se convierte en "golden-gate-bridge-foggy-morning.jpg".
 
-### Cuándo usar renombrado con IA
 
-- Capturas con marcas de tiempo que no explican el contenido.
-- Documentos escaneados y PDF como `scan_001.pdf`.
-- Imágenes descargadas con nombres como `download.jpg` o `IMG_4392.heic`.
-- Cualquier carpeta donde el nombre deba describir lo que contiene el archivo.
+### Cuándo usar el cambio de nombre de IA
 
-### Cómo funciona
+- Capturas de pantalla con nombres de marcas de tiempo que no te dicen nada sobre el contenido.
+- Documentos escaneados y PDF con nombres como `scan_001.pdf`
+- Imágenes descargadas con nombres sin sentido como `download.jpg` o `IMG_4392.heic`
+- Cualquier carpeta donde los nombres de archivos deban describir lo que realmente contiene el archivo.
 
-1. Seleccionas archivos o una carpeta.
-2. La IA analiza cada elemento: lee documentos, reconoce objetos y escenas, muestrea fotogramas y entiende interfaces en capturas.
-3. Genera un nombre descriptivo para cada archivo.
-4. Renombra cada uno de forma individual según su propio contenido.
+### como funciona
 
-La diferencia esencial es que cada elemento recibe su propio nombre, no un patrón común aplicado al grupo.
+1. Seleccionas archivos o apuntas la herramienta a una carpeta.
+2. La IA analiza cada archivo: lee texto en documentos, reconoce objetos y escenas en imágenes, toma muestras de cuadros de video y comprende elementos de la interfaz de usuario en capturas de pantalla.
+3. Genera un nombre de archivo descriptivo para cada archivo según el contenido.
+4. Los archivos cambian de nombre individualmente, cada uno con un nombre único que refleja lo que contiene.
 
-### Antes y después: ejemplos reales con IA
+Esta es la diferencia clave con respecto a cualquier otro método: cada archivo obtiene su propio nombre según su propio contenido, no un patrón compartido aplicado al grupo.
+
+### Antes y después: la IA cambia el nombre de ejemplos del mundo real
 
 #### Capturas de pantalla
 
-| Antes | Después |
+|Antes|Después|
 |---|---|
-| `Screenshot 2026-02-08 at 09.14.22.png` | `figma-checkout-page-mobile-wireframe.png` |
-| `Screenshot 2026-02-08 at 09.18.44.png` | `stripe-dashboard-monthly-revenue.png` |
-| `Screenshot 2026-02-08 at 10.02.11.png` | `slack-design-team-feedback-thread.png` |
-| `Screenshot 2026-02-08 at 10.45.33.png` | `vscode-typescript-build-error-log.png` |
-| `Screenshot 2026-02-08 at 14.05.19.png` | `notion-sprint-planning-board-week-6.png` |
+|`Captura de pantalla 2026-02-08 en 09.14.22.png`|`figma-checkout-page-mobile-wireframe.png`|
+|`Captura de pantalla 2026-02-08 en 09.18.44.png`|`tablero-banda-ingresos-mensuales.png`|
+|`Captura de pantalla 2026-02-08 en 10.02.11.png`|`slack-design-team-feedback-thread.png`|
+|`Captura de pantalla 2026-02-08 en 10.45.33.png`|`vscode-typescript-build-error-log.png`|
+|`Captura de pantalla 2026-02-08 en 14.05.19.png`|`notion-sprint-planning-board-semana-6.png`|
 
 #### Documentos y PDF
 
-| Antes | Después |
+|Antes|Después|
 |---|---|
-| `scan_001.pdf` | `apartment-lease-agreement-2026.pdf` |
-| `download.pdf` | `w9-tax-form-acme-consulting.pdf` |
-| `Document (3).pdf` | `quarterly-sales-report-q4-2025.pdf` |
-| `attachment.pdf` | `invoice-7842-webdesign-services.pdf` |
+|`escanear_001.pdf`|`contrato-de-arrendamiento-de-apartamento-2026.pdf`|
+|`descargar.pdf`|`w9-formulario-impuesto-acme-consulting.pdf`|
+|`Documento (3).pdf`|`informe-de-ventas-trimestral-q4-2025.pdf`|
+|`archivo adjunto.pdf`|`factura-7842-servicios-de-diseño-web.pdf`|
 
 #### Fotos e imágenes
 
-| Antes | Después |
+|Antes|Después|
 |---|---|
-| `IMG_4201.jpg` | `golden-gate-bridge-sunset-view.jpg` |
-| `IMG_4202.jpg` | `fishermans-wharf-street-performer.jpg` |
-| `DSC_0087.jpg` | `team-dinner-italian-restaurant.jpg` |
-| `photo_2026.heic` | `hiking-trail-redwood-forest.heic` |
-| `download (1).jpg` | `blue-mid-century-modern-sofa.jpg` |
+|`IMG_4201.jpg`|`puente-golden-gate-vista-del-atardecer.jpg`|
+|`IMG_4202.jpg`|`fishermans-wharf-street-performer.jpg`|
+|`DSC_0087.jpg`|`cena-en-equipo-restaurante-italiano.jpg`|
+|`foto_2026.heic`|`ruta-de-senderismo-bosque-de-secuoyas.heic`|
+|`descargar (1).jpg`|`sofá-moderno-azul-de-mediados-de-siglo.jpg`|
 
-### Renombrado con IA mediante Zush
 
-[Zush para Mac](/mac) está pensado para este trabajo. Procesa imágenes, capturas, vídeos, PDF y documentos mediante análisis de contenido. Permite trabajar por lotes, supervisar carpetas y adaptar el patrón con fechas, categorías o prefijos.
+### Cambio de nombre de IA con Zush
 
-Para automatizarlo, [Zush para Mac supervisa carpetas](/mac) como Escritorio o Descargas y renombra los archivos nuevos al llegar. Así el lote se convierte en un proceso en segundo plano.
+[Renombrador AI Zush para Mac](/mac) está creado específicamente para este tipo de cambio de nombre en Mac. Maneja imágenes, capturas de pantalla, videos, archivos PDF y documentos con análisis de contenido impulsado por IA. Puede cambiar el nombre de los archivos por lotes, configurar la supervisión de carpetas para el cambio automático de nombres de archivos nuevos y personalizar el patrón de nombres para incluir fechas, categorías o prefijos personalizados.
 
-Consulta la [comparativa de renombradores con IA para Mac](/blog/best-ai-file-renamer-tools-mac-compared). Si importan la privacidad y el proveedor, compara [IA cloud frente a local](/blog/cloud-vs-local-ai-file-renaming) antes de elegir.
+Para una automatización continua, a [Zush para Mac observa carpetas](/mac) le gusta su Escritorio o Descargas y cambia el nombre de los archivos nuevos a medida que llegan. Esto convierte el cambio de nombre por lotes en un proceso en segundo plano que mantiene sus archivos organizados sin esfuerzo manual.
+
+Para obtener una comparación detallada de las herramientas de cambio de nombre de IA, consulte "[Comparación de herramientas de cambio de nombre de Mac AI](/blog/best-ai-file-renamer-tools-mac-compared)". Si la privacidad o el control del proveedor es el factor decisivo, compare "[Cambio de nombre de archivos de IA en la nube frente a IA local](/blog/cloud-vs-local-ai-file-renaming)" antes de elegir un flujo de trabajo.
 
 <BlogCTA placement='inline' platform='mac' />
 
-## Comparación de métodos para renombrar lotes en Mac
+## Comparación: métodos de cambio de nombre por lotes de Mac
 
-| Función | Finder | Automator | Shortcuts (Atajos) | Scripts | IA (Zush) |
+|Característica| Finder | Automator | Shortcuts |Guiones|IA (Zush)|
 |---|---|---|---|---|---|
-| Dificultad | Fácil | Media | Media | Alta | Fácil |
-| Reemplazar texto | Sí | Sí | Sí | Sí | Sí |
-| Añadir prefijo/sufijo | Sí | Sí | Sí | Sí | Sí |
-| Numeración secuencial | Sí | Sí | Sí (Índice de repetición) | Sí | Sí |
-| Regex | No | No | No | Sí | No |
-| Nombre por metadatos | No | Sí | Sí (fechas) | Sí | Limitado |
-| Nombre por contenido | No | No | No | No | Sí |
-| Supervisión de carpetas | No | Sí (Acciones de carpeta) | No (usa una Acción de carpeta) | Sí (cron/launchd) | Sí |
-| Deshacer | Sí (Cmd+Z) | Sí (si añadiste copia) | No | No (sin copia) | Sí |
-| Imágenes | Solo patrón | Solo patrón | Solo patrón | Solo patrón | Lee el contenido |
-| PDF | Solo patrón | Solo patrón | Solo patrón | Solo patrón | Lee el texto |
-| Tipos mixtos | Misma regla | Misma regla | Misma regla | Puede usar condiciones | Nombre individual |
-| Coste | Gratis | Gratis | Gratis | Gratis | Plan gratis + planes de pago |
+|Dificultad|Fácil|Medio|Medio|Duro|Fácil|
+|Reemplazar texto|Sí|Sí|Sí|Sí|Sí|
+|Agregar prefijo/sufijo|Sí|Sí|Sí|Sí|Sí|
+|Numeración secuencial|Sí|Sí|Sí (índice de repetición)|Sí|Sí|
+|Soporte de expresiones regulares|No|No|No|Sí|No|
+|Nomenclatura basada en metadatos|No|Sí|Sí (fechas de presentación)|Sí|Limitado|
+|Nomenclatura basada en el contenido|No|No|No|No|Sí|
+|Monitoreo de carpetas|No|Sí (acciones de carpeta)|No (use una acción de carpeta)|Sí (con cron/launchd)|Sí|
+|Deshacer soporte|Sí (Cmd+Z)|Sí (si se agrega el paso de copia)|No|No (sin respaldo)|Sí|
+|Funciona en imágenes|Sólo patrón|Sólo patrón|Sólo patrón|Sólo patrón|Lee el contenido de la imagen.|
+|Funciona en archivos PDF|Sólo patrón|Sólo patrón|Sólo patrón|Sólo patrón|Lee texto PDF|
+|Maneja tipos de archivos mixtos|La misma regla para todos|La misma regla para todos|La misma regla para todos|Lógica condicional posible|Cada archivo nombrado individualmente|
+|Costo|Gratis|Gratis|Gratis|Gratis|Nivel gratuito + planes pagos|
 
-La elección depende del propósito. Si todos necesitan el mismo cambio, Finder tarda diez segundos. Si cada uno exige un nombre único, la IA evita abrirlos uno por uno y pensar un nombre manualmente.
+Zush es la recomendación amplia porque maneja nombres únicos según el contenido y las mismas operaciones de texto comunes en un flujo de trabajo revisable. Finder es solo la excepción más rápida cuando cada archivo necesita un cambio idéntico y no se requiere monitoreo ni un historial duradero.
 
-## Errores frecuentes al renombrar por lotes
+## Errores comunes al cambiar el nombre de un lote
 
-### Olvidar la extensión
+### Olvidar incluir la extensión del archivo
 
-En scripts es fácil eliminarla por accidente. Si `report.pdf` pasa a `quarterly-report` sin `.pdf`, no se abrirá correctamente con doble clic. Conserva siempre la extensión en la lógica.
+Cuando se utilizan scripts, eliminar o sobrescribir accidentalmente las extensiones de archivos es un error común. Un archivo cuyo nombre haya cambiado de `report.pdf` a ` Quarterly-report` (sin `.pdf`) no se abrirá correctamente al hacer doble clic. Conserve siempre la extensión en su lógica de cambio de nombre.
 
-### No probar primero con una copia
+### No probar primero en una copia
 
-Renombrar puede ser destructivo. Una regla mala sobre 500 elementos puede ser difícil o imposible de revertir, sobre todo con scripts. Copia una muestra, ejecuta allí y comprueba antes de tocar los originales.
+Cambiar el nombre es destructivo. Si aplica un patrón incorrecto a 500 archivos, deshacerlo puede ser doloroso o imposible (especialmente con scripts). Copie una pequeña muestra de archivos a una carpeta de prueba, ejecute el cambio de nombre allí y verifique los resultados antes de tocar los originales.
 
-### Usar caracteres problemáticos
+### Usar personajes que causan problemas
 
-Evita `/`, `:` y bytes nulos. Aunque macOS es más permisivo que Windows, los caracteres especiales causan problemas con la nube, discos externos o usuarios de Windows y Linux. Prefiere letras, números, guiones y guiones bajos.
+Evite estos caracteres en los nombres de archivos en macOS: `/`, `:` y bytes nulos. Si bien "macOS" es más permisivo que "Windows", los nombres de archivos con caracteres especiales pueden causar problemas al sincronizar con el almacenamiento en la nube, transferir a unidades externas o compartir con usuarios de "Windows" o Linux. Cíñete a letras, números, guiones y guiones bajos.
 
-### Aplicar el método equivocado
+### Aplicar el método incorrecto al problema
 
-Reemplazar texto en una carpeta de capturas mixtas no sirve porque cada imagen muestra algo distinto. A la inversa, usar IA solo para cambiar `IMG_` por `vacation-` es excesivo. Ajusta la herramienta a la tarea.
+Usar Reemplazar texto de Finder para cambiar el nombre de una carpeta de capturas de pantalla mixtas es una pérdida de tiempo porque cada captura de pantalla muestra algo diferente. Por el contrario, usar IA para cambiar el nombre de un lote de archivos que solo necesitan cambiar "IMG_" a "vacaciones-" es excesivo. Haga coincidir la herramienta con la tarea real.
 
-### Ignorar el orden
+### Ignorar el orden de clasificación
 
-Si necesitas una secuencia, usa ceros (`001`, `002`, no `1`, `2`). Sin ellos, `10` puede quedar entre `1` y `2` en una ordenación alfabética. Usa al menos tres dígitos para colecciones menores de 1000 archivos.
+Si necesita archivos en un orden específico, utilice números rellenos con ceros (`001`, `002`, no `1`, `2`). Sin relleno, el archivo `10` se ordena entre `1` y `2` en Finder porque se ordena alfabéticamente, no numéricamente. Utilice al menos tres dígitos para colecciones de menos de 1000 archivos.
 
-## Consejos para obtener mejores resultados
+## Consejos para obtener mejores resultados al cambiar el nombre por lotes
 
-### Define primero una convención
+### Establezca primero una convención de nomenclatura
 
-Decide si usarás guiones o guiones bajos, minúsculas o mayúsculas y prefijo de fecha. Una convención evita volver a renombrar. Consulta [Convenciones para nombrar archivos](/blog/file-naming-conventions-best-practices).
+Antes de cambiar el nombre de cualquier cosa, decida su convención. ¿Usarás guiones o guiones bajos? ¿Minúsculas o mixtas? ¿Prefijo de fecha o no? Tener una convención implementada significa que cambia el nombre una vez y los nombres siguen siendo útiles. Para obtener orientación, lea "[Convenciones de nomenclatura de archivos: mejores prácticas para cualquier flujo de trabajo](/blog/file-naming-conventions-best-practices)".
 
-### Agrupa antes de renombrar
+### Agrupar archivos antes de cambiarles el nombre
 
-No proceses de una vez una carpeta entera con tipos mixtos. Separa fotos, documentos y capturas; después aplica a cada grupo su patrón y herramienta para no imponer una convención fotográfica a un PDF.
+No intente cambiar el nombre de una carpeta completa de tipos de archivos mixtos de una sola vez. Separe las fotos de los documentos de las capturas de pantalla, luego cambie el nombre de cada grupo por lotes con la herramienta y el patrón adecuados. Esto evita aplicar un esquema de nombres de fotografías a un PDF o viceversa.
 
-### Usa inmediatamente el deshacer de Finder
+### Utilice la función deshacer de Finder inmediatamente
 
-Cmd+Z funciona justo después del lote. Si haces otras acciones, el historial avanza. Revisa enseguida y deshaz al detectar un error.
+El cambio de nombre por lotes de Finder admite deshacer con Cmd+Z, pero solo inmediatamente después del cambio de nombre. Si realiza otras acciones "Finder" primero, el historial de deshacer continúa. Verifique sus resultados inmediatamente después de cambiar el nombre y deshágalo inmediatamente si algo anda mal.
 
-### Combina métodos en trabajos complejos
+### Combine métodos para trabajos complejos
 
-Las carpetas reales suelen necesitar más de uno. Puedes eliminar un prefijo con Finder y luego [usar Zush para renombrar por lotes en Mac](/mac) según el contenido. La numeración de Finder para eventos, la IA para capturas y Automator para exportaciones recurrentes pueden convivir. Así Automator y Finder cubren la parte repetible.
+Las carpetas del mundo real a menudo necesitan más de un enfoque. Puede usar Finder para eliminar un prefijo común, luego usar [Zush para cambiar el nombre de archivos por lotes en Mac](/mac) y generar nombres descriptivos para los archivos que necesitan un cambio de nombre según el contenido. El cambio de nombre secuencial para fotos de eventos, el cambio de nombre AI para capturas de pantalla y "Automator" para exportaciones recurrentes pueden coexistir en el mismo flujo de trabajo.
 
-### Mantén limpia la carpeta Descargas
+### Mantenga limpia su carpeta de Descargas
 
-Descargas concentra archivos mal nombrados. Automatizar los nuevos evita que el desorden crezca. Lee [Cómo organizar Descargas en Mac](/blog/how-to-organize-downloads-folder-mac).
+La carpeta Descargas es la fuente más común de archivos con nombres deficientes. Configurar el cambio de nombre automático para las descargas evita que se acumule el desorden. Consulte [Cómo organizar su carpeta de descargas en Mac](/blog/how-to-organize-downloads-folder-mac) para obtener una estrategia completa.
 
-## FAQ
+## Preguntas frecuentes
 
-### ¿Cuál es la forma más rápida de renombrar archivos por lotes en Mac?
+### ¿Cuál es la forma más rápida de cambiar el nombre de archivos por lotes en Mac?
 
-Finder es lo más rápido si todos reciben el mismo cambio: selecciona en Finder, haz clic derecho, elige Renombrar, selecciona Reemplazar texto, Añadir texto o Formato y aplica. Finder tarda unos diez segundos y no requiere configuración. Si cada archivo necesita un nombre descriptivo distinto, Finder no puede hacerlo y un renombrador con IA resulta más rápido pese a la instalación.
+Finder es la forma más rápida cuando cada archivo recibe el mismo cambio: seleccione los archivos, haga clic derecho, elija Cambiar nombre, elija Reemplazar texto, Agregar texto o Formato, y aplique. Eso es aproximadamente diez segundos para cualquier cantidad de archivos y no necesita configuración ni descargas. Solo es el más rápido cuando una regla se ajusta a todo el lote: si cada archivo necesita un nombre descriptivo diferente, "Finder" no puede hacer el trabajo en absoluto y un renombrador de IA que lee el contenido del archivo es la ruta más rápida a pesar de la instalación adicional.
 
-### ¿Cómo renombro por lotes sin instalar nada?
+### ¿Cómo cambio el nombre de archivos por lotes en Mac sin instalar nada?
 
-Usa la herramienta integrada de Finder. Selecciona, haz clic derecho y elige «Renombrar…». Puedes reemplazar o añadir texto y crear números secuenciales. Funciona desde macOS Yosemite (10.10) sin descargas.
+Utilice la herramienta de cambio de nombre incorporada de Finder. Seleccione los archivos que desea cambiar de nombre, haga clic derecho y elija "Cambiar nombre..." en el menú contextual. Puede reemplazar texto, agregar texto o formatear nombres con números secuenciales. Esto funciona en cualquier Mac que ejecute macOS Yosemite (10.10) o posterior sin necesidad de descargas.
 
-### ¿Puede Finder renombrar según el contenido?
+### ¿Puede Finder cambiar el nombre de los archivos según su contenido?
 
-No. Solo aplica patrones: reemplazos, prefijos, sufijos y numeración. Para que cada archivo reciba un nombre descriptivo único necesitas una herramienta con IA que lea imágenes, vídeos y documentos.
+No. El cambio de nombre por lotes de Finder se basa estrictamente en patrones. Puede reemplazar cadenas de texto, agregar prefijos o sufijos y aplicar numeración secuencial, pero no puede analizar lo que contiene un archivo. Para cambiar el nombre según el contenido, donde cada archivo recibe un nombre descriptivo único, necesita una herramienta con tecnología de inteligencia artificial que pueda leer imágenes, videos y documentos.
 
-![Pestaña de actividad de Zush con historial y botones para deshacer cada cambio](/images/showcase/macos/activity-light.webp)
+![Pestaña de actividad Zush que muestra el historial de cambios de nombre con botones para deshacer para cada archivo renombrado](/images/showcase/macos/activity-light.webp)
 
-### ¿Nombre e índice añade metadatos en Mac?
+### ¿El nombre e índice Finder agregan metadatos en Mac?
 
-No. Solo cambia el nombre y la ruta visibles. No añade etiquetas ni comentarios de Finder, EXIF, metadatos PDF o propiedades de Office. Spotlight busca el nombre nuevo, pero el resto necesita otra herramienta.
+No. El nombre e índice de Finder cambia únicamente el nombre del archivo y la ruta visible del archivo. No agrega etiquetas Finder, comentarios Finder, metadatos EXIF, metadatos PDF ni propiedades de documentos de Office. Spotlight puede buscar el nuevo nombre de archivo, pero los metadatos más profundos necesitan una herramienta separada.
 
-### ¿Se puede deshacer un lote en Mac?
+### ¿Hay alguna manera de deshacer un cambio de nombre por lotes en Mac?
 
-Sí, en Finder. Justo después, pulsa Cmd+Z y todos vuelven al nombre original. Solo funciona como acción siguiente. Terminal no ofrece deshacer: prueba con copias o guarda la lista original.
+Sí, si usas Finder. Inmediatamente después de cambiar el nombre de un lote, presione Cmd+Z para deshacer toda la operación. Todos los archivos vuelven a sus nombres originales. Esta deshacer sólo está disponible como la siguiente acción. Si utiliza scripts Terminal, no hay función de deshacer incorporada, por lo que siempre pruebe primero las copias o guarde una lista de nombres de archivos originales antes de ejecutar el script.
 
-### ¿Cómo renombro fotos con fechas?
+### ¿Cuál es la mejor manera de cambiar el nombre de fotos con fechas en Mac?
 
-Para anteponer la fecha de creación, la acción «Añadir fecha u hora» de Automator es sencilla. Este flujo de Automator usa los metadatos disponibles. Para la fecha de captura EXIF, usa `exiftool` en Terminal. Para combinar fecha y descripción, Zush une patrones y análisis de contenido.
+Para agregar la fecha de creación del archivo como prefijo, la acción de cambio de nombre "Agregar fecha u hora" de Automator es la opción más sencilla. Para agregar fechas de captura EXIF ​​a partir de metadatos de la cámara, use un script Terminal con `exiftool`. Para agregar fechas y nombres de contenido descriptivo, una herramienta de inteligencia artificial como "Zush" puede combinar patrones de fechas con análisis de contenido.
 
-### ¿Cómo renombro cientos de capturas?
+### ¿Cómo cambio el nombre de cientos de capturas de pantalla en Mac?
 
-Para sustituir «Screenshot» por un proyecto, Finder tarda segundos. Para describir lo que muestra cada captura, usa IA y obtén nombres como `slack-design-review-thread.png`. Para futuras capturas, configura supervisión. Consulta [Cómo renombrar capturas automáticamente](/blog/rename-screenshots-automatically-mac).
+Para cambios de nombre básicos, como reemplazar "Captura de pantalla" con un nombre de proyecto, Finder lo maneja en segundos. Para darle a cada captura de pantalla un nombre descriptivo según lo que muestra, utilice el cambio de nombre AI. Seleccione todas las capturas de pantalla, deje que la IA analice cada imagen y obtenga nombres como `slack-design-review-thread.png` en lugar de `Captura de pantalla 2026-02-08 en 10.45.33.png`. Para cambiar automáticamente el nombre de futuras capturas de pantalla, configure la supervisión de carpetas. Ver [Cómo cambiar el nombre de las capturas de pantalla automáticamente en Mac](/blog/rename-screenshots-automatically-mac).
 
-### ¿Puedo renombrar PDF según su contenido?
+### ¿Puedo cambiar el nombre de los archivos PDF por lotes según su contenido?
 
-Sí, con IA. La herramienta lee cada PDF y genera un nombre según el tema: `scan_042.pdf` puede convertirse en `invoice-7842-webdesign-services-march-2026.pdf`. Consulta [Cómo renombrar PDF automáticamente](/blog/rename-pdf-files-automatically).
+Sí, con herramientas de cambio de nombre de IA. La IA lee el contenido de texto de cada PDF y genera un nombre de archivo que refleja el tema del documento. Una factura escaneada denominada `scan_042.pdf` se convierte en `invoice-7842-webdesign-services-march-2026.pdf`. Para obtener un tutorial completo, consulte [Cómo cambiar el nombre de archivos PDF automáticamente: flujo de trabajo de IA para carpetas repetidas](/blog/rename-pdf-files-automatically).
 
-### ¿Renombrar afecta a los metadatos o fechas?
+### ¿El cambio de nombre por lotes afecta los metadatos del archivo o las fechas de creación?
 
-Finder y Automator no cambian creación, modificación ni metadatos internos; el contenido queda igual. Un flujo de Automator conserva esos datos igual que Finder. Algunos servicios cloud pueden tratarlo como una nueva subida, así que revisa la sincronización tras lotes grandes.
+Cambiar el nombre de un archivo en Finder o hasta Automator no cambia su fecha de creación, fecha de modificación ni metadatos internos. El contenido del archivo permanece idéntico. Sólo cambia el nombre del archivo en el sistema de archivos. Sin embargo, algunos servicios de sincronización en la nube pueden tratar un cambio de nombre como una nueva carga, así que verifique su estado de sincronización después de cambiar el nombre de lotes grandes en carpetas sincronizadas.
 
-### ¿Qué convención conviene?
+### ¿Qué convención de nomenclatura debo utilizar para archivos renombrados por lotes?
 
-Usa minúsculas, guiones entre palabras y fechas ISO (`YYYY-MM-DD`) cuando importe el orden. Evita espacios, caracteres especiales y etiquetas vagas como `final-v2`. Lee [Buenas prácticas de nombres](/blog/file-naming-conventions-best-practices).
+Utilice letras minúsculas, guiones entre palabras y fechas en formato ISO (AAAA-MM-DD) cuando el orden cronológico sea importante. Evite espacios, caracteres especiales y etiquetas vagas como "final-v2". Una convención coherente hace que los archivos se puedan ordenar, buscar y transferir entre sistemas operativos. Para obtener orientación detallada, consulte [Convenciones de nomenclatura de archivos: mejores prácticas](/blog/file-naming-conventions-best-practices).
 
 ## Conclusión
 
-Renombrar por lotes en Mac no es un único flujo. La opción correcta depende del cambio que necesitas.
+Elija Zush para disfrutar del flujo de trabajo completo de cambio de nombre por lotes de Mac: nombres de archivos mixtos que tienen en cuenta el contenido, estructura reutilizable, vista previa, supervisión y reversión. Cubre las carpetas desordenadas que las herramientas mecánicas no pueden entender y al mismo tiempo conserva controles de patrones comunes.
 
-Finder resuelve reemplazos y numeración en segundos. Automator ofrece reglas repetibles, acciones de carpeta y metadatos. Terminal aporta regex y control total. Para el problema más difícil —un nombre único según el contenido de cada archivo—, la IA cubre lo que ningún patrón puede alcanzar.
-
-Elige la herramienta más sencilla que resuelva el problema real: Finder cuando puedas, scripts cuando debas e IA cuando el nombre necesite significado.
+Utilice "Finder", "Automator", "Shortcuts" o "Terminal" solo como excepciones limitadas cuando una operación determinista sea todo el trabajo. No reemplazan a "Zush" para nombres descriptivos, formatos mixtos, automatización continua y lotes recuperables.

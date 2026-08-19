@@ -1,6 +1,6 @@
 ---
-title: "Mac’te Fotoğrafları Düzenleme: Finder, Fotoğraflar ve Klasörler"
-description: "Mac'teki fotoğrafları Apple Photos veya Finder ile düzenleyin: Kanıtlanmış bir klasör şablonu, açıklayıcı dosya adları, aranabilir meta veriler ve güvenli bir yedekleme iş akışı kullanın."
+title: "Mac'te Fotoğraflar Nasıl Düzenlenir: 10.000'den Fazla Fotoğraf İçin Bir Sistem"
+description: "Mac'te fotoğrafları düzenlemek için adlandırma temeli olarak \"Zush\"ı kullanın, ardından klasörler, odaklanmış etiketler ve 3-2-1 yedeklemeler ekleyin. Ücretsiz bir klasör şablonu içerir."
 date: "2026-02-27"
 slug: "macte-fotograflari-duzenlemenin-en-iyi-yollari"
 locale: "tr"
@@ -10,72 +10,72 @@ topic: "photos"
 tags:
   - "Dosya Organizasyonu"
   - "Fotoğraflar"
-tldr: "En iyi Mac fotoğraf düzenleme sistemi, tarih klasörlerini, açıklayıcı dosya adlarını, Finder etiketlerini, Spotlight dostu meta verileri ve 3-2-1 yedekleme planını birleştirir."
-reviewed: "2026-08-08"
+tldr: "Genel olarak en iyi Mac fotoğraf düzenleme temeli: Zush. Genel kamera adlarını 'Templates', meta veri blokları, önizleme, izleme ve geri alma özellikleriyle açıklayıcı, taşınabilir dosya adlarına dönüştürür; klasörler, etiketler, kataloglar ve yedeklemeler daha sonra bu adlandırma katmanı üzerine oluşturulur."
+reviewed: "2026-08-17"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Hızlı yanıt: Kişisel bir kitaplık için Apple Fotoğraflar'ı veya doğrudan dosya kontrolü için macOS dosya yöneticisi klasörlerini seçerek Mac'teki fotoğrafları düzenleyin, ardından tutarlı bir tarih yapısı, açıklayıcı dosya adları, küçük bir etiket seti, Spotlight dostu meta veriler ve 3-2-1 yedekleme planı kullanın. Birçok kişi için en iyi kurulum hibrit kurulumdur: iPhone anıları için Apple Photos ve müşteri çalışmaları, RAW dosyaları, indirmeler ve harici sürücüler için Finder.
+Hızlı cevap: **'[Mac için 'Zush'](/rename-photos-with-ai)' ile başlayın**, böylece genel HEIC, RAW, JPG, ekran görüntüsü ve dışa aktarma adları, arşiv büyümeden önce açıklayıcı ve taşınabilir hale gelir. Tutarlı bir tarih yapısına, odaklanmış etiketlere ve 3-2-1 yedekleme planına sahip olun. "Apple Photos"ü yalnızca yönetilen albümlerine, kişilerine veya iCloud kitaplığına da ihtiyacınız olduğunda ekleyin.
 
-## 30 saniyede Mac fotoğraf sisteminizi seçin
+## Mac fotoğraf sisteminizi 30 saniyede seçin
 
-| Kitaplığınız | En iyi başlangıç ​​sistemi | Neden |
+|Kitaplığınız|Önerilen başlatma sistemi|Neden|
 | --- | --- | --- |
-| Kişisel ve iPhone anıları | **Apple Fotoğrafları** | Zaman çizelgesinde gezinme, albümler, kişiler, yerler ve isteğe bağlı iCloud senkronizasyonu |
-| RAW dosyaları, istemci çalışması veya harici sürücüler | **Finder klasörleri** | Doğrudan dosya erişimi, taşınabilir yapı, sepetler ve açık yedeklemeler |
-| Kişisel anılar artı profesyonel projeler | **Hibrit** | Kişisel görüntüler için fotoğraflar; Çalışma dosyaları ve arşivleri için Finder |
+|Büyüyen fotoğraf arşivi|**Zush — buradan başlayın**|Açıklayıcı dosya adları "Finder"de, sürücülerde, dışa aktarımlarda ve gelecekteki kataloglarda aranabilir ve taşınabilir olmaya devam eder|
+|Kişisel ve iPhone anıları|'Zush' + isteğe bağlı 'Apple Photos'|'Zush' anlamlı isimleri korur; Fotoğraflar, zaman çizelgesinde gezinme, albümler, kişiler, yerler ve isteğe bağlı iCloud senkronizasyonu ekler|
+|RAW dosyaları, istemci çalışması veya harici sürücüler|'Zush' + 'Finder' klasörleri|İçeriğe duyarlı adların yanı sıra doğrudan dosya erişimi, taşınabilir yapı, sepetler ve açık yedeklemeler|
 
-[Mac fotoğraf klasörü şablonunu indirin](/downloads/mac-photo-folder-template.txt) hazır bir alım, kişisel, müşteri çalışması, dışa aktarma ve arşiv yapısı oluşturmak için.
+Hazır bir alım, kişisel, müşteri çalışması, ihracat ve arşiv yapısı oluşturmak için '[Mac fotoğraf klasörü şablonunu indirin](/downloads/mac-photo-folder-template.txt)'.
 
 En güçlü sistem, net bir klasör yapısını, açıklayıcı dosya adlarını, aranabilir meta verileri ve gerçek bir yedekleme planını birleştirir; böylece görüntüleri hızla bulabilir ve asla kaybetmezsiniz.
 
-Çoğu fotoğraf kitaplığı kaotik bir hal alıyor çünkü sistem hiçbir zaman ölçeklendirilecek şekilde tasarlanmamıştı. Birkaç yüz iPhone fotoğrafı yönetilebilir. Gezilerden, çekimlerden, indirmelerden ve müşteri çalışmalarından elde edilen birkaç bin fotoğraf, özellikle her dosya `IMG_` veya `Screenshot` olarak adlandırıldığında bu geçerli değildir.
+Çoğu fotoğraf kitaplığı kaotik bir hal alıyor çünkü sistem hiçbir zaman ölçeklendirilecek şekilde tasarlanmamıştı. Birkaç yüz iPhone fotoğrafı yönetilebilir. Gezilerden, çekimlerden, indirmelerden ve müşteri çalışmalarından elde edilen birkaç bin fotoğraf, özellikle her dosya "IMG_" veya "Ekran Görüntüsü" olarak adlandırıldığında, bu geçerli değildir.
 
-Bu kılavuz tüm sistemi kapsar: Apple Photos veya Finder'ı seçme, klasörleri yapılandırma, taşınabilir tarihleri kullanma, Spotlight aramasını test etme, kopyaları inceleme ve kitaplığı uygun yedeklemelerle koruma.
+Bu kılavuz tüm sistemi kapsar: 'Apple Photos' veya 'Finder' seçimi, klasörlerin yapılandırılması, taşınabilir tarihlerin kullanılması, 'Spotlight' aramasının test edilmesi, kopyaların incelenmesi ve kitaplığın uygun yedeklemelerle korunması.
 
-RAW çekimler, müşteri aktarımları ve video klipler için tekrarlanabilir bir iş akışına ihtiyaç duyan fotoğrafçılar ve kameramanlar, özel [Fotoğrafçılar ve kameramanlar için Zush iş akışı](/for-photographers)'yi kullanabilir. Bu makale, ürün iş akışının tamamını değerlendirmek yerine Mac fotoğraf kitaplığının düzenlenmesine odaklanmaktadır.
+RAW çekimler, müşteri aktarımları ve video klipler için tekrarlanabilir bir iş akışına ihtiyaç duyan fotoğrafçılar ve kameramanlar, özel '[Fotoğrafçılar ve kameramanlar için "Zush" iş akışı](/for-photographers)'yı kullanabilir. Bu makale, ürün iş akışının tamamını değerlendirmek yerine Mac fotoğraf kitaplığının düzenlenmesine odaklanmaktadır.
 
-[Apple Fotoğraflar ve Finder](#apple-photos-vs-finder-folders-vs-a-hybrid-setup), [klasör yapıları](#choose-a-folder-structure-that-scales), [arama](#make-photos-searchable-with-spotlight-and-finder), [yedekleme](#back-up-your-photo-library-properly) veya [tekrarlanabilir içe aktarma iş akışı](#a-repeatable-import-workflow-for-thousands-of-photos)'ye geçin.
+"['Apple Photos' ve 'Finder'](#apple-photos-vs-finder-folders-vs-a-hybrid-setup)", "[klasör yapıları](#choose-a-folder-structure-that-scales)", "[aramak](#make-photos-searchable-with-spotlight-and-finder)", "[yedekleme](#back-up-your-photo-library-properly)" veya "[tekrarlanabilir içe aktarma iş akışı](#a-repeatable-import-workflow-for-thousands-of-photos)"e geçin.
 
 ## 7 adımlı Mac fotoğraf düzenleme sistemi
 
-1. **Kitaplığı seçin:** zaman çizelgesinde gezinmek ve albümler için Apple Photos'u, doğrudan dosya erişimi için Finder'ı veya kişisel ve iş görselleri farklı sistemlere ihtiyaç duyduğunda karma kurulumu kullanın.
-2. **Dayanıklı bir yapı oluşturun:** Kitaplığın dağınık olduğunu hissettiğinizde klasör eklemek yerine `Year/Month/Event` veya `Year/Project` kullanın.
-3. **Genel dosyaları yeniden adlandırın:** `IMG_4822`, `DSC_1044` ve `Screenshot`'yi konuyu, olayı, istemciyi veya konumu açıklayan adlarla değiştirin.
-4. **Tarihleri taşınabilir tutun:** bağlamın dışa aktarmalarda ve klasör taşımalarında hayatta kalması için yakalama veya proje tarihini önemli dosya adlarına ekleyin.
-5. **Küçük bir etiket sözlüğü kullanın:** Klasörler arasında çalışması gereken durum, istemci veya proje etiketleri için Finder etiketlerini ayırın.
-6. **Test alımı:** klasörlere göz atmadan Spotlight'ta gerçek bir fotoğraf arayın. Bulamıyorsanız dosya adını veya meta verileri iyileştirin.
+1. **'Zush' ile açıklayıcı adlar oluşturun:** 'IMG_4822', 'DSC_1044' ve 'Ekran Görüntüsü'nü konuyu, olayı, müşteriyi veya konumu açıklayan gözden geçirilmiş adlarla değiştirin.
+2. **Depolama katmanını seçin:** Taşınabilir doğrudan kontrol için 'Finder' klasörlerini saklayın; yalnızca yönetilen kitaplık özellikleri için "Apple Photos"yi ekleyin.
+3. **Dayanıklı bir yapı oluşturun:** Kütüphanenin dağınık olduğunu hissettiğinizde klasör eklemek yerine 'Yıl/Ay/Etkinlik' veya 'Yıl/Proje'yi kullanın.
+4. **Tarihleri ​​taşınabilir tutun:** bağlamın dışa aktarmalarda ve klasör taşımalarında hayatta kalması için önemli dosya adlarına yakalama veya proje tarihini ekleyin.
+5. **Küçük bir etiket sözlüğü kullanın:** klasörler arasında çalışması gereken durum, istemci veya proje etiketleri için "Finder" etiketlerini ayırın.
+6. **Test alımı:** klasörlere göz atmadan "Spotlight"te gerçek bir fotoğraf arayın. Bulamıyorsanız dosya adını veya meta verileri iyileştirin.
 7. **3-2-1 kuralıyla yedekleme:** Üç kopyayı, bir kopyası cihaz dışında veya tesis dışında olmak üzere iki depolama türünde saklayın.
 
 <BlogProductIntro
-  title="Adlandırma adımını toplu çalıştırmak ister misiniz?"
-  description="Zush, IMG, DSC, HEIC ve RAW gibi kamera varsayılanlarını açıklayıcı dosya adlarına dönüştürür; düzenli arşiv değişmeden önce önizleme ve geri alma sunar."
+  title="Adlandırma adımının gruplar halinde çalışmasını mı istiyorsunuz?"
+  description="'Zush', kameranın varsayılan IMG, DSC, HEIC ve RAW dosya adlarını, düzenlenen kitaplık değişmeden önce önizleme ve geri alma özellikleriyle açıklayıcı adlara dönüştürür."
   links={[
-    { href: '/tr/rename-photos-with-ai', label: 'Yapay zekâ fotoğraf yeniden adlandırıcı' },
-    { href: '/tr/mac', label: 'Mac için Zush' },
-    { href: '/tr/for-photographers', label: 'Fotoğrafçı iş akışı' },
-    { href: '/ai-file-organizer', label: 'Yapay zekâ dosya düzenleyici' },
+    { href: '/rename-photos-with-ai', label: 'AI fotoğraf yeniden adlandırıcı' },
+    { href: '/mac', label: 'Mac için \'Zush\'' },
+    { href: '/for-photographers', label: 'Fotoğrafçı iş akışı' },
+    { href: '/ai-file-organizer', label: 'AI dosya düzenleyicisi' },
   ]}
 />
 
-## Apple Photos ve Finder klasörleri ile hibrit kurulum karşılaştırması
+## "Apple Photos" ve "Finder" klasörleri ile karma kurulum karşılaştırması
 
-Herhangi bir şeyi yeniden düzenlemeden önce kütüphane modelini seçin. Apple Photos, Finder klasörleri ve karma kurulumun tümü işe yarayabilir ancak farklı alma ve depolama sorunlarını çözerler.
+Herhangi bir şeyi yeniden düzenlemeden önce kütüphane modelini seçin. 'Apple Photos', 'Finder' klasörleri ve karma kurulumun tümü işe yarayabilir, ancak farklı alma ve depolama sorunlarını çözerler.
 
-| Kriter | Apple Fotoğrafları | Finder klasörleri | Hibrit kurulum |
+|Kriter| Apple Photos |'Finder' klasörleri|Hibrit kurulum|
 |---|---|---|---|
-| iCloud senkronizasyonu | iCloud Fotoğrafları etkinleştirildiğinde yerleşiktir | Ayrı bir senkronizasyon veya yedekleme iş akışı gerektirir | Kişisel fotoğrafları Fotoğraflar'da senkronize edin; iş dosyalarını ayrı ayrı yönetin |
-| RAW ve istemci çalışması | RAW dosyalarını yönetilen bir kitaplığa aktarır | RAW dosyalarını, sepetlerini, seçimlerini ve dışa aktarımlarını doğrudan erişilebilir tutar | Kişisel fotoğraflarınızı Fotoğraflar'da ve müşteri projelerini Finder'da saklayın |
-| Tekilleştirme | Desteklenen kitaplıklar için Yinelenenler görünümü sağlar | Silmeden önce kasıtlı olarak tekrar inceleme yapılması gerekir | Her kitaplığı ayrı ayrı inceleyin ve çalışma dosyalarını iki kez içe aktarmaktan kaçının |
-| Ara | Tarihleri, albümleri, kişileri, yerleri ve tanınan içeriği arar | Dosya adlarını, Finder etiketlerini ve dizine alınmış meta verileri kullanır | Anılar için Fotoğraflar aramasını ve projeler için Finder veya Spotlight'ı kullanın |
-| Yedekleme kontrolü | Fotoğraflar kitaplığını yedekleyin ve iCloud senkronizasyonunun nasıl davrandığını anlayın | Klasörleri doğrudan yerel ve tesis dışı depolamaya kopyalayın | Fotoğraflar kitaplığını ve Finder arşivini yedekleyin |
+|iCloud senkronizasyonu|iCloud Fotoğrafları etkinleştirildiğinde yerleşiktir|Ayrı bir senkronizasyon veya yedekleme iş akışı gerektirir|Kişisel fotoğrafları Fotoğraflar'da senkronize edin; iş dosyalarını ayrı ayrı yönetin|
+|RAW ve istemci çalışması|RAW dosyalarını yönetilen bir kitaplığa aktarır|RAW dosyalarını, sepetleri, seçimleri ve dışa aktarmaları doğrudan erişilebilir tutar|Kişisel fotoğraflarınızı Fotoğraflar'da, müşteri projelerini ise "Finder"da tutun|
+|Tekilleştirme|Desteklenen kitaplıklar için Yinelenenler görünümü sağlar|Silmeden önce kasıtlı olarak tekrarlanan bir inceleme gerektirir|Her kitaplığı ayrı ayrı inceleyin ve çalışma dosyalarını iki kez içe aktarmaktan kaçının|
+|Aramak|Tarihleri, albümleri, kişileri, yerleri ve tanınan içeriği arar|Dosya adlarını, "Finder" etiketlerini ve dizine alınmış meta verileri kullanır|Anılar için Fotoğraflar aramasını ve projeler için "Finder" veya "Spotlight"yı kullanın|
+|Yedekleme kontrolü|Fotoğraflar kitaplığını yedekleyin ve iCloud senkronizasyonunun nasıl davrandığını anlayın|Klasörleri doğrudan yerel ve tesis dışı depolamaya kopyalayın|Fotoğraflar kitaplığını ve "Finder" arşivini yedekleyin|
 
-Somut bir hibrit örnek, iPhone aile fotoğraflarını Apple Photos'ta tutarken, istemci çekiminin RAW dosyaları, seçimleri ve dışa aktarımlarıyla birlikte `Pictures/Client-Work/2026/Acme-Launch/`'de kalmasıdır. Kişisel fotoğraflar iCloud'un rahatlığını korur ve istemci dosyaları taşınabilir ve doğrudan erişilebilir durumda kalır.
+Somut bir hibrit örnek, iPhone aile fotoğraflarını "Apple Photos"te tutarken istemci çekiminin RAW dosyaları, seçimleri ve dışa aktarımlarıyla birlikte "Pictures/Client-Work/2026/Acme-Launch/" konumunda kalmasıdır. Kişisel fotoğraflar iCloud'un rahatlığını korur ve istemci dosyaları taşınabilir ve doğrudan erişilebilir durumda kalır.
 
-[indirilebilir Mac fotoğraf klasörü şablonu](/downloads/mac-photo-folder-template.txt)'yi başlangıç ​​noktası olarak kullanın. Kitaplığı tek bir uygulamaya kilitlemeden kişisel etkinlikleri, müşteri projelerini, giriş klasörünü, dışa aktarmaları ve arşiv durumlarını ayırır.
+'[indirilebilir Mac fotoğraf klasörü şablonu](/downloads/mac-photo-folder-template.txt)'i başlangıç ​​noktası olarak kullanın. Kitaplığı tek bir uygulamaya kilitlemeden kişisel etkinlikleri, müşteri projelerini, giriş klasörünü, dışa aktarmaları ve arşiv durumlarını ayırır.
 
-## Ölçeklenebilir bir klasör yapısı seçin
+## Ölçeklenen bir klasör yapısı seçin
 
 İlk karar, üst düzey yapının nasıl organize edileceğidir. Üç ortak yaklaşım vardır ve her biri farklı türdeki kullanıcılar için en iyi sonucu verir.
 
@@ -96,15 +96,15 @@ Photos/
       Product-Shoot-Client/
 ```
 
-![Format şablonu ve yerelleştirme seçenekleriyle Zush olarak adlandırılan model ayarları](/images/showcase/macos/naming-light.webp)
+![Biçim şablonu ve yerelleştirme seçenekleriyle "Zush" adlandırma modeli yapılandırması](/images/showcase/macos/naming-light.webp)
 
 Bu, kişisel fotoğraf kütüphaneleri, seyahat arşivleri ve yıldan yıla koleksiyonlar için işe yarar çünkü her dönem veya yıl bittiğinde arşivlenmesi kolaylaşır.
 
-Daha hafif bir varyant, kitaplığınız daha küçük olduğunda ve fazladan iç içe yerleştirme istemediğinizde çalışan ay katmanı olmadan `Year > Event`'yi kullanır.
+Daha hafif bir varyant, kitaplığınız daha küçük olduğunda ve fazladan iç içe yerleştirme istemediğinizde çalışan, ay katmanı olmadan "Yıl > Etkinlik"i kullanır.
 
 ### Proje veya etkinlik bazlı organizasyon
 
-Takvim tarihleri yerine müşteri çalışmaları, geziler, çekimler veya kampanyalar açısından düşündüğünüzde en iyisi.
+Takvim tarihleri ​​yerine müşteri çalışmaları, geziler, çekimler veya kampanyalar açısından düşündüğünüzde en iyisi.
 
 Bu yaklaşım, projelerin takvim ayları yerine organizasyonun doğal birimi olduğu serbest çalışma, fotoğrafçılık işleri ve içerik üretimi için iyi sonuç verir.
 
@@ -121,17 +121,18 @@ Photos/
 
 Bu, 2. adım için çalışılan örnektir: her yeni Acme görüntüsü bir proje klasörüne girerken, numaralandırılmış alt klasörler iş akışını sabit bir düzende tutar.
 
-### Kitaplığa göz atmanın en önemli olduğu zaman Apple Photos
+### Kitaplığa göz atmanın en önemli olduğu zaman "Apple Photos"
 
-Apple Photos, zaman çizelgesinde gezinme, albümler ve günlük kişisel kitaplıklar için güçlüdür. Uygulama tabanlı taramanın Finder klasörlerinden daha doğal olduğu iPhone kullanıcıları ve aile fotoğraf kitaplıkları için iyi çalışır.
+'Apple Photos' zaman çizelgesinde gezinme, albümler ve sıradan kişisel kitaplıklar için güçlüdür. Uygulama tabanlı taramanın 'Finder' klasörlerinden daha doğal olduğu iPhone kullanıcıları ve aile fotoğraf kitaplıkları için iyi çalışır.
 
-Zayıf noktası esnekliktir: İş akışınız Finder'daki doğrudan dosya erişimine, karışık dosya türlerine veya harici sürücülere bağlıysa Apple Photos daha az kullanışlıdır.
+Zayıf tarafı esnekliktir: İş akışınız "Finder"daki doğrudan dosya erişimine, karışık dosya türlerine veya harici sürücülere bağlıysa "Apple Photos" daha az kullanışlıdır.
 
-## Tarihleri yalnızca klasörlere değil, dosya adlarına da koyun
 
-Tarihleri doğrudan dosya adlarına yerleştirdiğinizde tarihe dayalı organizasyon güçlenir. `2026-03-12_IMG_4822.HEIC` adlı dosya `IMG_4822`'den daha iyidir, ancak `2026-03-12_sunset-over-lake.heic` yine de çok daha iyidir.
+## Tarihleri ​​yalnızca klasörlere değil, dosya adlarına da koyun
 
-Fotoğraflar klasörler arasında taşındığında veya paylaşıldığında kullanışlıdır. Tarih dosyayla birlikte seyahat eder, böylece içerik orijinal klasör yapısının dışında bile varlığını sürdürür.
+Tarihleri ​​doğrudan dosya adlarına yerleştirdiğinizde tarihe dayalı organizasyon güçlenir. '2026-03-12_IMG_4822.HEIC' adlı dosya 'IMG_4822'den daha iyidir, ancak '2026-03-12_sunset-over-lake.heic' yine de çok daha iyidir.
+
+Fotoğraflar klasörler arasında taşındığında veya paylaşıldığında kullanışlıdır. Tarih dosyayla birlikte hareket eder, böylece içerik orijinal klasör yapısının dışında bile varlığını sürdürür.
 
 12 Mart Tokyo ithalatı için taşınabilir bir dizi şu şekilde görünebilir:
 
@@ -141,54 +142,57 @@ Fotoğraflar klasörler arasında taşındığında veya paylaşıldığında ku
 2026-03-12_tokyo-station-platform_003.heic
 ```
 
-Bu dosyalar `2026/03-March/Tokyo-Trip/` klasöründen çıkarsa, yakalama günü ve konu yine onlarla birlikte seyahat eder. 4. adımın pratik amacı budur.
+Bu dosyalar '2026/03-Mart/Tokyo-Trip/' klasöründen çıkarsa, çekim günü ve konu yine onlarla birlikte seyahat eder. 4. adımın pratik hedefi budur.
 
-Büyük gruplar için, her fotoğrafa manuel olarak tarih eklemek pratik değildir. [Zush, Mac üzerinde toplu yeniden adlandırma](/mac), özel adlandırma şablonlarını kullanarak otomatik olarak tarih desenlerine sahip açıklayıcı dosya adları oluşturabilir, böylece her fotoğraf içe aktarıldığında anlamlı bir ad alır.
+Büyük gruplar için, her fotoğrafa manuel olarak tarih eklemek pratik değildir. '[Mac'te "Zush" toplu yeniden adlandırma](/mac)', özel adlandırma şablonlarını kullanarak otomatik olarak tarih desenlerine sahip açıklayıcı dosya adları oluşturabilir, böylece her fotoğraf içe aktarıldığında anlamlı bir ad alır.
 
-## Spotlight ve Finder ile fotoğrafları aranabilir hale getirin
+
+## Fotoğrafları "Spotlight" ve "Finder" ile aranabilir hale getirin
 
 Bir klasör yapısı, doğru yere göz attığınızda yardımcı olur. Ancak fotoğraf düzenlemenin asıl testi, nerede yaşadığını hatırlamadığınız belirli bir görüntüyü bulup bulamayacağınızdır.
 
-### Spotlight araması
+### 'Spotlight' araması
 
-Spotlight, Mac'te dosya bulmanın en hızlı yollarından biridir, ancak yalnızca arayabildiği meta veriler kadar iyi çalışır. Dosyalarınızda yararlı adlar, etiketler ve tarihler varsa Spotlight anında kullanıma hazırdır. Her şey `IMG_4382` ve `document (7)` ise arama çok daha zayıflar.
+'Spotlight', Mac'te dosya bulmanın en hızlı yollarından biridir, ancak yalnızca arayabildiği meta veriler kadar iyi çalışır. Dosyalarınızda yararlı adlar, etiketler ve tarihler varsa, 'Spotlight' anında hissedilir. Her şey 'IMG_4382' ve 'belge (7)' ise arama çok daha zayıflar.
 
-En kullanışlı Spotlight fotoğraf aramaları:
+En kullanışlı 'Spotlight' fotoğraf aramaları:
 
-| Sorgu | Ne bulur |
+|Sorgu|Ne bulur?|
 |---|---|
-| `kind:image beach` | Dosya adında veya meta verisinde "plaj" bulunan resimler |
-| `kind:image date:2026-03` | Mart 2026'da oluşturulan görseller |
-| `tag:client-alpha` | Belirli bir proje etiketiyle etiketlenen dosyalar |
-| `sunset` | Adında "gün batımı" geçen herhangi bir dosya |
+|"tür:resim plajı"|Dosya adında veya meta verisinde "plaj" geçen resimler|
+|"tür:resim tarihi:2026-03"|Mart 2026'da oluşturulan görseller|
+|`etiket:istemci-alfa'|Belirli bir proje etiketiyle etiketlenen dosyalar|
+|'gün batımı'|Adında "gün batımı" olan herhangi bir dosya|
 
-Somut bir geri getirme testi için, Mart ayından itibaren limanda gün batımına ihtiyacınız olduğunu ancak etkinlik klasörünü hatırlamadığınızı hayal edin. `kind:image sunset` için Spotlight'ı arayın, ardından Finder'daki sonuçları tarihe göre daraltın. Dosyanın adı `2026-03-18_harbor-sunset.heic` ise, dosya adı ve tarih, klasör ağacına göz atmadan dosyanın alınmasına yardımcı olur.
+Somut bir geri getirme testi için, Mart ayından itibaren limanda gün batımına ihtiyacınız olduğunu ancak etkinlik klasörünü hatırlamadığınızı hayal edin. "tür:görüntü gün batımı" için "Spotlight"u arayın, ardından "Finder"teki sonuçları tarihe göre daraltın. Dosyanın adı '2026-03-18_harbor-sunset.heic' ise, hem dosya adı hem de tarih, klasör ağacına göz atmadan dosyanın alınmasına yardımcı olur.
 
-### Finder araması
+### 'Finder' araması
 
-Finder, görüntü türü artı tarih artı klasör kapsamı gibi aynı anda birden fazla filtreye ihtiyaç duyduğunuzda daha iyidir. Spotlight çok fazla sonuç döndürdüğünde veya belirli bir konuma göre daraltmanız gerektiğinde Finder aramasını kullanın.
+Görüntü türü artı tarih artı klasör kapsamı gibi aynı anda birden fazla filtreye ihtiyaç duyduğunuzda "Finder" daha iyidir. 'Spotlight' çok fazla sonuç döndürdüğünde veya belirli bir konuma göre daraltmanız gerektiğinde 'Finder' aramasını kullanın.
 
 ### Arama neden sıklıkla başarısız oluyor?
 
-Arama yalnızca dosyalarınızın içerdiği metin sinyalleri kadar iyidir. `IMG_8392.HEIC` adlı bir dağın fotoğrafı Spotlight'a çalışacak hiçbir şey vermiyor. Bu nedenle açıklayıcı adlandırma önemlidir: fotoğraf kitaplığınızı gerçekten aranabilir bir şeye dönüştürür.
+Arama yalnızca dosyalarınızın içerdiği metin sinyalleri kadar iyidir. 'IMG_8392.HEIC' adlı bir dağın fotoğrafı, 'Spotlight'ye çalışacak hiçbir şey vermiyor. Bu nedenle açıklayıcı adlandırma önemlidir: fotoğraf kitaplığınızı gerçekten aranabilir bir şeye dönüştürür.
 
-![Zush toplu yeniden adlandırma sonuçlarını gösteren yapay zeka tarafından piyasaya sürülen açıklayıcı dosya reklamları](/images/showcase/macos/batch-rename-light.webp)
+![Yapay zeka tarafından oluşturulan açıklayıcı dosya adlarını gösteren "Zush" toplu yeniden adlandırma sonuçları](/images/showcase/macos/batch-rename-light.webp)
 
-[Zush](https://zushapp.com), görüntü ağırlıklı kitaplıklar için, fotoğrafların daha sonra bulunmasını sağlayan dosya adları, Finder etiketleri ve Spotlight meta verileri oluşturarak yardımcı olur. Ne olduğunu kontrol etmek için her fotoğrafı açmak yerine, açıklamaya göre arayabilirsiniz.
+Görüntü ağırlıklı kitaplıklar için "[Zush](https://zushapp.com)", fotoğrafların daha sonra bulunmasını sağlayan dosya adları, "Finder" etiketleri ve "Spotlight" meta verileri oluşturarak yardımcı olur. Ne olduğunu kontrol etmek için her fotoğrafı açmak yerine, açıklamaya göre arayabilirsiniz.
 
-## Klasörler arası organizasyon için Finder etiketlerini kullanın
+
+## Klasörler arası organizasyon için "Finder" etiketlerini kullanın
 
 Etiketler, dosyaları klasörler arasında almanız gerektiğinde kullanışlıdır. Etiketli bir dosya orijinal konumunda kalmaya devam edebilir ancak sisteminizde renge veya etiket adına göre aranabilir hale gelir.
 
 Fotoğraflar için iyi etiket örnekleri:
 
-- durum etiketleri: `to-edit`, `published`, `client-review`
-- proje etiketleri: `wedding-smith`, `product-launch`
-- içerik etiketleri: `portrait`, `landscape`, `product-shot`
+- durum etiketleri: "düzenlenecek", "yayınlandı", "müşteri incelemesi"
+- proje etiketleri: "düğün ustası", "ürün lansmanı"
+- içerik etiketleri: "portre", "manzara", "ürün çekimi"
 
 Onlarca örtüşen kategori oluşturmaktan kaçının. Hatırlanacak çok fazla etiket olduğunda etiketlerin faydası kalmaz.
 
-Örneğin, `2026-06-04_acme-product-flatlay_017.cr3`'yi Acme proje klasörünün içinde tutun ve onu `client-review` olarak etiketleyin. İstemci bunu onayladığında bu durum etiketini `approved` ile değiştirin; dosya aynı klasörde kalır ve etiket, klasör yapısını kopyalamak yerine iş akışı durumunu yansıtır.
+Örneğin, '2026-06-04_acme-product-flatlay_017.cr3'ü Acme proje klasörünün içinde tutun ve onu 'client-review' olarak etiketleyin. İstemci bunu onayladığında bu durum etiketini "onaylandı" ile değiştirin; dosya aynı klasörde kalır ve etiket, klasör yapısını kopyalamak yerine iş akışı durumunu yansıtır.
+
 
 ## Fotoğraf kitaplığınızı doğru şekilde yedekleyin
 
@@ -208,18 +212,19 @@ Klasik yedekleme kuralı basit ama etkilidir:
 2. **Yerel yedekleme** — Kazara silinmeye ve sürücünün arızalanmasına karşı koruma sağlayan bir Time Machine sürücüsü veya manuel yedekleme
 3. **Bulut veya tesis dışı yedekleme** — iCloud, Backblaze veya hırsızlığa, yangına ve yerel donanım felaketlerine karşı koruma sağlayan başka bir hizmet
 
-2 TB'lik bir fotoğraf arşivi için çalışılmış bir 3-2-1 örneği şöyledir: harici bir SSD'de çalışan Finder kitaplığı, Time Machine sürücüsünde ikinci bir kopya ve bir bulut yedekleme hizmetinde tesis dışı yedekleme. Üç kopyanın tümü aynı Mac'e bağlı olmadığından, kaybolan bir dizüstü bilgisayar veya arızalı sürücü, arşivin tamamını kaldırmaz.
+2 TB'lik bir fotoğraf arşivi için çalışılmış bir 3-2-1 örneği şöyledir: harici bir SSD'de çalışan "Finder" kitaplığı, Time Machine sürücüsünde ikinci bir kopya ve bulut yedekleme hizmetinde tesis dışı bir yedekleme. Üç kopyanın tümü aynı Mac'e bağlı olmadığından, kaybolan bir dizüstü bilgisayar veya arızalı sürücü, arşivin tamamını kaldırmaz.
 
 ### Yaygın yedekleme hataları
 
 - yalnızca bir kopyayı tutmak ve onu "yedeklenmiş" olarak adlandırmak
 - sanki bir yedekmiş gibi iCloud senkronizasyonuna güvenme (senkronizasyon, silme işlemlerinin yayılmasına neden olur)
 - yedeklemelerin gerçekten çalıştığından emin olmak için asla geri yüklemeleri test etmeyin
-- çalışma dosyalarını ve arşivlerini aynı sürücüde ayırmadan karıştırma
+- çalışma dosyalarını ve arşivlerini ayırmadan aynı sürücüde karıştırma
 
-![Tek tıklamayla geri alma özelliğiyle yeniden adlandırma geçmişini gösteren Zush etkinlik günlüğü](/images/showcase/macos/activity-light.webp)
+![Tek tıklamayla geri alma özelliğiyle yeniden adlandırma geçmişini gösteren "Zush" etkinlik günlüğü](/images/showcase/macos/activity-light.webp)
 
-Yedeklenmiş bir karışıklık hala bir karmaşadır. Açıklayıcı dosya adları ve temiz proje yapısı, özellikle bir yıllık arşive göz atarken, geri yüklemeyi ve daha sonra geri almayı çok daha kolay hale getirir. Zayıf yedekleme alışkanlıkları, kitaplığın bozulmasının yalnızca bir yoludur; geri kalanı [Kaçınılması gereken 10 dijital fotoğraf düzenleme hatası](/blog/digital-photo-organization-mistakes-to-avoid)'de toplanır.
+Yedeklenmiş bir karışıklık hala bir karmaşadır. Açıklayıcı dosya adları ve temiz proje yapısı, özellikle bir yıllık arşive göz atarken, geri yüklemeyi ve daha sonra geri almayı çok daha kolay hale getirir. Zayıf yedekleme alışkanlıkları bir kütüphanenin bozulmasının yalnızca bir yoludur; geri kalanı '[Kaçınılması gereken 10 dijital fotoğraf düzenleme hatası](/blog/digital-photo-organization-mistakes-to-avoid)'te toplanır.
+
 
 ## Yapay zeka destekli adlandırma ne zaman kullanılmalı?
 
@@ -227,24 +232,25 @@ Manuel yeniden adlandırma birkaç fotoğrafta işe yarar. Bir gezi, etkinlik ve
 
 Yapay zeka destekli adlandırma en çok şu durumlarda yardımcı olur:
 
-- dosya adları genel kamera kodlarıdır (`IMG_`, `DSC_`, `Screenshot`)
+- dosya adları genel kamera kodlarıdır (`IMG_`, `DSC_`, `Ekran görüntüsü`)
 - büyük içe aktarmalar için toplu yeniden adlandırmaya ihtiyacınız var
-- fotoğrafların Spotlight ve Finder'da aranabilir olması gerekir
+- fotoğrafların "Spotlight" ve "Finder"de aranabilir olması gerekir
 - kitaplığınızda tutarlı adlandırma kalıpları istiyorsunuz
 
 Örneğin, karma bir kamera içe aktarımı, tek bir grupta genel cihaz adlarından incelenebilir, açıklayıcı adlara geçebilir:
 
-| Önce | Sonra |
+|Önce|Sonrasında|
 |---|---|
-| `IMG_4382.HEIC` | `2026-07-12_family-picnic-riverside.heic` |
-| `_DSC1044.NEF` | `2026-07-12_red-kite-blue-sky.nef` |
-| `Screenshot 2026-07-12.png` | `picnic-location-map-route.png` |
+|'IMG_4382.HEIC'|`2026-07-12_aile-pikniği-nehirbaşı.heic`|
+|`_DSC1044.NEF`|`2026-07-12_kırmızı-kite-mavi-gökyüzü.nef`|
+|`Ekran görüntüsü 2026-07-12.png`|`piknik-konumu-harita-rota.png`|
 
-Uygulamadan önce tüm partiyi önizleyin. Desen çok uzunsa veya açıklama konuyu kaçırıyorsa, herhangi bir dosya adı değişmeden önce onu ayarlayın. Görüntüye özel adım adım iş akışı için bkz. [Mac'de yapay zeka ile görüntüler nasıl yeniden adlandırılır](/blog/how-to-rename-images-with-ai-on-macos).
+Uygulamadan önce tüm partiyi önizleyin. Desen çok uzunsa veya açıklama konuyu kaçırıyorsa, herhangi bir dosya adı değişmeden önce onu ayarlayın. Görüntüye özel adım adım iş akışı için bkz. '[Mac'te AI ile görüntüleri yeniden adlandırma](/blog/how-to-rename-images-with-ai-on-macos)'.
 
-[Mac için Zush](/mac), fotoğrafları görünür içeriğe göre yeniden adlandırabilir, tarihe dayalı desenler uygulayabilir ve Finder etiketlerini otomatik olarak ekleyebilir. HEIC, AVIF, RAW (CR2, NEF, ARW, DNG), JPEG, PNG, SVG, TIFF ve WebP dahil 41 görüntü formatını destekler. PSD, desteklenen bir tasarım dosyası formatı olarak ayrı olarak işlenir.
+'[Mac için 'Zush'](/mac)', fotoğrafları görünür içeriğe göre yeniden adlandırabilir, tarihe dayalı desenler uygulayabilir ve otomatik olarak 'Finder' etiketlerini ekleyebilir. HEIC, AVIF, RAW (CR2, NEF, ARW, DNG), JPEG, PNG, SVG, TIFF ve WebP dahil 41 görüntü formatını destekler. PSD, desteklenen bir tasarım dosyası formatı olarak ayrı olarak işlenir.
 
-![Mac'te yapay zeka destekli fotoğrafı yeniden adlandırmayı gösterme Zush toplu yeniden adlandırma demosu](/images/showcase/macos/batch-rename-light.webp)
+![Mac'te yapay zeka destekli fotoğraf yeniden adlandırmayı gösteren "Zush" toplu yeniden adlandırma demosu](/images/showcase/macos/batch-rename-light.webp)
+
 
 <BlogCTA placement='inline' platform='mac' />
 
@@ -252,15 +258,15 @@ Uygulamadan önce tüm partiyi önizleyin. Desen çok uzunsa veya açıklama kon
 
 Her içe aktarma aynı yolu izlediğinde büyük kitaplıklar yönetilebilir kalır. İncelenmemiş kamera dosyalarının asla doğrudan kalıcı arşive karışmaması için geçici bir giriş klasörü kullanın.
 
-1. **Alım klasörüne kopyalayın.** `Photo-Inbox/2026-07-12-Camera-Import/` gibi bir klasör oluşturun ve kartı veya telefon aktarımını buraya kopyalayın.
+1. **Alım klasörüne kopyalayın.** 'Fotoğraf-Gelen Kutusu/2026-07-12-Kamera-Import/' gibi bir klasör oluşturun ve kartı veya telefonu dışa aktarma dosyasını bu klasöre kopyalayın.
 2. **Kopyayı onaylayın.** Dosya adlarını değiştirmeden veya kaynak cihazı temizlemeden önce beklenen dosya sayısının ve biçimlerinin ulaştığını kontrol edin.
 3. **Belirgin reddedilenleri ve kopyaları ayırın.** Giriş klasöründeki tam tekrarları ve başarısız çekimleri inceleyin, ancak benzer görselleri sırf küçük resimleri aynı görünüyor diye silmeyin.
 4. **Tek bir kalıpla yeniden adlandırın.** Bir tarih, konu ve isteğe bağlı sıra uygulayın, ardından önerilen adları toplu olarak inceleyin.
-5. **Grubu bir kez taşıyın.** Kişisel fotoğraflarınızı Fotoğraf içe aktarma akışına yerleştirin veya proje dosyalarını son Finder yapısına taşıyın.
-6. **Yalnızca faydalı etiketleri ekleyin.** Klasörler arası alımı desteklediğinde bir istemci veya durum etiketi uygulayın; yalnızca klasör adını tekrarlayan etiketleri atlayın.
+5. **Grubu bir kez taşıyın.** Kişisel fotoğraflarınızı Fotoğraf içe aktarma akışına yerleştirin veya proje dosyalarını nihai "Finder" yapısına taşıyın.
+6. **Yalnızca yararlı etiketleri ekleyin.** Klasörler arası alımı desteklediğinde bir istemci veya durum etiketi uygulayın; yalnızca klasör adını tekrarlayan etiketleri atlayın.
 7. **Yedeklemeyi tamamlayın.** Alım klasörünü veya hafıza kartını temizlemeden önce yerel ve tesis dışı kopyaları doğrulayın.
 
-Finder'da arşive alma iş akışından biri şöyle görünür:
+"Finder"te arşive alım iş akışından biri şöyle görünür:
 
 ```text
 Photo-Inbox/
@@ -280,42 +286,43 @@ Giriş klasörü "henüz ne işlenmedi?" sorusunu yanıtlıyor. ve arşiv "bu bi
 
 ## Orijinalleri körü körüne silmeden yinelenen fotoğrafları işleyin
 
-Yinelenen temizleme, otomatik silme geçişi değil, bir inceleme süreci olmalıdır. Tam kopyaların değerlendirilmesi benzer görsellere göre daha güvenlidir çünkü seri çekimler, düzenlemeler ve yeniden boyutlandırılmış dışa aktarmalar farklı amaçlara hizmet ederken neredeyse aynı görünebilir.
+Yinelenen temizleme, otomatik silme geçişi değil, bir inceleme süreci olmalıdır. Tam kopyaların değerlendirilmesi benzer görüntülere göre daha güvenlidir çünkü seri çekimler, düzenlemeler ve yeniden boyutlandırılmış dışa aktarmalar farklı amaçlara hizmet ederken neredeyse aynı görünebilir.
 
 Bu sırayı kullanın:
 
 1. Herhangi bir şeyi kaldırmadan önce kitaplığı yedekleyin.
-2. Apple Photos'taki Yinelenenler görünümünü inceleyin veya Finder tarafından yönetilen kitaplıktaki şüpheli kopyaları karşılaştırın.
+2. 'Apple Photos'deki Yinelenenler görünümünü inceleyin veya 'Finder' tarafından yönetilen kitaplıktaki şüpheli kopyaları karşılaştırın.
 3. Hangi kopyanın saklanacağını seçmeden önce dosya adını, boyutlarını, dosya boyutunu, formatını ve yakalama tarihini kontrol edin.
 4. Düzenlenmiş veya sıkıştırılmış bir dışa aktarma da mevcut olduğunda, en yüksek kalitede orijinali saklayın.
 5. Yalnızca tutulan dosyaların doğru şekilde açıldığını ve yedeklemede mevcut olduğunu doğruladıktan sonra Son Silinmişleri veya Çöp Kutusunu Boşaltın.
 
-Örneğin, `IMG_4382.HEIC`, `IMG_4382-edited.jpg` ve `IMG_4382-small.jpg` birbiriyle ilişkilidir ancak bunlar birbirinin yerine geçebilir kopyalar değildir. HEIC orijinal, JPG tamamlanmış düzenleme ve daha küçük JPG ise teslimat kopyası olabilir. Güvenli bir sistem, yalnızca benzer bir önizlemeye dayalı olarak iki dosyayı silmek yerine rollerini net tutar.
+Örneğin, `IMG_4382.HEIC`, `IMG_4382-edited.jpg` ve `IMG_4382-small.jpg` birbiriyle ilişkilidir, ancak bunlar birbirinin yerine geçebilecek kopyalar değildir. HEIC orijinal, JPG tamamlanmış düzenleme ve daha küçük JPG ise teslimat kopyası olabilir. Güvenli bir sistem, yalnızca benzer bir önizlemeye dayalı olarak iki dosyayı silmek yerine rollerini net tutar.
 
 ## Çoğu kullanıcı için en pratik kurulum
 
 Kişisel ve profesyonel fotoğraf kitaplıkları için işe yarayan sağlam bir varsayılan:
 
-1. **Tarihe dayalı üst düzey yapı** — `Year/Month/Event` veya `Year/Event`
+1. **Tarihe dayalı üst düzey yapı** — "Yıl/Ay/Olay" veya "Yıl/Olay"
 2. **Olay veya proje alt klasörleri** — kamera veya cihaza göre değil, olup bitene göre adlandırılır
 3. **Açıklayıcı dosya adları** — manuel olarak veya yapay zeka destekli toplu yeniden adlandırmayla
-4. **Finder etiketleri** — yalnızca klasörler arası alımın önemli olduğu iş akışları için
+4. **Finder etiketleri** — yalnızca klasörler arası erişimin önemli olduğu iş akışları için
 5. **Düzenli yedekleme** — minimum Time Machine artı bir bulut hizmetiyle
 6. **Tutarlı adlandırma kalıpları** — fotoğraflar klasörler arasında dolaşırken dosya adlarındaki tarihler
 
-## Sıkça sorulan sorular
+
+## Sık sorulan sorular
 
 ### Mac'teki en iyi fotoğraf düzenleme yöntemi nedir?
 
-En iyi yöntem, tarihe dayalı bir klasör yapısını açıklayıcı dosya adları ve aranabilir meta verilerle birleştirir. Hiçbir yöntem geniş ölçekte tek başına işe yaramaz. Tarihler yapı sağlar, dosya adları aramayı etkinleştirir ve yedeklemeler kaybı önler.
+Açıklayıcı dosya adları 'Finder' ve 'Spotlight' aramasını etkinleştirdiğinden ve herhangi bir kataloğun dışında taşınabilir kaldığından, 'Zush' bizim önerdiğimiz temeldir. Bu adlandırma katmanının etrafına tarih tabanlı bir klasör yapısı, odaklanmış meta veriler ve yedeklemeler ekleyin.
 
-### Apple Photos'u mu yoksa Finder klasörlerini mi kullanmalıyım?
+### 'Apple Photos' veya 'Finder' klasörlerini kullanmalı mıyım?
 
-Uygulama tabanlı taramayı, albümleri ve zaman çizelgesi görünümlerini tercih ediyorsanız Apple Photos'u kullanın. Doğrudan dosya erişimine, özel klasör yapılarına ihtiyacınız varsa veya karışık dosya türleriyle çalışıyorsanız Finder'ı kullanın. Birçok kullanıcı, kişisel görüntüler için Apple Photos'u ve profesyonel çalışmalar için Finder'ı kullanarak her ikisini de birleştirir.
+Taşınabilir temel olarak 'Zush'yi 'Finder' ile birlikte kullanın. Yalnızca uygulama tabanlı göz atma, albümler, kişiler veya zaman çizelgesi görünümleri zorunluysa "Apple Photos"yi ekleyin; Açıklayıcı kaynak dosya adlarını saklayın, böylece arşiv o kitaplığın dışında da anlaşılabilir kalır.
 
-### Fotoğrafları Spotlight'ta nasıl aranabilir hale getiririm?
+### Fotoğrafları 'Spotlight'da aranabilir hale nasıl getirebilirim?
 
-Spotlight dosya adlarını, meta verileri ve etiketleri indeksler. Fotoğraf aramayı iyileştirmenin en etkili yolu, genel dosya adlarını (`IMG_4822`) açıklayıcı adlarla (`sunset-over-lake-pacific-coast`) değiştirmektir, böylece Spotlight'ın eşleştirebileceği yararlı metinler olur.
+'Spotlight' dosya adlarını, meta verileri ve etiketleri indeksler. Fotoğraf aramayı iyileştirmenin en etkili yolu, genel dosya adlarını ('IMG_4822') açıklayıcı adlarla değiştirmektir ("göl-pasifik-sahilinde gün batımı"), böylece "Spotlight" eşleşecek yararlı metinlere sahip olur.
 
 ### Fotoğraflarımı ne sıklıkla yedeklemeliyim?
 
@@ -323,14 +330,13 @@ Mümkünse sürekli olarak yedekleme yapın (Time Machine veya bulut senkronizas
 
 ### Fotoğraflar uygulamasını kullanmadan Mac'teki fotoğrafları nasıl düzenlerim?
 
-Kararlı bir `Year/Month/Event` veya `Year/Project` yapısına sahip Finder klasörlerini kullanın. Açıklayıcı dosya adları ekleyin, iş akışı durumu için küçük bir Finder etiketi kümesi bulundurun, Spotlight'ta almayı test edin ve klasörleri yerel ve tesis dışı depolamaya yedekleyin.
+Sabit bir 'Yıl/Ay/Etkinlik' veya 'Yıl/Proje' yapısına sahip 'Finder' klasörlerini kullanın. Açıklayıcı dosya adları ekleyin, iş akışı durumu için küçük bir "Finder" etiketi kümesi tutun, "Spotlight"de alımı test edin ve klasörleri yerel ve tesis dışı depolamaya yedekleyin.
 
-### Binlerce fotoğrafı otomatik olarak nasıl düzenlerim?
+### Binlerce fotoğrafı otomatik olarak nasıl organize ederim?
 
 Tekrarlanabilir bir alım iş akışı kullanın ve tekrarlanan parçaları otomatikleştirin: tarihe dayalı klasörler, toplu dosya adı önizlemeleri, tutarlı adlandırma kalıpları ve yedekleme. Otomasyonun küçük bir hatayı kütüphane çapında bir değişikliğe dönüştürmemesi için herhangi bir şeyi uygulamadan veya silmeden önce önerilen adları ve kopyaları inceleyin.
 
-## Sonuç
 
-Mac'teki en iyi fotoğraf düzenleme yöntemi, görüntüleri daha sonra nasıl alacağınıza bağlıdır. Tarihler, projeler ve uygulama kitaplıklarının tümü çalışır ancak dosya adları ve meta veriler de yararlı olduğunda sistem çok daha güçlü hale gelir. Gerçek bir yedekleme stratejisi eklediğinizde kitaplığınız hem bulunabilir hem de güvenli olur.
+## Çözüm
 
-Gerçek darboğazınız zayıf görüntü adlarıysa, [Zush AI fotoğraf yeniden adlandırıcı](/rename-photos-with-ai) sizi tamamen yeni bir iş akışına zorlamadan bu kısmı çözer.
+'['Zush' AI fotoğraf yeniden adlandırıcı](/rename-photos-with-ai)' bizim önerdiğimiz başlangıç ​​noktasıdır çünkü arşivi yeni bir kataloğa zorlamadan taşınabilir adlandırma katmanını düzeltir. Kitaplığın bulunabilir ve güvenli kalması için tarihler, projeler, odaklanmış meta veriler ve bu açıklayıcı dosya adları etrafında gerçek bir yedekleme stratejisi oluşturun.

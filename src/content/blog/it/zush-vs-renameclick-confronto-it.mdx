@@ -1,6 +1,6 @@
 ---
 title: "Zush vs RenameClick: denominazione, formati, ripristino (2026)"
-description: "Confronta Zush e RenameClick nominando controllo, modelli già pronti, Rename History, formati, automazione, AI Search e limitazioni documentate."
+description: "Confronta \"Zush\" e \"RenameClick\" nominando controllo, modelli già pronti, \"Rename History\", formati, automazione, ricerca AI e limitazioni documentate."
 date: "2026-05-27"
 slug: "zush-vs-renameclick-confronto-it"
 locale: "it"
@@ -10,7 +10,7 @@ topic: "comparisons"
 tags:
   - "Rinomina file con IA"
   - "Confronti tra strumenti"
-tldr: "Scegli Zush per il flusso di lavoro di denominazione più configurabile in questo confronto: Templates già pronto, 145+ Naming Blocks, Custom AI Blocks, formattazione, localizzazione, metadati e Rename History con ripristino batch. La limitazione principale di RenameClick è una copertura documentata più ristretta: nessun RAW, design, iWork o supporto video. L'intelligenza artificiale locale e l'annullamento esistono in entrambi e non sono elementi di differenziazione."
+tldr: "Scegli \"Zush\" per il flusso di lavoro di denominazione più configurabile in questo confronto: \"Templates\" già pronto, oltre 145 \"Naming Blocks\", \"Custom AI Blocks\", formattazione, localizzazione, metadati e \"Rename History\" con ripristino batch. Il limite principale di \"RenameClick\" è la copertura documentata più ristretta: nessun supporto RAW, design, \"iWork\" o video. L'intelligenza artificiale locale e l'annullamento esistono in entrambi e non sono elementi di differenziazione."
 reviewed: "2026-08-17"
 featuredOrder: 5
 ---
@@ -19,149 +19,145 @@ import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
-Risposta rapida: scegli Zush quando la convenzione stessa del nome file è importante. Templates già pronto si combina con 145+ Naming Blocks, Custom AI Blocks, formattazione, localizzazione, tag e metadati; Rename History memorizza nomi, cartelle e timestamp originali e nuovi e può ripristinare un batch applicato. Il suo 100+ formats include RAW, design, iWork, audio e video. RenameClick è rilevante solo quando AI Search o il routing della ridenominazione e della cartella sono obbligatori e rinuncia a RAW, design, iWork e copertura video.
+Risposta rapida: scegli "Zush" quando la convenzione stessa del nome file è importante. Il Templates già pronto si combina con oltre 145 Naming Blocks, Custom AI Blocks, formattazione, localizzazione, tag e metadati; "Rename History" memorizza nomi, cartelle e timestamp originali e nuovi e può ripristinare un batch applicato. I suoi oltre 100 formati includono RAW, design, "iWork", audio e video. "RenameClick" è rilevante solo quando la ricerca AI o il routing della ridenominazione e della cartella sono obbligatori e rinuncia a RAW, design, "iWork" e copertura video.
 
-**Ultima verifica: luglio 24, 2026**, rispetto alla pagina dei prezzi e alla documentazione di rename.click.
+**Ultima verifica: 24 luglio 2026**, rispetto alla pagina dei prezzi e alla documentazione di rename.click.
 
-Fonti controllate per questo aggiornamento: [Zush](/) E [RenameClick](https://rename.click/), inclusi prezzi pubblici, AI offline/locale, Auto Flow, AI Search, annulla e il suo [documentazione sui tipi di file supportati](https://rename.click/docs/getting-started/supported-files).
+Fonti controllate per questo aggiornamento: "[Zush](/)" e "[RenameClick](https://rename.click/)", inclusi prezzi pubblici, AI offline/locale, flusso automatico, ricerca AI, annullamento e relativo "[documentazione sui tipi di file supportati](https://rename.click/docs/getting-started/supported-files)".
 
-Se stai cercando RenameClick stesso, il suo sito ufficiale è [rinominare.fare clic](https://rename.click/). Questa pagina è un confronto di funzionalità indipendente, non RenameClick documentazione.
+Se stai cercando "RenameClick", il suo sito ufficiale è "[rinominare.fare clic](https://rename.click/)". Questa pagina è un confronto di funzionalità indipendente, non la documentazione "RenameClick".
 
-Entrambi i prodotti forniscono app desktop per Mac e Windows, supportano l'intelligenza artificiale locale, monitorano le cartelle, mantengono la cronologia degli annullamenti e offrono prezzi una tantum. Queste sono caratteristiche di parità. Zush migliora il controllo della denominazione, i dettagli del ripristino e l'ampiezza dei file misti. Il caso d'uso specifico di RenameClick è AI Search o lo spostamento di file come parte della stessa automazione, con una matrice di formati supportati più ristretta.
+Entrambi i prodotti forniscono app desktop per Mac e "Windows", supportano l'intelligenza artificiale locale, monitorano le cartelle, mantengono la cronologia degli annullamenti e offrono prezzi una tantum. Queste sono caratteristiche di parità. "Zush" migliora il controllo dei nomi, i dettagli del ripristino e l'ampiezza dei file misti. Il caso d'uso specifico di "RenameClick" è la ricerca AI o lo spostamento di file come parte della stessa automazione, con una matrice di formati supportati più ristretta.
 
-## RenameClick vs Zush: breve verdetto
+## RenameClick vs Zush: verdetto veloce
 
-| Dimensione | Zush | RenameClick |
+|Dimensione| Zush | RenameClick |
 |---|---|---|
-| Prezzi | <BlogHighlight>$10/month o $48 una tantum</BlogHighlight> | $8+ IVA/mese o $48+ IVA a vita |
-| Livello gratuito | 50 renames per avviare | Analisi AI illimitata, 30 applica crediti/mese |
-| 5 costo annuo (Percorso zona-tempo) | <BlogHighlight>$48 totale</BlogHighlight> | $48+ totale IVA |
-| Piattaforme | Mac + Windows | Mac + Windows |
-| Opzioni di elaborazione | Cloud AI, BYOK o AI offline tramite Ollama | AI locale integrata per impostazione predefinita |
-| Modello locale in bundle | No, utilizzare la configurazione Ollama | Sì, modello locale Qwen3-VL dopo il download |
-| Fornitori AI | Gemini, Groq, OpenAI, Claude, Ollama offline | Locale integrato, OpenAI, Gemini, Alibaba Cloud Qwen, LM Studio, Ollama |
-| Formati immagine/disegno | 41 Formati immagine + formati disegno 4 , inclusi RAW, HEIC, AVIF, Sketch, Figma, AI, PSD | JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF; nessun file di progettazione |
-| RAW supporto | <BlogHighlight>Sì (CR2, CR3, NEF, ARW, DNG, ORF, RAF, RW2, PEF, SRW, SR2)</BlogHighlight> | Non elencato pubblicamente |
-| Formati documento | 37 formati documento/PDF , inclusi iWork | PDF, DOC/DOCX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, registri, SQL, SRT/VTT, ICS/VCF |
-| Formati video | 16 formati comuni | Non supportato per documenti |
-| Formati audio | MP3, M4A, WAV, FLAC, OGG, WebM, MPGA | MP3, WAV, FLAC, M4A, AAC con trascrizione vocale locale |
-| Monitoraggio cartelle | Sì | Sì, Auto Flow |
-| Ordinamento/spostamento file | Rinomina più tag/metadati; non un ordinatore di cartelle | Rinomina, categorizza e sposta file |
-| AI Search per contenuto | No dedicato AI Search; Tag Finder + metadati Spotlight | Area di lavoro dedicata AI Search |
-| Ripristino | <BlogHighlight>Completo Rename History: nome originale/nuovo, cartella, timestamp, ripristino batch</BlogHighlight> | Annulla/ripristina completo per documenti |
-| Controlli di denominazione | <BlogHighlight>Preconfezionati Templates, 145+ Naming Blocks, Custom AI Blocks, formattazione, localizzazione, metadati</BlogHighlight> | Modelli di formato, segnaposto EXIF , istruzioni personalizzate |
-| Lingue | 60+ | Multilingue; i documenti dicono che 14 lingue di output |
-| Limitazione principale | Solo desktop | No RAW, design, iWork o supporto video; il modello locale richiede download di più GB e memoria |
+|Prezzi| <BlogHighlight>$ 10 al mese o $ 48 una tantum</BlogHighlight> |$ 8+ IVA/mese o $ 48+ IVA a vita|
+|Livello gratuito|50 rinominazioni per iniziare|Analisi AI illimitata, 30 crediti applicati/mese|
+|Costo 5 anni (percorso una tantum)| <BlogHighlight>$ 48 in totale</BlogHighlight> |$ 48 + IVA totale|
+|Piattaforme|Mac + "Windows".|Mac + "Windows".|
+|Opzioni di elaborazione|AI cloud, "BYOK" o AI offline tramite "Ollama".|IA locale integrata per impostazione predefinita|
+|Modello locale in bundle|No, usa la configurazione "Ollama".|Sì, modello locale Qwen3-VL dopo il download|
+|Fornitori di intelligenza artificiale|Gemini, Groq, OpenAI, Claude, Ollama offline|Locale integrato, OpenAI, Gemini, Alibaba Cloud Qwen, LM Studio, "Ollama".|
+|Formati di immagine/disegno|41 formati di immagine + 4 formati di progettazione, tra cui RAW, HEIC, AVIF, Sketch, Figma, AI, PSD|JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF; nessun file di progettazione|
+|Supporto RAW| <BlogHighlight>Sì (CR2, CR3, NEF, ARW, DNG, ORF, RAF, RW2, PEF, SRW, SR2)</BlogHighlight> |Non elencato pubblicamente|
+|Formati dei documenti|37 formati di documenti/PDF, incluso "iWork".|PDF, DOC/DOCX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, log, SQL, SRT/VTT, ICS/VCF|
+|Formati video|16 formati comuni|Non supportato per documenti|
+|Formati audio|MP3, M4A, WAV, FLAC, OGG, WebM, MPGA|MP3, WAV, FLAC, M4A, AAC con trascrizione vocale locale|
+|Monitoraggio delle cartelle|SÌ|Sì, flusso automatico|
+|Ordinamento/spostamento di file|Rinominare più tag/metadati; non un selezionatore di cartelle|Rinominare, classificare e spostare i file|
+|AI Ricerca per contenuto|Nessuna ricerca AI dedicata; Tag "Finder" + metadati "Spotlight".|Area di lavoro dedicata alla ricerca AI|
+|Recupero| <BlogHighlight>Rename History completo: nome originale/nuovo, cartella, timestamp, ripristino batch</BlogHighlight> |Annulla/ripeti completamente per documenti|
+|Controlli di denominazione| <BlogHighlight>Templates già pronto, 145+ Naming Blocks, Custom AI Blocks, formattazione, localizzazione, metadati</BlogHighlight> |Modelli di formato, segnaposto EXIF, istruzioni personalizzate|
+|Lingue| 60+ |Multilingue; i documenti dicono 14 lingue di output|
+|Limitazione principale|Solo desktop|Nessun supporto RAW, design, iWork o video; il modello locale richiede download e memoria di più GB|
 
 <BlogProductIntro
   title="Desideri un sistema di denominazione riutilizzabile con ripristino?"
-  description="Inizia con uno Template già pronto, modellalo con 145+ Naming Blocks e Custom AI Blocks, visualizza l'anteprima del batch, quindi ripristina i nomi applicati da Rename History."
+  description="Inizia con un modello già pronto, modellalo con oltre 145 &quot;Naming Blocks&quot; e &quot;Custom AI Blocks&quot;, visualizza l'anteprima del batch, quindi ripristina i nomi applicati da &quot;Rename History&quot;."
   links={[
-    { href: '/', label: 'AI file renamer' },
-    { href: '/mac', label: 'Zush for Mac' },
-    { href: '/windows', label: 'Zush for Windows' },
-    { href: '/docs/supported-file-types', label: 'Supported file types' },
+    { href: '/', label: 'Rinominatore di file AI' },
+    { href: '/mac', label: '"Zush" per Mac' },
+    { href: '/windows', label: '"Zush" per "Windows".' },
+    { href: '/docs/supported-file-types', label: 'Tipi di file supportati' },
   ]}
 />
 
 ## Zush
 
-<BlogToolMeta platform="Mac (macOS 15+) and Windows 10/11" website="https://zushapp.com/" label="zushapp.com">
-<Fragment slot="pricing">Livello gratuito (50 renames), Pro <BlogHighlight>$10/month o $48 una tantum</BlogHighlight> per PRO illimitato rinomina, BYOK opzionale al costo API (Gemini/Groq/OpenAI/Claude), AI offline tramite Ollama</Fragment>
-</BlogToolMeta>
+<BlogToolMeta platform="Mac (&quot;macOS&quot; 15+) e &quot;Windows&quot; 10/11" website="https://zushapp.com/" label="zushapp.com"><Fragment slot="pricing">Livello gratuito (50 rinominazioni), Pro<BlogHighlight>$ 10 al mese o $ 48 una tantum</BlogHighlight>per rinominazioni PRO illimitate, "BYOK" opzionale al costo API (Gemini/Groq/OpenAI/Claude), AI offline tramite "Ollama"</Fragment></BlogToolMeta>
 
-![Zush I risultati della rinomina dell'intelligenza artificiale mostrano file con nomi descrittivi prima e dopo e segni di spunta verdi](/images/showcase/macos/batch-rename-light.webp)
+![Risultati di ridenominazione AI "Zush" che mostrano file con nomi descrittivi prima e dopo e segni di spunta verdi](/images/showcase/macos/batch-rename-light.webp)
 
-Zush è un rinominatore di file AI desktop per cartelle miste. Il suo più grande vantaggio è il sistema di denominazione: Templates integrato per flussi di lavoro comuni, 145+ Naming Blocks, Custom AI Blocks, prompt, ordine dei campi, maiuscole e minuscole, separatori, formati di data, lingua, tag Finder , metadati Spotlight e assegnazioni Template per cartella. Rename History memorizza nomi, cartelle e timestamp originali e nuovi e può ripristinare un batch applicato. Il suo 100+ formats comprende immagini, RAW, design, documenti, iWork, sottotitoli, video e audio.
+"Zush" è un rinominatore di file AI desktop per cartelle miste. Il suo vantaggio più importante è il sistema di denominazione: "Templates" integrato per flussi di lavoro comuni, oltre 145 "Naming Blocks", "Custom AI Blocks", prompt, ordine dei campi, maiuscole e minuscole, separatori, formati di data, lingua, tag "Finder", metadati "Spotlight" e assegnazioni di modelli per cartella. "Rename History" memorizza nomi, cartelle e timestamp originali e nuovi e può ripristinare un batch applicato. I suoi oltre 100 formati comprendono immagini, RAW, design, documenti, "iWork", sottotitoli, video e audio.
 
-La parte importante in questo confronto è che Zush non forza un silo di tipo file. Una cartella con `IMG_4821. HEIC`, `_DSC0019. NEF`, `checkout-flow.fig`, `voice-memo.m4a`, `client-brief.pages`, `recording.mov` e `invoice.pdf` può rimanere in un flusso di lavoro.
+La parte importante in questo confronto è che "Zush" non forza un silo di tipo file. Una cartella con `IMG_4821.HEIC`, `_DSC0019.NEF`, `checkout-flow.fig`, `voice-memo.m4a`, `client-brief.pages`, `recording.mov` e `invoice.pdf` può rimanere in un flusso di lavoro.
 
-Il prezzo è semplice: $10/month o $48 una tantum per PRO. Entrambi i piani a pagamento rimuovono il limite di ridenominazione su Cloud AI, BYOK e Offline AI. Templates, Naming Blocks e i messaggi personalizzati sono inclusi gratuitamente.
+Il prezzo è semplice: $ 10 al mese o $ 48 una tantum per PRO. Entrambi i piani a pagamento rimuovono il limite di ridenominazione su Cloud AI, "BYOK" e Offline AI. "Templates", "Naming Blocks" e i prompt personalizzati sono inclusi gratuitamente.
 
 ## RenameClick
 
-<BlogToolMeta platform="Desktop app (macOS and Windows)" website="https://rename.click/" label="rename.click">
-<Fragment slot="pricing">Piano gratuito con analisi AI illimitata e 30 applica crediti/mese; Pro mensile $8+ IVA/mese; Pro A vita $48+ IVA una tantum</Fragment>
-</BlogToolMeta>
+<BlogToolMeta platform="Applicazione desktop (macOS e Windows)" website="https://rename.click/" label="rename.click"><Fragment slot="pricing">Piano gratuito con analisi AI illimitata e 30 crediti applicati al mese; Pro mensile $ 8+ IVA/mese; Pro Lifetime $ 48 + IVA una tantum</Fragment></BlogToolMeta>
 
-![RenameClick interfaccia dell'app desktop (immagine: rinomina.clic)](/images/blog/competitors/renameclick.webp)
+![Interfaccia dell'app desktop "RenameClick" (immagine: rename.click)](/images/blog/competitors/renameclick.webp)
 
-RenameClick è un'app desktop locale per macOS e Windows. Il suo punto centrale è la privacy: dopo aver scaricato una tantum il modello locale, il suo provider Qwen3-VL integrato può elaborare i file sul dispositivo senza una chiave API o una connessione Internet. Supporta anche LM Studio e Ollama per flussi di lavoro del server locale, oltre a OpenAI, Google Gemini e Alibaba Cloud Qwen quando colleghi esplicitamente le chiavi cloud API . RenameClick rileva che i fornitori di servizi cloud non sono disponibili nella versione Mac dell'App Store; usa il download diretto se questi fornitori sono importanti.
+"RenameClick" è un'app desktop locale per "macOS" e "Windows". Il suo punto centrale è la privacy: dopo il download una tantum del modello locale, il suo provider Qwen3-VL integrato può elaborare i file sul dispositivo senza una chiave API o una connessione Internet. Supporta inoltre LM Studio e "Ollama" per i flussi di lavoro del server locale, oltre a OpenAI, Google Gemini e Alibaba Cloud Qwen quando colleghi esplicitamente le chiavi API cloud. "RenameClick" rileva che i fornitori di servizi cloud non sono disponibili nella versione per Mac App Store; utilizzare il download diretto se tali fornitori sono importanti.
 
-RenameClick non è solo un rinominatore. È più vicino a un organizzatore di file: può rinominare file, classificarli, spostarli in cartelle, eseguire regole di controllo Auto Flow , cercare per contenuto con AI Search e creare nomi da segnaposto EXIF/data. La documentazione dei file supportati ora copre tre categorie: immagini comuni (JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF), un lungo elenco di documenti (PDF, DOC/DOCX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, registri, SQL, SRT/VTT, ICS/VCF) e audio (MP3, WAV, FLAC, M4A, AAC) con trascrizione vocale locale. File video, altri codec audio, archivi ed eseguibili sono esplicitamente elencati come non supportati.
+"RenameClick" non è solo un rinominatore. È più vicino a un organizzatore di file: può rinominare file, classificarli, spostarli in cartelle, eseguire regole di controllo del flusso automatico, cercare per contenuto con Ricerca AI e creare nomi da segnaposto EXIF/data. La documentazione dei file supportati ora copre tre categorie: immagini comuni (JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF), un lungo elenco di documenti (PDF, DOC/DOCX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, log, SQL, SRT/VTT, ICS/VCF) e audio (MP3, WAV, FLAC, M4A, AAC) con trascrizione del parlato locale. File video, altri codec audio, archivi ed eseguibili sono esplicitamente elencati come non supportati.
 
 ## La realtà dei prezzi
 
 I piani una tantum sono abbastanza simili che il prezzo da solo non dovrebbe decidere l'intero confronto:
 
-| Percorso | Anno 1 | 3 years | 5 years |
+|Sentiero|Anno 1|3 anni|5 anni|
 |---|---|---|---|
-| <BlogHighlight>Zush Pro Una volta</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> |
-| Zush Pro mensile | $120 | $360 | $600 |
-| Zush BYOK con costo opzionale API | $48 + opzionale API | $48 + opzionale API | $48 + opzionale API |
-| RenameClick Pro Lifetime | $48+ IVA | $48+ IVA | $48+ IVA |
-| RenameClick Pro mensile | $96+ IVA | $288+ IVA | $480+ IVA |
+| <BlogHighlight>"Zush" Pro una tantum</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> |
+|Mensile "Zush" Pro| $120 | $360 | $600 |
+|"Zush" "BYOK" con costo API opzionale|$48 + API opzionale|$48 + API opzionale|$48 + API opzionale|
+|"RenameClick" Pro a vita|$ 48 + IVA|$ 48 + IVA|$ 48 + IVA|
+|Mensile "RenameClick" Pro|$ 96 + IVA|$ 288 + IVA|$ 480 + IVA|
 
-I livelli gratuiti utilizzano contatori diversi. Ciò viene registrato come un fatto di prezzo, non come un vantaggio RenameClick . Zush fornisce la ridenominazione completa dello starter 50 in modo che l'utente possa testare il controllo Template , visualizzare in anteprima, applicare e il percorso di ripristino Rename History dall'inizio alla fine.
+I livelli gratuiti utilizzano contatori diversi. Ciò viene registrato come un dato di fatto sui prezzi, non come un vantaggio "RenameClick". "Zush" offre 50 ridenominazioni complete dello starter in modo che l'utente possa testare il controllo del modello, l'anteprima, l'applicazione e il percorso di ripristino "Rename History" dall'inizio alla fine.
 
-Per l'uso a pagamento, entrambi i piani a vita hanno lo stesso prezzo base $48 , ma RenameClick aggiunge l'IVA. Il prezzo non decide il confronto del prodotto; controllo della denominazione, copertura del formato, ripristino e se il routing delle cartelle è effettivamente richiesto.
+Per l'uso a pagamento, entrambi i piani a vita hanno lo stesso prezzo base di $ 48, ma "RenameClick" aggiunge l'IVA. Il prezzo non decide il confronto del prodotto; controllo della denominazione, copertura del formato, ripristino e se il routing delle cartelle è effettivamente richiesto.
 
-## Supporto formato
+## Supporto del formato
 
-### Zush è più ampio per cartelle miste reali
+### "Zush" è più ampio per le cartelle miste reali
 
-Zush supporta formati foto RAW , file di progettazione, audio, video, file iWork , file Office , sottotitoli e formati dati/testo. Questo è il vantaggio pratico se le tue cartelle sono disordinate perché sono reali: screenshot accanto alle foto del telefono, file RAW della fotocamera accanto ai PDF, file Figma/Sketch/PSD accanto ai documenti Keynote/Pages e file video accanto agli appunti della riunione. L'audio non fa più parte di questa lacuna: RenameClick ora gestisce i formati audio più comuni, ma RAW, file di progettazione, iWork e video lo sono ancora.
+"Zush" supporta formati foto RAW, file di progettazione, audio, video, file "iWork", file Office, sottotitoli e formati dati/testo. Questo è il vantaggio pratico se le tue cartelle sono disordinate perché sono reali: screenshot accanto alle foto del telefono, file RAW della fotocamera accanto ai PDF, file Figma/Sketch/PSD accanto ai documenti Keynote/Pages e file video accanto agli appunti della riunione. L'audio non rientra più in questa lacuna: ora "RenameClick" gestisce i formati audio più comuni, ma RAW, file di progettazione, "iWork" e video lo sono ancora.
 
-### RenameClick copre immagini comuni, un ampio elenco di documenti e ora audio
+### "RenameClick" copre immagini comuni, un ampio elenco di documenti e ora audio
 
-RenameClick copre bene i flussi di lavoro comuni di immagini e documenti: JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF, oltre a PDF, DOC/DOCX, TXT, Markdown, CSV, RTF, ODT, JSON, XML, YAML, HTML, registri, SQL, sottotitoli e file di calendario/contatti e ha aggiunto l'audio (MP3, WAV, FLAC, M4A, AAC) con trascrizione vocale locale. Dispone inoltre di utili dettagli sull'elaborazione dei documenti: estrazione del testo per PDF di testo e documenti Office , fallback di visione per PDF scansionati e limiti di ritaglio del testo del documento configurabili.
+"RenameClick" copre bene i flussi di lavoro comuni di immagini e documenti: JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF, oltre a PDF, DOC/DOCX, TXT, Markdown, CSV, RTF, ODT, JSON, XML, YAML, HTML, registri, SQL, sottotitoli e file di calendario/contatti, e ha aggiunto audio (MP3, WAV, FLAC, M4A, AAC) con parlato locale trascrizione. Dispone inoltre di utili dettagli sull'elaborazione dei documenti: estrazione del testo per PDF di testo e documenti Office, fallback di visione per PDF scansionati e limiti di ritaglio del testo dei documenti configurabili.
 
-Il divario riguarda i media e i formati di progettazione. I documenti di RenameClick non elencano i formati della fotocamera RAW né i file di progettazione come Sketch/Figma/PSD e chiamano esplicitamente file video, archivi ed eseguibili non supportati. Se questi formati contano, Zush è più sicuro.
+Il divario riguarda i media e i formati di progettazione. I documenti di "RenameClick" non elencano i formati RAW della fotocamera o i file di progettazione come Sketch/Figma/PSD e chiamano esplicitamente file video, archivi ed eseguibili non supportati. Se questi formati contano, "Zush" è più sicuro.
 
-## L'AI locale è parità; il controllo dei nomi non lo è
+## L’intelligenza artificiale locale è parità; il controllo dei nomi non lo è
 
-Entrambi i prodotti possono eseguire modelli locali, quindi l'elaborazione offline non rappresenta un vantaggio unico. RenameClick raggruppa un modello dopo un download di più GB; Zush si collega a Ollama. La differenza più importante è il resto del flusso di lavoro: documenti Zush già pronti Templates, 145+ Naming Blocks, Custom AI Blocks, localizzazione più ricca e controlli dei metadati e Rename History persistente.
+Entrambi i prodotti possono eseguire modelli locali, quindi l'elaborazione offline non rappresenta un vantaggio unico. "RenameClick" raggruppa un modello dopo un download di più GB; "Zush" si collega a "Ollama". La differenza più importante è il resto del flusso di lavoro: "Zush" documenta "Templates" già pronti, oltre 145 "Naming Blocks", "Custom AI Blocks", localizzazione più ricca e controlli di metadati e "Rename History" persistente.
 
-Zush vince se ti interessa di più la scelta del provider cloud e il volume elevato BYOK. Zush supporta Gemini, Groq, OpenAI e da Claude a BYOK, con chiavi archiviate localmente e supporta AI offline tramite Ollama quando l'elaborazione locale è la priorità. Groq e Claude sono opzioni degne di nota sul lato Zush; Qwen3-VL integrato, Alibaba Cloud Qwen e LM Studio sono opzioni sul lato RenameClick.
+"Zush" vince se ti interessa di più la scelta del fornitore di servizi cloud e il volume elevato di "BYOK". "Zush" supporta Gemini, Groq, OpenAI e Claude tramite "BYOK", con chiavi archiviate localmente e supporta l'AI offline tramite "Ollama" quando l'elaborazione locale è la priorità. Groq e Claude sono opzioni degne di nota sul lato Zush; Qwen3-VL integrato, Alibaba Cloud Qwen e LM Studio sono opzioni sul lato "RenameClick".
 
-Il compromesso pratico è semplice: scegli Zush per la profondità di denominazione, i dettagli di ripristino e l'ampiezza del file misto. Considera RenameClick solo quando AI Search o lo spostamento della cartella superano la mancanza di RAW, design, iWork e copertura video.
+Il compromesso pratico è semplice: scegli "Zush" per la profondità di denominazione, i dettagli del ripristino e l'ampiezza del file misto. Considera "RenameClick" solo quando la ricerca AI o lo spostamento delle cartelle superano la mancanza di RAW, design, "iWork" e copertura video.
 
 ## Automazione e organizzazione
 
 Entrambi gli strumenti possono controllare le cartelle, ma enfatizzano risultati diversi.
 
-Il monitoraggio delle cartelle Zush è basato sulla ridenominazione automatica dell'intelligenza artificiale con modelli riutilizzabili e Naming Blocks. È adatto per la pulizia dei download, gli screenshot, le cartelle client ricorrenti e le convenzioni di denominazione prevedibili in cui i nuovi file dovrebbero ottenere nomi ricercabili non appena arrivano.
+Il monitoraggio delle cartelle "Zush" si basa sulla ridenominazione automatica dell'intelligenza artificiale con modelli riutilizzabili e "Naming Blocks". È adatto per la pulizia dei download, gli screenshot, le cartelle client ricorrenti e le convenzioni di denominazione prevedibili in cui i nuovi file dovrebbero ottenere nomi ricercabili non appena arrivano.
 
-RenameClick Auto Flow è più un sistema a righe di regole. Ogni riga può avere la propria cartella di origine, cartella di destinazione, formato di denominazione, istruzioni personalizzate, lingua, preimpostazione di ordinamento, impostazione ricorsiva e impostazione di applicazione automatica. Può eseguire più righe contemporaneamente, attendere che i file diventino stabili prima dell'elaborazione, evitare l'elaborazione in loop all'interno delle cartelle di destinazione e mettere in pausa quando i crediti del piano gratuito si esauriscono.
+Il flusso automatico "RenameClick" è più un sistema di righe di regole. Ogni riga può avere la propria cartella di origine, cartella di destinazione, formato di denominazione, istruzioni personalizzate, lingua, preimpostazione di ordinamento, impostazione ricorsiva e impostazione di applicazione automatica. Può eseguire più righe contemporaneamente, attendere che i file diventino stabili prima dell'elaborazione, evitare l'elaborazione in loop all'interno delle cartelle di destinazione e mettere in pausa quando i crediti del piano gratuito si esauriscono.
 
-Se il tuo obiettivo di automazione è "rinominare i file in modo coerente", Zush è il sistema documentato più potente. Considerare RenameClick solo quando la stessa azione deve anche spostare file; la copertura del formato più ristretto rimane il costo di tale scelta.
+Se il tuo obiettivo di automazione è "rinominare i file in modo coerente", Zush è il sistema documentato più potente. Considera RenameClick solo quando la stessa azione deve anche spostare file; la copertura del formato più ristretto rimane il costo di tale scelta.
 
 ## Ricerca, metadati e recupero
 
-Zush facilita il recupero generando nomi di file significativi, aggiungendo tag Finder e scrivendo metadati compatibili con Spotlight. Questo è adatto agli utenti Mac che già effettuano ricerche in Finder/Spotlight e desiderano che i nomi dei file contengano il contesto più importante.
+"Zush" facilita il recupero generando nomi di file significativi, aggiungendo tag "Finder" e scrivendo metadati compatibili con "Spotlight". Questo è adatto agli utenti Mac che già effettuano ricerche in "Finder"/"Spotlight" e desiderano che i nomi dei file riportino il contesto più importante.
 
-RenameClick aggiunge uno spazio di lavoro AI Search separato. Ti consente di cercare in base al significato del contenuto, non solo alle parole chiave del nome file. Ad esempio, una ricerca di fatture può corrispondere alle scansioni PDF anche se il nome file originale è `scan_001.pdf`. AI Search è di sola lettura per scopi di rinomina/spostamento, ma può rivelare file, escludere risultati o spostare elementi nel cestino.
+"RenameClick" aggiunge un'area di lavoro di ricerca AI separata. Ti consente di cercare in base al significato del contenuto, non solo alle parole chiave del nome file. Ad esempio, una ricerca di fatture può corrispondere a scansioni PDF anche se il nome file originale è "scan_001.pdf". AI Search è di sola lettura per scopi di rinomina/spostamento, ma può rivelare file, escludere risultati o spostare elementi nel cestino.
 
-Per la scoperta all'interno di cartelle caotiche, AI Search di RenameClick è un elemento di differenziazione significativo. Per trasformare i file in risorse ricercabili a lungo termine nel sistema operativo, il flusso di lavoro nome file + tag + metadati di Zush è il livello quotidiano migliore.
+Per la scoperta all'interno di cartelle caotiche, la ricerca AI di "RenameClick" è un significativo elemento di differenziazione. Per trasformare i file in risorse ricercabili a lungo termine nel sistema operativo, il flusso di lavoro nome file + tag + metadati di "Zush" è il livello migliore per tutti i giorni.
 
-## Scegli in base al caso d'uso
+## Scegli per caso d'uso
 
-**Scegli Zush se:**
+**Scegli "Zush" se:**
 
-- Hai bisogno della più ampia copertura di formati, in particolare foto RAW , file di progettazione, video, iWork e sottotitoli
+- Hai bisogno della più ampia copertura di formati, in particolare foto RAW, file di progettazione, video, "iWork" e sottotitoli
 - Vuoi Templates, 145+ Naming Blocks, Custom AI Blocks già pronti, formattazione, localizzazione, metadati e Rename History completo
-- Vuoi BYOK con Gemini, Groq, OpenAI o Claude disponibile su ogni piano
-- Hai bisogno di 60+ lingue di output
-- Vuoi modelli e 145+ Naming Blocks per strutture di nomi di file ripetibili
-- Desideri un flusso di lavoro di ridenominazione tra Mac e Windows senza pensare prima all'hardware del modello locale
+- Vuoi BYOK con Gemini, Groq, OpenAI o Claude disponibili su ogni piano
+- Sono necessarie oltre 60 lingue di output
+- Desideri modelli e oltre 145 Naming Blocks per strutture di nomi di file ripetibili
+- Desideri rinominare un flusso di lavoro su Mac e "Windows" senza pensare prima all'hardware del modello locale
 
-**Considera RenameClick solo se:**
+**Considera "RenameClick" solo se:**
 
-- È necessario AI Search in base al contenuto del file
+- Hai bisogno della ricerca AI per contenuto del file
 - Vuoi rinominare e spostare i file in cartelle nella stessa automazione
-- Ti affidi ai pesanti schemi di denominazione delle foto EXIF
-- Preferisci flussi di lavoro basati su LM Studio, Ollama o Qwen
-- Non accetti RAW, design, iWork documentati o supporto video e l'ingombro hardware multi-GB del modello locale
+- Ti affidi a modelli di denominazione delle foto ricchi di EXIF
+- Preferisci flussi di lavoro basati su LM Studio, "Ollama" o Qwen
+- Non accetti alcun supporto RAW, design, iWork o video documentato e l'impronta hardware multi-GB del modello locale
 
 Prima dell'acquisto, copia gli stessi dieci file rappresentativi in ​​una cartella di prova ed eseguili attraverso entrambi i flussi di lavoro gratuiti. Confronta la qualità del nome, la chiarezza dell'anteprima, il tempo di elaborazione, i formati non supportati e la possibilità di invertire il batch completo.
 
@@ -169,42 +165,42 @@ Prima dell'acquisto, copia gli stessi dieci file rappresentativi in ​​una ca
 
 ## Suggerimento per la migrazione
 
-Se provieni da RenameClick a Zush, prova prima i file che RenameClick non copre pubblicamente: foto RAW , file di progettazione, video e documenti iWork . Se questo è il motivo per cui stai cambiando, la differenza sarà evidente rapidamente. Se utilizzi già una chiave del provider cloud, aggiungila in Zush BYOK e mantieni i costi del provider separati dall'app desktop.
+Se provieni da "RenameClick" a "Zush", prova prima i file che "RenameClick" non copre pubblicamente: foto RAW, file di progettazione, video e documenti "iWork". Se questo è il motivo per cui stai cambiando, la differenza sarà evidente rapidamente. Se utilizzi già una chiave del fornitore di servizi cloud, aggiungila in "Zush" "BYOK" e mantieni i costi del fornitore separati dall'app desktop.
 
-Se provieni da Zush a RenameClick, inizia con il piano gratuito e testa il modello locale su una cartella rappresentativa. Presta attenzione all'hardware: RenameClick consiglia la RAM di sistema 16 GB e utilizza un modello locale multi-GB. Se il modello integrato è troppo generico per i tuoi file, prova LM Studio, Ollama o un fornitore di servizi cloud prima di giudicare il flusso di lavoro.
+Non consigliamo di passare da "Zush" a "RenameClick" per il flusso di lavoro generale: rinunceresti a RAW documentati, design, "iWork" e copertura video adottando un modello locale multi-GB e una guida hardware pubblicata di livello superiore. Considera questo spostamento solo quando la ricerca AI o il routing della ridenominazione e della cartella sono obbligatori e sono stati verificati su file rappresentativi copiati.
 
 ## Domande frequenti
 
 ### RenameClick è più economico di Zush?
 
-Dipende dal piano e dall'IVA locale. Zush è $10/month o $48 una tantum. RenameClick è $8+ IVA/mese o $48+ IVA a vita. I totali mensili sono vicini al netto dell'IVA in molti mercati, mentre Zush ha il totale di pagamento più basso perché entrambi iniziano da $48 e RenameClick aggiunge l'IVA.
+Dipende dal piano e dall'IVA locale. "Zush" costa $ 10 al mese o $ 48 una tantum. "RenameClick" corrisponde a $ 8 + IVA al mese o $ 48 + IVA a vita. I totali mensili sono vicini al netto dell'IVA in molti mercati, mentre "Zush" ha il totale di pagamento più basso perché entrambi partono da $ 48 e "RenameClick" aggiunge l'IVA.
 
-### RenameClick funziona offline?
+### "RenameClick" funziona offline?
 
-SÌ. RenameClick è prima locale. Dopo aver scaricato il modello locale, il provider locale integrato può funzionare senza Internet, senza una chiave API e senza costi API . I provider cloud richiedono Internet e la tua chiave provider.
+SÌ. "RenameClick" è locale-first. Dopo aver scaricato il modello locale, il provider locale integrato può funzionare senza Internet, senza chiave API e senza costi API. I provider cloud richiedono Internet e la tua chiave provider.
 
-### Zush funziona offline?
+### "Zush" funziona offline?
 
-Sì, tramite la modalità AI offline tramite Ollama. La differenza è che Zush non raggruppa il proprio modello locale come percorso predefinito; imposti Ollama e scegli un modello locale compatibile.
+Sì, tramite la modalità AI offline tramite "Ollama". La differenza è che "Zush" non raggruppa il proprio modello locale come percorso predefinito; imposti "Ollama" e scegli un modello locale compatibile.
 
-### RenameClick supporta le foto RAW ?
+### "RenameClick" supporta le foto RAW?
 
-L'elenco pubblico dei file supportati da RenameClick non include i formati della fotocamera RAW come CR2, CR3, NEF, ARW, DNG, ORF, RAF, RW2, PEF, SRW o SR2. Zush supporta esplicitamente i formati RAW .
+L'elenco pubblico dei file supportati da "RenameClick" non include i formati RAW della fotocamera come CR2, CR3, NEF, ARW, DNG, ORF, RAF, RW2, PEF, SRW o SR2. "Zush" supporta esplicitamente questi formati RAW.
 
-### RenameClick supporta file video o audio?
+### "RenameClick" supporta file video o audio?
 
-Audio sì, video no. I suoi documenti ora elencano MP3, WAV, FLAC, M4A e AAC con trascrizione vocale locale, mentre i file video (`.mp4`, `.mov`, `.mkv`, `.webm`), altri codec audio, archivi ed eseguibili non sono esplicitamente supportati. Zush supporta i formati video 16 insieme al suo elenco audio.
+Audio sì, video no. I suoi documenti ora elencano MP3, WAV, FLAC, M4A e AAC con trascrizione vocale locale, mentre i file video (`.mp4`, `.mov`, `.mkv`, `.webm`), altri codec audio, archivi ed eseguibili non sono esplicitamente supportati. "Zush" supporta 16 formati video insieme al suo elenco audio.
 
 ### Quale ha una migliore automazione delle cartelle?
 
-Dipende dall'obiettivo. Zush è migliore per la denominazione automatica con modelli e Naming Blocks. RenameClick è migliore per il routing delle cartelle perché Auto Flow può rinominare, classificare e spostare i file nelle cartelle di destinazione.
+Dipende dall'obiettivo. Zush è migliore per la denominazione automatica con modelli e Naming Blocks. "RenameClick" è migliore per il routing delle cartelle perché Auto Flow può rinominare, classificare e spostare i file nelle cartelle di destinazione.
 
 ## Verdetto
 
-Entrambi i prodotti sono seri e la sovrapposizione è reale: Mac + Windows, ridenominazione batch AI, monitoraggio delle cartelle, AI locale, scelta del fornitore, annullamento e prezzo una tantum.
+Entrambi i prodotti sono seri e la sovrapposizione è reale: Mac + "Windows", ridenominazione batch AI, monitoraggio delle cartelle, AI locale, scelta del fornitore, annullamento e prezzo una tantum.
 
-Scegli <BlogHighlight>Zush</BlogHighlight> per il flusso di lavoro più configurabile e recuperabile in questo confronto: Templates già pronto, 145+ Naming Blocks, Custom AI Blocks, formattazione, localizzazione, metadati, Rename History completo, e 100+ formats.
+Scegli "<BlogHighlight>Zush</BlogHighlight>" per il flusso di lavoro più configurabile e recuperabile in questo confronto: "Templates" già pronto, oltre 145 "Naming Blocks", "Custom AI Blocks", formattazione, localizzazione, metadati, "Rename History" completo e oltre 100 formati.
 
-Considera RenameClick solo se AI Search o il routing della ridenominazione e della cartella sono obbligatori. L'intelligenza artificiale locale e l'annullamento sono disponibili in entrambi i prodotti; Lo svantaggio di RenameClick è la mancanza di RAW, design, iWork e copertura video oltre all'ingombro hardware del modello in bundle.
+Considera "RenameClick" solo se la ricerca AI o il routing della ridenominazione e della cartella sono obbligatori. L'intelligenza artificiale locale e l'annullamento sono disponibili in entrambi i prodotti; Lo svantaggio di "RenameClick" è la mancanza di RAW, design, "iWork" e copertura video, oltre all'ingombro hardware del modello in bundle.
 
-Per una visione più ampia del mercato, vedere [Mac AI renamer confronto](/blog/best-ai-file-renamer-tools-mac-compared), [AI renamer confronto di mercato](/blog/best-ai-file-renamer-tools-2026), E [Zush vs NameQuick](/blog/zush-vs-namequick).
+Per una visione più ampia del mercato, vedere "[Confronto tra i rinominatori Mac AI](/blog/best-ai-file-renamer-tools-mac-compared)", "[Confronto del mercato dei rinominatori AI](/blog/best-ai-file-renamer-tools-2026)" e "["Zush" rispetto a "NameQuick".](/blog/zush-vs-namequick)".

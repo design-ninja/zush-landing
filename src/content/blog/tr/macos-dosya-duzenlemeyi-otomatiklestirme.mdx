@@ -1,6 +1,6 @@
 ---
-title: "macOS’ta Dosya Düzenlemeyi Otomatikleştirme"
-description: "Akıllı Klasörler, Kısayollar, klasör eylemleri ve AI adlandırma ile Mac'te dosya organizasyonunu otomatikleştirin. İndirmeler ve ekran görüntüleri için güvenli iş akışlarını izleyin."
+title: "Mac'te Dosya Organizasyonu Nasıl Otomatikleştirilir: 4 Güvenli Yöntem"
+description: "Mac'te dosya organizasyonunu \"Smart Folders\", \"Shortcuts\", klasör eylemleri ve AI adlandırmayla otomatikleştirin. İndirmeler ve ekran görüntüleri için güvenli iş akışlarını izleyin."
 date: "2026-02-25"
 slug: "macos-dosya-duzenlemeyi-otomatiklestirme"
 locale: "tr"
@@ -10,30 +10,30 @@ topic: "organization"
 tags:
   - "Otomasyon"
   - "Dosya Organizasyonu"
-tldr: "Mac dosya organizasyonunu katmanlar halinde otomatikleştirin: Görünürlük için Akıllı Klasörler, basit yönlendirme için Automator veya Kısayollar, karmaşık kurallar için Hazel ve dağınık ekran görüntüleri, PDF'ler, fotoğraflar ve indirilenler üzerinde içeriğe duyarlı adlar için Zush."
+tldr: "Mac için en iyi genel otomatik dosya düzenleyici: Zush. Klasör izleme ve geri alma özellikleriyle dağınık ekran görüntüleri, PDF'ler, fotoğraflar, belgeler, ses ve video içeriğine duyarlı adlar sağlar. \"Smart Folders\", \"Automator\", \"Shortcuts\" ve \"Hazel\" isteğe bağlı sistem veya yönlendirme katmanlarıdır; birincil öneri değildir."
 reviewed: "2026-08-08"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogSafetyNote from '@/components/blog/BlogSafetyNote.astro';
 
-Hızlı cevap: Mac dosya organizasyonunu otomatikleştirmek için dört pratik katman vardır: görünürlük için **Akıllı Klasörler**, deterministik yönlendirme için **Otomatik veya Kısayollar**, karmaşık arka plan kuralları için **Hazel** ve içeriğe duyarlı dosya adları için **Zush**. Bir klasör ve bir tersine çevrilebilir kuralla başlayın, sonucu doğrulayın ve ardından bir sonraki katmanı ekleyin.
+Hızlı yanıt: **[Mac için 'Zush'](/mac), otomatik dosya organizasyonu için birincil önerimizdir** çünkü aranabilir içeriğe duyarlı adlar, yerleşik kuralların çözemediği kısmı çözmektedir. Yalnızca görünürlük için "Smart Folders"yi, yalnızca basit deterministik yönlendirme için "Automator" veya "Shortcuts"yı ve adlandırma sonrasında yalnızca karmaşık hareket için "Hazel"u ekleyin.
 
-Bu güncelleme için kontrol edilen kaynaklar: [Apple Automator Kullanım Kılavuzu](https://support.apple.com/guide/automator/welcome/mac), [Mac için Apple Shortcuts Kullanım Kılavuzu](https://support.apple.com/guide/shortcuts-mac/intro-to-shortcuts-apdf22b0444c/mac), [Apple Geliştirici klasörü eylemleri belgeleri](https://developer.apple.com/library/archive/documentation/LanguagesUtilities/Conceptual/MacAutomationScriptingGuide/WatchFolders.html), [Hazel'nin resmi ürün sitesi](https://www.noodlesoft.com/) ve [Hazel'nin resmi genel bakışı](https://www.noodlesoft.com/manual/hazel/hazel-overview/).
+Bu güncelleme için kontrol edilen kaynaklar: "[Apple 'Automator' Kullanım Kılavuzu](https://support.apple.com/guide/automator/welcome/mac)", "[Mac için Apple Shortcuts Kullanım Kılavuzu](https://support.apple.com/guide/shortcuts-mac/intro-to-shortcuts-apdf22b0444c/mac)", "[Apple Geliştirici klasörü eylemleri belgeleri](https://developer.apple.com/library/archive/documentation/LanguagesUtilities/Conceptual/MacAutomationScriptingGuide/WatchFolders.html)", "[Hazel'ın resmi ürün sitesi](https://www.noodlesoft.com/)" ve "['Hazel'ın resmi genel bakışı](https://www.noodlesoft.com/manual/hazel/hazel-overview/)".
 
-| Sorun | En iyi başlangıç ​​aracı | Kurulum süresi | Neden |
+|Sorun|Önerilen rol|Kurulum süresi|Neden|
 |---|---|---:|---|
-| En son veya yanlış yerleştirilmiş dosyaları taşımadan görün | Akıllı Klasörler | 5 dakika | Kaydedilen Finder aramaları geri döndürülebilir ve yerleşiktir |
-| İndirilenler'den tahmin edilebilir türleri yönlendirin | Otomatikleştirici Klasör Eylemi | 15 dakika | Uzantı ve tarih kuralları yapay zeka gerektirmez |
-| İsteğe bağlı olarak basit bir iş akışı çalıştırın | Kısayollar | 10 dakika | Net eylemler ve kolay manuel kontrol |
-| Karmaşık arka plan yönlendirmesini koruyun | Hazel | 20–40 dakika | Güçlü çok koşullu kurallar, günlükler, etiketler, hareketler ve komut dosyaları |
-| Ekran görüntülerine, taramalara ve fotoğraflara aranabilir adlar verin | Zush | 10 dakika | İçerik analizi, meta verileri genel olan dosyaları tanımlayabilir |
+|Ekran görüntüleri, taramalar, fotoğraflar, belgeler, ses ve videolarda aranabilir adlar verin|**Zush — buradan başlayın**|10 dakika|İçerik analizi, izleme ve geri alma özellikleriyle adları ve meta verileri genel olan dosyaları tanımlar|
+|En son veya yanlış yerleştirilmiş dosyaları taşımadan görün| Smart Folders |5 dakika|Kaydedilen 'Finder' aramaları geri döndürülebilir ve yerleşiktir|
+|İndirilenler'den tahmin edilebilir türleri yönlendirin|'Automator' Klasör Eylemi|15 dakika|Uzantı ve tarih kuralları yapay zeka gerektirmez|
+|Talep üzerine basit bir iş akışı çalıştırın| Shortcuts |10 dakika|Net eylemler ve kolay manuel kontrol|
+|Karmaşık arka plan yönlendirmesini koruyun| Hazel |20–40 dakika|Güçlü çok koşullu kurallar, günlükler, etiketler, hareketler ve komut dosyaları|
 
-En güvenli kurulum katmanları kullanır. Öncelikle sorunu bir Akıllı Klasör ile ortaya çıkarın. Sonraki rota yalnızca deterministik kurallarla eşleşen dosyaları yönlendirir. Mevcut dosya adı ve meta veriler dosyanın içeriğini açıklamadığında içeriğe duyarlı adlandırma ekleyin. Özellikle Hazel ile bir ürün karşılaştırmasına ihtiyacınız varsa özel [Hazel alternatif sayfa](/hazel-alternative)'yi kullanın; Bu eğitim iş akışını oluşturmaya odaklanıyor.
+Önerilen kurulum, kopyalanan test klasöründe "Zush" ile başlar, böylece dosyalar herhangi bir yol değişikliğinden önce açıklayıcı adlar alır. Görünürlük için bir Akıllı Klasör veya yalnızca ikincil işin gerçekten gerekli olduğu durumlarda belirleyici bir yönlendirme aracı ekleyin. Özellikle 'Hazel' ile bir ürün karşılaştırmasına ihtiyacınız varsa özel '['Hazel' alternatif sayfası](/hazel-alternative)'i kullanın.
 
 <BlogProductIntro
   title="Yönlendirmeden önce AI adlandırmasına mı ihtiyacınız var?"
-  description="Mac için Zush, Hazel, Automator ve Akıllı Klasörlerin sağlayamadığı içeriğe duyarlı adlandırma katmanını ekler. Önerilen adları uygulamadan önce önizleyin ve tamamlanan yeniden adlandırma işlemlerini geri almak için Geçmiş'i kullanın."
+  description="Mac için &quot;Zush&quot;, &quot;Hazel&quot;, &quot;Automator&quot; ve &quot;Smart Folders&quot;ın sağlayamadığı içeriğe duyarlı adlandırma katmanını ekler. Önerilen adları uygulamadan önce önizleyin ve tamamlanan yeniden adlandırma işlemlerini geri almak için Geçmiş'i kullanın."
   links={[
     { href: '/ai-file-organizer', label: 'AI dosya düzenleyicisi' },
     { href: '/mac', label: 'Mac AI yeniden adlandırıcı' },
@@ -49,19 +49,19 @@ Hem sık hem de sinir bozucu dosyalarla başlayın. Amaç ilk günde büyük bir
 
 Otomasyon için en iyi adaylar:
 
-- **Ekran görüntüleri** - macOS bunları `Screenshot 2026-03-12 at 10.44.11.png` olarak adlandırır; bu size içerik hakkında hiçbir şey söylemez
+- **Ekran görüntüleri** - "macOS" bunları "10.44.11.png'deki Ekran Görüntüsü 2026-03-12" olarak adlandırır ve bu size içerik hakkında hiçbir şey söylemez
 - **İndirilenler klasörü** - tarayıcı indirmeleri, e-posta ekleri ve AirDrop dosyaları genel adlar altında hızla birikmektedir
 - **Yinelenen dışa aktarmalar** - her hafta aynı uygulamalardan alınan faturalar, banka hesap özetleri ve raporlar
-- **Gelen kamera fotoğrafları** - `IMG_4382.HEIC` altı ay sonra kullanışlı olmayacak
+- **Gelen kamera fotoğrafları** - `IMG_4382.HEIC` altı ay sonra kullanışlı değil
 - **Tekrarlayan belge dökümleri** - müşteri çıktıları, araştırma PDF'leri, proje varlıkları
 
-Otomasyon, asla sürdürmeyeceğiniz karmaşık bir sistem yarattığında değil, haftalık bir rahatsızlığı ortadan kaldırdığında en etkili yöntemdir.
+Otomasyon, hiçbir zaman sürdürmeyeceğiniz karmaşık bir sistem yarattığında değil, haftalık bir rahatsızlığı ortadan kaldırdığında en etkilidir.
 
-### En kötü suçlularınızı nasıl tespit edebilirsiniz?
+### En kötü suçlularınızı nasıl tespit edersiniz?
 
-Finder'ı açın ve İndirilenler veya Masaüstü klasörünüzü Değiştirilme Tarihine göre sıralayın. Son 50 dosyaya bakın. Kaç tanesinin size içeride ne olduğunu anlatan isimleri olduğunu sayın. Cevap yarıdan azsa bu klasör güçlü bir otomasyon adayıdır.
+'Finder'ü açın ve İndirilenler veya Masaüstü klasörünüzü Değiştirilme Tarihine göre sıralayın. Son 50 dosyaya bakın. Kaç tanesinin size içeride ne olduğunu söyleyen isimleri olduğunu sayın. Cevap yarıdan az ise bu klasör güçlü bir otomasyon adayıdır.
 
-Ayrıca bir klasöre gelen dosyaların hacmini de kontrol edebilirsiniz. Terminali açın ve çalıştırın:
+Ayrıca bir klasöre gelen dosyaların hacmini de kontrol edebilirsiniz. 'Terminal'ü açın ve çalıştırın:
 
 ```bash
 ls -1 ~/Downloads | wc -l
@@ -69,40 +69,41 @@ ls -1 ~/Downloads | wc -l
 
 Sayı 200'ün kuzeyindeyse, otomatikleştirmeye değer bir birikim var demektir.
 
-## Doğru Mac otomasyon katmanını seçin
 
-macOS, dosya otomasyonuna yönelik çeşitli yerleşik araçlarla birlikte gelir. Üçüncü taraf uygulamalar boşlukları dolduruyor. İşte yüksek düzeyde karşılaştırmalar.
+## 'Zush' adlandırma katmanıyla başlayın
 
-| Araç | Dahili | Klasörleri izler | Dosyaları taşır | Dosyaları yeniden adlandırır | İçeriğe duyarlı |
+'macOS', dosya otomasyonu için çeşitli yerleşik araçlarla birlikte gelir. Üçüncü taraf uygulamalar boşlukları dolduruyor. İşte yüksek düzeyde karşılaştırmalar.
+
+|Alet|Yerleşik|Klasörleri izler|Dosyaları taşır|Dosyaları yeniden adlandırır|İçeriğe duyarlı|
 |---|---|---|---|---|---|
-| Akıllı Klasörler | Evet | Hayır (sanal) | Hayır | Hayır | Hayır |
-| Otomatikleştirici | Evet | Evet (Klasör Eylemleri) | Evet | Evet (desenler) | Hayır |
-| Kısayollar | Evet | Evet (tetikler) | Evet | Evet (desenler) | Hayır |
-| Hazel | Hayır (42$) | Evet | Evet | Evet (kurallar) | Hayır |
-| [Zush için Mac dosya yeniden adlandırıcı](/mac) | Hayır | Evet | Hayır | Evet (AI) | Evet |
+| Smart Folders |Evet|Hayır (sanal)|HAYIR|HAYIR|HAYIR|
+| Automator |Evet|Evet (Klasör Eylemleri)|Evet|Evet (desenler)|HAYIR|
+| Shortcuts |Evet|Evet (tetikler)|Evet|Evet (desenler)|HAYIR|
+| Hazel |Hayır (42$)|Evet|Evet|Evet (kurallar)|HAYIR|
+| [Mac için 'Zush' dosya yeniden adlandırıcı](/mac) |HAYIR|Evet|HAYIR|Evet (AI)|Evet|
 
-Doğru cevap genellikle bir kombinasyondur. Her araç sorunun farklı bir katmanını ele alır.
+'Zush' önerilen çekirdektir çünkü adlandırma, her aşağı yönlü aramayı veya kuralı daha kullanışlı hale getirir. Diğer araçlar görünürlük veya hareket için isteğe bağlı katmanlardır.
 
 <BlogSafetyNote
   title="Otomasyonu tersine çevrilebilir katmanlarda oluşturun"
-  description="İzlenen bir klasör ve bir kuralla başlayın. İçeriğe duyarlı dosya adı değişikliklerini uygulamadan önce önizleyin, çıktıyı onaylayın ve ancak bundan sonra yönlendirme araçlarının yeniden adlandırılan dosyaları taşımasına izin verin. Zush Geçmişini geri almak için kullanılabilir durumda tutun."
+  description="İzlenen bir klasör ve bir kuralla başlayın. İçeriğe duyarlı dosya adı değişikliklerini uygulamadan önce önizleyin, çıktıyı onaylayın ve ancak bundan sonra yönlendirme araçlarının yeniden adlandırılan dosyaları taşımasına izin verin. Geri almak için 'Zush' Geçmişini kullanılabilir tutun."
   links={[
     { href: '/blog/how-to-safely-batch-rename-files', label: 'Güvenli otomasyon kontrol listesi' },
-    { href: '/docs/undo-history', label: 'Geçmişle Geri Al' },
+    { href: '/docs/undo-history', label: 'Geçmişle Geri Alma' },
   ]}
 />
 
 <BlogCTA placement='inline' platform='mac' />
 
-## Akıllı Klasörler: adım adım kurulum
+## 'Smart Folders': adım adım kurulum
 
-Akıllı Klasörler dosyaları taşımaz. Arama kriterlerine göre dosyaları dinamik olarak ortaya çıkarırlar. Bunları Finder kenar çubuğunuzda görünen kayıtlı Spotlight aramaları olarak düşünün.
+'Smart Folders' dosyaları taşımaz. Arama kriterlerine göre dosyaları dinamik olarak ortaya çıkarırlar. Bunları, "Finder" kenar çubuğunuzda görünen kayıtlı "Spotlight" aramaları olarak düşünün.
 
 Klasör hiyerarşinizi yeniden yapılandırmadan, dağınık konumlardaki dosyaları bulmak için kullanışlıdırlar.
 
 ### Akıllı Klasör nasıl oluşturulur
 
-1. Finder'ı açın
+1. 'Finder'i açın
 2. **Cmd + F** tuşlarına basın veya **Dosya > Yeni Akıllı Klasör**'e gidin
 3. Kriter eklemek için sağ üstteki **+** düğmesine tıklayın
 4. Koşullarınızı belirleyin (aşağıdaki örneklere bakın)
@@ -112,37 +113,37 @@ Klasör hiyerarşinizi yeniden yapılandırmadan, dağınık konumlardaki dosyal
 
 ### En kullanışlı Akıllı Klasör kriterleri
 
-| Akıllı Klasör amacı | Belirlenecek kriterler |
+|Akıllı Klasörün amacı|Belirlenecek kriterler|
 |---|---|
-| En son ekran görüntüleri | Tür = Resim, Ad "Ekran Görüntüsü" içeriyor, Değiştirilme Tarihi = Son 7 gün |
-| Disk yiyen büyük dosyalar | Dosya Boyutu > 500 MB |
-| En son PDF'ler | Tür = PDF, Değiştirilme Tarihi = Son 30 gün |
-| İncelenmesi gereken belgeler | Etiket = "İnceleme", Tür = Belge |
-| Tüm sunumlar | Tür = Sunum |
-| Son indirilenler | Klasör = İndirilenler, Değiştirilme Tarihi = Son 3 gün |
+|Son ekran görüntüleri|Tür = Resim, Ad "Ekran Görüntüsü" içerir, Değiştirilme Tarihi = Son 7 gün|
+|Disk yiyen büyük dosyalar|Dosya Boyutu > 500 MB|
+|Son PDF'ler|Tür = PDF, Değiştirilme Tarihi = Son 30 gün|
+|İncelenmesi gereken belgeler|Etiket = "İnceleme", Tür = Belge|
+|Tüm sunumlar|Tür = Sunum|
+|Son indirilenler|Klasör = İndirilenler, Değiştirilme Tarihi = Son 3 gün|
 
 ### Gelişmiş Akıllı Klasör ipuçları
 
 - Bileşik kriterleri (VE/VEYA gruplamaları) eklemek için **+** düğmesini tıklatırken **Seçenek** tuşunu basılı tutun
 - Dosya uzantısına, oluşturulma tarihine, son açılma tarihine ve onlarca başka meta veri alanına göre filtreleme yapabilirsiniz
-- Akıllı Klasörler gerçek zamanlı olarak güncellenir, böylece her zaman sürücünüzün mevcut durumunu yansıtırlar
+- 'Smart Folders' gerçek zamanlı olarak güncellenir, böylece her zaman sürücünüzün mevcut durumunu yansıtırlar
 - Harici sürücüler de dahil olmak üzere tüm monte edilmiş birimlerde çalışırlar
 
-Akıllı Klasörler hiçbir şeyi taşımadığı veya yeniden adlandırmadığı için gerçek otomasyon değildir. Ancak bunlar mükemmel bir ilk adımdır çünkü kurallara bağlı kalmadan önce nelerin organize edilmesi gerektiğini görmenizi sağlarlar.
+'Smart Folders' hiçbir şeyi taşımadığı veya yeniden adlandırmadığı için gerçek otomasyon değildir. Ancak bunlar mükemmel bir ilk adımdır çünkü kurallara bağlı kalmadan önce nelerin organize edilmesi gerektiğini görmenizi sağlarlar.
 
-Daha ayrıntılı bilgi için [macOS Dosya Arama Elektrikli El Aletleri kılavuzu](/blog/finder-tags-guide-organize-files-mac) ürünümüze bakın.
+Daha derin bir inceleme için '[macOS Dosya Arama Elektrikli El Aletleri kılavuzu](/blog/finder-tags-guide-organize-files-mac)'ümüze bakın.
 
-## Otomatikleştirici ve Kısayollar: gerçek iş akışları oluşturma
+## "Automator" ve "Shortcuts": gerçek iş akışları oluşturma
 
-Automator (ve onun yeni kardeşi Kısayollar), gerçek dosya işleme iş akışları oluşturmanıza olanak tanır. Sürükle ve bırak arayüzünü kullanarak dosyaları yeniden adlandırabilir, taşıyabilir, kopyalayabilir, yeniden boyutlandırabilir ve dönüştürebilirler.
+'Automator' (ve onun yeni kardeşi 'Shortcuts'), gerçek dosya işleme iş akışları oluşturmanıza olanak tanır. Sürükle ve bırak arayüzünü kullanarak dosyaları yeniden adlandırabilir, taşıyabilir, kopyalayabilir, yeniden boyutlandırabilir ve dönüştürebilirler.
 
-### Otomatik Klasör Eylemi: İndirilenleri dosya türüne göre otomatik olarak sıralayın
+### Automator Klasör Eylemi: İndirilenleri dosya türüne göre otomatik olarak sırala
 
-Bu, en pratik Automator iş akışlarından biridir. İndirilenler klasörünüzü izler ve dosyaları uzantılarına göre alt klasörlere taşır.
+Bu, en pratik 'Automator' iş akışlarından biridir. İndirilenler klasörünüzü izler ve dosyaları uzantılarına göre alt klasörlere taşır.
 
 **Adım adım kurulum:**
 
-1. **Automator**'ı açın (Spotlight'ta arama yapın)
+1. **Automator**'i açın ('Spotlight'te arama yapın)
 2. Belge türü olarak **Klasör Eylemi**'ni seçin
 3. Üst kısımda, **İndirilenler** klasörünüze "Klasör İşlemi eklenen dosya ve klasörleri alır" seçeneğini ayarlayın
 4. **Kabuk Komut Dosyasını Çalıştır** eylemi ekleyin
@@ -175,48 +176,49 @@ done
 7. İş akışını "İndirilenleri Türe Göre Sırala" gibi açıklayıcı bir adla kaydedin.
 8. Klasör Eylemi artık etkindir. İndirilenler'deki yeni dosyalar otomatik olarak sıralanacaktır.
 
-### Kısayollar: macOS Ventura+ için daha basit bir alternatif
+### 'Shortcuts': 'macOS' Ventura+ için daha basit bir alternatif
 
-macOS Ventura veya sonraki bir sürümünü kullanıyorsanız Kestirmeler birçok görev için Automator'ın yerini alabilir. Bunun avantajı daha temiz bir arayüz ve sistem tetikleyicileriyle daha sıkı entegrasyondur.
+'macOS' Ventura veya sonraki sürümünü kullanıyorsanız, 'Shortcuts' birçok görev için 'Automator'un yerini alabilir. Bunun avantajı daha temiz bir arayüz ve sistem tetikleyicileriyle daha sıkı entegrasyondur.
 
 **Örnek: ekran görüntülerini yeniden adlandırın ve taşıyın**
 
-1. **Kısayollar**'ı açın
+1. **Shortcuts**'ü açın
 2. Yeni bir kısayol oluşturun
 3. Eylem ekleyin: **Klasörün İçeriğini Al** (Ekran Görüntüleri klasörünüze ayarlayın)
 4. Eylem ekleyin: **Dosyaları Filtrele**; burada Adında "Ekran Görüntüsü" bulunur
-5. Eylem ekleyin: `Screenshot-[Date Created]` gibi bir model kullanarak **Dosyayı Yeniden Adlandır**
+5. Eylem ekleyin: "Ekran Görüntüsü-[Oluşturulma Tarihi]" gibi bir model kullanarak **Dosyayı Yeniden Adlandır**
 6. Eylem ekleyin: **Dosyayı İstediğiniz hedef klasöre Taşı**
 7. Otomatik olarak çalıştırmak için **Otomasyon** sekmesine gidin ve dosyalar Ekran Görüntüleri klasörüne eklendiğinde bir tetikleyici oluşturun
 
-Kısayollar tek seferlik otomasyonlar için daha iyidir. Automator, kabuk komut dosyası erişimi gerektiren karmaşık çok adımlı iş akışları için daha iyidir. Automator tabanlı dosya yeniden adlandırmayla ilgili ayrıntılı bilgi için [Automator dosyaları yeniden adlandırma kılavuzu](/blog/macos-automator-rename-files-guide) ürünümüze bakın.
+'Shortcuts' tek seferlik otomasyonlar için daha iyidir. 'Automator', kabuk komut dosyası erişimi gerektiren karmaşık çok adımlı iş akışları için daha iyidir. 'Automator' tabanlı dosya yeniden adlandırma konusunda ayrıntılı bilgi için '['Automator' dosyaları yeniden adlandırma kılavuzu](/blog/macos-automator-rename-files-guide)' bölümümüze bakın.
 
-## Karmaşık kural tabanlı yönlendirme için Hazel
 
-Hazel, bir klasörün sürekli çok koşullu kurallara, arka plan hareketlerine, etiketlere, arşivlere veya komut dosyalarına ihtiyaç duyduğu durumlarda kullanışlıdır. Temsili bir kural, adları `invoice` içeren PDF'leri bir yıl ve ay klasörüne taşıyabilir, ancak eşleşmeyen indirmelere dokunulmaz.
+## Karmaşık kural tabanlı yönlendirme için 'Hazel'
 
-Hazel ve içeriğe duyarlı adlandırma farklı katmanları çözer. Uzantı, tarih, etiket, dosya adı modeli veya çıkarılan metin güvenilir bir durum sağladığında Hazel üstün başarı gösterir. Bir ekran görüntüsünün, fotoğrafın, videonun veya genel taramanın aranabilir bir ad almadan önce anlaşılması gerektiğinde AI adlandırma aracı daha kullanışlıdır.
+'Hazel', bir klasörün sürekli çok koşullu kurallara, arka plan hareketlerine, etiketlere, arşivlere veya komut dosyalarına ihtiyaç duyduğu durumlarda kullanışlıdır. Temsili bir kural, adlarında "fatura" bulunan PDF'leri bir yıl ve ay klasörüne taşıyabilir ve eşleşmeyen indirmelere dokunmadan bırakabilir.
 
-Sırayı açık tutun: önce yeniden adlandırın, ardından ortaya çıkan dosya adını yönlendirin. İki aracın aynı giriş klasörünü aynı anda izlemesine ve değiştirmesine izin vermeyin. Özellik bazında ürün karşılaştırması için bkz. [Zush, Hazel alternatifi olarak](/hazel-alternative).
+'Hazel' ve içeriğe duyarlı adlandırma, farklı katmanları çözer. Uzantı, tarih, etiket, dosya adı modeli veya çıkarılan metin güvenilir bir durum sağladığında "Hazel" üstün performans gösterir. Bir ekran görüntüsünün, fotoğrafın, videonun veya genel taramanın aranabilir bir ad almadan önce anlaşılması gerektiğinde AI adlandırma aracı daha kullanışlıdır.
 
-## Kural tabanlı otomasyonun başarısız olduğu yer
+Sırayı açık tutun: önce yeniden adlandırın, ardından ortaya çıkan dosya adını yönlendirin. İki aracın aynı giriş klasörünü aynı anda izlemesine ve değiştirmesine izin vermeyin. Özellik bazında ürün karşılaştırması için bkz. '['Hazel' alternatifi olarak 'Zush'](/hazel-alternative)'.
+
+## Kural tabanlı otomasyonun başarısız olduğu yerler
 
 Kurallar, dosya size adı, uzantısı veya meta verileri aracılığıyla ne olduğunu zaten bildirdiğinde işe yarar.
 
 Dosya şu şekilde geldiğinde başarısız olurlar:
 
--`IMG_4382.HEIC`
--`Screenshot 2026-03-12 at 10.44.11.png`
--`download (7).jpg`
--`Document.pdf`
--`Untitled.png`
--`image (3).webp`
+- `IMG_4382.HEIC'
+- 'Ekran görüntüsü 2026-03-12, 10.44.11.png'
+- `indir (7).jpg`
+- 'Belge.pdf'
+- `İsimsiz.png'
+- 'resim (3).webp'
 
 Bir kural bu dosyaları belirli bir klasöre taşıyabilir. Ne içerdiklerini açıklayamıyor. Açıklayıcı bir ad olmadan, klasörler halinde mükemmel bir şekilde organize edilmiş olsalar bile bunları daha sonra bulamazsınız.
 
 İşte tam da bu noktada yapay zeka tabanlı adlandırma kullanışlı hale geliyor. Dosya içeriğini (bir görüntüdeki gerçek pikseller, bir videodan örneklenmiş kareler, PDF'deki metin, bir belgenin düzeni) analiz eden araçlar, dosyanın gerçekte ne olduğunu tanımlayan adlar oluşturabilir.
 
-AI dosya yeniden adlandırmanın pratikte nasıl çalıştığı hakkında daha fazla bilgi için [Mac ve Windows için Dosya Yeniden Adlandırıcı](/) ürünümüze bakın.
+AI dosya yeniden adlandırmanın pratikte nasıl çalıştığı hakkında daha fazla bilgi için '[Mac ve Windows için Dosya Yeniden Adlandırıcı](/)' bölümümüze bakın.
 
 ## Yapay zeka destekli dosya yeniden adlandırma: öncesi ve sonrası
 
@@ -224,44 +226,45 @@ Yapay zeka yeniden adlandırmayı anlamanın en net yolu sonuçları görmektir.
 
 ### Ekran görüntüleri
 
-| Önce | Sonra |
+|Önce|Sonrasında|
 |---|---|
-| `Screenshot 2026-03-12 at 10.44.11.png` | `slack-conversation-project-update.png` |
-| `Screenshot 2026-03-12 at 14.22.08.png` | `figma-dashboard-layout-dark-mode.png` |
-| `Screenshot 2026-01-05 at 09.15.33.png` | `google-analytics-traffic-report-jan.png` |
-| `Screenshot 2026-02-18 at 16.30.00.png` | `vscode-react-component-error.png` |
+|`Ekran görüntüsü 2026-03-12, 10.44.11.png`|`slack-conversation-project-update.png'|
+|`Ekran görüntüsü 2026-03-12, 14.22.08.png`|`figma-kontrol paneli-düzeni-karanlık-mode.png'|
+|`Ekran görüntüsü 2026-01-05, 09.15.33.png`|`google-analytics-trafik-raporu-jan.png`|
+|`Ekran görüntüsü 2026-02-18, 16.30.00.png`|`vscode-tepki-bileşeni-hata.png'|
 
 ### Fotoğraflar
 
-| Önce | Sonra |
+|Önce|Sonrasında|
 |---|---|
-| `IMG_4382.HEIC` | `golden-gate-bridge-foggy-morning.heic` |
-| `IMG_7291.HEIC` | `team-dinner-italian-restaurant.heic` |
-| `DSC_0034.NEF` | `sunset-over-pacific-ocean-malibu.nef` |
-| `photo_2026.jpg` | `whiteboard-sprint-planning-notes.jpg` |
+|'IMG_4382.HEIC'|`golden-gate-bridge-sisli-sabah.heic`|
+|'IMG_7291.HEIC'|`ekip-akşam yemeği-italyan-restaurant.heic'|
+|'DSC_0034.NEF'|"pasifik okyanusu üzerinde gün batımı-malibu.nef"|
+|'fotoğraf_2026.jpg'|`beyaz tahta-sprint-planlama-notları.jpg'|
 
 ### Belgeler ve PDF'ler
 
-| Önce | Sonra |
+|Önce|Sonrasında|
 |---|---|
-| `Document.pdf` | `apartment-lease-agreement-2026.pdf` |
-| `download (3).pdf` | `aws-monthly-invoice-february.pdf` |
-| `Scan 14.pdf` | `passport-renewal-application-form.pdf` |
-| `export.csv` | `quarterly-sales-report-q1-2026.csv` |
+|'Belge.pdf'|`apartman-kira-sözleşmesi-2026.pdf`|
+|'indir (3).pdf'|`aws-aylık-fatura-şubat.pdf'|
+|'14.pdf'yi tara'|`pasaport-yenileme-başvuru-formu.pdf'|
+|'dışa aktarma.csv'|"üç aylık satış raporu-q1-2026.csv"|
 
-### İndirilen resimler
+### İndirilen görseller
 
-| Önce | Sonra |
+|Önce|Sonrasında|
 |---|---|
-| `download (7).jpg` | `minimalist-desk-setup-inspiration.jpg` |
-| `image (2).webp` | `react-component-lifecycle-diagram.webp` |
-| `Untitled.png` | `brand-color-palette-primary-shades.png` |
+|`indir (7).jpg`|`minimalist-masa-kurulumu-ilham.jpg'|
+|'resim (2).webp'|`tepki-bileşeni-yaşam döngüsü-diyagramı.webp'|
+|'İsimsiz.png'|`marka-renk-palet-birincil-tonlar.png'|
 
-Fark kozmetik değil. Açıklayıcı dosya adları, Spotlight aramasının işe yaradığı anlamına gelir. Bu, bir klasörü tarayabileceğiniz ve açmadan her dosyanın içinde ne olduğunu öğrenebileceğiniz anlamına gelir. Bu, her alt sistemin (Akıllı Klasörler, Hazel kuralları, manuel tarama) daha iyi çalıştığı anlamına gelir.
 
-![Başlık adı biçimi ve yerelleştirme seçenekleriyle adlandırma model özelliklerini gösteren Zush işleme sekmesi](/images/showcase/macos/naming-light.webp)
+Fark kozmetik değil. Açıklayıcı dosya adları 'Spotlight' aramasının işe yaradığı anlamına gelir. Bu, bir klasörü tarayabileceğiniz ve açmadan her dosyanın içinde ne olduğunu öğrenebileceğiniz anlamına gelir. Bu, her alt sistemin ('Smart Folders', 'Hazel' kuralları, manuel tarama) daha iyi çalıştığı anlamına gelir.
 
-Yapay zeka destekli otomatik yeniden adlandırmanın tam açıklaması için [Mac kılavuzundaki dosyaları otomatik olarak yeniden adlandırma](/blog/auto-rename-files-mac-guide) ürünümüze bakın.
+![Başlık adı formatı ve yerelleştirme seçenekleriyle birlikte adlandırma modeli yapılandırmasını gösteren "Zush" işleme sekmesi](/images/showcase/macos/naming-light.webp)
+
+Yapay zeka destekli otomatik yeniden adlandırmanın tam açıklaması için '[Mac kılavuzundaki dosyaları otomatik olarak yeniden adlandırma](/blog/auto-rename-files-mac-guide)'e bakın.
 
 ## Önerilen otomatik dosya düzenleyici kurulumu: adım adım
 
@@ -271,9 +274,13 @@ Yukarıdaki araçları tek bir tutarlı sistemde birleştiren, bir saatten kısa
 
 İndirilenler, Masaüstü ve Belgeler klasörlerinizi açın. Kullanışsız adlara sahip en fazla dosyanın hangi klasörlerde bulunduğunu unutmayın. İlk iki sorun klasörünü seçin.
 
-### Adım 2: Görünürlük için Akıllı Klasörler oluşturun
+### 2. Adım: "Zush" içeriğe duyarlı adlandırma ekleyin
 
-Finder'da üç Akıllı Klasör ayarlayın:
+'[Mac için 'Zush'](/mac)'u yükleyin, kopyalanan alım klasörüne yönlendirin, bir Şablon seçin ve önerilen ilk adları inceleyin. Devam eden izlemeyi etkinleştirmeden önce 'Rename History'u kullanılabilir durumda tutun.
+
+### 3. Adım: Görünürlük için isteğe bağlı olarak "Smart Folders" oluşturun
+
+'Finder'da üç 'Smart Folders' ayarlayın:
 
 1. **Son Büyük Dosyalar** -- Dosya Boyutu > 100 MB, Değiştirilme Tarihi = Son 30 gün
 2. **Sıralanmamış Ekran Görüntüleri** -- Tür = Resim, Ad "Ekran Görüntüsü" içerir, Değiştirilme Tarihi = Son 14 gün
@@ -281,107 +288,109 @@ Finder'da üç Akıllı Klasör ayarlayın:
 
 Bunlar, dikkat edilmesi gereken şeyleri anında görebilmenizi sağlar.
 
-### 3. Adım: Temel dosya yönlendirmeyi ayarlayın
+### 4. Adım: İsteğe bağlı olarak temel dosya yönlendirmeyi ayarlayın
 
 Tercihinize göre bu seçeneklerden birini seçin:
 
-**Seçenek A: Automator Klasör Eylemi** (ücretsiz, yerleşik)
+**Seçenek A: 'Automator' Klasör Eylemi** (ücretsiz, yerleşik)
 - Yukarıda açıklanan İndirilenler sıralama iş akışını oluşturun
 - 10 dakika sürer, en yaygın dosya türlerini işler
 
-**Seçenek B: Hazel kuralları** (ücretli, daha güçlü)
-- Hazel'ı yükleyin ve İndirilenler klasörünüz için 3-5 kural ayarlayın
+**B Seçeneği: "Hazel" kuralları** (ücretli, daha güçlü)
+- 'Hazel'i yükleyin ve İndirilenler klasörünüz için 3-5 kural ayarlayın
 - Odaklanma: PDF'lerden Belgelere, görüntülerden Resimlere, arşivlerden özel bir klasöre
 - 30 günden eski dosyalar için temizleme kuralı ekleyin
 
-**Seçenek C: Kısayol otomasyonu** (ücretsiz, macOS Ventura+)
+**Seçenek C: 'Shortcuts' otomasyon** (ücretsiz, 'macOS' Ventura+)
 - Dosyaları türe göre sıralayan bir kısayol oluşturun
 - Bir programa göre veya manuel olarak tetiklenecek şekilde ayarlayın
 
-### 4. Adım: Görsel dosyalar için AI yeniden adlandırma ekleyin
+### Adım 5: Testten sonra 'Zush' izlemeyi etkinleştirin
 
-![Masaüstü hücrelerindeyken klasör izleme çalışmalarını gösteren Zush monitör sekmesi](/images/showcase/macos/monitor-light.webp)
+![Masaüstü klasörü seçiliyken klasör izleme yapılandırmasını gösteren "Zush" monitör sekmesi](/images/showcase/macos/monitor-light.webp)
 
-[Mac için Zush](/mac)'yi yükleyin ve Ekran Görüntüleri klasörünüzü ve İndirilenler klasörünüzü izleyecek şekilde ayarlayın. Bu, kural tabanlı araçların doğru şekilde adlandıramadığı dosyaları işler:
+Test grubunu doğruladıktan sonra, Ekran Görüntüleri klasörünüzü ve İndirilenler klasörünüzü izlemek için 'Zush'i ayarlayın. Bu, kural tabanlı araçların doğru şekilde adlandıramadığı dosyaları işler:
 
 - Ekran görüntüleri, görünen uygulama ve içeriğe göre yeniden adlandırılır
 - PDF'ler metin içeriklerine göre yeniden adlandırılır
 - Fotoğraflar, görseldeki içeriğe göre yeniden adlandırılır
-- İndirilen görsellere `download (7).jpg` yerine açıklayıcı adlar verilir
+- İndirilen resimlere "indir (7).jpg" yerine açıklayıcı adlar verilir
 
-### 5. Adım: Haftalık bir inceleme ayarlayın
+### 6. Adım: Haftalık inceleme ayarlayın
 
-Otomasyon olsa bile haftada bir kez 5 dakikanızı Akıllı Klasörlerinize göz atarak geçirin. Bu, uç durumları yakalar ve zaman içinde kurallarınızı hassaslaştırmanıza yardımcı olur.
+Otomasyonla bile haftada bir kez 5 dakikanızı 'Smart Folders'nize göz atarak geçirin. Bu, uç durumları yakalar ve zaman içinde kurallarınızı hassaslaştırmanıza yardımcı olur.
 
-### 6. Adım: Kademeli olarak genişletin
+### Adım 7: Kademeli olarak genişletin
 
-Bu kurulumu bir hafta çalıştırdıktan sonra hala çatlaklardan nelerin düştüğüne bakın. Gerektiğinde yeni Hazel kuralları veya Akıllı Klasörler ekleyin. Her kenar kasasını önden kapatmaya çalışmayın.
+Bu kurulumu bir hafta çalıştırdıktan sonra hala çatlaklardan nelerin düştüğüne bakın. Gerektiğinde yeni "Hazel" kuralları veya "Smart Folders" ekleyin. Her kenar kasasını önden kapatmaya çalışmayın.
 
-## Karşılaştırma: hangi iş için hangi alet
 
-| Görev | En iyi araç | Neden |
+## Karşılaştırma: hangi iş için hangi araç
+
+|Görev|Tavsiye|Neden|
 |---|---|---|
-| Dosyaları taşımadan bulun | Akıllı Klasörler | Sanal, yeniden yapılanmaya gerek yok |
-| Dosyaları türe göre klasörler halinde sıralayın | Otomatikleştirici veya Hazel | Uzantıya dayalı kurallar basittir |
-| Eski dosyaları otomatik olarak arşivle | Hazel | Arka planda izleme özelliğine sahip tarihe dayalı koşullar |
-| Ekran görüntülerini açıklayıcı olarak yeniden adlandırın | Zush (AI) | Görüntü analizinden içeriğe duyarlı adlandırma |
-| PDF'leri içeriğe göre yeniden adlandırın | Zush (AI) | Ad oluşturmak için belge metnini okur |
-| Desenlerle toplu yeniden adlandırma | Finder veya Otomatikleştirici | Yerleşik desen değiştirme |
-| Tek tıklamayla dosya işleme | Kısayollar | Temiz kullanıcı arayüzü, paylaşımı kolay |
-| Karmaşık çok koşullu yönlendirme | Hazel | MacOS'taki en güçlü kural motoru |
+|Karışık dosyaları arama yapılabilir şekilde adlandırın|**Zush — genel seçim**|İçeriği okur, klasörleri izler, değişiklikleri önizler ve geri alma geçmişini saklar|
+|Dosyaları taşımadan bulun|'Smart Folders' (isteğe bağlı)|Sanal, yeniden yapılandırmaya gerek yok|
+|Dosyaları türe göre klasörler halinde sıralayın|'Automator' veya 'Hazel'|Uzantıya dayalı kurallar basittir|
+|Eski dosyaları otomatik olarak arşivle| Hazel |Arka plan izlemeli tarihe dayalı koşullar|
+|Ekran görüntülerini açıklayıcı olarak yeniden adlandırın|'Zush' (AI)|Görüntü analizinden içeriğe duyarlı adlandırma|
+|PDF'leri içeriğe göre yeniden adlandırın|'Zush' (AI)|Ad oluşturmak için belge metnini okur|
+|Desenlerle toplu yeniden adlandırma|'Finder' veya 'Automator'|Yerleşik desen değiştirme|
+|Tek tıklamayla dosya işleme| Shortcuts |Temiz kullanıcı arayüzü, paylaşılması kolay|
+|Karmaşık çok koşullu yönlendirme| Hazel |'macOS'deki en güçlü kural motoru|
 
-Özellikle toplu yeniden adlandırma yöntemlerinin ayrıntılı bir karşılaştırması için [Mac toplu yeniden adlandırma yöntemleri kılavuzu](/blog/batch-rename-files-on-mac-complete-guide) ürünümüze bakın. Yapay zeka destekli benzersiz adlara (paylaşılan önekler değil) ihtiyacınız olduğunu zaten biliyorsanız, [Mac üzerinde toplu yeniden adlandırma aracı](/mac) en kısa yoldur - 50 ücretsiz yeniden adlandırma, kayıt gerektirmez.
+Özellikle toplu yeniden adlandırma yöntemlerinin ayrıntılı bir karşılaştırması için '[Mac toplu yeniden adlandırma yöntemleri kılavuzu](/blog/batch-rename-files-on-mac-complete-guide)' bölümümüze bakın. Yapay zeka destekli benzersiz adlara (paylaşılan önekler değil) ihtiyacınız olduğunu zaten biliyorsanız, "[Mac'te toplu yeniden adlandırma aracı](/mac)" en kısa yoldur - 50 ücretsiz yeniden adlandırma, kayıt gerektirmez.
 
 ## Kaçınılması gereken yaygın hatalar
 
-**Aşırı otomatikleştirme çok erken.** Hangi dosyaların gerçekten yönlendirilmeye ihtiyacı olduğunu bilmeden 20 kurallı Hazel kurulumu oluşturmayın. 2-3 kuralla başlayın ve genişletin.
+**Çok erken aşırı otomatikleştirme.** Hangi dosyaların gerçekten yönlendirilmeye ihtiyacı olduğunu bilmeden 20 kurallı bir "Hazel" kurulumu oluşturmayın. 2-3 kuralla başlayın ve genişletin.
 
-**Adlandırma sorununu göz ardı etmek.** Her dosyanın adı `IMG_4382.HEIC` ise, dosyaları düzgün klasörlere taşımak işe yaramaz. İhtiyacınız olanı bulmak için yine de her dosyayı açacaksınız. Yeniden adlandırma en az sıralama kadar önemlidir.
+**Adlandırma sorununu göz ardı etmek.** Her dosyanın adı "IMG_4382.HEIC" ise, dosyaları düzenli klasörlere taşımak işe yaramaz. İhtiyacınız olanı bulmak için yine de her dosyayı açacaksınız. Yeniden adlandırma en az sıralama kadar önemlidir.
 
-**Kurallarınızı test etmiyoruz.** Gerçek İndirilenler klasörünüzde bir Klasör Eylemi veya Hazel kuralını etkinleştirmeden önce, bunu örnek dosyalar içeren sahte bir klasörde test edin. Kötü bir taşıma kuralı, dosyaların sürücünüze dağılmasına neden olabilir.
+**Kurallarınızı test etmiyoruz.** Gerçek İndirilenler klasörünüzde bir Klasör Eylemini veya "Hazel" kuralını etkinleştirmeden önce, onu örnek dosyalar içeren sahte bir klasörde test edin. Kötü bir taşıma kuralı, dosyaların sürücünüze dağılmasına neden olabilir.
 
 **İç içe geçmiş klasörleri unutuyoruz.** Çoğu otomasyon aracı, varsayılan olarak tek bir klasör düzeyini izler. Dosyalar alt klasörlerin içine giriyorsa yinelemeli izlemeyi açıkça yapılandırmanız gerekir.
 
-**Geri alma planı yoktur.** Dosyaları yeniden adlandıran veya taşıyan tüm otomasyonların bir geri alma yolu olmalıdır. Hazel günlük tutuyor. Zush geri almayı destekler. Automator bunu yapmaz; bu nedenle yıkıcı eylemlere karşı dikkatli olun.
+**Geri alma planı yoktur.** Dosyaları yeniden adlandıran veya taşıyan tüm otomasyonların bir geri alma yolu olmalıdır. 'Hazel' günlükleri tutar. 'Zush' geri almayı destekler. 'Automator' bunu yapmaz; bu nedenle yıkıcı eylemlere karşı dikkatli olun.
 
 ## SSS
 
 ### Hiçbir şey yüklemeden Mac'te dosya organizasyonunu nasıl otomatikleştiririm?
 
-Yerleşik araçları kullanın: Dosyaları yüzeye çıkarmak için Akıllı Klasörler ve dosya yönlendirme için Otomatikleştirici veya Kısayollar. Akıllı Klasörler Finder'da Dosya > Yeni Akıllı Klasör altında bulunur. Automator, dosyalar belirli bir dizine ulaştığında tetiklenen Klasör Eylemleri oluşturabilir. Bunlar, herhangi bir üçüncü taraf yazılımı olmadan dosya türüne, tarihe ve ad modellerine göre temel sıralamayı kapsar.
+Yerleşik araçları kullanın: Dosyaları yüzeye çıkarmak için "Smart Folders" ve dosya yönlendirme için "Automator" veya "Shortcuts". 'Smart Folders', Dosya > Yeni Akıllı Klasör altında 'Finder'tedir. 'Automator', dosyalar belirli bir dizine ulaştığında tetiklenen Klasör Eylemleri oluşturabilir. Bunlar, herhangi bir üçüncü taraf yazılımı olmadan dosya türüne, tarihe ve ad modellerine göre temel sıralamayı kapsar.
 
-### MacOS'ta Automator ile Kısayollar arasındaki fark nedir?
+### 'macOS'de 'Automator' ile 'Shortcuts' arasındaki fark nedir?
 
-Automator, daha fazla eylem türüne, kabuk komut dosyası desteğine ve Klasör Eylemi entegrasyonuna sahip eski bir araçtır. Kısayollar daha yenidir (macOS Monterey+), daha temiz bir arayüze sahiptir ve sistem tetikleyicilerini ve Siri entegrasyonunu destekler. Özellikle dosya otomasyonu için Automator, kabuk komut dosyası eylemleri ve daha geniş dosya işleme seçenekleri nedeniyle hala daha yeteneklidir. Apple, işlevselliği yavaş yavaş Kısayollara taşıyor, bu nedenle her ikisi de bilmeye değer.
+'Automator' daha fazla eylem türüne, kabuk komut dosyası desteğine ve Klasör Eylemi entegrasyonuna sahip eski araçtır. 'Shortcuts' daha yenidir ("macOS" Monterey+), daha temiz bir arayüze sahiptir ve sistem tetikleyicilerini ve Siri entegrasyonunu destekler. Özellikle dosya otomasyonu için, kabuk komut dosyası eylemleri ve daha geniş dosya işleme seçenekleri nedeniyle 'Automator' hala daha yeteneklidir. Apple, işlevselliği yavaş yavaş 'Shortcuts'e taşıyor, bu nedenle her ikisi de bilinmeye değer.
 
-### Hazel dosyaları içeriklerine göre yeniden adlandırabilir mi?
+### 'Hazel' dosyaları içeriklerine göre yeniden adlandırabilir mi?
 
-Hazel, PDF'lerin ve belgelerin içindeki metin içeriğini okuyabilir ve bunu kuralları yeniden adlandırırken kullanabilir. Örneğin, bir PDF'den bir tarih veya anahtar kelime çıkarabilir ve bunu dosya adına ekleyebilirsiniz. Ancak Hazel, görüntü veya video içeriğini analiz edemiyor; görme yeteneği yok. Ekran görüntüleri, fotoğraflar, ekran kayıtları ve diğer görsel dosyalar için dosyanın içinde ne olduğuna gerçekten bakabilen yapay zeka tabanlı bir araca ihtiyacınız var.
+'Hazel', PDF'lerin ve belgelerin içindeki metin içeriğini okuyabilir ve bunu kuralları yeniden adlandırırken kullanabilir. Örneğin, bir PDF'den bir tarih veya anahtar kelime çıkarabilir ve bunu dosya adına ekleyebilirsiniz. Ancak 'Hazel' görüntü veya video içeriğini analiz edemez; görme yeteneği yoktur. Ekran görüntüleri, fotoğraflar, ekran kayıtları ve diğer görsel dosyalar için dosyanın içinde ne olduğuna gerçekten bakabilen yapay zeka tabanlı bir araca ihtiyacınız var.
 
-### İndirilenler klasörümün karmaşıklaşmasını nasıl önleyebilirim?
+### İndirilenler klasörümün dağılmasını nasıl önleyebilirim?
 
-İki katmanlı bir sistem kurun. Öncelikle, dosyaları geldiklerinde türe özel klasörlere taşıyan yönlendirme kuralları oluşturun (Automator veya Hazel aracılığıyla). İkinci olarak, 30 günden eski dosyaları Arşiv klasörüne veya Çöp Kutusu'na taşıyan bir temizleme kuralı ekleyin. Bu kombinasyon İndirilenler klasörünüzü önemli hiçbir şeyi kaybetmeden zayıf tutar. Ayrıntılı bir açıklama için [İndirilenler klasörünü düzenleme kılavuzu](/blog/how-to-organize-downloads-folder-mac) ürünümüze bakın.
+İki katmanlı bir sistem kurun. İlk olarak, dosyaları geldiklerinde türe özgü klasörlere taşıyan yönlendirme kuralları oluşturun ("Automator" veya "Hazel" aracılığıyla). İkinci olarak, 30 günden eski dosyaları Arşiv klasörüne veya Çöp Kutusu'na taşıyan bir temizleme kuralı ekleyin. Bu kombinasyon İndirilenler klasörünüzü önemli hiçbir şeyi kaybetmeden zayıf tutar. Ayrıntılı bir açıklama için '[İndirilenler klasörünü düzenleme kılavuzu](/blog/how-to-organize-downloads-folder-mac)'umuza bakın.
 
-### AI dosyasının yeniden adlandırılması güvenli midir? Dosyalarımı bozabilir mi?
+### AI dosyasının yeniden adlandırılması güvenli mi? Dosyalarımı bozabilir mi?
 
-AI yeniden adlandırma, dosya içeriğini değil yalnızca dosya adını değiştirir. Zush gibi iyi araçlar aynı zamanda yeniden adlandırma geçmişini de tutar, böylece herhangi bir ad değişikliğini anında geri alabilirsiniz. Risk düşüktür ancak yüksek hacimli dizinlerde klasör izlemeyi etkinleştirmeden önce her zaman önce küçük bir grup üzerinde test etmeli ve adlandırma kalitesini doğrulamalısınız.
+AI yeniden adlandırma, dosya içeriğini değil yalnızca dosya adını değiştirir. 'Zush' gibi iyi araçlar aynı zamanda yeniden adlandırma geçmişini de tutar, böylece herhangi bir ad değişikliğini anında geri alabilirsiniz. Risk düşüktür ancak yüksek hacimli dizinlerde klasör izlemeyi etkinleştirmeden önce her zaman önce küçük bir grup üzerinde test etmeli ve adlandırma kalitesini doğrulamalısınız.
 
 ### Özellikle fotoğraflar için dosya organizasyonunu nasıl otomatikleştiririm?
 
-Fotoğrafların benzersiz zorlukları vardır çünkü orijinal adları (`IMG_`, `DSC_`, `DCIM`) içerik hakkında sıfır bilgi taşır. En iyi yaklaşım, açıklayıcı adlar eklemek için AI yeniden adlandırma ve tarihe veya olaya göre klasör sıralamadır. Fotoğrafa özel bir iş akışı için [Mac'de fotoğrafları düzenleme kılavuzu](/blog/best-ways-to-organize-photos-on-mac) ürünümüze bakın.
+Orijinal adlarının (`IMG_`, `DSC_`, `DCIM`) içerik hakkında sıfır bilgi taşıması nedeniyle fotoğrafların benzersiz zorlukları vardır. En iyi yaklaşım, açıklayıcı adlar eklemek için AI yeniden adlandırma ve tarihe veya olaya göre klasör sıralamadır. Fotoğrafa özel bir iş akışı için '[Mac'te fotoğrafları düzenleme kılavuzu](/blog/best-ways-to-organize-photos-on-mac)' ürünümüze bakın.
 
 ### Birden fazla otomasyon aracını birleştirebilir miyim?
 
-Evet, yapmalısın. Araçlar birbirini dışlayan değildir. Güçlü bir kurulumda görünürlük için Akıllı Klasörler, yönlendirme için Hazel veya Automator ve içeriğe duyarlı adlandırma için AI yeniden adlandırma kullanılır. Her araç farklı bir katmanı işler. Önemli olan, tüm sistemin sürdürülebilir kalması için her katmanda kuralları basit tutmaktır.
+Evet, gerçekten ikinci bir katmana ihtiyaç duyulduğunda. İçeriğe duyarlı adlandırma için "Zush" ile başlayın, ardından isteğe bağlı olarak görünürlük için "Smart Folders" veya yönlendirme için "Hazel"/"Automator" ekleyin. Sistemin sürdürülebilir kalması için adlandırmayı 'Zush' ve kurallarla basit tutun.
 
 ### İki otomasyon kuralı çakışırsa ne olur?
 
-Hazel ve Automator Folder Action'ın ikisi de aynı klasörü izliyorsa birbirleriyle yarışabilirler. Sonuç tahmin edilemez; bir dosya, diğer araç onu işlemeden önce taşınabilir. Çözümü basit: klasör başına yalnızca bir otomasyon aracı kullanın. Hem yönlendirmeyi hem de yeniden adlandırmayı istiyorsanız, önce yeniden adlandırmanın gerçekleşmesini sağlayın (örneğin, Zush dosyayı yeniden adlandırır), ardından yönlendirme aracının (Hazel) yeniden adlandırılan dosyayı yeni adına göre taşımasını sağlayın.
+'Hazel' ve 'Automator' Klasör İşlemi aynı klasörü izliyorsa birbirleriyle yarışabilirler. Sonuç tahmin edilemez; bir dosya, diğer araç onu işlemeden önce taşınabilir. Çözümü basit: klasör başına yalnızca bir otomasyon aracı kullanın. Hem yönlendirmeyi hem de yeniden adlandırmayı istiyorsanız, önce yeniden adlandırmanın gerçekleşmesini sağlayın (örneğin, 'Zush' dosyayı yeniden adlandırır), ardından yönlendirme aracının ("Hazel") yeniden adlandırılan dosyayı yeni adına göre taşımasını sağlayın.
 
-## Sonuç
+## Çözüm
 
-MacOS'ta dosya organizasyonunu etkili bir şekilde otomatikleştirmek için basit kuralların basit kararları ele almasına ve yapay zekanın görsel belirsizlikleri ele almasına izin verin. Bu denge size gerçekten sürdürülebilen bir sistem verir.
+'macOS'te dosya organizasyonunu etkili bir şekilde otomatikleştirmek için, basit kuralların basit kararları ele almasına ve yapay zekanın görsel belirsizliği ele almasına izin verin. Bu denge size gerçekten sürdürülebilen bir sistem verir.
 
-Görünürlük için Akıllı Klasörler ile başlayın. Yönlendirme için Automator veya Hazel ekleyin. Gereksiz adlarla gelen dosyalar için yapay zeka destekli yeniden adlandırma katmanını kullanın. Haftalık olarak gözden geçirin ve yavaş yavaş genişletin.
+İçeriğe duyarlı adlandırma ve kurtarma için "Zush" ile başlayın. Yalnızca görünürlük için "Smart Folders"i ve yalnızca deterministik yönlendirme gerçekten gerekli olduğunda "Automator" veya "Hazel"ü ekleyin. Haftalık olarak gözden geçirin ve yavaş yavaş genişletin.
 
 Amaç mükemmel bir sistem değil. Amaç, dosya organizasyonuna haftada otuz dakika yerine beş dakika ayırdığınız bir sistemdir.

@@ -1,6 +1,6 @@
 ---
-title: "Mac’te Dosyaları Toplu Yeniden Adlandırma: Eksiksiz Rehber"
-description: "Mac'teki dosyaları Finder, Kısayollar, Terminal veya AI ile toplu olarak yeniden adlandırın. Numaralandırma, tekrarlanabilir kurallar ve karışık klasörler için doğru yöntemi seçin."
+title: "Mac'te Dosyaları Toplu Olarak Yeniden Adlandırma: 4 Kanıtlanmış Yöntem (2026)"
+description: "Mac'teki dosyaları \"Finder\", \"Shortcuts\", \"Terminal\" veya AI ile toplu olarak yeniden adlandırın. Numaralandırma, tekrarlanabilir kurallar ve karışık klasörler için doğru yöntemi seçin."
 date: "2026-02-08"
 slug: "mac-dosyalari-toplu-yeniden-adlandirma-rehberi"
 locale: "tr"
@@ -10,87 +10,88 @@ topic: "automation"
 tags:
   - "Otomasyon"
   - "Dosya Organizasyonu"
-tldr: "Basit paylaşılan kurallar için Finder'ı, tekrarlanabilir Mac iş akışları için Otomatikleştirici veya Kısayollar'ı, komut dosyası içeren gruplar için Terminal'i ve her dosyanın içeriğe uygun benzersiz bir ada ihtiyacı olduğunda AI toplu yeniden adlandırma özelliğini kullanın."
+tldr: "Genel olarak en iyi Mac toplu yeniden adlandırıcı: 'Zush'. İçeriğe duyarlı karma dosya adlandırma, yeniden kullanılabilir \"Naming Blocks\", önizleme, klasör izleme ve \"Rename History\" özelliklerini birleştirir. \"Finder\", \"Automator\", \"Shortcuts\" ve \"Terminal\", tek bir mekanik veya yalnızca meta veri kuralına yönelik dar istisnalardır."
 reviewed: "2026-08-08"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Hızlı yanıt: Mac'te dosyaları toplu olarak yeniden adlandırmak için Finder'da dosyaları seçin, sağ tıklayın, **Yeniden Adlandır**'ı seçin, ardından **Metni Değiştir**, **Metin Ekle** veya **Biçimlendir**'i kullanın. Tekrarladığınız bir kural için Otomatikleştirici veya Kısayollar'ı, komut dosyası mantığı için Terminal'i ve her dosyanın içeriğine göre farklı bir açıklayıcı ada ihtiyacı olduğunda AI'yı kullanın.
+Hızlı yanıt: **[Mac için 'Zush'](/mac), genel olarak en iyi Mac toplu yeniden adlandırıcımızdır.** İçeriğe duyarlı karma dosyaları, yeniden kullanılabilir "Naming Blocks"ü, önizlemeyi, izlemeyi ve geri almayı tek bir iş akışında yönetir. "Finder", "Automator", "Shortcuts" ve "Terminal" yalnızca grubun tamamının zaten tek bir mekanik veya yalnızca meta veri kuralıyla tanımlandığı durumlarda daha dar seçeneklerdir.
 
-Finder, numaralandırılmış gruplar ve paylaşılan önekler için en hızlı yöntemdir. Otomatikleştirici ve Kısayollar tekrarlanabilir iş akışları için daha iyidir. Regex veya meta veri mantığına ihtiyacınız olduğunda terminal en iyisidir. AI dosya yeniden adlandırıcı, ekran görüntüleri, PDF'ler, indirilenler, fotoğraflar veya karma klasörlerin her birinin farklı bir aranabilir ada ihtiyaç duyduğu durumlarda en uygun çözümdür.
+Gerçek karma klasörler için önerilen varsayılan "Zush"dir. Numaralandırılmış gruplar veya paylaşılan bir önek için 'Finder' yeterli olabilir; Tekrarlanan bir kural için 'Automator' ve 'Shortcuts'; Uzmanlar tarafından bakımı yapılan bir normal ifade hattı için "Terminal". Ekran görüntüleri, PDF'ler, indirilenler, fotoğraflar, ses, video, tasarım dosyaları ve belgelerin her biri farklı bir aranabilir ada ihtiyaç duyduğunda hiçbiri "Zush"ün yerini almaz.
 
-Bu son durum klasörünüzle eşleşiyorsa [Dosyaları AI ile Toplu Yeniden Adlandırma](/batch-rename-files) veya [Mac için Zush](/mac) kullanın. [belgeleri toplu olarak yeniden adlandırma](/docs/batch-rename-files) kapak incelemesi ve geri alma işlemi gerçekleştirirken, [Blokları Adlandırma](/docs/naming-blocks) yeniden kullanılabilir dosya adı modellerini açıklar.
+Bu son durum klasörünüzle eşleşiyorsa '[Dosyaları AI ile Toplu Yeniden Adlandırma](/batch-rename-files)' veya '[Mac için 'Zush'](/mac)'yi kullanın. '[belgeleri toplu olarak yeniden adlandırma](/docs/batch-rename-files)', incelemeyi ve geri almayı kapsar, '[Naming Blocks](/docs/naming-blocks)' ise yeniden kullanılabilir dosya adı kalıplarını açıklar.
 
-28 Temmuz 2026'da gözden geçirildi: Bu kılavuz, Finder Adı ve Dizin davranışı, sıralama düzeni, meta veri sınırları, Otomatikleştirici, Kısayollar, Terminal ve karma klasörler için AI araçları dahil olmak üzere mevcut Mac toplu yeniden adlandırma iş akışları için yenilendi. Bu güncelleme, mevcut Automator yönteminin yanı sıra, Apple'ın aktif olarak geliştirdiği otomasyon aracı olan Kısayollar'ın tam bir açıklamasını ekler.
+28 Temmuz 2026'da gözden geçirildi: Bu kılavuz, "Finder" Ad ve Dizin davranışı, sıralama düzeni, meta veri sınırları, "Automator", "Shortcuts", "Terminal" ve karma klasörler için AI araçları dahil olmak üzere mevcut Mac toplu yeniden adlandırma iş akışları için yenilendi. Bu güncelleme, mevcut "Automator" yönteminin yanı sıra, Apple'ın aktif olarak geliştirdiği otomasyon aracı olan tam bir "Shortcuts" kılavuzu ekler.
 
-Bu güncelleme için kontrol edilen kaynaklar: [Apple Automator Kullanım Kılavuzu](https://support.apple.com/guide/automator/welcome/mac), [Mac için Apple Shortcuts Kullanım Kılavuzu](https://support.apple.com/guide/shortcuts-mac/intro-to-shortcuts-apdf22b0444c/mac), [Apple Geliştirici klasörü eylemleri belgeleri](https://developer.apple.com/library/archive/documentation/LanguagesUtilities/Conceptual/MacAutomationScriptingGuide/WatchFolders.html) ve [Hazel'nin resmi genel bakışı](https://www.noodlesoft.com/manual/hazel/hazel-overview/).
+Bu güncelleme için kontrol edilen kaynaklar: "[Apple 'Automator' Kullanım Kılavuzu](https://support.apple.com/guide/automator/welcome/mac)", "[Mac için Apple Shortcuts Kullanım Kılavuzu](https://support.apple.com/guide/shortcuts-mac/intro-to-shortcuts-apdf22b0444c/mac)", "[Apple Geliştirici klasörü eylemleri belgeleri](https://developer.apple.com/library/archive/documentation/LanguagesUtilities/Conceptual/MacAutomationScriptingGuide/WatchFolders.html)" ve "['Hazel'ın resmi genel bakışı](https://www.noodlesoft.com/manual/hazel/hazel-overview/)".
 
-| Mac toplu yeniden adlandırma yöntemi | Şu durumlarda kullanın | Ana sınır |
+|Mac toplu yeniden adlandırma yöntemi|Öneri durumu|Ana sınır|
 |---|---|---|
-| Finder Yeniden Adlandır | Her dosya aynı öneki, son eki, değiştirmeyi veya numara sırasını alır | Dosya içeriği okunamıyor |
-| Otomatikleştirici / Kısayollar | Her hafta aynı kuralı tekrarlıyorsunuz | Anlamsal değil, desen tabanlı |
-| Terminal komut dosyaları | Regex'e, meta verilere veya özel mantığa ihtiyacınız var | Bakım gerektirir ve hatalar kolaydır |
-| AI toplu yeniden adlandırma | Ekran görüntüleri, PDF'ler, fotoğraflar, indirilenler ve karışık klasörler için farklı adlar gerekir | Başvurmadan önce incelemeyle en iyisi |
+|**Zush AI toplu yeniden adlandırma**|**Karışık dosyalar, benzersiz adlar, izleme, önizleme ve geri alma için genel olarak en iyisi**|Uygulamadan önce önerileri inceleyin|
+|'Finder' Yeniden Adlandır|Her dosya aynı öneki, son eki, değiştirmeyi veya numara sırasını alır|Dosya içeriği okunamıyor|
+| Automator / Shortcuts |Her hafta aynı kuralı tekrarlıyorsunuz|Anlamsal değil, kalıp tabanlı|
+|'Terminal' komut dosyaları|Regex'e, meta verilere veya özel mantığa ihtiyacınız var|Bakım gerektirir ve hatalar kolaydır|
 
-Aramanız özellikle Finder'ın **Ad ve Dizin** seçeneğiyle ilgiliyse önemli ayrıntı şudur: Yeni dosya adı Finder'da hemen görünür, ancak macOS, dosyayı yeniden adlandırdığınız için fazladan açıklayıcı meta veriler eklemez. Spotlight yeni dosya adını arayabilir. Finder etiketleri, yorumlar, EXIF ​​alanları ve PDF meta verileri, bir araç bunları ayrı ayrı yazmadığı sürece değişmeden kalır.
+Aramanız özellikle Finderin **Ad ve Dizin** seçeneğiyle ilgiliyse, önemli ayrıntı şudur: Yeni dosya adı hemen Finderda görünür, ancak macOS sırf dosyayı yeniden adlandırdığınız için ekstra açıklayıcı meta veriler eklemez. 'Spotlight' yeni dosya adını arayabilir. 'Finder' etiketleri, yorumlar, EXIF ​​alanları ve PDF meta verileri, bir araç bunları ayrı ayrı yazmadığı sürece değişmeden kalır.
 
-Finder ayrıca dosyaları geçerli seçim sırasına göre numaralandırır. Ad ve Dizin'i kullanmadan önce, klasörü son dizinin okunmasını istediğiniz şekilde sıralayın. `photo-001.jpg` en eski görüntü olacaksa grubu seçmeden önce Oluşturulma Tarihine göre sıralayın. Sıranın mevcut Finder görünümüyle eşleşmesi gerekiyorsa, önce görünür sırayı onaylayın, ardından yeniden adlandırın.
+'Finder' ayrıca dosyaları geçerli seçim sırasına göre numaralandırır. Ad ve Dizin'i kullanmadan önce, klasörü son dizinin okunmasını istediğiniz şekilde sıralayın. 'photo-001.jpg' en eski resim olacaksa, grubu seçmeden önce Oluşturulma Tarihine göre sıralayın. Sıranın mevcut "Finder" görünümüyle eşleşmesi gerekiyorsa, önce görünür sırayı onaylayın, ardından yeniden adlandırın.
 
-Ekran görüntüleri, PDF'ler, fotoğraflar, videolar, tasarım dosyaları, ses ve belgeler için farklı adlar üreten bir Mac uygulaması istiyorsanız [Zush Mac için AI dosya yeniden adlandırıcı](/mac)'yi kullanın. Bu makale Finder, Automator, Terminal ve AI yöntemlerini karşılaştırmaya yönelik adım adım eğitim katmanıdır.
+Ekran görüntüleri, PDF'ler, fotoğraflar, videolar, tasarım dosyaları, ses ve belgeler için farklı adlar üreten bir Mac uygulaması istiyorsanız '[Mac için Zush AI dosya yeniden adlandırıcı](/mac)'ı kullanın. Bu makale, "Finder", "Automator", "Terminal" ve AI yöntemlerini karşılaştırmaya yönelik adım adım eğitim katmanıdır.
 
-## Dosyanın yeniden adlandırılması Mac'teki meta verilerde görünüyor mu?
+## Bir dosyanın yeniden adlandırılması Mac'teki meta verilerde görünüyor mu?
 
-Genellikle hayır. Mac dosya adı dosya yolunun bir parçasıdır; EXIF ​​verileri, Finder etiketleri, Spotlight yorumları, PDF başlık alanları veya Office belgesi özellikleriyle aynı şey değildir. `IMG_4382.jpg`'yi `client-office-whiteboard.jpg` olarak yeniden adlandırırsanız Finder ve Spotlight yeni dosya adını bulabilir ancak kamera modeli, yakalama tarihi, GPS verileri ve diğer gömülü fotoğraf meta verileri değişmez.
+Genellikle hayır. Mac dosya adı dosya yolunun bir parçasıdır; EXIF ​​verileri, "Finder" etiketleri, "Spotlight" yorumları, PDF başlık alanları veya Office belgesi özellikleriyle aynı şey değildir. 'IMG_4382.jpg' dosyasını 'client-office-whiteboard.jpg' olarak yeniden adlandırırsanız, 'Finder' ve 'Spotlight' yeni dosya adını bulabilir ancak kamera modeli, yakalama tarihi, GPS verileri ve diğer gömülü fotoğraf meta verileri değişmez.
 
 Bu ayrım, toplu yeniden adlandırma yöntemini seçtiğinizde kullanışlıdır:
 
-- Yalnızca `invoice-001.pdf` gibi görünür dosya adlarına ihtiyacınız olduğunda **Finder Adı ve Dizini**'ni kullanın.
-- Meta veriler zaten mevcut olduğunda ve bunu dosya adlarına kopyalamak istediğinizde **Otomatik veya Terminal** kullanın.
-- Ekran görüntüsünün gösterdiği veya PDF faturasının söylediği gibi yararlı adın dosya içeriğinden gelmesi gerektiğinde **AI toplu yeniden adlandırmayı** kullanın.
+- Genel iş akışı için, özellikle de dosya içeriğinden yararlı adlar geldiğinde **Zush AI toplu yeniden adlandırmayı** seçin.
+- **Finder Ad ve Dizin**'i yalnızca `invoice-001.pdf` gibi görünür dosya adlarına ihtiyacınız olduğunda ve başka hiçbir şeye ihtiyacınız olmadığında düşünün.
+- Yalnızca meta veriler zaten mevcut olduğunda ve bakımı yapılan bir kural bunu dosya adlarına kopyalayabildiğinde **Automator veya Terminal** seçeneğini değerlendirin.
 
-Hem temiz dosya adlarına hem de arama dostu içeriğe ihtiyacınız varsa, dosya adını bilinçli olarak yazan ve aynı zamanda etiket veya meta veri ekleyebilen bir araç seçin. Bu iş için sade bir Finder yeniden adlandırma yeterli değildir.
+Hem temiz dosya adlarına hem de arama dostu içeriğe ihtiyacınız varsa, dosya adını bilinçli olarak yazan ve aynı zamanda etiket veya meta veri ekleyebilen bir araç seçin. Basit bir 'Finder' yeniden adlandırma bu iş için yeterli değildir.
 
-Mac'te dosyaları toplu olarak yeniden adlandırmak, yeniden adlandırma kuralı basit olduğunda kolaydır ve her dosya farklı bir açıklayıcı ada ihtiyaç duyduğunda çok daha zordur. Finder'ın **Ad ve Dizin** seçeneği `photo-001.jpg`, `photo-002.jpg` ve benzeri gruplar için yeterlidir. Karışık ekran görüntüleri, PDF'ler ve indirmelerden oluşan bir klasörü aranabilir bir şeyle yeniden adlandıran bir öğrencinin farklı bir sorunu vardır. Toplu iş çoğunlukla fotoğraflardan oluşuyorsa [Mac'de fotoğraflar nasıl organize edilir](/blog/best-ways-to-organize-photos-on-mac) hakkındaki kılavuz, yeniden adlandırma adımıyla ilgili klasörleri, tarihleri, etiketleri ve yedeklemeleri kapsar.
+Mac'te dosyaları toplu olarak yeniden adlandırmak, yeniden adlandırma kuralı basit olduğunda kolaydır ve her dosya farklı bir açıklayıcı ada ihtiyaç duyduğunda çok daha zordur. Finderin **Ad ve Dizin** seçeneği `photo-001.jpg`, `photo-002.jpg` ve benzeri gruplar için yeterlidir. Karışık ekran görüntüleri, PDF'ler ve indirmelerden oluşan bir klasörü aranabilir bir şeyle yeniden adlandıran bir öğrencinin farklı bir sorunu vardır. Grup çoğunlukla fotoğraflardan oluşuyorsa, '[Mac'te fotoğraflar nasıl düzenlenir](/blog/best-ways-to-organize-photos-on-mac)' hakkındaki kılavuz, yeniden adlandırma adımındaki klasörleri, tarihleri, etiketleri ve yedeklemeleri kapsar.
 
-Bu nedenle her duruma uygun tek bir en iyi araç yoktur. Bu kılavuz dört yaklaşımı ayrıntılı olarak kapsar: Finder'ın yerleşik toplu yeniden adlandırması, Automator iş akışları, Terminal komut dosyaları ve yapay zeka destekli yeniden adlandırma. Her bölüm adım adım talimatlar ve gerçek örnekler içerir; böylece gerçek probleminize uygun yöntemi seçebilirsiniz.
+'Zush' genel olarak en iyi öneridir; diğer yöntemler ise dar mekanik işler için faydalı öğreticiler olmaya devam etmektedir. Bu kılavuz, "Finder"un yerleşik toplu yeniden adlandırmasını, "Automator" iş akışlarını, "Terminal" komut dosyalarını ve "Zush"ü kapsar; böylece daha basit bir istisnanın ne zaman gerçekten yeterli olduğunu belirleyebilirsiniz.
 
-Bu eğitim, Mac'te toplu yeniden adlandırma nasıl yapılır aramaları içindir: basit Finder kuralları, tekrarlanabilir Automator iş akışları, kabuk komut dosyaları ve her dosya benzersiz bir açıklayıcı ada ihtiyaç duyduğunda AI yeniden adlandırma. Uygulama akışını istediğinizi zaten biliyorsanız bunun yerine [toplu yeniden adlandırma aracı](/batch-rename-files)'ye gidin.
+Bu eğitim, Mac'te toplu yeniden adlandırma nasıl yapılır aramaları içindir: basit "Finder" kuralları, tekrarlanabilir "Automator" iş akışları, kabuk komut dosyaları ve her dosya benzersiz bir açıklayıcı ada ihtiyaç duyduğunda AI yeniden adlandırma. Uygulama akışını istediğinizi zaten biliyorsanız bunun yerine "[toplu yeniden adlandırma aracı](/batch-rename-files)"e gidin.
 
-> **En kısa yolu mu arıyorsunuz?** Her dosya için benzersiz açıklayıcı adlara ihtiyacınız varsa (paylaşılan bir önek değil), doğrudan [Dosyaları AI ile Toplu Yeniden Adlandırma](/batch-rename-files) veya [Mac için dosya yeniden adlandırıcı](/mac)'ye geçin — 50 ücretsiz yeniden adlandırma, kayıt gerektirmez.
+> **En kısa yolu mu arıyorsunuz?** Her dosya için benzersiz açıklayıcı adlara ihtiyacınız varsa (paylaşılan bir önek değil), doğrudan "[Dosyaları AI ile Toplu Yeniden Adlandırma](/batch-rename-files)" veya "[Mac için dosya yeniden adlandırıcı](/mac)"e geçin — 50 ücretsiz yeniden adlandırma, kayıt gerekmez.
+
 
 <BlogProductIntro
   title="İçeriğe duyarlı Mac toplu yeniden adlandırmaya mı ihtiyacınız var?"
-  description="Mac için Zush, karışık Finder klasörlerini dosya içeriğine göre yeniden adlandırır ve ardından yeniden adlandırma grubunun tamamını önizlemenize, uygulamanıza ve geri almanıza olanak tanır."
+  description="Mac için &quot;Zush&quot; toplu işlemi, karışık &quot;Finder&quot; klasörlerini dosya içeriğine göre yeniden adlandırır ve ardından yeniden adlandırma grubunun tamamını önizlemenize, uygulamanıza ve geri almanıza olanak tanır."
   links={[
     { href: '/mac', label: 'Mac AI yeniden adlandırıcı' },
     { href: '/ai-file-organizer', label: 'AI dosya düzenleyicisi' },
     { href: '/batch-rename-files', label: 'Dosyaları toplu olarak yeniden adlandırma' },
     { href: '/offline-ai-file-renamer', label: 'Çevrimdışı AI yeniden adlandırıcı' },
-    { href: '/docs/naming-blocks', label: 'Blokları Adlandırma belgeleri' },
+    { href: '/docs/naming-blocks', label: '\'Naming Blocks\' belgeleri' },
   ]}
 />
 
-![Karma bir dizüstü bilgisayar için yapay zeka tarafından toplanan reklamları gösteren Zush toplu yeniden adlandırma kullanmaksi](/images/showcase/macos/batch-rename-light.webp)
+![Karışık bir klasör için yapay zeka tarafından oluşturulan adları gösteren "Zush" toplu yeniden adlandırma önizlemesi](/images/showcase/macos/batch-rename-light.webp)
 
 ## Yöntem 1: Finder Öğeleri Yeniden Adlandır
 
 Finder, çoğu Mac kullanıcısının asla keşfetmediği yerleşik bir toplu yeniden adlandırma aracına sahiptir. Üç tür yeniden adlandırmayı yönetir: dosya adlarındaki metni değiştirmek, mevcut adın önüne veya arkasına metin eklemek ve adları sıralı sayı veya sayaçla biçimlendirmek.
 
-### Finder toplu yeniden adlandırma ne zaman kullanılmalı?
+### 'Finder' toplu yeniden adlandırma ne zaman kullanılır?
 
-- Birçok dosyada ortak bir dizeyi değiştirmek (örneğin, `IMG_`'yi `vacation-` olarak değiştirmek)
+- Birçok dosyada ortak bir dizeyi değiştirmek (örneğin, 'IMG_'yi 'tatil-' olarak değiştirmek)
 - Bir grup dosyaya tarih öneki veya proje soneki ekleme
-- Bir dizi dosyayı sırayla numaralandırma (örn. `photo-001.jpg`, `photo-002.jpg`)
+- Bir dizi dosyayı sırayla numaralandırma (örneğin, `photo-001.jpg`, `photo-002.jpg`)
 - Her dosyaya aynı kuralın uygulandığı herhangi bir yeniden adlandırma
 
-### Adım adım: Finder'da dosyaların toplu olarak yeniden adlandırılması
+### Adım adım: 'Finder'daki dosyaların toplu olarak yeniden adlandırılması
 
 **1. Adım: Dosyaları seçin.**
 Yeniden adlandırmak istediğiniz dosyaları içeren klasörü açın. Cmd+A ile tüm dosyaları seçin veya ilk dosyaya tıklayıp ardından Shift+sonuncuya tıklayarak belirli bir aralık seçin. Tek tek dosyaları seçmek için Cmd tuşunu basılı tutun ve her birine tıklayın.
 
 **2. Adım: Yeniden adlandırma iletişim kutusunu açın.**
-Seçilen herhangi bir dosyaya sağ tıklayın (veya Control+tıklayın) ve içerik menüsünden "Yeniden Adlandır..." seçeneğini seçin. Finder menü çubuğunu da kullanabilirsiniz: Dosya > Yeniden Adlandır'a gidin.
+Seçilen herhangi bir dosyaya sağ tıklayın (veya Control+tıklayın) ve içerik menüsünden "Yeniden Adlandır..." seçeneğini seçin. Ayrıca 'Finder' menü çubuğunu da kullanabilirsiniz: Dosya > Yeniden Adlandır'a gidin.
 
 **3. Adım: Yeniden adlandırma modunuzu seçin.**
 Yeniden adlandır iletişim kutusunun üst kısmında üç seçeneğin bulunduğu bir açılır menü bulunur:
@@ -100,142 +101,143 @@ Yeniden adlandır iletişim kutusunun üst kısmında üç seçeneğin bulunduğ
 - **Biçim** -- Adın tamamını bir temel ad ve sıralı bir sayı, sayaç veya tarihle değiştirin.
 
 **4. Adım: Yapılandırın ve önizleyin.**
-Alanları doldurun. Finder, taahhütte bulunmadan önce doğrulayabilmeniz için yeni adın bir önizlemesini gösterir. Sonucun doğru görünüp görünmediğini kontrol edin.
+Alanları doldurun. 'Finder', taahhütte bulunmadan önce doğrulayabilmeniz için yeni adın önizlemesini gösterir. Sonucun doğru görünüp görünmediğini kontrol edin.
 
 **5. Adım: Yeniden Adlandır'ı tıklayın.**
 Seçilen tüm dosyalar anında yeniden adlandırılır. Bir hata yaptıysanız toplu işlemin tamamını geri almak için hemen Cmd+Z tuşlarına basın.
 
-### Finder yeniden adlandırma örnekleri
+### 'Finder' yeniden adlandırma örnekleri
 
 #### Metin modunu değiştir
 
 Bir tedarikçiden bir grup ürün görseli indirdiniz ve bunların hepsi ihtiyacınız olmayan bir satıcı koduyla başlıyor.
 
-| Önce | Sonra |
+|Önce|Sonrasında|
 |---|---|
-| `VNDX-001_blue-widget.png` | `blue-widget.png` |
-| `VNDX-001_red-widget.png` | `red-widget.png` |
-| `VNDX-001_green-widget.png` | `green-widget.png` |
+|'VNDX-001_blue-widget.png'|'mavi-widget.png'|
+|'VNDX-001_red-widget.png'|`kırmızı-widget.png`|
+|'VNDX-001_green-widget.png'|'yeşil-widget.png'|
 
-Ayarlar: `VNDX-001_`'yi bulun, (boş) ile değiştirin.
+Ayarlar: 'VNDX-001_'yi bulun, (boş) ile değiştirin.
 
 #### Metin modu ekle
 
 Bir dizi teslimata önek olarak bir proje adı eklemek istiyorsunuz.
 
-| Önce | Sonra |
+|Önce|Sonrasında|
 |---|---|
-| `homepage-hero.psd` | `acme-redesign_homepage-hero.psd` |
-| `about-section.psd` | `acme-redesign_about-section.psd` |
-| `footer-layout.psd` | `acme-redesign_footer-layout.psd` |
+|'ana sayfa-kahraman.psd'|'acme-redesign_homepage-hero.psd'|
+|"hakkında-bölüm.psd"|"acme-redesign_about-section.psd"|
+|'alt bilgi düzeni.psd'|'acme-redesign_footer-layout.psd'|
 
-Ayarlar: Adın Öncesine `acme-redesign_` Metin Ekle.
+Ayarlar: Adın Öncesine `acme-redesign_` Metni Ekle.
 
-#### Format modu
+#### Biçim modu
 
 Bir etkinlikte 50 fotoğraf çektiniz ve temiz numaralandırılmış isimler istiyorsunuz.
 
-| Önce | Sonra |
+|Önce|Sonrasında|
 |---|---|
-| `IMG_7823.jpg` | `company-retreat-001.jpg` |
-| `IMG_7824.jpg` | `company-retreat-002.jpg` |
-| `IMG_7825.jpg` | `company-retreat-003.jpg` |
+|'IMG_7823.jpg'|`şirket-geri çekilme-001.jpg`|
+|'IMG_7824.jpg'|`şirket-geri çekilme-002.jpg`|
+|'IMG_7825.jpg'|`şirket-geri çekilme-003.jpg`|
 
-Ayarlar: Ad Formatı: Ad ve Dizin, Özel Format: `company-retreat-`, Başlangıç Numaraları: 1.
+Ayarlar: Ad Formatı: Ad ve Dizin, Özel Format: `company-retreat-`, Başlangıç ​​Numaraları: 1.
 
-### Finder toplu yeniden adlandırma sınırlamaları
+### 'Finder' toplu yeniden adlandırma sınırlamaları
 
-Finder aynı kuralı seçilen her dosyaya uygular. Her dosyaya içeriğine göre benzersiz bir açıklayıcı ad veremez. Ayrıca normal ifade kalıplarını, koşullu mantığı veya meta veriye dayalı adlandırmayı da işleyemez. Bu işler için farklı bir araca ihtiyacınız var. Windows değiştiriciler sıklıkla [Mac'de Toplu Yeniden Adlandırma Yardımcı Programı](/blog/bulk-rename-utility-alternatives) ister; macOS için mevcut değildir ve [Gelişmiş Yeniden Adlandırıcı](/blog/advanced-renamer-alternatives), her iki platformdaki model ve meta veri alanını kapsar; hiçbiri dosyaları içeriğe göre adlandırmaz.
+'Finder' seçilen her dosyaya aynı kuralı uygular. Her dosyaya içeriğine göre benzersiz bir açıklayıcı ad veremez. Ayrıca normal ifade kalıplarını, koşullu mantığı veya meta veriye dayalı adlandırmayı da işleyemez. Bu işler için farklı bir araca ihtiyacınız var. "Windows" değiştiriciler genellikle "[Mac'te 'Bulk Rename Utility'](/blog/bulk-rename-utility-alternatives)"yi ister; "macOS" için bu mevcut değildir ve "[Advanced Renamer](/blog/advanced-renamer-alternatives)" her iki platformda da model ve meta veri alanını kapsar; hiçbiri dosyaları içeriğe göre adlandırmaz.
 
-### Finder toplu yeniden adlandırma dosyası meta verilerini değiştirir mi?
+### 'Finder' toplu yeniden adlandırma dosya meta verilerini değiştirir mi?
 
-Hayır. Finder toplu yeniden adlandırma yalnızca dosya adını değiştirir. Yeni ad Finder'da, Spotlight'ta, Aç iletişim kutularında ve dosya yolunda görünür, ancak yeniden adlandırma EXIF ​​meta verilerini, Finder etiketlerini, Finder yorumlarını, PDF başlık alanlarını veya belge özelliklerini otomatik olarak yazmaz.
+Hayır. 'Finder' toplu yeniden adlandırma yalnızca dosya adını değiştirir. Yeni ad "Finder", "Spotlight", Açık iletişim kutularında ve dosya yolunda görünür, ancak yeniden adlandırma EXIF ​​meta verilerini, "Finder" etiketlerini, "Finder" yorumlarını, PDF başlık alanlarını veya belge özelliklerini otomatik olarak yazmaz.
 
 Bu ayrım, dosyaların daha sonra aranabilir kalmasını istediğinizde önemlidir:
 
-| Alan | Finder toplu yeniden adlandırmayla değiştirildi mi? | Arama etkisi |
+|Alan|'Finder' toplu yeniden adlandırmayla değiştirildi mi?|Arama etkisi|
 |---|---|---|
-| Dosya adı | Evet | Spotlight ve Finder araması yeni adla eşleşebilir |
-| Dosya yolu | Evet | Yol, yeni adı hemen yansıtır |
-| Finder etiketleri | Hayır | Etiketler ayrı olarak eklenmelidir |
-| Finder yorumları | Hayır | Yorumlar ayrı olarak eklenmelidir |
-| EXIF / kamera meta verileri | Hayır | Fotoğraf meta verileri değişmeden kalır |
-| PDF veya Office belgesi özellikleri | Hayır | Belge başlığı/yazar alanları değişmeden kalır |
+|Dosya adı|Evet|'Spotlight' ve 'Finder' araması yeni adla eşleşebilir|
+|Dosya yolu|Evet|Yol, yeni adı anında yansıtır|
+|'Finder' etiketleri|HAYIR|Etiketler ayrı olarak eklenmelidir|
+|'Finder' yorumları|HAYIR|Yorumlar ayrı olarak eklenmelidir|
+|EXIF / kamera meta verileri|HAYIR|Fotoğraf meta verileri değişmeden kalır|
+|PDF veya Office belgesi özellikleri|HAYIR|Belge başlığı/yazar alanları değişmeden kalır|
 
-Yalnızca daha temiz dosya adlarına ihtiyacınız varsa Finder yeterlidir. Karışık ekran görüntüleri, PDF'ler, fotoğraflar ve belgeler için anlamsal adlar, etiketler ve meta veriler de istiyorsanız arama dostu adlar ve meta verileri kasıtlı olarak yazan bir AI dosya yeniden adlandırıcı kullanın. Zush, AI tarafından oluşturulan dosya adlarının yanı sıra [Finder etiketleri ve Spotlight dostu meta veriler](/mac)'yi de destekler.
+Yalnızca daha temiz dosya adlarına ihtiyacınız varsa 'Finder' yeterlidir. Karışık ekran görüntüleri, PDF'ler, fotoğraflar ve belgeler için anlamsal adlar, etiketler ve meta veriler de istiyorsanız arama dostu adlar ve meta verileri kasıtlı olarak yazan bir AI dosya yeniden adlandırıcı kullanın. "Zush", yapay zeka tarafından oluşturulan dosya adlarının yanı sıra "['Finder' etiketleri ve 'Spotlight' dostu meta veriler](/mac)"u da destekler.
 
-Toplu yeniden adlandırmaları etkili kılan adlandırma kurallarını ayarlama hakkında daha fazla bilgi için bkz. [Dosya Adlandırma Kuralları: Her İş Akışı İçin En İyi Uygulamalar](/blog/file-naming-conventions-best-practices).
+Toplu yeniden adlandırmaları etkili kılan adlandırma kurallarını ayarlama hakkında daha fazla bilgi için bkz. '[Dosya Adlandırma Kuralları: Her İş Akışı İçin En İyi Uygulamalar](/blog/file-naming-conventions-best-practices)'.
 
-## Yöntem 2: Otomatikleştirici iş akışları
 
-Automator, kod yazmadan çok adımlı iş akışları oluşturmanıza olanak tanıyan bir macOS otomasyon aracıdır. Dosya yeniden adlandırma için Finder'dan daha fazla güç sağlar çünkü birden fazla yeniden adlandırma eylemini zincirleyebilir, oluşturma tarihi gibi meta verileri kullanabilir ve iş akışını bir klasöre ekleyerek otomatik olarak çalışmasını sağlayabilirsiniz.
+## Yöntem 2: 'Automator' iş akışları
 
-### Automator ne zaman kullanılmalı?
+'Automator', kod yazmadan çok adımlı iş akışları oluşturmanıza olanak tanıyan bir 'macOS' otomasyon aracıdır. Dosya yeniden adlandırma için "Finder"ten daha fazla güç sağlar çünkü birden fazla yeniden adlandırma eylemini zincirleyebilir, oluşturma tarihi gibi meta verileri kullanabilir ve iş akışını bir klasöre ekleyerek otomatik olarak çalışmasını sağlayabilirsiniz.
+
+### 'Automator' ne zaman kullanılır?
 
 - Aynı yeniden adlandırma kuralının düzenli olarak uygulanması gerekir (haftalık dışa aktarmalar, yinelenen raporlar)
 - Yeniden adlandırmayı diğer işlemlerle (dosyaları taşıma, uzantıları değiştirme) birleştirmek istiyorsanız
 - Meta veriye dayalı adlandırmaya ihtiyacınız var (oluşturulma tarihi, dosya boyutu, görsel boyutları)
 - Teknik olmayan ekip üyeleri için sürükle ve bırak uygulaması istiyorsunuz
 
-### Adım adım: Automator'da yeniden adlandırma iş akışı oluşturma
+### Adım adım: "Automator"da yeniden adlandırma iş akışı oluşturma
 
-**1. Adım: Automator'ı açın.**
-Automator'ı Uygulamalar veya Spotlight'tan başlatın (Cmd+Space, "Automator" yazın). İstendiğinde "Yeni Belge"yi seçin.
+**1. Adım: "Automator"u açın.**
+Uygulamalar'dan veya 'Spotlight'den (Cmd+Boşluk, "Automator" yazın) "Automator"i başlatın. İstendiğinde "Yeni Belge"yi seçin.
 
 **2. Adım: İş akışı türünü seçin.**
 Kullanım durumunuza bağlı olarak bunlardan birini seçin:
 
-- **İş Akışı** -- Automator içinden manuel olarak çalıştırın. Test için iyi.
+- **İş Akışı** -- "Automator" içinden manuel olarak çalıştırın. Test için iyi.
 - **Uygulama** -- Dosyaları üzerine sürükleyebileceğiniz bağımsız bir uygulama oluşturur. Ara sıra kullanım için iyi.
 - **Klasör Eylemi** -- Belirli bir klasöre eklenmiştir. Yeni dosyalar eklendiğinde otomatik olarak çalışır. Devam eden otomasyon için iyi.
-- **Hızlı Eylem** -- Finder'da sağ tıklama bağlam menüsünde görünür. İsteğe bağlı kullanım için iyidir.
+- **Hızlı Eylem** -- 'Finder'te sağ tıklama bağlam menüsünde görünür. İsteğe bağlı kullanım için iyidir.
 
 Toplu yeniden adlandırma için **Uygulama** veya **Klasör Eylemi** en pratik seçimlerdir.
 
 **3. Adım: Yeniden adlandırma eylemini ekleyin.**
-Sol kenar çubuğunda "Finder Öğelerini Yeniden Adlandır"ı arayın. Sağdaki iş akışı alanına sürükleyin. Automator, orijinalleri korumak için önce "Finder Öğelerini Kopyala" adımını eklemek isteyip istemediğinizi soracaktır. Yeniden adlandırmak istiyorsanız "Ekle"yi, yedekleri saklamak istiyorsanız "Ekle"yi tıklayın.
+Sol kenar çubuğunda "'Finder' Öğelerini Yeniden Adlandır" ifadesini arayın. Sağdaki iş akışı alanına sürükleyin. Automator, orijinalleri korumak için önce "Finder` Öğelerini Kopyala" adımını eklemek isteyip istemediğinizi soracaktır. Yeniden adlandırmak istiyorsanız "Ekle"yi, yedekleri saklamak istiyorsanız "Ekle"yi tıklayın.
 
 **4. Adım: Yeniden adlandırma kuralını yapılandırın.**
-"Finder Öğelerini Yeniden Adlandır" eyleminin birkaç modu vardır:
+"'Finder` Öğelerini Yeniden Adlandır" işleminin birkaç modu vardır:
 
 - **Tarih veya Saat Ekle** -- Dosyanın oluşturulma veya değiştirilme tarihinin başına veya sonuna ekleyin. Dışa aktarmaları kronolojik olarak düzenlemek için kullanışlıdır.
 - **Büyük Harfi Değiştir** -- Dosya adlarını küçük harfe, büyük harfe veya başlık harfine dönüştürün.
-- **Bul ve Değiştir** -- Finder'ın Metni Değiştir özelliğiyle aynıdır ancak diğer işlemlerle zincirlenebilir.
+- **Bul ve Değiştir** -- "Finder"un Metni Değiştir özelliğiyle aynıdır ancak diğer işlemlerle zincirlenebilir.
 - **Sıralı Yap** -- Her dosyaya bir dizin numarası ekleyin.
 - **Metni Değiştir** -- Bir dizeyi diğeriyle değiştirin.
 
-Birden çok yeniden adlandırma eylemini sırayla yığınlayabilirsiniz. Örneğin: önce `IMG_`'yi boş bir dizeyle değiştirin, ardından oluşturulma tarihini önek olarak ekleyin, ardından büyük/küçük harfi küçük harfe değiştirin.
+Birden çok yeniden adlandırma eylemini sırayla yığınlayabilirsiniz. Örneğin: önce `IMG_` yerine boş bir dize koyun, ardından oluşturulma tarihini önek olarak ekleyin, ardından büyük/küçük harfi küçük harfe değiştirin.
 
 **5. Adım: Giriş ekleyin.**
-Bir İş Akışı seçtiyseniz üst tarafa "Belirtilen Finder Öğelerini Al" işlemini ekleyin ve dosyalarınızı buna sürükleyin. Bir Uygulama veya Klasör Eylemi seçerseniz dosyalar otomatik olarak iletilir.
+Bir İş Akışı seçtiyseniz üst tarafa "Belirtilen 'Finder' Öğelerini Al" işlemini ekleyin ve dosyalarınızı buna sürükleyin. Bir Uygulama veya Klasör Eylemi seçerseniz dosyalar otomatik olarak iletilir.
 
 **6. Adım: İş akışını test edin.**
-Sağ üstteki Çalıştır butonuna tıklayın. Finder'daki sonuçları kontrol edin. Bir şeyler ters giderse geri almak için Finder'da Cmd+Z tuşlarına basın.
+Sağ üstteki Çalıştır butonuna tıklayın. 'Finder'deki sonuçları kontrol edin. Bir şeyler ters giderse geri almak için "Finder"de Cmd+Z tuşlarına basın.
 
 **7. Adım: Kaydet.**
 "İstemci Dışa Aktarımlarını Yeniden Adlandır" gibi açıklayıcı bir adla kaydedin. Bir Uygulama oluşturduysanız, bunu Uygulamalar klasörünüze veya Masaüstünüze kaydedin. Bir Klasör Eylemi oluşturduysanız belirttiğiniz klasöre eklenir.
 
-### Automator yeniden adlandırma örneği: tarih önekli istemci teslimatları
+### 'Automator' yeniden adlandırma örneği: tarih önekli müşteri teslimatları
 
 Bir tasarımcı, istemciler için dosyaları her hafta dışa aktarır ve bunların önüne dışa aktarma tarihinin eklenmesini ister.
 
-| Önce | Sonra |
+|Önce|Sonrasında|
 |---|---|
-| `homepage-mockup-v3.pdf` | `2026-02-08_homepage-mockup-v3.pdf` |
-| `mobile-nav-prototype.pdf` | `2026-02-08_mobile-nav-prototype.pdf` |
-| `brand-guidelines-update.pdf` | `2026-02-08_brand-guidelines-update.pdf` |
+|`anasayfa-model-v3.pdf'|`2026-02-08_anasayfa-mockup-v3.pdf`|
+|`mobil-nav-prototipi.pdf'|`2026-02-08_mobile-nav-prototype.pdf`|
+|`marka-yönergeleri-güncelleme.pdf'|`2026-02-08_marka-kılavuzları-güncelleme.pdf`|
 
-İş Akışı: Belirtilen Finder Öğelerini Al > Finder Öğelerini Yeniden Adlandır (Tarih veya Saat Ekle, Eklenme Tarihi, Adın Öncesi, YYYY-AA-GG biçimi, ayırıcı alt çizgi).
+İş Akışı: Belirtilen 'Finder' Öğelerini Al > 'Finder' Öğelerini Yeniden Adlandır (Tarih veya Saat Ekle, Eklenme Tarihi, Adın Öncesi, YYYY-AA-GG biçimi, ayırıcı alt çizgi).
 
-### Otomatikleştirici sınırlamaları
+### 'Automator' sınırlamaları
 
-Automator desen tabanlıdır. Her dosyanın aynı kurala uyması gerektiğinde iyi çalışır. Bir PDF'ye bakıp dosya adının `scan_003.pdf` yerine `tax-return-2025.pdf` olması gerektiğine karar veremez. Ayrıca yapay zeka entegrasyonu da yok ve macOS güncellemelerindeki güvenilirliği tutarsız hale geldi. Apple, yatırımlarını aynı görevlerin bazılarını farklı bir arayüzle gerçekleştiren Kısayollara kaydırıyor.
+'Automator' desen tabanlıdır. Her dosyanın aynı kurala uyması gerektiğinde iyi çalışır. Bir PDF'ye bakıp dosya adının "scan_003.pdf" yerine "tax-return-2025.pdf" olması gerektiğine karar veremez. Ayrıca yapay zeka entegrasyonu da yok ve "macOS" güncellemelerindeki güvenilirliği tutarsız hale geldi. Apple, yatırımlarını aynı görevlerin bazılarını farklı bir arayüzle yerine getiren 'Shortcuts'a kaydırıyor.
 
-[Automator, Mac'deki dosyaları yeniden adlandırın](/blog/macos-automator-rename-files-guide)'nin otomatik olarak nasıl yapılacağına ilişkin adım adım talimatların tamamı için özel Automator kılavuzunu okuyun.
+Otomatik olarak "['Automator' Mac'teki dosyaları yeniden adlandırır](/blog/macos-automator-rename-files-guide)"nın nasıl yapılacağına ilişkin adım adım talimatların tamamı için özel "Automator" kılavuzunu okuyun.
 
-### Kısayollar: Apple'ın şu anda çaba gösterdiği yer
+### 'Shortcuts': Apple'ın şu anda çaba gösterdiği yer
 
-Kısayollar, macOS Monterey ve sonraki sürümlerle birlikte gelir ve Apple'ın aktif olarak geliştirmekte olduğu bir araçtır; dolayısıyla mevcut Automator iş akışlarınız hala çalışıyor olsa bile bunu bilmeye değer. Toplu yeniden adlandırma, farklı bir montaj modeliyle "Finder Öğelerini Yeniden Adlandır"ın yaptığı işlemlerin çoğunu kapsar: tek bir eylemi yapılandırmak yerine küçük bir döngü oluşturursunuz.
+'Shortcuts', 'macOS' Monterey ve sonraki sürümleriyle birlikte gelir ve Apple'ın aktif olarak geliştirmekte olduğu bir araçtır; bu nedenle, mevcut 'Automator' iş akışlarınız hala çalışıyor olsa bile bunu bilmeye değer. Toplu yeniden adlandırma, farklı bir montaj modeliyle "Finder Öğelerini Yeniden Adlandır"ın yaptığı işlemlerin çoğunu kapsar: tek bir eylemi yapılandırmak yerine küçük bir döngü oluşturursunuz.
 
 Minimum toplu yeniden adlandırma kısayolu şuna benzer:
 
@@ -244,22 +246,22 @@ Minimum toplu yeniden adlandırma kısayolu şuna benzer:
 3. Döngünün içine **Dosyayı Yeniden Adlandır** ekleyin, dosyayı **Öğeyi Tekrarla** olarak ayarlayın ve **Metin** ile yeni adı oluşturun; örneğin **Tarihi Biçimlendir** sonucu, bir alt çizgi ve yineleme dizini.
 4. Kısayol ayrıntıları bölmesinde **Hızlı Eylem Olarak Kullan** seçeneğini etkinleştirin ve **Finder** seçeneğini işaretleyin.
 
-Kısayol daha sonra Finder'ın sağ tıklama **Hızlı Eylemler** alt menüsünde görünür, böylece dosyaları seçersiniz, çalıştırırsınız ve tüm grup yerinde yeniden adlandırılır.
+Kısayol daha sonra Findernin sağ tıklama **Hızlı Eylemler** alt menüsünde görünür, böylece dosyaları seçersiniz, çalıştırırsınız ve tüm grup yerinde yeniden adlandırılır.
 
-Pratikte iki sınır önemlidir. Kısayollar hâlâ kalıp tabanlıdır; bir tarihten, sayaçtan veya mevcut metinden bir ad oluşturabilir ancak PDF'nin bir kira sözleşmesi olduğuna karar veremez. Kısayollar tarafından gerçekleştirilen bir yeniden adlandırma Finder'ın geri alma yığınında yer almadığından Cmd+Z bunu tersine çevirmez; önce kopyalanan bir klasörde test edin.
+Pratikte iki sınır önemlidir. 'Shortcuts' hala kalıp tabanlıdır; bir tarihten, bir sayaçtan veya mevcut bir metinden bir ad oluşturabilir ancak PDF'nin bir kira sözleşmesi olduğuna karar veremez. Ve "Shortcuts" tarafından gerçekleştirilen bir yeniden adlandırma "Finder"in geri alma yığınında yer almaz, dolayısıyla Cmd+Z bunu tersine çevirmez; önce kopyalanan bir klasörde test edin.
 
-Zaten çalışan `.workflow` dosyalarınız varsa veya bir Klasör Eylemine ihtiyacınız varsa Otomatikleştirici'yi seçin; Yeni olan her şey için Kısayollar'ı seçin çünkü bu, Apple'ın güncellemeye devam ettiği yoldur.
+Zaten çalışan '.workflow' dosyalarınız varsa veya bir Klasör İşlemine ihtiyacınız varsa 'Automator'i seçin; Yeni bir şey için 'Shortcuts'ü seçin çünkü bu, Apple'ın güncellemeye devam ettiği yoldur.
 
-## Yöntem 3: Mac'teki dosyaları toplu olarak yeniden adlandırmak için terminal komut dosyaları
+## Yöntem 3: Mac'teki dosyaları toplu olarak yeniden adlandırmak için "Terminal" komut dosyaları
 
 Komut satırı konusunda rahatsanız, kabuk komut dosyaları size Mac'te toplu yeniden adlandırma konusunda en fazla kontrolü sağlar. Regex'i, koşullu ifadeleri, döngüleri ve komut satırı araçlarıyla kullanılabilen tüm meta verileri kullanabilirsiniz.
 
 ### Komut dosyaları ne zaman kullanılmalı?
 
-- Regex tabanlı kalıp eşleştirmeye ihtiyacınız var (örneğin, dosya adlarından tarih çıkarmak)
+- Normal ifade tabanlı kalıp eşleştirmeye ihtiyacınız var (örneğin, dosya adlarından tarih çıkarmak)
 - Dosya meta verilerine (EXIF verileri, PDF özellikleri) göre yeniden adlandırmak istiyorsunuz
 - Koşullu mantığa ihtiyacınız var (yalnızca belirli kriterlere uyan dosyaları yeniden adlandırın)
-- Terminalde zaten rahatsınız
+- 'Terminal'de zaten rahatsınız
 
 ### Döngüyle temel yeniden adlandırma
 
@@ -281,9 +283,9 @@ for f in *\ *; do
 done
 ```
 
-### Dosya meta verilerinden bir tarih öneki ekleyin
+### Dosya meta verilerinden tarih öneki ekleyin
 
-`exiftool` kullanarak her JPEG'in önüne EXIF oluşturma tarihini ekleyin:
+'exiftool'u kullanarak her JPEG'in önüne EXIF ​​oluşturma tarihini ekleyin:
 
 ```bash
 for f in *.jpg; do
@@ -294,11 +296,11 @@ done
 
 Öncesi ve sonrası:
 
-| Önce | Sonra |
+|Önce|Sonrasında|
 |---|---|
-| `IMG_4201.jpg` | `2026-01-15_IMG_4201.jpg` |
-| `IMG_4202.jpg` | `2026-01-15_IMG_4202.jpg` |
-| `IMG_4203.jpg` | `2026-01-16_IMG_4203.jpg` |
+|'IMG_4201.jpg'|`2026-01-15_IMG_4201.jpg`|
+|'IMG_4202.jpg'|`2026-01-15_IMG_4202.jpg`|
+|'IMG_4203.jpg'|`2026-01-16_IMG_4203.jpg`|
 
 ### Sıfır dolgulu sıralı numaralandırma
 
@@ -312,25 +314,25 @@ for f in *.png; do
 done
 ```
 
-| Önce | Sonra |
+|Önce|Sonrasında|
 |---|---|
-| `Screen Shot 2026-02-01.png` | `slide-001.png` |
-| `Screen Shot 2026-02-02.png` | `slide-002.png` |
-| `Screen Shot 2026-02-03.png` | `slide-003.png` |
+|`Ekran Görüntüsü 2026-02-01.png`|'slayt-001.png'|
+|`Ekran Görüntüsü 2026-02-02.png`|'slayt-002.png'|
+|`Ekran Görüntüsü 2026-02-03.png`|'slayt-003.png'|
 
-### `rename` komutunu kullanma (Perl tabanlı)
+### 'Yeniden adlandır' komutunu kullanma (Perl tabanlı)
 
-Perl `rename` yardımcı programını Homebrew (`brew install rename`) aracılığıyla yüklerseniz, tek komutla normal ifade desteğine sahip olursunuz:
+Perl 'yeniden adlandır' yardımcı programını Homebrew ("brew install rename") aracılığıyla yüklerseniz, tek bir komutla normal ifade desteği alırsınız:
 
 ```bash
 rename 's/IMG_/vacation-/' *.jpg
 ```
 
-Bu, geçerli dizindeki her `.jpg` dosya adında `IMG_`'yi `vacation-` ile değiştirir.
+Bu, geçerli dizindeki her `.jpg` dosya adında `IMG_` yerine `tatil-` ifadesini kullanır.
 
 ### Komut dosyası sınırlamaları
 
-Komut dosyaları güçlüdür ancak teknik bilgi gerektirir. Yeniden adlandırma komut dosyasındaki bir yazım hatası, geri alınmaksızın dizinin tamamındaki dosya adlarına zarar verebilir. Her zaman önce dosyalarınızın bir kopyası üzerinde test edin veya ne olacağını önizlemek için `mv`'den önce `echo`'yi kullanın. Tam [güvenli toplu iş dosyası yeniden adlandırma kılavuzu](/blog/how-to-safely-batch-rename-files), GUI araçları ve komut dosyalarındaki kuru çalıştırmaları, uzantı ve çarpışma kontrollerini, bağlantılı dosya risklerini ve kurtarma seçeneklerini açıklar:
+Komut dosyaları güçlüdür ancak teknik bilgi gerektirir. Yeniden adlandırma komut dosyasındaki bir yazım hatası, geri alınmaksızın dizinin tamamındaki dosya adlarına zarar verebilir. Her zaman önce dosyalarınızın bir kopyası üzerinde test yapın veya ne olacağını önizlemek için "mv"den önce "echo"yu kullanın. '[güvenli toplu iş dosyası yeniden adlandırma kılavuzu](/blog/how-to-safely-batch-rename-files)'in tamamı, GUI araçları ve komut dosyalarındaki kuru çalıştırmaları, uzantı ve çarpışma kontrollerini, bağlantılı dosya risklerini ve kurtarma seçeneklerini açıklar:
 
 ```bash
 for f in *.jpg; do
@@ -338,17 +340,18 @@ for f in *.jpg; do
 done
 ```
 
-Komut dosyaları da Finder ve Automator ile aynı temel sınırlamayı paylaşır: Anlamak yerine kuralları uygularlar. Bir komut dosyası bir resme bakıp ne gösterdiğine karar veremez. İçeriğe duyarlı yeniden adlandırma için yapay zekaya ihtiyacınız var.
+Komut dosyaları da 'Finder' ve 'Automator' ile aynı temel sınırlamayı paylaşıyor: Anlamak yerine kuralları uyguluyorlar. Bir komut dosyası bir resme bakıp ne gösterdiğine karar veremez. İçeriğe duyarlı yeniden adlandırma için yapay zekaya ihtiyacınız var.
 
 ## Yöntem 4: Yapay zeka destekli içeriğe duyarlı yeniden adlandırma
 
-AI yeniden adlandırma yukarıdaki yöntemlerin hepsinden farklıdır. Dosya adlarına bir kalıp veya kural uygulamak yerine, her dosyanın gerçek içeriğini analiz eder ve bulduklarına göre açıklayıcı bir ad oluşturur. Stripe kontrol panelinin ekran görüntüsü `stripe-monthly-revenue-chart.png` olur. Taranan PDF, `apartment-lease-agreement-2026.pdf` olur. İndirilen bir fotoğraf `golden-gate-bridge-foggy-morning.jpg` olur.
+AI yeniden adlandırma yukarıdaki yöntemlerin hepsinden farklıdır. Dosya adlarına bir kalıp veya kural uygulamak yerine, her dosyanın gerçek içeriğini analiz eder ve bulduklarına göre açıklayıcı bir ad oluşturur. Stripe kontrol panelinin ekran görüntüsü "şerit-aylık-gelir-grafiği.png" olur. Taranan PDF, 'apartman-kira-sözleşmesi-2026.pdf' olur. İndirilen bir fotoğraf "altın kapı köprüsü-sisli-sabah.jpg" olur.
+
 
 ### AI yeniden adlandırma ne zaman kullanılmalı?
 
 - İçerik hakkında size hiçbir şey anlatmayan zaman damgası adlarını içeren ekran görüntüleri
-- `scan_001.pdf` gibi adlara sahip taranmış belgeler ve PDF'ler
-- `download.jpg` veya `IMG_4392.heic` gibi anlamsız adlara sahip indirilen görseller
+- "scan_001.pdf" gibi adlara sahip taranmış belgeler ve PDF'ler
+- `download.jpg` veya `IMG_4392.heic` gibi anlamsız adlarla indirilen görseller
 - Dosya adlarının, dosyanın gerçekte ne içerdiğini açıklaması gereken herhangi bir klasör
 
 ### Nasıl çalışır?
@@ -360,159 +363,158 @@ AI yeniden adlandırma yukarıdaki yöntemlerin hepsinden farklıdır. Dosya adl
 
 Bu, diğer tüm yöntemlerden temel farktır: her dosya, gruba uygulanan paylaşılan bir modele göre değil, kendi içeriğine göre kendi adını alır.
 
-### Öncesi ve sonrası: Yapay zeka, gerçek dünyadaki örnekleri yeniden adlandırıyor
+### Öncesi ve sonrası: Yapay zeka gerçek dünyadaki örnekleri yeniden adlandırıyor
 
 #### Ekran görüntüleri
 
-| Önce | Sonra |
+|Önce|Sonrasında|
 |---|---|
-| `Screenshot 2026-02-08 at 09.14.22.png` | `figma-checkout-page-mobile-wireframe.png` |
-| `Screenshot 2026-02-08 at 09.18.44.png` | `stripe-dashboard-monthly-revenue.png` |
-| `Screenshot 2026-02-08 at 10.02.11.png` | `slack-design-team-feedback-thread.png` |
-| `Screenshot 2026-02-08 at 10.45.33.png` | `vscode-typescript-build-error-log.png` |
-| `Screenshot 2026-02-08 at 14.05.19.png` | `notion-sprint-planning-board-week-6.png` |
+|`Ekran görüntüsü 2026-02-08, 09.14.22.png`|`figma-checkout-page-mobile-wireframe.png`|
+|`Ekran görüntüsü 2026-02-08, 09.18.44.png`|`şerit-kontrol paneli-aylık-gelir.png'|
+|`Ekran görüntüsü 2026-02-08, 10.02.11.png`|`slack-tasarım-ekibi-geribildirim-thread.png'|
+|'Ekran görüntüsü 2026-02-08, 10.45.33.png'|`vscode-typescript-build-error-log.png`|
+|`Ekran görüntüsü 2026-02-08, 14.05.19.png`|`kavram-sprint-planlama-tahtası-hafta-6.png'|
 
 #### Belgeler ve PDF'ler
 
-| Önce | Sonra |
+|Önce|Sonrasında|
 |---|---|
-| `scan_001.pdf` | `apartment-lease-agreement-2026.pdf` |
-| `download.pdf` | `w9-tax-form-acme-consulting.pdf` |
-| `Document (3).pdf` | `quarterly-sales-report-q4-2025.pdf` |
-| `attachment.pdf` | `invoice-7842-webdesign-services.pdf` |
+|"scan_001.pdf"|`apartman-kira-sözleşmesi-2026.pdf`|
+|'indir.pdf'|`w9-vergi-formu-acme-danışmanlık.pdf'|
+|'Belge (3).pdf'|`üç aylık-satış-raporu-q4-2025.pdf'|
+|'ek.pdf'|`fatura-7842-webdesign-services.pdf`|
 
 #### Fotoğraflar ve görseller
 
-| Önce | Sonra |
+|Önce|Sonrasında|
 |---|---|
-| `IMG_4201.jpg` | `golden-gate-bridge-sunset-view.jpg` |
-| `IMG_4202.jpg` | `fishermans-wharf-street-performer.jpg` |
-| `DSC_0087.jpg` | `team-dinner-italian-restaurant.jpg` |
-| `photo_2026.heic` | `hiking-trail-redwood-forest.heic` |
-| `download (1).jpg` | `blue-mid-century-modern-sofa.jpg` |
+|'IMG_4201.jpg'|`altın-kapı-köprüsü-gün batımı-görünümü.jpg`|
+|'IMG_4202.jpg'|`balıkçılar-iskele-sokak sanatçısı.jpg`|
+|'DSC_0087.jpg'|`ekip-akşam yemeği-italyan-restoran.jpg`|
+|'photo_2026.heic'|`yürüyüş-patikası-sekoya-ormanı.heic`|
+|`indir (1).jpg`|`mavi-yüzyıl ortası-modern-kanepe.jpg`|
 
-### Zush ile AI yeniden adlandırma
 
-[Zush Mac için AI yeniden adlandırıcı](/mac), Mac'te bu tür yeniden adlandırma işlemleri için özel olarak tasarlanmıştır. Yapay zeka destekli içerik analiziyle görüntüleri, ekran görüntülerini, videoları, PDF'leri ve belgeleri yönetir. Dosyaları toplu olarak yeniden adlandırabilir, yeni dosyaların otomatik olarak yeniden adlandırılması için klasör izlemeyi ayarlayabilir ve adlandırma düzenini tarihler, kategoriler veya özel önekler içerecek şekilde özelleştirebilirsiniz.
+### AI 'Zush' ile yeniden adlandırılıyor
 
-Devam eden otomasyon için [Mac saat klasörleri için Zush](/mac), Masaüstünüzü veya İndirilenler'i beğenir ve yeni dosyaları geldikçe yeniden adlandırır. Bu, toplu yeniden adlandırmayı, dosyalarınızı manuel çaba gerektirmeden düzenli tutan bir arka plan işlemine dönüştürür.
+'[Mac için "Zush" AI yeniden adlandırıcı](/mac)', Mac'te bu tür yeniden adlandırma işlemleri için özel olarak tasarlanmıştır. Yapay zeka destekli içerik analiziyle görüntüleri, ekran görüntülerini, videoları, PDF'leri ve belgeleri yönetir. Dosyaları toplu olarak yeniden adlandırabilir, yeni dosyaların otomatik olarak yeniden adlandırılması için klasör izlemeyi ayarlayabilir ve adlandırma düzenini tarihler, kategoriler veya özel önekler içerecek şekilde özelleştirebilirsiniz.
 
-Yapay zeka yeniden adlandırma araçlarının ayrıntılı bir karşılaştırması için bkz. [Mac AI yeniden adlandırma araçları karşılaştırması](/blog/best-ai-file-renamer-tools-mac-compared). Karar verici faktör gizlilik veya sağlayıcı kontrolüyse, bir iş akışı seçmeden önce [Bulut AI ve Yerel AI Dosya Yeniden Adlandırma Karşılaştırması](/blog/cloud-vs-local-ai-file-renaming)'yi karşılaştırın.
+Devam eden otomasyon için, '[Mac saat klasörleri için "Zush"](/mac)' Masaüstünüzü veya İndirilenler'i beğenir ve yeni dosyalar geldikçe yeniden adlandırır. Bu, toplu yeniden adlandırmayı, dosyalarınızı manuel çaba gerektirmeden düzenli tutan bir arka plan işlemine dönüştürür.
+
+Yapay zeka yeniden adlandırma araçlarının ayrıntılı bir karşılaştırması için bkz. '[Mac AI yeniden adlandırma araçları karşılaştırması](/blog/best-ai-file-renamer-tools-mac-compared)'. Karar verici faktör gizlilik veya sağlayıcı kontrolüyse, bir iş akışı seçmeden önce "[Bulut AI ve Yerel AI Dosya Yeniden Adlandırma Karşılaştırması](/blog/cloud-vs-local-ai-file-renaming)"u karşılaştırın.
 
 <BlogCTA placement='inline' platform='mac' />
 
 ## Karşılaştırma: Mac toplu yeniden adlandırma yöntemleri
 
-| Özellik | Finder | Otomatikleştirici | Kısayollar | Komut Dosyaları | AI (Zush) |
+|Özellik| Finder | Automator | Shortcuts |Komut dosyaları|AI ('Zush')|
 |---|---|---|---|---|---|
-| Zorluk | Kolay | Orta | Orta | Sert | Kolay |
-| Metni değiştir | Evet | Evet | Evet | Evet | Evet |
-| Önek/sonek ekle | Evet | Evet | Evet | Evet | Evet |
-| Sıralı numaralandırma | Evet | Evet | Evet (Dizin Tekrarı) | Evet | Evet |
-| Regex desteği | Hayır | Hayır | Hayır | Evet | Hayır |
-| Meta veriye dayalı adlandırma | Hayır | Evet | Evet (dosya tarihleri) | Evet | Sınırlı |
-| İçeriğe duyarlı adlandırma | Hayır | Hayır | Hayır | Hayır | Evet |
-| Klasör izleme | Hayır | Evet (Klasör Eylemleri) | Hayır (Klasör Eylemi kullanın) | Evet (cron/launchd ile) | Evet |
-| Desteği geri al | Evet (Cmd+Z) | Evet (kopyalama adımı eklendiyse) | Hayır | Hayır (yedekleme olmadan) | Evet |
-| Görüntüler üzerinde çalışır | Yalnızca desen | Yalnızca desen | Yalnızca desen | Yalnızca desen | Resim içeriğini okur |
-| PDF'ler üzerinde çalışır | Yalnızca desen | Yalnızca desen | Yalnızca desen | Yalnızca desen | PDF metnini okur |
-| Karışık dosya türlerini yönetir | Herkes için aynı kural | Herkes için aynı kural | Herkes için aynı kural | Koşullu mantık mümkün | Her dosya ayrı ayrı adlandırıldı |
-| Maliyet | Ücretsiz | Ücretsiz | Ücretsiz | Ücretsiz | Ücretsiz katman + ücretli planlar |
+|Zorluk|Kolay|Orta|Orta|Zor|Kolay|
+|Metni değiştir|Evet|Evet|Evet|Evet|Evet|
+|Önek/sonek ekle|Evet|Evet|Evet|Evet|Evet|
+|Sıralı numaralandırma|Evet|Evet|Evet (Dizin Tekrarı)|Evet|Evet|
+|Regex desteği|HAYIR|HAYIR|HAYIR|Evet|HAYIR|
+|Meta veriye dayalı adlandırma|HAYIR|Evet|Evet (dosya tarihleri)|Evet|Sınırlı|
+|İçeriğe duyarlı adlandırma|HAYIR|HAYIR|HAYIR|HAYIR|Evet|
+|Klasör izleme|HAYIR|Evet (Klasör Eylemleri)|Hayır (Klasör Eylemi kullanın)|Evet (cron/launchd ile)|Evet|
+|Desteği geri al|Evet (Cmd+Z)|Evet (kopyalama adımı eklendiyse)|HAYIR|Hayır (yedekleme olmadan)|Evet|
+|Resimler üzerinde çalışır|Yalnızca desen|Yalnızca desen|Yalnızca desen|Yalnızca desen|Resim içeriğini okur|
+|PDF'lerde çalışır|Yalnızca desen|Yalnızca desen|Yalnızca desen|Yalnızca desen|PDF metnini okur|
+|Karışık dosya türlerini yönetir|Herkes için aynı kural|Herkes için aynı kural|Herkes için aynı kural|Koşullu mantık mümkün|Her dosya ayrı ayrı adlandırıldı|
+|Maliyet|Özgür|Özgür|Özgür|Özgür|Ücretsiz katman + ücretli planlar|
 
-Doğru seçim, neyi yeniden adlandırdığınıza ve nedenine bağlıdır. Her dosyada aynı metin değişikliği gerekiyorsa Finder 10 saniye sürer. Her dosya benzersiz bir açıklayıcı ada ihtiyaç duyuyorsa, her dosyayı açıp kendi başınıza bir ad düşünmenizi gerektirmeyen tek seçenek AI'dır.
+'Zush' geniş bir öneridir çünkü benzersiz içeriğe duyarlı adları ve aynı ortak metin işlemlerini incelenebilir tek bir iş akışında yönetir. 'Finder' yalnızca her dosyanın aynı bir değişikliğe ihtiyaç duyduğu ve hiçbir izleme veya kalıcı geçmiş gerekmediği durumlarda daha hızlı bir istisnadır.
 
 ## Toplu yeniden adlandırma sırasında sık karşılaşılan hatalar
 
 ### Dosya uzantısını eklemeyi unutmak
 
-Komut dosyalarını kullanırken, dosya uzantılarını yanlışlıkla çıkarmak veya üzerine yazmak yaygın bir hatadır. `report.pdf` olarak `quarterly-report` olarak yeniden adlandırılan bir dosya (`.pdf` olmadan) çift tıklamayla doğru şekilde açılmayacaktır. Uzantıyı her zaman yeniden adlandırma mantığınızda koruyun.
+Komut dosyalarını kullanırken, dosya uzantılarını yanlışlıkla çıkarmak veya üzerine yazmak yaygın bir hatadır. 'report.pdf' olarak 'üç aylık rapor' olarak yeniden adlandırılan bir dosya ('.pdf' olmadan) çift tıklamayla doğru şekilde açılmayacaktır. Uzantıyı her zaman yeniden adlandırma mantığınızda koruyun.
 
-### Önce bir kopya üzerinde test yapmıyoruz
+### Önce bir kopya üzerinde test yapmamak
 
 Yeniden adlandırmak yıkıcıdır. 500 dosyaya kötü bir desen uygularsanız, bunu geri almak zahmetli veya imkansız olabilir (özellikle komut dosyalarında). Küçük bir dosya örneğini bir test klasörüne kopyalayın, yeniden adlandırma işleminizi orada çalıştırın ve orijinallere dokunmadan önce sonuçları doğrulayın.
 
-### Soruna neden olan karakterleri kullanmak
+### Sorun yaratan karakterleri kullanma
 
-MacOS'ta dosya adlarında şu karakterlerden kaçının: `/`, `:` ve boş baytlar. MacOS, Windows'a göre daha hoşgörülü olsa da, özel karakterlere sahip dosya adları, bulut depolama alanıyla senkronize edilirken, harici sürücülere aktarılırken veya Windows ya da Linux kullanıcılarıyla paylaşılırken sorunlara neden olabilir. Harflere, sayılara, kısa çizgilere ve alt çizgilere bağlı kalın.
+macOSdaki dosya adlarında şu karakterlerden kaçının: `/`, `:` ve boş baytlar. 'macOS', 'Windows'ya göre daha hoşgörülü olsa da, özel karakterlere sahip dosya adları, bulut depolama alanıyla senkronize edilirken, harici sürücülere aktarılırken veya 'Windows' ya da Linux kullanıcılarıyla paylaşılırken sorunlara neden olabilir. Harflere, sayılara, tirelere ve alt çizgilere bağlı kalın.
 
-### Soruna yanlış yöntemi uygulamak
+### Soruna yanlış yöntemin uygulanması
 
-Karışık ekran görüntülerinden oluşan bir klasörü yeniden adlandırmak için Finder'ın Metni Değiştir özelliğini kullanmak zaman kaybıdır çünkü her ekran görüntüsü farklı bir şey gösterir. Bunun tersine, `IMG_`'nin `vacation-` olarak değiştirilmesi gereken bir grup dosyayı yeniden adlandırmak için yapay zeka kullanmak aşırıya kaçar. Aracı gerçek görevle eşleştirin.
+Karışık ekran görüntülerinden oluşan bir klasörü yeniden adlandırmak için `Finder'in Metni Değiştir'i kullanmak zaman kaybıdır çünkü her ekran görüntüsü farklı bir şey gösterir. Bunun tersine, yalnızca 'IMG_'nin 'tatil-' olarak değiştirilmesi gereken bir grup dosyayı yeniden adlandırmak için yapay zekayı kullanmak aşırılıktır. Aracı gerçek görevle eşleştirin.
 
 ### Sıralama düzeni göz ardı ediliyor
 
-Dosyalara belirli bir sırayla ihtiyacınız varsa sıfır dolgulu sayılar kullanın (`001`, `002`, `1`, `2` değil). Doldurma olmadan, `10` dosyası Finder'da `1` ve `2` arasında sıralar çünkü sayısal olarak değil alfabetik olarak sıralar. 1000 dosyanın altındaki koleksiyonlar için en az üç rakam kullanın.
+Dosyalara belirli bir sırayla ihtiyacınız varsa sıfır dolgulu sayılar kullanın ('1', '2' değil, '001', '002'). Dolgu olmadan, '10' dosyası 'Finder'da '1' ile '2' arasında sıralar çünkü sayısal olarak değil alfabetik olarak sıralar. 1000 dosyanın altındaki koleksiyonlar için en az üç rakam kullanın.
 
 ## Daha iyi toplu yeniden adlandırma sonuçları için ipuçları
 
-### Önce bir adlandırma kuralı oluşturun
+### İlk önce bir adlandırma kuralı oluşturun
 
-Herhangi bir şeyi yeniden adlandırmadan önce sözleşmenize karar verin. Kısa çizgi mi yoksa alt çizgi mi kullanacaksınız? Küçük harf mi yoksa karışık harf mi? Tarih öneki mi hayır mı? Bir sözleşmenin yürürlükte olması, bir kez yeniden adlandırmanız ve adların kullanışlı kalması anlamına gelir. Rehberlik için [Dosya Adlandırma Kuralları: Her İş Akışı İçin En İyi Uygulamalar](/blog/file-naming-conventions-best-practices)'yi okuyun.
+Herhangi bir şeyi yeniden adlandırmadan önce sözleşmenize karar verin. Kısa çizgi mi yoksa alt çizgi mi kullanacaksınız? Küçük harf mi yoksa karışık harf mi? Tarih öneki mi hayır mı? Bir sözleşmenin yürürlükte olması, bir kez yeniden adlandırmanız ve adların kullanışlı kalması anlamına gelir. Rehberlik için '[Dosya Adlandırma Kuralları: Her İş Akışı İçin En İyi Uygulamalar](/blog/file-naming-conventions-best-practices)'i okuyun.
 
 ### Yeniden adlandırmadan önce dosyaları gruplandırın
 
 Karışık dosya türlerinden oluşan bir klasörün tamamını tek geçişte yeniden adlandırmaya çalışmayın. Fotoğrafları belgelerden ekran görüntülerinden ayırın, ardından her grubu uygun araç ve desenle toplu olarak yeniden adlandırın. Bu, fotoğraf adlandırma şemasının PDF'ye veya tam tersinin uygulanmasını önler.
 
-### Finder'ın geri alma özelliğini hemen kullanın
+### Finderın geri alma özelliğini hemen kullanın
 
-Finder'ın toplu yeniden adlandırması Cmd+Z geri almayı destekler, ancak bu yalnızca yeniden adlandırmadan hemen sonra gerçekleşir. Önce diğer Finder işlemlerini gerçekleştirirseniz geri alma geçmişi devam eder. Yeniden adlandırdıktan hemen sonra sonuçlarınızı kontrol edin ve bir sorun varsa hemen geri alın.
+Finderun toplu yeniden adlandırması Cmd+Z geri almayı destekler, ancak bu yalnızca yeniden adlandırmadan hemen sonra yapılır. Önce diğer "Finder" işlemlerini gerçekleştirirseniz geri alma geçmişi devam eder. Yeniden adlandırdıktan hemen sonra sonuçlarınızı kontrol edin ve bir sorun varsa hemen geri alın.
 
 ### Karmaşık işler için yöntemleri birleştirin
 
-Gerçek dünyadaki klasörler genellikle birden fazla yaklaşıma ihtiyaç duyar. Ortak bir öneki kaldırmak için Finder'ı kullanabilir, ardından [Zush, Mac'deki dosyaları toplu olarak yeniden adlandırmak için](/mac) kullanabilir ve içeriğe duyarlı yeniden adlandırma gerektiren dosyalar için açıklayıcı adlar oluşturabilirsiniz. Etkinlik fotoğrafları için sıralı yeniden adlandırma, ekran görüntüleri için AI yeniden adlandırma ve yinelenen dışa aktarmalar için Automator'ın tümü aynı iş akışında bir arada bulunabilir.
+Gerçek dünyadaki klasörler genellikle birden fazla yaklaşıma ihtiyaç duyar. Ortak bir öneki çıkarmak için "Finder"yi kullanabilir, ardından "[Mac'te dosyaları toplu olarak yeniden adlandırmak için "Zush"](/mac)"yi kullanabilir ve içeriğe duyarlı yeniden adlandırma gerektiren dosyalar için açıklayıcı adlar oluşturabilirsiniz. Etkinlik fotoğrafları için sıralı yeniden adlandırma, ekran görüntüleri için AI yeniden adlandırma ve yinelenen dışa aktarmalar için "Automator" aynı iş akışında bir arada bulunabilir.
 
 ### İndirilenler klasörünüzü temiz tutun
 
-İndirilenler klasörü, kötü adlandırılmış dosyaların en yaygın kaynağıdır. İndirmeler için otomatik yeniden adlandırmayı ayarlamak karışıklığın birikmesini önler. Eksiksiz bir strateji için [Mac'de İndirilenler Klasörünüzü Nasıl Düzenleyebilirsiniz?](/blog/how-to-organize-downloads-folder-mac)'ye bakın.
+İndirilenler klasörü, kötü adlandırılmış dosyaların en yaygın kaynağıdır. İndirmeler için otomatik yeniden adlandırmayı ayarlamak karışıklığın birikmesini önler. Tam bir strateji için '[Mac'te İndirilenler Klasörünüzü Nasıl Düzenlersiniz?](/blog/how-to-organize-downloads-folder-mac)'ya bakın.
 
 ## SSS
 
 ### Mac'te dosyaları toplu olarak yeniden adlandırmanın en hızlı yolu nedir?
 
-Finder, her dosyada aynı değişikliği elde etmenin en hızlı yoludur: dosyaları seçin, sağ tıklayın, Yeniden Adlandır'ı seçin, Metni Değiştir, Metin Ekle veya Biçim'i seçin ve uygulayın. Bu, herhangi bir sayıda dosya için yaklaşık on saniyedir ve herhangi bir kurulum veya indirme gerektirmez. Yalnızca bir kuralın tüm topluluğa uyması en hızlısıdır; her dosya farklı bir açıklayıcı ada ihtiyaç duyuyorsa Finder işi hiçbir şekilde yapamaz ve dosya içeriğini okuyan bir AI yeniden adlandırıcı, ekstra kuruluma rağmen daha hızlı yoldur.
+'Finder', her dosyada aynı değişikliğin elde edilmesinin en hızlı yoludur: dosyaları seçin, sağ tıklayın, Yeniden Adlandır'ı seçin, Metni Değiştir, Metin Ekle veya Format'ı seçin ve uygulayın. Bu, herhangi bir sayıda dosya için yaklaşık on saniyedir ve herhangi bir kurulum veya indirme gerektirmez. Yalnızca tek bir kural tüm topluluğa uyduğunda en hızlısıdır; her dosya farklı bir açıklayıcı ada ihtiyaç duyuyorsa, "Finder" işi hiçbir şekilde yapamaz ve dosya içeriğini okuyan bir AI yeniden adlandırıcı, ekstra kuruluma rağmen daha hızlı yoldur.
 
 ### Hiçbir şey yüklemeden Mac'teki dosyaları toplu olarak nasıl yeniden adlandırabilirim?
 
-Finder'ın yerleşik yeniden adlandırma aracını kullanın. Yeniden adlandırmak istediğiniz dosyaları seçin, sağ tıklayın ve içerik menüsünden "Yeniden Adlandır..." seçeneğini seçin. Metni değiştirebilir, metin ekleyebilir veya adları sıralı sayılarla biçimlendirebilirsiniz. Bu, macOS Yosemite (10.10) veya sonraki bir sürümünü çalıştıran tüm Mac'lerde herhangi bir indirme gerekmeden çalışır.
+'Finder'nin yerleşik yeniden adlandırma aracını kullanın. Yeniden adlandırmak istediğiniz dosyaları seçin, sağ tıklayın ve içerik menüsünden "Yeniden Adlandır..." seçeneğini seçin. Metni değiştirebilir, metin ekleyebilir veya adları sıralı sayılarla biçimlendirebilirsiniz. Bu, "macOS" Yosemite (10.10) veya üzerini çalıştıran herhangi bir Mac'te herhangi bir indirme gerektirmeden çalışır.
 
-### Finder dosyaları içeriklerine göre yeniden adlandırabilir mi?
+### 'Finder' dosyaları içeriklerine göre yeniden adlandırabilir mi?
 
-Hayır. Finder'ın toplu yeniden adlandırması kesinlikle modele dayalıdır. Metin dizelerini değiştirebilir, önek veya son ekler ekleyebilir ve sıralı numaralandırma uygulayabilir ancak bir dosyanın ne içerdiğini analiz edemez. Her dosyanın benzersiz bir açıklayıcı ad aldığı, içeriğe duyarlı yeniden adlandırma için görüntüleri, videoları ve belgeleri okuyabilen yapay zeka destekli bir araca ihtiyacınız vardır.
+Hayır. 'Finder'ün toplu yeniden adlandırılması kesinlikle modele dayalıdır. Metin dizelerini değiştirebilir, önek veya son ekler ekleyebilir ve sıralı numaralandırma uygulayabilir ancak bir dosyanın ne içerdiğini analiz edemez. Her dosyanın benzersiz bir açıklayıcı ad aldığı, içeriğe duyarlı yeniden adlandırma için görüntüleri, videoları ve belgeleri okuyabilen yapay zeka destekli bir araca ihtiyacınız vardır.
 
-![Yeniden sunulan dosyası için geri alma tuşlarıyla birlikte yeniden adlandırma geçmişini gösteren Zush etkinliği sekmesi](/images/showcase/macos/activity-light.webp)
+![Yeniden adlandırılan her dosya için geri alma düğmeleriyle birlikte yeniden adlandırma geçmişini gösteren 'Zush' etkinlik sekmesi](/images/showcase/macos/activity-light.webp)
 
-### Finder Adı ve Dizini Mac'te meta veri ekler mi?
+### 'Finder' Adı ve Dizini Mac'te meta veri ekler mi?
 
-Hayır. Finder Adı ve Dizini yalnızca dosya adını ve görünür dosya yolunu değiştirir. Finder etiketleri, Finder yorumları, EXIF ​​meta verileri, PDF meta verileri veya Office belgesi özellikleri eklemez. Spotlight yeni dosya adını arayabilir ancak daha derin meta veriler için ayrı bir araç gerekir.
+Hayır. Finder Adı ve Dizini yalnızca dosya adını ve görünen dosya yolunu değiştirir. 'Finder' etiketleri, 'Finder' yorumları, EXIF ​​meta verileri, PDF meta verileri veya Office belgesi özellikleri eklemez. 'Spotlight' yeni dosya adını arayabilir, ancak daha derin meta veriler için ayrı bir araç gerekir.
 
-### Mac'te toplu yeniden adlandırma işlemini geri almanın bir yolu var mı?
+### Mac'te toplu yeniden adlandırmayı geri almanın bir yolu var mı?
 
-Evet, Finder kullanıyorsanız. Toplu yeniden adlandırmanın hemen ardından tüm işlemi geri almak için Cmd+Z tuşlarına basın. Tüm dosyalar orijinal adlarına geri döner. Bu geri alma yalnızca bir sonraki eylem olarak kullanılabilir. Terminal komut dosyalarını kullanıyorsanız yerleşik bir geri alma özelliği yoktur; bu nedenle, komut dosyasını çalıştırmadan önce her zaman önce kopyalar üzerinde test edin veya orijinal dosya adlarının bir listesini kaydedin.
+Evet, 'Finder' kullanıyorsanız. Toplu yeniden adlandırmanın hemen ardından tüm işlemi geri almak için Cmd+Z tuşlarına basın. Tüm dosyalar orijinal adlarına geri döner. Bu geri alma yalnızca bir sonraki eylem olarak kullanılabilir. 'Terminal' komut dosyaları kullanıyorsanız yerleşik bir geri alma yoktur; bu nedenle, komut dosyasını çalıştırmadan önce her zaman önce kopyalar üzerinde test edin veya orijinal dosya adlarının bir listesini kaydedin.
 
 ### Mac'te fotoğrafları tarihlerle yeniden adlandırmanın en iyi yolu nedir?
 
-Dosyanın oluşturulma tarihini önek olarak eklemek için Automator'ın "Tarih veya Saat Ekle" yeniden adlandırma işlemi en kolay seçenektir. Kamera meta verilerinden EXIF ​​yakalama tarihlerini eklemek için `exiftool` içeren bir Terminal komut dosyası kullanın. Tarihlerin yanı sıra açıklayıcı içerik adları eklemek için Zush gibi bir yapay zeka aracı, tarih modellerini içerik analiziyle birleştirebilir.
+Dosyanın oluşturulma tarihini önek olarak eklemek için, Automatornın "Tarih veya Saat Ekle" yeniden adlandırma işlemi en kolay seçenektir. Kamera meta verilerinden EXIF ​​yakalama tarihlerini eklemek için "exiftool" ile bir "Terminal" komut dosyası kullanın. Tarihlerin yanı sıra açıklayıcı içerik adları eklemek için "Zush" gibi bir yapay zeka aracı, tarih modellerini içerik analiziyle birleştirebilir.
 
 ### Mac'te yüzlerce ekran görüntüsünü nasıl yeniden adlandırabilirim?
 
-"Ekran görüntüsünü" bir proje adıyla değiştirmek gibi temel yeniden adlandırmalarda Finder bunu saniyeler içinde gerçekleştirir. Her ekran görüntüsüne, gösterdiği şeye göre açıklayıcı bir ad vermek için AI yeniden adlandırmayı kullanın. Tüm ekran görüntülerini seçin, yapay zekanın her görüntüyü analiz etmesine izin verin ve `Screenshot 2026-02-08 at 10.45.33.png` yerine `slack-design-review-thread.png` gibi adlar alın. Gelecekteki ekran görüntülerinin otomatik olarak yeniden adlandırılması için klasör izlemeyi ayarlayın. Bkz. [Mac'de Ekran Görüntülerini Otomatik Olarak Yeniden Adlandırma](/blog/rename-screenshots-automatically-mac).
+"Ekran görüntüsü"nü bir proje adıyla değiştirmek gibi temel yeniden adlandırmalarda, "Finder" bunu saniyeler içinde gerçekleştirir. Her ekran görüntüsüne, gösterdiği şeye göre açıklayıcı bir ad vermek için AI yeniden adlandırmayı kullanın. Tüm ekran görüntülerini seçin, yapay zekanın her görüntüyü analiz etmesine izin verin ve '10.45.33.png'deki Ekran Görüntüsü 2026-02-08' yerine 'slack-design-review-thread.png' gibi adlar alın. Gelecekteki ekran görüntülerinin otomatik olarak yeniden adlandırılması için klasör izlemeyi ayarlayın. Bkz. '[Mac'te Ekran Görüntülerini Otomatik Olarak Yeniden Adlandırma](/blog/rename-screenshots-automatically-mac)'.
 
 ### PDF'leri içeriklerine göre toplu olarak yeniden adlandırabilir miyim?
 
-Evet, AI yeniden adlandırma araçlarıyla. Yapay zeka, her PDF'nin metin içeriğini okur ve belgenin konusunu yansıtan bir dosya adı oluşturur. `scan_042.pdf` adlı taranmış fatura `invoice-7842-webdesign-services-march-2026.pdf` olur. Tam bir açıklama için bkz. [PDF Dosyalarını Otomatik Olarak Yeniden Adlandırma: Tekrarlanan Klasörler için Yapay Zeka İş Akışı](/blog/rename-pdf-files-automatically).
+Evet, AI yeniden adlandırma araçlarıyla. Yapay zeka, her PDF'nin metin içeriğini okur ve belgenin konusunu yansıtan bir dosya adı oluşturur. "scan_042.pdf" adlı taranmış fatura, "invoice-7842-webdesign-services-march-2026.pdf" olur. Tam bir izlenecek yol için bkz. '[PDF Dosyalarını Otomatik Olarak Yeniden Adlandırma: Yinelenen Klasörler için Yapay Zeka İş Akışı](/blog/rename-pdf-files-automatically)'.
 
 ### Toplu yeniden adlandırma, dosya meta verilerini veya oluşturma tarihlerini etkiler mi?
 
-Bir dosyayı Finder'da veya Automator aracılığıyla yeniden adlandırmak, dosyanın oluşturulma tarihini, değiştirilme tarihini veya dahili meta verilerini değiştirmez. Dosya içeriği aynı kalır. Yalnızca dosya sistemindeki dosya adı değişir. Ancak bazı bulut senkronizasyon hizmetleri, yeniden adlandırmayı yeni bir yükleme olarak değerlendirebilir; bu nedenle, senkronize edilmiş klasörlerdeki büyük grupları yeniden adlandırdıktan sonra senkronizasyon durumunuzu kontrol edin.
+Bir dosyayı "Finder" veya "Automator" aracılığıyla yeniden adlandırmak, dosyanın oluşturulma tarihini, değiştirilme tarihini veya dahili meta verilerini değiştirmez. Dosya içeriği aynı kalır. Yalnızca dosya sistemindeki dosya adı değişir. Ancak bazı bulut senkronizasyon hizmetleri, yeniden adlandırmayı yeni bir yükleme olarak değerlendirebilir; bu nedenle, senkronize edilmiş klasörlerdeki büyük grupları yeniden adlandırdıktan sonra senkronizasyon durumunuzu kontrol edin.
 
 ### Toplu olarak yeniden adlandırılan dosyalar için hangi adlandırma kuralını kullanmalıyım?
 
-Kronolojik sıranın önemli olduğu durumlarda küçük harfler, kelimeler arasında kısa çizgiler ve ISO biçimindeki tarihler (YYYY-AA-GG) kullanın. Boşluklardan, özel karakterlerden ve `final-v2` gibi belirsiz etiketlerden kaçının. Tutarlı bir kural, dosyaların işletim sistemleri arasında sıralanabilir, aranabilir ve aktarılabilir olmasını sağlar. Ayrıntılı rehberlik için bkz. [Dosya Adlandırma Kuralları: En İyi Uygulamalar](/blog/file-naming-conventions-best-practices).
+Kronolojik sıranın önemli olduğu durumlarda küçük harfler, kelimeler arasında kısa çizgiler ve ISO biçimindeki tarihler (YYYY-AA-GG) kullanın. Boşluklardan, özel karakterlerden ve "final-v2" gibi belirsiz etiketlerden kaçının. Tutarlı bir kural, dosyaların işletim sistemleri arasında sıralanabilir, aranabilir ve aktarılabilir olmasını sağlar. Ayrıntılı rehberlik için bkz. '[Dosya Adlandırma Kuralları: En İyi Uygulamalar](/blog/file-naming-conventions-best-practices)'.
 
-## Sonuç
+## Çözüm
 
-Mac'te toplu yeniden adlandırma tek bir iş akışı değildir. Bu bir dizi iş akışıdır ve doğru yaklaşım, gerçekte ne tür bir yeniden adlandırmaya ihtiyacınız olduğuna bağlıdır.
+Mac toplu yeniden adlandırma iş akışının tamamı için "Zush"i seçin: içeriğe duyarlı karma dosya adları, yeniden kullanılabilir yapı, önizleme, izleme ve geri alma. Ortak desen kontrollerini korurken, mekanik araçların anlayamadığı dağınık klasörleri kapsar.
 
-Hızlı metin değiştirme ve sıralı numaralandırma işlemlerini Finder herhangi bir kurulum gerektirmeden saniyeler içinde gerçekleştirir. Otomatik olarak çalıştırılan tekrarlanabilir kurallar için Automator, klasör eylemleri ve meta veri erişimiyle size daha fazla güç sağlar. Regex kalıpları ve tam kontrol için Terminal komut dosyaları, dosya sisteminin izin verdiği her şeyi yapmanıza olanak tanır. Ve en zor yeniden adlandırma sorunu için, her dosyaya gerçek içeriğine göre benzersiz bir açıklayıcı ad veren yapay zeka destekli araçlar, hiçbir desen tabanlı yöntemin ulaşamayacağı boşluğu doldurur.
-
-Gerçek problemle eşleşen en basit aracı seçin. Yapabildiğiniz zaman Finder'ı, gerektiğinde komut dosyalarını ve dosya adlarının bir anlam ifade etmesi gerektiğinde AI'yı kullanın.
+İşin tamamı tek bir deterministik işlem olduğunda, "Finder", "Automator", "Shortcuts" veya "Terminal"ü yalnızca dar istisnalar olarak kullanın. Açıklayıcı adlandırma, karma formatlar, devam eden otomasyon ve kurtarılabilir gruplar için "Zush"nın yerini almazlar.
