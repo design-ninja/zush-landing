@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.8.8.0] - 2026-08-20
+
+### Improved
+- Batch Rename can now accept larger batches even when fewer free rename credits remain, with a clear Upgrade to PRO action instead of interrupting the rename flow.
+- Reduced the Microsoft Store download size while keeping required Windows components installed automatically.
+
+### Fixed
+- Fixed an issue where the Include subfolders option in folder monitoring could revert or fail to save during quick changes.
+
+
 ## [3.8.7.0] - 2026-08-18
 
 ### Improved
