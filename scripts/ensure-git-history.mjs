@@ -20,13 +20,15 @@
  */
 import { execSync } from 'node:child_process';
 
+const GIT_FETCH_TIMEOUT_MS = 45_000;
+
 function run(command) {
   return execSync(command, { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
 }
 
-function tryRun(command) {
+function tryRun(command, timeout = undefined) {
   try {
-    execSync(command, { stdio: ['ignore', 'pipe', 'pipe'] });
+    execSync(command, { stdio: ['ignore', 'pipe', 'pipe'], timeout });
     return true;
   } catch {
     return false;
@@ -57,7 +59,10 @@ if (VERCEL_GIT_PROVIDER === 'github' && VERCEL_GIT_REPO_OWNER && VERCEL_GIT_REPO
 }
 
 console.log('[git-history] Shallow clone detected; fetching full history for accurate sitemap lastmod...');
-if (tryRun('git fetch --unshallow --quiet') || tryRun('git fetch --deepen=2000 --quiet')) {
+if (
+  tryRun('git fetch --unshallow --quiet', GIT_FETCH_TIMEOUT_MS) ||
+  tryRun('git fetch --deepen=2000 --quiet', GIT_FETCH_TIMEOUT_MS)
+) {
   const stillShallow = (() => {
     try {
       return run('git rev-parse --is-shallow-repository') === 'true';
