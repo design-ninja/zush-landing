@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.9.5] - 2026-08-21
+### Added
+- 🎉 Route AI overage to Qwen 3.7 for improved analysis
+
+### Fixed
+- 🐛 Preserve Bring Your Own Key (BYOK) models across tabs and sessions
+- 🛡️ Prevent denied cloud retries for enhanced privacy
+- ⚡ Show ready status for offline AI configurations
+- 🩹 Handle permanent processing failures more robustly
+- 📄 Accept raw document exports from iWork applications
+- 💬 Clarify Bring Your Own Key and Ollama AI error messages
+- 🔒 Enforce BYOK state and block cloud analysis when Ollama is active
+- 🛑 Stop AI fallback for moderated content
+
 ## [3.9.4] - 2026-08-17
 
 ### Added
