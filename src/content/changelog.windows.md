@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.8.9.0] - 2026-08-21
+
+### Improved
+- Smart Metadata updates and Undo are safer, protecting files changed after a rename and preserving existing metadata files.
+- Ollama and Bring Your Own Key setup errors are clearer and include more actionable guidance.
+- Technical address and API key fields no longer show irrelevant spell-check suggestions.
+
+### Fixed
+- Fixed launch failures after Store installation on PCs without a separately installed .NET 8 runtime.
+- Improved checkout and license activation recovery after temporary connection issues.
+
+
 ## [3.8.8.0] - 2026-08-20
 
 ### Improved
