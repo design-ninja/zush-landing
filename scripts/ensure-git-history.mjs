@@ -18,7 +18,7 @@
  * Safe on full clones (skips) and safe when the fetch fails (build proceeds
  * with whatever history is available — no worse than before).
  */
-import { execSync } from 'node:child_process';
+import { execSync, spawnSync } from 'node:child_process';
 
 const GIT_FETCH_TIMEOUT_MS = 45_000;
 
@@ -33,6 +33,15 @@ function tryRun(command, timeout = undefined) {
   } catch {
     return false;
   }
+}
+
+function tryGitFetch(args) {
+  const result = spawnSync('git', ['fetch', ...args], {
+    stdio: ['ignore', 'ignore', 'ignore'],
+    timeout: GIT_FETCH_TIMEOUT_MS,
+    killSignal: 'SIGKILL',
+  });
+  return result.status === 0;
 }
 
 let isShallow = false;
@@ -60,8 +69,8 @@ if (VERCEL_GIT_PROVIDER === 'github' && VERCEL_GIT_REPO_OWNER && VERCEL_GIT_REPO
 
 console.log('[git-history] Shallow clone detected; fetching full history for accurate sitemap lastmod...');
 if (
-  tryRun('git fetch --unshallow --quiet', GIT_FETCH_TIMEOUT_MS) ||
-  tryRun('git fetch --deepen=2000 --quiet', GIT_FETCH_TIMEOUT_MS)
+  tryGitFetch(['--unshallow', '--quiet']) ||
+  tryGitFetch(['--deepen=2000', '--quiet'])
 ) {
   const stillShallow = (() => {
     try {
