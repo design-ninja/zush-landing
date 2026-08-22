@@ -2,7 +2,23 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
+@keyframes promotion-banner-glow {
+    0%,
+    100% {
+        border-color: color-mix(in srgb, var(--primary), transparent 82%);
+        box-shadow: 0 0 8px var(--promotion-glow-idle);
+    }
+
+    50% {
+        border-color: color-mix(in srgb, var(--primary), transparent 64%);
+        box-shadow: 0 0 20px var(--promotion-glow-peak);
+    }
+}
+
 .PromotionBanner {
+    --promotion-glow-idle: color-mix(in srgb, var(--primary), transparent 86%);
+    --promotion-glow-peak: color-mix(in srgb, var(--primary), transparent 70%);
+
     display: flex;
     align-items: center;
     gap: 0.55rem;
@@ -18,7 +34,13 @@
     font-weight: 600;
     text-decoration: none;
     cursor: pointer;
+    animation: promotion-banner-glow 2.8s ease-in-out infinite;
     transition: border-color 0.2s ease, background-color 0.2s ease;
+
+    :global(html[data-theme='dark']) & {
+        --promotion-glow-idle: color-mix(in srgb, var(--primary), transparent 84%);
+        --promotion-glow-peak: color-mix(in srgb, var(--primary), transparent 68%);
+    }
 
     &:hover,
     &:focus-visible {
@@ -141,6 +163,8 @@
         &__Action,
         &__Action svg,
         & {
+            animation: none;
+            box-shadow: 0 0 12px var(--promotion-glow-peak);
             transition: none;
         }
     }
