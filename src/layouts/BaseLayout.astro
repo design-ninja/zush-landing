@@ -329,6 +329,7 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
         import { bindCheckoutAutoOpen } from '@/utils/checkoutAutoOpen';
         import { bindDownloadTracking, bindProClickTracking, bindProPlanClickTracking } from '@/utils/download';
         import { bindPricingCheckout } from '@/utils/pricingCheckout';
+        import { bindPromoCodeCopy } from '@/utils/promoCode';
         import { bindScrollReveal } from '@/utils/scrollReveal';
         import { bindScrollToTopButton } from '@/utils/scrollToTop';
         import { bindStoreLinks } from '@/utils/storeLinks';
@@ -411,6 +412,7 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
           bindProClickTracking();
           bindProPlanClickTracking();
           bindPricingCheckout();
+          bindPromoCodeCopy();
           bindScrollToTopButton();
           bindStoreLinks();
         };

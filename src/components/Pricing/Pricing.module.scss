@@ -106,13 +106,14 @@
 
 .PricingCard {
     @include glass-morphism;
-    padding: 1.5rem 1.5rem 1.4rem;
+    padding: 1.75rem 1.5rem 1.5rem;
     border: 1px solid var(--border);
     border-radius: $radius-xl;
     display: grid;
-    grid-template-rows: auto 1fr auto auto;
+    grid-template-rows: auto auto 1fr auto auto;
+    row-gap: 0.75rem;
     height: 100%;
-    min-height: 19rem;
+    min-height: 21.5rem;
     position: relative;
     overflow: visible;
     text-align: center;
@@ -136,10 +137,9 @@
     }
 
     @include mobile {
-        padding: 1.4rem 1.25rem 1.25rem;
-        min-height: 0;
-        // Shorter than square on mobile, but tall enough for content to fit
-        aspect-ratio: 4 / 3;
+        padding: 1.6rem 1.25rem 1.35rem;
+        min-height: 21.5rem;
+        aspect-ratio: auto;
     }
 
     &_featured {
@@ -150,28 +150,11 @@
             0 1px 2px color-mix(in srgb, var(--primary), transparent 88%);
     }
 
-    &__Badge {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: var(--primary);
-        color: var(--primary-foreground);
-        font-size: 0.68rem;
-        font-weight: 700;
-        letter-spacing: 0.09em;
-        text-transform: uppercase;
-        white-space: nowrap;
-        padding: 0.34rem 0.9rem;
-        border-radius: $radius-full;
-        box-shadow: 0 4px 12px color-mix(in srgb, var(--primary), transparent 60%);
-    }
-
     &__Header {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 0.25rem;
+        gap: 0.45rem;
     }
 
     &__Name {
@@ -217,6 +200,15 @@
         font-family: $font-family-heading;
     }
 
+    &__OriginalPrice {
+        color: var(--muted-foreground);
+        font-family: $font-family-heading;
+        font-size: 1.2rem;
+        font-weight: 500;
+        text-decoration-color: currentColor;
+        text-decoration-thickness: 2px;
+    }
+
     &__PricePeriod {
         color: var(--muted-foreground);
         font-size: 0.82rem;
@@ -236,12 +228,129 @@
         gap: 0.45rem;
         margin: 0 0 1rem;
         color: var(--primary);
-        font-size: 0.9rem;
+        font-size: 0.84rem;
         font-weight: 500;
 
         svg {
             flex-shrink: 0;
         }
+    }
+
+    &__PromotionSlot {
+        display: flex;
+        align-items: center;
+        align-self: stretch;
+        padding-bottom: 0.25rem;
+    }
+
+    &__Promotion {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.65rem;
+        width: max-content;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0.38rem 0.42rem 0.38rem 0.5rem;
+        border: 1px solid color-mix(in srgb, var(--primary), transparent 84%);
+        border-radius: $radius-full;
+        background: color-mix(in srgb, var(--background), transparent 20%);
+        box-sizing: border-box;
+    }
+
+    &__PromotionSaving {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: $radius-full;
+        background: var(--tone-green-bg);
+        color: var(--tone-green-fg);
+        font-size: 0.7rem;
+        font-weight: 600;
+        line-height: 1.25;
+        letter-spacing: 0.01em;
+        white-space: nowrap;
+
+        span {
+            color: inherit;
+        }
+    }
+
+    &__PromotionMessage {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.28rem;
+        color: var(--muted-foreground);
+        font-size: 0.75rem;
+        white-space: nowrap;
+
+        strong {
+            color: var(--foreground);
+            font-weight: 600;
+        }
+    }
+
+    &__PromoCode {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.28rem;
+        min-height: 1.8rem;
+        padding: 0.25rem 0.45rem 0.25rem 0.52rem;
+        border: 1px solid transparent;
+        border-radius: $radius-full;
+        background: color-mix(in srgb, var(--primary), transparent 90%);
+        color: var(--primary);
+        transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+
+        &:hover,
+        &:focus-visible {
+            border-color: color-mix(in srgb, var(--primary), transparent 72%);
+            background: color-mix(in srgb, var(--primary), transparent 86%);
+        }
+
+        &:active {
+            transform: scale(0.98);
+        }
+
+        &[data-copy-state='copied'] .PricingCard__CopyIcon {
+            display: none;
+        }
+
+        &[data-copy-state='copied'] .PricingCard__CheckIcon {
+            display: block;
+        }
+    }
+
+    &__PromoCodeValue {
+        font-family: $font-mono;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.045em;
+    }
+
+    &__PromoCodeStatus {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    &__CopyIcon,
+    &__CheckIcon {
+        width: 0.82rem;
+        height: 0.82rem;
+        flex-shrink: 0;
+    }
+
+    &__CheckIcon {
+        display: none;
     }
 
     &__ButtonWrapper {
@@ -290,5 +399,11 @@
         justify-content: center;
         white-space: normal;
         text-align: center;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        &__PromoCode {
+            transition: none;
+        }
     }
 }

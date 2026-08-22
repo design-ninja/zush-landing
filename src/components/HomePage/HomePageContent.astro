@@ -34,6 +34,7 @@ interface Props {
 const { copy, locale, secondaryHref, professionCopy } = Astro.props as Props;
 const macVersion = parseLatestVersion(macChangelogSource) ?? undefined;
 const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
+const showPromotionBanner = locale === 'en';
 ---
 
 <Hero
@@ -55,6 +56,7 @@ const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
   softpediaRatedByLabel={SOFTPEDIA_RATED_BY_LABELS[locale]}
   softpediaReviewAriaLabel={SOFTPEDIA_REVIEW_ARIA_LABELS[locale]}
   natureBackground
+  showPromotion={showPromotionBanner}
 />
 <DemoVideo label={copy.home.showcase.title} />
 <Features

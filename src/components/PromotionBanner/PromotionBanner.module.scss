@@ -1,0 +1,147 @@
+// fallow-ignore-file unused-export
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.PromotionBanner {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    width: max-content;
+    max-width: 100%;
+    min-height: 2.5rem;
+    margin: 0 auto 3.75rem;
+    padding: 0.4rem 0.45rem 0.4rem 0.7rem;
+    border: 1px solid color-mix(in srgb, var(--primary), transparent 84%);
+    border-radius: $radius-full;
+    background: color-mix(in srgb, var(--background), transparent 20%);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+
+    &:hover,
+    &:focus-visible {
+        border-color: color-mix(in srgb, var(--primary), transparent 72%);
+        background: color-mix(in srgb, var(--background), transparent 10%);
+    }
+
+    &:hover &__Action,
+    &:focus-visible &__Action {
+        color: var(--primary);
+
+        svg {
+            transform: translateY(2px);
+        }
+    }
+
+    &__Tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        padding: 0.25rem 0.6rem;
+        border-radius: $radius-full;
+        background: var(--tone-green-bg);
+        color: var(--tone-green-fg);
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: 1.25;
+        letter-spacing: 0.01em;
+        white-space: nowrap;
+    }
+
+    &__Mark {
+        color: inherit;
+        font-size: inherit;
+        line-height: 1;
+    }
+
+    &__Label {
+        color: inherit;
+        white-space: nowrap;
+    }
+
+    &__Message {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        color: var(--muted-foreground);
+        font-size: inherit;
+        font-weight: inherit;
+        white-space: nowrap;
+
+        strong {
+            color: var(--foreground);
+            font-weight: 500;
+        }
+
+        code {
+            padding: 0.16rem 0.4rem;
+            border-radius: $radius-full;
+            background: color-mix(in srgb, var(--primary), transparent 90%);
+            color: var(--primary);
+            font-family: $font-mono;
+            font-size: inherit;
+            font-weight: inherit;
+            letter-spacing: 0.045em;
+        }
+    }
+
+    &__Action {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        min-height: 1.7rem;
+        margin-left: 0.1rem;
+        padding: 0.2rem 0.48rem 0.2rem 0.62rem;
+        border-left: 1px solid color-mix(in srgb, var(--foreground), transparent 87%);
+        color: var(--foreground);
+        font-size: inherit;
+        font-weight: inherit;
+        white-space: nowrap;
+        transition: color 0.2s ease;
+
+        svg {
+            width: 0.9rem;
+            height: 0.9rem;
+            transition: transform 0.2s ease;
+        }
+
+    }
+
+    @include mobile {
+        gap: 0.4rem;
+        min-height: 2.25rem;
+        margin-bottom: 2.15rem;
+        padding: 0.34rem 0.38rem 0.34rem 0.58rem;
+
+        &__Message {
+            gap: 0.3rem;
+        }
+
+        &__Action {
+            padding-right: 0.36rem;
+            padding-left: 0.48rem;
+        }
+    }
+
+    @media (max-width: 420px) {
+        &__Action span {
+            display: none;
+        }
+    }
+
+    @media (max-width: 360px) {
+        &__Label {
+            display: none;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        &__Action,
+        &__Action svg,
+        & {
+            transition: none;
+        }
+    }
+}
