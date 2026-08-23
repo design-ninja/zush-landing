@@ -49,6 +49,28 @@ export interface ProfessionSectionCopy {
   items: ProfessionCardCopy[];
 }
 
+export interface ProfessionComparisonCopy {
+  eyebrow: string;
+  title: string;
+  description: string;
+  ariaLabel: string;
+  columns: [string, string, string];
+  items: Array<{
+    need: string;
+    zushWorkflow: string;
+    benefit: string;
+  }>;
+  note?: string;
+  boundaryTitle?: string;
+  boundaryItems?: string[];
+}
+
+export interface ProfessionEditorialReviewCopy {
+  label: string;
+  ratingAria: string;
+  readLabel: string;
+}
+
 export interface ProfessionPageCopy {
   path: `/${string}`;
   seo: {
@@ -87,12 +109,15 @@ export interface ProfessionPageCopy {
   workflow: ProfessionSectionCopy & {
     links?: Array<{ label: string; href: string }>;
   };
+  comparison?: ProfessionComparisonCopy;
   documents: ProfessionSectionCopy;
+  namingRecipes?: ProfessionSectionCopy;
   outcomes?: ProfessionSectionCopy;
   testimonials?: Array<{ name: string; role: string; quote: string }>;
   testimonialsTitle?: string;
   testimonialsDescription?: string;
   testimonialsRatingAria?: string;
+  editorialReview?: ProfessionEditorialReviewCopy;
   pricingPreface?: string;
   faq: {
     title: string;

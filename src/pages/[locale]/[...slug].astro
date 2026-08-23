@@ -38,6 +38,7 @@ import { getStaticPageCopy, isStaticLocalizedRoute } from '@/i18n/staticPages';
 import { getSeoForPath } from '@/seo/config';
 import { getLocalizedContent } from '@/i18n/localizedContent';
 import { getProfessionKeyForRoute } from '@/i18n/professions/types';
+import { enhanceLocalizedProfessionPage } from '@/i18n/professions/seoAdditions';
 
 const FEATURE_VIEWS = {
   '/rename-pdf-with-ai': RenamePDFWithAI,
@@ -110,7 +111,11 @@ const localizedHomeHref = getLocalizedPath('/', locale);
 const batchRenamePage = SEARCH_LANDING_PAGES['batch-rename-files'];
 const professionKey = getProfessionKeyForRoute(route);
 const professionPage = professionKey
-  ? getLocalizedContent(locale as Exclude<Locale, 'en'>).professions[professionKey]
+  ? enhanceLocalizedProfessionPage(
+      getLocalizedContent(locale as Exclude<Locale, 'en'>).professions[professionKey],
+      locale as Exclude<Locale, 'en'>,
+      professionKey,
+    )
   : null;
 const professionSeo = professionPage
   ? {

@@ -21,6 +21,7 @@ import StarRating from '@/components/StarRating';
 import Text from '@/components/Text';
 import { FEATURE_DEMO_COPY } from '@/i18n/featureDemoCopy';
 import { getCopy } from '@/i18n/copy';
+import { SOFTPEDIA_REVIEW } from '@/data/accountantsLanding';
 import type { Locale } from '@/i18n/config';
 import type { ProfessionKey, ProfessionPageCopy } from '@/i18n/professions/types';
 import ProfessionFieldExplorer from './ProfessionFieldExplorer';
@@ -29,6 +30,7 @@ import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module
 import testimonialStyles from '@/components/Testimonials/Testimonials.module.scss';
 import heroStyles from '@/components/LegalLandingPage/LegalHero.module.scss';
 import styles from '@/components/LegalLandingPage/LegalLandingPage.module.scss';
+import seoStyles from '@/components/MedicalLandingPage/MedicalLandingPage.module.scss';
 
 interface Props {
   profession: ProfessionKey;
@@ -177,6 +179,47 @@ const modeIcons = {
   </div>
 </section>
 
+{page.comparison && (
+  <section class={seoStyles.Comparison} aria-labelledby={`${profession}-comparison-title`}>
+    <div class={seoStyles.Comparison__Container}>
+      <div class={sectionHeaderStyles.SectionHeader}>
+        <p class={seoStyles.Comparison__Eyebrow}>{page.comparison.eyebrow}</p>
+        <Heading as="h2" align="center" id={`${profession}-comparison-title`} className={sectionHeaderStyles.SectionHeader__Title}>
+          {page.comparison.title}
+        </Heading>
+        <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>
+          {page.comparison.description}
+        </Text>
+      </div>
+      <div class={seoStyles.Comparison__TableWrap} tabindex="0" role="region" aria-label={page.comparison.ariaLabel}>
+        <table class={seoStyles.ComparisonTable}>
+          <thead>
+            <tr>
+              {page.comparison.columns.map((column) => <th scope="col">{column}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {page.comparison.items.map((row) => (
+              <tr>
+                <th scope="row">{row.need}</th>
+                <td>{row.zushWorkflow}</td>
+                <td>{row.benefit}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {page.comparison.note && <p class={seoStyles.Comparison__Note}>{page.comparison.note}</p>}
+      {page.comparison.boundaryTitle && page.comparison.boundaryItems && (
+        <div class={seoStyles.Comparison__Boundary}>
+          <h3>{page.comparison.boundaryTitle}</h3>
+          <ul>{page.comparison.boundaryItems.map((item) => <li>{item}</li>)}</ul>
+        </div>
+      )}
+    </div>
+  </section>
+)}
+
 <CloudFolders title={localeCopy.home.cloudFoldersTitle} />
 
 <section class={styles.Documents} aria-labelledby={`${profession}-documents-title`}>
@@ -196,6 +239,30 @@ const modeIcons = {
     </div>
   </div>
 </section>
+
+{page.namingRecipes && (
+  <section class={styles.Documents} aria-labelledby={`${profession}-naming-recipes-title`}>
+    <div class={styles.Documents__Container}>
+      <div class={sectionHeaderStyles.SectionHeader}>
+        <Heading as="h2" align="center" id={`${profession}-naming-recipes-title`} className={sectionHeaderStyles.SectionHeader__Title}>
+          {page.namingRecipes.title}
+        </Heading>
+        <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>
+          {page.namingRecipes.description}
+        </Text>
+      </div>
+      <div class={styles.Documents__Grid}>
+        {page.namingRecipes.items.map((item) => (
+          <article class={styles.DocumentType}>
+            <h3 class={styles.DocumentType__Title}>{item.title}</h3>
+            <p class={styles.DocumentType__Description}>{item.description}</p>
+            {item.example && <code class={styles.DocumentType__Example}>{item.example}</code>}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
 
 {page.outcomes && (
   <section class={testimonialStyles.Testimonials} aria-labelledby={`${profession}-outcomes-title`}>
@@ -229,6 +296,23 @@ const modeIcons = {
           </Text>
         )}
       </div>
+      {page.editorialReview && (
+        <article class={seoStyles.EditorialReview}>
+          <div class={seoStyles.EditorialReview__Meta}>
+            <span>{page.editorialReview.label}</span>
+            <strong aria-label={page.editorialReview.ratingAria}>{SOFTPEDIA_REVIEW.rating}</strong>
+          </div>
+          <blockquote class={seoStyles.EditorialReview__Quote}>
+            <Text as="p" size="lg">“{SOFTPEDIA_REVIEW.quote}”</Text>
+          </blockquote>
+          <footer class={seoStyles.EditorialReview__Footer}>
+            <Text as="p" size="sm" color="subtle">{SOFTPEDIA_REVIEW.author}, {SOFTPEDIA_REVIEW.publication}</Text>
+            <a class={seoStyles.ArrowLink} href={SOFTPEDIA_REVIEW.href} target="_blank" rel="noopener noreferrer">
+              {page.editorialReview.readLabel}<ArrowRight size={15} aria-hidden="true" />
+            </a>
+          </footer>
+        </article>
+      )}
       <div class={`${testimonialStyles.Testimonials__Grid} ${styles.Testimonials__Grid}`}>
         {page.testimonials.map((testimonial) => (
           <article class={testimonialStyles.TestimonialCard}>
