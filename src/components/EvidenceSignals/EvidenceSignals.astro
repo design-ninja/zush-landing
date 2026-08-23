@@ -34,10 +34,11 @@ import styles from './EvidenceSignals.module.scss';
 
 interface Props {
   locale?: Locale;
-  variant?: 'all' | 'facts' | 'control' | 'sources';
+  variant?: 'all' | 'intro' | 'facts' | 'control' | 'sources';
+  showControlHeading?: boolean;
 }
 
-const { locale = DEFAULT_LOCALE, variant = 'all' } = Astro.props as Props;
+const { locale = DEFAULT_LOCALE, variant = 'all', showControlHeading = false } = Astro.props as Props;
 const copy = getEvidenceSignalsCopy(locale);
 const titleParts = copy.title.split('Zush');
 const description = copy.description.replace('{count}', String(SUPPORTED_FORMAT_COUNT));
@@ -79,74 +80,89 @@ const CONTROL_COPY: Record<Locale, Array<{ title: string; description: string }>
     { title: 'Preview every change', description: 'See the proposed filename before anything is renamed.' },
     { title: 'Build names your way', description: 'Choose the fields, their order, separators, language, and date format.' },
     { title: 'Undo any batch', description: 'Restore the original filenames with one click.' },
-    { title: 'Choose where AI runs', description: 'Use Zush Cloud, your own AI provider, or supported offline models.' },
+    { title: 'Choose where AI runs', description: 'Use Zush Cloud, your own AI provider, or supported local models.' },
   ],
   de: [
     { title: 'Jede Änderung prüfen', description: 'Sieh den vorgeschlagenen Dateinamen, bevor etwas umbenannt wird.' },
     { title: 'Namen nach deinen Regeln', description: 'Wähle Felder, Reihenfolge, Trennzeichen, Sprache und Datumsformat.' },
     { title: 'Jeden Stapel rückgängig', description: 'Stelle die ursprünglichen Dateinamen mit einem Klick wieder her.' },
-    { title: 'Bestimme, wo die KI läuft', description: 'Nutze Zush Cloud, deinen eigenen KI-Anbieter oder unterstützte Offline-Modelle.' },
+    { title: 'Bestimme, wo die KI läuft', description: 'Nutze Zush Cloud, deinen eigenen KI-Anbieter oder unterstützte lokale Modelle.' },
   ],
   fr: [
     { title: 'Prévisualisez chaque changement', description: 'Voyez le nom proposé avant qu’un fichier soit renommé.' },
     { title: 'Créez vos propres noms', description: 'Choisissez les champs, leur ordre, les séparateurs, la langue et le format de date.' },
     { title: 'Annulez chaque lot', description: 'Restaurez les noms d’origine en un clic.' },
-    { title: 'Choisissez où tourne l’IA', description: 'Utilisez Zush Cloud, votre fournisseur d’IA ou des modèles hors ligne compatibles.' },
+    { title: 'Choisissez où tourne l’IA', description: 'Utilisez Zush Cloud, votre fournisseur d’IA ou des modèles locaux compatibles.' },
   ],
   'pt-br': [
     { title: 'Prévia de cada alteração', description: 'Veja o nome sugerido antes de qualquer arquivo ser renomeado.' },
     { title: 'Nomes do seu jeito', description: 'Escolha campos, ordem, separadores, idioma e formato de data.' },
     { title: 'Desfaça qualquer lote', description: 'Restaure os nomes originais com um clique.' },
-    { title: 'Escolha onde a IA roda', description: 'Use Zush Cloud, seu provedor de IA ou modelos offline compatíveis.' },
+    { title: 'Escolha onde a IA roda', description: 'Use Zush Cloud, seu provedor de IA ou modelos locais compatíveis.' },
   ],
   es: [
     { title: 'Previsualiza cada cambio', description: 'Ve el nombre propuesto antes de renombrar ningún archivo.' },
     { title: 'Crea nombres a tu manera', description: 'Elige los campos, el orden, los separadores, el idioma y el formato de fecha.' },
     { title: 'Deshaz cualquier lote', description: 'Restaura los nombres originales con un clic.' },
-    { title: 'Elige dónde se ejecuta la IA', description: 'Usa Zush Cloud, tu proveedor de IA o modelos offline compatibles.' },
+    { title: 'Elige dónde se ejecuta la IA', description: 'Usa Zush Cloud, tu proveedor de IA o modelos locales compatibles.' },
   ],
   nl: [
     { title: 'Bekijk elke wijziging', description: 'Zie de voorgestelde bestandsnaam voordat iets wordt hernoemd.' },
     { title: 'Bouw namen op jouw manier', description: 'Kies velden, volgorde, scheidingstekens, taal en datumnotatie.' },
     { title: 'Maak elke batch ongedaan', description: 'Herstel de oorspronkelijke bestandsnamen met één klik.' },
-    { title: 'Kies waar AI draait', description: 'Gebruik Zush Cloud, je eigen AI-provider of ondersteunde offline modellen.' },
+    { title: 'Kies waar AI draait', description: 'Gebruik Zush Cloud, je eigen AI-provider of ondersteunde lokale modellen.' },
   ],
   it: [
     { title: 'Anteprima di ogni modifica', description: 'Visualizza il nome proposto prima di rinominare qualsiasi file.' },
     { title: 'Crea nomi a modo tuo', description: 'Scegli campi, ordine, separatori, lingua e formato data.' },
     { title: 'Annulla qualsiasi batch', description: 'Ripristina i nomi originali con un clic.' },
-    { title: 'Scegli dove gira l’IA', description: 'Usa Zush Cloud, il tuo provider IA o modelli offline supportati.' },
+    { title: 'Scegli dove gira l’IA', description: 'Usa Zush Cloud, il tuo provider IA o modelli locali supportati.' },
   ],
   ja: [
     { title: 'すべての変更をプレビュー', description: 'ファイル名を変更する前に候補を確認できます。' },
     { title: '自分のルールで命名', description: '項目、順序、区切り文字、言語、日付形式を選べます。' },
     { title: 'バッチを元に戻す', description: 'ワンクリックで元のファイル名に復元できます。' },
-    { title: 'AI の実行場所を選択', description: 'Zush Cloud、自分の AI プロバイダー、対応オフラインモデルから選べます。' },
+    { title: 'AI の実行場所を選択', description: 'Zush Cloud、自分の AI プロバイダー、対応ローカルモデルから選べます。' },
   ],
   ko: [
     { title: '모든 변경 사항 미리보기', description: '파일 이름을 바꾸기 전에 제안된 이름을 확인하세요.' },
     { title: '내 방식대로 이름 만들기', description: '필드, 순서, 구분자, 언어와 날짜 형식을 선택하세요.' },
     { title: '모든 일괄 작업 되돌리기', description: '한 번의 클릭으로 원래 파일 이름을 복원하세요.' },
-    { title: 'AI 실행 위치 선택', description: 'Zush Cloud, 내 AI 제공업체 또는 지원되는 오프라인 모델을 사용하세요.' },
+    { title: 'AI 실행 위치 선택', description: 'Zush Cloud, 내 AI 제공업체 또는 지원되는 로컬 모델을 사용하세요.' },
   ],
   'zh-cn': [
     { title: '预览每项更改', description: '重命名前先查看建议的文件名。' },
     { title: '按你的方式命名', description: '自由选择字段、顺序、分隔符、语言和日期格式。' },
     { title: '撤销任意批次', description: '一键恢复原始文件名。' },
-    { title: '选择 AI 运行位置', description: '使用 Zush Cloud、自己的 AI 服务商或受支持的离线模型。' },
+    { title: '选择 AI 运行位置', description: '使用 Zush Cloud、自己的 AI 服务商或受支持的本地模型。' },
   ],
   tr: [
     { title: 'Her değişikliği önizleyin', description: 'Herhangi bir dosya yeniden adlandırılmadan önce öneriyi görün.' },
     { title: 'Adları kendi yönteminle oluştur', description: 'Alanları, sırayı, ayırıcıları, dili ve tarih biçimini seç.' },
     { title: 'Her toplu işlemi geri al', description: 'Özgün dosya adlarını tek tıkla geri yükle.' },
-    { title: 'Yapay zekânın nerede çalışacağını seç', description: 'Zush Cloud’u, kendi sağlayıcını veya desteklenen çevrimdışı modelleri kullan.' },
+    { title: 'Yapay zekânın nerede çalışacağını seç', description: 'Zush Cloud’u, kendi sağlayıcını veya desteklenen yerel modelleri kullan.' },
   ],
   ar: [
     { title: 'عاين كل تغيير', description: 'شاهد اسم الملف المقترح قبل إعادة تسمية أي ملف.' },
     { title: 'أنشئ الأسماء بطريقتك', description: 'اختر الحقول وترتيبها والفواصل واللغة وتنسيق التاريخ.' },
     { title: 'تراجع عن أي دفعة', description: 'استعد أسماء الملفات الأصلية بنقرة واحدة.' },
-    { title: 'اختر مكان تشغيل الذكاء الاصطناعي', description: 'استخدم Zush Cloud أو مزودك الخاص أو النماذج المدعومة دون اتصال.' },
+    { title: 'اختر مكان تشغيل الذكاء الاصطناعي', description: 'استخدم Zush Cloud أو مزودك الخاص أو النماذج المحلية المدعومة.' },
   ],
+};
+
+const CONTROL_TITLES: Record<Locale, string> = {
+  en: 'Stay in control of every rename',
+  de: 'Behalte jede Umbenennung unter Kontrolle',
+  fr: 'Gardez le contrôle de chaque renommage',
+  'pt-br': 'Mantenha o controle de cada renomeação',
+  es: 'Controla cada cambio de nombre',
+  nl: 'Houd controle over elke naamswijziging',
+  it: 'Mantieni il controllo su ogni rinomina',
+  ja: 'すべての名前変更を自分で管理',
+  ko: '모든 이름 변경을 직접 관리하세요',
+  'zh-cn': '掌控每一次重命名',
+  tr: 'Her yeniden adlandırmayı kontrol et',
+  ar: 'تحكّم في كل عملية إعادة تسمية',
 };
 
 const localizedControlCopy = CONTROL_COPY[locale];
@@ -194,24 +210,33 @@ const sourceLinks = [
 ];
 
 const visibleFacts = variant === 'control' ? controlFacts : facts;
-const showFacts = variant !== 'sources';
+const showFacts = variant !== 'intro' && variant !== 'sources';
 const showSources = variant === 'all' || variant === 'sources';
-const showIntro = variant === 'all';
+const showIntro = variant === 'all' || variant === 'intro';
+const showControlTitle = variant === 'control' && showControlHeading;
+const labelledBy = showIntro
+  ? 'about-zush-title'
+  : showControlTitle
+    ? 'evidence-control-title'
+    : showSources
+      ? 'evidence-sources-title'
+      : undefined;
 const sectionClass = [
   styles.EvidenceSignals,
+  variant === 'intro' ? styles.EvidenceSignals_introOnly : '',
   variant === 'sources' ? styles.EvidenceSignals_sourcesOnly : '',
 ].filter(Boolean).join(' ');
 ---
 
 <section
   class={sectionClass}
-  aria-labelledby={showIntro ? 'about-zush-title' : showSources ? 'evidence-sources-title' : undefined}
-  aria-label={!showIntro && showFacts ? (variant === 'control' ? 'Rename controls' : copy.title) : undefined}
+  aria-labelledby={labelledBy}
+  aria-label={!labelledBy && showFacts ? copy.title : undefined}
   data-scroll-reveal-skip
 >
   <div class={styles.EvidenceSignals__Container}>
     {showIntro && (
-      <div class={sectionHeaderStyles.SectionHeader}>
+      <div class={`${sectionHeaderStyles.SectionHeader} ${variant === 'intro' ? styles.EvidenceSignals__IntroOnly : ''}`}>
         <Heading id="about-zush-title" as="h2" align="center" className={sectionHeaderStyles.SectionHeader__Title}>
           {titleParts[0]}{titleParts.length > 1 ? <span class="brand-accent-text">Zush</span> : null}{titleParts.slice(1).join('Zush')}
         </Heading>
@@ -219,6 +244,12 @@ const sectionClass = [
           {description}
         </Text>
       </div>
+    )}
+
+    {showControlTitle && (
+      <Heading id="evidence-control-title" as="h2" align="center" className={styles.EvidenceSignals__ControlTitle}>
+        {CONTROL_TITLES[locale]}
+      </Heading>
     )}
 
     {showFacts && (
@@ -241,7 +272,7 @@ const sectionClass = [
 
     {showSources && (
       <div class={styles.EvidenceSignals__Sources}>
-        <Heading id="evidence-sources-title" as="h3" size="h4" align="center" className={styles.EvidenceSignals__SourcesTitle}>
+        <Heading id="evidence-sources-title" as="h2" size="h4" align="center" className={styles.EvidenceSignals__SourcesTitle}>
           {copy.sourcesTitle}
         </Heading>
         <div class={styles.EvidenceSignals__SourceLinks}>

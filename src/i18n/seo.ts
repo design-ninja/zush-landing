@@ -7,12 +7,12 @@ const PLATFORM_SEO: Partial<Record<Locale, Partial<Record<'/mac' | '/windows', {
     '/mac': {
       title: 'KI-Dateiumbenenner für Mac mit eigenen Regeln | Zush',
       description:
-        'KI-Dateiumbenenner für Mac. Lege eigene Namensregeln fest, prüfe jede Änderung, nutze Ein-Klick-Undo oder unterstützte Offline-KI auf deinem Gerät.',
+        'KI-Dateiumbenenner für Mac. Lege eigene Namensregeln fest, prüfe jede Änderung, nutze Ein-Klick-Undo oder lokale KI mit Ollama auf deinem Gerät.',
     },
     '/windows': {
       title: 'KI-Dateiumbenenner für Windows mit eigenen Regeln | Zush',
       description:
-        'KI-Dateiumbenenner für Windows. Lege eigene Namensregeln fest, prüfe jede Änderung, nutze Ein-Klick-Undo oder unterstützte Offline-KI auf deinem Gerät.',
+        'KI-Dateiumbenenner für Windows. Lege eigene Namensregeln fest, prüfe jede Änderung, nutze Ein-Klick-Undo oder lokale KI mit Ollama auf deinem Gerät.',
     },
   },
   fr: {
@@ -102,11 +102,11 @@ const PLATFORM_SEO: Partial<Record<Locale, Partial<Record<'/mac' | '/windows', {
   'zh-cn': {
     '/mac': {
       title: 'Mac AI 文件重命名工具与自定义规则 | Zush',
-      description: '适用于 Mac 的 AI 文件重命名工具。设置自定义命名规则，预览每项更改，撤销任意批次，或使用受支持的设备端离线分析。',
+      description: '适用于 Mac 的 AI 文件重命名工具。设置自定义命名规则，预览每项更改，撤销任意批次，或使用通过 Ollama 运行的本地 AI。',
     },
     '/windows': {
       title: 'Windows AI 文件重命名工具与自定义规则 | Zush',
-      description: '适用于 Windows 的 AI 文件重命名工具。设置自定义命名规则，预览每项更改，撤销任意批次，或使用受支持的设备端离线分析。',
+      description: '适用于 Windows 的 AI 文件重命名工具。设置自定义命名规则，预览每项更改，撤销任意批次，或使用通过 Ollama 运行的本地 AI。',
     },
   },
   tr: {
@@ -148,9 +148,9 @@ const SEARCH_DESCRIPTION_OVERRIDES: Partial<Record<Locale, Partial<Record<Locali
   },
   ja: {
     '/':
-      'Mac・Windows向けAIファイルリネーム。RAW写真、PDF、動画、音声、デザインファイルを含む104形式を内容に基づいてリネーム。すべてのバッチでプレビューと取り消しが可能です。クラウドAI、BYOK、OllamaのオフラインAI、フォルダ監視、テンプレートにも対応し、安全で統一された名前に整理できます。',
+      'Mac・Windows向けAIファイルリネーム。RAW写真、PDF、動画、音声、デザインファイルを含む104形式を内容に基づいてリネーム。すべてのバッチでプレビューと取り消しが可能です。クラウドAI、BYOK、OllamaのローカルAI、フォルダ監視、テンプレートにも対応し、安全で統一された名前に整理できます。',
     '/windows':
-      'Windows向けAIファイルリネーム。内容、メタデータ、日付、カスタム指示を組み合わせて独自の命名ルールを作成できます。すべての候補を適用前にプレビューし、バッチをUndo可能。Zush Cloud、BYOK、OllamaのオフラインAIから実行場所を選べます。フォルダ監視と再利用可能なテンプレートにも対応します。',
+      'Windows向けAIファイルリネーム。内容、メタデータ、日付、カスタム指示を組み合わせて独自の命名ルールを作成できます。すべての候補を適用前にプレビューし、バッチをUndo可能。Zush Cloud、BYOK、OllamaのローカルAIから実行場所を選べます。フォルダ監視と再利用可能なテンプレートにも対応します。',
     '/rename-pdf-with-ai':
       'AI PDF リネームツール。Zush が請求書、契約書、スキャン、領収書、レポートを読み取り、PDF ファイルを内容に基づいて検索しやすい名前にリネームします。MacとWindowsで複数のPDFを一括処理し、取引先、日付、文書種類を含む候補を適用前に確認できます。履歴から元の名前へ戻すことも可能です。',
     '/rename-videos-with-ai':
@@ -162,11 +162,11 @@ const SEARCH_DESCRIPTION_OVERRIDES: Partial<Record<Locale, Partial<Record<Locali
   },
   ko: {
     '/':
-      'Mac 및 Windows용 AI 파일 이름 변경 도구입니다. RAW 사진, PDF, 비디오, 오디오, 디자인 파일을 포함한 104개 형식을 내용에 따라 변경하고 모든 배치를 미리 보고 되돌릴 수 있습니다. 클라우드 AI, BYOK, 오프라인 AI와 폴더 모니터링 및 템플릿도 지원합니다.',
+      'Mac 및 Windows용 AI 파일 이름 변경 도구입니다. RAW 사진, PDF, 비디오, 오디오, 디자인 파일을 포함한 104개 형식을 내용에 따라 변경하고 모든 배치를 미리 보고 되돌릴 수 있습니다. 클라우드 AI, BYOK, 로컬 AI와 폴더 모니터링 및 템플릿도 지원합니다.',
     '/mac':
-      'Mac용 AI 파일 이름 변경 도구입니다. 내용, 메타데이터, 날짜와 사용자 지침으로 나만의 이름 규칙을 만드세요. 모든 제안을 적용 전에 미리 보고 일괄 작업을 되돌릴 수 있으며, Zush Cloud, BYOK 또는 Ollama 오프라인 AI 중 실행 위치를 선택할 수 있습니다.',
+      'Mac용 AI 파일 이름 변경 도구입니다. 내용, 메타데이터, 날짜와 사용자 지침으로 나만의 이름 규칙을 만드세요. 모든 제안을 적용 전에 미리 보고 일괄 작업을 되돌릴 수 있으며, Zush Cloud, BYOK 또는 Ollama 로컬 AI 중 실행 위치를 선택할 수 있습니다.',
     '/windows':
-      'Windows용 AI 파일 이름 변경 도구입니다. 내용, 메타데이터, 날짜와 사용자 지침으로 나만의 이름 규칙을 만드세요. 모든 제안을 적용 전에 미리 보고 일괄 작업을 되돌릴 수 있으며, Zush Cloud, BYOK 또는 Ollama 오프라인 AI 중 실행 위치를 선택할 수 있습니다.',
+      'Windows용 AI 파일 이름 변경 도구입니다. 내용, 메타데이터, 날짜와 사용자 지침으로 나만의 이름 규칙을 만드세요. 모든 제안을 적용 전에 미리 보고 일괄 작업을 되돌릴 수 있으며, Zush Cloud, BYOK 또는 Ollama 로컬 AI 중 실행 위치를 선택할 수 있습니다.',
     '/rename-photos-with-ai':
       'AI 사진 이름 변경 도구. Zush가 HEIC, RAW, AVIF, JPG, SVG, TIFF 등 이미지를 읽고 피사체와 장면, 맥락을 기준으로 사진 이름을 변경합니다. 사진을 이동하지 않고 일괄 처리하며, 적용 전에 제안을 미리 보고 기록에서 원래 이름으로 되돌릴 수 있습니다.',
     '/rename-screenshots-with-ai':
@@ -180,17 +180,17 @@ const SEARCH_DESCRIPTION_OVERRIDES: Partial<Record<Locale, Partial<Record<Locali
   },
   'zh-cn': {
     '/':
-      '适用于 Mac 和 Windows 的 AI 文件重命名工具。按内容重命名 104 种格式，包括 RAW 照片、PDF、视频、音频和设计文件；每个批次均可预览和撤销。支持云端 AI、BYOK、通过 Ollama 运行的离线 AI，以及文件夹监控和可重复使用的命名模板，让日常整理更安全、更统一、更容易搜索。',
+      '适用于 Mac 和 Windows 的 AI 文件重命名工具。按内容重命名 104 种格式，包括 RAW 照片、PDF、视频、音频和设计文件；每个批次均可预览和撤销。支持云端 AI、BYOK、通过 Ollama 运行的本地 AI，以及文件夹监控和可重复使用的命名模板，让日常整理更安全、更统一、更容易搜索。',
     '/mac':
-      '适用于 Mac 的 AI 文件重命名工具。组合内容、元数据、日期和自定义指令，建立自己的命名规则。应用前预览所有建议，可撤销任意批次，并可在 Zush Cloud、BYOK 与通过 Ollama 运行的离线 AI 之间选择分析位置。支持文件夹监控和可重复使用的模板，方便长期整理照片、文档和下载文件。',
+      '适用于 Mac 的 AI 文件重命名工具。组合内容、元数据、日期和自定义指令，建立自己的命名规则。应用前预览所有建议，可撤销任意批次，并可在 Zush Cloud、BYOK 与通过 Ollama 运行的本地 AI 之间选择分析位置。支持文件夹监控和可重复使用的模板，方便长期整理照片、文档和下载文件。',
     '/windows':
-      '适用于 Windows 的 AI 文件重命名工具。组合内容、元数据、日期和自定义指令，建立自己的命名规则。应用前预览所有建议，可撤销任意批次，并可在 Zush Cloud、BYOK 与通过 Ollama 运行的离线 AI 之间选择分析位置。',
+      '适用于 Windows 的 AI 文件重命名工具。组合内容、元数据、日期和自定义指令，建立自己的命名规则。应用前预览所有建议，可撤销任意批次，并可在 Zush Cloud、BYOK 与通过 Ollama 运行的本地 AI 之间选择分析位置。',
     '/rename-photos-with-ai':
       'AI 照片重命名工具。Zush 读取 HEIC、RAW、AVIF、JPG、SVG、TIFF 等图片，按主体、场景和上下文为照片生成可搜索的名称。在 Mac 和 Windows 上无需移动照片即可批量处理，应用前可预览全部建议，修改后能从历史记录恢复原名，还可用模板统一整个图库的命名方式和日期格式，安全整理整个图库。',
     '/rename-screenshots-with-ai':
       '告别「截屏 2026-07-12」。Zush 按截图内容自动重命名，支持预览和一键撤销，免费额度 50 次，Mac 和 Windows 均可使用。可批量识别应用、界面和上下文，生成清晰、可搜索的文件名；应用前查看全部建议，修改后还能从历史记录恢复原名，安全整理日常截图并保持命名统一、清晰且便于查找。',
     '/rename-documents-with-ai':
-      'AI 文档重命名工具。Zush 读取 DOCX、XLSX、PPTX、Pages、Numbers、Keynote、TXT、CSV、邮件和字幕，按实际内容生成清晰名称。在 Mac 和 Windows 上批量处理，结合标题、客户和日期建立统一规则。应用前预览建议，可撤销更改，并能选择 BYOK 或 Ollama 离线 AI。',
+      'AI 文档重命名工具。Zush 读取 DOCX、XLSX、PPTX、Pages、Numbers、Keynote、TXT、CSV、邮件和字幕，按实际内容生成清晰名称。在 Mac 和 Windows 上批量处理，结合标题、客户和日期建立统一规则。应用前预览建议，可撤销更改，并能选择 BYOK 或 Ollama 本地 AI。',
   },
   ar: {
     '/rename-screenshots-with-ai':

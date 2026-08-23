@@ -59,6 +59,8 @@ const showPromotionBanner = locale === 'en';
   showPromotion={showPromotionBanner}
 />
 <DemoVideo label={copy.home.showcase.title} />
+<EvidenceSignals locale={locale} variant="intro" />
+<EvidenceSignals locale={locale} variant="control" showControlHeading />
 <Features
   title={copy.home.featuresTitle}
   description={copy.home.featuresDescription}
@@ -68,7 +70,6 @@ const showPromotionBanner = locale === 'en';
   compactTopSpacing
 />
 <WaysToRun copy={copy.home.featureCards} locale={locale} />
-<EvidenceSignals locale={locale} variant="control" />
 {(locale === 'en' || professionCopy) && (
   <HomeProfessions locale={locale} homeCopy={copy.home} professionCopy={professionCopy} />
 )}

@@ -18,7 +18,7 @@ export const home: HomeCopy = {
   "heroModes": [
     "IA cloud",
     "BYOK",
-    "Hors ligne",
+    "IA locale",
     "100+ formats"
   ],
   "featuresTitle": "Fonctions Zush",
@@ -89,8 +89,8 @@ export const home: HomeCopy = {
       "description": "Connectez Gemini, Groq, OpenAI ou Claude pour les renommages cloud; FREE en inclut 50 tous modes confondus, PRO est illimité. Les clés restent stockées localement."
     },
     "offlineAi": {
-      "title": "Mode IA hors ligne",
-      "description": "Modèles locaux privés via Ollama. Traitez les fichiers pris en charge sans envoyer leur contenu au cloud."
+      "title": "IA locale privée",
+      "description": "Les modèles Ollama locaux traitent les fichiers pris en charge sur votre appareil et fonctionnent hors ligne après la configuration."
     },
     "cloudAi": {
       "title": "IA cloud",

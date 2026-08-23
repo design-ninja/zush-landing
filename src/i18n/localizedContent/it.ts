@@ -18,7 +18,7 @@ export const home = {
   "heroModes": [
     "IA cloud",
     "BYOK",
-    "Offline",
+    "IA locale",
     "100+ formati"
   ],
   "featuresTitle": "Funzioni di Zush",
@@ -89,8 +89,8 @@ export const home = {
       "description": "Collega Gemini, Groq, OpenAI o Claude per rinomine cloud; FREE ne include 50 tra tutte le modalità e PRO è illimitato. Le chiavi restano locali."
     },
     "offlineAi": {
-      "title": "Modalità IA offline",
-      "description": "Modelli locali privati via Ollama. Elabora file supportati senza inviare contenuti al cloud."
+      "title": "IA locale privata",
+      "description": "I modelli Ollama locali elaborano i file supportati sul dispositivo e funzionano offline dopo la configurazione."
     },
     "cloudAi": {
       "title": "IA cloud",

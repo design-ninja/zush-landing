@@ -11,7 +11,7 @@ export const LEGAL_HERO = {
     'Zush reads pleadings, contracts, correspondence, discovery, and scans, then gives them consistent, searchable filenames. Use it with existing folders, shared drives, and DMS exports on Mac or Windows.',
   trustLine: [
     'Works with your existing folders',
-    'Offline AI for confidential files',
+    'Local AI for confidential files',
     'Preview before every rename',
   ],
   photo: {
@@ -52,7 +52,7 @@ export const LEGAL_PRIVACY_MODES: LegalPrivacyMode[] = [
   {
     id: 'offline',
     kind: 'offline-ai',
-    title: 'Offline AI with local models',
+    title: 'Local AI with Ollama',
     badge: 'Keep files on the machine',
     badgeTone: 'success',
     description:
@@ -72,7 +72,7 @@ export const LEGAL_PRIVACY_MODES: LegalPrivacyMode[] = [
     title: 'Start with managed AI',
     badge: 'Fastest setup',
     description:
-      'Use Zush-managed AI for non-confidential documents and quick evaluation. Choose Offline AI or BYOK when client files require a different processing policy.',
+      'Use Zush-managed AI for non-confidential documents and quick evaluation. Choose Local AI or BYOK when client files require a different processing policy.',
   },
 ];
 
@@ -200,7 +200,7 @@ export const LEGAL_FAQ = [
   {
     question: 'Can Zush organize confidential case files without uploading them?',
     answer:
-      'Yes. In Offline AI mode, supported files are analyzed with local Ollama models on Mac or Windows, so document content stays on that machine. Zush renames files in place and does not store them.',
+      'Yes. Local AI analyzes supported files with Ollama on Mac or Windows, so document content stays on that machine. It works offline after setup. Zush renames files in place and does not store them.',
   },
   {
     question: 'How can a law firm organize old case files?',
@@ -255,7 +255,7 @@ export const LEGAL_JSON_LD = buildFeaturePageJsonLd({
       'Standardize filenames across folders, shared drives, and DMS exports',
       'Extract firm-specific fields with Custom AI Blocks',
       'Read PDFs, Word documents, and image-only scans',
-      'Offline AI mode with local Ollama models',
+      'Local AI with Ollama; works offline after setup',
       'BYOK through a provider account controlled by the firm',
       'Preview every batch before applying, with undo history',
     ],

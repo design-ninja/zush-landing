@@ -103,7 +103,7 @@ const scannedDocumentFaq = [
   {
     question: 'What about sensitive scans like medical or financial documents?',
     answer:
-      'Zush supports private modes: BYOK sends analysis to your own API account, and Offline AI mode uses local Ollama models so supported files never leave the machine. Filenames and folder structures always stay local.',
+      'Zush supports private modes: BYOK sends analysis through your own provider account, while Local AI uses Ollama models on your device and works offline after setup. Filenames and folder structures always stay local.',
   },
 ];
 
@@ -149,7 +149,7 @@ const accountantFaq = [
   {
     question: 'Is client financial data kept private?',
     answer:
-      'Renaming happens in place on your disk — Zush never uploads or stores your files. For analysis, choose your posture: managed cloud AI, BYOK through your own API account, or Offline AI with local models so supported files never leave the machine.',
+      'Renaming happens in place on your disk. Zush does not store your files. For analysis, choose managed Cloud AI, BYOK through your own provider account, or Local AI with Ollama so supported file analysis stays on the machine.',
   },
   {
     question: 'Does Zush charge per document?',
@@ -190,7 +190,7 @@ const legalFaq = [
   {
     question: 'Is it safe for confidential client documents?',
     answer:
-      'Choose the mode that matches your confidentiality posture: Offline AI analyzes supported files with local models so client documents never leave the machine, and BYOK routes analysis through your firm’s own AI provider account under its terms. Files are renamed in place — nothing is uploaded or stored by Zush.',
+      'Choose the mode that matches your confidentiality policy. Local AI analyzes supported files with Ollama on the machine, while BYOK routes analysis through your firm’s provider account. Zush renames files in place and does not store them.',
   },
   {
     question: 'Can it extract our matter numbers?',
@@ -259,17 +259,17 @@ const offlineRenameFaq = [
   {
     question: 'What is an offline AI file renamer?',
     answer:
-      'An offline AI file renamer uses a local model on your computer to analyze files and suggest better filenames without sending supported file analysis to a cloud AI provider. In Zush, Offline AI mode connects to local Ollama models for private Mac and Windows workflows.',
+      'An offline AI file renamer uses a model on your computer to analyze files without sending supported file analysis to a cloud provider. Zush calls this option Local AI. It connects to Ollama on Mac or Windows and works offline after setup.',
   },
   {
     question: 'Can Zush rename files locally with Ollama?',
     answer:
-      'Yes. Zush can use local Ollama models in Offline AI mode for supported files. Install Ollama, pull a vision-capable model, enable Offline AI mode in Zush, and review the generated filenames before applying the batch.',
+      'Yes. Install Ollama, download a compatible model, enable Local AI in Zush, and review the generated filenames before applying the batch.',
   },
   {
-    question: 'What is the difference between Offline AI and BYOK?',
+    question: 'What is the difference between offline AI and BYOK?',
     answer:
-      'Offline AI uses a local Ollama model running on your device. BYOK uses your own cloud provider key from Gemini, Groq, OpenAI, or Claude. Both give you more control than the default managed cloud workflow, but Offline AI is the private local-processing option.',
+      'In Zush, Local AI uses an Ollama model on your device and can work without an internet connection after setup. BYOK uses your cloud provider key from Gemini, Groq, OpenAI, or Claude.',
   },
   {
     question: 'Does offline AI renaming work for every file type?',
@@ -312,7 +312,7 @@ const fileOrganizerFaq = [
   {
     question: 'Is my data private when AI organizes my files?',
     answer:
-      'You choose the mode: managed cloud, BYOK with your own provider key, or Offline AI with local Ollama models so supported file analysis never leaves your device. Files themselves are renamed in place on your disk.',
+      'You choose the mode: managed Cloud AI, BYOK with your own provider key, or Local AI with Ollama so supported file analysis stays on your device. Files are renamed in place on your disk.',
   },
 ];
 
@@ -391,7 +391,7 @@ const invoiceRenameFaq = [
   {
     question: 'Is it private? These are financial documents.',
     answer:
-      'You choose the mode. Managed cloud is the default, BYOK uses your own provider key, and Offline AI mode analyzes files with a local Ollama model so supported file analysis never leaves your device. Files are renamed in place on your disk.',
+      'You choose the mode. Managed Cloud AI is the default, BYOK uses your own provider key, and Local AI analyzes supported files with Ollama on your device. Files are renamed in place on your disk.',
   },
   {
     question: 'Does it work with scanned invoices?',
@@ -424,7 +424,7 @@ const receiptRenameFaq = [
   {
     question: 'Is receipt data kept private?',
     answer:
-      'You choose the mode: managed cloud, BYOK with your own key, or Offline AI mode with a local Ollama model so supported file analysis stays on your device. Receipts are renamed in place on your disk.',
+      'You choose the mode: managed Cloud AI, BYOK with your own key, or Local AI with Ollama so supported receipt analysis stays on your device. Receipts are renamed in place on your disk.',
   },
 ];
 
@@ -475,7 +475,7 @@ const downloadsFolderFaq = [
   {
     question: 'Is monitoring my Downloads folder private?',
     answer:
-      'You choose the mode: managed cloud, BYOK with your own provider key, or Offline AI with local Ollama models so supported file analysis never leaves your device. Files are renamed in place on your disk.',
+      'You choose the mode: managed Cloud AI, BYOK with your own provider key, or Local AI with Ollama so supported file analysis stays on your device. Files are renamed in place on your disk.',
   },
   {
     question: 'Does this work on both Mac and Windows?',
@@ -660,7 +660,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     category: 'general',
     definitionTitle: 'What Is an Offline AI File Renamer?',
     definitionText:
-      'An offline AI file renamer analyzes files with a local model instead of a cloud provider. Zush supports private local renaming with Ollama, plus BYOK for users who want their own cloud provider key, while keeping preview, folder monitoring, templates, Naming Blocks, and undo history in the same Mac and Windows workflow.',
+      'An offline AI file renamer analyzes files with a model on your computer instead of a cloud provider. Zush calls this option Local AI. It connects to Ollama on Mac or Windows and keeps preview, folder monitoring, templates, Naming Blocks, and undo history in the same workflow.',
     showcaseSlides: sharedSlides,
     faqItems: offlineRenameFaq,
     relatedPages: [
@@ -683,7 +683,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
         description: 'Use Zush as an offline AI file renamer for private local file naming on Mac and Windows.',
         steps: [
           { name: 'Install Ollama', text: 'Install Ollama and pull a vision-capable local model such as qwen2.5vl:3b or gemma3:4b.' },
-          { name: 'Enable Offline AI mode', text: 'Open Zush, go to BYOK/Offline, refresh the model list, select and test the installed model, then enable Offline AI mode.' },
+          { name: 'Enable Local AI', text: 'Open Zush, select Ollama, refresh the model list, then select and test the installed model.' },
           { name: 'Review and apply names', text: 'Drop files or folders into Zush, review local AI filename suggestions, and apply the batch with undo history available.' },
         ],
       },
@@ -691,9 +691,10 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       software: {
         pagePath: '/offline-ai-file-renamer',
         description:
-          'Offline AI file renamer for Mac and Windows with local Ollama models, BYOK, preview, folder monitoring, templates, Naming Blocks, and undo history.',
+          'Offline AI file renamer for Mac and Windows. Zush Local AI uses Ollama on your device and includes preview, folder monitoring, templates, Naming Blocks, and undo history.',
         featureList: [
           'Offline AI file renaming with local Ollama models',
+          'Local AI mode that works offline after setup',
           'BYOK support for Gemini, Groq, OpenAI, and Claude',
           'Preview every filename before applying changes',
           'Folder monitoring for automatic rename workflows',
@@ -949,7 +950,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
           'Read scanned invoices with AI vision',
           'Automatic renaming for Downloads via folder monitoring',
           'Consistent invoice naming conventions with templates',
-          'Private modes: BYOK and Offline AI',
+          'Private modes: BYOK and Local AI',
           'Preview every filename and undo any batch',
         ],
       },
@@ -1005,7 +1006,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
           'Read photo receipts (HEIC, JPG) with AI vision',
           'Add tax or expense categories with Custom AI Blocks',
           'Batch process a backlog of mixed receipts',
-          'Private modes: BYOK and Offline AI',
+          'Private modes: BYOK and Local AI',
           'Preview every filename and undo any batch',
         ],
       },
@@ -1062,7 +1063,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
           'Works with ScanSnap, Brother, Epson, Canon, and HP scanner output',
           'Automatic renaming for scanner folders via folder monitoring',
           'Consistent conventions with Templates and Naming Blocks',
-          'Private modes: BYOK and Offline AI',
+          'Private modes: BYOK and Local AI',
           'Preview every filename and undo any batch',
         ],
       },
@@ -1120,7 +1121,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
           'Expense categories via Custom AI Blocks',
           'Folder monitoring for continuous client intake',
           'Unmetered paid plans — no per-document credits',
-          'Private modes: BYOK and Offline AI',
+          'Private modes: BYOK and Local AI',
         ],
       },
     }),
@@ -1159,7 +1160,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
         name: 'Set up AI document renaming for legal work',
         description: 'Use Zush to keep filings, contracts, and scans named by matter, date, type, and party on Mac and Windows.',
         steps: [
-          { name: 'Choose the confidentiality posture', text: 'Offline AI keeps analysis fully local; BYOK routes it through the firm’s own provider account.' },
+          { name: 'Choose the confidentiality posture', text: 'Local AI keeps supported analysis on the machine; BYOK routes it through the firm’s provider account.' },
           { name: 'Build a matter Template', text: 'Combine a matter-number Custom AI Block with date, document-type, and party blocks.' },
           { name: 'Automate intake', text: 'Point folder monitoring at the e-filing download folder and the scanner output, review batches, apply with undo.' },
         ],
@@ -1168,14 +1169,14 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       software: {
         pagePath: '/for-legal',
         description:
-          'AI document renamer for law firms and legal teams on Mac and Windows. Zush names filings, contracts, and scans by matter, date, type, and party — with local Offline AI, preview, and undo.',
+          'AI document renamer for law firms and legal teams on Mac and Windows. Zush names filings, contracts, and scans by matter, date, type, and party, with Local AI, preview, and undo.',
         applicationSubCategory: 'Legal Document Management',
         featureList: [
           'Name documents by matter number, date, type, and party',
           'Extract firm-specific fields with Custom AI Blocks',
           'Read court filings, drafts (DOCX), and scans alike',
           'Matter folders that sort into case chronologies',
-          'Offline AI and BYOK for confidential documents',
+          'Local AI and BYOK for confidential documents',
           'Folder monitoring for e-filing and scanner intake',
           'Preview every batch before applying, with undo',
         ],

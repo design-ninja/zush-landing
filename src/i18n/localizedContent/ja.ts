@@ -18,7 +18,7 @@ export const home = {
   "heroModes": [
     "クラウドAI",
     "BYOK",
-    "オフライン",
+    "ローカルAI",
     "100以上の形式"
   ],
   "featuresTitle": "Zushの主な機能",
@@ -89,8 +89,8 @@ export const home = {
       "description": "Gemini、Groq、OpenAI、Claude を接続してクラウドリネーム。FREE は全モード共通 50 回、PRO は無制限。キーはローカルに安全保存されます。"
     },
     "offlineAi": {
-      "title": "オフライン AI モード",
-      "description": "Ollama 経由のプライベートなローカルモデルで、対応ファイルをクラウドに送らず処理できます。"
+      "title": "プライベートなローカル AI",
+      "description": "ローカルの Ollama モデルが対応ファイルをデバイス上で処理し、セットアップ後はオフラインでも動作します。"
     },
     "cloudAi": {
       "title": "クラウド AI",

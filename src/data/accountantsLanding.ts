@@ -8,10 +8,10 @@ export const ACCOUNTANTS_HERO = {
   titleLead: 'Rename accounting files by ',
   titleAccent: 'vendor, date, and number',
   subtitle:
-    'Zush reads invoices, receipts, statements, tax forms, and scans, then names each file to your convention. Build a Template for each client, preview every batch, and undo anytime. Use unmetered Cloud AI, your own provider key, or local Offline AI.',
+    'Zush reads invoices, receipts, statements, tax forms, and scans, then names each file to your convention. Build a Template for each client, preview every batch, and undo anytime. Use Cloud AI, your own provider key, or Local AI with Ollama.',
   trustLine: [
     'Unmetered paid plans',
-    'Private Offline AI and BYOK',
+    'Private Local AI and BYOK',
     'Preview and undo every batch',
   ],
   photo: {
@@ -53,7 +53,7 @@ export const ACCOUNTANTS_PRIVACY_MODES: AccountantsPrivacyMode[] = [
   {
     id: 'offline',
     kind: 'offline-ai',
-    title: 'Offline AI with local models',
+    title: 'Local AI with Ollama',
     badge: 'Files stay on the machine',
     badgeTone: 'success',
     description:
@@ -220,7 +220,7 @@ export const ACCOUNTANTS_FAQ = [
   {
     question: 'Is client financial data kept private?',
     answer:
-      'Files are renamed in place and are not stored by Zush. For analysis, choose managed Cloud AI, BYOK through the provider account and key your firm controls, or Offline AI with local Ollama models so supported file analysis stays on the machine.',
+      'Files are renamed in place and are not stored by Zush. For analysis, choose managed Cloud AI, BYOK through the provider account your firm controls, or Local AI with Ollama so supported file analysis stays on the machine.',
   },
   {
     question: 'Does Zush connect to QuickBooks or Xero?',
@@ -266,7 +266,7 @@ export const ACCOUNTANTS_JSON_LD = buildFeaturePageJsonLd({
       'Create reusable Templates for each client or entity',
       'Extract expense categories and account fields with Custom AI Blocks',
       'Monitor client intake and scanner folders',
-      'Choose managed Cloud AI, BYOK, or local Offline AI',
+      'Choose managed Cloud AI, BYOK, or Local AI',
       'Preview every batch before applying, with undo',
       'Unlimited renames on paid plans',
     ],

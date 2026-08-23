@@ -18,7 +18,7 @@ export const home = {
   "heroModes": [
     "云端 AI",
     "BYOK",
-    "离线",
+    "本地 AI",
     "100+ 种格式"
   ],
   "featuresTitle": "Zush 功能",
@@ -89,8 +89,8 @@ export const home = {
       "description": "连接 Gemini、Groq、OpenAI 或 Claude，实现云端重命名；FREE 在所有模式间共享 50 次，PRO 无限制。密钥会安全保存在本地。"
     },
     "offlineAi": {
-      "title": "离线 AI 模式",
-      "description": "通过 Ollama 使用私有本地模型。处理支持的文件时无需把分析内容发送到云端。"
+      "title": "私有本地 AI",
+      "description": "本地 Ollama 模型会在设备上处理受支持的文件，完成设置后也可离线运行。"
     },
     "cloudAi": {
       "title": "云端 AI",

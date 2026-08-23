@@ -4,12 +4,24 @@
 .EvidenceSignals {
   padding: 2rem 0 4.5rem;
 
+  &_introOnly {
+    padding: 2rem 0 2.5rem;
+  }
+
   &_sourcesOnly {
     padding: 3rem 0 2rem;
   }
 
   &__Container {
     @include container;
+  }
+
+  &__IntroOnly {
+    margin-bottom: 0;
+  }
+
+  &__ControlTitle {
+    margin: 0;
   }
 
   &__Facts {

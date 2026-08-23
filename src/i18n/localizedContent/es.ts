@@ -18,7 +18,7 @@ export const home = {
   "heroModes": [
     "IA en la nube",
     "BYOK",
-    "Sin conexión",
+    "IA local",
     "100+ formatos"
   ],
   "featuresTitle": "Funciones de Zush",
@@ -89,8 +89,8 @@ export const home = {
       "description": "Conecta Gemini, Groq, OpenAI o Claude para renombrar con tu propia cuenta de proveedor. FREE incluye 50 renombrados entre todos los modos y PRO no tiene límites. Las claves se guardan localmente."
     },
     "offlineAi": {
-      "title": "Modo de IA sin conexión",
-      "description": "Usa modelos locales privados mediante Ollama y procesa archivos compatibles sin enviar contenido a la nube."
+      "title": "IA local privada",
+      "description": "Los modelos locales de Ollama procesan los archivos compatibles en tu dispositivo y funcionan sin conexión después de configurarlos."
     },
     "cloudAi": {
       "title": "IA en la nube",

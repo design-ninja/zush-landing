@@ -31,7 +31,7 @@ export interface EvidenceSignalsCopy {
 const EN: EvidenceSignalsCopy = {
   title: 'What is Zush',
   description:
-    'Zush is an AI file renamer and organizer for Mac and Windows. It batch renames files by content across {count} supported formats, with bulk review, templates, folder monitoring, BYOK, and one-click revert.',
+    'Zush is an AI file renamer for Mac and Windows. It reads files across {count} supported formats and builds each filename from the content, metadata, dates, and rules you choose. Review every suggestion, rename a batch when you are ready, or undo it later. Templates and folder monitoring handle repeat work, while Cloud AI or Local AI let you choose where analysis runs.',
   freeTitle: 'Free to try',
   freeDescription: `{limit} free AI renames — no signup, no credit card. PRO from ${PRO_PRICING.oneTime.label} one-time or ${PRO_PRICING.monthly.label}/month.`,
   blocksTitle: '145+ Naming Blocks',

@@ -70,7 +70,7 @@ export const PHOTOGRAPHERS_PRIVACY_MODES: PhotographerPrivacyMode[] = [
     id: 'offline',
     kind: 'offline-ai',
     title: 'Keep client work on the machine',
-    badge: 'Offline AI',
+    badge: 'Local AI',
     description:
       'Run supported visual analysis with local Ollama models on Mac or Windows when unreleased campaigns, private events, or client footage should stay local.',
   },
@@ -210,7 +210,7 @@ export const PHOTOGRAPHERS_FAQ = [
   {
     question: 'Can I keep unreleased or private client work offline?',
     answer:
-      'Yes. Offline AI uses local Ollama models for supported analysis on Mac or Windows, so file content is not sent to Zush or a third-party AI provider. You can also use BYOK when your studio routes analysis through its own provider account.',
+      'Yes. Local AI uses Ollama models for supported analysis on Mac or Windows, so file content is not sent to Zush or a third-party AI provider. It works offline after setup. You can also use BYOK when your studio routes analysis through its own provider account.',
   },
   {
     question: 'Can I undo a renamed shoot?',
@@ -220,7 +220,7 @@ export const PHOTOGRAPHERS_FAQ = [
   {
     question: 'Does Zush move or upload my photo and video files?',
     answer:
-      'Zush renames files in place and does not move them into a new library or store them. Cloud processing can send a compact analysis payload; BYOK uses your provider account; Offline AI keeps supported analysis on the machine.',
+      'Zush renames files in place and does not move them into a new library or store them. Cloud processing can send a compact analysis payload; BYOK uses your provider account; Local AI keeps supported analysis on the machine.',
   },
 ];
 
@@ -257,7 +257,7 @@ export const PHOTOGRAPHERS_JSON_LD = buildFeaturePageJsonLd({
       'Sample video frames and available subtitle context',
       'Preview every proposed filename before applying',
       'Undo renamed batches with rename history',
-      'Choose Cloud AI, BYOK, or Offline AI processing',
+      'Choose Cloud AI, BYOK, or Local AI processing',
     ],
   },
 });

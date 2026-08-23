@@ -84,9 +84,9 @@ export const PLATFORM_SPECIFICS_CONTENT: Record<PlatformSpecificsKey, PlatformSp
       rows: [
         { key: 'operatingSystem', label: 'Operating system', value: 'macOS 15 Sequoia, 26 Tahoe' },
         { key: 'processor', label: 'Processor', value: 'Apple Silicon (M1, M2, M3, M4) and Intel x86_64' },
-        { key: 'memory', label: 'Memory', value: '4 GB minimum, 8 GB recommended for Offline AI' },
+        { key: 'memory', label: 'Memory', value: '4 GB minimum, 8 GB recommended for Local AI' },
         { key: 'diskSpace', label: 'Disk space', value: '~200 MB for the app, additional space for Ollama models' },
-        { key: 'network', label: 'Network', value: 'Required for cloud renaming, optional for Offline AI mode' },
+        { key: 'network', label: 'Network', value: 'Required for cloud renaming; Local AI works offline after setup' },
         { key: 'permissions', label: 'Permissions', value: 'Folder access is requested when you add folders to rename or monitor' },
       ],
     },
@@ -282,7 +282,7 @@ export const PLATFORM_SPECIFICS_CONTENT: Record<PlatformSpecificsKey, PlatformSp
       {
         title: 'Originals stay on-device',
         description:
-          'Cloud mode only sends the analysis payload (compressed preview, sampled video frames, subtitles, extracted text, or compact summary). Offline AI mode sends nothing — Ollama runs locally.',
+          'Cloud mode only sends the analysis payload (compressed preview, sampled video frames, subtitles, extracted text, or compact summary). Local AI sends nothing — Ollama runs on the device.',
       },
       {
         title: 'Secure key storage',
@@ -296,9 +296,9 @@ export const PLATFORM_SPECIFICS_CONTENT: Record<PlatformSpecificsKey, PlatformSp
       rows: [
         { key: 'operatingSystem', label: 'Operating system', value: 'Windows 10 (build 19041+) and Windows 11' },
         { key: 'processor', label: 'Processor', value: 'x64 and ARM64 package support' },
-        { key: 'memory', label: 'Memory', value: '4 GB minimum, 8 GB recommended for Offline AI' },
+        { key: 'memory', label: 'Memory', value: '4 GB minimum, 8 GB recommended for Local AI' },
         { key: 'diskSpace', label: 'Disk space', value: '~250 MB for the app, additional space for Ollama models' },
-        { key: 'network', label: 'Network', value: 'Required for cloud renaming, optional for Offline AI mode' },
+        { key: 'network', label: 'Network', value: 'Required for cloud renaming; Local AI works offline after setup' },
         { key: 'permissions', label: 'Permissions', value: 'Folder access is requested when you add folders to rename or monitor' },
       ],
     },
@@ -457,7 +457,7 @@ export const PLATFORM_SPECIFICS_CONTENT: Record<PlatformSpecificsKey, PlatformSp
       {
         title: 'Originals stay on-device',
         description:
-          'Cloud mode only sends the analysis payload (compressed preview or extracted text). Offline AI mode sends nothing — Ollama runs locally.',
+          'Cloud mode only sends the analysis payload (compressed preview or extracted text). Local AI sends nothing — Ollama runs on the device.',
       },
       {
         title: 'Secure key storage',

@@ -18,7 +18,7 @@ export const home: HomeCopy = {
   "heroModes": [
     "Cloud-KI",
     "BYOK",
-    "Offline",
+    "Lokale KI",
     "100+ Formate"
   ],
   "featuresTitle": "Zush-Funktionen",
@@ -89,8 +89,8 @@ export const home: HomeCopy = {
       "description": "Verbinde Gemini, Groq, OpenAI oder Claude für Cloud-Umbenennungen; FREE umfasst 50 in allen Modi, PRO ist unbegrenzt. Schlüssel bleiben lokal gespeichert."
     },
     "offlineAi": {
-      "title": "Offline-KI-Modus",
-      "description": "Private lokale Modelle über Ollama. Unterstützte Dateien offline verarbeiten, ohne Inhalte an Cloud-Anbieter zu senden."
+      "title": "Lokale KI",
+      "description": "Lokale Modelle über Ollama verarbeiten unterstützte Dateien auf deinem Gerät und funktionieren nach der Einrichtung offline."
     },
     "cloudAi": {
       "title": "Cloud-KI",

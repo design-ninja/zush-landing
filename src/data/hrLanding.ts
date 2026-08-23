@@ -11,7 +11,7 @@ export const HR_HERO = {
     'Zush reads resumes, offer letters, onboarding forms, reviews, policies, and exported records, then gives them consistent, searchable filenames. Use it with existing folders, shared drives, ATS downloads, and HRIS exports on Mac or Windows.',
   trustLine: [
     'Works with your existing folders',
-    'Offline AI for sensitive records',
+    'Local AI for sensitive records',
     'Preview before every rename',
   ],
   photo: {
@@ -52,7 +52,7 @@ export const HR_PRIVACY_MODES: HrPrivacyMode[] = [
   {
     id: 'offline',
     kind: 'offline-ai',
-    title: 'Offline AI with local models',
+    title: 'Local AI with Ollama',
     badge: 'Keep files on the machine',
     badgeTone: 'success',
     description:
@@ -72,7 +72,7 @@ export const HR_PRIVACY_MODES: HrPrivacyMode[] = [
     title: 'Start with managed AI',
     badge: 'Fastest setup',
     description:
-      'Use Zush-managed AI for sample or non-sensitive documents and quick evaluation. Choose Offline AI or BYOK when personnel records require a different processing policy.',
+      'Use Zush-managed AI for sample or non-sensitive documents and quick evaluation. Choose Local AI or BYOK when personnel records require a different processing policy.',
   },
 ];
 
@@ -200,7 +200,7 @@ export const HR_FAQ = [
   {
     question: 'Can Zush organize sensitive HR files without uploading them?',
     answer:
-      'Yes. In Offline AI mode, supported files are analyzed with local Ollama models on Mac or Windows, so document content stays on that machine. Zush renames files in place and does not store them.',
+      'Yes. Local AI analyzes supported files with Ollama on Mac or Windows, so document content stays on that machine. It works offline after setup. Zush renames files in place and does not store them.',
   },
   {
     question: 'How should HR name employee documents?',
@@ -255,7 +255,7 @@ export const HR_JSON_LD = buildFeaturePageJsonLd({
       'Standardize filenames across folders, shared drives, and HRIS or ATS exports',
       'Extract organization-specific fields with Custom AI Blocks',
       'Read PDFs, Word documents, images, and image-only scans',
-      'Offline AI mode with local Ollama models',
+      'Local AI with Ollama; works offline after setup',
       'BYOK through a provider account controlled by the organization',
       'Preview every batch before applying, with undo history',
     ],

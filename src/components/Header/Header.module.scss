@@ -165,7 +165,10 @@
         @include tablet {
             font-size: 0.95rem;
 
-            &:nth-of-type(-n + 2) {
+            // Keep the Cloud/Local AI link visible at tablet widths. Features
+            // is already reachable further down the page and is the one item
+            // we can drop when the pill needs more room.
+            &:first-of-type {
                 display: none;
             }
         }

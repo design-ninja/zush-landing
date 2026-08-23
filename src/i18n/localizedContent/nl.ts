@@ -18,7 +18,7 @@ export const home: HomeCopy = {
   "heroModes": [
     "Cloud-AI",
     "BYOK",
-    "Offline",
+    "Lokale AI",
     "100+ formaten"
   ],
   "featuresTitle": "Zush-functies",
@@ -89,8 +89,8 @@ export const home: HomeCopy = {
       "description": "Koppel Gemini, Groq, OpenAI of Claude voor cloud-hernoemen. FREE bevat 50 hernoemingen voor alle modi; PRO verwijdert de limiet. Sleutels blijven lokaal opgeslagen."
     },
     "offlineAi": {
-      "title": "Offline AI-modus",
-      "description": "Private lokale modellen via Ollama. Verwerk ondersteunde bestanden zonder inhoud naar de cloud te sturen."
+      "title": "Private lokale AI",
+      "description": "Lokale Ollama-modellen verwerken ondersteunde bestanden op je apparaat en werken na de installatie offline."
     },
     "cloudAi": {
       "title": "Cloud-AI",

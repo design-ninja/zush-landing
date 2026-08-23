@@ -4,7 +4,7 @@ import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 // LOCALIZED_ROUTES, so copy lives here rather than in src/i18n/copy.ts.
 //
 // This is the primary search landing for medical workflows. Privacy messaging
-// stays grounded in product mechanics: Offline AI runs local Ollama models,
+// stays grounded in product mechanics: Local AI runs supported Ollama models,
 // BYOK uses an account and key controlled by the organization, and every rename
 // is previewed before it is applied in place.
 
@@ -16,13 +16,13 @@ export const MEDICAL_HERO = {
   titleLead: 'Rename healthcare documents by ',
   titleAccent: 'MRN, date, and type',
   subtitle:
-    'Zush handles the filename layer of healthcare document management: it renames scanned medical records, faxes, lab reports, and intake forms using the fields your practice chooses. It works alongside your EHR with local Offline AI or organization-controlled BYOK, plus batch preview and undo.',
+    'Zush handles the filename layer of healthcare document management: it renames scanned medical records, faxes, lab reports, and intake forms using the fields your practice chooses. It works alongside your EHR with Local AI or organization-controlled BYOK, plus batch preview and undo.',
   secondaryCta: {
     label: 'See how a practice sets it up',
     href: '#workflow',
   },
   trustLine: [
-    'Local Offline AI',
+    'Local AI with Ollama',
     'Organization-controlled BYOK',
     'Preview and undo every batch',
   ],
@@ -96,7 +96,7 @@ export const MEDICAL_PRIVACY_MODES: MedicalPrivacyMode[] = [
   {
     id: 'offline',
     kind: 'offline-ai',
-    title: 'Offline AI with local models',
+    title: 'Local AI with Ollama',
     badge: 'Recommended for records',
     badgeTone: 'success',
     description:
@@ -116,12 +116,12 @@ export const MEDICAL_PRIVACY_MODES: MedicalPrivacyMode[] = [
     title: 'Managed Cloud AI',
     badge: 'For general files',
     description:
-      'Managed cloud processing is available for ordinary files. For medical document workflows, use Offline AI or your organization’s BYOK setup according to the policy your team follows.',
+      'Managed cloud processing is available for ordinary files. For medical document workflows, use Local AI or your organization’s BYOK setup according to the policy your team follows.',
   },
 ];
 
 export const MEDICAL_PRIVACY_NOTE =
-  'Use Offline AI when document content must stay on the machine. Use BYOK when your organization routes analysis through its own provider account and key. In every mode, Zush renames files in place and does not store them.';
+  'Use Local AI when document content must stay on the machine and work offline after setup. Use BYOK when your organization routes analysis through its own provider account and key. In every mode, Zush renames files in place and does not store them.';
 
 export const MEDICAL_WORKFLOW = [
   {
@@ -249,12 +249,12 @@ export const MEDICAL_FAQ = [
   {
     question: 'Is Zush HIPAA compliant?',
     answer:
-      'Zush does not claim that the app by itself makes a workflow HIPAA compliant. Offline AI keeps supported file analysis on the workstation, but compliance also depends on device security, access controls, backups, retention, filename policy, and your organization’s procedures. Have your privacy or security lead review the complete workflow before processing protected health information.',
+      'Zush does not claim that the app by itself makes a workflow HIPAA compliant. Local AI keeps supported file analysis on the workstation and works offline after setup, but compliance also depends on device security, access controls, backups, retention, filename policy, and your organization’s procedures. Have your privacy or security lead review the complete workflow before processing protected health information.',
   },
   {
     question: 'Can Zush rename patient records without uploading them anywhere?',
     answer:
-      'Yes. In Offline AI mode, Zush analyzes supported files with local Ollama models on Mac or Windows — records are read and renamed entirely on the machine. File content is not sent to Zush or a third-party AI provider, and Zush does not store the files.',
+      'Yes. In Local AI mode, Zush analyzes supported files with Ollama models on Mac or Windows and works offline after setup. Records are read and renamed entirely on the machine. File content is not sent to Zush or a third-party AI provider, and Zush does not store the files.',
   },
   {
     question: 'How should a practice structure medical record filenames?',
@@ -279,7 +279,7 @@ export const MEDICAL_FAQ = [
   {
     question: 'Which AI mode should a medical practice use?',
     answer:
-      'Use Offline AI when supported document analysis must remain on the machine; it runs local Ollama models on Mac or Windows. Use BYOK when your organization wants analysis routed through its own AI provider account and API key. Your team chooses the mode that matches its internal policy.',
+      'Use Local AI when supported document analysis must remain on the machine; it runs Ollama models on Mac or Windows and works offline after setup. Use BYOK when your organization wants analysis routed through its own AI provider account and API key. Your team chooses the mode that matches its internal policy.',
   },
   {
     question: 'Will the naming convention still make sense after we change systems?',
@@ -297,10 +297,10 @@ export const MEDICAL_JSON_LD = buildFeaturePageJsonLd({
   howTo: {
     name: 'Set up AI file renaming for scanned medical records',
     description:
-      'Use Zush to name scanned medical records by internal ID, date of service, and document type with local Offline AI or an organization-controlled BYOK account.',
+      'Use Zush to name scanned medical records by internal ID, date of service, and document type with Local AI or an organization-controlled BYOK account.',
     steps: [
       {
-        name: 'Enable Offline AI mode',
+        name: 'Enable Local AI',
         text: 'Analysis runs on local Ollama models, so supported files are processed entirely on the machine.',
       },
       {
@@ -317,11 +317,11 @@ export const MEDICAL_JSON_LD = buildFeaturePageJsonLd({
   software: {
     pagePath: MEDICAL_PAGE_PATH,
     description:
-      'AI document renamer for medical practices on Mac and Windows. Zush names scanned records by the fields you choose — with local Offline AI so files never leave the machine, plus in-place renaming and no file uploads.',
+      'AI document renamer for medical practices on Mac and Windows. Zush names scanned records by the fields you choose, with Local AI so files never leave the machine, plus in-place renaming and no file uploads.',
     applicationSubCategory: 'Medical Document File Renaming',
     featureList: [
       'Name records by the fields you choose — MRN, date, record type, and more',
-      'Offline AI mode with local Ollama models on Mac and Windows',
+      'Local AI with Ollama on Mac and Windows; works offline after setup',
       'BYOK through an AI provider account and key controlled by the organization',
       'Read scans and faxes with AI vision — no OCR pass',
       'Preview every batch before applying, with undo',

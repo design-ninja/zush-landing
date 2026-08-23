@@ -17,7 +17,7 @@ export const home = {
   "heroModes": [
     "Bulut AI",
     "BYOK",
-    "Çevrimdışı",
+    "Yerel AI",
     "100+ biçim"
   ],
   "featuresTitle": "Zush Özellikleri",
@@ -88,8 +88,8 @@ export const home = {
       "description": "Bulut yeniden adlandırma için kendi Gemini, Groq, OpenAI veya Claude API anahtarınızı bağlayın. FREE tüm modlarda ortak 50 işlem sunar; PRO limiti kaldırır. Anahtarlar yerel ve güvenli depolamada tutulur."
     },
     "offlineAi": {
-      "title": "Çevrimdışı Yapay Zekâ modu",
-      "description": "Ollama aracılığıyla özel yerel modeller. Desteklenen dosyaları analiz içeriğini Zush bulutuna veya yapay zekâ sağlayıcılarına göndermeden işleyin."
+      "title": "Özel yerel yapay zekâ",
+      "description": "Yerel Ollama modelleri desteklenen dosyaları cihazınızda işler ve kurulumdan sonra çevrimdışı çalışır."
     },
     "cloudAi": {
       "title": "Bulut yapay zekâ",

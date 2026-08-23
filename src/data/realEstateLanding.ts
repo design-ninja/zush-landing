@@ -11,7 +11,7 @@ export const REAL_ESTATE_HERO = {
     'Zush reads purchase agreements, disclosures, inspection reports, appraisals, title documents, and property photos, then gives them consistent filenames. Keep your existing transaction system, folders, and shared drives on Mac or Windows.',
   trustLine: [
     'Works beside your transaction system',
-    'Offline AI for sensitive files',
+    'Local AI for sensitive files',
     'Preview and undo every batch',
   ],
   photo: {
@@ -53,7 +53,7 @@ export const REAL_ESTATE_PRIVACY_MODES: RealEstatePrivacyMode[] = [
   {
     id: 'offline',
     kind: 'offline-ai',
-    title: 'Offline AI with local models',
+    title: 'Local AI with Ollama',
     badge: 'Keep files on the machine',
     badgeTone: 'success',
     description:
@@ -73,7 +73,7 @@ export const REAL_ESTATE_PRIVACY_MODES: RealEstatePrivacyMode[] = [
     title: 'Start with managed AI',
     badge: 'Fastest setup',
     description:
-      'Use Zush-managed AI for a quick evaluation or non-sensitive listing material. Choose Offline AI or BYOK when a transaction requires a different processing policy.',
+      'Use Zush-managed AI for a quick evaluation or non-sensitive listing material. Choose Local AI or BYOK when a transaction requires a different processing policy.',
   },
 ];
 
@@ -216,7 +216,7 @@ export const REAL_ESTATE_FAQ = [
   {
     question: 'Can transaction files be processed without uploading them?',
     answer:
-      'Yes. Offline AI mode analyzes supported files with local Ollama models on Mac or Windows, so document content stays on that machine. BYOK is available when the brokerage prefers to use its own approved provider account.',
+      'Yes. Local AI analyzes supported files with Ollama on Mac or Windows, so document content stays on that machine. It works offline after setup. BYOK is available when the brokerage prefers to use its own approved provider account.',
   },
   {
     question: 'Does it work with scanned real estate documents?',
@@ -262,7 +262,7 @@ export const REAL_ESTATE_JSON_LD = buildFeaturePageJsonLd({
       'Read scanned inspection, title, appraisal, and closing documents',
       'Name property photos with the same address-based context',
       'Create reusable Templates for transactions, listings, and media',
-      'Choose managed Cloud AI, BYOK, or local Offline AI',
+      'Choose managed Cloud AI, BYOK, or Local AI',
       'Preview every batch before applying, with undo history',
     ],
   },

@@ -64,10 +64,12 @@ export interface SeoMeta {
 
 type RouteSeoMeta = Omit<SeoMeta, 'canonicalPath'>;
 
+const HOME_PAGE_TITLE = 'AI File Renamer for Mac & Windows with Custom Rules | Zush';
+
 const DEFAULT_META: RouteSeoMeta = {
-  title: 'AI File Renamer with Custom Rules for Mac & Windows | Zush',
+  title: HOME_PAGE_TITLE,
   description:
-    'Zush is an AI file renamer for Mac and Windows. Set custom naming rules, preview every change, undo any batch, or keep analysis on-device with Offline AI.',
+    'AI file renamer for Mac and Windows that reads file content and applies custom naming rules. Preview every filename, undo batches, or use Local AI.',
   robots: 'index, follow',
   ogType: 'website',
 };
@@ -88,9 +90,9 @@ const PRIVATE_META: RouteSeoMeta = {
 const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/': {
     ...DEFAULT_META,
-    title: 'AI File Renamer with Custom Rules for Mac & Windows | Zush',
+    title: HOME_PAGE_TITLE,
     description:
-      'Zush is an AI file renamer for Mac and Windows. Set custom naming rules, preview every change, undo any batch, or keep analysis on-device with Offline AI.',
+      'AI file renamer for Mac and Windows that reads file content and applies custom naming rules. Preview every filename, undo batches, or use Local AI.',
     robots: 'index, follow',
   },
   '/pricing': {
@@ -162,7 +164,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/for-accountants': {
     title: 'Accounting Document Management with AI File Renaming | Zush',
     description:
-      'Automatically rename invoices, receipts, statements, tax forms, and scans by vendor, date, number, and amount. Client Templates, Offline AI, preview, and undo.',
+      'Automatically rename invoices, receipts, statements, tax forms, and scans by vendor, date, number, and amount. Client Templates, Local AI, preview, and undo.',
     robots: 'index, follow',
     ogType: 'website',
     ogImage: `${SITE_ORIGIN}/images/landing/accountants-file-renamer.webp`,
@@ -391,7 +393,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/mac': {
     title: 'AI File Renamer for Mac with Custom Rules | Zush',
     description:
-      'Zush is an AI file renamer for Mac. Set custom naming rules, preview every change, undo any batch, or keep supported analysis on-device with Offline AI.',
+      'Zush is an AI file renamer for Mac. Set custom naming rules, preview every change, undo any batch, or keep supported analysis on-device with Local AI.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -498,9 +500,9 @@ export const HOME_JSON_LD = {
       '@type': 'WebPage',
       '@id': `${SITE_ORIGIN}/#webpage`,
       url: SITE_ORIGIN,
-      name: 'AI File Renamer with Custom Rules for Mac & Windows | Zush',
+      name: HOME_PAGE_TITLE,
       description:
-        'Zush is an AI file renamer for Mac and Windows. Set custom naming rules, preview every change, undo any batch, or keep analysis on-device with Offline AI.',
+        'AI file renamer for Mac and Windows that reads file content and applies custom naming rules. Preview every filename, undo batches, or use Local AI.',
       isPartOf: WEBSITE_REF,
       about: {
         '@id': `${SITE_ORIGIN}/#software`,
@@ -544,7 +546,7 @@ export const HOME_JSON_LD = {
         '@id': `${SITE_ORIGIN}/#webpage`,
       },
       description:
-        'Zush is an AI file renamer for macOS and Windows that builds filenames from file content, metadata, dates, custom prompts, and 145+ reusable naming blocks. Users preview changes before applying them, can undo any batch, and choose Cloud AI, BYOK, or Offline AI through Ollama.',
+        'Zush is an AI file renamer for macOS and Windows that builds filenames from file content, metadata, dates, custom prompts, and 145+ reusable naming blocks. Users preview changes before applying them, can undo any batch, and choose Cloud AI, BYOK, or Local AI through Ollama.',
       applicationCategory: 'UtilitiesApplication',
       applicationSubCategory: 'File Management',
       operatingSystem: ['macOS 15.0+', 'Windows 10', 'Windows 11'],
@@ -578,7 +580,7 @@ export const HOME_JSON_LD = {
           priceCurrency: 'USD',
           availability: 'https://schema.org/InStock',
           url: SITE_ORIGIN,
-          description: `Free tier with ${APP_CONFIG.free_tier_limit} AI renames across Cloud AI, BYOK, and Offline AI`,
+          description: `Free tier with ${APP_CONFIG.free_tier_limit} AI renames across Cloud AI, BYOK, and Local AI`,
         },
         {
           '@type': 'Offer',
@@ -587,7 +589,7 @@ export const HOME_JSON_LD = {
           name: 'Zush PRO Monthly',
           availability: 'https://schema.org/InStock',
           url: `${SITE_ORIGIN}/pricing`,
-          description: 'Monthly subscription with unlimited renames across Cloud AI, BYOK, and Offline AI.',
+          description: 'Monthly subscription with unlimited renames across Cloud AI, BYOK, and Local AI.',
         },
         {
           '@type': 'Offer',
@@ -596,7 +598,7 @@ export const HOME_JSON_LD = {
           name: 'Zush PRO One-Time',
           availability: 'https://schema.org/InStock',
           url: `${SITE_ORIGIN}/pricing`,
-          description: 'One-time purchase with unlimited renames across Cloud AI, BYOK, and Offline AI.',
+          description: 'One-time purchase with unlimited renames across Cloud AI, BYOK, and Local AI.',
         },
       ],
       featureList: [
@@ -612,7 +614,7 @@ export const HOME_JSON_LD = {
         'RAW photo, PDF, and document analysis',
         '60+ language support',
         'Bring Your Own Key (BYOK)',
-        'Offline AI mode with local Ollama models',
+        'Local AI mode with Ollama models; works offline after setup',
       ],
     },
   ],

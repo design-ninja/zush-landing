@@ -4,9 +4,9 @@ import { PRO_PRICING } from '@/constants/pricing';
 
 export const HOME_FAQ_DATA: FAQItem[] = [
   {
-    question: 'What is Zush?',
+    question: 'How does an AI file renamer work?',
     answer:
-      'Zush is an AI file renamer and organizer for Mac and Windows. It reads supported files and creates descriptive filenames based on their content. You can review suggestions, batch apply changes, monitor folders, and undo renames.',
+      'An AI file renamer reads file content, metadata, text, and visual previews to create descriptive filenames. Zush lets you apply custom naming rules, review a batch, and undo it later.',
   },
   {
     question: 'Can Zush rename files based on their content?',
@@ -26,12 +26,12 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'Is Zush free to try?',
     answer:
-      `Yes. Zush includes ${APP_CONFIG.free_tier_limit} free AI renames with no credit card required across Cloud AI, BYOK, and Offline AI, so you can test the full workflow before upgrading.`,
+      `Yes. Zush includes ${APP_CONFIG.free_tier_limit} free AI renames with no credit card required across Cloud AI, BYOK, and Local AI, so you can test the full workflow before upgrading.`,
   },
   {
     question: 'Is my data private?',
     answer:
-      'Your original files stay on your device. Cloud mode sends only the content needed for analysis, BYOK sends it to the AI provider you choose, and Offline AI with Ollama processes everything locally, so nothing leaves your computer.',
+      'Your original files stay on your device. Cloud mode sends only the content needed for analysis, BYOK sends it to the AI provider you choose, and Local AI with Ollama processes supported files on your computer without cloud processing.',
   },
   {
     question: 'Which operating systems does Zush support?',
@@ -46,7 +46,7 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'Can Zush rename files offline?',
     answer:
-      'Yes. Offline AI is available on the free plan with compatible local Ollama models for supported files. It shares the 50-rename free limit with Cloud AI and BYOK; PRO removes that limit.',
+      'Yes. Local AI works offline after you install Ollama and a compatible model. It is available on the free plan for supported files and shares the 50-rename limit with Cloud AI and BYOK; PRO removes that limit.',
   },
   {
     question: 'How does folder monitoring work?',
@@ -71,6 +71,6 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'How much does Zush PRO cost?',
     answer:
-      `Zush PRO costs ${PRO_PRICING.monthly.label} per month or ${PRO_PRICING.oneTime.label} as a one-time purchase. BYOK and Offline AI are already available within the ${APP_CONFIG.free_tier_limit}-rename free limit; both PRO plans remove that limit across every AI mode. Eligible purchases include a 14-day refund period.`,
+      `Zush PRO costs ${PRO_PRICING.monthly.label} per month or ${PRO_PRICING.oneTime.label} as a one-time purchase. BYOK and Local AI are already available within the ${APP_CONFIG.free_tier_limit}-rename free limit; both PRO plans remove that limit across every AI mode. Eligible purchases include a 14-day refund period.`,
   },
 ];

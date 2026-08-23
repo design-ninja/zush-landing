@@ -65,7 +65,7 @@ const MedicalFieldExplorer = () => {
 
       <p className={styles.Explorer__Hint}>
         Your Template decides which fields appear in the filename. Run the extraction locally
-        with Offline AI, or through the provider account your organization controls with BYOK.
+        with Local AI and Ollama, or through the provider account your organization controls with BYOK.
       </p>
     </div>
   );
