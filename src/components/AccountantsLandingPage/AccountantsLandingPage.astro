@@ -25,7 +25,9 @@ import {
   ACCOUNTANTS_PRIVACY_NOTE,
   ACCOUNTANTS_TESTIMONIALS,
   ACCOUNTANTS_WORKFLOW,
+  ACCOUNTANTS_ZUSH_ADVANTAGES,
   ACCOUNTING_DOCUMENT_TYPES,
+  SOFTPEDIA_REVIEW,
 } from '@/data/accountantsLanding';
 import { getCopy } from '@/i18n/copy';
 import { FEATURE_DEMO_COPY } from '@/i18n/featureDemoCopy';
@@ -185,6 +187,45 @@ const AUDIENCE_IMAGES = {
   </div>
 </section>
 
+<section class={styles.Comparison} aria-labelledby='accounting-stack-title'>
+  <div class={styles.Comparison__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <p class={styles.Comparison__Eyebrow}>Why Zush</p>
+      <Heading as='h2' align='center' id='accounting-stack-title' className={sectionHeaderStyles.SectionHeader__Title}>
+        Why accountants and bookkeepers use Zush for file naming
+      </Heading>
+      <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
+        Zush gives accounting teams a repeatable naming layer for invoices, receipts, statements, tax forms, scans, and exports while keeping every file in its existing folder.
+      </Text>
+    </div>
+
+    <div class={styles.Comparison__TableWrap} tabindex='0' role='region' aria-label='Zush advantages for accounting file naming'>
+      <table class={styles.ComparisonTable}>
+        <thead>
+          <tr>
+            <th scope='col'>Accounting file need</th>
+            <th scope='col'>How Zush handles it</th>
+            <th scope='col'>Workflow benefit</th>
+          </tr>
+        </thead>
+        <tbody>
+          {ACCOUNTANTS_ZUSH_ADVANTAGES.map((row) => (
+            <tr>
+              <th scope='row'>{row.need}</th>
+              <td>{row.zushWorkflow}</td>
+              <td>{row.benefit}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <p class={styles.Comparison__Note}>
+      Zush is the file-naming layer, not a document repository or ledger. AI-generated filenames are working labels rather than accounting evidence, so review ambiguous fields against the source document before applying a batch.
+    </p>
+  </div>
+</section>
+
 <CloudFolders title={copy.home.cloudFoldersTitle} />
 
 <section class={styles.Documents} aria-labelledby='accounting-document-types-title'>
@@ -221,6 +262,30 @@ const AUDIENCE_IMAGES = {
       </Text>
     </div>
 
+    <article class={styles.EditorialReview}>
+      <div class={styles.EditorialReview__Meta}>
+        <span>Independent editorial review</span>
+        <strong aria-label={`${SOFTPEDIA_REVIEW.rating} rating`}>{SOFTPEDIA_REVIEW.rating}</strong>
+      </div>
+      <blockquote class={styles.EditorialReview__Quote}>
+        <Text as='p' size='lg'>“{SOFTPEDIA_REVIEW.quote}”</Text>
+      </blockquote>
+      <footer class={styles.EditorialReview__Footer}>
+        <Text as='p' size='sm' color='subtle'>
+          {SOFTPEDIA_REVIEW.author}, {SOFTPEDIA_REVIEW.publication}
+        </Text>
+        <a
+          class={styles.ArrowLink}
+          href={SOFTPEDIA_REVIEW.href}
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          Read the full Softpedia review
+          <ArrowRight size={15} aria-hidden='true' />
+        </a>
+      </footer>
+    </article>
+
     <div class={`${testimonialStyles.Testimonials__Grid} ${styles.Testimonials__Grid}`}>
       {ACCOUNTANTS_TESTIMONIALS.map((testimonial) => (
         <article class={testimonialStyles.TestimonialCard}>
@@ -250,12 +315,12 @@ const AUDIENCE_IMAGES = {
 <ProfessionGuides
   id="accounting-guides"
   title="Accounting document guides"
-  description="Naming conventions and intake workflows for invoices, receipts, tax forms, and the files that sit around QuickBooks or Xero."
+  description="Zush naming conventions and intake workflows for invoices, receipts, tax forms, and the files around your accounting stack."
   slugs={[
     'invoice-file-naming-convention',
     'automatically-rename-invoices-ai',
     'how-to-organize-invoices-and-receipts',
-    'rename-invoices-for-quickbooks-xero',
+    'how-to-organize-tax-documents',
   ]}
 />
 

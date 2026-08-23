@@ -162,9 +162,9 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'rename invoices automatically, invoice renamer, invoice pdf organizer, invoice naming convention, organize invoices, rename pdf invoices, ai invoice organizer, bulk rename invoices',
   },
   '/for-accountants': {
-    title: 'Accounting Document Management with AI File Renaming | Zush',
+    title: 'AI File Renamer for Accountants & Bookkeepers | Zush',
     description:
-      'Automatically rename invoices, receipts, statements, tax forms, and scans by vendor, date, number, and amount. Client Templates, Local AI, preview, and undo.',
+      'Batch rename invoices, receipts, statements, tax forms, and scans by vendor, date, number, amount, and client. Preview every batch on Mac or Windows.',
     robots: 'index, follow',
     ogType: 'website',
     ogImage: `${SITE_ORIGIN}/images/landing/accountants-file-renamer.webp`,

@@ -1,14 +1,14 @@
 import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 
 export const ACCOUNTANTS_PAGE_PATH = '/for-accountants';
-export const ACCOUNTANTS_PAGE_TITLE = 'Accounting Document Management with AI File Renaming';
+export const ACCOUNTANTS_PAGE_TITLE = 'AI File Renamer for Accountants & Bookkeepers';
 
 export const ACCOUNTANTS_HERO = {
-  eyebrow: 'AI file renamer for accountants',
-  titleLead: 'Rename accounting files by ',
+  eyebrow: 'AI file renamer for accountants and bookkeepers',
+  titleLead: 'Rename accounting documents by ',
   titleAccent: 'vendor, date, and number',
   subtitle:
-    'Zush reads invoices, receipts, statements, tax forms, and scans, then names each file to your convention. Build a Template for each client, preview every batch, and undo anytime. Use Cloud AI, your own provider key, or Local AI with Ollama.',
+    'Zush is a file-naming layer for accounting documents — not a document management system or ledger. It names invoices, receipts, statements, tax forms, and scans to each client convention, with batch preview and undo on Mac and Windows.',
   trustLine: [
     'Unmetered paid plans',
     'Private Local AI and BYOK',
@@ -97,6 +97,39 @@ export const ACCOUNTANTS_WORKFLOW = [
       'Rename history can revert a batch. Keep the Template assigned to the folder so new source documents arrive already named to the same convention.',
   },
 ];
+
+export const ACCOUNTANTS_ZUSH_ADVANTAGES = [
+  {
+    need: 'Client-specific naming conventions',
+    zushWorkflow: 'Save a reusable Zush Template for each client, entity, or document workflow.',
+    benefit: 'The rule stays consistent without relying on staff memory.',
+  },
+  {
+    need: 'Content-aware accounting fields',
+    zushWorkflow: 'Zush can propose vendor, date, invoice number, amount, currency, period, and custom fields.',
+    benefit: 'Generic downloads and scans become searchable accounting filenames.',
+  },
+  {
+    need: 'Review before anything changes',
+    zushWorkflow: 'Compare every original and proposed filename in one batch preview.',
+    benefit: 'Ambiguous dates, amounts, currencies, and document numbers can be corrected first.',
+  },
+  {
+    need: 'Private processing choices',
+    zushWorkflow: 'Choose managed Cloud AI, your own provider key, or Local AI with Ollama.',
+    benefit: 'Each firm can match the processing mode to its client-data policy.',
+  },
+  {
+    need: 'Existing folders and storage',
+    zushWorkflow: 'Zush renames documents in place instead of moving them into a new repository.',
+    benefit: 'The improved filenames remain portable across the firm’s current workflow.',
+  },
+  {
+    need: 'Recovery after a batch rename',
+    zushWorkflow: 'Rename History records the original name, new name, folder, and timestamp.',
+    benefit: 'An applied batch can be inspected and reverted when a Template needs another pass.',
+  },
+] as const;
 
 export interface AccountingDocumentType {
   title: string;
@@ -191,11 +224,20 @@ export const ACCOUNTANTS_TESTIMONIALS = [
   },
 ] as const;
 
+export const SOFTPEDIA_REVIEW = {
+  rating: '4.5/5',
+  quote:
+    'Zush excels most in the freedom that it provides users with regarding the flexibility behind the renaming process.',
+  author: 'Roberto Zamfir',
+  publication: 'Softpedia',
+  href: 'https://www.softpedia.com/get/Artificial-Intelligence-Generative-AI/Zush.shtml',
+} as const;
+
 export const ACCOUNTANTS_FAQ = [
   {
     question: 'Does Zush replace accounting document management software?',
     answer:
-      'No. Zush is the file-naming layer around your existing accounting stack. It renames invoices, receipts, statements, scans, downloads, and exports in place, but it does not store client records, control access, approve bills, post transactions, or replace a document management system, QuickBooks, Xero, or your firm’s portal.',
+      'No. Zush is the file-naming layer around your existing accounting stack. It renames invoices, receipts, statements, scans, downloads, and exports in place, but it does not store client records, control access, approve bills, post transactions, or replace a document management system, accounting platform, or firm portal.',
   },
   {
     question: 'How does Zush help accountants and bookkeepers?',
@@ -215,7 +257,7 @@ export const ACCOUNTANTS_FAQ = [
   {
     question: 'Does it work with scanned invoices and receipt photos?',
     answer:
-      'Yes. Zush uses AI vision to read image-only PDFs and supported image formats, so scans and receipt photos can follow the same convention as born-digital documents without a separate OCR step.',
+      'Yes. Zush uses AI vision to read image-only PDFs and supported image formats, so scans and receipt photos can follow the same convention as born-digital documents without a separate OCR step. Scan quality still matters: review vendor names, dates, invoice numbers, amounts, and currencies before applying the batch.',
   },
   {
     question: 'Is client financial data kept private?',
@@ -223,9 +265,9 @@ export const ACCOUNTANTS_FAQ = [
       'Files are renamed in place and are not stored by Zush. For analysis, choose managed Cloud AI, BYOK through the provider account your firm controls, or Local AI with Ollama so supported file analysis stays on the machine.',
   },
   {
-    question: 'Does Zush connect to QuickBooks or Xero?',
+    question: 'Does Zush connect to accounting software?',
     answer:
-      'Zush organizes the file layer around accounting software — downloads, email attachments, scans, exports, and supporting documents. It does not post transactions to or modify records inside QuickBooks, Xero, or another ledger.',
+      'Zush organizes the file layer around accounting software — downloads, email attachments, scans, exports, and supporting documents. It does not post transactions to or modify records inside an accounting platform or ledger.',
   },
   {
     question: 'Does Zush charge per document?',
@@ -258,7 +300,7 @@ export const ACCOUNTANTS_JSON_LD = buildFeaturePageJsonLd({
   software: {
     pagePath: ACCOUNTANTS_PAGE_PATH,
     description:
-      'AI file renamer for accountants and bookkeepers on Mac and Windows. Zush names invoices, receipts, statements, tax forms, and scans by the fields each client workflow needs.',
+      'AI file renamer for accountants and bookkeepers on Mac and Windows. Zush names invoices, receipts, statements, tax forms, and scans by the fields each client workflow needs without replacing a DMS or ledger.',
     applicationSubCategory: 'Accounting Document File Renaming',
     featureList: [
       'Name invoices by vendor, date, number, amount, and currency',

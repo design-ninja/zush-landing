@@ -21,10 +21,13 @@ import {
   PHOTOGRAPHERS_AUDIENCES,
   PHOTOGRAPHERS_FAQ,
   PHOTOGRAPHERS_MEDIA_TYPES,
+  PHOTOGRAPHERS_NAMING_RECIPES,
   PHOTOGRAPHERS_OUTCOMES,
   PHOTOGRAPHERS_PRIVACY_MODES,
   PHOTOGRAPHERS_PRIVACY_NOTE,
+  PHOTOGRAPHERS_RENAME_BOUNDARY,
   PHOTOGRAPHERS_WORKFLOW,
+  PHOTOGRAPHERS_ZUSH_ADVANTAGES,
 } from '@/data/photographersLanding';
 import { getCopy } from '@/i18n/copy';
 import { FEATURE_DEMO_COPY } from '@/i18n/featureDemoCopy';
@@ -154,7 +157,7 @@ const AUDIENCE_IMAGES = {
         Batch rename a shoot without rebuilding your workflow
       </Heading>
       <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>
-        Keep Lightroom, Capture One, your NLE, and your storage layout. Add one reusable naming step around the folders where media already lands.
+        Keep your catalog, editor, NLE, and storage layout. Add one reusable Zush naming step around the folders where media already lands.
       </Text>
     </div>
 
@@ -185,6 +188,48 @@ const AUDIENCE_IMAGES = {
   </div>
 </section>
 
+<section class={styles.Comparison} aria-labelledby="photographers-tool-comparison-title">
+  <div class={styles.Comparison__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <p class={styles.Comparison__Eyebrow}>Why Zush</p>
+      <Heading as="h2" align="center" id="photographers-tool-comparison-title" className={sectionHeaderStyles.SectionHeader__Title}>
+        Why photographers and videographers use Zush for file naming
+      </Heading>
+      <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>
+        Zush combines visual context with dates, camera metadata, sequence fields, and studio rules to create portable filenames before import, during handoff, or in an archive.
+      </Text>
+    </div>
+
+    <div class={styles.Comparison__TableWrap} tabindex="0" role="region" aria-label="Zush advantages for professional photo and video file naming">
+      <table class={styles.ComparisonTable}>
+        <thead>
+          <tr>
+            <th scope="col">Media file need</th>
+            <th scope="col">How Zush handles it</th>
+            <th scope="col">Workflow benefit</th>
+          </tr>
+        </thead>
+        <tbody>
+          {PHOTOGRAPHERS_ZUSH_ADVANTAGES.map((row) => (
+            <tr>
+              <th scope="row">{row.need}</th>
+              <td>{row.zushWorkflow}</td>
+              <td>{row.benefit}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div class={styles.Comparison__Boundary}>
+      <h3>What a rename changes — and what to verify</h3>
+      <ul>
+        {PHOTOGRAPHERS_RENAME_BOUNDARY.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>
+
 <CloudFolders title={copy.home.cloudFoldersTitle} />
 
 <section class={styles.Documents} aria-labelledby="photographers-media-types-title">
@@ -204,6 +249,29 @@ const AUDIENCE_IMAGES = {
           <h3 class={styles.DocumentType__Title}>{mediaType.title}</h3>
           <p class={styles.DocumentType__Description}>{mediaType.description}</p>
           <code class={styles.DocumentType__Example}>{mediaType.example}</code>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class={styles.Documents} aria-labelledby="photographers-naming-recipes-title">
+  <div class={styles.Documents__Container}>
+    <div class={sectionHeaderStyles.SectionHeader}>
+      <Heading as="h2" align="center" id="photographers-naming-recipes-title" className={sectionHeaderStyles.SectionHeader__Title}>
+        Reusable filename recipes for professional shoots
+      </Heading>
+      <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>
+        Start with stable metadata such as date, client, camera, and sequence. Add AI-detected subject, scene, location, or shot type only where it makes the archive easier to search.
+      </Text>
+    </div>
+
+    <div class={styles.Documents__Grid}>
+      {PHOTOGRAPHERS_NAMING_RECIPES.map((recipe) => (
+        <article class={styles.DocumentType}>
+          <h3 class={styles.DocumentType__Title}>{recipe.title}</h3>
+          <p class={styles.DocumentType__Description}>{recipe.description}</p>
+          <code class={styles.DocumentType__Example}>{recipe.example}</code>
         </article>
       ))}
     </div>

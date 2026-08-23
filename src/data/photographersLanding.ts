@@ -5,10 +5,10 @@ export const PHOTOGRAPHERS_PAGE_TITLE = 'AI File Renamer for Photographers & Vid
 
 export const PHOTOGRAPHERS_HERO = {
   eyebrow: 'For photographers and videographers',
-  titleLead: 'Rename every shoot by ',
-  titleAccent: 'project, scene, and take',
+  titleLead: 'AI file renaming for photographers: ',
+  titleAccent: 'organize shoots by project, scene, and take',
   subtitle:
-    'Zush reads RAW photos, JPEGs, and video clips, then proposes searchable filenames from the content and metadata already in each file. Build a naming Template for your studio, review the batch, and keep the original media exactly where it is.',
+    'Zush is a desktop AI file renamer for photographers and videographers. It combines available metadata with visual content to name RAW photos, JPEGs, and supported video clips, while your catalog, editor, or NLE remains the creative system.',
   trustLine: [
     'RAW, photo, and video formats',
     'Custom naming Templates',
@@ -96,6 +96,62 @@ export const PHOTOGRAPHERS_WORKFLOW = [
       'Read the proposed names as one batch, correct exceptions, apply with undo available, then reuse the same Template on the next job.',
   },
 ];
+
+export const PHOTOGRAPHERS_ZUSH_ADVANTAGES = [
+  {
+    need: 'Describe what each file shows',
+    zushWorkflow: 'Zush can propose subject, scene, location, shot type, take, and custom visual fields.',
+    benefit: 'A folder becomes searchable before anyone opens every photo or clip.',
+  },
+  {
+    need: 'Combine AI with stable metadata',
+    zushWorkflow: 'Build a Zush Template from capture date, EXIF, camera, sequence, project, and AI-detected context.',
+    benefit: 'Filenames stay predictable while still describing the individual shot.',
+  },
+  {
+    need: 'Keep one convention across cameras',
+    zushWorkflow: 'Apply the same field order, separator, date format, and studio rules to a mixed batch.',
+    benefit: 'Files from different bodies, cards, and operators follow one naming system.',
+  },
+  {
+    need: 'Review before import or handoff',
+    zushWorkflow: 'See every original and proposed filename side by side before applying the batch.',
+    benefit: 'Ambiguous subjects, scenes, and takes can be corrected before they enter production.',
+  },
+  {
+    need: 'Recover an applied rename',
+    zushWorkflow: 'Zush keeps the original-to-new mapping in Rename History.',
+    benefit: 'The complete batch can be inspected and reverted when the Template needs another pass.',
+  },
+] as const;
+
+export const PHOTOGRAPHERS_NAMING_RECIPES = [
+  {
+    title: 'Client shoot with camera sequence',
+    description:
+      'Use a deterministic date and project prefix, then retain a camera or sequence field so files from multiple bodies stay unique.',
+    example: '{YYYYMMDD}_{Client}_{Shoot}_{Camera}_{Sequence}',
+  },
+  {
+    title: 'Video production and multi-camera takes',
+    description:
+      'Combine project context with visible scene details, shot type, take, and camera before the clips enter an editing timeline.',
+    example: '{Project}_{Scene}_{ShotType}_{Take}_{Camera}',
+  },
+  {
+    title: 'Searchable portrait or event archive',
+    description:
+      'Put stable client and date fields first, then add the subject, location, or moment that distinguishes each image.',
+    example: '{Client}_{CaptureDate}_{Subject}_{Location}',
+  },
+] as const;
+
+export const PHOTOGRAPHERS_RENAME_BOUNDARY = [
+  'Zush changes the filename and path, not the image pixels, video content, or embedded metadata.',
+  'Supported RAW files keep their original extension, and every proposed old-to-new name is visible before the batch is applied.',
+  'Rename History records the original filename, new filename, folder, and timestamp so an applied batch can be reverted.',
+  'Catalogs, timelines, RAW+JPEG pairs, and XMP sidecars can create linked workflows. Test a copied folder and rename before import unless you have verified relinking in the destination application.',
+] as const;
 
 export const PHOTOGRAPHERS_MEDIA_TYPES = [
   {
@@ -203,9 +259,14 @@ export const PHOTOGRAPHERS_FAQ = [
       'Yes. Add those fields to a Template or describe a studio-specific field with a Custom AI Block. Results depend on the visual and metadata context available in each file, so the preview step is important for ambiguous clips.',
   },
   {
-    question: 'Does Zush replace Lightroom, Capture One, or an NLE?',
+    question: 'Does Zush replace a photo catalog, editor, or NLE?',
     answer:
       'No. Zush handles the filename layer around your existing workflow. It renames media in ordinary folders before import, during handoff, or in an archive; it does not replace culling, color, editing, catalogs, timelines, or digital asset management.',
+  },
+  {
+    question: 'Does renaming change photo metadata or video content?',
+    answer:
+      'No. Zush changes the filename and path, not image pixels, video content, or embedded metadata, and supported RAW files keep their extension. Catalogs, timelines, RAW+JPEG pairs, and XMP sidecars can maintain their own links, so test a copied folder and rename before import unless you have verified relinking in the destination application.',
   },
   {
     question: 'Can I keep unreleased or private client work offline?',

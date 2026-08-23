@@ -395,6 +395,174 @@
     }
 }
 
+// ---------------------------------------------------------------------------
+// Product boundary comparison — answers the "where does Zush fit?" question
+// in a format that is readable by people, crawlers, and answer engines.
+// ---------------------------------------------------------------------------
+.Comparison {
+    padding: $space-3xl 0;
+    background: var(--muted);
+
+    @include mobile {
+        padding: 3.25rem 0;
+    }
+
+    &__Container {
+        @include container;
+    }
+
+    &__Eyebrow {
+        margin: 0 0 $space-sm;
+        text-align: center;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--primary);
+    }
+
+    &__TableWrap {
+        margin-top: $space-2xl;
+        overflow-x: auto;
+        border: 1px solid var(--border);
+        border-radius: 1rem;
+        background: var(--card);
+        -webkit-overflow-scrolling: touch;
+
+        &:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
+        }
+    }
+
+    &__Note {
+        max-width: 50rem;
+        margin: $space-lg auto 0;
+        text-align: center;
+        font-size: 0.875rem;
+        line-height: 1.65;
+        color: var(--muted-foreground);
+    }
+
+    &__Boundary {
+        max-width: 52rem;
+        margin: $space-xl auto 0;
+        padding: $space-lg;
+        border-left: 3px solid var(--primary);
+        border-radius: 0 1rem 1rem 0;
+        background: var(--card);
+
+        h3 {
+            margin: 0;
+            font-size: 1.0625rem;
+            color: var(--foreground);
+        }
+
+        ul {
+            margin: $space-md 0 0;
+            padding-left: 1.25rem;
+        }
+
+        li {
+            font-size: 0.875rem;
+            line-height: 1.65;
+            color: var(--muted-foreground);
+
+            & + li {
+                margin-top: $space-sm;
+            }
+        }
+    }
+}
+
+.ComparisonTable {
+    width: 100%;
+    min-width: 46rem;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    line-height: 1.5;
+
+    th,
+    td {
+        padding: $space-md;
+        border-bottom: 1px solid var(--border);
+        text-align: left;
+        vertical-align: top;
+    }
+
+    thead th {
+        background: var(--primary-soft);
+        color: var(--foreground);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+    }
+
+    tbody th {
+        width: 25%;
+        color: var(--foreground);
+        font-weight: 600;
+    }
+
+    tbody td {
+        color: var(--muted-foreground);
+    }
+
+    tbody tr:last-child th,
+    tbody tr:last-child td {
+        border-bottom: 0;
+    }
+}
+
+.EditorialReview {
+    max-width: 56rem;
+    margin: $space-2xl auto 0;
+    padding: $space-xl;
+    border: 1px solid color-mix(in oklch, var(--primary), transparent 65%);
+    border-radius: $radius-lg;
+    background: var(--primary-soft);
+
+    &__Meta,
+    &__Footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: $space-md;
+
+        @include small {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+    }
+
+    &__Meta {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--primary);
+
+        strong {
+            font-size: 0.875rem;
+        }
+    }
+
+    &__Quote {
+        margin: $space-lg 0;
+        color: var(--foreground);
+    }
+
+    &__Footer {
+        padding-top: $space-md;
+        border-top: 1px solid color-mix(in oklch, var(--primary), transparent 75%);
+
+        p {
+            margin: 0;
+        }
+    }
+}
+
 .Audiences {
     padding: $space-3xl 0;
 
