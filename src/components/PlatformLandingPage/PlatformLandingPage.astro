@@ -72,6 +72,12 @@ const pagePath = getLocalizedPath(page.path, locale);
 const platformSections = getPlatformLandingSections(platform, locale, copy);
 const includeOtherDownloadOS = platform !== 'mac';
 const footerHidePlatform = platform === 'mac' ? 'windows' : undefined;
+const primaryDownloadLabel = locale === DEFAULT_LOCALE && platform === 'windows'
+  ? 'Get from Microsoft Store'
+  : copy.header.download;
+const downloadHintPrefix = locale === DEFAULT_LOCALE && platform === 'windows'
+  ? 'Free · No registration · Microsoft Store'
+  : copy.home.downloadHintPrefix;
 
 const specifics = getLocalizedPlatformSpecificsContent(
   platform,
@@ -334,7 +340,7 @@ const jsonLdItems = [
     titleHighlight={platformLabel}
     subtitle={localizedPage.heroSubtitle}
     buyLabel={copy.home.buyPro}
-    downloadLabel={copy.header.download}
+    downloadLabel={primaryDownloadLabel}
     downloadMenu={copy.downloadMenu}
     showDownloadDropdown={false}
     appStoreLabel={platform === 'mac' ? copy.downloadMenu.appStoreCta : undefined}
@@ -404,8 +410,8 @@ const jsonLdItems = [
     forceOS={platform}
     title={localizedPage.ctaTitle}
     subtitle={localizedPage.ctaSubtitle}
-    hintPrefix={copy.home.downloadHintPrefix}
-    downloadLabel={copy.header.download}
+    hintPrefix={downloadHintPrefix}
+    downloadLabel={primaryDownloadLabel}
     downloadMenu={copy.downloadMenu}
     includeOtherDownloadOS={includeOtherDownloadOS}
   />

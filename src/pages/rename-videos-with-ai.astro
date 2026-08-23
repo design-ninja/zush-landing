@@ -7,7 +7,14 @@ import { getSeoForPath } from '@/seo/config';
 import { buildFeatureBreadcrumbJsonLd } from '@/utils/jsonLd';
 
 const seo = getSeoForPath('/rename-videos-with-ai');
-const featurePage = getFeaturePageProps(RenameVideosWithAI);
+const baseFeaturePage = getFeaturePageProps(RenameVideosWithAI);
+const featurePage = {
+  ...baseFeaturePage,
+  relatedPages: [
+    { title: 'AI File Renamer for Windows', href: '/windows' },
+    ...(baseFeaturePage.relatedPages ?? []),
+  ],
+};
 ---
 
 <BaseLayout seo={seo} headerWidth="container" jsonLd={[featurePage.jsonLd, buildFeatureBreadcrumbJsonLd(featurePage.h1, '/rename-videos-with-ai')]}>

@@ -1331,12 +1331,12 @@ const EN_COPY: LocaleCopy = {
       breadcrumbLabel: 'Zush for Windows',
       softwareName: 'Zush for Windows',
       softwareDescription:
-        'Zush is an AI file renamer for Windows that builds filenames from content, metadata, dates, custom prompts, and reusable naming rules. Preview every change, undo any batch, or use Offline AI with Ollama.',
+        'Zush is an AI file renamer for Windows 10 and 11. Batch rename files by content, preview every change, undo any batch, and choose cloud, BYOK, or private local AI.',
       heroTitle: 'AI File Renamer for Windows',
       heroSubtitle:
-        'Build File Explorer filenames from the details you choose. Preview every suggestion, apply changes when you are ready, undo any batch, or keep supported analysis on-device with Offline AI.',
+        'Batch rename files by content on Windows 10 and 11. Preview every filename before applying, undo any batch, and choose cloud, BYOK, or private local AI.',
       ctaTitle: 'Try Zush free on Windows',
-      ctaSubtitle: 'Set your naming rules, preview every change, and rename File Explorer files with Zush Cloud, your own AI provider, or Offline AI.',
+      ctaSubtitle: 'Preview every proposed filename, apply only when you are ready, and undo any batch. Install the Windows 10/11 app from Microsoft Store.',
       faqDescription: 'Everything you need to know about using Zush as an AI file renamer and bulk rename tool for Windows.',
       features: [
         'AI file renamer for Windows 11 and 10 with content-aware bulk rename for 100+ formats, including screenshots, design files, audio, videos, PDFs, photos, iWork, and Office documents',

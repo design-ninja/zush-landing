@@ -907,6 +907,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     showcaseSlides: invoiceSlides,
     faqItems: invoiceRenameFaq,
     relatedPages: [
+      { title: 'Zush for Windows', href: '/windows' },
       { title: 'Rename PDFs with AI', href: '/rename-pdf-with-ai' },
       { title: 'Rename & Organize Receipts with AI', href: '/rename-receipts-with-ai' },
       { title: 'Custom AI Blocks Docs', href: '/docs/custom-ai-blocks' },

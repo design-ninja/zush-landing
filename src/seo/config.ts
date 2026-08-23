@@ -396,9 +396,9 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ogType: 'website',
   },
   '/windows': {
-    title: 'AI File Renamer for Windows with Custom Rules | Zush',
+    title: 'AI File Renamer for Windows 10/11 | Batch Rename | Zush',
     description:
-      'Zush is an AI file renamer for Windows. Set custom naming rules, preview every change, undo any batch, or keep supported analysis on-device with Offline AI.',
+      'Batch rename files by content on Windows 10/11. Preview filenames, undo any batch, and choose cloud, BYOK, or private local AI. Get Zush on Microsoft Store.',
     robots: 'index, follow',
     ogType: 'website',
   },

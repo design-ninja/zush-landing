@@ -7,7 +7,14 @@ import { getSeoForPath } from '@/seo/config';
 import { buildFeatureBreadcrumbJsonLd } from '@/utils/jsonLd';
 
 const seo = getSeoForPath('/rename-pdf-with-ai');
-const featurePage = getFeaturePageProps(RenamePDFWithAI);
+const baseFeaturePage = getFeaturePageProps(RenamePDFWithAI);
+const featurePage = {
+  ...baseFeaturePage,
+  relatedPages: [
+    { title: 'AI File Renamer for Windows', href: '/windows' },
+    ...(baseFeaturePage.relatedPages ?? []),
+  ],
+};
 ---
 
 <BaseLayout seo={seo} headerWidth="container" jsonLd={[featurePage.jsonLd, buildFeatureBreadcrumbJsonLd(featurePage.h1, '/rename-pdf-with-ai')]}>

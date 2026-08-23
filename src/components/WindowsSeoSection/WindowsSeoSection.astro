@@ -16,6 +16,8 @@ const docsLinks = [
   { href: '/powerrename-alternative', label: 'PowerRename alternative' },
   { href: '/rename-invoices-with-ai', label: 'Rename invoices with AI' },
   { href: '/docs/batch-rename-files', label: 'Batch rename files' },
+  { href: '/docs/privacy-security', label: 'Privacy & security' },
+  { href: '/docs/undo-history', label: 'Preview & undo history' },
   { href: '/docs/folder-monitoring', label: 'Automate Downloads cleanup' },
   { href: '/docs/file-search', label: 'Make files searchable' },
   { href: '/docs/supported-file-types', label: 'Supported file types' },
@@ -27,7 +29,7 @@ const cards = [
     tone: 'purple',
     title: 'Batch rename files on Windows',
     body:
-      'Drag files from File Explorer, generate names from content, review every suggestion, and apply the full batch with undo history.',
+      'Drag files from File Explorer, generate names from content, review every suggestion, and apply only when the batch is ready. Undo history keeps the original names available.',
   },
   {
     icon: FolderSearch,
@@ -55,7 +57,7 @@ const cards = [
     tone: 'orange',
     title: 'BYOK and Offline AI',
     body:
-      'Use bundled cloud AI, connect Gemini, Groq, OpenAI, or Claude with BYOK, or run supported analysis locally with Ollama Offline AI.',
+      'Choose the privacy level for the job: use Zush Cloud, connect your own provider account with BYOK, or keep supported analysis on-device with Offline AI.',
   },
   {
     icon: History,
@@ -75,8 +77,8 @@ const cards = [
         Batch rename and organize Windows files by content
       </Heading>
       <Text as="p" align="center" color="subtle" className={styles.WindowsSeoSection__Intro}>
-        Zush is built for Windows users who need an AI file renamer, batch rename tool, bulk rename workflow,
-        and practical file organizer for messy File Explorer folders.
+        Zush is a Windows 10 and 11 AI file renamer for messy File Explorer folders. It proposes names first,
+        lets you review every change, and keeps the original names in undo history after you apply a batch.
       </Text>
     </div>
 
