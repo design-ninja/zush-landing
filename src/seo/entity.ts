@@ -3,6 +3,7 @@ import {
   CRUNCHBASE_URL,
   FACEBOOK_PROFILE_URL,
   GITHUB_RELEASES_URL,
+  GOOGLE_WORKSPACE_MARKETPLACE_URL,
   HOMEBREW_CASK_URL,
   LINKEDIN_COMPANY_URL,
   PRODUCT_HUNT_URL,
@@ -22,6 +23,17 @@ const SOFTWARE_ID = `${SITE_ORIGIN}/#software`;
 /** Reference to the single Organization node emitted on every page by BaseLayout. */
 export const ORGANIZATION_REF = { '@id': ORGANIZATION_ID } as const;
 export const WEBSITE_REF = { '@id': WEBSITE_ID } as const;
+
+/** Branded names people use for the same Zush product and entity. */
+export const ZUSH_BRAND_ALTERNATE_NAMES = [
+  'Zush AI',
+  'Zush AI Renamer',
+  'Zush AI File Renamer',
+  'Zush File Renamer',
+  'Zush Renamer',
+  'Zush AI File Organizer',
+  'Zush App',
+] as const;
 
 /**
  * Reference to the product entity, which is fully described only on the homepage.
@@ -52,13 +64,14 @@ const ORGANIZATION_SAME_AS = [
   HOMEBREW_CASK_URL,
   APP_STORE_URL,
   WINDOWS_STORE_URL,
+  GOOGLE_WORKSPACE_MARKETPLACE_URL,
 ];
 
 const ORGANIZATION_JSON_LD = {
   '@type': 'Organization',
   '@id': ORGANIZATION_ID,
   name: 'Zush',
-  alternateName: 'Zush AI File Renamer',
+  alternateName: [...ZUSH_BRAND_ALTERNATE_NAMES],
   url: SITE_ORIGIN,
   logo: {
     '@type': 'ImageObject',
@@ -82,7 +95,7 @@ const WEBSITE_JSON_LD = {
   '@id': WEBSITE_ID,
   url: SITE_ORIGIN,
   name: 'Zush',
-  alternateName: 'Zush AI File Renamer',
+  alternateName: [...ZUSH_BRAND_ALTERNATE_NAMES],
   publishingPrinciples: `${SITE_ORIGIN}/methodology`,
   publisher: ORGANIZATION_REF,
   // The only site-wide search surface is the blog search page.

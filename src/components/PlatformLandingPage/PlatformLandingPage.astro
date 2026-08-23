@@ -46,6 +46,7 @@ import { buildSoftpediaReviewJsonLd } from '@/seo/softpediaReview';
 import {
   APP_CONFIG,
   APP_STORE_URL,
+  GOOGLE_WORKSPACE_MARKETPLACE_URL,
   HOMEBREW_CASK_URL,
   MAC_APP_VERSION,
   WINDOWS_APP_VERSION,
@@ -194,7 +195,23 @@ const intentSection = platform === 'mac'
     };
 
 const schemaAlternateNames = locale === DEFAULT_LOCALE
-  ? platformKeywords
+  ? platform === 'mac'
+    ? [
+        'Zush AI Renamer for Mac',
+        'Zush AI File Renamer for Mac',
+        'Zush File Renamer for Mac',
+        'Zush for Mac',
+        'AI File Renamer for Mac',
+        'Mac AI File Renamer',
+      ]
+    : [
+        'Zush AI Renamer for Windows',
+        'Zush AI File Renamer for Windows',
+        'Zush File Renamer for Windows',
+        'Zush for Windows',
+        'AI File Renamer for Windows',
+        'Windows AI File Renamer',
+      ]
   : [
       localizedPage.softwareName,
       localizedPage.heroTitle,
@@ -241,7 +258,9 @@ const softwareJsonLd = {
   softwareVersion: platform === 'mac' ? MAC_APP_VERSION : WINDOWS_APP_VERSION,
   downloadUrl: platform === 'mac' ? [page.downloadUrl, APP_STORE_URL, HOMEBREW_CASK_URL] : page.downloadUrl,
   installUrl: platform === 'mac' ? [APP_STORE_URL, HOMEBREW_CASK_URL] : page.installUrl,
-  sameAs: platform === 'mac' ? [APP_STORE_URL, HOMEBREW_CASK_URL] : [WINDOWS_STORE_URL],
+  sameAs: platform === 'mac'
+    ? [APP_STORE_URL, HOMEBREW_CASK_URL, GOOGLE_WORKSPACE_MARKETPLACE_URL]
+    : [WINDOWS_STORE_URL, GOOGLE_WORKSPACE_MARKETPLACE_URL],
   screenshot: screenshotJsonLd,
   ...buildAppAggregateRatingJsonLd(),
   ...buildSoftpediaReviewJsonLd(),

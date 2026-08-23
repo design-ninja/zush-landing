@@ -3,6 +3,7 @@ import {
   APP_CONFIG,
   APP_STORE_URL,
   GITHUB_RELEASES_URL,
+  GOOGLE_WORKSPACE_MARKETPLACE_URL,
   HOMEBREW_CASK_URL,
   MAC_APP_VERSION,
   MAC_INSTALLER_URL,
@@ -16,7 +17,7 @@ import {
 import { getPrimaryAuthorJsonLd, PRIMARY_AUTHOR } from '@/data/author';
 import { buildAppAggregateRatingJsonLd } from '@/seo/appRating';
 import { buildSoftpediaReviewJsonLd } from '@/seo/softpediaReview';
-import { ORGANIZATION_REF, WEBSITE_REF } from '@/seo/entity';
+import { ORGANIZATION_REF, WEBSITE_REF, ZUSH_BRAND_ALTERNATE_NAMES } from '@/seo/entity';
 import { PRO_PRICING } from '@/constants/pricing';
 
 export const SITE_ORIGIN = 'https://zushapp.com';
@@ -64,12 +65,13 @@ export interface SeoMeta {
 
 type RouteSeoMeta = Omit<SeoMeta, 'canonicalPath'>;
 
-const HOME_PAGE_TITLE = 'AI File Renamer for Mac & Windows with Custom Rules | Zush';
+const HOME_PAGE_TITLE = 'Zush AI Renamer: File Renamer & Organizer for Mac & Windows';
+const HOME_PAGE_DESCRIPTION =
+  'Zush is an AI file renamer and organizer for Mac and Windows. Rename files by content, apply custom naming rules, preview every name, and undo any batch.';
 
 const DEFAULT_META: RouteSeoMeta = {
   title: HOME_PAGE_TITLE,
-  description:
-    'AI file renamer for Mac and Windows that reads file content and applies custom naming rules. Preview every filename, undo batches, or use Local AI.',
+  description: HOME_PAGE_DESCRIPTION,
   robots: 'index, follow',
   ogType: 'website',
 };
@@ -91,8 +93,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/': {
     ...DEFAULT_META,
     title: HOME_PAGE_TITLE,
-    description:
-      'AI file renamer for Mac and Windows that reads file content and applies custom naming rules. Preview every filename, undo batches, or use Local AI.',
+    description: HOME_PAGE_DESCRIPTION,
     robots: 'index, follow',
   },
   '/pricing': {
@@ -391,16 +392,16 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ogType: 'website',
   },
   '/mac': {
-    title: 'AI File Renamer for Mac with Custom Rules | Zush',
+    title: 'Zush AI Renamer for Mac: File Renamer & Organizer',
     description:
-      'Zush is an AI file renamer for Mac. Set custom naming rules, preview every change, undo any batch, or keep supported analysis on-device with Local AI.',
+      'Zush is an AI file renamer and organizer for Mac. Rename files by content, apply custom naming rules, preview every name, use Local AI, and undo any batch.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/windows': {
-    title: 'AI File Renamer for Windows 10/11 | Batch Rename | Zush',
+    title: 'Zush AI Renamer for Windows: File Renamer & Organizer',
     description:
-      'Batch rename files by content on Windows 10/11. Preview filenames, undo any batch, and choose cloud, BYOK, or private local AI. Get Zush on Microsoft Store.',
+      'Zush is an AI file renamer and organizer for Windows 10 and 11. Rename files by content, apply custom naming rules, preview every name, and undo any batch.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -501,8 +502,7 @@ export const HOME_JSON_LD = {
       '@id': `${SITE_ORIGIN}/#webpage`,
       url: SITE_ORIGIN,
       name: HOME_PAGE_TITLE,
-      description:
-        'AI file renamer for Mac and Windows that reads file content and applies custom naming rules. Preview every filename, undo batches, or use Local AI.',
+      description: HOME_PAGE_DESCRIPTION,
       isPartOf: WEBSITE_REF,
       about: {
         '@id': `${SITE_ORIGIN}/#software`,
@@ -535,8 +535,11 @@ export const HOME_JSON_LD = {
       '@id': `${SITE_ORIGIN}/#software`,
       name: 'Zush',
       alternateName: [
+        ...ZUSH_BRAND_ALTERNATE_NAMES,
         'AI File Renamer',
         'AI File Renamer & Organizer',
+        'AI File Organizer',
+        'AI Batch File Renamer',
         'Content-Aware File Renamer',
         'Zush for Mac',
         'Zush for Windows',
@@ -564,6 +567,7 @@ export const HOME_JSON_LD = {
         YOUTUBE_CHANNEL_URL,
         GITHUB_RELEASES_URL,
         HOMEBREW_CASK_URL,
+        GOOGLE_WORKSPACE_MARKETPLACE_URL,
       ],
       image: DEFAULT_OG_IMAGE,
       screenshot: [
