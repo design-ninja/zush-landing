@@ -1,0 +1,63 @@
+---
+title: LM Studio Setup for Local AI
+description: Connect Zush to LM Studio, start its local server, choose a vision-capable model, and rename supported files locally.
+lastUpdated: 2026-08-24
+sidebar:
+  order: 33
+  label: LM Studio
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+LM Studio mode connects Zush to the local OpenAI-compatible server managed by LM Studio. Use it when you want to choose your own vision-capable model and control model loading in LM Studio.
+
+<figure>
+  <img src="/images/showcase/macos/lm-studio-light.webp" alt="LM Studio model and host settings in Zush for Mac." width="2560" height="1440" loading="lazy" decoding="async" />
+  <figcaption>Start the LM Studio server, then choose an installed vision-capable model in Zush.</figcaption>
+</figure>
+
+## Requirements
+
+- Zush 3.10.0 or later for Mac
+- [LM Studio](https://lmstudio.ai/) installed
+- a downloaded vision-capable model
+- the LM Studio local server running
+
+## Set up LM Studio
+
+<Steps>
+1. Install and open [LM Studio](https://lmstudio.ai/).
+2. Download a vision-capable model in LM Studio.
+3. Open **Developer** in LM Studio and turn on **Start Server**.
+4. Open Zush Settings and select **AI Modes**.
+5. Select **LM Studio**.
+6. Confirm the host. The default local endpoint is `http://127.0.0.1:1234`.
+7. Refresh the model list and select the installed vision-capable model.
+8. Run **Test** and wait for a successful connection.
+9. Test a small batch in **AI Rename** before using folder monitoring.
+</Steps>
+
+<Aside type="note">
+Zush only lists models that LM Studio reports as vision-capable. A text-only model cannot analyze image previews used by many rename workflows.
+</Aside>
+
+## Troubleshooting
+
+| Problem | What to check |
+| --- | --- |
+| LM Studio is not detected | Install it in Applications, open it, and return to AI Modes |
+| Server is not running | In LM Studio, open **Developer** and enable **Start Server** |
+| No models appear | Download and load a vision-capable model, then refresh in Zush |
+| Connection test fails | Confirm the host is `http://127.0.0.1:1234` unless you intentionally changed it |
+| Model is too slow | Load a smaller vision model or use built-in [Local AI](/docs/local-ai) |
+
+## Privacy
+
+With the default loopback endpoint, supported analysis runs through LM Studio on your Mac. Zush does not silently switch to cloud analysis while LM Studio mode is selected.
+
+## Related docs
+
+- [AI modes](/docs/ai-modes)
+- [Built-in Local AI](/docs/local-ai)
+- [Ollama](/docs/offline-ai)
+- [Privacy and security](/docs/privacy-security)

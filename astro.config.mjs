@@ -115,8 +115,11 @@ export default defineConfig({
           label: 'AI and privacy',
           items: [
             { label: 'AI modes', link: '/docs/ai-modes' },
+            { label: 'Zush Cloud AI', link: '/docs/zush-cloud-ai' },
+            { label: 'Local AI', link: '/docs/local-ai' },
+            { label: 'LM Studio', link: '/docs/lm-studio' },
             { label: 'BYOK', link: '/docs/byok' },
-            { label: 'Offline AI', link: '/docs/offline-ai' },
+            { label: 'Ollama', link: '/docs/offline-ai' },
             { label: 'Privacy and security', link: '/docs/privacy-security' },
           ],
         },

@@ -1,7 +1,7 @@
 ---
 title: BYOK Setup for AI File Renaming
 description: Set up Bring Your Own Key in Zush with Gemini, Groq, OpenAI, or Claude, then test cloud AI file renaming with your own provider key.
-lastUpdated: 2026-08-04
+lastUpdated: 2026-08-24
 sidebar:
   order: 31
   label: BYOK
@@ -14,8 +14,8 @@ BYOK means **Bring Your Own Key**. It lets users on every Zush plan connect thei
 Use BYOK when you want Zush's desktop workflow, review screen, Templates, Naming Blocks, Monitor, and undo history, but you prefer to pay your own AI provider directly instead of relying only on the managed Zush provider.
 
 <figure>
-  <img src="/images/showcase/macos/byok-light.webp" alt="Cloud BYOK settings in the Zush BYOK/Offline tab." width="2560" height="1440" loading="lazy" decoding="async" />
-  <figcaption>Choose a provider and paste its API key in the Cloud (BYOK) section. Save and Test appear when they are relevant.</figcaption>
+  <img src="/images/showcase/macos/byok-light.webp" alt="BYOK provider and model settings in Zush AI Modes." width="2560" height="1440" loading="lazy" decoding="async" />
+  <figcaption>Open Settings → AI Modes, choose BYOK, then select a provider and add its API key.</figcaption>
 </figure>
 
 ## What BYOK changes
@@ -51,13 +51,13 @@ Zush loads compatible models after the key is saved. The default model is contro
 <Steps>
 1. Open your provider dashboard: [Google AI Studio](https://aistudio.google.com/app/apikey), [Groq Console](https://console.groq.com/keys), [OpenAI Platform](https://platform.openai.com/api-keys), or [Anthropic Console](https://console.anthropic.com/settings/keys).
 2. Create a new API key and copy it. Most providers show the full key only once.
-3. Open Zush and select **BYOK/Offline** in the sidebar.
-4. In **Cloud (BYOK)**, choose the AI provider.
+3. Open Zush and select **AI Modes** in Settings.
+4. Select **BYOK**, then choose the AI provider.
 5. Paste the API key.
 6. Click **Save**. Saving a valid key turns on Cloud BYOK automatically.
 7. Wait for the compatible model list to load. Keep the current default or choose another available model.
 8. Click **Test** to confirm the selected key and model work.
-9. Confirm the **Cloud (BYOK)** switch is on.
+9. Confirm **BYOK** is the selected AI mode.
 10. Run a small batch before using BYOK on a large folder or monitored workflow.
 </Steps>
 
@@ -110,11 +110,13 @@ Once the test batch looks right, you can use the same AI setup with [Templates](
 
 Your API key is stored locally in secure platform storage. Zush can send it directly to the selected provider to load compatible models and run **Test**. It is also sent transiently to Zush backend when BYOK is enabled and when BYOK analysis is processed; the backend forwards analysis requests to the provider. Zush does not permanently store the key or retain file content after normal processing.
 
-For local model processing instead of cloud provider processing, use [Offline AI with Ollama](/docs/offline-ai).
+For local model processing instead of cloud provider processing, use [built-in Local AI](/docs/local-ai), [LM Studio](/docs/lm-studio), or [Ollama](/docs/offline-ai).
 
 ## Related docs
 
 - [AI modes](/docs/ai-modes)
+- [Built-in Local AI](/docs/local-ai)
+- [LM Studio](/docs/lm-studio)
 - [Ollama / Offline AI](/docs/offline-ai)
 - [Privacy and security](/docs/privacy-security)
 - [Pricing and limits](/docs/pricing-limits)

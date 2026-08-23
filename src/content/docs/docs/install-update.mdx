@@ -1,7 +1,7 @@
 ---
 title: Install and Update Zush
-description: Install Zush on Mac or Windows, understand update channels, and check the basic system requirements for Cloud AI, BYOK, and Offline AI.
-lastUpdated: 2026-07-06
+description: Install Zush on Mac or Windows, understand update channels, and check the requirements for Zush Cloud AI, Local AI, LM Studio, BYOK, and Ollama.
+lastUpdated: 2026-08-24
 sidebar:
   order: 3
   label: Install and update
@@ -27,10 +27,11 @@ Zush for Windows supports Windows 10 and Windows 11.
 
 | Requirement | Notes |
 | --- | --- |
-| Memory | 4 GB minimum, 8 GB recommended for Offline AI. |
-| Disk space | About 200 to 250 MB for the app, plus additional space for local Ollama models. |
-| Network | Required for managed Cloud AI and BYOK. Optional for Offline AI after local setup. |
-| Local AI | Requires [Ollama](https://ollama.com/download) and a compatible local model. See the [Offline AI setup guide](/docs/offline-ai). |
+| Memory | 4 GB minimum; more memory is recommended for local models. |
+| Disk space | About 200 to 250 MB for the app, about 3.4 GB for the built-in Local AI model, or additional space for LM Studio and Ollama models. |
+| Network | Required for Zush Cloud AI, BYOK, updates, and initial model downloads. Local AI modes can analyze offline after setup. |
+| Built-in Local AI | Available on Mac and managed inside Zush. See the [Local AI guide](/docs/local-ai). |
+| External local models | Install [LM Studio](/docs/lm-studio) or [Ollama](/docs/offline-ai) and a compatible vision model. |
 
 ## Update behavior
 
@@ -39,5 +40,7 @@ Store builds update through the platform store. Direct builds use the app's norm
 ## Related docs
 
 - [AI modes](/docs/ai-modes)
-- [Offline AI](/docs/offline-ai)
+- [Local AI](/docs/local-ai)
+- [LM Studio](/docs/lm-studio)
+- [Ollama](/docs/offline-ai)
 - [Pricing and limits](/docs/pricing-limits)

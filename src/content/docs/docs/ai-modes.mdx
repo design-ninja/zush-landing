@@ -1,38 +1,48 @@
 ---
-title: "AI Modes: Cloud AI, BYOK, and Offline AI"
-description: "Compare Zush AI modes for file renaming: managed Cloud AI, BYOK with Gemini, Groq, OpenAI, or Claude, and Offline AI with local Ollama models."
-lastUpdated: 2026-07-13
+title: "AI Modes: Zush Cloud AI, Local AI, LM Studio, BYOK, and Ollama"
+description: "Compare every Zush AI mode for file renaming: managed Zush Cloud AI, built-in Local AI, LM Studio, BYOK, and Ollama."
+lastUpdated: 2026-08-24
 sidebar:
   order: 30
   label: AI modes
 ---
 
-Zush supports three AI workflows. Choose the mode that matches your privacy, cost, speed, and setup needs.
+Zush lets you choose where file analysis runs. Pick the mode that matches your privacy, setup, model control, and performance needs.
 
 <figure>
-  <img src="/images/showcase/macos/byok-light.webp" alt="The Zush BYOK/Offline tab showing Cloud BYOK and Offline AI settings." width="2560" height="1440" loading="lazy" decoding="async" />
-  <figcaption>Cloud BYOK and Offline AI are configured from the same BYOK/Offline tab. Cloud AI works out of the box, BYOK adds your provider key, and Offline AI connects to Ollama.</figcaption>
+  <img src="/images/showcase/macos/zush-cloud-ai-light.webp" alt="Zush Cloud AI selected in the AI Modes settings on Mac." width="2560" height="1440" loading="lazy" decoding="async" />
+  <figcaption>Open Settings → AI Modes to switch between Zush Cloud AI and optional cloud or local modes.</figcaption>
 </figure>
 
 ## Compare AI modes
 
-| Mode | Best for | Notes |
+| Mode | Where analysis runs | Best for |
 | --- | --- | --- |
-| Cloud AI | Fast setup and strong general results | Uses Zush-managed cloud analysis. |
-| BYOK | Cloud use with your provider account | Supports Gemini, Groq, OpenAI, and Claude on every plan. The free plan shares a 50-rename limit across all modes; PRO removes it. [Set up BYOK](/docs/byok). |
-| Offline AI | Private local processing for supported files | Uses local Ollama models and depends on your hardware and model choice. [Set up Offline AI](/docs/offline-ai). |
+| [Zush Cloud AI](/docs/zush-cloud-ai) | Zush-managed cloud analysis | The fastest setup: no API key or local model required |
+| [Local AI](/docs/local-ai) | Built into Zush on your Mac | Private offline analysis with a model downloaded and managed by Zush |
+| [LM Studio](/docs/lm-studio) | Your local LM Studio server | Choosing and tuning vision-capable local models in LM Studio |
+| [BYOK](/docs/byok) | Your selected cloud provider | Using your own Gemini, Groq, OpenAI, or Claude API key |
+| [Ollama](/docs/offline-ai) | Your local Ollama server | Running models you already manage with Ollama |
 
 ## How to choose
 
-Use Cloud AI when you want the simplest path. Use [BYOK](/docs/byok) when you already have a provider account or prefer your own key. Use [Offline AI](/docs/offline-ai) when supported local analysis matters more than speed or broadest model quality. All three modes are available within the 50-rename free limit; PRO makes them unlimited.
+- Choose **Zush Cloud AI** when you want to start immediately.
+- Choose **Local AI** when supported analysis must stay on your Mac and you want Zush to manage the local runtime and model.
+- Choose **LM Studio** when you already use its model catalog and local server controls.
+- Choose **BYOK** when you want a specific cloud provider account, model, or billing path.
+- Choose **Ollama** when you already manage local models through Ollama.
 
-## Quality trade-offs
+Only one AI mode is active at a time. When Local AI, LM Studio, or Ollama is selected, Zush does not silently fall back to cloud analysis.
 
-Cloud models are usually stronger across complex mixed folders. Local models can be useful for private visual and preview-based workflows, but quality depends on the model, file type, and available hardware.
+## Quality and performance
+
+Cloud models are usually the simplest option for complex mixed folders. Local quality and speed depend on the model, file type, available memory, and Mac hardware. Test a representative small batch before assigning any mode to folder monitoring.
 
 ## Related docs
 
+- [Zush Cloud AI](/docs/zush-cloud-ai)
+- [Local AI](/docs/local-ai)
+- [LM Studio](/docs/lm-studio)
 - [BYOK](/docs/byok)
-- [Offline AI](/docs/offline-ai)
+- [Ollama](/docs/offline-ai)
 - [Privacy and security](/docs/privacy-security)
-- [Supported file types](/docs/supported-file-types)

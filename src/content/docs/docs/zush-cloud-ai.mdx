@@ -1,0 +1,48 @@
+---
+title: Zush Cloud AI
+description: Use Zush Cloud AI for managed file analysis with no API key, local model, or provider setup.
+lastUpdated: 2026-08-24
+sidebar:
+  order: 31
+  label: Zush Cloud AI
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Zush Cloud AI is the managed mode that works without an API key or a local model. Choose it when you want to add files and start renaming immediately.
+
+<figure>
+  <img src="/images/showcase/macos/zush-cloud-ai-light.webp" alt="Zush Cloud AI selected in the AI Modes settings on Mac." width="2560" height="1440" loading="lazy" decoding="async" />
+  <figcaption>Zush Cloud AI requires no provider key or local model setup.</figcaption>
+</figure>
+
+## Use Zush Cloud AI
+
+<Steps>
+1. Open Zush Settings.
+2. Select **AI Modes**.
+3. Select **Zush Cloud AI**.
+4. Open **AI Rename**, add supported files, and start analysis.
+5. Review the proposed names before applying the batch.
+</Steps>
+
+## What is sent for analysis
+
+Zush keeps your original files on your Mac. Depending on the file type, cloud analysis can use a compressed visual preview, sampled media, extracted text, or a compact summary needed to generate a filename. See [Privacy and security](/docs/privacy-security) for the detailed processing model.
+
+<Aside type="note">
+Choose [Local AI](/docs/local-ai), [LM Studio](/docs/lm-studio), or [Ollama](/docs/offline-ai) when supported analysis content must stay on your Mac.
+</Aside>
+
+## When to choose another mode
+
+- Use [Local AI](/docs/local-ai) for built-in offline analysis managed by Zush.
+- Use [LM Studio](/docs/lm-studio) for advanced local model and server control.
+- Use [BYOK](/docs/byok) for your own cloud provider key and account.
+- Use [Ollama](/docs/offline-ai) for models you already manage through Ollama.
+
+## Related docs
+
+- [AI modes](/docs/ai-modes)
+- [Pricing and limits](/docs/pricing-limits)
+- [Privacy and security](/docs/privacy-security)

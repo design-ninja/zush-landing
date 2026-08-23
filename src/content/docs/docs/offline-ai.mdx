@@ -1,21 +1,21 @@
 ---
-title: Offline AI File Renaming with Ollama
-description: Set up Zush Offline AI mode with Ollama, download a vision-capable local model, test the connection, and rename supported files locally.
-lastUpdated: 2026-08-04
+title: Local AI File Renaming with Ollama
+description: Set up the Ollama AI mode in Zush, download a vision-capable local model, test the connection, and rename supported files locally.
+lastUpdated: 2026-08-24
 sidebar:
   order: 32
-  label: Offline AI
+  label: Ollama
 ---
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Offline AI mode lets Zush process supported file analysis through a local Ollama model instead of a cloud AI provider. It is useful when privacy or offline work matters more than cloud speed.
+The Ollama AI mode lets Zush process supported file analysis through a local Ollama model instead of a cloud AI provider. It is useful when privacy or offline work matters more than cloud speed.
 
 Use this guide when you want to install Ollama, download a local vision model, connect Zush to it, and test Offline AI mode before using it on real files.
 
 <figure>
-  <img src="/images/showcase/macos/offline-ai-light.webp" alt="Offline AI mode settings in the Zush BYOK/Offline tab with an Ollama model selected." width="2560" height="1440" loading="lazy" decoding="async" />
-  <figcaption>Install and start Ollama first, then select its model and enable Offline AI mode in BYOK/Offline.</figcaption>
+  <img src="/images/showcase/macos/ollama-light.webp" alt="Ollama settings in Zush AI Modes with a local model selected." width="2560" height="1440" loading="lazy" decoding="async" />
+  <figcaption>Install and start Ollama first, then select Ollama in Settings → AI Modes and choose an installed model.</figcaption>
 </figure>
 
 ## What Offline AI mode means
@@ -60,11 +60,11 @@ Zush works best with vision-capable models because many rename jobs involve imag
    ollama serve
    ```
 
-5. Open Zush and select **BYOK/Offline** in the sidebar.
+5. Open Zush and select **AI Modes** in Settings.
 6. Wait for Zush to detect Ollama. If needed, click refresh next to the model list.
 7. Select the installed local model.
 8. Click **Test** to verify the current host and model.
-9. Turn on **Offline AI mode**. Zush checks that Ollama is reachable and that the selected model is installed before enabling it.
+9. Select **Ollama**. Zush checks that the local endpoint is reachable and that the selected model is installed before enabling it.
 10. Run a small batch before using Offline AI on important folders.
 </Steps>
 
@@ -122,5 +122,7 @@ Offline AI support depends on file type, model capability, and local hardware. F
 ## Related docs
 
 - [AI modes](/docs/ai-modes)
+- [Built-in Local AI](/docs/local-ai)
+- [LM Studio](/docs/lm-studio)
 - [BYOK](/docs/byok)
 - [Privacy and security](/docs/privacy-security)

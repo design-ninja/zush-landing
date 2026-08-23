@@ -239,24 +239,54 @@ export const MACOS_SHOWCASE_SCREENSHOTS: ShowcaseScreenshotAsset[] = [
     alt: 'Custom prompt editor in Zush for macOS',
   },
   {
+    id: 'zush-cloud-ai',
+    title: 'Zush Cloud AI',
+    description: 'Start renaming immediately with managed cloud analysis and no setup',
+    images: {
+      light: '/images/showcase/macos/zush-cloud-ai-light.webp',
+      dark: '/images/showcase/macos/zush-cloud-ai-dark.webp',
+    },
+    alt: 'Zush Cloud AI selected in AI Modes for macOS',
+  },
+  {
+    id: 'local-ai',
+    title: 'Local AI',
+    description: 'Run built-in private offline analysis directly on your Mac',
+    images: {
+      light: '/images/showcase/macos/local-ai-light.webp',
+      dark: '/images/showcase/macos/local-ai-dark.webp',
+    },
+    alt: 'Built-in Local AI model and resource settings in Zush for macOS',
+  },
+  {
+    id: 'lm-studio',
+    title: 'LM Studio',
+    description: 'Connect vision-capable local models with advanced server controls',
+    images: {
+      light: '/images/showcase/macos/lm-studio-light.webp',
+      dark: '/images/showcase/macos/lm-studio-dark.webp',
+    },
+    alt: 'LM Studio model and host settings in Zush for macOS',
+  },
+  {
+    id: 'ollama',
+    title: 'Ollama',
+    description: 'Use your installed Ollama models for private local analysis',
+    images: {
+      light: '/images/showcase/macos/ollama-light.webp',
+      dark: '/images/showcase/macos/ollama-dark.webp',
+    },
+    alt: 'Ollama model and host settings in Zush for macOS',
+  },
+  {
     id: 'byok',
     title: 'BYOK',
-    description: 'Connect your own AI provider for unlimited renaming',
+    description: 'Connect your own cloud AI provider and model',
     images: {
       light: '/images/showcase/macos/byok-light.webp',
       dark: '/images/showcase/macos/byok-dark.webp',
     },
     alt: 'Bring your own key settings in Zush for macOS',
-  },
-  {
-    id: 'offline-ai',
-    title: 'Offline AI mode',
-    description: 'Process supported files offline with private local models via Ollama',
-    images: {
-      light: '/images/showcase/macos/offline-ai-light.webp',
-      dark: '/images/showcase/macos/offline-ai-dark.webp',
-    },
-    alt: 'Offline AI setup in Zush for macOS',
   },
 ];
 

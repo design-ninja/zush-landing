@@ -2,18 +2,18 @@
 
 ## [3.10.0] - 2026-08-23
 ### Added
-- 🎉 Introduce Built-in and LM Studio local AI modes
+- Introduce Built-in and LM Studio local AI modes
 
 ### Improved
-- ⚡ Progressively display batch analysis results
-- 📈 Enhance local AI performance and mode selection
-- 🎯 Improve overall AI analysis pipeline efficiency
+- Progressively display batch analysis results
+- Enhance local AI performance and mode selection
+- Improve overall AI analysis pipeline efficiency
 
 ### Fixed
-- 🐛 Resolve app hangs and various provider errors
-- 🔒 Prevent cloud analysis and fallback in local AI mode
-- 🛡️ Improve local AI setup, stability, and mode switching
-- 🎨 Refine local AI mode cards and setup flow
+- Resolve app hangs and various provider errors
+- Prevent cloud analysis and fallback in local AI mode
+- Improve local AI setup, stability, and mode switching
+- Refine local AI mode cards and setup flow
 
 ## [3.9.5] - 2026-08-21
 
