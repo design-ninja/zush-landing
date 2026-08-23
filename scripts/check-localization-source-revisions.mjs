@@ -103,6 +103,16 @@ if (write) {
   }
   const expected = JSON.parse(readFileSync(manifestPath, 'utf8'));
   if (JSON.stringify(revisions) !== JSON.stringify(expected)) {
+    for (const key of ['home', 'professions']) {
+      if (revisions[key] !== expected[key]) {
+        console.error(`[check-localization-source-revisions] ${key}: expected ${expected[key]}, received ${revisions[key]}`);
+      }
+    }
+    for (const [slug, revision] of Object.entries(revisions.blog)) {
+      if (revision !== expected.blog?.[slug]) {
+        console.error(`[check-localization-source-revisions] blog/${slug}: expected ${expected.blog?.[slug] ?? '(missing)'}, received ${revision}`);
+      }
+    }
     console.error('English localization sources changed. Refresh every affected locale, then run:');
     console.error('node scripts/check-localization-source-revisions.mjs --write');
     process.exitCode = 1;
