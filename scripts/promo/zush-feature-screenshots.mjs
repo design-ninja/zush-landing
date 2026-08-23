@@ -19,6 +19,11 @@ const backendEnvironment = process.env.ZUSH_PROMO_BACKEND_ENVIRONMENT ?? 'local'
 const promoGeminiApiKey = process.env.ZUSH_PROMO_GEMINI_API_KEY?.trim();
 const promoOllamaEndpoint = process.env.ZUSH_PROMO_OLLAMA_ENDPOINT ?? 'http://127.0.0.1:11434';
 const promoOllamaModel = process.env.ZUSH_PROMO_OLLAMA_MODEL ?? 'qwen2.5vl:3b';
+const promoLMStudioEndpoint =
+  process.env.ZUSH_PROMO_LM_STUDIO_ENDPOINT ?? 'http://127.0.0.1:1234';
+const promoLMStudioCLI =
+  process.env.ZUSH_PROMO_LM_STUDIO_CLI ?? path.join(os.homedir(), '.lmstudio/bin/lms');
+let promoLMStudioModel = process.env.ZUSH_PROMO_LM_STUDIO_MODEL ?? 'google/gemma-4-e4b';
 const defaultLandingOutputDir = path.join(repoRoot, 'public/images/showcase/macos');
 const defaultAppStoreOutputDir = '/Users/lirik/Projects/zush/zush-assets/App Store';
 const tempRoot = path.join(os.tmpdir(), `zush-feature-screenshots-${Date.now()}`);
@@ -71,13 +76,22 @@ const features = [
   // Keep the App Store set to its 10-screenshot limit; Custom AI Blocks takes
   // this slot because it is the newer feature to highlight there.
   { id: 'custom-prompts', fixture: 'custom-prompts', captureZushExtras: true, landingOnly: true },
+  { id: 'zush-cloud-ai', fixture: 'zush-cloud-ai' },
   { id: 'byok', fixture: 'byok' },
-  { id: 'offline-ai', fixture: 'offline-ai' },
+  { id: 'local-ai', fixture: 'local-ai' },
+  { id: 'ollama', fixture: 'ollama' },
+  { id: 'lm-studio', fixture: 'lm-studio' },
 ];
 const realAnalysisFixtures = new Set(['batch-rename', 'activity']);
 
 const args = new Set(process.argv.slice(2));
 const only = process.argv.find((arg) => arg.startsWith('--only='))?.split('=')[1];
+const onlyFeatures = new Set(
+  (only ?? '')
+    .split(',')
+    .map((feature) => feature.trim())
+    .filter(Boolean),
+);
 const themeArg = process.argv.find((arg) => arg.startsWith('--theme='))?.split('=')[1];
 const outputDirArg = process.argv.find((arg) => arg.startsWith('--output-dir='))?.split('=')[1];
 const landingOutputDirArg = process.argv
@@ -108,11 +122,15 @@ const outputDirs = {
       (outputDirArg && selectedTargets.length === 1 ? outputDirArg : defaultAppStoreOutputDir),
   ),
 };
-const selectedFeatures = only
-  ? features.filter((feature) => feature.id === only || feature.fixture === only)
+const selectedFeatures = onlyFeatures.size > 0
+  ? features.filter(
+      (feature) => onlyFeatures.has(feature.id) || onlyFeatures.has(feature.fixture),
+    )
   : features;
 let activeZushPid = null;
 let startedOllamaProcess = null;
+let startedLMStudioServer = false;
+let loadedLMStudioModel = false;
 
 if (!['local', 'prod'].includes(backendEnvironment)) {
   throw new Error('ZUSH_PROMO_BACKEND_ENVIRONMENT must be "local" or "prod".');
@@ -142,7 +160,10 @@ const appStoreNames = {
   templates: '05-templates',
   'naming-blocks': '06-naming-blocks',
   naming: '07-smart-rename',
-  'offline-ai': '08-offline-ai',
+  'zush-cloud-ai': '01-zush-cloud-ai',
+  'local-ai': '03-local-ai',
+  ollama: '04-ollama',
+  'lm-studio': '05-lm-studio',
   byok: '09-byok',
   'custom-ai-blocks': '10-custom-ai-blocks',
 };
@@ -259,12 +280,91 @@ async function prepareOllamaForPromo() {
   console.log(`Ollama is ready with ${promoOllamaModel}.`);
 }
 
+async function fetchLMStudioModels() {
+  try {
+    const response = await fetch(`${promoLMStudioEndpoint.replace(/\/$/, '')}/api/v1/models`, {
+      signal: AbortSignal.timeout(5000),
+    });
+    if (!response.ok) {
+      return null;
+    }
+    const payload = await response.json();
+    return Array.isArray(payload.models) ? payload.models : [];
+  } catch {
+    return null;
+  }
+}
+
+async function prepareLMStudioForPromo() {
+  let models = await fetchLMStudioModels();
+  if (!models) {
+    if (!fs.existsSync(promoLMStudioCLI)) {
+      throw new Error(`LM Studio is not running and the lms CLI was not found at ${promoLMStudioCLI}.`);
+    }
+    console.log('Starting the LM Studio local server for its screenshot...');
+    run(promoLMStudioCLI, ['server', 'start', '--port', '1234']);
+    startedLMStudioServer = true;
+    for (let attempt = 0; attempt < 40 && !models; attempt += 1) {
+      await wait(750);
+      models = await fetchLMStudioModels();
+    }
+  }
+
+  if (!models) {
+    throw new Error(`Timed out waiting for LM Studio at ${promoLMStudioEndpoint}.`);
+  }
+
+  const visionModels = models.filter((model) => model?.type === 'llm' && model?.capabilities?.vision);
+  const selectedModel = visionModels.find((model) => model.key === promoLMStudioModel) ?? visionModels[0];
+  if (!selectedModel) {
+    throw new Error('LM Studio has no installed vision-capable model.');
+  }
+  promoLMStudioModel = selectedModel.key;
+
+  if (!Array.isArray(selectedModel.loaded_instances) || selectedModel.loaded_instances.length === 0) {
+    console.log(`Loading ${promoLMStudioModel} in LM Studio...`);
+    run(promoLMStudioCLI, [
+      'load',
+      promoLMStudioModel,
+      '--identifier',
+      promoLMStudioModel,
+    ], { stdio: 'inherit' });
+    loadedLMStudioModel = true;
+  }
+
+  const readyModels = await fetchLMStudioModels();
+  const readyModel = readyModels?.find((model) => model.key === promoLMStudioModel);
+  if (!readyModel || !Array.isArray(readyModel.loaded_instances) || readyModel.loaded_instances.length === 0) {
+    throw new Error(`LM Studio model ${promoLMStudioModel} did not finish loading.`);
+  }
+  console.log(`LM Studio is ready with ${promoLMStudioModel}.`);
+}
+
 function stopStartedOllama() {
   if (!startedOllamaProcess) {
     return;
   }
   startedOllamaProcess.kill('SIGTERM');
   startedOllamaProcess = null;
+}
+
+function stopPreparedLMStudio() {
+  if (loadedLMStudioModel) {
+    try {
+      run(promoLMStudioCLI, ['unload', promoLMStudioModel]);
+    } catch (error) {
+      console.warn(`Could not unload ${promoLMStudioModel}: ${error.message.split('\n')[0]}`);
+    }
+    loadedLMStudioModel = false;
+  }
+  if (startedLMStudioServer) {
+    try {
+      run(promoLMStudioCLI, ['server', 'stop']);
+    } catch (error) {
+      console.warn(`Could not stop LM Studio: ${error.message.split('\n')[0]}`);
+    }
+    startedLMStudioServer = false;
+  }
 }
 
 function firstExistingAssetPath(paths) {
@@ -464,7 +564,9 @@ let userInfo: [String: Any] = [
     "theme": ${JSON.stringify(theme)},
     "assetRoot": ${JSON.stringify(assetRoot)},
     "runId": ${JSON.stringify(runId)},
-    "backendEnvironment": ${JSON.stringify(backendEnvironment)}${completionMarkerEntry}
+    "backendEnvironment": ${JSON.stringify(backendEnvironment)},
+    "ollamaModel": ${JSON.stringify(promoOllamaModel)},
+    "lmStudioModel": ${JSON.stringify(promoLMStudioModel)}${completionMarkerEntry}
 ]
 DistributedNotificationCenter.default().postNotificationName(
     Notification.Name("com.lirik.Zush.debug.promoScreenshotFixture"),
@@ -798,8 +900,10 @@ async function captureFeature({ feature, theme, runId, assetRoot, reuseCurrentFi
     const fixtureDelay =
       feature.fixture === 'custom-prompts'
         ? 1600
-        : feature.fixture === 'offline-ai'
-          ? 5000
+        : feature.fixture === 'local-ai'
+          ? 12000
+          : feature.fixture === 'ollama' || feature.fixture === 'lm-studio'
+            ? 3500
           : feature.fixture === 'statistics'
             ? 1800
             : 1100;
@@ -858,8 +962,11 @@ async function main() {
 
   ensureBuilt();
 
-  if (selectedFeatures.some((feature) => feature.id === 'offline-ai')) {
+  if (selectedFeatures.some((feature) => feature.id === 'ollama')) {
     await prepareOllamaForPromo();
+  }
+  if (selectedFeatures.some((feature) => feature.id === 'lm-studio')) {
+    await prepareLMStudioForPromo();
   }
 
   const originalDarkMode = getSystemDarkMode();
@@ -897,6 +1004,7 @@ async function main() {
     setSystemDarkMode(originalDarkMode);
     app.kill();
     stopStartedOllama();
+    stopPreparedLMStudio();
   }
 
   console.log(`Generated ${outputs.length} screenshot${outputs.length === 1 ? '' : 's'}.`);

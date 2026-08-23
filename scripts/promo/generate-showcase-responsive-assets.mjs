@@ -13,6 +13,12 @@ const outputDir = path.resolve(
 );
 const widths = [640, 960, 1280, 1600, 1920, 2560];
 const rootImagePattern = /^(.*)-(light|dark)\.webp$/;
+const onlyIds = new Set(
+  (process.argv.find((arg) => arg.startsWith('--only='))?.split('=')[1] ?? '')
+    .split(',')
+    .map((id) => id.trim())
+    .filter(Boolean),
+);
 
 if (!fs.existsSync(outputDir)) {
   throw new Error(`Showcase directory does not exist: ${outputDir}`);
@@ -21,7 +27,12 @@ if (!fs.existsSync(outputDir)) {
 const sources = fs
   .readdirSync(outputDir)
   .map((fileName) => ({ fileName, match: fileName.match(rootImagePattern) }))
-  .filter(({ match }) => match && !/-\d+\.webp$/.test(match[1]))
+  .filter(
+    ({ match }) =>
+      match &&
+      !/-\d+\.webp$/.test(match[1]) &&
+      (onlyIds.size === 0 || onlyIds.has(match[1])),
+  )
   .sort(({ fileName: left }, { fileName: right }) => left.localeCompare(right));
 
 if (sources.length === 0) {
