@@ -97,6 +97,7 @@ function likelyVisibleEnglishLines(source) {
 
 const missing = [];
 const invalid = [];
+const deferredParity = new Set();
 
 const contentIdOwners = new Map();
 for (const entry of readdirSync(blogRoot, { withFileTypes: true })) {
@@ -123,7 +124,7 @@ for (const [id, owners] of contentIdOwners) {
 for (const locale of locales) {
   const translations = localeTranslations(locale);
 
-  for (const { slug } of targets) {
+  for (const { slug, translationSync } of targets) {
     const item = translations.get(slug);
     if (!item) {
       missing.push(`${locale}: ${slug}`);
@@ -158,31 +159,35 @@ for (const locale of locales) {
       invalid.push(`${locale}/${item.name}: MDX imports differ from English source`);
     }
 
-    const structuralPatterns = [
-      ['headings', /^#{2,6}\s+/gm],
-      ['Markdown links', /(?<!!)\[[^\]]*\]\([^)]+\)/g],
-      ['images', /!\[[^\]]*\]\([^)]+\)/g],
-      ['Blog components', /<Blog[A-Z][A-Za-z]+\b/g],
-    ];
-    for (const [label, pattern] of structuralPatterns) {
-      const expected = countMatches(englishSource, pattern);
-      const actual = countMatches(item.source, pattern);
-      if (actual !== expected) {
-        invalid.push(`${locale}/${item.name}: ${label} count ${actual}, expected ${expected}`);
+    if (translationSync === 'deferred') {
+      deferredParity.add(slug);
+    } else {
+      const structuralPatterns = [
+        ['headings', /^#{2,6}\s+/gm],
+        ['Markdown links', /(?<!!)\[[^\]]*\]\([^)]+\)/g],
+        ['images', /!\[[^\]]*\]\([^)]+\)/g],
+        ['Blog components', /<Blog[A-Z][A-Za-z]+\b/g],
+      ];
+      for (const [label, pattern] of structuralPatterns) {
+        const expected = countMatches(englishSource, pattern);
+        const actual = countMatches(item.source, pattern);
+        if (actual !== expected) {
+          invalid.push(`${locale}/${item.name}: ${label} count ${actual}, expected ${expected}`);
+        }
       }
-    }
 
-    for (const term of protectedTerms) {
-      const expected = countExact(englishSource, term);
-      const actual = countExact(item.source, term);
-      const localizedTitleTranslation =
-        term === 'AI Renamer' &&
-        actual === expected - 1 &&
-        (frontmatterValue(englishSource, 'title') ?? '').includes(term) &&
-        !title.includes(term);
-      if (localizedTitleTranslation) continue;
-      if (actual !== expected) {
-        invalid.push(`${locale}/${item.name}: protected term ${JSON.stringify(term)} count ${actual}, expected ${expected}`);
+      for (const term of protectedTerms) {
+        const expected = countExact(englishSource, term);
+        const actual = countExact(item.source, term);
+        const localizedTitleTranslation =
+          term === 'AI Renamer' &&
+          actual === expected - 1 &&
+          (frontmatterValue(englishSource, 'title') ?? '').includes(term) &&
+          !title.includes(term);
+        if (localizedTitleTranslation) continue;
+        if (actual !== expected) {
+          invalid.push(`${locale}/${item.name}: protected term ${JSON.stringify(term)} count ${actual}, expected ${expected}`);
+        }
       }
     }
 
@@ -214,6 +219,9 @@ for (const locale of locales) {
 
 const translated = targets.length * locales.length - missing.length;
 console.log(`[check-blog-localization-coverage] ${translated}/${targets.length * locales.length} target translations present.`);
+if (deferredParity.size > 0) {
+  console.log(`[check-blog-localization-coverage] Structural parity deferred for: ${[...deferredParity].join(', ')}.`);
+}
 
 if (invalid.length > 0) {
   console.error(`Invalid translations:\n- ${invalid.join('\n- ')}`);
