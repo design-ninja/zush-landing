@@ -23,7 +23,7 @@ export const SOFTPEDIA_REVIEW_URL =
   "https://www.softpedia.com/get/Artificial-Intelligence-Generative-AI/Zush.shtml";
 
 export const FREE_DOWNLOAD_BADGE_LABEL = "FREE";
-export const MAC_APP_VERSION = "3.9.5";
+export const MAC_APP_VERSION = "3.10.0";
 export const WINDOWS_APP_VERSION = "3.8.9.0";
 export const PRODUCT_FACTS_REVIEWED_AT = "2026-08-23";
 
