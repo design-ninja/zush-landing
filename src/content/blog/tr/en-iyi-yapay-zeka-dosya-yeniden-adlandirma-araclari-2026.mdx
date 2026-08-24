@@ -11,7 +11,7 @@ tags:
   - "AI Dosyasını Yeniden Adlandırma"
   - "Takım Karşılaştırmaları"
 tldr: "Genel olarak en iyisi: 'Zush'. Bu karşılaştırmada en yapılandırılabilir AI adlandırma iş akışına sahiptir: hazır \"Templates\", 145+ \"Naming Blocks\", \"Custom AI Blocks\", biçimlendirme ve yerelleştirme kontrolleri ve ayrıca uygulanan bir toplu işlemi geri yükleyebilen \"Rename History\". Diğer ürünler genel önerimiz değil, daha dar alternatiflerdir."
-reviewed: "2026-08-17"
+reviewed: "2026-08-24"
 featuredOrder: 1
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -19,6 +19,8 @@ import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
+
+**Zush ürün güncellemesi — 24 Ağustos 2026:** Güncel Mac ve Windows Zush uygulamaları tek iş akışında beş yapay zekâ modu sunar: çevrimiçi Zush Cloud AI ve BYOK ile yerel Built-in Local AI, LM Studio ve Ollama. FREE planındaki 50 yeniden adlandırma hakkı beş mod arasında paylaşılır; ücretli PRO, beş modun tamamında Zush sınırını kaldırır. Aşağıdaki eski bir satır veya tablo Zush’ı yalnızca Ollama ile sınırlı gösteriyorsa bu güncelleme onun yerini alır. Rakiplerle ilgili iddialar, ayrı ayrı belirtilen doğrulama tarihlerini korur.
 Kısa karar: **[Zush](/), 2026 için en iyi genel AI dosya yeniden adlandırıcımızdır.** Hazır 'Templates', 145+ 'Naming Blocks', 'Custom AI Blocks', blok başına formatlama, yerelleştirme, meta veri ayarları, geniş karma format kapsamı, klasör izleme ve kalıcı 'Rename History'i birleştirerek bu karşılaştırmayı kazanır. Aşağıdaki diğer ürünler yalnızca 'Zush' hedeflemeyen bir gereksinim için daha dar alternatifler olarak dahil edilmiştir.
 
 Ana sorgu gizlilik ise '[Çevrimdışı AI dosya yeniden adlandırıcı](/offline-ai-file-renamer)'yi kullanın. Sağlayıcı kontrolü ana sorgu ise '['BYOK' kurulum kılavuzu](/docs/byok)'yı kullanın. Kötü toplu yeniden adlandırma riski belirleyici faktörse, '[önizleme ve geri alma ile dosyaları güvenli bir şekilde toplu olarak yeniden adlandırma](/blog/how-to-safely-batch-rename-files)'i okuyun. Hala satıcıları karşılaştırıyorsanız aşağıdaki bölümler tüm pazarı dosya kapsamı, platform, fiyatlandırma ve güvenliğe göre ayırmaktadır.
@@ -152,22 +154,6 @@ Araçları karşılaştırmadan önce günlük kullanımda gerçekte neyin önem
 
 Yönetilen yapay zeka, "BYOK"/yerel modlar, İzleme Klasörleri, şablonlar, toplu işleme ve İşlem Geçmişi ile benzer bir Mac + "Windows" iş akışını hedeflediği için "FilesDesk" dahil edilmiştir. Ana sınırlaması yapısaldır: Yönetilen öneriler ölçülürken, yaşam boyu yol kendi API anahtarınızı veya yerel modelinizi gerektirir. Doğrudan takaslar için bkz. '['Zush' ve 'FilesDesk'](/blog/zush-vs-filesdesk)'.
 
-**Güçlü yönler:**
-
-- Mac ve 'Windows' masaüstü uygulaması
-- Herkese açık dokümanlar İzleme Klasörlerini, özel şablonları, toplu işlemeyi ve birden fazla AI sağlayıcısını listeler
-- Ömür boyu yol Claude, Gemini, OpenAI, OpenRouter, Ollama ve vLLM'yi destekler
-- Ömür boyu yol, dosyaların cihazda kaldığını ve çevrimdışı çalıştığını söylüyor
-- İşleme Geçmişi kayıtları tamamlanan yeniden adlandırma ve geri almayı destekler
-- SSS, yaygın resim, belge, video ve ses formatlarını listeler
-
-**Sınırlamalar:**
-
-- Ömür boyu lisans, kendi API anahtarınızı veya yerel bir modeli gerektirir; yönetilen AI kredileri yalnızca aboneliğe yöneliktir
-- Herkese açık belgeler, 'Zush'nin format listesiyle karşılaştırılabilecek ayrıntılı bir desteklenen format matrisi sağlamaz
-- Güncellemeler, ömür boyu güncellemeler olarak değil, Ömür Boyu'na dahil 12 ay olarak listelenir
-- Kontrol edilen belgelerde genel RAW, iWork veya uzman tasarım dosyası kapsam listesi bulunamadı
-
 **Yalnızca dar alternatif:** OpenRouter veya vLLM zorunludur ve ölçülü yönetimli kullanımı veya kendi kendine yönetilen kurulumu kabul ediyorsunuz. **Neden "Zush" genel olarak daha üst sıralarda yer alıyor:** "FilesDesk" eşdeğer bir ayrıntılı RAW/tasarım/"iWork" matrisi yayınlamaz ve yönetilen yapay zekayı kullanım ömrü boyunca bir araya getirmez.
 
 ### 3. RenameClick
@@ -177,22 +163,6 @@ Yönetilen yapay zeka, "BYOK"/yerel modlar, İzleme Klasörleri, şablonlar, top
 !['RenameClick' masaüstü uygulaması arayüzü (resim: rename.click)](/images/blog/competitors/renameclick.webp)
 
 Yapay Zeka Arama ve yeniden adlandırma artı klasör yönlendirme iş akışına "RenameClick" dahildir. Yerleşik yerel yapay zeka, "Ollama", LM Studio, isteğe bağlı bulut sağlayıcıları ve Auto Flow ile "macOS" ve "Windows" için masaüstü uygulamaları sunar. Yerel işleme bir avantaj olarak değerlendirilmiyor çünkü 'Zush' da dahil olmak üzere buradaki birçok ürün bunu destekliyor. Ana sınırlaması daha dar kapsama alanıdır: belgelenmiş kamera RAW, tasarım veya video desteği yoktur.
-
-**Güçlü yönler:**
-
-- Masaüstünde yerleşik Mac ve 'Windows' uygulamaları
-- İndirdikten sonra çevrimdışı çalışan, paketlenmiş ~4 GB yerel modelle yerel öncelikli çalışma zamanı
-- 'Ollama' ve LM Studio'nun yanı sıra isteğe bağlı OpenAI, Google AI/Gemini ve Alibaba Cloud Qwen sağlayıcılarını destekler
-- Format listesi 10 görüntü formatını, 20'den fazla belge formatını (JSON, XML, YAML, HTML, SQL, altyazılar, ICS/VCF dahil) ve yerel konuşma transkripsiyonlu 5 ses formatını kapsar
-- Dokümanlarına göre tam geri alma/yeniden yapma desteği
-- İçeriğe göre AI Arama ve Otomatik Akış klasörü otomasyonu
-- Yerel işleme için net sistem gereksinimleri
-
-**Sınırlamalar:**
-
-- Genel format listesi kamera RAW, video, arşivleri veya Sketch/Figma/PSD gibi tasarım dosyalarını içermez — video, arşivler ve çalıştırılabilir dosyalar açıkça desteklenmez
-- Bulut sağlayıcıları Mac App Store sürümünde mevcut değildir
-- Tek seferlik plan, Zushnin 48 $'lık tek seferlik planının üzerinde 48 $ + KDV'dir
 
 **Yalnızca dar alternatif:** AI Arama veya yeniden adlandırma-artı-klasör yönlendirmesi zorunludur. **Neden Zush genel olarak daha üst sıralarda yer alıyor?** RenameClickin herkese açık belgeleri videoyu hariç tutuyor ve RAW veya tasarım formatlarını listelemiyor.
 
@@ -204,21 +174,6 @@ Yapay Zeka Arama ve yeniden adlandırma artı klasör yönlendirme iş akışın
 
 Bu adı paylaşan iki ayrı proje var ve bunları birleştirmek, ücretli ürünün sunduklarını abartıyor. **airenamer.app'teki "AI Renamer", fiyatlandırma sayfasında tam olarak üç şeyi listeleyen ticari bir Mac ve "Windows" masaüstü uygulamasıdır: Tek seferlik 19 ABD doları tutarında Yerel Mod, 200 kredi başına 10 ABD doları tutarında Bulut Modu ve kayıt sırasında 10 ücretsiz kredi. Hiçbir CLI'nin ve açık kaynak sürümünün reklamını yapmaz. **`ozgrozer/ai-renamer`** GitHub'da bulunan, 'Ollama', LM Studio veya bir OpenAI anahtarı üzerinde çalışan ve görüntüleri ve videoları (ffmpeg aracılığıyla) işleyen, ilgisiz bir ücretsiz GPL-3.0 Node.js CLI'dir. "AI Renamer" ücretsiz ve açık kaynaktır" ifadesini gördüğünüzde bu GitHub projesidir, 19 dolarlık uygulama değil.
 
-**Güçlü yönler:**
-
-- Yerel Mod 'Ollama', LM Studio, OpenAI ve özel model desteğini listeler
-- Fiyatlandırma sayfasına göre bulut kredilerinin süresi hiçbir zaman dolmaz ve kayıt sırasında 10 kredi ücretsizdir
-- Ayrı GPL-3.0 CLI, geliştiriciler için gerçekten ücretsiz bir yerel yoldur
-- Özel istemler ve vaka stillerini adlandırma (camelCase, Snake_case, vb.)
-
-**Sınırlamalar:**
-
-- Fiyatlandırma sayfası tüm dosya türlerini talep ediyor, ancak özellik sayfası hala yalnızca görsellerin yanı sıra PDF/TXT/metin örneklerini gösteriyor; yayınlanmış bir format listesi yok
-- Bulut Modu, 200 yeniden adlandırma başına 10 ABD doları olarak ölçülür
-- Kontrol edilen sayfalarda klasör izleme veya otomasyon yok
-- Kontrol edilen sayfalarda geri alma veya yeniden adlandırma geçmişi yok
-- CLI farklı bir projedir: terminal kurulumu, birkaç GB yerel model, GUI yok, belge ayrıştırma yok
-
 **Yalnızca dar alternatif:** 19 ABD doları değerindeki yerel masaüstü modu veya ilgisiz komut satırı projesi belirleyici gereklilik olduğunda. **Neden 'Zush' genel olarak daha üst sıralarda yer alıyor?** 'AI Renamer' ayrıntılı bir format matrisi, klasör izleme veya 'Rename History' yayınlamaz. Bkz. '['Zush' ve 'AI Renamer'](/blog/zush-vs-airenamer)'.
 
 ### 5. Renamer.ai
@@ -229,22 +184,6 @@ Bu adı paylaşan iki ayrı proje var ve bunları birleştirmek, ücretli ürün
 
 'Renamer.ai' hem masaüstü uygulaması hem de web arayüzü sunar. Masaüstü uygulaması yerel dosya sisteminizle bütünleşir ve otomatik yeniden adlandırma için Sihirli Klasörler içerir. Mevcut SSS'de 30'dan fazla format listeleniyor ve ürün sayfasında 'BYOK' veya yerel model iş akışı yerine önizleme, tek tıklamayla geri alma, OCR/belge analizi ve geçici işleme vurgulanıyor.
 
-**Güçlü yönler:**
-
-- 'Windows' ve Mac plus web arayüzü için masaüstü uygulaması
-- Yaygın belgeler, elektronik tablolar, sunumlar, resimler ve e-posta dosyaları dahil 30'dan fazla dosya formatı
-- Vektör kapsamı gerçektir: EPS, SVG ve AI (Adobe Illustrator) açıkça listelenmiştir; Sketch, Figma ve PSD değildir
-- Otomatik klasör izleme ve yeniden adlandırma için Sihirli Klasörler
-- Uygulamadan önce önizlemeyle geri alın
-- Değişken oluşturuculu özel adlandırma şablonları
-- 20'den fazla dil desteği
-
-**Sınırlamalar:**
-
-- Abonelik fiyatları hızla artıyor (ayda 9,95-99,95$)
-- Genel SSS dili, dosyaların çıkarma ve yapay zeka analizi için iletildiğini, ardından işlendikten sonra silindiğini söylüyor; bu bir 'BYOK' veya yerel 'Ollama' iş akışı değil
-- 'BYOK' seçeneği olmayan sabit AI sağlayıcısı
-
 **Yalnızca dar alternatif:** özel ölçülü OCR ve Sihirli Klasörler iş akışı zorunludur. **Neden "Zush" genel olarak daha üst sıralarda yer alıyor:** "Renamer.ai" her ücretli katmanı ölçer, belgelenmiş bir "BYOK"/yerel-"Ollama" yolu sunmaz ve daha dar karma format kapsamı yayınlar. Bkz. '['Zush' ve 'Renamer.ai'](/blog/zush-vs-renamer-ai)'.
 
 ### 6. NameQuick
@@ -252,21 +191,6 @@ Bu adı paylaşan iki ayrı proje var ve bunları birleştirmek, ücretli ürün
 <BlogToolMeta platform="Mac ve 'Windows' indirmeleri" website="https://www.namequick.app/" label="namequick.app"><Fragment slot="pricing">Yönetilen deneme: 14 gün boyunca 250 yeniden adlandırma; Kendi Kendini Yöneten deneme: 50 yeniden adlandırma; Ayda 500 / 2.000 / 5.000 / 10.000 yeniden adlandırmayla aylık 12 ABD dolarından yönetilir; Kendi API anahtarınız veya yerel modeliniz ile 1 cihaz için tek seferlik 69 USD</Fragment></BlogToolMeta>
 
 'NameQuick' artık 'Windows' ve Mac indirmelerini yayınlıyor. Belgelenen Mac iş akışı, 'Finder' entegrasyonunu, İzleme Klasörlerini, Kuralları, geri alma, OCR ve 30'dan fazla format kategorisini kapsar. Satıcı, platformlar arası tam bir matris yayınlamadığından bu karşılaştırma, Mac'e özgü her özelliğin "Windows"de mevcut olduğunu varsaymaz.
-
-**Güçlü yönler:**
-
-- Geniş yapay zeka sağlayıcı desteği: Kendi Kendini Yöneten planda OpenAI, OpenRouter, Claude, Gemini, Ollama, LM Studio ve MLX
-- 69 ABD Doları tutarındaki Kendi Kendini Yöneten plan aracılığıyla "BYOK"/yerel model seçeneği
-- Klasörleri İzle + alt klasörlere otomatik düzenleme
-- Yerel 'Finder' etiketleri, yorumları ve genel kısayol tuşu
-- Tek tıklamayla Geri Alma ve Kurtarmanın yanı sıra İçerik Arama ve işleme koymadan önce önizleme
-- Özel AI istemleri ve çok dilli destek
-
-**Sınırlamalar:**
-
-- Hiçbir Linux yapısı yayınlanmadı ve 'Windows'-versus-Mac özellik eşitliği tam olarak belgelenmedi
-- Yönetilen plan, aylık yeniden adlandırmalarla ölçülür (500 / 2.000 / 5.000 / 10.000 katman), bu nedenle maliyet, özelliklerden ziyade hacmi izler
-- 69 ABD Doları tutarındaki Kendi Kendini Yöneten yol, "Zush"ün 48 ABD Doları tutarındaki tek seferlik planına göre daha ön maliyete sahiptir, tek bir cihazı kapsar ve yine de kendi API anahtarınızı veya yerel model kurulumunuzu gerektirir
 
 **Ne zaman göz önünde bulundurun:** belgelenen 'Finder' iş akışı veya kendi kendini yöneten sağlayıcı listesi önemlidir. Doğrudan fiyatlandırma ve format değişimi için '['Zush' ve 'NameQuick'](/blog/zush-vs-namequick)'u okuyun.
 
@@ -278,19 +202,6 @@ Bu adı paylaşan iki ayrı proje var ve bunları birleştirmek, ücretli ürün
 
 Wisfile tamamen yerel bir AI dosya yeniden adlandırıcı ve düzenleyicisidir. Site, uygulamanın tamamen kullanıcının cihazında çalıştığını, bulut bağımlılığı olmadan, ücret olmadan ve makineden veri çıkmadan çalıştığını söylüyor.
 
-**Güçlü yönler:**
-
-- Pazarlama sitesi başına %100 ücretsiz
-- Tamamen yerel işleme — bulut yok, pazarlama sitesine göre veri sızıntısı yok
-- Kayıt veya hesap gerekmez
-
-**Sınırlamalar:**
-
-- Desteklenen dosya formatları ve platform ayrıntıları kamuya açık sitede iyi bir şekilde belgelenmemiştir
-- Otomatik devam eden yeniden adlandırma için onaylanmış klasör izleme yok
-- Onaylanmış geri alma veya yeniden adlandırma geçmişi yok
-- Sınırlı kamu dokümantasyonu ve topluluk geri bildirimi içeren daha yeni araç
-
 **Yalnızca dar alternatif:** Ücretsiz bir yerel deneme istiyorsanız ve doğrulanmamış üretim kapsamını kabul ediyorsanız. **Neden 'Zush' genel olarak daha üst sıralarda yer alıyor:** Wisfile'ın onaylanmış bir format matrisi, klasör izleme veya 'Rename History'si yok.
 
 ### 8. Riffo
@@ -301,22 +212,6 @@ Wisfile tamamen yerel bir AI dosya yeniden adlandırıcı ve düzenleyicisidir. 
 
 'Riffo', yapay zeka destekli dosya yeniden adlandırma ve klasör organizasyonuna yönelik bir Mac uygulaması ve web demosudur. Genel ana sayfası, ürünü ücretsiz olarak konumlandırır ve toplu dosya yeniden adlandırmanın yanı sıra dosyaları klasörler halinde kategorilere ayırmayı gösterir. Bunun ötesinde, doğrulanacak çok az şey var; kontrol edilen sayfalarda fiyatlandırma sayfası yok, format listesi yok, geri alma bildirimi yok ve klasör izleme bildirimi yok.
 
-**Güçlü yönler:**
-
-- Herkese açık ana sayfa konumları Riffo ücretsiz
-- Sürükle ve bırak arayüzünü temizleyin
-- Dosyaları otomatik olarak alt klasörlere ayırmak için Otomatik Klasörleme
-- Özelleştirilebilir yeniden adlandırma dili
-
-**Sınırlamalar:**
-
-- Yalnızca masaüstü uygulaması için "macOS" (kontrol edilen sayfalarda "Windows" sürümü yok)
-- Tüm işlemler için buluta bağımlı
-- Devam eden otomasyon için onaylanmış klasör izleme yok
-- Onaylanmış geri alma veya yeniden adlandırma geçmişi yok
-- Desteklenen format listesi yayınlanmadığından dosya türlerinizi önceden kontrol edemezsiniz
-- Yayınlanmış bir fiyatlandırma sayfası olmadığından "ücretsiz", belirtilen herhangi bir sınırlama veya taahhüt taşımaz
-
 **Alternatifi yalnızca şu durumlarda daraltın:** Basit yeniden adlandırma artı klasör kategorizasyonuyla ücretsiz bir Mac denemesi istiyorsanız. **Neden 'Zush' genel olarak daha üst sıralarda yer alıyor?** 'Riffo'nin yayınlanmış bir format listesi, geri alma beyanı, izleme beyanı veya sabit fiyatlandırma koşulları yoktur.
 
 ### 9. Yeniden adlandırıldı
@@ -326,23 +221,6 @@ Wisfile tamamen yerel bir AI dosya yeniden adlandırıcı ve düzenleyicisidir. 
 ![Yeniden adlandırıldı.to web uygulaması arayüzü (resim: yeniden adlandırıldı.to)](/images/blog/competitors/renamed-to.png)
 
 Renamed.to bulut/ekip seçeneğidir. Belgeleri analiz eder ve bunları mevcut Google Drive, Dropbox veya OneDrive'ınızda yeniden adlandırır; dosyalar hiçbir zaman Renamed sunucularında değil, depolama alanınızda kalır. Güven puanlaması, kesinliği yüksek yeniden adları otomatik olarak uygulamanıza ve geri kalanını incelemenize olanak tanır.
-
-**Güçlü yönler:**
-
-- Büyük bulut depolama platformlarıyla yerel entegrasyonlar
-- Yeniden adlandırma başına ödeme, abonelik yok, kredilerin süresi 12 ay boyunca dolmaz
-- Başlamak için ücretsiz 50 belge (12 ay geçerlilik)
-- Uç durumlar için manuel incelemeyle güven puanlaması
-- Ekipler arasında paylaşılabilen kayıtlı adlandırma kuralları
-- REST API, CLI, dosya izleyici arka plan programı, Zapier/Make/n8n
-- Site, 20'den fazla dilde tanıtım yapıyor ve belge iş akışlarında %95'in üzerinde doğruluk sağlıyor
-- Tek seferde 10–10.000 dosyayı toplu işleme
-
-**Sınırlamalar:**
-
-- Yerel masaüstü uygulaması yok; önce web
-- Belge odaklı (PDF, DOCX, XLSX, PPTX, taranmış görüntüler); RAW veya HEIC fotoğraf iş akışları için tasarlanmamıştır
-- Yalnızca bulut işleme; Tamamen yerel yapay zekaya ihtiyaç duyan kullanıcılar için değil
 
 **Yalnızca dar alternatif:** iş akışının bağlı bulut depolama alanında veya bir API aracılığıyla çalıştırılması gerekir. **Genelde neden 'Zush' daha üst sıralarda yer alıyor?** Renamed.to, geniş bir yerel Mac ve 'Windows' iş akışı yerine yalnızca buluttadır, belge odaklıdır ve ölçülüdür.
 

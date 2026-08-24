@@ -13,12 +13,12 @@ LM Studio mode connects Zush to the local OpenAI-compatible server managed by LM
 
 <figure>
   <img src="/images/showcase/macos/lm-studio-light.webp" alt="LM Studio model and host settings in Zush for Mac." width="2560" height="1440" loading="lazy" decoding="async" />
-  <figcaption>Start the LM Studio server, then choose an installed vision-capable model in Zush.</figcaption>
+  <figcaption>The Mac interface shown here connects Zush to an installed vision-capable model. Windows provides the same LM Studio mode in Zush Settings.</figcaption>
 </figure>
 
 ## Requirements
 
-- Zush 3.10.0 or later for Mac
+- the latest Zush version for Mac or Windows
 - [LM Studio](https://lmstudio.ai/) installed
 - a downloaded vision-capable model
 - the LM Studio local server running
@@ -45,7 +45,7 @@ Zush only lists models that LM Studio reports as vision-capable. A text-only mod
 
 | Problem | What to check |
 | --- | --- |
-| LM Studio is not detected | Install it in Applications, open it, and return to AI Modes |
+| LM Studio is not detected | Install and open LM Studio, then return to AI Modes |
 | Server is not running | In LM Studio, open **Developer** and enable **Start Server** |
 | No models appear | Download and load a vision-capable model, then refresh in Zush |
 | Connection test fails | Confirm the host is `http://127.0.0.1:1234` unless you intentionally changed it |
@@ -53,7 +53,7 @@ Zush only lists models that LM Studio reports as vision-capable. A text-only mod
 
 ## Privacy
 
-With the default loopback endpoint, supported analysis runs through LM Studio on your Mac. Zush does not silently switch to cloud analysis while LM Studio mode is selected.
+With the default loopback endpoint, supported analysis runs through LM Studio on your Mac or Windows PC. Zush does not silently switch to cloud analysis while LM Studio mode is selected.
 
 ## Related docs
 

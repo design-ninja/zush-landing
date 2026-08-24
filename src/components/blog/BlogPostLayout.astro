@@ -17,6 +17,7 @@ import { formatBlogDate, normalizeTagSlug, type BlogEntry, type BlogPost } from 
 import { getBlogPublicTagSlug } from '@/data/blogTaxonomy';
 import { BLOG_PLATFORM_LABELS } from '@/data/blogSchema';
 import { getBlogPostCopy } from '@/i18n/blogPost';
+import { SOFTPEDIA_REVIEW_URL } from '@/constants';
 import type { SeoMeta } from '@/seo/config';
 import type { Locale } from '@/i18n/config';
 import headingStyles from '@/components/Heading/Heading.module.scss';
@@ -181,6 +182,14 @@ const breadcrumbItems = [
         <div class={styles.BlogPost__Tldr}>
           <strong>{copy.tldrLabel}</strong> {post.tldr}
         </div>
+      )}
+
+      {post.topic === 'comparisons' && (
+        <p class={[textStyles.Text, textStyles.Text_sm, textStyles.Text_subtle].join(' ')}>
+          <a href={SOFTPEDIA_REVIEW_URL} rel='noopener noreferrer' target='_blank'>
+            {copy.independentEvidence}
+          </a>
+        </p>
       )}
 
       {showToc && (

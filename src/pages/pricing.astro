@@ -47,7 +47,7 @@ const jsonLd = {
           priceCurrency: 'USD',
           availability: 'https://schema.org/InStock',
           url: pageUrl,
-          description: `Free tier with ${APP_CONFIG.free_tier_limit} AI renames across Cloud AI, BYOK, and Offline AI.`,
+          description: `Free tier with ${APP_CONFIG.free_tier_limit} AI renames shared across every cloud and local AI mode.`,
         },
         {
           '@type': 'Offer',
@@ -56,7 +56,7 @@ const jsonLd = {
           priceCurrency: 'USD',
           availability: 'https://schema.org/InStock',
           url: pageUrl,
-          description: 'Monthly plan with unlimited renames across Cloud AI, BYOK, and Offline AI.',
+          description: 'Monthly plan with unlimited renames across every cloud and local AI mode.',
         },
         {
           '@type': 'Offer',
@@ -65,7 +65,7 @@ const jsonLd = {
           priceCurrency: 'USD',
           availability: 'https://schema.org/InStock',
           url: pageUrl,
-          description: 'One-time purchase with lifetime access and unlimited renames across Cloud AI, BYOK, and Offline AI.',
+          description: 'One-time purchase with lifetime access and unlimited renames across every cloud and local AI mode.',
         },
       ],
     },
@@ -81,7 +81,7 @@ const jsonLd = {
           <Text as='p' size='sm' color='subtle' className={styles.Flush}>Zush plans</Text>
           <Heading as='h1' className={styles.Flush}>Zush pricing</Heading>
           <Text as='p' size='xl' color='subtle' className={styles.Flush}>
-            Start free with {APP_CONFIG.free_tier_limit} AI renames. Upgrade to unlimited PRO for {PRO_PRICING.monthly.label} per month or pay {PRO_PRICING.oneTime.label} once for lifetime access. Every plan includes Cloud AI, BYOK, and Offline AI on Mac and Windows.
+            Start free with {APP_CONFIG.free_tier_limit} AI renames. Upgrade to unlimited PRO for {PRO_PRICING.monthly.label} per month or pay {PRO_PRICING.oneTime.label} once for lifetime access. Every plan includes Zush Cloud AI, BYOK, Built-in Local AI, LM Studio, and Ollama on Mac and Windows.
           </Text>
         </header>
       </div>

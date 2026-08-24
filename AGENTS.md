@@ -5,4 +5,4 @@
 - `gh` is configured for `github.com` through macOS keyring and `gh auth setup-git --hostname github.com`; GitHub CLI and HTTPS Git operations should use that credential path.
 - Deployments are managed by Vercel and processed automatically from `main`.
 - When SEO changes may require manual Search Console reindexing, always provide the user with direct live URLs for every changed page.
-- GSC OAuth token for Zush is stored at `/Users/lirik/.config/google-search-console/zushapp-token.json`; the old `seo-ops/.gsc-token.json` path is a symlink for compatibility.
+- GSC access is read-only. The repo-local client defaults to `~/.config/google-search-console/zushapp-token.json`; override it with `GSC_TOKEN_FILE` when needed. `scripts/gsc-mcp` uses `.env.1password.gsc` when present and otherwise uses the current environment. Never commit OAuth tokens or client secrets.

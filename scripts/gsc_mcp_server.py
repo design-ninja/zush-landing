@@ -7,19 +7,11 @@ import json
 import os
 import sys
 from datetime import datetime, timedelta
-from pathlib import Path
 from typing import Any
 
 
-DEFAULT_GSC_CLIENT_DIR = Path("/Users/lirik/Projects/ai-marketing-skills/seo-ops")
-
-
 def load_gsc_client():
-    client_dir = Path(os.environ.get("GSC_CLIENT_DIR", DEFAULT_GSC_CLIENT_DIR))
-    if str(client_dir) not in sys.path:
-        sys.path.insert(0, str(client_dir))
-
-    from gsc_client import GSCClient  # type: ignore
+    from gsc_client import GSCClient
 
     return GSCClient
 
@@ -53,7 +45,7 @@ TOOLS = [
             "properties": {
                 "siteUrl": {
                     "type": "string",
-                    "description": "GSC property, for example sc-domain:zushapp.com.",
+                    "description": "GSC property; defaults to GSC_SITE_URL or sc-domain:zushapp.com.",
                 },
                 "startDate": {"type": "string", "description": "YYYY-MM-DD."},
                 "endDate": {"type": "string", "description": "YYYY-MM-DD."},
@@ -131,9 +123,7 @@ def call_tool(name: str, args: dict[str, Any]) -> dict[str, Any]:
         return json_text(GSCClient().list_sites())
 
     if name == "search_analytics":
-        site_url = args.get("siteUrl") or os.environ.get("GSC_SITE_URL")
-        if not site_url:
-            raise ValueError("siteUrl is required or GSC_SITE_URL must be set.")
+        site_url = args.get("siteUrl") or os.environ.get("GSC_SITE_URL") or "sc-domain:zushapp.com"
         rows = GSCClient(site_url=site_url).query(
             dimensions=args.get("dimensions") or ["query"],
             row_limit=args.get("rowLimit", 100),

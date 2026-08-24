@@ -1,6 +1,6 @@
 ---
-title: Built-in Local AI on Mac
-description: Download and run Zush Local AI for private offline file analysis directly on your Mac.
+title: Built-in Local AI on Mac and Windows
+description: Download and run Zush Local AI for private offline file analysis directly on your Mac or Windows PC.
 lastUpdated: 2026-08-24
 sidebar:
   order: 32
@@ -9,17 +9,17 @@ sidebar:
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Local AI is built into Zush for Mac. Zush downloads a supported model, runs the signed local inference runtime on your Mac, and keeps supported analysis content off cloud AI services.
+Local AI is built into Zush for Mac and Windows. Zush downloads a supported model, runs the local inference runtime on your computer, and keeps supported analysis content off cloud AI services.
 
 <figure>
   <img src="/images/showcase/macos/local-ai-light.webp" alt="Built-in Local AI model and resource settings in Zush for Mac." width="2560" height="1440" loading="lazy" decoding="async" />
-  <figcaption>Download the Local AI model once, then choose a resource profile and run analysis locally.</figcaption>
+  <figcaption>The Mac interface shown here downloads the Local AI model once, then lets you choose a resource profile and run analysis locally. Windows provides the same AI mode in Zush Settings.</figcaption>
 </figure>
 
 ## Requirements
 
-- Zush 3.10.0 or later for Mac
-- macOS 15 or later
+- the latest Zush version for Mac or Windows
+- macOS 15 or later, or Windows 10/11
 - about 3.4 GB of free disk space for the current model download
 - enough memory for the selected **Resource Use** profile
 - internet access for the initial model download; analysis can run offline afterward
@@ -41,12 +41,12 @@ Local AI is built into Zush for Mac. Zush downloads a supported model, runs the 
 | --- | --- |
 | Memory Saver | You want the smallest memory footprint |
 | Recommended | You want the default balance of speed and memory use |
-| Max Speed | Your Mac has enough available memory and you want higher throughput |
+| Max Speed | Your computer has enough available memory and you want higher throughput |
 
 Changing the profile restarts the local runtime. You can stop Local AI, re-download the model, or delete it from the same settings card.
 
 <Aside type="note">
-Local AI listens only on a loopback address on your Mac. Zush does not fall back to cloud analysis while this mode is selected.
+Local AI listens only on a loopback address on your Mac or Windows PC. Zush does not fall back to cloud analysis while this mode is selected.
 </Aside>
 
 ## Troubleshooting
@@ -55,7 +55,7 @@ Local AI listens only on a loopback address on your Mac. Zush does not fall back
 | --- | --- |
 | Download stops | Check the network connection and click **Check Again** or restart the download |
 | Local AI will not start | Free memory, choose **Memory Saver**, and try again |
-| Analysis is slow | Try **Recommended** or **Max Speed** if your Mac has enough available memory |
+| Analysis is slow | Try **Recommended** or **Max Speed** if your computer has enough available memory |
 | You need a different model | Use [LM Studio](/docs/lm-studio) or [Ollama](/docs/offline-ai) |
 
 ## Related docs

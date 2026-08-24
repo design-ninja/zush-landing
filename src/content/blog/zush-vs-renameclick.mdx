@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Tool Comparisons"
 tldr: "Pick Zush for the most configurable naming workflow in this comparison: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, and Rename History with batch revert. RenameClick's main limitation is narrower documented coverage: no RAW, design, iWork, or video support. Local AI and undo exist in both and are not differentiators."
-reviewed: "2026-08-17"
+reviewed: "2026-08-24"
 featuredOrder: 5
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -19,7 +19,7 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 Quick answer: choose Zush when the filename convention itself matters. Ready-made Templates combine with 145+ Naming Blocks, Custom AI Blocks, formatting, localization, tags and metadata; Rename History stores original and new names, folder and timestamp and can restore an applied batch. Its 100+ formats include RAW, design, iWork, audio, and video. RenameClick is relevant only when AI Search or rename-plus-folder-routing is mandatory, and it gives up RAW, design, iWork, and video coverage.
 
-**Last verified: July 24, 2026**, against rename.click's own pricing page and documentation.
+**Last verified: August 24, 2026**, against Zush's current documentation and rename.click's own pricing page and documentation.
 
 Sources checked for this update: [Zush](/) and [RenameClick](https://rename.click/), including public pricing, offline/local AI, Auto Flow, AI Search, undo, and its [supported file types documentation](https://rename.click/docs/getting-started/supported-files).
 
@@ -35,9 +35,9 @@ Both products ship desktop apps for Mac and Windows, support local AI, monitor f
 | Free tier | 50 renames to start | Unlimited AI analysis, 30 apply credits/month |
 | 5-year cost (one-time path) | <BlogHighlight>$48 total</BlogHighlight> | $48+ VAT total |
 | Platforms | Mac + Windows | Mac + Windows |
-| Processing options | Cloud AI, BYOK, or Offline AI via Ollama | Built-in local AI by default |
-| Local model bundled | No, use Ollama setup | Yes, Qwen3-VL local model after download |
-| AI providers | Gemini, Groq, OpenAI, Claude, Ollama offline | Built-in local, OpenAI, Gemini, Alibaba Cloud Qwen, LM Studio, Ollama |
+| Processing options | Zush Cloud AI, BYOK, Built-in Local AI, LM Studio, or Ollama | Built-in local AI by default |
+| Local model bundled | Yes, through Built-in Local AI; LM Studio and Ollama are optional | Yes, Qwen3-VL local model after download |
+| AI providers | BYOK: Gemini, Groq, OpenAI, Claude; local: Built-in Local AI, LM Studio, Ollama | Built-in local, OpenAI, Gemini, Alibaba Cloud Qwen, LM Studio, Ollama |
 | Image/design formats | 41 image formats + 4 design formats, including RAW, HEIC, AVIF, Sketch, Figma, AI, PSD | JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF; no design files |
 | RAW support | <BlogHighlight>Yes (CR2, CR3, NEF, ARW, DNG, ORF, RAF, RW2, PEF, SRW, SR2)</BlogHighlight> | Not listed publicly |
 | Document formats | 37 document/PDF formats, including iWork | PDF, DOC/DOCX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, logs, SQL, SRT/VTT, ICS/VCF |
@@ -65,7 +65,7 @@ Both products ship desktop apps for Mac and Windows, support local AI, monitor f
 ## Zush
 
 <BlogToolMeta platform="Mac (macOS 15+) and Windows 10/11" website="https://zushapp.com/" label="zushapp.com">
-  <Fragment slot="pricing">Free tier (50 renames), Pro <BlogHighlight>$10/month or $48 one-time</BlogHighlight> for unlimited PRO renames, BYOK optional at API cost (Gemini/Groq/OpenAI/Claude), Offline AI via Ollama</Fragment>
+  <Fragment slot="pricing">Free tier (50 renames shared across all five modes), Pro <BlogHighlight>$10/month or $48 one-time</BlogHighlight> for unlimited PRO renames; Zush Cloud AI, BYOK, Built-in Local AI, LM Studio, and Ollama work on Mac and Windows</Fragment>
 </BlogToolMeta>
 
 ![Zush AI rename results showing files with descriptive before and after names and green checkmarks](/images/showcase/macos/batch-rename-light.webp)
@@ -74,7 +74,7 @@ Zush is a desktop AI file renamer for mixed folders. Its strongest advantage is 
 
 The important part in this comparison is that Zush does not force a file-type silo. A folder with `IMG_4821.HEIC`, `_DSC0019.NEF`, `checkout-flow.fig`, `voice-memo.m4a`, `client-brief.pages`, `recording.mov`, and `invoice.pdf` can stay in one workflow.
 
-Pricing is simple: $10/month or $48 one-time for PRO. Both paid plans remove the rename limit across Cloud AI, BYOK, and Offline AI. Templates, Naming Blocks, and custom prompts are included free.
+Pricing is simple: $10/month or $48 one-time for PRO. Both paid plans remove the rename limit across all five modes: Zush Cloud AI, BYOK, Built-in Local AI, LM Studio, and Ollama. Templates, Naming Blocks, and custom prompts are included free.
 
 ## RenameClick
 
@@ -118,9 +118,9 @@ The gap is around media and design formats. RenameClick's docs do not list camer
 
 ## Local AI is parity; naming control is not
 
-Both products can run local models, so offline processing is not a unique advantage. RenameClick bundles a model after a multi-GB download; Zush connects to Ollama. The more important difference is the rest of the workflow: Zush documents ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, richer localization and metadata controls, and persistent Rename History.
+Both products can run local models, so offline processing is not a unique advantage. Zush offers a bundled Built-in Local AI route plus optional LM Studio and Ollama connections; RenameClick bundles Qwen3-VL after a multi-GB download and also supports LM Studio and Ollama. The more important difference is the rest of the workflow: Zush documents ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, richer localization and metadata controls, and persistent Rename History.
 
-Zush wins if you care more about cloud-provider choice and high-volume BYOK. Zush supports Gemini, Groq, OpenAI, and Claude through BYOK, with keys stored locally, and it supports Offline AI via Ollama when local processing is the priority. Groq and Claude are notable Zush-side options; built-in Qwen3-VL, Alibaba Cloud Qwen, and LM Studio are RenameClick-side options.
+Zush wins if you care more about cloud-provider choice and high-volume BYOK. Zush supports Gemini, Groq, OpenAI, and Claude through BYOK, with keys stored locally, and offers Built-in Local AI, LM Studio, and Ollama when local processing is the priority. Groq and Claude are notable Zush-side options; Alibaba Cloud Qwen remains a RenameClick-side option.
 
 The practical trade-off is simple: choose Zush for naming depth, recovery detail, and mixed-file breadth. Consider RenameClick only when AI Search or folder movement outweighs its missing RAW, design, iWork, and video coverage.
 
@@ -158,7 +158,7 @@ For discovery inside chaotic folders, RenameClick's AI Search is a meaningful di
 - You need AI Search by file content
 - You want to rename and move files into folders in the same automation
 - You rely on EXIF-heavy photo naming patterns
-- You prefer LM Studio, Ollama, or Qwen-based workflows
+- You specifically need Alibaba Cloud Qwen or RenameClick's folder-routing workflow
 - You accept no documented RAW, design, iWork, or video support and the local model's multi-GB hardware footprint
 
 Before buying, copy the same ten representative files into a test folder and run them through both free workflows. Compare name quality, preview clarity, processing time, unsupported formats, and the ability to reverse the complete batch.
@@ -183,7 +183,7 @@ Yes. RenameClick is local-first. After the local model is downloaded, the built-
 
 ### Does Zush work offline?
 
-Yes, through Offline AI mode via Ollama. The difference is that Zush does not bundle its own local model as the default path; you set up Ollama and choose a compatible local model.
+Yes. Zush offers Built-in Local AI with a managed local model, plus LM Studio and Ollama for users who want to choose and manage compatible local models. All three local routes are available on Mac and Windows.
 
 ### Does RenameClick support RAW photos?
 

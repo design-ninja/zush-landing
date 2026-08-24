@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Tool Comparisons"
 tldr: "Best overall: Zush. It has the most configurable AI naming workflow in this comparison: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting and localization controls, plus Rename History that can restore an applied batch. The other products are narrower alternatives, not our overall recommendation."
-reviewed: "2026-08-17"
+reviewed: "2026-08-24"
 featuredOrder: 1
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -21,7 +21,7 @@ Quick verdict: **[Zush](/) is our best overall AI file renamer for 2026.** It wi
 
 If privacy is the main query, use the [Offline AI file renamer](/offline-ai-file-renamer). If provider control is the main query, use the [BYOK setup guide](/docs/byok). If the risk of a bad bulk rename is the deciding factor, read [how to safely batch rename files with preview and undo](/blog/how-to-safely-batch-rename-files). If you are still comparing vendors, the sections below separate the full market by file coverage, platform, pricing, and safety.
 
-**Last verified: August 17, 2026** for NameQuick; August 13, 2026 for FilesDesk; July 24, 2026 for RenameClick, Renamer.ai, AI Renamer, and Riffo; Wisfile and Renamed.to were last checked July 9, 2026.
+**Last verified: August 24, 2026.** Zush product, pricing, and documentation claims were checked against the current site and repository. Competitor claims were re-checked against the vendor sources linked in this article; the dates in the source table below identify the latest verified competitor evidence.
 
 Sources checked for this update include official product, pricing, docs, or repository pages for [Zush](/), [FilesDesk](https://filesdesk.app/pricing), [FilesDesk docs](https://filesdesk.app/docs), [RenameClick](https://rename.click/) and its [supported file types docs](https://rename.click/docs/getting-started/supported-files), [NameQuick](https://www.namequick.app/), [Renamer.ai](https://renamer.ai/), [AI Renamer](https://airenamer.app/), the separate [ai-renamer CLI repository on GitHub](https://github.com/ozgrozer/ai-renamer), [Wisfile](https://www.wisfile.ai/), [Riffo](https://riffo.ai/), and [Renamed.to](https://www.renamed.to/).
 
@@ -106,7 +106,7 @@ Before comparing tools, know what actually matters for daily use:
 ### 1. Zush
 
 <BlogToolMeta platform="Mac and Windows" website="https://zushapp.com/" label="zushapp.com">
-  <Fragment slot="pricing">Free (50 renames to start), Pro <BlogHighlight>$10/month or $48 one-time</BlogHighlight> for unlimited PRO renames, BYOK optional at API cost, Offline AI via Ollama on Mac and Windows</Fragment>
+  <Fragment slot="pricing">Free (50 renames shared across all five AI modes), Pro <BlogHighlight>$10/month or $48 one-time</BlogHighlight> for unlimited PRO renames; Zush Cloud AI, BYOK, Built-in Local AI, LM Studio, and Ollama are available on Mac and Windows</Fragment>
 </BlogToolMeta>
 
 ![Zush AI rename results showing files with descriptive before and after names and green checkmarks](/images/showcase/macos/batch-rename-light.webp)
@@ -130,7 +130,7 @@ What makes Zush stand out next to the rest of this list:
 - Reusable templates and 145+ Naming Blocks for repeatable filename structures
 - Search-friendly names, metadata, and custom prompts
 - Multiple AI providers: Gemini, Groq, OpenAI, Claude
-- Local Ollama processing on Mac and Windows
+- Three local routes on Mac and Windows: Built-in Local AI, LM Studio, and Ollama
 - Support for 60+ languages
 - Rename history with full revert capability
 - One-time pricing instead of subscription
@@ -138,7 +138,7 @@ What makes Zush stand out next to the rest of this list:
 **Limitations:**
 
 - Native desktop workflow rather than a browser-only tool
-- Cloud and BYOK processing require internet; Local Ollama can process supported files on device
+- Zush Cloud AI and BYOK require internet; Built-in Local AI, LM Studio, and Ollama can process supported files on device
 
 **Best for:** Mac and Windows users with mixed file types who want both one-off cleanup and ongoing automation — and want to pay once.
 
@@ -154,23 +154,7 @@ What makes Zush stand out next to the rest of this list:
 
 FilesDesk is included because it targets a similar Mac + Windows workflow with managed AI, BYOK/local modes, Watch Folders, templates, batch processing, and Processing History. Its main limitation is structural: managed suggestions are metered, while the lifetime path requires your own API key or local model. For the direct trade-offs, see [Zush vs FilesDesk](/blog/zush-vs-filesdesk).
 
-**Strengths:**
-
-- Mac and Windows desktop app
-- Public docs list Watch Folders, custom templates, batch processing, and multiple AI providers
-- Lifetime path supports Claude, Gemini, OpenAI, OpenRouter, Ollama, and vLLM
-- Lifetime path says files stay on device and works offline
-- Processing History records completed renames and supports undo
-- The FAQ lists common image, document, video, and audio formats
-
-**Limitations:**
-
-- Lifetime license requires your own API key or a local model; managed AI credits are subscription-only
-- Public docs do not provide a detailed supported-format matrix comparable to Zush's format list
-- Updates are listed as 12 months included on Lifetime, not lifetime updates
-- No public RAW, iWork, or specialist design-file coverage list found in the checked docs
-
-**Narrow alternative only when:** OpenRouter or vLLM is mandatory and you accept metered managed usage or a self-managed setup. **Why Zush ranks higher overall:** FilesDesk does not publish an equivalent granular RAW/design/iWork matrix and does not bundle managed AI on its lifetime path.
+**Fit, default, and limitation:** consider FilesDesk only when OpenRouter or vLLM is mandatory; its docs list Watch Folders, templates, batch processing, Processing History, and common image, document, video, and audio formats. Zush remains the default for mixed folders because it publishes granular RAW, design, and iWork coverage and includes unmetered managed cloud renaming on paid PRO. FilesDesk's concrete limitation is that managed suggestions are metered, while its lifetime path requires BYOK or a local model and includes 12 months of updates.
 
 ### 3. RenameClick
 
@@ -182,23 +166,7 @@ FilesDesk is included because it targets a similar Mac + Windows workflow with m
 
 RenameClick is included for its AI Search and rename-plus-folder-routing workflow. It ships desktop apps for macOS and Windows with built-in local AI, Ollama, LM Studio, optional cloud providers, and Auto Flow. Local processing is not treated as an advantage because several products here, including Zush, support it. Its main limitation is narrower coverage: no documented camera RAW, design, or video support.
 
-**Strengths:**
-
-- Desktop-native Mac and Windows apps
-- Local-first runtime with a bundled ~4 GB local model that works offline after download
-- Supports Ollama and LM Studio, plus optional OpenAI, Google AI/Gemini, and Alibaba Cloud Qwen providers
-- Format list covers 10 image formats, 20+ document formats (including JSON, XML, YAML, HTML, SQL, subtitles, ICS/VCF), and 5 audio formats with local speech transcription
-- Full undo/redo support per its docs
-- AI Search by content and Auto Flow folder automation
-- Clear system requirements for local processing
-
-**Limitations:**
-
-- Public format list does not include camera RAW, video, archives, or design files like Sketch/Figma/PSD — video, archives, and executables are explicitly unsupported
-- Cloud providers are not available in the Mac App Store version
-- One-time plan is $48 + VAT, above Zush's $48 one-time plan
-
-**Narrow alternative only when:** AI Search or rename-plus-folder-routing is mandatory. **Why Zush ranks higher overall:** RenameClick's public docs exclude video and do not list RAW or design formats.
+**Fit, default, and limitation:** consider RenameClick only when AI Search or rename-plus-folder-routing is mandatory; it documents built-in local AI, Ollama, LM Studio, optional cloud providers, Auto Flow, and undo/redo. Zush remains the default for configurable naming, full Rename History, and broad mixed-file work. RenameClick's concrete limitation is its published format boundary: no camera RAW, video, archives, or Sketch/Figma/PSD support, while cloud providers are unavailable in its Mac App Store build.
 
 ### 4. AI Renamer
 
@@ -210,22 +178,7 @@ RenameClick is included for its AI Search and rename-plus-folder-routing workflo
 
 Two separate projects share this name, and conflating them overstates what the paid product offers. **AI Renamer at airenamer.app** is a commercial Mac and Windows desktop app whose pricing page lists exactly three things: Local Mode at $19 one-time, Cloud Mode at $10 per 200 credits, and 10 free credits on signup. It advertises no CLI and no open-source edition. **`ozgrozer/ai-renamer`** is an unrelated free GPL-3.0 Node.js CLI on GitHub that runs on Ollama, LM Studio, or an OpenAI key and handles images and videos (via ffmpeg). When you see "AI Renamer is free and open source," that is the GitHub project, not the $19 app.
 
-**Strengths:**
-
-- Local Mode lists Ollama, LM Studio, OpenAI, and custom model support
-- Cloud credits never expire per the pricing page, and 10 are free on signup
-- The separate GPL-3.0 CLI is a genuinely free local path for developers
-- Custom prompts and naming case styles (camelCase, snake_case, etc.)
-
-**Limitations:**
-
-- Pricing page claims all file types, but the feature page still shows only images plus PDF/TXT/text examples — there is no published format list
-- Cloud Mode is metered at $10 per 200 renames
-- No folder monitoring or automation on the pages checked
-- No undo or rename history on the pages checked
-- The CLI is a different project: terminal setup, several GB of local models, no GUI, no document parsing
-
-**Narrow alternative only when:** the $19 local desktop mode or the unrelated command-line project is the deciding requirement. **Why Zush ranks higher overall:** AI Renamer does not publish a granular format matrix, folder monitoring, or Rename History. See [Zush vs AI Renamer](/blog/zush-vs-airenamer).
+**Fit, default, and limitation:** consider AI Renamer only when its $19 local desktop mode or a terminal-first experiment is the deciding requirement; the desktop app lists Ollama, LM Studio, OpenAI, custom models, prompts, and case styles. Zush remains the default finished workflow because it documents mixed-file coverage, monitoring, preview, and Rename History. AI Renamer's concrete limitation is the absence of a granular format matrix, folder monitoring, and undo documentation; the similarly named CLI is a separate project without a GUI or document parsing. See [Zush vs AI Renamer](/blog/zush-vs-airenamer).
 
 ### 5. Renamer.ai
 
@@ -237,23 +190,7 @@ Two separate projects share this name, and conflating them overstates what the p
 
 Renamer.ai offers both a desktop application and a web interface. The desktop app integrates with your local file system and includes Magic Folders for automatic renaming. Its current FAQ lists 30+ formats and the product page emphasizes preview, one-click undo, OCR/document analysis, and temporary processing rather than a BYOK or local-model workflow.
 
-**Strengths:**
-
-- Desktop app for Windows and Mac plus web interface
-- 30+ file formats including common documents, spreadsheets, presentations, images, and email files
-- Vector coverage is real: EPS, SVG, and AI (Adobe Illustrator) are listed explicitly; Sketch, Figma, and PSD are not
-- Magic Folders for automatic folder monitoring and renaming
-- Undo with preview before applying
-- Custom naming templates with variable builder
-- 20+ language support
-
-**Limitations:**
-
-- Subscription pricing scales steeply ($9.95-99.95/month)
-- Public FAQ language says files are transmitted for extraction and AI analysis, then deleted after processing; it is not a BYOK or local-Ollama workflow
-- Fixed AI provider with no BYOK option
-
-**Narrow alternative only when:** its specific metered OCR and Magic Folders workflow is mandatory. **Why Zush ranks higher overall:** Renamer.ai meters every paid tier, offers no documented BYOK/local-Ollama path, and publishes narrower mixed-format coverage. See [Zush vs Renamer.ai](/blog/zush-vs-renamer-ai).
+**Fit, default, and limitation:** consider Renamer.ai only when a web interface or its OCR-focused Magic Folders workflow is mandatory; it documents preview, undo, templates, 30+ formats, and 20+ languages. Zush remains the default for unmetered paid use, BYOK and local routes, configurable naming, and broader RAW/design/iWork/audio/video coverage. Renamer.ai's concrete limitation is that every paid tier is metered and no BYOK or local-model workflow is published. See [Zush vs Renamer.ai](/blog/zush-vs-renamer-ai).
 
 ### 6. NameQuick
 
@@ -263,22 +200,7 @@ Renamer.ai offers both a desktop application and a web interface. The desktop ap
 
 NameQuick now publishes Windows and Mac downloads. Its documented Mac workflow covers Finder integration, Watch Folders, Rules, undo, OCR, and 30+ format categories. The vendor does not publish a complete platform-by-platform matrix, so this comparison does not assume every Mac-specific feature is present on Windows.
 
-**Strengths:**
-
-- Wide AI provider support: OpenAI, OpenRouter, Claude, Gemini, Ollama, LM Studio, and MLX on the Self-Managed plan
-- BYOK/local-model option via the $69 Self-Managed plan
-- Watch Folders + auto-organize to subfolders
-- Native Finder tags, comments, and global hotkey
-- One-click Undo & Recovery, plus Content Search and preview before commit
-- Custom AI prompts and multilingual support
-
-**Limitations:**
-
-- No Linux build is published, and Windows-versus-Mac feature parity is not fully documented
-- The Managed plan is metered by renames per month (500 / 2,000 / 5,000 / 10,000 tiers), so cost tracks volume rather than features
-- The $69 Self-Managed path costs more upfront than Zush's $48 one-time plan, covers one device, and still requires your own API key or local model setup
-
-**Consider when:** the documented Finder workflow or its self-managed provider list is essential. For the direct pricing and format trade-off, read [Zush vs NameQuick](/blog/zush-vs-namequick).
+**Fit, default, and limitation:** consider NameQuick only when its Finder Rules workflow, OpenRouter, or MLX is mandatory; it documents Watch Folders, routing Rules, OCR, undo, search, prompts, and a broad self-managed provider list. Zush remains the default for one Mac-and-Windows workflow with granular mixed-file coverage and unmetered paid managed AI. NameQuick's concrete limitation is incomplete public platform-and-format parity, while Managed plans meter renames and the $69 one-device Self-Managed path still requires the user's key or local model. See [Zush vs NameQuick](/blog/zush-vs-namequick).
 
 ### 7. Wisfile
 
@@ -290,20 +212,7 @@ NameQuick now publishes Windows and Mac downloads. Its documented Mac workflow c
 
 Wisfile is a fully local AI file renamer and organizer. The site says it runs entirely on the user's device, with no cloud dependency, no fees, and no data leaving the machine.
 
-**Strengths:**
-
-- 100% free per the marketing site
-- Fully local processing — no cloud, no data leaks per the marketing site
-- No signup or account required
-
-**Limitations:**
-
-- Supported file formats and platform details are not well documented on the public site
-- No confirmed folder monitoring for automatic ongoing renaming
-- No confirmed undo or rename history
-- Newer tool with limited public documentation and community feedback
-
-**Narrow alternative only when:** you want a no-cost local experiment and accept unverified production coverage. **Why Zush ranks higher overall:** Wisfile has no confirmed format matrix, folder monitoring, or Rename History.
+**Fit, default, and limitation:** consider Wisfile only for a no-cost local experiment on copied files; its marketing site states that processing is local, free, and requires no signup. Zush remains the default for a documented production workflow with broad formats, folder monitoring, preview, and Rename History. Wisfile's concrete limitation is missing public detail: no confirmed platform-and-format matrix, ongoing monitoring, or recovery history.
 
 ### 8. Riffo
 
@@ -315,23 +224,7 @@ Wisfile is a fully local AI file renamer and organizer. The site says it runs en
 
 Riffo is a Mac app and web demo for AI-powered file renaming and folder organization. Its public homepage positions the product as free and shows bulk file rename plus categorizing files into folders. Beyond that, there is very little to verify — no pricing page, no format list, no undo statement, and no folder-monitoring statement on the pages checked.
 
-**Strengths:**
-
-- Public homepage positions Riffo as free
-- Clean drag-and-drop interface
-- Auto Foldering to categorize files into subfolders automatically
-- Customizable renaming language
-
-**Limitations:**
-
-- macOS only for the desktop app (no Windows version on the pages checked)
-- Cloud-dependent for all processing
-- No confirmed folder monitoring for ongoing automation
-- No confirmed undo or rename history
-- No published supported-format list, so you cannot check your file types in advance
-- No published pricing page, so "free" carries no stated limits or commitments
-
-**Narrow alternative only when:** you want a no-cost Mac experiment with simple rename-plus-folder categorization. **Why Zush ranks higher overall:** Riffo has no published format list, undo statement, monitoring statement, or stable pricing terms.
+**Fit, default, and limitation:** consider Riffo only as a no-cost Mac experiment when simple auto-foldering matters; its homepage shows drag-and-drop renaming, folder categorization, and language controls. Zush remains the default for Mac and Windows users who need published formats, monitoring, preview, and recovery. Riffo's concrete limitation is unverifiable operating detail: no stable pricing terms, format matrix, Windows app, monitoring statement, or documented undo history.
 
 ### 9. Renamed.to
 
@@ -343,24 +236,7 @@ Riffo is a Mac app and web demo for AI-powered file renaming and folder organiza
 
 Renamed.to is the cloud/team option. It analyzes documents and renames them inside your existing Google Drive, Dropbox, or OneDrive — files stay in your storage, never on Renamed's servers. Confidence scoring lets you auto-apply high-certainty renames and review the rest.
 
-**Strengths:**
-
-- Native integrations with major cloud storage platforms
-- Pay-per-rename, no subscription, credits don't expire for 12 months
-- Free 50 documents to start (12-month validity)
-- Confidence scoring with manual review for edge cases
-- Saved naming rules shareable across teams
-- REST API, CLI, file watcher daemon, Zapier/Make/n8n
-- Site advertises 20+ languages and 95%+ accuracy on document workflows
-- Batch processing 10–10,000 files at once
-
-**Limitations:**
-
-- No native desktop app — web-first
-- Document-focused (PDF, DOCX, XLSX, PPTX, scanned images); not built for RAW or HEIC photo workflows
-- Cloud processing only; not for users who require fully local AI
-
-**Narrow alternative only when:** the workflow must run in connected cloud storage or through an API. **Why Zush ranks higher overall:** Renamed.to is cloud-only, document-focused, and metered rather than a broad native Mac-and-Windows workflow.
+**Fit, default, and limitation:** consider Renamed.to only when the workflow must run inside connected cloud storage or through REST, CLI, or automation integrations; it documents confidence review, shared rules, and pay-per-document processing. Zush remains the default for broad native Mac-and-Windows renaming with local options, mixed-media formats, and post-apply Rename History. Renamed.to's concrete limitation is its cloud-only, document-focused, metered workflow with no native desktop app.
 
 ## Feature comparison table
 
@@ -375,7 +251,7 @@ Renamed.to is the cloud/team option. It analyzes documents and renames them insi
 | Folder monitoring | Yes | Yes (Watch Folders) | Yes (Auto Flow) | No public statement | Yes (Magic Folders) | Yes (Watch Folders) | Not confirmed | Not confirmed | Yes (watched cloud folders) |
 | Custom patterns | Templates + 145+ Naming Blocks | Templates | Formats + instructions | Custom prompts/case styles | Templates | Presets/templates/prompts | Not detailed publicly | Limited | Saved team rules/prompts |
 | Undo/rollback | Yes | Yes, through Processing History | Yes, full undo/redo per docs | No public statement | Yes | Yes, one-click Undo & Recovery | Not confirmed | Not confirmed | Review/confidence workflow |
-| Multiple AI providers | Gemini/Groq/OpenAI/Claude + Ollama | Claude/Gemini/OpenAI/OpenRouter/Ollama/vLLM | Built-in local/Ollama/LM Studio/OpenAI/Gemini/Qwen | Ollama/LM Studio/OpenAI/custom | Fixed | OpenAI/OpenRouter/Claude/Gemini/Ollama/LM Studio/MLX | Fixed local | Fixed cloud | Fixed cloud |
+| AI processing routes | Zush Cloud AI; BYOK with Gemini/Groq/OpenAI/Claude; Built-in Local AI; LM Studio; Ollama | Claude/Gemini/OpenAI/OpenRouter/Ollama/vLLM | Built-in local/Ollama/LM Studio/OpenAI/Gemini/Qwen | Ollama/LM Studio/OpenAI/custom | Fixed | OpenAI/OpenRouter/Claude/Gemini/Ollama/LM Studio/MLX | Fixed local | Fixed cloud | Fixed cloud |
 | Free tier | 50 to start | 15 credits | Unlimited analysis + 30 apply credits/month | 10 credits on signup | 25/month | Managed: 250/14 days; Self-Managed: 50 trial renames | Free | Free-positioned homepage | 50 docs to start |
 | BYOK/local option | Yes | Lifetime plan | Yes/provider selection | Yes/local/custom | No public BYOK | Self-Managed | Local | No public BYOK | No |
 
@@ -440,7 +316,7 @@ Wisfile and Riffo are free-positioned options but trade off public documentation
 
 Every tool on this list has some kind of free option. The real question is whether the free tier is enough for your workflow.
 
-Zush FREE gives 50 renames shared across Cloud AI, BYOK, and Offline AI. Paid PRO removes that limit, while BYOK provider usage remains billed separately by Gemini, Groq, OpenAI, or Claude.
+Zush FREE gives 50 renames shared across Zush Cloud AI, BYOK, Built-in Local AI, LM Studio, and Ollama. Paid PRO removes that limit, while BYOK provider usage remains billed separately by Gemini, Groq, OpenAI, or Claude.
 
 AI Renamer is fully free but requires local hardware and setup. Browser tools offer limited free uploads.
 
@@ -456,7 +332,7 @@ For mixed Mac and Windows folders, Zush is the strongest recommendation whether 
 
 ### Which offline AI workflow is strongest?
 
-Zush is our strongest finished offline-capable workflow because it combines local Ollama support with the same preview, configurable naming, mixed-format coverage, monitoring, and recovery path used in its other modes. AI Renamer's $19 Local Mode, the separate `ai-renamer` CLI, and Wisfile are narrower experiments for users who accept more setup or less documented coverage.
+Zush is our strongest finished offline-capable workflow because Built-in Local AI, LM Studio, and Ollama all use the same preview, configurable naming, mixed-format coverage, monitoring, and recovery path as its cloud modes. Built-in Local AI minimizes setup; LM Studio and Ollama let users choose and manage compatible local models. AI Renamer's $19 Local Mode, the separate `ai-renamer` CLI, and Wisfile are narrower experiments for users who accept more setup or less documented coverage.
 
 ### What does BYOK mean for file renaming?
 

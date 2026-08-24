@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Tool Comparisons"
 tldr: "Pick Zush for the most configurable naming workflow in this comparison: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, and Rename History with batch revert. FilesDesk's main limitation is that managed suggestions are metered and its lifetime plan requires BYOK or local-model setup."
-reviewed: "2026-08-17"
+reviewed: "2026-08-24"
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -17,7 +17,7 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 Quick answer: choose Zush when you want the AI to follow a precise, reusable convention. Ready-made Templates combine with 145+ Naming Blocks, Custom AI Blocks, formatting, localization and metadata; Rename History keeps original and new names, folder and timestamp and can restore an applied batch. FilesDesk documents templates and Processing History, but does not publish an equivalent granular naming system or RAW/design/iWork matrix. Its managed suggestions are metered, while the lifetime license requires your own API key or local model.
 
-Pricing and public feature details last checked August 13, 2026.
+Pricing and public feature details last checked August 24, 2026.
 
 Sources checked for this update: [Zush](/), [FilesDesk](https://filesdesk.app/), [FilesDesk pricing](https://filesdesk.app/pricing), and [FilesDesk docs](https://filesdesk.app/docs), including public pricing, platform, provider, Watch Folders, and format-support details.
 
@@ -44,8 +44,8 @@ Sources checked for this update: [Zush](/), [FilesDesk](https://filesdesk.app/),
 | Format coverage | <BlogHighlight>100+ formats</BlogHighlight>: 41 image incl. RAW/HEIC/AVIF, 4 design (Sketch, Figma, AI, PSD), 37 document incl. iWork, 16 video, 7 audio | Images, PDF/Office documents, video, and audio; no detailed RAW/design/iWork matrix |
 | Video and audio renaming | <BlogHighlight>Yes</BlogHighlight> | Yes: common video and audio formats are listed in the FAQ |
 | Design files (Figma/Sketch/PSD) | <BlogHighlight>Yes</BlogHighlight> | Not publicly listed |
-| AI providers (BYOK) | Gemini, Groq, OpenAI, Claude | Claude, OpenAI, Gemini, OpenRouter |
-| Local AI | Ollama | Ollama, vLLM |
+| AI processing routes | Zush Cloud AI; BYOK with Gemini, Groq, OpenAI, or Claude; Built-in Local AI; LM Studio; Ollama | BYOK with Claude, OpenAI, Gemini, or OpenRouter; local Ollama or vLLM |
+| Local AI | Built-in Local AI, LM Studio, Ollama | Ollama, vLLM |
 | Folder monitoring | <BlogHighlight>Yes — auto-name new files</BlogHighlight> | Yes (Watch Folders) |
 | Naming conventions | <BlogHighlight>Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata</BlogHighlight> | Naming templates |
 | Recovery | Full Rename History: original/new name, folder, timestamp, batch revert | Undo through Processing History |
@@ -57,7 +57,7 @@ Sources checked for this update: [Zush](/), [FilesDesk](https://filesdesk.app/),
 ## Zush
 
 <BlogToolMeta platform="Mac (macOS 15+) and Windows 10/11" website="https://zushapp.com/" label="zushapp.com">
-  <Fragment slot="pricing">Free tier (50 renames), PRO <BlogHighlight>$10/month or $48 one-time</BlogHighlight> with unlimited PRO renames, BYOK optional at API cost, local Ollama on supported builds</Fragment>
+  <Fragment slot="pricing">Free tier (50 renames shared across all five modes), PRO <BlogHighlight>$10/month or $48 one-time</BlogHighlight> with unlimited PRO renames; Zush Cloud AI, BYOK, Built-in Local AI, LM Studio, and Ollama work on Mac and Windows</Fragment>
 </BlogToolMeta>
 
 ![Zush AI rename results on macOS showing content-aware filenames for mixed files](/images/showcase/macos/batch-rename-light.webp)
@@ -90,7 +90,7 @@ Its $8 managed tier includes 500 credits rather than unlimited renames.
 The sticker prices are not equivalent products: FilesDesk's managed tier is capped at 500 suggestions, and its lifetime license requires your own AI key or local model and covers one device with 12 months of updates. Zush paid PRO is unmetered and includes managed AI.
 
 **Do both work offline?**
-Both support local models: Zush via Ollama, FilesDesk via Ollama or vLLM. Offline quality in both cases depends on the local model you run.
+Both support local models: Zush through Built-in Local AI, LM Studio, or Ollama; FilesDesk through Ollama or vLLM. Zush's built-in route reduces setup, while LM Studio, Ollama, and FilesDesk's local routes depend on the model and hardware the user selects.
 
 **Which supports more file types?**
 Both document video and audio support. Zush publishes a broader concrete list of 100+ formats including RAW photos, design files, and iWork, while FilesDesk lists common image, PDF/Office, video, and audio formats without the same RAW/design/iWork matrix.

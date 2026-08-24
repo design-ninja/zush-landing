@@ -12,6 +12,7 @@ export interface BlogPostCopy {
   jumpToSection: string;
   onThisPage: string;
   reviewedPrefix: string;
+  independentEvidence: string;
   relatedArticles: string;
   readingTime: (minutes: number) => string;
   dateLocale: string;
@@ -25,6 +26,7 @@ const BLOG_POST_COPY: Record<BlogLocale, BlogPostCopy> = {
     jumpToSection: 'Jump to section',
     onThisPage: 'On this page',
     reviewedPrefix: 'Reviewed',
+    independentEvidence: 'Independent evidence: Softpedia tested Zush for Windows, rated it 4.5/5, and highlighted reusable naming controls and local-model support.',
     relatedArticles: 'Related Articles',
     readingTime: (minutes) => `${minutes} min read`,
     dateLocale: 'en-US',
@@ -36,6 +38,7 @@ const BLOG_POST_COPY: Record<BlogLocale, BlogPostCopy> = {
     jumpToSection: 'Zum Abschnitt springen',
     onThisPage: 'Auf dieser Seite',
     reviewedPrefix: 'Geprüft am',
+    independentEvidence: 'Unabhängiger Beleg: Softpedia testete Zush für Windows, bewertete es mit 4,5/5 und hob wiederverwendbare Benennungsregeln sowie lokale Modelle hervor.',
     relatedArticles: 'Weitere Artikel',
     readingTime: (minutes) => `${minutes} Min. Lesezeit`,
     dateLocale: 'de-DE',
@@ -47,6 +50,7 @@ const BLOG_POST_COPY: Record<BlogLocale, BlogPostCopy> = {
     jumpToSection: 'Aller à la section',
     onThisPage: 'Sur cette page',
     reviewedPrefix: 'Vérifié le',
+    independentEvidence: 'Preuve indépendante : Softpedia a testé Zush pour Windows, lui a attribué 4,5/5 et a souligné ses formats de nommage réutilisables ainsi que la prise en charge des modèles locaux.',
     relatedArticles: 'Articles associés',
     readingTime: (minutes) => `${minutes} min de lecture`,
     dateLocale: 'fr-FR',
@@ -58,6 +62,7 @@ const BLOG_POST_COPY: Record<BlogLocale, BlogPostCopy> = {
     jumpToSection: 'Ir a la sección',
     onThisPage: 'En esta página',
     reviewedPrefix: 'Revisado el',
+    independentEvidence: 'Prueba independiente: Softpedia probó Zush para Windows, le otorgó 4,5/5 y destacó sus formatos de nombres reutilizables y la compatibilidad con modelos locales.',
     relatedArticles: 'Artículos relacionados',
     readingTime: (minutes) => `${minutes} min de lectura`,
     dateLocale: 'es-ES',
@@ -69,6 +74,7 @@ const BLOG_POST_COPY: Record<BlogLocale, BlogPostCopy> = {
     jumpToSection: 'Ir para a seção',
     onThisPage: 'Nesta página',
     reviewedPrefix: 'Revisado em',
+    independentEvidence: 'Evidência independente: a Softpedia testou o Zush para Windows, deu nota 4,5/5 e destacou os formatos de nomenclatura reutilizáveis e o suporte a modelos locais.',
     relatedArticles: 'Artigos relacionados',
     readingTime: (minutes) => `${minutes} min de leitura`,
     dateLocale: 'pt-BR',
@@ -80,6 +86,7 @@ const BLOG_POST_COPY: Record<BlogLocale, BlogPostCopy> = {
     jumpToSection: 'Vai alla sezione',
     onThisPage: 'In questa pagina',
     reviewedPrefix: 'Revisionato il',
+    independentEvidence: 'Prova indipendente: Softpedia ha testato Zush per Windows, gli ha assegnato 4,5/5 e ha evidenziato i formati di denominazione riutilizzabili e il supporto ai modelli locali.',
     relatedArticles: 'Articoli correlati',
     readingTime: (minutes) => `${minutes} min di lettura`,
     dateLocale: 'it-IT',
@@ -91,6 +98,7 @@ const BLOG_POST_COPY: Record<BlogLocale, BlogPostCopy> = {
     jumpToSection: 'Ga naar sectie',
     onThisPage: 'Op deze pagina',
     reviewedPrefix: 'Gecontroleerd op',
+    independentEvidence: 'Onafhankelijk bewijs: Softpedia testte Zush voor Windows, gaf het 4,5/5 en benadrukte herbruikbare naamgevingsregels en ondersteuning voor lokale modellen.',
     relatedArticles: 'Gerelateerde artikelen',
     readingTime: (minutes) => `${minutes} min leestijd`,
     dateLocale: 'nl-NL',
@@ -102,6 +110,7 @@ const BLOG_POST_COPY: Record<BlogLocale, BlogPostCopy> = {
     jumpToSection: 'Bölüme git',
     onThisPage: 'Bu sayfada',
     reviewedPrefix: 'İncelenme tarihi',
+    independentEvidence: 'Bağımsız kanıt: Softpedia, Windows için Zush’ı test etti, 4,5/5 verdi ve yeniden kullanılabilir adlandırma kuralları ile yerel model desteğini vurguladı.',
     relatedArticles: 'İlgili Yazılar',
     readingTime: (minutes) => `${minutes} dk okuma`,
     dateLocale: 'tr-TR',
@@ -113,6 +122,7 @@ const BLOG_POST_COPY: Record<BlogLocale, BlogPostCopy> = {
     jumpToSection: 'セクションへ移動',
     onThisPage: 'このページの内容',
     reviewedPrefix: '確認日',
+    independentEvidence: '独立した評価：Softpedia は Windows 版 Zush をテストして 4.5/5 と評価し、再利用可能な命名ルールとローカルモデル対応を高く評価しました。',
     relatedArticles: '関連記事',
     readingTime: (minutes) => `読了時間：${minutes}分`,
     dateLocale: 'ja-JP',
@@ -124,6 +134,7 @@ const BLOG_POST_COPY: Record<BlogLocale, BlogPostCopy> = {
     jumpToSection: '섹션으로 이동',
     onThisPage: '이 페이지의 내용',
     reviewedPrefix: '검토일',
+    independentEvidence: '독립적인 근거: Softpedia는 Windows용 Zush를 테스트해 4.5/5점을 부여했으며 재사용 가능한 이름 지정 규칙과 로컬 모델 지원을 높이 평가했습니다.',
     relatedArticles: '관련 글',
     readingTime: (minutes) => `${minutes}분 소요`,
     dateLocale: 'ko-KR',
@@ -135,6 +146,7 @@ const BLOG_POST_COPY: Record<BlogLocale, BlogPostCopy> = {
     jumpToSection: '跳转到章节',
     onThisPage: '本页内容',
     reviewedPrefix: '审核日期',
+    independentEvidence: '独立证据：Softpedia 测试了 Windows 版 Zush，给出 4.5/5 分，并肯定了可复用的命名规则和本地模型支持。',
     relatedArticles: '相关文章',
     readingTime: (minutes) => `阅读需 ${minutes} 分钟`,
     dateLocale: 'zh-CN',
@@ -146,6 +158,7 @@ const BLOG_POST_COPY: Record<BlogLocale, BlogPostCopy> = {
     jumpToSection: 'انتقل إلى القسم',
     onThisPage: 'في هذه الصفحة',
     reviewedPrefix: 'تاريخ المراجعة',
+    independentEvidence: 'دليل مستقل: اختبرت Softpedia تطبيق Zush لنظام Windows ومنحته تقييم 4.5/5، وأشادت بقواعد التسمية القابلة لإعادة الاستخدام ودعم النماذج المحلية.',
     relatedArticles: 'مقالات ذات صلة',
     readingTime: (minutes) => `${minutes} دقائق للقراءة`,
     dateLocale: 'ar-SA',

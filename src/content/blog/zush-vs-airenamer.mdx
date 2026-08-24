@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Tool Comparisons"
 tldr: "Pick Zush for the most configurable and recoverable workflow in this comparison: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, and full Rename History. Both AI Renamer products lack documented folder monitoring and undo; local AI is available in Zush too and is not a unique competitor advantage."
-reviewed: "2026-08-17"
+reviewed: "2026-08-24"
 featuredOrder: 4
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -18,7 +18,7 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 Quick answer: Zush gives you a complete naming system rather than a prompt box: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, monitored folders, preview, and Rename History with batch revert. The two unrelated AI Renamer products both require compromises: the Desktop app has no documented monitoring, recovery, or granular format matrix; the CLI has no GUI, document parsing, monitoring, or undo.
 
-**Last verified: July 24, 2026**, against airenamer.app's pricing page and the `ozgrozer/ai-renamer` repository.
+**Last verified: August 24, 2026**, against Zush's current documentation, airenamer.app's pricing page, and the `ozgrozer/ai-renamer` repository.
 
 Sources checked for this update: [Zush](/), [AI Renamer Desktop](https://airenamer.app/), and the [ai-renamer CLI repository](https://github.com/ozgrozer/ai-renamer), including pricing, local model, file-type, automation, and undo details.
 
@@ -49,16 +49,16 @@ If you are searching "Zush vs AI Renamer", first know the comparison covers two 
 | Folder monitoring | <BlogHighlight>Yes</BlogHighlight> | <BlogHighlight>No</BlogHighlight> | <BlogHighlight>No</BlogHighlight> |
 | Undo / rollback | <BlogHighlight>Yes (full history)</BlogHighlight> | <BlogHighlight>No</BlogHighlight> | <BlogHighlight>No</BlogHighlight> |
 | BYOK | Available on every plan (Gemini/Groq/OpenAI/Claude) | OpenAI/custom model support listed for Local Mode | OpenAI key support |
-| Local AI (Ollama) | Yes (Mac builds) | Yes | Yes (Ollama, LM Studio) |
+| Local AI | Built-in Local AI, LM Studio, and Ollama on Mac and Windows | Yes | Yes (Ollama, LM Studio) |
 | Languages | 60+ | Multilingual | Configurable |
-| Setup effort | Drag-and-drop install | Drag-and-drop install | Terminal + Ollama (~4–8GB) |
+| Setup effort | Drag-and-drop install; Built-in Local AI needs no separate local server | Drag-and-drop install | Terminal + Ollama (~4–8GB) |
 | Naming control | <BlogHighlight>Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata</BlogHighlight> | Custom prompt/settings | Custom prompt and output case |
 | Main limitation | Desktop-only | No documented monitoring, Rename History, or granular format matrix | No GUI, document parsing, monitoring, or undo |
 
 ## Zush
 
 <BlogToolMeta platform="Mac (macOS 15+) and Windows 10/11" website="https://zushapp.com/" label="zushapp.com">
-  <Fragment slot="pricing">Free tier (50 renames), Pro <BlogHighlight>$10/month or $48 one-time</BlogHighlight> for unlimited PRO renames, BYOK optional at API cost (Gemini/Groq/OpenAI/Claude), Offline AI via Ollama on Mac and Windows</Fragment>
+  <Fragment slot="pricing">Free tier (50 renames shared across all five modes), Pro <BlogHighlight>$10/month or $48 one-time</BlogHighlight> for unlimited PRO renames; Zush Cloud AI, BYOK, Built-in Local AI, LM Studio, and Ollama work on Mac and Windows</Fragment>
 </BlogToolMeta>
 
 ![Zush AI rename results showing files with descriptive before and after names and green checkmarks](/images/showcase/macos/batch-rename-light.webp)
@@ -111,7 +111,7 @@ Zush includes BYOK on every plan across Gemini, Groq, OpenAI, and Claude. The AI
 
 ### Local-only setup
 
-For privacy-first users, the AI Renamer CLI's local-only Ollama path is the lightest setup once you have Ollama installed. Zush's Offline AI mode (Ollama on Mac builds) is similar but bundled into a GUI. Both keep files on-device.
+For privacy-first users, the AI Renamer CLI's local-only Ollama path is lightweight once Ollama is installed. Zush provides three GUI routes on both Mac and Windows: Built-in Local AI for the least setup, plus LM Studio and Ollama for users who want model control. All keep supported analysis on-device.
 
 ## Pick by use case
 
@@ -121,7 +121,7 @@ For privacy-first users, the AI Renamer CLI's local-only Ollama path is the ligh
 - You handle RAW/HEIC photos or office documents (DOCX/XLSX/PPT)
 - You want folder monitoring for ongoing automatic renaming
 - You want undo/rollback when batch-renaming hundreds of files
-- You want BYOK across 4 providers available on every plan
+- You want one workflow spanning managed cloud, BYOK with four providers, and three local routes
 
 **Consider AI Renamer CLI only if:**
 
