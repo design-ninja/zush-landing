@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.10.1] - 2026-08-24
+
+### Improved
+- Custom AI Blocks extract requested details more accurately and preserve visible formatting
+- Local AI and LM Studio handle longer analyses and mode changes more reliably
+- File drag and drop works more reliably on the latest macOS versions
+
+### Fixed
+- Missing custom details no longer appear as "null" in file names
+
 ## [3.10.0] - 2026-08-23
 ### Added
 - Introduce Built-in and LM Studio local AI modes
