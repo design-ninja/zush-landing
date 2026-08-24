@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import DownloadButton from '@/components/DownloadButton';
+import ExternalRatings from '@/components/ExternalRatings/ExternalRatings.astro';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
 import { MEDICAL_HERO } from '@/data/medicalLanding';
@@ -29,6 +30,7 @@ import styles from './MedicalHero.module.scss';
 
   <div class={styles.Hero__Container}>
     <div class={styles.Hero__Intro}>
+      <ExternalRatings />
       <p class={styles.Hero__Eyebrow}>{MEDICAL_HERO.eyebrow}</p>
 
       <Heading as='h1' align='center' id='medical-hero-title' className={styles.Hero__Title}>

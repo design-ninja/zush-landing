@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import DownloadButton from '@/components/DownloadButton';
+import ExternalRatings from '@/components/ExternalRatings/ExternalRatings.astro';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
 import { ACCOUNTANTS_HERO } from '@/data/accountantsLanding';
@@ -25,6 +26,7 @@ import accountantStyles from './AccountantsHero.module.scss';
 
   <div class={styles.Hero__Container}>
     <div class={styles.Hero__Intro}>
+      <ExternalRatings />
       <p class={styles.Hero__Eyebrow}>{ACCOUNTANTS_HERO.eyebrow}</p>
       <Heading as='h1' align='center' id='accountants-hero-title' className={styles.Hero__Title}>
         {ACCOUNTANTS_HERO.titleLead}<span class='brand-accent-text'>{ACCOUNTANTS_HERO.titleAccent}</span>

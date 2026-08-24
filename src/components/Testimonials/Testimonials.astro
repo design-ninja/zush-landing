@@ -3,6 +3,8 @@ import Heading from '@/components/Heading';
 import StarRating from '@/components/StarRating';
 import Text from '@/components/Text';
 import { DEFAULT_LOCALE, type Locale } from '@/i18n/config';
+import { MICROSOFT_STORE_REVIEWS } from '@/data/microsoftStoreReviews';
+import { SOFTPEDIA_REVIEW } from '@/data/accountantsLanding';
 import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module.scss';
 import styles from './Testimonials.module.scss';
 
@@ -11,43 +13,32 @@ interface Props {
 }
 
 const testimonials = [
+  ...MICROSOFT_STORE_REVIEWS.map((review) => ({
+    ...review,
+    sourceLabel: 'Microsoft Store (US)',
+  })),
   {
-    name: 'Laura Bennett',
-    role: 'Attorney',
-    quote:
-      'Most invoices I get are named invoice.pdf, scan 4.pdf, or some nonsense from the copier. I drop the billing folder into Zush and get names like 2026-05-12 Acme contract review invoice. I still check the list, but the boring part is gone.',
-  },
-  {
-    name: 'Dr. Amir Khan',
-    role: 'Clinic owner',
-    quote:
-      'I keep a separate de-identified archive for follow-up notes. With Offline AI, Zush can name scans by visit date and a short diagnosis phrase. It is not something I run blindly, but it cuts the typing way down.',
-  },
-  {
-    name: 'Elena Morozova',
-    role: 'Photographer',
-    quote:
-      'My Fuji files all start life as DSCF-something. Zush pulls the EXIF date, then adds plain words like Kyoto rain or Miller family porch. When I search an old drive, I do not have to remember the folder name anymore.',
-  },
-  {
-    name: 'Marcus Lee',
-    role: 'Video editor',
-    quote:
-      'B-roll used to be a guessing game: clip_001, export2, final maybe. Zush names clips by what is on screen plus the date. I still fix a few, but I spend a lot less time opening ten videos to find one shot.',
+    name: SOFTPEDIA_REVIEW.author,
+    title: 'Independent editorial review',
+    quote: SOFTPEDIA_REVIEW.quote,
+    rating: 4.5,
+    publishedAt: '2026-08-06',
+    source: SOFTPEDIA_REVIEW.href,
+    sourceLabel: SOFTPEDIA_REVIEW.publication,
   },
 ];
 
-const copyByLocale: Partial<Record<Locale, { title: string; description: string; stars: string }>> = {
-  en: { title: 'What people say about', description: 'Customer feedback from people who use Zush to clean up messy folders.', stars: '5 out of 5 stars' },
-  de: { title: 'Was Menschen über', description: 'Kundenfeedback von Menschen, die mit Zush chaotische Ordner aufräumen.', stars: '5 von 5 Sternen' },
-  fr: { title: 'Ce que les clients disent de', description: 'Retours de clients qui utilisent Zush pour ranger leurs dossiers.', stars: '5 étoiles sur 5' },
-  es: { title: 'Lo que los clientes dicen de', description: 'Opiniones de clientes que usan Zush para ordenar sus carpetas.', stars: '5 de 5 estrellas' },
-  'pt-br': { title: 'O que os clientes dizem sobre', description: 'Feedback de clientes que usam o Zush para organizar pastas.', stars: '5 de 5 estrelas' },
-  it: { title: 'Cosa dicono i clienti di', description: 'Feedback di clienti che usano Zush per riordinare le cartelle.', stars: '5 stelle su 5' },
-  nl: { title: 'Wat klanten zeggen over', description: 'Feedback van klanten die Zush gebruiken om mappen op te ruimen.', stars: '5 van 5 sterren' },
-  ja: { title: 'お客様の声：', description: 'Zush でフォルダを整理しているお客様からのフィードバックです。', stars: '5つ星中5つ星' },
-  ko: { title: '고객들이 말하는', description: 'Zush로 폴더를 정리하는 고객들의 피드백입니다.', stars: '5점 만점에 5점' },
-  'zh-cn': { title: '客户如何评价', description: '使用 Zush 整理文件夹的客户反馈。', stars: '5 星满分' },
+const copyByLocale: Partial<Record<Locale, { title: string; description: string; sourcePrefix: string; dateLocale: string }>> = {
+  en: { title: 'What people say about', description: 'Published reviews from the US Microsoft Store, plus Softpedia’s independent editorial assessment.', sourcePrefix: 'Read on', dateLocale: 'en-US' },
+  de: { title: 'Was Menschen über', description: 'Veröffentlichte Rezensionen aus dem US Microsoft Store sowie die unabhängige Bewertung von Softpedia.', sourcePrefix: 'Lesen auf', dateLocale: 'de-DE' },
+  fr: { title: 'Ce que les clients disent de', description: 'Avis publiés sur le Microsoft Store américain, ainsi que l’évaluation éditoriale indépendante de Softpedia.', sourcePrefix: 'Lire sur', dateLocale: 'fr-FR' },
+  es: { title: 'Lo que los clientes dicen de', description: 'Reseñas publicadas en Microsoft Store de EE. UU. y la evaluación editorial independiente de Softpedia.', sourcePrefix: 'Leer en', dateLocale: 'es-ES' },
+  'pt-br': { title: 'O que os clientes dizem sobre', description: 'Avaliações publicadas na Microsoft Store dos EUA e a análise editorial independente da Softpedia.', sourcePrefix: 'Ler na', dateLocale: 'pt-BR' },
+  it: { title: 'Cosa dicono i clienti di', description: 'Recensioni pubblicate nel Microsoft Store statunitense e la valutazione editoriale indipendente di Softpedia.', sourcePrefix: 'Leggi su', dateLocale: 'it-IT' },
+  nl: { title: 'Wat klanten zeggen over', description: 'Gepubliceerde recensies uit de Amerikaanse Microsoft Store, plus Softpedia’s onafhankelijke redactionele beoordeling.', sourcePrefix: 'Lees op', dateLocale: 'nl-NL' },
+  ja: { title: 'お客様の声：', description: '米国 Microsoft Store に掲載されたレビューと、Softpedia による独立した編集評価です。', sourcePrefix: '掲載元', dateLocale: 'ja-JP' },
+  ko: { title: '고객들이 말하는', description: '미국 Microsoft Store에 게시된 리뷰와 Softpedia의 독립 편집 평가입니다.', sourcePrefix: '원문 보기', dateLocale: 'ko-KR' },
+  'zh-cn': { title: '客户如何评价', description: '来自美国 Microsoft Store 的公开评论，以及 Softpedia 的独立编辑评测。', sourcePrefix: '查看来源', dateLocale: 'zh-CN' },
 };
 
 const { locale = DEFAULT_LOCALE } = Astro.props as Props;
@@ -68,13 +59,29 @@ const copy = copyByLocale[locale] ?? copyByLocale.en!;
     <div class={styles.Testimonials__Grid}>
       {testimonials.map((testimonial) => (
         <article class={styles.TestimonialCard}>
-          <StarRating className={styles.TestimonialCard__Stars} label={copy.stars} />
-          <blockquote class={styles.TestimonialCard__Quote}>
+          <div class={styles.TestimonialCard__Rating}>
+            <StarRating
+              className={styles.TestimonialCard__Stars}
+              value={testimonial.rating}
+              label={`${testimonial.rating} out of 5 stars`}
+            />
+            <span>{testimonial.rating.toFixed(1)}/5</span>
+          </div>
+          <h3 class={styles.TestimonialCard__Title}>{testimonial.title}</h3>
+          <blockquote class={styles.TestimonialCard__Quote} lang='en-US'>
             <Text as='p' size='sm'>{testimonial.quote}</Text>
           </blockquote>
           <footer class={styles.TestimonialCard__Author}>
             <Text as='p' size='sm' className={styles.TestimonialCard__Name}>{testimonial.name}</Text>
-            <Text as='p' size='sm' color='subtle'>{testimonial.role}</Text>
+            <Text as='p' size='sm' color='subtle'>
+              <time datetime={testimonial.publishedAt}>
+                {new Intl.DateTimeFormat(copy.dateLocale, { dateStyle: 'medium' }).format(new Date(`${testimonial.publishedAt}T12:00:00Z`))}
+              </time>
+              {' · '}
+              <a href={testimonial.source} target='_blank' rel='noopener noreferrer external'>
+                {copy.sourcePrefix} {testimonial.sourceLabel}
+              </a>
+            </Text>
           </footer>
         </article>
       ))}

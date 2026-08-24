@@ -10,6 +10,7 @@ import {
 import { PRO_PRICING } from '@/constants/pricing';
 import type { BlogLocale } from '@/data/blogSchema';
 import { buildAppAggregateRatingJsonLd } from '@/seo/appRating';
+import { buildSoftpediaReviewJsonLd } from '@/seo/softpediaReview';
 import { getBlogSeo, getCanonicalUrl } from '@/seo/config';
 import {
   buildBlogPostingJsonLd,
@@ -77,6 +78,7 @@ const macAiRenamerComparisonJsonLd = post.slug === 'best-ai-file-renamer-tools-m
             description:
               'AI file renamer for Mac with content-aware batch rename, preview, folder monitoring, templates, 145+ Naming Blocks, BYOK, Offline AI mode, and rollback history.',
             ...buildAppAggregateRatingJsonLd(),
+            ...buildSoftpediaReviewJsonLd(),
             featureList: [
               'Mixed-folder AI file renaming',
               'RAW, HEIC, PDF, Office, iWork, design, audio, and video support',
@@ -154,6 +156,7 @@ const windowsAiRenamerComparisonJsonLd = post.slug === 'best-ai-file-renamer-too
             description:
               'AI file renamer for Windows with content-aware batch rename, configurable Templates and Naming Blocks, 100+ file formats, folder monitoring, preview, and rollback history.',
             ...buildAppAggregateRatingJsonLd(),
+            ...buildSoftpediaReviewJsonLd(),
             offers: [
               {
                 '@type': 'Offer',

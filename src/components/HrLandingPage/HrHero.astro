@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import heroPhoto from '@/assets/landing/hr-hero.webp';
 import DownloadButton from '@/components/DownloadButton';
+import ExternalRatings from '@/components/ExternalRatings/ExternalRatings.astro';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
 import { HR_HERO } from '@/data/hrLanding';
@@ -24,6 +25,7 @@ import styles from '@/components/LegalLandingPage/LegalHero.module.scss';
 
   <div class={styles.Hero__Container}>
     <div class={styles.Hero__Intro}>
+      <ExternalRatings />
       <p class={styles.Hero__Eyebrow}>{HR_HERO.eyebrow}</p>
 
       <Heading as="h1" align="center" id="hr-hero-title" className={styles.Hero__Title}>

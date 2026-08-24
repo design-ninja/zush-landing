@@ -11,6 +11,7 @@ import BentoCard from '@/components/Features/BentoCard.astro';
 import CloudFolders from '@/components/CloudFolders';
 import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
 import DownloadButton from '@/components/DownloadButton';
+import ExternalRatings from '@/components/ExternalRatings/ExternalRatings.astro';
 import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
 import FAQ from '@/components/FAQ';
 import FeatureAnimation from '@/components/Features/FeatureAnimation';
@@ -22,6 +23,7 @@ import Text from '@/components/Text';
 import { FEATURE_DEMO_COPY } from '@/i18n/featureDemoCopy';
 import { getCopy } from '@/i18n/copy';
 import { SOFTPEDIA_REVIEW } from '@/data/accountantsLanding';
+import { WINDOWS_STORE_US_URL } from '@/constants';
 import type { Locale } from '@/i18n/config';
 import type { ProfessionKey, ProfessionPageCopy } from '@/i18n/professions/types';
 import ProfessionFieldExplorer from './ProfessionFieldExplorer';
@@ -71,6 +73,7 @@ const modeIcons = {
   <div class={heroStyles.Hero__Scrim} aria-hidden="true"></div>
   <div class={heroStyles.Hero__Container}>
     <div class={heroStyles.Hero__Intro}>
+      <ExternalRatings locale={locale} />
       <p class={heroStyles.Hero__Eyebrow}>{page.hero.eyebrow}</p>
       <Heading as="h1" align="center" id={`${profession}-hero-title`} className={heroStyles.Hero__Title}>
         {page.hero.titleLead.trimEnd()}{locale === 'ja' || locale === 'zh-cn' ? '' : ' '}<span class="brand-accent-text">{page.hero.titleAccent.trimStart()}</span>
@@ -309,6 +312,16 @@ const modeIcons = {
             <Text as="p" size="sm" color="subtle">{SOFTPEDIA_REVIEW.author}, {SOFTPEDIA_REVIEW.publication}</Text>
             <a class={seoStyles.ArrowLink} href={SOFTPEDIA_REVIEW.href} target="_blank" rel="noopener noreferrer">
               {page.editorialReview.readLabel}<ArrowRight size={15} aria-hidden="true" />
+            </a>
+            <a
+              class={seoStyles.ArrowLink}
+              href={WINDOWS_STORE_US_URL}
+              target="_blank"
+              rel="noopener noreferrer external"
+              aria-label="Open the US Microsoft Store listing for Zush, rated 5 out of 5 from 5 ratings"
+              lang="en-US"
+            >
+              5.0/5 on Microsoft Store (US)<ArrowRight size={15} aria-hidden="true" />
             </a>
           </footer>
         </article>

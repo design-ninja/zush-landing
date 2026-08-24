@@ -203,27 +203,6 @@ export const ACCOUNTANTS_AUDIENCES: AccountantAudience[] = [
   },
 ];
 
-export const ACCOUNTANTS_TESTIMONIALS = [
-  {
-    name: 'Elena Park',
-    role: 'Accounting practice owner',
-    quote:
-      'Each client has a slightly different filename rule. Templates keep those rules out of my head, and I can check the whole proposed batch before applying it.',
-  },
-  {
-    name: 'Marco Ruiz',
-    role: 'Independent bookkeeper',
-    quote:
-      'The time sink was not one receipt — it was a month of IMG files and downloads. Naming them by date, merchant, amount, and category gives me a usable intake folder.',
-  },
-  {
-    name: 'Nia Brown',
-    role: 'Client accounting lead',
-    quote:
-      'We use Offline AI for client folders that need to stay on the workstation. The preview catches the odd scan before anyone applies the batch.',
-  },
-] as const;
-
 export const SOFTPEDIA_REVIEW = {
   rating: '4.5/5',
   quote:

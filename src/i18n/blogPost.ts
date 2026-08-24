@@ -13,6 +13,7 @@ export interface BlogPostCopy {
   onThisPage: string;
   reviewedPrefix: string;
   independentEvidence: string;
+  microsoftStoreEvidence: string;
   relatedArticles: string;
   readingTime: (minutes: number) => string;
   dateLocale: string;
@@ -27,6 +28,7 @@ const BLOG_POST_COPY: Record<BlogLocale, BlogPostCopy> = {
     onThisPage: 'On this page',
     reviewedPrefix: 'Reviewed',
     independentEvidence: 'Independent evidence: Softpedia tested Zush for Windows, rated it 4.5/5, and highlighted reusable naming controls and local-model support.',
+    microsoftStoreEvidence: 'Customer rating: Zush is rated 5.0/5 from 5 ratings in the US Microsoft Store.',
     relatedArticles: 'Related Articles',
     readingTime: (minutes) => `${minutes} min read`,
     dateLocale: 'en-US',
@@ -39,6 +41,7 @@ const BLOG_POST_COPY: Record<BlogLocale, BlogPostCopy> = {
     onThisPage: 'Auf dieser Seite',
     reviewedPrefix: 'Geprüft am',
     independentEvidence: 'Unabhängiger Beleg: Softpedia testete Zush für Windows, bewertete es mit 4,5/5 und hob wiederverwendbare Benennungsregeln sowie lokale Modelle hervor.',
+    microsoftStoreEvidence: 'Kundenbewertung: Zush ist im US Microsoft Store mit 5,0/5 bei 5 Bewertungen bewertet.',
     relatedArticles: 'Weitere Artikel',
     readingTime: (minutes) => `${minutes} Min. Lesezeit`,
     dateLocale: 'de-DE',
@@ -51,6 +54,7 @@ const BLOG_POST_COPY: Record<BlogLocale, BlogPostCopy> = {
     onThisPage: 'Sur cette page',
     reviewedPrefix: 'Vérifié le',
     independentEvidence: 'Preuve indépendante : Softpedia a testé Zush pour Windows, lui a attribué 4,5/5 et a souligné ses formats de nommage réutilisables ainsi que la prise en charge des modèles locaux.',
+    microsoftStoreEvidence: 'Avis clients : Zush est noté 5,0/5 sur le Microsoft Store américain, sur la base de 5 évaluations.',
     relatedArticles: 'Articles associés',
     readingTime: (minutes) => `${minutes} min de lecture`,
     dateLocale: 'fr-FR',
@@ -63,6 +67,7 @@ const BLOG_POST_COPY: Record<BlogLocale, BlogPostCopy> = {
     onThisPage: 'En esta página',
     reviewedPrefix: 'Revisado el',
     independentEvidence: 'Prueba independiente: Softpedia probó Zush para Windows, le otorgó 4,5/5 y destacó sus formatos de nombres reutilizables y la compatibilidad con modelos locales.',
+    microsoftStoreEvidence: 'Valoración de clientes: Zush tiene 5,0/5 en Microsoft Store de EE. UU. con 5 valoraciones.',
     relatedArticles: 'Artículos relacionados',
     readingTime: (minutes) => `${minutes} min de lectura`,
     dateLocale: 'es-ES',
@@ -75,6 +80,7 @@ const BLOG_POST_COPY: Record<BlogLocale, BlogPostCopy> = {
     onThisPage: 'Nesta página',
     reviewedPrefix: 'Revisado em',
     independentEvidence: 'Evidência independente: a Softpedia testou o Zush para Windows, deu nota 4,5/5 e destacou os formatos de nomenclatura reutilizáveis e o suporte a modelos locais.',
+    microsoftStoreEvidence: 'Avaliação de clientes: o Zush tem nota 5,0/5 na Microsoft Store dos EUA, com 5 avaliações.',
     relatedArticles: 'Artigos relacionados',
     readingTime: (minutes) => `${minutes} min de leitura`,
     dateLocale: 'pt-BR',
@@ -87,6 +93,7 @@ const BLOG_POST_COPY: Record<BlogLocale, BlogPostCopy> = {
     onThisPage: 'In questa pagina',
     reviewedPrefix: 'Revisionato il',
     independentEvidence: 'Prova indipendente: Softpedia ha testato Zush per Windows, gli ha assegnato 4,5/5 e ha evidenziato i formati di denominazione riutilizzabili e il supporto ai modelli locali.',
+    microsoftStoreEvidence: 'Valutazione clienti: Zush ha 5,0/5 nel Microsoft Store statunitense con 5 valutazioni.',
     relatedArticles: 'Articoli correlati',
     readingTime: (minutes) => `${minutes} min di lettura`,
     dateLocale: 'it-IT',
@@ -99,6 +106,7 @@ const BLOG_POST_COPY: Record<BlogLocale, BlogPostCopy> = {
     onThisPage: 'Op deze pagina',
     reviewedPrefix: 'Gecontroleerd op',
     independentEvidence: 'Onafhankelijk bewijs: Softpedia testte Zush voor Windows, gaf het 4,5/5 en benadrukte herbruikbare naamgevingsregels en ondersteuning voor lokale modellen.',
+    microsoftStoreEvidence: 'Klantbeoordeling: Zush scoort 5,0/5 in de Amerikaanse Microsoft Store op basis van 5 beoordelingen.',
     relatedArticles: 'Gerelateerde artikelen',
     readingTime: (minutes) => `${minutes} min leestijd`,
     dateLocale: 'nl-NL',
@@ -111,6 +119,7 @@ const BLOG_POST_COPY: Record<BlogLocale, BlogPostCopy> = {
     onThisPage: 'Bu sayfada',
     reviewedPrefix: 'İncelenme tarihi',
     independentEvidence: 'Bağımsız kanıt: Softpedia, Windows için Zush’ı test etti, 4,5/5 verdi ve yeniden kullanılabilir adlandırma kuralları ile yerel model desteğini vurguladı.',
+    microsoftStoreEvidence: 'Müşteri puanı: Zush, ABD Microsoft Store’da 5 değerlendirmeden 5,0/5 puan aldı.',
     relatedArticles: 'İlgili Yazılar',
     readingTime: (minutes) => `${minutes} dk okuma`,
     dateLocale: 'tr-TR',
@@ -123,6 +132,7 @@ const BLOG_POST_COPY: Record<BlogLocale, BlogPostCopy> = {
     onThisPage: 'このページの内容',
     reviewedPrefix: '確認日',
     independentEvidence: '独立した評価：Softpedia は Windows 版 Zush をテストして 4.5/5 と評価し、再利用可能な命名ルールとローカルモデル対応を高く評価しました。',
+    microsoftStoreEvidence: '顧客評価：米国 Microsoft Store で Zush は5件の評価に基づき5.0/5です。',
     relatedArticles: '関連記事',
     readingTime: (minutes) => `読了時間：${minutes}分`,
     dateLocale: 'ja-JP',
@@ -135,6 +145,7 @@ const BLOG_POST_COPY: Record<BlogLocale, BlogPostCopy> = {
     onThisPage: '이 페이지의 내용',
     reviewedPrefix: '검토일',
     independentEvidence: '독립적인 근거: Softpedia는 Windows용 Zush를 테스트해 4.5/5점을 부여했으며 재사용 가능한 이름 지정 규칙과 로컬 모델 지원을 높이 평가했습니다.',
+    microsoftStoreEvidence: '고객 평점: Zush는 미국 Microsoft Store에서 평가 5개 기준 5.0/5점을 받았습니다.',
     relatedArticles: '관련 글',
     readingTime: (minutes) => `${minutes}분 소요`,
     dateLocale: 'ko-KR',
@@ -147,6 +158,7 @@ const BLOG_POST_COPY: Record<BlogLocale, BlogPostCopy> = {
     onThisPage: '本页内容',
     reviewedPrefix: '审核日期',
     independentEvidence: '独立证据：Softpedia 测试了 Windows 版 Zush，给出 4.5/5 分，并肯定了可复用的命名规则和本地模型支持。',
+    microsoftStoreEvidence: '客户评分：Zush 在美国 Microsoft Store 获得 5.0/5 分，共有 5 次评分。',
     relatedArticles: '相关文章',
     readingTime: (minutes) => `阅读需 ${minutes} 分钟`,
     dateLocale: 'zh-CN',
@@ -159,6 +171,7 @@ const BLOG_POST_COPY: Record<BlogLocale, BlogPostCopy> = {
     onThisPage: 'في هذه الصفحة',
     reviewedPrefix: 'تاريخ المراجعة',
     independentEvidence: 'دليل مستقل: اختبرت Softpedia تطبيق Zush لنظام Windows ومنحته تقييم 4.5/5، وأشادت بقواعد التسمية القابلة لإعادة الاستخدام ودعم النماذج المحلية.',
+    microsoftStoreEvidence: 'تقييم العملاء: حصل Zush على 5.0/5 في Microsoft Store الأمريكي استنادًا إلى 5 تقييمات.',
     relatedArticles: 'مقالات ذات صلة',
     readingTime: (minutes) => `${minutes} دقائق للقراءة`,
     dateLocale: 'ar-SA',

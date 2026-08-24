@@ -10,7 +10,32 @@
 
 /* Keeps every star as an independent flex item so spacing is controlled by gap. */
 .StarRating__Star {
+  position: relative;
   display: block;
   width: 1em;
   height: 1em;
+}
+
+.StarRating__StarEmpty,
+.StarRating__StarFill,
+.StarRating__StarFill svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.StarRating__StarEmpty {
+  color: color-mix(in srgb, currentColor 36%, transparent);
+}
+
+.StarRating__StarFill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--star-fill, 100%);
+  overflow: hidden;
+}
+
+.StarRating__StarFill svg {
+  width: 1em;
+  max-width: none;
 }

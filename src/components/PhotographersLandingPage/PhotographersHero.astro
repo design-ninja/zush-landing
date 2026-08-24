@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import heroPhoto from '@/assets/landing/photographers-hero.webp';
 import DownloadButton from '@/components/DownloadButton';
+import ExternalRatings from '@/components/ExternalRatings/ExternalRatings.astro';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
 import { PHOTOGRAPHERS_HERO } from '@/data/photographersLanding';
@@ -26,6 +27,7 @@ import styles from '../MedicalLandingPage/MedicalHero.module.scss';
 
   <div class={styles.Hero__Container}>
     <div class={styles.Hero__Intro}>
+      <ExternalRatings />
       <p class={styles.Hero__Eyebrow}>{PHOTOGRAPHERS_HERO.eyebrow}</p>
 
       <Heading as="h1" align="center" id="photographers-hero-title" className={styles.Hero__Title}>

@@ -42,6 +42,7 @@ import { PRO_PRICING } from '@/constants/pricing';
 import { getLocalizedPlatformSpecificsContent } from '@/i18n/platformSpecificsContent';
 import { getLocalizedSeoForRoute } from '@/i18n/seo';
 import { SOFTPEDIA_RATED_BY_LABELS, SOFTPEDIA_REVIEW_ARIA_LABELS } from '@/i18n/softpediaReview';
+import { MICROSOFT_STORE_RATED_ON_LABELS, MICROSOFT_STORE_RATING_ARIA_LABELS } from '@/i18n/microsoftStoreRating';
 import { buildSoftpediaReviewJsonLd } from '@/seo/softpediaReview';
 import {
   APP_CONFIG,
@@ -371,6 +372,8 @@ const jsonLdItems = [
     windowsVersion={windowsVersion}
     softpediaRatedByLabel={SOFTPEDIA_RATED_BY_LABELS[locale]}
     softpediaReviewAriaLabel={SOFTPEDIA_REVIEW_ARIA_LABELS[locale]}
+    microsoftStoreRatedOnLabel={MICROSOFT_STORE_RATED_ON_LABELS[locale]}
+    microsoftStoreRatingAriaLabel={MICROSOFT_STORE_RATING_ARIA_LABELS[locale]}
   />
   <DemoVideo
     label={copy.home.showcase.title}

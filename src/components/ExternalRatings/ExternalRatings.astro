@@ -1,0 +1,53 @@
+---
+import { SOFTPEDIA_REVIEW_URL, WINDOWS_STORE_US_URL } from '@/constants';
+import { DEFAULT_LOCALE, type Locale } from '@/i18n/config';
+import {
+  MICROSOFT_STORE_RATED_ON_LABELS,
+  MICROSOFT_STORE_RATING_ARIA_LABELS,
+} from '@/i18n/microsoftStoreRating';
+import { SOFTPEDIA_RATED_BY_LABELS, SOFTPEDIA_REVIEW_ARIA_LABELS } from '@/i18n/softpediaReview';
+import styles from '@/components/Hero/Hero.module.scss';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = DEFAULT_LOCALE } = Astro.props as Props;
+---
+
+<div class={styles.Hero__ExternalRatings} data-external-ratings>
+  <a
+    class={styles.Hero__StoreReview}
+    href={SOFTPEDIA_REVIEW_URL}
+    target='_blank'
+    rel='noopener noreferrer external'
+    aria-label={SOFTPEDIA_REVIEW_ARIA_LABELS[locale]}
+  >
+    <span class={styles.Hero__StorePrefix}>{SOFTPEDIA_RATED_BY_LABELS[locale]}</span>
+    <span class={styles.Hero__SoftpediaLogo} aria-hidden='true'></span>
+    <span class={styles.Hero__StoreStars} aria-hidden='true'>
+      <span class={styles.Hero__StoreStar}></span>
+    </span>
+    <span class={styles.Hero__StoreScore}>4.5</span>
+  </a>
+
+  <a
+    class={styles.Hero__StoreReview}
+    href={WINDOWS_STORE_US_URL}
+    target='_blank'
+    rel='noopener noreferrer external'
+    aria-label={MICROSOFT_STORE_RATING_ARIA_LABELS[locale]}
+  >
+    <span class={styles.Hero__StorePrefix}>{MICROSOFT_STORE_RATED_ON_LABELS[locale]}</span>
+    <span class={styles.Hero__MicrosoftStoreBrand} aria-hidden='true' translate='no'>
+      <span class={styles.Hero__MicrosoftStoreMark}>
+        <span></span><span></span><span></span><span></span>
+      </span>
+      <span>Microsoft Store</span>
+    </span>
+    <span class={styles.Hero__StoreStars} aria-hidden='true'>
+      <span class={styles.Hero__StoreStar}></span>
+    </span>
+    <span class={styles.Hero__StoreScore}>5.0</span>
+  </a>
+</div>

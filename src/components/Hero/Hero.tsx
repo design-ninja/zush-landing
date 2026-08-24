@@ -9,8 +9,7 @@ import { PromotionBanner } from "../PromotionBanner/PromotionBanner";
 import styles from "./Hero.module.scss";
 import type { DownloadOS } from "@/utils/download";
 import type { DownloadMenuCopy } from "@/i18n/copy";
-import { WINDOWS_STORE_URL } from "@/constants";
-import { SOFTPEDIA_REVIEW_URL } from "@/constants";
+import { SOFTPEDIA_REVIEW_URL, WINDOWS_STORE_URL, WINDOWS_STORE_US_URL } from "@/constants";
 
 
 interface HeroProps {
@@ -52,6 +51,8 @@ interface HeroProps {
   windowsVersion?: string;
   softpediaRatedByLabel?: string;
   softpediaReviewAriaLabel?: string;
+  microsoftStoreRatedOnLabel?: string;
+  microsoftStoreRatingAriaLabel?: string;
   showPromotion?: boolean;
 }
 
@@ -118,6 +119,8 @@ const Hero = ({
   reviewsLabel = "Reviews",
   softpediaRatedByLabel,
   softpediaReviewAriaLabel,
+  microsoftStoreRatedOnLabel,
+  microsoftStoreRatingAriaLabel,
   showPromotion = false,
 }: HeroProps) => {
   const [showWindowsWebFallback, setShowWindowsWebFallback] = useState(false);
@@ -175,23 +178,50 @@ const Hero = ({
       <div className={styles.Hero__Container}>
         <div className={styles.Hero__Intro}>
           {showPromotion && <PromotionBanner />}
-          {softpediaReviewAriaLabel && (
-            <a
-              className={styles.Hero__SoftpediaReview}
-              href={SOFTPEDIA_REVIEW_URL}
-              target="_blank"
-              rel="noopener noreferrer external"
-              aria-label={softpediaReviewAriaLabel}
-            >
-              {softpediaRatedByLabel && (
-                <span className={styles.Hero__SoftpediaPrefix}>{softpediaRatedByLabel}</span>
+          {(softpediaReviewAriaLabel || microsoftStoreRatingAriaLabel) && (
+            <div className={styles.Hero__ExternalRatings} aria-label="Independent ratings">
+              {softpediaReviewAriaLabel && (
+                <a
+                  className={styles.Hero__StoreReview}
+                  href={SOFTPEDIA_REVIEW_URL}
+                  target="_blank"
+                  rel="noopener noreferrer external"
+                  aria-label={softpediaReviewAriaLabel}
+                >
+                  {softpediaRatedByLabel && (
+                    <span className={styles.Hero__StorePrefix}>{softpediaRatedByLabel}</span>
+                  )}
+                  <span className={styles.Hero__SoftpediaLogo} aria-hidden="true" />
+                  <span className={styles.Hero__StoreStars} aria-hidden="true">
+                    <span className={styles.Hero__StoreStar} />
+                  </span>
+                  <span className={styles.Hero__StoreScore}>4.5</span>
+                </a>
               )}
-              <span className={styles.Hero__SoftpediaLogo} aria-hidden="true" />
-              <span className={styles.Hero__SoftpediaStars} aria-hidden="true">
-                <span className={styles.Hero__SoftpediaStar} />
-              </span>
-              <span className={styles.Hero__SoftpediaScore}>4.5</span>
-            </a>
+              {microsoftStoreRatingAriaLabel && (
+                <a
+                  className={styles.Hero__StoreReview}
+                  href={WINDOWS_STORE_US_URL}
+                  target="_blank"
+                  rel="noopener noreferrer external"
+                  aria-label={microsoftStoreRatingAriaLabel}
+                >
+                  {microsoftStoreRatedOnLabel && (
+                    <span className={styles.Hero__StorePrefix}>{microsoftStoreRatedOnLabel}</span>
+                  )}
+                  <span className={styles.Hero__MicrosoftStoreBrand} aria-hidden="true">
+                    <span className={styles.Hero__MicrosoftStoreMark}>
+                      <span /><span /><span /><span />
+                    </span>
+                    <span>Microsoft Store</span>
+                  </span>
+                  <span className={styles.Hero__StoreStars} aria-hidden="true">
+                    <span className={styles.Hero__StoreStar} />
+                  </span>
+                  <span className={styles.Hero__StoreScore}>5.0</span>
+                </a>
+              )}
+            </div>
           )}
           {(reviewsHref || aiModes.length > 0) && (
             <div className={styles.Hero__ProofRow}>

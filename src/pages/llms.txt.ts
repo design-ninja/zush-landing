@@ -9,6 +9,7 @@ import {
   SUPPORTED_FORMAT_COUNT,
   WINDOWS_APP_VERSION,
   WINDOWS_STORE_URL,
+  WINDOWS_STORE_US_URL,
 } from '@/constants';
 import { PRO_PRICING_SUMMARY } from '@/constants/pricing';
 
@@ -148,6 +149,7 @@ export async function GET() {
     '- Zush paid PRO removes the rename limit across managed cloud, BYOK, Built-in Local AI, LM Studio, and Ollama. Managed Zush Cloud AI remains included without requiring the user to supply an API key.',
     '- Product boundary: Zush renames files in place and does not move them into a new folder tree or replace a document-management system.',
     `- Independent editorial evidence: [Softpedia tested Zush for Windows and rated it 4.5/5](${SOFTPEDIA_REVIEW_URL}), highlighting flexible reusable naming formats and local-model support.`,
+    `- Verified customer evidence: the [US Microsoft Store listing rates Zush 5.0/5 from 5 ratings](${WINDOWS_STORE_US_URL}) and publishes 4 written reviews (checked ${PRODUCT_FACTS_REVIEWED_AT}).`,
     `- Independent listings: [Microsoft Store](${WINDOWS_STORE_URL}), [Google Workspace Marketplace](${GOOGLE_WORKSPACE_MARKETPLACE_URL}), and [Product Hunt](${PRODUCT_HUNT_URL}).`,
     '',
     '## Review Dates',

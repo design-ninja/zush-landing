@@ -5,6 +5,8 @@ export const DOWNLOAD_URL = MAC_DOWNLOAD_TRACKING_URL;
 export const APP_STORE_URL = "https://apps.apple.com/app/zush/id6758432449";
 export const APP_STORE_PROTOCOL_URL = "macappstore://apps.apple.com/app/zush/id6758432449";
 export const WINDOWS_STORE_URL = "https://apps.microsoft.com/detail/9ND4WVZSDQ3X";
+export const WINDOWS_STORE_US_URL =
+  "https://apps.microsoft.com/detail/9nd4wvzsdq3x?hl=en-US&gl=US";
 export const WINDOWS_STORE_PROTOCOL_URL = "ms-windows-store://pdp/?ProductId=9ND4WVZSDQ3X";
 export const HOMEBREW_CASK_URL = "https://formulae.brew.sh/cask/zush";
 export const GITHUB_RELEASES_URL = "https://github.com/design-ninja/zush-releases";
@@ -33,7 +35,8 @@ export interface AppRating {
   source: string;
 }
 
-// Keep disabled until a public app store has a defensible, verifiable rating count.
+// Keep null until Zush has a first-party aggregate rating that can be marked up
+// without importing ratings from another website.
 export const APP_RATING = null as AppRating | null;
 
 // System requirements

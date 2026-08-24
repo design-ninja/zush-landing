@@ -23,14 +23,15 @@ import {
   ACCOUNTANTS_FAQ,
   ACCOUNTANTS_PRIVACY_MODES,
   ACCOUNTANTS_PRIVACY_NOTE,
-  ACCOUNTANTS_TESTIMONIALS,
   ACCOUNTANTS_WORKFLOW,
   ACCOUNTANTS_ZUSH_ADVANTAGES,
   ACCOUNTING_DOCUMENT_TYPES,
   SOFTPEDIA_REVIEW,
 } from '@/data/accountantsLanding';
+import { MICROSOFT_STORE_REVIEWS } from '@/data/microsoftStoreReviews';
 import { getCopy } from '@/i18n/copy';
 import { FEATURE_DEMO_COPY } from '@/i18n/featureDemoCopy';
+import { WINDOWS_STORE_US_URL } from '@/constants';
 import styles from '@/components/MedicalLandingPage/MedicalLandingPage.module.scss';
 import { AccountantsFieldExplorer } from './AccountantsFieldExplorer';
 import AccountantsHero from './AccountantsHero.astro';
@@ -258,7 +259,7 @@ const AUDIENCE_IMAGES = {
         How accounting teams put Zush to work
       </Heading>
       <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
-        Illustrative workflows based on common accounting document patterns.
+        Published customer reviews from the US Microsoft Store, plus Softpedia’s independent editorial assessment.
       </Text>
     </div>
 
@@ -283,19 +284,36 @@ const AUDIENCE_IMAGES = {
           Read the full Softpedia review
           <ArrowRight size={15} aria-hidden='true' />
         </a>
+        <a
+          class={styles.ArrowLink}
+          href={WINDOWS_STORE_US_URL}
+          target='_blank'
+          rel='noopener noreferrer external'
+          aria-label='Open the US Microsoft Store listing for Zush, rated 5 out of 5 from 5 ratings'
+        >
+          5.0/5 on Microsoft Store (US)
+          <ArrowRight size={15} aria-hidden='true' />
+        </a>
       </footer>
     </article>
 
     <div class={`${testimonialStyles.Testimonials__Grid} ${styles.Testimonials__Grid}`}>
-      {ACCOUNTANTS_TESTIMONIALS.map((testimonial) => (
+      {MICROSOFT_STORE_REVIEWS.map((testimonial) => (
         <article class={testimonialStyles.TestimonialCard}>
           <StarRating className={testimonialStyles.TestimonialCard__Stars} label='5 out of 5 stars' />
-          <blockquote class={testimonialStyles.TestimonialCard__Quote}>
+          <h3 class={testimonialStyles.TestimonialCard__Title}>{testimonial.title}</h3>
+          <blockquote class={testimonialStyles.TestimonialCard__Quote} lang='en-US'>
             <Text as='p' size='sm'>{testimonial.quote}</Text>
           </blockquote>
           <footer class={testimonialStyles.TestimonialCard__Author}>
             <Text as='p' size='sm' className={testimonialStyles.TestimonialCard__Name}>{testimonial.name}</Text>
-            <Text as='p' size='sm' color='subtle'>{testimonial.role}</Text>
+            <Text as='p' size='sm' color='subtle'>
+              <time datetime={testimonial.publishedAt}>
+                {new Intl.DateTimeFormat('en-US', { dateStyle: 'medium' }).format(new Date(`${testimonial.publishedAt}T12:00:00Z`))}
+              </time>
+              {' · '}
+              <a href={WINDOWS_STORE_US_URL} target='_blank' rel='noopener noreferrer external'>Microsoft Store (US)</a>
+            </Text>
           </footer>
         </article>
       ))}
