@@ -396,6 +396,11 @@ export interface FeatureCopy {
   relatedGuidesTitle: string;
   faqTitle: string;
   showcaseSlides?: Slide[];
+  directAnswerSection?: {
+    heading: string;
+    answer: string;
+    steps: string[];
+  };
 }
 
 export interface LocaleCopy {
@@ -1429,6 +1434,7 @@ const localizedFeaturePages = (
   relatedGuidesTitle: string,
   faq: FAQCopyItem[],
   entries: Array<[LocalizedRoute, string, string]>,
+  routeOverrides: Partial<Record<LocalizedRoute, Partial<FeatureCopy>>> = {},
 ): Partial<Record<LocalizedRoute, FeatureCopy>> =>
   Object.fromEntries(
     entries.map(([route, h1, definitionText]) => [
@@ -1441,9 +1447,145 @@ const localizedFeaturePages = (
         relatedToolsTitle,
         relatedGuidesTitle,
         faqItems: faq,
+        ...routeOverrides[route],
       },
     ]),
   );
+
+const localizedScreenshotFeatureOverrides: Record<Exclude<Locale, 'en'>, Pick<FeatureCopy, 'faqItems' | 'directAnswerSection'>> = {
+  de: {
+    faqItems: [
+      { question: 'Was macht ein KI-Screenshot-Umbenenner?', answer: 'Ein KI-Screenshot-Umbenenner erkennt die sichtbare App, Seite, den Text, das Diagramm, den Fehler oder die Unterhaltung in einer Aufnahme und ersetzt den Zeitstempel durch einen aussagekräftigen Dateinamen. Zush kann vorhandene Screenshots stapelweise verarbeiten oder einen Ordner auf neue Aufnahmen überwachen.' },
+      { question: 'Kann Zush Screenshots aus dem Snipping Tool und von macOS automatisch umbenennen?', answer: 'Ja. Überwache unter Windows den Ordner Bilder\\Screenshots, unter macOS den Screenshot-Ordner, Downloads oder einen anderen Aufnahmeordner. Zush benennt jeden neuen Screenshot nach seinem sichtbaren Inhalt und speichert die Änderung im Umbenennungsverlauf.' },
+      { question: 'Kann ich eine Umbenennung rückgängig machen?', answer: 'Ja. Zush speichert den Verlauf, damit du Dateien mit einem Klick auf den ursprünglichen Namen zurücksetzen kannst.' },
+    ],
+    directAnswerSection: {
+      heading: 'Wie funktioniert das automatische Umbenennen von Screenshots?',
+      answer: 'Zush überwacht den Ordner, in dem Screenshots gespeichert werden, liest den sichtbaren Inhalt jedes Bildes und schlägt einen aussagekräftigen Dateinamen vor. Du kannst Namen vor dem Anwenden prüfen und jede Umbenennung über den Verlauf rückgängig machen.',
+      steps: ['Füge Bilder\\Screenshots, den macOS-Screenshot-Ordner, Downloads oder ein bestehendes Screenshot-Archiv hinzu.', 'Wähle eine Vorlage und lasse Zush die sichtbare App, Seite, den Fehler, das Diagramm oder die Unterhaltung erkennen.', 'Prüfe die vorgeschlagenen Namen, wende den Stapel an und aktiviere die Ordnerüberwachung für neue Aufnahmen.'],
+    },
+  },
+  fr: {
+    faqItems: [
+      { question: 'Que fait un outil IA de renommage de captures d’écran ?', answer: 'Il reconnaît l’application, la page, le texte, le graphique, l’erreur ou la conversation visible dans chaque capture et remplace le nom horodaté par un nom descriptif. Zush peut traiter un lot existant ou surveiller un dossier pour les nouvelles captures.' },
+      { question: 'Zush peut-il renommer automatiquement les captures de l’Outil Capture et de macOS ?', answer: 'Oui. Surveillez le dossier Images\\Captures d’écran sous Windows, le dossier de captures macOS, Téléchargements ou tout autre dossier. Zush nomme chaque nouvelle capture selon ce qu’elle montre et conserve la modification dans l’historique.' },
+      { question: 'Puis-je annuler un renommage ?', answer: 'Oui. Zush conserve un historique pour restaurer le nom d’origine en un clic.' },
+    ],
+    directAnswerSection: {
+      heading: 'Comment fonctionne le renommage automatique des captures d’écran ?',
+      answer: 'Zush surveille le dossier où arrivent les captures, lit le contenu visible de chaque image et propose un nom descriptif. Vous pouvez vérifier les noms avant d’appliquer un lot et annuler chaque renommage depuis l’historique.',
+      steps: ['Ajoutez Images\\Captures d’écran, le dossier de captures macOS, Téléchargements ou une archive existante.', 'Choisissez un modèle et laissez Zush identifier l’application, la page, l’erreur, le graphique ou la conversation visible.', 'Vérifiez les noms proposés, appliquez le lot et laissez la surveillance active pour les nouvelles captures.'],
+    },
+  },
+  'pt-br': {
+    faqItems: [
+      { question: 'O que faz um renomeador de screenshots com IA?', answer: 'Ele identifica o aplicativo, a página, o texto, o gráfico, o erro ou a conversa visível em cada captura e troca o nome com data e hora por um nome descritivo. O Zush pode processar um lote existente ou monitorar uma pasta para novas capturas.' },
+      { question: 'O Zush renomeia automaticamente capturas da Ferramenta de Captura e do macOS?', answer: 'Sim. Monitore Imagens\\Capturas de Tela no Windows, a pasta de screenshots do macOS, Downloads ou outra pasta de captura. O Zush nomeia cada nova imagem pelo conteúdo visível e registra a alteração no histórico.' },
+      { question: 'Posso desfazer uma renomeação?', answer: 'Sim. O Zush mantém um histórico para restaurar o nome original com um clique.' },
+    ],
+    directAnswerSection: {
+      heading: 'Como funciona a renomeação automática de screenshots?',
+      answer: 'O Zush monitora a pasta onde as capturas chegam, lê o conteúdo visível de cada imagem e sugere um nome descritivo. Você pode revisar os nomes antes de aplicar o lote e desfazer qualquer alteração pelo histórico.',
+      steps: ['Adicione Imagens\\Capturas de Tela, a pasta de screenshots do macOS, Downloads ou um arquivo existente.', 'Escolha um modelo e deixe o Zush identificar o aplicativo, a página, o erro, o gráfico ou a conversa exibida.', 'Revise os nomes sugeridos, aplique o lote e mantenha o monitoramento ativo para novas capturas.'],
+    },
+  },
+  es: {
+    faqItems: [
+      { question: '¿Qué hace un renombrador de capturas con IA?', answer: 'Reconoce la aplicación, página, texto, gráfico, error o conversación visible en cada captura y sustituye el nombre con fecha y hora por uno descriptivo. Zush puede procesar un lote existente o vigilar una carpeta para las capturas nuevas.' },
+      { question: '¿Zush puede renombrar automáticamente capturas de Recortes y de macOS?', answer: 'Sí. Supervisa Imágenes\\Capturas de pantalla en Windows, la carpeta de capturas de macOS, Descargas u otra carpeta. Zush nombra cada captura nueva según lo que muestra y guarda el cambio en el historial.' },
+      { question: '¿Puedo deshacer un cambio de nombre?', answer: 'Sí. Zush guarda el historial para restaurar el nombre original con un clic.' },
+    ],
+    directAnswerSection: {
+      heading: '¿Cómo funciona el renombrado automático de capturas?',
+      answer: 'Zush vigila la carpeta donde llegan las capturas, lee el contenido visible de cada imagen y propone un nombre descriptivo. Puedes revisar los nombres antes de aplicar un lote y deshacer cualquier cambio desde el historial.',
+      steps: ['Añade Imágenes\\Capturas de pantalla, la carpeta de capturas de macOS, Descargas o un archivo existente.', 'Elige una plantilla y deja que Zush identifique la aplicación, página, error, gráfico o conversación visible.', 'Revisa los nombres propuestos, aplica el lote y mantén activa la supervisión para las capturas nuevas.'],
+    },
+  },
+  nl: {
+    faqItems: [
+      { question: 'Wat doet een AI-tool voor het hernoemen van screenshots?', answer: 'De tool herkent de zichtbare app, pagina, tekst, grafiek, foutmelding of conversatie in elke opname en vervangt de naam met tijdstempel door een beschrijvende bestandsnaam. Zush kan een bestaand archief verwerken of een map bewaken voor nieuwe screenshots.' },
+      { question: 'Kan Zush screenshots van Knipprogramma en macOS automatisch hernoemen?', answer: 'Ja. Bewaak Afbeeldingen\\Schermopnamen in Windows, de screenshotmap van macOS, Downloads of een andere map. Zush benoemt elk nieuw screenshot op basis van wat erop staat en bewaart de wijziging in de hernoemgeschiedenis.' },
+      { question: 'Kan ik een hernoeming ongedaan maken?', answer: 'Ja. Zush bewaart de geschiedenis zodat je met één klik de originele naam herstelt.' },
+    ],
+    directAnswerSection: {
+      heading: 'Hoe werkt het automatisch hernoemen van screenshots?',
+      answer: 'Zush bewaakt de map waar screenshots binnenkomen, leest de zichtbare inhoud van elke afbeelding en stelt een beschrijvende bestandsnaam voor. Je kunt namen controleren voordat je een batch toepast en elke wijziging vanuit de geschiedenis ongedaan maken.',
+      steps: ['Voeg Afbeeldingen\\Schermopnamen, de screenshotmap van macOS, Downloads of een bestaand archief toe.', 'Kies een sjabloon en laat Zush de zichtbare app, pagina, foutmelding, grafiek of conversatie herkennen.', 'Controleer de voorgestelde namen, pas de batch toe en laat mapbewaking aan voor nieuwe screenshots.'],
+    },
+  },
+  it: {
+    faqItems: [
+      { question: 'Che cosa fa uno strumento IA per rinominare gli screenshot?', answer: 'Riconosce l’app, la pagina, il testo, il grafico, l’errore o la conversazione visibile in ogni cattura e sostituisce il nome con data e ora con un nome descrittivo. Zush può elaborare un archivio esistente o monitorare una cartella per i nuovi screenshot.' },
+      { question: 'Zush può rinominare automaticamente gli screenshot di Strumento di cattura e macOS?', answer: 'Sì. Monitora Immagini\\Screenshot in Windows, la cartella screenshot di macOS, Download o un’altra cartella. Zush nomina ogni nuova cattura in base a ciò che mostra e registra la modifica nella cronologia.' },
+      { question: 'Posso annullare una rinomina?', answer: 'Sì. Zush conserva la cronologia per ripristinare il nome originale con un clic.' },
+    ],
+    directAnswerSection: {
+      heading: 'Come funziona la rinomina automatica degli screenshot?',
+      answer: 'Zush monitora la cartella in cui arrivano gli screenshot, legge il contenuto visibile di ogni immagine e propone un nome descrittivo. Puoi controllare i nomi prima di applicare il batch e annullare ogni modifica dalla cronologia.',
+      steps: ['Aggiungi Immagini\\Screenshot, la cartella screenshot di macOS, Download o un archivio esistente.', 'Scegli un modello e lascia che Zush identifichi l’app, la pagina, l’errore, il grafico o la conversazione visibile.', 'Controlla i nomi proposti, applica il batch e lascia attivo il monitoraggio per le nuove catture.'],
+    },
+  },
+  ja: {
+    faqItems: [
+      { question: 'AIスクリーンショットリネームツールは何をしますか？', answer: '各スクリーンショットに表示されているアプリ、ページ、テキスト、グラフ、エラー、会話を認識し、日時だけの名前を内容が分かるファイル名に置き換えます。Zush は既存の画像を一括処理することも、新しいスクリーンショットが追加されるフォルダを監視することもできます。' },
+      { question: 'Zush は Windows の Snipping Tool と macOS のスクリーンショットを自動でリネームできますか？', answer: 'はい。Windows の「ピクチャ\\スクリーンショット」、macOS のスクリーンショットフォルダ、ダウンロード、または任意の保存先を監視できます。Zush は新しい画像を表示内容に基づいて命名し、変更をリネーム履歴に保存します。' },
+      { question: 'リネームを元に戻せますか？', answer: 'はい。Zush は履歴を保存するため、ワンクリックで元の名前に戻せます。' },
+    ],
+    directAnswerSection: {
+      heading: 'スクリーンショットの自動リネームはどのように動作しますか？',
+      answer: 'Zush はスクリーンショットの保存先を監視し、各画像に表示されている内容を読み取って、分かりやすいファイル名を提案します。一括適用の前に名前を確認でき、履歴からいつでも元に戻せます。',
+      steps: ['「ピクチャ\\スクリーンショット」、macOS のスクリーンショットフォルダ、ダウンロード、または既存の画像フォルダを追加します。', 'テンプレートを選び、表示されているアプリ、ページ、エラー、グラフ、会話を Zush に認識させます。', '提案された名前を確認して一括適用し、新しい画像向けにフォルダ監視を有効にします。'],
+    },
+  },
+  ko: {
+    faqItems: [
+      { question: 'AI 스크린샷 이름 변경 도구는 무엇을 하나요?', answer: '각 캡처에 보이는 앱, 페이지, 텍스트, 차트, 오류 또는 대화를 인식하고 날짜와 시간으로 된 이름을 설명이 담긴 파일명으로 바꿉니다. Zush는 기존 스크린샷을 일괄 처리하거나 새 캡처가 저장되는 폴더를 모니터링할 수 있습니다.' },
+      { question: 'Zush가 캡처 도구와 macOS 스크린샷의 이름을 자동으로 바꿀 수 있나요?', answer: '예. Windows의 사진\\스크린샷, macOS 스크린샷 폴더, 다운로드 또는 다른 저장 폴더를 모니터링하세요. Zush는 새 스크린샷의 화면 내용을 기준으로 이름을 만들고 변경 사항을 이름 변경 기록에 저장합니다.' },
+      { question: '이름 변경을 되돌릴 수 있나요?', answer: '예. Zush는 기록을 저장하므로 한 번의 클릭으로 원래 이름으로 되돌릴 수 있습니다.' },
+    ],
+    directAnswerSection: {
+      heading: '스크린샷 자동 이름 변경은 어떻게 작동하나요?',
+      answer: 'Zush는 스크린샷이 저장되는 폴더를 모니터링하고 각 이미지의 화면 내용을 읽어 설명이 담긴 파일명을 제안합니다. 일괄 적용 전에 이름을 검토하고 기록에서 언제든 변경을 되돌릴 수 있습니다.',
+      steps: ['사진\\스크린샷, macOS 스크린샷 폴더, 다운로드 또는 기존 스크린샷 폴더를 추가합니다.', '템플릿을 선택하고 Zush가 화면의 앱, 페이지, 오류, 차트 또는 대화를 인식하도록 합니다.', '제안된 이름을 검토해 일괄 적용하고 새 캡처를 위해 폴더 모니터링을 켜 둡니다.'],
+    },
+  },
+  'zh-cn': {
+    faqItems: [
+      { question: 'AI 截图重命名工具有什么作用？', answer: '它会识别每张截图中显示的应用、页面、文字、图表、错误或对话，把仅含日期和时间的文件名改成清晰的描述性名称。Zush 既能批量处理已有截图，也能监控文件夹并处理新截图。' },
+      { question: 'Zush 能自动重命名截图工具和 macOS 的截图吗？', answer: '可以。监控 Windows 的“图片\\屏幕截图”、macOS 截图文件夹、下载文件夹或其他保存位置。Zush 会按画面内容为每张新截图命名，并把更改保存在重命名历史中。' },
+      { question: '可以撤销重命名吗？', answer: '可以。Zush 会保存重命名历史，你可以一键恢复原始文件名。' },
+    ],
+    directAnswerSection: {
+      heading: '自动重命名截图如何工作？',
+      answer: 'Zush 会监控截图保存文件夹，读取每张图片中可见的内容，并提出清晰的文件名。批量应用前可以检查所有名称，也可以随时从历史记录中撤销更改。',
+      steps: ['添加“图片\\屏幕截图”、macOS 截图文件夹、下载文件夹或已有截图目录。', '选择模板，让 Zush 识别画面中的应用、页面、错误、图表或对话。', '检查建议名称并批量应用，同时保持文件夹监控以处理新截图。'],
+    },
+  },
+  tr: {
+    faqItems: [
+      { question: 'Yapay zekâ ekran görüntüsü adlandırıcı ne yapar?', answer: 'Her görüntüdeki uygulamayı, sayfayı, metni, grafiği, hatayı veya konuşmayı tanır ve tarih-saat biçimindeki adı açıklayıcı bir dosya adıyla değiştirir. Zush mevcut görüntüleri toplu işleyebilir veya yeni ekran görüntüleri için bir klasörü izleyebilir.' },
+      { question: 'Zush, Ekran Alıntısı Aracı ve macOS ekran görüntülerini otomatik adlandırabilir mi?', answer: 'Evet. Windows’ta Resimler\\Ekran Görüntüleri klasörünü, macOS ekran görüntüsü klasörünü, İndirilenler’i veya başka bir kayıt klasörünü izleyin. Zush her yeni görüntüyü içeriğine göre adlandırır ve değişikliği geçmişte saklar.' },
+      { question: 'Yeniden adlandırmayı geri alabilir miyim?', answer: 'Evet. Zush yeniden adlandırma geçmişini saklar; böylece dosyaları tek tıklamayla orijinal adlarına döndürebilirsiniz.' },
+    ],
+    directAnswerSection: {
+      heading: 'Ekran görüntülerini otomatik adlandırma nasıl çalışır?',
+      answer: 'Zush ekran görüntülerinin kaydedildiği klasörü izler, her görseldeki görünür içeriği okur ve açıklayıcı bir dosya adı önerir. Toplu işlemi uygulamadan önce adları inceleyebilir ve geçmişten her değişikliği geri alabilirsiniz.',
+      steps: ['Resimler\\Ekran Görüntüleri, macOS ekran görüntüsü klasörü, İndirilenler veya mevcut bir arşiv ekleyin.', 'Bir şablon seçin ve Zush’un görünen uygulamayı, sayfayı, hatayı, grafiği veya konuşmayı tanımasını sağlayın.', 'Önerilen adları inceleyip toplu işlemi uygulayın ve yeni görüntüler için klasör izlemeyi açık bırakın.'],
+    },
+  },
+  ar: {
+    faqItems: [
+      { question: 'ماذا تفعل أداة إعادة تسمية لقطات الشاشة بالذكاء الاصطناعي؟', answer: 'تتعرف على التطبيق أو الصفحة أو النص أو الرسم البياني أو الخطأ أو المحادثة الظاهرة في كل لقطة، ثم تستبدل الاسم المؤرخ باسم وصفي واضح. يستطيع Zush معالجة مجموعة موجودة أو مراقبة مجلد للقطات الجديدة.' },
+      { question: 'هل يستطيع Zush إعادة تسمية لقطات أداة القص ولقطات macOS تلقائيًا؟', answer: 'نعم. راقب مجلد الصور\\لقطات الشاشة في Windows أو مجلد لقطات macOS أو التنزيلات أو أي مجلد آخر. يسمّي Zush كل لقطة جديدة بحسب محتواها الظاهر ويحفظ التغيير في سجل إعادة التسمية.' },
+      { question: 'هل يمكنني التراجع عن إعادة التسمية؟', answer: 'نعم. يحتفظ Zush بسجل لإعادة التسمية حتى تتمكن من إعادة الملفات إلى أسمائها الأصلية بنقرة واحدة.' },
+    ],
+    directAnswerSection: {
+      heading: 'كيف تعمل إعادة تسمية لقطات الشاشة تلقائيًا؟',
+      answer: 'يراقب Zush المجلد الذي تصل إليه اللقطات، ويقرأ المحتوى الظاهر في كل صورة، ثم يقترح اسمًا وصفيًا. يمكنك مراجعة الأسماء قبل تطبيق الدفعة والتراجع عن أي تغيير من السجل.',
+      steps: ['أضف مجلد الصور\\لقطات الشاشة أو مجلد لقطات macOS أو التنزيلات أو أرشيفًا موجودًا.', 'اختر قالبًا ودع Zush يتعرف على التطبيق أو الصفحة أو الخطأ أو الرسم البياني أو المحادثة الظاهرة.', 'راجع الأسماء المقترحة وطبّق الدفعة، واترك مراقبة المجلد مفعّلة للقطات الجديدة.'],
+    },
+  },
+};
 
 const localized = (overrides: DeepPartial<LocaleCopy>): LocaleCopy => ({
   ...base,
@@ -4002,8 +4144,8 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'KI-Dokumenten-Umbenenner. Zush liest Office-, iWork-, Text-, CSV-, XML-, YAML-, E-Mail- und Untertiteldateien und benennt Dokumente nach Inhalt um.',
       },
       '/rename-screenshots-with-ai': {
-        title: 'Screenshots automatisch umbenennen mit KI | Zush',
-        description: 'Schluss mit „Bildschirmfoto 2026-07-12“. Zush benennt Screenshots automatisch nach ihrem Inhalt um, mit Vorschau und Rückgängig. 50 Umbenennungen gratis.',
+        title: 'Screenshots mit KI umbenennen · Mac & Windows | Zush',
+        description: 'Benenne Screenshots automatisch nach ihrem sichtbaren Inhalt um. Verarbeite alte Aufnahmen stapelweise oder überwache neue auf Mac und Windows – mit Vorschau und Rückgängig.',
       },
       '/rename-photos-with-ai': {
         title: 'KI-Fotoorganizer & Bild-Umbenenner für Mac | Zush',
@@ -4029,11 +4171,11 @@ const COPY: Record<Locale, LocaleCopy> = {
         ['/rename-pdf-with-ai', 'PDFs mit KI umbenennen', 'Benenne Rechnungen, Verträge, Scans und Formulare nach Text und Kontext im PDF.'],
         ['/rename-design-files-with-ai', 'Designdateien mit KI umbenennen', 'Benenne Sketch-, Figma-.fig-, Adobe-Illustrator-.ai- und PSD-Dateien anhand von Vorschau und Projektkontext um.'],
         ['/rename-documents-with-ai', 'Dokumente mit KI umbenennen', 'Benenne DOCX, XLSX, PPTX, TXT, CSV und E-Mails nach ihrem Inhalt.'],
-        ['/rename-screenshots-with-ai', 'Screenshots mit KI umbenennen', 'Ersetze generische Screenshot-Namen durch nützliche Namen basierend auf dem Inhalt.'],
+        ['/rename-screenshots-with-ai', 'Screenshots mit KI umbenennen', 'Zush ersetzt generische Screenshot-Zeitstempel durch durchsuchbare Namen, die auf der sichtbaren App, Seite, dem Fehler, Diagramm oder der Unterhaltung basieren. Benenne ein bestehendes Archiv stapelweise um oder überwache unter Mac und Windows einen Screenshot-Ordner auf neue Aufnahmen.'],
         ['/rename-photos-with-ai', 'Fotos mit KI umbenennen', 'Benenne HEIC-, RAW-, JPG- und andere Fotos nach Motiv, Szene und Kontext.'],
         ['/rename-videos-with-ai', 'Videos mit KI umbenennen', 'Benenne MP4, MOV, Screen Recordings und Clips nach Frames, Kontext und Untertiteln.'],
         ['/rename-audio-with-ai', 'Audio mit KI umbenennen', 'Benenne MP3, M4A, WAV, FLAC, OGG, WebM und MPGA nach Metadaten, Erkennung und Transkriptkontext.'],
-      ]),
+      ], { '/rename-screenshots-with-ai': localizedScreenshotFeatureOverrides.de }),
       '/batch-rename-files': {
         h1: 'Dateien stapelweise mit KI umbenennen',
         accent: 'stapelweise',
@@ -4114,8 +4256,8 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'Renommeur de documents par IA. Zush lit les fichiers Office, iWork, texte, CSV, XML, YAML, e-mails et sous-titres, puis les renomme selon leur contenu.',
       },
       '/rename-screenshots-with-ai': {
-        title: 'Renommer les captures d’écran avec l’IA | Zush',
-        description: 'Fini « Capture d’écran 2026-07-12 ». Zush renomme vos captures selon leur contenu, automatiquement, avec aperçu et annulation. 50 renommages gratuits.',
+        title: 'Renommer des captures avec l’IA · Mac & Windows | Zush',
+        description: 'Renommez automatiquement les captures selon leur contenu visible. Traitez les anciennes par lot ou surveillez les nouvelles sur Mac et Windows, avec aperçu et annulation.',
       },
       '/rename-photos-with-ai': {
         title: 'Organisateur de photos IA et renommeur d’images | Zush',
@@ -4136,11 +4278,11 @@ const COPY: Record<Locale, LocaleCopy> = {
       ['/rename-pdf-with-ai', 'Renommer des PDF avec l’IA', 'Renommez factures, contrats, scans et formulaires selon le texte du PDF.'],
       ['/rename-design-files-with-ai', 'Renommer des fichiers de design avec l’IA', 'Renommez les fichiers Sketch, Figma .fig, Adobe Illustrator .ai et PSD selon leur aperçu visuel et le contexte du projet.'],
       ['/rename-documents-with-ai', 'Renommer des documents avec l’IA', 'Renommez DOCX, XLSX, PPTX, TXT, CSV et emails selon leur contenu.'],
-      ['/rename-screenshots-with-ai', 'Renommer des screenshots avec l’IA', 'Remplacez les noms génériques par des noms utiles basés sur l’écran capturé.'],
+      ['/rename-screenshots-with-ai', 'Renommer des captures d’écran avec l’IA', 'Zush remplace les noms horodatés génériques par des noms faciles à rechercher selon l’application, la page, l’erreur, le graphique ou la conversation visible. Renommez une archive par lot ou surveillez un dossier sur Mac et Windows pour les nouvelles captures.'],
       ['/rename-photos-with-ai', 'Renommer des photos avec l’IA', 'Renommez HEIC, RAW, JPG et autres photos selon le sujet et la scène.'],
       ['/rename-videos-with-ai', 'Renommer des vidéos avec l’IA', 'Renommez MP4, MOV, enregistrements d’écran et clips selon les images, le contexte et les sous-titres.'],
       ['/rename-audio-with-ai', 'Renommer l’audio avec l’IA', 'Renommez MP3, M4A, WAV, FLAC, OGG, WebM et MPGA selon les métadonnées, la reconnaissance et les transcriptions.'],
-    ]),
+    ], { '/rename-screenshots-with-ai': localizedScreenshotFeatureOverrides.fr }),
   }),
   'pt-br': localized({
     header: { features: 'Recursos', reviews: 'Avaliações', security: 'IA na nuvem/local', pricing: 'Preços', faq: 'FAQ', blog: 'Blog', buyPro: 'Comprar PRO', download: 'Baixar', downloadZush: 'Baixar Zush', toggleTheme: 'Alternar tema', language: 'Idioma', menu: 'Menu', homeAria: 'Ir para o início', skipToContent: 'Pular para o conteúdo' },
@@ -4190,8 +4332,8 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'Renomeador de documentos com IA. O Zush lê arquivos do Office, iWork, texto, CSV, XML, YAML, e-mails e legendas e os renomeia pelo conteúdo real.',
       },
       '/rename-screenshots-with-ai': {
-        title: 'Renomear screenshots com IA no Mac e Windows | Zush',
-        description: 'Chega de «Captura de Tela 2026-07-12». O Zush renomeia screenshots pelo conteúdo, automaticamente, com prévia e desfazer. 50 renomeações grátis.',
+        title: 'Renomear screenshots com IA · Mac e Windows | Zush',
+        description: 'Renomeie screenshots automaticamente pelo conteúdo visível. Processe capturas antigas em lote ou monitore as novas no Mac e Windows, com prévia e desfazer.',
       },
       '/rename-photos-with-ai': {
         title: 'Organizador de fotos com IA e renomeador | Zush',
@@ -4212,11 +4354,11 @@ const COPY: Record<Locale, LocaleCopy> = {
       ['/rename-pdf-with-ai', 'Renomear PDFs com IA', 'Renomeie notas, contratos, scans e formulários pelo texto do PDF.'],
       ['/rename-design-files-with-ai', 'Renomear arquivos de design com IA', 'Renomeie arquivos Sketch, Figma .fig, Adobe Illustrator .ai e PSD pela prévia visual e pelo contexto do projeto.'],
       ['/rename-documents-with-ai', 'Renomear documentos com IA', 'Renomeie DOCX, XLSX, PPTX, TXT, CSV e emails pelo conteúdo real.'],
-      ['/rename-screenshots-with-ai', 'Renomear screenshots com IA', 'Troque nomes genéricos por nomes úteis baseados no conteúdo da tela.'],
+      ['/rename-screenshots-with-ai', 'Renomear screenshots com IA', 'O Zush troca nomes genéricos com data e hora por nomes fáceis de buscar com base no aplicativo, página, erro, gráfico ou conversa visível. Renomeie um arquivo existente em lote ou monitore uma pasta no Mac e Windows para novas capturas.'],
       ['/rename-photos-with-ai', 'Renomear fotos com IA', 'Renomeie HEIC, RAW, JPG e outras fotos por assunto, cena e contexto.'],
       ['/rename-videos-with-ai', 'Renomear vídeos com IA', 'Renomeie MP4, MOV, gravações de tela e clipes por frames, contexto e legendas.'],
       ['/rename-audio-with-ai', 'Renomear áudio com IA', 'Renomeie MP3, M4A, WAV, FLAC, OGG, WebM e MPGA por metadados, reconhecimento e transcrições.'],
-    ]),
+    ], { '/rename-screenshots-with-ai': localizedScreenshotFeatureOverrides['pt-br'] }),
   }),
   es: localized({
     header: { features: 'Funciones', reviews: 'Reseñas', security: 'IA en nube/local', pricing: 'Precios', faq: 'FAQ', blog: 'Blog', buyPro: 'Comprar PRO', download: 'Descargar', downloadZush: 'Descargar Zush', toggleTheme: 'Cambiar tema', language: 'Idioma', menu: 'Menú', homeAria: 'Ir al inicio', skipToContent: 'Saltar al contenido' },
@@ -4266,8 +4408,8 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'Renombrador de documentos con IA. Zush lee archivos de Office, iWork, texto, CSV, XML, YAML, correos y subtítulos, y los renombra según su contenido real.',
       },
       '/rename-screenshots-with-ai': {
-        title: 'Renombrar capturas de pantalla con IA | Zush',
-        description: 'Olvídate de «Captura 2026-07-12». Zush renombra tus capturas por su contenido, de forma automática, con vista previa y deshacer. 50 renombrados gratis.',
+        title: 'Renombrar capturas con IA · Mac y Windows | Zush',
+        description: 'Renombra capturas automáticamente según el contenido visible. Procesa las antiguas por lotes o supervisa las nuevas en Mac y Windows, con vista previa y deshacer.',
       },
       '/rename-photos-with-ai': {
         title: 'Organizador de fotos con IA y renombrador | Zush',
@@ -4288,11 +4430,11 @@ const COPY: Record<Locale, LocaleCopy> = {
       ['/rename-pdf-with-ai', 'Renombrar PDFs con IA', 'Renombra facturas, contratos, escaneos y formularios por el texto del PDF.'],
       ['/rename-design-files-with-ai', 'Renombrar archivos de diseño con IA', 'Renombra archivos Sketch, Figma .fig, Adobe Illustrator .ai y PSD según su vista previa visual y el contexto del proyecto.'],
       ['/rename-documents-with-ai', 'Renombrar documentos con IA', 'Renombra DOCX, XLSX, PPTX, TXT, CSV y emails por su contenido real.'],
-      ['/rename-screenshots-with-ai', 'Renombrar capturas con IA', 'Cambia nombres genéricos por nombres útiles según lo que muestra la captura.'],
+      ['/rename-screenshots-with-ai', 'Renombrar capturas con IA', 'Zush sustituye los nombres genéricos con fecha y hora por nombres fáciles de buscar según la aplicación, página, error, gráfico o conversación visible. Renombra un archivo existente por lotes o supervisa una carpeta en Mac y Windows para las capturas nuevas.'],
       ['/rename-photos-with-ai', 'Renombrar fotos con IA', 'Renombra HEIC, RAW, JPG y otras fotos por sujeto, escena y contexto.'],
       ['/rename-videos-with-ai', 'Renombrar videos con IA', 'Renombra MP4, MOV, grabaciones de pantalla y clips por fotogramas, contexto y subtítulos.'],
       ['/rename-audio-with-ai', 'Renombrar audio con IA', 'Renombra MP3, M4A, WAV, FLAC, OGG, WebM y MPGA por metadatos, reconocimiento y transcripciones.'],
-    ]),
+    ], { '/rename-screenshots-with-ai': localizedScreenshotFeatureOverrides.es }),
   }),
   nl: localized({
     header: { features: 'Functies', reviews: 'Reviews', security: 'Cloud/lokale AI', pricing: 'Prijzen', faq: 'FAQ', blog: 'Blog', buyPro: 'Koop PRO', download: 'Downloaden', downloadZush: 'Zush downloaden', toggleTheme: 'Thema wisselen', language: 'Taal', menu: 'Menu', homeAria: 'Naar home', skipToContent: 'Naar inhoud' },
@@ -4342,8 +4484,8 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'AI-documenthernoemer. Zush leest Office-, iWork-, tekst-, CSV-, XML-, YAML-, e-mail- en ondertitelbestanden en hernoemt documenten op hun echte inhoud.',
       },
       '/rename-screenshots-with-ai': {
-        title: 'Screenshots automatisch hernoemen met AI | Zush',
-        description: 'Geen «Schermafbeelding 2026-07-12» meer. Zush hernoemt screenshots automatisch op inhoud, met preview en ongedaan maken. 50 gratis hernoemingen.',
+        title: 'Screenshots hernoemen met AI · Mac & Windows | Zush',
+        description: 'Hernoem screenshots automatisch op basis van zichtbare inhoud. Verwerk oude opnames in batches of bewaak nieuwe op Mac en Windows, met preview en ongedaan maken.',
       },
       '/rename-photos-with-ai': {
         title: 'AI-fotoorganizer en afbeeldingshernoemer | Zush',
@@ -4364,11 +4506,11 @@ const COPY: Record<Locale, LocaleCopy> = {
       ['/rename-pdf-with-ai', 'PDFs hernoemen met AI', 'Hernoem facturen, contracten, scans en formulieren op basis van PDF-tekst.'],
       ['/rename-design-files-with-ai', 'Designbestanden hernoemen met AI', 'Hernoem Sketch-, Figma-.fig-, Adobe Illustrator-.ai- en PSD-bestanden op basis van visuele preview en projectcontext.'],
       ['/rename-documents-with-ai', 'Documenten hernoemen met AI', 'Hernoem DOCX, XLSX, PPTX, TXT, CSV en e-mails op basis van inhoud.'],
-      ['/rename-screenshots-with-ai', 'Screenshots hernoemen met AI', 'Vervang generieke screenshotnamen door nuttige namen op basis van de inhoud.'],
+      ['/rename-screenshots-with-ai', 'Screenshots hernoemen met AI', 'Zush vervangt generieke screenshotnamen met tijdstempel door doorzoekbare namen op basis van de zichtbare app, pagina, foutmelding, grafiek of conversatie. Hernoem een bestaand archief in batches of bewaak op Mac en Windows een map voor nieuwe screenshots.'],
       ['/rename-photos-with-ai', 'Foto’s hernoemen met AI', 'Hernoem HEIC, RAW, JPG en andere foto’s op onderwerp, scène en context.'],
       ['/rename-videos-with-ai', 'Video’s hernoemen met AI', 'Hernoem MP4, MOV, schermopnames en clips op basis van frames, context en ondertitels.'],
       ['/rename-audio-with-ai', 'Audio hernoemen met AI', 'Hernoem MP3, M4A, WAV, FLAC, OGG, WebM en MPGA op basis van metadata, herkenning en transcripties.'],
-    ]),
+    ], { '/rename-screenshots-with-ai': localizedScreenshotFeatureOverrides.nl }),
   }),
   it: localized({
     header: { features: 'Funzioni', reviews: 'Recensioni', security: 'IA cloud/locale', pricing: 'Prezzi', faq: 'FAQ', blog: 'Blog', buyPro: 'Acquista PRO', download: 'Scarica', downloadZush: 'Scarica Zush', toggleTheme: 'Cambia tema', language: 'Lingua', menu: 'Menu', homeAria: 'Vai alla home', skipToContent: 'Vai al contenuto' },
@@ -4418,8 +4560,8 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'Rinominatore di documenti con IA. Zush legge file Office, iWork, testo, CSV, XML, YAML, email e sottotitoli e li rinomina in base al contenuto reale.',
       },
       '/rename-screenshots-with-ai': {
-        title: 'Rinominare screenshot con l’IA su Mac e Windows | Zush',
-        description: 'Basta con «Schermata 2026-07-12». Zush rinomina gli screenshot in base al contenuto, in automatico, con anteprima e annulla. 50 rinomine gratuite.',
+        title: 'Rinominare screenshot con l’IA · Mac e Windows | Zush',
+        description: 'Rinomina automaticamente gli screenshot in base al contenuto visibile. Elabora le vecchie catture in batch o monitora le nuove su Mac e Windows, con anteprima e annulla.',
       },
       '/rename-photos-with-ai': {
         title: 'Organizzatore foto con IA e rinomina immagini | Zush',
@@ -4440,11 +4582,11 @@ const COPY: Record<Locale, LocaleCopy> = {
       ['/rename-pdf-with-ai', 'Rinomina PDF con IA', 'Rinomina fatture, contratti, scansioni e moduli in base al testo del PDF.'],
       ['/rename-design-files-with-ai', 'Rinominare file di design con l’IA', 'Rinomina file Sketch, Figma .fig, Adobe Illustrator .ai e PSD in base all’anteprima visiva e al contesto del progetto.'],
       ['/rename-documents-with-ai', 'Rinomina documenti con IA', 'Rinomina DOCX, XLSX, PPTX, TXT, CSV ed email in base al contenuto.'],
-      ['/rename-screenshots-with-ai', 'Rinomina screenshot con IA', 'Sostituisci nomi generici con nomi utili basati su ciò che mostra lo screenshot.'],
+      ['/rename-screenshots-with-ai', 'Rinomina screenshot con IA', 'Zush sostituisce i nomi generici con data e ora con nomi facili da cercare basati sull’app, la pagina, l’errore, il grafico o la conversazione visibile. Rinomina un archivio esistente in batch o monitora una cartella su Mac e Windows per le nuove catture.'],
       ['/rename-photos-with-ai', 'Rinomina foto con IA', 'Rinomina HEIC, RAW, JPG e altre foto per soggetto, scena e contesto.'],
       ['/rename-videos-with-ai', 'Rinomina video con IA', 'Rinomina MP4, MOV, registrazioni schermo e clip in base a fotogrammi, contesto e sottotitoli.'],
       ['/rename-audio-with-ai', 'Rinomina audio con IA', 'Rinomina MP3, M4A, WAV, FLAC, OGG, WebM e MPGA con metadati, riconoscimento e trascrizioni.'],
-    ]),
+    ], { '/rename-screenshots-with-ai': localizedScreenshotFeatureOverrides.it }),
   }),
   ja: localized({
     header: { features: '機能', reviews: 'レビュー', security: 'クラウド/ローカルAI', pricing: '料金', faq: 'FAQ', blog: 'ブログ', buyPro: 'PROを購入', download: 'ダウンロード', downloadZush: 'Zushをダウンロード', toggleTheme: 'テーマ切替', language: '言語', menu: 'メニュー', homeAria: 'ホームへ移動', skipToContent: 'コンテンツへスキップ' },
@@ -4494,8 +4636,8 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'AI 文書リネームツール。Zush が Office、iWork、テキスト、CSV、XML、YAML、メール、字幕ファイルを読み取り、実際の内容に基づいて文書をリネームします。',
       },
       '/rename-screenshots-with-ai': {
-        title: 'AIでスクリーンショットを自動リネーム | Zush',
-        description: '「スクリーンショット 2026-07-12」はもう不要。Zush が内容に基づいてスクリーンショットを自動リネーム。プレビューと取り消しに対応し、50 件まで無料です。',
+        title: 'AIでスクリーンショットをリネーム · Mac・Windows | Zush',
+        description: '表示内容に基づいてスクリーンショットを自動リネーム。既存の画像を一括処理するか、Mac・Windowsで新しい画像の保存先を監視できます。プレビューと取り消しにも対応。',
       },
       '/rename-photos-with-ai': {
         title: 'AI写真オーガナイザー・画像リネームツール | Zush',
@@ -4516,11 +4658,11 @@ const COPY: Record<Locale, LocaleCopy> = {
       ['/rename-pdf-with-ai', 'AIでPDFをリネーム', '請求書、契約書、スキャン、フォームを PDF の内容でリネームします。'],
       ['/rename-design-files-with-ai', 'デザインファイルをAIでリネーム', 'Sketch、Figma .fig、Adobe Illustrator .ai、PSDファイルをプレビュー画像とプロジェクトの文脈に基づいてリネームします。'],
       ['/rename-documents-with-ai', 'AIで文書をリネーム', 'DOCX、XLSX、PPTX、TXT、CSV、メールを内容に基づいてリネームします。'],
-      ['/rename-screenshots-with-ai', 'AIでスクリーンショットをリネーム', '内容に基づいて汎用的なスクリーンショット名を便利な名前に変えます。'],
+      ['/rename-screenshots-with-ai', 'AIでスクリーンショットをリネーム', 'Zush は日時だけのスクリーンショット名を、表示されているアプリ、ページ、エラー、グラフ、会話に基づく検索しやすい名前に置き換えます。既存の画像を一括処理することも、Mac と Windows で保存先を監視して新しい画像を自動処理することもできます。'],
       ['/rename-photos-with-ai', 'AIで写真をリネーム', 'HEIC、RAW、JPG などの写真を被写体やシーンでリネームします。'],
       ['/rename-videos-with-ai', 'AIで動画をリネーム', 'MP4、MOV、画面収録、クリップをフレーム、文脈、字幕からリネームします。'],
       ['/rename-audio-with-ai', 'AIで音声ファイルをリネーム', 'MP3、M4A、WAV、FLAC、OGG、WebM、MPGA をメタデータ、認識、文字起こし文脈からリネームします。'],
-    ]),
+    ], { '/rename-screenshots-with-ai': localizedScreenshotFeatureOverrides.ja }),
   }),
   ko: localized({
     header: { features: '기능', reviews: '리뷰', security: '클라우드/로컬 AI', pricing: '가격', faq: 'FAQ', blog: '블로그', buyPro: 'PRO 구매', download: '다운로드', downloadZush: 'Zush 다운로드', toggleTheme: '테마 전환', language: '언어', menu: '메뉴', homeAria: '홈으로 이동', skipToContent: '콘텐츠로 건너뛰기' },
@@ -4570,8 +4712,8 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'AI 문서 이름 변경 도구. Zush가 Office, iWork, 텍스트, CSV, XML, YAML, 이메일, 자막 파일을 읽고 실제 내용을 기준으로 문서 이름을 변경합니다.',
       },
       '/rename-screenshots-with-ai': {
-        title: 'AI로 스크린샷 자동 이름 변경 | Zush',
-        description: '「스크린샷 2026-07-12」은 그만. Zush가 내용을 기준으로 스크린샷 이름을 자동으로 변경하며, 미리보기와 되돌리기를 지원합니다. 50회까지 무료입니다.',
+        title: 'AI로 스크린샷 이름 변경 · Mac 및 Windows | Zush',
+        description: '화면 내용을 기준으로 스크린샷 이름을 자동으로 바꾸세요. 기존 캡처를 일괄 처리하거나 Mac과 Windows에서 새 캡처 폴더를 모니터링하며, 미리보기와 되돌리기를 지원합니다.',
       },
       '/rename-photos-with-ai': {
         title: 'AI 사진 정리 및 이미지 이름 변경 도구 | Zush',
@@ -4592,11 +4734,11 @@ const COPY: Record<Locale, LocaleCopy> = {
       ['/rename-pdf-with-ai', 'AI로 PDF 이름 변경', '송장, 계약서, 스캔, 양식을 PDF 텍스트와 맥락으로 이름 변경합니다.'],
       ['/rename-design-files-with-ai', 'AI로 디자인 파일 이름 변경', 'Sketch, Figma .fig, Adobe Illustrator .ai 및 PSD 파일을 시각적 미리보기와 프로젝트 맥락에 따라 이름 변경합니다.'],
       ['/rename-documents-with-ai', 'AI로 문서 이름 변경', 'DOCX, XLSX, PPTX, TXT, CSV, 이메일을 실제 내용으로 이름 변경합니다.'],
-      ['/rename-screenshots-with-ai', 'AI로 스크린샷 이름 변경', '일반적인 스크린샷 이름을 화면 내용 기반의 유용한 이름으로 바꿉니다.'],
+      ['/rename-screenshots-with-ai', 'AI로 스크린샷 이름 변경', 'Zush는 날짜와 시간으로 된 일반적인 이름을 화면의 앱, 페이지, 오류, 차트 또는 대화에 기반한 검색하기 쉬운 이름으로 바꿉니다. 기존 스크린샷을 일괄 처리하거나 Mac과 Windows에서 저장 폴더를 모니터링해 새 캡처를 자동으로 처리할 수 있습니다.'],
       ['/rename-photos-with-ai', 'AI로 사진 이름 변경', 'HEIC, RAW, JPG 등 사진을 피사체, 장면, 맥락으로 이름 변경합니다.'],
       ['/rename-videos-with-ai', 'AI로 비디오 이름 변경', 'MP4, MOV, 화면 녹화와 클립을 프레임, 맥락, 자막 기준으로 이름 변경합니다.'],
       ['/rename-audio-with-ai', 'AI로 오디오 이름 변경', 'MP3, M4A, WAV, FLAC, OGG, WebM, MPGA를 메타데이터, 인식, 전사 맥락으로 이름 변경합니다.'],
-    ]),
+    ], { '/rename-screenshots-with-ai': localizedScreenshotFeatureOverrides.ko }),
   }),
   'zh-cn': localized({
     header: { features: '功能', reviews: '评价', security: '云端/本地 AI', pricing: '价格', faq: 'FAQ', blog: '博客', buyPro: '购买 PRO', download: '下载', downloadZush: '下载 Zush', toggleTheme: '切换主题', language: '语言', menu: '菜单', homeAria: '前往首页', skipToContent: '跳到内容' },
@@ -4720,8 +4862,8 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'AI 文档重命名工具。Zush 读取 Office、iWork、文本、CSV、XML、YAML、邮件和字幕文件，按实际内容为文档生成清晰的名称。',
       },
       '/rename-screenshots-with-ai': {
-        title: '用 AI 自动重命名截图 · Mac 与 Windows | Zush',
-        description: '告别「截屏 2026-07-12」。Zush 按截图内容自动重命名，支持预览和一键撤销，免费额度 50 次，Mac 和 Windows 均可使用。',
+        title: '用 AI 重命名截图 · Mac 与 Windows | Zush',
+        description: '按画面内容自动重命名截图。可批量处理已有截图，或在 Mac 和 Windows 上监控文件夹并处理新截图；支持预览建议名称和一键撤销。',
       },
       '/rename-photos-with-ai': {
         title: 'AI 照片整理与图片重命名工具 | Zush',
@@ -4742,11 +4884,11 @@ const COPY: Record<Locale, LocaleCopy> = {
       ['/rename-pdf-with-ai', '用 AI 重命名 PDF', '根据 PDF 文本和上下文重命名发票、合同、扫描件和表单。'],
       ['/rename-design-files-with-ai', '用 AI 重命名设计文件', '根据视觉预览和项目上下文重命名 Sketch、Figma .fig、Adobe Illustrator .ai 和 PSD 文件。'],
       ['/rename-documents-with-ai', '用 AI 重命名文档', '根据实际内容重命名 DOCX、XLSX、PPTX、TXT、CSV 和邮件文件。'],
-      ['/rename-screenshots-with-ai', '用 AI 重命名截图', '根据截图内容把通用文件名改成有用的名称。'],
+      ['/rename-screenshots-with-ai', '用 AI 重命名截图', 'Zush 会把仅含日期和时间的通用截图名称，改成基于画面中应用、页面、错误、图表或对话的可搜索名称。既可以批量处理已有截图，也可以在 Mac 和 Windows 上监控文件夹并自动处理新截图。'],
       ['/rename-photos-with-ai', '用 AI 重命名照片', '根据主体、场景和上下文重命名 HEIC、RAW、JPG 等照片。'],
       ['/rename-videos-with-ai', '用 AI 重命名视频', '根据采样画面、上下文和字幕重命名 MP4、MOV、录屏和视频片段。'],
       ['/rename-audio-with-ai', '用 AI 重命名音频', '根据元数据、识别结果和转录上下文重命名 MP3、M4A、WAV、FLAC、OGG、WebM 和 MPGA。'],
-    ]),
+    ], { '/rename-screenshots-with-ai': localizedScreenshotFeatureOverrides['zh-cn'] }),
   }),
   tr: localized({
     header: {
@@ -4898,8 +5040,8 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'Yapay zekâ belge adlandırıcı. Zush; Office, iWork, metin, CSV, XML, YAML, e-posta ve altyazı dosyalarını okur ve belgeleri gerçek içeriğine göre adlandırır.',
       },
       '/rename-screenshots-with-ai': {
-        title: 'Ekran görüntülerini yapay zekâyla adlandırma | Zush',
-        description: '«Ekran Görüntüsü 2026-07-12» dosyalarına son. Zush ekran görüntülerini içeriğine göre otomatik adlandırır; önizleme ve geri alma dâhil. 50 adlandırma bedava.',
+        title: 'Ekran görüntülerini AI ile adlandırma · Mac ve Windows | Zush',
+        description: 'Ekran görüntülerini görünür içeriğe göre otomatik adlandırın. Eski görüntüleri toplu işleyin veya Mac ve Windows’ta yenilerini izleyin; önizleme ve geri alma dâhil.',
       },
       '/rename-photos-with-ai': {
         title: 'Yapay zekâ fotoğraf düzenleyici ve adlandırıcı | Zush',
@@ -4920,11 +5062,11 @@ const COPY: Record<Locale, LocaleCopy> = {
       ['/rename-pdf-with-ai', 'PDF’leri yapay zekâyla yeniden adlandırın', 'Faturaları, sözleşmeleri, taramaları ve formları PDF metnine ve bağlamına göre adlandırın.'],
       ['/rename-design-files-with-ai', 'Tasarım dosyalarını yapay zekâyla yeniden adlandırın', 'Sketch, Figma .fig, Adobe Illustrator .ai ve PSD dosyalarını görsel önizleme ve proje bağlamına göre yeniden adlandırın.'],
       ['/rename-documents-with-ai', 'Belgeleri yapay zekâyla yeniden adlandırın', 'DOCX, XLSX, PPTX, TXT, CSV ve e-posta dosyalarını gerçek içeriklerine göre adlandırın.'],
-      ['/rename-screenshots-with-ai', 'Ekran görüntülerini yapay zekâyla yeniden adlandırın', 'Genel ekran görüntüsü adlarını, her görselin içeriğine dayanan kullanışlı adlarla değiştirin.'],
+      ['/rename-screenshots-with-ai', 'Ekran görüntülerini yapay zekâyla yeniden adlandırın', 'Zush tarih-saat biçimindeki genel adları, görüntüdeki uygulamaya, sayfaya, hataya, grafiğe veya konuşmaya dayanan aranabilir adlarla değiştirir. Mevcut arşivi toplu işleyin ya da Mac ve Windows’ta yeni görüntüler için bir klasörü izleyin.'],
       ['/rename-photos-with-ai', 'Fotoğrafları yapay zekâyla yeniden adlandırın', 'HEIC, RAW, JPG ve diğer fotoğrafları konuya, sahneye ve bağlama göre adlandırın.'],
       ['/rename-videos-with-ai', 'Videoları yapay zekâyla yeniden adlandırın', 'MP4, MOV, ekran kayıtları ve klipleri karelere, bağlama ve altyazılara göre adlandırın.'],
       ['/rename-audio-with-ai', 'Ses dosyalarını yapay zekâyla yeniden adlandırın', 'MP3, M4A, WAV, FLAC, OGG, WebM ve MPGA dosyalarını meta veri, tanıma ve transkript bağlamına göre adlandırın.'],
-    ]),
+    ], { '/rename-screenshots-with-ai': localizedScreenshotFeatureOverrides.tr }),
   }),
   ar: localized({
     header: {
@@ -5076,8 +5218,8 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'إعادة تسمية المستندات بالذكاء الاصطناعي. يقرأ Zush ملفات Office وiWork والنصوص وCSV وXML وYAML والبريد والترجمات ويعيد تسميتها حسب محتواها الفعلي.',
       },
       '/rename-screenshots-with-ai': {
-        title: 'إعادة تسمية لقطات الشاشة بالذكاء الاصطناعي | Zush',
-        description: 'لا مزيد من «لقطة الشاشة 2026-07-12». يعيد Zush تسمية لقطات الشاشة تلقائيًا حسب محتواها، مع معاينة وتراجع. 50 عملية إعادة تسمية مجانية.',
+        title: 'إعادة تسمية لقطات الشاشة بالذكاء الاصطناعي · Mac وWindows | Zush',
+        description: 'أعد تسمية لقطات الشاشة تلقائيًا حسب محتواها الظاهر. عالج اللقطات القديمة دفعة واحدة أو راقب الجديدة على Mac وWindows، مع المعاينة والتراجع.',
       },
       '/rename-photos-with-ai': {
         title: 'منظّم الصور وإعادة تسميتها بالذكاء الاصطناعي | Zush',
@@ -5098,11 +5240,11 @@ const COPY: Record<Locale, LocaleCopy> = {
       ['/rename-pdf-with-ai', 'إعادة تسمية ملفات PDF بالذكاء الاصطناعي', 'أعد تسمية الفواتير والعقود والمسحات والنماذج بحسب النص والسياق داخل ملف PDF.'],
       ['/rename-design-files-with-ai', 'إعادة تسمية ملفات التصميم بالذكاء الاصطناعي', 'أعد تسمية ملفات Sketch وFigma .fig وAdobe Illustrator .ai وPSD حسب المعاينة المرئية وسياق المشروع.'],
       ['/rename-documents-with-ai', 'إعادة تسمية المستندات بالذكاء الاصطناعي', 'أعد تسمية DOCX وXLSX وPPTX وTXT وCSV وملفات البريد بحسب محتواها الفعلي.'],
-      ['/rename-screenshots-with-ai', 'إعادة تسمية لقطات الشاشة بالذكاء الاصطناعي', 'استبدل أسماء لقطات الشاشة العامة بأسماء مفيدة مبنية على ما يظهر في كل لقطة.'],
+      ['/rename-screenshots-with-ai', 'إعادة تسمية لقطات الشاشة بالذكاء الاصطناعي', 'يستبدل Zush أسماء اللقطات العامة المؤرخة بأسماء قابلة للبحث حسب التطبيق أو الصفحة أو الخطأ أو الرسم البياني أو المحادثة الظاهرة. عالج أرشيفًا موجودًا دفعة واحدة أو راقب مجلدًا في Mac وWindows للقطات الجديدة.'],
       ['/rename-photos-with-ai', 'إعادة تسمية الصور الفوتوغرافية بالذكاء الاصطناعي', 'أعد تسمية صور HEIC وRAW وJPG وغيرها بحسب الموضوع والمشهد والسياق.'],
       ['/rename-videos-with-ai', 'إعادة تسمية الفيديوهات بالذكاء الاصطناعي', 'أعد تسمية MP4 وMOV وتسجيلات الشاشة والمقاطع حسب الإطارات والسياق والترجمات.'],
       ['/rename-audio-with-ai', 'إعادة تسمية الصوت بالذكاء الاصطناعي', 'أعد تسمية MP3 وM4A وWAV وFLAC وOGG وWebM وMPGA حسب البيانات الوصفية والتعرف والنصوص.'],
-    ]),
+    ], { '/rename-screenshots-with-ai': localizedScreenshotFeatureOverrides.ar }),
   }),
 };
 

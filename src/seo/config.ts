@@ -120,9 +120,9 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ogType: 'website',
   },
   '/ai-file-organizer': {
-    title: 'AI File Organizer for Mac and Windows | Zush',
+    title: 'AI File Organizer for Mac & Windows | Automatic File Naming',
     description:
-      'AI file organizer for Mac and Windows. Zush gives every file a descriptive, searchable name by content, with templates, folder monitoring, preview, and undo.',
+      'AI file organizer for Mac and Windows that names files in place by content. Clean up screenshots, PDFs and documents with templates, preview and undo.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -154,9 +154,9 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'powerrename alternative, powertoys rename, batch rename files windows 11, ai file renamer for windows, rename files by content windows, file explorer batch rename, windows batch rename tool',
   },
   '/rename-invoices-with-ai': {
-    title: 'Rename Invoices Automatically with AI | Zush',
+    title: 'Rename Invoices with AI · Vendor, Date & Number · Zush',
     description:
-      'Rename invoice PDFs by vendor, date, and amount — automatically. Zush reads each invoice and applies your naming convention. Preview and undo every batch.',
+      'Batch rename invoice PDFs by vendor, date, invoice number and amount. Zush reads text and scanned invoices, previews every filename and lets you undo the batch.',
     robots: 'index, follow',
     ogType: 'website',
     keywords:
@@ -364,9 +364,9 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ogType: 'website',
   },
   '/rename-screenshots-with-ai': {
-    title: 'Auto-Rename Screenshots on Mac & Windows with AI | Zush',
+    title: 'Rename Screenshots with AI · Mac & Windows · Zush',
     description:
-      'Stop hunting for "Screenshot 2026-07-12". Zush renames screenshots by their content — automatically, with preview and undo. Free for 50 renames.',
+      'Rename screenshots automatically by visible content. Batch rename old captures or monitor new ones on Mac and Windows, with preview and undo.',
     robots: 'index, follow',
     ogType: 'website',
   },

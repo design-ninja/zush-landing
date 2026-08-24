@@ -4,14 +4,14 @@ import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 
 const faqItems = [
   {
-    question: 'How do I rename a screenshot on Mac or Windows?',
+    question: 'What does an AI screenshot renamer do?',
     answer:
-      'Manually, select the screenshot in Finder or File Explorer and rename it like any other file. For automatic descriptive names, point Zush at your screenshot folder, review the AI name pattern once, and let new screenshots get names based on what they show.',
+      'An AI screenshot renamer reads the visible app, page, text, chart, error, or conversation in each capture and turns a timestamp filename into a descriptive name. Zush can process an existing batch or monitor a screenshot folder for new captures.',
   },
   {
-    question: 'How do I rename a screenshot on Windows 11?',
+    question: 'Can Zush automatically rename Snipping Tool and macOS screenshots?',
     answer:
-      'For one screenshot, select it in File Explorer and press F2, or right-click it and choose Rename, then type the new filename and press Enter. For a batch, add Pictures\\Screenshots, Downloads, or another screenshot folder to Zush so AI can suggest searchable names from what each image shows; review the list before applying it.',
+      'Yes. Point folder monitoring at Pictures\\Screenshots on Windows, the macOS Screenshots folder, Downloads, or another capture folder. Zush names each new screenshot from what it shows and keeps the change in rename history.',
   },
   {
     question: 'Can Zush automatically rename screenshots as I take them?',
@@ -78,11 +78,11 @@ const jsonLd = buildFeaturePageJsonLd({
 
 const RenameScreenshotsWithAI = () => (
   <FeatureLandingPage
-    h1="Rename Screenshots Automatically on Mac and Windows"
+    h1="Rename Screenshots with AI"
     h1Accent="Rename Screenshots"
     category="screenshot"
     definitionTitle="What Is AI Screenshot Renaming?"
-    definitionText="Rename screenshots automatically with AI using Zush to replace generic Mac and Windows timestamp names with searchable filenames based on the app, page, error, chart, or conversation shown. On Windows, this means screenshots from File Explorer folders such as Pictures\\Screenshots and Downloads can become readable names without manual right-click renaming."
+    definitionText="Zush replaces generic screenshot timestamps with searchable names based on the app, page, error, chart, or conversation shown. Batch rename an existing archive or monitor a screenshot folder on Mac or Windows for new captures."
     showcaseSlides={[
       {
         files: [
@@ -117,13 +117,13 @@ const RenameScreenshotsWithAI = () => (
     ]}
     faqItems={faqItems}
     directAnswerSection={{
-      heading: 'How to rename a screenshot on Windows 11',
+      heading: 'How does automatic screenshot renaming work?',
       answer:
-        'For one screenshot in Windows 11, select it in File Explorer and press F2, or right-click it and choose Rename, then type the new filename and press Enter. For a batch, add the screenshot folder to Zush so AI can propose descriptive names from each image’s content; review the list before applying changes.',
+        'Zush watches the folder where screenshots arrive, reads the visible content of each image, and proposes a descriptive filename. You can review names before applying a batch and undo any rename from history.',
       steps: [
-        'Open File Explorer and go to Pictures\\Screenshots, Downloads, or the folder where Snipping Tool saves your captures.',
-        'To rename one file, select it, press F2 (or right-click and choose Rename), type the new name, and press Enter.',
-        'To rename a batch by content, add the folder to Zush, let it analyze the screenshots, review the proposed names, and apply the batch with undo available.',
+        'Add Pictures\\Screenshots, the macOS Screenshots folder, Downloads, or an existing screenshot archive.',
+        'Choose a template and let Zush identify the app, page, error, chart, or conversation shown.',
+        'Review the proposed names, apply the batch, and keep folder monitoring on for new captures.',
       ],
     }}
     relatedPages={[

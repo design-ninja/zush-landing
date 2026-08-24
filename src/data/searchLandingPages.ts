@@ -711,7 +711,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     category: 'general',
     definitionTitle: 'What Is an AI File Organizer?',
     definitionText:
-      'An AI file organizer reads what each file contains and turns messy folders full of files into consistently named, searchable libraries. Point Zush at your files and folders on Mac and Windows and it names screenshots, PDFs, invoices, photos, documents, videos, audio, and design files by content — you review before applying, with templates, folder monitoring, and full undo history. Zush renames files in place; it does not move them between folders or rename the folders themselves.',
+      'Zush is an AI file organizer for Mac and Windows that reads file content and replaces weak filenames with consistent, searchable names. It renames files in place instead of moving files or folders, and every batch can be reviewed and undone.',
     showcaseSlides: sharedSlides,
     faqItems: fileOrganizerFaq,
     relatedPages: [
@@ -719,6 +719,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       { title: 'Templates Guide', href: '/docs/templates' },
       { title: 'Naming Blocks Guide', href: '/docs/naming-blocks' },
       { title: 'Batch Rename Files with AI', href: '/batch-rename-files' },
+      { title: 'Automate Your Downloads Folder', href: '/automate-downloads-folder' },
       { title: 'Offline AI File Renamer', href: '/offline-ai-file-renamer' },
       { title: 'AI File Renamer & Organizer', href: '/' },
       { title: 'Zush for Mac', href: '/mac' },
@@ -735,6 +736,16 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       label: 'best AI file organizers for Mac',
       href: '/blog/best-ai-file-organizers-mac',
       after: 'for a verification-first breakdown of renaming, moving, local AI, undo, and pricing.',
+    },
+    directAnswerSection: {
+      heading: 'How does Zush organize files without moving them?',
+      answer:
+        'Zush organizes a folder by giving each file a useful name based on its content. Files stay in their current folders, while templates, Naming Blocks, preview, and rename history keep the naming system consistent and reversible.',
+      steps: [
+        'Add a mixed folder such as Downloads, Screenshots, or a client archive.',
+        'Choose a template with an AI title, dates, categories, clients, or other Naming Blocks.',
+        'Review the proposed names, apply the batch, and use folder monitoring for new arrivals.',
+      ],
     },
     jsonLd: buildFeaturePageJsonLd({
       howTo: {
@@ -899,15 +910,16 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     }),
   },
   'rename-invoices-with-ai': {
-    h1: 'Rename Invoices Automatically with AI',
-    h1Accent: 'Rename Invoices',
+    h1: 'Rename Invoice PDFs with AI',
+    h1Accent: 'Rename Invoice PDFs',
     category: 'pdf',
     definitionTitle: 'What Is AI Invoice Renaming?',
     definitionText:
-      'AI invoice renaming reads each invoice PDF and turns "download (7).pdf" into "Cloudflare – 2026-06 – Invoice", using the vendor, date, and number it finds inside.',
+      'Zush reads text and scanned invoice PDFs, extracts fields such as vendor, date, invoice number, and amount, then applies your naming template. For example, "download (7).pdf" can become "2026-07-18 – Cloudflare – INV-1042 – 249 USD.pdf".',
     showcaseSlides: invoiceSlides,
     faqItems: invoiceRenameFaq,
     relatedPages: [
+      { title: 'Zush for Accountants and Bookkeepers', href: '/for-accountants' },
       { title: 'Zush for Windows', href: '/windows' },
       { title: 'Rename PDFs with AI', href: '/rename-pdf-with-ai' },
       { title: 'Rename & Organize Receipts with AI', href: '/rename-receipts-with-ai' },
@@ -927,6 +939,16 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       label: 'guide to automatically renaming invoices with AI',
       href: '/blog/automatically-rename-invoices-ai',
       after: 'for naming Templates, review steps, and web-versus-desktop tool comparisons.',
+    },
+    directAnswerSection: {
+      heading: 'How do you automatically rename invoice PDFs?',
+      answer:
+        'Use Zush to read each invoice, extract the fields your filing system needs, and build the filename from a reusable template. It handles text PDFs and scanned invoices, shows every proposed name before applying, and keeps the batch in rename history.',
+      steps: [
+        'Add invoice PDFs or point folder monitoring at the folder where new invoices arrive.',
+        'Build a template from vendor, date, invoice number, amount, and any custom field you need.',
+        'Review the names, apply the batch, and undo it from rename history if the convention needs revision.',
+      ],
     },
     jsonLd: buildFeaturePageJsonLd({
       howTo: {

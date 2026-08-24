@@ -52,6 +52,7 @@ const localizedProps = Astro.props as FeatureLandingPageProps & LocalizedProps;
 const currentLocale = localizedProps.locale ?? DEFAULT_LOCALE;
 const currentCopy = getCopy(currentLocale);
 const pageCopy = localizedProps.localizedCopy;
+const resolvedDirectAnswerSection = pageCopy?.directAnswerSection ?? directAnswerSection;
 const heroSlides = pageCopy?.showcaseSlides ?? (currentLocale === DEFAULT_LOCALE ? showcaseSlides : currentCopy.home.showcaseSlides);
 const breadcrumbItems = [
   { label: currentLocale === DEFAULT_LOCALE ? 'Home' : 'Zush', href: getLocalizedPath('/', currentLocale) },
@@ -189,15 +190,15 @@ const relatedPageTitle = (href: string, fallback: string) =>
     </div>
   )}
 
-  {currentLocale === DEFAULT_LOCALE && directAnswerSection && (
+  {resolvedDirectAnswerSection && (
     <section class={`${styles.Section} ${styles.DirectAnswer}`}>
       <div class={styles.DirectAnswer__Container}>
         <Heading as='h2' align='left'>
-          {directAnswerSection.heading}
+          {resolvedDirectAnswerSection.heading}
         </Heading>
-        <p class={styles.DirectAnswer__Answer}>{directAnswerSection.answer}</p>
+        <p class={styles.DirectAnswer__Answer}>{resolvedDirectAnswerSection.answer}</p>
         <ol class={styles.DirectAnswer__Steps}>
-          {directAnswerSection.steps.map((step) => <li>{step}</li>)}
+          {resolvedDirectAnswerSection.steps.map((step) => <li>{step}</li>)}
         </ol>
       </div>
     </section>
