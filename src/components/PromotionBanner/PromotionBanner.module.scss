@@ -150,49 +150,59 @@
     @media (max-width: 600px) {
         display: grid;
         grid-template-columns: minmax(0, 1fr) auto;
-        column-gap: 0.5rem;
-        row-gap: 0.35rem;
+        column-gap: 0.75rem;
+        row-gap: 0.45rem;
         width: 100%;
         max-width: 32rem;
-        padding: 0.45rem 0.55rem;
-        border-radius: 1.25rem;
+        padding: 0.7rem 0.8rem 0.75rem 0.9rem;
+        border-radius: 1rem;
 
         &__Tag {
+            grid-column: 1;
+            grid-row: 1;
             justify-self: start;
         }
 
         &__Message {
-            grid-column: 1 / -1;
+            display: block;
+            grid-column: 1;
             grid-row: 2;
-            justify-self: center;
-            flex-wrap: wrap;
-            justify-content: center;
+            justify-self: stretch;
             min-width: 0;
-            line-height: 1.25;
+            line-height: 1.35;
+            text-align: left;
             white-space: normal;
 
             code {
+                margin-left: 0.25rem;
                 white-space: nowrap;
             }
         }
 
         &__Action {
             grid-column: 2;
-            grid-row: 1;
+            grid-row: 1 / 3;
+            align-self: stretch;
+            justify-content: center;
+            min-width: 2rem;
+            min-height: 0;
             margin-left: 0;
-        }
-    }
+            padding: 0 0 0 0.75rem;
 
-    @media (max-width: 420px) {
-        &__Action span {
-            display: none;
+            span {
+                display: none;
+            }
+
+            svg {
+                width: 1rem;
+                height: 1rem;
+            }
         }
     }
 
     @media (max-width: 360px) {
-        &__Label {
-            display: none;
-        }
+        padding-right: 0.7rem;
+        padding-left: 0.75rem;
     }
 
     @media (prefers-reduced-motion: reduce) {
