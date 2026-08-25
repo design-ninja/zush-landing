@@ -1,7 +1,7 @@
 ---
 import type { SeoMeta } from '@/seo/config';
-import { DEFAULT_KEYWORDS, DEFAULT_OG_IMAGE, getCanonicalUrl } from '@/seo/config';
-import { SITE_ENTITY_JSON_LD } from '@/seo/entity';
+import { DEFAULT_OG_IMAGE, getCanonicalUrl } from '@/seo/config';
+import { buildSiteEntityJsonLd } from '@/seo/entity';
 import '@fontsource-variable/inter/opsz.css';
 import '@/styles/main.scss';
 import Header from '@/components/Header/Header.astro';
@@ -90,7 +90,7 @@ const localeMeta = LOCALE_META[locale];
 const layoutCopy = getCopy(locale);
 const ogImage = seo.ogImage || DEFAULT_OG_IMAGE;
 const ldItems = [
-  SITE_ENTITY_JSON_LD,
+  buildSiteEntityJsonLd(seo.canonicalPath === '/'),
   ...(Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : []),
 ].filter(Boolean);
 const isHomePage = route === '/';
@@ -253,7 +253,7 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
 
     <title>{seo.title}</title>
     <meta name="description" content={seo.description} />
-    <meta name="keywords" content={seo.keywords ?? DEFAULT_KEYWORDS} />
+    {seo.keywords && <meta name="keywords" content={seo.keywords} />}
     <meta name="robots" content={seo.robots} />
     <link rel="canonical" href={canonicalUrl} />
     {shouldEmitLocaleAlternates && (

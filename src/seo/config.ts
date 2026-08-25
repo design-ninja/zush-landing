@@ -1,5 +1,6 @@
 import type { BlogPost } from '@/data/blog';
 import {
+  AI_MODES_SUMMARY,
   APP_CONFIG,
   APP_STORE_URL,
   GITHUB_RELEASES_URL,
@@ -12,7 +13,6 @@ import {
   SUPPORTED_FORMAT_COUNT,
   WINDOWS_APP_VERSION,
   WINDOWS_STORE_URL,
-  YOUTUBE_CHANNEL_URL,
 } from '@/constants';
 import { getPrimaryAuthorJsonLd, PRIMARY_AUTHOR } from '@/data/author';
 import { buildAppAggregateRatingJsonLd } from '@/seo/appRating';
@@ -23,32 +23,21 @@ import { PRO_PRICING } from '@/constants/pricing';
 export const SITE_ORIGIN = 'https://zushapp.com';
 export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og-image.png`;
 
-export const DEFAULT_KEYWORDS = [
+export const HOME_KEYWORDS = [
+  'Zush',
+  'Zush AI',
+  'Zush AI Renamer',
+  'Zush AI File Renamer',
+  'Zush File Renamer',
   'AI file renamer',
   'AI renamer',
   'rename files by content',
-  'batch rename files',
-  'bulk file rename',
-  'rename files automatically',
-  'offline AI file renamer',
-  'local AI file renamer',
-  'private AI file renamer',
+  'batch rename files with AI',
   'AI file organizer',
-  'organize files with AI',
-  'automatic file organization',
-  'AI file sorter',
-  'sort files into folders',
-  'AI document organizer',
   'file renamer for Mac',
   'file renamer for Windows',
-  'PDF renamer',
-  'rename PDFs by content',
-  'screenshot renamer',
-  'photo renamer',
-  'EXIF photo renamer',
-  'custom file naming rules',
-  'content-aware file naming',
-  'file management tool',
+  'offline AI file renamer',
+  'local AI file renamer',
 ].join(', ');
 
 export interface SeoMeta {
@@ -95,6 +84,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     title: HOME_PAGE_TITLE,
     description: HOME_PAGE_DESCRIPTION,
     robots: 'index, follow',
+    keywords: HOME_KEYWORDS,
   },
   '/pricing': {
     title: 'Zush Pricing: Free, Monthly, and Lifetime Plans',
@@ -111,13 +101,17 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'Batch and bulk rename files on Mac & Windows with AI. Zush reads mixed folders by content, then lets you preview, apply, and undo every filename.',
     robots: 'index, follow',
     ogType: 'website',
+    keywords:
+      'batch rename files, bulk rename files, AI batch file renamer, batch rename files with AI, bulk file renamer, batch rename files on Mac, batch rename files on Windows, rename multiple files by content, mixed file batch renamer, batch file naming tool',
   },
   '/offline-ai-file-renamer': {
     title: 'Offline AI File Renamer for Mac & Windows | Zush',
     description:
-      'Offline AI file renamer for Mac and Windows. Zush runs local Ollama models, so nothing leaves your machine. Rename by content with preview and undo.',
+      'Offline AI file renamer for Mac and Windows. Use Built-in Local AI, LM Studio, or Ollama so supported analysis stays on-device, with preview and undo.',
     robots: 'index, follow',
     ogType: 'website',
+    keywords:
+      'offline AI file renamer, local AI file renamer, private AI file renamer, on-device AI file renamer, rename files offline, offline file renamer for Mac, offline file renamer for Windows, Built-in Local AI file renamer, LM Studio file renamer, Ollama file renamer',
   },
   '/ai-file-organizer': {
     title: 'AI File Organizer for Mac & Windows | Automatic File Naming',
@@ -125,6 +119,8 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'AI file organizer for Mac and Windows that names files in place by content. Clean up screenshots, PDFs and documents with templates, preview and undo.',
     robots: 'index, follow',
     ogType: 'website',
+    keywords:
+      'AI file organizer, organize files with AI, automatic file organizer, AI file sorter, sort files into folders, AI document organizer, content-aware file organization, organize files automatically, file organizer for Mac, file organizer for Windows',
   },
   '/hazel-alternative': {
     title: 'Hazel Alternative with AI File Naming | Zush',
@@ -310,7 +306,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/docs': {
     title: 'Zush Docs | AI File Renamer Guides for Mac and Windows',
     description:
-      'Documentation for Zush AI file renaming on Mac and Windows: batch rename, folder monitoring, Templates, Naming Blocks, Custom AI Blocks, BYOK, Offline AI, metadata, and undo.',
+      'Zush AI file renamer docs for Mac and Windows: batch rename, folder monitoring, Templates, BYOK, Built-in Local AI, LM Studio, Ollama, metadata, and undo.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -348,6 +344,8 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'AI PDF renamer for Mac and Windows. Zush reads invoices, contracts, scans, and receipts, then renames PDFs by content. Preview each name, undo any batch.',
     robots: 'index, follow',
     ogType: 'website',
+    keywords:
+      'AI PDF renamer, rename PDF files with AI, rename PDFs by content, batch rename PDF files, automatic PDF renamer, PDF file naming software, rename scanned PDFs, invoice PDF renamer, PDF renamer for Mac, PDF renamer for Windows',
   },
   '/rename-documents-with-ai': {
     title: 'Rename Documents with AI · Office, iWork, Text · Zush',
@@ -355,6 +353,8 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'AI document renamer for Mac and Windows. Zush reads Word, Excel, iWork, and text files, then turns meeting_notes_FINAL_v2 into a name you can search for.',
     robots: 'index, follow',
     ogType: 'website',
+    keywords:
+      'AI document renamer, rename documents with AI, rename files by document content, batch rename documents, automatic document renamer, Office document renamer, iWork file renamer, document naming software, document renamer for Mac, document renamer for Windows',
   },
   '/rename-design-files-with-ai': {
     title: 'Rename Design Files with AI · Figma, Sketch, AI, PSD · Zush',
@@ -362,6 +362,8 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'AI design file renamer. Zush reads Sketch, Figma, Illustrator, and Photoshop previews, then renames design files by content and project context.',
     robots: 'index, follow',
     ogType: 'website',
+    keywords:
+      'AI design file renamer, rename design files with AI, Figma file renamer, Sketch file renamer, PSD file renamer, Illustrator file renamer, batch rename design files, rename design files by content, creative asset renamer, design file naming software',
   },
   '/rename-screenshots-with-ai': {
     title: 'Rename Screenshots with AI · Mac & Windows · Zush',
@@ -369,6 +371,8 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'Rename screenshots automatically by visible content. Batch rename old captures or monitor new ones on Mac and Windows, with preview and undo.',
     robots: 'index, follow',
     ogType: 'website',
+    keywords:
+      'AI screenshot renamer, rename screenshots with AI, automatically rename screenshots, batch rename screenshots, rename screenshots by content, screenshot file organizer, screenshot renamer for Mac, screenshot renamer for Windows, searchable screenshot filenames, screenshot naming software',
   },
   '/rename-photos-with-ai': {
     title: 'AI Photo Organizer & Image Renamer for Mac | Zush',
@@ -376,6 +380,8 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'AI photo renamer for Mac and Windows. Zush looks inside HEIC, RAW, JPG, and TIFF images and names each one for what it shows. Preview and undo included.',
     robots: 'index, follow',
     ogType: 'website',
+    keywords:
+      'AI photo renamer, rename photos with AI, AI image renamer, batch rename photos, rename photos by content, EXIF photo renamer, RAW photo renamer, HEIC file renamer, photo renamer for Mac, photo renamer for Windows',
   },
   '/rename-videos-with-ai': {
     title: 'Rename Videos with AI · MP4, MOV, Screen Recordings · Zush',
@@ -383,6 +389,8 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'AI video renamer for Mac and Windows. Zush samples frames and reads subtitles from MP4, MOV, and MTS files, then renames each video by what is in it.',
     robots: 'index, follow',
     ogType: 'website',
+    keywords:
+      'AI video renamer, rename videos with AI, batch rename video files, rename videos by content, MP4 file renamer, MOV file renamer, screen recording renamer, video file naming software, video renamer for Mac, video renamer for Windows',
   },
   '/rename-audio-with-ai': {
     title: 'Rename Audio with AI · MP3, M4A, WAV, FLAC · Zush',
@@ -390,18 +398,20 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'AI audio file renamer for Mac and Windows. Zush reads MP3, M4A, WAV, and FLAC metadata or their transcripts, then renames each file by what it contains.',
     robots: 'index, follow',
     ogType: 'website',
+    keywords:
+      'AI audio file renamer, rename audio files with AI, batch rename audio files, rename audio by content, MP3 file renamer, M4A file renamer, WAV file renamer, FLAC file renamer, audio renamer for Mac, audio renamer for Windows',
   },
   '/mac': {
-    title: 'Zush AI Renamer for Mac: File Renamer & Organizer',
+    title: 'AI File Renamer for Mac | Zush for Mac',
     description:
-      'Zush is an AI file renamer and organizer for Mac. Rename files by content, apply custom naming rules, preview every name, use Local AI, and undo any batch.',
+      'Zush for Mac is an AI file renamer and organizer for macOS. Rename by content with custom rules, preview every filename, undo batches, and choose cloud or local AI.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/windows': {
-    title: 'Zush AI Renamer for Windows: File Renamer & Organizer',
+    title: 'AI File Renamer for Windows | Zush for Windows',
     description:
-      'Zush is an AI file renamer and organizer for Windows 10 and 11. Rename files by content, apply custom naming rules, preview every name, and undo any batch.',
+      'Zush for Windows is an AI file renamer and organizer for Windows 10 and 11. Rename by content with custom rules, preview every filename, and undo any batch.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -534,24 +544,16 @@ export const HOME_JSON_LD = {
       '@type': 'SoftwareApplication',
       '@id': `${SITE_ORIGIN}/#software`,
       name: 'Zush',
-      alternateName: [
-        ...ZUSH_BRAND_ALTERNATE_NAMES,
-        'AI File Renamer',
-        'AI File Renamer & Organizer',
-        'AI File Organizer',
-        'AI Batch File Renamer',
-        'Content-Aware File Renamer',
-        'Zush for Mac',
-        'Zush for Windows',
-      ],
+      alternateName: [...ZUSH_BRAND_ALTERNATE_NAMES],
       url: SITE_ORIGIN,
       mainEntityOfPage: {
         '@id': `${SITE_ORIGIN}/#webpage`,
       },
       description:
-        'Zush is an AI file renamer for macOS and Windows that builds filenames from file content, metadata, dates, custom prompts, and 145+ reusable naming blocks. Users preview changes before applying them, can undo any batch, and choose Cloud AI, BYOK, or Local AI through Ollama.',
+        `Zush is an AI file renamer for macOS and Windows that builds filenames from file content, metadata, dates, custom prompts, and 145+ reusable naming blocks. Users preview changes before applying them, can undo any batch, and choose ${AI_MODES_SUMMARY}.`,
+      keywords: HOME_KEYWORDS,
       applicationCategory: 'UtilitiesApplication',
-      applicationSubCategory: 'File Management',
+      applicationSubCategory: 'File Renaming and Organization',
       operatingSystem: ['macOS 15.0+', 'Windows 10', 'Windows 11'],
       softwareVersion: `${MAC_APP_VERSION} (macOS); ${WINDOWS_APP_VERSION} (Windows)`,
       author: {
@@ -564,7 +566,6 @@ export const HOME_JSON_LD = {
         APP_STORE_URL,
         WINDOWS_STORE_URL,
         PRODUCT_HUNT_URL,
-        YOUTUBE_CHANNEL_URL,
         GITHUB_RELEASES_URL,
         HOMEBREW_CASK_URL,
         GOOGLE_WORKSPACE_MARKETPLACE_URL,
@@ -584,7 +585,7 @@ export const HOME_JSON_LD = {
           priceCurrency: 'USD',
           availability: 'https://schema.org/InStock',
           url: SITE_ORIGIN,
-          description: `Free tier with ${APP_CONFIG.free_tier_limit} AI renames across Cloud AI, BYOK, and Local AI`,
+          description: `Free tier with ${APP_CONFIG.free_tier_limit} AI renames shared across ${AI_MODES_SUMMARY}`,
         },
         {
           '@type': 'Offer',
@@ -593,7 +594,7 @@ export const HOME_JSON_LD = {
           name: 'Zush PRO Monthly',
           availability: 'https://schema.org/InStock',
           url: `${SITE_ORIGIN}/pricing`,
-          description: 'Monthly subscription with unlimited renames across Cloud AI, BYOK, and Local AI.',
+          description: `Monthly subscription with unlimited renames across ${AI_MODES_SUMMARY}.`,
         },
         {
           '@type': 'Offer',
@@ -602,7 +603,7 @@ export const HOME_JSON_LD = {
           name: 'Zush PRO One-Time',
           availability: 'https://schema.org/InStock',
           url: `${SITE_ORIGIN}/pricing`,
-          description: 'One-time purchase with unlimited renames across Cloud AI, BYOK, and Local AI.',
+          description: `One-time purchase with unlimited renames across ${AI_MODES_SUMMARY}.`,
         },
       ],
       featureList: [
@@ -618,7 +619,7 @@ export const HOME_JSON_LD = {
         'RAW photo, PDF, and document analysis',
         '60+ language support',
         'Bring Your Own Key (BYOK)',
-        'Local AI mode with Ollama models; works offline after setup',
+        'Built-in Local AI, LM Studio, and Ollama modes for supported on-device analysis',
       ],
     },
   ],

@@ -50,7 +50,7 @@ const jsonLd = buildFeaturePageJsonLd({
     ],
   },
   faqItems,
-  software: {
+  page: {
     pagePath: '/rename-audio-with-ai',
     description:
       'AI audio renamer that turns generic music tracks, voice memos, interviews, podcasts, and meeting recordings into searchable filenames.',

@@ -71,9 +71,9 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
           'Connect Gemini, Groq, OpenAI, or Claude with your own key when you want unlimited cloud renames from macOS.',
       },
       offlineAi: {
-        title: 'Local AI with Ollama',
+        title: 'Built-in Local AI, LM Studio, or Ollama',
         description:
-          'Run supported Mac file analysis with local models when privacy or offline work matters more than cloud speed.',
+          'Run supported Mac file analysis on-device with Zush-managed Local AI or models you manage in LM Studio or Ollama.',
       },
       addFolder: 'Add Mac folder',
       analysisNewName: 'Client Contract Signed.pdf',
@@ -167,9 +167,9 @@ const EN_PLATFORM_OVERRIDES: PlatformOverrides = {
           'Use your own Gemini, Groq, OpenAI, or Claude key for cloud renames; FREE includes 50 across all modes and PRO is unlimited from the Windows app.',
       },
       offlineAi: {
-        title: 'Local AI with Ollama',
+        title: 'Built-in Local AI, LM Studio, or Ollama',
         description:
-          'Run supported file analysis locally when you want private renaming without sending content to cloud models.',
+          'Run supported Windows file analysis on-device with Zush-managed Local AI or models you manage in LM Studio or Ollama.',
       },
       addFolder: 'Add Windows folder',
       analysisNewName: 'Vendor NDA Final.pdf',

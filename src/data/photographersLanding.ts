@@ -286,6 +286,7 @@ export const PHOTOGRAPHERS_FAQ = [
 ];
 
 export const PHOTOGRAPHERS_JSON_LD = buildFeaturePageJsonLd({
+  pageName: PHOTOGRAPHERS_PAGE_TITLE,
   howTo: {
     name: 'How to batch rename a photo or video shoot with AI',
     description:
@@ -306,11 +307,10 @@ export const PHOTOGRAPHERS_JSON_LD = buildFeaturePageJsonLd({
     ],
   },
   faqItems: PHOTOGRAPHERS_FAQ,
-  software: {
+  page: {
     pagePath: PHOTOGRAPHERS_PAGE_PATH,
     description:
       'AI file renamer for photographers and videographers on Mac and Windows. Zush names RAW photos, JPEGs, and video clips by project, date, subject, scene, camera, and take.',
-    applicationSubCategory: 'Photo and Video File Renaming',
     featureList: [
       'Batch rename RAW photos, JPEGs, and video clips by content',
       'Build reusable naming Templates for shoots and deliverables',

@@ -231,6 +231,7 @@ export const REAL_ESTATE_FAQ = [
 ];
 
 export const REAL_ESTATE_JSON_LD = buildFeaturePageJsonLd({
+  pageName: REAL_ESTATE_PAGE_TITLE,
   howTo: {
     name: 'How to organize real estate transaction files with AI',
     description:
@@ -251,11 +252,10 @@ export const REAL_ESTATE_JSON_LD = buildFeaturePageJsonLd({
     ],
   },
   faqItems: REAL_ESTATE_FAQ,
-  software: {
+  page: {
     pagePath: REAL_ESTATE_PAGE_PATH,
     description:
       'Real estate document management with AI file renaming for Mac and Windows. Zush names transaction documents and property media by address, date, type, party, and status without replacing the brokerage’s existing systems.',
-    applicationSubCategory: 'Real Estate Document Organization Software',
     featureList: [
       'Rename real estate documents by property address, date, and type',
       'Turn DocuSign and portal downloads into searchable transaction files',

@@ -1,14 +1,8 @@
 import {
-  APP_STORE_URL,
   CRUNCHBASE_URL,
   FACEBOOK_PROFILE_URL,
-  GITHUB_RELEASES_URL,
-  GOOGLE_WORKSPACE_MARKETPLACE_URL,
-  HOMEBREW_CASK_URL,
   LINKEDIN_COMPANY_URL,
-  PRODUCT_HUNT_URL,
   SUPPORT_EMAIL,
-  WINDOWS_STORE_URL,
   X_PROFILE_URL,
   YOUTUBE_CHANNEL_URL,
 } from '@/constants';
@@ -24,14 +18,13 @@ const SOFTWARE_ID = `${SITE_ORIGIN}/#software`;
 export const ORGANIZATION_REF = { '@id': ORGANIZATION_ID } as const;
 export const WEBSITE_REF = { '@id': WEBSITE_ID } as const;
 
-/** Branded names people use for the same Zush product and entity. */
+/** Genuine branded names used for the same Zush product. Generic product
+ * categories belong in keywords and applicationSubCategory, not alternateName. */
 export const ZUSH_BRAND_ALTERNATE_NAMES = [
-  'Zush AI',
   'Zush AI Renamer',
   'Zush AI File Renamer',
   'Zush File Renamer',
   'Zush Renamer',
-  'Zush AI File Organizer',
   'Zush App',
 ] as const;
 
@@ -56,18 +49,12 @@ export const SOFTWARE_REF = {
 const ORGANIZATION_SAME_AS = [
   X_PROFILE_URL,
   YOUTUBE_CHANNEL_URL,
-  PRODUCT_HUNT_URL,
   CRUNCHBASE_URL,
   LINKEDIN_COMPANY_URL,
   FACEBOOK_PROFILE_URL,
-  GITHUB_RELEASES_URL,
-  HOMEBREW_CASK_URL,
-  APP_STORE_URL,
-  WINDOWS_STORE_URL,
-  GOOGLE_WORKSPACE_MARKETPLACE_URL,
 ];
 
-const ORGANIZATION_JSON_LD = {
+export const ORGANIZATION_JSON_LD = {
   '@type': 'Organization',
   '@id': ORGANIZATION_ID,
   name: 'Zush',
@@ -90,12 +77,11 @@ const ORGANIZATION_JSON_LD = {
   sameAs: ORGANIZATION_SAME_AS,
 };
 
-const WEBSITE_JSON_LD = {
+export const WEBSITE_JSON_LD = {
   '@type': 'WebSite',
   '@id': WEBSITE_ID,
   url: SITE_ORIGIN,
   name: 'Zush',
-  alternateName: [...ZUSH_BRAND_ALTERNATE_NAMES],
   publishingPrinciples: `${SITE_ORIGIN}/methodology`,
   publisher: ORGANIZATION_REF,
   // The only site-wide search surface is the blog search page.
@@ -109,11 +95,10 @@ const WEBSITE_JSON_LD = {
   },
 };
 
-/**
- * Site-wide identity graph. Emitted on every page so that `@id` references to the
- * Organization and WebSite nodes resolve no matter which page a crawler lands on.
- */
-export const SITE_ENTITY_JSON_LD = {
-  '@context': 'https://schema.org',
-  '@graph': [ORGANIZATION_JSON_LD, WEBSITE_JSON_LD],
-};
+/** Organization is site-wide; WebSite is emitted only on the canonical domain homepage. */
+export function buildSiteEntityJsonLd(includeWebsite = false) {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [ORGANIZATION_JSON_LD, ...(includeWebsite ? [WEBSITE_JSON_LD] : [])],
+  };
+}

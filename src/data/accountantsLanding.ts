@@ -256,6 +256,7 @@ export const ACCOUNTANTS_FAQ = [
 ];
 
 export const ACCOUNTANTS_JSON_LD = buildFeaturePageJsonLd({
+  pageName: ACCOUNTANTS_PAGE_TITLE,
   howTo: {
     name: 'Set up AI file renaming for accounting documents',
     description:
@@ -276,11 +277,10 @@ export const ACCOUNTANTS_JSON_LD = buildFeaturePageJsonLd({
     ],
   },
   faqItems: ACCOUNTANTS_FAQ,
-  software: {
+  page: {
     pagePath: ACCOUNTANTS_PAGE_PATH,
     description:
       'AI file renamer for accountants and bookkeepers on Mac and Windows. Zush names invoices, receipts, statements, tax forms, and scans by the fields each client workflow needs without replacing a DMS or ledger.',
-    applicationSubCategory: 'Accounting Document File Renaming',
     featureList: [
       'Name invoices by vendor, date, number, amount, and currency',
       'Read scanned documents and receipt photos with AI vision',

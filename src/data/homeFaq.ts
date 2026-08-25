@@ -1,5 +1,10 @@
 import type { FAQItem } from '@/data/blog';
-import { APP_CONFIG, SUPPORTED_FORMAT_COUNT } from '@/constants';
+import {
+  AI_MODES_SUMMARY,
+  APP_CONFIG,
+  LOCAL_AI_MODES_SUMMARY,
+  SUPPORTED_FORMAT_COUNT,
+} from '@/constants';
 import { PRO_PRICING } from '@/constants/pricing';
 
 export const HOME_FAQ_DATA: FAQItem[] = [
@@ -26,12 +31,12 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'Is Zush free to try?',
     answer:
-      `Yes. Zush includes ${APP_CONFIG.free_tier_limit} free AI renames with no credit card required across Cloud AI, BYOK, and Local AI, so you can test the full workflow before upgrading.`,
+      `Yes. Zush includes ${APP_CONFIG.free_tier_limit} free AI renames with no credit card required, shared across ${AI_MODES_SUMMARY}, so you can test the full workflow before upgrading.`,
   },
   {
     question: 'Is my data private?',
     answer:
-      'Your original files stay on your device. Cloud mode sends only the content needed for analysis, BYOK sends it to the AI provider you choose, and Local AI with Ollama processes supported files on your computer without cloud processing.',
+      `Your original files stay on your device. Zush Cloud AI sends only the content needed for analysis, BYOK sends it to the provider you choose, and ${LOCAL_AI_MODES_SUMMARY} keep supported analysis on your computer without cloud processing.`,
   },
   {
     question: 'Which operating systems does Zush support?',
@@ -46,7 +51,7 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'Can Zush rename files offline?',
     answer:
-      'Yes. Local AI works offline after you install Ollama and a compatible model. It is available on the free plan for supported files and shares the 50-rename limit with Cloud AI and BYOK; PRO removes that limit.',
+      `Yes. Built-in Local AI works offline after its model is downloaded; LM Studio and Ollama work offline after their local models are configured. All three local modes are available on the free plan for supported files and share the ${APP_CONFIG.free_tier_limit}-rename limit with Zush Cloud AI and BYOK; PRO removes that limit.`,
   },
   {
     question: 'How does folder monitoring work?',
@@ -71,6 +76,6 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'How much does Zush PRO cost?',
     answer:
-      `Zush PRO costs ${PRO_PRICING.monthly.label} per month or ${PRO_PRICING.oneTime.label} as a one-time purchase. BYOK and Local AI are already available within the ${APP_CONFIG.free_tier_limit}-rename free limit; both PRO plans remove that limit across every AI mode. Eligible purchases include a 14-day refund period.`,
+      `Zush PRO costs ${PRO_PRICING.monthly.label} per month or ${PRO_PRICING.oneTime.label} as a one-time purchase. Every mode — ${AI_MODES_SUMMARY} — is available within the ${APP_CONFIG.free_tier_limit}-rename free limit; both PRO plans remove that limit. Eligible purchases include a 14-day refund period.`,
   },
 ];

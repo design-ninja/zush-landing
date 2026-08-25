@@ -45,6 +45,35 @@ const USE_CASES_BLOCK_ROUTES = [
   '/rename-photos-with-ai',
   '/rename-screenshots-with-ai',
 ];
+const FULL_SOFTWARE_APPLICATION_ROUTES = new Set(['/', '/mac', '/windows']);
+const ROOT_SOFTWARE_ID = `${SITE_ORIGIN}/#software`;
+const ORGANIZATION_ALTERNATE_NAMES = [
+  'Zush AI Renamer',
+  'Zush AI File Renamer',
+  'Zush File Renamer',
+  'Zush Renamer',
+  'Zush App',
+];
+const PLATFORM_SOFTWARE = {
+  '/mac': {
+    id: `${SITE_ORIGIN}/mac#software`,
+    name: 'Zush for Mac',
+    alternateName: [
+      'Zush AI Renamer for Mac',
+      'Zush AI File Renamer for Mac',
+      'Zush File Renamer for Mac',
+    ],
+  },
+  '/windows': {
+    id: `${SITE_ORIGIN}/windows#software`,
+    name: 'Zush for Windows',
+    alternateName: [
+      'Zush AI Renamer for Windows',
+      'Zush AI File Renamer for Windows',
+      'Zush File Renamer for Windows',
+    ],
+  },
+};
 
 function fail(message) {
   throw new Error(message);
@@ -129,6 +158,19 @@ function collectJsonLdObjects(item) {
   });
 }
 
+function collectDeepJsonLdObjects(item) {
+  if (Array.isArray(item)) {
+    return item.flatMap((entry) => collectDeepJsonLdObjects(entry));
+  }
+  if (!item || typeof item !== 'object') return [];
+  return [item, ...Object.values(item).flatMap((entry) => collectDeepJsonLdObjects(entry))];
+}
+
+function parsedJsonLdItems(html, pathname, deep = false) {
+  const collect = deep ? collectDeepJsonLdObjects : collectJsonLdObjects;
+  return getJsonLdBlocks(html).flatMap((block) => collect(parseJsonLdBlock(block, pathname)));
+}
+
 function hasJsonLdType(item, type) {
   const itemType = item['@type'];
   return Array.isArray(itemType) ? itemType.includes(type) : itemType === type;
@@ -153,44 +195,38 @@ function assertVideoBooleanAttribute(tag, attrName, pathname) {
 
 function assertHomepageHeroVideo(html, pathname) {
   const videoTags = html.match(/<video\b[^>]*>/g) ?? [];
-  // One recording per theme; CSS keeps the inactive one at `display: none`.
-  if (videoTags.length !== 2) {
-    fail(`Homepage should emit exactly two demo <video> tags on ${pathname}`);
+  // One video receives only the active theme's source on the client. Keeping
+  // both URLs in data attributes prevents the inactive recording from loading.
+  if (videoTags.length !== 1) {
+    fail(`Homepage should emit exactly one demo <video> tag on ${pathname}`);
   }
 
-  for (const videoTag of videoTags) {
-    assertVideoBooleanAttribute(videoTag, 'autoplay', pathname);
-    assertVideoBooleanAttribute(videoTag, 'muted', pathname);
-    assertVideoBooleanAttribute(videoTag, 'playsinline', pathname);
-    assertVideoBooleanAttribute(videoTag, 'loop', pathname);
+  const [videoTag] = videoTags;
+  assertVideoBooleanAttribute(videoTag, 'autoplay', pathname);
+  assertVideoBooleanAttribute(videoTag, 'muted', pathname);
+  assertVideoBooleanAttribute(videoTag, 'playsinline', pathname);
+  assertVideoBooleanAttribute(videoTag, 'loop', pathname);
+  assertIncludes(
+    videoTag,
+    `preload="metadata"`,
+    `Homepage demo video should preload metadata only on ${pathname}`,
+  );
+  assertNotIncludes(
+    videoTag,
+    ' src=',
+    `Homepage demo video must not SSR a downloadable source on ${pathname}`,
+  );
+
+  for (const theme of ['light', 'dark']) {
     assertIncludes(
       videoTag,
-      `preload="metadata"`,
-      `Homepage demo video should preload metadata only on ${pathname}`,
-    );
-  }
-
-  const [lightTag, darkTag] = videoTags;
-  const themedTags = [
-    { tag: lightTag, theme: 'light' },
-    { tag: darkTag, theme: 'dark' },
-  ];
-
-  for (const { tag, theme } of themedTags) {
-    assertIncludes(
-      tag,
-      `data-demo-theme="${theme}"`,
-      `Homepage demo video should mark the ${theme} recording on ${pathname}`,
+      `data-${theme}-src="${HOMEPAGE_DEMO_VIDEO[theme].source}"`,
+      `Homepage demo video should expose the ${theme} source for client selection on ${pathname}`,
     );
     assertIncludes(
-      tag,
-      `src="${HOMEPAGE_DEMO_VIDEO[theme].source}"`,
-      `Homepage demo video should SSR the ${theme} source on ${pathname}`,
-    );
-    assertIncludes(
-      tag,
-      `poster="${HOMEPAGE_DEMO_VIDEO[theme].poster}"`,
-      `Homepage demo video should SSR the ${theme} poster on ${pathname}`,
+      videoTag,
+      `data-${theme}-poster="${HOMEPAGE_DEMO_VIDEO[theme].poster}"`,
+      `Homepage demo video should expose the ${theme} poster for client selection on ${pathname}`,
     );
   }
 }
@@ -243,6 +279,28 @@ for (const loc of locs) {
 
   const html = readFileSync(filePath, 'utf8');
   const jsonLdBlocks = getJsonLdBlocks(html);
+  const topLevelJsonLdItems = jsonLdBlocks.flatMap((block) =>
+    collectJsonLdObjects(parseJsonLdBlock(block, pathname))
+  );
+  const fullSoftwareApplications = topLevelJsonLdItems.filter((item) =>
+    hasJsonLdType(item, 'SoftwareApplication')
+  );
+  const websites = topLevelJsonLdItems.filter((item) => hasJsonLdType(item, 'WebSite'));
+
+  if (FULL_SOFTWARE_APPLICATION_ROUTES.has(pathname)) {
+    if (fullSoftwareApplications.length !== 1) {
+      fail(`${pathname} must emit exactly one full SoftwareApplication definition.`);
+    }
+  } else if (fullSoftwareApplications.length > 0) {
+    fail(`Non-canonical SoftwareApplication definition emitted on ${pathname}`);
+  }
+
+  if (pathname === '/') {
+    if (websites.length !== 1) fail('Homepage must emit exactly one WebSite definition.');
+  } else if (websites.length > 0) {
+    fail(`WebSite definition must only be emitted on the canonical homepage: ${pathname}`);
+  }
+
   assertVideoObjectUploadDate(jsonLdBlocks, pathname);
   assertIncludes(html, '<h1', `Missing <h1> in raw HTML for ${pathname}`);
 
@@ -275,9 +333,8 @@ for (const loc of locs) {
     if (/<img\b[^>]*\bsrc="[^"]+\.mp4(?:\?[^\"]*)?"/i.test(html)) {
       fail(`MP4 source rendered as an image instead of a poster link on ${pathname}`);
     }
-    // The Organization and WebSite nodes are site-wide identity nodes emitted on every
-    // page by BaseLayout, so `/#organization` and `/#website` are expected here.
-    // Homepage-specific page and product nodes still must not leak into blog posts.
+    // Organization is site-wide. WebSite and full product definitions belong only
+    // to their canonical pages and must not leak into blog posts.
     const hasHomepageIds = jsonLdBlocks.some(
       (block) => block.includes('/#software') || block.includes('"https://zushapp.com/#webpage"'),
     );
@@ -298,6 +355,77 @@ for (const loc of locs) {
     if (pathname !== '/' && html.includes('"@type":"VideoObject"')) {
       fail(`VideoObject JSON-LD should not be present on non-watch page ${pathname}`);
     }
+  }
+}
+
+function assertEntityReference(pathname, expectedSoftwareId, expectedLanguage) {
+  const html = readFileSync(htmlFileForPath(pathname), 'utf8');
+  const items = parsedJsonLdItems(html, pathname);
+  const pageId = `${SITE_ORIGIN}${pathname === '/' ? '/' : pathname}#webpage`;
+  const webPage = items.find((item) => hasJsonLdType(item, 'WebPage') && item['@id'] === pageId);
+  if (!webPage) fail(`Canonical WebPage JSON-LD missing for ${pathname}`);
+  if (webPage.mainEntity?.['@id'] !== expectedSoftwareId) {
+    fail(`WebPage.mainEntity points at the wrong software entity on ${pathname}`);
+  }
+  if (webPage.about?.['@id'] !== expectedSoftwareId) {
+    fail(`WebPage.about points at the wrong software entity on ${pathname}`);
+  }
+  if (expectedLanguage && webPage.inLanguage !== expectedLanguage) {
+    fail(`WebPage.inLanguage mismatch on ${pathname}`);
+  }
+}
+
+for (const pathname of ['/batch-rename-files', '/for-accountants']) {
+  assertEntityReference(pathname, ROOT_SOFTWARE_ID, 'en');
+}
+assertEntityReference('/de', ROOT_SOFTWARE_ID, 'de');
+assertEntityReference('/de/rename-pdf-with-ai', ROOT_SOFTWARE_ID, 'de');
+assertEntityReference('/de/mac', PLATFORM_SOFTWARE['/mac'].id, 'de');
+assertEntityReference('/de/windows', PLATFORM_SOFTWARE['/windows'].id, 'de');
+
+for (const pathname of ['/de', '/de/mac', '/de/windows', '/de/rename-pdf-with-ai', '/about']) {
+  const html = readFileSync(htmlFileForPath(pathname), 'utf8');
+  assertNotIncludes(html, '<meta name="keywords"', `Generic meta keywords leaked onto ${pathname}`);
+}
+
+for (const [pathname, expected] of Object.entries(PLATFORM_SOFTWARE)) {
+  const html = readFileSync(htmlFileForPath(pathname), 'utf8');
+  const app = parsedJsonLdItems(html, pathname).find((item) =>
+    hasJsonLdType(item, 'SoftwareApplication') && item['@id'] === expected.id
+  );
+  if (!app) fail(`Canonical platform SoftwareApplication missing on ${pathname}`);
+  if (app.name !== expected.name) fail(`Platform SoftwareApplication.name mismatch on ${pathname}`);
+  if (JSON.stringify(app.alternateName) !== JSON.stringify(expected.alternateName)) {
+    fail(`Platform SoftwareApplication.alternateName mismatch on ${pathname}`);
+  }
+  if (app.applicationSubCategory !== 'File Renaming and Organization') {
+    fail(`Platform applicationSubCategory mismatch on ${pathname}`);
+  }
+  if (app.applicationSuite !== 'Zush') {
+    fail(`applicationSuite must remain Zush on ${pathname}`);
+  }
+}
+
+for (const [pathname, expectedSoftwareId] of [
+  ['/blog/best-ai-file-renamer-tools-mac-compared', PLATFORM_SOFTWARE['/mac'].id],
+  ['/blog/best-ai-file-renamer-tools-windows-compared', PLATFORM_SOFTWARE['/windows'].id],
+]) {
+  const html = readFileSync(htmlFileForPath(pathname), 'utf8');
+  const deepItems = parsedJsonLdItems(html, pathname, true);
+  const productReference = deepItems.find((item) => item['@id'] === expectedSoftwareId);
+  if (!productReference) fail(`Comparison ItemList is missing its canonical app reference on ${pathname}`);
+  if (productReference['@type'] === 'SoftwareApplication') {
+    fail(`Comparison ItemList must reference, not redefine, SoftwareApplication on ${pathname}`);
+  }
+}
+
+{
+  const pathname = '/pricing';
+  const html = readFileSync(htmlFileForPath(pathname), 'utf8');
+  const items = parsedJsonLdItems(html, pathname);
+  const catalog = items.find((item) => hasJsonLdType(item, 'OfferCatalog'));
+  if (!catalog || !Array.isArray(catalog.itemListElement) || catalog.itemListElement.length !== 3) {
+    fail('Pricing page must expose its three plans through OfferCatalog.');
   }
 }
 
@@ -350,6 +478,13 @@ for (const productPath of ['/batch-rename-files', '/ai-file-organizer', '/mac', 
 const homepageHtml = readFileSync(join(DIST, 'index.html'), 'utf8');
 const homepageJsonLdBlocks = getJsonLdBlocks(homepageHtml).map((block) => JSON.parse(block));
 const homepageFaq = homepageJsonLdBlocks.find((item) => item['@type'] === 'FAQPage');
+const homepageJsonLdItems = parsedJsonLdItems(homepageHtml, '/');
+const homepageSoftware = homepageJsonLdItems.find((item) =>
+  hasJsonLdType(item, 'SoftwareApplication') && item['@id'] === ROOT_SOFTWARE_ID
+);
+const homepageOrganization = homepageJsonLdItems.find((item) =>
+  hasJsonLdType(item, 'Organization') && item['@id'] === `${SITE_ORIGIN}/#organization`
+);
 assertIncludes(homepageHtml, '"@type":"SoftwareApplication"', 'Homepage SoftwareApplication JSON-LD missing.');
 assertNotIncludes(homepageHtml, '"@type":"HowTo"', 'Homepage should not emit HowTo JSON-LD.');
 if (!homepageFaq) {
@@ -357,6 +492,13 @@ if (!homepageFaq) {
 }
 if (!Array.isArray(homepageFaq.mainEntity) || homepageFaq.mainEntity.length === 0) {
   fail('Homepage FAQPage JSON-LD should include questions.');
+}
+if (homepageSoftware?.name !== 'Zush') fail('Homepage SoftwareApplication.name must remain Zush.');
+if (JSON.stringify(homepageSoftware?.alternateName) !== JSON.stringify(ORGANIZATION_ALTERNATE_NAMES)) {
+  fail('Homepage SoftwareApplication branded alternateName set changed unexpectedly.');
+}
+if (JSON.stringify(homepageOrganization?.alternateName) !== JSON.stringify(ORGANIZATION_ALTERNATE_NAMES)) {
+  fail('Organization.alternateName changed unexpectedly.');
 }
 assertNotIncludes(homepageHtml, '"speakable"', 'Homepage should not emit speakable JSON-LD.');
 

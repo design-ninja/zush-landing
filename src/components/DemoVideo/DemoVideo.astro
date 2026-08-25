@@ -16,20 +16,13 @@ const {
   preload = 'metadata',
 } = Astro.props as Props;
 
-// Two recordings of the same demo, one per theme. Both are rendered and CSS
-// picks the active one — the hidden element is `display: none`, so it never
-// autoplays and stays at metadata-only download. A recording that exists in a
-// single theme is rendered once and shown in both themes.
+// Two recordings of the same demo exist, one per theme. Render a single video
+// without an SSR `src`; the client assigns only the active theme's source. This
+// keeps autoplay while preventing the hidden recording from being downloaded.
 //
 // Neither file has an audio track, which is also why the native controls show
 // no volume slider: browsers omit it when there is nothing to mute.
 const isThemeAware = media.sources.light !== media.sources.dark;
-const VARIANTS = [
-  { theme: isThemeAware ? 'light' : 'any', src: media.sources.light, poster: media.posters.light },
-  ...(isThemeAware
-    ? [{ theme: 'dark', src: media.sources.dark, poster: media.posters.dark }]
-    : []),
-];
 
 const frameStyle = { '--demo-video-aspect-ratio': `${media.width} / ${media.height}` };
 ---
@@ -39,22 +32,64 @@ const frameStyle = { '--demo-video-aspect-ratio': `${media.width} / ${media.heig
 <section class={styles.DemoVideo} aria-label={label} data-scroll-reveal-skip>
   <div class={styles.DemoVideo__Container}>
     <div class={styles.DemoVideo__Frame} style={frameStyle}>
-      {VARIANTS.map(({ theme, src, poster }) => (
-        <video
-          class={styles.DemoVideo__Video}
-          data-demo-theme={theme}
-          src={src}
-          poster={poster}
-          controls
-          controlslist="nodownload"
-          autoplay={autoplay}
-          loop
-          muted
-          playsinline
-          preload={preload}
-          aria-label={label}
-        ></video>
-      ))}
+      <video
+        class={styles.DemoVideo__Video}
+        data-demo-video
+        data-light-src={media.sources.light}
+        data-dark-src={isThemeAware ? media.sources.dark : media.sources.light}
+        data-light-poster={media.posters.light}
+        data-dark-poster={isThemeAware ? media.posters.dark : media.posters.light}
+        controls
+        controlslist="nodownload"
+        autoplay={autoplay}
+        loop
+        muted
+        playsinline
+        preload={preload}
+        aria-label={label}
+      ></video>
     </div>
   </div>
 </section>
+
+<script>
+  const applyDemoVideoTheme = (video: HTMLVideoElement) => {
+    const theme = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+    const nextSrc = theme === 'dark' ? video.dataset.darkSrc : video.dataset.lightSrc;
+    const nextPoster = theme === 'dark' ? video.dataset.darkPoster : video.dataset.lightPoster;
+
+    if (!nextSrc || video.getAttribute('src') === nextSrc) return;
+
+    // Detach the previous theme before attaching the next one, so a theme
+    // switch never leaves two downloadable media sources in the document.
+    video.pause();
+    video.removeAttribute('src');
+    video.load();
+
+    if (nextPoster) video.poster = nextPoster;
+    video.src = nextSrc;
+    video.muted = true;
+    video.load();
+
+    if (video.autoplay) {
+      void video.play().catch(() => {
+        // Autoplay can still be blocked by a browser-level user preference.
+      });
+    }
+  };
+
+  const initializeDemoVideos = () => {
+    document
+      .querySelectorAll<HTMLVideoElement>('video[data-demo-video]')
+      .forEach(applyDemoVideoTheme);
+  };
+
+  initializeDemoVideos();
+  document.addEventListener('astro:page-load', initializeDemoVideos);
+
+  const demoVideoThemeObserver = new MutationObserver(initializeDemoVideos);
+  demoVideoThemeObserver.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme'],
+  });
+</script>

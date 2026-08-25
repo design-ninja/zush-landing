@@ -60,7 +60,7 @@ const jsonLd = buildFeaturePageJsonLd({
     ],
   },
   faqItems,
-  software: {
+  page: {
     pagePath: '/rename-pdf-with-ai',
     description:
       'AI PDF renamer that extracts text from invoices, contracts, scanned receipts, and reports to generate searchable filenames automatically.',

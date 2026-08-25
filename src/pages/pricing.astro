@@ -7,7 +7,7 @@ import { APP_CONFIG, PRODUCT_FACTS_REVIEWED_AT } from '@/constants';
 import { PRO_PRICING } from '@/constants/pricing';
 import { getCopy } from '@/i18n/copy';
 import { getSeoForPath, SITE_ORIGIN } from '@/seo/config';
-import { ORGANIZATION_REF, SOFTWARE_REF, WEBSITE_REF } from '@/seo/entity';
+import { SOFTWARE_REF, WEBSITE_REF } from '@/seo/entity';
 import styles from '@/views/Editorial/EditorialPage.module.scss';
 
 const seo = getSeoForPath('/pricing');
@@ -26,7 +26,7 @@ const jsonLd = {
       inLanguage: 'en',
       isPartOf: WEBSITE_REF,
       about: SOFTWARE_REF,
-      mainEntity: { '@id': `${SITE_ORIGIN}/#software` },
+      mainEntity: { '@id': `${pageUrl}#offers` },
       breadcrumb: {
         '@type': 'BreadcrumbList',
         itemListElement: [
@@ -36,10 +36,11 @@ const jsonLd = {
       },
     },
     {
-      ...SOFTWARE_REF,
-      mainEntityOfPage: { '@id': `${pageUrl}#webpage` },
-      publisher: ORGANIZATION_REF,
-      offers: [
+      '@type': 'OfferCatalog',
+      '@id': `${pageUrl}#offers`,
+      name: 'Zush plans',
+      url: pageUrl,
+      itemListElement: [
         {
           '@type': 'Offer',
           name: 'Free starter',
@@ -48,6 +49,7 @@ const jsonLd = {
           availability: 'https://schema.org/InStock',
           url: pageUrl,
           description: `Free tier with ${APP_CONFIG.free_tier_limit} AI renames shared across every cloud and local AI mode.`,
+          itemOffered: SOFTWARE_REF,
         },
         {
           '@type': 'Offer',
@@ -57,6 +59,7 @@ const jsonLd = {
           availability: 'https://schema.org/InStock',
           url: pageUrl,
           description: 'Monthly plan with unlimited renames across every cloud and local AI mode.',
+          itemOffered: SOFTWARE_REF,
         },
         {
           '@type': 'Offer',
@@ -66,6 +69,7 @@ const jsonLd = {
           availability: 'https://schema.org/InStock',
           url: pageUrl,
           description: 'One-time purchase with lifetime access and unlimited renames across every cloud and local AI mode.',
+          itemOffered: SOFTWARE_REF,
         },
       ],
     },

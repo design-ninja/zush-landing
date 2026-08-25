@@ -50,7 +50,7 @@ const jsonLd = buildFeaturePageJsonLd({
     ],
   },
   faqItems,
-  software: {
+  page: {
     pagePath: '/rename-design-files-with-ai',
     description:
       'AI design file renamer for Sketch, Figma .fig, Illustrator .ai, and PSD files.',

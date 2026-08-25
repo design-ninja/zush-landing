@@ -4,16 +4,10 @@ import HrLandingPage from '@/components/HrLandingPage/HrLandingPage.astro';
 import { HR_JSON_LD, HR_PAGE_PATH, HR_PAGE_TITLE } from '@/data/hrLanding';
 import { getSeoForPath } from '@/seo/config';
 import { getCopy } from '@/i18n/copy';
-import { buildFeatureBreadcrumbJsonLd, buildWebPageJsonLd } from '@/utils/jsonLd';
+import { buildFeatureBreadcrumbJsonLd } from '@/utils/jsonLd';
 
 const seo = getSeoForPath(HR_PAGE_PATH);
 const header = getCopy('en').header;
-const pageJsonLd = buildWebPageJsonLd({
-  pagePath: HR_PAGE_PATH,
-  title: HR_PAGE_TITLE,
-  description: seo.description,
-});
-
 const headerNav = [
   { href: '#fields', label: header.features },
   { href: '#privacy', label: header.security },
@@ -28,7 +22,6 @@ const headerNav = [
   headerNav={headerNav}
   disableTopOffset
   jsonLd={[
-    pageJsonLd,
     HR_JSON_LD,
     buildFeatureBreadcrumbJsonLd(HR_PAGE_TITLE, HR_PAGE_PATH),
   ]}

@@ -233,5 +233,6 @@ export function getLocalizedSeoForRoute(route: LocalizedRoute, locale: Locale): 
       ?? seo.description,
     canonicalPath: getLocalizedPath(route, locale),
     robots,
+    keywords: isNonDefaultLocale ? undefined : seo.keywords,
   };
 }

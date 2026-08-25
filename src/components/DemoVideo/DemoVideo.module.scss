@@ -45,20 +45,5 @@
         // what the eye reads rather than the parent's clip edge.
         border-radius: inherit;
 
-        // Only the recording matching the active theme is laid out; the other
-        // stays `display: none`, so it neither autoplays nor downloads.
-        &[data-demo-theme='dark'] {
-            display: none;
-        }
-
-        :global(html[data-theme='dark']) & {
-            &[data-demo-theme='light'] {
-                display: none;
-            }
-
-            &[data-demo-theme='dark'] {
-                display: block;
-            }
-        }
     }
 }

@@ -8,17 +8,10 @@ import {
 } from '@/data/accountantsLanding';
 import { getSeoForPath } from '@/seo/config';
 import { getCopy } from '@/i18n/copy';
-import { buildFeatureBreadcrumbJsonLd, buildWebPageJsonLd } from '@/utils/jsonLd';
+import { buildFeatureBreadcrumbJsonLd } from '@/utils/jsonLd';
 
 const seo = getSeoForPath(ACCOUNTANTS_PAGE_PATH);
 const header = getCopy('en').header;
-const pageJsonLd = buildWebPageJsonLd({
-  pagePath: ACCOUNTANTS_PAGE_PATH,
-  title: ACCOUNTANTS_PAGE_TITLE,
-  description: seo.description,
-  mainEntityId: `https://zushapp.com${ACCOUNTANTS_PAGE_PATH}#software`,
-});
-
 const headerNav = [
   { href: '#fields', label: header.features },
   { href: '#privacy', label: header.security },
@@ -33,7 +26,6 @@ const headerNav = [
   headerNav={headerNav}
   disableTopOffset
   jsonLd={[
-    pageJsonLd,
     ACCOUNTANTS_JSON_LD,
     buildFeatureBreadcrumbJsonLd(ACCOUNTANTS_PAGE_TITLE, ACCOUNTANTS_PAGE_PATH),
   ]}

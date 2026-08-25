@@ -29,13 +29,13 @@ export async function GET() {
     .map((entry) => `- [${entry.data.title}](${SITE_ORIGIN}${getDocsRoute(entry.id)})`);
 
   const body = [
-    '# Zush',
+    '# Zush AI File Renamer for Mac and Windows',
     '',
     '> Zush is an AI file renamer and organizer for Mac and Windows. It reads screenshots, PDFs, photos, documents, videos, audio, and design files, then batch renames files by content with review, folder monitoring, templates, and undo.',
     '',
     '## Product',
     '',
-    `- [AI File Renamer & Organizer for Mac and Windows](${SITE_ORIGIN}/)`,
+    `- [Zush AI File Renamer for Mac and Windows](${SITE_ORIGIN}/)`,
     `- [Batch Rename Files with AI](${SITE_ORIGIN}/batch-rename-files)`,
     `- [AI File Organizer for Mac & Windows](${SITE_ORIGIN}/ai-file-organizer)`,
     `- [Offline AI File Renamer](${SITE_ORIGIN}/offline-ai-file-renamer)`,

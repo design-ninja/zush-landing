@@ -20,7 +20,7 @@ import RenamePhotosWithAI from '@/views/FeaturePages/RenamePhotosWithAI';
 import RenameScreenshotsWithAI from '@/views/FeaturePages/RenameScreenshotsWithAI';
 import RenameVideosWithAI from '@/views/FeaturePages/RenameVideosWithAI';
 import ThankYouView from '@/views/ThankYou';
-import { buildFeatureBreadcrumbJsonLd, buildFeaturePageJsonLd, buildWebPageJsonLd } from '@/utils/jsonLd';
+import { buildFAQPageJsonLd, buildFeatureBreadcrumbJsonLd, buildFeaturePageJsonLd, buildWebPageJsonLd } from '@/utils/jsonLd';
 import {
   LOCALIZED_ROUTES,
   getLocalesForRoute,
@@ -49,6 +49,20 @@ const FEATURE_VIEWS = {
   '/rename-videos-with-ai': RenameVideosWithAI,
   '/rename-audio-with-ai': RenameAudioWithAI,
 } as const;
+
+function withoutFeaturePageEntities(jsonLd: object) {
+  const source = jsonLd as {
+    '@context'?: string;
+    '@graph'?: Array<Record<string, unknown>>;
+  };
+
+  return {
+    ...source,
+    '@graph': (source['@graph'] ?? []).filter((item) => (
+      item['@type'] !== 'WebPage' && item['@type'] !== 'FAQPage'
+    )),
+  };
+}
 
 export function getStaticPaths() {
   return LOCALIZED_ROUTES
@@ -105,6 +119,7 @@ const serviceSeo = isServiceLocalizedRoute(route)
       ...serviceCopy.seo[route],
       canonicalPath: localizedPath,
       robots: 'noindex, nofollow',
+      keywords: undefined,
     }
   : null;
 const localizedHomeHref = getLocalizedPath('/', locale);
@@ -123,6 +138,7 @@ const professionSeo = professionPage
       ...professionPage.seo,
       canonicalPath: localizedPath,
       robots: 'index, follow',
+      keywords: undefined,
     }
   : null;
 const professionHeaderNav = professionPage
@@ -147,13 +163,9 @@ const professionHeaderNav = professionPage
       headerNav={professionHeaderNav}
       disableTopOffset
       jsonLd={[
-        buildWebPageJsonLd({
-          pagePath: localizedPath,
-          title: professionPage.pageTitle,
-          description: professionPage.seo.description,
-          mainEntityId: `https://zushapp.com${localizedPath}#software`,
-        }),
         buildFeaturePageJsonLd({
+          pageName: professionPage.pageTitle,
+          inLanguage: locale,
           howTo: {
             name: professionPage.workflow.title,
             description: professionPage.workflow.description,
@@ -163,7 +175,7 @@ const professionHeaderNav = professionPage
             })),
           },
           faqItems: professionPage.faq.items,
-          software: {
+          page: {
             pagePath: localizedPath,
             description: professionPage.seo.description,
             featureList: professionPage.documents.items.map((item) => item.title),
@@ -314,6 +326,8 @@ const professionHeaderNav = professionPage
     };
     const faqItems = localizedCopy?.faqItems ?? batchRenamePage.faqItems;
     const pageJsonLd = buildFeaturePageJsonLd({
+      pageName: localizedCopy?.h1 ?? batchRenamePage.h1,
+      inLanguage: locale,
       howTo: {
         name: 'Dateien mit KI stapelweise umbenennen',
         description: 'Mit Zush viele Dateien auf Mac und Windows anhand ihres Inhalts umbenennen.',
@@ -324,7 +338,7 @@ const professionHeaderNav = professionPage
         ],
       },
       faqItems,
-      software: {
+      page: {
         pagePath: localizedPath,
         description: 'KI-Werkzeug zum Stapel-Umbenennen für Mac und Windows, mit Vorschau, Vorlagen, Naming Blocks, Ordnerüberwachung und Rückgängig-Funktion.',
         featureList: [
@@ -362,6 +376,8 @@ const professionHeaderNav = professionPage
   route in FEATURE_VIEWS && (() => {
     const featurePage = getFeaturePageProps(FEATURE_VIEWS[route as keyof typeof FEATURE_VIEWS]);
     const localizedCopy = copy.featurePages[route];
+    const localizedSupportJsonLd = withoutFeaturePageEntities(featurePage.jsonLd);
+    const localizedFaqItems = localizedCopy?.faqItems ?? featurePage.faqItems;
 
     return (
       <BaseLayout
@@ -370,7 +386,15 @@ const professionHeaderNav = professionPage
         chromeBasePath={localizedPath}
         headerWidth="container"
         jsonLd={[
-          featurePage.jsonLd,
+          localizedSupportJsonLd,
+          buildWebPageJsonLd({
+            pagePath: localizedPath,
+            title: localizedCopy?.h1 ?? featurePage.h1,
+            description: seo.description,
+            inLanguage: locale,
+            mainEntityId: 'https://zushapp.com/#software',
+          }),
+          buildFAQPageJsonLd(localizedFaqItems),
           buildFeatureBreadcrumbJsonLd(localizedCopy?.h1 ?? featurePage.h1, localizedPath),
         ]}
       >

@@ -8,16 +8,10 @@ import {
 } from '@/data/realEstateLanding';
 import { getSeoForPath } from '@/seo/config';
 import { getCopy } from '@/i18n/copy';
-import { buildFeatureBreadcrumbJsonLd, buildWebPageJsonLd } from '@/utils/jsonLd';
+import { buildFeatureBreadcrumbJsonLd } from '@/utils/jsonLd';
 
 const seo = getSeoForPath(REAL_ESTATE_PAGE_PATH);
 const header = getCopy('en').header;
-const pageJsonLd = buildWebPageJsonLd({
-  pagePath: REAL_ESTATE_PAGE_PATH,
-  title: REAL_ESTATE_PAGE_TITLE,
-  description: seo.description,
-});
-
 const headerNav = [
   { href: '#fields', label: header.features },
   { href: '#privacy', label: header.security },
@@ -32,7 +26,6 @@ const headerNav = [
   headerNav={headerNav}
   disableTopOffset
   jsonLd={[
-    pageJsonLd,
     REAL_ESTATE_JSON_LD,
     buildFeatureBreadcrumbJsonLd(REAL_ESTATE_PAGE_TITLE, REAL_ESTATE_PAGE_PATH),
   ]}

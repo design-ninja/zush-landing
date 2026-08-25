@@ -32,7 +32,7 @@ import { parseLatestVersion } from '@/utils/version';
 import { buildAppAggregateRatingJsonLd } from '@/seo/appRating';
 import { getSeoForPath, SITE_ORIGIN } from '@/seo/config';
 import { ORGANIZATION_REF } from '@/seo/entity';
-import { buildFAQPageJsonLd, buildFeatureBreadcrumbJsonLd } from '@/utils/jsonLd';
+import { buildFAQPageJsonLd, buildFeatureBreadcrumbJsonLd, buildWebPageJsonLd } from '@/utils/jsonLd';
 import type { DownloadOS } from '@/utils/download';
 import { DEFAULT_LOCALE, getLocalizedPath, type Locale } from '@/i18n/config';
 import { getCopy } from '@/i18n/copy';
@@ -45,6 +45,7 @@ import { SOFTPEDIA_RATED_BY_LABELS, SOFTPEDIA_REVIEW_ARIA_LABELS } from '@/i18n/
 import { MICROSOFT_STORE_RATED_ON_LABELS, MICROSOFT_STORE_RATING_ARIA_LABELS } from '@/i18n/microsoftStoreRating';
 import { buildSoftpediaReviewJsonLd } from '@/seo/softpediaReview';
 import {
+  AI_MODES_SUMMARY,
   APP_CONFIG,
   APP_STORE_URL,
   GOOGLE_WORKSPACE_MARKETPLACE_URL,
@@ -96,63 +97,39 @@ const macVersion = parseLatestVersion(macChangelogSource) ?? undefined;
 const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
 const platformKeywords = platform === 'mac'
   ? [
-      'file renamer for Mac',
-      'batch rename files on Mac',
-      'bulk rename files on Mac',
-      'Mac file renamer',
-      'file rename tool Mac',
-      'AI renamer for Mac',
+      'Zush for Mac',
+      'Zush Mac',
+      'Zush AI Renamer for Mac',
+      'Zush AI File Renamer for Mac',
+      'Zush File Renamer for Mac',
       'AI file renamer for Mac',
-      'best AI file renamer for Mac',
-      'AI file renamer Mac download',
-      'rename files with AI on Mac',
-      'Mac batch rename tool',
+      'Mac file renamer',
       'macOS file renamer',
-      'offline AI renamer for Mac',
+      'batch rename files on Mac',
+      'rename files with AI on Mac',
       'rename files by content on Mac',
       'AI file organizer for Mac',
-      'automatic file organizer for Mac',
-      'AI file sorter for Mac',
-      'sort files into folders Mac',
+      'offline AI renamer for Mac',
       'private AI file renamer for Mac',
-      'EXIF photo renamer Mac',
       'hazel alternative',
-      'custom AI naming blocks',
     ]
   : [
+      'Zush for Windows',
+      'Zush Windows',
+      'Zush AI Renamer for Windows',
+      'Zush AI File Renamer for Windows',
+      'Zush File Renamer for Windows',
       'file renamer for Windows',
-      'bulk rename files Windows 11',
-      'bulk rename files Windows',
-      'Windows 11 batch rename tool',
-      'batch rename files Windows',
       'Windows file renamer',
-      'Windows batch rename tool',
-      'AI renamer for Windows',
       'AI file renamer for Windows',
-      'AI file organizer for Windows',
-      'automatic file organizer Windows',
+      'batch rename files Windows 11',
       'rename files with AI on Windows',
-      'content-aware file renamer Windows',
-      'Windows File Explorer file renamer',
-      'File Explorer batch rename AI',
+      'rename files by content Windows',
+      'AI file organizer for Windows',
+      'offline AI renamer for Windows',
       'PowerRename alternative',
       'Bulk Rename Utility alternative',
-      'RenameClick alternative for Windows',
-      'PDF renamer Windows',
-      'screenshot renamer Windows',
-      'photo renamer Windows',
-      'video renamer Windows',
-      'audio file renamer Windows',
-      'design file renamer Windows',
-      'searchable filenames Windows',
-      'Windows Search filenames',
-      'folder monitoring Windows',
       'Microsoft Store file renamer',
-      'offline AI renamer for Windows',
-      'local AI file renamer Windows',
-      'rename files by content Windows',
-      'AI file sorter Windows',
-      'sort files into folders Windows',
     ];
 
 const intentSection = platform === 'mac'
@@ -164,7 +141,7 @@ const intentSection = platform === 'mac'
       points: [
         'Build reusable patterns from content, metadata, dates, counters, custom instructions, and your own AI fields.',
         'Preview each filename, regenerate individual suggestions, and restore the originals with one-click undo.',
-        'Choose Zush Cloud, your own Gemini, Groq, OpenAI, or Claude key, or Local AI with supported Ollama models.',
+        'Choose Zush Cloud, your own Gemini, Groq, OpenAI, or Claude key with BYOK, Built-in Local AI, LM Studio, or Ollama.',
       ],
       links: [
         { href: '/', label: 'AI file renamer for Mac & Windows' },
@@ -183,7 +160,7 @@ const intentSection = platform === 'mac'
       points: [
         'Build reusable patterns from content, metadata, dates, counters, custom instructions, and your own AI fields.',
         'Preview each filename, regenerate individual suggestions, and restore the originals with one-click undo.',
-        'Choose Zush Cloud, your own Gemini, Groq, OpenAI, or Claude key, or Local AI with supported Ollama models.',
+        'Choose Zush Cloud, your own Gemini, Groq, OpenAI, or Claude key with BYOK, Built-in Local AI, LM Studio, or Ollama.',
       ],
       links: [
         { href: '/', label: 'AI file renamer for Mac & Windows' },
@@ -201,31 +178,15 @@ const schemaAlternateNames = locale === DEFAULT_LOCALE
         'Zush AI Renamer for Mac',
         'Zush AI File Renamer for Mac',
         'Zush File Renamer for Mac',
-        'Zush for Mac',
-        'AI File Renamer for Mac',
-        'Mac AI File Renamer',
       ]
     : [
         'Zush AI Renamer for Windows',
         'Zush AI File Renamer for Windows',
         'Zush File Renamer for Windows',
-        'Zush for Windows',
-        'AI File Renamer for Windows',
-        'Windows AI File Renamer',
       ]
-  : [
-      localizedPage.softwareName,
-      localizedPage.heroTitle,
-      localizedPage.breadcrumbLabel,
-    ];
+  : [];
 
-const schemaKeywords = locale === DEFAULT_LOCALE
-  ? platformKeywords
-  : [
-      localizedPage.softwareName,
-      localizedPage.heroTitle,
-      ...localizedPage.features.slice(0, 6),
-    ];
+const canonicalSoftwareId = `${SITE_ORIGIN}${page.path}#software`;
 
 const screenshotJsonLd = platform === 'windows'
   ? WINDOWS_SHOWCASE_SCREENSHOTS.slice(0, 6).map((item) => ({
@@ -244,14 +205,16 @@ const screenshotJsonLd = platform === 'windows'
 const softwareJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
-  '@id': `${SITE_ORIGIN}${pagePath}#software`,
+  '@id': canonicalSoftwareId,
   name: localizedPage.softwareName,
-  alternateName: schemaAlternateNames,
-  url: `${SITE_ORIGIN}${pagePath}`,
+  ...(schemaAlternateNames.length > 0 ? { alternateName: schemaAlternateNames } : {}),
+  url: `${SITE_ORIGIN}${page.path}`,
   description: localizedPage.softwareDescription,
-  keywords: schemaKeywords.join(', '),
+  keywords: platformKeywords.join(', '),
   applicationCategory: 'UtilitiesApplication',
-  applicationSubCategory: 'File Management',
+  applicationSubCategory: 'File Renaming and Organization',
+  applicationSuite: 'Zush',
+  publisher: ORGANIZATION_REF,
   operatingSystem: page.operatingSystem,
   ...(processorSpec ? { processorRequirements: processorSpec } : {}),
   ...(memorySpec ? { memoryRequirements: memorySpec } : {}),
@@ -278,14 +241,14 @@ const softwareJsonLd = {
       name: 'Zush PRO Monthly',
       price: PRO_PRICING.monthly.schemaPrice,
       priceCurrency: 'USD',
-      description: 'Monthly subscription with unlimited renames across Cloud AI, BYOK, and Local AI.',
+      description: `Monthly subscription with unlimited renames across ${AI_MODES_SUMMARY}.`,
     },
     {
       '@type': 'Offer',
       name: 'Zush PRO One-Time',
       price: PRO_PRICING.oneTime.schemaPrice,
       priceCurrency: 'USD',
-      description: 'One-time purchase with unlimited renames across Cloud AI, BYOK, and Local AI.',
+      description: `One-time purchase with unlimited renames across ${AI_MODES_SUMMARY}.`,
     },
   ],
   featureList: localizedPage.features,
@@ -335,8 +298,18 @@ const howToJsonLd = {
   })),
 };
 
+const webPageJsonLd = buildWebPageJsonLd({
+  pagePath,
+  title: seo.title,
+  description: seo.description,
+  inLanguage: locale,
+  ...(locale === DEFAULT_LOCALE ? { keywords: platformKeywords.join(', ') } : {}),
+  mainEntityId: canonicalSoftwareId,
+});
+
 const jsonLdItems = [
-  softwareJsonLd,
+  webPageJsonLd,
+  ...(locale === DEFAULT_LOCALE ? [softwareJsonLd] : []),
   howToJsonLd,
   buildFeatureBreadcrumbJsonLd(localizedPage.breadcrumbLabel, pagePath),
   buildFAQPageJsonLd(faqItems),
@@ -345,7 +318,7 @@ const jsonLdItems = [
 ---
 
 <BaseLayout
-  seo={{ ...seo, keywords: schemaKeywords.join(', ') }}
+  seo={locale === DEFAULT_LOCALE ? { ...seo, keywords: platformKeywords.join(', ') } : seo}
   locale={locale}
   forceOS={platform}
   footerHidePlatform={footerHidePlatform}

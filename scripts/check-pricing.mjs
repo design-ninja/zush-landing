@@ -40,12 +40,9 @@ const centralizedRuntimeFiles = [
   'src/i18n/copy.ts',
   'src/i18n/evidenceSignals.ts',
   'src/i18n/legalPages.ts',
-  'src/pages/[locale]/index.astro',
-  'src/pages/blog/[slug].astro',
   'src/pages/llms.txt.ts',
   'src/pages/pricing.md.ts',
   'src/seo/config.ts',
-  'src/utils/jsonLd.ts',
   'src/utils/proAnalytics.ts',
 ];
 

@@ -50,7 +50,7 @@ const jsonLd = buildFeaturePageJsonLd({
     ],
   },
   faqItems,
-  software: {
+  page: {
     pagePath: '/rename-word-documents-with-ai',
     description:
       'AI Word document renamer that reads DOCX, DOC, DOTX, ODT, and RTF content to generate searchable filenames automatically on Mac and Windows.',

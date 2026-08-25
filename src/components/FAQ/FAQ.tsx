@@ -22,7 +22,7 @@ interface FAQProps {
 const STATIC_JSX_OVERRIDES: Record<string, React.ReactNode> = {
   'What is BYOK (Bring Your Own Key)?': (
     <>
-      BYOK lets users on every plan connect their own API key from Gemini, Groq, OpenAI, or Claude. The free plan shares a 50-rename limit across Cloud AI, BYOK, and Offline AI; PRO removes that limit. Your key is stored locally in secure platform storage and is sent only when Zush needs to call your selected provider through the backend relay.{' '}
+      BYOK lets users on every plan connect their own API key from Gemini, Groq, OpenAI, or Claude. The free plan shares a 50-rename limit across Zush Cloud, BYOK, Built-in Local AI, LM Studio, and Ollama; PRO removes that limit. Your key is stored locally in secure platform storage and is sent only when Zush needs to call your selected provider through the backend relay.{' '}
       <AppLink href="/docs/byok">Learn how to set it up →</AppLink>
     </>
   ),

@@ -225,6 +225,7 @@ export const LEGAL_FAQ = [
 ];
 
 export const LEGAL_JSON_LD = buildFeaturePageJsonLd({
+  pageName: LEGAL_PAGE_TITLE,
   howTo: {
     name: 'How to organize legal documents automatically with AI',
     description:
@@ -245,11 +246,10 @@ export const LEGAL_JSON_LD = buildFeaturePageJsonLd({
     ],
   },
   faqItems: LEGAL_FAQ,
-  software: {
+  page: {
     pagePath: LEGAL_PAGE_PATH,
     description:
       'AI legal document renamer and organizer for law firms on Mac and Windows. Zush turns inconsistent filenames into searchable, matter-based case files without replacing the firm’s document management system.',
-    applicationSubCategory: 'Legal File Organization Software',
     featureList: [
       'Organize legal documents into searchable, matter-based case files',
       'Standardize filenames across folders, shared drives, and DMS exports',

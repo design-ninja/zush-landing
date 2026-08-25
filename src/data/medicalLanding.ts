@@ -294,6 +294,7 @@ export const MEDICAL_FAQ = [
 ];
 
 export const MEDICAL_JSON_LD = buildFeaturePageJsonLd({
+  pageName: MEDICAL_PAGE_TITLE,
   howTo: {
     name: 'Set up AI file renaming for scanned medical records',
     description:
@@ -314,11 +315,10 @@ export const MEDICAL_JSON_LD = buildFeaturePageJsonLd({
     ],
   },
   faqItems: MEDICAL_FAQ,
-  software: {
+  page: {
     pagePath: MEDICAL_PAGE_PATH,
     description:
       'AI document renamer for medical practices on Mac and Windows. Zush names scanned records by the fields you choose, with Local AI so files never leave the machine, plus in-place renaming and no file uploads.',
-    applicationSubCategory: 'Medical Document File Renaming',
     featureList: [
       'Name records by the fields you choose — MRN, date, record type, and more',
       'Local AI with Ollama on Mac and Windows; works offline after setup',

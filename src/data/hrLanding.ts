@@ -225,6 +225,7 @@ export const HR_FAQ = [
 ];
 
 export const HR_JSON_LD = buildFeaturePageJsonLd({
+  pageName: HR_PAGE_TITLE,
   howTo: {
     name: 'How to organize HR documents automatically with AI',
     description:
@@ -245,11 +246,10 @@ export const HR_JSON_LD = buildFeaturePageJsonLd({
     ],
   },
   faqItems: HR_FAQ,
-  software: {
+  page: {
     pagePath: HR_PAGE_PATH,
     description:
       'AI HR document renamer and organizer for people teams on Mac and Windows. Zush turns inconsistent employee and candidate filenames into searchable records without replacing the HRIS or ATS.',
-    applicationSubCategory: 'HR File Organization Software',
     featureList: [
       'Organize employee and candidate documents into searchable files',
       'Standardize filenames across folders, shared drives, and HRIS or ATS exports',

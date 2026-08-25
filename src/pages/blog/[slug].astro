@@ -7,10 +7,7 @@ import {
   getRelatedPosts,
   getTranslationsBySlug,
 } from '@/data/blog';
-import { PRO_PRICING } from '@/constants/pricing';
 import type { BlogLocale } from '@/data/blogSchema';
-import { buildAppAggregateRatingJsonLd } from '@/seo/appRating';
-import { buildSoftpediaReviewJsonLd } from '@/seo/softpediaReview';
 import { getBlogSeo, getCanonicalUrl } from '@/seo/config';
 import {
   buildBlogPostingJsonLd,
@@ -68,48 +65,7 @@ const macAiRenamerComparisonJsonLd = post.slug === 'best-ai-file-renamer-tools-m
             'Best overall for configurable naming across mixed Mac folders, with 100+ published formats, folder monitoring, preview, and full Rename History with batch revert.',
           url: 'https://zushapp.com/mac',
           item: {
-            '@type': 'SoftwareApplication',
             '@id': 'https://zushapp.com/mac#software',
-            name: 'Zush',
-            url: 'https://zushapp.com/mac',
-            applicationCategory: 'UtilitiesApplication',
-            applicationSubCategory: 'File Management',
-            operatingSystem: ['macOS 15.0+', 'Windows 10', 'Windows 11'],
-            description:
-              'AI file renamer for Mac with content-aware batch rename, preview, folder monitoring, templates, 145+ Naming Blocks, BYOK, Offline AI mode, and rollback history.',
-            ...buildAppAggregateRatingJsonLd(),
-            ...buildSoftpediaReviewJsonLd(),
-            featureList: [
-              'Mixed-folder AI file renaming',
-              'RAW, HEIC, PDF, Office, iWork, design, audio, and video support',
-              'Folder monitoring',
-              'Preview before applying',
-              'Rename history and rollback',
-              'BYOK and Offline AI mode',
-            ],
-            offers: [
-              {
-                '@type': 'Offer',
-                name: 'Free',
-                price: '0',
-                priceCurrency: 'USD',
-                description: 'Free starter tier with 50 renames across Cloud AI, BYOK, and Offline AI.',
-              },
-              {
-                '@type': 'Offer',
-                name: 'Zush PRO Monthly',
-                price: PRO_PRICING.monthly.schemaPrice,
-                priceCurrency: 'USD',
-                description: 'Monthly PRO plan.',
-              },
-              {
-                '@type': 'Offer',
-                name: 'Zush PRO One-Time',
-                price: PRO_PRICING.oneTime.schemaPrice,
-                priceCurrency: 'USD',
-                description: 'One-time PRO plan.',
-              },
-            ],
           },
         },
         ...[
@@ -146,33 +102,7 @@ const windowsAiRenamerComparisonJsonLd = post.slug === 'best-ai-file-renamer-too
             'Best overall for configurable naming across mixed Windows folders, with 100+ published formats, folder monitoring, preview, and full Rename History with batch revert.',
           url: 'https://zushapp.com/windows',
           item: {
-            '@type': 'SoftwareApplication',
             '@id': 'https://zushapp.com/windows#software',
-            name: 'Zush',
-            url: 'https://zushapp.com/windows',
-            applicationCategory: 'UtilitiesApplication',
-            applicationSubCategory: 'File Management',
-            operatingSystem: ['Windows 10', 'Windows 11'],
-            description:
-              'AI file renamer for Windows with content-aware batch rename, configurable Templates and Naming Blocks, 100+ file formats, folder monitoring, preview, and rollback history.',
-            ...buildAppAggregateRatingJsonLd(),
-            ...buildSoftpediaReviewJsonLd(),
-            offers: [
-              {
-                '@type': 'Offer',
-                name: 'Free',
-                price: '0',
-                priceCurrency: 'USD',
-                description: 'Free starter tier with 50 renames across Cloud AI, BYOK, and Offline AI.',
-              },
-              {
-                '@type': 'Offer',
-                name: 'Zush PRO One-Time',
-                price: PRO_PRICING.oneTime.schemaPrice,
-                priceCurrency: 'USD',
-                description: 'One-time PRO plan with unmetered PRO renames.',
-              },
-            ],
           },
         },
         ...[

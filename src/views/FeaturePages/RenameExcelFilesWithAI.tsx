@@ -50,7 +50,7 @@ const jsonLd = buildFeaturePageJsonLd({
     ],
   },
   faqItems,
-  software: {
+  page: {
     pagePath: '/rename-excel-files-with-ai',
     description:
       'AI Excel renamer that reads XLSX, XLS, XLSM, ODS, CSV, and TSV content — headers, sheet names, and data — to generate searchable spreadsheet filenames automatically.',

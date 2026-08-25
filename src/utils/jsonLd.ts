@@ -1,9 +1,7 @@
 import type { BlogPost, FAQItem } from '@/data/blog';
 import { toIsoDateTime } from '@/seo/config';
-import { APP_STORE_URL, HOMEBREW_CASK_URL, MAC_INSTALLER_URL, WINDOWS_STORE_URL } from '@/constants';
 import { PRIMARY_AUTHOR } from '@/data/author';
-import { ORGANIZATION_REF, WEBSITE_REF } from '@/seo/entity';
-import { PRO_PRICING } from '@/constants/pricing';
+import { ORGANIZATION_REF, SOFTWARE_REF, WEBSITE_REF } from '@/seo/entity';
 
 const SITE_ORIGIN = 'https://zushapp.com';
 
@@ -75,94 +73,48 @@ export interface HowToStepData {
   text: string;
 }
 
-export interface SoftwareOfferData {
-  name?: string;
-  price: string;
-  priceCurrency?: string;
-  description: string;
-}
-
-export interface SoftwareApplicationData {
+export interface FeatureLandingPageData {
   pagePath: string;
   description: string;
   featureList: string[];
-  applicationSubCategory?: string;
-  screenshot?: string;
-  offers?: SoftwareOfferData[];
-  operatingSystem?: string | string[];
-  downloadUrl?: string;
-  installUrl?: string;
-}
-
-const DEFAULT_SOFTWARE_OFFERS: SoftwareOfferData[] = [
-  {
-    name: 'Free',
-    price: '0',
-    priceCurrency: 'USD',
-    description: 'Free tier with 50 AI renames across Cloud AI, BYOK, and Offline AI',
-  },
-  {
-    name: 'Zush PRO Monthly',
-    price: PRO_PRICING.monthly.schemaPrice,
-    priceCurrency: 'USD',
-    description: 'Monthly subscription with unlimited renames across Cloud AI, BYOK, and Offline AI.',
-  },
-  {
-    name: 'Zush PRO One-Time',
-    price: PRO_PRICING.oneTime.schemaPrice,
-    priceCurrency: 'USD',
-    description: 'One-time purchase with unlimited renames across Cloud AI, BYOK, and Offline AI.',
-  },
-];
-
-function buildSoftwareApplicationJsonLd(data: SoftwareApplicationData) {
-  const pageUrl = `${SITE_ORIGIN}${data.pagePath}`;
-
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
-    '@id': `${pageUrl}#software`,
-    name: 'Zush',
-    url: pageUrl,
-    description: data.description,
-    applicationCategory: 'UtilitiesApplication',
-    applicationSubCategory: data.applicationSubCategory ?? 'File Management',
-    publisher: ORGANIZATION_REF,
-    operatingSystem: data.operatingSystem ?? ['macOS 15.0+', 'Windows 10', 'Windows 11'],
-    downloadUrl: data.downloadUrl ?? [MAC_INSTALLER_URL, APP_STORE_URL, HOMEBREW_CASK_URL, WINDOWS_STORE_URL],
-    ...(data.installUrl
-      ? { installUrl: data.installUrl }
-      : { installUrl: [APP_STORE_URL, HOMEBREW_CASK_URL, WINDOWS_STORE_URL] }),
-    screenshot: data.screenshot ?? `${SITE_ORIGIN}/og-image.png`,
-    offers: (data.offers ?? DEFAULT_SOFTWARE_OFFERS).map((offer) => ({
-      '@type': 'Offer',
-      ...(offer.name ? { name: offer.name } : {}),
-      price: offer.price,
-      priceCurrency: offer.priceCurrency ?? 'USD',
-      description: offer.description,
-    })),
-    featureList: data.featureList,
-    speakable: {
-      '@type': 'SpeakableSpecification',
-      cssSelector: ['h1', 'meta[name="description"]'],
-    },
-  };
 }
 
 export interface FeaturePageJsonLdData {
+  pageName?: string;
+  inLanguage?: string;
+  keywords?: string;
   howTo: {
     name: string;
     description: string;
     steps: HowToStepData[];
   };
   faqItems: FAQItem[];
-  software: SoftwareApplicationData;
+  page: FeatureLandingPageData;
 }
 
 export function buildFeaturePageJsonLd(data: FeaturePageJsonLdData) {
+  const pageUrl = `${SITE_ORIGIN}${data.page.pagePath}`;
+
   return {
     '@context': 'https://schema.org',
     '@graph': [
+      {
+        '@type': 'WebPage',
+        '@id': `${pageUrl}#webpage`,
+        url: pageUrl,
+        name: data.pageName ?? data.howTo.name,
+        description: data.page.description,
+        inLanguage: data.inLanguage ?? 'en',
+        ...(data.keywords ? { keywords: data.keywords } : {}),
+        isPartOf: WEBSITE_REF,
+        publisher: ORGANIZATION_REF,
+        mainEntity: SOFTWARE_REF,
+        about: SOFTWARE_REF,
+        speakable: {
+          '@type': 'SpeakableSpecification',
+          cssSelector: ['h1', 'meta[name="description"]'],
+        },
+      },
       {
         '@type': 'HowTo',
         name: data.howTo.name,
@@ -179,7 +131,6 @@ export function buildFeaturePageJsonLd(data: FeaturePageJsonLdData) {
         },
       },
       buildFAQPageJsonLd(data.faqItems),
-      buildSoftwareApplicationJsonLd(data.software),
     ],
   };
 }
@@ -197,6 +148,8 @@ export interface WebPageJsonLdData {
   description: string;
   type?: 'WebPage' | 'CollectionPage' | 'TechArticle';
   dateModified?: string;
+  inLanguage?: string;
+  keywords?: string;
   speakableSelectors?: string[];
   mainEntityId?: string;
 }
@@ -223,9 +176,16 @@ export function buildWebPageJsonLd(data: WebPageJsonLdData) {
     description: data.description,
     url: pageUrl,
     ...(data.dateModified ? { dateModified: toIsoDateTime(data.dateModified) } : {}),
+    ...(data.inLanguage ? { inLanguage: data.inLanguage } : {}),
+    ...(data.keywords ? { keywords: data.keywords } : {}),
     isPartOf: WEBSITE_REF,
     publisher: ORGANIZATION_REF,
-    ...(data.mainEntityId ? { mainEntity: { '@id': data.mainEntityId } } : {}),
+    ...(data.mainEntityId
+      ? {
+          mainEntity: { '@type': 'SoftwareApplication', '@id': data.mainEntityId },
+          about: { '@type': 'SoftwareApplication', '@id': data.mainEntityId },
+        }
+      : {}),
     speakable: {
       '@type': 'SpeakableSpecification',
       cssSelector: data.speakableSelectors ?? ['h1', 'meta[name="description"]'],

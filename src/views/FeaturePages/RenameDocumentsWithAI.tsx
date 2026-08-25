@@ -50,7 +50,7 @@ const jsonLd = buildFeaturePageJsonLd({
     ],
   },
   faqItems,
-  software: {
+  page: {
     pagePath: '/rename-documents-with-ai',
     description:
       'AI document renamer that reads DOCX, XLSX, PPTX, Pages, Numbers, Keynote, TXT, CSV, JSON, subtitles, OpenDocument, and email files to generate searchable filenames automatically.',

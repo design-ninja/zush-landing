@@ -51,7 +51,7 @@ const jsonLd = buildFeaturePageJsonLd({
     ],
   },
   faqItems,
-  software: {
+  page: {
     pagePath: '/rename-videos-with-ai',
     description:
       'AI video renamer that turns generic screen recordings, clips, and camera files into searchable filenames using sampled frames and subtitles.',

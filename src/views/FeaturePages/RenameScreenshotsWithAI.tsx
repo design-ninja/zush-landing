@@ -61,7 +61,7 @@ const jsonLd = buildFeaturePageJsonLd({
     ],
   },
   faqItems,
-  software: {
+  page: {
     pagePath: '/rename-screenshots-with-ai',
     description:
       'AI screenshot renamer that replaces generic screenshot timestamps with descriptive filenames and can auto-rename new captures in watched folders.',
