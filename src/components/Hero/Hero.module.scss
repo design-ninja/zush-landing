@@ -70,15 +70,13 @@
         }
 
         .Hero__Subtitle,
-        .Hero__StorePrefix,
-        .Hero__TrustRow {
+        .Hero__StorePrefix {
             color: #000;
         }
 
         :global(html[data-theme='dark']) & {
             .Hero__Subtitle,
-            .Hero__StorePrefix,
-            .Hero__TrustRow {
+            .Hero__StorePrefix {
                 color: #fff;
             }
         }
@@ -235,10 +233,9 @@
         font-weight: 600;
         line-height: 1;
         text-decoration: none;
-        transition: border-color $transition-fast, color $transition-fast, background $transition-fast;
+        transition: color $transition-fast, background $transition-fast;
 
         &:hover {
-            border-color: color-mix(in srgb, var(--foreground) 28%, var(--border));
             color: var(--foreground);
             background: color-mix(in srgb, var(--card) 58%, transparent);
         }

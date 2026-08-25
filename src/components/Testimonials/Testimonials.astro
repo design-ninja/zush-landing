@@ -65,7 +65,7 @@ const copy = copyByLocale[locale] ?? copyByLocale.en!;
               value={testimonial.rating}
               label={`${testimonial.rating} out of 5 stars`}
             />
-            <span>{testimonial.rating.toFixed(1)}/5</span>
+            <span>{testimonial.rating.toFixed(1)}</span>
           </div>
           <h3 class={styles.TestimonialCard__Title}>{testimonial.title}</h3>
           <blockquote class={styles.TestimonialCard__Quote} lang='en-US'>
