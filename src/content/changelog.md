@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.10.2] - 2026-08-26
+
+### Improved
+- Batch analysis now shows each result as soon as it is ready
+- Local AI setup, model selection, and cancellation are more reliable
+- Menu bar access remains available more consistently
+
+### Fixed
+- Cloud AI no longer shows Offline AI errors after switching AI modes
+
 ## [3.10.1] - 2026-08-24
 
 ### Improved
