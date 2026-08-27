@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.10.3] - 2026-08-27
+
+### Added
+- Monitor an entire cloud drive for newly added supported files
+
+### Improved
+- Folder monitoring recovers more reliably after interrupted file system events
+- Existing files stay untouched when cloud drive monitoring starts
+
+### Fixed
+- Fixed crashes while loading PDF thumbnails
+
 ## [3.10.2] - 2026-08-26
 
 ### Improved
