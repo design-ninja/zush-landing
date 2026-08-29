@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.10.4] - 2026-08-29
+
+### Added
+- Added a Created Time block for file names
+
+### Improved
+- Improved custom AI and metadata naming blocks
+- Improved Ollama and LM Studio setup, connections, and model startup
+- Made naming behavior more consistent across cloud and local AI
+- Improved handling of longer files with local AI
+
+### Changed
+- Local AI now connects through Ollama or LM Studio instead of using a bundled model
+
 ## [3.10.3] - 2026-08-27
 
 ### Added
