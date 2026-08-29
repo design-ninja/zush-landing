@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.10.5] - 2026-08-30
+
+### Fixed
+- Fixed analysis getting stuck on scanned or multi-page documents
+- Improved reliability when reading files from cloud storage and external drives
+- Kept sidebar icons consistently sized across macOS versions
+
 ## [3.10.4] - 2026-08-29
 
 ### Added
