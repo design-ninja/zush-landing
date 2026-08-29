@@ -1,5 +1,21 @@
 # Changelog
 
+## [3.8.10.0] - 2026-08-29
+
+### Added
+- A new Created Time Naming Block can include the original file creation time in reusable naming templates.
+
+### Improved
+- AI Rename now produces more consistent names and metadata across images, PDFs, documents, spreadsheets, presentations, videos, audio, and design files.
+- Batch analysis shows suggestions as they arrive and handles mixed file sets more reliably.
+- Offline AI setup, remote Ollama connections, model recovery, and PDF analysis are more reliable and provide clearer guidance.
+- Folder monitoring recovers more reliably when cloud-synced files or folders are temporarily unavailable.
+
+### Fixed
+- Canceling or clearing an AI Rename run no longer leaves stale analysis results.
+- Metadata-based Naming Blocks now use available file details more consistently when AI analysis is not needed.
+
+
 ## [3.8.9.0] - 2026-08-21
 
 ### Improved
