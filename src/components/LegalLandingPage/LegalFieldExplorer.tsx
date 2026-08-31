@@ -60,7 +60,7 @@ export const LegalFieldExplorer = () => {
 
       <p className={styles.Explorer__Hint}>
         Your Template decides which fields appear in the filename. Run the extraction locally
-        with Local AI and Ollama, or through the provider account your firm controls with BYOK.
+        with LM Studio or Ollama, or through the provider account your firm controls with BYOK.
       </p>
     </div>
   );

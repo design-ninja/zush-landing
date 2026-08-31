@@ -37,10 +37,10 @@ const en: HomeBeltsCopy = {
   aiModes: {
     eyebrow: 'Choose how AI runs',
     title: 'Your AI provider. Your privacy choice.',
-    description: 'Choose Zush Cloud, BYOK, Built-in Local AI, LM Studio, or Ollama — the same review-first Zush workflow in every mode.',
+    description: 'Choose Zush Cloud, BYOK, LM Studio or Ollama — the same review-first Zush workflow in every mode.',
     offlineBadge: 'On-device',
     offlineTitle: 'Three private Local AI options',
-    offlineDescription: 'Use Built-in Local AI, LM Studio, or Ollama on Mac or Windows — supported analysis content stays on your device.',
+    offlineDescription: 'Use LM Studio or Ollama on Mac or Windows — supported analysis content stays on your device.',
     offlinePrivacy: 'Local model · no cloud analysis',
     offlineLink: 'Compare Local AI options',
     cloudBadge: 'Cloud options',

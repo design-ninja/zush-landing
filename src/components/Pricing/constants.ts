@@ -26,7 +26,7 @@ interface Plan {
 export const PRO_FEATURES: Feature[] = [
   {
     title: 'Unlimited AI Renames',
-    desc: 'Remove the 50-rename limit across Zush Cloud, BYOK, Built-in Local AI, LM Studio, and Ollama',
+    desc: 'Remove the 50-rename limit across Zush Cloud, BYOK, LM Studio, and Ollama',
     icon: Sparkles,
     tone: 'orange',
   },

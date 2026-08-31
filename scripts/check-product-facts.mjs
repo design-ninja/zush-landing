@@ -7,6 +7,9 @@ const constants = readFileSync(join(root, 'src/constants.ts'), 'utf8');
 const macChangelog = readFileSync(join(root, 'src/content/changelog.md'), 'utf8');
 const windowsChangelog = readFileSync(join(root, 'src/content/changelog.windows.md'), 'utf8');
 const pricingRoute = readFileSync(join(root, 'src/pages/pricing.md.ts'), 'utf8');
+const llmsRoute = readFileSync(join(root, 'src/pages/llms.txt.ts'), 'utf8');
+const aiModesDoc = readFileSync(join(root, 'src/content/docs/docs/ai-modes.mdx'), 'utf8');
+const localAiDoc = readFileSync(join(root, 'src/content/docs/docs/local-ai.mdx'), 'utf8');
 const sitemapRoute = readFileSync(join(root, 'src/pages/sitemap.xml.ts'), 'utf8');
 const entitySource = readFileSync(join(root, 'src/seo/entity.ts'), 'utf8');
 const seoConfigSource = readFileSync(join(root, 'src/seo/config.ts'), 'utf8');
@@ -40,6 +43,24 @@ assert.equal(
   readConstant('WINDOWS_APP_VERSION'),
   readLatestVersion(windowsChangelog, 'Windows'),
   'WINDOWS_APP_VERSION must match the latest Windows changelog release.',
+);
+for (const [label, source] of [
+  ['constants', constants],
+  ['pricing.md', pricingRoute],
+  ['llms.txt', llmsRoute],
+  ['AI modes docs', aiModesDoc],
+  ['Local AI docs', localAiDoc],
+]) {
+  assert.doesNotMatch(
+    source,
+    /Built-in Local AI|five AI modes|five processing routes/i,
+    `${label} must not present the retired bundled Local AI route as an active mode.`,
+  );
+}
+assert.match(
+  constants,
+  /Zush Cloud AI, BYOK, LM Studio, and Ollama/,
+  'The canonical AI mode summary must list the four current routes.',
 );
 assert.match(
   pricingRoute,

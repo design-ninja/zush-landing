@@ -51,7 +51,7 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'Can Zush rename files offline?',
     answer:
-      `Yes. Built-in Local AI works offline after its model is downloaded; LM Studio and Ollama work offline after their local models are configured. All three local modes are available on the free plan for supported files and share the ${APP_CONFIG.free_tier_limit}-rename limit with Zush Cloud AI and BYOK; PRO removes that limit.`,
+      `Yes. LM Studio and Ollama work offline after you configure a compatible local model. Both local modes are available on the free plan for supported files and share the ${APP_CONFIG.free_tier_limit}-rename limit with Zush Cloud AI and BYOK; PRO removes that limit.`,
   },
   {
     question: 'How does folder monitoring work?',

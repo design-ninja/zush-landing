@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Tool Comparisons"
 tldr: "Pick Zush for the most configurable naming workflow in this comparison: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, and Rename History with batch revert. Renamed.to is cloud-only, document-scoped, metered per file, and does not document equivalent post-apply recovery."
-reviewed: "2026-08-24"
+reviewed: "2026-08-31"
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -39,7 +39,7 @@ Quick answer: choose Zush when you need to design and reuse a precise naming con
 | Free tier | 50 renames to start | 50 documents to start (12-month validity) |
 | Formats | 100+: images incl. RAW/HEIC, PDFs, Office/iWork, design, audio, video | Document-focused: PDF, DOCX, XLSX, PPTX, scanned images |
 | Where files are processed | On your machine; analysis via cloud AI, BYOK, or fully local Offline AI | In the cloud, inside your Drive/Dropbox/OneDrive storage |
-| Local/offline option | <BlogHighlight>Yes — Built-in Local AI, LM Studio, or Ollama on Mac and Windows</BlogHighlight> | No — cloud processing only |
+| Local/offline option | <BlogHighlight>Yes — LM Studio or Ollama on Mac and Windows</BlogHighlight> | No — cloud processing only |
 | Naming control | <BlogHighlight>Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata</BlogHighlight> | Saved rules for document workflows |
 | Automation | Folder monitoring on any local/synced folder, per-folder Templates | File watcher daemon, REST API, CLI, Zapier/Make/n8n |
 | Recovery | Full Rename History with original/new name, folder, timestamp, and revert | Review/confidence flow before applying; no equivalent post-apply history documented |
@@ -51,7 +51,7 @@ Quick answer: choose Zush when you need to design and reuse a precise naming con
 
 [Zush](/) installs on the Mac or PC where your files already live. Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, prompts, formatting, localization, tags and metadata define the convention; the AI fills content-aware fields instead of inventing the whole name. The same Template works in a reviewed batch or [folder monitoring](/docs/folder-monitoring). Rename History keeps original and new names, folder and timestamp and can restore an applied batch.
 
-Five analysis modes set the privacy posture: Zush Cloud AI, BYOK through your own API account, Built-in Local AI, LM Studio, and Ollama. The three local routes keep supported analysis on the machine.
+Four analysis modes set the privacy posture: Zush Cloud AI, BYOK through your own API account, LM Studio, and Ollama. The two local routes keep supported analysis on the machine.
 
 ### Renamed.to: a cloud service inside your cloud storage
 
@@ -77,7 +77,7 @@ Zush covers the whole folder: the same invoice PDFs and scans, plus RAW and HEIC
 
 Renamed.to's model is cloud processing by design — your documents are analyzed by its service, inside your cloud storage, under its terms. For many teams that's acceptable; for regulated documents it's a real evaluation point.
 
-Zush can run supported analysis locally through Built-in Local AI, LM Studio, or Ollama on Mac or Windows. The dedicated [medical records workflow](/for-medical) can use a local mode for scanner and fax folders; BYOK is the alternative when an organization routes analysis through its own provider account and key.
+Zush can run supported analysis locally through LM Studio or Ollama on Mac or Windows. The dedicated [medical records workflow](/for-medical) can use a local mode for scanner and fax folders; BYOK is the alternative when an organization routes analysis through its own provider account and key.
 
 ## Pick by use case
 
@@ -99,7 +99,7 @@ No — it's web-first with cloud-storage integrations, an API, a CLI, and a watc
 
 ### Can Renamed.to rename files offline or locally?
 
-No, processing is cloud-based. Zush offers Built-in Local AI, LM Studio, and Ollama so supported analysis can stay on the machine.
+No, processing is cloud-based. Zush offers LM Studio and Ollama so supported analysis can stay on the machine.
 
 ### Which is better for scanned documents?
 

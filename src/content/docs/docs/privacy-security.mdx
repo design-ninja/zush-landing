@@ -1,7 +1,7 @@
 ---
 title: Privacy and Security in Zush
-description: Understand what Zush processes in Zush Cloud AI, Local AI, LM Studio, BYOK, and Ollama modes, including file previews, extracted text, provider requests, and local processing.
-lastUpdated: 2026-08-24
+description: Understand what Zush processes in Zush Cloud AI, BYOK, LM Studio, and Ollama modes, including file previews, extracted text, provider requests, and local processing.
+lastUpdated: 2026-08-31
 sidebar:
   order: 33
   label: Privacy and security
@@ -25,7 +25,7 @@ Original full-resolution files and local folder paths are not sent as separate f
 
 ## Local AI processing
 
-[Local AI](/docs/local-ai) uses the model and signed local runtime managed by Zush. [LM Studio](/docs/lm-studio) and [Ollama](/docs/offline-ai) use models managed by those local applications. In all three modes, supported file analysis content is processed on your Mac or Windows PC instead of by Zush Cloud AI or a third-party cloud AI provider. Zush may still contact backend services for licensing, updates, model downloads, support, or operational checks.
+[LM Studio](/docs/lm-studio) and [Ollama](/docs/offline-ai) use models managed by those local applications. In both modes, supported file analysis content is processed on your Mac or Windows PC instead of by Zush Cloud AI or a third-party cloud AI provider. Zush may still contact backend services for licensing, updates, support, or operational checks.
 
 ## BYOK keys
 
@@ -39,7 +39,7 @@ Zush does not use your file content or custom prompt text to train Zush-owned mo
 
 If you handle documents under confidentiality or regulatory obligations — patient records, client files, financial statements — choose the AI mode that matches your posture:
 
-- **Local AI, LM Studio, and Ollama** process supported files on your Mac with local models. Nothing about the file content is sent to a cloud AI provider while one of these modes is selected.
+- **LM Studio and Ollama** process supported files on your Mac with local models. Nothing about the file content is sent to a cloud AI provider while either mode is selected.
 - **BYOK** sends analysis to your own provider account (OpenAI, Anthropic, or Google) under the agreement your organization has with that provider.
 - **Cloud mode** uses Zush's managed AI processing through Groq, Google Gemini, or Alibaba Cloud Model Studio (Qwen) and is designed for general files, not documents you are obligated to keep in-house. Qwen requests may use a Global service deployment scope where encrypted transient inference data can be processed outside the selected US region, including within or outside China; static request data remains in the selected US region.
 
@@ -55,7 +55,7 @@ This page is a practical product summary. For the legal version, read the [Priva
 
 - [AI modes](/docs/ai-modes)
 - [Zush Cloud AI](/docs/zush-cloud-ai)
-- [Local AI](/docs/local-ai)
+- [Local AI overview](/docs/local-ai)
 - [LM Studio](/docs/lm-studio)
 - [BYOK](/docs/byok)
 - [Ollama](/docs/offline-ai)

@@ -198,14 +198,14 @@ export const DEFAULT_FEATURE_CARDS_COPY: FeatureCardsCopy = {
   },
   offlineAi: {
     title: 'Private Local AI Options',
-    description: 'Keep supported analysis on your device with Built-in Local AI, LM Studio, or Ollama. Each local mode works offline after setup.',
+    description: 'Keep supported analysis on your device with LM Studio or Ollama. Each local mode works offline after setup.',
   },
   cloudAi: {
     title: 'Cloud AI',
     description: 'Goes through our relay to a commercial AI provider, under their standard API terms. The relay exists so the API key can’t be pulled out of the app.',
   },
   bandTitle: 'Choose where AI runs',
-  bandSubtitle: 'Choose Zush Cloud, BYOK, Built-in Local AI, LM Studio, or Ollama for the same review-first rename workflow.',
+  bandSubtitle: 'Choose Zush Cloud, BYOK, LM Studio or Ollama for the same review-first rename workflow.',
   addFolder: 'Add Folder',
   promptRules: 'Prompt rules',
   customBadge: 'Custom',
@@ -1121,11 +1121,11 @@ const EN_COPY: LocaleCopy = {
     heroTitle: 'Zush AI File Renamer for Mac & Windows',
     heroAccent: 'AI File Renamer',
     heroSubtitle:
-      'Zush renames files by content with AI and your own naming rules. Preview every filename, undo any batch, and choose Zush Cloud, BYOK, Built-in Local AI, LM Studio, or Ollama.',
+      'Zush renames files by content with AI and your own naming rules. Preview every filename, undo any batch, and choose Zush Cloud, BYOK, LM Studio or Ollama.',
     heroHighlights: ['Zush renames files by content with AI', 'your own naming rules'],
     buyPro: 'Buy PRO',
     trustSignals: ['Get started for free', 'No registration', 'No credit card required'],
-    heroModes: ['Zush Cloud', 'BYOK', 'Built-in Local AI', 'LM Studio', 'Ollama'],
+    heroModes: ['Zush Cloud', 'BYOK', 'LM Studio', 'Ollama'],
     featuresTitle: 'Your naming system, powered by AI',
     featuresDescription: 'Combine file content, metadata, dates, custom instructions, and reusable blocks into filenames that match the way you work. Zush suggests — you review and decide.',
     supportedFormats: 'Supported File Formats',
@@ -1146,15 +1146,15 @@ const EN_COPY: LocaleCopy = {
     faqDescription: 'Everything you need to know about Zush in one place',
     featureCards: DEFAULT_FEATURE_CARDS_COPY,
     offlineAiModal: {
-      title: 'Three ways to keep AI on your device',
-      description: 'Use Zush Built-in Local AI, connect LM Studio, or run your own Ollama model on Mac or Windows without cloud processing.',
+      title: 'Two ways to keep AI on your device',
+      description: 'Connect LM Studio or run your own Ollama model on Mac or Windows without cloud processing.',
       points: [
-        'Built-in Local AI downloads and manages a supported model for you.',
-        'LM Studio and Ollama let you choose and manage your own local models.',
+        'LM Studio lets you choose a local model through its desktop server.',
+        'Ollama runs compatible local models through its local service.',
         'Switch to Cloud or BYOK anytime for more models and file types.',
       ],
       proTitle: 'Available on every plan',
-      proDescription: 'Free includes 50 renames shared across Zush Cloud, BYOK, Built-in Local AI, LM Studio, and Ollama. PRO removes the limit.',
+      proDescription: 'Free includes 50 renames shared across Zush Cloud, BYOK, LM Studio, and Ollama. PRO removes the limit.',
       closeLabel: 'Close',
     },
     showcase: {
@@ -1175,7 +1175,7 @@ const EN_COPY: LocaleCopy = {
         multilanguage: { title: 'Multilanguage', description: 'Generate filenames in more than 60 languages' },
         'custom-prompts': { title: 'Custom Prompts', description: 'Guide filename generation with your own instructions' },
         byok: { title: 'BYOK', description: 'Connect your own AI provider for renaming; FREE includes 50 across all modes and PRO is unlimited' },
-        'offline-ai': { title: 'Local AI Renaming', description: 'Use Built-in Local AI, LM Studio, or Ollama for supported on-device analysis, even without an internet connection' },
+        'offline-ai': { title: 'Local AI Renaming', description: 'Use LM Studio or Ollama for supported on-device analysis, even without an internet connection' },
       },
     },
     speedComparison: {
@@ -1264,7 +1264,7 @@ const EN_COPY: LocaleCopy = {
     buttonText: 'Buy PRO',
     buttonHint: '14-day money-back guarantee • Secure via Paddle',
     features: [
-      { title: 'Unlimited AI Renames', desc: 'Remove the 50-rename limit across Zush Cloud, BYOK, Built-in Local AI, LM Studio, and Ollama' },
+      { title: 'Unlimited AI Renames', desc: 'Remove the 50-rename limit across Zush Cloud, BYOK, LM Studio, and Ollama' },
     ],
     sharedFeaturesTitle: 'PRO 🌟 Features',
     monthlyDifferentiators: [
@@ -1297,7 +1297,7 @@ const EN_COPY: LocaleCopy = {
       breadcrumbLabel: 'Zush for Mac',
       softwareName: 'Zush for Mac',
       softwareDescription:
-        'Zush for Mac is an AI file renamer for macOS that builds filenames from content, metadata, dates, custom prompts, and reusable naming rules. Preview every change, undo any batch, or choose Zush Cloud, BYOK, Built-in Local AI, LM Studio, or Ollama.',
+        'Zush for Mac is an AI file renamer for macOS that builds filenames from content, metadata, dates, custom prompts, and reusable naming rules. Preview every change, undo any batch, or choose Zush Cloud, BYOK, LM Studio or Ollama.',
       heroTitle: 'Zush AI File Renamer for Mac',
       heroSubtitle:
         'Build Finder filenames from the details you choose. Preview every suggestion, apply changes when you are ready, undo any batch, or keep supported analysis on-device with Local AI.',
@@ -1316,7 +1316,7 @@ const EN_COPY: LocaleCopy = {
         'Native Apple Silicon and Intel build',
         '60+ languages and flexible date formats',
         'BYOK for cloud renames; FREE includes 50 across all modes and PRO is unlimited',
-        'Built-in Local AI, LM Studio, and Ollama for supported on-device analysis',
+        'LM Studio and Ollama for supported on-device analysis',
       ],
       faqs: [
         { question: 'Can I rename files with AI on Mac?', answer: 'Yes. Zush analyzes 100+ supported Mac file formats by content and suggests readable names before you apply a batch rename. It works with screenshots, PDFs, photos, design files, audio, videos, iWork files, and Office documents.' },
@@ -1329,14 +1329,14 @@ const EN_COPY: LocaleCopy = {
         { question: 'What are Custom AI Blocks?', answer: 'Custom AI Blocks let you define your own naming field by describing in plain language what Zush should extract from a file — a client name, case number, or brand — and reuse it in any template alongside the 145+ built-in Naming Blocks. They are included in the free version.' },
         { question: 'Does Zush work on Apple Silicon?', answer: 'Yes. Zush runs natively on Apple Silicon and Intel Macs running macOS 15 or newer.' },
         { question: 'Is the app notarized by Apple?', answer: 'Yes. The .dmg is code-signed and notarized, so Gatekeeper opens it normally on supported macOS versions.' },
-        { question: 'Can I use Zush offline?', answer: 'Yes. Built-in Local AI works offline after its model download; LM Studio and Ollama work offline after you configure a compatible local model. Free includes 50 renames shared across all five AI modes; PRO removes the limit.' },
+        { question: 'Can I use Zush offline?', answer: 'Yes. LM Studio and Ollama work offline after you configure a compatible local model. Free includes 50 renames shared across all four AI modes; PRO removes the limit.' },
       ],
     },
     windows: {
       breadcrumbLabel: 'Zush for Windows',
       softwareName: 'Zush for Windows',
       softwareDescription:
-        'Zush for Windows is an AI file renamer for Windows 10 and 11. Batch rename files by content, preview every change, undo any batch, and choose Zush Cloud, BYOK, Built-in Local AI, LM Studio, or Ollama.',
+        'Zush for Windows is an AI file renamer for Windows 10 and 11. Batch rename files by content, preview every change, undo any batch, and choose Zush Cloud, BYOK, LM Studio or Ollama.',
       heroTitle: 'Zush AI File Renamer for Windows',
       heroSubtitle:
         'Use Zush to batch rename files by content on Windows 10 and 11. Preview every filename before applying, undo any batch, and choose cloud or local AI.',
@@ -1357,7 +1357,7 @@ const EN_COPY: LocaleCopy = {
         'Microsoft Store install with auto-updates',
         '60+ languages and flexible date formats',
         'BYOK with your own cloud provider key',
-        'Built-in Local AI, LM Studio, and Ollama for supported on-device analysis',
+        'LM Studio and Ollama for supported on-device analysis',
       ],
       faqs: [
         { question: 'Can Zush batch rename files on Windows?', answer: 'Yes. Zush works as an AI batch rename tool for Windows 11 and 10. Drag files from File Explorer, review AI-generated names for every item, then apply the whole batch with rename history available for undo.' },
@@ -1368,7 +1368,7 @@ const EN_COPY: LocaleCopy = {
         { question: 'Does Zush help search files by content on Windows?', answer: 'Zush does not replace Windows Search with a separate semantic search index. It analyzes file content during renaming and writes that context into filenames and metadata, so files become easier to find later in File Explorer and Windows Search.' },
         { question: 'What file types can Zush rename on Windows?', answer: 'Zush supports mixed Windows folders with screenshots, JPG/PNG/HEIC/RAW photos, PDFs, Office documents, iWork files, design files such as Figma, Sketch, Illustrator, and PSD, videos, audio, subtitles, text files, CSV, XML, YAML, and more.' },
         { question: 'Why is Zush distributed through the Microsoft Store?', answer: 'The Store handles installation, signing, and automatic updates for every user.' },
-        { question: 'Does Zush for Windows have the same features as Mac?', answer: 'Yes. It includes Zush Cloud AI, BYOK, Built-in Local AI, LM Studio, Ollama, folder monitoring, custom prompts, and revert history.' },
+        { question: 'Does Zush for Windows have the same features as Mac?', answer: 'Yes. It includes Zush Cloud AI, BYOK, LM Studio, Ollama, folder monitoring, custom prompts, and revert history.' },
         { question: 'Can Zush bulk rename files on Windows?', answer: 'Yes. Zush can bulk rename files from ordinary Windows folders, including screenshots, PDFs, photos, videos, audio, design files, iWork files, and Office documents.' },
         { question: 'Does it run on Windows on ARM?', answer: 'Yes. The Microsoft Store release includes native x64 and ARM64 packages.' },
       ],

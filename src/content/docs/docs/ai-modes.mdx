@@ -1,7 +1,7 @@
 ---
-title: "AI Modes: Zush Cloud AI, Local AI, LM Studio, BYOK, and Ollama"
-description: "Compare every Zush AI mode for file renaming: managed Zush Cloud AI, built-in Local AI, LM Studio, BYOK, and Ollama."
-lastUpdated: 2026-08-24
+title: "AI Modes: Zush Cloud AI, BYOK, LM Studio, and Ollama"
+description: "Compare the four Zush AI modes for file renaming: managed Zush Cloud AI, BYOK, LM Studio, and Ollama."
+lastUpdated: 2026-08-31
 sidebar:
   order: 30
   label: AI modes
@@ -19,7 +19,6 @@ Zush lets you choose where file analysis runs. Pick the mode that matches your p
 | Mode | Where analysis runs | Best for |
 | --- | --- | --- |
 | [Zush Cloud AI](/docs/zush-cloud-ai) | Zush-managed cloud analysis | The fastest setup: no API key or local model required |
-| [Local AI](/docs/local-ai) | Built into Zush on your Mac or Windows PC | Private offline analysis with a model downloaded and managed by Zush |
 | [LM Studio](/docs/lm-studio) | Your local LM Studio server | Choosing and tuning vision-capable local models in LM Studio |
 | [BYOK](/docs/byok) | Your selected cloud provider | Using your own Gemini, Groq, OpenAI, or Claude API key |
 | [Ollama](/docs/offline-ai) | Your local Ollama server | Running models you already manage with Ollama |
@@ -27,12 +26,11 @@ Zush lets you choose where file analysis runs. Pick the mode that matches your p
 ## How to choose
 
 - Choose **Zush Cloud AI** when you want to start immediately.
-- Choose **Local AI** when supported analysis must stay on your Mac or Windows PC and you want Zush to manage the local runtime and model.
 - Choose **LM Studio** when you already use its model catalog and local server controls.
 - Choose **BYOK** when you want a specific cloud provider account, model, or billing path.
 - Choose **Ollama** when you already manage local models through Ollama.
 
-Only one AI mode is active at a time. When Local AI, LM Studio, or Ollama is selected, Zush does not silently fall back to cloud analysis.
+Only one AI mode is active at a time. When LM Studio or Ollama is selected, Zush does not silently fall back to cloud analysis.
 
 ## Quality and performance
 
@@ -41,7 +39,7 @@ Cloud models are usually the simplest option for complex mixed folders. Local qu
 ## Related docs
 
 - [Zush Cloud AI](/docs/zush-cloud-ai)
-- [Local AI](/docs/local-ai)
+- [Local AI overview](/docs/local-ai)
 - [LM Studio](/docs/lm-studio)
 - [BYOK](/docs/byok)
 - [Ollama](/docs/offline-ai)

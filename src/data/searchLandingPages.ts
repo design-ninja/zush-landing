@@ -103,7 +103,7 @@ const scannedDocumentFaq = [
   {
     question: 'What about sensitive scans like medical or financial documents?',
     answer:
-      'Zush supports private modes: BYOK sends analysis through your own provider account, while Built-in Local AI, LM Studio, and Ollama keep supported analysis on your device and work offline after setup. Filenames and folder structures always stay local.',
+      'Zush supports private modes: BYOK sends analysis through your own provider account, while LM Studio and Ollama keep supported analysis on your device and work offline after setup. Filenames and folder structures always stay local.',
   },
 ];
 
@@ -149,7 +149,7 @@ const accountantFaq = [
   {
     question: 'Is client financial data kept private?',
     answer:
-      'Renaming happens in place on your disk. Zush does not store your files. For analysis, choose managed Cloud AI, BYOK through your own provider account, Built-in Local AI, LM Studio, or Ollama so supported file analysis stays on the machine.',
+      'Renaming happens in place on your disk. Zush does not store your files. For analysis, choose managed Cloud AI, BYOK through your own provider account, LM Studio or Ollama so supported file analysis stays on the machine.',
   },
   {
     question: 'Does Zush charge per document?',
@@ -190,7 +190,7 @@ const legalFaq = [
   {
     question: 'Is it safe for confidential client documents?',
     answer:
-      'Choose the mode that matches your confidentiality policy. Built-in Local AI, LM Studio, and Ollama keep supported analysis on the machine, while BYOK routes it through your firm’s provider account. Zush renames files in place and does not store them.',
+      'Choose the mode that matches your confidentiality policy. LM Studio and Ollama keep supported analysis on the machine, while BYOK routes it through your firm’s provider account. Zush renames files in place and does not store them.',
   },
   {
     question: 'Can it extract our matter numbers?',
@@ -259,7 +259,7 @@ const offlineRenameFaq = [
   {
     question: 'What is an offline AI file renamer?',
     answer:
-      'An offline AI file renamer uses a model on your computer without sending supported analysis to a cloud provider. Zush offers Built-in Local AI, LM Studio, and Ollama on Mac and Windows; each works offline after setup.',
+      'An offline AI file renamer uses a model on your computer without sending supported analysis to a cloud provider. Zush offers LM Studio and Ollama on Mac and Windows; each works offline after setup.',
   },
   {
     question: 'Can Zush rename files locally with Ollama?',
@@ -269,7 +269,7 @@ const offlineRenameFaq = [
   {
     question: 'What is the difference between offline AI and BYOK?',
     answer:
-      'Built-in Local AI, LM Studio, and Ollama keep supported analysis on your device and can work without internet after setup. BYOK uses your cloud provider key from Gemini, Groq, OpenAI, or Claude.',
+      'LM Studio and Ollama keep supported analysis on your device and can work without internet after setup. BYOK uses your cloud provider key from Gemini, Groq, OpenAI, or Claude.',
   },
   {
     question: 'Does offline AI renaming work for every file type?',
@@ -312,7 +312,7 @@ const fileOrganizerFaq = [
   {
     question: 'Is my data private when AI organizes my files?',
     answer:
-      'You choose the mode: managed Cloud AI, BYOK with your own provider key, Built-in Local AI, LM Studio, or Ollama so supported analysis stays on your device. Files are renamed in place on your disk.',
+      'You choose the mode: managed Cloud AI, BYOK with your own provider key, LM Studio or Ollama so supported analysis stays on your device. Files are renamed in place on your disk.',
   },
 ];
 
@@ -391,7 +391,7 @@ const invoiceRenameFaq = [
   {
     question: 'Is it private? These are financial documents.',
     answer:
-      'You choose the mode. Managed Cloud AI is the default, BYOK uses your own provider key, and Built-in Local AI, LM Studio, or Ollama keep supported analysis on your device. Files are renamed in place on your disk.',
+      'You choose the mode. Managed Cloud AI is the default, BYOK uses your own provider key, and LM Studio or Ollama keep supported analysis on your device. Files are renamed in place on your disk.',
   },
   {
     question: 'Does it work with scanned invoices?',
@@ -424,7 +424,7 @@ const receiptRenameFaq = [
   {
     question: 'Is receipt data kept private?',
     answer:
-      'You choose the mode: managed Cloud AI, BYOK with your own key, Built-in Local AI, LM Studio, or Ollama so supported receipt analysis stays on your device. Receipts are renamed in place on your disk.',
+      'You choose the mode: managed Cloud AI, BYOK with your own key, LM Studio or Ollama so supported receipt analysis stays on your device. Receipts are renamed in place on your disk.',
   },
 ];
 
@@ -475,7 +475,7 @@ const downloadsFolderFaq = [
   {
     question: 'Is monitoring my Downloads folder private?',
     answer:
-      'You choose the mode: managed Cloud AI, BYOK with your own provider key, Built-in Local AI, LM Studio, or Ollama so supported analysis stays on your device. Files are renamed in place on your disk.',
+      'You choose the mode: managed Cloud AI, BYOK with your own provider key, LM Studio or Ollama so supported analysis stays on your device. Files are renamed in place on your disk.',
   },
   {
     question: 'Does this work on both Mac and Windows?',
@@ -660,7 +660,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     category: 'general',
     definitionTitle: 'What Is an Offline AI File Renamer?',
     definitionText:
-      'An offline AI file renamer analyzes files with a model on your computer instead of a cloud provider. Zush offers Built-in Local AI, LM Studio, and Ollama on Mac and Windows, with preview, folder monitoring, templates, Naming Blocks, and undo history in the same workflow.',
+      'An offline AI file renamer analyzes files with a model on your computer instead of a cloud provider. Zush offers LM Studio and Ollama on Mac and Windows, with preview, folder monitoring, templates, Naming Blocks, and undo history in the same workflow.',
     showcaseSlides: sharedSlides,
     faqItems: offlineRenameFaq,
     relatedPages: [
@@ -682,8 +682,8 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
         name: 'Rename files offline with Zush Local AI',
         description: 'Use Zush as an offline AI file renamer for private local file naming on Mac and Windows.',
         steps: [
-          { name: 'Choose a local mode', text: 'Open Zush AI Modes and choose Built-in Local AI, LM Studio, or Ollama.' },
-          { name: 'Configure the model', text: 'Download the built-in model, or connect a compatible vision model running in LM Studio or Ollama.' },
+          { name: 'Choose a local mode', text: 'Open Zush AI Modes and choose LM Studio or Ollama.' },
+          { name: 'Configure the model', text: 'Connect a compatible vision model running in LM Studio or Ollama.' },
           { name: 'Review and apply names', text: 'Drop files or folders into Zush, review local AI filename suggestions, and apply the batch with undo history available.' },
         ],
       },
@@ -691,9 +691,9 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       page: {
         pagePath: '/offline-ai-file-renamer',
         description:
-          'Offline AI file renamer for Mac and Windows with Built-in Local AI, LM Studio, or Ollama, plus preview, folder monitoring, templates, Naming Blocks, and undo history.',
+          'Offline AI file renamer for Mac and Windows with LM Studio or Ollama, plus preview, folder monitoring, templates, Naming Blocks, and undo history.',
         featureList: [
-          'Offline AI file renaming with Built-in Local AI, LM Studio, or Ollama',
+          'Offline AI file renaming with LM Studio or Ollama',
           'Three on-device modes that work offline after setup',
           'BYOK support for Gemini, Groq, OpenAI, and Claude',
           'Preview every filename before applying changes',

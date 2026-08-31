@@ -1,7 +1,7 @@
 ---
-title: Built-in Local AI on Mac and Windows
-description: Download and run Zush Local AI for private offline file analysis directly on your Mac or Windows PC.
-lastUpdated: 2026-08-24
+title: Local AI with LM Studio or Ollama
+description: Connect Zush to LM Studio or Ollama for private local file analysis on Mac and Windows.
+lastUpdated: 2026-08-31
 sidebar:
   order: 32
   label: Local AI
@@ -9,54 +9,45 @@ sidebar:
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Local AI is built into Zush for Mac and Windows. Zush downloads a supported model, runs the local inference runtime on your computer, and keeps supported analysis content off cloud AI services.
-
-<figure>
-  <img src="/images/showcase/macos/local-ai-light.webp" alt="Built-in Local AI model and resource settings in Zush for Mac." width="2560" height="1440" loading="lazy" decoding="async" />
-  <figcaption>The Mac interface shown here downloads the Local AI model once, then lets you choose a resource profile and run analysis locally. Windows provides the same AI mode in Zush Settings.</figcaption>
-</figure>
+Zush runs local analysis through [LM Studio](/docs/lm-studio) or [Ollama](/docs/offline-ai) on Mac and Windows. You choose and run a compatible model in the local server, then connect Zush to it. Supported analysis stays on your computer while the local mode is selected.
 
 ## Requirements
 
 - the latest Zush version for Mac or Windows
 - macOS 15 or later, or Windows 10/11
-- about 3.4 GB of free disk space for the current model download
-- enough memory for the selected **Resource Use** profile
-- internet access for the initial model download; analysis can run offline afterward
+- LM Studio or Ollama installed on the same computer
+- a compatible local model with enough disk space and memory for your hardware
+- internet access for installation and model download; analysis can run offline afterward
 
-## Set up Local AI
+## Set up local AI
 
 <Steps>
 1. Open Zush Settings and select **AI Modes**.
-2. Select **Local AI**.
-3. Click **Download & Start**.
-4. Keep Zush open while the model downloads and is verified.
-5. When the status is **Running**, choose a **Resource Use** profile if needed.
-6. Open **AI Rename** and test a small representative batch.
+2. Start LM Studio or Ollama and load a compatible model.
+3. In Zush, select **LM Studio** or **Ollama**.
+4. Confirm the local server address and model.
+5. Open **AI Rename** and test a small representative batch.
 </Steps>
 
-## Resource Use profiles
+## Choose a local server
 
-| Profile | Use it when |
+| Option | Use it when |
 | --- | --- |
-| Memory Saver | You want the smallest memory footprint |
-| Recommended | You want the default balance of speed and memory use |
-| Max Speed | Your computer has enough available memory and you want higher throughput |
-
-Changing the profile restarts the local runtime. You can stop Local AI, re-download the model, or delete it from the same settings card.
+| [LM Studio](/docs/lm-studio) | You want a desktop model catalog and server controls |
+| [Ollama](/docs/offline-ai) | You already manage local models through Ollama or prefer its command-line workflow |
 
 <Aside type="note">
-Local AI listens only on a loopback address on your Mac or Windows PC. Zush does not fall back to cloud analysis while this mode is selected.
+LM Studio and Ollama normally listen on a local address on your Mac or Windows PC. Zush does not silently fall back to cloud analysis while either local mode is selected.
 </Aside>
 
 ## Troubleshooting
 
 | Problem | What to do |
 | --- | --- |
-| Download stops | Check the network connection and click **Check Again** or restart the download |
-| Local AI will not start | Free memory, choose **Memory Saver**, and try again |
-| Analysis is slow | Try **Recommended** or **Max Speed** if your computer has enough available memory |
-| You need a different model | Use [LM Studio](/docs/lm-studio) or [Ollama](/docs/offline-ai) |
+| Zush cannot connect | Confirm that LM Studio or Ollama is running and that the server address matches Zush Settings |
+| The model is not listed | Load or pull a compatible model in LM Studio or Ollama, then refresh the model list in Zush |
+| Analysis is slow | Try a smaller compatible model or close other memory-intensive apps |
+| A file type fails | Test a supported file with a vision-capable model and check the relevant local-server logs |
 
 ## Related docs
 

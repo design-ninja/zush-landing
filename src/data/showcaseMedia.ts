@@ -249,16 +249,6 @@ export const MACOS_SHOWCASE_SCREENSHOTS: ShowcaseScreenshotAsset[] = [
     alt: 'Zush Cloud AI selected in AI Modes for macOS',
   },
   {
-    id: 'local-ai',
-    title: 'Local AI',
-    description: 'Run built-in private offline analysis directly on your Mac',
-    images: {
-      light: '/images/showcase/macos/local-ai-light.webp',
-      dark: '/images/showcase/macos/local-ai-dark.webp',
-    },
-    alt: 'Built-in Local AI model and resource settings in Zush for macOS',
-  },
-  {
     id: 'lm-studio',
     title: 'LM Studio',
     description: 'Connect vision-capable local models with advanced server controls',

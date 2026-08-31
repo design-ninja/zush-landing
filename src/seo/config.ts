@@ -107,11 +107,11 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/offline-ai-file-renamer': {
     title: 'Offline AI File Renamer for Mac & Windows | Zush',
     description:
-      'Offline AI file renamer for Mac and Windows. Use Built-in Local AI, LM Studio, or Ollama so supported analysis stays on-device, with preview and undo.',
+      'Offline AI file renamer for Mac and Windows. Use LM Studio or Ollama so supported analysis stays on-device, with preview and undo.',
     robots: 'index, follow',
     ogType: 'website',
     keywords:
-      'offline AI file renamer, local AI file renamer, private AI file renamer, on-device AI file renamer, rename files offline, offline file renamer for Mac, offline file renamer for Windows, Built-in Local AI file renamer, LM Studio file renamer, Ollama file renamer',
+      'offline AI file renamer, local AI file renamer, private AI file renamer, on-device AI file renamer, rename files offline, offline file renamer for Mac, offline file renamer for Windows, local AI server file renamer, LM Studio file renamer, Ollama file renamer',
   },
   '/ai-file-organizer': {
     title: 'AI File Organizer for Mac & Windows | Automatic File Naming',
@@ -306,7 +306,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/docs': {
     title: 'Zush Docs | AI File Renamer Guides for Mac and Windows',
     description:
-      'Zush AI file renamer docs for Mac and Windows: batch rename, folder monitoring, Templates, BYOK, Built-in Local AI, LM Studio, Ollama, metadata, and undo.',
+      'Zush AI file renamer docs for Mac and Windows: batch rename, folder monitoring, Templates, BYOK, LM Studio, Ollama, metadata, and undo.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -619,7 +619,7 @@ export const HOME_JSON_LD = {
         'RAW photo, PDF, and document analysis',
         '60+ language support',
         'Bring Your Own Key (BYOK)',
-        'Built-in Local AI, LM Studio, and Ollama modes for supported on-device analysis',
+        'LM Studio and Ollama modes for supported on-device analysis',
       ],
     },
   ],

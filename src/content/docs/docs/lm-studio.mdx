@@ -1,7 +1,7 @@
 ---
 title: LM Studio Setup for Local AI
 description: Connect Zush to LM Studio, start its local server, choose a vision-capable model, and rename supported files locally.
-lastUpdated: 2026-08-24
+lastUpdated: 2026-08-31
 sidebar:
   order: 33
   label: LM Studio
@@ -49,7 +49,7 @@ Zush only lists models that LM Studio reports as vision-capable. A text-only mod
 | Server is not running | In LM Studio, open **Developer** and enable **Start Server** |
 | No models appear | Download and load a vision-capable model, then refresh in Zush |
 | Connection test fails | Confirm the host is `http://127.0.0.1:1234` unless you intentionally changed it |
-| Model is too slow | Load a smaller vision model or use built-in [Local AI](/docs/local-ai) |
+| Model is too slow | Load a smaller vision model or compare the [Ollama setup](/docs/offline-ai) |
 
 ## Privacy
 
@@ -58,6 +58,6 @@ With the default loopback endpoint, supported analysis runs through LM Studio on
 ## Related docs
 
 - [AI modes](/docs/ai-modes)
-- [Built-in Local AI](/docs/local-ai)
+- [Local AI overview](/docs/local-ai)
 - [Ollama](/docs/offline-ai)
 - [Privacy and security](/docs/privacy-security)
