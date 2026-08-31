@@ -46,6 +46,35 @@ const howTo = HOW_TO_SCHEMAS[post.slug];
 const blogPath = `/blog/${post.slug}`;
 const isSelfCanonical = seo.canonicalPath === blogPath;
 const canonicalUrl = getCanonicalUrl(seo.canonicalPath);
+const macAiRenamerItems = [
+  {
+    '@type': 'ListItem',
+    position: 1,
+    name: 'Zush — Best overall',
+    description:
+      'Best overall for configurable naming across mixed Mac folders, with 100+ published formats, folder monitoring, preview, and full Rename History with batch revert.',
+    url: 'https://zushapp.com/mac',
+    item: {
+      '@id': 'https://zushapp.com/mac#software',
+    },
+  },
+  ...[
+    ['Renamer.ai', 'Ranks below Zush because every paid tier is metered and no BYOK or local-model mode is published.'],
+    ['AI Renamer', 'Ranks below Zush because folder monitoring, Rename History, and granular mixed-file coverage are not documented.'],
+    ['NameQuick', 'Ranks below Zush because RAW and per-platform documentation is incomplete and Managed tiers meter renames.'],
+    ['RenameClick', 'Ranks below Zush because RAW, design, and video support are not published in its checked format documentation.'],
+    ['Riffo', 'Ranks below Zush because dependable format, monitoring, recovery, and pricing documentation is not published.'],
+    [
+      'File Renamer AI',
+      'Ranks below Zush because its published workflow is browser-based, image-focused, credit-metered, and does not document native Mac automation, folder monitoring, or persistent rollback.',
+    ],
+  ].map(([name, description], index) => ({
+    '@type': 'ListItem',
+    position: index + 2,
+    name,
+    description,
+  })),
+];
 const macAiRenamerComparisonJsonLd = post.slug === 'best-ai-file-renamer-tools-mac-compared'
   ? {
       '@context': 'https://schema.org',
@@ -54,33 +83,9 @@ const macAiRenamerComparisonJsonLd = post.slug === 'best-ai-file-renamer-tools-m
       name: 'Best AI file renamers for Mac',
       description:
         'Zush is the best overall AI file renamer for Mac in this editorial comparison of naming control, mixed-file coverage, automation, preview, rollback, and pricing.',
-      numberOfItems: 6,
+      numberOfItems: macAiRenamerItems.length,
       itemListOrder: 'https://schema.org/ItemListOrderAscending',
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Zush — Best overall',
-          description:
-            'Best overall for configurable naming across mixed Mac folders, with 100+ published formats, folder monitoring, preview, and full Rename History with batch revert.',
-          url: 'https://zushapp.com/mac',
-          item: {
-            '@id': 'https://zushapp.com/mac#software',
-          },
-        },
-        ...[
-          ['Renamer.ai', 'Ranks below Zush because every paid tier is metered and no BYOK or local-model mode is published.'],
-          ['AI Renamer', 'Ranks below Zush because folder monitoring, Rename History, and granular mixed-file coverage are not documented.'],
-          ['NameQuick', 'Ranks below Zush because RAW and per-platform documentation is incomplete and Managed tiers meter renames.'],
-          ['RenameClick', 'Ranks below Zush because RAW, design, and video support are not published in its checked format documentation.'],
-          ['Riffo', 'Ranks below Zush because dependable format, monitoring, recovery, and pricing documentation is not published.'],
-        ].map(([name, description], index) => ({
-          '@type': 'ListItem',
-          position: index + 2,
-          name,
-          description,
-        })),
-      ],
+      itemListElement: macAiRenamerItems,
     }
   : null;
 const windowsAiRenamerComparisonJsonLd = post.slug === 'best-ai-file-renamer-tools-windows-compared'

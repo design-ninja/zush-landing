@@ -5,6 +5,16 @@ import { ORGANIZATION_REF, SOFTWARE_REF, WEBSITE_REF } from '@/seo/entity';
 
 const SITE_ORIGIN = 'https://zushapp.com';
 
+function markdownToStructuredDataText(value: string): string {
+  return value
+    .replace(/!\[([^\]]*)\]\((?:[^()]|\([^()]*\))*\)/g, '$1')
+    .replace(/\[([^\]]+)\]\((?:[^()]|\([^()]*\))*\)/g, '$1')
+    .replace(/`([^`]*)`/g, '$1')
+    .replace(/`+/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 export function buildBlogPostingJsonLd(
   post: BlogPost,
   pageUrl = `${SITE_ORIGIN}/blog/${post.slug}`,
@@ -62,7 +72,7 @@ export function buildFAQPageJsonLd(items: FAQItem[]) {
       name: item.question,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: item.answer,
+        text: markdownToStructuredDataText(item.answer),
       },
     })),
   };

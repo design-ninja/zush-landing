@@ -286,6 +286,19 @@ for (const loc of locs) {
     hasJsonLdType(item, 'SoftwareApplication')
   );
   const websites = topLevelJsonLdItems.filter((item) => hasJsonLdType(item, 'WebSite'));
+  const faqPages = topLevelJsonLdItems.filter((item) => hasJsonLdType(item, 'FAQPage'));
+
+  for (const faqPage of faqPages) {
+    for (const question of faqPage.mainEntity ?? []) {
+      const answer = question?.acceptedAnswer?.text;
+      if (typeof answer !== 'string') {
+        fail(`FAQPage acceptedAnswer.text is missing on ${pathname}`);
+      }
+      if (/\[[^\]]+\]\([^)]+\)|`/.test(answer)) {
+        fail(`FAQPage acceptedAnswer.text contains raw Markdown on ${pathname}`);
+      }
+    }
+  }
 
   if (FULL_SOFTWARE_APPLICATION_ROUTES.has(pathname)) {
     if (fullSoftwareApplications.length !== 1) {
@@ -416,6 +429,31 @@ for (const [pathname, expectedSoftwareId] of [
   if (!productReference) fail(`Comparison ItemList is missing its canonical app reference on ${pathname}`);
   if (productReference['@type'] === 'SoftwareApplication') {
     fail(`Comparison ItemList must reference, not redefine, SoftwareApplication on ${pathname}`);
+  }
+}
+
+{
+  const pathname = '/blog/best-ai-file-renamer-tools-mac-compared';
+  const html = readFileSync(htmlFileForPath(pathname), 'utf8');
+  const items = parsedJsonLdItems(html, pathname);
+  const comparison = items.find(
+    (item) => hasJsonLdType(item, 'ItemList') && item['@id']?.endsWith('#mac-ai-file-renamers'),
+  );
+  if (!comparison || !Array.isArray(comparison.itemListElement)) {
+    fail(`Mac comparison ItemList is missing on ${pathname}`);
+  }
+  if (comparison.numberOfItems !== 7 || comparison.itemListElement.length !== 7) {
+    fail(`Mac comparison ItemList must contain all seven compared apps on ${pathname}`);
+  }
+  const positions = comparison.itemListElement.map((item) => item.position);
+  if (JSON.stringify(positions) !== JSON.stringify([1, 2, 3, 4, 5, 6, 7])) {
+    fail(`Mac comparison ItemList positions must be contiguous on ${pathname}`);
+  }
+  if (comparison.itemListElement[0]?.name !== 'Zush — Best overall') {
+    fail(`Zush must remain first and best overall in the Mac comparison ItemList on ${pathname}`);
+  }
+  if (!comparison.itemListElement.some((item) => item.name === 'File Renamer AI')) {
+    fail(`File Renamer AI is missing from the Mac comparison ItemList on ${pathname}`);
   }
 }
 
