@@ -117,6 +117,12 @@ function assertNotIncludes(html, needle, message) {
   if (html.includes(needle)) fail(message);
 }
 
+function getMetaDescription(html, pathname) {
+  const match = html.match(/<meta name="description" content="([^"]*)"/i);
+  if (!match) fail(`Meta description missing for ${pathname}`);
+  return match[1];
+}
+
 function assertPostHogInitializationOrder() {
   const componentPath = join(ROOT, 'src/components/PostHogAnalytics.astro');
   const source = readFileSync(componentPath, 'utf8');
@@ -399,6 +405,41 @@ assertEntityReference('/de/windows', PLATFORM_SOFTWARE['/windows'].id, 'de');
 for (const pathname of ['/de', '/de/mac', '/de/windows', '/de/rename-pdf-with-ai', '/about']) {
   const html = readFileSync(htmlFileForPath(pathname), 'utf8');
   assertNotIncludes(html, '<meta name="keywords"', `Generic meta keywords leaked onto ${pathname}`);
+}
+
+// Keep the strongest localized landing pages aligned on the SEO signals that
+// should not vary by language. CJK descriptions are character-dense, so the
+// lower bound here protects useful snippets without forcing Latin-language
+// length conventions onto every translated page.
+for (const [pathname, hreflang, minimumDescriptionLength] of [
+  ['/de', 'de', 150],
+  ['/fr', 'fr', 150],
+  ['/zh-cn', 'zh-CN', 120],
+  ['/zh-cn/rename-photos-with-ai', 'zh-CN', 150],
+  ['/zh-cn/rename-screenshots-with-ai', 'zh-CN', 150],
+  ['/zh-cn/rename-videos-with-ai', 'zh-CN', 150],
+  ['/zh-cn/rename-audio-with-ai', 'zh-CN', 150],
+  ['/zh-cn/rename-documents-with-ai', 'zh-CN', 150],
+  ['/zh-cn/rename-pdf-with-ai', 'zh-CN', 150],
+]) {
+  const html = readFileSync(htmlFileForPath(pathname), 'utf8');
+  const description = getMetaDescription(html, pathname);
+  if (description.length < minimumDescriptionLength) {
+    fail(
+      `Localized meta description is too short on ${pathname}: ` +
+      `${description.length} < ${minimumDescriptionLength}`,
+    );
+  }
+  assertIncludes(
+    html,
+    `<link rel="alternate" hreflang="${hreflang}" href="${SITE_ORIGIN}${pathname}">`,
+    `Self-referencing hreflang missing for ${pathname}`,
+  );
+  assertIncludes(
+    html,
+    `<link rel="alternate" hreflang="x-default" href="${SITE_ORIGIN}${pathname.replace(/^\/(?:de|fr|zh-cn)/, '') || '/'}">`,
+    `x-default hreflang missing for ${pathname}`,
+  );
 }
 
 for (const [pathname, expected] of Object.entries(PLATFORM_SOFTWARE)) {

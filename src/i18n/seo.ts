@@ -188,9 +188,15 @@ const SEARCH_DESCRIPTION_OVERRIDES: Partial<Record<Locale, Partial<Record<Locali
     '/rename-photos-with-ai':
       'AI 照片重命名工具。Zush 读取 HEIC、RAW、AVIF、JPG、SVG、TIFF 等图片，按主体、场景和上下文为照片生成可搜索的名称。在 Mac 和 Windows 上无需移动照片即可批量处理，应用前可预览全部建议，修改后能从历史记录恢复原名，还可用模板统一整个图库的命名方式和日期格式，安全整理整个图库。',
     '/rename-screenshots-with-ai':
-      '按画面内容自动重命名截图。可批量处理已有截图，也可以在 Mac 和 Windows 上监控文件夹并自动处理新截图。Zush 会识别应用、页面、错误、图表和对话，生成清晰且便于搜索的名称；应用前可预览全部建议，修改后还能从历史记录恢复原名，安全整理日常截图并保持命名统一。',
+      '按画面内容自动重命名截图。可批量处理已有截图，也可以在 Mac 和 Windows 上监控文件夹并自动处理新截图。Zush 会识别应用、页面、错误、图表和对话，生成清晰且便于搜索的名称；应用前可预览全部建议，修改后还能从历史记录恢复原名，安全整理日常截图并保持命名统一。还可使用模板统一应用、日期和项目字段。',
+    '/rename-videos-with-ai':
+      'AI 视频重命名工具。Zush 读取 MP4、MOV、M4V、MPEG、MTS、VOB、字幕和采样画面，按实际内容为录屏和视频片段生成清晰、便于搜索的名称。在 Mac 和 Windows 上批量处理视频，应用前预览全部建议，修改后可从历史记录恢复原始文件名。还可使用命名模板统一项目、日期与镜头信息，整理大型素材库。',
+    '/rename-audio-with-ai':
+      'AI 音频重命名工具。Zush 读取 MP3、M4A、WAV、FLAC、OGG、WebM 和 MPGA 的元数据或转录文本，按标题、艺术家、内容和上下文生成清晰名称。在 Mac 和 Windows 上批量处理音频，应用前预览全部建议，修改后可从历史记录恢复原始文件名。还可用命名模板统一节目、日期和曲目信息，让媒体库更易检索。',
     '/rename-documents-with-ai':
       'AI 文档重命名工具。Zush 读取 DOCX、XLSX、PPTX、Pages、Numbers、Keynote、TXT、CSV、邮件和字幕，按实际内容生成清晰名称。在 Mac 和 Windows 上批量处理，结合标题、客户和日期建立统一规则。应用前预览建议，可撤销更改，并能选择 BYOK 或 Ollama 本地 AI。',
+    '/rename-pdf-with-ai':
+      'AI PDF 重命名工具。Zush 读取发票、合同、扫描件、收据和报告，按内容生成便于检索的文件名。在 Mac 和 Windows 上批量处理多个 PDF，结合供应商、日期和文档类型建立统一命名规则；应用前可预览全部建议，修改后可从历史记录恢复原始文件名。还可使用模板统一客户、项目和归档字段，让文档库保持一致。',
   },
   ar: {
     '/rename-screenshots-with-ai':
