@@ -11,7 +11,7 @@ tags:
   - "إعادة تسمية ملف الذكاء الاصطناعي"
   - "مقارنات الأداة"
 tldr: "اختر Zush للحصول على سير عمل التسمية الأكثر قابلية للتكوين في هذه المقارنة: Templates الجاهزة، و 145+ Naming Blocks، و Custom AI Blocks، والتنسيق، والترجمة، وبيانات التعريف، و Rename History مع إرجاع الدفعة. القيد الرئيسي لـ RenameClick هو التغطية الموثقة الأضيق: لا يوجد RAW أو التصميم أو iWork أو دعم الفيديو. الذكاء الاصطناعي المحلي والتراجع موجودان في كليهما وليسا فارقين."
-reviewed: "2026-08-31"
+reviewed: "2026-09-02"
 featuredOrder: 5
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -42,10 +42,10 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 |المنصات|ماك + Windows|ماك + Windows|
 |خيارات المعالجة|الذكاء الاصطناعي السحابي، أو BYOK، أو الذكاء الاصطناعي دون اتصال بالإنترنت عبر Ollama|الذكاء الاصطناعي المحلي المدمج بشكل افتراضي|
 |النموذج المحلي المجمعة|لا، استخدم الإعداد Ollama|نعم، نموذج Qwen3-VL المحلي بعد التنزيل|
-|مزودي الذكاء الاصطناعي|الجوزاء، Groq، OpenAI، كلود، Ollama غير متصل|محلي مدمج، OpenAI، Gemini، Alibaba Cloud Qwen، LM Studio، Ollama|
+|مزودي الذكاء الاصطناعي|الجوزاء، OpenRouter، OpenAI، كلود، Ollama غير متصل|محلي مدمج، OpenAI، Gemini، Alibaba Cloud Qwen، LM Studio، Ollama|
 |تنسيقات الصور/التصميم|41 تنسيقًا للصور + 4 تنسيقات تصميم، بما في ذلك RAW وHEIC وAVIF وSketch وFigma وAI وPSD|JPEG، PNG، GIF، WebP، AVIF، BMP، SVG، HEIC، HEIF، TIFF؛ لا توجد ملفات التصميم|
 |دعم الخام|<BlogHighlight>نعم (CR2، CR3، NEF، ARW، DNG، ORF، RAF، RW2، PEF، SRW، SR2)</BlogHighlight>|غير مدرجة علنا|
-|تنسيقات المستندات|37 تنسيقًا للمستندات/PDF، بما في ذلك iWork|PDF، DOC/DOCX، TXT، MD، CSV، RTF، ODT، JSON، XML، YAML، HTML، logs، SQL، SRT/VTT، ICS/VCF|
+|تنسيقات المستندات|40 تنسيقًا للمستندات/PDF، بما في ذلك iWork|PDF، DOC/DOCX، TXT، MD، CSV، RTF، ODT، JSON، XML، YAML، HTML، logs، SQL، SRT/VTT، ICS/VCF|
 |صيغ الفيديو|16 تنسيقًا شائعًا|غير معتمد لكل المستندات|
 |صيغ الصوت|MP3، M4A، WAV، FLAC، OGG، WebM، MPGA|MP3، WAV، FLAC، M4A، AAC مع نسخ الكلام المحلي|
 |مراقبة المجلد|نعم|نعم، التدفق التلقائي|
@@ -70,7 +70,7 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 ## Zush
 
 <BlogToolMeta platform="ماك ('macOS' 15+) و'Windows' 10/11" website="https://zushapp.com/" label="zushapp.com">
-<Fragment slot="pricing"> الطبقة المجانية (50 إعادة تسمية)، Pro <BlogHighlight> 10 دولارات شهريًا أو 48 دولارًا لمرة واحدة </BlogHighlight> لعدد غير محدود من عمليات إعادة تسمية PRO، BYOK اختياري بتكلفة واجهة برمجة التطبيقات (Gemini/Groq/OpenAI/Claude)، الذكاء الاصطناعي غير المتصل بالإنترنت عبر Ollama</Fragment>
+<Fragment slot="pricing"> الطبقة المجانية (50 إعادة تسمية)، Pro <BlogHighlight> 10 دولارات شهريًا أو 48 دولارًا لمرة واحدة </BlogHighlight> لعدد غير محدود من عمليات إعادة تسمية PRO، BYOK اختياري بتكلفة واجهة برمجة التطبيقات (Gemini/OpenRouter/OpenAI/Claude)، الذكاء الاصطناعي غير المتصل بالإنترنت عبر Ollama</Fragment>
 </BlogToolMeta>
 
 ![Zush نتائج إعادة تسمية AI تعرض الملفات ذات الأسماء الوصفية قبل وبعد الأسماء وعلامات الاختيار الخضراء](/images/showcase/macos/batch-rename-light.webp)
@@ -125,7 +125,7 @@ RenameClick ليس مجرد إعادة تسمية. إنه أقرب إلى منظ
 
 يمكن لكلا المنتجين تشغيل نماذج محلية، لذا فإن المعالجة دون اتصال بالإنترنت ليست ميزة فريدة. يقوم RenameClick بتجميع النموذج بعد تنزيله بعدة غيغابايت؛ يتصل Zush بـ Ollama. الفرق الأكثر أهمية هو بقية سير العمل: يوثق Zush Templates الجاهزة، و145+ Naming Blocks، وCustom AI Blocks، وعناصر تحكم أكثر ثراءً في الترجمة والبيانات الوصفية، وRename History المستمر.
 
-يفوز Zush إذا كنت تهتم أكثر باختيار موفر السحابة والحجم الكبير BYOK. يدعم Zush Gemini وGroq وOpenAI وClaude من خلال BYOK، مع تخزين المفاتيح محليًا، ويدعم Offline AI عبر Ollama عندما تكون الأولوية للمعالجة المحلية. يعتبر Groq و Claude من الخيارات البارزة في جانب Zush؛ تعد Qwen3-VL المدمجة وAlibaba Cloud Qwen وLM Studio خيارات جانبية RenameClick.
+يفوز Zush إذا كنت تهتم أكثر باختيار موفر السحابة والحجم الكبير BYOK. يدعم Zush Gemini وOpenRouter وOpenAI وClaude من خلال BYOK، مع تخزين المفاتيح محليًا، ويدعم Offline AI عبر Ollama عندما تكون الأولوية للمعالجة المحلية. يعتبر OpenRouter و Claude من الخيارات البارزة في جانب Zush؛ تعد Qwen3-VL المدمجة وAlibaba Cloud Qwen وLM Studio خيارات جانبية RenameClick.
 
 تعتبر المقايضة العملية بسيطة: اختر Zush لتسمية العمق وتفاصيل الاسترداد واتساع الملف المختلط. خذ بعين الاعتبار "RenameClick" فقط عندما تفوق حركة البحث أو المجلد التي تعمل بتقنية الذكاء الاصطناعي RAW والتصميم و"iWork" وتغطية الفيديو المفقودة.
 
@@ -153,7 +153,7 @@ RenameClick ليس مجرد إعادة تسمية. إنه أقرب إلى منظ
 
 - أنت بحاجة إلى أوسع تغطية للتنسيقات، خاصة صور RAW وملفات التصميم ومقاطع الفيديو و"iWork" والترجمات المصاحبة
 - أنت تريد Templates و145+ Naming Blocks وCustom AI Blocks الجاهزة والتنسيق والتعريب والبيانات الوصفية وRename History الكاملة
-- تريد أن يكون BYOK مع Gemini أو Groq أو OpenAI أو Claude متاحًا في كل خطة
+- تريد أن يكون BYOK مع Gemini أو OpenRouter أو OpenAI أو Claude متاحًا في كل خطة
 - أنت بحاجة إلى أكثر من 60 لغة إخراج
 - أنت تريد قوالب و145+ Naming Blocks لهياكل أسماء الملفات القابلة للتكرار
 - أنت تريد إعادة تسمية سير العمل عبر Mac و"Windows" دون التفكير في الطراز المحلي للأجهزة أولاً

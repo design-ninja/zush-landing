@@ -11,7 +11,7 @@ tags:
   - "AI文件重命名"
   - "工具比较"
 tldr: "总体最佳：“Zush”。在此比较中，它具有最可配置的 AI 命名工作流程：现成的“Templates”、145+“Naming Blocks”、“Custom AI Blocks”、格式和本地化控件，以及可以恢复应用批次的“Rename History”。其他产品的选择范围较小，不是我们的总体推荐。"
-reviewed: "2026-08-31"
+reviewed: "2026-09-02"
 featuredOrder: 1
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -60,7 +60,7 @@ AI 文件重命名器现在在格式支持、审查和撤消保护、文件夹�
 |可配置的 AI 命名|现成的工作流程、结构化文件名字段、自定义 AI 提取、格式、语言、元数据|在此比较中，“Zush”具有最深入的记录组合：“Templates”、145+“Naming Blocks”、“Custom AI Blocks”、格式、本地化和元数据|
 |安全批量重命名|应用前预览加上原始名称和新名称的持久记录以及批量恢复路径|Zush 在 Rename History 中记录原始名称、新名称、文件夹和时间戳；一些竞争对手也记录了撤消|
 |离线AI文件重命名器|本地模型支持，支持文件无需云端上传，应用前预览|“Zush”是我们的整体选择；替代方案需要更窄的提供商、格式或工作流程权衡|
-|BYOK AI 文件重命名器|带上您自己的 Gemini、OpenAI、Claude 或 Groq 密钥|Zush;仅当 OpenRouter、vLLM 或不同的不受支持的提供商是强制性的时，才考虑另一个条目|
+|BYOK AI 文件重命名器|带上您自己的 Gemini、OpenAI、Claude 或 OpenRouter 密钥|Zush;仅当 vLLM 或不同的不受支持的提供商是强制性的时，才考虑另一个条目|
 |AI 文件重命名器和管理器|文件夹监控、模板、重命名历史、回滚|Zush;当移动文件比命名文件更重要时，路由优先产品是例外|
 |云存储文件重命名器|Google Drive、Dropbox、OneDrive、团队规则、文档工作流程|Mac 上的文件为“Zush”，或“Windows”；重命名为仅适用于连接存储或仅限 API 的工作流程|
 
@@ -114,7 +114,7 @@ AI 文件重命名器现在在格式支持、审查和撤消保护、文件夹�
 
 ![“Zush” AI 重命名结果显示带有描述性前后名称和绿色复选标记的文件](/images/showcase/macos/batch-rename-light.webp)
 
-对于使用混合文件类型并希望使用一个桌面工作流程而不是单独的图像、设计文件、文档、视频和音频重命名工具的用户来说，“[适用于 Mac 的“Zush”文件重命名器和“Windows”](/)”是最佳选择。它支持 100 多种格式：41 种图像格式（包括 HEIC、AVIF、SVG 和 RAW）、4 种设计格式（Sketch、Figma .fig、Adobe Illustrator .ai 和 PSD）、37 种文档和 PDF 相关格式（PDF、Office、iWork、OpenDocument、文本、数据、电子邮件和字幕文件）、16 种视频格式（包括 MP4、MOV、M4V、MPEG、 3GP、TS、MTS、M2TS、DV 和 VOB）和 7 种音频格式（包括 MP3、M4A、WAV、FLAC、OGG、WebM 和 MPGA）。这种广度很重要，因为真正的工作流程会将手机照片、相机 RAW 文件、设计资源、扫描的 PDF、办公文档、字幕、屏幕录制和音频文件混合在同一文件夹中。视频是大多数这些工具完全跳过的类别； “[如何用AI重命名视频文件](/blog/rename-video-files-with-ai)”解释了重命名器实际从剪辑中读取的内容。
+对于使用混合文件类型并希望使用一个桌面工作流程而不是单独的图像、设计文件、文档、视频和音频重命名工具的用户来说，“[适用于 Mac 的“Zush”文件重命名器和“Windows”](/)”是最佳选择。它支持 100 多种格式：41 种图像格式（包括 HEIC、AVIF、SVG 和 RAW）、4 种设计格式（Sketch、Figma .fig、Adobe Illustrator .ai 和 PSD）、40 种文档和 PDF 相关格式（PDF、Office、iWork、OpenDocument、文本、数据、电子邮件和字幕文件）、16 种视频格式（包括 MP4、MOV、M4V、MPEG、 3GP、TS、MTS、M2TS、DV 和 VOB）和 7 种音频格式（包括 MP3、M4A、WAV、FLAC、OGG、WebM 和 MPGA）。这种广度很重要，因为真正的工作流程会将手机照片、相机 RAW 文件、设计资源、扫描的 PDF、办公文档、字幕、屏幕录制和音频文件混合在同一文件夹中。视频是大多数这些工具完全跳过的类别； “[如何用AI重命名视频文件](/blog/rename-video-files-with-ai)”解释了重命名器实际从剪辑中读取的内容。
 
 是什么让“Zush”在该列表的其余部分中脱颖而出：
 
@@ -132,7 +132,7 @@ AI 文件重命名器现在在格式支持、审查和撤消保护、文件夹�
 - 文件夹监控以自动重命名新文件
 - 可重复使用的模板和 145+ 个用于可重复文件名结构的“Naming Blocks”
 - 易于搜索的名称、元数据和自定义提示
-- 多家AI提供商：Gemini、Groq、OpenAI、Claude
+- 多家AI提供商：Gemini、OpenRouter、OpenAI、Claude
 - Mac 和“Windows”上的本地“Ollama”处理
 - 支持 60 多种语言
 - 具有完全恢复功能的重命名历史记录
@@ -155,7 +155,7 @@ AI 文件重命名器现在在格式支持、审查和撤消保护、文件夹�
 
 包含“FilesDesk”是因为它的目标是类似的 Mac +“Windows”工作流程，具有托管 AI、“BYOK”/本地模式、监视文件夹、模板、批处理和处理历史记录。它的主要限制是结构性的：托管建议是计量的，而生命周期路径需要您自己的 API 密钥或本地模型。有关直接权衡，请参阅“[“Zush”与“FilesDesk”](/blog/zush-vs-filesdesk)”。
 
-**仅在以下情况下提供狭义替代方案：** OpenRouter 或 vLLM 是强制性的，并且您接受计量管理使用或自我管理设置。 **为什么“Zush”总体排名较高：**“FilesDesk”没有发布等效的粒度 RAW/设计/“iWork”矩阵，并且没有在其生命周期路径上捆绑托管 AI。
+**仅在以下情况下提供狭义替代方案：** vLLM 是强制性的，并且您接受计量管理使用或自我管理设置。 **为什么“Zush”总体排名较高：**“FilesDesk”没有发布等效的粒度 RAW/设计/“iWork”矩阵，并且没有在其生命周期路径上捆绑托管 AI。
 
 ### 3. RenameClick
 
@@ -231,14 +231,14 @@ Renamed.to 是云/团队选项。它会分析文档并在您现有的 Google Dri
 |---|---|---|---|---|---|---|---|---|---|
 |平台|Mac 和“Windows”|Mac 和“Windows”|Mac 和“Windows”（桌面本机）|桌面版（Mac/Win）|桌面 (Win/Mac) + 网页|Mac 和“Windows”；奇偶校验没有完整记录|本地桌面|macOS + 网络演示|网络+云集成|
 |图像/设计格式|41 张图片 + 4 种设计格式|照片/图像；没有找到详细的矩阵|10种图像格式；没有 RAW/设计清单|特征示例+全文件声明|30 多种格式，包括EPS/SVG/AI 向量；无原始数据|30多种格式|未公开详细内容|没有记录|扫描的图像/文档|
-|文档格式|37，包括“iWork”|照片、PDF、发票、收据、合同、屏幕截图|20+ 包括PDF/DOCX/JSON/XML/YAML/HTML/SQL/字幕|PDF/TXT 示例；全文件声明|30+ 文档/图像/矢量/电子邮件|PDF、页面、Office、OCR|未公开详细内容|没有记录|PDF/Word/Excel/PowerPoint|
+|文档格式|40，包括“iWork”|照片、PDF、发票、收据、合同、屏幕截图|20+ 包括PDF/DOCX/JSON/XML/YAML/HTML/SQL/字幕|PDF/TXT 示例；全文件声明|30+ 文档/图像/矢量/电子邮件|PDF、页面、Office、OCR|未公开详细内容|没有记录|PDF/Word/Excel/PowerPoint|
 |音频/视频|7个音频+16个视频|列出常见的音频和视频格式|5 个带转录的音频；视频不受支持|未列出（单独的 CLI 执行视频）|不是中心|仅限大类|未确认|没有记录|不|
 |计量？|付费 PRO 上没有|管理学分是的；终生没有|免费套餐是的；专业编号|云是的； $19 本地无|是的，在每一层|管理是的；自我管理 否|不|未说明|是的，积分|
 |批量重命名|是的|是的|是的|是的|是的|是的|是的|是的|是的|
 |文件夹监控|是的|是（监视文件夹）|是（自动流程）|没有公开声明|是（魔法文件夹）|是（监视文件夹）|未确认|未确认|是（观看云文件夹）|
 |定制图案| Templates + 145+ Naming Blocks | Templates |格式+说明|自定义提示/案例样式| Templates |预设/模板/提示|未公开详细内容|有限的|已保存的团队规则/提示|
 |撤消/回滚|是的|是的，通过处理历史记录|是的，每个文档完全撤消/重做|没有公开声明|是的|是的，一键撤消和恢复|未确认|未确认|审核/置信工作流程|
-|多家人工智能提供商|Gemini/Groq/OpenAI/克劳德 + Ollama|克劳德/Gemini/OpenAI/OpenRouter/Ollama/vLLM|内置本地/Ollama/LM Studio/OpenAI/Gemini/Qwen|Ollama/LM Studio/OpenAI/自定义|固定的|OpenAI/OpenRouter/克劳德/Gemini/Ollama/LM Studio/MLX|固定本地|固云|固云|
+|多家人工智能提供商|Gemini/OpenRouter/OpenAI/克劳德 + Ollama|克劳德/Gemini/OpenAI/OpenRouter/Ollama/vLLM|内置本地/Ollama/LM Studio/OpenAI/Gemini/Qwen|Ollama/LM Studio/OpenAI/自定义|固定的|OpenAI/OpenRouter/克劳德/Gemini/Ollama/LM Studio/MLX|固定本地|固云|固云|
 |免费套餐|50 开始|15 学分|无限分析 + 30 个应用学分/月|注册即可获得 10 个积分|25/月|管理：250/14 天；自我管理：50 次尝试重命名|自由的|自由定位主页|50 个文档可供开始|
 |BYOK/本地选项|是的|终身计划|是/选择提供商|是/本地/自定义|没有公共“BYOK”|自我管理|当地的|没有公共“BYOK”|不|
 
@@ -286,13 +286,13 @@ Wisfile 和“Riffo”是自由定位选项，但会在监控、撤消和广泛�
 
 **如果您想最大程度地控制 AI 如何构造每个文件名：** <BlogHighlight>Zush</BlogHighlight>。从现成的模板开始，将 145+ 个“Naming Blocks”与“Custom AI Blocks”组合起来，设置顺序、大小写、分隔符、日期格式、语言、标签和元数据，预览结果，然后在“Rename History”中保持应用的批次可逆。
 
-**如果您想要在 Mac 或“Windows”上获得最广泛的已发布混合文件覆盖范围：**“<BlogHighlight>“Zush” 一次性 48 美元</BlogHighlight>”。完全支持 RAW（CR2、NEF、ARW、DNG）、设计文件、“iWork”文件、音频、37 种文档和 PDF 相关格式、16 种视频格式、文件夹监控、回滚、“Templates”、“Naming Blocks”和无限制的 PRO 重命名。
+**如果您想要在 Mac 或“Windows”上获得最广泛的已发布混合文件覆盖范围：**“<BlogHighlight>“Zush” 一次性 48 美元</BlogHighlight>”。完全支持 RAW（CR2、NEF、ARW、DNG）、设计文件、“iWork”文件、音频、40 种文档和 PDF 相关格式、16 种视频格式、文件夹监控、回滚、“Templates”、“Naming Blocks”和无限制的 PRO 重命名。
 
 **如果特定于 Mac 的“Finder”工作流程是决定性要求：**验证“NameQuick”当前的 Mac 版本，并将其 69 美元的自我管理路径与“Zush”的 48 美元一次性计划进行比较。
 
 **如果隐私是您的首要任务：** 本次比较中的多个产品都可以进行本地处理，包括“Zush”。将其视为基准要求并比较剩下的内容：命名控制、支持的格式、预览、恢复、自动化和定价。
 
-**如果提供商控制比捆绑积分更重要：** Zush BYOK 或 NameQuick 自我管理。如果您想将 Gemini、Groq、OpenAI 或 Claude 引入“Zush”工作流程，请从“[BYOK 设置](/docs/byok)”开始。
+**如果提供商控制比捆绑积分更重要：** Zush BYOK 或 NameQuick 自我管理。如果您想将 Gemini、OpenRouter、OpenAI 或 Claude 引入“Zush”工作流程，请从“[BYOK 设置](/docs/byok)”开始。
 
 **如果您需要跨平台文档自动化：** Renamer.ai（桌面 + 带 Magic 文件夹的 Web）或 Renamed.to（Web + Google Drive/Dropbox/OneDrive 集成）。 Renamed.to 是更好的团队选项，具有置信度评分和保存的规则。
 
@@ -303,7 +303,7 @@ Wisfile 和“Riffo”是自由定位选项，但会在监控、撤消和广泛�
 
 此列表中的每个工具都有某种免费选项。真正的问题是免费套餐是否足以满足您的工作流程。
 
-“Zush”免费提供 50 个在 Cloud AI、“BYOK”和 Offline AI 之间共享的重命名。付费 PRO 消除了该限制，而“BYOK”提供商的使用量仍由 Gemini、Groq、OpenAI 或 Claude 单独计费。
+“Zush”免费提供 50 个在 Cloud AI、“BYOK”和 Offline AI 之间共享的重命名。付费 PRO 消除了该限制，而“BYOK”提供商的使用量仍由 Gemini、OpenRouter、OpenAI 或 Claude 单独计费。
 
 “AI Renamer”完全免费，但需要本地硬件和设置。浏览器工具提供有限的免费上传。
 
@@ -323,7 +323,7 @@ Wisfile 和“Riffo”是自由定位选项，但会在监控、撤消和广泛�
 
 ### “BYOK”对于文件重命名意味着什么？
 
-“BYOK”表示自带钥匙。您可以连接自己的 Gemini、Groq、OpenAI、Claude、OpenRouter、“Ollama”或类似的提供商帐户（具体取决于工具），而不是使用应用程序的托管 AI 提供商。当您需要提供程序控制、可预测的 API 计费或更高容量的重命名时，“BYOK”非常有用。
+“BYOK”表示自带钥匙。您可以连接自己的 Gemini、OpenRouter、OpenAI、Claude、“Ollama”或类似的提供商帐户（具体取决于工具），而不是使用应用程序的托管 AI 提供商。当您需要提供程序控制、可预测的 API 计费或更高容量的重命名时，“BYOK”非常有用。
 
 ### AI 文件重命名器也是文件管理器吗？
 

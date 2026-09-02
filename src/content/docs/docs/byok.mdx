@@ -108,7 +108,7 @@ Once the test batch looks right, you can use the same AI setup with [Templates](
 
 ## Security and privacy
 
-Your API key is stored locally in secure platform storage. Zush can send it directly to the selected provider to load compatible models and run **Test**. It is also sent transiently to Zush backend when BYOK is enabled and when BYOK analysis is processed; the backend forwards analysis requests to the provider. Zush does not permanently store the key or retain file content after normal processing.
+Your API key is stored locally in secure platform storage. Zush can send it directly to the selected provider to load compatible models and run **Test**. It is also sent transiently to Zush backend when BYOK is enabled and when BYOK analysis is processed; the backend forwards analysis requests to the provider. With OpenRouter, OpenRouter and the upstream provider serving the selected model may both process the request. Zush does not permanently store the key or retain file content after normal processing.
 
 For local model processing instead of cloud provider processing, use [LM Studio](/docs/lm-studio) or [Ollama](/docs/offline-ai). The [local AI overview](/docs/local-ai) compares both routes.
 

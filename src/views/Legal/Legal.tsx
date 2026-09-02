@@ -49,7 +49,7 @@ const titles: Record<string, string> = {
 
 const updatedDates: Record<LegalProps['type'], string> = {
   tos: 'Last updated: May 17, 2026',
-  privacy: 'Last updated: August 15, 2026',
+  privacy: 'Last updated: September 2, 2026',
   refund: 'Last updated: March 19, 2026',
 };
 

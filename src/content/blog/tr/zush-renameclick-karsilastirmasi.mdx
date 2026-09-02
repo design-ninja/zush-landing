@@ -11,7 +11,7 @@ tags:
   - "AI Dosyasını Yeniden Adlandırma"
   - "Takım Karşılaştırmaları"
 tldr: "Bu karşılaştırmada en yapılandırılabilir adlandırma iş akışı için \"Zush\"yı seçin: hazır \"Templates\", 145+ \"Naming Blocks\", \"Custom AI Blocks\", biçimlendirme, yerelleştirme, meta veriler ve toplu geri alma özellikli \"Rename History\". \"RenameClick\"ün ana sınırlaması daha dar belgelenmiş kapsamdır: RAW, tasarım, \"iWork\" veya video desteği yoktur. Yerel yapay zeka ve geri alma her ikisinde de mevcuttur ve farklılaştırıcı değildir."
-reviewed: "2026-08-31"
+reviewed: "2026-09-02"
 featuredOrder: 5
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -42,10 +42,10 @@ Her iki ürün de Mac ve "Windows" için masaüstü uygulamaları sunar, yerel y
 |Platformlar|Mac + 'Windows'|Mac + 'Windows'|
 |İşleme seçenekleri|Cloud AI, "BYOK" veya "Ollama" aracılığıyla Çevrimdışı AI|Varsayılan olarak yerleşik yerel AI|
 |Yerel model paketlendi|Hayır, "Ollama" kurulumunu kullanın|Evet, indirildikten sonra Qwen3-VL yerel modeli|
-|Yapay zeka sağlayıcıları|İkizler, Groq, OpenAI, Claude, 'Ollama' çevrimdışı|Yerleşik yerel, OpenAI, Gemini, Alibaba Cloud Qwen, LM Studio, 'Ollama'|
+|Yapay zeka sağlayıcıları|İkizler, OpenRouter, OpenAI, Claude, 'Ollama' çevrimdışı|Yerleşik yerel, OpenAI, Gemini, Alibaba Cloud Qwen, LM Studio, 'Ollama'|
 |Resim/tasarım formatları|41 görüntü formatı + 4 tasarım formatı, RAW, HEIC, AVIF, Sketch, Figma, AI, PSD dahil|JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF; tasarım dosyası yok|
 |RAW desteği| <BlogHighlight>Evet (CR2, CR3, NEF, ARW, DNG, ORF, RAF, RW2, PEF, SRW, SR2)</BlogHighlight> |Herkese açık olarak listelenmedi|
-|Belge formatları|'iWork' dahil 37 belge/PDF formatı|PDF, DOC/DOCX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, günlükler, SQL, SRT/VTT, ICS/VCF|
+|Belge formatları|'iWork' dahil 40 belge/PDF formatı|PDF, DOC/DOCX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, günlükler, SQL, SRT/VTT, ICS/VCF|
 |Video formatları|16 ortak format|Doküman başına desteklenmiyor|
 |Ses formatları|MP3, M4A, WAV, FLAC, OGG, WebM, MPGA|Yerel konuşma transkripsiyonlu MP3, WAV, FLAC, M4A, AAC|
 |Klasör izleme|Evet|Evet, Otomatik Akış|
@@ -69,7 +69,7 @@ Her iki ürün de Mac ve "Windows" için masaüstü uygulamaları sunar, yerel y
 
 ## Zush
 
-<BlogToolMeta platform="Mac ('macOS' 15+) ve 'Windows' 10/11" website="https://zushapp.com/" label="zushapp.com"><Fragment slot="pricing">Ücretsiz katman (50 yeniden ad), Pro<BlogHighlight>Aylık 10$ veya tek seferlik 48$</BlogHighlight>sınırsız PRO yeniden adlandırma için, API maliyetinde isteğe bağlı "BYOK" (Gemini/Groq/OpenAI/Claude), "Ollama" aracılığıyla Çevrimdışı AI</Fragment></BlogToolMeta>
+<BlogToolMeta platform="Mac ('macOS' 15+) ve 'Windows' 10/11" website="https://zushapp.com/" label="zushapp.com"><Fragment slot="pricing">Ücretsiz katman (50 yeniden ad), Pro<BlogHighlight>Aylık 10$ veya tek seferlik 48$</BlogHighlight>sınırsız PRO yeniden adlandırma için, API maliyetinde isteğe bağlı "BYOK" (Gemini/OpenRouter/OpenAI/Claude), "Ollama" aracılığıyla Çevrimdışı AI</Fragment></BlogToolMeta>
 
 ![Açıklayıcı öncesi ve sonrası adları ve yeşil onay işaretlerini gösteren dosyaları gösteren "Zush" AI yeniden adlandırma sonuçları](/images/showcase/macos/batch-rename-light.webp)
 
@@ -121,7 +121,7 @@ Boşluk medya ve tasarım formatlarıyla ilgilidir. RenameClick'in belgeleri kam
 
 Her iki ürün de yerel modelleri çalıştırabildiğinden çevrimdışı işleme benzersiz bir avantaj değildir. 'RenameClick', çoklu GB indirme sonrasında bir modeli paketler; 'Zush', 'Ollama'e bağlanır. En önemli fark, iş akışının geri kalanıdır: "Zush", hazır "Templates"yi, 145+ "Naming Blocks"ü, "Custom AI Blocks"i, daha zengin yerelleştirme ve meta veri kontrollerini ve kalıcı "Rename History"yi belgeler.
 
-Bulut sağlayıcı seçimine ve yüksek hacimli "BYOK"e daha fazla önem veriyorsanız "Zush" kazanır. 'Zush', anahtarların yerel olarak depolandığı Gemini, Groq, OpenAI ve Claude'u 'BYOK' aracılığıyla destekler ve yerel işleme öncelikli olduğunda 'Ollama' aracılığıyla Çevrimdışı AI'yi destekler. Groq ve Claude dikkat çekici 'Zush' tarafı seçenekleridir; yerleşik Qwen3-VL, Alibaba Cloud Qwen ve LM Studio "RenameClick" tarafı seçenekleridir.
+Bulut sağlayıcı seçimine ve yüksek hacimli "BYOK"e daha fazla önem veriyorsanız "Zush" kazanır. 'Zush', anahtarların yerel olarak depolandığı Gemini, OpenRouter, OpenAI ve Claude'u 'BYOK' aracılığıyla destekler ve yerel işleme öncelikli olduğunda 'Ollama' aracılığıyla Çevrimdışı AI'yi destekler. OpenRouter ve Claude dikkat çekici 'Zush' tarafı seçenekleridir; yerleşik Qwen3-VL, Alibaba Cloud Qwen ve LM Studio "RenameClick" tarafı seçenekleridir.
 
 Pratik takas basittir: Derinliği, kurtarma ayrıntısını ve karma dosya genişliğini adlandırmak için 'Zush'i seçin. "RenameClick"yı yalnızca AI Arama veya klasör hareketi eksik RAW, tasarım, "iWork" ve video kapsamına ağır bastığında düşünün.
 
@@ -149,7 +149,7 @@ Kaotik klasörlerin içindeki keşifler için, RenameClicknin Yapay Zeka Aramas�
 
 - Özellikle RAW fotoğraflar, tasarım dosyaları, videolar, 'iWork' ve altyazılar olmak üzere en geniş format kapsamına ihtiyacınız var
 - Hazır Templates, 145+ Naming Blocks, Custom AI Blocks, biçimlendirme, yerelleştirme, meta veriler ve tam Rename History istiyorsunuz
-- Gemini, Groq, OpenAI veya Claude ile "BYOK"nin her planda mevcut olmasını istiyorsunuz
+- Gemini, OpenRouter, OpenAI veya Claude ile "BYOK"nin her planda mevcut olmasını istiyorsunuz
 - 60'tan fazla çıktı diline ihtiyacınız var
 - Tekrarlanabilir dosya adı yapıları için şablonlar ve 145+ Naming Blocks istiyorsunuz
 - Önce yerel model donanımını düşünmeden Mac ve "Windows" genelinde iş akışını yeniden adlandırmak istiyorsunuz

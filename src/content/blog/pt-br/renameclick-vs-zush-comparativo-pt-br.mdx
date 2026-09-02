@@ -9,7 +9,7 @@ tags:
   - "Renomeação de arquivos com IA"
   - "Comparativos de ferramentas"
 tldr: "Escolha Zush para o fluxo de trabalho de nomenclatura mais configurável nesta comparação: Templates, 145 + Naming Blocks, Custom AI Blocks prontos, formatação, localização, metadados e Rename History com reversão em lote. A principal limitação do RenameClick é a cobertura documentada mais restrita: sem RAW, design, iWork ou suporte de vídeo. IA local e desfazer existem em ambos e não são diferenciais."
-reviewed: "2026-08-31"
+reviewed: "2026-09-02"
 featuredOrder: 5
 locale: "pt-br"
 translationOf: "zush-vs-renameclick"
@@ -42,10 +42,10 @@ Ambos os produtos fornecem aplicativos de desktop para Mac e Windows, suportam I
 |Plataformas|Mac + Windows|Mac + Windows|
 |Opções de processamento|Cloud AI, BYOK ou IA offline via Ollama|IA local integrada por padrão|
 |Modelo local agrupado|Não, use a configuração Ollama|Sim, modelo local Qwen3-VL após download|
-|Provedores de IA|Gêmeos, Groq, OpenAI, Claude, Ollama off-line|Local integrado, OpenAI, Gemini, Alibaba Cloud Qwen, LM Studio, Ollama|
+|Provedores de IA|Gêmeos, OpenRouter, OpenAI, Claude, Ollama off-line|Local integrado, OpenAI, Gemini, Alibaba Cloud Qwen, LM Studio, Ollama|
 |Formatos de imagem/design|41 formatos de imagem + 4 formatos de design, incluindo RAW, HEIC, AVIF, Sketch, Figma, AI, PSD|JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF; sem arquivos de design|
 |Suporte RAW|<BlogHighlight>Sim (CR2, CR3, NEF, ARW, DNG, ORF, RAF, RW2, PEF, SRW, SR2)</BlogHighlight>|Não listado publicamente|
-|Formatos de documento|37 formatos de documento/PDF, incluindo iWork|PDF, DOC/DOCX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, logs, SQL, SRT/VTT, ICS/VCF|
+|Formatos de documento|40 formatos de documento/PDF, incluindo iWork|PDF, DOC/DOCX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, logs, SQL, SRT/VTT, ICS/VCF|
 |Formatos de vídeo|16 formatos comuns|Não compatível com documentos|
 |Formatos de áudio|MP3, M4A, WAV, FLAC, OGG, WebM, MPGA|MP3, WAV, FLAC, M4A, AAC com transcrição de fala local|
 |Monitoramento de pasta|Sim|Sim, fluxo automático|
@@ -70,7 +70,7 @@ Ambos os produtos fornecem aplicativos de desktop para Mac e Windows, suportam I
 ## Zush
 
 <BlogToolMeta platform="Mac (macOS 15+) e Windows 10/11" website="https://zushapp.com/" label="zushapp.com">
-<Fragment slot="pricing">Nível gratuito (50 renomeações), Pro <BlogHighlight>$10/mês ou $48 únicos</BlogHighlight> para renomeações PRO ilimitadas, BYOK opcional com custo de API (Gemini/Groq/OpenAI/Claude), IA offline via Ollama</Fragment>
+<Fragment slot="pricing">Nível gratuito (50 renomeações), Pro <BlogHighlight>$10/mês ou $48 únicos</BlogHighlight> para renomeações PRO ilimitadas, BYOK opcional com custo de API (Gemini/OpenRouter/OpenAI/Claude), IA offline via Ollama</Fragment>
 </BlogToolMeta>
 
 ![Resultados de renomeação de IA Zush mostrando arquivos com nomes descritivos antes e depois e marcas de seleção verdes](/images/showcase/macos/batch-rename-light.webp)
@@ -125,7 +125,7 @@ A lacuna está em torno dos formatos de mídia e design. Os documentos do Rename
 
 Ambos os produtos podem executar modelos locais, portanto o processamento offline não é uma vantagem exclusiva. RenameClick agrupa um modelo após um download de vários GB; Zush se conecta a Ollama. A diferença mais importante é o resto do fluxo de trabalho: Zush documenta Templates pronto, 145+ Naming Blocks, Custom AI Blocks, localização mais rica e controles de metadados e Rename History persistente.
 
-Zush vence se você se preocupa mais com a escolha do provedor de nuvem e com o BYOK de alto volume. Zush suporta Gemini, Groq, OpenAI e Claude através de BYOK, com chaves armazenadas localmente, e suporta IA offline via Ollama quando o processamento local é a prioridade. Groq e Claude são opções notáveis ​​do lado Zush; Qwen3-VL integrado, Alibaba Cloud Qwen e LM Studio são opções do lado RenameClick.
+Zush vence se você se preocupa mais com a escolha do provedor de nuvem e com o BYOK de alto volume. Zush suporta Gemini, OpenRouter, OpenAI e Claude através de BYOK, com chaves armazenadas localmente, e suporta IA offline via Ollama quando o processamento local é a prioridade. OpenRouter e Claude são opções notáveis ​​do lado Zush; Qwen3-VL integrado, Alibaba Cloud Qwen e LM Studio são opções do lado RenameClick.
 
 A compensação prática é simples: escolha Zush para profundidade de nomenclatura, detalhes de recuperação e amplitude de arquivos mistos. Considere RenameClick apenas quando a pesquisa AI ou o movimento de pastas superam a falta de RAW, design, iWork e cobertura de vídeo.
 
@@ -153,7 +153,7 @@ Para descoberta em pastas caóticas, o AI Search do RenameClick é um diferencia
 
 - Você precisa da mais ampla cobertura de formatos, especialmente fotos RAW, arquivos de design, vídeos, iWork e legendas
 - Você deseja Templates pronto, 145+ Naming Blocks, Custom AI Blocks, formatação, localização, metadados e Rename History completo
-- Você deseja BYOK com Gemini, Groq, OpenAI ou Claude disponível em todos os planos
+- Você deseja BYOK com Gemini, OpenRouter, OpenAI ou Claude disponível em todos os planos
 - Você precisa de mais de 60 idiomas de saída
 - Você deseja modelos e mais de 145 Naming Blocks para estruturas de nomes de arquivos repetíveis
 - Você deseja renomear o fluxo de trabalho no Mac e no Windows sem pensar primeiro no hardware do modelo local

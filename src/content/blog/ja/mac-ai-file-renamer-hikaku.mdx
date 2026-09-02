@@ -11,7 +11,7 @@ tags:
   - "AI ファイルの名前変更"
   - "ツールの比較"
 tldr: "総合最高：「Zush」。これは、この Mac 比較で文書化された最も広範な混合ファイルの範囲と、構成可能な名前付け、フォルダー監視、プレビュー、およびバッチ復元を備えた完全な「Rename History」を組み合わせています。他の 5 つのエントリは、より狭い要件に対応する代替案であり、全体的な推奨事項ではありません。"
-reviewed: "2026-08-31"
+reviewed: "2026-09-02"
 featuredOrder: 1
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
@@ -215,7 +215,7 @@ Python の作成と API キーの管理に慣れている場合は、カスタ�
 - スクリーンショット、デザイン資産、経費、写真撮影、ビデオ、音楽、会議メモ用の既製の「Templates」
 - 145 以上の Naming Blocks と Custom AI Blocks、プロンプト、書式設定、ローカリゼーション、タグ、およびメタデータ コントロール
 - スマート Finder タグと Spotlight フレンドリーなメタデータ統合
-- 複数の AI プロバイダーから選択: Gemini、Groq、OpenAI、Claude
+- 複数の AI プロバイダーから選択: Gemini、OpenRouter、OpenAI、Claude
 - 60 以上の出力言語をサポート
 - 元の名前/新しい名前、フォルダー、タイムスタンプ、およびバッチを元に戻して「Rename History」を完成させます
 - 毎月のサブスクリプションではなく、1 回限りの価格設定
@@ -412,7 +412,7 @@ Python の作成と API キーの管理に慣れている場合は、カスタ�
 |**自動モニター**|はい|はい (マジックフォルダー)|いいえ|はい (フォルダーの監視)|はい (自動フロー)|未確認|
 |**ロールバック/元に戻す**|全履歴|はい|記載されていない|はい (ワンクリックで元に戻して回復)|はい (ドキュメントごとに完全に元に戻す/やり直し)|未確認|
 |**画像/デザイン形式**|41 枚の画像 + 4 つのデザイン形式 (Sketch、Figma、AI、PSD)|30 以上のフォーマットEPS/SVG/AI ベクトル。 RAW、PSD、Sketch、Figma は不可|機能の例 + 全ファイルのステートメント|~8; RAWリストがない|画像10枚。 RAWファイルやデザインファイルはありません|文書化されていない|
-|**ドキュメント形式**|「iWork」を含む37本|30 個以上のドキュメント/スプレッドシート/プレゼンテーション/電子メール|PDF/TXT の例。全ファイルステートメント|OCR を使用すると ~5+|20以上（含む） JSON/XML/YAML/HTML/SQL/字幕|文書化されていない|
+|**ドキュメント形式**|「iWork」を含む40本|30 個以上のドキュメント/スプレッドシート/プレゼンテーション/電子メール|PDF/TXT の例。全ファイルステートメント|OCR を使用すると ~5+|20以上（含む） JSON/XML/YAML/HTML/SQL/字幕|文書化されていない|
 |**オーディオ/ビデオ**|7 オーディオ + 16 ビデオ|中心ではない|リストされていません (CLI はビデオを実行します)|30以上にリストされています|5 音声文字起こし付き。ビデオはサポートされていません|文書化されていない|
 |**ネーミングコントロール**| <BlogHighlight>既成の Templates + 145+ Naming Blocks + Custom AI Blocks + フォーマット + ローカリゼーション + メタデータ</BlogHighlight> | Templates |カスタムプロンプト|「Templates」 + プロンプト + ルール エンジン|フォーマットパターン + カスタム命令|限定|
 |**AI プロバイダーの選択**|4 プロバイダー + BYOK|修理済み|Ollama/LM Studio/OpenAI/カスタム|7 つのオプション + セルフマネージドの「BYOK」|組み込みのローカル + 5 プロバイダー|固定（クラウド）|
@@ -537,11 +537,11 @@ Zush は、Mac と Windows 上の同じコア ワークフローを文書化し�
 
 ### AI ファイルリネーム機能は PDF やドキュメントでも機能しますか?
 
-この比較に含まれるいくつかのツールはドキュメントをサポートします。 「Zush」は、37 のドキュメントおよび PDF 関連形式 (PDF、DOCX、XLSX、PPTX、TXT、CSV、TSV、JSON、XML/YAML、EML、SRT、VTT、OpenDocument など) をカバーします。 「Renamer.ai」は、OCR を多用したドキュメントをサポートする 30 以上のファイル形式を販売しています。 「NameQuick」は、PDF、Word、Excel、および OCR を内蔵した Pages を処理します。 「RenameClick」のドキュメント リストは、以前よりも長くなりました: PDF、DOC/DOCX、TXT、MD、CSV、RTF、ODT、JSON、XML、YAML、HTML、ログ、SQL、SRT/VTT、ICS/VCF。 「AI Renamer」の価格ページでは全ファイルのサポートを売り込んでいますが、その公開機能の例では依然として PDF/TXT/テキスト ファイルを強調しています。 「Riffo」はフォーマットリストをまったく公開していません。
+この比較に含まれるいくつかのツールはドキュメントをサポートします。 「Zush」は、40 のドキュメントおよび PDF 関連形式 (EPUB, FB2, PDF、DOCX、XLSX、PPTX、TXT、CSV、TSV、JSON、XML/YAML、EML、SRT、VTT、OpenDocument など) をカバーします。 「Renamer.ai」は、OCR を多用したドキュメントをサポートする 30 以上のファイル形式を販売しています。 「NameQuick」は、PDF、Word、Excel、および OCR を内蔵した Pages を処理します。 「RenameClick」のドキュメント リストは、以前よりも長くなりました: PDF、DOC/DOCX、TXT、MD、CSV、RTF、ODT、JSON、XML、YAML、HTML、ログ、SQL、SRT/VTT、ICS/VCF。 「AI Renamer」の価格ページでは全ファイルのサポートを売り込んでいますが、その公開機能の例では依然として PDF/TXT/テキスト ファイルを強調しています。 「Riffo」はフォーマットリストをまったく公開していません。
 
 ### 「BYOK」 (自分のキーを持参する) はどのように機能しますか?
 
-「BYOK」を使用すると、OpenAI、Google (Gemini)、Anthropic (Claude)、Groq などのプロバイダーからの独自の API キーを接続できます。無料では、「BYOK」は 50 回の名前変更許可を共有します。 PRO では「Zush」の上限が削除されますが、最終的な API コストはプロバイダー、モデル、ファイル サイズ、プロンプトの長さ、トークンの使用状況によって異なります。この比較では、「Zush」と「NameQuick」は両方とも「BYOK」スタイルの制御を提供します。 「Zush」にはすべてのプランに「BYOK」が含まれていますが、「NameQuick」のセルフマネージド パスは 1 台のデバイスに対して 1 回あたり 69 ドルで、OpenAI、Claude、Gemini、OpenRouter、「Ollama」、LM Studio、および MLX がリストされています。 「RenameClick」は複数の AI バックエンド (「Ollama」、LM Studio、OpenAI、Gemini、Alibaba Cloud Qwen) をサポートしていますが、「BYOK」モデルではなくプロバイダーの選択として構成されています。 「AI Renamer」の 19 ドルのローカル モードには、「Ollama」および LM Studio と並んで OpenAI およびカスタム モデルのサポートがリストされています。
+「BYOK」を使用すると、OpenAI、Google (Gemini)、Anthropic (Claude)、OpenRouter などのプロバイダーからの独自の API キーを接続できます。無料では、「BYOK」は 50 回の名前変更許可を共有します。 PRO では「Zush」の上限が削除されますが、最終的な API コストはプロバイダー、モデル、ファイル サイズ、プロンプトの長さ、トークンの使用状況によって異なります。この比較では、「Zush」と「NameQuick」は両方とも「BYOK」スタイルの制御を提供します。 「Zush」にはすべてのプランに「BYOK」が含まれていますが、「NameQuick」のセルフマネージド パスは 1 台のデバイスに対して 1 回あたり 69 ドルで、OpenAI、Claude、Gemini、OpenRouter、「Ollama」、LM Studio、および MLX がリストされています。 「RenameClick」は複数の AI バックエンド (「Ollama」、LM Studio、OpenAI、Gemini、Alibaba Cloud Qwen) をサポートしていますが、「BYOK」モデルではなくプロバイダーの選択として構成されています。 「AI Renamer」の 19 ドルのローカル モードには、「Ollama」および LM Studio と並んで OpenAI およびカスタム モデルのサポートがリストされています。
 
 ### AI ファイルの名前を変更すると、既存のファイル リンクが壊れますか?
 

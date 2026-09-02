@@ -42,7 +42,7 @@ export const home = {
   "featureCards": {
     "aiAnalysis": {
       "title": "Análise com IA",
-      "description": "Analise e renomeie mais de 100 formatos de arquivo em um só lote, de imagens e PDFs a arquivos de áudio, vídeo e Office."
+      "description": "Analise e renomeie mais de 100 formatos de arquivo em um só lote, de imagens, ebooks EPUB e FB2 e PDFs a arquivos de áudio, vídeo e Office."
     },
     "foldersMonitoring": {
       "title": "Monitoramento de pastas",
@@ -256,7 +256,7 @@ export const home = {
     "speedDescription": "Organização só funciona quando não interrompe o trabalho. Solte arquivos, revise, aplique e continue.",
     "formatsEyebrow": "100+ formatos compatíveis",
     "formatsTitle": "Capturas de tela, PDFs, fotos, áudio, documentos e vídeos",
-    "formatsDescription": "Compatível com AVIF, RAW, Office, PDFs, legendas, MP3, M4A, WAV, FLAC e formatos de vídeo comuns.",
+    "formatsDescription": "Compatível com AVIF, RAW, Office, ebooks EPUB e FB2, PDFs, legendas, MP3, M4A, WAV, FLAC e formatos de vídeo comuns.",
     "controlEyebrow": "Blocos de nomes",
     "controlTitle": "Nomes de arquivos estruturados para trabalho profissional",
     "controlDescription": "Profissionais montam seus próprios padrões de nome com blocos que combinam com o trabalho. A IA lê cada arquivo e preenche esses blocos com os detalhes escolhidos: cliente, data, número da nota, local ou projeto.",
@@ -312,7 +312,7 @@ export const home = {
       },
       "documents": {
         "title": "Renomear documentos",
-        "description": "Arquivos Word, Excel, PowerPoint e iWork nomeados por tema."
+        "description": "Ebooks EPUB e FB2 e arquivos Word, Excel, PowerPoint e iWork nomeados por tema."
       },
       "design": {
         "title": "Renomear arquivos de design",
@@ -347,7 +347,7 @@ export const home = {
     },
     {
       "question": "Quais formatos são compatíveis?",
-      "answer": "Zush suporta imagens, áudio, vídeos, capturas de tela, PDFs, documentos, planilhas, apresentações, texto, CSV, SVG e outros formatos comuns."
+      "answer": "Zush suporta imagens, áudio, vídeos, capturas de tela, ebooks EPUB e FB2, PDFs, documentos, planilhas, apresentações, texto, CSV, SVG e outros formatos comuns."
     },
     {
       "question": "Como funciona a renomeação com IA do Zush?",

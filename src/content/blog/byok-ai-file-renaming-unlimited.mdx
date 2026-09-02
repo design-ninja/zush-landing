@@ -1,6 +1,6 @@
 ---
 title: "BYOK AI File Renaming: Setup, Providers & Costs (2026)"
-description: "Set up BYOK file renaming with Gemini, Groq, OpenAI, or Claude. Compare provider costs, privacy, the 50-rename free limit, and unlimited PRO."
+description: "Set up BYOK file renaming with Gemini, OpenRouter, OpenAI, or Claude. Compare provider billing, privacy, the 50-rename free limit, and unlimited PRO."
 date: "2026-03-23"
 slug: "byok-ai-file-renaming-unlimited"
 platform: "general"
@@ -8,14 +8,14 @@ topic: "byok"
 tags:
   - "AI File Renaming"
   - "BYOK"
-tldr: "Zush BYOK supports Gemini, Groq, OpenAI, and Claude keys. BYOK is available on FREE, but the 50 shared renames still apply; unlimited Zush renames require PRO, and provider usage is billed separately."
-reviewed: "2026-08-08"
+tldr: "Zush BYOK supports Gemini, OpenRouter, OpenAI, and Claude keys. BYOK is available on FREE, but the 50 shared renames still apply; unlimited Zush renames require PRO, and provider usage is billed separately."
+reviewed: "2026-09-02"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: BYOK (Bring Your Own Key) lets you connect your own OpenAI, Gemini, Groq, or Claude API key to Zush and pay that provider directly. **BYOK does not make the FREE plan unlimited:** FREE still includes 50 shared AI renames, while PRO removes the Zush rename limit. Provider quotas and charges remain separate.
+Quick answer: BYOK (Bring Your Own Key) lets you connect your own Gemini, OpenRouter, OpenAI, or Claude API key to Zush and pay that provider directly. **BYOK does not make the FREE plan unlimited:** FREE still includes 50 shared AI renames, while PRO removes the Zush rename limit. Provider quotas and charges remain separate.
 
-Pricing and provider notes last checked June 12, 2026.
+Provider support and billing notes last checked September 2, 2026.
 
 If you are deciding between BYOK, built-in cloud credits, and local Ollama processing, start with [Cloud AI vs Local AI File Renaming](/blog/cloud-vs-local-ai-file-renaming).
 
@@ -24,7 +24,7 @@ If you are deciding between BYOK, built-in cloud credits, and local Ollama proce
 | Provider | Best starting point | Free API tier | Typical reason to choose it |
 |---|---|---|---|
 | **Gemini** | Most first-time BYOK users | Yes, subject to Google limits | Low-cost multimodal image and document analysis |
-| **Groq** | Speed-focused workflows | Yes, subject to Groq limits | Fast inference for supported models |
+| **OpenRouter** | Choosing from a broad model catalog | Depends on the selected model and account | One key and billing account for compatible models from multiple providers |
 | **OpenAI** | Existing OpenAI API users | Usually paid usage | Familiar GPT models and account controls |
 | **Claude** | Detailed visual descriptions | Usually paid usage | Specific descriptions for visually complex files |
 
@@ -33,7 +33,7 @@ Provider plans, models, prices, and rate limits can change. Confirm the current 
 ## Five-minute BYOK setup
 
 1. Create an API key in the provider's official dashboard.
-2. Open Zush and go to **Settings → BYOK / API Key**.
+2. Open Zush and go to **Settings → AI Modes → BYOK**.
 3. Select the provider and paste the key.
 4. Run the connection test.
 5. Add a small sample batch and review the proposed filenames before applying them.
@@ -55,7 +55,7 @@ In current Mac builds, the key is stored locally in macOS Keychain. When BYOK is
 
 ## What BYOK means in practice
 
-When you use Zush's built-in credits, the AI processing happens through Zush's infrastructure. That is convenient but capped. BYOK flips the model: Zush acts as the client, your API key provides the access, and the AI provider handles the processing.
+When you use Zush Cloud AI, the AI processing happens through Zush's managed infrastructure. BYOK changes the provider and billing path: your API key provides access, Zush relays the request through its backend, and the provider bills your account.
 
 ![Zush BYOK settings for using your own API key](/images/showcase/macos/byok-light.webp)
 
@@ -66,7 +66,7 @@ The practical result:
 - You pay the AI provider directly at their published rates
 - You choose which provider and model to use
 - You can switch providers at any time
-- In current Mac builds, your API key is stored locally in macOS Keychain and sent only when needed for a BYOK request
+- Your API key is stored locally in secure platform storage and sent transiently only when Zush needs to validate it or process a BYOK request
 
 ## Why BYOK matters
 
@@ -102,18 +102,18 @@ Gemini is Google's multimodal AI. It handles images and documents well, and it i
 - **Speed**: Fast. Google's infrastructure handles requests quickly.
 - **Best for**: Users who want to start with zero cost and scale up only if needed.
 
-### Groq
+### OpenRouter
 
-Groq runs AI inference on custom hardware designed for speed. It is one of the fastest providers available.
+OpenRouter provides one API and billing account for models served by multiple upstream AI providers. Zush loads the compatible models available to your OpenRouter key so you can choose one in AI Modes.
 
-- **Free tier**: Yes. Groq offers a free tier with rate limits suitable for moderate usage.
-- **Paid pricing**: Competitive per-token pricing at higher volumes.
-- **Speed**: Very fast. Groq's hardware is optimized for low-latency inference.
-- **Best for**: Users who prioritize speed and process files in large batches.
+- **Free tier**: Availability depends on OpenRouter's current catalog, the selected model, and your account.
+- **Paid pricing**: Usage is billed through OpenRouter according to the selected model and routing options.
+- **Model choice**: Compatible text-and-image models appear after the key is saved.
+- **Best for**: Users who want to compare or switch compatible models without creating a separate provider integration for each one.
 
 ### OpenAI
 
-OpenAI provides GPT-4o and related models with strong image understanding capabilities.
+OpenAI provides multimodal models that can analyze images and documents.
 
 - **Free tier**: No free tier, but new accounts may receive initial credits.
 - **Paid pricing**: Metered API pricing; the cost depends on model choice, image size, and token usage.
@@ -129,20 +129,18 @@ Claude is Anthropic's AI with strong visual understanding and detailed analysis 
 - **Speed**: Good. In our testing Claude wrote the most specific descriptions for screenshots with mixed visual content.
 - **Best for**: Users who want detailed, accurate content descriptions, especially for complex images and documents.
 
-## Cost breakdown: what provider usage costs
+## How provider billing works
 
-Here is what typical usage can look like in real dollar terms. These are directional estimates, not guarantees, because provider pricing, selected models, file sizes, prompt length, and token usage can change the final bill.
+There is no single BYOK price per rename. The final provider charge depends on the selected model, file type, input size, prompt length, output length, account tier, and any routing options. Check the current price in the provider dashboard before monitoring a high-volume folder.
 
-| Provider | 100 renames/month | 500 renames/month | 2,000 renames/month |
-|---|---|---|---|
-| Gemini | Free (within free tier) | Free to ~$0.10 | ~$0.20-$0.50 |
-| Groq | Free (within free tier) | Free to ~$0.10 | ~$0.15-$0.40 |
-| OpenAI | ~$0.10 | ~$0.50 | ~$1.50-$2.00 |
-| Claude | ~$0.10 | ~$0.50 | ~$1.50-$2.00 |
+| Provider | Where usage is billed | What changes the cost |
+|---|---|---|
+| Gemini | Google AI account | Gemini model, input and output usage, account tier |
+| OpenRouter | OpenRouter account | Selected model, upstream routing, input and output usage |
+| OpenAI | OpenAI project | OpenAI model, input and output usage |
+| Claude | Anthropic account | Claude model, input and output usage |
 
-For context, 500 renames per month covers most active Mac users who take daily screenshots, download files regularly, and import photos weekly. The cost at that volume ranges from free to roughly fifty cents per month.
-
-At 2,000 renames per month, heavy professional usage can still be low-cost on efficient models, but treat the table as a planning estimate and confirm current provider pricing before standardizing a workflow.
+Run a representative sample batch, inspect its provider usage, and multiply from that result. This is more reliable than a fixed estimate because an ebook, a short screenshot, and a long document can produce very different request sizes.
 
 
 ## Step-by-step setup for each provider
@@ -160,15 +158,16 @@ For the quick-start version of these instructions inside Zush, see the [BYOK set
 
 That is the entire setup. Renames will now use your Gemini key with no monthly limit.
 
-### Setting up Groq
+### Setting up OpenRouter
 
-1. Go to [Groq Console](https://console.groq.com/) and create an account
-2. Navigate to API Keys and generate a new key
+1. Go to [OpenRouter API Keys](https://openrouter.ai/settings/keys) and sign in or create an account
+2. Create a new API key
 3. Copy the key
-4. In Zush Settings, select Groq as your provider and paste the key
-5. Test with a sample file
+4. In **Settings → AI Modes → BYOK**, select OpenRouter and paste the key
+5. Save the key and choose one of the compatible models Zush loads
+6. Test with a sample file
 
-Groq's free tier is generous enough that many users never need to add a payment method.
+OpenRouter model availability and pricing vary by model. Review the model details and your account limits before running a large batch.
 
 ### Setting up OpenAI
 
@@ -218,13 +217,13 @@ BYOK is not always the right choice. Here is how to decide.
 
 ## Tips for choosing a provider
 
-### Start with Gemini or Groq if cost matters most
+### Compare Gemini and OpenRouter if model choice matters most
 
-Both offer free tiers that cover light to moderate usage. You can rename hundreds of files per month without paying anything. If you are not sure whether you need BYOK, starting with one of these lets you test the workflow at zero cost.
+Gemini is a direct provider route, while OpenRouter gives you a catalog of compatible models behind one account. Run the same representative files through the models you are considering, then compare filename quality, latency, and the provider usage shown in each dashboard.
 
 ### Choose OpenAI if you want broad model compatibility
 
-OpenAI's GPT-4o has been widely tested across many image types and document formats. If you process a wide variety of files and want predictable results, OpenAI is a safe default.
+OpenAI is a direct route for users who already manage an OpenAI project and want its compatible multimodal models available inside the Zush workflow.
 
 ### Choose Claude if description quality is your priority
 
@@ -244,11 +243,11 @@ This is the most hands-off setup available. For a detailed guide on folder monit
 
 ## Security and privacy
 
-Your API key is stored locally on your Mac and is only sent to the AI provider you selected. File content goes directly to the provider's API endpoint for analysis. Review your chosen provider's API data policy if privacy is a deciding factor.
+Your API key is stored locally in secure platform storage. It is sent transiently to the Zush backend when BYOK is enabled or used; the backend forwards the analysis request to the selected provider and does not permanently store the key. With OpenRouter, both OpenRouter and the upstream provider serving the selected model may process the request. Review the relevant provider policies if privacy or data residency is a deciding factor.
 
 
 ## Conclusion
 
-BYOK gives you provider control. If you have already decided content-aware renaming is worth doing and want to route analysis through your own account, a Gemini or Groq key may cover light to moderate use within free-tier limits. For heavier OpenAI or Claude usage, use the estimate table as a planning baseline and confirm current provider pricing before committing.
+BYOK gives you provider control. Choose Gemini, OpenAI, or Claude for a direct provider relationship, or OpenRouter when you want to choose among compatible models through one account. Test a representative batch and confirm current provider pricing before committing to an automated workflow.
 
 For a comparison of Zush against other tools in this category, see [Mac AI renamer tools comparison](/blog/best-ai-file-renamer-tools-mac-compared) and [AI renamer tools comparison](/blog/best-ai-file-renamer-tools-2026). To get started with [Zush](/), FREE includes 50 renames across Cloud AI, BYOK, and Offline AI; PRO removes the limit.

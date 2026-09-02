@@ -42,7 +42,7 @@ export const home: HomeCopy = {
   "featureCards": {
     "aiAnalysis": {
       "title": "KI-Analyse",
-      "description": "Analysiere und benenne über 100 Dateiformate in einem Durchgang um – von Bildern und PDFs bis zu Audio-, Video- und Office-Dateien."
+      "description": "Analysiere und benenne über 100 Dateiformate in einem Durchgang um – von Bildern, EPUB- und FB2-E-Books und PDFs bis zu Audio-, Video- und Office-Dateien."
     },
     "foldersMonitoring": {
       "title": "Ordnerüberwachung",
@@ -256,7 +256,7 @@ export const home: HomeCopy = {
     "speedDescription": "Aufräumen funktioniert nur, wenn es die Arbeit nicht stört. Dateien reinziehen, prüfen, anwenden, weiterarbeiten.",
     "formatsEyebrow": "100+ unterstützte Formate",
     "formatsTitle": "Bildschirmfotos, PDFs, Fotos, Audio, Dokumente und Videos",
-    "formatsDescription": "Unterstützt AVIF, RAW, Office-Dateien, PDFs, Untertitel, MP3, M4A, WAV, FLAC und gängige Videoformate für die inhaltsbasierte Stapelumbenennung.",
+    "formatsDescription": "Unterstützt AVIF, RAW, Office-Dateien, EPUB- und FB2-E-Books, PDFs, Untertitel, MP3, M4A, WAV, FLAC und gängige Videoformate für die inhaltsbasierte Stapelumbenennung.",
     "controlEyebrow": "Namensbausteine",
     "controlTitle": "Strukturierte Dateinamen für professionelle Arbeit",
     "controlDescription": "Profis bauen ihre eigenen Dateinamen-Muster aus Bausteinen, die zu ihrer Arbeit passen. KI liest jede Datei und füllt diese Bausteine mit den gewählten Details wie Kunde, Datum, Rechnungsnummer, Ort oder Projekt.",
@@ -312,7 +312,7 @@ export const home: HomeCopy = {
       },
       "documents": {
         "title": "Dokumente umbenennen",
-        "description": "Word-, Excel-, PowerPoint- und iWork-Dateien, benannt nach Thema."
+        "description": "EPUB- und FB2-E-Books sowie Word-, Excel-, PowerPoint- und iWork-Dateien, benannt nach Thema."
       },
       "design": {
         "title": "Designdateien umbenennen",
@@ -347,7 +347,7 @@ export const home: HomeCopy = {
     },
     {
       "question": "Welche Dateiformate werden unterstützt?",
-      "answer": "Zush unterstützt Bilder, Audio, Videos, Bildschirmfotos, PDFs, Dokumente, Tabellen, Präsentationen, Textdateien, CSV, SVG und weitere Alltagsformate."
+      "answer": "Zush unterstützt Bilder, Audio, Videos, Bildschirmfotos, EPUB- und FB2-E-Books, PDFs, Dokumente, Tabellen, Präsentationen, Textdateien, CSV, SVG und weitere Alltagsformate."
     },
     {
       "question": "Wie funktioniert Zush KI-Umbenennung?",

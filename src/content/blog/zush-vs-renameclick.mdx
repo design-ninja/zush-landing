@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Tool Comparisons"
 tldr: "Pick Zush for the most configurable naming workflow in this comparison: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, and Rename History with batch revert. RenameClick's main limitation is narrower documented coverage: no RAW, design, iWork, or video support. Local AI and undo exist in both and are not differentiators."
-reviewed: "2026-08-31"
+reviewed: "2026-09-02"
 featuredOrder: 5
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -37,10 +37,10 @@ Both products ship desktop apps for Mac and Windows, support local AI, monitor f
 | Platforms | Mac + Windows | Mac + Windows |
 | Processing options | Zush Cloud AI, BYOK, LM Studio or Ollama | Built-in local AI by default |
 | Local model bundled | No; connect LM Studio or Ollama | Yes, Qwen3-VL local model after download |
-| AI providers | BYOK: Gemini, Groq, OpenAI, Claude; local: LM Studio, Ollama | Built-in local, OpenAI, Gemini, Alibaba Cloud Qwen, LM Studio, Ollama |
+| AI providers | BYOK: Gemini, OpenRouter, OpenAI, Claude; local: LM Studio, Ollama | Built-in local, OpenAI, Gemini, Alibaba Cloud Qwen, LM Studio, Ollama |
 | Image/design formats | 41 image formats + 4 design formats, including RAW, HEIC, AVIF, Sketch, Figma, AI, PSD | JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF; no design files |
 | RAW support | <BlogHighlight>Yes (CR2, CR3, NEF, ARW, DNG, ORF, RAF, RW2, PEF, SRW, SR2)</BlogHighlight> | Not listed publicly |
-| Document formats | 37 document/PDF formats, including iWork | PDF, DOC/DOCX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, logs, SQL, SRT/VTT, ICS/VCF |
+| Document formats | 40 document/PDF formats, including iWork | PDF, DOC/DOCX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, logs, SQL, SRT/VTT, ICS/VCF |
 | Video formats | 16 common formats | Not supported per docs |
 | Audio formats | MP3, M4A, WAV, FLAC, OGG, WebM, MPGA | MP3, WAV, FLAC, M4A, AAC with local speech transcription |
 | Folder monitoring | Yes | Yes, Auto Flow |
@@ -120,7 +120,7 @@ The gap is around media and design formats. RenameClick's docs do not list camer
 
 Both products can run local models, so offline processing is not a unique advantage. Zush connects to LM Studio or Ollama; RenameClick bundles Qwen3-VL after a multi-GB download and also supports LM Studio and Ollama. The more important difference is the rest of the workflow: Zush documents ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, richer localization and metadata controls, and persistent Rename History.
 
-Zush wins if you care more about cloud-provider choice and high-volume BYOK. Zush supports Gemini, Groq, OpenAI, and Claude through BYOK, with keys stored locally, and offers LM Studio and Ollama when local processing is the priority. Groq and Claude are notable Zush-side options; Alibaba Cloud Qwen remains a RenameClick-side option.
+Zush wins if you care more about cloud-provider choice and high-volume BYOK. Zush supports Gemini, OpenRouter, OpenAI, and Claude through BYOK, with keys stored locally, and offers LM Studio and Ollama when local processing is the priority. OpenRouter and Claude are notable Zush-side options; Alibaba Cloud Qwen remains a RenameClick-side option.
 
 The practical trade-off is simple: choose Zush for naming depth, recovery detail, and mixed-file breadth. Consider RenameClick only when AI Search or folder movement outweighs its missing RAW, design, iWork, and video coverage.
 
@@ -148,7 +148,7 @@ For discovery inside chaotic folders, RenameClick's AI Search is a meaningful di
 
 - You need the broadest format coverage, especially RAW photos, design files, videos, iWork, and subtitles
 - You want ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, and full Rename History
-- You want BYOK with Gemini, Groq, OpenAI, or Claude available on every plan
+- You want BYOK with Gemini, OpenRouter, OpenAI, or Claude available on every plan
 - You need 60+ output languages
 - You want templates and 145+ Naming Blocks for repeatable filename structures
 - You want one rename workflow across Mac and Windows without thinking about local model hardware first

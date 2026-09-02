@@ -42,7 +42,7 @@ export const home = {
   "featureCards": {
     "aiAnalysis": {
       "title": "AI 分析",
-      "description": "一次批量分析并重命名 100 多种文件格式，涵盖图片、PDF、音频、视频和 Office 文件。"
+      "description": "一次批量分析并重命名 100 多种文件格式，涵盖图片、EPUB 和 FB2 电子书、PDF、音频、视频和 Office 文件。"
     },
     "foldersMonitoring": {
       "title": "文件夹监控",
@@ -256,7 +256,7 @@ export const home = {
     "speedDescription": "整理文件只有在不打断工作时才会坚持下去。拖入文件、检查、应用，然后继续工作。",
     "formatsEyebrow": "100+ 种支持格式",
     "formatsTitle": "截图、PDF、照片、音频、文档和视频",
-    "formatsDescription": "支持 AVIF、RAW、Office 文件、PDF、字幕、MP3、M4A、WAV、FLAC 和常见视频格式。",
+    "formatsDescription": "支持 AVIF、RAW、Office 文件、EPUB 和 FB2 电子书、PDF、字幕、MP3、M4A、WAV、FLAC 和常见视频格式。",
     "controlEyebrow": "命名块",
     "controlTitle": "为专业工作而生的结构化文件名",
     "controlDescription": "专业人士可以用契合自己工作的命名块自定义文件名模板。AI 会读取每个文件，并用你选择的细节（如客户、日期、发票号、地点或项目）填充这些块。",
@@ -312,7 +312,7 @@ export const home = {
       },
       "documents": {
         "title": "重命名文档",
-        "description": "Word、Excel、PowerPoint 和 iWork 文件,按主题命名。"
+        "description": "EPUB 和 FB2 电子书及 Word、Excel、PowerPoint 和 iWork 文件,按主题命名。"
       },
       "design": {
         "title": "重命名设计文件",
@@ -347,7 +347,7 @@ export const home = {
     },
     {
       "question": "支持哪些文件格式？",
-      "answer": "Zush 支持常见图片、音频、视频、截图、PDF、文档、表格、演示文稿、文本文件、CSV、SVG 等格式。"
+      "answer": "Zush 支持常见图片、音频、视频、截图、EPUB 和 FB2 电子书、PDF、文档、表格、演示文稿、文本文件、CSV、SVG 等格式。"
     },
     {
       "question": "Zush 的 AI 重命名如何工作？",

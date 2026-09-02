@@ -137,6 +137,9 @@ export const APP_CONFIG = {
     "xlsm",
     "xltx",
     "xltm",
+    "epub",
+    "fb2",
+    "fb2.zip",
   ],
   video_extensions: [
     "mp4",

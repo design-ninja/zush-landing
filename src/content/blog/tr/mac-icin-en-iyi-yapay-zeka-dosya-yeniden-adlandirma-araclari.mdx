@@ -11,7 +11,7 @@ tags:
   - "AI Dosyasını Yeniden Adlandırma"
   - "Takım Karşılaştırmaları"
 tldr: "Genel olarak en iyisi: 'Zush'. Bu Mac karşılaştırmasında belgelenen en geniş karma dosya kapsamını yapılandırılabilir adlandırma, klasör izleme, önizleme ve toplu geri alma ile tam 'Rename History' ile birleştirir. Diğer beş giriş, genel önerimiz değil, daha dar gereksinimler için alternatiflerdir."
-reviewed: "2026-08-31"
+reviewed: "2026-09-02"
 featuredOrder: 1
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
@@ -215,7 +215,7 @@ Bu yazının odaklandığı kategori budur. Aşağıdaki incelemeler, 2026'da Ma
 - Ekran görüntüleri, tasarım öğeleri, harcamalar, fotoğraf çekimleri, video, müzik ve toplantı notları için hazır "Templates"
 - 145'ten fazla "Naming Blocks" artı "Custom AI Blocks", istemler, biçimlendirme, yerelleştirme, etiketler ve meta veri kontrolleri
 - Akıllı 'Finder' etiketleri ve 'Spotlight' dostu meta veri entegrasyonu
-- Aralarından seçim yapabileceğiniz birden fazla AI sağlayıcısı: Gemini, Groq, OpenAI, Claude
+- Aralarından seçim yapabileceğiniz birden fazla AI sağlayıcısı: Gemini, OpenRouter, OpenAI, Claude
 - 60'tan fazla çıkış dili desteği
 - 'Rename History'i orijinal/yeni adlar, klasör, zaman damgası ve toplu geri alma ile tamamlayın
 - Aylık abonelikler yerine tek seferlik fiyatlandırma
@@ -412,7 +412,7 @@ Bu yazının odaklandığı kategori budur. Aşağıdaki incelemeler, 2026'da Ma
 |**Otomatik izleme**|Evet|Evet (Sihirli Klasörler)|HAYIR|Evet (Klasörleri İzle)|Evet (Otomatik Akış)|Onaylanmadı|
 |**Geri alma/geri alma**|Tam geçmiş|Evet|Listelenmemiş|Evet (tek tıklamayla Geri Al ve Kurtarma)|Evet (belgelere göre tam geri alma/yeniden yapma)|Onaylanmadı|
 |**Resim/tasarım formatları**|41 görsel + 4 tasarım formatı (Sketch, Figma, AI, PSD)|30'dan fazla format dahil. EPS/SVG/AI vektörleri; RAW, PSD, Sketch veya Figma yok|Özellik örnekleri + tüm dosya bildirimi|~8; RAW listesi yok|10 resim; RAW veya tasarım dosyası yok|Belgelenmemiş|
-|**Belge biçimleri**|37, 'iWork' dahil|30'dan fazla belge/e-tablo/sunum/e-posta|PDF/TXT örnekleri; tüm dosya bildirimi|~5+ OCR ile|20+ dahil. JSON/XML/YAML/HTML/SQL/altyazılar|Belgelenmemiş|
+|**Belge biçimleri**|40, 'iWork' dahil|30'dan fazla belge/e-tablo/sunum/e-posta|PDF/TXT örnekleri; tüm dosya bildirimi|~5+ OCR ile|20+ dahil. JSON/XML/YAML/HTML/SQL/altyazılar|Belgelenmemiş|
 |**Ses / video**|7 ses + 16 video|Merkezi değil|Listelenmemiş (CLI video yapar)|30'dan fazla listelendi|Transkripsiyonlu 5 ses; video desteklenmiyor|Belgelenmemiş|
 |**Adlandırma kontrolü**| <BlogHighlight>Hazır "Templates" + 145+ "Naming Blocks" + "Custom AI Blocks" + biçimlendirme + yerelleştirme + meta veriler</BlogHighlight> | Templates |Özel istemler|"Templates" + istemler + Kural Motoru|Desenleri biçimlendirme + özel talimatlar|Sınırlı|
 |**AI sağlayıcı seçimi**|4 sağlayıcı + 'BYOK'|Sabit|'Ollama'/LM Studio/OpenAI/özel|Kendi Kendini Yöneten'de 7 seçenek + "BYOK"|Yerleşik yerel + 5 sağlayıcı|Sabit (bulut)|
@@ -537,11 +537,11 @@ Bu, aracın geri alma özelliği sunup sunmadığına bağlıdır. 'Zush', 'Rena
 
 ### AI dosya yeniden adlandırıcıları PDF'ler ve belgelerle çalışır mı?
 
-Bu karşılaştırmadaki çeşitli araçlar belgeleri destekler. 'Zush' 37 belge ve PDF ile ilgili formatı (PDF, DOCX, XLSX, PPTX, TXT, CSV, TSV, JSON, XML/YAML, EML, SRT, VTT, OpenDocument ve daha fazlası) kapsar. 'Renamer.ai', OCR ağırlıklı belge desteğiyle 30'dan fazla dosya formatını pazarlamaktadır. 'NameQuick', yerleşik OCR ile PDF'leri, Word'ü, Excel'i ve Sayfaları yönetir. RenameClick'in belge listesi eskisinden daha uzun: PDF, DOC/DOCX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, günlükler, SQL, SRT/VTT ve ICS/VCF. AI Renamer'in fiyatlandırma sayfası tüm dosyaların desteğini pazarlıyor, ancak genel özellik örnekleri hala PDF/TXT/metin dosyalarını vurguluyor. 'Riffo' hiçbir format listesi yayınlamıyor.
+Bu karşılaştırmadaki çeşitli araçlar belgeleri destekler. 'Zush' 40 belge ve PDF ile ilgili formatı (EPUB, FB2, PDF, DOCX, XLSX, PPTX, TXT, CSV, TSV, JSON, XML/YAML, EML, SRT, VTT, OpenDocument ve daha fazlası) kapsar. 'Renamer.ai', OCR ağırlıklı belge desteğiyle 30'dan fazla dosya formatını pazarlamaktadır. 'NameQuick', yerleşik OCR ile PDF'leri, Word'ü, Excel'i ve Sayfaları yönetir. RenameClick'in belge listesi eskisinden daha uzun: PDF, DOC/DOCX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, günlükler, SQL, SRT/VTT ve ICS/VCF. AI Renamer'in fiyatlandırma sayfası tüm dosyaların desteğini pazarlıyor, ancak genel özellik örnekleri hala PDF/TXT/metin dosyalarını vurguluyor. 'Riffo' hiçbir format listesi yayınlamıyor.
 
 ### 'BYOK' (kendi anahtarınızı getirin) nasıl çalışır?
 
-'BYOK', OpenAI, Google (Gemini), Anthropic (Claude) veya Groq gibi sağlayıcılardan kendi API anahtarınızı bağlamanıza olanak tanır. ÜCRETSİZ olarak, 'BYOK' 50 yeniden adlandırma hakkını paylaşır; PRO, "Zush" sınırını kaldırır, ancak nihai API maliyeti sağlayıcıya, modele, dosya boyutuna, bilgi istemi uzunluğuna ve belirteç kullanımına bağlıdır. Bu karşılaştırmada "Zush" ve "NameQuick"ın her ikisi de "BYOK" tarzı kontrol sunuyor. 'Zush' her planda 'BYOK'i içerirken, 'NameQuick'in Kendi Kendine Yönetilen yolu tek cihaz için tek seferlik 69 ABD dolarıdır ve OpenAI, Claude, Gemini, OpenRouter, 'Ollama', LM Studio ve MLX'i listeler. 'RenameClick' birden fazla AI arka ucunu ('Ollama', LM Studio, OpenAI, Gemini, Alibaba Cloud Qwen) destekler ancak bunu 'BYOK' modeli yerine sağlayıcı seçimi olarak çerçeveler. 'AI Renamer'nin 19 ABD doları değerindeki Yerel Modu, 'Ollama' ve LM Studio'nun yanı sıra OpenAI ve özel model desteğini de listeliyor.
+'BYOK', OpenAI, Google (Gemini), Anthropic (Claude) veya OpenRouter gibi sağlayıcılardan kendi API anahtarınızı bağlamanıza olanak tanır. ÜCRETSİZ olarak, 'BYOK' 50 yeniden adlandırma hakkını paylaşır; PRO, "Zush" sınırını kaldırır, ancak nihai API maliyeti sağlayıcıya, modele, dosya boyutuna, bilgi istemi uzunluğuna ve belirteç kullanımına bağlıdır. Bu karşılaştırmada "Zush" ve "NameQuick"ın her ikisi de "BYOK" tarzı kontrol sunuyor. 'Zush' her planda 'BYOK'i içerirken, 'NameQuick'in Kendi Kendine Yönetilen yolu tek cihaz için tek seferlik 69 ABD dolarıdır ve OpenAI, Claude, Gemini, OpenRouter, 'Ollama', LM Studio ve MLX'i listeler. 'RenameClick' birden fazla AI arka ucunu ('Ollama', LM Studio, OpenAI, Gemini, Alibaba Cloud Qwen) destekler ancak bunu 'BYOK' modeli yerine sağlayıcı seçimi olarak çerçeveler. 'AI Renamer'nin 19 ABD doları değerindeki Yerel Modu, 'Ollama' ve LM Studio'nun yanı sıra OpenAI ve özel model desteğini de listeliyor.
 
 ### AI dosyasının yeniden adlandırılması mevcut dosya bağlantılarımı bozar mı?
 

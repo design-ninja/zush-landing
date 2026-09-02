@@ -42,7 +42,7 @@ export const home = {
   "featureCards": {
     "aiAnalysis": {
       "title": "AI 분석",
-      "description": "이미지와 PDF부터 오디오, 비디오, Office 파일까지 100개 이상의 파일 형식을 한 번에 분석하고 이름을 변경합니다."
+      "description": "이미지, EPUB 및 FB2 전자책, PDF부터 오디오, 비디오, Office 파일까지 100개 이상의 파일 형식을 한 번에 분석하고 이름을 변경합니다."
     },
     "foldersMonitoring": {
       "title": "폴더 모니터링",
@@ -256,7 +256,7 @@ export const home = {
     "speedDescription": "정리는 작업을 방해하지 않을 때 지속됩니다. 파일을 넣고, 확인하고, 적용하고, 계속하세요.",
     "formatsEyebrow": "100+개 지원 형식",
     "formatsTitle": "스크린샷, PDF, 사진, 오디오, 문서, 비디오",
-    "formatsDescription": "AVIF, RAW, Office 파일, PDF, 자막, MP3, M4A, WAV, FLAC, 일반 비디오 형식을 지원합니다.",
+    "formatsDescription": "AVIF, RAW, Office 파일, EPUB 및 FB2 전자책, PDF, 자막, MP3, M4A, WAV, FLAC, 일반 비디오 형식을 지원합니다.",
     "controlEyebrow": "Naming Blocks",
     "controlTitle": "전문 업무를 위한 구조화된 파일명",
     "controlDescription": "전문가는 자신의 작업에 맞는 블록으로 직접 파일명 패턴을 구성할 수 있습니다. AI가 각 파일을 읽고 선택한 세부 정보(고객, 날짜, 송장 번호, 장소, 프로젝트 등)로 블록을 채웁니다.",
@@ -312,7 +312,7 @@ export const home = {
       },
       "documents": {
         "title": "문서 이름 바꾸기",
-        "description": "Word, Excel, PowerPoint, iWork 파일을 주제별로 명명."
+        "description": "EPUB 및 FB2 전자책과 Word, Excel, PowerPoint, iWork 파일을 주제별로 명명."
       },
       "design": {
         "title": "디자인 파일 이름 바꾸기",
@@ -347,7 +347,7 @@ export const home = {
     },
     {
       "question": "어떤 파일 형식을 지원하나요?",
-      "answer": "이미지, 비디오, 스크린샷, PDF, 문서, 스프레드시트, 프레젠테이션, 텍스트, CSV, SVG 등 일반적인 형식을 지원합니다."
+      "answer": "이미지, 비디오, 스크린샷, EPUB 및 FB2 전자책, PDF, 문서, 스프레드시트, 프레젠테이션, 텍스트, CSV, SVG 등 일반적인 형식을 지원합니다."
     },
     {
       "question": "Zush AI Rename은 어떻게 작동하나요?",

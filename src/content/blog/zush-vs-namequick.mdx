@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Tool Comparisons"
 tldr: "Choose Zush for the most configurable AI naming workflow in this comparison: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, and Rename History with batch revert. NameQuick's main limitation is its incomplete public platform-and-format matrix; local AI is available in both and is not a differentiator."
-reviewed: "2026-08-31"
+reviewed: "2026-09-02"
 featuredOrder: 3
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -47,10 +47,10 @@ If you are searching "Zush vs NameQuick", compare the workflow you can verify ra
 | Platforms | Mac + Windows | Mac + Windows downloads published; feature parity is not separately documented |
 | Image and design formats | 41 image formats + 4 design formats (RAW, HEIC, AVIF, Sketch, Figma, AI, PSD) | 30+ formats spanning categories |
 | RAW support | <BlogHighlight>Yes (11 variants)</BlogHighlight> | Not listed publicly |
-| Document formats | 37 document/PDF formats, including iWork | Office docs covered |
+| Document formats | 40 document/PDF formats, including iWork | Office docs covered |
 | Video formats | 16 common formats | Listed as part of 30+ formats |
 | Audio formats | 7 common formats | Listed as part of 30+ formats |
-| AI processing routes | Zush Cloud AI; BYOK with Gemini, Groq, OpenAI, or Claude; LM Studio; Ollama | <BlogHighlight>7 public options</BlogHighlight> (OpenAI, OpenRouter, Claude, Gemini, Ollama, LM Studio, MLX) |
+| AI processing routes | Zush Cloud AI; BYOK with Gemini, OpenRouter, OpenAI, or Claude; LM Studio; Ollama | <BlogHighlight>7 public options</BlogHighlight> (OpenAI, OpenRouter, Claude, Gemini, Ollama, LM Studio, MLX) |
 | BYOK | <BlogHighlight>Available on every plan</BlogHighlight> | $69 Self-Managed, then bring your key or local model |
 | Folder monitoring | Yes | Yes (Watch Folders) |
 | Rename recovery | <BlogHighlight>Full Rename History: original/new name, folder, timestamp, batch revert</BlogHighlight> | One-click Undo & Recovery |
@@ -117,12 +117,12 @@ NameQuick mentions audio, video, and archives as part of its 30+ formats. Zush 3
 
 ## AI provider menu
 
-NameQuick publicly lists seven AI backends: OpenAI, OpenRouter, Claude, Gemini, Ollama, LM Studio, and MLX. Zush offers four processing routes: managed Zush Cloud AI, BYOK with Gemini, Groq, OpenAI, or Claude, LM Studio and Ollama.
+NameQuick publicly lists seven AI backends: OpenAI, OpenRouter, Claude, Gemini, Ollama, LM Studio, and MLX. Zush offers four processing routes: managed Zush Cloud AI, BYOK with Gemini, OpenRouter, OpenAI, or Claude, LM Studio and Ollama.
 
 The big differentiators:
 
-- <BlogHighlight>Groq</BlogHighlight> — listed on Zush, not on NameQuick's public provider list.
-- <BlogHighlight>OpenRouter</BlogHighlight> — only on NameQuick. OpenRouter aggregates 50+ models, useful if you want to test alternatives.
+- <BlogHighlight>OpenRouter</BlogHighlight> — available in Zush BYOK, with a selectable compatible model.
+- <BlogHighlight>MLX</BlogHighlight> — only on NameQuick, useful if Apple Silicon–optimized local inference is a hard requirement.
 
 ## Pick by use case
 
@@ -134,12 +134,12 @@ The big differentiators:
 - You want one documented desktop workflow across Mac and Windows
 - You shoot RAW photos and want explicit format support
 - You rename design assets, iWork files, audio, videos, and documents in the same folders
-- You want Groq as a cloud-provider option
+- You want OpenRouter as a cloud-provider option
 - You want BYOK available on the same FREE or PRO plan
 
 **Consider NameQuick if:**
 
-- You need OpenRouter, LM Studio, or MLX and have verified support on your platform
+- You need MLX and have verified support on your platform
 - You want conditional moves, tags, or archives in the same vendor workflow
 - You handle archive files that need renaming
 - EU data routing matters for your compliance story
@@ -148,7 +148,7 @@ The big differentiators:
 
 ## Migration tip
 
-If you are comparing an existing setup with Zush, copy five representative files into a test folder and run the free Zush workflow first. Check the proposed names, format coverage, and undo history before changing any monitored folder. If you already use a supported Gemini, Groq, OpenAI, or Claude key, you can reuse it in Zush BYOK.
+If you are comparing an existing setup with Zush, copy five representative files into a test folder and run the free Zush workflow first. Check the proposed names, format coverage, and undo history before changing any monitored folder. If you already use a supported Gemini, OpenRouter, OpenAI, or Claude key, you can reuse it in Zush BYOK.
 
 ## FAQ
 
@@ -162,7 +162,7 @@ In Zush, BYOK is available on every plan — no separate BYOK purchase. In NameQ
 
 ### Does Zush support all NameQuick AI providers?
 
-No. Zush supports managed cloud, BYOK with four providers, and two local routes: LM Studio and Ollama. NameQuick publicly lists OpenAI, OpenRouter, Claude, Gemini, Ollama, LM Studio, and MLX. NameQuick remains broader only where OpenRouter or MLX is a hard requirement.
+No. Zush supports managed cloud, BYOK with Gemini, OpenRouter, OpenAI, and Claude, plus two local routes: LM Studio and Ollama. NameQuick publicly lists OpenAI, OpenRouter, Claude, Gemini, Ollama, LM Studio, and MLX. NameQuick remains broader only where MLX is a hard requirement.
 
 ### Does NameQuick support RAW photos?
 

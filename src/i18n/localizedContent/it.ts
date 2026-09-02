@@ -42,7 +42,7 @@ export const home = {
   "featureCards": {
     "aiAnalysis": {
       "title": "Analisi IA",
-      "description": "Analizza e rinomina oltre 100 formati di file in un unico batch, da immagini e PDF a file audio, video e Office."
+      "description": "Analizza e rinomina oltre 100 formati di file in un unico batch, da immagini, ebook EPUB e FB2 e PDF a file audio, video e Office."
     },
     "foldersMonitoring": {
       "title": "Monitoraggio cartelle",
@@ -256,7 +256,7 @@ export const home = {
     "speedDescription": "L’ordine funziona solo se non interrompe il lavoro. Trascina, controlla, applica e continua.",
     "formatsEyebrow": "100+ formati supportati",
     "formatsTitle": "Screenshot, PDF, foto, audio, documenti e video",
-    "formatsDescription": "Supporta AVIF, RAW, Office, PDF, sottotitoli, MP3, M4A, WAV, FLAC e formati video comuni.",
+    "formatsDescription": "Supporta AVIF, RAW, Office, ebook EPUB e FB2, PDF, sottotitoli, MP3, M4A, WAV, FLAC e formati video comuni.",
     "controlEyebrow": "Blocchi di nomi",
     "controlTitle": "Nomi file strutturati per il lavoro professionale",
     "controlDescription": "I professionisti costruiscono i propri schemi di nome con blocchi adatti al loro lavoro. L’IA legge ogni file e riempie quei blocchi con i dettagli scelti: cliente, data, numero fattura, luogo o progetto.",
@@ -312,7 +312,7 @@ export const home = {
       },
       "documents": {
         "title": "Rinominare i documenti",
-        "description": "File Word, Excel, PowerPoint e iWork nominati per argomento."
+        "description": "Ebook EPUB e FB2 e file Word, Excel, PowerPoint e iWork nominati per argomento."
       },
       "design": {
         "title": "Rinominare i file di design",
@@ -347,7 +347,7 @@ export const home = {
     },
     {
       "question": "Quali formati sono supportati?",
-      "answer": "Zush supporta immagini, audio, video, screenshot, PDF, documenti, fogli di calcolo, presentazioni, testo, CSV, SVG e altri formati comuni."
+      "answer": "Zush supporta immagini, audio, video, screenshot, ebook EPUB e FB2, PDF, documenti, fogli di calcolo, presentazioni, testo, CSV, SVG e altri formati comuni."
     },
     {
       "question": "Come funziona Zush AI Rename?",

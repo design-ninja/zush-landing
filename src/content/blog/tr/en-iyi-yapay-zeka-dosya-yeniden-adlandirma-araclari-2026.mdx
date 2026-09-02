@@ -11,7 +11,7 @@ tags:
   - "AI Dosyasını Yeniden Adlandırma"
   - "Takım Karşılaştırmaları"
 tldr: "Genel olarak en iyisi: 'Zush'. Bu karşılaştırmada en yapılandırılabilir AI adlandırma iş akışına sahiptir: hazır \"Templates\", 145+ \"Naming Blocks\", \"Custom AI Blocks\", biçimlendirme ve yerelleştirme kontrolleri ve ayrıca uygulanan bir toplu işlemi geri yükleyebilen \"Rename History\". Diğer ürünler genel önerimiz değil, daha dar alternatiflerdir."
-reviewed: "2026-08-31"
+reviewed: "2026-09-02"
 featuredOrder: 1
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -60,7 +60,7 @@ Platforma özel karşılaştırma istiyorsanız "[Mac AI yeniden adlandırma uyg
 |Yapılandırılabilir AI adlandırma|Hazır iş akışları, yapılandırılmış dosya adı alanları, özel AI çıkarma, biçimlendirme, dil, meta veriler|"Zush", bu karşılaştırmada belgelenen en derin kombinasyona sahiptir: "Templates", 145+ "Naming Blocks", "Custom AI Blocks", biçimlendirme, yerelleştirme ve meta veriler|
 |Güvenli toplu yeniden adlandırma|Uygulamadan önce önizlemenin yanı sıra orijinal ve yeni adların kalıcı kaydı ve toplu geri dönüş yolu|'Zush' orijinal adı, yeni adı, klasörü ve zaman damgasını 'Rename History'e kaydeder; birçok rakip de geri alma işlemini belgeliyor|
 |Çevrimdışı AI dosya yeniden adlandırıcı|Yerel model desteği, desteklenen dosyalar için bulut yüklemesi yok, uygulamadan önce ön izleme|Genel seçimimiz 'Zush'; alternatifler daha dar sağlayıcı, format veya iş akışı değiş tokuşu gerektirir|
-|'BYOK' AI dosya yeniden adlandırıcı|Kendi Gemini, OpenAI, Claude veya Groq anahtarınızı getirin|'Zush'; yalnızca OpenRouter, vLLM veya desteklenmeyen farklı bir sağlayıcı zorunluysa başka bir girişi düşünün|
+|'BYOK' AI dosya yeniden adlandırıcı|Kendi Gemini, OpenAI, Claude veya OpenRouter anahtarınızı getirin|'Zush'; yalnızca vLLM veya desteklenmeyen farklı bir sağlayıcı zorunluysa başka bir girişi düşünün|
 |AI dosya yeniden adlandırıcı ve düzenleyici|Klasör izleme, şablonlar, yeniden adlandırma geçmişi, geri alma|'Zush'; Yönlendirme öncelikli ürünler, dosyaları taşımak onları adlandırmaktan daha önemli olduğunda istisnadır|
 |Bulut depolama dosyası yeniden adlandırıcı|Google Drive, Dropbox, OneDrive, ekip kuralları, belge iş akışları|Mac'teki dosyalar için "Zush" veya "Windows"; Yalnızca bağlı depolama veya yalnızca API iş akışları için yeniden adlandırıldı.|
 
@@ -114,7 +114,7 @@ Araçları karşılaştırmadan önce günlük kullanımda gerçekte neyin önem
 
 ![Açıklayıcı öncesi ve sonrası adları ve yeşil onay işaretlerini gösteren dosyaları gösteren "Zush" AI yeniden adlandırma sonuçları](/images/showcase/macos/batch-rename-light.webp)
 
-'[Mac ve 'Windows' için 'Zush' dosya yeniden adlandırıcı](/)', çeşitli dosya türleriyle çalışan ve görüntüler, tasarım dosyaları, belgeler, videolar ve ses için ayrı yeniden adlandırma araçları yerine tek bir masaüstü iş akışı isteyen kullanıcıların seçimidir. 100'den fazla formatı destekler: 41 görüntü formatı (HEIC, AVIF, SVG ve RAW dahil), 4 tasarım formatı (Sketch, Figma .fig, Adobe Illustrator .ai ve PSD), 37 belge ve PDF ile ilgili format (PDF, Office, iWork, OpenDocument, metin, veri, e-posta ve altyazı dosyaları), 16 video formatı (MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV ve VOB) ve 7 ses formatı (MP3, M4A, WAV, FLAC, OGG, WebM ve MPGA dahil). Bu genişlik önemlidir çünkü gerçek iş akışları telefon fotoğraflarını, kamera RAW dosyalarını, tasarım varlıklarını, taranmış PDF'leri, ofis belgelerini, alt yazıları, ekran kayıtlarını ve ses dosyalarını aynı klasörlerde karıştırır. Video, bu araçların çoğunun tamamen atladığı kategoridir; "[AI ile video dosyalarını nasıl yeniden adlandırabilirim?](/blog/rename-video-files-with-ai)", yeniden adlandırıcının aslında bir klipten ne okuduğunu açıklıyor.
+'[Mac ve 'Windows' için 'Zush' dosya yeniden adlandırıcı](/)', çeşitli dosya türleriyle çalışan ve görüntüler, tasarım dosyaları, belgeler, videolar ve ses için ayrı yeniden adlandırma araçları yerine tek bir masaüstü iş akışı isteyen kullanıcıların seçimidir. 100'den fazla formatı destekler: 41 görüntü formatı (HEIC, AVIF, SVG ve RAW dahil), 4 tasarım formatı (Sketch, Figma .fig, Adobe Illustrator .ai ve PSD), 40 belge ve PDF ile ilgili format (EPUB, FB2, PDF, Office, iWork, OpenDocument, metin, veri, e-posta ve altyazı dosyaları), 16 video formatı (MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV ve VOB) ve 7 ses formatı (MP3, M4A, WAV, FLAC, OGG, WebM ve MPGA dahil). Bu genişlik önemlidir çünkü gerçek iş akışları telefon fotoğraflarını, kamera RAW dosyalarını, tasarım varlıklarını, taranmış PDF'leri, ofis belgelerini, alt yazıları, ekran kayıtlarını ve ses dosyalarını aynı klasörlerde karıştırır. Video, bu araçların çoğunun tamamen atladığı kategoridir; "[AI ile video dosyalarını nasıl yeniden adlandırabilirim?](/blog/rename-video-files-with-ai)", yeniden adlandırıcının aslında bir klipten ne okuduğunu açıklıyor.
 
 'Zush'i bu listenin geri kalanının yanında öne çıkaran şey:
 
@@ -132,7 +132,7 @@ Araçları karşılaştırmadan önce günlük kullanımda gerçekte neyin önem
 - Yeni dosyaların otomatik olarak yeniden adlandırılması için klasör izleme
 - Tekrarlanabilir dosya adı yapıları için yeniden kullanılabilir şablonlar ve 145+ Naming Blocks
 - Arama dostu adlar, meta veriler ve özel istemler
-- Çoklu AI sağlayıcıları: Gemini, Groq, OpenAI, Claude
+- Çoklu AI sağlayıcıları: Gemini, OpenRouter, OpenAI, Claude
 - Mac ve 'Windows'de yerel 'Ollama' işleme
 - 60'tan fazla dil desteği
 - Tam geri alma özelliğiyle geçmişi yeniden adlandırın
@@ -155,7 +155,7 @@ Araçları karşılaştırmadan önce günlük kullanımda gerçekte neyin önem
 
 Yönetilen yapay zeka, "BYOK"/yerel modlar, İzleme Klasörleri, şablonlar, toplu işleme ve İşlem Geçmişi ile benzer bir Mac + "Windows" iş akışını hedeflediği için "FilesDesk" dahil edilmiştir. Ana sınırlaması yapısaldır: Yönetilen öneriler ölçülürken, yaşam boyu yol kendi API anahtarınızı veya yerel modelinizi gerektirir. Doğrudan takaslar için bkz. '['Zush' ve 'FilesDesk'](/blog/zush-vs-filesdesk)'.
 
-**Yalnızca dar alternatif:** OpenRouter veya vLLM zorunludur ve ölçülü yönetimli kullanımı veya kendi kendine yönetilen kurulumu kabul ediyorsunuz. **Neden "Zush" genel olarak daha üst sıralarda yer alıyor:** "FilesDesk" eşdeğer bir ayrıntılı RAW/tasarım/"iWork" matrisi yayınlamaz ve yönetilen yapay zekayı kullanım ömrü boyunca bir araya getirmez.
+**Yalnızca dar alternatif:** vLLM zorunludur ve ölçülü yönetimli kullanımı veya kendi kendine yönetilen kurulumu kabul ediyorsunuz. **Neden "Zush" genel olarak daha üst sıralarda yer alıyor:** "FilesDesk" eşdeğer bir ayrıntılı RAW/tasarım/"iWork" matrisi yayınlamaz ve yönetilen yapay zekayı kullanım ömrü boyunca bir araya getirmez.
 
 ### 3. RenameClick
 
@@ -231,14 +231,14 @@ Renamed.to bulut/ekip seçeneğidir. Belgeleri analiz eder ve bunları mevcut Go
 |---|---|---|---|---|---|---|---|---|---|
 |platformu|Mac ve 'Windows'|Mac ve 'Windows'|Mac ve "Windows" (masaüstü-yerel)|Masaüstü (Mac/Win)|Masaüstü (Win/Mac) + Web|Mac ve 'Windows'; parite tam olarak belgelenmedi|Yerel masaüstü|'macOS' + Web demosu|Web + bulut entegrasyonları|
 |Resim/tasarım formatları|41 görsel + 4 tasarım formatı|Fotoğraflar/resimler; ayrıntılı matris bulunamadı|10 görüntü formatı; RAW/tasarım listesi yok|Özellik örnekleri + tüm dosya bildirimi|30'dan fazla format dahil. EPS/SVG/AI vektörleri; RAW yok|30'dan fazla format|Herkese açık olarak ayrıntılı olarak açıklanmadı|Belgelenmemiş|Taranan görüntüler/belgeler|
-|Belge formatları|37, 'iWork' dahil|Fotoğraflar, PDF'ler, faturalar, makbuzlar, sözleşmeler, ekran görüntüleri|20+ dahil. PDF/DOCX/JSON/XML/YAML/HTML/SQL/altyazılar|PDF/TXT örnekleri; tüm dosya bildirimi|30'dan fazla belge/resim/vektör/e-posta|PDF'ler, Sayfalar, Ofis, OCR|Herkese açık olarak ayrıntılı olarak açıklanmadı|Belgelenmemiş|PDF/Word/Excel/PowerPoint|
+|Belge formatları|40, 'iWork' dahil|Fotoğraflar, PDF'ler, faturalar, makbuzlar, sözleşmeler, ekran görüntüleri|20+ dahil. PDF/DOCX/JSON/XML/YAML/HTML/SQL/altyazılar|PDF/TXT örnekleri; tüm dosya bildirimi|30'dan fazla belge/resim/vektör/e-posta|PDF'ler, Sayfalar, Ofis, OCR|Herkese açık olarak ayrıntılı olarak açıklanmadı|Belgelenmemiş|PDF/Word/Excel/PowerPoint|
 |Ses / video|7 ses + 16 video|Listelenen ortak ses ve video formatları|Transkripsiyonlu 5 ses; video desteklenmiyor|Listelenmemiş (ayrı CLI video yapar)|Merkezi değil|Yalnızca geniş kategori|Onaylanmadı|Belgelenmemiş|HAYIR|
 |Ölçülü mü?|Ücretli PRO'da hayır|Yönetilen krediler evet; Ömür boyu hayır|Ücretsiz katman evet; Profesyonel hayır|Bulut evet; 19 $ Yerel hayır|Evet, her seviyede|Yönetildi evet; Kendi Kendini Yöneten hayır|HAYIR|Belirtilmedi|Evet, kredi|
 |Toplu yeniden adlandırma|Evet|Evet|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
 |Klasör izleme|Evet|Evet (Klasörleri İzle)|Evet (Otomatik Akış)|Kamuya açıklama yok|Evet (Sihirli Klasörler)|Evet (Klasörleri İzle)|Onaylanmadı|Onaylanmadı|Evet (izlenen bulut klasörleri)|
 |Özel desenler| Templates + 145+ Naming Blocks | Templates |Formatlar + talimatlar|Özel istemler/vaka stilleri| Templates |Ön ayarlar/şablonlar/istemler|Herkese açık olarak ayrıntılı olarak açıklanmadı|Sınırlı|Kaydedilen takım kuralları/istemleri|
 |Geri al/geri al|Evet|Evet, İşleme Geçmişi aracılığıyla|Evet, dokümanlara göre tam geri alma/yeniden yapma|Kamuya açıklama yok|Evet|Evet, tek tıklamayla Geri Al ve Kurtarma|Onaylanmadı|Onaylanmadı|İnceleme/güven iş akışı|
-|Çoklu yapay zeka sağlayıcıları|İkizler/Groq/OpenAI/Claude + 'Ollama'|Claude/Gemini/OpenAI/OpenRouter/'Ollama'/vLLM|Dahili yerel/Ollama/LM Studio/OpenAI/Gemini/Qwen|'Ollama'/LM Studio/OpenAI/özel|Sabit|OpenAI/OpenRouter/Claude/Gemini/Ollama/LM Studio/MLX|Sabit yerel|Sabit bulut|Sabit bulut|
+|Çoklu yapay zeka sağlayıcıları|İkizler/OpenRouter/OpenAI/Claude + 'Ollama'|Claude/Gemini/OpenAI/OpenRouter/'Ollama'/vLLM|Dahili yerel/Ollama/LM Studio/OpenAI/Gemini/Qwen|'Ollama'/LM Studio/OpenAI/özel|Sabit|OpenAI/OpenRouter/Claude/Gemini/Ollama/LM Studio/MLX|Sabit yerel|Sabit bulut|Sabit bulut|
 |Ücretsiz katman|başlamak için 50|15 kredi|Sınırsız analiz + 30 uygulama kredisi/ay|Kayıt sırasında 10 kredi|25/ay|Yönetilen: 250/14 gün; Kendi Kendini Yöneten: 50 deneme yeniden adlandırma|Özgür|Serbest konumlandırılmış ana sayfa|Başlamak için 50 doküman|
 |'BYOK'/yerel seçenek|Evet|Ömür boyu plan|Evet/sağlayıcı seçimi|Evet/yerel/özel|Herkese açık 'BYOK' yok|Kendi Kendini Yöneten|Yerel|Herkese açık 'BYOK' yok|HAYIR|
 
@@ -286,13 +286,13 @@ Wisfile ve 'Riffo' serbest konumlandırılmış seçeneklerdir ancak izleme, ger
 
 **Yapay zekanın her dosya adını nasıl oluşturduğu konusunda en fazla kontrolü istiyorsanız:** <BlogHighlight>Zush</BlogHighlight>. Hazır bir Şablondan başlayın, 145+ "Naming Blocks"yi "Custom AI Blocks" ile birleştirin, düzeni, büyük/küçük harf, ayırıcıları, tarih biçimini, dili, etiketleri ve meta verileri ayarlayın, sonucu önizleyin ve ardından uygulanan toplu işlemi "Rename History"te tersine çevrilebilir halde tutun.
 
-**Mac'te veya "Windows"te yayınlanan en geniş karma dosya kapsamını istiyorsanız:** "<BlogHighlight>'Zush' Tek Seferlik 48 Dolar</BlogHighlight>". Tam RAW desteği (CR2, NEF, ARW, DNG), tasarım dosyaları, 'iWork' dosyaları, ses, 37 belge ve PDF ile ilgili format, 16 video formatı, klasör izleme, geri alma, 'Templates', 'Naming Blocks' ve sınırsız PRO yeniden adlandırma.
+**Mac'te veya "Windows"te yayınlanan en geniş karma dosya kapsamını istiyorsanız:** "<BlogHighlight>'Zush' Tek Seferlik 48 Dolar</BlogHighlight>". Tam RAW desteği (CR2, NEF, ARW, DNG), tasarım dosyaları, 'iWork' dosyaları, ses, 40 belge ve PDF ile ilgili format, 16 video formatı, klasör izleme, geri alma, 'Templates', 'Naming Blocks' ve sınırsız PRO yeniden adlandırma.
 
 **Belirleyici gereksinim Mac'e özgü "Finder" iş akışıysa:** "NameQuick"un mevcut Mac yapısını doğrulayın ve 69 ABD doları tutarındaki kendi kendini yöneten yolunu "Zush"nin 48 ABD doları tutarındaki tek seferlik planıyla karşılaştırın.
 
 **Gizlilik en büyük önceliğinizse:** "Zush" de dahil olmak üzere bu karşılaştırmadaki birçok üründe yerel işleme mevcuttur. Bunu temel bir gereksinim olarak ele alın ve geriye kalanları karşılaştırın: adlandırma kontrolü, desteklenen formatlar, önizleme, kurtarma, otomasyon ve fiyatlandırma.
 
-**Sağlayıcı kontrolü toplu kredilerden daha önemliyse:** "Zush" "BYOK" veya "NameQuick" kendi kendini yönetir. Gemini, Groq, OpenAI veya Claude'u "Zush" iş akışına getirmek istiyorsanız "['BYOK' kurulumu](/docs/byok)" ile başlayın.
+**Sağlayıcı kontrolü toplu kredilerden daha önemliyse:** "Zush" "BYOK" veya "NameQuick" kendi kendini yönetir. Gemini, OpenRouter, OpenAI veya Claude'u "Zush" iş akışına getirmek istiyorsanız "['BYOK' kurulumu](/docs/byok)" ile başlayın.
 
 **Platformlar arası belge otomasyonuna ihtiyacınız varsa:** 'Renamer.ai' (Masaüstü + Sihirli Klasörler içeren web) veya Renamed.to (web + Google Drive/Dropbox/OneDrive entegrasyonları). Renamed.to, güven puanlaması ve kayıtlı kurallarla daha iyi bir takım seçeneğidir.
 
@@ -303,7 +303,7 @@ Wisfile ve 'Riffo' serbest konumlandırılmış seçeneklerdir ancak izleme, ger
 
 Bu listedeki her aracın bir tür ücretsiz seçeneği vardır. Asıl soru, ücretsiz katmanın iş akışınız için yeterli olup olmadığıdır.
 
-"Zush" ÜCRETSİZ; Cloud AI, "BYOK" ve Çevrimdışı AI arasında paylaşılan 50 yeniden ad sağlar. Ücretli PRO bu sınırı kaldırırken "BYOK" sağlayıcı kullanımı Gemini, Groq, OpenAI veya Claude tarafından ayrı olarak faturalandırılmaya devam eder.
+"Zush" ÜCRETSİZ; Cloud AI, "BYOK" ve Çevrimdışı AI arasında paylaşılan 50 yeniden ad sağlar. Ücretli PRO bu sınırı kaldırırken "BYOK" sağlayıcı kullanımı Gemini, OpenRouter, OpenAI veya Claude tarafından ayrı olarak faturalandırılmaya devam eder.
 
 'AI Renamer' tamamen ücretsizdir ancak yerel donanım ve kurulum gerektirir. Tarayıcı araçları sınırlı sayıda ücretsiz yükleme olanağı sunar.
 
@@ -323,7 +323,7 @@ Karışık Mac ve "Windows" klasörleri için, grubun ortak görüntüler ve bel
 
 ### Dosya yeniden adlandırma için 'BYOK' ne anlama geliyor?
 
-'BYOK' kendi anahtarınızı getirin anlamına gelir. Uygulamanın yönetilen yapay zeka sağlayıcısını kullanmak yerine, araca bağlı olarak kendi Gemini, Groq, OpenAI, Claude, OpenRouter, Ollama veya benzer sağlayıcı hesabınızı bağlarsınız. Sağlayıcı kontrolü, öngörülebilir API faturalandırması veya daha yüksek hacimli yeniden adlandırma istediğinizde "BYOK" kullanışlıdır.
+'BYOK' kendi anahtarınızı getirin anlamına gelir. Uygulamanın yönetilen yapay zeka sağlayıcısını kullanmak yerine, araca bağlı olarak kendi Gemini, OpenRouter, OpenAI, Claude, Ollama veya benzer sağlayıcı hesabınızı bağlarsınız. Sağlayıcı kontrolü, öngörülebilir API faturalandırması veya daha yüksek hacimli yeniden adlandırma istediğinizde "BYOK" kullanışlıdır.
 
 ### AI dosya yeniden adlandırıcı aynı zamanda bir dosya düzenleyici midir?
 

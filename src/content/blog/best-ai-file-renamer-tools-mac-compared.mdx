@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Tool Comparisons"
 tldr: "Best overall: Zush. It combines the broadest documented mixed-file coverage in this Mac comparison with configurable naming, folder monitoring, preview, and full Rename History with batch revert. The other six entries are alternatives for narrower requirements, not our overall recommendation."
-reviewed: "2026-08-31"
+reviewed: "2026-09-02"
 featuredOrder: 1
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
@@ -213,7 +213,7 @@ This is the category this post focuses on. The following reviews cover every not
 - Ready-made Templates for screenshots, design assets, expenses, photo shoots, video, music, and meeting notes
 - 145+ Naming Blocks plus Custom AI Blocks, prompts, formatting, localization, tags, and metadata controls
 - Smart Finder tags and Spotlight-friendly metadata integration
-- Multiple AI providers to choose from: Gemini, Groq, OpenAI, Claude
+- Multiple AI providers to choose from: Gemini, OpenRouter, OpenAI, Claude
 - Support for 60+ output languages
 - Complete Rename History with original/new names, folder, timestamp, and batch revert
 - One-time pricing instead of monthly subscriptions
@@ -446,7 +446,7 @@ File Renamer AI is included because it has gained search visibility, not because
 | **Auto monitor** | Yes | Yes (Magic Folders) | No | Yes (Watch Folders) | Yes (Auto Flow) | Not confirmed | Not published |
 | **Rollback/undo** | Full history | Yes | Not listed | Yes (one-click Undo & Recovery) | Yes (full undo/redo per docs) | Not confirmed | No persistent history published |
 | **Image/design formats** | 41 images + 4 design formats (Sketch, Figma, AI, PSD) | 30+ formats incl. EPS/SVG/AI vectors; no RAW, PSD, Sketch or Figma | Feature examples + all-file statement | ~8; no RAW list | 10 images; no RAW or design files | Not documented | Common images; 10 MB per file |
-| **Document formats** | 37, including iWork | 30+ docs/spreadsheets/presentations/email | PDF/TXT examples; all-file statement | ~5+ with OCR | 20+ incl. JSON/XML/YAML/HTML/SQL/subtitles | Not documented | Public FAQ is image-focused |
+| **Document formats** | 40, including iWork | 30+ docs/spreadsheets/presentations/email | PDF/TXT examples; all-file statement | ~5+ with OCR | 20+ incl. JSON/XML/YAML/HTML/SQL/subtitles | Not documented | Public FAQ is image-focused |
 | **Audio / video** | 7 audio + 16 video | Not central | Not listed (CLI does video) | Listed in 30+ | 5 audio with transcription; video unsupported | Not documented | Not documented in the public FAQ |
 | **Naming control** | <BlogHighlight>Ready-made Templates + 145+ Naming Blocks + Custom AI Blocks + formatting + localization + metadata</BlogHighlight> | Templates | Custom prompts | Templates + prompts + Rules Engine | Format patterns + custom instructions | Limited | Custom prompt and editable suggestions |
 | **AI processing routes** | Zush Cloud AI; BYOK with 4 providers; LM Studio; Ollama | Fixed | Ollama/LM Studio/OpenAI/custom | 7 options + BYOK on Self-Managed | Built-in local + 5 providers | Fixed (cloud) | Fixed web service |
@@ -573,11 +573,11 @@ It depends on whether the tool offers rollback. Zush, Renamer.ai, NameQuick (one
 
 ### Do AI file renamers work with PDFs and documents?
 
-Several tools in this comparison support documents. Zush covers 37 document and PDF-related formats (PDF, DOCX, XLSX, PPTX, TXT, CSV, TSV, JSON, XML/YAML, EML, SRT, VTT, OpenDocument, and more). Renamer.ai markets 30+ file formats with OCR-heavy document support. NameQuick handles PDFs, Word, Excel, and Pages with built-in OCR. RenameClick's document list is longer than it used to be: PDF, DOC/DOCX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, logs, SQL, SRT/VTT, and ICS/VCF. AI Renamer's pricing page markets all-file support, but its public feature examples still emphasize PDF/TXT/text files. Riffo publishes no format list at all.
+Several tools in this comparison support documents. Zush covers 40 document and PDF-related formats (EPUB, FB2, PDF, DOCX, XLSX, PPTX, TXT, CSV, TSV, JSON, XML/YAML, EML, SRT, VTT, OpenDocument, and more). Renamer.ai markets 30+ file formats with OCR-heavy document support. NameQuick handles PDFs, Word, Excel, and Pages with built-in OCR. RenameClick's document list is longer than it used to be: PDF, DOC/DOCX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, logs, SQL, SRT/VTT, and ICS/VCF. AI Renamer's pricing page markets all-file support, but its public feature examples still emphasize PDF/TXT/text files. Riffo publishes no format list at all.
 
 ### How does BYOK (bring your own key) work?
 
-BYOK lets you connect your own API key from providers like OpenAI, Google (Gemini), Anthropic (Claude), or Groq. On FREE, BYOK shares the 50-rename allowance; PRO removes the Zush cap, but the final API cost depends on provider, model, file size, prompt length, and token usage. Zush and NameQuick both offer BYOK-style control in this comparison. Zush includes BYOK on every plan, while NameQuick's Self-Managed path is $69 one-time for one device and lists OpenAI, Claude, Gemini, OpenRouter, Ollama, LM Studio, and MLX. RenameClick supports multiple AI backends (Ollama, LM Studio, OpenAI, Gemini, Alibaba Cloud Qwen) but frames it as provider selection rather than a BYOK model. AI Renamer's $19 Local Mode lists OpenAI and custom model support alongside Ollama and LM Studio.
+BYOK lets you connect your own API key from providers like OpenAI, Google (Gemini), Anthropic (Claude), or OpenRouter. On FREE, BYOK shares the 50-rename allowance; PRO removes the Zush cap, but the final API cost depends on provider, model, file size, prompt length, and token usage. Zush and NameQuick both offer BYOK-style control in this comparison. Zush includes BYOK on every plan, while NameQuick's Self-Managed path is $69 one-time for one device and lists OpenAI, Claude, Gemini, OpenRouter, Ollama, LM Studio, and MLX. RenameClick supports multiple AI backends (Ollama, LM Studio, OpenAI, Gemini, Alibaba Cloud Qwen) but frames it as provider selection rather than a BYOK model. AI Renamer's $19 Local Mode lists OpenAI and custom model support alongside Ollama and LM Studio.
 
 ### Will AI file renaming break my existing file links?
 

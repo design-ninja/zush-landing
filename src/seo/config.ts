@@ -348,13 +348,13 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'AI PDF renamer, rename PDF files with AI, rename PDFs by content, batch rename PDF files, automatic PDF renamer, PDF file naming software, rename scanned PDFs, invoice PDF renamer, PDF renamer for Mac, PDF renamer for Windows',
   },
   '/rename-documents-with-ai': {
-    title: 'Rename Documents with AI · Office, iWork, Text · Zush',
+    title: 'Rename Documents & Ebooks with AI · EPUB, FB2 · Zush',
     description:
-      'AI document renamer for Mac and Windows. Zush reads Word, Excel, iWork, and text files, then turns meeting_notes_FINAL_v2 into a name you can search for.',
+      'AI document and ebook renamer for Mac and Windows. Zush reads EPUB, FB2, Word, Excel, iWork, and text files, then creates searchable names from their content.',
     robots: 'index, follow',
     ogType: 'website',
     keywords:
-      'AI document renamer, rename documents with AI, rename files by document content, batch rename documents, automatic document renamer, Office document renamer, iWork file renamer, document naming software, document renamer for Mac, document renamer for Windows',
+      'AI document renamer, AI ebook renamer, rename EPUB files, rename FB2 files, rename documents with AI, rename files by document content, batch rename documents, automatic document renamer, Office document renamer, iWork file renamer, document naming software, document renamer for Mac, document renamer for Windows',
   },
   '/rename-design-files-with-ai': {
     title: 'Rename Design Files with AI · Figma, Sketch, AI, PSD · Zush',
@@ -607,7 +607,7 @@ export const HOME_JSON_LD = {
         },
       ],
       featureList: [
-        `${SUPPORTED_FORMAT_COUNT} supported file formats across images, design files, documents, video, and audio`,
+        `${SUPPORTED_FORMAT_COUNT} supported file formats across images, design files, documents, EPUB/FB2 ebooks, video, and audio`,
         'Rename files with AI by content',
         'Batch rename mixed folders with preview and undo',
         'Folder monitoring for new supported files',

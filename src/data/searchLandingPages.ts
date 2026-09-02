@@ -269,7 +269,7 @@ const offlineRenameFaq = [
   {
     question: 'What is the difference between offline AI and BYOK?',
     answer:
-      'LM Studio and Ollama keep supported analysis on your device and can work without internet after setup. BYOK uses your cloud provider key from Gemini, Groq, OpenAI, or Claude.',
+      'LM Studio and Ollama keep supported analysis on your device and can work without internet after setup. BYOK uses your cloud provider key from Gemini, OpenRouter, OpenAI, or Claude.',
   },
   {
     question: 'Does offline AI renaming work for every file type?',
@@ -465,7 +465,7 @@ const downloadsFolderFaq = [
   {
     question: 'Which kinds of downloads work best?',
     answer:
-      'PDFs such as invoices, receipts, tickets, and statements; screenshots and images; Office documents and spreadsheets; audio and video. Zush supports 104 file extensions and leaves unsupported files untouched.',
+      `PDFs such as invoices, receipts, tickets, and statements; EPUB and FB2 ebooks; screenshots and images; Office documents and spreadsheets; audio and video. Zush supports ${SUPPORTED_FORMAT_COUNT} file extensions and leaves unsupported files untouched.`,
   },
   {
     question: 'Can the Downloads folder use its own naming template?',
@@ -695,7 +695,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
         featureList: [
           'Offline AI file renaming with LM Studio or Ollama',
           'Three on-device modes that work offline after setup',
-          'BYOK support for Gemini, Groq, OpenAI, and Claude',
+          'BYOK support for Gemini, OpenRouter, OpenAI, and Claude',
           'Preview every filename before applying changes',
           'Folder monitoring for automatic rename workflows',
           'Custom templates and 145+ Naming Blocks',

@@ -178,10 +178,10 @@ export const BLOG_PUBLIC_TAGS: Record<BlogPublicTagSlug, BlogPublicTagMeta> = {
     slug: 'byok',
     label: 'BYOK',
     description:
-      'Bring-your-own-key workflows for AI file renaming with OpenAI, Gemini, Groq, and Claude',
+      'Bring-your-own-key workflows for AI file renaming with OpenAI, Gemini, OpenRouter, and Claude',
     seoTitle: 'BYOK AI File Renaming Guides — Zush Blog',
     seoDescription:
-      'Bring-your-own-key guides for AI file renaming with OpenAI, Gemini, Groq, Claude, and similar providers.',
+      'Bring-your-own-key guides for AI file renaming with OpenAI, Gemini, OpenRouter, Claude, and similar providers.',
   },
   ollama: {
     slug: 'ollama',

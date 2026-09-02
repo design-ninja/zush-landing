@@ -5,7 +5,7 @@ const faqItems = [
   {
     question: 'What types of non-PDF documents can Zush rename?',
     answer:
-      'Zush supports 37 document and PDF-related formats: Word documents, Excel spreadsheets, PowerPoint presentations, Pages, Numbers, Keynote, text, Markdown, CSV/TSV, JSON, XML/YAML, subtitles (SRT/VTT), RTF, OpenDocument files, and EML email files. The AI reads the content of each file to generate an appropriate name.',
+      'Zush supports 40 document, PDF, and ebook formats: EPUB and FB2 ebooks, Word documents, Excel spreadsheets, PowerPoint presentations, Pages, Numbers, Keynote, text, Markdown, CSV/TSV, JSON, XML/YAML, subtitles (SRT/VTT), RTF, OpenDocument files, and EML email files. The AI reads the content of each file to generate an appropriate name.',
   },
   {
     question: 'How does Zush understand what a document is about?',
@@ -25,7 +25,7 @@ const faqItems = [
   {
     question: 'Can I use a separate workflow for PDFs and scans?',
     answer:
-      'Yes. Zush has a dedicated PDF workflow for invoices, contracts, and scans at the PDF page, while this page focuses on DOCX, XLSX, PPTX, TXT, CSV, subtitle files, email exports, and other document-heavy files.',
+      'Yes. Zush has a dedicated PDF workflow for invoices, contracts, and scans at the PDF page, while this page focuses on EPUB, FB2, DOCX, XLSX, PPTX, TXT, CSV, subtitle files, email exports, and other document-heavy files.',
   },
 ];
 
@@ -37,7 +37,7 @@ const jsonLd = buildFeaturePageJsonLd({
     steps: [
       {
         name: 'Add your documents',
-        text: 'Drag and drop files or select a folder containing documents. Zush supports Word, Excel, PowerPoint, Pages, Numbers, Keynote, text files, subtitle files, email exports, OpenDocument files, and more.',
+        text: 'Drag and drop files or select a folder containing documents. Zush supports EPUB and FB2 ebooks, Word, Excel, PowerPoint, Pages, Numbers, Keynote, text files, subtitle files, email exports, OpenDocument files, and more.',
       },
       {
         name: 'AI extracts and analyzes text',
@@ -53,9 +53,9 @@ const jsonLd = buildFeaturePageJsonLd({
   page: {
     pagePath: '/rename-documents-with-ai',
     description:
-      'AI document renamer that reads DOCX, XLSX, PPTX, Pages, Numbers, Keynote, TXT, CSV, JSON, subtitles, OpenDocument, and email files to generate searchable filenames automatically.',
+      'AI document renamer that reads EPUB, FB2, DOCX, XLSX, PPTX, Pages, Numbers, Keynote, TXT, CSV, JSON, subtitles, OpenDocument, and email files to generate searchable filenames automatically.',
     featureList: [
-      'Rename 37 document and PDF-related formats including DOCX, XLSX, PPTX, Pages, Numbers, Keynote, TXT, CSV, JSON, SRT, VTT, and EML',
+      'Rename 40 document, PDF, and ebook formats including EPUB, FB2, DOCX, XLSX, PPTX, Pages, Numbers, Keynote, TXT, CSV, JSON, SRT, VTT, and EML',
       'Extract document text, spreadsheet headers, and slide titles',
       'Batch rename document-heavy folders',
       'Custom naming patterns for client, date, and category',
@@ -72,26 +72,26 @@ const RenameDocumentsWithAI = () => (
     h1Accent="Rename Documents"
     category="document"
     definitionTitle="What Is AI Document Renaming?"
-    definitionText="Rename documents with AI using Zush to read reports, proposals, spreadsheets, iWork files, slide decks, and email exports, then generate filenames that match the document content."
+    definitionText="Rename documents and ebooks with AI using Zush to read EPUB and FB2 books, reports, proposals, spreadsheets, iWork files, slide decks, and email exports, then generate filenames that match their content."
     showcaseSlides={[
       {
         files: [
+          { before: 'book_download.fb2.zip', after: 'The Master and Margarita – Mikhail Bulgakov.fb2.zip', type: 'doc', label: 'FB2.ZIP' },
           { before: 'Document1.docx', after: 'Project Proposal Acme.docx', type: 'doc' },
           { before: 'Untitled spreadsheet.xlsx', after: 'Employee Payroll Feb.xlsx', type: 'sheet' },
           { before: 'presentation_final_v3.key', after: 'Marketing Strategy Q2.key', type: 'slides', label: 'KEY' },
           { before: 'note.txt', after: 'Meeting Notes Roadmap.txt', type: 'doc' },
           { before: 'exports.csv', after: 'March Sales Pipeline.csv', type: 'sheet' },
-          { before: 'inbox-export.eml', after: 'Vendor Renewal Thread.eml', type: 'doc' },
         ],
       },
       {
         files: [
+          { before: 'unknown_title.epub', after: 'Pride and Prejudice – Jane Austen.epub', type: 'doc', label: 'EPUB' },
           { before: 'meeting_notes.docx', after: 'Q1 Board Meeting Notes.docx', type: 'doc' },
           { before: 'budget_v2.xlsx', after: 'Q2 Marketing Budget.xlsx', type: 'sheet' },
           { before: 'deck_v12_final.key', after: 'Series A Pitch Deck.key', type: 'slides', label: 'KEY' },
           { before: 'readme.md', after: 'API Integration Guide.md', type: 'doc' },
           { before: 'data_export.csv', after: 'Customer Signup Log.csv', type: 'sheet' },
-          { before: 'contract_clean.docx', after: 'Vendor NDA Final.docx', type: 'doc' },
         ],
       },
       {

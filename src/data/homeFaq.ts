@@ -46,7 +46,7 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'Which file formats are supported?',
     answer:
-      `Zush supports ${SUPPORTED_FORMAT_COUNT} file extensions across images, RAW photos, design files, PDFs, documents, video, and audio — including HEIC, PNG, PDF, DOCX, XLSX, KEY, FIG, PSD, MP4, MOV, MP3, and FLAC.`,
+      `Zush supports ${SUPPORTED_FORMAT_COUNT} file extensions across images, RAW photos, design files, PDFs, ebooks, documents, video, and audio — including HEIC, PNG, PDF, EPUB, FB2, DOCX, XLSX, KEY, FIG, PSD, MP4, MOV, MP3, and FLAC.`,
   },
   {
     question: 'Can Zush rename files offline?',

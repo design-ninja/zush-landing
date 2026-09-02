@@ -11,7 +11,7 @@ tags:
   - "Rinomina file con IA"
   - "Confronti tra strumenti"
 tldr: "Il migliore in assoluto: Zush. Ha il flusso di lavoro di denominazione AI più configurabile in questo confronto: \"Templates\" già pronto, oltre 145 \"Naming Blocks\", \"Custom AI Blocks\", controlli di formattazione e localizzazione, oltre a \"Rename History\" che può ripristinare un batch applicato. Gli altri prodotti sono alternative più limitate, non la nostra raccomandazione generale."
-reviewed: "2026-08-31"
+reviewed: "2026-09-02"
 featuredOrder: 1
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -60,7 +60,7 @@ Le ricerche per "rinominatore file AI" spesso mescolano lavori diversi. La disti
 |Denominazione AI configurabile|Flussi di lavoro già pronti, campi nome file strutturati, estrazione AI personalizzata, formattazione, lingua, metadati|"Zush" presenta la combinazione documentata più approfondita in questo confronto: "Templates", 145+ "Naming Blocks", "Custom AI Blocks", formattazione, localizzazione e metadati|
 |Rinominazione batch sicura|Anteprima prima dell'applicazione, più un record persistente di nomi originali e nuovi e un percorso di ripristino batch|"Zush" registra il nome originale, il nuovo nome, la cartella e il timestamp in "Rename History"; diversi concorrenti documentano anche l'annullamento|
 |Rinominatore di file AI offline|Supporto del modello locale, nessun caricamento nel cloud per i file supportati, anteprima prima dell'applicazione|"Zush" è la nostra scelta generale; le alternative richiedono compromessi più ristretti tra fornitore, formato o flusso di lavoro|
-|Rinominatore file AI "BYOK".|Porta la tua chiave Gemini, OpenAI, Claude o Groq|"Zush"; considerare un'altra voce solo se OpenRouter, vLLM o un altro provider non supportato è obbligatorio|
+|Rinominatore file AI "BYOK".|Porta la tua chiave Gemini, OpenAI, Claude o OpenRouter|"Zush"; considerare un'altra voce solo se vLLM o un altro provider non supportato è obbligatorio|
 |Rinominatore e organizzatore di file AI|Monitoraggio delle cartelle, modelli, cronologia delle ridenominazioni, rollback|"Zush"; I prodotti routing-first sono eccezioni quando spostare i file è più importante che nominarli|
 |Rinominatore di file di archiviazione cloud|Google Drive, Dropbox, OneDrive, regole del team, flussi di lavoro dei documenti|"Zush" per file su Mac o "Windows"; Rinominato.to solo per flussi di lavoro con archiviazione connessa o solo API|
 
@@ -114,7 +114,7 @@ Prima di confrontare gli strumenti, sappi cosa conta realmente per l'uso quotidi
 
 ![Risultati di ridenominazione AI "Zush" che mostrano file con nomi descrittivi prima e dopo e segni di spunta verdi](/images/showcase/macos/batch-rename-light.webp)
 
-"[Rinominatore di file Zush per Mac e Windows](/)" è la scelta per gli utenti che lavorano con un mix di tipi di file e desiderano un flusso di lavoro desktop invece di strumenti di rinomina separati per immagini, file di progettazione, documenti, video e audio. Supporta oltre 100 formati: 41 formati di immagine (inclusi HEIC, AVIF, SVG e RAW), 4 formati di progettazione (Sketch, Figma .fig, Adobe Illustrator .ai e PSD), 37 formati di documenti e PDF (PDF, Office, iWork, OpenDocument, file di testo, dati, e-mail e sottotitoli), 16 formati video (inclusi MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV e VOB) e 7 formati audio (inclusi MP3, M4A, WAV, FLAC, OGG, WebM e MPGA). Questa ampiezza è importante perché i flussi di lavoro reali mescolano foto del telefono, file RAW della fotocamera, risorse di progettazione, PDF scansionati, documenti di Office, sottotitoli, registrazioni dello schermo e file audio nelle stesse cartelle. Il video è la categoria che la maggior parte di questi strumenti salta completamente; "[come rinominare i file video con AI](/blog/rename-video-files-with-ai)" spiega cosa legge effettivamente un rinominatore da una clip.
+"[Rinominatore di file Zush per Mac e Windows](/)" è la scelta per gli utenti che lavorano con un mix di tipi di file e desiderano un flusso di lavoro desktop invece di strumenti di rinomina separati per immagini, file di progettazione, documenti, video e audio. Supporta oltre 100 formati: 41 formati di immagine (inclusi HEIC, AVIF, SVG e RAW), 4 formati di progettazione (Sketch, Figma .fig, Adobe Illustrator .ai e PSD), 40 formati di documenti e PDF (EPUB, FB2, PDF, Office, iWork, OpenDocument, file di testo, dati, e-mail e sottotitoli), 16 formati video (inclusi MP4, MOV, M4V, MPEG, 3GP, TS, MTS, M2TS, DV e VOB) e 7 formati audio (inclusi MP3, M4A, WAV, FLAC, OGG, WebM e MPGA). Questa ampiezza è importante perché i flussi di lavoro reali mescolano foto del telefono, file RAW della fotocamera, risorse di progettazione, PDF scansionati, documenti di Office, sottotitoli, registrazioni dello schermo e file audio nelle stesse cartelle. Il video è la categoria che la maggior parte di questi strumenti salta completamente; "[come rinominare i file video con AI](/blog/rename-video-files-with-ai)" spiega cosa legge effettivamente un rinominatore da una clip.
 
 Ciò che distingue "Zush" dal resto di questo elenco:
 
@@ -132,7 +132,7 @@ Ciò che distingue "Zush" dal resto di questo elenco:
 - Monitoraggio delle cartelle per la ridenominazione automatica di nuovi file
 - Modelli riutilizzabili e oltre 145 Naming Blocks per strutture di nomi di file ripetibili
 - Nomi facili da cercare, metadati e istruzioni personalizzate
-- Diversi fornitori di intelligenza artificiale: Gemini, Groq, OpenAI, Claude
+- Diversi fornitori di intelligenza artificiale: Gemini, OpenRouter, OpenAI, Claude
 - Elaborazione locale Ollama su Mac e Windows
 - Supporto per oltre 60 lingue
 - Rinominare la cronologia con funzionalità di ripristino completo
@@ -155,7 +155,7 @@ Ciò che distingue "Zush" dal resto di questo elenco:
 
 "FilesDesk" è incluso perché è destinato a un flusso di lavoro simile Mac + "Windows" con intelligenza artificiale gestita, modalità "BYOK"/locale, cartelle esaminate, modelli, elaborazione batch e cronologia di elaborazione. Il suo limite principale è strutturale: i suggerimenti gestiti sono misurati, mentre il percorso di durata richiede la propria chiave API o modello locale. Per i compromessi diretti, vedere "["Zush" rispetto a "FilesDesk".](/blog/zush-vs-filesdesk)".
 
-**Alternativa ristretta solo quando:** OpenRouter o vLLM sono obbligatori e accetti l'utilizzo gestito a consumo o una configurazione autogestita. **Perché "Zush" si colloca complessivamente più in alto:** "FilesDesk" non pubblica una matrice RAW/design/`iWork" granulare equivalente e non raggruppa l'intelligenza artificiale gestita nel suo percorso di vita.
+**Alternativa ristretta solo quando:** vLLM sono obbligatori e accetti l'utilizzo gestito a consumo o una configurazione autogestita. **Perché "Zush" si colloca complessivamente più in alto:** "FilesDesk" non pubblica una matrice RAW/design/`iWork" granulare equivalente e non raggruppa l'intelligenza artificiale gestita nel suo percorso di vita.
 
 ### 3. RenameClick
 
@@ -231,14 +231,14 @@ Rinominato.to è l'opzione cloud/team. Analizza i documenti e li rinomina all'in
 |---|---|---|---|---|---|---|---|---|---|
 |Piattaforma|Mac e "Windows".|Mac e "Windows".|Mac e "Windows" (nativo per desktop)|Desktop (Mac/Win)|Desktop (Win/Mac) + Web|Mac & Windows; parità non completamente documentata|Desktop locale|"macOS" + Demo web|Integrazioni web + cloud|
 |Formati di immagine/disegno|41 immagini + 4 formati di design|Foto/immagini; nessuna matrice dettagliata trovata|10 formati di immagine; nessun elenco RAW/design|Esempi di funzionalità + istruzione per tutti i file|Oltre 30 formati inclusi vettori EPS/SVG/AI; niente RAW|Oltre 30 formati|Non dettagliato pubblicamente|Non documentato|Immagini/documenti scansionati|
-|Formati dei documenti|37, compreso "iWork".|Foto, PDF, fatture, ricevute, contratti, screenshot|20+ compresi PDF/DOCX/JSON/XML/YAML/HTML/SQL/sottotitoli|Esempi PDF/TXT; dichiarazione di tutti i file|Oltre 30 documenti/immagini/vettoriali/e-mail|PDF, Pagine, Office, OCR|Non dettagliato pubblicamente|Non documentato|PDF/Word/Excel/PowerPoint|
+|Formati dei documenti|40, compreso "iWork".|Foto, PDF, fatture, ricevute, contratti, screenshot|20+ compresi PDF/DOCX/JSON/XML/YAML/HTML/SQL/sottotitoli|Esempi PDF/TXT; dichiarazione di tutti i file|Oltre 30 documenti/immagini/vettoriali/e-mail|PDF, Pagine, Office, OCR|Non dettagliato pubblicamente|Non documentato|PDF/Word/Excel/PowerPoint|
 |Audio/video|7 audio + 16 video|Formati audio e video comuni elencati|5 audio con trascrizione; video non supportato|Non elencato (la CLI separata esegue il video)|Non centrale|Solo categoria ampia|Non confermato|Non documentato|NO|
 |Misurato?|No su PRO a pagamento|Crediti gestiti sì; A vita n|Livello gratuito sì; Professionista n|Nuvola sì; $ 19 N. locale|Sì, a tutti i livelli|Gestito sì; Autogestito n|NO|Non dichiarato|Sì, crediti|
 |Rinominare batch|SÌ|SÌ|SÌ|SÌ|SÌ|SÌ|SÌ|SÌ|SÌ|
 |Monitoraggio delle cartelle|SÌ|Sì (controlla cartelle)|Sì (flusso automatico)|Nessuna dichiarazione pubblica|Sì (cartelle magiche)|Sì (controlla cartelle)|Non confermato|Non confermato|Sì (cartelle cloud controllate)|
 |Modelli personalizzati| Templates + 145+ Naming Blocks | Templates |Formati + istruzioni|Stili di richieste/casi personalizzati| Templates |Preimpostazioni/modelli/prompt|Non dettagliato pubblicamente|Limitato|Regole/richieste del team salvate|
 |Annulla/ripristina|SÌ|Sì, tramite la cronologia di elaborazione|Sì, annullamento/ripetizione completa per documenti|Nessuna dichiarazione pubblica|SÌ|Sì, Annulla e ripristina con un clic|Non confermato|Non confermato|Flusso di lavoro di revisione/confidenza|
-|Più fornitori di intelligenza artificiale|Gemelli/Groq/OpenAI/Claude + Ollama|Claude/Gemini/OpenAI/OpenRouter/Ollama/vLLM|Locale integrato/Ollama/LM Studio/OpenAI/Gemini/Qwen|"Ollama"/LM Studio/OpenAI/personalizzato|Fisso|OpenAI/OpenRouter/Claude/Gemini/Ollama/LM Studio/MLX|Locale fisso|Nuvola fissa|Nuvola fissa|
+|Più fornitori di intelligenza artificiale|Gemelli/OpenRouter/OpenAI/Claude + Ollama|Claude/Gemini/OpenAI/OpenRouter/Ollama/vLLM|Locale integrato/Ollama/LM Studio/OpenAI/Gemini/Qwen|"Ollama"/LM Studio/OpenAI/personalizzato|Fisso|OpenAI/OpenRouter/Claude/Gemini/Ollama/LM Studio/MLX|Locale fisso|Nuvola fissa|Nuvola fissa|
 |Livello gratuito|50 per iniziare|15 crediti|Analisi illimitata + 30 crediti applicati/mese|10 crediti all'iscrizione|25/mese|Gestito: 250/14 giorni; Autogestito: 50 rinominazioni di prova|Gratuito|Home page a posizionamento libero|50 documenti per iniziare|
 |"BYOK"/opzione locale|SÌ|Piano a vita|Sì/selezione del fornitore|Sì/locale/personalizzato|Nessun BYOK pubblico|Autogestito|Locale|Nessun "BYOK" pubblico|NO|
 
@@ -286,13 +286,13 @@ Wisfile e "Riffo" sono opzioni a posizionamento libero, ma compromettono la prof
 
 **Se desideri il massimo controllo su come l'intelligenza artificiale costruisce ogni nome file:** <BlogHighlight>Zush</BlogHighlight>. Inizia da un modello già pronto, combina oltre 145 "Naming Blocks" con "Custom AI Blocks", imposta ordine, maiuscole e minuscole, separatori, formato della data, lingua, tag e metadati, visualizza l'anteprima del risultato, quindi mantieni reversibile il batch applicato in "Rename History".
 
-**Se desideri la più ampia copertura di file misti pubblicata su Mac o "Windows":** "<BlogHighlight>"Zush" una tantum a $ 48</BlogHighlight>". Supporto RAW completo (CR2, NEF, ARW, DNG), file di progettazione, file "iWork", audio, 37 formati di documenti e PDF, 16 formati video, monitoraggio delle cartelle, rollback, "Templates", "Naming Blocks" e rinominazioni PRO illimitate.
+**Se desideri la più ampia copertura di file misti pubblicata su Mac o "Windows":** "<BlogHighlight>"Zush" una tantum a $ 48</BlogHighlight>". Supporto RAW completo (CR2, NEF, ARW, DNG), file di progettazione, file "iWork", audio, 40 formati di documenti e PDF, 16 formati video, monitoraggio delle cartelle, rollback, "Templates", "Naming Blocks" e rinominazioni PRO illimitate.
 
 **Se un flusso di lavoro "Finder" specifico per Mac è il requisito decisivo:** verifica l'attuale build del Mac di "NameQuick" e confronta il suo percorso autogestito da $ 69 con il piano una tantum da $ 48 di "Zush".
 
 **Se la privacy è la tua massima priorità:** l'elaborazione locale è disponibile per diversi prodotti in questo confronto, incluso "Zush". Consideralo come un requisito di base e confronta ciò che rimane: controllo dei nomi, formati supportati, anteprima, ripristino, automazione e prezzi.
 
-**Se il controllo del fornitore è più importante dei crediti in bundle:** "Zush" "BYOK" o "NameQuick" autogestito. Inizia con "[Impostazione "BYOK".](/docs/byok)" se desideri portare Gemini, Groq, OpenAI o Claude nel flusso di lavoro "Zush".
+**Se il controllo del fornitore è più importante dei crediti in bundle:** "Zush" "BYOK" o "NameQuick" autogestito. Inizia con "[Impostazione "BYOK".](/docs/byok)" se desideri portare Gemini, OpenRouter, OpenAI o Claude nel flusso di lavoro "Zush".
 
 **Se hai bisogno dell'automazione dei documenti multipiattaforma:** Renamer.ai (desktop + web con Magic Folders) o Renamed.to (web + integrazioni Google Drive/Dropbox/OneDrive). Rinominato.to è l'opzione migliore per la squadra con punteggio sicuro e regole salvate.
 
@@ -303,7 +303,7 @@ Wisfile e "Riffo" sono opzioni a posizionamento libero, ma compromettono la prof
 
 Ogni strumento in questo elenco ha una sorta di opzione gratuita. La vera domanda è se il livello gratuito è sufficiente per il tuo flusso di lavoro.
 
-"Zush" FREE offre 50 rinominazioni condivise tra Cloud AI, "BYOK" e Offline AI. La PRO a pagamento rimuove tale limite, mentre l'utilizzo del provider "BYOK" rimane fatturato separatamente da Gemini, Groq, OpenAI o Claude.
+"Zush" FREE offre 50 rinominazioni condivise tra Cloud AI, "BYOK" e Offline AI. La PRO a pagamento rimuove tale limite, mentre l'utilizzo del provider "BYOK" rimane fatturato separatamente da Gemini, OpenRouter, OpenAI o Claude.
 
 "AI Renamer" è completamente gratuito ma richiede hardware e configurazione locali. Gli strumenti del browser offrono caricamenti gratuiti limitati.
 
@@ -323,7 +323,7 @@ Per le cartelle miste Mac e "Windows", "Zush" è la raccomandazione più forte s
 
 ### Cosa significa "BYOK" per la ridenominazione dei file?
 
-"BYOK" significa portare la propria chiave. Invece di utilizzare il provider AI gestito dell'app, colleghi il tuo account Gemini, Groq, OpenAI, Claude, OpenRouter, "Ollama" o un provider simile a seconda dello strumento. "BYOK" è utile quando desideri il controllo del provider, una fatturazione API prevedibile o una ridenominazione di volumi più elevati.
+"BYOK" significa portare la propria chiave. Invece di utilizzare il provider AI gestito dell'app, colleghi il tuo account Gemini, OpenRouter, OpenAI, Claude, "Ollama" o un provider simile a seconda dello strumento. "BYOK" è utile quando desideri il controllo del provider, una fatturazione API prevedibile o una ridenominazione di volumi più elevati.
 
 ### Un rinominatore di file AI è anche un organizzatore di file?
 

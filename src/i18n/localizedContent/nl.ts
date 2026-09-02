@@ -42,7 +42,7 @@ export const home: HomeCopy = {
   "featureCards": {
     "aiAnalysis": {
       "title": "AI-analyse",
-      "description": "Analyseer en hernoem meer dan 100 bestandsformaten in één batch, van afbeeldingen en pdf’s tot audio-, video- en Office-bestanden."
+      "description": "Analyseer en hernoem meer dan 100 bestandsformaten in één batch, van afbeeldingen, EPUB- en FB2-e-books en pdf’s tot audio-, video- en Office-bestanden."
     },
     "foldersMonitoring": {
       "title": "Mapbewaking",
@@ -256,7 +256,7 @@ export const home: HomeCopy = {
     "speedDescription": "Opruimen werkt alleen als het je werk niet stoort. Sleep bestanden, controleer, pas toe en ga door.",
     "formatsEyebrow": "100+ ondersteunde formaten",
     "formatsTitle": "Screenshots, PDFs, foto’s, audio, documenten en video’s",
-    "formatsDescription": "Ondersteunt AVIF, RAW, Office-bestanden, PDFs, ondertitels, MP3, M4A, WAV, FLAC en gangbare videoformaten.",
+    "formatsDescription": "Ondersteunt AVIF, RAW, Office-bestanden, EPUB- en FB2-e-books, PDFs, ondertitels, MP3, M4A, WAV, FLAC en gangbare videoformaten.",
     "controlEyebrow": "Naming Blocks",
     "controlTitle": "Gestructureerde bestandsnamen voor professioneel werk",
     "controlDescription": "Professionals stellen hun eigen bestandsnaampatronen samen uit blokken die bij hun werk passen. AI leest elk bestand en vult die blokken met de gekozen details: klant, datum, factuurnummer, locatie of project.",
@@ -312,7 +312,7 @@ export const home: HomeCopy = {
       },
       "documents": {
         "title": "Documenten hernoemen",
-        "description": "Word-, Excel-, PowerPoint- en iWork-bestanden benoemd naar onderwerp."
+        "description": "EPUB- en FB2-e-books en Word-, Excel-, PowerPoint- en iWork-bestanden benoemd naar onderwerp."
       },
       "design": {
         "title": "Designbestanden hernoemen",
@@ -347,7 +347,7 @@ export const home: HomeCopy = {
     },
     {
       "question": "Welke bestandsformaten worden ondersteund?",
-      "answer": "Zush ondersteunt afbeeldingen, audio, video’s, screenshots, PDFs, documenten, spreadsheets, presentaties, tekst, CSV, SVG en andere gangbare formaten."
+      "answer": "Zush ondersteunt afbeeldingen, audio, video’s, screenshots, EPUB- en FB2-e-books, PDFs, documenten, spreadsheets, presentaties, tekst, CSV, SVG en andere gangbare formaten."
     },
     {
       "question": "Hoe werkt Zush AI Rename?",

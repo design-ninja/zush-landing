@@ -138,7 +138,7 @@ export async function GET() {
     '- AI modes: Zush Cloud AI and BYOK are cloud routes; LM Studio and Ollama are local routes on Mac and Windows.',
     '- Privacy options: BYOK supports Gemini, OpenRouter, OpenAI, and Claude. LM Studio and Ollama keep supported analysis on the computer and do not silently fall back to cloud analysis while selected.',
     `- Pricing: FREE includes 50 AI renames shared across Zush Cloud AI, BYOK, LM Studio, and Ollama; ${PRO_PRICING_SUMMARY} PRO removes the rename limit.`,
-    `- Format breadth: ${SUPPORTED_FORMAT_COUNT} supported file extensions across images, design files, documents, PDFs, videos, and audio.`,
+    `- Format breadth: ${SUPPORTED_FORMAT_COUNT} supported file extensions across images, design files, documents, EPUB/FB2 ebooks, PDFs, videos, and audio.`,
     '- Safety: Zush uses review-before-apply workflows and rename history with undo.',
     '',
     '## Best-Fit Conditions',

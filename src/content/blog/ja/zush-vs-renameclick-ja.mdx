@@ -11,7 +11,7 @@ tags:
   - "AI ファイルの名前変更"
   - "ツールの比較"
 tldr: "この比較では、最も構成可能な名前付けワークフローとして「Zush」を選択します。既製の「Templates」、145 個以上の「Naming Blocks」、「Custom AI Blocks」、書式設定、ローカリゼーション、メタデータ、バッチ復帰付きの「Rename History」です。 「RenameClick」の主な制限は、文書化された範囲が狭いことです。つまり、RAW、デザイン、「iWork」、またはビデオはサポートされていません。ローカル AI とアンドゥは両方に存在しますが、差別化要因ではありません。"
-reviewed: "2026-08-31"
+reviewed: "2026-09-02"
 featuredOrder: 5
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -42,10 +42,10 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 |プラットフォーム|マック+「Windows」|マック+「Windows」|
 |処理オプション|クラウド AI、「BYOK」、または「Ollama」経由のオフライン AI|デフォルトでローカル AI が組み込まれています|
 |ローカルモデルがバンドルされています|いいえ、「Ollama」セットアップを使用してください|はい、ダウンロード後の Qwen3-VL ローカル モデル|
-|AIプロバイダー|Gemini、Groq、OpenAI、Claude、オフラインの「Ollama」|組み込みローカル、OpenAI、Gemini、Alibaba Cloud Qwen、LM Studio、Ollama|
+|AIプロバイダー|Gemini、OpenRouter、OpenAI、Claude、オフラインの「Ollama」|組み込みローカル、OpenAI、Gemini、Alibaba Cloud Qwen、LM Studio、Ollama|
 |画像・デザインフォーマット|41 の画像フォーマット + 4 つのデザインフォーマット（RAW、HEIC、AVIF、Sketch、Figma、AI、PSD を含む）|JPEG、PNG、GIF、WebP、AVIF、BMP、SVG、HEIC、HEIF、TIFF。デザインファイルがありません|
 |RAWのサポート| <BlogHighlight>はい (CR2、CR3、NEF、ARW、DNG、ORF、RAF、RW2、PEF、SRW、SR2)</BlogHighlight> |非公開|
-|文書形式|「iWork」を含む 37 のドキュメント/PDF フォーマット|PDF、DOC/DOCX、TXT、MD、CSV、RTF、ODT、JSON、XML、YAML、HTML、ログ、SQL、SRT/VTT、ICS/VCF|
+|文書形式|「iWork」を含む 40 のドキュメント/PDF フォーマット|PDF、DOC/DOCX、TXT、MD、CSV、RTF、ODT、JSON、XML、YAML、HTML、ログ、SQL、SRT/VTT、ICS/VCF|
 |ビデオフォーマット|16 の一般的なフォーマット|ドキュメントごとにサポートされていません|
 |オーディオフォーマット|MP3、M4A、WAV、FLAC、OGG、WebM、MPGA|MP3、WAV、FLAC、M4A、AAC (ローカル音声文字起こし付き)|
 |フォルダー監視|はい|はい、自動フロー|
@@ -69,7 +69,7 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 ## Zush
 
-<BlogToolMeta platform="Mac (macOS 15+) および Windows 10/11" website="https://zushapp.com/" label="zushapp.com"><Fragment slot="pricing">無料枠 (50 回の名前変更)、Pro<BlogHighlight>月額 $10 または 1 回限り $48</BlogHighlight>無制限の PRO 名前変更の場合、「BYOK」は API コストでオプション (Gemini/Groq/OpenAI/Claude)、「Ollama」経由のオフライン AI</Fragment></BlogToolMeta>
+<BlogToolMeta platform="Mac (macOS 15+) および Windows 10/11" website="https://zushapp.com/" label="zushapp.com"><Fragment slot="pricing">無料枠 (50 回の名前変更)、Pro<BlogHighlight>月額 $10 または 1 回限り $48</BlogHighlight>無制限の PRO 名前変更の場合、「BYOK」は API コストでオプション (Gemini/OpenRouter/OpenAI/Claude)、「Ollama」経由のオフライン AI</Fragment></BlogToolMeta>
 
 ![「Zush」AI による名前変更の結果には、説明的な前後の名前と緑色のチェックマークが付いたファイルが表示されます](/images/showcase/macos/batch-rename-light.webp)
 
@@ -121,7 +121,7 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 どちらの製品もローカル モデルを実行できるため、オフライン処理に特有の利点はありません。 「RenameClick」には、数 GB のダウンロード後のモデルがバンドルされます。 「Zush」は「Ollama」に接続します。より重要な違いは、ワークフローの残りの部分です。「Zush」は既製の「Templates」、145 以上の「Naming Blocks」、「Custom AI Blocks」、より豊富なローカリゼーションとメタデータのコントロール、および永続的な「Rename History」をドキュメント化します。
 
-クラウドプロバイダーの選択と大容量の「BYOK」を重視する場合は、「Zush」が最適です。 「Zush」は、キーをローカルに保存して「BYOK」を通じて Gemini、Groq、OpenAI、および Claude をサポートし、ローカル処理が優先される場合は「Ollama」を通じてオフライン AI をサポートします。 Groq と Claude は注目すべき「Zush」側のオプションです。組み込みの Qwen3-VL、Alibaba Cloud Qwen、および LM Studio は「RenameClick」側のオプションです。
+クラウドプロバイダーの選択と大容量の「BYOK」を重視する場合は、「Zush」が最適です。 「Zush」は、キーをローカルに保存して「BYOK」を通じて Gemini、OpenRouter、OpenAI、および Claude をサポートし、ローカル処理が優先される場合は「Ollama」を通じてオフライン AI をサポートします。 OpenRouter と Claude は注目すべき「Zush」側のオプションです。組み込みの Qwen3-VL、Alibaba Cloud Qwen、および LM Studio は「RenameClick」側のオプションです。
 
 実際のトレードオフは単純です。名前の深さ、リカバリの詳細、および混合ファイルの幅に関して「Zush」を選択します。 AI 検索またはフォルダーの移動が、欠落している RAW、デザイン、「iWork」、およびビデオの範囲を上回る場合にのみ、「RenameClick」を検討してください。
 
@@ -149,7 +149,7 @@ Zush は、意味のあるファイル名を生成し、Finder タグを追加�
 
 - 特に RAW 写真、デザイン ファイル、ビデオ、「iWork」、字幕など、幅広いフォーマットをカバーする必要があります
 - 既成の Templates、145+ Naming Blocks、Custom AI Blocks、フォーマット、ローカリゼーション、メタデータ、および完全な Rename History が必要な場合
-- すべてのプランで利用可能な Gemini、Groq、OpenAI、または Claude を備えた「BYOK」が必要です
+- すべてのプランで利用可能な Gemini、OpenRouter、OpenAI、または Claude を備えた「BYOK」が必要です
 - 60 以上の出力言語が必要です
 - 反復可能なファイル名構造用のテンプレートと 145 個以上の Naming Blocks が必要です
 - ローカル モデルのハードウェアを最初に考慮せずに、Mac と「Windows」全体で 1 つの名前変更ワークフローが必要な場合

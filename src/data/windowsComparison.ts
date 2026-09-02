@@ -21,7 +21,7 @@ export const WINDOWS_COMPARISON: ComparisonTableProps = {
     },
     {
       tool: 'FilesDesk',
-      bestFor: 'Narrow exception when OpenRouter or vLLM support is mandatory',
+      bestFor: 'Narrow exception when vLLM support is mandatory',
       gap: 'Public docs do not publish a detailed RAW, design, audio, or video support matrix.',
     },
     {

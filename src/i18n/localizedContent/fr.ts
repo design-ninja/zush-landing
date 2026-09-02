@@ -42,7 +42,7 @@ export const home: HomeCopy = {
   "featureCards": {
     "aiAnalysis": {
       "title": "Analyse IA",
-      "description": "Analysez et renommez plus de 100 formats de fichiers en une seule fois, des images et PDF aux fichiers audio, vidéo et Office."
+      "description": "Analysez et renommez plus de 100 formats de fichiers en une seule fois, des images, ebooks EPUB et FB2 et PDF aux fichiers audio, vidéo et Office."
     },
     "foldersMonitoring": {
       "title": "Surveillance des dossiers",
@@ -256,7 +256,7 @@ export const home: HomeCopy = {
     "speedDescription": "Le rangement ne marche que s’il ne coupe pas le travail. Déposez, vérifiez, appliquez, continuez.",
     "formatsEyebrow": "100+ formats pris en charge",
     "formatsTitle": "Captures d’écran, PDF, photos, audio, documents et vidéos",
-    "formatsDescription": "Prend en charge AVIF, RAW, fichiers Office, PDF, sous-titres, MP3, M4A, WAV, FLAC et formats vidéo courants.",
+    "formatsDescription": "Prend en charge AVIF, RAW, fichiers Office, ebooks EPUB et FB2, PDF, sous-titres, MP3, M4A, WAV, FLAC et formats vidéo courants.",
     "controlEyebrow": "Blocs de nommage",
     "controlTitle": "Noms de fichiers structurés pour le travail professionnel",
     "controlDescription": "Les pros composent leurs propres modèles de nom à partir de blocs adaptés à leur métier. L’IA lit chaque fichier et remplit ces blocs avec les détails choisis : client, date, numéro de facture, lieu ou projet.",
@@ -312,7 +312,7 @@ export const home: HomeCopy = {
       },
       "documents": {
         "title": "Renommer les documents",
-        "description": "Fichiers Word, Excel, PowerPoint et iWork nommés par sujet."
+        "description": "Ebooks EPUB et FB2 et fichiers Word, Excel, PowerPoint et iWork nommés par sujet."
       },
       "design": {
         "title": "Renommer les fichiers design",
@@ -347,7 +347,7 @@ export const home: HomeCopy = {
     },
     {
       "question": "Quels formats sont pris en charge ?",
-      "answer": "Zush prend en charge images, audio, vidéos, captures, PDF, documents, feuilles de calcul, présentations, texte, CSV, SVG et d’autres formats courants."
+      "answer": "Zush prend en charge images, audio, vidéos, captures, ebooks EPUB et FB2, PDF, documents, feuilles de calcul, présentations, texte, CSV, SVG et d’autres formats courants."
     },
     {
       "question": "Comment fonctionne Zush renommage IA ?",

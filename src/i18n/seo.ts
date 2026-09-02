@@ -148,7 +148,7 @@ const SEARCH_DESCRIPTION_OVERRIDES: Partial<Record<Locale, Partial<Record<Locali
   },
   ja: {
     '/':
-      'Mac・Windows向けAIファイルリネーム。RAW写真、PDF、動画、音声、デザインファイルを含む104形式を内容に基づいてリネーム。すべてのバッチでプレビューと取り消しが可能です。クラウドAI、BYOK、OllamaのローカルAI、フォルダ監視、テンプレートにも対応し、安全で統一された名前に整理できます。',
+      'Mac・Windows向けAIファイルリネーム。EPUB・FB2電子書籍、RAW写真、PDF、動画、音声、デザインファイルを含む107形式を内容に基づいてリネーム。すべてのバッチでプレビューと取り消しが可能です。クラウドAI、BYOK、OllamaのローカルAI、フォルダ監視、テンプレートにも対応します。',
     '/windows':
       'Windows向けAIファイルリネーム。内容、メタデータ、日付、カスタム指示を組み合わせて独自の命名ルールを作成できます。すべての候補を適用前にプレビューし、バッチをUndo可能。Zush Cloud、BYOK、OllamaのローカルAIから実行場所を選べます。フォルダ監視と再利用可能なテンプレートにも対応します。',
     '/rename-pdf-with-ai':
@@ -162,7 +162,7 @@ const SEARCH_DESCRIPTION_OVERRIDES: Partial<Record<Locale, Partial<Record<Locali
   },
   ko: {
     '/':
-      'Mac 및 Windows용 AI 파일 이름 변경 도구입니다. RAW 사진, PDF, 비디오, 오디오, 디자인 파일을 포함한 104개 형식을 내용에 따라 변경하고 모든 배치를 미리 보고 되돌릴 수 있습니다. 클라우드 AI, BYOK, 로컬 AI와 폴더 모니터링 및 템플릿도 지원합니다.',
+      'Mac 및 Windows용 AI 파일 이름 변경 도구입니다. EPUB 및 FB2 전자책, RAW 사진, PDF, 비디오, 오디오, 디자인 파일을 포함한 107개 형식을 내용에 따라 변경하고 모든 배치를 미리 보고 되돌릴 수 있습니다. 클라우드 AI, BYOK, 로컬 AI도 지원합니다.',
     '/mac':
       'Mac용 AI 파일 이름 변경 도구입니다. 내용, 메타데이터, 날짜와 사용자 지침으로 나만의 이름 규칙을 만드세요. 모든 제안을 적용 전에 미리 보고 일괄 작업을 되돌릴 수 있으며, Zush Cloud, BYOK 또는 Ollama 로컬 AI 중 실행 위치를 선택할 수 있습니다.',
     '/windows':
@@ -176,11 +176,11 @@ const SEARCH_DESCRIPTION_OVERRIDES: Partial<Record<Locale, Partial<Record<Locali
     '/rename-pdf-with-ai':
       'AI PDF 이름 변경 도구. Zush가 청구서, 계약서, 스캔 문서, 영수증, 보고서를 읽고 PDF 파일을 내용 기준으로 검색하기 쉬운 이름으로 변경합니다. Mac과 Windows에서 여러 PDF를 일괄 처리하고 적용 전에 제안을 미리 보고 기록에서 원래 이름으로 되돌릴 수 있습니다.',
     '/rename-documents-with-ai':
-      'AI 문서 이름 변경 도구. Zush가 Office, iWork, 텍스트, CSV, XML, YAML, 이메일, 자막 파일을 읽고 실제 내용을 기준으로 문서 이름을 변경합니다. 여러 문서를 일괄 처리하며, 적용 전에 제안을 미리 보고 기록에서 원래 이름으로 되돌릴 수 있습니다.',
+      'AI 문서 이름 변경 도구. Zush가 EPUB, FB2, Office, iWork, 텍스트, CSV, XML, YAML, 이메일, 자막 파일을 읽고 실제 내용을 기준으로 이름을 변경합니다. 여러 문서를 일괄 처리하며, 적용 전에 제안을 미리 보고 기록에서 원래 이름으로 되돌릴 수 있습니다.',
   },
   'zh-cn': {
     '/':
-      '适用于 Mac 和 Windows 的 AI 文件重命名工具。按内容重命名 104 种格式，包括 RAW 照片、PDF、视频、音频和设计文件；每个批次均可预览和撤销。支持云端 AI、BYOK、通过 Ollama 运行的本地 AI，以及文件夹监控和可重复使用的命名模板，让日常整理更安全、更统一、更容易搜索。',
+      '适用于 Mac 和 Windows 的 AI 文件重命名工具。按内容重命名 107 种格式，包括 EPUB 和 FB2 电子书、RAW 照片、PDF、视频、音频和设计文件；每个批次均可预览和撤销。支持云端 AI、BYOK、通过 Ollama 运行的本地 AI和文件夹监控。',
     '/mac':
       '适用于 Mac 的 AI 文件重命名工具。组合内容、元数据、日期和自定义指令，建立自己的命名规则。应用前预览所有建议，可撤销任意批次，并可在 Zush Cloud、BYOK 与通过 Ollama 运行的本地 AI 之间选择分析位置。支持文件夹监控和可重复使用的模板，方便长期整理照片、文档和下载文件。',
     '/windows':
@@ -194,7 +194,7 @@ const SEARCH_DESCRIPTION_OVERRIDES: Partial<Record<Locale, Partial<Record<Locali
     '/rename-audio-with-ai':
       'AI 音频重命名工具。Zush 读取 MP3、M4A、WAV、FLAC、OGG、WebM 和 MPGA 的元数据或转录文本，按标题、艺术家、内容和上下文生成清晰名称。在 Mac 和 Windows 上批量处理音频，应用前预览全部建议，修改后可从历史记录恢复原始文件名。还可用命名模板统一节目、日期和曲目信息，让媒体库更易检索。',
     '/rename-documents-with-ai':
-      'AI 文档重命名工具。Zush 读取 DOCX、XLSX、PPTX、Pages、Numbers、Keynote、TXT、CSV、邮件和字幕，按实际内容生成清晰名称。在 Mac 和 Windows 上批量处理，结合标题、客户和日期建立统一规则。应用前预览建议，可撤销更改，并能选择 BYOK 或 Ollama 本地 AI。',
+      'AI 文档重命名工具。Zush 读取 EPUB、FB2、DOCX、XLSX、PPTX、Pages、Numbers、Keynote、TXT、CSV、邮件和字幕，按实际内容生成清晰名称。在 Mac 和 Windows 上批量处理，应用前预览建议，可撤销更改，并能选择 BYOK 或 Ollama 本地 AI。',
     '/rename-pdf-with-ai':
       'AI PDF 重命名工具。Zush 读取发票、合同、扫描件、收据和报告，按内容生成便于检索的文件名。在 Mac 和 Windows 上批量处理多个 PDF，结合供应商、日期和文档类型建立统一命名规则；应用前可预览全部建议，修改后可从历史记录恢复原始文件名。还可使用模板统一客户、项目和归档字段，让文档库保持一致。',
   },

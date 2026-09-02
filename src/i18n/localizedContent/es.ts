@@ -42,7 +42,7 @@ export const home = {
   "featureCards": {
     "aiAnalysis": {
       "title": "Análisis con IA",
-      "description": "Analiza y renombra más de 100 formatos de archivo en un solo lote, desde imágenes y PDF hasta archivos de audio, vídeo y Office."
+      "description": "Analiza y renombra más de 100 formatos de archivo en un solo lote, desde imágenes, ebooks EPUB y FB2 y PDF hasta archivos de audio, vídeo y Office."
     },
     "foldersMonitoring": {
       "title": "Supervisión de carpetas",
@@ -256,7 +256,7 @@ export const home = {
     "speedDescription": "Ordenar solo funciona si no interrumpe el trabajo. Suelta archivos, revisa, aplica y sigue.",
     "formatsEyebrow": "100+ formatos compatibles",
     "formatsTitle": "Capturas, PDF, fotos, audio, documentos y vídeos",
-    "formatsDescription": "Compatible con AVIF, RAW, Office, PDF, subtítulos, MP3, M4A, WAV, FLAC y formatos de vídeo habituales.",
+    "formatsDescription": "Compatible con AVIF, RAW, Office, ebooks EPUB y FB2, PDF, subtítulos, MP3, M4A, WAV, FLAC y formatos de vídeo habituales.",
     "controlEyebrow": "Bloques de nombres",
     "controlTitle": "Nombres de archivo estructurados para el trabajo profesional",
     "controlDescription": "Los profesionales crean sus propios patrones de nombres con bloques adaptados a su trabajo. La IA lee cada archivo y rellena esos bloques con los detalles elegidos: cliente, fecha, número de factura, lugar o proyecto.",
@@ -312,7 +312,7 @@ export const home = {
       },
       "documents": {
         "title": "Renombrar documentos",
-        "description": "Archivos de Word, Excel, PowerPoint e iWork nombrados por tema."
+        "description": "Ebooks EPUB y FB2 y archivos de Word, Excel, PowerPoint e iWork nombrados por tema."
       },
       "design": {
         "title": "Renombrar archivos de diseño",
@@ -347,7 +347,7 @@ export const home = {
     },
     {
       "question": "¿Qué formatos son compatibles?",
-      "answer": "Zush admite imágenes, audio, vídeos, capturas, PDF, documentos, hojas de cálculo, presentaciones, texto, CSV, SVG y otros formatos habituales."
+      "answer": "Zush admite imágenes, audio, vídeos, capturas, ebooks EPUB y FB2, PDF, documentos, hojas de cálculo, presentaciones, texto, CSV, SVG y otros formatos habituales."
     },
     {
       "question": "¿Cómo funciona el renombrado con IA de Zush?",

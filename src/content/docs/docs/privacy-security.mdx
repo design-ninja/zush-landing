@@ -1,7 +1,7 @@
 ---
 title: Privacy and Security in Zush
 description: Understand what Zush processes in Zush Cloud AI, BYOK, LM Studio, and Ollama modes, including file previews, extracted text, provider requests, and local processing.
-lastUpdated: 2026-08-31
+lastUpdated: 2026-09-02
 sidebar:
   order: 33
   label: Privacy and security
@@ -40,7 +40,7 @@ Zush does not use your file content or custom prompt text to train Zush-owned mo
 If you handle documents under confidentiality or regulatory obligations — patient records, client files, financial statements — choose the AI mode that matches your posture:
 
 - **LM Studio and Ollama** process supported files on your Mac with local models. Nothing about the file content is sent to a cloud AI provider while either mode is selected.
-- **BYOK** sends analysis to your own provider account (OpenAI, Anthropic, or Google) under the agreement your organization has with that provider.
+- **BYOK** sends analysis through your own Google Gemini, OpenRouter, OpenAI, or Anthropic account. When OpenRouter is selected, it routes the request to the upstream provider serving the selected model, so review both providers' terms for that workflow.
 - **Cloud mode** uses Zush's managed AI processing through Groq, Google Gemini, or Alibaba Cloud Model Studio (Qwen) and is designed for general files, not documents you are obligated to keep in-house. Qwen requests may use a Global service deployment scope where encrypted transient inference data can be processed outside the selected US region, including within or outside China; static request data remains in the selected US region.
 
 In every mode, renaming happens in place on your disk: Zush never uploads, moves, or stores your files, and filenames and folder structure stay local.

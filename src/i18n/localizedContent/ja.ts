@@ -42,7 +42,7 @@ export const home = {
   "featureCards": {
     "aiAnalysis": {
       "title": "AI 解析",
-      "description": "画像やPDFから音声、動画、Officeファイルまで、100種類以上の形式を解析し、内容が分かる名前にまとめてリネームします。"
+      "description": "画像、EPUB・FB2電子書籍、PDFから音声、動画、Officeファイルまで、100種類以上の形式を解析し、内容が分かる名前にまとめてリネームします。"
     },
     "foldersMonitoring": {
       "title": "フォルダ監視",
@@ -256,7 +256,7 @@ export const home = {
     "speedDescription": "整理は作業を止めないことが大切です。ファイルを入れ、確認し、適用して次へ進めます。",
     "formatsEyebrow": "100+種類の対応形式",
     "formatsTitle": "スクリーンショット、PDF、写真、音声、文書、動画",
-    "formatsDescription": "AVIF、RAW、Officeファイル、PDF、字幕、MP3、M4A、WAV、FLAC、一般的な動画形式に対応します。",
+    "formatsDescription": "AVIF、RAW、Officeファイル、EPUB・FB2電子書籍、PDF、字幕、MP3、M4A、WAV、FLAC、一般的な動画形式に対応します。",
     "controlEyebrow": "命名ブロック",
     "controlTitle": "業務に合った、構造化されたファイル名",
     "controlDescription": "用途に合う命名ブロックを組み合わせて、独自のファイル名パターンを作れます。AIが各ファイルを読み取り、クライアント名、日付、請求書番号、場所、プロジェクトなど、選んだ情報を各ブロックに入力します。",
@@ -312,7 +312,7 @@ export const home = {
       },
       "documents": {
         "title": "書類をリネーム",
-        "description": "Word・Excel・PowerPoint・iWorkファイルをテーマで命名。"
+        "description": "EPUB・FB2電子書籍、Word・Excel・PowerPoint・iWorkファイルをテーマで命名。"
       },
       "design": {
         "title": "デザインファイルをリネーム",
@@ -347,7 +347,7 @@ export const home = {
     },
     {
       "question": "対応しているファイル形式は？",
-      "answer": "画像、動画、スクリーンショット、PDF、文書、表計算、プレゼン、テキスト、CSV、SVG などの一般的な形式に対応しています。"
+      "answer": "画像、動画、スクリーンショット、EPUB・FB2電子書籍、PDF、文書、表計算、プレゼン、テキスト、CSV、SVG などの一般的な形式に対応しています。"
     },
     {
       "question": "ZushのAIリネームはどのように動作しますか？",

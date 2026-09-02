@@ -41,7 +41,7 @@ export const home = {
   "featureCards": {
     "aiAnalysis": {
       "title": "Yapay zekâ analizi",
-      "description": "Görsel ve PDF’lerden ses, video ve Office dosyalarına kadar 100’den fazla dosya biçimini tek seferde analiz edip yeniden adlandırın."
+      "description": "Görsel, EPUB ve FB2 e-kitapları ve PDF’lerden ses, video ve Office dosyalarına kadar 100’den fazla dosya biçimini tek seferde analiz edip yeniden adlandırın."
     },
     "foldersMonitoring": {
       "title": "Klasör izleme",
@@ -255,7 +255,7 @@ export const home = {
     "speedDescription": "Düzen, gerçek işinizi yavaşlatmadığında kalıcı olur. Dosyaları bırakın, inceleyin, uygulayın ve devam edin.",
     "formatsEyebrow": "100’den fazla desteklenen biçim",
     "formatsTitle": "Ekran görüntüleri, PDF’ler, fotoğraflar, sesler, belgeler ve videolar",
-    "formatsDescription": "AVIF, RAW, Office dosyaları, PDF’ler, altyazılar, MP3, M4A, WAV, FLAC ve yaygın video biçimleri tek bir içerik odaklı toplu işlemde desteklenir.",
+    "formatsDescription": "AVIF, RAW, Office dosyaları, EPUB ve FB2 e-kitapları, PDF’ler, altyazılar, MP3, M4A, WAV, FLAC ve yaygın video biçimleri tek bir içerik odaklı toplu işlemde desteklenir.",
     "controlEyebrow": "Adlandırma Blokları",
     "controlTitle": "Profesyonel işler için yapılandırılmış dosya adları",
     "controlDescription": "Profesyoneller kendi işlerine uygun bloklarla dosya adı kalıplarını oluşturabilir. Yapay zekâ her dosyayı okur ve blokları seçtiğiniz ayrıntılarla — müşteri, tarih, fatura numarası, konum veya proje — doldurur.",
@@ -311,7 +311,7 @@ export const home = {
       },
       "documents": {
         "title": "Belgeleri yeniden adlandır",
-        "description": "Word, Excel, PowerPoint ve iWork dosyalarını konuya göre adlandırın."
+        "description": "EPUB ve FB2 e-kitaplarını; Word, Excel, PowerPoint ve iWork dosyalarını konuya göre adlandırın."
       },
       "design": {
         "title": "Tasarım dosyalarını yeniden adlandır",
@@ -346,7 +346,7 @@ export const home = {
     },
     {
       "question": "Hangi dosya biçimleri destekleniyor?",
-      "answer": "Zush; görselleri, sesleri, videoları, ekran görüntülerini, PDF’leri, belgeleri, elektronik tabloları, sunumları, metin dosyalarını, CSV, SVG ve daha birçok günlük biçimi destekler."
+      "answer": "Zush; görselleri, sesleri, videoları, ekran görüntülerini, EPUB ve FB2 e-kitaplarını, PDF’leri, belgeleri, elektronik tabloları, sunumları, metin dosyalarını, CSV, SVG ve daha birçok günlük biçimi destekler."
     },
     {
       "question": "Zush AI Rename nasıl çalışır?",

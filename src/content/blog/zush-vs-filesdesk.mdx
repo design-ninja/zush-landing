@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Tool Comparisons"
 tldr: "Pick Zush for the most configurable naming workflow in this comparison: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, and Rename History with batch revert. FilesDesk's main limitation is that managed suggestions are metered and its lifetime plan requires BYOK or local-model setup."
-reviewed: "2026-08-31"
+reviewed: "2026-09-02"
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -41,10 +41,10 @@ Sources checked for this update: [Zush](/), [FilesDesk](https://filesdesk.app/),
 | Free tier | 50 renames, no signup | 15 credits trial, no credit card |
 | 5-year cost (one-time path) | $48 total, managed cloud included | $40 + your own API costs or local model setup |
 | Platforms | Mac (macOS 15+) + Windows 10/11 | Mac + Windows |
-| Format coverage | <BlogHighlight>100+ formats</BlogHighlight>: 41 image incl. RAW/HEIC/AVIF, 4 design (Sketch, Figma, AI, PSD), 37 document incl. iWork, 16 video, 7 audio | Images, PDF/Office documents, video, and audio; no detailed RAW/design/iWork matrix |
+| Format coverage | <BlogHighlight>100+ formats</BlogHighlight>: 41 image incl. RAW/HEIC/AVIF, 4 design (Sketch, Figma, AI, PSD), 40 document incl. iWork, 16 video, 7 audio | Images, PDF/Office documents, video, and audio; no detailed RAW/design/iWork matrix |
 | Video and audio renaming | <BlogHighlight>Yes</BlogHighlight> | Yes: common video and audio formats are listed in the FAQ |
 | Design files (Figma/Sketch/PSD) | <BlogHighlight>Yes</BlogHighlight> | Not publicly listed |
-| AI processing routes | Zush Cloud AI; BYOK with Gemini, Groq, OpenAI, or Claude; LM Studio; Ollama | BYOK with Claude, OpenAI, Gemini, or OpenRouter; local Ollama or vLLM |
+| AI processing routes | Zush Cloud AI; BYOK with Gemini, OpenRouter, OpenAI, or Claude; LM Studio; Ollama | BYOK with Claude, OpenAI, Gemini, or OpenRouter; local Ollama or vLLM |
 | Local AI | LM Studio, Ollama | Ollama, vLLM |
 | Folder monitoring | <BlogHighlight>Yes — auto-name new files</BlogHighlight> | Yes (Watch Folders) |
 | Naming conventions | <BlogHighlight>Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata</BlogHighlight> | Naming templates |
@@ -73,7 +73,7 @@ The pricing is deliberately boring: unlimited PRO renames either as a subscripti
 FilesDesk positions itself as the plug-and-play credit option: 15 free credits with no API key, then $8/month for 500 credits or $20/month for 2,000, processed in memory and never stored.
 Its FAQ now explicitly lists common images, PDFs and Office documents, MP4/MOV/AVI/MKV/WebM video, and MP3/WAV/FLAC/AAC/M4A audio. Processing History can undo completed renames. The $40 Lifetime plan remains self-managed: bring a Claude/OpenAI/Gemini/OpenRouter key or run Ollama/vLLM locally, with one device and 12 months of updates.
 
-FilesDesk is relevant when OpenRouter or vLLM is a hard requirement. Its main drawback is the operating model: managed suggestions consume credits, while the lifetime path requires the user to supply an API key or local model; its public docs also do not enumerate RAW, design, and iWork coverage as granularly as Zush.
+FilesDesk is relevant when vLLM is a hard requirement. Its main drawback is the operating model: managed suggestions consume credits, while the lifetime path requires the user to supply an API key or local model; its public docs also do not enumerate RAW, design, and iWork coverage as granularly as Zush.
 
 ## How to choose
 
