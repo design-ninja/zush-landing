@@ -86,7 +86,7 @@ export const home: HomeCopy = {
     },
     "byok": {
       "title": "Votre propre clé API",
-      "description": "Connectez Gemini, Groq, OpenAI ou Claude pour les renommages cloud; FREE en inclut 50 tous modes confondus, PRO est illimité. Les clés restent stockées localement."
+      "description": "Connectez Gemini, OpenRouter, OpenAI ou Claude pour les renommages cloud; FREE en inclut 50 tous modes confondus, PRO est illimité. Les clés restent stockées localement."
     },
     "offlineAi": {
       "title": "IA locale privée",
@@ -387,7 +387,7 @@ export const home: HomeCopy = {
     },
     {
       "question": "Qu’est-ce que BYOK (Bring Your Own Key) ?",
-      "answer": "BYOK permet aux utilisateurs de toutes les offres de connecter leur clé Gemini, Groq, OpenAI ou Claude pour les renommages cloud; FREE en inclut 50 tous modes confondus, PRO est illimité. La clé est stockée localement de façon sécurisée."
+      "answer": "BYOK permet aux utilisateurs de toutes les offres de connecter leur clé Gemini, OpenRouter, OpenAI ou Claude pour les renommages cloud; FREE en inclut 50 tous modes confondus, PRO est illimité. La clé est stockée localement de façon sécurisée."
     },
     {
       "question": "Existe-t-il un achat unique ?",

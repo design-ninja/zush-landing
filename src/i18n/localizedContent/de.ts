@@ -86,7 +86,7 @@ export const home: HomeCopy = {
     },
     "byok": {
       "title": "Eigener API-Schlüssel",
-      "description": "Verbinde Gemini, Groq, OpenAI oder Claude für Cloud-Umbenennungen; FREE umfasst 50 in allen Modi, PRO ist unbegrenzt. Schlüssel bleiben lokal gespeichert."
+      "description": "Verbinde Gemini, OpenRouter, OpenAI oder Claude für Cloud-Umbenennungen; FREE umfasst 50 in allen Modi, PRO ist unbegrenzt. Schlüssel bleiben lokal gespeichert."
     },
     "offlineAi": {
       "title": "Lokale KI",
@@ -387,7 +387,7 @@ export const home: HomeCopy = {
     },
     {
       "question": "Was ist BYOK (Bring Your Own Key)?",
-      "answer": "BYOK erlaubt Nutzern aller Pläne, eigene API-Schlüssel von Gemini, Groq, OpenAI oder Claude zu verbinden. FREE umfasst 50 Umbenennungen in allen Modi; PRO entfernt das Limit. Der Schlüssel wird lokal sicher gespeichert."
+      "answer": "BYOK erlaubt Nutzern aller Pläne, eigene API-Schlüssel von Gemini, OpenRouter, OpenAI oder Claude zu verbinden. FREE umfasst 50 Umbenennungen in allen Modi; PRO entfernt das Limit. Der Schlüssel wird lokal sicher gespeichert."
     },
     {
       "question": "Gibt es einen Einmalkauf?",

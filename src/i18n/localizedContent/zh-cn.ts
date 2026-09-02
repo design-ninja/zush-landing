@@ -86,7 +86,7 @@ export const home = {
     },
     "byok": {
       "title": "使用自己的密钥",
-      "description": "连接 Gemini、Groq、OpenAI 或 Claude，实现云端重命名；FREE 在所有模式间共享 50 次，PRO 无限制。密钥会安全保存在本地。"
+      "description": "连接 Gemini、OpenRouter、OpenAI 或 Claude，实现云端重命名；FREE 在所有模式间共享 50 次，PRO 无限制。密钥会安全保存在本地。"
     },
     "offlineAi": {
       "title": "私有本地 AI",
@@ -383,7 +383,7 @@ export const home = {
     },
     {
       "question": "什么是 BYOK（Bring Your Own Key）？",
-      "answer": "BYOK 允许所有方案的用户连接自己的 Gemini、Groq、OpenAI 或 Claude API key，用于云端重命名。FREE 在所有模式间共享 50 次；PRO 会移除此限制。密钥会保存在本地安全存储中。"
+      "answer": "BYOK 允许所有方案的用户连接自己的 Gemini、OpenRouter、OpenAI 或 Claude API key，用于云端重命名。FREE 在所有模式间共享 50 次；PRO 会移除此限制。密钥会保存在本地安全存储中。"
     },
     {
       "question": "是否有一次性购买选项？",

@@ -1,7 +1,7 @@
 ---
 title: BYOK Setup for AI File Renaming
-description: Set up Bring Your Own Key in Zush with Gemini, Groq, OpenAI, or Claude, then test cloud AI file renaming with your own provider key.
-lastUpdated: 2026-08-24
+description: Set up Bring Your Own Key in Zush with Gemini, OpenRouter, OpenAI, or Claude, then test cloud AI file renaming with your own provider key.
+lastUpdated: 2026-09-02
 sidebar:
   order: 31
   label: BYOK
@@ -9,7 +9,7 @@ sidebar:
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-BYOK means **Bring Your Own Key**. It lets users on every Zush plan connect their own AI provider key for cloud renaming with Google AI (Gemini), Groq, OpenAI, or Anthropic.
+BYOK means **Bring Your Own Key**. It lets users on every Zush plan connect their own AI provider key for cloud renaming with Google AI (Gemini), OpenRouter, OpenAI, or Anthropic.
 
 Use BYOK when you want Zush's desktop workflow, review screen, Templates, Naming Blocks, Monitor, and undo history, but you prefer to pay your own AI provider directly instead of relying only on the managed Zush provider.
 
@@ -40,7 +40,7 @@ The free plan includes 50 renames shared across Zush Cloud AI, BYOK, LM Studio, 
 | Provider in Zush | Dashboard | Notes |
 | --- | --- | --- |
 | Google AI | [Google AI Studio](https://aistudio.google.com/app/apikey) | Uses the Gemini API |
-| Groq | [Groq Console](https://console.groq.com/keys) | Uses compatible models available to your Groq project |
+| OpenRouter | [OpenRouter](https://openrouter.ai/settings/keys) | Uses compatible models available to your OpenRouter account |
 | OpenAI | [OpenAI Platform](https://platform.openai.com/api-keys) | Uses compatible analysis models available to your OpenAI project |
 | Anthropic | [Anthropic Console](https://console.anthropic.com/settings/keys) | Uses compatible Claude models available to your Anthropic account |
 
@@ -49,7 +49,7 @@ Zush loads compatible models after the key is saved. The default model is contro
 ## Set up BYOK
 
 <Steps>
-1. Open your provider dashboard: [Google AI Studio](https://aistudio.google.com/app/apikey), [Groq Console](https://console.groq.com/keys), [OpenAI Platform](https://platform.openai.com/api-keys), or [Anthropic Console](https://console.anthropic.com/settings/keys).
+1. Open your provider dashboard: [Google AI Studio](https://aistudio.google.com/app/apikey), [OpenRouter](https://openrouter.ai/settings/keys), [OpenAI Platform](https://platform.openai.com/api-keys), or [Anthropic Console](https://console.anthropic.com/settings/keys).
 2. Create a new API key and copy it. Most providers show the full key only once.
 3. Open Zush and select **AI Modes** in Settings.
 4. Select **BYOK**, then choose the AI provider.
@@ -70,11 +70,11 @@ Zush loads compatible models after the key is saved. The default model is contro
 3. In Zush, choose **Google AI** as the AI Provider.
 4. Paste the key and click **Save**. Choose an available model if needed, then run **Test**.
 
-### Groq
+### OpenRouter
 
-1. Open [Groq Console](https://console.groq.com/keys).
+1. Open [OpenRouter](https://openrouter.ai/settings/keys).
 2. Create an API key.
-3. In Zush, choose **Groq** as the AI Provider.
+3. In Zush, choose **OpenRouter** as the AI Provider.
 4. Paste the key and click **Save**. Choose an available model if needed, then run **Test**.
 
 ### OpenAI

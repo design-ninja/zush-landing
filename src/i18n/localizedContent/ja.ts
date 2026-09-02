@@ -86,7 +86,7 @@ export const home = {
     },
     "byok": {
       "title": "自分のAPIキーを使う（BYOK）",
-      "description": "Gemini、Groq、OpenAI、Claude を接続してクラウドリネーム。FREE は全モード共通 50 回、PRO は無制限。キーはローカルに安全保存されます。"
+      "description": "Gemini、OpenRouter、OpenAI、Claude を接続してクラウドリネーム。FREE は全モード共通 50 回、PRO は無制限。キーはローカルに安全保存されます。"
     },
     "offlineAi": {
       "title": "プライベートなローカル AI",
@@ -387,7 +387,7 @@ export const home = {
     },
     {
       "question": "BYOK（Bring Your Own Key）とは？",
-      "answer": "Gemini、Groq、OpenAI、Claudeの自分のAPIキーを接続して、クラウドAIでリネームする機能です。全プランで利用でき、FREEでは全モード共通で50回、PROでは無制限にリネームできます。APIキーは端末内に安全に保存されます。"
+      "answer": "Gemini、OpenRouter、OpenAI、Claudeの自分のAPIキーを接続して、クラウドAIでリネームする機能です。全プランで利用でき、FREEでは全モード共通で50回、PROでは無制限にリネームできます。APIキーは端末内に安全に保存されます。"
     },
     {
       "question": "買い切りプランはありますか？",

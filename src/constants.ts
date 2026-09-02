@@ -25,7 +25,7 @@ export const SOFTPEDIA_REVIEW_URL =
   "https://www.softpedia.com/get/Artificial-Intelligence-Generative-AI/Zush.shtml";
 
 export const FREE_DOWNLOAD_BADGE_LABEL = "FREE";
-export const MAC_APP_VERSION = "3.10.5";
+export const MAC_APP_VERSION = "3.11.0";
 export const WINDOWS_APP_VERSION = "3.8.10.0";
 export const PRODUCT_FACTS_REVIEWED_AT = "2026-08-31";
 export const AI_MODES_SUMMARY =
@@ -165,7 +165,7 @@ export const APP_CONFIG = {
     "webm",
     "mpga",
   ],
-  ai_provider: "Groq",
+  ai_provider: "Zush Cloud AI",
   refund_period_days: 14,
   min_macos_version: "15.0",
   min_macos_name: "Sequoia",

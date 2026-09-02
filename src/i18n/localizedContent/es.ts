@@ -86,7 +86,7 @@ export const home = {
     },
     "byok": {
       "title": "Usa tu propia clave",
-      "description": "Conecta Gemini, Groq, OpenAI o Claude para renombrar con tu propia cuenta de proveedor. FREE incluye 50 renombrados entre todos los modos y PRO no tiene límites. Las claves se guardan localmente."
+      "description": "Conecta Gemini, OpenRouter, OpenAI o Claude para renombrar con tu propia cuenta de proveedor. FREE incluye 50 renombrados entre todos los modos y PRO no tiene límites. Las claves se guardan localmente."
     },
     "offlineAi": {
       "title": "IA local privada",
@@ -387,7 +387,7 @@ export const home = {
     },
     {
       "question": "¿Qué es BYOK (Bring Your Own Key)?",
-      "answer": "BYOK te permite conectar tu propia clave de Gemini, Groq, OpenAI o Claude. FREE incluye 50 renombrados entre todos los modos y PRO no tiene límites. La clave se guarda de forma segura en el dispositivo."
+      "answer": "BYOK te permite conectar tu propia clave de Gemini, OpenRouter, OpenAI o Claude. FREE incluye 50 renombrados entre todos los modos y PRO no tiene límites. La clave se guarda de forma segura en el dispositivo."
     },
     {
       "question": "¿Por qué compra única y no suscripción?",

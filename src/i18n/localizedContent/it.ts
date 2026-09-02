@@ -86,7 +86,7 @@ export const home = {
     },
     "byok": {
       "title": "Usa la tua chiave",
-      "description": "Collega Gemini, Groq, OpenAI o Claude per rinomine cloud; FREE ne include 50 tra tutte le modalità e PRO è illimitato. Le chiavi restano locali."
+      "description": "Collega Gemini, OpenRouter, OpenAI o Claude per rinomine cloud; FREE ne include 50 tra tutte le modalità e PRO è illimitato. Le chiavi restano locali."
     },
     "offlineAi": {
       "title": "IA locale privata",
@@ -387,7 +387,7 @@ export const home = {
     },
     {
       "question": "Cos’è BYOK (Bring Your Own Key)?",
-      "answer": "BYOK consente agli utenti di tutti i piani di collegare una chiave Gemini, Groq, OpenAI o Claude per rinomine cloud; FREE ne include 50 tra tutte le modalità e PRO è illimitato. La chiave è salvata localmente in modo sicuro."
+      "answer": "BYOK consente agli utenti di tutti i piani di collegare una chiave Gemini, OpenRouter, OpenAI o Claude per rinomine cloud; FREE ne include 50 tra tutte le modalità e PRO è illimitato. La chiave è salvata localmente in modo sicuro."
     },
     {
       "question": "Esiste un acquisto unico?",

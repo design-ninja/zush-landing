@@ -18,7 +18,7 @@ const sourceAssetRoot =
 const backendEnvironment = process.env.ZUSH_PROMO_BACKEND_ENVIRONMENT ?? 'local';
 const promoGeminiApiKey = process.env.ZUSH_PROMO_GEMINI_API_KEY?.trim();
 const promoOllamaEndpoint = process.env.ZUSH_PROMO_OLLAMA_ENDPOINT ?? 'http://127.0.0.1:11434';
-const promoOllamaModel = process.env.ZUSH_PROMO_OLLAMA_MODEL ?? 'qwen2.5vl:3b';
+const promoOllamaModel = process.env.ZUSH_PROMO_OLLAMA_MODEL ?? 'qwen3.5:4b';
 const promoLMStudioEndpoint =
   process.env.ZUSH_PROMO_LM_STUDIO_ENDPOINT ?? 'http://127.0.0.1:1234';
 const promoLMStudioCLI =
@@ -78,7 +78,6 @@ const features = [
   { id: 'custom-prompts', fixture: 'custom-prompts', captureZushExtras: true, landingOnly: true },
   { id: 'zush-cloud-ai', fixture: 'zush-cloud-ai' },
   { id: 'byok', fixture: 'byok' },
-  { id: 'local-ai', fixture: 'local-ai' },
   { id: 'ollama', fixture: 'ollama' },
   { id: 'lm-studio', fixture: 'lm-studio' },
 ];
@@ -161,7 +160,6 @@ const appStoreNames = {
   'naming-blocks': '06-naming-blocks',
   naming: '07-smart-rename',
   'zush-cloud-ai': '01-zush-cloud-ai',
-  'local-ai': '03-local-ai',
   ollama: '04-ollama',
   'lm-studio': '05-lm-studio',
   byok: '09-byok',

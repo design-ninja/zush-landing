@@ -85,7 +85,7 @@ export const home = {
     },
     "byok": {
       "title": "Kendi anahtarınızı kullanın",
-      "description": "Bulut yeniden adlandırma için kendi Gemini, Groq, OpenAI veya Claude API anahtarınızı bağlayın. FREE tüm modlarda ortak 50 işlem sunar; PRO limiti kaldırır. Anahtarlar yerel ve güvenli depolamada tutulur."
+      "description": "Bulut yeniden adlandırma için kendi Gemini, OpenRouter, OpenAI veya Claude API anahtarınızı bağlayın. FREE tüm modlarda ortak 50 işlem sunar; PRO limiti kaldırır. Anahtarlar yerel ve güvenli depolamada tutulur."
     },
     "offlineAi": {
       "title": "Özel yerel yapay zekâ",
@@ -382,7 +382,7 @@ export const home = {
     },
     {
       "question": "BYOK (Bring Your Own Key) nedir?",
-      "answer": "BYOK, tüm planlardaki kullanıcıların kendi Gemini, Groq, OpenAI veya Claude API anahtarlarını bağlayarak bulut yeniden adlandırmayı kullanmasını sağlar. FREE tüm modlarda ortak 50 işlem sunar; PRO limiti kaldırır. Anahtar yerel ve güvenli depolamada tutulur."
+      "answer": "BYOK, tüm planlardaki kullanıcıların kendi Gemini, OpenRouter, OpenAI veya Claude API anahtarlarını bağlayarak bulut yeniden adlandırmayı kullanmasını sağlar. FREE tüm modlarda ortak 50 işlem sunar; PRO limiti kaldırır. Anahtar yerel ve güvenli depolamada tutulur."
     },
     {
       "question": "Monthly ile One-Time arasındaki fark nedir?",

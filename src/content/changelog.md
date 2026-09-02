@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.11.0] - 2026-09-02
+
+### Added
+- Rename EPUB and FB2 ebooks using their title, author, subjects, and cover
+- Use OpenRouter with your own API key and choose a compatible AI model
+
+### Improved
+- Better handling of cloud files, external drives, and saved folder access
+- More reliable long document analysis and batch renaming
+- Empty naming fields and duplicate files are handled more safely
+
 ## [3.10.5] - 2026-08-30
 
 ### Fixed

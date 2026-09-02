@@ -86,7 +86,7 @@ export const home: HomeCopy = {
     },
     "byok": {
       "title": "Eigen sleutel gebruiken",
-      "description": "Koppel Gemini, Groq, OpenAI of Claude voor cloud-hernoemen. FREE bevat 50 hernoemingen voor alle modi; PRO verwijdert de limiet. Sleutels blijven lokaal opgeslagen."
+      "description": "Koppel Gemini, OpenRouter, OpenAI of Claude voor cloud-hernoemen. FREE bevat 50 hernoemingen voor alle modi; PRO verwijdert de limiet. Sleutels blijven lokaal opgeslagen."
     },
     "offlineAi": {
       "title": "Private lokale AI",
@@ -387,7 +387,7 @@ export const home: HomeCopy = {
     },
     {
       "question": "Wat is BYOK (Bring Your Own Key)?",
-      "answer": "BYOK laat gebruikers van elk abonnement hun eigen Gemini-, Groq-, OpenAI- of Claude-sleutel koppelen voor cloudhernoemen; FREE bevat 50 voor alle modi en PRO is onbeperkt. De sleutel wordt lokaal veilig opgeslagen."
+      "answer": "BYOK laat gebruikers van elk abonnement hun eigen Gemini-, OpenRouter-, OpenAI- of Claude-sleutel koppelen voor cloudhernoemen; FREE bevat 50 voor alle modi en PRO is onbeperkt. De sleutel wordt lokaal veilig opgeslagen."
     },
     {
       "question": "Is er een eenmalige aankoop?",

@@ -86,7 +86,7 @@ export const home = {
     },
     "byok": {
       "title": "내 키 가져오기",
-      "description": "Gemini, Groq, OpenAI, Claude를 연결해 클라우드에서 이름을 변경하세요. FREE는 모든 모드에서 공통 50회이며 PRO는 제한이 없습니다. 키는 로컬에 저장됩니다."
+      "description": "Gemini, OpenRouter, OpenAI, Claude를 연결해 클라우드에서 이름을 변경하세요. FREE는 모든 모드에서 공통 50회이며 PRO는 제한이 없습니다. 키는 로컬에 저장됩니다."
     },
     "offlineAi": {
       "title": "비공개 로컬 AI",
@@ -387,7 +387,7 @@ export const home = {
     },
     {
       "question": "BYOK(Bring Your Own Key)이란 무엇인가요?",
-      "answer": "모든 플랜의 사용자가 Gemini, Groq, OpenAI, Claude API 키를 연결해 클라우드 이름 변경을 사용하며 FREE는 모든 모드에서 공통 50회, PRO는 무제한인 기능입니다. 키는 로컬에 안전하게 저장됩니다."
+      "answer": "모든 플랜의 사용자가 Gemini, OpenRouter, OpenAI, Claude API 키를 연결해 클라우드 이름 변경을 사용하며 FREE는 모든 모드에서 공통 50회, PRO는 무제한인 기능입니다. 키는 로컬에 안전하게 저장됩니다."
     },
     {
       "question": "일회성 구매 옵션이 있나요?",
