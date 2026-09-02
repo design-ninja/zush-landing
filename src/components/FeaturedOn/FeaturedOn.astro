@@ -97,6 +97,13 @@ const catalogs = [
     href: 'https://submitaitools.org/zushapp-com/',
     icon: '/images/featured-on/submit-ai-tools.png',
   },
+  {
+    name: 'ScrollLaunch',
+    href: 'https://www.scrolllaunch.com/products/zush?ref=badge',
+    icon: 'https://www.scrolllaunch.com/api/badge/zush',
+    badge: true,
+    rel: 'noopener',
+  },
 ];
 
 const { locale = DEFAULT_LOCALE } = Astro.props as Props;
@@ -113,9 +120,19 @@ const title = titleByLocale[locale] ?? titleByLocale.en!;
           href={catalog.href}
           class={`${styles.FeaturedOnItem} ${catalog.modifier ?? ''}`}
           target='_blank'
-          rel={catalog.nofollow ? 'nofollow noopener noreferrer' : 'noopener noreferrer'}
+          rel={catalog.rel ?? (catalog.nofollow ? 'nofollow noopener noreferrer' : 'noopener noreferrer')}
         >
-          {catalog.name === 'Product Hunt' ? (
+          {catalog.badge ? (
+            <img
+              class={styles.FeaturedOnItem__Badge}
+              src={catalog.icon}
+              alt='Featured on ScrollLaunch'
+              width='220'
+              height='48'
+              loading='lazy'
+              decoding='async'
+            />
+          ) : catalog.name === 'Product Hunt' ? (
             <span class={styles.FeaturedOnItem__Icon}>
               <svg width='26' height='26' viewBox='0 0 24 24' fill='currentColor' aria-hidden='true'>
                 <path d='M13.604 8.4h-3.405V12h3.405a1.8 1.8 0 0 0 0-3.6zM12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm1.604 14.4h-3.405V18H7.801V6h5.804a4.2 4.2 0 0 1 0 8.4z' />
@@ -139,7 +156,7 @@ const title = titleByLocale[locale] ?? titleByLocale.en!;
               decoding='async'
             />
           )}
-          <span class={styles.FeaturedOnItem__Label}>{catalog.name}</span>
+          {!catalog.badge && <span class={styles.FeaturedOnItem__Label}>{catalog.name}</span>}
         </a>
       ))}
     </div>
