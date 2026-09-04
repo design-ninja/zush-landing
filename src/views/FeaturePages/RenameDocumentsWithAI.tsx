@@ -115,7 +115,8 @@ const RenameDocumentsWithAI = () => (
       { title: 'Zush for Mac', href: '/mac' },
     ]}
     relatedBlogPosts={[
-      { title: 'AI Document Renamer: How to Auto-Name Docs, PDFs & Spreadsheets', href: 'ai-document-renamer-guide' },
+      { title: 'Batch rename EPUB and FB2 files by author and title', href: 'batch-rename-epub-fb2-files' },
+      { title: 'AI Document Renamer: Auto-Name PDFs, Docs & Spreadsheets', href: 'ai-document-renamer-guide' },
       { title: 'File Naming Conventions Best Practices', href: 'file-naming-conventions-best-practices' },
       { title: 'How to Rename PDF Files with AI on Windows', href: 'rename-pdf-files-with-ai-windows' },
     ]}

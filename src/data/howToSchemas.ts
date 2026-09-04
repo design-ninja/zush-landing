@@ -1,6 +1,34 @@
 import type { HowToData } from '@/utils/jsonLd';
 
 export const HOW_TO_SCHEMAS: Record<string, HowToData> = {
+  'batch-rename-epub-fb2-files': {
+    name: 'How to Batch Rename EPUB and FB2 Files by Author and Title',
+    description:
+      'Use the Zush Books template to build author and title filenames for EPUB, FB2, and FB2.ZIP files, review the preview, and apply the batch with rename history available.',
+    totalTime: 'PT10M',
+    steps: [
+      {
+        name: 'Copy a small ebook test batch',
+        text: 'Put five to ten EPUB, FB2, or FB2.ZIP files with different naming problems into a test folder.',
+      },
+      {
+        name: 'Add the folder to Zush',
+        text: 'Open AI Rename and add the test folder so Zush can read the available ebook metadata and content.',
+      },
+      {
+        name: 'Select the Books template',
+        text: 'Choose the Books template and arrange the Author and Book Title blocks in the order you want.',
+      },
+      {
+        name: 'Review every proposed filename',
+        text: 'Check author order, title length, punctuation, missing data, and duplicate names in the preview.',
+      },
+      {
+        name: 'Rename the batch',
+        text: 'Apply the reviewed names and keep rename history available until the files and related reader workflows have been verified.',
+      },
+    ],
+  },
   'rename-pdf-files-automatically': {
     name: 'How to Automatically Rename PDF Files with AI',
     description:
