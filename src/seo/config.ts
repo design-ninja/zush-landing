@@ -87,9 +87,9 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     keywords: HOME_KEYWORDS,
   },
   '/pricing': {
-    title: 'Zush Pricing: Free, Monthly, and Lifetime Plans',
+    title: 'Zush Pricing: 50 Free Renames, $10/mo or $48 Lifetime',
     description:
-      'Compare Zush pricing. Start free with 50 AI renames, choose unlimited PRO monthly, or pay once for lifetime access on Mac and Windows.',
+      'Start with 50 free AI renames. Zush PRO costs $10 per month or $48 once for lifetime access on Mac and Windows. No signup or credit card to try.',
     robots: 'index, follow',
     ogType: 'website',
     keywords:
@@ -105,22 +105,22 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'batch rename files, bulk rename files, AI batch file renamer, batch rename files with AI, bulk file renamer, batch rename files on Mac, batch rename files on Windows, rename multiple files by content, mixed file batch renamer, batch file naming tool',
   },
   '/offline-ai-file-renamer': {
-    title: 'Offline AI File Renamer for Mac & Windows | Zush',
+    title: 'Offline AI File Renamer: LM Studio & Ollama | Zush',
     description:
-      'Offline AI file renamer for Mac and Windows. Use LM Studio or Ollama so supported analysis stays on-device, with preview and undo.',
+      'Rename files offline on Mac or Windows with LM Studio or Ollama. Supported analysis stays on-device, with preview, undo, and 50 free AI renames.',
     robots: 'index, follow',
     ogType: 'website',
     keywords:
       'offline AI file renamer, local AI file renamer, private AI file renamer, on-device AI file renamer, rename files offline, offline file renamer for Mac, offline file renamer for Windows, local AI server file renamer, LM Studio file renamer, Ollama file renamer',
   },
   '/ai-file-organizer': {
-    title: 'AI File Organizer for Mac & Windows | Automatic File Naming',
+    title: 'AI File Organizer That Renames In Place | Mac & Windows',
     description:
-      'AI file organizer for Mac and Windows that names files in place by content. Clean up screenshots, PDFs and documents with templates, preview and undo.',
+      'Create searchable filenames without moving or sorting folders. Zush renames screenshots, PDFs, photos, and documents in place with preview and undo.',
     robots: 'index, follow',
     ogType: 'website',
     keywords:
-      'AI file organizer, organize files with AI, automatic file organizer, AI file sorter, sort files into folders, AI document organizer, content-aware file organization, organize files automatically, file organizer for Mac, file organizer for Windows',
+      'AI file organizer, organize files with AI, automatic file naming, AI document organizer, content-aware file naming, rename files automatically, file organizer for Mac, file organizer for Windows',
   },
   '/hazel-alternative': {
     title: 'Hazel Alternative with AI File Naming | Zush',

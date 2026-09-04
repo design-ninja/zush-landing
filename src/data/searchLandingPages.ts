@@ -694,7 +694,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
           'Offline AI file renamer for Mac and Windows with LM Studio or Ollama, plus preview, folder monitoring, templates, Naming Blocks, and undo history.',
         featureList: [
           'Offline AI file renaming with LM Studio or Ollama',
-          'Three on-device modes that work offline after setup',
+          'Two local options that work offline after LM Studio or Ollama setup',
           'BYOK support for Gemini, OpenRouter, OpenAI, and Claude',
           'Preview every filename before applying changes',
           'Folder monitoring for automatic rename workflows',
@@ -706,8 +706,8 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     }),
   },
   'ai-file-organizer': {
-    h1: 'AI File Organizer for Mac & Windows',
-    h1Accent: 'AI File Organizer',
+    h1: 'AI File Organizer That Renames Files In Place',
+    h1Accent: 'Renames Files In Place',
     category: 'general',
     definitionTitle: 'What Is an AI File Organizer?',
     definitionText:
@@ -767,7 +767,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
           'Name files by content, not just by pattern',
           'Rename files in place without moving them between folders',
           'Organize screenshots, PDFs, invoices, photos, documents, audio, and videos',
-          'Automatic organization for Downloads via folder monitoring',
+          'Automatic naming for Downloads via folder monitoring',
           'Consistent naming conventions with templates and 145+ Naming Blocks',
           'Preview every filename before applying',
           'Undo and rename history',
