@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.9.0.0] - 2026-09-04
+
+### Added
+- Connect to LM Studio to rename files with local AI models running on your computer.
+- Use OpenRouter with your own API key for access to additional cloud models.
+- Rename EPUB and FictionBook ebooks, including `.fb2` and `.fb2.zip` files.
+- Restore built-in Smart Rename templates to their original settings.
+
+### Improved
+- Improved date detection and naming consistency across documents, images, media, and mixed file batches.
+- Improved compound extension handling, AI setup feedback, file previews, and overall reliability.
+
+
 ## [3.8.10.0] - 2026-08-29
 
 ### Added
