@@ -936,8 +936,8 @@ export const professions = {
         { "title": "Controlla, applica e riutilizza", "description": "Leggi i nomi proposti come unico batch, correggi le eccezioni, applicali con annullamento disponibile e riutilizza lo stesso modello nel lavoro successivo." }
       ],
       "links": [
-        { "label": "Scopri come Zush rinomina le foto", "href": "/rename-photos-with-ai" },
-        { "label": "Scopri come Zush rinomina le clip video", "href": "/rename-videos-with-ai" },
+        { "label": "Rinomina foto con IA", "href": "/rename-photos-with-ai" },
+        { "label": "Rinomina video con IA", "href": "/rename-videos-with-ai" },
         { "label": "Crea un modello di denominazione riutilizzabile", "href": "/docs/templates" }
       ]
     },
@@ -1080,7 +1080,7 @@ export const professions = {
   },
   "hr": {
     "path": "/for-hr",
-    "seo": { "title": "Gestione dei documenti HR con rinomina file Offline AI", "description": "Zush legge CV, lettere di assunzione, moduli di onboarding, valutazioni, policy e dati esportati, quindi assegna nomi coerenti e ricercabili. Usalo con cartelle, unità condivise, download ATS ed esportazioni HRIS esistenti su Mac o Windows." },
+    "seo": { "title": "Gestione dei documenti HR con rinomina file Offline AI", "description": "Rinomina con l’IA CV, lettere di assunzione, moduli di onboarding, valutazioni, policy e dati esportati con nomi coerenti e ricercabili. Usalo con cartelle, unità condivise, download ATS ed esportazioni HRIS esistenti su Mac o Windows." },
     "pageTitle": "Gestione dei documenti HR",
     "hero": { "eyebrow": "Per HR e people team", "titleLead": "Rinomina i documenti HR per ", "titleAccent": "dipendente, data e tipologia", "subtitle": "Zush legge CV, lettere di assunzione, moduli di onboarding, valutazioni, policy e dati esportati, quindi assegna nomi coerenti e ricercabili. Usalo con cartelle, unità condivise, download ATS ed esportazioni HRIS esistenti su Mac o Windows.", "trustLine": ["Funziona con le cartelle esistenti", "Offline AI per i dati sensibili", "Anteprima prima di ogni rinomina"], "photoAlt": "Professionisti HR che esaminano documenti di onboarding in un ufficio moderno", "downloadMac": "Scarica per Mac", "downloadWindows": "Scarica per Windows", "trustAria": "Perché i team di gestione documentale HR usano Zush" },
     "demoLabel": "Zush organizza i documenti HR in file ricercabili di dipendenti e candidati",

@@ -669,8 +669,8 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       { title: 'Naming Blocks Guide', href: '/docs/naming-blocks' },
       { title: 'AI File Organizer', href: '/ai-file-organizer' },
       { title: 'AI File Renamer & Organizer', href: '/' },
-      { title: 'Zush for Mac', href: '/mac' },
-      { title: 'Zush for Windows', href: '/windows' },
+      { title: 'AI file renamer for Mac', href: '/mac' },
+      { title: 'AI file renamer for Windows', href: '/windows' },
     ],
     relatedBlogPosts: [
       { title: 'Local AI File Renaming: Private and Offline', href: 'local-ai-file-renaming-ollama-guide' },
@@ -722,8 +722,8 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       { title: 'Automate Your Downloads Folder', href: '/automate-downloads-folder' },
       { title: 'Offline AI File Renamer', href: '/offline-ai-file-renamer' },
       { title: 'AI File Renamer & Organizer', href: '/' },
-      { title: 'Zush for Mac', href: '/mac' },
-      { title: 'Zush for Windows', href: '/windows' },
+      { title: 'AI file renamer for Mac', href: '/mac' },
+      { title: 'AI file renamer for Windows', href: '/windows' },
     ],
     relatedBlogPosts: [
       { title: 'Best AI File Organizers for Mac', href: 'best-ai-file-organizers-mac' },
@@ -795,7 +795,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       { title: 'Naming Blocks Guide', href: '/docs/naming-blocks' },
       { title: 'Batch Rename Files with AI', href: '/batch-rename-files' },
       { title: 'AI File Renamer & Organizer', href: '/' },
-      { title: 'Zush for Mac', href: '/mac' },
+      { title: 'AI file renamer for Mac', href: '/mac' },
     ],
     relatedBlogPosts: [
       { title: 'Automatic File Organizer for Mac', href: 'automate-file-organization-macos' },
@@ -876,7 +876,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       { title: 'AI File Organizer', href: '/ai-file-organizer' },
       { title: 'Naming Blocks Guide', href: '/docs/naming-blocks' },
       { title: 'AI File Renamer & Organizer', href: '/' },
-      { title: 'Zush for Windows', href: '/windows' },
+      { title: 'AI file renamer for Windows', href: '/windows' },
     ],
     relatedBlogPosts: [
       { title: 'Best AI File Renamers for Windows', href: 'best-ai-file-renamer-tools-windows-compared' },
@@ -920,7 +920,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     faqItems: invoiceRenameFaq,
     relatedPages: [
       { title: 'Zush for Accountants and Bookkeepers', href: '/for-accountants' },
-      { title: 'Zush for Windows', href: '/windows' },
+      { title: 'AI file renamer for Windows', href: '/windows' },
       { title: 'Rename PDFs with AI', href: '/rename-pdf-with-ai' },
       { title: 'Rename & Organize Receipts with AI', href: '/rename-receipts-with-ai' },
       { title: 'Custom AI Blocks Docs', href: '/docs/custom-ai-blocks' },

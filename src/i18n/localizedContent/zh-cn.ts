@@ -1267,11 +1267,11 @@ export const professions = {
       ],
       "links": [
         {
-          "label": "查看 Zush 如何重命名照片",
+          "label": "使用 AI 重命名照片",
           "href": "/rename-photos-with-ai"
         },
         {
-          "label": "查看 Zush 如何重命名视频剪辑",
+          "label": "使用 AI 重命名视频",
           "href": "/rename-videos-with-ai"
         },
         {
@@ -1670,7 +1670,7 @@ export const professions = {
     "path": "/for-hr",
     "seo": {
       "title": "具有离线 AI 文件重命名功能的 HR 文档管理",
-      "description": "Zush 读取简历、录用信、入职表格、评论、政策和导出记录，然后为它们提供一致的、可搜索的文件名。将其与 Mac 或 Windows 上的现有文件夹、共享驱动器、ATS 下载和 HRIS 导出一起使用。"
+      "description": "使用 AI 为简历、录用信、入职表格、评论、政策和导出记录生成一致且可搜索的文件名。该工作流程适用于 Mac 或 Windows 上的现有文件夹、共享驱动器、ATS 下载和 HRIS 导出。"
     },
     "pageTitle": "人力资源文档管理",
     "hero": {

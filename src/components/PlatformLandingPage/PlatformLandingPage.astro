@@ -97,11 +97,6 @@ const macVersion = parseLatestVersion(macChangelogSource) ?? undefined;
 const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
 const platformKeywords = platform === 'mac'
   ? [
-      'Zush for Mac',
-      'Zush Mac',
-      'Zush AI Renamer for Mac',
-      'Zush AI File Renamer for Mac',
-      'Zush File Renamer for Mac',
       'AI file renamer for Mac',
       'Mac file renamer',
       'macOS file renamer',
@@ -114,11 +109,6 @@ const platformKeywords = platform === 'mac'
       'hazel alternative',
     ]
   : [
-      'Zush for Windows',
-      'Zush Windows',
-      'Zush AI Renamer for Windows',
-      'Zush AI File Renamer for Windows',
-      'Zush File Renamer for Windows',
       'file renamer for Windows',
       'Windows file renamer',
       'AI file renamer for Windows',
@@ -172,20 +162,6 @@ const intentSection = platform === 'mac'
       ],
     };
 
-const schemaAlternateNames = locale === DEFAULT_LOCALE
-  ? platform === 'mac'
-    ? [
-        'Zush AI Renamer for Mac',
-        'Zush AI File Renamer for Mac',
-        'Zush File Renamer for Mac',
-      ]
-    : [
-        'Zush AI Renamer for Windows',
-        'Zush AI File Renamer for Windows',
-        'Zush File Renamer for Windows',
-      ]
-  : [];
-
 const canonicalSoftwareId = `${SITE_ORIGIN}${page.path}#software`;
 
 const screenshotJsonLd = platform === 'windows'
@@ -198,7 +174,7 @@ const screenshotJsonLd = platform === 'windows'
       {
         '@type': 'ImageObject',
         url: `${SITE_ORIGIN}/images/screenshots/light/zush-main-interface.webp`,
-        caption: 'Zush for Mac AI file renamer interface',
+        caption: 'AI file renamer interface on Mac',
       },
     ];
 
@@ -207,7 +183,6 @@ const softwareJsonLd = {
   '@type': 'SoftwareApplication',
   '@id': canonicalSoftwareId,
   name: localizedPage.softwareName,
-  ...(schemaAlternateNames.length > 0 ? { alternateName: schemaAlternateNames } : {}),
   url: `${SITE_ORIGIN}${page.path}`,
   description: localizedPage.softwareDescription,
   keywords: platformKeywords.join(', '),
@@ -260,9 +235,9 @@ const windowsVideoJsonLd = platform === 'windows' && locale === DEFAULT_LOCALE
       '@context': 'https://schema.org',
       '@type': 'VideoObject',
       '@id': `${SITE_ORIGIN}${pagePath}#batch-rename-video`,
-      name: 'Zush for Windows batch rename workflow',
+      name: 'AI batch rename workflow on Windows',
       description:
-        'A Zush for Windows demo showing File Explorer files analyzed by AI, reviewed in a batch rename list, and applied with undo history available.',
+        'A Windows demo showing File Explorer files analyzed by AI, reviewed in a batch rename list, and applied with undo history available.',
       thumbnailUrl: `${SITE_ORIGIN}${WINDOWS_SHOWCASE_SCREENSHOTS[0].images.light}`,
       uploadDate: WINDOWS_BATCH_RENAME_VIDEO_UPLOAD_DATE,
       contentUrl: `${SITE_ORIGIN}${WINDOWS_SHOWCASE_SCREENSHOTS[0].video?.light ?? '/videos/windows/zush-batch-rename.mp4'}`,

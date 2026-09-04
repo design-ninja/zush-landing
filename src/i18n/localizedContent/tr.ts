@@ -1269,11 +1269,11 @@ export const professions = {
       ],
       "links": [
         {
-          "label": "Zush'nin fotoğrafları nasıl yeniden adlandırdığını görün",
+          "label": "Fotoğrafları yapay zekâyla yeniden adlandırın",
           "href": "/rename-photos-with-ai"
         },
         {
-          "label": "Zush'nin video klipleri nasıl yeniden adlandırdığını görün",
+          "label": "Video klipleri yapay zekâyla yeniden adlandırın",
           "href": "/rename-videos-with-ai"
         },
         {
@@ -1675,7 +1675,7 @@ export const professions = {
     "path": "/for-hr",
     "seo": {
       "title": "Çevrimdışı AI Dosya Yeniden Adlandırma ile İK Belge Yönetimi",
-      "description": "Zush özgeçmişleri, teklif mektuplarını, işe alım formlarını, incelemeleri, politikaları ve dışa aktarılan kayıtları okur ve ardından bunlara tutarlı, aranabilir dosya adları verir. Mac veya Windows'ta mevcut klasörler, paylaşılan sürücüler, ATS indirmeleri ve HRIS dışa aktarmalarıyla kullanın."
+      "description": "Özgeçmişleri, teklif mektuplarını, işe alım formlarını, incelemeleri, politikaları ve dışa aktarılan kayıtları yapay zekâyla tutarlı, aranabilir dosya adlarıyla yeniden adlandırın. Mac veya Windows'ta mevcut klasörler, paylaşılan sürücüler, ATS indirmeleri ve HRIS dışa aktarmalarıyla kullanın."
     },
     "pageTitle": "İK belge yönetimi",
     "hero": {

@@ -46,6 +46,23 @@ const USE_CASES_BLOCK_ROUTES = [
   '/rename-screenshots-with-ai',
 ];
 const FULL_SOFTWARE_APPLICATION_ROUTES = new Set(['/', '/mac', '/windows']);
+const BRAND_ISOLATED_ROUTES = new Set([
+  '/mac',
+  '/windows',
+  '/pricing',
+  '/docs',
+  '/docs/zush-cloud-ai',
+  '/docs/get-started',
+  '/docs/install-update',
+  '/batch-rename-files',
+  '/offline-ai-file-renamer',
+  '/ai-file-organizer',
+  '/rename-photos-with-ai',
+  '/rename-pdf-with-ai',
+  '/rename-invoices-with-ai',
+  '/rename-videos-with-ai',
+  '/for-hr',
+]);
 const ROOT_SOFTWARE_ID = `${SITE_ORIGIN}/#software`;
 const ORGANIZATION_ALTERNATE_NAMES = [
   'Zush AI Renamer',
@@ -54,24 +71,21 @@ const ORGANIZATION_ALTERNATE_NAMES = [
   'Zush Renamer',
   'Zush App',
 ];
+const WEBSITE_ALTERNATE_NAMES = [
+  'Zush AI Renamer',
+  'Zush AI File Renamer',
+  'Zush File Renamer',
+  'Zush Renamer',
+  'zushapp.com',
+];
 const PLATFORM_SOFTWARE = {
   '/mac': {
     id: `${SITE_ORIGIN}/mac#software`,
-    name: 'Zush for Mac',
-    alternateName: [
-      'Zush AI Renamer for Mac',
-      'Zush AI File Renamer for Mac',
-      'Zush File Renamer for Mac',
-    ],
+    name: 'Zush',
   },
   '/windows': {
     id: `${SITE_ORIGIN}/windows#software`,
-    name: 'Zush for Windows',
-    alternateName: [
-      'Zush AI Renamer for Windows',
-      'Zush AI File Renamer for Windows',
-      'Zush File Renamer for Windows',
-    ],
+    name: 'Zush',
   },
 };
 
@@ -107,6 +121,27 @@ function isBlogPostPath(pathname) {
 
 function isUseCasesLandingPath(pathname) {
   return USE_CASES_BLOCK_ROUTES.some((route) => pathname === route || pathname.endsWith(route));
+}
+
+function baseRoute(pathname) {
+  return pathname.replace(/^\/(?:de|fr|es|pt-br|it|nl|tr|ja|ko|zh-cn|ar)(?=\/)/, '') || '/';
+}
+
+function assertBrandIsolatedMetadata(html, pathname) {
+  if (!BRAND_ISOLATED_ROUTES.has(baseRoute(pathname))) return;
+
+  const fields = {
+    title: html.match(/<title>([\s\S]*?)<\/title>/i)?.[1] ?? '',
+    h1: html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i)?.[1] ?? '',
+    keywords: html.match(/<meta[^>]+name="keywords"[^>]+content="([^"]*)"/i)?.[1] ?? '',
+  };
+
+  for (const [field, value] of Object.entries(fields)) {
+    const text = value.replace(/<[^>]+>/g, ' ');
+    if (/zush/i.test(text)) {
+      fail(`Brand query leaked into ${field} on isolated route ${pathname}`);
+    }
+  }
 }
 
 function assertIncludes(html, needle, message) {
@@ -322,6 +357,7 @@ for (const loc of locs) {
 
   assertVideoObjectUploadDate(jsonLdBlocks, pathname);
   assertIncludes(html, '<h1', `Missing <h1> in raw HTML for ${pathname}`);
+  assertBrandIsolatedMetadata(html, pathname);
 
   if (html.includes('<div id="root"></div>')) {
     fail(`Empty shell detected for ${pathname}`);
@@ -564,6 +600,9 @@ const homepageSoftware = homepageJsonLdItems.find((item) =>
 const homepageOrganization = homepageJsonLdItems.find((item) =>
   hasJsonLdType(item, 'Organization') && item['@id'] === `${SITE_ORIGIN}/#organization`
 );
+const homepageWebsite = homepageJsonLdItems.find((item) =>
+  hasJsonLdType(item, 'WebSite') && item['@id'] === `${SITE_ORIGIN}/#website`
+);
 assertIncludes(homepageHtml, '"@type":"SoftwareApplication"', 'Homepage SoftwareApplication JSON-LD missing.');
 assertNotIncludes(homepageHtml, '"@type":"HowTo"', 'Homepage should not emit HowTo JSON-LD.');
 if (!homepageFaq) {
@@ -578,6 +617,11 @@ if (JSON.stringify(homepageSoftware?.alternateName) !== JSON.stringify(ORGANIZAT
 }
 if (JSON.stringify(homepageOrganization?.alternateName) !== JSON.stringify(ORGANIZATION_ALTERNATE_NAMES)) {
   fail('Organization.alternateName changed unexpectedly.');
+}
+if (homepageWebsite?.name !== 'Zush') fail('WebSite.name must remain Zush.');
+if (homepageWebsite?.url !== `${SITE_ORIGIN}/`) fail('WebSite.url must be the canonical homepage URL.');
+if (JSON.stringify(homepageWebsite?.alternateName) !== JSON.stringify(WEBSITE_ALTERNATE_NAMES)) {
+  fail('WebSite.alternateName changed unexpectedly.');
 }
 assertNotIncludes(homepageHtml, '"speakable"', 'Homepage should not emit speakable JSON-LD.');
 

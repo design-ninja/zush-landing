@@ -1271,11 +1271,11 @@ export const professions = {
       ],
       "links": [
         {
-          "label": "Zush が写真の名前を変更する方法をご覧ください",
+          "label": "AI で写真のファイル名を変更",
           "href": "/rename-photos-with-ai"
         },
         {
-          "label": "Zush がビデオ クリップの名前を変更する方法をご覧ください。",
+          "label": "AI で動画のファイル名を変更",
           "href": "/rename-videos-with-ai"
         },
         {
@@ -1676,7 +1676,7 @@ export const professions = {
     "path": "/for-hr",
     "seo": {
       "title": "オフラインAIで人事書類を安全にリネーム",
-      "description": "Zushは履歴書、採用通知書、入社手続き書類、人事評価、社内規程、エクスポートした記録を読み取り、一貫した検索しやすいファイル名を提案します。MacやWindowsの既存フォルダ、共有ドライブ、ATSからのダウンロード、HRISエクスポートをそのまま利用できます。"
+      "description": "AIで履歴書、採用通知書、入社手続き書類、人事評価、社内規程、エクスポートした記録に、一貫した検索しやすいファイル名を付けます。MacやWindowsの既存フォルダ、共有ドライブ、ATSからのダウンロード、HRISエクスポートをそのまま利用できます。"
     },
     "pageTitle": "人事文書管理",
     "hero": {

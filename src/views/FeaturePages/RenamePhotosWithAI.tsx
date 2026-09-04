@@ -151,7 +151,7 @@ const RenamePhotosWithAI = () => (
       { title: 'Offline AI File Renamer', href: '/offline-ai-file-renamer' },
       { title: 'Rename Videos with AI', href: '/rename-videos-with-ai' },
       { title: 'Rename PDFs with AI', href: '/rename-pdf-with-ai' },
-      { title: 'Zush for Mac', href: '/mac' },
+      { title: 'AI file renamer for Mac', href: '/mac' },
     ]}
     contextualGuideLink={{
       before: 'After renaming, use the complete guide to',

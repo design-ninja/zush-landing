@@ -1274,11 +1274,11 @@ export const professions = {
       ],
       "links": [
         {
-          "label": "Vea cómo Zush cambia el nombre de las fotos",
+          "label": "Renombrar fotos con IA",
           "href": "/rename-photos-with-ai"
         },
         {
-          "label": "Vea cómo Zush cambia el nombre de los videoclips",
+          "label": "Renombrar vídeos con IA",
           "href": "/rename-videos-with-ai"
         },
         {
@@ -1679,7 +1679,7 @@ export const professions = {
     "path": "/for-hr",
     "seo": {
       "title": "Gestión de documentos de recursos humanos con renombrado por IA sin conexión",
-      "description": "Zush lee currículums, cartas de oferta, formularios de incorporación, evaluaciones, políticas y registros exportados, y les asigna nombres coherentes y fáciles de encontrar. Úselo con sus carpetas, unidades compartidas, descargas del ATS y exportaciones del HRIS en Mac o Windows."
+      "description": "Renombra con IA currículums, cartas de oferta, formularios de incorporación, evaluaciones, políticas y registros exportados con nombres coherentes y fáciles de encontrar. Funciona con carpetas, unidades compartidas, descargas del ATS y exportaciones del HRIS en Mac o Windows."
     },
     "pageTitle": "Gestión de documentos de RR. HH.",
     "hero": {

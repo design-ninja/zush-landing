@@ -11,7 +11,7 @@ interface PlatformFaqCopy {
 const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy>>> = {
   de: {
     mac: {
-      description: 'Alles Wichtige über Zush für Mac und den Rest des Produkts.',
+      description: 'Alles Wichtige über die Mac-App und das Produkt.',
       items: [
         { question: 'Funktioniert Zush auf Apple Silicon?', answer: 'Ja. Zush läuft nativ auf Apple Silicon und Intel Macs mit macOS 15 oder neuer.' },
         { question: 'Ist die App von Apple notariell beglaubigt?', answer: 'Ja. Die .dmg ist codesigniert und notariell beglaubigt, sodass Gatekeeper sie auf unterstützten macOS-Versionen normal öffnet.' },
@@ -19,17 +19,17 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
       ],
     },
     windows: {
-      description: 'Alles Wichtige über Zush für Windows und den Rest des Produkts.',
+      description: 'Alles Wichtige über die Windows-App und das Produkt.',
       items: [
         { question: 'Warum wird Zush über den Microsoft Store verteilt?', answer: 'Der Store übernimmt Installation, Signierung und automatische Updates für alle Nutzer.' },
-        { question: 'Hat Zush für Windows dieselben Funktionen wie Mac?', answer: 'Ja. Es enthält Cloud-KI-Umbenennung, Ordnerüberwachung, eigene Prompts, Verlauf zum Wiederherstellen, BYOK und lokale KI.' },
+        { question: 'Hat die Windows-App dieselben Funktionen wie die Mac-App?', answer: 'Ja. Es enthält Cloud-KI-Umbenennung, Ordnerüberwachung, eigene Prompts, Verlauf zum Wiederherstellen, BYOK und lokale KI.' },
         { question: 'Läuft es auf Windows on ARM?', answer: 'Ja. Die Microsoft-Store-Version enthält native x64- und ARM64-Pakete.' },
       ],
     },
   },
   fr: {
     mac: {
-      description: 'Tout ce qu’il faut savoir sur Zush pour Mac et le reste du produit.',
+      description: 'Tout ce qu’il faut savoir sur l’app Mac et le produit.',
       items: [
         { question: 'Zush fonctionne-t-il sur Apple Silicon ?', answer: 'Oui. Zush fonctionne nativement sur les Mac Apple Silicon et Intel avec macOS 15 ou plus récent.' },
         { question: 'L’app est-elle notarisée par Apple ?', answer: 'Oui. Le .dmg est signé et notarisé, donc Gatekeeper l’ouvre normalement sur les versions macOS prises en charge.' },
@@ -37,17 +37,17 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
       ],
     },
     windows: {
-      description: 'Tout ce qu’il faut savoir sur Zush pour Windows et le reste du produit.',
+      description: 'Tout ce qu’il faut savoir sur l’app Windows et le produit.',
       items: [
         { question: 'Pourquoi Zush est-il distribué via le Microsoft Store ?', answer: 'Le Store gère l’installation, la signature et les mises à jour automatiques pour chaque utilisateur.' },
-        { question: 'Zush pour Windows a-t-il les mêmes fonctions que sur Mac ?', answer: 'Oui. Il inclut le renommage IA cloud, la surveillance de dossiers, les prompts personnalisés, l’historique de restauration, BYOK et l’IA locale.' },
+        { question: 'L’app Windows a-t-elle les mêmes fonctions que l’app Mac ?', answer: 'Oui. Elle inclut le renommage IA cloud, la surveillance de dossiers, les prompts personnalisés, l’historique de restauration, BYOK et l’IA locale.' },
         { question: 'Fonctionne-t-il sur Windows on ARM ?', answer: 'Oui. La version Microsoft Store inclut des paquets natifs x64 et ARM64.' },
       ],
     },
   },
   'pt-br': {
     mac: {
-      description: 'Tudo que você precisa saber sobre o Zush para Mac e o restante do produto.',
+      description: 'Tudo que você precisa saber sobre o app para Mac e o produto.',
       items: [
         { question: 'O Zush funciona em Apple Silicon?', answer: 'Sim. O Zush roda nativamente em Macs Apple Silicon e Intel com macOS 15 ou mais recente.' },
         { question: 'O app é notarizado pela Apple?', answer: 'Sim. O .dmg é assinado e notarizado, então o Gatekeeper o abre normalmente nas versões compatíveis do macOS.' },
@@ -55,17 +55,17 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
       ],
     },
     windows: {
-      description: 'Tudo que você precisa saber sobre o Zush para Windows e o restante do produto.',
+      description: 'Tudo que você precisa saber sobre o app para Windows e o produto.',
       items: [
         { question: 'Por que o Zush é distribuído pela Microsoft Store?', answer: 'A Store cuida da instalação, assinatura e atualizações automáticas para todos os usuários.' },
-        { question: 'O Zush para Windows tem os mesmos recursos do Mac?', answer: 'Sim. Ele inclui renomeação com IA na nuvem, monitoramento de pastas, prompts personalizados, histórico para reverter, BYOK e IA local.' },
+        { question: 'O app para Windows tem os mesmos recursos do app para Mac?', answer: 'Sim. Ele inclui renomeação com IA na nuvem, monitoramento de pastas, prompts personalizados, histórico para reverter, BYOK e IA local.' },
         { question: 'Ele roda em Windows on ARM?', answer: 'Sim. A versão da Microsoft Store inclui pacotes nativos x64 e ARM64.' },
       ],
     },
   },
   es: {
     mac: {
-      description: 'Todo lo que necesitas saber sobre Zush para Mac y el resto del producto.',
+      description: 'Todo lo que necesitas saber sobre la app para Mac y el producto.',
       items: [
         { question: '¿Zush funciona en Apple Silicon?', answer: 'Sí. Zush se ejecuta de forma nativa en Macs Apple Silicon e Intel con macOS 15 o posterior.' },
         { question: '¿La app está notarizada por Apple?', answer: 'Sí. El .dmg está firmado y notarizado, por lo que Gatekeeper lo abre normalmente en versiones compatibles de macOS.' },
@@ -73,17 +73,17 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
       ],
     },
     windows: {
-      description: 'Todo lo que necesitas saber sobre Zush para Windows y el resto del producto.',
+      description: 'Todo lo que necesitas saber sobre la app para Windows y el producto.',
       items: [
         { question: '¿Por qué Zush se distribuye mediante Microsoft Store?', answer: 'La Store gestiona la instalación, la firma y las actualizaciones automáticas para cada usuario.' },
-        { question: '¿Zush para Windows tiene las mismas funciones que Mac?', answer: 'Sí. Incluye renombrado con IA en la nube, monitoreo de carpetas, prompts personalizados, historial para revertir, BYOK e IA local.' },
+        { question: '¿La app para Windows tiene las mismas funciones que la app para Mac?', answer: 'Sí. Incluye renombrado con IA en la nube, monitoreo de carpetas, prompts personalizados, historial para revertir, BYOK e IA local.' },
         { question: '¿Funciona en Windows on ARM?', answer: 'Sí. La versión de Microsoft Store incluye paquetes nativos x64 y ARM64.' },
       ],
     },
   },
   nl: {
     mac: {
-      description: 'Alles wat je moet weten over Zush voor Mac en de rest van het product.',
+      description: 'Alles wat je moet weten over de Mac-app en het product.',
       items: [
         { question: 'Werkt Zush op Apple Silicon?', answer: 'Ja. Zush draait native op Apple Silicon- en Intel-Macs met macOS 15 of nieuwer.' },
         { question: 'Is de app door Apple genotariseerd?', answer: 'Ja. De .dmg is code-signed en genotariseerd, zodat Gatekeeper deze normaal opent op ondersteunde macOS-versies.' },
@@ -91,17 +91,17 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
       ],
     },
     windows: {
-      description: 'Alles wat je moet weten over Zush voor Windows en de rest van het product.',
+      description: 'Alles wat je moet weten over de Windows-app en het product.',
       items: [
         { question: 'Waarom wordt Zush via de Microsoft Store verspreid?', answer: 'De Store regelt installatie, ondertekening en automatische updates voor elke gebruiker.' },
-        { question: 'Heeft Zush voor Windows dezelfde functies als Mac?', answer: 'Ja. Het bevat cloud AI-renaming, mapmonitoring, aangepaste prompts, herstelgeschiedenis, BYOK en Lokale AI.' },
+        { question: 'Heeft de Windows-app dezelfde functies als de Mac-app?', answer: 'Ja. Het bevat cloud AI-renaming, mapmonitoring, aangepaste prompts, herstelgeschiedenis, BYOK en Lokale AI.' },
         { question: 'Draait het op Windows on ARM?', answer: 'Ja. De Microsoft Store-release bevat native x64- en ARM64-pakketten.' },
       ],
     },
   },
   it: {
     mac: {
-      description: 'Tutto quello che devi sapere su Zush per Mac e sul resto del prodotto.',
+      description: 'Tutto quello che devi sapere sull’app per Mac e sul prodotto.',
       items: [
         { question: 'Zush funziona su Apple Silicon?', answer: 'Sì. Zush gira in modo nativo su Mac Apple Silicon e Intel con macOS 15 o versioni successive.' },
         { question: 'L’app è notarizzata da Apple?', answer: 'Sì. Il file .dmg è firmato e notarizzato, quindi Gatekeeper lo apre normalmente sulle versioni macOS supportate.' },
@@ -109,17 +109,17 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
       ],
     },
     windows: {
-      description: 'Tutto quello che devi sapere su Zush per Windows e sul resto del prodotto.',
+      description: 'Tutto quello che devi sapere sull’app per Windows e sul prodotto.',
       items: [
         { question: 'Perché Zush è distribuito tramite Microsoft Store?', answer: 'Lo Store gestisce installazione, firma e aggiornamenti automatici per ogni utente.' },
-        { question: 'Zush per Windows ha le stesse funzioni della versione Mac?', answer: 'Sì. Include rinomina IA cloud, monitoraggio cartelle, prompt personalizzati, cronologia per ripristinare, BYOK e IA locale.' },
+        { question: 'L’app per Windows ha le stesse funzioni dell’app per Mac?', answer: 'Sì. Include rinomina IA cloud, monitoraggio cartelle, prompt personalizzati, cronologia per ripristinare, BYOK e IA locale.' },
         { question: 'Funziona su Windows on ARM?', answer: 'Sì. La versione Microsoft Store include pacchetti nativi x64 e ARM64.' },
       ],
     },
   },
   ja: {
     mac: {
-      description: 'Zush for Mac と製品全体について知っておきたいこと。',
+      description: 'Mac 版アプリと製品全体について知っておきたいこと。',
       items: [
         { question: 'Zush は Apple Silicon で動作しますか？', answer: 'はい。Zush は macOS 15 以降の Apple Silicon Mac と Intel Mac でネイティブに動作します。' },
         { question: 'アプリは Apple によって notarize されていますか？', answer: 'はい。.dmg はコード署名と notarization 済みなので、対応する macOS では Gatekeeper から通常どおり開けます。' },
@@ -127,17 +127,17 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
       ],
     },
     windows: {
-      description: 'Zush for Windows と製品全体について知っておきたいこと。',
+      description: 'Windows 版アプリと製品全体について知っておきたいこと。',
       items: [
         { question: 'なぜ Zush は Microsoft Store で配布されていますか？', answer: 'Store がインストール、署名、自動更新を各ユーザー向けに管理するためです。' },
-        { question: 'Zush for Windows は Mac 版と同じ機能がありますか？', answer: 'はい。クラウド AI リネーム、フォルダ監視、カスタムプロンプト、復元履歴、BYOK、ローカル AI を含みます。' },
+        { question: 'Windows 版アプリは Mac 版と同じ機能がありますか？', answer: 'はい。クラウド AI リネーム、フォルダ監視、カスタムプロンプト、復元履歴、BYOK、ローカル AI を含みます。' },
         { question: 'Windows on ARM で動作しますか？', answer: 'はい。Microsoft Store 版には x64 と ARM64 のネイティブパッケージが含まれます。' },
       ],
     },
   },
   ko: {
     mac: {
-      description: 'Mac용 Zush와 제품 전반에 대해 알아야 할 내용입니다.',
+      description: 'Mac용 앱과 제품 전반에 대해 알아야 할 내용입니다.',
       items: [
         { question: 'Zush는 Apple Silicon에서 작동하나요?', answer: '예. Zush는 macOS 15 이상을 실행하는 Apple Silicon 및 Intel Mac에서 네이티브로 작동합니다.' },
         { question: '앱은 Apple 공증을 받았나요?', answer: '예. .dmg는 코드 서명 및 공증이 완료되어 지원되는 macOS 버전에서 Gatekeeper가 정상적으로 열 수 있습니다.' },
@@ -145,17 +145,17 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
       ],
     },
     windows: {
-      description: 'Windows용 Zush와 제품 전반에 대해 알아야 할 내용입니다.',
+      description: 'Windows용 앱과 제품 전반에 대해 알아야 할 내용입니다.',
       items: [
         { question: 'Zush는 왜 Microsoft Store로 배포되나요?', answer: 'Store가 모든 사용자의 설치, 서명, 자동 업데이트를 처리하기 때문입니다.' },
-        { question: 'Windows용 Zush도 Mac과 같은 기능을 제공하나요?', answer: '예. 클라우드 AI 이름 변경, 폴더 모니터링, 사용자 지정 프롬프트, 복원 기록, BYOK, 로컬 AI를 포함합니다.' },
+        { question: 'Windows용 앱도 Mac용 앱과 같은 기능을 제공하나요?', answer: '예. 클라우드 AI 이름 변경, 폴더 모니터링, 사용자 지정 프롬프트, 복원 기록, BYOK, 로컬 AI를 포함합니다.' },
         { question: 'Windows on ARM에서 실행되나요?', answer: '예. Microsoft Store 릴리스에는 네이티브 x64 및 ARM64 패키지가 포함됩니다.' },
       ],
     },
   },
   'zh-cn': {
     mac: {
-      description: '关于 Zush for Mac 和产品功能的常见问题。',
+      description: '关于 Mac 版应用和产品功能的常见问题。',
       items: [
         { question: 'Zush 支持 Apple Silicon 吗？', answer: '支持。Zush 可在 Apple Silicon 和 Intel Mac 上原生运行，要求 macOS 15 或更新版本。' },
         { question: '应用经过 Apple 公证吗？', answer: '是的。.dmg 已签名并通过公证，Gatekeeper 可以在受支持的 macOS 版本上正常打开。' },
@@ -163,7 +163,7 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
       ],
     },
     windows: {
-      description: '关于 Zush for Windows 和产品功能的常见问题。',
+      description: '关于 Windows 版应用和产品功能的常见问题。',
       items: [
         { question: '为什么通过 Microsoft Store 分发？', answer: 'Microsoft Store 会处理安装、签名和自动更新，用户无需手动维护版本。' },
         { question: 'Windows 版和 Mac 版功能一样吗？', answer: '是的。Windows 版包含云端 AI 重命名、文件夹监控、自定义提示词、恢复历史、BYOK 和本地 AI。' },

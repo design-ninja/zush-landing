@@ -101,7 +101,7 @@ const RenameWordDocumentsWithAI = () => (
       { title: 'Rename Excel Files with AI', href: '/rename-excel-files-with-ai' },
       { title: 'Batch Rename Files with AI', href: '/batch-rename-files' },
       { title: 'Rename PDFs with AI', href: '/rename-pdf-with-ai' },
-      { title: 'Zush for Mac', href: '/mac' },
+      { title: 'AI file renamer for Mac', href: '/mac' },
     ]}
     relatedBlogPosts={[
       { title: 'AI Document Renamer: How to Auto-Name Docs, PDFs & Spreadsheets', href: 'ai-document-renamer-guide' },

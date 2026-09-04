@@ -131,8 +131,8 @@ const RenameScreenshotsWithAI = () => (
       { title: 'Batch Rename Files with AI', href: '/batch-rename-files' },
       { title: 'Rename Photos with AI', href: '/rename-photos-with-ai' },
       { title: 'Rename PDFs with AI', href: '/rename-pdf-with-ai' },
-      { title: 'Zush for Mac', href: '/mac' },
-      { title: 'Zush for Windows', href: '/windows' },
+      { title: 'AI file renamer for Mac', href: '/mac' },
+      { title: 'AI file renamer for Windows', href: '/windows' },
     ]}
     relatedBlogPosts={[
       { title: 'How to Rename Screenshots Automatically on Mac', href: 'rename-screenshots-automatically-mac' },

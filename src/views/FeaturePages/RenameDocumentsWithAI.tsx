@@ -112,7 +112,7 @@ const RenameDocumentsWithAI = () => (
       { title: 'Rename PDFs with AI', href: '/rename-pdf-with-ai' },
       { title: 'Rename Videos with AI', href: '/rename-videos-with-ai' },
       { title: 'Rename Screenshots with AI', href: '/rename-screenshots-with-ai' },
-      { title: 'Zush for Mac', href: '/mac' },
+      { title: 'AI file renamer for Mac', href: '/mac' },
     ]}
     relatedBlogPosts={[
       { title: 'Batch rename EPUB and FB2 files by author and title', href: 'batch-rename-epub-fb2-files' },

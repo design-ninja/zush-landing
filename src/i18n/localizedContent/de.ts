@@ -1284,11 +1284,11 @@ export const professions: ProfessionLocaleCopy = {
       ],
       "links": [
         {
-          "label": "Sehen Sie, wie Zush Fotos umbenennt",
+          "label": "Fotos mit KI umbenennen",
           "href": "/rename-photos-with-ai"
         },
         {
-          "label": "Sehen Sie, wie Zush Videoclips umbenennt",
+          "label": "Videos mit KI umbenennen",
           "href": "/rename-videos-with-ai"
         },
         {
@@ -1688,7 +1688,7 @@ export const professions: ProfessionLocaleCopy = {
   "hr": {
     "path": "/for-hr",
     "seo": {
-      "title": "HR-Dokumente mit Offline-KI verwalten | Zush",
+      "title": "HR-Dokumente mit Offline-KI verwalten",
       "description": "Benennen und organisieren Sie Mitarbeiter-, Bewerber-, Einarbeitungs-, Beurteilungs- und Richtliniendokumente mit KI. Durchsuchbare HR-Dateinamen, Offline-KI, Vorschau und Rückgängigmachen auf Mac oder Windows."
     },
     "pageTitle": "HR-Dokumente mit Offline-KI verwalten",

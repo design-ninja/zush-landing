@@ -78,10 +78,17 @@ assert.doesNotMatch(
   /^\s*'Zush AI',\s*$/m,
   'Zush AI must not be a site-name alias; Google can select it instead of Zush.',
 );
-assert.doesNotMatch(
-  entitySource.match(/const WEBSITE_JSON_LD = \{([\s\S]*?)\n\};/)?.[1] ?? '',
-  /alternateName:/,
-  'WebSite must expose only the canonical Zush name; product aliases belong to the product and organization nodes.',
+assert.match(
+  entitySource,
+  /export const ZUSH_SITE_ALTERNATE_NAMES = \[\s*'Zush AI Renamer',\s*'Zush AI File Renamer',\s*'Zush File Renamer',\s*'Zush Renamer',\s*'zushapp\.com',\s*\] as const;/,
+  'WebSite site-name variants must contain the recognized branded names and end with zushapp.com.',
+);
+const websiteSchema = entitySource.match(/const WEBSITE_JSON_LD = \{([\s\S]*?)\n\};/)?.[1] ?? '';
+assert.match(websiteSchema, /url:\s*`\$\{SITE_ORIGIN\}\/`/, 'WebSite.url must use the canonical homepage URL.');
+assert.match(
+  websiteSchema,
+  /alternateName:\s*\[\.\.\.ZUSH_SITE_ALTERNATE_NAMES\]/,
+  'WebSite must expose the dedicated site-name fallbacks.',
 );
 
 const homeAlternateNames = seoConfigSource.match(/alternateName:\s*\[([\s\S]*?)\],\n\s*url: SITE_ORIGIN/);
@@ -102,15 +109,22 @@ for (const genericName of [
   );
 }
 
-const platformAlternateNames = platformLandingSource.match(
-  /const schemaAlternateNames =([\s\S]*?)const canonicalSoftwareId =/,
-);
-assert(platformAlternateNames, 'Platform SoftwareApplication alternateName block is missing.');
-for (const genericName of ['AI File Renamer for Mac', 'Mac AI File Renamer', 'AI File Renamer for Windows', 'Windows AI File Renamer']) {
+for (const platformBrandVariant of [
+  'Zush for Mac',
+  'Zush Mac',
+  'Zush AI Renamer for Mac',
+  'Zush AI File Renamer for Mac',
+  'Zush File Renamer for Mac',
+  'Zush for Windows',
+  'Zush Windows',
+  'Zush AI Renamer for Windows',
+  'Zush AI File Renamer for Windows',
+  'Zush File Renamer for Windows',
+]) {
   assert.doesNotMatch(
-    platformAlternateNames[1],
-    new RegExp(`['"]${genericName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}['"]`),
-    `Generic category leaked into platform alternateName: ${genericName}`,
+    platformLandingSource,
+    new RegExp(`['"]${platformBrandVariant.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}['"]`),
+    `Platform-specific branded variant leaked into keyword or alternateName targeting: ${platformBrandVariant}`,
   );
 }
 assert.match(
@@ -169,14 +183,9 @@ for (const productProfile of [
 for (const brandedKeyword of [
   'Zush AI Renamer',
   'Zush AI File Renamer',
-  'Zush for Mac',
-  'Zush for Windows',
 ]) {
-  const source = brandedKeyword.endsWith('Mac') || brandedKeyword.endsWith('Windows')
-    ? platformLandingSource
-    : seoConfigSource;
   assert.match(
-    source,
+    seoConfigSource,
     new RegExp(`['"]${brandedKeyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}['"]`),
     `Missing branded keyword: ${brandedKeyword}`,
   );

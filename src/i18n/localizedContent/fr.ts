@@ -1281,11 +1281,11 @@ export const professions: ProfessionLocaleCopy = {
       ],
       "links": [
         {
-          "label": "Découvrez comment Zush renomme les photos",
+          "label": "Renommer des photos avec l’IA",
           "href": "/rename-photos-with-ai"
         },
         {
-          "label": "Découvrez comment Zush renomme les clips vidéo",
+          "label": "Renommer des vidéos avec l’IA",
           "href": "/rename-videos-with-ai"
         },
         {
@@ -1684,7 +1684,7 @@ export const professions: ProfessionLocaleCopy = {
   "hr": {
     "path": "/for-hr",
     "seo": {
-      "title": "Gestion des documents RH avec renommage par IA hors ligne | Zush",
+      "title": "Gestion des documents RH avec renommage par IA hors ligne",
       "description": "Renommez et organisez les dossiers salariés, candidats, d’intégration, d’évaluation et de politique interne avec l’IA. Noms de fichiers RH faciles à rechercher, IA hors ligne, aperçu et annulation sur Mac ou Windows."
     },
     "pageTitle": "Gestion des documents RH avec renommage par IA hors ligne",

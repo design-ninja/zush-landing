@@ -1276,11 +1276,11 @@ export const professions = {
       ],
       "links": [
         {
-          "label": "Zush가 사진 이름을 바꾸는 방법 보기",
+          "label": "AI로 사진 파일 이름 변경",
           "href": "/rename-photos-with-ai"
         },
         {
-          "label": "Zush가 비디오 클립의 이름을 바꾸는 방법을 확인하세요.",
+          "label": "AI로 비디오 파일 이름 변경",
           "href": "/rename-videos-with-ai"
         },
         {
@@ -1681,7 +1681,7 @@ export const professions = {
     "path": "/for-hr",
     "seo": {
       "title": "오프라인 AI 파일 이름 변경을 통한 HR 문서 관리",
-      "description": "Zush는 이력서, 제안 편지, 온보딩 양식, 리뷰, 정책 및 내보낸 기록을 읽은 다음 일관되고 검색 가능한 파일 이름을 제공합니다. Mac 또는 Windows에서 기존 폴더, 공유 드라이브, ATS 다운로드 및 HRIS 내보내기와 함께 사용하세요."
+      "description": "AI로 이력서, 제안 편지, 온보딩 양식, 리뷰, 정책 및 내보낸 기록에 일관되고 검색 가능한 파일 이름을 지정하세요. Mac 또는 Windows의 기존 폴더, 공유 드라이브, ATS 다운로드 및 HRIS 내보내기에서 사용할 수 있습니다."
     },
     "pageTitle": "인사 문서 관리",
     "hero": {

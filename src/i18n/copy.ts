@@ -1092,8 +1092,8 @@ const EN_COPY: LocaleCopy = {
       organizer: 'AI File Organizer',
       offline: 'Offline AI File Renamer',
       bulkRename: 'Bulk Rename Files',
-      mac: 'Zush for Mac',
-      windows: 'Zush for Windows',
+      mac: 'AI File Renamer for Mac',
+      windows: 'AI File Renamer for Windows',
       pdf: 'Rename PDFs',
       design: 'Rename Design Files',
       photos: 'Rename Photos',
@@ -1294,11 +1294,11 @@ const EN_COPY: LocaleCopy = {
   },
   platforms: {
     mac: {
-      breadcrumbLabel: 'Zush for Mac',
-      softwareName: 'Zush for Mac',
+      breadcrumbLabel: 'AI File Renamer for Mac',
+      softwareName: 'Zush',
       softwareDescription:
-        'Zush for Mac is an AI file renamer for macOS that builds filenames from content, metadata, dates, custom prompts, and reusable naming rules. Preview every change, undo any batch, or choose Zush Cloud, BYOK, LM Studio or Ollama.',
-      heroTitle: 'Zush AI File Renamer for Mac',
+        'AI file renamer for macOS that builds filenames from content, metadata, dates, custom prompts, and reusable naming rules. Preview every change, undo any batch, or choose cloud, BYOK, LM Studio or Ollama.',
+      heroTitle: 'AI File Renamer for Mac',
       heroSubtitle:
         'Build Finder filenames from the details you choose. Preview every suggestion, apply changes when you are ready, undo any batch, or keep supported analysis on-device with Local AI.',
       ctaTitle: 'Try Zush free on Mac',
@@ -1333,11 +1333,11 @@ const EN_COPY: LocaleCopy = {
       ],
     },
     windows: {
-      breadcrumbLabel: 'Zush for Windows',
-      softwareName: 'Zush for Windows',
+      breadcrumbLabel: 'AI File Renamer for Windows',
+      softwareName: 'Zush',
       softwareDescription:
-        'Zush for Windows is an AI file renamer for Windows 10 and 11. Batch rename files by content, preview every change, undo any batch, and choose Zush Cloud, BYOK, LM Studio or Ollama.',
-      heroTitle: 'Zush AI File Renamer for Windows',
+        'AI file renamer for Windows 10 and 11. Batch rename files by content, preview every change, undo any batch, and choose cloud, BYOK, LM Studio or Ollama.',
+      heroTitle: 'AI File Renamer for Windows',
       heroSubtitle:
         'Use Zush to batch rename files by content on Windows 10 and 11. Preview every filename before applying, undo any batch, and choose cloud or local AI.',
       ctaTitle: 'Try Zush free on Windows',
@@ -1368,7 +1368,7 @@ const EN_COPY: LocaleCopy = {
         { question: 'Does Zush help search files by content on Windows?', answer: 'Zush does not replace Windows Search with a separate semantic search index. It analyzes file content during renaming and writes that context into filenames and metadata, so files become easier to find later in File Explorer and Windows Search.' },
         { question: 'What file types can Zush rename on Windows?', answer: 'Zush supports mixed Windows folders with screenshots, JPG/PNG/HEIC/RAW photos, PDFs, Office documents, iWork files, design files such as Figma, Sketch, Illustrator, and PSD, videos, audio, subtitles, text files, CSV, XML, YAML, and more.' },
         { question: 'Why is Zush distributed through the Microsoft Store?', answer: 'The Store handles installation, signing, and automatic updates for every user.' },
-        { question: 'Does Zush for Windows have the same features as Mac?', answer: 'Yes. It includes Zush Cloud AI, BYOK, LM Studio, Ollama, folder monitoring, custom prompts, and revert history.' },
+        { question: 'Does the Windows app have the same features as the Mac app?', answer: 'Yes. It includes managed Cloud AI, BYOK, LM Studio, Ollama, folder monitoring, custom prompts, and revert history.' },
         { question: 'Can Zush bulk rename files on Windows?', answer: 'Yes. Zush can bulk rename files from ordinary Windows folders, including screenshots, PDFs, photos, videos, audio, design files, iWork files, and Office documents.' },
         { question: 'Does it run on Windows on ARM?', answer: 'Yes. The Microsoft Store release includes native x64 and ARM64 packages.' },
       ],
@@ -1664,8 +1664,8 @@ const simpleFeatures = (items: Array<[string, string]>) =>
 const localizedPlatforms: Record<Exclude<Locale, 'en' | 'zh-cn' | 'tr' | 'ar'>, LocaleCopy['platforms']> = {
   de: {
     mac: {
-      breadcrumbLabel: 'Zush für Mac',
-      softwareName: 'Zush für Mac',
+      breadcrumbLabel: 'KI-Dateiumbenenner für Mac',
+      softwareName: 'Zush',
       softwareDescription: 'KI-Dateiumbenenner für Mac mit eigenen Namensregeln aus Inhalt, Metadaten, Daten und wiederverwendbaren Bausteinen. Prüfe jede Änderung, nutze Undo oder lokale KI.',
       heroTitle: 'Dateiumbenenner für Mac',
       heroSubtitle: 'Erstelle Finder-Dateinamen aus den Details, die du auswählst. Prüfe jeden Vorschlag, wende Änderungen erst dann an, nutze Undo oder lokale KI.',
@@ -1690,8 +1690,8 @@ const localizedPlatforms: Record<Exclude<Locale, 'en' | 'zh-cn' | 'tr' | 'ar'>, 
       ],
     },
     windows: {
-      breadcrumbLabel: 'Zush für Windows',
-      softwareName: 'Zush für Windows',
+      breadcrumbLabel: 'KI-Dateiumbenenner für Windows',
+      softwareName: 'Zush',
       softwareDescription: 'KI-Dateiumbenenner für Windows mit eigenen Namensregeln aus Inhalt, Metadaten, Daten und wiederverwendbaren Bausteinen. Prüfe jede Änderung, nutze Undo oder lokale KI.',
       heroTitle: 'Dateiumbenenner für Windows',
       heroSubtitle: 'Erstelle Dateinamen für den Datei-Explorer aus den Details, die du auswählst. Prüfe jeden Vorschlag, wende Änderungen erst dann an, nutze Undo oder lokale KI.',
@@ -1718,8 +1718,8 @@ const localizedPlatforms: Record<Exclude<Locale, 'en' | 'zh-cn' | 'tr' | 'ar'>, 
   },
   fr: {
     mac: {
-      breadcrumbLabel: 'Zush pour Mac',
-      softwareName: 'Zush pour Mac',
+      breadcrumbLabel: 'Renommeur de fichiers pour Mac',
+      softwareName: 'Zush',
       softwareDescription: 'Renommeur de fichiers IA pour Mac avec règles personnalisées basées sur le contenu, les métadonnées, les dates et des blocs réutilisables. Aperçu, annulation et IA locale.',
       heroTitle: 'Renommeur de fichiers pour Mac',
       heroSubtitle: 'Créez des noms Finder avec les détails que vous choisissez. Prévisualisez chaque proposition, appliquez quand vous êtes prêt, annulez un lot ou utilisez l’IA locale.',
@@ -1744,8 +1744,8 @@ const localizedPlatforms: Record<Exclude<Locale, 'en' | 'zh-cn' | 'tr' | 'ar'>, 
       ],
     },
     windows: {
-      breadcrumbLabel: 'Zush pour Windows',
-      softwareName: 'Zush pour Windows',
+      breadcrumbLabel: 'Renommeur de fichiers pour Windows',
+      softwareName: 'Zush',
       softwareDescription: 'Renommeur de fichiers IA pour Windows avec règles personnalisées basées sur le contenu, les métadonnées, les dates et des blocs réutilisables. Aperçu, annulation et IA locale.',
       heroTitle: 'Renommeur de fichiers pour Windows',
       heroSubtitle: 'Créez des noms pour l’Explorateur avec les détails que vous choisissez. Prévisualisez chaque proposition, appliquez quand vous êtes prêt, annulez un lot ou utilisez l’IA locale.',
@@ -1772,8 +1772,8 @@ const localizedPlatforms: Record<Exclude<Locale, 'en' | 'zh-cn' | 'tr' | 'ar'>, 
   },
   'pt-br': {
     mac: {
-      breadcrumbLabel: 'Zush para Mac',
-      softwareName: 'Zush para Mac',
+      breadcrumbLabel: 'Renomeador de arquivos para Mac',
+      softwareName: 'Zush',
       softwareDescription: 'Renomeador de arquivos com IA para Mac com regras próprias baseadas em conteúdo, metadados, datas e blocos reutilizáveis. Prévia, desfazer e IA local.',
       heroTitle: 'Renomeador de arquivos para Mac',
       heroSubtitle: 'Crie nomes no Finder com os detalhes que você escolhe. Veja cada sugestão, aplique quando estiver pronto, desfaça qualquer lote ou use IA local.',
@@ -1798,8 +1798,8 @@ const localizedPlatforms: Record<Exclude<Locale, 'en' | 'zh-cn' | 'tr' | 'ar'>, 
       ],
     },
     windows: {
-      breadcrumbLabel: 'Zush para Windows',
-      softwareName: 'Zush para Windows',
+      breadcrumbLabel: 'Renomeador de arquivos para Windows',
+      softwareName: 'Zush',
       softwareDescription: 'Renomeador de arquivos com IA para Windows com regras próprias baseadas em conteúdo, metadados, datas e blocos reutilizáveis. Prévia, desfazer e IA local.',
       heroTitle: 'Renomeador de arquivos para Windows',
       heroSubtitle: 'Crie nomes no Explorador de Arquivos com os detalhes que você escolhe. Veja cada sugestão, aplique quando estiver pronto, desfaça qualquer lote ou use IA local.',
@@ -1826,8 +1826,8 @@ const localizedPlatforms: Record<Exclude<Locale, 'en' | 'zh-cn' | 'tr' | 'ar'>, 
   },
   es: {
     mac: {
-      breadcrumbLabel: 'Zush para Mac',
-      softwareName: 'Zush para Mac',
+      breadcrumbLabel: 'Renombrador de archivos para Mac',
+      softwareName: 'Zush',
       softwareDescription: 'Renombrador de archivos con IA para Mac con reglas propias basadas en contenido, metadatos, fechas y bloques reutilizables. Vista previa, deshacer e IA local.',
       heroTitle: 'Renombrador de archivos para Mac',
       heroSubtitle: 'Crea nombres en Finder con los detalles que eliges. Previsualiza cada propuesta, aplica cuando estés listo, deshaz cualquier lote o usa IA local.',
@@ -1852,8 +1852,8 @@ const localizedPlatforms: Record<Exclude<Locale, 'en' | 'zh-cn' | 'tr' | 'ar'>, 
       ],
     },
     windows: {
-      breadcrumbLabel: 'Zush para Windows',
-      softwareName: 'Zush para Windows',
+      breadcrumbLabel: 'Renombrador de archivos para Windows',
+      softwareName: 'Zush',
       softwareDescription: 'Renombrador de archivos con IA para Windows con reglas propias basadas en contenido, metadatos, fechas y bloques reutilizables. Vista previa, deshacer e IA local.',
       heroTitle: 'Renombrador de archivos para Windows',
       heroSubtitle: 'Crea nombres en el Explorador con los detalles que eliges. Previsualiza cada propuesta, aplica cuando estés listo, deshaz cualquier lote o usa IA local.',
@@ -1880,8 +1880,8 @@ const localizedPlatforms: Record<Exclude<Locale, 'en' | 'zh-cn' | 'tr' | 'ar'>, 
   },
   nl: {
     mac: {
-      breadcrumbLabel: 'Zush voor Mac',
-      softwareName: 'Zush voor Mac',
+      breadcrumbLabel: 'Bestandshernoemer voor Mac',
+      softwareName: 'Zush',
       softwareDescription: 'AI-bestandshernoemer voor Mac met eigen regels op basis van inhoud, metadata, datums en herbruikbare blokken. Preview, undo en Lokale AI.',
       heroTitle: 'Bestandshernoemer voor Mac',
       heroSubtitle: 'Bouw Finder-namen uit de details die jij kiest. Bekijk elk voorstel, pas toe wanneer je klaar bent, herstel elke batch of gebruik Lokale AI.',
@@ -1906,8 +1906,8 @@ const localizedPlatforms: Record<Exclude<Locale, 'en' | 'zh-cn' | 'tr' | 'ar'>, 
       ],
     },
     windows: {
-      breadcrumbLabel: 'Zush voor Windows',
-      softwareName: 'Zush voor Windows',
+      breadcrumbLabel: 'Bestandshernoemer voor Windows',
+      softwareName: 'Zush',
       softwareDescription: 'AI-bestandshernoemer voor Windows met eigen regels op basis van inhoud, metadata, datums en herbruikbare blokken. Preview, undo en Lokale AI.',
       heroTitle: 'Bestandshernoemer voor Windows',
       heroSubtitle: 'Bouw namen voor Verkenner uit de details die jij kiest. Bekijk elk voorstel, pas toe wanneer je klaar bent, herstel elke batch of gebruik Lokale AI.',
@@ -1934,8 +1934,8 @@ const localizedPlatforms: Record<Exclude<Locale, 'en' | 'zh-cn' | 'tr' | 'ar'>, 
   },
   it: {
     mac: {
-      breadcrumbLabel: 'Zush per Mac',
-      softwareName: 'Zush per Mac',
+      breadcrumbLabel: 'Rinomina file per Mac',
+      softwareName: 'Zush',
       softwareDescription: 'Rinomina file con IA per Mac con regole personalizzate basate su contenuto, metadati, date e blocchi riutilizzabili. Anteprima, annulla e IA locale.',
       heroTitle: 'Rinomina file per Mac',
       heroSubtitle: 'Crea nomi Finder con i dettagli che scegli. Visualizza ogni proposta, applica quando vuoi, annulla qualsiasi batch o usa l’IA locale.',
@@ -1960,8 +1960,8 @@ const localizedPlatforms: Record<Exclude<Locale, 'en' | 'zh-cn' | 'tr' | 'ar'>, 
       ],
     },
     windows: {
-      breadcrumbLabel: 'Zush per Windows',
-      softwareName: 'Zush per Windows',
+      breadcrumbLabel: 'Rinomina file per Windows',
+      softwareName: 'Zush',
       softwareDescription: 'Rinomina file con IA per Windows con regole personalizzate basate su contenuto, metadati, date e blocchi riutilizzabili. Anteprima, annulla e IA locale.',
       heroTitle: 'Rinomina file per Windows',
       heroSubtitle: 'Crea nomi per Esplora file con i dettagli che scegli. Visualizza ogni proposta, applica quando vuoi, annulla qualsiasi batch o usa l’IA locale.',
@@ -1988,8 +1988,8 @@ const localizedPlatforms: Record<Exclude<Locale, 'en' | 'zh-cn' | 'tr' | 'ar'>, 
   },
   ja: {
     mac: {
-      breadcrumbLabel: 'Mac 版 Zush',
-      softwareName: 'Mac 版 Zush',
+      breadcrumbLabel: 'Mac向けファイルリネーム',
+      softwareName: 'Zush',
       softwareDescription: 'Mac向けAIファイルリネーム。内容、メタデータ、日付、再利用ブロックで独自ルールを作成し、すべての変更をプレビュー。UndoとローカルAIにも対応。',
       heroTitle: 'Mac向けファイルリネーム',
       heroSubtitle: '選んだ詳細からFinderのファイル名を作成。すべての候補を確認してから適用し、バッチを元に戻すかローカルAIを利用できます。',
@@ -2014,8 +2014,8 @@ const localizedPlatforms: Record<Exclude<Locale, 'en' | 'zh-cn' | 'tr' | 'ar'>, 
       ],
     },
     windows: {
-      breadcrumbLabel: 'Windows 版 Zush',
-      softwareName: 'Windows 版 Zush',
+      breadcrumbLabel: 'Windows向けファイルリネーム',
+      softwareName: 'Zush',
       softwareDescription: 'Windows向けAIファイルリネーム。内容、メタデータ、日付、再利用ブロックで独自ルールを作成し、すべての変更をプレビュー。UndoとローカルAIにも対応。',
       heroTitle: 'Windows向けファイルリネーム',
       heroSubtitle: '選んだ詳細からエクスプローラーのファイル名を作成。すべての候補を確認してから適用し、バッチを元に戻すかローカルAIを利用できます。',
@@ -2042,8 +2042,8 @@ const localizedPlatforms: Record<Exclude<Locale, 'en' | 'zh-cn' | 'tr' | 'ar'>, 
   },
   ko: {
     mac: {
-      breadcrumbLabel: 'Mac용 Zush',
-      softwareName: 'Mac용 Zush',
+      breadcrumbLabel: 'Mac용 파일 이름 변경 도구',
+      softwareName: 'Zush',
       softwareDescription: 'Mac용 AI 파일 이름 변경 도구입니다. 내용, 메타데이터, 날짜와 재사용 블록으로 규칙을 만들고 모든 변경을 미리 보며 되돌리기와 로컬 AI를 지원합니다.',
       heroTitle: 'Mac용 파일 이름 변경 도구',
       heroSubtitle: '선택한 세부 정보로 Finder 이름을 만드세요. 모든 제안을 확인한 뒤 적용하고, 일괄 작업을 되돌리거나 로컬 AI를 사용할 수 있습니다.',
@@ -2068,8 +2068,8 @@ const localizedPlatforms: Record<Exclude<Locale, 'en' | 'zh-cn' | 'tr' | 'ar'>, 
       ],
     },
     windows: {
-      breadcrumbLabel: 'Windows용 Zush',
-      softwareName: 'Windows용 Zush',
+      breadcrumbLabel: 'Windows용 파일 이름 변경 도구',
+      softwareName: 'Zush',
       softwareDescription: 'Windows용 AI 파일 이름 변경 도구입니다. 내용, 메타데이터, 날짜와 재사용 블록으로 규칙을 만들고 모든 변경을 미리 보며 되돌리기와 로컬 AI를 지원합니다.',
       heroTitle: 'Windows용 파일 이름 변경 도구',
       heroSubtitle: '선택한 세부 정보로 파일 탐색기 이름을 만드세요. 모든 제안을 확인한 뒤 적용하고, 일괄 작업을 되돌리거나 로컬 AI를 사용할 수 있습니다.',
@@ -2147,8 +2147,8 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       organizer: 'KI-Dateiorganisierer',
       offline: 'Offline-KI-Dateiumbenenner',
       bulkRename: 'Dateien massenhaft umbenennen',
-      mac: 'Zush für Mac',
-      windows: 'Zush für Windows',
+      mac: 'KI-Dateiumbenenner für Mac',
+      windows: 'KI-Dateiumbenenner für Windows',
       pdf: 'PDFs umbenennen',
       design: 'Design-Dateien umbenennen',
       photos: 'Fotos umbenennen',
@@ -2198,8 +2198,8 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       organizer: 'Organisateur de fichiers IA',
       offline: 'Renommeur de fichiers IA hors ligne',
       bulkRename: 'Renommer des fichiers en masse',
-      mac: 'Zush pour Mac',
-      windows: 'Zush pour Windows',
+      mac: 'Renommeur de fichiers pour Mac',
+      windows: 'Renommeur de fichiers pour Windows',
       pdf: 'Renommer des PDF',
       design: 'Renommer des fichiers design',
       photos: 'Renommer des photos',
@@ -2249,8 +2249,8 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       organizer: 'Organizador de arquivos com IA',
       offline: 'Renomeador de arquivos com IA offline',
       bulkRename: 'Renomear arquivos em massa',
-      mac: 'Zush para Mac',
-      windows: 'Zush para Windows',
+      mac: 'Renomeador de arquivos para Mac',
+      windows: 'Renomeador de arquivos para Windows',
       pdf: 'Renomear PDFs',
       design: 'Renomear arquivos de design',
       photos: 'Renomear fotos',
@@ -2300,8 +2300,8 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       organizer: 'Organizador de archivos con IA',
       offline: 'Renombrador de archivos con IA sin conexión',
       bulkRename: 'Renombrar archivos en masa',
-      mac: 'Zush para Mac',
-      windows: 'Zush para Windows',
+      mac: 'Renombrador de archivos para Mac',
+      windows: 'Renombrador de archivos para Windows',
       pdf: 'Renombrar PDFs',
       design: 'Renombrar archivos de diseño',
       photos: 'Renombrar fotos',
@@ -2351,8 +2351,8 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       organizer: 'AI-bestandsorganisator',
       offline: 'Offline AI-bestandshernoemer',
       bulkRename: 'Bestanden in bulk hernoemen',
-      mac: 'Zush voor Mac',
-      windows: 'Zush voor Windows',
+      mac: 'Bestandshernoemer voor Mac',
+      windows: 'Bestandshernoemer voor Windows',
       pdf: 'PDFs hernoemen',
       design: 'Designbestanden hernoemen',
       photos: 'Foto’s hernoemen',
@@ -2402,8 +2402,8 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       organizer: 'Organizzatore di file con IA',
       offline: 'Rinomina file con IA offline',
       bulkRename: 'Rinomina file in blocco',
-      mac: 'Zush per Mac',
-      windows: 'Zush per Windows',
+      mac: 'Rinomina file per Mac',
+      windows: 'Rinomina file per Windows',
       pdf: 'Rinomina PDF',
       design: 'Rinomina file di design',
       photos: 'Rinomina foto',
@@ -2453,8 +2453,8 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       organizer: 'AI ファイル整理',
       offline: 'オフライン AI ファイルリネーマー',
       bulkRename: 'ファイルをまとめてリネーム',
-      mac: 'Mac 版 Zush',
-      windows: 'Windows 版 Zush',
+      mac: 'Mac向けファイルリネーム',
+      windows: 'Windows向けファイルリネーム',
       pdf: 'PDF をリネーム',
       design: 'デザインファイルをリネーム',
       photos: '写真をリネーム',
@@ -2504,8 +2504,8 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       organizer: 'AI 파일 정리',
       offline: '오프라인 AI 파일 이름 변경',
       bulkRename: '파일 대량 이름 변경',
-      mac: 'Mac용 Zush',
-      windows: 'Windows용 Zush',
+      mac: 'Mac용 파일 이름 변경 도구',
+      windows: 'Windows용 파일 이름 변경 도구',
       pdf: 'PDF 이름 변경',
       design: '디자인 파일 이름 변경',
       photos: '사진 이름 변경',
@@ -2555,8 +2555,8 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       organizer: 'AI 文件整理工具',
       offline: '离线 AI 文件重命名工具',
       bulkRename: '大量重命名文件',
-      mac: 'Mac 版 Zush',
-      windows: 'Windows 版 Zush',
+      mac: '适用于 Mac 的文件重命名工具',
+      windows: '适用于 Windows 的文件重命名工具',
       pdf: '重命名 PDF',
       design: '重命名设计文件',
       photos: '重命名照片',
@@ -2606,8 +2606,8 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       organizer: 'Yapay zekâ dosya düzenleyici',
       offline: 'Çevrimdışı yapay zekâ dosya adlandırıcı',
       bulkRename: 'Dosyaları toplu yeniden adlandır',
-      mac: 'Mac için Zush',
-      windows: 'Windows için Zush',
+      mac: 'Mac için dosya adlandırıcı',
+      windows: 'Windows için dosya adlandırıcı',
       pdf: 'PDF’leri yeniden adlandır',
       design: 'Tasarım dosyalarını yeniden adlandır',
       photos: 'Fotoğrafları yeniden adlandır',
@@ -2657,8 +2657,8 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       organizer: 'تنظيم الملفات بالذكاء الاصطناعي',
       offline: 'إعادة تسمية الملفات بالذكاء الاصطناعي دون اتصال',
       bulkRename: 'إعادة تسمية الملفات بكميات كبيرة',
-      mac: 'Zush لنظام Mac',
-      windows: 'Zush لنظام Windows',
+      mac: 'أداة إعادة تسمية الملفات لنظام Mac',
+      windows: 'أداة إعادة تسمية الملفات لنظام Windows',
       pdf: 'إعادة تسمية PDF',
       design: 'إعادة تسمية ملفات التصميم',
       photos: 'إعادة تسمية الصور',
@@ -4132,7 +4132,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     seo: {
       '/': { title: 'KI-Dateiumbenenner & -organisator für Mac und Windows | Zush', description: 'KI-Dateiumbenenner für Mac und Windows. Benenne 107 Formate nach Inhalt um, darunter EPUB, FB2, RAW-Fotos, PDFs, Video-, Audio- und Designdateien. Vorschau und Undo für jeden Stapel.' },
       '/rename-pdf-with-ai': {
-        title: 'PDFs mit KI umbenennen · Rechnungen, Verträge | Zush',
+        title: 'PDFs mit KI umbenennen · Rechnungen, Verträge',
         description: 'KI-PDF-Umbenenner. Zush liest Rechnungen, Verträge, Scans, Belege und Berichte und benennt PDF-Dateien nach Inhalt in durchsuchbare Namen um.',
       },
       '/rename-design-files-with-ai': {
@@ -4148,11 +4148,11 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'Benenne Screenshots automatisch nach ihrem sichtbaren Inhalt um. Verarbeite alte Aufnahmen stapelweise oder überwache neue auf Mac und Windows – mit Vorschau und Rückgängig.',
       },
       '/rename-photos-with-ai': {
-        title: 'KI-Fotoorganizer & Bild-Umbenenner für Mac | Zush',
+        title: 'KI-Fotoorganizer & Bild-Umbenenner für Mac',
         description: 'KI-Foto-Umbenenner. Zush liest HEIC, RAW, AVIF, JPG und TIFF und benennt Fotos nach Motiv, Szene und Kontext um. Mit Vorschau und Rückgängig.',
       },
       '/rename-videos-with-ai': {
-        title: 'Videos mit KI umbenennen · MP4, MOV, Clips | Zush',
+        title: 'Videos mit KI umbenennen · MP4, MOV, Clips',
         description: 'KI-Video-Umbenenner. Zush liest MP4, MOV, M4V, MPEG, MTS, VOB, Untertitel und abgetastete Frames und benennt Videos nach ihrem Inhalt um.',
       },
       '/rename-audio-with-ai': {
@@ -4160,7 +4160,7 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'KI-Audio-Umbenenner. Zush liest Metadaten oder Transkripte von MP3, M4A, WAV, FLAC, OGG, WebM und MPGA und benennt Audiodateien nach Inhalt um.',
       },
       '/batch-rename-files': {
-        title: 'Dateien stapelweise umbenennen mit KI | Zush',
+        title: 'Dateien stapelweise umbenennen mit KI',
         description: 'Benenne viele Dateien auf Mac und Windows mit KI stapelweise nach Inhalt um. Prüfe jeden Vorschlag vorab und mache ganze Stapel rückgängig.',
       },
     },
@@ -4244,7 +4244,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     seo: {
       '/': { title: 'Renommeur et organiseur de fichiers IA pour Mac et Windows | Zush', description: 'Renommeur de fichiers IA pour Mac et Windows. Renommez 107 formats selon leur contenu, dont EPUB, FB2, photos RAW, PDF, vidéos, audio et fichiers de design.' },
       '/rename-pdf-with-ai': {
-        title: 'Renommer des PDF avec l’IA · Factures, contrats | Zush',
+        title: 'Renommer des PDF avec l’IA · Factures, contrats',
         description: 'Renommeur de PDF par IA. Zush lit factures, contrats, scans, reçus et rapports, puis renomme les fichiers PDF selon leur contenu en noms consultables.',
       },
       '/rename-design-files-with-ai': {
@@ -4260,11 +4260,11 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'Renommez automatiquement les captures selon leur contenu visible. Traitez les anciennes par lot ou surveillez les nouvelles sur Mac et Windows, avec aperçu et annulation.',
       },
       '/rename-photos-with-ai': {
-        title: 'Organisateur de photos IA et renommeur d’images | Zush',
+        title: 'Organisateur de photos IA et renommeur d’images',
         description: 'Renommeur de photos par IA. Zush lit les images HEIC, RAW, AVIF, JPG, SVG, TIFF et autres, puis renomme vos photos selon le sujet, la scène et le contexte.',
       },
       '/rename-videos-with-ai': {
-        title: 'Renommer des vidéos avec l’IA · MP4, MOV, clips | Zush',
+        title: 'Renommer des vidéos avec l’IA · MP4, MOV, clips',
         description: 'Renommeur de vidéos par IA. Zush lit MP4, MOV, M4V, MPEG, MTS, VOB, les sous-titres et des images échantillonnées, puis renomme selon le contenu.',
       },
       '/rename-audio-with-ai': {
@@ -4320,7 +4320,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     seo: {
       '/': { title: 'Renomeador e organizador de arquivos com IA para Mac e Windows | Zush', description: 'Renomeador de arquivos com IA para Mac e Windows. Renomeie 107 formatos pelo conteúdo, incluindo EPUB, FB2, fotos RAW, PDFs, vídeo, áudio e design.' },
       '/rename-pdf-with-ai': {
-        title: 'Renomear PDFs com IA · Notas e contratos | Zush',
+        title: 'Renomear PDFs com IA · Notas e contratos',
         description: 'Renomeador de PDF com IA. O Zush lê notas fiscais, contratos, scans, recibos e relatórios e renomeia os PDFs pelo conteúdo com nomes fáceis de buscar.',
       },
       '/rename-design-files-with-ai': {
@@ -4336,11 +4336,11 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'Renomeie screenshots automaticamente pelo conteúdo visível. Processe capturas antigas em lote ou monitore as novas no Mac e Windows, com prévia e desfazer.',
       },
       '/rename-photos-with-ai': {
-        title: 'Organizador de fotos com IA e renomeador | Zush',
+        title: 'Organizador de fotos com IA e renomeador',
         description: 'Renomeador de fotos com IA. O Zush lê imagens HEIC, RAW, AVIF, JPG, SVG, TIFF e outras e renomeia suas fotos por assunto, cena e contexto.',
       },
       '/rename-videos-with-ai': {
-        title: 'Renomear vídeos com IA · MP4, MOV, gravações | Zush',
+        title: 'Renomear vídeos com IA · MP4, MOV, gravações',
         description: 'Renomeador de vídeo com IA. O Zush lê MP4, MOV, MPEG, MTS, legendas e frames amostrados e renomeia os vídeos pelo conteúdo, com prévia e desfazer.',
       },
       '/rename-audio-with-ai': {
@@ -4396,7 +4396,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     seo: {
       '/': { title: 'Renombrador y organizador de archivos con IA para Mac y Windows | Zush', description: 'Renombrador de archivos con IA para Mac y Windows. Renombra 107 formatos según su contenido, incluidos EPUB, FB2, fotos RAW, PDF, video, audio y diseño.' },
       '/rename-pdf-with-ai': {
-        title: 'Renombrar PDF con IA · Facturas y contratos | Zush',
+        title: 'Renombrar PDF con IA · Facturas y contratos',
         description: 'Renombrador de PDF con IA. Zush lee facturas, contratos, escaneos, recibos e informes, y renombra los archivos PDF por contenido con nombres buscables.',
       },
       '/rename-design-files-with-ai': {
@@ -4412,11 +4412,11 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'Renombra capturas automáticamente según el contenido visible. Procesa las antiguas por lotes o supervisa las nuevas en Mac y Windows, con vista previa y deshacer.',
       },
       '/rename-photos-with-ai': {
-        title: 'Organizador de fotos con IA y renombrador | Zush',
+        title: 'Organizador de fotos con IA y renombrador',
         description: 'Renombrador de fotos con IA. Zush lee imágenes HEIC, RAW, AVIF, JPG, SVG, TIFF y otras, y renombra tus fotos por sujeto, escena y contexto.',
       },
       '/rename-videos-with-ai': {
-        title: 'Renombrar videos con IA · MP4, MOV, clips | Zush',
+        title: 'Renombrar videos con IA · MP4, MOV, clips',
         description: 'Renombrador de video con IA. Zush lee MP4, MOV, M4V, MPEG, MTS, VOB, subtítulos y fotogramas muestreados, y renombra los videos según su contenido.',
       },
       '/rename-audio-with-ai': {
@@ -4472,7 +4472,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     seo: {
       '/': { title: 'AI-bestandshernoemer en -organisator voor Mac en Windows | Zush', description: 'AI-bestandshernoemer voor Mac en Windows. Hernoem 107 formaten op inhoud, waaronder EPUB- en FB2-e-books, RAW-foto’s, PDF’s, video, audio en ontwerpbestanden. Preview en undo voor elke batch.' },
       '/rename-pdf-with-ai': {
-        title: 'PDF hernoemen met AI · Facturen en contracten | Zush',
+        title: 'PDF hernoemen met AI · Facturen en contracten',
         description: 'AI-PDF-hernoemer. Zush leest facturen, contracten, scans, bonnen en rapporten en hernoemt PDF-bestanden op inhoud met goed doorzoekbare namen.',
       },
       '/rename-design-files-with-ai': {
@@ -4488,11 +4488,11 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'Hernoem screenshots automatisch op basis van zichtbare inhoud. Verwerk oude opnames in batches of bewaak nieuwe op Mac en Windows, met preview en ongedaan maken.',
       },
       '/rename-photos-with-ai': {
-        title: 'AI-fotoorganizer en afbeeldingshernoemer | Zush',
+        title: 'AI-fotoorganizer en afbeeldingshernoemer',
         description: 'AI-fotohernoemer. Zush leest HEIC-, RAW-, AVIF-, JPG-, SVG-, TIFF- en andere afbeeldingen en hernoemt je foto’s op onderwerp, scène en context.',
       },
       '/rename-videos-with-ai': {
-        title: 'Video’s hernoemen met AI · MP4, MOV, opnames | Zush',
+        title: 'Video’s hernoemen met AI · MP4, MOV, opnames',
         description: 'AI-videohernoemer. Zush leest MP4, MOV, M4V, MPEG, MTS, VOB, ondertitels en steekproefframes en hernoemt video’s op basis van hun inhoud.',
       },
       '/rename-audio-with-ai': {
@@ -4548,7 +4548,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     seo: {
       '/': { title: 'Rinomina e organizza file con IA per Mac e Windows | Zush', description: 'Rinomina file con IA per Mac e Windows. Rinomina 107 formati in base al contenuto, tra cui EPUB, FB2, foto RAW, PDF, video, audio e file di design.' },
       '/rename-pdf-with-ai': {
-        title: 'Rinominare PDF con l’IA · Fatture e contratti | Zush',
+        title: 'Rinominare PDF con l’IA · Fatture e contratti',
         description: 'Rinominatore di PDF con IA. Zush legge fatture, contratti, scansioni, ricevute e report e rinomina i file PDF in base al contenuto con nomi ricercabili.',
       },
       '/rename-design-files-with-ai': {
@@ -4564,11 +4564,11 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'Rinomina automaticamente gli screenshot in base al contenuto visibile. Elabora le vecchie catture in batch o monitora le nuove su Mac e Windows, con anteprima e annulla.',
       },
       '/rename-photos-with-ai': {
-        title: 'Organizzatore foto con IA e rinomina immagini | Zush',
+        title: 'Organizzatore foto con IA e rinomina immagini',
         description: 'Rinominatore di foto con IA. Zush legge immagini HEIC, RAW, AVIF, JPG, SVG, TIFF e altre e rinomina le foto per soggetto, scena e contesto.',
       },
       '/rename-videos-with-ai': {
-        title: 'Rinominare video con l’IA · MP4, MOV, clip | Zush',
+        title: 'Rinominare video con l’IA · MP4, MOV, clip',
         description: 'Rinominatore di video con IA. Zush legge MP4, MOV, M4V, MPEG, MTS, VOB, sottotitoli e fotogrammi campionati e rinomina i video in base al contenuto.',
       },
       '/rename-audio-with-ai': {
@@ -4624,7 +4624,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     seo: {
       '/': { title: 'Mac・Windows向けAIファイルリネーム＆整理ツール | Zush', description: 'Mac・Windows向けAIファイルリネーム。EPUB・FB2電子書籍、RAW写真、PDF、動画、音声、デザインファイルを含む107形式を内容に基づいてリネーム。すべてのバッチでプレビューと取り消しが可能です。' },
       '/rename-pdf-with-ai': {
-        title: 'AIでPDFをリネーム · 請求書・契約書・スキャン | Zush',
+        title: 'AIでPDFをリネーム · 請求書・契約書・スキャン',
         description: 'AI PDF リネームツール。Zush が請求書、契約書、スキャン、領収書、レポートを読み取り、PDF ファイルを内容に基づいて検索しやすい名前にリネームします。',
       },
       '/rename-design-files-with-ai': {
@@ -4640,11 +4640,11 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: '表示内容に基づいてスクリーンショットを自動リネーム。既存の画像を一括処理するか、Mac・Windowsで新しい画像の保存先を監視できます。プレビューと取り消しにも対応。',
       },
       '/rename-photos-with-ai': {
-        title: 'AI写真オーガナイザー・画像リネームツール | Zush',
+        title: 'AI写真オーガナイザー・画像リネームツール',
         description: 'AI 写真リネームツール。Zush が HEIC、RAW、AVIF、JPG、SVG、TIFF などの画像を読み取り、被写体・シーン・文脈に基づいて写真をリネームします。',
       },
       '/rename-videos-with-ai': {
-        title: 'AIで動画をリネーム · MP4・MOV・画面録画 | Zush',
+        title: 'AIで動画をリネーム · MP4・MOV・画面録画',
         description: 'AI 動画リネームツール。Zush が MP4、MOV、M4V、MPEG、MTS、VOB、字幕、サンプリングしたフレームを読み取り、動画を内容に基づいてリネームします。',
       },
       '/rename-audio-with-ai': {
@@ -4700,7 +4700,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     seo: {
       '/': { title: 'Mac 및 Windows용 AI 파일 이름 변경 및 정리 도구 | Zush', description: 'Mac 및 Windows용 AI 파일 이름 변경 도구입니다. EPUB, FB2, RAW 사진, PDF, 비디오, 오디오, 디자인 파일을 포함한 107개 형식을 내용에 따라 변경합니다.' },
       '/rename-pdf-with-ai': {
-        title: 'AI로 PDF 이름 변경 · 청구서, 계약서, 스캔 | Zush',
+        title: 'AI로 PDF 이름 변경 · 청구서, 계약서, 스캔',
         description: 'AI PDF 이름 변경 도구. Zush가 청구서, 계약서, 스캔 문서, 영수증, 보고서를 읽고 PDF 파일을 내용 기준으로 검색하기 쉬운 이름으로 변경합니다.',
       },
       '/rename-design-files-with-ai': {
@@ -4716,11 +4716,11 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: '화면 내용을 기준으로 스크린샷 이름을 자동으로 바꾸세요. 기존 캡처를 일괄 처리하거나 Mac과 Windows에서 새 캡처 폴더를 모니터링하며, 미리보기와 되돌리기를 지원합니다.',
       },
       '/rename-photos-with-ai': {
-        title: 'AI 사진 정리 및 이미지 이름 변경 도구 | Zush',
+        title: 'AI 사진 정리 및 이미지 이름 변경 도구',
         description: 'AI 사진 이름 변경 도구. Zush가 HEIC, RAW, AVIF, JPG, SVG, TIFF 등 이미지를 읽고 피사체와 장면, 맥락을 기준으로 사진 이름을 변경합니다.',
       },
       '/rename-videos-with-ai': {
-        title: 'AI로 동영상 이름 변경 · MP4, MOV, 화면 녹화 | Zush',
+        title: 'AI로 동영상 이름 변경 · MP4, MOV, 화면 녹화',
         description: 'AI 동영상 이름 변경 도구. Zush가 MP4, MOV, M4V, MPEG, MTS, VOB, 자막과 샘플 프레임을 읽고 동영상 이름을 내용 기준으로 변경합니다.',
       },
       '/rename-audio-with-ai': {
@@ -4793,8 +4793,8 @@ const COPY: Record<Locale, LocaleCopy> = {
     },
     platforms: {
       mac: {
-        breadcrumbLabel: 'Zush for Mac',
-        softwareName: 'Zush for Mac',
+        breadcrumbLabel: '适用于 Mac 的 AI 文件重命名工具',
+        softwareName: 'Zush',
         softwareDescription: '适用于 Mac 的 AI 文件重命名工具。可用内容、元数据、日期和可复用模块创建自定义规则，预览所有更改，并支持撤销和本地 AI。',
         heroTitle: '适用于 Mac 的文件重命名工具',
         heroSubtitle: '用你选择的信息生成 Finder 文件名。应用前预览每项建议，可撤销任意批次，或使用受支持的本地 AI。',
@@ -4819,8 +4819,8 @@ const COPY: Record<Locale, LocaleCopy> = {
         ],
       },
       windows: {
-        breadcrumbLabel: 'Zush for Windows',
-        softwareName: 'Zush for Windows',
+        breadcrumbLabel: '适用于 Windows 的 AI 文件重命名工具',
+        softwareName: 'Zush',
         softwareDescription: '适用于 Windows 的 AI 文件重命名工具。可用内容、元数据、日期和可复用模块创建自定义规则，预览所有更改，并支持撤销和本地 AI。',
         heroTitle: '适用于 Windows 的文件重命名工具',
         heroSubtitle: '用你选择的信息生成文件资源管理器名称。应用前预览每项建议，可撤销任意批次，或使用受支持的本地 AI。',
@@ -4850,7 +4850,7 @@ const COPY: Record<Locale, LocaleCopy> = {
       '/mac': { title: 'Mac 文件重命名工具：用 AI 批量重命名文件 | Zush', description: 'Mac 文件重命名工具。用 AI 根据内容批量重命名截图、PDF、照片、视频、音频、设计文件和文档。' },
       '/windows': { title: 'Windows 文件重命名工具：用 AI 大量重命名文件 | Zush', description: 'Windows 11 和 10 文件重命名工具。用 AI 大量重命名截图、PDF、照片、视频、音频、设计文件和 Office 文档。' },
       '/rename-pdf-with-ai': {
-        title: '用 AI 重命名 PDF · 发票、合同、扫描件 | Zush',
+        title: '用 AI 重命名 PDF · 发票、合同、扫描件',
         description: 'AI PDF 重命名工具。Zush 读取发票、合同、扫描件、收据和报告，按内容为 PDF 文件生成便于检索的名称，支持预览与一键撤销。',
       },
       '/rename-design-files-with-ai': {
@@ -4866,11 +4866,11 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: '按画面内容自动重命名截图。可批量处理已有截图，或在 Mac 和 Windows 上监控文件夹并处理新截图；支持预览建议名称和一键撤销。',
       },
       '/rename-photos-with-ai': {
-        title: 'AI 照片整理与图片重命名工具 | Zush',
+        title: 'AI 照片整理与图片重命名工具',
         description: 'AI 照片重命名工具。Zush 读取 HEIC、RAW、AVIF、JPG、SVG、TIFF 等图片，按主体、场景和上下文为照片生成可搜索的名称。',
       },
       '/rename-videos-with-ai': {
-        title: '用 AI 重命名视频 · MP4、MOV、录屏 | Zush',
+        title: '用 AI 重命名视频 · MP4、MOV、录屏',
         description: 'AI 视频重命名工具。Zush 读取 MP4、MOV、M4V、MPEG、MTS、VOB、字幕以及采样画面，按视频内容批量生成清晰的文件名。',
       },
       '/rename-audio-with-ai': {
@@ -4958,8 +4958,8 @@ const COPY: Record<Locale, LocaleCopy> = {
     },
     platforms: {
       mac: {
-        breadcrumbLabel: 'Mac için Zush',
-        softwareName: 'Mac için Zush',
+        breadcrumbLabel: 'Mac için dosya adlandırıcı',
+        softwareName: 'Zush',
         softwareDescription:
           'Mac için özel kurallara sahip yapay zekâ dosya adlandırıcı. İçerik, meta veri, tarih ve yeniden kullanılabilir bloklarla adlar oluşturun; her değişikliği önizleyin, geri alın veya çevrimdışı AI kullanın.',
         heroTitle: 'Mac için dosya adlandırıcı',
@@ -4986,8 +4986,8 @@ const COPY: Record<Locale, LocaleCopy> = {
         ],
       },
       windows: {
-        breadcrumbLabel: 'Windows için Zush',
-        softwareName: 'Windows için Zush',
+        breadcrumbLabel: 'Windows için dosya adlandırıcı',
+        softwareName: 'Zush',
         softwareDescription:
           'Windows için özel kurallara sahip yapay zekâ dosya adlandırıcı. İçerik, meta veri, tarih ve yeniden kullanılabilir bloklarla adlar oluşturun; her değişikliği önizleyin, geri alın veya çevrimdışı AI kullanın.',
         heroTitle: 'Windows için dosya adlandırıcı',
@@ -5028,7 +5028,7 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'Windows 11 ve 10’da dosyaları yapay zekâyla toplu yeniden adlandırın: ekran görüntüleri, PDF’ler, fotoğraflar, videolar, sesler, tasarım ve Office belgeleri.',
       },
       '/rename-pdf-with-ai': {
-        title: 'PDF’leri yapay zekâyla yeniden adlandırma | Zush',
+        title: 'PDF’leri yapay zekâyla yeniden adlandırma',
         description: 'Yapay zekâ PDF adlandırıcı. Zush faturaları, sözleşmeleri, taramaları ve raporları okur; PDF dosyalarını içeriğine göre aranabilir adlarla adlandırır.',
       },
       '/rename-design-files-with-ai': {
@@ -5044,11 +5044,11 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'Ekran görüntülerini görünür içeriğe göre otomatik adlandırın. Eski görüntüleri toplu işleyin veya Mac ve Windows’ta yenilerini izleyin; önizleme ve geri alma dâhil.',
       },
       '/rename-photos-with-ai': {
-        title: 'Yapay zekâ fotoğraf düzenleyici ve adlandırıcı | Zush',
+        title: 'Yapay zekâ fotoğraf düzenleyici ve adlandırıcı',
         description: 'Yapay zekâ fotoğraf adlandırıcı. Zush; HEIC, RAW, AVIF, JPG, SVG ve TIFF görsellerini okur; fotoğrafları konusuna ve bağlamına göre adlandırır.',
       },
       '/rename-videos-with-ai': {
-        title: 'Videoları yapay zekâyla yeniden adlandırma | Zush',
+        title: 'Videoları yapay zekâyla yeniden adlandırma',
         description: 'Yapay zekâ video adlandırıcı. Zush; MP4, MOV, M4V, MPEG, MTS, VOB, altyazıları ve örneklenen kareleri okur ve videoları içeriğine göre yeniden adlandırır.',
       },
       '/rename-audio-with-ai': {
@@ -5136,8 +5136,8 @@ const COPY: Record<Locale, LocaleCopy> = {
     },
     platforms: {
       mac: {
-        breadcrumbLabel: 'Zush لنظام Mac',
-        softwareName: 'Zush لنظام Mac',
+        breadcrumbLabel: 'أداة إعادة تسمية الملفات لنظام Mac',
+        softwareName: 'Zush',
         softwareDescription:
           'أداة إعادة تسمية ملفات بالذكاء الاصطناعي لنظام Mac بقواعد مخصصة من المحتوى والبيانات الوصفية والتواريخ والكتل القابلة لإعادة الاستخدام، مع المعاينة والتراجع والعمل دون اتصال.',
         heroTitle: 'أداة إعادة تسمية الملفات لنظام Mac',
@@ -5164,8 +5164,8 @@ const COPY: Record<Locale, LocaleCopy> = {
         ],
       },
       windows: {
-        breadcrumbLabel: 'Zush لنظام Windows',
-        softwareName: 'Zush لنظام Windows',
+        breadcrumbLabel: 'أداة إعادة تسمية الملفات لنظام Windows',
+        softwareName: 'Zush',
         softwareDescription:
           'أداة إعادة تسمية ملفات بالذكاء الاصطناعي لنظام Windows بقواعد مخصصة من المحتوى والبيانات الوصفية والتواريخ والكتل القابلة لإعادة الاستخدام، مع المعاينة والتراجع والعمل دون اتصال.',
         heroTitle: 'أداة إعادة تسمية الملفات لنظام Windows',
@@ -5206,7 +5206,7 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'أداة إعادة تسمية ملفات لنظامي Windows 11 و10 تعيد تسمية الملفات بكميات كبيرة بالذكاء الاصطناعي: لقطات الشاشة وPDF والصور والفيديو والصوت والتصميم ومستندات Office.',
       },
       '/rename-pdf-with-ai': {
-        title: 'إعادة تسمية ملفات PDF بالذكاء الاصطناعي | Zush',
+        title: 'إعادة تسمية ملفات PDF بالذكاء الاصطناعي',
         description: 'أداة إعادة تسمية PDF بالذكاء الاصطناعي. يقرأ Zush الفواتير والعقود والمستندات الممسوحة والتقارير ويعيد تسمية ملفات PDF حسب محتواها بأسماء قابلة للبحث.',
       },
       '/rename-design-files-with-ai': {
@@ -5222,11 +5222,11 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'أعد تسمية لقطات الشاشة تلقائيًا حسب محتواها الظاهر. عالج اللقطات القديمة دفعة واحدة أو راقب الجديدة على Mac وWindows، مع المعاينة والتراجع.',
       },
       '/rename-photos-with-ai': {
-        title: 'منظّم الصور وإعادة تسميتها بالذكاء الاصطناعي | Zush',
+        title: 'منظّم الصور وإعادة تسميتها بالذكاء الاصطناعي',
         description: 'إعادة تسمية الصور بالذكاء الاصطناعي. يقرأ Zush صور HEIC وRAW وAVIF وJPG وSVG وTIFF وغيرها ويعيد تسمية صورك حسب الموضوع والمشهد والسياق.',
       },
       '/rename-videos-with-ai': {
-        title: 'إعادة تسمية الفيديو بالذكاء الاصطناعي | Zush',
+        title: 'إعادة تسمية الفيديو بالذكاء الاصطناعي',
         description: 'إعادة تسمية الفيديو بالذكاء الاصطناعي. يقرأ Zush ملفات MP4 وMOV وM4V وMPEG وMTS وVOB والترجمات ولقطات مأخوذة من الفيديو ويعيد التسمية حسب المحتوى.',
       },
       '/rename-audio-with-ai': {

@@ -1281,11 +1281,11 @@ export const professions: ProfessionLocaleCopy = {
       ],
       "links": [
         {
-          "label": "Bekijk hoe Zush de naam van foto's wijzigt",
+          "label": "Foto’s hernoemen met AI",
           "href": "/rename-photos-with-ai"
         },
         {
-          "label": "Bekijk hoe Zush de naam van videoclips wijzigt",
+          "label": "Video’s hernoemen met AI",
           "href": "/rename-videos-with-ai"
         },
         {
@@ -1682,7 +1682,7 @@ export const professions: ProfessionLocaleCopy = {
   "hr": {
     "path": "/for-hr",
     "seo": {
-      "title": "HR-documenten beheren met Offline AI | Zush",
+      "title": "HR-documenten beheren met Offline AI",
       "description": "Hernoem en organiseer bestanden van werknemers, kandidaten, onboarding, beoordeling en beleid met AI. Doorzoekbare HR-bestandsnamen, Offline AI, voorbeeld bekijken en ongedaan maken op Mac of Windows."
     },
     "pageTitle": "HR-documenten beheren met Offline AI",

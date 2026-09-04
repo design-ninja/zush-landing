@@ -99,7 +99,7 @@ const RenameDesignFilesWithAI = () => (
       { title: 'Rename Screenshots with AI', href: '/rename-screenshots-with-ai' },
       { title: 'Rename Photos with AI', href: '/rename-photos-with-ai' },
       { title: 'Rename Documents with AI', href: '/rename-documents-with-ai' },
-      { title: 'Zush for Mac', href: '/mac' },
+      { title: 'AI file renamer for Mac', href: '/mac' },
     ]}
     relatedBlogPosts={[
       { title: 'Digital Asset Management for Designers on Mac', href: 'digital-asset-management-designers-mac' },

@@ -28,6 +28,15 @@ export const ZUSH_BRAND_ALTERNATE_NAMES = [
   'Zush App',
 ] as const;
 
+/** Recognized site-name variants, ordered from the preferred descriptive brand to the domain. */
+export const ZUSH_SITE_ALTERNATE_NAMES = [
+  'Zush AI Renamer',
+  'Zush AI File Renamer',
+  'Zush File Renamer',
+  'Zush Renamer',
+  'zushapp.com',
+] as const;
+
 /**
  * Reference to the product entity, which is fully described only on the homepage.
  * Pages that merely point at the product carry this typed stub instead of a bare
@@ -80,8 +89,9 @@ export const ORGANIZATION_JSON_LD = {
 export const WEBSITE_JSON_LD = {
   '@type': 'WebSite',
   '@id': WEBSITE_ID,
-  url: SITE_ORIGIN,
+  url: `${SITE_ORIGIN}/`,
   name: 'Zush',
+  alternateName: [...ZUSH_SITE_ALTERNATE_NAMES],
   publishingPrinciples: `${SITE_ORIGIN}/methodology`,
   publisher: ORGANIZATION_REF,
   // The only site-wide search surface is the blog search page.

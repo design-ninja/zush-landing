@@ -832,8 +832,8 @@ export const professions = {
         { title: 'Revise, aplique e reutilize', description: 'Leia os nomes como um lote, corrija exceções, aplique com desfazer disponível e reutilize o modelo no próximo trabalho.' },
       ],
       links: [
-        { label: 'Veja como o Zush renomeia fotos', href: '/rename-photos-with-ai' },
-        { label: 'Veja como o Zush renomeia vídeos', href: '/rename-videos-with-ai' },
+        { label: 'Renomear fotos com IA', href: '/rename-photos-with-ai' },
+        { label: 'Renomear vídeos com IA', href: '/rename-videos-with-ai' },
         { label: 'Crie um modelo reutilizável', href: '/docs/templates' },
       ],
     },
@@ -965,7 +965,7 @@ export const professions = {
   },
   hr: {
     path: '/for-hr',
-    seo: { title: 'Gestão de documentos de RH e renomeação com IA offline', description: 'O Zush lê currículos, cartas-proposta, formulários de admissão, avaliações, políticas e registros exportados e cria nomes consistentes e fáceis de encontrar. Use com pastas, unidades, downloads do ATS e exportações do HRIS no Mac ou Windows.' },
+    seo: { title: 'Gestão de documentos de RH e renomeação com IA offline', description: 'Renomeie com IA currículos, cartas-proposta, formulários de admissão, avaliações, políticas e registros exportados com nomes consistentes e fáceis de encontrar. Use com pastas, unidades, downloads do ATS e exportações do HRIS no Mac ou Windows.' },
     pageTitle: 'Gestão de documentos de RH',
     hero: { eyebrow: 'Para equipes de RH', titleLead: 'Renomeie documentos de RH por ', titleAccent: 'colaborador, data e tipo', subtitle: 'O Zush lê currículos, cartas-proposta, formulários de admissão, avaliações, políticas e registros exportados e cria nomes consistentes e fáceis de encontrar. Use com pastas, unidades, downloads do ATS e exportações do HRIS no Mac ou Windows.', trustLine: ['Funciona com suas pastas atuais', 'IA offline para registros confidenciais', 'Prévia antes de cada renomeação'], photoAlt: 'Profissionais de RH revisando documentos de admissão em um escritório moderno', downloadMac: 'Baixar para Mac', downloadWindows: 'Baixar para Windows', trustAria: 'Por que equipes de gestão de documentos de RH usam o Zush' },
     demoLabel: 'O Zush organiza documentos de RH em arquivos de colaboradores e candidatos fáceis de encontrar',
