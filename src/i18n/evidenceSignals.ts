@@ -29,7 +29,7 @@ export interface EvidenceSignalsCopy {
 }
 
 const EN: EvidenceSignalsCopy = {
-  title: 'What is Zush',
+  title: 'What is Zush AI File Renamer?',
   description:
     'Zush is an AI file renamer for Mac and Windows. It reads files across {count} supported formats and builds each filename from the content, metadata, dates, and rules you choose. Review every suggestion, rename a batch when you are ready, or undo it later. Templates and folder monitoring handle repeat work, while Cloud AI or Local AI let you choose where analysis runs.',
   freeTitle: 'Free to try',
@@ -62,9 +62,9 @@ const EN: EvidenceSignalsCopy = {
 const COPY: Record<Locale, EvidenceSignalsCopy> = {
   en: EN,
   de: {
-    title: 'Was ist Zush',
+    title: 'Was ist Zush AI File Renamer?',
     description:
-      'Zush ist ein KI-Datei-Umbenenner und -Organizer für Mac und Windows. Er benennt Dateien anhand ihres Inhalts stapelweise um — {count} unterstützte Formate, mit Massenprüfung, Vorlagen, Ordnerüberwachung, BYOK und Rückgängig per Klick.',
+      'Zush ist ein KI-Dateiumbenenner für Mac und Windows. Er liest Dateien in {count} unterstützten Formaten und erstellt jeden Dateinamen aus Inhalt, Metadaten, Datumsangaben und den von Ihnen gewählten Regeln. Prüfen Sie jeden Vorschlag, benennen Sie den Stapel um, wenn alles passt, oder machen Sie den Vorgang später rückgängig. Templates und Ordnerüberwachung automatisieren wiederkehrende Aufgaben; mit Cloud AI oder Local AI bestimmen Sie, wo die Analyse stattfindet.',
     freeTitle: 'Kostenlos testen',
     freeDescription: `{limit} kostenlose KI-Umbenennungen — ohne Registrierung und Kreditkarte. PRO ab ${PRO_PRICING.oneTime.usd} $ einmalig oder ${PRO_PRICING.monthly.usd} $/Monat.`,
     blocksTitle: '145+ Namensbausteine',
@@ -92,9 +92,9 @@ const COPY: Record<Locale, EvidenceSignalsCopy> = {
     },
   },
   fr: {
-    title: 'Qu’est-ce que Zush',
+    title: 'Qu’est-ce que Zush AI File Renamer ?',
     description:
-      'Zush est un renommeur et organisateur de fichiers par IA pour Mac et Windows. Il renomme les fichiers par lot selon leur contenu — {count} formats pris en charge, avec vérification groupée, modèles, surveillance de dossiers, BYOK et retour en un clic.',
+      'Zush est un renommeur de fichiers par IA pour Mac et Windows. Il lit les fichiers dans {count} formats pris en charge et compose chaque nom à partir du contenu, des métadonnées, des dates et des règles que vous choisissez. Vérifiez chaque suggestion, renommez le lot quand vous êtes prêt ou annulez plus tard. Les modèles et la surveillance de dossiers automatisent les tâches répétitives, tandis que Cloud AI et Local AI vous permettent de choisir où l’analyse s’exécute.',
     freeTitle: 'Essai gratuit',
     freeDescription: `{limit} renommages par IA gratuits — sans inscription ni carte bancaire. PRO dès ${PRO_PRICING.oneTime.usd} $ en achat unique ou ${PRO_PRICING.monthly.usd} $/mois.`,
     blocksTitle: '145+ blocs de nommage',
@@ -122,9 +122,9 @@ const COPY: Record<Locale, EvidenceSignalsCopy> = {
     },
   },
   es: {
-    title: 'Qué es Zush',
+    title: '¿Qué es Zush AI File Renamer?',
     description:
-      'Zush es un renombrador y organizador de archivos con IA para Mac y Windows. Renombra archivos por lotes según su contenido — {count} formatos compatibles, con revisión masiva, plantillas, monitorización de carpetas, BYOK y deshacer en un clic.',
+      'Zush es un renombrador de archivos con IA para Mac y Windows. Lee archivos en {count} formatos compatibles y crea cada nombre a partir del contenido, los metadatos, las fechas y las reglas que elijas. Revisa cada sugerencia, renombra el lote cuando esté listo o deshazlo más tarde. Las plantillas y la monitorización de carpetas automatizan el trabajo repetitivo, mientras que Cloud AI y Local AI te permiten elegir dónde se realiza el análisis.',
     freeTitle: 'Prueba gratuita',
     freeDescription: `{limit} renombrados con IA gratis — sin registro ni tarjeta de crédito. PRO desde ${PRO_PRICING.oneTime.usd} $ en pago único u ${PRO_PRICING.monthly.usd} $/mes.`,
     blocksTitle: '145+ bloques de nombrado',
@@ -152,9 +152,9 @@ const COPY: Record<Locale, EvidenceSignalsCopy> = {
     },
   },
   'pt-br': {
-    title: 'O que é o Zush',
+    title: 'O que é o Zush AI File Renamer?',
     description:
-      'O Zush é um renomeador e organizador de arquivos com IA para Mac e Windows. Ele renomeia arquivos em lote pelo conteúdo — {count} formatos compatíveis, com revisão em massa, modelos, monitoramento de pastas, BYOK e desfazer com um clique.',
+      'O Zush é um renomeador de arquivos com IA para Mac e Windows. Ele lê arquivos em {count} formatos compatíveis e cria cada nome com base no conteúdo, nos metadados, nas datas e nas regras escolhidas. Revise cada sugestão, renomeie o lote quando estiver pronto ou desfaça depois. Templates e monitoramento de pastas automatizam tarefas recorrentes, enquanto Cloud AI e Local AI permitem escolher onde a análise será executada.',
     freeTitle: 'Teste grátis',
     freeDescription: `{limit} renomeações com IA grátis — sem cadastro nem cartão de crédito. PRO a partir de US$ ${PRO_PRICING.oneTime.usd} (pagamento único) ou US$ ${PRO_PRICING.monthly.usd}/mês.`,
     blocksTitle: '145+ blocos de nomeação',
@@ -182,9 +182,9 @@ const COPY: Record<Locale, EvidenceSignalsCopy> = {
     },
   },
   it: {
-    title: 'Che cos’è Zush',
+    title: 'Che cos’è Zush AI File Renamer?',
     description:
-      'Zush è un rinominatore e organizzatore di file con IA per Mac e Windows. Rinomina i file in blocco in base al contenuto — {count} formati supportati, con revisione di massa, modelli, monitoraggio cartelle, BYOK e ripristino con un clic.',
+      'Zush è un rinominatore di file con IA per Mac e Windows. Legge file in {count} formati supportati e crea ogni nome dal contenuto, dai metadati, dalle date e dalle regole scelte. Controlla ogni suggerimento, rinomina il batch quando è pronto oppure annullalo in seguito. Templates e monitoraggio delle cartelle automatizzano le attività ricorrenti, mentre Cloud AI e Local AI permettono di scegliere dove eseguire l’analisi.',
     freeTitle: 'Prova gratuita',
     freeDescription: `{limit} rinomine con IA gratuite — senza registrazione né carta di credito. PRO da ${PRO_PRICING.oneTime.usd} $ una tantum o ${PRO_PRICING.monthly.usd} $/mese.`,
     blocksTitle: '145+ blocchi di denominazione',
@@ -212,9 +212,9 @@ const COPY: Record<Locale, EvidenceSignalsCopy> = {
     },
   },
   nl: {
-    title: 'Wat is Zush',
+    title: 'Wat is Zush AI File Renamer?',
     description:
-      'Zush is een AI-bestandshernoemer en -organizer voor Mac en Windows. Het hernoemt bestanden in bulk op basis van inhoud — {count} ondersteunde formaten, met massacontrole, sjablonen, mapbewaking, BYOK en herstellen met één klik.',
+      'Zush is een AI-bestandshernoemer voor Mac en Windows. Het leest bestanden in {count} ondersteunde formaten en stelt elke bestandsnaam samen uit inhoud, metadata, datums en de regels die u kiest. Controleer elke suggestie, hernoem de batch wanneer u klaar bent of maak deze later ongedaan. Templates en mapbewaking automatiseren terugkerend werk, terwijl u met Cloud AI of Local AI kiest waar de analyse plaatsvindt.',
     freeTitle: 'Gratis proberen',
     freeDescription: `{limit} gratis AI-hernoemingen — zonder registratie of creditcard. PRO vanaf $ ${PRO_PRICING.oneTime.usd} eenmalig of $ ${PRO_PRICING.monthly.usd}/maand.`,
     blocksTitle: '145+ naamblokken',
@@ -242,9 +242,9 @@ const COPY: Record<Locale, EvidenceSignalsCopy> = {
     },
   },
   tr: {
-    title: 'Zush nedir',
+    title: 'Zush AI File Renamer nedir?',
     description:
-      'Zush, Mac ve Windows için yapay zekâ destekli bir dosya yeniden adlandırma ve düzenleme aracıdır. Dosyaları içeriğine göre toplu olarak yeniden adlandırır — {count} desteklenen biçim, toplu inceleme, şablonlar, klasör izleme, BYOK ve tek tıkla geri alma.',
+      'Zush, Mac ve Windows için yapay zekâ destekli bir dosya yeniden adlandırıcıdır. {count} desteklenen biçimdeki dosyaları okur ve her dosya adını içerik, meta veriler, tarihler ve seçtiğiniz kurallardan oluşturur. Her öneriyi inceleyin, hazır olduğunuzda toplu işlemi uygulayın veya daha sonra geri alın. Templates ve klasör izleme tekrarlanan işleri otomatikleştirirken Cloud AI ya da Local AI analizin nerede çalışacağını seçmenizi sağlar.',
     freeTitle: 'Ücretsiz deneyin',
     freeDescription: `{limit} ücretsiz yapay zekâ yeniden adlandırma — kayıt veya kredi kartı gerekmez. PRO tek seferlik ${PRO_PRICING.oneTime.usd} $ veya ayda ${PRO_PRICING.monthly.usd} $.`,
     blocksTitle: '145+ adlandırma bloğu',
@@ -272,9 +272,9 @@ const COPY: Record<Locale, EvidenceSignalsCopy> = {
     },
   },
   ja: {
-    title: 'Zush とは',
+    title: 'Zush AI File Renamer とは？',
     description:
-      'Zush は Mac と Windows 向けの AI ファイルリネーム・整理ツールです。ファイルの内容をもとに {count} 種類の形式を一括リネームし、まとめて確認、テンプレート、フォルダ監視、BYOK、ワンクリックで元に戻す機能を備えています。',
+      'Zush は Mac と Windows 向けの AI ファイルリネームツールです。{count} 種類の対応形式を読み取り、内容、メタデータ、日付、選択したルールから各ファイル名を作成します。すべての候補を確認してから一括で適用でき、後から元に戻すこともできます。Templates とフォルダ監視で繰り返し作業を自動化し、Cloud AI または Local AI で解析場所を選べます。',
     freeTitle: '無料で試せる',
     freeDescription: `無料で {limit} 件の AI リネームが可能 — 登録もクレジットカードも不要。PRO は買い切り ${PRO_PRICING.oneTime.label} または月額 ${PRO_PRICING.monthly.label} から。`,
     blocksTitle: '145 以上のネーミングブロック',
@@ -302,9 +302,9 @@ const COPY: Record<Locale, EvidenceSignalsCopy> = {
     },
   },
   ko: {
-    title: 'Zush란?',
+    title: 'Zush AI File Renamer란?',
     description:
-      'Zush는 Mac과 Windows용 AI 파일 이름 변경 및 정리 도구입니다. 파일 내용을 기반으로 {count}개 형식을 일괄 변경하며, 대량 검토, 템플릿, 폴더 모니터링, BYOK, 원클릭 되돌리기를 지원합니다.',
+      'Zush는 Mac과 Windows용 AI 파일 이름 변경 도구입니다. {count}개 지원 형식의 파일을 읽고 콘텐츠, 메타데이터, 날짜와 사용자가 선택한 규칙으로 각 파일 이름을 만듭니다. 모든 제안을 검토한 뒤 배치를 적용하고 나중에 되돌릴 수 있습니다. Templates와 폴더 모니터링은 반복 작업을 자동화하며, Cloud AI 또는 Local AI로 분석 위치를 선택할 수 있습니다.',
     freeTitle: '무료로 사용해 보기',
     freeDescription: `무료 AI 이름 변경 {limit}회 — 가입이나 신용카드가 필요 없습니다. PRO는 일시불 ${PRO_PRICING.oneTime.label} 또는 월 ${PRO_PRICING.monthly.label}부터.`,
     blocksTitle: '145개 이상의 네이밍 블록',
@@ -332,9 +332,9 @@ const COPY: Record<Locale, EvidenceSignalsCopy> = {
     },
   },
   'zh-cn': {
-    title: 'Zush 是什么',
+    title: 'Zush AI File Renamer 是什么？',
     description:
-      'Zush 是一款面向 Mac 和 Windows 的 AI 文件重命名与整理工具。它按文件内容批量重命名，支持 {count} 种格式，并提供批量核对、模板、文件夹监控、BYOK 和一键撤销。',
+      'Zush 是一款面向 Mac 和 Windows 的 AI 文件重命名工具。它可读取 {count} 种支持格式，并根据内容、元数据、日期和您选择的规则生成每个文件名。您可以逐一检查建议，确认后批量重命名，也可以稍后撤销。Templates 和文件夹监控可处理重复任务，Cloud AI 与 Local AI 则让您选择分析运行的位置。',
     freeTitle: '免费试用',
     freeDescription: `免费 {limit} 次 AI 重命名 — 无需注册或信用卡。PRO 版一次性购买 ${PRO_PRICING.oneTime.usd} 美元起，或每月 ${PRO_PRICING.monthly.usd} 美元。`,
     blocksTitle: '145+ 命名模块',
@@ -362,9 +362,9 @@ const COPY: Record<Locale, EvidenceSignalsCopy> = {
     },
   },
   ar: {
-    title: 'ما هو Zush',
+    title: 'ما هو Zush AI File Renamer؟',
     description:
-      'Zush هو أداة لإعادة تسمية الملفات وتنظيمها بالذكاء الاصطناعي على Mac وWindows. يعيد تسمية الملفات دفعة واحدة حسب محتواها — {count} صيغة مدعومة، مع مراجعة مجمّعة وقوالب ومراقبة للمجلدات ودعم BYOK وتراجع بنقرة واحدة.',
+      'Zush هو أداة لإعادة تسمية الملفات بالذكاء الاصطناعي على Mac وWindows. يقرأ الملفات ضمن {count} صيغة مدعومة وينشئ اسم كل ملف من المحتوى والبيانات الوصفية والتواريخ والقواعد التي تختارها. راجع كل اقتراح، ثم أعد تسمية الدفعة عندما تصبح جاهزة أو تراجع عنها لاحقًا. تعمل Templates ومراقبة المجلدات على أتمتة المهام المتكررة، بينما يتيح لك Cloud AI أو Local AI اختيار مكان إجراء التحليل.',
     freeTitle: 'جرّبه مجانًا',
     freeDescription: `{limit} عملية إعادة تسمية مجانية بالذكاء الاصطناعي — دون تسجيل أو بطاقة ائتمان. النسخة PRO تبدأ من ${PRO_PRICING.oneTime.usd} دولارًا دفعة واحدة أو ${PRO_PRICING.monthly.usd} دولارات شهريًا.`,
     blocksTitle: 'أكثر من 145 وحدة تسمية',
