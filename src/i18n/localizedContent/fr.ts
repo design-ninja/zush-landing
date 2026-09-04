@@ -532,7 +532,7 @@ export const professions: ProfessionLocaleCopy = {
   "accountants": {
     "path": "/for-accountants",
     "seo": {
-      "title": "Gestion de documents comptables et renommage par IA | Zush",
+      "title": "Gestion de documents comptables et renommage par IA",
       "description": "Renommez automatiquement les factures, les reçus, les relevés, les formulaires fiscaux et les numérisations par fournisseur, date, numéro et montant. Modèles client, IA hors ligne, aperçu et annulation."
     },
     "pageTitle": "Gestion de documents comptables et renommage par IA",
@@ -822,7 +822,7 @@ export const professions: ProfessionLocaleCopy = {
   "medical": {
     "path": "/for-medical",
     "seo": {
-      "title": "Gestion de documents médicaux avec l’IA hors ligne | Zush",
+      "title": "Gestion de documents médicaux avec l’IA hors ligne",
       "description": "Gestion des documents de santé pour les cabinets médicaux : renommez les documents numérisés, les fax, les rapports de laboratoire et les formulaires d'admission avec l’IA hors ligne, prévisualisez et annulez."
     },
     "pageTitle": "Gestion de documents médicaux avec l’IA hors ligne",
@@ -1126,7 +1126,7 @@ export const professions: ProfessionLocaleCopy = {
   "photographers": {
     "path": "/for-photographers",
     "seo": {
-      "title": "Renommeur de fichiers IA pour photographes et vidéastes | Zush",
+      "title": "Renommeur de fichiers IA pour photographes et vidéastes",
       "description": "Renommez les photos RAW, les JPEG et les clips vidéo par projet, date, sujet, scène et prise. Flux de travail par lots pour les photographes et vidéastes sur Mac et Windows."
     },
     "pageTitle": "Renommeur de fichiers IA pour photographes et vidéastes",
@@ -1404,7 +1404,7 @@ export const professions: ProfessionLocaleCopy = {
   "legal": {
     "path": "/for-legal",
     "seo": {
-      "title": "Gestion de documents juridiques avec l’IA hors ligne | Zush",
+      "title": "Gestion de documents juridiques avec l’IA hors ligne",
       "description": "Renommez et organisez les dossiers, contrats, actes de procédure et documents numérisés avec l’IA. Créez des noms faciles à rechercher, travaillez avec votre DMS et exécutez l’analyse localement sur Mac ou Windows."
     },
     "pageTitle": "Gestion de documents juridiques avec l’IA hors ligne",
@@ -1963,7 +1963,7 @@ export const professions: ProfessionLocaleCopy = {
   "real-estate": {
     "path": "/for-real-estate",
     "seo": {
-      "title": "Gestion de documents immobiliers et renommage par IA | Zush",
+      "title": "Gestion de documents immobiliers et renommage par IA",
       "description": "Renommez les contrats d’achat, rapports d’inspection, titres de propriété, évaluations, documents de clôture et photos du bien par adresse, date, type, partie et statut."
     },
     "pageTitle": "Gestion de documents immobiliers et renommage par IA",

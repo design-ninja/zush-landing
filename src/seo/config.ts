@@ -87,7 +87,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     keywords: HOME_KEYWORDS,
   },
   '/pricing': {
-    title: 'AI File Renamer Pricing: 50 Free Renames, $10/mo or $48 Lifetime',
+    title: 'AI File Renamer Pricing: Free, $10/mo or $48 Lifetime',
     description:
       'Start with 50 free AI renames. PRO costs $10 per month or $48 once for lifetime access on Mac and Windows. No signup or credit card to try.',
     robots: 'index, follow',
@@ -123,7 +123,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'AI file organizer, organize files with AI, automatic file naming, AI document organizer, content-aware file naming, rename files automatically, file organizer for Mac, file organizer for Windows',
   },
   '/hazel-alternative': {
-    title: 'Hazel Alternative with AI File Naming | Zush',
+    title: 'Hazel Alternative with AI File Naming',
     description:
       'Looking for a Hazel alternative that understands file content? Zush watches folders, renames by content with AI, and works on Mac and Windows. Preview and undo.',
     robots: 'index, follow',
@@ -132,7 +132,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'hazel alternative, hazel file organizer, apps like hazel, mac file automation, ai file organizer for mac, folder monitoring mac, rename files automatically mac, sort files into folders mac',
   },
   '/automate-downloads-folder': {
-    title: 'Automate Your Downloads Folder with AI Naming | Zush',
+    title: 'Automate Your Downloads Folder with AI Naming',
     description:
       'Zush watches your Downloads folder and names every new file by content — invoices, screenshots, receipts, PDFs — automatically, with preview and undo.',
     robots: 'index, follow',
@@ -159,7 +159,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'rename invoices automatically, invoice renamer, invoice pdf organizer, invoice naming convention, organize invoices, rename pdf invoices, ai invoice organizer, bulk rename invoices',
   },
   '/for-accountants': {
-    title: 'AI File Renamer for Accountants & Bookkeepers | Zush',
+    title: 'AI File Renamer for Accountants & Bookkeepers',
     description:
       'Batch rename invoices, receipts, statements, tax forms, and scans by vendor, date, number, amount, and client. Preview every batch on Mac or Windows.',
     robots: 'index, follow',
@@ -169,7 +169,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'AI file renamer for accountants, accounting document renamer, bookkeeper file naming, rename invoices automatically, organize client accounting documents, invoice file naming software, receipt renamer for bookkeepers',
   },
   '/for-medical': {
-    title: 'Healthcare Document Management with Offline AI File Renaming | Zush',
+    title: 'Healthcare Document Management with Offline AI File Renaming',
     description:
       'Healthcare document management for medical practices: rename scans, faxes, lab reports, and intake forms with Offline AI, preview, and undo.',
     robots: 'index, follow',
@@ -179,7 +179,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'healthcare document management, medical document management, medical records file renamer, rename scanned medical records, medical document renamer, offline AI medical document renamer, medical file renamer for clinics',
   },
   '/for-photographers': {
-    title: 'AI File Renamer for Photographers & Videographers | Zush',
+    title: 'AI File Renamer for Photographers & Videographers',
     description:
       'Rename RAW photos, JPEGs, and video clips by project, date, subject, scene, and take. Batch workflows for photographers and videographers on Mac and Windows.',
     robots: 'index, follow',
@@ -189,7 +189,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'AI file renamer for photographers, photo file naming software, video file renamer, batch rename RAW photos, rename video clips by content, photographer file naming workflow, videographer file organization, media file renamer',
   },
   '/for-legal': {
-    title: 'Legal Document Management with Offline AI File Renaming | Zush',
+    title: 'Legal Document Management with Offline AI File Renaming',
     description:
       'Rename and organize case files, contracts, pleadings, and scans with AI. Create searchable filenames, work with your DMS, and run locally on Mac or Windows.',
     robots: 'index, follow',
@@ -209,7 +209,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'HR document management, employee file naming convention, HR document organizer, organize employee files, onboarding document management, recruiting file organization, AI HR document renamer, offline AI HR documents, HR file naming software',
   },
   '/for-real-estate': {
-    title: 'Real Estate Document Management with AI File Renaming | Zush',
+    title: 'Real Estate Document Management with AI File Renaming',
     description:
       'Rename purchase agreements, inspections, title files, appraisals, closing documents, and property photos by address, date, type, party, and status.',
     robots: 'index, follow',
@@ -219,7 +219,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'real estate document management, real estate file organization, rename real estate documents, property transaction file naming, organize closing documents, rename DocuSign files, real estate document renamer, property file naming software',
   },
   '/rename-scanned-documents': {
-    title: 'Rename Scanned Documents Automatically | Zush',
+    title: 'Rename Scanned Documents Automatically',
     description:
       'Turn Scan0001.pdf into a searchable filename. Zush reads each scan with AI vision — no OCR pass — and names it by document type, party, and date. Mac & Windows.',
     robots: 'index, follow',
@@ -228,7 +228,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'rename scanned documents, automatically rename scans, scan renamer, rename scan files, scansnap rename files, scanner file naming, rename scanned pdf, organize scanned documents',
   },
   '/rename-receipts-with-ai': {
-    title: 'Rename & Organize Receipts with AI | Zush',
+    title: 'Rename & Organize Receipts with AI',
     description:
       'Turn IMG_2041.jpg into a searchable receipt filename with store, date, and amount. AI receipt renaming for tax season and expenses. Mac & Windows.',
     robots: 'index, follow',
@@ -237,7 +237,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'receipt organizer, organize receipts digitally, rename receipts, receipt organization for taxes, expense receipt filing, ai receipt organizer, scan receipt naming',
   },
   '/rename-excel-files-with-ai': {
-    title: 'Rename Excel Files with AI by Content | Zush',
+    title: 'Rename Excel Files with AI by Content',
     description:
       'Bulk rename Excel and spreadsheet files based on what is inside. Zush reads XLSX and CSV content and suggests clear names. Preview and undo. Mac & Windows.',
     robots: 'index, follow',
@@ -246,7 +246,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'rename excel files, bulk rename excel files, rename xlsx by content, rename spreadsheets, excel file naming convention, rename csv files, batch rename excel',
   },
   '/rename-word-documents-with-ai': {
-    title: 'Rename Word Documents with AI by Content | Zush',
+    title: 'Rename Word Documents with AI by Content',
     description:
       'Batch rename Word documents based on their content. Zush reads DOCX files and turns meeting_notes_FINAL_v2 into names you can search. Mac & Windows.',
     robots: 'index, follow',
@@ -348,7 +348,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'AI PDF renamer, rename PDF files with AI, rename PDFs by content, batch rename PDF files, automatic PDF renamer, PDF file naming software, rename scanned PDFs, invoice PDF renamer, PDF renamer for Mac, PDF renamer for Windows',
   },
   '/rename-documents-with-ai': {
-    title: 'Rename Documents & Ebooks with AI · EPUB, FB2 · Zush',
+    title: 'Rename Documents & Ebooks with AI · EPUB, FB2',
     description:
       'AI document and ebook renamer for Mac and Windows. Zush reads EPUB, FB2, Word, Excel, iWork, and text files, then creates searchable names from their content.',
     robots: 'index, follow',
@@ -357,7 +357,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'AI document renamer, AI ebook renamer, rename EPUB files, rename FB2 files, rename documents with AI, rename files by document content, batch rename documents, automatic document renamer, Office document renamer, iWork file renamer, document naming software, document renamer for Mac, document renamer for Windows',
   },
   '/rename-design-files-with-ai': {
-    title: 'Rename Design Files with AI · Figma, Sketch, AI, PSD · Zush',
+    title: 'Rename Design Files with AI · Figma, Sketch, AI, PSD',
     description:
       'AI design file renamer. Zush reads Sketch, Figma, Illustrator, and Photoshop previews, then renames design files by content and project context.',
     robots: 'index, follow',
@@ -366,7 +366,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'AI design file renamer, rename design files with AI, Figma file renamer, Sketch file renamer, PSD file renamer, Illustrator file renamer, batch rename design files, rename design files by content, creative asset renamer, design file naming software',
   },
   '/rename-screenshots-with-ai': {
-    title: 'Rename Screenshots with AI · Mac & Windows · Zush',
+    title: 'Rename Screenshots with AI · Mac & Windows',
     description:
       'Rename screenshots automatically by visible content. Batch rename old captures or monitor new ones on Mac and Windows, with preview and undo.',
     robots: 'index, follow',
@@ -393,7 +393,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'AI video renamer, rename videos with AI, batch rename video files, rename videos by content, MP4 file renamer, MOV file renamer, screen recording renamer, video file naming software, video renamer for Mac, video renamer for Windows',
   },
   '/rename-audio-with-ai': {
-    title: 'Rename Audio with AI · MP3, M4A, WAV, FLAC · Zush',
+    title: 'Rename Audio with AI · MP3, M4A, WAV, FLAC',
     description:
       'AI audio file renamer for Mac and Windows. Zush reads MP3, M4A, WAV, and FLAC metadata or their transcripts, then renames each file by what it contains.',
     robots: 'index, follow',

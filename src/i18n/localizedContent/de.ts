@@ -532,7 +532,7 @@ export const professions: ProfessionLocaleCopy = {
   "accountants": {
     "path": "/for-accountants",
     "seo": {
-      "title": "Buchhaltungsdokumente mit KI-Dateiumbenennung verwalten | Zush",
+      "title": "Buchhaltungsdokumente mit KI-Dateiumbenennung verwalten",
       "description": "Benennen Sie Rechnungen, Quittungen, Kontoauszüge, Steuerformulare und Scans automatisch nach Lieferant, Datum, Nummer und Betrag um. Kundenvorlagen, Offline-KI, Vorschau und Rückgängigmachen."
     },
     "pageTitle": "Buchhaltungsdokumente mit KI-Dateiumbenennung verwalten",
@@ -823,7 +823,7 @@ export const professions: ProfessionLocaleCopy = {
   "medical": {
     "path": "/for-medical",
     "seo": {
-      "title": "Medizinische Dokumente mit Offline-KI verwalten | Zush",
+      "title": "Medizinische Dokumente mit Offline-KI verwalten",
       "description": "Dokumentenmanagement im Gesundheitswesen für Arztpraxen: Scans, Faxe, Laborberichte und Aufnahmeformulare mit Offline-KI umbenennen, in der Vorschau anzeigen und rückgängig machen."
     },
     "pageTitle": "Medizinische Dokumente mit Offline-KI verwalten",
@@ -1128,7 +1128,7 @@ export const professions: ProfessionLocaleCopy = {
   "photographers": {
     "path": "/for-photographers",
     "seo": {
-      "title": "KI-Dateiumbenenner für Fotografen und Videografen | Zush",
+      "title": "KI-Dateiumbenenner für Fotografen und Videografen",
       "description": "Benennen Sie RAW-Fotos, JPEGs und Videoclips nach Projekt, Datum, Motiv, Szene und Aufnahme um. Stapelverarbeitung für Fotografen und Videofilmer auf Mac und Windows."
     },
     "pageTitle": "KI-Dateiumbenenner für Fotografen und Videografen",
@@ -1407,7 +1407,7 @@ export const professions: ProfessionLocaleCopy = {
   "legal": {
     "path": "/for-legal",
     "seo": {
-      "title": "Rechtsdokumente mit Offline-KI verwalten | Zush",
+      "title": "Rechtsdokumente mit Offline-KI verwalten",
       "description": "Benennen und organisieren Sie Akten, Verträge, Schriftsätze und Scans mit KI. Erstellen Sie durchsuchbare Dateinamen, arbeiten Sie mit Ihrem DMS und führen Sie es lokal auf Mac oder Windows aus."
     },
     "pageTitle": "Rechtsdokumente mit Offline-KI verwalten",
@@ -1968,7 +1968,7 @@ export const professions: ProfessionLocaleCopy = {
   "real-estate": {
     "path": "/for-real-estate",
     "seo": {
-      "title": "Verwaltung von Immobiliendokumenten mit KI-Dateiumbenennung | Zush",
+      "title": "Verwaltung von Immobiliendokumenten mit KI-Dateiumbenennung",
       "description": "Benennen Sie Kaufverträge, Besichtigungen, Eigentumsakten, Schätzungen, Abschlussdokumente und Immobilienfotos nach Adresse, Datum, Typ, Partei und Status um."
     },
     "pageTitle": "Verwaltung von Immobiliendokumenten mit KI-Dateiumbenennung",

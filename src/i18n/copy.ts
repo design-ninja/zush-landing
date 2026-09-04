@@ -4136,15 +4136,15 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'KI-PDF-Umbenenner. Zush liest Rechnungen, Verträge, Scans, Belege und Berichte und benennt PDF-Dateien nach Inhalt in durchsuchbare Namen um.',
       },
       '/rename-design-files-with-ai': {
-        title: 'Designdateien mit KI umbenennen · Figma, PSD | Zush',
+        title: 'Designdateien mit KI umbenennen · Figma, PSD',
         description: 'KI-Umbenenner für Designdateien. Zush liest Vorschauen aus Sketch, Figma, Illustrator und Photoshop und benennt Dateien nach Inhalt und Projektkontext um.',
       },
       '/rename-documents-with-ai': {
-        title: 'Dokumente mit KI umbenennen · Office, iWork | Zush',
+        title: 'Dokumente mit KI umbenennen · Office, iWork',
         description: 'KI-Dokumenten-Umbenenner. Zush liest EPUB-, FB2-, Office-, iWork-, Text-, CSV-, XML-, YAML-, E-Mail- und Untertiteldateien und benennt sie nach Inhalt um.',
       },
       '/rename-screenshots-with-ai': {
-        title: 'Screenshots mit KI umbenennen · Mac & Windows | Zush',
+        title: 'Screenshots mit KI umbenennen · Mac & Windows',
         description: 'Benenne Screenshots automatisch nach ihrem sichtbaren Inhalt um. Verarbeite alte Aufnahmen stapelweise oder überwache neue auf Mac und Windows – mit Vorschau und Rückgängig.',
       },
       '/rename-photos-with-ai': {
@@ -4156,7 +4156,7 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'KI-Video-Umbenenner. Zush liest MP4, MOV, M4V, MPEG, MTS, VOB, Untertitel und abgetastete Frames und benennt Videos nach ihrem Inhalt um.',
       },
       '/rename-audio-with-ai': {
-        title: 'Audio mit KI umbenennen · MP3, M4A, WAV, FLAC | Zush',
+        title: 'Audio mit KI umbenennen · MP3, M4A, WAV, FLAC',
         description: 'KI-Audio-Umbenenner. Zush liest Metadaten oder Transkripte von MP3, M4A, WAV, FLAC, OGG, WebM und MPGA und benennt Audiodateien nach Inhalt um.',
       },
       '/batch-rename-files': {
@@ -4248,15 +4248,15 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'Renommeur de PDF par IA. Zush lit factures, contrats, scans, reçus et rapports, puis renomme les fichiers PDF selon leur contenu en noms consultables.',
       },
       '/rename-design-files-with-ai': {
-        title: 'Renommer des fichiers de design par IA · Figma | Zush',
+        title: 'Renommer des fichiers de design par IA · Figma',
         description: 'Renommeur de fichiers de design par IA. Zush lit les aperçus Sketch, Figma, Illustrator et Photoshop, puis renomme selon le contenu et le contexte projet.',
       },
       '/rename-documents-with-ai': {
-        title: 'Renommer des documents avec l’IA · Office, iWork | Zush',
+        title: 'Renommer des documents avec l’IA · Office, iWork',
         description: 'Renommeur de documents par IA. Zush lit les ebooks EPUB et FB2, les fichiers Office, iWork, texte, CSV, XML, YAML, e-mails et sous-titres, puis les renomme selon leur contenu.',
       },
       '/rename-screenshots-with-ai': {
-        title: 'Renommer des captures avec l’IA · Mac & Windows | Zush',
+        title: 'Renommer des captures avec l’IA · Mac & Windows',
         description: 'Renommez automatiquement les captures selon leur contenu visible. Traitez les anciennes par lot ou surveillez les nouvelles sur Mac et Windows, avec aperçu et annulation.',
       },
       '/rename-photos-with-ai': {
@@ -4268,7 +4268,7 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'Renommeur de vidéos par IA. Zush lit MP4, MOV, M4V, MPEG, MTS, VOB, les sous-titres et des images échantillonnées, puis renomme selon le contenu.',
       },
       '/rename-audio-with-ai': {
-        title: 'Renommer l’audio avec l’IA · MP3, M4A, WAV, FLAC | Zush',
+        title: 'Renommer l’audio avec l’IA · MP3, M4A, WAV, FLAC',
         description: 'Renommeur audio par IA. Zush lit les métadonnées ou transcriptions MP3, M4A, WAV, FLAC, OGG, WebM et MPGA, puis renomme vos fichiers selon leur contenu.',
       },
     },
@@ -4324,15 +4324,15 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'Renomeador de PDF com IA. O Zush lê notas fiscais, contratos, scans, recibos e relatórios e renomeia os PDFs pelo conteúdo com nomes fáceis de buscar.',
       },
       '/rename-design-files-with-ai': {
-        title: 'Renomear arquivos de design com IA · Figma, PSD | Zush',
+        title: 'Renomear arquivos de design com IA · Figma, PSD',
         description: 'Renomeador de arquivos de design com IA. O Zush lê prévias de Sketch, Figma, Illustrator e Photoshop e renomeia pelo conteúdo e pelo contexto do projeto.',
       },
       '/rename-documents-with-ai': {
-        title: 'Renomear documentos com IA · Office, iWork | Zush',
+        title: 'Renomear documentos com IA · Office, iWork',
         description: 'Renomeador de documentos com IA. O Zush lê ebooks EPUB e FB2, arquivos do Office, iWork, texto, CSV, XML, YAML, e-mails e legendas e os renomeia pelo conteúdo real.',
       },
       '/rename-screenshots-with-ai': {
-        title: 'Renomear screenshots com IA · Mac e Windows | Zush',
+        title: 'Renomear screenshots com IA · Mac e Windows',
         description: 'Renomeie screenshots automaticamente pelo conteúdo visível. Processe capturas antigas em lote ou monitore as novas no Mac e Windows, com prévia e desfazer.',
       },
       '/rename-photos-with-ai': {
@@ -4344,7 +4344,7 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'Renomeador de vídeo com IA. O Zush lê MP4, MOV, MPEG, MTS, legendas e frames amostrados e renomeia os vídeos pelo conteúdo, com prévia e desfazer.',
       },
       '/rename-audio-with-ai': {
-        title: 'Renomear áudio com IA · MP3, M4A, WAV, FLAC | Zush',
+        title: 'Renomear áudio com IA · MP3, M4A, WAV, FLAC',
         description: 'Renomeador de áudio com IA. O Zush lê metadados ou transcrições de MP3, M4A, WAV, FLAC, OGG, WebM e MPGA e renomeia os áudios pelo conteúdo.',
       },
     },
@@ -4400,15 +4400,15 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'Renombrador de PDF con IA. Zush lee facturas, contratos, escaneos, recibos e informes, y renombra los archivos PDF por contenido con nombres buscables.',
       },
       '/rename-design-files-with-ai': {
-        title: 'Renombrar archivos de diseño con IA · Figma, PSD | Zush',
+        title: 'Renombrar archivos de diseño con IA · Figma, PSD',
         description: 'Renombrador de archivos de diseño con IA. Zush lee vistas previas de Sketch, Figma, Illustrator y Photoshop, y renombra por contenido y contexto del proyecto.',
       },
       '/rename-documents-with-ai': {
-        title: 'Renombrar documentos con IA · Office, iWork | Zush',
+        title: 'Renombrar documentos con IA · Office, iWork',
         description: 'Renombrador de documentos con IA. Zush lee ebooks EPUB y FB2, archivos de Office, iWork, texto, CSV, XML, YAML, correos y subtítulos, y los renombra según su contenido real.',
       },
       '/rename-screenshots-with-ai': {
-        title: 'Renombrar capturas con IA · Mac y Windows | Zush',
+        title: 'Renombrar capturas con IA · Mac y Windows',
         description: 'Renombra capturas automáticamente según el contenido visible. Procesa las antiguas por lotes o supervisa las nuevas en Mac y Windows, con vista previa y deshacer.',
       },
       '/rename-photos-with-ai': {
@@ -4420,7 +4420,7 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'Renombrador de video con IA. Zush lee MP4, MOV, M4V, MPEG, MTS, VOB, subtítulos y fotogramas muestreados, y renombra los videos según su contenido.',
       },
       '/rename-audio-with-ai': {
-        title: 'Renombrar audio con IA · MP3, M4A, WAV, FLAC | Zush',
+        title: 'Renombrar audio con IA · MP3, M4A, WAV, FLAC',
         description: 'Renombrador de audio con IA. Zush lee metadatos o transcripciones de MP3, M4A, WAV, FLAC, OGG, WebM y MPGA, y renombra el audio según su contenido.',
       },
     },
@@ -4476,15 +4476,15 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'AI-PDF-hernoemer. Zush leest facturen, contracten, scans, bonnen en rapporten en hernoemt PDF-bestanden op inhoud met goed doorzoekbare namen.',
       },
       '/rename-design-files-with-ai': {
-        title: 'Ontwerpbestanden hernoemen met AI · Figma, PSD | Zush',
+        title: 'Ontwerpbestanden hernoemen met AI · Figma, PSD',
         description: 'AI-hernoemer voor ontwerpbestanden. Zush leest previews uit Sketch, Figma, Illustrator en Photoshop en hernoemt op inhoud en projectcontext.',
       },
       '/rename-documents-with-ai': {
-        title: 'Documenten hernoemen met AI · Office, iWork | Zush',
+        title: 'Documenten hernoemen met AI · Office, iWork',
         description: 'AI-document- en e-bookhernoemer. Zush leest EPUB-, FB2-, Office-, iWork-, tekst-, CSV-, XML-, YAML-, e-mail- en ondertitelbestanden en hernoemt ze op hun echte inhoud.',
       },
       '/rename-screenshots-with-ai': {
-        title: 'Screenshots hernoemen met AI · Mac & Windows | Zush',
+        title: 'Screenshots hernoemen met AI · Mac & Windows',
         description: 'Hernoem screenshots automatisch op basis van zichtbare inhoud. Verwerk oude opnames in batches of bewaak nieuwe op Mac en Windows, met preview en ongedaan maken.',
       },
       '/rename-photos-with-ai': {
@@ -4496,7 +4496,7 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'AI-videohernoemer. Zush leest MP4, MOV, M4V, MPEG, MTS, VOB, ondertitels en steekproefframes en hernoemt video’s op basis van hun inhoud.',
       },
       '/rename-audio-with-ai': {
-        title: 'Audio hernoemen met AI · MP3, M4A, WAV, FLAC | Zush',
+        title: 'Audio hernoemen met AI · MP3, M4A, WAV, FLAC',
         description: 'AI-audiohernoemer. Zush leest metadata of transcripties van MP3, M4A, WAV, FLAC, OGG, WebM en MPGA en hernoemt audiobestanden op inhoud.',
       },
     },
@@ -4552,15 +4552,15 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'Rinominatore di PDF con IA. Zush legge fatture, contratti, scansioni, ricevute e report e rinomina i file PDF in base al contenuto con nomi ricercabili.',
       },
       '/rename-design-files-with-ai': {
-        title: 'Rinominare file di design con IA · Figma, PSD | Zush',
+        title: 'Rinominare file di design con IA · Figma, PSD',
         description: 'Rinominatore di file di design con IA. Zush legge le anteprime di Sketch, Figma, Illustrator e Photoshop e rinomina per contenuto e contesto di progetto.',
       },
       '/rename-documents-with-ai': {
-        title: 'Rinominare documenti con l’IA · Office, iWork | Zush',
+        title: 'Rinominare documenti con l’IA · Office, iWork',
         description: 'Rinominatore di documenti con IA. Zush legge ebook EPUB e FB2, file Office, iWork, testo, CSV, XML, YAML, email e sottotitoli e li rinomina in base al contenuto reale.',
       },
       '/rename-screenshots-with-ai': {
-        title: 'Rinominare screenshot con l’IA · Mac e Windows | Zush',
+        title: 'Rinominare screenshot con l’IA · Mac e Windows',
         description: 'Rinomina automaticamente gli screenshot in base al contenuto visibile. Elabora le vecchie catture in batch o monitora le nuove su Mac e Windows, con anteprima e annulla.',
       },
       '/rename-photos-with-ai': {
@@ -4572,7 +4572,7 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'Rinominatore di video con IA. Zush legge MP4, MOV, M4V, MPEG, MTS, VOB, sottotitoli e fotogrammi campionati e rinomina i video in base al contenuto.',
       },
       '/rename-audio-with-ai': {
-        title: 'Rinominare audio con l’IA · MP3, M4A, WAV, FLAC | Zush',
+        title: 'Rinominare audio con l’IA · MP3, M4A, WAV, FLAC',
         description: 'Rinominatore audio con IA. Zush legge metadati o trascrizioni di MP3, M4A, WAV, FLAC, OGG, WebM e MPGA e rinomina i file audio in base al contenuto.',
       },
     },
@@ -4628,15 +4628,15 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'AI PDF リネームツール。Zush が請求書、契約書、スキャン、領収書、レポートを読み取り、PDF ファイルを内容に基づいて検索しやすい名前にリネームします。',
       },
       '/rename-design-files-with-ai': {
-        title: 'AIでデザインファイルをリネーム · Figma・PSD | Zush',
+        title: 'AIでデザインファイルをリネーム · Figma・PSD',
         description: 'AI デザインファイル リネームツール。Zush が Sketch、Figma、Illustrator、Photoshop のプレビューを読み取り、内容とプロジェクトの文脈に沿ってリネームします。',
       },
       '/rename-documents-with-ai': {
-        title: 'AIで文書をリネーム · Office・iWork・テキスト | Zush',
+        title: 'AIで文書をリネーム · Office・iWork・テキスト',
         description: 'AI 文書・電子書籍リネームツール。Zush が EPUB、FB2、Office、iWork、テキスト、CSV、XML、YAML、メール、字幕ファイルを読み取り、実際の内容に基づいてリネームします。',
       },
       '/rename-screenshots-with-ai': {
-        title: 'AIでスクリーンショットをリネーム · Mac・Windows | Zush',
+        title: 'AIでスクリーンショットをリネーム · Mac・Windows',
         description: '表示内容に基づいてスクリーンショットを自動リネーム。既存の画像を一括処理するか、Mac・Windowsで新しい画像の保存先を監視できます。プレビューと取り消しにも対応。',
       },
       '/rename-photos-with-ai': {
@@ -4648,7 +4648,7 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'AI 動画リネームツール。Zush が MP4、MOV、M4V、MPEG、MTS、VOB、字幕、サンプリングしたフレームを読み取り、動画を内容に基づいてリネームします。',
       },
       '/rename-audio-with-ai': {
-        title: 'AIで音声をリネーム · MP3・M4A・WAV・FLAC | Zush',
+        title: 'AIで音声をリネーム · MP3・M4A・WAV・FLAC',
         description: 'AI 音声リネームツール。Zush が MP3、M4A、WAV、FLAC、OGG、WebM、MPGA のメタデータや文字起こしを読み取り、音声ファイルを内容に基づいてリネームします。',
       },
     },
@@ -4704,15 +4704,15 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'AI PDF 이름 변경 도구. Zush가 청구서, 계약서, 스캔 문서, 영수증, 보고서를 읽고 PDF 파일을 내용 기준으로 검색하기 쉬운 이름으로 변경합니다.',
       },
       '/rename-design-files-with-ai': {
-        title: 'AI로 디자인 파일 이름 변경 · Figma, PSD | Zush',
+        title: 'AI로 디자인 파일 이름 변경 · Figma, PSD',
         description: 'AI 디자인 파일 이름 변경 도구. Zush가 Sketch, Figma, Illustrator, Photoshop 미리보기를 읽고 내용과 프로젝트 맥락에 맞춰 파일 이름을 바꿉니다.',
       },
       '/rename-documents-with-ai': {
-        title: 'AI로 문서 이름 변경 · Office, iWork, 텍스트 | Zush',
+        title: 'AI로 문서 이름 변경 · Office, iWork, 텍스트',
         description: 'AI 문서 이름 변경 도구. Zush가 EPUB, FB2, Office, iWork, 텍스트, CSV, XML, YAML, 이메일, 자막 파일을 읽고 실제 내용을 기준으로 이름을 변경합니다.',
       },
       '/rename-screenshots-with-ai': {
-        title: 'AI로 스크린샷 이름 변경 · Mac 및 Windows | Zush',
+        title: 'AI로 스크린샷 이름 변경 · Mac 및 Windows',
         description: '화면 내용을 기준으로 스크린샷 이름을 자동으로 바꾸세요. 기존 캡처를 일괄 처리하거나 Mac과 Windows에서 새 캡처 폴더를 모니터링하며, 미리보기와 되돌리기를 지원합니다.',
       },
       '/rename-photos-with-ai': {
@@ -4724,7 +4724,7 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'AI 동영상 이름 변경 도구. Zush가 MP4, MOV, M4V, MPEG, MTS, VOB, 자막과 샘플 프레임을 읽고 동영상 이름을 내용 기준으로 변경합니다.',
       },
       '/rename-audio-with-ai': {
-        title: 'AI로 오디오 이름 변경 · MP3, M4A, WAV, FLAC | Zush',
+        title: 'AI로 오디오 이름 변경 · MP3, M4A, WAV, FLAC',
         description: 'AI 오디오 이름 변경 도구. Zush가 MP3, M4A, WAV, FLAC, OGG, WebM, MPGA의 메타데이터나 전사 텍스트를 읽고 오디오 파일 이름을 변경합니다.',
       },
     },
@@ -4854,15 +4854,15 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'AI PDF 重命名工具。Zush 读取发票、合同、扫描件、收据和报告，按内容为 PDF 文件生成便于检索的名称，支持预览与一键撤销。',
       },
       '/rename-design-files-with-ai': {
-        title: '用 AI 重命名设计文件 · Figma、Sketch、PSD | Zush',
+        title: '用 AI 重命名设计文件 · Figma、Sketch、PSD',
         description: 'AI 设计文件重命名工具。Zush 读取 Sketch、Figma、Illustrator 和 Photoshop 的视觉预览，按文件内容和项目上下文批量重命名设计稿。',
       },
       '/rename-documents-with-ai': {
-        title: '用 AI 重命名文档 · Office、iWork、文本 | Zush',
+        title: '用 AI 重命名文档 · Office、iWork、文本',
         description: 'AI 文档重命名工具。Zush 读取 EPUB、FB2、Office、iWork、文本、CSV、XML、YAML、邮件和字幕文件，按实际内容生成清晰名称。',
       },
       '/rename-screenshots-with-ai': {
-        title: '用 AI 重命名截图 · Mac 与 Windows | Zush',
+        title: '用 AI 重命名截图 · Mac 与 Windows',
         description: '按画面内容自动重命名截图。可批量处理已有截图，或在 Mac 和 Windows 上监控文件夹并处理新截图；支持预览建议名称和一键撤销。',
       },
       '/rename-photos-with-ai': {
@@ -4874,7 +4874,7 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'AI 视频重命名工具。Zush 读取 MP4、MOV、M4V、MPEG、MTS、VOB、字幕以及采样画面，按视频内容批量生成清晰的文件名。',
       },
       '/rename-audio-with-ai': {
-        title: '用 AI 重命名音频 · MP3、M4A、WAV、FLAC | Zush',
+        title: '用 AI 重命名音频 · MP3、M4A、WAV、FLAC',
         description: 'AI 音频重命名工具。Zush 读取 MP3、M4A、WAV、FLAC、OGG、WebM 和 MPGA 的元数据或转录文本，按内容为音频文件重命名。',
       },
     },
@@ -5032,15 +5032,15 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'Yapay zekâ PDF adlandırıcı. Zush faturaları, sözleşmeleri, taramaları ve raporları okur; PDF dosyalarını içeriğine göre aranabilir adlarla adlandırır.',
       },
       '/rename-design-files-with-ai': {
-        title: 'Tasarım dosyalarını yapay zekâyla adlandırma | Zush',
+        title: 'Tasarım dosyalarını yapay zekâyla adlandırma',
         description: 'Yapay zekâ tasarım adlandırıcı. Zush; Sketch, Figma, Illustrator ve Photoshop önizlemelerini okur; dosyaları içeriğe ve proje bağlamına göre adlandırır.',
       },
       '/rename-documents-with-ai': {
-        title: 'Belgeleri yapay zekâyla yeniden adlandırma | Zush',
+        title: 'Belgeleri yapay zekâyla yeniden adlandırma',
         description: 'Yapay zekâ belge adlandırıcı. Zush; EPUB, FB2, Office, iWork, metin, CSV, XML, YAML, e-posta ve altyazı dosyalarını okur ve gerçek içeriğine göre adlandırır.',
       },
       '/rename-screenshots-with-ai': {
-        title: 'Ekran görüntülerini AI ile adlandırma · Mac ve Windows | Zush',
+        title: 'Ekran görüntülerini AI ile adlandırma · Mac ve Windows',
         description: 'Ekran görüntülerini görünür içeriğe göre otomatik adlandırın. Eski görüntüleri toplu işleyin veya Mac ve Windows’ta yenilerini izleyin; önizleme ve geri alma dâhil.',
       },
       '/rename-photos-with-ai': {
@@ -5052,7 +5052,7 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'Yapay zekâ video adlandırıcı. Zush; MP4, MOV, M4V, MPEG, MTS, VOB, altyazıları ve örneklenen kareleri okur ve videoları içeriğine göre yeniden adlandırır.',
       },
       '/rename-audio-with-ai': {
-        title: 'Ses dosyalarını yapay zekâyla adlandırma | Zush',
+        title: 'Ses dosyalarını yapay zekâyla adlandırma',
         description: 'Yapay zekâ ses adlandırıcı. Zush; MP3, M4A, WAV, FLAC, OGG, WebM ve MPGA meta verilerini veya deşifrelerini okur ve ses dosyalarını içeriğine göre adlandırır.',
       },
     },
@@ -5210,15 +5210,15 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'أداة إعادة تسمية PDF بالذكاء الاصطناعي. يقرأ Zush الفواتير والعقود والمستندات الممسوحة والتقارير ويعيد تسمية ملفات PDF حسب محتواها بأسماء قابلة للبحث.',
       },
       '/rename-design-files-with-ai': {
-        title: 'إعادة تسمية ملفات التصميم بالذكاء الاصطناعي | Zush',
+        title: 'إعادة تسمية ملفات التصميم بالذكاء الاصطناعي',
         description: 'إعادة تسمية ملفات التصميم بالذكاء الاصطناعي. يقرأ Zush معاينات Sketch وFigma وIllustrator وPhotoshop ويعيد التسمية حسب المحتوى وسياق المشروع.',
       },
       '/rename-documents-with-ai': {
-        title: 'إعادة تسمية المستندات بالذكاء الاصطناعي | Zush',
+        title: 'إعادة تسمية المستندات بالذكاء الاصطناعي',
         description: 'إعادة تسمية المستندات بالذكاء الاصطناعي. يقرأ Zush ملفات EPUB وFB2 وOffice وiWork والنصوص وCSV وXML وYAML والبريد والترجمات ويعيد تسميتها حسب محتواها الفعلي.',
       },
       '/rename-screenshots-with-ai': {
-        title: 'إعادة تسمية لقطات الشاشة بالذكاء الاصطناعي · Mac وWindows | Zush',
+        title: 'إعادة تسمية لقطات الشاشة بالذكاء الاصطناعي · Mac وWindows',
         description: 'أعد تسمية لقطات الشاشة تلقائيًا حسب محتواها الظاهر. عالج اللقطات القديمة دفعة واحدة أو راقب الجديدة على Mac وWindows، مع المعاينة والتراجع.',
       },
       '/rename-photos-with-ai': {
@@ -5230,7 +5230,7 @@ const COPY: Record<Locale, LocaleCopy> = {
         description: 'إعادة تسمية الفيديو بالذكاء الاصطناعي. يقرأ Zush ملفات MP4 وMOV وM4V وMPEG وMTS وVOB والترجمات ولقطات مأخوذة من الفيديو ويعيد التسمية حسب المحتوى.',
       },
       '/rename-audio-with-ai': {
-        title: 'إعادة تسمية الملفات الصوتية بالذكاء الاصطناعي | Zush',
+        title: 'إعادة تسمية الملفات الصوتية بالذكاء الاصطناعي',
         description: 'إعادة تسمية الصوت بالذكاء الاصطناعي. يقرأ Zush بيانات أو نصوص MP3 وM4A وWAV وFLAC وOGG وWebM وMPGA ويعيد تسمية الملفات الصوتية حسب محتواها.',
       },
     },

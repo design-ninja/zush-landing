@@ -57,7 +57,7 @@ export default defineConfig({
       filter: shouldIncludeInGeneratedSitemap,
     }),
     starlight({
-      title: 'AI File Renamer Docs',
+      title: 'Docs',
       description: 'Documentation for AI file renaming on Mac and Windows.',
       favicon: '/favicon/favicon.ico',
       logo: {

@@ -532,7 +532,7 @@ export const professions: ProfessionLocaleCopy = {
   "accountants": {
     "path": "/for-accountants",
     "seo": {
-      "title": "Boekhoudkundig documentbeheer met AI-bestandshernoeming | Zush",
+      "title": "Boekhoudkundig documentbeheer met AI-bestandshernoeming",
       "description": "Hernoem automatisch facturen, kwitanties, afschriften, belastingformulieren en scans op leverancier, datum, nummer en bedrag. Clientsjablonen, Offline AI, voorbeeld bekijken en ongedaan maken."
     },
     "pageTitle": "Boekhoudkundig documentbeheer met AI-bestandshernoeming",
@@ -822,7 +822,7 @@ export const professions: ProfessionLocaleCopy = {
   "medical": {
     "path": "/for-medical",
     "seo": {
-      "title": "Medische documenten beheren met Offline AI | Zush",
+      "title": "Medische documenten beheren met Offline AI",
       "description": "Beheer van gezondheidszorgdocumenten voor medische praktijken: hernoem scans, faxen, laboratoriumrapporten en intakeformulieren met Offline AI, bekijk een voorbeeld en maak ongedaan."
     },
     "pageTitle": "Medische documenten beheren met Offline AI",
@@ -1124,7 +1124,7 @@ export const professions: ProfessionLocaleCopy = {
   "photographers": {
     "path": "/for-photographers",
     "seo": {
-      "title": "AI-bestandshernoemer voor fotografen en videografen | Zush",
+      "title": "AI-bestandshernoemer voor fotografen en videografen",
       "description": "Hernoem RAW-foto's, JPEG's en videoclips op project, datum, onderwerp, scène en opname. Batchworkflows voor fotografen en videografen op Mac en Windows."
     },
     "pageTitle": "AI-bestandshernoemer voor fotografen en videografen",
@@ -1404,7 +1404,7 @@ export const professions: ProfessionLocaleCopy = {
   "legal": {
     "path": "/for-legal",
     "seo": {
-      "title": "Juridische documenten beheren met Offline AI | Zush",
+      "title": "Juridische documenten beheren met Offline AI",
       "description": "Hernoem en organiseer dossiers, contracten, pleidooien en scans met AI. Maak doorzoekbare bestandsnamen, werk met uw DMS en voer lokaal uit op Mac of Windows."
     },
     "pageTitle": "Juridische documenten beheren met Offline AI",
@@ -1964,7 +1964,7 @@ export const professions: ProfessionLocaleCopy = {
   "real-estate": {
     "path": "/for-real-estate",
     "seo": {
-      "title": "Vastgoeddocumenten beheren met AI-bestandshernoeming | Zush",
+      "title": "Vastgoeddocumenten beheren met AI-bestandshernoeming",
       "description": "Hernoem koopovereenkomsten, keuringen, titelbestanden, taxaties, afsluitingsdocumenten en vastgoedfoto's op adres, datum, type, partij en status."
     },
     "pageTitle": "Vastgoeddocumenten beheren met AI-bestandshernoeming",

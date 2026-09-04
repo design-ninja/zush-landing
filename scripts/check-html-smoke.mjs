@@ -62,6 +62,22 @@ const BRAND_ISOLATED_ROUTES = new Set([
   '/rename-invoices-with-ai',
   '/rename-videos-with-ai',
   '/for-hr',
+  '/rename-audio-with-ai',
+  '/rename-design-files-with-ai',
+  '/rename-documents-with-ai',
+  '/rename-screenshots-with-ai',
+  '/for-accountants',
+  '/for-photographers',
+  '/for-legal',
+  '/for-medical',
+  '/for-real-estate',
+  '/automate-downloads-folder',
+  '/hazel-alternative',
+  '/rename-excel-files-with-ai',
+  '/rename-receipts-with-ai',
+  '/rename-scanned-documents',
+  '/rename-word-documents-with-ai',
+  '/docs/privacy-security',
 ]);
 const ROOT_SOFTWARE_ID = `${SITE_ORIGIN}/#software`;
 const ORGANIZATION_ALTERNATE_NAMES = [
@@ -155,7 +171,22 @@ function assertNotIncludes(html, needle, message) {
 function getMetaDescription(html, pathname) {
   const match = html.match(/<meta name="description" content="([^"]*)"/i);
   if (!match) fail(`Meta description missing for ${pathname}`);
-  return match[1];
+  return decodeHtmlEntities(match[1]);
+}
+
+function decodeHtmlEntities(value) {
+  const namedEntities = {
+    amp: '&',
+    apos: "'",
+    gt: '>',
+    lt: '<',
+    quot: '"',
+  };
+
+  return value
+    .replace(/&#(\d+);/g, (_, codePoint) => String.fromCodePoint(Number(codePoint)))
+    .replace(/&#x([\da-f]+);/gi, (_, codePoint) => String.fromCodePoint(Number.parseInt(codePoint, 16)))
+    .replace(/&([a-z]+);/gi, (entity, name) => namedEntities[name.toLowerCase()] ?? entity);
 }
 
 function assertPostHogInitializationOrder() {
@@ -319,6 +350,21 @@ for (const loc of locs) {
   }
 
   const html = readFileSync(filePath, 'utf8');
+  const description = getMetaDescription(html, pathname);
+  const descriptionLength = Array.from(description).length;
+  if (descriptionLength > 165) {
+    fail(`Meta description is too long on ${pathname}: ${descriptionLength} > 165`);
+  }
+
+  if (!/^\/(?:de|fr|es|pt-br|it|nl|tr|ja|ko|zh-cn|ar)(?:\/|$)/.test(pathname)) {
+    const encodedTitle = html.match(/<title>([\s\S]*?)<\/title>/i)?.[1];
+    if (!encodedTitle) fail(`Title missing for ${pathname}`);
+    const titleLength = Array.from(decodeHtmlEntities(encodedTitle.replace(/<[^>]+>/g, ' '))).length;
+    if (titleLength > 60) {
+      fail(`English title is too long on ${pathname}: ${titleLength} > 60`);
+    }
+  }
+
   const jsonLdBlocks = getJsonLdBlocks(html);
   const topLevelJsonLdItems = jsonLdBlocks.flatMap((block) =>
     collectJsonLdObjects(parseJsonLdBlock(block, pathname))
