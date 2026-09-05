@@ -23,6 +23,7 @@ import { ArrowRight, ArrowDown, Blocks, Check, FileText, FolderOpen, Image, Musi
       </div>
       <div class="step-copy">
         <div class="step-heading"><span class="step-number" aria-hidden="true">01</span><h3>Add your files</h3></div>
+        <p class="step-description">Documents, photos, video and audio.</p>
       </div>
       <span class="step-connector" aria-hidden="true"><ArrowRight size={18} strokeWidth={1.8} /></span>
     </li>
@@ -39,6 +40,7 @@ import { ArrowRight, ArrowDown, Blocks, Check, FileText, FolderOpen, Image, Musi
       </div>
       <div class="step-copy">
         <div class="step-heading"><span class="step-number" aria-hidden="true">02</span><h3>Build the name</h3></div>
+        <p class="step-description">Set your rules with Naming Blocks.</p>
       </div>
       <span class="step-connector" aria-hidden="true"><ArrowRight size={18} strokeWidth={1.8} /></span>
     </li>
@@ -56,6 +58,7 @@ import { ArrowRight, ArrowDown, Blocks, Check, FileText, FolderOpen, Image, Musi
       </div>
       <div class="step-copy">
         <div class="step-heading"><span class="step-number" aria-hidden="true">03</span><h3>Review & rename</h3></div>
+        <p class="step-description">Preview first. Undo when needed.</p>
       </div>
     </li>
   </ol>
@@ -104,8 +107,9 @@ import { ArrowRight, ArrowDown, Blocks, Check, FileText, FolderOpen, Image, Musi
   .undo-note { display: flex; align-items: center; justify-content: center; gap: 5px; margin-top: 12px; font-size: 9px; color: var(--muted-foreground); }
   .success-badge { right: 12px; top: 13px; color: var(--primary-foreground); background: var(--tone-green-fg); transform: rotate(9deg); }
   .step-copy { padding: 16px 8px 0; }
-  .step-heading { display: flex; align-items: baseline; justify-content: center; gap: 9px; }
-  .step-number { font-size: .75rem; font-weight: 450; font-variant-numeric: tabular-nums; color: var(--muted-foreground); }
+  .step-description { margin: 8px 0 0; text-align: center; color: color-mix(in oklch, var(--muted-foreground) 62%, var(--background)); font-size: .8125rem; font-weight: 400; line-height: 1.5; text-wrap: balance; }
+  .step-heading { display: flex; align-items: center; justify-content: center; gap: 9px; }
+  .step-number { display: inline-grid; place-items: center; width: 24px; height: 24px; flex-shrink: 0; border-radius: 50%; background: color-mix(in srgb, var(--primary) 9%, transparent); color: var(--primary); font-size: .6875rem; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1; }
   h3 { font-size: 1rem; font-weight: 500; margin: 0; line-height: 1.4; }
   .step-connector { position: absolute; top: 103px; right: -27px; z-index: 2; width: 27px; height: 38px; display: grid; place-items: center; color: var(--primary); background: var(--background); border: 1px solid var(--border); border-radius: 999px; }
   @media (min-width: 701px) and (max-width: 1000px) {
