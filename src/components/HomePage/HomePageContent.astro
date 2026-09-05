@@ -1,5 +1,6 @@
 ---
 import Hero from '@/components/Hero';
+import HomeRenameWorkflow from './HomeRenameWorkflow.astro';
 import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
 import Tour from '@/components/Tour';
 import Features from '@/components/Features/Features.astro';
@@ -62,7 +63,9 @@ const showPromotionBanner = locale === 'en';
 />
 <DemoVideo label={copy.home.showcase.title} />
 <EvidenceSignals locale={locale} variant="intro" />
-<EvidenceSignals locale={locale} variant="control" showControlHeading />
+{locale === 'en'
+  ? <HomeRenameWorkflow />
+  : <EvidenceSignals locale={locale} variant="control" showControlHeading />}
 <Features
   title={copy.home.featuresTitle}
   description={copy.home.featuresDescription}

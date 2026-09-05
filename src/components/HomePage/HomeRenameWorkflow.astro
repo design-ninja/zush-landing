@@ -1,0 +1,131 @@
+---
+import Heading from '@/components/Heading';
+import { ArrowRight, ArrowDown, Blocks, Check, FileText, FolderOpen, Image, Music2, Building2, Hash, Eye, Undo2, Sparkles } from 'lucide-react';
+---
+
+<section class="rename-workflow" aria-labelledby="rename-workflow-title">
+  <header class="workflow-header">
+    <Heading id="rename-workflow-title" as="h2" align="center">Rename files with AI in three steps</Heading>
+    <p>Meaningful names. Your rules. A preview before every change.</p>
+  </header>
+
+  <ol class="workflow-steps">
+    <li class="workflow-step">
+      <div class="stage stage-files" role="img" aria-label="A folder containing a PDF, a photo and an audio recording, ready to add to Zush.">
+        <div class="file-backplate" aria-hidden="true"></div>
+        <div class="mini-window files-window" aria-hidden="true">
+          <div class="window-heading"><FolderOpen size={16} strokeWidth={2} /><span>Your files</span><span class="window-count">3 files</span></div>
+          <div class="file-row"><span class="file-icon blue"><FileText size={19} strokeWidth={2} /></span><span>scan_001.pdf</span></div>
+          <div class="file-row"><span class="file-icon purple"><Image size={19} strokeWidth={2} /></span><span>IMG_2048.jpg</span></div>
+          <div class="file-row"><span class="file-icon green"><Music2 size={19} strokeWidth={2} /></span><span>recording_03.wav</span></div>
+        </div>
+        <span class="stage-badge add-badge" aria-hidden="true"><FolderOpen size={22} strokeWidth={1.9} /><ArrowDown size={13} strokeWidth={2.5} /></span>
+      </div>
+      <div class="step-copy">
+        <div class="step-heading"><span class="step-number" aria-hidden="true">01</span><h3>Add your files</h3></div>
+      </div>
+      <span class="step-connector" aria-hidden="true"><ArrowRight size={18} strokeWidth={1.8} /></span>
+    </li>
+
+    <li class="workflow-step">
+      <div class="stage stage-blocks" role="img" aria-label="Naming Blocks combine Vendor: Acme, Type: Invoice, and Number: 1042 into a reusable naming pattern.">
+        <div class="mini-window blocks-window" aria-hidden="true">
+          <div class="window-heading"><Blocks size={16} strokeWidth={2} /><span>Your naming rules</span><Sparkles className="heading-sparkle" size={15} /></div>
+          <div class="block-row"><span class="block-label purple"><Building2 size={15} />Vendor</span><span class="block-value">Acme</span></div>
+          <div class="block-row"><span class="block-label blue"><FileText size={15} />Type</span><span class="block-value">Invoice</span></div>
+          <div class="block-row"><span class="block-label green"><Hash size={15} />Number</span><span class="block-value">1042</span></div>
+          <div class="pattern-line"><span>Vendor</span><i>_</i><span>Type</span><i>_</i><span>Number</span><small>.pdf</small></div>
+        </div>
+      </div>
+      <div class="step-copy">
+        <div class="step-heading"><span class="step-number" aria-hidden="true">02</span><h3>Build the name</h3></div>
+      </div>
+      <span class="step-connector" aria-hidden="true"><ArrowRight size={18} strokeWidth={1.8} /></span>
+    </li>
+
+    <li class="workflow-step">
+      <div class="stage stage-preview" role="img" aria-label="Illustrative preview: scan_001.pdf becomes Acme_Invoice_1042.pdf. Review before applying; rename history supports undo.">
+        <div class="mini-window preview-window" aria-hidden="true">
+          <div class="window-heading"><Eye size={16} strokeWidth={2} /><span>Preview</span></div>
+          <div class="old-name"><FileText size={17} /><span>scan_001.pdf</span></div>
+          <div class="rename-arrow"><ArrowDown size={19} strokeWidth={1.8} /></div>
+          <div class="new-name"><span class="result-icon"><FileText size={21} strokeWidth={1.8} /></span><span>Acme_Invoice_1042.pdf</span><Check size={15} strokeWidth={2.5} /></div>
+          <div class="undo-note"><Undo2 size={13} strokeWidth={2} /><span>You can undo this rename</span></div>
+        </div>
+        <span class="stage-badge success-badge" aria-hidden="true"><Check size={25} strokeWidth={2.4} /></span>
+      </div>
+      <div class="step-copy">
+        <div class="step-heading"><span class="step-number" aria-hidden="true">03</span><h3>Review & rename</h3></div>
+      </div>
+    </li>
+  </ol>
+
+</section>
+
+<style>
+  .rename-workflow { width: min(1120px, calc(100% - 2.5rem)); margin: 1.5rem auto 4.5rem; }
+  .workflow-header { margin-bottom: 2.5rem; }
+  .workflow-header :global(#rename-workflow-title) { scroll-margin-top: 7rem; }
+  .workflow-header p { margin: 1rem 0 0; text-align: center; color: var(--muted-foreground); font-size: 1.0625rem; line-height: 1.6; }
+  .workflow-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.75rem; padding: 0; margin: 0; list-style: none; }
+  .workflow-step { min-width: 0; position: relative; display: flex; flex-direction: column; }
+  .workflow-step .stage { flex-shrink: 0; }
+  .stage { height: 244px; border-radius: 22px; position: relative; display: flex; align-items: center; justify-content: center; isolation: isolate; background: radial-gradient(ellipse at 50% 55%, color-mix(in srgb, var(--primary) 9%, transparent), transparent 74%), color-mix(in srgb, var(--primary) 3%, var(--background)); border: 1px solid color-mix(in srgb, var(--primary) 9%, var(--border)); }
+  .stage-preview { background: radial-gradient(ellipse at 50% 55%, color-mix(in srgb, var(--tone-green-fg) 9%, transparent), transparent 74%), color-mix(in srgb, var(--tone-green-fg) 2%, var(--background)); }
+  .mini-window { width: calc(100% - 44px); max-width: 290px; border: 1px solid color-mix(in srgb, var(--foreground) 10%, var(--background)); border-radius: 13px; background: var(--card); box-shadow: 0 8px 24px -12px color-mix(in srgb, var(--foreground) 22%, transparent), 0 2px 5px color-mix(in srgb, var(--foreground) 3%, transparent); position: relative; }
+  .window-heading { display: flex; gap: 7px; align-items: center; padding: 11px 13px; border-bottom: 1px solid var(--border); color: var(--muted-foreground); font-size: 11px; font-weight: 550; }
+  .window-heading :global(svg) { flex-shrink: 0; }
+  .window-count { margin-left: auto; font-size: 10px; opacity: .7; }
+  .file-backplate { position: absolute; width: calc(100% - 58px); max-width: 278px; height: 167px; background: color-mix(in srgb, var(--primary) 8%, var(--card)); border: 1px solid color-mix(in srgb, var(--primary) 15%, var(--border)); border-radius: 13px; transform: rotate(-5deg) translate(-3px, -5px); z-index: -1; }
+  .files-window { transform: rotate(-1deg); }
+  .file-row { display: flex; gap: 10px; align-items: center; padding: 9px 13px; font-size: 11px; color: var(--foreground); }
+  .file-row + .file-row { border-top: 1px solid color-mix(in srgb, var(--border) 55%, transparent); }
+  .file-icon { width: 29px; height: 32px; display: grid; place-items: center; border-radius: 7px; flex: 0 0 auto; }
+  .purple { color: var(--tone-purple-fg); background: var(--tone-purple-bg); }
+  .blue { color: var(--tone-blue-fg); background: var(--tone-blue-bg); }
+  .green { color: var(--tone-green-fg); background: var(--tone-green-bg); }
+  .stage-badge { position: absolute; width: 43px; height: 43px; display: flex; align-items: center; justify-content: center; border-radius: 13px; box-shadow: 0 5px 14px -5px color-mix(in srgb, var(--foreground) 28%, transparent); }
+  .add-badge { bottom: 21px; right: 14px; color: var(--primary-foreground); background: var(--primary); transform: rotate(8deg); gap: 0; }
+  .add-badge :global(svg:last-child) { margin-left: -7px; margin-top: 14px; background: var(--primary); border-radius: 4px; }
+  .window-heading :global(.heading-sparkle) { margin-left: auto; color: var(--primary); }
+  .blocks-window { padding-bottom: 12px; }
+  .block-row { display: flex; align-items: center; margin: 8px 11px 0; border: 1px solid var(--border); border-radius: 7px; min-height: 29px; font-size: 10px; }
+  .block-label { display: flex; align-items: center; gap: 5px; align-self: stretch; width: 47%; padding: 5px 8px; border-radius: 6px 0 0 6px; font-weight: 550; }
+  .block-value { padding: 0 9px; color: var(--foreground); }
+  .pattern-line { display: flex; align-items: center; justify-content: center; gap: 4px; margin: 12px 8px 0; font-size: 9px; color: var(--primary); }
+  .pattern-line span { padding: 3px 5px; background: color-mix(in srgb, var(--primary) 7%, transparent); border-radius: 4px; }
+  .pattern-line i, .pattern-line small { font-style: normal; color: var(--muted-foreground); font-size: inherit; }
+  .preview-window { padding-bottom: 14px; }
+  .old-name { display: flex; align-items: center; justify-content: center; gap: 7px; padding-top: 18px; color: var(--muted-foreground); font-size: 11px; }
+  .rename-arrow { display: grid; place-items: center; color: var(--muted-foreground); margin: 8px 0; opacity: .6; }
+  .new-name { display: flex; align-items: center; gap: 6px; margin: 0 10px; padding: 9px 7px; border: 1px solid color-mix(in srgb, var(--tone-green-fg) 28%, var(--border)); border-radius: 8px; background: color-mix(in srgb, var(--tone-green-fg) 7%, var(--card)); font-size: 10px; font-weight: 600; color: var(--foreground); }
+  .new-name > :global(svg) { margin-left: auto; color: var(--tone-green-fg); flex-shrink: 0; }
+  .result-icon { display: flex; color: var(--tone-green-fg); flex-shrink: 0; }
+  .undo-note { display: flex; align-items: center; justify-content: center; gap: 5px; margin-top: 12px; font-size: 9px; color: var(--muted-foreground); }
+  .success-badge { right: 12px; top: 13px; color: var(--primary-foreground); background: var(--tone-green-fg); transform: rotate(9deg); }
+  .step-copy { padding: 16px 8px 0; }
+  .step-heading { display: flex; align-items: baseline; justify-content: center; gap: 9px; }
+  .step-number { font-size: .75rem; font-weight: 450; font-variant-numeric: tabular-nums; color: var(--muted-foreground); }
+  h3 { font-size: 1rem; font-weight: 500; margin: 0; line-height: 1.4; }
+  .step-connector { position: absolute; top: 103px; right: -27px; z-index: 2; width: 27px; height: 38px; display: grid; place-items: center; color: var(--primary); background: var(--background); border: 1px solid var(--border); border-radius: 999px; }
+  @media (min-width: 701px) and (max-width: 1000px) {
+    .workflow-steps { gap: 1rem; }
+    .mini-window { width: calc(100% - 22px); }
+    .stage { height: 225px; }
+    .step-connector { right: -17px; width: 18px; top: 95px; }
+    .file-row { padding: 9px 8px; gap: 5px; font-size: 10px; }
+    .new-name { font-size: 9px; gap: 4px; margin: 0 6px; }
+    .new-name .result-icon { display: none; }
+    .step-copy { padding-inline: 2px; }
+    h3 { font-size: .95rem; }
+  }
+  @media (max-width: 700px) {
+    .rename-workflow { max-width: 440px; margin-bottom: 3rem; }
+    .workflow-header { margin-bottom: 1.75rem; }
+    .workflow-header p { font-size: .95rem; }
+    .workflow-steps { grid-template-columns: 1fr; gap: 2rem; }
+    .stage { height: 220px; }
+    .step-copy { padding-top: 17px; }
+    .step-connector { display: none; }
+  }
+</style>
