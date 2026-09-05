@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.11.1] - 2026-09-05
+
+### Improved
+- More accurate EPUB titles, authors, and publication dates
+- Customize naming blocks and save changes automatically
+- See download status while preparing cloud files
+
+### Fixed
+- More reliable document analysis and folder monitoring
+- Fixed Undo for case-only renames and metadata changes
+- Improved purchase and subscription syncing
+
 ## [3.11.0] - 2026-09-02
 
 ### Added
