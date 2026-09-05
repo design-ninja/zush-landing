@@ -1390,7 +1390,7 @@ export const professions: ProfessionLocaleCopy = {
       "title": "Handleidingen voor het organiseren van foto's en video's",
       "description": "Benoemen en archiveren van workflows voor RAW-opnames, fotobibliotheken, klantexports en videoclips.",
       "slugs": [
-        "ai-photo-renamer-guide",
+        "how-to-rename-images-with-ai-on-macos",
         "best-ways-to-organize-photos-on-mac",
         "rename-video-files-with-ai",
         "digital-photo-organization-mistakes-to-avoid"

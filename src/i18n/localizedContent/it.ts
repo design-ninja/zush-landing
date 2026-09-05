@@ -978,7 +978,7 @@ export const professions = {
         { "question": "Zush sposta o carica i miei file foto e video?", "answer": "Zush rinomina i file sul posto, non li sposta in una nuova libreria e non li archivia. Il cloud può inviare un payload compatto per l’analisi; BYOK usa il tuo account provider; Offline AI mantiene sul computer l’analisi supportata." }
       ]
     },
-    "guides": { "title": "Guide all’organizzazione di foto e video", "description": "Flussi di denominazione e archiviazione per servizi RAW, librerie fotografiche, esportazioni per clienti e clip video.", "slugs": ["ai-photo-renamer-guide", "best-ways-to-organize-photos-on-mac", "rename-video-files-with-ai", "digital-photo-organization-mistakes-to-avoid"] },
+    "guides": { "title": "Guide all’organizzazione di foto e video", "description": "Flussi di denominazione e archiviazione per servizi RAW, librerie fotografiche, esportazioni per clienti e clip video.", "slugs": ["how-to-rename-images-with-ai-on-macos", "best-ways-to-organize-photos-on-mac", "rename-video-files-with-ai", "digital-photo-organization-mistakes-to-avoid"] },
     "finalCta": { "title": "Prova Zush su una copia della cartella di un servizio", "subtitle": "Inizia con un piccolo gruppo di foto RAW o clip, controlla i nomi proposti, perfeziona il modello e annulla il batch se richiede un’altra revisione." }
   },
   "legal": {

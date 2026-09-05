@@ -8,7 +8,7 @@ if (locales.length === 0) throw new Error('Pass one or more locales to repair.')
 const canonical = {
   accountants: ['invoice-file-naming-convention', 'automatically-rename-invoices-ai', 'how-to-organize-invoices-and-receipts', 'rename-invoices-for-quickbooks-xero'],
   medical: ['how-to-organize-scanned-medical-records-small-practice', 'rename-scanned-documents-automatically', 'cloud-vs-local-ai-file-renaming'],
-  photographers: ['ai-photo-renamer-guide', 'best-ways-to-organize-photos-on-mac', 'rename-video-files-with-ai', 'digital-photo-organization-mistakes-to-avoid'],
+  photographers: ['how-to-rename-images-with-ai-on-macos', 'best-ways-to-organize-photos-on-mac', 'rename-video-files-with-ai', 'digital-photo-organization-mistakes-to-avoid'],
   legal: ['legal-file-naming-conventions', 'rename-scanned-documents-automatically', 'cloud-vs-local-ai-file-renaming'],
   hr: ['hr-employee-file-naming-convention', 'organize-employee-onboarding-documents', 'organize-candidate-files-recruiting'],
   'real-estate': ['real-estate-document-naming-convention', 'how-to-organize-real-estate-transaction-files', 'rename-docusign-files-by-property-address'],

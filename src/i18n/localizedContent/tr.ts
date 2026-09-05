@@ -1380,7 +1380,7 @@ export const professions = {
       "title": "Fotoğraf ve video düzenleme kılavuzları",
       "description": "RAW çekimleri, fotoğraf kitaplıkları, istemci dışa aktarmaları ve video klipler için adlandırma ve arşivleme iş akışları.",
       "slugs": [
-        "ai-photo-renamer-guide",
+        "how-to-rename-images-with-ai-on-macos",
         "best-ways-to-organize-photos-on-mac",
         "rename-video-files-with-ai",
         "digital-photo-organization-mistakes-to-avoid"

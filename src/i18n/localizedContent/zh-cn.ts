@@ -1378,7 +1378,7 @@ export const professions = {
       "title": "照片和视频组织指南",
       "description": "RAW 拍摄、照片库、客户端导出和视频剪辑的命名和存档工作流程。",
       "slugs": [
-        "ai-photo-renamer-guide",
+        "how-to-rename-images-with-ai-on-macos",
         "best-ways-to-organize-photos-on-mac",
         "rename-video-files-with-ai",
         "digital-photo-organization-mistakes-to-avoid"

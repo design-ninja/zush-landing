@@ -1390,7 +1390,7 @@ export const professions: ProfessionLocaleCopy = {
       "title": "Guides d'organisation des photos et des vidéos",
       "description": "Flux de travail de dénomination et d'archivage pour les prises de vue RAW, les photothèques, les exportations client et les clips vidéo.",
       "slugs": [
-        "ai-photo-renamer-guide",
+        "how-to-rename-images-with-ai-on-macos",
         "best-ways-to-organize-photos-on-mac",
         "rename-video-files-with-ai",
         "digital-photo-organization-mistakes-to-avoid"

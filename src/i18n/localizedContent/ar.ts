@@ -1374,7 +1374,7 @@ export const professions = {
       "title": "أدلة تنظيم الصور والفيديو",
       "description": "سير عمل التسمية والأرشفة للقطات RAW ومكتبات الصور وصادرات العميل ومقاطع الفيديو.",
       "slugs": [
-        "ai-photo-renamer-guide",
+        "how-to-rename-images-with-ai-on-macos",
         "best-ways-to-organize-photos-on-mac",
         "rename-video-files-with-ai",
         "digital-photo-organization-mistakes-to-avoid"

@@ -1,6 +1,6 @@
 ---
-title: "AI Document Renamer: Auto-Name PDFs, Docs & Spreadsheets"
-description: "An AI document renamer reads what is inside PDF, DOCX, XLSX, and similar files and names them from their content. See how it works on Mac."
+title: "How to Rename Documents with AI: Fields, Preview & Undo"
+description: "Choose naming fields for PDFs, Word files, and spreadsheets. Follow an AI document renaming workflow, check missing details, and review before applying."
 date: "2026-03-23"
 slug: "ai-document-renamer-guide"
 platform: "general"
@@ -9,18 +9,33 @@ tags:
   - "AI File Renaming"
   - "File Organization"
   - "PDFs & Documents"
-tldr: "An AI document renamer reads the content of PDFs, Word documents, spreadsheets, and similar files to generate descriptive filenames automatically."
-reviewed: "2026-09-02"
+tldr: "Start with a small batch of documents, choose the fields you need in each filename, and review the AI suggestions against the originals. Check dates, missing identifiers, and duplicate names before applying changes."
+reviewed: "2026-09-05"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: an AI document renamer reads the actual content of PDFs, DOCX, XLSX, and similar files, then replaces generic names with descriptive, searchable filenames. For electronic book collections, use the dedicated guide to [batch rename EPUB and FB2 files by author and title](/blog/batch-rename-epub-fb2-files).
+Quick answer: to rename documents with AI, start with a small folder, choose a convention such as date–client–document type, and compare the suggested names with the original files before applying the batch. This walkthrough covers choosing those fields and handling unclear or missing information in PDFs, Word files, and spreadsheets. For electronic book collections, use the dedicated guide to [batch rename EPUB and FB2 files by author and title](/blog/batch-rename-epub-fb2-files).
+
+For supported formats and download options, see [Zush for document and ebook renaming](/rename-documents-with-ai). For a PDF-only workflow, see [Zush for PDF renaming](/rename-pdf-with-ai).
+
+## Choose the fields before renaming
+
+Start with the details you actually use to find a document. These are illustrative naming conventions, not measured output from a test:
+
+| Document | Useful fields | Check before applying |
+|---|---|---|
+| Invoice | Issue date, vendor, invoice number | Use the issue date, not the payment due date |
+| Contract | Parties, document type, version | Confirm which party or client should lead the name |
+| Report | Reporting period, subject | Distinguish the reporting period from the export date |
+| Spreadsheet | Project, purpose, period | Check whether the sheets describe more than one subject |
+
+If a field is missing, leave it out or add a verified value manually. Do not treat an AI guess as a document identifier. Try the convention on a small batch before using it across a client archive.
 
 Documents are supposed to be the most important files on your computer. Contracts, invoices, reports, tax filings, lecture notes, project proposals. Yet most of them sit in folders under names like `document (3).pdf`, `Untitled.docx`, or `export_final_v2.xlsx`. The content is critical, but the filename is throwaway.
 
 That is the document naming problem. Unlike photos or screenshots, documents carry structured information that should make naming easy. But the tools that create them do not prioritize filenames. Scanners produce sequential names. Email clients save attachments under whatever the sender chose. Export functions default to generic labels. The result is folders full of important files that are impossible to browse, search, or manage without opening each one.
 
-An AI document renamer solves this by reading the actual content of the file and generating a descriptive name based on what the document contains. If you work with mixed document types on Mac, [Zush](https://zushapp.com) can do this across PDFs, Word files, spreadsheets, and more in a single batch.
+An AI document renamer reads the file and suggests a name based on its contents. In the steps below, [Zush](/rename-documents-with-ai) provides the batch preview and rename history; you choose the convention and verify the details before applying it.
 
 If your workflow is mostly PDFs, start with [Rename PDF Files Automatically](/blog/rename-pdf-files-automatically). If you are comparing document-heavy AI tools, see [AI renamer tools comparison](/blog/best-ai-file-renamer-tools-2026) and [Zush vs Renamer.ai](/blog/zush-vs-renamer-ai).
 
@@ -133,7 +148,7 @@ The AI generates the title and category from the document content. You control h
 
 ### 4. Preview the results
 
-Zush shows you the proposed new names before applying anything. Review them. If a document gets a vague or incorrect title, you can adjust it manually before confirming.
+Zush shows you the proposed new names before applying anything. Compare dates and identifiers with the documents, check for names that would become identical, and keep the original extension. If a document gets a vague or incorrect title, adjust it manually before confirming. Set aside unreadable or ambiguous files for a separate review.
 
 ### 5. Apply and verify
 

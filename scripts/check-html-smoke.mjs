@@ -47,6 +47,12 @@ const USE_CASES_BLOCK_ROUTES = [
 ];
 const FULL_SOFTWARE_APPLICATION_ROUTES = new Set(['/', '/mac', '/windows']);
 const BRANDED_PRODUCT_ROUTES = new Set(['/mac', '/windows', '/pricing', '/docs']);
+const WORKFLOW_LANDING_ROUTES = new Set([
+  '/batch-rename-files', '/de/batch-rename-files', '/ai-file-organizer',
+  '/offline-ai-file-renamer', '/rename-scanned-documents',
+  ...['', '/de', '/fr', '/es', '/pt-br', '/it', '/nl', '/tr', '/ja', '/ko', '/zh-cn', '/ar']
+    .flatMap((locale) => [`${locale}/rename-documents-with-ai`, `${locale}/rename-pdf-with-ai`]),
+]);
 const ROOT_SOFTWARE_ID = `${SITE_ORIGIN}/#software`;
 const ORGANIZATION_ALTERNATE_NAMES = [
   'Zush AI Renamer',
@@ -283,7 +289,12 @@ const locs = parseSitemapLocs(sitemapXml);
 if (locs.length === 0) {
   fail('sitemap.xml has no URLs.');
 }
-for (const consolidatedRoute of ['/file-renamer', '/ai-file-renamer', '/batch-rename-tool', '/bulk-rename-files']) {
+assertIncludes(
+  sitemapXml,
+  `${SITE_ORIGIN}/blog/how-to-rename-images-with-ai-on-macos`,
+  'The consolidated photo and image guide must remain in the sitemap.',
+);
+for (const consolidatedRoute of ['/file-renamer', '/ai-file-renamer', '/batch-rename-tool', '/bulk-rename-files', '/blog/ai-photo-renamer-guide']) {
   assertNotIncludes(
     sitemapXml,
     `${SITE_ORIGIN}${consolidatedRoute}`,
@@ -318,6 +329,24 @@ for (const loc of locs) {
   }
 
   const html = readFileSync(filePath, 'utf8');
+  if (WORKFLOW_LANDING_ROUTES.has(pathname)) {
+    const isPdf = pathname.endsWith('/rename-pdf-with-ai');
+    const marker = isPdf ? 'data-pdf-scenarios' : 'data-landing-workflow';
+    const workflowIndex = html.indexOf(marker);
+    const tourIndex = html.indexOf('data-scroll-reveal-force');
+    if (workflowIndex < 0 || tourIndex < 0 || workflowIndex > tourIndex) {
+      fail(`Specific workflow must appear before the general product tour on ${pathname}`);
+    }
+    if (html.split(marker).length !== 2) fail(`Specific workflow rendered more than once on ${pathname}`);
+    if (pathname !== '/rename-documents-with-ai' && pathname !== '/rename-pdf-with-ai'
+      && /\/(?:rename-documents-with-ai|rename-pdf-with-ai)$/.test(pathname)
+      && parsedJsonLdItems(html, pathname).some((item) => item['@type'] === 'HowTo')) {
+      fail(`Untranslated English HowTo must not be inherited by ${pathname}`);
+    }
+  }
+  for (const legacyHref of ['/blog/ai-photo-renamer-guide', `${SITE_ORIGIN}/blog/ai-photo-renamer-guide`]) {
+    assertNotIncludes(html, `href="${legacyHref}`, `Internal link still targets the merged photo guide on ${pathname}`);
+  }
   const description = getMetaDescription(html, pathname);
   const descriptionLength = Array.from(description).length;
   if (descriptionLength > 165) {

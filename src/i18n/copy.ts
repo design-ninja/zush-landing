@@ -4190,7 +4190,7 @@ const COPY: Record<Locale, LocaleCopy> = {
           },
           {
             question: 'Wann ist KI besser als die Umbenennen-Funktion im Finder?',
-            answer: 'Beginne mit Zush für den vollständigen Stapel-Workflow. Nutze Finder oder Datei-Explorer nur als enge Ausnahme, wenn alle Dateien dasselbe Präfix, dieselbe Ersetzung oder Nummernfolge brauchen und weder Inhaltsanalyse, Ordnerüberwachung noch ein dauerhafter Verlauf erforderlich sind.',
+            answer: 'Nutze KI, wenn unterschiedliche Dateien Beschreibungen aus ihrem Inhalt brauchen. Für ein gemeinsames Präfix, eine Ersetzung oder eine Nummernfolge genügt oft ein Dateimanager oder ein regelbasiertes Werkzeug. Prüfe das Ergebnis vor dem Anwenden.',
           },
           {
             question: 'Funktioniert das Stapel-Umbenennen auf Mac und Windows?',

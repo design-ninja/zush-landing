@@ -1,0 +1,35 @@
+---
+import type { LandingWorkflow } from '@/data/landingWorkflows';
+interface Props { workflow: LandingWorkflow }
+const { workflow } = Astro.props;
+---
+
+<section class="landing-workflow" data-landing-workflow aria-labelledby="landing-workflow-heading">
+  <h2 id="landing-workflow-heading">{workflow.heading}</h2>
+  <p class="answer">{workflow.answer}</p>
+  <ol>{workflow.steps.map((step) => <li>{step}</li>)}</ol>
+  {workflow.example && (
+    <figure>
+      <div class="example"><bdi dir="ltr"><code>{workflow.example.before}</code></bdi><span aria-hidden="true"> → </span><bdi dir="ltr"><code>{workflow.example.after}</code></bdi></div>
+      <figcaption>{workflow.example.caption}</figcaption>
+    </figure>
+  )}
+  <p>{workflow.limit}</p>
+  <ul class="links">{workflow.links.map((link) => <li><a href={link.href}>{link.label}</a></li>)}</ul>
+</section>
+
+<style>
+  .landing-workflow { width: min(880px, calc(100% - 2.5rem)); margin: 2rem auto 4rem; }
+  h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); line-height: 1.2; text-wrap: balance; }
+  p, li, figcaption { color: var(--muted-foreground); line-height: 1.7; }
+  .answer { margin-block: 1.25rem; }
+  ol { display: grid; gap: .85rem; padding-inline-start: 1.5rem; list-style: decimal; }
+  ol li::marker { color: var(--primary); font-weight: 700; }
+  figure { margin: 1.5rem 0; padding: 1.25rem; border: 1px solid var(--border); border-radius: 1rem; }
+  .example { display: flex; align-items: baseline; flex-wrap: wrap; gap: .5rem; direction: ltr; }
+  bdi { min-width: 0; overflow-wrap: anywhere; }
+  code { color: var(--foreground); }
+  figcaption { margin-block-start: .75rem; font-size: .9rem; }
+  .links { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; list-style: none; padding: 0; }
+  a { color: var(--primary); text-underline-offset: .2em; }
+</style>

@@ -53,7 +53,6 @@ for (const relativePath of centralizedRuntimeFiles) {
 const priceContentFiles = [
   'src/content/blog/advanced-renamer-alternatives.mdx',
   'src/content/blog/ai-document-renamer-guide.mdx',
-  'src/content/blog/ai-photo-renamer-guide.mdx',
   'src/content/blog/auto-rename-files-mac-guide.mdx',
   'src/content/blog/best-ai-file-renamer-tools-2026.mdx',
   'src/content/blog/best-ai-file-renamer-tools-mac-compared.mdx',

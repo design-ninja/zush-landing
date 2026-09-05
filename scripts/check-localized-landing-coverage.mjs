@@ -11,7 +11,7 @@ const guideSlugCounts = {
   'how-to-organize-scanned-medical-records-small-practice': 1,
   'rename-scanned-documents-automatically': 2,
   'cloud-vs-local-ai-file-renaming': 2,
-  'ai-photo-renamer-guide': 1,
+  'how-to-rename-images-with-ai-on-macos': 1,
   'best-ways-to-organize-photos-on-mac': 1,
   'rename-video-files-with-ai': 1,
   'digital-photo-organization-mistakes-to-avoid': 1,

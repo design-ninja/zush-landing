@@ -1387,7 +1387,7 @@ export const professions = {
       "title": "사진 및 영상 정리 가이드",
       "description": "RAW 촬영, 사진 라이브러리, 클라이언트 내보내기 및 비디오 클립에 대한 이름 지정 및 보관 워크플로우입니다.",
       "slugs": [
-        "ai-photo-renamer-guide",
+        "how-to-rename-images-with-ai-on-macos",
         "best-ways-to-organize-photos-on-mac",
         "rename-video-files-with-ai",
         "digital-photo-organization-mistakes-to-avoid"

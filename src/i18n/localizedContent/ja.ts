@@ -1382,7 +1382,7 @@ export const professions = {
       "title": "写真とビデオの整理ガイド",
       "description": "RAW 撮影、写真ライブラリ、クライアント エクスポート、ビデオ クリップの名前付けとアーカイブのワークフロー。",
       "slugs": [
-        "ai-photo-renamer-guide",
+        "how-to-rename-images-with-ai-on-macos",
         "best-ways-to-organize-photos-on-mac",
         "rename-video-files-with-ai",
         "digital-photo-organization-mistakes-to-avoid"

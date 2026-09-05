@@ -65,7 +65,7 @@ assert.equal(
   'Unexpected trailing-slash redirect destination.',
 );
 
-for (const source of ['/rename-images-with-ai/', '/rename-files-with-ai/', '/batch-rename-tool/', '/bulk-rename-files/', '/auto-rename-files/']) {
+for (const source of ['/rename-images-with-ai/', '/rename-files-with-ai/', '/batch-rename-tool/', '/bulk-rename-files/', '/auto-rename-files/', '/blog/ai-photo-renamer-guide/']) {
   const sourceIndex = redirects.findIndex((item) => item.source === source);
 
   assert(sourceIndex >= 0, `Missing trailing-slash legacy redirect for ${source}`);
@@ -87,6 +87,8 @@ assertRedirect('/rename-images-with-ai', '/rename-photos-with-ai');
 assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/rename-images-with-ai', '/:locale/rename-photos-with-ai');
 assertRedirect('/ai-photo-renamer', '/rename-photos-with-ai');
 assertRedirect('/ai-document-renamer', '/rename-documents-with-ai');
+assertRedirect('/blog/ai-photo-renamer-guide', '/blog/how-to-rename-images-with-ai-on-macos');
+assertRedirect('/blog/ai-photo-renamer-guide/', '/blog/how-to-rename-images-with-ai-on-macos');
 
 assertRedirect('/rename-files-with-ai/', '/');
 assertRedirect('/rename-files-with-ai', '/');

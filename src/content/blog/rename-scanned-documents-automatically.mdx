@@ -1,6 +1,6 @@
 ---
-title: "Rename Scanned Documents Automatically: Fix Scan0001.pdf"
-description: "Stop hand-renaming Scan0001.pdf. Compare scanner software settings, OCR scripts, and AI vision renaming that reads each scan and names it for you."
+title: "How to Rename Scans: Scanner Settings, OCR & AI"
+description: "Set up a scan folder with readable filenames. Compare scanner naming settings, OCR rules, and AI vision, then test document fields before automating."
 date: "2026-07-31"
 slug: "rename-scanned-documents-automatically"
 platform: "general"
@@ -9,15 +9,23 @@ tags:
   - "Automation"
   - "PDFs & Documents"
   - "File Naming"
-tldr: "To rename scanned documents automatically, point Zush at your scanner folder: AI vision reads each page image — no OCR pass needed — extracts the document type, party, and date, and applies one reviewed, reversible naming convention."
-reviewed: "2026-07-31"
+tldr: "Choose a scanner output folder and a naming convention, then test sample scans. Use scanner naming settings for simple patterns, OCR rules for predictable text, or AI vision for varied page images; review unclear fields before automating."
+reviewed: "2026-09-05"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: to rename scanned documents automatically, use a tool that reads the page image itself. Zush analyzes each scan with AI vision, pulls out the document type, vendor or party, and date, and renames the whole batch to one convention — with a preview before anything is applied and undo after. Scanner software can only offer dates and counters, because it never looks at the page.
+Quick answer: to give scans readable names, first choose the folder where your scanner saves them and the fields each filename needs. Then pick a method: the scanner's naming settings, OCR plus rules, or AI vision. Test a small batch before enabling automatic processing. For the app's scan handling and download options, see [Zush for scanned documents](/rename-scanned-documents).
 
-Every document scanner ships the same default: a counter. Fujitsu ScanSnap, Brother, Epson, Canon, and HP each produce their own flavor of `Scan0001.pdf`, `Scan_0042.pdf`, or `img20260612_10331290.pdf`, and phone scanning apps add `Scanned Document 4.pdf` on top. The information that should be in the filename — who the document is from, what it is, which date it covers — is sitting inside the scan, where filename tools cannot see it.
+## Set up and test the scanner folder
+
+1. Save a few representative scans to a dedicated intake folder. Include a clear page, a multi-page document, and a low-quality scan.
+2. Choose the fields you need, such as document type, sender, and document date. Decide how to handle a missing date or identifier.
+3. Try the simplest method that can obtain those fields. Check what your scanner software supports before adding another tool.
+4. Compare every proposed name with its source. Check page orientation, missing fields, and names that would collide; correct or set aside uncertain files.
+5. Once the sample is reliable, configure [folder monitoring](/docs/folder-monitoring) and test newly arriving files. Keep the original scans and verify that you can restore their names before expanding the workflow.
+
+Scanner folders often fill with names such as `Scan0001.pdf`, `Scan_0042.pdf`, or `Scanned Document 4.pdf`. Those names do not tell you who sent a document, what it is, or which date it covers. The available naming options depend on the scanner software and its settings.
 
 This guide covers the scanner-side options, the OCR route, and the AI vision route. If your scans are mostly invoices, the [invoice renaming guide](/blog/automatically-rename-invoices-ai) goes deeper on vendor-date-amount conventions; for text PDFs that never went through a scanner, see [renaming PDF files automatically](/blog/rename-pdf-files-automatically).
 
@@ -34,9 +42,9 @@ This guide covers the scanner-side options, the OCR route, and the AI vision rou
 
 <BlogCTA placement='inline' platform='general' />
 
-## Why scanner filenames are useless by design
+## Why default scanner filenames are hard to search
 
-A scanner is a camera with a paper feed. It captures pixels and saves them; it has no idea whether page one is a lease, a lab result, or a 1099. So every vendor falls back to the only two things the device does know — the time and a counter:
+A scan begins as a page image. Basic naming settings use a timestamp or counter; software with OCR or document recognition may offer more. Check your installed version's naming options before adding another processing step. Common filename patterns include:
 
 | Source | Typical default |
 | --- | --- |
@@ -50,23 +58,23 @@ The result is a folder that is technically organized — every file is unique an
 
 For bookkeepers, clinics, and law offices the cost compounds: a scan you cannot find by name is a scan someone re-requests, re-prints, and re-scans.
 
-## Option 1: scanner software settings — dates and counters only
+## Option 1: scanner software naming settings
 
 Most scanner utilities let you customize the output name. ScanSnap Home, Brother iPrint&Scan, and Epson Document Capture can typically combine a fixed prefix, the scan date, and a counter — `2026-06-12_Taxes_001.pdf`.
 
-This is worth five minutes of setup: a date-first prefix at least keeps scans sorted chronologically. But it cannot answer the question that matters — *what is this document?* Every scan from the same session still shares the same name apart from the counter, because the software never reads the page.
+Start here if a project prefix, scan date, and sequence are enough. If you need information from the page, look for OCR-based naming, recognized document fields, or barcode features in your scanner software. A scan date is not necessarily the document date.
 
-Some scanner suites offer keyword or barcode-based routing for structured workflows. Setting that up per document type is real configuration work, and it still breaks on the everyday mixed pile: one session's feeder stack of receipts, a contract, and a school letter.
+Test those features with your actual document mix. A setup that handles one receipt layout may need adjustment for a contract or school letter. If the built-in options produce reliable names, you may not need a separate AI renamer.
 
 ## Option 2: OCR plus rules or scripts
 
 The traditional fix is a two-step pipeline: run OCR to add a text layer, then use pattern rules to extract a name. Adobe Acrobat can batch-OCR a folder; tools like PDF editors and command-line utilities can then search the text for a date or an account number and rename on a match.
 
-This works when your documents are uniform — the same utility bill every month, the same statement layout. It fails on variety: each new vendor or letter format needs a new rule, scanned handwriting and stamps confuse pattern matches, and the pipeline needs maintenance forever. It is an approach for one repeating document, not for a scans folder.
+This is useful when documents have predictable fields, such as a repeated utility bill layout. More varied layouts may need additional rules. Check OCR quality and route unmatched or ambiguous documents for review rather than forcing a filename.
 
 ## Option 3: AI vision that reads the page image
 
-The current generation of AI models reads a page image the way a person does: it sees "this is an invoice from Acme Supply dated June 12, 2026" without needing a text layer at all. That collapses the OCR-plus-rules pipeline into one step and handles variety by default — the model does not care that yesterday's scan was a lease and today's is a lab referral.
+Vision models can suggest document fields directly from a page image without a separate text layer. This can help with varied layouts, but the result still needs verification: blurred dates, handwriting, similar identifiers, and conflicting fields can lead to incorrect suggestions.
 
 Zush uses this directly. When a PDF has selectable text, Zush reads the text; when a scan is only a page image, it falls back to AI vision automatically. Either way you get the fields that make a useful name: document type, vendor or party, date, and anything custom you ask for.
 
@@ -93,9 +101,9 @@ YYYY-MM-DD – Document Type – Party – Detail.pdf
 
 Three rules do most of the work:
 
-- **Date first, ISO format.** `YYYY-MM-DD` sorts chronologically in every file manager and survives export to any system. Use the document's own date, not the scan date, when they differ — an AI read can tell them apart; a scanner counter cannot.
+- **Date first, ISO format.** `YYYY-MM-DD` sorts chronologically when filenames are sorted alphabetically. Decide whether the field means document date or scan date, and verify the selected value against the source.
 - **Document type second.** `Invoice`, `Receipt`, `Statement`, `Contract`, `Letter` — a dozen consistent labels turn a flat folder into something you can scan by eye and filter by search.
-- **Party third.** The vendor, sender, or counterparty. Standardize spellings ("Acme Supply", never "ACME" and "acme-supply" in the same folder) — a Template enforces this automatically.
+- **Party third.** The vendor, sender, or counterparty. Use a consistent spelling in your Template instructions and check whether the results follow it.
 
 For profession-specific patterns, see the [file naming conventions guide](/blog/file-naming-conventions-best-practices). Medical practices can use the dedicated [medical records file-renaming workflow](/for-medical) for scanner folders, local Offline AI, organization-controlled BYOK, and record-specific Templates.
 
@@ -129,4 +137,4 @@ Yes. Add the whole folder, review the proposed names in one pass, and apply the 
 
 ### What about handwritten or poor-quality scans?
 
-AI vision handles typical office scans well, including stamps and letterheads. Genuinely illegible pages produce generic names — the preview step exists exactly so those few files get caught and named by hand instead of silently misfiled.
+Poor-quality pages can produce incomplete or incorrect names, including plausible-looking dates and identifiers. Rotate or rescan unclear pages where possible, review the proposed fields, and set aside anything you cannot verify before applying the rename.

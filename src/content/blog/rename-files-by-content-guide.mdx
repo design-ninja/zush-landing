@@ -8,8 +8,8 @@ topic: "ai-renaming"
 tags:
   - "AI File Renaming"
   - "File Organization"
-tldr: "Renaming files by content means AI reads what is inside each file, then generates a descriptive filename from the actual subject, document text, visual preview, metadata, transcript, or sampled frames. Use the homepage for the product workflow and this guide for the educational search intent."
-reviewed: "2026-09-02"
+tldr: "Rename files by content when the old names do not describe what is inside. Choose the fields you need, let AI suggest names from the available content, and check the results before applying a batch. Use ordinary batch rules when the existing names already contain the information."
+reviewed: "2026-09-05"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
@@ -17,7 +17,7 @@ Quick answer: to rename files by content, use an AI file renamer that reads the 
 
 Content-aware file renaming is different from ordinary batch renaming. Finder, File Explorer, PowerRename, and regex utilities can change text that already exists in a filename. They are useful for adding counters, dates, prefixes, or replacing one word with another. They cannot inspect a PDF, understand a photo, read a screenshot, or identify the topic of a document.
 
-[Zush](/) is the product page for this workflow: an AI file renamer and organizer for Mac and Windows with 100+ supported formats, including audio and video files. This guide explains the search intent behind "rename files by content" and when to use AI instead of a traditional batch rename tool.
+[Zush](/) can suggest content-based names on Mac and Windows, with a preview before applying and rename history for undo. Below, you will learn when to use AI, which details belong in a filename, and how to keep a mixed folder consistent.
 
 <BlogProductIntro
   title="Need content-aware file names?"
@@ -65,7 +65,7 @@ Use an AI file renamer when the name must come from the file:
 - Design files where the preview explains the asset
 - Videos, audio, and screen recordings with unclear exported names
 
-For exact batch intent, use [Batch Rename Files with AI](/batch-rename-files). For the broader product workflow, use the [AI file renamer and organizer](/).
+For folder-wide changes, see [batch renaming with Zush](/batch-rename-files). For supported formats, system requirements, and download options, see [Zush](/).
 
 ## How AI reads different file types
 
@@ -132,9 +132,9 @@ Usually, yes. Content-aware file renaming is the workflow: the tool names files 
 
 Yes. Zush supports Mac and Windows, with platform pages for [AI file renamer for Mac](/mac) and [AI file renamer for Windows](/windows). The same product workflow supports review, templates, folder monitoring, and undo.
 
-### Should this be a separate product page or the homepage?
+### When should I use batch rules instead of AI?
 
-For Zush, the homepage should remain the main product page for the broad `AI file renamer` intent. A guide like this is better for educational searches such as `rename files by content`, then it should link back to the homepage as the commercial answer.
+Use batch rules when the change depends on information you already have: adding a project prefix, numbering a sequence, or replacing text in existing names. Use content-aware renaming when each file needs a different description drawn from its contents. For either method, review a small batch first and check for duplicate names before applying changes.
 
 ### Can AI rename PDFs and photos by content?
 

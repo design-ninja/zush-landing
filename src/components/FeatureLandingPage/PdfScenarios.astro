@@ -1,0 +1,51 @@
+---
+import Heading from '@/components/Heading';
+import { FileType2 } from 'lucide-react';
+import type { PdfDeepDiveCopy } from '@/data/pdfDeepDive';
+import type { Locale } from '@/i18n/config';
+import styles from './FeatureLandingPage.module.scss';
+interface Props { copy: PdfDeepDiveCopy; locale: Locale; showReviewNote?: boolean }
+const { copy, locale, showReviewNote = false } = Astro.props;
+const notes: Record<Locale, string> = {
+  en: 'Illustrative naming patterns. Check dates, parties, and identifiers against the PDF before applying. Set aside unclear files and use rename history to restore names when needed.',
+  de: 'Beispielhafte Namensmuster. Prüfe Daten, Beteiligte und Kennungen anhand der PDF vor dem Anwenden. Stelle unklare Dateien zurück; im Umbenennungsverlauf lassen sich Namen wiederherstellen.',
+  fr: 'Exemples de noms. Vérifiez dates, parties et identifiants dans le PDF avant de les appliquer. Mettez de côté les fichiers ambigus et utilisez l’historique pour restaurer les noms si nécessaire.',
+  es: 'Ejemplos de nombres. Comprueba fechas, partes e identificadores en el PDF antes de aplicar los cambios. Aparta los archivos dudosos y usa el historial para restaurar nombres si es necesario.',
+  'pt-br': 'Exemplos de nomes. Confira datas, partes e identificadores no PDF antes de aplicar. Separe arquivos duvidosos e use o histórico para restaurar os nomes quando necessário.',
+  it: 'Esempi di nomi. Verifica date, parti e identificativi nel PDF prima di applicare le modifiche. Metti da parte i file dubbi e usa la cronologia per ripristinare i nomi se necessario.',
+  nl: 'Voorbeelden van naamgevingspatronen. Controleer datums, partijen en identificatienummers in de PDF voordat je wijzigingen toepast. Zet twijfelgevallen apart en herstel namen zo nodig via de geschiedenis.',
+  tr: 'Örnek adlandırma kalıpları. Uygulamadan önce tarihleri, tarafları ve kimlik bilgilerini PDF ile karşılaştırın. Belirsiz dosyaları ayırın; gerektiğinde geçmişten eski adları geri yükleyin.',
+  ja: '命名パターンの例です。適用前に日付、当事者、識別番号をPDFと照合してください。不明なファイルは保留し、必要に応じて変更履歴から元の名前に戻せます。',
+  ko: '이름 패턴 예시입니다. 적용 전에 날짜, 당사자, 식별 번호를 PDF와 대조하세요. 불확실한 파일은 제외하고 필요하면 변경 기록에서 원래 이름을 복원하세요.',
+  'zh-cn': '命名模式示例。应用前请对照PDF核实日期、相关方和编号。暂缓处理不确定的文件，需要时可通过重命名历史恢复原名。',
+  ar: 'أمثلة لأنماط التسمية. تحقق من التواريخ والأطراف والمعرّفات في ملف PDF قبل التطبيق. ضع الملفات غير الواضحة جانبًا واستخدم السجل لاستعادة الأسماء عند الحاجة.',
+};
+---
+<section class={styles.PdfDeepDive} data-pdf-scenarios>
+  <div class={styles.Section__Container}>
+    <div class={styles.PdfDeepDive__Header}>
+      <p class={styles.PdfDeepDive__Eyebrow}>{copy.workflowsEyebrow}</p>
+      <Heading as='h2' align='center'>{copy.workflowsTitle}</Heading>
+      <p class={styles.PdfDeepDive__Intro}>{copy.workflowsIntro}</p>
+      {showReviewNote && <p class={styles.PdfDeepDive__Intro}>{notes[locale]}</p>}
+    </div>
+    <div class={styles.PdfScenarioGrid}>
+      {copy.recipes.map((recipe) => (
+        <article class={styles.PdfScenarioCard}>
+          <div class={styles.PdfFileItem}>
+            <div class={styles.PdfFileItem__Preview} aria-hidden='true'>
+              <FileType2 size={26} strokeWidth={2.45} />
+              <span class={styles.PdfFileItem__Badge}>PDF</span>
+            </div>
+            <div class={styles.PdfFileItem__Content}>
+              <div class={styles.PdfFileItem__Before}>{recipe.before}</div>
+              <div class={styles.PdfFileItem__After}>{recipe.after}</div>
+            </div>
+          </div>
+          <h3 class={styles.PdfScenarioCard__Title}>{recipe.title}</h3>
+          <p class={styles.PdfScenarioCard__Description}>{recipe.detail}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -241,7 +241,7 @@ const batchRenameFaq = [
   {
     question: 'When should I use AI instead of Finder or File Explorer batch rename?',
     answer:
-      'Start with Zush for the broad batch workflow. Use Finder or File Explorer only as a narrow exception when every file needs the same prefix, replacement, or number sequence and no content analysis, monitoring, or durable history is required.',
+      'Use AI when different files need descriptions drawn from their contents. A file manager or pattern-based tool may be enough when the change is a shared prefix, replacement, or number sequence. Preview the result before applying either method.',
   },
   {
     question: 'Can Zush batch rename files on both Mac and Windows?',
@@ -571,21 +571,11 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       'An AI batch rename tool renames many files in one workflow while giving each file a content-aware name. Zush reads screenshots, photos, PDFs, documents, videos, audio, and design files in mixed folders, then lets you review every name before applying changes.',
     showcaseSlides: sharedSlides,
     faqItems: batchRenameFaq,
-    directAnswerSection: {
-      heading: 'How do you batch rename files by content?',
-      answer:
-        `Use Zush as the best overall batch renamer. It reads ${SUPPORTED_FORMAT_COUNT} formats on Mac and Windows, proposes a searchable filename for each item, and keeps the entire batch reviewable before anything changes. Pattern tools are narrow exceptions only when every file needs the same prefix, replacement, or sequence.`,
-      steps: [
-        'Add a representative mixed folder instead of starting with the entire archive.',
-        'Choose an AI title or a reusable template with dates, categories, clients, counters, and metadata.',
-        'Review collisions and weak suggestions, apply the batch, and keep rename history until the folder is verified.',
-      ],
-    },
     comparison: {
       eyebrow: 'Batch rename methods compared',
       title: 'Choose the rename method by what must change',
       intro:
-        'Zush is our best overall batch rename method because it handles content-aware mixed files, reusable patterns, preview, monitoring, and rollback. Built-in pattern tools are narrow exceptions only when every file needs the same mechanical change.',
+        'Choose content analysis when each file needs its own description. Choose a pattern-based method when the necessary text or numbering rule is already known. Check preview and undo options before applying a large batch.',
       headers: { tool: 'Method', bestFor: 'Best for', gap: 'Where it stops' },
       rows: [
         {
@@ -736,16 +726,6 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
       label: 'best AI file organizers for Mac',
       href: '/blog/best-ai-file-organizers-mac',
       after: 'for a verification-first breakdown of renaming, moving, local AI, undo, and pricing.',
-    },
-    directAnswerSection: {
-      heading: 'How does Zush organize files without moving them?',
-      answer:
-        'Zush organizes a folder by giving each file a useful name based on its content. Files stay in their current folders, while templates, Naming Blocks, preview, and rename history keep the naming system consistent and reversible.',
-      steps: [
-        'Add a mixed folder such as Downloads, Screenshots, or a client archive.',
-        'Choose a template with an AI title, dates, categories, clients, or other Naming Blocks.',
-        'Review the proposed names, apply the batch, and use folder monitoring for new arrivals.',
-      ],
     },
     jsonLd: buildFeaturePageJsonLd({
       howTo: {

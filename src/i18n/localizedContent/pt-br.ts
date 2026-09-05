@@ -869,7 +869,7 @@ export const professions = {
         { question: 'O Zush move ou envia minhas fotos e vídeos?', answer: 'O Zush renomeia no local, sem mover os arquivos para outra biblioteca nem armazená-los. O modo na nuvem pode enviar um conjunto compacto de dados; o BYOK usa sua conta; e a IA offline mantém no computador a análise dos formatos compatíveis.' },
       ],
     },
-    guides: { title: 'Guias de organização de foto e vídeo', description: 'Fluxos de nomes e arquivo para RAW, bibliotecas, entregas e clipes.', slugs: ['ai-photo-renamer-guide', 'best-ways-to-organize-photos-on-mac', 'rename-video-files-with-ai', 'digital-photo-organization-mistakes-to-avoid'] },
+    guides: { title: 'Guias de organização de foto e vídeo', description: 'Fluxos de nomes e arquivo para RAW, bibliotecas, entregas e clipes.', slugs: ['how-to-rename-images-with-ai-on-macos', 'best-ways-to-organize-photos-on-mac', 'rename-video-files-with-ai', 'digital-photo-organization-mistakes-to-avoid'] },
     finalCta: { title: 'Teste o Zush em uma cópia de uma sessão', subtitle: 'Comece com poucos arquivos RAW ou clipes, revise os nomes, ajuste o modelo e desfaça o lote se precisar de uma nova revisão.' },
   },
   legal: {

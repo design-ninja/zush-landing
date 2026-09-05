@@ -46,6 +46,7 @@ export default defineConfig({
     '/byok-setup': { status: 301, destination: '/docs/byok' },
     '/ollama-setup': { status: 301, destination: '/docs/offline-ai' },
     '/blog/medical-records-file-naming-convention': { status: 301, destination: '/for-medical' },
+    '/blog/ai-photo-renamer-guide': { status: 301, destination: '/blog/how-to-rename-images-with-ai-on-macos' },
     '/docs/windows-batch-rename-files': { status: 301, destination: '/docs/batch-rename-files' },
     '/docs/windows-folder-monitoring': { status: 301, destination: '/docs/folder-monitoring' },
     '/docs/search-files-by-content-windows': { status: 301, destination: '/docs/file-search' },

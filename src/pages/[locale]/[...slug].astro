@@ -50,7 +50,7 @@ const FEATURE_VIEWS = {
   '/rename-audio-with-ai': RenameAudioWithAI,
 } as const;
 
-function withoutFeaturePageEntities(jsonLd: object) {
+function withoutFeaturePageEntities(jsonLd: object, omitUntranslatedHowTo = false) {
   const source = jsonLd as {
     '@context'?: string;
     '@graph'?: Array<Record<string, unknown>>;
@@ -60,6 +60,7 @@ function withoutFeaturePageEntities(jsonLd: object) {
     ...source,
     '@graph': (source['@graph'] ?? []).filter((item) => (
       item['@type'] !== 'WebPage' && item['@type'] !== 'FAQPage'
+      && (!omitUntranslatedHowTo || item['@type'] !== 'HowTo')
     )),
   };
 }
@@ -376,7 +377,10 @@ const professionHeaderNav = professionPage
   route in FEATURE_VIEWS && (() => {
     const featurePage = getFeaturePageProps(FEATURE_VIEWS[route as keyof typeof FEATURE_VIEWS]);
     const localizedCopy = copy.featurePages[route];
-    const localizedSupportJsonLd = withoutFeaturePageEntities(featurePage.jsonLd);
+    const localizedSupportJsonLd = withoutFeaturePageEntities(
+      featurePage.jsonLd,
+      route === '/rename-documents-with-ai' || route === '/rename-pdf-with-ai',
+    );
     const localizedFaqItems = localizedCopy?.faqItems ?? featurePage.faqItems;
 
     return (
