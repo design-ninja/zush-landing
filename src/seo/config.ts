@@ -87,9 +87,9 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     keywords: HOME_KEYWORDS,
   },
   '/pricing': {
-    title: 'AI File Renamer Pricing: Free, $10/mo or $48 Lifetime',
+    title: 'Zush Pricing: 50 Free Renames, $10/mo or $48 Lifetime',
     description:
-      'Start with 50 free AI renames. PRO costs $10 per month or $48 once for lifetime access on Mac and Windows. No signup or credit card to try.',
+      'Start with 50 free AI renames. Zush PRO costs $10 per month or $48 once for lifetime access on Mac and Windows. No signup or credit card to try.',
     robots: 'index, follow',
     ogType: 'website',
     keywords:
@@ -304,9 +304,9 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ogType: 'website',
   },
   '/docs': {
-    title: 'AI File Renamer Documentation for Mac and Windows',
+    title: 'Zush Docs: AI File Renamer for Mac & Windows',
     description:
-      'AI file renamer documentation for Mac and Windows: batch rename, folder monitoring, Templates, BYOK, LM Studio, Ollama, metadata, and undo.',
+      'Zush AI file renamer documentation for Mac and Windows: batch rename, folder monitoring, Templates, BYOK, LM Studio, Ollama, metadata, and undo.',
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -402,16 +402,16 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'AI audio file renamer, rename audio files with AI, batch rename audio files, rename audio by content, MP3 file renamer, M4A file renamer, WAV file renamer, FLAC file renamer, audio renamer for Mac, audio renamer for Windows',
   },
   '/mac': {
-    title: 'AI File Renamer for Mac | Batch Rename Files by Content',
+    title: 'AI File Renamer for Mac | Zush',
     description:
-      'AI file renamer and organizer for macOS. Rename by content with custom rules, preview every filename, undo batches, and choose cloud or local AI.',
+      'Zush is an AI file renamer and organizer for macOS. Rename by content with custom rules, preview every filename, undo batches, and choose cloud or local AI.',
     robots: 'index, follow',
     ogType: 'website',
   },
   '/windows': {
-    title: 'AI File Renamer for Windows | Batch Rename Files by Content',
+    title: 'AI File Renamer for Windows | Zush',
     description:
-      'AI file renamer and organizer for Windows 10 and 11. Rename by content with custom rules, preview every filename, and undo any batch.',
+      'Zush is an AI file renamer and organizer for Windows 10 and 11. Rename by content with custom rules, preview every filename, and undo any batch.',
     robots: 'index, follow',
     ogType: 'website',
   },

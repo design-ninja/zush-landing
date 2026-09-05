@@ -5,130 +5,130 @@ import { getCopy } from '@/i18n/copy';
 const PLATFORM_SEO: Partial<Record<Locale, Partial<Record<'/mac' | '/windows', { title: string; description: string }>>>> = {
   de: {
     '/mac': {
-      title: 'KI-Dateiumbenenner für Mac mit eigenen Regeln',
+      title: 'KI-Dateiumbenenner für Mac mit eigenen Regeln | Zush',
       description:
         'KI-Dateiumbenenner für Mac. Lege eigene Namensregeln fest, prüfe jede Änderung, nutze Ein-Klick-Undo oder lokale KI mit Ollama auf deinem Gerät.',
     },
     '/windows': {
-      title: 'KI-Dateiumbenenner für Windows mit eigenen Regeln',
+      title: 'KI-Dateiumbenenner für Windows mit eigenen Regeln | Zush',
       description:
         'KI-Dateiumbenenner für Windows. Lege eigene Namensregeln fest, prüfe jede Änderung, nutze Ein-Klick-Undo oder lokale KI mit Ollama auf deinem Gerät.',
     },
   },
   fr: {
     '/mac': {
-      title: 'Renommeur de fichiers IA pour Mac avec règles',
+      title: 'Renommeur de fichiers IA pour Mac avec règles | Zush',
       description:
         'Renommeur de fichiers IA pour Mac. Définissez vos règles, prévisualisez chaque changement, annulez un lot ou gardez l’analyse compatible sur votre appareil.',
     },
     '/windows': {
-      title: 'Renommeur de fichiers IA Windows avec règles',
+      title: 'Renommeur de fichiers IA Windows avec règles | Zush',
       description:
         'Renommeur de fichiers IA pour Windows. Définissez vos règles, prévisualisez chaque changement, annulez un lot ou gardez l’analyse compatible sur votre appareil.',
     },
   },
   'pt-br': {
     '/mac': {
-      title: 'Renomeador de arquivos com IA para Mac e regras',
+      title: 'Renomeador de arquivos com IA para Mac e regras | Zush',
       description:
         'Renomeador de arquivos com IA para Mac. Crie regras próprias, veja cada alteração, desfaça qualquer lote ou mantenha análises compatíveis no dispositivo.',
     },
     '/windows': {
-      title: 'Renomeador de arquivos com IA Windows e regras',
+      title: 'Renomeador de arquivos com IA Windows e regras | Zush',
       description:
         'Renomeador de arquivos com IA para Windows. Crie regras próprias, veja cada alteração, desfaça qualquer lote ou mantenha análises compatíveis no dispositivo.',
     },
   },
   es: {
     '/mac': {
-      title: 'Renombrador de archivos con IA para Mac y reglas',
+      title: 'Renombrador de archivos con IA para Mac y reglas | Zush',
       description:
         'Renombrador de archivos con IA para Mac. Crea reglas propias, previsualiza cada cambio, deshaz cualquier lote o usa análisis compatibles en el dispositivo.',
     },
     '/windows': {
-      title: 'Renombrador de archivos con IA Windows y reglas',
+      title: 'Renombrador de archivos con IA Windows y reglas | Zush',
       description:
         'Renombrador de archivos con IA para Windows. Crea reglas propias, previsualiza cada cambio, deshaz cualquier lote o usa análisis compatibles en el dispositivo.',
     },
   },
   nl: {
     '/mac': {
-      title: 'AI-bestandshernoemer voor Mac met eigen regels',
+      title: 'AI-bestandshernoemer voor Mac met eigen regels | Zush',
       description:
         'AI-bestandshernoemer voor Mac. Stel eigen naamregels in, bekijk elke wijziging, herstel elke batch of houd ondersteunde analyse op je apparaat.',
     },
     '/windows': {
-      title: 'AI-bestandshernoemer voor Windows met eigen regels',
+      title: 'AI-bestandshernoemer voor Windows met eigen regels | Zush',
       description:
         'AI-bestandshernoemer voor Windows. Stel eigen naamregels in, bekijk elke wijziging, herstel elke batch of houd ondersteunde analyse op je apparaat.',
     },
   },
   it: {
     '/mac': {
-      title: 'Rinomina file con IA per Mac e regole personalizzate',
+      title: 'Rinomina file con IA per Mac e regole personalizzate | Zush',
       description:
         'Rinomina file con IA per Mac. Imposta regole personalizzate, visualizza ogni modifica, annulla qualsiasi batch o usa analisi supportate sul dispositivo.',
     },
     '/windows': {
-      title: 'Rinomina file con IA Windows e regole personalizzate',
+      title: 'Rinomina file con IA Windows e regole personalizzate | Zush',
       description:
         'Rinomina file con IA per Windows. Imposta regole personalizzate, visualizza ogni modifica, annulla qualsiasi batch o usa analisi supportate sul dispositivo.',
     },
   },
   ja: {
     '/mac': {
-      title: 'Mac向けAIファイルリネーム・カスタム命名ルール',
+      title: 'Mac向けAIファイルリネーム・カスタム命名ルール | Zush',
       description:
         'Mac向けAIファイルリネーム。独自の命名ルールを設定し、すべての変更をプレビュー。バッチのUndoと対応オンデバイス分析も利用できます。',
     },
     '/windows': {
-      title: 'Windows向けAIファイルリネーム・カスタム命名ルール',
+      title: 'Windows向けAIファイルリネーム・カスタム命名ルール | Zush',
       description:
         'Windows向けAIファイルリネーム。独自の命名ルールを設定し、すべての変更をプレビュー。バッチのUndoと対応オンデバイス分析も利用できます。',
     },
   },
   ko: {
     '/mac': {
-      title: 'Mac용 AI 파일 이름 변경 및 사용자 규칙',
+      title: 'Mac용 AI 파일 이름 변경 및 사용자 규칙 | Zush',
       description:
         'Mac용 AI 파일 이름 변경 도구. 사용자 규칙을 설정하고 모든 변경을 미리 보며, 일괄 작업을 되돌리거나 지원되는 기기 내 분석을 사용하세요.',
     },
     '/windows': {
-      title: 'Windows용 AI 파일 이름 변경 및 사용자 규칙',
+      title: 'Windows용 AI 파일 이름 변경 및 사용자 규칙 | Zush',
       description:
         'Windows용 AI 파일 이름 변경 도구. 사용자 규칙을 설정하고 모든 변경을 미리 보며, 일괄 작업을 되돌리거나 지원되는 기기 내 분석을 사용하세요.',
     },
   },
   'zh-cn': {
     '/mac': {
-      title: 'Mac AI 文件重命名工具与自定义规则',
+      title: 'Mac AI 文件重命名工具与自定义规则 | Zush',
       description: '适用于 Mac 的 AI 文件重命名工具。设置自定义命名规则，预览每项更改，撤销任意批次，或使用通过 Ollama 运行的本地 AI。',
     },
     '/windows': {
-      title: 'Windows AI 文件重命名工具与自定义规则',
+      title: 'Windows AI 文件重命名工具与自定义规则 | Zush',
       description: '适用于 Windows 的 AI 文件重命名工具。设置自定义命名规则，预览每项更改，撤销任意批次，或使用通过 Ollama 运行的本地 AI。',
     },
   },
   tr: {
     '/mac': {
-      title: 'Mac için Özel Kurallı AI Dosya Adlandırıcı',
+      title: 'Mac için Özel Kurallı AI Dosya Adlandırıcı | Zush',
       description:
         'Mac için AI dosya adlandırıcı. Özel kurallar belirleyin, her değişikliği önizleyin, toplu işlemleri geri alın veya desteklenen cihaz içi analizi kullanın.',
     },
     '/windows': {
-      title: 'Windows için Özel Kurallı AI Dosya Adlandırıcı',
+      title: 'Windows için Özel Kurallı AI Dosya Adlandırıcı | Zush',
       description:
         'Windows için AI dosya adlandırıcı. Özel kurallar belirleyin, her değişikliği önizleyin, toplu işlemleri geri alın veya desteklenen cihaz içi analizi kullanın.',
     },
   },
   ar: {
     '/mac': {
-      title: 'إعادة تسمية ملفات Mac بقواعد مخصصة وذكاء اصطناعي',
+      title: 'إعادة تسمية ملفات Mac بقواعد مخصصة وذكاء اصطناعي | Zush',
       description:
         'أداة إعادة تسمية ملفات بالذكاء الاصطناعي لنظام Mac. أنشئ قواعد مخصصة وعاين كل تغيير وتراجع عن أي دفعة أو استخدم التحليل المدعوم على الجهاز.',
     },
     '/windows': {
-      title: 'إعادة تسمية ملفات Windows بقواعد مخصصة وذكاء اصطناعي',
+      title: 'إعادة تسمية ملفات Windows بقواعد مخصصة وذكاء اصطناعي | Zush',
       description:
         'أداة إعادة تسمية ملفات بالذكاء الاصطناعي لنظام Windows. أنشئ قواعد مخصصة وعاين كل تغيير وتراجع عن أي دفعة أو استخدم التحليل المدعوم على الجهاز.',
     },

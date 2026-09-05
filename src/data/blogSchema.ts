@@ -58,14 +58,14 @@ export const BLOG_PLATFORM_META: Record<
     description:
       'Finder, Automator, Spotlight, screenshots, audio, videos, photos, and buyer-intent workflows for Mac users',
     ctaHref: '/mac',
-    ctaLabel: 'View the AI file renamer for Mac',
+    ctaLabel: 'View Zush for Mac',
   },
   windows: {
     title: 'Windows Guides',
     description:
       'File Explorer, Microsoft Store, Windows Search, screenshots, audio, videos, PDFs, downloads, and folder-monitoring workflows for Windows',
     ctaHref: '/windows',
-    ctaLabel: 'View the AI file renamer for Windows',
+    ctaLabel: 'View Zush for Windows',
   },
 };
 

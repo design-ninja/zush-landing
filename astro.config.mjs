@@ -57,8 +57,8 @@ export default defineConfig({
       filter: shouldIncludeInGeneratedSitemap,
     }),
     starlight({
-      title: 'Docs',
-      description: 'Documentation for AI file renaming on Mac and Windows.',
+      title: 'Zush Docs',
+      description: 'Documentation for Zush AI file renaming on Mac and Windows.',
       favicon: '/favicon/favicon.ico',
       logo: {
         src: './src/assets/zush-docs-logo.webp',
@@ -115,7 +115,7 @@ export default defineConfig({
           label: 'AI and privacy',
           items: [
             { label: 'AI modes', link: '/docs/ai-modes' },
-            { label: 'Managed Cloud AI', link: '/docs/zush-cloud-ai' },
+            { label: 'Zush Cloud AI', link: '/docs/zush-cloud-ai' },
             { label: 'Local AI', link: '/docs/local-ai' },
             { label: 'LM Studio', link: '/docs/lm-studio' },
             { label: 'BYOK', link: '/docs/byok' },
@@ -132,8 +132,8 @@ export default defineConfig({
         {
           label: 'Product pages',
           items: [
-            { label: 'AI file renamer for Windows', link: '/windows' },
-            { label: 'AI file renamer for Mac', link: '/mac' },
+            { label: 'Zush for Windows', link: '/windows' },
+            { label: 'Zush for Mac', link: '/mac' },
             { label: 'Pricing', link: '/#pricing' },
           ],
         },

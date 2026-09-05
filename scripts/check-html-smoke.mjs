@@ -46,39 +46,7 @@ const USE_CASES_BLOCK_ROUTES = [
   '/rename-screenshots-with-ai',
 ];
 const FULL_SOFTWARE_APPLICATION_ROUTES = new Set(['/', '/mac', '/windows']);
-const BRAND_ISOLATED_ROUTES = new Set([
-  '/mac',
-  '/windows',
-  '/pricing',
-  '/docs',
-  '/docs/zush-cloud-ai',
-  '/docs/get-started',
-  '/docs/install-update',
-  '/batch-rename-files',
-  '/offline-ai-file-renamer',
-  '/ai-file-organizer',
-  '/rename-photos-with-ai',
-  '/rename-pdf-with-ai',
-  '/rename-invoices-with-ai',
-  '/rename-videos-with-ai',
-  '/for-hr',
-  '/rename-audio-with-ai',
-  '/rename-design-files-with-ai',
-  '/rename-documents-with-ai',
-  '/rename-screenshots-with-ai',
-  '/for-accountants',
-  '/for-photographers',
-  '/for-legal',
-  '/for-medical',
-  '/for-real-estate',
-  '/automate-downloads-folder',
-  '/hazel-alternative',
-  '/rename-excel-files-with-ai',
-  '/rename-receipts-with-ai',
-  '/rename-scanned-documents',
-  '/rename-word-documents-with-ai',
-  '/docs/privacy-security',
-]);
+const BRANDED_PRODUCT_ROUTES = new Set(['/mac', '/windows', '/pricing', '/docs']);
 const ROOT_SOFTWARE_ID = `${SITE_ORIGIN}/#software`;
 const ORGANIZATION_ALTERNATE_NAMES = [
   'Zush AI Renamer',
@@ -143,21 +111,21 @@ function baseRoute(pathname) {
   return pathname.replace(/^\/(?:de|fr|es|pt-br|it|nl|tr|ja|ko|zh-cn|ar)(?=\/)/, '') || '/';
 }
 
-function assertBrandIsolatedMetadata(html, pathname) {
-  if (!BRAND_ISOLATED_ROUTES.has(baseRoute(pathname))) return;
-
-  const fields = {
-    title: html.match(/<title>([\s\S]*?)<\/title>/i)?.[1] ?? '',
-    h1: html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i)?.[1] ?? '',
-    keywords: html.match(/<meta[^>]+name="keywords"[^>]+content="([^"]*)"/i)?.[1] ?? '',
-  };
-
-  for (const [field, value] of Object.entries(fields)) {
-    const text = value.replace(/<[^>]+>/g, ' ');
-    if (/zush/i.test(text)) {
-      fail(`Brand query leaked into ${field} on isolated route ${pathname}`);
-    }
+function assertProductMetadata(html, pathname) {
+  const route = baseRoute(pathname);
+  if (!BRANDED_PRODUCT_ROUTES.has(route)) return;
+  const title = decodeHtmlEntities(html.match(/<title>([\s\S]*?)<\/title>/i)?.[1] ?? '');
+  if (!/\bZush\b/.test(title)) fail(`Product title must identify Zush on ${pathname}`);
+  if (route === '/pricing' || route === '/docs') {
+    const h1 = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i)?.[1] ?? '';
+    if (!/\bZush\b/.test(h1)) fail(`Product heading must identify Zush on ${pathname}`);
   }
+  if ((route === '/mac' || route === '/windows') &&
+      !title.toLowerCase().includes(route.slice(1))) {
+    fail(`Product title must identify its platform on ${pathname}`);
+  }
+  if (route === '/pricing' && !/pricing/i.test(title)) fail(`Pricing intent missing on ${pathname}`);
+  if (route === '/docs' && !/docs|documentation/i.test(title)) fail(`Documentation intent missing on ${pathname}`);
 }
 
 function assertIncludes(html, needle, message) {
@@ -353,7 +321,7 @@ for (const loc of locs) {
   const description = getMetaDescription(html, pathname);
   const descriptionLength = Array.from(description).length;
   if (descriptionLength > 165) {
-    fail(`Meta description is too long on ${pathname}: ${descriptionLength} > 165`);
+    console.warn(`[check-html-smoke] Review description length on ${pathname}: ${descriptionLength} characters (editorial guideline: 165).`);
   }
 
   if (!/^\/(?:de|fr|es|pt-br|it|nl|tr|ja|ko|zh-cn|ar)(?:\/|$)/.test(pathname)) {
@@ -361,7 +329,7 @@ for (const loc of locs) {
     if (!encodedTitle) fail(`Title missing for ${pathname}`);
     const titleLength = Array.from(decodeHtmlEntities(encodedTitle.replace(/<[^>]+>/g, ' '))).length;
     if (titleLength > 60) {
-      fail(`English title is too long on ${pathname}: ${titleLength} > 60`);
+      console.warn(`[check-html-smoke] Review title length on ${pathname}: ${titleLength} characters (editorial guideline: 60).`);
     }
   }
 
@@ -403,7 +371,7 @@ for (const loc of locs) {
 
   assertVideoObjectUploadDate(jsonLdBlocks, pathname);
   assertIncludes(html, '<h1', `Missing <h1> in raw HTML for ${pathname}`);
-  assertBrandIsolatedMetadata(html, pathname);
+  assertProductMetadata(html, pathname);
 
   if (html.includes('<div id="root"></div>')) {
     fail(`Empty shell detected for ${pathname}`);

@@ -109,24 +109,6 @@ for (const genericName of [
   );
 }
 
-for (const platformBrandVariant of [
-  'Zush for Mac',
-  'Zush Mac',
-  'Zush AI Renamer for Mac',
-  'Zush AI File Renamer for Mac',
-  'Zush File Renamer for Mac',
-  'Zush for Windows',
-  'Zush Windows',
-  'Zush AI Renamer for Windows',
-  'Zush AI File Renamer for Windows',
-  'Zush File Renamer for Windows',
-]) {
-  assert.doesNotMatch(
-    platformLandingSource,
-    new RegExp(`['"]${platformBrandVariant.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}['"]`),
-    `Platform-specific branded variant leaked into keyword or alternateName targeting: ${platformBrandVariant}`,
-  );
-}
 assert.match(
   platformLandingSource,
   /applicationSuite:\s*'Zush'/,
