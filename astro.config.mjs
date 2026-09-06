@@ -164,10 +164,13 @@ export default defineConfig({
       include: ['@remotion/player', 'remotion'],
     },
     server: {
+      fs: {
+        deny: ['.env', '.env.*', '*.{crt,pem,key,p12,pfx,cer,der}', '.npmrc', '.yarnrc.yml', '**/.git/**', '**/.secrets/**'],
+      },
       watch: {
         // Production builds write hundreds of files here. Watching them can
         // flood a long-running dev server and delay React island hydration.
-        ignored: ['**/dist/**', '**/.vercel/**'],
+        ignored: ['**/dist/**', '**/.vercel/**', '**/.secrets/**'],
       },
     },
     resolve: {

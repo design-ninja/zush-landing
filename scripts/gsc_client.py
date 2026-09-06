@@ -31,6 +31,15 @@ class GSCClient:
         self.credentials = self._load_credentials()
 
     def _load_credentials(self) -> dict[str, Any]:
+        inline = os.environ.get("GSC_TOKEN_JSON")
+        if inline:
+            try:
+                data = json.loads(inline)
+            except json.JSONDecodeError:
+                raise RuntimeError("GSC_TOKEN_JSON is not valid JSON") from None
+            if not isinstance(data, dict):
+                raise RuntimeError("GSC_TOKEN_JSON must contain a JSON object")
+            return data
         if not self.token_file.is_file():
             raise FileNotFoundError(
                 f"GSC OAuth token not found at {self.token_file}. Set GSC_TOKEN_FILE to a valid "

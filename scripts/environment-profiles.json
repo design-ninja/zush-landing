@@ -1,0 +1,127 @@
+{
+  "default": ".env.1password",
+  "profiles": {
+    ".env.1password.paddle-mcp": {
+      "mount": "../zush-app/.secrets/mcp.env",
+      "variables": {
+        "PADDLE_API_KEY": "PADDLE_API_KEY",
+        "PADDLE_ENVIRONMENT": "PADDLE_ENVIRONMENT",
+        "PADDLE_MCP_TOOLS": "PADDLE_MCP_TOOLS"
+      },
+      "mount_override": "ZUSH_MCP_ENV_FILE"
+    },
+    ".env.1password.sandbox": {
+      "sources": [
+        {
+          "mount": "../zush-app/.secrets/sandbox.env",
+          "variables": {
+            "PUBLIC_SUPABASE_URL": "PUBLIC_SUPABASE_URL",
+            "PUBLIC_PADDLE_TOKEN": "PUBLIC_PADDLE_TOKEN",
+            "PUBLIC_PADDLE_ENVIRONMENT": "PUBLIC_PADDLE_ENVIRONMENT"
+          }
+        }
+      ]
+    },
+    ".env.1password.local": {
+      "sources": [
+        {
+          "mount": "../zush-app/.secrets/sandbox.env",
+          "variables": {
+            "PUBLIC_SUPABASE_URL": "PUBLIC_SUPABASE_URL"
+          }
+        }
+      ]
+    },
+    ".env.1password.google-ads-mcp": {
+      "mount": "../zush-app/.secrets/mcp.env",
+      "variables": {
+        "GOOGLE_ADS_DEVELOPER_TOKEN": "GOOGLE_ADS_DEVELOPER_TOKEN",
+        "GOOGLE_ADS_LOGIN_CUSTOMER_ID": "GOOGLE_ADS_LOGIN_CUSTOMER_ID",
+        "GOOGLE_ADS_CREDENTIALS_JSON": "GOOGLE_ADS_CREDENTIALS_JSON"
+      },
+      "mount_override": "ZUSH_MCP_ENV_FILE"
+    },
+    ".env.1password.gsc": {
+      "mount": "../zush-app/.secrets/mcp.env",
+      "variables": {
+        "GSC_SITE_URL": "GSC_SITE_URL",
+        "GOOGLE_CLIENT_ID": "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET": "GOOGLE_CLIENT_SECRET",
+        "GSC_CLIENT_DIR": "GSC_CLIENT_DIR",
+        "GSC_TOKEN_JSON": "GSC_TOKEN_JSON"
+      },
+      "mount_override": "ZUSH_MCP_ENV_FILE"
+    },
+    ".env.1password": {
+      "sources": [
+        {
+          "mount": "../zush-app/.secrets/production.env",
+          "variables": {
+            "PUBLIC_SUPABASE_URL": "PUBLIC_SUPABASE_URL",
+            "PUBLIC_PADDLE_TOKEN": "PUBLIC_PADDLE_TOKEN",
+            "PUBLIC_PADDLE_ENVIRONMENT": "PUBLIC_PADDLE_ENVIRONMENT",
+            "PUBLIC_GOOGLE_ADS_ID": "PUBLIC_GOOGLE_ADS_ID",
+            "PUBLIC_GOOGLE_ADS_DOWNLOAD_CONVERSION_LABEL": "PUBLIC_GOOGLE_ADS_DOWNLOAD_CONVERSION_LABEL",
+            "PUBLIC_GOOGLE_ADS_PURCHASE_CONVERSION_LABEL": "PUBLIC_GOOGLE_ADS_PURCHASE_CONVERSION_LABEL",
+            "PUBLIC_POSTHOG_HOST": "PUBLIC_POSTHOG_HOST"
+          }
+        }
+      ]
+    },
+    ".env.1password.operations": {
+      "sources": [
+        {
+          "mount": "../zush-app/.secrets/production.env",
+          "variables": {
+            "PUBLIC_SUPABASE_URL": "PUBLIC_SUPABASE_URL",
+            "PUBLIC_PADDLE_TOKEN": "PUBLIC_PADDLE_TOKEN",
+            "PUBLIC_PADDLE_ENVIRONMENT": "PUBLIC_PADDLE_ENVIRONMENT",
+            "PADDLE_API_KEY": "LANDING_PADDLE_API_KEY",
+            "OPENAI_API_KEY": "OPENAI_API_KEY",
+            "PUBLIC_GOOGLE_ADS_ID": "PUBLIC_GOOGLE_ADS_ID",
+            "PUBLIC_GOOGLE_ADS_DOWNLOAD_CONVERSION_LABEL": "PUBLIC_GOOGLE_ADS_DOWNLOAD_CONVERSION_LABEL",
+            "PUBLIC_GOOGLE_ADS_PURCHASE_CONVERSION_LABEL": "PUBLIC_GOOGLE_ADS_PURCHASE_CONVERSION_LABEL",
+            "TELEGRAM_BOT_TOKEN": "TELEGRAM_BOT_TOKEN",
+            "TELEGRAM_CHAT_ID": "TELEGRAM_CHAT_ID",
+            "PUBLIC_POSTHOG_HOST": "PUBLIC_POSTHOG_HOST"
+          }
+        },
+        {
+          "mount": "../zush-app/.secrets/mcp.env",
+          "variables": {
+            "GH_TOKEN": "GH_TOKEN",
+            "GITHUB_TOKEN": "GITHUB_TOKEN",
+            "GSC_SITE_URL": "GSC_SITE_URL",
+            "GOOGLE_CLIENT_ID": "GOOGLE_CLIENT_ID",
+            "GOOGLE_CLIENT_SECRET": "GOOGLE_CLIENT_SECRET",
+            "BING_WEBMASTER_API_KEY": "BING_WEBMASTER_API_KEY",
+            "GOOGLE_PROJECT_ID": "GOOGLE_PROJECT_ID",
+            "GOOGLE_ADS_DEVELOPER_TOKEN": "GOOGLE_ADS_DEVELOPER_TOKEN",
+            "GOOGLE_ADS_LOGIN_CUSTOMER_ID": "GOOGLE_ADS_LOGIN_CUSTOMER_ID",
+            "YOUTUBE_REDIRECT_PORT": "YOUTUBE_REDIRECT_PORT",
+            "POSTHOG_PERSONAL_API_KEY": "POSTHOG_PERSONAL_API_KEY",
+            "GSC_TOKEN_JSON": "GSC_TOKEN_JSON",
+            "GOOGLE_ADS_CREDENTIALS_JSON": "GOOGLE_ADS_CREDENTIALS_JSON"
+          }
+        }
+      ],
+      "files": [
+        "GSC_TOKEN_JSON:GSC_TOKEN_FILE:text",
+        "GOOGLE_ADS_CREDENTIALS_JSON:GOOGLE_APPLICATION_CREDENTIALS:text"
+      ]
+    },
+    ".env.1password.legacy-stripe-sandbox": {
+      "sources": [
+        {
+          "mount": "../zush-app/.secrets/sandbox.env",
+          "variables": {
+            "PUBLIC_SUPABASE_URL": "PUBLIC_SUPABASE_URL",
+            "PUBLIC_STRIPE_MODE": "PUBLIC_STRIPE_MODE",
+            "PUBLIC_STRIPE_PRO_MONTHLY_PRICE_ID": "PUBLIC_STRIPE_PRO_MONTHLY_PRICE_ID",
+            "PUBLIC_STRIPE_PRO_ONE_TIME_PRICE_ID": "PUBLIC_STRIPE_PRO_ONE_TIME_PRICE_ID"
+          }
+        }
+      ]
+    }
+  }
+}

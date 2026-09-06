@@ -11,4 +11,6 @@ MCP_BIN="$ROOT_DIR/.mcp/google-ads-mcp/bin/google-ads-mcp"
 
 exec "$ROOT_DIR/scripts/with-1password.sh" \
   --env-file .env.1password.google-ads-mcp \
+  -- python3 "$ROOT_DIR/scripts/with-memory-files.py" \
+  --file GOOGLE_ADS_CREDENTIALS_JSON:GOOGLE_APPLICATION_CREDENTIALS:text \
   -- "$MCP_BIN" "$@"
