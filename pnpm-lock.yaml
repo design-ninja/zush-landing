@@ -54,6 +54,9 @@ importers:
       '@fontsource-variable/inter':
         specifier: ^5.2.8
         version: 5.2.8
+      '@modelcontextprotocol/sdk':
+        specifier: 1.30.0
+        version: 1.30.0(zod@4.4.3)
       '@paddle/paddle-mcp':
         specifier: 0.1.6
         version: 0.1.6(@types/node@25.6.0)
@@ -8537,3 +8540,29 @@ snapshots:
   zod@4.4.3: {}
 
   zwitch@2.0.4: {}
+
+  '@modelcontextprotocol/sdk@1.30.0(zod@4.4.3)':
+    dependencies:
+      '@hono/node-server': 2.0.12(hono@4.12.34)
+      ajv: 8.20.0
+      ajv-formats: 3.0.1(ajv@8.20.0)
+      content-type: 1.0.5
+      cors: 2.8.6
+      cross-spawn: 7.0.6
+      eventsource: 3.0.7
+      eventsource-parser: 3.1.0
+      express: 5.2.1
+      express-rate-limit: 8.6.1(express@5.2.1)
+      hono: 4.12.34
+      jose: 6.2.7
+      json-schema-typed: 8.0.2
+      pkce-challenge: 5.0.1
+      raw-body: 3.0.2
+      zod: 4.4.3
+      zod-to-json-schema: 3.25.2(zod@4.4.3)
+    transitivePeerDependencies:
+      - supports-color
+
+  zod-to-json-schema@3.25.2(zod@4.4.3):
+    dependencies:
+      zod: 4.4.3

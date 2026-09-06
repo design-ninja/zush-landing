@@ -77,7 +77,15 @@ Run the full SEO gate through the matching production or sandbox profile.
 
 ### Local MCP servers
 
-GSC, Google Ads, and Paddle MCP launchers read the `Zush MCP` 1Password
+GSC, Google Ads, and Paddle MCP launchers serve discovery from checked-in
+metadata in `scripts/mcp-catalogs/` through `scripts/lazy-mcp.mjs` and the official
+MCP SDK. Opening a Codex chat, initializing MCP, listing tools/resources/prompts,
+and pinging do not read 1Password or launch authenticated backends. The first
+actual tool call (or resource/prompt read) starts only that service through its
+`*-mcp-backend` launcher. Later calls in the same MCP session reuse it; closing
+the session stops it. Failed calls are never automatically replayed.
+
+The backend launchers read the `Zush MCP` 1Password
 Environment mounted at `.secrets/mcp.env` (or the existing shared
 `../zush-app/.secrets/mcp.env` when no local mount exists). Set
 `ZUSH_MCP_ENV_FILE` to use another mount path. Each launcher passes only its own variables to its MCP.
@@ -96,8 +104,26 @@ The profiles `.env.1password.paddle-mcp`, `.env.1password.gsc`, and
 `.env.1password.google-ads-mcp` share that mount and expose only each server's
 variables. Environment values are independent: when rotating a key used by
 both application workflows and MCP, update both Environments. Missing mounts
-fail explicitly. Codex allows 120 seconds for MCP startup; the loader waits
-up to 90 seconds for access.
+fail explicitly when the service is first used. Set `tool_timeout_sec = 180`
+for `paddle`, `gsc`, and `google-ads-mcp` in the local Codex configuration so
+first-use authorization has time to complete; the Environment loader still
+waits up to 90 seconds. This does not change 1Password's lock/authorization policy.
+Existing chats keep their already-started servers until they reconnect.
+
+Catalogs contain only tool/resource descriptions and schemas, never credentials
+or API responses. Paddle advertises its existing 70 non-destructive tools; the
+real backend's configured tool filter is checked again before a call. After
+upgrading a backend, regenerate and review metadata without secrets:
+
+```bash
+node scripts/update-mcp-catalogs.mjs
+node scripts/update-mcp-catalogs.mjs --check
+node --test scripts/tests/lazy-mcp.test.mjs
+```
+
+The generator only initializes the installed servers and lists metadata. Paddle
+uses a non-working placeholder key; GSC/Google Ads discovery needs no credentials.
+No Environment wrappers or remote API tools are invoked during generation.
 
 Verify the FIFO loader without real secrets:
 

@@ -1,0 +1,104 @@
+{
+  "serverInfo": {
+    "name": "zush-gsc",
+    "version": "0.1.0"
+  },
+  "tools": [
+    {
+      "name": "list_sites",
+      "description": "List verified Google Search Console properties available to the configured account.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "search_analytics",
+      "description": "Query Google Search Console search analytics for a property.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "siteUrl": {
+            "type": "string",
+            "description": "GSC property; defaults to GSC_SITE_URL or sc-domain:zushapp.com."
+          },
+          "startDate": {
+            "type": "string",
+            "description": "YYYY-MM-DD."
+          },
+          "endDate": {
+            "type": "string",
+            "description": "YYYY-MM-DD."
+          },
+          "dimensions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "query",
+                "page",
+                "country",
+                "device",
+                "date",
+                "searchAppearance"
+              ]
+            },
+            "default": [
+              "query"
+            ]
+          },
+          "rowLimit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 25000,
+            "default": 100
+          },
+          "searchType": {
+            "type": "string",
+            "enum": [
+              "web",
+              "image",
+              "video",
+              "news",
+              "discover",
+              "googleNews"
+            ],
+            "default": "web"
+          },
+          "dataState": {
+            "type": "string",
+            "enum": [
+              "final",
+              "all"
+            ],
+            "default": "final"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "top_queries",
+      "description": "Get top Google Search Console queries for the configured zushapp.com property.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "days": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 180,
+            "default": 28
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 25000,
+            "default": 25
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  ]
+}

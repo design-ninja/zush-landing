@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+MCP_BIN="$ROOT_DIR/.mcp/google-ads-mcp/bin/google-ads-mcp"
+
+[[ -x "$MCP_BIN" ]] || {
+  echo "Google Ads MCP binary not found: $MCP_BIN" >&2
+  exit 1
+}
+
+exec "$ROOT_DIR/scripts/with-1password.sh" \
+  --env-file .env.1password.google-ads-mcp \
+  -- python3 "$ROOT_DIR/scripts/with-memory-files.py" \
+  --file GOOGLE_ADS_CREDENTIALS_JSON:GOOGLE_APPLICATION_CREDENTIALS:text \
+  -- "$MCP_BIN" "$@"
