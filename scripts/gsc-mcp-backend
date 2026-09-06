@@ -3,6 +3,13 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
+# python.org macOS installations may not have run Install Certificates.command.
+# Respect explicit CA settings; otherwise use certifi without changing system trust.
+if [[ -z "${SSL_CERT_FILE:-}" && -z "${SSL_CERT_DIR:-}" ]]; then
+  SSL_CERT_FILE="$(python3 -m certifi)"
+  export SSL_CERT_FILE
+fi
+
 exec "$ROOT_DIR/scripts/with-1password.sh" \
   --env-file .env.1password.gsc \
   -- python3 "$ROOT_DIR/scripts/gsc_mcp_server.py" "$@"

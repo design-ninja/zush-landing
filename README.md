@@ -90,7 +90,11 @@ Environment mounted at `.secrets/mcp.env` (or the existing shared
 `../zush-app/.secrets/mcp.env` when no local mount exists). Set
 `ZUSH_MCP_ENV_FILE` to use another mount path. Each launcher passes only its own variables to its MCP.
 Python 3 with `python-dotenv >= 1.1.2` is required (already installed locally).
-Paddle MCP is pinned in `pnpm-lock.yaml`; install packages without secrets.
+Paddle MCP is pinned in `pnpm-lock.yaml`; install packages without secrets. GSC also
+requires Python `certifi` (`python3 -m pip install certifi`, preferably in your
+Python virtual environment). Its backend uses certifi's CA bundle unless
+`SSL_CERT_FILE` or `SSL_CERT_DIR` is already configured; HTTPS verification stays
+enabled, including for OAuth refresh requests.
 
 In 1Password, open Developer → Environments → Zush MCP → Local .env file and
 enable the mount. Authorize the first read; access remains authorized until
