@@ -30,19 +30,25 @@ are used. Values are read from virtual FIFO mounts into the child process:
 
 | Profile | Environment | Mount |
 | --- | --- | --- |
-| `.env.1password` | Zush Production (public values only) | `../zush-app/.secrets/production.env` |
-| `.env.1password.operations` | Zush Production + Zush MCP | `../zush-app/.secrets/{production,mcp}.env` |
-| `.env.1password.sandbox` / `.env.1password.local` / `.env.1password.legacy-stripe-sandbox` | Zush Sandbox | `../zush-app/.secrets/sandbox.env` |
+| `.env.1password` | Zush Production (public values only) | `.secrets/production.env` |
+| `.env.1password.operations` | Zush Production + Zush MCP | `.secrets/{production,mcp}.env` |
+| `.env.1password.sandbox` / `.env.1password.local` / `.env.1password.legacy-stripe-sandbox` | Zush Sandbox | `.secrets/sandbox.env` |
 
-Register the three mounts in the neighboring `zush-app` checkout through
-Developer → Environments in 1Password. Landing reuses these mounts; its old
-Landing-specific Environments are retired after consolidation verification.
+Register only the mounts needed for your commands inside this Landing checkout
+through Developer → Environments in 1Password. The default production profile
+needs only `.secrets/production.env`; cloning `zush-app` is not required.
+Existing setups reuse `../zush-app/.secrets/` only when the corresponding local
+mount is absent. A local read failure never falls back to another Environment.
+Explicit `ZUSH_PRODUCTION_ENV_FILE`, `ZUSH_SANDBOX_ENV_FILE`, or
+`ZUSH_MCP_ENV_FILE` paths take precedence over both locations.
 Profiles select only their required variables. The distinct Landing Paddle
 credential is stored as `LANDING_PADDLE_API_KEY` and mapped to `PADDLE_API_KEY`
 for operations. Sandbox/local generated values use the `LOCAL_` prefix.
-Update credentials in Environments; retained vault records are migration backups.
+Update credentials in Environments; retired App/Landing vaults are not used.
 
 ```bash
+./scripts/with-1password.sh -- pnpm dev # Production values; no Sandbox access needed
+
 ./scripts/with-1password.sh \
   --env-file .env.1password \
   --env-file .env.1password.local \
@@ -72,8 +78,9 @@ Run the full SEO gate through the matching production or sandbox profile.
 ### Local MCP servers
 
 GSC, Google Ads, and Paddle MCP launchers read the `Zush MCP` 1Password
-Environment mounted at `../zush-app/.secrets/mcp.env`. Set `ZUSH_MCP_ENV_FILE` to use
-another mount path. Each launcher passes only its own variables to its MCP.
+Environment mounted at `.secrets/mcp.env` (or the existing shared
+`../zush-app/.secrets/mcp.env` when no local mount exists). Set
+`ZUSH_MCP_ENV_FILE` to use another mount path. Each launcher passes only its own variables to its MCP.
 Python 3 with `python-dotenv >= 1.1.2` is required (already installed locally).
 Paddle MCP is pinned in `pnpm-lock.yaml`; install packages without secrets.
 

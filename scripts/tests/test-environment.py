@@ -9,6 +9,7 @@ import sys
 import tempfile
 import time
 import unittest
+from unittest.mock import patch
 
 sys.dont_write_bytecode = True
 HELPER=Path(__file__).resolve().parent.parent / 'with-environment.py'
@@ -39,6 +40,67 @@ class EnvironmentTests(unittest.TestCase):
     def writer(self,path,data,count=1):
         p=multiprocessing.Process(target=serve,args=(path,data,count));p.start()
         self.addCleanup(lambda:p.is_alive() and p.terminate())
+
+    def configured_source(self):
+        self.config['profiles']['.env.1password']['fallback_mount'] = 'sandbox.env'
+        self.config['profiles']['.env.1password']['mount_override'] = 'ZUSH_TEST_ENV_FILE'
+        return self.config['profiles']['.env.1password']
+
+    def test_local_mount_wins_over_existing_shared_mount(self):
+        self.configured_source()
+        self.writer(self.prod, 'TOKEN=local\nMODE=production\n')
+        result = loader.select_variables(self.root, self.config, ['.env.1password'], 3)
+        self.assertEqual(result['TOKEN'], 'local')
+
+    def test_existing_shared_mount_is_used_when_local_absent(self):
+        self.configured_source()
+        self.prod.unlink()
+        self.writer(self.sandbox, 'TOKEN=shared\nMODE=production\n')
+        result = loader.select_variables(self.root, self.config, ['.env.1password'], 3)
+        self.assertEqual(result['TOKEN'], 'shared')
+
+    def test_explicit_override_wins_over_local_mount(self):
+        self.configured_source()
+        self.writer(self.sandbox, 'TOKEN=override\nMODE=production\n')
+        with patch.dict(os.environ, {'ZUSH_TEST_ENV_FILE': str(self.sandbox)}):
+            result = loader.select_variables(self.root, self.config, ['.env.1password'], 3)
+        self.assertEqual(result['TOKEN'], 'override')
+
+    def test_missing_override_does_not_fall_back(self):
+        self.configured_source()
+        with patch.dict(os.environ, {'ZUSH_TEST_ENV_FILE': 'missing.env'}):
+            with self.assertRaisesRegex(loader.EnvironmentError, 'missing.env'):
+                loader.select_variables(self.root, self.config, ['.env.1password'], 1)
+
+    def test_invalid_local_file_does_not_fall_back(self):
+        self.configured_source()
+        self.prod.unlink()
+        self.prod.write_text('TOKEN=plaintext')
+        with self.assertRaisesRegex(loader.EnvironmentError, 'FIFO'):
+            loader.select_variables(self.root, self.config, ['.env.1password'], 1)
+
+    def test_empty_override_is_rejected(self):
+        self.configured_source()
+        with patch.dict(os.environ, {'ZUSH_TEST_ENV_FILE': ''}):
+            with self.assertRaisesRegex(loader.EnvironmentError, 'must not be empty'):
+                loader.select_variables(self.root, self.config, ['.env.1password'], 1)
+
+    def test_real_production_profile_runs_without_app_checkout(self):
+        config = json.loads((HELPER.parent/'environment-profiles.json').read_text())
+        source = config['profiles'][config['default']]['sources'][0]
+        local = self.root/source['mount']
+        local.parent.mkdir()
+        os.mkfifo(local, 0o600)
+        self.writer(local, ''.join(f'{key}=example\n' for key in source['variables'].values()))
+        result = loader.select_variables(self.root, config, [config['default']], 3)
+        self.assertEqual(result, {key: 'example' for key in source['variables']})
+
+    def test_missing_mount_error_points_to_landing_path(self):
+        source = self.configured_source()
+        self.prod.unlink()
+        self.sandbox.unlink()
+        with self.assertRaisesRegex(loader.EnvironmentError, 'production.env'):
+            loader.select_variables(self.root, self.config, ['.env.1password'], 1)
 
     def test_sandbox_overrides_production(self):
         self.writer(self.prod,'TOKEN=live\nMODE=production\n')

@@ -52,6 +52,22 @@ def read_mount(path: Path, timeout: int) -> dict[str, str]:
         signal.signal(signal.SIGALRM, old_handler)
 
 
+def mount_path(root: Path, source: dict) -> Path:
+    override = os.environ.get(source.get('mount_override', ''))
+    if override is not None:
+        if not override.strip():
+            raise EnvironmentError('Environment mount override must not be empty')
+        return (root / override).resolve()
+    local = root / source['mount']
+    if local.exists() or local.is_symlink():
+        return local.resolve()
+    if 'fallback_mount' in source:
+        shared = root / source['fallback_mount']
+        if shared.exists() or shared.is_symlink():
+            return shared.resolve()
+    return local.resolve()
+
+
 def select_variables(root: Path, config: dict, profiles: list[str], timeout: int) -> dict[str, str]:
     loaded = {}
     selected = {}
@@ -66,8 +82,7 @@ def select_variables(root: Path, config: dict, profiles: list[str], timeout: int
             raise EnvironmentError(f"Unknown Environment profile: {profile_name}")
         profile = config['profiles'][profile_name]
         for source_config in profile.get('sources', [profile]):
-            mount_name = os.environ.get(source_config.get('mount_override', ''), source_config['mount'])
-            path = (root / mount_name).resolve()
+            path = mount_path(root, source_config)
             if path not in loaded:
                 loaded[path] = read_mount(path, timeout)
             values = loaded[path]
