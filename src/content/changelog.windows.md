@@ -1,5 +1,22 @@
 # Changelog
 
+## [3.9.1.0] - 2026-09-06
+
+### Added
+- Add text before and after Naming Block values, with custom separators between blocks. Empty values no longer leave unwanted punctuation.
+- Choose all authors or the first author for book filenames, with a custom author separator.
+- Find book metadata more easily in the new Books & Publications group.
+
+### Improved
+- EPUB filenames use book titles, authors, and publication dates more accurately.
+- Cloud files show clearer preparation and download progress before analysis.
+- Folder monitoring handles temporary service failures more reliably, and batch analysis stops cleanly when the service is unavailable.
+
+### Fixed
+- Improved recovery after interrupted renames, preserving rename history and companion metadata files.
+- Undo remains available when a file is temporarily missing, and deleted history stays deleted after recovery.
+- Fixed settings reverting during rapid edits and improved responsiveness of the monitoring queue and Activity list.
+
 ## [3.9.0.0] - 2026-09-04
 
 ### Added
