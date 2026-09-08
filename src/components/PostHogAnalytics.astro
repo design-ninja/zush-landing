@@ -187,7 +187,7 @@ const {
 
       if (posthogInitialized) {
         window.posthog.opt_in_capturing?.();
-        capturePageview();
+        window.requestAnimationFrame(capturePageview);
         return;
       }
 
