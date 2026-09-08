@@ -1,5 +1,10 @@
 ---
-import { getLocalizedPath, type Locale } from '@/i18n/config';
+import {
+  DEFAULT_LOCALE,
+  getLocalesForRoute,
+  getLocalizedPath,
+  type Locale,
+} from '@/i18n/config';
 import styles from './TrackingConsentBanner.module.scss';
 
 interface Props { locale?: Locale; }
@@ -20,7 +25,10 @@ const translations = {
   ar: { title: 'خيارات الخصوصية', body: 'نستخدم تحليلات اختيارية لتحسين Zush وأدوات إعلانية لقياس الحملات. لن يتم تحميل أي أداة اختيارية قبل اختيارك.', accept: 'قبول الكل', reject: 'رفض الكل', settings: 'الإعدادات', save: 'حفظ الخيارات', analytics: 'التحليلات', advertising: 'الإعلانات', necessary: 'ملفات الارتباط الضرورية مفعلة دائماً.', gpc: 'تم تعطيل تتبع الإعلانات بواسطة Global Privacy Control.' },
 } satisfies Record<Locale, Record<string, string>>;
 const copy = translations[locale];
-const privacyHref = getLocalizedPath('/privacy-policy', locale);
+const privacyHref = getLocalizedPath(
+  '/privacy-policy',
+  getLocalesForRoute('/privacy-policy').includes(locale) ? locale : DEFAULT_LOCALE,
+);
 ---
 
 <section class={styles.Banner} data-tracking-consent hidden aria-label={copy.title}>
