@@ -1,0 +1,90 @@
+---
+import { getLocalizedPath, type Locale } from '@/i18n/config';
+import styles from './TrackingConsentBanner.module.scss';
+
+interface Props { locale?: Locale; }
+const { locale = 'en' } = Astro.props;
+
+const translations = {
+  en: { title: 'Your privacy choices', body: 'We use optional analytics to improve Zush and advertising tools to measure campaigns. Nothing optional loads until you choose.', accept: 'Accept all', reject: 'Reject all', settings: 'Settings', save: 'Save choices', analytics: 'Analytics', advertising: 'Advertising', necessary: 'Necessary cookies are always on.', gpc: 'Advertising tracking is disabled by your browser’s Global Privacy Control signal.' },
+  de: { title: 'Deine Datenschutzauswahl', body: 'Optionale Analysen helfen uns, Zush zu verbessern. Werbetools messen Kampagnen. Vor deiner Auswahl wird nichts Optionales geladen.', accept: 'Alle akzeptieren', reject: 'Alle ablehnen', settings: 'Einstellungen', save: 'Auswahl speichern', analytics: 'Analyse', advertising: 'Werbung', necessary: 'Notwendige Cookies sind immer aktiv.', gpc: 'Werbetracking ist durch Global Privacy Control deaktiviert.' },
+  fr: { title: 'Vos choix de confidentialité', body: 'Les analyses facultatives améliorent Zush et les outils publicitaires mesurent les campagnes. Rien de facultatif ne se charge avant votre choix.', accept: 'Tout accepter', reject: 'Tout refuser', settings: 'Réglages', save: 'Enregistrer', analytics: 'Analyse', advertising: 'Publicité', necessary: 'Les cookies nécessaires sont toujours actifs.', gpc: 'Le suivi publicitaire est désactivé par Global Privacy Control.' },
+  es: { title: 'Tus opciones de privacidad', body: 'Usamos análisis opcionales para mejorar Zush y herramientas publicitarias para medir campañas. Nada opcional se carga antes de elegir.', accept: 'Aceptar todo', reject: 'Rechazar todo', settings: 'Configurar', save: 'Guardar', analytics: 'Analítica', advertising: 'Publicidad', necessary: 'Las cookies necesarias están siempre activas.', gpc: 'Global Privacy Control ha desactivado el seguimiento publicitario.' },
+  'pt-br': { title: 'Suas escolhas de privacidade', body: 'Usamos análises opcionais para melhorar o Zush e ferramentas de publicidade para medir campanhas. Nada opcional é carregado antes da sua escolha.', accept: 'Aceitar tudo', reject: 'Recusar tudo', settings: 'Configurar', save: 'Salvar', analytics: 'Análises', advertising: 'Publicidade', necessary: 'Cookies necessários ficam sempre ativos.', gpc: 'O Global Privacy Control desativou o rastreamento de publicidade.' },
+  it: { title: 'Le tue scelte sulla privacy', body: 'Usiamo analisi facoltative per migliorare Zush e strumenti pubblicitari per misurare le campagne. Nulla di facoltativo viene caricato prima della scelta.', accept: 'Accetta tutto', reject: 'Rifiuta tutto', settings: 'Impostazioni', save: 'Salva', analytics: 'Analisi', advertising: 'Pubblicità', necessary: 'I cookie necessari sono sempre attivi.', gpc: 'Global Privacy Control ha disattivato il tracciamento pubblicitario.' },
+  nl: { title: 'Je privacykeuzes', body: 'We gebruiken optionele analyses om Zush te verbeteren en advertentietools om campagnes te meten. Niets optioneels wordt geladen voordat je kiest.', accept: 'Alles accepteren', reject: 'Alles weigeren', settings: 'Instellingen', save: 'Keuzes opslaan', analytics: 'Analyse', advertising: 'Advertenties', necessary: 'Noodzakelijke cookies staan altijd aan.', gpc: 'Advertentietracking is uitgeschakeld door Global Privacy Control.' },
+  tr: { title: 'Gizlilik tercihleriniz', body: 'Zush’ı geliştirmek için isteğe bağlı analizleri, kampanyaları ölçmek için reklam araçlarını kullanıyoruz. Seçim yapmadan hiçbir isteğe bağlı araç yüklenmez.', accept: 'Tümünü kabul et', reject: 'Tümünü reddet', settings: 'Ayarlar', save: 'Kaydet', analytics: 'Analiz', advertising: 'Reklam', necessary: 'Gerekli çerezler her zaman açıktır.', gpc: 'Reklam takibi Global Privacy Control tarafından kapatıldı.' },
+  ja: { title: 'プライバシー設定', body: 'Zush の改善に任意の分析を、キャンペーン測定に広告ツールを使用します。選択するまで任意のツールは読み込まれません。', accept: 'すべて許可', reject: 'すべて拒否', settings: '設定', save: '保存', analytics: '分析', advertising: '広告', necessary: '必須 Cookie は常に有効です。', gpc: 'Global Privacy Control により広告計測は無効です。' },
+  ko: { title: '개인정보 선택', body: 'Zush 개선을 위한 선택적 분석과 캠페인 측정을 위한 광고 도구를 사용합니다. 선택하기 전에는 선택 항목을 불러오지 않습니다.', accept: '모두 허용', reject: '모두 거부', settings: '설정', save: '저장', analytics: '분석', advertising: '광고', necessary: '필수 쿠키는 항상 켜져 있습니다.', gpc: 'Global Privacy Control에 의해 광고 추적이 꺼져 있습니다.' },
+  'zh-cn': { title: '隐私选择', body: '我们使用可选分析来改进 Zush，并使用广告工具衡量广告系列。在你选择之前，不会加载任何可选工具。', accept: '全部接受', reject: '全部拒绝', settings: '设置', save: '保存选择', analytics: '分析', advertising: '广告', necessary: '必要 Cookie 始终启用。', gpc: 'Global Privacy Control 已禁用广告跟踪。' },
+  ar: { title: 'خيارات الخصوصية', body: 'نستخدم تحليلات اختيارية لتحسين Zush وأدوات إعلانية لقياس الحملات. لن يتم تحميل أي أداة اختيارية قبل اختيارك.', accept: 'قبول الكل', reject: 'رفض الكل', settings: 'الإعدادات', save: 'حفظ الخيارات', analytics: 'التحليلات', advertising: 'الإعلانات', necessary: 'ملفات الارتباط الضرورية مفعلة دائماً.', gpc: 'تم تعطيل تتبع الإعلانات بواسطة Global Privacy Control.' },
+} satisfies Record<Locale, Record<string, string>>;
+const copy = translations[locale];
+const privacyHref = getLocalizedPath('/privacy-policy', locale);
+---
+
+<section class={styles.Banner} data-tracking-consent hidden aria-label={copy.title}>
+  <div class={styles.Banner__Copy}>
+    <strong>{copy.title}</strong>
+    <p>{copy.body} <a href={privacyHref}>{copy.necessary}</a></p>
+    <p class={styles.Banner__Gpc} data-consent-gpc hidden>{copy.gpc}</p>
+  </div>
+  <div class={styles.Banner__Settings} data-consent-settings hidden>
+    <label><input type='checkbox' data-consent-analytics /> {copy.analytics}</label>
+    <label><input type='checkbox' data-consent-advertising /> {copy.advertising}</label>
+  </div>
+  <div class={styles.Banner__Actions}>
+    <button type='button' data-consent-reject>{copy.reject}</button>
+    <button type='button' data-consent-settings-toggle>{copy.settings}</button>
+    <button type='button' data-consent-save hidden>{copy.save}</button>
+    <button type='button' class={styles.Banner__Primary} data-consent-accept>{copy.accept}</button>
+  </div>
+</section>
+
+<script>
+  import {
+    hasGlobalPrivacyControl,
+    hasStoredTrackingConsent,
+    readTrackingConsent,
+    writeTrackingConsent,
+  } from '@/utils/trackingConsent';
+
+  const bindConsentBanner = () => {
+    const root = document.querySelector<HTMLElement>('[data-tracking-consent]');
+    if (!root || root.dataset.bound === 'true') return;
+    root.dataset.bound = 'true';
+
+    const settings = root.querySelector<HTMLElement>('[data-consent-settings]');
+    const analytics = root.querySelector<HTMLInputElement>('[data-consent-analytics]');
+    const advertising = root.querySelector<HTMLInputElement>('[data-consent-advertising]');
+    const accept = root.querySelector<HTMLButtonElement>('[data-consent-accept]');
+    const reject = root.querySelector<HTMLButtonElement>('[data-consent-reject]');
+    const toggle = root.querySelector<HTMLButtonElement>('[data-consent-settings-toggle]');
+    const save = root.querySelector<HTMLButtonElement>('[data-consent-save]');
+    const gpcNotice = root.querySelector<HTMLElement>('[data-consent-gpc]');
+    if (!settings || !analytics || !advertising || !accept || !reject || !toggle || !save || !gpcNotice) return;
+
+    const sync = () => {
+      const consent = readTrackingConsent();
+      const gpc = hasGlobalPrivacyControl();
+      analytics.checked = consent.analytics;
+      advertising.checked = consent.advertising;
+      advertising.disabled = gpc;
+      gpcNotice.hidden = !gpc;
+    };
+    const close = () => { root.hidden = true; settings.hidden = true; save.hidden = true; toggle.hidden = false; };
+    const open = () => { sync(); root.hidden = false; };
+
+    accept.addEventListener('click', () => { writeTrackingConsent({ analytics: true, advertising: true }); close(); });
+    reject.addEventListener('click', () => { writeTrackingConsent({ analytics: false, advertising: false }); close(); });
+    toggle.addEventListener('click', () => { settings.hidden = false; save.hidden = false; toggle.hidden = true; });
+    save.addEventListener('click', () => { writeTrackingConsent({ analytics: analytics.checked, advertising: advertising.checked }); close(); });
+    document.querySelectorAll('[data-open-tracking-consent]').forEach((button) => button.addEventListener('click', open));
+
+    sync();
+    root.hidden = hasStoredTrackingConsent();
+  };
+
+  bindConsentBanner();
+  document.addEventListener('astro:after-swap', bindConsentBanner);
+</script>

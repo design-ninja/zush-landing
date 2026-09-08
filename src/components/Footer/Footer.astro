@@ -85,6 +85,12 @@ const professionSectionTitles: Record<Locale, string> = {
   ar: 'للمحترفين',
 };
 const professionSectionTitle = professionSectionTitles[locale];
+const privacyChoiceLabels: Record<Locale, string> = {
+  en: 'Privacy choices', de: 'Datenschutzauswahl', fr: 'Choix de confidentialité',
+  es: 'Opciones de privacidad', 'pt-br': 'Preferências de privacidade',
+  it: 'Scelte sulla privacy', nl: 'Privacykeuzes', tr: 'Gizlilik tercihleri',
+  ja: 'プライバシー設定', ko: '개인정보 선택', 'zh-cn': '隐私选择', ar: 'خيارات الخصوصية',
+};
 ---
 
 <footer class={styles.Footer} data-site-footer>
@@ -280,6 +286,7 @@ const professionSectionTitle = professionSectionTitles[locale];
           <li><a href='https://zush.canny.io' class={linkClass} target='_blank' rel='noopener noreferrer'>{copy.feedback}</a></li>
           <li><a href={footerHref('/terms-of-service')} class={linkClass}>{copy.terms}</a></li>
           <li><a href={footerHref('/privacy-policy')} class={linkClass}>{copy.privacy}</a></li>
+          <li><button type='button' class={`${linkClass} ${styles.Footer__LinkButton}`} data-open-tracking-consent>{privacyChoiceLabels[locale]}</button></li>
           <li><a href={footerHref('/refund-policy')} class={linkClass}>{copy.refund}</a></li>
         </ul>
       </div>

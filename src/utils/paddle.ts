@@ -1,6 +1,7 @@
 // fallow-ignore-file unused-file
 import { getAnalyticsDistinctId } from "@/utils/analytics";
 import { SUPABASE_URL } from "@/utils/supabase";
+import { trackMetaEvent } from "@/utils/metaTracking";
 
 interface PaddleCheckoutOptions {
   items?: { priceId: string; quantity: number }[];
@@ -363,6 +364,11 @@ async function openDirectPaddleCheckout(
   );
   await beforeCheckoutOpen(options);
   window.Paddle.Checkout.open(checkoutOptions);
+  trackMetaEvent('InitiateCheckout', {
+    content_ids: [priceId],
+    content_type: 'product',
+    source: deviceId ? 'app' : 'landing',
+  });
   return true;
 }
 
@@ -403,6 +409,11 @@ export async function openPaddleCheckout(
   const ready = await readyPromise;
   if (!ready || !window.Paddle) {
     if (checkoutSession.checkout_url) {
+      trackMetaEvent('InitiateCheckout', {
+        content_ids: [priceId],
+        content_type: 'product',
+        source: deviceId ? 'app' : 'landing',
+      });
       window.location.href = checkoutSession.checkout_url;
       return true;
     }
@@ -422,5 +433,10 @@ export async function openPaddleCheckout(
   console.log("[Paddle] Opening checkout with options:", checkoutOptions);
   await beforeCheckoutOpen(options);
   window.Paddle.Checkout.open(checkoutOptions);
+  trackMetaEvent('InitiateCheckout', {
+    content_ids: [priceId],
+    content_type: 'product',
+    source: deviceId ? 'app' : 'landing',
+  });
   return true;
 }

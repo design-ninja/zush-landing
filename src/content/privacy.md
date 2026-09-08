@@ -64,8 +64,19 @@ We share data with the following service providers:
 - **Payment Processors:** [Paddle.com](https://www.paddle.com) (direct purchases), [Apple](https://www.apple.com/legal/privacy/) (Mac App Store purchases), [Microsoft](https://privacy.microsoft.com/privacystatement) (Microsoft Store purchases).
 - **Error Tracking:** Sentry (anonymous crash and error reports).
 - **Usage Analytics:** TelemetryDeck (privacy-focused product analytics) and PostHog (privacy-friendly website analytics).
+- **Advertising Measurement:** Google Ads and Meta Platforms (Meta Pixel and Conversions API), used for campaign attribution, aggregate measurement, retargeting, and ad delivery optimization only when your advertising choice allows it.
 
 Each third-party provider processes data according to their own privacy policies. We encourage you to review their policies.
+
+### 4.1 Website Tracking Choices
+
+Optional website tracking is disabled until you make a choice. You can allow analytics and advertising separately, reject both, or change your selection at any time using **Privacy choices** in the footer. PostHog is assigned to analytics. Google Ads, Meta Pixel, and Meta Conversions API are assigned to advertising.
+
+When advertising is allowed, Meta may receive the event name, event time, a random event identifier, the page URL without its query string, browser and network information, and Meta first-party click/browser identifiers when present. In this implementation we do not send Meta your email address, name, phone number, file names, file contents, checkout status supplied only by the browser, or other direct customer identifiers. Confirmed purchase events are sent from the browser only after the Zush backend verifies the checkout status; server-side purchase reporting is not currently enabled.
+
+The browser and server copies of the same eligible event share an event identifier so Meta can deduplicate them. Events currently measured include page views, product-page views, downloads, checkout openings, and verified purchases. Tracking failures never block access to the site, a download, or checkout.
+
+If your browser sends a Global Privacy Control signal, advertising tracking stays disabled. Your choice is stored for 180 days in a necessary first-party cookie that contains only the consent version, category choices, and update time. Provider retention is controlled in the relevant PostHog, Google Ads, and Meta account settings. See the [PostHog Privacy Policy](https://posthog.com/privacy), [Google Privacy Policy](https://policies.google.com/privacy), and [Meta Privacy Policy](https://www.facebook.com/privacy/policy/) for provider details.
 
 ### 5. Data Security
 

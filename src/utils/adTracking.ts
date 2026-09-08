@@ -1,3 +1,8 @@
+import {
+  hasAdvertisingConsent,
+  onTrackingConsentChange,
+} from '@/utils/trackingConsent';
+
 const GOOGLE_ADS_ID = import.meta.env.PUBLIC_GOOGLE_ADS_ID;
 const GOOGLE_ADS_DOWNLOAD_CONVERSION_LABEL =
   import.meta.env.PUBLIC_GOOGLE_ADS_DOWNLOAD_CONVERSION_LABEL;
@@ -9,8 +14,9 @@ type GtagParams = Record<string, string | number | boolean | undefined>;
 declare global {
   interface Window {
     dataLayer?: unknown[];
-    gtag?: (command: 'event' | 'config' | 'js', target: string | Date, params?: GtagParams) => void;
+    gtag?: (command: 'event' | 'config' | 'js' | 'consent', target: string | Date | 'default' | 'update', params?: GtagParams) => void;
     __zushGoogleAdsLoading?: boolean;
+    __zushGoogleConsentBound?: boolean;
   }
 }
 
@@ -27,7 +33,7 @@ interface TrackAdPurchaseConversionOptions {
 }
 
 function ensureGoogleAds(): boolean {
-  if (!GOOGLE_ADS_ID || typeof window === 'undefined' || typeof document === 'undefined') {
+  if (!GOOGLE_ADS_ID || typeof window === 'undefined' || typeof document === 'undefined' || !hasAdvertisingConsent()) {
     return false;
   }
 
@@ -35,6 +41,19 @@ function ensureGoogleAds(): boolean {
   window.gtag = window.gtag || function gtag() {
     window.dataLayer?.push(arguments);
   };
+
+  window.gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+  });
+  window.gtag('consent', 'update', {
+    ad_storage: 'granted',
+    ad_user_data: 'granted',
+    ad_personalization: 'granted',
+    analytics_storage: 'denied',
+  });
 
   if (!window.__zushGoogleAdsLoading) {
     window.__zushGoogleAdsLoading = true;
@@ -52,7 +71,21 @@ function ensureGoogleAds(): boolean {
 
 // fallow-ignore-next-line unused-export
 export function initializeGoogleAdsTracking(): void {
-  ensureGoogleAds();
+  if (typeof window === 'undefined' || window.__zushGoogleConsentBound) return;
+  window.__zushGoogleConsentBound = true;
+  if (hasAdvertisingConsent()) ensureGoogleAds();
+  onTrackingConsentChange((consent) => {
+    if (consent.advertising) {
+      ensureGoogleAds();
+      return;
+    }
+    window.gtag?.('consent', 'update', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+    });
+  });
 }
 
 export function trackAdDownloadConversion({
@@ -61,6 +94,7 @@ export function trackAdDownloadConversion({
   channel,
 }: TrackAdDownloadConversionOptions): void {
   if (os !== 'mac') return;
+  if (!hasAdvertisingConsent()) return;
   if (!GOOGLE_ADS_ID || !GOOGLE_ADS_DOWNLOAD_CONVERSION_LABEL) return;
   if (!ensureGoogleAds() || typeof window.gtag !== 'function') return;
 
@@ -79,6 +113,7 @@ export function trackAdPurchaseConversion({
   value = 1,
   currency = 'THB',
 }: TrackAdPurchaseConversionOptions = {}): void {
+  if (!hasAdvertisingConsent()) return;
   if (!GOOGLE_ADS_ID || !GOOGLE_ADS_PURCHASE_CONVERSION_LABEL) return;
   if (!ensureGoogleAds() || typeof window.gtag !== 'function') return;
 
