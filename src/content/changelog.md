@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.11.2] - 2026-09-09
+
+### Added
+- Drag screenshots and images into AI Rename and save them in your screenshots folder
+
+### Improved
+- Smoother naming block reordering
+- Easier-to-read previews for long filenames
+
+### Fixed
+- Offers now refresh while Zush stays open
+
 ## [3.11.1] - 2026-09-05
 
 ### Improved
