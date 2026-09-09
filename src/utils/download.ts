@@ -9,7 +9,6 @@ import {
 } from '@/constants';
 import { trackAdDownloadConversion } from '@/utils/adTracking';
 import { trackAnalyticsEvent } from '@/utils/analytics';
-import { trackMetaEvent } from '@/utils/metaTracking';
 
 export type DownloadOS = 'mac' | 'windows';
 
@@ -217,12 +216,6 @@ export function trackDownloadClick(
   }
 
   trackAdDownloadConversion({
-    os,
-    source,
-    channel: resolvedChannel,
-  });
-
-  trackMetaEvent('Download', {
     os,
     source,
     channel: resolvedChannel,

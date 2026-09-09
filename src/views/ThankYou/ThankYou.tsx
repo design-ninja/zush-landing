@@ -13,7 +13,6 @@ import { trackAdPurchaseConversion } from "@/utils/adTracking";
 import { trackAnalyticsEvent } from "@/utils/analytics";
 import { getProPlanAnalyticsFromPriceId } from "@/utils/proAnalytics";
 import { SUPABASE_URL } from "@/utils/supabase";
-import { trackMetaPurchase } from "@/utils/metaTracking";
 import styles from "./ThankYou.module.scss";
 
 type ActivationState =
@@ -94,11 +93,6 @@ const ThankYou = ({
 
       trackAdPurchaseConversion({
         transactionId: checkoutSession,
-        value: planAnalytics?.price_usd,
-        currency: "USD",
-      });
-      trackMetaPurchase({
-        eventId: checkoutSession,
         value: planAnalytics?.price_usd,
         currency: "USD",
       });
