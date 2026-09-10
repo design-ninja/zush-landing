@@ -72,7 +72,7 @@ const RenameVideosWithAI = () => (
     h1Accent="Rename Videos"
     category="video"
     definitionTitle="What Is AI Video Renaming?"
-    definitionText="Rename videos with AI using Zush to replace generic screen recording, camera, and export filenames with searchable names based on sampled frames, visible context, and subtitles."
+    definitionText="Rename videos with AI using Zush to replace generic screen recording, camera, and export filenames with searchable names based on sampled frames, visible context, and subtitles. Zush renames files in place; it does not move them between folders."
     showcaseSlides={[
       {
         files: [

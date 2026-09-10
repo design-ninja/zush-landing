@@ -71,7 +71,7 @@ const RenameAudioWithAI = () => (
     h1Accent="Rename Audio"
     category="audio"
     definitionTitle="What Is AI Audio Renaming?"
-    definitionText="Rename audio with AI using Zush to replace generic track, memo, interview, podcast, and meeting filenames with searchable names based on metadata, recognition, and transcript context."
+    definitionText="Rename audio with AI using Zush to replace generic track, memo, interview, podcast, and meeting filenames with searchable names based on metadata, recognition, and transcript context. Zush renames files in place; it does not move them between folders."
     showcaseSlides={[
       {
         files: [

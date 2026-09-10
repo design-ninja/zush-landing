@@ -84,7 +84,7 @@ const RenamePDFWithAI = () => (
     h1Accent="Rename PDFs"
     category="pdf"
     definitionTitle="What Is AI PDF Renaming?"
-    definitionText="Rename PDFs with AI using Zush to read invoices, contracts, scans, and reports, then turn weak filenames into searchable document titles."
+    definitionText="Rename PDFs with AI using Zush to read invoices, contracts, scans, and reports, then turn weak filenames into searchable document titles. Zush renames files in place; it does not move them between folders."
     showcaseSlides={[
       {
         files: [

@@ -1,0 +1,84 @@
+---
+import DownloadButton from '@/components/DownloadButton/DownloadButton';
+import type { RenameTaskExample } from '@/data/renameTaskExamples';
+interface Props { example: RenameTaskExample; }
+const { example } = Astro.props;
+const headingId = `rename-task-${example.id}`;
+---
+<section class="rename-task" data-rename-task={example.id} aria-labelledby={headingId}>
+  <h2 id={headingId}>{example.title}</h2>
+  <p>{example.intro}</p>
+  <figure>
+    <div class="filename"><span>Original filename</span><code>{example.before}</code></div>
+    <span class="arrow" aria-hidden="true">↓</span>
+    <div class="filename"><span>Example new filename</span><code>{example.after}</code></div>
+    <figcaption>{example.evidence}</figcaption>
+  </figure>
+  <details>
+  <summary>Use the {example.templateName} template</summary>
+  <p>Open <strong>Templates</strong> in Zush, create a template named <strong>{example.templateName}</strong>, and use these instructions in its <a href="/docs/custom-prompts">custom prompt</a>. Save it, generate names for a small batch, and review before applying.</p>
+  <div class="prompt">
+    <p data-task-prompt>{example.prompt}</p>
+    <button type="button" data-task-copy>Copy template instructions</button>
+    <span data-task-status role="status" aria-live="polite"></span>
+  </div>
+  </details>
+  <p class="limitation">{example.limitation}</p>
+  <p><a href={example.guideHref}>{example.guideLabel}</a> · <a href="/docs/templates">How to save a Template</a></p>
+  <div class="trial">
+    <strong>Try this workflow free — 50 renames</strong>
+    <div class="downloads">
+      <DownloadButton client:visible source="workflow-example" forceOS="mac" showDropdown={false} includeOtherOS={false} label="Mac — 50 free renames" size="md" />
+      {!example.macOnly && <DownloadButton client:visible source="workflow-example" forceOS="windows" showDropdown={false} includeOtherOS={false} label="Windows — 50 free renames" size="md" />}
+    </div>
+    <p>No signup or credit card required. Preview the names before applying them.</p>
+  </div>
+</section>
+<script>
+  import { trackAnalyticsEvent } from '@/utils/analytics';
+  const bindTaskCopies = () => {
+    document.querySelectorAll<HTMLElement>('[data-rename-task]').forEach((root) => {
+      const button = root.querySelector<HTMLButtonElement>('[data-task-copy]');
+      const status = root.querySelector<HTMLElement>('[data-task-status]');
+      const prompt = root.querySelector<HTMLElement>('[data-task-prompt]');
+      if (!button || !status || !prompt || button.dataset.bound) return;
+      button.dataset.bound = 'true';
+      button.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(prompt.textContent?.trim() ?? '');
+          status.textContent = 'Copied. Paste into your Template’s custom prompt in Zush.';
+          trackAnalyticsEvent('copy_naming_template', { page_path: window.location.pathname, template_id: root.dataset.renameTask, placement: 'workflow-example' });
+        } catch {
+          status.textContent = 'Copy unavailable. Select the instructions above and copy them manually.';
+        }
+      });
+    });
+  };
+  bindTaskCopies();
+  document.addEventListener('astro:after-swap', bindTaskCopies);
+</script>
+<style>
+  .rename-task { width: min(880px, calc(100% - 2.5rem)); margin: 2rem auto 3rem; padding: clamp(1rem, 3vw, 2rem); border: 1px solid var(--border); border-radius: 1rem; background: var(--card); color: var(--foreground); }
+  h2 { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.25; text-wrap: balance; margin: 0 0 1rem; scroll-margin-top: 7rem; }
+  details { margin: 1.5rem 0; }
+  summary { font-size: 1.05rem; font-weight: 600; cursor: pointer; line-height: 1.5; }
+  summary:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+  p, figcaption { line-height: 1.65; color: var(--muted-foreground); }
+  figure { margin: 1.5rem 0; }
+  .filename { display: grid; gap: .4rem; min-width: 0; }
+  .filename span { font-size: .8rem; color: var(--muted-foreground); }
+  code { overflow-wrap: anywhere; font-size: .95rem; }
+  .arrow { display: block; color: var(--primary); margin: .5rem 0; }
+  figcaption { font-size: .8rem; margin-top: .8rem; }
+  .prompt { padding: 1rem; border-radius: .75rem; background: color-mix(in srgb, var(--foreground) 5%, var(--card)); }
+  .prompt p { margin-top: 0; }
+  button { font: inherit; cursor: pointer; border: 1px solid var(--border); border-radius: .5rem; padding: .55rem .8rem; color: var(--foreground); background: var(--card); }
+  button:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+  [data-task-status] { display: block; font-size: .85rem; margin-top: .5rem; }
+  a { color: var(--primary); text-underline-offset: .2em; }
+  .limitation { font-size: .9rem; }
+  .trial { border-top: 1px solid var(--border); margin-top: 1.5rem; padding-top: 1.25rem; }
+  .downloads { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1rem; }
+  .trial p { font-size: .85rem; margin-bottom: 0; }
+  :global(.markdown-content) .rename-task { width: 100%; margin-top: 0; }
+</style>

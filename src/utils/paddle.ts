@@ -1,5 +1,6 @@
 // fallow-ignore-file unused-file
-import { getAnalyticsDistinctId } from "@/utils/analytics";
+import { getAnalyticsDistinctId, trackAnalyticsEvent } from "@/utils/analytics";
+import { getCheckoutAnalyticsEvent, type CheckoutAnalyticsEvent } from "@/utils/checkoutAnalytics";
 import { SUPABASE_URL } from "@/utils/supabase";
 
 interface PaddleCheckoutOptions {
@@ -11,6 +12,7 @@ interface PaddleCheckoutOptions {
   customData?: {
     device_id?: string;
     source?: string;
+    posthog_distinct_id?: string;
   };
 }
 
@@ -20,9 +22,12 @@ interface PaddleConfig {
   pwCustomer?: { email: string };
 }
 
-interface PaddleEvent {
+interface PaddleEvent extends CheckoutAnalyticsEvent {
   name: string;
   data?: {
+    id?: string;
+    transaction_id?: string;
+    discount?: { id?: string } | null;
     customer?: {
       email?: string;
     };
@@ -60,8 +65,20 @@ let paddleLoaded = false;
 let paddleInitialized = false;
 let paddleScriptPromise: Promise<void> | null = null;
 let activeCheckoutSession: string | null = null;
+let activeCheckoutSource = "landing";
+let activeCheckoutPriceId: string | null = null;
 const paddleEventListeners = new Set<PaddleEventListener>();
 const CHECKOUT_PRICE_ID_KEY = "zush_checkout_price_id";
+
+function trackCheckoutOpenError(stage: string): void {
+  trackAnalyticsEvent("checkout_error", {
+    provider: "paddle",
+    source: activeCheckoutSource,
+    paddle_price_id: activeCheckoutPriceId,
+    stage,
+    error_code: "checkout_open_failed",
+  });
+}
 
 const PADDLE_LOCALES: Record<string, string> = {
   en: "en",
@@ -189,6 +206,15 @@ function initializePaddle(): boolean {
   const paddleConfig: PaddleConfig = {
     token: paddleToken,
     eventCallback: (event: PaddleEvent) => {
+      const analyticsEvent = getCheckoutAnalyticsEvent(event);
+      if (analyticsEvent) {
+        trackAnalyticsEvent(analyticsEvent.name, {
+          ...analyticsEvent.properties,
+          source: activeCheckoutSource,
+          paddle_price_id: activeCheckoutPriceId,
+          checkout_session_present: Boolean(activeCheckoutSession),
+        });
+      }
       notifyPaddleEventListeners(event);
 
       if (event.name === "checkout.completed") {
@@ -326,6 +352,7 @@ async function openDirectPaddleCheckout(
   const ready = await ensurePaddleReady();
   if (!ready || !window.Paddle) {
     console.error("[Paddle] Paddle.js not ready");
+    trackCheckoutOpenError("sdk_load");
     return false;
   }
 
@@ -343,6 +370,7 @@ async function openDirectPaddleCheckout(
     items: [{ priceId, quantity: 1 }],
     customData: {
       source: deviceId ? "app" : "landing",
+      posthog_distinct_id: getAnalyticsDistinctId() || undefined,
     },
   };
   if (deviceId) {
@@ -371,10 +399,27 @@ export async function openPaddleCheckout(
   priceId?: string | null,
   options?: OpenPaddleCheckoutOptions,
 ): Promise<boolean> {
+  try {
+    return await openPaddleCheckoutInternal(deviceId, priceId, options);
+  } catch (error) {
+    trackCheckoutOpenError("open");
+    throw error;
+  }
+}
+
+async function openPaddleCheckoutInternal(
+  deviceId?: string | null,
+  priceId?: string | null,
+  options?: OpenPaddleCheckoutOptions,
+): Promise<boolean> {
   console.log("[Paddle] openPaddleCheckout called:", { deviceId, priceId });
+  activeCheckoutSource = deviceId ? "app" : "landing";
+  activeCheckoutPriceId = priceId ?? null;
+  activeCheckoutSession = null;
 
   if (!priceId) {
     console.error("[Paddle] Price ID not provided");
+    trackCheckoutOpenError("missing_price");
     return false;
   }
 
@@ -408,6 +453,7 @@ export async function openPaddleCheckout(
     }
 
     console.error("[Paddle] Paddle.js not ready");
+    trackCheckoutOpenError("sdk_load");
     return false;
   }
 

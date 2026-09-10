@@ -1,4 +1,6 @@
 ---
+import RenameTaskExample from '@/components/RenameTaskExample/RenameTaskExample.astro';
+import { RENAME_TASK_EXAMPLES } from '@/data/renameTaskExamples';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ComparisonTable from '@/components/ComparisonTable/ComparisonTable.astro';
 import PillLink from '@/components/PillLink';
@@ -69,6 +71,7 @@ const breadcrumbItems = [
 const shouldRenderPdfDeepDive = category === 'pdf';
 const pdfDeepDive = getPdfDeepDiveCopy(currentLocale);
 const { route: currentRoute } = stripLocaleFromPath(Astro.url.pathname);
+const taskExample = currentLocale === DEFAULT_LOCALE ? RENAME_TASK_EXAMPLES[currentRoute] : undefined;
 const landingWorkflow = getLandingWorkflow(currentRoute, currentLocale);
 const showPdfScenariosEarly = currentRoute === '/rename-pdf-with-ai';
 const macVersion = parseLatestVersion(macChangelogSource) ?? undefined;
@@ -92,7 +95,7 @@ const relatedPageTitle = (href: string, fallback: string) =>
     slides={heroSlides}
     compactTopSpacing
     buyLabel={currentCopy.home.buyPro}
-    downloadLabel={currentCopy.header.download}
+    downloadLabel={taskExample ? 'Try free — 50 renames' : currentCopy.header.download}
     downloadMenu={currentCopy.downloadMenu}
     trustSignals={currentCopy.home.trustSignals}
     macVersion={macVersion}
@@ -103,6 +106,8 @@ const relatedPageTitle = (href: string, fallback: string) =>
     microsoftStoreRatingAriaLabel={MICROSOFT_STORE_RATING_ARIA_LABELS[currentLocale]}
     client:visible
   />
+
+  {taskExample && <RenameTaskExample example={taskExample} />}
 
   {landingWorkflow && <LandingWorkflow workflow={landingWorkflow} />}
 

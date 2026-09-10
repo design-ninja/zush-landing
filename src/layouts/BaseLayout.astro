@@ -346,9 +346,8 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
       )}
       {includeChrome && <ScrollToTopButton />}
       <script>
-        import { initializeGoogleAdsTracking } from '@/utils/adTracking';
-        import { bindCheckoutAutoOpen } from '@/utils/checkoutAutoOpen';
         import { bindDownloadTracking, bindProClickTracking, bindProPlanClickTracking } from '@/utils/download';
+        import { bindCheckoutAutoOpen } from '@/utils/checkoutAutoOpen';
         import { bindPricingCheckout } from '@/utils/pricingCheckout';
         import { bindPromoCodeCopy } from '@/utils/promoCode';
         import { bindScrollReveal } from '@/utils/scrollReveal';
@@ -426,7 +425,6 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
         };
 
         const bindInteractiveControls = () => {
-          initializeGoogleAdsTracking();
           bindCheckoutAutoOpen();
           bindDownloadTracking();
           bindLanguageSwitcher();

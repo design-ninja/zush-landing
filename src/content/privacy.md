@@ -67,6 +67,12 @@ We share data with the following service providers:
 
 Each third-party provider processes data according to their own privacy policies. We encourage you to review their policies.
 
+### 4.1 Website Analytics
+
+The website loads PostHog analytics automatically to measure visits, navigation, downloads, and verified purchases. It does not display a tracking consent popup. PostHog uses browser storage and identifiers to associate website activity and traffic sources. The website does not load advertising pixels or send advertising conversion events.
+
+PostHog retention is controlled in the account settings. See the [PostHog Privacy Policy](https://posthog.com/privacy) for provider details.
+
 ### 5. Data Security
 
 We implement reasonable security measures to protect your information from unauthorized access, disclosure, or destruction. BYOK API keys are stored locally in macOS Keychain and are not permanently stored in the Zush backend. When BYOK is used, the key is transmitted only as needed to validate the key and complete the selected provider request. However, no method of transmission over the Internet or electronic storage is 100% secure.

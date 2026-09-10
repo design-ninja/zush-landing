@@ -300,19 +300,19 @@ export const HOW_TO_SCHEMAS: Record<string, HowToData> = {
   'best-ways-to-organize-photos-on-mac': {
     name: 'How to Organize Photos on Mac in 7 Steps',
     description:
-      'Start with Zush to create descriptive portable filenames, then use a durable Finder structure, portable dates, focused tags, retrieval tests, and a 3-2-1 backup. Add Apple Photos only for optional managed-library features.',
+      'Choose Apple Photos, Finder folders, or a hybrid library. Set a stable structure, improve unclear filenames when needed, test retrieval, and keep a separate 3-2-1 backup.',
     steps: [
       {
-        name: 'Create descriptive names with Zush',
-        text: 'Use Zush to replace generic camera filenames with reviewed, portable names before adding folders or an optional photo-library catalog.',
+        name: 'Choose the library',
+        text: 'Use Apple Photos, Finder folders, or both according to how you browse and share photos.',
       },
       {
-        name: 'Create one durable structure',
-        text: 'Use a Year/Month/Event or Year/Project folder structure instead of adding new folders whenever the library feels messy.',
+        name: 'Create a durable structure',
+        text: 'Use albums or a Year/Month/Event or Year/Project folder structure.',
       },
       {
-        name: 'Rename generic files',
-        text: 'Replace IMG, DSC, and Screenshot filenames with names that describe the subject, event, client, or location.',
+        name: 'Improve unclear names',
+        text: 'Use Zush or manual renaming for files that need descriptive names; review before applying changes.',
       },
       {
         name: 'Keep dates portable',

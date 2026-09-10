@@ -12,7 +12,7 @@ declare global {
 /**
  * Current PostHog session id, passed through checkout so the server-side
  * purchase event lands on the same person as the visit that produced it.
- * Null when PostHog is absent — opted out, blocked, or not yet loaded.
+ * Null when PostHog is absent — excluded, blocked, or not yet loaded.
  */
 export function getAnalyticsDistinctId(): string | null {
   if (typeof window === 'undefined') return null;

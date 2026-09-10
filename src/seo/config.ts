@@ -54,9 +54,9 @@ export interface SeoMeta {
 
 type RouteSeoMeta = Omit<SeoMeta, 'canonicalPath'>;
 
-const HOME_PAGE_TITLE = 'Zush AI Renamer: File Renamer & Organizer for Mac & Windows';
+const HOME_PAGE_TITLE = 'AI File Renamer for Mac & Windows — Zush';
 const HOME_PAGE_DESCRIPTION =
-  'Zush is an AI file renamer and organizer for Mac and Windows. Rename files by content, apply custom naming rules, preview every name, and undo any batch.';
+  'Rename files by content with Zush for Mac and Windows. Use AI and custom naming rules for PDFs, photos, video and audio. Preview, undo, and try 50 renames free.';
 
 const DEFAULT_META: RouteSeoMeta = {
   title: HOME_PAGE_TITLE,
@@ -339,9 +339,9 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ogType: 'website',
   },
   '/rename-pdf-with-ai': {
-    title: 'Rename PDF Files with AI | Content-Based PDF Renamer',
+    title: 'AI PDF Renamer: Invoices, Contracts & Scans — Zush',
     description:
-      'AI PDF renamer for Mac and Windows. Zush reads invoices, contracts, scans, and receipts, then renames PDFs by content. Preview each name, undo any batch.',
+      'Rename PDFs by content on Mac and Windows. Extract names from invoices, contracts and scans, preview changes, and undo mistakes. Try 50 renames free.',
     robots: 'index, follow',
     ogType: 'website',
     keywords:
@@ -384,18 +384,18 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'AI photo renamer, rename photos with AI, AI image renamer, batch rename photos, rename photos by content, EXIF photo renamer, RAW photo renamer, HEIC file renamer, photo renamer for Mac, photo renamer for Windows',
   },
   '/rename-videos-with-ai': {
-    title: 'Rename Videos with AI · MP4, MOV, Screen Recordings',
+    title: 'AI Video Renamer for Mac & Windows — Zush',
     description:
-      'AI video renamer for Mac and Windows. Zush samples frames and reads subtitles from MP4, MOV, and MTS files, then renames each video by what is in it.',
+      'Rename videos by content on Mac and Windows. Zush uses sampled frames and available subtitles to suggest names. Preview changes and try 50 renames free.',
     robots: 'index, follow',
     ogType: 'website',
     keywords:
       'AI video renamer, rename videos with AI, batch rename video files, rename videos by content, MP4 file renamer, MOV file renamer, screen recording renamer, video file naming software, video renamer for Mac, video renamer for Windows',
   },
   '/rename-audio-with-ai': {
-    title: 'Rename Audio with AI · MP3, M4A, WAV, FLAC',
+    title: 'AI Audio File Renamer: MP3, WAV & M4A — Zush',
     description:
-      'AI audio file renamer for Mac and Windows. Zush reads MP3, M4A, WAV, and FLAC metadata or their transcripts, then renames each file by what it contains.',
+      'Rename audio files using metadata or transcripts on Mac and Windows. Supports MP3, M4A, WAV and FLAC. Preview suggested names and try 50 renames free.',
     robots: 'index, follow',
     ogType: 'website',
     keywords:

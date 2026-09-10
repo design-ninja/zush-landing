@@ -23,17 +23,13 @@ const {
   (() => {
     const TRACKED_HOSTS = new Set(['zushapp.com', 'www.zushapp.com']);
     const ATTRIBUTION_STORAGE_KEY = 'zush_session_attribution_v1';
-    const ATTRIBUTION_SCHEMA_VERSION = '2026-07-28';
+    const ATTRIBUTION_SCHEMA_VERSION = '2026-09-05';
     const ATTRIBUTION_SESSION_TIMEOUT_MS = 30 * 60 * 1000;
     const POSTHOG_COUNTRY_OPTOUT_COOKIE = 'zush_posthog_country_optout=1';
     const hasPostHogCountryOptOut = () =>
       document.cookie.split(';').some((cookie) => cookie.trim() === POSTHOG_COUNTRY_OPTOUT_COOKIE);
 
-    if (
-      !posthogProjectKey ||
-      !TRACKED_HOSTS.has(window.location.hostname) ||
-      hasPostHogCountryOptOut()
-    ) {
+    if (!posthogProjectKey || !TRACKED_HOSTS.has(window.location.hostname)) {
       return;
     }
 
@@ -63,32 +59,53 @@ const {
       const googleClickId = ['gclid', 'gbraid', 'wbraid']
         .find((param) => url.searchParams.has(param));
       const hasFacebookClickId = url.searchParams.has('fbclid');
+      const hasMicrosoftClickId = url.searchParams.has('msclkid');
+      const searchDomain = externalReferringDomain.replace(/^www\./, '');
+      // Match search hosts, not mail.google.com or domains containing 'google'.
+      const searchEngine = /^google\.(com|co\.uk|de|fr|es|it|nl|co\.jp|co\.kr|com\.br|com\.au|ca|co\.in|co\.th|com\.tr)$/.test(searchDomain)
+        ? 'google'
+        : ({ 'bing.com': 'bing', 'duckduckgo.com': 'duckduckgo',
+            'search.yahoo.com': 'yahoo', 'search.brave.com': 'brave',
+            'ecosia.org': 'ecosia', 'yandex.ru': 'yandex', 'yandex.com': 'yandex',
+            'baidu.com': 'baidu' })[searchDomain];
+      const paidMedium = /^(cpc|ppc|paid|paidsearch|paid_search|paid-social|paid_social|display|cpm|retargeting)$/.test(utmMedium);
 
       let source = 'direct_unknown';
       let medium = '(none)';
       let evidence = 'no_campaign_or_referrer';
+      let channel = 'direct';
 
-      if (utmSource) {
-        source = utmSource;
-        medium = utmMedium || 'campaign';
-        evidence = 'utm_source';
-      } else if (googleClickId) {
-        source = 'google_ads';
+      // Ad click IDs take precedence over a misleading utm_medium=organic.
+      if (googleClickId || hasMicrosoftClickId) {
+        source = utmSource || (googleClickId ? 'google_ads' : 'bing_ads');
         medium = 'cpc';
-        evidence = googleClickId;
+        evidence = googleClickId || 'msclkid';
+        channel = 'paid_search';
+      } else if (utmSource || utmMedium) {
+        source = utmSource || externalReferringDomain || 'unknown_campaign';
+        medium = utmMedium || 'campaign';
+        evidence = utmSource ? 'utm_source' : 'utm_medium';
+        channel = paidMedium ? 'paid' : utmMedium === 'organic' ? 'organic_search'
+          : utmMedium === 'email' ? 'email' : 'campaign';
       } else if (hasFacebookClickId) {
+        // fbclid occurs on unpaid Facebook links too: do not call it paid.
         source = 'facebook';
         medium = 'social_click';
         evidence = 'fbclid';
+        channel = 'social';
       } else if (externalReferringDomain) {
         source = externalReferringDomain;
-        medium = 'referral';
-        evidence = 'external_referrer';
+        medium = searchEngine ? 'organic' : 'referral';
+        evidence = searchEngine ? 'search_referrer' : 'external_referrer';
+        channel = searchEngine ? 'organic_search' : 'referral';
       }
 
       return {
         session_source: source,
         session_medium: medium,
+        session_channel: channel,
+        session_utm_source: utmSource,
+        session_utm_medium: utmMedium,
         session_evidence: evidence,
         session_referring_domain: externalReferringDomain || '$direct',
         session_landing_path: window.location.pathname,
@@ -147,8 +164,12 @@ const {
       });
     };
 
+    let posthogInitialized = false;
+
     const initializePostHog = () => {
       if (hasPostHogCountryOptOut()) return;
+
+      if (posthogInitialized) return;
 
       window.posthog.init(posthogProjectKey, {
         api_host: posthogApiHost,
@@ -162,9 +183,15 @@ const {
             return null;
           }
 
-          return event;
+          if (!event) return event;
+          return {
+            ...event,
+            properties: { ...event.properties, ...getSessionAttribution() },
+          };
         },
       });
+      window.posthog.clear_opt_in_out_capturing();
+      posthogInitialized = true;
 
       const sessionAttribution = getSessionAttribution();
       window.posthog.register_for_session(sessionAttribution);
@@ -184,6 +211,7 @@ const {
     };
 
     const schedulePostHog = () => {
+      if (hasPostHogCountryOptOut()) return;
       if ('requestIdleCallback' in window) {
         window.requestIdleCallback(initializePostHog, { timeout: 2000 });
         return;
@@ -197,5 +225,6 @@ const {
     } else {
       window.addEventListener('load', schedulePostHog, { once: true });
     }
+
   })();
 </script>

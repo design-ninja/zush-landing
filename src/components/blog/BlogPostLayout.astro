@@ -4,6 +4,8 @@ import { render } from 'astro:content';
 import { Calendar, Glasses, Languages } from 'lucide-react';
 import BaseLayout, { type AlternateLink } from '@/layouts/BaseLayout.astro';
 import BlogBreadcrumbs from '@/components/blog/BlogBreadcrumbs.astro';
+import RenameTaskExample from '@/components/RenameTaskExample/RenameTaskExample.astro';
+import { RENAME_TASK_EXAMPLES } from '@/data/renameTaskExamples';
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogMarkdownH2 from '@/components/blog/BlogMarkdownH2.astro';
 import BlogMarkdownH3 from '@/components/blog/BlogMarkdownH3.astro';
@@ -70,6 +72,7 @@ const {
 
 const copy = getBlogPostCopy(post.locale);
 const isDefaultLocale = post.locale === 'en';
+const taskExample = isDefaultLocale ? RENAME_TASK_EXAMPLES[`/blog/${post.slug}`] : undefined;
 const { Content, headings } = await render(entry);
 const toc = headings.filter(
   (item: TocItem) => item.depth === 2 || item.depth === 3,
@@ -248,6 +251,7 @@ const breadcrumbItems = [
         )}
 
         <div class={`${styles.BlogPost__Content} markdown-content`}>
+          {taskExample && <RenameTaskExample example={taskExample} />}
           <Content components={mdxComponents} />
         </div>
       </div>

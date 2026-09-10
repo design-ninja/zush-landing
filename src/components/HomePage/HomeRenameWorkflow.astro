@@ -5,8 +5,10 @@ import { ArrowRight, ArrowDown, Blocks, Check, FileText, FolderOpen, Image, Musi
 
 <section class="rename-workflow" aria-labelledby="rename-workflow-title">
   <header class="workflow-header">
-    <Heading id="rename-workflow-title" as="h2" align="center">Rename files with AI in three steps</Heading>
-    <p>Meaningful names. Your rules. A preview before every change.</p>
+    <Heading id="rename-workflow-title" as="h2" align="center">How Zush’s AI file renamer works</Heading>
+    <p>Zush reads file content and metadata to suggest descriptive names for each file.
+      Add PDFs, photos, video or audio, choose your naming rules, then review the results before applying them.
+      Files stay in their folders, and you can undo applied names from rename history.</p>
   </header>
 
   <ol class="workflow-steps">
@@ -69,7 +71,7 @@ import { ArrowRight, ArrowDown, Blocks, Check, FileText, FolderOpen, Image, Musi
   .rename-workflow { width: min(1120px, calc(100% - 2.5rem)); margin: 1.5rem auto 4.5rem; }
   .workflow-header { margin-bottom: 2.5rem; }
   .workflow-header :global(#rename-workflow-title) { scroll-margin-top: 7rem; }
-  .workflow-header p { margin: 1rem 0 0; text-align: center; color: var(--muted-foreground); font-size: 1.0625rem; line-height: 1.6; }
+  .workflow-header p { max-width: 48rem; margin: 1rem auto 0; text-align: center; color: var(--muted-foreground); font-size: 1.0625rem; line-height: 1.6; }
   .workflow-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.75rem; padding: 0; margin: 0; list-style: none; }
   .workflow-step { min-width: 0; position: relative; display: flex; flex-direction: column; }
   .workflow-step .stage { flex-shrink: 0; }
