@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.9.2.0] - 2026-09-12
+
+### Fixed
+- Fixed opening the Pro upgrade from files waiting for Pro and improved checkout reliability.
+- Improved responsiveness while monitoring folders.
+- Improved stability when saving template settings and date formats.
+- Fixed retrying AI name suggestions when saved custom instructions are too long.
+- Short document text is now preserved during analysis, helping generate more accurate filenames.
+
 ## [3.9.1.0] - 2026-09-06
 
 ### Added
