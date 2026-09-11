@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.11.3] - 2026-09-11
+
+### Improved
+- Better analysis of documents with scans, images, or short text
+- Improved responsiveness when preparing files and clearing the file list
+
 ## [3.11.2] - 2026-09-09
 
 ### Added
