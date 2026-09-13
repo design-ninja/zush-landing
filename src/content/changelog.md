@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.11.4] - 2026-09-13
+
+### Improved
+- More reliable analysis of large documents
+- Better analysis of Figma files using embedded previews
+
+### Fixed
+- Filename suggestions now update correctly when you change templates
+
 ## [3.11.3] - 2026-09-11
 
 ### Improved
