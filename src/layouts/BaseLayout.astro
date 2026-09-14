@@ -436,17 +436,35 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
           bindStoreLinks();
         };
 
+        let interactiveControlsPending = false;
         const scheduleInteractiveControls = () => {
+          if (interactiveControlsPending) return;
+          interactiveControlsPending = true;
+
+          const run = () => {
+            interactiveControlsPending = false;
+            bindInteractiveControls();
+          };
+
           if ('requestIdleCallback' in window) {
-            window.requestIdleCallback(bindInteractiveControls, { timeout: 1500 });
+            window.requestIdleCallback(run, { timeout: 1500 });
             return;
           }
 
-          globalThis.setTimeout(bindInteractiveControls, 0);
+          globalThis.setTimeout(run, 0);
         };
 
         bindScrollReveal();
         scheduleInteractiveControls();
+
+        // Each <astro-island> dispatches `astro:hydrate` once React owns its
+        // subtree. Re-scheduling the interaction binders then lets them settle
+        // after hydration instead of only on the initial idle callback that
+        // races `client:idle` and `client:visible` hydration. The event does
+        // not bubble, so listen in the capture phase; the pending flag collapses
+        // the hydration burst into one idle pass. Every binder is idempotent.
+        document.addEventListener('astro:hydrate', scheduleInteractiveControls, true);
+
         document.addEventListener('astro:after-swap', () => {
           bindScrollReveal();
           scheduleInteractiveControls();

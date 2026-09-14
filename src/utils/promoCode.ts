@@ -19,6 +19,8 @@ function setCopyState(button: HTMLButtonElement, state: 'idle' | 'copied' | 'err
 
 export function bindPromoCodeCopy(): void {
   document.querySelectorAll<HTMLButtonElement>('[data-promo-copy]').forEach((button) => {
+    // React owns the markup and click handlers inside hydrated islands.
+    if (button.closest('astro-island')) return;
     if (button.dataset.promoCopyBound === 'true') return;
 
     button.dataset.promoCopyBound = 'true';

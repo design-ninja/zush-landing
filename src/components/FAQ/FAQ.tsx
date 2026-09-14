@@ -129,7 +129,11 @@ const FAQ = ({
   );
 
   return (
-    <section id='faq' className={styles.FAQ}>
+    // suppressHydrationWarning: this section is the root of a client:visible
+    // island that global reveal and interaction scripts touch around
+    // hydration. Suppressing keeps a benign server/client difference from
+    // discarding the island (React #418).
+    <section id='faq' className={styles.FAQ} suppressHydrationWarning>
       <div className={styles.FAQ__Container}>
         <SectionHeader
           title={title}
