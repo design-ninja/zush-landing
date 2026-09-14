@@ -403,6 +403,8 @@ const getPriceUsd = (priceLabel: string | undefined): number | undefined => {
 // fallow-ignore-next-line unused-export
 export const bindProClickTracking = (root: ParentNode = document) => {
   root.querySelectorAll<HTMLElement>('[data-pro-click-source]').forEach((element) => {
+    // React owns the markup and click handlers inside hydrated islands.
+    if (element.closest('astro-island')) return;
     if (element.dataset.proClickTrackingBound === 'true') return;
 
     const source = element.dataset.proClickSource;
@@ -418,6 +420,8 @@ export const bindProClickTracking = (root: ParentNode = document) => {
 // fallow-ignore-next-line unused-export
 export const bindProPlanClickTracking = (root: ParentNode = document) => {
   root.querySelectorAll<HTMLElement>('[data-pro-plan-id]').forEach((element) => {
+    // React owns the markup and click handlers inside hydrated islands.
+    if (element.closest('astro-island')) return;
     if (element.dataset.proPlanClickTrackingBound === 'true') return;
 
     const plan = element.dataset.proPlanId;
