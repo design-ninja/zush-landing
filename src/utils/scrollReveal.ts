@@ -4,8 +4,12 @@ const REVEAL_STATE_VISIBLE = 'visible';
 
 let revealObserver: IntersectionObserver | null = null;
 
+// Keep animation state outside the DOM subtree that React hydrates.
+const getRevealStateTarget = (section: HTMLElement): HTMLElement =>
+  section.closest<HTMLElement>('astro-island') ?? section;
+
 const markVisible = (section: HTMLElement): void => {
-  section.dataset.scrollRevealState = REVEAL_STATE_VISIBLE;
+  getRevealStateTarget(section).dataset.scrollRevealState = REVEAL_STATE_VISIBLE;
   revealObserver?.unobserve(section);
 };
 
@@ -35,7 +39,7 @@ export function bindScrollReveal(): void {
   }
 
   const sections = getRevealSections().filter(
-    (section) => section.dataset.scrollRevealBound !== 'true',
+    (section) => getRevealStateTarget(section).dataset.scrollRevealBound !== 'true',
   );
 
   if (sections.length === 0) {
@@ -44,7 +48,7 @@ export function bindScrollReveal(): void {
 
   if (!('IntersectionObserver' in window)) {
     sections.forEach((section) => {
-      section.dataset.scrollReveal = '';
+      getRevealStateTarget(section).dataset.scrollReveal = '';
       markVisible(section);
     });
     return;
@@ -67,8 +71,9 @@ export function bindScrollReveal(): void {
   }
 
   sections.forEach((section) => {
-    section.dataset.scrollReveal = '';
-    section.dataset.scrollRevealBound = 'true';
+    const target = getRevealStateTarget(section);
+    target.dataset.scrollReveal = '';
+    target.dataset.scrollRevealBound = 'true';
     revealObserver?.observe(section);
   });
 }

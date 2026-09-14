@@ -141,6 +141,9 @@ export const handleStoreLinkClick = (
 
 // fallow-ignore-next-line unused-export
 export const bindStoreLink = (link: HTMLAnchorElement) => {
+  // React owns both the markup and click handlers inside hydrated islands.
+  if (link.closest('astro-island')) return;
+
   const os = link.dataset.storeOs;
   const appUrl = link.dataset.storeAppUrl;
   const webUrl = link.dataset.storeWebUrl || link.href;

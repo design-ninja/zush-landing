@@ -511,7 +511,10 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
 </style>
 
 <style is:global>
-  html[data-scroll-reveal='enabled'] [data-scroll-reveal] {
+  html[data-scroll-reveal='enabled'] :is(
+    [data-scroll-reveal]:not(astro-island),
+    astro-island[data-scroll-reveal] > section
+  ) {
     opacity: 0;
     transform: translate3d(0, 1.5rem, 0);
     transition:
@@ -520,18 +523,27 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
   }
 
   html[data-scroll-reveal='enabled']
-    [data-scroll-reveal]:not([data-scroll-reveal-state='visible']) {
+    :is(
+      [data-scroll-reveal]:not(astro-island):not([data-scroll-reveal-state='visible']),
+      astro-island[data-scroll-reveal]:not([data-scroll-reveal-state='visible']) > section
+    ) {
     will-change: opacity, transform;
   }
 
   html[data-scroll-reveal='enabled']
-    [data-scroll-reveal][data-scroll-reveal-state='visible'] {
+    :is(
+      [data-scroll-reveal][data-scroll-reveal-state='visible']:not(astro-island),
+      astro-island[data-scroll-reveal][data-scroll-reveal-state='visible'] > section
+    ) {
     opacity: 1;
     transform: translate3d(0, 0, 0);
   }
 
   @media (prefers-reduced-motion: reduce) {
-    html[data-scroll-reveal='enabled'] [data-scroll-reveal] {
+    html[data-scroll-reveal='enabled'] :is(
+      [data-scroll-reveal]:not(astro-island),
+      astro-island[data-scroll-reveal] > section
+    ) {
       opacity: 1;
       transform: none;
       transition: none;

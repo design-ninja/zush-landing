@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { waitUntil } from '@vercel/functions';
 import { MAC_INSTALLER_URL } from '@/constants';
+import { getDownloadRequestContext } from '@/utils/downloadRequestContext';
 
 export const prerender = false;
 
@@ -181,6 +182,7 @@ const capturePostHogDownload = async (
       distinct_id: distinctId,
       properties: {
         ...attribution,
+        ...getDownloadRequestContext(attribution.user_agent),
         os: 'mac',
         channel: 'direct',
         installer_url: MAC_INSTALLER_URL,
