@@ -5,6 +5,8 @@ export interface LandingWorkflow {
   answer: string;
   steps: string[];
   example?: { before: string; after: string; caption: string };
+  setupOptions?: Array<{ title: string; instructions: string; href: string; label: string }>;
+  image?: { src: string; alt: string; caption: string };
   limit: string;
   links: Array<{ href: string; label: string }>;
 }
@@ -35,15 +37,25 @@ const workflows: Record<string, LandingWorkflow> = {
     links: [{ href: '/docs/file-search', label: 'Find files through names and metadata' }, { href: '/docs/folder-monitoring', label: 'Set up folder monitoring' }],
   },
   '/offline-ai-file-renamer': {
-    heading: 'Set up local file analysis before going offline',
-    answer: 'Zush can run supported file analysis through LM Studio or Ollama on your Mac or Windows PC. Install the local runtime, download a compatible model, and test the connection first. Images and file previews need a vision-capable model.',
+    heading: 'Set up Zush for offline file renaming',
+    answer: 'Use the same Templates, preview, and Rename History while a model on your computer analyzes supported files. Prepare the model while online, then test a small batch before taking the workflow offline.',
     steps: [
-      'Install LM Studio or Ollama and download a vision-capable model while online. Check that your computer has enough memory and disk space for that model.',
-      'Start the local server. In Zush Settings → AI Modes, choose the matching local mode, select the installed model, and run Test. Use a local endpoint to keep analysis on this computer.',
-      'Try a small set of your actual file types, check the suggestions, then verify the workflow without a network connection before relying on it offline.',
+      'Install Zush and LM Studio or Ollama, then download a compatible vision-capable model. Check its memory and disk requirements; there is no single hardware minimum that fits every model.',
+      'Start the model server. In Zush Settings → AI Modes, choose LM Studio or Ollama, select the installed model, and run Test. Use the loopback endpoint so analysis stays on this computer.',
+      'Add copies of a few screenshots, photos, or document previews. Review the suggested titles, apply selected names, and test Rename History. Verify the same small workflow without a network connection before relying on it offline.',
     ],
-    limit: 'Local analysis works after setup; downloading models and app updates requires a connection. Speed and supported analysis depend on the model, file type, and hardware. BYOK uses a cloud provider. Zush does not silently switch to cloud analysis while a local mode is selected.',
-    links: [{ href: '/docs/lm-studio', label: 'LM Studio requirements and setup' }, { href: '/docs/offline-ai', label: 'Ollama requirements and setup' }, { href: '/docs/ai-modes', label: 'Compare cloud and local AI modes' }],
+    setupOptions: [
+      { title: 'Zush with LM Studio', instructions: 'Download and load a vision-capable model. In LM Studio, open Developer and start the local server. In Zush AI Modes, select LM Studio, confirm http://127.0.0.1:1234, refresh the model list, select the model, and run Test.', href: '/docs/lm-studio', label: 'Follow the LM Studio setup' },
+      { title: 'Zush with Ollama', instructions: 'Install Ollama and download a vision-capable model. Start Ollama, then select it in Zush AI Modes. Confirm http://127.0.0.1:11434, refresh the installed models, select your model, and run Test.', href: '/docs/offline-ai', label: 'Follow the Ollama setup' },
+    ],
+    image: {
+      src: '/images/showcase/macos/lm-studio-light.webp',
+      alt: 'Zush AI Modes on Mac with LM Studio selected, the local host 127.0.0.1:1234, a selected model, and a successful connection test.',
+      caption: 'Existing Mac product screenshot: LM Studio is selected and the connection test reports success. The model shown is an example configuration, not a required model or an offline performance benchmark.',
+    },
+    example: { before: 'scan_0042.pdf', after: 'Northstar_Invoice-1042.pdf', caption: 'Illustrative naming pattern: supplier + invoice number. Check every identifier against the scan. This example is not a measured local-model result.' },
+    limit: 'FREE includes 50 renames shared across all four AI modes; PRO removes the app limit. Model downloads and app updates require internet. Speed and supported analysis depend on the model, file type, and hardware. BYOK uses a cloud provider, and a remote model-server URL is not on-device processing. Zush does not silently switch to cloud analysis while a local mode is selected.',
+    links: [{ href: '/docs/undo-history', label: 'Review and undo an applied batch' }, { href: '/blog/rename-files-with-ai-free', label: 'Try your first 50 renames free' }, { href: '/docs/privacy-security', label: 'Understand processing and privacy' }],
   },
   '/rename-scanned-documents': {
     heading: 'Turn scanner output into names you can verify',

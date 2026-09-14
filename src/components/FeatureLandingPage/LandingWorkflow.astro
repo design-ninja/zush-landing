@@ -8,6 +8,19 @@ const { workflow } = Astro.props;
   <h2 id="landing-workflow-heading">{workflow.heading}</h2>
   <p class="answer">{workflow.answer}</p>
   <ol>{workflow.steps.map((step) => <li>{step}</li>)}</ol>
+  {workflow.setupOptions && (
+    <div class="setup-options">
+      {workflow.setupOptions.map((option) => (
+        <section><h3>{option.title}</h3><p>{option.instructions}</p><a href={option.href}>{option.label}</a></section>
+      ))}
+    </div>
+  )}
+  {workflow.image && (
+    <figure>
+      <img src={workflow.image.src} alt={workflow.image.alt} width="2560" height="1440" loading="lazy" decoding="async" />
+      <figcaption>{workflow.image.caption}</figcaption>
+    </figure>
+  )}
   {workflow.example && (
     <figure>
       <div class="example"><bdi dir="ltr"><code>{workflow.example.before}</code></bdi><span aria-hidden="true"> → </span><bdi dir="ltr"><code>{workflow.example.after}</code></bdi></div>
@@ -20,6 +33,10 @@ const { workflow } = Astro.props;
 
 <style>
   .landing-workflow { width: min(880px, calc(100% - 2.5rem)); margin: 2rem auto 4rem; }
+  img { display: block; width: 100%; height: auto; border-radius: .5rem; }
+  .setup-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 1.5rem; margin-block: 2rem; }
+  .setup-options p { overflow-wrap: anywhere; }
+  h3 { font-size: 1.2rem; }
   h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); line-height: 1.2; text-wrap: balance; }
   p, li, figcaption { color: var(--muted-foreground); line-height: 1.7; }
   .answer { margin-block: 1.25rem; }

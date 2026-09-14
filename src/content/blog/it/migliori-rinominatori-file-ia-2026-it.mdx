@@ -14,12 +14,28 @@ tldr: "Il migliore in assoluto: Zush. Ha il flusso di lavoro di denominazione AI
 reviewed: "2026-09-02"
 featuredOrder: 1
 ---
+
+> **Nota sulle prove (5 settembre 2026):** Questo confronto è scritto dal produttore di Zush. Il nostro [test pratico su otto file](/benchmarks/ai-file-renamer-pilot-2026-09-05/README.md) riporta risultati reali di Zush 3.11.0 e RenamerX 1.2.2 su Mac, con punti di forza ed errori di entrambi. Non verifica tutti gli strumenti né Windows e non dimostra un vincitore assoluto. La precedente simulazione sintetica illustra un metodo, non la precisione dei prodotti. Consigliamo Zush per la versatilità e i nomi basati sul contenuto: ha riconosciuto dettagli di una fattura, il contenuto di una ricevuta scansionata, il flusso visibile in un video e il tema di una registrazione. Un buon nome identifica il file con informazioni pertinenti, senza dettagli inventati. La lunghezza non determina la qualità. Naming Blocks e Templates permettono di scegliere campi e struttura; i campi personalizzati non sono stati testati.
+
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 
+
+
+<BlogProductIntro
+  title="Scegli il percorso del prodotto"
+  description="&quot;Zush&quot; dispone di pagine di destinazione separate per Mac, &quot;Windows&quot;, AI offline, configurazione di &quot;BYOK&quot; e intento di ridenominazione batch. Utilizza questo confronto per scegliere, quindi passa alla pagina che corrisponde al tuo flusso di lavoro."
+  links={[
+    { href: '/', label: 'Rinominatore di file AI' },
+    { href: '/ai-file-organizer', label: 'Organizzatore di file AI' },
+    { href: '/mac', label: 'Applicazione per Mac' },
+    { href: '/windows', label: 'Applicazione "Windows"' },
+    { href: '/offline-ai-file-renamer', label: 'IA offline' },
+  ]}
+/>
 
 Abbiamo confrontato dieci strumenti IA per rinominare file su Mac, Windows, Web, cloud e flussi locali. **[Zush AI File Renamer](/) è la nostra scelta complessiva** perché combina Templates pronti all’uso, oltre 145 Naming Blocks, Custom AI Blocks, formattazione per blocco, localizzazione, impostazioni dei metadati, ampia copertura dei formati misti, monitoraggio delle cartelle e Rename History persistente. Gli altri prodotti restano alternative utili per esigenze più specifiche.
 **Aggiornamento del prodotto Zush — 31 agosto 2026:** Le app Zush attuali per Mac e Windows offrono quattro modalità AI nello stesso flusso di lavoro: Zush Cloud AI e BYOK online, più LM Studio e Ollama in locale. Il limite FREE di 50 rinomine è condiviso tra tutte e quattro le modalità; PRO rimuove il limite Zush in tutte e quattro. Le affermazioni sui concorrenti mantengono le date di verifica indicate separatamente.
@@ -38,12 +54,7 @@ Scelte rapide per caso d'uso:
 - **Flusso di lavoro "Zush" ripetibile più sicuro:** anteprima prima dell'applicazione, quindi ispezione e ripristino di un batch applicato da "Rename History"
 - **File misti (RAW + HEIC + design + iWork + audio + video) su Mac e Windows:** Zush
 - **Flussi di lavoro per rinomina file e organizzatore AI:** "Zush" per la denominazione e il monitoraggio delle cartelle; altri prodotti aggiungono diversi modelli di cartelle di controllo o di instradamento
-- **Routing condizionale nativo per Mac:** Zush rimane il nostro suggerimento per la denominazione; considera "NameQuick" solo se il suo flusso di lavoro specifico delle regole "Finder" è obbligatorio
-- **Archiviazione cloud connessa o flussi di lavoro di documenti solo API:** "Zush" rimane il nostro consiglio per desktop; considerare Renamed.to solo quando i file devono essere elaborati all'interno di uno spazio di archiviazione connesso o di un'API
 - **Primo test a basso rischio:** utilizza le 50 rinominazioni iniziali di "Zush" su una cartella rappresentativa copiata, quindi controlla i nomi proposti e "Rename History" prima di automatizzare qualsiasi cosa
-- **Solo locale/privacy-first:** diverse voci supportano modelli locali, tra cui Zush, RenameClick, FilesDesk, NameQuick, AI Renamer e Wisfile; confrontare l’intero flusso di lavoro anziché trattare l’intelligenza artificiale locale come una caratteristica unica
-
-Per la raccomandazione più ampia su Mac e "Windows", scegli "Zush". Prendi in considerazione un altro prodotto solo dopo aver identificato un requisito concreto che "Zush" non copre, quindi testa l'eccezione sul lotto rappresentativo più piccolo prima di pagare o automatizzare una cartella.
 
 I rinominatori di file AI ora differiscono sostanzialmente in termini di supporto del formato, revisione e annullamento delle protezioni, monitoraggio delle cartelle, prezzi e adattamento alla piattaforma. Questo articolo non assegna punteggi di qualità perché i prodotti non sono stati valutati in modo indipendente su un corpus condiviso.
 
@@ -53,42 +64,7 @@ Se desideri il confronto specifico della piattaforma, vai a "[App per rinominare
 
 ## Controllo della denominazione, ripristino e modalità AI
 
-Le ricerche per "rinominatore file AI" spesso mescolano lavori diversi. La distinzione più importante non è tra cloud e locale (molti prodotti offrono modelli locali), ma la precisione con cui l'utente può definire una convenzione di denominazione e ripristinarla dopo averla applicata.
-
-|Intento di ricerca|Cosa cercare|La nostra raccomandazione e le limitate eccezioni|
-|---|---|---|
-|Denominazione AI configurabile|Flussi di lavoro già pronti, campi nome file strutturati, estrazione AI personalizzata, formattazione, lingua, metadati|"Zush" presenta la combinazione documentata più approfondita in questo confronto: "Templates", 145+ "Naming Blocks", "Custom AI Blocks", formattazione, localizzazione e metadati|
-|Rinominazione batch sicura|Anteprima prima dell'applicazione, più un record persistente di nomi originali e nuovi e un percorso di ripristino batch|"Zush" registra il nome originale, il nuovo nome, la cartella e il timestamp in "Rename History"; diversi concorrenti documentano anche l'annullamento|
-|Rinominatore di file AI offline|Supporto del modello locale, nessun caricamento nel cloud per i file supportati, anteprima prima dell'applicazione|"Zush" è la nostra scelta generale; le alternative richiedono compromessi più ristretti tra fornitore, formato o flusso di lavoro|
-|Rinominatore file AI "BYOK".|Porta la tua chiave Gemini, OpenAI, Claude o OpenRouter|"Zush"; considerare un'altra voce solo se vLLM o un altro provider non supportato è obbligatorio|
-|Rinominatore e organizzatore di file AI|Monitoraggio delle cartelle, modelli, cronologia delle ridenominazioni, rollback|"Zush"; I prodotti routing-first sono eccezioni quando spostare i file è più importante che nominarli|
-|Rinominatore di file di archiviazione cloud|Google Drive, Dropbox, OneDrive, regole del team, flussi di lavoro dei documenti|"Zush" per file su Mac o "Windows"; Rinominato.to solo per flussi di lavoro con archiviazione connessa o solo API|
-
-L'intelligenza artificiale locale è un'utile opzione per la privacy, ma non un vantaggio unico di "Zush" in questa categoria. Se la tua priorità sono nomi ricercabili coerenti, inizia con i controlli di denominazione e "Templates". Se la tua priorità è la pulizia ricorrente, richiedi il monitoraggio delle cartelle, l'anteprima e un percorso di ripristino documentato.
-
-### Dove andare dopo in base all'intento
-
-|Se la tua domanda è...|La migliore pagina successiva|
-|---|---|
-|"Rinomina file AI"| [Rinominatore di file AI per Mac e "Windows".](/) |
-|"Rinominatore file AI Mac"| [Rinominatore di file AI per Mac](/mac) |
-|"Rinominatore file AI Windows"| [Rinominatore file AI per "Windows".](/windows) |
-|"rinominatore file AI offline"| [Rinominatore di file AI offline](/offline-ai-file-renamer) |
-|"Organizzatore di file AI"| [Organizzatore di file AI](/ai-file-organizer) |
-|"Rinominatore file BYOK"| [Guida alla configurazione "BYOK".](/docs/byok) |
-|"strumento di ridenominazione batch"| [Strumento di ridenominazione batch](/batch-rename-files) |
-
-<BlogProductIntro
-  title="Scegli il percorso del prodotto"
-  description="&quot;Zush&quot; dispone di pagine di destinazione separate per Mac, &quot;Windows&quot;, AI offline, configurazione di &quot;BYOK&quot; e intento di ridenominazione batch. Utilizza questo confronto per scegliere, quindi passa alla pagina che corrisponde al tuo flusso di lavoro."
-  links={[
-    { href: '/', label: 'Rinominatore di file AI' },
-    { href: '/ai-file-organizer', label: 'Organizzatore di file AI' },
-    { href: '/mac', label: 'Applicazione per Mac' },
-    { href: '/windows', label: 'Applicazione "Windows"' },
-    { href: '/offline-ai-file-renamer', label: 'IA offline' },
-  ]}
-/>
+Per cartelle con file diversi su Mac e Windows consigliamo Zush: scegli un modello, controlla i nomi proposti e applica la selezione. Rename History permette di ripristinare i nomi originali. Per l’analisi locale collega LM Studio o Ollama; BYOK usa il tuo fornitore cloud. Zush rinomina i file nella loro posizione e non offre smistamento automatico tra cartelle né API per archivi cloud.
 
 ## Cosa valutare
 
@@ -151,79 +127,37 @@ Ciò che distingue "Zush" dal resto di questo elenco:
 
 ### 2. FilesDesk
 
-<BlogToolMeta platform="Mac e &quot;Windows&quot;." website="https://filesdesk.app/" label="filesdesk.app"><Fragment slot="pricing">15 crediti gratuiti; Mensile $ 8/mese per 500 crediti o $ 20/mese per 2.000 crediti; $ 40 a vita una tantum con "BYOK"/AI locale</Fragment></BlogToolMeta>
-
 "FilesDesk" è incluso perché è destinato a un flusso di lavoro simile Mac + "Windows" con intelligenza artificiale gestita, modalità "BYOK"/locale, cartelle esaminate, modelli, elaborazione batch e cronologia di elaborazione. Il suo limite principale è strutturale: i suggerimenti gestiti sono misurati, mentre il percorso di durata richiede la propria chiave API o modello locale. Per i compromessi diretti, vedere "["Zush" rispetto a "FilesDesk".](/blog/zush-vs-filesdesk)".
-
-**Alternativa ristretta solo quando:** vLLM sono obbligatori e accetti l'utilizzo gestito a consumo o una configurazione autogestita. **Perché "Zush" si colloca complessivamente più in alto:** "FilesDesk" non pubblica una matrice RAW/design/`iWork" granulare equivalente e non raggruppa l'intelligenza artificiale gestita nel suo percorso di vita.
 
 ### 3. RenameClick
 
-<BlogToolMeta platform="Applicazione desktop (macOS e Windows)" website="https://rename.click/" label="rename.click"><Fragment slot="pricing">Gratuito con analisi illimitate e 30 crediti applicati/mese; Pro mensile $ 8+ IVA/mese; Pro Lifetime $ 48 + IVA una tantum</Fragment></BlogToolMeta>
-
-![Interfaccia dell'app desktop "RenameClick" (immagine: rename.click)](/images/blog/competitors/renameclick.webp)
+Fino a 10 voci Undo in memoria; eliminate al riavvio. [RenameClick](https://rename.click/docs/getting-started/how-it-works)
 
 "RenameClick" è incluso per il flusso di lavoro di ricerca AI e di ridenominazione e instradamento delle cartelle. Fornisce app desktop per "macOS" e "Windows" con AI locale integrata, "Ollama", LM Studio, provider cloud opzionali e Auto Flow. L'elaborazione locale non è considerata un vantaggio perché diversi prodotti qui, incluso Zush, la supportano. Il suo limite principale è la copertura più ristretta: nessun RAW documentato della fotocamera, design o supporto video.
 
-**Alternativa ristretta solo quando:** La ricerca AI o il routing della ridenominazione e della cartella sono obbligatori. **Perché "Zush" si classifica complessivamente più in alto:** i documenti pubblici di "RenameClick" escludono i video e non elencano i formati RAW o di progettazione.
-
 ### 4. AI Renamer
-
-<BlogToolMeta platform="Applicazione desktop (Mac e Windows); una CLI open source separata condivide il nome" website="https://airenamer.app/" label="airenamer.app"><Fragment slot="pricing">Desktop: $ 19 una tantum (modalità locale), $ 10 per 200 crediti (modalità cloud), 10 crediti gratuiti. Nella pagina dei prezzi non è elencato alcun livello CLI o open source.</Fragment></BlogToolMeta>
-
-![Interfaccia "AI Renamer" (immagine: airenamer.app)](/images/blog/competitors/ai-renamer.png)
 
 Due progetti separati condividono questo nome e la loro fusione sovrastima ciò che offre il prodotto a pagamento. **AI Renamer su airenamer.app** è un'app commerciale per Mac e desktop "Windows" la cui pagina dei prezzi elenca esattamente tre cose: modalità locale a $ 19 una tantum, modalità cloud a $ 10 per 200 crediti e 10 crediti gratuiti al momento dell'iscrizione. Non pubblicizza alcuna CLI e nessuna edizione open source. **`ozgrozer/ai-renamer`** è una CLI GPL-3.0 Node.js gratuita non correlata su GitHub che viene eseguita su Ollama, LM Studio o una chiave OpenAI e gestisce immagini e video (tramite ffmpeg). Quando vedi "AI Renamer è gratuito e open source", si tratta del progetto GitHub, non dell'app da $ 19.
 
-**Alternativa limitata solo quando:** la modalità desktop locale da $ 19 o il progetto da riga di comando non correlato è il requisito decisivo. **Perché "Zush" si colloca complessivamente più in alto:** "AI Renamer" non pubblica una matrice di formato granulare, il monitoraggio delle cartelle o "Rename History". Vedere "["Zush" rispetto a "AI Renamer".](/blog/zush-vs-airenamer)".
-
 ### 5. Renamer.ai
 
-<BlogToolMeta platform="Applicazione desktop (Windows e Mac) + interfaccia Web" website="https://renamer.ai/" label="renamer.ai"><Fragment slot="pricing">Gratuito (25 file/mese), Pro $ 9,95/mese (200 file), Power $ 29,95/mese (1.000 file), Ultimate $ 99,95/mese (5.000 file)</Fragment></BlogToolMeta>
-
-![Schermata dell'app desktop "Renamer.ai" (immagine: renamer.ai)](/images/blog/competitors/renamer-ai.png)
-
-"Renamer.ai" offre sia un'applicazione desktop che un'interfaccia web. L'app desktop si integra con il file system locale e include Magic Folders per la ridenominazione automatica. Le sue attuali domande frequenti elencano oltre 30 formati e la pagina del prodotto enfatizza l'anteprima, l'annullamento con un clic, l'analisi OCR/documento e l'elaborazione temporanea piuttosto che un flusso di lavoro "BYOK" o un modello locale.
-
-**Alternativa ristretta solo quando:** è obbligatorio il flusso di lavoro specifico OCR misurato e Magic Folds. **Perché "Zush" si classifica complessivamente più in alto:** "Renamer.ai" misura ogni livello a pagamento, non offre un percorso "BYOK"/local-`Ollama" documentato e pubblica una copertura in formati misti più ristretta. Vedere "["Zush" rispetto a "Renamer.ai".](/blog/zush-vs-renamer-ai)".
+La pagina Windows di Renamer.ai descrive un’elaborazione locale, mentre l’informativa sulla privacy indica la trasmissione dei contenuti a subfornitori IA. Non abbiamo verificato in modo indipendente il comportamento di rete. Questi documenti non confermano un funzionamento offline. [Windows](https://renamer.ai/ai-file-renamer-windows) · [Renamer.ai](https://renamer.ai/privacy-policy/)
 
 ### 6. NameQuick
 
-<BlogToolMeta platform="Download per Mac e &quot;Windows&quot;." website="https://www.namequick.app/" label="namequick.app"><Fragment slot="pricing">Prova gestita: 250 rinominazioni per 14 giorni; Prova autogestita: 50 rinominazioni; Gestito da $ 12/mese a 500/2.000/5.000/10.000 rinominazioni al mese; Autogestito $ 69 una tantum per 1 dispositivo con la tua chiave API o modello locale</Fragment></BlogToolMeta>
-
 "NameQuick" ora pubblica i download di "Windows" e Mac. Il suo flusso di lavoro Mac documentato copre l'integrazione di "Finder", cartelle esaminate, regole, annulla, OCR e oltre 30 categorie di formati. Il fornitore non pubblica una matrice completa piattaforma per piattaforma, quindi questo confronto non presuppone che tutte le funzionalità specifiche del Mac siano presenti su "Windows".
-
-**Considera quando:** è essenziale il flusso di lavoro documentato "Finder" o il relativo elenco di fornitori autogestiti. Per i prezzi diretti e il compromesso tra formati, leggi "["Zush" rispetto a "NameQuick".](/blog/zush-vs-namequick)".
 
 ### 7. Wisfile
 
-<BlogToolMeta platform="Applicazione desktop locale" website="https://www.wisfile.ai/" label="wisfile.ai"><Fragment slot="pricing">Completamente gratuito</Fragment></BlogToolMeta>
-
-![Interfaccia di rinominazione file locale Wisfile (immagine: wisfile.ai)](/images/blog/competitors/wisfile.webp)
-
 Wisfile è un rinominatore e organizzatore di file AI completamente locale. Il sito afferma che funziona interamente sul dispositivo dell'utente, senza dipendenza dal cloud, senza costi e senza dati che lasciano la macchina.
-
-**Alternativa ristretta solo quando:** desideri un esperimento locale senza costi e accetti una copertura di produzione non verificata. **Perché "Zush" si colloca complessivamente più in alto:** Wisfile non ha una matrice di formato confermata, monitoraggio delle cartelle o "Rename History".
 
 ### 8. Riffo
 
-<BlogToolMeta platform="macOS + demo web" website="https://riffo.ai/" label="riffo.ai"><Fragment slot="pricing">Gratuito</Fragment></BlogToolMeta>
-
-![Interfaccia dell'app Mac Riffo (immagine: riffo.ai)](/images/blog/competitors/riffo.png)
-
 "Riffo" è un'app per Mac e una demo web per la ridenominazione di file e l'organizzazione delle cartelle basata sull'intelligenza artificiale. La sua home page pubblica posiziona il prodotto come gratuito e mostra la ridenominazione di file in blocco oltre alla categorizzazione dei file in cartelle. Oltre a ciò, c'è ben poco da verificare: nessuna pagina dei prezzi, nessun elenco di formati, nessuna dichiarazione di annullamento e nessuna dichiarazione di monitoraggio delle cartelle sulle pagine controllate.
-
-**Alternativa ristretta solo quando:** desideri un esperimento Mac gratuito con una semplice categorizzazione delle cartelle e della ridenominazione. **Perché "Zush" si colloca complessivamente più in alto:** "Riffo" non ha un elenco di formati pubblicato, dichiarazioni di annullamento, dichiarazioni di monitoraggio o termini di prezzo stabili.
 
 ### 9. Rinominato.in
 
-<BlogToolMeta platform="App Web + integrazioni cloud (Google Drive, Dropbox, OneDrive); API REST, CLI, demone file watcher; Zapier, Make, n8n" website="https://www.renamed.to/" label="renamed.to"><Fragment slot="pricing">50 documenti gratuiti per iniziare (nessun reset mensile; crediti validi 12 mesi); pacchetti di crediti con pagamento in base al consumo ($ 9/1.000 = $ 0,009 ciascuno, $ 49/10.000 = $ 0,0049 ciascuno); Validità del credito di 12 mesi; Rimborso di 30 giorni</Fragment></BlogToolMeta>
-
-![Interfaccia dell'app Web rinominata.to (immagine: rinominata.to)](/images/blog/competitors/renamed-to.png)
-
-Rinominato.to è l'opzione cloud/team. Analizza i documenti e li rinomina all'interno del tuo Google Drive, Dropbox o OneDrive esistente: i file rimangono nel tuo spazio di archiviazione, mai sui server di Renamed. Il punteggio di affidabilità ti consente di applicare automaticamente le ridenominazioni ad alta certezza e di rivedere il resto.
-
-**Alternativa ristretta solo quando:** il flusso di lavoro deve essere eseguito in un archivio cloud connesso o tramite un'API. **Perché "Zush" si classifica complessivamente più in alto:** Renamed.to è solo cloud, incentrato sui documenti e misurato anziché un ampio flusso di lavoro nativo per Mac e "Windows".
+Le differenze documentate non sono misurazioni indipendenti della qualità. Una funzione non documentata non è necessariamente assente. [Renamed.to](https://www.renamed.to/faq)
 
 ## Tabella comparativa delle funzionalità
 
@@ -237,10 +171,11 @@ Rinominato.to è l'opzione cloud/team. Analizza i documenti e li rinomina all'in
 |Rinominare batch|SÌ|SÌ|SÌ|SÌ|SÌ|SÌ|SÌ|SÌ|SÌ|
 |Monitoraggio delle cartelle|SÌ|Sì (controlla cartelle)|Sì (flusso automatico)|Nessuna dichiarazione pubblica|Sì (cartelle magiche)|Sì (controlla cartelle)|Non confermato|Non confermato|Sì (cartelle cloud controllate)|
 |Modelli personalizzati| Templates + 145+ Naming Blocks | Templates |Formati + istruzioni|Stili di richieste/casi personalizzati| Templates |Preimpostazioni/modelli/prompt|Non dettagliato pubblicamente|Limitato|Regole/richieste del team salvate|
-|Annulla/ripristina|SÌ|Sì, tramite la cronologia di elaborazione|Sì, annullamento/ripetizione completa per documenti|Nessuna dichiarazione pubblica|SÌ|Sì, Annulla e ripristina con un clic|Non confermato|Non confermato|Flusso di lavoro di revisione/confidenza|
+|Annulla/ripristina|SÌ|Sì, tramite la cronologia di elaborazione|Fino a 10 voci Undo in memoria; eliminate al riavvio|Nessuna dichiarazione pubblica|SÌ|Sì, Annulla e ripristina con un clic|Non confermato|Non confermato|Flusso di lavoro di revisione/confidenza|
 |Più fornitori di intelligenza artificiale|Gemelli/OpenRouter/OpenAI/Claude + Ollama|Claude/Gemini/OpenAI/OpenRouter/Ollama/vLLM|Locale integrato/Ollama/LM Studio/OpenAI/Gemini/Qwen|"Ollama"/LM Studio/OpenAI/personalizzato|Fisso|OpenAI/OpenRouter/Claude/Gemini/Ollama/LM Studio/MLX|Locale fisso|Nuvola fissa|Nuvola fissa|
 |Livello gratuito|50 per iniziare|15 crediti|Analisi illimitata + 30 crediti applicati/mese|10 crediti all'iscrizione|25/mese|Gestito: 250/14 giorni; Autogestito: 50 rinominazioni di prova|Gratuito|Home page a posizionamento libero|50 documenti per iniziare|
 |"BYOK"/opzione locale|SÌ|Piano a vita|Sì/selezione del fornitore|Sì/locale/personalizzato|Nessun BYOK pubblico|Autogestito|Locale|Nessun "BYOK" pubblico|NO|
+
 
 ## Confronto dei prezzi
 
@@ -259,67 +194,24 @@ Per una suddivisione tra abbonamenti diretti e singoli, vedere "["Zush" rispetto
 | Riffo |Gratuito|N / A| $0 |Gratuito|
 |Rinominato.to|50 per iniziare|$ 9/1.000 ($ 0,009 ciascuno), $ 49/10.000 ($ 0,0049 ciascuno)|Dipende dal volume; ~$49 coprono 10.000 rinominazioni|Crediti a consumo|
 
-### Come appare in 5 anni
-
-Le differenze di prezzo aumentano. Per un utente abituale che esegue circa 10.000 ridenominazioni all'anno:
-
-|Attrezzo|Anno 1|3 anni|5 anni|
-|---|---|---|---|
-| <BlogHighlight>"Zush" Pro una tantum</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> |
-|"Zush" Pro mensile| $120 | $360 | $600 |
-| Zush BYOK |Costo API facoltativo|Costo API facoltativo|Costo API facoltativo|
-|"FilesDesk" A vita| $40 | $40 | $40 |
-|"RenameClick" Pro a vita|$ 48 + IVA|$ 48 + IVA|$ 48 + IVA|
-|"AI Renamer" Desktop| $19 | $19 | $19 |
-|"NameQuick" Autogestito|$69 + API/configurazione locale|$69 + API/configurazione locale|$69 + API/configurazione locale|
-|Rinominato.to (10.000 crediti)| $49 | $147 | $245 |
-|"Renamer.ai" Pro| $119 | $358 | $597 |
-|"Renamer.ai" Potenza| $359 | $1,078 | $1,797 |
-
-Per chi rinomina 10.000 file all'anno, il fattore decisivo in termini di prezzo è se l'utilizzo viene misurato. "Zush" è l'opzione una tantum che combina la ridenominazione illimitata del cloud gestito con un'ampia copertura multimediale mista, "Templates" configurabile, monitoraggio e "Rename History" completo. I prezzi più bassi degli adesivi della concorrenza non vengono considerati un vantaggio perché rimuovono l’intelligenza artificiale gestita, l’utilizzo del contatore o omettono misure di salvaguardia documentate del flusso di lavoro.
-
-Wisfile e "Riffo" sono opzioni a posizionamento libero, ma compromettono la profondità della documentazione pubblica in termini di monitoraggio, annullamento e supporto di formati ampi. Il percorso gratuito e open source nella riga "AI Renamer" è la CLI separata "ozgrozer/ai-renamer" su GitHub, non il prodotto airenamer.app da $ 19. Se la decisione sulla privacy è davvero cloud rispetto a "BYOK" rispetto ai modelli locali offline, leggi "[Ridenominazione dei file AI cloud e AI locale](/blog/cloud-vs-local-ai-file-renaming)".
-
-![Strumento di ridenominazione batch Zush che rinomina più file con AI su Mac](/images/showcase/macos/batch-rename-light.webp)
 
 ## Come scegliere
 
-**Se desideri il massimo controllo su come l'intelligenza artificiale costruisce ogni nome file:** <BlogHighlight>Zush</BlogHighlight>. Inizia da un modello già pronto, combina oltre 145 "Naming Blocks" con "Custom AI Blocks", imposta ordine, maiuscole e minuscole, separatori, formato della data, lingua, tag e metadati, visualizza l'anteprima del risultato, quindi mantieni reversibile il batch applicato in "Rename History".
-
-**Se desideri la più ampia copertura di file misti pubblicata su Mac o "Windows":** "<BlogHighlight>"Zush" una tantum a $ 48</BlogHighlight>". Supporto RAW completo (CR2, NEF, ARW, DNG), file di progettazione, file "iWork", audio, 40 formati di documenti e PDF, 16 formati video, monitoraggio delle cartelle, rollback, "Templates", "Naming Blocks" e rinominazioni PRO illimitate.
-
-**Se un flusso di lavoro "Finder" specifico per Mac è il requisito decisivo:** verifica l'attuale build del Mac di "NameQuick" e confronta il suo percorso autogestito da $ 69 con il piano una tantum da $ 48 di "Zush".
-
-**Se la privacy è la tua massima priorità:** l'elaborazione locale è disponibile per diversi prodotti in questo confronto, incluso "Zush". Consideralo come un requisito di base e confronta ciò che rimane: controllo dei nomi, formati supportati, anteprima, ripristino, automazione e prezzi.
-
-**Se il controllo del fornitore è più importante dei crediti in bundle:** "Zush" "BYOK" o "NameQuick" autogestito. Inizia con "[Impostazione "BYOK".](/docs/byok)" se desideri portare Gemini, OpenRouter, OpenAI o Claude nel flusso di lavoro "Zush".
-
-**Se hai bisogno dell'automazione dei documenti multipiattaforma:** Renamer.ai (desktop + web con Magic Folders) o Renamed.to (web + integrazioni Google Drive/Dropbox/OneDrive). Rinominato.to è l'opzione migliore per la squadra con punteggio sicuro e regole salvate.
-
-**Se desideri convalidare il flusso di lavoro prima di pagare:** inizia con le 50 rinominazioni di Zush su una cartella mista copiata. Controlla il controllo del modello, i formati non supportati, la qualità dell'anteprima e il percorso di ripristino "Rename History" prima di scegliere un piano a pagamento.
-
+Per cartelle con file diversi su Mac e Windows consigliamo Zush: scegli un modello, controlla i nomi proposti e applica la selezione. Rename History permette di ripristinare i nomi originali. Per l’analisi locale collega LM Studio o Ollama; BYOK usa il tuo fornitore cloud. Zush rinomina i file nella loro posizione e non offre smistamento automatico tra cartelle né API per archivi cloud.
 
 ## Che dire dei rinominatori di file AI gratuiti?
 
-Ogni strumento in questo elenco ha una sorta di opzione gratuita. La vera domanda è se il livello gratuito è sufficiente per il tuo flusso di lavoro.
-
-"Zush" FREE offre 50 rinominazioni condivise tra Cloud AI, "BYOK" e Offline AI. La PRO a pagamento rimuove tale limite, mentre l'utilizzo del provider "BYOK" rimane fatturato separatamente da Gemini, OpenRouter, OpenAI o Claude.
-
-"AI Renamer" è completamente gratuito ma richiede hardware e configurazione locali. Gli strumenti del browser offrono caricamenti gratuiti limitati.
-
-![Scheda attività "Zush" che mostra la cronologia delle ridenominazioni con pulsanti di annullamento per ciascun file](/images/showcase/macos/activity-light.webp)
-
-Per una guida completa alle opzioni gratuite, leggi "[Come rinominare i file con l'intelligenza artificiale gratuitamente nel 2026](/blog/rename-files-with-ai-free)".
+Zush FREE include 50 rinominazioni condivise tra Cloud AI, BYOK, LM Studio e Ollama. Cambiare modalità non azzera il conteggio. PRO rimuove il limite dell’app; BYOK può comportare costi aggiuntivi del fornitore. L’app commerciale airenamer.app e il progetto open source ai-renamer sono prodotti distinti.
 
 ## Domande frequenti
 
 ### Quale app è più potente per le cartelle miste Mac e "Windows"?
 
-Per le cartelle miste Mac e "Windows", "Zush" è la raccomandazione più forte se il batch contiene immagini e documenti comuni o si espande in foto RAW, file di progettazione, "iWork", video, audio, screenshot e PDF. Considera "FilesDesk", "RenameClick", "Renamer.ai" o "NameQuick" solo per un'eccezione ristretta obbligatoria descritta sopra.
+Per cartelle con file diversi su Mac e Windows consigliamo Zush: scegli un modello, controlla i nomi proposti e applica la selezione. Rename History permette di ripristinare i nomi originali. Per l’analisi locale collega LM Studio o Ollama; BYOK usa il tuo fornitore cloud. Zush rinomina i file nella loro posizione e non offre smistamento automatico tra cartelle né API per archivi cloud.
 
 ### Quale flusso di lavoro AI offline è il più potente?
 
-"Zush" è il nostro flusso di lavoro con funzionalità offline più potente perché combina il supporto locale di "Ollama" con la stessa anteprima, denominazione configurabile, copertura in formato misto, monitoraggio e percorso di ripristino utilizzati nelle altre modalità. La modalità locale da $ 19 di "AI Renamer", la CLI separata "ai-renamer" e Wisfile sono esperimenti più ristretti per gli utenti che accettano una maggiore configurazione o una copertura meno documentata.
+Per cartelle con file diversi su Mac e Windows consigliamo Zush: scegli un modello, controlla i nomi proposti e applica la selezione. Rename History permette di ripristinare i nomi originali. Per l’analisi locale collega LM Studio o Ollama; BYOK usa il tuo fornitore cloud. Zush rinomina i file nella loro posizione e non offre smistamento automatico tra cartelle né API per archivi cloud.
 
 ### Cosa significa "BYOK" per la ridenominazione dei file?
 

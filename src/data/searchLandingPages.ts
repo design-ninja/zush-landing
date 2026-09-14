@@ -257,29 +257,44 @@ const batchRenameFaq = [
 
 const offlineRenameFaq = [
   {
-    question: 'What is an offline AI file renamer?',
+    question: 'How can I rename files with AI offline?',
     answer:
-      'An offline AI file renamer uses a model on your computer without sending supported analysis to a cloud provider. Zush offers LM Studio and Ollama on Mac and Windows; each works offline after setup.',
+      'Use Zush with LM Studio or Ollama on Mac or Windows. Download a compatible vision model, start its local server, select that mode in Zush AI Modes, and test the connection. Add a small batch, review suggested names, and apply the selected changes with Rename History available.',
   },
   {
-    question: 'Can Zush rename files locally with Ollama?',
+    question: 'What do I need to download before going offline?',
     answer:
-      'Yes. Install Ollama, download a compatible model, select Ollama in Zush AI Modes, and review the generated filenames before applying the batch.',
+      'Install Zush and LM Studio or Ollama, then download a compatible vision-capable model while online. Check the model requirements for memory and disk space. Load the model and test your actual file types before relying on the setup without internet.',
   },
   {
-    question: 'What is the difference between offline AI and BYOK?',
+    question: 'How do I connect Zush to LM Studio or Ollama?',
     answer:
-      'LM Studio and Ollama keep supported analysis on your device and can work without internet after setup. BYOK uses your cloud provider key from Gemini, OpenRouter, OpenAI, or Claude.',
+      'Start the model server and open Zush Settings → AI Modes. For LM Studio, the default host is http://127.0.0.1:1234; for Ollama it is http://127.0.0.1:11434. Select an installed vision-capable model and run Test. Keep the endpoint on your own computer for on-device analysis.',
   },
   {
-    question: 'Does offline AI renaming work for every file type?',
+    question: 'Is BYOK an offline AI mode?',
     answer:
-      'Offline model quality depends on the model and file type. It works best for visual and preview-based analysis such as screenshots, photos, PDFs, and visible document previews. For the highest naming quality across complex mixed folders, Cloud or BYOK mode may still produce better results.',
+      'No. BYOK sends analysis to your selected cloud provider using your own key. LM Studio and Ollama use the model server you configure; the default loopback endpoints keep supported analysis on your computer. A remote server URL is not on-device processing.',
+  },
+  {
+    question: 'Is offline AI file renaming free in Zush?',
+    answer:
+      'Zush FREE includes 50 renames shared across Cloud AI, BYOK, LM Studio, and Ollama. Switching to a local mode does not reset or remove that limit. PRO removes the app limit; local models use your own hardware.',
+  },
+  {
+    question: 'Does offline AI work equally well for every file type?',
+    answer:
+      'No. Results and speed depend on the model, available memory, file type, and the content Zush can provide for analysis. Use a vision-capable model for screenshots, scans, and document previews. Verify a small sample of each file type; support in the app does not guarantee identical results across AI modes.',
+  },
+  {
+    question: 'What if the local model is unavailable?',
+    answer:
+      'Start the local server, load the downloaded vision model, refresh the model list, and run Test again. Zush does not silently switch to cloud analysis while a local mode is selected. Downloads and updates still require internet; local analysis is not a claim that every app service is permanently offline.',
   },
   {
     question: 'Can I undo offline AI renames?',
     answer:
-      'Yes. Zush keeps rename history, so offline-generated names can be reviewed before applying and reverted afterward if a batch needs another pass.',
+      'Yes. Review suggested names before applying a batch, then use Rename History to inspect original and new filenames and revert an applied batch. Test the recovery workflow on copied files before enabling folder monitoring.',
   },
 ];
 
@@ -645,12 +660,12 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     }),
   },
   'offline-ai-file-renamer': {
-    h1: 'Offline AI File Renamer',
+    h1: 'Offline AI File Renamer with Zush',
     h1Accent: 'Offline AI',
     category: 'general',
     definitionTitle: 'What Is an Offline AI File Renamer?',
     definitionText:
-      'An offline AI file renamer analyzes files with a model on your computer instead of a cloud provider. Zush offers LM Studio and Ollama on Mac and Windows, with preview, folder monitoring, templates, Naming Blocks, and undo history in the same workflow.',
+      'Rename files offline on Mac or Windows with Zush and a local LM Studio or Ollama model. Download and test a vision-capable model first, then preview content-based filenames, apply the batch, and use Rename History to undo changes. Start with 50 free renames shared across all four AI modes.',
     showcaseSlides: sharedSlides,
     faqItems: offlineRenameFaq,
     relatedPages: [
@@ -672,8 +687,8 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
         name: 'Rename files offline with Zush Local AI',
         description: 'Use Zush as an offline AI file renamer for private local file naming on Mac and Windows.',
         steps: [
-          { name: 'Choose a local mode', text: 'Open Zush AI Modes and choose LM Studio or Ollama.' },
-          { name: 'Configure the model', text: 'Connect a compatible vision model running in LM Studio or Ollama.' },
+          { name: 'Prepare a local model', text: 'Install LM Studio or Ollama and download a compatible vision-capable model while online. Check its memory and disk requirements.' },
+          { name: 'Connect and test', text: 'Start the local model server. Choose LM Studio or Ollama in Zush AI Modes, select the installed model on a local endpoint, and run Test.' },
           { name: 'Review and apply names', text: 'Drop files or folders into Zush, review local AI filename suggestions, and apply the batch with undo history available.' },
         ],
       },
@@ -684,7 +699,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
           'Offline AI file renamer for Mac and Windows with LM Studio or Ollama, plus preview, folder monitoring, templates, Naming Blocks, and undo history.',
         featureList: [
           'Offline AI file renaming with LM Studio or Ollama',
-          'Two local options that work offline after LM Studio or Ollama setup',
+          'Vision-capable local model setup and connection testing',
           'BYOK support for Gemini, OpenRouter, OpenAI, and Claude',
           'Preview every filename before applying changes',
           'Folder monitoring for automatic rename workflows',

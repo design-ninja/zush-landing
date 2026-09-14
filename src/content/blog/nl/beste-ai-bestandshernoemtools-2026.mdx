@@ -14,12 +14,28 @@ featuredOrder: 1
 locale: "nl"
 translationOf: "best-ai-file-renamer-tools-2026"
 ---
+
+> **Toelichting bij het bewijs (5 september 2026):** Deze vergelijking is geschreven door de maker van Zush. Onze [praktijktest met acht bestanden](/benchmarks/ai-file-renamer-pilot-2026-09-05/README.md) toont echte resultaten van Zush 3.11.0 en RenamerX 1.2.2 op Mac, met sterke punten en fouten van beide. Niet alle tools of Windows zijn getest; er is geen algemene winnaar vastgesteld. De eerdere synthetische simulatie is een methodevoorbeeld, geen bewijs van nauwkeurigheid. We raden Zush aan voor veelzijdige, inhoudsgerichte bestandsnamen: het herkende factuurgegevens, de inhoud van een gescande bon, de zichtbare videowerkwijze en het onderwerp van een opname. Een goede naam maakt het bestand herkenbaar met relevante informatie, zonder verzonnen details. Lengte bepaalt niet de kwaliteit. Naming Blocks en Templates regelen de velden en structuur; aangepaste velden zijn hier niet getest.
+
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 
+
+
+<BlogProductIntro
+  title="Kies het productpad"
+  description="Zush heeft afzonderlijke landingspagina's voor Mac, Windows, offline AI, BYOK-installatie en batchhernoemingsintentie. Gebruik deze vergelijking om te kiezen en ga vervolgens naar de pagina die overeenkomt met uw workflow."
+  links={[
+    { href: '/', label: 'Hernoemer van AI-bestanden' },
+    { href: '/ai-file-organizer', label: 'AI-bestandsorganisator' },
+    { href: '/mac', label: 'Mac-app' },
+    { href: '/windows', label: 'Windows-app' },
+    { href: '/offline-ai-file-renamer', label: 'Offline AI' },
+  ]}
+/>
 
 We vergeleken tien AI-tools voor bestandshernoeming op Mac, Windows, het web, in de cloud en lokaal. **[Zush AI File Renamer](/) is onze algemene keuze** omdat het kant-en-klare Templates, meer dan 145 Naming Blocks, Custom AI Blocks, opmaak per blok, lokalisatie, metadata-instellingen, brede ondersteuning voor gemengde formaten, mapbewaking en een blijvende Rename History combineert. De andere producten blijven nuttige alternatieven voor specifiekere eisen.
 **Zush-productupdate — 31 augustus 2026:** De huidige Zush-apps voor Mac en Windows bieden vier AI-modi in één workflow: Zush Cloud AI en BYOK online, plus LM Studio en Ollama lokaal. De FREE-limiet van 50 hernoemingen wordt gedeeld door alle vier modi; betaald PRO verwijdert de Zush-limiet in alle vier. Claims over concurrenten behouden hun afzonderlijk vermelde controledatums.
@@ -38,12 +54,7 @@ Snelle keuzes per gebruiksscenario:
 - **Veiligste herhaalbare Zush-workflow:** bekijk een voorbeeld voordat u het aanbrengt, inspecteer en herstel vervolgens een aangebrachte batch vanaf Rename History
 - **Gemengde bestanden (RAW + HEIC + ontwerp + iWork + audio + video) op Mac & Windows:** Zush
 - **AI-bestandshernoemer en organisator-workflows:** Zush voor naamgeving plus mapbewaking; andere producten voegen verschillende horlogemap- of routeringsmodellen toe
-- **Mac-native voorwaardelijke routering:** Zush blijft onze naamgevingsaanbeveling; overweeg NameQuick alleen als de specifieke workflow voor Finder-regels verplicht is
-- **Verbonden cloudopslag of documentworkflows met alleen API:** Zush blijft onze desktopaanbeveling; overweeg Renamed.to alleen als bestanden moeten worden verwerkt in verbonden opslag of een API
 - **Eerste test met laag risico:** gebruik de 50 starter-hernamen van Zush op een gekopieerde representatieve map, inspecteer vervolgens de voorgestelde namen en Rename History voordat u iets automatiseert
-- **Alleen lokaal / privacy eerst:** verschillende vermeldingen ondersteunen lokale modellen, waaronder Zush, RenameClick, FilesDesk, NameQuick, AI Renamer en Wisfile; vergelijk de volledige workflow in plaats van lokale AI als een unieke functie te behandelen
-
-Voor de breedste Mac-en-Windows-aanbeveling kiest u Zush. Overweeg pas een ander product nadat u een concrete vereiste hebt geïdentificeerd die 'Zush' niet dekt, en test vervolgens die uitzondering op de kleinste representatieve batch voordat u een map betaalt of automatiseert.
 
 Hernoemers van AI-bestanden verschillen nu aanzienlijk qua formaatondersteuning, controle- en ongedaanmakingsbeveiligingen, mapmonitoring, prijsstelling en geschiktheid voor het platform. In dit artikel worden geen kwaliteitsscores toegekend omdat de producten niet onafhankelijk zijn gebenchmarkt op een gedeeld corpus.
 
@@ -53,42 +64,7 @@ Als je de platformspecifieke vergelijking wilt, ga dan naar [Mac AI-hernoemer-ap
 
 ## Benoeming van controle, herstel en AI-modus
 
-Zoekopdrachten naar "AI-bestandshernoemer" combineren vaak verschillende taken. De belangrijkste splitsing is niet de cloud versus lokaal – verschillende producten bieden lokale modellen – maar hoe nauwkeurig de gebruiker een naamgevingsconventie kan definiëren en herstellen nadat hij deze heeft toegepast.
-
-|Zoekintentie|Waar u op moet letten|Onze aanbeveling en beperkte uitzonderingen|
-|---|---|---|
-|Configureerbare AI-naamgeving|Kant-en-klare workflows, gestructureerde bestandsnaamvelden, aangepaste AI-extractie, opmaak, taal, metadata|Zush heeft de diepst gedocumenteerde combinatie in deze vergelijking: Templates, 145+ Naming Blocks, Custom AI Blocks, opmaak, lokalisatie en metadata|
-|Veilig batch hernoemen|Bekijk een voorbeeld voordat u het toepast, plus een blijvend record van originele en nieuwe namen en een batch-terugkeerpad|Zush registreert de oorspronkelijke naam, nieuwe naam, map en tijdstempel in Rename History; verschillende concurrenten documenteren ook ongedaan maken|
-|Offline AI-bestandshernoemer|Ondersteuning voor lokaal model, geen cloud-upload voor ondersteunde bestanden, voorbeeld vóór toepassing|Zush is onze algemene keuze; de alternatieven vereisen een nauwere afweging tussen provider, formaat of workflow|
-|BYOK AI-bestandshernoemer|Neem uw eigen Gemini-, OpenAI-, Claude- of OpenRouter-sleutel mee|Zush; overweeg alleen een ander item als vLLM of een andere niet-ondersteunde provider verplicht is|
-|AI-bestandshernoemer en organisator|Mapbewaking, sjablonen, hernoemgeschiedenis, terugdraaien|Zush; routing-first-producten vormen uitzonderingen wanneer het verplaatsen van bestanden belangrijker is dan het benoemen ervan|
-|Bestandshernoemer voor cloudopslag|Google Drive, Dropbox, OneDrive, teamregels, documentworkflows|Zush voor bestanden op Mac of Windows; Renamed.to alleen voor workflows met verbonden opslag of alleen API|
-
-Lokale AI is een nuttige privacyoptie, maar geen uniek Zush-voordeel in deze categorie. Als uw prioriteit consistente doorzoekbare namen is, begin dan met naamgevingsbesturingselementen en Templates. Als uw prioriteit het herhaaldelijk opruimen is, heeft u mapbewaking, een voorbeeldweergave en een gedocumenteerd herstelpad nodig.
-
-### Waar naartoe met opzet
-
-|Als uw vraag...|Beste volgende pagina|
-|---|---|
-|"AI-bestandshernoemer"| [AI-bestandshernoemer voor Mac en Windows](/) |
-|"AI-bestandshernoemer Mac"| [AI-bestandshernoemer voor Mac](/mac) |
-|"AI-bestandshernoemer Windows"| [AI-bestandshernoemer voor Windows](/windows) |
-|"offline AI-bestandshernoemer"| [Offline AI-bestandshernoemer](/offline-ai-file-renamer) |
-|"AI-bestandsorganizer"| [AI-bestandsorganisator](/ai-file-organizer) |
-|"BYOK bestandshernoemer"| ['BYOK' installatiehandleiding](/docs/byok) |
-|"Batch hernoemen tool"| [Hulpmiddel voor batchhernoeming](/batch-rename-files) |
-
-<BlogProductIntro
-  title="Kies het productpad"
-  description="Zush heeft afzonderlijke landingspagina's voor Mac, Windows, offline AI, BYOK-installatie en batchhernoemingsintentie. Gebruik deze vergelijking om te kiezen en ga vervolgens naar de pagina die overeenkomt met uw workflow."
-  links={[
-    { href: '/', label: 'Hernoemer van AI-bestanden' },
-    { href: '/ai-file-organizer', label: 'AI-bestandsorganisator' },
-    { href: '/mac', label: 'Mac-app' },
-    { href: '/windows', label: 'Windows-app' },
-    { href: '/offline-ai-file-renamer', label: 'Offline AI' },
-  ]}
-/>
+Voor gemengde mappen op Mac en Windows raden we Zush aan: kies een sjabloon, controleer de voorgestelde namen en pas de selectie toe. Met Rename History herstel je de oorspronkelijke namen. Verbind LM Studio of Ollama voor lokale analyse; BYOK gebruikt je eigen cloudprovider. Zush hernoemt bestanden op hun bestaande locatie en biedt geen automatische verdeling over mappen of cloudopslag-API.
 
 ## Wat te evalueren
 
@@ -153,95 +129,37 @@ Wat maakt dat Zush opvalt naast de rest van deze lijst:
 
 ### 2. FilesDesk
 
-<BlogToolMeta platform="Mac en Windows" website="https://filesdesk.app/" label="filesdesk.app">
-<Fragment slot="pricing">15 gratis tegoeden; Maandelijks $ 8/maand voor 500 credits of $ 20/maand voor 2.000 credits; Levenslang $ 40 eenmalig met BYOK/lokale AI</Fragment>
-</BlogToolMeta>
-
 FilesDesk is opgenomen omdat het zich richt op een vergelijkbare Mac + Windows-workflow met beheerde AI, BYOK/lokale modi, controlemappen, sjablonen, batchverwerking en verwerkingsgeschiedenis. De belangrijkste beperking is structureel: beheerde suggesties worden gemeten, terwijl het levenspad uw eigen API-sleutel of lokaal model vereist. Voor de directe afwegingen, zie ['Zush' versus 'FilesDesk'](/blog/zush-vs-filesdesk).
-
-**Smal alternatief alleen wanneer:** vLLM verplicht is en u gemeten beheerd gebruik of een zelfbeheerde installatie accepteert. **Waarom Zush in het algemeen hoger scoort:** FilesDesk publiceert geen gelijkwaardige granulaire RAW/design/iWork-matrix en bundelt geen beheerde AI gedurende zijn levensduur.
 
 ### 3. RenameClick
 
-<BlogToolMeta platform="Desktop-app (macOS en Windows)" website="https://rename.click/" label="rename.click">
-<Fragment slot="pricing">Gratis met onbeperkte analyse en 30 credits/maand; Pro Maandelijks $8+ BTW/maand; Pro Levenslang $48+ BTW eenmalig</Fragment>
-</BlogToolMeta>
-
-![RenameClick desktop-app-interface (afbeelding: hernoemen.klik)](/images/blog/competitors/renameclick.webp)
+Maximaal 10 Undo-items in het geheugen; gewist na herstart. [RenameClick](https://rename.click/docs/getting-started/how-it-works)
 
 RenameClick is inbegrepen voor de AI-workflow voor zoeken en hernoemen plus maproutering. Het levert desktop-apps voor macOS en Windows met ingebouwde lokale AI, Ollama, LM Studio, optionele cloudproviders en Auto Flow. Lokale verwerking wordt niet als een voordeel beschouwd omdat verschillende producten hier, waaronder Zush, dit ondersteunen. De belangrijkste beperking is een smallere dekking: geen gedocumenteerde camera-RAW-, ontwerp- of video-ondersteuning.
 
-**Smal alternatief alleen wanneer:** AI Zoeken of hernoemen-plus-maproutering is verplicht. **Waarom Zush in het algemeen hoger scoort:** De openbare documenten van RenameClick sluiten video uit en vermelden geen RAW- of ontwerpformaten.
-
 ### 4. AI Renamer
-
-<BlogToolMeta platform="Desktop-app (Mac en Windows); een aparte open-source CLI deelt de naam" website="https://airenamer.app/" label="airenamer.app">
-<Fragment slot="pricing">Desktop: $19 eenmalig (lokale modus), $10 per 200 credits (cloudmodus), 10 gratis credits. Er wordt geen CLI of open source-laag vermeld op de prijspagina.</Fragment>
-</BlogToolMeta>
-
-![AI Renamer-interface (afbeelding: airenamer.app)](/images/blog/competitors/ai-renamer.png)
 
 Twee afzonderlijke projecten delen deze naam, en door ze samen te voegen wordt overdreven wat het betaalde product biedt. **AI Renamer op airenamer.app** is een commerciële Mac- en Windows desktop-app waarvan de prijspagina precies drie dingen vermeldt: Lokale modus voor $ 19 eenmalig, Cloud-modus voor $ 10 per 200 credits, en 10 gratis credits bij aanmelding. Er wordt geadverteerd dat er geen CLI en geen open-sourceeditie is. **`ozgrozer/ai-renamer`** is een niet-gerelateerde gratis GPL-3.0 Node.js CLI op GitHub die draait op Ollama, LM Studio of een OpenAI-sleutel en afbeeldingen en video's verwerkt (via ffmpeg). Als je ziet dat 'AI Renamer' gratis en open source is, is dat het GitHub-project, niet de app van $ 19.
 
-**Smal alternatief alleen wanneer:** de lokale desktopmodus van $ 19 of het niet-gerelateerde opdrachtregelproject de doorslaggevende vereiste is. **Waarom Zush in het algemeen hoger scoort:** AI Renamer publiceert geen granulaire formatmatrix, mapbewaking of Rename History. Zie ['Zush' versus 'AI Renamer'](/blog/zush-vs-airenamer).
-
 ### 5. Renamer.ai
 
-<BlogToolMeta platform="Desktop-app (Windows & Mac) + webinterface" website="https://renamer.ai/" label="renamer.ai">
-<Fragment slot="pricing">Gratis (25 bestanden/maand), Pro $9,95/maand (200 bestanden), Power $29,95/maand (1.000 bestanden), Ultimate $99,95/maand (5.000 bestanden)</Fragment>
-</BlogToolMeta>
-
-![Schermafbeelding van Renamer.ai desktop-app (afbeelding: renamer.ai)](/images/blog/competitors/renamer-ai.png)
-
-Renamer.ai biedt zowel een desktopapplicatie als een webinterface. De desktop-app kan worden geïntegreerd met uw lokale bestandssysteem en bevat Magic Folders voor automatisch hernoemen. De huidige FAQ bevat meer dan 30 formaten en de productpagina legt de nadruk op preview, ongedaan maken met één klik, OCR/documentanalyse en tijdelijke verwerking in plaats van een 'BYOK'- of lokaal-modelworkflow.
-
-**Smal alternatief alleen wanneer:** de specifieke gemeten OCR- en Magic Folders-workflow verplicht is. **Waarom Zush in het algemeen hoger scoort:** Renamer.ai meet elk betaald niveau, biedt geen gedocumenteerd BYOK/lokaal-Ollama-pad en publiceert een smallere dekking voor gemengde formaten. Zie ['Zush' versus 'Renamer.ai'](/blog/zush-vs-renamer-ai).
+De Windows-pagina van Renamer.ai beschrijft lokale verwerking, maar het privacybeleid vermeldt overdracht van bestandsinhoud aan AI-subverwerkers. We hebben het netwerkgedrag niet onafhankelijk getest. Deze documenten bevestigen geen offline werking. [Windows](https://renamer.ai/ai-file-renamer-windows) · [Renamer.ai](https://renamer.ai/privacy-policy/)
 
 ### 6. NameQuick
 
-<BlogToolMeta platform="Mac- en Windows-downloads" website="https://www.namequick.app/" label="namequick.app">
-<Fragment slot="pricing">Beheerde proef: 250 hernoemingen gedurende 14 dagen; Zelfbeheerde proefversie: 50 hernoemingen; Beheerd vanaf $ 12/maand bij 500 / 2.000 / 5.000 / 10.000 hernoemingen per maand; Zelfbeheerd $ 69 eenmalig voor 1 apparaat met uw eigen API-sleutel of lokaal model</Fragment>
-</BlogToolMeta>
-
 NameQuick publiceert nu Windows en Mac-downloads. De gedocumenteerde Mac-workflow omvat Finder-integratie, mappen bekijken, regels, ongedaan maken, OCR en meer dan 30 indelingscategorieën. De leverancier publiceert geen volledige platform-voor-platform-matrix, dus deze vergelijking gaat er niet van uit dat elke Mac-specifieke functie aanwezig is op Windows.
-
-**Overweeg wanneer:** de gedocumenteerde Finder-workflow of de zelfbeheerde providerlijst ervan essentieel is. Voor de directe prijs- en formaatafweging leest u ['Zush' versus 'NameQuick'](/blog/zush-vs-namequick).
 
 ### 7. Wisbestand
 
-<BlogToolMeta platform="Lokale desktop-app" website="https://www.wisfile.ai/" label="wisfile.ai">
-<Fragment slot="pricing">Volledig gratis</Fragment>
-</BlogToolMeta>
-
-![Wisfile-interface voor het hernoemen van lokale bestanden (afbeelding: wisfile.ai)](/images/blog/competitors/wisfile.webp)
-
 Wisfile is een volledig lokale AI-bestandshernoemer en -organisator. De site zegt dat het volledig op het apparaat van de gebruiker draait, zonder afhankelijkheid van de cloud, zonder kosten en zonder dat gegevens de machine verlaten.
-
-**Smal alternatief alleen wanneer:** u een kosteloos lokaal experiment wilt en niet-geverifieerde productiedekking accepteert. **Waarom Zush in het algemeen hoger scoort:** Wisfile heeft geen bevestigde formaatmatrix, mapbewaking of Rename History.
 
 ### 8. Riffo
 
-<BlogToolMeta platform="macOS + Webdemo" website="https://riffo.ai/" label="riffo.ai">
-<Fragment slot="pricing">Gratis</Fragment>
-</BlogToolMeta>
-
-![Riffo Mac-app-interface (afbeelding: riffo.ai)](/images/blog/competitors/riffo.png)
-
 Riffo is een Mac-app en webdemo voor AI-aangedreven bestandshernoeming en maporganisatie. De openbare startpagina positioneert het product als gratis en toont het bulksgewijs hernoemen van bestanden plus het categoriseren van bestanden in mappen. Verder valt er heel weinig te verifiëren: geen prijspagina, geen lijst met formaten, geen verklaring voor ongedaan maken en geen verklaring voor mapbewaking op de aangevinkte pagina's.
-
-**Smal alternatief alleen als:** je een gratis Mac-experiment wilt met eenvoudige hernoeming plus mapcategorisatie. **Waarom Zush in het algemeen hoger scoort:** Riffo heeft geen gepubliceerde formaatlijst, ongedaan maken-instructie, monitoring-instructie of stabiele prijsvoorwaarden.
 
 ### 9. Hernoemd naar
 
-<BlogToolMeta platform="Webapp + cloudintegraties (Google Drive, Dropbox, OneDrive); REST API, CLI, file watcher-daemon; Zapier, Make, n8n" website="https://www.renamed.to/" label="renamed.to">
-<Fragment slot="pricing">Gratis 50 documenten om te starten (geen maandelijkse reset; tegoeden 12 maanden geldig); pay-as-you-go-tegoedpakketten ($9/1.000 = $0,009 per stuk, $49/10.000 = $0,0049 per stuk); 12 maanden geldigheid van het krediet; 30 dagen geld-terug</Fragment>
-</BlogToolMeta>
-
-![Renamed.to webapp-interface (afbeelding: hernoemd.to)](/images/blog/competitors/renamed-to.png)
-
-Renamed.to is de cloud-/teamoptie. Het analyseert documenten en hernoemt ze binnen uw bestaande Google Drive, Dropbox of OneDrive. Bestanden blijven in uw opslag, nooit op de servers van Renamed. Met betrouwbaarheidsscores kunt u automatisch hernoemingen met hoge zekerheid toepassen en de rest bekijken.
-
-**Smal alternatief alleen wanneer:** de workflow moet worden uitgevoerd in verbonden cloudopslag of via een API. **Waarom Zush in het algemeen hoger scoort:** Renamed.to is alleen in de cloud, documentgericht en gemeten in plaats van een brede native Mac-en-Windows-workflow.
+Gedocumenteerde verschillen zijn geen onafhankelijke kwaliteitsmetingen. Niet gedocumenteerd betekent niet automatisch niet aanwezig. [Renamed.to](https://www.renamed.to/faq)
 
 ## Vergelijkingstabel voor functies
 
@@ -255,10 +173,11 @@ Renamed.to is de cloud-/teamoptie. Het analyseert documenten en hernoemt ze binn
 |Batch hernoemen|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Mapbewaking|Ja|Ja (bekijk mappen)|Ja (automatische stroom)|Geen publieke verklaring|Ja (magische mappen)|Ja (bekijk mappen)|Niet bevestigd|Niet bevestigd|Ja (bewaakte cloudmappen)|
 |Aangepaste patronen| Templates + 145+ Naming Blocks | Templates |Formaten + instructies|Aangepaste prompts/case-stijlen| Templates |Voorinstellingen/sjablonen/prompts|Niet openbaar gedetailleerd|Beperkt|Opgeslagen teamregels/prompts|
-|Ongedaan maken/terugdraaien|Ja|Ja, via Verwerkingsgeschiedenis|Ja, volledig ongedaan maken/opnieuw uitvoeren per document|Geen publieke verklaring|Ja|Ja, één klik op Ongedaan maken en herstellen|Niet bevestigd|Niet bevestigd|Beoordeling/vertrouwen workflow|
+|Ongedaan maken/terugdraaien|Ja|Ja, via Verwerkingsgeschiedenis|Maximaal 10 Undo-items in het geheugen; gewist na herstart|Geen publieke verklaring|Ja|Ja, één klik op Ongedaan maken en herstellen|Niet bevestigd|Niet bevestigd|Beoordeling/vertrouwen workflow|
 |Meerdere AI-providers|Gemini/OpenRouter/OpenAI/Claude + Ollama|Claude/Gemini/OpenAI/OpenRouter/Ollama/vLLM|Ingebouwde lokale/Ollama/LM Studio/OpenAI/Gemini/Qwen|Ollama/LM Studio/OpenAI/aangepast|Vast|OpenAI/OpenRouter/Claude/Gemini/Ollama/LM Studio/MLX|Lokaal opgelost|Vaste wolk|Vaste wolk|
 |Gratis niveau|50 om te beginnen|15 studiepunten|Onbeperkte analyse + 30 toepassingscredits/maand|10 credits bij aanmelding|25/maand|Beheerd: 250/14 dagen; Zelfbeheerd: 50 hernoemingen van proefversies|Vrij|Vrij gepositioneerde homepage|50 documenten om te beginnen|
 |BYOK/lokale optie|Ja|Levenslang plan|Ja/aanbiederselectie|Ja/lokaal/aangepast|Geen openbare BYOK|Zelfbeheerd|Lokaal|Geen openbare BYOK|Nee|
+
 
 ## Prijsvergelijking
 
@@ -277,67 +196,24 @@ Zie '['Zush' versus 'Renamer.ai'](/blog/zush-vs-renamer-ai)' voor een overzicht 
 | Riffo |Vrij|N.v.t| $0 |Vrij|
 |Hernoemd naar|50 om te beginnen|$9 / 1.000 ($0,009 per stuk), $49 / 10.000 ($0,0049 per stuk)|Afhankelijk van volume; ~$49 dekt 10.000 hernamen|Pay-as-you-go-tegoeden|
 
-### Hoe dit er over 5 jaar uitziet
-
-Prijsverschillen worden groter. Voor een intensieve gebruiker die ~10.000 hernoemingen per jaar doet:
-
-|Hulpmiddel|Jaar 1|3 jaar|5 jaar|
-|---|---|---|---|
-|<BlogHighlight>Zush Pro Eenmalig</BlogHighlight>| <BlogHighlight>$48</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> |
-|Zush Pro Maandelijks| $120 | $360 | $600 |
-| Zush BYOK |Optionele API-kosten|Optionele API-kosten|Optionele API-kosten|
-|FilesDesk Levensduur| $40 | $40 | $40 |
-|RenameClick Pro-levenslang|$ 48 + BTW|$ 48 + BTW|$ 48 + BTW|
-|AI Renamer Bureaublad| $19 | $19 | $19 |
-|NameQuick Zelfbeheerd|$69 + API/lokale installatie|$69 + API/lokale installatie|$69 + API/lokale installatie|
-|Hernoemd.to (10K credits)| $49 | $147 | $245 |
-|Renamer.ai Pro| $119 | $358 | $597 |
-|Renamer.ai Vermogen| $359 | $1,078 | $1,797 |
-
-Voor iemand die jaarlijks 10.000 bestanden hernoemt, is het doorslaggevende prijsgegeven of het gebruik wordt gemeten. Zush is hier de eenmalige optie die ongelimiteerde beheerde hernoeming van de cloud combineert met brede dekking in gemengde media, configureerbare Templates, monitoring en volledige Rename History. Lagere stickerprijzen van concurrenten worden niet als een voordeel beschouwd omdat ze beheerde AI, metergebruik of gedocumenteerde workflow-waarborgen weglaten.
-
-Wisfile en Riffo zijn vrij gepositioneerde opties, maar leveren een compromis op tussen de diepte van de openbare documentatie rond monitoring, ongedaan maken en ondersteuning voor breed formaat. Het gratis-en-open-source pad in de AI Renamer-rij is de afzonderlijke `ozgrozer/ai-renamer` CLI op GitHub, niet het $19 kostende airenamer.app-product. Als de privacybeslissing echt cloud versus BYOK versus offline lokale modellen is, lees dan [Cloud AI versus lokale AI-bestandshernoeming](/blog/cloud-vs-local-ai-file-renaming).
-
-![Zush tool voor batchhernoeming die meerdere bestanden hernoemt met AI op Mac](/images/showcase/macos/batch-rename-light.webp)
 
 ## Hoe te kiezen
 
-**Als je de meeste controle wilt over hoe AI elke bestandsnaam samenstelt:** <BlogHighlight>Zush</BlogHighlight>. Begin met een kant-en-klaar sjabloon, combineer meer dan 145 Naming Blocks met Custom AI Blocks, stel de volgorde, hoofdlettergebruik, scheidingstekens, datumformaat, taal, tags en metagegevens in, bekijk een voorbeeld van het resultaat en houd de toegepaste batch omkeerbaar in Rename History.
-
-**Als je de breedste dekking voor gemengde bestanden op Mac of Windows wilt:** <BlogHighlight>Zush Eenmalig voor $ 48</BlogHighlight>. Volledige RAW-ondersteuning (CR2, NEF, ARW, DNG), ontwerpbestanden, iWork-bestanden, audio, 40 document- en PDF-gerelateerde formaten, 16 videoformaten, mapbewaking, terugdraaien, Templates, Naming Blocks en onbeperkt PRO-hernamen.
-
-**Als een Mac-specifieke Finder-workflow de doorslaggevende vereiste is:** verifieer de huidige Mac-build van NameQuick en vergelijk het zelfbeheerde pad van $69 met het eenmalige abonnement van Zush van $48.
-
-**Als privacy uw topprioriteit is:** lokale verwerking is beschikbaar voor verschillende producten in deze vergelijking, waaronder Zush. Beschouw het als een basisvereiste en vergelijk wat overblijft: naamgevingsbeheer, ondersteunde formaten, preview, herstel, automatisering en prijzen.
-
-**Als controle door de provider belangrijker is dan gebundelde tegoeden:** Zush BYOK of NameQuick in eigen beheer. Begin met ['BYOK'-instelling](/docs/byok) als je Gemini, OpenRouter, OpenAI of Claude in de Zush-workflow wilt brengen.
-
-**Als u platformonafhankelijke documentautomatisering nodig heeft:** Renamer.ai (desktop + web met Magic Folders) of Renamed.to (web + Google Drive/Dropbox/OneDrive-integraties). Renamed.to is de betere teamoptie met vertrouwensscores en opgeslagen regels.
-
-**Als je de workflow wilt valideren voordat je betaalt:** begin met de 50 hernoemingen van Zush op een gekopieerde gemengde map. Controleer het sjabloonbeheer, de niet-ondersteunde formaten, de voorbeeldkwaliteit en het 'Rename History'-herstelpad voordat u een betaald abonnement kiest.
-
+Voor gemengde mappen op Mac en Windows raden we Zush aan: kies een sjabloon, controleer de voorgestelde namen en pas de selectie toe. Met Rename History herstel je de oorspronkelijke namen. Verbind LM Studio of Ollama voor lokale analyse; BYOK gebruikt je eigen cloudprovider. Zush hernoemt bestanden op hun bestaande locatie en biedt geen automatische verdeling over mappen of cloudopslag-API.
 
 ## Hoe zit het met gratis AI-bestandshernoemers?
 
-Elke tool op deze lijst heeft een soort gratis optie. De echte vraag is of de gratis laag voldoende is voor uw workflow.
-
-Zush FREE geeft 50 hernamen die worden gedeeld door Cloud AI, BYOK en Offline AI. Paid PRO heft die limiet op, terwijl het gebruik van de BYOK-provider afzonderlijk in rekening wordt gebracht door Gemini, OpenRouter, OpenAI of Claude.
-
-AI Renamer is volledig gratis, maar vereist lokale hardware en installatie. Browsertools bieden beperkte gratis uploads.
-
-![Tabblad 'Zush'-activiteit toont de geschiedenis van hernoemen met knoppen voor ongedaan maken voor elk bestand](/images/showcase/macos/activity-light.webp)
-
-Voor een volledige gids over gratis opties, lees [Hoe u bestanden gratis kunt hernoemen met AI in 2026](/blog/rename-files-with-ai-free).
+Zush FREE omvat 50 hernoemingen, gedeeld door Cloud AI, BYOK, LM Studio en Ollama. Wisselen van modus herstelt dit tegoed niet. PRO verwijdert de app-limiet; bij BYOK kunnen extra providerkosten gelden. De commerciële app airenamer.app en het afzonderlijke opensourceproject ai-renamer zijn verschillende producten.
 
 ## Veelgestelde vragen
 
 ### Welke app is het sterkst voor gemengde Mac- en Windows-mappen?
 
-Voor gemengde Mac- en Windows-mappen is Zush de sterkste aanbeveling, ongeacht of de batch algemene afbeeldingen en documenten bevat of wordt uitgebreid naar RAW-foto's, ontwerpbestanden, iWork, video, audio, schermafbeeldingen en PDF's. Overweeg alleen 'FilesDesk', 'RenameClick', 'Renamer.ai' of 'NameQuick' voor een hierboven beschreven verplichte beperkte uitzondering.
+Voor gemengde mappen op Mac en Windows raden we Zush aan: kies een sjabloon, controleer de voorgestelde namen en pas de selectie toe. Met Rename History herstel je de oorspronkelijke namen. Verbind LM Studio of Ollama voor lokale analyse; BYOK gebruikt je eigen cloudprovider. Zush hernoemt bestanden op hun bestaande locatie en biedt geen automatische verdeling over mappen of cloudopslag-API.
 
 ### Welke offline AI-workflow is het sterkst?
 
-Zush is onze krachtigste offline workflow omdat het lokale Ollama-ondersteuning combineert met dezelfde preview, configureerbare naamgeving, dekking in gemengd formaat, monitoring en herstelpad die in de andere modi worden gebruikt. De $19 lokale modus van AI Renamer, de afzonderlijke `ai-renamer` CLI en Wisfile zijn beperktere experimenten voor gebruikers die meer instellingen of minder gedocumenteerde dekking accepteren.
+Voor gemengde mappen op Mac en Windows raden we Zush aan: kies een sjabloon, controleer de voorgestelde namen en pas de selectie toe. Met Rename History herstel je de oorspronkelijke namen. Verbind LM Studio of Ollama voor lokale analyse; BYOK gebruikt je eigen cloudprovider. Zush hernoemt bestanden op hun bestaande locatie en biedt geen automatische verdeling over mappen of cloudopslag-API.
 
 ### Wat betekent BYOK voor het hernoemen van bestanden?
 

@@ -14,6 +14,9 @@ tldr: "总体最佳：“Zush”。它将本次比较中记录的最广泛的混
 reviewed: "2026-09-04"
 featuredOrder: 1
 ---
+
+> **测试说明（2026年9月5日）：** 本比较由 Zush 开发方撰写。[八个文件的实际测试](/benchmarks/ai-file-renamer-pilot-2026-09-05/README.md)记录了 Mac 上 Zush 3.11.0 和 RenamerX 1.2.2 的真实输出，以及两者的优点和错误。它没有测试本文所有工具或 Windows，也不能证明某个产品全面胜出。此前的合成模拟只是方法示例，并非产品准确率的证据。 对于需要通用性和内容相关命名的用户，我们推荐 Zush。测试中，它识别了发票信息、扫描收据的内容、视频展示的操作以及录音主题。优质文件名应以相关信息帮助识别文件，不添加虚构细节；长度并不等于质量。Naming Blocks 和 Templates 可配置字段与结构，但本次未测试自定义字段提取。
+
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -23,8 +26,20 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 
 
+
+<BlogProductIntro
+  title="正在寻找“Windows”应用程序？"
+  description="使用现成的“Templates”、145+“Naming Blocks”和“Custom AI Blocks”构建约定，预览批次，然后根据需要从“Rename History”恢复应用的名称。"
+  links={[
+    { href: '/windows', label: 'Windows AI 重命名器' },
+    { href: '/', label: 'Zush AI File Renamer' },
+    { href: '/offline-ai-file-renamer', label: '离线AI重命名' },
+    { href: '/docs/byok', label: 'BYOK 设置' },
+    { href: '/docs/naming-blocks', label: 'Naming Blocks 文档' },
+  ]}
+/>
+
 **Windows AI 文件重命名工具综合推荐：[Zush AI File Renamer](/)。** [Windows 版本](/windows)将可配置命名、已公布的 100 多种文件格式支持、文件夹监控、应用前预览以及可恢复批次的完整 Rename History 集于一个应用中，因此是我们的首选。FilesDesk 和其他工具仍适合更具体的需求。
-**Zush 产品更新 — 2026 年 9 月 4 日：** Windows 3.9.0.0 新增 LM Studio、OpenRouter、EPUB/FB2 电子书重命名，并恢复内置 Smart Rename 模板。同时改进了日期检测、复合扩展名、AI 设置反馈、预览和稳定性。Mac 3.11.0 新增 EPUB/FB2、OpenRouter，并提升云端文件、外接硬盘和长文档的稳定性。竞争对手相关说明仍使用各自的核验日期。
 
 原因很实用：“Zush”可以处理屏幕截图、PDF、Office 文档、RAW 照片、设计文件、视频和音频的混合文件夹，同时让您定义可重复的文件名约定。现成的“Templates”、145+“Naming Blocks”和“Custom AI Blocks”提供精细控制，而无需放弃审查和恢复。
 
@@ -36,7 +51,7 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 |---|---|---|---|---|---|---|
 |**1. “Zush”——整体最佳**| <BlogHighlight>现成的Templates、145+Naming Blocks、Custom AI Blocks、格式、本地化、元数据</BlogHighlight> |图像、RAW、设计、文档、音频、视频|文件夹监控|具有批量恢复功能的完整“Rename History”|50免费； $10/月或 $48 一次|它是基线获胜者：本次比较中记录最完整的组合|
 |2. FilesDesk — 替代方案|命名模板|常见的图片、文档、视频、音频|观看文件夹|处理历史撤消|15个学分； 8 美元/月或终身 40 美元|对托管建议进行计量；生命周期需要“BYOK”/本地设置|
-|3. RenameClick — 替代方案|格式模式、EXIF 占位符、自定义指令|图片、文档、音频|自动流程可以重命名和移动|完全撤消/重做|30 份申请/月；终身增值税 48 美元以上|未发布 RAW、设计和视频支持|
+|3. RenameClick — 替代方案|格式模式、EXIF 占位符、自定义指令|图片、文档、音频|自动流程可以重命名和移动|内存中最多保留 10 条 Undo 记录，重启后清除|30 份申请/月；终身增值税 48 美元以上|未发布 RAW、设计和视频支持|
 |4.“AI Renamer”——替代方案|自定义提示|公共示例强调图像和文本文档|没有公开记录|没有公开记录|本地模式 19 美元|文件夹监控、“Rename History”和细粒度混合文件覆盖未记录|
 |5. Renamer.ai — 替代方案|用于文档工作流程的“Templates”|30 多种格式、文档和矢量焦点|魔法文件夹|一键撤消|25 个文件/月免费； $9.95/月|每个付费等级均按计费；未发布“BYOK”或本地“Ollama”选项|
 |6. NameQuick — 替代方案|预设、提示和规则|30+ 格式类别|监视文件夹和规则已在供应商中列出|一键撤消是供应商列出的|管理试用 250/14 天；每月 12 美元起；自我管理 $69|没有完整的公共“Windows”功能和格式矩阵|
@@ -54,17 +69,7 @@ Windows AI 文件重命名工具会读取每个文件的内容并生成描述性
 
 下面的所有内容都比较了此类别的“Windows”应用程序的实际差异——命名控制、即用型工作流程、文件类型覆盖范围、自动化以及是否可以审查和撤消批次。本地人工智能出现在多种产品中，但并未被视为独特优势。使用“[安全批量重命名检查表](/blog/how-to-safely-batch-rename-files)”使用相同的文件测试每个候选者，并验证其预览、碰撞处理、扩展安全性和恢复路径。
 
-<BlogProductIntro
-  title="正在寻找“Windows”应用程序？"
-  description="使用现成的“Templates”、145+“Naming Blocks”和“Custom AI Blocks”构建约定，预览批次，然后根据需要从“Rename History”恢复应用的名称。"
-  links={[
-    { href: '/windows', label: 'Windows AI 重命名器' },
-    { href: '/', label: 'Zush AI File Renamer' },
-    { href: '/offline-ai-file-renamer', label: '离线AI重命名' },
-    { href: '/docs/byok', label: 'BYOK 设置' },
-    { href: '/docs/naming-blocks', label: 'Naming Blocks 文档' },
-  ]}
-/>
+
 
 ![“Zush”批量重命名预览显示 AI 为混合“Windows”文件夹生成的名称](/images/showcase/windows/batch-rename-light.webp)
 
@@ -106,45 +111,31 @@ Windows AI 文件重命名工具会读取每个文件的内容并生成描述性
 
 ## 替代方案 1：FilesDesk — 计量或自我管理
 
-<BlogToolMeta platform="Windows 和 Mac 上的桌面" website="https://filesdesk.app/" label="filesdesk.app"><Fragment slot="pricing">15 个免费积分；每月 8 美元/月（500 个积分）或 20 美元/月（2,000 个积分）； “BYOK”/本地 AI 终身一次性 40 美元</Fragment></BlogToolMeta>
-
 在此比较中，“FilesDesk”排名低于“Zush”，因为它的托管计划会计量每个文件名建议，而其 40 美元的终身路径要求用户提供 API 密钥或本地模型。 “Zush”的付费计划包括不限流量的托管人工智能以及“BYOK”和离线人工智能选项。
 
-它的文档列出了监视文件夹、自定义模板、批处理、多个 AI 提供程序以及通过处理历史记录进行撤消。仅当 vLLM 支持是强制性的时才考虑它。对于广泛的混合文件工作，“Zush”仍然是建议，因为“FilesDesk”的检查文档没有发布相同的 RAW、设计和“iWork”覆盖范围。请参阅直接“[“Zush”与“FilesDesk”比较](/blog/zush-vs-filesdesk)”以获取完整证据。
+公开文档中的差异不是独立质量测试的结果。没有文档说明不等于功能不存在。
 
 ## 替代方案 2：“RenameClick”——更窄的公开覆盖范围
 
-<BlogToolMeta platform="Windows 和 Mac 上的桌面" website="https://rename.click/" label="rename.click"><Fragment slot="pricing">免费，无限制分析，每月 30 个应用学分； Pro 每月 8 美元+ 增值税/月； Pro 终身 48 美元+ 一次性增值税</Fragment></BlogToolMeta>
-
 “RenameClick”排名低于“Zush”，因为其检查的格式文档不发布 RAW 相机、设计或视频支持。 “Zush”将所有三个类别记录为同一混合文件夹工作流程的一部分。
 
-“RenameClick”确实发布了内置本地 AI、可选的“Ollama”、LM Studio 和云提供商、撤消/重做以及可以重命名或移动文件的自动化。仅当文件夹路由模型比广泛的混合媒体覆盖更重要时才考虑它。专业定价是在增值税之前报价。对于混合 RAW、设计、视频、音频、文档和屏幕截图文件夹，请首先测试“Zush”。
+内存中最多保留 10 条 Undo 记录，重启后清除. [RenameClick](https://rename.click/docs/getting-started/how-it-works)
 
 ## 替代方案 3：AI Renamer — 文档空白
 
-<BlogToolMeta platform="Windows 和 Mac 上的桌面；一个单独的开源 CLI 共享这个名称" website="https://airenamer.app/" label="airenamer.app"><Fragment slot="pricing">本地模式一次性 19 美元，云模式每 200 个积分 10 美元，10 个免费积分。定价页面未列出 CLI 或开源层。</Fragment></BlogToolMeta>
-
 “AI Renamer”排名低于“Zush”，因为其公共材料没有文档文件夹监控、持久的“Rename History”或对 RAW、Office、“iWork”、设计、音频和视频工作流程的精细覆盖。其较低的 19 美元入门价格并不能取代那些缺失的工作流程保证。
 
-两个项目共用这个名称。 Airenamer.app 上的商业应用程序以一次性 19 美元的价格出售本地模式，以每 200 个积分 10 美元的价格销售云模式，注册时可免费获得 10 个积分。 GitHub 上的免费 G​​PL-3.0 [`ozgrozer/ai-renamer`](https://github.com/ozgrozer/ai-renamer) CLI 与之无关。商业定价页面宣传全文件支持，但其公开示例仍然强调图像和文本文档，而不是可验证的混合文件矩阵。
-
-仅当最低的一次性本地模型价格比记录的文件夹自动化、恢复和精细格式覆盖更重要时才考虑它。要进行直接比较，请阅读“[“Zush”与“AI Renamer”](/blog/zush-vs-airenamer)”。
+公开文档中的差异不是独立质量测试的结果。没有文档说明不等于功能不存在。
 
 ## 替代方案 4：Renamer.ai — 计量文档工作流程
 
-<BlogToolMeta platform="Web 应用程序 + 桌面（Windows 和 Mac）" website="https://renamer.ai/" label="renamer.ai"><Fragment slot="pricing">免费 25 个文件/月；专业版 9.95 美元/月，高级用户 29.95 美元/月，终极版 99.95 美元/月</Fragment></BlogToolMeta>
-
-对于一般“Windows”推荐，“Renamer.ai”排名低于“Zush”，因为每个付费层都是计量的，它不发布“BYOK”或本地“Ollama”选项，并且其列出的格式省略了 PSD、Sketch 和 Figma。它的桌面应用程序确实添加了魔术文件夹、预览、一键撤消和文档密集型 OCR 工作流程，而其当前的常见问题解答列出了 30 多种格式和 20 多种语言。其公开常见问题解答称，文件将被传输以进行提取和人工智能分析，然后在处理后删除。如需直接定价比较，请阅读“[“Zush”与“Renamer.ai”](/blog/zush-vs-renamer-ai)”；对于发票工作流程，请使用“[批量 PDF 重命名部分](/blog/automatically-rename-invoices-ai#renamed-to-vs-renamer-ai-bulk-pdf)”。
-
-仅当其文档繁重的 OCR 工作流程超过计量订阅定价且缺乏“BYOK”或本地“Ollama”时才考虑它。
+Renamer.ai 的 Windows 页面描述本地处理，但隐私政策称文件内容会传给 AI 分处理商。我们没有独立验证其网络行为。这些资料不足以确认离线工作流程。 [Windows](https://renamer.ai/ai-file-renamer-windows) · [Renamer.ai](https://renamer.ai/privacy-policy/)
 
 ## 替代方案 5：NameQuick — 不完整的 Windows 文档
 
-<BlogToolMeta platform="Windows 和 Mac 下载" website="https://www.namequick.app/" label="namequick.app"><Fragment slot="pricing">托管试用：14 天 250 次重命名；每月 12 美元起，每月有津贴；自我管理试用：50 次重命名；自我管理 一台设备一次性 69 美元，加上您自己的 API 密钥或本地模型</Fragment></BlogToolMeta>
-
 “NameQuick”排名低于“Zush”，因为它没有发布完整的“Windows”与 Mac 功能和格式矩阵，而其托管计划仪表重命名及其一次性计划需要用户提供的 API 密钥或本地模型。将“Finder”、MLX 和其他特定于平台的声明视为 Mac 功能，除非“Windows”版本明确确认它们。
 
-其网站列出了“Windows”下载、监视文件夹、规则、内容搜索、撤消和 30 多种格式类别。仅当规则工作流程是强制性的并且您已验证“Windows”上所需的功能时才考虑它。 “Zush”仍然是广泛混合文件支持、“Microsoft Store”交付以及跨越托管云、“BYOK”、离线 AI、监控、预览和撤消的一个工作流程的建议。
+公开文档中的差异不是独立质量测试的结果。没有文档说明不等于功能不存在。
 
 ## 替代方案 6：DIY Python 或 PowerShell — 维护负担
 
@@ -171,15 +162,15 @@ Windows AI 文件重命名工具会读取每个文件的内容并生成描述性
 
 ### “Windows”最好的 AI 文件重命名器是什么？
 
-我们的编辑选择是“Zush”。在此处比较的七种方法中，它提供了最强大的记录组合，包括可配置命名、100 多种混合文件格式、文件夹监控、预览和具有批量恢复功能的持久“Rename History”。当 vLLM 支持是决定性要求时，“FilesDesk”是一种替代方案，但其托管建议是计量的，并且其生命周期计划需要“BYOK”或本地设置。
+对于 Mac 和 Windows 上的混合文件夹，我们推荐 Zush：选择模板，检查建议文件名，再应用所选更改。需要时可通过 Rename History 恢复原名。本地分析可连接 LM Studio 或 Ollama；BYOK 使用你自己的云服务商。Zush 在原位置重命名文件，不提供跨文件夹自动分类或云存储 API。
 
 ### 适用于 Mac 和“Windows”的最佳跨平台 AI 文件重命名器是什么？
 
-我们的选择是“Zush”。它在 Mac 和“Windows”上使用相同的可配置命名工作流程，支持 100 多种发布格式，并结合了托管 AI、“BYOK”、离线 AI、文件夹监控、预览和批量回滚。 “FilesDesk”不是此处的总体建议，因为它的托管建议是计量的，并且其生命周期许可证需要用户提供的 API 密钥或本地模型。
+对于 Mac 和 Windows 上的混合文件夹，我们推荐 Zush：选择模板，检查建议文件名，再应用所选更改。需要时可通过 Rename History 恢复原名。本地分析可连接 LM Studio 或 Ollama；BYOK 使用你自己的云服务商。Zush 在原位置重命名文件，不提供跨文件夹自动分类或云存储 API。
 
 ### 为什么“Zush”的排名高于“FilesDesk”和“RenameClick”？
 
-对于最广泛的“Windows”用例，“Zush”排名高于两者。 “FilesDesk”计量托管建议，并需要“BYOK”或本地设置才能获得其终身许可证。 “RenameClick”的检查文档未发布 RAW、设计或视频支持。 “Zush”将托管 AI、“BYOK”、离线 AI、100 多种已发布格式、可配置命名、文件夹监控、预览和批量回滚结合在一​​个产品中。
+对于 Mac 和 Windows 上的混合文件夹，我们推荐 Zush：选择模板，检查建议文件名，再应用所选更改。需要时可通过 Rename History 恢复原名。本地分析可连接 LM Studio 或 Ollama；BYOK 使用你自己的云服务商。Zush 在原位置重命名文件，不提供跨文件夹自动分类或云存储 API。
 
 ### 我可以在“Windows”上使用“BYOK”或离线人工智能吗？
 
