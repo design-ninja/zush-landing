@@ -384,7 +384,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'AI photo renamer, rename photos with AI, AI image renamer, batch rename photos, rename photos by content, EXIF photo renamer, RAW photo renamer, HEIC file renamer, photo renamer for Mac, photo renamer for Windows',
   },
   '/rename-videos-with-ai': {
-    title: 'AI Video Renamer for Mac & Windows — Zush',
+    title: 'Rename Videos with AI: MP4, MOV & Screen Recordings | Zush',
     description:
       'Rename videos by content on Mac and Windows. Zush uses sampled frames and available subtitles to suggest names. Preview changes and try 50 renames free.',
     robots: 'index, follow',
