@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.11.5] - 2026-09-15
+
+### Improved
+- Updated app icon and improved window layout
+- More reliable PRO activation
+- Better document analysis when previews are unavailable
+
 ## [3.11.4] - 2026-09-13
 
 ### Improved
