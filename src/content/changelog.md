@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.11.6] - 2026-09-16
+
+### Improved
+- Updated app icon.
+- Edit suggested filenames with a double-click or the Rename menu.
+- Faster text recognition and smoother processing of large files.
+- Improved startup, folder monitoring, and Undo.
+
+### Fixed
+- Fixed text recognition for Figma, Illustrator, and SVG files.
+
 ## [3.11.5] - 2026-09-15
 
 ### Improved
