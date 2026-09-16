@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.9.3.0] - 2026-09-16
+
+### Improved
+- Edit suggested filenames with a double-click or the Rename action before applying a batch.
+- Improved analysis of Office and OpenDocument files, including embedded images and text.
+- Faster file previews with lower memory usage and smoother folder monitoring for large queues.
+- Refreshed the app icon.
+
+### Fixed
+- Added clearer guidance when custom instructions exceed the length limit and preserved monitoring warnings.
+- Hid word separator options for camelCase and PascalCase naming styles.
+- Corrected the version shown in About to display the public release number.
+
 ## [3.9.2.0] - 2026-09-12
 
 ### Fixed
