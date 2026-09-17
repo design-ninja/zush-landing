@@ -165,6 +165,18 @@ const {
     };
 
     let posthogInitialized = false;
+    const pendingReactErrors = [];
+    window.addEventListener('zush:react-recoverable-error', (event) => {
+      if (hasPostHogCountryOptOut()) return;
+      if (posthogInitialized) {
+        window.posthog.captureException(event.detail.error, event.detail.properties);
+      } else {
+        // client:idle can hydrate before the deferred analytics initialization.
+        if (pendingReactErrors.length >= 20) return;
+        pendingReactErrors.push(event.detail);
+      }
+      event.preventDefault();
+    });
 
     const initializePostHog = () => {
       if (hasPostHogCountryOptOut()) return;
@@ -205,6 +217,9 @@ const {
       });
 
       capturePageview();
+      for (const { error, properties } of pendingReactErrors.splice(0)) {
+        window.posthog.captureException(error, properties);
+      }
       document.addEventListener('astro:after-swap', () => {
         window.requestAnimationFrame(capturePageview);
       });
