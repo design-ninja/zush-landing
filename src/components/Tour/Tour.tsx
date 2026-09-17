@@ -287,7 +287,11 @@ const Tour = ({ forceOS, copy = defaultCopy }: TourProps) => {
   } as CSSProperties;
 
   return (
-    <section className={styles.Tour} data-scroll-reveal-force>
+    // suppressHydrationWarning: this section is the root of a client:visible
+    // island that global reveal and interaction scripts touch around
+    // hydration. Suppressing keeps a benign server/client difference from
+    // discarding the island (React #418).
+    <section className={styles.Tour} data-scroll-reveal-force suppressHydrationWarning>
       <div className={styles.Tour__Container}>
         <div>
           <SectionHeader

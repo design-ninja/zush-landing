@@ -35,6 +35,66 @@ test('global store binding leaves React links alone and binds static links only 
   assert.equal(staticLink.dataset.storeWebUrl, 'https://example.test/store');
 });
 
+test('pro-click tracking skips island subtrees and binds static elements once', () => {
+  const { bindProClickTracking } = loadUtility('download', { require: () => ({}) });
+
+  const listeners = [];
+  const staticEl = {
+    dataset: { proClickSource: 'navbar' },
+    closest: () => null,
+    addEventListener: (name, handler) => listeners.push({ name, handler }),
+  };
+  const islandEl = {
+    closest: () => ({}),
+    get dataset() { throw new Error('Global binder accessed React-owned element'); },
+  };
+  const root = { querySelectorAll: () => [islandEl, staticEl] };
+  bindProClickTracking(root);
+  bindProClickTracking(root);
+  assert.equal(listeners.length, 1);
+  assert.equal(staticEl.dataset.proClickTrackingBound, 'true');
+});
+
+test('pro-plan tracking skips island subtrees and binds static elements once', () => {
+  const { bindProPlanClickTracking } = loadUtility('download', { require: () => ({}) });
+
+  const listeners = [];
+  const staticEl = {
+    dataset: { proPlanId: 'monthly' },
+    closest: () => null,
+    addEventListener: (name, handler) => listeners.push({ name, handler }),
+  };
+  const islandEl = {
+    closest: () => ({}),
+    get dataset() { throw new Error('Global binder accessed React-owned element'); },
+  };
+  const root = { querySelectorAll: () => [islandEl, staticEl] };
+  bindProPlanClickTracking(root);
+  bindProPlanClickTracking(root);
+  assert.equal(listeners.length, 1);
+  assert.equal(staticEl.dataset.proPlanClickTrackingBound, 'true');
+});
+
+test('promo code copy skips island buttons and binds static buttons once', () => {
+  const listeners = [];
+  const staticButton = {
+    dataset: { promoCode: 'SAVE20' },
+    closest: () => null,
+    addEventListener: (name, handler) => listeners.push({ name, handler }),
+  };
+  const islandButton = {
+    closest: () => ({}),
+    get dataset() { throw new Error('Global binder accessed React-owned button'); },
+  };
+  const { bindPromoCodeCopy } = loadUtility('promoCode', {
+    document: { querySelectorAll: () => [islandButton, staticButton] },
+  });
+  bindPromoCodeCopy();
+  bindPromoCodeCopy();
+  assert.equal(listeners.length, 1);
+  assert.equal(staticButton.dataset.promoCopyBound, 'true');
+});
+
 test('scroll reveal observes sections but keeps React animation state on the Astro wrapper', () => {
   const island = { dataset: {} };
   const makeSection = (owner = null) => ({
