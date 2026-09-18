@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.11.7] - 2026-09-18
+
+### Fixed
+- More reliable renaming when files have the same name.
+- Improved processing of small images.
+- Clearer instructions for password-protected PDFs.
+
 ## [3.11.6] - 2026-09-16
 
 ### Improved
