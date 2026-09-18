@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.9.4.0] - 2026-09-18
+
+### Improved
+- Smoother Naming Block reordering with a clearer drag preview and more reliable positioning when the window is resized.
+- Improved reading of Word documents containing imported HTML or plain text.
+
+### Fixed
+- Unreadable documents no longer prevent other files in a batch or monitored folder from being processed.
+- Clearer guidance for password-protected PDFs, inaccessible files, and unsupported document content.
+- Improved file preview cancellation and stability.
+
 ## [3.9.3.0] - 2026-09-16
 
 ### Improved
