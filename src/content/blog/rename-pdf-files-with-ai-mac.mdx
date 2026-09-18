@@ -97,17 +97,24 @@ Do not run AI across everything blindly. Put the low-quality filenames in a stag
 
 ### 2. Use one naming pattern
 
-For PDFs, these patterns are usually enough:
+In Zush, open **Templates**, choose **Smart Rename** or your document Template, and add the fields in **Naming Blocks**. Start with **Title**; add **Document Type**, **Vendor**, or **Client** only when those fields help identify this batch. The [Naming Blocks walkthrough](/docs/naming-blocks) shows the picker, ordering, and filename preview.
 
-- <code>{'{title}'}</code>
-- <code>{'{date}_{title}'}</code>
-- <code>{'{category}_{title}'}</code>
-
-The AI-generated title should describe the document. The pattern should make your folder sort cleanly.
+Be deliberate about dates. **Created Date** is a file date, which may differ from the date printed on an invoice or contract. If the document date matters, use a content-derived date field or [Custom AI Block](/docs/custom-ai-blocks), then check it against the PDF. Do not treat a download date as an invoice date.
 
 ### 3. Review the first batch carefully
 
-Test on 10 to 20 files. If the titles are useful, continue. If the pattern is wrong, fix the convention before you rename the entire archive.
+Open **AI Rename**, select that Template, and add 10 to 20 representative PDFs. Review the suggestions; edit a name inline or regenerate an individual result before applying. The [batch rename instructions](/docs/batch-rename-files) show the complete sequence.
+
+Use this review sheet for the first batch. These are illustrative checks, not measured AI results.
+
+| PDF in the batch | Compare the proposed name against | Correct before applying if… |
+|---|---|---|
+| Invoice | Vendor, invoice number, printed invoice date | The name uses the download date or another number on the page |
+| Signed agreement | Parties, agreement type, signed or draft status | A draft is described as signed |
+| Quarterly report | Report title and reporting period | The export date replaces the reporting period |
+| Scanned form | Visible form title and identifiers | Faint text has produced an uncertain name |
+
+Once this batch is verified, apply the same Template to the remaining PDFs. If several documents fail the same check, adjust the Template first.
 
 ### 4. Keep rollback available
 
