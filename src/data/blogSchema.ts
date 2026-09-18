@@ -82,6 +82,8 @@ export const blogCollectionSchema = z.object({
   author: z.string().optional(),
   reviewer: z.string().optional(),
   reviewed: z.coerce.date().optional(),
+  /** Let informational comparisons introduce the task after answering the query. */
+  earlyTaskExample: z.boolean().default(true),
   noindex: z.coerce.boolean().optional(),
   canonical: z.string().optional(),
   locale: z.enum(BLOG_LOCALE_VALUES).default('en'),

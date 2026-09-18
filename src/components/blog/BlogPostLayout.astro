@@ -251,7 +251,7 @@ const breadcrumbItems = [
         )}
 
         <div class={`${styles.BlogPost__Content} markdown-content`}>
-          {taskExample && <RenameTaskExample example={taskExample} />}
+          {taskExample && entry.data.earlyTaskExample && <RenameTaskExample example={taskExample} />}
           <Content components={mdxComponents} />
         </div>
       </div>

@@ -8,6 +8,7 @@ export function PromotionBanner() {
     <a
       className={styles.PromotionBanner}
       href="#pricing"
+      data-pro-click-source="hero"
       aria-label={`View ${discountPercent}% off PRO One-Time offer with code ${code}`}
     >
       <span className={styles.PromotionBanner__Tag}>

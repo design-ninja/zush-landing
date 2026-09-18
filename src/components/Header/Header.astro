@@ -154,7 +154,7 @@ const menuLinkClass = [appLinkStyles.AppLink, styles.Header__MenuLink].join(' ')
 
     <nav class={styles.Header__Nav} aria-label="Primary navigation">
       {navItems.map((item) => (
-        <a href={item.href} class={navLinkClass}>{item.label}</a>
+        <a href={item.href} class={navLinkClass} data-pro-click-source={item.href.endsWith('#pricing') ? 'navbar' : undefined}>{item.label}</a>
       ))}
     </nav>
 
@@ -236,7 +236,7 @@ const menuLinkClass = [appLinkStyles.AppLink, styles.Header__MenuLink].join(' ')
   >
     <nav class={styles.Header__MenuNav} aria-label={menuLabel}>
       {navItems.map((item) => (
-        <a href={item.href} class={menuLinkClass}>{item.label}</a>
+        <a href={item.href} class={menuLinkClass} data-pro-click-source={item.href.endsWith('#pricing') ? 'navbar' : undefined}>{item.label}</a>
       ))}
     </nav>
 

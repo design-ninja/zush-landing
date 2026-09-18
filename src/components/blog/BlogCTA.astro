@@ -16,9 +16,11 @@ type BlogCTAPlacement = 'early' | 'inline' | 'footer';
 interface Props {
   placement?: BlogCTAPlacement;
   platform?: BlogPlatform;
+  title?: string;
+  description?: string;
 }
 
-const { placement = 'footer', platform = 'general' } = Astro.props;
+const { placement = 'footer', platform = 'general', title, description } = Astro.props;
 
 const placementTitles: Record<BlogCTAPlacement, (osLabel: string) => string> = {
   early: (os) => `Batch rename files with AI on ${os}`,
@@ -83,12 +85,12 @@ const background = await getImage({
         <h3
           class={titleClasses}
           data-blog-cta-title
-          data-title-mac={placementTitles[placement]('Mac')}
-          data-title-windows={placementTitles[placement]('Windows')}
+          data-title-mac={title ?? placementTitles[placement]('Mac')}
+          data-title-windows={title ?? placementTitles[placement]('Windows')}
         >
-          {placementTitles[placement]('Mac')}
+          {title ?? placementTitles[placement]('Mac')}
         </h3>
-        <p class={descriptionClasses}>{placementDescriptions[placement]}</p>
+        <p class={descriptionClasses}>{description ?? placementDescriptions[placement]}</p>
         <div class={styles.BlogCTA__Buttons}>
           <div
             class={[
@@ -146,9 +148,9 @@ const background = await getImage({
       />
       <div class={styles.BlogCTA__Content}>
         <h3 class={titleClasses}>
-          {placementTitles[placement](getOSLabel(platform === 'windows' ? 'windows' : 'mac'))}
+          {title ?? placementTitles[placement](getOSLabel(platform === 'windows' ? 'windows' : 'mac'))}
         </h3>
-        <p class={descriptionClasses}>{placementDescriptions[placement]}</p>
+        <p class={descriptionClasses}>{description ?? placementDescriptions[placement]}</p>
         <div class={styles.BlogCTA__Buttons}>
           <div
             class={[

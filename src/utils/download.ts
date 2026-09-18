@@ -400,18 +400,22 @@ const getPriceUsd = (priceLabel: string | undefined): number | undefined => {
   return Number.isFinite(price) ? price : undefined;
 };
 
+const proClickRoots = new WeakSet<EventTarget>();
+
+// Delegate to the stable root: the hero link may be replaced during hydration.
 // fallow-ignore-next-line unused-export
 export const bindProClickTracking = (root: ParentNode = document) => {
-  root.querySelectorAll<HTMLElement>('[data-pro-click-source]').forEach((element) => {
-    if (element.dataset.proClickTrackingBound === 'true') return;
+  const eventRoot = root as ParentNode & EventTarget;
+  if (proClickRoots.has(eventRoot)) return;
+  proClickRoots.add(eventRoot);
 
+  eventRoot.addEventListener('click', (event: Event) => {
+    if (!(event.target instanceof Element)) return;
+    const element = event.target.closest<HTMLElement>('[data-pro-click-source]');
+    if (!element) return;
     const source = element.dataset.proClickSource;
     if (!isProClickSource(source)) return;
-
-    element.dataset.proClickTrackingBound = 'true';
-    element.addEventListener('click', () => {
-      trackProClick({ source });
-    });
+    trackProClick({ source });
   });
 };
 
