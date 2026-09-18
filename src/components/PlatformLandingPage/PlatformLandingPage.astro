@@ -336,7 +336,7 @@ const jsonLdItems = [
   <WaysToRun copy={platformSections.featureCards} locale={locale} />
   <EvidenceSignals locale={locale} variant="control" />
   {platform === 'windows' && (
-    <Tour client:visible forceOS="windows" copy={copy.home.showcase} />
+    <Tour forceOS="windows" copy={copy.home.showcase} />
   )}
   {locale === DEFAULT_LOCALE && (
     <section class={styles.IntentSection} aria-labelledby='platform-intent-heading'>
@@ -387,7 +387,6 @@ const jsonLdItems = [
   <Pricing copy={copy.pricing} />
   <PlatformGuides platform={platform} locale={locale} />
   <FAQ
-    client:visible
     items={faqItems}
     title={copy.home.faqTitle}
     description={localizedPlatformFaq.description}

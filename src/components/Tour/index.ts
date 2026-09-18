@@ -1,1 +1,1 @@
-export { default } from './Tour';
+export { default } from './Tour.astro';

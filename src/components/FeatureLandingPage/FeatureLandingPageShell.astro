@@ -113,7 +113,7 @@ const relatedPageTitle = (href: string, fallback: string) =>
 
   {showPdfScenariosEarly && <PdfScenarios copy={pdfDeepDive} locale={currentLocale} showReviewNote />}
 
-  <Tour client:visible copy={currentCopy.home.showcase} />
+  <Tour copy={currentCopy.home.showcase} />
   <Features title={currentCopy.home.featuresTitle} description={currentCopy.home.featuresDescription} copy={currentCopy.home.featureCards} locale={currentLocale} />
   <SupportedFormats
     category={category}
@@ -202,7 +202,7 @@ const relatedPageTitle = (href: string, fallback: string) =>
       <Heading as='h2' align='center' style={{ marginBottom: '3rem' }}>
         {pageCopy?.faqTitle ?? 'Frequently Asked Questions'}
       </Heading>
-      <FeatureFAQ faqItems={pageCopy?.faqItems ?? faqItems} client:visible />
+      <FeatureFAQ faqItems={pageCopy?.faqItems ?? faqItems} />
     </div>
   </section>
 

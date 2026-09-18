@@ -1,4 +1,4 @@
-import { useState, useMemo, type ReactNode } from 'react';
+import { useId, type ReactNode } from 'react';
 import { APP_CONFIG } from '@/constants';
 import AppLink from '@/components/AppLink';
 import { HOME_FAQ_DATA } from '@/data/homeFaq';
@@ -102,31 +102,26 @@ const FAQ = ({
   initialOpenIndex = 0,
   appendDefaultItems = false,
 }: FAQProps) => {
-  const [openIndex, setOpenIndex] = useState<number | null>(initialOpenIndex);
+  const groupName = useId();
 
-  const faqs = useMemo(
-    () => {
-      const defaultItems = buildDefaultFaqItems();
+  const faqs = (() => {
+    const defaultItems = buildDefaultFaqItems();
 
-      if (!items) {
-        return defaultItems;
-      }
+    if (!items) {
+      return defaultItems;
+    }
 
-      if (!appendDefaultItems) {
-        return items.map(withLinkedAnswer);
-      }
+    if (!appendDefaultItems) {
+      return items.map(withLinkedAnswer);
+    }
 
-      const seen = new Set<string>();
-      return [...items.map(withLinkedAnswer), ...defaultItems].filter((item) => {
-        if (seen.has(item.question)) {
-          return false;
-        }
-        seen.add(item.question);
-        return true;
-      });
-    },
-    [appendDefaultItems, items],
-  );
+    const seen = new Set<string>();
+    return [...items.map(withLinkedAnswer), ...defaultItems].filter((item) => {
+      if (seen.has(item.question)) return false;
+      seen.add(item.question);
+      return true;
+    });
+  })();
 
   return (
     <section id='faq' className={styles.FAQ}>
@@ -142,8 +137,8 @@ const FAQ = ({
               key={index}
               question={faq.question}
               answer={faq.answer}
-              isOpen={openIndex === index}
-              onClick={() => setOpenIndex(openIndex === index ? null : index)}
+              isOpen={initialOpenIndex === index}
+              name={groupName}
               classes={styles}
             />
           ))}

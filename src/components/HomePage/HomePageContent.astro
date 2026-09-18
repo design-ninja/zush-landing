@@ -81,10 +81,9 @@ const showPromotionBanner = locale === 'en';
 <HomeWorkflows copy={copy.home.workflows} locale={locale} />
 <CloudFolders title={copy.home.cloudFoldersTitle} />
 <Testimonials locale={locale} />
-<Tour client:visible copy={copy.home.showcase} />
+<Tour copy={copy.home.showcase} />
 <Pricing copy={copy.pricing} />
 <FAQ
-  client:visible
   title={copy.home.faqTitle}
   description={copy.home.faqDescription}
   items={copy.home.faqItems}

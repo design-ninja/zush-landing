@@ -1,4 +1,4 @@
-import { memo, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { ChevronDown } from 'lucide-react';
 import Heading from '@/components/Heading';
 
@@ -6,45 +6,33 @@ interface FAQAccordionItemProps {
   question: string;
   answer: ReactNode;
   isOpen: boolean;
-  onClick: () => void;
+  name: string;
   classes: Record<string, string>;
 }
 
-const FAQAccordionItem = memo(
+// Server-rendered only: native disclosure state preserves translated DOM.
+const FAQAccordionItem = (
   ({
     question,
     answer,
     isOpen,
-    onClick,
+    name,
     classes,
   }: FAQAccordionItemProps) => (
-    <div
-      className={`${classes.FAQItem} ${isOpen ? classes.FAQItem_active : ''}`}
-    >
-      <button
-        className={classes.FAQItem__Header}
-        onClick={onClick}
-        aria-expanded={isOpen}
-      >
+    <details className={classes.FAQItem} open={isOpen} name={name}>
+      <summary className={classes.FAQItem__Header}>
         {/* h3 for the outline, h4 visual size from the shared type scale — the
             weight comes from <Heading>, not from the FAQ stylesheets. */}
         <Heading as='h3' size='h4' className={classes.FAQItem__Question}>
           {question}
         </Heading>
         <ChevronDown size={24} className={classes.FAQItem__Icon} />
-      </button>
-      <div
-        className={`${classes.FAQItem__Content} ${
-          isOpen ? classes.FAQItem__Content_open : ''
-        }`}
-        aria-hidden={!isOpen}
-      >
+      </summary>
+      <div className={classes.FAQItem__Content}>
         <div className={classes.FAQItem__Answer}>{answer}</div>
       </div>
-    </div>
-  ),
+    </details>
+  )
 );
-
-FAQAccordionItem.displayName = 'FAQAccordionItem';
 
 export default FAQAccordionItem;

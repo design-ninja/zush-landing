@@ -1,0 +1,87 @@
+---
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
+import headerStyles from '@/components/SectionHeader/SectionHeader.module.scss';
+import { MACOS_SHOWCASE_SCREENSHOTS, WINDOWS_SHOWCASE_SCREENSHOTS } from '@/data/showcaseMedia';
+import styles from './Tour.module.scss';
+
+interface Props {
+  forceOS?: 'mac' | 'windows';
+  copy?: {
+    title: string;
+    titleAccent: string;
+    description: string;
+    switchTo: string;
+    items: Record<string, { title: string; description: string; alt?: string }>;
+  };
+}
+const { forceOS, copy = {
+  title: 'Take a tour of Zush', titleAccent: 'Zush',
+  description: 'One quick showcase per feature. Click a tab to see it in action.',
+  switchTo: 'Switch to', items: {},
+} } = Astro.props;
+const titleParts = copy.title.split(copy.titleAccent);
+const groups = [
+  { os: 'mac', items: MACOS_SHOWCASE_SCREENSHOTS },
+  { os: 'windows', items: WINDOWS_SHOWCASE_SCREENSHOTS },
+].filter(group => !forceOS || group.os === forceOS);
+const imagePath = (src: string, width: number) => src.replace(/\.webp$/i, `-${width}.webp`);
+const srcSet = (src: string) => [640, 960, 1280, 1600, 1920, 2560].map(width => `${imagePath(src, width)} ${width}w`).join(', ');
+---
+
+<section class={styles.Tour} data-scroll-reveal-force data-tour>
+  <div class={styles.Tour__Container}>
+    <div class={headerStyles.SectionHeader}>
+      <Heading as="h2" align="center" className={headerStyles.SectionHeader__Title}>
+        {titleParts[0]}<span class="brand-accent-text">{copy.titleAccent}</span>{titleParts.slice(1).join(copy.titleAccent)}
+      </Heading>
+      <Text as="p" size="lg" color="subtle" align="center" className={headerStyles.SectionHeader__Description}>{copy.description}</Text>
+    </div>
+    <zush-tour data-force-os={forceOS} class={styles.Tour__Player}>
+      {groups.map((group, groupIndex) => (
+        <div data-tour-platform={group.os} class={styles.Tour__Platform} hidden={groupIndex !== 0}>
+          <div class={styles.Tour__ScreenshotWrapper}>
+            {group.items.map((item, index) => (
+              <img
+                data-tour-image data-light={item.images.light} data-dark={item.images.dark}
+                class={styles.Tour__Poster} data-active={index === 0 ? '' : undefined}
+                hidden={index !== 0}
+                src={imagePath(item.images.light, 1280)} srcset={srcSet(item.images.light)}
+                sizes="(max-width: 768px) calc(100vw - 40px), min(1024px, calc(100vw - 64px))"
+                alt={copy.items[item.id]?.alt ?? item.alt}
+                width="1280" height="720" loading="lazy" decoding="async"
+              />
+            ))}
+          </div>
+          <div class={styles.Tour__Captions}>
+            {group.items.map((item, index) => (
+              <Text as="p" className={styles.Tour__Description} data-tour-description hidden={index !== 0}>
+                {copy.items[item.id]?.description ?? item.description}
+              </Text>
+            ))}
+          </div>
+          <div class={styles.Tour__Tabs} data-tour-tabs>
+            {group.items.map((item, index) => (
+              <button type="button" data-tour-tab class={styles.Tour__Tab}
+                aria-label={`${copy.switchTo} ${copy.items[item.id]?.title ?? item.title}`}
+                aria-current={index === 0 ? 'true' : undefined}>
+                <span class={styles.Tour__TabProgress} data-tour-progress aria-hidden="true" />
+                <span class={styles.Tour__TabLabel}>{copy.items[item.id]?.title ?? item.title}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      ))}
+    </zush-tour>
+  </div>
+</section>
+
+<script>
+  import { bindTour } from './tourController';
+  class ZushTour extends HTMLElement {
+    cleanup?: () => void;
+    connectedCallback() { this.cleanup ??= bindTour(this); }
+    disconnectedCallback() { this.cleanup?.(); this.cleanup = undefined; }
+  }
+  if (!customElements.get('zush-tour')) customElements.define('zush-tour', ZushTour);
+</script>

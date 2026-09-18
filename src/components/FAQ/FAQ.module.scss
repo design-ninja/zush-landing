@@ -34,19 +34,16 @@
     overflow: hidden;
     transition: box-shadow 0.3s ease, outline 0.3s ease;
 
-    // The open item already carries the active outline, and :hover outranks
-    // &_active on specificity — without this exclusion hovering the expanded
-    // question repainted its border and read as losing the selection.
-    &:not(.FAQItem_active):hover {
+    &:not([open]):hover {
         @include card-hover-outline(var(--primary-soft));
         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
     }
 
-    &_active:hover {
+    &[open]:hover {
         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
     }
 
-    &_active {
+    &[open] {
         outline: 3px solid var(--primary);
     }
 
@@ -61,6 +58,9 @@
         cursor: pointer;
         text-align: left;
         gap: 16px;
+        list-style: none;
+
+        &::-webkit-details-marker { display: none; }
     }
 
     &__Question {
@@ -74,24 +74,14 @@
         transition: transform 0.3s ease;
         transform: rotate(90deg);
 
-        .FAQItem_active & {
+        .FAQItem[open] & {
             transform: rotate(0deg);
             color: var(--primary);
         }
     }
 
     &__Content {
-        display: grid;
-        grid-template-rows: minmax(0, 0fr);
-        opacity: 0;
-        visibility: hidden;
-        transition: grid-template-rows 0.25s ease, opacity 0.2s ease;
-
-        &_open {
-            grid-template-rows: minmax(0, 1fr);
-            opacity: 1;
-            visibility: visible;
-        }
+        display: block;
     }
 
     &__Answer {

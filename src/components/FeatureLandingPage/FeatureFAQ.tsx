@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useId } from 'react';
 import FAQAccordionItem from '@/components/FAQ/FAQAccordionItem';
 import styles from './FeatureLandingPage.module.scss';
 
@@ -12,7 +12,7 @@ interface FeatureFAQProps {
 }
 
 const FeatureFAQ = ({ faqItems }: FeatureFAQProps) => {
-  const [openFAQ, setOpenFAQ] = useState<number | null>(0);
+  const groupName = useId();
 
   return (
     <div className={styles.FAQList}>
@@ -21,8 +21,8 @@ const FeatureFAQ = ({ faqItems }: FeatureFAQProps) => {
           key={index}
           question={item.question}
           answer={item.answer}
-          isOpen={openFAQ === index}
-          onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
+          isOpen={index === 0}
+          name={groupName}
           classes={styles}
         />
       ))}

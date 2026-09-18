@@ -1,43 +1,6 @@
 import { useEffect, useState } from 'react';
-
-export type OS = 'mac' | 'windows' | 'mobile' | 'unknown';
-
-const PREFERRED_OS_KEY = 'zush-preferred-os';
-
-interface UserAgentData {
-  platform?: string;
-  mobile?: boolean;
-}
-
-function detectFromUA(): OS {
-  if (typeof navigator === 'undefined') return 'mac';
-
-  const uaData = (navigator as Navigator & { userAgentData?: UserAgentData })
-    .userAgentData;
-  if (uaData?.platform) {
-    const platform = uaData.platform.toLowerCase();
-    if (uaData.mobile) return 'mobile';
-    if (platform.includes('win')) return 'windows';
-    if (platform.includes('mac')) return 'mac';
-  }
-
-  const ua = navigator.userAgent || '';
-  if (/iPhone|iPad|iPod|Android/i.test(ua)) return 'mobile';
-  if (/Windows/i.test(ua)) return 'windows';
-  if (/Macintosh|Mac OS X/i.test(ua)) return 'mac';
-  return 'unknown';
-}
-
-function readPreferredOS(): OS | null {
-  if (typeof window === 'undefined') return null;
-  try {
-    const stored = window.localStorage.getItem(PREFERRED_OS_KEY);
-    if (stored === 'mac' || stored === 'windows') return stored;
-  } catch {
-    // localStorage disabled / blocked
-  }
-  return null;
-}
+import { detectFromUA, readPreferredOS, type OS } from '@/utils/detectOS';
+export type { OS } from '@/utils/detectOS';
 
 export interface UseOSResult {
   os: OS;
