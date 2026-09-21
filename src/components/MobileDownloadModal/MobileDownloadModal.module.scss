@@ -176,3 +176,46 @@
     will-change: auto;
   }
 }
+
+// Primary action for phone visitors: the app is desktop-only, so the useful
+// outcome here is carrying this page over to a computer, not a download.
+.MobileDownloadModal__Handoff {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--primary-soft);
+  border: 1px solid var(--primary);
+  border-radius: $radius-md;
+  color: var(--foreground);
+  font-family: var(--font-family);
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--primary-soft);
+    border-color: var(--primary);
+  }
+
+  &[data-handoff-state='shared'],
+  &[data-handoff-state='copied'] {
+    background: var(--muted);
+    border-color: var(--border);
+  }
+}
+
+.MobileDownloadModal__Url {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: $radius-md;
+  color: var(--foreground);
+  font-family: var(--font-family);
+  font-size: 0.8125rem;
+}
