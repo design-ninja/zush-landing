@@ -26,7 +26,7 @@ export const SOFTPEDIA_REVIEW_URL =
 
 export const FREE_DOWNLOAD_BADGE_LABEL = "FREE";
 export const MAC_APP_VERSION = "3.11.7";
-export const WINDOWS_APP_VERSION = "3.9.3.0";
+export const WINDOWS_APP_VERSION = "3.9.4.0";
 export const PRODUCT_FACTS_REVIEWED_AT = "2026-09-18";
 export const AI_MODES_SUMMARY =
   "Zush Cloud AI, BYOK, LM Studio, and Ollama";
