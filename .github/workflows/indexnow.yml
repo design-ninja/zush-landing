@@ -51,5 +51,14 @@ jobs:
           echo "Changed files: $(wc -l < changed-files.txt)"
           cat changed-files.txt
 
+          # Anchor the sitemap lastmod cutoff to that same commit. A fixed
+          # window would make every deploy of a busy day resubmit the same
+          # URLs, which Bing reports as IndexNow batch mode.
+          INDEXNOW_SINCE=$(git log -1 --format=%cI "$PREV_SHA")
+          echo "Submitting URLs modified after ${INDEXNOW_SINCE}"
+          echo "INDEXNOW_SINCE=${INDEXNOW_SINCE}" >> "$GITHUB_ENV"
+
       - name: Submit live sitemap URLs
+        env:
+          INDEXNOW_SINCE: ${{ env.INDEXNOW_SINCE }}
         run: node scripts/indexnow-ping.mjs --changed-files changed-files.txt

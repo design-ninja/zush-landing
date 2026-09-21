@@ -3,7 +3,7 @@
  * Submit URLs to IndexNow (Bing, and via it Copilot/ChatGPT-facing indexes).
  *
  * Usage:
- *   node scripts/indexnow-ping.mjs                          # submit sitemap URLs changed in the last RECENT_HOURS
+ *   node scripts/indexnow-ping.mjs                          # submit sitemap URLs changed since the last deploy
  *   node scripts/indexnow-ping.mjs --changed-files list.txt # add URLs affected by the listed source files
  *   node scripts/indexnow-ping.mjs --all                    # submit every URL from the live sitemap
  *   node scripts/indexnow-ping.mjs /blog/foo /ai-file-organizer   # submit specific paths only
@@ -17,9 +17,17 @@
  * route's own source file and deliberately ignores shared files, so edits to
  * src/i18n or src/seo change what a page renders without moving its lastmod.
  * --changed-files closes that gap by mapping changed sources back to routes.
+ *
+ * The lastmod cutoff is INDEXNOW_SINCE — the commit time of the previously
+ * deployed production commit, supplied by .github/workflows/indexnow.yml.
+ * A fixed time window cannot be used here: several deploys a day all fall
+ * inside it, so each one resubmits the same URLs. That is the batch pattern
+ * Bing flags as "IndexNow is in batch mode". INDEXNOW_RECENT_HOURS remains
+ * the fallback for manual runs, where no previous deploy is known.
  */
 
 import { readFile } from 'node:fs/promises';
+import { pathToFileURL } from 'node:url';
 
 const HOST = 'zushapp.com';
 const KEY = '1a9369f8a6192f87f410b8cd78915f6c';
@@ -28,6 +36,7 @@ const SITEMAP_URL = `https://${HOST}/sitemap.xml`;
 const ENDPOINT = 'https://api.indexnow.org/indexnow';
 const MAX_URLS = 10000;
 const RECENT_HOURS = Number(process.env.INDEXNOW_RECENT_HOURS ?? 48);
+const SINCE = process.env.INDEXNOW_SINCE?.trim();
 
 // SEO stabilization guard requested for the 17-23 Aug 2026 observation
 // window. These routes were changed by 181a683, 347c092, 2179ac and da26c50
@@ -72,16 +81,39 @@ async function getSitemapEntries() {
   })).filter((entry) => entry.loc);
 }
 
-async function getRecentlyChangedUrls() {
-  const entries = await getSitemapEntries();
-  const cutoff = Date.now() - RECENT_HOURS * 60 * 60 * 1000;
-  const recent = entries.filter((entry) => {
+// git log --format=%cI always emits this shape. Match it strictly: Date()
+// accepts junk like "deployment-42" and silently returns a far-future time,
+// which would submit nothing at all.
+const ISO_TIMESTAMP = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:?\d{2})$/;
+
+// Exported for scripts/tests/indexnow-ping.test.mjs.
+export function resolveCutoff(since = SINCE, now = Date.now()) {
+  if (since) {
+    const deployedAt = ISO_TIMESTAMP.test(since) ? new Date(since).getTime() : Number.NaN;
+    if (!Number.isNaN(deployedAt)) {
+      return { cutoff: deployedAt, description: `since the last production deploy (${since})` };
+    }
+    console.warn(`[indexnow] INDEXNOW_SINCE="${since}" is not an ISO timestamp; falling back to the last ${RECENT_HOURS}h.`);
+  }
+  return { cutoff: now - RECENT_HOURS * 60 * 60 * 1000, description: `in the last ${RECENT_HOURS}h` };
+}
+
+// Strictly after the cutoff: a page whose lastmod is exactly the previously
+// deployed commit was already submitted by that deploy's run.
+export function selectChangedEntries(entries, cutoff) {
+  return entries.filter((entry) => {
     if (!entry.lastmod) return true;
     const lastmod = new Date(entry.lastmod).getTime();
-    return Number.isNaN(lastmod) || lastmod >= cutoff;
+    return Number.isNaN(lastmod) || lastmod > cutoff;
   });
-  console.log(`[indexnow] Sitemap has ${entries.length} URLs; ${recent.length} changed in the last ${RECENT_HOURS}h.`);
-  return recent.map((entry) => entry.loc);
+}
+
+async function getRecentlyChangedUrls() {
+  const entries = await getSitemapEntries();
+  const { cutoff, description } = resolveCutoff();
+  const changed = selectChangedEntries(entries, cutoff);
+  console.log(`[indexnow] Sitemap has ${entries.length} URLs; ${changed.length} changed ${description}.`);
+  return changed.map((entry) => entry.loc);
 }
 
 // Shared copy: every rendered page reads from these, except the MDX-driven
@@ -215,7 +247,10 @@ async function main() {
   }
 }
 
-main().catch((error) => {
-  console.error('[indexnow] Error:', error.message);
-  process.exit(1);
-});
+// Only submit when run as a command; importing this file (tests) must not ping.
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main().catch((error) => {
+    console.error('[indexnow] Error:', error.message);
+    process.exit(1);
+  });
+}
