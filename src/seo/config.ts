@@ -1,16 +1,22 @@
 import type { BlogPost } from '@/data/blog';
 import {
   AI_MODES_SUMMARY,
+  ALTERNATIVETO_URL,
   APP_CONFIG,
   APP_STORE_URL,
   GITHUB_RELEASES_URL,
   GOOGLE_WORKSPACE_MARKETPLACE_URL,
   HOMEBREW_CASK_URL,
+  MACUPDATE_URL,
   MAC_APP_VERSION,
   MAC_INSTALLER_URL,
   PRODUCT_FACTS_REVIEWED_AT,
   PRODUCT_HUNT_URL,
+  SAASHUB_URL,
+  SOFTPEDIA_REVIEW_URL,
   SUPPORTED_FORMAT_COUNT,
+  TAAFT_URL,
+  WIKIDATA_URL,
   WINDOWS_APP_VERSION,
   WINDOWS_STORE_URL,
 } from '@/constants';
@@ -562,6 +568,8 @@ export const HOME_JSON_LD = {
       publisher: ORGANIZATION_REF,
       downloadUrl: [MAC_INSTALLER_URL, APP_STORE_URL, HOMEBREW_CASK_URL, WINDOWS_STORE_URL],
       installUrl: [APP_STORE_URL, HOMEBREW_CASK_URL, WINDOWS_STORE_URL],
+      // Store listings plus the directory profiles AI answers cite for this category,
+      // so assistants resolve every mention of "Zush" to this one product.
       sameAs: [
         APP_STORE_URL,
         WINDOWS_STORE_URL,
@@ -569,6 +577,12 @@ export const HOME_JSON_LD = {
         GITHUB_RELEASES_URL,
         HOMEBREW_CASK_URL,
         GOOGLE_WORKSPACE_MARKETPLACE_URL,
+        ALTERNATIVETO_URL,
+        TAAFT_URL,
+        SAASHUB_URL,
+        MACUPDATE_URL,
+        SOFTPEDIA_REVIEW_URL,
+        WIKIDATA_URL,
       ],
       image: DEFAULT_OG_IMAGE,
       screenshot: [

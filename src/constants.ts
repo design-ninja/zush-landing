@@ -21,6 +21,11 @@ export const LINKEDIN_COMPANY_URL = "https://www.linkedin.com/company/zush-ai-fi
 export const FACEBOOK_PROFILE_URL = "https://www.facebook.com/profile.php?id=61592905765874";
 export const GOOGLE_WORKSPACE_MARKETPLACE_URL =
   "https://workspace.google.com/marketplace/app/zush_ai_renamer/865259549983";
+export const WIKIDATA_URL = "https://www.wikidata.org/wiki/Q141529827";
+export const ALTERNATIVETO_URL = "https://alternativeto.net/software/zush/about/";
+export const TAAFT_URL = "https://theresanaiforthat.com/ai/zush-ai-file-renamer-organizer/";
+export const SAASHUB_URL = "https://www.saashub.com/zush";
+export const MACUPDATE_URL = "https://www.macupdate.com/app/mac/65417/zush";
 export const SOFTPEDIA_REVIEW_URL =
   "https://www.softpedia.com/get/Artificial-Intelligence-Generative-AI/Zush.shtml";
 
