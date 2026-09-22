@@ -1,6 +1,62 @@
 import type { HowToData } from '@/utils/jsonLd';
 
 export const HOW_TO_SCHEMAS: Record<string, HowToData> = {
+  'batch-rename-files-windows-11': {
+    name: 'How to Batch Rename Files in Windows 11',
+    description:
+      'Rename several files at once in File Explorer, use PowerRename for find-and-replace with a preview, or rename each file by its content with an AI renamer.',
+    totalTime: 'PT5M',
+    steps: [
+      {
+        name: 'Copy a few files into a test folder',
+        text: 'Try any batch rename on copies first so you can check the result before touching the real folder.',
+      },
+      {
+        name: 'Select the files in File Explorer',
+        text: 'Open the folder, sort it the way the numbering should follow, and select the files with Ctrl+A or Ctrl+click.',
+      },
+      {
+        name: 'Press F2 and type a name',
+        text: 'Type the new name and press Enter. Windows adds (1), (2), (3) to each file. Press Ctrl+Z right away to undo.',
+      },
+      {
+        name: 'Use PowerRename for patterns',
+        text: 'Right-click the selection, choose Rename with PowerRename, enter Search for and Replace with values, check the preview, and click Apply.',
+      },
+      {
+        name: 'Use an AI renamer for descriptive names',
+        text: 'Drag the files into Zush, pick a Template, review the suggested names, and click Rename. Rename History can restore the batch later.',
+      },
+    ],
+  },
+  'rename-photos-by-date-windows': {
+    name: 'How to Rename Photos by Date Taken on Windows',
+    description:
+      'Use PowerRename with EXIF date taken variables to put the capture date at the start of every photo filename on Windows 11 or 10.',
+    totalTime: 'PT5M',
+    steps: [
+      {
+        name: 'Install Microsoft PowerToys',
+        text: 'Install PowerToys from the Microsoft Store and make sure PowerRename is turned on in its settings.',
+      },
+      {
+        name: 'Open PowerRename on your photos',
+        text: 'Select the photos in File Explorer, right-click, and choose Rename with PowerRename.',
+      },
+      {
+        name: 'Switch to EXIF metadata',
+        text: 'Turn on Use regular expressions and set the metadata source to EXIF/XMP.',
+      },
+      {
+        name: 'Add the date taken to the start of each name',
+        text: 'Search for ^ and replace with $DATE_TAKEN_YYYY-$DATE_TAKEN_MM-$DATE_TAKEN_DD_ so the original name stays at the end and names stay unique.',
+      },
+      {
+        name: 'Check the preview and apply',
+        text: 'Look for photos without a date taken in the preview, exclude them, then click Apply.',
+      },
+    ],
+  },
   'batch-rename-epub-fb2-files': {
     name: 'How to Batch Rename EPUB and FB2 Files by Author and Title',
     description:

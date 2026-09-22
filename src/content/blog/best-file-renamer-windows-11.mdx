@@ -1,0 +1,126 @@
+---
+title: "Best File Renamer for Windows 11 (2026): Free Tools vs AI"
+description: "Six file renamers for Windows 11 and 10 compared: File Explorer, PowerRename, Bulk Rename Utility, Advanced Renamer, ReNamer, and Zush. Which one fits your files."
+date: "2026-09-22"
+slug: "best-file-renamer-windows-11"
+platform: "windows"
+topic: "comparisons"
+tags:
+  - "File Naming"
+  - "Tool Comparisons"
+  - "AI File Renaming"
+tldr: "For pattern jobs (add a date, replace text, number a sequence), PowerRename is free and good enough; Bulk Rename Utility and Advanced Renamer go deeper. For files that each need a different, descriptive name, like screenshots, scans, and photos, use an AI renamer such as Zush, which reads each file before naming it."
+reviewed: "2026-09-22"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogHighlight from '@/components/blog/BlogHighlight.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Quick answer: if every file gets the same kind of change, such as a prefix, a date, or a number sequence, use **PowerRename**. It is free from Microsoft and handles most pattern jobs. If every file needs its own name based on what is inside it, use an AI renamer like [Zush](/windows).
+
+That split decides everything else. Pattern tools are fast and precise, but they only transform the name a file already has. `IMG_4382.jpg` can become `Vacation_001.jpg`, never `lisbon-tram-at-night.jpg`.
+
+**Last checked: September 22, 2026.** Written by the maker of Zush. Other tools' details come from their official pages.
+
+## The six options at a glance
+
+| Tool | Best for | Reads file content | Undo | Price |
+|---|---|---|---|---|
+| File Explorer | A few files, quick sequence | No | Ctrl+Z, last action | Built in |
+| PowerRename | Find-and-replace, regex, dates | No (EXIF fields only) | Ctrl+Z in Explorer | Free (PowerToys) |
+| Bulk Rename Utility | Heavy pattern work, 100k+ files | No (EXIF, ID3 fields) | Generates an undo batch file | Free for personal use |
+| Advanced Renamer | Metadata and GPS-based names | No (EXIF, ID3, GPS, video fields) | Full batch undo | Free for light personal use; $25 personal, $45 commercial |
+| ReNamer | Chains of rules, scripting | No (meta tags) | Undo supported | Lite free for non-commercial use; paid Pro |
+| **Zush** | <BlogHighlight>A different descriptive name for every file</BlogHighlight> | Yes, with AI | Full Rename History | 50 free renames; $10/mo or $48 one-time |
+
+## 1. File Explorer: fine for five files
+
+Select several files, press **F2**, type a name, press Enter. Windows names them `Trip (1).jpg`, `Trip (2).jpg`, and so on. **Ctrl+Z** undoes it right away.
+
+That is all it does. No preview, no dates, no find-and-replace. Use it when the result only needs to be tidy, not meaningful.
+
+## 2. PowerRename: the best free pick for most people
+
+[PowerRename](https://learn.microsoft.com/en-us/windows/powertoys/powerrename) comes with Microsoft PowerToys. Select files, right-click, choose **Rename with PowerRename**, and you get search and replace with a live preview.
+
+It handles more than it looks like:
+
+- Regular expressions, including capture groups (`29-03-2020` → `2020-03-29`)
+- Counters with padding and start values (`Image_${padding=4}`)
+- File creation date variables like `$YYYY-$MM-$DD`
+- Photo EXIF fields such as `$DATE_TAKEN_YYYY`, `$CAMERA_MODEL`, and GPS coordinates
+
+Pick PowerRename for any job you can describe as a pattern. For the AI side, see our [PowerRename alternative](/powerrename-alternative) page.
+
+## 3. Bulk Rename Utility: maximum control
+
+[Bulk Rename Utility](https://www.bulkrenameutility.co.uk/) packs every pattern option into one dense window: regex, JavaScript, auto-numbering, EXIF dates, MP3 tags, CSV-driven renames, and timestamp changes. It handles 100,000+ files without slowing down. Undo works by generating a batch file that reverses the change.
+
+It is free for personal use; business use needs a commercial license. The interface takes some getting used to. More in our [Bulk Rename Utility alternatives](/blog/bulk-rename-utility-alternatives) guide.
+
+## 4. Advanced Renamer: best for photos and music metadata
+
+[Advanced Renamer](https://www.advancedrenamer.com/) builds a name from stacked methods: tags from EXIF, ID3, video properties, and GPS (it can turn coordinates into a city name). It shows a live preview and can undo a full batch. It also runs on macOS.
+
+It is free for light personal use. Regular users are asked to buy a $25 personal license, and work use requires a $45 commercial one. Both are one-time. See our [Advanced Renamer review](/blog/advanced-renamer-alternatives).
+
+## 5. ReNamer: rules and scripts
+
+[ReNamer](https://www.den4b.com/products/renamer) applies an ordered list of rules: insert, delete, replace, case, regex, meta tags, and Pascal Script for anything custom. It is portable and supports 25+ interface languages.
+
+ReNamer Lite is free for non-commercial use, limited to 5 rules and 5 presets. Pro removes those limits and allows commercial use.
+
+## 6. Zush: when each file needs its own name
+
+[Zush](/windows) works differently. Instead of editing the old name, it looks at the file: the text in a PDF, what a screenshot shows, the scene in a photo, the content of a Word or Excel file. Then it writes a name that describes it.
+
+| Before | After |
+|---|---|
+| `Screenshot 2026-09-18 141203.png` | `github-pull-request-review-comments.png` |
+| `scan_0042.pdf` | `2026-09-12_acme_invoice_1042.pdf` |
+| `Document1.docx` | `q3-marketing-plan-draft.docx` |
+| `IMG_4382.jpg` | `2026-08-30_lisbon_tram_street.jpg` |
+
+You stay in control of the shape. Templates and 145+ Naming Blocks fix the order (date, vendor, client, title), the case, and the separators. You review every suggestion before applying it, and Rename History can restore a whole batch later. Folder monitoring renames new files in Downloads or a scanner folder automatically.
+
+AI can run through Zush Cloud AI, your own API key, or locally with Ollama or LM Studio. The first 50 renames are free.
+
+<BlogCTA placement='inline' platform='windows' />
+
+## Which renamer should you use?
+
+- Same change for every file (prefix, date, number): **PowerRename**.
+- Complex patterns on huge folders: **Bulk Rename Utility**.
+- Names from photo, music, or GPS metadata: **Advanced Renamer**.
+- Screenshots, scans, downloads, and photos that need real names: **Zush**.
+
+Plenty of people keep both kinds. PowerRename for quick mechanical fixes, Zush for the folders where you currently open every file to see what it is.
+
+<BlogProductIntro
+  title="Tired of opening files just to see what they are?"
+  description="Zush reads each file on your Windows PC and suggests a clear, searchable name. Review the batch, apply it, undo it any time."
+  links={[
+    { href: '/windows', label: 'Zush for Windows' },
+    { href: '/batch-rename-files', label: 'Batch rename with AI' },
+    { href: '/blog/batch-rename-files-windows-11', label: 'Batch rename in Windows 11' },
+    { href: '/blog/best-ai-file-renamer-tools-windows-compared', label: 'AI renamers for Windows' },
+  ]}
+/>
+
+## FAQ
+
+### What is the best free file renamer for Windows 11?
+
+PowerRename, part of Microsoft PowerToys. It is free, previews every change, supports regex and date variables, and undoes with Ctrl+Z. Bulk Rename Utility is the free alternative for heavier personal jobs.
+
+### Does Windows 11 have a built-in bulk rename?
+
+Yes, but a basic one. Select files in File Explorer and press F2 to give them one name with numbers in brackets. For find-and-replace or dates, install PowerToys and use PowerRename.
+
+### Can a file renamer read what is inside my files?
+
+Pattern tools cannot; they only read the existing name and metadata fields like EXIF or ID3. AI renamers such as Zush read the content itself (text, images, video frames) and write a new descriptive name.
+
+### Which file renamer is safest?
+
+Any tool with a preview and a batch undo. PowerRename, Advanced Renamer, and Zush all show results before applying. Zush also keeps a persistent Rename History, so you can revert a batch days later, not just right after.

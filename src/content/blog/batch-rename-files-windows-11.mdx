@@ -1,0 +1,165 @@
+---
+title: "How to Batch Rename Files in Windows 11: 5 Ways (2026)"
+description: "Rename multiple files at once in Windows 11 or 10: File Explorer, PowerRename, Command Prompt, PowerShell, and AI. Step-by-step, with copy-paste commands."
+date: "2026-09-22"
+slug: "batch-rename-files-windows-11"
+platform: "windows"
+topic: "automation"
+tags:
+  - "File Naming"
+  - "File Explorer"
+  - "Automation"
+tldr: "Select files in File Explorer and press F2 for a quick numbered sequence. Use PowerRename for find-and-replace, dates, and regex with a preview. Use PowerShell for anything scriptable. Use an AI renamer like Zush when each file needs its own descriptive name based on its content."
+reviewed: "2026-09-22"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Quick answer: to rename several files at once in Windows 11, select them in File Explorer, press **F2**, type a name, and press **Enter**. Windows names them `Name (1)`, `Name (2)`, and so on. For anything smarter, such as replacing text, adding dates, or giving each file a real name, use one of the four methods below.
+
+| Method | Best for | Preview | Undo |
+|---|---|---|---|
+| File Explorer (F2) | Quick numbered names | No | Ctrl+Z right after |
+| PowerRename | Find-and-replace, dates, regex | Yes | Ctrl+Z in Explorer |
+| Command Prompt | Changing extensions | No | No |
+| PowerShell | Anything scriptable | With `-WhatIf` | No |
+| Zush (AI) | A descriptive name for each file | Yes | Full Rename History |
+
+Before any batch rename, copy a few files into a test folder and try the method there first.
+
+## 1. File Explorer: F2 for a numbered sequence
+
+1. Open the folder and select the files. Use **Ctrl+A** for all, or **Ctrl+click** to pick.
+2. Press **F2** (or right-click and choose **Rename**, the icon of a text cursor in Windows 11).
+3. Type the new name, for example `Lisbon trip`, and press **Enter**.
+
+You get `Lisbon trip (1).jpg`, `Lisbon trip (2).jpg`, and so on. The numbering follows the current sort order, so sort by **Date** first if order matters. Press **Ctrl+Z** immediately to undo.
+
+**Tip:** to rename files one after another, press F2 on the first, type its name, then press **Tab** to jump to the next file.
+
+## 2. PowerRename: find-and-replace with preview
+
+PowerRename is a free Microsoft tool inside [PowerToys](https://learn.microsoft.com/en-us/windows/powertoys/powerrename). Install PowerToys from the Microsoft Store, then:
+
+1. Select files in File Explorer, right-click, and choose **Rename with PowerRename** (in Windows 11, it may be under **Show more options**).
+2. Type what to find in **Search for** and what to put instead in **Replace with**.
+3. Check the preview on the right, then click **Apply**.
+
+Useful recipes:
+
+| Goal | Search for | Replace with | Options |
+|---|---|---|---|
+| Spaces to hyphens | ` ` (a space) | `-` | Match all occurrences |
+| Add a prefix | `^` | `2026_` | Use regular expressions |
+| Reorder a date `29-03-2026` → `2026-03-29` | `(\d{2})-(\d{2})-(\d{4})` | `$3-$2-$1` | Regex, match all |
+| Number files | `.*` | `Photo_${padding=3;start=1}` | Regex, enumerate items, apply to filename only |
+| Photo date taken | `^` | `$DATE_TAKEN_YYYY-$DATE_TAKEN_MM-$DATE_TAKEN_DD-` | Regex, EXIF/XMP metadata source |
+
+PowerRename can also switch case (lowercase, uppercase, title case) and rename only the extension.
+
+## 3. Command Prompt: change extensions fast
+
+The old `ren` command is handy for one job, changing extensions in bulk:
+
+```bat
+cd "C:\Users\You\Pictures\Export"
+ren *.jpeg *.jpg
+```
+
+That renames every `.jpeg` file in the folder to `.jpg`. It does not ask first and has no undo, so try it on copies.
+
+## 4. PowerShell: scriptable renames
+
+PowerShell can do any pattern you can describe. Open **Terminal** (right-click the Start button) and go to your folder with `cd`. Add `-WhatIf` at the end of any command to preview it without renaming anything.
+
+Add a prefix to every JPG:
+
+```powershell
+(Get-ChildItem *.jpg) | Rename-Item -NewName { "Lisbon_" + $_.Name }
+```
+
+Replace spaces with hyphens:
+
+```powershell
+(Get-ChildItem) | Rename-Item -NewName { $_.Name -replace ' ', '-' }
+```
+
+Add the modified date to the front of every PDF:
+
+```powershell
+(Get-ChildItem *.pdf) | Rename-Item -NewName { $_.LastWriteTime.ToString('yyyy-MM-dd') + '_' + $_.Name }
+```
+
+Number files by date, as `Trip_001.jpg`, `Trip_002.jpg`:
+
+```powershell
+$i = 1
+Get-ChildItem *.jpg | Sort-Object LastWriteTime | ForEach-Object {
+  Rename-Item $_ -NewName ('Trip_{0:D3}{1}' -f $i++, $_.Extension)
+}
+```
+
+The parentheses around `Get-ChildItem` matter: they collect the file list before renaming starts, so a renamed file is not picked up twice.
+
+## 5. AI: give every file its own name
+
+All four methods above transform the name a file already has. They cannot turn `scan_0042.pdf` into `2026-09-12_acme_invoice_1042.pdf`, because the information is inside the file, not in its name.
+
+That is what an AI renamer does. [Zush for Windows](/windows) reads each file (the text of a PDF, what a screenshot shows, the scene in a photo, the content of a Word or Excel file) and suggests a descriptive name:
+
+1. Install Zush from the [Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X).
+2. Drag in a folder or a selection of files.
+3. Pick a Template, such as Screenshots or Bookkeeper Expenses, or build a pattern from Naming Blocks like `{Created Date}_{Vendor}_{Document Type}`.
+4. Review the suggested names. Edit any of them with a double-click.
+5. Click **Rename**. If you change your mind later, restore the batch from Rename History.
+
+| Before | After |
+|---|---|
+| `Screenshot 2026-09-18 141203.png` | `github-pull-request-review-comments.png` |
+| `scan_0042.pdf` | `2026-09-12_acme_invoice_1042.pdf` |
+| `Document1.docx` | `q3-marketing-plan-draft.docx` |
+
+Turn on folder monitoring and new files in Downloads or a scanner folder get renamed as they arrive. The first 50 AI renames are free.
+
+<BlogCTA placement='inline' platform='windows' />
+
+## Common problems
+
+**"The file name is too long."** Windows paths are limited to 260 characters by default. Shorten the new names or move the folder closer to the drive root.
+
+**Files skipped or renamed twice in PowerShell.** Wrap `Get-ChildItem` in parentheses, as in the examples above.
+
+**PowerRename is missing from the right-click menu.** Open PowerToys settings, make sure PowerRename is turned on, and check **Show more options** on Windows 11.
+
+**Numbers are in the wrong order.** File Explorer and PowerRename number files in the current sort order. Sort by date or name before renaming.
+
+**A file is "in use."** Close the app that has it open (often a photo viewer or Word) and try again.
+
+<BlogProductIntro
+  title="Need real names, not Photo (1), Photo (2)?"
+  description="Zush reads each file on Windows and suggests a clear, searchable name. Review first, then apply the whole batch in one click."
+  links={[
+    { href: '/windows', label: 'Zush for Windows' },
+    { href: '/powerrename-alternative', label: 'PowerRename alternative' },
+    { href: '/blog/best-file-renamer-windows-11', label: 'Best file renamers for Windows 11' },
+    { href: '/batch-rename-files', label: 'Batch rename with AI' },
+  ]}
+/>
+
+## FAQ
+
+### How do I rename multiple files at once in Windows 11?
+
+Select the files in File Explorer, press F2, type a name, and press Enter. Windows adds (1), (2), (3) to each. For find-and-replace or dates, use PowerRename from Microsoft PowerToys.
+
+### How do I undo a batch rename in Windows?
+
+Press Ctrl+Z in File Explorer right after renaming; this works for F2 and PowerRename. Command Prompt and PowerShell renames have no undo. Zush keeps a Rename History you can restore from at any time.
+
+### Can I batch rename files without installing anything?
+
+Yes. File Explorer (F2), Command Prompt (`ren`), and PowerShell (`Rename-Item`) are all built into Windows 11 and 10.
+
+### How do I rename files by their content in Windows?
+
+Built-in tools cannot read file content. Use an AI renamer like Zush, which analyzes each file and suggests a name based on what it contains.
