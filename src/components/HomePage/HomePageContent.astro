@@ -17,6 +17,8 @@ import CrossPlatformBanner from '@/components/CrossPlatformBanner/CrossPlatformB
 import EvidenceSignals from '@/components/EvidenceSignals/EvidenceSignals.astro';
 import Testimonials from '@/components/Testimonials/Testimonials.astro';
 import FeaturedOn from '@/components/FeaturedOn/FeaturedOn.astro';
+import ComparisonTable from '@/components/ComparisonTable/ComparisonTable.astro';
+import { HOME_COMPARISON } from '@/data/homeComparison';
 import macChangelogSource from '@/content/changelog.md?raw';
 import windowsChangelogSource from '@/content/changelog.windows.md?raw';
 import { parseLatestVersion } from '@/utils/version';
@@ -80,6 +82,7 @@ const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
 <CloudFolders title={copy.home.cloudFoldersTitle} />
 <Testimonials locale={locale} />
 <Tour copy={copy.home.showcase} />
+{locale === 'en' && <ComparisonTable {...HOME_COMPARISON} />}
 <Pricing copy={copy.pricing} />
 <FAQ
   title={copy.home.faqTitle}

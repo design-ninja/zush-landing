@@ -20,6 +20,13 @@ interface FAQProps {
 }
 
 const STATIC_JSX_OVERRIDES: Record<string, React.ReactNode> = {
+  'How does Zush compare to NameQuick, RenameClick, Renamer.ai, and FilesDesk?': (
+    <>
+      Zush has no monthly rename meter on paid PRO and publishes support for RAW photos, design files, video, and audio in the same workflow. NameQuick, Renamer.ai, and FilesDesk meter their managed renames, RenameClick does not document RAW, design, or video support, and Renamer.ai publishes no BYOK or local-model option. The{' '}
+      <AppLink href="/blog/best-ai-file-renamer-tools-mac-compared">Mac comparison</AppLink> and{' '}
+      <AppLink href="/blog/best-ai-file-renamer-tools-windows-compared">Windows comparison</AppLink> list the sources and check dates.
+    </>
+  ),
   'What is BYOK (Bring Your Own Key)?': (
     <>
       BYOK lets users on every plan connect their own API key from Gemini, OpenRouter, OpenAI, or Claude. The free plan shares a 50-rename limit across Zush Cloud, BYOK, LM Studio, and Ollama; PRO removes that limit. Your key is stored locally in secure platform storage and is sent only when Zush needs to call your selected provider through the backend relay.{' '}

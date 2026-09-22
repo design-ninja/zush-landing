@@ -133,6 +133,21 @@
           "mount_override": "ZUSH_SANDBOX_ENV_FILE"
         }
       ]
+    },
+    ".env.1password.ai-visibility": {
+      "sources": [
+        {
+          "mount": ".secrets/production.env",
+          "variables": {
+            "OPENAI_API_KEY": "OPENAI_API_KEY",
+            "GEMINI_API_KEY": "GEMINI_API_KEY",
+            "ANTHROPIC_API_KEY": "CLAUDE_API_KEY",
+            "OPENROUTER_API_KEY": "OPENROUTER_API_KEY"
+          },
+          "fallback_mount": "../zush-app/.secrets/production.env",
+          "mount_override": "ZUSH_PRODUCTION_ENV_FILE"
+        }
+      ]
     }
   }
 }
