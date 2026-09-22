@@ -1,0 +1,147 @@
+---
+title: "How to Organize Files Automatically on Windows 11 (2026)"
+description: "Set up automatic file organization on Windows 11 and 10: Storage Sense cleanup, auto-renaming new files by content, rule-based moving, and a weekly routine."
+date: "2026-09-22"
+slug: "organize-files-automatically-windows-11"
+platform: "windows"
+topic: "organization"
+tags:
+  - "File Organization"
+  - "Automation"
+  - "File Explorer"
+tldr: "Automatic organization on Windows works best in three layers: Storage Sense deletes what you do not need, Zush names what you keep by its content, and a rule tool like File Juggler or a PowerShell script moves files by those names. Set up one folder at a time, starting with Downloads."
+reviewed: "2026-09-22"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Quick answer: Windows 11 can clean up on its own with **Storage Sense**, but it cannot name or sort files by what they are. For that, add two tools: an AI renamer like [Zush](/windows) that watches a folder and names each new file by its content, and a rule tool like File Juggler that moves files by those names.
+
+The trick is doing it in that order. Rules need something predictable to match. `Document(3).pdf` gives them nothing. `2026-09-12_acme_invoice_1042.pdf` gives them everything.
+
+## The three layers
+
+| Layer | Job | Tool | Cost |
+|---|---|---|---|
+| 1. Clean | Delete old downloads, temp files, recycle bin | Storage Sense | Built in |
+| 2. Name | Give every new file a descriptive name | Zush folder monitoring | 50 free renames, then $10/mo or $48 |
+| 3. Move | Route files into folders by name | File Juggler, DropIt, or PowerShell | About $40 / free / free |
+
+You do not need all three on day one. Most people get the biggest win from layer 2 on the Downloads folder alone.
+
+## Step 1: Turn on Storage Sense
+
+Storage Sense is built into Windows 11 and 10 and removes files you no longer need.
+
+1. Open **Settings → System → Storage**.
+2. Turn on **Storage Sense**, then click it to open its options.
+3. Turn on **Automatic User content cleanup**.
+4. Set **Run Storage Sense** to every week or every month.
+5. Choose when to empty the **Recycle Bin** (for example, after 30 days).
+6. Set **Delete files in my Downloads folder if they haven't been opened for more than** to 60 days, or leave it at **Never** if you keep things in Downloads.
+
+It also cleans temporary files and can turn OneDrive files you have not opened in a while into online-only copies to free space.
+
+Storage Sense only deletes. It never renames or sorts.
+
+## Step 2: Name new files automatically
+
+This is the step that makes files findable. [Zush for Windows](/windows) monitors a folder and, when a file arrives, reads it and renames it:
+
+| Arrives as | Renamed to |
+|---|---|
+| `Invoice.pdf` | `2026-09-12_acme_invoice_1042.pdf` |
+| `Screenshot 2026-09-18 141203.png` | `stripe-revenue-dashboard-september.png` |
+| `IMG_20260830_143512.jpg` | `2026-08-30_lisbon_tram_street.jpg` |
+| `Document1.docx` | `q3-marketing-plan-draft.docx` |
+
+To set it up:
+
+1. Install Zush from the [Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X).
+2. Open **Monitor** and add a folder, starting with Downloads.
+3. Choose a Template for that folder. Smart Rename works for mixed files; Bookkeeper Expenses gives invoices and receipts a date, vendor, and amount.
+4. Leave it running. New files get named as they land.
+
+Monitor several folders with different Templates: Downloads with Smart Rename, a scanner folder with Bookkeeper Expenses, your Screenshots folder with Screenshots.
+
+Zush renames files in place and does not move them, so paths, shortcuts, and OneDrive sync keep working. Every rename goes into Rename History, so you can revert anything that looks wrong.
+
+<BlogCTA placement='inline' platform='windows' />
+
+## Step 3: Move files by rules
+
+Once names are predictable, moving them is easy. Pick one:
+
+**File Juggler** ([filejuggler.com](https://www.filejuggler.com/)): watch Downloads, and if a name contains `_invoice`, move it to `Documents\Finance\Invoices`. About $40 one-time, 30-day trial.
+
+**DropIt** ([dropitproject.com](https://www.dropitproject.com/)): free and open source. Rules by name pattern, monitored folders scanned on a timer. Last updated in 2018.
+
+**PowerShell + Task Scheduler**: free. Save this as `move-invoices.ps1`:
+
+```powershell
+$src = "$env:USERPROFILE\Downloads"
+$dst = "$env:USERPROFILE\Documents\Finance\Invoices"
+New-Item -ItemType Directory -Force -Path $dst | Out-Null
+Get-ChildItem $src -Filter "*_invoice*.pdf" | Move-Item -Destination $dst
+```
+
+Then open **Task Scheduler → Create Basic Task**, run it daily or at log on, with the action `powershell.exe -ExecutionPolicy Bypass -File "C:\Scripts\move-invoices.ps1"`.
+
+Give Zush a minute to rename a file before the move rule runs. A rule that fires every few minutes, not instantly, avoids moving files before they are named.
+
+## A simple folder structure that works
+
+Automation is easier with fewer, broader folders:
+
+```
+Documents
+  Finance
+    Invoices
+    Receipts
+    Taxes
+  Clients
+  Personal
+Pictures
+  2026
+Downloads   (inbox, cleaned by Storage Sense)
+```
+
+Descriptive names do most of the finding. You search `acme invoice` in File Explorer and it shows up, whatever folder it is in.
+
+## A 10-minute weekly routine
+
+Even good automation leaves a few odd files. Once a week:
+
+1. Open Downloads and sort by **Date modified**.
+2. Delete what you do not need.
+3. Check Zush's Activity for anything that got a vague name, and edit it.
+4. Move any strays the rules missed.
+
+<BlogProductIntro
+  title="Start with the folder that annoys you most"
+  description="Point Zush at Downloads or a scanner folder on Windows. Every new file gets a clear name as it arrives, and you can undo any rename."
+  links={[
+    { href: '/windows', label: 'Zush for Windows' },
+    { href: '/automate-downloads-folder', label: 'Automate Downloads' },
+    { href: '/docs/folder-monitoring', label: 'Folder monitoring docs' },
+    { href: '/blog/hazel-for-windows-alternatives', label: 'Hazel for Windows' },
+  ]}
+/>
+
+## FAQ
+
+### Can Windows 11 organize files automatically?
+
+Partly. Storage Sense deletes old downloads, temporary files, and recycle bin items on a schedule. It does not rename or sort files; for that, use a tool like Zush for naming and File Juggler or a PowerShell script for moving.
+
+### How do I automatically rename files when they are downloaded?
+
+Use folder monitoring in Zush: add your Downloads folder under Monitor and pick a Template. Each new file is analyzed and renamed by its content as soon as it arrives.
+
+### What is the best app to organize files on Windows?
+
+It depends on the job. Zush for descriptive filenames, File Juggler for rule-based moving, and Sortio if you want AI to design folders and move files. See [the best AI file organizers for Windows](/blog/best-ai-file-organizers-windows).
+
+### Is it safe to automate file organization?
+
+Yes, if you start small. Test on one folder with copies, choose tools with a preview and undo, and avoid rules that delete files until you trust them. Zush renames in place and keeps a full Rename History, which makes it low risk to start with.

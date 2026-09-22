@@ -1,0 +1,130 @@
+---
+title: "Zush vs Files Magic AI (2026): Renamer or Mac Organizer?"
+description: "Zush vs Files Magic AI compared: renaming vs folder organization, file types, privacy, undo, platforms, and price. Which one fits your Mac, and when you need Windows."
+date: "2026-09-22"
+slug: "zush-vs-files-magic-ai"
+platform: "mac"
+topic: "comparisons"
+tags:
+  - "Tool Comparisons"
+  - "AI File Renaming"
+  - "File Organization"
+tldr: "Files Magic AI is a Mac utility that reorganizes folders, renames files, and cleans up duplicates and caches. Zush is a dedicated AI renamer for Mac and Windows with more naming control, folder monitoring, and a full Rename History. Choose Files Magic AI for an all-in-one cleanup; choose Zush when searchable filenames are the goal."
+reviewed: "2026-09-22"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogHighlight from '@/components/blog/BlogHighlight.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Quick answer: pick **Files Magic AI** if you want one Mac app that proposes a new folder structure, renames files, and cleans up duplicates and developer caches. Pick [Zush](/mac) if the problem is filenames: it gives you more control over how names are built, watches folders for new files, keeps a full undo history, and also runs on Windows.
+
+They overlap on one feature, content-based renaming, and differ on almost everything else.
+
+**Last checked: September 22, 2026.** Written by the maker of Zush. Files Magic AI details come from its [official page](https://1dot.ai/files-magic-ai).
+
+## Side by side
+
+| | Zush | Files Magic AI |
+|---|---|---|
+| Main job | <BlogHighlight>Renames files in place by content</BlogHighlight> | Reorganizes folders, renames, cleans the system |
+| Platforms | Mac (macOS 15+) and Windows 10/11 | Mac only (macOS 12+) |
+| Moves files into folders | No | Yes, proposes a folder structure |
+| Naming control | Templates, 145+ Naming Blocks, Custom AI Blocks, case, separators, language | Magic Rename suggestions |
+| File types | 100+: images incl. RAW/HEIC, PDFs, Office/iWork, design files, video, audio | PDFs, spreadsheets, presentations, photos (with OCR) |
+| Where AI runs | Zush Cloud AI, BYOK, or local Ollama / LM Studio | Rename: on device (Apple Intelligence, built-in model, or optional LLM). Organize: filenames sent to the cloud |
+| Watches folders | Yes | Not documented |
+| Undo | Full Rename History with batch revert | Undo for recent actions |
+| Extras | Finder tags and Spotlight metadata | Duplicate finder, unused apps, dev cache cleanup |
+| Price | 50 free renames; $10/mo or $48 one-time | $4.99/mo, $29/yr (discounted), or $49.99 lifetime; 7-day trial on yearly |
+
+## What Files Magic AI does well
+
+[Files Magic AI](https://1dot.ai/files-magic-ai) bundles three tools:
+
+1. **Organization.** It looks at your filenames and proposes a folder structure, which you preview, adjust, and apply.
+2. **Magic Rename.** It reads file contents on your Mac and suggests names, for example `Scan_0043.pdf` becoming `2026-03-14_Invoice_Acme-Studios.pdf`.
+3. **System Cleaner.** It finds duplicates, unused apps, and caches such as `node_modules`, Xcode, Flutter, and Gradle.
+
+For privacy, the vendor says file contents stay on your Mac; only filenames are sent for AI organization. It supports locally available iCloud, Dropbox, and Google Drive folders.
+
+It is a good fit if you want one inexpensive utility for a messy Mac and you are comfortable letting an app move files.
+
+## What Zush does differently
+
+[Zush](/mac) is only about names, and it goes deep on them.
+
+**You decide the shape of every name.** Pick a ready-made Template (Screenshots, Bookkeeper Expenses, Photographer Shoots, Client Meeting Notes, and others) or build your own from Naming Blocks: date, vendor, amount, client, scene, capture date, document type. Custom AI Blocks let you ask for any field in plain language. The result is a name that follows the same pattern every time:
+
+- `scan_0042.pdf` → `2026-09-12_acme_invoice_1042_1250usd.pdf`
+- `Screenshot 2026-09-18 at 14.12.03.png` → `stripe-revenue-dashboard-september.png`
+- `DSC01877.ARW` → `2026-06-14_wedding_first_dance.ARW`
+
+**New files are handled automatically.** Folder monitoring renames files as they land in Downloads, Screenshots, or a scanner folder.
+
+**Nothing is permanent.** Rename History records original name, new name, folder, and time for every batch, and restores it whenever you need.
+
+**It covers more file types**, including RAW photos, PSD, Figma, Sketch, Illustrator, video, and audio.
+
+**It works on Windows too**, with the same Templates and AI modes.
+
+Zush does not move files or clean up disk space. Paths stay where you put them.
+
+<BlogCTA placement='inline' platform='mac' />
+
+## Privacy compared
+
+Both apps can keep file contents on your computer:
+
+- Files Magic AI's Magic Rename runs on device. Its folder organization sends filenames, not contents, to the cloud.
+- Zush's local modes (Ollama or LM Studio) keep analysis on your Mac or PC. Zush Cloud AI and BYOK send file content to the selected cloud model to generate names.
+
+For sensitive folders, use Files Magic AI's Magic Rename or Zush with a local model.
+
+## Price compared
+
+| | Year 1 | 3 years |
+|---|---|---|
+| Zush one-time | $48 | $48 |
+| Zush monthly | $120 | $360 |
+| Files Magic AI lifetime | $49.99 | $49.99 |
+| Files Magic AI yearly (current discount) | $29 | $87 |
+
+On lifetime pricing they cost about the same. The choice comes down to the job, not the price.
+
+## Which one should you pick?
+
+- You want your Mac tidied: new folders, duplicates removed, caches cleared: **Files Magic AI**.
+- You want every file to have a clear, consistent name you can search for: **Zush**.
+- You also use a Windows PC: **Zush**.
+- You rename video, RAW photos, or design files: **Zush**.
+
+Some people use both: Zush for naming, Files Magic AI for cleanup. Keep them on separate folders so two tools are not changing the same files.
+
+<BlogProductIntro
+  title="Want names you can actually search for?"
+  description="Zush builds consistent, content-aware filenames on Mac and Windows, watches folders for new files, and can undo any batch."
+  links={[
+    { href: '/mac', label: 'Zush for Mac' },
+    { href: '/windows', label: 'Zush for Windows' },
+    { href: '/blog/best-ai-file-organizers-mac', label: 'AI file organizers for Mac' },
+    { href: '/docs/naming-blocks', label: 'Naming Blocks' },
+  ]}
+/>
+
+## FAQ
+
+### Is Files Magic AI available for Windows?
+
+No. Files Magic AI is Mac only and requires macOS 12 or later. Zush runs on both Mac and Windows.
+
+### Does Files Magic AI upload my files?
+
+According to the vendor, file contents stay on your Mac. For folder organization, only filenames are sent to the cloud; Magic Rename runs on device.
+
+### Can Zush organize files into folders like Files Magic AI?
+
+No. Zush renames files in place and does not move them. If you need folders built automatically, pair Zush with a routing tool such as Hazel, or use Files Magic AI for that part.
+
+### Which is cheaper, Zush or Files Magic AI?
+
+On lifetime plans they are close: $48 for Zush, $49.99 for Files Magic AI. Files Magic AI's discounted yearly plan is $29; Zush monthly is $10.

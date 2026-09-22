@@ -1,0 +1,130 @@
+---
+title: "Hazel for Windows? 5 Alternatives That Actually Work (2026)"
+description: "Hazel is Mac-only. These five Windows tools cover the same jobs: watching folders, renaming files, and moving them by rules or AI. Prices, limits, and which to pick."
+date: "2026-09-22"
+slug: "hazel-for-windows-alternatives"
+platform: "windows"
+topic: "automation"
+tags:
+  - "Automation"
+  - "Tool Comparisons"
+tldr: "There is no Hazel for Windows. File Juggler is the closest match for rule-based renaming and moving. DropIt is the free option. Zush covers the part Hazel cannot do well: reading each file and giving it a descriptive name. Many people run Zush for naming and File Juggler for moving."
+reviewed: "2026-09-22"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Quick answer: Hazel only runs on macOS, and Noodlesoft does not make a Windows version. The closest Windows match is [File Juggler](https://www.filejuggler.com/), which watches folders and renames or moves files by rules. If you want files named by what is inside them, not by rules you write, use [Zush for Windows](/windows).
+
+Hazel does two jobs at once: it decides what a file is, then it does something with it. On Windows those jobs are usually split across two tools, which turns out to be easier to debug.
+
+**Last checked: September 22, 2026.** Written by the maker of Zush. Details for other tools come from their official sites, linked below.
+
+## What Hazel does, and what you need to replace
+
+[Hazel](https://www.noodlesoft.com/) watches folders on a Mac and applies rules: if a file matches conditions (name, type, date, contents, source), it renames, moves, tags, archives, or runs a script. It costs $42 one-time.
+
+On Windows, look for the same three pieces:
+
+1. **Folder watching.** Something that notices new files in Downloads, Desktop, or a scanner folder.
+2. **Conditions.** A way to recognize a file, by pattern or by reading it.
+3. **Actions.** Rename, move, copy, delete, extract.
+
+Rules work well for predictable files: every bank statement has the same sender and layout. They fall apart on messy ones like screenshots, phone photos, and PDFs called `document(3).pdf`, because there is no pattern to match. That is the gap AI naming fills.
+
+## The five alternatives at a glance
+
+| Tool | Closest to Hazel for | Reads file content | Price |
+|---|---|---|---|
+| File Juggler | Rules that rename and move | PDF text and properties | About $40 one-time, 30-day trial |
+| DropIt | Free rule-based sorting | Basic content filters | Free, open source |
+| Zush | Naming files by what they contain | Yes, with AI (images, PDFs, Office, video, audio) | 50 free renames; $10/mo or $48 one-time |
+| Sortio | AI folder plans that move files | Yes, with AI | Free tier; Pro $14.99/mo |
+| PowerShell + Task Scheduler | Anything you can script | Whatever you code | Free |
+
+## 1. File Juggler: the closest Hazel replacement
+
+[File Juggler](https://www.filejuggler.com/) is built for exactly the Hazel workflow. You create a rule with a monitored folder, conditions, and actions. It can rename using PDF properties, match text inside PDFs, move files into dated folders, extract archives, and upload to Evernote.
+
+A license is about $40 one-time and covers one person on several PCs. The 30-day trial has no feature limits.
+
+Pick it if you already think in Hazel rules. Its limit is the same as Hazel's: if you cannot describe the file with a condition, the rule cannot catch it.
+
+## 2. DropIt: the free option
+
+[DropIt](https://www.dropitproject.com/) is free and open source. Rules match files by name, size, date, properties, or regex, and 21 actions cover move, copy, rename, compress, extract, and more. You drag files onto a floating target, or let it scan monitored folders on a timer.
+
+The last release (8.5.1) came out in October 2018. It works, but it will not get new features.
+
+Pick it for simple sorting by extension or name pattern when paying is not an option.
+
+## 3. Zush: the part rules cannot do
+
+[Zush](/windows) handles the files that break rules. It reads each file, including screenshots, scans, photos, Office documents, and video, and writes a descriptive name:
+
+- `Screenshot 2026-09-18 141203.png` → `stripe-revenue-dashboard-september.png`
+- `scan_0042.pdf` → `2026-09-12_acme_invoice_1042.pdf`
+- `IMG_4382.jpg` → `2026-08-30_lisbon_tram_28_street.jpg`
+
+Folder monitoring makes it work like a Hazel rule: new files in Downloads or a scanner folder are renamed as they arrive. A Template decides the pattern, so every invoice follows the same `date_vendor_invoice_number` shape. You can preview names before applying, and Rename History reverts a whole batch later.
+
+Zush does not move files. That is deliberate: renaming keeps paths stable, so OneDrive sync and shortcuts do not break.
+
+<BlogProductIntro
+  title="Rules can't read a screenshot. Zush can."
+  description="Monitor Downloads or a scanner folder on Windows and let Zush name each new file by its content. Pair it with File Juggler if files should also move."
+  links={[
+    { href: '/windows', label: 'Zush for Windows' },
+    { href: '/hazel-alternative', label: 'Hazel alternative' },
+    { href: '/docs/folder-monitoring', label: 'Folder monitoring docs' },
+    { href: '/automate-downloads-folder', label: 'Automate Downloads' },
+  ]}
+/>
+
+## 4. Sortio: AI that plans folders and moves files
+
+[Sortio](https://www.getsortio.com/) takes a sentence like "sort invoices by year and screenshots by project", shows a plan, then renames and moves files. Smart Folders keep applying it to new arrivals. It runs on Windows 10/11, macOS, and Linux.
+
+The free plan includes up to five rules and a one-time AI trial. Pro is $14.99 per month or $99 per year. Ollama and LM Studio keep processing on your PC.
+
+Pick it when you want AI to decide where files go, and you are comfortable reviewing move plans carefully.
+
+## 5. PowerShell and Task Scheduler: the DIY route
+
+Windows already has the parts: PowerShell can rename and move files, and Task Scheduler can run a script every few minutes or at login. A minimal "move PDFs out of Downloads" script looks like this:
+
+```powershell
+Get-ChildItem "$env:USERPROFILE\Downloads" -Filter *.pdf |
+  Move-Item -Destination "$env:USERPROFILE\Documents\PDFs"
+```
+
+It is free and endlessly flexible. You also own everything: duplicate names, locked files, logging, and undo. Worth it if you enjoy scripting; otherwise a tool saves the weekend.
+
+<BlogCTA placement='inline' platform='windows' />
+
+## A Hazel-style setup on Windows
+
+The combination that covers most of what Hazel users miss:
+
+1. **Zush monitors Downloads** and renames each new file by content, using a Template such as `{Created Date}_{Vendor}_{Document Type}`.
+2. **File Juggler watches the same folder** and moves files by the now-predictable name: `*_invoice.pdf` to `Finance\Invoices`, `*_receipt.pdf` to `Finance\Receipts`.
+
+Test with copies first. Once both steps look right, point them at the real folder.
+
+## FAQ
+
+### Is there a Hazel for Windows?
+
+No. Hazel is macOS-only. File Juggler is the closest Windows equivalent for rule-based renaming and moving, and DropIt is a free alternative.
+
+### What is the best free Hazel alternative for Windows?
+
+DropIt is free and open source but has not been updated since 2018. Zush has 50 free AI renames if your main problem is unclear filenames. PowerShell with Task Scheduler is free if you can script.
+
+### Can Windows organize files automatically without extra software?
+
+Partly. Storage Sense can delete old files from Downloads, and PowerShell scripts scheduled with Task Scheduler can move or rename files. Neither reads what a file contains. See [how to organize files automatically on Windows 11](/blog/organize-files-automatically-windows-11).
+
+### Can Zush replace Hazel on Windows?
+
+For naming, yes, and it goes further than Hazel's pattern renaming because it reads the file. For moving files between folders, no. Pair Zush with File Juggler or a script for that.
