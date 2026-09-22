@@ -7,10 +7,10 @@ import { getAllPosts } from '@/data/blog';
 import styles from './HomeBlogHighlights.module.scss';
 
 const FEATURED_SLUGS = [
-  'best-ai-file-renamer-tools-mac-compared',
   'best-ai-file-renamer-tools-windows-compared',
-  'batch-rename-files-on-mac-complete-guide',
-  'best-ways-to-organize-photos-on-mac',
+  'best-ai-file-renamer-tools-mac-compared',
+  'best-file-renamer-tools',
+  'renamer-ai-alternatives',
 ] as const;
 
 const posts = await getAllPosts();
@@ -43,8 +43,8 @@ const featured = FEATURED_SLUGS.map((slug) => {
         align="center"
         className={sectionHeaderStyles.SectionHeader__Description}
       >
-        How Zush compares with other AI renamers, and how to clean up Mac folders
-        that never had a naming system.
+        How Zush compares with other AI and pattern-based file renamers on Mac
+        and Windows, and what to use instead of Renamer.ai.
       </Text>
     </div>
 

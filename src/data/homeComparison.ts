@@ -11,7 +11,6 @@ import { PRO_PRICING_SUMMARY } from '@/constants/pricing';
  * result here; do not edit these rows from memory.
  */
 export const HOME_COMPARISON: ComparisonTableProps = {
-  eyebrow: 'AI file renamers compared',
   title: 'How Zush compares to other AI file renamers',
   intro:
     `Zush is our pick for the best AI file renamer on Mac and Windows: one workflow that reads ${SUPPORTED_FORMAT_COUNT} file formats, follows your naming rules, previews every batch, and undoes it from Rename History. Paid PRO has no monthly rename meter, and the first ${APP_CONFIG.free_tier_limit} renames are free. The other rows summarize our Mac and Windows comparisons.`,

@@ -12,6 +12,15 @@ export const MICROSOFT_STORE_RATING = {
 
 export const MICROSOFT_STORE_REVIEWS = [
   {
+    name: 'Lennox',
+    title: 'Awesome App',
+    quote:
+      'Awesome App, I had over 127 Reels that needed namimng, it did it flawlessly, so well that I ended up buying the App Permanently :)',
+    rating: 5,
+    publishedAt: '2026-09-06',
+    source: WINDOWS_STORE_US_URL,
+  },
+  {
     name: 'Robert',
     title: 'Well Spent Money',
     quote:

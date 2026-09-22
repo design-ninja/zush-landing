@@ -3,6 +3,7 @@ import Heading from '@/components/Heading';
 import StarRating from '@/components/StarRating';
 import Text from '@/components/Text';
 import { DEFAULT_LOCALE, type Locale } from '@/i18n/config';
+import { WINDOWS_STORE_US_URL } from '@/constants';
 import { MICROSOFT_STORE_REVIEWS } from '@/data/microsoftStoreReviews';
 import { SOFTPEDIA_REVIEW } from '@/data/accountantsLanding';
 import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module.scss';
@@ -28,17 +29,17 @@ const testimonials = [
   },
 ];
 
-const copyByLocale: Partial<Record<Locale, { title: string; description: string; sourcePrefix: string; dateLocale: string }>> = {
-  en: { title: 'What people say about', description: 'Published reviews from the US Microsoft Store, plus Softpedia’s independent editorial assessment.', sourcePrefix: 'Read on', dateLocale: 'en-US' },
-  de: { title: 'Was Menschen über', description: 'Veröffentlichte Rezensionen aus dem US Microsoft Store sowie die unabhängige Bewertung von Softpedia.', sourcePrefix: 'Lesen auf', dateLocale: 'de-DE' },
-  fr: { title: 'Ce que les clients disent de', description: 'Avis publiés sur le Microsoft Store américain, ainsi que l’évaluation éditoriale indépendante de Softpedia.', sourcePrefix: 'Lire sur', dateLocale: 'fr-FR' },
-  es: { title: 'Lo que los clientes dicen de', description: 'Reseñas publicadas en Microsoft Store de EE. UU. y la evaluación editorial independiente de Softpedia.', sourcePrefix: 'Leer en', dateLocale: 'es-ES' },
-  'pt-br': { title: 'O que os clientes dizem sobre', description: 'Avaliações publicadas na Microsoft Store dos EUA e a análise editorial independente da Softpedia.', sourcePrefix: 'Ler na', dateLocale: 'pt-BR' },
-  it: { title: 'Cosa dicono i clienti di', description: 'Recensioni pubblicate nel Microsoft Store statunitense e la valutazione editoriale indipendente di Softpedia.', sourcePrefix: 'Leggi su', dateLocale: 'it-IT' },
-  nl: { title: 'Wat klanten zeggen over', description: 'Gepubliceerde recensies uit de Amerikaanse Microsoft Store, plus Softpedia’s onafhankelijke redactionele beoordeling.', sourcePrefix: 'Lees op', dateLocale: 'nl-NL' },
-  ja: { title: 'お客様の声：', description: '米国 Microsoft Store に掲載されたレビューと、Softpedia による独立した編集評価です。', sourcePrefix: '掲載元', dateLocale: 'ja-JP' },
-  ko: { title: '고객들이 말하는', description: '미국 Microsoft Store에 게시된 리뷰와 Softpedia의 독립 편집 평가입니다.', sourcePrefix: '원문 보기', dateLocale: 'ko-KR' },
-  'zh-cn': { title: '客户如何评价', description: '来自美国 Microsoft Store 的公开评论，以及 Softpedia 的独立编辑评测。', sourcePrefix: '查看来源', dateLocale: 'zh-CN' },
+const copyByLocale: Partial<Record<Locale, { title: string; description: string; sourcePrefix: string; dateLocale: string; storeLink: string }>> = {
+  en: { title: 'What people say about', description: 'Published reviews from the US Microsoft Store, plus Softpedia’s independent editorial assessment.', sourcePrefix: 'Read on', dateLocale: 'en-US', storeLink: 'See all reviews on Microsoft Store' },
+  de: { title: 'Was Menschen über', description: 'Veröffentlichte Rezensionen aus dem US Microsoft Store sowie die unabhängige Bewertung von Softpedia.', sourcePrefix: 'Lesen auf', dateLocale: 'de-DE', storeLink: 'Alle Rezensionen im Microsoft Store' },
+  fr: { title: 'Ce que les clients disent de', description: 'Avis publiés sur le Microsoft Store américain, ainsi que l’évaluation éditoriale indépendante de Softpedia.', sourcePrefix: 'Lire sur', dateLocale: 'fr-FR', storeLink: 'Voir tous les avis sur le Microsoft Store' },
+  es: { title: 'Lo que los clientes dicen de', description: 'Reseñas publicadas en Microsoft Store de EE. UU. y la evaluación editorial independiente de Softpedia.', sourcePrefix: 'Leer en', dateLocale: 'es-ES', storeLink: 'Ver todas las reseñas en Microsoft Store' },
+  'pt-br': { title: 'O que os clientes dizem sobre', description: 'Avaliações publicadas na Microsoft Store dos EUA e a análise editorial independente da Softpedia.', sourcePrefix: 'Ler na', dateLocale: 'pt-BR', storeLink: 'Ver todas as avaliações na Microsoft Store' },
+  it: { title: 'Cosa dicono i clienti di', description: 'Recensioni pubblicate nel Microsoft Store statunitense e la valutazione editoriale indipendente di Softpedia.', sourcePrefix: 'Leggi su', dateLocale: 'it-IT', storeLink: 'Tutte le recensioni sul Microsoft Store' },
+  nl: { title: 'Wat klanten zeggen over', description: 'Gepubliceerde recensies uit de Amerikaanse Microsoft Store, plus Softpedia’s onafhankelijke redactionele beoordeling.', sourcePrefix: 'Lees op', dateLocale: 'nl-NL', storeLink: 'Alle recensies in de Microsoft Store' },
+  ja: { title: 'お客様の声：', description: '米国 Microsoft Store に掲載されたレビューと、Softpedia による独立した編集評価です。', sourcePrefix: '掲載元', dateLocale: 'ja-JP', storeLink: 'Microsoft Store のレビューをすべて見る' },
+  ko: { title: '고객들이 말하는', description: '미국 Microsoft Store에 게시된 리뷰와 Softpedia의 독립 편집 평가입니다.', sourcePrefix: '원문 보기', dateLocale: 'ko-KR', storeLink: 'Microsoft Store에서 모든 리뷰 보기' },
+  'zh-cn': { title: '客户如何评价', description: '来自美国 Microsoft Store 的公开评论，以及 Softpedia 的独立编辑评测。', sourcePrefix: '查看来源', dateLocale: 'zh-CN', storeLink: '在 Microsoft Store 查看全部评论' },
 };
 
 const { locale = DEFAULT_LOCALE } = Astro.props as Props;
@@ -86,5 +87,11 @@ const copy = copyByLocale[locale] ?? copyByLocale.en!;
         </article>
       ))}
     </div>
+
+    <p class={styles.Testimonials__More}>
+      <a href={WINDOWS_STORE_US_URL} target='_blank' rel='noopener noreferrer external'>
+        {copy.storeLink} →
+      </a>
+    </p>
   </div>
 </section>

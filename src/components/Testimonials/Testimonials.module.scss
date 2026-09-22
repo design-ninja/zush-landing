@@ -30,6 +30,17 @@
       grid-template-columns: 1fr;
     }
   }
+
+  &__More {
+    margin: $space-xl 0 0;
+    text-align: center;
+    font-weight: 600;
+
+    a {
+      color: var(--primary);
+      text-underline-offset: 0.2em;
+    }
+  }
 }
 
 .TestimonialCard {

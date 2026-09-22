@@ -82,7 +82,6 @@ const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
 <CloudFolders title={copy.home.cloudFoldersTitle} />
 <Testimonials locale={locale} />
 <Tour copy={copy.home.showcase} />
-{locale === 'en' && <ComparisonTable {...HOME_COMPARISON} />}
 <Pricing copy={copy.pricing} />
 <FAQ
   title={copy.home.faqTitle}
@@ -97,6 +96,7 @@ const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
   downloadMenu={copy.downloadMenu}
 />
 <CrossPlatformBanner locale={locale} />
+{locale === 'en' && <ComparisonTable {...HOME_COMPARISON} />}
 {locale === 'en' && <HomeBlogHighlights />}
 <EvidenceSignals locale={locale} variant="facts" />
 <SupportedFormats
