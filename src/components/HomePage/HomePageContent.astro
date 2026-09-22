@@ -36,7 +36,6 @@ interface Props {
 const { copy, locale, secondaryHref, professionCopy } = Astro.props as Props;
 const macVersion = parseLatestVersion(macChangelogSource) ?? undefined;
 const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
-const showPromotionBanner = locale === 'en';
 ---
 
 <Hero
@@ -59,7 +58,6 @@ const showPromotionBanner = locale === 'en';
   microsoftStoreRatedOnLabel={MICROSOFT_STORE_RATED_ON_LABELS[locale]}
   microsoftStoreRatingAriaLabel={MICROSOFT_STORE_RATING_ARIA_LABELS[locale]}
   natureBackground
-  showPromotion={showPromotionBanner}
 />
 <DemoVideo label={copy.home.showcase.title} />
 <EvidenceSignals locale={locale} variant="intro" />

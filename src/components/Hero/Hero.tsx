@@ -5,7 +5,6 @@ import DownloadButton from "../DownloadButton";
 import Heading from "../Heading";
 import StarRating from "../StarRating";
 import Text from "../Text";
-import { PromotionBanner } from "../PromotionBanner/PromotionBanner";
 import styles from "./Hero.module.scss";
 import type { DownloadOS } from "@/utils/download";
 import type { DownloadMenuCopy } from "@/i18n/copy";
@@ -53,7 +52,6 @@ interface HeroProps {
   softpediaReviewAriaLabel?: string;
   microsoftStoreRatedOnLabel?: string;
   microsoftStoreRatingAriaLabel?: string;
-  showPromotion?: boolean;
 }
 
 const renderTextWithBreaks = (value: string) =>
@@ -121,7 +119,6 @@ const Hero = ({
   softpediaReviewAriaLabel,
   microsoftStoreRatedOnLabel,
   microsoftStoreRatingAriaLabel,
-  showPromotion = false,
 }: HeroProps) => {
   const [showWindowsWebFallback, setShowWindowsWebFallback] = useState(false);
   const highlightText = titleHighlight ?? titleAccent;
@@ -169,7 +166,6 @@ const Hero = ({
         styles.Hero,
         centered ? styles.Hero_centered : "",
         natureBackground ? styles.Hero_natureBackground : "",
-        showPromotion ? styles.Hero_hasPromotion : "",
         compactTopSpacing ? styles.Hero_compactTopSpacing : "",
       ]
         .filter(Boolean)
@@ -177,7 +173,6 @@ const Hero = ({
     >
       <div className={styles.Hero__Container}>
         <div className={styles.Hero__Intro}>
-          {showPromotion && <PromotionBanner />}
           {(softpediaReviewAriaLabel || microsoftStoreRatingAriaLabel) && (
             <div className={styles.Hero__ExternalRatings} aria-label="Independent ratings">
               {softpediaReviewAriaLabel && (
