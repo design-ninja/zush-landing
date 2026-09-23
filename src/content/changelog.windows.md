@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.9.5.0] - 2026-09-23
+
+### Improved
+- Cloud files are prepared more reliably before AI analysis, while other files can continue when a cloud download stalls.
+- Added text extraction for older Word `.doc` documents.
+- Batch name updates remain responsive when changing naming settings.
+- Added a shortcut to Windows notification settings from Preferences.
+
+### Fixed
+- Office documents being used by another app are retried instead of failing immediately.
+- Missing or unreadable JPEG files now show a clear error instead of producing a filename-only suggestion.
+- Improved handling of file links and unreadable files during rename operations.
+
+
 ## [3.9.4.0] - 2026-09-18
 
 ### Improved
