@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.12.0] - 2026-09-23
+
+### Improved
+- Zush can download updates automatically and install them when you are ready.
+- Files stored in the cloud show download progress before renaming.
+- PRO activation emails arrive more reliably.
+
+### Fixed
+- More reliable renaming when files disappear or become unavailable during processing.
+- Filename templates can preserve your chosen `|` separator.
+- Notification settings open more reliably.
+
 ## [3.11.7] - 2026-09-18
 
 ### Fixed
