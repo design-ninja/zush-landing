@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Ollama"
 tldr: "Local AI file renaming uses a model on your own computer to analyze supported files and suggest descriptive filenames, so analysis content stays on device instead of going to a cloud service or a third-party AI provider. It trades some quality and speed for privacy and predictable cost."
-reviewed: "2026-07-28"
+reviewed: "2026-09-24"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
@@ -17,13 +17,13 @@ Quick answer: local AI file renaming runs the model that reads your files on you
 
 Most file renaming tools fall into two camps: rule-based batch rename utilities and cloud AI tools. Rule-based tools are reliable but blind. Cloud AI tools can understand screenshots, videos, PDFs, photos, and documents, but they require an internet connection and a provider request.
 
-Local AI file renaming is the third path. Instead of sending analysis content to a cloud model, a desktop app asks a model running on your own computer to describe the file and propose a useful name. In [Zush](/) that workflow is called Offline AI mode; the local model runtime it uses is [Ollama](https://ollama.com/download).
+Local AI file renaming is a third path. Instead of sending analysis content to a cloud model, a desktop app asks a model running on your own computer to describe the file and propose a useful name. In [Zush](/), open **Settings → AI Modes → Ollama** to use the [Ollama](https://ollama.com/download) runtime, or choose LM Studio for another local route.
 
 This page is the decision guide — whether local processing is the right mode for your files at all. If you have already decided and want the commands, follow the [step-by-step Ollama setup for Mac](/blog/rename-files-with-ollama-mac) or the shorter [Offline AI setup reference](/docs/offline-ai). For the product surface, see [File Renamer for Mac and Windows](/) or [AI file renamer for Mac](/mac). If you are comparing local-first tools, read [Zush vs AI Renamer](/blog/zush-vs-airenamer).
 
 <BlogProductIntro
   title="Need renaming that never leaves your machine?"
-  description="Zush Offline AI mode runs local Ollama models to rename PDFs, screenshots, and photos on device, which keeps confidential files off third-party servers."
+  description="Zush connects to local Ollama models to rename PDFs, screenshots, and photos on device, which keeps confidential files off third-party servers."
   links={[
     { href: '/offline-ai-file-renamer', label: 'Offline AI renamer' },
     { href: '/', label: 'AI file renamer' },
@@ -36,7 +36,7 @@ This page is the decision guide — whether local processing is the right mode f
 
 Local AI file renaming means the model that analyzes the file runs on your machine. The file still needs to be converted into an analysis-friendly form, such as an image preview, sampled video frame, extracted document text, or a compact visual representation. The difference is where that analysis happens.
 
-With cloud AI, the analysis payload goes to a remote AI provider. With BYOK, it goes to the provider you chose using your own API key. With Offline AI mode, Zush talks to the Ollama service running locally, and supported file analysis is processed by the model on your device.
+With cloud AI, the analysis payload goes to a remote AI provider. With BYOK, it goes to the provider you chose using your own API key. With Ollama selected under **Settings → AI Modes**, Zush talks to the local service and supported file analysis is processed by the model on your device.
 
 That matters most for:
 
@@ -50,29 +50,27 @@ Local AI is not magic and it is not always the fastest option. It is a privacy a
 
 ## How Zush uses Ollama
 
-Ollama is a local runtime for downloading and running AI models. Zush does not bundle a model into the app. Instead, you install Ollama, pull a compatible vision model, then choose that model in Zush's BYOK/Offline tab.
+Ollama is a local runtime for downloading and running AI models. Zush does not bundle a model into the app. Instead, you install Ollama, pull a compatible vision model, then choose that model under **Settings → AI Modes → Ollama**.
 
 The typical flow is:
 
 1. Install Ollama from the official [Ollama download page](https://ollama.com/download).
 2. Pull a vision-capable model in Terminal.
-3. Open Zush and enable Offline AI mode.
+3. Open Zush and select Ollama under **Settings → AI Modes**.
 4. Refresh the model list and choose the local model.
 5. Test the connection before renaming important folders.
 
-Each of those five steps is written out, with the Terminal commands and the checks that catch a misconfigured install, in [how to rename files with Ollama on Mac](/blog/rename-files-with-ollama-mac). The condensed reference is the [Ollama Setup Guide](/docs/offline-ai). The guide currently recommends three practical model choices: [qwen2.5vl](https://ollama.com/library/qwen2.5vl), [gemma3](https://ollama.com/library/gemma3), and [granite3.2-vision](https://ollama.com/library/granite3.2-vision).
+Each of those five steps is written out, with the Terminal commands and the checks that catch a misconfigured install, in [how to rename files with Ollama on Mac](/blog/rename-files-with-ollama-mac). The condensed reference is the [Ollama Setup Guide](/docs/offline-ai). Zush currently defaults to [`qwen3.5:4b`](https://ollama.com/library/qwen3.5) for this setup.
 
 ## Which model should you start with?
 
 For file renaming, the model needs to do more than chat. It needs to understand visual content, screenshots, charts, document previews, or images. That is why vision-capable models matter.
 
-Start with one of these:
+Start with the model used by the current Zush default:
 
 | Model | Best fit | Why it is useful |
 |---|---|---|
-| `qwen2.5vl:3b` | Everyday screenshots and images | Compact vision model with strong visual and document understanding for its size |
-| `gemma3:4b` | Balanced local quality | Multimodal model with image input and a larger context window |
-| `granite3.2-vision:2b` | Documents and visual structure | Compact vision-language model designed around visual document understanding |
+| `qwen3.5:4b` | Screenshots, images, and document previews | Current Zush default for the Ollama connection path |
 
 Smaller models usually respond faster and use less memory. Larger models can produce better descriptions, but only if your machine can run them comfortably. For naming files, fast and consistent is often better than slow and verbose.
 
@@ -105,7 +103,7 @@ Expect these tradeoffs:
 - unsupported file types may still need cloud processing or extracted text
 - an offline workflow still needs local disk space and a running Ollama service
 
-That is why Zush keeps three modes separate: built-in Cloud, BYOK, and Offline AI. You can use local AI when privacy matters, BYOK when you want your own cloud provider, and built-in credits when you want the simplest path. For API-key workflows, see [BYOK AI File Renaming with Your Own API Key](/blog/byok-ai-file-renaming-unlimited). For the full decision framework, read [Cloud AI vs Local AI File Renaming](/blog/cloud-vs-local-ai-file-renaming).
+That is why Zush exposes separate AI routes: Zush Cloud AI, BYOK, LM Studio, and Ollama. Use a local route when privacy matters, BYOK when you want your own cloud provider, and Zush Cloud AI when you want the simplest setup. For API-key workflows, see [BYOK AI File Renaming with Your Own API Key](/blog/byok-ai-file-renaming-unlimited). For the full decision framework, read [Cloud AI vs Local AI File Renaming](/blog/cloud-vs-local-ai-file-renaming).
 
 ## Recommended workflow
 
@@ -113,7 +111,7 @@ Do not start by turning local AI loose on your entire archive. Start with a cont
 
 1. Pick a folder with 10 to 20 files.
 2. Use mixed examples: screenshots, photos, and a few PDFs.
-3. Run Offline AI mode in Zush.
+3. Select Ollama in Zush and run the test batch.
 4. Review every proposed name before applying.
 5. Adjust your custom prompt if the names are too long or too generic.
 6. Expand to larger folders only after the output matches your style.
@@ -128,22 +126,22 @@ Use cloud AI when you want the strongest quality with the least setup.
 
 Use BYOK when you want cloud quality and direct control over provider billing. FREE shares a 50-rename limit across all modes; PRO removes it.
 
-For many people, the practical answer is not one mode forever. Use Cloud for everyday speed, BYOK for high-volume cloud work, and Offline AI mode for sensitive folders. Zush is built around that choice instead of forcing every workflow through one model.
+For many people, the practical answer is not one route forever. Use Zush Cloud AI for everyday speed, BYOK for your chosen cloud provider, and Ollama or LM Studio for sensitive folders. Zush is built around that choice instead of forcing every workflow through one model.
 
 ## FAQ
 
 ### Does local AI file renaming require the internet?
 
-Initial setup requires downloading Ollama and a model. After that, Offline AI mode can process supported files with the local model running on your device. Cloud and BYOK modes still require internet.
+Initial setup requires downloading Ollama and a model. After that, Ollama mode can process supported files with the local model running on your device. Cloud and BYOK routes still require internet.
 
 ### Is Ollama built into Zush?
 
-No. Ollama is a separate local runtime. You install Ollama, download a model, then connect Zush to the local Ollama service through BYOK/Offline.
+No. Ollama is a separate local runtime. You install Ollama, download a model, then connect Zush to the local service through **Settings → AI Modes → Ollama**.
 
 ### Does this work on Windows?
 
-Zush for Windows is live, but this article remains focused on the Mac Ollama workflow. Use the current [AI file renamer for Windows](/windows) page for Windows release details and platform-specific Offline AI availability.
+Zush for Windows is live, but this article remains focused on the Mac Ollama workflow. Use the current [AI file renamer for Windows](/windows) page for Windows release details and platform-specific local-model availability.
 
 ### Is local AI always more private?
 
-For supported Offline AI processing, analysis content is handled by the local Ollama model instead of Zush cloud or a third-party AI provider. Zush may still contact backend services for licensing, updates, support, or non-content operational checks. See the [privacy policy](/privacy-policy) for the full data handling language.
+For supported Ollama processing, analysis content is handled by the local model instead of Zush cloud or a third-party AI provider. Zush may still contact backend services for licensing, updates, support, or non-content operational checks. See the [privacy policy](/privacy-policy) for the full data handling language.

@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Tool Comparisons"
 tldr: "Renamer.ai meters every plan (200 to 5,000 files a month) and has no published BYOK or local mode. Zush is the closest all-round alternative: desktop app for Mac and Windows, unmetered paid plan ($48 one-time), local AI through Ollama or LM Studio, and support for RAW photos, design files, and video."
-reviewed: "2026-09-22"
+reviewed: "2026-09-24"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -39,7 +39,7 @@ Every paid tier is metered, and there is no published BYOK or local-only mode. I
 | App | Pricing | Monthly cap on paid plan | Local AI | Platforms |
 |---|---|---|---|---|
 | **Zush** | <BlogHighlight>$10/mo or $48 one-time</BlogHighlight> | <BlogHighlight>None</BlogHighlight> | Ollama, LM Studio | Mac, Windows |
-| RenameClick | $8+ VAT/mo or $48+ VAT lifetime | None on Pro | Built-in model | Mac, Windows |
+| RenameClick | $8+ VAT/mo or currently $36+ VAT lifetime | None on Pro | Built-in model | Mac, Windows |
 | FilesDesk | $8/mo (500 credits), $20/mo (2,000), $40 lifetime BYOK | Credits on managed plans | Ollama, vLLM | Mac, Windows |
 | NameQuick | From $12/mo managed, $69 one-time self-managed | Managed plans metered | Ollama, LM Studio, MLX | Mac, Windows |
 | Renamed.to | $9 per 1,000 docs, $49 per 10,000 | Pay per document | No | Web, cloud storage |
@@ -62,9 +62,9 @@ Where Renamer.ai is still stronger: it has a web app, so you can rename without 
 
 ## 2. RenameClick: best for a bundled local model
 
-[RenameClick](https://rename.click/) downloads a local vision model on first run, so it renames offline without setup. It covers images, documents, and audio with local transcription, and its Auto Flow can rename and move files. A free tier allows 30 applied renames a month.
+[RenameClick](https://rename.click/) downloads a local vision model on first run, so it renames offline without setup. It covers images, documents, and audio with local transcription, and its Auto Flow can rename and move files. The free tier currently allows 100 successful renames or moves a month.
 
-Pro is $8 plus VAT per month or $48 plus VAT lifetime. Video, RAW, and design files are not in its published format list. See [Zush vs RenameClick](/blog/zush-vs-renameclick).
+As checked September 24, 2026, Pro is $8 plus VAT per month or $36 plus VAT lifetime; verify the live checkout. Video, RAW, and design files are not in its published format list. See [Zush vs RenameClick](/blog/zush-vs-renameclick).
 
 ## 3. FilesDesk: best if you already have an API key
 
@@ -98,7 +98,7 @@ It charges per document: $9 for 1,000 or $49 for 10,000, with 50 free. It focuse
 |---|---|---|
 | Renamer.ai, cheapest paid tier | $119 | $597 |
 | **Zush one-time** | <BlogHighlight>$48</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> |
-| RenameClick lifetime | $48 + VAT | $48 + VAT |
+| RenameClick lifetime | $36 + VAT | $36 + VAT |
 | FilesDesk lifetime (plus your API costs) | $40 | $40 |
 | NameQuick Self-Managed (plus your API costs) | $69 | $69 |
 
@@ -123,7 +123,7 @@ Zush, for most people. It renames files by content on Mac and Windows, has no mo
 
 ### Is there a free Renamer.ai alternative?
 
-Zush includes 50 free AI renames, and RenameClick gives 30 applied renames a month for free. For unlimited free use, an open-source command-line tool like `ozgrozer/ai-renamer` with Ollama works if you are comfortable in a terminal.
+Zush includes 50 free AI renames, and RenameClick currently gives 100 successful renames or moves a month for free. For unlimited free use, an open-source command-line tool like `ozgrozer/ai-renamer` with Ollama works if you are comfortable in a terminal.
 
 ### Does Renamer.ai work offline?
 

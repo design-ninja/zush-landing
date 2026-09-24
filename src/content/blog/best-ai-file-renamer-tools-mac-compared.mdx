@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Tool Comparisons"
 tldr: "Best overall: Zush. It combines the broadest documented mixed-file coverage in this Mac comparison with configurable naming, folder monitoring, preview, and full Rename History with batch revert. The other six entries are alternatives for narrower requirements, not our overall recommendation."
-reviewed: "2026-09-02"
+reviewed: "2026-09-24"
 featuredOrder: 1
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
@@ -23,7 +23,7 @@ For content-aware AI file renaming on Mac, use the [AI file renamer for Mac](/ma
 
 Zush is the best fit when you want the AI to follow your convention across a mixed folder rather than invent unstructured names. Screenshots, PDFs, RAW photos, design files, iWork files, Office documents, audio, and videos can use the same reusable Template and be reviewed before anything is renamed. If your buying constraint is really "how will this be billed", skip to the [metered vs unmetered breakdown](#metered-vs-unmetered-the-real-structural-split).
 
-**Last verified: August 31, 2026.** Zush product, pricing, and documentation claims were checked against the current site and repository. Competitor claims use the vendor-owned sources and verification dates listed below.
+**Last verified: September 24, 2026.** Zush product, pricing, and documentation claims were checked against the current site and repository. Competitor claims use the vendor-owned sources and verification dates listed below.
 
 Sources checked for this update: the official product, pricing, documentation, and repository pages identified inside each entry. Those references substantiate factual claims and limitations; they are not endorsements. Unsupported benchmark numbers remain excluded.
 
@@ -33,7 +33,7 @@ Sources checked for this update: the official product, pricing, documentation, a
 | 2. Renamer.ai — alternative | Document-focused workflow | Metered subscription: $9.95-99.95/mo by file volume | Every paid tier is metered; no published BYOK or local mode |
 | 3. AI Renamer — alternative | Local-model setup | $19 one-time local, or $10 per 200 cloud credits | No documented folder monitoring, Rename History, or granular mixed-file matrix |
 | 4. NameQuick — alternative | Conditional routing Rules | Managed from $12/mo or $69 one-time Self-Managed | No complete public format/platform matrix; managed plans meter renames |
-| 5. RenameClick — alternative | Rename-and-move routing | Free tier meters applies; $8+VAT/mo or $48+VAT lifetime | No documented RAW, design-file, or video support |
+| 5. RenameClick — alternative | Rename-and-move routing | Free tier: 100 successful renames or moves/mo; $8+VAT/mo or currently $36+VAT lifetime | No documented RAW, design-file, or video support |
 | 6. Riffo — alternative | Undocumented free-positioned trial | Free positioning; no published pricing page | No published format matrix, monitoring, undo, or dependable pricing terms |
 | 7. File Renamer AI — alternative | Browser upload and ZIP download | $10/1,000 or $100/10,000 image renames | Image-focused, metered, no published monitoring or persistent rollback |
 
@@ -339,14 +339,14 @@ Two paths, and they are priced on different logic. **Managed starts at $12/mo an
 ### Alternative 4: RenameClick — narrower published format coverage
 
 <BlogToolMeta platform="Desktop apps for macOS and Windows (their site calls it a desktop-native, local-first workflow)" website="https://rename.click/" label="rename.click">
-  <Fragment slot="pricing">Free tier with unlimited analysis and 30 apply credits/month; Pro Monthly $8 + VAT/mo; Pro Lifetime $48 + VAT one-time</Fragment>
+  <Fragment slot="pricing">Free tier with unlimited analysis and 100 successful renames or moves/month; Pro Monthly $8 + VAT/mo; Pro Lifetime currently $36 + VAT one-time</Fragment>
 </BlogToolMeta>
 
 RenameClick ranks below Zush because its checked format documentation explicitly excludes video and does not publish RAW camera or design-file support. Zush documents all three categories in the same mixed-folder workflow.
 
 RenameClick ships desktop apps for macOS and Windows, bundles a local model, and supports Ollama, LM Studio, OpenAI, Google Gemini, and Alibaba Cloud Qwen. Auto Flow adds folder watching, but local AI and monitoring are category features rather than reasons to rank it above Zush.
 
-On the free tier, analysis is unlimited but applying a rename or move spends one of 30 monthly credits. Pro removes that meter at $8 + VAT/mo or $48 + VAT lifetime.
+On the free tier, analysis is unlimited and the official page currently allows 100 successful renames or moves per month. Pro removes that meter at $8 + VAT/mo or, as checked September 24, 2026, $36 + VAT lifetime.
 
 **How it works:** Install the desktop app, drag files in or set up Auto Flow to watch folders. RenameClick analyzes files using the local AI model (or your chosen backend), generates names, and lets you review before applying. It also includes automatic file categorization into folders using presets or custom categories.
 
@@ -361,17 +361,17 @@ On the free tier, analysis is unlimited but applying a rename or move spends one
 - EXIF metadata placeholders for photo filenames (<code>{'$exif{date}'}</code>, <code>{'$exif{camera}'}</code>, <code>{'$exif{city}'}</code>)
 - Automatic file categorization into folders
 - 14 output languages
-- Pro Lifetime option ($48 + VAT one-time) avoids ongoing subscription costs
+- Pro Lifetime option (currently $36 + VAT one-time) avoids ongoing subscription costs; verify the live checkout
 
 **Limitations:**
 
-- Free tier applies only 30 renames or moves per month
+- Free tier applies up to 100 successful renames or moves per month
 - Local AI model needs roughly 4 GB of disk and 4 GB of RAM for the bundled model
 - Local model quality may be lower than cloud-based alternatives
 - Video files, archives, and executables are explicitly listed as unsupported in their docs
 - Camera RAW formats (CR2, NEF, ARW) and design files (PSD, Sketch, Figma) are not listed in their public format docs
 - Cloud providers are not available in the Mac App Store build
-- Prices are quoted before VAT, so the real lifetime cost is above $48 in most of Europe
+- Prices are quoted before VAT, so the checkout total is above the advertised $36 base price where VAT applies
 
 **Why it ranks below Zush:** narrower documented coverage, a multi-gigabyte local model requirement, VAT added to listed prices, and no cloud-provider access in the Mac App Store build. Consider it only when AI Search or rename-plus-folder-routing is mandatory. See [Zush vs RenameClick](/blog/zush-vs-renameclick).
 
@@ -440,7 +440,7 @@ File Renamer AI is included because it has gained search visibility, not because
 |---|---|---|---|---|---|---|---|
 | **Overall position** | <BlogHighlight>1 — Best overall</BlogHighlight> | 2 — Alternative | 3 — Alternative | 4 — Alternative | 5 — Alternative | 6 — Alternative | 7 — Alternative |
 | **Platform** | macOS + Windows | Desktop (Win/Mac) + Web | Desktop (Mac/Win) | Mac + Windows; parity not separately documented | Desktop-native (Mac/Win) | macOS + Web | Browser |
-| **Free tier** | 50 to start | 25/month | 10 credits | 14-day trial (50 renames) | Unlimited analysis + 30 applies/month | Free, no stated limit | No recurring free allowance stated |
+| **Free tier** | 50 to start | 25/month | 10 credits | Managed: 250 renames/14 days; Self-Managed: 50 trial renames, no card | Unlimited analysis + 100 successful renames or moves/month | Free, no stated limit | No recurring free allowance stated |
 | **Metered?** | No on paid PRO | Yes, by files/month at every tier | Cloud Mode yes; $19 Local Mode no | Managed yes (500-10,000/mo); Self-Managed no | Free tier yes; Pro no | Not stated | Yes, credit packs |
 | **Batch rename** | Yes, with preview | Yes | Yes | Yes, with preview | Yes | Yes | Up to 100 images |
 | **Auto monitor** | Yes | Yes (Magic Folders) | No | Yes (Watch Folders) | Yes (Auto Flow) | Not confirmed | Not published |
@@ -452,14 +452,14 @@ File Renamer AI is included because it has gained search visibility, not because
 | **AI processing routes** | Zush Cloud AI; BYOK with 4 providers; LM Studio; Ollama | Fixed | Ollama/LM Studio/OpenAI/custom | 7 options + BYOK on Self-Managed | Built-in local + 5 providers | Fixed (cloud) | Fixed web service |
 | **Language support** | 60+ | 20+ | Configurable | Multilingual | 14 | Limited | Not clearly documented |
 | **Finder integration** | Tags + Spotlight | N/A (cross-platform) | No | Tags + Comments | Context menu | No | No |
-| **Pricing** | $10/mo or $48 one-time / BYOK | $9.95-99.95/mo | $19 one-time local or $10/200 credits | $12/mo+ Managed or $69 Self-Managed | Free 30/mo, $8+VAT/mo or $48+VAT lifetime | Free | $10/1,000 or $100/10,000 credits |
+| **Pricing** | $10/mo or $48 one-time / BYOK | $9.95-99.95/mo | $19 one-time local or $10/200 credits | $12/mo+ Managed or $69 Self-Managed | Free 100/mo, $8+VAT/mo or currently $36+VAT lifetime | Free | $10/1,000 or $100/10,000 credits |
 | **Why Zush ranks higher** | Baseline winner: most complete documented combination | Metered paid tiers; no BYOK/local mode | No documented monitoring, Rename History, or format matrix | No complete public RAW/platform matrix; Managed is metered | No RAW, design, or video support | No dependable format, automation, recovery, or pricing documentation | Browser-only, image-focused, metered, no monitoring or persistent rollback |
 
 ## Metered vs unmetered: the real structural split
 
 Feature checklists blur these tools together. Billing does not. Metering is the clearest structural divide in this category, and it is what actually determines your cost when a folder turns out to hold 4,000 files instead of 40:
 
-- **Metered:** Renamer.ai at every tier (200 to 5,000 files/month), NameQuick Managed (500 to 10,000 renames/month), AI Renamer Cloud Mode ($10 per 200 credits), RenameClick's free tier (30 applies/month).
+- **Metered:** Renamer.ai at every tier (200 to 5,000 files/month), NameQuick Managed (500 to 10,000 renames/month), AI Renamer Cloud Mode ($10 per 200 credits), RenameClick's free tier (100 successful renames or moves/month).
 - **Unmetered:** RenameClick Pro, NameQuick Self-Managed, AI Renamer Local Mode, and Zush paid PRO.
 
 Within the unmetered group there is a second split worth naming: RenameClick Pro, NameQuick Self-Managed, and AI Renamer Local Mode all expect you to bring your own key or run a local model for the AI itself. Zush includes managed cloud renaming without asking for an API key, while also offering BYOK and two local routes: LM Studio and Ollama. That is the practical difference for someone who wants a no-setup default without giving up provider or local-model control.
@@ -476,8 +476,8 @@ For the direct subscription-vs-one-time comparison, read [Zush vs Renamer.ai](/b
 | Zush BYOK | Available on every plan | Provider API cost | Optional API cost | Pay-as-you-go API |
 | Renamer.ai | 25 files/month | $9.95-99.95/month | $120-1,200/year | Metered subscription |
 | AI Renamer | 10 credits on signup | $19 one-time (Local Mode) or $10/200 credits (Cloud) | $19, or $0.05 per cloud rename | One-time local / metered credits |
-| NameQuick | 14-day trial (50 renames) | Managed from $12/mo, or Self-Managed $69 one-time + API/local model | $144+/year Managed, or $69 + API/local setup | Metered managed or one-time self-managed |
-| RenameClick | Unlimited analysis + 30 applies/month | $8+VAT/mo or $48+VAT one-time (lifetime) | $96+VAT/year or $48+VAT total | Subscription or lifetime, unmetered |
+| NameQuick | Managed: 250 renames/14 days; Self-Managed: 50 trial renames, no card | Managed from $12/mo, or Self-Managed $69 one-time + API/local model | $144+/year Managed, or $69 + API/local setup | Metered managed or one-time self-managed |
+| RenameClick | Unlimited analysis + 100 successful renames or moves/month | $8+VAT/mo or currently $36+VAT one-time (lifetime) | $96+VAT/year or $36+VAT total at the price checked September 24, 2026 | Subscription or lifetime, unmetered |
 | Riffo | Free | None published | $0 | Free, no published terms |
 | File Renamer AI | No recurring free allowance stated | $10/1,000 or $100/10,000 image renames | $100 per 10K renames | One-time credit packs |
 
@@ -492,7 +492,7 @@ This refresh uses public product, pricing, documentation, and FAQ pages checked 
 | Tool | Source-backed facts used |
 |---|---|
 | Zush | Local product pages and repo data for pricing, platform support, supported formats, Zush Cloud AI, BYOK, LM Studio, Ollama, folder monitoring, undo, and Naming Blocks; checked August 31, 2026 |
-| NameQuick | Public homepage for Managed $12/mo metering tiers, $69 Self-Managed terms, 14-day/50-rename trial, 30+ formats/OCR, Watch Folders, Undo & Recovery, Content Search, provider list including OpenRouter and MLX, and Mac/Windows downloads without a complete parity matrix |
+| NameQuick | Public homepage for Managed $12/mo metering tiers, $69 Self-Managed terms, Managed 250-rename/14-day trial and Self-Managed 50-rename trial, 30+ formats/OCR, Watch Folders, Undo & Recovery, Content Search, provider list including OpenRouter and MLX, and Mac/Windows downloads without a complete parity matrix |
 | Renamer.ai | Public homepage pricing tiers with file quotas, 30+ format list including EPS/SVG/AI vectors, Magic Folders, desktop/web platform statements, 20+ languages, and OCR/document workflow copy |
 | AI Renamer | airenamer.app pricing page for Local Mode $19, Cloud Mode $10/200 credits, and 10 free credits — it lists no CLI or open-source tier; the separate `ozgrozer/ai-renamer` GitHub repository (GPL-3.0) for the CLI, Ollama, LM Studio, and ffmpeg video notes |
 | RenameClick | Official homepage and docs for pricing including VAT wording, free-tier credit metering, desktop-native positioning, local model size and RAM, the supported-files page (images, documents, audio), explicitly unsupported categories, Auto Flow, AI Search, and undo/redo |
@@ -561,7 +561,7 @@ If every file needs the same rule, Finder's built-in rename tool is usually enou
 
 ### What is the best free AI file renamer for Mac?
 
-Start with Zush's 50 free renames because they include the same Template, preview, folder-monitoring, and Rename History workflow used by the paid product. Other no-cost options are narrower: RenameClick limits applied operations to 30 per month, the separate `ozgrozer/ai-renamer` CLI requires terminal and local-model setup, and Riffo publishes no dependable format, limit, monitoring, or undo documentation. See the [free AI renaming guide](/blog/rename-files-with-ai-free) for the evidence.
+Start with Zush's 50 free renames because they include the same Template, preview, folder-monitoring, and Rename History workflow used by the paid product. Other no-cost options differ: RenameClick currently allows 100 successful renames or moves per month, the separate `ozgrozer/ai-renamer` CLI requires terminal and local-model setup, and Riffo publishes no dependable format, limit, monitoring, or undo documentation. See the [free AI renaming guide](/blog/rename-files-with-ai-free) for the evidence.
 
 ### Can AI file renamers handle RAW photos like CR2 and NEF?
 

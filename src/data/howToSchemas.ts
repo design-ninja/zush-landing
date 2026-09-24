@@ -300,7 +300,7 @@ export const HOW_TO_SCHEMAS: Record<string, HowToData> = {
   'rename-files-with-ollama-mac': {
     name: 'How to Rename Files with Ollama on Mac',
     description:
-      'Set up Zush Offline AI mode on Mac with Ollama, a vision-capable local model, and a small test batch before using it on important folders.',
+      'Set up Ollama in Zush on Mac with a vision-capable local model and a small test batch before using it on important folders.',
     totalTime: 'PT10M',
     steps: [
       {
@@ -309,19 +309,19 @@ export const HOW_TO_SCHEMAS: Record<string, HowToData> = {
       },
       {
         name: 'Pull a vision model',
-        text: 'Open Terminal and pull a vision-capable model such as qwen2.5vl:3b, gemma3:4b, or granite3.2-vision:2b.',
+        text: 'Open Terminal and pull the current recommended model with ollama pull qwen3.5:4b.',
       },
       {
         name: 'Confirm Ollama is running',
         text: 'Run ollama list to confirm the model is installed. If Zush cannot connect, start Ollama or run ollama serve.',
       },
       {
-        name: 'Enable Offline AI mode in Zush',
-        text: 'Open Zush BYOK/Offline, refresh the model list, select and test the installed model, then turn on Offline AI mode.',
+        name: 'Select Ollama in Zush',
+        text: 'Open Zush Settings, choose AI Modes, select Ollama, refresh the model list, then select and test qwen3.5:4b.',
       },
       {
         name: 'Test with a small batch',
-        text: 'Rename a small folder of sample files first, review every proposed filename, and only then use Offline AI mode on larger folders.',
+        text: 'Rename a small folder of sample files first, review every proposed filename, and only then use Ollama on larger folders.',
       },
     ],
   },

@@ -9,7 +9,7 @@ tags:
   - "Tool Comparisons"
   - "AI File Renaming"
 tldr: "AI file renamers use three pricing models: metered subscriptions (you pay for a monthly file allowance), pay-per-file credits, and unmetered plans. If you rename more than a few hundred files a month, an unmetered plan is almost always cheapest. Zush PRO is unmetered at $10 a month or $48 one-time, including its managed cloud AI."
-reviewed: "2026-09-22"
+reviewed: "2026-09-24"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -34,7 +34,7 @@ The third model is the only one where cost does not grow with volume.
 | Tool | Pricing model | Entry price | What you get |
 |---|---|---|---|
 | **Zush** | <BlogHighlight>Unmetered</BlogHighlight> | <BlogHighlight>$10/mo or $48 one-time</BlogHighlight> | Unlimited renames incl. managed cloud AI; 50 free to start |
-| RenameClick | Unmetered Pro | $8+ VAT/mo or $48+ VAT lifetime | Unlimited with built-in local model; 30 free applies/mo |
+| RenameClick | Unmetered Pro | $8+ VAT/mo or currently $36+ VAT lifetime | Unlimited with built-in local model; 100 successful free renames or moves/mo |
 | FilesDesk | Credits, or unmetered BYOK | $8/mo (500), $20/mo (2,000), $40 lifetime | Lifetime requires your own key or local model |
 | NameQuick | Metered, or unmetered BYOK | From $12/mo (500), $69 one-time | Self-Managed requires your own key or local model |
 | Renamer.ai | Metered | $9.95/mo (200 files) | Tiers up to $99.95/mo for 5,000 |
@@ -50,7 +50,7 @@ Monthly cost using the cheapest plan that covers each volume. Lifetime and one-t
 | Tool | 100 files/mo | 1,000 files/mo | 5,000 files/mo |
 |---|---|---|---|
 | **Zush** | <BlogHighlight>$10 or $48 once</BlogHighlight> | <BlogHighlight>$10 or $48 once</BlogHighlight> | <BlogHighlight>$10 or $48 once</BlogHighlight> |
-| RenameClick | $8+ VAT or $48+ VAT once | $8+ VAT or $48+ VAT once | $8+ VAT or $48+ VAT once |
+| RenameClick | $8+ VAT or $36+ VAT once | $8+ VAT or $36+ VAT once | $8+ VAT or $36+ VAT once |
 | Renamer.ai | $9.95 | $29.95 | $99.95 |
 | Renamed.to | $9 pack lasts 10 months | $9 | $49 pack lasts 2 months |
 | NameThisPic | $9 | $29 | $79 |
@@ -70,7 +70,7 @@ The same comparison over five years, using the cheapest path each tool offers fo
 | Tool | 5-year cost |
 |---|---|
 | **Zush one-time** | <BlogHighlight>$48</BlogHighlight> |
-| RenameClick lifetime | $48 + VAT |
+| RenameClick lifetime (price checked September 24, 2026) | $36 + VAT |
 | FilesDesk lifetime | $40 + your API or local model |
 | NameQuick Self-Managed | $69 + your API or local model |
 | Renamer.ai cheapest tier | about $597 |
@@ -78,7 +78,7 @@ The same comparison over five years, using the cheapest path each tool offers fo
 
 ## Which pricing model should you choose?
 
-- **Under 50 files, once:** use a free tier. Zush gives 50 renames, RenameClick 30 a month, Renamed.to 50 documents.
+- **Under 50 files, once:** use a free tier. Zush gives 50 renames, RenameClick currently allows 100 successful renames or moves a month, and Renamed.to gives 50 documents.
 - **A few hundred files a month, every month:** an unmetered plan pays for itself within a few months.
 - **You already pay for OpenAI, Claude, or Gemini:** a BYOK plan makes sense. Zush supports BYOK on every plan too.
 - **Sensitive files:** pick a tool with a local mode. Zush with Ollama or LM Studio, RenameClick's built-in model, FilesDesk or NameQuick with a local model.
@@ -113,11 +113,11 @@ From free to about $100 a month. Metered tools like Renamer.ai run $9.95 to $99.
 
 ### Is there a free AI file renamer?
 
-Several have free tiers: Zush (50 renames), RenameClick (30 applies a month), Renamer.ai (25 files a month), and Renamed.to (50 documents). For unlimited free use, run a local model with an open-source script, which takes technical setup. See [how to rename files with AI for free](/blog/rename-files-with-ai-free).
+Several have free tiers: Zush (50 renames), RenameClick (currently 100 successful renames or moves a month), Renamer.ai (25 files a month), and Renamed.to (50 documents). For unlimited free use, run a local model with an open-source script, which takes technical setup. See [how to rename files with AI for free](/blog/rename-files-with-ai-free).
 
 ### What is the cheapest AI file renamer for large volumes?
 
-An unmetered plan. Zush PRO ($48 one-time) and RenameClick Pro ($48 plus VAT lifetime) cost the same at 100 or 10,000 files a month. BYOK lifetime plans are cheap to buy but add API costs per file.
+An unmetered plan. Zush PRO is $48 one-time; as checked September 24, 2026, RenameClick Pro is $36 plus VAT lifetime. Either price stays the same at 100 or 10,000 files a month, while BYOK lifetime plans can add API costs per file.
 
 ### Is BYOK cheaper than a subscription?
 

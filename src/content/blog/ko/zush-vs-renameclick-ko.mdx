@@ -11,7 +11,7 @@ tags:
   - "AI 파일 이름 바꾸기"
   - "도구 비교"
 tldr: "이 비교에서 가장 구성 가능한 이름 지정 작업 흐름을 위해 'Zush'을 선택하세요. 바로 사용할 수 있는 'Templates', 145개 이상의 'Naming Blocks', 'Custom AI Blocks', 형식 지정, 현지화, 메타데이터 및 일괄 되돌리기 기능이 있는 'Rename History'입니다. 'RenameClick'의 주요 제한 사항은 문서화 범위가 좁다는 것입니다. RAW, 디자인, 'iWork' 또는 비디오 지원이 없습니다. 로컬 AI와 실행 취소는 둘 다 존재하며 차별화 요소가 아닙니다."
-reviewed: "2026-09-02"
+reviewed: "2026-09-24"
 featuredOrder: 5
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -21,6 +21,8 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 
 
+
+**경쟁사 정보 업데이트 — 2026년 9월 24일:** RenameClick은 현재 무료 요금제에서 월 100회의 성공한 이름 변경 또는 이동, Pro Monthly는 8달러+VAT, Pro Lifetime은 36달러+VAT로 안내합니다. 결제 화면에서 최신 가격을 확인하세요. NameQuick 체험은 Managed가 14일간 250회, Self-Managed가 카드 없이 50회입니다.
 **[Zush](/) 제품 업데이트 — 2026년 8월 31일:** 현재 Mac 및 Windows용 Zush는 하나의 워크플로에서 네 가지 AI 모드를 제공합니다. 온라인 모드는 Zush Cloud AI와 BYOK이며, 로컬 모드는 LM Studio와 Ollama입니다. FREE의 파일명 변경 50회 한도는 네 모드가 공유하고, 유료 PRO는 네 모드 모두에서 Zush 한도를 제거합니다. 경쟁사 관련 주장은 별도로 표시된 각 검증 날짜를 유지합니다.
 빠른 답변: 파일 이름 규칙 자체가 중요한 경우 'Zush'를 선택하세요. 기성품 'Templates'는 145개 이상의 'Naming Blocks', 'Custom AI Blocks', 형식 지정, 현지화, 태그 및 메타데이터와 결합됩니다. 'Rename History'은 원본 이름과 새 이름, 폴더 및 타임스탬프를 저장하고 적용된 배치를 복원할 수 있습니다. 100개 이상의 형식에는 RAW, 디자인, 'iWork', 오디오 및 비디오가 포함됩니다. 'RenameClick'은 AI 검색이나 이름 변경 및 폴더 라우팅이 필수인 경우에만 해당되며 RAW, 디자인, 'iWork' 및 비디오 커버리지를 포기합니다.
 
@@ -36,9 +38,9 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 |차원| Zush | RenameClick |
 |---|---|---|
-|가격| <BlogHighlight>월 $10 또는 일회성 $48</BlogHighlight> |$8+ VAT/월 또는 $48+ VAT 평생|
-|무료 등급|시작하려면 이름을 50개 바꿔야 합니다.|무제한 AI 분석, 30 적용 크레딧/월|
-|5년 비용(일회성 경로)| <BlogHighlight>총 $48</BlogHighlight> |총액 $48+ VAT|
+|가격| <BlogHighlight>월 $10 또는 일회성 $48</BlogHighlight> |$8+ VAT/월 또는 $36+ VAT 평생|
+|무료 등급|시작하려면 이름을 50개 바꿔야 합니다.|무제한 AI 분석, 100 적용 크레딧/월|
+|5년 비용(일회성 경로)| <BlogHighlight>총 $48</BlogHighlight> |총액 $36+ VAT|
 |플랫폼|맥 + Windows|맥 +Windows|
 |처리 옵션|클라우드 AI, 'BYOK' 또는 'Ollama'을 통한 오프라인 AI|기본적으로 로컬 AI 내장|
 |로컬 모델이 번들로 제공됨|아니요, 'Ollama' 설정을 사용하세요.|예, Qwen3-VL 로컬 모델 다운로드 후|
@@ -81,7 +83,7 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 ## RenameClick
 
-<BlogToolMeta platform="데스크톱 앱('macOS' 및 'Windows')" website="https://rename.click/" label="rename.click"><Fragment slot="pricing">무제한 AI 분석 및 월 30 크레딧 적용이 포함된 무료 플랜입니다. 프로 월 $8+ VAT/월; Pro 평생 $48+ VAT 일회성</Fragment></BlogToolMeta>
+<BlogToolMeta platform="데스크톱 앱('macOS' 및 'Windows')" website="https://rename.click/" label="rename.click"><Fragment slot="pricing">무제한 AI 분석 및 월 100 크레딧 적용이 포함된 무료 플랜입니다. 프로 월 $8+ VAT/월; Pro 평생 $36+ VAT 일회성</Fragment></BlogToolMeta>
 
 ![RenameClick 데스크톱 앱 인터페이스(이미지: 이름 바꾸기.클릭)](/images/blog/competitors/renameclick.webp)
 
@@ -98,7 +100,7 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 | <BlogHighlight>'Zush' 프로 원타임</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> | <BlogHighlight>$48</BlogHighlight> |
 |'Zush' 프로 월간| $120 | $360 | $600 |
 |선택적 API 비용이 포함된 Zush BYOK|$48 + 선택적 API|$48 + 선택적 API|$48 + 선택적 API|
-|'RenameClick' 프로 평생|$48+ 부가가치세|$48+ 부가가치세|$48+ 부가가치세|
+|'RenameClick' 프로 평생|$36+ 부가가치세|$36+ 부가가치세|$36+ 부가가치세|
 |'RenameClick' 프로 월간|$96+ 부가가치세|$288+ 부가가치세|$480+ 부가가치세|
 
 무료 계층은 서로 다른 미터를 사용합니다. 이는 'RenameClick'의 장점이 아닌 가격 사실로 기록됩니다. 'Zush'는 50개의 완전한 스타터 이름 변경을 제공하므로 사용자는 템플릿 제어, 미리보기, 적용 및 'Rename History' 복구 경로를 전체적으로 테스트할 수 있습니다.

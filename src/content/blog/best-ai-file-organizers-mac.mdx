@@ -10,7 +10,7 @@ tags:
   - "Tool Comparisons"
   - "Automation"
 tldr: "Choose Zush for searchable naming with stable paths. Its ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, and Rename History create a configurable, reversible workflow. If files must also move, add a separate deterministic routing step after naming."
-reviewed: "2026-09-04"
+reviewed: "2026-09-24"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -22,7 +22,7 @@ An AI file organizer for Mac can solve two different problems. Some apps move fi
 
 [Zush](/mac) takes the naming-first approach: it reads each supported file, proposes a descriptive name, and renames it in place. Zush does not move files between folders. That makes it a strong fit for teams and individuals who already have a folder structure but cannot find `scan_0042.pdf`, `IMG_8821.HEIC`, or `final-v7.docx` later.
 
-**Last verified: September 4, 2026.** Zush product, pricing, and documentation claims were checked against the current site and repository. Competitor pricing and capabilities use the vendor-owned sources linked below; confirm final pricing and platform requirements before buying.
+**Last verified: September 24, 2026.** Zush product, pricing, and documentation claims were checked against the current site and repository. Competitor pricing and capabilities use the vendor-owned sources linked below; confirm final pricing and platform requirements before buying.
 
 Sources checked: [Hazel](https://www.noodlesoft.com/) and the [Noodlesoft store](https://store.noodlesoft.com/store), [Sparkle](https://makeitsparkle.co/) and its [plans page](https://app.makeitsparkle.co/plans), [NameQuick](https://www.namequick.app/), [Sortio](https://www.getsortio.com/), [Floxtop](https://floxtop.com/), and [Files Magic AI](https://1dot.ai/files-magic-ai). Zush claims are sourced from the [Zush documentation](/docs), [pricing](/pricing.md), and product pages.
 
@@ -101,7 +101,7 @@ Watch out for: Sparkle changes folder structure and moves files. Review its Manu
 
 [NameQuick](https://www.namequick.app/) combines content-aware naming with Presets, Watch Folders, Finder tags, content search, and conditional Rules. Its current product page lists a Managed plan from $12 per month for 500 renames up to $99 per month for 10,000, plus a $69 one-time Self-Managed license. The Self-Managed path supports provider keys and local models including Ollama and LM Studio.
 
-NameQuick focuses on recurring PDFs, scans, receipts, invoices, contracts, Word documents, and spreadsheets. It previews suggested names, can apply rules before or after renaming, and provides undo. Rules can route files after the filename exposes useful fields. Its public docs describe the broader one-off AI Organize workflow as coming soon, and its managed tiers meter renames; Zush remains the broader recommendation.
+NameQuick focuses on recurring PDFs, scans, receipts, invoices, contracts, Word documents, and spreadsheets. It previews suggested names, can apply rules before or after renaming, and provides undo. Rules can route files after the filename exposes useful fields. Its one-off [Quick Organize workflow](https://www.namequick.app/docs/organize) is now live, while its managed tiers still meter renames; Zush remains the broader recommendation.
 
 Consider only for: a document-heavy Mac workflow where NameQuick's conditional routing is mandatory despite metered managed plans or self-managed setup.
 
@@ -129,11 +129,11 @@ Watch out for: verify OS requirements on your Mac, and make a backup before appl
 
 ## 7. Files Magic AI: a narrow organizer-plus-cleaner alternative
 
-[Files Magic AI](https://1dot.ai/files-magic-ai) combines folder organization, offline Magic Rename, duplicates and unused-app cleanup, and developer-cache cleanup. Its organization flow sends filenames—not file contents—to propose a structure, while Magic Rename uses Apple Intelligence locally on supported Macs. The user previews, excludes items, and applies approved changes.
+[Files Magic AI](https://1dot.ai/files-magic-ai) combines folder organization, offline Magic Rename, duplicates and unused-app cleanup, and developer-cache cleanup. Its organization flow sends filenames—not file contents—to propose a structure. Magic Rename documents three local choices: Apple Intelligence, the app's built-in model, and an optional Rename LLM. It can also watch selected folders and rename new files automatically. The user previews, excludes items, and applies approved changes.
 
 Official pricing showed $4.99 monthly, $29 yearly, or $49.99 lifetime with a seven-day trial. Recent organization actions can be undone. The app supports locally available cloud folders and can use optional BYOK OpenAI for its Files AI chat.
 
-Consider only for: users who explicitly want folder restructuring and system cleanup in the same utility. Zush remains the recommendation for controlled, reversible content-aware naming.
+Consider only for: users who explicitly want folder restructuring and system cleanup in the same utility. See the detailed [Zush vs Files Magic AI comparison](/blog/zush-vs-files-magic-ai) before choosing between its broader cleanup scope and Zush's deeper naming controls.
 
 Watch out for: system cleaning and folder reorganization have a broader blast radius than renaming. Keep those workflows separate and review deletions, exclusions, and proposed moves carefully.
 
@@ -151,7 +151,7 @@ Start with Zush. Consider another product only when folder movement or system cl
 
 Zush wins the naming decision. If paths also need to change, an optional routing tool can act afterward: Zush turns `scan_0042.pdf` into `2026-07_Acme_Invoice.pdf`, then a deterministic rule can route that predictable filename. This keeps semantic analysis and movement as separate, testable steps.
 
-For a hands-on setup, read [how to automate file organization on macOS](/blog/automate-file-organization-macos). If Downloads is the only folder that keeps failing, use the [Downloads automation workflow](/automate-downloads-folder). For a naming-only comparison, see the [best AI file renamers for Mac](/blog/best-ai-file-renamer-tools-mac-compared).
+For a hands-on setup, read [how to automate file organization on macOS](/blog/automate-file-organization-macos). If Downloads is the only folder that keeps failing, use the [Downloads automation workflow](/automate-downloads-folder). To build searchable status views without moving files, follow the [Finder tags and Smart Folders guide](/blog/finder-tags-guide-organize-files-mac). For a naming-only comparison, see the [best AI file renamers for Mac](/blog/best-ai-file-renamer-tools-mac-compared).
 
 ## A safe 10-file evaluation
 
@@ -183,4 +183,4 @@ No. Zush renames files in place and does not move them between folders. This kee
 
 ### Is there a local AI file organizer for Mac?
 
-Yes. Zush supports LM Studio and Ollama for supported on-device analysis; Floxtop describes its processing as fully offline, NameQuick supports local models in Self-Managed mode, and Files Magic AI uses Apple Intelligence for its Magic Rename feature. Verify the exact file types and macOS requirements before choosing.
+Yes. Zush supports LM Studio and Ollama for supported on-device analysis; Floxtop describes its processing as fully offline; NameQuick supports local models in Self-Managed mode; and Files Magic AI documents Apple Intelligence, a built-in model, and an optional Rename LLM for Magic Rename. Verify the exact file types and macOS requirements before choosing.

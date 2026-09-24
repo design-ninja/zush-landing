@@ -5,11 +5,12 @@ import { FEATURE_DEMO_COPY, type FeatureDemoCopy } from '@/i18n/featureDemoCopy'
 const PRIMARY = 'var(--primary)';
 const SUCCESS = 'var(--success)';
 
-const COMMAND = 'ollama run qwen2.5vl:3b';
+const COMMAND = 'ollama run qwen3.5:4b';
 const TYPING_START = 4;
 const CHARS_PER_FRAME = 1.5;
 const DOWNLOAD_START = 26;
 const DOWNLOAD_END = 60;
+const DOWNLOAD_SIZE_GB = 3.4;
 const READY_AT = 62;
 
 interface OfflineAiAnimationProps {
@@ -52,7 +53,7 @@ export const OfflineAiAnimation = ({ demoCopy = FEATURE_DEMO_COPY.en }: OfflineA
     durationInFrames: 14,
   });
 
-  const downloadedMb = Math.round(downloadProgress * 1.9 * 10) / 10;
+  const downloadedGb = Math.round(downloadProgress * DOWNLOAD_SIZE_GB * 10) / 10;
 
   return (
     <AbsoluteFill style={{ background: 'transparent', padding: 8, fontFamily: 'inherit' }}>
@@ -134,8 +135,8 @@ export const OfflineAiAnimation = ({ demoCopy = FEATURE_DEMO_COPY.en }: OfflineA
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span>pulling qwen2.5vl:3b…</span>
-                  <span style={{ color: '#f4f4f5' }}>{downloadedMb.toFixed(1)} / 1.9 GB</span>
+                  <span>pulling qwen3.5:4b…</span>
+                  <span style={{ color: '#f4f4f5' }}>{downloadedGb.toFixed(1)} / {DOWNLOAD_SIZE_GB.toFixed(1)} GB</span>
                 </div>
                 <div
                   style={{

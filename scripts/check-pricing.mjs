@@ -80,7 +80,10 @@ for (const relativePath of priceContentFiles) {
   for (const line of source.split('\n')) {
     if (!/Zush|PRO|Pro/.test(line)) continue;
 
-    const withoutCompetitorMonthlyPrice = line.replaceAll(/\$8\s*\+\s*VAT/gi, '');
+    const withoutCompetitorMonthlyPrice = line.replaceAll(
+      /\$8\s*(?:\+\s*VAT|plus\s+VAT)/gi,
+      '',
+    );
     if (withoutCompetitorMonthlyPrice.includes('$8') || line.includes('$38')) {
       fail(`${relativePath} still contains a legacy Zush price: ${line.trim()}`);
     }
