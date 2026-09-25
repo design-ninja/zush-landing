@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.9.6.0] - 2026-09-25
+
+### Improved
+- The PRO upgrade window opens sooner when the connection is slow.
+- Checkout can continue in your browser if the payment window cannot load.
+
+### Fixed
+- Improved PRO activation feedback when completing payment in a browser.
+- Unreadable images now show an error instead of generating suggestions from the filename alone, while other files continue processing.
+- Improved SVG preview cancellation and stability.
+- Clearer checkout and billing messages.
+
 ## [3.9.5.0] - 2026-09-23
 
 ### Improved
