@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.13.0] - 2026-09-25
+
+### New
+- Sort files into folders with AI, automatically or with your own instructions.
+- Choose where renamed files are saved.
+- Import and export Templates to share or reuse your settings.
+
+### Improved
+- Improved handling of PDF and ebook files.
+
 ## [3.12.0] - 2026-09-23
 
 ### Improved
