@@ -17,7 +17,7 @@ export const RENAME_TASK_EXAMPLES: Record<string, RenameTaskExample> = {
   '/rename-videos-with-ai': {
     id: 'video',
     title: 'Find a screen recording by what it shows',
-    intro: 'Turn a generic recording name into a searchable description. Zush renames the file in its current folder; it does not sort or move videos into other folders.',
+    intro: 'Turn a generic recording name into a searchable description. Zush renames the file in its current folder; Zush also offers optional AI folder sorting (beta).',
     before: 'Screen Recording 2026-09-01 at 10.32.14.mov',
     after: 'checkout-payment-error.mov',
     evidence: 'Illustrative example: sampled frames show a checkout screen with a payment error.',
@@ -30,7 +30,7 @@ export const RENAME_TASK_EXAMPLES: Record<string, RenameTaskExample> = {
   '/rename-audio-with-ai': {
     id: 'audio',
     title: 'Find a meeting recording by its topic',
-    intro: 'Replace an anonymous voice memo name with a topic you can search for later. Zush changes filenames in place; it does not move recordings or organize a music library into folders.',
+    intro: 'Replace an anonymous voice memo name with a topic you can search for later. Zush changes filenames in place; Zush also offers optional AI folder sorting (beta). It does not replace a music library manager.',
     before: 'voice_memo_042.m4a',
     after: 'website-launch-planning.m4a',
     evidence: 'Illustrative example: transcript context describes a meeting about planning a website launch.',
@@ -43,7 +43,7 @@ export const RENAME_TASK_EXAMPLES: Record<string, RenameTaskExample> = {
   '/rename-pdf-with-ai': {
     id: 'pdf',
     title: 'Turn a scanned invoice into a searchable filename',
-    intro: 'Use the invoice date, supplier, and invoice number instead of the scanner’s counter. Zush renames PDFs in their current folders; it does not move them into supplier or month folders.',
+    intro: 'Use the invoice date, supplier, and invoice number instead of the scanner’s counter. Zush renames PDFs in their current folders; you can optionally enable AI folder sorting (beta) and define supplier or month rules.',
     before: 'Scan0001.pdf',
     after: '2026-09-01_Acme_INV-1042.pdf',
     evidence: 'Illustrative invoice: date 1 September 2026, supplier Acme, invoice number INV-1042.',
@@ -56,7 +56,7 @@ export const RENAME_TASK_EXAMPLES: Record<string, RenameTaskExample> = {
   '/blog/best-photo-organizing-software-mac': {
     id: 'photo-library',
     title: 'Need better filenames, or a photo library?',
-    intro: 'Choose a photo library app for albums, people search, and culling. Use Zush for searchable filenames in Finder: it renames photos in place and does not move them into folders or replace a photo catalog.',
+    intro: 'Choose a photo library app for albums, people search, and culling. Use Zush for searchable filenames in Finder: it renames photos in place with optional AI folder sorting (beta). It does not replace a photo catalog.',
     before: 'IMG_4382.HEIC',
     after: 'golden-retriever-on-beach.HEIC',
     evidence: 'Illustrative example: a photo shows a golden retriever on a beach. Subject-based naming does not require inventing a location or a capture date.',
@@ -70,7 +70,7 @@ export const RENAME_TASK_EXAMPLES: Record<string, RenameTaskExample> = {
   '/blog/batch-rename-files-on-mac-complete-guide': {
     id: 'mac-batch',
     title: 'One shared prefix, or a different name for every file?',
-    intro: 'Finder works for a shared prefix or numbered sequence. Use Zush when each file needs a name based on its contents. Zush renames files in their existing folders; it does not move or sort files between folders.',
+    intro: 'Finder works for a shared prefix or numbered sequence. Use Zush when each file needs a name based on its contents. Zush renames files in their existing folders; Zush also offers optional AI folder sorting (beta).',
     before: 'Screenshot 2026-09-01 at 09.15.00.png',
     after: 'checkout-payment-error.png',
     evidence: 'Illustrative example: the screenshot shows a checkout payment error. A fixed Finder prefix cannot describe each screenshot individually.',

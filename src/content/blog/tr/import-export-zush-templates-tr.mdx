@@ -1,0 +1,57 @@
+---
+title: "Mac’te Zush şablonlarını içe ve dışa aktarma"
+description: ".zushtemplates dosyalarıyla Mac’ler arasında şablon paylaşın: taşınan ayarlar, içe aktarma çakışmaları ve yerel yapılandırma."
+date: "2026-09-26"
+slug: "import-export-zush-templates-tr"
+platform: "mac"
+topic: "automation"
+tags: ["Templates", "Automation", "File Naming"]
+tldr: "Zush, tek bir şablonu veya tüm koleksiyonu `.zushtemplates` dosyasına aktarır. Adlandırma bloklarını, yapay zekâ talimatlarını ve klasör kurallarını başka bir Mac’e taşıyabilirsiniz."
+earlyTaskExample: false
+reviewed: "2026-09-26"
+locale: "tr"
+translationOf: "import-export-zush-templates"
+---
+
+Zush, tek bir şablonu veya tüm koleksiyonu `.zushtemplates` dosyasına aktarır. Adlandırma bloklarını, yapay zekâ talimatlarını ve klasör kurallarını başka bir Mac’e taşıyabilirsiniz.
+
+Ekipte aynı fatura adlarını kullanmak, yeni bir Mac kurmak veya değişiklik öncesi yedek almak için uygundur. Dosya, belgeleri değil ayarları taşır.
+
+## Şablonları dışa aktarma
+
+1. **Templates** bölümünü açın.
+2. Tek şablonu bağlam menüsünden veya ayrıntı sayfasından dışa aktarın.
+3. Tümü için **More → Export All Templates…** seçeneğini kullanın.
+4. Dosyayı kaydedip diğer Mac’e aktarın.
+5. Smart Rename için önce **Duplicate as New** ile kayıtlı bir şablon oluşturun.
+
+![Mac’te Zush şablonlarını içe ve dışa aktarma](/images/showcase/macos/template-transfer-light.webp)
+
+## Hangi ayarlar taşınır?
+
+Arşiv; ad, açıklama, simge, renk, adlandırma blokları, biçim, dil, tarih biçimi, üst veri tercihleri ve yapay zekâ talimatlarını içerir. Kullanılan özel yapay zekâ blokları ile klasör kuralları da korunur.
+
+Smart Rename’den devralınan değerler açık ayarlara dönüştürülür. Hedef yollar, izinler, API anahtarları, yerel modeller, lisans, Monitor bağlantıları ve geçmiş yerel kalır. Alıcı Mac’te hedefi ve yapay zekâ bağlantısını ayarlayın.
+
+## İçe aktarma ve çakışmalar
+
+**More → Import Templates…** ile dosyayı açın. Aynı şablon kimliği varsa **Replace Existing** veya **Create Copies** seçin. Değiştirme Monitor bağlantılarını korur; kopyalar ayrı şablonlar oluşturur. Aynı ad tek başına çakışma değildir.
+
+İçe aktarma genel Smart Rename ayarlarını değiştirmez. Kuralları inceleyin, yerel hedefleri seçin ve otomasyon öncesinde küçük bir grupla deneyin.
+
+## Paylaşmadan önce inceleyin
+
+Açık adlar ve açıklamalar kullanın. Özel talimatlar dışa aktarılan dosyada okunabilir metindir; yazdığınız müşteri bilgilerini içerebilir.
+
+Yedek kopyayı saklayın. Geçersiz arşivler, desteklenmeyen biçim sürümleri ve eksik özel yapay zekâ blokları reddedilir. Değiştirilmemiş bir dışa aktarım kullanın; gerekirse uygulama sürümünü kontrol edin.
+
+## Yeni bir Mac’e geçiş örneği
+
+Fatura iş akışınızı başka bir Mac’te kullanmak için önce ilgili şablonu dışa aktarın. Tek bir dosyada adlandırma blokları ve klasör kuralları birlikte taşınır; her ayarı yeniden yazmanız gerekmez. Alıcı Mac’te dosyayı içe aktardıktan sonra şablonu açın ve beklediğiniz kuralların bulunduğunu kontrol edin.
+
+Sonraki adım yerel çalışma ortamını hazırlamaktır. Hedef klasörü o Mac üzerinde seçin ve kullanacağınız yapay zekâ modunu yapılandırın. Birkaç örnek faturayı AI Rename bölümüne ekleyerek önerilen adları ve klasörleri inceleyin. Sonuç istediğiniz gibiyse şablonu günlük işlerinizde kullanabilir veya yerel Monitor klasörünüze atayabilirsiniz.
+
+Mevcut bir şablonu güncelliyorsanız değiştirme ve kopyalama seçeneklerini amacınıza göre seçin. Deneme yapmak için ayrı bir kopya, aynı iş akışını güncellemek için mevcut şablonu değiştirmek daha uygundur. Değiştirmeden önce eski sürümü dışa aktarmak, önceki kuralları tekrar incelemenizi kolaylaştırır.
+
+
+[İçe ve dışa aktarma belgeleri (İngilizce)](/docs/template-import-export) · [Mac’te dosyaları yapay zekâyla klasörlere ayırma](/tr/blog/sort-files-into-folders-with-ai-mac-tr) · [Zush · macOS](/tr/mac)

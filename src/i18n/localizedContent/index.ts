@@ -1,3 +1,4 @@
+import { ORGANIZATION_FEATURES } from '@/i18n/organizationFeatures';
 import type { Locale } from '@/i18n/config';
 import type { HomeCopy } from '@/i18n/copy';
 import type { ProfessionLocaleCopy } from '@/i18n/professions/types';
@@ -23,5 +24,12 @@ export function getLocalizedContent(
     );
   }
 
-  return content;
+  const organization = ORGANIZATION_FEATURES[locale];
+  return {
+    ...content,
+    home: {
+      ...content.home,
+      faqItems: [{ question: organization.sortingQuestion, answer: organization.sortingAnswer }, ...content.home.faqItems],
+    },
+  };
 }

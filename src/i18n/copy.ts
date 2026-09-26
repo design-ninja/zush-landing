@@ -1,3 +1,4 @@
+import { ORGANIZATION_FEATURES } from './organizationFeatures';
 import type { Locale, LocalizedRoute } from '@/i18n/config';
 import { HOME_FAQ_DATA } from '@/data/homeFaq';
 import { VIDEO_PREVIEW_IMAGES } from '@/data/videoPreviewImages';
@@ -1323,7 +1324,7 @@ const EN_COPY: LocaleCopy = {
         { question: 'Is Zush a file renamer for Mac or a Finder script?', answer: 'Zush is a native macOS app, not a Finder-only script. It gives you drag-and-drop batch renaming, watched folders, editable AI suggestions, custom naming patterns, metadata tags, and one-click undo.' },
         { question: 'Can Zush bulk rename files on Mac?', answer: 'Yes. You can bulk rename mixed Mac folders from Finder, review every AI-generated name, apply the batch, and roll back changes from rename history if needed.' },
         { question: 'How is Zush different from Apple Intelligence Shortcuts?', answer: 'Apple Intelligence and Shortcuts can be useful for small custom workflows. Zush is built for repeated file cleanup: mixed file types, folder monitoring, review before apply, naming templates, Local AI, and rename history.' },
-        { question: 'Can Zush organize files on Mac?', answer: 'Yes. Zush works as an automatic file organizer for Mac by turning vague filenames into readable, searchable names and monitoring folders such as Downloads, Desktop, and Screenshots for new supported files. It focuses on the naming layer and renames files in place rather than moving them between folders, so everything stays easy to find in Finder and Spotlight.' },
+        { question: 'Can Zush organize files on Mac?', answer: 'Yes. Zush works as an automatic file organizer for Mac by turning vague filenames into readable, searchable names and monitoring folders such as Downloads, Desktop, and Screenshots for new supported files. Zush offers optional AI folder sorting (beta) and destination folders. Keep sorting off to rename in place, or group files by content and your own folder rules.' },
         { question: 'Is Zush a Hazel alternative?', answer: 'For content-aware naming, yes. Hazel is a rule engine that acts on files by conditions like name, date, or kind, while Zush reads what each file actually contains and suggests a descriptive name, then monitors folders and keeps full undo history. Zush also runs on Windows, while Hazel is macOS-only, and many people use both.' },
         { question: 'Can Zush rename invoices and receipts on Mac?', answer: 'Yes. Zush reads invoice and receipt PDFs and photos, pulls the vendor, date, and invoice number with Naming Blocks, and can extract the amount or a tax category with a Custom AI Block. Scanned documents are read with AI vision, and every batch is reviewed before applying with undo history available.' },
         { question: 'What are Custom AI Blocks?', answer: 'Custom AI Blocks let you define your own naming field by describing in plain language what Zush should extract from a file — a client name, case number, or brand — and reuse it in any template alongside the 145+ built-in Naming Blocks. They are included in the free version.' },
@@ -1368,7 +1369,6 @@ const EN_COPY: LocaleCopy = {
         { question: 'Does Zush help search files by content on Windows?', answer: 'Zush does not replace Windows Search with a separate semantic search index. It analyzes file content during renaming and writes that context into filenames and metadata, so files become easier to find later in File Explorer and Windows Search.' },
         { question: 'What file types can Zush rename on Windows?', answer: 'Zush supports mixed Windows folders with screenshots, JPG/PNG/HEIC/RAW photos, PDFs, Office documents, iWork files, design files such as Figma, Sketch, Illustrator, and PSD, videos, audio, subtitles, text files, CSV, XML, YAML, and more.' },
         { question: 'Why is Zush distributed through the Microsoft Store?', answer: 'The Store handles installation, signing, and automatic updates for every user.' },
-        { question: 'Does the Windows app have the same features as the Mac app?', answer: 'Yes. It includes managed Cloud AI, BYOK, LM Studio, Ollama, folder monitoring, custom prompts, and revert history.' },
         { question: 'Can Zush bulk rename files on Windows?', answer: 'Yes. Zush can bulk rename files from ordinary Windows folders, including screenshots, PDFs, photos, videos, audio, design files, iWork files, and Office documents.' },
         { question: 'Does it run on Windows on ARM?', answer: 'Yes. The Microsoft Store release includes native x64 and ARM64 packages.' },
       ],
@@ -1711,7 +1711,6 @@ const localizedPlatforms: Record<Exclude<Locale, 'en' | 'zh-cn' | 'tr' | 'ar'>, 
       ],
       faqs: [
         { question: 'Warum wird Zush über den Microsoft Store verteilt?', answer: 'Der Store übernimmt Installation, Signierung und automatische Updates für alle Nutzer.' },
-        { question: 'Hat Zush für Windows dieselben Funktionen wie Mac?', answer: 'Ja. Es enthält Cloud-KI-Umbenennung, Ordnerüberwachung, eigene Prompts, Verlauf zum Wiederherstellen, BYOK und lokale KI.' },
         { question: 'Läuft es auf Windows on ARM?', answer: 'Ja. Die Microsoft-Store-Version enthält native x64- und ARM64-Pakete.' },
       ],
     },
@@ -1765,7 +1764,6 @@ const localizedPlatforms: Record<Exclude<Locale, 'en' | 'zh-cn' | 'tr' | 'ar'>, 
       ],
       faqs: [
         { question: 'Pourquoi Zush est-il distribué via le Microsoft Store ?', answer: 'Le Store gère l’installation, la signature et les mises à jour automatiques pour chaque utilisateur.' },
-        { question: 'Zush pour Windows a-t-il les mêmes fonctions que sur Mac ?', answer: 'Oui. Il inclut le renommage IA cloud, la surveillance de dossiers, les prompts personnalisés, l’historique de restauration, BYOK et l’IA locale.' },
         { question: 'Fonctionne-t-il sur Windows on ARM ?', answer: 'Oui. La version Microsoft Store inclut des paquets natifs x64 et ARM64.' },
       ],
     },
@@ -1819,7 +1817,6 @@ const localizedPlatforms: Record<Exclude<Locale, 'en' | 'zh-cn' | 'tr' | 'ar'>, 
       ],
       faqs: [
         { question: 'Por que o Zush é distribuído pela Microsoft Store?', answer: 'A Store cuida da instalação, assinatura e atualizações automáticas para todos os usuários.' },
-        { question: 'O Zush para Windows tem os mesmos recursos do Mac?', answer: 'Sim. Ele inclui renomeação com IA na nuvem, monitoramento de pastas, prompts personalizados, histórico para reverter, BYOK e IA local.' },
         { question: 'Ele roda em Windows on ARM?', answer: 'Sim. A versão da Microsoft Store inclui pacotes nativos x64 e ARM64.' },
       ],
     },
@@ -1873,7 +1870,6 @@ const localizedPlatforms: Record<Exclude<Locale, 'en' | 'zh-cn' | 'tr' | 'ar'>, 
       ],
       faqs: [
         { question: '¿Por qué Zush se distribuye mediante Microsoft Store?', answer: 'La Store gestiona la instalación, la firma y las actualizaciones automáticas para cada usuario.' },
-        { question: '¿Zush para Windows tiene las mismas funciones que Mac?', answer: 'Sí. Incluye renombrado con IA en la nube, monitoreo de carpetas, prompts personalizados, historial para revertir, BYOK e IA local.' },
         { question: '¿Funciona en Windows on ARM?', answer: 'Sí. La versión de Microsoft Store incluye paquetes nativos x64 y ARM64.' },
       ],
     },
@@ -1927,7 +1923,6 @@ const localizedPlatforms: Record<Exclude<Locale, 'en' | 'zh-cn' | 'tr' | 'ar'>, 
       ],
       faqs: [
         { question: 'Waarom wordt Zush via de Microsoft Store verspreid?', answer: 'De Store regelt installatie, ondertekening en automatische updates voor elke gebruiker.' },
-        { question: 'Heeft Zush voor Windows dezelfde functies als Mac?', answer: 'Ja. Het bevat cloud AI-renaming, mapmonitoring, aangepaste prompts, herstelgeschiedenis, BYOK en Lokale AI.' },
         { question: 'Draait het op Windows on ARM?', answer: 'Ja. De Microsoft Store-release bevat native x64- en ARM64-pakketten.' },
       ],
     },
@@ -1981,7 +1976,6 @@ const localizedPlatforms: Record<Exclude<Locale, 'en' | 'zh-cn' | 'tr' | 'ar'>, 
       ],
       faqs: [
         { question: 'Perché Zush è distribuito tramite Microsoft Store?', answer: 'Lo Store gestisce installazione, firma e aggiornamenti automatici per ogni utente.' },
-        { question: 'Zush per Windows ha le stesse funzioni della versione Mac?', answer: 'Sì. Include rinomina IA cloud, monitoraggio cartelle, prompt personalizzati, cronologia per ripristinare, BYOK e IA locale.' },
         { question: 'Funziona su Windows on ARM?', answer: 'Sì. La versione Microsoft Store include pacchetti nativi x64 e ARM64.' },
       ],
     },
@@ -2035,7 +2029,6 @@ const localizedPlatforms: Record<Exclude<Locale, 'en' | 'zh-cn' | 'tr' | 'ar'>, 
       ],
       faqs: [
         { question: 'なぜ Zush は Microsoft Store で配布されていますか？', answer: 'Store がインストール、署名、自動更新を各ユーザー向けに管理するためです。' },
-        { question: 'Zush for Windows は Mac 版と同じ機能がありますか？', answer: 'はい。クラウド AI リネーム、フォルダ監視、カスタムプロンプト、復元履歴、BYOK、ローカル AI を含みます。' },
         { question: 'Windows on ARM で動作しますか？', answer: 'はい。Microsoft Store 版には x64 と ARM64 のネイティブパッケージが含まれます。' },
       ],
     },
@@ -2089,7 +2082,6 @@ const localizedPlatforms: Record<Exclude<Locale, 'en' | 'zh-cn' | 'tr' | 'ar'>, 
       ],
       faqs: [
         { question: 'Zush는 왜 Microsoft Store로 배포되나요?', answer: 'Store가 모든 사용자의 설치, 서명, 자동 업데이트를 처리하기 때문입니다.' },
-        { question: 'Windows용 Zush도 Mac과 같은 기능을 제공하나요?', answer: '예. 클라우드 AI 이름 변경, 폴더 모니터링, 사용자 지정 프롬프트, 복원 기록, BYOK, 로컬 AI를 포함합니다.' },
         { question: 'Windows on ARM에서 실행되나요?', answer: '예. Microsoft Store 릴리스에는 네이티브 x64 및 ARM64 패키지가 포함됩니다.' },
       ],
     },
@@ -4872,7 +4864,6 @@ const COPY: Record<Locale, LocaleCopy> = {
         ],
         faqs: [
           { question: '为什么通过 Microsoft Store 分发？', answer: 'Microsoft Store 会处理安装、签名和自动更新，用户无需手动维护版本。' },
-          { question: 'Windows 版和 Mac 版功能一样吗？', answer: '是的。Windows 版包含云端 AI 重命名、文件夹监控、自定义提示词、恢复历史、BYOK 和本地 AI。' },
           { question: '支持 Windows on ARM 吗？', answer: '支持。Microsoft Store 版本包含 x64 和 ARM64 原生包。' },
         ],
       },
@@ -5045,7 +5036,6 @@ const COPY: Record<Locale, LocaleCopy> = {
         ],
         faqs: [
           { question: 'Zush neden Microsoft Store’dan dağıtılıyor?', answer: 'Microsoft Store her kullanıcı için kurulum, imzalama ve otomatik güncellemeleri yönetir.' },
-          { question: 'Windows için Zush, Mac ile aynı özellikleri sunuyor mu?', answer: 'Evet. Bulut yapay zekâyla yeniden adlandırma, klasör izleme, özel istemler, geri alma geçmişi, BYOK ve Çevrimdışı Yapay Zekâ modu dâhildir.' },
           { question: 'Windows on ARM’da çalışıyor mu?', answer: 'Evet. Microsoft Store sürümü yerel x64 ve ARM64 paketlerini içerir.' },
         ],
       },
@@ -5224,7 +5214,6 @@ const COPY: Record<Locale, LocaleCopy> = {
         ],
         faqs: [
           { question: 'لماذا يتم توزيع Zush عبر Microsoft Store؟', answer: 'يتولى Microsoft Store التثبيت والتوقيع والتحديثات التلقائية لكل مستخدم.' },
-          { question: 'هل يملك Zush على Windows نفس ميزات Mac؟', answer: 'نعم. يتضمن إعادة التسمية السحابية بالذكاء الاصطناعي، مراقبة المجلدات، التعليمات المخصصة، سجل التراجع، BYOK، ووضع الذكاء الاصطناعي دون اتصال.' },
           { question: 'هل يعمل على Windows on ARM؟', answer: 'نعم. يتضمن إصدار Microsoft Store حزم x64 وARM64 أصلية.' },
         ],
       },
@@ -5287,5 +5276,21 @@ const COPY: Record<Locale, LocaleCopy> = {
 };
 
 export function getCopy(locale: Locale): LocaleCopy {
-  return COPY[locale] ?? COPY.en;
+  const copy = COPY[locale] ?? COPY.en;
+  const organization = ORGANIZATION_FEATURES[locale];
+  return {
+    ...copy,
+    home: {
+      ...copy.home,
+      showcase: {
+        ...copy.home.showcase,
+        items: {
+          ...copy.home.showcase.items,
+          'offline-mode': { title: organization.offlineTitle, description: organization.offlineDescription, alt: organization.offlineDescription },
+          'folder-sorting': { title: organization.sortingTab, description: organization.sortingCaption, alt: organization.sortingTitle },
+          'template-transfer': { title: organization.transferTab, description: organization.transferCaption, alt: organization.transferTitle },
+        },
+      },
+    },
+  };
 }

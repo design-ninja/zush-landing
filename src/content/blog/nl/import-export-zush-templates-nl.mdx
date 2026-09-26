@@ -1,0 +1,57 @@
+---
+title: "Zush-sjablonen importeren en exporteren op Mac"
+description: "Deel naamsjablonen tussen Macs via .zushtemplates-bestanden: instellingen, importconflicten en lokale configuratie."
+date: "2026-09-26"
+slug: "import-export-zush-templates-nl"
+platform: "mac"
+topic: "automation"
+tags: ["Templates", "Automation", "File Naming"]
+tldr: "Zush exporteert één sjabloon of de hele verzameling als `.zushtemplates`-bestand. Importeer het op een andere Mac met naamblokken, AI-instructies en sorteerregels."
+earlyTaskExample: false
+reviewed: "2026-09-26"
+locale: "nl"
+translationOf: "import-export-zush-templates"
+---
+
+Zush exporteert één sjabloon of de hele verzameling als `.zushtemplates`-bestand. Importeer het op een andere Mac met naamblokken, AI-instructies en sorteerregels.
+
+Handig voor gezamenlijke factuurnamen, een nieuwe Mac of een reservekopie vóór wijzigingen. Het bestand bevat instellingen, geen oorspronkelijke documenten.
+
+## Sjablonen exporteren
+
+1. Open **Templates**.
+2. Exporteer één sjabloon via het contextmenu of de detailweergave.
+3. Kies voor de hele verzameling **More → Export All Templates…**.
+4. Sla het bestand op en breng het naar de andere Mac.
+5. Maak voor Smart Rename eerst een opgeslagen sjabloon met **Duplicate as New**.
+
+![Zush-sjablonen importeren en exporteren op Mac](/images/showcase/macos/template-transfer-light.webp)
+
+## Welke instellingen meegaan
+
+Het archief bevat naam, beschrijving, pictogram, kleur, naamblokken, opmaak, taal, datumnotatie, metadatavoorkeuren en AI-instructies. Gebruikte eigen AI-blokken en sorteerregels gaan ook mee.
+
+Overgeërfde Smart Rename-waarden worden expliciet opgeslagen. Doelpaden, rechten, API-sleutels, lokale modellen, licentie, Monitor-koppelingen en geschiedenis blijven lokaal. Stel de bestemming en AI-verbinding op de ontvangende Mac in.
+
+## Importeren en conflicten oplossen
+
+Kies **More → Import Templates…** en open het bestand. Bestaat dezelfde sjabloon-ID al, kies dan **Replace Existing** of **Create Copies**. Vervangen behoudt Monitor-koppelingen; kopieën zijn aparte sjablonen. Alleen dezelfde naam is geen conflict.
+
+Importeren overschrijft de algemene Smart Rename-instellingen niet. Controleer regels, kies lokale bestemmingen en test een kleine batch voordat je automatiseert.
+
+## Controleren voor het delen
+
+Gebruik duidelijke namen en beschrijvingen. Lees eigen instructies na: ze staan leesbaar in de export en kunnen ingevoerde klantgegevens bevatten.
+
+Bewaar een reservekopie. Ongeldige archieven, niet-ondersteunde formaatversies en ontbrekende verwijzingen naar AI-blokken worden geweigerd. Gebruik een ongewijzigde export en controleer zo nodig de appversie.
+
+## Voorbeeld: een nieuwe Mac instellen
+
+Stel dat je een sjabloon voor facturen gebruikt met een datum, bedrijfsnaam en documentnummer in de bestandsnaam. Exporteer dat sjabloon en importeer het op de nieuwe Mac. Je hoeft de naamblokken en instructies dan niet opnieuw in te voeren. Open het geïmporteerde sjabloon om de instellingen te controleren.
+
+Kies vervolgens op die Mac een doelmap en stel de gewenste AI-modus in. Voeg eerst enkele voorbeeldfacturen toe aan AI Rename. Bekijk de voorgestelde namen en mappen voordat je de bewerking toepast. Pas daarna wijs je het sjabloon toe aan een lokale Monitor-map voor nieuwe bestanden.
+
+Wil je een aangepaste versie uitproberen zonder het bestaande sjabloon te vervangen? Kies bij een conflict voor een kopie. Wil je juist hetzelfde sjabloon bijwerken en de Monitor-koppelingen behouden, gebruik dan vervangen. Een eerdere export bewaren helpt om de oorspronkelijke instellingen later terug te vinden.
+
+
+[Volledige documentatie over import en export (Engels)](/docs/template-import-export) · [Bestanden op Mac met AI in mappen indelen](/nl/blog/sort-files-into-folders-with-ai-mac-nl) · [Zush · macOS](/nl/mac)

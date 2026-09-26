@@ -1,0 +1,66 @@
+---
+title: Import and Export Zush Templates
+description: Share and back up Zush Templates as .zushtemplates files. Learn what transfers, how duplicate imports work, and which settings to configure on another computer.
+lastUpdated: 2026-09-26
+sidebar:
+  order: 21
+  label: Import & export Templates
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import ThemedScreenshot from '@/components/OrganizationFeatures/ThemedScreenshot.astro';
+
+Use a `.zushtemplates` file to back up a naming workflow, share it with a colleague, or move it to another computer. It contains Template settings; it is not a backup of your documents or your entire Zush installation.
+
+<ThemedScreenshot id="template-transfer" alt="Zush Templates menu with Import Templates and Export All Templates on Mac." />
+
+## Export one Template
+
+<Steps>
+1. Open **Templates**.
+2. Use the Template's context menu or open its details and choose the export action.
+3. Choose the filename and save location in the export dialog.
+4. Save the `.zushtemplates` file.
+</Steps>
+
+To share Smart Rename settings, first use **Duplicate as New** to create a saved Template, then export it.
+
+## Export all Templates
+
+Open **Templates**, click the **More** menu (**…**), and choose **Export All Templates…**. Save the collection as one `.zushtemplates` file. Settings inherited from Smart Rename are resolved into explicit values, so the receiving computer does not need the same defaults.
+
+## Import Templates
+
+<Steps>
+1. Open **Templates** on the receiving computer.
+2. Choose **More → Import Templates…**.
+3. Select a `.zushtemplates` file.
+4. If matching Template IDs already exist, choose **Replace Existing** or **Create Copies**.
+5. Review the imported Templates, choose local destinations, and test a small batch.
+</Steps>
+
+**Replace Existing** updates matching Templates and keeps their Monitor links. **Create Copies** adds separate Templates. Templates without matches are added in either case. Importing does not overwrite global Smart Rename settings.
+
+## What the file includes
+
+| Included | Configure separately on the receiving computer |
+| --- | --- |
+| Template name, description, icon, and color | AI provider and API keys |
+| Naming Blocks, pattern, case, and separators | Local model installation and connection |
+| Language and date format | Destination folder and filesystem access |
+| Rename and tagging instructions | Monitored folder paths and assignments |
+| Referenced Custom AI Blocks and their instructions | Original files and rename history |
+| Folder sorting, folder rules, and existing-folder reuse | Global Smart Rename defaults |
+| Metadata preferences | License activation |
+
+Custom AI instructions are readable inside the exported file. Review those instructions before sharing a Template that contains client-specific details.
+
+## Import problems
+
+Use an unmodified `.zushtemplates` export. Invalid files, unsupported format versions, and missing referenced Custom AI Blocks are rejected. If a newer export cannot be read, check the Zush version on the receiving computer. A similarly named Template is not necessarily a duplicate: conflicts are matched by Template ID.
+
+## Related guides
+
+- [Create and apply Templates](/docs/templates)
+- [AI folder sorting](/docs/folder-sorting)
+- [Share naming workflows between Macs](/blog/import-export-zush-templates)

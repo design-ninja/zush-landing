@@ -1,0 +1,48 @@
+---
+title: "Cómo importar y exportar plantillas de Zush en Mac"
+description: "Comparte plantillas entre Macs mediante archivos .zushtemplates: ajustes incluidos, conflictos de importación y configuración local."
+date: "2026-09-26"
+slug: "import-export-zush-templates-es"
+platform: "mac"
+topic: "automation"
+tags: ["Templates", "Automation", "File Naming"]
+tldr: "Zush permite exportar una plantilla o toda la colección como archivo `.zushtemplates`. Impórtalo en otro Mac para recuperar bloques de nombres, instrucciones de IA y reglas de clasificación."
+earlyTaskExample: false
+reviewed: "2026-09-26"
+locale: "es"
+translationOf: "import-export-zush-templates"
+---
+
+Zush permite exportar una plantilla o toda la colección como archivo `.zushtemplates`. Impórtalo en otro Mac para recuperar bloques de nombres, instrucciones de IA y reglas de clasificación.
+
+Sirve para unificar los nombres de facturas de un equipo, configurar otro Mac o guardar una copia antes de cambiar un proceso. Transfiere ajustes, no documentos originales.
+
+## Exportar plantillas
+
+1. Abre **Templates**.
+2. Exporta una plantilla desde su menú contextual o sus detalles.
+3. Para toda la colección, elige **More → Export All Templates…**.
+4. Guarda el archivo y pásalo al otro Mac.
+5. Para Smart Rename, crea primero una plantilla guardada con **Duplicate as New**.
+
+![Cómo importar y exportar plantillas de Zush en Mac](/images/showcase/macos/template-transfer-light.webp)
+
+## Qué ajustes se transfieren
+
+El archivo incluye nombre, descripción, icono, color, bloques, formato, idioma, fecha, preferencias de metadatos e instrucciones de IA. También conserva los bloques de IA personalizados utilizados y las reglas de clasificación.
+
+Los valores heredados de Smart Rename se guardan explícitamente. Las rutas de destino, permisos, claves API, modelos locales, licencia, asignaciones de Monitor e historial permanecen en cada equipo. Configura el destino y la conexión de IA en el Mac receptor.
+
+## Importar y resolver coincidencias
+
+Elige **More → Import Templates…** y abre el archivo. Si ya existe el identificador de una plantilla, selecciona **Replace Existing** o **Create Copies**. Reemplazar conserva los enlaces de Monitor; crear copias genera plantillas separadas. Un nombre igual no basta para causar un conflicto.
+
+La importación no sobrescribe los ajustes globales de Smart Rename. Revisa las reglas, elige los destinos locales y prueba un lote pequeño antes de automatizar.
+
+## Comprobar antes de compartir
+
+Usa nombres y descripciones claros. Revisa las instrucciones personalizadas: se incluyen como texto legible y podrían contener detalles que hayas escrito sobre un cliente.
+
+Conserva una copia de seguridad. Se rechazan archivos inválidos, versiones de formato incompatibles o referencias a bloques de IA ausentes. Utiliza una exportación sin modificar y comprueba la versión de la aplicación si falla la importación.
+
+[Documentación completa de importación y exportación (en inglés)](/docs/template-import-export) · [Cómo clasificar archivos en carpetas con IA en Mac](/es/blog/sort-files-into-folders-with-ai-mac-es) · [Zush · macOS](/es/mac)

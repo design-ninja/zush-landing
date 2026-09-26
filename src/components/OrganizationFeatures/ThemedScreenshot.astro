@@ -1,0 +1,22 @@
+---
+interface Props { id: string; alt: string; zoom?: boolean }
+const { id, alt, zoom = false } = Astro.props;
+const source = (theme: string, width: number) => `/images/showcase/macos/${id}-${theme}-${width}.webp`;
+---
+<div class:list={['organization-screenshot', { 'is-zoomed': zoom }]}>
+  {(['light', 'dark'] as const).map(theme => (
+    <img data-screenshot-theme={theme} src={source(theme, 1280)}
+      srcset={[640, 960, 1280, 1600, 1920, 2560].map(width => `${source(theme, width)} ${width}w`).join(', ')}
+      sizes={zoom ? '(max-width: 768px) calc(135vw - 54px), (max-width: 1200px) 67.5vw, 810px' : '(max-width: 768px) calc(100vw - 40px), 800px'}
+      alt={alt} width="1280" height="720" loading="lazy" decoding="async" />
+  ))}
+</div>
+<style>
+  .organization-screenshot { width: 100%; }
+  .organization-screenshot img { width: 100%; height: auto; display: block; margin: 0; border-radius: 1rem; }
+  .is-zoomed { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
+  .is-zoomed img { position: absolute; width: 135%; max-width: none; top: 50%; left: 50%; transform: translate(-50%, -50%); border-radius: 0; }
+  [data-screenshot-theme='dark'] { display: none !important; }
+  :global([data-theme='dark']) [data-screenshot-theme='light'] { display: none !important; }
+  :global([data-theme='dark']) [data-screenshot-theme='dark'] { display: block !important; }
+</style>

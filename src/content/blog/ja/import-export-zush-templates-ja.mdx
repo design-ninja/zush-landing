@@ -1,0 +1,48 @@
+---
+title: "MacでZushテンプレートを読み込み・書き出しする方法"
+description: ".zushtemplatesファイルで命名テンプレートを別のMacへ移行。含まれる設定、重複時の処理、移行先で必要な設定を解説します。"
+date: "2026-09-26"
+slug: "import-export-zush-templates-ja"
+platform: "mac"
+topic: "automation"
+tags: ["Templates", "Automation", "File Naming"]
+tldr: "Zushでは、テンプレートを1つ、またはすべてまとめて`.zushtemplates`ファイルに書き出せます。別のMacに読み込むと、命名ブロック、AIへの指示、フォルダルールを再利用できます。"
+earlyTaskExample: false
+reviewed: "2026-09-26"
+locale: "ja"
+translationOf: "import-export-zush-templates"
+---
+
+Zushでは、テンプレートを1つ、またはすべてまとめて`.zushtemplates`ファイルに書き出せます。別のMacに読み込むと、命名ブロック、AIへの指示、フォルダルールを再利用できます。
+
+チームで請求書の命名方法を統一したいとき、新しいMacを設定するとき、変更前の設定を残したいときに便利です。移行するのは設定であり、元の文書ではありません。
+
+## テンプレートを書き出す
+
+1. **Templates**を開きます。
+2. 個別のテンプレートはコンテキストメニューか詳細画面から書き出します。
+3. すべて書き出す場合は**More → Export All Templates…**を選びます。
+4. ファイルを保存し、別のMacに渡します。
+5. Smart Renameの設定は、先に**Duplicate as New**でテンプレートとして保存します。
+
+![MacでZushテンプレートを読み込み・書き出しする方法](/images/showcase/macos/template-transfer-light.webp)
+
+## 引き継がれる設定
+
+名前、説明、アイコン、色、命名ブロック、書式、言語、日付形式、メタデータ設定、AIへの指示が含まれます。参照されている独自のAIブロックと、既存フォルダの再利用を含む振り分けルールも保持されます。
+
+Smart Renameから継承した値は、書き出し時に明示的な設定になります。保存先のパス、アクセス権、APIキー、ローカルモデル、ライセンス、Monitorの割り当て、履歴は移行されません。移行先で保存先とAI接続を設定してください。
+
+## 読み込みと重複への対応
+
+**More → Import Templates…**でファイルを選びます。同じテンプレートIDがある場合は、**Replace Existing**または**Create Copies**を選択します。置換はMonitorとの関連を維持し、コピーは別のテンプレートを作成します。名前が同じだけでは重複扱いになりません。
+
+読み込みによってSmart Renameの全体設定は上書きされません。ルールと保存先を確認し、自動化する前に少数のファイルで試してください。
+
+## 共有前の確認
+
+用途がわかる名前と説明を付けましょう。独自の指示は書き出しファイルに読めるテキストで含まれます。入力した顧客情報がないか確認してください。
+
+元の書き出しファイルはバックアップとして保管できます。不正な形式、未対応の形式バージョン、参照先のAIブロックが欠けたファイルは拒否されます。変更していない書き出しファイルを使い、必要ならアプリのバージョンを確認します。
+
+[読み込み・書き出しの詳細ドキュメント（英語）](/docs/template-import-export) · [MacでAIを使ってファイルをフォルダに振り分ける方法](/ja/blog/sort-files-into-folders-with-ai-mac-ja) · [Zush · macOS](/ja/mac)

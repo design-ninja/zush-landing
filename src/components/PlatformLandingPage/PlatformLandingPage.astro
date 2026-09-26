@@ -2,6 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Hero from '@/components/Hero';
 import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
+import OrganizationFeatures from '@/components/OrganizationFeatures/OrganizationFeatures.astro';
 import Features from '@/components/Features/Features.astro';
 import WaysToRun from '@/components/Features/WaysToRun.astro';
 import EvidenceSignals from '@/components/EvidenceSignals/EvidenceSignals.astro';
@@ -36,6 +37,7 @@ import { buildFAQPageJsonLd, buildFeatureBreadcrumbJsonLd, buildWebPageJsonLd } 
 import type { DownloadOS } from '@/utils/download';
 import { DEFAULT_LOCALE, getLocalizedPath, type Locale } from '@/i18n/config';
 import { getCopy } from '@/i18n/copy';
+import { ORGANIZATION_FEATURES } from '@/i18n/organizationFeatures';
 import { getPlatformFaqCopy } from '@/i18n/platformFaqs';
 import { getPlatformSpecificsCopy } from '@/i18n/platformSpecifics';
 import { PRO_PRICING } from '@/constants/pricing';
@@ -184,7 +186,7 @@ const softwareJsonLd = {
   '@id': canonicalSoftwareId,
   name: localizedPage.softwareName,
   url: `${SITE_ORIGIN}${page.path}`,
-  description: localizedPage.softwareDescription,
+  description: ORGANIZATION_FEATURES[locale][platform === 'mac' ? 'macDescription' : 'windowsDescription'],
   keywords: platformKeywords.join(', '),
   applicationCategory: 'UtilitiesApplication',
   applicationSubCategory: 'File Renaming and Organization',
@@ -226,7 +228,7 @@ const softwareJsonLd = {
       description: `One-time purchase with unlimited renames across ${AI_MODES_SUMMARY}.`,
     },
   ],
-  featureList: localizedPage.features,
+  featureList: [...localizedPage.features, ORGANIZATION_FEATURES[locale].sortingAnswer],
 };
 
 const WINDOWS_BATCH_RENAME_VIDEO_UPLOAD_DATE = '2026-04-29T00:00:00+00:00';
@@ -333,11 +335,10 @@ const jsonLdItems = [
     locale={locale}
     includeBand={false}
   />
+  <OrganizationFeatures locale={locale} />
   <WaysToRun copy={platformSections.featureCards} locale={locale} />
   <EvidenceSignals locale={locale} variant="control" />
-  {platform === 'windows' && (
-    <Tour forceOS="windows" copy={copy.home.showcase} />
-  )}
+  <Tour forceOS={platform} copy={copy.home.showcase} />
   {locale === DEFAULT_LOCALE && (
     <section class={styles.IntentSection} aria-labelledby='platform-intent-heading'>
       <div class={styles.IntentSection__Container}>

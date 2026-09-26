@@ -85,7 +85,7 @@ This approach fits mixed real-world folders because each file can receive a diff
 
 ## How to automatically rename invoices with Zush
 
-Zush renames files in place; it does not move invoices between folders. The steps below work on Mac and Windows.
+The naming steps below work on Mac and Windows. Zush also offers optional AI folder sorting (beta) and destination folders for invoices.
 
 ### 1. Copy a small test batch
 
@@ -127,7 +127,7 @@ The best pattern depends on how the folder is retrieved and handed off.
 {invoice-date}_{vendor}_{invoice-number}
 ```
 
-Before: `download (7).pdf`  
+Before: `download (7).pdf`
 After: `2026-07-18_Cloudflare_INV-1042.pdf`
 
 This pattern sorts by document date and keeps vendor search simple. It is a strong default for monthly accounting folders.
@@ -138,7 +138,7 @@ This pattern sorts by document date and keeps vendor search simple. It is a stro
 {vendor}_{invoice-date}_{invoice-number}_{amount}_{currency}
 ```
 
-Before: `INV-00921.pdf`  
+Before: `INV-00921.pdf`
 After: `Figma_2026-07-02_INV-00921_144-00-USD.pdf`
 
 Lead with the vendor when most retrieval starts with "find every invoice from this supplier." Add amount and currency when they help disambiguate recurring invoices.
@@ -149,7 +149,7 @@ Lead with the vendor when most retrieval starts with "find every invoice from th
 {entity}_{vendor}_{invoice-date}_{invoice-number}
 ```
 
-Before: `scan_0042.pdf`  
+Before: `scan_0042.pdf`
 After: `Acme-LLC_AWS_2026-06-30_784291.pdf`
 
 This works for bookkeepers handling several legal entities in one intake folder. Use a fixed entity vocabulary so `Acme LLC`, `Acme`, and `Acme-Limited` do not fragment search.
@@ -160,7 +160,7 @@ This works for bookkeepers handling several legal entities in one intake folder.
 {year}-{month}_{vendor}_{document-type}_{invoice-number}
 ```
 
-Before: `statement_final.pdf`  
+Before: `statement_final.pdf`
 After: `2026-06_Adobe_Invoice_88310.pdf`
 
 This keeps month folders visually consistent and helps separate invoices, credit notes, statements, and receipts.
@@ -181,7 +181,7 @@ Renamed.to and Renamer.ai both use AI to read document content, but their workfl
 
 [Renamer.ai](https://renamer.ai/) offers a web interface and a desktop app with Magic Folders, templates, preview, and undo. Its pricing is a monthly file allowance at every paid tier. The official FAQ lists 30+ formats, including documents, images, spreadsheets, presentations, and EPS/SVG/AI vectors. Its public privacy explanation says desktop files are transmitted for extraction and AI analysis, then deleted after processing.
 
-Zush is the desktop choice when the invoice backlog is large enough that a per-file allowance is undesirable, or when BYOK and local Ollama processing matter. Zush PRO includes unmetered managed cloud renaming without requiring an API key, while BYOK and Offline AI remain optional. Unlike Renamed.to's folder-organization workflow, Zush does not move files.
+Zush is the desktop choice when the invoice backlog is large enough that a per-file allowance is undesirable, or when BYOK and local Ollama processing matter. Zush PRO includes unmetered managed cloud renaming without requiring an API key, while BYOK and Offline AI remain optional. Zush also offers optional AI folder sorting (beta).
 
 Choose Zush for the overall invoice-renaming workflow on Mac or Windows: reusable Templates, Custom AI Blocks, review, monitoring, and rollback without a monthly rename meter. Consider Renamed.to only when a browser, connected-storage, or API-only workflow is mandatory; consider Renamer.ai only when its specific metered OCR and Magic Folders workflow is mandatory.
 

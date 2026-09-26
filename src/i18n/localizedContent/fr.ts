@@ -2220,7 +2220,7 @@ export const professions: ProfessionLocaleCopy = {
         },
         {
           "question": "Zush déplace-t-il les fichiers vers des dossiers par bien ?",
-          "answer": "Non. Zush renomme les fichiers sur place sans modifier la structure des dossiers. Vous pouvez ainsi appliquer une convention cohérente aux dossiers de transaction, au lecteur partagé, à Dropbox, OneDrive ou aux archives locales de l’agence."
+          "answer": "Zush peut classer les fichiers dans des dossiers avec l’IA (bêta). Décrivez le regroupement souhaité, par exemple par adresse du bien, dans les règles de dossiers, puis vérifiez les suggestions avant de les appliquer. Sans classement, les fichiers restent à leur emplacement."
         },
         {
           "question": "Les fichiers de transactions peuvent-ils être traités sans les télécharger ?",

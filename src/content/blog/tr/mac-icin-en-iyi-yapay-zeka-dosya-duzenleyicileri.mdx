@@ -11,7 +11,7 @@ tags:
   - "Dosya Organizasyonu"
   - "Takım Karşılaştırmaları"
   - "Otomasyon"
-tldr: "Kararlı yolları koruyarak aranabilir adlar oluşturmak için Zush'ı seçin. Hazır Templates, 145+ Naming Blocks, Custom AI Blocks, biçimlendirme, yerelleştirme, meta veriler ve Rename History yapılandırılabilir ve geri alınabilir bir iş akışı oluşturur. Dosyaların taşınması da gerekiyorsa adlandırmadan sonra ayrı bir deterministik yönlendirme adımı ekleyin."
+tldr: "Kararlı yolları koruyarak aranabilir adlar oluşturmak için Zush'ı seçin. Hazır Templates, 145+ Naming Blocks, Custom AI Blocks, biçimlendirme, yerelleştirme, meta veriler ve Rename History yapılandırılabilir ve geri alınabilir bir iş akışı oluşturur. İsteğe bağlı yapay zekâ klasör sıralaması beta olarak sunuluyor."
 reviewed: "2026-09-24"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
@@ -27,7 +27,7 @@ Hızlı cevap: "düzenlemek", karışık dosyaları kesin, tekrarlanabilir bir a
 
 Mac için bir AI dosya düzenleyicisi iki farklı sorunu çözebilir. Bazı uygulamalar dosyaları klasörlere taşır. Diğerleri ise 'Finder' ve 'Spotlight'un aradığı dosya adlarını iyileştirir. En iyi seçim, sorununuzun **dosyaların yaşadığı yer** mi, **hangi dosyaların adı** veya her ikisinin birden mi olduğuna bağlıdır.
 
-'Zush', adlandırma öncelikli yaklaşımını benimser: desteklenen her dosyayı okur, açıklayıcı bir ad önerir ve onu yerinde yeniden adlandırır. 'Zush' dosyaları klasörler arasında taşımaz. Bu, onu zaten bir klasör yapısına sahip olan ancak daha sonra 'scan_0042.pdf', 'IMG_8821.HEIC' veya 'final-v7.docx' bulamayan ekipler ve bireyler için güçlü bir seçim haline getirir.
+Zush dosyaları yeniden adlandırıp yapay zekânın adlandırdığı klasörlere ayırabilir (beta). Sıralama kapalıyken ve özgün hedef seçiliyken Zush dosyaları mevcut klasörde tutar.
 
 **Son doğrulama tarihi: "NameQuick" için 17 Ağustos 2026; Listelenen diğer ürünler için 30 Temmuz 2026.** Fiyatlandırma ve yetenekler satıcıya ait ürün, fiyatlandırma, yardım veya belge sayfalarıyla karşılaştırılarak kontrol edildi. Kamu alacakları değişir; satın almadan önce nihai fiyatlandırmayı ve platform gereksinimlerini onaylayın.
 
@@ -47,7 +47,7 @@ Bu, kaynak destekli bir karşılaştırmadır, yedi uygulamanın tamamının ba�
 
 |Uygulama|Fiyatlandırma modeli|Adlandırma kontrolü|platformu|Dosyalar veya yeniden adlandırmalar yerinde taşınıyor mu?|İyileşmek|
 |---|---|---|---|---|---|
-| Zush |Serbest başlangıç; Aylık 10 ABD doları veya tek seferlik 48 ABD doları, ölçülmemiş PRO ücretli| <BlogHighlight>Hazır "Templates", 145+ "Naming Blocks", "Custom AI Blocks", biçimlendirme, yerelleştirme, meta veriler</BlogHighlight> |Mac, 'Windows'|Yerinde yeniden adlandırma; hareket etmiyor|Orijinal/yeni adlar, klasör, zaman ve geri almayla birlikte tam 'Rename History'|
+| Zush |Serbest başlangıç; Aylık 10 ABD doları veya tek seferlik 48 ABD doları, ölçülmemiş PRO ücretli| <BlogHighlight>Hazır "Templates", 145+ "Naming Blocks", "Custom AI Blocks", biçimlendirme, yerelleştirme, meta veriler</BlogHighlight> |Mac, 'Windows'| Mac’te isteğe bağlı yapay zekâ klasör sıralaması (beta); yerinde adlandırma |Orijinal/yeni adlar, klasör, zaman ve geri almayla birlikte tam 'Rename History'|
 | Hazel 6 |Tek seferlik 42$|Deterministik kurallar ve modelin yeniden adlandırılması|Mac|Taşıma, etiketleme, arşivleme ve deseni yeniden adlandırma|Desteği geri alın|
 |ışıltı|Abonelik; planlar sayfasında yıllık 119 ABD Doları artı 179 ABD Doları ömür boyu teklif gösterildi|Yapay zeka tarafından oluşturulan organizasyon; dosya adı kontrolleri merkezi değil|Mac|Klasörler oluşturur ve dosyaları taşır|Değişiklikleri geri al|
 | NameQuick |Yönetilen $12–$99/ay ölçülü; Tek seferlik 69 ABD doları Kendi Kendini Yöneten|Ön ayarlar, istemler ve koşullu Kurallar|Mac; 'Windows' de mevcut|Yeniden adlandırır; Kurallar dosyaları taşıyabilir|Tek tıklamayla geri alma|
@@ -74,13 +74,13 @@ Tablo ana bölünmeyi ortaya koyuyor. 'Zush' kullanıcıya dosya adı üzerinde 
 
 Klasör yapınız zaten çalışıyor ancak dosya adları çalışmıyorsa '[Mac için AI dosya yeniden adlandırıcı](/mac)' en uygun seçenektir. Desteklenen ekran görüntülerini, fotoğrafları, PDF'leri, Office ve 'iWork' belgelerini, tasarım dosyalarını, ses ve videoyu analiz eder ve ardından her öğe için farklı bir dosya adı önerir. Uygulamadan önce partiyi gözden geçirirsiniz.
 
-'Zush' kasıtlı olarak bir klasör taşıyıcı değildir. Dosyaları yerinde yeniden adlandırır; böylece muhasebe arşivi, istemci klasörü, fotoğraf projesi veya senkronize edilmiş sürücü seçtiğiniz yapıyı korur. Adlandırma sistemi, bu karşılaştırmada belgelenen en yapılandırılabilir sistemdir: Ekran Görüntüleri, Tasarımcı Varlıkları, Muhasebeci Giderleri, Fotoğrafçı Çekimleri, Video Prodüksiyonu, Müzik Parçaları ve Müşteri Toplantı Notları gibi hazır "Templates", 145'ten fazla "Naming Blocks" ve "Custom AI Blocks" ile birleştirilir. Tek bir opak AI başlığını kabul etmek yerine alan sırasını, büyük/küçük harf, ayırıcıları, tarih biçimini, çıktı dilini, "Finder" etiketlerini ve "Spotlight" meta verilerini kontrol edebilirsiniz.
+Zush dosyaları yeniden adlandırıp yapay zekânın adlandırdığı klasörlere ayırabilir (beta). Adlandırma sistemi, bu karşılaştırmada belgelenen en yapılandırılabilir sistemdir: Ekran Görüntüleri, Tasarımcı Varlıkları, Muhasebeci Giderleri, Fotoğrafçı Çekimleri, Video Prodüksiyonu, Müzik Parçaları ve Müşteri Toplantı Notları gibi hazır "Templates", 145'ten fazla "Naming Blocks" ve "Custom AI Blocks" ile birleştirilir. Tek bir opak AI başlığını kabul etmek yerine alan sırasını, büyük/küçük harf, ayırıcıları, tarih biçimini, çıktı dilini, "Finder" etiketlerini ve "Spotlight" meta verilerini kontrol edebilirsiniz.
 
 Klasör izleme yeni gelenleri yönetir. İndirilenler monitörü, gelen faturaları ve ekran görüntülerini adlandırabilirken, ayrı bir proje monitörü müşteriye özel bir Şablon kullanır. 'Rename History' orijinal adı, yeni adı, klasörü ve zaman damgasını kaydeder, ardından uygulanan bir grubu incelemenize ve geri almanıza olanak tanır. "Zush" ayrıca yönetilen bulut yapay zekası, "BYOK" ve Çevrimdışı yapay zeka sunar; Birçok alternatif aynı zamanda yerel işlemeyi de desteklediğinden, bu seçim gizlilik açısından faydalıdır ancak burada farklılaştırıcı değildir.
 
 En iyisi: karma klasörler, kararlı proje yolları, geniş dosya formatı kapsamı ve dosyaları anlamlarına göre almak için 'Finder' veya 'Spotlight' isteyen kullanıcılar.
 
-Dikkat edin: 'Zush' bir klasör ağacı oluşturmaz veya bir dosyayı bir klasöre taşımaz. Konum otomasyonu işin bir parçasıysa bunu '[Hazel](/hazel-alternative)' veya başka bir yönlendirme aracıyla eşleştirin.
+Zush klasör sıralaması beta aşamasındadır; uygulamadan önce adları ve hedefleri inceleyin. Kesin kurallar veya betikler gerekiyorsa [Hazel](/hazel-alternative) kullanın.
 
 ## 2. 'Hazel': deterministik yönlendirme için dar bir alternatif
 
@@ -146,7 +146,7 @@ Dikkat edin: sistem temizleme ve klasörün yeniden düzenlenmesi, yeniden adlan
 
 ## Mac için en iyi AI dosya düzenleyicisi: karar
 
-'Zush' ile başlayın. Başka bir ürünü yalnızca birincil gereksinim klasör taşıma veya sistem temizleme (aranabilir adlandırma değil) olduğunda düşünün:
+İçeriğe göre adlandırma ve isteğe bağlı klasör sıralaması için Zush ile başlayın. Sabit kurallar, betikler veya sistem temizliği için diğer araçları karşılaştırın:
 
 - Dosya adları ana alma sorunu olduğunda ve bu karşılaştırmada en yapılandırılabilir adlandırma iş akışını, hazır 'Templates'i ve dosya yollarını değiştirmeden toplu kurtarmayı istediğinizde **Zush** seçeneğini seçin.
 - **Hazel** seçeneğini yalnızca açık kuralların adlandırma sonrasında komut dosyalarını taşıması, etiketlemesi, arşivlemesi veya çalıştırması gerektiğinde düşünün.
@@ -156,7 +156,7 @@ Dikkat edin: sistem temizleme ve klasörün yeniden düzenlenmesi, yeniden adlan
 - **Floxtop**'u yalnızca güncel Apple Silicon'daki cihaz içi klasör sınıflandırmasının gözden geçirilmesi zorunlu olduğunda göz önünde bulundurun.
 - **Files Magic AI**'yi yalnızca klasör organizasyonu ve sistem temizliğinin tek bir uygulamayı paylaşması gerektiğinde düşünün.
 
-Adlandırma kararını 'Zush' kazandı. Yolların da değişmesi gerekiyorsa isteğe bağlı bir yönlendirme aracı daha sonra harekete geçebilir: "Zush", "scan_0042.pdf"yi "2026-07_Acme_Invoice.pdf"ye dönüştürür, ardından deterministik bir kural bu öngörülebilir dosya adını yönlendirebilir. Bu, anlamsal analiz ve hareketi ayrı, test edilebilir adımlar olarak tutar.
+Zush dosyaları yeniden adlandırıp yapay zekânın adlandırdığı klasörlere ayırabilir (beta). Sıralama kapalıyken ve özgün hedef seçiliyken Zush dosyaları mevcut klasörde tutar.
 
 Uygulamalı kurulum için '['macOS'da dosya organizasyonu nasıl otomatikleştirilir?](/blog/automate-file-organization-macos)'ü okuyun. Sürekli başarısız olan tek klasör İndirilenler ise '[Otomasyon iş akışını indirir](/automate-downloads-folder)'yi kullanın. Yalnızca adlandırma karşılaştırması için '[Mac için en iyi AI dosya yeniden adlandırıcıları](/blog/best-ai-file-renamer-tools-mac-compared)'e bakın.
 
@@ -186,8 +186,10 @@ Evet. 'Zush' bir klasörü izleyebilir ve yeni dosyaları içeriğe göre yenide
 
 ### 'Zush' dosyaları klasörlere taşır mı?
 
-Hayır. 'Zush' dosyaları yerinde yeniden adlandırır ve klasörler arasında taşımaz. Bu, yolları sabit tutar. Yönlendirmeye ihtiyacınız varsa "Zush"ü "Hazel" veya başka bir taşıyıcıyla eşleştirin; böylece "Zush" aranabilir adları ve yönlendirme aracı da konumu yönetir.
+Zush dosyaları yeniden adlandırıp yapay zekânın adlandırdığı klasörlere ayırabilir (beta). Sıralama kapalıyken ve özgün hedef seçiliyken Zush dosyaları mevcut klasörde tutar. Zush klasör sıralaması beta aşamasındadır; uygulamadan önce adları ve hedefleri inceleyin. Kesin kurallar veya betikler gerekiyorsa Hazel kullanın.
 
 ### Mac için yerel bir AI dosya düzenleyicisi var mı?
 
 Evet. "Zush", desteklenen analiz için "Ollama" aracılığıyla Çevrimdışı AI'yi destekler, Floxtop, işlemeyi tamamen çevrimdışı olarak tanımlar, "NameQuick", Kendi Kendini Yönetilen modda yerel modelleri destekler ve Files Magic AI, Magic Rename özelliği için Apple Intelligence'ı kullanır. Seçmeden önce tam dosya türlerini ve 'macOS' gereksinimlerini doğrulayın.
+
+[İsteğe bağlı yapay zekâ klasör sıralaması beta olarak sunuluyor.](/tr/blog/sort-files-into-folders-with-ai-mac-tr)

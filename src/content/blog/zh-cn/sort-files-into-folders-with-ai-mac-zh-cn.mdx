@@ -1,0 +1,57 @@
+---
+title: "如何在 Mac 上用 AI 将文件分类到文件夹"
+description: "告诉 Zush 你想怎样分组，AI 就会读取文件内容并按指令分类，无需编写脚本或设置复杂筛选条件。"
+date: "2026-09-26"
+slug: "sort-files-into-folders-with-ai-mac-zh-cn"
+platform: "mac"
+topic: "organization"
+tags: ["AI File Renaming", "Automation", "File Organization"]
+tldr: "Zush 可以根据内容重命名文件，并将其分类到文件夹。开启分类、选择目标位置，在应用批量操作前检查分组。"
+earlyTaskExample: false
+reviewed: "2026-09-26"
+locale: "zh-cn"
+translationOf: "sort-files-into-folders-with-ai-mac"
+---
+
+Zush 可以根据内容重命名文件，并将其分类到文件夹。开启分类、选择目标位置，在应用批量操作前检查分组。
+
+命名块决定文件叫什么，文件夹规则决定文件归入哪个组，例如公司、月份或照片主题。发票、收据和图片混在一起时，可以分别设置名称和保存位置。
+
+
+## 用日常语言编写文件夹规则
+
+告诉 Zush 你想怎样分组，AI 就会读取文件内容并按指令分类，无需编写脚本或设置复杂筛选条件。
+
+> 按公司归类发票，按月份归类收据。
+
+## 批量分类步骤
+
+1. 打开 **AI Rename**，选择模板。
+2. 在命名块下方选择目标文件夹，或保留原位置。
+3. 开启 **+ Sort**，添加需要整理的文件。
+4. 等待内容分析和文件夹规划完成。
+5. 检查名称与分组，修改不合适的结果，再应用批量操作。
+
+![如何在 Mac 上用 AI 将文件分类到文件夹](/images/showcase/macos/folder-sorting-light.webp)
+
+## 编写具体的分类规则
+
+在 **Folder rules** 中描述分类方式。例如：“按公司对发票分组，并用公司名称命名文件夹”，或“按月份整理收据，将文件夹命名为 YYYY-MM”。照片可以按人物、美食、风景等主题分类。
+
+规则应能根据文件内容判断。留空时使用默认指令，自定义规则最多支持 2,000 个字符。不要把文件名格式与文件夹分类规则混为一谈：两者分别控制名称和归属。
+
+![编写具体的分类规则](/images/showcase/macos/folder-rules-light.webp)
+
+## 复用文件夹与自动化
+
+开启 **Reuse existing folders** 后，Zush 会使用合适的现有文件夹，找不到匹配项时再创建新文件夹。所选目标位置是这些子文件夹的根目录。
+
+将配置保存为模板并分配给 Monitor，即可重命名和分类直接进入监控文件夹的新文件。此设置不会追溯整理已处理的文件。Monitor 可以继续使用自己之前创建的分组。
+
+## 应用前需要检查什么
+
+先用少量文件测试。检查含义不明确的内容、文件夹名称和目标位置，AI 的判断可能需要修正。如果文件夹规划失败，应先重试，再执行带分类的批量操作。
+
+分类会实际移动文件。Finder 智能文件夹只是展示搜索结果。
+
+[完整文件夹分类文档（英文）](/docs/folder-sorting) · [如何在 Mac 上导入和导出 Zush 模板](/zh-cn/blog/import-export-zush-templates-zh-cn) · [Zush · macOS](/zh-cn/mac)

@@ -25,15 +25,15 @@ const workflows: Record<string, LandingWorkflow> = {
     links: [{ href: '/docs/batch-rename-files', label: 'Batch preview and rename steps' }, { href: '/blog/how-to-safely-batch-rename-files', label: 'Check and undo a batch rename' }],
   },
   '/ai-file-organizer': {
-    heading: 'Make a folder searchable while keeping files in place',
-    answer: 'Zush organizes files through descriptive filenames and supported metadata. It keeps each file in its current folder. Choose this workflow when you want to find documents by client, project, or subject without rebuilding your folder structure.',
+    heading: 'Rename files and sort them into folders with AI',
+    answer: 'Zush reads file content to create searchable names on Mac and Windows. Enable AI folder sorting (beta) to group files automatically or follow your plain-language instructions. Review the suggested names and folders before applying. Leave sorting off to keep the original locations.',
     steps: [
       'Choose one Downloads or client folder and decide which details you will search for later, such as project, document type, and date.',
       'Save those fields as a Template. Generate names and compare uncertain details with the original files before applying.',
       'Check the renamed files in Finder or File Explorer. After the pattern is reliable, assign it to folder monitoring for new arrivals.',
     ],
     example: { before: 'Clients/Acme/document.pdf', after: 'Clients/Acme/Acme_Service-Agreement.pdf', caption: 'Illustrative path: only the filename changes; the Clients/Acme folder stays the same.' },
-    limit: 'Zush does not move files between folders or replace a search database. Search results also depend on your operating system’s indexing. Use rename history to restore names when needed.',
+    limit: 'Zush also offers optional AI folder sorting (beta) and destination folders on Mac and Windows. Zush does not replace a search database. Search results also depend on your operating system’s indexing. Use rename history to restore names when needed.',
     links: [{ href: '/docs/file-search', label: 'Find files through names and metadata' }, { href: '/docs/folder-monitoring', label: 'Set up folder monitoring' }],
   },
   '/offline-ai-file-renamer': {

@@ -179,6 +179,20 @@ export const MACOS_SHOWCASE_SCREENSHOTS: ShowcaseScreenshotAsset[] = [
     alt: 'Custom AI Blocks in the Naming Blocks picker in Zush for macOS',
   },
   {
+    id: 'folder-sorting',
+    title: 'AI Folder Sorting',
+    description: 'Group files by content with optional AI folder sorting (beta)',
+    images: { light: '/images/showcase/macos/folder-sorting-light.webp', dark: '/images/showcase/macos/folder-sorting-dark.webp' },
+    alt: 'Zush grouping documents, design files, and photos into folders on Mac',
+  },
+  {
+    id: 'template-transfer',
+    title: 'Import / Export Templates',
+    description: 'Share and back up reusable naming workflows with .zushtemplates files',
+    images: { light: '/images/showcase/macos/template-transfer-light.webp', dark: '/images/showcase/macos/template-transfer-dark.webp' },
+    alt: 'Import Templates and Export All Templates in the Zush Templates menu',
+  },
+  {
     id: 'monitor',
     title: 'Folder Monitoring',
     description: 'Automatically rename new files as they appear',
@@ -249,24 +263,14 @@ export const MACOS_SHOWCASE_SCREENSHOTS: ShowcaseScreenshotAsset[] = [
     alt: 'Zush Cloud AI selected in AI Modes for macOS',
   },
   {
-    id: 'lm-studio',
-    title: 'LM Studio',
-    description: 'Connect vision-capable local models with advanced server controls',
+    id: 'offline-mode',
+    title: 'Offline Mode',
+    description: 'Run supported analysis on your Mac with LM Studio or Ollama',
     images: {
       light: '/images/showcase/macos/lm-studio-light.webp',
       dark: '/images/showcase/macos/lm-studio-dark.webp',
     },
-    alt: 'LM Studio model and host settings in Zush for macOS',
-  },
-  {
-    id: 'ollama',
-    title: 'Ollama',
-    description: 'Use your installed Ollama models for private local analysis',
-    images: {
-      light: '/images/showcase/macos/ollama-light.webp',
-      dark: '/images/showcase/macos/ollama-dark.webp',
-    },
-    alt: 'Ollama model and host settings in Zush for macOS',
+    alt: 'Local AI configuration with LM Studio in Zush for Mac',
   },
   {
     id: 'byok',
@@ -295,6 +299,7 @@ export const WINDOWS_SHOWCASE_SCREENSHOTS: ShowcaseScreenshotAsset[] = [
     },
     alt: 'Batch rename workflow in Zush for Windows',
   },
+  ...MACOS_SHOWCASE_SCREENSHOTS.filter(({ id }) => id === 'folder-sorting' || id === 'template-transfer'),
   {
     id: 'monitor',
     title: 'Folder Monitoring',

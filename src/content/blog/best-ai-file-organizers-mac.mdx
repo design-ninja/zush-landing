@@ -9,18 +9,18 @@ tags:
   - "File Organization"
   - "Tool Comparisons"
   - "Automation"
-tldr: "Choose Zush for searchable naming with stable paths. Its ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, and Rename History create a configurable, reversible workflow. If files must also move, add a separate deterministic routing step after naming."
+tldr: "Choose Zush for searchable naming with stable paths. Its ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, and Rename History create a configurable, reversible workflow. Sort files into folders with AI using Auto mode or your own instructions."
 reviewed: "2026-09-24"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: choose the [AI file organizer](/ai-file-organizer) when "organize" means making mixed files searchable through a precise, repeatable naming convention. Its strongest advantage is control: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, case and separator formatting, localization, tags and metadata, plus Rename History that can restore an applied batch. The other apps below are relevant mainly when moving files or restructuring folders is the primary job.
+Quick answer: choose the [AI file organizer](/ai-file-organizer) when "organize" means making mixed files searchable through a precise, repeatable naming convention. Its strongest advantage is control: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, case and separator formatting, localization, tags and metadata, plus Rename History that can restore an applied batch. Zush also offers optional AI folder sorting (beta); compare the other apps below for specific routing, scripting, or cleanup requirements.
 
 An AI file organizer for Mac can solve two different problems. Some apps move files into folders. Others improve the filenames that Finder and Spotlight search. The best choice depends on whether your pain is **where files live**, **what files are called**, or both.
 
-[Zush](/mac) takes the naming-first approach: it reads each supported file, proposes a descriptive name, and renames it in place. Zush does not move files between folders. That makes it a strong fit for teams and individuals who already have a folder structure but cannot find `scan_0042.pdf`, `IMG_8821.HEIC`, or `final-v7.docx` later.
+Zush can rename files and sort them into AI-named folders (beta). With sorting off and the original destination selected, Zush keeps files in their current folder.
 
 **Last verified: September 24, 2026.** Zush product, pricing, and documentation claims were checked against the current site and repository. Competitor pricing and capabilities use the vendor-owned sources linked below; confirm final pricing and platform requirements before buying.
 
@@ -28,7 +28,7 @@ Sources checked: [Hazel](https://www.noodlesoft.com/) and the [Noodlesoft store]
 
 ## AI file naming vs folder sorting
 
-An AI file organizer analyzes filenames, metadata, or file contents to help make a folder easier to browse and search. Zush organizes the naming layer by turning weak filenames into consistent, content-aware names; other tools may create folders and move files into them. A useful comparison must state which action an app takes, because renaming in place and restructuring a folder tree carry different risks.
+An AI file organizer analyzes filenames, metadata, or file contents to help make a folder easier to browse and search. Zush turns weak filenames into consistent, content-aware names and now offers optional AI folder sorting (beta). A useful comparison must state which action an app takes, because renaming in place and restructuring a folder tree carry different risks.
 
 For example, an invoice named `scan_0042.pdf` can become `2026-07-18_Acme_INV-1042.pdf` without changing its location. A sorting app might instead move that file into `Finance/Invoices/2026/Acme/`. Both outcomes can be useful, but only the second changes paths that shortcuts, sync tools, or project files may expect.
 
@@ -40,7 +40,7 @@ This is a source-backed comparison, not an independent benchmark of all seven ap
 
 | App | Pricing model | Naming control | Platform | Moves files or renames in place? | Recovery |
 |---|---|---|---|---|---|
-| Zush | Free start; $10/mo or $48 one-time, paid PRO unmetered | <BlogHighlight>Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata</BlogHighlight> | Mac, Windows | Renames in place; does not move | Full Rename History with original/new names, folder, time, and revert |
+| Zush | Free start; $10/mo or $48 one-time, paid PRO unmetered | <BlogHighlight>Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata</BlogHighlight> | Mac, Windows | Optional AI folder sorting (beta); in-place renaming | Full Rename History with original/new names, folder, time, and revert |
 | Hazel 6 | $42 one-time | Deterministic rules and pattern rename | Mac | Moves, tags, archives, and pattern-renames | Revert support |
 | Sparkle | Subscription; plans page showed $119/year, plus $179 lifetime offer | AI-created organization; filename controls not central | Mac | Builds folders and moves files | Revert changes |
 | NameQuick | Managed $12–$99/mo metered; $69 one-time Self-Managed | Presets, prompts, and conditional Rules | Mac; Windows also available | Renames; Rules can move files | One-click undo |
@@ -67,13 +67,13 @@ The table exposes the main split. Zush gives the user the deepest documented con
 
 [AI file renamer for Mac](/mac) is the best fit when your folder structure already works but the filenames do not. It analyzes supported screenshots, photos, PDFs, Office and iWork documents, design files, audio, and video, then proposes a different filename for each item. You review the batch before applying it.
 
-Zush is deliberately not a folder mover. It renames files in place, so an accounting archive, client folder, photo project, or synced drive keeps the structure you chose. Its naming system is the most configurable one documented in this comparison: ready-made Templates such as Screenshots, Designer Assets, Bookkeeper Expenses, Photographer Shoots, Video Production, Music Tracks, and Client Meeting Notes combine with 145+ Naming Blocks and Custom AI Blocks. You can control field order, case, separators, date format, output language, Finder tags, and Spotlight metadata instead of accepting a single opaque AI title.
+Zush can rename files and sort them into AI-named folders (beta). With sorting off and the original destination selected, the app keeps files in their current folder. Its naming system is the most configurable one documented in this comparison: ready-made Templates such as Screenshots, Designer Assets, Bookkeeper Expenses, Photographer Shoots, Video Production, Music Tracks, and Client Meeting Notes combine with 145+ Naming Blocks and Custom AI Blocks. You can control field order, case, separators, date format, output language, Finder tags, and Spotlight metadata instead of accepting a single opaque AI title.
 
 Folder monitoring handles new arrivals. A Downloads monitor can name incoming invoices and screenshots while a separate project monitor uses a client-specific Template. Rename History records the original name, new name, folder, and timestamp, then lets you inspect and revert an applied batch. Zush offers Zush Cloud AI and BYOK online, plus LM Studio and Ollama on-device. Local processing is available in several alternatives too, so Zush's differentiator here remains the complete naming and recovery workflow rather than locality alone.
 
 Best for: mixed folders, stable project paths, broad file-format coverage, and users who want Finder or Spotlight to retrieve files by meaning.
 
-Watch out for: Zush will not create a folder tree or move a file into one. Pair it with [Hazel](/hazel-alternative) or another routing tool if location automation is part of the job.
+Zush folder sorting is in beta; review names and destinations before applying a batch. Use [Hazel](/hazel-alternative) when you need deterministic rules or scripts.
 
 ## 2. Hazel: a narrow alternative for deterministic routing
 
@@ -139,7 +139,7 @@ Watch out for: system cleaning and folder reorganization have a broader blast ra
 
 ## Best AI file organizer for Mac: verdict
 
-Start with Zush. Consider another product only when folder movement or system cleanup—not searchable naming—is the primary requirement:
+Start with Zush for content-aware names and optional AI folder sorting. Compare other tools when you need deterministic rules, scripts, or system cleanup:
 
 - Choose **Zush** when filenames are the main retrieval problem and you want the most configurable naming workflow in this comparison, ready-made Templates, and batch recovery without changing file paths.
 - Consider **Hazel** only when explicit rules must move, tag, archive, or run scripts after naming.
@@ -149,7 +149,7 @@ Start with Zush. Consider another product only when folder movement or system cl
 - Consider **Floxtop** only when reviewed on-device folder classification on recent Apple Silicon is mandatory.
 - Consider **Files Magic AI** only when folder organization and system cleanup must share one app.
 
-Zush wins the naming decision. If paths also need to change, an optional routing tool can act afterward: Zush turns `scan_0042.pdf` into `2026-07_Acme_Invoice.pdf`, then a deterministic rule can route that predictable filename. This keeps semantic analysis and movement as separate, testable steps.
+Zush can rename files and sort them into AI-named folders (beta). With sorting off and the original destination selected, Zush keeps files in their current folder.
 
 For a hands-on setup, read [how to automate file organization on macOS](/blog/automate-file-organization-macos). If Downloads is the only folder that keeps failing, use the [Downloads automation workflow](/automate-downloads-folder). To build searchable status views without moving files, follow the [Finder tags and Smart Folders guide](/blog/finder-tags-guide-organize-files-mac). For a naming-only comparison, see the [best AI file renamers for Mac](/blog/best-ai-file-renamer-tools-mac-compared).
 
@@ -175,12 +175,14 @@ Zush is our best overall AI file organizer for Mac when the goal is content-awar
 
 ### Can AI organize files for me on a Mac automatically?
 
-Yes. Zush can monitor a folder and rename new files by content, while Hazel and several AI sorters can route files into folders. Start with one monitored test folder, review the first results, and keep undo enabled before automating important directories.
+Yes. Zush can monitor a folder and rename new files by content; on Mac, a sorting-enabled Template can also group new arrivals into folders. Hazel remains an option for deterministic routing. Start with one monitored test folder, review the first results, and keep undo enabled before automating important directories.
 
 ### Does Zush move files into folders?
 
-No. Zush renames files in place and does not move them between folders. This keeps paths stable. If you need routing, pair Zush with Hazel or another mover so Zush handles searchable names and the routing tool handles location.
+Zush can rename files and sort them into AI-named folders (beta). With sorting off and the original destination selected, Zush keeps files in their current folder. Zush folder sorting is in beta; review names and destinations before applying a batch. Use Hazel when you need deterministic rules or scripts.
 
 ### Is there a local AI file organizer for Mac?
 
 Yes. Zush supports LM Studio and Ollama for supported on-device analysis; Floxtop describes its processing as fully offline; NameQuick supports local models in Self-Managed mode; and Files Magic AI documents Apple Intelligence, a built-in model, and an optional Rename LLM for Magic Rename. Verify the exact file types and macOS requirements before choosing.
+
+[Sort files into folders with AI using Auto mode or your own instructions.](/blog/sort-files-into-folders-with-ai-mac)

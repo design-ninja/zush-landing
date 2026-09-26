@@ -1,0 +1,40 @@
+---
+import Heading from '@/components/Heading';
+import Text from '@/components/Text';
+import { DEFAULT_LOCALE, getLocalizedPath, type Locale } from '@/i18n/config';
+import { ORGANIZATION_FEATURES } from '@/i18n/organizationFeatures';
+import ThemedScreenshot from './ThemedScreenshot.astro';
+import styles from './OrganizationFeatures.module.scss';
+interface Props { locale?: Locale }
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const copy = ORGANIZATION_FEATURES[locale];
+const guidePath = getLocalizedPath(`/blog/sort-files-into-folders-with-ai-mac${locale === DEFAULT_LOCALE ? '' : `-${locale}`}`, locale);
+---
+<section class={styles.Section} aria-labelledby="organization-title">
+  <div class={styles.Container}>
+    <header class={styles.Header}>
+      <span class={styles.Availability}>BETA</span>
+      <Heading as="h2" id="organization-title" align="center">{copy.sortingTitle}</Heading>
+    </header>
+      <div class={styles.Feature}>
+        <div class={styles.Copy}>
+          <div class={styles.Mode}>
+            <Heading as="h3">{copy.autoTitle}</Heading>
+            <Text as="p" color="subtle">{copy.autoDescription}</Text>
+          </div>
+          <div class={styles.Mode}>
+            <Heading as="h3">{copy.customTitle}</Heading>
+            <Text as="p" color="subtle">{copy.customDescription}</Text>
+            <div class={styles.Prompt}>
+              <span class={styles.PromptLabel}>{copy.promptLabel}</span>
+              <blockquote class={styles.RuleExample}>“{copy.ruleExample}”</blockquote>
+            </div>
+          </div>
+          <a href={guidePath}>{copy.sortingLink} <span aria-hidden="true">→</span></a>
+        </div>
+        <div class={styles.Visual}>
+          <ThemedScreenshot id="folder-sorting" alt={copy.sortingTab} zoom />
+        </div>
+      </div>
+  </div>
+</section>

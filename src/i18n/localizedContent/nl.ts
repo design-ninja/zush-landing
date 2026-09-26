@@ -2219,7 +2219,7 @@ export const professions: ProfessionLocaleCopy = {
         },
         {
           "question": "Verplaatst Zush bestanden naar eigenschappenmappen?",
-          "answer": "Nee. Zush hernoemt bestanden op hun plaats en laat de bestaande mappenstructuur ongewijzigd. Dit maakt het veilig om een ​​naamgevingslaag toe te voegen rond de huidige transactiemappen, gedeelde Drive, Dropbox, OneDrive of lokale archief van een broker."
+          "answer": "Zush kan bestanden met AI in mappen sorteren (bèta). Beschrijf in de mapregels hoe je wilt groeperen, bijvoorbeeld op het adres van het pand, en controleer de voorgestelde mappen voordat je de batch toepast. Zonder sortering blijven bestanden op hun oorspronkelijke plaats."
         },
         {
           "question": "Kunnen transactiebestanden worden verwerkt zonder ze te uploaden?",

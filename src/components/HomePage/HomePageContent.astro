@@ -3,6 +3,7 @@ import Hero from '@/components/Hero';
 import HomeRenameWorkflow from './HomeRenameWorkflow.astro';
 import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
 import Tour from '@/components/Tour';
+import OrganizationFeatures from '@/components/OrganizationFeatures/OrganizationFeatures.astro';
 import Features from '@/components/Features/Features.astro';
 import WaysToRun from '@/components/Features/WaysToRun.astro';
 import SupportedFormats from '@/components/SupportedFormats';
@@ -74,6 +75,7 @@ const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
   includeBand={false}
   compactTopSpacing
 />
+<OrganizationFeatures locale={locale} />
 <WaysToRun copy={copy.home.featureCards} locale={locale} />
 {(locale === 'en' || professionCopy) && (
   <HomeProfessions locale={locale} homeCopy={copy.home} professionCopy={professionCopy} />

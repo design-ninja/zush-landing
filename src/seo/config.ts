@@ -1,3 +1,4 @@
+import { ORGANIZATION_FEATURES } from '@/i18n/organizationFeatures';
 import type { BlogPost } from '@/data/blog';
 import {
   AI_MODES_SUMMARY,
@@ -40,6 +41,8 @@ export const HOME_KEYWORDS = [
   'rename files by content',
   'batch rename files with AI',
   'AI file organizer',
+  'AI folder sorting',
+  'sort files into folders with AI',
   'file renamer for Mac',
   'file renamer for Windows',
   'offline AI file renamer',
@@ -62,7 +65,7 @@ type RouteSeoMeta = Omit<SeoMeta, 'canonicalPath'>;
 
 const HOME_PAGE_TITLE = 'AI File Renamer for Mac & Windows — Zush';
 const HOME_PAGE_DESCRIPTION =
-  'Rename files by content with Zush for Mac and Windows. Use AI and custom naming rules for PDFs, photos, video and audio. Preview, undo, and try 50 renames free.';
+  ORGANIZATION_FEATURES.en.homeDescription;
 
 const DEFAULT_META: RouteSeoMeta = {
   title: HOME_PAGE_TITLE,
@@ -120,9 +123,9 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'offline AI file renamer, local AI file renamer, private AI file renamer, on-device AI file renamer, rename files offline, offline file renamer for Mac, offline file renamer for Windows, local AI server file renamer, LM Studio file renamer, Ollama file renamer',
   },
   '/ai-file-organizer': {
-    title: 'AI File Organizer That Renames In Place | Mac & Windows',
+    title: 'AI File Organizer: Rename & Sort Files into Folders | Zush',
     description:
-      'Create searchable filenames without moving or sorting folders. Zush renames screenshots, PDFs, photos, and documents in place with preview and undo.',
+      'Rename files on Mac and Windows. Sort files into folders with AI using Auto mode or custom prompts in plain language. Preview names and groups.',
     robots: 'index, follow',
     ogType: 'website',
     keywords:
@@ -131,16 +134,16 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/hazel-alternative': {
     title: 'Hazel Alternative with AI File Naming',
     description:
-      'Looking for a Hazel alternative that understands file content? Zush watches folders, renames by content with AI, and works on Mac and Windows. Preview and undo.',
+      'Zush is a Hazel alternative for AI file naming and folder monitoring. Sort files by content automatically or with folder rules written in plain language.',
     robots: 'index, follow',
     ogType: 'website',
     keywords:
       'hazel alternative, hazel file organizer, apps like hazel, mac file automation, ai file organizer for mac, folder monitoring mac, rename files automatically mac, sort files into folders mac',
   },
   '/automate-downloads-folder': {
-    title: 'Automate Your Downloads Folder with AI Naming',
+    title: 'Automate Downloads: AI Naming & Folder Sorting | Zush',
     description:
-      'Zush watches your Downloads folder and names every new file by content — invoices, screenshots, receipts, PDFs — automatically, with preview and undo.',
+      'Automatically rename new downloads on Mac and Windows. Use AI folder sorting with Auto or custom instructions saved in a Template for Monitor.',
     robots: 'index, follow',
     ogType: 'website',
     keywords:
@@ -410,14 +413,14 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
   '/mac': {
     title: 'AI File Renamer for Mac | Zush',
     description:
-      'Zush is an AI file renamer and organizer for macOS. Rename by content with custom rules, preview every filename, undo batches, and choose cloud or local AI.',
+      ORGANIZATION_FEATURES.en.macDescription,
     robots: 'index, follow',
     ogType: 'website',
   },
   '/windows': {
     title: 'AI File Renamer for Windows | Zush',
     description:
-      'Zush is an AI file renamer and organizer for Windows 10 and 11. Rename by content with custom rules, preview every filename, and undo any batch.',
+      ORGANIZATION_FEATURES.en.windowsDescription,
     robots: 'index, follow',
     ogType: 'website',
   },
@@ -556,7 +559,7 @@ export const HOME_JSON_LD = {
         '@id': `${SITE_ORIGIN}/#webpage`,
       },
       description:
-        `Zush is an AI file renamer for macOS and Windows that builds filenames from file content, metadata, dates, custom prompts, and 145+ reusable naming blocks. Users preview changes before applying them, can undo any batch, and choose ${AI_MODES_SUMMARY}.`,
+        `Zush is an AI file renamer for macOS and Windows that builds filenames from file content, metadata, dates, custom prompts, and 145+ reusable naming blocks. Zush offers AI folder sorting (beta) with automatic grouping or plain-language instructions. Users preview batches and choose ${AI_MODES_SUMMARY}.`,
       keywords: HOME_KEYWORDS,
       applicationCategory: 'UtilitiesApplication',
       applicationSubCategory: 'File Renaming and Organization',
@@ -626,6 +629,9 @@ export const HOME_JSON_LD = {
         'Batch rename mixed folders with preview and undo',
         'Folder monitoring for new supported files',
         'Templates and 145+ Naming Blocks',
+        'AI folder sorting (beta): Auto grouping or custom plain-language prompts',
+        'Destination folders and reuse of suitable existing folders',
+        'Template import and export, including naming and folder rules',
         'Custom AI Blocks: user-defined AI extraction fields reusable in any template',
         'Video analysis with sampled frames and subtitles',
         'Design file support for Sketch, Figma, Illustrator, and PSD',

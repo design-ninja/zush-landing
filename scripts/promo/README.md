@@ -91,3 +91,29 @@ $env:ZUSH_WINDOWS_PROMO_DARK_WALLPAPER = "C:\path\to\windows-11-dark.jpg"
 ```
 
 Microsoft Store screenshot constraints reflected in the script: PNG, desktop screenshot at least `1366x768`, under `50 MB`; generated Store PNGs are `3840x2160`.
+
+## macOS 3.13.0 organization screenshots
+
+```sh
+pnpm promo:feature-screenshots --target=landing --only=folder-sorting,folder-rules,template-transfer
+pnpm promo:responsive-showcase-images --only=folder-sorting,folder-rules,template-transfer
+```
+
+These three Debug fixtures need no credentials or live AI requests. They use the
+app's real batch grouping UI, Folder rules editor, and Templates Import / Export
+menu with bundled demo Templates. The transfer fixture deliberately avoids
+Finder and file dialogs so personal favorites, paths, and filenames cannot appear.
+The grouping suggestions are deterministic demo data, not a live AI benchmark.
+The grouping fixture copies six selected files from `../zush-assets/#test files/Files 2`
+into its temporary directory (override with `ZUSH_PROMO_SORTING_SOURCE_FILES`).
+It shows Business Documents, Design Assets, and Photography groups. Original files
+are never renamed or moved.
+
+Both light and dark themes are captured. The default backgrounds come from
+`../zush-assets/golden-gate-wallpapers` (the 5K Light and Dark JPEGs). Override with
+`ZUSH_PROMO_LIGHT_WALLPAPER` and `ZUSH_PROMO_DARK_WALLPAPER` when needed. The Mac
+must remain unlocked while the capture runs; the original theme is restored.
+
+The new scenarios are landing-only and do not change the App Store selection.
+Windows 3.9.6.0 does not have these features, so no Windows screenshots should be
+fabricated from the Mac fixtures.

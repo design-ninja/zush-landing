@@ -2215,7 +2215,7 @@ export const professions = {
         },
         {
           "question": "¿Zush mueve archivos a carpetas de propiedades?",
-          "answer": "No. Zush renombra los archivos en su ubicación original y no modifica la estructura de carpetas. Así puede añadir nombres coherentes a las carpetas de transacciones, la unidad compartida, Dropbox, OneDrive o el archivo local de una agencia sin reorganizar nada."
+          "answer": "Zush puede clasificar archivos en carpetas con IA (beta). Describe la agrupación deseada, por ejemplo por dirección del inmueble, en las reglas de carpetas y revisa las sugerencias antes de aplicarlas. Con la clasificación desactivada, los archivos permanecen en su ubicación."
         },
         {
           "question": "¿Se pueden procesar archivos de transacciones sin cargarlos?",

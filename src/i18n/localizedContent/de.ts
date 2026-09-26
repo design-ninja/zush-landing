@@ -2225,7 +2225,7 @@ export const professions: ProfessionLocaleCopy = {
         },
         {
           "question": "Verschiebt Zush Dateien in Eigenschaftenordner?",
-          "answer": "Nein. Zush benennt vorhandene Dateien um und lässt die Ordnerstruktur unverändert. So können Sie Transaktionsordner, freigegebene Laufwerke, Dropbox, OneDrive oder das lokale Archiv des Maklerunternehmens sicher um eine einheitliche Benennung ergänzen."
+          "answer": "Zush kann Dateien mit KI in Ordner sortieren (Beta). Beschreiben Sie in den Ordnerregeln die gewünschte Gruppierung, etwa nach Objektadresse, und prüfen Sie die vorgeschlagenen Ordner vor dem Anwenden. Bei deaktivierter Sortierung bleiben die Dateien am ursprünglichen Ort."
         },
         {
           "question": "Können Transaktionsdateien ohne Hochladen verarbeitet werden?",

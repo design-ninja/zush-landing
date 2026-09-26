@@ -98,6 +98,8 @@ export default defineConfig({
           label: 'Naming control',
           items: [
             { label: 'Templates', link: '/docs/templates' },
+            { label: 'AI folder sorting', link: '/docs/folder-sorting' },
+            { label: 'Import & export Templates', link: '/docs/template-import-export' },
             { label: 'Naming Blocks', link: '/docs/naming-blocks' },
             { label: 'Custom AI Blocks', link: '/docs/custom-ai-blocks' },
             { label: 'Custom prompts', link: '/docs/custom-prompts' },

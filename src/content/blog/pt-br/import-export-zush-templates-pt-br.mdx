@@ -1,0 +1,48 @@
+---
+title: "Como importar e exportar modelos do Zush no Mac"
+description: "Compartilhe modelos entre Macs com arquivos .zushtemplates: configurações incluídas, conflitos de importação e ajustes locais."
+date: "2026-09-26"
+slug: "import-export-zush-templates-pt-br"
+platform: "mac"
+topic: "automation"
+tags: ["Templates", "Automation", "File Naming"]
+tldr: "O Zush exporta um modelo ou toda a coleção para um arquivo `.zushtemplates`. Importe em outro Mac para recuperar blocos de nomes, instruções de IA e regras de organização."
+earlyTaskExample: false
+reviewed: "2026-09-26"
+locale: "pt-br"
+translationOf: "import-export-zush-templates"
+---
+
+O Zush exporta um modelo ou toda a coleção para um arquivo `.zushtemplates`. Importe em outro Mac para recuperar blocos de nomes, instruções de IA e regras de organização.
+
+É útil para padronizar nomes de notas na equipe, configurar outro Mac ou guardar uma cópia antes de alterar um processo. O arquivo transfere configurações, não documentos.
+
+## Exportar modelos
+
+1. Abra **Templates**.
+2. Exporte um modelo pelo menu de contexto ou pela tela de detalhes.
+3. Para a coleção inteira, escolha **More → Export All Templates…**.
+4. Salve o arquivo e transfira-o para o outro Mac.
+5. Para Smart Rename, crie primeiro um modelo salvo com **Duplicate as New**.
+
+![Como importar e exportar modelos do Zush no Mac](/images/showcase/macos/template-transfer-light.webp)
+
+## O que acompanha o modelo
+
+O arquivo inclui nome, descrição, ícone, cor, blocos, formatação, idioma, data, preferências de metadados e instruções de IA. Os blocos de IA personalizados utilizados e as regras de organização também são preservados.
+
+Valores herdados do Smart Rename tornam-se explícitos na exportação. Caminhos de destino, permissões, chaves API, modelos locais, licença, vínculos do Monitor e histórico ficam no computador. Configure o destino e a conexão de IA no Mac receptor.
+
+## Importar e resolver conflitos
+
+Escolha **More → Import Templates…** e abra o arquivo. Se o identificador de um modelo já existir, escolha **Replace Existing** ou **Create Copies**. Substituir mantém os vínculos do Monitor; criar cópias gera modelos separados. Um nome igual, sozinho, não causa conflito.
+
+A importação não sobrescreve as configurações globais do Smart Rename. Revise as regras, escolha destinos locais e teste um lote pequeno antes de automatizar.
+
+## Conferir antes de compartilhar
+
+Use nomes e descrições claros. Revise as instruções personalizadas: elas aparecem como texto legível no arquivo e podem conter detalhes que você digitou sobre um cliente.
+
+Guarde uma cópia de segurança. Arquivos inválidos, versões de formato incompatíveis e referências a blocos de IA ausentes são rejeitados. Use uma exportação sem alterações e confira a versão do aplicativo se necessário.
+
+[Documentação completa de importação e exportação (em inglês)](/docs/template-import-export) · [Como organizar arquivos em pastas com IA no Mac](/pt-br/blog/sort-files-into-folders-with-ai-mac-pt-br) · [Zush · macOS](/pt-br/mac)

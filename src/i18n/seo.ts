@@ -1,6 +1,7 @@
 import { getSeoForPath, type SeoMeta } from '@/seo/config';
 import { DEFAULT_LOCALE, LOCALIZATION_PAUSED, getLocalizedPath, isSeoExcludedLocalizedRoute, type Locale, type LocalizedRoute } from '@/i18n/config';
 import { getCopy } from '@/i18n/copy';
+import { ORGANIZATION_FEATURES } from '@/i18n/organizationFeatures';
 
 const PLATFORM_SEO: Partial<Record<Locale, Partial<Record<'/mac' | '/windows', { title: string; description: string }>>>> = {
   de: {
@@ -208,6 +209,10 @@ export function getLocalizedSeoForRoute(route: LocalizedRoute, locale: Locale): 
   const seo = getSeoForPath(route);
   const copy = getCopy(locale);
   const localizedSeo = copy.seo[route];
+  const organizationDescription = route === '/'
+    ? ORGANIZATION_FEATURES[locale].homeDescription
+    : route === '/mac' ? ORGANIZATION_FEATURES[locale].macDescription
+      : route === '/windows' ? ORGANIZATION_FEATURES[locale].windowsDescription : undefined;
   const featureSeo = copy.featurePages[route];
   const localizedPlatformSeo = route === '/mac' || route === '/windows'
     ? PLATFORM_SEO[locale]?.[route]
@@ -231,7 +236,8 @@ export function getLocalizedSeoForRoute(route: LocalizedRoute, locale: Locale): 
       ?? (featureSeo ? `${featureSeo.h1} · Zush` : undefined)
       ?? (platformSeo ? `${platformSeo.softwareName} — ${platformSeo.heroTitle}` : undefined)
       ?? seo.title,
-    description: SEARCH_DESCRIPTION_OVERRIDES[locale]?.[route]
+    description: organizationDescription
+      ?? SEARCH_DESCRIPTION_OVERRIDES[locale]?.[route]
       ?? localizedPlatformSeo?.description
       ?? localizedSeo?.description
       ?? featureSeo?.definitionText

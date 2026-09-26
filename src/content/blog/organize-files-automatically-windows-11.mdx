@@ -9,13 +9,13 @@ tags:
   - "File Organization"
   - "Automation"
   - "File Explorer"
-tldr: "Automatic organization on Windows works best in three layers: Storage Sense deletes what you do not need, Zush names what you keep by its content, and a rule tool like File Juggler or a PowerShell script moves files by those names. Set up one folder at a time, starting with Downloads."
-reviewed: "2026-09-22"
+tldr: "Use Storage Sense for cleanup and Zush for content-aware naming and AI folder sorting (beta). Auto mode groups by content; custom prompts describe your own folder rules. Preview a small batch before assigning the Template to Monitor."
+reviewed: "2026-09-26"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: Windows 11 can clean up on its own with **Storage Sense**, but it cannot name or sort files by what they are. For that, add two tools: an AI renamer like [Zush](/windows) that watches a folder and names each new file by its content, and a rule tool like File Juggler that moves files by those names.
+Quick answer: Windows 11 can clean up on its own with **Storage Sense**, but it cannot name or sort files by what they are. Use [Zush](/windows) to rename by content and sort files into folders with AI (beta). A rule tool remains an option for deterministic moves.
 
 The trick is doing it in that order. Rules need something predictable to match. `Document(3).pdf` gives them nothing. `2026-09-12_acme_invoice_1042.pdf` gives them everything.
 
@@ -64,11 +64,11 @@ To set it up:
 
 Monitor several folders with different Templates: Downloads with Smart Rename, a scanner folder with Bookkeeper Expenses, your Screenshots folder with Screenshots.
 
-Zush renames files in place and does not move them, so paths, shortcuts, and OneDrive sync keep working. Every rename goes into Rename History, so you can revert anything that looks wrong.
+Zush can rename in place or sort files into folders with AI (beta). Auto mode groups by content. For your own structure, enter folder instructions such as “Group invoices by company and receipts by month.” Review the suggested names, groups, and destination before applying. Save the rules in a Template for Monitor. Moving files changes paths; leave sorting off when the current locations must be preserved.
 
 <BlogCTA placement='inline' platform='windows' />
 
-## Step 3: Move files by rules
+## Optional: move files with deterministic rules
 
 Once names are predictable, moving them is easy. Pick one:
 
@@ -132,7 +132,7 @@ Even good automation leaves a few odd files. Once a week:
 
 ### Can Windows 11 organize files automatically?
 
-Partly. Storage Sense deletes old downloads, temporary files, and recycle bin items on a schedule. It does not rename or sort files; for that, use a tool like Zush for naming and File Juggler or a PowerShell script for moving.
+Partly. Storage Sense deletes old downloads, temporary files, and recycle bin items on a schedule. It does not rename or sort files; use Zush for AI naming and folder sorting, or File Juggler or PowerShell for deterministic moves.
 
 ### How do I automatically rename files when they are downloaded?
 
@@ -140,8 +140,8 @@ Use folder monitoring in Zush: add your Downloads folder under Monitor and pick 
 
 ### What is the best app to organize files on Windows?
 
-It depends on the job. Zush for descriptive filenames, File Juggler for rule-based moving, and Sortio if you want AI to design folders and move files. See [the best AI file organizers for Windows](/blog/best-ai-file-organizers-windows).
+It depends on the job. Zush combines descriptive filenames and AI folder sorting (beta). File Juggler handles deterministic moves, while Sortio provides another AI organizing workflow. See [the best AI file organizers for Windows](/blog/best-ai-file-organizers-windows).
 
 ### Is it safe to automate file organization?
 
-Yes, if you start small. Test on one folder with copies, choose tools with a preview and undo, and avoid rules that delete files until you trust them. Zush renames in place and keeps a full Rename History, which makes it low risk to start with.
+Yes, if you start small. Test on one folder with copies, choose tools with a preview and undo, and avoid rules that delete files until you trust them. In Zush, preview names and folder groups before applying a batch. Keep sorting off to rename in place.

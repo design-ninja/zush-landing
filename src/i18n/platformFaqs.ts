@@ -1,3 +1,4 @@
+import { ORGANIZATION_FEATURES } from '@/i18n/organizationFeatures';
 import type { Locale } from '@/i18n/config';
 import type { FAQCopyItem } from '@/i18n/copy';
 
@@ -22,7 +23,6 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
       description: 'Alles Wichtige über die Windows-App und das Produkt.',
       items: [
         { question: 'Warum wird Zush über den Microsoft Store verteilt?', answer: 'Der Store übernimmt Installation, Signierung und automatische Updates für alle Nutzer.' },
-        { question: 'Hat die Windows-App dieselben Funktionen wie die Mac-App?', answer: 'Ja. Es enthält Cloud-KI-Umbenennung, Ordnerüberwachung, eigene Prompts, Verlauf zum Wiederherstellen, BYOK und lokale KI.' },
         { question: 'Läuft es auf Windows on ARM?', answer: 'Ja. Die Microsoft-Store-Version enthält native x64- und ARM64-Pakete.' },
       ],
     },
@@ -40,7 +40,6 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
       description: 'Tout ce qu’il faut savoir sur l’app Windows et le produit.',
       items: [
         { question: 'Pourquoi Zush est-il distribué via le Microsoft Store ?', answer: 'Le Store gère l’installation, la signature et les mises à jour automatiques pour chaque utilisateur.' },
-        { question: 'L’app Windows a-t-elle les mêmes fonctions que l’app Mac ?', answer: 'Oui. Elle inclut le renommage IA cloud, la surveillance de dossiers, les prompts personnalisés, l’historique de restauration, BYOK et l’IA locale.' },
         { question: 'Fonctionne-t-il sur Windows on ARM ?', answer: 'Oui. La version Microsoft Store inclut des paquets natifs x64 et ARM64.' },
       ],
     },
@@ -58,7 +57,6 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
       description: 'Tudo que você precisa saber sobre o app para Windows e o produto.',
       items: [
         { question: 'Por que o Zush é distribuído pela Microsoft Store?', answer: 'A Store cuida da instalação, assinatura e atualizações automáticas para todos os usuários.' },
-        { question: 'O app para Windows tem os mesmos recursos do app para Mac?', answer: 'Sim. Ele inclui renomeação com IA na nuvem, monitoramento de pastas, prompts personalizados, histórico para reverter, BYOK e IA local.' },
         { question: 'Ele roda em Windows on ARM?', answer: 'Sim. A versão da Microsoft Store inclui pacotes nativos x64 e ARM64.' },
       ],
     },
@@ -76,7 +74,6 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
       description: 'Todo lo que necesitas saber sobre la app para Windows y el producto.',
       items: [
         { question: '¿Por qué Zush se distribuye mediante Microsoft Store?', answer: 'La Store gestiona la instalación, la firma y las actualizaciones automáticas para cada usuario.' },
-        { question: '¿La app para Windows tiene las mismas funciones que la app para Mac?', answer: 'Sí. Incluye renombrado con IA en la nube, monitoreo de carpetas, prompts personalizados, historial para revertir, BYOK e IA local.' },
         { question: '¿Funciona en Windows on ARM?', answer: 'Sí. La versión de Microsoft Store incluye paquetes nativos x64 y ARM64.' },
       ],
     },
@@ -94,7 +91,6 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
       description: 'Alles wat je moet weten over de Windows-app en het product.',
       items: [
         { question: 'Waarom wordt Zush via de Microsoft Store verspreid?', answer: 'De Store regelt installatie, ondertekening en automatische updates voor elke gebruiker.' },
-        { question: 'Heeft de Windows-app dezelfde functies als de Mac-app?', answer: 'Ja. Het bevat cloud AI-renaming, mapmonitoring, aangepaste prompts, herstelgeschiedenis, BYOK en Lokale AI.' },
         { question: 'Draait het op Windows on ARM?', answer: 'Ja. De Microsoft Store-release bevat native x64- en ARM64-pakketten.' },
       ],
     },
@@ -112,7 +108,6 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
       description: 'Tutto quello che devi sapere sull’app per Windows e sul prodotto.',
       items: [
         { question: 'Perché Zush è distribuito tramite Microsoft Store?', answer: 'Lo Store gestisce installazione, firma e aggiornamenti automatici per ogni utente.' },
-        { question: 'L’app per Windows ha le stesse funzioni dell’app per Mac?', answer: 'Sì. Include rinomina IA cloud, monitoraggio cartelle, prompt personalizzati, cronologia per ripristinare, BYOK e IA locale.' },
         { question: 'Funziona su Windows on ARM?', answer: 'Sì. La versione Microsoft Store include pacchetti nativi x64 e ARM64.' },
       ],
     },
@@ -130,7 +125,6 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
       description: 'Windows 版アプリと製品全体について知っておきたいこと。',
       items: [
         { question: 'なぜ Zush は Microsoft Store で配布されていますか？', answer: 'Store がインストール、署名、自動更新を各ユーザー向けに管理するためです。' },
-        { question: 'Windows 版アプリは Mac 版と同じ機能がありますか？', answer: 'はい。クラウド AI リネーム、フォルダ監視、カスタムプロンプト、復元履歴、BYOK、ローカル AI を含みます。' },
         { question: 'Windows on ARM で動作しますか？', answer: 'はい。Microsoft Store 版には x64 と ARM64 のネイティブパッケージが含まれます。' },
       ],
     },
@@ -148,7 +142,6 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
       description: 'Windows용 앱과 제품 전반에 대해 알아야 할 내용입니다.',
       items: [
         { question: 'Zush는 왜 Microsoft Store로 배포되나요?', answer: 'Store가 모든 사용자의 설치, 서명, 자동 업데이트를 처리하기 때문입니다.' },
-        { question: 'Windows용 앱도 Mac용 앱과 같은 기능을 제공하나요?', answer: '예. 클라우드 AI 이름 변경, 폴더 모니터링, 사용자 지정 프롬프트, 복원 기록, BYOK, 로컬 AI를 포함합니다.' },
         { question: 'Windows on ARM에서 실행되나요?', answer: '예. Microsoft Store 릴리스에는 네이티브 x64 및 ARM64 패키지가 포함됩니다.' },
       ],
     },
@@ -166,7 +159,6 @@ const PLATFORM_FAQ_COPY: Partial<Record<Locale, Record<Platform, PlatformFaqCopy
       description: '关于 Windows 版应用和产品功能的常见问题。',
       items: [
         { question: '为什么通过 Microsoft Store 分发？', answer: 'Microsoft Store 会处理安装、签名和自动更新，用户无需手动维护版本。' },
-        { question: 'Windows 版和 Mac 版功能一样吗？', answer: '是的。Windows 版包含云端 AI 重命名、文件夹监控、自定义提示词、恢复历史、BYOK 和本地 AI。' },
         { question: '支持 Windows on ARM 吗？', answer: '支持。Microsoft Store 版本包含 x64 和 ARM64 原生包。' },
       ],
     },
@@ -178,5 +170,10 @@ export function getPlatformFaqCopy(
   platform: Platform,
   fallback: PlatformFaqCopy,
 ): PlatformFaqCopy {
-  return PLATFORM_FAQ_COPY[locale]?.[platform] ?? fallback;
+  const copy = PLATFORM_FAQ_COPY[locale]?.[platform] ?? fallback;
+  const organization = ORGANIZATION_FEATURES[locale];
+  return {
+    ...copy,
+    items: [{ question: organization.sortingQuestion, answer: organization.sortingAnswer }, ...copy.items],
+  };
 }

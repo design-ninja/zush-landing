@@ -15,6 +15,8 @@ const appBinary = path.join(derivedDataPath, 'Build/Products/Debug/Zush.app/Cont
 const sourceAssetRoot =
   process.env.ZUSH_PROMO_SOURCE_FILES ??
   '/Users/lirik/Projects/zush/zush-assets/#test files/Files';
+const sortingAssetRoot = process.env.ZUSH_PROMO_SORTING_SOURCE_FILES ??
+  '/Users/lirik/Projects/zush/zush-assets/#test files/Files 2';
 const backendEnvironment = process.env.ZUSH_PROMO_BACKEND_ENVIRONMENT ?? 'local';
 const promoGeminiApiKey = process.env.ZUSH_PROMO_GEMINI_API_KEY?.trim();
 const promoOllamaEndpoint = process.env.ZUSH_PROMO_OLLAMA_ENDPOINT ?? 'http://127.0.0.1:11434';
@@ -29,10 +31,10 @@ const defaultAppStoreOutputDir = '/Users/lirik/Projects/zush/zush-assets/App Sto
 const tempRoot = path.join(os.tmpdir(), `zush-feature-screenshots-${Date.now()}`);
 const baseMainWindowWidth = 1460;
 const windowZoom = 1.035;
-const tahoeWallpaperRoot = '/Users/lirik/Projects/zush/zush-assets/tahoe-wallpapers';
-const tahoeAssetWallpapers = {
-  light: path.join(tahoeWallpaperRoot, 'tahoe-light.jpeg'),
-  dark: path.join(tahoeWallpaperRoot, 'tahoe-dark.jpeg'),
+const wallpaperAssetRoot = '/Users/lirik/Projects/zush/zush-assets/golden-gate-wallpapers';
+const assetWallpapers = {
+  light: path.join(wallpaperAssetRoot, 'iClarified-macOS-27-Golden-Gate-Wallpaper-5K-Light.jpg'),
+  dark: path.join(wallpaperAssetRoot, 'iClarified-macOS-27-Golden-Gate-Wallpaper-5K-Dark.jpg'),
 };
 const tahoeLightWallpaper =
   '/System/Library/ExtensionKit/Extensions/NeptuneOneWallpaper.appex/Contents/Resources/TahoeLight.heic';
@@ -44,7 +46,7 @@ const wallpaperSources = {
   light:
     process.env.ZUSH_PROMO_LIGHT_WALLPAPER ??
     firstExistingAssetPath([
-      tahoeAssetWallpapers.light,
+      assetWallpapers.light,
       '/Users/lirik/Desktop/tahoe/macos-tahoe-26-6016x6016-22673.jpg',
       tahoeLightWallpaper,
       tahoeDayWallpaper,
@@ -54,7 +56,7 @@ const wallpaperSources = {
   dark:
     process.env.ZUSH_PROMO_DARK_WALLPAPER ??
     firstExistingAssetPath([
-      tahoeAssetWallpapers.dark,
+      assetWallpapers.dark,
       '/Users/lirik/Desktop/tahoe/macos-tahoe-26-5k-6016x6016-22672.jpg',
       tahoeDarkWallpaper,
       tahoeDayWallpaper,
@@ -70,6 +72,9 @@ const features = [
   { id: 'statistics', fixture: 'statistics' },
   { id: 'activity', fixture: 'activity' },
   { id: 'templates', fixture: 'templates' },
+  { id: 'folder-sorting', fixture: 'folder-sorting', landingOnly: true },
+  { id: 'folder-rules', fixture: 'folder-rules', captureZushExtras: true, landingOnly: true, isolated: true },
+  { id: 'template-transfer', fixture: 'template-transfer', captureZushExtras: true, captureMenu: true, landingOnly: true, isolated: true },
   { id: 'naming-blocks', fixture: 'naming-blocks' },
   { id: 'custom-ai-blocks', fixture: 'custom-ai-blocks', captureZushExtras: true },
   { id: 'naming', fixture: 'naming' },
@@ -467,6 +472,13 @@ function copyFixtureAssets(runId) {
     fs.cpSync(source, target, { recursive: true });
   }
 
+  if (selectedFeatures.some((feature) => feature.id === 'folder-sorting')) {
+    const sortingTarget = path.join(targetRoot, 'Folder Sorting');
+    fs.mkdirSync(sortingTarget, { recursive: true });
+    for (const file of ['doc.docx', '6.pptx', 'logo.ai', 'images.psd', 'IMG_133.webp', 'test.png']) {
+      fs.copyFileSync(path.join(sortingAssetRoot, file), path.join(sortingTarget, file));
+    }
+  }
   return targetRoot;
 }
 
@@ -597,7 +609,7 @@ async function waitForPromoRealAnalysis(markerPath, timeoutMs = 190_000) {
   throw new Error(`Timed out waiting for real AI batch analysis marker: ${markerPath}`);
 }
 
-function listWindows() {
+function listWindows(includeMenus = false) {
   const swift = `
 import Foundation
 import CoreGraphics
@@ -618,7 +630,7 @@ let rows = list.compactMap { info -> [String: Any]? in
     let y = bounds["Y"] as? Double ?? 0
     let width = bounds["Width"] as? Double ?? 0
     let height = bounds["Height"] as? Double ?? 0
-    guard layer == 0, alpha > 0, width > 40, height > 40 else { return nil }
+    guard (layer == 0 || ${includeMenus ? "true" : "false"}), alpha > 0, width > 40, height > 40 else { return nil }
     return [
         "id": Int(id),
         "owner": owner,
@@ -729,7 +741,7 @@ async function openFinderInfo(filePath) {
 }
 
 function captureWindowsForFeature(feature, captureDir) {
-  const windows = listWindows();
+  const windows = listWindows(feature.captureMenu);
   const main = findZushWindow(windows);
   if (!main) {
     throw new Error('No Zush main window found for capture');
@@ -739,6 +751,13 @@ function captureWindowsForFeature(feature, captureDir) {
   const mainPath = path.join(captureDir, 'main.png');
   captureWindow(main, mainPath);
   captures.push({ role: 'main', window: main, path: mainPath, size: imageSize(mainPath) });
+
+  if (feature.captureMenu) {
+    if (!windows.some(window => window.pid === activeZushPid && window.id !== main.id)) {
+      throw new Error('The Templates menu must be open before capture');
+    }
+    return captures;
+  }
 
   const extras = [];
   if (feature.captureZushExtras) {
@@ -781,7 +800,7 @@ function captureWindowsForFeature(feature, captureDir) {
 
   // These fixtures present a sheet over the main window; capturing the sheet's
   // window id returns the full window+sheet group, which becomes the shot.
-  if (feature.id === 'custom-prompts' || feature.id === 'custom-ai-blocks') {
+  if (['custom-prompts', 'custom-ai-blocks', 'folder-rules'].includes(feature.id)) {
     const mainCapture = captures.find((capture) => capture.role === 'main');
     const promptWindowCapture = captures.find(
       (capture) =>
@@ -928,6 +947,30 @@ async function captureFeature({ feature, theme, runId, assetRoot, reuseCurrentFi
   focusZushSidebarWithTab();
   await wait(300);
 
+  if (feature.captureMenu) {
+    run('osascript', ['-e', `tell application "System Events"
+      set targetProcess to first process whose unix id is ${activeZushPid}
+      tell targetProcess
+        key code 53
+        set allElements to entire contents of window 1
+        repeat with candidate in allElements
+          if description of candidate is "More" or name of candidate is "More" or help of candidate is "More" then
+            set menuElements to entire contents of candidate
+            repeat with menuElement in menuElements
+              if role of menuElement is "AXMenuButton" or role of menuElement is "AXPopUpButton" or role of menuElement is "AXButton" then
+                perform action "AXPress" of menuElement
+                return
+              end if
+            end repeat
+            error "Templates More button was not found"
+          end if
+        end repeat
+        error "Templates More menu was not found"
+      end tell
+    end tell`]);
+    await wait(350);
+  }
+
   const captureDir = path.join(tempRoot, runId, `${feature.id}-${theme}`);
   fs.mkdirSync(captureDir, { recursive: true });
   const captures = captureWindowsForFeature(feature, captureDir);
@@ -944,6 +987,9 @@ async function captureFeature({ feature, theme, runId, assetRoot, reuseCurrentFi
     outputs.push(outputPath);
   }
 
+  if (feature.captureMenu) {
+    run('osascript', ['-e', 'tell application "System Events" to key code 53']);
+  }
   return outputs;
 }
 
@@ -970,7 +1016,7 @@ async function main() {
   const originalDarkMode = getSystemDarkMode();
   const runId = `zush-promo-${process.pid}-${Date.now()}`;
   const assetRoot = copyFixtureAssets(runId);
-  const app = startZush(runId);
+  let app = startZush(runId);
   const outputs = [];
 
   try {
@@ -978,8 +1024,17 @@ async function main() {
     await wait(2500);
     let previousCapture = null;
     for (const feature of selectedFeatures) {
+      // Native sheets and navigation can outlive a fixture's defaults reset.
+      if (previousCapture && (feature.isolated || previousCapture.isolated)) {
+        app.kill();
+        await wait(500);
+        app = startZush(runId);
+        await app.waitForPid();
+        await wait(2500);
+      }
       for (const theme of selectedThemes) {
         const reuseCurrentFixture =
+          !feature.captureMenu &&
           theme === 'dark' &&
           previousCapture?.featureId === feature.id &&
           previousCapture?.theme === 'light';
@@ -994,13 +1049,13 @@ async function main() {
         for (const output of featureOutputs) {
           console.log(`Wrote ${path.relative(repoRoot, output)}`);
         }
-        previousCapture = { featureId: feature.id, theme };
+        previousCapture = { featureId: feature.id, theme, isolated: feature.isolated };
       }
     }
   } finally {
     closeFinderInfoWindows();
     setSystemDarkMode(originalDarkMode);
-    app.kill();
+    if (!args.has('--keep-open')) app.kill();
     stopStartedOllama();
     stopPreparedLMStudio();
   }

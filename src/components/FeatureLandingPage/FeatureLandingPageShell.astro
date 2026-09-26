@@ -4,6 +4,7 @@ import { RENAME_TASK_EXAMPLES } from '@/data/renameTaskExamples';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ComparisonTable from '@/components/ComparisonTable/ComparisonTable.astro';
 import PillLink from '@/components/PillLink';
+import OrganizationFeatures from '@/components/OrganizationFeatures/OrganizationFeatures.astro';
 import Features from '@/components/Features/Features.astro';
 import Heading from '@/components/Heading';
 import Hero from '@/components/Hero';
@@ -115,6 +116,9 @@ const relatedPageTitle = (href: string, fallback: string) =>
 
   <Tour copy={currentCopy.home.showcase} />
   <Features title={currentCopy.home.featuresTitle} description={currentCopy.home.featuresDescription} copy={currentCopy.home.featureCards} locale={currentLocale} />
+  {['/ai-file-organizer', '/automate-downloads-folder', '/hazel-alternative'].includes(currentRoute) && (
+    <OrganizationFeatures locale={currentLocale} />
+  )}
   <SupportedFormats
     category={category}
     title={currentCopy.home.supportedFormats}

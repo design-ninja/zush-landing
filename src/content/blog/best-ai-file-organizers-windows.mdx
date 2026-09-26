@@ -9,16 +9,16 @@ tags:
   - "File Organization"
   - "Tool Comparisons"
   - "Automation"
-tldr: "Pick Zush if your folders are fine but the filenames are useless: it reads each file and renames it in place, with preview, folder monitoring, and full Rename History. Pick Sortio or Wisfile if you want AI to build folders and move files. Pick File Juggler if your rules are predictable and you do not need AI at all."
-reviewed: "2026-09-24"
+tldr: "Zush combines content-aware naming with AI folder sorting (beta). Use Auto to group files by content or write your own folder instructions, then preview the batch. Compare Sortio and Wisfile for other AI organizing workflows, or File Juggler for deterministic rules without AI."
+reviewed: "2026-09-26"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: for most Windows users the best AI file organizer is [Zush](/windows), because the thing that makes a Windows PC messy is usually the filenames, not the folders. `scan_0042.pdf`, `IMG_4382.jpg`, and `Screenshot 2026-09-18 141203.png` stay unfindable in any folder tree. Zush reads each file, proposes a descriptive name, and renames it where it already lives.
+Quick answer: for most Windows users the best AI file organizer is [Zush](/windows), because the thing that makes a Windows PC messy is usually the filenames, not the folders. `scan_0042.pdf`, `IMG_4382.jpg`, and `Screenshot 2026-09-18 141203.png` stay unfindable in any folder tree. Zush reads each file, proposes a descriptive name, and can also sort it into a folder using Auto grouping or your own instructions. Folder sorting is in beta; review the proposed names and groups before applying.
 
-If you want an app that creates folders and moves files for you, that is a different job. This guide splits the six options into those two groups so you can pick the right kind of tool first.
+You can rename in place or enable AI folder sorting. This guide compares naming, folder grouping, and rule-based routing so you can choose the workflow that fits your files.
 
 **Last checked: September 22, 2026.** Written by the maker of Zush. Competitor details come from each vendor's own site, linked in its section. This is a source-backed comparison, not a shared hands-on benchmark.
 
@@ -37,7 +37,7 @@ Decide which problem you have before you install anything. If you open files jus
 
 | App | What it does | AI on your PC? | Watches folders | Undo | Price |
 |---|---|---|---|---|---|
-| **Zush** | <BlogHighlight>Renames in place by content</BlogHighlight> | Yes, via Ollama or LM Studio (cloud and BYOK also available) | Yes | Full Rename History | 50 free renames; $10/mo or $48 one-time |
+| **Zush** | <BlogHighlight>Content-aware renaming and AI folder sorting (beta)</BlogHighlight> | Yes, via Ollama or LM Studio (cloud and BYOK also available) | Yes | Full Rename History | 50 free renames; $10/mo or $48 one-time |
 | Sortio | Renames, creates folders, moves files | Yes, via Ollama or LM Studio | Yes | Yes | Free tier; Pro $14.99/mo or $99/yr |
 | Wisfile | Renames and groups files into folders | Yes, local only | Not documented | Not documented | Free |
 | RenameClick | Renames; Auto Flow can also move | Yes, built-in local model | Yes (Auto Flow) | Up to 10 undo steps, cleared on restart | 100 successful renames or moves/mo free; currently $36+ VAT lifetime |
@@ -55,7 +55,7 @@ Decide which problem you have before you install anything. If you open files jus
   ]}
 />
 
-## 1. Zush: best for searchable filenames
+## 1. Zush: content-aware names and AI folder sorting
 
 [Zush for Windows](/windows) runs on Windows 10 and 11 and installs from the [Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X). You drop in a folder of screenshots, PDFs, photos, Office documents, design files, audio, or video. Zush looks at what is inside each file and suggests a name like `2026-09-18_acme_invoice_1042.pdf` or `stripe-revenue-dashboard-september.png`.
 
@@ -68,7 +68,7 @@ Two features matter most on Windows:
 
 AI can run four ways: Zush Cloud AI, your own API key (BYOK), or locally through Ollama or LM Studio for folders that should never leave the PC.
 
-Choose Zush when your folder structure already works and the names are the problem. It does not move files between folders. If you also need routing, let Zush name first and a rule tool like File Juggler move the result.
+Choose Zush for content-aware names and folder grouping in one workflow. Use Auto or write a prompt such as “Group invoices by company and receipts by month.” Preview the groups, choose a destination, and optionally reuse existing folders. Save the rules in a Template for Monitor. Leave sorting off when files must stay in place. See the [folder sorting guide](/docs/folder-sorting).
 
 <BlogCTA placement='inline' platform='windows' />
 
@@ -115,12 +115,12 @@ Choose DropIt for simple free sorting by extension or name pattern.
 ## Which one should you pick?
 
 - Filenames are the problem, folders are fine: **Zush**.
-- You want AI to design folders and move files: **Sortio**.
+- You want AI to group files into folders: **Zush** (beta), **Sortio**, or **Wisfile**, depending on the workflow you need.
 - Free, local, document-only cleanup: **Wisfile**.
 - Offline AI with nothing to configure: **RenameClick**.
 - Exact rules, no AI: **File Juggler**, or **DropIt** if it must be free.
 
-A common setup is two tools: Zush turns `scan_0042.pdf` into `2026-09_acme_invoice.pdf`, then a rule moves every `*_invoice.pdf` into Finance. Naming and moving stay separate, so each step is easy to check.
+With Zush, naming and AI folder sorting can be reviewed in the same batch. A separate rule tool remains an option when you need a deterministic rule such as routing every `*_invoice.pdf` into one fixed folder.
 
 ## Test any organizer on 10 files first
 
@@ -137,7 +137,7 @@ Ten files will tell you more than any comparison table, including this one. For 
 
 ### What is the best AI file organizer for Windows 11?
 
-Zush is our pick when you need files you can find again: it renames each file by its content, in place, with preview, folder monitoring, and full undo. If you need AI to move files into new folders, Sortio is the stronger fit.
+Zush combines content-aware renaming with AI folder sorting (beta), preview, reusable Templates, and monitoring. Choose Auto grouping or custom folder instructions. Compare the other tools for specific rule, scripting, or library requirements.
 
 ### Is there a free AI file organizer for Windows?
 
@@ -145,7 +145,7 @@ Yes. Wisfile is free and local, and Zush includes 50 free AI renames with no cre
 
 ### Can AI organize my Downloads folder automatically on Windows?
 
-Yes. Zush can monitor Downloads and rename new files as they arrive, and Sortio or File Juggler can move them afterward. Start with one test folder before you automate important directories. The [Downloads automation guide](/automate-downloads-folder) walks through the setup.
+Yes. Zush can monitor Downloads, rename new files, and apply the folder rules saved in your Template. Start with one test folder before you automate important directories. The [Downloads automation guide](/automate-downloads-folder) walks through the setup.
 
 ### Does an AI file organizer upload my files?
 

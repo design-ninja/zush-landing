@@ -1,0 +1,50 @@
+---
+title: "Zush-Vorlagen auf dem Mac importieren und exportieren"
+description: "Benennungsvorlagen als .zushtemplates-Dateien zwischen Macs teilen: enthaltene Einstellungen, Importkonflikte und lokale Konfiguration."
+date: "2026-09-26"
+slug: "import-export-zush-templates-de"
+platform: "mac"
+topic: "automation"
+tags: ["Templates", "Automation", "File Naming"]
+tldr: "Zush exportiert einzelne Vorlagen oder die gesamte Sammlung als `.zushtemplates`-Datei. Auf einem anderen Mac können Sie Namensmuster, eigene KI-Anweisungen und Ordnerregeln wieder importieren."
+earlyTaskExample: false
+reviewed: "2026-09-26"
+locale: "de"
+translationOf: "import-export-zush-templates"
+---
+
+Zush exportiert einzelne Vorlagen oder die gesamte Sammlung als `.zushtemplates`-Datei. Auf einem anderen Mac können Sie Namensmuster, eigene KI-Anweisungen und Ordnerregeln wieder importieren.
+
+Das eignet sich für gemeinsame Rechnungsnamen im Team, einen neuen Mac oder eine Sicherung vor Änderungen. Übertragen werden Einstellungen, keine Originaldokumente.
+
+## Vorlagen exportieren
+
+1. Öffnen Sie **Templates**.
+2. Exportieren Sie eine Vorlage über ihr Kontextmenü oder ihre Detailansicht.
+3. Für alle Vorlagen wählen Sie **More → Export All Templates…**.
+4. Speichern Sie die Datei und übertragen Sie sie auf den anderen Mac.
+5. Für Smart Rename erstellen Sie zunächst mit **Duplicate as New** eine gespeicherte Vorlage.
+
+![Zush-Vorlagen auf dem Mac importieren und exportieren](/images/showcase/macos/template-transfer-light.webp)
+
+## Welche Einstellungen übertragen werden
+
+Die Datei enthält Name, Beschreibung, Symbol, Farbe, Namensbausteine, Formatierung, Sprache, Datumsformat, Metadatenoptionen und eigene KI-Anweisungen. Verwendete eigene KI-Blöcke sowie Sortierregeln und die Wiederverwendung bestehender Ordner sind ebenfalls enthalten.
+
+Von Smart Rename geerbte Werte werden beim Export fest gespeichert. Zielpfade, Ordnerberechtigungen, API-Schlüssel, Modellinstallation, Lizenz, Monitor-Zuweisungen und Verlauf bleiben lokal. Richten Sie Zielordner und KI-Verbindung auf dem anderen Mac ein.
+
+## Import und vorhandene Vorlagen
+
+Wählen Sie **More → Import Templates…** und öffnen Sie die Datei. Bei bereits vorhandenen Vorlagen-IDs können Sie **Replace Existing** oder **Create Copies** wählen. Ersetzen erhält die Monitor-Verknüpfungen; Kopien sind getrennte Vorlagen. Ein gleicher Name allein ist kein Konflikt.
+
+Der Import überschreibt keine globalen Smart-Rename-Einstellungen. Prüfen Sie Regeln und Ziele und testen Sie einen kleinen Stapel, bevor Sie die Vorlage Monitor zuweisen.
+
+## Vor dem Teilen kontrollieren
+
+Vergeben Sie verständliche Namen und Beschreibungen. Prüfen Sie eigene Prompts vor dem Teilen: Die Anweisungen stehen lesbar in der Exportdatei und können eingegebene Kundendetails enthalten.
+
+Bewahren Sie eine Sicherung auf. Ungültige Dateien, nicht unterstützte Formatversionen und fehlende referenzierte KI-Blöcke werden abgelehnt. Verwenden Sie einen unveränderten Export und prüfen Sie gegebenenfalls die App-Version.
+
+Vergeben Sie vor dem Teilen einen verständlichen Vorlagennamen und beschreiben Sie den vorgesehenen Dokumenttyp. So erkennt das Team, welche Vorlage für Rechnungen, Belege oder Projektdateien gedacht ist. Prüfen Sie nach dem Import einen kleinen Beispielsatz, bevor Sie die Vorlage einem überwachten Ordner zuweisen.
+
+[Vollständige Import- und Exportdokumentation (Englisch)](/docs/template-import-export) · [Dateien auf dem Mac mit KI in Ordner sortieren](/de/blog/sort-files-into-folders-with-ai-mac-de) · [Zush · macOS](/de/mac)

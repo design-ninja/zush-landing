@@ -2213,7 +2213,7 @@ export const professions = {
         },
         {
           "question": "Zush, dosyaları özellik klasörlerine taşır mı?",
-          "answer": "Hayır. Zush, dosyaları yerinde yeniden adlandırır ve mevcut klasör yapısını değiştirmeden bırakır. Bu, bir aracı kurumun mevcut işlem klasörleri, paylaşılan sürücüsü, Dropbox, OneDrive veya yerel arşivinin etrafına bir adlandırma katmanı eklemeyi güvenli hale getirir."
+          "answer": "Zush, dosyaları AI ile klasörlere ayırabilir (beta). Klasör kurallarına mülk adresine göre gruplama gibi istediğiniz düzeni yazın ve uygulamadan önce önerileri inceleyin. Sıralama kapalıyken dosyalar özgün konumunda kalır."
         },
         {
           "question": "İşlem dosyaları yüklenmeden işlem yapılabilir mi?",

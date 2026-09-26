@@ -1,3 +1,4 @@
+import { ORGANIZATION_FEATURES } from '@/i18n/organizationFeatures';
 import type { FAQItem } from '@/data/blog';
 import {
   AI_MODES_SUMMARY,
@@ -11,6 +12,7 @@ import { PRO_PRICING } from '@/constants/pricing';
 // AI assistants get asked ("best AI file renamer", "what is AI renamer software").
 // Keep them self-contained and naming Zush, so a quoted answer carries the brand.
 export const HOME_FAQ_DATA: FAQItem[] = [
+  { question: ORGANIZATION_FEATURES.en.sortingQuestion, answer: ORGANIZATION_FEATURES.en.sortingAnswer },
   {
     question: 'What is the best AI file renamer for Mac and Windows?',
     answer:
@@ -44,7 +46,7 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'Does Zush move or sort files into folders?',
     answer:
-      'No. Zush focuses on the naming layer: it renames files in place so Finder, Spotlight, File Explorer, and Windows Search can find them more easily. It does not move files between folders.',
+      'Yes. Zush offers AI folder sorting (beta) and destination folders for batch renaming and Monitor on Mac and Windows. Use Auto grouping or write your own folder instructions. Keep sorting off to rename in place.',
   },
   {
     question: 'Is Zush free to try?',

@@ -1,0 +1,48 @@
+---
+title: "如何在 Mac 上导入和导出 Zush 模板"
+description: "通过 .zushtemplates 文件在 Mac 之间分享命名模板，了解导出内容、导入冲突处理，以及需要重新配置的本地设置。"
+date: "2026-09-26"
+slug: "import-export-zush-templates-zh-cn"
+platform: "mac"
+topic: "automation"
+tags: ["Templates", "Automation", "File Naming"]
+tldr: "Zush 可将单个模板或全部模板导出为 `.zushtemplates` 文件。在另一台 Mac 上导入后，可以继续使用命名块、AI 指令和文件夹分类规则。"
+earlyTaskExample: false
+reviewed: "2026-09-26"
+locale: "zh-cn"
+translationOf: "import-export-zush-templates"
+---
+
+Zush 可将单个模板或全部模板导出为 `.zushtemplates` 文件。在另一台 Mac 上导入后，可以继续使用命名块、AI 指令和文件夹分类规则。
+
+它适合统一团队发票命名方式、配置新 Mac，或在修改流程前备份设置。导出的是模板配置，不是原始文档。
+
+## 导出模板
+
+1. 打开 **Templates**。
+2. 通过模板的右键菜单或详情页导出单个模板。
+3. 导出全部模板时，选择 **More → Export All Templates…**。
+4. 保存文件并传到另一台 Mac。
+5. 如需导出 Smart Rename 设置，先用 **Duplicate as New** 创建已保存的模板。
+
+![如何在 Mac 上导入和导出 Zush 模板](/images/showcase/macos/template-transfer-light.webp)
+
+## 哪些设置会一起迁移
+
+导出包含名称、描述、图标、颜色、命名块、格式、语言、日期格式、元数据偏好和 AI 指令。被引用的自定义 AI 块，以及分类规则和现有文件夹复用选项也会保留。
+
+从 Smart Rename 继承的值在导出时会变成明确的模板设置。目标路径、文件夹权限、API 密钥、本地模型、许可证、Monitor 分配关系和历史记录不会迁移。请在接收的 Mac 上设置目标位置和 AI 连接。
+
+## 导入与冲突处理
+
+选择 **More → Import Templates…** 并打开文件。如果同一模板 ID 已存在，可以选择 **Replace Existing** 或 **Create Copies**。替换会保留 Monitor 关联，创建副本则新增独立模板。仅名称相同不构成冲突。
+
+导入不会覆盖全局 Smart Rename 设置。检查规则、选择本地目标位置，再用少量文件测试，确认后才启用自动处理。
+
+## 分享前检查
+
+使用清晰的名称和描述，说明模板适用于哪些文件。自定义指令会以可读文本保存在导出文件中，分享前检查是否包含输入过的客户信息。
+
+保留原始导出作为备份。无效文件、不受支持的格式版本或缺少引用 AI 块的文件会被拒绝。请使用未经修改的导出文件，必要时检查接收端的应用版本。
+
+[完整模板导入导出文档（英文）](/docs/template-import-export) · [如何在 Mac 上用 AI 将文件分类到文件夹](/zh-cn/blog/sort-files-into-folders-with-ai-mac-zh-cn) · [Zush · macOS](/zh-cn/mac)
