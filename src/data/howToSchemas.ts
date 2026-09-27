@@ -1,6 +1,34 @@
 import type { HowToData } from '@/utils/jsonLd';
 
 export const HOW_TO_SCHEMAS: Record<string, HowToData> = {
+  'sort-files-into-folders-with-ai-windows': {
+    name: 'How to Sort Files into Folders Automatically on Windows 11 with AI',
+    description:
+      'Sort files into folders by content on Windows 11 and 10 with Zush: choose a destination, write folder rules in plain language, review the plan, and automate new files with Monitor.',
+    totalTime: 'PT10M',
+    steps: [
+      {
+        name: 'Install Zush for Windows',
+        text: 'Install Zush from the Microsoft Store. The first 50 AI renames are free.',
+      },
+      {
+        name: 'Choose the destination folder',
+        text: 'In the AI Rename tab, pick a Template, then use the Destination folder control below the Naming Blocks to keep the original location or choose a root folder.',
+      },
+      {
+        name: 'Turn on Sort and write Folder rules',
+        text: 'Click Sort, open Folder rules, and describe the grouping, for example “Group invoices by company and receipts by month.” Leave the field empty for Auto.',
+      },
+      {
+        name: 'Review and apply the plan',
+        text: 'Add files, wait for analysis and grouping, check the proposed folders and filenames, rename a folder if needed, then click Rename & sort.',
+      },
+      {
+        name: 'Automate new files with Monitor',
+        text: 'Save the destination and Folder rules in a Template, add Downloads or a scanner folder to Monitor, and assign the Template.',
+      },
+    ],
+  },
   'batch-rename-files-windows-11': {
     name: 'How to Batch Rename Files in Windows 11',
     description:

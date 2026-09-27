@@ -29,7 +29,11 @@ export function getLocalizedContent(
     ...content,
     home: {
       ...content.home,
-      faqItems: [{ question: organization.sortingQuestion, answer: organization.sortingAnswer }, ...content.home.faqItems],
+      faqItems: [
+        { question: organization.sortingQuestion, answer: organization.sortingAnswer },
+        { question: organization.bestSorterQuestion, answer: organization.bestSorterAnswer },
+        ...content.home.faqItems,
+      ],
     },
   };
 }

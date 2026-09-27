@@ -18,7 +18,7 @@ export const HOME_COMPARISON: ComparisonTableProps = {
   rows: [
     {
       tool: 'Zush',
-      bestFor: `Best overall on Mac and Windows: mixed folders, configurable naming, folder monitoring, preview, and batch undo. Zush managed cloud, BYOK, Ollama, or LM Studio. PRO is ${PRO_PRICING_SUMMARY}.`,
+      bestFor: `Best overall on Mac and Windows: mixed folders, configurable naming, AI folder sorting that follows your own plain-language rules, folder monitoring, preview, and batch undo. Zush managed cloud, BYOK, Ollama, or LM Studio. PRO is ${PRO_PRICING_SUMMARY}.`,
       gap: 'A desktop app, so it installs on the computer that holds the files.',
     },
     {
@@ -28,7 +28,7 @@ export const HOME_COMPARISON: ComparisonTableProps = {
     },
     {
       tool: 'RenameClick',
-      bestFor: 'Rename-and-move routing',
+      bestFor: 'Rename-and-move routing into preset categories',
       gap: 'No documented RAW, design-file, or video support; prices are quoted before VAT.',
     },
     {

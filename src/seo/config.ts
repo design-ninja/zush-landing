@@ -131,6 +131,15 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     keywords:
       'AI file organizer, organize files with AI, automatic file naming, AI document organizer, content-aware file naming, rename files automatically, file organizer for Mac, file organizer for Windows',
   },
+  '/ai-file-sorter': {
+    title: 'AI File Sorter for Mac & Windows: Sort by Your Rules | Zush',
+    description:
+      'Sort files into folders with AI on Mac and Windows. Describe the folders in plain language or use Auto. Zush reads, renames, and files each document, photo, and video.',
+    robots: 'index, follow',
+    ogType: 'website',
+    keywords:
+      'ai file sorter, sort files into folders with ai, ai folder organizer, automatically sort files into folders, sort files by content, ai file sorter mac, ai file sorter windows, organize files into folders automatically, file sorter app, auto sort downloads folder',
+  },
   '/hazel-alternative': {
     title: 'Hazel Alternative with AI File Naming',
     description:
@@ -459,6 +468,7 @@ export const SEARCH_LANDING_ROUTES = [
   '/batch-rename-files',
   '/offline-ai-file-renamer',
   '/ai-file-organizer',
+  '/ai-file-sorter',
 ] as const;
 
 function normalizePath(pathname: string): string {
