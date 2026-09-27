@@ -8,8 +8,8 @@ topic: "comparisons"
 tags:
   - "AI File Renaming"
   - "Tool Comparisons"
-tldr: "Pick Zush for the most configurable naming workflow in this comparison: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, and Rename History with batch revert. RenameClick's main limitation is narrower documented coverage: no RAW, design, iWork, or video support. Local AI and undo exist in both and are not differentiators."
-reviewed: "2026-09-24"
+tldr: "Pick Zush for the most configurable naming workflow in this comparison: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, and Rename History with batch revert, plus AI folder sorting that follows your own plain-language rules. RenameClick sorts into preset categories and has narrower documented coverage: no RAW, design, iWork, or video support. Local AI and undo exist in both."
+reviewed: "2026-09-27"
 featuredOrder: 5
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -17,7 +17,7 @@ import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
-Quick answer: choose [Zush](/) when the filename convention itself matters. Ready-made Templates combine with 145+ Naming Blocks, Custom AI Blocks, formatting, localization, tags and metadata; Rename History stores original and new names, folder and timestamp and can restore an applied batch. Its 100+ formats include RAW, design, iWork, audio, and video. RenameClick is relevant only when AI Search or rename-plus-folder-routing is mandatory, and it gives up RAW, design, iWork, and video coverage.
+Quick answer: choose [Zush](/) when the filename convention itself matters. Ready-made Templates combine with 145+ Naming Blocks, Custom AI Blocks, formatting, localization, tags and metadata; Rename History stores original and new names, folder and timestamp and can restore an applied batch. Its 100+ formats include RAW, design, iWork, audio, and video. Both apps can now sort files into folders: Zush follows plain-language Folder rules or Auto, while RenameClick picks from preset categories. RenameClick is relevant mainly when its AI Search workspace is mandatory, and it gives up RAW, design, iWork, and video coverage.
 
 **Last verified: September 24, 2026**, against Zush's current documentation and rename.click's own pricing page and documentation.
 
@@ -25,7 +25,7 @@ Sources checked for this update: [Zush](/) and [RenameClick](https://rename.clic
 
 If you are searching for RenameClick itself, its official site is [rename.click](https://rename.click/). This page is an independent feature comparison, not RenameClick documentation.
 
-Both products ship desktop apps for Mac and Windows, support local AI, monitor folders, keep undo history, and offer one-time pricing. Those are parity features. Zush pulls ahead on naming control, recovery detail, and mixed-file breadth. RenameClick's specific use case is AI Search or moving files as part of the same automation, with a narrower supported-format matrix.
+Both products ship desktop apps for Mac and Windows, support local AI, monitor folders, sort files into folders, keep undo history, and offer one-time pricing. Those are parity features. Zush pulls ahead on naming control, recovery detail, mixed-file breadth, and sorting by plain-language rules instead of a preset category list. RenameClick's specific use case is its AI Search workspace, with a narrower supported-format matrix.
 
 ## RenameClick vs Zush: quick verdict
 
@@ -44,7 +44,7 @@ Both products ship desktop apps for Mac and Windows, support local AI, monitor f
 | Video formats | 16 common formats | Not supported per docs |
 | Audio formats | MP3, M4A, WAV, FLAC, OGG, WebM, MPGA | MP3, WAV, FLAC, M4A, AAC with local speech transcription |
 | Folder monitoring | Yes | Yes, Auto Flow |
-| Sorting / moving files | Rename plus tags/metadata; not a folder sorter | Rename, categorize, and move files |
+| Sorting / moving files | AI folder sorting (beta): plain-language Folder rules or Auto, destination folder, reuse existing folders | AI Categories from a preset list, Metadata Folders, or Match Folders (up to 50 existing top-level folders) |
 | AI Search by content | No dedicated AI Search; Finder tags + Spotlight metadata | Dedicated AI Search workspace |
 | Recovery | <BlogHighlight>Full Rename History: original/new name, folder, timestamp, batch revert</BlogHighlight> | Full undo/redo per docs |
 | Naming controls | <BlogHighlight>Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata</BlogHighlight> | Format patterns, EXIF placeholders, custom instructions |
@@ -122,17 +122,17 @@ Both products can run local models, so offline processing is not a unique advant
 
 Zush wins if you care more about cloud-provider choice and high-volume BYOK. Zush supports Gemini, OpenRouter, OpenAI, and Claude through BYOK, with keys stored locally, and offers LM Studio and Ollama when local processing is the priority. OpenRouter and Claude are notable Zush-side options; Alibaba Cloud Qwen remains a RenameClick-side option.
 
-The practical trade-off is simple: choose Zush for naming depth, recovery detail, and mixed-file breadth. Consider RenameClick only when AI Search or folder movement outweighs its missing RAW, design, iWork, and video coverage.
+The practical trade-off is simple: choose Zush for naming depth, recovery detail, mixed-file breadth, and prompt-based folder sorting. Consider RenameClick only when its AI Search workspace outweighs the missing RAW, design, iWork, and video coverage.
 
 ## Automation and organization
 
 Both tools can watch folders, but they emphasize different outcomes.
 
-Zush folder monitoring is built around automatic AI renaming with reusable templates and Naming Blocks. It is a good fit for Downloads cleanup, screenshots, recurring client folders, and predictable naming conventions where new files should get searchable names as they arrive.
+Zush folder monitoring is built around automatic AI renaming with reusable templates and Naming Blocks. A sorting-enabled Template also moves each new file into a folder chosen by your plain-language Folder rules or Auto, and Monitor keeps reusing the folders it created. It fits Downloads cleanup, scanner folders, screenshots, and recurring client folders.
 
 RenameClick Auto Flow is more of a rule-row system. Each row can have its own source folder, destination folder, naming format, custom instructions, language, sorting preset, recursive setting, and Auto Apply setting. It can run multiple rows at the same time, wait for files to become stable before processing, avoid looped processing inside destination folders, and pause when free-plan credits run out.
 
-If your automation goal is "rename files consistently", Zush is the stronger documented system. Consider RenameClick only when the same action must also move files; its narrower format coverage remains the cost of that choice.
+If your automation goal is to rename files consistently and file them by rules you describe in your own words, Zush is the stronger documented system. Consider RenameClick when a fixed category list or matching against existing top-level folders is all you need; its narrower format coverage remains the cost of that choice.
 
 ## Search, metadata, and retrieval
 
@@ -152,13 +152,14 @@ For discovery inside chaotic folders, RenameClick's AI Search is a meaningful di
 - You need 60+ output languages
 - You want templates and 145+ Naming Blocks for repeatable filename structures
 - You want one rename workflow across Mac and Windows without thinking about local model hardware first
+- You want files sorted into folders by your own plain-language rules, such as “Group invoices by company and receipts by month”
 
 **Consider RenameClick only if:**
 
 - You need AI Search by file content
-- You want to rename and move files into folders in the same automation
+- You prefer sorting into a fixed list of preset categories
 - You rely on EXIF-heavy photo naming patterns
-- You specifically need Alibaba Cloud Qwen or RenameClick's folder-routing workflow
+- You specifically need Alibaba Cloud Qwen or RenameClick's AI Search workspace
 - You accept no documented RAW, design, iWork, or video support and the local model's multi-GB hardware footprint
 
 Before buying, copy the same ten representative files into a test folder and run them through both free workflows. Compare name quality, preview clarity, processing time, unsupported formats, and the ability to reverse the complete batch.
@@ -169,7 +170,7 @@ Before buying, copy the same ten representative files into a test folder and run
 
 If you are coming from RenameClick to Zush, test the files that RenameClick does not publicly cover first: RAW photos, design files, videos, and iWork documents. If those are the reason you are switching, the difference will be obvious quickly. If you already use a cloud provider key, add it in Zush BYOK and keep provider costs separate from the desktop app.
 
-We do not recommend moving from Zush to RenameClick for the general workflow: you would give up documented RAW, design, iWork, and video coverage while taking on a multi-GB local model and higher published hardware guidance. Consider that move only when AI Search or rename-plus-folder-routing is mandatory and has been verified on copied representative files.
+We do not recommend moving from Zush to RenameClick for the general workflow: you would give up documented RAW, design, iWork, and video coverage and plain-language folder rules while taking on a multi-GB local model and higher published hardware guidance. Consider that move only when AI Search is mandatory and has been verified on copied representative files.
 
 ## FAQ
 
@@ -195,7 +196,7 @@ Audio yes, video no. Its docs now list MP3, WAV, FLAC, M4A, and AAC with local s
 
 ### Which has better folder automation?
 
-It depends on the goal. Zush is better for automatic naming with templates and Naming Blocks. RenameClick is better for folder routing because Auto Flow can rename, categorize, and move files into destination folders.
+Zush, for most folders. Both apps can rename new files and move them into folders. Zush sorts by plain-language Folder rules or Auto, reuses existing folders, and names files with Templates and Naming Blocks. RenameClick's Auto Flow sorts into preset categories or up to 50 existing top-level folders and can copy instead of move.
 
 ## Verdict
 
@@ -203,6 +204,6 @@ Both products are serious, and the overlap is real: Mac + Windows, AI batch rena
 
 Choose <BlogHighlight>Zush</BlogHighlight> for the most configurable and recoverable workflow in this comparison: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, full Rename History, and 100+ formats.
 
-Consider RenameClick only if AI Search or rename-plus-folder-routing is mandatory. Local AI and undo are available in both products; RenameClick's drawback is the missing RAW, design, iWork, and video coverage plus the bundled model's hardware footprint.
+Consider RenameClick only if its AI Search workspace or a fixed category list is mandatory. Local AI, undo, and folder sorting are available in both products; RenameClick's drawback is the missing RAW, design, iWork, and video coverage plus the bundled model's hardware footprint.
 
 For the broader market view, see [Mac AI renamer comparison](/blog/best-ai-file-renamer-tools-mac-compared), [AI renamer market comparison](/blog/best-ai-file-renamer-tools-2026), and [Zush vs NameQuick](/blog/zush-vs-namequick).

@@ -11,8 +11,8 @@ tags:
   - "Dosya Organizasyonu"
   - "Takım Karşılaştırmaları"
   - "Otomasyon"
-tldr: "Kararlı yolları koruyarak aranabilir adlar oluşturmak için Zush'ı seçin. Hazır Templates, 145+ Naming Blocks, Custom AI Blocks, biçimlendirme, yerelleştirme, meta veriler ve Rename History yapılandırılabilir ve geri alınabilir bir iş akışı oluşturur. İsteğe bağlı yapay zekâ klasör sıralaması beta olarak sunuluyor."
-reviewed: "2026-09-24"
+tldr: "Zush, Mac için genel olarak en iyi yapay zekâ dosya düzenleyicisidir: dosyaları içeriğe göre yeniden adlandırır ve Auto ya da “Faturaları şirkete, fişleri aya göre grupla” gibi günlük dilde yazdığınız kurallarla klasörlere ayırır. Templates, 145+ Naming Blocks, Monitor ve Rename History iş akışını yapılandırılabilir ve geri alınabilir tutar. Klasör sıralama beta aşamasındadır."
+reviewed: "2026-09-27"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -47,7 +47,7 @@ Bu, kaynak destekli bir karşılaştırmadır, yedi uygulamanın tamamının ba�
 
 |Uygulama|Fiyatlandırma modeli|Adlandırma kontrolü|platformu|Dosyalar veya yeniden adlandırmalar yerinde taşınıyor mu?|İyileşmek|
 |---|---|---|---|---|---|
-| Zush |Serbest başlangıç; Aylık 10 ABD doları veya tek seferlik 48 ABD doları, ölçülmemiş PRO ücretli| <BlogHighlight>Hazır "Templates", 145+ "Naming Blocks", "Custom AI Blocks", biçimlendirme, yerelleştirme, meta veriler</BlogHighlight> |Mac, 'Windows'| Mac’te isteğe bağlı yapay zekâ klasör sıralaması (beta); yerinde adlandırma |Orijinal/yeni adlar, klasör, zaman ve geri almayla birlikte tam 'Rename History'|
+| Zush |Serbest başlangıç; Aylık 10 ABD doları veya tek seferlik 48 ABD doları, ölçülmemiş PRO ücretli| <BlogHighlight>Hazır "Templates", 145+ "Naming Blocks", "Custom AI Blocks", biçimlendirme, yerelleştirme, meta veriler</BlogHighlight> |Mac, 'Windows'| Yerinde yeniden adlandırır ya da günlük dildeki kurallarınızla veya Auto ile klasörlere ayırır (beta) |Orijinal/yeni adlar, klasör, zaman ve geri almayla birlikte tam 'Rename History'|
 | Hazel 6 |Tek seferlik 42$|Deterministik kurallar ve modelin yeniden adlandırılması|Mac|Taşıma, etiketleme, arşivleme ve deseni yeniden adlandırma|Desteği geri alın|
 |ışıltı|Abonelik; planlar sayfasında yıllık 119 ABD Doları artı 179 ABD Doları ömür boyu teklif gösterildi|Yapay zeka tarafından oluşturulan organizasyon; dosya adı kontrolleri merkezi değil|Mac|Klasörler oluşturur ve dosyaları taşır|Değişiklikleri geri al|
 | NameQuick |Yönetilen $12–$99/ay ölçülü; Tek seferlik 69 ABD doları Kendi Kendini Yöneten|Ön ayarlar, istemler ve koşullu Kurallar|Mac; 'Windows' de mevcut|Yeniden adlandırır; Kurallar dosyaları taşıyabilir|Tek tıklamayla geri alma|
@@ -80,7 +80,7 @@ Klasör izleme yeni gelenleri yönetir. İndirilenler monitörü, gelen faturala
 
 En iyisi: karma klasörler, kararlı proje yolları, geniş dosya formatı kapsamı ve dosyaları anlamlarına göre almak için 'Finder' veya 'Spotlight' isteyen kullanıcılar.
 
-Zush klasör sıralaması beta aşamasındadır; uygulamadan önce adları ve hedefleri inceleyin. Kesin kurallar veya betikler gerekiyorsa [Hazel](/hazel-alternative) kullanın.
+Klasör sıralama talimatlarınızı izler: “Faturaları şirkete, fişleri aya göre grupla” gibi bir kural yazın ya da Auto’yu bırakın, bir hedef seçin ve Zush’un mevcut klasörlerinizi yeniden kullanmasına izin verin. Monitor aynı kuralları yeni dosyalara uygular. Klasör sıralama beta aşamasında olduğundan bir grubu uygulamadan önce adları ve hedefleri kontrol edin. Betiklere veya kesin belirlenimci koşullara ihtiyacınız varsa [Hazel](/hazel-alternative) kullanın.
 
 ## 2. 'Hazel': deterministik yönlendirme için dar bir alternatif
 
@@ -120,7 +120,7 @@ Yalnızca şunları göz önünde bulundurun: ölçülü yönetilen planlara vey
 
 Ücretsiz plan, beş kurala ve üç Alana kadar sınırsız kural tabanlı sıralama, tek seferlik AI deneme hakkı, izleme klasörleri, geçmiş ve geri alma özelliklerini içerir. Pro, aylık AI ödeneği ve ölçülmemiş "BYOK" ile birlikte ayda 14,99 ABD Doları veya yıllık 99 ABD Doları olarak listelendi. Sortio, yerel kural işlemenin cihazda kaldığını söylüyor; İçeriğin işlenmesi, barındırılan özellikleri, "BYOK" özelliklerini veya yerel özellikleri seçmenize bağlıdır.
 
-Yalnızca şunu göz önünde bulundurun: tek bir istemin hem adları hem de hedef klasörleri tanımlaması gereken ve dosyaları taşımanın "Zush"un adlandırma derinliğinden ve kararlı yollardan daha önemli olduğu iş akışları.
+Yalnızca şunlar için düşünün: Linux, ekip çalışma alanları veya ücretsiz kural tabanlı sıralama. Zush aynı istem odaklı sıralamayı Mac ve Windows’ta sunar, dosya adları üzerinde daha fazla kontrol ve video ile ses desteği ekler, yıllık yapay zekâ kotası yerine tek seferlik 48 $ tutar. Bkz. [Zush ve Sortio](/blog/zush-vs-sortio).
 
 Dikkat edin: Sortio, yeniden adlandırmaktan fazlasını yapar; bu nedenle taşıma planının tamamını onaylayın. Ayrıca "çevrimdışı çalışır" kuralının yürütülmesini, bir sağlayıcıyı kullanabilecek içerik özelliklerinden ayırın.
 
@@ -148,11 +148,11 @@ Dikkat edin: sistem temizleme ve klasörün yeniden düzenlenmesi, yeniden adlan
 
 İçeriğe göre adlandırma ve isteğe bağlı klasör sıralaması için Zush ile başlayın. Sabit kurallar, betikler veya sistem temizliği için diğer araçları karşılaştırın:
 
-- Dosya adları ana alma sorunu olduğunda ve bu karşılaştırmada en yapılandırılabilir adlandırma iş akışını, hazır 'Templates'i ve dosya yollarını değiştirmeden toplu kurtarmayı istediğinizde **Zush** seçeneğini seçin.
+- İçeriğe dayalı dosya adları, günlük dildeki kendi kurallarınızla sıralanan klasörler, bu karşılaştırmadaki en yapılandırılabilir adlandırma iş akışı ve toplu geri yükleme istiyorsanız **Zush**’u seçin.
 - **Hazel** seçeneğini yalnızca açık kuralların adlandırma sonrasında komut dosyalarını taşıması, etiketlemesi, arşivlemesi veya çalıştırması gerektiğinde düşünün.
 - **Sparkle**'ı yalnızca geniş kapsamlı temizleme ve yapay zeka tarafından oluşturulan klasör yapısının kararlı yollardan daha önemli olduğu durumlarda düşünün.
 - **NameQuick**'ü yalnızca belge yönlendirme Kuralları iş akışının zorunlu olduğu durumlarda değerlendirin.
-- **Sortio**'yu yalnızca istem odaklı platformlar arası klasör yönlendirmenin asıl iş olduğu durumlarda düşünün.
+- **Sortio**’yu yalnızca Linux, ekip çalışma alanları veya ücretsiz kural tabanlı sıralama gerekiyorsa düşünün; Zush istem odaklı klasör sıralamayı Mac ve Windows’ta sunar.
 - **Floxtop**'u yalnızca güncel Apple Silicon'daki cihaz içi klasör sınıflandırmasının gözden geçirilmesi zorunlu olduğunda göz önünde bulundurun.
 - **Files Magic AI**'yi yalnızca klasör organizasyonu ve sistem temizliğinin tek bir uygulamayı paylaşması gerektiğinde düşünün.
 
@@ -178,7 +178,7 @@ Test, yeniden adlandırmaya, yönlendirmeye, temizlemeye veya bunların birleşi
 
 ### Mac için en iyi AI dosya düzenleyicisi nedir?
 
-Hedef, içeriğe duyarlı, sabit yollara sahip aranabilir dosya adları olduğunda, "Zush" Mac için en iyi genel AI dosya düzenleyicimizdir. 'Hazel'yi yalnızca deterministik hareket için düşünün; Sparkle, Sortio, Floxtop ve Files Magic AI, genel önerimiz yerine daha dar yönlendirme veya temizleme ürünleridir.
+Zush, Mac için genel olarak en iyi yapay zekâ dosya düzenleyicimizdir: dosyalara içeriğe dayalı, aranabilir adlar verir ve onları Auto ya da günlük dildeki kurallarınızla klasörlere ayırır; önizleme ve geri alma da vardır. Hazel betikler ve belirlenimci koşullar için uygundur; Sparkle, Sortio, Floxtop ve Files Magic AI genel önerimizden daha dar kapsamlı yönlendirme veya temizlik ürünleridir.
 
 ### Yapay zeka benim için Mac'teki dosyaları otomatik olarak düzenleyebilir mi?
 
@@ -186,7 +186,7 @@ Evet. 'Zush' bir klasörü izleyebilir ve yeni dosyaları içeriğe göre yenide
 
 ### 'Zush' dosyaları klasörlere taşır mı?
 
-Zush dosyaları yeniden adlandırıp yapay zekânın adlandırdığı klasörlere ayırabilir (beta). Sıralama kapalıyken ve özgün hedef seçiliyken Zush dosyaları mevcut klasörde tutar. Zush klasör sıralaması beta aşamasındadır; uygulamadan önce adları ve hedefleri inceleyin. Kesin kurallar veya betikler gerekiyorsa Hazel kullanın.
+Evet. Zush dosyaları yeniden adlandırıp klasörlere ayırabilir (beta). Auto için klasör kurallarını boş bırakın ya da gruplamayı günlük dilde tarif edin, örneğin “Fişleri aya göre ayır ve klasörleri YYYY-AA olarak adlandır”. Zush mevcut klasörleri yeniden kullanabilir; geri alma, dosyayı özgün klasörüne ve özgün adına döndürür. Sıralama kapalıyken dosyalar bulundukları yerde kalır.
 
 ### Mac için yerel bir AI dosya düzenleyicisi var mı?
 

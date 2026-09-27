@@ -116,7 +116,7 @@ const relatedPageTitle = (href: string, fallback: string) =>
 
   <Tour copy={currentCopy.home.showcase} />
   <Features title={currentCopy.home.featuresTitle} description={currentCopy.home.featuresDescription} copy={currentCopy.home.featureCards} locale={currentLocale} />
-  {['/ai-file-organizer', '/automate-downloads-folder', '/hazel-alternative'].includes(currentRoute) && (
+  {['/ai-file-organizer', '/ai-file-sorter', '/automate-downloads-folder', '/hazel-alternative'].includes(currentRoute) && (
     <OrganizationFeatures locale={currentLocale} />
   )}
   <SupportedFormats

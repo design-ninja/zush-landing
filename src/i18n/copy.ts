@@ -1,5 +1,6 @@
 import { ORGANIZATION_FEATURES } from './organizationFeatures';
 import type { Locale, LocalizedRoute } from '@/i18n/config';
+import { AI_FILE_SORTER_LOCALIZED, buildAiFileSorterSlides } from '@/i18n/aiFileSorterLocalized';
 import { HOME_FAQ_DATA } from '@/data/homeFaq';
 import { VIDEO_PREVIEW_IMAGES } from '@/data/videoPreviewImages';
 import type { Slide } from '@/components/FileShowcase';
@@ -74,6 +75,7 @@ export interface FooterProductLinks {
   renameExcel: string;
   renameWord: string;
   renameScanned: string;
+  aiFileSorter: string;
   forAccountants: string;
 }
 
@@ -1115,6 +1117,7 @@ const EN_COPY: LocaleCopy = {
       renameExcel: 'Rename Excel Files',
       renameWord: 'Rename Word Documents',
       renameScanned: 'Rename Scanned Documents',
+      aiFileSorter: 'AI File Sorter',
       forAccountants: 'Zush for Accountants',
     },
   },
@@ -2161,6 +2164,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       renameExcel: 'Excel-Dateien umbenennen',
       renameWord: 'Word-Dokumente umbenennen',
       renameScanned: 'Scans umbenennen',
+      aiFileSorter: 'KI-Dateisortierung',
       forAccountants: 'Zush für Buchhalter',
     },
   },
@@ -2212,6 +2216,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       renameExcel: 'Renommer les fichiers Excel',
       renameWord: 'Renommer les documents Word',
       renameScanned: 'Renommer les scans',
+      aiFileSorter: 'Tri de fichiers par IA',
       forAccountants: 'Zush pour les comptables',
     },
   },
@@ -2263,6 +2268,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       renameExcel: 'Renomear arquivos Excel',
       renameWord: 'Renomear documentos Word',
       renameScanned: 'Renomear digitalizações',
+      aiFileSorter: 'Organizar arquivos em pastas com IA',
       forAccountants: 'Zush para contadores',
     },
   },
@@ -2314,6 +2320,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       renameExcel: 'Renombrar archivos Excel',
       renameWord: 'Renombrar documentos Word',
       renameScanned: 'Renombrar documentos escaneados',
+      aiFileSorter: 'Ordenar archivos con IA',
       forAccountants: 'Zush para contadores',
     },
   },
@@ -2365,6 +2372,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       renameExcel: 'Excel-bestanden hernoemen',
       renameWord: 'Word-documenten hernoemen',
       renameScanned: 'Scans hernoemen',
+      aiFileSorter: 'Bestanden sorteren met AI',
       forAccountants: 'Zush voor accountants',
     },
   },
@@ -2416,6 +2424,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       renameExcel: 'Rinomina file Excel',
       renameWord: 'Rinomina documenti Word',
       renameScanned: 'Rinomina scansioni',
+      aiFileSorter: 'Ordinare file con IA',
       forAccountants: 'Zush per commercialisti',
     },
   },
@@ -2467,6 +2476,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       renameExcel: 'Excel ファイルをリネーム',
       renameWord: 'Word 文書をリネーム',
       renameScanned: 'スキャン文書をリネーム',
+      aiFileSorter: 'AIファイル仕分け',
       forAccountants: '会計士向けZush',
     },
   },
@@ -2518,6 +2528,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       renameExcel: 'Excel 파일 이름 변경',
       renameWord: 'Word 문서 이름 변경',
       renameScanned: '스캔 문서 이름 변경',
+      aiFileSorter: 'AI 파일 분류',
       forAccountants: '회계사를 위한 Zush',
     },
   },
@@ -2569,6 +2580,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       renameExcel: '重命名 Excel 文件',
       renameWord: '重命名 Word 文档',
       renameScanned: '重命名扫描件',
+      aiFileSorter: 'AI 文件分类',
       forAccountants: '面向会计师的 Zush',
     },
   },
@@ -2620,6 +2632,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       renameExcel: 'Excel dosyalarını adlandır',
       renameWord: 'Word belgelerini adlandır',
       renameScanned: 'Taranan belgeleri yeniden adlandır',
+      aiFileSorter: 'Yapay zekâyla dosya sıralama',
       forAccountants: 'Muhasebeciler için Zush',
     },
   },
@@ -2671,6 +2684,7 @@ const localizedFooterDetails: Record<Exclude<Locale, 'en'>, FooterVisibleCopy> =
       renameExcel: 'إعادة تسمية ملفات Excel',
       renameWord: 'إعادة تسمية مستندات Word',
       renameScanned: 'إعادة تسمية المستندات الممسوحة ضوئيًا',
+      aiFileSorter: 'فرز الملفات بالذكاء الاصطناعي',
       forAccountants: 'Zush للمحاسبين',
     },
   },
@@ -5278,8 +5292,26 @@ const COPY: Record<Locale, LocaleCopy> = {
 export function getCopy(locale: Locale): LocaleCopy {
   const copy = COPY[locale] ?? COPY.en;
   const organization = ORGANIZATION_FEATURES[locale];
+  const sorter = locale === 'en' ? undefined : AI_FILE_SORTER_LOCALIZED[locale];
   return {
     ...copy,
+    ...(sorter && {
+      featurePages: {
+        ...copy.featurePages,
+        '/ai-file-sorter': {
+          h1: sorter.h1,
+          accent: sorter.accent,
+          definitionText: sorter.definitionText,
+          faqItems: sorter.faqItems,
+          faqTitle: sorter.faqTitle,
+          relatedToolsTitle: sorter.relatedToolsTitle,
+          relatedGuidesTitle: sorter.relatedGuidesTitle,
+          directAnswerSection: sorter.directAnswerSection,
+          showcaseSlides: buildAiFileSorterSlides(sorter.showcase),
+        },
+      },
+      seo: { ...copy.seo, '/ai-file-sorter': sorter.seo },
+    }),
     home: {
       ...copy.home,
       showcase: {

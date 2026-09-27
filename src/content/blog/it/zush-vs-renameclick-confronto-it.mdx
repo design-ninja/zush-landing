@@ -10,8 +10,8 @@ topic: "comparisons"
 tags:
   - "Rinomina file con IA"
   - "Confronti tra strumenti"
-tldr: "Scegli \"Zush\" per il flusso di lavoro di denominazione più configurabile in questo confronto: \"Templates\" già pronto, oltre 145 \"Naming Blocks\", \"Custom AI Blocks\", formattazione, localizzazione, metadati e \"Rename History\" con ripristino batch. Il limite principale di \"RenameClick\" è la copertura documentata più ristretta: nessun supporto RAW, design, \"iWork\" o video. L'intelligenza artificiale locale e l'annullamento esistono in entrambi e non sono elementi di differenziazione."
-reviewed: "2026-09-24"
+tldr: "Scegli Zush per il flusso di denominazione più configurabile di questo confronto: Template pronti, 145+ Naming Blocks, Custom AI Blocks e Rename History con ripristino per lotti, oltre all’ordinamento in cartelle con IA che segue le tue regole in linguaggio naturale. RenameClick ordina in categorie predefinite e documenta una copertura più ristretta: niente RAW, file di design, iWork o video. IA locale e annullamento ci sono in entrambi."
+reviewed: "2026-09-27"
 featuredOrder: 5
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -32,7 +32,7 @@ Fonti controllate per questo aggiornamento: "[Zush](/)" e "[RenameClick](https:/
 
 Se stai cercando "RenameClick", il suo sito ufficiale è "[rinominare.fare clic](https://rename.click/)". Questa pagina è un confronto di funzionalità indipendente, non la documentazione "RenameClick".
 
-Entrambi i prodotti forniscono app desktop per Mac e "Windows", supportano l'intelligenza artificiale locale, monitorano le cartelle, mantengono la cronologia degli annullamenti e offrono prezzi una tantum. Queste sono caratteristiche di parità. "Zush" migliora il controllo dei nomi, i dettagli del ripristino e l'ampiezza dei file misti. Il caso d'uso specifico di "RenameClick" è la ricerca AI o lo spostamento di file come parte della stessa automazione, con una matrice di formati supportati più ristretta.
+Entrambi i prodotti offrono app desktop per Mac e Windows, supportano l’IA locale, monitorano cartelle, ordinano i file in cartelle, conservano la cronologia per annullare e hanno un prezzo una tantum. Sono funzioni alla pari. Zush va avanti per controllo dei nomi, dettaglio del ripristino, varietà di file e ordinamento con regole in linguaggio naturale invece di un elenco fisso di categorie. Il caso d’uso specifico di RenameClick è lo spazio AI Search, con una matrice di formati più ristretta.
 
 ## RenameClick vs Zush: verdetto veloce
 
@@ -51,7 +51,7 @@ Entrambi i prodotti forniscono app desktop per Mac e "Windows", supportano l'int
 |Formati video|16 formati comuni|Non supportato per documenti|
 |Formati audio|MP3, M4A, WAV, FLAC, OGG, WebM, MPGA|MP3, WAV, FLAC, M4A, AAC con trascrizione vocale locale|
 |Monitoraggio delle cartelle|SÌ|Sì, flusso automatico|
-|Ordinamento/spostamento di file|Rinominare più tag/metadati; non un selezionatore di cartelle|Rinominare, classificare e spostare i file|
+|Ordinamento/spostamento di file| Ordinamento in cartelle con IA (beta): regole in linguaggio naturale o Auto, cartella di destinazione, riutilizzo delle cartelle esistenti | AI Categories da un elenco predefinito, Metadata Folders o Match Folders (fino a 50 cartelle esistenti di primo livello) |
 |AI Ricerca per contenuto|Nessuna ricerca AI dedicata; Tag "Finder" + metadati "Spotlight".|Area di lavoro dedicata alla ricerca AI|
 |Recupero| <BlogHighlight>Rename History completo: nome originale/nuovo, cartella, timestamp, ripristino batch</BlogHighlight> |Annulla/ripeti completamente per documenti|
 |Controlli di denominazione| <BlogHighlight>Templates già pronto, 145+ Naming Blocks, Custom AI Blocks, formattazione, localizzazione, metadati</BlogHighlight> |Modelli di formato, segnaposto EXIF, istruzioni personalizzate|
@@ -125,17 +125,17 @@ Entrambi i prodotti possono eseguire modelli locali, quindi l'elaborazione offli
 
 "Zush" vince se ti interessa di più la scelta del fornitore di servizi cloud e il volume elevato di "BYOK". "Zush" supporta Gemini, OpenRouter, OpenAI e Claude tramite "BYOK", con chiavi archiviate localmente e supporta l'AI offline tramite "Ollama" quando l'elaborazione locale è la priorità. OpenRouter e Claude sono opzioni degne di nota sul lato Zush; Qwen3-VL integrato, Alibaba Cloud Qwen e LM Studio sono opzioni sul lato "RenameClick".
 
-Il compromesso pratico è semplice: scegli "Zush" per la profondità di denominazione, i dettagli del ripristino e l'ampiezza del file misto. Considera "RenameClick" solo quando la ricerca AI o lo spostamento delle cartelle superano la mancanza di RAW, design, "iWork" e copertura video.
+Il compromesso pratico è semplice: scegli Zush per profondità dei nomi, dettaglio del ripristino, varietà di file e ordinamento guidato da prompt. Considera RenameClick solo se lo spazio AI Search conta più della mancanza di RAW, file di design, iWork e video.
 
 ## Automazione e organizzazione
 
 Entrambi gli strumenti possono controllare le cartelle, ma enfatizzano risultati diversi.
 
-Il monitoraggio delle cartelle "Zush" si basa sulla ridenominazione automatica dell'intelligenza artificiale con modelli riutilizzabili e "Naming Blocks". È adatto per la pulizia dei download, gli screenshot, le cartelle client ricorrenti e le convenzioni di denominazione prevedibili in cui i nuovi file dovrebbero ottenere nomi ricercabili non appena arrivano.
+Il monitoraggio delle cartelle di Zush si basa sulla rinomina automatica con IA tramite Template e Naming Blocks riutilizzabili. Un Template con ordinamento attivo sposta anche ogni nuovo file in una cartella scelta dalle tue regole in linguaggio naturale o da Auto, e Monitor continua a usare le cartelle che ha creato. È adatto a Download, cartelle dello scanner, screenshot e cartelle di clienti ricorrenti.
 
 Il flusso automatico "RenameClick" è più un sistema di righe di regole. Ogni riga può avere la propria cartella di origine, cartella di destinazione, formato di denominazione, istruzioni personalizzate, lingua, preimpostazione di ordinamento, impostazione ricorsiva e impostazione di applicazione automatica. Può eseguire più righe contemporaneamente, attendere che i file diventino stabili prima dell'elaborazione, evitare l'elaborazione in loop all'interno delle cartelle di destinazione e mettere in pausa quando i crediti del piano gratuito si esauriscono.
 
-Se il tuo obiettivo di automazione è "rinominare i file in modo coerente", Zush è il sistema documentato più potente. Considera RenameClick solo quando la stessa azione deve anche spostare file; la copertura del formato più ristretto rimane il costo di tale scelta.
+Se il tuo obiettivo è rinominare i file in modo coerente e archiviarli con regole descritte con parole tue, Zush è il sistema meglio documentato. Considera RenameClick quando basta un elenco fisso di categorie o l’abbinamento a cartelle esistenti di primo livello; la copertura dei formati più ristretta resta il prezzo di questa scelta.
 
 ## Ricerca, metadati e recupero
 
@@ -155,13 +155,14 @@ Per la scoperta all'interno di cartelle caotiche, la ricerca AI di "RenameClick"
 - Sono necessarie oltre 60 lingue di output
 - Desideri modelli e oltre 145 Naming Blocks per strutture di nomi di file ripetibili
 - Desideri rinominare un flusso di lavoro su Mac e "Windows" senza pensare prima all'hardware del modello locale
+- Vuoi ordinare i file in cartelle con regole tue in linguaggio naturale, ad esempio «Raggruppa le fatture per azienda e le ricevute per mese»
 
 **Considera "RenameClick" solo se:**
 
 - Hai bisogno della ricerca AI per contenuto del file
-- Vuoi rinominare e spostare i file in cartelle nella stessa automazione
+- Preferisci ordinare in un elenco fisso di categorie predefinite
 - Ti affidi a modelli di denominazione delle foto ricchi di EXIF
-- Preferisci flussi di lavoro basati su LM Studio, "Ollama" o Qwen
+- Ti servono specificamente Alibaba Cloud Qwen o lo spazio AI Search di RenameClick
 - Non accetti alcun supporto RAW, design, iWork o video documentato e l'impronta hardware multi-GB del modello locale
 
 Prima dell'acquisto, copia gli stessi dieci file rappresentativi in ​​una cartella di prova ed eseguili attraverso entrambi i flussi di lavoro gratuiti. Confronta la qualità del nome, la chiarezza dell'anteprima, il tempo di elaborazione, i formati non supportati e la possibilità di invertire il batch completo.
@@ -172,7 +173,7 @@ Prima dell'acquisto, copia gli stessi dieci file rappresentativi in ​​una ca
 
 Se provieni da "RenameClick" a "Zush", prova prima i file che "RenameClick" non copre pubblicamente: foto RAW, file di progettazione, video e documenti "iWork". Se questo è il motivo per cui stai cambiando, la differenza sarà evidente rapidamente. Se utilizzi già una chiave del fornitore di servizi cloud, aggiungila in "Zush" "BYOK" e mantieni i costi del fornitore separati dall'app desktop.
 
-Non consigliamo di passare da "Zush" a "RenameClick" per il flusso di lavoro generale: rinunceresti a RAW documentati, design, "iWork" e copertura video adottando un modello locale multi-GB e una guida hardware pubblicata di livello superiore. Considera questo spostamento solo quando la ricerca AI o il routing della ridenominazione e della cartella sono obbligatori e sono stati verificati su file rappresentativi copiati.
+Non consigliamo di passare da Zush a RenameClick per l’uso generale: rinunceresti al supporto documentato per RAW, file di design, iWork e video e alle regole delle cartelle in linguaggio naturale, aggiungendo un modello locale di diversi GB con requisiti hardware più alti. Considera il passaggio solo se AI Search è indispensabile ed è stato verificato su copie di file rappresentativi.
 
 ## Domande frequenti
 
@@ -198,7 +199,7 @@ Audio sì, video no. I suoi documenti ora elencano MP3, WAV, FLAC, M4A e AAC con
 
 ### Quale ha una migliore automazione delle cartelle?
 
-Dipende dall'obiettivo. Zush è migliore per la denominazione automatica con modelli e Naming Blocks. "RenameClick" è migliore per il routing delle cartelle perché Auto Flow può rinominare, classificare e spostare i file nelle cartelle di destinazione.
+Zush, per la maggior parte delle cartelle. Entrambe le app possono rinominare i nuovi file e spostarli in cartelle. Zush ordina con regole in linguaggio naturale o Auto, riutilizza le cartelle esistenti e nomina i file con Template e Naming Blocks. L’Auto Flow di RenameClick ordina in categorie predefinite o in fino a 50 cartelle esistenti di primo livello e può copiare invece di spostare.
 
 ## Verdetto
 
@@ -206,6 +207,6 @@ Entrambi i prodotti sono seri e la sovrapposizione è reale: Mac + "Windows", ri
 
 Scegli "<BlogHighlight>Zush</BlogHighlight>" per il flusso di lavoro più configurabile e recuperabile in questo confronto: "Templates" già pronto, oltre 145 "Naming Blocks", "Custom AI Blocks", formattazione, localizzazione, metadati, "Rename History" completo e oltre 100 formati.
 
-Considera "RenameClick" solo se la ricerca AI o il routing della ridenominazione e della cartella sono obbligatori. L'intelligenza artificiale locale e l'annullamento sono disponibili in entrambi i prodotti; Lo svantaggio di "RenameClick" è la mancanza di RAW, design, "iWork" e copertura video, oltre all'ingombro hardware del modello in bundle.
+Considera RenameClick solo se lo spazio AI Search o un elenco fisso di categorie è indispensabile. IA locale, annullamento e ordinamento in cartelle sono disponibili in entrambi i prodotti; lo svantaggio di RenameClick è la mancanza di RAW, file di design, iWork e video, oltre all’impatto hardware del modello incluso.
 
 Per una visione più ampia del mercato, vedere "[Confronto tra i rinominatori Mac AI](/blog/best-ai-file-renamer-tools-mac-compared)", "[Confronto del mercato dei rinominatori AI](/blog/best-ai-file-renamer-tools-2026)" e "["Zush" rispetto a "NameQuick".](/blog/zush-vs-namequick)".

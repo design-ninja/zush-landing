@@ -39,6 +39,7 @@ import { getSeoForPath } from '@/seo/config';
 import { getLocalizedContent } from '@/i18n/localizedContent';
 import { getProfessionKeyForRoute } from '@/i18n/professions/types';
 import { enhanceLocalizedProfessionPage } from '@/i18n/professions/seoAdditions';
+import { AI_FILE_SORTER_LOCALIZED } from '@/i18n/aiFileSorterLocalized';
 
 const FEATURE_VIEWS = {
   '/rename-pdf-with-ai': RenamePDFWithAI,
@@ -125,6 +126,7 @@ const serviceSeo = isServiceLocalizedRoute(route)
   : null;
 const localizedHomeHref = getLocalizedPath('/', locale);
 const batchRenamePage = SEARCH_LANDING_PAGES['batch-rename-files'];
+const fileSorterPage = SEARCH_LANDING_PAGES['ai-file-sorter'];
 const professionKey = getProfessionKeyForRoute(route);
 const professionPage = professionKey
   ? enhanceLocalizedProfessionPage(
@@ -366,6 +368,44 @@ const professionHeaderNav = professionPage
       >
         <FeatureLandingPageShell
           {...localizedPage}
+          locale={locale}
+          localizedCopy={localizedCopy}
+        />
+      </BaseLayout>
+    );
+  })()
+}
+{
+  route === '/ai-file-sorter' && (() => {
+    const sorter = AI_FILE_SORTER_LOCALIZED[locale];
+    const localizedCopy = copy.featurePages[route];
+    const pageJsonLd = buildFeaturePageJsonLd({
+      pageName: sorter.h1,
+      inLanguage: locale,
+      howTo: {
+        name: sorter.howTo.name,
+        description: sorter.howTo.description,
+        steps: sorter.howTo.steps.map(([name, text]) => ({ name, text })),
+      },
+      faqItems: sorter.faqItems,
+      page: {
+        pagePath: localizedPath,
+        description: sorter.seo.description,
+        featureList: sorter.featureList,
+      },
+    });
+
+    return (
+      <BaseLayout
+        seo={seo}
+        locale={locale}
+        chromeBasePath={localizedHomeHref}
+        headerWidth="container"
+        jsonLd={[pageJsonLd, buildFeatureBreadcrumbJsonLd(sorter.h1, localizedPath)]}
+      >
+        <FeatureLandingPageShell
+          {...fileSorterPage}
+          relatedPages={sorter.relatedPages}
           locale={locale}
           localizedCopy={localizedCopy}
         />
