@@ -41,7 +41,7 @@ test('does not emit duplicate purchase events or arbitrary SDK events', () => {
   }
 });
 
-test('global Paddle callback survives UI unsubscribe and fallback preserves visitor identity', async () => {
+test('global Paddle callback survives UI unsubscribe and server session preserves visitor identity', async () => {
   const paddleSource = readFileSync(new URL('../../src/utils/paddle.ts', import.meta.url), 'utf8');
   const js = ts.transpileModule(paddleSource.replace(/^import .*;\n/gm, '').replaceAll('import.meta.env', 'testEnv'), {
     compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 },
@@ -49,12 +49,13 @@ test('global Paddle callback survives UI unsubscribe and fallback preserves visi
   const captured = [];
   let config;
   let opened;
+  let submitted;
   const context = {
     exports: {}, testEnv: { PUBLIC_PADDLE_TOKEN: 'test', PUBLIC_PADDLE_ENVIRONMENT: 'sandbox' },
     SUPABASE_URL: 'https://example.test', getAnalyticsDistinctId: () => 'visitor-test', getCheckoutAnalyticsEvent,
     trackAnalyticsEvent: (name, properties) => captured.push({ name, properties }),
     URLSearchParams, console: { log() {}, warn() {}, error() {} },
-    fetch: async () => ({ ok: false, text: async () => 'unavailable' }),
+    fetch: async (_url, init) => { submitted = JSON.parse(init.body); return { ok: true, json: async () => ({ success: true, checkout_session: 'session_test', transaction_id: 'txn_test' }) }; },
     sessionStorage: { setItem() {}, removeItem() {} },
     document: { documentElement: { lang: 'en' } }, navigator: { language: 'en' },
     window: { location: { search: '' }, Paddle: {
@@ -64,7 +65,9 @@ test('global Paddle callback survives UI unsubscribe and fallback preserves visi
   };
   vm.runInNewContext(js, context);
   assert.equal(await context.exports.openPaddleCheckout(null, 'pri_test'), true);
-  assert.equal(opened.customData.posthog_distinct_id, 'visitor-test');
+  assert.equal(submitted.posthog_distinct_id, 'visitor-test');
+  assert.equal(opened.transactionId, 'txn_test');
+  assert.equal(opened.items, undefined);
   let notifications = 0;
   const unsubscribe = context.exports.onPaddleCheckoutEvent(() => { notifications++; });
   config.eventCallback({ name: 'checkout.loaded' });
@@ -75,3 +78,35 @@ test('global Paddle callback survives UI unsubscribe and fallback preserves visi
   assert.deepEqual(captured.map(event => event.name), ['checkout_loaded', 'checkout_discount_applied', 'checkout_closed']);
   assert.equal(captured[1].properties.paddle_price_id, 'pri_test');
 });
+
+for (const failure of ['already_pro', 'checkout_in_progress', 'server_error', 'network_error', 'invalid_response']) {
+  test(`server failure ${failure} never opens Paddle directly`, async () => {
+    const paddleSource = readFileSync(new URL('../../src/utils/paddle.ts', import.meta.url), 'utf8');
+    const js = ts.transpileModule(paddleSource.replace(/^import .*;\n/gm, '').replaceAll('import.meta.env', 'testEnv'), {
+      compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 },
+    }).outputText;
+    let opens = 0;
+    const captured = [];
+    const context = {
+      exports: {}, testEnv: { PUBLIC_PADDLE_TOKEN: 'test', PUBLIC_PADDLE_ENVIRONMENT: 'sandbox' },
+      SUPABASE_URL: 'https://example.test', getAnalyticsDistinctId: () => 'visitor-test', getCheckoutAnalyticsEvent,
+      trackAnalyticsEvent: (name, properties) => captured.push({ name, properties }),
+      URLSearchParams, console: { log() {}, warn() {}, error() {} },
+      fetch: async () => {
+        if (failure === 'network_error') throw new Error('network unavailable');
+        if (failure === 'invalid_response') return { ok: true, json: async () => ({ success: false }) };
+        return { ok: false, status: failure === 'server_error' ? 503 : 409 };
+      },
+      document: { documentElement: { lang: 'en' } }, navigator: { language: 'en' },
+      window: { location: { search: '' }, Paddle: {
+        Environment: { set() {} }, Initialize() {}, Checkout: { open() { opens++; } },
+      } },
+    };
+    vm.runInNewContext(js, context);
+    assert.equal(await context.exports.openPaddleCheckout('device_test', 'pri_test'), false);
+    assert.equal(opens, 0);
+    assert.equal(captured.length, 1);
+    assert.equal(captured[0].name, 'checkout_error');
+    assert.equal(captured[0].properties.stage, 'session_creation');
+  });
+}
