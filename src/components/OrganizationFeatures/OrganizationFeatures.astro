@@ -5,8 +5,8 @@ import { DEFAULT_LOCALE, getLocalizedPath, type Locale } from '@/i18n/config';
 import { ORGANIZATION_FEATURES } from '@/i18n/organizationFeatures';
 import ThemedScreenshot from './ThemedScreenshot.astro';
 import styles from './OrganizationFeatures.module.scss';
-interface Props { locale?: Locale }
-const { locale = DEFAULT_LOCALE } = Astro.props;
+interface Props { locale?: Locale; platform?: 'mac' | 'windows' }
+const { locale = DEFAULT_LOCALE, platform = 'mac' } = Astro.props;
 const copy = ORGANIZATION_FEATURES[locale];
 const guidePath = getLocalizedPath(`/blog/sort-files-into-folders-with-ai-mac${locale === DEFAULT_LOCALE ? '' : `-${locale}`}`, locale);
 ---
@@ -33,7 +33,7 @@ const guidePath = getLocalizedPath(`/blog/sort-files-into-folders-with-ai-mac${l
           <a href={guidePath}>{copy.sortingLink} <span aria-hidden="true">→</span></a>
         </div>
         <div class={styles.Visual}>
-          <ThemedScreenshot id="folder-sorting" alt={copy.sortingTab} zoom />
+          <ThemedScreenshot id="folder-sorting" platform={platform} alt={copy.sortingTab} zoom />
         </div>
       </div>
   </div>

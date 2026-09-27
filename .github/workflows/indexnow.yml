@@ -1,7 +1,9 @@
-name: Submit production URLs to IndexNow
+name: Submit production URLs to IndexNow (manual fallback)
 
+# Production releases submit from the local machine after Vercel is READY.
+# deployment_status ignores [skip ci], so it must not be an automatic trigger.
 on:
-  deployment_status:
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -9,56 +11,20 @@ permissions:
 
 concurrency:
   group: indexnow-production
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   submit:
-    if: >-
-      github.event.deployment_status.state == 'success' &&
-      (github.event.deployment.environment == 'Production' || github.event.deployment.environment == 'production')
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: ${{ github.event.deployment.sha }}
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-
-      # Sitemap lastmod ignores shared sources such as src/i18n, so a copy-only
-      # deploy would otherwise submit nothing. Diff against the previously
-      # deployed commit to recover the routes those edits actually changed.
-      - name: Collect files changed since the last production deploy
+      - name: Submit only after this commit is live in production
         env:
           GH_TOKEN: ${{ github.token }}
-          HEAD_SHA: ${{ github.event.deployment.sha }}
-        run: |
-          PREV_SHA=$(gh api \
-            "repos/${GITHUB_REPOSITORY}/deployments?environment=production&per_page=100" \
-            --jq '.[].sha' 2>/dev/null \
-            | grep -v "^${HEAD_SHA}$" \
-            | head -n 1 || true)
-
-          if [ -z "$PREV_SHA" ] || ! git cat-file -e "${PREV_SHA}^{commit}" 2>/dev/null; then
-            echo "No usable previous deployment; falling back to the parent commit."
-            PREV_SHA=$(git rev-parse "${HEAD_SHA}^")
-          fi
-
-          echo "Diffing ${PREV_SHA}..${HEAD_SHA}"
-          git diff --name-only "${PREV_SHA}" "${HEAD_SHA}" > changed-files.txt
-          echo "Changed files: $(wc -l < changed-files.txt)"
-          cat changed-files.txt
-
-          # Anchor the sitemap lastmod cutoff to that same commit. A fixed
-          # window would make every deploy of a busy day resubmit the same
-          # URLs, which Bing reports as IndexNow batch mode.
-          INDEXNOW_SINCE=$(git log -1 --format=%cI "$PREV_SHA")
-          echo "Submitting URLs modified after ${INDEXNOW_SINCE}"
-          echo "INDEXNOW_SINCE=${INDEXNOW_SINCE}" >> "$GITHUB_ENV"
-
-      - name: Submit live sitemap URLs
-        env:
-          INDEXNOW_SINCE: ${{ env.INDEXNOW_SINCE }}
-        run: node scripts/indexnow-ping.mjs --changed-files changed-files.txt
+        run: node scripts/indexnow-after-deploy.mjs

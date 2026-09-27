@@ -91,7 +91,7 @@ assert.match(
   'WebSite must expose the dedicated site-name fallbacks.',
 );
 
-const homeAlternateNames = seoConfigSource.match(/alternateName:\s*\[([\s\S]*?)\],\n\s*url: SITE_ORIGIN/);
+const homeAlternateNames = seoConfigSource.match(/alternateName:\s*\[([\s\S]*?)\],\r?\n\s*url: SITE_ORIGIN/);
 assert(homeAlternateNames, 'Homepage SoftwareApplication alternateName block is missing.');
 for (const genericName of [
   'AI File Renamer',

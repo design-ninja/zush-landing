@@ -17,6 +17,10 @@ function hash(value) {
   return createHash('sha256').update(value).digest('hex');
 }
 
+function readSource(file) {
+  return readFileSync(file, 'utf8').replace(/\r\n/g, '\n');
+}
+
 function filesUnder(path) {
   if (!existsSync(path)) return [];
   if (statSync(path).isFile()) return [path];
@@ -30,7 +34,7 @@ function hashFiles(paths) {
     paths
       .flatMap((path) => filesUnder(join(root, path)))
       .sort()
-      .map((file) => `${relative(root, file)}\0${readFileSync(file, 'utf8')}`)
+      .map((file) => `${relative(root, file).replaceAll('\\', '/')}\0${readSource(file)}`)
       .join('\0'),
   );
 }
@@ -49,9 +53,8 @@ try {
   home = hash(JSON.stringify({
     copy: getCopy('en').home,
     seo: getSeoForPath('/'),
-    professionsComponent: readFileSync(
+    professionsComponent: readSource(
       join(root, 'src/components/HomeProfessions/HomeProfessions.astro'),
-      'utf8',
     ),
   }));
 } finally {
@@ -84,7 +87,7 @@ const targets = JSON.parse(
 const blog = Object.fromEntries(
   targets.map(({ slug }) => [
     slug,
-    hash(readFileSync(join(root, 'src/content/blog', `${slug}.mdx`), 'utf8')),
+    hash(readSource(join(root, 'src/content/blog', `${slug}.mdx`))),
   ]),
 );
 

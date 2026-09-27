@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.10.0.0] - 2026-09-27
+
+### Added
+- Organize files into folders with AI, using automatic grouping or your own folder rules.
+- Preview destination folders before applying changes and reuse existing folders when appropriate.
+- Import and export naming templates, including custom AI blocks and folder rules, to reuse workflows on another computer.
+
+### Fixed
+- Photo templates can identify the subject with AI when it is missing from file metadata.
+
 ## [3.9.6.0] - 2026-09-25
 
 ### Improved
