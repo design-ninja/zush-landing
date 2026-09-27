@@ -1,5 +1,6 @@
 import { ORGANIZATION_FEATURES } from './organizationFeatures';
 import type { Locale, LocalizedRoute } from '@/i18n/config';
+import { AI_FILE_SORTER_LOCALIZED, buildAiFileSorterSlides } from '@/i18n/aiFileSorterLocalized';
 import { HOME_FAQ_DATA } from '@/data/homeFaq';
 import { VIDEO_PREVIEW_IMAGES } from '@/data/videoPreviewImages';
 import type { Slide } from '@/components/FileShowcase';
@@ -5291,8 +5292,26 @@ const COPY: Record<Locale, LocaleCopy> = {
 export function getCopy(locale: Locale): LocaleCopy {
   const copy = COPY[locale] ?? COPY.en;
   const organization = ORGANIZATION_FEATURES[locale];
+  const sorter = locale === 'en' ? undefined : AI_FILE_SORTER_LOCALIZED[locale];
   return {
     ...copy,
+    ...(sorter && {
+      featurePages: {
+        ...copy.featurePages,
+        '/ai-file-sorter': {
+          h1: sorter.h1,
+          accent: sorter.accent,
+          definitionText: sorter.definitionText,
+          faqItems: sorter.faqItems,
+          faqTitle: sorter.faqTitle,
+          relatedToolsTitle: sorter.relatedToolsTitle,
+          relatedGuidesTitle: sorter.relatedGuidesTitle,
+          directAnswerSection: sorter.directAnswerSection,
+          showcaseSlides: buildAiFileSorterSlides(sorter.showcase),
+        },
+      },
+      seo: { ...copy.seo, '/ai-file-sorter': sorter.seo },
+    }),
     home: {
       ...copy.home,
       showcase: {

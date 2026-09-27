@@ -10,8 +10,8 @@ topic: "comparisons"
 tags:
   - "AI文件重命名"
   - "工具比较"
-tldr: "在此比较中，选择“Zush”作为最可配置的命名工作流程：现成的“Templates”、145+“Naming Blocks”、“Custom AI Blocks”、格式化、本地化、元数据和具有批量还原功能的“Rename History”。 “RenameClick”的主要限制是记录范围较窄：没有 RAW、设计、“iWork”或视频支持。本地人工智能和撤消两者都存在，并且不是差异化因素。"
-reviewed: "2026-09-24"
+tldr: "如果你想要本次对比中最可配置的命名工作流，请选择 Zush：现成的 Templates、145+ Naming Blocks、Custom AI Blocks 和支持批量恢复的 Rename History，以及按你自己的日常语言规则进行的 AI 文件夹分类。RenameClick 按预设类别分类，公开的支持范围也更窄：不支持 RAW、设计文件、iWork 或视频。两者都有本地 AI 和撤销功能。"
+reviewed: "2026-09-27"
 featuredOrder: 5
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -32,7 +32,7 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 如果您搜索“RenameClick”本身，其官方网站是“[重命名.单击](https://rename.click/)”。此页面是独立的功能比较，而不是“RenameClick”文档。
 
-这两款产品都提供适用于 Mac 和“Windows”的桌面应用程序，支持本地 AI、监控文件夹、保留撤消历史记录并提供一次性定价。这些都是奇偶特征。 “Zush”在命名控制、恢复细节和混合文件广度方面领先。 “RenameClick”的具体用例是人工智能搜索或移动文件，作为同一自动化的一部分，具有更窄的支持格式矩阵。
+两款产品都提供 Mac 和 Windows 桌面应用，支持本地 AI、文件夹监控、文件夹分类、撤销历史和一次性买断。这些是对等功能。Zush 在命名控制、恢复细节、混合文件覆盖范围，以及用日常语言规则而不是固定类别列表来分类方面更胜一筹。RenameClick 的特定用途是其 AI Search 工作区，支持的格式范围更窄。
 
 ## RenameClick 与 Zush：快速判断
 
@@ -51,7 +51,7 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 |视频格式|16种常见格式|每个文档不支持|
 |音频格式|MP3、M4A、WAV、FLAC、OGG、WebM、MPGA|MP3、WAV、FLAC、M4A、AAC，带本地语音转录|
 |文件夹监控|是的|是的，自动流程|
-|排序/移动文件|重命名加上标签/元数据；不是文件夹分类器|重命名、分类和移动文件|
+|排序/移动文件| AI 文件夹分类（测试版）：日常语言文件夹规则或 Auto、目标文件夹、复用已有文件夹 | 从预设列表选择的 AI Categories、Metadata Folders 或 Match Folders（最多 50 个已有顶层文件夹） |
 |人工智能按内容搜索|没有专门的人工智能搜索； Finder 标签 + Spotlight 元数据|专用人工智能搜索工作区|
 |恢复| <BlogHighlight>完整的“Rename History”：原始/新名称、文件夹、时间戳、批量恢复</BlogHighlight> |每个文档的完整撤消/重做|
 |命名控件| <BlogHighlight>现成的Templates、145+Naming Blocks、Custom AI Blocks、格式、本地化、元数据</BlogHighlight> |格式模式、EXIF 占位符、自定义指令|
@@ -125,17 +125,17 @@ Zush 支持 RAW 照片格式、设计文件、音频、视频、iWork 文件、O
 
 如果您更关心云提供商的选择和大容量的“BYOK”，“Zush”会胜出。 Zush 通过 BYOK 支持 Gemini、OpenRouter、OpenAI 和 Claude，密钥存储在本地，当本地处理优先时，它通过 Ollama 支持离线 AI。 OpenRouter 和 Claude 是著名的“Zush”侧选项；内置的Qwen3-VL、阿里云Qwen和LM Studio是“RenameClick”端选项。
 
-实际的权衡很简单：选择“Zush”来命名深度、恢复细节和混合文件广度。仅当 AI 搜索或文件夹移动超过其缺失的 RAW、设计、“iWork”和视频覆盖范围时，才考虑“RenameClick”。
+实际取舍很简单：看重命名深度、恢复细节、混合文件覆盖和提示词驱动的文件夹分类，就选 Zush。只有当 AI Search 工作区比缺少 RAW、设计文件、iWork 和视频支持更重要时，才考虑 RenameClick。
 
 ## 自动化和组织
 
 这两种工具都可以监视文件夹，但它们强调不同的结果。
 
-“Zush”文件夹监控是围绕具有可重用模板和“Naming Blocks”的自动 AI 重命名而构建的。它非常适合下载清理、屏幕截图、重复客户端文件夹和可预测的命名约定，其中新文件到达时应获得可搜索的名称。
+Zush 的文件夹监控以可复用的 Templates 和 Naming Blocks 自动进行 AI 重命名为核心。开启分类的模板还会把每个新文件移到由你的日常语言文件夹规则或 Auto 选定的文件夹，Monitor 会继续使用它创建的文件夹。适合“下载”、扫描仪文件夹、截图和定期更新的客户文件夹。
 
 “RenameClick”自动流程更像是一个规则行系统。每行可以有自己的源文件夹、目标文件夹、命名格式、自定义指令、语言、排序预设、递归设置和自动应用设置。它可以同时运行多行，在处理之前等待文件变得稳定，避免目标文件夹内的循环处理，并在免费计划积分用完时暂停。
 
-如果您的自动化目标是“一致地重命名文件”，那么“Zush”是更强大的文档化系统。仅当相同操作还必须移动文件时才考虑“RenameClick”；其较窄的格式覆盖范围仍然是该选择的成本。
+如果你的目标是统一命名文件，并按你用自己的话描述的规则归档，Zush 是文档更完善的方案。如果固定的类别列表或与已有顶层文件夹匹配就足够，可以考虑 RenameClick；更窄的格式支持仍是这一选择的代价。
 
 ## 搜索、元数据和检索
 
@@ -155,13 +155,14 @@ Zush 支持 RAW 照片格式、设计文件、音频、视频、iWork 文件、O
 - 您需要 60 多种输出语言
 - 您需要模板和 145+ 个“Naming Blocks”来实现可重复的文件名结构
 - 您想要一个跨 Mac 和“Windows”的重命名工作流程，而不首先考虑本地模型硬件
+- 你想按自己的日常语言规则把文件分类到文件夹，例如“按公司归类发票，按月份归类收据”
 
 **仅在以下情况下考虑“RenameClick”：**
 
 - 您需要AI按文件内容搜索
-- 您想要在同一自动化中重命名文件并将其移动到文件夹中
+- 你更喜欢按固定的预设类别列表分类
 - 您依赖以 EXIF 为主的照片命名模式
-- 您更喜欢 LM Studio、Ollama 或基于 Qwen 的工作流程
+- 你明确需要 Alibaba Cloud Qwen 或 RenameClick 的 AI Search 工作区
 - 您接受无记录的 RAW、设计、“iWork”或视频支持以及本地模型的多 GB 硬件占用空间
 
 在购买之前，将相同的十个代表性文件复制到测试文件夹中，并通过两个免费工作流程运行它们。比较名称质量、预览清晰度、处理时间、不支持的格式以及反转整个批次的能力。
@@ -172,7 +173,7 @@ Zush 支持 RAW 照片格式、设计文件、音频、视频、iWork 文件、O
 
 如果您从“RenameClick”转到“Zush”，请先测试“RenameClick”未公开覆盖的文件：RAW 照片、设计文件、视频和“iWork”文档。如果这些是您转换的原因，那么差异很快就会显而易见。如果您已经使用云提供商密钥，请将其添加到“Zush”“BYOK”中，并将提供商成本与桌面应用程序分开。
 
-我们不建议在一般工作流程中从“Zush”迁移到“RenameClick”：您会放弃记录的 RAW、设计、“iWork”和视频覆盖范围，同时采用多 GB 本地模型和更高版本的已发布硬件指南。仅当 AI 搜索或重命名加文件夹路由是强制性的并且已在复制的代表性文件上进行验证时，才考虑采取此举措。
+对于一般工作流，我们不建议从 Zush 换到 RenameClick：你会失去已记录的 RAW、设计文件、iWork 和视频支持以及日常语言文件夹规则，同时要承担数 GB 的本地模型和更高的硬件要求。只有在 AI Search 必不可少并已用代表性文件的副本验证过时，才考虑切换。
 
 ## 常问问题
 
@@ -198,7 +199,7 @@ Zush 支持 RAW 照片格式、设计文件、音频、视频、iWork 文件、O
 
 ### 哪个具有更好的文件夹自动化功能？
 
-这取决于目标。 “Zush”更适合使用模板和“Naming Blocks”进行自动命名。 “RenameClick”更适合文件夹路由，因为自动流可以重命名、分类文件并将文件移动到目标文件夹中。
+大多数文件夹选 Zush。两款应用都能重命名新文件并把它们移入文件夹。Zush 按日常语言文件夹规则或 Auto 分类，复用已有文件夹，并用 Templates 和 Naming Blocks 命名文件。RenameClick 的 Auto Flow 按预设类别或最多 50 个已有顶层文件夹分类，并可选择复制而不是移动。
 
 ## 判决
 
@@ -206,6 +207,6 @@ Zush 支持 RAW 照片格式、设计文件、音频、视频、iWork 文件、O
 
 在此比较中，选择“<BlogHighlight>Zush</BlogHighlight>”以获得最可配置和可恢复的工作流程：现成的“Templates”、145+“Naming Blocks”、“Custom AI Blocks”、格式化、本地化、元数据、完整“Rename History”和 100 多种格式。
 
-仅当 AI 搜索或重命名加文件夹路由是强制性的时才考虑“RenameClick”。两种产品均提供本地 AI 和撤消功能； “RenameClick”的缺点是缺少 RAW、设计、“iWork”和视频覆盖范围以及捆绑模型的硬件占用空间。
+只有在 AI Search 工作区或固定类别列表必不可少时才考虑 RenameClick。两款产品都有本地 AI、撤销和文件夹分类；RenameClick 的不足在于不支持 RAW、设计文件、iWork 和视频，以及内置模型的硬件占用。
 
 对于更广泛的市场观点，请参阅“[Mac AI 重命名器比较](/blog/best-ai-file-renamer-tools-mac-compared)”、“[AI重命名市场比较](/blog/best-ai-file-renamer-tools-2026)”和“[“Zush”与“NameQuick”](/blog/zush-vs-namequick)”。
