@@ -10,3 +10,10 @@
 - Local secret profiles are defined in `scripts/environment-profiles.json` and read from 1Password FIFO mounts in `.secrets/`, with existing shared `../zush-app/.secrets/` mounts used only when the local mount is absent. Explicit `ZUSH_PRODUCTION_ENV_FILE`, `ZUSH_SANDBOX_ENV_FILE`, and `ZUSH_MCP_ENV_FILE` paths take precedence. A separate App checkout is not required. The `--env-file .env.1password*` arguments select profiles; do not replace them with `op run`. See README for mount setup.
 
 - MCP discovery must not read 1Password. Keep `scripts/*-mcp` launchers on `lazy-mcp.mjs`; only `*-mcp-backend` launchers load Environments. Regenerate `scripts/mcp-catalogs/` without credentials after backend upgrades and run `scripts/tests/lazy-mcp.test.mjs`. Never cache resolved secrets alongside the catalogs.
+
+## Production releases verified locally
+
+- Run checks appropriate to the changes locally before pushing. Use `[skip ci]` in the release commit message when those checks have passed; do not disable or re-enable workflows for a release.
+- Vercel publishes `main` independently of GitHub Actions. Wait for the exact pushed commit to reach production READY and verify the live site.
+- After every successful production publication, run `pnpm seo:indexnow:deployed` locally. It checks that local HEAD is deployed, finds the previous successful production commit, and submits only changed URLs. Use `--dry-run` to review the selection.
+- IndexNow Actions is a manual fallback only (`workflow_dispatch`). Do not restore its `deployment_status` trigger: GitHub ignores `[skip ci]` for that event. Do not dispatch it unless the user authorizes running Actions.

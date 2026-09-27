@@ -204,3 +204,18 @@ When publishing a new app release:
 ## License
 
 MIT
+
+## Publishing after local verification
+
+Run the checks relevant to the change locally, then commit with `[skip ci]` and push to `main`. Vercel still builds and publishes the website. GitHub Quality Gates remain available for ordinary commits.
+
+Once the exact commit is READY in production and the live site has been checked:
+
+```bash
+pnpm seo:indexnow:deployed --dry-run
+pnpm seo:indexnow:deployed
+```
+
+This command requires authenticated GitHub CLI (`gh`) and full Git history. It verifies that local HEAD matches the latest successful production deployment, compares it with the previous successful production commit (ignoring failed builds and repeat deployments), and sends the changed URLs from this machine. It fails before sending if the new commit is not live or the baseline is unavailable. Do not replace this with a full-sitemap ping on every deployment.
+
+The IndexNow workflow is now a manual fallback, not a deployment event handler. `[skip ci]` does not suppress `deployment_status` workflows; using that trigger would consume Actions minutes even for locally verified releases. No workflow toggle is needed for future releases.
