@@ -1,7 +1,11 @@
 ---
-interface Props { id: string; alt: string; zoom?: boolean }
-const { id, alt, zoom = false } = Astro.props;
-const source = (theme: string, width: number) => `/images/showcase/macos/${id}-${theme}-${width}.webp`;
+import { MACOS_SHOWCASE_SCREENSHOTS, WINDOWS_SHOWCASE_SCREENSHOTS, type ShowcaseTheme } from '@/data/showcaseMedia';
+interface Props { id: string; alt: string; zoom?: boolean; platform?: 'mac' | 'windows' }
+const { id, alt, zoom = false, platform = 'mac' } = Astro.props;
+const assets = platform === 'windows' ? WINDOWS_SHOWCASE_SCREENSHOTS : MACOS_SHOWCASE_SCREENSHOTS;
+const asset = assets.find(item => item.id === id);
+if (!asset) throw new Error('Missing organization screenshot: ' + platform + '/' + id);
+const source = (theme: ShowcaseTheme, width: number) => asset.images[theme].replace('.webp', `-${width}.webp`);
 ---
 <div class:list={['organization-screenshot', { 'is-zoomed': zoom }]}>
   {(['light', 'dark'] as const).map(theme => (
