@@ -66,21 +66,9 @@ function verifyPaddleCheckout() {
     /import\.meta\.env\.DEV \? ["']sandbox["'] : ["']production["']/,
     "Production Paddle checkout now defaults back to sandbox",
   );
-  assertMatch(
-    src,
-    /openDirectPaddleCheckout/,
-    "Checkout no longer has a direct Paddle fallback when server checkout fails",
-  );
-  assertMatch(
-    src,
-    /items:\s*\[\{\s*priceId,\s*quantity:\s*1\s*\}\]/,
-    "Direct Paddle fallback no longer opens the selected price",
-  );
-  assertMatch(
-    src,
-    /return openDirectPaddleCheckout\(deviceId,\s*priceId,\s*options\)/,
-    "Checkout no longer falls back to direct Paddle checkout",
-  );
+  if (/openDirectPaddleCheckout|items:\s*\[\{\s*priceId/.test(src)) {
+    throw new Error("Checkout must never bypass server authorization with a direct Paddle payment");
+  }
   assertMatch(
     src,
     /"zh-cn":\s*"zh-Hans"/,

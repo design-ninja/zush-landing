@@ -4,15 +4,9 @@ import { getCheckoutAnalyticsEvent, type CheckoutAnalyticsEvent } from "@/utils/
 import { SUPABASE_URL } from "@/utils/supabase";
 
 interface PaddleCheckoutOptions {
-  items?: { priceId: string; quantity: number }[];
-  transactionId?: string;
+  transactionId: string;
   settings?: {
     locale?: string;
-  };
-  customData?: {
-    device_id?: string;
-    source?: string;
-    posthog_distinct_id?: string;
   };
 }
 
@@ -316,7 +310,7 @@ async function createCheckoutSession(
     );
 
     if (!response.ok) {
-      console.error("[Paddle] Checkout session failed:", await response.text());
+      console.error("[Paddle] Checkout session failed:", { status: response.status });
       return null;
     }
 
@@ -342,56 +336,6 @@ async function beforeCheckoutOpen(
 
   await options.onCheckoutOpen();
   await waitForBrowserPaint();
-}
-
-async function openDirectPaddleCheckout(
-  deviceId: string | null | undefined,
-  priceId: string,
-  options?: OpenPaddleCheckoutOptions,
-): Promise<boolean> {
-  const ready = await ensurePaddleReady();
-  if (!ready || !window.Paddle) {
-    console.error("[Paddle] Paddle.js not ready");
-    trackCheckoutOpenError("sdk_load");
-    return false;
-  }
-
-  activeCheckoutSession = null;
-  sessionStorage.removeItem("zush_checkout_session");
-  sessionStorage.setItem(CHECKOUT_PRICE_ID_KEY, priceId);
-
-  if (deviceId) {
-    sessionStorage.setItem("zush_checkout_device_id", deviceId);
-  } else {
-    sessionStorage.removeItem("zush_checkout_device_id");
-  }
-
-  const checkoutOptions: PaddleCheckoutOptions = {
-    items: [{ priceId, quantity: 1 }],
-    customData: {
-      source: deviceId ? "app" : "landing",
-      posthog_distinct_id: getAnalyticsDistinctId() || undefined,
-    },
-  };
-  if (deviceId) {
-    checkoutOptions.customData = {
-      ...checkoutOptions.customData,
-      device_id: deviceId,
-    };
-  }
-
-  const settings = buildCheckoutSettings();
-  if (settings) {
-    checkoutOptions.settings = settings;
-  }
-
-  console.warn(
-    "[Paddle] Opening direct checkout without server transaction:",
-    { deviceId: Boolean(deviceId), priceId },
-  );
-  await beforeCheckoutOpen(options);
-  window.Paddle.Checkout.open(checkoutOptions);
-  return true;
 }
 
 export async function openPaddleCheckout(
@@ -429,7 +373,8 @@ async function openPaddleCheckoutInternal(
   const checkoutSession = await checkoutSessionPromise;
   if (!checkoutSession) {
     console.error("[Paddle] Checkout session was not created");
-    return openDirectPaddleCheckout(deviceId, priceId, options);
+    trackCheckoutOpenError("session_creation");
+    return false;
   }
 
   activeCheckoutSession = checkoutSession.checkout_session;
