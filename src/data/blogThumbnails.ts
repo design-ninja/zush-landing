@@ -31,12 +31,6 @@ const BLOG_THUMBNAIL_ALIASES: Record<string, string> = {
   'how-to-organize-tax-documents': 'declutter-your-mac-file-cleanup-guide',
   'rename-invoices-for-quickbooks-xero': 'rename-pdf-files-automatically',
   'zush-vs-renamed-to': 'best-ai-file-renamer-tools-2026',
-  // Temporary until dedicated thumbnails are generated for the folder-sorting sprint.
-  'best-ai-file-sorters': 'sort-files-into-folders-with-ai-mac',
-  'sort-files-into-folders-with-ai-windows': 'organize-files-automatically-windows-11',
-  'ai-folder-sorting-prompts': 'zush-templates-file-renaming-workflows',
-  'zush-vs-sortio': 'best-ai-file-organizers-windows',
-  'sparkle-alternatives': 'declutter-your-mac-file-cleanup-guide',
 };
 
 export function getBlogThumbnail(slug: string): ImageMetadata {
