@@ -32,6 +32,7 @@ const featureOrder = [
   },
   {
     id: 'statistics',
+    store: false,
     fixture: 'statistics',
     title: 'Statistics',
     storeName: '04-statistics',
@@ -56,6 +57,7 @@ const featureOrder = [
   },
   {
     id: 'custom-prompts',
+    store: false,
     fixture: 'custom-prompts',
     title: 'Custom Prompts',
     storeName: '08-custom-prompts',
@@ -72,6 +74,9 @@ const featureOrder = [
     title: 'Offline AI mode',
     storeName: '10-offline-ai',
   },
+  { id: 'folder-sorting', fixture: 'folder-sorting', title: 'AI Folder Sorting', storeName: '04-folder-sorting' },
+  { id: 'template-transfer', fixture: 'template-transfer', title: 'Import and Export Templates', storeName: '08-template-transfer' },
+  { id: 'folder-rules', fixture: 'folder-rules', title: 'Folder Rules', store: false },
 ];
 
 const defaultAppRepo = path.resolve(repoRoot, '../zush-windows');
@@ -212,6 +217,7 @@ if (args.has('--help') || args.has('-h')) {
 }
 
 const only = argValue('--only');
+const captureDir = argValue('--capture-dir');
 const themeArg = argValue('--theme');
 const outputDirArg = argValue('--output-dir');
 const landingOutputDirArg = argValue('--landing-output-dir');
@@ -232,14 +238,14 @@ const selectedThemes = [
   ...new Set(selectedTargets.flatMap((target) => themesByTarget[target])),
 ];
 const selectedFeatures = only
-  ? featureOrder.filter((feature) => feature.id === only || feature.fixture === only)
+  ? featureOrder.filter((feature) => only.split(',').some((id) => feature.id === id || feature.fixture === id))
   : featureOrder;
 const needsCloudByok = selectedFeatures.some((feature) => feature.fixture === 'byok');
 const needsOllama = selectedFeatures.some((feature) =>
   feature.fixture === 'offline-ai' || feature.fixture === 'byok',
 );
 const promoCloudCredentials = resolvePromoCloudCredentials({
-  required: needsCloudByok && !args.has('--dry-run'),
+  required: needsCloudByok && !captureDir && !args.has('--dry-run'),
 });
 let promoOllamaConfig = null;
 let startedOllamaPid = null;
@@ -275,7 +281,7 @@ if (selectedFeatures.length === 0) {
 
 const storeOutputCount =
   selectedTargets.includes('microsoft-store')
-    ? selectedFeatures.length * themesByTarget['microsoft-store'].length
+    ? selectedFeatures.filter((feature) => feature.store !== false).length * themesByTarget['microsoft-store'].length
     : 0;
 if (storeOutputCount > 10 && !args.has('--allow-store-overflow')) {
   throw new Error(
@@ -310,26 +316,29 @@ async function main() {
     return;
   }
 
-  const appExe = appExeArg ? path.resolve(appExeArg) : ensureBuiltAndResolveApp();
-  assertDebugAppExecutable(appExe);
-  if (promoCloudCredentials) {
+  const appExe = captureDir ? null : (appExeArg ? path.resolve(appExeArg) : ensureBuiltAndResolveApp());
+  if (appExe) assertDebugAppExecutable(appExe);
+  if (!captureDir && promoCloudCredentials) {
     await assertPromoCloudConnection(promoCloudCredentials);
   }
 
-  if (needsOllama) {
+  if (!captureDir && needsOllama) {
     promoOllamaConfig = await prepareOllamaForPromo();
   }
 
   const runId = `zush-windows-promo-${process.pid}-${Date.now()}`;
-  const assetRoot = copyFixtureAssets(runId);
+  const assetRoot = captureDir ? null : copyFixtureAssets(runId);
   const outputs = [];
 
   try {
     for (const feature of selectedFeatures) {
+      if (feature.store === false && selectedTargets.every((target) => target === 'microsoft-store')) continue;
       for (const theme of selectedThemes) {
-        const capture = await captureFeature({ appExe, feature, theme, runId, assetRoot });
+        const capture = captureDir
+          ? { path: path.resolve(captureDir, `${feature.fixture}-${theme}.png`) }
+          : await captureFeature({ appExe, feature, theme, runId, assetRoot });
         for (const target of selectedTargets) {
-          if (!themesByTarget[target].includes(theme)) {
+          if (!themesByTarget[target].includes(theme) || (target === 'microsoft-store' && feature.store === false)) {
             continue;
           }
 
@@ -358,7 +367,8 @@ Generates Windows Zush feature screenshots for the landing page and Microsoft St
 
 Options:
   --target=landing,microsoft-store   Targets to generate. Default: both.
-  --only=batch-rename                Generate one feature by id.
+  --only=batch-rename,folder-sorting  Generate selected features by id.
+  --capture-dir=PATH                Render existing <fixture>-<theme>.png captures without launching the app.
   --theme=light|dark                 Theme override. Landing defaults to light,dark; Store defaults to light.
   --landing-output-dir=PATH          Default: public/images/showcase/windows
   --store-output-dir=PATH            Default: ../zush-assets/Microsoft Store/Windows

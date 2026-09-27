@@ -299,7 +299,20 @@ export const WINDOWS_SHOWCASE_SCREENSHOTS: ShowcaseScreenshotAsset[] = [
     },
     alt: 'Batch rename workflow in Zush for Windows',
   },
-  ...MACOS_SHOWCASE_SCREENSHOTS.filter(({ id }) => id === 'folder-sorting' || id === 'template-transfer'),
+  {
+    id: 'folder-sorting',
+    title: 'AI Folder Sorting',
+    description: 'Group files into folders automatically or with your own rules',
+    images: { light: '/images/showcase/windows/folder-sorting-light.webp', dark: '/images/showcase/windows/folder-sorting-light.webp' },
+    alt: 'Automatic AI folder grouping in Zush for Windows',
+  },
+  {
+    id: 'template-transfer',
+    title: 'Import and Export Templates',
+    description: 'Reuse naming templates, custom AI blocks, and folder rules on another computer',
+    images: { light: '/images/showcase/windows/template-transfer-light.webp', dark: '/images/showcase/windows/template-transfer-light.webp' },
+    alt: 'Import and export naming templates in Zush for Windows',
+  },
   {
     id: 'monitor',
     title: 'Folder Monitoring',
@@ -386,7 +399,7 @@ export const WINDOWS_SHOWCASE_SCREENSHOTS: ShowcaseScreenshotAsset[] = [
     description: 'Process supported files offline with private local models via Ollama',
     images: {
       light: '/images/showcase/windows/offline-ai-light.webp',
-      dark: '/images/showcase/windows/offline-ai-dark.webp',
+      dark: '/images/showcase/windows/offline-ai-light.webp',
     },
     alt: 'Offline AI setup in Zush for Windows',
   },
