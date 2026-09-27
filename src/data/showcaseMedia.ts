@@ -303,14 +303,14 @@ export const WINDOWS_SHOWCASE_SCREENSHOTS: ShowcaseScreenshotAsset[] = [
     id: 'folder-sorting',
     title: 'AI Folder Sorting',
     description: 'Group files into folders automatically or with your own rules',
-    images: { light: '/images/showcase/windows/folder-sorting-light.webp', dark: '/images/showcase/windows/folder-sorting-light.webp' },
+    images: { light: '/images/showcase/windows/folder-sorting-light.webp', dark: '/images/showcase/windows/folder-sorting-dark.webp' },
     alt: 'Automatic AI folder grouping in Zush for Windows',
   },
   {
     id: 'template-transfer',
     title: 'Import and Export Templates',
     description: 'Reuse naming templates, custom AI blocks, and folder rules on another computer',
-    images: { light: '/images/showcase/windows/template-transfer-light.webp', dark: '/images/showcase/windows/template-transfer-light.webp' },
+    images: { light: '/images/showcase/windows/template-transfer-light.webp', dark: '/images/showcase/windows/template-transfer-dark.webp' },
     alt: 'Import and export naming templates in Zush for Windows',
   },
   {
