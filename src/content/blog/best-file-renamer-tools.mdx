@@ -9,9 +9,10 @@ tags:
   - "Tool Comparisons"
   - "AI File Renaming"
   - "File Organization"
-tldr: "Best overall: Zush. It handles content-aware mixed-file naming, structured Naming Blocks, preview, monitoring, and rollback on Mac and Windows. Finder, PowerRename, Bulk Rename Utility, Advanced Renamer, and A Better Finder Rename are narrow exceptions only for one mechanical or metadata-only rule."
-reviewed: "2026-08-31"
+tldr: "Best overall: Zush. It handles content-aware mixed-file naming, structured Naming Blocks, preview, monitoring, and rollback on Mac and Windows. Finder, PowerRename, Bulk Rename Utility, Advanced Renamer, and A Better Finder Rename are narrow exceptions only for one mechanical or metadata-only rule. Zush also offers optional AI folder sorting (beta)."
+reviewed: "2026-09-28"
 ---
+
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -24,7 +25,7 @@ This guide sorts the field by job rather than ranking apples against oranges. Fo
 
 | Your job | Our recommendation | OS | Content-aware? | Price |
 | --- | --- | --- | --- | --- |
-| Mixed folders and a different descriptive name for every file | <BlogHighlight>**Zush — best overall**</BlogHighlight> | Mac + Windows | **Yes** | Free for 50 renames, then $10/mo or $48 one-time |
+| Mixed folders and a different descriptive name for every file; optional AI folder sorting (beta) | <BlogHighlight>**Zush — best overall**</BlogHighlight> | Mac + Windows | **Yes** | Free for 50 renames, then $10/mo or $48 one-time |
 | Simple replace, prefix, or sequence | Finder built-in rename | Mac | No | Free, installed |
 | Search-and-replace or regex | PowerRename (PowerToys) | Windows | No | Free |
 | Heavy pattern and regex work | Bulk Rename Utility | Windows | No | Free for personal use |
@@ -74,6 +75,14 @@ AI renamers read the content. [Zush](/) does this for screenshots, photos (inclu
 
 Pricing for the class varies structurally — metered monthly credits vs unmetered plans. Zush is free for the first 50 renames shared across all four modes, then $10/month or $48 one-time for unlimited PRO renames. It offers Zush Cloud AI and BYOK online, plus LM Studio and Ollama on Mac and Windows. The [AI renamer roundup](/blog/best-ai-file-renamer-tools-2026) compares Zush against FilesDesk, RenameClick, Renamer.ai, NameQuick, and the rest of the field with checked sources.
 
+### Optional folders as well as filenames
+
+A descriptive filename may be enough. If the same batch also needs organizing, Zush includes **AI folder sorting (beta)**: choose **Auto** or enter **Folder rules** such as “Group screenshots by project and invoices by company.” The folder instruction controls grouping, independently of the Naming Blocks used for filenames.
+
+Choose a **Destination folder**, or keep the source folder as the root. Enable **Reuse existing folders** to prefer suitable folders already there; Zush can create a new one when nothing fits. In a manual batch, review both the suggested names and folders before applying. To rename in place, leave sorting off and keep the original destination.
+
+Save the sorting settings in a **Template** and assign it to **Monitor** for new files directly inside the watched folder. This does not reorganize files already processed. Test the Template in a manual batch first. See the [folder sorting guide](/docs/folder-sorting) for the setup and monitoring scope.
+
 ## How to choose in 30 seconds
 
 1. **Start with Zush** for mixed folders, descriptive names, monitoring, review, and rollback.
@@ -85,6 +94,10 @@ Mixed folders are legitimately mixed jobs: plenty of Zush users keep Finder or P
 On Windows specifically? See the [best file renamers for Windows 11](/blog/best-file-renamer-windows-11), from PowerRename to AI.
 
 ## FAQ
+
+### Can Zush sort files into folders as well as rename them?
+
+Yes. Its optional AI folder sorting is in beta on Mac and Windows. Choose Auto or write Folder rules, select the destination, and review both names and groups in a manual batch. A sorting-enabled Template can also process new files directly inside a monitored folder; it does not reorganize files already processed. Leave sorting off and keep the original destination for naming only.
 
 ### What is the best free pattern file renamer?
 

@@ -9,9 +9,10 @@ tags:
   - "File Naming"
   - "Tool Comparisons"
   - "AI File Renaming"
-tldr: "For pattern jobs (add a date, replace text, number a sequence), PowerRename is free and good enough; Bulk Rename Utility and Advanced Renamer go deeper. For files that each need a different, descriptive name, like screenshots, scans, and photos, use an AI renamer such as Zush, which reads each file before naming it."
-reviewed: "2026-09-22"
+tldr: "For pattern jobs (add a date, replace text, number a sequence), PowerRename is free and good enough; Bulk Rename Utility and Advanced Renamer go deeper. For files that each need a different, descriptive name, like screenshots, scans, and photos, use an AI renamer such as Zush, which reads each file before naming it. Zush also offers optional AI folder sorting (beta)."
+reviewed: "2026-09-28"
 ---
+
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -31,7 +32,7 @@ That split decides everything else. Pattern tools are fast and precise, but they
 | Bulk Rename Utility | Heavy pattern work, 100k+ files | No (EXIF, ID3 fields) | Generates an undo batch file | Free for personal use |
 | Advanced Renamer | Metadata and GPS-based names | No (EXIF, ID3, GPS, video fields) | Full batch undo | Free for light personal use; $25 personal, $45 commercial |
 | ReNamer | Chains of rules, scripting | No (meta tags) | Undo supported | Lite free for non-commercial use; paid Pro |
-| **Zush** | <BlogHighlight>A different descriptive name for every file</BlogHighlight> | Yes, with AI | Full Rename History | 50 free renames; $10/mo or $48 one-time |
+| **Zush** | <BlogHighlight>A different descriptive name for every file; optional AI folder sorting (beta)</BlogHighlight> | Yes, with AI | Full Rename History | 50 free renames; $10/mo or $48 one-time |
 
 ## 1. File Explorer: fine for five files
 
@@ -87,6 +88,14 @@ AI can run through Zush Cloud AI, your own API key, or locally with Ollama or LM
 
 <BlogCTA placement='inline' platform='windows' />
 
+### Sort the renamed files into folders
+
+On Windows, Zush can also **sort files into folders with AI (beta)**. Choose **Auto** grouping or write **Folder rules** such as “Group invoices by company and receipts by month.” Review the suggested folder groups alongside the filenames; a pattern renamer is still sufficient when all you need is the same text change across a batch.
+
+Choose a **Destination folder**, or keep the source folder as the root. Enable **Reuse existing folders** to prefer suitable folders already there; Zush can create a new one when nothing fits. In a manual batch, review both the suggested names and folders before applying. To rename in place, leave sorting off and keep the original destination.
+
+Save the sorting settings in a **Template** and assign it to **Monitor** for new files directly inside the watched folder. This does not reorganize files already processed. Test the Template in a manual batch first. See the [folder sorting guide](/docs/folder-sorting) for the setup and monitoring scope.
+
 ## Which renamer should you use?
 
 - Same change for every file (prefix, date, number): **PowerRename**.
@@ -108,6 +117,10 @@ Plenty of people keep both kinds. PowerRename for quick mechanical fixes, Zush f
 />
 
 ## FAQ
+
+### Can Zush sort files into folders as well as rename them?
+
+Yes. Its optional AI folder sorting is in beta on Mac and Windows. Choose Auto or write Folder rules, select the destination, and review both names and groups in a manual batch. A sorting-enabled Template can also process new files directly inside a monitored folder; it does not reorganize files already processed. Leave sorting off and keep the original destination for naming only.
 
 ### What is the best free file renamer for Windows 11?
 

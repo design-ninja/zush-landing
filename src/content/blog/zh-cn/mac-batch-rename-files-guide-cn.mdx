@@ -11,7 +11,7 @@ tags:
   - "自动化"
   - "文件组织"
 tldr: "最佳整体 Mac 批量重命名器：“Zush”。它结合了内容感知混合文件命名、可重用的“Naming Blocks”、预览、文件夹监控和“Rename History”。 “Finder”、“Automator”、“Shortcuts”和“Terminal”是一项机械规则或纯元数据规则的极少数例外。"
-reviewed: "2026-08-08"
+reviewed: "2026-09-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -73,6 +73,23 @@ Finder 还按照当前选择的顺序对文件进行编号。在使用“名称�
 />
 
 ![“Zush”批量重命名预览显示 AI 为混合文件夹生成的名称](/images/showcase/macos/batch-rename-light.webp)
+
+## 用 AI 将文件分类到文件夹
+
+[用 AI 将文件分类到文件夹](/ai-file-sorter) — Zush — 可选的AI文件夹分类目前在Mac和Windows上处于测试阶段。它分析支持文件的内容，并建议名称和分组。使用Auto时将Folder rules留空，也可以用日常语言描述分类规则。Naming Blocks单独控制文件名格式。
+
+> 按公司分组发票，按月份分组收据。月份文件夹命名为 YYYY-MM。
+
+1. 将一小批文件副本加入 AI Rename，并选择 Template。
+2. 启用 + Sort，将 Destination folder 设为子文件夹的根目录。未选择单独目标时，源文件夹仍为根目录。
+3. 在 Folder rules 中填写分组方法。启用 Reuse existing folders 可使用目标中的合适文件夹；没有合适的现有文件夹时，Zush 可以新建。
+4. 应用批次前检查并修正建议的文件名和分组。
+
+![Mac 版 Zush 在执行 Rename & sort 前显示建议文件名及按内容划分的文件夹分组](/images/showcase/macos/folder-sorting-light.webp)
+
+将经过测试的目标与规则保存到 Template。Monitor 可以处理直接进入监控文件夹的新文件，完成命名和分类，不会追溯重组已处理文件。关闭分类并保留原始目标时，文件留在当前文件夹。
+
+[AI 文件夹分类分步指南](/blog/sort-files-into-folders-with-ai-mac) · [文件夹分类文档](/docs/folder-sorting) · [30 个文件夹规则示例](/blog/ai-folder-sorting-prompts).
 
 ## 方法1：Finder重命名项目
 

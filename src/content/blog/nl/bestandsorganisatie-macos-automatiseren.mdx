@@ -9,7 +9,7 @@ tags:
   - "Automation"
   - "File Organization"
 tldr: "Automatiseer in lagen: Smart Folders voor zichtbaarheid, Automator of Shortcuts voor eenvoudige routering, Hazel voor complexe regels en Zush voor inhoudsgerichte namen van screenshots, pdf's, foto's en downloads."
-reviewed: "2026-08-08"
+reviewed: "2026-09-28"
 locale: "nl"
 translationOf: "automate-file-organization-macos"
 ---
@@ -70,6 +70,23 @@ ls -1 ~/Downloads | wc -l
 Als het aantal boven de 200 ligt, heb je een achterstand die de moeite waard is om te automatiseren.
 
 
+## Bestanden met AI in mappen sorteren
+
+[Zush](/ai-file-sorter) — Zush-mapsortering is in bèta op Mac en Windows. Het analyseert ondersteunde inhoud en stelt namen en groepen voor. Laat Folder rules leeg voor Auto of beschrijf de indeling in gewone taal. Naming Blocks bepaalt afzonderlijk de bestandsnamen.
+
+> Groepeer facturen op bedrijf en bonnetjes op maand. Noem maandmappen YYYY-MM.
+
+1. Voeg een kleine gekopieerde batch toe in AI Rename en kies een Template.
+2. Schakel + Sort in en kies Destination folder als hoofdmap voor submappen. Zonder aparte bestemming blijft de bronmap de hoofdmap.
+3. Beschrijf de groepen in Folder rules. Gebruik Reuse existing folders voor passende mappen onder de bestemming; Zush kan nieuwe maken als geen bestaande past.
+4. Controleer en verbeter namen en groepen voordat je de batch toepast.
+
+![Zush op Mac met voorgestelde bestandsnamen en inhoudelijke mapgroepen vóór Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Bewaar de geteste bestemming en regels in het Template. Monitor kan nieuwe bestanden direct in de bewaakte map hernoemen en sorteren; reeds verwerkte bestanden worden niet achteraf opnieuw ingedeeld. Met sortering uit en de oorspronkelijke bestemming blijven bestanden in hun huidige map.
+
+[Stapsgewijze handleiding voor AI-mapsortering](/blog/sort-files-into-folders-with-ai-mac) · [Documentatie voor mapsortering](/docs/folder-sorting) · [30 voorbeelden van mapregels](/blog/ai-folder-sorting-prompts).
+
 ## Begin met de naamgevingslaag Zush
 
 macOS wordt geleverd met verschillende ingebouwde tools voor bestandsautomatisering. Apps van derden vullen de gaten. Hier ziet u hoe ze op een hoog niveau met elkaar vergelijken.
@@ -80,7 +97,7 @@ macOS wordt geleverd met verschillende ingebouwde tools voor bestandsautomatiser
 |Automator|Ja|Ja (mapacties)|Ja|Ja (patronen)|Nee|
 |Shortcuts|Ja|Ja (triggers)|Ja|Ja (patronen)|Nee|
 |Hazel|Nee ($42)|Ja|Ja|Ja (regels)|Nee|
-|[AI-bestandshernoemer voor Mac](/mac)|Nee|Ja|Nee|Ja (AI)|Ja|
+|[AI-bestandshernoemer voor Mac](/mac)|Nee|Ja| Namen op inhoud en optionele AI-mapgroepen (bèta) |Ja (AI)|Ja|
 
 Zush is de aanbevolen kern omdat naamgeving elke downstream-zoekopdracht of regel nuttiger maakt. De andere hulpmiddelen zijn optionele lagen voor zichtbaarheid of beweging.
 
@@ -394,9 +411,3 @@ Om de bestandsorganisatie op macOS effectief te automatiseren, moeten eenvoudige
 Begin met Zush voor inhoudsbewuste naamgeving en herstel. Voeg 'Smart Folders' alleen toe voor zichtbaarheid en 'Automator' of 'Hazel' alleen als deterministische routering echt vereist is. Evalueer wekelijks en breid geleidelijk uit.
 
 Het doel is niet een perfect systeem. Het doel is een systeem waarbij je vijf minuten per week besteedt aan het ordenen van bestanden in plaats van dertig.
-
-## Bestanden op Mac met AI in mappen indelen
-
-Zush kan bestanden hernoemen en op basis van hun inhoud in mappen indelen. Schakel de indeling in, kies een bestemming en controleer de groepen voordat je de batch toepast.
-
-[Bestanden op Mac met AI in mappen indelen](/nl/blog/sort-files-into-folders-with-ai-mac-nl)

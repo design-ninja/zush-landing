@@ -9,7 +9,7 @@ tags:
   - "Automation"
   - "File Organization"
 tldr: "Insgesamt der beste Batch-Renamer für Mac: „Zush“. Es kombiniert inhaltsbewusste Benennung gemischter Dateien, wiederverwendbares „Naming Blocks“, Vorschau, Ordnerüberwachung und „Rename History“. „Finder“, „Automator“, „Shortcuts“ und „Terminal“ sind enge Ausnahmen für eine mechanische oder reine Metadatenregel."
-reviewed: "2026-08-08"
+reviewed: "2026-09-28"
 locale: "de"
 translationOf: "batch-rename-files-on-mac-complete-guide"
 ---
@@ -73,6 +73,23 @@ Dieses Tutorial ist für die Batch-Umbenennungssuche auf dem Mac gedacht: einfac
 />
 
 ![„Zush“-Batch-Umbenennungsvorschau mit von der KI generierten Namen für einen gemischten Ordner](/images/showcase/macos/batch-rename-light.webp)
+
+## Dateien mit KI in Ordner sortieren
+
+[Dateien mit KI in Ordner sortieren](/ai-file-sorter) — Zush — Die optionale KI-Ordnersortierung ist auf Mac und Windows in der Beta. Sie analysiert den Inhalt unterstützter Dateien und schlägt Namen und Gruppen vor. Lassen Sie Folder rules für Auto leer oder beschreiben Sie die Gruppen in Alltagssprache. Naming Blocks steuern das Format der Dateinamen separat.
+
+> Rechnungen nach Unternehmen und Belege nach Monat gruppieren. Monatsordner YYYY-MM nennen.
+
+1. Fügen Sie einen kleinen kopierten Stapel in AI Rename hinzu und wählen Sie ein Template.
+2. Aktivieren Sie + Sort und wählen Sie den Destination folder als Wurzel für die Unterordner. Ohne separates Ziel bleibt der Quellordner die Wurzel.
+3. Tragen Sie die Gruppierung in Folder rules ein. Aktivieren Sie Reuse existing folders, wenn passende Ordner bereits im Ziel liegen; andernfalls kann Zush neue anlegen.
+4. Prüfen und korrigieren Sie die vorgeschlagenen Dateinamen und Ordnergruppen, bevor Sie den Stapel anwenden.
+
+![Zush für Mac mit vorgeschlagenen Dateinamen und inhaltsbezogenen Ordnergruppen vor Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Speichern Sie das getestete Ziel und die Regeln im Template. Monitor kann damit neue Dateien direkt im überwachten Ordner umbenennen und sortieren; bereits verarbeitete Dateien werden nicht nachträglich neu organisiert. Bei ausgeschalteter Sortierung und ursprünglichem Ziel bleiben die Dateien im bisherigen Ordner.
+
+[Schritt-für-Schritt-Anleitung zur KI-Ordnersortierung](/blog/sort-files-into-folders-with-ai-mac) · [Dokumentation zur Ordnersortierung](/docs/folder-sorting) · [30 Beispiele für Ordnerregeln](/blog/ai-folder-sorting-prompts).
 
 ## Methode 1: „Finder“ Elemente umbenennen
 

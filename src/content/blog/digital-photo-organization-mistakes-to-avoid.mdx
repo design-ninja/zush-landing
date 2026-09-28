@@ -9,7 +9,7 @@ tags:
   - "File Organization"
   - "Photos"
 tldr: "Protect the originals first, remove duplicates before detailed sorting, keep folders shallow, preserve metadata, use one naming rule, and maintain the library in short weekly sessions."
-reviewed: "2026-08-10"
+reviewed: "2026-09-28"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
@@ -18,6 +18,26 @@ Quick answer: the most damaging digital photo organization mistakes are reorgani
 Most photo libraries become messy for the same reasons: generic filenames, weak folder structure, duplicate files, and no consistent maintenance habit. The good news is that you do not need a perfect archival system to fix that. You need to stop repeating the mistakes that make retrieval harder over time.
 
 For the full setup, read [How to Organize Photos on Mac](/blog/best-ways-to-organize-photos-on-mac). This page is the diagnostic checklist: use it to find the part of your current system that will fail first.
+
+## Sort photo files into folders with AI
+
+[Zush](/ai-file-sorter) can give supported files descriptive names and group them into real folders by content in the same batch. **AI folder sorting is in beta on Mac and Windows.** Leave **Folder rules** empty for Auto grouping, or describe the groups in plain language. For photo files, try:
+
+> Group images by subject, such as People, Food, and Landscapes.
+
+1. Add a small copied batch in **AI Rename** and select a Template.
+2. Enable **+ Sort** and choose the **Destination folder**, which is the root for the sorted subfolders. Without a separate destination, the source folder remains the root.
+3. Enter the grouping instruction in **Folder rules**. **Naming Blocks** set the filename format separately.
+4. Enable **Reuse existing folders** if suitable groups already exist inside the destination root. Zush can create a new folder when none fits.
+5. Review both the proposed names and folder groups. Correct folder names or file placement before applying the batch.
+
+![Zush for Mac previewing content-based folder groups and proposed filenames before Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Save the tested destination and rules in the Template. Assign it to **Monitor** to rename and sort new files arriving directly inside the watched folder. This does not retroactively reorganize files already processed. With sorting off and the original destination selected, files keep their current folder.
+
+Use ordinary exported images or a copied Finder/File Explorer folder. Do not reorganize a Photos library package; for originals tracked by a catalog, follow its rename or relink workflow. Folder grouping does not add albums, face recognition, duplicate removal, or backup.
+
+Follow the [step-by-step Mac sorting guide](/blog/sort-files-into-folders-with-ai-mac) or see the [folder sorting documentation](/docs/folder-sorting) and [30 example Folder rules](/blog/ai-folder-sorting-prompts).
 
 ## Find your highest-risk mistake
 

@@ -9,7 +9,7 @@ tags:
   - "Automatización"
   - "Organización de archivos"
 tldr: "Mejor renombrador por lotes de Mac en general: Zush. Combina nombres de archivos mixtos que tienen en cuenta el contenido, \"Naming Blocks\" reutilizable, vista previa, monitoreo de carpetas y \"Rename History\". Finder, Automator, Shortcuts y Terminal son excepciones limitadas para una regla mecánica o de solo metadatos."
-reviewed: "2026-08-08"
+reviewed: "2026-09-28"
 locale: "es"
 translationOf: "batch-rename-files-on-mac-complete-guide"
 ---
@@ -73,6 +73,23 @@ Este tutorial es para búsquedas instructivas de cambio de nombre por lotes en M
 />
 
 ![Vista previa del cambio de nombre por lotes Zush que muestra nombres generados por IA para una carpeta mixta](/images/showcase/macos/batch-rename-light.webp)
+
+## Clasificar archivos en carpetas con IA
+
+[Clasificar archivos en carpetas con IA](/ai-file-sorter) — Zush — La organización opcional en carpetas con IA está en beta en Mac y Windows. Analiza el contenido de los archivos compatibles y propone nombres y grupos. Deja Folder rules vacío para Auto o describe los grupos con tus palabras. Naming Blocks define por separado el formato de los nombres.
+
+> Agrupa las facturas por empresa y los recibos por mes. Nombra las carpetas mensuales YYYY-MM.
+
+1. Añade un pequeño lote copiado en AI Rename y elige un Template.
+2. Activa + Sort y selecciona Destination folder como raíz de las subcarpetas. Sin otro destino, la raíz sigue siendo la carpeta de origen.
+3. Escribe la agrupación en Folder rules. Activa Reuse existing folders para aprovechar carpetas adecuadas dentro del destino; Zush puede crear otras cuando ninguna encaja.
+4. Revisa y corrige los nombres y grupos antes de aplicar el lote.
+
+![Zush en Mac mostrando nombres propuestos y grupos de carpetas por contenido antes de Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Guarda el destino y las reglas probadas en el Template. Monitor puede renombrar y clasificar archivos nuevos que lleguen directamente a la carpeta vigilada; no reorganiza retroactivamente archivos ya procesados. Con la clasificación desactivada y el destino original, los archivos permanecen en su carpeta.
+
+[Guía paso a paso de clasificación con IA](/blog/sort-files-into-folders-with-ai-mac) · [Documentación de clasificación en carpetas](/docs/folder-sorting) · [30 ejemplos de reglas para carpetas](/blog/ai-folder-sorting-prompts).
 
 ## Método 1: Finder Cambiar el nombre de los elementos
 

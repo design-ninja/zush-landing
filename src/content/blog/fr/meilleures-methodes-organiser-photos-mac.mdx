@@ -9,7 +9,7 @@ tags:
   - "File Organization"
   - "Photos"
 tldr: "Organiser ses photos sur Mac, ce sont deux tâches : une bibliothèque à parcourir et des noms de fichiers que l'on peut rechercher. Utilisez Apple Photos pour une bibliothèque personnelle gérée, des dossiers Finder pour une archive portable, ou les deux ; utilisez Zush quand chaque fichier s'appelle encore IMG_8821.HEIC. Cela ne remplace ni les albums, ni la recherche de visages, ni la revue des doublons, ni la sauvegarde."
-reviewed: "2026-09-10"
+reviewed: "2026-09-28"
 locale: "fr"
 translationOf: "best-ways-to-organize-photos-on-mac"
 ---
@@ -45,6 +45,27 @@ Les photographes et vidéastes qui ont besoin d'un flux de travail reproductible
 
 Accédez à « [« Apple Photos » contre « Finder »](#apple-photos-vs-finder-folders-vs-a-hybrid-setup) », « [structures de dossiers](#choose-a-folder-structure-that-scales) », « [recherche](#make-photos-searchable-with-spotlight-and-finder) », « [sauvegarde](#back-up-your-photo-library-properly) » ou « [workflow d'importation reproductible](#a-repeatable-import-workflow-for-thousands-of-photos) ».
 
+## Trier les fichiers dans des dossiers avec l'IA
+
+[Trier les fichiers dans des dossiers avec l'IA](/ai-file-sorter) — Le tri facultatif par IA est en bêta sur Mac et Windows. Il analyse le contenu des fichiers compatibles et propose des noms et des groupes. Laissez Folder rules vide pour Auto ou décrivez le classement en langage naturel. Naming Blocks définit séparément le format des noms de fichiers.
+
+> Regrouper les images par sujet, par exemple Personnes, Cuisine et Paysages.
+
+1. Ajoutez un petit lot copié dans AI Rename et choisissez un Template.
+2. Activez + Sort et choisissez Destination folder comme racine des sous-dossiers. Sans destination distincte, le dossier source reste la racine.
+3. Indiquez le classement dans Folder rules. Activez Reuse existing folders pour réutiliser des dossiers adaptés sous la destination ; Zush peut en créer de nouveaux si nécessaire.
+4. Vérifiez et corrigez les noms et les groupes proposés avant d'appliquer le lot.
+
+![Zush sur Mac affichant les noms proposés et les groupes de dossiers par contenu avant Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Enregistrez la destination et les règles testées dans le Template. Monitor peut renommer et trier les nouveaux fichiers arrivant directement dans le dossier surveillé ; il ne réorganise pas rétroactivement les fichiers déjà traités. Avec le tri désactivé et la destination d'origine, les fichiers restent dans leur dossier actuel.
+
+Finder / File Explorer — Une photothèque gère albums, notes, visages, recherche et parfois retouche dans sa base de données. Les noms et les vrais dossiers restent visibles dans le système de fichiers, sur un disque externe et lors d'un partage. Ce programme agit sur ces fichiers ; il ne remplace pas une photothèque, la reconnaissance des visages, la détection des doublons ou la sauvegarde. Les deux approches peuvent se compléter.
+
+Finder — Testez des images exportées ou un dossier copié. Ne réorganisez pas les fichiers à l'intérieur d'un paquet de photothèque Photos. Pour des originaux déjà catalogués, suivez la procédure de renommage ou de reconnexion du logiciel. Renommer et déplacer modifient tous deux les chemins des fichiers.
+
+[Guide étape par étape du tri par IA](/blog/sort-files-into-folders-with-ai-mac) · [Documentation du tri dans les dossiers](/docs/folder-sorting) · [30 exemples de règles de classement](/blog/ai-folder-sorting-prompts).
+
 ## Le système d'organisation des photos Mac en 7 étapes
 
 1. **Choisir la photothèque :** utilisez Apple Photos, les dossiers Finder ou les deux selon votre façon de consulter et partager les photos.
@@ -66,6 +87,8 @@ Accédez à « [« Apple Photos » contre « Finder »](#apple-photos-vs-finder-
   ]}
 />
 
+<span id="apple-photos-vs-finder-folders-vs-a-hybrid-setup"></span>
+
 ## Dossiers « Apple Photos » vs « Finder » par rapport à une configuration hybride
 
 Choisissez le modèle de bibliothèque avant de réorganiser quoi que ce soit. Les dossiers « Apple Photos », « Finder » et une configuration hybride peuvent tous fonctionner, mais ils résolvent différents problèmes de récupération et de stockage.
@@ -81,6 +104,8 @@ Choisissez le modèle de bibliothèque avant de réorganiser quoi que ce soit. L
 Un exemple hybride concret consiste à conserver les photos de famille de l'iPhone dans « Apple Photos », tandis qu'une séance photo client reste dans « Pictures/Client-Work/2026/Acme-Launch/ » avec ses fichiers RAW, ses sélections et ses exportations. Les photos personnelles conservent la commodité d'iCloud et les fichiers clients restent portables et directement accessibles.
 
 Utilisez le « [modèle de dossier photo Mac téléchargeable](/downloads/mac-photo-folder-template.txt) » comme point de départ. Il sépare les événements personnels, les projets clients, un dossier d'admission, les exportations et les états d'archive sans verrouiller la bibliothèque sur une seule application.
+
+<span id="choose-a-folder-structure-that-scales"></span>
 
 ## Choisissez une structure de dossiers évolutive
 
@@ -154,6 +179,8 @@ Si ces fichiers quittent le dossier « 2026/03-March/Tokyo-Trip/ », le jour d
 Pour les gros lots, il n’est pas pratique d’ajouter manuellement des dates à chaque photo. « [Renommeur de fichiers IA pour Mac](/mac) » peut générer automatiquement des noms de fichiers descriptifs avec des modèles de date à l'aide de modèles de dénomination personnalisés, de sorte que chaque photo reçoit un nom significatif lors de l'importation.
 
 
+<span id="make-photos-searchable-with-spotlight-and-finder"></span>
+
 ## Rendre les photos consultables avec « Spotlight » et « Finder »
 
 Une structure de dossiers vous aide lorsque vous naviguez au bon endroit. Mais le véritable test de l'organisation des photos est de savoir si vous pouvez trouver une image spécifique lorsque vous ne vous souvenez plus de l'endroit où elle se trouve.
@@ -200,6 +227,8 @@ Bons exemples de tags pour les photos :
 
 Par exemple, conservez « 2026-06-04_acme-product-flatlay_017.cr3 » dans le dossier du projet Acme et étiquetez-le « client-review ». Lorsque le client l'approuve, remplacez cette balise d'état par « approuvé » ; le fichier reste dans le même dossier et la balise reflète l'état du flux de travail au lieu de dupliquer la structure des dossiers.
 
+
+<span id="back-up-your-photo-library-properly"></span>
 
 ## Sauvegardez correctement votre photothèque
 
@@ -260,6 +289,8 @@ Prévisualisez l’ensemble du lot avant de l’appliquer. Si le modèle est tro
 
 
 <BlogCTA placement='inline' platform='mac' />
+
+<span id="a-repeatable-import-workflow-for-thousands-of-photos"></span>
 
 ## Un flux de travail d'importation reproductible pour des milliers de photos
 

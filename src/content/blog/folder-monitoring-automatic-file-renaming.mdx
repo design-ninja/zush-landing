@@ -8,7 +8,7 @@ topic: "automation"
 tags:
   - "Automation"
 tldr: "Watch folders let you rename files automatically as they arrive instead of cleaning up after the fact. Zush monitors folders in real time and applies AI-powered content-aware names to images, audio, videos, screenshots, PDFs, and documents."
-reviewed: "2026-07-19"
+reviewed: "2026-09-28"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
@@ -31,6 +31,24 @@ For high-volume monitored folders, compare [BYOK](/blog/byok-ai-file-renaming-un
     { href: '/docs/folder-monitoring', label: 'Folder monitoring' },
   ]}
 />
+
+## Sort new downloads into folders with AI
+
+[Zush](/ai-file-sorter) can give supported files descriptive names and group them into real folders by content in the same batch. **AI folder sorting is in beta on Mac and Windows.** Leave **Folder rules** empty for Auto grouping, or describe the groups in plain language. For new downloads, try:
+
+> Group invoices by company, receipts by month, and screenshots by subject.
+
+1. Add a small copied batch in **AI Rename** and select a Template.
+2. Enable **+ Sort** and choose the **Destination folder**, which is the root for the sorted subfolders. Without a separate destination, the source folder remains the root.
+3. Enter the grouping instruction in **Folder rules**. **Naming Blocks** set the filename format separately.
+4. Enable **Reuse existing folders** if suitable groups already exist inside the destination root. Zush can create a new folder when none fits.
+5. Review both the proposed names and folder groups. Correct folder names or file placement before applying the batch.
+
+![Zush for Mac previewing content-based folder groups and proposed filenames before Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Save the tested destination and rules in the Template. Assign it to **Monitor** to rename and sort new files arriving directly inside the watched folder. This does not retroactively reorganize files already processed. With sorting off and the original destination selected, files keep their current folder.
+
+Follow the [step-by-step Mac sorting guide](/blog/sort-files-into-folders-with-ai-mac) or see the [folder sorting documentation](/docs/folder-sorting) and [30 example Folder rules](/blog/ai-folder-sorting-prompts).
 
 ## What watch folder auto renaming actually does
 
@@ -188,7 +206,7 @@ Apple's built-in automation tools can trigger folder actions, but they are limit
 
 ### Hazel
 
-Hazel is a strong rule-based automation tool for Mac. It excels at moving files into folders based on conditions (file type, date, name pattern). Where it falls short is content-aware renaming. Hazel can route a PDF to a folder, but it cannot read the PDF and name it based on its contents. The best setup is often Hazel for routing combined with Zush for naming.
+Hazel is a strong rule-based automation tool for Mac. It excels at moving files into folders based on conditions (file type, date, name pattern). Where it falls short is content-aware renaming. Hazel can route a PDF to a folder, but it cannot read the PDF and name it based on its contents. Zush can also group new files by content with a sorting-enabled Template (beta). Pair it with Hazel when the job requires deterministic conditions or scripts, using separate intake stages.
 
 ### Manual batch rename
 

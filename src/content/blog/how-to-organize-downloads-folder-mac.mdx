@@ -9,7 +9,7 @@ tags:
   - "File Organization"
   - "Downloads"
 tldr: "Delete obvious junk, move active files into a few stable destinations, fix weak filenames, and repeat a five-minute review every week. Automate only the file types that arrive predictably."
-reviewed: "2026-09-24"
+reviewed: "2026-09-28"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
@@ -18,6 +18,24 @@ Quick answer: organize the Downloads folder on Mac by treating it as an inbox, n
 The Downloads folder gets messy because it is not a destination. It is a landing zone. Files arrive there quickly, under inconsistent names, and without any shared structure. If you want to organize Downloads on Mac, the goal is not to create a perfect filing cabinet. It is to stop random files from accumulating faster than you can process them.
 
 A good system starts with a few broad categories and a short review habit. Automation comes later, after you know which files arrive often enough to justify a rule.
+
+## Sort mixed files into folders with AI
+
+[Zush](/ai-file-sorter) can give supported files descriptive names and group them into real folders by content in the same batch. **AI folder sorting is in beta on Mac and Windows.** Leave **Folder rules** empty for Auto grouping, or describe the groups in plain language. For mixed files, try:
+
+> Group invoices by company and receipts by month.
+
+1. Add a small copied batch in **AI Rename** and select a Template.
+2. Enable **+ Sort** and choose the **Destination folder**, which is the root for the sorted subfolders. Without a separate destination, the source folder remains the root.
+3. Enter the grouping instruction in **Folder rules**. **Naming Blocks** set the filename format separately.
+4. Enable **Reuse existing folders** if suitable groups already exist inside the destination root. Zush can create a new folder when none fits.
+5. Review both the proposed names and folder groups. Correct folder names or file placement before applying the batch.
+
+![Zush for Mac previewing content-based folder groups and proposed filenames before Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Save the tested destination and rules in the Template. Assign it to **Monitor** to rename and sort new files arriving directly inside the watched folder. This does not retroactively reorganize files already processed. With sorting off and the original destination selected, files keep their current folder.
+
+Follow the [step-by-step Mac sorting guide](/blog/sort-files-into-folders-with-ai-mac) or see the [folder sorting documentation](/docs/folder-sorting) and [30 example Folder rules](/blog/ai-folder-sorting-prompts).
 
 ## Pick the right level of organization
 
@@ -111,7 +129,7 @@ Downloaded web images often have useless or duplicate names. Descriptive filenam
 
 If you regularly download invoices, reports, or exports with similar patterns, route them into staging folders for quick review.
 
-For an existing pile of `attachment.pdf` files, use the [one-time Mac PDF batch workflow](/blog/rename-pdf-files-with-ai-mac). For documents arriving every week, use the [PDF intake folder and monitoring workflow](/blog/rename-pdf-files-automatically). Zush handles content-aware naming; choose the destination folder yourself or use a separate routing tool.
+For an existing pile of `attachment.pdf` files, use the [one-time Mac PDF batch workflow](/blog/rename-pdf-files-with-ai-mac). For documents arriving every week, use the [PDF intake folder and monitoring workflow](/blog/rename-pdf-files-automatically). Zush handles content-aware naming and optional AI folder sorting (beta). Choose a destination and use Auto or describe the grouping in Folder rules. A separate routing tool is useful for deterministic conditions or scripts.
 
 ## Decide what to do with each download
 
@@ -175,9 +193,3 @@ Review it once or twice per week for five minutes. If that is not enough, the pr
 ## Keep the folder clean after the reset
 
 The manual workflow fixes today's clutter. If bad filenames are the recurring problem, [automate your Downloads folder with Zush](/automate-downloads-folder) or start with [50 free renames on Mac](/mac). For a larger cleanup beyond Downloads, use the [Mac decluttering checklist](/blog/declutter-your-mac-file-cleanup-guide). Keep the scope narrow so the automation saves decisions instead of creating new ones.
-
-## How to Sort Files into Folders with AI on Mac
-
-Zush can rename files and sort them into folders based on content. Enable **Folder sorting**, choose a destination, and review the proposed groups before applying a batch.
-
-[How to Sort Files into Folders with AI on Mac](/blog/sort-files-into-folders-with-ai-mac)

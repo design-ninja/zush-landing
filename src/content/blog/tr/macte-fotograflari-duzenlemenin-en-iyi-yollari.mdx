@@ -11,7 +11,7 @@ tags:
   - "Dosya Organizasyonu"
   - "Fotoğraflar"
 tldr: "Mac'te fotoğraf düzenlemek iki ayrı iştir: göz atabileceğiniz bir kitaplık ve arayabileceğiniz dosya adları. Yönetilen kişisel kitaplık için Apple Photos'u, taşınabilir arşiv için Finder klasörlerini ya da ikisini birlikte kullanın; her dosya hâlâ IMG_8821.HEIC adını taşıyorsa Zush'u kullanın. Albümlerin, yüz aramasının, kopya denetiminin veya yedeklemenin yerini tutmaz."
-reviewed: "2026-09-10"
+reviewed: "2026-09-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -45,6 +45,27 @@ RAW çekimler, müşteri aktarımları ve video klipler için tekrarlanabilir bi
 
 "['Apple Photos' ve 'Finder'](#apple-photos-vs-finder-folders-vs-a-hybrid-setup)", "[klasör yapıları](#choose-a-folder-structure-that-scales)", "[aramak](#make-photos-searchable-with-spotlight-and-finder)", "[yedekleme](#back-up-your-photo-library-properly)" veya "[tekrarlanabilir içe aktarma iş akışı](#a-repeatable-import-workflow-for-thousands-of-photos)"e geçin.
 
+## Dosyaları yapay zekâyla klasörlere ayırma
+
+[Dosyaları yapay zekâyla klasörlere ayırma](/ai-file-sorter) — İsteğe bağlı yapay zekâ klasör sıralaması Mac ve Windows’ta beta aşamasındadır. Desteklenen dosyaların içeriğini analiz ederek adlar ve gruplar önerir. Auto için Folder rules alanını boş bırakın veya grupları günlük dille açıklayın. Naming Blocks dosya adı biçimini ayrı olarak belirler.
+
+> Görselleri İnsanlar, Yemek ve Manzaralar gibi konulara göre grupla.
+
+1. AI Rename içine küçük bir kopya grubu ekleyin ve bir Template seçin.
+2. + Sort seçeneğini açın; alt klasörlerin kökü için Destination folder seçin. Ayrı hedef yoksa kaynak klasör kök olarak kalır.
+3. Grupları Folder rules içinde tarif edin. Hedefte uygun klasörleri kullanmak için Reuse existing folders seçeneğini açın; uygun klasör yoksa Zush yenisini oluşturabilir.
+4. Toplu işlemi uygulamadan önce önerilen adları ve grupları inceleyip düzeltin.
+
+![Mac'te Zush, Rename & sort öncesinde önerilen dosya adlarını ve içerik tabanlı klasör gruplarını gösteriyor](/images/showcase/macos/folder-sorting-light.webp)
+
+Test edilen hedefi ve kuralları Template içine kaydedin. Monitor izlenen klasöre doğrudan gelen yeni dosyaları adlandırıp sıralayabilir; daha önce işlenen dosyaları geriye dönük düzenlemez. Sıralama kapalı ve hedef özgün konum olduğunda dosyalar mevcut klasörde kalır.
+
+Finder / File Explorer — Bir fotoğraf arşivi albümleri, yüzleri, puanları ve aramayı kendi veritabanında yönetir. Dosya adları ve gerçek klasörler dosya sisteminde, harici diskte ve paylaşımda görünür kalır. Program dosya düzeyinde çalışır; albüm, yüz tanıma, kopya kontrolü veya yedekleme yerine geçmez.
+
+Finder — Dışa aktarılan görselleri veya bir klasör kopyasını deneyin. Photos arşiv paketinin içindeki dosyaları yeniden düzenlemeyin. Katalogdaki özgün dosyalar için programın adlandırma veya yeniden bağlama yöntemini izleyin. Adlandırma ve taşıma dosya yollarını değiştirir.
+
+[Adım adım yapay zekâ klasör sıralama rehberi](/blog/sort-files-into-folders-with-ai-mac) · [Klasör sıralama belgeleri](/docs/folder-sorting) · [30 klasör kuralı örneği](/blog/ai-folder-sorting-prompts).
+
 ## 7 adımlı Mac fotoğraf düzenleme sistemi
 
 1. **Arşivi seçin:** fotoğrafları görüntüleme ve paylaşma biçiminize göre Apple Photos, Finder klasörleri veya her ikisini kullanın.
@@ -66,6 +87,8 @@ RAW çekimler, müşteri aktarımları ve video klipler için tekrarlanabilir bi
   ]}
 />
 
+<span id="apple-photos-vs-finder-folders-vs-a-hybrid-setup"></span>
+
 ## "Apple Photos" ve "Finder" klasörleri ile karma kurulum karşılaştırması
 
 Herhangi bir şeyi yeniden düzenlemeden önce kütüphane modelini seçin. 'Apple Photos', 'Finder' klasörleri ve karma kurulumun tümü işe yarayabilir, ancak farklı alma ve depolama sorunlarını çözerler.
@@ -81,6 +104,8 @@ Herhangi bir şeyi yeniden düzenlemeden önce kütüphane modelini seçin. 'App
 Somut bir hibrit örnek, iPhone aile fotoğraflarını "Apple Photos"te tutarken istemci çekiminin RAW dosyaları, seçimleri ve dışa aktarımlarıyla birlikte "Pictures/Client-Work/2026/Acme-Launch/" konumunda kalmasıdır. Kişisel fotoğraflar iCloud'un rahatlığını korur ve istemci dosyaları taşınabilir ve doğrudan erişilebilir durumda kalır.
 
 '[indirilebilir Mac fotoğraf klasörü şablonu](/downloads/mac-photo-folder-template.txt)'i başlangıç ​​noktası olarak kullanın. Kitaplığı tek bir uygulamaya kilitlemeden kişisel etkinlikleri, müşteri projelerini, giriş klasörünü, dışa aktarmaları ve arşiv durumlarını ayırır.
+
+<span id="choose-a-folder-structure-that-scales"></span>
 
 ## Ölçeklenen bir klasör yapısı seçin
 
@@ -154,6 +179,8 @@ Bu dosyalar '2026/03-Mart/Tokyo-Trip/' klasöründen çıkarsa, çekim günü ve
 Büyük gruplar için, her fotoğrafa manuel olarak tarih eklemek pratik değildir. '[Mac için AI dosya yeniden adlandırıcı](/mac)', özel adlandırma şablonlarını kullanarak otomatik olarak tarih desenlerine sahip açıklayıcı dosya adları oluşturabilir, böylece her fotoğraf içe aktarıldığında anlamlı bir ad alır.
 
 
+<span id="make-photos-searchable-with-spotlight-and-finder"></span>
+
 ## Fotoğrafları "Spotlight" ve "Finder" ile aranabilir hale getirin
 
 Bir klasör yapısı, doğru yere göz attığınızda yardımcı olur. Ancak fotoğraf düzenlemenin asıl testi, nerede yaşadığını hatırlamadığınız belirli bir görüntüyü bulup bulamayacağınızdır.
@@ -200,6 +227,8 @@ Onlarca örtüşen kategori oluşturmaktan kaçının. Hatırlanacak çok fazla 
 
 Örneğin, '2026-06-04_acme-product-flatlay_017.cr3'ü Acme proje klasörünün içinde tutun ve onu 'client-review' olarak etiketleyin. İstemci bunu onayladığında bu durum etiketini "onaylandı" ile değiştirin; dosya aynı klasörde kalır ve etiket, klasör yapısını kopyalamak yerine iş akışı durumunu yansıtır.
 
+
+<span id="back-up-your-photo-library-properly"></span>
 
 ## Fotoğraf kitaplığınızı doğru şekilde yedekleyin
 
@@ -260,6 +289,8 @@ Uygulamadan önce tüm partiyi önizleyin. Desen çok uzunsa veya açıklama kon
 
 
 <BlogCTA placement='inline' platform='mac' />
+
+<span id="a-repeatable-import-workflow-for-thousands-of-photos"></span>
 
 ## Binlerce fotoğraf için tekrarlanabilir bir içe aktarma iş akışı
 

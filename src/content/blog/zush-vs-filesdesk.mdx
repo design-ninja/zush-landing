@@ -1,6 +1,6 @@
 ---
 title: "Zush vs FilesDesk: Unlimited vs Credits, Formats, Pricing"
-description: "Compare Zush vs FilesDesk by naming control, ready-made templates, Rename History, file formats, automation, metering, and documented limitations."
+description: "Compare Zush vs FilesDesk on naming control, AI folder sorting, file formats, automation, recovery, pricing, and workflow limitations."
 date: "2026-07-03"
 slug: "zush-vs-filesdesk"
 platform: "general"
@@ -8,9 +8,10 @@ topic: "comparisons"
 tags:
   - "AI File Renaming"
   - "Tool Comparisons"
-tldr: "Pick Zush for the most configurable naming workflow in this comparison: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, and Rename History with batch revert. FilesDesk's main limitation is that managed suggestions are metered and its lifetime plan requires BYOK or local-model setup."
-reviewed: "2026-09-02"
+tldr: "Pick Zush for the most configurable naming workflow in this comparison: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, and Rename History with batch revert. FilesDesk's main limitation is that managed suggestions are metered and its lifetime plan requires BYOK or local-model setup. Zush also offers optional AI folder sorting (beta)."
+reviewed: "2026-09-28"
 ---
+
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
@@ -46,8 +47,8 @@ Sources checked for this update: [Zush](/), [FilesDesk](https://filesdesk.app/),
 | Design files (Figma/Sketch/PSD) | <BlogHighlight>Yes</BlogHighlight> | Not publicly listed |
 | AI processing routes | Zush Cloud AI; BYOK with Gemini, OpenRouter, OpenAI, or Claude; LM Studio; Ollama | BYOK with Claude, OpenAI, Gemini, or OpenRouter; local Ollama or vLLM |
 | Local AI | LM Studio, Ollama | Ollama, vLLM |
-| Folder monitoring | <BlogHighlight>Yes — auto-name new files</BlogHighlight> | Yes (Watch Folders) |
-| Naming conventions | <BlogHighlight>Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata</BlogHighlight> | Naming templates |
+| Folder monitoring | <BlogHighlight>Yes — rename new files; a sorting Template also groups them (beta)</BlogHighlight> | Yes (Watch Folders) |
+| Naming conventions | <BlogHighlight>Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata</BlogHighlight> ; optional AI folder sorting (beta) | Naming templates |
 | Recovery | Full Rename History: original/new name, folder, timestamp, batch revert | Undo through Processing History |
 | Main limitation | Desktop-only | Managed suggestions are metered; lifetime requires BYOK/local setup; no granular RAW/design/iWork matrix |
 | Devices per license | Per standard license terms | 1 device (lifetime plan) |
@@ -68,6 +69,14 @@ The 100+ supported formats add breadth to that system: RAW and HEIC photos, Sket
 
 The pricing is deliberately boring: unlimited PRO renames either as a subscription or a one-time $48 purchase. You never think about whether a messy 800-file folder is "worth the credits".
 
+### Content-based folders in Zush
+
+Zush can **sort files into folders with AI (beta)** as well as rename them. Choose **Auto** or write **Folder rules**, for example “Group client documents by company and recordings by meeting topic.” Folder grouping is independent of the filename Template, so the same batch can get both consistent names and useful destinations. The watch-folder row alone does not describe this part of the Zush workflow.
+
+Choose a **Destination folder**, or keep the source folder as the root. Enable **Reuse existing folders** to prefer suitable folders already there; Zush can create a new one when nothing fits. In a manual batch, review both the suggested names and folders before applying. To rename in place, leave sorting off and keep the original destination.
+
+Save the sorting settings in a **Template** and assign it to **Monitor** for new files directly inside the watched folder. This does not reorganize files already processed. Test the Template in a manual batch first. See the [folder sorting guide](/docs/folder-sorting) for the setup and monitoring scope.
+
 ## FilesDesk
 
 FilesDesk positions itself as the plug-and-play credit option: 15 free credits with no API key, then $8/month for 500 credits or $20/month for 2,000, processed in memory and never stored.
@@ -86,6 +95,10 @@ FilesDesk is relevant when vLLM is a hard requirement. Its main drawback is the 
 For more options, compare [RenameClick alternatives](/blog/renameclick-alternatives) or see [what AI file renaming costs](/blog/ai-file-renaming-cost) at 100, 1,000, and 5,000 files a month.
 
 ## FAQ
+
+### Can Zush sort files into folders as well as rename them?
+
+Yes. Its optional AI folder sorting is in beta on Mac and Windows. Choose Auto or write Folder rules, select the destination, and review both names and groups in a manual batch. A sorting-enabled Template can also process new files directly inside a monitored folder; it does not reorganize files already processed. Leave sorting off and keep the original destination for naming only.
 
 **Is FilesDesk cheaper than Zush?**
 Its $8 managed tier includes 500 credits rather than unlimited renames.

@@ -10,7 +10,7 @@ tags:
   - "PDFs & Documents"
   - "Automation"
 tldr: "Organize tax documents in one folder per tax year with names like 2025 – W-2 – Acme Corp.pdf, filled from a checklist of expected documents. Zush names each form, statement, and receipt by reading it — including scans — so assembling a return becomes checking a sorted list, not a hunt."
-reviewed: "2026-07-31"
+reviewed: "2026-09-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -33,6 +33,24 @@ It builds on the [invoices-and-receipts system](/blog/how-to-organize-invoices-a
 />
 
 <BlogCTA placement='inline' platform='general' />
+
+## Sort tax documents into folders with AI
+
+[Zush](/ai-file-sorter) can give supported files descriptive names and group them into real folders by content in the same batch. **AI folder sorting is in beta on Mac and Windows.** Leave **Folder rules** empty for Auto grouping, or describe the groups in plain language. For tax documents, try:
+
+> Group documents by the tax year stated in the document. Put documents with no clear tax year in Review.
+
+1. Add a small copied batch in **AI Rename** and select a Template.
+2. Enable **+ Sort** and choose the **Destination folder**, which is the root for the sorted subfolders. Without a separate destination, the source folder remains the root.
+3. Enter the grouping instruction in **Folder rules**. **Naming Blocks** set the filename format separately.
+4. Enable **Reuse existing folders** if suitable groups already exist inside the destination root. Zush can create a new folder when none fits.
+5. Review both the proposed names and folder groups. Correct folder names or file placement before applying the batch.
+
+![Zush for Mac previewing content-based folder groups and proposed filenames before Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Save the tested destination and rules in the Template. Assign it to **Monitor** to rename and sort new files arriving directly inside the watched folder. This does not retroactively reorganize files already processed. With sorting off and the original destination selected, files keep their current folder.
+
+Follow the [step-by-step Mac sorting guide](/blog/sort-files-into-folders-with-ai-mac) or see the [folder sorting documentation](/docs/folder-sorting) and [30 example Folder rules](/blog/ai-folder-sorting-prompts).
 
 ## The structure: tax year beats calendar year
 
@@ -86,7 +104,7 @@ A note on sensitivity: tax documents carry SSNs and account numbers. Zush's **Of
 Retention rules commonly reach six or seven years back, and most people's older tax records are the least organized. The same system retrofits cheaply:
 
 1. Gather everything into one staging folder (drive dumps, old `Tax stuff` folders, scans of paper).
-2. Run one Zush batch — the tax-year-first convention automatically *sorts documents into their years by content*, which is exactly the fact old filenames lie about.
+2. Run one Zush batch to apply the tax-year-first filename convention. This orders a folder listing by tax year; moving files into year folders requires enabling Folder sorting separately and specifying a grouping rule.
 3. Review the preview, apply, and distribute into year folders — with names carrying the year, this is mechanical.
 
 An afternoon, once, and the archive answers audit questions by search.

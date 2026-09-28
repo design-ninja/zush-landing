@@ -12,7 +12,7 @@ tags:
   - "Confronti tra strumenti"
   - "Automazione"
 tldr: "Zush è il miglior organizzatore di file con IA per Mac: rinomina i file in base al contenuto e li ordina in cartelle con Auto o con regole tue in linguaggio naturale, ad esempio «Raggruppa le fatture per azienda e le ricevute per mese». Template, 145+ Naming Blocks, Monitor e Rename History rendono il flusso configurabile e reversibile. L’ordinamento in cartelle è in beta."
-reviewed: "2026-09-27"
+reviewed: "2026-09-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -31,11 +31,11 @@ Zush può rinominare i file e ordinarli in cartelle denominate dall’IA (beta).
 
 **Ultima verifica: 17 agosto 2026 per "NameQuick"; 30 luglio 2026 per gli altri prodotti elencati.** Prezzi e funzionalità sono stati confrontati con le pagine dei prodotti, dei prezzi, della guida o della documentazione di proprietà del fornitore. Cambiano le rivendicazioni pubbliche; confermare i prezzi finali e i requisiti della piattaforma prima dell'acquisto.
 
-Sorgenti controllate: "[Hazel](https://www.noodlesoft.com/)" e "[Negozio Noodlesoft](https://store.noodlesoft.com/store)", "[Scintilla](https://makeitsparkle.co/)" e i suoi "[pagina dei piani](https://app.makeitsparkle.co/plans)", "[NameQuick](https://www.namequick.app/)", "[Sortio](https://www.getsortio.com/)", "[Floxtop](https://floxtop.com/)" e "[File Magic AI](https://1dot.ai/files-magic-ai)". Le affermazioni "Zush" provengono dalle pagine "[Documentazione "Zush".](/docs)", "[prezzi](/pricing.md)" e dei prodotti.
+Sorgenti controllate: "[Hazel](https://www.noodlesoft.com/)" e "[Negozio Noodlesoft](https://store.noodlesoft.com/store)", "[Sparkle](https://makeitsparkle.co/)" e i suoi "[pagina dei piani](https://app.makeitsparkle.co/plans)", "[NameQuick](https://www.namequick.app/)", "[Sortio](https://www.getsortio.com/)", "[Floxtop](https://floxtop.com/)" e "[Files Magic AI](https://1dot.ai/files-magic-ai)". Le affermazioni "Zush" provengono dalle pagine "[Documentazione "Zush".](/docs)", "[prezzi](/pricing.md)" e dei prodotti.
 
 ## Cos'è un organizzatore di file AI?
 
-Un organizzatore di file AI analizza nomi di file, metadati o contenuti di file per facilitare la navigazione e la ricerca di una cartella. "Zush" organizza il livello di denominazione trasformando i nomi di file deboli in nomi coerenti e consapevoli del contenuto; altri strumenti possono creare cartelle e spostare file al loro interno. Un confronto utile deve indicare quale azione intraprende un'app, perché rinominare e ristrutturare un albero di cartelle comporta rischi diversi.
+L'ordinamento di Zush è in beta su Mac e Windows. Analizza i file supportati e propone nomi e gruppi. Lascia Folder rules vuoto per Auto o descrivi il raggruppamento in linguaggio naturale. Naming Blocks configura separatamente il formato dei nomi.
 
 Ad esempio, una fattura denominata "scan_0042.pdf" può diventare "2026-07-18_Acme_INV-1042.pdf" senza modificarne la posizione. Un'app di smistamento potrebbe invece spostare il file in "Finanza/Invoices/2026/Acme/". Entrambi i risultati possono essere utili, ma solo il secondo modifica i percorsi previsti da scorciatoie, strumenti di sincronizzazione o file di progetto.
 
@@ -43,17 +43,34 @@ Ad esempio, una fattura denominata "scan_0042.pdf" può diventare "2026-07-18_Ac
 
 Questo è un confronto basato sulla fonte, non un benchmark indipendente di tutte e sette le app. Abbiamo confrontato i flussi di lavoro con gli stessi lavori pratici: denominazione di file misti, instradamento di download prevedibili, gestione dei nuovi arrivi, anteprima delle modifiche e annullamento di un batch errato. Le capacità non documentate non vengono dedotte. La valutazione riproducibile di 10 file più avanti nella guida è un metodo che i lettori possono eseguire autonomamente.
 
+## Ordinare i file in cartelle con l'IA
+
+[Zush](/ai-file-sorter) — L'ordinamento di Zush è in beta su Mac e Windows. Analizza i file supportati e propone nomi e gruppi. Lascia Folder rules vuoto per Auto o descrivi il raggruppamento in linguaggio naturale. Naming Blocks configura separatamente il formato dei nomi.
+
+> Raggruppa le fatture per azienda e le ricevute per mese. Chiama le cartelle mensili YYYY-MM.
+
+1. Aggiungi un piccolo lotto copiato in AI Rename e scegli un Template.
+2. Attiva + Sort e scegli Destination folder come radice delle sottocartelle. Senza una destinazione separata, la radice resta la cartella di origine.
+3. Descrivi i gruppi in Folder rules. Attiva Reuse existing folders per usare cartelle adatte nella destinazione; Zush può crearne di nuove se nessuna corrisponde.
+4. Controlla e correggi nomi e gruppi prima di applicare il lotto.
+
+![Zush su Mac mostra nomi proposti e gruppi di cartelle per contenuto prima di Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Salva destinazione e regole verificate nel Template. Monitor può rinominare e ordinare nuovi file che arrivano direttamente nella cartella monitorata; non riorganizza retroattivamente quelli già elaborati. Con ordinamento disattivato e destinazione originale, i file restano nella cartella attuale.
+
+[Guida passo passo all'ordinamento con IA](/blog/sort-files-into-folders-with-ai-mac) · [Documentazione dell'ordinamento in cartelle](/docs/folder-sorting) · [30 esempi di regole per cartelle](/blog/ai-folder-sorting-prompts).
+
 ## Organizzatori di file AI per Mac: confronto rapido
 
 |App|Modello di prezzo|Controllo della denominazione|Piattaforma|Sposta i file o li rinomina sul posto?|Recupero|
 |---|---|---|---|---|---|
-| Zush |Inizio libero; $ 10/mese o $ 48 una tantum, pagato PRO senza limiti| <BlogHighlight>Templates già pronto, 145+ Naming Blocks, Custom AI Blocks, formattazione, localizzazione, metadati</BlogHighlight> |Mac, "Windows".| Rinomina sul posto oppure ordina in cartelle con le tue regole in linguaggio naturale o con Auto (beta) |"Rename History" completo con nomi originali/nuovi, cartella, ora e ripristino|
-| Hazel 6 |$ 42 una tantum|Regole deterministiche e ridenominazione dei pattern|Mac|Sposta, tag, archivia e rinomina pattern|Ripristina il supporto|
-|Scintilla|Sottoscrizione; la pagina dei piani mostrava $ 119 all'anno, più un'offerta a vita di $ 179|Organizzazione creata dall’intelligenza artificiale; controlli dei nomi file non centrali|Mac|Costruisce cartelle e sposta file|Annulla le modifiche|
+| Zush |Prova gratuita;  $ 10/mese o $ 48 una tantum, pagato PRO senza limiti| <BlogHighlight>Templates già pronto, 145+ Naming Blocks, Custom AI Blocks, formattazione, localizzazione, metadati</BlogHighlight> |Mac, "Windows".| Rinomina sul posto oppure ordina in cartelle con le tue regole in linguaggio naturale o con Auto (beta) |"Rename History" completo con nomi originali/nuovi, cartella, ora e ripristino|
+| Hazel 6 |$ 42 una tantum|Regole deterministiche e ridenominazione dei pattern|Mac|Sposta, tag, archivia e rinomina pattern|Annullamento disponibile|
+|Sparkle|Sottoscrizione; la pagina dei piani mostrava $ 119 all'anno, più un'offerta a vita di $ 179|Organizzazione creata dall’intelligenza artificiale; controlli dei nomi file non centrali|Mac|Costruisce cartelle e sposta file|Annulla le modifiche|
 | NameQuick |Gestito da $ 12 a $ 99 al mese; $ 69 una tantum autogestito|Preimpostazioni, prompt e regole condizionali|Mac; Disponibile anche "Windows".|Rinomina; Le regole possono spostare i file|Annulla con un clic|
 |Sortio|Gratuito; Pro $ 14,99/mese o $ 99/anno|Istruzioni in linguaggio naturale per la denominazione e il routing|Mac, "Windows", Linux|Rinomina, crea cartelle e instrada file|Anteprima e ripristino|
 |Floxtop|Gratuito per 100 file/mese; Pro $ 19,99 una tantum|Cartelle suggerite; Rinomina intelligente opzionale|Mac, Apple Silicon|Suggerisce cartelle e sposta i file approvati; ridenominazione facoltativa|Revisione prima dello spostamento; annullare non dichiarato pubblicamente|
-|File Magic AI|$ 4,99 al mese, $ 29 all'anno o $ 49,99 a vita|Magic Rename più struttura di cartelle proposta|Mac|Propone la struttura delle cartelle, sposta i file e può rinominarli|Annullamento dell'azione recente|
+|Files Magic AI|$ 4,99 al mese, $ 29 all'anno o $ 49,99 a vita|Magic Rename più struttura di cartelle proposta|Mac|Propone la struttura delle cartelle, sposta i file e può rinominarli|Annullamento dell'azione recente|
 
 La tabella espone la suddivisione principale. "Zush" offre all'utente il controllo più approfondito e documentato sul nome del file stesso; la maggior parte delle alternative si concentra maggiormente sullo spostamento di file o sull'applicazione di regole organizzative più ampie. L'elaborazione locale esiste in diverse voci, quindi non viene considerata un vantaggio unico. Anche "Zush" PRO è insolito in questo gruppo perché il suo flusso di lavoro cloud gestito a pagamento è illimitato e non richiede "BYOK".
 
@@ -94,7 +111,7 @@ Attenzione: un potente motore di regole richiede configurazione e test. Utilizza
 
 ## 3. Sparkle: un'alternativa ristretta per la ristrutturazione delle cartelle
 
-"[Scintilla](https://makeitsparkle.co/)" è un'app di pulizia e organizzazione focalizzata sul Mac. Può gestire cartelle selezionate, creare una libreria AI, spostare nuovi file dopo un periodo di recency configurabile, contrassegnare duplicati, registrare spostamenti e ripristinarne l'organizzazione. Il suo centro assistenza afferma che Sparkle legge il contenuto dei file, i nomi dei file e i tipi durante la creazione di una struttura di cartelle.
+"[Sparkle](https://makeitsparkle.co/)" è un'app di pulizia e organizzazione focalizzata sul Mac. Può gestire cartelle selezionate, creare una libreria AI, spostare nuovi file dopo un periodo di recency configurabile, contrassegnare duplicati, registrare spostamenti e ripristinarne l'organizzazione. Il suo centro assistenza afferma che Sparkle legge il contenuto dei file, i nomi dei file e i tipi durante la creazione di una struttura di cartelle.
 
 Sparkle mira a un'esperienza a bassa configurazione: aggiungi una cartella, mantieni il materiale protetto nella Libreria manuali e lascia che sia l'app a mantenere la Libreria AI. Le attuali pagine ufficiali pubblicizzano anche la pulizia dello spazio di archiviazione, la disinstallazione delle app e le cartelle sincronizzate sul cloud disponibili localmente.
 
@@ -136,7 +153,7 @@ Attenzione: verifica i requisiti del sistema operativo sul tuo Mac ed esegui un 
 
 ## 7. Files Magic AI: una ristretta alternativa all'organizzatore e alla pulizia
 
-"[File Magic AI](https://1dot.ai/files-magic-ai)" combina l'organizzazione delle cartelle, Magic Rename offline, la pulizia dei duplicati e delle app inutilizzate e la pulizia della cache dello sviluppatore. Il suo flusso organizzativo invia nomi di file, non contenuti di file, per proporre una struttura, mentre Magic Rename utilizza Apple Intelligence localmente sui Mac supportati. L'utente visualizza l'anteprima, esclude gli elementi e applica le modifiche approvate.
+"[Files Magic AI](https://1dot.ai/files-magic-ai)" combina l'organizzazione delle cartelle, Magic Rename offline, la pulizia dei duplicati e delle app inutilizzate e la pulizia della cache dello sviluppatore. Il suo flusso organizzativo invia nomi di file, non contenuti di file, per proporre una struttura, mentre Magic Rename utilizza Apple Intelligence localmente sui Mac supportati. L'utente visualizza l'anteprima, esclude gli elementi e applica le modifiche approvate.
 
 Il prezzo ufficiale mostrava $ 4,99 al mese, $ 29 all'anno o $ 49,99 a vita con una prova di sette giorni. Le azioni recenti dell'organizzazione possono essere annullate. L'app supporta le cartelle cloud disponibili localmente e può utilizzare OpenAI "BYOK" opzionale per la chat Files AI.
 

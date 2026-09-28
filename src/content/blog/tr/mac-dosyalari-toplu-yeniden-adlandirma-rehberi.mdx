@@ -11,7 +11,7 @@ tags:
   - "Otomasyon"
   - "Dosya Organizasyonu"
 tldr: "Genel olarak en iyi Mac toplu yeniden adlandırıcı: 'Zush'. İçeriğe duyarlı karma dosya adlandırma, yeniden kullanılabilir \"Naming Blocks\", önizleme, klasör izleme ve \"Rename History\" özelliklerini birleştirir. \"Finder\", \"Automator\", \"Shortcuts\" ve \"Terminal\", tek bir mekanik veya yalnızca meta veri kuralına yönelik dar istisnalardır."
-reviewed: "2026-08-08"
+reviewed: "2026-09-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -73,6 +73,23 @@ Bu eğitim, Mac'te toplu yeniden adlandırma nasıl yapılır aramaları içindi
 />
 
 ![Karışık bir klasör için yapay zeka tarafından oluşturulan adları gösteren "Zush" toplu yeniden adlandırma önizlemesi](/images/showcase/macos/batch-rename-light.webp)
+
+## Dosyaları yapay zekâyla klasörlere ayırma
+
+[Dosyaları yapay zekâyla klasörlere ayırma](/ai-file-sorter) — Zush — İsteğe bağlı yapay zekâ klasör sıralaması Mac ve Windows’ta beta aşamasındadır. Desteklenen dosyaların içeriğini analiz ederek adlar ve gruplar önerir. Auto için Folder rules alanını boş bırakın veya grupları günlük dille açıklayın. Naming Blocks dosya adı biçimini ayrı olarak belirler.
+
+> Faturaları şirkete, makbuzları aya göre grupla. Ay klasörlerini YYYY-MM olarak adlandır.
+
+1. AI Rename içine küçük bir kopya grubu ekleyin ve bir Template seçin.
+2. + Sort seçeneğini açın; alt klasörlerin kökü için Destination folder seçin. Ayrı hedef yoksa kaynak klasör kök olarak kalır.
+3. Grupları Folder rules içinde tarif edin. Hedefte uygun klasörleri kullanmak için Reuse existing folders seçeneğini açın; uygun klasör yoksa Zush yenisini oluşturabilir.
+4. Toplu işlemi uygulamadan önce önerilen adları ve grupları inceleyip düzeltin.
+
+![Mac'te Zush, Rename & sort öncesinde önerilen dosya adlarını ve içerik tabanlı klasör gruplarını gösteriyor](/images/showcase/macos/folder-sorting-light.webp)
+
+Test edilen hedefi ve kuralları Template içine kaydedin. Monitor izlenen klasöre doğrudan gelen yeni dosyaları adlandırıp sıralayabilir; daha önce işlenen dosyaları geriye dönük düzenlemez. Sıralama kapalı ve hedef özgün konum olduğunda dosyalar mevcut klasörde kalır.
+
+[Adım adım yapay zekâ klasör sıralama rehberi](/blog/sort-files-into-folders-with-ai-mac) · [Klasör sıralama belgeleri](/docs/folder-sorting) · [30 klasör kuralı örneği](/blog/ai-folder-sorting-prompts).
 
 ## Yöntem 1: Finder Öğeleri Yeniden Adlandır
 

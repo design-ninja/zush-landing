@@ -10,7 +10,7 @@ topic: "search"
 tags:
   - "Organizzazione dei file"
 tldr: "Tag Finder, cartelle smart e Spotlight sono tre strumenti integrati in macOS che rendono al meglio insieme. I tag aggiungono significato tra cartelle, le cartelle smart creano viste dinamiche e Spotlight cerca ovunque, ma tutti dipendono da nomi e metadati utili."
-reviewed: "2026-09-24"
+reviewed: "2026-09-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogCopyPatterns from '@/components/blog/BlogCopyPatterns.astro';
@@ -40,6 +40,25 @@ Se i nomi generici rendono difficili le ricerche, abbina questo sistema alla [ri
   title="Tag e Spotlight valgono quanto i tuoi nomi file"
   description="Zush legge screenshot, PDF, foto e documenti e propone nomi ricercabili, così Spotlight e le cartelle smart hanno qualcosa da trovare. Anteprima prima di applicare, annulla dalla Cronologia. 50 rinomine gratuite, senza registrazione."
 />
+
+## Ordinare i file in cartelle con l'IA
+
+[Ordinare i file in cartelle con l'IA](/ai-file-sorter) — L’organizzazione facoltativa in cartelle con IA è in beta su Mac e Windows. Analizza il contenuto dei file compatibili e propone nomi e gruppi. Lascia Folder rules vuoto per Auto oppure descrivi i gruppi con parole tue. Naming Blocks definisce separatamente il formato dei nomi.
+
+> Raggruppa le fatture per azienda e le ricevute per mese. Chiama le cartelle mensili YYYY-MM.
+
+1. Aggiungi un piccolo lotto copiato in AI Rename e scegli un Template.
+2. Attiva + Sort e scegli Destination folder come radice delle sottocartelle. Senza una destinazione separata, la radice resta la cartella di origine.
+3. Descrivi i gruppi in Folder rules. Attiva Reuse existing folders per usare cartelle adatte nella destinazione; Zush può crearne di nuove se nessuna corrisponde.
+4. Controlla e correggi nomi e gruppi prima di applicare il lotto.
+
+![Zush su Mac mostra nomi proposti e gruppi di cartelle per contenuto prima di Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Salva destinazione e regole verificate nel Template. Monitor può rinominare e ordinare nuovi file che arrivano direttamente nella cartella monitorata; non riorganizza retroattivamente quelli già elaborati. Con ordinamento disattivato e destinazione originale, i file restano nella cartella attuale.
+
+[Guida passo passo all'ordinamento con IA](/blog/sort-files-into-folders-with-ai-mac) · [Documentazione dell'ordinamento in cartelle](/docs/folder-sorting) · [30 esempi di regole per cartelle](/blog/ai-folder-sorting-prompts).
+
+<span id="finder-tags-cross-folder-organization-without-moving-files"></span>
 
 ## Tag Finder: organizzare tra cartelle senza spostare i file
 
@@ -110,6 +129,8 @@ I **tag per tipo di contenuto** come `screenshot`, `export` o `raw-photo` aiutan
 />
 
 
+<span id="smart-folders-dynamic-views-without-moving-files"></span>
+
 ## Cartelle smart: viste dinamiche senza spostare i file
 
 Le cartelle smart su Mac non sono cartelle normali. Sono ricerche salvate che mostrano in tempo reale i file corrispondenti ai criteri. Uno stesso file può apparire in più cartelle smart senza essere duplicato, perché queste si limitano a farvi riferimento: non lo spostano né lo copiano.
@@ -161,6 +182,8 @@ Esempi di configurazione:
 - **«File grandi recenti»**: Data di modifica è negli ultimi 7 giorni + Dimensione è superiore a 50 MB
 - **«Materiali per il cliente»**: Tag è `client-alpha` + Tipo non è Cartella
 
+
+<span id="spotlight-fast-search-across-your-entire-mac"></span>
 
 ## Spotlight: ricerca rapida in tutto il Mac
 
@@ -248,6 +271,8 @@ Il sistema funziona senza riorganizzare la struttura delle cartelle. I file rest
 
 <BlogCTA placement='inline' platform='mac' />
 
+
+<span id="why-filenames-matter-more-than-any-of-these-tools"></span>
 
 ## Perché i nomi dei file contano più di tutti questi strumenti
 

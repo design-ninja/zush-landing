@@ -9,7 +9,7 @@ tags:
   - "File Organization"
   - "Photos"
 tldr: "Foto's ordenen op een Mac zijn twee taken: een bibliotheek om door te bladeren en bestandsnamen die je kunt doorzoeken. Gebruik Apple Photos voor een beheerde persoonlijke bibliotheek, Finder-mappen voor een draagbaar archief of een combinatie; gebruik Zush wanneer elk bestand nog IMG_8821.HEIC heet. Het vervangt geen albums, gezichtsherkenning, duplicatencontrole of back-up."
-reviewed: "2026-09-10"
+reviewed: "2026-09-28"
 locale: "nl"
 translationOf: "best-ways-to-organize-photos-on-mac"
 ---
@@ -45,6 +45,27 @@ Fotografen en videografen die een herhaalbare workflow nodig hebben voor RAW-opn
 
 Ga naar ['Apple Photos' versus 'Finder'](#apple-photos-vs-finder-folders-vs-a-hybrid-setup), [mapstructuren](#choose-a-folder-structure-that-scales), [zoekopdracht](#make-photos-searchable-with-spotlight-and-finder), [back-up](#back-up-your-photo-library-properly) of [herhaalbare importworkflow](#a-repeatable-import-workflow-for-thousands-of-photos).
 
+## Bestanden met AI in mappen sorteren
+
+[Bestanden met AI in mappen sorteren](/ai-file-sorter) — Optioneel sorteren in AI-mappen is in bèta op Mac en Windows. De inhoud van ondersteunde bestanden wordt gebruikt om namen en groepen voor te stellen. Laat Folder rules leeg voor Auto of beschrijf de groepen in gewone taal. Naming Blocks bepaalt apart het formaat van de bestandsnamen.
+
+> Groepeer afbeeldingen op onderwerp, bijvoorbeeld Mensen, Eten en Landschappen.
+
+1. Voeg een kleine gekopieerde batch toe in AI Rename en kies een Template.
+2. Schakel + Sort in en kies Destination folder als hoofdmap voor submappen. Zonder aparte bestemming blijft de bronmap de hoofdmap.
+3. Beschrijf de groepen in Folder rules. Gebruik Reuse existing folders voor passende mappen onder de bestemming; Zush kan nieuwe maken als geen bestaande past.
+4. Controleer en verbeter namen en groepen voordat je de batch toepast.
+
+![Zush op Mac met voorgestelde bestandsnamen en inhoudelijke mapgroepen vóór Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Bewaar de geteste bestemming en regels in het Template. Monitor kan nieuwe bestanden direct in de bewaakte map hernoemen en sorteren; reeds verwerkte bestanden worden niet achteraf opnieuw ingedeeld. Met sortering uit en de oorspronkelijke bestemming blijven bestanden in hun huidige map.
+
+Finder / File Explorer — Een bibliotheek beheert albums, gezichten, beoordelingen en zoekfuncties in een eigen database. Namen en echte mappen blijven zichtbaar in het bestandssysteem, op externe schijven en bij overdracht. Het programma werkt op bestandsniveau en vervangt geen albums, gezichtsherkenning, duplicaatcontrole of back-up.
+
+Finder — Test geëxporteerde foto's of een gekopieerde map. Verander geen bestanden binnen een Photos-bibliotheekpakket. Volg voor gecatalogiseerde originelen de hernoem- of koppelprocedure van het catalogusprogramma. Hernoemen en verplaatsen veranderen beide paden.
+
+[Stapsgewijze handleiding voor AI-mapsortering](/blog/sort-files-into-folders-with-ai-mac) · [Documentatie voor mapsortering](/docs/folder-sorting) · [30 voorbeelden van mapregels](/blog/ai-folder-sorting-prompts).
+
 ## Het Mac-foto-organisatiesysteem in 7 stappen
 
 1. **Kies de bibliotheek:** gebruik Apple Photos, Finder-mappen of beide afhankelijk van hoe je foto’s bekijkt en deelt.
@@ -66,6 +87,8 @@ Ga naar ['Apple Photos' versus 'Finder'](#apple-photos-vs-finder-folders-vs-a-hy
   ]}
 />
 
+<span id="apple-photos-vs-finder-folders-vs-a-hybrid-setup"></span>
+
 ## Apple Photos versus Finder mappen versus een hybride opstelling
 
 Kies het bibliotheekmodel voordat u iets reorganiseert. Apple Photos, Finder-mappen en een hybride opstelling kunnen allemaal werken, maar ze lossen verschillende ophaal- en opslagproblemen op.
@@ -81,6 +104,8 @@ Kies het bibliotheekmodel voordat u iets reorganiseert. Apple Photos, Finder-map
 Een concreet hybride voorbeeld is het bewaren van iPhone-familiefoto's in Apple Photos, terwijl een fotoshoot van een klant in `Pictures/Client-Work/2026/Acme-Launch/` blijft met zijn RAW-bestanden, selecties en exports. Persoonlijke foto's behouden het gemak van iCloud en klantbestanden blijven draagbaar en direct toegankelijk.
 
 Gebruik de [downloadbare Mac-fotomapsjabloon](/downloads/mac-photo-folder-template.txt) als uitgangspunt. Het scheidt persoonlijke gebeurtenissen, klantprojecten, een intakemap, export- en archiefstatussen zonder de bibliotheek aan één app te koppelen.
+
+<span id="choose-a-folder-structure-that-scales"></span>
 
 ## Kies een mapstructuur die schaalbaar is
 
@@ -154,6 +179,8 @@ Als deze bestanden de map `2026/03-March/Tokyo-Trip/` verlaten, reizen de opname
 Bij grote batches is het handmatig toevoegen van datums aan elke foto onpraktisch. [AI-bestandshernoemer voor Mac](/mac) kan automatisch beschrijvende bestandsnamen met datumpatronen genereren met behulp van aangepaste naamgevingssjablonen, zodat elke foto bij het importeren een betekenisvolle naam krijgt.
 
 
+<span id="make-photos-searchable-with-spotlight-and-finder"></span>
+
 ## Maak foto's doorzoekbaar met Spotlight en Finder
 
 Een mappenstructuur helpt wanneer u op de juiste plaats bladert. Maar de echte test voor het organiseren van foto's is of je een specifiek beeld kunt vinden als je niet meer weet waar het zich bevindt.
@@ -200,6 +227,8 @@ Vermijd het maken van tientallen overlappende categorieën. Tags zijn niet meer 
 
 Bewaar bijvoorbeeld `2026-06-04_acme-product-flatlay_017.cr3` in de Acme-projectmap en tag deze `client-review`. Wanneer de klant het goedkeurt, vervangt u de statustag door `approved`; het bestand blijft in dezelfde map en de tag weerspiegelt de workflowstatus in plaats van de mapstructuur te dupliceren.
 
+
+<span id="back-up-your-photo-library-properly"></span>
 
 ## Maak een goede back-up van uw fotobibliotheek
 
@@ -260,6 +289,8 @@ Bekijk een voorbeeld van de hele batch voordat u deze toepast. Als het patroon t
 
 
 <BlogCTA placement='inline' platform='mac' />
+
+<span id="a-repeatable-import-workflow-for-thousands-of-photos"></span>
 
 ## Een herhaalbare importworkflow voor duizenden foto's
 

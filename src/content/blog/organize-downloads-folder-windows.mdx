@@ -11,7 +11,7 @@ tags:
   - "Downloads"
   - "File Explorer"
 tldr: "The Downloads folder on Windows becomes manageable when you stop treating it as permanent storage. Rename files descriptively, separate inflow from archive, and automate the categories that keep returning."
-reviewed: "2026-09-27"
+reviewed: "2026-09-28"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
@@ -39,6 +39,24 @@ If you want the Windows app page first, go to [AI file renamer for Windows](/win
     { href: '/docs/folder-monitoring', label: 'Folder monitoring' },
   ]}
 />
+
+## Sort mixed files into folders with AI
+
+[Zush](/ai-file-sorter) can give supported files descriptive names and group them into real folders by content in the same batch. **AI folder sorting is in beta on Mac and Windows.** Leave **Folder rules** empty for Auto grouping, or describe the groups in plain language. For mixed files, try:
+
+> Group invoices by company and receipts by month.
+
+1. Add a small copied batch in **AI Rename** and select a Template.
+2. Enable **+ Sort** and choose the **Destination folder**, which is the root for the sorted subfolders. Without a separate destination, the source folder remains the root.
+3. Enter the grouping instruction in **Folder rules**. **Naming Blocks** set the filename format separately.
+4. Enable **Reuse existing folders** if suitable groups already exist inside the destination root. Zush can create a new folder when none fits.
+5. Review both the proposed names and folder groups. Correct folder names or file placement before applying the batch.
+
+![Zush for Windows previewing content-based folder groups and proposed filenames before Rename & sort](/images/showcase/windows/folder-sorting-light.webp)
+
+Save the tested destination and rules in the Template. Assign it to **Monitor** to rename and sort new files arriving directly inside the watched folder. This does not retroactively reorganize files already processed. With sorting off and the original destination selected, files keep their current folder.
+
+Follow the [step-by-step Windows sorting guide](/blog/sort-files-into-folders-with-ai-windows) or see the [folder sorting documentation](/docs/folder-sorting) and [30 example Folder rules](/blog/ai-folder-sorting-prompts).
 
 ## Rule 1: Downloads is an inbox, not an archive
 

@@ -8,7 +8,7 @@ topic: "search"
 tags:
   - "File Organization"
 tldr: "Finder tags, Smart Folders, and Spotlight are three built-in macOS tools that work best together. Tags add cross-folder meaning, Smart Folders create dynamic views, and Spotlight searches everything, but all three depend on files having useful names and metadata."
-reviewed: "2026-09-24"
+reviewed: "2026-09-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogCopyPatterns from '@/components/blog/BlogCopyPatterns.astro';
@@ -38,6 +38,18 @@ If your files are hard to search because their names are generic, pair this syst
   title='Tags and Spotlight only work as well as your filenames'
   description='Zush reads screenshots, PDFs, photos, and documents and proposes searchable names, so Spotlight and Smart Folders have something to match. Preview before applying, undo from History. 50 free renames, no signup.'
 />
+
+## Sort files that need physical folders into folders with AI
+
+[Zush](/ai-file-sorter) can give supported files descriptive names and group them into real folders by content in the same batch. **AI folder sorting is in beta on Mac and Windows.** Leave **Folder rules** empty for Auto grouping, or describe the groups in plain language. For files that need physical folders, try:
+
+> Group invoices by company and receipts by month.
+
+Choose the destination root, optionally enable **Reuse existing folders**, and review the names and groups before applying. Save the tested setup in a Template for Monitor; it can process new arrivals directly inside a watched folder. Naming Blocks control filenames separately from Folder rules.
+
+![Zush for Mac previewing content-based folder groups and proposed filenames before Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Follow the [step-by-step Mac sorting guide](/blog/sort-files-into-folders-with-ai-mac) or see the [folder sorting documentation](/docs/folder-sorting) and [30 example Folder rules](/blog/ai-folder-sorting-prompts).
 
 ## Finder tags: cross-folder organization without moving files
 

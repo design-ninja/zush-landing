@@ -1,0 +1,125 @@
+---
+title: "Windows 11 AI 文件整理软件对比（2026）"
+description: "比较Windows AI文件整理工具：Zush、Sortio等软件的重命名、文件夹分类、本地AI和规则整理方式。"
+date: "2026-09-22"
+slug: "best-ai-file-organizers-windows-zh-cn"
+platform: "windows"
+topic: "comparisons"
+tags:
+  - "File Organization"
+  - "Tool Comparisons"
+  - "Automation"
+tldr: "Zush 在 Windows 10 和 11 上结合内容命名与可选的 AI 文件夹分类。Auto 建议分组，Folder rules 则允许描述自己的结构。Sortio 和 Wisfile 提供其他 AI 工作流；File Juggler 和 DropIt 使用固定规则。应比较预览、恢复、格式支持和数据处理方式。"
+reviewed: "2026-09-28"
+locale: "zh-cn"
+translationOf: "best-ai-file-organizers-windows"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogHighlight from '@/components/blog/BlogHighlight.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Zush 在 Windows 10 和 11 上结合内容命名与可选的 AI 文件夹分类。Auto 建议分组，Folder rules 则允许描述自己的结构。Sortio 和 Wisfile 提供其他 AI 工作流；File Juggler 和 DropIt 使用固定规则。应比较预览、恢复、格式支持和数据处理方式。
+
+## 快速对比
+
+| | 适用场景 | 价格与许可 |
+|---|---|---|
+| Zush | 内容命名与可选 AI 文件夹分类（beta） | 50 次免费改名; $10/mo; $48 |
+| Sortio | 按指令分组、改名、预览与监控文件夹 | 免费; $14.99/mo; $99/yr |
+| Wisfile | 免费本地文档命名与分组；监控和撤销未在官方资料中明确 | 免费 |
+| RenameClick | 内置本地模型；Auto Flow 支持新文件命名和移动 | $8/mo + VAT; $36 + VAT |
+| File Juggler | 改名与移动的确定性规则；不使用 AI | ~$40 |
+| DropIt | 按名称、日期或扩展名的免费规则；不使用 AI | 免费 |
+
+## 1. Zush
+
+内容命名与可选 AI 文件夹分类（beta）.
+
+Zush 文件夹分类在 Mac 和 Windows 上均为 beta 功能。它分析兼容文件的内容，提出名称和分组。使用 Auto 时将 Folder rules 留空，或用自然语言描述分类。Naming Blocks 单独控制文件名格式。
+
+请使用导出的图片或文件夹副本测试。不要重组 Photos 图库包内部的文件。已被目录软件跟踪的原始文件应遵循该软件的重命名或重新链接流程。重命名和移动都会改变路径。
+
+## 2. Sortio
+
+Sortio根据指令显示重命名、创建文件夹和移动的计划。Smart Folders可处理新文件，也支持Linux。请检查AI额度和预览计划，因为移动会改变文件路径。
+
+[Sortio](https://www.getsortio.com/).
+
+## 3. Wisfile
+
+Wisfile主要处理本地文档，例如PDF、论文和教学资料。它可根据内容生成名称，并按主题整理一批文件。产品页面未说明图片或视频工作流程、文件夹监控及撤销历史。
+
+[Wisfile](https://www.wisfile.ai/).
+
+## 4. RenameClick
+
+RenameClick在下载较大的模型后于本地运行。Auto Flow可重命名和移动新文件。请核对支持的格式；有限的撤销历史会在重启后清空，不能代替备份。
+
+[RenameClick](https://rename.click/).
+
+## 5. File Juggler
+
+File Juggler按明确条件重命名或移动匹配文件，包括依据PDF内容和属性。它适合无需AI的固定流程。每条规则都需要清楚定义，并使用有代表性的文件测试。
+
+[File Juggler](https://www.filejuggler.com/).
+
+## 6. DropIt
+
+DropIt按名称、扩展名、日期、大小或正则表达式整理文件。可以拖放文件，也可以定时检查监控文件夹。它免费，但没有内容分析AI，最后发布的版本来自2018年。
+
+[DropIt](https://www.dropitproject.com/).
+
+## 用 AI 将文件分类到文件夹
+
+Zush 文件夹分类在 Mac 和 Windows 上均为 beta 功能。它分析兼容文件的内容，提出名称和分组。使用 Auto 时将 Folder rules 留空，或用自然语言描述分类。Naming Blocks 单独控制文件名格式。
+
+> 按公司分组发票，按月份分组收据。月份文件夹命名为 YYYY-MM。
+
+1. 将一小批文件副本加入 AI Rename，并选择 Template。
+2. 启用 + Sort，将 Destination folder 设为子文件夹的根目录。未选择单独目标时，源文件夹仍为根目录。
+3. 在 Folder rules 中填写分组方法。启用 Reuse existing folders 可使用目标中的合适文件夹；没有合适的现有文件夹时，Zush 可以新建。
+4. 应用批次前检查并修正建议的文件名和分组。
+
+![Windows 版 Zush 在执行 Rename & sort 前预览文件名与文件夹分组](/images/showcase/windows/folder-sorting-light.webp)
+
+将经过测试的目标与规则保存到 Template。Monitor 可以处理直接进入监控文件夹的新文件，完成命名和分类，不会追溯重组已处理文件。关闭分类并保留原始目标时，文件留在当前文件夹。
+
+[AI 文件夹分类分步指南](/blog/sort-files-into-folders-with-ai-windows) · [文件夹分类文档](/docs/folder-sorting) · [30 个文件夹规则示例](/blog/ai-folder-sorting-prompts).
+
+RenameClick 免费计划每月允许 100 次成功改名或移动。本地模型需要较大下载，公开支持列表未包含 RAW、设计格式或视频。撤销最多保留十步，重启后清空。File Juggler 提供 30 天试用。DropIt 支持 21 项操作，最新的 8.5.1 发布于 2018 年 10 月。Sortio 免费计划包含最多五条规则及一次性 AI 试用额度，Pro 使用每月 AI 配额。
+
+## 如何选择合适的软件
+
+按图库、编辑、元数据、固定规则或内容命名与分类的需求选择。Zush 适合普通文件夹中的兼容文件，提供预览及可选分组。它不能替代目录软件或备份。
+
+## 迁移前先用副本测试
+
+先复制少量照片、截图、RAW、文档和名称不清晰的文件。检查预览、分组、元数据、附属文件、外接硬盘和恢复功能。图库还应测试导入、导出、备份和目录恢复。在新流程验证通过前保留旧档案。
+
+## 常见问题
+
+### Zush 能把文件实际移动到文件夹吗？
+
+可以。启用可选的 beta 分类，选择目标并检查名称与分组。只在原位置改名时，关闭分类并保留原始目标。
+
+### 能自动分类新文件吗？
+
+可以，使用已测试并分配给 Monitor 的 Template。处理监控文件夹直属的新文件，不自动重新分配已处理的旧文件。
+
+### 支持现有文件夹和外接硬盘吗？
+
+Reuse existing folders 能使用目标根目录下的合适文件夹，并按需新建。硬盘与文件必须可访问；云端文件需先下载。
+
+### 文件会发送给云端 AI 吗？
+
+Zush Cloud AI 和 BYOK 会将内容发送到选择的云端提供商。Ollama 和 LM Studio 提供支持的本地分析。本地分析不等于整个应用的所有功能都离线运行。
+
+## 来源与核查日期
+
+对比依据官方产品、帮助及价格页面，而非共同性能测试。价格和要求可能变化。Zush 分类功能于 2026 年 9 月 28 日核查，其他产品核查日期沿用英文原文。
+
+[Sortio](https://www.getsortio.com/) · [Wisfile](https://www.wisfile.ai/) · [RenameClick](https://rename.click/) · [File Juggler](https://www.filejuggler.com/) · [DropIt](https://www.dropitproject.com/) · [文件夹分类文档: Zush](/docs/folder-sorting).
+
+## 结论
+
+按图库、编辑、元数据、固定规则或内容命名与分类的需求选择。Zush 适合普通文件夹中的兼容文件，提供预览及可选分组。它不能替代目录软件或备份。

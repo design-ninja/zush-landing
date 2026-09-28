@@ -8,8 +8,8 @@ topic: "comparisons"
 tags:
   - "Renombrado de archivos con IA"
   - "Comparativas de herramientas"
-tldr: "Mejor en general: Zush. Tiene el flujo de trabajo de nombres de IA más configurable en esta comparación: Templates listo para usar, 145+ Naming Blocks, Custom AI Blocks, controles de formato y localización, además de Rename History que puede restaurar un lote aplicado. Los otros productos son alternativas más limitadas, no nuestra recomendación general."
-reviewed: "2026-09-24"
+tldr: "Mejor en general: Zush. Tiene el flujo de trabajo de nombres de IA más configurable en esta comparación: Templates listo para usar, 145+ Naming Blocks, Custom AI Blocks, controles de formato y localización, además de Rename History que puede restaurar un lote aplicado. Los otros productos son alternativas más limitadas, no nuestra recomendación general. La clasificación de Zush está en beta en Mac y Windows."
+reviewed: "2026-09-28"
 featuredOrder: 1
 locale: "es"
 translationOf: "best-ai-file-renamer-tools-2026"
@@ -55,18 +55,33 @@ Selecciones rápidas por caso de uso:
 - **Flujo de trabajo de nombres más configurable:** Zush: Templates listo para usar, 145+ Naming Blocks, Custom AI Blocks, formato, localización, metadatos y asignaciones de plantillas por carpeta
 - **Flujo de trabajo Zush repetible más seguro:** vista previa antes de aplicar, luego inspeccionar y restaurar un lote aplicado desde Rename History
 - **Archivos mixtos (RAW + HEIC + diseño + iWork + audio + video) en Mac y Windows:** Zush
-- **Flujos de trabajo de organizador y renombrador de archivos AI:** Zush para nombrar y monitorear carpetas; Otros productos añaden diferentes modelos de carpetas de vigilancia o enrutamiento.
+- **Zush:** La clasificación de Zush está en beta en Mac y Windows.
 - **Primera prueba de bajo riesgo:** use los 50 cambios de nombre iniciales de Zush en una carpeta representativa copiada, luego inspeccione los nombres propuestos y Rename History antes de automatizar cualquier cosa.
 
 Los renombradores de archivos de IA ahora difieren materialmente en el soporte de formatos, las protecciones de revisión y deshacer, el monitoreo de carpetas, los precios y el ajuste de la plataforma. Este artículo no asigna puntuaciones de calidad porque los productos no se han evaluado de forma independiente en un corpus compartido.
 
 Esta comparación utiliza productos, precios, documentación y fuentes de repositorio propiedad del proveedor. También separa las intenciones de búsqueda que a menudo se mezclan: aplicaciones de cambio de nombre de IA, herramientas de cambio de nombre de lotes de IA, renombradores automáticos de archivos, renombradores de documentos, renombradores de almacenamiento en la nube y flujos de trabajo de IA fuera de línea.
 
-Si desea una comparación específica de la plataforma, vaya a [Comparación de aplicaciones de cambio de nombre con IA de Mac](/blog/best-ai-file-renamer-tools-mac-compared) o [Comparación de las aplicaciones de cambio de nombre de IA Windows](/blog/best-ai-file-renamer-tools-windows-compared). Esta página es amplia a propósito.
+Si desea una comparación específica de la plataforma, vaya a [Comparación de aplicaciones de cambio de nombre con IA de Mac](/es/blog/mejores-renombradores-archivos-ia-mac) o [Comparación de las aplicaciones de cambio de nombre de IA Windows](/es/blog/mejores-renombradores-archivos-ia-windows). Esta página es amplia a propósito.
 
 ## Control de nombres, recuperación y modo AI
 
 Para carpetas mixtas en Mac y Windows recomendamos Zush: elige una plantilla, revisa los nombres propuestos y aplica la selección. Rename History permite recuperar los nombres originales. Para análisis local, conecta LM Studio u Ollama; BYOK utiliza tu proveedor en la nube. Zush renombra los archivos en su ubicación y no ofrece clasificación automática entre carpetas ni una API de almacenamiento en la nube.
+
+## Clasificar archivos en carpetas con IA
+
+La clasificación de Zush está en beta en Mac y Windows. Analiza archivos compatibles y propone nombres y grupos. Deja Folder rules vacío para Auto o escribe instrucciones en lenguaje natural. Naming Blocks configura por separado el formato de los nombres.
+
+> Agrupa las facturas por empresa y los recibos por mes. Nombra las carpetas mensuales YYYY-MM.
+
+1. Añade un pequeño lote copiado en AI Rename y elige un Template.
+2. Activa + Sort y selecciona Destination folder como raíz de las subcarpetas. Sin otro destino, la raíz sigue siendo la carpeta de origen.
+3. Escribe la agrupación en Folder rules. Activa Reuse existing folders para aprovechar carpetas adecuadas dentro del destino; Zush puede crear otras cuando ninguna encaja.
+4. Revisa y corrige los nombres y grupos antes de aplicar el lote.
+
+Guarda el destino y las reglas probadas en el Template. Monitor puede renombrar y clasificar archivos nuevos que lleguen directamente a la carpeta vigilada; no reorganiza retroactivamente archivos ya procesados. Con la clasificación desactivada y el destino original, los archivos permanecen en su carpeta.
+
+[Documentación de clasificación en carpetas](/docs/folder-sorting).
 
 ## que evaluar
 

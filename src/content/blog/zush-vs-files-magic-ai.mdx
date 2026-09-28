@@ -9,16 +9,16 @@ tags:
   - "Tool Comparisons"
   - "AI File Renaming"
   - "File Organization"
-tldr: "Files Magic AI is a Mac utility that reorganizes folders, renames files, and cleans up duplicates and caches. Zush is a dedicated AI renamer for Mac and Windows with more naming control, folder monitoring, and a full Rename History. Choose Files Magic AI for an all-in-one cleanup; choose Zush when searchable filenames are the goal."
-reviewed: "2026-09-24"
+tldr: "Zush combines content-aware names and optional AI folder sorting (beta) on Mac and Windows, with configurable Templates, Monitor, and Rename History. Files Magic AI also offers folder organization and renaming, plus system cleanup. Compare the grouping workflow, naming controls, and cleanup needs separately."
+reviewed: "2026-09-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: pick **Files Magic AI** if you want one Mac app that proposes a new folder structure, renames files, and cleans up duplicates and developer caches. Pick [Zush](/mac) if the problem is filenames: it gives you more control over how names are built, watches folders for new files, keeps a full undo history, and also runs on Windows.
+Quick answer: pick **Files Magic AI** if you want one Mac app that proposes a new folder structure, renames files, and cleans up duplicates and developer caches. Pick [Zush](/mac) for content-aware names and optional AI folder groups (beta): it gives you more control over how names are built, watches folders for new files, keeps a full undo history, and also runs on Windows.
 
-They overlap on one feature, content-based renaming, and differ on almost everything else.
+Both offer renaming and folder organization. Compare how they analyze files, control names and groups, automate new arrivals, and handle cleanup.
 
 **Last checked: September 24, 2026.** Written by the maker of Zush. Files Magic AI details come from its [official page](https://1dot.ai/files-magic-ai).
 
@@ -26,9 +26,9 @@ They overlap on one feature, content-based renaming, and differ on almost everyt
 
 | | Zush | Files Magic AI |
 |---|---|---|
-| Main job | <BlogHighlight>Renames files in place by content</BlogHighlight> | Reorganizes folders, renames, cleans the system |
+| Main job | <BlogHighlight>Renames by content and optionally sorts into AI folders (beta)</BlogHighlight> | Reorganizes folders, renames, cleans the system |
 | Platforms | Mac (macOS 15+) and Windows 10/11 | Mac only (macOS 12+) |
-| Moves files into folders | No | Yes, proposes a folder structure |
+| Moves files into folders | Yes, optional AI sorting (beta) | Yes, proposes a folder structure |
 | Naming control | Templates, 145+ Naming Blocks, Custom AI Blocks, case, separators, language | Magic Rename suggestions |
 | File types | 100+: images incl. RAW/HEIC, PDFs, Office/iWork, design files, video, audio | PDFs, spreadsheets, presentations, photos (with OCR) |
 | Where AI runs | Zush Cloud AI, BYOK, or local Ollama / LM Studio | Rename: on device (Apple Intelligence, built-in model, or optional LLM). Organize: filenames sent to the cloud |
@@ -51,7 +51,7 @@ It is a good fit if you want one inexpensive utility for a messy Mac and you are
 
 ## What Zush does differently
 
-[Zush](/mac) is only about names, and it goes deep on them.
+[Zush](/mac) combines detailed filename controls with optional content-based folder sorting (beta).
 
 **You decide the shape of every name.** Pick a ready-made Template (Screenshots, Bookkeeper Expenses, Photographer Shoots, Client Meeting Notes, and others) or build your own from Naming Blocks: date, vendor, amount, client, scene, capture date, document type. Custom AI Blocks let you ask for any field in plain language. The result is a name that follows the same pattern every time:
 
@@ -70,6 +70,24 @@ It is a good fit if you want one inexpensive utility for a messy Mac and you are
 Zush optionally sorts files into AI-named folders (beta) and lets you choose a destination. It does not clean up disk space.
 
 <BlogCTA placement='inline' platform='mac' />
+
+## Sort mixed files into folders with AI
+
+[Zush](/ai-file-sorter) can give supported files descriptive names and group them into real folders by content in the same batch. **AI folder sorting is in beta on Mac and Windows.** Leave **Folder rules** empty for Auto grouping, or describe the groups in plain language. For mixed files, try:
+
+> Group invoices by company and receipts by month.
+
+1. Add a small copied batch in **AI Rename** and select a Template.
+2. Enable **+ Sort** and choose the **Destination folder**, which is the root for the sorted subfolders. Without a separate destination, the source folder remains the root.
+3. Enter the grouping instruction in **Folder rules**. **Naming Blocks** set the filename format separately.
+4. Enable **Reuse existing folders** if suitable groups already exist inside the destination root. Zush can create a new folder when none fits.
+5. Review both the proposed names and folder groups. Correct folder names or file placement before applying the batch.
+
+![Zush for Mac previewing content-based folder groups and proposed filenames before Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Save the tested destination and rules in the Template. Assign it to **Monitor** to rename and sort new files arriving directly inside the watched folder. This does not retroactively reorganize files already processed. With sorting off and the original destination selected, files keep their current folder.
+
+Follow the [step-by-step Mac sorting guide](/blog/sort-files-into-folders-with-ai-mac) or see the [folder sorting documentation](/docs/folder-sorting) and [30 example Folder rules](/blog/ai-folder-sorting-prompts).
 
 ## Privacy compared
 

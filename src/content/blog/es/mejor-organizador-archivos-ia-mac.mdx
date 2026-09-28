@@ -10,7 +10,7 @@ tags:
   - "Comparativas de herramientas"
   - "Automatización"
 tldr: "Zush es el mejor organizador de archivos con IA para Mac: renombra los archivos según su contenido y los ordena en carpetas con Auto o con tus propias reglas en lenguaje natural, por ejemplo «Agrupar facturas por empresa y recibos por mes». Templates, 145+ Naming Blocks, Monitor y Rename History hacen el flujo configurable y reversible. La ordenación en carpetas está en beta."
-reviewed: "2026-09-27"
+reviewed: "2026-09-28"
 locale: "es"
 translationOf: "best-ai-file-organizers-mac"
 ---
@@ -35,7 +35,7 @@ Fuentes verificadas: [Hazel](https://www.noodlesoft.com/) y la [tienda Noodlesof
 
 ## ¿Qué es un organizador de archivos AI?
 
-Un organizador de archivos con IA analiza los nombres de los archivos, los metadatos o el contenido de los archivos para ayudar a que una carpeta sea más fácil de explorar y buscar. Zush organiza la capa de nombres convirtiendo nombres de archivos débiles en nombres consistentes y conscientes del contenido; otras herramientas pueden crear carpetas y mover archivos a ellas. Una comparación útil debe indicar qué acción realiza una aplicación, porque cambiar el nombre en un lugar y reestructurar un árbol de carpetas conlleva riesgos diferentes.
+La clasificación de Zush está en beta en Mac y Windows. Analiza archivos compatibles y propone nombres y grupos. Deja Folder rules vacío para Auto o escribe instrucciones en lenguaje natural. Naming Blocks configura por separado el formato de los nombres.
 
 Por ejemplo, una factura denominada `scan_0042.pdf` puede convertirse en `2026-07-18_Acme_INV-1042.pdf` sin cambiar su ubicación. En su lugar, una aplicación de clasificación podría mover ese archivo a `Finanzas/Facturas/2026/Acme/`. Ambos resultados pueden ser útiles, pero solo el segundo cambia las rutas que pueden esperar los accesos directos, las herramientas de sincronización o los archivos de proyecto.
 
@@ -43,17 +43,34 @@ Por ejemplo, una factura denominada `scan_0042.pdf` puede convertirse en `2026-0
 
 Esta es una comparación respaldada por fuentes, no un punto de referencia independiente de las siete aplicaciones. Comparamos los flujos de trabajo con los mismos trabajos prácticos: nombrar archivos mixtos, enrutar descargas predecibles, manejar los recién llegados, obtener una vista previa de los cambios y revertir un lote defectuoso. No se infieren capacidades indocumentadas. La evaluación reproducible de 10 archivos que aparece más adelante en la guía es un método que los lectores pueden ejecutar por sí mismos.
 
+## Clasificar archivos en carpetas con IA
+
+[Zush](/ai-file-sorter) — La clasificación de Zush está en beta en Mac y Windows. Analiza archivos compatibles y propone nombres y grupos. Deja Folder rules vacío para Auto o escribe instrucciones en lenguaje natural. Naming Blocks configura por separado el formato de los nombres.
+
+> Agrupa las facturas por empresa y los recibos por mes. Nombra las carpetas mensuales YYYY-MM.
+
+1. Añade un pequeño lote copiado en AI Rename y elige un Template.
+2. Activa + Sort y selecciona Destination folder como raíz de las subcarpetas. Sin otro destino, la raíz sigue siendo la carpeta de origen.
+3. Escribe la agrupación en Folder rules. Activa Reuse existing folders para aprovechar carpetas adecuadas dentro del destino; Zush puede crear otras cuando ninguna encaja.
+4. Revisa y corrige los nombres y grupos antes de aplicar el lote.
+
+![Zush en Mac mostrando nombres propuestos y grupos de carpetas por contenido antes de Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Guarda el destino y las reglas probadas en el Template. Monitor puede renombrar y clasificar archivos nuevos que lleguen directamente a la carpeta vigilada; no reorganiza retroactivamente archivos ya procesados. Con la clasificación desactivada y el destino original, los archivos permanecen en su carpeta.
+
+[Guía paso a paso de clasificación con IA](/blog/sort-files-into-folders-with-ai-mac) · [Documentación de clasificación en carpetas](/docs/folder-sorting) · [30 ejemplos de reglas para carpetas](/blog/ai-folder-sorting-prompts).
+
 ## Organizadores de archivos AI para Mac: comparación rápida
 
 |Aplicación|Modelo de precios|control de nombres|Plataforma|¿Mueve archivos o cambia el nombre en su lugar?|Recuperación|
 |---|---|---|---|---|---|
-|Zush|Inicio libre; $10/mes o $48 por única vez, pago PRO sin medidor|<BlogHighlight>Listo para usar Templates, 145+ Naming Blocks, Custom AI Blocks, formato, localización, metadatos</BlogHighlight>|Mac, Windows| Renombra en el mismo sitio u ordena en carpetas con tus reglas en lenguaje natural o con Auto (beta) |Rename History completo con nombres originales/nuevos, carpeta, hora y reversión|
-|Hazel 6|$42 por única vez|Reglas deterministas y cambio de nombre de patrón.|Impermeable|Movimientos, etiquetas, archivos y cambios de nombre de patrones|Revertir soporte|
-|Brillar|Suscripción; La página de planes mostraba $119/año, más una oferta de por vida de $179.|Organización creada por IA; Los controles de nombre de archivo no son centrales.|Impermeable|Crea carpetas y mueve archivos.|Revertir cambios|
-|NameQuick|Administrado con medidor medido de $12 a $99/mes; $69 por única vez Autogestionado|Presets, indicaciones y reglas condicionales|Impermeable; Windows también disponible|Cambia el nombre; Las reglas pueden mover archivos|Deshacer con un clic|
+|Zush|Prueba gratuita;  $10/mes o $48 por única vez, pago PRO sin medidor|<BlogHighlight>Listo para usar Templates, 145+ Naming Blocks, Custom AI Blocks, formato, localización, metadatos</BlogHighlight>|Mac, Windows| Renombra en el mismo sitio u ordena en carpetas con tus reglas en lenguaje natural o con Auto (beta) |Rename History completo con nombres originales/nuevos, carpeta, hora y reversión|
+|Hazel 6|$42 por única vez|Reglas deterministas y cambio de nombre de patrón.|Mac|Movimientos, etiquetas, archivos y cambios de nombre de patrones|Permite revertir cambios|
+|Sparkle|Suscripción; La página de planes mostraba $119/año, más una oferta de por vida de $179.|Organización creada por IA; Los controles de nombre de archivo no son centrales.|Mac|Crea carpetas y mueve archivos.|Revertir cambios|
+|NameQuick|Administrado con medidor medido de $12 a $99/mes; $69 por única vez Autogestionado|Presets, indicaciones y reglas condicionales|Mac; Windows también disponible|Cambia el nombre; Las reglas pueden mover archivos|Deshacer con un clic|
 |sortio|Gratis; Pro $14.99/mes o $99/año|Instrucciones en lenguaje natural para nombrar y enrutar|Mac, Windows, Linux|Cambia el nombre, crea carpetas y enruta archivos|Vista previa y revertir|
 |floxtop|Gratis para 100 archivos/mes; Pro $19.99 por única vez|Carpetas sugeridas; cambio de nombre inteligente opcional|Mac, Apple Silicio|Sugiere carpetas y mueve archivos aprobados; cambio de nombre opcional|Revisar antes de mudarse; deshacer no declarado públicamente|
-|Archivos Magia AI|$4.99/mes, $29/año o $49.99 de por vida|Magic Rename más estructura de carpetas propuesta|Impermeable|Propone estructura de carpetas, mueve archivos y puede cambiarles el nombre.|Deshacer acción reciente|
+|Files Magic AI|$4.99/mes, $29/año o $49.99 de por vida|Magic Rename más estructura de carpetas propuesta|Mac|Propone estructura de carpetas, mueve archivos y puede cambiarles el nombre.|Deshacer acción reciente|
 
 El cuadro expone la división principal. Zush le brinda al usuario el control documentado más profundo sobre el nombre del archivo; la mayoría de las alternativas se centran más en mover archivos o aplicar reglas de organización más amplias. El procesamiento local existe en varias entradas, por lo que no se trata como una ventaja única. Zush PRO también es inusual en este grupo porque su flujo de trabajo pagado en la nube administrada no está medido y no requiere BYOK.
 

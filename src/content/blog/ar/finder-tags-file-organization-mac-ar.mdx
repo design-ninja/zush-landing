@@ -10,7 +10,7 @@ topic: "search"
 tags:
   - "تنظيم الملف"
 tldr: "تعد علامات Finder وSmart Folders وSpotlight ثلاث أدوات مدمجة في نظام التشغيل macOS تعمل بشكل أفضل معًا. تضيف العلامات معنى عبر المجلدات، وتنشئ المجلدات الذكية طرق عرض ديناميكية، ويبحث Spotlight في كل شيء، ولكن الثلاثة يعتمدون جميعًا على الملفات التي تحتوي على أسماء وبيانات تعريف مفيدة."
-reviewed: "2026-09-24"
+reviewed: "2026-09-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogCopyPatterns from '@/components/blog/BlogCopyPatterns.astro';
@@ -40,6 +40,25 @@ import BlogSafetyNote from '@/components/blog/BlogSafetyNote.astro';
   title="التصنيفات وSpotlight بقدر جودة أسماء ملفاتك"
   description="يقرأ Zush لقطات الشاشة وملفات PDF والصور والمستندات ويقترح أسماء قابلة للبحث، حتى يجد Spotlight والمجلدات الذكية ما تبحث عنه. عاين قبل التطبيق وتراجع من السجل. 50 عملية إعادة تسمية مجانية، بدون تسجيل."
 />
+
+## فرز الملفات في مجلدات بالذكاء الاصطناعي
+
+Zush — [فرز الملفات في مجلدات بالذكاء الاصطناعي](/ai-file-sorter) — فرز المجلدات في فرز الملفات في مجلدات بالذكاء الاصطناعي متاح بمرحلة بيتا على Mac وWindows. يحلل محتوى الملفات المدعومة ويقترح أسماء ومجموعات. اترك Folder rules فارغًا لاستخدام Auto أو صف التجميع بلغة طبيعية. تضبط Naming Blocks صيغة أسماء الملفات بصورة منفصلة.
+
+> جمّع الفواتير بحسب الشركة والإيصالات بحسب الشهر. سمّ مجلدات الأشهر YYYY-MM.
+
+1. أضف دفعة صغيرة من النسخ في AI Rename واختر Template.
+2. فعّل + Sort واختر Destination folder ليكون جذر المجلدات الفرعية. دون وجهة منفصلة يبقى مجلد المصدر هو الجذر.
+3. اكتب التجميع في Folder rules. فعّل Reuse existing folders لاستخدام مجلدات مناسبة داخل الوجهة؛ يمكن إنشاء مجلدات جديدة عند الحاجة.
+4. راجع الأسماء والمجموعات المقترحة وعدّلها قبل تطبيق الدفعة.
+
+![يعرض Zush على Mac أسماء الملفات المقترحة ومجموعات المجلدات بحسب المحتوى قبل تنفيذ Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+احفظ الوجهة والقواعد التي اختبرتها في Template. يستطيع Monitor تسمية وفرز الملفات الجديدة الواصلة مباشرة إلى المجلد المراقب، ولا يعيد تنظيم الملفات المعالجة سابقًا بأثر رجعي. عند تعطيل الفرز والإبقاء على الوجهة الأصلية، تظل الملفات في مجلدها الحالي.
+
+[دليل فرز المجلدات بالذكاء الاصطناعي خطوة بخطوة](/blog/sort-files-into-folders-with-ai-mac) · [وثائق فرز المجلدات](/docs/folder-sorting) · [30 مثالًا لقواعد المجلدات](/blog/ai-folder-sorting-prompts).
+
+<span id="finder-tags-cross-folder-organization-without-moving-files"></span>
 
 ## علامات Finder: تنظيم المجلدات المتقاطعة دون نقل الملفات
 
@@ -106,6 +125,8 @@ import BlogSafetyNote from '@/components/blog/BlogSafetyNote.astro';
   ]}
 />
 
+<span id="smart-folders-dynamic-views-without-moving-files"></span>
+
 ## المجلدات الذكية: طرق عرض ديناميكية دون نقل الملفات
 
 المجلدات الذكية على نظام Mac ليست مجلدات عادية. إنها عمليات بحث محفوظة تعرض الملفات المطابقة لمعاييرك في الوقت الفعلي. يمكن أن يظهر ملف واحد في عدة مجلدات ذكية دون تكراره، لأن المجلدات الذكية تشير فقط إلى الملفات - ولا تنقلها أو تنسخها أبدًا.
@@ -154,6 +175,8 @@ import BlogSafetyNote from '@/components/blog/BlogSafetyNote.astro';
 - **"قائمة انتظار المراجعة"** — النوع هو صورة + العلامة هي `to-review`
 - **"الملفات الكبيرة الأخيرة"** — تاريخ التعديل يقع خلال آخر 7 أيام + الحجم أكبر من 50 ميجابايت
 - **"تسليمات العميل"** — العلامة هي `client-alpha` + النوع ليس مجلدًا
+
+<span id="spotlight-fast-search-across-your-entire-mac"></span>
 
 ## Spotlight: بحث سريع عبر جهاز Mac بأكمله
 
@@ -238,6 +261,8 @@ Spotlight هو أسرع طريقة للعثور على الملفات على ن�
 />
 
 <BlogCTA placement='inline' platform='mac' />
+
+<span id="why-filenames-matter-more-than-any-of-these-tools"></span>
 
 ## لماذا تعد أسماء الملفات أكثر أهمية من أي من هذه الأدوات
 

@@ -9,7 +9,7 @@ tags:
   - "Organización de archivos"
   - "Fotos"
 tldr: "Organizar fotos en un Mac son dos tareas: una biblioteca que puedas explorar y nombres de archivo que puedas buscar. Usa Apple Photos para una biblioteca personal gestionada, carpetas del Finder para un archivo portátil o ambas cosas; usa Zush cuando cada archivo se sigue llamando IMG_8821.HEIC. No sustituye álbumes, búsqueda de caras, revisión de duplicados ni copias de seguridad."
-reviewed: "2026-09-10"
+reviewed: "2026-09-28"
 locale: "es"
 translationOf: "best-ways-to-organize-photos-on-mac"
 ---
@@ -45,6 +45,27 @@ Los fotógrafos y videógrafos que necesitan un flujo de trabajo repetible para 
 
 Salte a ["Apple Photos" frente a "Finder"](#apple-photos-vs-finder-folders-vs-a-hybrid-setup), [estructuras de carpetas](#choose-a-folder-structure-that-scales), [buscar](#make-photos-searchable-with-spotlight-and-finder), [respaldo](#back-up-your-photo-library-properly) o [flujo de trabajo de importación repetible](#a-repeatable-import-workflow-for-thousands-of-photos).
 
+## Clasificar archivos en carpetas con IA
+
+[Clasificar archivos en carpetas con IA](/ai-file-sorter) — La organización opcional en carpetas con IA está en beta en Mac y Windows. Analiza el contenido de los archivos compatibles y propone nombres y grupos. Deja Folder rules vacío para Auto o describe los grupos con tus palabras. Naming Blocks define por separado el formato de los nombres.
+
+> Agrupa las imágenes por tema, como Personas, Comida y Paisajes.
+
+1. Añade un pequeño lote copiado en AI Rename y elige un Template.
+2. Activa + Sort y selecciona Destination folder como raíz de las subcarpetas. Sin otro destino, la raíz sigue siendo la carpeta de origen.
+3. Escribe la agrupación en Folder rules. Activa Reuse existing folders para aprovechar carpetas adecuadas dentro del destino; Zush puede crear otras cuando ninguna encaja.
+4. Revisa y corrige los nombres y grupos antes de aplicar el lote.
+
+![Zush en Mac mostrando nombres propuestos y grupos de carpetas por contenido antes de Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Guarda el destino y las reglas probadas en el Template. Monitor puede renombrar y clasificar archivos nuevos que lleguen directamente a la carpeta vigilada; no reorganiza retroactivamente archivos ya procesados. Con la clasificación desactivada y el destino original, los archivos permanecen en su carpeta.
+
+Finder / File Explorer — Una fototeca gestiona álbumes, caras, valoraciones y búsquedas en su base de datos. Los nombres y las carpetas reales siguen visibles en el sistema de archivos, discos externos y entregas. El programa actúa sobre los archivos; no sustituye álbumes, reconocimiento facial, eliminación de duplicados ni copias de seguridad.
+
+Finder — Prueba imágenes exportadas o una carpeta copiada. No reorganices el interior de una fototeca Photos. Para originales ya catalogados, sigue el procedimiento de renombrado o revinculación del catálogo. Renombrar y mover cambian las rutas.
+
+[Guía paso a paso de clasificación con IA](/blog/sort-files-into-folders-with-ai-mac) · [Documentación de clasificación en carpetas](/docs/folder-sorting) · [30 ejemplos de reglas para carpetas](/blog/ai-folder-sorting-prompts).
+
 ## El sistema de organización de fotografías de Mac en 7 pasos
 
 1. **Elige la fototeca:** usa Apple Photos, carpetas de Finder o ambos según cómo consultes y compartas las fotos.
@@ -66,6 +87,8 @@ Salte a ["Apple Photos" frente a "Finder"](#apple-photos-vs-finder-folders-vs-a-
   ]}
 />
 
+<span id="apple-photos-vs-finder-folders-vs-a-hybrid-setup"></span>
+
 ## Carpetas Apple Photos vs Finder vs una configuración híbrida
 
 Elija el modelo de biblioteca antes de reorganizar nada. Las carpetas Apple Photos, Finder y una configuración híbrida pueden funcionar, pero resuelven diferentes problemas de recuperación y almacenamiento.
@@ -81,6 +104,8 @@ Elija el modelo de biblioteca antes de reorganizar nada. Las carpetas Apple Phot
 Un ejemplo híbrido concreto es mantener las fotos familiares del iPhone en Apple Photos, mientras que la sesión de un cliente permanece en `Pictures/Client-Work/2026/Acme-Launch/` con sus archivos RAW, selecciones y exportaciones. Las fotos personales conservan la comodidad de iCloud y los archivos de los clientes siguen siendo portátiles y accesibles directamente.
 
 Utilice el [plantilla descargable de carpeta de fotos para Mac](/downloads/mac-photo-folder-template.txt) como punto de partida. Separa eventos personales, proyectos de clientes, una carpeta de entrada, exportaciones y estados de archivo sin bloquear la biblioteca en una aplicación.
+
+<span id="choose-a-folder-structure-that-scales"></span>
 
 ## Elija una estructura de carpetas que se pueda escalar
 
@@ -154,6 +179,8 @@ Si esos archivos salen de la carpeta `2026/03-March/Tokyo-Trip/`, el día de cap
 Para lotes grandes, no es práctico agregar fechas manualmente a cada foto. [Renombrador de archivos con IA para Mac](/mac) puede generar nombres de archivos descriptivos con patrones de fechas automáticamente usando plantillas de nombres personalizadas, de modo que cada foto obtenga un nombre significativo al importar.
 
 
+<span id="make-photos-searchable-with-spotlight-and-finder"></span>
+
 ## Haga que las fotos se puedan buscar con Spotlight y Finder
 
 Una estructura de carpetas ayuda a navegar en el lugar correcto. Pero la verdadera prueba de la organización de fotografías es si puedes encontrar una imagen específica cuando no recuerdas dónde se encuentra.
@@ -200,6 +227,8 @@ Evite crear docenas de categorías superpuestas. Las etiquetas dejan de ser úti
 
 Por ejemplo, mantenga `2026-06-04_acme-product-flatlay_017.cr3` dentro de la carpeta del proyecto Acme y etiquételo como `client-review`. Cuando el cliente lo apruebe, reemplace esa etiqueta de estado con "aprobado"; el archivo permanece en la misma carpeta y la etiqueta refleja el estado del flujo de trabajo en lugar de duplicar la estructura de la carpeta.
 
+
+<span id="back-up-your-photo-library-properly"></span>
 
 ## Haga una copia de seguridad de su biblioteca de fotos correctamente
 
@@ -260,6 +289,8 @@ Obtenga una vista previa de todo el lote antes de aplicarlo. Si el patrón es de
 
 
 <BlogCTA placement='inline' platform='mac' />
+
+<span id="a-repeatable-import-workflow-for-thousands-of-photos"></span>
 
 ## Un flujo de trabajo de importación repetible para miles de fotografías
 

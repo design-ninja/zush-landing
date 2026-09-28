@@ -11,7 +11,7 @@ tags:
   - "파일 구성"
   - "사진"
 tldr: "Mac에서 사진 정리는 두 가지 일입니다. 둘러볼 수 있는 라이브러리와 검색할 수 있는 파일 이름입니다. 관리형 개인 라이브러리에는 Apple Photos를, 이동 가능한 아카이브에는 Finder 폴더를, 또는 둘을 함께 사용하세요. 모든 파일이 여전히 IMG_8821.HEIC라면 Zush를 사용하세요. 앨범, 얼굴 검색, 중복 확인, 백업을 대체하지는 않습니다."
-reviewed: "2026-09-10"
+reviewed: "2026-09-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -45,6 +45,27 @@ RAW 촬영, 클라이언트 내보내기 및 비디오 클립을 위해 반복 �
 
 ['Apple Photos' 대 'Finder'](#apple-photos-vs-finder-folders-vs-a-hybrid-setup), [폴더 구조](#choose-a-folder-structure-that-scales), [찾다](#make-photos-searchable-with-spotlight-and-finder), [지원](#back-up-your-photo-library-properly) 또는 [반복 가능한 가져오기 작업 흐름](#a-repeatable-import-workflow-for-thousands-of-photos)으로 이동합니다.
 
+## AI로 파일을 폴더에 분류하기
+
+Zush — [AI로 파일을 폴더에 분류하기](/ai-file-sorter) — AI로 파일을 폴더에 분류하기 폴더 분류는 Mac과 Windows에서 베타로 제공됩니다. 지원 파일의 내용을 분석해 이름과 그룹을 제안합니다. Auto를 쓰려면 Folder rules를 비우고, 직접 정하려면 자연어로 지시하세요. 파일 이름 형식은 Naming Blocks에서 별도로 설정합니다.
+
+> 이미지를 사람, 음식, 풍경 등 주제별로 묶어 주세요.
+
+1. 복사한 작은 묶음을 AI Rename에 추가하고 Template을 선택합니다.
+2. + Sort를 켜고 하위 폴더의 루트로 Destination folder를 선택합니다. 별도 대상이 없으면 원본 폴더가 루트입니다.
+3. Folder rules에 분류 방법을 적습니다. 대상 안의 적절한 기존 폴더를 쓰려면 Reuse existing folders를 켭니다. 맞는 폴더가 없으면 새로 만들 수 있습니다.
+4. 처리를 적용하기 전에 제안된 이름과 그룹을 확인하고 수정합니다.
+
+![Mac용 Zush에서 Rename & sort 적용 전 제안된 파일 이름과 내용별 폴더 그룹을 표시](/images/showcase/macos/folder-sorting-light.webp)
+
+검증한 대상과 규칙을 Template에 저장하세요. Monitor는 감시 폴더 바로 안에 새로 들어오는 파일의 이름과 분류를 처리합니다. 이미 처리한 파일을 소급해 정리하지 않습니다. 분류를 끄고 원래 대상을 선택하면 파일은 현재 폴더에 남습니다.
+
+Finder / File Explorer — 보관함은 앨범, 얼굴, 평가, 검색을 자체 데이터베이스로 관리합니다. 파일 이름과 실제 폴더는 파일 시스템, 외장 드라이브, 공유 위치에서도 보입니다. 이 앱는 파일을 정리하며 앨범, 얼굴 인식, 중복 검토, 백업을 대체하지 않습니다.
+
+Finder — 내보낸 이미지나 복사 폴더로 시험하세요. Photos 보관함 패키지 내부를 재배치하지 마세요. 카탈로그에 등록된 원본은 해당 프로그램의 이름 변경 또는 다시 연결 절차를 따르세요. 이름 변경과 이동 모두 파일 경로를 바꿉니다.
+
+[AI 폴더 분류 단계별 가이드](/blog/sort-files-into-folders-with-ai-mac) · [폴더 분류 문서](/docs/folder-sorting) · [폴더 규칙 예시 30가지](/blog/ai-folder-sorting-prompts).
+
 ## 7단계 Mac 사진 정리 시스템
 
 1. **보관함 선택:** 사진을 보고 공유하는 방식에 따라 Apple Photos, Finder 폴더 또는 둘 다 사용하세요.
@@ -66,6 +87,8 @@ RAW 촬영, 클라이언트 내보내기 및 비디오 클립을 위해 반복 �
   ]}
 />
 
+<span id="apple-photos-vs-finder-folders-vs-a-hybrid-setup"></span>
+
 ## Apple Photos vs Finder 폴더 vs 하이브리드 설정
 
 무엇이든 재구성하기 전에 라이브러리 모델을 선택하십시오. 'Apple Photos', 'Finder' 폴더 및 하이브리드 설정은 모두 작동할 수 있지만 서로 다른 검색 및 저장 문제를 해결합니다.
@@ -81,6 +104,8 @@ RAW 촬영, 클라이언트 내보내기 및 비디오 클립을 위해 반복 �
 구체적인 하이브리드 예는 iPhone 가족 사진을 'Apple Photos'에 보관하고 클라이언트 촬영은 RAW 파일과 함께 'Pictures/Client-Work/2026/Acme-Launch/'에 유지하고 선택하고 내보내는 것입니다. 개인 사진은 iCloud의 편리함을 유지하며, 클라이언트 파일은 휴대 가능하고 직접 액세스할 수 있습니다.
 
 '[다운로드 가능한 Mac 사진 폴더 템플릿](/downloads/mac-photo-folder-template.txt)'을 출발점으로 사용하세요. 라이브러리를 하나의 앱에 고정하지 않고 개인 이벤트, 클라이언트 프로젝트, 섭취 폴더, 내보내기 및 보관 상태를 분리합니다.
+
+<span id="choose-a-folder-structure-that-scales"></span>
 
 ## 확장 가능한 폴더 구조 선택
 
@@ -154,6 +179,8 @@ Photos/
 대규모 배치의 경우 모든 사진에 수동으로 날짜를 추가하는 것은 비현실적입니다. '[Mac용 AI 파일 이름 변경 도구](/mac)'은 사용자 정의 이름 지정 템플릿을 사용하여 날짜 패턴이 포함된 설명적인 파일 이름을 자동으로 생성할 수 있으므로 모든 사진을 가져올 때 의미 있는 이름을 갖게 됩니다.
 
 
+<span id="make-photos-searchable-with-spotlight-and-finder"></span>
+
 ## 'Spotlight' 및 'Finder'로 사진을 검색 가능하게 만드세요.
 
 폴더 구조는 올바른 위치 내에서 탐색할 때 도움이 됩니다. 그러나 사진 정리에 대한 실제 테스트는 특정 이미지가 어디에 있는지 기억나지 않을 때 특정 이미지를 찾을 수 있는지 여부입니다.
@@ -200,6 +227,8 @@ Photos/
 
 예를 들어, Acme 프로젝트 폴더 내에 `2026-06-04_acme-product-Flatlay_017.cr3`을 유지하고 `client-review` 태그를 지정합니다. 클라이언트가 승인하면 해당 상태 태그를 `approved`로 바꿉니다. 파일은 동일한 폴더에 유지되며 태그는 폴더 구조를 복제하는 대신 워크플로 상태를 반영합니다.
 
+
+<span id="back-up-your-photo-library-properly"></span>
 
 ## 사진 라이브러리를 올바르게 백업하세요
 
@@ -260,6 +289,8 @@ AI 지원 이름 지정은 다음과 같은 경우에 가장 도움이 됩니다
 
 
 <BlogCTA placement='inline' platform='mac' />
+
+<span id="a-repeatable-import-workflow-for-thousands-of-photos"></span>
 
 ## 수천 장의 사진에 대한 반복 가능한 가져오기 작업 흐름
 

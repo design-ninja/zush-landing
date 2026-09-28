@@ -1,6 +1,6 @@
 ---
 title: "How to Organize Photos on Mac: Folders, Names & Backup"
-description: "Choose Apple Photos, folders, or a hybrid setup for your Mac photo library. Learn where Zush file naming fits alongside tags and a 3-2-1 backup plan."
+description: "Organize Mac photos with Photos, Finder folders, AI names and content-based folder sorting. Build a repeatable intake workflow and a separate backup plan."
 date: "2026-02-27"
 slug: "best-ways-to-organize-photos-on-mac"
 platform: "mac"
@@ -8,13 +8,13 @@ topic: "photos"
 tags:
   - "File Organization"
   - "Photos"
-tldr: "Organizing photos on a Mac is two jobs: a library you can browse and filenames you can search. Use Apple Photos for a managed personal library, Finder folders for a portable archive, or a hybrid of both; use Zush when every file is still called IMG_8821.HEIC. It does not replace albums, face search, duplicate review, or backup."
-reviewed: "2026-09-10"
+tldr: "Use Apple Photos for a managed personal library, Finder folders for a portable archive, or a hybrid. Zush proposes descriptive names and can group supported photos into folders by content (beta), using Auto or your own rules. It does not replace albums, face search, duplicate review, or backup."
+reviewed: "2026-09-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Organizing photos on a Mac is really two jobs. For the library — browsing, albums, faces, duplicates — use Apple Photos, Finder folders for a portable archive, or a hybrid setup for both. For filenames that say nothing, [Zush renames photos from their content](/rename-photos-with-ai) and leaves them in place, showing every proposed name before it is applied.
+Organizing photos on a Mac is really two jobs. For the library — browsing, albums, faces, duplicates — use Apple Photos, Finder folders for a portable archive, or a hybrid setup for both. For filenames that say nothing, [Zush renames photos from their content](/rename-photos-with-ai) and can group them into AI folders (beta), showing proposed names and destinations before a manual batch is applied. With sorting off and the original destination selected, files stay in their current folder.
 
 ## Choose your Mac photo system in 30 seconds
 
@@ -22,7 +22,7 @@ Organizing photos on a Mac is really two jobs. For the library — browsing, alb
 | --- | --- | --- |
 | Personal and iPhone photos | Apple Photos | Albums, people, timeline browsing and optional iCloud sync |
 | RAW files, client work or external drives | Finder folders | Direct file access, portable structure and sidecar management |
-| Files with generic names | Zush, when renaming is needed | Content-aware names with preview and undo; files stay in place |
+| Files with generic names | Zush, when renaming is needed | Content-aware names and optional AI folder groups (beta), with preview and undo |
 
 [Download the Mac photo folder template](/downloads/mac-photo-folder-template.txt) to create a ready-made intake, personal, client-work, exports, and archive structure.
 
@@ -42,6 +42,26 @@ This guide covers the full system: choosing Apple Photos or Finder, structuring 
 Photographers and videographers who need a repeatable workflow for RAW shoots, client exports, and video clips can use the dedicated [Zush workflow for photographers and videographers](/for-photographers). This article stays focused on organizing a Mac photo library rather than evaluating the complete product workflow.
 
 Jump to [Apple Photos vs Finder](#apple-photos-vs-finder-folders-vs-a-hybrid-setup), [folder structures](#choose-a-folder-structure-that-scales), [search](#make-photos-searchable-with-spotlight-and-finder), [backup](#back-up-your-photo-library-properly), or the [repeatable import workflow](#a-repeatable-import-workflow-for-thousands-of-photos).
+
+## Sort photo files into folders with AI
+
+[Zush](/ai-file-sorter) can give supported files descriptive names and group them into real folders by content in the same batch. **AI folder sorting is in beta on Mac and Windows.** Leave **Folder rules** empty for Auto grouping, or describe the groups in plain language. For photo files, try:
+
+> Group images by subject, such as People, Food, and Landscapes.
+
+1. Add a small copied batch in **AI Rename** and select a Template.
+2. Enable **+ Sort** and choose the **Destination folder**, which is the root for the sorted subfolders. Without a separate destination, the source folder remains the root.
+3. Enter the grouping instruction in **Folder rules**. **Naming Blocks** set the filename format separately.
+4. Enable **Reuse existing folders** if suitable groups already exist inside the destination root. Zush can create a new folder when none fits.
+5. Review both the proposed names and folder groups. Correct folder names or file placement before applying the batch.
+
+![Zush for Mac previewing content-based folder groups and proposed filenames before Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Save the tested destination and rules in the Template. Assign it to **Monitor** to rename and sort new files arriving directly inside the watched folder. This does not retroactively reorganize files already processed. With sorting off and the original destination selected, files keep their current folder.
+
+Use ordinary exported images or a copied Finder/File Explorer folder. Do not reorganize a Photos library package; for originals tracked by a catalog, follow its rename or relink workflow. Folder grouping does not add albums, face recognition, duplicate removal, or backup.
+
+Follow the [step-by-step Mac sorting guide](/blog/sort-files-into-folders-with-ai-mac) or see the [folder sorting documentation](/docs/folder-sorting) and [30 example Folder rules](/blog/ai-folder-sorting-prompts).
 
 ## The 7-step Mac photo organization system
 
@@ -319,7 +339,7 @@ For a folder-based archive, use the following checklist. A managed photo library
 
 ### What is the best photo organization method on Mac?
 
-Use Apple Photos for a managed personal library, Finder folders for a portable archive, or a hybrid setup for both. Zush helps with descriptive filenames; it does not replace albums, face search, duplicate review, or backup.
+Use Apple Photos for a managed personal library, Finder folders for a portable archive, or a hybrid setup for both. Zush helps with descriptive filenames and optional AI folder groups (beta); it does not replace albums, face search, duplicate review, or backup.
 
 ### Should I use Apple Photos or Finder folders?
 

@@ -9,9 +9,10 @@ tags:
   - "Image SEO"
   - "AI File Renaming"
   - "Tool Comparisons"
-tldr: "NameThisPic is a browser tool that writes SEO filenames and alt text, with monthly image caps and 50 to 100 images per batch. If you rename images in bulk, work with RAW or HEIC files, or want files renamed where they already live, a desktop app like Zush is a better fit. Keep NameThisPic if you mainly need alt text."
-reviewed: "2026-09-22"
+tldr: "NameThisPic is a browser tool that writes SEO filenames and alt text, with monthly image caps and 50 to 100 images per batch. If you rename images in bulk, work with RAW or HEIC files, or want files renamed where they already live, a desktop app like Zush is a better fit. Keep NameThisPic if you mainly need alt text. Zush also offers optional AI folder sorting (beta)."
+reviewed: "2026-09-28"
 ---
+
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -53,7 +54,7 @@ The browser workflow has limits you notice at scale:
 
 ## 1. Zush: bulk image renaming on your computer
 
-[Zush](/) reads each image and renames it where it already sits. No upload, no ZIP. Drop a folder of 500 product shots or a whole photo shoot in, review the names, apply.
+[Zush](/) reads each image and can rename it in place when sorting is off and the original destination is kept. No browser upload or ZIP download is required. Drop a folder of 500 product shots or a whole photo shoot in, review the names, apply.
 
 For web and SEO work, a few things help:
 
@@ -67,6 +68,14 @@ AI can run through Zush Cloud AI, your own API key, or locally with Ollama or LM
 What Zush does not do is write alt text. If your CMS needs alt text, generate it separately or in your CMS; the descriptive filename still helps image search and keeps your media library readable. See our guide on [renaming photos for social media and the web](/blog/rename-photos-for-social-media).
 
 <BlogCTA placement='inline' platform='general' />
+
+### Organize the source images too
+
+For a product shoot or mixed media folder, Zush offers **AI folder sorting (beta)**. Use **Auto** or write **Folder rules** such as “Group product photos by product category.” Keep your SEO filename Template separate from the grouping instruction. Sorting organizes files on disk; it does not create alt text or update your CMS media records.
+
+Choose a **Destination folder**, or keep the source folder as the root. Enable **Reuse existing folders** to prefer suitable folders already there; Zush can create a new one when nothing fits. In a manual batch, review both the suggested names and folders before applying. To rename in place, leave sorting off and keep the original destination.
+
+Save the sorting settings in a **Template** and assign it to **Monitor** for new files directly inside the watched folder. This does not reorganize files already processed. Test the Template in a manual batch first. See the [folder sorting guide](/docs/folder-sorting) for the setup and monitoring scope.
 
 ## 2. Renamer.ai: web or desktop, document-first
 
@@ -110,6 +119,10 @@ Whatever tool you use, the rules are the same:
 />
 
 ## FAQ
+
+### Can Zush sort files into folders as well as rename them?
+
+Yes. Its optional AI folder sorting is in beta on Mac and Windows. Choose Auto or write Folder rules, select the destination, and review both names and groups in a manual batch. A sorting-enabled Template can also process new files directly inside a monitored folder; it does not reorganize files already processed. Leave sorting off and keep the original destination for naming only.
 
 ### What is the best NameThisPic alternative?
 

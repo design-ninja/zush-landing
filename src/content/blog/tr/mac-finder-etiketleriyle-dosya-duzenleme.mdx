@@ -10,7 +10,7 @@ topic: "search"
 tags:
   - "Dosya Organizasyonu"
 tldr: "Finder etiketleri, Akıllı Klasörler ve Spotlight, birlikte en iyi şekilde çalışan üç yerleşik macOS aracıdır. Etiketler klasörler arası anlam katar, Akıllı Klasörler dinamik görünümler oluşturur ve Spotlight her şeyi arar, ancak üçü de yararlı adlara ve meta verilere sahip dosyalara bağlıdır."
-reviewed: "2026-09-24"
+reviewed: "2026-09-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogCopyPatterns from '@/components/blog/BlogCopyPatterns.astro';
@@ -40,6 +40,25 @@ Adları genel olduğundan dosyalarınızın aranması zorsa bu sistemi [Mac'de A
   title="Etiketler ve Spotlight ancak dosya adlarınız kadar iyidir"
   description="Zush ekran görüntülerini, PDF'leri, fotoğrafları ve belgeleri okuyup aranabilir adlar önerir; böylece Spotlight ve akıllı klasörler bulacak bir şey bulur. Uygulamadan önce önizleyin, Geçmiş'ten geri alın. 50 ücretsiz yeniden adlandırma, kayıt gerekmez."
 />
+
+## Dosyaları yapay zekâyla klasörlere ayırma
+
+[Dosyaları yapay zekâyla klasörlere ayırma](/ai-file-sorter) — İsteğe bağlı yapay zekâ klasör sıralaması Mac ve Windows’ta beta aşamasındadır. Desteklenen dosyaların içeriğini analiz ederek adlar ve gruplar önerir. Auto için Folder rules alanını boş bırakın veya grupları günlük dille açıklayın. Naming Blocks dosya adı biçimini ayrı olarak belirler.
+
+> Faturaları şirkete, makbuzları aya göre grupla. Ay klasörlerini YYYY-MM olarak adlandır.
+
+1. AI Rename içine küçük bir kopya grubu ekleyin ve bir Template seçin.
+2. + Sort seçeneğini açın; alt klasörlerin kökü için Destination folder seçin. Ayrı hedef yoksa kaynak klasör kök olarak kalır.
+3. Grupları Folder rules içinde tarif edin. Hedefte uygun klasörleri kullanmak için Reuse existing folders seçeneğini açın; uygun klasör yoksa Zush yenisini oluşturabilir.
+4. Toplu işlemi uygulamadan önce önerilen adları ve grupları inceleyip düzeltin.
+
+![Mac'te Zush, Rename & sort öncesinde önerilen dosya adlarını ve içerik tabanlı klasör gruplarını gösteriyor](/images/showcase/macos/folder-sorting-light.webp)
+
+Test edilen hedefi ve kuralları Template içine kaydedin. Monitor izlenen klasöre doğrudan gelen yeni dosyaları adlandırıp sıralayabilir; daha önce işlenen dosyaları geriye dönük düzenlemez. Sıralama kapalı ve hedef özgün konum olduğunda dosyalar mevcut klasörde kalır.
+
+[Adım adım yapay zekâ klasör sıralama rehberi](/blog/sort-files-into-folders-with-ai-mac) · [Klasör sıralama belgeleri](/docs/folder-sorting) · [30 klasör kuralı örneği](/blog/ai-folder-sorting-prompts).
+
+<span id="finder-tags-cross-folder-organization-without-moving-files"></span>
 
 ## Finder etiketleri: dosyaları taşımadan klasörler arası düzenleme
 
@@ -106,6 +125,8 @@ Yararlı etiket örnekleri:
   ]}
 />
 
+<span id="smart-folders-dynamic-views-without-moving-files"></span>
+
 ## Akıllı Klasörler: dosyaları taşımadan dinamik görünümler
 
 Mac'teki Akıllı Klasörler normal klasörler değildir. Kriterlerinizle eşleşen dosyaları gerçek zamanlı olarak gösteren kayıtlı aramalardır. Akıllı Klasörler yalnızca dosyalara referans verdiği için, bir dosya kopyalanmadan birden fazla Akıllı Klasörde görünebilir; bunları hiçbir zaman taşımaz veya kopyalamaz.
@@ -154,6 +175,8 @@ Akıllı Klasörler, etiketlerle birleştirildiğinde çok daha kullanışlı ha
 - **"İnceleme Kuyruğu"** — Tür Resim + Etiket `to-review`'dir
 - **"Son Büyük Dosyalar"** — Değiştirilme Tarihi son 7 gün içindedir + Boyut 50 MB'tan büyüktür
 - **"Müşteri Teslim Edilebilirleri"** — Etiket `client-alpha` + Tür Klasör Değildir
+
+<span id="spotlight-fast-search-across-your-entire-mac"></span>
 
 ## Spotlight: Mac'inizin tamamında hızlı arama
 
@@ -238,6 +261,8 @@ Bu sistem, klasör yapınızı yeniden düzenlemenize gerek kalmadan çalışır
 />
 
 <BlogCTA placement='inline' platform='mac' />
+
+<span id="why-filenames-matter-more-than-any-of-these-tools"></span>
 
 ## Dosya adları neden bu araçların herhangi birinden daha önemli?
 

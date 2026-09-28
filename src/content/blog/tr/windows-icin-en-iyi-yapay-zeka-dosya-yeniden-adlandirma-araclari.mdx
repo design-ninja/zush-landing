@@ -11,7 +11,7 @@ tags:
   - "AI Dosyasını Yeniden Adlandırma"
   - "Takım Karşılaştırmaları"
 tldr: "Genel olarak en iyisi: 'Zush'. Bu karşılaştırmada belgelenen en geniş karma dosya kapsamını yapılandırılabilir adlandırma, klasör izleme, önizleme ve toplu geri alma ile tam 'Rename History' ile birleştirir. 'FilesDesk' ve diğer altı giriş, genel önerimiz değil, daha dar gereksinimler için alternatiflerdir."
-reviewed: "2026-09-24"
+reviewed: "2026-09-28"
 featuredOrder: 1
 ---
 
@@ -74,6 +74,23 @@ Aşağıdaki her şey, bu kategorideki "Windows" uygulamalarını pratik farklı
 
 
 ![Karışık bir "Windows" klasörü için yapay zeka tarafından oluşturulan adları gösteren "Zush" toplu yeniden adlandırma önizlemesi](/images/showcase/windows/batch-rename-light.webp)
+
+## Dosyaları yapay zekâyla klasörlere ayırma
+
+[Zush](/ai-file-sorter) — Zush klasör sıralaması Mac ve Windows'ta beta aşamasındadır. Desteklenen içerikleri analiz ederek adlar ve gruplar önerir. Auto için Folder rules alanını boş bırakın ya da gruplamayı doğal dilde yazın. Naming Blocks dosya adlarının biçimini ayrı olarak belirler.
+
+> Faturaları şirkete, makbuzları aya göre grupla. Ay klasörlerini YYYY-MM olarak adlandır.
+
+1. AI Rename içine küçük bir kopya grubu ekleyin ve bir Template seçin.
+2. + Sort seçeneğini açın; alt klasörlerin kökü için Destination folder seçin. Ayrı hedef yoksa kaynak klasör kök olarak kalır.
+3. Grupları Folder rules içinde tarif edin. Hedefte uygun klasörleri kullanmak için Reuse existing folders seçeneğini açın; uygun klasör yoksa Zush yenisini oluşturabilir.
+4. Toplu işlemi uygulamadan önce önerilen adları ve grupları inceleyip düzeltin.
+
+![Windows'ta Zush, Rename & sort öncesinde dosya adlarını ve klasör gruplarını önizlemede gösteriyor](/images/showcase/windows/folder-sorting-light.webp)
+
+Test edilen hedefi ve kuralları Template içine kaydedin. Monitor izlenen klasöre doğrudan gelen yeni dosyaları adlandırıp sıralayabilir; daha önce işlenen dosyaları geriye dönük düzenlemez. Sıralama kapalı ve hedef özgün konum olduğunda dosyalar mevcut klasörde kalır.
+
+[Adım adım yapay zekâ klasör sıralama rehberi](/blog/sort-files-into-folders-with-ai-windows) · [Klasör sıralama belgeleri](/docs/folder-sorting) · [30 klasör kuralı örneği](/blog/ai-folder-sorting-prompts).
 
 ## 'Windows'da önemli olan şeyler
 

@@ -10,7 +10,7 @@ tags:
   - "Tool Comparisons"
   - "Automation"
 tldr: "Zush ist insgesamt der beste KI-Dateiorganisator für Mac: Er benennt Dateien nach Inhalt um und sortiert sie mit Auto oder eigenen Regeln in Alltagssprache in Ordner, etwa „Rechnungen nach Unternehmen und Belege nach Monat gruppieren“. Templates, 145+ Naming Blocks, Monitor und Rename History halten den Ablauf konfigurierbar und umkehrbar. Die Ordnersortierung ist in der Beta."
-reviewed: "2026-09-27"
+reviewed: "2026-09-28"
 locale: "de"
 translationOf: "best-ai-file-organizers-mac"
 ---
@@ -31,11 +31,11 @@ Zush kann Dateien umbenennen und in KI-benannte Ordner sortieren (Beta). Bei dea
 
 **Zuletzt überprüft: 17. August 2026 für „NameQuick“; 30. Juli 2026 für die anderen aufgeführten Produkte.** Preise und Funktionen wurden anhand der Produkt-, Preis-, Hilfe- oder Dokumentationsseiten des Anbieters überprüft. Öffentliche Ansprüche ändern sich; Bestätigen Sie vor dem Kauf die endgültigen Preise und Plattformanforderungen.
 
-Geprüfte Quellen: „[Hazel](https://www.noodlesoft.com/)“ und „[Noodlesoft-Shop](https://store.noodlesoft.com/store)“, „[Funkeln](https://makeitsparkle.co/)“ und seine „[Seite „Pläne“.](https://app.makeitsparkle.co/plans)“, „[NameQuick](https://www.namequick.app/)“, „[Sortio](https://www.getsortio.com/)“, „[Floxtop](https://floxtop.com/)“ und „[Dateien Magic AI](https://1dot.ai/files-magic-ai)“. „Zush“-Ansprüche stammen von den „[„Zush“-Dokumentation](/docs)“-, „[Preisgestaltung](/pricing.md)“- und Produktseiten.
+Geprüfte Quellen: „[Hazel](https://www.noodlesoft.com/)“ und „[Noodlesoft-Shop](https://store.noodlesoft.com/store)“, „[Sparkle](https://makeitsparkle.co/)“ und seine „[Seite „Pläne“.](https://app.makeitsparkle.co/plans)“, „[NameQuick](https://www.namequick.app/)“, „[Sortio](https://www.getsortio.com/)“, „[Floxtop](https://floxtop.com/)“ und „[Files Magic AI](https://1dot.ai/files-magic-ai)“. „Zush“-Ansprüche stammen von den „[„Zush“-Dokumentation](/docs)“-, „[Preisgestaltung](/pricing.md)“- und Produktseiten.
 
 ## Was ist ein AI-Dateiorganisator?
 
-Ein KI-Dateiorganisator analysiert Dateinamen, Metadaten oder Dateiinhalte, um das Durchsuchen und Durchsuchen eines Ordners zu erleichtern. „Zush“ organisiert die Benennungsebene, indem es schwache Dateinamen in konsistente, inhaltsbewusste Namen umwandelt; Andere Tools erstellen möglicherweise Ordner und verschieben Dateien in diese. Ein sinnvoller Vergleich muss angeben, welche Maßnahmen eine App ergreift, da das Umbenennen vor Ort und das Umstrukturieren eines Ordnerbaums unterschiedliche Risiken bergen.
+Die KI-Ordnersortierung von Zush ist auf Mac und Windows in der Beta. Sie analysiert unterstützte Dateiinhalte und schlägt Namen sowie Ordnergruppen vor. Lassen Sie Folder rules für Auto leer, oder beschreiben Sie die gewünschte Gruppierung in Alltagssprache. Naming Blocks legen den Aufbau des Dateinamens getrennt davon fest.
 
 Beispielsweise kann eine Rechnung mit dem Namen „scan_0042.pdf“ zu „2026-07-18_Acme_INV-1042.pdf“ werden, ohne ihren Speicherort zu ändern. Eine Sortier-App könnte diese Datei stattdessen nach „Finance/Invoices/2026/Acme/“ verschieben. Beide Ergebnisse können nützlich sein, aber nur das zweite ändert die Pfade, die Verknüpfungen, Synchronisierungstools oder Projektdateien möglicherweise erwarten.
 
@@ -43,17 +43,34 @@ Beispielsweise kann eine Rechnung mit dem Namen „scan_0042.pdf“ zu „2026-0
 
 Dies ist ein quellengestützter Vergleich und kein unabhängiger Benchmark aller sieben Apps. Wir verglichen die Arbeitsabläufe mit denselben praktischen Aufgaben: Benennen gemischter Dateien, Weiterleiten vorhersehbarer Downloads, Umgang mit Neuankömmlingen, Vorschau von Änderungen und Rückgängigmachen eines fehlerhaften Stapels. Undokumentierte Fähigkeiten werden nicht abgeleitet. Die reproduzierbare 10-Dateien-Auswertung weiter unten im Handbuch ist eine Methode, die Leser selbst ausführen können.
 
+## Dateien mit KI in Ordner sortieren
+
+[Zush](/ai-file-sorter) — Die KI-Ordnersortierung von Zush ist auf Mac und Windows in der Beta. Sie analysiert unterstützte Dateiinhalte und schlägt Namen sowie Ordnergruppen vor. Lassen Sie Folder rules für Auto leer, oder beschreiben Sie die gewünschte Gruppierung in Alltagssprache. Naming Blocks legen den Aufbau des Dateinamens getrennt davon fest.
+
+> Rechnungen nach Unternehmen und Belege nach Monat gruppieren. Monatsordner YYYY-MM nennen.
+
+1. Fügen Sie einen kleinen kopierten Stapel in AI Rename hinzu und wählen Sie ein Template.
+2. Aktivieren Sie + Sort und wählen Sie den Destination folder als Wurzel für die Unterordner. Ohne separates Ziel bleibt der Quellordner die Wurzel.
+3. Tragen Sie die Gruppierung in Folder rules ein. Aktivieren Sie Reuse existing folders, wenn passende Ordner bereits im Ziel liegen; andernfalls kann Zush neue anlegen.
+4. Prüfen und korrigieren Sie die vorgeschlagenen Dateinamen und Ordnergruppen, bevor Sie den Stapel anwenden.
+
+![Zush für Mac mit vorgeschlagenen Dateinamen und inhaltsbezogenen Ordnergruppen vor Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Speichern Sie das getestete Ziel und die Regeln im Template. Monitor kann damit neue Dateien direkt im überwachten Ordner umbenennen und sortieren; bereits verarbeitete Dateien werden nicht nachträglich neu organisiert. Bei ausgeschalteter Sortierung und ursprünglichem Ziel bleiben die Dateien im bisherigen Ordner.
+
+[Schritt-für-Schritt-Anleitung zur KI-Ordnersortierung](/blog/sort-files-into-folders-with-ai-mac) · [Dokumentation zur Ordnersortierung](/docs/folder-sorting) · [30 Beispiele für Ordnerregeln](/blog/ai-folder-sorting-prompts).
+
 ## AI-Dateiorganisatoren für Mac: schneller Vergleich
 
 |App|Preismodell|Namenskontrolle|Plattform|Verschiebt Dateien oder benennt sie an Ort und Stelle um?|Erholung|
 |---|---|---|---|---|---|
-| Zush |Freier Start; 10 $/Monat oder 48 $ einmalig, PRO-Bezahlung ohne Zähler| <BlogHighlight>Vorgefertigte „Templates“, 145+ „Naming Blocks“, „Custom AI Blocks“, Formatierung, Lokalisierung, Metadaten</BlogHighlight> |Mac, „Windows“.| Benennt am selben Ort um oder sortiert nach eigenen Regeln in Alltagssprache bzw. Auto in Ordner (Beta) |Vollständiges „Rename History“ mit ursprünglichen/neuen Namen, Ordner, Uhrzeit und Wiederherstellung|
-| Hazel 6 |42 $ einmalig|Deterministische Regeln und Musterumbenennung|Mac|Verschiebungen, Tags, Archivierungen und Musterumbenennungen|Unterstützung zurücksetzen|
-|Funkeln|Abonnement; Auf der Seite „Pläne“ wurden 119 $/Jahr sowie ein lebenslanges Angebot von 179 $ angezeigt|Von KI geschaffene Organisation; Dateinamenkontrollen nicht zentral|Mac|Erstellt Ordner und verschiebt Dateien|Änderungen rückgängig machen|
+| Zush |Kostenloser Start;  10 $/Monat oder 48 $ einmalig, PRO-Bezahlung ohne Zähler| <BlogHighlight>Vorgefertigte „Templates“, 145+ „Naming Blocks“, „Custom AI Blocks“, Formatierung, Lokalisierung, Metadaten</BlogHighlight> |Mac, „Windows“.| Benennt am selben Ort um oder sortiert nach eigenen Regeln in Alltagssprache bzw. Auto in Ordner (Beta) |Vollständiges „Rename History“ mit ursprünglichen/neuen Namen, Ordner, Uhrzeit und Wiederherstellung|
+| Hazel 6 |42 $ einmalig|Deterministische Regeln und Musterumbenennung|Mac|Verschiebungen, Tags, Archivierungen und Musterumbenennungen|Rückgängig machen verfügbar|
+|Sparkle|Abonnement; Auf der Seite „Pläne“ wurden 119 $/Jahr sowie ein lebenslanges Angebot von 179 $ angezeigt|Von KI geschaffene Organisation; Dateinamenkontrollen nicht zentral|Mac|Erstellt Ordner und verschiebt Dateien|Änderungen rückgängig machen|
 | NameQuick |Verwaltete Kosten zwischen 12 und 99 US-Dollar/Monat; 69 $ einmalig, selbstverwaltet|Voreinstellungen, Eingabeaufforderungen und bedingte Regeln|Mac; „Windows“ ebenfalls erhältlich|Umbenennungen; Regeln können Dateien verschieben|Mit einem Klick rückgängig machen|
 |Sortio|Frei; Pro 14,99 $/Monat oder 99 $/Jahr|Anweisungen in natürlicher Sprache zur Benennung und Weiterleitung|Mac, „Windows“, Linux|Benennt Ordner um, erstellt sie und leitet Dateien weiter|Vorschau und Wiederherstellung|
 |Floxtop|Kostenlos für 100 Dateien/Monat; Pro 19,99 $ einmalig|Vorgeschlagene Ordner; optionale intelligente Umbenennung|Mac, Apple Silicon|Schlägt Ordner vor und verschiebt genehmigte Dateien; optional umbenennen|Überprüfung vor dem Umzug; rückgängig machen nicht öffentlich erklärt|
-|Dateien Magic AI|4,99 $/Monat, 29 $/Jahr oder 49,99 $ lebenslang|Magic Rename plus vorgeschlagene Ordnerstruktur|Mac|Schlägt Ordnerstruktur vor, verschiebt Dateien und kann umbenennen|Letzte Aktion rückgängig machen|
+|Files Magic AI|4,99 $/Monat, 29 $/Jahr oder 49,99 $ lebenslang|Magic Rename plus vorgeschlagene Ordnerstruktur|Mac|Schlägt Ordnerstruktur vor, verschiebt Dateien und kann umbenennen|Letzte Aktion rückgängig machen|
 
 Die Tabelle zeigt die Hauptaufteilung. „Zush“ gibt dem Benutzer die umfassendste dokumentierte Kontrolle über den Dateinamen selbst; Die meisten Alternativen konzentrieren sich mehr auf das Verschieben von Dateien oder die Anwendung umfassenderer Organisationsregeln. Die lokale Verarbeitung ist in mehreren Einträgen vorhanden und wird daher nicht als einzigartiger Vorteil behandelt. „Zush“ PRO ist in dieser Gruppe auch deshalb ungewöhnlich, weil sein kostenpflichtiger Managed-Cloud-Workflow nicht gemessen wird und kein „BYOK“ erfordert.
 
@@ -94,7 +111,7 @@ Achten Sie auf Folgendes: Eine leistungsstarke Regel-Engine erfordert Einrichtun
 
 ## 3. Sparkle: eine schmale Alternative zur Ordnerumstrukturierung
 
-„[Funkeln](https://makeitsparkle.co/)“ ist eine Mac-fokussierte Aufräum- und Organisations-App. Es kann ausgewählte Ordner verwalten, eine KI-Bibliothek erstellen, neue Dateien nach einem konfigurierbaren Aktualitätszeitraum verschieben, Duplikate kennzeichnen, Verschiebungen protokollieren und seine Organisation wiederherstellen. In der Hilfe heißt es, dass Sparkle beim Aufbau einer Ordnerstruktur Dateiinhalte, Dateinamen und -typen liest.
+„[Sparkle](https://makeitsparkle.co/)“ ist eine Mac-fokussierte Aufräum- und Organisations-App. Es kann ausgewählte Ordner verwalten, eine KI-Bibliothek erstellen, neue Dateien nach einem konfigurierbaren Aktualitätszeitraum verschieben, Duplikate kennzeichnen, Verschiebungen protokollieren und seine Organisation wiederherstellen. In der Hilfe heißt es, dass Sparkle beim Aufbau einer Ordnerstruktur Dateiinhalte, Dateinamen und -typen liest.
 
 Sparkle strebt ein Erlebnis mit geringer Konfiguration an: Fügen Sie einen Ordner hinzu, behalten Sie geschütztes Material in der manuellen Bibliothek und lassen Sie die App die KI-Bibliothek verwalten. Auf den aktuellen offiziellen Seiten wird außerdem mit Speicherbereinigung, App-Deinstallation und Cloud-synchronisierten Ordnern geworben, die lokal verfügbar sind.
 
@@ -136,7 +153,7 @@ Achten Sie auf Folgendes: Überprüfen Sie die Betriebssystemanforderungen auf I
 
 ## 7. Files Magic AI: eine schmale Organizer-plus-Reiniger-Alternative
 
-„[Dateien Magic AI](https://1dot.ai/files-magic-ai)“ kombiniert Ordnerorganisation, Offline-Magic Rename, Bereinigung von Duplikaten und ungenutzten Apps sowie Entwickler-Cache-Bereinigung. Sein Organisationsablauf sendet Dateinamen – keine Dateiinhalte –, um eine Struktur vorzuschlagen, während Magic Rename Apple Intelligence lokal auf unterstützten Macs verwendet. Der Benutzer zeigt eine Vorschau an, schließt Elemente aus und wendet genehmigte Änderungen an.
+„[Files Magic AI](https://1dot.ai/files-magic-ai)“ kombiniert Ordnerorganisation, Offline-Magic Rename, Bereinigung von Duplikaten und ungenutzten Apps sowie Entwickler-Cache-Bereinigung. Sein Organisationsablauf sendet Dateinamen – keine Dateiinhalte –, um eine Struktur vorzuschlagen, während Magic Rename Apple Intelligence lokal auf unterstützten Macs verwendet. Der Benutzer zeigt eine Vorschau an, schließt Elemente aus und wendet genehmigte Änderungen an.
 
 Die offiziellen Preise betrugen 4,99 $ monatlich, 29 $ jährlich oder 49,99 $ lebenslang mit einer siebentägigen Testversion. Letzte Organisationsaktionen können rückgängig gemacht werden. Die App unterstützt lokal verfügbare Cloud-Ordner und kann optional „BYOK“ OpenAI für ihren Files AI-Chat verwenden.
 

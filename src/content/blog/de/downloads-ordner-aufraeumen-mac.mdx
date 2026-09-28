@@ -9,7 +9,7 @@ tags:
   - "File Organization"
   - "Downloads"
 tldr: "Der Downloads-Ordner bleibt übersichtlich, wenn du ihn als Eingang statt als Archiv behandelst: schlechte Namen früh korrigieren, Dateien regelmäßig in wenige feste Ziele verschieben und alte Reste löschen."
-reviewed: "2026-07-28"
+reviewed: "2026-09-28"
 locale: "de"
 translationOf: "how-to-organize-downloads-folder-mac"
 ---
@@ -46,6 +46,23 @@ Hier treffen Dateien aus vielen Quellen aufeinander:
 - Kunden- und Projektdateien
 
 Viele davon heißen `download (4).jpg`, `anhang.pdf`, `Bildschirmfoto 2026-03-02 um 10.14.04.png` oder tragen lange, automatisch erzeugte Zeichenfolgen. Das Problem ist also nicht nur die Menge, sondern die Mischung aus Dateitypen und schwachen Namen.
+
+## Dateien mit KI in Ordner sortieren
+
+[Zush](/ai-file-sorter) — Die KI-Ordnersortierung von Zush ist auf Mac und Windows in der Beta. Sie analysiert unterstützte Dateiinhalte und schlägt Namen sowie Ordnergruppen vor. Lassen Sie Folder rules für Auto leer, oder beschreiben Sie die gewünschte Gruppierung in Alltagssprache. Naming Blocks legen den Aufbau des Dateinamens getrennt davon fest.
+
+> Rechnungen nach Unternehmen und Belege nach Monat gruppieren. Monatsordner YYYY-MM nennen.
+
+1. Fügen Sie einen kleinen kopierten Stapel in AI Rename hinzu und wählen Sie ein Template.
+2. Aktivieren Sie + Sort und wählen Sie den Destination folder als Wurzel für die Unterordner. Ohne separates Ziel bleibt der Quellordner die Wurzel.
+3. Tragen Sie die Gruppierung in Folder rules ein. Aktivieren Sie Reuse existing folders, wenn passende Ordner bereits im Ziel liegen; andernfalls kann Zush neue anlegen.
+4. Prüfen und korrigieren Sie die vorgeschlagenen Dateinamen und Ordnergruppen, bevor Sie den Stapel anwenden.
+
+![Zush für Mac mit vorgeschlagenen Dateinamen und inhaltsbezogenen Ordnergruppen vor Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Speichern Sie das getestete Ziel und die Regeln im Template. Monitor kann damit neue Dateien direkt im überwachten Ordner umbenennen und sortieren; bereits verarbeitete Dateien werden nicht nachträglich neu organisiert. Bei ausgeschalteter Sortierung und ursprünglichem Ziel bleiben die Dateien im bisherigen Ordner.
+
+[Schritt-für-Schritt-Anleitung zur KI-Ordnersortierung](/blog/sort-files-into-folders-with-ai-mac) · [Dokumentation zur Ordnersortierung](/docs/folder-sorting) · [30 Beispiele für Ordnerregeln](/blog/ai-folder-sorting-prompts).
 
 ## Eine einfache Struktur, die im Alltag funktioniert
 
@@ -152,9 +169,3 @@ Nutze im Finder die Listenansicht und sortiere nach Größe oder Datum. Für wie
 Um den Downloads-Ordner am Mac dauerhaft aufzuräumen, brauchst du keine komplizierte Ordnerhierarchie: wenige echte Ziele, eine kurze wöchentliche Sichtung und Automation für die Dateien, die den meisten Müll erzeugen.
 
 Bei schlecht benannten PDFs, Bildern und Dokumenten übernimmt [Zush](/de) die Benennung, bevor Dateien im Stapel verschwinden. So wird jeder spätere Aufräumschritt einfacher.
-
-## Dateien auf dem Mac mit KI in Ordner sortieren
-
-Zush kann Dateien nach ihrem Inhalt umbenennen und in Ordner einsortieren. Aktivieren Sie die Ordnersortierung, wählen Sie ein Ziel und prüfen Sie die vorgeschlagenen Gruppen vor dem Anwenden.
-
-[Dateien auf dem Mac mit KI in Ordner sortieren](/de/blog/sort-files-into-folders-with-ai-mac-de)

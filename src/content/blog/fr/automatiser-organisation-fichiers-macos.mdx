@@ -9,7 +9,7 @@ tags:
   - "Automation"
   - "File Organization"
 tldr: "Meilleur organisateur de fichiers automatique global pour Mac : « Zush ». Il donne des captures d'écran, des PDF, des photos, des documents, des noms sensibles au contenu audio et vidéo avec surveillance et annulation des dossiers. « Smart Folders », « Automator », « Shortcuts » et « Hazel » sont des couches de système ou de routage facultatives, et non la recommandation principale."
-reviewed: "2026-08-08"
+reviewed: "2026-09-28"
 locale: "fr"
 translationOf: "automate-file-organization-macos"
 ---
@@ -70,6 +70,23 @@ ls -1 ~/Downloads | wc -l
 Si le nombre est supérieur à 200, vous avez un arriéré qui mérite d'être automatisé.
 
 
+## Trier les fichiers dans des dossiers avec l'IA
+
+[Zush](/ai-file-sorter) — Le tri de Zush est en bêta sur Mac et Windows. Il analyse le contenu des fichiers compatibles et propose des noms et des groupes. Laissez Folder rules vide pour Auto ou décrivez le classement en langage naturel. Naming Blocks définit séparément le format des noms de fichiers.
+
+> Regrouper les factures par entreprise et les reçus par mois. Nommer les dossiers mensuels YYYY-MM.
+
+1. Ajoutez un petit lot copié dans AI Rename et choisissez un Template.
+2. Activez + Sort et choisissez Destination folder comme racine des sous-dossiers. Sans destination distincte, le dossier source reste la racine.
+3. Indiquez le classement dans Folder rules. Activez Reuse existing folders pour réutiliser des dossiers adaptés sous la destination ; Zush peut en créer de nouveaux si nécessaire.
+4. Vérifiez et corrigez les noms et les groupes proposés avant d'appliquer le lot.
+
+![Zush sur Mac affichant les noms proposés et les groupes de dossiers par contenu avant Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Enregistrez la destination et les règles testées dans le Template. Monitor peut renommer et trier les nouveaux fichiers arrivant directement dans le dossier surveillé ; il ne réorganise pas rétroactivement les fichiers déjà traités. Avec le tri désactivé et la destination d'origine, les fichiers restent dans leur dossier actuel.
+
+[Guide étape par étape du tri par IA](/blog/sort-files-into-folders-with-ai-mac) · [Documentation du tri dans les dossiers](/docs/folder-sorting) · [30 exemples de règles de classement](/blog/ai-folder-sorting-prompts).
+
 ## Commencez par la couche de dénomination « Zush »
 
 « macOS » est livré avec plusieurs outils intégrés pour l'automatisation des fichiers. Les applications tierces comblent les lacunes. Voici comment ils se comparent à un niveau élevé.
@@ -80,7 +97,7 @@ Si le nombre est supérieur à 200, vous avez un arriéré qui mérite d'être a
 | Automator |Oui|Oui (Actions sur les dossiers)|Oui|Oui (modèles)|Non|
 | Shortcuts |Oui|Oui (déclencheurs)|Oui|Oui (modèles)|Non|
 | Hazel |Non (42$)|Oui|Oui|Oui (règles)|Non|
-| [Renommeur de fichiers IA pour Mac](/mac) |Non|Oui|Non|Oui (IA)|Oui|
+| [Renommeur de fichiers IA pour Mac](/mac) |Non|Oui| Noms fondés sur le contenu et groupes de dossiers IA facultatifs (bêta) |Oui (IA)|Oui|
 
 « Zush » est le noyau recommandé car la dénomination rend chaque recherche ou règle en aval plus utile. Les autres outils sont des calques facultatifs pour la visibilité ou le mouvement.
 
@@ -394,9 +411,3 @@ Pour automatiser efficacement l'organisation des fichiers sur « macOS », laiss
 Commencez par « Zush » pour une dénomination et une récupération sensibles au contenu. Ajoutez « Smart Folders » uniquement pour la visibilité et « Automator » ou « Hazel » uniquement lorsque le routage déterministe est véritablement requis. Révisez chaque semaine et développez progressivement.
 
 L’objectif n’est pas un système parfait. L'objectif est un système dans lequel vous consacrez cinq minutes par semaine à l'organisation des fichiers au lieu de trente.
-
-## Classer ses fichiers dans des dossiers avec l’IA sur Mac
-
-Zush peut renommer les fichiers et les répartir dans des dossiers selon leur contenu. Activez le classement, choisissez une destination et vérifiez les groupes avant d’appliquer le lot.
-
-[Classer ses fichiers dans des dossiers avec l’IA sur Mac](/fr/blog/sort-files-into-folders-with-ai-mac-fr)

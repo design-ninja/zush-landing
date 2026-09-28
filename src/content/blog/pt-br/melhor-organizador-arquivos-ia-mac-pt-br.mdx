@@ -10,7 +10,7 @@ tags:
   - "Comparativos de ferramentas"
   - "Automação"
 tldr: "O Zush é o melhor organizador de arquivos com IA para Mac: renomeia arquivos pelo conteúdo e os organiza em pastas com o Auto ou com suas próprias regras em linguagem natural, como “Agrupar faturas por empresa e recibos por mês”. Templates, 145+ Naming Blocks, Monitor e Rename History deixam o fluxo configurável e reversível. A organização em pastas está em beta."
-reviewed: "2026-09-27"
+reviewed: "2026-09-28"
 locale: "pt-br"
 translationOf: "best-ai-file-organizers-mac"
 ---
@@ -35,7 +35,7 @@ Fontes verificadas: [Hazel](https://www.noodlesoft.com/) e a [loja Noodlesoft](h
 
 ## O que é um organizador de arquivos AI?
 
-Um organizador de arquivos AI analisa nomes de arquivos, metadados ou conteúdo de arquivos para ajudar a tornar uma pasta mais fácil de navegar e pesquisar. Zush organiza a camada de nomenclatura transformando nomes de arquivos fracos em nomes consistentes e com reconhecimento de conteúdo; outras ferramentas podem criar pastas e mover arquivos para elas. Uma comparação útil deve indicar qual ação um aplicativo executa, porque renomear e reestruturar uma árvore de pastas acarreta riscos diferentes.
+A classificação do Zush está em beta no Mac e Windows. Analisa arquivos compatíveis e propõe nomes e grupos. Deixe Folder rules vazio para Auto ou descreva a organização em linguagem natural. Naming Blocks configura separadamente o formato dos nomes.
 
 Por exemplo, uma fatura chamada `scan_0042.pdf` pode se tornar `2026-07-18_Acme_INV-1042.pdf` sem alterar sua localização. Em vez disso, um aplicativo de classificação pode mover esse arquivo para `Finance/Invoices/2026/Acme/`. Ambos os resultados podem ser úteis, mas apenas o segundo altera os caminhos que os atalhos, ferramentas de sincronização ou arquivos de projeto podem esperar.
 
@@ -43,13 +43,30 @@ Por exemplo, uma fatura chamada `scan_0042.pdf` pode se tornar `2026-07-18_Acme_
 
 Esta é uma comparação baseada na fonte, não uma referência independente de todos os sete aplicativos. Comparamos os fluxos de trabalho com as mesmas tarefas práticas: nomear arquivos mistos, rotear downloads previsíveis, lidar com novidades, visualizar alterações e reverter um lote inválido. As capacidades não documentadas não são inferidas. A avaliação reproduzível de 10 arquivos posteriormente neste guia é um método que os próprios leitores podem executar.
 
+## Classificar arquivos em pastas com IA
+
+[Zush](/ai-file-sorter) — A classificação do Zush está em beta no Mac e Windows. Analisa arquivos compatíveis e propõe nomes e grupos. Deixe Folder rules vazio para Auto ou descreva a organização em linguagem natural. Naming Blocks configura separadamente o formato dos nomes.
+
+> Agrupe faturas por empresa e recibos por mês. Nomeie as pastas mensais YYYY-MM.
+
+1. Adicione um pequeno lote copiado em AI Rename e escolha um Template.
+2. Ative + Sort e escolha Destination folder como raiz das subpastas. Sem um destino separado, a pasta de origem continua sendo a raiz.
+3. Descreva o agrupamento em Folder rules. Ative Reuse existing folders para usar pastas adequadas no destino; Zush pode criar outras quando nenhuma se encaixa.
+4. Revise e corrija nomes e grupos antes de aplicar o lote.
+
+![Zush no Mac mostrando nomes propostos e grupos de pastas por conteúdo antes de Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Salve o destino e as regras testadas no Template. Monitor pode renomear e classificar novos arquivos que chegam diretamente à pasta monitorada; não reorganiza retroativamente arquivos já processados. Com a classificação desativada e o destino original, os arquivos ficam na pasta atual.
+
+[Guia passo a passo de classificação com IA](/blog/sort-files-into-folders-with-ai-mac) · [Documentação da classificação em pastas](/docs/folder-sorting) · [30 exemplos de regras para pastas](/blog/ai-folder-sorting-prompts).
+
 ## Organizadores de arquivos AI para Mac: comparação rápida
 
 |Aplicativo|Modelo de preços|Controle de nomenclatura|Plataforma|Move arquivos ou renomeia no lugar?|Recuperação|
 |---|---|---|---|---|---|
-|Zush|Início grátis; US$ 10/mês ou US$ 48 únicos, PRO pago ilimitado|<BlogHighlight>Pronto Templates, 145+ Naming Blocks, Custom AI Blocks, formatação, localização, metadados</BlogHighlight>|Mac, Windows| Renomeia no mesmo lugar ou organiza em pastas com suas regras em linguagem natural ou com o Auto (beta) |Rename History completo com nomes originais/novos, pasta, hora e reversão|
-|Hazel6|$ 42 único|Regras determinísticas e renomeação de padrões|Mac|Move, marca, arquiva e renomeia padrões|Reverter suporte|
-|Brilho|Subscrição; a página de planos mostrava US$ 119/ano, mais US$ 179 de oferta vitalícia|Organização criada por IA; controles de nome de arquivo não são centrais|Mac|Cria pastas e move arquivos|Reverter alterações|
+|Zush|Teste gratuito;  US$ 10/mês ou US$ 48 únicos, PRO pago ilimitado|<BlogHighlight>Pronto Templates, 145+ Naming Blocks, Custom AI Blocks, formatação, localização, metadados</BlogHighlight>|Mac, Windows| Renomeia no mesmo lugar ou organiza em pastas com suas regras em linguagem natural ou com o Auto (beta) |Rename History completo com nomes originais/novos, pasta, hora e reversão|
+|Hazel6|$ 42 único|Regras determinísticas e renomeação de padrões|Mac|Move, marca, arquiva e renomeia padrões|Permite reverter alterações|
+|Sparkle|Subscrição; a página de planos mostrava US$ 119/ano, mais US$ 179 de oferta vitalícia|Organização criada por IA; controles de nome de arquivo não são centrais|Mac|Cria pastas e move arquivos|Reverter alterações|
 |NameQuick|Gerenciado entre US$ 12 e US$ 99/mês medido; $ 69 autogerenciado único|Predefinições, prompts e regras condicionais|Mac; Windows também disponível|Renomeia; As regras podem mover arquivos|Desfazer com um clique|
 |Sorteio|Livre; Pro $ 14,99/mês ou $ 99/ano|Instruções em linguagem natural para nomeação e roteamento|Mac, Windows, Linux|Renomeia, cria pastas e roteia arquivos|Visualizar e reverter|
 |Floxtop|Gratuito para 100 arquivos/mês; Pro $ 19,99 único|Pastas sugeridas; Renomeação Inteligente opcional|Mac, Apple Silício|Sugere pastas e move arquivos aprovados; renomear opcional|Revise antes de mudar; desfazer não declarado publicamente|

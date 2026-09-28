@@ -8,7 +8,7 @@ topic: "search"
 tags:
   - "File Organization"
 tldr: "Tags Finder, dossiers intelligents et Spotlight répondent à trois besoins : les tags ajoutent un contexte transversal, les dossiers intelligents créent des vues à jour et Spotlight recherche noms et métadonnées."
-reviewed: "2026-09-24"
+reviewed: "2026-09-28"
 locale: "fr"
 translationOf: "finder-tags-guide-organize-files-mac"
 ---
@@ -21,7 +21,7 @@ Réponse rapide : les tags Finder sont des marqueurs colorés ou nommés qui fon
 
 macOS fournit trois couches complémentaires : tags, dossiers intelligents et Spotlight. Les fichiers restent dans leurs dossiers de projet, tandis que les tags rendent visibles d'autres relations.
 
-Si des noms génériques bloquent la recherche, combinez ce système avec le guide [renommer des fichiers par lots sur Mac](/de/blog/dateien-stapelweise-umbenennen-mac), les [Naming Blocks](/blog/naming-blocks-file-naming-guide) ou le [renommage IA sur Mac](/de/mac).
+Si des noms génériques bloquent la recherche, combinez ce système avec le guide [renommer des fichiers par lots sur Mac](/fr/blog/renommer-fichiers-par-lot-mac-guide), les [Naming Blocks](/blog/naming-blocks-file-naming-guide) ou le [renommage IA sur Mac](/fr/mac).
 
 <BlogCTA
   placement='early'
@@ -49,6 +49,25 @@ Si des noms génériques bloquent la recherche, combinez ce système avec le gui
     { href: '/docs/metadata-tags', label: 'Métadonnées et tags' },
   ]}
 />
+
+## Trier les fichiers dans des dossiers avec l'IA
+
+[Trier les fichiers dans des dossiers avec l'IA](/ai-file-sorter) — Le tri facultatif par IA est en bêta sur Mac et Windows. Il analyse le contenu des fichiers compatibles et propose des noms et des groupes. Laissez Folder rules vide pour Auto ou décrivez le classement en langage naturel. Naming Blocks définit séparément le format des noms de fichiers.
+
+> Regrouper les factures par entreprise et les reçus par mois. Nommer les dossiers mensuels YYYY-MM.
+
+1. Ajoutez un petit lot copié dans AI Rename et choisissez un Template.
+2. Activez + Sort et choisissez Destination folder comme racine des sous-dossiers. Sans destination distincte, le dossier source reste la racine.
+3. Indiquez le classement dans Folder rules. Activez Reuse existing folders pour réutiliser des dossiers adaptés sous la destination ; Zush peut en créer de nouveaux si nécessaire.
+4. Vérifiez et corrigez les noms et les groupes proposés avant d'appliquer le lot.
+
+![Zush sur Mac affichant les noms proposés et les groupes de dossiers par contenu avant Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Enregistrez la destination et les règles testées dans le Template. Monitor peut renommer et trier les nouveaux fichiers arrivant directement dans le dossier surveillé ; il ne réorganise pas rétroactivement les fichiers déjà traités. Avec le tri désactivé et la destination d'origine, les fichiers restent dans leur dossier actuel.
+
+[Guide étape par étape du tri par IA](/blog/sort-files-into-folders-with-ai-mac) · [Documentation du tri dans les dossiers](/docs/folder-sorting) · [30 exemples de règles de classement](/blog/ai-folder-sorting-prompts).
+
+<span id="tags-finder-organiser-sans-deplacer"></span>
 
 ## Tags Finder : organiser sans déplacer
 
@@ -93,6 +112,8 @@ Les tags de projet sont utiles lorsque les fichiers liés se trouvent à plusieu
 
 ![Démonstration Zush appliquant automatiquement des tags Finder sur Mac](/videos/zush-tags.mp4)
 
+<span id="dossiers-intelligents-des-vues-dynamiques-sans-deplacer"></span>
+
 ## Dossiers intelligents : des vues dynamiques sans déplacer
 
 Un dossier intelligent enregistre des critères de recherche et affiche toujours les fichiers qui y correspondent. Aucun original n'est déplacé ou dupliqué.
@@ -131,6 +152,8 @@ Ils construisent des vues récurrentes : images récentes, gros fichiers, PDF à
 - **Livrables client :** tag `client-alpha` + type différent de dossier.
 
 Une modification de tag met automatiquement la vue à jour.
+
+<span id="spotlight-recherche-rapide-sur-tout-le-mac"></span>
 
 ## Spotlight : recherche rapide sur tout le Mac
 

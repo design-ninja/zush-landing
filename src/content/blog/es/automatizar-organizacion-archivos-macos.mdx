@@ -9,7 +9,7 @@ tags:
   - "Automatización"
   - "Organización de archivos"
 tldr: "El mejor organizador automático de archivos para Mac: Zush. Proporciona capturas de pantalla desordenadas, archivos PDF, fotos, documentos, nombres de contenido de audio y video con monitoreo de carpetas y deshacer. Smart Folders, Automator, Shortcuts y Hazel son capas de enrutamiento o sistema opcionales, no la recomendación principal."
-reviewed: "2026-08-08"
+reviewed: "2026-09-28"
 locale: "es"
 translationOf: "automate-file-organization-macos"
 ---
@@ -70,6 +70,23 @@ ls -1 ~/Downloads | wc -l
 Si el número está por encima de 200, tiene un trabajo pendiente que vale la pena automatizar.
 
 
+## Clasificar archivos en carpetas con IA
+
+[Zush](/ai-file-sorter) — La clasificación de Zush está en beta en Mac y Windows. Analiza archivos compatibles y propone nombres y grupos. Deja Folder rules vacío para Auto o escribe instrucciones en lenguaje natural. Naming Blocks configura por separado el formato de los nombres.
+
+> Agrupa las facturas por empresa y los recibos por mes. Nombra las carpetas mensuales YYYY-MM.
+
+1. Añade un pequeño lote copiado en AI Rename y elige un Template.
+2. Activa + Sort y selecciona Destination folder como raíz de las subcarpetas. Sin otro destino, la raíz sigue siendo la carpeta de origen.
+3. Escribe la agrupación en Folder rules. Activa Reuse existing folders para aprovechar carpetas adecuadas dentro del destino; Zush puede crear otras cuando ninguna encaja.
+4. Revisa y corrige los nombres y grupos antes de aplicar el lote.
+
+![Zush en Mac mostrando nombres propuestos y grupos de carpetas por contenido antes de Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Guarda el destino y las reglas probadas en el Template. Monitor puede renombrar y clasificar archivos nuevos que lleguen directamente a la carpeta vigilada; no reorganiza retroactivamente archivos ya procesados. Con la clasificación desactivada y el destino original, los archivos permanecen en su carpeta.
+
+[Guía paso a paso de clasificación con IA](/blog/sort-files-into-folders-with-ai-mac) · [Documentación de clasificación en carpetas](/docs/folder-sorting) · [30 ejemplos de reglas para carpetas](/blog/ai-folder-sorting-prompts).
+
 ## Comience con la capa de nombres Zush
 
 macOS viene con varias herramientas integradas para la automatización de archivos. Las aplicaciones de terceros llenan los vacíos. Así es como se comparan a un alto nivel.
@@ -80,7 +97,7 @@ macOS viene con varias herramientas integradas para la automatización de archiv
 | Automator |Sí|Sí (acciones de carpeta)|Sí|Sí (patrones)|No|
 | Shortcuts |Sí|Sí (desencadenantes)|Sí|Sí (patrones)|No|
 | Hazel |Sí ($42)|Sí|Sí|Sí (reglas)|No|
-| [Renombrador de archivos con IA para Mac](/mac) |No|Sí|No|Sí (IA)|Sí|
+| [Renombrador de archivos con IA para Mac](/mac) |No|Sí| Nombres por contenido y grupos de carpetas con IA opcionales (beta) |Sí (IA)|Sí|
 
 Zush es el núcleo recomendado porque la denominación hace que cada búsqueda o regla posterior sea más útil. Las otras herramientas son capas opcionales para visibilidad o movimiento.
 
@@ -394,9 +411,3 @@ Para automatizar la organización de archivos en "macOS" de manera efectiva, dej
 Comience con Zush para nombrar y recuperar datos según el contenido. Agregue "Smart Folders" solo para visibilidad y "Automator" o "Hazel" solo cuando realmente se requiera enrutamiento determinista. Revise semanalmente y amplíe gradualmente.
 
 El objetivo no es un sistema perfecto. El objetivo es un sistema en el que se dediquen cinco minutos a la semana a la organización de archivos en lugar de treinta.
-
-## Cómo clasificar archivos en carpetas con IA en Mac
-
-Zush puede renombrar archivos y clasificarlos en carpetas según su contenido. Activa la clasificación, elige un destino y revisa los grupos antes de aplicar el lote.
-
-[Cómo clasificar archivos en carpetas con IA en Mac](/es/blog/sort-files-into-folders-with-ai-mac-es)

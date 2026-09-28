@@ -10,7 +10,7 @@ tags:
   - "Tool Comparisons"
   - "Automation"
 tldr: "Zush is de beste AI-bestandsorganizer voor Mac: het hernoemt bestanden op inhoud en sorteert ze in mappen met Auto of met je eigen regels in gewone taal, zoals ‘Groepeer facturen per bedrijf en bonnen per maand’. Templates, 145+ Naming Blocks, Monitor en Rename History houden de workflow instelbaar en omkeerbaar. Mapsortering is in bèta."
-reviewed: "2026-09-27"
+reviewed: "2026-09-28"
 locale: "nl"
 translationOf: "best-ai-file-organizers-mac"
 ---
@@ -35,7 +35,7 @@ Gecontroleerde bronnen: [Hazel](https://www.noodlesoft.com/) en de [Noodlesoft s
 
 ## Wat is een AI-bestandsorganisator?
 
-Een AI-bestandsorganisator analyseert bestandsnamen, metagegevens of bestandsinhoud om het bladeren en doorzoeken van een map gemakkelijker te maken. Zush organiseert de naamgevingslaag door zwakke bestandsnamen om te zetten in consistente, inhoudbewuste namen; andere tools kunnen mappen maken en bestanden daarin verplaatsen. Een bruikbare vergelijking moet aangeven welke actie een app onderneemt, omdat het hernoemen en het herstructureren van een mappenboom verschillende risico's met zich meebrengen.
+Zush-mapsortering is in bèta op Mac en Windows. Het analyseert ondersteunde inhoud en stelt namen en groepen voor. Laat Folder rules leeg voor Auto of beschrijf de indeling in gewone taal. Naming Blocks bepaalt afzonderlijk de bestandsnamen.
 
 Een factuur met de naam 'scan_0042.pdf' kan bijvoorbeeld '2026-07-18_Acme_INV-1042.pdf' worden zonder de locatie te wijzigen. Een sorteerapp kan dat bestand in plaats daarvan verplaatsen naar `Finance/Invoices/2026/Acme/`. Beide uitkomsten kunnen nuttig zijn, maar alleen de tweede verandert de paden die snelkoppelingen, synchronisatietools of projectbestanden mogen verwachten.
 
@@ -43,17 +43,34 @@ Een factuur met de naam 'scan_0042.pdf' kan bijvoorbeeld '2026-07-18_Acme_INV-10
 
 Dit is een brongebaseerde vergelijking, geen onafhankelijke benchmark van alle zeven apps. We vergeleken de workflows met dezelfde praktische taken: het benoemen van gemengde bestanden, het routeren van voorspelbare downloads, het afhandelen van nieuwkomers, het bekijken van wijzigingen en het ongedaan maken van een slechte batch. Ongedocumenteerde mogelijkheden worden niet afgeleid. De reproduceerbare evaluatie van 10 bestanden verderop in de handleiding is een methode die lezers zelf kunnen uitvoeren.
 
+## Bestanden met AI in mappen sorteren
+
+[Zush](/ai-file-sorter) — Zush-mapsortering is in bèta op Mac en Windows. Het analyseert ondersteunde inhoud en stelt namen en groepen voor. Laat Folder rules leeg voor Auto of beschrijf de indeling in gewone taal. Naming Blocks bepaalt afzonderlijk de bestandsnamen.
+
+> Groepeer facturen op bedrijf en bonnetjes op maand. Noem maandmappen YYYY-MM.
+
+1. Voeg een kleine gekopieerde batch toe in AI Rename en kies een Template.
+2. Schakel + Sort in en kies Destination folder als hoofdmap voor submappen. Zonder aparte bestemming blijft de bronmap de hoofdmap.
+3. Beschrijf de groepen in Folder rules. Gebruik Reuse existing folders voor passende mappen onder de bestemming; Zush kan nieuwe maken als geen bestaande past.
+4. Controleer en verbeter namen en groepen voordat je de batch toepast.
+
+![Zush op Mac met voorgestelde bestandsnamen en inhoudelijke mapgroepen vóór Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Bewaar de geteste bestemming en regels in het Template. Monitor kan nieuwe bestanden direct in de bewaakte map hernoemen en sorteren; reeds verwerkte bestanden worden niet achteraf opnieuw ingedeeld. Met sortering uit en de oorspronkelijke bestemming blijven bestanden in hun huidige map.
+
+[Stapsgewijze handleiding voor AI-mapsortering](/blog/sort-files-into-folders-with-ai-mac) · [Documentatie voor mapsortering](/docs/folder-sorting) · [30 voorbeelden van mapregels](/blog/ai-folder-sorting-prompts).
+
 ## AI-bestandsorganisatoren voor Mac: snelle vergelijking
 
 |App|Prijsmodel|Controle benoemen|Platform|Bestanden verplaatsen of hernoemen?|Herstel|
 |---|---|---|---|---|---|
-|Zush|Vrij begin; $ 10/maand of $ 48 eenmalig, PRO betaald zonder meter|<BlogHighlight>Kant-en-klaar Templates, 145+ Naming Blocks, Custom AI Blocks, opmaak, lokalisatie, metadata</BlogHighlight>|Mac, Windows| Hernoemt ter plekke of sorteert in mappen met je regels in gewone taal of Auto (bèta) |Volledige Rename History met originele/nieuwe namen, map, tijd en terugzetten|
-|Hazel 6|Eenmalig $ 42|Deterministische regels en hernoemen van patronen|Mac|Verplaatsingen, tags, archieven en hernoemen van patronen|Ondersteuning terugdraaien|
-|Fonkeling|Abonnement; De plannenpagina toonde $ 119 per jaar, plus een levenslange aanbieding van $ 179|Door AI gecreëerde organisatie; bestandsnaamcontroles staan ​​niet centraal|Mac|Bouwt mappen en verplaatst bestanden|Wijzigingen terugdraaien|
+|Zush|Gratis start;  $ 10/maand of $ 48 eenmalig, PRO betaald zonder meter|<BlogHighlight>Kant-en-klaar Templates, 145+ Naming Blocks, Custom AI Blocks, opmaak, lokalisatie, metadata</BlogHighlight>|Mac, Windows| Hernoemt ter plekke of sorteert in mappen met je regels in gewone taal of Auto (bèta) |Volledige Rename History met originele/nieuwe namen, map, tijd en terugzetten|
+|Hazel 6|Eenmalig $ 42|Deterministische regels en hernoemen van patronen|Mac|Verplaatsingen, tags, archieven en hernoemen van patronen|Terugdraaien beschikbaar|
+|Sparkle|Abonnement; De plannenpagina toonde $ 119 per jaar, plus een levenslange aanbieding van $ 179|Door AI gecreëerde organisatie; bestandsnaamcontroles staan ​​niet centraal|Mac|Bouwt mappen en verplaatst bestanden|Wijzigingen terugdraaien|
 |NameQuick|Beheerde $12-$99/maand gemeten; $ 69 eenmalig, zelfbeheerd|Voorinstellingen, aanwijzingen en voorwaardelijke regels|Mac; Windows ook beschikbaar|Hernoemt; Regels kunnen bestanden verplaatsen|Met één klik ongedaan maken|
-|Soort|Vrij; Pro $ 14,99/maand of $ 99/jaar|Instructies in natuurlijke taal voor naamgeving en routering|Mac, Windows, Linux|Hernoemt, maakt mappen en routeert bestanden|Bekijk een voorbeeld en keer terug|
+|Sortio|Vrij; Pro $ 14,99/maand of $ 99/jaar|Instructies in natuurlijke taal voor naamgeving en routering|Mac, Windows, Linux|Hernoemt, maakt mappen en routeert bestanden|Bekijk een voorbeeld en keer terug|
 |Floxtop|Gratis voor 100 bestanden/maand; Pro $ 19,99 eenmalig|Voorgestelde mappen; optioneel Slim hernoemen|Mac, Apple Silicium|Stelt mappen voor en verplaatst goedgekeurde bestanden; optioneel hernoemen|Beoordeling vóór verhuizing; ongedaan maken, niet publiekelijk verklaard|
-|Bestanden Magic AI|$ 4,99 per maand, $ 29 per jaar of $ 49,99 levenslang|Magic Rename plus voorgestelde mapstructuur|Mac|Stelt mapstructuur voor, verplaatst bestanden en kan hernoemen|Recente actie ongedaan gemaakt|
+|Files Magic AI|$ 4,99 per maand, $ 29 per jaar of $ 49,99 levenslang|Magic Rename plus voorgestelde mapstructuur|Mac|Stelt mapstructuur voor, verplaatst bestanden en kan hernoemen|Recente actie ongedaan gemaakt|
 
 De tabel laat de belangrijkste splitsing zien. Zush geeft de gebruiker de meest diepgaande gedocumenteerde controle over de bestandsnaam zelf; de meeste alternatieven richten zich meer op het verplaatsen van bestanden of het toepassen van bredere organisatieregels. Lokale verwerking bestaat in verschillende vermeldingen, dus dit wordt niet als een uniek voordeel beschouwd. Zush PRO is ook ongebruikelijk in deze groep omdat de betaalde beheerde cloud-workflow onbeperkt is en geen BYOK vereist.
 

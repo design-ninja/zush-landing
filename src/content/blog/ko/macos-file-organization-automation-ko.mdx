@@ -11,7 +11,7 @@ tags:
   - "자동화"
   - "파일 구성"
 tldr: "Mac을 위한 최고의 자동 파일 정리 도구: Zush. 폴더 모니터링 및 실행 취소를 통해 지저분한 스크린샷, PDF, 사진, 문서, 오디오 및 비디오 내용 인식 이름을 제공합니다. 'Smart Folders', 'Automator', 'Shortcuts', 'Hazel'은 선택적인 시스템 또는 라우팅 계층이며 기본 권장 사항은 아닙니다."
-reviewed: "2026-08-08"
+reviewed: "2026-09-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -70,6 +70,23 @@ ls -1 ~/Downloads | wc -l
 숫자가 200보다 높으면 자동화할 가치가 있는 백로그가 있는 것입니다.
 
 
+## AI로 파일을 폴더에 분류하기
+
+Zush — [Zush](/ai-file-sorter) — Zush 폴더 분류는 Mac과 Windows에서 베타로 제공됩니다. 지원 파일의 내용을 분석해 이름과 그룹을 제안합니다. Auto를 쓰려면 Folder rules를 비우고, 직접 정하려면 자연어로 지시하세요. 파일 이름 형식은 Naming Blocks에서 별도로 설정합니다.
+
+> 청구서는 회사별, 영수증은 월별로 묶어 주세요. 월 폴더 이름은 YYYY-MM으로 지정해 주세요.
+
+1. 복사한 작은 묶음을 AI Rename에 추가하고 Template을 선택합니다.
+2. + Sort를 켜고 하위 폴더의 루트로 Destination folder를 선택합니다. 별도 대상이 없으면 원본 폴더가 루트입니다.
+3. Folder rules에 분류 방법을 적습니다. 대상 안의 적절한 기존 폴더를 쓰려면 Reuse existing folders를 켭니다. 맞는 폴더가 없으면 새로 만들 수 있습니다.
+4. 처리를 적용하기 전에 제안된 이름과 그룹을 확인하고 수정합니다.
+
+![Mac용 Zush에서 Rename & sort 적용 전 제안된 파일 이름과 내용별 폴더 그룹을 표시](/images/showcase/macos/folder-sorting-light.webp)
+
+검증한 대상과 규칙을 Template에 저장하세요. Monitor는 감시 폴더 바로 안에 새로 들어오는 파일의 이름과 분류를 처리합니다. 이미 처리한 파일을 소급해 정리하지 않습니다. 분류를 끄고 원래 대상을 선택하면 파일은 현재 폴더에 남습니다.
+
+[AI 폴더 분류 단계별 가이드](/blog/sort-files-into-folders-with-ai-mac) · [폴더 분류 문서](/docs/folder-sorting) · [폴더 규칙 예시 30가지](/blog/ai-folder-sorting-prompts).
+
 ## Zush 명명 레이어로 시작
 
 'macOS'에는 파일 자동화를 위한 여러 내장 도구가 함께 제공됩니다. 타사 앱이 격차를 메웁니다. 높은 수준에서 비교하는 방법은 다음과 같습니다.
@@ -80,7 +97,7 @@ ls -1 ~/Downloads | wc -l
 | Automator |예|예(폴더 작업)|예|예(패턴)|아니요|
 | Shortcuts |예|예(트리거)|예|예(패턴)|아니요|
 | Hazel |아니요($42)|예|예|예(규칙)|아니요|
-| [Mac용 AI 파일 이름 변경 도구](/mac) |아니요|예|아니요|예(AI)|예|
+| [Mac용 AI 파일 이름 변경 도구](/mac) |아니요|예| 내용 기반 이름과 선택적 AI 폴더 그룹 (베타) |예(AI)|예|
 
 이름을 지정하면 모든 다운스트림 검색이나 규칙이 더 유용해지기 때문에 'Zush'이 권장되는 코어입니다. 다른 도구는 가시성 또는 이동을 위한 선택적 레이어입니다.
 
@@ -394,9 +411,3 @@ AI 이름 바꾸기는 파일 내용이 아닌 파일 이름만 변경합니다.
 콘텐츠 인식 이름 지정 및 복구를 위해 'Zush'로 시작하세요. 가시성을 위해서만 'Smart Folders'을 추가하고 결정적 라우팅이 실제로 필요한 경우에만 'Automator' 또는 'Hazel'을 추가하세요. 매주 검토하고 점진적으로 확장하세요.
 
 목표는 완벽한 시스템이 아닙니다. 목표는 일주일에 30분이 아닌 5분을 파일 정리에 투자하는 시스템입니다.
-
-## Mac에서 AI로 파일을 폴더별로 분류하는 방법
-
-Zush는 내용에 따라 파일 이름을 변경하고 폴더별로 분류할 수 있습니다. 분류를 켜고 저장 위치를 선택한 뒤 적용 전에 그룹을 검토하세요.
-
-[Mac에서 AI로 파일을 폴더별로 분류하는 방법](/ko/blog/sort-files-into-folders-with-ai-mac-ko)

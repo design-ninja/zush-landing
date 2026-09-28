@@ -10,7 +10,7 @@ tags:
   - "PDFs & Documents"
   - "Automation"
 tldr: "Organize candidate files by requisition or role, then name each document Candidate – Role – DocumentType – DateOrStage. Keep the ATS as the system of record, use one controlled download folder for files that leave it, and transfer only policy-required records into the employee file after hire."
-reviewed: "2026-08-10"
+reviewed: "2026-09-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -21,7 +21,7 @@ Recruiting creates filenames from many sources: resumes downloaded from an ATS, 
 
 <BlogProductIntro
   title="Make recruiting downloads identifiable before they leave the intake folder"
-  description="Zush reads candidate documents, extracts candidate, role, type, date, stage, and status, and proposes searchable filenames for review — without replacing the ATS or moving the files."
+  description="Zush reads candidate documents, extracts candidate, role, type, date, stage, and status, and proposes searchable filenames for review — with optional AI grouping of local files (beta), without replacing the ATS."
   links={[
     { href: '/for-hr', label: 'AI file renaming for HR teams' },
     { href: '/blog/hr-employee-file-naming-convention', label: 'Employee file naming' },
@@ -31,6 +31,26 @@ Recruiting creates filenames from many sources: resumes downloaded from an ATS, 
 />
 
 <BlogCTA placement='inline' platform='general' />
+
+## Sort candidate documents into folders with AI
+
+[Zush](/ai-file-sorter) can give supported files descriptive names and group them into real folders by content in the same batch. **AI folder sorting is in beta on Mac and Windows.** Leave **Folder rules** empty for Auto grouping, or describe the groups in plain language. For candidate documents, try:
+
+> Group documents by candidate name when it is clearly stated. Put unclear documents in Review.
+
+1. Add a small copied batch in **AI Rename** and select a Template.
+2. Enable **+ Sort** and choose the **Destination folder**, which is the root for the sorted subfolders. Without a separate destination, the source folder remains the root.
+3. Enter the grouping instruction in **Folder rules**. **Naming Blocks** set the filename format separately.
+4. Enable **Reuse existing folders** if suitable groups already exist inside the destination root. Zush can create a new folder when none fits.
+5. Review both the proposed names and folder groups. Correct folder names or file placement before applying the batch.
+
+![Zush for Mac previewing content-based folder groups and proposed filenames before Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Save the tested destination and rules in the Template. Assign it to **Monitor** to rename and sort new files arriving directly inside the watched folder. This does not retroactively reorganize files already processed. With sorting off and the original destination selected, files keep their current folder.
+
+Use sorting only for local copies whose placement you are authorized to change. Keep the official record system, access rules, and retention process in place. Review ambiguous identifiers; AI suggestions do not establish identity or record status.
+
+Follow the [step-by-step Mac sorting guide](/blog/sort-files-into-folders-with-ai-mac) or see the [folder sorting documentation](/docs/folder-sorting) and [30 example Folder rules](/blog/ai-folder-sorting-prompts).
 
 ## Separate the ATS record from downloaded files
 
@@ -160,7 +180,7 @@ Before applying names, confirm:
 - the filename avoids sensitive or subjective commentary;
 - the temporary copy has a defined destination or disposition.
 
-[Zush](/) renames in place and records the batch for undo. It does not change ATS status, move records, enforce permissions, or delete temporary files.
+[Zush](/) renames in place and records the batch for undo. With sorting off and the original destination selected, local files keep their current folder. Optional AI sorting (beta) can move local copies; it does not change records or status inside the ATS, enforce permissions, or delete temporary files.
 
 ## FAQ
 

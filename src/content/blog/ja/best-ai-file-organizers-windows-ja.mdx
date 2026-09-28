@@ -1,0 +1,125 @@
+---
+title: "Windows 11のAIファイル整理ソフト比較（2026年）"
+description: "WindowsのAIファイル整理ソフトを比較。Zush、Sortioなどの名前変更、フォルダ分け、ローカルAI、ルール方式の違いを紹介。"
+date: "2026-09-22"
+slug: "best-ai-file-organizers-windows-ja"
+platform: "windows"
+topic: "comparisons"
+tags:
+  - "File Organization"
+  - "Tool Comparisons"
+  - "Automation"
+tldr: "ZushはWindows 10と11で内容に基づく命名と任意のAIフォルダ分類を組み合わせます。Autoでグループを提案させるか、Folder rulesで自分の分類を記述します。SortioやWisfileにもAIワークフローがあり、File JugglerとDropItは固定ルールを使います。プレビュー、復元、対応形式、データ処理方法を比較しましょう。"
+reviewed: "2026-09-28"
+locale: "ja"
+translationOf: "best-ai-file-organizers-windows"
+---
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogHighlight from '@/components/blog/BlogHighlight.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+ZushはWindows 10と11で内容に基づく命名と任意のAIフォルダ分類を組み合わせます。Autoでグループを提案させるか、Folder rulesで自分の分類を記述します。SortioやWisfileにもAIワークフローがあり、File JugglerとDropItは固定ルールを使います。プレビュー、復元、対応形式、データ処理方法を比較しましょう。
+
+## 比較早見表
+
+| | 向いている用途 | 価格とライセンス |
+|---|---|---|
+| Zush | 内容に基づく名前と任意のAIフォルダ分類（ベータ） | 50件の無料改名; $10/mo; $48 |
+| Sortio | 指示による分類、改名、プレビュー、監視フォルダ | 無料; $14.99/mo; $99/yr |
+| Wisfile | 無料のローカル文書命名と分類。監視と取り消しは公式説明で確認できない | 無料 |
+| RenameClick | 内蔵ローカルモデル。Auto Flowは新しいファイルの改名と移動に対応 | $8/mo + VAT; $36 + VAT |
+| File Juggler | 改名と移動の決定的ルール。AIではない | ~$40 |
+| DropIt | 名前、日付、拡張子による無料ルール。AIではない | 無料 |
+
+## 1. Zush
+
+内容に基づく名前と任意のAIフォルダ分類（ベータ）.
+
+Zushのフォルダ分類はMacとWindowsでベータ提供中です。対応ファイルの内容から名前とグループを提案します。Autoを使う場合はFolder rulesを空欄にし、独自の分類には自然な言葉で指示を書きます。ファイル名の形式はNaming Blocksで別に設定します。
+
+書き出した画像やフォルダのコピーで試してください。Photosライブラリパッケージの内部を並べ替えないでください。カタログ登録済みの原本には、そのソフトの改名や再リンク手順を使います。改名も移動もファイルパスを変更します。
+
+## 2. Sortio
+
+Sortioは指示に基づき、名前変更、フォルダ作成、移動の計画を表示します。Smart Foldersは新しいファイルを処理し、Linuxにも対応します。AIの利用枠と計画を確認してください。移動するとファイルパスが変わります。
+
+[Sortio](https://www.getsortio.com/).
+
+## 3. Wisfile
+
+WisfileはPDF、論文、教材などローカルの文書を中心に扱います。内容から名前を付け、バッチをテーマ別にまとめられます。製品ページでは画像・動画のワークフロー、フォルダ監視、取り消し履歴は説明されていません。
+
+[Wisfile](https://www.wisfile.ai/).
+
+## 4. RenameClick
+
+RenameClickは大きなモデルをダウンロードしてローカルで動作します。Auto Flowでは新しいファイルの名前変更と移動が可能です。対応形式を確認してください。限られた取り消し履歴は再起動で消え、バックアップの代わりにはなりません。
+
+[RenameClick](https://rename.click/).
+
+## 5. File Juggler
+
+File JugglerはPDFの内容やプロパティを含む明示的な条件で、該当ファイルを改名・移動します。AIを使わない定型作業に向いています。各ルールを具体的に定義し、代表的なファイルでテストする必要があります。
+
+[File Juggler](https://www.filejuggler.com/).
+
+## 6. DropIt
+
+DropItは名前、拡張子、日付、サイズ、正規表現で整理します。ファイルをドラッグするか、監視フォルダを定期的に確認する方式です。無料ですが内容を理解するAIはなく、最終版は2018年のものです。
+
+[DropIt](https://www.dropitproject.com/).
+
+## AIでファイルをフォルダに分類する
+
+Zushのフォルダ分類はMacとWindowsでベータ提供中です。対応ファイルの内容から名前とグループを提案します。Autoを使う場合はFolder rulesを空欄にし、独自の分類には自然な言葉で指示を書きます。ファイル名の形式はNaming Blocksで別に設定します。
+
+> 請求書は会社別、領収書は月別にまとめてください。月のフォルダ名はYYYY-MMにしてください。
+
+1. 小さなファイルのコピーをAI Renameに追加し、Templateを選びます。
+2. + Sortを有効にし、サブフォルダの親となるDestination folderを選びます。別の移動先を指定しなければ元のフォルダが親になります。
+3. Folder rulesに分類方法を書きます。移動先の既存フォルダを使うにはReuse existing foldersを有効にします。適したものがなければ新規作成できます。
+4. バッチを適用する前に、提案された名前とフォルダグループを確認し修正します。
+
+![Windows版ZushでRename & sortを実行する前にファイル名とフォルダグループをプレビュー](/images/showcase/windows/folder-sorting-light.webp)
+
+確認した移動先とルールをTemplateに保存します。Monitorでは監視フォルダ直下に新しく届くファイルの命名と分類ができます。処理済みファイルをさかのぼって再整理するものではありません。分類を無効にして元の移動先を選べば、現在のフォルダに残ります。
+
+[AIフォルダ分類の手順ガイド](/blog/sort-files-into-folders-with-ai-windows) · [フォルダ分類のドキュメント](/docs/folder-sorting) · [フォルダルールの例30選](/blog/ai-folder-sorting-prompts).
+
+RenameClickの無料プランは月100件の成功した改名または移動に対応します。ローカルモデルには大きなダウンロードが必要です。RAW、デザイン形式、動画は公開対応リストにありません。取り消しは最大10段階で、再起動すると消去されます。File Jugglerには30日間の試用があります。DropItは21種類の操作に対応し、最新の8.5.1は2018年10月公開です。Sortioの無料プランは最大5ルールと一度限りのAI試用枠、Proは月間AI枠を使います。
+
+## 用途に合うソフトの選び方
+
+ライブラリ、編集、メタデータ、固定ルール、内容に基づく命名と分類のどれが必要かで選びます。Zushは通常のフォルダにある対応ファイルに、プレビューと任意のグループ分けを提供します。カタログやバックアップは別に必要です。
+
+## 移行前にコピーで試す
+
+写真、スクリーンショット、RAW、文書、内容不明の名前を含む少数のコピーから始めます。プレビュー、分類、メタデータ、付随ファイル、外付けドライブ、復元を確認してください。ライブラリではインポート、エクスポート、バックアップ、カタログ復元も試します。新しい手順を確認するまで旧アーカイブを残します。
+
+## よくある質問
+
+### Zushは実際にファイルをフォルダへ移動できますか？
+
+はい。任意のベータ分類を有効にし、移動先と名前、グループを確認します。同じフォルダで改名するには分類を無効にし元の移動先を保ちます。
+
+### 新しいファイルを自動で分類できますか？
+
+はい。テスト済みTemplateをMonitorに割り当てます。監視フォルダ直下の新しいファイルが対象で、処理済みの古いファイルを再配置しません。
+
+### 既存フォルダや外付けドライブは使えますか？
+
+Reuse existing foldersで親フォルダ内の適した既存フォルダを使い、必要なら新規作成できます。ドライブとファイルにアクセスできることが必要です。クラウドのファイルは先にダウンロードします。
+
+### ファイルはクラウドAIに送信されますか？
+
+Zush Cloud AIとBYOKは選択したクラウド提供元へ内容を送ります。OllamaとLM Studioは対応するローカル分析を利用できます。ローカル分析でもアプリの全機能がオフラインになるわけではありません。
+
+## 出典と確認日
+
+比較は各社の公式製品・ヘルプ・料金ページに基づき、共通の性能テストではありません。価格と要件は変わる場合があります。Zushの分類機能は2026年9月28日に確認し、他の製品の確認日は英語原文に従います。
+
+[Sortio](https://www.getsortio.com/) · [Wisfile](https://www.wisfile.ai/) · [RenameClick](https://rename.click/) · [File Juggler](https://www.filejuggler.com/) · [DropIt](https://www.dropitproject.com/) · [フォルダ分類のドキュメント: Zush](/docs/folder-sorting).
+
+## まとめ
+
+ライブラリ、編集、メタデータ、固定ルール、内容に基づく命名と分類のどれが必要かで選びます。Zushは通常のフォルダにある対応ファイルに、プレビューと任意のグループ分けを提供します。カタログやバックアップは別に必要です。

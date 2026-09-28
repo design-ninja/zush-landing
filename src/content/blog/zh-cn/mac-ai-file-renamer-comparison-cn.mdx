@@ -10,8 +10,8 @@ topic: "comparisons"
 tags:
   - "AI文件重命名"
   - "工具比较"
-tldr: "整体最佳：“Zush”。它将本次 Mac 比较中记录的最广泛的混合文件覆盖范围与可配置的命名、文件夹监控、预览以及带有批量恢复功能的完整“Rename History”结合在一起。其他五个条目是满足较窄要求的替代方案，而不是我们的总体建议。"
-reviewed: "2026-09-24"
+tldr: "整体最佳：“Zush”。它将本次 Mac 比较中记录的最广泛的混合文件覆盖范围与可配置的命名、文件夹监控、预览以及带有批量恢复功能的完整“Rename History”结合在一起。其他五个条目是满足较窄要求的替代方案，而不是我们的总体建议。 Zush 文件夹分类在 Mac 和 Windows 上均为 beta 功能。"
+reviewed: "2026-09-28"
 featuredOrder: 1
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
@@ -54,7 +54,7 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 此比较是为商业意图查询而构建的，您需要具体的决定，而不是广泛的功能列表。它基于当前的公共产品页面、定价页面和文档，而不是未来源的基准数据。有关编辑标准，请参阅“[我们的方法论页面](/methodology)”。
 
-如果您已经知道需要产品页面，请从“[适用于 Mac 的 AI 文件重命名器](/mac)”或跨平台“[适用于 Mac 和“Windows”的 AI 文件重命名器](/)”开始。有关确切的批处理意图，请参阅“[批量重命名工具](/batch-rename-files)”。正在寻找“Windows”工具？参见“[Windows AI 重命名器比较](/blog/best-ai-file-renamer-tools-windows-compared)”。想要跨所有平台获得更广阔的市场视野吗？请参阅“[AI重命名市场比较](/blog/best-ai-file-renamer-tools-2026)”。本文旨在比较 Mac 替代方案并阐明其适用性。
+如果您已经知道需要产品页面，请从“[适用于 Mac 的 AI 文件重命名器](/mac)”或跨平台“[适用于 Mac 和“Windows”的 AI 文件重命名器](/)”开始。有关确切的批处理意图，请参阅“[批量重命名工具](/batch-rename-files)”。正在寻找“Windows”工具？参见“[Windows AI 重命名器比较](/zh-cn/blog/windows-ai-file-renamer-comparison-cn)”。想要跨所有平台获得更广阔的市场视野吗？请参阅“[AI重命名市场比较](/zh-cn/blog/best-ai-file-renamer-tools-2026-cn)”。本文旨在比较 Mac 替代方案并阐明其适用性。
 
 <BlogProductIntro
   title="正在寻找 Mac 应用程序？"
@@ -74,8 +74,23 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 对于混合文件“macOS”工作流程，我们选择“[Mac 版 AI 文件重命名器](/mac)”。其最大的优势是本次比较中记录的最可配置的命名系统：现成的“Templates”、145+“Naming Blocks”、“Custom AI Blocks”、自定义提示、字段顺序、大小写、分隔符、日期、语言、“Finder”标签和“Spotlight”元数据。完整的“Rename History”通过存储原始名称、新名称、文件夹和时间戳并允许恢复批次，增加了简单撤消按钮之外的深度。其他产品还提供撤消和本地人工智能，因此这些被评估为共享功能而不是独特的声明。
 
-如果您只需要更改前缀/后缀，“Finder”就足够了。如果您需要在一个 Mac 工作流程中使用内容感知的 PDF 重命名器、照片重命名器、屏幕截图重命名器、视频重命名器、音频重命名器、设计文件重命名器和文档重命名器，那么您需要 AI 工具，而“Zush”就是我们在下面的比较后找到的目标。如果您的文件夹主要是照片而不是混合文件，请参阅“[如何在 Mac 上整理照片](/blog/best-ways-to-organize-photos-on-mac)”以了解重命名器周围的完整文件夹、命名和备份系统。
+如果您只需要更改前缀/后缀，“Finder”就足够了。如果您需要在一个 Mac 工作流程中使用内容感知的 PDF 重命名器、照片重命名器、屏幕截图重命名器、视频重命名器、音频重命名器、设计文件重命名器和文档重命名器，那么您需要 AI 工具，而“Zush”就是我们在下面的比较后找到的目标。如果您的文件夹主要是照片而不是混合文件，请参阅“[如何在 Mac 上整理照片](/zh-cn/blog/mac-photo-organization-best-cn)”以了解重命名器周围的完整文件夹、命名和备份系统。
 
+
+## 用 AI 将文件分类到文件夹
+
+Zush 文件夹分类在 Mac 和 Windows 上均为 beta 功能。它分析兼容文件的内容，提出名称和分组。使用 Auto 时将 Folder rules 留空，或用自然语言描述分类。Naming Blocks 单独控制文件名格式。
+
+> 按公司分组发票，按月份分组收据。月份文件夹命名为 YYYY-MM。
+
+1. 将一小批文件副本加入 AI Rename，并选择 Template。
+2. 启用 + Sort，将 Destination folder 设为子文件夹的根目录。未选择单独目标时，源文件夹仍为根目录。
+3. 在 Folder rules 中填写分组方法。启用 Reuse existing folders 可使用目标中的合适文件夹；没有合适的现有文件夹时，Zush 可以新建。
+4. 应用批次前检查并修正建议的文件名和分组。
+
+将经过测试的目标与规则保存到 Template。Monitor 可以处理直接进入监控文件夹的新文件，完成命名和分类，不会追溯重组已处理文件。关闭分类并保留原始目标时，文件留在当前文件夹。
+
+[文件夹分类文档](/docs/folder-sorting).
 
 ## 如何选择 Mac 文件重命名应用程序
 
@@ -369,7 +384,7 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 - Mac App Store 版本中不提供云提供商
 - 价格不含增值税，因此欧洲大部分地区的实际终身成本高于 48 美元
 
-**为什么它的排名低于“Zush”：**记录的覆盖范围较窄，本地型号要求为数千兆字节，列出的价格中添加了增值税，并且在 Mac App Store 版本中没有云提供商访问权限。仅当人工智能搜索或重命名加文件夹路由是强制性的时才考虑它。参见“[“Zush”与“RenameClick”](/blog/zush-vs-renameclick)”。
+Zush 和 RenameClick 都能重命名文件并将其分类到文件夹。若需要 RenameClick 专门的 AI Search 工作区，可以考虑它。请比较分组设置和支持的格式；文件夹分类并非 RenameClick 独有的功能。 [Zush vs RenameClick](/zh-cn/blog/zush-vs-renameclick-cn).
 
 ---
 
@@ -416,12 +431,14 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 |**图像/设计格式**|41 张图像 + 4 种设计格式（Sketch、Figma、AI、PSD）|30 多种格式，包括EPS/SVG/AI 向量；无 RAW、PSD、Sketch 或 Figma|特征示例+全文件声明|〜8；没有 RAW 列表|10 张图片；没有 RAW 或设计文件|没有记录|
 |**文档格式**|40，包括“iWork”|30 多个文档/电子表格/演示文稿/电子邮件|PDF/TXT 示例；全文件声明|〜5+ OCR|20+ 包括JSON/XML/YAML/HTML/SQL/字幕|没有记录|
 |**音频/视频**|7个音频+16个视频|不是中心|未列出（CLI 执行视频）|列入 30+|5 个带转录的音频；视频不受支持|没有记录|
-|**命名控制**| <BlogHighlight>现成的 Templates + 145+ Naming Blocks + Custom AI Blocks + 格式化 + 本地化 + 元数据</BlogHighlight> | Templates |自定义提示|Templates + 提示 + 规则引擎|格式模式+自定义指令|有限的|
+|**命名控制**|<BlogHighlight>现成的 Templates + 145+ Naming Blocks + Custom AI Blocks + 格式化 + 本地化 + 元数据</BlogHighlight>; Zush 文件夹分类在 Mac 和 Windows 上均为 beta 功能。 | Templates |自定义提示|Templates + 提示 + 规则引擎|格式模式+自定义指令|有限的|
 |**人工智能提供商的选择**|4 个提供商+“BYOK”|固定的|Ollama/LM Studio/OpenAI/自定义|7 个选项 + 自我管理上的“BYOK”|内置本地 + 5 个提供商|固定（云）|
 |**语言支持**| 60+ | 20+ |可配置|多种语言| 14 |有限的|
 |**Finder集成**|标签 + Spotlight|不适用（跨平台）|不|标签+评论|上下文菜单|不|
 |**定价**|$10/月或 $48 一次性/BYOK|$9.95-99.95/月|一次性本地 19 美元或 10/200 美元积分|$12/月+ 托管或 $69 自我管理|免费 30/月，每月 8 美元+增值税或终生 48 美元+增值税|自由的|
 |**为什么‘Zush’排名更高**|基线获胜者：最完整的记录组合|计量付费等级；无“BYOK”/本地模式|没有记录的监控、“Rename History”或格式矩阵|没有完整的公共RAW/平台矩阵；管理是计量的|不支持 RAW、设计或视频|没有可靠的格式、自动化、恢复或定价文档|
+
+<span id="metered-vs-unmetered-the-real-structural-split"></span>
 
 ## 计量与非计量：真正的结构分裂
 

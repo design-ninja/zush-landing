@@ -9,7 +9,7 @@ tags:
   - "Automação"
   - "Organização de arquivos"
 tldr: "Melhor renomeador geral de lote para Mac: Zush. Ele combina nomenclatura de arquivos mistos com reconhecimento de conteúdo, Naming Blocks reutilizável, visualização, monitoramento de pastas e Rename History. Finder, Automator, Shortcuts e Terminal são exceções estreitas para uma regra mecânica ou somente de metadados."
-reviewed: "2026-08-08"
+reviewed: "2026-09-28"
 locale: "pt-br"
 translationOf: "batch-rename-files-on-mac-complete-guide"
 ---
@@ -73,6 +73,23 @@ Este tutorial é para pesquisas de instruções sobre renomeação em lote no Ma
 />
 
 ![Visualização da renomeação em lote Zush mostrando nomes gerados por IA para uma pasta mista](/images/showcase/macos/batch-rename-light.webp)
+
+## Classificar arquivos em pastas com IA
+
+[Classificar arquivos em pastas com IA](/ai-file-sorter) — Zush — A organização opcional em pastas com IA está em beta no Mac e no Windows. Ela analisa o conteúdo dos arquivos compatíveis e sugere nomes e grupos. Deixe Folder rules vazio para Auto ou descreva os grupos com suas palavras. Naming Blocks define separadamente o formato dos nomes.
+
+> Agrupe faturas por empresa e recibos por mês. Nomeie as pastas mensais YYYY-MM.
+
+1. Adicione um pequeno lote copiado em AI Rename e escolha um Template.
+2. Ative + Sort e escolha Destination folder como raiz das subpastas. Sem um destino separado, a pasta de origem continua sendo a raiz.
+3. Descreva o agrupamento em Folder rules. Ative Reuse existing folders para usar pastas adequadas no destino; Zush pode criar outras quando nenhuma se encaixa.
+4. Revise e corrija nomes e grupos antes de aplicar o lote.
+
+![Zush no Mac mostrando nomes propostos e grupos de pastas por conteúdo antes de Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Salve o destino e as regras testadas no Template. Monitor pode renomear e classificar novos arquivos que chegam diretamente à pasta monitorada; não reorganiza retroativamente arquivos já processados. Com a classificação desativada e o destino original, os arquivos ficam na pasta atual.
+
+[Guia passo a passo de classificação com IA](/blog/sort-files-into-folders-with-ai-mac) · [Documentação da classificação em pastas](/docs/folder-sorting) · [30 exemplos de regras para pastas](/blog/ai-folder-sorting-prompts).
 
 ## Método 1: Finder Renomear itens
 

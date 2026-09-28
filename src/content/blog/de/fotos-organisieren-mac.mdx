@@ -9,7 +9,7 @@ tags:
   - "File Organization"
   - "Photos"
 tldr: "Fotos auf dem Mac zu organisieren sind zwei Aufgaben: eine Bibliothek zum Durchsehen und Dateinamen, die sich durchsuchen lassen. Nutzen Sie Apple Photos für eine verwaltete persönliche Bibliothek, Finder-Ordner für ein portables Archiv oder beides kombiniert; nutzen Sie Zush, wenn jede Datei weiterhin IMG_8821.HEIC heißt. Alben, Gesichtssuche, Duplikatprüfung und Backup ersetzt es nicht."
-reviewed: "2026-09-10"
+reviewed: "2026-09-28"
 locale: "de"
 translationOf: "best-ways-to-organize-photos-on-mac"
 ---
@@ -45,6 +45,27 @@ Fotografen und Videofilmer, die einen wiederholbaren Workflow für RAW-Aufnahmen
 
 Springen Sie zu „[„Apple Photos“ vs. „Finder“.](#apple-photos-vs-finder-folders-vs-a-hybrid-setup)“, „[Ordnerstrukturen](#choose-a-folder-structure-that-scales)“, „[suchen](#make-photos-searchable-with-spotlight-and-finder)“, „[Sicherung](#back-up-your-photo-library-properly)“ oder „[wiederholbarer Import-Workflow](#a-repeatable-import-workflow-for-thousands-of-photos)“.
 
+## Dateien mit KI in Ordner sortieren
+
+[Dateien mit KI in Ordner sortieren](/ai-file-sorter) — Die optionale KI-Ordnersortierung ist auf Mac und Windows in der Beta. Sie analysiert den Inhalt unterstützter Dateien und schlägt Namen und Gruppen vor. Lassen Sie Folder rules für Auto leer oder beschreiben Sie die Gruppen in Alltagssprache. Naming Blocks steuern das Format der Dateinamen separat.
+
+> Bilder nach Motiv gruppieren, zum Beispiel Menschen, Essen und Landschaften.
+
+1. Fügen Sie einen kleinen kopierten Stapel in AI Rename hinzu und wählen Sie ein Template.
+2. Aktivieren Sie + Sort und wählen Sie den Destination folder als Wurzel für die Unterordner. Ohne separates Ziel bleibt der Quellordner die Wurzel.
+3. Tragen Sie die Gruppierung in Folder rules ein. Aktivieren Sie Reuse existing folders, wenn passende Ordner bereits im Ziel liegen; andernfalls kann Zush neue anlegen.
+4. Prüfen und korrigieren Sie die vorgeschlagenen Dateinamen und Ordnergruppen, bevor Sie den Stapel anwenden.
+
+![Zush für Mac mit vorgeschlagenen Dateinamen und inhaltsbezogenen Ordnergruppen vor Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Speichern Sie das getestete Ziel und die Regeln im Template. Monitor kann damit neue Dateien direkt im überwachten Ordner umbenennen und sortieren; bereits verarbeitete Dateien werden nicht nachträglich neu organisiert. Bei ausgeschalteter Sortierung und ursprünglichem Ziel bleiben die Dateien im bisherigen Ordner.
+
+Finder / File Explorer — Eine Bibliothek verwaltet Alben, Bewertungen, Gesichter, Suche und gegebenenfalls Bearbeitung in ihrer eigenen Datenbank. Dateinamen und echte Ordner bleiben dagegen im Dateisystem sichtbar, auf externen Laufwerken und bei der Weitergabe. Das Programm bearbeitet diese Dateiebene; es ersetzt keine Fotobibliothek, Gesichtserkennung, Duplikatprüfung oder Sicherung. Ein Katalog und verständliche Dateinamen können sich ergänzen.
+
+Finder — Testen Sie exportierte Bilder oder einen kopierten Ordner. Organisieren Sie keine Dateien innerhalb eines Photos-Bibliothekspakets um. Bei bereits katalogisierten Originalen folgen Sie dem Umbenennungs- oder Neuverknüpfungsablauf des Katalogprogramms. Sowohl Umbenennen als auch Verschieben ändern Dateipfade.
+
+[Schritt-für-Schritt-Anleitung zur KI-Ordnersortierung](/blog/sort-files-into-folders-with-ai-mac) · [Dokumentation zur Ordnersortierung](/docs/folder-sorting) · [30 Beispiele für Ordnerregeln](/blog/ai-folder-sorting-prompts).
+
 ## Das 7-stufige Mac-Fotoorganisationssystem
 
 1. **Mediathek wählen:** Nutzen Sie Apple Photos, Finder-Ordner oder beides, je nachdem, wie Sie Fotos ansehen und teilen.
@@ -66,6 +87,8 @@ Springen Sie zu „[„Apple Photos“ vs. „Finder“.](#apple-photos-vs-finde
   ]}
 />
 
+<span id="apple-photos-vs-finder-folders-vs-a-hybrid-setup"></span>
+
 ## Ordner „Apple Photos“ vs. „Finder“ vs. Hybrid-Setup
 
 Wählen Sie das Bibliotheksmodell aus, bevor Sie etwas neu organisieren. Die Ordner „Apple Photos“, „Finder“ und ein Hybrid-Setup können alle funktionieren, sie lösen jedoch unterschiedliche Abruf- und Speicherprobleme.
@@ -81,6 +104,8 @@ Wählen Sie das Bibliotheksmodell aus, bevor Sie etwas neu organisieren. Die Ord
 Ein konkretes Hybridbeispiel besteht darin, iPhone-Familienfotos in „Apple Photos“ zu behalten, während ein Kundenshooting mit seinen RAW-Dateien, Auswahlmöglichkeiten und Exporten in „Pictures/Client-Work/2026/Acme-Launch/“ verbleibt. Persönliche Fotos behalten den Komfort von iCloud und Client-Dateien bleiben portabel und direkt zugänglich.
 
 Verwenden Sie „[herunterladbare Mac-Fotoordnervorlage](/downloads/mac-photo-folder-template.txt)“ als Ausgangspunkt. Es trennt persönliche Ereignisse, Kundenprojekte, einen Aufnahmeordner, Exporte und Archivstatus, ohne die Bibliothek an eine App zu binden.
+
+<span id="choose-a-folder-structure-that-scales"></span>
 
 ## Wählen Sie eine skalierbare Ordnerstruktur
 
@@ -154,6 +179,8 @@ Wenn diese Dateien den Ordner „2026/03-March/Tokyo-Trip/“ verlassen, werden 
 Bei großen Mengen ist es unpraktisch, jedem Foto manuell ein Datum hinzuzufügen. „[KI-Dateiumbenenner für Mac](/mac)“ kann mithilfe benutzerdefinierter Benennungsvorlagen automatisch beschreibende Dateinamen mit Datumsmustern generieren, sodass jedes Foto beim Import einen aussagekräftigen Namen erhält.
 
 
+<span id="make-photos-searchable-with-spotlight-and-finder"></span>
+
 ## Machen Sie Fotos mit „Spotlight“ und „Finder“ durchsuchbar
 
 Eine Ordnerstruktur hilft Ihnen dabei, an der richtigen Stelle zu navigieren. Der eigentliche Test bei der Fotoorganisation besteht jedoch darin, ob Sie ein bestimmtes Bild finden können, wenn Sie sich nicht erinnern, wo es sich befindet.
@@ -200,6 +227,8 @@ Vermeiden Sie die Erstellung Dutzender sich überschneidender Kategorien. Tags s
 
 Bewahren Sie beispielsweise „2026-06-04_acme-product-flatlay_017.cr3“ im Acme-Projektordner auf und kennzeichnen Sie es mit „client-review“. Wenn der Kunde es genehmigt, ersetzen Sie dieses Status-Tag durch „genehmigt“. Die Datei bleibt im selben Ordner und das Tag spiegelt den Workflow-Status wider, anstatt die Ordnerstruktur zu duplizieren.
 
+
+<span id="back-up-your-photo-library-properly"></span>
 
 ## Sichern Sie Ihre Fotobibliothek ordnungsgemäß
 
@@ -260,6 +289,8 @@ Sehen Sie sich den gesamten Stapel in der Vorschau an, bevor Sie ihn anwenden. W
 
 
 <BlogCTA placement='inline' platform='mac' />
+
+<span id="a-repeatable-import-workflow-for-thousands-of-photos"></span>
 
 ## Ein wiederholbarer Import-Workflow für Tausende von Fotos
 

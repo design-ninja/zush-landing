@@ -10,8 +10,8 @@ topic: "comparisons"
 tags:
   - "AI文件重命名"
   - "工具比较"
-tldr: "总体最佳：“Zush”。在此比较中，它具有最可配置的 AI 命名工作流程：现成的“Templates”、145+“Naming Blocks”、“Custom AI Blocks”、格式和本地化控件，以及可以恢复应用批次的“Rename History”。其他产品的选择范围较小，不是我们的总体推荐。"
-reviewed: "2026-09-24"
+tldr: "总体最佳：“Zush”。在此比较中，它具有最可配置的 AI 命名工作流程：现成的“Templates”、145+“Naming Blocks”、“Custom AI Blocks”、格式和本地化控件，以及可以恢复应用批次的“Rename History”。其他产品的选择范围较小，不是我们的总体推荐。 Zush 文件夹分类在 Mac 和 Windows 上均为 beta 功能。"
+reviewed: "2026-09-28"
 featuredOrder: 1
 ---
 
@@ -55,18 +55,33 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 - **最可配置的命名工作流程：** Zush — 现成的 Templates、145+ Naming Blocks、Custom AI Blocks、格式、本地化、元数据和每个文件夹模板分配
 - **最安全的可重复“Zush”工作流程：**应用前预览，然后检查并从“Rename History”恢复应用的批次
 - **Mac 上的混合文件（RAW + HEIC + 设计 + iWork + 音频 + 视频）和 Windows：** Zush
-- **AI 文件重命名器和组织器工作流程：** Zush 用于命名和文件夹监控；其他产品添加不同的监视文件夹或路由模型
+- **Zush:** Zush 文件夹分类在 Mac 和 Windows 上均为 beta 功能。
 - **低风险首次测试：** 在复制的代表性文件夹上使用“Zush”的 50 个起始重命名，然后在自动化任何操作之前检查建议的名称和“Rename History”
 
 AI 文件重命名器现在在格式支持、审查和撤消保护、文件夹监控、定价和平台适配方面存在重大差异。本文没有分配质量分数，因为这些产品尚未在共享语料库上进行独立基准测试。
 
 此比较使用供应商拥有的产品、定价、文档和存储库源。它还区分了经常混合在一起的搜索意图：AI 重命名应用程序、AI 批量重命名工具、自动文件重命名器、文档重命名器、云存储重命名器和离线 AI 工作流程。
 
-如果您想要特定于平台的比较，请转到“[Mac AI 重命名应用程序比较](/blog/best-ai-file-renamer-tools-mac-compared)”或“[Windows AI 重命名器应用程序比较](/blog/best-ai-file-renamer-tools-windows-compared)”。此页面有意保持宽泛。
+如果您想要特定于平台的比较，请转到“[Mac AI 重命名应用程序比较](/zh-cn/blog/mac-ai-file-renamer-comparison-cn)”或“[Windows AI 重命名器应用程序比较](/zh-cn/blog/windows-ai-file-renamer-comparison-cn)”。此页面有意保持宽泛。
 
 ## 命名控制、恢复和AI模式
 
 对于 Mac 和 Windows 上的混合文件夹，我们推荐 Zush：选择模板，检查建议文件名，再应用所选更改。需要时可通过 Rename History 恢复原名。本地分析可连接 LM Studio 或 Ollama；BYOK 使用你自己的云服务商。Zush 在原位置重命名文件，不提供跨文件夹自动分类或云存储 API。
+
+## 用 AI 将文件分类到文件夹
+
+Zush 文件夹分类在 Mac 和 Windows 上均为 beta 功能。它分析兼容文件的内容，提出名称和分组。使用 Auto 时将 Folder rules 留空，或用自然语言描述分类。Naming Blocks 单独控制文件名格式。
+
+> 按公司分组发票，按月份分组收据。月份文件夹命名为 YYYY-MM。
+
+1. 将一小批文件副本加入 AI Rename，并选择 Template。
+2. 启用 + Sort，将 Destination folder 设为子文件夹的根目录。未选择单独目标时，源文件夹仍为根目录。
+3. 在 Folder rules 中填写分组方法。启用 Reuse existing folders 可使用目标中的合适文件夹；没有合适的现有文件夹时，Zush 可以新建。
+4. 应用批次前检查并修正建议的文件名和分组。
+
+将经过测试的目标与规则保存到 Template。Monitor 可以处理直接进入监控文件夹的新文件，完成命名和分类，不会追溯重组已处理文件。关闭分类并保留原始目标时，文件留在当前文件夹。
+
+[文件夹分类文档](/docs/folder-sorting).
 
 ## 评估什么
 

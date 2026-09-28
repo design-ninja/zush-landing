@@ -12,7 +12,7 @@ tags:
   - "工具比较"
   - "自动化"
 tldr: "Zush 是 Mac 上综合最佳的 AI 文件整理工具：它按内容重命名文件，并通过 Auto 或你用日常语言编写的规则把文件分类到文件夹，例如“按公司归类发票，按月份归类收据”。Templates、145+ Naming Blocks、Monitor 和 Rename History 让工作流可配置、可撤销。文件夹分类目前为测试版。"
-reviewed: "2026-09-27"
+reviewed: "2026-09-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -31,11 +31,11 @@ Zush 支持重命名，并可将文件分类到 AI 命名的文件夹（测试�
 
 **最后一次验证：‘NameQuick’ 为 2026 年 8 月 17 日；对于其他列出的产品，截止日期为 2026 年 7 月 30 日。** 定价和功能已根据供应商拥有的产品、定价、帮助或文档页面进行检查。公众主张发生变化；购买前确认最终定价和平台要求。
 
-检查来源：“[Hazel](https://www.noodlesoft.com/)”和“[面条软件店](https://store.noodlesoft.com/store)”、“[火花](https://makeitsparkle.co/)”及其“[计划页面](https://app.makeitsparkle.co/plans)”、“[NameQuick](https://www.namequick.app/)”、“[索尔蒂奥](https://www.getsortio.com/)”、“[弗洛克斯托普](https://floxtop.com/)”和“[文件魔法AI](https://1dot.ai/files-magic-ai)”。 “Zush”声明源自“[Zush 文档](/docs)”、“[定价](/pricing.md)”和产品页面。
+检查来源：“[Hazel](https://www.noodlesoft.com/)”和“[面条软件店](https://store.noodlesoft.com/store)”、“[Sparkle](https://makeitsparkle.co/)”及其“[计划页面](https://app.makeitsparkle.co/plans)”、“[NameQuick](https://www.namequick.app/)”、“[Sortio](https://www.getsortio.com/)”、“[Floxtop](https://floxtop.com/)”和“[Files Magic AI](https://1dot.ai/files-magic-ai)”。 “Zush”声明源自“[Zush 文档](/docs)”、“[定价](/pricing.md)”和产品页面。
 
 ## 什么是 AI 文件管理器？
 
-AI 文件管理器可分析文件名、元数据或文件内容，以帮助使文件夹更易于浏览和搜索。 Zush 通过将弱文件名转换为一致的、内容感知的名称来组织命名层；其他工具可能会创建文件夹并将文件移入其中。有用的比较必须说明应用程序采取的操作，因为就地重命名和重组文件夹树会带来不同的风险。
+Zush 文件夹分类在 Mac 和 Windows 上均为 beta 功能。它分析兼容文件的内容，提出名称和分组。使用 Auto 时将 Folder rules 留空，或用自然语言描述分类。Naming Blocks 单独控制文件名格式。
 
 例如，名为“scan_0042.pdf”的发票可以变为“2026-07-18_Acme_INV-1042.pdf”，而无需更改其位置。排序应用程序可能会将该文件移动到“Finance/Invoices/2026/Acme/”中。两种结果都可能有用，但只有第二个结果会更改快捷方式、同步工具或项目文件可能期望的路径。
 
@@ -43,17 +43,34 @@ AI 文件管理器可分析文件名、元数据或文件内容，以帮助使�
 
 这是一个有来源支持的比较，而不是所有七个应用程序的独立基准。我们将工作流程与相同的实际工作进行了比较：命名混合文件、路由可预测的下载、处理新到达的内容、预览更改以及逆转不良批次。未记录的功能无法推断。指南后面的可重复 10 文件评估是读者可以自行运行的方法。
 
+## 用 AI 将文件分类到文件夹
+
+[Zush](/ai-file-sorter) — Zush 文件夹分类在 Mac 和 Windows 上均为 beta 功能。它分析兼容文件的内容，提出名称和分组。使用 Auto 时将 Folder rules 留空，或用自然语言描述分类。Naming Blocks 单独控制文件名格式。
+
+> 按公司分组发票，按月份分组收据。月份文件夹命名为 YYYY-MM。
+
+1. 将一小批文件副本加入 AI Rename，并选择 Template。
+2. 启用 + Sort，将 Destination folder 设为子文件夹的根目录。未选择单独目标时，源文件夹仍为根目录。
+3. 在 Folder rules 中填写分组方法。启用 Reuse existing folders 可使用目标中的合适文件夹；没有合适的现有文件夹时，Zush 可以新建。
+4. 应用批次前检查并修正建议的文件名和分组。
+
+![Mac 版 Zush 在执行 Rename & sort 前显示建议文件名及按内容划分的文件夹分组](/images/showcase/macos/folder-sorting-light.webp)
+
+将经过测试的目标与规则保存到 Template。Monitor 可以处理直接进入监控文件夹的新文件，完成命名和分类，不会追溯重组已处理文件。关闭分类并保留原始目标时，文件留在当前文件夹。
+
+[AI 文件夹分类分步指南](/blog/sort-files-into-folders-with-ai-mac) · [文件夹分类文档](/docs/folder-sorting) · [30 个文件夹规则示例](/blog/ai-folder-sorting-prompts).
+
 ## 适用于 Mac 的 AI 文件管理器：快速比较
 
 |应用程序|定价模型|命名控制|平台|移动文件或重命名吗？|恢复|
 |---|---|---|---|---|---|
-| Zush |自由启动； 10 美元/月或 48 美元一次性，付费 PRO 不计量| <BlogHighlight>现成的Templates、145+Naming Blocks、Custom AI Blocks、格式、本地化、元数据</BlogHighlight> |麦克，“Windows”| 原地重命名，或按你的日常语言规则或 Auto 分类到文件夹（测试版） |完整的“Rename History”，包含原始/新名称、文件夹、时间和恢复|
-| Hazel 6 |一次性 42 美元|确定性规则和模式重命名|苹果|移动、标签、存档和模式重命名|恢复支持|
-|火花|订阅;计划页面显示 119 美元/年，另加 179 美元终身优惠|人工智能创建的组织；文件名控制不集中|苹果|构建文件夹并移动文件|恢复更改|
-| NameQuick |管理费用为 12-99 美元/月（计量）； $69 一次性自我管理|预设、提示和条件规则|苹果;还提供“Windows”|重命名；规则可以移动文件|一键撤消|
-|索尔蒂奥|自由的;专业版 14.99 美元/月或 99 美元/年|用于命名和路由的自然语言指令|Mac、Windows、Linux|重命名、创建文件夹和路由文件|预览和恢复|
-|弗洛克斯托普|每月 100 个文件免费；专业版 一次性 19.99 美元|建议的文件夹；可选的智能重命名|Mac、苹果芯片|建议文件夹并移动批准的文件；可选重命名|搬家前回顾；撤消未公开声明的|
-|文件魔法AI|$4.99/月，$29/年，或 $49.99 终生|Magic Rename 加上建议的文件夹结构|苹果|建议文件夹结构、移动文件并可以重命名|最近操作撤消|
+| Zush |免费试用;  10 美元/月或 48 美元一次性，付费 PRO 不计量| <BlogHighlight>现成的Templates、145+Naming Blocks、Custom AI Blocks、格式、本地化、元数据</BlogHighlight> |Mac，“Windows”| 原地重命名，或按你的日常语言规则或 Auto 分类到文件夹（测试版） |完整的“Rename History”，包含原始/新名称、文件夹、时间和恢复|
+| Hazel 6 |一次性 42 美元|确定性规则和模式重命名|Mac|移动、标签、存档和模式重命名|支持撤销|
+|Sparkle|订阅;计划页面显示 119 美元/年，另加 179 美元终身优惠|人工智能创建的组织；文件名控制不集中|Mac|构建文件夹并移动文件|恢复更改|
+| NameQuick |管理费用为 12-99 美元/月（计量）； $69 一次性自我管理|预设、提示和条件规则|Mac;还提供“Windows”|重命名；规则可以移动文件|一键撤消|
+|Sortio|自由的;专业版 14.99 美元/月或 99 美元/年|用于命名和路由的自然语言指令|Mac、Windows、Linux|重命名、创建文件夹和路由文件|预览和恢复|
+|Floxtop|每月 100 个文件免费；专业版 一次性 19.99 美元|建议的文件夹；可选的智能重命名|Mac、Mac芯片|建议文件夹并移动批准的文件；可选重命名|搬家前回顾；撤消未公开声明的|
+|Files Magic AI|$4.99/月，$29/年，或 $49.99 终生|Magic Rename 加上建议的文件夹结构|Mac|建议文件夹结构、移动文件并可以重命名|最近操作撤消|
 
 该表揭示了主要的分裂。 Zush 为用户提供了对文件名本身最深入的记录控制；大多数替代方案更注重移动文件或应用更广泛的组织规则。本地处理存在于多个条目中，因此不被视为独特的优势。 “Zush” PRO 在这一组中也很不寻常，因为它的付费托管云工作流程是不计量的，并且不需要“BYOK”。
 
@@ -94,7 +111,7 @@ Zush 支持重命名，并可将文件分类到 AI 命名的文件夹（测试�
 
 ## 3. Sparkle：文件夹重组的狭窄替代方案
 
-“[火花](https://makeitsparkle.co/)”是一款专注于 Mac 的清理和组织应用程序。它可以管理选定的文件夹、创建 AI 库、在可配置的新近期后移动新文件、标记重复项、记录移动以及恢复其组织。其帮助中心表示，Sparkle 在构建文件夹结构时会读取文件内容、文件名和类型。
+“[Sparkle](https://makeitsparkle.co/)”是一款专注于 Mac 的清理和组织应用程序。它可以管理选定的文件夹、创建 AI 库、在可配置的新近期后移动新文件、标记重复项、记录移动以及恢复其组织。其帮助中心表示，Sparkle 在构建文件夹结构时会读取文件内容、文件名和类型。
 
 Sparkle 的目标是低配置体验：添加文件夹，将受保护的材料保留在手册库中，并让应用程序维护 AI 库。当前的官方页面还宣传存储清理、应用程序卸载和本地可用的云同步文件夹。
 
@@ -116,7 +133,7 @@ Sparkle 的目标是低配置体验：添加文件夹，将受保护的材料保
 
 ## 5. Sortio：提示驱动路由的狭窄替代方案
 
-“[索尔蒂奥](https://www.getsortio.com/)”接受自然语言指令，预览计划，并可以重命名、创建文件夹和路由文件。它的“Smart Folders”不断接待新来的人。官方页面列出了“macOS”、“Windows”和 Linux，以及托管 AI、“BYOK”和本地“Ollama”选项。
+“[Sortio](https://www.getsortio.com/)”接受自然语言指令，预览计划，并可以重命名、创建文件夹和路由文件。它的“Smart Folders”不断接待新来的人。官方页面列出了“macOS”、“Windows”和 Linux，以及托管 AI、“BYOK”和本地“Ollama”选项。
 
 免费计划包括无限制的基于规则的排序（最多 5 条规则和 3 个空格）、一次性 AI 试用津贴、监视文件夹、历史记录和撤消。 Pro 的售价为每月 14.99 美元或每年 99 美元，每月有 AI 津贴和不计量的“BYOK”。 Sortio 表示本地规则处理保留在设备上；内容的处理取决于您选择托管、“BYOK”还是本地功能。
 
@@ -126,7 +143,7 @@ Sparkle 的目标是低配置体验：添加文件夹，将受保护的材料保
 
 ## 6.Floxtop：系统要求窄的离线分拣机
 
-“[弗洛克斯托普](https://floxtop.com/)”使用设备上的人工智能对文件进行分类并建议目标文件夹。它支持本地和云同步文件夹，显示多个分类匹配，并允许用户在移动任何内容之前查看目的地。其智能重命名功能还可以在受支持的较新“macOS”版本上建议基于内容的名称。
+“[Floxtop](https://floxtop.com/)”使用设备上的人工智能对文件进行分类并建议目标文件夹。它支持本地和云同步文件夹，显示多个分类匹配，并允许用户在移动任何内容之前查看目的地。其智能重命名功能还可以在受支持的较新“macOS”版本上建议基于内容的名称。
 
 Floxtop 的官方定价列出了每月 100 个组织文件的免费套餐以及无限文件的 19.99 美元一次性 Pro 许可证。处理被描述为完全离线。权衡是更窄的硬件目标：当前应用程序需要 Apple Silicon 上的“macOS”15 或更高版本，而“智能重命名”则列出了更新的“macOS”要求。
 
@@ -136,7 +153,7 @@ Floxtop 的官方定价列出了每月 100 个组织文件的免费套餐以及�
 
 ## 7. Files Magic AI：一个狭隘的组织者加清理者的替代方案
 
-“[文件魔法AI](https://1dot.ai/files-magic-ai)”结合了文件夹组织、离线魔法重命名、重复和未使用的应用程序清理以及开发人员缓存清理。其组织流程发送文件名（而不是文件内容）来提议结构，而 Magic Rename 在受支持的 Mac 上本地使用 Apple Intelligence。用户预览、排除项目并应用批准的更改。
+“[Files Magic AI](https://1dot.ai/files-magic-ai)”结合了文件夹组织、离线魔法重命名、重复和未使用的应用程序清理以及开发人员缓存清理。其组织流程发送文件名（而不是文件内容）来提议结构，而 Magic Rename 在受支持的 Mac 上本地使用 Apple Intelligence。用户预览、排除项目并应用批准的更改。
 
 官方定价显示每月 4.99 美元，每年 29 美元，或 7 天试用期终生 49.99 美元。最近的组织操作可以撤消。该应用程序支持本地可用的云文件夹，并可以使用可选的“BYOK”OpenAI 进行文件 AI 聊天。
 

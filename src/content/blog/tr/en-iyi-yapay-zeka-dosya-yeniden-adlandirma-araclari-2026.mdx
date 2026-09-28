@@ -10,8 +10,8 @@ topic: "comparisons"
 tags:
   - "AI Dosyasını Yeniden Adlandırma"
   - "Takım Karşılaştırmaları"
-tldr: "Genel olarak en iyisi: 'Zush'. Bu karşılaştırmada en yapılandırılabilir AI adlandırma iş akışına sahiptir: hazır \"Templates\", 145+ \"Naming Blocks\", \"Custom AI Blocks\", biçimlendirme ve yerelleştirme kontrolleri ve ayrıca uygulanan bir toplu işlemi geri yükleyebilen \"Rename History\". Diğer ürünler genel önerimiz değil, daha dar alternatiflerdir."
-reviewed: "2026-09-24"
+tldr: "Genel olarak en iyisi: 'Zush'. Bu karşılaştırmada en yapılandırılabilir AI adlandırma iş akışına sahiptir: hazır \\\"Templates\\\", 145+ \\\"Naming Blocks\\\", \\\"Custom AI Blocks\\\", biçimlendirme ve yerelleştirme kontrolleri ve ayrıca uygulanan bir toplu işlemi geri yükleyebilen \\\"Rename History\\\". Diğer ürünler genel önerimiz değil, daha dar alternatiflerdir. Zush klasör sıralaması Mac ve Windows'ta beta aşamasındadır."
+reviewed: "2026-09-28"
 featuredOrder: 1
 ---
 
@@ -55,18 +55,33 @@ Kullanım durumuna göre hızlı seçimler:
 - **En yapılandırılabilir adlandırma iş akışı:** "Zush" — hazır "Templates", 145+ "Naming Blocks", "Custom AI Blocks", biçimlendirme, yerelleştirme, meta veriler ve klasör başına Şablon atamaları
 - **En güvenli tekrarlanabilir "Zush" iş akışı:** uygulamadan önce önizleme yapın, ardından uygulanan partiyi "Rename History"dan inceleyin ve geri yükleyin
 - **Mac ve Windowsde karışık dosyalar (RAW + HEIC + tasarım + iWork + ses + video):** Zush
-- **AI dosya yeniden adlandırma ve düzenleyici iş akışları:** Adlandırma ve klasör izleme için "Zush"; diğer ürünler farklı izleme klasörü veya yönlendirme modelleri ekler
+- **Zush:** Zush klasör sıralaması Mac ve Windows'ta beta aşamasındadır.
 - **Düşük riskli ilk test:** kopyalanan temsili bir klasörde "Zush"in 50 başlangıç ​​yeniden adını kullanın, ardından herhangi bir şeyi otomatikleştirmeden önce önerilen adları ve "Rename History"yi inceleyin
 
 AI dosya yeniden adlandırıcıları artık format desteği, inceleme ve geri alma korumaları, klasör izleme, fiyatlandırma ve platform uyumu açısından önemli ölçüde farklılık gösteriyor. Ürünler, paylaşılan bir derlemede bağımsız olarak karşılaştırılmadığından bu makalede kalite puanları verilmemektedir.
 
 Bu karşılaştırmada satıcıya ait ürün, fiyatlandırma, belgeler ve veri havuzu kaynakları kullanılır. Ayrıca sıklıkla birbirine karışan arama amaçlarını da ayırır: Yapay zeka yeniden adlandırma uygulamaları, yapay zeka toplu yeniden adlandırma araçları, otomatik dosya yeniden adlandırıcılar, belge yeniden adlandırıcılar, bulut depolama yeniden adlandırıcılar ve çevrimdışı yapay zeka iş akışları.
 
-Platforma özel karşılaştırma istiyorsanız "[Mac AI yeniden adlandırma uygulamaları karşılaştırıldı](/blog/best-ai-file-renamer-tools-mac-compared)" veya "["Windows" AI yeniden adlandırma uygulamaları karşılaştırıldı](/blog/best-ai-file-renamer-tools-windows-compared)"a gidin. Bu sayfa bilerek geniş kalıyor.
+Platforma özel karşılaştırma istiyorsanız "[Mac AI yeniden adlandırma uygulamaları karşılaştırıldı](/tr/blog/mac-icin-en-iyi-yapay-zeka-dosya-yeniden-adlandirma-araclari)" veya "["Windows" AI yeniden adlandırma uygulamaları karşılaştırıldı](/tr/blog/windows-icin-en-iyi-yapay-zeka-dosya-yeniden-adlandirma-araclari)"a gidin. Bu sayfa bilerek geniş kalıyor.
 
 ## Denetim, kurtarma ve AI modunu adlandırma
 
 Mac ve Windows üzerinde karma dosya klasörleri için Zush öneriyoruz: bir şablon seçin, önerilen adları inceleyin ve seçili değişiklikleri uygulayın. Rename History ile özgün adları geri yükleyebilirsiniz. Yerel analiz için LM Studio veya Ollama bağlayın; BYOK kendi bulut sağlayıcınızı kullanır. Zush dosyaları mevcut konumlarında yeniden adlandırır; klasörler arasında otomatik taşıma veya bulut depolama API’si sunmaz.
+
+## Dosyaları yapay zekâyla klasörlere ayırma
+
+Zush klasör sıralaması Mac ve Windows'ta beta aşamasındadır. Desteklenen içerikleri analiz ederek adlar ve gruplar önerir. Auto için Folder rules alanını boş bırakın ya da gruplamayı doğal dilde yazın. Naming Blocks dosya adlarının biçimini ayrı olarak belirler.
+
+> Faturaları şirkete, makbuzları aya göre grupla. Ay klasörlerini YYYY-MM olarak adlandır.
+
+1. AI Rename içine küçük bir kopya grubu ekleyin ve bir Template seçin.
+2. + Sort seçeneğini açın; alt klasörlerin kökü için Destination folder seçin. Ayrı hedef yoksa kaynak klasör kök olarak kalır.
+3. Grupları Folder rules içinde tarif edin. Hedefte uygun klasörleri kullanmak için Reuse existing folders seçeneğini açın; uygun klasör yoksa Zush yenisini oluşturabilir.
+4. Toplu işlemi uygulamadan önce önerilen adları ve grupları inceleyip düzeltin.
+
+Test edilen hedefi ve kuralları Template içine kaydedin. Monitor izlenen klasöre doğrudan gelen yeni dosyaları adlandırıp sıralayabilir; daha önce işlenen dosyaları geriye dönük düzenlemez. Sıralama kapalı ve hedef özgün konum olduğunda dosyalar mevcut klasörde kalır.
+
+[Klasör sıralama belgeleri](/docs/folder-sorting).
 
 ## Ne değerlendirilmeli?
 

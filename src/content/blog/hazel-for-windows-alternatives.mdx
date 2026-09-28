@@ -8,9 +8,10 @@ topic: "automation"
 tags:
   - "Automation"
   - "Tool Comparisons"
-tldr: "There is no Hazel for Windows. File Juggler is the closest match for rule-based renaming and moving. DropIt is the free option. Zush covers the part Hazel cannot do well: reading each file and giving it a descriptive name. Many people run Zush for naming and File Juggler for moving."
-reviewed: "2026-09-27"
+tldr: "There is no Hazel for Windows. File Juggler is the closest match for rule-based renaming and moving. DropIt is the free option. Zush covers the part Hazel cannot do well: reading each file and giving it a descriptive name. Zush also offers AI folder sorting (beta). Use File Juggler when you need specific conditional actions, scripts, or archive handling beyond content-based grouping."
+reviewed: "2026-09-28"
 ---
+
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
@@ -38,7 +39,7 @@ Rules work well for predictable files: every bank statement has the same sender 
 |---|---|---|---|
 | File Juggler | Rules that rename and move | PDF text and properties | About $40 one-time, 30-day trial |
 | DropIt | Free rule-based sorting | Basic content filters | Free, open source |
-| Zush | Naming files by what they contain | Yes, with AI (images, PDFs, Office, video, audio) | 50 free renames; $10/mo or $48 one-time |
+| Zush | Content-based naming and optional AI folder sorting (beta) | Yes, with AI (images, PDFs, Office, video, audio) | 50 free renames; $10/mo or $48 one-time |
 | Sortio | AI folder plans that move files | Yes, with AI | Free tier; Pro $14.99/mo |
 | PowerShell + Task Scheduler | Anything you can script | Whatever you code | Free |
 
@@ -68,7 +69,7 @@ Pick it for simple sorting by extension or name pattern when paying is not an op
 
 Folder monitoring makes it work like a Hazel rule: new files in Downloads or a scanner folder are renamed as they arrive. A Template decides the pattern, so every invoice follows the same `date_vendor_invoice_number` shape. You can preview names before applying, and Rename History reverts a whole batch later.
 
-Zush can rename in place or sort files into folders with AI. Use Auto grouping or write plain-language folder instructions, then review the suggested names and destinations before applying. Keep sorting off when files must stay in place. One sentence such as “Group invoices by company and receipts by month” replaces a stack of Hazel-style rules; see [how to sort files into folders on Windows](/blog/sort-files-into-folders-with-ai-windows).
+Zush can rename in place or sort files into folders with AI (beta). Use Auto grouping or write plain-language folder instructions, then review the suggested names and destinations before applying. Keep sorting off when files must stay in place. One sentence such as “Group invoices by company and receipts by month” replaces a stack of Hazel-style rules; see [how to sort files into folders on Windows](/blog/sort-files-into-folders-with-ai-windows).
 
 <BlogProductIntro
   title="Rules can't read a screenshot. Zush can."
@@ -104,7 +105,9 @@ It is free and endlessly flexible. You also own everything: duplicate names, loc
 
 ## A Hazel-style setup on Windows
 
-The combination that covers most of what Hazel users miss:
+For content-based grouping, save a Zush Template with Folder rules, a destination, and Reuse existing folders, then assign it to Monitor. New files directly inside the watched folder are renamed and sorted; existing processed files are not reorganized. Preview a manual batch first. See [AI folder sorting](/docs/folder-sorting).
+
+For a deterministic action chain beyond that grouping workflow, use this two-tool setup:
 
 1. **Zush monitors Downloads** and renames each new file by content, using a Template such as `{Created Date}_{Vendor}_{Document Type}`.
 2. **File Juggler watches the same folder** and moves files by the now-predictable name: `*_invoice.pdf` to `Finance\Invoices`, `*_receipt.pdf` to `Finance\Receipts`.
@@ -112,6 +115,10 @@ The combination that covers most of what Hazel users miss:
 Test with copies first. Once both steps look right, point them at the real folder.
 
 ## FAQ
+
+### Can Zush sort files into folders as well as rename them?
+
+Yes. Its optional AI folder sorting is in beta on Mac and Windows. Choose Auto or write Folder rules, select the destination, and review both names and groups in a manual batch. A sorting-enabled Template can also process new files directly inside a monitored folder; it does not reorganize files already processed. Leave sorting off and keep the original destination for naming only.
 
 ### Is there a Hazel for Windows?
 

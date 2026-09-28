@@ -9,7 +9,7 @@ tags:
   - "Automation"
   - "File Organization"
 tldr: "Meilleur renommer par lots Mac global : « Zush ». Il combine la dénomination de fichiers mixtes sensible au contenu, « Naming Blocks » réutilisable, l'aperçu, la surveillance des dossiers et « Rename History ». « Finder », « Automator », « Shortcuts » et « Terminal » sont des exceptions étroites pour une règle mécanique ou réservée aux métadonnées."
-reviewed: "2026-08-08"
+reviewed: "2026-09-28"
 locale: "fr"
 translationOf: "batch-rename-files-on-mac-complete-guide"
 ---
@@ -73,6 +73,23 @@ Ce didacticiel est destiné aux recherches pratiques de renommage par lots sur M
 />
 
 ![Aperçu du renommage par lots Zush affichant les noms générés par l'IA pour un dossier mixte](/images/showcase/macos/batch-rename-light.webp)
+
+## Trier les fichiers dans des dossiers avec l'IA
+
+[Trier les fichiers dans des dossiers avec l'IA](/ai-file-sorter) — Zush — Le tri facultatif par IA est en bêta sur Mac et Windows. Il analyse le contenu des fichiers compatibles et propose des noms et des groupes. Laissez Folder rules vide pour Auto ou décrivez le classement en langage naturel. Naming Blocks définit séparément le format des noms de fichiers.
+
+> Regrouper les factures par entreprise et les reçus par mois. Nommer les dossiers mensuels YYYY-MM.
+
+1. Ajoutez un petit lot copié dans AI Rename et choisissez un Template.
+2. Activez + Sort et choisissez Destination folder comme racine des sous-dossiers. Sans destination distincte, le dossier source reste la racine.
+3. Indiquez le classement dans Folder rules. Activez Reuse existing folders pour réutiliser des dossiers adaptés sous la destination ; Zush peut en créer de nouveaux si nécessaire.
+4. Vérifiez et corrigez les noms et les groupes proposés avant d'appliquer le lot.
+
+![Zush sur Mac affichant les noms proposés et les groupes de dossiers par contenu avant Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Enregistrez la destination et les règles testées dans le Template. Monitor peut renommer et trier les nouveaux fichiers arrivant directement dans le dossier surveillé ; il ne réorganise pas rétroactivement les fichiers déjà traités. Avec le tri désactivé et la destination d'origine, les fichiers restent dans leur dossier actuel.
+
+[Guide étape par étape du tri par IA](/blog/sort-files-into-folders-with-ai-mac) · [Documentation du tri dans les dossiers](/docs/folder-sorting) · [30 exemples de règles de classement](/blog/ai-folder-sorting-prompts).
 
 ## Méthode 1 : Finder Renommer les éléments
 

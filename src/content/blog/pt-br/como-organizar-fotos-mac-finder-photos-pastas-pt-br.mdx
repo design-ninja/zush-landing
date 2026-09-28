@@ -9,7 +9,7 @@ tags:
   - "Organização de arquivos"
   - "Fotos"
 tldr: "Organizar fotos no Mac são duas tarefas: uma biblioteca para navegar e nomes de arquivo que dá para pesquisar. Use o Apple Photos para uma biblioteca pessoal gerenciada, pastas do Finder para um arquivo portátil ou os dois juntos; use o Zush quando cada arquivo ainda se chama IMG_8821.HEIC. Ele não substitui álbuns, busca por rostos, revisão de duplicatas nem backup."
-reviewed: "2026-09-10"
+reviewed: "2026-09-28"
 locale: "pt-br"
 translationOf: "best-ways-to-organize-photos-on-mac"
 ---
@@ -45,6 +45,27 @@ Fotógrafos e videomakers que precisam de um fluxo de trabalho repetível para f
 
 Vá para [Apple Photos versus Finder](#apple-photos-vs-finder-folders-vs-a-hybrid-setup), [estruturas de pastas](#choose-a-folder-structure-that-scales), [procurar](#make-photos-searchable-with-spotlight-and-finder), [backup](#back-up-your-photo-library-properly) ou [fluxo de trabalho de importação repetível](#a-repeatable-import-workflow-for-thousands-of-photos).
 
+## Classificar arquivos em pastas com IA
+
+[Classificar arquivos em pastas com IA](/ai-file-sorter) — A organização opcional em pastas com IA está em beta no Mac e no Windows. Ela analisa o conteúdo dos arquivos compatíveis e sugere nomes e grupos. Deixe Folder rules vazio para Auto ou descreva os grupos com suas palavras. Naming Blocks define separadamente o formato dos nomes.
+
+> Agrupe imagens por assunto, como Pessoas, Comida e Paisagens.
+
+1. Adicione um pequeno lote copiado em AI Rename e escolha um Template.
+2. Ative + Sort e escolha Destination folder como raiz das subpastas. Sem um destino separado, a pasta de origem continua sendo a raiz.
+3. Descreva o agrupamento em Folder rules. Ative Reuse existing folders para usar pastas adequadas no destino; Zush pode criar outras quando nenhuma se encaixa.
+4. Revise e corrija nomes e grupos antes de aplicar o lote.
+
+![Zush no Mac mostrando nomes propostos e grupos de pastas por conteúdo antes de Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Salve o destino e as regras testadas no Template. Monitor pode renomear e classificar novos arquivos que chegam diretamente à pasta monitorada; não reorganiza retroativamente arquivos já processados. Com a classificação desativada e o destino original, os arquivos ficam na pasta atual.
+
+Finder / File Explorer — Uma fototeca gerencia álbuns, rostos, avaliações e busca em seu banco de dados. Nomes e pastas reais continuam visíveis no sistema de arquivos, em discos externos e entregas. O programa trabalha com os arquivos; não substitui álbuns, reconhecimento facial, revisão de duplicatas ou backup.
+
+Finder — Teste imagens exportadas ou uma pasta copiada. Não reorganize o interior de uma biblioteca Photos. Para originais já catalogados, siga o fluxo de renomeação ou religação do catálogo. Renomear e mover alteram caminhos.
+
+[Guia passo a passo de classificação com IA](/blog/sort-files-into-folders-with-ai-mac) · [Documentação da classificação em pastas](/docs/folder-sorting) · [30 exemplos de regras para pastas](/blog/ai-folder-sorting-prompts).
+
 ## O sistema de organização de fotos do Mac em 7 etapas
 
 1. **Escolha a fototeca:** use Apple Photos, pastas do Finder ou ambos conforme sua forma de consultar e compartilhar fotos.
@@ -66,6 +87,8 @@ Vá para [Apple Photos versus Finder](#apple-photos-vs-finder-folders-vs-a-hybri
   ]}
 />
 
+<span id="apple-photos-vs-finder-folders-vs-a-hybrid-setup"></span>
+
 ## Pastas Apple Photos vs Finder vs uma configuração híbrida
 
 Escolha o modelo de biblioteca antes de reorganizar qualquer coisa. As pastas Apple Photos, Finder e uma configuração híbrida podem funcionar, mas resolvem diferentes problemas de recuperação e armazenamento.
@@ -81,6 +104,8 @@ Escolha o modelo de biblioteca antes de reorganizar qualquer coisa. As pastas Ap
 Um exemplo híbrido concreto é manter as fotos de família do iPhone em Apple Photos, enquanto uma sessão de fotos do cliente permanece em `Pictures/Client-Work/2026/Acme-Launch/` com seus arquivos RAW, seleções e exportações. As fotos pessoais mantêm a conveniência do iCloud e os arquivos do cliente permanecem portáteis e acessíveis diretamente.
 
 Use o [modelo de pasta de fotos para Mac para download](/downloads/mac-photo-folder-template.txt) como ponto de partida. Ele separa eventos pessoais, projetos de clientes, uma pasta de entrada, exportações e estados de arquivo sem bloquear a biblioteca em um aplicativo.
+
+<span id="choose-a-folder-structure-that-scales"></span>
 
 ## Escolha uma estrutura de pastas que possa ser dimensionada
 
@@ -154,6 +179,8 @@ Se esses arquivos saírem da pasta `2026/03-March/Tokyo-Trip/`, o dia da captura
 Para lotes grandes, adicionar datas manualmente a cada foto é impraticável. [Renomeador de arquivos com IA para Mac](/mac) pode gerar nomes de arquivos descritivos com padrões de data automaticamente usando modelos de nomenclatura personalizados, para que cada foto receba um nome significativo na importação.
 
 
+<span id="make-photos-searchable-with-spotlight-and-finder"></span>
+
 ## Torne as fotos pesquisáveis ​​​​com Spotlight e Finder
 
 Uma estrutura de pastas ajuda quando você navega no lugar certo. Mas o verdadeiro teste de organização de fotos é se você consegue encontrar uma imagem específica quando não se lembra onde ela mora.
@@ -200,6 +227,8 @@ Evite criar dezenas de categorias sobrepostas. As tags deixam de ser úteis quan
 
 Por exemplo, mantenha `2026-06-04_acme-product-flatlay_017.cr3` dentro da pasta do projeto Acme e marque-o como `client-review`. Quando o cliente aprovar, substitua essa tag de status por `aprovado`; o arquivo permanece na mesma pasta e a tag reflete o estado do fluxo de trabalho em vez de duplicar a estrutura da pasta.
 
+
+<span id="back-up-your-photo-library-properly"></span>
 
 ## Faça backup de sua biblioteca de fotos corretamente
 
@@ -260,6 +289,8 @@ Visualize todo o lote antes de aplicá-lo. Se o padrão for muito longo ou a des
 
 
 <BlogCTA placement='inline' platform='mac' />
+
+<span id="a-repeatable-import-workflow-for-thousands-of-photos"></span>
 
 ## Um fluxo de trabalho de importação repetível para milhares de fotos
 

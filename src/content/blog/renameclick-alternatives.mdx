@@ -8,9 +8,10 @@ topic: "comparisons"
 tags:
   - "AI File Renaming"
   - "Tool Comparisons"
-tldr: "RenameClick is good for offline renaming of images, documents, and audio. If you need video, RAW photos, or design files, persistent undo history, or more control over the naming pattern, Zush is the closest alternative at the same $48 one-time price."
-reviewed: "2026-09-24"
+tldr: "RenameClick is good for offline renaming of images, documents, and audio. If you need video, RAW photos, or design files, persistent undo history, or more control over the naming pattern, Zush is the closest alternative at the same $48 one-time price. Zush also offers optional AI folder sorting (beta)."
+reviewed: "2026-09-28"
 ---
+
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -53,7 +54,9 @@ The main differences from RenameClick:
 - **Rename History that persists.** Every batch keeps original name, new name, folder, and time. Revert it next week, not just before you quit the app.
 - **A pattern you build.** Ready-made Templates and 145+ Naming Blocks, including Custom AI Blocks, set the order, case, separators, and language of every name.
 - **Choice of AI.** Zush Cloud AI works without setup. BYOK connects your own Gemini, OpenRouter, OpenAI, or Claude key. Ollama or LM Studio keep analysis on your machine.
-- **Optional AI folder sorting.** Zush offers AI folder sorting (beta) and destination folders. Leave sorting off and keep the original destination to rename in place.
+- **Optional AI folder sorting.** Choose Auto grouping or write Folder rules such as “Group invoices by company and receipts by month.” Select a Destination folder and optionally Reuse existing folders; review names and folders before applying. Leave sorting off and keep the original destination to rename in place.
+
+Save the grouping settings in a Template and assign it to Monitor for new files directly inside the watched folder. This does not reorganize already processed files. See [AI folder sorting (beta)](/docs/folder-sorting).
 
 RenameClick has a dedicated AI Search workspace for finding files by content; Zush relies on searchable names plus Finder tags and Spotlight metadata instead. Full comparison: [Zush vs RenameClick](/blog/zush-vs-renameclick).
 
@@ -101,6 +104,10 @@ Best for recurring PDFs, receipts, and contracts on a Mac. See [Zush vs NameQuic
 
 ## FAQ
 
+### Can Zush sort files into folders as well as rename them?
+
+Yes. Its optional AI folder sorting is in beta on Mac and Windows. Choose Auto or write Folder rules, select the destination, and review both names and groups in a manual batch. A sorting-enabled Template can also process new files directly inside a monitored folder; it does not reorganize files already processed. Leave sorting off and keep the original destination for naming only.
+
 ### What is the best RenameClick alternative?
 
 Zush is the closest alternative: same $48 one-time price, Mac and Windows, plus video, RAW, and design file support, persistent Rename History, and a structured naming pattern builder.
@@ -115,4 +122,4 @@ Zush works offline with Ollama or LM Studio on Mac and Windows. FilesDesk and Na
 
 ### Can I use RenameClick and Zush together?
 
-Yes, though most people pick one. Both rename by content; RenameClick adds AI search and optional moving, while Zush adds more formats, persistent history, and tighter naming control.
+Yes, though most people pick one. Both rename by content and can sort files into folders. RenameClick adds a dedicated AI Search workspace; Zush combines optional folder sorting (beta), broader formats, persistent history, and structured filename control. Test the grouping settings on copies before automating either tool.

@@ -1,0 +1,97 @@
+---
+import type { FeatureCategory } from '@/data/featureContent';
+interface Props { category: FeatureCategory }
+const { category } = Astro.props;
+const workflows = {
+  pdf: {
+    title: 'From a downloaded PDF to a name you can find',
+    intro: 'Start with a few copies of your invoices, contracts, or scans. Review the suggested names before applying a batch.',
+    steps: [
+      ['Add your PDFs', 'Use a small folder first. Text PDFs provide document context; image-only scans need a vision-capable AI mode.'],
+      ['Choose the fields you need', 'For invoices, combine the document date, vendor, and invoice number in a Template. A date at the start keeps names sortable.'],
+      ['Review, then rename', 'Check dates and identifiers against the document. Correct missing or mistaken fields before applying; use rename history if you need to revert.'],
+    ],
+    pattern: '2026-08-18_Northstar-Studio_NS-1042.pdf',
+    caption: 'Illustrative invoice naming pattern: document date + vendor + invoice number. Exact output depends on your Template and AI mode.',
+    testedInput: 'file_001.pdf',
+    testedOutput: 'Счет NS-1042 От Northstar Studio.pdf',
+    testedContext: 'A fictional invoice for Northstar Studio, number NS-1042. The recorded suggestion kept the vendor and invoice number; it did not include the invoice date.',
+    limit: 'Do not treat an inferred date or number as a verified accounting field. Poor scans and missing information can produce incomplete suggestions. Renaming changes the filename, not the PDF contents.',
+    guide: '/blog/automatically-rename-invoices-ai',
+    label: 'Set up an invoice naming workflow',
+  },
+  video: {
+    title: 'Find the right clip without opening every export',
+    intro: 'Use visible content to name screen recordings, camera clips, and b-roll. Keep a copy of linked editing projects before changing source filenames.',
+    steps: [
+      ['Add a few representative clips', 'Start with supported MP4 or MOV files. Include a screen recording and a camera clip to check both kinds of material.'],
+      ['Generate names from sampled context', 'Zush uses sampled frames and available subtitle context. Keep matching SRT or VTT files nearby when you have them.'],
+      ['Check the description and apply', 'Make sure the suggested subject matches the clip. Review names before applying and use rename history to undo a batch if needed.'],
+    ],
+    pattern: 'Product-Demo_Batch-Rename-Preview.mp4',
+    caption: 'Illustrative naming pattern for a software demo. A sampled frame is context, not a transcript of the entire video.',
+    testedInput: 'file_008.mp4',
+    testedOutput: 'Демонстрация Работы Приложения AI Rename.mp4',
+    testedContext: 'An existing Zush demo showing the batch rename interface. The recorded name describes an AI Rename application demonstration.',
+    limit: 'A short scene can be missed between sampled frames. Names do not guarantee full-video understanding. Renaming source media can break links in editing projects; verify or relink those projects after a rename.',
+    guide: '/blog/rename-video-files-with-ai',
+    label: 'Read the video renaming workflow',
+  },
+  audio: {
+    title: 'Turn a voice memo into a searchable recording',
+    intro: 'Choose names that help you recognise a meeting, interview, podcast segment, or music track without replaying it.',
+    steps: [
+      ['Add your recordings or tracks', 'Start with a few MP3, M4A, WAV, or FLAC files. Keep source copies when the files belong to an audio project.'],
+      ['Choose a naming Template', 'Use topic and recording context for spoken audio, or artist and title for tagged music. Available metadata and transcript context influence the result.'],
+      ['Check names before renaming', 'Verify names, topics, and any inferred fields. Apply the reviewed batch, then use rename history if you need to restore the original filenames.'],
+    ],
+    pattern: 'Autumn-Launch_Landing-Page-Planning.wav',
+    caption: 'Illustrative name for a planning recording. Speaker, date, and BPM fields should only be used when the available context supports them.',
+    testedInput: 'file_007.wav',
+    testedOutput: 'Обсуждение Осеннего Запуска Продукта.wav',
+    testedContext: 'An 11.49-second synthetic spoken recording about an autumn product launch. The recorded name describes that discussion.',
+    limit: 'Noise, missing tags, unsupported transcription paths, or unclear speech can limit the result. AI may not identify a speaker or song reliably. Changing filenames does not rewrite audio tags or repair links in playlists and editing projects.',
+    guide: '/blog/rename-audio-files-with-ai',
+    label: 'Read the audio renaming workflow',
+  },
+};
+const workflow = workflows[category as keyof typeof workflows];
+---
+{workflow && (
+  <section class="task-workflow" aria-labelledby="task-workflow-title">
+    <h2 id="task-workflow-title">{workflow.title}</h2>
+    <p class="intro">{workflow.intro}</p>
+    <ol>
+      {workflow.steps.map(([title, text]) => <li><h3>{title}</h3><p>{text}</p></li>)}
+    </ol>
+    <figure><code>{workflow.pattern}</code><figcaption>{workflow.caption}</figcaption></figure>
+    <details>
+      <summary>See an actual result from our eight-file test</summary>
+      <p>{workflow.testedContext}</p>
+      <p><code>{workflow.testedInput}</code> → <code lang="ru">{workflow.testedOutput}</code></p>
+      <p>Recorded on September 5, 2026, with Zush 3.11.0 on Mac, Cloud AI and the existing Smart Title Name template. This configuration produced Russian names. The file was renamed and its contents stayed byte-for-byte identical. This small test is not an accuracy guarantee.</p>
+      <p>A useful name identifies the content and includes the details you need. More words do not automatically make it better. Use <a href="/docs/naming-blocks">Naming Blocks</a> and <a href="/docs/templates">Templates</a> to choose the fields and structure your workflow needs. Custom field extraction was not tested in this run.</p>
+      <a href="/benchmarks/ai-file-renamer-pilot-2026-09-05/README.md">Read the test setup, inputs and results</a>
+    </details>
+    <p class="limits">{workflow.limit}</p>
+    <a href={workflow.guide}>{workflow.label} <span aria-hidden="true">→</span></a>
+  </section>
+)}
+<style>
+  .task-workflow { width: min(1120px, calc(100% - 2.5rem)); margin: 2rem auto 4rem; }
+  h2 { max-width: 760px; font-size: clamp(1.6rem, 3vw, 2.4rem); line-height: 1.2; }
+  p, figcaption { line-height: 1.7; color: var(--muted-foreground); }
+  .intro { max-width: 760px; margin: 1rem 0 2rem; }
+  ol { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; padding-left: 1.25rem; }
+  li { padding-left: .3rem; }
+  li::marker { color: var(--primary); font-weight: 700; }
+  h3 { font-size: 1.1rem; margin: 0 0 .75rem; }
+  figure { margin: 2rem 0 1rem; padding: 1.25rem; border: 1px solid var(--border); border-radius: 1rem; }
+  code { overflow-wrap: anywhere; color: var(--foreground); }
+  figcaption { margin-top: .75rem; font-size: .875rem; }
+  .limits { font-size: .925rem; max-width: 900px; }
+  details { margin: 1.5rem 0; padding: 1.25rem; border: 1px solid var(--border); border-radius: 1rem; }
+  summary { cursor: pointer; font-weight: 600; }
+  a { display: inline-block; margin-top: 1rem; color: var(--primary); text-underline-offset: .2em; }
+  @media (max-width: 700px) { ol { grid-template-columns: 1fr; gap: 1rem; } }
+</style>

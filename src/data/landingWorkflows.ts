@@ -12,6 +12,30 @@ export interface LandingWorkflow {
 }
 
 const workflows: Record<string, LandingWorkflow> = {
+  '/rename-pdf-with-ai': {
+    heading: 'Rename PDFs by title, author, or document date',
+    answer: 'Zush suggests PDF filenames from document content. For papers, choose author, year, and title; for invoices, vendor, invoice date, and number. It reads available text or analyzes scanned pages with AI vision, then shows the proposed names for review.',
+    steps: [
+      'Start with copies of a few representative PDFs. Choose one document type and save the fields you need in a Template. If you only need a shared prefix or numbered sequence, use your file manager’s batch rename tools.',
+      'Compare each suggestion with the document. Check the paper title rather than a running header, publication year rather than download year, and invoice date rather than due date. Correct uncertain fields and omit information that is missing.',
+      'Apply the reviewed names, open a few files, and check rename history. Enable folder monitoring only after the Template works on typical files and difficult scans.',
+    ],
+    example: { before: 'download (7).pdf', after: '2026_Acme_Annual-Report.pdf', caption: 'Illustrative pattern: verified year + organization + document title. This is a naming example, not an extraction benchmark.' },
+    limit: 'AI can misread a scan or choose the wrong date. PDF metadata may also be missing or inaccurate. Renaming does not add an OCR text layer, split a combined PDF, or maintain a citation library. Test copies before renaming files linked from other apps.',
+    links: [{ href: '/blog/rename-pdf-files-automatically', label: 'Set up a repeatable PDF intake workflow' }, { href: '/rename-invoices-with-ai', label: 'Choose invoice naming fields' }, { href: '/offline-ai-file-renamer', label: 'Configure local PDF analysis' }],
+  },
+  '/rename-invoices-with-ai': {
+    heading: 'Build an invoice filename you can verify',
+    answer: 'Zush suggests invoice filenames from the document date, vendor, and invoice number. Use the printed invoice date rather than the download date, keep the invoice number as issued, and review each field before applying the batch.',
+    steps: [
+      'Copy a small sample of digital PDFs and scans into an intake folder. In Templates, combine Detected Date, Vendor, and Invoice Number; add Amount only if it helps your filing workflow.',
+      'Compare the preview with each invoice. Check invoice date versus due date, supplier versus customer, and total versus tax. Correct uncertain fields and keep missing numbers out of the name.',
+      'Apply the reviewed names and test rename history. Assign the Template to folder monitoring only after checking a sample of new arrivals, including credit notes and invoices without numbers.',
+    ],
+    example: { before: 'download (7).pdf', after: '2026-06-12_Acme-Supply_INV-10234.pdf', caption: 'Illustrative naming pattern: verified invoice date + vendor + invoice number. This is a template example, not a measured extraction result.' },
+    limit: 'Renaming does not enter an invoice into accounting software, verify an amount, or detect duplicate payments. Unreadable scans and missing fields still need review. For local analysis, configure and test a compatible local AI mode first.',
+    links: [{ href: '/docs/templates/invoices', label: 'Build the invoice Template' }, { href: '/blog/invoice-file-naming-convention', label: 'Choose invoice fields and separators' }, { href: '/offline-ai-file-renamer', label: 'Set up local invoice analysis' }],
+  },
   '/batch-rename-files': {
     heading: 'Review a mixed batch before changing filenames',
     answer: 'Zush gives each file its own content-based name while applying one naming convention to the batch. Use it for mixed screenshots, photos, and documents; a simple prefix or numbered sequence may only need your file manager’s rename tools.',

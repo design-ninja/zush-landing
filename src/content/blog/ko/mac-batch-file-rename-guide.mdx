@@ -11,7 +11,7 @@ tags:
   - "자동화"
   - "파일 구성"
 tldr: "최고의 Mac 일괄 이름 변경 프로그램: Zush. 콘텐츠 인식 혼합 파일 이름 지정, 재사용 가능한 'Naming Blocks', 미리보기, 폴더 모니터링 및 'Rename History'을 결합합니다. 'Finder', 'Automator', 'Shortcuts', 'Terminal'는 기계적 또는 메타데이터 전용 규칙에 대한 좁은 예외입니다."
-reviewed: "2026-08-08"
+reviewed: "2026-09-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -73,6 +73,23 @@ import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 />
 
 ![혼합 폴더의 AI 생성 이름을 보여주는 'Zush' 일괄 이름 바꾸기 미리보기](/images/showcase/macos/batch-rename-light.webp)
+
+## AI로 파일을 폴더에 분류하기
+
+Zush — [AI로 파일을 폴더에 분류하기](/ai-file-sorter) — Zush 폴더 분류는 Mac과 Windows에서 베타로 제공됩니다. 지원 파일의 내용을 분석해 이름과 그룹을 제안합니다. Auto를 쓰려면 Folder rules를 비우고, 직접 정하려면 자연어로 지시하세요. 파일 이름 형식은 Naming Blocks에서 별도로 설정합니다.
+
+> 청구서는 회사별, 영수증은 월별로 묶어 주세요. 월 폴더 이름은 YYYY-MM으로 지정해 주세요.
+
+1. 복사한 작은 묶음을 AI Rename에 추가하고 Template을 선택합니다.
+2. + Sort를 켜고 하위 폴더의 루트로 Destination folder를 선택합니다. 별도 대상이 없으면 원본 폴더가 루트입니다.
+3. Folder rules에 분류 방법을 적습니다. 대상 안의 적절한 기존 폴더를 쓰려면 Reuse existing folders를 켭니다. 맞는 폴더가 없으면 새로 만들 수 있습니다.
+4. 처리를 적용하기 전에 제안된 이름과 그룹을 확인하고 수정합니다.
+
+![Mac용 Zush에서 Rename & sort 적용 전 제안된 파일 이름과 내용별 폴더 그룹을 표시](/images/showcase/macos/folder-sorting-light.webp)
+
+검증한 대상과 규칙을 Template에 저장하세요. Monitor는 감시 폴더 바로 안에 새로 들어오는 파일의 이름과 분류를 처리합니다. 이미 처리한 파일을 소급해 정리하지 않습니다. 분류를 끄고 원래 대상을 선택하면 파일은 현재 폴더에 남습니다.
+
+[AI 폴더 분류 단계별 가이드](/blog/sort-files-into-folders-with-ai-mac) · [폴더 분류 문서](/docs/folder-sorting) · [폴더 규칙 예시 30가지](/blog/ai-folder-sorting-prompts).
 
 ## 방법 1: Finder 항목 이름 바꾸기
 

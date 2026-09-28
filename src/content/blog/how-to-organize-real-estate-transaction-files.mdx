@@ -10,7 +10,7 @@ tags:
   - "PDFs & Documents"
   - "Automation"
 tldr: "Create one root folder per property transaction, separate intake from verified records, group documents by transaction stage, and move the completed package into a read-only closed-deal archive. Use property-based filenames so files retain context when emailed or exported."
-reviewed: "2026-08-10"
+reviewed: "2026-09-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -31,6 +31,26 @@ This guide covers the folder and handoff workflow. For automatic cleanup of e-si
 />
 
 <BlogCTA placement='inline' platform='general' />
+
+## Sort transaction files into folders with AI
+
+[Zush](/ai-file-sorter) can give supported files descriptive names and group them into real folders by content in the same batch. **AI folder sorting is in beta on Mac and Windows.** Leave **Folder rules** empty for Auto grouping, or describe the groups in plain language. For transaction files, try:
+
+> Group documents by property address when the address is clear. Put ambiguous documents in Review.
+
+1. Add a small copied batch in **AI Rename** and select a Template.
+2. Enable **+ Sort** and choose the **Destination folder**, which is the root for the sorted subfolders. Without a separate destination, the source folder remains the root.
+3. Enter the grouping instruction in **Folder rules**. **Naming Blocks** set the filename format separately.
+4. Enable **Reuse existing folders** if suitable groups already exist inside the destination root. Zush can create a new folder when none fits.
+5. Review both the proposed names and folder groups. Correct folder names or file placement before applying the batch.
+
+![Zush for Mac previewing content-based folder groups and proposed filenames before Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Save the tested destination and rules in the Template. Assign it to **Monitor** to rename and sort new files arriving directly inside the watched folder. This does not retroactively reorganize files already processed. With sorting off and the original destination selected, files keep their current folder.
+
+Use sorting only for local copies whose placement you are authorized to change. Keep the official record system, access rules, and retention process in place. Review ambiguous identifiers; AI suggestions do not establish identity or record status.
+
+Follow the [step-by-step Mac sorting guide](/blog/sort-files-into-folders-with-ai-mac) or see the [folder sorting documentation](/docs/folder-sorting) and [30 example Folder rules](/blog/ai-folder-sorting-prompts).
 
 ## The transaction folder structure
 

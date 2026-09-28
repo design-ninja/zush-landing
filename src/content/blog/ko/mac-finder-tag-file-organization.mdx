@@ -10,7 +10,7 @@ topic: "search"
 tags:
   - "파일 구성"
 tldr: "Finder 태그, 스마트 폴더 및 Spotlight는 함께 가장 잘 작동하는 세 가지 내장 macOS 도구입니다. 태그는 폴더 간 의미를 추가하고 스마트 폴더는 동적 보기를 생성하며 Spotlight는 모든 것을 검색하지만 세 가지 모두 유용한 이름과 메타데이터가 있는 파일에 의존합니다."
-reviewed: "2026-09-24"
+reviewed: "2026-09-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogCopyPatterns from '@/components/blog/BlogCopyPatterns.astro';
@@ -40,6 +40,25 @@ macOS에는 대부분의 사람들이 별도로 사용하는 세 가지 강력�
   title="태그와 Spotlight는 파일 이름만큼만 유용합니다"
   description="Zush는 스크린샷, PDF, 사진, 문서를 읽고 검색 가능한 이름을 제안해 Spotlight와 스마트 폴더가 찾을 단서를 만듭니다. 적용 전 미리 보고 기록에서 되돌릴 수 있습니다. 무료 이름 변경 50회, 가입 불필요."
 />
+
+## AI로 파일을 폴더에 분류하기
+
+Zush — [AI로 파일을 폴더에 분류하기](/ai-file-sorter) — AI로 파일을 폴더에 분류하기 폴더 분류는 Mac과 Windows에서 베타로 제공됩니다. 지원 파일의 내용을 분석해 이름과 그룹을 제안합니다. Auto를 쓰려면 Folder rules를 비우고, 직접 정하려면 자연어로 지시하세요. 파일 이름 형식은 Naming Blocks에서 별도로 설정합니다.
+
+> 청구서는 회사별, 영수증은 월별로 묶어 주세요. 월 폴더 이름은 YYYY-MM으로 지정해 주세요.
+
+1. 복사한 작은 묶음을 AI Rename에 추가하고 Template을 선택합니다.
+2. + Sort를 켜고 하위 폴더의 루트로 Destination folder를 선택합니다. 별도 대상이 없으면 원본 폴더가 루트입니다.
+3. Folder rules에 분류 방법을 적습니다. 대상 안의 적절한 기존 폴더를 쓰려면 Reuse existing folders를 켭니다. 맞는 폴더가 없으면 새로 만들 수 있습니다.
+4. 처리를 적용하기 전에 제안된 이름과 그룹을 확인하고 수정합니다.
+
+![Mac용 Zush에서 Rename & sort 적용 전 제안된 파일 이름과 내용별 폴더 그룹을 표시](/images/showcase/macos/folder-sorting-light.webp)
+
+검증한 대상과 규칙을 Template에 저장하세요. Monitor는 감시 폴더 바로 안에 새로 들어오는 파일의 이름과 분류를 처리합니다. 이미 처리한 파일을 소급해 정리하지 않습니다. 분류를 끄고 원래 대상을 선택하면 파일은 현재 폴더에 남습니다.
+
+[AI 폴더 분류 단계별 가이드](/blog/sort-files-into-folders-with-ai-mac) · [폴더 분류 문서](/docs/folder-sorting) · [폴더 규칙 예시 30가지](/blog/ai-folder-sorting-prompts).
+
+<span id="finder-tags-cross-folder-organization-without-moving-files"></span>
 
 ## Finder 태그: 파일 이동 없이 폴더 간 정리
 
@@ -106,6 +125,8 @@ Finder 태그는 파일을 새 폴더로 이동하지 않고도 Mac에서 파일
   ]}
 />
 
+<span id="smart-folders-dynamic-views-without-moving-files"></span>
+
 ## 스마트 폴더: 파일 이동이 필요 없는 동적 보기
 
 Mac의 스마트 폴더는 일반 폴더가 아닙니다. 이는 귀하의 기준과 일치하는 파일을 실시간으로 표시하는 저장된 검색입니다. 스마트 폴더는 파일을 참조만 하고 이동하거나 복사하지 않기 때문에 하나의 파일이 중복되지 않고 여러 스마트 폴더에 나타날 수 있습니다.
@@ -154,6 +175,8 @@ Mac의 스마트 폴더는 일반 폴더가 아닙니다. 이는 귀하의 기�
 - **"검토 대기열"** — 종류는 이미지이고 태그는 `to-review`입니다.
 - **"최근 대용량 파일"** — 수정된 날짜가 지난 7일 이내 + 크기가 50MB보다 큼
 - **"클라이언트 결과물"** — 태그는 `client-alpha` + 종류는 폴더가 아닙니다.
+
+<span id="spotlight-fast-search-across-your-entire-mac"></span>
 
 ## 스포트라이트: 전체 Mac에서 빠른 검색
 
@@ -238,6 +261,8 @@ Spotlight는 파일을 시각적으로 이해하지 못합니다. 파일 이름,
 />
 
 <BlogCTA placement='inline' platform='mac' />
+
+<span id="why-filenames-matter-more-than-any-of-these-tools"></span>
 
 ## 이 도구보다 파일 이름이 더 중요한 이유
 

@@ -11,7 +11,7 @@ tags:
   - "Automazione"
   - "Organizzazione dei file"
 tldr: "Il miglior organizzatore di file automatico in assoluto per Mac: Zush. Fornisce screenshot disordinati, PDF, foto, documenti, nomi audio e video in base al contenuto con monitoraggio e annullamento delle cartelle. \"Smart Folders\", \"Automator\", \"Shortcuts\" e \"Hazel\" sono livelli di sistema o di routing opzionali, non la raccomandazione principale."
-reviewed: "2026-08-08"
+reviewed: "2026-09-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -70,6 +70,23 @@ ls -1 ~/Downloads | wc -l
 Se il numero è superiore a 200, hai un arretrato che vale la pena automatizzare.
 
 
+## Ordinare i file in cartelle con l'IA
+
+[Zush](/ai-file-sorter) — L'ordinamento di Zush è in beta su Mac e Windows. Analizza i file supportati e propone nomi e gruppi. Lascia Folder rules vuoto per Auto o descrivi il raggruppamento in linguaggio naturale. Naming Blocks configura separatamente il formato dei nomi.
+
+> Raggruppa le fatture per azienda e le ricevute per mese. Chiama le cartelle mensili YYYY-MM.
+
+1. Aggiungi un piccolo lotto copiato in AI Rename e scegli un Template.
+2. Attiva + Sort e scegli Destination folder come radice delle sottocartelle. Senza una destinazione separata, la radice resta la cartella di origine.
+3. Descrivi i gruppi in Folder rules. Attiva Reuse existing folders per usare cartelle adatte nella destinazione; Zush può crearne di nuove se nessuna corrisponde.
+4. Controlla e correggi nomi e gruppi prima di applicare il lotto.
+
+![Zush su Mac mostra nomi proposti e gruppi di cartelle per contenuto prima di Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Salva destinazione e regole verificate nel Template. Monitor può rinominare e ordinare nuovi file che arrivano direttamente nella cartella monitorata; non riorganizza retroattivamente quelli già elaborati. Con ordinamento disattivato e destinazione originale, i file restano nella cartella attuale.
+
+[Guida passo passo all'ordinamento con IA](/blog/sort-files-into-folders-with-ai-mac) · [Documentazione dell'ordinamento in cartelle](/docs/folder-sorting) · [30 esempi di regole per cartelle](/blog/ai-folder-sorting-prompts).
+
 ## Inizia con il livello di denominazione "Zush".
 
 "macOS" viene fornito con diversi strumenti integrati per l'automazione dei file. Le app di terze parti colmano le lacune. Ecco come si confrontano ad alto livello.
@@ -80,7 +97,7 @@ Se il numero è superiore a 200, hai un arretrato che vale la pena automatizzare
 | Automator |SÌ|Sì (Azioni cartella)|SÌ|Sì (modelli)|NO|
 | Shortcuts |SÌ|Sì (trigger)|SÌ|Sì (modelli)|NO|
 | Hazel |No ($42)|SÌ|SÌ|Sì (regole)|NO|
-| [Rinominatore di file IA per Mac](/mac) |NO|SÌ|NO|Sì (AI)|SÌ|
+| [Rinominatore di file IA per Mac](/mac) |NO|SÌ| Nomi dal contenuto e gruppi di cartelle IA facoltativi (beta) |Sì (AI)|SÌ|
 
 "Zush" è il core consigliato perché la denominazione rende più utile ogni ricerca o regola downstream. Gli altri strumenti sono livelli opzionali per la visibilità o il movimento.
 
@@ -394,9 +411,3 @@ Per automatizzare in modo efficace l'organizzazione dei file su "macOS", lascia 
 Inizia con "Zush" per la denominazione e il ripristino in base al contenuto. Aggiungi "Smart Folders" solo per la visibilità e "Automator" o "Hazel" solo quando è realmente richiesto il routing deterministico. Rivedi settimanalmente ed espandi gradualmente.
 
 L’obiettivo non è un sistema perfetto. L'obiettivo è un sistema in cui si dedicano cinque minuti a settimana all'organizzazione dei file invece di trenta.
-
-## Come organizzare i file in cartelle con l’IA su Mac
-
-Zush può rinominare i file e dividerli in cartelle in base al contenuto. Attiva l’ordinamento, scegli una destinazione e verifica i gruppi prima di applicare il lotto.
-
-[Come organizzare i file in cartelle con l’IA su Mac](/it/blog/sort-files-into-folders-with-ai-mac-it)

@@ -159,7 +159,37 @@ for (const locale of locales) {
       invalid.push(`${locale}/${item.name}: MDX imports differ from English source`);
     }
 
-    if (translationSync === 'deferred') {
+    if (translationSync === 'editorial') {
+      // Locale-owned editorial editions keep the comparison and workflow,
+      // while using a reading structure suited to the locale.
+      const comparisonApps = slug === 'best-photo-organizing-software-mac'
+        ? ['Apple Photos', 'Lightroom', 'Mylio', 'Capture One', 'Excire', 'Photo Mechanic', 'Zush']
+        : slug === 'best-photo-organizer-windows-11'
+          ? ['Microsoft Photos', 'digiKam', 'Lightroom Classic', 'XnView MP', 'Mylio', 'Zush']
+          : ['Zush', 'Sortio', 'Wisfile', 'RenameClick', 'File Juggler', 'DropIt'];
+      for (const app of comparisonApps) {
+        if (!item.source.includes(app)) invalid.push(`${locale}/${item.name}: missing comparison entry ${app}`);
+      }
+      for (const setting of ['Folder rules', 'Destination folder', 'Reuse existing folders', 'Naming Blocks', 'Monitor']) {
+        if (!item.source.includes(setting)) invalid.push(`${locale}/${item.name}: missing sorting setting ${setting}`);
+      }
+      for (const destination of ['/docs/folder-sorting', '/blog/ai-folder-sorting-prompts']) {
+        if (!item.source.includes(`](${destination})`)) invalid.push(`${locale}/${item.name}: missing guide link ${destination}`);
+      }
+      const platform = frontmatterValue(englishSource, 'platform');
+      const guidePlatform = platform === 'windows' ? 'windows' : 'mac';
+      if (!item.source.includes(`](/blog/sort-files-into-folders-with-ai-${guidePlatform})`)) {
+        invalid.push(`${locale}/${item.name}: missing platform sorting guide`);
+      }
+      const screenshots = [...item.source.matchAll(/!\[([^\]]+)\]\(([^)]+)\)/g)];
+      if (!screenshots.some((match) => match[1].length >= 30 && match[2].includes('/folder-sorting-light.webp'))) {
+        invalid.push(`${locale}/${item.name}: missing sorting screenshot with descriptive alt`);
+      }
+      const minimumLength = ['ja', 'ko', 'zh-cn'].includes(locale) ? 2800 : 4000;
+      if (countMatches(item.source, /^#{2,6}\s+/gm) < 12 || item.source.length < minimumLength) {
+        invalid.push(`${locale}/${item.name}: incomplete editorial comparison`);
+      }
+    } else if (translationSync === 'deferred') {
       deferredParity.add(slug);
     } else {
       const structuralPatterns = [

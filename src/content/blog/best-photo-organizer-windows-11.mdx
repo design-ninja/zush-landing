@@ -9,26 +9,26 @@ tags:
   - "Photos"
   - "Tool Comparisons"
   - "File Explorer"
-tldr: "Start with the free Microsoft Photos app for browsing and search. Choose digiKam for a free, serious library with faces and tags, or Lightroom Classic if you also edit. Whatever you pick, fix the filenames too: Zush renames IMG_4382.jpg into a descriptive, dated name so photos stay findable outside any app."
-reviewed: "2026-09-22"
+tldr: "Start with Microsoft Photos for browsing, digiKam for a free library with faces and tags, or Lightroom Classic for editing. For ordinary photo folders, Zush proposes descriptive names and sorts supported photos by content with Auto or your own Folder rules (beta). Review the names and groups before applying."
+reviewed: "2026-09-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
 Quick answer: for most people the best photo organizer on Windows 11 is the one already installed, **Microsoft Photos**. For a free library with face recognition, tags, and ratings, use **digiKam**. For editing plus cataloging, **Lightroom Classic**.
 
-There is a second job that none of these apps do, and it is why photos get lost anyway: the files are still called `IMG_4382.jpg`. Libraries remember what is in a photo only inside the app. Once you copy a folder to a drive, attach it to an email, or switch apps, that knowledge stays behind. [Zush](/windows) fixes the filenames themselves.
+Ordinary folders also need useful filenames and a structure you can understand without opening a catalog: `IMG_4382.jpg` tells you little on its own. Libraries remember what is in a photo only inside the app. Once you copy a folder to a drive, attach it to an email, or switch apps, that knowledge stays behind. [Zush](/windows) proposes descriptive filenames and can group supported photos into real folders by content (beta).
 
 **Last checked: September 22, 2026.** Written by the maker of Zush. Other apps' details come from their official pages.
 
-## Two jobs: the library and the filenames
+## Library management and ordinary photo folders
 
 A photo organizer has two separate problems to solve:
 
 - **The library.** Browsing, albums, faces, ratings, search. This lives in an app's database.
-- **The filenames.** What the file is called on disk, in File Explorer, on a backup drive, in a shared folder.
+- **The files and folders.** Names and content-based groups that remain visible in File Explorer, on a backup drive, and in a shared folder.
 
-The apps below mostly solve the first one. Only the last one on the list solves the second. You usually want one of each.
+Library apps manage browsing, albums, and catalog information. Zush focuses on descriptive names and optional AI grouping in ordinary folders; it can complement a library workflow.
 
 ## At a glance
 
@@ -36,10 +36,10 @@ The apps below mostly solve the first one. Only the last one on the list solves 
 |---|---|---|---|
 | Microsoft Photos | Everyday browsing and search | Search by description on Copilot+ PCs | Free, built in |
 | digiKam | A serious free library | Yes | Free, open source |
-| Lightroom Classic | Editing and cataloging together | Yes | $14.99/mo Photography plan (new subscribers) |
+| Lightroom Classic | Editing and cataloging together | Yes | $11.99/mo Lightroom 1TB; $19.99/mo Photography 1TB |
 | XnView MP | Fast viewing, batch convert, metadata | No | Free for private use; €29 commercial |
 | Mylio Photos | Private library synced across devices | Yes, on device | Free start; paid plans |
-| Zush | Descriptive, searchable filenames | Not a library | 50 free renames; $10/mo or $48 one-time |
+| Zush | Content-aware filenames and AI folder sorting (beta) | Not a library | 50 free renames; $10/mo or $48 one-time |
 
 ## 1. Microsoft Photos: start here
 
@@ -61,7 +61,7 @@ Pick it if you want a real catalog without a subscription. Expect a learning cur
 
 [Adobe Lightroom Classic](https://www.adobe.com/creativecloud/photography/compare-plans.html) combines a catalog (collections, keywords, ratings, faces) with pro-grade RAW editing. It can rename files on import with templates built from date, sequence, and metadata.
 
-The Photography plan with 20GB of cloud storage is $14.99 per month for new subscribers, and the 1TB plan is $19.99. There is no one-time purchase.
+The Lightroom 1TB plan starts at $11.99 per month with an annual commitment; Photography 1TB starts at $19.99. The old Photography 20GB plan is closed to new subscribers. There is no one-time purchase. [Adobe’s plan FAQ](https://helpx.adobe.com/creative-cloud/faq/CCPp.html) explains the legacy plan.
 
 Pick it if editing is part of your workflow. It is overkill for sorting family photos.
 
@@ -81,7 +81,7 @@ You can start for free; paid plans unlock more. Check current pricing on its sit
 
 Pick it if your photos live on a phone, a laptop, and an external drive, and you want them in one place without Google or iCloud.
 
-## 6. Zush: fix the filenames
+## 6. Zush: descriptive names and AI folder sorting
 
 [Zush](/windows) is not a photo library. It renames photo files based on what is in them, so they stay findable in File Explorer, Windows Search, backups, and shared folders, whatever app you use.
 
@@ -97,6 +97,26 @@ A Template sets the pattern, for example `{Capture Date}_{Event}_{Scene}`, and y
 
 <BlogCTA placement='inline' platform='windows' />
 
+## Sort photo files into folders with AI
+
+[Zush](/ai-file-sorter) can give supported files descriptive names and group them into real folders by content in the same batch. **AI folder sorting is in beta on Mac and Windows.** Leave **Folder rules** empty for Auto grouping, or describe the groups in plain language. For photo files, try:
+
+> Group images by subject, such as People, Food, and Landscapes.
+
+1. Add a small copied batch in **AI Rename** and select a Template.
+2. Enable **+ Sort** and choose the **Destination folder**, which is the root for the sorted subfolders. Without a separate destination, the source folder remains the root.
+3. Enter the grouping instruction in **Folder rules**. **Naming Blocks** set the filename format separately.
+4. Enable **Reuse existing folders** if suitable groups already exist inside the destination root. Zush can create a new folder when none fits.
+5. Review both the proposed names and folder groups. Correct folder names or file placement before applying the batch.
+
+![Zush for Windows previewing content-based folder groups and proposed filenames before Rename & sort](/images/showcase/windows/folder-sorting-light.webp)
+
+Save the tested destination and rules in the Template. Assign it to **Monitor** to rename and sort new files arriving directly inside the watched folder. This does not retroactively reorganize files already processed. With sorting off and the original destination selected, files keep their current folder.
+
+Use ordinary exported images or a copied Finder/File Explorer folder. Do not reorganize a Photos library package; for originals tracked by a catalog, follow its rename or relink workflow. Folder grouping does not add albums, face recognition, duplicate removal, or backup.
+
+Follow the [step-by-step Windows sorting guide](/blog/sort-files-into-folders-with-ai-windows) or see the [folder sorting documentation](/docs/folder-sorting) and [30 example Folder rules](/blog/ai-folder-sorting-prompts).
+
 ## Which one should you choose?
 
 - Browse and share, nothing to install: **Microsoft Photos**.
@@ -104,13 +124,13 @@ A Template sets the pattern, for example `{Capture Date}_{Event}_{Scene}`, and y
 - You edit RAW files: **Lightroom Classic**.
 - Quick viewer with batch tools: **XnView MP**.
 - One private library across phone and PC: **Mylio Photos**.
-- Photos that stay findable outside any app: add **Zush**.
+- Descriptive names and content-based groups in ordinary folders: add **Zush**.
 
-A simple routine that works with any of them: import photos into dated folders, rename them with Zush, then let your library app handle albums and faces.
+For ordinary photo files, use a copied intake folder, preview names and optional AI groups in Zush, then import the results into your library app. Follow the catalog's relink workflow before renaming or moving originals it already tracks.
 
 <BlogProductIntro
   title="Still have thousands of IMG_ files?"
-  description="Zush renames photos on Windows by what's in them and when they were taken, so File Explorer and Windows Search can find them. RAW and HEIC included."
+  description="Zush renames photos on Windows by what's in them and when they were taken, and can group supported files into AI folders (beta). Preview the names and groups before applying. RAW and HEIC included."
   links={[
     { href: '/rename-photos-with-ai', label: 'Rename photos with AI' },
     { href: '/windows', label: 'Zush for Windows' },

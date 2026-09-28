@@ -9,7 +9,7 @@ tags:
   - "Automation"
   - "File Organization"
 tldr: "Melhor organizador de arquivos automático geral para Mac: Zush. Ele fornece capturas de tela confusas, PDFs, fotos, documentos, nomes com reconhecimento de conteúdo de áudio e vídeo com monitoramento e desfazer de pastas. Smart Folders, Automator, Shortcuts e Hazel são camadas opcionais de sistema ou roteamento, não a recomendação principal."
-reviewed: "2026-08-08"
+reviewed: "2026-09-28"
 locale: "pt-br"
 translationOf: "automate-file-organization-macos"
 ---
@@ -70,6 +70,23 @@ ls -1 ~/Downloads | wc -l
 Se o número estiver acima de 200, você tem um backlog que vale a pena automatizar.
 
 
+## Classificar arquivos em pastas com IA
+
+[Zush](/ai-file-sorter) — A classificação do Zush está em beta no Mac e Windows. Analisa arquivos compatíveis e propõe nomes e grupos. Deixe Folder rules vazio para Auto ou descreva a organização em linguagem natural. Naming Blocks configura separadamente o formato dos nomes.
+
+> Agrupe faturas por empresa e recibos por mês. Nomeie as pastas mensais YYYY-MM.
+
+1. Adicione um pequeno lote copiado em AI Rename e escolha um Template.
+2. Ative + Sort e escolha Destination folder como raiz das subpastas. Sem um destino separado, a pasta de origem continua sendo a raiz.
+3. Descreva o agrupamento em Folder rules. Ative Reuse existing folders para usar pastas adequadas no destino; Zush pode criar outras quando nenhuma se encaixa.
+4. Revise e corrija nomes e grupos antes de aplicar o lote.
+
+![Zush no Mac mostrando nomes propostos e grupos de pastas por conteúdo antes de Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Salve o destino e as regras testadas no Template. Monitor pode renomear e classificar novos arquivos que chegam diretamente à pasta monitorada; não reorganiza retroativamente arquivos já processados. Com a classificação desativada e o destino original, os arquivos ficam na pasta atual.
+
+[Guia passo a passo de classificação com IA](/blog/sort-files-into-folders-with-ai-mac) · [Documentação da classificação em pastas](/docs/folder-sorting) · [30 exemplos de regras para pastas](/blog/ai-folder-sorting-prompts).
+
 ## Comece com a camada de nomenclatura Zush
 
 O macOS vem com várias ferramentas integradas para automação de arquivos. Aplicativos de terceiros preenchem as lacunas. Aqui está como eles se comparam em alto nível.
@@ -80,7 +97,7 @@ O macOS vem com várias ferramentas integradas para automação de arquivos. Apl
 | Automator |Sim|Sim (ações de pasta)|Sim|Sim (padrões)|Não|
 | Shortcuts |Sim|Sim (gatilhos)|Sim|Sim (padrões)|Não|
 | Hazel |Não ($ 42)|Sim|Sim|Sim (regras)|Não|
-| [Renomeador de arquivos com IA para Mac](/mac) |Não|Sim|Não|Sim (IA)|Sim|
+| [Renomeador de arquivos com IA para Mac](/mac) |Não|Sim| Nomes por conteúdo e grupos de pastas com IA opcionais (beta) |Sim (IA)|Sim|
 
 Zush é o núcleo recomendado porque a nomenclatura torna cada pesquisa ou regra downstream mais útil. As outras ferramentas são camadas opcionais para visibilidade ou movimento.
 
@@ -394,9 +411,3 @@ Para automatizar a organização de arquivos no macOS de maneira eficaz, deixe r
 Comece com Zush para nomeação e recuperação com reconhecimento de conteúdo. Adicione Smart Folders apenas para visibilidade e Automator ou Hazel somente quando o roteamento determinístico for realmente necessário. Revise semanalmente e expanda gradualmente.
 
 O objetivo não é um sistema perfeito. O objetivo é um sistema onde você gaste cinco minutos por semana na organização de arquivos, em vez de trinta.
-
-## Como organizar arquivos em pastas com IA no Mac
-
-O Zush pode renomear arquivos e distribuí-los em pastas conforme o conteúdo. Ative a organização, escolha o destino e revise os grupos antes de aplicar o lote.
-
-[Como organizar arquivos em pastas com IA no Mac](/pt-br/blog/sort-files-into-folders-with-ai-mac-pt-br)

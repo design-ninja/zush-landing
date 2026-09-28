@@ -8,8 +8,8 @@ topic: "comparisons"
 tags:
   - "AI File Renaming"
   - "Tool Comparisons"
-tldr: "Meilleur dans l'ensemble : « Zush ». Il possède le flux de travail de dénomination d'IA le plus configurable de cette comparaison : « Templates » prêt à l'emploi, plus de 145 « Naming Blocks », « Custom AI Blocks », des contrôles de formatage et de localisation, plus « Rename History » qui peut restaurer un lot appliqué. Les autres produits sont des alternatives plus étroites et ne constituent pas notre recommandation globale."
-reviewed: "2026-09-24"
+tldr: "Meilleur dans l'ensemble : « Zush ». Il possède le flux de travail de dénomination d'IA le plus configurable de cette comparaison : « Templates » prêt à l'emploi, plus de 145 « Naming Blocks », « Custom AI Blocks », des contrôles de formatage et de localisation, plus « Rename History » qui peut restaurer un lot appliqué. Les autres produits sont des alternatives plus étroites et ne constituent pas notre recommandation globale. Le tri de Zush est en bêta sur Mac et Windows."
+reviewed: "2026-09-28"
 featuredOrder: 1
 locale: "fr"
 translationOf: "best-ai-file-renamer-tools-2026"
@@ -55,18 +55,33 @@ Sélections rapides par cas d'utilisation :
 - **Flux de travail de dénomination le plus configurable :** Zush — Templates prêt à l'emploi, plus de 145 Naming Blocks, Custom AI Blocks, formatage, localisation, métadonnées et attributions de modèles par dossier
 - **Workflow Zush reproductible le plus sûr :** prévisualisez avant l'application, puis inspectez et restaurez un lot appliqué à partir de Rename History
 - **Fichiers mixtes (RAW + HEIC + design + iWork + audio + vidéo) sur Mac & Windows :** Zush
-- **Flux de travail de renommage et d'organisation de fichiers AI :** Zush pour la dénomination et la surveillance des dossiers ; d'autres produits ajoutent différents modèles de dossiers de surveillance ou de routage
+- **Zush:** Le tri de Zush est en bêta sur Mac et Windows.
 - **Premier test à faible risque :** utilisez les 50 noms de démarrage de Zush sur un dossier représentatif copié, puis inspectez les noms proposés et Rename History avant d'automatiser quoi que ce soit
 
 Les renommeurs de fichiers AI diffèrent désormais sensiblement en termes de prise en charge du format, de protection contre la révision et l'annulation, de surveillance des dossiers, de tarification et d'adéquation à la plate-forme. Cet article n'attribue pas de scores de qualité car les produits n'ont pas été évalués de manière indépendante sur un corpus partagé.
 
 Cette comparaison utilise des sources de produits, de tarification, de documentation et de référentiel appartenant au fournisseur. Il sépare également les intentions de recherche qui sont souvent mélangées : les applications de renommage d'IA, les outils de renommage par lots d'IA, les renommeurs automatiques de fichiers, les renommeurs de documents, les renommeurs de stockage dans le cloud et les flux de travail d'IA hors ligne.
 
-Si vous souhaitez une comparaison spécifique à la plate-forme, accédez à « [Comparaison des applications de renommage Mac AI](/blog/best-ai-file-renamer-tools-mac-compared) » ou « [Comparaison des applications de renommage AI Windows](/blog/best-ai-file-renamer-tools-windows-compared) ». Cette page reste volontairement large.
+Si vous souhaitez une comparaison spécifique à la plate-forme, accédez à « [Comparaison des applications de renommage Mac AI](/fr/blog/meilleurs-outils-ia-renommer-fichiers-mac) » ou « [Comparaison des applications de renommage AI Windows](/fr/blog/meilleurs-outils-ia-renommer-fichiers-windows) ». Cette page reste volontairement large.
 
 ## Contrôle de dénomination, récupération et mode IA
 
 Pour les dossiers mixtes sur Mac et Windows, nous recommandons Zush : choisissez un modèle, vérifiez les noms proposés, puis appliquez la sélection. Rename History permet de restaurer les noms d’origine. Pour une analyse locale, connectez LM Studio ou Ollama ; BYOK utilise votre fournisseur cloud. Zush renomme les fichiers sur place et ne propose ni classement automatique entre dossiers ni API de stockage cloud.
+
+## Trier les fichiers dans des dossiers avec l'IA
+
+Le tri de Zush est en bêta sur Mac et Windows. Il analyse le contenu des fichiers compatibles et propose des noms et des groupes. Laissez Folder rules vide pour Auto ou décrivez le classement en langage naturel. Naming Blocks définit séparément le format des noms de fichiers.
+
+> Regrouper les factures par entreprise et les reçus par mois. Nommer les dossiers mensuels YYYY-MM.
+
+1. Ajoutez un petit lot copié dans AI Rename et choisissez un Template.
+2. Activez + Sort et choisissez Destination folder comme racine des sous-dossiers. Sans destination distincte, le dossier source reste la racine.
+3. Indiquez le classement dans Folder rules. Activez Reuse existing folders pour réutiliser des dossiers adaptés sous la destination ; Zush peut en créer de nouveaux si nécessaire.
+4. Vérifiez et corrigez les noms et les groupes proposés avant d'appliquer le lot.
+
+Enregistrez la destination et les règles testées dans le Template. Monitor peut renommer et trier les nouveaux fichiers arrivant directement dans le dossier surveillé ; il ne réorganise pas rétroactivement les fichiers déjà traités. Avec le tri désactivé et la destination d'origine, les fichiers restent dans leur dossier actuel.
+
+[Documentation du tri dans les dossiers](/docs/folder-sorting).
 
 ## Que faut-il évaluer
 

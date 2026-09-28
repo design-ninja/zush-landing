@@ -11,7 +11,7 @@ tags:
   - "Otomasyon"
   - "Dosya Organizasyonu"
 tldr: "Mac için en iyi genel otomatik dosya düzenleyici: Zush. Klasör izleme ve geri alma özellikleriyle dağınık ekran görüntüleri, PDF'ler, fotoğraflar, belgeler, ses ve video içeriğine duyarlı adlar sağlar. \"Smart Folders\", \"Automator\", \"Shortcuts\" ve \"Hazel\" isteğe bağlı sistem veya yönlendirme katmanlarıdır; birincil öneri değildir."
-reviewed: "2026-08-08"
+reviewed: "2026-09-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -70,6 +70,23 @@ ls -1 ~/Downloads | wc -l
 Sayı 200'ün kuzeyindeyse, otomatikleştirmeye değer bir birikim var demektir.
 
 
+## Dosyaları yapay zekâyla klasörlere ayırma
+
+[Zush](/ai-file-sorter) — Zush klasör sıralaması Mac ve Windows'ta beta aşamasındadır. Desteklenen içerikleri analiz ederek adlar ve gruplar önerir. Auto için Folder rules alanını boş bırakın ya da gruplamayı doğal dilde yazın. Naming Blocks dosya adlarının biçimini ayrı olarak belirler.
+
+> Faturaları şirkete, makbuzları aya göre grupla. Ay klasörlerini YYYY-MM olarak adlandır.
+
+1. AI Rename içine küçük bir kopya grubu ekleyin ve bir Template seçin.
+2. + Sort seçeneğini açın; alt klasörlerin kökü için Destination folder seçin. Ayrı hedef yoksa kaynak klasör kök olarak kalır.
+3. Grupları Folder rules içinde tarif edin. Hedefte uygun klasörleri kullanmak için Reuse existing folders seçeneğini açın; uygun klasör yoksa Zush yenisini oluşturabilir.
+4. Toplu işlemi uygulamadan önce önerilen adları ve grupları inceleyip düzeltin.
+
+![Mac'te Zush, Rename & sort öncesinde önerilen dosya adlarını ve içerik tabanlı klasör gruplarını gösteriyor](/images/showcase/macos/folder-sorting-light.webp)
+
+Test edilen hedefi ve kuralları Template içine kaydedin. Monitor izlenen klasöre doğrudan gelen yeni dosyaları adlandırıp sıralayabilir; daha önce işlenen dosyaları geriye dönük düzenlemez. Sıralama kapalı ve hedef özgün konum olduğunda dosyalar mevcut klasörde kalır.
+
+[Adım adım yapay zekâ klasör sıralama rehberi](/blog/sort-files-into-folders-with-ai-mac) · [Klasör sıralama belgeleri](/docs/folder-sorting) · [30 klasör kuralı örneği](/blog/ai-folder-sorting-prompts).
+
 ## 'Zush' adlandırma katmanıyla başlayın
 
 'macOS', dosya otomasyonu için çeşitli yerleşik araçlarla birlikte gelir. Üçüncü taraf uygulamalar boşlukları dolduruyor. İşte yüksek düzeyde karşılaştırmalar.
@@ -80,7 +97,7 @@ Sayı 200'ün kuzeyindeyse, otomatikleştirmeye değer bir birikim var demektir.
 | Automator |Evet|Evet (Klasör Eylemleri)|Evet|Evet (desenler)|HAYIR|
 | Shortcuts |Evet|Evet (tetikler)|Evet|Evet (desenler)|HAYIR|
 | Hazel |Hayır (42$)|Evet|Evet|Evet (kurallar)|HAYIR|
-| [Mac için AI dosya yeniden adlandırıcı](/mac) |HAYIR|Evet|HAYIR|Evet (AI)|Evet|
+| [Mac için AI dosya yeniden adlandırıcı](/mac) |HAYIR|Evet| İçerik tabanlı adlar ve isteğe bağlı yapay zekâ klasör grupları (beta) |Evet (AI)|Evet|
 
 'Zush' önerilen çekirdektir çünkü adlandırma, her aşağı yönlü aramayı veya kuralı daha kullanışlı hale getirir. Diğer araçlar görünürlük veya hareket için isteğe bağlı katmanlardır.
 
@@ -394,9 +411,3 @@ Evet, gerçekten ikinci bir katmana ihtiyaç duyulduğunda. İçeriğe duyarlı 
 İçeriğe duyarlı adlandırma ve kurtarma için "Zush" ile başlayın. Yalnızca görünürlük için "Smart Folders"i ve yalnızca deterministik yönlendirme gerçekten gerekli olduğunda "Automator" veya "Hazel"ü ekleyin. Haftalık olarak gözden geçirin ve yavaş yavaş genişletin.
 
 Amaç mükemmel bir sistem değil. Amaç, dosya organizasyonuna haftada otuz dakika yerine beş dakika ayırdığınız bir sistemdir.
-
-## Mac’te dosyaları yapay zekâyla klasörlere ayırma
-
-Zush, dosyaları içeriklerine göre yeniden adlandırabilir ve klasörlere ayırabilir. Klasöre ayırmayı açın, hedefi seçin ve uygulamadan önce grupları inceleyin.
-
-[Mac’te dosyaları yapay zekâyla klasörlere ayırma](/tr/blog/sort-files-into-folders-with-ai-mac-tr)

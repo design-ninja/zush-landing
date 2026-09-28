@@ -1,6 +1,6 @@
 ---
 title: "Zush vs AI Renamer (2026): Desktop, CLI, Price"
-description: "Compare Zush vs AI Renamer by naming control, ready-made templates, Rename History, formats, automation, setup effort, and documented limitations."
+description: "Compare Zush vs AI Renamer on naming control, AI folder sorting, file formats, automation, recovery, pricing, and workflow limitations."
 date: "2026-05-05"
 slug: "zush-vs-airenamer"
 platform: "general"
@@ -8,10 +8,11 @@ topic: "comparisons"
 tags:
   - "AI File Renaming"
   - "Tool Comparisons"
-tldr: "Pick Zush for the most configurable and recoverable workflow in this comparison: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, and full Rename History. Both AI Renamer products lack documented folder monitoring and undo; local AI is available in Zush too and is not a unique competitor advantage."
-reviewed: "2026-09-02"
+tldr: "Pick Zush for the most configurable and recoverable workflow in this comparison: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, and full Rename History. Both AI Renamer products lack documented folder monitoring and undo; local AI is available in Zush too and is not a unique competitor advantage. Zush also offers optional AI folder sorting (beta)."
+reviewed: "2026-09-28"
 featuredOrder: 4
 ---
+
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
@@ -52,7 +53,7 @@ If you are searching "Zush vs AI Renamer", first know the comparison covers two 
 | Local AI | LM Studio and Ollama on Mac and Windows | Yes | Yes (Ollama, LM Studio) |
 | Languages | 60+ | Multilingual | Configurable |
 | Setup effort | Drag-and-drop install; local use requires LM Studio or Ollama | Drag-and-drop install | Terminal + Ollama (~4–8GB) |
-| Naming control | <BlogHighlight>Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata</BlogHighlight> | Custom prompt/settings | Custom prompt and output case |
+| Naming control | <BlogHighlight>Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata</BlogHighlight> ; optional AI folder sorting (beta) | Custom prompt/settings | Custom prompt and output case |
 | Main limitation | Desktop-only | No documented monitoring, Rename History, or granular format matrix | No GUI, document parsing, monitoring, or undo |
 
 ## Zush
@@ -64,6 +65,14 @@ If you are searching "Zush vs AI Renamer", first know the comparison covers two 
 ![Zush AI rename results showing files with descriptive before and after names and green checkmarks](/images/showcase/macos/batch-rename-light.webp)
 
 Zush is a complete desktop AI file renamer for Mac and Windows. Its clearest advantage is control: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, prompts, formatting, localization, Finder tags, Spotlight metadata, and per-folder Template assignments. After preview and apply, Rename History stores original and new names, folder, and timestamp and can revert the batch. Its 100+ formats and monitoring add breadth and continuity to that naming system.
+
+### Zush can sort as well as rename
+
+Zush includes **AI folder sorting (beta)** in its desktop workflow. Choose **Auto** grouping or write **Folder rules**, such as “Group invoices by company and photos by subject.” Folder instructions decide the groups; the selected Template and Naming Blocks still build each filename. Test this separately from the image/video naming workflow offered by the CLI.
+
+Choose a **Destination folder**, or keep the source folder as the root. Enable **Reuse existing folders** to prefer suitable folders already there; Zush can create a new one when nothing fits. In a manual batch, review both the suggested names and folders before applying. To rename in place, leave sorting off and keep the original destination.
+
+Save the sorting settings in a **Template** and assign it to **Monitor** for new files directly inside the watched folder. This does not reorganize files already processed. Test the Template in a manual batch first. See the [folder sorting guide](/docs/folder-sorting) for the setup and monitoring scope.
 
 ## AI Renamer Desktop (airenamer.app)
 
@@ -148,6 +157,10 @@ AI Renamer CLI requires: Node.js, npm/npx, Ollama, a vision-capable local model,
 For a broader price comparison, see [how much AI file renaming costs](/blog/ai-file-renaming-cost) with nine tools side by side.
 
 ## FAQ
+
+### Can Zush sort files into folders as well as rename them?
+
+Yes. Its optional AI folder sorting is in beta on Mac and Windows. Choose Auto or write Folder rules, select the destination, and review both names and groups in a manual batch. A sorting-enabled Template can also process new files directly inside a monitored folder; it does not reorganize files already processed. Leave sorting off and keep the original destination for naming only.
 
 ### Are AI Renamer Desktop and AI Renamer CLI from the same company?
 

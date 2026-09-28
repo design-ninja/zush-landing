@@ -9,7 +9,7 @@ tags:
   - "Automation"
   - "File Organization"
 tldr: "Insgesamt der beste automatische Datei-Organizer für Mac: „Zush“. Es liefert unordentliche Screenshots, PDFs, Fotos, Dokumente, Audio- und Videoinhalte mit Namen mit Ordnerüberwachung und Rückgängigmachen. „Smart Folders“, „Automator“, „Shortcuts“ und „Hazel“ sind optionale System- oder Routing-Ebenen und nicht die primäre Empfehlung."
-reviewed: "2026-08-08"
+reviewed: "2026-09-28"
 locale: "de"
 translationOf: "automate-file-organization-macos"
 ---
@@ -70,6 +70,23 @@ ls -1 ~/Downloads | wc -l
 Wenn die Zahl über 200 liegt, liegt ein Rückstand vor, der es wert ist, automatisiert zu werden.
 
 
+## Dateien mit KI in Ordner sortieren
+
+[Zush](/ai-file-sorter) — Die KI-Ordnersortierung von Zush ist auf Mac und Windows in der Beta. Sie analysiert unterstützte Dateiinhalte und schlägt Namen sowie Ordnergruppen vor. Lassen Sie Folder rules für Auto leer, oder beschreiben Sie die gewünschte Gruppierung in Alltagssprache. Naming Blocks legen den Aufbau des Dateinamens getrennt davon fest.
+
+> Rechnungen nach Unternehmen und Belege nach Monat gruppieren. Monatsordner YYYY-MM nennen.
+
+1. Fügen Sie einen kleinen kopierten Stapel in AI Rename hinzu und wählen Sie ein Template.
+2. Aktivieren Sie + Sort und wählen Sie den Destination folder als Wurzel für die Unterordner. Ohne separates Ziel bleibt der Quellordner die Wurzel.
+3. Tragen Sie die Gruppierung in Folder rules ein. Aktivieren Sie Reuse existing folders, wenn passende Ordner bereits im Ziel liegen; andernfalls kann Zush neue anlegen.
+4. Prüfen und korrigieren Sie die vorgeschlagenen Dateinamen und Ordnergruppen, bevor Sie den Stapel anwenden.
+
+![Zush für Mac mit vorgeschlagenen Dateinamen und inhaltsbezogenen Ordnergruppen vor Rename & sort](/images/showcase/macos/folder-sorting-light.webp)
+
+Speichern Sie das getestete Ziel und die Regeln im Template. Monitor kann damit neue Dateien direkt im überwachten Ordner umbenennen und sortieren; bereits verarbeitete Dateien werden nicht nachträglich neu organisiert. Bei ausgeschalteter Sortierung und ursprünglichem Ziel bleiben die Dateien im bisherigen Ordner.
+
+[Schritt-für-Schritt-Anleitung zur KI-Ordnersortierung](/blog/sort-files-into-folders-with-ai-mac) · [Dokumentation zur Ordnersortierung](/docs/folder-sorting) · [30 Beispiele für Ordnerregeln](/blog/ai-folder-sorting-prompts).
+
 ## Beginnen Sie mit der Namensebene „Zush“.
 
 „macOS“ wird mit mehreren integrierten Tools zur Dateiautomatisierung geliefert. Apps von Drittanbietern füllen die Lücken. So vergleichen sie sich auf hohem Niveau.
@@ -80,7 +97,7 @@ Wenn die Zahl über 200 liegt, liegt ein Rückstand vor, der es wert ist, automa
 | Automator |Ja|Ja (Ordneraktionen)|Ja|Ja (Muster)|NEIN|
 | Shortcuts |Ja|Ja (Trigger)|Ja|Ja (Muster)|NEIN|
 | Hazel |Nein (42 $)|Ja|Ja|Ja (Regeln)|NEIN|
-| [KI-Dateiumbenenner für Mac](/mac) |NEIN|Ja|NEIN|Ja (KI)|Ja|
+| [KI-Dateiumbenenner für Mac](/mac) |NEIN|Ja| Inhaltsbezogene Dateinamen und optionale KI-Ordnergruppen (Beta) |Ja (KI)|Ja|
 
 „Zush“ ist der empfohlene Kern, da die Benennung jede nachgelagerte Suche oder Regel nützlicher macht. Die anderen Werkzeuge sind optionale Ebenen für Sichtbarkeit oder Bewegung.
 
@@ -394,9 +411,3 @@ Um die Dateiorganisation auf „macOS“ effektiv zu automatisieren, lassen Sie 
 Beginnen Sie mit „Zush“ für inhaltsbezogene Benennung und Wiederherstellung. Fügen Sie „Smart Folders“ nur für die Sichtbarkeit und „Automator“ oder „Hazel“ nur hinzu, wenn deterministisches Routing wirklich erforderlich ist. Überprüfen Sie es wöchentlich und erweitern Sie es schrittweise.
 
 Das Ziel ist kein perfektes System. Das Ziel ist ein System, bei dem Sie fünf statt dreißig Minuten pro Woche für die Dateiorganisation aufwenden.
-
-## Dateien auf dem Mac mit KI in Ordner sortieren
-
-Zush kann Dateien nach ihrem Inhalt umbenennen und in Ordner einsortieren. Aktivieren Sie die Ordnersortierung, wählen Sie ein Ziel und prüfen Sie die vorgeschlagenen Gruppen vor dem Anwenden.
-
-[Dateien auf dem Mac mit KI in Ordner sortieren](/de/blog/sort-files-into-folders-with-ai-mac-de)

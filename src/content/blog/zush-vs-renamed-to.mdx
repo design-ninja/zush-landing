@@ -1,6 +1,6 @@
 ---
 title: "Zush vs Renamed.to (2026): Desktop App vs Cloud Credits"
-description: "Compare Zush vs Renamed.to by naming control, ready-made templates, Rename History, formats, automation, metering, and documented limitations."
+description: "Compare Zush vs Renamed.to on naming control, AI folder sorting, file formats, automation, recovery, pricing, and workflow limitations."
 date: "2026-07-31"
 slug: "zush-vs-renamed-to"
 platform: "general"
@@ -8,9 +8,10 @@ topic: "comparisons"
 tags:
   - "AI File Renaming"
   - "Tool Comparisons"
-tldr: "Pick Zush for the most configurable naming workflow in this comparison: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, and Rename History with batch revert. Renamed.to is cloud-only, document-scoped, metered per file, and does not document equivalent post-apply recovery."
-reviewed: "2026-08-31"
+tldr: "Pick Zush for the most configurable naming workflow in this comparison: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, and Rename History with batch revert. Renamed.to is cloud-only, document-scoped, metered per file, and does not document equivalent post-apply recovery. Zush also offers optional AI folder sorting (beta)."
+reviewed: "2026-09-28"
 ---
+
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
@@ -40,7 +41,7 @@ Quick answer: choose [Zush](/) when you need to design and reuse a precise namin
 | Formats | 100+: images incl. RAW/HEIC, PDFs, Office/iWork, design, audio, video | Document-focused: PDF, DOCX, XLSX, PPTX, scanned images |
 | Where files are processed | On your machine; analysis via cloud AI, BYOK, or fully local Offline AI | In the cloud, inside your Drive/Dropbox/OneDrive storage |
 | Local/offline option | <BlogHighlight>Yes — LM Studio or Ollama on Mac and Windows</BlogHighlight> | No — cloud processing only |
-| Naming control | <BlogHighlight>Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata</BlogHighlight> | Saved rules for document workflows |
+| Naming control | <BlogHighlight>Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata</BlogHighlight> ; optional AI folder sorting (beta) | Saved rules for document workflows |
 | Automation | Folder monitoring on any local/synced folder, per-folder Templates | File watcher daemon, REST API, CLI, Zapier/Make/n8n |
 | Recovery | Full Rename History with original/new name, folder, timestamp, and revert | Review/confidence flow before applying; no equivalent post-apply history documented |
 | Main limitation | Desktop-only | Cloud-only, document-scoped, metered per file, no equivalent post-apply history documented |
@@ -52,6 +53,14 @@ Quick answer: choose [Zush](/) when you need to design and reuse a precise namin
 [Zush](/) installs on the Mac or PC where your files already live. Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, prompts, formatting, localization, tags and metadata define the convention; the AI fills content-aware fields instead of inventing the whole name. The same Template works in a reviewed batch or [folder monitoring](/docs/folder-monitoring). Rename History keeps original and new names, folder and timestamp and can restore an applied batch.
 
 Four analysis modes set the privacy posture: Zush Cloud AI, BYOK through your own API account, LM Studio, and Ollama. The two local routes keep supported analysis on the machine.
+
+### Sorting files on your computer
+
+Zush includes **AI folder sorting (beta)** for desktop batches. Use **Auto** or write **Folder rules** such as “Group invoices by company and contracts by client.” Folder rules control grouping separately from filename Templates. This works with files accessible to the desktop app, including downloaded synced files; it does not turn Zush into a connected-storage API service like Renamed.to.
+
+Choose a **Destination folder**, or keep the source folder as the root. Enable **Reuse existing folders** to prefer suitable folders already there; Zush can create a new one when nothing fits. In a manual batch, review both the suggested names and folders before applying. To rename in place, leave sorting off and keep the original destination.
+
+Save the sorting settings in a **Template** and assign it to **Monitor** for new files directly inside the watched folder. This does not reorganize files already processed. Test the Template in a manual batch first. See the [folder sorting guide](/docs/folder-sorting) for the setup and monitoring scope.
 
 ### Renamed.to: a cloud service inside your cloud storage
 
@@ -88,6 +97,10 @@ Zush can run supported analysis locally through LM Studio or Ollama on Mac or Wi
 - **Photos, design files, audio, video in the mix** → Zush; they're outside Renamed.to's document scope.
 
 ## FAQ
+
+### Can Zush sort files into folders as well as rename them?
+
+Yes. Its optional AI folder sorting is in beta on Mac and Windows. Choose Auto or write Folder rules, select the destination, and review both names and groups in a manual batch. A sorting-enabled Template can also process new files directly inside a monitored folder; it does not reorganize files already processed. Leave sorting off and keep the original destination for naming only.
 
 ### Is Zush cheaper than Renamed.to?
 

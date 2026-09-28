@@ -10,7 +10,7 @@ topic: "search"
 tags:
   - "文件组织"
 tldr: "Finder 标签、智能文件夹和 Spotlight 是三个内置的 macOS 工具，它们可以最好地协同工作。标签添加跨文件夹含义，智能文件夹创建动态视图，Spotlight 搜索所有内容，但这三者都依赖于具有有用名称和元数据的文件。"
-reviewed: "2026-09-24"
+reviewed: "2026-09-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogCopyPatterns from '@/components/blog/BlogCopyPatterns.astro';
@@ -40,6 +40,25 @@ macOS 包含三个功能强大的文件搜索和组织工具，大多数人单�
   title="标签和 Spotlight 的效果取决于文件名"
   description="Zush 读取截图、PDF、照片和文档，给出可搜索的名称，让 Spotlight 和智能文件夹有内容可匹配。应用前可预览，也可从历史记录撤销。50 次免费重命名，无需注册。"
 />
+
+## 用 AI 将文件分类到文件夹
+
+[用 AI 将文件分类到文件夹](/ai-file-sorter) — 可选的AI文件夹分类目前在Mac和Windows上处于测试阶段。它分析支持文件的内容，并建议名称和分组。使用Auto时将Folder rules留空，也可以用日常语言描述分类规则。Naming Blocks单独控制文件名格式。
+
+> 按公司分组发票，按月份分组收据。月份文件夹命名为 YYYY-MM。
+
+1. 将一小批文件副本加入 AI Rename，并选择 Template。
+2. 启用 + Sort，将 Destination folder 设为子文件夹的根目录。未选择单独目标时，源文件夹仍为根目录。
+3. 在 Folder rules 中填写分组方法。启用 Reuse existing folders 可使用目标中的合适文件夹；没有合适的现有文件夹时，Zush 可以新建。
+4. 应用批次前检查并修正建议的文件名和分组。
+
+![Mac 版 Zush 在执行 Rename & sort 前显示建议文件名及按内容划分的文件夹分组](/images/showcase/macos/folder-sorting-light.webp)
+
+将经过测试的目标与规则保存到 Template。Monitor 可以处理直接进入监控文件夹的新文件，完成命名和分类，不会追溯重组已处理文件。关闭分类并保留原始目标时，文件留在当前文件夹。
+
+[AI 文件夹分类分步指南](/blog/sort-files-into-folders-with-ai-mac) · [文件夹分类文档](/docs/folder-sorting) · [30 个文件夹规则示例](/blog/ai-folder-sorting-prompts).
+
+<span id="finder-tags-cross-folder-organization-without-moving-files"></span>
 
 ## Finder标签：跨文件夹组织，无需移动文件
 
@@ -106,6 +125,8 @@ Finder 标签是在 Mac 上组织文件的最简单方法之一，无需将文�
   ]}
 />
 
+<span id="smart-folders-dynamic-views-without-moving-files"></span>
+
 ## 智能文件夹：动态视图，无需移动文件
 
 Mac 上的智能文件夹不是普通文件夹。它们是保存的搜索，实时显示符合您条件的文件。一个文件可以出现在多个智能文件夹中而不会重复，因为智能文件夹仅引用文件 - 它们从不移动或复制它们。
@@ -154,6 +175,8 @@ Mac 上的智能文件夹不是普通文件夹。它们是保存的搜索，实�
 - **“审核队列”** — 种类是图像 + 标签是 `to-review`
 - **“最近的大文件”** — 修改日期在过去 7 天内 + 大小大于 50 MB
 - **“客户可交付成果”** — 标签是 `client-alpha` + 种类不是文件夹
+
+<span id="spotlight-fast-search-across-your-entire-mac"></span>
 
 ## Spotlight：在整个 Mac 上快速搜索
 
@@ -238,6 +261,8 @@ Spotlight 无法直观地理解您的文件。它搜索基于文本的元数据�
 />
 
 <BlogCTA placement='inline' platform='mac' />
+
+<span id="why-filenames-matter-more-than-any-of-these-tools"></span>
 
 ## 为什么文件名比任何这些工具都更重要
 

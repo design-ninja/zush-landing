@@ -1,6 +1,6 @@
 ---
 title: "Zush vs NameQuick: Price, BYOK, Mac vs Windows"
-description: "Zush vs NameQuick: compare naming control, ready-made templates, Rename History, formats, pricing, automation, and each product's main limitation."
+description: "Compare Zush vs NameQuick on naming control, AI folder sorting, file formats, automation, recovery, pricing, and workflow limitations."
 date: "2026-05-05"
 slug: "zush-vs-namequick"
 platform: "general"
@@ -8,10 +8,11 @@ topic: "comparisons"
 tags:
   - "AI File Renaming"
   - "Tool Comparisons"
-tldr: "Choose Zush for the most configurable AI naming workflow in this comparison: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, and Rename History with batch revert. NameQuick's main limitation is its incomplete public platform-and-format matrix; local AI is available in both and is not a differentiator."
-reviewed: "2026-09-02"
+tldr: "Choose Zush for the most configurable AI naming workflow in this comparison: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, and Rename History with batch revert. NameQuick's main limitation is its incomplete public platform-and-format matrix; local AI is available in both and is not a differentiator. Zush also offers optional AI folder sorting (beta)."
+reviewed: "2026-09-28"
 featuredOrder: 3
 ---
+
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -56,7 +57,7 @@ If you are searching "Zush vs NameQuick", compare the workflow you can verify ra
 | Rename recovery | <BlogHighlight>Full Rename History: original/new name, folder, timestamp, batch revert</BlogHighlight> | One-click Undo & Recovery |
 | Local AI | LM Studio and Ollama on Mac and Windows | Ollama, LM Studio, and MLX |
 | Languages | 60+ | Multilingual (count not stated) |
-| Naming control | <BlogHighlight>Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata</BlogHighlight> | Presets, prompts, and Rules that can move/tag/archive |
+| Naming control | <BlogHighlight>Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata</BlogHighlight> ; optional AI folder sorting (beta) | Presets, prompts, and Rules that can move/tag/archive |
 | Finder tags | Yes | Yes (with Comments) |
 | Main limitation | Desktop-only | Managed tiers are metered; no complete public per-platform format matrix |
 
@@ -71,6 +72,14 @@ If you are searching "Zush vs NameQuick", compare the workflow you can verify ra
 Zush runs on both Mac (macOS 15+) and Windows (10/11) and offers two PRO plans: $10/month or $48 one-time, both with unlimited PRO renames. Its strongest advantage is naming control: built-in Templates for common jobs, 145+ Naming Blocks, Custom AI Blocks, prompts, formatting, localization, Finder tags, Spotlight metadata, and per-folder Template assignments. Rename History keeps the original and new name, folder, and timestamp and can revert an applied batch. Version 3.0 also supports 100+ formats across images, RAW, design, documents, video, and audio.
 
 Both products offer local-model paths, so local AI is useful for privacy but does not decide this comparison.
+
+### Folder grouping versus conditional actions
+
+Zush offers **AI folder sorting (beta)** using **Auto** or plain-language **Folder rules**, such as “Group invoices by company and receipts by month.” It proposes groups from content while a Template controls the filenames. NameQuick’s conditional Rules can move, tag, or archive files; those actions are a different control model. Check whether your task needs content-based grouping or a specific conditional action chain.
+
+Choose a **Destination folder**, or keep the source folder as the root. Enable **Reuse existing folders** to prefer suitable folders already there; Zush can create a new one when nothing fits. In a manual batch, review both the suggested names and folders before applying. To rename in place, leave sorting off and keep the original destination.
+
+Save the sorting settings in a **Template** and assign it to **Monitor** for new files directly inside the watched folder. This does not reorganize files already processed. Test the Template in a manual batch first. See the [folder sorting guide](/docs/folder-sorting) for the setup and monitoring scope.
 
 ## NameQuick
 
@@ -153,6 +162,10 @@ If you are comparing an existing setup with Zush, copy five representative files
 For a wider view of metered and unmetered plans, see [how much AI file renaming costs](/blog/ai-file-renaming-cost) across nine tools.
 
 ## FAQ
+
+### Can Zush sort files into folders as well as rename them?
+
+Yes. Its optional AI folder sorting is in beta on Mac and Windows. Choose Auto or write Folder rules, select the destination, and review both names and groups in a manual batch. A sorting-enabled Template can also process new files directly inside a monitored folder; it does not reorganize files already processed. Leave sorting off and keep the original destination for naming only.
 
 ### Does NameQuick run on Windows?
 

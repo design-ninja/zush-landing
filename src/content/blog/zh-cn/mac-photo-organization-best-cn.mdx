@@ -11,7 +11,7 @@ tags:
   - "文件组织"
   - "照片"
 tldr: "在 Mac 上整理照片其实是两件事：一个可以浏览的图库，和一批能搜到的文件名。图库用 Apple Photos，便携归档用 Finder 文件夹，也可以两者结合；如果每个文件仍叫 IMG_8821.HEIC，就用 Zush。它不能替代相簿、人脸搜索、重复照片检查或备份。"
-reviewed: "2026-09-10"
+reviewed: "2026-09-28"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -45,6 +45,27 @@ import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
 跳转到“[“Apple Photos”与“Finder”](#apple-photos-vs-finder-folders-vs-a-hybrid-setup)”、“[文件夹结构](#choose-a-folder-structure-that-scales)”、“[搜索](#make-photos-searchable-with-spotlight-and-finder)”、“[备份](#back-up-your-photo-library-properly)”或“[可重复的导入工作流程](#a-repeatable-import-workflow-for-thousands-of-photos)”。
 
+## 用 AI 将文件分类到文件夹
+
+[用 AI 将文件分类到文件夹](/ai-file-sorter) — 可选的AI文件夹分类目前在Mac和Windows上处于测试阶段。它分析支持文件的内容，并建议名称和分组。使用Auto时将Folder rules留空，也可以用日常语言描述分类规则。Naming Blocks单独控制文件名格式。
+
+> 按主题分组图片，例如人物、食物和风景。
+
+1. 将一小批文件副本加入 AI Rename，并选择 Template。
+2. 启用 + Sort，将 Destination folder 设为子文件夹的根目录。未选择单独目标时，源文件夹仍为根目录。
+3. 在 Folder rules 中填写分组方法。启用 Reuse existing folders 可使用目标中的合适文件夹；没有合适的现有文件夹时，Zush 可以新建。
+4. 应用批次前检查并修正建议的文件名和分组。
+
+![Mac 版 Zush 在执行 Rename & sort 前显示建议文件名及按内容划分的文件夹分组](/images/showcase/macos/folder-sorting-light.webp)
+
+将经过测试的目标与规则保存到 Template。Monitor 可以处理直接进入监控文件夹的新文件，完成命名和分类，不会追溯重组已处理文件。关闭分类并保留原始目标时，文件留在当前文件夹。
+
+Finder / File Explorer — 图库使用自己的数据库管理相册、人脸、评分和搜索。文件名和真实文件夹则在文件系统、外接硬盘及共享位置保持可见。该应用 整理文件本身，不代替相册、人脸识别、重复文件检查或备份。两种工作方式可以配合使用。
+
+Finder — 请使用导出的图片或文件夹副本测试。不要重组 Photos 图库包内部的文件。已被目录软件跟踪的原始文件应遵循该软件的重命名或重新链接流程。重命名和移动都会改变路径。
+
+[AI 文件夹分类分步指南](/blog/sort-files-into-folders-with-ai-mac) · [文件夹分类文档](/docs/folder-sorting) · [30 个文件夹规则示例](/blog/ai-folder-sorting-prompts).
+
 ## Mac 照片整理系统的 7 步
 
 1. **选择图库：** 根据浏览和分享照片的方式，使用 Apple Photos、Finder 文件夹或两者结合。
@@ -66,6 +87,8 @@ import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
   ]}
 />
 
+<span id="apple-photos-vs-finder-folders-vs-a-hybrid-setup"></span>
+
 ## Apple Photos 与 Finder 文件夹与混合设置
 
 在重新组织任何内容之前选择库模型。 “Apple Photos”、“Finder”文件夹和混合设置都可以工作，但它们解决不同的检索和存储问题。
@@ -81,6 +104,8 @@ import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 一个具体的混合示例是将 iPhone 家庭照片保存在“Apple Photos”中，而客户拍摄的照片及其 RAW 文件、选择和导出则保留在“Pictures/Client-Work/2026/Acme-Launch/”中。个人照片保留了 iCloud 的便利性，客户文件保持便携且可直接访问。
 
 使用“[可下载的 Mac 照片文件夹模板](/downloads/mac-photo-folder-template.txt)”作为起点。它将个人事件、客户项目、接收文件夹、导出和存档状态分开，而无需将库锁定到一个应用程序。
+
+<span id="choose-a-folder-structure-that-scales"></span>
 
 ## 选择可扩展的文件夹结构
 
@@ -154,6 +179,8 @@ Photos/
 对于大批量照片，手动向每张照片添加日期是不切实际的。 “[Mac 版 AI 文件重命名器](/mac)”可以使用自定义命名模板自动生成具有日期模式的描述性文件名，因此每张照片在导入时都会获得有意义的名称。
 
 
+<span id="make-photos-searchable-with-spotlight-and-finder"></span>
+
 ## 使用“Spotlight”和“Finder”使照片可搜索
 
 当您在正确的位置浏览时，文件夹结构会有所帮助。但照片组织的真正考验是，当您不记得某张特定图像位于何处时，您能否找到该图像。
@@ -200,6 +227,8 @@ Photos/
 
 例如，将“2026-06-04_acme-product-flatlay_017.cr3”保留在 Acme 项目文件夹中，并将其标记为“client-review”。当客户批准后，将该状态标签替换为“approved”；文件保留在同一文件夹中，并且标记反映工作流程状态，而不是复制文件夹结构。
 
+
+<span id="back-up-your-photo-library-properly"></span>
 
 ## 正确备份您的照片库
 
@@ -260,6 +289,8 @@ Photos/
 
 
 <BlogCTA placement='inline' platform='mac' />
+
+<span id="a-repeatable-import-workflow-for-thousands-of-photos"></span>
 
 ## 可重复导入数千张照片的工作流程
 
