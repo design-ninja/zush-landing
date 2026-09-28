@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.10.1.0] - 2026-09-28
+
+### Improved
+- Offline AI can process images with long naming templates by using a larger model context when the model supports it.
+- Folder monitoring keeps running when AI cannot find sorting details for a file; that file is left unchanged with a notice.
+
+### Fixed
+- The app no longer closes unexpectedly when a menu cannot open.
+- EPUB books with an unusual archive layout are read correctly.
+- Renaming into a destination folder now applies on the first click when file metadata is enabled.
+- Folder sorting works with long folder paths and skips subfolders that cannot be read.
+- The template reset button no longer appears when a template already matches its default settings.
+
+
 ## [3.10.0.0] - 2026-09-27
 
 ### Added
