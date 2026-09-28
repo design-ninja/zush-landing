@@ -74,7 +74,14 @@ const featureOrder = [
     title: 'Offline AI mode',
     storeName: '10-offline-ai',
   },
-  { id: 'folder-sorting', fixture: 'folder-sorting', title: 'AI Folder Sorting', storeName: '04-folder-sorting' },
+  {
+    id: 'folder-sorting',
+    fixture: 'folder-sorting',
+    title: 'AI Folder Sorting',
+    storeName: '04-folder-sorting',
+    // Show the expanded Template row with its folder and Sort segments, not the collapsed summary.
+    uiPreferences: { aiRenameNamingBlocksExpanded: true },
+  },
   { id: 'template-transfer', fixture: 'template-transfer', title: 'Import and Export Templates', storeName: '08-template-transfer' },
   { id: 'folder-rules', fixture: 'folder-rules', title: 'Folder Rules', store: false },
 ];
@@ -655,6 +662,11 @@ async function captureFeature({ appExe, feature, theme, runId, assetRoot }) {
   const markerPath = path.join(captureDir, 'fixture-marker.json');
   const capturePath = path.join(captureDir, 'window.png');
   const baseDir = path.join(captureDir, 'app-data');
+  if (feature.uiPreferences) {
+    // The app reads view preferences from ui-prefs.json in its (isolated) base directory.
+    fs.mkdirSync(baseDir, { recursive: true });
+    fs.writeFileSync(path.join(baseDir, 'ui-prefs.json'), JSON.stringify(feature.uiPreferences), 'utf8');
+  }
   const promoFixtureEnv = promoEnvironmentForFeature(feature);
   const child = spawn(appExe, [], {
     cwd: path.dirname(appExe),
@@ -1356,6 +1368,20 @@ public static class ZushWindowCapture
     [DllImport("dwmapi.dll")]
     private static extern int DwmGetWindowAttribute(IntPtr hwnd, int dwAttribute, out RECT pvAttribute, int cbAttribute);
 
+    [DllImport("user32.dll")]
+    private static extern IntPtr SetThreadDpiAwarenessContext(IntPtr dpiContext);
+
+    // DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2. Windows PowerShell is DPI-unaware, so on a
+    // scaled display it would read a downscaled (logical) screen while DWM reports physical
+    // bounds. Per-monitor awareness captures the window at its real pixel density.
+    // https://learn.microsoft.com/windows/win32/hidpi/dpi-awareness-context
+    private static readonly IntPtr PerMonitorAwareV2 = new IntPtr(-4);
+
+    private static void UsePhysicalPixels()
+    {
+        SetThreadDpiAwarenessContext(PerMonitorAwareV2);
+    }
+
     // Windows refuses SetForegroundWindow when another process owns the foreground, and the
     // capture is a screen scrape, so without this the shot can contain the wrong window.
     public static bool ForceForeground(IntPtr hwnd)
@@ -1394,6 +1420,7 @@ public static class ZushWindowCapture
 
     public static void Prepare(IntPtr hwnd)
     {
+        UsePhysicalPixels();
         ShowWindow(hwnd, SW_RESTORE);
         SetForegroundWindow(hwnd);
         RECT rect = Bounds(hwnd);
@@ -1425,6 +1452,7 @@ public static class ZushWindowCapture
 
     public static void Capture(IntPtr hwnd, string path)
     {
+        UsePhysicalPixels();
         RECT rect = Bounds(hwnd);
         int width = Math.Max(1, rect.Right - rect.Left);
         int height = Math.Max(1, rect.Bottom - rect.Top);

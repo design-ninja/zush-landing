@@ -33,7 +33,16 @@ pnpm promo:windows-feature-screenshots
 
 The Windows capture path is intentionally locked to the Debug app build. The app-side promo fixture is Debug-only and forces the UI into a Pro state for screenshots. The script also overrides Supabase settings to a local offline endpoint by default, so capture runs cannot register installs or usage in the production database.
 
-The capture keeps the app window at its own default size. Landing and Store assets are created by scaling that captured window into the output canvas, not by resizing the live app window.
+The capture keeps the app window at its own default size. Landing and Store assets are created by scaling that captured window into the output canvas, not by resizing the live app window. The capture is per-monitor DPI aware, so on a scaled display (for example 200%) the window is captured at its physical pixel size instead of a blurry logical-size copy.
+
+On the ARM64 development VM, build the app natively and pass it explicitly instead of the default `win-x64` build:
+
+```powershell
+pnpm promo:windows-feature-screenshots --only=folder-sorting,template-transfer --skip-build --app-exe="..\zush-windows\src\Zush.Windows.App\bin\arm64\Debug\net8.0-windows10.0.19041.0\win-arm64\Zush.Windows.App.exe"
+node scripts/promo/generate-showcase-responsive-assets.mjs --output-dir=public/images/showcase/windows --only=folder-sorting,template-transfer
+```
+
+The second command refreshes the responsive landing sizes for the recaptured Windows scenes. A main Windows release submits the Store set from `../zush-assets/Microsoft Store/Windows` automatically.
 
 If `../zush-assets/#test files/Files` is unavailable, the script falls back to `zush-windows/test-assets/Files` and seeds any missing promo image/video files from local demo assets so thumbnails stay real instead of generic file icons.
 
