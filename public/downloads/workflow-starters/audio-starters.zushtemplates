@@ -1,0 +1,72 @@
+{
+  "format": "com.zush.templates",
+  "version": 1,
+  "templates": [
+    {
+      "id": "62e1cbc4-1321-4874-8f18-0bf34e32469f",
+      "name": "Spoken audio topic",
+      "description": "Zush website starter. Test copies and review every field.",
+      "icon": "music",
+      "color": "purple",
+      "settings": {
+        "namingPattern": "{transcript_topic}",
+        "namingPatternBlocks": [
+          {
+            "kind": "variable",
+            "value": "{transcript_topic}"
+          }
+        ],
+        "namingCaseStyle": "kebab",
+        "namingWordSeparator": "-",
+        "namingBlockSeparator": "_",
+        "dateFormat": "yyyy-MM-dd",
+        "outputLanguage": "en",
+        "addMetadataTags": false,
+        "addFilePropertiesMetadata": false,
+        "renamePrompt": "Use a short main topic from available speech context or metadata. Do not invent speaker names, dates, clients or song identity. Omit unsupported information.",
+        "tagPrompt": "",
+        "folderSorting": {
+          "enabled": false,
+          "prompt": "",
+          "reusesExistingFolders": false
+        }
+      }
+    },
+    {
+      "id": "1e6ef3f8-d4b8-416d-ac2d-2c3791892647",
+      "name": "Tagged music artist and title",
+      "description": "Zush website starter. Test copies and review every field.",
+      "icon": "music",
+      "color": "purple",
+      "settings": {
+        "namingPattern": "{artist}_{track_title}",
+        "namingPatternBlocks": [
+          {
+            "kind": "variable",
+            "value": "{artist}"
+          },
+          {
+            "kind": "variable",
+            "value": "{track_title}",
+            "separatorBefore": "_"
+          }
+        ],
+        "namingCaseStyle": "kebab",
+        "namingWordSeparator": "-",
+        "namingBlockSeparator": "_",
+        "dateFormat": "yyyy-MM-dd",
+        "outputLanguage": "en",
+        "addMetadataTags": false,
+        "addFilePropertiesMetadata": false,
+        "renamePrompt": "Use artist and track title from embedded metadata when available. Do not guess artist or song identity from an untagged recording.",
+        "tagPrompt": "",
+        "folderSorting": {
+          "enabled": false,
+          "prompt": "",
+          "reusesExistingFolders": false
+        }
+      }
+    }
+  ],
+  "customFields": []
+}

@@ -12,6 +12,16 @@
   [data-hero-root]::before {
     top: -19rem;
   }
+
+  // Landing titles have no authored line breaks. Balance them within the
+  // intro column so a short final word never becomes an oversized line.
+  [data-hero-root] h1[class] {
+    font-size: clamp(2rem, 3.6vw, 3rem);
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
 }
 
 // Sections

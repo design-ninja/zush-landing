@@ -10,7 +10,7 @@ tags:
   - "Tool Comparisons"
   - "File Organization"
 tldr: "Use Apple Photos for a personal photo library, Mylio for a private multi-device archive, or Lightroom and Capture One for editing. For photos in ordinary Finder folders, Zush proposes descriptive names and can sort them by content with Auto or your own Folder rules (beta). Review names and folders before applying."
-reviewed: "2026-09-28"
+reviewed: "2026-09-30"
 earlyTaskExample: false
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
@@ -41,8 +41,8 @@ This table compares different product classes rather than one universal ranking.
 <BlogCTA
   placement='early'
   platform='mac'
-  title='Keeping photos in Finder? Fix the filenames first'
-  description='If the real problem is that every file is IMG_ or Screenshot, Zush names photos from their content and leaves them in place. Preview each name, undo a batch from History. 50 free renames, no signup.'
+  title='Try Zush on a copied photo folder'
+  description='Preview content-based names and optional folder groups before applying. Start with 50 free renames in total. Keep sorting off to leave photos in place.'
 />
 
 ## Sort photo files into folders with AI
@@ -166,17 +166,25 @@ This is a different kind of intelligence from visual AI. Photo Mechanic Plus exc
 
 **Use Zush for supported photos in ordinary Finder folders.** It proposes descriptive names and optional content-based folder groups (beta); it does not provide albums, face browsing, editing, duplicate detection, culling, or cloud photo storage. If those are the jobs you need, choose a library manager above.
 
-The [AI photo renamer](/rename-photos-with-ai) proposes descriptive names for HEIC, JPG, PNG, and supported RAW files. A photo can change from `DSCF4821.RAF` to `2026-08-11_Night-Market-Food-Stalls.RAF` while staying in the same Finder folder. Templates and Naming Blocks can combine content descriptions with EXIF dates and counters; review each suggestion before applying the batch, and use Rename History to restore the original names if needed.
+The [AI photo renamer](/rename-photos-with-ai) supports HEIC, JPG, PNG, and supported RAW files. Combine an EXIF capture date with a content description in Naming Blocks, then review the suggestions.
+
+| Before | After (illustrative) |
+|---|---|
+| `DSCF4821.RAF` | `2026-08-11_Night-Market-Food-Stalls.RAF` |
+
+The date must come from the photo, not the download time. Keep sorting off to leave it in the same folder. Check a small batch and use Rename History if you need to restore the names.
 
 Test on a copied folder or exported images first. Rename before importing into a catalog where possible. Do not rename files inside a Photos library package, or rename originals tracked by another catalog without following that app's rename or relink workflow. The [photo renaming guide](/blog/how-to-rename-images-with-ai-on-macos) covers the filename step in detail.
 
-![Zush naming pattern editor combining AI titles, dates, and metadata for photo filenames](/images/showcase/macos/naming-light.webp)
+<img class="markdown-image markdown-image--screenshot" src="/images/showcase/macos/naming-light-960.webp" srcset="/images/showcase/macos/naming-light-640.webp 640w, /images/showcase/macos/naming-light-960.webp 960w, /images/showcase/macos/naming-light-1280.webp 1280w" sizes="(max-width: 768px) calc(100vw - 40px), 800px" width="960" height="540" loading="lazy" decoding="async" alt="Zush for Mac naming editor showing ordered Naming Blocks, language, and metadata preferences." />
+
+The actual naming editor on Mac. Choose Capture Date and AI Title for the photo pattern above; the screenshot shows an example setup, not a measured photo result.
 
 <BlogCTA
   placement='inline'
   platform='mac'
   title='Try descriptive filenames on a copied photo folder'
-  description='Preview AI photo names before applying them. Zush keeps files in their existing folders; it does not replace your photo library or backup. Start with 50 free renames, no signup.'
+  description='Download Zush, add copied or exported photos, choose your fields, and preview the batch. 50 free renames in total; no signup.'
 />
 
 ## Which Mac photo organizer should you choose?

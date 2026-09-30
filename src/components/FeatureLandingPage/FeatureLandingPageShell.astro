@@ -109,9 +109,9 @@ const relatedPageTitle = (href: string, fallback: string) =>
     client:visible
   />
 
-  {taskExample && <RenameTaskExample example={taskExample} />}
+  {taskExample && !(currentLocale === DEFAULT_LOCALE && ['/rename-pdf-with-ai', '/rename-audio-with-ai'].includes(currentRoute)) && <RenameTaskExample example={taskExample} />}
 
-  {landingWorkflow && <LandingWorkflow workflow={landingWorkflow} />}
+  {landingWorkflow && !(currentLocale === DEFAULT_LOCALE && currentRoute === '/rename-pdf-with-ai') && <LandingWorkflow workflow={landingWorkflow} />}
 
   {currentLocale === DEFAULT_LOCALE && ['/rename-pdf-with-ai', '/rename-videos-with-ai', '/rename-audio-with-ai'].includes(Astro.url.pathname) && (
     <TaskWorkflow category={category} />

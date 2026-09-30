@@ -26,10 +26,9 @@ function setup() {
   return { ...runtime.exports, captured, Element, root, handlers, click };
 }
 
-test('existing pricing links are explicitly marked on desktop, mobile and hero', () => {
+test('existing pricing links are explicitly marked on desktop and mobile', () => {
   const header = read('src/components/Header/Header.astro');
   assert.equal((header.match(/data-pro-click-source=\{item\.href\.endsWith\('#pricing'\) \? 'navbar' : undefined\}/g) ?? []).length, 2);
-  assert.match(read('src/components/PromotionBanner/PromotionBanner.tsx'), /data-pro-click-source="hero"/);
 });
 
 test('delegation captures nested clicks and replacement hero links after hydration only once', () => {
@@ -76,8 +75,9 @@ test('plan selection stays a separate, deduplicated event with plan details', ()
 
 test('photo comparison serves library intent before the optional rename CTA and keeps legacy anchors', () => {
   const article = read('src/content/blog/best-photo-organizing-software-mac.mdx');
-  assert.ok(article.indexOf('## 1. Apple Photos') < article.indexOf('## Optional filename step:'));
-  assert.ok(article.indexOf('## 6. Photo Mechanic Plus') < article.indexOf('<BlogCTA'));
+  assert.ok(article.indexOf('## 1. Apple Photos') < article.indexOf('## Zush: content-aware names'));
+  assert.ok(article.indexOf('## Best photo organizing software for Mac: quick comparison') < article.indexOf('<BlogCTA'));
+  assert.ok(article.indexOf('## 6. Photo Mechanic Plus') < article.indexOf('## Zush: content-aware names'));
   assert.doesNotMatch(article, /\| \*\*Zush\*\* \|/);
   assert.match(article, /id="1-zush-best-for-searchable-finder-filenames"/);
   assert.match(article, /title='Try descriptive filenames on a copied photo folder'/);

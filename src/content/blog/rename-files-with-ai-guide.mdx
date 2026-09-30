@@ -9,12 +9,12 @@ tags:
   - "AI File Renaming"
   - "File Organization"
 tldr: "Start with a small folder, choose a naming pattern and an AI mode, then review the suggested names before applying. Check unclear details and duplicate names, and keep rename history available so you can undo the batch."
-reviewed: "2026-09-24"
+reviewed: "2026-09-30"
 featuredOrder: 2
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: AI file renaming sends a file content (image pixels or document text) to a vision-or-language model that returns a descriptive filename. Drop files into [Zush](/), review suggestions in a preview, and apply with one click — no manual typing.
+**Quick answer:** AI file renaming uses image, document, or audio context to suggest a descriptive filename. In [Zush](/), choose Cloud AI, BYOK, or a local model, review the suggestions, then apply the names. Start with copies of a few files.
 
 Most files arrive with useless names. Screenshots get timestamps. Photos get camera codes. Downloads get hashes or sequence numbers. You end up with a folder full of files you cannot find without opening each one.
 
@@ -24,7 +24,6 @@ To choose which file details belong in a name, read [Rename Files by Content](/b
 
 If pricing, privacy, or high-volume usage is the deciding factor, read [BYOK AI File Renaming](/blog/byok-ai-file-renaming-unlimited) and [Cloud AI vs Local AI File Renaming](/blog/cloud-vs-local-ai-file-renaming) before choosing a setup.
 
-This guide covers what AI file renaming is, how it works, and how to apply it step by step without assuming you have already chosen a tool.
 
 
 <BlogProductIntro
@@ -103,7 +102,6 @@ Good tools show you a preview of the proposed names before applying them. You ca
 
 The best tools keep a rename history so you can revert any change. This matters when you are processing hundreds of files at once. Before using a real work folder, follow the [safe batch rename checklist](/blog/how-to-safely-batch-rename-files) for test batches, extension checks, collision review, and recovery.
 
-![Zush AI rename completed showing five files with before and after names and green checkmarks](/images/showcase/macos/batch-rename-light.webp)
 
 ## Best ways to rename files with AI
 
@@ -183,8 +181,8 @@ A tool that only handles JPG and PNG will miss half the files in a real desktop 
 
 You do not need to pay to start using AI for file renaming.
 
-- **Zush free tier.** 50 free renames at no cost. Enough to try the workflow and handle light ongoing use.
-- **Zush BYOK.** Bring your own API key from any supported provider and rename without the managed rename cap. You pay the provider's metered API cost, which depends on model, file size, prompt length, and token usage.
+- **Zush Free.** 50 renames in total, shared across Zush Cloud AI, BYOK, LM Studio, and Ollama. This allowance does not reset each month.
+- **BYOK within Zush.** Your own API key uses the same Free allowance. PRO removes the app limit; your provider bills API usage separately.
 - **DIY scripts.** If you have API access already, a Python script with the OpenAI vision API can rename images. No GUI, no undo, but free beyond API costs.
 
 For a deeper dive into free approaches, read [How to Rename Files with AI for Free in 2026](/blog/rename-files-with-ai-free).
@@ -193,7 +191,7 @@ For a deeper dive into free approaches, read [How to Rename Files with AI for Fr
 
 ### Does AI file renaming change my file contents?
 
-No. The file content is never modified. Only the filename changes. The file itself remains identical.
+Renaming changes the filename. Keep metadata options off if you also need the file contents to remain byte-for-byte identical; optional tags and file properties can write metadata.
 
 ### Is it safe for sensitive documents?
 

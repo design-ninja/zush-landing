@@ -188,3 +188,92 @@ const background = await getImage({
     </aside>
   )
 }
+
+<script>
+  import { bindStoreLink, bindStoreLinks } from '@/utils/storeLinks';
+
+  (() => {
+      const detectDownloadOS = () => {
+        try {
+          const preferred = window.localStorage.getItem('zush-preferred-os');
+          if (preferred === 'mac' || preferred === 'windows') return preferred;
+        } catch {}
+
+        const uaData = (navigator as Navigator & {
+          userAgentData?: { platform?: string };
+        }).userAgentData;
+        if (uaData?.platform) {
+          const platform = uaData.platform.toLowerCase();
+          if (platform.includes('win')) return 'windows';
+          if (platform.includes('mac')) return 'mac';
+        }
+
+        const ua = navigator.userAgent || '';
+        if (/Windows/i.test(ua)) return 'windows';
+        return 'mac';
+      };
+
+      const os = detectDownloadOS();
+
+      document
+        .querySelectorAll('[data-blog-cta-platform=\"general\"]')
+        .forEach((root) => {
+          root.setAttribute('data-blog-cta-os', os);
+
+          const title = root.querySelector('[data-blog-cta-title]');
+          if (title instanceof HTMLElement) {
+            title.textContent =
+              os === 'windows'
+                ? title.dataset.titleWindows || title.textContent
+                : title.dataset.titleMac || title.textContent;
+          }
+
+          const link = root.querySelector('[data-blog-cta-link]');
+          if (link instanceof HTMLAnchorElement) {
+            link.href =
+              os === 'windows'
+                ? link.dataset.hrefWindows || link.href
+                : link.dataset.hrefMac || link.href;
+
+            if (os === 'windows' && link.dataset.storeAppUrlWindows) {
+              link.dataset.storeOs = 'windows';
+              link.dataset.storeAppUrl = link.dataset.storeAppUrlWindows;
+              link.dataset.downloadOs = 'windows';
+              link.dataset.downloadChannel = 'microsoft-store';
+              link.target = '_blank';
+              link.rel = 'noopener noreferrer';
+              bindStoreLink(link);
+            } else {
+              delete link.dataset.storeOs;
+              delete link.dataset.storeAppUrl;
+              link.dataset.downloadOs = 'mac';
+              link.dataset.downloadChannel = 'direct';
+              link.removeAttribute('target');
+              link.removeAttribute('rel');
+            }
+          }
+
+          const hint = root.querySelector('[data-blog-cta-hint]');
+          if (hint instanceof HTMLElement) {
+            hint.textContent =
+              os === 'windows'
+                ? hint.dataset.hintWindows || hint.textContent
+                : hint.dataset.hintMac || hint.textContent;
+          }
+
+          const macIcon = root.querySelector('[data-blog-cta-icon=\"mac\"]');
+          const windowsIcon = root.querySelector('[data-blog-cta-icon=\"windows\"]');
+
+          if (macIcon instanceof HTMLElement) {
+            macIcon.hidden = os === 'windows';
+          }
+
+          if (windowsIcon instanceof HTMLElement) {
+            windowsIcon.hidden = os !== 'windows';
+          }
+        });
+
+      bindStoreLinks();
+
+  })();
+</script>

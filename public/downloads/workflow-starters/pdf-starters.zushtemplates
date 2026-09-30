@@ -1,0 +1,82 @@
+{
+  "format": "com.zush.templates",
+  "version": 1,
+  "templates": [
+    {
+      "id": "b5e5bfa7-7fc9-4d77-bfb4-199d220f3457",
+      "name": "PDF invoice date, vendor and number",
+      "description": "Zush website starter. Test copies and review every field.",
+      "icon": "receipt",
+      "color": "purple",
+      "settings": {
+        "namingPattern": "{invoice_date}_{vendor}_{invoice_number}",
+        "namingPatternBlocks": [
+          {
+            "kind": "variable",
+            "value": "{invoice_date}"
+          },
+          {
+            "kind": "variable",
+            "value": "{vendor}",
+            "separatorBefore": "_"
+          },
+          {
+            "kind": "variable",
+            "value": "{invoice_number}",
+            "separatorBefore": "_"
+          }
+        ],
+        "namingCaseStyle": "kebab",
+        "namingWordSeparator": "-",
+        "namingBlockSeparator": "_",
+        "dateFormat": "yyyy-MM-dd",
+        "outputLanguage": "en",
+        "addMetadataTags": false,
+        "addFilePropertiesMetadata": false,
+        "renamePrompt": "Use the printed invoice issue date, vendor and invoice number. Do not use the due date or download date. Keep identifiers as written. Omit missing fields; do not guess.",
+        "tagPrompt": "",
+        "folderSorting": {
+          "enabled": false,
+          "prompt": "",
+          "reusesExistingFolders": false
+        }
+      }
+    },
+    {
+      "id": "d32cb575-a55d-4df4-bdc8-06028c856c9a",
+      "name": "PDF document date and title",
+      "description": "Zush website starter. Test copies and review every field.",
+      "icon": "document",
+      "color": "purple",
+      "settings": {
+        "namingPattern": "{document_date}_{title}",
+        "namingPatternBlocks": [
+          {
+            "kind": "variable",
+            "value": "{document_date}"
+          },
+          {
+            "kind": "variable",
+            "value": "{title}",
+            "separatorBefore": "_"
+          }
+        ],
+        "namingCaseStyle": "kebab",
+        "namingWordSeparator": "-",
+        "namingBlockSeparator": "_",
+        "dateFormat": "yyyy-MM-dd",
+        "outputLanguage": "en",
+        "addMetadataTags": false,
+        "addFilePropertiesMetadata": false,
+        "renamePrompt": "Use the document date and a short descriptive title from the document content. Ignore generic PDF metadata titles and running headers. Omit a date if absent. Do not guess missing information.",
+        "tagPrompt": "",
+        "folderSorting": {
+          "enabled": false,
+          "prompt": "",
+          "reusesExistingFolders": false
+        }
+      }
+    }
+  ],
+  "customFields": []
+}
