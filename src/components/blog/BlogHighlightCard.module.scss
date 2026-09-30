@@ -83,9 +83,15 @@
   &__Meta {
     display: flex;
     align-items: center;
-    gap: 0.4rem;
+    flex-wrap: wrap;
+    gap: 0.1rem 0.4rem;
     color: var(--muted-foreground);
     font-size: 0.8rem;
-    white-space: nowrap;
+
+    // Long localized dates ("22 de septiembre de 2026") must wrap as whole
+    // items instead of pushing the card past a phone viewport.
+    > * {
+      white-space: nowrap;
+    }
   }
 }

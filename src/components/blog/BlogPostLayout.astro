@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import { render } from 'astro:content';
-import { Calendar, Glasses, Languages } from 'lucide-react';
+import { BadgeCheck, Calendar, Glasses, Languages, Star } from 'lucide-react';
 import BaseLayout, { type AlternateLink } from '@/layouts/BaseLayout.astro';
 import BlogBreadcrumbs from '@/components/blog/BlogBreadcrumbs.astro';
 import RenameTaskExample from '@/components/RenameTaskExample/RenameTaskExample.astro';
@@ -190,10 +190,12 @@ const breadcrumbItems = [
       {post.topic === 'comparisons' && (
         <aside class={styles.BlogPost__Evidence}>
           <a href={SOFTPEDIA_REVIEW_URL} rel='noopener noreferrer' target='_blank'>
-            {copy.independentEvidence}
+            <BadgeCheck aria-hidden='true' size={16} strokeWidth={2} />
+            <span>{copy.independentEvidence}</span>
           </a>
           <a href={WINDOWS_STORE_US_URL} rel='noopener noreferrer external' target='_blank' lang='en-US'>
-            {copy.microsoftStoreEvidence}
+            <Star aria-hidden='true' size={16} strokeWidth={2} />
+            <span>{copy.microsoftStoreEvidence}</span>
           </a>
         </aside>
       )}

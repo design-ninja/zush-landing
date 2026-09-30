@@ -114,7 +114,12 @@ const relatedPageTitle = (href: string, fallback: string) =>
   {landingWorkflow && !(currentLocale === DEFAULT_LOCALE && currentRoute === '/rename-pdf-with-ai') && <LandingWorkflow workflow={landingWorkflow} />}
 
   {currentLocale === DEFAULT_LOCALE && ['/rename-pdf-with-ai', '/rename-videos-with-ai', '/rename-audio-with-ai'].includes(Astro.url.pathname) && (
-    <TaskWorkflow category={category} />
+    <TaskWorkflow
+      category={category}
+      forceOS={forceOS}
+      downloadLabel={currentCopy.header.download}
+      downloadMenu={currentCopy.downloadMenu}
+    />
   )}
 
   {showPdfScenariosEarly && <PdfScenarios copy={pdfDeepDive} locale={currentLocale} showReviewNote />}

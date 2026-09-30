@@ -1,0 +1,369 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.TaskWorkflow {
+  scroll-margin-top: calc($navbar-height + 1rem);
+
+  a:not([class]) {
+    color: var(--primary);
+    font-weight: var(--font-weight-link);
+    text-underline-offset: 0.2em;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  // File tile colour per category; PDF keeps the shared red tone.
+  [data-tone='audio'] {
+    --file-preview-color: var(--tone-pink-fg);
+  }
+
+  [data-tone='video'] {
+    --file-preview-color: var(--tone-blue-fg);
+  }
+}
+
+// Steps — same hairline cards as the "Choose where AI runs" band.
+.Steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+
+  @include tablet {
+    gap: 1rem;
+  }
+
+  @include small {
+    grid-template-columns: 1fr;
+  }
+}
+
+.Step {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+  padding: 1.75rem;
+  border: $border-width-hairline solid var(--border);
+  border-radius: 1.75rem;
+
+  @include mobile {
+    padding: 1.25rem;
+    border-radius: $radius-xl;
+  }
+
+  // One column of stacked cards gets tall on phones: put the number beside
+  // the title instead of above it.
+  @include small {
+    display: grid;
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    column-gap: 1rem;
+    row-gap: 0.4rem;
+    align-items: center;
+  }
+
+  &__Number {
+    @include icon-wrapper(2.5rem);
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__Title {
+    margin: 0.25rem 0 0;
+
+    @include small {
+      margin: 0;
+    }
+  }
+
+  &__Text {
+    margin: 0;
+    color: var(--muted-foreground);
+    font-size: 0.9rem;
+    line-height: 1.6;
+
+    @include small {
+      grid-column: 2;
+    }
+  }
+}
+
+// Example + downloads + screenshot share one muted panel.
+.Demo {
+  display: grid;
+  gap: 2rem;
+  max-width: 50rem;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: $radius-xl;
+
+  @include mobile {
+    padding: 1.25rem;
+    gap: 1.5rem;
+  }
+
+  &_withMedia {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    align-items: center;
+    max-width: none;
+    gap: 2.5rem;
+
+    @include tablet {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  &__Main {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-width: 0;
+  }
+
+  &__Media {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    min-width: 0;
+    margin: 0;
+  }
+}
+
+.Example {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  // The shared file row is sized for one-line names; let long patterns wrap.
+  > div {
+    align-items: flex-start;
+  }
+
+  &__Names {
+    display: grid;
+    gap: 0.15rem;
+    min-width: 0;
+    flex: 1;
+  }
+
+  &__Label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--muted-foreground);
+
+    &:nth-of-type(2) {
+      margin-top: 0.5rem;
+    }
+  }
+
+  &__Before,
+  &__After {
+    font-family: $font-mono;
+    overflow-wrap: anywhere;
+    line-height: 1.45;
+  }
+
+  &__Before {
+    font-size: 0.78rem;
+    color: var(--muted-foreground);
+    text-decoration: line-through;
+  }
+
+  &__After {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--foreground);
+  }
+}
+
+.Caption {
+  margin: 0;
+  color: var(--muted-foreground);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+
+  strong {
+    color: var(--foreground);
+    font-weight: 600;
+  }
+}
+
+.Downloads {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  &__Buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+}
+
+.TaskWorkflow__Button {
+  @include small {
+    flex: 1 1 100%;
+  }
+}
+
+.Screenshot {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: $radius-md;
+  background: var(--card);
+  cursor: zoom-in;
+
+  :global(.organization-screenshot) img {
+    border-radius: 0;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+  }
+}
+
+// Notes column: limit, recorded result (FAQ-style disclosure), guide link.
+.Notes {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 50rem;
+  margin: 2.5rem auto 0;
+
+  &__Limit {
+    margin: 0;
+    color: var(--muted-foreground);
+    font-size: 0.9rem;
+    line-height: 1.65;
+    text-align: center;
+  }
+
+  &__Guide {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.Result {
+  background: var(--card);
+  outline: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: outline 0.3s ease;
+
+  &:not([open]):hover {
+    @include card-hover-outline(var(--primary-soft));
+  }
+
+  &[open] {
+    outline: 3px solid var(--primary);
+  }
+
+  &__Summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    list-style: none;
+    color: var(--foreground);
+    font-weight: 600;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: -2px;
+      border-radius: 16px;
+    }
+  }
+
+  &__Icon {
+    flex-shrink: 0;
+    color: var(--muted-foreground);
+    transition: transform 0.3s ease;
+
+    .Result[open] & {
+      transform: rotate(180deg);
+      color: var(--primary);
+    }
+  }
+
+  &__Body {
+    display: grid;
+    gap: 1rem;
+    padding: 0 1.5rem 1.5rem;
+    color: var(--muted-foreground);
+    font-size: 0.9rem;
+    line-height: 1.6;
+
+    p {
+      margin: 0;
+    }
+
+    @include mobile {
+      padding: 0 1.25rem 1.25rem;
+    }
+  }
+
+  // Compact key/value rows instead of nested boxes.
+  &__Facts {
+    display: grid;
+    margin: 0;
+    border-top: 1px solid var(--border);
+
+    > div {
+      display: grid;
+      grid-template-columns: 7rem minmax(0, 1fr);
+      gap: 1rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+
+      @include small {
+        grid-template-columns: 1fr;
+        gap: 0.1rem;
+      }
+    }
+
+    dt {
+      color: var(--muted-foreground);
+      font-size: 0.8125rem;
+    }
+
+    dd {
+      margin: 0;
+      min-width: 0;
+      color: var(--foreground);
+      overflow-wrap: anywhere;
+    }
+
+    code {
+      font-family: $font-mono;
+      font-size: 0.85rem;
+    }
+  }
+
+  &__Note {
+    font-size: 0.8125rem;
+  }
+}
+
+// The shared DownloadCTA section (2rem top padding) follows directly;
+// trim the bottom padding so the gap matches the rest of the page.
+.TaskWorkflow[data-has-cta] {
+  padding-bottom: 1.5rem;
+}

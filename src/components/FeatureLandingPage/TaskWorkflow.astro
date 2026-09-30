@@ -1,9 +1,17 @@
 ---
-import BlogCTA from '@/components/blog/BlogCTA.astro';
+import { AudioLines, ChevronDown, Download, FileArchive, FileType2, Film } from 'lucide-react';
+import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
+import Heading from '@/components/Heading';
+import PillLink from '@/components/PillLink';
 import ThemedScreenshot from '@/components/OrganizationFeatures/ThemedScreenshot.astro';
+import buttonStyles from '@/components/Button/Button.module.scss';
 import type { FeatureCategory } from '@/data/featureContent';
-interface Props { category: FeatureCategory }
-const { category } = Astro.props;
+import landingStyles from './FeatureLandingPage.module.scss';
+import styles from './TaskWorkflow.module.scss';
+import type { DownloadMenuCopy } from '@/i18n/copy';
+import type { DownloadOS } from '@/utils/download';
+interface Props { category: FeatureCategory; forceOS?: DownloadOS; downloadLabel?: string; downloadMenu?: DownloadMenuCopy }
+const { category, forceOS, downloadLabel, downloadMenu } = Astro.props;
 const workflows = {
   pdf: {
     title: 'From a downloaded PDF to a name you can find',
@@ -16,7 +24,7 @@ const workflows = {
     pattern: '2026-08-18_northstar-studio_ns-1042.pdf',
     caption: 'Example pattern: issue date, vendor and invoice number. Verify each field against the PDF. This is an illustrative target, not a measured result.',
     testedInput: 'file_001.pdf',
-    testedOutput: 'Счет NS-1042 От Northstar Studio.pdf',
+    testedResult: 'Invoice NS-1042 from Northstar Studio',
     testedContext: 'A fictional invoice for Northstar Studio, number NS-1042. The recorded suggestion kept the vendor and invoice number; it did not include the invoice date.',
     limit: 'Do not treat an inferred date or number as a verified accounting field. Poor scans and missing information can produce incomplete suggestions. Renaming changes the filename, not the PDF contents.',
     guide: '/blog/automatically-rename-invoices-ai',
@@ -33,7 +41,7 @@ const workflows = {
     pattern: 'Product-Demo_Batch-Rename-Preview.mp4',
     caption: 'Illustrative naming pattern for a software demo. A sampled frame is context, not a transcript of the entire video.',
     testedInput: 'file_008.mp4',
-    testedOutput: 'Демонстрация Работы Приложения AI Rename.mp4',
+    testedResult: 'AI Rename application demo',
     testedContext: 'An existing Zush demo showing the batch rename interface. The recorded name describes an AI Rename application demonstration.',
     limit: 'A short scene can be missed between sampled frames. Names do not guarantee full-video understanding. Renaming source media can break links in editing projects; verify or relink those projects after a rename.',
     guide: '/blog/rename-video-files-with-ai',
@@ -50,7 +58,7 @@ const workflows = {
     pattern: 'autumn-product-launch.wav',
     caption: 'Illustrative topic from the spoken sample. Exact names can vary. The separate FLAC sample tests embedded artist/title tags, not song recognition.',
     testedInput: 'file_007.wav',
-    testedOutput: 'Обсуждение Осеннего Запуска Продукта.wav',
+    testedResult: 'Autumn product launch discussion',
     testedContext: 'An 11.49-second synthetic spoken recording about an autumn product launch. The recorded name describes that discussion.',
     limit: 'Noise, missing tags, unsupported transcription paths, or unclear speech can limit the result. AI may not identify a speaker or song reliably. Changing filenames does not rewrite audio tags or repair links in playlists and editing projects.',
     guide: '/blog/rename-audio-files-with-ai',
@@ -60,137 +68,142 @@ const workflows = {
 const workflow = workflows[category as keyof typeof workflows];
 const starter = category === 'pdf' || category === 'audio' ? category : undefined;
 const starterRoot = '/downloads/workflow-starters';
+const starterLabel = starter === 'pdf' ? 'PDF' : 'audio';
+const FileIcon = category === 'audio' ? AudioLines : category === 'video' ? Film : FileType2;
+const fileBadge = category === 'audio' ? 'WAV' : category === 'video' ? 'MP4' : 'PDF';
+const beforeName = starter === 'pdf' ? 'scan_001.pdf' : starter === 'audio' ? 'voice_memo_042.wav' : workflow?.testedInput;
+const buttonClass = (variant: 'primary' | 'ghost') =>
+  [buttonStyles.Button, buttonStyles[`Button_${variant}`], buttonStyles.Button_md, styles.TaskWorkflow__Button].join(' ');
 ---
 {workflow && (
-  <section class="task-workflow" id={starter ? `try-${starter}` : undefined} aria-labelledby="task-workflow-title">
-    <header class="workflow-heading">
-      <p class="eyebrow">{starter ? 'Try it with sample files' : 'A simple workflow'}</p>
-      <h2 id="task-workflow-title">{workflow.title}</h2>
-      <p class="intro">{workflow.intro}</p>
-    </header>
+  <section
+    class:list={[landingStyles.Section, styles.TaskWorkflow]}
+    id={starter ? `try-${starter}` : undefined}
+    aria-labelledby="task-workflow-title"
+    data-category={category}
+    data-has-cta={starter ? '' : undefined}
+  >
+    <div class={landingStyles.Section__Container}>
+      <header class={landingStyles.PdfDeepDive__Header}>
+        <p class={landingStyles.PdfDeepDive__Eyebrow}>{starter ? 'Try it with sample files' : 'How it works'}</p>
+        <Heading as="h2" align="center" id="task-workflow-title">{workflow.title}</Heading>
+        <p class={landingStyles.PdfDeepDive__Intro}>{workflow.intro}</p>
+      </header>
 
-    <ol class="workflow-steps" role="list">
-      {workflow.steps.map(([title, text], index) => (
-        <li>
-          <span class="step-number" aria-hidden="true">0{index + 1}</span>
-          <h3>{title}</h3>
-          <p>{text}</p>
-        </li>
-      ))}
-    </ol>
+      <ol class={styles.Steps} role="list">
+        {workflow.steps.map(([title, text], index) => (
+          <li class={styles.Step}>
+            <span class={styles.Step__Number} aria-hidden="true">{index + 1}</span>
+            <Heading as="h3" size="h4" className={styles.Step__Title}>{title}</Heading>
+            <p class={styles.Step__Text}>{text}</p>
+          </li>
+        ))}
+      </ol>
 
-    <div class:list={['workflow-demo', { 'workflow-demo-with-media': starter }]}>
-      <div class="workflow-example">
-        <figure class="filename-example">
-          <div class="filename-row"><span>Before</span><code>{starter === 'pdf' ? 'scan_001.pdf' : starter === 'audio' ? 'voice_memo_042.wav' : workflow.testedInput}</code></div>
-          <div class="filename-row filename-result"><span>Example result</span><code>{workflow.pattern}</code></div>
-          <figcaption>{workflow.caption}</figcaption>
-        </figure>
-        {starter && <>
-          <div class="starter-downloads">
-            <a class="download-primary" href={`${starterRoot}/${starter}-starters.zushtemplates`} download aria-label={`Download ${starter === 'pdf' ? 'PDF' : 'audio'} Templates`}>
-              <span>Download Templates <span aria-hidden="true">↓</span></span>
-              <small>2 Templates · .zushtemplates</small>
-            </a>
-            <a href={`${starterRoot}/${starter}-examples.zip`} download>
-              <span>Download sample files <span aria-hidden="true">↓</span></span>
-              <small>2 synthetic files · ZIP</small>
-            </a>
-          </div>
-          <p class="starter-note">Mac 3.13+ · Windows 3.10+. English output; sorting and metadata writing off.{starter === 'audio' && ' Speech analysis depends on your AI mode.'} <a href={`${starterRoot}/README.md`}>Setup and sample details</a>.</p>
-        </>}
-      </div>
-      {starter && <figure class="import-figure">
-        <a class="screenshot-link" href="/images/showcase/macos/template-transfer-light-1920.webp" target="_blank" rel="noopener noreferrer" aria-label="Open the full Mac import screenshot">
-          <ThemedScreenshot id="template-transfer" alt="Zush for Mac Templates menu with Import Templates and Export All Templates." />
-        </a>
-        <figcaption><strong>Import once, reuse the Template.</strong> The Mac Templates menu is shown here. Windows has its own import action. <a href="/docs/template-import-export">Import instructions</a>.</figcaption>
-      </figure>}
-    </div>
+      <div class:list={[styles.Demo, { [styles.Demo_withMedia]: starter }]}>
+        <div class={styles.Demo__Main}>
+          <figure class={styles.Example}>
+            <div class={landingStyles.PdfFileItem}>
+              <div class={landingStyles.PdfFileItem__Preview} data-tone={category} aria-hidden="true">
+                <FileIcon size={24} strokeWidth={2.2} />
+                <span class={landingStyles.PdfFileItem__Badge}>{fileBadge}</span>
+              </div>
+              <div class={styles.Example__Names}>
+                <span class={styles.Example__Label}>Before</span>
+                <code class={styles.Example__Before}>{beforeName}</code>
+                <span class={styles.Example__Label}>Example result</span>
+                <code class={styles.Example__After}>{workflow.pattern}</code>
+              </div>
+            </div>
+            <figcaption class={styles.Caption}>{workflow.caption}</figcaption>
+          </figure>
 
-    <div class="workflow-notes">
-      <p class="limits">{workflow.limit}</p>
-      <details class="test-result">
-        <summary><span>See a recorded test result</span><span class="disclosure-icon" aria-hidden="true">+</span></summary>
-        <div class="test-result-body">
-          <p>{workflow.testedContext}</p>
-          <div class="recorded-filenames"><code>{workflow.testedInput}</code><span aria-hidden="true">↓</span><code lang="ru">{workflow.testedOutput}</code></div>
-          <p><strong>Test setup:</strong> September 5, 2026 · Zush 3.11.0 for Mac · Cloud AI · Smart Title Name template, with Russian output.</p>
-          <p>The file contents stayed byte-for-byte identical. This small test is not an accuracy guarantee; it did not test custom field extraction{starter ? ' or the new starter Templates' : ''}.</p>
-          <p>Adjust the fields with <a href="/docs/naming-blocks">Naming Blocks</a> and <a href="/docs/templates">Templates</a>. <a href="/benchmarks/ai-file-renamer-pilot-2026-09-05/README.md">Read the full test setup and results</a>.</p>
+          {starter && (
+            <div class={styles.Downloads}>
+              <div class={styles.Downloads__Buttons}>
+                <a
+                  class={buttonClass('primary')}
+                  href={`${starterRoot}/${starter}-starters.zushtemplates`}
+                  download
+                  aria-label={`Download ${starterLabel} Templates (2 Templates, .zushtemplates)`}
+                >
+                  <Download size={18} aria-hidden="true" />
+                  <span>Download Templates</span>
+                </a>
+                <a
+                  class={buttonClass('ghost')}
+                  href={`${starterRoot}/${starter}-examples.zip`}
+                  download
+                  aria-label="Download sample files (2 synthetic files, ZIP)"
+                >
+                  <FileArchive size={18} aria-hidden="true" />
+                  <span>Sample files</span>
+                </a>
+              </div>
+              <p class={styles.Caption}>
+                2 Templates (.zushtemplates) and 2 synthetic files (ZIP). Mac 3.13+ · Windows 3.10+. English output; sorting and metadata writing off.{starter === 'audio' && ' Speech analysis depends on your AI mode.'}{' '}
+                <a href={`${starterRoot}/README.md`}>Setup and sample details</a>
+              </p>
+            </div>
+          )}
         </div>
-      </details>
-      <a class="workflow-guide" href={workflow.guide}>{workflow.label} <span aria-hidden="true">→</span></a>
+
+        {starter && (
+          <figure class={styles.Demo__Media}>
+            <a
+              class={styles.Screenshot}
+              href="/images/showcase/macos/template-transfer-light-1920.webp"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open the full Mac import screenshot"
+            >
+              <ThemedScreenshot id="template-transfer" zoom alt="Zush for Mac Templates menu with Import Templates and Export All Templates." />
+            </a>
+            <figcaption class={styles.Caption}>
+              <strong>Import once, reuse the Template.</strong> The Mac Templates menu is shown here; Windows has its own import action.{' '}
+              <a href="/docs/template-import-export">Import instructions</a>
+            </figcaption>
+          </figure>
+        )}
+      </div>
+
+      <div class={styles.Notes}>
+        <p class={styles.Notes__Limit}>{workflow.limit}</p>
+
+        <details class={styles.Result}>
+          <summary class={styles.Result__Summary}>
+            <span>See a recorded test result</span>
+            <ChevronDown size={20} className={styles.Result__Icon} aria-hidden="true" />
+          </summary>
+          <div class={styles.Result__Body}>
+            <p>{workflow.testedContext}</p>
+            <dl class={styles.Result__Facts}>
+              <div><dt>File</dt><dd><code>{workflow.testedInput}</code></dd></div>
+              <div><dt>Named as</dt><dd>{workflow.testedResult}</dd></div>
+              <div><dt>Setup</dt><dd>Sept 5, 2026 · Zush 3.11.0 for Mac · Cloud AI · Smart Title Name</dd></div>
+              <div><dt>Contents</dt><dd>Unchanged, byte-for-byte</dd></div>
+            </dl>
+            <p class={styles.Result__Note}>
+              The test used a non-English output language; the name is translated here. A small test, not an accuracy guarantee{starter ? '; the starter Templates were not part of it' : ''}.{' '}
+              <a href="/benchmarks/ai-file-renamer-pilot-2026-09-05/README.md">Full test setup and results</a>
+            </p>
+          </div>
+        </details>
+
+        <div class={styles.Notes__Guide}>
+          <PillLink href={workflow.guide} withArrow>{workflow.label}</PillLink>
+        </div>
+      </div>
+
     </div>
-    {starter && <div class="workflow-cta"><BlogCTA placement="inline" platform="general" title={`Try the ${starter === 'pdf' ? 'PDF' : 'audio'} workflow in Zush`} description="Import a starter Template and preview the sample names. Free includes 50 renames in total across all AI modes; PRO removes the app limit." /></div>}
   </section>
 )}
-<style>
-  .task-workflow { width: min(1080px, calc(100% - 3rem)); margin: 4rem auto 5rem; }
-  .workflow-heading { max-width: 42rem; margin-bottom: 2.25rem; }
-  .eyebrow { margin: 0 0 .75rem; color: var(--primary); font-size: .8rem; font-weight: 600; }
-  h2 { margin: 0; font-size: clamp(1.65rem, 3vw, 2.2rem); line-height: 1.2; text-wrap: balance; letter-spacing: -.025em; }
-  p, figcaption { color: var(--muted-foreground); line-height: 1.65; }
-  .intro { margin: 1rem 0 0; max-width: 62ch; }
-  .workflow-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; padding: 0; margin: 0 0 2.5rem; list-style: none; }
-  .workflow-steps li { min-width: 0; padding-top: 1rem; border-top: 1px solid var(--border); }
-  .step-number { display: block; margin-bottom: .75rem; color: var(--primary); font-size: .8rem; font-weight: 600; font-variant-numeric: tabular-nums; }
-  h3 { font-size: 1rem; line-height: 1.4; margin: 0 0 .5rem; }
-  .workflow-steps p { margin: 0; font-size: .925rem; }
-  .workflow-demo { max-width: 46rem; }
-  .workflow-demo-with-media { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2.5rem; align-items: start; max-width: none; }
-  .workflow-example, .import-figure { min-width: 0; }
-  figure { margin: 0; }
-  .filename-example { border: 1px solid var(--border); border-radius: 1rem; overflow: hidden; background: var(--card); }
-  .filename-row { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); align-items: baseline; gap: .75rem; padding: 1.1rem 1.25rem; }
-  .filename-row > span { color: var(--muted-foreground); font-size: .75rem; line-height: 1.5; }
-  .filename-result { background: var(--primary-soft); border-block: 1px solid var(--border); }
-  code { font-family: var(--font-mono); font-size: .85rem; line-height: 1.6; overflow-wrap: anywhere; color: var(--foreground); }
-  figcaption { font-size: .8rem; }
-  .filename-example figcaption { padding: 1rem 1.25rem; margin: 0; }
-  .starter-downloads { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin-top: 1.25rem; }
-  .starter-downloads a { display: flex; flex-direction: column; justify-content: center; gap: .35rem; min-height: 5rem; border: 1px solid var(--border); border-radius: .75rem; padding: .85rem 1rem; background: var(--card); color: var(--foreground); font-size: .8rem; font-weight: 600; text-decoration: none; transition: background-color .15s, border-color .15s; }
-  .starter-downloads a > span { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
-  .starter-downloads small { font-size: .7rem; font-weight: 400; opacity: .8; }
-  .starter-downloads .download-primary { background: var(--primary); border-color: var(--primary); color: white; }
-  .starter-downloads a:hover { border-color: var(--primary); background: var(--muted); }
-  .starter-downloads .download-primary:hover { background: var(--primary-hover); }
-  a { color: var(--primary); text-underline-offset: .2em; }
-  a:hover { text-decoration: underline; }
-  a:focus-visible, summary:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; }
-  .starter-note { font-size: .78rem; margin: 1rem 0 0; }
-  .screenshot-link { display: block; overflow: hidden; border: 1px solid var(--border); border-radius: 1rem; cursor: zoom-in; }
-  .import-figure figcaption { margin-top: .75rem; max-width: 54ch; }
-  .import-figure strong { color: var(--foreground); font-weight: 600; }
-  .workflow-notes { max-width: 46rem; margin-top: 2rem; }
-  .limits { font-size: .875rem; margin: 0 0 1.25rem; }
-  .test-result { border-block: 1px solid var(--border); }
-  summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; cursor: pointer; padding: 1rem 0; font-size: .9rem; font-weight: 600; list-style: none; }
-  summary::-webkit-details-marker { display: none; }
-  .disclosure-icon { font-size: 1.2rem; color: var(--muted-foreground); }
-  details[open] .disclosure-icon { transform: rotate(45deg); }
-  .test-result-body { padding: .25rem 0 1.25rem; font-size: .875rem; }
-  .test-result-body p { margin: 0 0 1rem; }
-  .test-result-body p:last-child { margin: 0; }
-  .recorded-filenames { display: grid; gap: .35rem; padding: 1rem; margin-bottom: 1rem; background: var(--muted); border-radius: .65rem; }
-  .recorded-filenames > span { color: var(--muted-foreground); }
-  .workflow-guide { display: inline-flex; align-items: center; gap: .5rem; margin-top: 1.25rem; font-size: .875rem; font-weight: 600; }
-  .workflow-cta { max-width: 46rem; margin-top: 2rem; }
-  @media (max-width: 800px) {
-    .task-workflow { margin-block: 2.5rem 3.5rem; }
-    .workflow-demo-with-media { grid-template-columns: 1fr; gap: 1.5rem; }
-    .import-figure { max-width: 36rem; }
-    .workflow-steps { gap: 1.25rem; }
-  }
-  @media (max-width: 600px) {
-    .workflow-heading { margin-bottom: 1.5rem; }
-    .workflow-steps { grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1.75rem; }
-    .workflow-steps li { display: grid; grid-template-columns: 1.75rem minmax(0, 1fr); column-gap: .75rem; }
-    .step-number { grid-row: span 2; padding-top: .1rem; }
-    .workflow-steps p { grid-column: 2; }
-    .filename-row { grid-template-columns: 1fr; gap: .35rem; padding: 1rem; }
-    .filename-example figcaption { padding: 1rem; }
-    .starter-downloads { grid-template-columns: 1fr; }
-    .starter-downloads a { min-height: 4.25rem; font-size: .875rem; }
-  }
-</style>
+{workflow && starter && (
+  <DownloadCTA
+    forceOS={forceOS}
+    title={`Try the ${starterLabel} workflow in Zush`}
+    subtitle="Import a starter Template and preview the sample names. Free includes 50 renames in total across all AI modes; PRO removes the app limit."
+    downloadLabel={downloadLabel}
+    downloadMenu={downloadMenu}
+  />
+)}
