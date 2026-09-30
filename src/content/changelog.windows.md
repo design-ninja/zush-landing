@@ -1,5 +1,21 @@
 # Changelog
 
+## [3.10.2.0] - 2026-09-30
+
+### Improved
+- Folder sorting errors now name your AI provider and explain how to fix account issues such as exhausted credits or an invalid API key.
+- When your AI provider account has no credits left, the error appears right away instead of after several retries.
+- The checkout window stays open through brief slowdowns instead of switching to your browser.
+- A message now explains when the selected or dropped files contain no supported formats.
+- Dropping a folder whose supported files are only in subfolders now offers to add them.
+
+### Fixed
+- Folder monitoring waits for files that are still being written, such as scans or printed PDFs, instead of processing them while they are empty.
+- Dropping a file together with the folder that contains it no longer shows the batch limit warning.
+- The drop area no longer calls files unsupported when the batch is busy or full.
+- Fixed an error that could occur when monitoring settings changed while the app was starting.
+
+
 ## [3.10.1.0] - 2026-09-28
 
 ### Improved
