@@ -14,18 +14,24 @@ test('adapter resolves only the installed Astro React renderer dependency', () =
   assert.equal(plugin.resolveId('react-dom/server', renderer), null);
 });
 
-function setup({ capture = true } = {}) {
+function setup({ capture = true, microsoftMarker = true, sourceLang = null, islandHtml = {} } = {}) {
   const events = [];
   const reported = [];
   let rootOptions;
   const root = {};
   const document = {
-    documentElement: { lang: 'ja', classList: { contains: () => false } },
-    querySelector: () => ({}),
+    documentElement: {
+      lang: 'ja',
+      classList: { contains: (name) => name === document.googleClass },
+      getAttribute: (name) => (name === 'data-source-lang' ? sourceLang : null),
+    },
+    querySelector: () => (microsoftMarker ? {} : null),
   };
   class Element {
     ownerDocument = document;
+    textContent = islandHtml.text ?? '  Download\n  for Mac ';
     closest() { return this; }
+    querySelector(selector) { return selector === 'font' && islandHtml.font ? {} : null; }
     getAttribute(name) { return { 'component-url': '/_astro/DownloadButton.js', 'component-export': 'default', client: 'idle' }[name]; }
   }
   const source = readFileSync(new URL('../../src/utils/reactHydrationClient.ts', import.meta.url), 'utf8');
@@ -71,4 +77,37 @@ test('missing analytics retains default error reporting and an existing callback
   harness.getOptions().onRecoverableError(error, {});
   assert.deepEqual(handled, [error]);
   assert.equal(harness.reported.length, 1);
+});
+
+const mismatch = () => new Error('Minified React error #418; visit https://react.dev/errors/418');
+
+test('mismatches from page translation are not reported, but an existing callback still runs', () => {
+  for (const options of [
+    { islandHtml: { font: true } },
+    { sourceLang: 'en' },
+    { googleClass: 'translated-ltr' },
+    {},
+  ]) {
+    const harness = setup({ microsoftMarker: false, ...options });
+    if (options.googleClass) harness.document.googleClass = options.googleClass;
+    if (options.sourceLang) harness.document.documentElement.lang = 'zh-TW';
+    const handled = [];
+    harness.hydrateRoot(harness.container, null, { onRecoverableError: (e) => handled.push(e) });
+    const hints = options.islandHtml || options.sourceLang || options.googleClass;
+    harness.getOptions().onRecoverableError(mismatch(), {});
+    assert.equal(harness.events.length, hints ? 0 : 1);
+    assert.equal(handled.length, 1);
+  }
+});
+
+test('an unexplained mismatch carries the island text sample and lang state', () => {
+  const harness = setup({ microsoftMarker: false, sourceLang: 'en' });
+  harness.document.documentElement.lang = 'en';
+  harness.hydrateRoot(harness.container, null);
+  harness.getOptions().onRecoverableError(mismatch(), {});
+  const { properties } = harness.events[0].detail;
+  assert.equal(properties.hydration_island_text_sample, 'Download for Mac');
+  assert.equal(properties.hydration_island_font_marker, false);
+  assert.equal(properties.hydration_document_lang_changed, false);
+  assert.equal(harness.reported.length, 0);
 });

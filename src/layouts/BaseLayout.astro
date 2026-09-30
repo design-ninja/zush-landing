@@ -134,10 +134,13 @@ const posthogApiHost = !configuredPosthogApiHost || configuredPosthogApiHost ===
   ? POSTHOG_PROXY_PATH
   : configuredPosthogApiHost;
 const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.posthog.com';
+// Vercel exposes the deployed commit to the build; it tags every analytics event with its release.
+const appRelease = (globalThis as { process?: { env?: Record<string, string | undefined> } })
+  .process?.env?.VERCEL_GIT_COMMIT_SHA?.trim() || undefined;
 ---
 
 <!doctype html>
-<html lang={localeMeta.lang} dir={localeMeta.dir ?? 'ltr'}>
+<html lang={localeMeta.lang} data-source-lang={localeMeta.lang} dir={localeMeta.dir ?? 'ltr'}>
   <head>
     <meta charset="UTF-8" />
     {/* Bing fetches the site-root /favicon.ico and ignores subdirectory icons, so
@@ -458,6 +461,7 @@ const posthogUiHost = import.meta.env.PUBLIC_POSTHOG_UI_HOST || 'https://us.post
         projectKey={posthogProjectKey}
         apiHost={posthogApiHost}
         uiHost={posthogUiHost}
+        release={appRelease}
       />
     )}
     {

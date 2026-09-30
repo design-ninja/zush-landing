@@ -3,12 +3,14 @@ interface Props {
   projectKey: string;
   apiHost?: string;
   uiHost?: string;
+  release?: string;
 }
 
 const {
   projectKey,
   apiHost = 'https://us.i.posthog.com',
   uiHost = 'https://us.posthog.com',
+  release,
 } = Astro.props;
 ---
 
@@ -18,6 +20,7 @@ const {
     posthogProjectKey: projectKey,
     posthogApiHost: apiHost,
     posthogUiHost: uiHost,
+    posthogRelease: release ?? '',
   }}
 >
   (() => {
@@ -204,6 +207,7 @@ const {
       });
       window.posthog.clear_opt_in_out_capturing();
       posthogInitialized = true;
+      if (posthogRelease) window.posthog.register({ app_release: posthogRelease });
 
       const sessionAttribution = getSessionAttribution();
       window.posthog.register_for_session(sessionAttribution);

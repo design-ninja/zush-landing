@@ -6,7 +6,7 @@ import vm from 'node:vm';
 const source = readFileSync(new URL('../../src/components/PostHogAnalytics.astro', import.meta.url), 'utf8');
 const script = source.slice(source.indexOf('  (() => {'), source.lastIndexOf('</script>'));
 
-function run({ cookie = '', hostname = 'zushapp.com', optedOut = false, defer = false } = {}) {
+function run({ cookie = '', hostname = 'zushapp.com', optedOut = false, defer = false, release = '' } = {}) {
   const events = [];
   const listeners = new Map();
   const storage = new Map();
@@ -14,10 +14,12 @@ function run({ cookie = '', hostname = 'zushapp.com', optedOut = false, defer = 
   let config;
   let initialize;
   const exceptions = [];
+  const registered = [];
   const posthog = {
     __SV: 1,
     init(_key, options) { initialized++; config = options; },
     clear_opt_in_out_capturing() { optedOut = false; },
+    register(properties) { registered.push(properties); },
     register_for_session() {},
     register_once() {},
     capture(name, properties) {
@@ -26,7 +28,7 @@ function run({ cookie = '', hostname = 'zushapp.com', optedOut = false, defer = 
     captureException(error, properties) { exceptions.push({ error, properties }); },
   };
   const context = {
-    posthogProjectKey: 'test-project', posthogApiHost: '/e', posthogUiHost: 'https://us.posthog.com', URL,
+    posthogProjectKey: 'test-project', posthogApiHost: '/e', posthogUiHost: 'https://us.posthog.com', posthogRelease: release, URL,
     document: {
       cookie, referrer: 'https://www.google.com/', title: 'Zush', readyState: 'complete',
       addEventListener(name, handler) { listeners.set(name, handler); },
@@ -39,7 +41,7 @@ function run({ cookie = '', hostname = 'zushapp.com', optedOut = false, defer = 
     },
   };
   vm.runInNewContext(script, context);
-  return { events, listeners, initialized, exceptions, initialize, document: context.document };
+  return { events, listeners, initialized, exceptions, initialize, registered, document: context.document };
 }
 
 test('first visit captures a pageview without a consent cookie and keeps attribution', () => {
@@ -99,4 +101,9 @@ test('error queue is bounded and respects a country opt-out before initializatio
   handler(excluded);
   assert.equal(excluded.defaultPrevented, false);
   assert.equal(run({ hostname: 'localhost' }).listeners.has('zush:react-recoverable-error'), false);
+});
+
+test('the deployed commit is registered as the release only when known', () => {
+  assert.equal(JSON.stringify(run({ release: 'abc123' }).registered), '[{"app_release":"abc123"}]');
+  assert.equal(run().registered.length, 0);
 });
