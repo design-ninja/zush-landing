@@ -1,4 +1,15 @@
-import { WINDOWS_STORE_US_URL } from '@/constants';
+import { WINDOWS_STORE_IRELAND_URL, WINDOWS_STORE_US_URL } from '@/constants';
+
+export const MICROSOFT_STORE_IRELAND_REVIEW = {
+  name: 'Kevin',
+  title: 'What I exactly needed',
+  quote:
+    'This is what i needed to get the first original creation date before the modified date back to original',
+  rating: 5,
+  publishedAt: '2026-09-29',
+  source: WINDOWS_STORE_IRELAND_URL,
+  sourceLabel: 'Microsoft Store (Ireland)',
+} as const;
 
 export const MICROSOFT_STORE_RATING = {
   ratingValue: 5,

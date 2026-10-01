@@ -7,6 +7,8 @@ export const APP_STORE_PROTOCOL_URL = "macappstore://apps.apple.com/app/zush/id6
 export const WINDOWS_STORE_URL = "https://apps.microsoft.com/detail/9ND4WVZSDQ3X";
 export const WINDOWS_STORE_US_URL =
   "https://apps.microsoft.com/detail/9nd4wvzsdq3x?hl=en-US&gl=US";
+export const WINDOWS_STORE_IRELAND_URL =
+  "https://apps.microsoft.com/detail/9nd4wvzsdq3x?hl=en-IE&gl=IE";
 export const WINDOWS_STORE_PROTOCOL_URL = "ms-windows-store://pdp/?ProductId=9ND4WVZSDQ3X";
 export const HOMEBREW_CASK_URL = "https://formulae.brew.sh/cask/zush";
 export const GITHUB_RELEASES_URL = "https://github.com/design-ninja/zush-releases";
