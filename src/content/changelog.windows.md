@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.10.3.0] - 2026-10-01
+
+### Added
+- Available PRO One-Time offers now show the discounted price and a promo code you can copy into checkout.
+
+### Improved
+- A clearer message explains when Zush Cloud AI is unavailable for your installation and points to Ollama and LM Studio as local alternatives.
+
+### Fixed
+- File selection no longer fails when Windows includes items without a local file path.
+- Improved file and folder selection for batch renaming and template import.
+
+
 ## [3.10.2.0] - 2026-09-30
 
 ### Improved
