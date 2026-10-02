@@ -61,6 +61,15 @@ export default defineConfig({
     starlight({
       title: 'Zush Docs',
       description: 'Documentation for Zush AI file renaming on Mac and Windows.',
+      // Starlight emits og:title/description but no image, so shared docs links
+      // render without a preview. Reuse the site-wide social card.
+      head: [
+        { tag: 'meta', attrs: { property: 'og:image', content: 'https://zushapp.com/og-image.png' } },
+        { tag: 'meta', attrs: { property: 'og:image:width', content: '1200' } },
+        { tag: 'meta', attrs: { property: 'og:image:height', content: '630' } },
+        { tag: 'meta', attrs: { property: 'og:image:alt', content: 'Zush AI File Renamer for Mac and Windows' } },
+        { tag: 'meta', attrs: { name: 'twitter:image', content: 'https://zushapp.com/og-image.png' } },
+      ],
       favicon: '/favicon/favicon.ico',
       logo: {
         src: './src/assets/zush-docs-logo.webp',
