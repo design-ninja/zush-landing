@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.14.0] - 2026-10-02
+
+### Improved
+- Faster, more reliable text recognition in images and scanned documents.
+- Clearer message when the selected destination folder is unavailable.
+
+### Fixed
+- Temporary Microsoft Office files are no longer added for renaming.
+
 ## [3.13.0] - 2026-09-25
 
 ### New
