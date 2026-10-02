@@ -2,6 +2,7 @@ import type { BlogPost, FAQItem } from '@/data/blog';
 import { toIsoDateTime } from '@/seo/config';
 import { PRIMARY_AUTHOR } from '@/data/author';
 import { ORGANIZATION_REF, SOFTWARE_REF, WEBSITE_REF } from '@/seo/entity';
+import { getBlogThumbnail } from '@/data/blogThumbnails';
 
 const SITE_ORIGIN = 'https://zushapp.com';
 
@@ -20,11 +21,21 @@ export function buildBlogPostingJsonLd(
   pageUrl = `${SITE_ORIGIN}/blog/${post.slug}`,
   inLanguage = 'en',
 ) {
+  // Article rich results and AI answer cards read the post image from here;
+  // translations share the English post's thumbnail.
+  const thumbnail = getBlogThumbnail(post.translationOf ?? post.slug);
+
   return {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.description,
+    image: {
+      '@type': 'ImageObject',
+      url: new URL(thumbnail.src, SITE_ORIGIN).href,
+      width: thumbnail.width,
+      height: thumbnail.height,
+    },
     inLanguage,
     datePublished: toIsoDateTime(post.date),
     dateModified: toIsoDateTime(post.reviewedAt || post.date),

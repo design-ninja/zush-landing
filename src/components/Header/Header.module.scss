@@ -164,11 +164,13 @@
 
         @include tablet {
             font-size: 0.95rem;
+        }
 
-            // Keep the Cloud/Local AI link visible at tablet widths. Features
-            // is already reachable further down the page and is the one item
-            // we can drop when the pill needs more room.
-            &:first-of-type {
+        // Mac and Windows must stay visible; the Cloud/Local AI section is
+        // reachable further down the homepage, so it is the item the pill
+        // drops when it needs room.
+        &_tabletHidden {
+            @include tablet {
                 display: none;
             }
         }

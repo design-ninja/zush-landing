@@ -65,9 +65,9 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 이 비교는 '최고' 및 '비교' 검색 의도를 소유합니다. 이미 'Zush'을 선택했고 기본 다운로드 경로를 원하는 경우 '[Windows용 AI 파일 이름 변경 도구](/windows)'로 직접 이동하세요.
 
-## Windows에서 AI 파일 이름 변경 도구가 유용한 이유
+## 이 Windows 비교의 범위
 
-Windows용 AI 파일 이름 변경 도구는 파일 탐색기에서 선택한 모든 파일에 하나의 규칙을 적용하는 대신 각 파일의 내용을 읽고 이를 설명하는 이름을 만듭니다. 문서 텍스트, 이미지나 스크린샷의 보이는 내용 또는 동영상의 샘플 프레임을 사용해 파일마다 다른 이름을 제안할 수 있습니다. 예를 들어 `scan_004.pdf`는 `invoice-7842-webdesign-services.pdf`가 됩니다. 예측 가능한 텍스트 패턴에는 PowerRename을 사용하고, 각 파일에 서로 다른 설명형 이름이 필요할 때는 콘텐츠 기반 이름 변경을 사용하세요.
+이 페이지는 Windows 앱만 비교합니다. AI 파일 이름 변경 도구가 무엇인지, 내용 기반 이름 지정이 공통 이름 변경 규칙과 어떻게 다른지, Zush가 Mac과 Windows에서 무엇을 하는지는 [Zush AI 파일 이름 변경 도구 소개](/ko)에서 먼저 확인하세요.
 
 아래의 모든 내용은 이름 지정 제어, 즉시 사용 가능한 작업 흐름, 파일 형식 적용 범위, 자동화, 배치 검토 및 실행 취소 가능 여부 등 실질적인 차이점에 대해 이 카테고리의 'Windows' 앱을 비교합니다. 로컬 AI는 여러 제품에 등장하며 고유한 장점으로 평가되지 않습니다. '[안전한 일괄 이름 변경 체크리스트](/blog/how-to-safely-batch-rename-files)'을 사용하여 동일한 파일로 각 후보를 테스트하고 미리보기, 충돌 처리, 확장 프로그램 안전성 및 복구 경로를 확인하세요.
 
@@ -191,9 +191,9 @@ Mac과 Windows에서 여러 형식의 파일을 다룬다면 Zush를 권합니�
 
 예. 'Windows'의 'Zush'에는 Gemini, OpenRouter, OpenAI 및 Claude의 'BYOK'과 모든 계획에 'Ollama'이 포함된 오프라인 AI가 포함됩니다. 무료에는 Cloud AI, BYOK 및 오프라인 AI 전반에 걸쳐 공유되는 50가지 이름 변경이 포함됩니다. PRO는 제한을 제거합니다.
 
-### "파일 이름 바꾸기 AI"는 일반적인 대량 이름 바꾸기 유틸리티와 다릅니까?
+### Windows에서 Zush는 PowerRename과 어떻게 다른가요?
 
-예. 일반적인 대량 이름 바꾸기 유틸리티는 많은 파일에 공유 규칙을 적용합니다. 일반적으로 '[PowerRename](https://learn.microsoft.com/en-us/windows/powertoys/powerrename)'를 의미하는 'Windows'에서는 'File Explorer'에서 선택한 모든 항목에 대해 검색 및 바꾸기, 정규식, 날짜 또는 속성 변수를 수행하는 PowerToys 유틸리티입니다. 파일을 열지 않으므로 둘 다 `scan_004.pdf`로 도착하면 보증 카드에서 송장을 알 수 없습니다. 파일 이름 변경 AI 도구는 파일 콘텐츠에서 이름을 생성한 다음 배치를 미리 보고, 적용하고, 실행 취소할 수 있도록 해야 합니다. 스크린샷, PDF, 사진, 비디오, 오디오 및 Office 파일이 혼합된 'Windows' 폴더의 경우 검토 및 실행 취소 워크플로우가 원래 이름 바꾸기 속도보다 더 중요합니다. '[PowerRename 대체 비교](/powerrename-alternative)'에서는 각 접근 방식이 유리한 점을 다룹니다.
+PowerToys 유틸리티인 [PowerRename](https://learn.microsoft.com/en-us/windows/powertoys/powerrename)은 파일 탐색기에서 선택한 모든 항목에 찾기 및 바꾸기, 정규식, 날짜 또는 속성 변수 같은 공통 규칙 하나를 적용합니다. 파일을 열지 않기 때문에 청구서와 보증서가 모두 `scan_004.pdf`로 들어오면 둘을 구분하지 못합니다. Zush는 각 파일을 읽고 내용에 맞는 고유한 이름을 제안한 뒤, 배치를 미리 보고 적용하고 되돌릴 수 있게 합니다. 스크린샷, PDF, 사진, 동영상, 오디오, Office 파일이 섞인 Windows 폴더에서는 단순한 이름 변경 속도보다 이 검토와 되돌리기 흐름이 더 중요합니다. 각 방식이 유리한 경우는 [PowerRename 대안 비교](/powerrename-alternative)에서 다룹니다.
 
 ### 브라우저 도구뿐만 아니라 기본 Windows 앱이 있습니까?
 

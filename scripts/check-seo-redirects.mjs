@@ -86,6 +86,8 @@ assertRedirect('/rename-images-with-ai/', '/rename-photos-with-ai');
 assertRedirect('/rename-images-with-ai', '/rename-photos-with-ai');
 assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/rename-images-with-ai', '/:locale/rename-photos-with-ai');
 assertRedirect('/ai-photo-renamer', '/rename-photos-with-ai');
+assertRedirect('/blog/ai-ai-file-renamer-tools-mac-compared', '/blog/best-ai-file-renamer-tools-mac-compared');
+assertRedirect('/blog/best-ai-file-renamer-tool-mac-compared', '/blog/best-ai-file-renamer-tools-mac-compared');
 assertRedirect('/ai-document-renamer', '/rename-documents-with-ai');
 assertRedirect('/blog/ai-photo-renamer-guide', '/blog/how-to-rename-images-with-ai-on-macos');
 assertRedirect('/blog/ai-photo-renamer-guide/', '/blog/how-to-rename-images-with-ai-on-macos');

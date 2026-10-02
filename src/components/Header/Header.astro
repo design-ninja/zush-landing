@@ -21,6 +21,8 @@ import styles from './Header.module.scss';
 interface NavItem {
   href: string;
   label: string;
+  /** Dropped from the desktop pill at tablet widths; the burger menu always lists it. */
+  hideOnTablet?: boolean;
 }
 
 interface Props {
@@ -57,15 +59,21 @@ const {
 const localeCopy = getCopy(locale);
 const copy = localeCopy.header;
 
-const featuresHref = `${basePath}#features`;
 const securityHref = `${basePath}#ways-to-run`;
 const pricingHref = `${basePath}#pricing`;
 const faqHref = `${basePath}#faq`;
 const homeHref = getLocalizedPath('/', locale);
+const macHref = getLocalizedPath('/mac', locale);
+const windowsHref = getLocalizedPath('/windows', locale);
 const blogHref = '/blog';
+// The platform pages lead the nav so every page links to them from the
+// header, not only from the footer: they are the product pages search engines
+// should pick for "AI file renamer for Mac/Windows". Features stays reachable
+// by scrolling the homepage, so it gave up its slot.
 const navItems = navItemsOverride ?? [
-  { href: featuresHref, label: copy.features },
-  { href: securityHref, label: copy.security },
+  { href: macHref, label: 'Mac' },
+  { href: windowsHref, label: 'Windows' },
+  { href: securityHref, label: copy.security, hideOnTablet: true },
   { href: pricingHref, label: copy.pricing },
   { href: faqHref, label: copy.faq },
   { href: blogHref, label: copy.blog },
@@ -154,7 +162,7 @@ const menuLinkClass = [appLinkStyles.AppLink, styles.Header__MenuLink].join(' ')
 
     <nav class={styles.Header__Nav} aria-label="Primary navigation">
       {navItems.map((item) => (
-        <a href={item.href} class={navLinkClass} data-pro-click-source={item.href.endsWith('#pricing') ? 'navbar' : undefined}>{item.label}</a>
+        <a href={item.href} class:list={[navLinkClass, item.hideOnTablet && styles.Header__Link_tabletHidden]} data-pro-click-source={item.href.endsWith('#pricing') ? 'navbar' : undefined}>{item.label}</a>
       ))}
     </nav>
 

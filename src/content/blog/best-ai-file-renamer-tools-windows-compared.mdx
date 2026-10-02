@@ -68,9 +68,9 @@ The practical difference is where file analysis happens and what you need to con
 
 For sensitive folders, choose one of the local options so supported analysis stays on the Windows device. BYOK is still a cloud route, but it uses the provider account you control. The [privacy and security guide](/docs/privacy-security) explains what each processing route handles.
 
-## What makes an AI file renamer useful on Windows?
+## How this Windows comparison is scoped
 
-A Windows AI file renamer reads what is inside each file and writes a filename describing it, instead of applying one shared rule to a whole File Explorer selection. It can use document text, the visible content of an image or screenshot, or sampled video frames to propose a different name for every file — `scan_004.pdf` becomes `invoice-7842-webdesign-services.pdf`. A shared prefix or number sequence needs pattern-based renaming; content-aware renaming gives each file a different descriptive name.
+This page compares Windows apps only. For what an AI file renamer is, how content-based naming differs from a shared rename rule, and what Zush does on Mac and Windows, start with the [Zush AI file renamer overview](/).
 
 Everything below compares the Windows apps in this category on the practical differences — naming control, ready-to-use workflows, file-type coverage, automation, and whether a batch can be reviewed and undone. Local AI appears in several products and is not scored as a unique advantage. Use the [safe batch rename checklist](/blog/how-to-safely-batch-rename-files) to test each candidate with the same files and verify its preview, collision handling, extension safety, and recovery path.
 
@@ -214,9 +214,9 @@ Zush ranks above both for the broadest Windows use case. FilesDesk meters manage
 
 Zush supports four AI options on Windows. Cloud options are Zush managed cloud and BYOK with Gemini, OpenRouter, OpenAI, or Claude. Local options are Ollama and LM Studio. Preview, manual confirmation, and Rename History remain part of the workflow whichever option you choose.
 
-### Is "file renamer AI" different from a normal bulk rename utility?
+### How is Zush different from PowerRename on Windows?
 
-Yes. A normal bulk rename utility applies a shared rule to many files. On Windows that usually means [PowerRename](https://learn.microsoft.com/en-us/windows/powertoys/powerrename), the PowerToys utility that does search-and-replace, regex, and date or attribute variables across whatever you selected in File Explorer. It never opens the file, so it cannot tell an invoice from a warranty card when both arrive as `scan_004.pdf`. A file renamer AI tool generates names from file content, then should let you preview, apply, and undo the batch. For Windows folders with mixed screenshots, PDFs, photos, videos, audio, and Office files, that review-and-undo workflow matters more than raw rename speed. The [PowerRename alternative comparison](/powerrename-alternative) covers where each approach wins.
+[PowerRename](https://learn.microsoft.com/en-us/windows/powertoys/powerrename), the PowerToys utility, applies one shared rule to whatever you selected in File Explorer: search-and-replace, regex, and date or attribute variables. It never opens the file, so it cannot tell an invoice from a warranty card when both arrive as `scan_004.pdf`. Zush reads each file and proposes its own name from the content, then lets you preview, apply, and undo the batch. For Windows folders with mixed screenshots, PDFs, photos, videos, audio, and Office files, that review-and-undo workflow matters more than raw rename speed. The [PowerRename alternative comparison](/powerrename-alternative) covers where each approach wins.
 
 ### Is there a native Windows app, not just a browser tool?
 

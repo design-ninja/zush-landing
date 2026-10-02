@@ -427,7 +427,7 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     ogType: 'website',
   },
   '/windows': {
-    title: 'AI File Renamer for Windows | Zush',
+    title: 'AI File Renamer for Windows 11 & 10 | Zush',
     description:
       ORGANIZATION_FEATURES.en.windowsDescription,
     robots: 'index, follow',

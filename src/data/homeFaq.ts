@@ -22,7 +22,7 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'What is AI renamer software?',
     answer:
-      'AI renamer software reads what is inside each file, such as the text of a PDF, the scene in a photo, or the frames of a video, and suggests a descriptive filename for it. A bulk rename utility applies one shared rule to every file. Zush is AI renamer software for Mac and Windows that combines both: AI suggestions that follow your own naming rules, reviewed before anything changes.',
+      'AI renamer software, also called an AI file renamer, reads what is inside each file, such as the text of a PDF, the scene in a photo, or the frames of a video, and suggests a descriptive filename for it: scan_004.pdf becomes invoice-7842-webdesign-services.pdf. A bulk rename utility such as Finder, PowerRename, or Bulk Rename Utility applies one shared rule to every file and never opens it. Zush is AI renamer software for Mac and Windows that combines both: AI suggestions that follow your own naming rules, reviewed before anything changes.',
   },
   {
     question: 'How does Zush compare to NameQuick, RenameClick, Renamer.ai, and FilesDesk?',
@@ -32,7 +32,7 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'How does an AI file renamer work?',
     answer:
-      'An AI file renamer reads file content, metadata, text, and visual previews to create descriptive filenames. Zush lets you apply custom naming rules, review a batch, and undo it later.',
+      'An AI file renamer reads file content, metadata, text, and visual previews, then writes a different descriptive filename for every file instead of one shared pattern. In Zush you add files or a monitored folder, pick a Template that sets the filename structure, review each suggestion, and apply the batch; Rename History can undo it later.',
   },
   {
     question: 'Can Zush rename files based on their content?',
