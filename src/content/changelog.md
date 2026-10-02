@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.14.1] - 2026-10-03
+
+### Fixed
+- Rename & sort now works for large batches sorted with your own folder rules.
+- Grouping files into folders keeps running when you switch to another section.
+
 ## [3.14.0] - 2026-10-02
 
 ### Improved
