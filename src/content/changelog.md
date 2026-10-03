@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.14.2] - 2026-10-04
+
+### Fixed
+- Grouping files into folders now finishes on large batches, including files Zush renamed before.
+- The file list no longer goes blank after files are grouped into folders.
+- Folder Monitoring with your own folder rules now handles large batches of documents.
+
 ## [3.14.1] - 2026-10-03
 
 ### Fixed
