@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.10.4.0] - 2026-10-03
+
+### Improved
+- Folder sorting continues when part of the file analysis fails and uses the results from the remaining files.
+- Folder sorting with Ollama and LM Studio assigns files to folders more reliably.
+
+### Fixed
+- If your saved BYOK API key cannot be read on this device, BYOK stays on and Zush explains how to fix it instead of switching to Zush Cloud AI.
+- Temporary Office lock files, whose names start with "~$", are no longer picked up for renaming or sorting.
+
+
 ## [3.10.3.0] - 2026-10-01
 
 ### Added
