@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.14.3] - 2026-10-05
+
+### Fixed
+
+- Fixed folder sorting failures on large batches.
+- Unavailable files can be retried without blocking the rest of the batch.
+- Improved responsiveness when sorting files on slower storage.
+- Custom sorting rules follow the folder-name format in your examples more closely.
+- Updated the Gemini model list.
+- The update button now shows progress as soon as you click it.
+
 ## [3.14.2] - 2026-10-04
 
 ### Fixed

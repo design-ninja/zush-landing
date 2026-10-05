@@ -6,13 +6,28 @@
         <description>Zush app updates</description>
         <language>en</language>
         <item>
+            <title>3.14.3</title>
+            <pubDate>Mon, 05 Oct 2026 16:55:20 +0700</pubDate>
+            <sparkle:version>193</sparkle:version>
+            <sparkle:shortVersionString>3.14.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <description><![CDATA[<h2>What's New in 3.14.3</h2><ul></ul><p><strong>Fixed</strong></p><ul><li>Fixed folder sorting failures on large batches.</li><li>Unavailable files can be retried without blocking the rest of the batch.</li><li>Improved responsiveness when sorting files on slower storage.</li><li>Custom sorting rules follow the folder-name format in your examples more closely.</li><li>Updated the Gemini model list.</li><li>The update button now shows progress as soon as you click it.</li></ul>
+]]></description>
+            <enclosure url="https://zushapp.com/releases/Zush-3.14.3.dmg" length="15770195" type="application/octet-stream" sparkle:edSignature="JfvWMJ4JIHh5cZ6NjXQV8WTg4PiGdK6zMJ3YTxoB1yYZZ6KqzG2DokLVUjHLoN523zzkwjsnu1aUwljTmvN1BQ=="/>
+            <sparkle:deltas>
+                <enclosure url="https://zushapp.com/releases/Zush193-191.delta" sparkle:deltaFrom="191" length="2028370" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="J2CGn8mWMZCbPQnNQnBbqzwTUOnnp5ZRlR68BlJVLIM6eVi+pupe4LVxqZaebePnwiUMz6IEZLJnhRxWPR1xBg=="/>
+                <enclosure url="https://zushapp.com/releases/Zush193-189.delta" sparkle:deltaFrom="189" length="2116974" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="ByiNL0C1s+1QQbczLuHIGz+RW3z+Dbl2KYZY5L2gnk6a72MyWYKv5KDLQFwjP2KSLo7i1WODiMGQBoY2vFD2Dw=="/>
+                <enclosure url="https://zushapp.com/releases/Zush193-187.delta" sparkle:deltaFrom="187" length="2148666" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="Ngqwe+ePKtbWcMtLuu6qMOsFuSpKbxFOUW0wBoSBXfnjRL7+etJkkmOvgER+tju1qnUasnL1AHvKt0dT8wEBCg=="/>
+                <enclosure url="https://zushapp.com/releases/Zush193-185.delta" sparkle:deltaFrom="185" length="2291570" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="Z+fMgnzZ0HiPgfgfxnl29RFUZz73iTY4Xle8vZN1q2Qyvf9Tr+vCUFqzcdcc8fxIwJBNeou7V6gZDdxoXfolDg=="/>
+                <enclosure url="https://zushapp.com/releases/Zush193-183.delta" sparkle:deltaFrom="183" length="3639206" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="UM/CB0n1Bu6JpANHpBJrbs/vEJ3oixs8zLS6htLj5W59PIOzyaOO0A6QAOJQSnBcU15FRXyOb8PEUkZwLJYVDg=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>3.14.2</title>
             <pubDate>Sun, 04 Oct 2026 01:41:45 +0700</pubDate>
             <sparkle:version>191</sparkle:version>
             <sparkle:shortVersionString>3.14.2</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <description><![CDATA[<h2>What's New in 3.14.2</h2><ul></ul><p><strong>Fixed</strong></p><ul><li>Grouping files into folders now finishes on large batches, including files Zush renamed before.</li><li>The file list no longer goes blank after files are grouped into folders.</li><li>Folder Monitoring with your own folder rules now handles large batches of documents.</li></ul>
-]]></description>
             <enclosure url="https://zushapp.com/releases/Zush-3.14.2.dmg" length="15651741" type="application/octet-stream" sparkle:edSignature="to3RJOloUBBiJG3xLhUVNQZ/vhz8hGHvslOR4MYACww4JCpGxXzS2SN+PzsoliXC2xnTtEL7XQ9qN7I2HN7GDg=="/>
             <sparkle:deltas>
                 <enclosure url="https://zushapp.com/releases/Zush191-189.delta" sparkle:deltaFrom="189" length="1557670" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="H4xSsQteUw9M50usmV3bVHh7/3WH/owsAJwRfdsxx24WOvV3HWkQSTNRwZjvFWenQpX1kfHJL2+o1OeZ4dN+AA=="/>
@@ -35,21 +50,6 @@
                 <enclosure url="https://zushapp.com/releases/Zush189-183.delta" sparkle:deltaFrom="183" length="3420414" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="y2jUYqmk5ySRdvsN8dtQqLJVbdvJqzMcmO1Z2gAJrHq8K6M0jVUdYQUNs/01cpilA3GQgoG+TN9zFpRAgAmXDA=="/>
                 <enclosure url="https://zushapp.com/releases/Zush189-179.delta" sparkle:deltaFrom="179" length="3676950" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="s1GYcNh4PCvEvupAkysk6gcYpPAB9T682dUlR/I5BUetkM20YkayW0pAlqwRNXth5cDPJlJFLZP2USUThzemAA=="/>
                 <enclosure url="https://zushapp.com/releases/Zush189-177.delta" sparkle:deltaFrom="177" length="3761234" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="xPxW7OLYurvwZcc663x7kCm9WwzTyohqGgEKp8zNjrFcr0fmCHE5CPmYrSman1ZrWaYdnRS4Tukx2nlAVN4vDQ=="/>
-            </sparkle:deltas>
-        </item>
-        <item>
-            <title>3.14.0</title>
-            <pubDate>Fri, 02 Oct 2026 21:30:27 +0700</pubDate>
-            <sparkle:version>187</sparkle:version>
-            <sparkle:shortVersionString>3.14.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://zushapp.com/releases/Zush-3.14.0.dmg" length="15617068" type="application/octet-stream" sparkle:edSignature="etStDAXGg0Inth5iVH70loROE2NQzE9kzpVLaK7X6litYSxLyhBmeb2NqZ1YAZKxfBDKvhS1/za3N2fSjVuNDw=="/>
-            <sparkle:deltas>
-                <enclosure url="https://zushapp.com/releases/Zush187-185.delta" sparkle:deltaFrom="185" length="1660314" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="EluB0DrHRH4DsJQIKx1qpVtTKUUkNKELrb+tBn6cfC2B+66FSUUDw+XswLsFmGFYTs5aIrl38jM5rPLv55ncDA=="/>
-                <enclosure url="https://zushapp.com/releases/Zush187-183.delta" sparkle:deltaFrom="183" length="3395126" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="XL0Z4xdCqJdrgbuLl/Di/QlFfYeXfKkoHQyqcUaxF57ykeq5blQDf0QMi8+6qo1aTQpLOQrFLunTRfG91j4nDg=="/>
-                <enclosure url="https://zushapp.com/releases/Zush187-179.delta" sparkle:deltaFrom="179" length="3674942" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="48mHYKxkOhimzdJvb2bYIKj3ecVotHnApQc2K99w6FZptGiTUQJII+lJ0suxpZEBGKVDu5HeoPv+T+Guti+JAA=="/>
-                <enclosure url="https://zushapp.com/releases/Zush187-177.delta" sparkle:deltaFrom="177" length="3746818" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="VeFCmFMddyMUlfACPYITu1cTnOq2DhxFKk2cSQLnjZLvm01fd4Z4xScD0VNLYrK8GK/7tJB1Nk9JdYu6Ly1nDg=="/>
-                <enclosure url="https://zushapp.com/releases/Zush187-175.delta" sparkle:deltaFrom="175" length="4908142" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977840" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="lm8+jG8so7XAaxaPVKeH44ghQdvyhCsXWUG3/QbTjT3qfPQBXNeUUZ+0J4Gmnm48JcBXbvDXhIa8qw/dt2SwDQ=="/>
             </sparkle:deltas>
         </item>
         <item>
