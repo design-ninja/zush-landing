@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.10.5.0] - 2026-10-05
+
+### Improved
+- With an Ollama model that does not support images, screenshots and other files that contain text are now analyzed from that text.
+- When Windows denies access to a folder sorting destination, Monitor keeps the files in place and explains what to fix, while other destinations continue to work.
+- Folder sorting settings now mention that nested folders aren't supported yet.
+
+### Fixed
+- If the activity history is damaged, Zush now tries to repair it at startup and keeps a backup copy, instead of stopping.
+- If Zush cannot open its database, it now explains the problem instead of starting with default settings that cannot be saved.
+- Adding SVG files no longer freezes the window. SVG files now show a generic icon in the file list.
+- Fixed a rare crash at launch.
+
+
 ## [3.10.4.0] - 2026-10-03
 
 ### Improved
