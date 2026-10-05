@@ -11,7 +11,7 @@ tags:
   - "AI文件重命名"
   - "工具比较"
 tldr: "总体最佳：“Zush”。在此比较中，它具有最可配置的 AI 命名工作流程：现成的“Templates”、145+“Naming Blocks”、“Custom AI Blocks”、格式和本地化控件，以及可以恢复应用批次的“Rename History”。其他产品的选择范围较小，不是我们的总体推荐。 Zush 文件夹分类在 Mac 和 Windows 上均为 beta 功能。"
-reviewed: "2026-09-28"
+reviewed: "2026-10-05"
 featuredOrder: 1
 ---
 
@@ -22,11 +22,11 @@ import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
+**指定信息复核：2026年10月5日.** 已通过第一方资料复核 Renamer.ai、NameQuick、FilesDesk。其他厂商保留原核查日期。比较基于公开功能，并非独立性能测试。
 
+FilesDesk Organize Flow 支持按条件移动、复制及 Mac Finder 操作。本地选项包括 Ollama、LM Studio、vLLM。订阅不支持 BYOK/本地 AI，月积分不结转。40美元 Self-Managed 许可限一台设备，包含12个月更新。
 
-
-
-**竞品更新 — 2026 年 9 月 24 日：** RenameClick 目前的免费方案包含每月 100 次成功重命名或移动，Pro 月付为 8 美元加增值税，Pro 终身版为 36 美元加增值税；请以结账页为准。NameQuick 的 Managed 试用为 14 天 250 次重命名，Self-Managed 试用为无需信用卡的 50 次重命名。
+[第一方来源](https://renamer.ai/changelog) · [NameQuick](https://www.namequick.app/) · [FilesDesk](https://filesdesk.app/pricing)
 <BlogProductIntro
   title="选择产品路径"
   description="“Zush”有单独的 Mac 登陆页面、“Windows”、离线 AI、“BYOK”设置和批量重命名意图。使用此比较进行选择，然后跳转到与您的工作流程匹配的页面。"
@@ -158,11 +158,15 @@ Zush 文件夹分类在 Mac 和 Windows 上均为 beta 功能。它分析兼容�
 
 ### 5. Renamer.ai
 
-Renamer.ai 的 Windows 页面描述本地处理，但隐私政策称文件内容会传给 AI 分处理商。我们没有独立验证其网络行为。这些资料不足以确认离线工作流程。 [Windows](https://renamer.ai/ai-file-renamer-windows) · [Renamer.ai](https://renamer.ai/privacy-policy/)
+Renamer.ai v5 提供 Cloud、可下载本地模型、OpenAI/Gemini BYOK、同步模板和嵌套文件夹。公开云端套餐仍有文件额度；Local/BYOK 的许可额度需确认。公开格式列表未列出相机 RAW、PSD、Sketch 或 Figma。Zush 明确列出这些格式，并提供付费版不限重命名次数。
+
+[第一方来源](https://renamer.ai/changelog) · [Renamer.ai](https://renamer.ai/)
 
 ### 6. NameQuick
 
-“NameQuick”现在发布“Windows”和 Mac 下载。其记录的 Mac 工作流程涵盖“Finder”集成、监视文件夹、规则、撤消、OCR 和 30 多种格式类别。供应商没有发布完整的平台矩阵，因此此比较并不假设“Windows”上存在每个 Mac 特定功能。
+NameQuick 支持 Mac 和 Windows；MLX、Finder 标签和备注仅限 Mac。Windows 安装程序为 x64，ARM 通过模拟运行。Managed 在生成建议时计费，即使未应用；未用月额度会失效。Self-Managed 为69美元、限一台电脑。目前试用：Managed 需信用卡，14天70次；Self-Managed 无需信用卡、30次。更新日志已在3.0.16之后列出3.0.17。
+
+[NameQuick](https://www.namequick.app/)
 
 ### 7. 无线文件
 
@@ -180,19 +184,18 @@ Wisfile 是一个完全本地的 AI 文件重命名器和组织器。该网站�
 
 |特征| Zush | FilesDesk | RenameClick | AI Renamer | Renamer.ai | NameQuick |威斯菲尔| Riffo |重命名为|
 |---|---|---|---|---|---|---|---|---|---|
-|平台|Mac 和“Windows”|Mac 和“Windows”|Mac 和“Windows”（桌面本机）|桌面版（Mac/Win）|桌面 (Win/Mac) + 网页|Mac 和“Windows”；奇偶校验没有完整记录|本地桌面|macOS + 网络演示|网络+云集成|
+|平台|Mac 和“Windows”|Mac 和“Windows”|Mac 和“Windows”（桌面本机）|桌面版（Mac/Win）|桌面 (Win/Mac) + 网页| Mac + Windows；MLX/Finder 仅 Mac |本地桌面|macOS + 网络演示|网络+云集成|
 |图像/设计格式|41 张图片 + 4 种设计格式|照片/图像；没有找到详细的矩阵|10种图像格式；没有 RAW/设计清单|特征示例+全文件声明|30 多种格式，包括EPS/SVG/AI 向量；无原始数据|30多种格式|未公开详细内容|没有记录|扫描的图像/文档|
 |文档格式|40，包括“iWork”|照片、PDF、发票、收据、合同、屏幕截图|20+ 包括PDF/DOCX/JSON/XML/YAML/HTML/SQL/字幕|PDF/TXT 示例；全文件声明|30+ 文档/图像/矢量/电子邮件|PDF、页面、Office、OCR|未公开详细内容|没有记录|PDF/Word/Excel/PowerPoint|
 |音频/视频|7个音频+16个视频|列出常见的音频和视频格式|5 个带转录的音频；视频不受支持|未列出（单独的 CLI 执行视频）|不是中心|仅限大类|未确认|没有记录|不|
-|计量？|付费 PRO 上没有|管理学分是的；终生没有|免费套餐是的；专业编号|云是的； $19 本地无|是的，在每一层|管理是的；自我管理 否|不|未说明|是的，积分|
+|计量？|付费 PRO 上没有|管理学分是的；终生没有|免费套餐是的；专业编号|云是的； $19 本地无| 云端额度；Local/BYOK 许可需确认 |管理是的；自我管理 否|不|未说明|是的，积分|
 |批量重命名|是的|是的|是的|是的|是的|是的|是的|是的|是的|
 |文件夹监控|是的|是（监视文件夹）|是（自动流程）|没有公开声明|是（魔法文件夹）|是（监视文件夹）|未确认|未确认|是（观看云文件夹）|
 |定制图案| Templates + 145+ Naming Blocks | Templates |格式+说明|自定义提示/案例样式| Templates |预设/模板/提示|未公开详细内容|有限的|已保存的团队规则/提示|
 |撤消/回滚|是的|是的，通过处理历史记录|内存中最多保留 10 条 Undo 记录，重启后清除|没有公开声明|是的|是的，一键撤消和恢复|未确认|未确认|审核/置信工作流程|
-|多家人工智能提供商|Gemini/OpenRouter/OpenAI/克劳德 + Ollama|克劳德/Gemini/OpenAI/OpenRouter/Ollama/vLLM|内置本地/Ollama/LM Studio/OpenAI/Gemini/Qwen|Ollama/LM Studio/OpenAI/自定义|固定的|OpenAI/OpenRouter/克劳德/Gemini/Ollama/LM Studio/MLX|固定本地|固云|固云|
-|免费套餐|50 开始|15 学分|无限分析 + 100 个应用学分/月|注册即可获得 10 个积分|25/月|管理：250/14 天；自我管理：50 次尝试重命名|自由的|自由定位主页|50 个文档可供开始|
-|BYOK/本地选项|是的|终身计划|是/选择提供商|是/本地/自定义|没有公共“BYOK”|自我管理|当地的|没有公共“BYOK”|不|
-
+|多家人工智能提供商|Gemini/OpenRouter/OpenAI/克劳德 + Ollama| Claude/Gemini/OpenAI/OpenRouter/Ollama/LM Studio/vLLM |内置本地/Ollama/LM Studio/OpenAI/Gemini/Qwen|Ollama/LM Studio/OpenAI/自定义| Cloud、本地模型、OpenAI/Gemini BYOK |OpenAI/OpenRouter/克劳德/Gemini/Ollama/LM Studio/MLX|固定本地|固云|固云|
+|免费套餐|50 开始|15 学分|无限分析 + 100 个应用学分/月|注册即可获得 10 个积分|25/月| Managed：信用卡，70次/14天；Self-Managed：无需信用卡，30次 |自由的|自由定位主页|50 个文档可供开始|
+|BYOK/本地选项|是的|终身计划|是/选择提供商|是/本地/自定义| Local + OpenAI/Gemini BYOK (v5) |自我管理|当地的|没有公共“BYOK”|不|
 
 ## 定价比较
 
@@ -205,12 +208,11 @@ Wisfile 是一个完全本地的 AI 文件重命名器和组织器。该网站�
 | FilesDesk |15 学分|$8/月、$20/月或 $40 终身“BYOK”/本地|40 美元终身路径或 96-240 美元/年订阅|订阅或自我管理生命周期|
 | RenameClick |无限分析 + 100 个应用学分/月|每月 8 美元以上增值税或终身增值税 36 美元以上|终身增值税 36 美元以上或每年每月 96 美元以上增值税|订阅或终身|
 | AI Renamer |注册即可获得 10 个积分|桌面版一次性 19 美元（本地模式）或 10/200 美元云积分|19 美元，或每次云重命名 0.05 美元|一次性本地/计量积分|
-| Renamer.ai |25 个文件/月|$9.95–99.95/月|$120–1,200/年|计量订阅|
-| NameQuick |托管：250 次重命名/14 天；自我管理：50 次尝试重命名|管理费用为 12 美元/月（计量）或自我管理一次性费用为 69 美元 + API/本地模型|144+ 美元/年托管，或 69 美元+ API/本地设置|计量管理或一次性自我管理|
+| Renamer.ai |25 个文件/月|$9.95–99.95/月|$120–1,200/年| 云端额度；Local/BYOK 许可需确认 |
+| NameQuick | Managed：信用卡，70次/14天；Self-Managed：无需信用卡，30次 |管理费用为 12 美元/月（计量）或自我管理一次性费用为 69 美元 + API/本地模型|144+ 美元/年托管，或 69 美元+ API/本地设置|计量管理或一次性自我管理|
 |威斯菲尔|完全免费|不适用| $0 |自由的|
 | Riffo |自由的|不适用| $0 |自由的|
 |重命名为|50 开始|9 美元/1,000（每件 0.009 美元）、49 美元/10,000（每件 0.0049 美元）|取决于体积； ~49 美元涵盖 10K 次重命名|即用即付积分|
-
 
 ## 如何选择
 
@@ -241,7 +243,6 @@ Zush FREE 包含 50 次重命名，由 Cloud AI、BYOK、LM Studio 和 Ollama �
 ### 使用 AI 批量重命名文件安全吗？
 
 当工具提供预览和回滚功能时会更安全。批量人工智能重命名永远不应该盲目应用数百个文件名。使用可以显示每个建议名称、处理重复项、保留扩展名并保留重命名历史记录的工具，以便可以恢复错误的批次。
-
 
 ## 判决
 

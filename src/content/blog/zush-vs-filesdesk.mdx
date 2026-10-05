@@ -8,8 +8,8 @@ topic: "comparisons"
 tags:
   - "AI File Renaming"
   - "Tool Comparisons"
-tldr: "Pick Zush for the most configurable naming workflow in this comparison: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, and Rename History with batch revert. FilesDesk's main limitation is that managed suggestions are metered and its lifetime plan requires BYOK or local-model setup. Zush also offers optional AI folder sorting (beta)."
-reviewed: "2026-09-28"
+tldr: "Zush combines 145+ Naming Blocks, broad mixed-format support, and unmetered paid renames. FilesDesk also has Organize Flow for conditional moves/copies and Finder actions. Its subscriptions exclude BYOK/local AI and have expiring monthly credits; its $40 self-managed license covers one device and 12 months of updates."
+reviewed: "2026-10-05"
 ---
 
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -18,7 +18,7 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 Quick answer: choose [Zush](/) when you want the AI to follow a precise, reusable convention. Ready-made Templates combine with 145+ Naming Blocks, Custom AI Blocks, formatting, localization and metadata; Rename History keeps original and new names, folder and timestamp and can restore an applied batch. FilesDesk documents templates and Processing History, but does not publish an equivalent granular naming system or RAW/design/iWork matrix. Its managed suggestions are metered, while the lifetime license requires your own API key or local model.
 
-Pricing and public feature details last checked August 24, 2026.
+**Last checked: October 5, 2026.** Written by the maker of Zush. This compares published features and license terms, not independent accuracy or speed measurements.
 
 Sources checked for this update: [Zush](/), [FilesDesk](https://filesdesk.app/), [FilesDesk pricing](https://filesdesk.app/pricing), and [FilesDesk docs](https://filesdesk.app/docs), including public pricing, platform, provider, Watch Folders, and format-support details.
 
@@ -45,15 +45,16 @@ Sources checked for this update: [Zush](/), [FilesDesk](https://filesdesk.app/),
 | Format coverage | <BlogHighlight>100+ formats</BlogHighlight>: 41 image incl. RAW/HEIC/AVIF, 4 design (Sketch, Figma, AI, PSD), 40 document incl. iWork, 16 video, 7 audio | Images, PDF/Office documents, video, and audio; no detailed RAW/design/iWork matrix |
 | Video and audio renaming | <BlogHighlight>Yes</BlogHighlight> | Yes: common video and audio formats are listed in the FAQ |
 | Design files (Figma/Sketch/PSD) | <BlogHighlight>Yes</BlogHighlight> | Not publicly listed |
-| AI processing routes | Zush Cloud AI; BYOK with Gemini, OpenRouter, OpenAI, or Claude; LM Studio; Ollama | BYOK with Claude, OpenAI, Gemini, or OpenRouter; local Ollama or vLLM |
-| Local AI | LM Studio, Ollama | Ollama, vLLM |
+| AI processing routes | Zush Cloud AI; BYOK with Gemini, OpenRouter, OpenAI, or Claude; LM Studio; Ollama | Managed credits on subscription; Claude/OpenAI/Gemini/OpenRouter or Ollama/LM Studio/vLLM on Self-Managed |
+| Local AI | LM Studio, Ollama | Ollama, LM Studio, vLLM; Self-Managed license required |
 | Folder monitoring | <BlogHighlight>Yes — rename new files; a sorting Template also groups them (beta)</BlogHighlight> | Yes (Watch Folders) |
-| Naming conventions | <BlogHighlight>Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata</BlogHighlight> ; optional AI folder sorting (beta) | Naming templates |
+| Naming conventions | <BlogHighlight>Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata</BlogHighlight>; optional AI folder sorting (beta) | Templates plus Organize Flow: conditions, moves/copies, prefixes/suffixes, timestamps and Mac Finder actions |
 | Recovery | Full Rename History: original/new name, folder, timestamp, batch revert | Undo through Processing History |
 | Main limitation | Desktop-only | Managed suggestions are metered; lifetime requires BYOK/local setup; no granular RAW/design/iWork matrix |
 | Devices per license | Per standard license terms | 1 device (lifetime plan) |
 | Money-back guarantee | 14 days | 3 days |
-| Checkout | Paddle | Razorpay |
+| Updates | See current Zush license terms | Subscription: while subscribed; Self-Managed: 12 months |
+| BYOK eligibility | Every plan, within FREE allowance or unmetered PRO | Subscription excludes BYOK/local; separate Self-Managed license required |
 
 ## Zush
 
@@ -80,7 +81,13 @@ Save the sorting settings in a **Template** and assign it to **Monitor** for new
 ## FilesDesk
 
 FilesDesk positions itself as the plug-and-play credit option: 15 free credits with no API key, then $8/month for 500 credits or $20/month for 2,000, processed in memory and never stored.
-Its FAQ now explicitly lists common images, PDFs and Office documents, MP4/MOV/AVI/MKV/WebM video, and MP3/WAV/FLAC/AAC/M4A audio. Processing History can undo completed renames. The $40 Lifetime plan remains self-managed: bring a Claude/OpenAI/Gemini/OpenRouter key or run Ollama/vLLM locally, with one device and 12 months of updates.
+Its FAQ lists common images, PDFs and Office documents, MP4/MOV/AVI/MKV/WebM video, and MP3/WAV/FLAC/AAC/M4A audio. Processing History can undo completed renames. The $40 Self-Managed license supports Claude/OpenAI/Gemini/OpenRouter or local Ollama/LM Studio/vLLM, with one device and 12 months of updates.
+
+### Organize Flow and practical limitations
+
+[Organize Flow](https://filesdesk.app/docs/core-features/organize-flow) runs when a file arrives or after AI renaming. Conditions match extension, name, size, type, folder, and dates using All/Any logic. Actions can move or copy into date-based folders, add prefixes/suffixes or timestamps, and write Finder tags, colors, and comments on Mac. It documents destination previews and undo for moves. This is a real conditional-action workflow, not merely a watch-folder feature; vLLM and copy/action chains are reasons to evaluate it alongside Zush.
+
+The [pricing FAQ](https://filesdesk.app/pricing) states that subscriptions cannot use BYOK or local AI, and Self-Managed and subscription cannot be used at the same time. Managed credits count filename suggestions and expire monthly without rollover. Both purchase paths are limited to one device (one at a time for subscriptions); Self-Managed includes only 12 months of updates and a three-day refund window. BYOK sends required content to the chosen cloud provider, while only a local model keeps inference offline.
 
 FilesDesk is relevant when vLLM is a hard requirement. Its main drawback is the operating model: managed suggestions consume credits, while the lifetime path requires the user to supply an API key or local model; its public docs also do not enumerate RAW, design, and iWork coverage as granularly as Zush.
 
@@ -105,7 +112,7 @@ Its $8 managed tier includes 500 credits rather than unlimited renames.
 The sticker prices are not equivalent products: FilesDesk's managed tier is capped at 500 suggestions, and its lifetime license requires your own AI key or local model and covers one device with 12 months of updates. Zush paid PRO is unmetered and includes managed AI.
 
 **Do both work offline?**
-Both support local models: Zush through LM Studio or Ollama; FilesDesk through Ollama or vLLM. Zush's built-in route reduces setup, while LM Studio, Ollama, and FilesDesk's local routes depend on the model and hardware the user selects.
+Both support local models: Zush through LM Studio or Ollama; FilesDesk through Ollama, LM Studio, or vLLM on its Self-Managed license. Both require a compatible model and suitable hardware. FilesDesk's managed subscription cannot be used for local AI.
 
 **Which supports more file types?**
 Both document video and audio support. Zush publishes a broader concrete list of 100+ formats including RAW photos, design files, and iWork, while FilesDesk lists common image, PDF/Office, video, and audio formats without the same RAW/design/iWork matrix.

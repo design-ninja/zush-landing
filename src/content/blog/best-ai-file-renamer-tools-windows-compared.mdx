@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Tool Comparisons"
 tldr: "Best overall: Zush. It combines broad mixed-file coverage, configurable naming, preview, full Rename History, and folder monitoring with four ways to run AI: Zush managed cloud or BYOK online, and Ollama or LM Studio locally. Start with copied Windows files and check the proposed names before applying."
-reviewed: "2026-09-28"
+reviewed: "2026-10-05"
 featuredOrder: 1
 ---
 
@@ -37,7 +37,7 @@ The reason is practical: [Zush](/windows) handles mixed folders of screenshots, 
 
 It also gives Windows users a real choice over where AI runs. For cloud processing, use Zush managed cloud or connect your own provider through BYOK. For local processing, choose Ollama or LM Studio. The rename workflow stays the same: inspect the suggestions first, then apply or undo the batch.
 
-**Editorial update: September 24, 2026.** Written by the maker of Zush. This comparison uses published features and pricing, not a shared hands-on Windows benchmark. RenameClick pricing and recovery, plus conflicting Renamer.ai privacy statements, were rechecked for this update. For current Windows releases, see the [Windows changelog](/changelog/windows).
+**Targeted review: October 5, 2026.** Written by the maker of Zush. Renamer.ai v5 modes, NameQuick's Windows/pricing details, and FilesDesk licensing were rechecked against primary sources. Other checks retain their earlier dates. This comparison uses published features, not a shared hands-on Windows benchmark. See the [Windows changelog](/changelog/windows).
 
 Sources checked for this update: the official product, pricing, documentation, and repository pages identified inside each entry. Those references substantiate factual claims and limitations; they are not endorsements. Zush's Windows availability is independently verifiable in the [Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X).
 
@@ -47,8 +47,8 @@ Sources checked for this update: the official product, pricing, documentation, a
 | 2. FilesDesk — alternative | Naming templates | Common images, documents, video, and audio | Watch Folders | Processing History undo | 15 credits; USD 8/month or USD 40 lifetime | Managed suggestions are metered; lifetime requires BYOK/local setup |
 | 3. RenameClick — alternative | Format patterns, EXIF placeholders, custom instructions | Images, documents, audio | Auto Flow can rename and move | Up to 10 Undo entries in memory; cleared on restart | 100 successful renames or moves/mo; currently $36+ VAT lifetime | RAW, design, and video support are not published |
 | 4. AI Renamer — alternative | Custom prompts | Public examples emphasize images and text documents | Not publicly documented | Not publicly documented | $19 local mode | Folder monitoring, Rename History, and granular mixed-file coverage are not documented |
-| 5. Renamer.ai — alternative | Templates for document workflows | 30+ formats, document and vector focus | Magic Folders | One-click undo | 25 files/mo free; $9.95/mo | Every paid tier is metered; no BYOK or local-Ollama option is published |
-| 6. NameQuick — alternative | Presets, prompts, and Rules | 30+ format categories | Watch Folders and Rules are vendor-listed | One-click undo is vendor-listed | Managed trial 250/14 days; from $12/mo; $69 self-managed | No complete public Windows feature-and-format matrix |
+| 5. Renamer.ai — alternative | Templates for document workflows | 30+ formats, document and vector focus | Magic Folders | One-click undo | 25 files/mo free; $9.95/mo | Cloud file allowances; Local/BYOK terms need confirmation |
+| 6. NameQuick — alternative | Presets, prompts, Rules and Quick Organize | 30+ format categories | Watch Folders, Rules, inbox import | One-click undo is vendor-listed | Managed trial 70/14 days, card required; from $12/mo; $69 self-managed | Suggestions count even if not applied; monthly allowance expires; Self-Managed covers one computer |
 | 7. DIY PowerShell/Python — alternative | Whatever you build | Whatever you implement | Fully custom | You must build it | Software may be free | You own validation, collisions, credentials, maintenance, and rollback |
 
 This is a source-backed comparison, not an independent benchmark of all seven entries. We checked the same decision points in vendor-owned pricing and documentation: Windows install method, mixed-file support, local/BYOK availability, watched-folder automation, preview, rollback, and pricing. Unsupported or undocumented features are marked instead of inferred.
@@ -169,11 +169,11 @@ For the direct comparison, read [Zush vs AI Renamer](/blog/zush-vs-airenamer).
 
 ## Alternative 4: Renamer.ai — metered document workflow
 
-Renamer.ai ranks below Zush for a general Windows recommendation because every paid tier is metered, it does not publish a BYOK or local-Ollama option, and its listed formats omit PSD, Sketch, and Figma. Its desktop app does add Magic Folders, preview, one-click undo, and document-heavy OCR workflows, while its current FAQ lists 30+ formats and 20+ languages. Its [Windows page](https://renamer.ai/ai-file-renamer-windows) describes on-device processing, while its [privacy policy](https://renamer.ai/privacy-policy/) says contents are sent to AI subprocessors. We have not independently verified its network behavior, so this comparison does not classify it as a verified offline workflow. For the direct pricing comparison, read [Zush vs Renamer.ai](/blog/zush-vs-renamer-ai); for invoice workflows, use the [bulk PDF renaming section](/blog/automatically-rename-invoices-ai#renamed-to-vs-renamer-ai-bulk-pdf).
+Renamer.ai [v5.0.0](https://renamer.ai/changelog) adds downloadable local models, OpenAI/Gemini BYOK, synced templates, and reusable nested folder structures alongside Cloud, Magic Folders, preview, and undo. Its published cloud plans remain metered, and its format list does not document camera RAW, PSD, Sketch, or Figma. Local/BYOK plan allowances need confirmation. Older generic server-upload FAQ text does not describe every v5 mode; no independent network test is claimed here. See [Zush vs Renamer.ai](/blog/zush-vs-renamer-ai).
 
-## Alternative 5: NameQuick — incomplete Windows documentation
+## Alternative 5: NameQuick — metered document workflows
 
-NameQuick ranks below Zush because it does not publish a complete Windows-versus-Mac feature-and-format matrix, while its managed plans meter renames and its one-time plan requires a user-supplied API key or local model. Treat Finder, MLX, and other platform-specific claims as Mac features unless the Windows build explicitly confirms them.
+NameQuick's [Windows FAQ](https://www.namequick.app/) confirms Managed, BYOK, Ollama, and LM Studio. MLX and Finder tags/comments are Mac-only; the Windows installer is x64, with ARM PCs using Windows 11 emulation. Managed suggestions count when generated even if not applied, monthly allowance expires, and the $69 Self-Managed license covers one computer. See [Zush vs NameQuick](/blog/zush-vs-namequick) for current trials and Rules.
 
 Its site lists a Windows download, Watch Folders, Rules, content search, undo, and 30+ format categories. Zush remains the recommendation for broad mixed-file support, Microsoft Store delivery, and one workflow spanning managed cloud, BYOK, Ollama, LM Studio, monitoring, preview, and undo.
 

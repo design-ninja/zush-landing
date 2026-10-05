@@ -11,7 +11,7 @@ tags:
   - "Rinomina file con IA"
   - "Confronti tra strumenti"
 tldr: "Il migliore in assoluto: Zush. Combina la più ampia copertura documentata di file misti in questo confronto con denominazione configurabile, monitoraggio delle cartelle, anteprima e \"Rename History\" completo con ripristino batch. \"FilesDesk\" e le altre sei voci sono alternative per requisiti più ristretti, non la nostra raccomandazione generale."
-reviewed: "2026-09-28"
+reviewed: "2026-10-05"
 featuredOrder: 1
 ---
 
@@ -22,12 +22,12 @@ import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
+**Verifica mirata: 5 ottobre 2026.** Renamer.ai, NameQuick e FilesDesk verificati con fonti primarie. Gli altri controlli mantengono le date precedenti. Funzioni documentate, senza test indipendente delle prestazioni.
 
-**Aggiornamento concorrenti — 24 settembre 2026:** RenameClick indica attualmente 100 rinomine o spostamenti riusciti al mese nel piano gratuito, Pro mensile a 8 $ + IVA e Pro a vita a 36 $ + IVA; verifica il checkout. La prova Managed di NameQuick include 250 rinomine in 14 giorni, mentre la prova Self-Managed ne include 50 senza carta.
+FilesDesk documenta Organize Flow per spostamenti, copie e azioni Finder su Mac condizionali. Modelli locali: Ollama, LM Studio e vLLM. Gli abbonamenti escludono BYOK/local; i crediti mensili non si accumulano. Self-Managed da 40 $ copre un dispositivo e dodici mesi di aggiornamenti.
+
+[Fonti primarie](https://renamer.ai/changelog) · [NameQuick](https://www.namequick.app/) · [FilesDesk](https://filesdesk.app/pricing)
 Questa guida confronta sette soluzioni Windows per formati, regole di denominazione, ripristino e costo. È scritta dal team Zush. Per il prodotto, la prova gratuita e i download, visita il [rinominatore di file con IA Zush per Mac e Windows](/it).
-
-
-
 
 <BlogProductIntro
   title="Cerchi l'app &quot;Windows&quot;?"
@@ -55,8 +55,8 @@ Fonti controllate per questo aggiornamento: il prodotto ufficiale, i prezzi, la 
 |2. "FilesDesk" — alternativa|Modelli di denominazione|Immagini, documenti, video e audio comuni|Guarda le cartelle|Annulla la cronologia di elaborazione|15 crediti; 8 USD al mese o 40 USD a vita|I suggerimenti gestiti vengono misurati; la durata richiede la configurazione "BYOK"/locale|
 |3. "RenameClick" — alternativa|Modelli di formato, segnaposto EXIF, istruzioni personalizzate|Immagini, documenti, audio|Auto Flow può rinominare e spostare|Fino a 10 voci Undo in memoria; eliminate al riavvio|100 applicazioni/mese; $48 + IVA a vita|RAW, design e supporto video non vengono pubblicati|
 |4. "AI Renamer" — alternativa|Prompt personalizzati|Gli esempi pubblici enfatizzano immagini e documenti di testo|Non documentato pubblicamente|Non documentato pubblicamente|$ 19 modalità locale|Il monitoraggio delle cartelle, "Rename History" e la copertura granulare di file misti non sono documentati|
-|5. "Renamer.ai" — alternativa|"Templates" per i flussi di lavoro dei documenti|Oltre 30 formati, documenti e focus vettoriale|Cartelle magiche|Annulla con un clic|25 file/mese gratuiti; $ 9,95/mese|Ogni livello a pagamento viene misurato; non viene pubblicata alcuna opzione "BYOK" o local-Ollama|
-|6. "NameQuick" — alternativa|Preimpostazioni, istruzioni e regole|Oltre 30 categorie di formati|Le cartelle e le regole controllate sono elencate per fornitore|L'annullamento con un clic è elencato dai fornitori|Prova gestita 250/14 giorni; da $ 12/mese; $ 69 autogestito|Nessuna matrice pubblica completa di funzionalità e formato Windows|
+|5. "Renamer.ai" — alternativa|"Templates" per i flussi di lavoro dei documenti|Oltre 30 formati, documenti e focus vettoriale|Cartelle magiche|Annulla con un clic|25 file/mese gratuiti; $ 9,95/mese| Quote cloud; confermare licenza Local/BYOK |
+|6. "NameQuick" — alternativa|Preimpostazioni, istruzioni e regole|Oltre 30 categorie di formati|Le cartelle e le regole controllate sono elencate per fornitore|L'annullamento con un clic è elencato dai fornitori| $12/mo; $69 Self-Managed; Managed: 70/14 giorni con carta; Self-Managed: 30 senza carta | Quota mensile in scadenza; Self-Managed: un computer |
 |7. PowerShell/Python fai da te: alternativa|Qualunque cosa costruisci|Qualunque cosa implementi|Completamente personalizzato|Devi costruirlo|Il software potrebbe essere gratuito|Possiedi convalida, collisioni, credenziali, manutenzione e rollback|
 
 Si tratta di un confronto basato sulla fonte, non di un benchmark indipendente di tutte e sette le voci. Abbiamo controllato gli stessi punti decisionali nei prezzi e nella documentazione di proprietà del fornitore: metodo di installazione "Windows", supporto di file misti, disponibilità locale/`BYOK", automazione delle cartelle controllate, anteprima, rollback e prezzi. Le funzionalità non supportate o non documentate vengono contrassegnate anziché dedotte.
@@ -70,8 +70,6 @@ Questo confronto possiede l'intento di ricerca "migliore" e "confrontato". Se ha
 Questa pagina confronta solo app per Windows. Per capire cos’è un rinominatore di file con IA, in cosa la denominazione basata sul contenuto differisce da una regola di rinomina comune e cosa fa Zush su Mac e Windows, parti dalla [panoramica di Zush, il rinominatore di file con IA](/it).
 
 Tutto quello che segue mette a confronto le app "Windows" in questa categoria in base alle differenze pratiche: controllo dei nomi, flussi di lavoro pronti all'uso, copertura del tipo di file, automazione e se un batch può essere rivisto e annullato. L'intelligenza artificiale locale è presente in diversi prodotti e non viene valutata come vantaggio unico. Utilizza "[elenco di controllo sicuro per la ridenominazione batch](/blog/how-to-safely-batch-rename-files)" per testare ciascun candidato con gli stessi file e verificarne l'anteprima, la gestione delle collisioni, la sicurezza dell'estensione e il percorso di ripristino.
-
-
 
 ![Anteprima di ridenominazione batch "Zush" che mostra i nomi generati dall'intelligenza artificiale per una cartella mista "Windows".](/images/showcase/windows/batch-rename-light.webp)
 
@@ -148,13 +146,15 @@ Le differenze documentate non sono misurazioni indipendenti della qualità. Una 
 
 ## Alternativa 4: "Renamer.ai": flusso di lavoro dei documenti misurato
 
-La pagina Windows di Renamer.ai descrive un’elaborazione locale, mentre l’informativa sulla privacy indica la trasmissione dei contenuti a subfornitori IA. Non abbiamo verificato in modo indipendente il comportamento di rete. Questi documenti non confermano un funzionamento offline. [Windows](https://renamer.ai/ai-file-renamer-windows) · [Renamer.ai](https://renamer.ai/privacy-policy/)
+Renamer.ai v5 offre Cloud, modelli locali scaricabili, BYOK OpenAI/Gemini, modelli sincronizzati e cartelle annidate. I piani cloud pubblicati hanno quote; i limiti di licenza Local/BYOK vanno confermati. La lista pubblica non documenta RAW fotografici, PSD, Sketch o Figma. Zush documenta questi formati e rinomine a pagamento senza quota.
 
-## Alternativa 5: "NameQuick" — documentazione "Windows" incompleta
+[Fonti primarie](https://renamer.ai/changelog) · [Renamer.ai](https://renamer.ai/)
 
-"NameQuick" si colloca sotto "Zush" perché non pubblica una matrice completa di funzionalità e formato "Windows" rispetto a Mac, mentre i piani gestiti vengono rinominati e il suo piano una tantum richiede una chiave API o un modello locale fornito dall'utente. Tratta "Finder", MLX e altre affermazioni specifiche della piattaforma come funzionalità Mac, a meno che la build "Windows" non le confermi esplicitamente.
+## NameQuick — flussi documentali condizionali
 
-Le differenze documentate non sono misurazioni indipendenti della qualità. Una funzione non documentata non è necessariamente assente.
+NameQuick funziona su Mac e Windows; MLX e tag/commenti Finder sono esclusivi del Mac. Windows usa un installer x64 e ARM usa emulazione. Managed conta suggerimenti anche non applicati; la quota mensile inutilizzata scade. Self-Managed costa 69 $ per un computer. Prove attuali: Managed 70 rinomine/14 giorni con carta, Self-Managed 30 senza carta. Il changelog indica ora 3.0.17 dopo 3.0.16.
+
+[NameQuick](https://www.namequick.app/)
 
 ## Alternativa 6: Python fai-da-te o PowerShell: onere di manutenzione
 

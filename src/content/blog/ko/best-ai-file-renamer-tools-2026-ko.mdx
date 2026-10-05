@@ -11,7 +11,7 @@ tags:
   - "AI 파일 이름 바꾸기"
   - "도구 비교"
 tldr: "전체적으로 최고: 'Zush'. 이 비교에서 가장 구성 가능한 AI 명명 워크플로가 있습니다. 바로 사용할 수 있는 'Templates', 145개 이상의 'Naming Blocks', 'Custom AI Blocks', 형식 지정 및 현지화 컨트롤과 적용된 배치를 복원할 수 있는 'Rename History'입니다. 다른 제품은 우리의 전반적인 권장 사항이 아닌 더 좁은 대안입니다. Zush 폴더 분류는 Mac과 Windows에서 베타로 제공됩니다."
-reviewed: "2026-09-28"
+reviewed: "2026-10-05"
 featuredOrder: 1
 ---
 
@@ -22,11 +22,11 @@ import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
+**대상 정보 검토: 2026년 10월 5일.** Renamer.ai, NameQuick, FilesDesk를 일차 자료로 확인했습니다. 다른 제품은 기존 확인 날짜를 유지합니다. 공개 기능 비교이며 독립 성능 시험이 아닙니다.
 
+FilesDesk Organize Flow는 조건부 이동, 복사, Mac Finder 작업을 지원합니다. 로컬 옵션은 Ollama, LM Studio, vLLM입니다. 구독은 BYOK/로컬을 제외하며 월 크레딧은 이월되지 않습니다. 40달러 Self-Managed는 한 기기와 12개월 업데이트입니다.
 
-
-
-**경쟁사 정보 업데이트 — 2026년 9월 24일:** RenameClick은 현재 무료 요금제에서 월 100회의 성공한 이름 변경 또는 이동, Pro Monthly는 8달러+VAT, Pro Lifetime은 36달러+VAT로 안내합니다. 결제 화면에서 최신 가격을 확인하세요. NameQuick 체험은 Managed가 14일간 250회, Self-Managed가 카드 없이 50회입니다.
+[일차 자료](https://renamer.ai/changelog) · [NameQuick](https://www.namequick.app/) · [FilesDesk](https://filesdesk.app/pricing)
 <BlogProductIntro
   title="제품 경로 선택"
   description="'Zush'에는 Mac, 'Windows', 오프라인 AI, 'BYOK' 설정 및 일괄 이름 변경 의도에 대한 별도의 랜딩 페이지가 있습니다. 이 비교를 사용하여 선택한 다음 작업 흐름과 일치하는 페이지로 이동하세요."
@@ -156,11 +156,15 @@ Zush 폴더 분류는 Mac과 Windows에서 베타로 제공됩니다. 지원 파
 
 ### 5. Renamer.ai
 
-Renamer.ai의 Windows 페이지는 로컬 처리를 설명하지만 개인정보 처리방침은 파일 내용을 AI 하위 처리업체로 전송한다고 명시합니다. 네트워크 동작은 독립적으로 검증하지 않았습니다. 이 문서만으로 오프라인 작동을 확인할 수 없습니다. [Windows](https://renamer.ai/ai-file-renamer-windows) · [Renamer.ai](https://renamer.ai/privacy-policy/)
+Renamer.ai v5는 Cloud, 다운로드형 로컬 모델, OpenAI/Gemini BYOK, 동기화 템플릿과 중첩 폴더를 제공합니다. 공개 클라우드 요금제에는 파일 할당량이 있으며 Local/BYOK 라이선스 한도는 확인해야 합니다. 공개 형식 목록에는 카메라 RAW, PSD, Sketch, Figma가 없습니다. Zush는 해당 형식과 유료 이름 변경 무제한을 명시합니다.
+
+[일차 자료](https://renamer.ai/changelog) · [Renamer.ai](https://renamer.ai/)
 
 ### 6. NameQuick
 
-'NameQuick'는 이제 'Windows' 및 Mac 다운로드를 게시합니다. 문서화된 Mac 워크플로우에는 'Finder' 통합, 감시 폴더, 규칙, 실행 취소, OCR 및 30개 이상의 형식 범주가 포함됩니다. 공급업체는 완전한 플랫폼별 매트릭스를 게시하지 않으므로 이 비교에서는 모든 Mac 관련 기능이 Windows에 존재한다고 가정하지 않습니다.
+NameQuick은 Mac과 Windows에서 작동합니다. MLX와 Finder 태그/주석은 Mac 전용입니다. Windows 설치 프로그램은 x64이며 ARM은 에뮬레이션을 사용합니다. Managed는 적용하지 않은 제안도 차감하고 미사용 월 할당량은 만료됩니다. Self-Managed는 69달러에 컴퓨터 한 대입니다. 현재 체험: Managed는 카드 필수 14일 70회, Self-Managed는 카드 없이 30회. 변경 기록에는 3.0.16 이후 3.0.17도 있습니다.
+
+[NameQuick](https://www.namequick.app/)
 
 ### 7. 위스파일
 
@@ -178,19 +182,18 @@ Wisfile은 완전 로컬 AI 파일 이름 바꾸기 및 구성 도구입니다. 
 
 |특징| Zush | FilesDesk | RenameClick | AI Renamer | Renamer.ai | NameQuick |위스파일| Riffo |이름이 .to로 변경되었습니다.|
 |---|---|---|---|---|---|---|---|---|---|
-|플랫폼|맥 & Windows|맥 & Windows|Mac 및 Windows(데스크톱 기본)|데스크톱(Mac/Win)|데스크톱(Win/Mac) + 웹|맥 &Windows; 패리티가 완전히 문서화되지 않았습니다.|로컬 데스크톱|'macOS' + 웹 데모|웹 + 클라우드 통합|
+|플랫폼|맥 & Windows|맥 & Windows|Mac 및 Windows(데스크톱 기본)|데스크톱(Mac/Win)|데스크톱(Win/Mac) + 웹| Mac + Windows; MLX/Finder는 Mac 전용 |로컬 데스크톱|'macOS' + 웹 데모|웹 + 클라우드 통합|
 |이미지/디자인 형식|41개의 이미지 + 4개의 디자인 형식|사진/이미지 자세한 매트릭스를 찾을 수 없습니다.|10가지 이미지 형식; RAW/디자인 목록 없음|기능 예시 + 전체 파일 설명|30개 이상의 형식 포함 EPS/SVG/AI 벡터; RAW 없음|30개 이상의 형식|공개적으로 자세히 설명되지 않음|문서화되지 않음|스캔한 이미지/문서|
 |문서 형식|'iWork' 등 40개|사진, PDF, 송장, 영수증, 계약서, 스크린샷|20+ 포함 PDF/DOCX/JSON/XML/YAML/HTML/SQL/자막|PDF/TXT 예시; 모든 파일 문|30개 이상의 문서/이미지/벡터/이메일|PDF, 페이지, Office, OCR|공개적으로 자세히 설명되지 않음|문서화되지 않음|PDF/워드/엑셀/파워포인트|
 |오디오/비디오|오디오 7개 + 비디오 16개|나열된 일반적인 오디오 및 비디오 형식|전사된 오디오 5개; 지원되지 않는 비디오|나열되지 않음(별도의 CLI가 비디오를 제공함)|중심이 아님|광범위한 카테고리만 해당|확인되지 않음|문서화되지 않음|아니요|
-|측정되었나요?|유료 PRO에서는 아니요|관리 크레딧 예; 평생 아니오|무료 등급 예; 프로 아니오|클라우드 예; $19 현지 번호|예, 모든 계층에서|예, 관리됩니다. 자체 관리 아니요|아니요|명시되지 않음|예, 크레딧|
+|측정되었나요?|유료 PRO에서는 아니요|관리 크레딧 예; 평생 아니오|무료 등급 예; 프로 아니오|클라우드 예; $19 현지 번호| 클라우드 할당량, Local/BYOK 조건 확인 필요 |예, 관리됩니다. 자체 관리 아니요|아니요|명시되지 않음|예, 크레딧|
 |일괄 이름 바꾸기|예|예|예|예|예|예|예|예|예|
 |폴더 모니터링|예|예(감시 폴더)|예(자동 흐름)|공개 성명 없음|예(매직 폴더)|예(감시 폴더)|확인되지 않음|확인되지 않음|예(클라우드 폴더 감시)|
 |맞춤 패턴| Templates + 145+ Naming Blocks | Templates |형식 + 지침|사용자 정의 프롬프트/케이스 스타일| Templates |사전 설정/템플릿/프롬프트|공개적으로 자세히 설명되지 않음|제한된|저장된 팀 규칙/프롬프트|
 |실행 취소/롤백|예|예, 처리 기록을 통해|메모리에 Undo 최대 10개 보관, 재시작 시 삭제|공개 성명 없음|예|예, 원클릭 실행 취소 및 복구|확인되지 않음|확인되지 않음|검토/신뢰 워크플로|
-|여러 AI 제공업체|Gemini/OpenRouter/OpenAI/Claude + Ollama|클로드/제미니/OpenAI/OpenRouter/Ollama/vLLM|내장 로컬/Ollama/LM Studio/OpenAI/Gemini/Qwen|'Ollama'/LM 스튜디오/OpenAI/커스텀|결정된|OpenAI/OpenRouter/Claude/Gemini/Ollama/LM Studio/MLX|고정 로컬|고정 클라우드|고정 클라우드|
-|무료 등급|시작하려면 50개|15학점|무제한 분석 + 월 100 크레딧 적용|가입 시 10크레딧|25/월|관리형: 250/14일; 자체 관리: 50개 평가판 이름 변경|무료|자유로운 위치의 홈페이지|시작해야 할 문서 50개|
-|BYOK/로컬 옵션|예|평생 계획|예/공급자 선택|예/현지/맞춤형|공개 'BYOK' 없음|자체 관리형|현지의|공개 'BYOK' 없음|아니요|
-
+|여러 AI 제공업체|Gemini/OpenRouter/OpenAI/Claude + Ollama| Claude/Gemini/OpenAI/OpenRouter/Ollama/LM Studio/vLLM |내장 로컬/Ollama/LM Studio/OpenAI/Gemini/Qwen|'Ollama'/LM 스튜디오/OpenAI/커스텀| Cloud, 로컬 모델, OpenAI/Gemini BYOK |OpenAI/OpenRouter/Claude/Gemini/Ollama/LM Studio/MLX|고정 로컬|고정 클라우드|고정 클라우드|
+|무료 등급|시작하려면 50개|15학점|무제한 분석 + 월 100 크레딧 적용|가입 시 10크레딧|25/월| Managed: 카드 필수 70회/14일; Self-Managed: 카드 없이 30회 |무료|자유로운 위치의 홈페이지|시작해야 할 문서 50개|
+|BYOK/로컬 옵션|예|평생 계획|예/공급자 선택|예/현지/맞춤형| Local + OpenAI/Gemini BYOK (v5) |자체 관리형|현지의|공개 'BYOK' 없음|아니요|
 
 ## 가격 비교
 
@@ -203,12 +206,11 @@ Wisfile은 완전 로컬 AI 파일 이름 바꾸기 및 구성 도구입니다. 
 | FilesDesk |15학점|$8/월, $20/월 또는 $40 평생 'BYOK'/현지|$40 평생 경로 또는 $96-$240/년 구독|구독 또는 자체 관리 평생|
 | RenameClick |무제한 분석 + 월 100 크레딧 적용|$8+ VAT/월 또는 $36+ VAT 평생|$36+ VAT 평생 또는 $96+ VAT/년 월간|구독 또는 평생|
 | AI Renamer |가입 시 10크레딧|데스크탑 $19 일회성(로컬 모드) 또는 $10/200 클라우드 크레딧|$19 또는 클라우드 이름 변경당 $0.05|일회성 로컬/종량제 크레딧|
-| Renamer.ai |25개 파일/월|$9.95~99.95/월|$120~1,200/년|종량제 구독|
-| NameQuick |관리됨: 14일 동안 이름 변경 250회; 자체 관리: 50개 평가판 이름 변경|월 $12부터 관리(과금) 또는 자체 관리 $69 일회성 + API/로컬 모델|$144+/년 관리형 또는 $69 + API/로컬 설정|계량형 관리 또는 일회성 자체 관리|
+| Renamer.ai |25개 파일/월|$9.95~99.95/월|$120~1,200/년| 클라우드 할당량, Local/BYOK 조건 확인 필요 |
+| NameQuick | Managed: 카드 필수 70회/14일; Self-Managed: 카드 없이 30회 |월 $12부터 관리(과금) 또는 자체 관리 $69 일회성 + API/로컬 모델|$144+/년 관리형 또는 $69 + API/로컬 설정|계량형 관리 또는 일회성 자체 관리|
 |위스파일|완전 무료|해당 없음| $0 |무료|
 | Riffo |무료|해당 없음| $0 |무료|
 |이름이 .to로 변경되었습니다.|시작하려면 50개|$9 / 1,000(각 $0.009), $49 / 10,000(각 $0.0049)|볼륨에 따라 다릅니다. ~$49에는 10,000개의 이름 변경이 포함됩니다.|종량제 크레딧|
-
 
 ## 선택 방법
 
@@ -239,7 +241,6 @@ Mac과 Windows에서 여러 형식의 파일을 다룬다면 Zush를 권합니�
 ### AI로 파일 이름을 대량으로 바꾸는 것이 안전합니까?
 
 도구에서 미리보기 및 롤백을 제공하면 더 안전합니다. 대량 AI 이름 변경 시 수백 개의 파일 이름을 맹목적으로 적용해서는 안 됩니다. 제안된 모든 이름을 표시하고, 중복을 처리하고, 확장자를 보존하고, 이름 변경 기록을 유지하여 잘못된 배치를 되돌릴 수 있는 도구를 사용하세요.
-
 
 ## 평결
 

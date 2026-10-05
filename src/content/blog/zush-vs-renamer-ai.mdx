@@ -8,8 +8,8 @@ topic: "comparisons"
 tags:
   - "AI File Renaming"
   - "Tool Comparisons"
-tldr: "Pick Zush for the most configurable naming workflow in this comparison: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, and full Rename History. Renamer.ai's main drawbacks are metered paid tiers, no published BYOK/local mode, and no documented RAW, Sketch, Figma, or PSD support. Zush also offers optional AI folder sorting (beta)."
-reviewed: "2026-09-28"
+tldr: "Zush offers 145+ Naming Blocks, broad RAW/design/media coverage, and unmetered paid renames for $10/month or $48 one-time. Renamer.ai v5 also supports Local, BYOK, folder templates, preview, and undo. Its published cloud plans still have monthly file allowances, and its format list does not document camera RAW, Sketch, Figma, or PSD."
+reviewed: "2026-10-05"
 featuredOrder: 2
 ---
 
@@ -17,11 +17,11 @@ import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
-Quick answer: choose [Zush](/) when you need a precise naming system rather than a generic AI suggestion. Ready-made Templates combine with 145+ Naming Blocks, Custom AI Blocks, formatting, localization and metadata; Rename History stores original and new names, folder and timestamp and can restore an applied batch. Renamer.ai is relevant only when a web interface is mandatory. Its paid tiers are metered, it does not publish BYOK/local mode, and its format list omits RAW, Sketch, Figma, and PSD.
+Quick answer: [Zush](/) suits mixed Mac and Windows folders that need reusable filename conventions, RAW/design/media support, and unmetered paid renames. Renamer.ai v5 now offers Cloud, Local, BYOK, reusable folder structures, and richer previews. Local AI and folder organization are shared capabilities; the practical differences are documented formats, naming controls, cloud allowances, and the one-time purchase option.
 
-**Last verified: August 24, 2026**, against Zush's current documentation and renamer.ai's own pricing and format pages.
+**Last verified: October 5, 2026.** Written by the maker of Zush. This is a comparison of published capabilities, not an independent performance or network test.
 
-Sources checked for this update: [Zush](/) and [Renamer.ai](https://renamer.ai/), including public pricing, Magic Folders, OCR/document, language, undo, and supported-format details.
+Sources: [Zush documentation](/docs), [Renamer.ai pricing and format FAQ](https://renamer.ai/), and [Renamer.ai v5.0.0 changelog, September 25, 2026](https://renamer.ai/changelog). Older Renamer.ai FAQ text describes server processing without separating the newer modes; the v5 release notes explicitly document Local and BYOK. Check the selected mode before processing sensitive files.
 
 If you are searching "Zush vs Renamer.ai", you are usually deciding between two paid AI file renamers that both run on Mac and Windows. The answer depends mostly on three things: how you prefer to pay, what file types land in your folders, and whether OCR-driven document renaming is your core use case.
 
@@ -41,7 +41,7 @@ If you are searching "Zush vs Renamer.ai", you are usually deciding between two 
 | Dimension | Zush | Renamer.ai |
 |---|---|---|
 | Pricing | <BlogHighlight>$10/month or $48 one-time</BlogHighlight> | $9.95–$99.95/month |
-| Metering | <BlogHighlight>None on paid PRO</BlogHighlight> | Every tier is metered: 200 / 1,000 / 5,000 files per month |
+| Metering | <BlogHighlight>None on paid PRO</BlogHighlight> | Published cloud tiers: 200 / 1,000 / 5,000 files per month; Local/BYOK entitlement limits are not clearly separated in public pricing |
 | Free tier | 50 renames to start | 25 files/month |
 | 5-year cost (one-time path) | <BlogHighlight>$48 total</BlogHighlight> | $597–$5,997 |
 | Platforms | Mac + Windows desktop | Desktop (Mac/Win) + Web |
@@ -51,11 +51,11 @@ If you are searching "Zush vs Renamer.ai", you are usually deciding between two 
 | OCR | Yes | Yes (advertised core) |
 | Folder monitoring | Yes | Yes (Magic Folders) |
 | Undo / rollback | Yes (full history) | Yes |
-| Naming control | <BlogHighlight>Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata</BlogHighlight> ; optional AI folder sorting (beta) | Document templates |
-| BYOK | <BlogHighlight>Available on every plan</BlogHighlight> | No |
+| Naming control | <BlogHighlight>Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata</BlogHighlight>; optional AI folder sorting (beta) | Synced naming templates, Template Gallery, reusable nested folder structures |
+| BYOK | <BlogHighlight>Available on every plan</BlogHighlight> | OpenAI or Gemini in v5 |
 | Languages | 60+ | 20+ |
-| Local AI | LM Studio and Ollama on Mac and Windows | No documented local-only mode |
-| Main limitation | Desktop-only | Every paid tier is metered; no published BYOK/local mode or RAW/Sketch/Figma/PSD support |
+| Local AI | LM Studio and Ollama on Mac and Windows | Downloadable on-device models in v5; hardware compatibility checks |
+| Main limitation | Desktop-only | Cloud file allowances; no camera RAW/Sketch/Figma/PSD in the published format list; Local/BYOK plan terms need confirmation |
 
 ## Zush
 
@@ -85,7 +85,7 @@ Save the sorting settings in a **Template** and assign it to **Monitor** for new
 
 ![Renamer.ai desktop app screenshot (image: renamer.ai)](/images/blog/competitors/renamer-ai.png)
 
-Renamer.ai is a desktop and web tool focused on document-heavy workflows. Its current public pages advertise 30+ file formats and call out common documents and images such as PDFs, Word docs, Excel spreadsheets, PowerPoint, photos, scanned documents, vectors, and email files. The page also emphasizes preview, one-click undo, Magic Folders, and temporary processing. Notably absent from the public format language: camera RAW formats (CR2, NEF, ARW, etc.) and a BYOK/local-Ollama provider-control path.
+Renamer.ai is a desktop and web tool focused on document-heavy workflows. It lists 30+ formats, including PDFs, Office files, common photos, vectors, and email. Its v5 release adds downloadable local models, OpenAI/Gemini BYOK, account-synced templates, a Template Gallery, sample-file tests, reusable nested folder structures, and destination previews. Camera RAW, Sketch, Figma, and PSD are still absent from its published format list; that is a documentation boundary, not proof that every unlisted file fails.
 
 Pricing is monthly subscription with four tiers: free Starter (25 files/month), Pro $9.95/mo (200 files), Power User $29.95/mo (1,000 files), and Ultimate $99.95/mo (5,000 files). Annual billing gives a 15% discount per their site.
 
@@ -103,13 +103,13 @@ For a user who needs an ongoing paid tier, the pricing gap between one-time and 
 
 Even on Renamer.ai's cheapest paid tier at $9.95/mo, the 5-year cost is <BlogHighlight>$597 — more than 12× the one-time Zush price</BlogHighlight>. On the Ultimate tier, it is more than 120× over 5 years.
 
-Caveat: this assumes constant usage. If you only need a one-off cleanup of a few hundred files, both free tiers cover that.
+Caveat: these are arithmetic subscription scenarios, not measured costs for equivalent workloads. They assume uninterrupted monthly billing at unchanged prices, exclude taxes, annual discounts and API charges, and apply to the published cloud tiers. Zush's free allowance is 50 renames and Renamer.ai's is 25 files/month; neither covers a few hundred files immediately. Do not extrapolate the cloud meter to Renamer.ai Local/BYOK without confirming the license terms.
 
 ## Format support
 
 Mixed-file folders are where format coverage starts to matter:
 
-### Zush handles RAW + HEIC; Renamer.ai does not
+### Camera RAW is documented in Zush; HEIC is shared
 
 Zush's public format list includes 11 RAW variants: CR2, CR3 (Canon), NEF (Nikon), ARW (Sony), DNG (Adobe), ORF (Olympus), RAF (Fujifilm), RW2 (Panasonic), PEF (Pentax), SRW (Samsung), SR2 (Sony). Renamer.ai's public format list does not include any camera RAW formats.
 
@@ -121,19 +121,19 @@ On the document/vector side, Renamer.ai lists EPS, SVG, and AI. Zush 3.0 now sup
 
 ### Both handle the common case
 
-For everyday use — JPG, PNG, HEIC, PDF, DOCX, XLSX — both tools cover the common case. The decision usually comes down to documented RAW/design/iWork/audio/video breadth plus BYOK (Zush) vs OCR-heavy Magic Folders with subscription billing (Renamer.ai).
+For JPG, PNG, HEIC, PDF, DOCX, and XLSX, both publish support. Both also offer BYOK, local processing, monitoring, and undo. Compare specialist file coverage and naming controls rather than treating those shared features as exclusive to Zush.
 
 ## Features that differ
 
 ### BYOK
 
-<BlogHighlight>Zush includes BYOK on every plan</BlogHighlight> — connect your own Gemini/OpenRouter/OpenAI/Claude key and use BYOK within the 50-rename free allowance or without the Zush cap on PRO, while paying the provider's per-request cost. Renamer.ai does not list a BYOK option on their site; you stay on whatever AI service they bundle.
+<BlogHighlight>Zush includes BYOK on every plan</BlogHighlight>: connect Gemini, OpenRouter, OpenAI, or Claude within the 50-rename free allowance, or without the Zush app cap on PRO. Renamer.ai v5 documents OpenAI and Gemini BYOK, key validation, and an optional usage counter. Provider charges are separate in either product; confirm Renamer.ai's Local/BYOK license entitlements before purchase.
 
 ### Local AI mode
 
-Zush supports LM Studio and Ollama on Mac and Windows, so supported analysis can stay on the device. Renamer.ai does not advertise a local-only mode.
+Zush connects to LM Studio or Ollama on Mac and Windows. Renamer.ai v5 downloads models inside the app and documents processing entirely on the computer, with model quality levels and hardware checks. Neither product's local-mode quality or speed was independently benchmarked for this article.
 
-Renamer.ai's current FAQ says web uploads are temporary and desktop-app files are transmitted to Renamer.ai servers for extraction and AI analysis, then deleted after processing. That differs from Zush's user-selected LM Studio or Ollama model, or BYOK provider relationship.
+Processing depends on the mode. Local inference keeps the analysis on the device according to each vendor; cloud processing uses remote services; BYOK sends the required content to the chosen provider under your account. Renamer.ai's older generic FAQ still describes server transmission, so it should not be used to claim that all v5 desktop modes upload files.
 
 ### Web access
 
@@ -155,10 +155,11 @@ Zush states 60+ output languages; Renamer.ai states 20+. If you generate filenam
 - You want LM Studio or Ollama for on-device work
 - You need 60+ language support for non-English filenames
 
-**Consider Renamer.ai only if:**
+**Where Renamer.ai has a different fit:**
 
 - You need a web interface in addition to a desktop app
-- You accept metered paid tiers, no published BYOK/local mode, and no documented RAW/Sketch/Figma/PSD support
+- You need account-synced templates or an in-app downloadable model workflow
+- Its published cloud allowance fits your workload, and you have checked support for your specialist formats
 
 ## Migration tip
 
@@ -184,11 +185,11 @@ The format list on Renamer.ai's public site does not include camera RAW formats.
 
 ### Does Renamer.ai keep files local?
 
-Renamer.ai's current FAQ says web uploads are temporary and desktop-app files are transmitted to Renamer.ai servers for extraction and AI analysis, then deleted after processing. That may be acceptable for many document workflows, but it is not the same as choosing BYOK or running LM Studio or Ollama. If regulated data is involved, verify the exact processing path before standardizing on either tool.
+Yes in its v5 Local mode, according to the September 25 release notes. Cloud and BYOK have different data paths. Select and verify the mode, model, and license terms rather than relying on older generic desktop-upload FAQ wording.
 
 ### Can I use my own OpenAI key with Renamer.ai?
 
-Renamer.ai does not advertise a BYOK option. Zush includes BYOK on every plan — you can connect your own Gemini, OpenRouter, OpenAI, or Claude key.
+Yes. Renamer.ai v5 supports OpenAI and Gemini BYOK. Zush supports Gemini, OpenRouter, OpenAI, and Claude on every plan. Both require a provider account and may incur API charges.
 
 ### Do both have folder monitoring?
 
@@ -203,6 +204,6 @@ Yes. Zush keeps a full rename history with one-click revert. Renamer.ai supports
 Both tools work for everyday AI file renaming and both have folder monitoring + undo. The decision splits cleanly:
 
 - If you want to pay once and never think about it again, handle RAW/HEIC/design/iWork/audio/video, and run BYOK without a separate BYOK purchase: <BlogHighlight>Zush at $48 one-time</BlogHighlight>.
-- Consider Renamer.ai only when web access is mandatory and its metered tiers, fixed provider path, and narrower format coverage are acceptable.
+- Renamer.ai adds web access, account-synced templates, and downloadable local models. Its cloud plans remain metered, and the public format list does not establish camera RAW or design-project coverage.
 
 For the broader market view of the tools we track, see [AI renamer market comparison](/blog/best-ai-file-renamer-tools-2026).

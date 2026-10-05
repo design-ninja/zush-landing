@@ -11,7 +11,7 @@ tags:
   - "Rinomina file con IA"
   - "Confronti tra strumenti"
 tldr: "Il migliore in assoluto: Zush. Ha il flusso di lavoro di denominazione AI più configurabile in questo confronto: \\\"Templates\\\" già pronto, oltre 145 \\\"Naming Blocks\\\", \\\"Custom AI Blocks\\\", controlli di formattazione e localizzazione, oltre a \\\"Rename History\\\" che può ripristinare un batch applicato. Gli altri prodotti sono alternative più limitate, non la nostra raccomandazione generale. L'ordinamento di Zush è in beta su Mac e Windows."
-reviewed: "2026-09-28"
+reviewed: "2026-10-05"
 featuredOrder: 1
 ---
 
@@ -22,11 +22,11 @@ import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
+**Verifica mirata: 5 ottobre 2026.** Renamer.ai, NameQuick e FilesDesk verificati con fonti primarie. Gli altri controlli mantengono le date precedenti. Funzioni documentate, senza test indipendente delle prestazioni.
 
+FilesDesk documenta Organize Flow per spostamenti, copie e azioni Finder su Mac condizionali. Modelli locali: Ollama, LM Studio e vLLM. Gli abbonamenti escludono BYOK/local; i crediti mensili non si accumulano. Self-Managed da 40 $ copre un dispositivo e dodici mesi di aggiornamenti.
 
-
-
-**Aggiornamento concorrenti — 24 settembre 2026:** RenameClick indica attualmente 100 rinomine o spostamenti riusciti al mese nel piano gratuito, Pro mensile a 8 $ + IVA e Pro a vita a 36 $ + IVA; verifica il checkout. La prova Managed di NameQuick include 250 rinomine in 14 giorni, mentre la prova Self-Managed ne include 50 senza carta.
+[Fonti primarie](https://renamer.ai/changelog) · [NameQuick](https://www.namequick.app/) · [FilesDesk](https://filesdesk.app/pricing)
 <BlogProductIntro
   title="Scegli il percorso del prodotto"
   description="&quot;Zush&quot; dispone di pagine di destinazione separate per Mac, &quot;Windows&quot;, AI offline, configurazione di &quot;BYOK&quot; e intento di ridenominazione batch. Utilizza questo confronto per scegliere, quindi passa alla pagina che corrisponde al tuo flusso di lavoro."
@@ -158,11 +158,15 @@ Due progetti separati condividono questo nome e la loro fusione sovrastima ciò 
 
 ### 5. Renamer.ai
 
-La pagina Windows di Renamer.ai descrive un’elaborazione locale, mentre l’informativa sulla privacy indica la trasmissione dei contenuti a subfornitori IA. Non abbiamo verificato in modo indipendente il comportamento di rete. Questi documenti non confermano un funzionamento offline. [Windows](https://renamer.ai/ai-file-renamer-windows) · [Renamer.ai](https://renamer.ai/privacy-policy/)
+Renamer.ai v5 offre Cloud, modelli locali scaricabili, BYOK OpenAI/Gemini, modelli sincronizzati e cartelle annidate. I piani cloud pubblicati hanno quote; i limiti di licenza Local/BYOK vanno confermati. La lista pubblica non documenta RAW fotografici, PSD, Sketch o Figma. Zush documenta questi formati e rinomine a pagamento senza quota.
+
+[Fonti primarie](https://renamer.ai/changelog) · [Renamer.ai](https://renamer.ai/)
 
 ### 6. NameQuick
 
-"NameQuick" ora pubblica i download di "Windows" e Mac. Il suo flusso di lavoro Mac documentato copre l'integrazione di "Finder", cartelle esaminate, regole, annulla, OCR e oltre 30 categorie di formati. Il fornitore non pubblica una matrice completa piattaforma per piattaforma, quindi questo confronto non presuppone che tutte le funzionalità specifiche del Mac siano presenti su "Windows".
+NameQuick funziona su Mac e Windows; MLX e tag/commenti Finder sono esclusivi del Mac. Windows usa un installer x64 e ARM usa emulazione. Managed conta suggerimenti anche non applicati; la quota mensile inutilizzata scade. Self-Managed costa 69 $ per un computer. Prove attuali: Managed 70 rinomine/14 giorni con carta, Self-Managed 30 senza carta. Il changelog indica ora 3.0.17 dopo 3.0.16.
+
+[NameQuick](https://www.namequick.app/)
 
 ### 7. Wisfile
 
@@ -180,19 +184,18 @@ Le differenze documentate non sono misurazioni indipendenti della qualità. Una 
 
 |Caratteristica| Zush | FilesDesk | RenameClick | AI Renamer | Renamer.ai | NameQuick |Wisfile| Riffo |Rinominato.to|
 |---|---|---|---|---|---|---|---|---|---|
-|Piattaforma|Mac e "Windows".|Mac e "Windows".|Mac e "Windows" (nativo per desktop)|Desktop (Mac/Win)|Desktop (Win/Mac) + Web|Mac & Windows; parità non completamente documentata|Desktop locale|"macOS" + Demo web|Integrazioni web + cloud|
+|Piattaforma|Mac e "Windows".|Mac e "Windows".|Mac e "Windows" (nativo per desktop)|Desktop (Mac/Win)|Desktop (Win/Mac) + Web| Mac + Windows; MLX/Finder solo Mac |Desktop locale|"macOS" + Demo web|Integrazioni web + cloud|
 |Formati di immagine/disegno|41 immagini + 4 formati di design|Foto/immagini; nessuna matrice dettagliata trovata|10 formati di immagine; nessun elenco RAW/design|Esempi di funzionalità + istruzione per tutti i file|Oltre 30 formati inclusi vettori EPS/SVG/AI; niente RAW|Oltre 30 formati|Non dettagliato pubblicamente|Non documentato|Immagini/documenti scansionati|
 |Formati dei documenti|40, compreso "iWork".|Foto, PDF, fatture, ricevute, contratti, screenshot|20+ compresi PDF/DOCX/JSON/XML/YAML/HTML/SQL/sottotitoli|Esempi PDF/TXT; dichiarazione di tutti i file|Oltre 30 documenti/immagini/vettoriali/e-mail|PDF, Pagine, Office, OCR|Non dettagliato pubblicamente|Non documentato|PDF/Word/Excel/PowerPoint|
 |Audio/video|7 audio + 16 video|Formati audio e video comuni elencati|5 audio con trascrizione; video non supportato|Non elencato (la CLI separata esegue il video)|Non centrale|Solo categoria ampia|Non confermato|Non documentato|NO|
-|Misurato?|No su PRO a pagamento|Crediti gestiti sì; A vita n|Livello gratuito sì; Professionista n|Nuvola sì; $ 19 N. locale|Sì, a tutti i livelli|Gestito sì; Autogestito n|NO|Non dichiarato|Sì, crediti|
+|Misurato?|No su PRO a pagamento|Crediti gestiti sì; A vita n|Livello gratuito sì; Professionista n|Nuvola sì; $ 19 N. locale| Quote cloud; confermare licenza Local/BYOK |Gestito sì; Autogestito n|NO|Non dichiarato|Sì, crediti|
 |Rinominare batch|SÌ|SÌ|SÌ|SÌ|SÌ|SÌ|SÌ|SÌ|SÌ|
 |Monitoraggio delle cartelle|SÌ|Sì (controlla cartelle)|Sì (flusso automatico)|Nessuna dichiarazione pubblica|Sì (cartelle magiche)|Sì (controlla cartelle)|Non confermato|Non confermato|Sì (cartelle cloud controllate)|
 |Modelli personalizzati| Templates + 145+ Naming Blocks | Templates |Formati + istruzioni|Stili di richieste/casi personalizzati| Templates |Preimpostazioni/modelli/prompt|Non dettagliato pubblicamente|Limitato|Regole/richieste del team salvate|
 |Annulla/ripristina|SÌ|Sì, tramite la cronologia di elaborazione|Fino a 10 voci Undo in memoria; eliminate al riavvio|Nessuna dichiarazione pubblica|SÌ|Sì, Annulla e ripristina con un clic|Non confermato|Non confermato|Flusso di lavoro di revisione/confidenza|
-|Più fornitori di intelligenza artificiale|Gemelli/OpenRouter/OpenAI/Claude + Ollama|Claude/Gemini/OpenAI/OpenRouter/Ollama/vLLM|Locale integrato/Ollama/LM Studio/OpenAI/Gemini/Qwen|"Ollama"/LM Studio/OpenAI/personalizzato|Fisso|OpenAI/OpenRouter/Claude/Gemini/Ollama/LM Studio/MLX|Locale fisso|Nuvola fissa|Nuvola fissa|
-|Livello gratuito|50 per iniziare|15 crediti|Analisi illimitata + 100 crediti applicati/mese|10 crediti all'iscrizione|25/mese|Gestito: 250/14 giorni; Autogestito: 50 rinominazioni di prova|Gratuito|Home page a posizionamento libero|50 documenti per iniziare|
-|"BYOK"/opzione locale|SÌ|Piano a vita|Sì/selezione del fornitore|Sì/locale/personalizzato|Nessun BYOK pubblico|Autogestito|Locale|Nessun "BYOK" pubblico|NO|
-
+|Più fornitori di intelligenza artificiale|Gemelli/OpenRouter/OpenAI/Claude + Ollama| Claude/Gemini/OpenAI/OpenRouter/Ollama/LM Studio/vLLM |Locale integrato/Ollama/LM Studio/OpenAI/Gemini/Qwen|"Ollama"/LM Studio/OpenAI/personalizzato| Cloud; modelli locali; BYOK OpenAI/Gemini |OpenAI/OpenRouter/Claude/Gemini/Ollama/LM Studio/MLX|Locale fisso|Nuvola fissa|Nuvola fissa|
+|Livello gratuito|50 per iniziare|15 crediti|Analisi illimitata + 100 crediti applicati/mese|10 crediti all'iscrizione|25/mese| Managed: 70/14 giorni con carta; Self-Managed: 30 senza carta |Gratuito|Home page a posizionamento libero|50 documenti per iniziare|
+|"BYOK"/opzione locale|SÌ|Piano a vita|Sì/selezione del fornitore|Sì/locale/personalizzato| Local + OpenAI/Gemini BYOK (v5) |Autogestito|Locale|Nessun "BYOK" pubblico|NO|
 
 ## Confronto dei prezzi
 
@@ -205,12 +208,11 @@ Per una suddivisione tra abbonamenti diretti e singoli, vedere "["Zush" rispetto
 | FilesDesk |15 crediti|$ 8/mese, $ 20/mese o $ 40 "BYOK" a vita/locale|Percorso a vita da $ 40 o abbonamenti da $ 96 a $ 240 all'anno|Abbonamento o vita autogestita|
 | RenameClick |Analisi illimitata + 100 crediti applicati/mese|$ 8+ IVA/mese o $ 36+ IVA A vita|$36+ IVA a vita o $96+ IVA/anno al mese|Abbonamento o vita|
 | AI Renamer |10 crediti all'iscrizione|Desktop $ 19 una tantum (modalità locale) o crediti cloud $ 10/200|$ 19 o $ 0,05 per ridenominazione del cloud|Crediti locali/contabili una tantum|
-| Renamer.ai |25 file/mese|$ 9,95–99,95/mese|$ 120–1.200/anno|Abbonamento a consumo|
-| NameQuick |Gestito: 250 rinominazioni/14 giorni; Autogestito: 50 rinominazioni di prova|Gestito da $ 12/mese (a consumo) o autogestito da $ 69 una tantum + API/modello locale|$ 144+/anno gestito o $ 69 + API/configurazione locale|Gestito con contatore o autogestito una tantum|
+| Renamer.ai |25 file/mese|$ 9,95–99,95/mese|$ 120–1.200/anno| Quote cloud; confermare licenza Local/BYOK |
+| NameQuick | Managed: 70/14 giorni con carta; Self-Managed: 30 senza carta |Gestito da $ 12/mese (a consumo) o autogestito da $ 69 una tantum + API/modello locale|$ 144+/anno gestito o $ 69 + API/configurazione locale|Gestito con contatore o autogestito una tantum|
 |Wisfile|Completamente gratuito|N / A| $0 |Gratuito|
 | Riffo |Gratuito|N / A| $0 |Gratuito|
 |Rinominato.to|50 per iniziare|$ 9/1.000 ($ 0,009 ciascuno), $ 49/10.000 ($ 0,0049 ciascuno)|Dipende dal volume; ~$49 coprono 10.000 rinominazioni|Crediti a consumo|
-
 
 ## Come scegliere
 
@@ -241,7 +243,6 @@ Per cartelle con file diversi su Mac e Windows consigliamo Zush: scegli un model
 ### È sicuro rinominare i file in blocco con l'intelligenza artificiale?
 
 È più sicuro quando lo strumento fornisce anteprima e rollback. La ridenominazione in blocco dell'IA non dovrebbe mai applicare ciecamente centinaia di nomi di file. Utilizza uno strumento che mostri tutti i nomi proposti, gestisca i duplicati, preservi le estensioni e conservi la cronologia delle ridenominazioni in modo da poter ripristinare un batch errato.
-
 
 ## Verdetto
 

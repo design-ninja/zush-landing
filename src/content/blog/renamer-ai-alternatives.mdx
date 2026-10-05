@@ -8,8 +8,8 @@ topic: "comparisons"
 tags:
   - "AI File Renaming"
   - "Tool Comparisons"
-tldr: "Renamer.ai meters every plan (200 to 5,000 files a month) and has no published BYOK or local mode. Zush is the closest all-round alternative: desktop app for Mac and Windows, unmetered paid plan ($48 one-time), local AI through Ollama or LM Studio, and support for RAW photos, design files, and video. Zush also offers optional AI folder sorting (beta)."
-reviewed: "2026-09-28"
+tldr: "Renamer.ai v5 supports Local and OpenAI/Gemini BYOK, but its published cloud plans still have monthly file allowances. Zush is an alternative for mixed Mac and Windows files with unmetered paid renames ($48 one-time), 145+ Naming Blocks, local AI, and documented RAW/design/video coverage."
+reviewed: "2026-10-05"
 ---
 
 import BlogCTA from '@/components/blog/BlogCTA.astro';
@@ -18,9 +18,9 @@ import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
 Quick answer: the best Renamer.ai alternative for most people is [Zush](/). It covers the same core job, renaming files by what is inside them, without a monthly file cap. Its one-time plan is $48, it runs AI locally if you want, and it handles files Renamer.ai does not list, like RAW photos, Photoshop, Figma, and Sketch files, and video.
 
-Renamer.ai is a solid document renamer. People usually start looking elsewhere for one of three reasons: the monthly file limits, the lack of a local or bring-your-own-key option, or file types it does not cover.
+Renamer.ai is a document-focused renamer. Reasons to compare alternatives include its cloud file allowances, recurring billing, and specialist formats missing from its public list. Local and BYOK are no longer missing features: [v5.0.0](https://renamer.ai/changelog), released September 25, adds both, plus reusable folder structures and synced templates.
 
-**Last checked: September 22, 2026.** Written by the maker of Zush. Competitor facts come from each vendor's pricing and documentation pages; confirm current prices before buying.
+**Review updated: October 5, 2026.** Written by the maker of Zush. Renamer.ai, NameQuick, and FilesDesk facts were checked against their linked primary sources; RenameClick retains its September 24 price check and Renamed.to retains its September 22 check. This is a documentation comparison, not a shared performance test.
 
 ## Why people switch from Renamer.ai
 
@@ -33,7 +33,7 @@ Its pricing is where most people hit a wall:
 | Free | $0 | 25 |
 | Paid tiers | $9.95 to $99.95 per month | 200, 1,000, or 5,000 |
 
-Every paid tier is metered, and there is no published BYOK or local-only mode. If you rename a few hundred files a month, that adds up. At $9.95 a month, five years cost about $597.
+The published cloud tiers are metered. Renamer.ai now offers downloadable local models and OpenAI/Gemini BYOK; its pricing page does not clearly separate the license allowances for those modes. Confirm those terms before assuming that every local or BYOK operation consumes a cloud credit. At an unchanged $9.95/month, five uninterrupted years of cloud Pro total $597 before taxes or discounts.
 
 ## The alternatives at a glance
 
@@ -79,13 +79,13 @@ As checked September 24, 2026, Pro is $8 plus VAT per month or $36 plus VAT life
 
 [FilesDesk](https://filesdesk.app/) uses credits: 1 credit per filename suggestion. Managed plans are $8 a month for 500 credits or $20 for 2,000. The $40 lifetime plan is unmetered but requires your own API key or a local model (Ollama or vLLM).
 
-It supports images, PDFs, Office files, video, and audio, with Watch Folders and an undo history. See [Zush vs FilesDesk](/blog/zush-vs-filesdesk).
+It supports images, PDFs, Office files, video, and audio, with Watch Folders, undo, and [Organize Flow](https://filesdesk.app/docs/core-features/organize-flow) for conditional moves, copies, tags, and comments. Local options include Ollama, LM Studio, and vLLM. Important limits: subscriptions cannot use BYOK/local AI, credits reset monthly without rollover, and the self-managed license covers one device with 12 months of updates. See [Zush vs FilesDesk](/blog/zush-vs-filesdesk).
 
-## 4. NameQuick: best for document rules on Mac
+## 4. NameQuick: conditional document workflows
 
 [NameQuick](https://www.namequick.app/) combines AI naming with Rules that can move, tag, or archive files after renaming. Managed plans start at $12 a month and are metered (500 to 10,000 renames). The $69 Self-Managed license removes metering if you bring a key or run Ollama, LM Studio, or MLX.
 
-It is strongest for recurring PDFs, receipts, and contracts. See [Zush vs NameQuick](/blog/zush-vs-namequick).
+NameQuick ships on Mac and Windows; MLX, Finder tags, and comments are Mac-only. Its managed trial currently includes 70 renames over 14 days and requires a card; self-managed starts with 30 free renames. Managed suggestions count when generated, even when not applied, and monthly unused allowance expires. See the current [product and pricing page](https://www.namequick.app/) and [Zush vs NameQuick](/blog/zush-vs-namequick).
 
 ## 5. Renamed.to: best for cloud storage workflows
 
@@ -98,7 +98,7 @@ It charges per document: $9 for 1,000 or $49 for 10,000, with 50 free. It focuse
 - Mixed files, no monthly cap, optional local AI: **Zush**.
 - Offline AI with nothing to configure: **RenameClick**.
 - You already pay for an OpenAI or Claude key: **FilesDesk** lifetime, or Zush with BYOK.
-- Document rules that also move files on a Mac: **NameQuick**.
+- Conditional document moves on Mac or Windows: **NameQuick**, with Mac-only Finder actions.
 - Everything lives in Google Drive or Dropbox: **Renamed.to**.
 
 ## What five years costs
@@ -140,8 +140,8 @@ Zush includes 50 free AI renames, and RenameClick currently gives 100 successful
 
 ### Does Renamer.ai work offline?
 
-Renamer.ai does not publish a local-only mode. If files must stay on your computer, use Zush with Ollama or LM Studio, or RenameClick's built-in model.
+Yes: Renamer.ai v5 documents on-device processing through downloadable local models. Zush connects to Ollama or LM Studio; RenameClick offers a bundled model. Test the selected local model on representative files and confirm the license terms before choosing.
 
 ### Is Renamer.ai a one-time purchase?
 
-No. All Renamer.ai paid plans are monthly subscriptions with a file limit. Zush, RenameClick, FilesDesk, and NameQuick all offer a one-time option.
+Its public pricing lists recurring cloud subscriptions, not a one-time purchase. Local/BYOK license terms are not clearly separated there. Zush, RenameClick, FilesDesk, and NameQuick publish one-time options with different AI and update entitlements.

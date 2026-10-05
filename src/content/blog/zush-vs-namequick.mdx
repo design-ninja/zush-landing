@@ -8,8 +8,8 @@ topic: "comparisons"
 tags:
   - "AI File Renaming"
   - "Tool Comparisons"
-tldr: "Choose Zush for the most configurable AI naming workflow in this comparison: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, and Rename History with batch revert. NameQuick's main limitation is its incomplete public platform-and-format matrix; local AI is available in both and is not a differentiator. Zush also offers optional AI folder sorting (beta)."
-reviewed: "2026-09-28"
+tldr: "Zush offers 145+ Naming Blocks, documented RAW/design/media coverage, and unmetered paid renames. NameQuick runs on Mac and Windows with Rules, Quick Organize, inbox import, and content search; MLX and Finder actions are Mac-only. Its managed suggestions consume allowance even if unapplied, monthly allowance expires, and the $69 self-managed license covers one computer."
+reviewed: "2026-10-05"
 featuredOrder: 3
 ---
 
@@ -18,9 +18,9 @@ import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
-Quick answer: choose [Zush](/) when you want precise, reusable control over the filename. Ready-made Templates combine with 145+ Naming Blocks, Custom AI Blocks, formatting, localization, tags, and metadata; Rename History records original and new names, folder, and timestamp and can restore an applied batch. Zush costs <BlogHighlight>$10/month or $48 one-time</BlogHighlight> with unmetered paid PRO renames. NameQuick's managed plans are metered, and its public site does not provide a complete platform-specific feature and format matrix.
+Quick answer: choose [Zush](/) for reusable filenames built from 145+ Naming Blocks, documented RAW/design/media coverage, and unmetered paid renames at <BlogHighlight>$10/month or $48 one-time</BlogHighlight>. NameQuick also runs on Mac and Windows and offers conditional Rules, Quick Organize, inbox import, and content search. Its practical trade-offs are metered managed suggestions, expiring monthly allowance, and a one-computer Self-Managed license.
 
-**Last verified: August 24, 2026**, against Zush's current product documentation and namequick.app's own product and pricing pages. NameQuick's site offers both Windows and Mac downloads; platform-specific feature parity is not inferred where its public page does not separate the two builds.
+**Last verified: October 5, 2026.** Written by the maker of Zush. Sources: [NameQuick product, pricing and Windows FAQ](https://www.namequick.app/), [workflow overview](https://www.namequick.app/about), and [Mac/Windows changelog](https://www.namequick.app/changelog). This is a documentation comparison, not an independent performance test.
 
 Sources checked for this update: [Zush](/) and [NameQuick](https://www.namequick.app/), including public pricing, platform, provider, folder monitoring, undo, and format-support details.
 
@@ -43,9 +43,9 @@ If you are searching "Zush vs NameQuick", compare the workflow you can verify ra
 |---|---|---|
 | Pricing | <BlogHighlight>$10/month or $48 one-time</BlogHighlight> | Managed from $12/mo; $69 one-time Self-Managed (1 device, lifetime updates) |
 | Metering | <BlogHighlight>None on paid PRO</BlogHighlight> | Managed is metered at 500 / 2,000 / 5,000 / 10,000 renames per month; Self-Managed is not |
-| Free tier | 50 renames to start | Managed trial: 250 renames for 14 days; Self-Managed trial: 50 renames |
+| Free tier | 50 renames to start | Current product page: Managed 70 renames/14 days, card required; Self-Managed 30 renames, no card/time limit |
 | 5-year cost (one-time path) | <BlogHighlight>$48 total</BlogHighlight> | $69 + API/local model setup |
-| Platforms | Mac + Windows | Mac + Windows downloads published; feature parity is not separately documented |
+| Platforms | Mac + Windows | Mac + Windows; Windows x64 installer, Windows ARM through emulation |
 | Image and design formats | 41 image formats + 4 design formats (RAW, HEIC, AVIF, Sketch, Figma, AI, PSD) | 30+ formats spanning categories |
 | RAW support | <BlogHighlight>Yes (11 variants)</BlogHighlight> | Not listed publicly |
 | Document formats | 40 document/PDF formats, including iWork | Office docs covered |
@@ -58,8 +58,8 @@ If you are searching "Zush vs NameQuick", compare the workflow you can verify ra
 | Local AI | LM Studio and Ollama on Mac and Windows | Ollama, LM Studio, and MLX |
 | Languages | 60+ | Multilingual (count not stated) |
 | Naming control | <BlogHighlight>Ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata</BlogHighlight> ; optional AI folder sorting (beta) | Presets, prompts, and Rules that can move/tag/archive |
-| Finder tags | Yes | Yes (with Comments) |
-| Main limitation | Desktop-only | Managed tiers are metered; no complete public per-platform format matrix |
+| Finder tags | Mac Finder tags | Mac-only Finder tags/comments; MLX also Apple Silicon only |
+| Main limitation | Desktop-only; folder sorting is beta | Suggestions count even if not applied; monthly allowance expires; Self-Managed covers one computer |
 
 ## Zush
 
@@ -75,7 +75,7 @@ Both products offer local-model paths, so local AI is useful for privacy but doe
 
 ### Folder grouping versus conditional actions
 
-Zush offers **AI folder sorting (beta)** using **Auto** or plain-language **Folder rules**, such as “Group invoices by company and receipts by month.” It proposes groups from content while a Template controls the filenames. NameQuick’s conditional Rules can move, tag, or archive files; those actions are a different control model. Check whether your task needs content-based grouping or a specific conditional action chain.
+Zush offers **AI folder sorting (beta)** using **Auto** or plain-language **Folder rules**, such as “Group invoices by company and receipts by month.” It proposes groups from content while a Template controls the filenames. NameQuick also has Quick Organize for an approved folder plan, plus conditional Rules to move files, adjust dates, and archive them, with Finder tags and colors on Mac. Content-based grouping is not exclusive to Zush; compare the filename controls and the conditional actions your workflow needs.
 
 Choose a **Destination folder**, or keep the source folder as the root. Enable **Reuse existing folders** to prefer suitable folders already there; Zush can create a new one when nothing fits. In a manual batch, review both the suggested names and folders before applying. To rename in place, leave sorting off and keep the original destination.
 
@@ -84,14 +84,20 @@ Save the sorting settings in a **Template** and assign it to **Monitor** for new
 ## NameQuick
 
 <BlogToolMeta platform="Mac and Windows downloads" website="https://www.namequick.app/" label="namequick.app">
-  <Fragment slot="pricing">Managed from $12/mo, metered at 500 / 2,000 / 5,000 / 10,000 renames per month; Self-Managed $69 one-time for 1 device with lifetime updates and BYOK/local models; Managed trial includes 250 renames for 14 days, while the Self-Managed trial includes 50.</Fragment>
+  <Fragment slot="pricing">Managed $12/$29/$59/$99 per month for 500/2,000/5,000/10,000 suggestions; Self-Managed $69 one-time for one computer with lifetime updates and BYOK/local models. Current product-page trials: Managed 70 renames over 14 days with a card; Self-Managed 30 renames without a card.</Fragment>
 </BlogToolMeta>
 
-NameQuick publishes Windows and Mac downloads with two purchase paths. **Managed starts at $12/mo and is metered by volume** at 500, 2,000, 5,000, or 10,000 renames per month. **Self-Managed is $69 one-time** for one device and is the BYOK/local-model path. Its current public page does not provide a separate Windows-versus-Mac feature matrix, so this comparison does not assume that every Finder, MLX, or platform-specific feature is identical on Windows.
+NameQuick publishes Windows and Mac downloads with two purchase paths. Managed is $12/$29/$59/$99 per month for 500/2,000/5,000/10,000 suggestions, with no device limit. Self-Managed is $69 once for one computer, lifetime updates, and your own key or model. Its Windows FAQ confirms Managed, BYOK, Ollama, and LM Studio; MLX and Finder tags/comments are Mac-only. The Windows installer is x64, with ARM PCs using Windows 11 emulation.
 
 NameQuick publicly lists OpenAI, OpenRouter, Claude, Gemini, Ollama, LM Studio, and MLX for its self-managed workflow. Its privacy statements, provider availability, and Windows feature support are vendor-published claims and should be checked against the current build before purchase.
 
-Its public workflow includes Watch Folders, Undo & Recovery, and conditional Rules that can move, tag, or archive files. The limitation is verification: the vendor publishes both Mac and Windows downloads but not a complete per-platform feature matrix or a granular format list, so Windows-specific behavior and RAW coverage should be tested before purchase.
+Its published workflow includes Watch Folders, connected inboxes, Undo & Recovery, Rules, Quick Organize, and a local content-search index. These are substantive document-workflow features. Its 30+ format claim still does not establish support for each camera RAW or design format listed by Zush.
+
+### Recent releases and meaningful limitations
+
+The changelog lists **3.0.16 on September 28**: model and reasoning selections persist across switches/restarts, and custom providers save API keys correctly. It now lists **3.0.17 on September 30** for Mac and Windows, with onboarding/trial changes and reliability fixes. Trial wording differs between release notes and the current product page; the allowance and card requirements above follow the product page checked October 5. Confirm them in the actual signup screen.
+
+Managed allowance is consumed when a suggestion is generated, even if you never apply it. Unused monthly renames expire; annual billing supplies the year's allowance upfront. The Self-Managed license covers one computer, and local photos/scans require a vision-capable model. These are more concrete constraints than treating Windows support as undocumented.
 
 ## Pricing reality
 
@@ -143,7 +149,7 @@ The big differentiators:
 - You want one documented desktop workflow across Mac and Windows
 - You shoot RAW photos and want explicit format support
 - You rename design assets, iWork files, audio, videos, and documents in the same folders
-- You want OpenRouter as a cloud-provider option
+- You want managed cloud and BYOK available within the same Zush plan
 - You want BYOK available on the same FREE or PRO plan
 
 **Consider NameQuick if:**
@@ -169,7 +175,7 @@ Yes. Its optional AI folder sorting is in beta on Mac and Windows. Choose Auto o
 
 ### Does NameQuick run on Windows?
 
-Yes. NameQuick's current product page offers both Windows and Mac downloads. It does not publish a complete platform-by-platform feature matrix, so verify Windows support for any Mac-specific feature you need. Zush publishes a native Microsoft Store build and documents the same core renaming, BYOK, Offline AI, monitoring, preview, and undo workflow for Windows.
+Yes. Its Windows FAQ documents Managed, BYOK, Ollama, and LM Studio. MLX, Finder tags, and Finder comments are Mac-only. The installer is x64 and Windows 11 ARM uses emulation. Zush also documents Mac and Windows desktop workflows; compare the platform-specific actions you actually need.
 
 ### Is BYOK free in both tools?
 
@@ -185,7 +191,7 @@ NameQuick's public format list says "30+ formats" without enumerating RAW camera
 
 ### Which has better naming control?
 
-Zush has the stronger documented naming system: ready-made Templates, 145+ Naming Blocks, Custom AI Blocks, prompts, formatting, localization, Finder tags, Spotlight metadata, and per-folder Template assignments. NameQuick documents Presets, prompts, Finder Comments, and conditional Rules, but does not publish an equivalent granular block catalog or complete platform-specific matrix.
+Zush publishes a granular catalog of 145+ Naming Blocks, Custom AI Blocks, formatting, localization, metadata, and per-folder Templates. NameQuick documents presets, prompts, conditional Rules, Quick Organize, and Mac Finder actions. Zush is the documented fit for composing exact fields; NameQuick has additional document-search and conditional-action workflows. Neither claim establishes measured naming accuracy.
 
 ## Verdict
 

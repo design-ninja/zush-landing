@@ -11,7 +11,7 @@ tags:
   - "AI Dosyasını Yeniden Adlandırma"
   - "Takım Karşılaştırmaları"
 tldr: "Genel olarak en iyisi: 'Zush'. Bu karşılaştırmada belgelenen en geniş karma dosya kapsamını yapılandırılabilir adlandırma, klasör izleme, önizleme ve toplu geri alma ile tam 'Rename History' ile birleştirir. 'FilesDesk' ve diğer altı giriş, genel önerimiz değil, daha dar gereksinimler için alternatiflerdir."
-reviewed: "2026-09-28"
+reviewed: "2026-10-05"
 featuredOrder: 1
 ---
 
@@ -22,12 +22,12 @@ import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
+**Hedefli inceleme: 5 Ekim 2026.** Renamer.ai, NameQuick ve FilesDesk birincil kaynaklarla doğrulandı. Diğer kontroller önceki tarihlerde kalır. Belgelenmiş özellikler; bağımsız performans testi değildir.
 
-**Rakip güncellemesi — 24 Eylül 2026:** RenameClick şu anda ücretsiz planda ayda 100 başarılı yeniden adlandırma veya taşıma, aylık Pro için 8 ABD doları + KDV ve ömür boyu Pro için 36 ABD doları + KDV listeliyor; ödeme sayfasını doğrulayın. NameQuick Managed denemesi 14 günde 250, Self-Managed denemesi ise kartsız 50 yeniden adlandırma içeriyor.
+FilesDesk Organize Flow koşullu taşıma, kopyalama ve Mac Finder işlemleri sunar. Yerel seçenekler: Ollama, LM Studio, vLLM. Abonelikler BYOK/yerel yapay zekâyı içermez; aylık krediler devretmez. 40 dolarlık Self-Managed tek cihaz ve 12 aylık güncelleme içerir.
+
+[Birincil kaynaklar](https://renamer.ai/changelog) · [NameQuick](https://www.namequick.app/) · [FilesDesk](https://filesdesk.app/pricing)
 Bu rehber, Windows için yedi seçeneği dosya desteği, adlandırma kuralları, geri alma ve maliyet açısından karşılaştırır. Zush ekibi tarafından hazırlanmıştır. Ürün, ücretsiz deneme ve indirmeler için [Mac ve Windows için Zush AI dosya adlandırıcısına](/tr) bakın.
-
-
-
 
 <BlogProductIntro
   title="'Windows' uygulamasını mı arıyorsunuz?"
@@ -55,8 +55,8 @@ Bu güncelleme için kontrol edilen kaynaklar: her girişte belirtilen resmi ür
 |2. 'FilesDesk' — alternatif|Şablonları adlandırma|Ortak görüntüler, belgeler, video ve ses|Klasörleri İzle|İşlem Geçmişi geri alma|15 kredi; Aylık 8 USD veya ömür boyu 40 USD|Yönetilen öneriler ölçülür; kullanım ömrü 'BYOK'/yerel kurulum gerektirir|
 |3. 'RenameClick' — alternatif|Biçim kalıpları, EXIF ​​yer tutucuları, özel talimatlar|Görüntüler, belgeler, ses|Otomatik Akış yeniden adlandırabilir ve taşıyabilir|Bellekte en fazla 10 Undo kaydı; yeniden başlatılınca silinir|30 uygulama/ay; 48$+ KDV kullanım ömrü|RAW, tasarım ve video desteği yayınlanmaz|
 |4. 'AI Renamer' — alternatif|Özel istemler|Herkese açık örnekler görselleri ve metin belgelerini vurgular|Kamuya açık belgelenmemiş|Kamuya açık belgelenmemiş|19 $ yerel mod|Klasör izleme, 'Rename History' ve ayrıntılı karışık dosya kapsamı belgelenmemiştir|
-|5. 'Renamer.ai' — alternatif|Belge iş akışları için "Templates"|30'dan fazla format, belge ve vektör odaklı|Sihirli Klasörler|Tek tıklamayla geri alma|25 dosya/ay ücretsiz; 9,95$/ay|Her ücretli katman ölçülür; "BYOK" veya yerel "Ollama" seçeneği yayınlanmıyor|
-|6. 'NameQuick' — alternatif|Ön ayarlar, istemler ve Kurallar|30'dan fazla format kategorisi|İzleme Klasörleri ve Kurallar satıcı listesindedir|Tek tıklamayla geri alma satıcı tarafından listelenir|Yönetilen deneme 250/14 gün; ayda 12$'dan başlayan fiyatlarla; 69$ kendi kendini yöneten|Tam bir genel 'Windows' özellik ve format matrisi yok|
+|5. 'Renamer.ai' — alternatif|Belge iş akışları için "Templates"|30'dan fazla format, belge ve vektör odaklı|Sihirli Klasörler|Tek tıklamayla geri alma|25 dosya/ay ücretsiz; 9,95$/ay| Bulut kotası; Local/BYOK lisansını doğrulayın |
+|6. 'NameQuick' — alternatif|Ön ayarlar, istemler ve Kurallar|30'dan fazla format kategorisi|İzleme Klasörleri ve Kurallar satıcı listesindedir|Tek tıklamayla geri alma satıcı tarafından listelenir| $12/mo; $69 Self-Managed; Managed: kartla 70/14 gün; Self-Managed: kartsız 30 | Aylık kota sona erer; Self-Managed: tek bilgisayar |
 |7. DIY PowerShell/Python — alternatif|Ne inşa edersen et|Ne uygularsan uygula|Tamamen özel|Onu inşa etmelisin|Yazılım ücretsiz olabilir|Doğrulama, çarpışmalar, kimlik bilgileri, bakım ve geri alma işlemlerinin sahibi sizsiniz|
 
 Bu, kaynak destekli bir karşılaştırmadır, yedi girişin tamamının bağımsız bir karşılaştırması değildir. Satıcıya ait fiyatlandırma ve belgelerde aynı karar noktalarını kontrol ettik: "Windows" yükleme yöntemi, karma dosya desteği, yerel/"BYOK" kullanılabilirliği, izlenen klasör otomasyonu, önizleme, geri alma ve fiyatlandırma. Desteklenmeyen veya belgelenmeyen özellikler çıkarım yapmak yerine işaretlenir.
@@ -70,8 +70,6 @@ Bu karşılaştırma "en iyi" ve "karşılaştırılan" arama amacına sahiptir.
 Bu sayfa yalnızca Windows uygulamalarını karşılaştırır. Yapay zekâ ile dosya yeniden adlandırma aracının ne olduğunu, içeriğe dayalı adlandırmanın tek bir ortak kuraldan farkını ve Zush'un Mac ile Windows'ta ne yaptığını öğrenmek için [Zush yapay zekâ dosya yeniden adlandırıcı tanıtımı](/tr) ile başlayın.
 
 Aşağıdaki her şey, bu kategorideki "Windows" uygulamalarını pratik farklılıklara (adlandırma kontrolü, kullanıma hazır iş akışları, dosya türü kapsamı, otomasyon ve bir toplu işlemin incelenip geri alınıp alınamayacağı) göre karşılaştırmaktadır. Yerel yapay zeka birçok üründe görülüyor ve benzersiz bir avantaj olarak değerlendirilmiyor. Her adayı aynı dosyalarla test etmek ve önizlemesini, çarpışma yönetimini, uzantı güvenliğini ve kurtarma yolunu doğrulamak için "[güvenli toplu yeniden adlandırma kontrol listesi](/blog/how-to-safely-batch-rename-files)"ü kullanın.
-
-
 
 ![Karışık bir "Windows" klasörü için yapay zeka tarafından oluşturulan adları gösteren "Zush" toplu yeniden adlandırma önizlemesi](/images/showcase/windows/batch-rename-light.webp)
 
@@ -148,13 +146,15 @@ Belgelenmiş farklar bağımsız kalite ölçümleri değildir. Belgelenmeyen bi
 
 ## Alternatif 4: 'Renamer.ai' — ölçülü belge iş akışı
 
-Renamer.ai Windows sayfası yerel işlemeyi açıklarken gizlilik politikası dosya içeriğinin yapay zekâ alt işleyicilerine gönderildiğini belirtir. Ağ davranışını bağımsız olarak test etmedik. Bu belgeler çevrimdışı çalışmayı doğrulamaz. [Windows](https://renamer.ai/ai-file-renamer-windows) · [Renamer.ai](https://renamer.ai/privacy-policy/)
+Renamer.ai v5 Cloud, indirilebilir yerel modeller, OpenAI/Gemini BYOK, eşitlenen şablonlar ve iç içe klasörler sunar. Yayımlanan bulut planlarında dosya kotası vardır; Local/BYOK lisans sınırları doğrulanmalıdır. Genel biçim listesinde kamera RAW, PSD, Sketch ve Figma yoktur. Zush bu biçimleri ve kotasız ücretli yeniden adlandırmayı belgeler.
 
-## Alternatif 5: 'NameQuick' — eksik 'Windows' belgeleri
+[Birincil kaynaklar](https://renamer.ai/changelog) · [Renamer.ai](https://renamer.ai/)
 
-'NameQuick', tam bir 'Windows'e karşı Mac özellik ve format matrisi yayınlamadığı için 'Zush'in altında yer alıyor, yönetilen planları ölçüm yeniden adlandırmaları ve tek seferlik planı ise kullanıcı tarafından sağlanan bir API anahtarı veya yerel model gerektiriyor. 'Windows' yapısı bunları açıkça onaylamadığı sürece, 'Finder', MLX ve diğer platforma özgü talepleri Mac özellikleri olarak değerlendirin.
+## NameQuick — koşullu belge iş akışları
 
-Belgelenmiş farklar bağımsız kalite ölçümleri değildir. Belgelenmeyen bir özellik mutlaka yok demek değildir.
+NameQuick Mac ve Windows üzerinde çalışır; MLX ve Finder etiketleri/yorumları yalnızca Mac içindir. Windows yükleyicisi x64, ARM desteği emülasyonladır. Managed uygulanmayan önerileri de sayar; kullanılmayan aylık kota sona erer. Self-Managed tek bilgisayar için 69 ABD dolarıdır. Güncel denemeler: Managed kartla 14 günde 70; Self-Managed kartsız 30. Günlük artık 3.0.16 sonrasında 3.0.17 gösteriyor.
+
+[NameQuick](https://www.namequick.app/)
 
 ## Alternatif 6: Kendin Yap Python veya PowerShell — bakım yükü
 

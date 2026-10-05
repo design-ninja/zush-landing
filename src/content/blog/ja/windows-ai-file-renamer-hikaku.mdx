@@ -11,7 +11,7 @@ tags:
   - "AI ファイルの名前変更"
   - "ツールの比較"
 tldr: "総合最高：「Zush」。この比較では、文書化された最も広範な混合ファイルの範囲と、構成可能な名前付け、フォルダー監視、プレビュー、およびバッチ復元を備えた完全な Rename History が組み合わされています。 「FilesDesk」と他の 6 つのエントリは、より狭い要件に対応する代替案であり、全体的な推奨事項ではありません。"
-reviewed: "2026-09-28"
+reviewed: "2026-10-05"
 featuredOrder: 1
 ---
 
@@ -22,12 +22,12 @@ import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
+**対象情報の確認：2026年10月5日.** Renamer.ai、NameQuick、FilesDesk を一次資料で確認しました。他製品は従来の確認日を維持します。公開機能の比較であり、独立した性能試験ではありません。
 
-**競合情報の更新 — 2026年9月24日:** RenameClick の無料プランは現在、月100回の正常な名前変更または移動、Pro Monthly は8ドル＋VAT、Pro Lifetime は36ドル＋VATと案内されています。購入時に最新価格を確認してください。NameQuick は Managed が14日間250回、Self-Managed がカード不要で50回の試用です。
+FilesDesk の Organize Flow は条件による移動・コピー・Mac Finder 操作に対応します。ローカルは Ollama、LM Studio、vLLM。サブスクリプションは BYOK/ローカル非対応で月間クレジットは繰り越せません。40ドルの Self-Managed は1台と12か月の更新です。
+
+[一次資料](https://renamer.ai/changelog) · [NameQuick](https://www.namequick.app/) · [FilesDesk](https://filesdesk.app/pricing)
 このガイドは、Windows 向けの7つの選択肢を対応形式、命名ルール、復元、費用で比較するもので、Zush チームが執筆しています。製品の使い方、無料試用、ダウンロードは [Mac・Windows 向け Zush AI ファイルリネーム](/ja)をご覧ください。
-
-
-
 
 <BlogProductIntro
   title="「Windows」アプリをお探しですか?"
@@ -55,8 +55,8 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 |2.「FilesDesk」 — 代替品|命名テンプレート|一般的な画像、ドキュメント、ビデオ、オーディオ|監視フォルダー|処理履歴の取り消し|15 クレジット。月額 8 ドルまたは生涯 40 ドル|管理された提案は従量制です。有効期間には「BYOK」/ローカル設定が必要です|
 |3.「RenameClick」 — 代替品|フォーマットパターン、EXIFプレースホルダー、カスタム命令|画像、文書、音声|Auto Flow は名前変更と移動が可能|メモリ内にUndoを最大10件保持。再起動で消去|100 件/月が適用されます。 $48+ VAT 生涯|RAW、デザイン、ビデオのサポートは公開されていません|
 |4.「AI Renamer」 — 代替品|カスタムプロンプト|画像とテキストドキュメントを強調した公開例|公に文書化されていない|公に文書化されていない|ローカルモード $19|フォルダー監視、「Rename History」、および詳細な混合ファイルのカバレッジは文書化されていません|
-|5.「Renamer.ai」 — 代替品|ドキュメントワークフロー用の「Templates」|30 以上のフォーマット、ドキュメントとベクターに焦点を当てる|マジックフォルダー|ワンクリックで元に戻す|25 ファイル/月は無料。 $9.95/月|すべての有料レベルは従量制です。 BYOK またはローカルの Ollama オプションは公開されていません|
-|6.「NameQuick」 — 代替品|プリセット、プロンプト、ルール|30 以上のフォーマット カテゴリ|監視フォルダーとルールはベンダーリストに登録されています|ワンクリックで元に戻すことがベンダーリストに登録されています|管理されたトライアル 250/14 日間。月額12ドルから。自己管理 $69|完全に公開された「Windows」の機能と形式のマトリックスは存在しない|
+|5.「Renamer.ai」 — 代替品|ドキュメントワークフロー用の「Templates」|30 以上のフォーマット、ドキュメントとベクターに焦点を当てる|マジックフォルダー|ワンクリックで元に戻す|25 ファイル/月は無料。 $9.95/月| クラウド件数制限、Local/BYOK 条件は要確認 |
+|6.「NameQuick」 — 代替品|プリセット、プロンプト、ルール|30 以上のフォーマット カテゴリ|監視フォルダーとルールはベンダーリストに登録されています|ワンクリックで元に戻すことがベンダーリストに登録されています| $12/mo; $69 Self-Managed; Managed：カード必須14日70件、Self-Managed：カード不要30件 | 月間枠失効、Self-Managed は1台 |
 |7. DIY PowerShell/Python — 代替案|何を構築しても|何を実装しても|フルカスタム|あなたがそれを構築しなければなりません|ソフトウェアは無料の場合があります|検証、衝突、認証情報、メンテナンス、ロールバックを所有するのはあなたです|
 
 これはソースに裏付けられた比較であり、7 つのエントリすべての独立したベンチマークではありません。私たちは、ベンダー所有の価格設定とドキュメントでも同じ決定点を確認しました。つまり、「Windows」のインストール方法、混合ファイルのサポート、ローカル/「BYOK」の可用性、監視フォルダーの自動化、プレビュー、ロールバック、および価格設定です。サポートされていない機能または文書化されていない機能は、推測されずにマークされます。
@@ -70,8 +70,6 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 このページでは Windows アプリだけを比較します。AI ファイルリネームツールとは何か、内容に基づく命名が共通のリネームルールとどう違うか、Zush が Mac と Windows で何をするかは、[Zush AI ファイルリネームツールの概要](/ja)をご覧ください。
 
 以下では、このカテゴリの「Windows」アプリを、名前付け制御、すぐに使えるワークフロー、ファイル タイプの適用範囲、自動化、バッチのレビューと元に戻せるかどうかなどの実質的な違いに関して比較しています。ローカル AI はいくつかの製品に使用されていますが、独自の利点としては評価されません。 「[安全な一括名前変更チェックリスト](/blog/how-to-safely-batch-rename-files)」を使用して、同じファイルで各候補をテストし、そのプレビュー、衝突処理、拡張子の安全性、および回復パスを検証します。
-
-
 
 ![AI が生成した混合 Windows フォルダーの名前を示す Zush の名前変更バッチ プレビュー](/images/showcase/windows/batch-rename-light.webp)
 
@@ -148,13 +146,15 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 ## 代替案 4: Renamer.ai — 従量制ドキュメント ワークフロー
 
-Renamer.aiのWindowsページはローカル処理を説明していますが、プライバシーポリシーはファイル内容をAI処理委託先に送信すると記載しています。通信動作は独立に検証していません。この資料だけではオフライン動作を確認できません。 [Windows](https://renamer.ai/ai-file-renamer-windows) · [Renamer.ai](https://renamer.ai/privacy-policy/)
+Renamer.ai v5 は Cloud、ダウンロード式ローカルモデル、OpenAI/Gemini BYOK、同期テンプレート、階層フォルダを提供します。公開クラウドプランには件数制限があり、Local/BYOK のライセンス条件は確認が必要です。公開形式一覧にはカメラ RAW、PSD、Sketch、Figma の記載がありません。Zush はこれらの形式と有料版の件数無制限を明示しています。
 
-## 代替案 5: NameQuick — 不完全な Windows ドキュメント
+[一次資料](https://renamer.ai/changelog) · [Renamer.ai](https://renamer.ai/)
 
-「NameQuick」は、完全な「Windows」と Mac の機能と形式のマトリックスを公開していないため、「Zush」よりも下にランクされています。一方、そのマネージド プランのメーター名が変更され、そのワンタイム プランではユーザー指定の API キーまたはローカル モデルが必要です。 「Finder」、MLX、およびその他のプラットフォーム固有の主張は、「Windows」ビルドで明示的に確認されない限り、Mac の機能として扱います。
+## NameQuick：条件付き文書ワークフロー
 
-公開資料の比較は、独立した品質測定ではありません。記載がない機能を、存在しないと断定することはできません。
+NameQuick は Mac と Windows に対応します。MLX と Finder タグ・コメントは Mac 専用です。Windows は x64 インストーラで ARM はエミュレーションです。Managed は未適用の提案も消費し、月間未使用枠は失効します。Self-Managed は69ドルで1台です。現在の試用は Managed がカード必須で14日70件、Self-Managed がカード不要で30件です。変更履歴には3.0.16に続く3.0.17も掲載されています。
+
+[NameQuick](https://www.namequick.app/)
 
 ## 代替案 6: DIY Python または PowerShell — メンテナンスの負担
 
