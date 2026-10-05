@@ -32,6 +32,7 @@ are used. Values are read from virtual FIFO mounts into the child process:
 | --- | --- | --- |
 | `.env.1password` | Zush Production (public values only) | `.secrets/production.env` |
 | `.env.1password.operations` | Zush Production + Zush MCP | `.secrets/{production,mcp}.env` |
+| `.env.1password.posthog` | PostHog source map upload only | `.secrets/mcp.env` |
 | `.env.1password.sandbox` / `.env.1password.local` / `.env.1password.legacy-stripe-sandbox` | Zush Sandbox | `.secrets/sandbox.env` |
 
 Register only the mounts needed for your commands inside this Landing checkout
@@ -74,6 +75,33 @@ pnpm check:astro # Astro + TS diagnostics
 ```
 
 Run the full SEO gate through the matching production or sandbox profile.
+
+### PostHog error tracking source maps
+
+Production builds use `@posthog/rollup-plugin` to upload hidden browser source
+maps to PostHog project `455666`, then remove the maps from the public output.
+Vercel requires `POSTHOG_PERSONAL_API_KEY` as a sensitive, Production-only
+environment variable. The key needs `error_tracking:write` and must never
+have a `PUBLIC_` prefix. The release version uses `VERCEL_GIT_COMMIT_SHA`.
+Production builds fail when the upload key is missing or the upload fails.
+Local and Preview builds without the key skip the upload. With uploads enabled,
+small generated JavaScript scripts stay external so Astro cannot inline them
+and leave their source maps outside the upload.
+
+To verify an upload locally, install dependencies without secrets first, then
+run the build using only public production values and the PostHog key:
+
+```bash
+./scripts/with-1password.sh \
+  --env-file .env.1password \
+  --env-file .env.1password.posthog \
+  -- pnpm build
+```
+
+The browser filter drops two confirmed Safari extension errors only when their
+stack contains `webkit-masked-url://hidden/` and no application frames. Unknown
+errors, missing sources and mixed stacks remain visible. See the
+[PostHog source map documentation](https://posthog.com/docs/error-tracking/upload-source-maps/vite).
 
 ### Local MCP servers
 

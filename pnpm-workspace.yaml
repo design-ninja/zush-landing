@@ -1,5 +1,6 @@
 allowBuilds:
   '@parcel/watcher': true
+  '@posthog/cli': true
   esbuild: true
   sharp: true
 minimumReleaseAge: 4320
@@ -9,3 +10,4 @@ onlyBuiltDependencies:
   - esbuild
   - sharp
   - '@parcel/watcher'
+  - '@posthog/cli'

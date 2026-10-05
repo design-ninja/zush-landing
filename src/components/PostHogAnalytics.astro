@@ -32,6 +32,27 @@ const {
     const hasPostHogCountryOptOut = () =>
       document.cookie.split(';').some((cookie) => cookie.trim() === POSTHOG_COUNTRY_OPTOUT_COOKIE);
 
+    const isKnownSafariExtensionError = (event) => {
+      if (event.event !== '$exception') return false;
+      const exceptions = event.properties?.$exception_list;
+      if (!Array.isArray(exceptions) || exceptions.length === 0) return false;
+
+      return exceptions.every((exception) => {
+        const knownMessage =
+          (exception.type === 'Error' && exception.value === 'No Listener: tabs:outgoing.message.ready') ||
+          (exception.type === 'TypeError' && exception.value === "Argument 1 ('element') to Window.getComputedStyle must be an instance of Element");
+        const frames = exception.stacktrace?.frames;
+        if (!knownMessage || !Array.isArray(frames) || frames.length === 0) return false;
+
+        const isExtensionFrame = (frame) =>
+          typeof frame.filename === 'string' && frame.filename.startsWith('webkit-masked-url://hidden/');
+        // Retain missing-source and mixed app/extension stacks for investigation.
+        return frames.some(isExtensionFrame) && frames.every((frame) =>
+          isExtensionFrame(frame) || frame.filename === '[native code]',
+        );
+      });
+    };
+
     if (!posthogProjectKey || !TRACKED_HOSTS.has(window.location.hostname)) {
       return;
     }
@@ -199,6 +220,7 @@ const {
           }
 
           if (!event) return event;
+          if (isKnownSafariExtensionError(event)) return null;
           return {
             ...event,
             properties: { ...event.properties, ...getSessionAttribution() },

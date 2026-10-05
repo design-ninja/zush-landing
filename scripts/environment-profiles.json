@@ -1,6 +1,14 @@
 {
   "default": ".env.1password",
   "profiles": {
+    ".env.1password.posthog": {
+      "mount": ".secrets/mcp.env",
+      "variables": {
+        "POSTHOG_PERSONAL_API_KEY": "POSTHOG_PERSONAL_API_KEY"
+      },
+      "mount_override": "ZUSH_MCP_ENV_FILE",
+      "fallback_mount": "../zush-app/.secrets/mcp.env"
+    },
     ".env.1password.paddle-mcp": {
       "mount": ".secrets/mcp.env",
       "variables": {

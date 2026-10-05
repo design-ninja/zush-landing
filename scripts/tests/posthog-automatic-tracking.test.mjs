@@ -41,7 +41,7 @@ function run({ cookie = '', hostname = 'zushapp.com', optedOut = false, defer = 
     },
   };
   vm.runInNewContext(script, context);
-  return { events, listeners, initialized, exceptions, initialize, registered, document: context.document };
+  return { events, listeners, initialized, exceptions, initialize, registered, document: context.document, beforeSend: config?.before_send };
 }
 
 test('first visit captures a pageview without a consent cookie and keeps attribution', () => {
@@ -106,4 +106,39 @@ test('error queue is bounded and respects a country opt-out before initializatio
 test('the deployed commit is registered as the release only when known', () => {
   assert.equal(JSON.stringify(run({ release: 'abc123' }).registered), '[{"app_release":"abc123"}]');
   assert.equal(run().registered.length, 0);
+});
+
+const extensionException = (type, value, frames = [{ filename: 'webkit-masked-url://hidden/', function: 'g' }]) => ({
+  event: '$exception',
+  properties: { $exception_list: [{ type, value, stacktrace: { type: 'raw', frames } }] },
+});
+
+test('only the confirmed Safari extension messages with exclusively extension/native frames are dropped', () => {
+  const { beforeSend } = run();
+  assert.equal(beforeSend(extensionException('Error', 'No Listener: tabs:outgoing.message.ready')), null);
+  assert.equal(beforeSend(extensionException('TypeError', "Argument 1 ('element') to Window.getComputedStyle must be an instance of Element", [
+    { filename: 'webkit-masked-url://hidden/', function: 'he' },
+    { filename: '[native code]', function: 'getComputedStyle' },
+  ])), null);
+});
+
+test('app errors, unknown errors, missing sources and mixed stacks remain visible', () => {
+  const { beforeSend } = run();
+  const extension = extensionException('Error', 'No Listener: tabs:outgoing.message.ready');
+  for (const event of [
+    extensionException('Error', 'No Listener: tabs:outgoing.message.ready', [{ filename: 'https://zushapp.com/_astro/app.js' }]),
+    extensionException('Error', 'No Listener: tabs:outgoing.message.ready', [{ function: 'g' }]),
+    extensionException('Error', 'No Listener: tabs:outgoing.message.ready', []),
+    extensionException('Error', 'No Listener: tabs:outgoing.message.ready', [
+      { filename: 'webkit-masked-url://hidden/' }, { filename: 'https://zushapp.com/_astro/app.js' },
+    ]),
+    extensionException('DOMException', 'InvalidStateError: The object is in an invalid state.'),
+    extensionException('Error', 'Script error.'),
+    { event: '$exception', properties: { $exception_list: [] } },
+    { event: '$exception', properties: {} },
+    { ...extension, event: 'download_click' },
+    { event: '$exception', properties: { $exception_list: [...extension.properties.$exception_list, { type: 'Error', value: 'App failed' }] } },
+  ]) {
+    assert.notEqual(beforeSend(event), null);
+  }
 });

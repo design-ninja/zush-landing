@@ -8,6 +8,7 @@ import vercel from '@astrojs/vercel';
 import { fileURLToPath } from 'node:url';
 import remarkGfm from 'remark-gfm';
 import { reactHydrationDiagnostics } from './scripts/react-hydration-diagnostics.mjs';
+import { posthogSourcemaps } from './scripts/posthog-sourcemaps.mjs';
 
 const SITEMAP_EXCLUDED_PATHS = new Set([
   '/404',
@@ -170,7 +171,7 @@ export default defineConfig({
     }),
   },
   vite: {
-    plugins: [reactHydrationDiagnostics()],
+    plugins: [reactHydrationDiagnostics(), posthogSourcemaps()],
     // Remotion is loaded by client:visible islands. Pre-bundle it at startup so
     // Vite does not replace its dependency URL after an island has loaded.
     optimizeDeps: {
