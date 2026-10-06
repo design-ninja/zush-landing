@@ -2,7 +2,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const locales = ['de', 'fr', 'es', 'pt-br', 'it', 'nl', 'tr', 'ja', 'ko', 'zh-cn', 'ar'];
-const professions = ['accountants', 'medical', 'photographers', 'legal', 'hr', 'real-estate'];
+const professions = ['accountants', 'medical', 'photographers', 'legal'];
 const guideSlugCounts = {
   'invoice-file-naming-convention': 1,
   'automatically-rename-invoices-ai': 1,
@@ -16,12 +16,6 @@ const guideSlugCounts = {
   'rename-video-files-with-ai': 1,
   'digital-photo-organization-mistakes-to-avoid': 1,
   'legal-file-naming-conventions': 1,
-  'hr-employee-file-naming-convention': 1,
-  'organize-employee-onboarding-documents': 1,
-  'organize-candidate-files-recruiting': 1,
-  'real-estate-document-naming-convention': 1,
-  'how-to-organize-real-estate-transaction-files': 1,
-  'rename-docusign-files-by-property-address': 1,
 };
 const root = process.cwd();
 const failures = [];
@@ -43,6 +37,9 @@ for (const locale of locales) {
   }
   if (/ZXQ|QXZ/i.test(source)) {
     failures.push(`${locale}: unreplaced translation placeholder`);
+  }
+  for (const removedRoute of ['/for-hr', '/for-real-estate']) {
+    if (source.includes(removedRoute)) failures.push(`${locale}: removed translation ${removedRoute} is still present`);
   }
 
   for (const profession of professions) {

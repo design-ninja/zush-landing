@@ -30,6 +30,10 @@ const allowedUntranslatedLinkLabels = new Set([
   'Advanced Renamer',
   'Files Magic AI',
   'rename.click',
+  'AI File Sorter',
+  'A Better Finder Rename',
+  'Bulk Rename Utility',
+  'File Juggler',
   '`ozgrozer/ai-renamer`',
 ]);
 const titleQualityPatterns = {
@@ -166,7 +170,11 @@ for (const locale of locales) {
         ? ['Apple Photos', 'Lightroom', 'Mylio', 'Capture One', 'Excire', 'Photo Mechanic', 'Zush']
         : slug === 'best-photo-organizer-windows-11'
           ? ['Microsoft Photos', 'digiKam', 'Lightroom Classic', 'XnView MP', 'Mylio', 'Zush']
-          : ['Zush', 'Sortio', 'Wisfile', 'RenameClick', 'File Juggler', 'DropIt'];
+          : slug === 'best-file-renamer-tools'
+            ? ['Zush', 'Finder', 'PowerRename', 'Bulk Rename Utility', 'Advanced Renamer', 'A Better Finder Rename']
+            : slug === 'best-ai-file-sorters'
+              ? ['Zush', 'Sortio', 'RenameClick', 'Sparkle', 'NameQuick', 'AI File Sorter', 'Hazel', 'File Juggler', 'DropIt']
+              : ['Zush', 'Sortio', 'Wisfile', 'RenameClick', 'File Juggler', 'DropIt'];
       for (const app of comparisonApps) {
         if (!item.source.includes(app)) invalid.push(`${locale}/${item.name}: missing comparison entry ${app}`);
       }
@@ -182,8 +190,17 @@ for (const locale of locales) {
         invalid.push(`${locale}/${item.name}: missing platform sorting guide`);
       }
       const screenshots = [...item.source.matchAll(/!\[([^\]]+)\]\(([^)]+)\)/g)];
-      if (!screenshots.some((match) => match[1].length >= 30 && match[2].includes('/folder-sorting-light.webp'))) {
+      const newComparisons = ['best-file-renamer-tools', 'best-ai-file-sorters'];
+      if (!newComparisons.includes(slug) && !screenshots.some((match) => match[1].length >= 30 && match[2].includes('/folder-sorting-light.webp'))) {
         invalid.push(`${locale}/${item.name}: missing sorting screenshot with descriptive alt`);
+      }
+      if (newComparisons.includes(slug)) {
+        for (const fact of ['LM Studio', 'Ollama', '$10', '$48', '50']) {
+          if (!item.source.includes(fact)) invalid.push(`${locale}/${item.name}: missing comparison fact ${fact}`);
+        }
+        if (countMatches(item.source, /^\|/gm) < 8) {
+          invalid.push(`${locale}/${item.name}: incomplete comparison table`);
+        }
       }
       const minimumLength = ['ja', 'ko', 'zh-cn'].includes(locale) ? 2800 : 4000;
       if (countMatches(item.source, /^#{2,6}\s+/gm) < 12 || item.source.length < minimumLength) {

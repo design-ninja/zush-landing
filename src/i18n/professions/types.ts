@@ -135,4 +135,10 @@ export interface ProfessionPageCopy {
   };
 }
 
-export type ProfessionLocaleCopy = Record<ProfessionKey, ProfessionPageCopy>;
+export const LOCALIZED_PROFESSION_KEYS = ['accountants', 'medical', 'photographers', 'legal'] as const;
+export type LocalizedProfessionKey = (typeof LOCALIZED_PROFESSION_KEYS)[number];
+export type ProfessionLocaleCopy = Record<LocalizedProfessionKey, ProfessionPageCopy>;
+
+export function getLocalizedProfessionKeyForRoute(route: string): LocalizedProfessionKey | undefined {
+  return LOCALIZED_PROFESSION_KEYS.find((key) => PROFESSION_ROUTES[key] === route);
+}

@@ -9,8 +9,6 @@ const professions = [
   'for-medical',
   'for-photographers',
   'for-legal',
-  'for-hr',
-  'for-real-estate',
 ];
 const targets = JSON.parse(
   readFileSync(join(root, 'scripts/localization/top-blog-targets.json'), 'utf8'),
@@ -52,11 +50,11 @@ const lines = [
     professions.map((route) => `- [${locale} /${route}](${origin}/${locale}/${route})`),
   ),
   '',
-  '## English top-10 blog sources',
+  '## English priority blog sources',
   '',
   ...targets.map(({ slug }) => `- [${slug}](${origin}/blog/${slug})`),
   '',
-  '## Localized top-10 blog pages',
+  '## Localized priority blog pages',
   '',
 ];
 

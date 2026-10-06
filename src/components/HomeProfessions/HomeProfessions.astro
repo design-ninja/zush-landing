@@ -11,7 +11,7 @@ import Text from '@/components/Text';
 import styles from './HomeProfessions.module.scss';
 import { getLocalizedPath, type Locale } from '@/i18n/config';
 import type { HomeCopy } from '@/i18n/copy';
-import type { ProfessionKey, ProfessionLocaleCopy } from '@/i18n/professions/types';
+import type { LocalizedProfessionKey, ProfessionLocaleCopy } from '@/i18n/professions/types';
 
 interface Props {
   locale?: Locale;
@@ -82,7 +82,7 @@ const professionImages = {
   hr: hrImage,
   'real-estate': realEstateImage,
 } as const;
-const professionOrder: ProfessionKey[] = ['accountants', 'medical', 'legal', 'hr', 'photographers', 'real-estate'];
+const professionOrder: LocalizedProfessionKey[] = ['accountants', 'medical', 'legal', 'photographers'];
 const localizedProfessions = professionCopy
   ? professionOrder.map((key) => {
       const page = professionCopy[key];

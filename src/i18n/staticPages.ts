@@ -1,7 +1,6 @@
 import type { Locale, LocalizedRoute } from '@/i18n/config';
 
 export type StaticLocalizedRoute =
-  | '/methodology'
   | '/privacy-policy'
   | '/terms-of-service'
   | '/refund-policy';
@@ -21,7 +20,6 @@ export interface StaticPageCopy {
 }
 
 const STATIC_LOCALIZED_ROUTES = [
-  '/methodology',
   '/privacy-policy',
   '/terms-of-service',
   '/refund-policy',
@@ -33,15 +31,6 @@ export function isStaticLocalizedRoute(route: LocalizedRoute): route is StaticLo
 
 const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedRoute, StaticPageCopy>>> = {
   de: {
-    '/methodology': {
-      title: 'Methodik & Benchmarks',
-      description: 'So bewertet Zush die Qualität von KI-Dateinamen: Kriterien, Testablauf, Prüfstandards und Aktualisierungen.',
-      sections: [
-        { eyebrow: 'Verantwortung', title: 'Redaktionelle Prüfung', body: 'Zush bewertet Empfehlungen nach einem festen Prozess. Kriterien werden monatlich geprüft, technische Änderungen werden vom Produktteam kontrolliert und wichtige Aktualisierungen im Changelog dokumentiert.' },
-        { eyebrow: 'Bewertung', title: 'Scoring-Modell', body: 'Jeder Testlauf wird nach semantischer Genauigkeit, Konsistenz in Stapeln, Automatisierungstiefe, Sicherheitsfunktionen und Alltagstauglichkeit bewertet.', bullets: ['Aussagekräftige Namen statt generischer Muster', 'Stabile Ergebnisse in gemischten Stapeln', 'Vorschau, Verlauf und Wiederherstellung vor der Empfehlung'] },
-        { eyebrow: 'Validierung', title: 'Benchmark-Protokoll', body: 'Wir testen Screenshots, Fotos, PDFs und Office-Dokumente mit gleichen Prompts und prüfen danach Ergebnisse, Fehlgriffe und Wiederherstellung.' },
-      ],
-    },
     '/privacy-policy': {
       title: 'Datenschutz',
       description: 'Wie Zush Dateiinhalt, Lizenzdaten, Zahlungen, Analysen und Drittanbieter verarbeitet.',
@@ -74,15 +63,6 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
     },
   },
   fr: {
-    '/methodology': {
-      title: 'Méthodologie et benchmarks',
-      description: 'Comment Zush évalue la qualité du renommage IA: critères, protocole, standards et mises à jour.',
-      sections: [
-        { eyebrow: 'Responsabilité', title: 'Contrôle éditorial', body: 'Zush suit un processus d’évaluation stable. Les critères sont revus chaque mois, les changements techniques sont contrôlés par l’équipe produit et les mises à jour importantes sont consignées.' },
-        { eyebrow: 'Notation', title: 'Modèle de score', body: 'Chaque test est évalué selon la précision sémantique, la cohérence par lot, l’automatisation, les garde-fous et l’adéquation au travail quotidien.', bullets: ['Noms descriptifs plutôt que modèles génériques', 'Résultats stables sur des lots mixtes', 'Aperçu, historique et restauration avant recommandation'] },
-        { eyebrow: 'Validation', title: 'Protocole de benchmark', body: 'Nous testons captures, photos, PDF et documents avec les mêmes prompts, puis nous analysons les résultats, erreurs et possibilités de retour arrière.' },
-      ],
-    },
     '/privacy-policy': {
       title: 'Politique de confidentialité',
       description: 'Comment Zush traite les fichiers, licences, paiements, analyses et services tiers.',
@@ -115,15 +95,6 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
     },
   },
   'pt-br': {
-    '/methodology': {
-      title: 'Metodologia e benchmarks',
-      description: 'Como o Zush avalia qualidade de nomes com IA: critérios, protocolo, revisão e atualizações.',
-      sections: [
-        { eyebrow: 'Responsabilidade', title: 'Revisão editorial', body: 'O Zush segue um processo de avaliação consistente. Os critérios são revisados mensalmente, mudanças técnicas passam pelo time de produto e atualizações importantes entram no changelog.' },
-        { eyebrow: 'Pontuação', title: 'Modelo de avaliação', body: 'Cada teste mede precisão semântica, consistência em lote, automação, controles de segurança e adequação ao uso diário.', bullets: ['Nomes descritivos em vez de padrões genéricos', 'Resultados estáveis em lotes mistos', 'Prévia, histórico e restauração antes da recomendação'] },
-        { eyebrow: 'Validação', title: 'Protocolo de benchmark', body: 'Testamos screenshots, fotos, PDFs e documentos com os mesmos prompts, depois avaliamos resultados, erros e reversão.' },
-      ],
-    },
     '/privacy-policy': {
       title: 'Política de privacidade',
       description: 'Como o Zush lida com arquivos, licença, pagamentos, análises e serviços terceiros.',
@@ -156,15 +127,6 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
     },
   },
   es: {
-    '/methodology': {
-      title: 'Metodología y benchmarks',
-      description: 'Cómo Zush evalúa la calidad del renombrado con IA: criterios, protocolo, revisión y actualizaciones.',
-      sections: [
-        { eyebrow: 'Responsabilidad', title: 'Revisión editorial', body: 'Zush usa un proceso de evaluación estable. Los criterios se revisan cada mes, los cambios técnicos pasan por el equipo de producto y las actualizaciones importantes quedan registradas.' },
-        { eyebrow: 'Puntuación', title: 'Modelo de evaluación', body: 'Cada prueba mide precisión semántica, consistencia por lotes, automatización, controles de seguridad y encaje en el uso diario.', bullets: ['Nombres descriptivos, no patrones genéricos', 'Resultados estables en lotes mixtos', 'Vista previa, historial y restauración antes de recomendar'] },
-        { eyebrow: 'Validación', title: 'Protocolo de benchmark', body: 'Probamos capturas, fotos, PDFs y documentos con los mismos prompts, y revisamos resultados, errores y reversión.' },
-      ],
-    },
     '/privacy-policy': {
       title: 'Política de privacidad',
       description: 'Cómo Zush trata archivos, licencia, pagos, analítica y servicios de terceros.',
@@ -197,15 +159,6 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
     },
   },
   nl: {
-    '/methodology': {
-      title: 'Methode en benchmarks',
-      description: 'Hoe Zush AI-bestandsnamen beoordeelt: criteria, protocol, reviewstandaarden en updates.',
-      sections: [
-        { eyebrow: 'Verantwoording', title: 'Redactionele controle', body: 'Zush gebruikt een vast beoordelingsproces. Criteria worden maandelijks herzien, technische wijzigingen worden door het productteam gecontroleerd en belangrijke updates worden vastgelegd.' },
-        { eyebrow: 'Score', title: 'Beoordelingsmodel', body: 'Elke test meet semantische nauwkeurigheid, consistentie in bulk, automatisering, veiligheidscontroles en praktische bruikbaarheid.', bullets: ['Beschrijvende namen in plaats van generieke patronen', 'Stabiele resultaten in gemengde batches', 'Preview, geschiedenis en herstel vóór aanbeveling'] },
-        { eyebrow: 'Validatie', title: 'Benchmarkprotocol', body: 'We testen screenshots, foto’s, PDFs en documenten met dezelfde prompts en beoordelen daarna resultaten, fouten en herstel.' },
-      ],
-    },
     '/privacy-policy': {
       title: 'Privacybeleid',
       description: 'Hoe Zush omgaat met bestanden, licenties, betalingen, analyse en externe services.',
@@ -238,15 +191,6 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
     },
   },
   it: {
-    '/methodology': {
-      title: 'Metodologia e benchmark',
-      description: 'Come Zush valuta la qualità della rinomina IA: criteri, protocollo, revisioni e aggiornamenti.',
-      sections: [
-        { eyebrow: 'Responsabilità', title: 'Controllo editoriale', body: 'Zush usa un processo di valutazione stabile. I criteri sono rivisti ogni mese, le modifiche tecniche sono controllate dal team prodotto e gli aggiornamenti importanti sono registrati.' },
-        { eyebrow: 'Punteggio', title: 'Modello di valutazione', body: 'Ogni test misura accuratezza semantica, coerenza nei batch, automazione, controlli di sicurezza e utilità quotidiana.', bullets: ['Nomi descrittivi invece di pattern generici', 'Risultati stabili in batch misti', 'Anteprima, cronologia e ripristino prima della raccomandazione'] },
-        { eyebrow: 'Validazione', title: 'Protocollo benchmark', body: 'Testiamo screenshot, foto, PDF e documenti con gli stessi prompt, poi analizziamo risultati, errori e ripristino.' },
-      ],
-    },
     '/privacy-policy': {
       title: 'Informativa sulla privacy',
       description: 'Come Zush gestisce file, licenze, pagamenti, analisi e servizi di terze parti.',
@@ -279,15 +223,6 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
     },
   },
   ja: {
-    '/methodology': {
-      title: '方法とベンチマーク',
-      description: 'Zush が AI ファイル名の品質を評価する基準、検証手順、更新方針。',
-      sections: [
-        { eyebrow: '責任', title: '編集レビュー', body: 'Zush は一貫した評価プロセスを使います。基準は毎月見直し、技術的な変更はプロダクトチームが確認し、重要な更新は記録します。' },
-        { eyebrow: '評価', title: 'スコアリングモデル', body: '各テストでは意味の正確さ、一括処理での一貫性、自動化、復元性、日常作業での使いやすさを評価します。', bullets: ['汎用パターンではなく内容が分かる名前', '混在ファイルの一括処理でも安定', '推奨前にプレビュー、履歴、復元を確認'] },
-        { eyebrow: '検証', title: 'ベンチマーク手順', body: 'スクリーンショット、写真、PDF、文書を同じプロンプトでテストし、結果、誤り、復元動作を確認します。' },
-      ],
-    },
     '/privacy-policy': {
       title: 'プライバシーポリシー',
       description: 'Zush がファイル、ライセンス、支払い、分析、外部サービスを扱う方法。',
@@ -320,15 +255,6 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
     },
   },
   ko: {
-    '/methodology': {
-      title: '방법론 및 벤치마크',
-      description: 'Zush가 AI 파일 이름 품질을 평가하는 기준, 검증 절차, 리뷰 기준과 업데이트 방식.',
-      sections: [
-        { eyebrow: '책임', title: '편집 검토', body: 'Zush는 일관된 평가 절차를 사용합니다. 기준은 매월 검토하고, 기술 변경은 제품팀이 확인하며, 중요한 업데이트는 기록합니다.' },
-        { eyebrow: '평가', title: '점수 모델', body: '각 테스트는 의미 정확도, 일괄 처리 일관성, 자동화, 안전 장치, 실제 업무 적합성을 평가합니다.', bullets: ['일반 패턴이 아닌 설명적인 이름', '혼합 파일 일괄 처리에서도 안정적인 결과', '추천 전 미리보기, 기록, 복원 확인'] },
-        { eyebrow: '검증', title: '벤치마크 절차', body: '스크린샷, 사진, PDF, 문서를 같은 프롬프트로 테스트한 뒤 결과, 오류, 복원 동작을 확인합니다.' },
-      ],
-    },
     '/privacy-policy': {
       title: '개인정보 처리방침',
       description: 'Zush가 파일, 라이선스, 결제, 분석, 타사 서비스를 처리하는 방식.',
@@ -361,15 +287,6 @@ const staticPages: Partial<Record<Exclude<Locale, 'en'>, Record<StaticLocalizedR
     },
   },
   'zh-cn': {
-    '/methodology': {
-      title: '方法说明与基准测试',
-      description: 'Zush 如何评估 AI 文件命名质量：评分标准、测试流程、审核标准与更新节奏。',
-      sections: [
-        { eyebrow: '责任', title: '编辑审核', body: 'Zush 使用稳定的评估流程。标准每月复查，技术变更由产品团队确认，重要更新会记录在更新日志中。' },
-        { eyebrow: '评分', title: '评分模型', body: '每次测试都会衡量语义准确性、批量一致性、自动化能力、安全控制和日常工作适配度。', bullets: ['生成描述性名称，而不是通用模板', '混合文件批量处理中保持稳定', '推荐前检查预览、历史和恢复能力'] },
-        { eyebrow: '验证', title: '基准测试流程', body: '我们用相同提示词测试截图、照片、PDF 和文档，然后检查结果、错误和回滚能力。' },
-      ],
-    },
     '/privacy-policy': {
       title: '隐私政策',
       description: 'Zush 如何处理文件、许可证、支付、分析和第三方服务。',

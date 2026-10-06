@@ -1,0 +1,106 @@
+---
+title: "Mac・Windows向けAIファイル分類ソフト7選【2026年比較】"
+description: "Zush、Sortio、RenameClick、Sparkle、NameQuick、AI File Sorter、Hazelの指示方式、対応形式、ローカルAI、料金を比較。"
+date: "2026-09-27"
+slug: "best-ai-file-sorters-ja"
+platform: "general"
+topic: "comparisons"
+tags:
+  - "File Organization"
+  - "Tool Comparisons"
+  - "Automation"
+tldr: "Zushは内容を読み、名前とフォルダを提案し、確認後に移動します。自然言語の指示かAutoを使用。Mac・Windows、音声・動画、ローカルAIに対応し、PROに月間ファイル上限はありません。LinuxにはSortioも候補です。"
+earlyTaskExample: false
+reviewed: "2026-09-28"
+locale: "ja"
+translationOf: "best-ai-file-sorters"
+---
+
+import BlogHighlight from '@/components/blog/BlogHighlight.astro';
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+内容に基づく分類には **<BlogHighlight>[Zush](/ai-file-sorter)</BlogHighlight>** を推奨します。「請求書は会社別、領収書は月別」と書くかAutoを選択します。PDF、スキャン、写真、スクリーンショット、動画、音声の名前とフォルダを適用前に確認できます。
+
+**英語原文の確認日：2026年9月27日。製品の再確認：9月28日。** Zushの開発者による記事です。競合情報は公式ページに基づきます。購入時の価格を確認してください。
+
+<BlogCTA placement='inline' platform='general' />
+
+## 分類先を決める3方式
+
+指示文で会社、顧客、月、題材ごとの分類を指定するのはZush、Sortio、Sparkle。固定カテゴリ一覧から選ぶのはRenameClickとAI File Sorter。名前、日付、文字の条件で振り分けるのはHazel、NameQuick Rules、File Juggler、DropItです。指示文は柔軟、一覧は保守が必要、条件は想定外のファイルに弱いという違いがあります。
+
+## 早見表
+
+| ソフト | 分類と名前 | 環境 | ローカルAI | 確認時の料金 |
+|---|---|---|---|---|
+| Zush | Folder rulesまたはAuto、Templatesと145以上のNaming Blocks | Mac、Windows | Ollama、LM Studio | 50回無料、月額$10または買い切り$48、上限なし |
+| Sortio | 指示文、Proで名前変更 | Mac、Windows、Linux | Ollama、BYOK | 試用、月額$14.99または年額$99、AI枠あり |
+| RenameClick | カテゴリや既存フォルダ、名前変更 | Mac、Windows | 同梱モデル | 月100操作無料、月額$8または永久$36＋VAT |
+| Sparkle | AIライブラリ、名前変更なし | Mac | 記載なし | 月額$9.25から、プランページは年額$119 |
+| NameQuick | 名前変更後にRules | Mac、Windows | Self-Managed | 月額$12から、枠あり。Self-Managed $69 |
+| AI File Sorter | カテゴリ、許可一覧、名前候補 | Mac、Windows、Linux | 対応 | 無料、オープンソース |
+| Hazel | 条件と規則の名前変更 | Mac | なし | $42 |
+
+## 1. Zush
+
+提案されたフォルダのルートとなる **Destination folder** を選択します。
+
+**Folder rules**は最大2,000文字。空ならAutoが少数の汎用的なフォルダにまとめます。**Template**は日付、会社、金額、顧客、題材などの名前を指定し、Folder rulesは保存先を指定します。両方を同じプレビューで確認できます。
+
+PDF、画像だけのスキャン、RAW、HEIC、Office、iWork、デザイン、16種類の動画形式、音声に対応。動画はフレームを解析します。**Reuse existing folders**で適切な既存フォルダを使い、必要なら新設。**Monitor**は新着ファイルへTemplateを適用し、作成したフォルダを記憶します。LM StudioとOllamaなら解析と分類計画を端末内に保てます。PROはZush Cloud AIを含め月間ファイル上限なしです。
+
+分類はベータで、保存先の下に1階層のフォルダを作ります。曖昧なファイルは確認してください。[Mac手順](/blog/sort-files-into-folders-with-ai-mac)、[Windows手順](/blog/sort-files-into-folders-with-ai-windows)。
+
+## 2. Sortio
+
+[Sortio](https://www.getsortio.com/)は指示文から名前、フォルダ、移動を計画します。既存フォルダだけに制限し、合わないファイルの予備フォルダも設定できます。無料版は最大5規則の無制限ルール分類、監視、取り消し、一度限りのAI試用。BYOKとOllamaは全プラン、Proは月間AI枠あり。文書、画像、PDF、表計算を挙げますが全形式一覧はありません。LinuxやチームならSortio、音声・動画、細かい名前、買い切りならZush。[比較](/blog/zush-vs-sortio)。
+
+## 3. RenameClick
+
+[RenameClick](https://rename.click/)はAI Categories、日付やEXIFのMetadata Folders、最大50個の最上位フォルダから選ぶMatch Foldersを提供。Auto Flowはアプリ起動中に監視、移動、コピーします。解析は無制限、成功した名前変更または移動は月100回無料。ローカルモデル同梱。動画、RAW、デザインは公開形式一覧にありません。固定カテゴリには便利ですが、内容から会社別などのグループを作るならZushです。[比較](/blog/zush-vs-renameclick)。
+
+## 4. Sparkle
+
+[Sparkle](https://makeitsparkle.co/)はデスクトップ、ダウンロード、書類を定期整理し、AI Libraryを作り、指示文にも対応。重複や古いスクリーンショットはまずゴミ箱へ送ります。Mac専用でEveryにも含まれます。名前変更はしません。個人Macの自動清掃向け。名前、Windows、明示的なフォルダ規則が必要ならZush。[代替](/blog/sparkle-alternatives)。
+
+## 5. NameQuick
+
+[NameQuick](https://www.namequick.app/)は文書を内容で命名した後、Rulesで移動、タグ、色、アーカイブを実行。Managedは月500回で$12から。$69のSelf-Managedには自分のAPIキーかローカルモデルが必要です。保存先ごとに条件を作ります。[比較](/blog/zush-vs-namequick)。
+
+## 6. AI File Sorter
+
+[AI File Sorter](https://github.com/hyperfield/ai-file-sorter)は無料のAGPLアプリ。カテゴリ、任意のサブカテゴリ、名前を提案し、許可一覧、ローカル視覚モデル、文書の文字抽出に対応。ローカルモデルか自分のキーを使用し、直前の処理を取り消せます。自由な分類指示や監視はありません。音声・動画は埋め込みメタデータで分類。モデルを設定できる人の単発整理向けです。
+
+## 7. Hazel、File Juggler、DropIt
+
+[Hazel](https://www.noodlesoft.com/)（Mac、$42）、[File Juggler](https://www.filejuggler.com/)（Windows、約$40）、[DropIt](https://www.dropitproject.com/)（Windows、無料）は名前、拡張子、日付、文字条件を監視します。予測可能なファイルには便利ですが、写真やスキャン、動画の意味は理解しません。AIで付けた名前なら規則を簡単にできます。[Hazel代替](/hazel-alternative)、[Windows向け](/blog/hazel-for-windows-alternatives)。
+
+## 選び方と少量テスト
+
+自由な指示と多形式ならZush、LinuxやチームはSortio、固定カテゴリはRenameClick、Macの清掃はSparkle、無料はAI File Sorter、厳密な規則はHazelなど。請求書、領収書、写真、スクリーンショット、スキャン、動画を20個コピーして試します。必要な指示を書き、フォルダ名と配置を確認し、適用後に取り消しも試してから本番フォルダへ進みます。[30の指示例](/blog/ai-folder-sorting-prompts)、[説明](/docs/folder-sorting)、[料金](/pricing)。
+
+## よくある質問
+
+### 一般的なおすすめは？
+Mac・Windowsで確認、音声、動画、ローカルAI、月間上限なしのPROを使うならZush。
+
+### 自動化できますか？
+Zush、Sortio、RenameClick、Sparkleは移動できます。ZushではFolder rulesをTemplateに保存しMonitorへ割り当て、監視フォルダ直下の新着ファイルを処理します。
+
+### 無料の選択肢は？
+AI File Sorter、Zushの50回、Sortioの一度限りのAI試用、RenameClickの月100回です。
+
+### オフライン対応は？
+ZushはLM StudioかOllama、RenameClickは同梱モデル、SortioはOllama、AI File Sorterはローカルモデルで動きます。
+
+### 規則との違いは？
+規則は名前や拡張子を検査します。AIは内容を読み、元の名前に情報がなくても請求書を会社別に分類できます。
+
+<BlogProductIntro
+  title="Zushを試す"
+  description="Zushは内容を読み、名前とフォルダを提案し、確認後に移動します。自然言語の指示かAutoを使用。Mac・Windows、音声・動画、ローカルAIに対応し、PROに月間ファイル上限はありません。LinuxにはSortioも候補です。"
+  links={[{"href":"/ai-file-sorter","label":"AIでファイルを分類"},{"href":"/blog/ai-folder-sorting-prompts","label":"指示例"},{"href":"/docs/folder-sorting","label":"分類の説明"},{"href":"/pricing","label":"料金"}]}
+/>
+
+[Macの手順](/blog/sort-files-into-folders-with-ai-mac) · [Windowsの手順](/blog/sort-files-into-folders-with-ai-windows) · [指示例](/blog/ai-folder-sorting-prompts) · [分類の説明](/docs/folder-sorting).
