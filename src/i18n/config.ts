@@ -253,6 +253,9 @@ const LIMITED_LOCALE_ROUTES: Partial<Record<Locale, readonly LocalizedRoute[]>> 
 };
 
 const ROUTE_LOCALES: Partial<Record<LocalizedRoute, readonly Locale[]>> = {
+  '/for-hr': ['en'],
+  '/for-real-estate': ['en'],
+  '/methodology': ['en'],
   '/batch-rename-files': ['en', 'de'],
 };
 
@@ -274,6 +277,9 @@ function normalizeRoute(pathname: string): string {
 export function getLocalizedPath(route: string, locale: Locale = DEFAULT_LOCALE): string {
   const normalizedRoute = normalizeRoute(route);
   if (locale === DEFAULT_LOCALE) return normalizedRoute;
+  if (isLocalizedRoute(normalizedRoute) && !getLocalesForRoute(normalizedRoute).includes(locale)) {
+    return normalizedRoute;
+  }
 
   const prefix = `/${LOCALE_META[locale].slug}`;
   return normalizedRoute === '/' ? prefix : `${prefix}${normalizedRoute}`;

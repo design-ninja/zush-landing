@@ -1,0 +1,92 @@
+---
+title: "2026 年最佳文件重命名工具：免费规则工具与 AI 对比"
+description: "比较 Mac 和 Windows 上的 Zush、Finder、PowerRename、Bulk Rename Utility、Advanced Renamer 与 A Better Finder Rename。"
+date: "2026-07-31"
+slug: "best-file-renamer-tools-zh-cn"
+platform: "general"
+topic: "comparisons"
+tags:
+  - "Tool Comparisons"
+  - "AI File Renaming"
+  - "File Organization"
+tldr: "混合文件夹首选 Zush：按内容命名、Naming Blocks、预览、文件夹监控与撤销。免费规则工具和元数据工具适合范围明确的任务。AI 文件夹分类为可选的测试版功能。"
+earlyTaskExample: false
+reviewed: "2026-09-28"
+locale: "zh-cn"
+translationOf: "best-file-renamer-tools"
+---
+
+import BlogHighlight from '@/components/blog/BlogHighlight.astro';
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+如果每个文件都需要不同的描述性名称，我们在 Mac 和 Windows 上推荐 **<BlogHighlight>[Zush](/)</BlogHighlight>**。如果统一的替换、前缀或编号就能解决整个批次，免费规则工具也够用。关键是所需信息位于原文件名、元数据还是实际内容中。
+
+<BlogCTA placement='inline' platform='general' />
+
+## 快速对比
+
+| 任务 | 工具 | 平台 | 读取内容 | 价格 |
+|---|---|---|---|---|
+| 混合文件、个性化名称、可选文件夹分类 | Zush | Mac、Windows | 是 | 免费 50 次；每月 $10 或一次性 $48 |
+| 文本替换、前缀、编号 | Finder | Mac | 否 | 系统内置，免费 |
+| 搜索替换、正则表达式 | PowerRename | Windows | 否 | 免费 |
+| 复杂规则组合 | Bulk Rename Utility | Windows | 否 | 个人使用免费 |
+| EXIF、日期、GPS、元数据 | Advanced Renamer | Mac、Windows | 否 | 一次性许可证 |
+| Mac 原生规则与元数据 | A Better Finder Rename | Mac | 否 | 一次性许可证 |
+
+## 1. 内置和免费规则工具
+
+### Finder
+选中文件，右键选择 Rename，可替换文本、添加文本，或组合名称与编号。无需安装，但没有正则表达式、内容分析、元数据规则、监控或持久历史记录。[Mac 批量命名指南](/blog/batch-rename-files-on-mac-complete-guide)也介绍 Automator 和 Terminal。
+
+### PowerRename
+它属于 Microsoft PowerToys，可在 File Explorer 中搜索替换、使用正则表达式并预览。适合统一规则，但不读取内容，也不监控混合文件夹。参见 [PowerRename 替代工具](/powerrename-alternative)。
+
+### Bulk Rename Utility
+BRU 可叠加前缀、编号、大小写和正则表达式。界面较密集，适用于 Windows 上的机械式批处理。没有 Mac 版，也不分析内容。[BRU 对比](/blog/bulk-rename-utility-alternatives)解释了这些边界。
+
+## 2. 根据元数据命名
+
+Advanced Renamer 和 A Better Finder Rename 利用 EXIF 日期、GPS、ID3 标签和文件日期。只有这些字段已经包含完整目标名称时才适合。EXIF 能说明拍摄时间，却不能说明照片里是公园中的狗；PDF 元数据也不一定包含供应商和发票金额。[Advanced Renamer 对比](/blog/advanced-renamer-alternatives)说明规则的局限。
+
+## 3. 每个文件需要不同名称时用 AI
+
+`Screenshot 2026-03-23.png`、`Scan0001.pdf`、`IMG_4382.HEIC` 和 `download (7).pdf` 无法说明主题。Zush 读取截图、RAW 和 HEIC 照片、PDF、[通过 AI 视觉读取的扫描件](/rename-scanned-documents)、Office、iWork、设计文件、音频和视频。[Naming Blocks](/docs/naming-blocks)控制统一结构；应用前查看所有建议，应用后可从历史记录撤销。[文件夹监控](/docs/folder-monitoring)处理新下载和扫描件。
+
+免费 50 次由四种模式共享。PRO 每月 $10 或一次性 $48，不限制重命名次数。在线可用 Zush Cloud AI 和 BYOK，Mac 与 Windows 也支持 LM Studio 和 Ollama。[AI 工具综合对比](/blog/best-ai-file-renamer-tools-2026)还包括 FilesDesk、RenameClick、Renamer.ai 和 NameQuick。
+
+### 也可按文件夹分类
+
+可选的 AI 分类处于测试版。选择 Auto，或在 **Folder rules** 中写“截图按项目、发票按公司分组”。文件夹规则独立于 Naming Blocks。选择 **Destination folder**，或以源文件夹作为根目录。**Reuse existing folders** 优先使用合适的现有文件夹，必要时创建新文件夹。先确认名称和去向，再应用。
+
+将设置保存到 **Template**，先手动测试，再分配给 **Monitor**。它处理监控文件夹直接包含的新文件，不重新整理已处理的文件。只在原位改名时，关闭分类并保留原目的地。[分类文档](/docs/folder-sorting)。
+
+## 30 秒选择方法
+
+混合内容、描述性名称、监控、检查和恢复选 Zush。同一替换、前缀或编号足够时选免费规则工具。EXIF、日期、GPS 或标签能给出完整名称时选元数据工具。也可以搭配使用。查看 [Mac 对比](/blog/best-ai-file-renamer-tools-mac-compared)、[Windows 对比](/blog/best-ai-file-renamer-tools-windows-compared)和 [Windows 11 工具](/blog/best-file-renamer-windows-11)。
+
+## 常见问题
+
+### Zush 能移动文件到文件夹吗？
+可以，使用可选测试版功能，先检查名称和分组。测试过的 Template 可通过 Monitor 处理新文件。
+
+### 免费工具选哪个？
+统一规则可用 Mac 的 Finder、Windows 的 PowerRename。Zush 提供 50 次 AI 重命名。[免费 AI 指南](/blog/rename-files-with-ai-free)介绍 Cloud AI、BYOK、LM Studio、Ollama 和本地命令行工具。
+
+### Mac 和 Windows 的推荐是什么？
+混合文件推荐 [Mac 版 Zush](/mac)和 [Windows 版 Zush](/windows)。Finder、A Better Finder Rename、PowerRename 和 BRU 适合更窄的规则任务。
+
+### 能根据内容命名吗？
+AI 读取实际文本和图像，包括没有文本层的扫描件。传统规则工具重排现有名称或标签。
+
+### 值得付费吗？
+机械任务用免费规则即可。如果经常打开文件才能知道内容，AI 可以减少这项工作；Zush PRO 提供一次性 $48 许可证。
+
+<BlogProductIntro
+  title="开始使用 Zush"
+  description="混合文件夹首选 Zush：按内容命名、Naming Blocks、预览、文件夹监控与撤销。免费规则工具和元数据工具适合范围明确的任务。AI 文件夹分类为可选的测试版功能。"
+  links={[{"href":"/ai-file-sorter","label":"AI 文件分类"},{"href":"/blog/ai-folder-sorting-prompts","label":"指令示例"},{"href":"/docs/folder-sorting","label":"分类文档"},{"href":"/pricing","label":"价格"}]}
+/>
+
+[Mac 指南](/blog/sort-files-into-folders-with-ai-mac) · [Windows 指南](/blog/sort-files-into-folders-with-ai-windows) · [指令示例](/blog/ai-folder-sorting-prompts) · [分类文档](/docs/folder-sorting).

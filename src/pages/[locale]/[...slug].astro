@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import FeatureLandingPageShell from '@/components/FeatureLandingPage/FeatureLandingPageShell.astro';
-import MethodologyPage from '@/components/MethodologyPage/MethodologyPage.astro';
 import PlatformLandingPage from '@/components/PlatformLandingPage/PlatformLandingPage.astro';
 import LocalizedProfessionLandingPage from '@/components/LocalizedProfessionLandingPage/LocalizedProfessionLandingPage.astro';
 import { SEARCH_LANDING_PAGES } from '@/data/searchLandingPages';
@@ -31,13 +30,13 @@ import {
   type LocalizedRoute,
 } from '@/i18n/config';
 import { getCopy } from '@/i18n/copy';
-import { getLegalPageCopy, getMethodologyCopy } from '@/i18n/internalPages';
+import { getLegalPageCopy } from '@/i18n/internalPages';
 import { getLocalizedSeoForRoute } from '@/i18n/seo';
 import { getServicePageCopy, isServiceLocalizedRoute } from '@/i18n/servicePages';
 import { getStaticPageCopy, isStaticLocalizedRoute } from '@/i18n/staticPages';
 import { getSeoForPath } from '@/seo/config';
 import { getLocalizedContent } from '@/i18n/localizedContent';
-import { getProfessionKeyForRoute } from '@/i18n/professions/types';
+import { getLocalizedProfessionKeyForRoute } from '@/i18n/professions/types';
 import { enhanceLocalizedProfessionPage } from '@/i18n/professions/seoAdditions';
 import { AI_FILE_SORTER_LOCALIZED } from '@/i18n/aiFileSorterLocalized';
 
@@ -102,7 +101,6 @@ const copy = getCopy(locale);
 const serviceCopy = getServicePageCopy(locale);
 const seo = getLocalizedSeoForRoute(route, locale);
 const localizedPath = getLocalizedPath(route, locale);
-const methodologyCopy = route === '/methodology' ? getMethodologyCopy(locale) : null;
 const legalCopy = route === '/privacy-policy' || route === '/terms-of-service' || route === '/refund-policy'
   ? getLegalPageCopy(locale, route)
   : null;
@@ -127,7 +125,7 @@ const serviceSeo = isServiceLocalizedRoute(route)
 const localizedHomeHref = getLocalizedPath('/', locale);
 const batchRenamePage = SEARCH_LANDING_PAGES['batch-rename-files'];
 const fileSorterPage = SEARCH_LANDING_PAGES['ai-file-sorter'];
-const professionKey = getProfessionKeyForRoute(route);
+const professionKey = getLocalizedProfessionKeyForRoute(route);
 const professionPage = professionKey
   ? enhanceLocalizedProfessionPage(
       getLocalizedContent(locale as Exclude<Locale, 'en'>).professions[professionKey],
@@ -279,17 +277,6 @@ const professionHeaderNav = professionPage
         backToHomeLabel={serviceCopy.backToHome}
         homeHref={localizedHomeHref}
       />
-    </BaseLayout>
-  )
-}
-{
-  methodologyCopy && staticSeo && (
-    <BaseLayout
-      seo={staticSeo}
-      locale={locale}
-      chromeBasePath={localizedHomeHref}
-    >
-      <MethodologyPage copy={methodologyCopy} />
     </BaseLayout>
   )
 }

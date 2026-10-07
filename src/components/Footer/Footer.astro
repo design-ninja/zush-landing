@@ -20,7 +20,7 @@ import {
 } from '@/i18n/config';
 import { getCopy } from '@/i18n/copy';
 import { getLocalizedContent } from '@/i18n/localizedContent';
-import { PROFESSION_KEYS } from '@/i18n/professions/types';
+import { LOCALIZED_PROFESSION_KEYS } from '@/i18n/professions/types';
 import Tooltip from '@/components/Tooltip/Tooltip.astro';
 import appLinkStyles from '@/components/AppLink/AppLink.module.scss';
 import headingStyles from '@/components/Heading/Heading.module.scss';
@@ -62,7 +62,7 @@ const localizedContent = locale === DEFAULT_LOCALE
   : getLocalizedContent(locale as Exclude<Locale, 'en'>);
 const showProfessionLinks = true;
 const professionLinks = localizedContent
-  ? PROFESSION_KEYS.map((key) => {
+  ? LOCALIZED_PROFESSION_KEYS.map((key) => {
       const page = localizedContent.professions[key];
       return {
         href: getLocalizedPath(page.path, locale),
