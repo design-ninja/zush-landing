@@ -143,7 +143,19 @@ export default function GuidedRenameDemo() {
           </div>
           <div className={styles.Story__Controls}>
             <button type='button' onClick={() => goTo(step - 1)} aria-label='Previous step'><ChevronLeft size={19} /></button>
-            <button type='button' onClick={() => setPlaying((current) => !current)} aria-label={reducedMotion ? 'Autoplay disabled by reduced motion setting' : isPlaying ? 'Pause demo' : 'Play demo'} aria-pressed={!isPlaying} disabled={reducedMotion}>
+            <button type='button' className={styles.Story__PlayButton} onClick={() => setPlaying((current) => !current)} aria-label={reducedMotion ? 'Autoplay disabled by reduced motion setting' : isPlaying ? 'Pause demo' : 'Play demo'} aria-pressed={!isPlaying} disabled={reducedMotion}>
+              <svg className={styles.Story__Progress} viewBox='0 0 44 44' aria-hidden='true'>
+                <circle className={styles.Story__ProgressTrack} cx='22' cy='22' r='19' pathLength='100' />
+                <circle
+                  key={`${step}-${run}-${visible}-${playing}`}
+                  className={isPlaying && visible ? styles.Story__ProgressFill : ''}
+                  cx='22'
+                  cy='22'
+                  r='19'
+                  pathLength='100'
+                  style={{ animationDuration: `${DURATION}ms` }}
+                />
+              </svg>
               {isPlaying ? <Pause size={17} fill='currentColor' /> : <Play size={17} fill='currentColor' />}
             </button>
             <button type='button' onClick={() => goTo(step + 1)} aria-label='Next step'><ChevronRight size={19} /></button>

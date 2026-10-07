@@ -26,6 +26,12 @@
 .Story__Controls button { display: grid; place-items: center; width: 2.45rem; height: 2.45rem; padding: 0; border: 1px solid #4b4b50; border-radius: 50%; background: #1c1c1f; color: #e7e7f0; cursor: pointer; transition: background 0.2s, border-color 0.2s; }
 .Story__Controls button:hover { border-color: #8b7cff; background: #2a2a2e; }
 .Story__Controls button:disabled { opacity: 0.4; cursor: default; }
+.Story__PlayButton { position: relative; }
+.Story__PlayButton > svg:last-child { position: relative; z-index: 1; }
+.Story__Progress { position: absolute; inset: -1px; width: calc(100% + 2px); height: calc(100% + 2px); transform: rotate(-90deg); pointer-events: none; }
+.Story__Progress circle { fill: none; stroke-width: 2; }
+.Story__ProgressTrack { stroke: #51515a; }
+.Story__ProgressFill { stroke: var(--demo-purple); stroke-dasharray: 100; stroke-dashoffset: 100; stroke-linecap: round; animation: demo-progress linear forwards; }
 
 .Window { grid-area: window; width: 100%; max-width: 48rem; height: 31.5rem; overflow: hidden; border: 1px solid #4b4b50; border-radius: 0.95rem; background: #202022; box-shadow: 0 2rem 5rem rgb(0 0 0 / 0.4); }
 .Window__Bar { display: flex; align-items: center; gap: 0.9rem; height: 3.1rem; padding: 0 1rem; background: #2a2a2c; color: #f3f3f5; font-size: 0.84rem; font-weight: 680; }
@@ -86,6 +92,7 @@
 
 @keyframes appear { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes rename-in { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes demo-progress { to { stroke-dashoffset: 0; } }
 
 @media (max-width: 1050px) {
     .Demo { max-width: 48rem; }
