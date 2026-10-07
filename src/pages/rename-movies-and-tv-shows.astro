@@ -1,0 +1,28 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import MoviesTvLandingPage from '@/components/MoviesTvLandingPage/MoviesTvLandingPage.astro';
+import { MOVIES_TV_JSON_LD, MOVIES_TV_PAGE_PATH, MOVIES_TV_PAGE_TITLE } from '@/data/moviesTvLanding';
+import { getSeoForPath } from '@/seo/config';
+import { buildFeatureBreadcrumbJsonLd } from '@/utils/jsonLd';
+
+const seo = getSeoForPath(MOVIES_TV_PAGE_PATH);
+// Nav scrolls within this landing instead of jumping back to the homepage.
+const headerNav = [
+  { href: '#examples', label: 'Examples' },
+  { href: '#how', label: 'How it works' },
+  { href: '#faq', label: 'FAQ' },
+];
+---
+
+<BaseLayout
+  seo={seo}
+  headerNav={headerNav}
+  forcedTheme='dark'
+  disableTopOffset
+  jsonLd={[
+    MOVIES_TV_JSON_LD,
+    buildFeatureBreadcrumbJsonLd(MOVIES_TV_PAGE_TITLE, MOVIES_TV_PAGE_PATH),
+  ]}
+>
+  <MoviesTvLandingPage />
+</BaseLayout>

@@ -1,0 +1,136 @@
+---
+import { Image } from 'astro:assets';
+import '@fontsource-variable/archivo/wdth.css';
+import { ArrowDown, ArrowRight, Plus } from 'lucide-react';
+import breakingBadPoster from '@/assets/landing/movies-tv/breaking-bad-poster.webp';
+import bladeRunnerPoster from '@/assets/landing/movies-tv/blade-runner-poster.webp';
+import frierenPoster from '@/assets/landing/movies-tv/frieren-poster.webp';
+import cinemaCity from '@/assets/landing/movies-tv/cinema-city.webp';
+import cinemaDesert from '@/assets/landing/movies-tv/cinema-desert.webp';
+import cinemaCoast from '@/assets/landing/movies-tv/cinema-coast.webp';
+import {
+  MOVIES_TV_EXAMPLES,
+  MOVIES_TV_FAQ,
+  MOVIES_TV_FINAL_LINE,
+  TVDB_URL,
+} from '@/data/moviesTvLanding';
+import MoviesTvDownloadButton from './MoviesTvDownloadButton';
+import GuidedRenameDemo from './GuidedRenameDemo';
+import styles from './MoviesTvLandingPage.module.scss';
+
+const featured = MOVIES_TV_EXAMPLES[0];
+const posters = [breakingBadPoster, bladeRunnerPoster, frierenPoster];
+---
+
+<div class={styles.Page} data-cine-page>
+  <section class={styles.Hero} aria-labelledby='movies-tv-title'>
+    <Image src={cinemaCity} alt='' class={styles.Hero__Backdrop} widths={[800, 1200, 1600]} sizes='100vw' format='webp' quality={80} loading='eager' fetchpriority='high' />
+    <div class={styles.Hero__Scrim} aria-hidden='true'></div>
+    <div class={styles.Hero__Inner}>
+      <div class={styles.Hero__Copy}>
+        <h1 id='movies-tv-title' class={styles.Hero__Title}><span class={styles.Hero__TitleLine}>Rename movies &amp;</span><span class={styles.Hero__TitleAccent}>TV shows.</span></h1>
+        <p class={styles.Hero__Lead}>
+          Batch rename movies and TV episodes on Mac or Windows. Zush checks titles and episodes against <a href={TVDB_URL} target='_blank' rel='noopener noreferrer'>TheTVDB</a>, then previews clean filenames for Plex, Jellyfin, and Infuse. Optional sorting groups episodes by show and season.
+        </p>
+        <div class={styles.Actions}>
+          <MoviesTvDownloadButton client:load source='hero' className={styles.Button_primary} />
+          <a href='#examples' class={styles.Button_secondary}>See the difference <ArrowRight size={17} aria-hidden='true' /></a>
+        </div>
+        <p class={styles.Hero__Fine}>{MOVIES_TV_FINAL_LINE}</p>
+      </div>
+
+      <div class={styles.Demo} aria-label='Example of a TV episode renamed by Zush'>
+        <div class={styles.Demo__Top}>Zush AI</div>
+        <div class={styles.Demo__Content}>
+          <div class={styles.Demo__Before}>
+            <span class={styles.Demo__Label}>Downloaded file</span>
+            <p>
+              <span class={styles.Demo__Found}>Breaking.Bad</span><span>.</span><span class={styles.Demo__Episode}>S02E03</span><span class={styles.Demo__Noise}>.720p.HDTV.x264-CTU</span><span>.mkv</span>
+            </p>
+          </div>
+          <div class={styles.Demo__Arrow} aria-hidden='true'><ArrowDown size={20} /></div>
+          <div class={styles.Demo__Result}>
+            <div class={styles.Demo__Card}><Image src={breakingBadPoster} alt='Breaking Bad season 2 poster' widths={[160, 320]} sizes='(max-width: 490px) 160px, 140px' format='webp' quality={82} loading='eager' /></div>
+            <div class={styles.Demo__After}>
+              <span class={styles.Demo__Label}>Ready for your library</span>
+              <p>{featured.after}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id='examples' class={styles.Examples} aria-labelledby='examples-title'>
+    <div class={styles.Container}>
+      <div class={styles.SectionIntro}>
+        <h2 id='examples-title' class={styles.SectionTitle}>Release names.<span>Real titles.</span></h2>
+        <p>See how Zush replaces release tags with the right movie title, year, and TV episode name.</p>
+      </div>
+      <div class={styles.Examples__List}>
+        {MOVIES_TV_EXAMPLES.map((example, index) => (
+          <article class={styles.Example}>
+            <div class={styles.Example__Identity}>
+              <Image src={posters[index]} alt={`${example.title} poster`} class={styles.Example__Poster} widths={[100, 200]} sizes='72px' format='webp' quality={80} loading='lazy' />
+              <div><span class={styles.Example__Number}>0{index + 1} / {example.kind}</span><h3>{example.title}</h3><p>{example.detail}</p></div>
+            </div>
+            <div class={styles.Example__Names}>
+              <div><span class={styles.Example__Label}>Before</span><p class={styles.Example__Before}>{example.before}</p></div>
+              <ArrowRight className={styles.Example__Arrow} size={20} aria-hidden='true' />
+              <div><span class={styles.Example__Label}>After</span><p class={styles.Example__After}>{example.after}</p></div>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class={styles.Examples__Guide}>
+        <div>
+          <h3>Plex naming: filenames and folders.</h3>
+          <p>Plex recommends a show title, year, and S01E02 code for TV episodes. Zush puts those details in the filename and previews the result. Plex also needs its own show and season folder layout; Zush's optional Sort creates one folder level.</p>
+        </div>
+        <a href='/blog/plex-naming-convention-tv-shows-movies'>Plex naming guide <ArrowRight size={17} aria-hidden='true' /></a>
+      </div>
+      <p class={styles.Examples__Credit}>Poster artwork: <a href='https://www.justwatch.com/tr/tv-sovu/breaking-bad/sezon-2' target='_blank' rel='noopener noreferrer'>Breaking Bad</a>, <a href='https://www.rottentomatoes.com/m/blade_runner_2049' target='_blank' rel='noopener noreferrer'>Blade Runner 2049</a>, and <a href='https://www.themoviedb.org/tv/209867/images/posters' target='_blank' rel='noopener noreferrer'>Frieren</a>.</p>
+    </div>
+  </section>
+
+  <section id='how' class={styles.Workflow} aria-labelledby='how-title'>
+    <Image src={cinemaDesert} alt='' class={styles.Workflow__Backdrop} widths={[800, 1200]} sizes='100vw' format='webp' quality={76} loading='lazy' />
+    <div class={styles.Container}>
+      <GuidedRenameDemo client:visible />
+    </div>
+  </section>
+
+  <section id='faq' class={styles.Faq} aria-labelledby='faq-title'>
+    <div class={styles.Container}>
+      <div class={styles.SectionIntro}>
+        <h2 id='faq-title' class={styles.SectionTitle}>Good to know.<span>Before you start.</span></h2>
+      </div>
+      <div class={styles.Faq__List}>
+        {MOVIES_TV_FAQ.map((item) => (
+          <details class={styles.Faq__Item}>
+            <summary><span>{item.question}</span><Plus size={20} aria-hidden='true' /></summary>
+            <p>{item.answer}{'href' in item && <Fragment> <a href={item.href}>Read the setup guide <ArrowRight size={15} aria-hidden='true' /></a></Fragment>}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class={styles.Final} aria-labelledby='final-title'>
+    <Image src={cinemaCoast} alt='' class={styles.Final__Backdrop} widths={[800, 1200]} sizes='100vw' format='webp' quality={76} loading='lazy' />
+    <div class={styles.Container}>
+      <h2 id='final-title'>Your library.<span>Ready to roll.</span></h2>
+      <p>{MOVIES_TV_FINAL_LINE}</p>
+      <div class={styles.Actions}>
+        <MoviesTvDownloadButton client:visible source='download-cta' className={styles.Button_primary} />
+        <MoviesTvDownloadButton client:visible source='download-cta' otherPlatform className={styles.Button_other} />
+      </div>
+    </div>
+  </section>
+</div>
+
+<style is:global>
+  html:has([data-cine-page]) { --background: #090b13; }
+  html:has([data-cine-page]) body { background: #090b13; }
+  html:has([data-cine-page]) [data-header-root] { box-shadow: inset 0 0 0 1px rgba(177, 168, 228, 0.3), 0 10px 28px rgba(0, 0, 0, 0.18); }
+</style>

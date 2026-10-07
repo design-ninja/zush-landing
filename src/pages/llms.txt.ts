@@ -58,6 +58,7 @@ export async function GET() {
     `- [Rename Excel Files with AI](${SITE_ORIGIN}/rename-excel-files-with-ai)`,
     `- [Rename Design Files with AI](${SITE_ORIGIN}/rename-design-files-with-ai)`,
     `- [Rename Videos with AI](${SITE_ORIGIN}/rename-videos-with-ai)`,
+    `- [Rename Movies and TV Shows on Mac and Windows (TheTVDB-matched, Plex-style names, season folders)](${SITE_ORIGIN}/rename-movies-and-tv-shows)`,
     `- [Rename Audio with AI](${SITE_ORIGIN}/rename-audio-with-ai)`,
     `- [Rename Invoices with AI](${SITE_ORIGIN}/rename-invoices-with-ai)`,
     `- [Rename & Organize Receipts with AI](${SITE_ORIGIN}/rename-receipts-with-ai)`,
