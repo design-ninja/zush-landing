@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.15.0] - 2026-10-07
+
+### New
+
+- New Movies & TV template names films and episodes using titles, years, seasons, and episode numbers.
+- Auto sorting can group episodes by show and season, and music from the same album by artist and album.
+
+### Improved
+
+- Better analysis of long documents.
+- More reliable file processing and folder access.
+
 ## [3.14.3] - 2026-10-05
 
 ### Fixed
