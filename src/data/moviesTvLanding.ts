@@ -2,11 +2,11 @@ import { APP_CONFIG } from '@/constants';
 import { PRO_PRICING } from '@/constants/pricing';
 import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 
-// English-only, Mac-only page. The examples use names from the app's media
+// English-only page. The examples use names from the app's media
 // recognition corpus; TheTVDB supplies the show, film, year, and episode data.
 // Sorting creates one folder level inside the chosen destination.
 export const MOVIES_TV_PAGE_PATH = '/rename-movies-and-tv-shows';
-export const MOVIES_TV_PAGE_TITLE = 'Rename Movies and TV Shows on Mac';
+export const MOVIES_TV_PAGE_TITLE = 'Rename Movies and TV Shows on Mac and Windows';
 export const TVDB_URL = 'https://thetvdb.com';
 export const MOVIES_TV_FREE_RENAMES = APP_CONFIG.free_tier_limit;
 export const MOVIES_TV_PRICE_LINE = `${MOVIES_TV_FREE_RENAMES} free renames. PRO is ${PRO_PRICING.monthly.label}/month or ${PRO_PRICING.oneTime.label} once.`;
@@ -38,6 +38,12 @@ export const MOVIES_TV_EXAMPLES = [
 
 export const MOVIES_TV_FAQ = [
   {
+    question: 'How do I set up Zush for my movie and TV collection?',
+    answer:
+      'In AI Rename, choose the Movies & TV Template and add a small test batch. Its Media Title block handles films and episodes. For a custom format, open Templates, click + in the naming pattern, and expand Movies & TV in the Naming Blocks catalog. Review the names and destination before applying them.',
+    href: '/docs/templates/movies-tv',
+  },
+  {
     question: 'How do I name TV shows and movies for Plex?',
     answer:
       'The Movies & TV template writes Show (Year) - S01E02 - Episode Title for episodes and Movie (Year) for films. Plex recommends separate movie and TV library roots, with episodes inside show and season folders. Zush can add one folder level inside your chosen destination; review the layout before renaming. The filenames also carry the title and episode details used by Jellyfin and Infuse.',
@@ -59,19 +65,19 @@ export const MOVIES_TV_FAQ = [
   },
   {
     question: 'How much does it cost?',
-    answer: `${MOVIES_TV_PRICE_LINE} Movies & TV is available in Zush 3.15 and later for Mac.`,
+    answer: `${MOVIES_TV_PRICE_LINE} Movies & TV is available in Zush for Mac and Windows.`,
   },
 ] as const;
 
 export const MOVIES_TV_DESCRIPTION =
-  'Rename movies and TV episodes on Mac. Match real titles, preview Plex-style filenames, and optionally sort by show and season.';
+  'Rename movies and TV episodes on Mac and Windows. Match real titles, preview Plex-style filenames, and optionally sort by show and season.';
 
 export const MOVIES_TV_JSON_LD = buildFeaturePageJsonLd({
   pageName: MOVIES_TV_PAGE_TITLE,
   keywords:
-    'tv show renamer mac, movie renamer mac, rename tv episodes, rename movies for plex, plex naming convention, jellyfin naming, rename anime episodes, sort tv episodes into season folders, thetvdb renamer',
+    'tv show renamer mac, movie renamer mac, tv show renamer windows, movie renamer windows, rename tv episodes, rename movies for plex, plex naming convention, jellyfin naming, rename anime episodes, sort tv episodes into season folders, thetvdb renamer',
   howTo: {
-    name: 'Rename movies and TV episodes on a Mac with Zush',
+    name: 'Rename movies and TV episodes with Zush',
     description: MOVIES_TV_DESCRIPTION,
     steps: [
       {

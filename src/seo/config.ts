@@ -411,13 +411,13 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'AI video renamer, rename videos with AI, batch rename video files, rename videos by content, MP4 file renamer, MOV file renamer, screen recording renamer, video file naming software, video renamer for Mac, video renamer for Windows',
   },
   '/rename-movies-and-tv-shows': {
-    title: 'TV Show & Movie Renamer for Mac | Plex-Style Names | Zush',
+    title: 'TV Show & Movie Renamer for Mac & Windows | Zush',
     description:
-      'Rename TV episodes and movies on Mac for Plex, Jellyfin, and Infuse. Check real titles, preview every filename, and optionally sort by show and season.',
+      'Rename TV episodes and movies on Mac or Windows for Plex, Jellyfin, and Infuse. Check real titles, preview every filename, and optionally sort by show and season.',
     robots: 'index, follow',
     ogType: 'website',
     keywords:
-      'tv show renamer mac, movie renamer mac, rename tv episodes, rename tv shows for plex, rename movies for plex, plex naming convention, jellyfin naming, media file renamer, batch rename tv episodes, rename anime episodes, sort tv episodes into season folders, thetvdb renamer',
+      'tv show renamer mac, movie renamer mac, tv show renamer windows, movie renamer windows, rename tv episodes, rename tv shows for plex, rename movies for plex, plex naming convention, jellyfin naming, media file renamer, batch rename tv episodes, rename anime episodes, sort tv episodes into season folders, thetvdb renamer',
   },
   '/rename-audio-with-ai': {
     title: 'AI Audio File Renamer: MP3, WAV & M4A — Zush',

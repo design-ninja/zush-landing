@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Check, ChevronDown, ChevronLeft, ChevronRight, ChevronsUpDown, Ellipsis, Folder, PanelLeft, Pause, Play, Plus, Sparkles } from 'lucide-react';
+import { Check, ChevronDown, ChevronLeft, ChevronRight, ChevronsUpDown, Ellipsis, Folder, Pause, Play, Plus, Sparkles } from 'lucide-react';
 import breakingBadPoster from '@/assets/landing/movies-tv/breaking-bad-poster.webp';
 import bladeRunnerPoster from '@/assets/landing/movies-tv/blade-runner-poster.webp';
 import styles from './GuidedRenameDemo.module.scss';
@@ -89,8 +89,8 @@ export default function GuidedRenameDemo() {
       <div className={styles.Window}>
         <div className={styles.Window__Bar}>
           <span className={styles.Window__Lights} aria-hidden='true'><i /><i /><i /></span>
-          <span className={styles.Window__SidebarIcon}><PanelLeft size={17} /></span>
-          <span>AI Rename</span>
+          <img className={styles.Window__Logo} src='/logo-96.webp' width='28' height='28' alt='' />
+          <span>Zush AI</span>
         </div>
         <div className={styles.App}>
           <div className={`${styles.Template} ${step === 1 ? styles.Template_highlight : ''}`}>

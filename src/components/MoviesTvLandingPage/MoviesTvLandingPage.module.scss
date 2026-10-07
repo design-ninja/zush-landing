@@ -34,7 +34,6 @@
     margin-top: 2rem;
 }
 
-.Button_primary,
 .Button_secondary {
     display: inline-flex;
     align-items: center;
@@ -52,16 +51,39 @@
     &:hover { transform: translateY(-2px); }
 }
 
-.Button_primary {
+.Button_primary,
+.Button_other {
+    display: inline-flex;
+    border-radius: 0.65rem;
+    transition: transform 0.2s ease;
+
+    &:hover { transform: translateY(-2px); }
+
+    :global(a[class]) {
+        min-height: 3.35rem;
+        padding: 0.75rem 1.25rem;
+        border-radius: 0.65rem;
+        font-size: 0.98rem;
+        font-weight: 600;
+        line-height: 1.2;
+    }
+
+    :global(svg) { width: 1.5rem; height: 1.5rem; }
+}
+
+.Button_primary :global(a[class]) {
     background: var(--page-accent);
     color: #fff;
 
-    &:hover {
-        background: oklch(0.72 0.25 279.31);
-        color: #fff;
-    }
+    &:hover { background: oklch(0.72 0.25 279.31); }
+}
 
-    svg { width: 1.2rem; height: 1.2rem; }
+.Button_other :global(a[class]) {
+    border: 1px solid #50566a;
+    background: rgb(255 255 255 / 0.04);
+    color: #f6f5f9;
+
+    &:hover { background: rgb(255 255 255 / 0.1); }
 }
 
 .Button_secondary {
@@ -123,7 +145,7 @@
     display: grid;
     grid-template-columns: minmax(0, 0.97fr) minmax(0, 1fr);
     align-items: center;
-    gap: clamp(2.5rem, 5vw, 6rem);
+    gap: clamp(1.25rem, 2.5vw, 3rem);
     width: min(100% - 2 * clamp(1.25rem, 4vw, 4rem), 84rem);
     margin-inline: auto;
 }
@@ -131,11 +153,10 @@
 .Hero__Copy { max-width: 39rem; }
 
 .Hero__Title {
-    max-width: 12ch;
     margin: 0;
     font-family: var(--page-display);
-    font-stretch: 62%;
-    font-size: clamp(3.6rem, 6.1vw, 6.6rem);
+    font-stretch: 55%;
+    font-size: clamp(3.4rem, 5.8vw, 6.4rem);
     font-weight: 900;
     letter-spacing: -0.035em;
     line-height: 0.9;
@@ -143,8 +164,13 @@
     text-wrap: balance;
     text-shadow: 0 0.3rem 2rem rgb(0 0 0 / 0.55);
 
-    span {
+    .Hero__TitleLine,
+    .Hero__TitleAccent {
         display: block;
+        white-space: nowrap;
+    }
+
+    .Hero__TitleAccent {
         color: var(--page-accent);
     }
 }
@@ -192,26 +218,11 @@
 .Demo__Top {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
     padding: 0.8rem 1.2rem;
     border-bottom: 1px solid rgb(255 255 255 / 0.08);
-    color: #9fa2b4;
-    font-size: 0.73rem;
-    font-weight: 600;
-}
-
-.Demo__Dots {
-    display: flex;
-    gap: 0.32rem;
-
-    i {
-        width: 0.5rem;
-        height: 0.5rem;
-        border-radius: 50%;
-        background: #5c5a70;
-    }
-
-    i:first-child { background: var(--page-accent); }
+    color: #d6d3e2;
+    font-size: 0.9rem;
+    font-weight: 700;
 }
 
 .Demo__Content { padding: clamp(1.25rem, 3vw, 2.1rem); }
@@ -506,6 +517,7 @@
 
 .Faq__Item[open] summary svg { transform: rotate(45deg); }
 .Faq__Item > p { max-width: 47rem; margin: 0; padding: 0 2rem 1.5rem 0; color: var(--page-muted); font-size: 0.94rem; line-height: 1.65; }
+.Faq__Item > p a { display: inline-flex; align-items: center; gap: 0.3rem; margin-left: 0.25rem; color: #bba8ff; text-underline-offset: 3px; }
 
 .Final {
     position: relative;
@@ -538,7 +550,6 @@
 @media (max-width: 950px) {
     .Hero { min-height: auto; padding-bottom: 6rem; }
     .Hero__Inner { grid-template-columns: minmax(0, 1fr); max-width: 42rem; }
-    .Hero__Title { max-width: 12ch; }
 }
 
 @media (max-width: 1050px) {
@@ -548,7 +559,8 @@
 @media (max-width: 700px) {
     .Hero { padding-top: calc(var(--navbar-height, 4.375rem) + 3.5rem); }
     .Hero__Inner { gap: 2.5rem; }
-    .Hero__Title { font-size: clamp(3.5rem, 12vw, 5rem); }
+    .Hero__Title { font-size: clamp(2.85rem, 9.5vw, 4.5rem); }
+    .Hero__Title .Hero__TitleLine { white-space: normal; }
     .Hero__Scrim { background: linear-gradient(0deg, #090b13 0%, rgb(9 11 19 / 0.62) 55%, rgb(9 11 19 / 0.75) 100%); }
     .Example { grid-template-columns: 1fr; gap: 1.2rem; }
     .Examples__Guide { flex-direction: column; align-items: flex-start; gap: 0.9rem; }
