@@ -1,0 +1,362 @@
+@use '../../styles/mixins' as *;
+
+.Machine {
+    position: relative;
+    width: 100%;
+    max-width: 36rem;
+    border: 1px solid rgb(255 255 255 / 0.1);
+    border-radius: 0.875rem;
+    background: rgb(20 20 20 / 0.92);
+    box-shadow:
+        0 2.5rem 5rem -1.5rem rgb(0 0 0 / 0.85),
+        0 0 0 1px rgb(0 0 0 / 0.6);
+    color: var(--cine-text);
+    overflow: hidden;
+}
+
+.Machine__Chrome {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid rgb(255 255 255 / 0.07);
+    background: rgb(255 255 255 / 0.03);
+}
+
+.Machine__Lights {
+    display: inline-flex;
+    gap: 0.4rem;
+
+    i {
+        width: 0.68rem;
+        height: 0.68rem;
+        border-radius: 50%;
+        background: #3a3a3a;
+    }
+
+    i:first-child {
+        background: var(--cine-accent);
+    }
+}
+
+.Machine__Window {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--cine-muted);
+}
+
+.Machine__Body {
+    display: flex;
+    flex-direction: column;
+}
+
+.Machine__Step {
+    display: grid;
+    gap: 0.35rem;
+    padding: 0.95rem 1.25rem 1rem;
+    border-bottom: 1px solid rgb(255 255 255 / 0.06);
+}
+
+.Machine__Label {
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cine-dim);
+}
+
+// --- Original path ----------------------------------------------------------
+
+.Machine__Path {
+    margin: 0;
+    min-height: 5.1rem;
+    padding-top: 0.55rem;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    line-height: 2.7;
+    color: var(--cine-text);
+    overflow-wrap: anywhere;
+
+    @include small {
+        font-size: 0.8rem;
+        min-height: 6rem;
+    }
+}
+
+.Token {
+    position: relative;
+    border-radius: 0.2rem;
+    transition:
+        color 0.35s ease,
+        background-color 0.35s ease,
+        box-shadow 0.35s ease,
+        text-decoration-color 0.35s ease;
+    text-decoration: line-through;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 2px;
+}
+
+.Token__Label {
+    position: absolute;
+    left: 0;
+    bottom: calc(100% + 0.05rem);
+    font-family: var(--font-family);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--cine-muted);
+    animation: label-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: inherit;
+}
+
+.Token_show,
+.Token_title {
+    background: oklch(0.65 0.25 279.31 / 0.24);
+    box-shadow: inset 0 -2px 0 var(--cine-accent);
+
+    .Token__Label {
+        color: oklch(0.82 0.12 279.31);
+    }
+}
+
+.Token_season,
+.Token_episode,
+.Token_year {
+    background: rgb(255 255 255 / 0.13);
+    box-shadow: inset 0 -2px 0 rgb(255 255 255 / 0.55);
+}
+
+.Token_noise {
+    color: #5b5b5b;
+    text-decoration-color: oklch(0.65 0.25 279.31 / 0.75);
+}
+
+.Token_folder {
+    color: #7d7d7d;
+}
+
+@keyframes label-in {
+    from {
+        opacity: 0;
+        transform: translateY(0.3rem);
+    }
+}
+
+// --- Lookup -----------------------------------------------------------------
+
+.Machine__LookupLine {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 0.6rem;
+    min-height: 1.6rem;
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--cine-muted);
+}
+
+.Machine__Idle {
+    color: #4c4c4c;
+}
+
+.Machine__Spinner {
+    animation: spin 0.8s linear infinite;
+    color: var(--cine-text);
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.Machine__Match {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-weight: 700;
+    color: var(--cine-match);
+    animation: label-in 0.35s ease both;
+}
+
+.Machine__MatchTitle {
+    font-weight: 600;
+    color: var(--cine-text);
+}
+
+.Machine__MatchMeta {
+    color: var(--cine-muted);
+}
+
+// --- Result -----------------------------------------------------------------
+
+.Machine__ResultBody {
+    display: grid;
+    grid-template-columns: 8.5rem minmax(0, 1fr);
+    align-items: center;
+    gap: 1rem;
+    min-height: 5rem;
+
+    @include small {
+        grid-template-columns: 6.25rem minmax(0, 1fr);
+        gap: 0.8rem;
+    }
+}
+
+.Machine__Card {
+    opacity: 0.18;
+    filter: var(--machine-card-filter, grayscale(1));
+    transform: scale(0.96);
+    transition:
+        opacity 0.5s ease,
+        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.5s ease;
+}
+
+.Machine__NewName {
+    min-width: 0;
+}
+
+.Machine__After {
+    margin: 0;
+    font-size: 1.08rem;
+    font-weight: 650;
+    line-height: 1.3;
+    color: #fff;
+    overflow-wrap: anywhere;
+
+    @include small {
+        font-size: 0.95rem;
+    }
+}
+
+.Machine__CardLine {
+    margin: 0.3rem 0 0;
+    font-size: 0.8rem;
+    color: var(--cine-muted);
+}
+
+.Machine__Result_on {
+    .Machine__Card {
+        --machine-card-filter: none;
+        opacity: 1;
+        transform: none;
+    }
+
+    .Machine__After,
+    .Machine__CardLine {
+        animation: label-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .Machine__CardLine {
+        animation-delay: 0.12s;
+    }
+}
+
+// --- Tabs -------------------------------------------------------------------
+
+.Machine__Tabs {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.25rem;
+    padding: 0.7rem 0.9rem 0.2rem;
+
+    @include small {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.Machine__Tab {
+    all: unset;
+    box-sizing: border-box;
+    display: grid;
+    gap: 0.45rem;
+    padding: 0.45rem 0.35rem;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--cine-dim);
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: var(--cine-text);
+    }
+
+    &:focus-visible {
+        outline: 2px solid #fff;
+        outline-offset: 1px;
+    }
+}
+
+.Machine__Tab_active {
+    color: var(--cine-text);
+}
+
+.Machine__TabText {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.Machine__Progress {
+    position: relative;
+    height: 2px;
+    border-radius: 2px;
+    background: rgb(255 255 255 / 0.14);
+    overflow: hidden;
+}
+
+.Machine__ProgressFill {
+    position: absolute;
+    inset: 0;
+    background: var(--cine-accent);
+    transform-origin: left center;
+    animation: progress var(--duration) linear both;
+}
+
+@keyframes progress {
+    from {
+        transform: scaleX(var(--from));
+    }
+
+    to {
+        transform: scaleX(var(--to));
+    }
+}
+
+.Machine__Credit {
+    margin: 0;
+    padding: 0.35rem 1.25rem 0.8rem;
+    font-size: 0.7rem;
+    color: var(--cine-dim);
+
+    a {
+        color: var(--cine-muted);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+
+        &:hover {
+            color: #fff;
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .Token,
+    .Token__Label,
+    .Machine__Card,
+    .Machine__Match,
+    .Machine__Result_on .Machine__After,
+    .Machine__Result_on .Machine__CardLine {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .Machine__Spinner {
+        animation: none;
+    }
+}

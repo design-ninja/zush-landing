@@ -1,0 +1,39 @@
+---
+import styles from './TitleCard.module.scss';
+
+// Generated stand-in for key art: a tinted gradient with the title set like a
+// streaming title card. No poster images, so nothing here is anyone's artwork.
+interface Props {
+  title: string;
+  line?: string;
+  badge?: string;
+  hue: number;
+  /** Camcorder-style frame for home videos that never match a film. */
+  footage?: boolean;
+  class?: string;
+}
+
+const { title, line, badge, hue, footage = false, class: className } = Astro.props;
+---
+
+<div
+  class:list={[styles.Card, footage && styles.Card_footage, className]}
+  style={`--card-hue: ${hue}`}
+  aria-hidden='true'
+>
+  {footage ? (
+    <>
+      <span class={styles.Card__Rec}><span class={styles.Card__RecDot}></span>REC</span>
+      <span class={styles.Card__Timecode}>00:03:12</span>
+      <span class={styles.Card__Footage}>{title}</span>
+    </>
+  ) : (
+    <>
+      {badge && <span class={styles.Card__Badge}>{badge}</span>}
+      <span class={styles.Card__Text}>
+        <span class={styles.Card__Title}>{title}</span>
+        {line && <span class={styles.Card__Line}>{line}</span>}
+      </span>
+    </>
+  )}
+</div>

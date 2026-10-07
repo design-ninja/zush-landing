@@ -410,6 +410,15 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
     keywords:
       'AI video renamer, rename videos with AI, batch rename video files, rename videos by content, MP4 file renamer, MOV file renamer, screen recording renamer, video file naming software, video renamer for Mac, video renamer for Windows',
   },
+  '/rename-movies-and-tv-shows': {
+    title: 'TV Show & Movie Renamer for Mac: Plex-Ready Names | Zush',
+    description:
+      'Rename movies and TV episodes on Mac with titles checked against TheTVDB: Show (Year) - S01E02 - Episode Title. Sort episodes into season folders.',
+    robots: 'index, follow',
+    ogType: 'website',
+    keywords:
+      'tv show renamer mac, movie renamer mac, rename tv episodes, rename tv shows for plex, rename movies for plex, plex naming convention, jellyfin naming, media file renamer, batch rename tv episodes, rename anime episodes, sort tv episodes into season folders, thetvdb renamer, filebot alternative mac',
+  },
   '/rename-audio-with-ai': {
     title: 'AI Audio File Renamer: MP3, WAV & M4A — Zush',
     description:

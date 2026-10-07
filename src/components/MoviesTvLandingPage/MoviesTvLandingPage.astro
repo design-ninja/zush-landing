@@ -1,0 +1,317 @@
+---
+import '@fontsource-variable/archivo/wdth.css';
+import { ChevronLeft, ChevronRight, Info, Plus } from 'lucide-react';
+import { APP_STORE_URL, APP_STORE_PROTOCOL_URL } from '@/constants';
+import {
+  ABOUT_ROWS,
+  ABOUT_THIS_FEATURE_IS,
+  CATALOG_ROWS,
+  MEDIA_BLOCKS,
+  MOVIES_TV_FAQ,
+  MOVIES_TV_FREE_RENAMES,
+  MOVIES_TV_PRICE_LINE,
+  RECOGNITION_STEPS,
+  TVDB_URL,
+} from '@/data/moviesTvLanding';
+import NameBuilder from './NameBuilder';
+import MacDownloadButton from './MacDownloadButton';
+import SeasonSorter from './SeasonSorter';
+import TitleCard from './TitleCard.astro';
+import TitleMachine from './TitleMachine';
+import styles from './MoviesTvLandingPage.module.scss';
+
+// Art-directed, English-only landing for the Movies & TV naming blocks. The
+// layout borrows a streaming catalog's vocabulary (title cards, rows, an
+// episode list, an About panel, end credits) because that is the world the
+// people renaming these files live in. Facts live in moviesTvLanding.ts.
+
+const collageTiles = CATALOG_ROWS.flatMap((row) => row.tiles).filter((tile) => !tile.footage);
+const collage = Array.from({ length: 28 }, (_, index) => collageTiles[(index * 5) % collageTiles.length]);
+---
+
+<div class={styles.Page} data-cine-page>
+  <section class={styles.Hero} aria-labelledby='movies-tv-title'>
+    <div class={styles.Hero__Collage} aria-hidden='true'>
+      <div class={styles.Hero__CollageGrid}>
+        {collage.map((tile) => (
+          <TitleCard title={tile.cardTitle} badge={tile.badge} hue={tile.hue} />
+        ))}
+      </div>
+    </div>
+    <div class={styles.Hero__Shade} aria-hidden='true'></div>
+
+    <div class={styles.Hero__Inner}>
+      <div class={styles.Hero__Copy}>
+        <p class={styles.Hero__Eyebrow}>Movies &amp; TV in Zush</p>
+        <h1 id='movies-tv-title' class={styles.Hero__Title}>Rename movies and TV shows in one drop</h1>
+        <ul class={styles.Meta} aria-label='At a glance'>
+          <li class={styles.Meta__New}>New in 3.15</li>
+          <li>Mac</li>
+          <li>{MEDIA_BLOCKS.length} naming blocks</li>
+          <li class={styles.Meta__Box}>MKV</li>
+          <li class={styles.Meta__Box}>MP4</li>
+          <li class={styles.Meta__Box}>AVI</li>
+        </ul>
+        <p class={styles.Hero__Lead}>
+          Zush reads messy release names, confirms every show and film on TheTVDB, and writes the names Plex,
+          Jellyfin, and Infuse expect. Then it files each episode into a folder for its season.
+        </p>
+        <div class={styles.Actions}>
+          <MacDownloadButton client:load source='hero' className={styles.Button_play} />
+          <a href='#how' class={styles.Button_info}>
+            <Info size={22} aria-hidden='true' />
+            <span>How it works</span>
+          </a>
+        </div>
+        <p class={styles.Hero__Fine}>Try {MOVIES_TV_FREE_RENAMES} renames free · macOS 15 Sequoia or later</p>
+      </div>
+
+      <div class={styles.Hero__Machine}>
+        <TitleMachine client:load />
+      </div>
+    </div>
+  </section>
+
+  <section id='catalog' class={styles.Catalog} aria-labelledby='catalog-title'>
+    <header class={styles.SectionHead}>
+      <h2 id='catalog-title' class={styles.Display}>Messy in. Library-ready out.</h2>
+      <p class={styles.Lead}>Real names from real libraries, and what Zush writes back.</p>
+    </header>
+
+    {CATALOG_ROWS.map((row) => (
+      <div class={styles.Row} data-row>
+        <div class={styles.Row__Head}>
+          <h3 class={styles.Row__Title}>{row.title}</h3>
+          <p class={styles.Row__Caption}>{row.caption}</p>
+        </div>
+        <div class={styles.Row__Viewport}>
+          <button type='button' class:list={[styles.Row__Arrow, styles.Row__Arrow_prev]} data-row-prev aria-label={`Scroll ${row.title} back`} disabled>
+            <ChevronLeft size={34} aria-hidden='true' />
+          </button>
+          <ul class={styles.Row__Track} data-row-track tabindex='0' aria-label={row.title}>
+            {row.tiles.map((tile) => (
+              <li class={styles.Tile}>
+                <div class={styles.Tile__Art}>
+                  <TitleCard
+                    title={tile.cardTitle}
+                    line={tile.cardLine}
+                    badge={tile.badge}
+                    hue={tile.hue}
+                    footage={tile.footage}
+                  />
+                  <ul class={styles.Tile__Notes} aria-label='What Zush noticed'>
+                    {tile.notes.map((note) => <li>{note}</li>)}
+                  </ul>
+                </div>
+                <p class={styles.Tile__Before} title={tile.before}>
+                  <span class={styles.SrOnly}>Before: </span>{tile.before}
+                </p>
+                <p class={styles.Tile__After}>
+                  <span class={styles.SrOnly}>After: </span>{tile.after}
+                </p>
+              </li>
+            ))}
+          </ul>
+          <button type='button' class:list={[styles.Row__Arrow, styles.Row__Arrow_next]} data-row-next aria-label={`Scroll ${row.title} forward`}>
+            <ChevronRight size={34} aria-hidden='true' />
+          </button>
+        </div>
+      </div>
+    ))}
+
+    <p class={styles.Catalog__Credit}>
+      Show titles, years, and episode titles in these examples come from <a href={TVDB_URL} target='_blank' rel='noopener'>TheTVDB</a>.
+      Home video names show the kind of title AI writes from the frames.
+    </p>
+  </section>
+
+  <section id='how' class={styles.Episodes} aria-labelledby='how-title'>
+    <div class={styles.Episodes__Head}>
+      <h2 id='how-title' class={styles.Display}>How Zush finds the right title</h2>
+      <p class={styles.Lead}>Three sources, checked in order. The first two never touch AI.</p>
+    </div>
+
+    <ol class={styles.Episodes__List}>
+      {RECOGNITION_STEPS.map((step, index) => (
+        <li class={styles.Episode}>
+          <span class={styles.Episode__Num} aria-hidden='true'>{index + 1}</span>
+          <div class:list={[styles.Episode__Thumb, styles[`Episode__Thumb_${index + 1}`]]} aria-hidden='true'>
+            {index === 0 && (
+              <p class={styles.Thumb__Path}>
+                <span>TV/</span><b>Mad Men</b><span>/</span><i>Season 2</i><span>/</span><i>E05</i><span>.mkv</span>
+              </p>
+            )}
+            {index === 1 && (
+              <dl class={styles.Thumb__Tags}>
+                <div><dt>file</dt><dd>123.mp4</dd></div>
+                <div><dt>tvsh</dt><dd>Severance</dd></div>
+                <div><dt>tvsn</dt><dd>1</dd></div>
+                <div><dt>tves</dt><dd>7</dd></div>
+              </dl>
+            )}
+            {index === 2 && (
+              <div class={styles.Thumb__Strip}>
+                <span></span>
+                <span class={styles.Thumb__Frame}>Night of the Living Dead</span>
+                <span></span>
+              </div>
+            )}
+          </div>
+          <div class={styles.Episode__Body}>
+            <div class={styles.Episode__TitleRow}>
+              <h3 class={styles.Episode__Title}>{step.title}</h3>
+              <span class:list={[styles.Episode__Meta, index === 2 && styles.Episode__Meta_ai]}>{step.meta}</span>
+            </div>
+            <p class={styles.Episode__Text}>{step.description}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+
+    <p class={styles.Episodes__Note}>
+      Every match is confirmed on <a href={TVDB_URL} target='_blank' rel='noopener'>TheTVDB</a>, with Wikidata as a
+      backup. Recognized files are named from database facts, not AI guesses.
+    </p>
+  </section>
+
+  <section id='naming' class={styles.Split} aria-labelledby='naming-title'>
+    <div class={styles.Split__Copy}>
+      <h2 id='naming-title' class={styles.Display}>Build the name your library wants</h2>
+      <p class={styles.Lead}>
+        The Movies &amp; TV template writes <code>Show (Year) - S01E02 - Episode Title</code> and
+        <code>Movie (Year)</code>. Prefer something else? Mix {MEDIA_BLOCKS.length} blocks into your own pattern and save it
+        as a template.
+      </p>
+    </div>
+    <NameBuilder client:visible />
+  </section>
+
+  <section id='sorting' class={styles.Split} aria-labelledby='sorting-title'>
+    <div class={styles.Split__Copy}>
+      <h2 id='sorting-title' class={styles.Display}>Every season in its own folder</h2>
+      <p class={styles.Lead}>
+        Turn on Sort and Zush files each episode under its show and season, and films under Movies. Want a different
+        shelf? Describe it in a sentence.
+      </p>
+    </div>
+    <SeasonSorter client:visible />
+    <p class={styles.Split__Note}>
+      Folders are created one level deep in the destination you choose. Monitor can do the same for every new download,
+      and Undo in Activity puts each file back where it was.
+    </p>
+  </section>
+
+  <section id='about' class={styles.About} aria-labelledby='about-title'>
+    <h2 id='about-title' class={styles.About__Title}>About <strong>Movies &amp; TV</strong> in Zush</h2>
+    <dl class={styles.About__List}>
+      {ABOUT_ROWS.map((row) => (
+        <div class={styles.About__Row}>
+          <dt>{row.label}:</dt>
+          <dd>{row.value}</dd>
+        </div>
+      ))}
+      <div class={styles.About__Row}>
+        <dt>This feature is:</dt>
+        <dd>{ABOUT_THIS_FEATURE_IS.join(', ')}</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section id='faq' class={styles.Faq} aria-labelledby='faq-title'>
+    <h2 id='faq-title' class={styles.Display}>Questions collectors ask</h2>
+    <div class={styles.Faq__List}>
+      {MOVIES_TV_FAQ.map((item) => (
+        <details class={styles.Faq__Item} name='movies-tv-faq'>
+          <summary class={styles.Faq__Question}>
+            <span>{item.question}</span>
+            <Plus size={34} strokeWidth={1.5} aria-hidden='true' className={styles.Faq__Icon} />
+          </summary>
+          <p class={styles.Faq__Answer}>{item.answer}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <section class={styles.Credits} aria-labelledby='credits-title'>
+    <h2 id='credits-title' class={styles.Credits__Title}>Roll the credits on messy file names</h2>
+    <p class={styles.Credits__Lead}>{MOVIES_TV_PRICE_LINE}</p>
+    <div class={styles.Actions}>
+      <MacDownloadButton client:visible source='download-cta' className={styles.Button_play} />
+      <a
+        href={APP_STORE_URL}
+        class={styles.Button_info}
+        target='_blank'
+        rel='noopener noreferrer'
+        data-store-os='mac'
+        data-store-app-url={APP_STORE_PROTOCOL_URL}
+        data-store-web-url={APP_STORE_URL}
+        data-download-os='mac'
+        data-download-source='download-cta'
+        data-download-channel='mac-app-store'
+      >
+        <span>Mac App Store</span>
+      </a>
+    </div>
+
+    <p class={styles.Billing}>
+      <span class={styles.Billing__Line}>
+        <small>Zush</small> presents <small>a</small> file naming <small>production</small>{' '}
+        <small>starring</small> Media Title · Show · Season · Episode · Episode Code · Episode Title · Movie Title ·
+        Director · Genre · Runtime · Year
+      </span>
+      <span class={styles.Billing__Line}>
+        <small>matching by</small> <a href={TVDB_URL} target='_blank' rel='noopener'>TheTVDB</a> <small>with</small> Wikidata{' '}
+        <small>folders by</small> Sort{' '}
+        <small>automation by</small> Monitor{' '}
+        <small>second chances by</small> Undo
+      </span>
+      <span class={styles.Billing__Line}>
+        <small>now showing in</small> Zush 3.15 <small>for</small> Mac
+      </span>
+    </p>
+  </section>
+</div>
+
+<script>
+  // Row arrows: page a row by most of its visible width and
+  // disable an arrow at either end.
+  const bindRows = () => {
+    document.querySelectorAll<HTMLElement>('[data-row]').forEach((row) => {
+      if (row.dataset.bound === 'true') return;
+      row.dataset.bound = 'true';
+      const track = row.querySelector<HTMLElement>('[data-row-track]');
+      const prev = row.querySelector<HTMLButtonElement>('[data-row-prev]');
+      const next = row.querySelector<HTMLButtonElement>('[data-row-next]');
+      if (!track || !prev || !next) return;
+
+      const update = () => {
+        const max = track.scrollWidth - track.clientWidth - 2;
+        prev.disabled = track.scrollLeft <= 2;
+        next.disabled = track.scrollLeft >= max;
+      };
+      const page = (direction: number) => {
+        track.scrollBy({ left: direction * track.clientWidth * 0.82, behavior: 'smooth' });
+      };
+
+      prev.addEventListener('click', () => page(-1));
+      next.addEventListener('click', () => page(1));
+      track.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    });
+  };
+
+  bindRows();
+  document.addEventListener('astro:after-swap', bindRows);
+</script>
+
+<style is:global>
+  /* Deeper black than the site's dark theme, shared with the header and footer. */
+  html:has([data-cine-page]) {
+    --background: #0b0b0b;
+  }
+
+  html:has([data-cine-page]) body {
+    background: #0b0b0b;
+  }
+</style>

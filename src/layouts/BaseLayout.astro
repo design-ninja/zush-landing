@@ -57,6 +57,12 @@ interface Props {
   alternates?: AlternateLink[];
   /** Explicit same-page language paths for the header switcher on routes outside LOCALIZED_ROUTES. */
   languagePaths?: Partial<Record<Locale, string>>;
+  /**
+   * Pins the page to one theme and hides the theme toggle. For art-directed
+   * landings that only exist in one palette; the visitor's stored choice is
+   * left untouched for every other page.
+   */
+  forcedTheme?: 'dark' | 'light';
 }
 
 const {
@@ -72,6 +78,7 @@ const {
   headerNav,
   alternates,
   languagePaths,
+  forcedTheme,
 } = Astro.props;
 
 const canonicalUrl = getCanonicalUrl(seo.canonicalPath);
@@ -140,7 +147,13 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
 ---
 
 <!doctype html>
-<html lang={localeMeta.lang} data-source-lang={localeMeta.lang} dir={localeMeta.dir ?? 'ltr'}>
+<html
+  lang={localeMeta.lang}
+  data-source-lang={localeMeta.lang}
+  dir={localeMeta.dir ?? 'ltr'}
+  data-theme={forcedTheme}
+  data-theme-forced={forcedTheme}
+>
   <head>
     <meta charset="UTF-8" />
     {/* Bing fetches the site-root /favicon.ico and ignores subdirectory icons, so
@@ -152,7 +165,7 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
     <link rel="manifest" href="/favicon/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="color-scheme" content={forcedTheme ?? 'light dark'} />
 
     <script is:inline>
       (() => {
@@ -171,7 +184,8 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
           return null;
         };
 
-        const getTheme = () => getStoredTheme() ?? (mediaQuery.matches ? 'dark' : 'light');
+        const getForcedTheme = () => root().getAttribute('data-theme-forced');
+        const getTheme = () => getForcedTheme() || (getStoredTheme() ?? (mediaQuery.matches ? 'dark' : 'light'));
 
         const applyTheme = (target = root(), theme = getTheme()) => {
           target.setAttribute('data-theme', theme);
@@ -184,6 +198,7 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
           window.__zushThemeManagerBound = true;
 
           const toggleTheme = () => {
+            if (getForcedTheme()) return;
             const nextTheme = getTheme() === 'light' ? 'dark' : 'light';
 
             try {
@@ -196,7 +211,7 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
           applyTheme();
           enableScrollReveal();
           mediaQuery.addEventListener('change', (event) => {
-            if (getStoredTheme()) return;
+            if (getForcedTheme() || getStoredTheme()) return;
             applyTheme(root(), event.matches ? 'dark' : 'light');
           });
 
@@ -299,8 +314,14 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
       <link rel="alternate" hreflang="x-default" href={explicitXDefault} />
     )}
 
-    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
-    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    {forcedTheme ? (
+      <meta name="theme-color" content={forcedTheme === 'dark' ? '#000000' : '#ffffff'} />
+    ) : (
+      <>
+        <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+        <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+      </>
+    )}
 
     <meta property="og:type" content={seo.ogType ?? 'website'} />
     <meta property="og:url" content={canonicalUrl} />
@@ -515,6 +536,10 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
 </style>
 
 <style is:global>
+  html[data-theme-forced] [data-theme-toggle] {
+    display: none !important;
+  }
+
   html[data-scroll-reveal='enabled'] :is(
     [data-scroll-reveal]:not(astro-island),
     astro-island[data-scroll-reveal] > section
