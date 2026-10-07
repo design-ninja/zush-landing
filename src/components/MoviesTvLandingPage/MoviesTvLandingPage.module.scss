@@ -432,6 +432,23 @@
 
 .Example__Arrow { color: var(--page-accent); }
 
+.Examples__Guide {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: 2rem;
+    padding: 1.35rem 1.5rem;
+    border: 1px solid #414457;
+    border-radius: 0.8rem;
+    background: #151923;
+
+    h3 { margin: 0; font-size: 1.05rem; font-weight: 700; }
+    p { max-width: 52rem; margin: 0.4rem 0 0; color: var(--page-muted); font-size: 0.88rem; line-height: 1.5; }
+    a { display: inline-flex; align-items: center; gap: 0.35rem; flex: 0 0 auto; color: #c5b9ff; font-size: 0.85rem; font-weight: 600; text-decoration: none; white-space: nowrap; }
+    a:hover { color: #e0d9ff; text-decoration: underline; text-underline-offset: 3px; }
+}
+
 .Examples__Credit {
     margin: 1.4rem 0 0;
     color: #858b9e;
@@ -534,6 +551,7 @@
     .Hero__Title { font-size: clamp(3.5rem, 12vw, 5rem); }
     .Hero__Scrim { background: linear-gradient(0deg, #090b13 0%, rgb(9 11 19 / 0.62) 55%, rgb(9 11 19 / 0.75) 100%); }
     .Example { grid-template-columns: 1fr; gap: 1.2rem; }
+    .Examples__Guide { flex-direction: column; align-items: flex-start; gap: 0.9rem; }
 }
 
 @media (max-width: 490px) {

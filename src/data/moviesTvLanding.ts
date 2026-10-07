@@ -38,9 +38,9 @@ export const MOVIES_TV_EXAMPLES = [
 
 export const MOVIES_TV_FAQ = [
   {
-    question: 'Will these names work with Plex, Jellyfin, or Infuse?',
+    question: 'How do I name TV shows and movies for Plex?',
     answer:
-      'The Movies & TV template writes Show (Year) - S01E02 - Episode Title for episodes and Movie (Year) for films. These names give media libraries the title, year, and episode code they use to identify a file. For the best Plex match, keep films and TV shows in separate library roots.',
+      'The Movies & TV template writes Show (Year) - S01E02 - Episode Title for episodes and Movie (Year) for films. Plex recommends separate movie and TV library roots, with episodes inside show and season folders. Zush can add one folder level inside your chosen destination; review the layout before renaming. The filenames also carry the title and episode details used by Jellyfin and Infuse.',
   },
   {
     question: 'Where do the titles come from?',
@@ -64,12 +64,12 @@ export const MOVIES_TV_FAQ = [
 ] as const;
 
 export const MOVIES_TV_DESCRIPTION =
-  'Rename movies and TV episodes on Mac with titles checked against TheTVDB. Preview library-ready names and optionally sort episodes into season folders.';
+  'Rename movies and TV episodes on Mac. Match real titles, preview Plex-style filenames, and optionally sort by show and season.';
 
 export const MOVIES_TV_JSON_LD = buildFeaturePageJsonLd({
   pageName: MOVIES_TV_PAGE_TITLE,
   keywords:
-    'tv show renamer mac, movie renamer mac, rename tv episodes, rename movies for plex, plex naming, jellyfin naming, rename anime episodes, sort tv episodes into season folders, thetvdb renamer, filebot alternative mac',
+    'tv show renamer mac, movie renamer mac, rename tv episodes, rename movies for plex, plex naming convention, jellyfin naming, rename anime episodes, sort tv episodes into season folders, thetvdb renamer',
   howTo: {
     name: 'Rename movies and TV episodes on a Mac with Zush',
     description: MOVIES_TV_DESCRIPTION,

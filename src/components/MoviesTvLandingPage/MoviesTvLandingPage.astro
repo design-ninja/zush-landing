@@ -21,6 +21,7 @@ import styles from './MoviesTvLandingPage.module.scss';
 
 const featured = MOVIES_TV_EXAMPLES[0];
 const posters = [breakingBadPoster, bladeRunnerPoster, frierenPoster];
+const PLEX_TV_NAMING_URL = 'https://support.plex.tv/articles/naming-and-organizing-your-tv-show-files/';
 ---
 
 <div class={styles.Page} data-cine-page>
@@ -29,9 +30,9 @@ const posters = [breakingBadPoster, bladeRunnerPoster, frierenPoster];
     <div class={styles.Hero__Scrim} aria-hidden='true'></div>
     <div class={styles.Hero__Inner}>
       <div class={styles.Hero__Copy}>
-        <h1 id='movies-tv-title' class={styles.Hero__Title}>Movies &amp; TV.<span>Named right.</span></h1>
+        <h1 id='movies-tv-title' class={styles.Hero__Title}>Rename movies &amp; <span>TV shows.</span></h1>
         <p class={styles.Hero__Lead}>
-          Rename movies and TV episodes on Mac without fixing every filename by hand. Zush checks titles and episodes against <a href={TVDB_URL} target='_blank' rel='noopener noreferrer'>TheTVDB</a>, then previews clean names and optional season folders for Plex, Jellyfin, and Infuse.
+          Batch rename movies and TV episodes on Mac. Zush checks titles and episodes against <a href={TVDB_URL} target='_blank' rel='noopener noreferrer'>TheTVDB</a>, then previews clean filenames for Plex, Jellyfin, and Infuse. Optional sorting groups episodes by show and season.
         </p>
         <div class={styles.Actions}>
           <MacDownloadButton client:load source='hero' className={styles.Button_primary} />
@@ -66,7 +67,7 @@ const posters = [breakingBadPoster, bladeRunnerPoster, frierenPoster];
     <div class={styles.Container}>
       <div class={styles.SectionIntro}>
         <h2 id='examples-title' class={styles.SectionTitle}>Release names.<span>Real titles.</span></h2>
-        <p>Episodes, movies, and anime get names you can recognize at a glance.</p>
+        <p>See how Zush replaces release tags with the right movie title, year, and TV episode name.</p>
       </div>
       <div class={styles.Examples__List}>
         {MOVIES_TV_EXAMPLES.map((example, index) => (
@@ -82,6 +83,13 @@ const posters = [breakingBadPoster, bladeRunnerPoster, frierenPoster];
             </div>
           </article>
         ))}
+      </div>
+      <div class={styles.Examples__Guide}>
+        <div>
+          <h3>Plex naming: filenames and folders.</h3>
+          <p>Plex recommends a show title, year, and S01E02 code for TV episodes. Zush puts those details in the filename and previews the result. Plex also needs its own show and season folder layout; Zush's optional Sort creates one folder level.</p>
+        </div>
+        <a href={PLEX_TV_NAMING_URL} target='_blank' rel='noopener noreferrer'>Plex naming guide <ArrowRight size={17} aria-hidden='true' /></a>
       </div>
       <p class={styles.Examples__Credit}>Poster artwork: <a href='https://www.justwatch.com/tr/tv-sovu/breaking-bad/sezon-2' target='_blank' rel='noopener noreferrer'>Breaking Bad</a>, <a href='https://www.rottentomatoes.com/m/blade_runner_2049' target='_blank' rel='noopener noreferrer'>Blade Runner 2049</a>, and <a href='https://www.themoviedb.org/tv/209867/images/posters' target='_blank' rel='noopener noreferrer'>Frieren</a>.</p>
     </div>
