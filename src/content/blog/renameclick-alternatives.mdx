@@ -8,8 +8,8 @@ topic: "comparisons"
 tags:
   - "AI File Renaming"
   - "Tool Comparisons"
-tldr: "RenameClick is good for offline renaming of images, documents, and audio. If you need video, RAW photos, or design files, persistent undo history, or more control over the naming pattern, Zush is the closest alternative at $48 one-time. Zush also offers optional AI folder sorting (beta)."
-reviewed: "2026-10-05"
+tldr: "RenameClick is good for offline renaming of images, documents, and audio. Its standard Rename history is in-memory, while eligible Auto Flow records persist across restarts. If you need video, RAW photos, design files, persistent history for every rename batch, or more control over the naming pattern, Zush is the closest alternative at $48 one-time."
+reviewed: "2026-10-08"
 ---
 
 import BlogCTA from '@/components/blog/BlogCTA.astro';
@@ -18,7 +18,7 @@ import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
 RenameClick is a capable app. Its bundled local model means offline renaming works right after install. The reasons people look for an alternative are usually specific, so this guide starts with those.
 
-<aside class="article-note">Pricing checked September 30, 2026. Written by the maker of Zush; competitor facts come from official pricing and documentation pages.</aside>
+<aside class="article-note">Pricing and RenameClick recovery behavior checked October 8, 2026. Written by the maker of Zush; competitor facts come from official pricing and documentation pages.</aside>
 
 ## Where RenameClick falls short
 
@@ -27,7 +27,7 @@ RenameClick is a capable app. Its bundled local model means offline renaming wor
 Common reasons to look elsewhere:
 
 - **Video is not supported**, and RAW photos and design files are not in its published format list.
-- **Undo keeps up to 10 entries in memory** and clears when the app restarts.
+- **Recovery differs by workspace.** Standard Rename keeps up to 10 undo entries in memory and clears them on restart; Auto Flow saves eligible applied records and supports Undo/Redo across restarts.
 - **The local model is a multi-gigabyte download** that needs spare memory to run well.
 - **Naming control** is format patterns, EXIF placeholders, and custom instructions rather than a structured pattern builder.
 
@@ -95,7 +95,7 @@ Best for recurring PDFs, receipts, and contracts on a Mac. See [Zush vs NameQuic
 ## How to choose
 
 - You rename video, RAW, or design files: **Zush**.
-- You want undo that survives a restart: **Zush**.
+- You want persistent history for every manual rename batch, not only eligible Auto Flow records: **Zush**.
 - You already pay for an API key: **FilesDesk** lifetime or Zush BYOK.
 - You need files moved by rules after naming, on a Mac: **NameQuick**.
 - You mainly rename scanned documents and prefer a web app: **Renamer.ai**.

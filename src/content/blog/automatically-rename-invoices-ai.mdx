@@ -10,7 +10,7 @@ tags:
   - "PDFs & Documents"
   - "File Naming"
 tldr: "To automatically rename invoices, use Zush to read each PDF or scan, extract the vendor, date, invoice number, and amount, preview the names, and apply one reversible batch."
-reviewed: "2026-08-08"
+reviewed: "2026-10-08"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -21,7 +21,7 @@ An invoice folder usually starts with a few understandable files and ends with `
 
 This guide is the educational, invoice-specific walkthrough. Accountants and bookkeepers comparing the complete client-document workflow should start with [Zush for accountants and bookkeepers](/for-accountants). For the focused invoice product, use [rename invoices with AI](/rename-invoices-with-ai); for the convention itself — which fields, in which order — see the [invoice file naming convention guide](/blog/invoice-file-naming-convention). If your folder contains contracts, reports, academic papers, and other generic PDFs, use the broader [automatic PDF renaming guide](/blog/rename-pdf-files-automatically).
 
-**Last verified: July 30, 2026.** Competitor claims in the comparison were checked against the official [Renamed.to](https://www.renamed.to/) and [Renamer.ai](https://renamer.ai/) product and pricing pages on that date. Accuracy figures are vendor claims, not independent benchmarks.
+**Last verified: October 8, 2026.** Competitor claims in the comparison were checked against the official [Renamed.to](https://www.renamed.to/) product pages and the [Renamer.ai v5 changelog](https://renamer.ai/changelog). Accuracy figures are vendor claims, not independent benchmarks.
 
 <BlogProductIntro
   title="Want every invoice named the same way?"
@@ -171,15 +171,15 @@ This keeps month folders visually consistent and helps separate invoices, credit
 
 Renamed.to and Renamer.ai both use AI to read document content, but their workflows and billing models differ from a desktop app such as Zush.
 
-| Tool | Workflow | Pricing verified July 30, 2026 | Automation and storage | Best fit |
+| Tool | Workflow | Pricing verified October 8, 2026 | Automation and storage | Best fit |
 |---|---|---|---|---|
 | Renamed.to | Web upload, connected cloud storage, and API | 50 documents/mo free; $9/1,000 or $49/10,000 credits | Drive/Dropbox/OneDrive and API; pay per document | Browser/cloud and API document workflows |
-| Renamer.ai | Web plus Mac/Windows desktop app | 25 files/mo free; $9.95/200, $29.95/1,000, $99.95/5,000 per month | Magic Folders; vendor FAQ says desktop content is sent for extraction/AI then deleted | Metered OCR workflows across many document and vector formats |
+| Renamer.ai | Web plus Mac/Windows desktop app | Cloud plans: 25 files/mo free; $9.95/200, $29.95/1,000, $99.95/5,000 per month; Local/BYOK license limits need confirmation | Magic Folders; cloud, downloadable local-model, and OpenAI/Gemini BYOK modes | OCR-heavy document workflows with a choice of AI mode |
 | Zush | Mac/Windows desktop app | 50 renames to start; $10/mo or $48 one-time, paid PRO unmetered | Renames local files in place; monitoring, BYOK, Offline AI, undo | High-volume desktop batches and reusable local-folder Templates |
 
 [Renamed.to](https://www.renamed.to/) advertises 95%+ accuracy by default and 100% with review for supported document types. That is the vendor's claim, not an independent test. Its current pricing is pay-as-you-go rather than subscription-based: 50 free documents per month, then credit packs valid for 12 months. It also advertises automatic folder organization, cloud-storage connections, and a REST API.
 
-[Renamer.ai](https://renamer.ai/) offers a web interface and a desktop app with Magic Folders, templates, preview, and undo. Its pricing is a monthly file allowance at every paid tier. The official FAQ lists 30+ formats, including documents, images, spreadsheets, presentations, and EPS/SVG/AI vectors. Its public privacy explanation says desktop files are transmitted for extraction and AI analysis, then deleted after processing.
+[Renamer.ai](https://renamer.ai/) offers a web interface and a desktop app with Magic Folders, templates, preview, and undo. Its published cloud plans use monthly file allowances. Renamer.ai v5 also adds downloadable local models plus OpenAI and Gemini BYOK, so the older statement that every desktop workflow sends content to Renamer.ai servers no longer describes every mode. The official format list covers 30+ document, image, spreadsheet, presentation, and vector formats; confirm the separate Local/BYOK license limits before buying.
 
 Zush is the desktop choice when the invoice backlog is large enough that a per-file allowance is undesirable, or when BYOK and local Ollama processing matter. Zush PRO includes unmetered managed cloud renaming without requiring an API key, while BYOK and Offline AI remain optional. Zush also offers optional AI folder sorting (beta).
 
