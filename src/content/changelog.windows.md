@@ -1,5 +1,24 @@
 # Changelog
 
+## [3.11.0.0] - 2026-10-08
+
+### Added
+- Movies & TV template and naming blocks for movie titles, release years, seasons, episode numbers, and episode titles, with names ready for Plex, Jellyfin, and Infuse.
+- Support for MKV, AVI, and WMV videos.
+- Automatic folder sorting for TV episodes by show and season, and tagged music by album artist and album.
+
+### Improved
+- Reuse recent analysis suggestions when adding unchanged files again, reducing repeated analysis.
+- More complete extraction of labelled fields from long PDFs and more reliable processing of scans and large batches.
+- More reliable folder sorting with many existing folders. Unavailable files can be retried while other files continue.
+- Offline AI handles slow Ollama responses more reliably and adapts image processing to the model's available context.
+- Clearer Free analysis-limit messages and batch-size hints showing the Free and PRO allowances.
+
+### Fixed
+- Preserve media-library extras and keep series with the same title but different release years in separate folders.
+- Clearer errors for damaged or incorrectly labelled PDFs.
+- Offer a copyable link when Windows cannot open verification, billing, or support links.
+
 ## [3.10.5.0] - 2026-10-05
 
 ### Improved
