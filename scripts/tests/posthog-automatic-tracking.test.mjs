@@ -6,7 +6,15 @@ import vm from 'node:vm';
 const source = readFileSync(new URL('../../src/components/PostHogAnalytics.astro', import.meta.url), 'utf8');
 const script = source.slice(source.indexOf('  (() => {'), source.lastIndexOf('</script>'));
 
-function run({ cookie = '', hostname = 'zushapp.com', optedOut = false, defer = false, release = '' } = {}) {
+function run({
+  cookie = '',
+  hostname = 'zushapp.com',
+  optedOut = false,
+  defer = false,
+  release = '',
+  href = `https://${hostname}/`,
+  referrer = 'https://www.google.com/',
+} = {}) {
   const events = [];
   const listeners = new Map();
   const storage = new Map();
@@ -30,11 +38,16 @@ function run({ cookie = '', hostname = 'zushapp.com', optedOut = false, defer = 
   const context = {
     posthogProjectKey: 'test-project', posthogApiHost: '/e', posthogUiHost: 'https://us.posthog.com', posthogRelease: release, URL,
     document: {
-      cookie, referrer: 'https://www.google.com/', title: 'Zush', readyState: 'complete',
+      cookie, referrer, title: 'Zush', readyState: 'complete',
       addEventListener(name, handler) { listeners.set(name, handler); },
     },
     window: {
-      posthog, location: { hostname, href: `https://${hostname}/`, pathname: '/' },
+      posthog, location: {
+        hostname,
+        href,
+        origin: new URL(href).origin,
+        pathname: new URL(href).pathname,
+      },
       sessionStorage: { getItem: (key) => storage.get(key), setItem: (key, value) => storage.set(key, value) },
       requestIdleCallback: (fn) => { initialize = fn; if (!defer) fn(); }, requestAnimationFrame: (fn) => fn(),
       addEventListener(name, handler) { listeners.set(name, handler); },
@@ -52,6 +65,39 @@ test('first visit captures a pageview without a consent cookie and keeps attribu
   assert.equal(result.events[0].properties.session_channel, 'organic_search');
   result.listeners.get('astro:after-swap')();
   assert.equal(result.events.length, 2);
+});
+
+test('query parameters and fragments never reach PostHog URL properties', () => {
+  const href = 'https://zushapp.com/mac?email=person%40example.com&utm_source=google#private';
+  const result = run({
+    href,
+    referrer: 'https://accounts.example.com/reset?token=secret#step',
+  });
+  assert.equal(result.events[0].properties.$current_url, 'https://zushapp.com/mac');
+  assert.equal(result.events[0].properties.session_utm_source, 'google');
+
+  const sanitized = result.beforeSend({
+    event: 'download_click',
+    properties: {
+      page_url: href,
+      page_path: '/mac?email=person%40example.com#private',
+      referrer: 'https://accounts.example.com/reset?token=secret',
+      attribution_landing_url: href,
+      attribution_landing_path: '/mac?utm_source=google',
+      request_url: 'https://zushapp.com/download/mac?token=secret',
+      request_path: '/download/mac?token=secret',
+      utm_source: 'google',
+    },
+  });
+
+  assert.equal(sanitized.properties.page_url, 'https://zushapp.com/mac');
+  assert.equal(sanitized.properties.page_path, '/mac');
+  assert.equal(sanitized.properties.referrer, 'https://accounts.example.com/reset');
+  assert.equal(sanitized.properties.attribution_landing_url, 'https://zushapp.com/mac');
+  assert.equal(sanitized.properties.attribution_landing_path, '/mac');
+  assert.equal(sanitized.properties.request_url, 'https://zushapp.com/download/mac');
+  assert.equal(sanitized.properties.request_path, '/download/mac');
+  assert.equal(sanitized.properties.utm_source, 'google');
 });
 
 test('a legacy refusal and SDK opt-out no longer suppress collection', () => {

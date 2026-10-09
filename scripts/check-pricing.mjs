@@ -100,19 +100,26 @@ assertIncludes('src/content/blog/best-ai-file-renamer-tools-2026.mdx', fiveYearL
 assertIncludes('src/content/blog/zush-vs-renameclick.mdx', annualLabel);
 assertIncludes('src/content/blog/zush-vs-renameclick.mdx', threeYearLabel);
 assertIncludes('src/content/blog/zush-vs-renameclick.mdx', fiveYearLabel);
-assertIncludes('marketing/ads/google-search-extensions.csv', `Monthly ${monthlyLabel} Pro`);
-assertIncludes('marketing/ads/google-search-extensions.csv', `One-Time ${oneTimeLabel} Pro`);
-assertIncludes('marketing/ads/google-search-rsa-assets.csv', `Zush Pro ${oneTimeLabel} One-Time`);
+for (const relativePath of [
+  'marketing/ads/google-search-extensions.csv',
+  'marketing/ads/google-search-rsa-assets.csv',
+]) {
+  const source = read(relativePath);
+  if (/\$\d+/.test(source)) {
+    fail(`${relativePath} contains a numeric price that can drift before Ads are re-enabled`);
+  }
+}
+assertIncludes('marketing/ads/google-search-extensions.csv', 'Monthly or One-Time Pro');
+assertIncludes('marketing/ads/google-search-rsa-assets.csv', 'Monthly or One-Time Pro');
 assertIncludes('BLOG_GROWTH_BRIEF.md', `${monthlyLabel}/month or ${oneTimeLabel} one-time`);
 
 const adScript = read('marketing/ads/scripts/update_zush_mac_search_campaign.py');
 for (const expected of [
-  'pricingData.json',
-  'MONTHLY_PRICE_USD',
-  'ONE_TIME_PRICE_USD',
+  'google-search-extensions.csv',
+  'google-search-rsa-assets.csv',
 ]) {
   if (!adScript.includes(expected)) {
-    fail(`Google Ads update script is missing centralized pricing reference ${expected}`);
+    fail(`Google Ads update script is missing CSV source ${expected}`);
   }
 }
 

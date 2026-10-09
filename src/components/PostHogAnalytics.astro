@@ -64,6 +64,48 @@ const {
       return value.trim().toLowerCase().slice(0, 200);
     };
 
+    const sanitizeAnalyticsUrl = (value) => {
+      if (typeof value !== 'string' || !value) return undefined;
+
+      try {
+        const url = new URL(value, window.location.origin);
+        if (url.protocol !== 'http:' && url.protocol !== 'https:') return undefined;
+        return `${url.origin}${url.pathname}`;
+      } catch {
+        return undefined;
+      }
+    };
+
+    const sanitizeAnalyticsPath = (value) => {
+      if (typeof value !== 'string' || !value) return undefined;
+
+      try {
+        return new URL(value, window.location.origin).pathname;
+      } catch {
+        return undefined;
+      }
+    };
+
+    const sanitizeNavigationProperties = (properties = {}) => {
+      const sanitized = { ...properties };
+      const urlProperties = [
+        '$current_url', '$referrer', 'page_url', 'referrer',
+        'attribution_landing_url', 'attribution_referrer', 'request_url',
+      ];
+      const pathProperties = [
+        '$pathname', 'page_path', 'attribution_landing_path', 'request_path',
+      ];
+
+      for (const property of urlProperties) {
+        if (property in sanitized) sanitized[property] = sanitizeAnalyticsUrl(sanitized[property]);
+      }
+      for (const property of pathProperties) {
+        if (property in sanitized) sanitized[property] = sanitizeAnalyticsPath(sanitized[property]);
+      }
+
+      return sanitized;
+    };
+
     const getExternalReferringDomain = () => {
       if (!document.referrer) return '';
 
@@ -181,7 +223,7 @@ const {
       if (typeof window.posthog?.capture !== 'function') return;
 
       window.posthog.capture('$pageview', {
-        $current_url: window.location.href,
+        $current_url: sanitizeAnalyticsUrl(window.location.href),
         $pathname: window.location.pathname,
         page_title: document.title,
         ...getSessionAttribution(),
@@ -223,7 +265,10 @@ const {
           if (isKnownSafariExtensionError(event)) return null;
           return {
             ...event,
-            properties: { ...event.properties, ...getSessionAttribution() },
+            properties: sanitizeNavigationProperties({
+              ...event.properties,
+              ...getSessionAttribution(),
+            }),
           };
         },
       });

@@ -7,7 +7,11 @@ import {
   WINDOWS_STORE_PROTOCOL_URL,
   WINDOWS_STORE_URL,
 } from '@/constants';
-import { trackAnalyticsEvent } from '@/utils/analytics';
+import {
+  getAnalyticsPageProperties,
+  sanitizeAnalyticsUrl,
+  trackAnalyticsEvent,
+} from '@/utils/analytics';
 
 export type DownloadOS = 'mac' | 'windows';
 
@@ -112,9 +116,9 @@ const getCurrentDownloadAttribution = (): DownloadAttributionProperties => {
 
   if (!hasDownloadAttribution(properties)) return {};
 
-  properties.attribution_landing_path = `${url.pathname}${url.search}`;
-  properties.attribution_landing_url = url.href;
-  properties.attribution_referrer = document.referrer || undefined;
+  properties.attribution_landing_path = url.pathname;
+  properties.attribution_landing_url = sanitizeAnalyticsUrl(url.href);
+  properties.attribution_referrer = sanitizeAnalyticsUrl(document.referrer);
 
   return properties;
 };
@@ -177,16 +181,6 @@ const getDownloadEventAttribution = (): DownloadEventAttributionProperties => ({
   ...persistCurrentDownloadAttribution(),
 });
 
-const getDownloadClickPageProperties = (): Record<string, string | undefined> => {
-  if (typeof window === 'undefined') return {};
-
-  return {
-    page_path: `${window.location.pathname}${window.location.search}`,
-    page_url: window.location.href,
-    referrer: document.referrer || undefined,
-  };
-};
-
 export function trackDownloadClick(
   { os, source, manual, channel }: TrackDownloadClickOptions,
   attributionOverride?: DownloadEventAttributionProperties,
@@ -208,7 +202,7 @@ export function trackDownloadClick(
       download_source: source,
       detection: manual ? 'manual' : 'auto',
       channel: resolvedChannel,
-      ...getDownloadClickPageProperties(),
+      ...getAnalyticsPageProperties(),
       ...attribution,
     });
   } catch {

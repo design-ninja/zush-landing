@@ -48,13 +48,20 @@ test('download redirects immediately and captures browser context under the exis
   const runtime = {
     exports: {}, testEnv: { PUBLIC_POSTHOG_KEY: 'test-key' },
     MAC_INSTALLER_URL: 'https://example.test/Zush.dmg', getDownloadRequestContext,
+    sanitizeAnalyticsPath: value => value ? new URL(value, 'https://zushapp.com').pathname : undefined,
+    sanitizeAnalyticsUrl: value => {
+      if (!value) return undefined;
+      const url = new URL(value, 'https://zushapp.com');
+      return `${url.origin}${url.pathname}`;
+    },
     waitUntil: promise => pending.push(promise),
     fetch: async (_url, options) => { payloads.push(JSON.parse(options.body)); return { ok: true }; },
     crypto: { randomUUID: () => 'request-id' }, URL, Request, Response, AbortController, setTimeout, clearTimeout, console,
   };
   vm.runInNewContext(js, runtime);
-  const request = new Request('https://example.test/download/mac', { headers: {
+  const request = new Request('https://example.test/download/mac?utm_source=google&email=person%40example.com#private', { headers: {
     cookie: `ph_test-key_posthog=${encodeURIComponent(JSON.stringify({ distinct_id: 'existing-visitor' }))}`,
+    referer: 'https://zushapp.com/mac?utm_campaign=launch&token=secret#private',
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 Edg/140.0.0.0',
   } });
   const response = runtime.exports.GET({ request });
@@ -67,6 +74,11 @@ test('download redirects immediately and captures browser context under the exis
   assert.equal(payloads[0].properties.distinct_id_origin, 'posthog_cookie');
   assert.equal(payloads[0].properties.os, 'mac');
   assert.equal(payloads[0].properties.channel, 'direct');
+  assert.equal(payloads[0].properties.utm_source, 'google');
+  assert.equal(payloads[0].properties.utm_campaign, 'launch');
+  assert.equal(payloads[0].properties.request_url, 'https://example.test/download/mac');
+  assert.equal(payloads[0].properties.request_path, '/download/mac');
+  assert.equal(payloads[0].properties.referrer, 'https://zushapp.com/mac');
   assert.equal(payloads[0].properties.$browser, 'Microsoft Edge');
   assert.equal(payloads[0].properties.$os, 'Windows');
 });

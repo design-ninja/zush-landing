@@ -14,6 +14,7 @@ sensitive is printed. Use scripts/with-1password.sh for local operations.
 
 from __future__ import annotations
 
+import csv
 import json
 import os
 from dataclasses import dataclass
@@ -25,17 +26,12 @@ from google.protobuf.field_mask_pb2 import FieldMask
 
 
 ROOT = Path(__file__).resolve().parents[3]
-with (ROOT / "src/constants/pricingData.json").open(encoding="utf-8") as pricing_file:
-    PRICING_DATA = json.load(pricing_file)
-
-MONTHLY_PRICE_USD = PRICING_DATA["monthly"]["usd"]
-ONE_TIME_PRICE_USD = PRICING_DATA["oneTime"]["usd"]
+PLAN_DIR = ROOT / "marketing/ads"
 
 CUSTOMER_ID = "4714692966"
 CAMPAIGN_ID = "23816664121"
 LEGACY_AD_GROUP_ID = "193915548417"
 
-CAMPAIGN_NAME = "Zush Mac Search 2026Q2"
 CAMPAIGN_RESOURCE = f"customers/{CUSTOMER_ID}/campaigns/{CAMPAIGN_ID}"
 LEGACY_AD_GROUP_RESOURCE = f"customers/{CUSTOMER_ID}/adGroups/{LEGACY_AD_GROUP_ID}"
 MAX_CPC_BID_MICROS = 50_000_000
@@ -43,6 +39,14 @@ MAX_CPC_BID_MICROS = 50_000_000
 
 @dataclass(frozen=True)
 class KeywordSpec:
+    text: str
+    match_type: str
+    final_url: str
+    utm_content: str
+
+
+@dataclass(frozen=True)
+class NegativeKeywordSpec:
     text: str
     match_type: str
 
@@ -58,232 +62,134 @@ class AdGroupSpec:
     descriptions: tuple[str, ...]
 
 
-AD_GROUPS: tuple[AdGroupSpec, ...] = (
-    AdGroupSpec(
-        name="Core AI File Renamer",
-        utm_content="core_ai_file_renamer",
-        final_url="https://zushapp.com/mac",
-        path1="mac",
-        keywords=(
-            KeywordSpec("ai file renamer mac", "EXACT"),
-            KeywordSpec("ai file renamer mac", "PHRASE"),
-            KeywordSpec("ai file renamer mac", "BROAD"),
-            KeywordSpec("ai file renamer for mac", "EXACT"),
-            KeywordSpec("ai renamer mac", "EXACT"),
-            KeywordSpec("file renamer ai mac", "PHRASE"),
-            KeywordSpec("file renamer", "EXACT"),
-            KeywordSpec("file renamer", "PHRASE"),
-            KeywordSpec("file renamer", "BROAD"),
-            KeywordSpec("file renaming software", "PHRASE"),
-            KeywordSpec("file rename software", "PHRASE"),
-            KeywordSpec("file renamer mac", "BROAD"),
-            KeywordSpec("mac file renamer", "EXACT"),
-            KeywordSpec("mac file renamer", "PHRASE"),
-            KeywordSpec("mac file renamer", "BROAD"),
-            KeywordSpec("rename files mac", "PHRASE"),
-            KeywordSpec("rename files automatically", "PHRASE"),
-            KeywordSpec("batch file renamer mac", "PHRASE"),
-            KeywordSpec("batch file renamer", "PHRASE"),
-            KeywordSpec("batch file renamer", "BROAD"),
-            KeywordSpec("bulk rename files mac", "PHRASE"),
-            KeywordSpec("bulk file renamer", "PHRASE"),
-            KeywordSpec("rename multiple files", "PHRASE"),
-            KeywordSpec("file renamer app", "PHRASE"),
-            KeywordSpec("file organizer mac", "PHRASE"),
-            KeywordSpec("automatic file renamer mac", "EXACT"),
-        ),
-        headlines=(
-            "Zush AI File Renamer",
-            "Official Zush for Mac",
-            "Zush Batch Rename Tool",
-            "Zush Mac File Renamer",
-            "Zush PDF Photo Renamer",
-            "Zush Folder Monitoring",
-            "Zush BYOK Offline AI",
-            f"Zush Pro ${ONE_TIME_PRICE_USD} One-Time",
-            "Zush 50 AI Renames",
-            "Zush Files Stay on Mac",
-            "Zush for Apple Silicon",
-            "Zush Rename PDFs Photos",
-        ),
-        descriptions=(
-            "Zush renames screenshots, PDFs, photos and docs with AI. 50 renames included.",
-            "Zush is a native Mac app for Apple Silicon and Intel. Batch rename folders.",
-            "Use Zush to create searchable names while originals stay on your Mac.",
-            "Replace IMG_4382 and download.pdf with clearer names in Zush.",
-        ),
-    ),
-    AdGroupSpec(
-        name="Screenshots Images Mac",
-        utm_content="screenshots_images_mac",
-        final_url="https://zushapp.com/rename-screenshots-with-ai",
-        path1="screenshots",
-        keywords=(
-            KeywordSpec("screenshot renamer mac", "EXACT"),
-            KeywordSpec("screenshot renamer mac", "PHRASE"),
-            KeywordSpec("rename screenshots mac", "EXACT"),
-            KeywordSpec("rename screenshots mac", "PHRASE"),
-            KeywordSpec("auto rename screenshots mac", "PHRASE"),
-            KeywordSpec("image renamer mac", "PHRASE"),
-            KeywordSpec("image renamer", "PHRASE"),
-            KeywordSpec("photo renamer mac", "PHRASE"),
-            KeywordSpec("photo renamer", "PHRASE"),
-            KeywordSpec("rename images mac", "PHRASE"),
-            KeywordSpec("rename image files", "PHRASE"),
-            KeywordSpec("ai photo renamer mac", "EXACT"),
-            KeywordSpec("ai photo renamer mac", "PHRASE"),
-            KeywordSpec("ai image renamer mac", "EXACT"),
-            KeywordSpec("rename photos mac", "PHRASE"),
-            KeywordSpec("rename photos automatically", "PHRASE"),
-        ),
-        headlines=(
-            "Auto-Rename Screenshots",
-            "Screenshot Renamer Mac",
-            "AI Image Renamer Mac",
-            "Rename Photos on Mac",
-            "50 AI Renames Included",
-            "Native macOS App",
-            "RAW, HEIC, JPG Support",
-            "Files Stay on Your Mac",
-            "Batch Rename Photos",
-            "Folder Monitoring",
-        ),
-        descriptions=(
-            "Turn screenshots and images into searchable filenames with AI.",
-            "Rename screenshots, HEIC, RAW, JPG and PNG files. No signup required.",
-            "Use batch rename, folder monitoring and one-click revert in a native Mac app.",
-            "Clean up timestamp screenshots and IMG_ files without manual naming.",
-        ),
-    ),
-    AdGroupSpec(
-        name="PDF Docs Downloads Mac",
-        utm_content="pdf_docs_downloads_mac",
-        final_url="https://zushapp.com/rename-pdf-with-ai",
-        path1="pdf-renamer",
-        keywords=(
-            KeywordSpec("pdf renamer mac", "EXACT"),
-            KeywordSpec("pdf renamer mac", "PHRASE"),
-            KeywordSpec("pdf renamer", "PHRASE"),
-            KeywordSpec("rename pdf files mac", "EXACT"),
-            KeywordSpec("rename pdf files mac", "PHRASE"),
-            KeywordSpec("rename pdf files", "PHRASE"),
-            KeywordSpec("rename pdf files with ai mac", "PHRASE"),
-            KeywordSpec("rename pdf mac", "PHRASE"),
-            KeywordSpec("pdf file renamer mac", "PHRASE"),
-            KeywordSpec("ai pdf renamer mac", "EXACT"),
-            KeywordSpec("document renamer", "PHRASE"),
-            KeywordSpec("rename documents automatically", "PHRASE"),
-            KeywordSpec("automatic file renamer mac", "PHRASE"),
-        ),
-        headlines=(
-            "Rename PDFs with AI",
-            "PDF Renamer for Mac",
-            "Clean Up Downloads Fast",
-            "AI File Organizer Mac",
-            "Auto-Rename Mac Files",
-            "50 AI Renames Included",
-            "PDF, DOCX, XLSX Support",
-            "Files Stay on Your Mac",
-            "Native macOS App",
-            f"One-Time ${ONE_TIME_PRICE_USD} Pro",
-        ),
-        descriptions=(
-            "Rename PDFs, documents, screenshots and downloads by their content on Mac.",
-            "Clean up download.pdf and scan_0042 files with AI-generated names.",
-            "Batch rename old folders or monitor new downloads. 50 renames included.",
-            "Works with PDFs, Office docs, iWork files, screenshots, photos and more.",
-        ),
-    ),
-    AdGroupSpec(
-        name="Alternatives Competitors",
-        utm_content="alternatives_competitors",
-        final_url="https://zushapp.com/blog/best-ai-file-renamer-tools-mac-compared",
-        path1="compare",
-        keywords=(
-            KeywordSpec("best ai file renamer mac", "EXACT"),
-            KeywordSpec("best ai file renamer for mac", "PHRASE"),
-            KeywordSpec("best file renamer for mac", "EXACT"),
-            KeywordSpec("best batch file renaming tools 2026", "PHRASE"),
-            KeywordSpec("namequick", "EXACT"),
-            KeywordSpec("namequick app", "PHRASE"),
-            KeywordSpec("renameclick", "EXACT"),
-            KeywordSpec("renamer ai", "EXACT"),
-        ),
-        headlines=(
-            "Best AI File Renamer Mac",
-            "Compare AI Renamers",
-            "Zush for Mac",
-            "Native macOS App",
-            "50 AI Renames Included",
-            f"One-Time ${ONE_TIME_PRICE_USD} Pro",
-            "Files Stay on Your Mac",
-            "BYOK and Offline AI",
-        ),
-        descriptions=(
-            "Compare Mac AI file renamers, then try Zush with 50 AI renames included.",
-            "A native Mac AI renamer for screenshots, PDFs, photos and documents.",
-            "See how Zush compares on formats, folder monitoring, undo, BYOK and price.",
-            "Choose a Mac file renamer built for recurring file cleanup workflows.",
-        ),
-    ),
-)
+AD_GROUP_PATHS = {
+    "Core AI File Renamer": "mac",
+    "Screenshots Images Mac": "screenshots",
+    "PDF Docs Downloads Mac": "pdf-renamer",
+    "Alternatives Competitors": "compare",
+}
 
-NEGATIVE_KEYWORDS: tuple[str, ...] = (
-    "windows",
-    "linux",
-    "android",
-    "iphone",
-    "ios",
-    "online",
-    "free online",
-    "web upload",
-    "mp3",
-    "music",
-    "movie",
-    "tv show",
-    "subtitle",
-    "powershell",
-    "bash",
-    "terminal",
-    "python",
-    "regex",
-    "automator",
-    "finder only",
-    "hazel official",
-    "official site",
-    "ollama server",
-    "update ollama",
-    "open source",
-    "github",
-    "apk",
-    "crack",
-    "serial key",
-    "pirated",
-    "torrent",
-)
 
-SITELINKS: tuple[tuple[str, str, str, str], ...] = (
-    ("Zush for Mac", "Native macOS app", "50 AI renames", "https://zushapp.com/mac"),
-    ("Rename Screenshots", "AI names for screenshots", "Works with PNG and JPG", "https://zushapp.com/rename-screenshots-with-ai"),
-    ("Rename PDFs", "Invoices and contracts", "Searchable PDF filenames", "https://zushapp.com/rename-pdf-with-ai"),
-    ("Batch Rename Files", "Handle folders at once", "Review before applying", "https://zushapp.com/batch-rename-files"),
-    ("Best AI Renamers", "Compare Mac AI tools", "Formats, privacy, price", "https://zushapp.com/blog/best-ai-file-renamer-tools-mac-compared"),
-)
+def read_plan_csv(filename: str) -> list[dict[str, str]]:
+    with (PLAN_DIR / filename).open(encoding="utf-8", newline="") as source:
+        return list(csv.DictReader(source))
 
-CALLOUTS: tuple[str, ...] = (
-    "50 AI Renames",
-    "No Signup",
-    "No Credit Card",
-    f"Monthly ${MONTHLY_PRICE_USD} Pro",
-    f"One-Time ${ONE_TIME_PRICE_USD} Pro",
-    "Signed .dmg",
-    "Mac App Store Option",
-    "Apple Silicon + Intel",
-    "BYOK Supported",
-    "Offline AI Mode",
-    "145+ Naming Blocks",
-    "14-Day Refund",
-)
+
+def single_value(rows: list[dict[str, str]], field: str, source: str) -> str:
+    values = {row[field].strip() for row in rows if row.get(field, "").strip()}
+    if len(values) != 1:
+        raise ValueError(f"{source} must contain exactly one {field}: {sorted(values)}")
+    return values.pop()
+
+
+def primary_value(rows: list[dict[str, str]], field: str, source: str) -> str:
+    values = [row[field].strip() for row in rows if row.get(field, "").strip()]
+    if not values:
+        raise ValueError(f"{source} must contain {field}")
+    return max(dict.fromkeys(values), key=values.count)
+
+
+def load_plan() -> tuple[
+    str,
+    str,
+    tuple[AdGroupSpec, ...],
+    tuple[NegativeKeywordSpec, ...],
+    dict[str, tuple[NegativeKeywordSpec, ...]],
+    tuple[tuple[str, str, str, str], ...],
+    tuple[str, ...],
+]:
+    keyword_rows = read_plan_csv("google-search-keywords.csv")
+    rsa_rows = read_plan_csv("google-search-rsa-assets.csv")
+    negative_rows = read_plan_csv("google-search-negative-keywords.csv")
+    ad_group_negative_rows = read_plan_csv("google-search-ad-group-negative-keywords.csv")
+    extension_rows = read_plan_csv("google-search-extensions.csv")
+    sources = {
+        "google-search-keywords.csv": keyword_rows,
+        "google-search-rsa-assets.csv": rsa_rows,
+        "google-search-negative-keywords.csv": negative_rows,
+        "google-search-ad-group-negative-keywords.csv": ad_group_negative_rows,
+        "google-search-extensions.csv": extension_rows,
+    }
+    campaign_name = single_value(keyword_rows, "campaign", "google-search-keywords.csv")
+    for source, rows in sources.items():
+        if single_value(rows, "campaign", source) != campaign_name:
+            raise ValueError(f"{source} campaign does not match {campaign_name}")
+
+    utm_campaign = single_value(keyword_rows, "utm_campaign", "google-search-keywords.csv")
+    group_names = list(dict.fromkeys(row["ad_group"].strip() for row in keyword_rows))
+    if set(group_names) != set(AD_GROUP_PATHS):
+        raise ValueError("keyword CSV ad groups must match AD_GROUP_PATHS")
+
+    groups: list[AdGroupSpec] = []
+    for name in group_names:
+        group_keywords = [row for row in keyword_rows if row["ad_group"].strip() == name]
+        final_url = primary_value(group_keywords, "final_url", name)
+        utm_content = primary_value(group_keywords, "utm_content", name)
+        assets = [row for row in rsa_rows if row["ad_group"].strip() == name]
+        headlines = tuple(row["text"].strip() for row in assets if row["type"] == "Headline")
+        descriptions = tuple(row["text"].strip() for row in assets if row["type"] == "Description")
+        if not headlines or not descriptions:
+            raise ValueError(f"{name} is missing RSA headlines or descriptions")
+        groups.append(AdGroupSpec(
+            name=name,
+            utm_content=utm_content,
+            final_url=final_url,
+            path1=AD_GROUP_PATHS[name],
+            keywords=tuple(
+                KeywordSpec(
+                    row["keyword"].strip(),
+                    row["match_type"].strip().upper(),
+                    row["final_url"].strip(),
+                    row["utm_content"].strip(),
+                )
+                for row in group_keywords
+            ),
+            headlines=headlines,
+            descriptions=descriptions,
+        ))
+
+    campaign_negatives = tuple(
+        NegativeKeywordSpec(row["negative_keyword"].strip(), row["match_type"].strip().upper())
+        for row in negative_rows
+    )
+    ad_group_negatives = {
+        name: tuple(
+            NegativeKeywordSpec(row["negative_keyword"].strip(), row["match_type"].strip().upper())
+            for row in ad_group_negative_rows
+            if row["ad_group"].strip() == name
+        )
+        for name in group_names
+    }
+    sitelinks = tuple(
+        (row["text"].strip(), row["line_1"].strip(), row["line_2"].strip(), row["final_url"].strip())
+        for row in extension_rows
+        if row["extension_type"] == "Sitelink"
+    )
+    callouts = tuple(
+        row["text"].strip()
+        for row in extension_rows
+        if row["extension_type"] == "Callout"
+    )
+    return (
+        campaign_name,
+        utm_campaign,
+        tuple(groups),
+        campaign_negatives,
+        ad_group_negatives,
+        sitelinks,
+        callouts,
+    )
+
+
+(
+    CAMPAIGN_NAME,
+    UTM_CAMPAIGN,
+    AD_GROUPS,
+    NEGATIVE_KEYWORDS,
+    AD_GROUP_NEGATIVE_KEYWORDS,
+    SITELINKS,
+    CALLOUTS,
+) = load_plan()
 
 
 def load_client() -> GoogleAdsClient:
@@ -316,8 +222,8 @@ def update_campaign(client: GoogleAdsClient) -> None:
     campaign.resource_name = CAMPAIGN_RESOURCE
     campaign.name = CAMPAIGN_NAME
     campaign.final_url_suffix = (
-        "utm_source=google&utm_medium=cpc&utm_campaign=zush_mac_search_2026q2"
-        "&utm_content=campaign_fallback&utm_term={keyword}&utm_device={device}"
+        f"utm_source=google&utm_medium=cpc&utm_campaign={UTM_CAMPAIGN}"
+        "&utm_term={keyword}&utm_device={device}"
         "&utm_matchtype={matchtype}"
     )
     op.update_mask.CopyFrom(FieldMask(paths=["name", "final_url_suffix"]))
@@ -401,8 +307,16 @@ def ensure_ad_groups(client: GoogleAdsClient) -> dict[str, str]:
 
 def ad_group_final_url_suffix(spec: AdGroupSpec) -> str:
     return (
-        "utm_source=google&utm_medium=cpc&utm_campaign=zush_mac_search_2026q2"
+        f"utm_source=google&utm_medium=cpc&utm_campaign={UTM_CAMPAIGN}"
         f"&utm_content={spec.utm_content}&utm_term={{keyword}}"
+        "&utm_device={device}&utm_matchtype={matchtype}"
+    )
+
+
+def keyword_final_url_suffix(keyword: KeywordSpec) -> str:
+    return (
+        f"utm_source=google&utm_medium=cpc&utm_campaign={UTM_CAMPAIGN}"
+        f"&utm_content={keyword.utm_content}&utm_term={{keyword}}"
         "&utm_device={device}&utm_matchtype={matchtype}"
     )
 
@@ -429,8 +343,11 @@ def ensure_keywords(client: GoogleAdsClient, ad_groups: dict[str, str]) -> None:
         rows = search(
             client,
             f"""
-            SELECT ad_group_criterion.keyword.text,
+            SELECT ad_group_criterion.resource_name,
+                   ad_group_criterion.keyword.text,
                    ad_group_criterion.keyword.match_type,
+                   ad_group_criterion.final_urls,
+                   ad_group_criterion.final_url_suffix,
                    ad_group_criterion.negative,
                    ad_group_criterion.status
             FROM ad_group_criterion
@@ -440,26 +357,41 @@ def ensure_keywords(client: GoogleAdsClient, ad_groups: dict[str, str]) -> None:
             """,
         )
         existing = {
-            (row.ad_group_criterion.keyword.text.lower(), row.ad_group_criterion.keyword.match_type.name)
+            (row.ad_group_criterion.keyword.text.lower(), row.ad_group_criterion.keyword.match_type.name): row.ad_group_criterion
             for row in rows
             if not row.ad_group_criterion.negative
         }
         operations = []
+        created = 0
+        updated = 0
         for keyword in spec.keywords:
             key = (keyword.text.lower(), keyword.match_type)
-            if key in existing:
-                continue
             op = client.get_type("AdGroupCriterionOperation")
-            criterion = op.create
-            criterion.ad_group = ad_group
-            criterion.status = enum_value(client, "AdGroupCriterionStatusEnum", "ENABLED")
-            criterion.keyword.text = keyword.text
-            criterion.keyword.match_type = enum_value(client, "KeywordMatchTypeEnum", keyword.match_type)
-            criterion.cpc_bid_micros = MAX_CPC_BID_MICROS
+            final_url_suffix = keyword_final_url_suffix(keyword)
+            if key in existing:
+                current = existing[key]
+                if list(current.final_urls) == [keyword.final_url] and current.final_url_suffix == final_url_suffix:
+                    continue
+                criterion = op.update
+                criterion.resource_name = current.resource_name
+                criterion.final_urls.append(keyword.final_url)
+                criterion.final_url_suffix = final_url_suffix
+                op.update_mask.CopyFrom(FieldMask(paths=["final_urls", "final_url_suffix"]))
+                updated += 1
+            else:
+                criterion = op.create
+                criterion.ad_group = ad_group
+                criterion.status = enum_value(client, "AdGroupCriterionStatusEnum", "ENABLED")
+                criterion.keyword.text = keyword.text
+                criterion.keyword.match_type = enum_value(client, "KeywordMatchTypeEnum", keyword.match_type)
+                criterion.cpc_bid_micros = MAX_CPC_BID_MICROS
+                criterion.final_urls.append(keyword.final_url)
+                criterion.final_url_suffix = final_url_suffix
+                created += 1
             operations.append(op)
         if operations:
             criterion_service.mutate_ad_group_criteria(customer_id=CUSTOMER_ID, operations=operations)
-        print("keywords ready", spec.name, len(operations), "created")
+        print("keywords ready", spec.name, created, "created", updated, "updated")
 
 
 def ensure_cpc_caps(client: GoogleAdsClient) -> None:
@@ -547,22 +479,67 @@ def ensure_negative_keywords(client: GoogleAdsClient) -> None:
         if row.campaign_criterion.negative
     }
     operations = []
-    for text in NEGATIVE_KEYWORDS:
-        key = (text.lower(), "PHRASE")
+    for keyword in NEGATIVE_KEYWORDS:
+        key = (keyword.text.lower(), keyword.match_type)
         if key in existing:
             continue
         op = client.get_type("CampaignCriterionOperation")
         criterion = op.create
         criterion.campaign = CAMPAIGN_RESOURCE
         criterion.negative = True
-        criterion.keyword.text = text
-        criterion.keyword.match_type = enum_value(client, "KeywordMatchTypeEnum", "PHRASE")
+        criterion.keyword.text = keyword.text
+        criterion.keyword.match_type = enum_value(client, "KeywordMatchTypeEnum", keyword.match_type)
         operations.append(op)
     if operations:
         client.get_service("CampaignCriterionService").mutate_campaign_criteria(
             customer_id=CUSTOMER_ID, operations=operations
         )
     print("campaign negatives ready", len(operations), "created")
+
+
+def ensure_ad_group_negative_keywords(client: GoogleAdsClient, ad_groups: dict[str, str]) -> None:
+    service = client.get_service("AdGroupCriterionService")
+    for name, keywords in AD_GROUP_NEGATIVE_KEYWORDS.items():
+        if not keywords:
+            continue
+        ad_group = ad_groups[name]
+        rows = search(
+            client,
+            f"""
+            SELECT ad_group_criterion.keyword.text,
+                   ad_group_criterion.keyword.match_type,
+                   ad_group_criterion.negative,
+                   ad_group_criterion.status
+            FROM ad_group_criterion
+            WHERE ad_group_criterion.ad_group = '{ad_group}'
+              AND ad_group_criterion.type = KEYWORD
+              AND ad_group_criterion.status != REMOVED
+            """,
+        )
+        existing = {
+            (row.ad_group_criterion.keyword.text.lower(), row.ad_group_criterion.keyword.match_type.name)
+            for row in rows
+            if row.ad_group_criterion.negative
+        }
+        operations = []
+        for keyword in keywords:
+            key = (keyword.text.lower(), keyword.match_type)
+            if key in existing:
+                continue
+            op = client.get_type("AdGroupCriterionOperation")
+            criterion = op.create
+            criterion.ad_group = ad_group
+            criterion.negative = True
+            criterion.keyword.text = keyword.text
+            criterion.keyword.match_type = enum_value(
+                client,
+                "KeywordMatchTypeEnum",
+                keyword.match_type,
+            )
+            operations.append(op)
+        if operations:
+            service.mutate_ad_group_criteria(customer_id=CUSTOMER_ID, operations=operations)
+        print("ad group negatives ready", name, len(operations), "created")
 
 
 def replace_campaign_assets(client: GoogleAdsClient) -> None:
@@ -695,6 +672,12 @@ def reduce_mobile_tablet_bids(client: GoogleAdsClient) -> None:
 
 
 def main() -> None:
+    if os.environ.get("ZUSH_GOOGLE_ADS_EXPLICITLY_ENABLED") != "1":
+        raise SystemExit(
+            "Google Ads operations are disabled. Set ZUSH_GOOGLE_ADS_EXPLICITLY_ENABLED=1 "
+            "only after the user explicitly re-enables Ads work."
+        )
+
     client = load_client()
     update_campaign(client)
     remove_legacy_ad_group(client)
@@ -703,6 +686,7 @@ def main() -> None:
     ensure_keywords(client, ad_groups)
     ensure_cpc_caps(client)
     ensure_negative_keywords(client)
+    ensure_ad_group_negative_keywords(client, ad_groups)
     replace_campaign_assets(client)
     create_responsive_search_ads(client, ad_groups)
     reduce_mobile_tablet_bids(client)

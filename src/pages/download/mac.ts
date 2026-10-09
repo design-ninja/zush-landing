@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { waitUntil } from '@vercel/functions';
 import { MAC_INSTALLER_URL } from '@/constants';
+import { sanitizeAnalyticsPath, sanitizeAnalyticsUrl } from '@/utils/analytics';
 import { getDownloadRequestContext } from '@/utils/downloadRequestContext';
 
 export const prerender = false;
@@ -123,9 +124,9 @@ const collectAttribution = (request: Request, eventId: string): DownloadAttribut
   return {
     ...attribution,
     event_id: eventId,
-    referrer,
-    request_path: `${requestUrl.pathname}${requestUrl.search}`,
-    request_url: requestUrl.href,
+    referrer: sanitizeAnalyticsUrl(referrer),
+    request_path: sanitizeAnalyticsPath(requestUrl.href) ?? requestUrl.pathname,
+    request_url: sanitizeAnalyticsUrl(requestUrl.href) ?? `${requestUrl.origin}${requestUrl.pathname}`,
     user_agent: userAgent,
   };
 };

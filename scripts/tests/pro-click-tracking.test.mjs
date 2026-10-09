@@ -20,7 +20,13 @@ function setup() {
   }
   const handlers = [];
   const root = { addEventListener: (type, handler) => handlers.push({ type, handler }) };
-  const runtime = { exports: {}, Element, trackAnalyticsEvent: (name, properties) => captured.push({ name, properties }) };
+  const runtime = {
+    exports: {},
+    Element,
+    getAnalyticsPageProperties: () => ({}),
+    sanitizeAnalyticsUrl: (value) => value,
+    trackAnalyticsEvent: (name, properties) => captured.push({ name, properties }),
+  };
   vm.runInNewContext(compiled, runtime);
   const click = (target) => handlers.filter(({ type }) => type === 'click').forEach(({ handler }) => handler({ target }));
   return { ...runtime.exports, captured, Element, root, handlers, click };

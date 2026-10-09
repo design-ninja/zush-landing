@@ -1,4 +1,4 @@
-import { trackAnalyticsEvent } from '@/utils/analytics';
+import { getAnalyticsPageProperties, trackAnalyticsEvent } from '@/utils/analytics';
 
 export type StoreOS = 'mac' | 'windows';
 
@@ -29,12 +29,7 @@ const getStoreAttemptProperties = ({ os, source }: StoreAttemptAnalytics) => ({
   os,
   channel: os === 'windows' ? 'microsoft-store' : 'mac-app-store',
   download_source: source ?? 'store-link',
-  ...(typeof window === 'undefined'
-    ? {}
-    : {
-        page_path: `${window.location.pathname}${window.location.search}`,
-        page_url: window.location.href,
-      }),
+  ...getAnalyticsPageProperties(),
 });
 
 const detectRuntimeStoreOS = (): StoreOS | null => {
