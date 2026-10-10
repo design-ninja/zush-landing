@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.16.0] - 2026-10-10
+
+### New
+
+- Sort files into nested folders with your own rules, such as year and month.
+- Sort files after renaming them, without using another rename credit.
+
+### Improved
+
+- More responsive batch renaming and folder monitoring.
+- Better grouping of music albums with different track artists.
+- Undo now restores the original name and folder after sorting.
+
 ## [3.15.0] - 2026-10-07
 
 ### New

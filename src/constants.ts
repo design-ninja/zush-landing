@@ -32,9 +32,9 @@ export const SOFTPEDIA_REVIEW_URL =
   "https://www.softpedia.com/get/Artificial-Intelligence-Generative-AI/Zush.shtml";
 
 export const FREE_DOWNLOAD_BADGE_LABEL = "FREE";
-export const MAC_APP_VERSION = "3.15.0";
+export const MAC_APP_VERSION = "3.16.0";
 export const WINDOWS_APP_VERSION = "3.11.0.0";
-export const PRODUCT_FACTS_REVIEWED_AT = "2026-10-07";
+export const PRODUCT_FACTS_REVIEWED_AT = "2026-10-10";
 export const AI_MODES_SUMMARY =
   "Zush Cloud AI, BYOK, LM Studio, and Ollama";
 export const LOCAL_AI_MODES_SUMMARY =
