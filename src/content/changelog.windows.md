@@ -1,5 +1,23 @@
 # Changelog
 
+## [3.12.0.0] - 2026-10-11
+
+### Added
+- Sort files into nested folders with your own rules, such as year folders with month subfolders.
+- Sort already renamed files into folders without renaming them again or using another rename credit.
+- Undo a rename and its later sorting steps together to restore the original filename and folder.
+
+### Improved
+- Folder previews show full nested paths, which you can rename or move while keeping their structure.
+- Activity refreshes file availability when you return to the app and follows files through later rename and sorting operations.
+- Keep usable rename suggestions when regeneration reaches the Free analysis limit.
+- Clearer sorting completion feedback and more consistent template navigation and expansion preferences.
+
+### Fixed
+- Improved undo reliability for files whose metadata changed during renaming.
+- Improved responsiveness when showing background notifications.
+- More reliable handling of empty, removed, unreadable, and linked video files.
+
 ## [3.11.0.0] - 2026-10-08
 
 ### Added
