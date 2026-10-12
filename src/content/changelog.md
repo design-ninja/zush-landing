@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.16.1] - 2026-10-13
+
+### Improved
+
+- More reliable video analysis and local AI processing.
+- Better folder sorting and completion feedback.
+- The Template editor starts expanded on new installations.
+
+### Fixed
+
+- Fixed repeated file extensions in suggested names.
+- Improved reading of email files.
+
 ## [3.16.0] - 2026-10-10
 
 ### New
