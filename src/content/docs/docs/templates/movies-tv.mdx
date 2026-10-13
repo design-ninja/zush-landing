@@ -50,7 +50,7 @@ Use **Media Title** *or* assemble the individual title and episode fields. Addin
 
 ## Decide where the files should go
 
-Zush can suggest a folder with **+ Sort → Auto**, or you can use custom [folder rules](/docs/folder-sorting). It creates **one folder level** under the destination you choose. Review every suggested folder before **Rename & sort**.
+Zush can suggest a folder with **+ Sort → Auto**, or you can use custom [folder rules](/docs/folder-sorting). Folders are created under the destination you choose; ask for nested folders in the rule when you need more than one level. Review every suggested folder before **Rename & sort**.
 
 For Plex, make separate **Movies** and **TV Shows** library roots. A typical TV path includes both a show folder and a season folder:
 
@@ -59,7 +59,7 @@ TV Shows/Breaking Bad (2008)/Season 02/Breaking Bad (2008) - S02E03 - Bit by a D
 Movies/Blade Runner 2049 (2017)/Blade Runner 2049 (2017).mkv
 ```
 
-Zush's one-level sort does not build that full nested TV hierarchy in one operation. Prepare the parent show/season location separately, or choose an existing destination that makes the proposed one-level folder land in the right place. Check the final paths before scanning the Plex library. The same filenames can be used for Jellyfin and Infuse, but check each app's folder requirements.
+To build that hierarchy, choose the **TV Shows** library root as the destination and write a nested folder rule, for example “Group episodes by show and year, then by season, and name season folders Season 01.” Check the proposed paths before **Rename & sort** and again before scanning the Plex library. The same filenames can be used for Jellyfin and Infuse, but check each app's folder requirements.
 
 ## Review, apply, and fix a mismatch
 

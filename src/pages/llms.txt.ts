@@ -108,7 +108,7 @@ export async function GET() {
     '- Auto mode groups files by content into a few broad, reusable folders. Custom Folder rules follow a natural-language prompt of up to 2,000 characters, for example: “Group invoices by company and receipts by month.”',
     '- Review proposed names and folders before applying a batch. Choose a destination and optionally reuse suitable existing folders.',
     '- Save folder rules in a Template for Monitor to organize newly arriving files; Monitor remembers the folders it created. Templates can be exported and imported between Mac and Windows; destination paths and permissions stay local.',
-    '- With LM Studio or Ollama selected, both file analysis and folder planning run on the computer. Undo moves a sorted file back to its original folder and name. Each batch creates one level of folders inside the chosen destination.',
+    '- With LM Studio or Ollama selected, both file analysis and folder planning run on the computer. Undo moves a sorted file back to its original folder and name. Folders are created inside the chosen destination; nested folders such as year and then month come from an explicit folder rule.',
     `- [AI file sorter with plain-language folder rules](${SITE_ORIGIN}/ai-file-sorter)`,
     `- [AI file organizer and folder sorting overview](${SITE_ORIGIN}/ai-file-organizer)`,
     `- [Sort files into folders with AI: Auto and custom instructions](${SITE_ORIGIN}/blog/sort-files-into-folders-with-ai-mac)`,

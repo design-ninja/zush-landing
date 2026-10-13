@@ -4,7 +4,7 @@ import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 
 // English-only page. The examples use names from the app's media
 // recognition corpus; TheTVDB supplies the show, film, year, and episode data.
-// Sorting creates one folder level inside the chosen destination.
+// Sorting can create nested show/season folders from an explicit folder rule.
 export const MOVIES_TV_PAGE_PATH = '/rename-movies-and-tv-shows';
 export const MOVIES_TV_PAGE_TITLE = 'Rename Movies and TV Shows on Mac and Windows';
 export const TVDB_URL = 'https://thetvdb.com';
@@ -46,7 +46,7 @@ export const MOVIES_TV_FAQ = [
   {
     question: 'How do I name TV shows and movies for Plex?',
     answer:
-      'The Movies & TV template writes Show (Year) - S01E02 - Episode Title for episodes and Movie (Year) for films. Plex recommends separate movie and TV library roots, with episodes inside show and season folders. Zush can add one folder level inside your chosen destination; review the layout before renaming. The filenames also carry the title and episode details used by Jellyfin and Infuse.',
+      'The Movies & TV template writes Show (Year) - S01E02 - Episode Title for episodes and Movie (Year) for films. Plex recommends separate movie and TV library roots, with episodes inside show and season folders. Zush can propose show and season folders inside your chosen destination from a nested folder rule; review the layout before renaming. The filenames also carry the title and episode details used by Jellyfin and Infuse.',
   },
   {
     question: 'Where do the titles come from?',
@@ -61,7 +61,7 @@ export const MOVIES_TV_FAQ = [
   {
     question: 'Will it move my files or rename them immediately?',
     answer:
-      'You preview the changes before you rename. Sorting is optional: turn it on to place episodes in a show-and-season folder and films in Movies, one folder level inside the destination you choose. You can undo changes in Activity.',
+      'You preview the changes before you rename. Sorting is optional: turn it on to place films in Movies and episodes in show and season folders inside the destination you choose, using a nested folder rule. You can undo changes in Activity.',
   },
   {
     question: 'How much does it cost?',
