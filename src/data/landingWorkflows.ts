@@ -49,8 +49,13 @@ const workflows: Record<string, LandingWorkflow> = {
     links: [{ href: '/docs/batch-rename-files', label: 'Batch preview and rename steps' }, { href: '/blog/how-to-safely-batch-rename-files', label: 'Check and undo a batch rename' }],
   },
   '/ai-file-organizer': {
-    heading: 'Rename files and sort them into folders with AI',
-    answer: 'Zush reads file content to create searchable names on Mac and Windows. Enable AI folder sorting (beta) to group files automatically or follow your plain-language instructions. Review the suggested names and folders before applying. Leave sorting off to keep the original locations.',
+    heading: 'Organize a folder in three passes: name, file, automate',
+    answer: 'An organizer is more than a mover. Zush first gives every file a searchable name from its content, then optionally files it into folders, then keeps the folder in order as new files arrive. Pick how far to go; you review names and folders before anything changes.',
+    setupOptions: [
+      { title: 'Rename in place', instructions: 'Keep Sort off. Files stay in their folder and get names built from content, dates, and your Naming Blocks.', href: '/batch-rename-files', label: 'Batch rename files with AI' },
+      { title: 'Rename and sort', instructions: 'Turn on Sort. Auto groups files by content, or Folder rules describe the folders, including nested ones such as year and month.', href: '/ai-file-sorter', label: 'Write AI file sorter rules' },
+      { title: 'Organize new files', instructions: 'Assign the Template to folder monitoring. New files in Downloads or a scanner folder are named, and sorted if the Template sorts.', href: '/automate-downloads-folder', label: 'Automate your Downloads folder' },
+    ],
     steps: [
       'Choose one Downloads or client folder and decide which details you will search for later, such as project, document type, and date. Save those fields as a Template.',
       'Turn on Sort. Leave Folder rules empty for Auto, or describe the grouping, such as “Group invoices by company and receipts by month.” Choose a destination or keep the original folder.',
@@ -62,12 +67,12 @@ const workflows: Record<string, LandingWorkflow> = {
       alt: 'Zush for Mac showing a batch of renamed files grouped into suggested folders before the changes are applied.',
       caption: 'Zush for Mac: proposed filenames grouped by suggested folder. Nothing moves until you apply the batch.',
     },
-    limit: 'AI folder sorting is in beta and creates one level of folders inside the destination per batch. Zush does not replace a search database or a document-management system. Use rename history to restore names when needed.',
+    limit: 'AI folder sorting is in beta and moves files, so test on a copy first and keep it off for folders other apps reference by path. Zush does not delete duplicates, clean up disk space, or replace a document-management system. Undo restores the original name and folder.',
     links: [{ href: '/ai-file-sorter', label: 'AI file sorter with your own folder rules' }, { href: '/docs/folder-sorting', label: 'Folder sorting documentation' }, { href: '/docs/folder-monitoring', label: 'Set up folder monitoring' }],
   },
   '/ai-file-sorter': {
     heading: 'Describe your folders once, then let Zush file everything',
-    answer: 'Zush sorts by what a file contains, not by its extension. Write Folder rules the way you would brief an assistant, or leave them empty for Auto. Zush analyzes each file, proposes a filename and a folder, and waits for your review before anything moves.',
+    answer: 'Zush sorts by what a file contains, not by its extension. Write Folder rules the way you would brief an assistant, or leave them empty for Auto. Rules can create nested folders, such as year and then month. Zush analyzes each file, proposes a filename and a folder, and waits for your review before anything moves.',
     steps: [
       'Open AI Rename, choose a Template for the filenames, and pick a destination with the folder control below the Naming Blocks. Keep the original location if the folders should be created next to the files.',
       'Turn on Sort. Write a rule such as “Group invoices by company and receipts by month, name month folders YYYY-MM,” or leave Folder rules empty for Auto. Turn on Reuse existing folders to file into folders you already have.',
@@ -80,7 +85,7 @@ const workflows: Record<string, LandingWorkflow> = {
       caption: 'Folder rules accept up to 2,000 characters of plain-language instructions. Leave the field empty to use Auto.',
     },
     limit: 'Folder sorting is in beta. It moves files, so test on a copy first and keep it off for folders that other apps reference by path. Rules work best when the answer is visible in the file, such as a company name, date, or subject. Files that fit no folder are renamed without being grouped.',
-    links: [{ href: '/blog/ai-folder-sorting-prompts', label: '30 folder sorting prompts to copy' }, { href: '/docs/folder-sorting', label: 'Folder sorting documentation' }, { href: '/blog/sort-files-into-folders-with-ai-windows', label: 'Step-by-step on Windows' }],
+    links: [{ href: '/ai-file-organizer', label: 'AI file organizer workflow: name, sort, and monitor' }, { href: '/blog/ai-folder-sorting-prompts', label: '30 folder sorting prompts to copy' }, { href: '/docs/folder-sorting', label: 'Folder sorting documentation' }, { href: '/blog/sort-files-into-folders-with-ai-windows', label: 'Step-by-step on Windows' }],
   },
   '/offline-ai-file-renamer': {
     heading: 'Set up Zush for offline file renaming',

@@ -332,8 +332,8 @@ const fileOrganizerFaq = [
   },
 ];
 
-// Folder paths in `after` show where the file lands. Folder names are one level
-// deep inside the chosen destination: the planner never builds nested trees.
+// Folder paths in `after` show where the file lands inside the chosen destination.
+// Nested folders (for example year/month) come from explicit Folder rules.
 const fileSorterSlides: FeatureLandingPageProps['showcaseSlides'] = [
   {
     files: [
@@ -787,12 +787,12 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
     }),
   },
   'ai-file-organizer': {
-    h1: 'AI File Organizer: Rename and Sort Files into Folders',
-    h1Accent: 'Rename and Sort Files',
+    h1: 'AI File Organizer: Name and Sort Files by Content',
+    h1Accent: 'Name and Sort Files',
     category: 'general',
     definitionTitle: 'What Is an AI File Organizer?',
     definitionText:
-      'Zush is an AI file organizer for Mac and Windows that reads file content and replaces weak filenames with consistent, searchable names. Optional AI folder sorting (beta) groups files into folders automatically or follows your own instructions on Mac and Windows. Review the proposed batch before applying it.',
+      'Zush is an AI file organizer for Mac and Windows. It reads each file and gives it a searchable name, files it into folders when you turn on AI folder sorting (beta), and keeps Downloads or client folders in order with folder monitoring. Review every batch before applying it; undo restores names and folders.',
     showcaseSlides: sharedSlides,
     faqItems: fileOrganizerFaq,
     relatedPages: [
@@ -871,7 +871,7 @@ export const SEARCH_LANDING_PAGES: Record<SearchLandingSlug, FeatureLandingPageP
         {
           tool: 'Zush',
           bestFor: 'Your plain-language Folder rules, or Auto grouping by content. Reads PDFs, scans, photos, screenshots, documents, video, and audio, then renames and sorts in one reviewed batch on Mac and Windows.',
-          gap: 'Creates one level of folders inside the destination per batch; folder sorting is in beta, so review ambiguous files before applying.',
+          gap: 'Folder sorting is in beta, so review ambiguous files before applying. Nested folders, such as year and then month, come from an explicit Folder rule.',
         },
         {
           tool: 'Sortio',
