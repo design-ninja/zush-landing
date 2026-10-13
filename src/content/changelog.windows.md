@@ -1,5 +1,21 @@
 # Changelog
 
+## [3.12.1.0] - 2026-10-13
+
+### Added
+- Custom folder rules can use file size, photo capture dates and camera details, media duration, document metadata, and file age.
+
+### Improved
+- Faster metadata reading when naming files and lower memory use when sending images and audio for analysis.
+- The AI Rename Template starts collapsed on new installations and remembers your choice.
+
+### Fixed
+- Correct PDF document dates across regional settings and more accurate orientation metadata for TIFF, RAW, and HEIC photos.
+- Folder sorting retries metadata after a temporary file lock and stops waiting for unresponsive storage.
+- More reliable sorting when the destination folder has been replaced since the preview was prepared.
+- Better handling of empty or damaged Office documents.
+- Improved responsiveness when checking whether Zush starts with Windows.
+
 ## [3.12.0.0] - 2026-10-11
 
 ### Added
