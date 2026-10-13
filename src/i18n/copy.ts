@@ -1294,7 +1294,7 @@ const EN_COPY: LocaleCopy = {
       billing: 'one-time',
     },
     bestValueBadge: 'Best value',
-    trustedByLine: 'Trusted by 1,500+ users',
+    trustedByLine: 'Trusted by 3000+ users',
   },
   platforms: {
     mac: {
@@ -2905,7 +2905,7 @@ const localizedPricingExtras: Record<Exclude<Locale, 'en'>, PricingExtrasCopy> =
       billing: 'einmalig',
     },
     bestValueBadge: 'Bestes Angebot',
-    trustedByLine: 'Über 1.500 Nutzer vertrauen Zush',
+    trustedByLine: 'Über 3.000 Nutzer vertrauen Zush',
   },
   fr: {
     title: 'Choisis ton plan PRO',
@@ -2926,7 +2926,7 @@ const localizedPricingExtras: Record<Exclude<Locale, 'en'>, PricingExtrasCopy> =
       billing: 'paiement unique',
     },
     bestValueBadge: 'Meilleure offre',
-    trustedByLine: 'Plus de 1 500 utilisateurs nous font confiance',
+    trustedByLine: 'Plus de 3 000 utilisateurs nous font confiance',
   },
   'pt-br': {
     title: 'Escolha seu plano PRO',
@@ -2947,7 +2947,7 @@ const localizedPricingExtras: Record<Exclude<Locale, 'en'>, PricingExtrasCopy> =
       billing: 'pagamento único',
     },
     bestValueBadge: 'Melhor custo-benefício',
-    trustedByLine: 'Mais de 1.500 usuários confiam no Zush',
+    trustedByLine: 'Mais de 3.000 usuários confiam no Zush',
   },
   es: {
     title: 'Elige tu plan PRO',
@@ -2968,7 +2968,7 @@ const localizedPricingExtras: Record<Exclude<Locale, 'en'>, PricingExtrasCopy> =
       billing: 'pago único',
     },
     bestValueBadge: 'La mejor oferta',
-    trustedByLine: 'Más de 1.500 usuarios confían en Zush',
+    trustedByLine: 'Más de 3.000 usuarios confían en Zush',
   },
   nl: {
     title: 'Kies je PRO-plan',
@@ -2989,7 +2989,7 @@ const localizedPricingExtras: Record<Exclude<Locale, 'en'>, PricingExtrasCopy> =
       billing: 'eenmalig',
     },
     bestValueBadge: 'Beste deal',
-    trustedByLine: 'Vertrouwd door 1.500+ gebruikers',
+    trustedByLine: 'Vertrouwd door 3.000+ gebruikers',
   },
   it: {
     title: 'Scegli il tuo piano PRO',
@@ -3010,7 +3010,7 @@ const localizedPricingExtras: Record<Exclude<Locale, 'en'>, PricingExtrasCopy> =
       billing: 'pagamento unico',
     },
     bestValueBadge: 'Più conveniente',
-    trustedByLine: 'Scelto da oltre 1.500 utenti',
+    trustedByLine: 'Scelto da oltre 3.000 utenti',
   },
   ja: {
     title: 'PRO プランを選択',
@@ -3031,7 +3031,7 @@ const localizedPricingExtras: Record<Exclude<Locale, 'en'>, PricingExtrasCopy> =
       billing: '買い切り',
     },
     bestValueBadge: 'ベストバリュー',
-    trustedByLine: '1,500人以上のユーザーに信頼されています',
+    trustedByLine: '3000人以上のユーザーに信頼されています',
   },
   ko: {
     title: 'PRO 플랜을 선택하세요',
@@ -3052,7 +3052,7 @@ const localizedPricingExtras: Record<Exclude<Locale, 'en'>, PricingExtrasCopy> =
       billing: '일회성',
     },
     bestValueBadge: '최고의 가치',
-    trustedByLine: '1,500명 이상의 사용자가 신뢰합니다',
+    trustedByLine: '3000명 이상의 사용자가 신뢰합니다',
   },
   'zh-cn': {
     title: '选择你的 PRO 方案',
@@ -3073,7 +3073,7 @@ const localizedPricingExtras: Record<Exclude<Locale, 'en'>, PricingExtrasCopy> =
       billing: '一次性',
     },
     bestValueBadge: '超值之选',
-    trustedByLine: '超过 1,500 位用户信赖',
+    trustedByLine: '超过 3000 位用户信赖',
   },
   tr: {
     title: 'PRO planınızı seçin',
@@ -3094,7 +3094,7 @@ const localizedPricingExtras: Record<Exclude<Locale, 'en'>, PricingExtrasCopy> =
       billing: 'tek seferlik',
     },
     bestValueBadge: 'En avantajlı',
-    trustedByLine: '1.500’den fazla kullanıcı Zush’a güveniyor',
+    trustedByLine: '3.000’den fazla kullanıcı Zush’a güveniyor',
   },
   ar: {
     title: 'اختر خطة PRO الخاصة بك',
@@ -3115,7 +3115,7 @@ const localizedPricingExtras: Record<Exclude<Locale, 'en'>, PricingExtrasCopy> =
       billing: 'دفعة واحدة',
     },
     bestValueBadge: 'أفضل قيمة',
-    trustedByLine: 'موثوق من أكثر من 1500 مستخدم',
+    trustedByLine: 'موثوق من أكثر من 3000 مستخدم',
   },
 };
 
