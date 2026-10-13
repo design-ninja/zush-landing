@@ -35,9 +35,9 @@ const guidePath = getLocalizedPath(`/blog/sort-files-into-folders-with-ai-mac${l
             <figure class={styles.Example}>
               <figcaption class={styles.PromptLabel}>{copy.exampleLabel}</figcaption>
               <p class={styles.ExamplePath}>
-                <code>{copy.exampleFrom}</code>
-                <span class={styles.ExampleArrow} role="img" aria-label="moves to">→</span>
-                <code>{copy.exampleTo}</code>
+                <bdi dir="ltr"><code>{copy.exampleFrom}</code></bdi>
+                <span class={styles.ExampleArrow} role="img" aria-label={copy.exampleArrowLabel ?? 'moves to'}>{locale === 'ar' ? '←' : '→'}</span>
+                <bdi dir="ltr"><code>{copy.exampleTo}</code></bdi>
               </p>
               {copy.exampleCaption && <Text as="p" color="subtle" size="sm">{copy.exampleCaption}</Text>}
             </figure>

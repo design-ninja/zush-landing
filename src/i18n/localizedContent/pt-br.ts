@@ -2,12 +2,12 @@ import type { HomeCopy } from '@/i18n/copy';
 import type { ProfessionLocaleCopy } from '@/i18n/professions/types';
 
 export const home = {
-  "heroTitle": "Renomeador de arquivos\npara Mac & Windows",
-  "heroAccent": "Renomeador de arquivos",
-  "heroSubtitle": "Renomeie arquivos em lote pelo conteúdo com IA. O Zush oferece suporte a mais de 100 formatos de capturas de tela, PDFs, fotos, vídeos, áudios e documentos, extrai exatamente as informações que você escolher e as transforma em nomes de arquivo no formato que você definir.",
+  "heroTitle": "Renomeador e organizador de arquivos\npara Mac & Windows",
+  "heroAccent": "Renomeador e organizador de arquivos",
+  "heroSubtitle": "Renomeie arquivos pelo conteúdo e organize-os em pastas com IA. Revise cada nome e pasta, desfaça qualquer lote e escolha Zush Cloud, BYOK, LM Studio ou Ollama.",
   "heroHighlights": [
-    "Renomeie arquivos em lote por conteúdo com IA",
-    "exatamente os detalhes que você escolhe"
+    "Renomeie arquivos pelo conteúdo",
+    "organize-os em pastas com IA"
   ],
   "buyPro": "Comprar PRO",
   "trustSignals": [

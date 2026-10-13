@@ -2,12 +2,12 @@ import type { HomeCopy } from '@/i18n/copy';
 import type { ProfessionLocaleCopy } from '@/i18n/professions/types';
 
 export const home = {
-  "heroTitle": "AIでファイルをリネーム\nMac・Windows対応",
-  "heroAccent": "ファイルリネーム",
-  "heroSubtitle": "AIでファイルを内容に基づいて一括リネーム。Zushはスクリーンショット、PDF、写真、動画、音声、文書など100以上の形式に対応し、指定した情報だけを正確に抽出して、定義したファイル名に変換します。",
+  "heroTitle": "AIでファイルをリネーム・整理\nMac・Windows対応",
+  "heroAccent": "ファイルをリネーム・整理",
+  "heroSubtitle": "AIでファイルを内容に基づいてリネームし、フォルダに分類します。すべての名前とフォルダを適用前に確認でき、どのバッチも取り消せます。Zush Cloud、BYOK、LM Studio、Ollamaから選べます。",
   "heroHighlights": [
-    "AIでファイルを内容に基づいて一括リネーム",
-    "指定した情報だけを正確に抽出"
+    "AIでファイルを内容に基づいてリネーム",
+    "フォルダに分類"
   ],
   "buyPro": "PROを購入",
   "trustSignals": [

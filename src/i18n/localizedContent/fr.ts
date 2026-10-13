@@ -2,12 +2,12 @@ import type { HomeCopy } from '@/i18n/copy';
 import type { ProfessionLocaleCopy } from '@/i18n/professions/types';
 
 export const home: HomeCopy = {
-  "heroTitle": "Renommeur de fichiers\npour Mac & Windows",
-  "heroAccent": "Renommeur de fichiers",
-  "heroSubtitle": "Renommez des fichiers par lot selon leur contenu avec l’IA. Zush prend en charge plus de 100 formats de captures d’écran, PDF, photos, vidéos, audio et documents, extrait exactement les informations que vous choisissez et les transforme en noms de fichiers selon vos règles.",
+  "heroTitle": "Renommeur et organiseur de fichiers\npour Mac & Windows",
+  "heroAccent": "Renommeur et organiseur de fichiers",
+  "heroSubtitle": "Renommez vos fichiers selon leur contenu et classez-les dans des dossiers avec l’IA. Vérifiez chaque nom et chaque dossier, annulez n’importe quel lot et choisissez Zush Cloud, BYOK, LM Studio ou Ollama.",
   "heroHighlights": [
-    "Renommez des fichiers par lot selon leur contenu avec l’IA",
-    "exactement les informations que vous choisissez"
+    "Renommez vos fichiers selon leur contenu",
+    "classez-les dans des dossiers avec l’IA"
   ],
   "buyPro": "Acheter PRO",
   "trustSignals": [

@@ -2,12 +2,12 @@ import type { HomeCopy } from '@/i18n/copy';
 import type { ProfessionLocaleCopy } from '@/i18n/professions/types';
 
 export const home = {
-  "heroTitle": "파일 이름 변경 도구\nMac 및 Windows용",
-  "heroAccent": "파일 이름 변경 도구",
-  "heroSubtitle": "AI로 파일 내용을 기준으로 일괄 이름 변경하세요. Zush는 스크린샷, PDF, 사진, 비디오, 오디오, 문서 등 100개 이상의 형식을 지원하며, 사용자가 선택한 세부 정보만 정확히 추출해 원하는 파일 이름으로 바꿉니다.",
+  "heroTitle": "파일 이름 변경 및 정리 도구\nMac 및 Windows용",
+  "heroAccent": "파일 이름 변경 및 정리 도구",
+  "heroSubtitle": "AI로 파일 내용을 기준으로 이름을 바꾸고 폴더로 분류하세요. 모든 이름과 폴더를 적용 전에 확인하고 어떤 배치든 되돌릴 수 있으며, Zush Cloud, BYOK, LM Studio, Ollama 중에서 선택할 수 있습니다.",
   "heroHighlights": [
-    "AI로 파일 내용을 기준으로 일괄 이름 변경하세요",
-    "사용자가 선택한 세부 정보만 정확히 추출"
+    "AI로 파일 내용을 기준으로 이름을 바꾸고",
+    "폴더로 분류하세요"
   ],
   "buyPro": "PRO 구매",
   "trustSignals": [

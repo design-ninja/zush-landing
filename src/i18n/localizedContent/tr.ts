@@ -2,11 +2,12 @@ import type { HomeCopy } from '@/i18n/copy';
 import type { ProfessionLocaleCopy } from '@/i18n/professions/types';
 
 export const home = {
-  "heroTitle": "Dosya Adlandırıcı\nMac ve Windows için",
-  "heroAccent": "Dosya Adlandırıcı",
-  "heroSubtitle": "Dosyaları içeriklerine göre yapay zekâyla toplu yeniden adlandırın. Zush; ekran görüntüleri, PDF’ler, fotoğraflar, videolar, sesler ve belgeler dâhil 100’den fazla biçimi destekler, seçtiğiniz ayrıntıları tam olarak çıkarır ve belirlediğiniz dosya adlarına dönüştürür.",
+  "heroTitle": "Dosya Adlandırıcı ve Düzenleyici\nMac ve Windows için",
+  "heroAccent": "Dosya Adlandırıcı ve Düzenleyici",
+  "heroSubtitle": "Dosyaları içeriklerine göre yeniden adlandırın ve yapay zekâyla klasörlere ayırın. Her adı ve klasörü önceden kontrol edin, her toplu işlemi geri alın; Zush Cloud, BYOK, LM Studio veya Ollama arasından seçin.",
   "heroHighlights": [
-    "Dosyaları içeriklerine göre yapay zekâyla toplu yeniden adlandırın"
+    "Dosyaları içeriklerine göre yeniden adlandırın",
+    "yapay zekâyla klasörlere ayırın"
   ],
   "buyPro": "PRO satın al",
   "trustSignals": [

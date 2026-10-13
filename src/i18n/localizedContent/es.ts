@@ -2,12 +2,12 @@ import type { HomeCopy } from '@/i18n/copy';
 import type { ProfessionLocaleCopy } from '@/i18n/professions/types';
 
 export const home = {
-  "heroTitle": "Renombrador de archivos\npara Mac & Windows",
-  "heroAccent": "Renombrador de archivos",
-  "heroSubtitle": "Renombra archivos por lotes según su contenido con IA. Zush admite más de 100 formatos de capturas, PDF, fotos, vídeos, audio y documentos, extrae exactamente los datos que elijas y los convierte en nombres de archivo con el formato que definas.",
+  "heroTitle": "Renombrador y organizador de archivos\npara Mac & Windows",
+  "heroAccent": "Renombrador y organizador de archivos",
+  "heroSubtitle": "Renombra archivos según su contenido y clasifícalos en carpetas con IA. Revisa cada nombre y carpeta, deshaz cualquier lote y elige Zush Cloud, BYOK, LM Studio u Ollama.",
   "heroHighlights": [
-    "Renombra archivos por lotes según su contenido con IA",
-    "exactamente los detalles que eliges"
+    "Renombra archivos según su contenido",
+    "clasifícalos en carpetas con IA"
   ],
   "buyPro": "Comprar PRO",
   "trustSignals": [

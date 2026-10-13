@@ -2,12 +2,12 @@ import type { HomeCopy } from '@/i18n/copy';
 import type { ProfessionLocaleCopy } from '@/i18n/professions/types';
 
 export const home: HomeCopy = {
-  "heroTitle": "Dateiumbenenner\nfür Mac & Windows",
-  "heroAccent": "Dateiumbenenner",
-  "heroSubtitle": "Benenne Dateien mit KI stapelweise nach Inhalt um. Zush unterstützt über 100 Formate für Bildschirmfotos, PDFs, Fotos, Videos, Audio und Dokumente, extrahiert genau die Details, die du auswählst, und macht daraus Dateinamen nach deinen Vorgaben.",
+  "heroTitle": "Dateiumbenenner & Organizer\nfür Mac & Windows",
+  "heroAccent": "Dateiumbenenner & Organizer",
+  "heroSubtitle": "Benenne Dateien mit KI nach ihrem Inhalt um und sortiere sie in Ordner. Prüfe jeden Namen und Ordner vorab, mache jeden Stapel rückgängig und wähle Zush Cloud, BYOK, LM Studio oder Ollama.",
   "heroHighlights": [
-    "Benenne Dateien mit KI stapelweise nach Inhalt um",
-    "genau die Details, die du auswählst"
+    "Benenne Dateien mit KI nach ihrem Inhalt um",
+    "sortiere sie in Ordner"
   ],
   "buyPro": "PRO kaufen",
   "trustSignals": [

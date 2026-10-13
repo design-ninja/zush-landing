@@ -2,12 +2,12 @@ import type { HomeCopy } from '@/i18n/copy';
 import type { ProfessionLocaleCopy } from '@/i18n/professions/types';
 
 export const home: HomeCopy = {
-  "heroTitle": "Bestandshernoemer\nvoor Mac & Windows",
-  "heroAccent": "Bestandshernoemer",
-  "heroSubtitle": "Hernoem bestanden in bulk op basis van inhoud met AI. Zush ondersteunt meer dan 100 formaten voor screenshots, pdf’s, foto’s, video’s, audio en documenten, haalt precies de details eruit die jij kiest en zet ze om in bestandsnamen die jij bepaalt.",
+  "heroTitle": "Bestandshernoemer en -organizer\nvoor Mac & Windows",
+  "heroAccent": "Bestandshernoemer en -organizer",
+  "heroSubtitle": "Hernoem bestanden op basis van inhoud en sorteer ze met AI in mappen. Controleer elke naam en map vooraf, maak elke batch ongedaan en kies Zush Cloud, BYOK, LM Studio of Ollama.",
   "heroHighlights": [
-    "Hernoem bestanden in bulk op basis van inhoud met AI",
-    "precies de details eruit die jij kiest"
+    "Hernoem bestanden op basis van inhoud",
+    "sorteer ze met AI in mappen"
   ],
   "buyPro": "Koop PRO",
   "trustSignals": [

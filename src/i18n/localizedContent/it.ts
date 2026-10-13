@@ -2,12 +2,12 @@ import type { HomeCopy } from '@/i18n/copy';
 import type { ProfessionLocaleCopy } from '@/i18n/professions/types';
 
 export const home = {
-  "heroTitle": "Rinomina file\nper Mac & Windows",
-  "heroAccent": "Rinomina file",
-  "heroSubtitle": "Rinomina file in batch in base al contenuto con l’IA. Zush supporta oltre 100 formati tra screenshot, PDF, foto, video, audio e documenti, estrae esattamente i dettagli che scegli e li trasforma in nomi file definiti da te.",
+  "heroTitle": "Rinomina e organizza file\nper Mac & Windows",
+  "heroAccent": "Rinomina e organizza file",
+  "heroSubtitle": "Rinomina i file in base al contenuto e ordinali in cartelle con l’IA. Controlla ogni nome e cartella, annulla qualsiasi batch e scegli Zush Cloud, BYOK, LM Studio o Ollama.",
   "heroHighlights": [
-    "Rinomina file in batch in base al contenuto con l’IA",
-    "esattamente i dettagli che scegli"
+    "Rinomina i file in base al contenuto",
+    "ordinali in cartelle con l’IA"
   ],
   "buyPro": "Acquista PRO",
   "trustSignals": [

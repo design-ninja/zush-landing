@@ -2,12 +2,12 @@ import type { HomeCopy } from '@/i18n/copy';
 import type { ProfessionLocaleCopy } from '@/i18n/professions/types';
 
 export const home = {
-  "heroTitle": "文件重命名工具\n适用于 Mac 和 Windows",
-  "heroAccent": "文件重命名工具",
-  "heroSubtitle": "使用 AI 按内容批量重命名文件。Zush 支持截图、PDF、照片、视频、音频和文档等 100 多种格式，可精准提取你选择的信息，并生成由你定义的文件名。",
+  "heroTitle": "文件重命名与整理工具\n适用于 Mac 和 Windows",
+  "heroAccent": "文件重命名与整理工具",
+  "heroSubtitle": "使用 AI 按内容重命名文件，并将其分类到文件夹。应用前预览每个名称和文件夹，可撤销任意批次，并可选择 Zush Cloud、BYOK、LM Studio 或 Ollama。",
   "heroHighlights": [
-    "使用 AI 按内容批量重命名文件",
-    "精准提取你选择的信息"
+    "使用 AI 按内容重命名文件",
+    "将其分类到文件夹"
   ],
   "buyPro": "购买 PRO",
   "trustSignals": [

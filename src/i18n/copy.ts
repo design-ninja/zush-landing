@@ -4137,7 +4137,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     platforms: localizedPlatforms.de,
     seo: {
       '/': {
-        title: 'KI-Dateiumbenenner für Mac & Windows — Zush',
+        title: 'KI-Dateiumbenenner & Organizer für Mac & Windows — Zush',
         description:
           'Dateien nach Inhalt umbenennen mit Zush für Mac und Windows. Eigene Regeln für PDFs, Fotos, Video und Audio. Mit Vorschau und Undo. 50 Umbenennungen gratis.',
       },
@@ -4253,7 +4253,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     platforms: localizedPlatforms.fr,
     seo: {
       '/': {
-        title: 'Renommeur de fichiers IA pour Mac et Windows — Zush',
+        title: 'Renommeur et organiseur de fichiers IA pour Mac et Windows — Zush',
         description:
           'Renommez vos fichiers par contenu avec Zush sur Mac et Windows. Règles pour PDF, photos, vidéo et audio, aperçu et annulation. 50 renommages gratuits.',
       },
@@ -4333,7 +4333,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     platforms: localizedPlatforms['pt-br'],
     seo: {
       '/': {
-        title: 'Renomeador de arquivos com IA para Mac e Windows — Zush',
+        title: 'Renomeador e organizador de arquivos com IA para Mac e Windows — Zush',
         description:
           'Renomeie arquivos pelo conteúdo com Zush no Mac e Windows. Regras para PDF, fotos, vídeo e áudio, prévia e desfazer. Experimente 50 renomeações grátis.',
       },
@@ -4413,7 +4413,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     platforms: localizedPlatforms.es,
     seo: {
       '/': {
-        title: 'Renombrador de archivos con IA para Mac y Windows — Zush',
+        title: 'Renombrador y organizador de archivos con IA para Mac y Windows — Zush',
         description:
           'Renombra archivos por contenido con Zush en Mac y Windows. Reglas para PDF, fotos, vídeo y audio, vista previa y deshacer. Prueba 50 cambios gratis.',
       },
@@ -4493,7 +4493,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     platforms: localizedPlatforms.nl,
     seo: {
       '/': {
-        title: 'AI-bestandshernoemer voor Mac en Windows — Zush',
+        title: 'AI-bestandshernoemer en -organizer voor Mac en Windows — Zush',
         description:
           'Hernoem bestanden op inhoud met Zush voor Mac en Windows. Regels voor pdf, foto, video en audio, met voorbeeld en herstel. Probeer 50 keer gratis.',
       },
@@ -4573,7 +4573,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     platforms: localizedPlatforms.it,
     seo: {
       '/': {
-        title: 'Rinomina file con IA per Mac e Windows — Zush',
+        title: 'Rinomina e organizza file con IA per Mac e Windows — Zush',
         description:
           'Rinomina i file in base al contenuto con Zush su Mac e Windows. Regole per PDF, foto, video e audio, anteprima e annullamento. Prova 50 rinomine gratis.',
       },
@@ -4653,7 +4653,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     platforms: localizedPlatforms.ja,
     seo: {
       '/': {
-        title: 'Mac・Windows 向け AI ファイルリネーム — Zush',
+        title: 'Mac・Windows 向け AI ファイルリネーム・整理ツール — Zush',
         description:
           'Zush は Mac と Windows でファイルを内容に基づいてリネーム。PDF、写真、動画、音声に独自ルールを適用し、プレビューと取り消しに対応。50 回まで無料。',
       },
@@ -4733,7 +4733,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     platforms: localizedPlatforms.ko,
     seo: {
       '/': {
-        title: 'Mac·Windows용 AI 파일 이름 변경 — Zush',
+        title: 'Mac·Windows용 AI 파일 이름 변경 및 정리 도구 — Zush',
         description:
           'Zush로 Mac과 Windows에서 파일 내용을 바탕으로 이름을 변경하세요. PDF, 사진, 영상, 오디오에 규칙을 적용하고 미리보기와 실행 취소를 사용하세요. 50회 무료.',
       },
@@ -4884,7 +4884,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     },
     seo: {
       '/': {
-        title: 'Mac 和 Windows AI 文件重命名工具 — Zush',
+        title: 'Mac 和 Windows AI 文件重命名与整理工具 — Zush',
         description:
           '使用 Zush 在 Mac 和 Windows 上按内容重命名文件。为 PDF、照片、视频和音频设置命名规则，支持预览和撤销。免费试用 50 次重命名。',
       },
@@ -5056,7 +5056,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     },
     seo: {
       '/': {
-        title: 'Mac ve Windows için AI Dosya Adlandırıcı — Zush',
+        title: 'Mac ve Windows için AI Dosya Adlandırıcı ve Düzenleyici — Zush',
         description:
           'Mac ve Windows’ta Zush ile dosyaları içeriğine göre adlandırın. PDF, fotoğraf, video ve ses için kurallar, önizleme ve geri alma. 50 adlandırma ücretsiz.',
       },
@@ -5234,7 +5234,7 @@ const COPY: Record<Locale, LocaleCopy> = {
     },
     seo: {
       '/': {
-        title: 'إعادة تسمية الملفات بالذكاء الاصطناعي لـ Mac وWindows — Zush',
+        title: 'إعادة تسمية الملفات وتنظيمها بالذكاء الاصطناعي لـ Mac وWindows — Zush',
         description:
           'أعد تسمية الملفات حسب المحتوى مع Zush على Mac وWindows. قواعد لملفات PDF والصور والفيديو والصوت، مع معاينة وتراجع. جرّب 50 إعادة تسمية مجانًا.',
       },
