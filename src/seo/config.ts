@@ -41,6 +41,7 @@ export const HOME_KEYWORDS = [
   'rename files by content',
   'batch rename files with AI',
   'AI file organizer',
+  'AI file renamer and organizer',
   'AI folder sorting',
   'sort files into folders with AI',
   'file renamer for Mac',
@@ -63,7 +64,7 @@ export interface SeoMeta {
 
 type RouteSeoMeta = Omit<SeoMeta, 'canonicalPath'>;
 
-const HOME_PAGE_TITLE = 'AI File Renamer for Mac & Windows — Zush';
+const HOME_PAGE_TITLE = 'AI File Renamer & Organizer for Mac & Windows — Zush';
 const HOME_PAGE_DESCRIPTION =
   ORGANIZATION_FEATURES.en.homeDescription;
 
@@ -578,7 +579,7 @@ export const HOME_JSON_LD = {
         '@id': `${SITE_ORIGIN}/#webpage`,
       },
       description:
-        `Zush is an AI file renamer for macOS and Windows that builds filenames from file content, metadata, dates, custom prompts, and 145+ reusable naming blocks. Zush offers AI folder sorting (beta) with automatic grouping or plain-language instructions. Users preview batches and choose ${AI_MODES_SUMMARY}.`,
+        `Zush is an AI file renamer and organizer for macOS and Windows that builds filenames from file content, metadata, dates, custom prompts, and 145+ reusable naming blocks. Zush offers AI folder sorting (beta) with automatic grouping or plain-language instructions. Users preview batches and choose ${AI_MODES_SUMMARY}.`,
       keywords: HOME_KEYWORDS,
       applicationCategory: 'UtilitiesApplication',
       applicationSubCategory: 'File Renaming and Organization',

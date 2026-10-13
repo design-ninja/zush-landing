@@ -5,9 +5,10 @@ import { DEFAULT_LOCALE, getLocalizedPath, type Locale } from '@/i18n/config';
 import { ORGANIZATION_FEATURES } from '@/i18n/organizationFeatures';
 import ThemedScreenshot from './ThemedScreenshot.astro';
 import styles from './OrganizationFeatures.module.scss';
-interface Props { locale?: Locale; platform?: 'mac' | 'windows' }
-const { locale = DEFAULT_LOCALE, platform = 'mac' } = Astro.props;
+interface Props { locale?: Locale; platform?: 'mac' | 'windows'; showProductLink?: boolean }
+const { locale = DEFAULT_LOCALE, platform = 'mac', showProductLink = false } = Astro.props;
 const copy = ORGANIZATION_FEATURES[locale];
+const sorterPath = getLocalizedPath('/ai-file-sorter', locale);
 const guidePath = getLocalizedPath(`/blog/sort-files-into-folders-with-ai-mac${locale === DEFAULT_LOCALE ? '' : `-${locale}`}`, locale);
 ---
 <section class={styles.Section} aria-labelledby="organization-title">
@@ -30,7 +31,23 @@ const guidePath = getLocalizedPath(`/blog/sort-files-into-folders-with-ai-mac${l
               <blockquote class={styles.RuleExample}>“{copy.ruleExample}”</blockquote>
             </div>
           </div>
-          <a href={guidePath}>{copy.sortingLink} <span aria-hidden="true">→</span></a>
+          {copy.exampleFrom && copy.exampleTo && (
+            <figure class={styles.Example}>
+              <figcaption class={styles.PromptLabel}>{copy.exampleLabel}</figcaption>
+              <p class={styles.ExamplePath}>
+                <code>{copy.exampleFrom}</code>
+                <span class={styles.ExampleArrow} role="img" aria-label="moves to">→</span>
+                <code>{copy.exampleTo}</code>
+              </p>
+              {copy.exampleCaption && <Text as="p" color="subtle" size="sm">{copy.exampleCaption}</Text>}
+            </figure>
+          )}
+          <div class={styles.Links}>
+            {showProductLink && copy.productLink && (
+              <a href={sorterPath}>{copy.productLink} <span aria-hidden="true">→</span></a>
+            )}
+            <a href={guidePath}>{copy.sortingLink} <span aria-hidden="true">→</span></a>
+          </div>
         </div>
         <div class={styles.Visual}>
           <ThemedScreenshot id="folder-sorting" platform={platform} alt={copy.sortingTab} zoom />

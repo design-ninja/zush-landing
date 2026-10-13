@@ -29,7 +29,7 @@ export async function GET() {
     .map((entry) => `- [${entry.data.title}](${SITE_ORIGIN}${getDocsRoute(entry.id)})`);
 
   const body = [
-    '# Zush AI File Renamer for Mac and Windows',
+    '# Zush AI File Renamer & Organizer for Mac and Windows',
     '',
     '> Zush is an AI file renamer and organizer for Mac and Windows. It reads screenshots, PDFs, photos, documents, videos, audio, and design files, then batch renames files by content with review, folder monitoring, templates, and undo. AI folder sorting (beta) groups files automatically or follows plain-language instructions.',
     '',
@@ -37,7 +37,7 @@ export async function GET() {
     '',
     '## Product',
     '',
-    `- [Zush AI File Renamer for Mac and Windows](${SITE_ORIGIN}/)`,
+    `- [Zush AI File Renamer & Organizer for Mac and Windows](${SITE_ORIGIN}/)`,
     `- [Batch Rename Files with AI](${SITE_ORIGIN}/batch-rename-files)`,
     `- [AI File Organizer for Mac & Windows](${SITE_ORIGIN}/ai-file-organizer)`,
     `- [AI File Sorter: sort files into folders with your own rules](${SITE_ORIGIN}/ai-file-sorter)`,

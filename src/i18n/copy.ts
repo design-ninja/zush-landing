@@ -1122,11 +1122,11 @@ const EN_COPY: LocaleCopy = {
     },
   },
   home: {
-    heroTitle: 'Zush AI File Renamer for Mac & Windows',
-    heroAccent: 'AI File Renamer',
+    heroTitle: 'Zush AI File Renamer & Organizer\nfor Mac & Windows',
+    heroAccent: 'AI File Renamer & Organizer',
     heroSubtitle:
-      'Zush renames files by content with AI and your own naming rules. Preview every filename, undo any batch, and choose Zush Cloud, BYOK, LM Studio or Ollama.',
-    heroHighlights: ['Zush renames files by content with AI', 'your own naming rules'],
+      'Rename files by content and sort them into folders with AI. Preview every name and folder, undo any batch, and choose Zush Cloud, BYOK, LM Studio or Ollama.',
+    heroHighlights: ['Rename files by content', 'sort them into folders with AI'],
     buyPro: 'Buy PRO',
     trustSignals: ['Get started for free', 'No registration', 'No credit card required'],
     heroModes: ['Zush Cloud', 'BYOK', 'LM Studio', 'Ollama'],
@@ -1380,7 +1380,7 @@ const EN_COPY: LocaleCopy = {
   featurePages: {},
   seo: {
     '/': {
-      title: 'AI File Renamer for Mac & Windows — Zush',
+      title: 'AI File Renamer & Organizer for Mac & Windows — Zush',
       description:
         'Rename files by content with Zush for Mac and Windows. Use AI and custom naming rules for PDFs, photos, video and audio. Preview, undo, and try 50 renames free.',
     },

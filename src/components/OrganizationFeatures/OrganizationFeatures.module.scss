@@ -13,6 +13,11 @@
 .Prompt { display: grid; gap: .65rem; padding: 1rem 1.25rem; border: 1px solid var(--border); border-radius: .75rem; background: var(--background); }
 .PromptLabel { color: var(--primary); font-size: .75rem; font-weight: 600; }
 .RuleExample { margin: 0; font-size: 1.1rem; font-weight: 500; line-height: 1.6; text-wrap: pretty; }
+.Example { margin: 0; display: grid; gap: .65rem; }
+.ExamplePath { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .6rem; font-size: .9rem; }
+.ExamplePath code { padding: .2rem .45rem; border-radius: .4rem; background: var(--background); border: 1px solid var(--border); overflow-wrap: anywhere; }
+.ExampleArrow { color: var(--primary); font-weight: 600; }
+.Links { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; }
 .Copy a { color: var(--primary); font-weight: 600; text-underline-offset: .2em; }
 .Visual { min-width: 0; align-self: stretch; display: grid; }
 .Visual :global(.organization-screenshot) { height: 100%; }

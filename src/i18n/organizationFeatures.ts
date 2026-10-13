@@ -21,6 +21,13 @@ interface OrganizationCopy {
   customDescription: string;
   transferTitle: string;
   sortingLink: string;
+  /** Optional worked example shown under the modes (English only for now). */
+  exampleLabel?: string;
+  exampleFrom?: string;
+  exampleTo?: string;
+  exampleCaption?: string;
+  /** Optional link to the product page for AI folder sorting. */
+  productLink?: string;
   offlineTitle: string;
   offlineDescription: string;
 }
@@ -48,6 +55,11 @@ export const ORGANIZATION_FEATURES: Record<Locale, OrganizationCopy> = {
     sortingTitle: "Sort files into folders with AI",
     transferTitle: 'Share your naming workflow',
     sortingLink: 'How AI folder sorting works',
+    exampleLabel: 'Example result',
+    exampleFrom: 'Downloads/scan_001.pdf',
+    exampleTo: 'Clients/Acme/Acme_Invoice_1042.pdf',
+    exampleCaption: 'Clients is the destination you choose. Acme is the folder Zush suggests from the file. You review every move before applying it.',
+    productLink: 'AI file sorter: write your own folder rules',
     ruleExample: "Group invoices by company and receipts by month.",
     customDescription: "Write a prompt to tell AI how to group your files.",
   },
