@@ -1,0 +1,134 @@
+---
+title: "Comment renommer des photos par date de prise de vue sous Windows (4 méthodes)"
+description: "Renommez vos photos selon leur date de prise de vue sous Windows 11 et 10 avec PowerRename, Bulk Rename Utility, ExifTool ou Zush. Pas à pas, avec des modèles sûrs."
+date: "2026-09-22"
+slug: "rename-photos-by-date-windows-fr"
+platform: "windows"
+topic: "photos"
+tags:
+  - "Photos"
+  - "File Naming"
+  - "File Explorer"
+tldr: "Utilisez la date de prise de vue EXIF de la photo, et non la date de création du fichier, qui change quand vous copiez des fichiers. PowerRename peut préfixer les noms avec les variables $DATE_TAKEN, gratuitement. ExifTool est le plus précis. Zush ajoute la date de prise de vue ainsi qu'une description du contenu de chaque photo, par exemple 2026-08-30_lisbon_tram_street.jpg."
+reviewed: "2026-09-22"
+locale: "fr"
+translationOf: "rename-photos-by-date-windows"
+---
+
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Réponse rapide : la méthode gratuite est **PowerRename**, de Microsoft PowerToys. Sélectionnez vos photos, ouvrez PowerRename, réglez la source de métadonnées sur EXIF et placez `$DATE_TAKEN_YYYY-$DATE_TAKEN_MM-$DATE_TAKEN_DD` devant le nom. Si vous voulez la date et en plus ce que montre l'image, utilisez [Zush](/windows).
+
+Quel que soit l'outil, renommez selon la **date de prise de vue** et non la date de création. Windows réinitialise la « Date created » (date de création) lorsque vous copiez un fichier sur un nouveau disque : c'est donc souvent le jour de votre sauvegarde, pas celui où vous avez pris la photo. La date de prise de vue est stockée dans la photo elle-même (EXIF) et ne bouge pas.
+
+## Quel format de date utiliser
+
+Mettez la date en premier et écrivez-la sous la forme année-mois-jour :
+
+- `2026-08-30_lisbon_trip_001.jpg` se trie correctement dans File Explorer.
+- `30-08-2026_lisbon.jpg` ne se trie pas correctement, car le tri se fait d'abord par jour.
+
+Ajoutez l'heure (`2026-08-30_143512`) si vous photographiez en rafale, afin que deux photos du même jour n'aient jamais le même nom.
+
+## Les quatre méthodes
+
+| Méthode | Coût | Ajoute une description | Annulation |
+|---|---|---|---|
+| PowerRename | Gratuit | Non | Ctrl+Z juste après |
+| Bulk Rename Utility | Gratuit pour un usage personnel | Non | Fichier batch d'annulation |
+| ExifTool | Gratuit | Non | Non |
+| Zush | 50 renommages gratuits, puis $10/mois ou $48 | Oui, à partir du contenu de la photo | Rename History complet |
+
+## 1. PowerRename (gratuit, conçu par Microsoft)
+
+1. Installez [Microsoft PowerToys](https://learn.microsoft.com/en-us/windows/powertoys/powerrename) depuis le Microsoft Store et vérifiez que PowerRename est activé.
+2. Sélectionnez vos photos dans File Explorer, faites un clic droit, puis choisissez **Rename with PowerRename** (sous **Show more options** sous Windows 11).
+3. Activez **Use regular expressions** et réglez la source de métadonnées sur **EXIF/XMP**.
+4. Dans **Search for**, saisissez `^`. Cela correspond au début du nom.
+5. Dans **Replace with**, saisissez `$DATE_TAKEN_YYYY-$DATE_TAKEN_MM-$DATE_TAKEN_DD_`.
+6. Vérifiez l'aperçu, puis cliquez sur **Apply**.
+
+`IMG_4382.jpg` devient `2026-08-30_IMG_4382.jpg`. Conserver le nom d'origine à la fin est voulu : cela garantit que deux photos n'auront jamais le même nom.
+
+Pour ajouter aussi l'heure, utilisez `$DATE_TAKEN_YYYY-$DATE_TAKEN_MM-$DATE_TAKEN_DD_$DATE_TAKEN_HH$DATE_TAKEN_mm$DATE_TAKEN_SS_`.
+
+## 2. Bulk Rename Utility
+
+[Bulk Rename Utility](https://www.bulkrenameutility.co.uk/) lit lui aussi les données EXIF et vous offre plus de contrôle sur le format. Il est gratuit pour un usage personnel.
+
+1. Ouvrez le dossier dans Bulk Rename Utility et sélectionnez les photos.
+2. Dans le panneau **Auto Date**, choisissez **Prefix** et réglez le type sur **EXIF Date Picture Taken** (ou l'option EXIF équivalente dans votre version).
+3. Choisissez un format comme `Y-M-D` et un séparateur.
+4. Vérifiez la colonne **New Name**, puis cliquez sur **Rename**.
+
+Il peut aussi générer un fichier batch qui annule le renommage.
+
+## 3. ExifTool (précis, en ligne de commande)
+
+[ExifTool](https://exiftool.org/) est l'outil de référence des photographes pour les métadonnées. Après l'avoir installé, ouvrez Terminal dans votre dossier de photos et exécutez :
+
+```bat
+exiftool "-FileName<DateTimeOriginal" -d "%Y-%m-%d_%H%M%S%%-c.%%e" .
+```
+
+Cette commande renomme chaque photo selon ses date et heure de prise de vue, par exemple `2026-08-30_143512.jpg`. La partie `%%-c` ajoute `-1`, `-2` lorsque deux photos partagent la même seconde. Les photos sans date de prise de vue sont laissées telles quelles.
+
+Testez d'abord sur une copie du dossier. Il n'y a pas d'annulation.
+
+## 4. Zush : la date plus le contenu de la photo
+
+Une date vous dit quand. Elle ne vous dit pas laquelle des 400 photos de ce jour montre le tram, la plage ou le dîner. [Zush pour Windows](/windows) lit la date de prise de vue et analyse chaque image, puis combine les deux :
+
+| Avant | Après |
+|---|---|
+| `IMG_4382.jpg` | `2026-08-30_lisbon_tram_street.jpg` |
+| `PXL_20260712_183455.jpg` | `2026-07-12_dog_running_on_beach.jpg` |
+| `DSC01877.ARW` | `2026-06-14_wedding_first_dance.ARW` |
+
+Comment le configurer :
+
+1. Installez Zush depuis le [Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X) et glissez-y votre dossier de photos.
+2. Choisissez le Template **Photographer Shoots**, ou créez un modèle comme `{Capture Date}_{Event}_{Scene}` à partir des Naming Blocks.
+3. Choisissez un format de date et un séparateur.
+4. Passez en revue les noms, modifiez-en au besoin d'un double-clic, puis cliquez sur **Rename**.
+
+Zush lit les fichiers JPG, PNG, HEIC des iPhone et les fichiers RAW tels que CR3, NEF, ARW et DNG. Si une photo n'a pas de date de prise de vue, le bloc Capture Date reste vide au lieu de deviner. Rename History peut restaurer les noms d'origine à tout moment.
+
+<BlogCTA placement='inline' platform='windows' />
+
+## Avant de renommer une grande photothèque
+
+- **Travaillez d'abord sur une copie.** Essayez n'importe quelle méthode sur 20 photos avant de la lancer sur 20 000.
+- **Vérifiez les dates manquantes.** Les captures d'écran, les images téléchargées et les exports retouchés n'ont souvent pas de date EXIF. Triez par la colonne **Date taken** dans la vue Details de File Explorer pour repérer les cases vides.
+- **Gardez ensemble les paires RAW et JPEG.** Si votre appareil enregistre les deux, renommez-les dans le même lot pour que `DSC01877.ARW` et `DSC01877.JPG` reçoivent des noms correspondants.
+- **Ne touchez pas aux sauvegardes du téléphone.** Des applications comme OneDrive ou Google Photos suivent les fichiers par leur nom ; renommez des copies, pas le dossier de synchronisation lui-même, sauf si vous êtes certain de votre coup.
+
+<BlogProductIntro
+  title="Envie de la date et d'une description dans chaque nom de photo ?"
+  description="Zush combine la date de prise de vue de chaque photo avec ce qu'elle montre, pour les fichiers JPG, HEIC et RAW sous Windows. Prévisualisez chaque nom, annulez n'importe quel lot."
+  links={[
+    { href: '/rename-photos-with-ai', label: "Renommer des photos avec l'IA" },
+    { href: '/windows', label: 'Zush pour Windows' },
+    { href: '/blog/best-photo-organizer-windows-11', label: "Organisateurs de photos pour Windows" },
+    { href: '/for-photographers', label: 'Pour les photographes' },
+  ]}
+/>
+
+## FAQ
+
+### Comment renommer des photos par date de prise de vue dans Windows 11 ?
+
+Installez Microsoft PowerToys, sélectionnez les photos, ouvrez PowerRename, réglez la source de métadonnées sur EXIF/XMP, recherchez `^` avec les expressions régulières activées, puis remplacez par `$DATE_TAKEN_YYYY-$DATE_TAKEN_MM-$DATE_TAKEN_DD_`. Cela ajoute la date de prise de vue au début de chaque nom.
+
+### Pourquoi la date de création de ma photo est-elle fausse ?
+
+Windows définit la « Date created » (date de création) lorsqu'un fichier est créé sur ce disque, y compris quand vous le copiez. Utilisez plutôt la « Date taken » (date de prise de vue) tirée des données EXIF de la photo ; elle est définie par l'appareil et ne change pas quand vous copiez des fichiers.
+
+### File Explorer peut-il renommer automatiquement les photos selon la date ?
+
+Non. File Explorer peut trier et regrouper par date de prise de vue, mais il ne peut pas insérer cette date dans les noms de fichiers. Utilisez PowerRename, Bulk Rename Utility, ExifTool ou Zush.
+
+### Que faire si certaines photos n'ont pas de date de prise de vue ?
+
+Les captures d'écran et les images téléchargées n'en ont souvent aucune. ExifTool et Zush laissent la date vide plutôt que de deviner ; avec PowerRename, vérifiez l'aperçu et excluez ces fichiers, ou renommez-les séparément selon la date de modification.

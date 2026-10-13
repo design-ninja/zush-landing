@@ -1,0 +1,141 @@
+---
+title: "Mejor renombrador de archivos para Windows 11 (2026): herramientas gratis vs IA"
+description: "Comparamos seis renombradores de archivos para Windows 11 y 10: File Explorer, PowerRename, Bulk Rename Utility, Advanced Renamer, ReNamer y Zush. Descubre cuál se adapta a tus archivos."
+date: "2026-09-22"
+slug: "best-file-renamer-windows-11-es"
+platform: "windows"
+topic: "comparisons"
+tags:
+  - "File Naming"
+  - "Tool Comparisons"
+  - "AI File Renaming"
+tldr: "Para tareas basadas en patrones (añadir una fecha, reemplazar texto, numerar una secuencia), PowerRename es gratuito y suficiente; Bulk Rename Utility y Advanced Renamer llegan más lejos. Para archivos que necesitan cada uno un nombre distinto y descriptivo, como capturas de pantalla, escaneos y fotos, usa un renombrador con IA como Zush, que lee cada archivo antes de nombrarlo. Zush también ofrece una clasificación opcional de carpetas con IA (beta)."
+reviewed: "2026-09-28"
+locale: "es"
+translationOf: "best-file-renamer-windows-11"
+---
+
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogHighlight from '@/components/blog/BlogHighlight.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Respuesta rápida: si todos los archivos reciben el mismo tipo de cambio, como un prefijo, una fecha o una secuencia numérica, usa **PowerRename**. Es gratuito, lo ofrece Microsoft y resuelve la mayoría de las tareas basadas en patrones. Si cada archivo necesita su propio nombre según lo que contiene, usa un renombrador con IA como [Zush](/windows).
+
+Esa diferencia lo decide todo. Las herramientas de patrones son rápidas y precisas, pero solo transforman el nombre que el archivo ya tiene. `IMG_4382.jpg` puede convertirse en `Vacation_001.jpg`, nunca en `lisbon-tram-at-night.jpg`.
+
+**Última comprobación: 22 de septiembre de 2026.** Escrito por el creador de Zush. Los datos de las demás herramientas provienen de sus páginas oficiales.
+
+## Las seis opciones de un vistazo
+
+| Herramienta | Ideal para | Lee el contenido del archivo | Deshacer | Precio |
+|---|---|---|---|---|
+| File Explorer | Unos pocos archivos, secuencia rápida | No | Ctrl+Z, última acción | Incluido en Windows |
+| PowerRename | Buscar y reemplazar, regex, fechas | No (solo campos EXIF) | Ctrl+Z en el Explorador | Gratis (PowerToys) |
+| Bulk Rename Utility | Trabajo intensivo con patrones, más de 100 000 archivos | No (campos EXIF, ID3) | Genera un archivo por lotes para deshacer | Gratis para uso personal |
+| Advanced Renamer | Nombres basados en metadatos y GPS | No (campos EXIF, ID3, GPS, vídeo) | Deshacer lote completo | Gratis para uso personal ligero; $25 personal, $45 comercial |
+| ReNamer | Cadenas de reglas, scripts | No (metaetiquetas) | Admite deshacer | Lite gratis para uso no comercial; Pro de pago |
+| **Zush** | <BlogHighlight>Un nombre descriptivo distinto para cada archivo; clasificación opcional de carpetas con IA (beta)</BlogHighlight> | Sí, con IA | Rename History completo | 50 renombrados gratis; $10/mes o $48 pago único |
+
+## 1. File Explorer: suficiente para cinco archivos
+
+Selecciona varios archivos, pulsa **F2**, escribe un nombre y pulsa Enter. Windows los nombra `Trip (1).jpg`, `Trip (2).jpg`, y así sucesivamente. **Ctrl+Z** lo deshace al instante.
+
+Eso es todo lo que hace. Sin vista previa, sin fechas, sin buscar y reemplazar. Úsalo cuando el resultado solo tenga que quedar ordenado, no ser significativo.
+
+## 2. PowerRename: la mejor opción gratuita para la mayoría
+
+[PowerRename](https://learn.microsoft.com/en-us/windows/powertoys/powerrename) viene con Microsoft PowerToys. Selecciona archivos, haz clic derecho, elige **Rename with PowerRename** y obtendrás buscar y reemplazar con vista previa en vivo.
+
+Hace más de lo que parece:
+
+- Expresiones regulares, incluidos los grupos de captura (`29-03-2020` → `2020-03-29`)
+- Contadores con relleno y valores iniciales (`Image_${padding=4}`)
+- Variables de fecha de creación del archivo como `$YYYY-$MM-$DD`
+- Campos EXIF de fotos como `$DATE_TAKEN_YYYY`, `$CAMERA_MODEL` y coordenadas GPS
+
+Elige PowerRename para cualquier tarea que puedas describir como un patrón. Para el lado de la IA, consulta nuestra página de [alternativa a PowerRename](/powerrename-alternative).
+
+## 3. Bulk Rename Utility: máximo control
+
+[Bulk Rename Utility](https://www.bulkrenameutility.co.uk/) reúne todas las opciones de patrones en una sola ventana densa: regex, JavaScript, numeración automática, fechas EXIF, etiquetas MP3, renombrados guiados por CSV y cambios de marca de tiempo. Maneja más de 100 000 archivos sin ralentizarse. Deshacer funciona generando un archivo por lotes que revierte el cambio.
+
+Es gratuito para uso personal; el uso empresarial requiere una licencia comercial. La interfaz requiere cierto tiempo de adaptación. Más información en nuestra guía de [alternativas a Bulk Rename Utility](/blog/bulk-rename-utility-alternatives).
+
+## 4. Advanced Renamer: lo mejor para metadatos de fotos y música
+
+[Advanced Renamer](https://www.advancedrenamer.com/) construye un nombre a partir de métodos apilados: etiquetas de EXIF, ID3, propiedades de vídeo y GPS (puede convertir coordenadas en el nombre de una ciudad). Muestra una vista previa en vivo y puede deshacer un lote completo. También funciona en macOS.
+
+Es gratuito para uso personal ligero. A los usuarios habituales se les pide comprar una licencia personal de $25, y el uso laboral requiere una comercial de $45. Ambas son de pago único. Consulta nuestra [reseña de Advanced Renamer](/blog/advanced-renamer-alternatives).
+
+## 5. ReNamer: reglas y scripts
+
+[ReNamer](https://www.den4b.com/products/renamer) aplica una lista ordenada de reglas: insertar, eliminar, reemplazar, mayúsculas y minúsculas, regex, metaetiquetas y Pascal Script para cualquier cosa personalizada. Es portátil y admite más de 25 idiomas de interfaz.
+
+ReNamer Lite es gratuito para uso no comercial, con un límite de 5 reglas y 5 preajustes. Pro elimina esos límites y permite el uso comercial.
+
+## 6. Zush: cuando cada archivo necesita su propio nombre
+
+[Zush](/windows) funciona de otra manera. En lugar de editar el nombre antiguo, observa el archivo: el texto de un PDF, lo que muestra una captura de pantalla, la escena de una foto, el contenido de un archivo de Word o Excel. Después escribe un nombre que lo describe.
+
+| Antes | Después |
+|---|---|
+| `Screenshot 2026-09-18 141203.png` | `github-pull-request-review-comments.png` |
+| `scan_0042.pdf` | `2026-09-12_acme_invoice_1042.pdf` |
+| `Document1.docx` | `q3-marketing-plan-draft.docx` |
+| `IMG_4382.jpg` | `2026-08-30_lisbon_tram_street.jpg` |
+
+Tú controlas la estructura. Template y más de 145 Naming Blocks fijan el orden (fecha, proveedor, cliente, título), las mayúsculas y minúsculas y los separadores. Revisas cada sugerencia antes de aplicarla, y Rename History puede restaurar un lote completo más adelante. La supervisión de carpetas renombra automáticamente los archivos nuevos en Descargas o en una carpeta del escáner.
+
+La IA puede funcionar mediante Zush Cloud AI, con tu propia clave de API o de forma local con Ollama o LM Studio. Los primeros 50 renombrados son gratuitos.
+
+<BlogCTA placement='inline' platform='windows' />
+
+### Clasifica los archivos renombrados en carpetas
+
+En Windows, Zush también puede **clasificar archivos en carpetas con IA (beta)**. Elige la agrupación **Auto** o escribe **Folder rules** como “Agrupar las facturas por empresa y los recibos por mes”. Revisa los grupos de carpetas sugeridos junto con los nombres de archivo; un renombrador de patrones sigue siendo suficiente cuando solo necesitas aplicar el mismo cambio de texto a un lote.
+
+Elige una **Destination folder** o mantén la carpeta de origen como raíz. Activa **Reuse existing folders** para dar preferencia a las carpetas adecuadas que ya existan; Zush puede crear una nueva cuando ninguna encaje. En un lote manual, revisa tanto los nombres como las carpetas sugeridos antes de aplicarlos. Para renombrar en el mismo lugar, deja la clasificación desactivada y mantén el destino original.
+
+Guarda los ajustes de clasificación en un **Template** y asígnalo a **Monitor** para los archivos nuevos que aparezcan directamente en la carpeta supervisada. Esto no reorganiza los archivos ya procesados. Prueba primero el Template en un lote manual. Consulta la [guía de clasificación de carpetas](/docs/folder-sorting) para ver la configuración y el alcance de la supervisión.
+
+## ¿Qué renombrador deberías usar?
+
+- El mismo cambio para todos los archivos (prefijo, fecha, número): **PowerRename**.
+- Patrones complejos en carpetas enormes: **Bulk Rename Utility**.
+- Nombres a partir de metadatos de fotos, música o GPS: **Advanced Renamer**.
+- Capturas de pantalla, escaneos, descargas y fotos que necesitan nombres reales: **Zush**.
+
+Mucha gente conserva ambos tipos. PowerRename para arreglos mecánicos rápidos, Zush para las carpetas en las que ahora abres cada archivo para ver qué es.
+
+<BlogProductIntro
+  title="¿Cansado de abrir archivos solo para ver qué son?"
+  description="Zush lee cada archivo de tu PC con Windows y sugiere un nombre claro y fácil de buscar. Revisa el lote, aplícalo y deshazlo cuando quieras."
+  links={[
+    { href: '/windows', label: 'Zush para Windows' },
+    { href: '/batch-rename-files', label: 'Renombrar por lotes con IA' },
+    { href: '/blog/batch-rename-files-windows-11', label: 'Renombrar por lotes en Windows 11' },
+    { href: '/blog/best-ai-file-renamer-tools-windows-compared', label: 'Renombradores con IA para Windows' },
+  ]}
+/>
+
+## Preguntas frecuentes
+
+### ¿Puede Zush clasificar archivos en carpetas además de renombrarlos?
+
+Sí. Su clasificación opcional de carpetas con IA está en beta en Mac y Windows. Elige Auto o escribe Folder rules, selecciona el destino y revisa tanto los nombres como los grupos en un lote manual. Un Template con la clasificación activada también puede procesar archivos nuevos directamente dentro de una carpeta supervisada; no reorganiza los archivos ya procesados. Deja la clasificación desactivada y mantén el destino original si solo quieres renombrar.
+
+### ¿Cuál es el mejor renombrador de archivos gratuito para Windows 11?
+
+PowerRename, parte de Microsoft PowerToys. Es gratuito, muestra una vista previa de cada cambio, admite regex y variables de fecha, y se deshace con Ctrl+Z. Bulk Rename Utility es la alternativa gratuita para tareas personales más pesadas.
+
+### ¿Tiene Windows 11 un renombrado por lotes integrado?
+
+Sí, pero básico. Selecciona archivos en File Explorer y pulsa F2 para darles un único nombre con números entre paréntesis. Para buscar y reemplazar o para fechas, instala PowerToys y usa PowerRename.
+
+### ¿Puede un renombrador de archivos leer lo que hay dentro de mis archivos?
+
+Las herramientas de patrones no; solo leen el nombre existente y campos de metadatos como EXIF o ID3. Los renombradores con IA como Zush leen el contenido en sí (texto, imágenes, fotogramas de vídeo) y escriben un nuevo nombre descriptivo.
+
+### ¿Qué renombrador de archivos es el más seguro?
+
+Cualquier herramienta con vista previa y deshacer por lotes. PowerRename, Advanced Renamer y Zush muestran los resultados antes de aplicarlos. Zush además conserva un Rename History persistente, de modo que puedes revertir un lote días después, no solo justo después de aplicarlo.

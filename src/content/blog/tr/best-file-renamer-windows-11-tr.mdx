@@ -1,0 +1,141 @@
+---
+title: "Windows 11 için En İyi Toplu Dosya Yeniden Adlandırma Aracı (2026): Ücretsiz Araçlar ve Yapay Zeka"
+description: "Windows 11 ve 10 için altı dosya yeniden adlandırma aracı karşılaştırıldı: File Explorer, PowerRename, Bulk Rename Utility, Advanced Renamer, ReNamer ve Zush. Hangisi dosyalarınıza uygun?"
+date: "2026-09-22"
+slug: "best-file-renamer-windows-11-tr"
+platform: "windows"
+topic: "comparisons"
+tags:
+  - "File Naming"
+  - "Tool Comparisons"
+  - "AI File Renaming"
+tldr: "Kalıp gerektiren işlerde (tarih eklemek, metin değiştirmek, diziyi numaralandırmak) PowerRename ücretsizdir ve çoğu iş için yeterlidir; Bulk Rename Utility ve Advanced Renamer daha derine iner. Ekran görüntüleri, taramalar ve fotoğraflar gibi her birinin farklı, açıklayıcı bir ada ihtiyaç duyduğu dosyalar için, adlandırmadan önce her dosyayı okuyan Zush gibi yapay zeka destekli bir araç kullanın. Zush ayrıca isteğe bağlı yapay zeka ile klasörlere ayırma özelliği de sunar (beta)."
+reviewed: "2026-09-28"
+locale: "tr"
+translationOf: "best-file-renamer-windows-11"
+---
+
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogHighlight from '@/components/blog/BlogHighlight.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Kısa cevap: her dosyaya aynı türden bir değişiklik uygulanacaksa (ön ek, tarih ya da sayı dizisi gibi) **PowerRename** kullanın. Microsoft'tan ücretsizdir ve kalıp gerektiren işlerin çoğunu halleder. Her dosyanın içeriğine göre kendine özgü bir ada ihtiyacı varsa [Zush](/windows) gibi yapay zeka destekli bir araç kullanın.
+
+Geri kalan her şeyi bu ayrım belirler. Kalıp tabanlı araçlar hızlı ve kesindir, ancak yalnızca dosyanın zaten sahip olduğu adı dönüştürür. `IMG_4382.jpg` dosyası `Vacation_001.jpg` olabilir, ama asla `lisbon-tram-at-night.jpg` olmaz.
+
+**Son kontrol: 22 Eylül 2026.** Zush'u geliştiren ekip tarafından yazılmıştır. Diğer araçların ayrıntıları resmi sayfalarından alınmıştır.
+
+## Altı seçeneğe genel bakış
+
+| Araç | En uygun olduğu iş | Dosya içeriğini okur mu | Geri alma | Fiyat |
+|---|---|---|---|---|
+| File Explorer | Birkaç dosya, hızlı sıralama | Hayır | Ctrl+Z, yalnızca son işlem | Yerleşik |
+| PowerRename | Bul ve değiştir, regex, tarihler | Hayır (yalnızca EXIF alanları) | Explorer'da Ctrl+Z | Ücretsiz (PowerToys) |
+| Bulk Rename Utility | Yoğun kalıp işleri, 100 binden fazla dosya | Hayır (EXIF, ID3 alanları) | Geri alma için bir toplu iş dosyası oluşturur | Kişisel kullanım için ücretsiz |
+| Advanced Renamer | Meta verilere ve GPS'e dayalı adlar | Hayır (EXIF, ID3, GPS, video alanları) | Tüm toplu işlemi geri alma | Hafif kişisel kullanım için ücretsiz; kişisel $25, ticari $45 |
+| ReNamer | Kural zincirleri, betik yazma | Hayır (meta etiketleri) | Geri alma desteklenir | Lite sürümü ticari olmayan kullanım için ücretsiz; ücretli Pro |
+| **Zush** | <BlogHighlight>Her dosya için farklı, açıklayıcı bir ad; isteğe bağlı yapay zeka ile klasörlere ayırma (beta)</BlogHighlight> | Evet, yapay zeka ile | Tam Rename History | 50 ücretsiz yeniden adlandırma; $10/ay veya $48 tek seferlik |
+
+## 1. File Explorer: beş dosya için yeterli
+
+Birkaç dosya seçin, **F2** tuşuna basın, bir ad yazın ve Enter'a basın. Windows dosyaları `Trip (1).jpg`, `Trip (2).jpg` şeklinde adlandırır. **Ctrl+Z** işlemi hemen geri alır.
+
+Yaptığı tek şey bu. Önizleme yok, tarih yok, bul ve değiştir yok. Sonucun yalnızca düzenli olması yeterliyse, anlamlı olması gerekmiyorsa kullanın.
+
+## 2. PowerRename: çoğu kişi için en iyi ücretsiz seçenek
+
+[PowerRename](https://learn.microsoft.com/en-us/windows/powertoys/powerrename), Microsoft PowerToys ile birlikte gelir. Dosyaları seçin, sağ tıklayın, **Rename with PowerRename** seçeneğini seçin; canlı önizlemeli bir ara ve değiştir ekranı açılır.
+
+Göründüğünden fazlasını yapabilir:
+
+- Yakalama grupları dahil düzenli ifadeler (`29-03-2020` → `2020-03-29`)
+- Dolgu ve başlangıç değeri olan sayaçlar (`Image_${padding=4}`)
+- `$YYYY-$MM-$DD` gibi dosya oluşturma tarihi değişkenleri
+- `$DATE_TAKEN_YYYY`, `$CAMERA_MODEL` ve GPS koordinatları gibi fotoğraf EXIF alanları
+
+Bir kalıp olarak tarif edebileceğiniz her iş için PowerRename'i seçin. Yapay zeka tarafı için [PowerRename alternatifi](/powerrename-alternative) sayfamıza bakın.
+
+## 3. Bulk Rename Utility: maksimum kontrol
+
+[Bulk Rename Utility](https://www.bulkrenameutility.co.uk/), tüm kalıp seçeneklerini tek bir yoğun pencerede toplar: regex, JavaScript, otomatik numaralandırma, EXIF tarihleri, MP3 etiketleri, CSV tabanlı yeniden adlandırmalar ve zaman damgası değişiklikleri. 100.000'den fazla dosyayı yavaşlamadan işler. Geri alma, değişikliği tersine çeviren bir toplu iş dosyası oluşturarak çalışır.
+
+Kişisel kullanım için ücretsizdir; iş amaçlı kullanım için ticari lisans gerekir. Arayüze alışmak biraz zaman alır. Daha fazlası için [Bulk Rename Utility alternatifleri](/blog/bulk-rename-utility-alternatives) rehberimize göz atın.
+
+## 4. Advanced Renamer: fotoğraf ve müzik meta verileri için en iyisi
+
+[Advanced Renamer](https://www.advancedrenamer.com/), üst üste eklenen yöntemlerle bir ad oluşturur: EXIF, ID3, video özellikleri ve GPS etiketleri (koordinatları şehir adına çevirebilir). Canlı önizleme gösterir ve tüm bir toplu işlemi geri alabilir. macOS üzerinde de çalışır.
+
+Hafif kişisel kullanım için ücretsizdir. Düzenli kullanıcılardan $25'lık kişisel lisans satın alması istenir, iş amaçlı kullanım için ise $45'lık ticari lisans gerekir. İkisi de tek seferliktir. [Advanced Renamer incelememize](/blog/advanced-renamer-alternatives) bakın.
+
+## 5. ReNamer: kurallar ve betikler
+
+[ReNamer](https://www.den4b.com/products/renamer), sıralı bir kural listesi uygular: ekleme, silme, değiştirme, büyük/küçük harf, regex, meta etiketleri ve özel her iş için Pascal Script. Taşınabilirdir ve 25'ten fazla arayüz dilini destekler.
+
+ReNamer Lite ticari olmayan kullanım için ücretsizdir; 5 kural ve 5 ön ayarla sınırlıdır. Pro bu sınırları kaldırır ve ticari kullanıma izin verir.
+
+## 6. Zush: her dosyanın kendi adına ihtiyacı olduğunda
+
+[Zush](/windows) farklı çalışır. Eski adı düzenlemek yerine dosyanın kendisine bakar: bir PDF'in içindeki metne, bir ekran görüntüsünün gösterdiğine, bir fotoğraftaki sahneye, bir Word veya Excel dosyasının içeriğine. Ardından dosyayı anlatan bir ad yazar.
+
+| Önce | Sonra |
+|---|---|
+| `Screenshot 2026-09-18 141203.png` | `github-pull-request-review-comments.png` |
+| `scan_0042.pdf` | `2026-09-12_acme_invoice_1042.pdf` |
+| `Document1.docx` | `q3-marketing-plan-draft.docx` |
+| `IMG_4382.jpg` | `2026-08-30_lisbon_tram_street.jpg` |
+
+Adın biçimi sizin kontrolünüzde kalır. Template'ler ve 145'ten fazla Naming Blocks sırayı (tarih, satıcı, müşteri, başlık), harf düzenini ve ayırıcıları belirler. Her öneriyi uygulamadan önce siz inceleyirsiniz ve Rename History tüm bir toplu işlemi daha sonra geri yükleyebilir. Klasör izleme, Downloads veya tarayıcı klasörüne gelen yeni dosyaları otomatik olarak yeniden adlandırır.
+
+Yapay zeka; Zush Cloud AI üzerinden, kendi API anahtarınızla veya yerel olarak Ollama ya da LM Studio ile çalışabilir. İlk 50 yeniden adlandırma ücretsizdir.
+
+<BlogCTA placement='inline' platform='windows' />
+
+### Yeniden adlandırılan dosyaları klasörlere ayırın
+
+Windows'ta Zush ayrıca **dosyaları yapay zeka ile klasörlere ayırabilir (beta)**. **Auto** gruplamayı seçin ya da “Faturaları şirkete, makbuzları aya göre grupla.” gibi **Folder rules** yazın. Önerilen klasör gruplarını dosya adlarıyla birlikte inceleyin; tek yapmak istediğiniz bir toplu işlemde aynı metin değişikliğini uygulamaksa kalıp tabanlı bir yeniden adlandırıcı yine de yeterlidir.
+
+Bir **Destination folder** seçin ya da kaynak klasörü kök olarak bırakın. Orada zaten bulunan uygun klasörleri tercih etmek için **Reuse existing folders** seçeneğini etkinleştirin; hiçbiri uymadığında Zush yeni bir klasör oluşturabilir. Manuel bir toplu işlemde uygulamadan önce hem önerilen adları hem de klasörleri inceleyin. Yerinde yeniden adlandırmak için ayırmayı kapalı tutun ve özgün hedefi koruyun.
+
+Ayırma ayarlarını bir **Template** içinde kaydedin ve izlenen klasörün doğrudan içine gelen yeni dosyalar için **Monitor** özelliğine atayın. Bu, daha önce işlenmiş dosyaları yeniden düzenlemez. Template'i önce manuel bir toplu işlemde test edin. Kurulum ve izleme kapsamı için [klasör ayırma rehberine](/docs/folder-sorting) bakın.
+
+## Hangi yeniden adlandırma aracını kullanmalısınız?
+
+- Her dosyaya aynı değişiklik (ön ek, tarih, sayı): **PowerRename**.
+- Çok büyük klasörlerde karmaşık kalıplar: **Bulk Rename Utility**.
+- Fotoğraf, müzik veya GPS meta verilerinden adlar: **Advanced Renamer**.
+- Gerçek adlara ihtiyaç duyan ekran görüntüleri, taramalar, indirilenler ve fotoğraflar: **Zush**.
+
+Birçok kişi her iki türü de kullanır. Hızlı mekanik düzeltmeler için PowerRename, şu anda ne olduğunu görmek için her dosyayı açmak zorunda kaldığınız klasörler için Zush.
+
+<BlogProductIntro
+  title="Ne olduklarını görmek için dosyaları açmaktan bıktınız mı?"
+  description="Zush, Windows bilgisayarınızdaki her dosyayı okur ve net, aranabilir bir ad önerir. Toplu işlemi inceleyin, uygulayın, istediğiniz zaman geri alın."
+  links={[
+    { href: '/windows', label: 'Windows için Zush' },
+    { href: '/batch-rename-files', label: 'Yapay zeka ile toplu yeniden adlandırma' },
+    { href: '/blog/batch-rename-files-windows-11', label: 'Windows 11 içinde toplu yeniden adlandırma' },
+    { href: '/blog/best-ai-file-renamer-tools-windows-compared', label: 'Windows için yapay zeka destekli yeniden adlandırma araçları' },
+  ]}
+/>
+
+## SSS
+
+### Zush dosyaları yeniden adlandırmanın yanı sıra klasörlere de ayırabilir mi?
+
+Evet. İsteğe bağlı yapay zeka ile klasörlere ayırma özelliği Mac ve Windows'ta betadadır. Auto'yu seçin ya da Folder rules yazın, hedefi seçin ve manuel bir toplu işlemde hem adları hem de grupları inceleyin. Ayırma özelliği açık bir Template, izlenen bir klasörün doğrudan içine gelen yeni dosyaları da işleyebilir; daha önce işlenmiş dosyaları yeniden düzenlemez. Yalnızca adlandırma için ayırmayı kapalı tutun ve özgün hedefi koruyun.
+
+### Windows 11 için en iyi ücretsiz dosya yeniden adlandırma aracı hangisi?
+
+Microsoft PowerToys'un bir parçası olan PowerRename. Ücretsizdir, her değişikliği önizler, regex ve tarih değişkenlerini destekler ve Ctrl+Z ile geri alınır. Daha ağır kişisel işler için ücretsiz alternatif Bulk Rename Utility'dir.
+
+### Windows 11'de yerleşik bir toplu yeniden adlandırma var mı?
+
+Evet, ama basit bir tane. File Explorer'da dosyaları seçip F2'ye basarak hepsine parantez içinde numaralar eklenmiş tek bir ad verebilirsiniz. Bul ve değiştir veya tarihler için PowerToys'u kurun ve PowerRename'i kullanın.
+
+### Bir dosya yeniden adlandırma aracı dosyalarımın içindekini okuyabilir mi?
+
+Kalıp tabanlı araçlar okuyamaz; yalnızca mevcut adı ve EXIF veya ID3 gibi meta veri alanlarını okurlar. Zush gibi yapay zeka destekli araçlar içeriğin kendisini (metin, görseller, video kareleri) okur ve açıklayıcı yeni bir ad yazar.
+
+### En güvenli dosya yeniden adlandırma aracı hangisi?
+
+Önizlemesi ve toplu geri alma özelliği olan herhangi bir araç. PowerRename, Advanced Renamer ve Zush sonuçları uygulamadan önce gösterir. Zush ayrıca kalıcı bir Rename History tutar; böylece bir toplu işlemi yalnızca hemen sonrasında değil, günler sonra da geri alabilirsiniz.

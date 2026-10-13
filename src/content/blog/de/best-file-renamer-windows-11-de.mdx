@@ -1,0 +1,141 @@
+---
+title: "Bester Datei-Umbenenner für Windows 11 (2026): Kostenlose Tools vs. KI"
+description: "Sechs Datei-Umbenenner für Windows 11 und 10 im Vergleich: File Explorer, PowerRename, Bulk Rename Utility, Advanced Renamer, ReNamer und Zush. Welcher passt zu Ihren Dateien?"
+date: "2026-09-22"
+slug: "best-file-renamer-windows-11-de"
+platform: "windows"
+topic: "comparisons"
+tags:
+  - "File Naming"
+  - "Tool Comparisons"
+  - "AI File Renaming"
+tldr: "Für Musteraufgaben (Datum ergänzen, Text ersetzen, Reihe nummerieren) reicht PowerRename kostenlos aus; Bulk Rename Utility und Advanced Renamer gehen tiefer. Für Dateien, die jeweils einen eigenen, beschreibenden Namen brauchen, etwa Screenshots, Scans und Fotos, eignet sich ein KI-Umbenenner wie Zush, der jede Datei liest, bevor er sie benennt. Zush bietet außerdem optional eine KI-Ordnersortierung (Beta)."
+reviewed: "2026-09-28"
+locale: "de"
+translationOf: "best-file-renamer-windows-11"
+---
+
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogHighlight from '@/components/blog/BlogHighlight.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+Kurze Antwort: Wenn jede Datei die gleiche Art von Änderung bekommt, etwa ein Präfix, ein Datum oder eine Nummernfolge, nutzen Sie **PowerRename**. Das Tool ist kostenlos von Microsoft und erledigt die meisten Musteraufgaben. Wenn jede Datei einen eigenen Namen braucht, der sich aus ihrem Inhalt ergibt, nehmen Sie einen KI-Umbenenner wie [Zush](/windows).
+
+Diese Unterscheidung entscheidet alles Weitere. Mustertools sind schnell und präzise, verändern aber nur den Namen, den eine Datei schon hat. Aus `IMG_4382.jpg` kann `Vacation_001.jpg` werden, aber nie `lisbon-tram-at-night.jpg`.
+
+**Zuletzt geprüft: 22. September 2026.** Verfasst vom Entwickler von Zush. Die Angaben zu den anderen Tools stammen von deren offiziellen Seiten.
+
+## Die sechs Optionen im Überblick
+
+| Tool | Am besten für | Liest Dateiinhalt | Rückgängig | Preis |
+|---|---|---|---|---|
+| File Explorer | Ein paar Dateien, schnelle Nummerierung | Nein | Ctrl+Z, letzte Aktion | Integriert |
+| PowerRename | Suchen und Ersetzen, Regex, Datumsangaben | Nein (nur EXIF-Felder) | Ctrl+Z im Explorer | Kostenlos (PowerToys) |
+| Bulk Rename Utility | Aufwendige Musteraufgaben, über 100.000 Dateien | Nein (EXIF-, ID3-Felder) | Erzeugt eine Batch-Datei zum Rückgängigmachen | Kostenlos für private Nutzung |
+| Advanced Renamer | Namen auf Basis von Metadaten und GPS | Nein (EXIF-, ID3-, GPS-, Videofelder) | Vollständiges Rückgängigmachen ganzer Batches | Kostenlos bei leichter privater Nutzung; $25 privat, $45 gewerblich |
+| ReNamer | Regelketten, Skripting | Nein (Meta-Tags) | Rückgängigmachen wird unterstützt | Lite kostenlos für nicht-kommerzielle Nutzung; kostenpflichtige Pro |
+| **Zush** | <BlogHighlight>Ein eigener, beschreibender Name für jede Datei; optionale KI-Ordnersortierung (Beta)</BlogHighlight> | Ja, mit KI | Vollständiger Rename History | 50 kostenlose Umbenennungen; $10/Monat oder $48 einmalig |
+
+## 1. File Explorer: ausreichend für fünf Dateien
+
+Markieren Sie mehrere Dateien, drücken Sie **F2**, geben Sie einen Namen ein und drücken Sie Enter. Windows benennt sie dann `Trip (1).jpg`, `Trip (2).jpg` und so weiter. Mit **Ctrl+Z** machen Sie das sofort rückgängig.
+
+Mehr kann er nicht. Keine Vorschau, keine Datumsangaben, kein Suchen und Ersetzen. Nutzen Sie ihn, wenn das Ergebnis nur ordentlich, aber nicht aussagekräftig sein muss.
+
+## 2. PowerRename: die beste kostenlose Wahl für die meisten
+
+[PowerRename](https://learn.microsoft.com/en-us/windows/powertoys/powerrename) gehört zu Microsoft PowerToys. Dateien markieren, Rechtsklick, **Rename with PowerRename** wählen, und schon haben Sie Suchen und Ersetzen mit Live-Vorschau.
+
+Es kann mehr, als man ihm ansieht:
+
+- Reguläre Ausdrücke, einschließlich Capture-Gruppen (`29-03-2020` → `2020-03-29`)
+- Zähler mit Auffüllung und Startwerten (`Image_${padding=4}`)
+- Variablen für das Erstellungsdatum der Datei wie `$YYYY-$MM-$DD`
+- EXIF-Felder von Fotos wie `$DATE_TAKEN_YYYY`, `$CAMERA_MODEL` und GPS-Koordinaten
+
+Wählen Sie PowerRename für jede Aufgabe, die sich als Muster beschreiben lässt. Zur KI-Seite lesen Sie unsere Seite zur [PowerRename-Alternative](/powerrename-alternative).
+
+## 3. Bulk Rename Utility: maximale Kontrolle
+
+[Bulk Rename Utility](https://www.bulkrenameutility.co.uk/) packt alle Musteroptionen in ein dichtes Fenster: Regex, JavaScript, automatische Nummerierung, EXIF-Datumsangaben, MP3-Tags, CSV-gesteuerte Umbenennungen und Änderungen von Zeitstempeln. Es verarbeitet über 100.000 Dateien, ohne langsamer zu werden. Rückgängigmachen funktioniert über eine erzeugte Batch-Datei, die die Änderung umkehrt.
+
+Für private Nutzung ist es kostenlos; für geschäftliche Nutzung braucht es eine kommerzielle Lizenz. An die Oberfläche muss man sich etwas gewöhnen. Mehr dazu in unserem Leitfaden zu den [Alternativen zu Bulk Rename Utility](/blog/bulk-rename-utility-alternatives).
+
+## 4. Advanced Renamer: am besten für Foto- und Musik-Metadaten
+
+[Advanced Renamer](https://www.advancedrenamer.com/) baut einen Namen aus gestapelten Methoden auf: Tags aus EXIF, ID3, Videoeigenschaften und GPS (Koordinaten lassen sich in einen Städtenamen umwandeln). Es zeigt eine Live-Vorschau und kann einen ganzen Batch rückgängig machen. Es läuft auch unter macOS.
+
+Für leichte private Nutzung ist es kostenlos. Regelmäßige Nutzer sollen eine private Lizenz für $25 kaufen, für den beruflichen Einsatz ist eine gewerbliche Lizenz für $45 nötig. Beide sind einmalige Zahlungen. Lesen Sie unseren [Test zu Advanced Renamer](/blog/advanced-renamer-alternatives).
+
+## 5. ReNamer: Regeln und Skripte
+
+[ReNamer](https://www.den4b.com/products/renamer) wendet eine geordnete Liste von Regeln an: Einfügen, Löschen, Ersetzen, Groß-/Kleinschreibung, Regex, Meta-Tags und Pascal Script für alles Individuelle. Es ist portabel und unterstützt über 25 Oberflächensprachen.
+
+ReNamer Lite ist für nicht-kommerzielle Nutzung kostenlos und auf 5 Regeln und 5 Voreinstellungen begrenzt. Pro hebt diese Grenzen auf und erlaubt die kommerzielle Nutzung.
+
+## 6. Zush: wenn jede Datei einen eigenen Namen braucht
+
+[Zush](/windows) arbeitet anders. Statt den alten Namen zu bearbeiten, schaut es sich die Datei an: den Text in einem PDF, was ein Screenshot zeigt, die Szene auf einem Foto, den Inhalt einer Word- oder Excel-Datei. Dann schreibt es einen Namen, der sie beschreibt.
+
+| Vorher | Nachher |
+|---|---|
+| `Screenshot 2026-09-18 141203.png` | `github-pull-request-review-comments.png` |
+| `scan_0042.pdf` | `2026-09-12_acme_invoice_1042.pdf` |
+| `Document1.docx` | `q3-marketing-plan-draft.docx` |
+| `IMG_4382.jpg` | `2026-08-30_lisbon_tram_street.jpg` |
+
+Die Form behalten Sie selbst in der Hand. Templates und über 145 Naming Blocks legen die Reihenfolge (Datum, Anbieter, Kunde, Titel), die Groß-/Kleinschreibung und die Trennzeichen fest. Sie prüfen jeden Vorschlag, bevor Sie ihn anwenden, und Rename History kann einen ganzen Batch später wiederherstellen. Die Ordnerüberwachung benennt neue Dateien in Downloads oder in einem Scanner-Ordner automatisch um.
+
+Die KI kann über Zush Cloud AI, Ihren eigenen API-Schlüssel oder lokal mit Ollama oder LM Studio laufen. Die ersten 50 Umbenennungen sind kostenlos.
+
+<BlogCTA placement='inline' platform='windows' />
+
+### Die umbenannten Dateien in Ordner sortieren
+
+Unter Windows kann Zush Dateien außerdem **mit KI in Ordner sortieren (Beta)**. Wählen Sie die Gruppierung **Auto** oder schreiben Sie **Folder rules** wie „Rechnungen nach Firma und Belege nach Monat gruppieren.“ Prüfen Sie die vorgeschlagenen Ordnergruppen zusammen mit den Dateinamen; ein Muster-Umbenenner genügt weiterhin, wenn Sie nur dieselbe Textänderung für einen ganzen Batch brauchen.
+
+Wählen Sie einen **Destination folder** oder behalten Sie den Quellordner als Wurzel. Aktivieren Sie **Reuse existing folders**, damit bereits vorhandene passende Ordner bevorzugt werden; Zush kann einen neuen anlegen, wenn nichts passt. Prüfen Sie in einem manuellen Batch sowohl die vorgeschlagenen Namen als auch die Ordner, bevor Sie sie anwenden. Um an Ort und Stelle umzubenennen, lassen Sie die Sortierung aus und behalten Sie das ursprüngliche Ziel bei.
+
+Speichern Sie die Sortiereinstellungen in einem **Template** und weisen Sie es **Monitor** für neue Dateien direkt im überwachten Ordner zu. Bereits verarbeitete Dateien werden dadurch nicht neu organisiert. Testen Sie das Template zuerst in einem manuellen Batch. Einrichtung und Überwachungsumfang finden Sie in der [Anleitung zur Ordnersortierung](/docs/folder-sorting).
+
+## Welchen Umbenenner sollten Sie verwenden?
+
+- Dieselbe Änderung für jede Datei (Präfix, Datum, Nummer): **PowerRename**.
+- Komplexe Muster in riesigen Ordnern: **Bulk Rename Utility**.
+- Namen aus Foto-, Musik- oder GPS-Metadaten: **Advanced Renamer**.
+- Screenshots, Scans, Downloads und Fotos, die echte Namen brauchen: **Zush**.
+
+Viele behalten beide Arten. PowerRename für schnelle mechanische Korrekturen, Zush für die Ordner, in denen Sie derzeit jede Datei öffnen, um zu sehen, was sie ist.
+
+<BlogProductIntro
+  title="Genug davon, Dateien nur zu öffnen, um zu sehen, was darin steckt?"
+  description="Zush liest jede Datei auf Ihrem Windows-PC und schlägt einen klaren, durchsuchbaren Namen vor. Prüfen Sie den Batch, wenden Sie ihn an und machen Sie ihn jederzeit rückgängig."
+  links={[
+    { href: '/windows', label: 'Zush für Windows' },
+    { href: '/batch-rename-files', label: 'Dateien per KI im Batch umbenennen' },
+    { href: '/blog/batch-rename-files-windows-11', label: 'Batch-Umbenennung in Windows 11' },
+    { href: '/blog/best-ai-file-renamer-tools-windows-compared', label: 'KI-Umbenenner für Windows' },
+  ]}
+/>
+
+## FAQ
+
+### Kann Zush Dateien nicht nur umbenennen, sondern auch in Ordner sortieren?
+
+Ja. Die optionale KI-Ordnersortierung befindet sich auf Mac und Windows in der Beta. Wählen Sie Auto oder schreiben Sie Folder rules, wählen Sie das Ziel und prüfen Sie in einem manuellen Batch sowohl Namen als auch Gruppen. Ein Template mit aktivierter Sortierung kann auch neue Dateien direkt in einem überwachten Ordner verarbeiten; bereits verarbeitete Dateien werden dadurch nicht neu organisiert. Lassen Sie die Sortierung aus und behalten Sie das ursprüngliche Ziel bei, wenn Sie nur Namen vergeben wollen.
+
+### Was ist der beste kostenlose Datei-Umbenenner für Windows 11?
+
+PowerRename, Teil von Microsoft PowerToys. Es ist kostenlos, zeigt jede Änderung vorab an, unterstützt Regex und Datumsvariablen und lässt sich mit Ctrl+Z rückgängig machen. Bulk Rename Utility ist die kostenlose Alternative für aufwendigere private Aufgaben.
+
+### Hat Windows 11 eine integrierte Mehrfachumbenennung?
+
+Ja, aber eine einfache. Markieren Sie Dateien im File Explorer und drücken Sie F2, um ihnen einen gemeinsamen Namen mit Nummern in Klammern zu geben. Für Suchen und Ersetzen oder Datumsangaben installieren Sie PowerToys und nutzen PowerRename.
+
+### Kann ein Datei-Umbenenner lesen, was in meinen Dateien steht?
+
+Mustertools können das nicht; sie lesen nur den vorhandenen Namen und Metadatenfelder wie EXIF oder ID3. KI-Umbenenner wie Zush lesen den Inhalt selbst (Text, Bilder, Videobilder) und schreiben einen neuen, beschreibenden Namen.
+
+### Welcher Datei-Umbenenner ist am sichersten?
+
+Jedes Tool mit Vorschau und Rückgängigmachen für ganze Batches. PowerRename, Advanced Renamer und Zush zeigen die Ergebnisse vor dem Anwenden an. Zush führt außerdem einen dauerhaften Rename History, sodass Sie einen Batch noch Tage später zurücksetzen können, nicht nur unmittelbar danach.

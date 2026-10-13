@@ -1,0 +1,134 @@
+---
+title: "Windowsで写真を撮影日時でリネームする方法(4つの方法)"
+description: "PowerRename、Bulk Rename Utility、ExifTool、Zush を使って、Windows 11/10 で写真を撮影日時の名前にリネームする方法を、安全なパターンとともに手順ごとに解説します。"
+date: "2026-09-22"
+slug: "rename-photos-by-date-windows-ja"
+platform: "windows"
+topic: "photos"
+tags:
+  - "Photos"
+  - "File Naming"
+  - "File Explorer"
+tldr: "使うのはファイルの作成日時ではなく、写真の EXIF 撮影日時です。作成日時はファイルをコピーすると変わってしまいます。PowerRename なら $DATE_TAKEN 変数を使って、無料で名前の先頭に日付を付けられます。最も正確なのは ExifTool です。Zush は撮影日に加えて写真の内容の説明も付けられ、2026-08-30_lisbon_tram_street.jpg のような名前になります。"
+reviewed: "2026-09-22"
+locale: "ja"
+translationOf: "rename-photos-by-date-windows"
+---
+
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+結論から言うと、無料で済ませるなら Microsoft PowerToys の **PowerRename** を使う方法です。写真を選択して PowerRename を開き、メタデータの取得元を EXIF に切り替え、ファイル名の前に `$DATE_TAKEN_YYYY-$DATE_TAKEN_MM-$DATE_TAKEN_DD` を付けます。日付に加えて写真に何が写っているかも名前に入れたい場合は、[Zush](/windows) を使ってください。
+
+どの方法を使う場合でも、リネームの基準は作成日時ではなく**撮影日時**にしてください。Windows はファイルを別のドライブにコピーすると「作成日時」をリセットするため、多くの場合、それは写真を撮った日ではなくバックアップした日になります。撮影日時は写真の内部(EXIF)に保存されているので、コピーしても変わりません。
+
+## どの日付形式を使うか
+
+日付を先頭に置き、年-月-日の順で書きます。
+
+- `2026-08-30_lisbon_trip_001.jpg` は File Explorer で正しい順に並びます。
+- `30-08-2026_lisbon.jpg` は日が先頭に来るため、正しく並びません。
+
+連写をする場合は、同じ日の2枚が同じ名前にならないよう、時刻(`2026-08-30_143512`)も加えてください。
+
+## 4つの方法
+
+| 方法 | 費用 | 説明の追加 | 元に戻す |
+|---|---|---|---|
+| PowerRename | 無料 | なし | 実行直後に Ctrl+Z |
+| Bulk Rename Utility | 個人利用は無料 | なし | 元に戻すバッチファイル |
+| ExifTool | 無料 | なし | 不可 |
+| Zush | 50回まで無料、その後は月額$10または$48 | あり(写真の内容から生成) | Rename History で完全に復元 |
+
+## 1. PowerRename(無料・Microsoft製)
+
+1. Microsoft Store から [Microsoft PowerToys](https://learn.microsoft.com/en-us/windows/powertoys/powerrename) をインストールし、PowerRename が有効になっていることを確認します。
+2. File Explorer で写真を選択して右クリックし、**Rename with PowerRename** を選びます(Windows 11 では **Show more options** の中にあります)。
+3. **Use regular expressions** をオンにし、メタデータの取得元を **EXIF/XMP** に設定します。
+4. **Search for** に `^` と入力します。これは名前の先頭に一致します。
+5. **Replace with** に `$DATE_TAKEN_YYYY-$DATE_TAKEN_MM-$DATE_TAKEN_DD_` と入力します。
+6. プレビューを確認し、**Apply** をクリックします。
+
+`IMG_4382.jpg` は `2026-08-30_IMG_4382.jpg` になります。元の名前を末尾に残すのは意図的で、同じ名前の写真が2枚できないようにするためです。
+
+時刻も加えたい場合は、`$DATE_TAKEN_YYYY-$DATE_TAKEN_MM-$DATE_TAKEN_DD_$DATE_TAKEN_HH$DATE_TAKEN_mm$DATE_TAKEN_SS_` を使います。
+
+## 2. Bulk Rename Utility
+
+[Bulk Rename Utility](https://www.bulkrenameutility.co.uk/) も EXIF データを読み取れ、形式をより細かく制御できます。個人利用は無料です。
+
+1. Bulk Rename Utility でフォルダーを開き、写真を選択します。
+2. **Auto Date** パネルで **Prefix** を選び、種類を **EXIF Date Picture Taken**(お使いのバージョンに同等の EXIF オプションがある場合はそちら)に設定します。
+3. `Y-M-D` のような形式と区切り文字を選びます。
+4. **New Name** 列を確認してから、**Rename** をクリックします。
+
+リネームを元に戻すバッチファイルを生成することもできます。
+
+## 3. ExifTool(正確・コマンドライン)
+
+[ExifTool](https://exiftool.org/) は、写真家がメタデータの扱いに信頼を置いているツールです。インストール後、写真のフォルダーでターミナルを開き、次を実行します。
+
+```bat
+exiftool "-FileName<DateTimeOriginal" -d "%Y-%m-%d_%H%M%S%%-c.%%e" .
+```
+
+すべての写真が `2026-08-30_143512.jpg` のように撮影日時の名前に変わります。`%%-c` の部分は、同じ秒に撮影された写真が2枚ある場合に `-1`、`-2` を付け足します。撮影日時のない写真は変更されません。
+
+まずフォルダーのコピーでテストしてください。元に戻す機能はありません。
+
+## 4. Zush:日付+写真の内容
+
+日付が分かるのは「いつ」だけです。その日の400枚のうち、どれが路面電車で、どれがビーチで、どれが夕食の写真なのかまでは分かりません。[Windows 版 Zush](/windows) は撮影日を読み取り、各画像の内容も見て、その2つを組み合わせます。
+
+| 変更前 | 変更後 |
+|---|---|
+| `IMG_4382.jpg` | `2026-08-30_lisbon_tram_street.jpg` |
+| `PXL_20260712_183455.jpg` | `2026-07-12_dog_running_on_beach.jpg` |
+| `DSC01877.ARW` | `2026-06-14_wedding_first_dance.ARW` |
+
+設定方法:
+
+1. [Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X) から Zush をインストールし、写真のフォルダーをドラッグして追加します。
+2. **Photographer Shoots** Template を選ぶか、Naming Blocks から `{Capture Date}_{Event}_{Scene}` のようなパターンを作ります。
+3. 日付の形式と区切り文字を選びます。
+4. 名前を確認し、必要なものはダブルクリックで編集してから、**Rename** をクリックします。
+
+Zush は JPG、PNG、iPhone の HEIC、そして CR3、NEF、ARW、DNG などの RAW ファイルに対応しています。写真に撮影日がない場合は、推測せず Capture Date ブロックを空のままにします。Rename History を使えば、いつでも元の名前に戻せます。
+
+<BlogCTA placement='inline' platform='windows' />
+
+## 大量のライブラリをリネームする前に
+
+- **まずコピーで試す。** 2万枚に実行する前に、どの方法でもまず20枚で試してください。
+- **日付が欠けていないか確認する。** スクリーンショット、ダウンロードした画像、編集後に書き出した画像には、EXIF の撮影日時がないことがよくあります。File Explorer の詳細表示で **Date taken** 列を基準に並べ替えると、空欄を見つけられます。
+- **RAW と JPEG のペアはまとめて扱う。** カメラが両方を保存する場合は、`DSC01877.ARW` と `DSC01877.JPG` に同じ名前が付くよう、同じバッチでリネームしてください。
+- **スマートフォンのバックアップには手を付けない。** OneDrive や Google フォトなどのアプリはファイルを名前で追跡しています。確信がない限り、同期フォルダー自体ではなくコピーをリネームしてください。
+
+<BlogProductIntro
+  title="すべての写真名に日付と説明を入れたいですか?"
+  description="Zush は、Windows 上の JPG、HEIC、RAW ファイルについて、各写真の撮影日と写っている内容を組み合わせます。すべての名前をプレビューでき、どのバッチも元に戻せます。"
+  links={[
+    { href: '/rename-photos-with-ai', label: 'AIで写真をリネーム' },
+    { href: '/windows', label: 'Windows 版 Zush' },
+    { href: '/blog/best-photo-organizer-windows-11', label: 'Windows 向け写真整理ツール' },
+    { href: '/for-photographers', label: '写真家向け' },
+  ]}
+/>
+
+## FAQ
+
+### Windows 11 で写真を撮影日時でリネームするには?
+
+Microsoft PowerToys をインストールし、写真を選択して PowerRename を開きます。メタデータの取得元を EXIF/XMP に設定し、正規表現をオンにして `^` を検索し、`$DATE_TAKEN_YYYY-$DATE_TAKEN_MM-$DATE_TAKEN_DD_` に置換します。これで、すべての名前の先頭に撮影日時が付きます。
+
+### 写真の作成日時が間違っているのはなぜですか?
+
+Windows は、そのドライブ上でファイルが作成されたとき(コピーしたときも含む)に「作成日時」を設定します。代わりに、写真の EXIF データにある「撮影日時(Date taken)」を使ってください。これはカメラが設定するもので、ファイルをコピーしても変わりません。
+
+### File Explorer だけで写真を日付で自動的にリネームできますか?
+
+できません。File Explorer は Date taken で並べ替えやグループ化はできますが、その日付をファイル名に入れることはできません。PowerRename、Bulk Rename Utility、ExifTool、Zush のいずれかを使ってください。
+
+### 撮影日時がない写真がある場合は?
+
+スクリーンショットやダウンロードした画像には、撮影日時がないことがよくあります。ExifTool と Zush は、推測せず日付を空のままにします。PowerRename の場合は、プレビューを確認してそれらのファイルを除外するか、更新日時を基準に別途リネームしてください。

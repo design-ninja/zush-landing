@@ -1,0 +1,134 @@
+---
+title: "如何在 Windows 上按拍摄日期重命名照片（4 种方法）"
+description: "在 Windows 11 和 10 上，使用 PowerRename、Bulk Rename Utility、ExifTool 或 Zush，按照片的拍摄日期重命名照片。附分步说明和安全的命名模式。"
+date: "2026-09-22"
+slug: "rename-photos-by-date-windows-zh-cn"
+platform: "windows"
+topic: "photos"
+tags:
+  - "Photos"
+  - "File Naming"
+  - "File Explorer"
+tldr: "请使用照片的 EXIF 拍摄日期，而不是文件的创建日期，因为复制文件时创建日期会改变。PowerRename 可以免费用 $DATE_TAKEN 变量在文件名前加上日期。ExifTool 最为精确。Zush 会加上拍摄日期，并描述每张照片的内容，例如 2026-08-30_lisbon_tram_street.jpg。"
+reviewed: "2026-09-22"
+locale: "zh-cn"
+translationOf: "rename-photos-by-date-windows"
+---
+
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+简短回答：免费的方法是使用 Microsoft PowerToys 中的 **PowerRename**。选中照片，打开 PowerRename，将元数据来源切换为 EXIF，然后把 `$DATE_TAKEN_YYYY-$DATE_TAKEN_MM-$DATE_TAKEN_DD` 放在文件名前面。如果你想要日期加上画面内容的描述，请使用 [Zush](/windows)。
+
+无论使用哪种工具，都要按**拍摄日期**重命名，而不是按创建日期。把文件复制到新硬盘时，Windows 会重置“创建日期”，所以它往往是你备份的那一天，而不是你拍照的那一天。拍摄日期存储在照片内部（EXIF），不会改变。
+
+## 该使用哪种日期格式
+
+把日期放在最前面，并按年-月-日书写：
+
+- `2026-08-30_lisbon_trip_001.jpg` 在 File Explorer 中排序正确。
+- `30-08-2026_lisbon.jpg` 则不行，因为它会先按日排序。
+
+如果你经常连拍，请加上时间（`2026-08-30_143512`），这样同一天的两张照片就不会重名。
+
+## 四种方法
+
+| 方法 | 费用 | 是否添加描述 | 撤销 |
+|---|---|---|---|
+| PowerRename | 免费 | 否 | 操作后立即按 Ctrl+Z |
+| Bulk Rename Utility | 个人使用免费 | 否 | 撤销批处理文件 |
+| ExifTool | 免费 | 否 | 无法撤销 |
+| Zush | 50 次免费重命名，之后 $10/月 或 $48 | 是，根据照片内容生成 | 完整的 Rename History |
+
+## 1. PowerRename（免费，由 Microsoft 开发）
+
+1. 从 Microsoft Store 安装 [Microsoft PowerToys](https://learn.microsoft.com/en-us/windows/powertoys/powerrename)，并确保已启用 PowerRename。
+2. 在 File Explorer 中选中照片，右键单击，然后选择 **Rename with PowerRename**（在 Windows 11 中位于 **Show more options** 下）。
+3. 打开 **Use regular expressions**，并将元数据来源设置为 **EXIF/XMP**。
+4. 在 **Search for** 中输入 `^`。它匹配文件名的开头。
+5. 在 **Replace with** 中输入 `$DATE_TAKEN_YYYY-$DATE_TAKEN_MM-$DATE_TAKEN_DD_`。
+6. 检查预览，然后点击 **Apply**。
+
+`IMG_4382.jpg` 会变成 `2026-08-30_IMG_4382.jpg`。在末尾保留原文件名是有意为之：这样可以确保没有两张照片最终得到相同的名称。
+
+如果还想加上时间，请使用 `$DATE_TAKEN_YYYY-$DATE_TAKEN_MM-$DATE_TAKEN_DD_$DATE_TAKEN_HH$DATE_TAKEN_mm$DATE_TAKEN_SS_`。
+
+## 2. Bulk Rename Utility
+
+[Bulk Rename Utility](https://www.bulkrenameutility.co.uk/) 同样可以读取 EXIF 数据，并让你对格式有更多控制。个人使用免费。
+
+1. 在 Bulk Rename Utility 中打开文件夹并选中照片。
+2. 在 **Auto Date** 面板中选择 **Prefix**，并将类型设置为 **EXIF Date Picture Taken**（或你所用版本中等效的 EXIF 选项）。
+3. 选择类似 `Y-M-D` 的格式和分隔符。
+4. 检查 **New Name** 列，然后点击 **Rename**。
+
+它还可以生成一个批处理文件，用来撤销这次重命名。
+
+## 3. ExifTool（精确，命令行）
+
+[ExifTool](https://exiftool.org/) 是摄影师信赖的元数据工具。安装后，在照片文件夹中打开 Terminal 并运行：
+
+```bat
+exiftool "-FileName<DateTimeOriginal" -d "%Y-%m-%d_%H%M%S%%-c.%%e" .
+```
+
+这会把每张照片重命名为其拍摄日期和时间，例如 `2026-08-30_143512.jpg`。`%%-c` 部分会在两张照片的时间精确到同一秒时添加 `-1`、`-2`。没有拍摄日期的照片会被跳过。
+
+请先在文件夹的副本上测试。该操作无法撤销。
+
+## 4. Zush：日期加照片内容
+
+日期只能告诉你“什么时候”。它无法告诉你当天的 400 张照片中，哪一张拍的是电车、海滩或晚餐。[适用于 Windows 的 Zush](/windows) 会读取拍摄日期并分析每张图片，然后把两者结合起来：
+
+| 之前 | 之后 |
+|---|---|
+| `IMG_4382.jpg` | `2026-08-30_lisbon_tram_street.jpg` |
+| `PXL_20260712_183455.jpg` | `2026-07-12_dog_running_on_beach.jpg` |
+| `DSC01877.ARW` | `2026-06-14_wedding_first_dance.ARW` |
+
+设置方法：
+
+1. 从 [Microsoft Store](https://apps.microsoft.com/detail/9ND4WVZSDQ3X) 安装 Zush，然后把照片文件夹拖进去。
+2. 选择 **Photographer Shoots** Template，或者用 Naming Blocks 构建类似 `{Capture Date}_{Event}_{Scene}` 的模式。
+3. 选择日期格式和分隔符。
+4. 检查名称，双击即可编辑其中任何一个，然后点击 **Rename**。
+
+Zush 可以读取 JPG、PNG、来自 iPhone 的 HEIC，以及 CR3、NEF、ARW 和 DNG 等 RAW 文件。如果某张照片没有拍摄日期，Capture Date 块会保持为空，而不是猜测。Rename History 可以随时恢复原始文件名。
+
+<BlogCTA placement='inline' platform='windows' />
+
+## 重命名大型照片库之前
+
+- **先在副本上操作。** 在对 20,000 张照片运行之前，先用 20 张照片试一试任何一种方法。
+- **检查缺失的日期。** 截图、下载的图片和编辑后导出的图片往往没有 EXIF 日期。在 File Explorer 的详细信息视图中按 **Date taken**（拍摄日期）列排序，可以找出空白项。
+- **让 RAW 和 JPEG 配对保持一致。** 如果你的相机同时保存两种格式，请在同一批次中重命名，这样 `DSC01877.ARW` 和 `DSC01877.JPG` 会得到匹配的名称。
+- **不要动手机备份。** OneDrive 或 Google Photos 等应用按文件名跟踪文件；除非你有把握，否则请重命名副本，而不是同步文件夹本身。
+
+<BlogProductIntro
+  title="想让每张照片的名称都包含日期和描述吗？"
+  description="Zush 会把每张照片的拍摄日期与画面内容结合起来，支持 Windows 上的 JPG、HEIC 和 RAW 文件。预览每个名称，可撤销任意一批。"
+  links={[
+    { href: '/rename-photos-with-ai', label: '用 AI 重命名照片' },
+    { href: '/windows', label: '适用于 Windows 的 Zush' },
+    { href: '/blog/best-photo-organizer-windows-11', label: 'Windows 照片整理工具' },
+    { href: '/for-photographers', label: '面向摄影师' },
+  ]}
+/>
+
+## 常见问题
+
+### 如何在 Windows 11 中按拍摄日期重命名照片？
+
+安装 Microsoft PowerToys，选中照片，打开 PowerRename，将元数据来源设置为 EXIF/XMP，在启用正则表达式的情况下搜索 `^`，并替换为 `$DATE_TAKEN_YYYY-$DATE_TAKEN_MM-$DATE_TAKEN_DD_`。这样会把拍摄日期添加到每个文件名的前面。
+
+### 为什么我的照片创建日期不对？
+
+当文件在该硬盘上创建时（包括你复制它的时候），Windows 会设置“创建日期”。请改用照片 EXIF 数据中的“拍摄日期”；它由相机设置，复制文件时不会改变。
+
+### File Explorer 能自动按日期重命名照片吗？
+
+不能。File Explorer 可以按拍摄日期排序和分组，但无法把该日期放进文件名。请使用 PowerRename、Bulk Rename Utility、ExifTool 或 Zush。
+
+### 如果有些照片没有拍摄日期怎么办？
+
+截图和下载的图片通常没有拍摄日期。ExifTool 和 Zush 会让日期保持为空，而不是猜测；使用 PowerRename 时，请检查预览并排除这些文件，或者按修改日期单独重命名它们。

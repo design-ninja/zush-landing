@@ -1,0 +1,141 @@
+---
+title: "Windows 11 向けおすすめファイル名変更ツール(2026年):無料ツール vs AI"
+description: "Windows 11/10 向けファイル名変更ツール6種を比較:File Explorer、PowerRename、Bulk Rename Utility、Advanced Renamer、ReNamer、Zush。あなたのファイルに合うのはどれか。"
+date: "2026-09-22"
+slug: "best-file-renamer-windows-11-ja"
+platform: "windows"
+topic: "comparisons"
+tags:
+  - "File Naming"
+  - "Tool Comparisons"
+  - "AI File Renaming"
+tldr: "パターン処理(日付の追加、テキスト置換、連番付け)なら無料の PowerRename で十分です。さらに踏み込むなら Bulk Rename Utility や Advanced Renamer が向いています。スクリーンショット、スキャン、写真のように、ファイルごとに内容を表す別々の名前が必要な場合は、各ファイルを読み取ってから名前を付ける Zush のような AI リネームツールを使いましょう。Zush にはオプションの AI フォルダー振り分け(ベータ版)もあります。"
+reviewed: "2026-09-28"
+locale: "ja"
+translationOf: "best-file-renamer-windows-11"
+---
+
+import BlogCTA from '@/components/blog/BlogCTA.astro';
+import BlogHighlight from '@/components/blog/BlogHighlight.astro';
+import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
+
+結論から言うと、プレフィックス、日付、連番など、すべてのファイルに同じ種類の変更を加えるなら **PowerRename** を使いましょう。Microsoft が無料で提供しており、ほとんどのパターン処理をこなせます。中身に基づいてファイルごとに固有の名前が必要なら、[Zush](/windows) のような AI リネームツールを使います。
+
+この違いがほかのすべてを左右します。パターン系ツールは高速で正確ですが、変換できるのはファイルがすでに持っている名前だけです。`IMG_4382.jpg` を `Vacation_001.jpg` にすることはできても、`lisbon-tram-at-night.jpg` にすることはできません。
+
+**最終確認日:2026年9月22日。** 執筆は Zush の開発者です。他のツールの詳細は各公式ページに基づいています。
+
+## 6つの選択肢を一覧で比較
+
+| ツール | 向いている用途 | ファイル内容の読み取り | 元に戻す | 価格 |
+|---|---|---|---|---|
+| File Explorer | 少数のファイル、手軽な連番 | なし | Ctrl+Z(直前の操作のみ) | 標準搭載 |
+| PowerRename | 検索と置換、正規表現、日付 | なし(EXIF フィールドのみ) | Explorer で Ctrl+Z | 無料(PowerToys) |
+| Bulk Rename Utility | 大規模なパターン処理、10万件以上のファイル | なし(EXIF、ID3 フィールド) | 元に戻すバッチファイルを生成 | 個人利用は無料 |
+| Advanced Renamer | メタデータや GPS に基づく名前 | なし(EXIF、ID3、GPS、動画フィールド) | バッチ全体を元に戻せる | 軽い個人利用は無料。個人ライセンス $25、商用ライセンス $45 |
+| ReNamer | ルールの連鎖、スクリプト | なし(メタタグ) | 元に戻す機能に対応 | Lite は非商用なら無料。有料の Pro あり |
+| **Zush** | <BlogHighlight>ファイルごとに内容を表す別々の名前を付けたい場合。オプションの AI フォルダー振り分け(ベータ版)</BlogHighlight> | あり(AI による) | 完全な Rename History | 50回まで無料でリネーム。月額 $10 または買い切り $48 |
+
+## 1. File Explorer:5ファイル程度ならこれで十分
+
+複数のファイルを選択して **F2** を押し、名前を入力して Enter を押します。Windows が `Trip (1).jpg`、`Trip (2).jpg` のように名前を付けます。**Ctrl+Z** ですぐに元に戻せます。
+
+できるのはそれだけです。プレビューも、日付も、検索と置換もありません。意味のある名前ではなく、ただ整った名前になればよい場合に使いましょう。
+
+## 2. PowerRename:ほとんどの人に最適な無料ツール
+
+[PowerRename](https://learn.microsoft.com/en-us/windows/powertoys/powerrename) は Microsoft PowerToys に付属しています。ファイルを選択して右クリックし、**Rename with PowerRename** を選ぶと、ライブプレビュー付きの検索と置換が使えます。
+
+見た目以上に多くのことができます。
+
+- キャプチャグループを含む正規表現(`29-03-2020` → `2020-03-29`)
+- 桁数のゼロ埋めや開始値を指定できるカウンター(`Image_${padding=4}`)
+- `$YYYY-$MM-$DD` のようなファイル作成日の変数
+- `$DATE_TAKEN_YYYY`、`$CAMERA_MODEL`、GPS 座標などの写真の EXIF フィールド
+
+パターンとして説明できる作業なら、PowerRename を選びましょう。AI 側については、[PowerRename の代替ツール](/powerrename-alternative)のページをご覧ください。
+
+## 3. Bulk Rename Utility:最大限の制御
+
+[Bulk Rename Utility](https://www.bulkrenameutility.co.uk/) は、正規表現、JavaScript、自動連番、EXIF 日付、MP3 タグ、CSV を使ったリネーム、タイムスタンプの変更など、あらゆるパターン処理のオプションを1つの密度の高いウィンドウに詰め込んでいます。10万件以上のファイルでも動作が遅くなりません。元に戻す機能は、変更を逆に戻すバッチファイルを生成する方式です。
+
+個人利用は無料ですが、業務利用には商用ライセンスが必要です。インターフェースには慣れが必要です。詳しくは [Bulk Rename Utility の代替ツール](/blog/bulk-rename-utility-alternatives)のガイドをご覧ください。
+
+## 4. Advanced Renamer:写真や音楽のメタデータに最適
+
+[Advanced Renamer](https://www.advancedrenamer.com/) は、EXIF、ID3、動画のプロパティ、GPS のタグ(座標を都市名に変換できます)を、複数のメソッドを重ねて組み合わせて名前を作ります。ライブプレビューを表示し、バッチ全体を元に戻せます。macOS でも動作します。
+
+軽い個人利用は無料です。継続的に使うユーザーには $25 の個人ライセンスの購入が求められ、業務で使う場合は $45 の商用ライセンスが必要です。どちらも買い切りです。[Advanced Renamer のレビュー](/blog/advanced-renamer-alternatives)もご覧ください。
+
+## 5. ReNamer:ルールとスクリプト
+
+[ReNamer](https://www.den4b.com/products/renamer) は、挿入、削除、置換、大文字小文字、正規表現、メタタグといったルールを順番に適用し、カスタム処理には Pascal Script を使えます。ポータブル版があり、25以上の表示言語に対応しています。
+
+ReNamer Lite は非商用なら無料で、ルールは5つ、プリセットは5つまでに制限されています。Pro ではこの制限がなくなり、商用利用も可能です。
+
+## 6. Zush:ファイルごとに固有の名前が必要なとき
+
+[Zush](/windows) は仕組みが異なります。古い名前を編集するのではなく、ファイルそのものを見ます。PDF 内のテキスト、スクリーンショットに写っているもの、写真のシーン、Word や Excel ファイルの内容などです。そのうえで、内容を表す名前を付けます。
+
+| 変更前 | 変更後 |
+|---|---|
+| `Screenshot 2026-09-18 141203.png` | `github-pull-request-review-comments.png` |
+| `scan_0042.pdf` | `2026-09-12_acme_invoice_1042.pdf` |
+| `Document1.docx` | `q3-marketing-plan-draft.docx` |
+| `IMG_4382.jpg` | `2026-08-30_lisbon_tram_street.jpg` |
+
+名前の形式は自分で決められます。Template と 145 以上の Naming Blocks で、順序(日付、取引先、クライアント、タイトル)、大文字小文字、区切り文字を固定できます。提案はすべて適用前に確認でき、Rename History を使えばバッチ全体を後から復元できます。フォルダー監視を使えば、Downloads やスキャナー用フォルダーに入った新しいファイルを自動でリネームします。
+
+AI は Zush Cloud AI、ご自身の API キー、または Ollama や LM Studio を使ったローカル実行で動かせます。最初の50回のリネームは無料です。
+
+<BlogCTA placement='inline' platform='windows' />
+
+### リネームしたファイルをフォルダーに振り分ける
+
+Windows では、Zush は **AI でファイルをフォルダーに振り分ける(ベータ版)** こともできます。**Auto** のグループ分けを選ぶか、「請求書は会社ごとに、領収書は月ごとにグループ化する」のような **Folder rules** を書きます。提案されたフォルダーのグループをファイル名と並べて確認できます。バッチ全体に同じテキスト変更を加えるだけなら、パターン系のリネームツールで引き続き十分です。
+
+**Destination folder** を選ぶか、元のフォルダーをルートのままにします。**Reuse existing folders** を有効にすると、すでにある適切なフォルダーが優先され、合うものがなければ Zush が新しいフォルダーを作成できます。手動バッチでは、適用前に提案された名前とフォルダーの両方を確認してください。その場でリネームするだけなら、振り分けをオフにして元の保存先のままにします。
+
+振り分け設定は **Template** に保存し、**Monitor** に割り当てると、監視対象フォルダー直下の新しいファイルに適用されます。すでに処理済みのファイルは再整理されません。まず手動バッチで Template をテストしてください。設定方法と監視の対象範囲は、[フォルダー振り分けガイド](/docs/folder-sorting)をご覧ください。
+
+## どのリネームツールを使うべきか
+
+- すべてのファイルに同じ変更(プレフィックス、日付、連番)を加える:**PowerRename**。
+- 巨大なフォルダーでの複雑なパターン処理:**Bulk Rename Utility**。
+- 写真、音楽、GPS のメタデータから名前を付ける:**Advanced Renamer**。
+- 本当に意味のある名前が必要なスクリーンショット、スキャン、ダウンロード、写真:**Zush**。
+
+両方のタイプを併用している人も大勢います。手早い機械的な修正には PowerRename、今は中身を知るために1つずつファイルを開いているフォルダーには Zush という使い分けです。
+
+<BlogProductIntro
+  title="ファイルの中身を確認するためだけに開くのは、もう終わりにしませんか?"
+  description="Zush は Windows PC 上の各ファイルを読み取り、わかりやすく検索しやすい名前を提案します。バッチを確認して適用し、いつでも元に戻せます。"
+  links={[
+    { href: '/windows', label: 'Windows 版 Zush' },
+    { href: '/batch-rename-files', label: 'AI で一括リネーム' },
+    { href: '/blog/batch-rename-files-windows-11', label: 'Windows 11 での一括リネーム' },
+    { href: '/blog/best-ai-file-renamer-tools-windows-compared', label: 'Windows 向け AI リネームツール' },
+  ]}
+/>
+
+## よくある質問
+
+### Zush はリネームだけでなく、ファイルをフォルダーに振り分けることもできますか?
+
+はい。オプションの AI フォルダー振り分けは、Mac と Windows でベータ版として提供されています。Auto を選ぶか Folder rules を書き、保存先を選んで、手動バッチで名前とグループの両方を確認します。振り分けを有効にした Template は、監視対象フォルダー直下の新しいファイルにも適用できますが、すでに処理済みのファイルは再整理されません。名前の変更だけにしたい場合は、振り分けをオフにして元の保存先のままにしてください。
+
+### Windows 11 で最適な無料のファイル名変更ツールは何ですか?
+
+Microsoft PowerToys に含まれる PowerRename です。無料で、すべての変更をプレビューでき、正規表現と日付変数に対応し、Ctrl+Z で元に戻せます。より負荷の高い個人用途では、Bulk Rename Utility が無料の代替になります。
+
+### Windows 11 には標準で一括リネーム機能がありますか?
+
+あります。ただし基本的なものです。File Explorer でファイルを選択して F2 を押すと、括弧付きの番号を付けて1つの名前にまとめられます。検索と置換や日付が必要なら、PowerToys をインストールして PowerRename を使いましょう。
+
+### ファイル名変更ツールはファイルの中身を読み取れますか?
+
+パターン系のツールはできません。読み取るのは既存の名前と、EXIF や ID3 などのメタデータフィールドだけです。Zush のような AI リネームツールは、内容そのもの(テキスト、画像、動画フレーム)を読み取り、内容を表す新しい名前を付けます。
+
+### 最も安全なファイル名変更ツールはどれですか?
+
+プレビューとバッチの取り消し機能があるツールです。PowerRename、Advanced Renamer、Zush はいずれも適用前に結果を表示します。Zush は永続的な Rename History も保持するため、直後だけでなく数日後でもバッチを元に戻せます。
