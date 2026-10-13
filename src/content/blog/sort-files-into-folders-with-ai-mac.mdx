@@ -8,7 +8,7 @@ topic: "organization"
 tags: ["AI File Renaming", "Automation", "File Organization"]
 tldr: "Zush can rename files and sort them into folders based on content. Enable **Folder sorting**, choose a destination, and review the proposed groups before applying a batch."
 earlyTaskExample: false
-reviewed: "2026-09-28"
+reviewed: "2026-10-13"
 ---
 
 Zush can rename files and sort them into folders based on content. Enable **Folder sorting**, choose a destination, and review the proposed groups before applying a batch.
@@ -17,6 +17,10 @@ A folder full of invoices, receipts, photos, and documents often needs two decis
 
 
 ## Write folder rules in plain language
+
+**Updated October 13, 2026:** Zush supports nested folder rules and sorting after renaming without another rename credit on both Mac and Windows. See the [folder sorting guide](/docs/folder-sorting), [Mac release notes](/changelog), and [Windows release notes](/changelog/windows).
+
+For a nested structure, ask for receipts grouped by year, then by month inside each year. Review the proposed paths before applying. You can also sort already renamed files while keeping their current names; Undo can restore the original name and folder after the rename and later sorting steps. This separate action is not triggered automatically by changing a Monitor Template, and nested destinations do not change which source folders Monitor watches.
 
 Tell Zush how you want files grouped. AI reads their content and follows your instructions — no scripts or complex filters to build.
 

@@ -11,7 +11,7 @@ tags:
   - "File Explorer"
 tldr: "Install Zush for Windows, turn on Sort in AI Rename, and describe the folders in plain language, such as “Group invoices by company and receipts by month.” Zush reads each file, renames it, and moves it into the right folder after you review the plan. Save the setup in a Template and assign it to Monitor to sort new files automatically."
 earlyTaskExample: false
-reviewed: "2026-10-08"
+reviewed: "2026-10-13"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
@@ -19,6 +19,8 @@ import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 Quick answer: Windows 11 has no built-in way to sort files into folders by what they contain. File Explorer can group a view by type or date, and Storage Sense only deletes. To actually move files into folders by content, use [Zush for Windows](/windows): turn on **Sort**, describe the folders in plain language, review the plan, and apply. The same setup can then sort every new download automatically.
 
 This guide works on Windows 11 and Windows 10.
+
+**Updated October 13, 2026:** Zush supports nested folder rules and sorting after renaming without another rename credit on both Windows and Mac. These are separate from Monitor automatically handling new arrivals. See the [folder sorting guide](/docs/folder-sorting).
 
 ## What Windows can and cannot do on its own
 
@@ -57,6 +59,8 @@ The field accepts up to 2,000 characters. Write it the way you would brief an as
 
 ## Step 4: Add files and review the plan
 
+For nested folders, use a rule such as “Group receipts by year, then by month within each year.” The preview shows the full paths, so check the hierarchy before moving files. A nested destination does not mean Monitor watches every source subfolder.
+
 Drag files or a folder into Zush. You will see **Analyzing files…**, then **Grouping files…** while Zush plans the folders.
 
 The review shows each proposed folder with its files and their new names:
@@ -81,6 +85,10 @@ Once a manual batch looks right, make it automatic:
 3. Assign the sorting Template to that folder.
 
 New files that arrive directly in the monitored folder are renamed and sorted in the background. Monitor remembers the folders it created, so next month's invoices from the same supplier land in the same place. Check results in **Activity**. Monitor does not reorganize files that were already there; run a manual batch for those.
+
+## Sort files that were already renamed
+
+Zush on Windows and Mac can sort already renamed files without changing their names again or using another rename credit. Review the destination and proposed folders before applying the move. Undo can restore the original name and folder across the rename and later sorting steps. Changing a Monitor Template does not automatically run this action on earlier files.
 
 ## Example setups
 
@@ -135,4 +143,4 @@ Yes. Zush for Windows runs on Windows 10 and Windows 11 and has the same folder 
 
 ### Can I undo AI folder sorting?
 
-Yes. Nothing moves until you apply the plan, and every sorted file is recorded in Rename History. Undo moves the file back to its original folder and restores its original name. Test on copies first, and keep sorting off for folders that other apps reference by path.
+Yes. Nothing moves until you apply the plan, and every sorted file is recorded in Rename History. Zush can undo a rename and its later sorting steps together, restoring the original name and folder. Test on copies first, and keep sorting off for folders that other apps reference by path.

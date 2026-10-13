@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Tool Comparisons"
 tldr: "Kies Zush voor de meest instelbare naamgevingsworkflow in deze vergelijking: kant-en-klare Templates, 145+ Naming Blocks, Custom AI Blocks en Rename History met herstel per batch, plus AI-mapsortering volgens je eigen regels in gewone taal. RenameClick sorteert in vooraf ingestelde categorieën en heeft een smallere gedocumenteerde dekking: geen RAW, ontwerpbestanden, iWork of video. Lokale AI en ongedaan maken hebben ze allebei."
-reviewed: "2026-09-30"
+reviewed: "2026-10-13"
 featuredOrder: 5
 locale: "nl"
 translationOf: "zush-vs-renameclick"
@@ -22,11 +22,15 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 
 
-**Concurrentie-update — 24 september 2026:** RenameClick vermeldt momenteel 100 geslaagde hernoemingen of verplaatsingen per maand in het gratis abonnement, Pro Monthly voor $ 8 + btw en Pro Lifetime voor $ 36 + btw; controleer de checkout. De Managed-proef van NameQuick bevat 250 hernoemingen in 14 dagen en de Self-Managed-proef 50 zonder kaart.
+**Concurrentie-update — 24 september 2026:** RenameClick vermeldt momenteel 100 geslaagde hernoemingen of verplaatsingen per maand in het gratis abonnement, Pro Monthly voor $ 8 + btw en Pro Lifetime voor $ 36 + btw; controleer de checkout.
+
+Gerichte controle op 2026-10-13: sinds versie 2.19 ondersteunt RenameClick OpenAI-compatibele API’s, waaronder OpenRouter, via de directe download voor Mac en Windows, niet via de Mac App Store-versie. Externe API-kosten worden apart berekend. Andere informatie behoudt de eerdere controledatums. [RenameClick 2.19](https://rename.click/changelogs).
+
+Zush ondersteunt op Mac en Windows geneste mappen en het sorteren van al hernoemde bestanden zonder extra hernoemcredit. Een gewijzigde Monitor-sjabloon reorganiseert eerdere bestanden niet automatisch. [Zush](/docs/folder-sorting).
 **[Zush](/)-productupdate — 31 augustus 2026:** De huidige Zush-apps voor Mac en Windows bieden vier AI-modi in één workflow: Zush Cloud AI en BYOK online, plus LM Studio en Ollama lokaal. De FREE-limiet van 50 hernoemingen wordt gedeeld door alle vier modi; betaald PRO verwijdert de Zush-limiet in alle vier. Claims over concurrenten behouden hun afzonderlijk vermelde controledatums.
 Snel antwoord: kies Zush als de bestandsnaamconventie er zelf toe doet. Kant-en-klare Templates gecombineerd met 145+ Naming Blocks, Custom AI Blocks, opmaak, lokalisatie, tags en metadata; Rename History slaat originele en nieuwe namen, map en tijdstempel op en kan een toegepaste batch herstellen. De meer dan 100 formaten omvatten RAW, ontwerp, iWork, audio en video. RenameClick is alleen relevant wanneer AI Search of hernoemen-plus-folderrouting verplicht is, en het geeft RAW, ontwerp, iWork en videodekking op.
 
-**Laatst geverifieerd: 24 juli 2026**, tegen rename.click's eigen prijspagina en documentatie.
+**Eerdere controle: 2026-07-24.**
 
 Bronnen gecontroleerd voor deze update: [Zush](/) en [RenameClick](https://rename.click/), inclusief openbare prijzen, offline/lokale AI, Auto Flow, AI Search, ongedaan maken en de [documentatie over ondersteunde bestandstypen](https://rename.click/docs/getting-started/supported-files).
 
@@ -44,11 +48,11 @@ Beide producten hebben desktop-apps voor Mac en Windows, ondersteunen lokale AI,
 |Platformen|Mac+Windows|Mac+Windows|
 |Verwerkingsmogelijkheden|Cloud AI, BYOK, of Offline AI via Ollama|Standaard ingebouwde lokale AI|
 |Lokaal model gebundeld|Nee, gebruik de Ollama-installatie|Ja, Qwen3-VL lokaal model na download|
-|AI-aanbieders|Gemini, OpenRouter, OpenAI, Claude, Ollama offline|Ingebouwde lokale, OpenAI, Gemini, Alibaba Cloud Qwen, LM Studio, Ollama|
+|AI-aanbieders|Zush Cloud AI; BYOK: Gemini, OpenRouter, OpenAI, Claude; LM Studio, Ollama|Qwen3-VL; LM Studio, Ollama; OpenAI, Gemini, Alibaba Cloud Qwen; OpenAI-compatible API (2.19, OpenRouter)|
 |Afbeeldings-/ontwerpformaten|41 beeldformaten + 4 ontwerpformaten, waaronder RAW, HEIC, AVIF, Sketch, Figma, AI, PSD|JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF; geen ontwerpbestanden|
 |RAW-ondersteuning|<BlogHighlight>Ja (CR2, CR3, NEF, ARW, DNG, ORF, RAF, RW2, PEF, SRW, SR2)</BlogHighlight>|Niet openbaar vermeld|
-|Documentformaten|40 document-/PDF-formaten, waaronder iWork|PDF, DOC/DOCX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, logbestanden, SQL, SRT/VTT, ICS/VCF|
-|Videoformaten|16 veel voorkomende formaten|Niet ondersteund volgens documenten|
+|Documentformaten|40 document-/PDF-formaten, waaronder iWork|PDF, DOC/DOCX, XLSX, PPTX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, logbestanden, SQL, SRT/VTT, ICS/VCF|
+|Videoformaten|Zush ondersteunt video op Mac en Windows, waaronder MP4, MOV, MKV, AVI en WMV.|Niet ondersteund volgens documenten|
 |Audioformaten|MP3, M4A, WAV, FLAC, OGG, WebM, MPGA|MP3, WAV, FLAC, M4A, AAC met lokale spraaktranscriptie|
 |Mapbewaking|Ja|Ja, automatische stroom|
 |Bestanden sorteren/verplaatsen| AI-mapsortering (bèta): mapregels in gewone taal of Auto, bestemmingsmap, bestaande mappen hergebruiken | AI Categories uit een vooraf ingestelde lijst, Metadata Folders of Match Folders (tot 50 bestaande mappen op het hoogste niveau) |
@@ -93,7 +97,7 @@ De prijs is eenvoudig: $ 10/maand of $ 48 eenmalig voor PRO. Beide betaalde abon
 
 RenameClick is een local-first desktop-app voor macOS en Windows. De kern is privacy: na de eenmalige download van het lokale model kan de ingebouwde Qwen3-VL-provider bestanden op het apparaat verwerken zonder een API-sleutel of internetverbinding. Het ondersteunt ook LM Studio en Ollama voor lokale serverworkflows, plus OpenAI, Google Gemini en Alibaba Cloud Qwen wanneer u expliciet cloud-API-sleutels koppelt. RenameClick merkt op dat cloudproviders niet beschikbaar zijn in de Mac App Store-versie; gebruik de directe download als die providers er toe doen.
 
-RenameClick is niet alleen een hernoemer. Het staat dichter bij een bestandsorganisator: het kan bestanden hernoemen, categoriseren, naar mappen verplaatsen, Auto Flow-bewakingsregels uitvoeren, op inhoud zoeken met AI Search en namen samenstellen uit EXIF/datumplaatsaanduidingen. De documentatie over ondersteunde bestanden omvat nu drie categorieën: gewone afbeeldingen (JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF), een lange documentenlijst (PDF, DOC/DOCX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, logs, SQL, SRT/VTT, ICS/VCF) en audio (MP3, WAV, FLAC, M4A, AAC) met lokale spraaktranscriptie. Videobestanden, andere audiocodecs, archieven en uitvoerbare bestanden worden expliciet vermeld als niet-ondersteund.
+RenameClick is niet alleen een hernoemer. Het staat dichter bij een bestandsorganisator: het kan bestanden hernoemen, categoriseren, naar mappen verplaatsen, Auto Flow-bewakingsregels uitvoeren, op inhoud zoeken met AI Search en namen samenstellen uit EXIF/datumplaatsaanduidingen. De documentatie over ondersteunde bestanden omvat nu drie categorieën: gewone afbeeldingen (JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF), een lange documentenlijst (PDF, DOC/DOCX, XLSX, PPTX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, logs, SQL, SRT/VTT, ICS/VCF) en audio (MP3, WAV, FLAC, M4A, AAC) met lokale spraaktranscriptie. Videobestanden, andere audiocodecs, archieven en uitvoerbare bestanden worden expliciet vermeld als niet-ondersteund.
 
 ## Prijzen realiteit
 
@@ -118,7 +122,7 @@ Zush ondersteunt RAW-fotoformaten, ontwerpbestanden, audio, video's, iWork-besta
 
 ### RenameClick omvat algemene afbeeldingen, een brede documentenlijst en nu ook audio
 
-RenameClick dekt de gebruikelijke workflows voor afbeeldingen en documenten goed – JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF, plus PDF, DOC/DOCX, TXT, Markdown, CSV, RTF, ODT, JSON, XML, YAML, HTML, logs, SQL, ondertitels en agenda-/contactbestanden – en heeft audio toegevoegd (MP3, WAV, FLAC, M4A, AAC) met lokale spraaktranscriptie. Het beschikt ook over nuttige details voor documentverwerking: tekstextractie voor tekst-PDF's en Office-documenten, vision-fallback voor gescande PDF's en configureerbare bijsnijlimieten voor documenttekst.
+RenameClick dekt de gebruikelijke workflows voor afbeeldingen en documenten goed – JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF, plus PDF, DOC/DOCX, XLSX, PPTX, TXT, Markdown, CSV, RTF, ODT, JSON, XML, YAML, HTML, logs, SQL, ondertitels en agenda-/contactbestanden – en heeft audio toegevoegd (MP3, WAV, FLAC, M4A, AAC) met lokale spraaktranscriptie. Het beschikt ook over nuttige details voor documentverwerking: tekstextractie voor tekst-PDF's en Office-documenten, vision-fallback voor gescande PDF's en configureerbare bijsnijlimieten voor documenttekst.
 
 De kloof ligt rond media en ontwerpformaten. De documenten van RenameClick vermelden geen camera-RAW-formaten of ontwerpbestanden zoals Sketch/Figma/PSD, en ze noemen expliciet videobestanden, archieven en uitvoerbare bestanden niet ondersteund. Als deze formaten er toe doen, is Zush veiliger.
 
@@ -126,7 +130,7 @@ De kloof ligt rond media en ontwerpformaten. De documenten van RenameClick verme
 
 Beide producten kunnen lokale modellen uitvoeren, dus offline verwerking is geen uniek voordeel. RenameClick bundelt een model na een download van meerdere GB; Zush maakt verbinding met Ollama. Het belangrijkste verschil is de rest van de workflow: Zush documenteert kant-en-klare Templates, 145+ Naming Blocks, Custom AI Blocks, rijkere lokalisatie- en metadatacontroles, en aanhoudende Rename History.
 
-Zush wint als je meer waarde hecht aan de keuze van cloudproviders en het grote volume BYOK. Zush ondersteunt Gemini, OpenRouter, OpenAI en Claude via BYOK, waarbij de sleutels lokaal worden opgeslagen, en het ondersteunt offline AI via Ollama wanneer lokale verwerking de prioriteit heeft. OpenRouter en Claude zijn opmerkelijke opties aan de 'Zush'-zijde; ingebouwde Qwen3-VL, Alibaba Cloud Qwen en LM Studio zijn RenameClick-kantopties.
+Zush past bij gemengde bestandsformaten, nauwkeurige naamsjablonen, wijzigingsgeschiedenis en inbegrepen cloud-AI. BYOK, LM Studio en Ollama zijn ook beschikbaar. OpenRouter is geen exclusief voordeel van Zush. [Zush](https://zushapp.com/docs/ai-modes/).
 
 De praktische afweging is eenvoudig: kies Zush voor diepgaande naamgeving, hersteldetails, breedte van gemengde bestanden en promptgestuurde mapsortering. Overweeg RenameClick alleen als de AI Search-werkruimte zwaarder weegt dan het ontbreken van RAW, ontwerpbestanden, iWork en video.
 
@@ -144,7 +148,7 @@ Als je doel is om bestanden consequent te hernoemen en op te bergen volgens rege
 
 Zush helpt bij het ophalen door betekenisvolle bestandsnamen te genereren, Finder-tags toe te voegen en Spotlight-vriendelijke metadata te schrijven. Dat is geschikt voor Mac-gebruikers die al in Finder/Spotlight zoeken en willen dat bestandsnamen de belangrijkste context bevatten.
 
-RenameClick voegt een aparte AI Search-werkruimte toe. Hiermee kunt u zoeken op inhoudsbetekenis, niet alleen op trefwoorden voor bestandsnamen. Een zoekopdracht naar facturen kan bijvoorbeeld overeenkomen met PDF-scans, zelfs als de originele bestandsnaam `scan_001.pdf` is. AI Search is alleen-lezen voor hernoemen/verplaatsen, maar kan bestanden onthullen, resultaten uitsluiten of items naar de prullenbak verplaatsen.
+Sinds versie 2.18 kunnen AI Search-resultaten worden hernoemd en verplaatst. Zoeken en indexeren verbruiken geen wijzigingscredits; daadwerkelijk gewijzigde bestanden wel. [RenameClick 2.18](https://rename.click/changelogs).
 
 Voor ontdekking in chaotische mappen is de AI Search van RenameClick een zinvolle differentiator. Om bestanden om te zetten in doorzoekbare bestanden voor de lange termijn in het hele besturingssysteem, is de workflow van Zush voor bestandsnaam + tag + metagegevens de betere dagelijkse laag.
 
@@ -198,7 +202,7 @@ De openbare lijst met ondersteunde bestanden van RenameClick bevat geen RAW-came
 
 ### Ondersteunt RenameClick video- of audiobestanden?
 
-Audio ja, video nee. De documenten vermelden nu MP3, WAV, FLAC, M4A en AAC met lokale spraaktranscriptie, terwijl videobestanden (`.mp4`, `.mov`, `.mkv`, `.webm`), andere audiocodecs, archieven en uitvoerbare bestanden expliciet niet worden ondersteund. Zush ondersteunt 16 videoformaten naast de audiolijst.
+Volgens de documentatie ondersteunt RenameClick MP3, WAV, FLAC, M4A en AAC voor audio, maar geen video. Zush ondersteunt video op Mac en Windows, waaronder MP4, MOV, MKV, AVI en WMV. [Zush](/docs/supported-file-types).
 
 ### Welke heeft een betere mapautomatisering?
 

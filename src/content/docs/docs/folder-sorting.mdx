@@ -1,7 +1,7 @@
 ---
 title: AI Folder Sorting and Destination Folders
 description: Sort files into folders with AI. Choose a destination, write rules in plain language, reuse existing folders, and automate new files with Monitor.
-lastUpdated: 2026-09-26
+lastUpdated: 2026-10-13
 sidebar:
   order: 19
   label: AI folder sorting
@@ -58,6 +58,17 @@ Use a rule that can be answered from the file content. Review ambiguous document
 
 Enable **Reuse existing folders** to let Zush select suitable folders already inside the root. Zush creates a new folder when no existing folder fits. Turning the option off stops matching against unrelated existing folders; Monitor can still reuse groups it previously created.
 
+## Create nested folders
+
+Zush supports nested folder rules on Mac and Windows. For example, ask: “Group receipts by year, then by month inside each year.” Review the proposed paths before applying the plan. Creating nested destination folders is different from monitoring source subfolders; it does not change Monitor's scope.
+
+## Sort files after renaming
+
+On Mac and Windows, you can sort already renamed files without renaming them again or using another rename credit. Review the destination and folder plan before applying the move. Undo can restore the original filename and folder after the rename and subsequent sorting steps.
+
+These changes are documented in the [Mac release notes](/changelog) and [Windows release notes](/changelog/windows). Sorting an existing batch is a separate action: editing a Template or enabling Monitor does not automatically reorganize files processed earlier.
+
+
 ## Save the setup in a Template
 
 Open **Templates**, choose Smart Rename or a saved Template, and configure **Destination folder**, **Folder sorting**, **Reuse existing folders**, and **Folder rules**. Save it and use the Template in AI Rename or Monitor.
@@ -66,7 +77,7 @@ The sorting rules travel with a [Template export](/docs/template-import-export).
 
 ## Sort new files with Monitor
 
-Assign a sorting-enabled Template to a monitored folder. Newly arriving files directly inside that folder are renamed and sorted into subfolders. This does not retroactively reorganize files already processed. Monitor reuses its recorded groups as more files arrive; with existing-folder reuse enabled, other suitable folders can be selected too.
+Assign a sorting-enabled Template to a monitored folder. Newly arriving files directly inside that folder are renamed and sorted into subfolders. Changing this setup does not automatically reorganize files already processed; use the separate post-rename sorting workflow for those. Monitor reuses its recorded groups as more files arrive; with existing-folder reuse enabled, other suitable folders can be selected too.
 
 Subfolder monitoring and sorting are different settings. Test the Template in a manual batch first, then check the monitored folder's scope. See [folder monitoring](/docs/folder-monitoring).
 

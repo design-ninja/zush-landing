@@ -11,7 +11,7 @@ tags:
   - "AI文件重命名"
   - "工具比较"
 tldr: "如果你想要本次对比中最可配置的命名工作流，请选择 Zush：现成的 Templates、145+ Naming Blocks、Custom AI Blocks 和支持批量恢复的 Rename History，以及按你自己的日常语言规则进行的 AI 文件夹分类。RenameClick 按预设类别分类，公开的支持范围也更窄：不支持 RAW、设计文件、iWork 或视频。两者都有本地 AI 和撤销功能。"
-reviewed: "2026-09-30"
+reviewed: "2026-10-13"
 featuredOrder: 5
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -22,11 +22,15 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 
 
-**竞品更新 — 2026 年 9 月 24 日：** RenameClick 目前的免费方案包含每月 100 次成功重命名或移动，Pro 月付为 8 美元加增值税，Pro 终身版为 36 美元加增值税；请以结账页为准。NameQuick 的 Managed 试用为 14 天 250 次重命名，Self-Managed 试用为无需信用卡的 50 次重命名。
+**竞品更新 — 2026 年 9 月 24 日：** RenameClick 目前的免费方案包含每月 100 次成功重命名或移动，Pro 月付为 8 美元加增值税，Pro 终身版为 36 美元加增值税；请以结账页为准。
+
+2026-10-13专项复核：RenameClick自2.19起在Mac和Windows直接下载版中支持OpenRouter等OpenAI兼容API，Mac App Store版不支持，外部API另行计费。其他信息仍以各自原有核查日期为准。 [RenameClick 2.19](https://rename.click/changelogs).
+
+Zush在Mac和Windows上支持嵌套文件夹，也可在重命名后继续分类而不再消耗重命名额度。修改Monitor模板不会自动重新整理此前处理的文件。 [Zush](/docs/folder-sorting).
 **[Zush](/) 产品更新 — 2026 年 8 月 31 日：** 当前 Mac 和 Windows 版 Zush 在同一工作流程中提供四种 AI 模式：在线的 Zush Cloud AI 和 BYOK，以及本地的 LM Studio 和 Ollama。FREE 的 50 次重命名额度由四种模式共享；付费 PRO 会移除全部四种模式中的 Zush 限制。竞争对手相关说明仍采用各自单独标注的核验日期。
 快速回答：当文件名约定本身很重要时，选择“Zush”。现成的“Templates”与 145 多个“Naming Blocks”、“Custom AI Blocks”、格式、本地化、标签和元数据相结合； Rename History 存储原始名称和新名称、文件夹和时间戳，并可以恢复应用的批次。其 100 多种格式包括 RAW、设计、“iWork”、音频和视频。仅当人工智能搜索或重命名加文件夹路由是强制性的时，“RenameClick”才相关，并且它放弃了 RAW、设计、“iWork”和视频覆盖。
 
-**最后验证时间：2026 年 7 月 24 日**，对照 rename.click 自己的定价页面和文档。
+**此前核查: 2026-07-24.**
 
 检查此更新的来源：“[Zush](/)”和“[RenameClick](https://rename.click/)”，包括公开定价、离线/本地 AI、自动流程、AI 搜索、撤消及其“[支持的文件类型文档](https://rename.click/docs/getting-started/supported-files)”。
 
@@ -44,11 +48,11 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 |平台|苹果电脑 + Windows|苹果电脑 + Windows|
 |加工选项|云人工智能、“BYOK”或通过“Ollama”的离线人工智能|默认内置本地AI|
 |本地模型捆绑|不，使用“Ollama”设置|是的，下载后的Qwen3-VL本地模型|
-|人工智能提供商|Gemini、OpenRouter、OpenAI、Claude、“Ollama”离线|内置本地、OpenAI、Gemini、阿里云Qwen、LM Studio、Ollama|
+|人工智能提供商|Zush Cloud AI; BYOK: Gemini, OpenRouter, OpenAI, Claude; LM Studio, Ollama|Qwen3-VL; LM Studio, Ollama; OpenAI, Gemini, Alibaba Cloud Qwen; OpenAI-compatible API (2.19, OpenRouter)|
 |图像/设计格式|41 种图像格式 + 4 种设计格式，包括 RAW、HEIC、AVIF、Sketch、Figma、AI、PSD|JPEG、PNG、GIF、WebP、AVIF、BMP、SVG、HEIC、HEIF、TIFF；没有设计文件|
 |支持RAW| <BlogHighlight>是（CR2、CR3、NEF、ARW、DNG、ORF、RAF、RW2、PEF、SRW、SR2）</BlogHighlight> |未公开上市|
-|文档格式|40 种文档/PDF 格式，包括“iWork”|PDF、DOC/DOCX、TXT、MD、CSV、RTF、ODT、JSON、XML、YAML、HTML、日志、SQL、SRT/VTT、ICS/VCF|
-|视频格式|16种常见格式|每个文档不支持|
+|文档格式|40 种文档/PDF 格式，包括“iWork”|PDF、DOC/DOCX、XLSX、PPTX、TXT、MD、CSV、RTF、ODT、JSON、XML、YAML、HTML、日志、SQL、SRT/VTT、ICS/VCF|
+|视频格式|Zush在Mac和Windows上支持视频，包括MP4、MOV、MKV、AVI和WMV。|每个文档不支持|
 |音频格式|MP3、M4A、WAV、FLAC、OGG、WebM、MPGA|MP3、WAV、FLAC、M4A、AAC，带本地语音转录|
 |文件夹监控|是的|是的，自动流程|
 |排序/移动文件| AI 文件夹分类（测试版）：日常语言文件夹规则或 Auto、目标文件夹、复用已有文件夹 | 从预设列表选择的 AI Categories、Metadata Folders 或 Match Folders（最多 50 个已有顶层文件夹） |
@@ -89,7 +93,7 @@ Zush 是一款适用于混合文件夹的桌面 AI 文件重命名器。其最�
 
 “RenameClick”是“macOS”和“Windows”的本地优先桌面应用程序。其核心卖点是隐私：一次性本地模型下载后，其内置的 Qwen3-VL 提供程序可以在没有 API 密钥或互联网连接的情况下处理设备上的文件。它还支持用于本地服务器工作流程的 LM Studio 和“Ollama”，当您显式连接云 API 密钥时，还支持 OpenAI、Google Gemini 和阿里云 Qwen。 RenameClick 指出云提供商在 Mac App Store 版本中不可用；如果这些提供商很重要，请使用直接下载。
 
-RenameClick 不仅仅是一个重命名器。它更接近文件管理器：它可以重命名文件、对文件进行分类、将文件移动到文件夹中、运行自动流监视规则、使用 AI 搜索按内容进行搜索，以及根据 EXIF/日期占位符构建名称。其支持的文件文档现在涵盖三个类别：常见图像（JPEG、PNG、GIF、WebP、AVIF、BMP、SVG、HEIC、HEIF、TIFF）、长文档列表（PDF、DOC/DOCX、TXT、MD、CSV、RTF、ODT、JSON、XML、YAML、HTML、日志、SQL、SRT/VTT、ICS/VCF）和音频（MP3、WAV、FLAC、M4A、 AAC）和本地语音转录。视频文件、其他音频编解码器、存档和可执行文件被明确列为不受支持。
+RenameClick 不仅仅是一个重命名器。它更接近文件管理器：它可以重命名文件、对文件进行分类、将文件移动到文件夹中、运行自动流监视规则、使用 AI 搜索按内容进行搜索，以及根据 EXIF/日期占位符构建名称。其支持的文件文档现在涵盖三个类别：常见图像（JPEG、PNG、GIF、WebP、AVIF、BMP、SVG、HEIC、HEIF、TIFF）、长文档列表（PDF、DOC/DOCX、XLSX、PPTX、TXT、MD、CSV、RTF、ODT、JSON、XML、YAML、HTML、日志、SQL、SRT/VTT、ICS/VCF）和音频（MP3、WAV、FLAC、M4A、 AAC）和本地语音转录。视频文件、其他音频编解码器、存档和可执行文件被明确列为不受支持。
 
 ## 定价现实
 
@@ -114,7 +118,7 @@ Zush 支持 RAW 照片格式、设计文件、音频、视频、iWork 文件、O
 
 ### “RenameClick”涵盖常见图像、广泛的文档列表，现在还包括音频
 
-“RenameClick”很好地涵盖了常见的图像和文档工作流程 - JPEG、PNG、GIF、WebP、AVIF、BMP、SVG、HEIC、HEIF、TIFF，以及 PDF、DOC/DOCX、TXT、Markdown、CSV、RTF、ODT、JSON、XML、YAML、HTML、日志、SQL、字幕和日历/联系人文件 - 并且它添加了带有本地语音的音频（MP3、WAV、FLAC、M4A、AAC）转录。它还具有有用的文档处理详细信息：文本 PDF 和 Office 文档的文本提取、扫描 PDF 的视觉回退以及可配置的文档文本修剪限制。
+“RenameClick”很好地涵盖了常见的图像和文档工作流程 - JPEG、PNG、GIF、WebP、AVIF、BMP、SVG、HEIC、HEIF、TIFF，以及 PDF、DOC/DOCX、XLSX、PPTX、TXT、Markdown、CSV、RTF、ODT、JSON、XML、YAML、HTML、日志、SQL、字幕和日历/联系人文件 - 并且它添加了带有本地语音的音频（MP3、WAV、FLAC、M4A、AAC）转录。它还具有有用的文档处理详细信息：文本 PDF 和 Office 文档的文本提取、扫描 PDF 的视觉回退以及可配置的文档文本修剪限制。
 
 差距在于媒体和设计格式。 RenameClick 的文档没有列出相机 RAW 格式或 Sketch/Figma/PSD 等设计文件，并且明确表示不支持视频文件、存档和可执行文件。如果这些格式很重要，“Zush”更安全。
 
@@ -122,7 +126,7 @@ Zush 支持 RAW 照片格式、设计文件、音频、视频、iWork 文件、O
 
 这两种产品都可以运行本地模型，因此离线处理并不是独特的优势。 “RenameClick”在下载多 GB 后捆绑模型； “Zush”连接到“Ollama”。更重要的区别是工作流程的其余部分：“Zush”记录了现成的“Templates”、145+“Naming Blocks”、“Custom AI Blocks”、更丰富的本地化和元数据控制以及持久的“Rename History”。
 
-如果您更关心云提供商的选择和大容量的“BYOK”，“Zush”会胜出。 Zush 通过 BYOK 支持 Gemini、OpenRouter、OpenAI 和 Claude，密钥存储在本地，当本地处理优先时，它通过 Ollama 支持离线 AI。 OpenRouter 和 Claude 是著名的“Zush”侧选项；内置的Qwen3-VL、阿里云Qwen和LM Studio是“RenameClick”端选项。
+如果需要处理混合文件格式、精细命名模板、修改历史以及内含的云端AI，Zush是合适的选择。它也支持BYOK、LM Studio和Ollama。OpenRouter支持并非Zush的独有优势。 [Zush](https://zushapp.com/docs/ai-modes/).
 
 实际取舍很简单：看重命名深度、恢复细节、混合文件覆盖和提示词驱动的文件夹分类，就选 Zush。只有当 AI Search 工作区比缺少 RAW、设计文件、iWork 和视频支持更重要时，才考虑 RenameClick。
 
@@ -140,7 +144,7 @@ Zush 的文件夹监控以可复用的 Templates 和 Naming Blocks 自动进行 
 
 “Zush”通过生成有意义的文件名、添加“Finder”标签以及编写“Spotlight”友好的元数据来帮助检索。这适合已经搜索过“Finder”/“Spotlight”并希望文件名包含最重要上下文的 Mac 用户。
 
-“RenameClick”添加了一个单独的 AI 搜索工作区。它允许您按内容含义进行搜索，而不仅仅是文件名关键字。例如，即使原始文件名是“scan_001.pdf”，发票搜索也可以匹配 PDF 扫描。 AI 搜索对于重命名/移动目的是只读的，但它可以显示文件、排除结果或将项目移至垃圾箱。
+自2.18起，AI Search结果可以重命名和移动。搜索和索引不消耗修改额度，实际修改的文件会消耗额度。 [RenameClick 2.18](https://rename.click/changelogs).
 
 对于在混乱的文件夹中进行发现，“RenameClick”的人工智能搜索是一个有意义的差异化因素。为了将文件转变为跨操作系统的长期可搜索资产，“Zush”的文件名+标签+元数据工作流程是更好的日常层。
 
@@ -194,7 +198,7 @@ Zush 为每月10美元或终身48美元。RenameClick 为每月8美元或终身3
 
 ### RenameClick 支持视频或音频文件吗？
 
-音频有，视频没有。它的文档现在列出了带有本地语音转录的 MP3、WAV、FLAC、M4A 和 AAC，而视频文件（`.mp4`、`.mov`、`.mkv`、`.webm`）、其他音频编解码器、存档和可执行文件明确不受支持。 “Zush”支持 16 种视频格式及其音频列表。
+根据文档，RenameClick支持MP3、WAV、FLAC、M4A和AAC音频，但不支持视频。 Zush在Mac和Windows上支持视频，包括MP4、MOV、MKV、AVI和WMV。 [Zush](/docs/supported-file-types).
 
 ### 哪个具有更好的文件夹自动化功能？
 

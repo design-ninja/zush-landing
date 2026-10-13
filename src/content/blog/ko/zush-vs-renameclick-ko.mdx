@@ -11,7 +11,7 @@ tags:
   - "AI 파일 이름 바꾸기"
   - "도구 비교"
 tldr: "이 비교에서 가장 유연한 이름 지정 워크플로를 원한다면 Zush를 선택하세요. 기본 제공 Templates, 145개 이상의 Naming Blocks, Custom AI Blocks, 배치 복원이 되는 Rename History에 더해 평소 말투의 나만의 규칙을 따르는 AI 폴더 분류가 있습니다. RenameClick은 미리 정한 카테고리로 분류하며 공개된 지원 범위가 더 좁아 RAW, 디자인 파일, iWork, 동영상을 지원하지 않습니다. 로컬 AI와 실행 취소는 둘 다 있습니다."
-reviewed: "2026-09-30"
+reviewed: "2026-10-13"
 featuredOrder: 5
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -22,11 +22,15 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 
 
-**경쟁사 정보 업데이트 — 2026년 9월 24일:** RenameClick은 현재 무료 요금제에서 월 100회의 성공한 이름 변경 또는 이동, Pro Monthly는 8달러+VAT, Pro Lifetime은 36달러+VAT로 안내합니다. 결제 화면에서 최신 가격을 확인하세요. NameQuick 체험은 Managed가 14일간 250회, Self-Managed가 카드 없이 50회입니다.
+**경쟁사 정보 업데이트 — 2026년 9월 24일:** RenameClick은 현재 무료 요금제에서 월 100회의 성공한 이름 변경 또는 이동, Pro Monthly는 8달러+VAT, Pro Lifetime은 36달러+VAT로 안내합니다. 결제 화면에서 최신 가격을 확인하세요.
+
+2026-10-13 한정 재검증: RenameClick 2.19부터 Mac·Windows 직접 다운로드 버전에서 OpenRouter 등 OpenAI 호환 API를 지원합니다. Mac App Store 버전은 제외되며 외부 API 비용은 별도입니다. 다른 정보에는 기존 확인 날짜가 적용됩니다. [RenameClick 2.19](https://rename.click/changelogs).
+
+Zush는 Mac과 Windows에서 중첩 폴더와 추가 이름 변경 크레딧 없이 이미 이름을 바꾼 파일을 분류하는 기능을 지원합니다. Monitor 템플릿을 바꿔도 이전 파일이 자동으로 재정리되지는 않습니다. [Zush](/docs/folder-sorting).
 **[Zush](/) 제품 업데이트 — 2026년 8월 31일:** 현재 Mac 및 Windows용 Zush는 하나의 워크플로에서 네 가지 AI 모드를 제공합니다. 온라인 모드는 Zush Cloud AI와 BYOK이며, 로컬 모드는 LM Studio와 Ollama입니다. FREE의 파일명 변경 50회 한도는 네 모드가 공유하고, 유료 PRO는 네 모드 모두에서 Zush 한도를 제거합니다. 경쟁사 관련 주장은 별도로 표시된 각 검증 날짜를 유지합니다.
 빠른 답변: 파일 이름 규칙 자체가 중요한 경우 'Zush'를 선택하세요. 기성품 'Templates'는 145개 이상의 'Naming Blocks', 'Custom AI Blocks', 형식 지정, 현지화, 태그 및 메타데이터와 결합됩니다. 'Rename History'은 원본 이름과 새 이름, 폴더 및 타임스탬프를 저장하고 적용된 배치를 복원할 수 있습니다. 100개 이상의 형식에는 RAW, 디자인, 'iWork', 오디오 및 비디오가 포함됩니다. 'RenameClick'은 AI 검색이나 이름 변경 및 폴더 라우팅이 필수인 경우에만 해당되며 RAW, 디자인, 'iWork' 및 비디오 커버리지를 포기합니다.
 
-**마지막 확인 날짜: 2026년 7월 24일**, rename.click 자체 가격 페이지 및 문서 기준.
+**이전 확인: 2026-07-24.**
 
 이 업데이트에 대해 확인된 소스: 공개 가격, 오프라인/로컬 AI, 자동 흐름, AI 검색, 실행 취소 및 해당 '[지원되는 파일 형식 설명서](https://rename.click/docs/getting-started/supported-files)'을 포함한 '[Zush](/)' 및 '[RenameClick](https://rename.click/)'.
 
@@ -44,11 +48,11 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 |플랫폼|맥 + Windows|맥 +Windows|
 |처리 옵션|클라우드 AI, 'BYOK' 또는 'Ollama'을 통한 오프라인 AI|기본적으로 로컬 AI 내장|
 |로컬 모델이 번들로 제공됨|아니요, 'Ollama' 설정을 사용하세요.|예, Qwen3-VL 로컬 모델 다운로드 후|
-|AI 제공업체|Gemini, OpenRouter, OpenAI, Claude, 'Ollama' 오프라인|로컬 내장, OpenAI, Gemini, Alibaba Cloud Qwen, LM Studio, Ollama|
+|AI 제공업체|Zush Cloud AI; BYOK: Gemini, OpenRouter, OpenAI, Claude; LM Studio, Ollama|Qwen3-VL; LM Studio, Ollama; OpenAI, Gemini, Alibaba Cloud Qwen; OpenAI-compatible API (2.19, OpenRouter)|
 |이미지/디자인 형식|RAW, HEIC, AVIF, Sketch, Figma, AI, PSD를 포함한 41가지 이미지 형식 + 4가지 디자인 형식|JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF; 디자인 파일이 없습니다|
 |RAW 지원| <BlogHighlight>예(CR2, CR3, NEF, ARW, DNG, ORF, RAF, RW2, PEF, SRW, SR2)</BlogHighlight> |공개적으로 나열되지 않음|
-|문서 형식|'iWork'을 포함한 37가지 문서/PDF 형식|PDF, DOC/DOCX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, 로그, SQL, SRT/VTT, ICS/VCF|
-|비디오 형식|16가지 공통 형식|문서별로 지원되지 않음|
+|문서 형식|'iWork'을 포함한 37가지 문서/PDF 형식|PDF, DOC/DOCX, XLSX, PPTX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, 로그, SQL, SRT/VTT, ICS/VCF|
+|비디오 형식|Zush는 Mac과 Windows에서 MP4, MOV, MKV, AVI, WMV 등의 동영상을 지원합니다.|문서별로 지원되지 않음|
 |오디오 형식|MP3, M4A, WAV, FLAC, OGG, WebM, MPGA|MP3, WAV, FLAC, M4A, AAC(로컬 음성 전사 포함)|
 |폴더 모니터링|예|예, 자동 흐름|
 |파일 정렬/이동| AI 폴더 분류(베타): 평소 말투의 폴더 규칙 또는 Auto, 대상 폴더, 기존 폴더 재사용 | 미리 정한 목록의 AI Categories, Metadata Folders 또는 Match Folders(기존 최상위 폴더 최대 50개) |
@@ -89,7 +93,7 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 'RenameClick'는 'macOS' 및 'Windows'용 로컬 우선 데스크톱 앱입니다. 핵심 내용은 개인 정보 보호입니다. 일회성 로컬 모델을 다운로드한 후 내장된 Qwen3-VL 공급자는 API 키나 인터넷 연결 없이 장치의 파일을 처리할 수 있습니다. 또한 로컬 서버 워크플로를 위한 LM Studio 및 'Ollama'을 지원하며, 클라우드 API 키를 명시적으로 연결할 경우 OpenAI, Google Gemini 및 Alibaba Cloud Qwen도 지원합니다. 'RenameClick'는 Mac App Store 버전에서는 클라우드 제공업체를 사용할 수 없음을 나타냅니다. 해당 공급자가 중요한 경우 직접 다운로드를 사용하십시오.
 
-'RenameClick'은 이름만 바꾸는 것이 아닙니다. 파일 구성에 더 가깝습니다. 파일 이름을 바꾸고, 분류하고, 폴더로 이동하고, 자동 흐름 감시 규칙을 실행하고, AI 검색으로 콘텐츠를 검색하고, EXIF/날짜 자리 표시자에서 이름을 작성할 수 있습니다. 지원되는 파일 문서는 이제 일반 이미지(JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF), 긴 문서 목록(PDF, DOC/DOCX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, 로그, SQL, SRT/VTT, ICS/VCF) 및 오디오(MP3, WAV, FLAC, M4A, AAC)의 세 가지 범주를 다룹니다. 지역 음성 전사. 비디오 파일, 기타 오디오 코덱, 아카이브 및 실행 파일은 지원되지 않는 것으로 명시적으로 나열됩니다.
+'RenameClick'은 이름만 바꾸는 것이 아닙니다. 파일 구성에 더 가깝습니다. 파일 이름을 바꾸고, 분류하고, 폴더로 이동하고, 자동 흐름 감시 규칙을 실행하고, AI 검색으로 콘텐츠를 검색하고, EXIF/날짜 자리 표시자에서 이름을 작성할 수 있습니다. 지원되는 파일 문서는 이제 일반 이미지(JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF), 긴 문서 목록(PDF, DOC/DOCX, XLSX, PPTX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, 로그, SQL, SRT/VTT, ICS/VCF) 및 오디오(MP3, WAV, FLAC, M4A, AAC)의 세 가지 범주를 다룹니다. 지역 음성 전사. 비디오 파일, 기타 오디오 코덱, 아카이브 및 실행 파일은 지원되지 않는 것으로 명시적으로 나열됩니다.
 
 ## 가격 현실
 
@@ -114,7 +118,7 @@ Zush는 월 $10 또는 평생 $48입니다. RenameClick은 월 $8 또는 평생 
 
 ### 'RenameClick'은 일반적인 이미지, 광범위한 문서 목록, 그리고 이제 오디오를 포함합니다.
 
-'RenameClick'는 JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF, PDF, DOC/DOCX, TXT, Markdown, CSV, RTF, ODT, JSON, XML, YAML, HTML, 로그, SQL, 자막, 캘린더/연락처 파일 등 일반적인 이미지 및 문서 워크플로를 잘 다루며, 로컬 음성 기록이 포함된 오디오(MP3, WAV, FLAC, M4A, AAC)를 추가했습니다. 또한 텍스트 PDF 및 Office 문서에 대한 텍스트 추출, 스캔한 PDF에 대한 비전 폴백, 구성 가능한 문서 텍스트 자르기 제한 등 유용한 문서 처리 세부 정보도 있습니다.
+'RenameClick'는 JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF, PDF, DOC/DOCX, XLSX, PPTX, TXT, Markdown, CSV, RTF, ODT, JSON, XML, YAML, HTML, 로그, SQL, 자막, 캘린더/연락처 파일 등 일반적인 이미지 및 문서 워크플로를 잘 다루며, 로컬 음성 기록이 포함된 오디오(MP3, WAV, FLAC, M4A, AAC)를 추가했습니다. 또한 텍스트 PDF 및 Office 문서에 대한 텍스트 추출, 스캔한 PDF에 대한 비전 폴백, 구성 가능한 문서 텍스트 자르기 제한 등 유용한 문서 처리 세부 정보도 있습니다.
 
 격차는 미디어와 디자인 형식에 있습니다. 'RenameClick'의 문서에는 카메라 RAW 형식이나 Sketch/Figma/PSD와 같은 디자인 파일이 나열되어 있지 않으며 지원되지 않는 비디오 파일, 아카이브 및 실행 파일을 명시적으로 호출합니다. 이러한 형식이 중요하다면 'Zush'이 더 안전합니다.
 
@@ -122,7 +126,7 @@ Zush는 월 $10 또는 평생 $48입니다. RenameClick은 월 $8 또는 평생 
 
 두 제품 모두 로컬 모델을 실행할 수 있으므로 오프라인 처리가 고유한 장점은 아닙니다. 'RenameClick'는 다중 GB 다운로드 후 모델을 번들로 제공합니다. 'Zush'은 'Ollama'에 연결됩니다. 더 중요한 차이점은 작업 흐름의 나머지 부분입니다. 'Zush'는 이미 만들어진 'Templates', 145개 이상의 'Naming Blocks', 'Custom AI Blocks', 더욱 풍부한 현지화 및 메타데이터 제어, 지속적인 'Rename History'를 문서화합니다.
 
-클라우드 제공업체 선택과 대용량 'BYOK'에 더 관심이 있다면 'Zush'가 승리합니다. 'Zush'은 키가 로컬에 저장된 'BYOK'를 통해 Gemini, OpenRouter, OpenAI, Claude를 지원하고, 로컬 처리가 우선인 경우 'Ollama'를 통해 오프라인 AI를 지원합니다. OpenRouter와 Claude는 주목할 만한 'Zush' 측 옵션입니다. 내장된 Qwen3-VL, Alibaba Cloud Qwen, LM Studio는 'RenameClick' 측 옵션입니다.
+다양한 파일 형식, 정밀한 이름 템플릿, 변경 기록, 기본 제공 클라우드 AI가 필요하다면 Zush가 적합합니다. BYOK, LM Studio, Ollama도 지원합니다. OpenRouter 지원은 Zush만의 장점이 아닙니다. [Zush](https://zushapp.com/docs/ai-modes/).
 
 선택은 간단합니다. 이름 지정의 깊이, 복원 세부 정보, 혼합 파일 지원, 프롬프트 기반 폴더 분류를 원한다면 Zush입니다. RenameClick은 AI Search 작업 공간이 RAW, 디자인 파일, iWork, 동영상 미지원보다 중요할 때만 고려하세요.
 
@@ -140,7 +144,7 @@ Zush의 폴더 모니터링은 재사용 가능한 Templates와 Naming Blocks를
 
 'Zush'은 의미 있는 파일 이름을 생성하고, 'Finder' 태그를 추가하고, 'Spotlight'에 적합한 메타데이터를 작성하여 검색을 돕습니다. 이는 이미 Finder/Spotlight를 통해 검색하고 파일 이름이 가장 중요한 컨텍스트를 전달하기를 원하는 Mac 사용자에게 적합합니다.
 
-'RenameClick'은 별도의 AI 검색 작업 공간을 추가합니다. 파일 이름 키워드뿐만 아니라 콘텐츠 의미로 검색할 수 있습니다. 예를 들어 송장 검색은 원본 파일 이름이 'scan_001.pdf'인 경우에도 PDF 스캔과 일치할 수 있습니다. AI 검색은 이름 바꾸기/이동 목적으로 읽기 전용이지만 파일을 표시하거나 결과를 제외하거나 항목을 휴지통으로 이동할 수 있습니다.
+2.18부터 AI Search 결과의 이름 변경과 이동이 가능합니다. 검색과 인덱싱은 변경 적용 크레딧을 소비하지 않으며, 실제 변경된 파일이 소비 대상입니다. [RenameClick 2.18](https://rename.click/changelogs).
 
 혼란스러운 폴더 안의 발견에 있어 'RenameClick'의 AI 검색은 의미 있는 차별화 요소입니다. OS 전반에 걸쳐 파일을 장기간 검색 가능한 자산으로 변환하는 데 있어 Zush의 파일 이름 + 태그 + 메타데이터 워크플로우는 더 나은 일상 레이어입니다.
 
@@ -194,7 +198,7 @@ Zush는 월 $10 또는 평생 $48입니다. RenameClick은 월 $8 또는 평생 
 
 ### 'RenameClick'은 비디오 또는 오디오 파일을 지원합니까?
 
-오디오는 예, 비디오는 없습니다. 해당 문서에는 이제 MP3, WAV, FLAC, M4A 및 AAC와 로컬 음성 기록이 나열되어 있지만 비디오 파일(`.mp4`, `.mov`, `.mkv`, `.webm`), 기타 오디오 코덱, 아카이브 및 실행 파일은 명시적으로 지원되지 않습니다. 'Zush'는 오디오 목록과 함께 16가지 비디오 형식을 지원합니다.
+문서에 따르면 RenameClick은 MP3, WAV, FLAC, M4A, AAC 오디오를 지원하지만 동영상은 지원하지 않습니다. Zush는 Mac과 Windows에서 MP4, MOV, MKV, AVI, WMV 등의 동영상을 지원합니다. [Zush](/docs/supported-file-types).
 
 ### 폴더 자동화가 더 나은 것은 무엇입니까?
 

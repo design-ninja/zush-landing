@@ -11,7 +11,7 @@ tags:
   - "AI Dosyasını Yeniden Adlandırma"
   - "Takım Karşılaştırmaları"
 tldr: "Bu karşılaştırmadaki en yapılandırılabilir adlandırma iş akışı için Zush’u seçin: hazır Templates, 145+ Naming Blocks, Custom AI Blocks ve toplu geri yüklemeli Rename History, ayrıca günlük dildeki kendi kurallarınızı izleyen yapay zekâ klasör sıralaması. RenameClick önceden tanımlı kategorilere sıralar ve belgelenmiş kapsamı daha dardır: RAW, tasarım dosyaları, iWork veya video desteği yoktur. Yerel yapay zekâ ve geri alma ikisinde de vardır."
-reviewed: "2026-09-30"
+reviewed: "2026-10-13"
 featuredOrder: 5
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -22,11 +22,15 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 
 
-**Rakip güncellemesi — 24 Eylül 2026:** RenameClick şu anda ücretsiz planda ayda 100 başarılı yeniden adlandırma veya taşıma, aylık Pro için 8 ABD doları + KDV ve ömür boyu Pro için 36 ABD doları + KDV listeliyor; ödeme sayfasını doğrulayın. NameQuick Managed denemesi 14 günde 250, Self-Managed denemesi ise kartsız 50 yeniden adlandırma içeriyor.
+**Rakip güncellemesi — 24 Eylül 2026:** RenameClick şu anda ücretsiz planda ayda 100 başarılı yeniden adlandırma veya taşıma, aylık Pro için 8 ABD doları + KDV ve ömür boyu Pro için 36 ABD doları + KDV listeliyor; ödeme sayfasını doğrulayın.
+
+2026-10-13 tarihli sınırlı doğrulama: RenameClick 2.19’dan itibaren Mac ve Windows için doğrudan indirilen sürümlerde OpenRouter dahil OpenAI uyumlu API’leri destekler. Mac App Store sürümü buna dahil değildir; harici API ücretleri ayrıdır. Diğer bilgiler önceki doğrulama tarihlerini korur. [RenameClick 2.19](https://rename.click/changelogs).
+
+Zush, Mac ve Windows’ta iç içe klasörleri ve önceden yeniden adlandırılan dosyaları ek yeniden adlandırma kredisi kullanmadan sıralamayı destekler. Monitor şablonunu değiştirmek önceki dosyaları otomatik olarak yeniden düzenlemez. [Zush](/docs/folder-sorting).
 **[Zush](/) ürün güncellemesi — 31 Ağustos 2026:** Güncel Mac ve Windows Zush uygulamaları tek iş akışında dört yapay zekâ modu sunar: çevrimiçi Zush Cloud AI ve BYOK ile yerel LM Studio ve Ollama. FREE planındaki 50 yeniden adlandırma hakkı dört mod arasında paylaşılır; ücretli PRO, dört modun tamamında Zush sınırını kaldırır. Rakiplerle ilgili iddialar, ayrı ayrı belirtilen doğrulama tarihlerini korur.
 Hızlı cevap: Dosya adı kuralının kendisi önemli olduğunda 'Zush'u seçin. Hazır "Templates", 145'ten fazla "Naming Blocks", "Custom AI Blocks", biçimlendirme, yerelleştirme, etiketler ve meta verilerle birleştirilir; 'Rename History' orijinal ve yeni adları, klasörü ve zaman damgasını saklar ve uygulanan bir toplu işlemi geri yükleyebilir. 100'den fazla formatı RAW, tasarım, "iWork", ses ve videoyu içerir. "RenameClick" yalnızca AI Arama veya yeniden adlandırma artı klasör yönlendirmenin zorunlu olduğu ve RAW, tasarım, "iWork" ve video kapsamından vazgeçildiği durumlarda geçerlidir.
 
-**Son doğrulama: 24 Temmuz 2026**, rename.click'in kendi fiyatlandırma sayfası ve belgelerine göre.
+**Önceki doğrulama: 2026-07-24.**
 
 Bu güncelleme için kontrol edilen kaynaklar: Herkese açık fiyatlandırma, çevrimdışı/yerel yapay zeka, Otomatik Akış, Yapay Zeka Arama, geri alma ve "[desteklenen dosya türleri belgeleri](https://rename.click/docs/getting-started/supported-files)" dahil olmak üzere "[Zush](/)" ve "[RenameClick](https://rename.click/)".
 
@@ -44,11 +48,11 @@ Bu güncelleme için kontrol edilen kaynaklar: Herkese açık fiyatlandırma, ç
 |Platformlar|Mac + 'Windows'|Mac + 'Windows'|
 |İşleme seçenekleri|Cloud AI, "BYOK" veya "Ollama" aracılığıyla Çevrimdışı AI|Varsayılan olarak yerleşik yerel AI|
 |Yerel model paketlendi|Hayır, "Ollama" kurulumunu kullanın|Evet, indirildikten sonra Qwen3-VL yerel modeli|
-|Yapay zeka sağlayıcıları|İkizler, OpenRouter, OpenAI, Claude, 'Ollama' çevrimdışı|Yerleşik yerel, OpenAI, Gemini, Alibaba Cloud Qwen, LM Studio, 'Ollama'|
+|Yapay zeka sağlayıcıları|Zush Cloud AI; BYOK: Gemini, OpenRouter, OpenAI, Claude; LM Studio, Ollama|Qwen3-VL; LM Studio, Ollama; OpenAI, Gemini, Alibaba Cloud Qwen; OpenAI-compatible API (2.19, OpenRouter)|
 |Resim/tasarım formatları|41 görüntü formatı + 4 tasarım formatı, RAW, HEIC, AVIF, Sketch, Figma, AI, PSD dahil|JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF; tasarım dosyası yok|
 |RAW desteği| <BlogHighlight>Evet (CR2, CR3, NEF, ARW, DNG, ORF, RAF, RW2, PEF, SRW, SR2)</BlogHighlight> |Herkese açık olarak listelenmedi|
-|Belge formatları|'iWork' dahil 40 belge/PDF formatı|PDF, DOC/DOCX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, günlükler, SQL, SRT/VTT, ICS/VCF|
-|Video formatları|16 ortak format|Doküman başına desteklenmiyor|
+|Belge formatları|'iWork' dahil 40 belge/PDF formatı|PDF, DOC/DOCX, XLSX, PPTX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, günlükler, SQL, SRT/VTT, ICS/VCF|
+|Video formatları|Zush, Mac ve Windows’ta MP4, MOV, MKV, AVI ve WMV dahil video biçimlerini destekler.|Doküman başına desteklenmiyor|
 |Ses formatları|MP3, M4A, WAV, FLAC, OGG, WebM, MPGA|Yerel konuşma transkripsiyonlu MP3, WAV, FLAC, M4A, AAC|
 |Klasör izleme|Evet|Evet, Otomatik Akış|
 |Dosyaları sıralama / taşıma| Yapay zekâ klasör sıralama (beta): günlük dilde klasör kuralları veya Auto, hedef klasör, mevcut klasörleri yeniden kullanma | Önceden tanımlı listeden AI Categories, Metadata Folders veya Match Folders (en fazla 50 mevcut üst düzey klasör) |
@@ -89,7 +93,7 @@ Fiyatlandırma basit: PRO için ayda 10$ veya tek seferlik 48$. Her iki ücretli
 
 "RenameClick", "macOS" ve "Windows" için yerel öncelikli bir masaüstü uygulamasıdır. Temel özelliği gizliliktir: Bir kerelik yerel model indirme işleminden sonra yerleşik Qwen3-VL sağlayıcısı, API anahtarı veya internet bağlantısı olmadan cihazdaki dosyaları işleyebilir. Ayrıca yerel sunucu iş akışları için LM Studio ve "Ollama"in yanı sıra bulut API anahtarlarını açıkça bağladığınızda OpenAI, Google Gemini ve Alibaba Cloud Qwen'i de destekler. 'RenameClick', bulut sağlayıcılarının Mac App Store sürümünde bulunmadığını belirtiyor; Bu sağlayıcılar önemliyse doğrudan indirmeyi kullanın.
 
-'RenameClick' yalnızca bir yeniden adlandırıcı değildir. Dosya düzenleyiciye daha yakındır: dosyaları yeniden adlandırabilir, kategorilere ayırabilir, klasörlere taşıyabilir, Otomatik Akış izleme kurallarını çalıştırabilir, AI Arama ile içeriğe göre arama yapabilir ve EXIF/tarih yer tutucularından adlar oluşturabilir. Desteklenen dosya belgeleri artık üç kategoriyi kapsamaktadır: ortak resimler (JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF), uzun bir belge listesi (PDF, DOC/DOCX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, günlükler, SQL, SRT/VTT, ICS/VCF) ve ses (MP3, WAV, FLAC, M4A, AAC) yerel konuşma transkripsiyonu ile. Video dosyaları, diğer ses codec bileşenleri, arşivler ve yürütülebilir dosyalar açıkça desteklenmiyor olarak listelenir.
+'RenameClick' yalnızca bir yeniden adlandırıcı değildir. Dosya düzenleyiciye daha yakındır: dosyaları yeniden adlandırabilir, kategorilere ayırabilir, klasörlere taşıyabilir, Otomatik Akış izleme kurallarını çalıştırabilir, AI Arama ile içeriğe göre arama yapabilir ve EXIF/tarih yer tutucularından adlar oluşturabilir. Desteklenen dosya belgeleri artık üç kategoriyi kapsamaktadır: ortak resimler (JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF), uzun bir belge listesi (PDF, DOC/DOCX, XLSX, PPTX, TXT, MD, CSV, RTF, ODT, JSON, XML, YAML, HTML, günlükler, SQL, SRT/VTT, ICS/VCF) ve ses (MP3, WAV, FLAC, M4A, AAC) yerel konuşma transkripsiyonu ile. Video dosyaları, diğer ses codec bileşenleri, arşivler ve yürütülebilir dosyalar açıkça desteklenmiyor olarak listelenir.
 
 ## Fiyatlandırma gerçekliği
 
@@ -114,7 +118,7 @@ Zush ayda 10 ABD doları veya ömür boyu 48 ABD dolarıdır. RenameClick ayda 8
 
 ### 'RenameClick' yaygın görselleri, geniş bir belge listesini ve artık sesi kapsıyor
 
-'RenameClick' yaygın görüntü ve belge iş akışlarını iyi bir şekilde kapsar - JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF, artı PDF, DOC/DOCX, TXT, Markdown, CSV, RTF, ODT, JSON, XML, YAML, HTML, günlükler, SQL, altyazılar ve takvim/kişi dosyaları - ve ses (MP3, WAV, FLAC, M4A, AAC) ekledi yerel konuşma transkripsiyonu. Aynı zamanda yararlı belge işleme ayrıntılarına da sahiptir: metin PDF'leri ve Office belgeleri için metin çıkarma, taranan PDF'ler için görsel geri dönüş ve yapılandırılabilir belge metni kırpma sınırları.
+'RenameClick' yaygın görüntü ve belge iş akışlarını iyi bir şekilde kapsar - JPEG, PNG, GIF, WebP, AVIF, BMP, SVG, HEIC, HEIF, TIFF, artı PDF, DOC/DOCX, XLSX, PPTX, TXT, Markdown, CSV, RTF, ODT, JSON, XML, YAML, HTML, günlükler, SQL, altyazılar ve takvim/kişi dosyaları - ve ses (MP3, WAV, FLAC, M4A, AAC) ekledi yerel konuşma transkripsiyonu. Aynı zamanda yararlı belge işleme ayrıntılarına da sahiptir: metin PDF'leri ve Office belgeleri için metin çıkarma, taranan PDF'ler için görsel geri dönüş ve yapılandırılabilir belge metni kırpma sınırları.
 
 Boşluk medya ve tasarım formatlarıyla ilgilidir. RenameClick'in belgeleri kamera RAW formatlarını veya Sketch/Figma/PSD gibi tasarım dosyalarını listelemiyor ve video dosyalarını, arşivleri ve yürütülebilir dosyaları açıkça desteklenmiyor olarak adlandırıyor. Bu formatlar önemliyse 'Zush' daha güvenlidir.
 
@@ -122,7 +126,7 @@ Boşluk medya ve tasarım formatlarıyla ilgilidir. RenameClick'in belgeleri kam
 
 Her iki ürün de yerel modelleri çalıştırabildiğinden çevrimdışı işleme benzersiz bir avantaj değildir. 'RenameClick', çoklu GB indirme sonrasında bir modeli paketler; 'Zush', 'Ollama'e bağlanır. En önemli fark, iş akışının geri kalanıdır: "Zush", hazır "Templates"yi, 145+ "Naming Blocks"ü, "Custom AI Blocks"i, daha zengin yerelleştirme ve meta veri kontrollerini ve kalıcı "Rename History"yi belgeler.
 
-Bulut sağlayıcı seçimine ve yüksek hacimli "BYOK"e daha fazla önem veriyorsanız "Zush" kazanır. 'Zush', anahtarların yerel olarak depolandığı Gemini, OpenRouter, OpenAI ve Claude'u 'BYOK' aracılığıyla destekler ve yerel işleme öncelikli olduğunda 'Ollama' aracılığıyla Çevrimdışı AI'yi destekler. OpenRouter ve Claude dikkat çekici 'Zush' tarafı seçenekleridir; yerleşik Qwen3-VL, Alibaba Cloud Qwen ve LM Studio "RenameClick" tarafı seçenekleridir.
+Karışık dosya biçimleri, ayrıntılı ad şablonları, değişiklik geçmişi ve dahil olan bulut yapay zekâsı için Zush uygundur. BYOK, LM Studio ve Ollama da desteklenir. OpenRouter desteği Zush’a özel bir avantaj değildir. [Zush](https://zushapp.com/docs/ai-modes/).
 
 Pratik seçim basit: adlandırma derinliği, geri yükleme ayrıntısı, karışık dosya çeşitliliği ve istem tabanlı klasör sıralama için Zush’u seçin. RenameClick’i yalnızca AI Search çalışma alanı RAW, tasarım dosyası, iWork ve video eksikliğinden daha önemliyse düşünün.
 
@@ -140,7 +144,7 @@ Amacınız dosyaları tutarlı biçimde adlandırmak ve kendi cümlelerinizle ta
 
 'Zush' anlamlı dosya adları oluşturarak, 'Finder' etiketleri ekleyerek ve 'Spotlight' dostu meta veriler yazarak almaya yardımcı olur. Bu, zaten 'Finder'/'Spotlight' üzerinden arama yapan ve dosya adlarının en önemli bağlamı taşımasını isteyen Mac kullanıcılarına uygundur.
 
-"RenameClick" ayrı bir Yapay Zeka Arama çalışma alanı ekler. Yalnızca dosya adı anahtar kelimelerine göre değil, içerik anlamına göre arama yapmanızı sağlar. Örneğin, fatura araması, orijinal dosya adı "scan_001.pdf" olsa bile PDF taramalarıyla eşleşebilir. AI Arama, yeniden adlandırma/taşıma amacıyla salt okunurdur ancak dosyaları ortaya çıkarabilir, sonuçları hariç tutabilir veya öğeleri çöp kutusuna taşıyabilir.
+2.18’den itibaren AI Search sonuçları yeniden adlandırılabilir ve taşınabilir. Arama ve dizinleme değişiklik uygulama kredisi tüketmez; gerçekten değiştirilen dosyalar tüketir. [RenameClick 2.18](https://rename.click/changelogs).
 
 Kaotik klasörlerin içindeki keşifler için, RenameClicknin Yapay Zeka Araması anlamlı bir farklılaştırıcıdır. Dosyaları işletim sistemi genelinde uzun vadeli aranabilir varlıklara dönüştürmek için, "Zush"in dosya adı + etiket + meta veri iş akışı daha iyi bir günlük katmandır.
 
@@ -194,7 +198,7 @@ RenameClick'in herkese açık desteklenen dosya listesi, CR2, CR3, NEF, ARW, DNG
 
 ### 'RenameClick' video veya ses dosyalarını destekliyor mu?
 
-Ses evet, video hayır. Dokümanları artık MP3, WAV, FLAC, M4A ve AAC'yi yerel konuşma transkripsiyonuyla listeliyor; video dosyaları ('.mp4', '.mov', '.mkv', '.webm'), diğer ses codec'leri, arşivler ve çalıştırılabilir dosyalar açıkça desteklenmiyor. 'Zush', ses listesinin yanı sıra 16 video formatını destekler.
+Belgelerine göre RenameClick MP3, WAV, FLAC, M4A ve AAC ses dosyalarını destekler, ancak videoyu desteklemez. Zush, Mac ve Windows’ta MP4, MOV, MKV, AVI ve WMV dahil video biçimlerini destekler. [Zush](/docs/supported-file-types).
 
 ### Hangisi daha iyi klasör otomasyonuna sahiptir?
 

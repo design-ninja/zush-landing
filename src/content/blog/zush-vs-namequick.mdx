@@ -9,7 +9,7 @@ tags:
   - "AI File Renaming"
   - "Tool Comparisons"
 tldr: "Zush offers 145+ Naming Blocks, documented RAW/design/media coverage, and unmetered paid renames. NameQuick runs on Mac and Windows with Rules, Quick Organize, inbox import, and content search; MLX and Finder actions are Mac-only. Its managed suggestions consume allowance even if unapplied, monthly allowance expires, and the $69 self-managed license covers one computer."
-reviewed: "2026-10-05"
+reviewed: "2026-10-13"
 featuredOrder: 3
 ---
 
@@ -20,7 +20,7 @@ import BlogToolMeta from '@/components/blog/BlogToolMeta.astro';
 
 Quick answer: choose [Zush](/) for reusable filenames built from 145+ Naming Blocks, documented RAW/design/media coverage, and unmetered paid renames at <BlogHighlight>$10/month or $48 one-time</BlogHighlight>. NameQuick also runs on Mac and Windows and offers conditional Rules, Quick Organize, inbox import, and content search. Its practical trade-offs are metered managed suggestions, expiring monthly allowance, and a one-computer Self-Managed license.
 
-**Last verified: October 5, 2026.** Written by the maker of Zush. Sources: [NameQuick product, pricing and Windows FAQ](https://www.namequick.app/), [workflow overview](https://www.namequick.app/about), and [Mac/Windows changelog](https://www.namequick.app/changelog). This is a documentation comparison, not an independent performance test.
+**Targeted review: October 13, 2026.** NameQuick's trial stages and releases were rechecked against its [product and pricing FAQ](https://www.namequick.app/) and [Mac/Windows changelog](https://www.namequick.app/changelog). Other platform and workflow facts retain their October 5 check. Written by the maker of Zush; this is a documentation comparison, not an independent performance test.
 
 Sources checked for this update: [Zush](/) and [NameQuick](https://www.namequick.app/), including public pricing, platform, provider, folder monitoring, undo, and format-support details.
 
@@ -43,13 +43,13 @@ If you are searching "Zush vs NameQuick", compare the workflow you can verify ra
 |---|---|---|
 | Pricing | <BlogHighlight>$10/month or $48 one-time</BlogHighlight> | Managed from $12/mo; $69 one-time Self-Managed (1 device, lifetime updates) |
 | Metering | <BlogHighlight>None on paid PRO</BlogHighlight> | Managed is metered at 500 / 2,000 / 5,000 / 10,000 renames per month; Self-Managed is not |
-| Free tier | 50 renames to start | Current product page: Managed 70 renames/14 days, card required; Self-Managed 30 renames, no card/time limit |
+| Free tier | 50 renames shared across all AI modes, no card | Managed: 30 after email verification, no card/time limit; optional 70 more with a card for 14 days. Self-Managed: separate 30 with your key/model, no card/time limit |
 | 5-year cost (one-time path) | <BlogHighlight>$48 total</BlogHighlight> | $69 + API/local model setup |
 | Platforms | Mac + Windows | Mac + Windows; Windows x64 installer, Windows ARM through emulation |
 | Image and design formats | 41 image formats + 4 design formats (RAW, HEIC, AVIF, Sketch, Figma, AI, PSD) | 30+ formats spanning categories |
 | RAW support | <BlogHighlight>Yes (11 variants)</BlogHighlight> | Not listed publicly |
 | Document formats | 40 document/PDF formats, including iWork | Office docs covered |
-| Video formats | 16 common formats | Listed as part of 30+ formats |
+| Video formats | Mac and Windows: MP4, MOV, MKV, AVI, WMV, and other supported video formats | Listed as part of 30+ formats |
 | Audio formats | 7 common formats | Listed as part of 30+ formats |
 | AI processing routes | Zush Cloud AI; BYOK with Gemini, OpenRouter, OpenAI, or Claude; LM Studio; Ollama | <BlogHighlight>7 public options</BlogHighlight> (OpenAI, OpenRouter, Claude, Gemini, Ollama, LM Studio, MLX) |
 | BYOK | <BlogHighlight>Available on every plan</BlogHighlight> | $69 Self-Managed, then bring your key or local model |
@@ -79,12 +79,12 @@ Zush offers **AI folder sorting (beta)** using **Auto** or plain-language **Fold
 
 Choose a **Destination folder**, or keep the source folder as the root. Enable **Reuse existing folders** to prefer suitable folders already there; Zush can create a new one when nothing fits. In a manual batch, review both the suggested names and folders before applying. To rename in place, leave sorting off and keep the original destination.
 
-Save the sorting settings in a **Template** and assign it to **Monitor** for new files directly inside the watched folder. This does not reorganize files already processed. Test the Template in a manual batch first. See the [folder sorting guide](/docs/folder-sorting) for the setup and monitoring scope.
+Save the sorting settings in a **Template** and assign it to **Monitor** for new files directly inside the watched folder. Changing the Template does not automatically reorganize files already processed. Separately, Zush on Mac and Windows supports nested folder rules and sorting after renaming without another rename credit. See the [folder sorting guide](/docs/folder-sorting) for this distinction and the monitoring scope.
 
 ## NameQuick
 
 <BlogToolMeta platform="Mac and Windows downloads" website="https://www.namequick.app/" label="namequick.app">
-  <Fragment slot="pricing">Managed $12/$29/$59/$99 per month for 500/2,000/5,000/10,000 suggestions; Self-Managed $69 one-time for one computer with lifetime updates and BYOK/local models. Current product-page trials: Managed 70 renames over 14 days with a card; Self-Managed 30 renames without a card.</Fragment>
+  <Fragment slot="pricing">Managed $12/$29/$59/$99 per month for 500/2,000/5,000/10,000 suggestions; Self-Managed $69 one-time for one computer with lifetime updates and BYOK/local models. Managed starts with 30 renames without a card, then offers 70 more with a card for 14 days. Self-Managed has separate 30-renames access with your key/model and no card.</Fragment>
 </BlogToolMeta>
 
 NameQuick publishes Windows and Mac downloads with two purchase paths. Managed is $12/$29/$59/$99 per month for 500/2,000/5,000/10,000 suggestions, with no device limit. Self-Managed is $69 once for one computer, lifetime updates, and your own key or model. Its Windows FAQ confirms Managed, BYOK, Ollama, and LM Studio; MLX and Finder tags/comments are Mac-only. The Windows installer is x64, with ARM PCs using Windows 11 emulation.
@@ -95,13 +95,13 @@ Its published workflow includes Watch Folders, connected inboxes, Undo & Recover
 
 ### Recent releases and meaningful limitations
 
-The changelog lists **3.0.16 on September 28**: model and reasoning selections persist across switches/restarts, and custom providers save API keys correctly. It now lists **3.0.17 on September 30** for Mac and Windows, with onboarding/trial changes and reliability fixes. Trial wording differs between release notes and the current product page; the allowance and card requirements above follow the product page checked October 5. Confirm them in the actual signup screen.
+The [changelog](https://www.namequick.app/changelog) lists **3.0.25 on October 11** for Mac and Windows, following improvements to onboarding, watched folders, local-model recovery, and search. The current [trial FAQ](https://www.namequick.app/) explains two Managed stages: 30 renames after email verification without a card or time limit, then an optional 70 more with a card over 14 days. Self-Managed offers a separate 30-renames trial using your own key or local model. The additional 70 Managed renames are not card-free.
 
 Managed allowance is consumed when a suggestion is generated, even if you never apply it. Unused monthly renames expire; annual billing supplies the year's allowance upfront. The Self-Managed license covers one computer, and local photos/scans require a vision-capable model. These are more concrete constraints than treating Windows support as undocumented.
 
 ## Pricing reality
 
-For someone using either tool steadily over 5 years (light to moderate use, ~5,000 renames/year):
+License-cost scenarios at the checked list prices, assuming prices remain constant. The Managed row uses monthly billing and at most 500 suggestions each month; 5,000 files in a year does not by itself guarantee that a monthly allowance fits. One-time rows exclude provider charges, hardware, and any future paid upgrades. These are calculations, not a measured total cost or a cheapest-plan ranking:
 
 | Path | Year 1 | 3 years | 5 years |
 |---|---|---|---|
@@ -136,7 +136,8 @@ NameQuick publicly lists seven AI backends: OpenAI, OpenRouter, Claude, Gemini, 
 
 The big differentiators:
 
-- <BlogHighlight>OpenRouter</BlogHighlight> — available in Zush BYOK, with a selectable compatible model.
+- **OpenRouter** — supported by both products; access alone does not differentiate them.
+- **Included cloud AI and optional BYOK** — Zush provides both on the same FREE or PRO plan, with a shared 50-renames free allowance and unlimited PRO renames. External API usage is still billed separately.
 - <BlogHighlight>MLX</BlogHighlight> — only on NameQuick, useful if Apple Silicon–optimized local inference is a hard requirement.
 
 ## Pick by use case
@@ -169,9 +170,17 @@ For a wider view of metered and unmetered plans, see [how much AI file renaming 
 
 ## FAQ
 
+### When is Zush a good alternative to NameQuick?
+
+Zush fits mixed-file Mac and Windows workflows that need explicit RAW and design-format support, reusable filename Templates, granular Naming Blocks, preview, and batch recovery through Rename History. PRO includes managed cloud AI without a monthly rename quota. NameQuick adds MLX on supported Macs and conditional document actions; Zush does not offer every NameQuick workflow.
+
+### Can I try NameQuick without a credit card?
+
+Yes. NameQuick Managed starts with 30 renames after email verification, without a card or time limit. Its optional additional 70-renames trial requires a card and lasts 14 days. Self-Managed separately offers 30 renames using your key or local model. Zush provides 50 free renames shared across its AI modes, with no card required.
+
 ### Can Zush sort files into folders as well as rename them?
 
-Yes. Its optional AI folder sorting is in beta on Mac and Windows. Choose Auto or write Folder rules, select the destination, and review both names and groups in a manual batch. A sorting-enabled Template can also process new files directly inside a monitored folder; it does not reorganize files already processed. Leave sorting off and keep the original destination for naming only.
+Yes. Its optional AI folder sorting is in beta on Mac and Windows. Both platforms support nested folder rules and sorting already renamed files without another rename credit. Review the plan before applying it. Monitor can process new arrivals, but changing its Template does not automatically reorganize earlier files. Leave sorting off and keep the original destination for naming only.
 
 ### Does NameQuick run on Windows?
 

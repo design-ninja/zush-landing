@@ -10,7 +10,7 @@ tags:
   - "Videos"
   - "File Naming"
 tldr: "AI video renaming works by sampling frames from a video, combining that visual context with subtitle files when available, and turning vague names like VID_20260507_184233.mp4 into searchable filenames."
-reviewed: "2026-08-08"
+reviewed: "2026-10-13"
 ---
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
@@ -66,9 +66,11 @@ The goal is not to write a perfect title. The goal is to make the file identifia
 
 ## Which video formats are supported in Zush
 
-Zush 3.0 supports 16 common video formats:
+Zush supports these video formats on Mac and Windows:
 
-`mp4`, `mov`, `qt`, `m4v`, `mpeg`, `mpg`, `m2v`, `3gp`, `3gpp`, `3g2`, `3gp2`, `dv`, `ts`, `mts`, `m2ts`, and `vob`.
+`mp4`, `mov`, `qt`, `m4v`, `mpeg`, `mpg`, `m2v`, `3gp`, `3gpp`, `3g2`, `3gp2`, `dv`, `ts`, `mts`, `m2ts`, `vob`, `mkv`, `avi`, and `wmv`.
+
+See the [supported format list](/docs/supported-file-types) for the full file coverage. A supported container does not guarantee that every codec or protected file can be analyzed; test representative files before processing a library.
 
 That covers common phone videos, screen recordings, QuickTime exports, camera clips, transport stream files, and older DVD-style video sources. Zush also supports subtitle files such as `.srt` and `.vtt` through its document pipeline, so a folder can contain both the video and its subtitle context.
 

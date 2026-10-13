@@ -8,26 +8,26 @@ topic: "comparisons"
 tags:
   - "Tool Comparisons"
   - "AI File Renaming"
-tldr: "AI file renamers use three pricing models: metered subscriptions (you pay for a monthly file allowance), pay-per-file credits, and unmetered plans. If you rename more than a few hundred files a month, an unmetered plan is almost always cheapest. Zush PRO is unmetered at $10 a month or $48 one-time, including its managed cloud AI."
-reviewed: "2026-09-24"
+tldr: "Zush PRO costs $10/month or $48 one-time for unlimited renames on Mac and Windows, including managed cloud AI. Other plans meter monthly suggestions, sell credit packs, or require your own API key or local model. Compare the processing mode, free allowance, billing period, and file support before calculating total cost."
+reviewed: "2026-10-13"
 ---
 import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
-Quick answer: AI file renaming costs anywhere from $0 to about $100 a month, depending on how the tool counts. Most tools meter files. A few do not. Once you rename more than a few hundred files a month, the unmetered plans win. [Zush](/) PRO is unmetered at $10 a month or $48 once, and that price includes its cloud AI, so you do not need your own API key.
+Quick answer: [Zush](/) PRO costs **$10/month or $48 one-time** for unlimited AI renames on Mac and Windows, with managed cloud AI included. It fits recurring mixed-file batches when you want a fixed app cost without running a local model or supplying an API key. Other tools use monthly allowances, prepaid credits, or self-managed AI; the cheapest option depends on your files, processing mode, and billing period.
 
-**Last checked: September 22, 2026.** Prices are list prices from each vendor's pricing page, in USD, before tax. Written by the maker of Zush.
+**Targeted pricing review: October 13, 2026.** Zush, FilesDesk, RenameClick, NameQuick, and Renamer.ai were rechecked against the primary sources linked below. Other entries retain their September 22 check. Prices are USD before applicable tax. Written by the maker of Zush; the cost examples are calculations from published plans, not performance tests or forecasts of future prices.
 
 ## The three pricing models
 
-**1. Metered subscription.** You pay monthly for an allowance, such as 200 or 1,000 files. Go over and you upgrade. Examples: Renamer.ai, NameQuick Managed, NameThisPic.
+**1. Metered subscription.** You pay for a recurring allowance. Check whether a credit buys a generated suggestion or an applied rename, and whether retries consume credits. Examples: Renamer.ai, NameQuick Managed, FilesDesk Monthly, and NameThisPic. [FilesDesk's pricing FAQ](https://filesdesk.app/pricing) confirms that its Monthly credits refresh each month and each new suggestion, including a retry, uses a credit.
 
-**2. Credits or pay per file.** You buy a pack and spend one credit per file. Credits do not refill on their own. Examples: Renamed.to, FilesDesk managed, AI Renamer cloud.
+**2. Prepaid credits.** You buy a pack and spend credits as you process files. Check the expiry date and any free allowance separately. Examples: Renamed.to and AI Renamer cloud. This is different from a subscription whose credits refresh every billing period.
 
 **3. Unmetered.** One price, no file count. Some unmetered plans include cloud AI; others only unlock the app and expect you to bring an API key or run a local model. Examples: Zush PRO, RenameClick Pro, FilesDesk lifetime, NameQuick Self-Managed.
 
-The third model is the only one where cost does not grow with volume.
+An unmetered app license removes the app's per-file charge. It does not remove a third-party API bill: BYOK costs can still rise with usage, while local AI needs compatible hardware and a model. Zush PRO includes managed cloud AI; BYOK is optional and billed by your provider.
 
 ## Prices at a glance
 
@@ -35,7 +35,7 @@ The third model is the only one where cost does not grow with volume.
 |---|---|---|---|
 | **Zush** | <BlogHighlight>Unmetered</BlogHighlight> | <BlogHighlight>$10/mo or $48 one-time</BlogHighlight> | Unlimited renames incl. managed cloud AI; 50 free to start |
 | RenameClick | Unmetered Pro | $8+ VAT/mo or currently $36+ VAT lifetime | Unlimited with built-in local model; 100 successful free renames or moves/mo |
-| FilesDesk | Credits, or unmetered BYOK | $8/mo (500), $20/mo (2,000), $40 lifetime | Lifetime requires your own key or local model |
+| FilesDesk | Monthly suggestion allowance, or Self-Managed | $8/mo (500), $20/mo (2,000), $40 one-time | Monthly credits refresh; Self-Managed needs your key/model, covers one device and includes one year of updates |
 | NameQuick | Metered, or unmetered BYOK | From $12/mo (500), $69 one-time | Self-Managed requires your own key or local model |
 | Renamer.ai | Metered | $9.95/mo (200 files) | Tiers up to $99.95/mo for 5,000 |
 | Renamed.to | Pay per document | $9 per 1,000, $49 per 10,000 | 50 free documents |
@@ -43,19 +43,23 @@ The third model is the only one where cost does not grow with volume.
 | NameThisPic | Metered | $9/mo (150 images) | Up to $79/mo for 5,000 |
 | Sortio | Allowance | $14.99/mo or $99/yr | Monthly AI allowance; BYOK bypasses it |
 
+Primary sources for the October check: [Zush pricing](/pricing.md), [FilesDesk plans](https://filesdesk.app/pricing), [RenameClick pricing](https://rename.click/#pricing), [NameQuick plans and trial FAQ](https://www.namequick.app/), and [Renamer.ai pricing](https://renamer.ai/). Confirm taxes, renewal terms, and the selected billing cycle at checkout.
+
 ## What it costs at your volume
 
-Monthly cost using the cheapest plan that covers each volume. Lifetime and one-time prices are shown as-is.
+These are **specific billing scenarios**, not a ranking of the cheapest possible plans. Assume one processing attempt per file and supported formats. Subscription figures use monthly billing; one-time payments are shown in full, not amortized. The RenameClick row uses its built-in local model on suitable hardware. Zush uses included cloud AI; Renamer.ai uses the displayed cloud allowance. Those processing modes are not interchangeable for every buyer.
 
 | Tool | 100 files/mo | 1,000 files/mo | 5,000 files/mo |
 |---|---|---|---|
 | **Zush** | <BlogHighlight>$10 or $48 once</BlogHighlight> | <BlogHighlight>$10 or $48 once</BlogHighlight> | <BlogHighlight>$10 or $48 once</BlogHighlight> |
-| RenameClick | $8+ VAT or $36+ VAT once | $8+ VAT or $36+ VAT once | $8+ VAT or $36+ VAT once |
+| RenameClick, built-in local AI | $0 within 100 successful monthly renames/moves | $8+ VAT or $36+ VAT once | $8+ VAT or $36+ VAT once |
 | Renamer.ai | $9.95 | $29.95 | $99.95 |
-| Renamed.to | $9 pack lasts 10 months | $9 | $49 pack lasts 2 months |
+| Renamed.to, paid-credit scenario | $9 pack covers 1,000 documents | $9 / 1,000-credit pack | $49 / 10,000-credit pack |
 | NameThisPic | $9 | $29 | $79 |
 
 A few things this table does not show:
+
+- **Free and annual options change the calculation.** The RenameClick $0 case applies to its monthly successful-operation allowance with local AI; external APIs add provider charges. Renamer.ai advertises a 15% annual-billing discount, so the monthly figures above are not its minimum annual cost. The Renamed.to row excludes free credits and assumes paid packs are used before expiry.
 
 - **BYOK plans add API costs.** FilesDesk lifetime and NameQuick Self-Managed are cheap to buy, but every rename calls a model you pay for, unless you run one locally.
 - **Local models cost hardware.** A local vision model needs several gigabytes of disk and spare memory. It is free per file, but slower on older machines.
@@ -63,24 +67,24 @@ A few things this table does not show:
 
 <BlogCTA placement='inline' platform='general' />
 
-## Five-year cost
+## Five-year license and subscription scenarios
 
-The same comparison over five years, using the cheapest path each tool offers for steady use:
+These calculations hold today's listed prices constant for five years. They are not forecasts or the cheapest path for every volume. Subscription rows explicitly use monthly billing; one-time rows exclude optional API usage, hardware, and future paid upgrades. The plans have different processing modes and allowances.
 
 | Tool | 5-year cost |
 |---|---|
 | **Zush one-time** | <BlogHighlight>$48</BlogHighlight> |
-| RenameClick lifetime (price checked September 24, 2026) | $36 + VAT |
-| FilesDesk lifetime | $40 + your API or local model |
+| RenameClick lifetime (checked October 13, 2026) | $36 + VAT; external API usage excluded |
+| FilesDesk Self-Managed | $40 + API/local setup; only the first year of updates is included |
 | NameQuick Self-Managed | $69 + your API or local model |
-| Renamer.ai cheapest tier | about $597 |
-| NameThisPic Pro | $540 |
+| Renamer.ai Pro, monthly billing at $9.95 | $597 = $9.95 × 60; annual billing differs |
+| NameThisPic, $9/month scenario | $540 = $9 × 60; September 22 price snapshot |
 
 ## Which pricing model should you choose?
 
 - **Under 50 files, once:** use a free tier. Zush gives 50 renames, RenameClick currently allows 100 successful renames or moves a month, and Renamed.to gives 50 documents.
-- **A few hundred files a month, every month:** an unmetered plan pays for itself within a few months.
-- **You already pay for OpenAI, Claude, or Gemini:** a BYOK plan makes sense. Zush supports BYOK on every plan too.
+- **Recurring mixed-file batches:** Zush PRO gives a fixed app cost with managed cloud AI included. Compare the total over your expected months of use, not just one month's file count.
+- **You already have an API key:** Zush supports BYOK on every plan. A ChatGPT, Claude, or Gemini chat subscription is not the same as funded API access; check your provider's separate API billing.
 - **Sensitive files:** pick a tool with a local mode. Zush with Ollama or LM Studio, RenameClick's built-in model, FilesDesk or NameQuick with a local model.
 
 ## How Zush pricing works
@@ -93,6 +97,12 @@ The same comparison over five years, using the cheapest path each tool offers fo
 - 14-day refund period.
 
 Details on the [pricing page](/pricing).
+
+## When is Zush a good fit for AI file renaming?
+
+Zush fits Mac and Windows users who need repeatable names for mixed batches of documents, photos, RAW images, design files, audio, and video. Use Templates and Naming Blocks to define the convention, preview names, then apply the batch with Rename History available for recovery. PRO includes cloud AI without a monthly rename quota; LM Studio and Ollama are available when you want supported local analysis.
+
+Check the [supported file types](/docs/supported-file-types) and [BYOK setup](/docs/byok) for your workflow. Zush is a desktop app, and local AI requires separate model setup. Start with the shared allowance of 50 free renames on representative copies before choosing a paid plan.
 
 <BlogProductIntro
   title="Tired of counting files?"
@@ -117,7 +127,11 @@ Several have free tiers: Zush (50 renames), RenameClick (currently 100 successfu
 
 ### What is the cheapest AI file renamer for large volumes?
 
-An unmetered plan. Zush PRO is $48 one-time; as checked September 24, 2026, RenameClick Pro is $36 plus VAT lifetime. Either price stays the same at 100 or 10,000 files a month, while BYOK lifetime plans can add API costs per file.
+There is no universal cheapest option across cloud, BYOK, and local processing. Zush PRO costs $48 one-time with managed cloud AI and unlimited renames included. A self-managed license may add API charges or model setup, and metered plans may offer free quotas or annual discounts. Compare supported formats and total cost for the same processing mode and time period.
+
+### Do FilesDesk credits renew each month?
+
+Yes. FilesDesk Monthly credits refresh monthly, and each generated name suggestion uses one credit, including retries. Its $40 Self-Managed license has no suggestion credits but requires your own API key or local model. It covers one device with one year of updates, according to the [official pricing page](https://filesdesk.app/pricing).
 
 ### Is BYOK cheaper than a subscription?
 
