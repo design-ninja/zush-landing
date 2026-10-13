@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.16.2] - 2026-10-13
+
+### Improved
+
+- Your own folder rules can now use file details such as size, dates, camera, duration, and page count.
+- More accurate sorting for rules about file age, such as files older than a year.
+- The Template block starts collapsed on new installations.
+
 ## [3.16.1] - 2026-10-13
 
 ### Improved
