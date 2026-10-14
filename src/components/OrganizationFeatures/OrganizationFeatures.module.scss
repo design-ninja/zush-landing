@@ -1,12 +1,14 @@
 @use '../../styles/mixins' as *;
-.Section { padding: 4rem 0; }
+.Section { padding: 8.5rem 0 0; }
+@media (max-width: 768px) { .Section { padding-top: 5rem; } }
 .Container { @include container; }
 .Header { display: grid; justify-items: center; gap: 1.25rem; margin-block-end: 3rem; }
 .Header h2 { max-width: 28ch; text-wrap: balance; margin: 0; scroll-margin-top: 8rem; }
 .Header > p { max-width: 46rem; margin: 0; text-wrap: pretty; }
 .Availability { color: var(--primary); padding: .2rem .5rem; border: 1px solid var(--border); border-radius: 2rem; font-size: .65rem; font-weight: 600; letter-spacing: .08em; }
-.Feature { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); align-items: center; background: var(--muted); border-radius: 1.5rem; overflow: hidden; }
-.Copy { padding: 2.5rem; display: grid; gap: 2rem; }
+/* Open layout: copy beside the screenshot, no tinted panel. */
+.Feature { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 3.5rem; align-items: center; }
+.Copy { padding: 0; display: grid; gap: 2rem; }
 .Copy p { margin: 0; }
 .Mode { display: grid; gap: .75rem; }
 .Mode h3 { margin: 0; font-size: 1.25rem; }
@@ -19,7 +21,7 @@
 .ExampleArrow { color: var(--primary); font-weight: 600; }
 .Links { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; }
 .Copy a { color: var(--primary); font-weight: 600; text-underline-offset: .2em; }
-.Visual { min-width: 0; align-self: stretch; display: grid; }
+.Visual { min-width: 0; align-self: center; display: grid; border: 1px solid var(--border); border-radius: 1.25rem; overflow: hidden; }
 .Visual :global(.organization-screenshot) { height: 100%; }
-@media (max-width: 900px) { .Feature { grid-template-columns: 1fr; } .Copy { padding: 2rem; } }
-@media (max-width: 480px) { .Copy { padding: 1.5rem; gap: 1.5rem; } }
+@media (max-width: 900px) { .Feature { grid-template-columns: 1fr; gap: 2rem; } }
+@media (max-width: 480px) { .Copy { gap: 1.5rem; } }

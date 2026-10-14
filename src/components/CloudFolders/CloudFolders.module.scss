@@ -2,10 +2,10 @@
 @use '../../styles/mixins' as *;
 
 .CloudFolders {
-  padding: 0 0 4rem;
+  padding: $section-gap 0 0;
 
   @include mobile {
-    padding: 0 0 2.5rem;
+    padding: $section-gap-mobile 0 0;
   }
 
   &__Container {
@@ -31,13 +31,11 @@
   &__Item {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.6rem;
     padding: 0.5rem 0.9rem;
     background: transparent;
     color: var(--foreground);
-    border: 1px solid var(--border);
-    border-radius: $radius-full;
-    font-size: 0.8125rem;
+    font-size: 0.9375rem;
     font-weight: 600;
   }
 

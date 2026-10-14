@@ -2,10 +2,10 @@
 @use '../../styles/mixins' as *;
 
 .Comparison {
-  padding: 4rem 0;
+  padding: $section-gap 0 0;
 
   @include mobile {
-    padding: 2.5rem 0;
+    padding: $section-gap-mobile 0 0;
   }
 
   &__Container {
@@ -13,7 +13,7 @@
   }
 
   &__Header {
-    margin-bottom: 2.5rem;
+    margin-bottom: 3rem;
     text-align: center;
   }
 

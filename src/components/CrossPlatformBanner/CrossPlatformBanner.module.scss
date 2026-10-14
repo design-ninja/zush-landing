@@ -2,7 +2,11 @@
 @use '../../styles/mixins' as *;
 
 .CrossPlatformBanner {
-  padding: 4rem 0;
+  padding: $section-gap 0 0;
+
+  @include mobile {
+    padding-top: $section-gap-mobile;
+  }
 
   &__Container {
     @include container;
@@ -24,14 +28,9 @@
   &__Eyebrow {
     display: inline-flex;
     align-items: center;
-    padding: 0.35rem 0.85rem;
-    background: var(--primary-soft);
     color: var(--primary);
-    border-radius: $radius-full;
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0;
   }
 
   &__Title {
@@ -45,10 +44,10 @@
 
   &__Cards {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 22rem));
-    gap: 1.25rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3rem;
     width: 100%;
-    max-width: 48rem;
+    max-width: 56rem;
     justify-content: center;
 
     &[data-single='true'] {
@@ -62,55 +61,32 @@
 }
 
 .PlatformCard {
-  position: relative;
+  // Open column with a hairline on top; the whole block stays one link.
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-  padding: 1.75rem;
-  background: var(--muted);
-  border: 1px solid var(--border);
-  border-radius: $radius-xl;
+  padding: 1.5rem 0 0;
+  border-top: 1px solid var(--border);
   text-decoration: none;
   color: var(--foreground);
-  transition: $transition-fast;
-  overflow: hidden;
 
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    pointer-events: none;
-    box-shadow: 0 0 0 0 var(--primary-soft);
-    transition: box-shadow $transition-fast;
-  }
-
-  &:hover {
-    transform: translateY(-3px);
-    @include card-hover-ring(color-mix(in oklch, var(--primary) 35%, var(--border)));
-
-    &::after {
-      box-shadow: 0 0 0 6px var(--primary-soft);
-    }
+  &:hover .PlatformCard__CTA {
+    opacity: 0.8;
   }
 
   &__Icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 2.75rem;
-    height: 2.75rem;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: $radius-md;
+    justify-content: flex-start;
     color: var(--foreground);
     margin-bottom: 0.4rem;
   }
 
   &__Title {
     margin: 0;
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: 1.375rem;
+    font-weight: 700;
   }
 
   &__Description {

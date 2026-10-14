@@ -2,7 +2,11 @@
 @use '../../styles/mixins' as *;
 
 .Tour {
-    padding: 6.25rem 0;
+    padding: $section-gap 0 0;
+
+    @include mobile {
+        padding-top: $section-gap-mobile;
+    }
 
     &__Container {
         @include container;
@@ -74,8 +78,8 @@
     &__Tab {
         position: relative;
         padding: 0.5625rem 1rem;
-        background: var(--muted);
-        border: 1px solid transparent;
+        background: transparent;
+        border: 1px solid var(--border);
         border-radius: 9999px;
         font-size: 0.875rem;
         font-weight: 500;
@@ -88,18 +92,15 @@
 
         &:hover {
             color: var(--foreground);
-            background: var(--background);
-            border-color: var(--border);
         }
 
         &[aria-current='true'] {
-            color: var(--primary);
-            background: var(--muted);
+            color: var(--foreground);
+            background: color-mix(in oklch, var(--foreground) 7%, transparent);
+            border-color: transparent;
 
             &:hover {
-                background: var(--muted);
-                color: var(--primary);
-                border-color: transparent;
+                color: var(--foreground);
             }
         }
     }
@@ -190,6 +191,29 @@
 
 @media (max-width: 768px) {
     .Tour {
+        // Phones: one swipeable row of tabs instead of a tall wrapped block.
+        &__Tabs {
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            overflow-x: auto;
+            scroll-snap-type: x proximity;
+            scrollbar-width: none;
+            margin-inline: -1rem;
+            padding: 0 1rem 0.25rem;
+            width: calc(100% + 2rem);
+            max-width: none;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        &__Tab {
+            flex: 0 0 auto;
+            white-space: nowrap;
+            scroll-snap-align: start;
+        }
+
         &__Description {
             margin-top: -0.25rem;
             padding: 0;

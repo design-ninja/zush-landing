@@ -68,15 +68,16 @@ import { ArrowRight, ArrowDown, Blocks, Check, FileText, FolderOpen, Image, Musi
 </section>
 
 <style>
-  .rename-workflow { width: min(1120px, calc(100% - 2.5rem)); margin: 1.5rem auto 4.5rem; }
+  .rename-workflow { width: min(1120px, calc(100% - 2.5rem)); margin: 8.5rem auto 0; }
+  @media (max-width: 768px) { .rename-workflow { margin-top: 5rem; } }
   .workflow-header { margin-bottom: 2.5rem; }
   .workflow-header :global(#rename-workflow-title) { scroll-margin-top: 7rem; }
   .workflow-header p { max-width: 48rem; margin: 1rem auto 0; text-align: center; color: var(--muted-foreground); font-size: 1.0625rem; line-height: 1.6; }
   .workflow-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.75rem; padding: 0; margin: 0; list-style: none; }
   .workflow-step { min-width: 0; position: relative; display: flex; flex-direction: column; }
   .workflow-step .stage { flex-shrink: 0; }
-  .stage { height: 244px; border-radius: 22px; position: relative; display: flex; align-items: center; justify-content: center; isolation: isolate; background: radial-gradient(ellipse at 50% 55%, color-mix(in srgb, var(--primary) 9%, transparent), transparent 74%), color-mix(in srgb, var(--primary) 3%, var(--background)); border: 1px solid color-mix(in srgb, var(--primary) 9%, var(--border)); }
-  .stage-preview { background: radial-gradient(ellipse at 50% 55%, color-mix(in srgb, var(--tone-green-fg) 9%, transparent), transparent 74%), color-mix(in srgb, var(--tone-green-fg) 2%, var(--background)); }
+  .stage { height: 244px; border-radius: 22px; position: relative; display: flex; align-items: center; justify-content: center; isolation: isolate; background: transparent; border: 1px solid var(--border); }
+  .stage-preview { background: transparent; }
   .mini-window { width: calc(100% - 44px); max-width: 290px; border: 1px solid color-mix(in srgb, var(--foreground) 10%, var(--background)); border-radius: 13px; background: var(--card); box-shadow: 0 8px 24px -12px color-mix(in srgb, var(--foreground) 22%, transparent), 0 2px 5px color-mix(in srgb, var(--foreground) 3%, transparent); position: relative; }
   .window-heading { display: flex; gap: 7px; align-items: center; padding: 11px 13px; border-bottom: 1px solid var(--border); color: var(--muted-foreground); font-size: 11px; font-weight: 550; }
   .window-heading :global(svg) { flex-shrink: 0; }

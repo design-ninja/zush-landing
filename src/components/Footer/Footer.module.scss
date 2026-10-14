@@ -3,6 +3,7 @@
 @use '../../styles/mixins' as *;
 
 .Footer {
+    margin-top: $section-gap-mobile;
     padding: 4rem 0 2rem;
     border-top: 1px solid var(--border);
     font-size: 0.875rem;
@@ -33,9 +34,11 @@
     }
 
     &__Brand {
+        font-family: var(--font-family-heading);
         font-size: 1.5rem;
-        font-weight: 600;
-        color: var(--primary);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--foreground);
         margin-bottom: 1rem;
         display: block;
     }

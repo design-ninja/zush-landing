@@ -2,10 +2,10 @@
 @use '../../styles/variables' as *;
 
 .Professions {
-  padding: 6rem 0;
+  padding: $section-gap 0 0;
 
   @include mobile {
-    padding: 4rem 0;
+    padding: $section-gap-mobile 0 0;
   }
 
   &__Container {
@@ -34,10 +34,8 @@
   &__Eyebrow {
     margin: 0 0 1.35rem;
     color: var(--primary);
-    font-size: 0.8125rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-size: 0.875rem;
+    font-weight: 600;
   }
 
   &__Title {

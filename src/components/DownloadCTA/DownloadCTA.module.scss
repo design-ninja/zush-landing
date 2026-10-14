@@ -1,11 +1,13 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
+// Closing CTA: large type on the page colour, no photo card. The decorative
+// background <Image> stays in the markup (lazy, never requested while hidden).
 .Section {
-  padding: 2rem 0;
+  padding: $section-gap 0 2rem;
 
   @include mobile {
-    padding: 1.5rem 0;
+    padding: $section-gap-mobile 0 1.5rem;
   }
 }
 
@@ -14,83 +16,52 @@
 }
 
 .Card {
-  background-color: var(--muted);
-  border-radius: 2rem;
-  padding: 4rem 2rem;
+  padding: 0 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   position: relative;
-  overflow: visible;
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: rgba(0, 0, 0, 0.1);
-    pointer-events: none;
-  }
-
-  @include mobile {
-    padding: 3rem 1.5rem;
-    border-radius: 1.5rem;
-  }
 }
 
 .Background {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: inherit;
+  display: none;
 }
 
 .Content {
   position: relative;
-  z-index: 1;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.Title {
-  margin: 0 0 0.75rem;
+.Card .Title {
+  margin: 0 0 1rem;
+  font-size: clamp(2.4rem, 5vw, 3.5rem);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
   text-wrap: balance;
 }
 
-.Subtitle {
+.Card .Subtitle {
   margin: 0;
-  max-width: 34rem;
+  max-width: 38rem;
+  color: var(--muted-foreground);
+  font-size: 1.0625rem;
+  line-height: 1.65;
   text-wrap: pretty;
 }
 
 .Buttons {
   display: flex;
   gap: 0.75rem;
-  margin-top: 1.75rem;
+  margin-top: 2rem;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.Hint {
-  margin: 1rem 0 0;
-}
-
-.Card .Title {
-  color: #fff;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-}
-
-.Card .Subtitle {
-  color: rgba(255, 255, 255, 0.88);
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.09);
-}
-
 .Card .Hint {
-  color: rgba(255, 255, 255, 0.72);
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  margin: 1.1rem 0 0;
+  color: var(--muted-foreground);
 }

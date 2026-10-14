@@ -32,7 +32,7 @@
     transition: background $transition-fast;
 
     &:hover {
-        background: color-mix(in srgb, var(--primary) 7%, var(--background));
+        background: color-mix(in oklch, var(--foreground) 4%, transparent);
     }
 
     &:focus-visible {
@@ -41,7 +41,7 @@
     }
 
     &_active {
-        background: color-mix(in srgb, var(--primary) 7%, var(--background));
+        background: color-mix(in oklch, var(--foreground) 6%, transparent);
     }
 }
 
@@ -90,7 +90,7 @@
 .Switcher__Stage {
     grid-column: 2;
     align-self: stretch;
-    background: var(--muted);
+    border: 1px solid var(--border);
     border-radius: $radius-xl;
     padding: 2rem;
     display: flex;

@@ -3,7 +3,7 @@
 @use '../../styles/mixins' as *;
 
 .FeaturedOn {
-  padding: $space-2xl 0;
+  padding: $section-gap-mobile 0 $space-2xl;
   background: var(--background);
   color: var(--foreground);
 
@@ -19,10 +19,7 @@
     margin: 0;
     font-size: 0.875rem;
     font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
     color: var(--muted-foreground, var(--foreground));
-    opacity: 0.7;
   }
 
   &__Items {

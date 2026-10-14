@@ -2,10 +2,10 @@
 @use '../../styles/mixins' as *;
 
 .SupportedFormats {
-  padding: 4rem 0;
+  padding: $section-gap 0 0;
 
   @include mobile {
-    padding: 2.5rem 0;
+    padding: $section-gap-mobile 0 0;
   }
 
   &__Container {
@@ -34,17 +34,20 @@
     margin: 0 auto;
   }
 
+  // Quiet monospace tags: no fill, so seven rows of extensions read as data.
   &__Tag {
-    padding: 0.375rem 0.75rem;
-    background: var(--primary-soft);
-    color: var(--primary);
-    border-radius: $radius-full;
-    font-size: 0.8125rem;
+    padding: 0.3rem 0.6rem;
+    background: transparent;
+    color: var(--muted-foreground);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
     font-weight: 500;
 
     &_highlight {
-      background: var(--primary);
-      color: #fff;
+      color: var(--foreground);
+      border-color: color-mix(in oklch, var(--foreground) 30%, transparent);
       font-weight: 600;
     }
   }

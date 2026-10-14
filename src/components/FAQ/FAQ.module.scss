@@ -15,11 +15,12 @@
         padding: 0 20px;
     }
 
+    // Hairline list instead of stacked cards: one rule between questions.
     &__Grid {
-        margin-top: 60px;
+        margin-top: 3rem;
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        border-bottom: 1px solid var(--border);
     }
 
     &__TitleAccent {
@@ -28,28 +29,11 @@
 }
 
 .FAQItem {
-    background: var(--card);
-    outline: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-    transition: box-shadow 0.3s ease, outline 0.3s ease;
-
-    &:not([open]):hover {
-        @include card-hover-outline(var(--primary-soft));
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
-    }
-
-    &[open]:hover {
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
-    }
-
-    &[open] {
-        outline: 3px solid var(--primary);
-    }
+    border-top: 1px solid var(--border);
 
     &__Header {
         width: 100%;
-        padding: 24px;
+        padding: 1.25rem 0;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -66,6 +50,9 @@
     &__Question {
         color: var(--foreground);
         margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
     }
 
     &__Icon {
@@ -76,7 +63,7 @@
 
         .FAQItem[open] & {
             transform: rotate(0deg);
-            color: var(--primary);
+            color: var(--foreground);
         }
     }
 
@@ -85,9 +72,10 @@
     }
 
     &__Answer {
-        padding: 0 24px 24px;
-        color: var(--foreground);
-        line-height: 1.6;
+        padding: 0 0 1.4rem;
+        max-width: 42rem;
+        color: var(--muted-foreground);
+        line-height: 1.65;
         margin: 0;
         overflow: hidden;
 

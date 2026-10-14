@@ -2,7 +2,11 @@
 @use '../../styles/mixins' as *;
 
 .HomeBlogHighlights {
-  padding: 6.25rem 0;
+  padding: $section-gap 0 0;
+
+  @include mobile {
+    padding-top: $section-gap-mobile;
+  }
 
   &__Container {
     @include container;
