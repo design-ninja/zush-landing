@@ -27,7 +27,7 @@ export const WIKIDATA_URL = "https://www.wikidata.org/wiki/Q141529827";
 export const ALTERNATIVETO_URL = "https://alternativeto.net/software/zush/about/";
 export const TAAFT_URL = "https://theresanaiforthat.com/ai/zush-ai-file-renamer-organizer/";
 export const SAASHUB_URL = "https://www.saashub.com/zush";
-export const MACUPDATE_URL = "https://www.macupdate.com/app/mac/65417/zush";
+export const MACUPDATE_URL = "https://zush.macupdate.com/";
 export const SOFTPEDIA_REVIEW_URL =
   "https://www.softpedia.com/get/Artificial-Intelligence-Generative-AI/Zush.shtml";
 
