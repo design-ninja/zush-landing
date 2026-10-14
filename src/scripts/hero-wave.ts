@@ -33,7 +33,7 @@ void main() {
   p = vec3(p.x, cx * p.y - sx * p.z, sx * p.y + cx * p.z);
   vec4 mv = uView * vec4(p, 1.0);
   gl_Position = uProj * mv;
-  gl_PointSize = (1.8 + (w + 2.2) * 0.55 + vGlow * 1.8) * uPR * (22.0 / -mv.z);
+  gl_PointSize = (1.7 + (w + 2.2) * 0.5 + vGlow * 1.0) * uPR * (22.0 / -mv.z);
   float edge = 1.0 - smoothstep(20.0, 31.0, abs(aPos.x));
   vAlpha = smoothstep(58.0, 12.0, -mv.z) * edge;
   vMix = clamp((w + 2.2) / 4.4, 0.0, 1.0);
@@ -51,15 +51,15 @@ varying float vGlow;
 void main() {
   float d = length(gl_PointCoord - 0.5);
   if (d > 0.5) discard;
-  float a = smoothstep(0.5, 0.05, d) * vAlpha * uOpacity * (1.0 + vGlow * 0.7);
-  vec3 col = mix(mix(uA, uB, vMix), uC, vGlow * 0.85);
+  float a = smoothstep(0.5, 0.05, d) * vAlpha * uOpacity * (1.0 + vGlow * 0.35);
+  vec3 col = mix(mix(uA, uB, vMix), uC, vGlow * 0.6);
   gl_FragColor = vec4(col, min(a, 1.0));
 }`;
 
 // a/b: base gradient across the swell; c: the sweeping highlight band.
 const THEMES = {
-  dark: { a: [0x4b, 0x3b, 0xe0], b: [0xb4, 0xaa, 0xff], c: [0xf1, 0xee, 0xff], opacity: 1, additive: true },
-  light: { a: [0x6e, 0x5c, 0xf3], b: [0x9d, 0x8f, 0xff], c: [0x3b, 0x2b, 0xd6], opacity: 1, additive: false },
+  dark: { a: [0x4b, 0x3b, 0xe0], b: [0xb4, 0xaa, 0xff], c: [0xd4, 0xce, 0xff], opacity: 0.8, additive: true },
+  light: { a: [0x7b, 0x6b, 0xf5], b: [0xb0, 0xa6, 0xff], c: [0x6e, 0x5c, 0xf3], opacity: 0.75, additive: false },
 } as const;
 
 function perspective(fovy: number, aspect: number, near: number, far: number) {
