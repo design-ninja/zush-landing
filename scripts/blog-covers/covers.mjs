@@ -1,0 +1,113 @@
+// One cover per English blog post (translations reuse their source's cover).
+// Motifs live in motifs.mjs; icons are lucide names or 'apple' / 'windows'.
+const compare = (icon) => ({ motif: 'compare', icon });
+const flow = (from, to, both = false) => ({ motif: 'flow', from, to, both });
+const rename = (icon) => ({ motif: 'rename', icon });
+const naming = (icon) => ({ motif: 'naming', icon });
+const versus = (icon) => ({ motif: 'versus', icon });
+
+export const COVERS = {
+  // Comparisons and alternatives
+  'advanced-renamer-alternatives': compare('Layers'),
+  'ai-file-renaming-cost': compare('Coins'),
+  'best-ai-file-organizers-mac': compare('apple'),
+  'best-ai-file-organizers-windows': compare('windows'),
+  'best-ai-file-renamer-tools-2026': compare('Sparkles'),
+  'best-ai-file-renamer-tools-mac-compared': compare('apple'),
+  'best-ai-file-renamer-tools-windows-compared': compare('windows'),
+  'best-ai-file-sorters': compare('FolderTree'),
+  'best-file-renamer-tools': compare('TextCursorInput'),
+  'best-file-renamer-windows-11': compare('windows'),
+  'best-photo-organizer-windows-11': compare('windows'),
+  'best-photo-organizing-software-mac': compare('apple'),
+  'bulk-rename-utility-alternatives': compare('Layers'),
+  'hazel-for-windows-alternatives': compare('windows'),
+  'namethispic-alternatives': compare('Image'),
+  'renameclick-alternatives': compare('Layers'),
+  'renamer-ai-alternatives': compare('Layers'),
+  'sparkle-alternatives': compare('apple'),
+
+  // Zush versus another app
+  'zush-vs-airenamer': versus('Terminal'),
+  'zush-vs-files-magic-ai': versus('FolderTree'),
+  'zush-vs-filesdesk': versus('Coins'),
+  'zush-vs-namequick': versus('KeyRound'),
+  'zush-vs-renameclick': versus('TextCursorInput'),
+  'zush-vs-renamed-to': versus('Cloud'),
+  'zush-vs-renamer-ai': versus('CalendarDays'),
+  'zush-vs-sortio': versus('FolderOpen'),
+
+  // Renaming a kind of file
+  'ai-document-renamer-guide': rename('FileText'),
+  'automatically-rename-invoices-ai': rename('Receipt'),
+  'batch-rename-epub-fb2-files': rename('BookOpen'),
+  'how-to-rename-images-with-ai-on-macos': rename('Image'),
+  'rename-audio-files-with-ai': rename('AudioLines'),
+  'rename-docusign-files-by-property-address': rename('PenLine'),
+  'rename-files-by-content-guide': rename('ScanText'),
+  'rename-files-with-ai-guide': rename('File'),
+  'rename-video-files-with-ai': rename('Film'),
+  'why-your-photos-are-named-img-and-how-to-fix-it': rename('Camera'),
+
+  // Flows: a starting point becomes an organized result
+  'ai-folder-sorting-prompts': flow('MessageSquareText', 'FolderOpen'),
+  'ai-image-tagging-vs-manual-photo-organization': flow('Image', 'Tags'),
+  'auto-rename-files-mac-guide': flow('apple', 'FolderSync'),
+  'auto-rename-files-windows-guide': flow('windows', 'FolderSync'),
+  'automate-file-organization-macos': flow('apple', 'FolderTree'),
+  'batch-rename-files-on-mac-complete-guide': flow('apple', 'Files'),
+  'batch-rename-files-windows-11': flow('windows', 'Files'),
+  'best-ways-to-organize-photos-on-mac': flow('Image', 'FolderOpen'),
+  'byok-ai-file-renaming-unlimited': flow('KeyRound', 'Sparkles'),
+  'cloud-vs-local-ai-file-renaming': flow('Cloud', 'Laptop', true),
+  'declutter-your-mac-file-cleanup-guide': flow('Files', 'FolderCheck'),
+  'digital-asset-management-designers-mac': flow('PenTool', 'FolderOpen'),
+  'digital-photo-organization-mistakes-to-avoid': flow('ImageOff', 'Image'),
+  'file-organization-tips-students-mac': flow('GraduationCap', 'FolderOpen'),
+  'finder-tags-guide-organize-files-mac': flow('apple', 'Tags'),
+  'folder-monitoring-automatic-file-renaming': flow('Eye', 'FolderSync'),
+  'heic-raw-image-management-guide-macos': flow('Camera', 'Image'),
+  'how-to-organize-downloads-folder-mac': flow('Download', 'FolderOpen'),
+  'how-to-organize-invoices-and-receipts': flow('Receipt', 'FolderOpen'),
+  'how-to-organize-real-estate-transaction-files': flow('House', 'FolderOpen'),
+  'how-to-organize-scanned-medical-records-small-practice': flow('Stethoscope', 'FolderOpen'),
+  'how-to-organize-tax-documents': flow('Landmark', 'FolderOpen'),
+  'how-to-safely-batch-rename-files': flow('Files', 'ShieldCheck'),
+  'local-ai-file-renaming-ollama-guide': flow('CloudOff', 'Laptop'),
+  'macos-automator-rename-files-guide': flow('apple', 'Workflow'),
+  'organize-candidate-files-recruiting': flow('UserSearch', 'FolderOpen'),
+  'organize-client-files-freelancers-mac': flow('Briefcase', 'FolderOpen'),
+  'organize-downloads-folder-windows': flow('Download', 'FolderTree'),
+  'organize-employee-onboarding-documents': flow('UserPlus', 'FolderOpen'),
+  'organize-files-automatically-windows-11': flow('windows', 'FolderTree'),
+  'organize-screen-recordings-broll-ai': flow('Clapperboard', 'FolderOpen'),
+  'rename-files-with-ai-free': flow('Gift', 'Sparkles'),
+  'rename-files-with-ai-windows-guide': flow('windows', 'Sparkles'),
+  'rename-files-with-ollama-mac': flow('apple', 'Cpu'),
+  'rename-invoices-for-quickbooks-xero': flow('Receipt', 'Calculator'),
+  'rename-pdf-files-automatically': flow('FileText', 'FolderSync'),
+  'rename-pdf-files-with-ai-mac': flow('apple', 'FileText'),
+  'rename-pdf-files-with-ai-windows': flow('windows', 'FileText'),
+  'rename-photos-by-date-windows': flow('Image', 'CalendarDays'),
+  'rename-photos-for-social-media': flow('Image', 'Share2'),
+  'rename-scanned-documents-automatically': flow('ScanLine', 'FileText'),
+  'rename-screenshots-automatically-mac': flow('apple', 'Monitor'),
+  'rename-screenshots-automatically-windows': flow('windows', 'Monitor'),
+  'sort-files-into-folders-with-ai-mac': flow('File', 'FolderOpen'),
+  'sort-files-into-folders-with-ai-windows': flow('windows', 'FolderOpen'),
+  'zush-templates-file-renaming-workflows': flow('Blocks', 'LayoutTemplate'),
+
+  // Naming conventions
+  'file-naming-conventions-best-practices': naming('FileText'),
+  'hr-employee-file-naming-convention': naming('Users'),
+  'invoice-file-naming-convention': naming('Receipt'),
+  'legal-file-naming-conventions': naming('Scale'),
+  'naming-blocks-file-naming-guide': naming('Blocks'),
+  'plex-naming-convention-tv-shows-movies': naming('Film'),
+  'real-estate-document-naming-convention': naming('House'),
+  'screenshot-naming-conventions-macos': naming('Monitor'),
+  'windows-file-naming-conventions-searchable-folders': naming('windows'),
+
+  // Templates
+  'import-export-zush-templates': { motif: 'templates' },
+};
