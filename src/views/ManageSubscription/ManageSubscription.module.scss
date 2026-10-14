@@ -26,10 +26,7 @@
         width: 100%;
         max-width: 420px;
         margin: 0 auto 24px;
-        padding: 14px 16px;
-        border: 1px solid var(--note-border);
-        border-radius: $radius-sm;
-        background: var(--note-bg);
+        @include callout('note');
         text-align: center;
 
         p {
@@ -39,9 +36,7 @@
     }
 
     &__Info {
-        background: var(--muted);
-        border-radius: $radius-sm;
-        padding: 16px;
+        @include callout;
         margin-bottom: 24px;
         text-align: left;
 

@@ -74,7 +74,7 @@ const ManageSubscription = ({
           disabled={isLoading}
         />
 
-        <Button type="submit" variant="primary" disabled={isLoading}>
+        <Button type="submit" variant="primary" size="lg" disabled={isLoading}>
           {isLoading ? (
             copy.sending
           ) : (

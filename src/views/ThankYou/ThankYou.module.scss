@@ -34,10 +34,7 @@
         display: flex;
         align-items: flex-start;
         gap: 16px;
-        background: var(--primary-alpha-10, rgba(99, 102, 241, 0.1));
-        border: 1px solid var(--primary-alpha-20, rgba(99, 102, 241, 0.2));
-        border-radius: $radius-md;
-        padding: 20px 24px;
+        @include callout('accent');
         margin-bottom: 32px;
         text-align: left;
 

@@ -13,10 +13,7 @@
     }
 
     &__Box {
-        background: var(--muted);
-        border: 1px solid var(--border);
-        border-radius: $radius-lg;
-        padding: 24px;
+        @include callout;
         margin-bottom: 32px;
     }
 
