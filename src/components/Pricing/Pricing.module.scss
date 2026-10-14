@@ -343,9 +343,10 @@
         display: none;
     }
 
-    // The code itself is the affordance; only the copied state shows a glyph.
+    // Copy glyph holds the slot the check mark takes after copying, so the
+    // chip keeps its width.
     &__CopyIcon {
-        display: none;
+        opacity: 0.6;
     }
 
     &__ButtonWrapper {
