@@ -15,43 +15,51 @@ uniform float uRotX;
 uniform float uRotY;
 varying float vAlpha;
 varying float vMix;
+varying float vGlow;
 void main() {
   vec3 p = aPos;
-  float w = sin(p.x * 0.28 + uTime * 0.55) * 0.55
-          + sin(p.z * 0.42 + uTime * 0.40) * 0.45
-          + sin((p.x + p.z) * 0.18 - uTime * 0.30) * 0.75;
+  float w = sin(p.x * 0.28 + uTime * 0.6) * 0.7
+          + sin(p.z * 0.42 + uTime * 0.45) * 0.55
+          + sin((p.x + p.z) * 0.18 - uTime * 0.32) * 0.95;
   float r = length(p.xz - vec2(0.0, -8.0));
-  w += sin(r * 0.55 - uTime * 1.1) * 0.35 * smoothstep(26.0, 4.0, r);
-  p.y += w;
+  w += sin(r * 0.55 - uTime * 1.2) * 0.45 * smoothstep(26.0, 4.0, r);
+  // A bright band sweeps diagonally across the field.
+  float band = sin(aPos.x * 0.1 + aPos.z * 0.07 - uTime * 0.9);
+  vGlow = smoothstep(0.72, 1.0, band);
+  p.y += w + vGlow * 0.35;
   float cy = cos(uRotY), sy = sin(uRotY);
   p = vec3(cy * p.x + sy * p.z, p.y, -sy * p.x + cy * p.z);
   float cx = cos(uRotX), sx = sin(uRotX);
   p = vec3(p.x, cx * p.y - sx * p.z, sx * p.y + cx * p.z);
   vec4 mv = uView * vec4(p, 1.0);
   gl_Position = uProj * mv;
-  gl_PointSize = (1.6 + (w + 1.8) * 0.55) * uPR * (22.0 / -mv.z);
+  gl_PointSize = (1.8 + (w + 2.2) * 0.55 + vGlow * 1.8) * uPR * (22.0 / -mv.z);
   float edge = 1.0 - smoothstep(20.0, 31.0, abs(aPos.x));
   vAlpha = smoothstep(58.0, 12.0, -mv.z) * edge;
-  vMix = clamp((w + 1.8) / 3.6, 0.0, 1.0);
+  vMix = clamp((w + 2.2) / 4.4, 0.0, 1.0);
 }`;
 
 const FRAG = `
 precision mediump float;
 uniform vec3 uA;
 uniform vec3 uB;
+uniform vec3 uC;
 uniform float uOpacity;
 varying float vAlpha;
 varying float vMix;
+varying float vGlow;
 void main() {
   float d = length(gl_PointCoord - 0.5);
   if (d > 0.5) discard;
-  float a = smoothstep(0.5, 0.05, d) * vAlpha * uOpacity;
-  gl_FragColor = vec4(mix(uA, uB, vMix), a);
+  float a = smoothstep(0.5, 0.05, d) * vAlpha * uOpacity * (1.0 + vGlow * 0.7);
+  vec3 col = mix(mix(uA, uB, vMix), uC, vGlow * 0.85);
+  gl_FragColor = vec4(col, min(a, 1.0));
 }`;
 
+// a/b: base gradient across the swell; c: the sweeping highlight band.
 const THEMES = {
-  dark: { a: [0x4b, 0x3b, 0xe0], b: [0xc9, 0xc2, 0xff], opacity: 1, additive: true },
-  light: { a: [0x5b, 0x4b, 0xef], b: [0xa9, 0x9f, 0xff], opacity: 0.85, additive: false },
+  dark: { a: [0x4b, 0x3b, 0xe0], b: [0xb4, 0xaa, 0xff], c: [0xf1, 0xee, 0xff], opacity: 1, additive: true },
+  light: { a: [0x6e, 0x5c, 0xf3], b: [0x9d, 0x8f, 0xff], c: [0x3b, 0x2b, 0xd6], opacity: 1, additive: false },
 } as const;
 
 function perspective(fovy: number, aspect: number, near: number, far: number) {
@@ -94,7 +102,7 @@ function startWave(canvas: HTMLCanvasElement) {
   gl.useProgram(prog);
 
   const small = window.innerWidth < 768;
-  const COLS = small ? 110 : 200, ROWS = small ? 60 : 90, W = 66, D = 44;
+  const COLS = small ? 120 : 240, ROWS = small ? 64 : 110, W = 66, D = 44;
   const pos = new Float32Array(COLS * ROWS * 3);
   let i = 0;
   for (let r = 0; r < ROWS; r++) {
@@ -112,7 +120,7 @@ function startWave(canvas: HTMLCanvasElement) {
 
   const u = (name: string) => gl.getUniformLocation(prog, name);
   const uProj = u('uProj'), uTime = u('uTime'), uPR = u('uPR'), uRotX = u('uRotX'), uRotY = u('uRotY');
-  const uA = u('uA'), uB = u('uB'), uOpacity = u('uOpacity');
+  const uA = u('uA'), uB = u('uB'), uC = u('uC'), uOpacity = u('uOpacity');
   gl.uniformMatrix4fv(u('uView'), false, lookAt([0, 5.2, 19], [0, -0.6, -6]));
   gl.enable(gl.BLEND);
   gl.disable(gl.DEPTH_TEST);
@@ -140,6 +148,7 @@ function startWave(canvas: HTMLCanvasElement) {
     const theme = document.documentElement.dataset.theme === 'light' ? THEMES.light : THEMES.dark;
     gl.uniform3fv(uA, theme.a.map((v) => v / 255));
     gl.uniform3fv(uB, theme.b.map((v) => v / 255));
+    gl.uniform3fv(uC, theme.c.map((v) => v / 255));
     gl.uniform1f(uOpacity, theme.opacity);
     if (theme.additive) gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
     else gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
@@ -174,8 +183,8 @@ function startWave(canvas: HTMLCanvasElement) {
     const dt = Math.min((now - last) / 1000, 0.05);
     last = now;
     t += dt;
-    rot.y += (mouse.x * 0.12 - rot.y) * 0.04;
-    rot.x += (mouse.y * 0.04 - rot.x) * 0.04;
+    rot.y += (mouse.x * 0.2 - rot.y) * 0.05;
+    rot.x += (mouse.y * 0.07 - rot.x) * 0.05;
     draw();
     raf = requestAnimationFrame(tick);
   };
