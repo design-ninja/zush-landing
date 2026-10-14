@@ -33,6 +33,7 @@ const thumbnail = getBlogThumbnail(post.translationOf ?? post.slug);
       densities={[1, 2]}
       height={variant === 'tile' ? 180 : 126}
       loading='lazy'
+      quality={90}
       src={thumbnail}
       width={variant === 'tile' ? 320 : 168}
     />
