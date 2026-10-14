@@ -31,9 +31,8 @@ import featureStyles from '@/components/Features/Features.module.scss';
 import b from '@/components/Blocks/Blocks.module.scss';
 import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module.scss';
 import testimonialStyles from '@/components/Testimonials/Testimonials.module.scss';
-import heroStyles from '@/components/LegalLandingPage/LegalHero.module.scss';
-import styles from '@/components/LegalLandingPage/LegalLandingPage.module.scss';
-import seoStyles from '@/components/MedicalLandingPage/MedicalLandingPage.module.scss';
+import heroStyles from '@/components/ProfessionLanding/ProfessionHero.module.scss';
+import styles from '@/components/ProfessionLanding/ProfessionLanding.module.scss';
 
 interface Props {
   profession: ProfessionKey;
@@ -184,10 +183,10 @@ const modeIcons = {
 </section>
 
 {page.comparison && (
-  <section class={seoStyles.Comparison} aria-labelledby={`${profession}-comparison-title`}>
-    <div class={seoStyles.Comparison__Container}>
+  <section class={styles.Comparison} aria-labelledby={`${profession}-comparison-title`}>
+    <div class={styles.Comparison__Container}>
       <div class={sectionHeaderStyles.SectionHeader}>
-        <p class={seoStyles.Comparison__Eyebrow}>{page.comparison.eyebrow}</p>
+        <p class={styles.Comparison__Eyebrow}>{page.comparison.eyebrow}</p>
         <Heading as="h2" align="center" id={`${profession}-comparison-title`} className={sectionHeaderStyles.SectionHeader__Title}>
           {page.comparison.title}
         </Heading>
@@ -195,8 +194,8 @@ const modeIcons = {
           {page.comparison.description}
         </Text>
       </div>
-      <div class={seoStyles.Comparison__TableWrap} tabindex="0" role="region" aria-label={page.comparison.ariaLabel}>
-        <table class={seoStyles.ComparisonTable}>
+      <div class={styles.Comparison__TableWrap} tabindex="0" role="region" aria-label={page.comparison.ariaLabel}>
+        <table class={styles.ComparisonTable}>
           <thead>
             <tr>
               {page.comparison.columns.map((column) => <th scope="col">{column}</th>)}
@@ -213,9 +212,9 @@ const modeIcons = {
           </tbody>
         </table>
       </div>
-      {page.comparison.note && <p class={seoStyles.Comparison__Note}>{page.comparison.note}</p>}
+      {page.comparison.note && <p class={styles.Comparison__Note}>{page.comparison.note}</p>}
       {page.comparison.boundaryTitle && page.comparison.boundaryItems && (
-        <div class={seoStyles.Comparison__Boundary}>
+        <div class={styles.Comparison__Boundary}>
           <h3>{page.comparison.boundaryTitle}</h3>
           <ul>{page.comparison.boundaryItems.map((item) => <li>{item}</li>)}</ul>
         </div>
@@ -301,21 +300,21 @@ const modeIcons = {
         )}
       </div>
       {page.editorialReview && (
-        <article class={seoStyles.EditorialReview}>
-          <div class={seoStyles.EditorialReview__Meta}>
+        <article class={styles.EditorialReview}>
+          <div class={styles.EditorialReview__Meta}>
             <span>{page.editorialReview.label}</span>
             <strong aria-label={page.editorialReview.ratingAria}>{SOFTPEDIA_REVIEW.rating}</strong>
           </div>
-          <blockquote class={seoStyles.EditorialReview__Quote}>
+          <blockquote class={styles.EditorialReview__Quote}>
             <Text as="p" size="lg">“{SOFTPEDIA_REVIEW.quote}”</Text>
           </blockquote>
-          <footer class={seoStyles.EditorialReview__Footer}>
+          <footer class={styles.EditorialReview__Footer}>
             <Text as="p" size="sm" color="subtle">{SOFTPEDIA_REVIEW.author}, {SOFTPEDIA_REVIEW.publication}</Text>
-            <a class={seoStyles.ArrowLink} href={SOFTPEDIA_REVIEW.href} target="_blank" rel="noopener noreferrer">
+            <a class={styles.ArrowLink} href={SOFTPEDIA_REVIEW.href} target="_blank" rel="noopener noreferrer">
               {page.editorialReview.readLabel}<ArrowRight size={15} aria-hidden="true" />
             </a>
             <a
-              class={seoStyles.ArrowLink}
+              class={styles.ArrowLink}
               href={WINDOWS_STORE_US_URL}
               target="_blank"
               rel="noopener noreferrer external"

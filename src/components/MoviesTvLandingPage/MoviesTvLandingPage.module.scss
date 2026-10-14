@@ -47,7 +47,7 @@
     font-weight: 600;
     line-height: 1.2;
     text-decoration: none;
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    transition: transform $transition-fast, background-color $transition-fast;
 
 }
 
@@ -55,7 +55,7 @@
 .Button_other {
     display: inline-flex;
     border-radius: $radius-md;
-    transition: transform 0.2s ease;
+    transition: transform $transition-fast;
 
 
     :global(a[class]) {
@@ -514,7 +514,7 @@
     list-style: none;
 
     &::-webkit-details-marker { display: none; }
-    svg { flex: 0 0 auto; color: var(--page-accent); transition: transform 0.2s ease; }
+    svg { flex: 0 0 auto; color: var(--page-accent); transition: transform $transition-fast; }
 }
 
 .Faq__Item[open] summary svg { transform: rotate(45deg); }

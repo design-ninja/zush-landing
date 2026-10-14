@@ -1,37 +1,29 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
+// Related guides: the homepage's post tiles, archive link underneath.
 .Guides {
-  padding: $space-3xl 0;
-
-  @include mobile {
-    padding: 3.25rem 0;
-  }
+  @include section-spacing;
 
   &__Container {
     @include container;
   }
 
   &__List {
-    display: grid;
-    grid-template-columns: 1fr;
-    max-width: 56rem;
-    margin: $space-xl auto 0;
+    @include post-tile-grid;
   }
 
   &__Action {
-    display: flex;
-    justify-content: center;
-    margin-top: $space-xl;
+    margin-top: 2.5rem;
   }
 
   &__ActionLink {
-    color: var(--primary);
-    font-weight: var(--font-weight-link);
-    text-decoration: none;
+    @include text-link;
+    font-size: 0.9375rem;
+    font-weight: 600;
 
-    &:hover {
-      opacity: 0.75;
+    &::after {
+      content: ' →';
     }
   }
 }

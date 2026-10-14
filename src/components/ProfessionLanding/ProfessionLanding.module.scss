@@ -1,0 +1,394 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// Shared by every profession landing (accountants, medical, legal, HR,
+// photographers, real estate and the localized template). Section headers come
+// from SectionHeader; this module only lays out the blocks between them.
+
+// Every content section: container width + the site's section rhythm.
+@mixin profession-section {
+    @include section-spacing;
+
+    &__Container {
+        @include container;
+    }
+}
+
+// Breathing room between the closing CTA and the footer.
+.FinalCta {
+    padding-bottom: $space-3xl;
+
+    @include mobile {
+        padding-bottom: 3.25rem;
+    }
+}
+
+// Pull the app demo up so its top overlaps the hero photo's faded bottom edge.
+.HeroDemo {
+    position: relative;
+    z-index: 1;
+    margin-top: -0.5rem;
+
+    @include tablet {
+        margin-top: 0;
+    }
+}
+
+// Standalone "learn more" link: accent text with a trailing icon.
+.ArrowLink {
+    @include text-link;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+// Field explorer section (the explorer itself lives in FieldExplorer).
+.Fields {
+    @include profession-section;
+}
+
+// AI modes (WaysToRun columns) plus the honesty note under them.
+.Privacy {
+    @include profession-section;
+
+    &__Note {
+        @include body-copy(0.9375rem);
+        max-width: 45rem;
+        margin: 3rem 0 0;
+    }
+}
+
+// Three steps as hairline columns, numbered like the homepage.
+.Workflow {
+    @include profession-section;
+
+    &__Steps {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 3rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        @include tablet {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 2rem;
+        }
+    }
+
+    &__Links {
+        @include link-row(0.5rem 1.75rem);
+        margin-top: 3rem;
+    }
+}
+
+.WorkflowStep {
+    @include hairline-item;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    &__Number {
+        font-family: var(--font-mono);
+        font-size: 0.8125rem;
+        color: var(--primary);
+    }
+
+    &__Title {
+        margin: 0;
+        font-size: 1.1875rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        color: var(--foreground);
+    }
+
+    &__Description {
+        @include body-copy(0.9375rem);
+        margin: 0;
+        line-height: 1.6;
+    }
+}
+
+// Document types: hairline columns with a mono filename example.
+.Documents {
+    @include profession-section;
+
+    &__Grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 2.5rem 3rem;
+
+        @include tablet {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        @include mobile {
+            grid-template-columns: minmax(0, 1fr);
+        }
+    }
+}
+
+.DocumentType {
+    @include hairline-item;
+    display: flex;
+    flex-direction: column;
+
+    &__Title {
+        margin: 0;
+        font-size: 1.0625rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        color: var(--foreground);
+    }
+
+    &__Description {
+        @include body-copy(0.9375rem);
+        margin: 0.5rem 0 0;
+        line-height: 1.6;
+    }
+
+    &__Example {
+        @include mono-sample;
+        display: block;
+        margin-top: auto;
+        padding-top: 1rem;
+        color: var(--primary);
+    }
+}
+
+// "Where does Zush fit?" comparison: hairline table, notes beneath.
+.Comparison {
+    @include profession-section;
+
+    &__Eyebrow {
+        @include eyebrow;
+    }
+
+    &__TableWrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+
+        &:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
+        }
+    }
+
+    &__Note {
+        @include body-copy(0.9375rem);
+        max-width: 45rem;
+        margin: 2rem 0 0;
+    }
+
+    &__Boundary {
+        @include hairline-item;
+        max-width: 45rem;
+        margin-top: 3rem;
+
+        h3 {
+            margin: 0;
+            font-size: 1.0625rem;
+            color: var(--foreground);
+        }
+
+        ul {
+            margin: 1rem 0 0;
+            padding-left: 1.25rem;
+        }
+
+        li {
+            @include body-copy(0.9375rem);
+
+            & + li {
+                margin-top: 0.5rem;
+            }
+        }
+    }
+}
+
+.ComparisonTable {
+    @include content-table;
+    min-width: 46rem;
+
+    th,
+    td {
+        vertical-align: top;
+    }
+
+    tbody th {
+        width: 25%;
+    }
+}
+
+// Editorial review quote: the site's hairline panel.
+.EditorialReview {
+    @include surface-panel;
+    max-width: 56rem;
+    margin-top: 3rem;
+    padding: 2rem;
+
+    @include mobile {
+        padding: 1.5rem;
+    }
+
+    &__Meta,
+    &__Footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+
+        @include small {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+    }
+
+    &__Meta {
+        color: var(--text-faint);
+        font-size: 0.8125rem;
+        font-weight: 600;
+
+        strong {
+            color: var(--foreground);
+            font-size: 0.875rem;
+        }
+    }
+
+    &__Quote {
+        margin: 1.5rem 0;
+        color: var(--foreground);
+    }
+
+    &__Footer {
+        padding-top: 1rem;
+        border-top: 1px solid var(--border);
+
+        p {
+            margin: 0;
+        }
+    }
+}
+
+// Who it's for: sticky intro beside a ruled list with photos.
+.Audiences {
+    @include section-spacing;
+
+    &__Container {
+        @include container;
+        display: grid;
+        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.25fr);
+        align-items: start;
+        gap: clamp(3rem, 7vw, 6rem);
+
+        @include tablet {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 2.5rem;
+        }
+    }
+
+    &__Intro {
+        position: sticky;
+        top: calc($navbar-height + 2rem);
+        max-width: 27rem;
+
+        @include tablet {
+            position: static;
+            max-width: 38rem;
+        }
+    }
+
+    &__Eyebrow {
+        @include eyebrow;
+    }
+
+    &__Title {
+        margin: 0;
+        text-wrap: balance;
+    }
+
+    &__Description {
+        margin: 1rem 0 0;
+        max-width: 24rem;
+        line-height: 1.65;
+    }
+
+    &__List {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        border-top: 1px solid var(--border);
+    }
+}
+
+.Audience {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+
+    // Photo column only when the row has a photo (the localized template
+    // renders text-only rows).
+    &:has(> .Audience__Media) {
+        grid-template-columns: 11rem minmax(0, 1fr);
+
+        @include tablet {
+            grid-template-columns: 9rem minmax(0, 1fr);
+        }
+
+        @include small {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 1rem;
+        }
+    }
+
+    &__Media {
+        aspect-ratio: 3 / 2;
+        border-radius: $radius-lg;
+        overflow: hidden;
+        background: var(--muted);
+    }
+
+    &__Image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__Content {
+        min-width: 0;
+    }
+
+    &__Title {
+        margin: 0;
+        font-size: 1.0625rem;
+        font-weight: 700;
+        color: var(--foreground);
+    }
+
+    &__Description {
+        @include body-copy(0.9375rem);
+        margin: 0.5rem 0 0;
+        line-height: 1.6;
+    }
+}
+
+// Testimonials: the shared grid narrowed to this page's three personas.
+// Doubled class so it beats `.Testimonials__Grid` regardless of bundle order.
+.Testimonials__Grid.Testimonials__Grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    @include tablet {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include small {
+        grid-template-columns: 1fr;
+    }
+}

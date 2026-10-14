@@ -43,7 +43,7 @@
   height: auto;
   color: var(--foreground);
   text-decoration: none;
-  transition: opacity 0.2s ease;
+  transition: opacity $transition-fast;
 
   &:hover {
     opacity: 0.75;

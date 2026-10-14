@@ -163,7 +163,7 @@
         font-size: 0.875rem;
         font-weight: $font-weight-link;
         color: var(--muted-foreground);
-        transition: color 0.2s ease;
+        transition: color $transition-fast;
 
         &:hover,
         &:focus-visible {
@@ -204,7 +204,7 @@
             width: 1.0625rem;
             height: 1.0625rem;
         }
-        transition: background-color 0.2s ease, color 0.2s ease;
+        transition: background-color $transition-fast, color $transition-fast;
 
         @include mobile {
             display: none;
@@ -268,11 +268,6 @@
     // Quiet CTA in the pill (variant='ink'). The hero keeps the brand-purple
     // button as the page's primary action.
     & &__DownloadBtn {
-        // Text-only pill: the OS glyph is dropped in the header.
-        svg {
-            display: none;
-        }
-
         > a,
         > button {
             gap: 0.4rem;
@@ -368,7 +363,7 @@
         border-radius: $radius-button;
         color: var(--foreground);
         cursor: pointer;
-        transition: background-color 0.2s ease, color 0.2s ease;
+        transition: background-color $transition-fast, color $transition-fast;
 
         @include mobile {
             display: inline-flex;
@@ -470,7 +465,7 @@
         font-size: 1rem;
         padding: 0.7rem 0.65rem;
         text-decoration: none;
-        transition: background-color 0.2s ease, color 0.2s ease;
+        transition: background-color $transition-fast, color $transition-fast;
 
         &:hover,
         &:focus-visible {
@@ -500,7 +495,7 @@
         font-size: 0.9rem;
         font-weight: $font-weight-link;
         padding: 0.6rem 0.65rem;
-        transition: background-color 0.2s ease, color 0.2s ease;
+        transition: background-color $transition-fast, color $transition-fast;
 
         &:hover,
         &:focus-visible {
@@ -521,7 +516,7 @@
         font-size: 0.9rem;
         font-weight: $font-weight-link;
         padding: 0.6rem 0.65rem;
-        transition: background-color 0.2s ease, color 0.2s ease;
+        transition: background-color $transition-fast, color $transition-fast;
 
         &:hover,
         &:focus-within {

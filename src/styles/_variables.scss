@@ -238,8 +238,10 @@ $section-gap: 8.5rem;
 $section-gap-mobile: 5rem;
 
 // Transitions
-$transition-fast: 0.2s ease;
-$transition-normal: 0.3s ease;
+// Interface motion stays brisk: hovers 150ms, theme and larger state changes 200ms.
+$transition-fast: 0.15s ease;
+$transition-instant: 0.06s linear;
+$transition-normal: 0.2s ease;
 
 // Overlays
 $z-modal: 1000;

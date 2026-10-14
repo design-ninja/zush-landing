@@ -20,7 +20,7 @@
         height: 2.25rem;
         border-radius: 0.5rem;
         object-fit: contain;
-        transition: transform 0.2s ease;
+        transition: transform $transition-fast;
 
         @include mobile {
             width: 2.15rem;
@@ -41,7 +41,7 @@
         letter-spacing: -0.02em;
         line-height: 1;
         color: var(--foreground);
-        transition: color 0.2s ease;
+        transition: color $transition-fast;
 
         @media (max-width: 390px) {
             font-size: 1.35rem;
@@ -71,7 +71,7 @@
         line-height: 1.1;
         white-space: nowrap;
         transform: translateY(-1px);
-        transition: color 0.2s ease;
+        transition: color $transition-fast;
     }
 
     @media (max-width: 390px) {

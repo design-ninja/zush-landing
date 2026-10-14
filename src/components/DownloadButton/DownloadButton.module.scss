@@ -53,8 +53,14 @@
     border-top-left-radius: $radius-button;
     border-bottom-left-radius: $radius-button;
 
+    // OS glyph: monochrome, larger than the label. The negative block margin
+    // keeps the button height set by its padding, not by the icon.
     svg {
         flex-shrink: 0;
+        width: 1.75em;
+        height: 1.75em;
+        margin-block: -0.375em;
+        margin-inline: -0.25em -0.0625em;
     }
 
     &_single {
@@ -231,7 +237,6 @@
         column-gap: 0.75rem;
         text-decoration: none;
         cursor: pointer;
-        transition: background-color $transition-fast;
         @include dropdown-item;
     }
 

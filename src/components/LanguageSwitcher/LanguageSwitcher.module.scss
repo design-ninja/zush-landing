@@ -137,9 +137,6 @@
   align-items: center;
   gap: 0.75rem;
   text-decoration: none;
-  transition:
-    background-color $transition-fast,
-    color $transition-fast;
   @include dropdown-item;
 
   &_active {

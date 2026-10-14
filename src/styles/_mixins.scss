@@ -448,6 +448,8 @@ $button-sizes: (
     padding: 0.5rem 0.625rem;
     color: inherit;
     font-size: 0.875rem;
+    // Menus follow the pointer: highlight changes almost instantly.
+    transition: background-color $transition-instant;
 
     &:hover,
     &:focus-visible {
@@ -602,7 +604,7 @@ $heading-scale: (
 // Animated open/close for a native <details>. The answer stays in the DOM
 // (crawlable, find-in-page works); browsers without ::details-content or
 // interpolate-size simply toggle instantly. Respects reduced motion.
-@mixin disclosure-motion($duration: 0.3s) {
+@mixin disclosure-motion($duration: 0.22s) {
     interpolate-size: allow-keywords;
 
     &::details-content {
@@ -721,6 +723,14 @@ $heading-scale: (
     margin: 0;
     padding: 0;
     list-style: none;
+}
+
+// Grid of blog post tiles (homepage, profession guides): 240px minimum,
+// gap 40px 24px (concept).
+@mixin post-tile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+    gap: 2.5rem 1.5rem;
 }
 
 // Lead / body copy under a heading.

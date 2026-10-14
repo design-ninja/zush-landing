@@ -108,7 +108,7 @@
         color: var(--foreground);
         font-family: var(--font-family);
         box-shadow: none;
-        transition: background-color 0.2s ease, border-color 0.2s ease;
+        transition: background-color $transition-fast, border-color $transition-fast;
     }
 
     &__AppStore:hover &__StoreBadge,
@@ -169,7 +169,7 @@
     &__Link {
         color: var(--muted-foreground);
         font-size: 0.84375rem;
-        transition: color 0.2s ease;
+        transition: color $transition-fast;
 
         &:hover,
         &:focus-visible {
@@ -225,7 +225,7 @@
         // Cool grey: these are secondary wayfinding, not calls to action.
         color: var(--text-faint);
         font-weight: 400;
-        transition: color 0.2s;
+        transition: color $transition-fast;
 
         // Text labels (concept): the name comes from data-label, so the page
         // text is unchanged; icon and tooltip are not shown.

@@ -35,6 +35,8 @@ interface DownloadButtonProps {
   useMobileModal?: boolean;
   forceOS?: DownloadOS;
   showDropdown?: boolean;
+  /** OS glyph before the label; the header's compact button omits it. */
+  showIcon?: boolean;
   includeOtherOS?: boolean;
   /**
    * Install channel the main link points at. `mac-app-store` turns the button
@@ -90,6 +92,7 @@ const DownloadButton = ({
   useMobileModal = true,
   forceOS,
   showDropdown = true,
+  showIcon = true,
   includeOtherOS = true,
   channel = 'direct',
   menuCopy = DEFAULT_MENU_COPY,
@@ -206,7 +209,7 @@ const DownloadButton = ({
       onClick={handleOtherClick}
     >
       <span className={styles.Menu__Icon}>
-        {otherOS === 'windows' ? <WindowsIcon colored /> : <AppleIcon />}
+        {otherOS === 'windows' ? <WindowsIcon /> : <AppleIcon />}
       </span>
       <span className={styles.Menu__Text}>
         <span className={styles.Menu__Title}>
@@ -294,13 +297,13 @@ const DownloadButton = ({
         }
         onClick={handlePrimaryClick}
       >
-        {isAppStoreChannel ? (
+        {showIcon && (isAppStoreChannel ? (
           <AppStoreIcon size={22} />
         ) : downloadOS === 'windows' ? (
-          <WindowsIcon colored />
+          <WindowsIcon />
         ) : (
           <AppleIcon />
-        )}
+        ))}
         {renderLabel(label, labelAccent)}
         {edgeLabel && <EdgeLabel>{edgeLabel}</EdgeLabel>}
       </a>

@@ -4,10 +4,9 @@
 .Explorer {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
     max-width: 46rem;
-    margin: $space-2xl auto 0;
 
     &__Label {
         margin: 0 0 $space-md;
@@ -19,7 +18,6 @@
     &__Chips {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
         gap: 0.5rem;
     }
 
@@ -43,7 +41,7 @@
     &__Stage {
         width: 100%;
         max-width: 40rem;
-        margin: $space-xl auto 0;
+        margin: $space-xl 0 0;
         padding: $space-lg;
         @include surface-panel;
 
@@ -54,7 +52,7 @@
 
     &__Hint {
         max-width: 34rem;
-        margin: $space-lg auto 0;
+        margin: $space-lg 0 0;
         font-size: 0.8125rem;
         line-height: 1.55;
         color: var(--muted-foreground);
@@ -122,7 +120,7 @@
         letter-spacing: -0.01em;
         // Keep the proposed name on one line; the strings are sized to fit.
         white-space: nowrap;
-        animation: after-in 320ms 80ms ease both;
+        animation: after-in 200ms 60ms ease both;
 
         @include mobile {
             grid-column: 2;
@@ -146,7 +144,7 @@
         border-radius: $radius-full;
         background: var(--success);
         color: var(--success-foreground);
-        animation: after-in 320ms 160ms ease both;
+        animation: after-in 200ms 120ms ease both;
 
         @include mobile {
             display: none;

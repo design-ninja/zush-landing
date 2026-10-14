@@ -25,24 +25,17 @@
   }
 
   &__ActionLink {
-    color: var(--primary);
+    @include text-link;
     font-size: 0.9375rem;
     font-weight: 600;
-    text-decoration: none;
 
     &::after {
       content: ' →';
     }
-
-    &:hover {
-      opacity: 0.78;
-    }
   }
 
   &__Grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
-    gap: 2.5rem 1.5rem;
+    @include post-tile-grid;
     margin-top: 3rem;
   }
 }

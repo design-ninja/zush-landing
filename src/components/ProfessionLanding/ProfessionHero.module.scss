@@ -11,7 +11,7 @@
     overflow: hidden;
     min-height: min(86vh, 48rem);
     display: flex;
-    // Content sits in the lower half so the doctor's face stays clear above it;
+    // Content sits in the lower half so the person in the photo stays clear above it;
     // the modest bottom padding keeps the demo video close underneath.
     align-items: flex-end;
     padding: calc($navbar-height + 3rem) 0 4.5rem;
@@ -77,15 +77,8 @@
     }
 
     &__Eyebrow {
-        display: inline-block;
-        margin: 0 0 $space-md;
-        padding: 0.3rem 0.8rem;
-        border-radius: $radius-full;
-        background: var(--primary-soft);
-        color: var(--primary);
-        font-size: 0.8125rem;
-        font-weight: 600;
-        letter-spacing: 0.01em;
+        @include eyebrow;
+        margin-bottom: $space-md;
     }
 
     &__Actions {
@@ -108,8 +101,7 @@
     }
 }
 
-// Doubled classes, same reason as documented in UseCases.module.scss: these
-// elements also carry a shared component class (`.Heading_h1`, `.Text_lg`) that
+// Doubled classes: these elements also carry a shared component class (`.Heading_h1`, `.Text_lg`) that
 // declares the same properties, so a single class here would tie on
 // specificity and the winner would depend on bundle order.
 //
