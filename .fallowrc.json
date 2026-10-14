@@ -3,9 +3,32 @@
   "entry": [
     "src/styles/starlight-tokens.scss",
     "src/styles/starlight.css",
-    "src/scripts/hero-wave.ts"
+    "src/scripts/hero-wave.ts",
+    "src/components/Tour/tourController.ts",
+    "src/utils/analytics.ts",
+    "src/utils/checkoutAutoOpen.ts",
+    "src/utils/download.ts",
+    "src/utils/pricingCheckout.ts",
+    "src/utils/promoCode.ts",
+    "src/utils/scrollReveal.ts",
+    "src/utils/scrollToTop.ts",
+    "src/utils/storeLinks.ts",
+    "src/utils/reactHydrationClient.ts",
+    "scripts/**/*.mjs"
   ],
   "ignorePatterns": [
-    "design/**"
+    "design/**",
+    "output/**"
+  ],
+  "ignoreDependencies": [
+    "@paddle/paddle-mcp"
+  ],
+  "ignoreExports": [
+    {
+      "file": "src/components/FeatureLandingPage/TaskWorkflow.module.scss",
+      "exports": [
+        "*"
+      ]
+    }
   ]
 }

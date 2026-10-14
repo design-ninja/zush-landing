@@ -80,7 +80,7 @@ assert.doesNotMatch(
 );
 assert.match(
   entitySource,
-  /export const ZUSH_SITE_ALTERNATE_NAMES = \[\s*'Zush AI Renamer',\s*'Zush AI File Renamer',\s*'Zush File Renamer',\s*'Zush Renamer',\s*'zushapp\.com',\s*\] as const;/,
+  /(?:export )?const ZUSH_SITE_ALTERNATE_NAMES = \[\s*'Zush AI Renamer',\s*'Zush AI File Renamer',\s*'Zush File Renamer',\s*'Zush Renamer',\s*'zushapp\.com',\s*\] as const;/,
   'WebSite site-name variants must contain the recognized branded names and end with zushapp.com.',
 );
 const websiteSchema = entitySource.match(/const WEBSITE_JSON_LD = \{([\s\S]*?)\n\};/)?.[1] ?? '';

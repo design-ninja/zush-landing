@@ -29,7 +29,7 @@ export const ZUSH_BRAND_ALTERNATE_NAMES = [
 ] as const;
 
 /** Recognized site-name variants, ordered from the preferred descriptive brand to the domain. */
-export const ZUSH_SITE_ALTERNATE_NAMES = [
+const ZUSH_SITE_ALTERNATE_NAMES = [
   'Zush AI Renamer',
   'Zush AI File Renamer',
   'Zush File Renamer',
@@ -63,7 +63,7 @@ const ORGANIZATION_SAME_AS = [
   FACEBOOK_PROFILE_URL,
 ];
 
-export const ORGANIZATION_JSON_LD = {
+const ORGANIZATION_JSON_LD = {
   '@type': 'Organization',
   '@id': ORGANIZATION_ID,
   name: 'Zush',
@@ -86,7 +86,7 @@ export const ORGANIZATION_JSON_LD = {
   sameAs: ORGANIZATION_SAME_AS,
 };
 
-export const WEBSITE_JSON_LD = {
+const WEBSITE_JSON_LD = {
   '@type': 'WebSite',
   '@id': WEBSITE_ID,
   url: `${SITE_ORIGIN}/`,

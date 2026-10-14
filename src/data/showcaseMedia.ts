@@ -422,13 +422,6 @@ export function resolveShowcaseVideoMedia(
   };
 }
 
-export function resolveShowcaseScreenshotMedia(
-  asset: ShowcaseScreenshotAsset,
-  theme: ShowcaseTheme,
-): string {
-  return asset.images[theme];
-}
-
 export function getShowcaseVideoBySrc(src?: string | null) {
   if (!src) {
     return undefined;

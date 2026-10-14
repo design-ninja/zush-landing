@@ -1,4 +1,6 @@
-// fallow-ignore-file unused-file
+// Exports are read through dynamic import() destructuring in pricingCheckout.ts
+// and checkoutAutoOpen.ts, which static analysis does not follow.
+// fallow-ignore-file unused-export
 import { getAnalyticsDistinctId, trackAnalyticsEvent } from "@/utils/analytics";
 import { getCheckoutAnalyticsEvent, type CheckoutAnalyticsEvent } from "@/utils/checkoutAnalytics";
 import { SUPABASE_URL } from "@/utils/supabase";

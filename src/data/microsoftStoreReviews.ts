@@ -10,17 +10,6 @@ export const MICROSOFT_STORE_IRELAND_REVIEW = {
   source: WINDOWS_STORE_IRELAND_URL,
   sourceLabel: 'Microsoft Store (Ireland)',
 } as const;
-
-export const MICROSOFT_STORE_RATING = {
-  ratingValue: 5,
-  ratingCount: 5,
-  reviewCount: 4,
-  source: WINDOWS_STORE_US_URL,
-  market: 'US',
-  locale: 'en-US',
-  verifiedAt: '2026-08-24',
-} as const;
-
 export const MICROSOFT_STORE_REVIEWS = [
   {
     name: 'Lennox',

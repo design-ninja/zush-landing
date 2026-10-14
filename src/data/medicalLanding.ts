@@ -57,20 +57,6 @@ export const MEDICAL_FIELDS: MedicalField[] = [
   { label: 'Document date', before: 'outside_records.pdf', after: 'MRN-51402 – 2026-06-05 – Outside Records', emphasis: '2026-06-05' },
   { label: 'Custom field — describe it in plain language', before: 'doc_20260608.pdf', after: 'MRN-51402 – 2026-06-05 – Consent Form', emphasis: 'Consent Form' },
 ];
-
-export const MEDICAL_FIELDS_FOOTNOTE =
-  'Custom AI Blocks can extract any field you describe — “the ordering physician”, “the procedure code”, or “the signed date”. Your Template decides which fields become part of the filename.';
-
-export const MEDICAL_FILENAME_PATTERN = '{Internal ID} – {Date of service} – {Document type}';
-
-// Identifier-based only. Carried over from the medicalSlides pairs that used to
-// live in searchLandingPages.ts.
-export const MEDICAL_FILENAME_EXAMPLES = [
-  { before: 'Scan0001.pdf', after: 'MRN-48211 – 2026-06-12 – Lab Results.pdf' },
-  { before: 'fax_received.pdf', after: 'MRN-30177 – 2026-05-30 – Imaging – Chest X-Ray.pdf' },
-  { before: 'Scanned Document 4.pdf', after: 'MRN-51402 – 2026-06-05 – Intake Form.pdf' },
-];
-
 // The three run modes, with the medical-first recommendations shown before the
 // managed cloud option. Each mode is paired with the matching homepage demo.
 export interface MedicalPrivacyMode {
@@ -231,10 +217,6 @@ export const MEDICAL_TESTIMONIALS = [
       'Matching remittances to claims was the worst hour of my week. Naming the EOBs by account number and payer did most of it. A couple of scans come back generic and I fix those by hand.',
   },
 ];
-
-export const MEDICAL_PRICING_PREFACE =
-  'One license, unmetered. No per-document credits — re-run a folder after a template change for free.';
-
 export const MEDICAL_FAQ = [
   {
     question: 'Is Zush HIPAA compliant?',

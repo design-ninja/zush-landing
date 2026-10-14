@@ -134,7 +134,6 @@ export const handleStoreLinkClick = (
   });
 };
 
-// fallow-ignore-next-line unused-export
 export const bindStoreLink = (link: HTMLAnchorElement) => {
   // React owns both the markup and click handlers inside hydrated islands.
   if (link.closest('astro-island')) return;
@@ -165,7 +164,6 @@ export const bindStoreLink = (link: HTMLAnchorElement) => {
   });
 };
 
-// fallow-ignore-next-line unused-export
 export const bindStoreLinks = (root: ParentNode = document) => {
   root.querySelectorAll<HTMLAnchorElement>('a[data-store-os][data-store-app-url]').forEach(bindStoreLink);
 };

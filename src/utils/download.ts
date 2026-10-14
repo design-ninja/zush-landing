@@ -346,7 +346,6 @@ const getTrackedDownload = (link: HTMLAnchorElement): TrackDownloadClickOptions 
 };
 
 // Imported from BaseLayout.astro inline script; static import graph tools can miss it.
-// fallow-ignore-next-line unused-export
 export function bindDownloadTracking(root: ParentNode = document): void {
   persistCurrentDownloadAttribution();
 
@@ -397,7 +396,6 @@ const getPriceUsd = (priceLabel: string | undefined): number | undefined => {
 const proClickRoots = new WeakSet<EventTarget>();
 
 // Delegate to the stable root: the hero link may be replaced during hydration.
-// fallow-ignore-next-line unused-export
 export const bindProClickTracking = (root: ParentNode = document) => {
   const eventRoot = root as ParentNode & EventTarget;
   if (proClickRoots.has(eventRoot)) return;
@@ -413,7 +411,6 @@ export const bindProClickTracking = (root: ParentNode = document) => {
   });
 };
 
-// fallow-ignore-next-line unused-export
 export const bindProPlanClickTracking = (root: ParentNode = document) => {
   root.querySelectorAll<HTMLElement>('[data-pro-plan-id]').forEach((element) => {
     if (element.dataset.proPlanClickTrackingBound === 'true') return;

@@ -1,4 +1,3 @@
-// fallow-ignore-file unused-file
 const copyResetTimers = new WeakMap<HTMLButtonElement, number>();
 
 async function copyText(value: string): Promise<void> {
