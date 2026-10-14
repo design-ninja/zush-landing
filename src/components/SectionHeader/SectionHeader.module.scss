@@ -29,4 +29,18 @@
         margin-right: auto;
         text-align: center;
     }
+
+    // Left-aligned header for content sections (used by components that
+    // build the header from these classes directly, too).
+    &.SectionHeader_left {
+        align-items: flex-start;
+        text-align: left;
+        margin-left: 0;
+
+        .SectionHeader__Title,
+        .SectionHeader__Description {
+            text-align: left;
+            margin-left: 0;
+        }
+    }
 }

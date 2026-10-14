@@ -8,6 +8,10 @@
 
   @include mobile {
     padding: $section-gap-mobile 0 1.5rem;
+
+    .Card {
+      padding: 3rem 1.25rem;
+    }
   }
 }
 
@@ -16,7 +20,11 @@
 }
 
 .Card {
-  padding: 0 1rem;
+  // Hairline panel keeps the centred closing CTA distinct from the
+  // left-aligned sections around it.
+  padding: 4.5rem 2rem;
+  border: 1px solid var(--border);
+  border-radius: $radius-xl;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,10 +45,8 @@
 }
 
 .Card .Title {
+  // Standard section h2 size.
   margin: 0 0 1rem;
-  font-size: clamp(2.4rem, 5vw, 3.5rem);
-  letter-spacing: -0.04em;
-  line-height: 1.05;
   text-wrap: balance;
 }
 

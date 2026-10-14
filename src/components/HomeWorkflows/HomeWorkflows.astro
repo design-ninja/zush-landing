@@ -39,7 +39,8 @@ const localizedHref = (route: string): string =>
 ---
 
 <section class={blocks.Section} aria-labelledby="home-workflows-title">
-  <SectionHeader id="home-workflows-title" title={copy.title} description={copy.description} />
+  <SectionHeader
+    align="left" id="home-workflows-title" title={copy.title} description={copy.description} />
 
   <div class:list={[blocks.Columns, blocks.Columns_list]}>
     {WORKFLOWS.map(({ key, route }) => (

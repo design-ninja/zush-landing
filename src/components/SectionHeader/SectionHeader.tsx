@@ -12,6 +12,8 @@ interface SectionHeaderProps {
   className?: string;
   /** Forwarded to the heading, for anchors and aria-labelledby. */
   id?: string;
+  /** Content sections read left-aligned; statement sections stay centred. */
+  align?: 'center' | 'left';
 }
 
 const SectionHeader = ({
@@ -22,14 +24,15 @@ const SectionHeader = ({
   size,
   className = '',
   id,
+  align = 'center',
 }: SectionHeaderProps) => {
   return (
-    <div className={`${styles.SectionHeader} ${className}`}>
-      <Heading as={level} id={id} size={size} align="center" className={styles.SectionHeader__Title}>
+    <div className={`${styles.SectionHeader} ${align === 'left' ? styles.SectionHeader_left : ''} ${className}`}>
+      <Heading as={level} id={id} size={size} align={align} className={styles.SectionHeader__Title}>
         {titleHtml ? <span dangerouslySetInnerHTML={{ __html: titleHtml }} /> : title}
       </Heading>
       {description && (
-        <Text as="p" size="lg" color="subtle" align="center" className={styles.SectionHeader__Description}>
+        <Text as="p" size="lg" color="subtle" align={align} className={styles.SectionHeader__Description}>
           {description}
         </Text>
       )}
