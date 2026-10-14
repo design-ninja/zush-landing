@@ -53,7 +53,11 @@ void main() {
   if (d > 0.5) discard;
   float a = smoothstep(0.5, 0.05, d) * vAlpha * uOpacity * (1.0 + vGlow * 0.35);
   vec3 col = mix(mix(uA, uB, vMix), uC, vGlow * 0.6);
-  gl_FragColor = vec4(col, min(a, 1.0));
+  // Premultiplied output (see startWave): colour a³, coverage a², which is
+  // exactly what the old straight-alpha pipeline put on screen in Chrome.
+  a = min(a, 1.0);
+  float coverage = a * a;
+  gl_FragColor = vec4(col * coverage * a, coverage);
 }`;
 
 // Colours come from the theme tokens (--wave-a/b/c, --wave-opacity in
@@ -108,7 +112,9 @@ function compile(gl: WebGLRenderingContext, type: number, src: string) {
 }
 
 function startWave(canvas: HTMLCanvasElement) {
-  const gl = canvas.getContext('webgl', { alpha: true, antialias: true, premultipliedAlpha: false, powerPreference: 'low-power' });
+  // Premultiplied (the default): Safari composites a canvas as premultiplied
+  // even when asked not to, which turned straight-alpha points white there.
+  const gl = canvas.getContext('webgl', { alpha: true, antialias: true, powerPreference: 'low-power' });
   if (!gl) return;
   const prog = gl.createProgram()!;
   gl.attachShader(prog, compile(gl, gl.VERTEX_SHADER, VERT));
@@ -166,8 +172,8 @@ function startWave(canvas: HTMLCanvasElement) {
     gl.uniform3fv(uB, theme.b);
     gl.uniform3fv(uC, theme.c);
     gl.uniform1f(uOpacity, theme.opacity);
-    if (theme.additive) gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
-    else gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+    if (theme.additive) gl.blendFunc(gl.ONE, gl.ONE);
+    else gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
     if (!running) draw();
   };
 
