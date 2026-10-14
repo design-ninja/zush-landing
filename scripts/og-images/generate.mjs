@@ -17,6 +17,7 @@ import sharp from 'sharp';
 import { COVERS } from '../blog-covers/covers.mjs';
 import { ART_CSS, PALETTE, backdropCss, dotsCss, motifs } from '../blog-covers/motifs.mjs';
 import { openRenderer } from '../blog-covers/render.mjs';
+import { frontmatterValue } from '../lib/frontmatter.mjs';
 
 const ROOT = new URL('../../', import.meta.url).pathname;
 const read = (path) => readFileSync(join(ROOT, path));
@@ -57,10 +58,25 @@ ${css}
 
 // ------------------------------------------------------------------ site card
 
+/**
+ * The English homepage hero title (`home.heroTitle` in src/i18n/copy.ts) as
+ * its two authored lines. copy.ts is TypeScript with path aliases, so it is
+ * read as text; the lookup is anchored to the `home` block and fails loudly
+ * instead of rendering a wrong title.
+ */
+function englishHeroTitle() {
+  const source = read('src/i18n/copy.ts').toString();
+  const matches = [...source.matchAll(/^  home: \{\n    heroTitle: '((?:[^'\\]|\\.)*)',$/gm)];
+  if (matches.length !== 1) throw new Error(`Expected one English home.heroTitle in src/i18n/copy.ts, found ${matches.length}`);
+  const lines = matches[0][1].replaceAll("\\'", "'").split('\\n');
+  if (lines.length !== 2) throw new Error(`home.heroTitle should have two lines (one \\n), got: ${matches[0][1]}`);
+  return lines;
+}
+
 /** The homepage hero as a card: still point-wave, logo, hero title. No buttons. */
 function sitePage(theme = 'light') {
   const t = (name) => TOKENS[theme === 'dark' ? `dark-${name}` : name];
-  const [line1, line2] = read('src/i18n/copy.ts').toString().match(/heroTitle: '([^']+)'/)[1].split('\\n');
+  const [line1, line2] = englishHeroTitle();
   const wave = stripTypeScriptTypes(read('src/scripts/hero-wave.ts').toString());
   const css = `
 :root { --wave-a: ${t('wave-a')}; --wave-b: ${t('wave-b')}; --wave-c: ${t('wave-c')}; --wave-opacity: ${t('wave-opacity')}; }
@@ -80,14 +96,6 @@ h1 b { font-weight: inherit; color: ${t('primary')}; }`;
 }
 
 // ------------------------------------------------------------------ post cards
-
-function frontmatterValue(source, key) {
-  const raw = source.match(new RegExp(`^${key}:\\s*(.+)$`, 'm'))?.[1]?.trim();
-  if (!raw) return undefined;
-  if (raw.startsWith('"')) return JSON.parse(raw);
-  if (raw.startsWith("'")) return raw.slice(1, -1).replaceAll("''", "'");
-  return raw;
-}
 
 function listPosts(dir = BLOG_DIR) {
   return readdirSync(dir).flatMap((name) => {
@@ -127,13 +135,20 @@ h1 { font: 700 var(--size, 60px)/1.14 Manrope, ${SCRIPT_FALLBACKS}; letter-spaci
 .site { font: 500 22px Inter, sans-serif; color: ${PALETTE.dim}; letter-spacing: 0; }
 [dir="rtl"] .site { text-align: right; }
 .art { display: grid; place-items: center; }
-.art .row { transform: scale(0.78); }`;
-  // Steps the title down until it fits in 280px (four lines at the start size).
-  // A block, not top-level consts: setContent() keeps the same window between cards.
+.art .row { transform: scale(0.78); }
+h1.clamped { display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }`;
+  // Steps the title down until it fits in 280px (four lines at the start size);
+  // a title still too tall at the smallest size is clamped with an ellipsis so
+  // it never runs into the site line. A block, not top-level consts:
+  // setContent() keeps the same window between cards.
   const fit = `<script>{
 const h1 = document.querySelector('h1');
 document.fonts.ready.then(() => {
   for (let size = 60; size > 36 && h1.offsetHeight > 280; size -= 2) h1.style.setProperty('--size', size - 2 + 'px');
+  if (h1.offsetHeight > 280) {
+    h1.style.webkitLineClamp = String(Math.floor(280 / parseFloat(getComputedStyle(h1).lineHeight)));
+    h1.classList.add('clamped');
+  }
   document.body.dataset.fit = 'done';
 });
 }</script>`;

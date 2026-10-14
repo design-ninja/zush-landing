@@ -36,8 +36,8 @@ const SectionHeader = ({
       <Heading as={level} id={id} size={size} align={align} className={styles.SectionHeader__Title}>
         {titleHtml ? <span dangerouslySetInnerHTML={{ __html: titleHtml }} /> : title}
       </Heading>
-      {[description ?? []].flat().filter(Boolean).map((paragraph) => (
-        <Text key={paragraph} as="p" size="lg" color="subtle" align={align} className={styles.SectionHeader__Description}>
+      {[description ?? []].flat().filter(Boolean).map((paragraph, index) => (
+        <Text key={index} as="p" size="lg" color="subtle" align={align} className={styles.SectionHeader__Description}>
           {paragraph}
         </Text>
       ))}

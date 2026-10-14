@@ -1,5 +1,6 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
+import { frontmatterValue } from './lib/frontmatter.mjs';
 
 const root = process.cwd();
 const blogRoot = join(root, 'src/content/blog');
@@ -43,11 +44,6 @@ const titleQualityPatterns = {
   'pt-br': [/\bcloud\b/i, /^Melhor organizador de arquivos com IA.*7 apps/i],
   ja: [/^AI Renamer アプリ比較/i],
 };
-
-function frontmatterValue(source, key) {
-  const match = source.match(new RegExp(`^${key}:\\s*["']?([^"'\\n]+)["']?\\s*$`, 'm'));
-  return match?.[1]?.trim();
-}
 
 function localeTranslations(locale) {
   const directory = join(blogRoot, locale);

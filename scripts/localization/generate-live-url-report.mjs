@@ -1,5 +1,6 @@
 import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { frontmatterValue } from '../lib/frontmatter.mjs';
 
 const root = process.cwd();
 const origin = 'https://zushapp.com';
@@ -14,10 +15,6 @@ const targets = JSON.parse(
   readFileSync(join(root, 'scripts/localization/top-blog-targets.json'), 'utf8'),
 ).articles;
 const destination = join(root, 'scripts/localization/live-urls.md');
-
-function frontmatterValue(source, key) {
-  return source.match(new RegExp(`^${key}:\\s*["']?([^"'\\n]+)["']?\\s*$`, 'm'))?.[1]?.trim();
-}
 
 function translationsFor(locale) {
   const directory = join(root, 'src/content/blog', locale);

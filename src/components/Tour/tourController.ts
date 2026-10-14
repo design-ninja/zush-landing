@@ -35,7 +35,7 @@ export function bindTour(root: HTMLElement): () => void {
     const image = images[index];
     const path = document.documentElement.dataset.theme === 'dark' ? image.dataset.dark! : image.dataset.light!;
     const pathAt = (width: number) => path.replace(/\.webp$/i, `-${width}.webp`);
-    // srcset picks the real size; the fallback src stays the light 640px file.
+    // srcset picks the real size; the fallback src is the current theme's 640px file.
     const src = pathAt(640);
     if (image.getAttribute('src') !== src) {
       image.srcset = WIDTHS.map(width => `${pathAt(width)} ${width}w`).join(', ');

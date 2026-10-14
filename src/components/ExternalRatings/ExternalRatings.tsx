@@ -31,7 +31,7 @@ const ExternalRatings = ({
   if (!softpediaReviewAriaLabel && !microsoftStoreRatingAriaLabel) return null;
 
   return (
-    <div className={`${styles.ExternalRatings} ${className}`} aria-label="Independent ratings" data-external-ratings>
+    <div className={`${styles.ExternalRatings} ${className}`} role="group" aria-label="Independent ratings" data-external-ratings>
       {softpediaReviewAriaLabel && (
         <a
           className={styles.Rating}

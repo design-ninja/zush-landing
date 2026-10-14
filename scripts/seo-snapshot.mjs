@@ -12,23 +12,9 @@
 
 import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
-import { createRequire } from 'node:module';
 import { createHash } from 'node:crypto';
+import { parse } from 'parse5';
 
-const require = createRequire(import.meta.url);
-
-function loadParse5() {
-  try {
-    return require('parse5');
-  } catch {
-    const pnpmDir = join(process.cwd(), 'node_modules', '.pnpm');
-    const entry = readdirSync(pnpmDir).find((d) => d.startsWith('parse5@'));
-    if (!entry) throw new Error('parse5 not found; run pnpm install');
-    return require(join(pnpmDir, entry, 'node_modules', 'parse5'));
-  }
-}
-
-const { parse } = loadParse5();
 const SITE_ORIGIN = 'https://zushapp.com';
 const SKIP_TEXT = new Set(['script', 'style', 'noscript', 'template', 'svg', 'head']);
 

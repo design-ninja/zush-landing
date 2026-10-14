@@ -262,11 +262,10 @@
         }
     }
 
-    // The leading OS icon pulls the label left; extra right padding puts the
-    // text back in the optical centre of the pill. Qualified with `.Header` so
-    // this outweighs `.Group_sm .Main` (two classes) inside DownloadButton.
-    // Quiet CTA in the pill (variant='ink'). The hero keeps the brand-purple
-    // button as the page's primary action.
+    // Quiet CTA in the pill (variant='ink', no OS icon). The hero keeps the
+    // brand-purple button as the page's primary action. Qualified with
+    // `.Header` so this outweighs `.Group_sm .Main` (two classes) inside
+    // DownloadButton.
     & &__DownloadBtn {
         > a,
         > button {

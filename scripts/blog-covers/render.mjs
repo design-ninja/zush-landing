@@ -11,7 +11,13 @@ export async function openRenderer({ width, height, reducedMotion = 'no-preferen
     async shoot(html, ready) {
       await page.setContent(html, { waitUntil: 'load' });
       await page.evaluate(() => document.fonts.ready);
-      if (ready) await page.waitForSelector(ready, { state: 'attached' });
+      if (ready) {
+        // `ready` is set by the page itself (e.g. hero-wave.ts once WebGL draws),
+        // so a missing marker means the page failed, not that it is slow.
+        await page.waitForSelector(ready, { state: 'attached', timeout: 10_000 }).catch(() => {
+          throw new Error(`Render never reached ${ready} (WebGL unavailable or a page script failed)`);
+        });
+      }
       // Two animation frames so the capture is never taken before paint.
       await page.evaluate(() => new Promise((done) => requestAnimationFrame(() => requestAnimationFrame(done))));
       return page.screenshot({ type: 'png' });
