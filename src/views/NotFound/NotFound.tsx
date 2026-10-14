@@ -27,7 +27,6 @@ const NotFound: React.FC<NotFoundProps> = ({
         <div className={styles.NotFound}>
             <div className={styles.NotFound__Content}>
                 <Heading as="h1" align="center" className={styles.NotFound__Title}>404</Heading>
-                <Heading as="h2" align="center" className={styles.NotFound__Subtitle}>{copy.title}</Heading>
                 <Text as="p" size="lg" color="subtle" align="center" className={styles.NotFound__Text}>
                     {copy.text}
                 </Text>

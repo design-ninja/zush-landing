@@ -161,20 +161,10 @@
     text-align: center;
 }
 
-// Page title styling
-@mixin page-title($size: 2rem) {
-    font-size: $size;
-    font-weight: 600;
-    color: var(--foreground);
-    margin-bottom: 16px;
-}
-
-// Page subtitle styling
-@mixin page-subtitle($size: 1rem) {
-    font-size: $size;
-    color: var(--muted-foreground);
-    margin-bottom: 32px;
-    line-height: 1.6;
+// Lead under a page title on compact service pages (activation, recovery).
+@mixin page-subtitle {
+    @include body-copy(1.0625rem);
+    margin: 0 0 2rem;
 
     strong {
         color: var(--foreground);
@@ -342,13 +332,15 @@ $button-sizes: (
     border-color: var(--foreground);
 }
 
-// Icon with drop shadow
-@mixin icon-with-shadow($color: var(--primary), $shadow-color: rgba(99, 102, 241, 0.3)) {
+// Status icon above a service-page title: 40px, flat, coloured, no glow.
+@mixin page-icon($color: var(--primary)) {
     color: $color;
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
+    line-height: 0;
 
     svg {
-        filter: drop-shadow(0 4px 12px $shadow-color);
+        width: 2.5rem;
+        height: 2.5rem;
     }
 }
 

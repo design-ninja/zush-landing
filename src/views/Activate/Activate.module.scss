@@ -3,13 +3,13 @@
 @use '../../styles/mixins' as *;
 
 .Activate {
+    // Size and weight come from <Heading as="h1">, like every page title.
     &__Title {
-        @include page-title;
+        margin: 0 0 1rem;
     }
 
     &__Subtitle {
         @include page-subtitle;
-        font-size: 1.1rem;
     }
 
     &__Box {

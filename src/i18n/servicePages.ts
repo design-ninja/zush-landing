@@ -77,7 +77,6 @@ export interface ThankYouCopy {
 }
 
 export interface NotFoundCopy {
-  title: string;
   text: string;
 }
 
@@ -162,7 +161,6 @@ const en: ServicePageCopy = {
     downloadZush: 'Download Zush',
   },
   notFound: {
-    title: 'Scan Error',
     text: "Our AI couldn't find the page you're looking for. It might have been moved, renamed, or never existed in the first place.",
   },
   seo: {
@@ -239,7 +237,6 @@ const serviceCopies: Partial<Record<Locale, ServicePageCopy>> = {
       downloadZush: 'Zush laden',
     },
     notFound: {
-      title: 'Scan-Fehler',
       text: 'Unsere KI konnte die gesuchte Seite nicht finden. Sie wurde möglicherweise verschoben, umbenannt oder hat nie existiert.',
     },
     seo: {
@@ -313,7 +310,6 @@ const serviceCopies: Partial<Record<Locale, ServicePageCopy>> = {
       downloadZush: 'Télécharger Zush',
     },
     notFound: {
-      title: 'Erreur de scan',
       text: 'Notre IA n’a pas trouvé la page recherchée. Elle a peut-être été déplacée, renommée ou n’a jamais existé.',
     },
     seo: {
@@ -387,7 +383,6 @@ const serviceCopies: Partial<Record<Locale, ServicePageCopy>> = {
       downloadZush: 'Baixar Zush',
     },
     notFound: {
-      title: 'Erro de varredura',
       text: 'Nossa IA não encontrou a página que você procura. Ela pode ter sido movida, renomeada ou nunca ter existido.',
     },
     seo: {
@@ -461,7 +456,6 @@ const serviceCopies: Partial<Record<Locale, ServicePageCopy>> = {
       downloadZush: 'Descargar Zush',
     },
     notFound: {
-      title: 'Error de escaneo',
       text: 'Nuestra IA no encontró la página que buscas. Puede haberse movido, renombrado o quizá nunca existió.',
     },
     seo: {
@@ -535,7 +529,6 @@ const serviceCopies: Partial<Record<Locale, ServicePageCopy>> = {
       downloadZush: 'Zush downloaden',
     },
     notFound: {
-      title: 'Scanfout',
       text: 'Onze AI kon de pagina die je zoekt niet vinden. De pagina is mogelijk verplaatst, hernoemd of heeft nooit bestaan.',
     },
     seo: {
@@ -609,7 +602,6 @@ const serviceCopies: Partial<Record<Locale, ServicePageCopy>> = {
       downloadZush: 'Scarica Zush',
     },
     notFound: {
-      title: 'Errore di scansione',
       text: 'La nostra IA non ha trovato la pagina che cerchi. Potrebbe essere stata spostata, rinominata o non essere mai esistita.',
     },
     seo: {
@@ -683,7 +675,6 @@ const serviceCopies: Partial<Record<Locale, ServicePageCopy>> = {
       downloadZush: 'Zush をダウンロード',
     },
     notFound: {
-      title: 'スキャンエラー',
       text: 'AI はお探しのページを見つけられませんでした。移動、名前変更、または存在しないページの可能性があります。',
     },
     seo: {
@@ -757,7 +748,6 @@ const serviceCopies: Partial<Record<Locale, ServicePageCopy>> = {
       downloadZush: 'Zush 다운로드',
     },
     notFound: {
-      title: '스캔 오류',
       text: 'AI가 찾으려는 페이지를 찾지 못했습니다. 이동되었거나 이름이 바뀌었거나 처음부터 없던 페이지일 수 있습니다.',
     },
     seo: {
@@ -831,7 +821,6 @@ const serviceCopies: Partial<Record<Locale, ServicePageCopy>> = {
       downloadZush: '下载 Zush',
     },
     notFound: {
-      title: '扫描错误',
       text: 'AI 找不到你要访问的页面。它可能已被移动、重命名，或从未存在。',
     },
     seo: {

@@ -8,26 +8,21 @@
 
         svg {
             animation: thankYouSpin 0.9s linear infinite;
-            filter: drop-shadow(0 4px 12px rgba(99, 102, 241, 0.3));
             transform-origin: center;
         }
     }
 
     &__SuccessIcon {
         color: var(--secondary);
-
-        svg {
-            filter: drop-shadow(0 4px 12px color-mix(in srgb, var(--secondary) 30%, transparent));
-        }
     }
 
+    // Size and weight come from <Heading as="h1">, like every page title.
     &__Title {
-        @include page-title;
+        margin: 0 0 1rem;
     }
 
     &__Subtitle {
         @include page-subtitle;
-        font-size: 1.1rem;
     }
 
     &__EmailNotice {
