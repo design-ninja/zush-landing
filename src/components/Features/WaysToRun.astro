@@ -1,88 +1,66 @@
 ---
-import { Bot, Cloud, KeyRound } from 'lucide-react';
-import Heading from '@/components/Heading';
-import Text from '@/components/Text';
+// "Choose where AI runs": the three AI modes as hairline columns. Standalone it
+// is its own section (homepage, platform pages); inside <Features> it renders
+// as a nested band with an h3 title. Landing pages add the animated demos.
+import { Cloud, KeyRound, ShieldCheck } from 'lucide-react';
+import SectionHeader from '@/components/SectionHeader';
 import { DEFAULT_LOCALE, type Locale } from '@/i18n/config';
 import { DEFAULT_FEATURE_CARDS_COPY, type FeatureCardsCopy } from '@/i18n/copy';
 import { FEATURE_DEMO_COPY } from '@/i18n/featureDemoCopy';
 import BentoCard from './BentoCard.astro';
 import FeatureAnimation from './FeatureAnimation';
-import featureStyles from './Features.module.scss';
-import styles from './WaysToRun.module.scss';
+import b from '@/components/Blocks/Blocks.module.scss';
+import styles from './Features.module.scss';
 
 interface Props {
   copy?: FeatureCardsCopy;
-  eagerVisuals?: boolean;
   locale?: Locale;
+  /** Render the animated demo under each mode. */
+  visuals?: boolean;
+  eagerVisuals?: boolean;
+  /** Band inside <Features>: a div with an h3 title instead of a section. */
+  nested?: boolean;
 }
 
 const {
   copy = DEFAULT_FEATURE_CARDS_COPY,
-  eagerVisuals = false,
   locale = DEFAULT_LOCALE,
+  visuals = true,
+  eagerVisuals = false,
+  nested = false,
 } = Astro.props as Props;
 const demoCopy = FEATURE_DEMO_COPY[locale];
-const bandTitleParts = copy.bandTitle.split('Zush');
+const modes = [
+  { Icon: Cloud, kind: 'cloud-ai', ...copy.cloudAi },
+  { Icon: KeyRound, kind: 'byok', ...copy.byok },
+  { Icon: ShieldCheck, kind: 'offline-ai', ...copy.offlineAi },
+] as const;
+const Tag = nested ? 'div' : 'section';
+// Hydrated demos opt out of the section reveal so islands never mount hidden.
+const revealAttrs = visuals ? { 'data-scroll-reveal-skip': '' } : {};
 ---
 
-<section id='ways-to-run' class={styles.WaysToRun} data-scroll-reveal-skip>
-  <div class={styles.WaysToRun__Container}>
-    <div class={featureStyles.Band__Header}>
-      <Heading as='h2' size='h2' align='center' className={featureStyles.Band__Title}>
-        {bandTitleParts[0]}{bandTitleParts.length > 1 ? <span class={featureStyles.Features__TitleAccent}>Zush</span> : null}{bandTitleParts.slice(1).join('Zush')}
-      </Heading>
-      <Text as='p' color='subtle' align='center' className={featureStyles.Band__Subtitle}>
-        {copy.bandSubtitle}
-      </Text>
-    </div>
-    <div class={featureStyles.Band__Grid}>
-      <BentoCard
-        title={copy.cloudAi.title}
-        description={copy.cloudAi.description}
-        icon={Cloud}
-      >
-        <div class={featureStyles.UI_FeatureAnimation}>
-          {
-            eagerVisuals ? (
-              <FeatureAnimation kind='cloud-ai' demoCopy={demoCopy} client:load />
-            ) : (
-              <FeatureAnimation kind='cloud-ai' demoCopy={demoCopy} client:visible />
-            )
-          }
-        </div>
-      </BentoCard>
+<Tag id='ways-to-run' class={nested ? styles.Band : b.Section} {...revealAttrs}>
+  <SectionHeader
+    level={nested ? 'h3' : 'h2'}
+    size='h2'
+    title={copy.bandTitle}
+    description={copy.bandSubtitle}
+  />
 
-      <BentoCard
-        title={copy.byok.title}
-        description={copy.byok.description}
-        icon={KeyRound}
-      >
-        <div class={featureStyles.UI_FeatureAnimation}>
-          {
-            eagerVisuals ? (
-              <FeatureAnimation kind='byok' demoCopy={demoCopy} client:load />
+  <div class={b.Columns}>
+    {modes.map(({ Icon, kind, title, description }) => (
+      <BentoCard title={title} description={description} icon={Icon}>
+        {visuals && (
+          <div class={styles.UI_FeatureAnimation}>
+            {eagerVisuals ? (
+              <FeatureAnimation kind={kind} demoCopy={demoCopy} client:load />
             ) : (
-              <FeatureAnimation kind='byok' demoCopy={demoCopy} client:visible />
-            )
-          }
-        </div>
+              <FeatureAnimation kind={kind} demoCopy={demoCopy} client:visible />
+            )}
+          </div>
+        )}
       </BentoCard>
-
-      <BentoCard
-        title={copy.offlineAi.title}
-        description={copy.offlineAi.description}
-        icon={Bot}
-      >
-        <div class={featureStyles.UI_FeatureAnimation}>
-          {
-            eagerVisuals ? (
-              <FeatureAnimation kind='offline-ai' demoCopy={demoCopy} client:load />
-            ) : (
-              <FeatureAnimation kind='offline-ai' demoCopy={demoCopy} client:visible />
-            )
-          }
-        </div>
-      </BentoCard>
-    </div>
+    ))}
   </div>
-</section>
+</Tag>

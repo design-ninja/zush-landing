@@ -77,32 +77,14 @@
 
     // Plain text tabs: 15px, faint; active is ink and bold. Padding 9px 0.
     &__Tab {
+        @include text-tab;
         position: relative;
-        padding: 0.5625rem 0;
-        background: transparent;
-        border: 0;
-        border-radius: 0;
-        font-size: 0.9375rem;
-        font-weight: 500;
-        text-align: left;
-        color: var(--text-faint);
-        cursor: pointer;
-        transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
         overflow: hidden;
         user-select: none;
         isolation: isolate;
 
-        &:hover {
-            color: var(--foreground);
-        }
-
         &[aria-current='true'] {
-            color: var(--foreground);
-            font-weight: 700;
-
-            &:hover {
-                color: var(--foreground);
-            }
+            @include text-tab-active;
         }
     }
 
@@ -192,7 +174,7 @@
     }
 }
 
-@media (max-width: 768px) {
+@include mobile {
     .Tour {
         &__Platform {
             display: flex;
@@ -203,35 +185,14 @@
         // Phones: one swipeable row of chips above the screenshot.
         &__Tabs {
             order: -1;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            gap: 0.5rem;
-            justify-content: flex-start;
-            overflow-x: auto;
-            scroll-snap-type: x proximity;
-            scrollbar-width: none;
-            margin-inline: -1rem;
-            padding: 0 1rem 0.25rem;
-            width: calc(100% + 2rem);
-            max-width: none;
-
-            &::-webkit-scrollbar {
-                display: none;
-            }
+            @include chip-row;
         }
 
         &__Tab {
-            flex: 0 0 auto;
-            white-space: nowrap;
-            scroll-snap-align: start;
-            padding: 0.5625rem 0.875rem;
-            border: 1px solid var(--border-strong);
-            border-radius: $radius-full;
-            font-size: 0.875rem;
+            @include chip-tab;
 
             &[aria-current='true'] {
-                border-color: transparent;
-                background: color-mix(in oklch, var(--foreground) 7%, transparent);
+                @include chip-tab-active;
             }
         }
 

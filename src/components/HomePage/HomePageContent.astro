@@ -4,7 +4,7 @@ import HomeRenameWorkflow from './HomeRenameWorkflow.astro';
 import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
 import Tour from '@/components/Tour';
 import HomeFeatures from './HomeFeatures.astro';
-import HomeWaysToRun from './HomeWaysToRun.astro';
+import WaysToRun from '@/components/Features/WaysToRun.astro';
 import SupportedFormats from '@/components/SupportedFormats';
 import CloudFolders from '@/components/CloudFolders';
 import HomeBlogHighlights from '@/components/HomeBlogHighlights/HomeBlogHighlights.astro';
@@ -139,7 +139,7 @@ const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
   copy={copy.home.featureCards}
   locale={locale}
 />
-<HomeWaysToRun copy={copy.home.featureCards} />
+<WaysToRun copy={copy.home.featureCards} locale={locale} visuals={false} />
 {(locale === 'en' || professionCopy) && (
   <HomeProfessions locale={locale} homeCopy={copy.home} professionCopy={professionCopy} />
 )}

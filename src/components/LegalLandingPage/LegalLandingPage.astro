@@ -11,6 +11,7 @@ import FAQ from '@/components/FAQ';
 import BentoCard from '@/components/Features/BentoCard.astro';
 import FeatureAnimation from '@/components/Features/FeatureAnimation';
 import featureStyles from '@/components/Features/Features.module.scss';
+import b from '@/components/Blocks/Blocks.module.scss';
 import Heading from '@/components/Heading';
 import Pricing from '@/components/Pricing/Pricing.astro';
 import ProfessionGuides from '@/components/ProfessionGuides/ProfessionGuides.astro';
@@ -121,7 +122,7 @@ const AUDIENCE_IMAGES = {
       </Text>
     </div>
 
-    <div class={featureStyles.Band__Grid}>
+    <div class={b.Columns}>
       {LEGAL_PRIVACY_MODES.map((mode) => (
         <BentoCard
           title={mode.title}

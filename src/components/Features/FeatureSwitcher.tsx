@@ -1,17 +1,6 @@
 import { Player, type PlayerRef } from '@remotion/player';
 import { useEffect, useRef, useState, type ComponentType } from 'react';
-import {
-  Blocks,
-  FolderSync,
-  History,
-  LayoutTemplate,
-  MessageSquareText,
-  Tag,
-  type LucideIcon,
-} from 'lucide-react';
-import headingStyles from '@/components/Heading/Heading.module.scss';
 import { FEATURE_ANIMATION_CONFIG, type FeatureAnimationKind } from './FeatureAnimation';
-import featureStyles from './Features.module.scss';
 import styles from './FeatureSwitcher.module.scss';
 
 export interface FeatureSwitcherItem {
@@ -23,24 +12,6 @@ export interface FeatureSwitcherItem {
 interface FeatureSwitcherProps {
   items: FeatureSwitcherItem[];
 }
-
-const ICONS: Partial<Record<FeatureAnimationKind, LucideIcon>> = {
-  folders: FolderSync,
-  templates: LayoutTemplate,
-  'naming-blocks': Blocks,
-  prompts: MessageSquareText,
-  metadata: Tag,
-  history: History,
-};
-
-const TONES: Partial<Record<FeatureAnimationKind, string>> = {
-  folders: 'blue',
-  templates: 'orange',
-  'naming-blocks': 'purple',
-  prompts: 'pink',
-  metadata: 'green',
-  history: 'cyan',
-};
 
 const FeatureSwitcher = ({ items }: FeatureSwitcherProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -61,7 +32,6 @@ const FeatureSwitcher = ({ items }: FeatureSwitcherProps) => {
       style={{ gridTemplateRows: `repeat(${items.length - 1}, auto) minmax(0, 1fr)` }}
     >
       {items.map((item, index) => {
-        const Icon = ICONS[item.kind];
         const isActive = index === activeIndex;
         return (
           <button
@@ -74,21 +44,7 @@ const FeatureSwitcher = ({ items }: FeatureSwitcherProps) => {
             onFocus={() => setActiveIndex(index)}
             onClick={() => setActiveIndex(index)}
           >
-            <span
-              className={`${styles.Switcher__ItemIcon} ${
-                styles[`Switcher__ItemIcon_${TONES[item.kind]}`] ?? ''
-              }`}
-              aria-hidden
-            >
-              {Icon ? <Icon size={20} /> : null}
-            </span>
-            <span className={styles.Switcher__ItemText}>
-              <span
-                className={`${headingStyles.Heading} ${headingStyles.Heading_h4} ${featureStyles.BentoCard__Title}`}
-              >
-                {item.title}
-              </span>
-            </span>
+            {item.title}
           </button>
         );
       })}

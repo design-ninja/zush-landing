@@ -6,14 +6,7 @@
 
 // <section style="max-width: 1160px; margin: 0 auto; padding: 136px 24px 0">
 .Section {
-    max-width: $container-max-width;
-    margin: 0 auto;
-    padding: $section-gap 1.5rem 0;
-    scroll-margin-top: calc($navbar-height + 1rem);
-
-    @include mobile {
-        padding: $section-gap-mobile 1.25rem 0;
-    }
+    @include page-section;
 }
 
 // Hairline columns: repeat(auto-fit, minmax(300px, 1fr)), gap 48px
@@ -25,6 +18,15 @@
     grid-template-columns: repeat(auto-fit, minmax(min(18.75rem, 100%), 1fr));
     gap: 3rem;
 
+    // Paired items (scenarios, options): two per row, one on phones.
+    &_two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        @include small {
+            grid-template-columns: minmax(0, 1fr);
+        }
+    }
+
     // Rows of short items: rules carry the rhythm, so no row gap.
     &_list {
         row-gap: 0;
@@ -33,9 +35,7 @@
 
 // border-top 1px, padding-top 24px
 .Column {
-    border-top: 1px solid var(--border);
-    padding-top: 1.5rem;
-    min-width: 0;
+    @include hairline-item;
 
     // List rows: padding 24px 0 32px
     .Columns_list > & {
@@ -94,11 +94,9 @@
 
 // Geist Mono 13px / 1.9 / faint
 .Mono {
+    @include mono-sample;
     margin: 0.375rem 0 0;
-    font-family: var(--font-mono);
-    font-size: 0.8125rem;
     line-height: 1.9;
-    color: var(--text-faint);
 }
 
 .MonoStrong {
@@ -115,28 +113,23 @@
 
 // Feature block copy: 16px / 1.65 / muted
 .BlockText {
+    @include body-copy;
     margin: 0;
-    font-size: 1rem;
-    line-height: 1.65;
-    color: var(--muted-foreground);
 }
 
-// Text link row: 15px / 600 / accent
+// Text link row: 15px / 600 / accent. Spaced from copy above it in a column.
 .Links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.375rem 1.25rem;
-    margin: 0;
+    @include link-row(0.375rem 1.25rem);
     font-size: 0.9375rem;
     font-weight: 600;
 
-    a {
-        color: var(--primary);
-        text-decoration: none;
+    .Column > & {
+        margin-top: 1rem;
+    }
 
-        &:hover {
-            opacity: 0.78;
-        }
+    a {
+        @include text-link;
+        font-weight: inherit;
     }
 }
 
@@ -151,13 +144,18 @@
     background: var(--secondary);
     border-radius: $radius-full;
     padding: 0.1875rem 0.5625rem;
+    white-space: nowrap;
+
+    // Neutral status (e.g. "Recommended") in the brand accent instead of green.
+    &_accent {
+        color: var(--primary);
+        background: var(--primary-soft);
+    }
 }
 
 // Framed product screenshot: radius 18px, hairline border
 .Frame {
-    border-radius: 1.125rem;
-    overflow: hidden;
-    border: 1px solid var(--border);
+    @include frame;
 }
 
 // Directory row link: title + description, arrow on the right.

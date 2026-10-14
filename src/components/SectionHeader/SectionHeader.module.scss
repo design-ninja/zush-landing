@@ -25,6 +25,12 @@
         text-align: inherit;
     }
 
+    // The flex gap already spaces the eyebrow from the title.
+    .SectionHeader__Eyebrow {
+        @include eyebrow;
+        margin: 0;
+    }
+
     &.SectionHeader_center {
         align-items: center;
         text-align: center;

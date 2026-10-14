@@ -28,6 +28,7 @@ import type { Locale } from '@/i18n/config';
 import type { ProfessionKey, ProfessionPageCopy } from '@/i18n/professions/types';
 import ProfessionFieldExplorer from './ProfessionFieldExplorer';
 import featureStyles from '@/components/Features/Features.module.scss';
+import b from '@/components/Blocks/Blocks.module.scss';
 import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module.scss';
 import testimonialStyles from '@/components/Testimonials/Testimonials.module.scss';
 import heroStyles from '@/components/LegalLandingPage/LegalHero.module.scss';
@@ -139,7 +140,7 @@ const modeIcons = {
       <Heading as="h2" align="center" id={`${profession}-privacy-title`} className={sectionHeaderStyles.SectionHeader__Title}>{page.privacy.title}</Heading>
       <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>{page.privacy.description}</Text>
     </div>
-    <div class={featureStyles.Band__Grid}>
+    <div class={b.Columns}>
       {page.privacy.items.map((item) => {
         const kind = item.kind ?? 'cloud-ai';
         const Icon = modeIcons[kind];

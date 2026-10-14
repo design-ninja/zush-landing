@@ -1,27 +1,89 @@
+@use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
-.Section { padding: 8.5rem 0 0; }
-@media (max-width: 768px) { .Section { padding-top: 5rem; } }
-.Container { @include container; }
-.Header { display: grid; justify-items: center; gap: 1.25rem; margin-block-end: 3rem; }
-.Header h2 { max-width: 28ch; text-wrap: balance; margin: 0; scroll-margin-top: 8rem; }
-.Header > p { max-width: 46rem; margin: 0; text-wrap: pretty; }
-.Availability { color: var(--primary); padding: .2rem .5rem; border: 1px solid var(--border); border-radius: 2rem; font-size: .65rem; font-weight: 600; letter-spacing: .08em; }
-/* Open layout: copy beside the screenshot, no tinted panel. */
-.Feature { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 3.5rem; align-items: center; }
-.Copy { padding: 0; display: grid; gap: 2rem; }
-.Copy p { margin: 0; }
-.Mode { display: grid; gap: .75rem; }
-.Mode h3 { margin: 0; font-size: 1.25rem; }
-.Prompt { display: grid; gap: .65rem; padding: 1rem 1.25rem; border: 1px solid var(--border); border-radius: .75rem; background: var(--background); }
-.PromptLabel { color: var(--primary); font-size: .75rem; font-weight: 600; }
-.RuleExample { margin: 0; font-size: 1.1rem; font-weight: 500; line-height: 1.6; text-wrap: pretty; }
-.Example { margin: 0; display: grid; gap: .65rem; }
-.ExamplePath { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .6rem; font-size: .9rem; }
-.ExamplePath code { padding: .2rem .45rem; border-radius: .4rem; background: var(--background); border: 1px solid var(--border); overflow-wrap: anywhere; }
-.ExampleArrow { color: var(--primary); font-weight: 600; }
-.Links { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; }
-.Copy a { color: var(--primary); font-weight: 600; text-underline-offset: .2em; }
-.Visual { min-width: 0; align-self: center; display: grid; border: 1px solid var(--border); border-radius: 1.25rem; overflow: hidden; }
-.Visual :global(.organization-screenshot) { height: 100%; }
-@media (max-width: 900px) { .Feature { grid-template-columns: 1fr; gap: 2rem; } }
-@media (max-width: 480px) { .Copy { gap: 1.5rem; } }
+
+// AI folder sorting: the two modes beside the app screenshot. Section frame,
+// header, titles and links come from Blocks + SectionHeader.
+.Feature {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    gap: 3.5rem;
+    align-items: center;
+
+    @include tablet {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2.5rem;
+    }
+}
+
+.Copy {
+    display: grid;
+    gap: 2rem;
+}
+
+.Mode {
+    display: grid;
+    gap: 0.75rem;
+
+    // Blocks.ColumnText carries a top margin for stacked columns; the grid gap spaces it here.
+    > p {
+        margin: 0;
+    }
+}
+
+.Prompt {
+    @include surface-panel($radius-md);
+    display: grid;
+    gap: 0.5rem;
+    padding: 1rem 1.25rem;
+}
+
+.PromptLabel {
+    color: var(--text-faint);
+    font-size: 0.8125rem;
+    font-weight: 600;
+}
+
+.RuleExample {
+    margin: 0;
+    font-size: 1.0625rem;
+    font-weight: 500;
+    line-height: 1.6;
+    text-wrap: pretty;
+}
+
+.Example {
+    margin: 0;
+    display: grid;
+    gap: 0.5rem;
+}
+
+.ExamplePath {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem 0.6rem;
+
+    code {
+        @include mono-sample;
+        color: var(--foreground);
+    }
+}
+
+.ExampleArrow {
+    color: var(--primary);
+}
+
+.ExampleCaption {
+    @include body-copy(0.875rem);
+    margin: 0;
+}
+
+.Visual {
+    min-width: 0;
+    display: grid;
+
+    :global(.organization-screenshot) {
+        height: 100%;
+    }
+}

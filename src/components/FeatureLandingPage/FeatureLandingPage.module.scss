@@ -1,17 +1,10 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
+// Feature landings compose SectionHeader, Blocks and the shared FAQ styles;
+// this module holds only the pieces specific to these pages.
 .Page {
   min-height: 80vh;
-
-  // The hero's purple bloom (page-top-bloom, top: -12rem) is positioned
-  // relative to the hero element. On these landings the breadcrumbs bar and
-  // the compact hero padding push the hero ~7rem further down the page than
-  // on the homepage, which drags the glow down onto the file cards. Pull it
-  // back up so it hugs the top of the viewport like the homepage hero.
-  [data-hero-root]::before {
-    top: -19rem;
-  }
 
   // Landing titles have no authored line breaks. Balance them within the
   // intro column so a short final word never becomes an oversized line.
@@ -21,326 +14,106 @@
     letter-spacing: -0.03em;
     text-wrap: balance;
   }
-
 }
 
-// Sections
-.Section {
-  padding: 4rem 0;
-
-  @include mobile {
-    padding: 2.5rem 0;
-  }
-
-  &__Container {
-    @include container;
-  }
-
-  &__Title {
-    font-size: 1.75rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    text-align: center;
-
-    @include mobile {
-      font-size: 1.375rem;
-    }
-  }
-}
-
-// FAQ
-.FAQList {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
+// One-line pointer to a deeper guide, between sections.
 .ContextualGuideLink {
   @include container;
-  max-width: 800px;
-  padding-top: 2rem;
-  text-align: center;
+  padding-top: 3rem;
 
   p {
+    @include body-copy;
+    max-width: 45rem;
     margin: 0;
-    color: var(--muted-foreground);
-    line-height: 1.7;
   }
 
   a {
+    @include text-link;
+  }
+}
+
+// Numbered how-to steps under a SectionHeader.
+.Steps {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 45rem;
+  margin: 0;
+  padding-left: 1.5rem;
+  @include body-copy;
+
+  li::marker {
     color: var(--primary);
-    font-weight: var(--font-weight-link);
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
   }
-}
-
-.DirectAnswer {
-  padding-bottom: 0;
-
-  &__Container {
-    @include container;
-    max-width: 800px;
-  }
-
-  &__Answer {
-    margin: 1rem 0 0;
-    color: var(--muted-foreground);
-    line-height: 1.7;
-  }
-
-  &__Steps {
-    display: grid;
-    gap: 0.75rem;
-    margin: 1.25rem 0 0;
-    padding-left: 1.5rem;
-    color: var(--muted-foreground);
-    line-height: 1.6;
-
-    li::marker {
-      color: var(--primary);
-      font-weight: 700;
-    }
-  }
-}
-
-.FAQItem {
-  background: var(--card);
-  outline: 1px solid var(--border);
-  border-radius: 16px;
-  overflow: hidden;
-  transition: box-shadow 0.3s ease, outline 0.3s ease;
-
-  &:not([open]):hover {
-    @include card-hover-outline(var(--primary-soft));
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
-  }
-
-  &[open] {
-    outline: 3px solid var(--primary);
-  }
-
-  &__Header {
-    width: 100%;
-    padding: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: none;
-    border: none;
-    cursor: pointer;
-    text-align: left;
-    gap: 16px;
-    color: var(--foreground);
-    font-family: var(--font-family);
-    list-style: none;
-
-    &::-webkit-details-marker { display: none; }
-  }
-
-  &__Question {
-    color: var(--foreground);
-    margin: 0;
-  }
-
-  &__Icon {
-    flex-shrink: 0;
-    color: var(--muted-foreground);
-    transition: transform 0.3s ease;
-    transform: rotate(90deg);
-
-    .FAQItem[open] & {
-      transform: rotate(0deg);
-      color: var(--primary);
-    }
-  }
-
-  &__Content {
-    display: block;
-  }
-
-  &__Answer {
-    padding: 0 24px 24px;
-    color: var(--muted-foreground);
-    line-height: 1.6;
-    margin: 0;
-    overflow: hidden;
-  }
-}
-
-// Related Links
-.RelatedSection {
-  margin-top: 3rem;
 }
 
 .RelatedLinks {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.75rem;
+  @include link-row;
+  margin-top: 1rem;
 }
 
-.RelatedChip {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.55rem 0.95rem;
-  border: 1px solid var(--border);
-  border-radius: $radius-full;
-  background: var(--card);
-  color: var(--muted-foreground);
-  font-size: 0.9rem;
-}
-
-.PdfDeepDive,
-.PdfComparison {
-  padding: 4rem 0;
-
-  @include mobile {
-    padding: 2.5rem 0;
-  }
-}
-
-.PdfDeepDive {
-  &__Header {
-    max-width: 760px;
-    margin: 0 auto 2.25rem;
-    text-align: center;
-  }
-
-  &__Eyebrow {
-    display: inline-flex;
-    align-items: center;
-    margin: 0 0 0.75rem;
-    padding: 0.35rem 0.85rem;
-    background: var(--primary-soft);
-    color: var(--primary);
-    border-radius: $radius-full;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0;
-    text-transform: uppercase;
-  }
-
-  &__Intro {
-    margin: 1rem auto 0;
-    color: var(--muted-foreground);
-    font-size: 1rem;
-    line-height: 1.7;
-  }
-}
-
-.PdfScenarioGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.5rem;
-
-  @include small {
-    grid-template-columns: 1fr;
-  }
-}
-
-.PdfScenarioCard {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  min-width: 0;
-  padding: 1.75rem;
-  background: var(--muted);
-  border: 1px solid var(--border);
-  border-radius: $radius-xl;
-
-  &__Title {
-    margin: 0;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--foreground);
-  }
-
-  &__Description {
-    margin: 0;
-    color: var(--muted-foreground);
-    font-size: 0.92rem;
-    line-height: 1.55;
-  }
-}
-
+// File tile + before/after names (PDF scenarios, task workflow example).
 .PdfFileItem {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
-  padding: 0.85rem;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: $radius-md;
+  gap: 0.875rem;
   min-width: 0;
 
   &__Preview {
-    width: 4rem;
-    height: 4rem;
-    border-radius: $radius-sm;
+    --file-preview-color: var(--tone-red-fg);
+    width: 3rem;
+    height: 3rem;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.2rem;
-    --file-preview-color: var(--tone-red-fg);
+    gap: 0.15rem;
+    border-radius: $radius-sm;
     color: var(--file-preview-color);
-    background: color-mix(in srgb, var(--file-preview-color) 14%, white);
+    background: color-mix(in srgb, var(--file-preview-color) 12%, var(--background));
     overflow: hidden;
-    border: 1px solid color-mix(in srgb, var(--file-preview-color) 22%, white);
-
-    :global(html[data-theme='dark']) & {
-      background: color-mix(in srgb, var(--file-preview-color) 18%, var(--card));
-      border-color: color-mix(in srgb, var(--file-preview-color) 32%, var(--card));
-    }
   }
 
   &__Badge {
-    font-size: 0.55rem;
+    font-size: 0.5rem;
     line-height: 1;
-    letter-spacing: 0;
     font-weight: 800;
-    opacity: 0.95;
   }
 
   &__Content {
     flex: 1;
     min-width: 0;
     overflow: hidden;
-    text-align: left;
   }
 
   &__Before {
-    font-family: $font-mono;
-    font-size: 0.7rem;
-    color: var(--muted-foreground);
+    @include mono-sample;
     @include text-ellipsis;
+    font-size: 0.75rem;
     text-decoration: line-through;
-    margin-bottom: 0.2rem;
   }
 
   &__After {
-    font-family: $font-mono;
-    font-size: 0.95rem;
+    @include mono-sample;
+    @include text-ellipsis;
     font-weight: 600;
     color: var(--foreground);
-    @include text-ellipsis;
   }
 }
 
+// Tool comparison: hairline rows, no outer box.
 .PdfComparisonTable {
-  overflow: hidden;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--card);
+  border-bottom: 1px solid var(--border);
 
   &__Head,
   &__Row {
     display: grid;
     grid-template-columns: 0.85fr 1fr 1.45fr;
-    gap: 1rem;
-    padding: 1rem 1.25rem;
+    gap: 1.5rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--border);
 
     @include mobile {
       grid-template-columns: 1fr;
@@ -349,12 +122,9 @@
   }
 
   &__Head {
-    color: var(--foreground);
-    font-size: 0.78rem;
+    color: var(--text-faint);
+    font-size: 0.8125rem;
     font-weight: 600;
-    letter-spacing: 0;
-    text-transform: uppercase;
-    background: var(--muted);
 
     @include mobile {
       display: none;
@@ -362,15 +132,12 @@
   }
 
   &__Row {
-    color: var(--muted-foreground);
+    @include body-copy(0.9375rem);
     line-height: 1.55;
-
-    & + & {
-      border-top: 1px solid var(--border);
-    }
 
     strong {
       color: var(--foreground);
+      font-weight: 600;
     }
   }
 }

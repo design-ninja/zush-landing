@@ -20,7 +20,7 @@ const headingId = `rename-task-${example.id}`;
     <figcaption>{example.evidence}</figcaption>
   </figure>
   <details>
-    <summary><span>Use the {example.templateName} template</span><ChevronDown size={20} className="chevron" aria-hidden="true" /></summary>
+    <summary><span>Use the {example.templateName} template</span><ChevronDown size={18} className="chevron" aria-hidden="true" /></summary>
     <div class="details-body">
       <p>Open <strong>Templates</strong> in Zush, create a template named <strong>{example.templateName}</strong>, and use these instructions in its <a href="/docs/custom-prompts">custom prompt</a>. Save it, generate names for a small batch, and review before applying.</p>
       <div class="prompt">
@@ -64,48 +64,62 @@ const headingId = `rename-task-${example.id}`;
   bindTaskCopies();
   document.addEventListener('astro:after-swap', bindTaskCopies);
 </script>
-<style>
-  .rename-task { width: min(50rem, calc(100% - 2.5rem)); margin: 3rem auto; padding: 2rem; border: 1px solid var(--border); border-radius: 1.5rem; background: var(--muted); color: var(--foreground); }
-  .eyebrow { display: inline-flex; margin: 0 0 .75rem; padding: .35rem .85rem; border-radius: 9999px; background: var(--primary-soft); color: var(--primary); font-size: .75rem; font-weight: 600; line-height: 1.4; text-transform: uppercase; }
-  h2 { margin: 0 0 .75rem; font-family: var(--font-family-heading); font-size: clamp(1.5rem, 3vw, 1.85rem); font-weight: 600; font-variation-settings: 'opsz' 32; line-height: 1.2; text-wrap: balance; scroll-margin-top: 7rem; }
-  p, figcaption { margin: 0; color: var(--muted-foreground); line-height: 1.6; }
-  .intro { font-size: 1rem; }
-  figure { margin: 1.5rem 0 0; }
-  .names { display: grid; gap: .15rem; padding: 1rem 1.25rem; border: 1px solid var(--border); border-radius: 1rem; background: var(--card); }
-  .label { font-size: .7rem; font-weight: 500; color: var(--muted-foreground); }
+<style lang="scss">
+  @use 'styles/variables' as *;
+  @use 'styles/mixins' as *;
+
+  // A landing section on feature pages; a hairline panel inside blog posts.
+  .rename-task {
+    @include page-section;
+    color: var(--foreground);
+
+    > * {
+      max-width: 45rem;
+    }
+  }
+
+  .eyebrow { @include eyebrow; }
+  h2 { @include heading('h2'); margin: 0 0 1rem; scroll-margin-top: 7rem; }
+  p, figcaption { margin: 0; color: var(--muted-foreground); line-height: 1.65; }
+  .intro { font-size: 1.0625rem; }
+  figure { margin: 2rem 0 0; }
+  .names { display: grid; gap: .15rem; @include hairline-item(1.25rem); }
+  .label { font-size: .75rem; color: var(--text-faint); }
   .label:nth-of-type(2) { margin-top: .6rem; }
-  code { font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace; overflow-wrap: anywhere; line-height: 1.45; }
-  .before { font-size: .8rem; color: var(--muted-foreground); text-decoration: line-through; }
-  .after { font-size: .92rem; font-weight: 600; color: var(--foreground); }
+  code { @include mono-sample; }
+  .before { text-decoration: line-through; }
+  .after { font-size: .9375rem; font-weight: 600; color: var(--foreground); }
   figcaption { font-size: .8125rem; margin-top: .75rem; }
-  details { margin: 1.5rem 0 0; background: var(--card); outline: 1px solid var(--border); border-radius: 1rem; overflow: hidden; transition: outline .3s ease; }
-  details[open] { outline: 3px solid var(--primary); }
-  summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 1.25rem; font-weight: 600; line-height: 1.4; cursor: pointer; list-style: none; }
-  summary::-webkit-details-marker { display: none; }
-  summary:focus-visible { outline: 2px solid var(--primary); outline-offset: -2px; border-radius: 1rem; }
-  summary :global(.chevron) { flex-shrink: 0; color: var(--muted-foreground); transition: transform .3s ease; }
-  details[open] summary :global(.chevron) { transform: rotate(180deg); color: var(--primary); }
-  .details-body { display: grid; gap: 1rem; padding: 0 1.25rem 1.25rem; font-size: .92rem; }
+  details { margin: 2rem 0 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  summary { @include disclosure-summary; }
+  summary :global(.chevron) { @include disclosure-chevron; }
+  .details-body { display: grid; gap: 1rem; padding: 0 0 1.5rem; font-size: .9375rem; }
   .details-body strong { color: var(--foreground); font-weight: 600; }
-  .prompt { display: grid; gap: .75rem; justify-items: start; padding: 1rem; border: 1px solid var(--border); border-radius: .75rem; background: var(--muted); }
-  .prompt p { color: var(--foreground); font-size: .88rem; }
-  button { display: inline-flex; align-items: center; gap: .45rem; font: inherit; font-size: .85rem; font-weight: 500; cursor: pointer; border: 0; border-radius: 9999px; padding: .55rem 1rem; color: var(--primary); background: var(--primary-soft); }
-  button:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+  .prompt { display: grid; gap: .75rem; justify-items: start; padding: 1rem 1.25rem; @include surface-panel($radius-md); }
+  .prompt p { color: var(--foreground); font-size: .875rem; }
+  button { display: inline-flex; align-items: center; gap: .45rem; padding: 0; border: 0; background: none; font: inherit; font-size: .875rem; font-weight: 600; color: var(--primary); cursor: pointer; }
+  button:hover { opacity: .78; }
+  button:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; border-radius: .25rem; }
   [data-task-status] { display: block; font-size: .85rem; color: var(--muted-foreground); }
   [data-task-status]:empty { display: none; }
-  a { color: var(--primary); font-weight: var(--font-weight-link); text-underline-offset: .2em; }
-  a:hover { text-decoration: underline; }
-  .limitation { margin-top: 1.25rem; font-size: .875rem; }
-  .links { display: flex; flex-wrap: wrap; align-items: baseline; gap: .35rem .6rem; margin-top: .75rem; font-size: .92rem; }
-  .links span { color: var(--muted-foreground); }
-  .trial { display: grid; gap: .85rem; border-top: 1px solid var(--border); margin-top: 1.5rem; padding-top: 1.5rem; }
+  a { @include text-link; }
+  .limitation { margin-top: 1.5rem; font-size: .875rem; }
+  .links { display: flex; flex-wrap: wrap; align-items: baseline; gap: .35rem .6rem; margin-top: .75rem; font-size: .9375rem; }
+  .links span { color: var(--text-dim); }
+  .trial { display: grid; gap: .85rem; margin-top: 2rem; @include hairline-item; }
   .trial strong { font-weight: 600; }
   .downloads { display: flex; flex-wrap: wrap; gap: .75rem; }
   .trial p { font-size: .8125rem; }
-  @media (max-width: 768px) { .rename-task { padding: 1.25rem; margin-block: 2rem; } }
-  :global(.markdown-content) .rename-task { width: 100%; margin: 2rem 0; }
-  :global(.markdown-content) .rename-task h2 { margin-top: 0; }
+
+  :global(.markdown-content) .rename-task {
+    margin: 2rem 0;
+    padding: 2rem;
+    @include surface-panel;
+
+    @include mobile { padding: 1.25rem; }
+  }
+  :global(.markdown-content) .rename-task h2 { @include heading-size('h3'); margin-top: 0; }
   :global(.markdown-content) .rename-task p { margin: 0; }
-  :global(.markdown-content) .rename-task .limitation { margin-top: 1.25rem; }
+  :global(.markdown-content) .rename-task .limitation { margin-top: 1.5rem; }
   :global(.markdown-content) .rename-task .links { margin-top: .75rem; }
 </style>

@@ -1,7 +1,8 @@
 ---
+// One feature/mode as a hairline column (Blocks): accent icon, title, copy,
+// and an optional demo underneath.
 import type { LucideIcon } from 'lucide-react';
-import Heading from '@/components/Heading';
-import Text from '@/components/Text';
+import b from '@/components/Blocks/Blocks.module.scss';
 import styles from './Features.module.scss';
 
 interface Props {
@@ -14,39 +15,23 @@ interface Props {
 }
 
 const { title, description, icon: Icon, class: className, badge, badgeTone } = Astro.props;
+const hasVisual = Astro.slots.has('default');
 ---
 
-<div
-  class={`${styles.BentoCard} ${className || ''}`}
-  data-bento-card
->
-  <div class={styles.BentoCard__Content}>
-    <div class={styles.BentoCard__Header}>
-      <div class={styles.BentoCard__IconWrapper}>
-        <Icon size={24} />
-      </div>
-      <div class={styles.BentoCard__TitleRow}>
-        <Heading as='h3' size='h4' className={styles.BentoCard__Title}>
-          {title}
-        </Heading>
-        {badge && (
-          <span
-            class={`${styles.BentoCard__Badge} ${
-              badgeTone === 'success' ? styles.BentoCard__Badge_success : ''
-            }`}
-          >
-            {badge}
-          </span>
-        )}
-      </div>
+<div class:list={[b.Column, styles.BentoCard, className]} data-bento-card>
+  <span class={b.ColumnIcon}><Icon size={24} strokeWidth={1.7} aria-hidden='true' /></span>
+  <div class={styles.BentoCard__TitleRow}>
+    <h3 class={b.ColumnTitle}>{title}</h3>
+    {badge && (
+      <span class:list={[b.Badge, { [b.Badge_accent]: badgeTone !== 'success' }]}>
+        {badge}
+      </span>
+    )}
+  </div>
+  <p class={b.ColumnText}>{description}</p>
+  {hasVisual && (
+    <div class={styles.BentoCard__Visual}>
+      <slot />
     </div>
-    <Text className={styles.BentoCard__Description} color='subtle'>
-      {description}
-    </Text>
-  </div>
-  <div class={styles.BentoCard__Visual}>
-    <slot>
-      <div class={styles.BentoCard__Placeholder} />
-    </slot>
-  </div>
+  )}
 </div>

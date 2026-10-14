@@ -1,14 +1,12 @@
 ---
-import { Bot, Cloud, KeyRound, Sparkles } from 'lucide-react';
-import Heading from '@/components/Heading';
-import Text from '@/components/Text';
+import SectionHeader from '@/components/SectionHeader';
 import { DEFAULT_LOCALE, type Locale } from '@/i18n/config';
 import { DEFAULT_FEATURE_CARDS_COPY, type FeatureCardsCopy } from '@/i18n/copy';
 import { FEATURE_DEMO_COPY } from '@/i18n/featureDemoCopy';
-import BentoCard from './BentoCard.astro';
+import WaysToRun from './WaysToRun.astro';
 import SmartBatchRenameVisual from './SmartBatchRenameVisual';
-import FeatureAnimation from './FeatureAnimation';
 import FeatureSwitcher, { type FeatureSwitcherItem } from './FeatureSwitcher';
+import b from '@/components/Blocks/Blocks.module.scss';
 import styles from './Features.module.scss';
 
 interface Props {
@@ -31,14 +29,6 @@ const {
   locale = DEFAULT_LOCALE,
 } = Astro.props as Props;
 const demoCopy = FEATURE_DEMO_COPY[locale];
-const titleParts = title.split('Zush');
-const bandTitleParts = copy.bandTitle.split('Zush');
-const className = [styles.Features, compactTopSpacing ? styles.Features_compactTopSpacing : '']
-  .filter(Boolean)
-  .join(' ');
-const switcherClassName = [styles.SwitcherSection, includeBand ? '' : styles.SwitcherSection_tight]
-  .filter(Boolean)
-  .join(' ');
 
 const switcherItems: FeatureSwitcherItem[] = [
   { kind: 'folders', title: copy.foldersMonitoring.title, description: copy.foldersMonitoring.description },
@@ -50,115 +40,37 @@ const switcherItems: FeatureSwitcherItem[] = [
 ];
 ---
 
-<section id='features' class={className} data-scroll-reveal-skip>
-  <div class={styles.Features__Container}>
-    <div style='text-align: center; margin-bottom: 2rem; max-width: 50rem; margin-left: auto; margin-right: auto;'>
-      <Heading as='h2' align='center' style={{ marginBottom: '1.25rem' }}>
-        {titleParts[0]}{titleParts.length > 1 ? <span class={styles.Features__TitleAccent}>Zush</span> : null}{titleParts.slice(1).join('Zush')}
-      </Heading>
-      <Text as='p' size='lg' color='subtle' align='center' style={{ maxWidth: '35rem', marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.6 }}>
-        {description}
-      </Text>
+<section id='features' class:list={[b.Section, { [styles.Features_compactTopSpacing]: compactTopSpacing }]} data-scroll-reveal-skip>
+  <SectionHeader title={title} description={description} />
+
+  <!-- Tier 1: flagship -->
+  <div class={styles.Flagship} data-bento-card>
+    <div class={styles.Flagship__Copy}>
+      <h3 class={b.BlockTitle}>{copy.aiAnalysis.title}</h3>
+      <p class={b.BlockText}>{copy.aiAnalysis.description}{' '}{copy.customAiBlocks.description}</p>
     </div>
-
-    <!-- Tier 1: flagship -->
-    <div class={styles.Flagship} data-bento-card>
-      <div class={styles.Flagship__Copy}>
-        <div class={styles.Flagship__Icon} aria-hidden='true'>
-          <Sparkles size={24} />
-        </div>
-        <Heading as='h3' className={styles.Flagship__Title}>
-          {copy.aiAnalysis.title}
-        </Heading>
-        <Text className={styles.Flagship__Description} color='subtle'>
-          {copy.aiAnalysis.description}{' '}{copy.customAiBlocks.description}
-        </Text>
-      </div>
-      <div class={styles.Flagship__Stage}>
-        <div class={styles.Flagship__StageItem}>
-          {
-            eagerVisuals ? (
-              <SmartBatchRenameVisual demoCopy={demoCopy} client:load />
-            ) : (
-              <SmartBatchRenameVisual demoCopy={demoCopy} client:visible />
-            )
-          }
-        </div>
-      </div>
-    </div>
-
-    <!-- Tier 2: differentiators band -->
-    {includeBand && (
-    <div id='ways-to-run' class={styles.Band}>
-      <div class={styles.Band__Header}>
-        <Heading as='h3' size='h2' align='center' className={styles.Band__Title}>
-          {bandTitleParts[0]}{bandTitleParts.length > 1 ? <span class={styles.Features__TitleAccent}>Zush</span> : null}{bandTitleParts.slice(1).join('Zush')}
-        </Heading>
-        <Text as='p' color='subtle' align='center' className={styles.Band__Subtitle}>
-          {copy.bandSubtitle}
-        </Text>
-      </div>
-      <div class={styles.Band__Grid}>
-        <BentoCard
-          title={copy.cloudAi.title}
-          description={copy.cloudAi.description}
-          icon={Cloud}
-        >
-          <div class={styles.UI_FeatureAnimation}>
-            {
-              eagerVisuals ? (
-                <FeatureAnimation kind='cloud-ai' demoCopy={demoCopy} client:load />
-              ) : (
-                <FeatureAnimation kind='cloud-ai' demoCopy={demoCopy} client:visible />
-              )
-            }
-          </div>
-        </BentoCard>
-
-        <BentoCard
-          title={copy.byok.title}
-          description={copy.byok.description}
-          icon={KeyRound}
-        >
-          <div class={styles.UI_FeatureAnimation}>
-            {
-              eagerVisuals ? (
-                <FeatureAnimation kind='byok' demoCopy={demoCopy} client:load />
-              ) : (
-                <FeatureAnimation kind='byok' demoCopy={demoCopy} client:visible />
-              )
-            }
-          </div>
-        </BentoCard>
-
-        <BentoCard
-          title={copy.offlineAi.title}
-          description={copy.offlineAi.description}
-          icon={Bot}
-        >
-          <div class={styles.UI_FeatureAnimation}>
-            {
-              eagerVisuals ? (
-                <FeatureAnimation kind='offline-ai' demoCopy={demoCopy} client:load />
-              ) : (
-                <FeatureAnimation kind='offline-ai' demoCopy={demoCopy} client:visible />
-              )
-            }
-          </div>
-        </BentoCard>
-      </div>
-    </div>
-    )}
-
-    <!-- Tier 3: everyday tools switcher -->
-    <div class={switcherClassName}>
+    <div class={styles.Flagship__Stage}>
       {
         eagerVisuals ? (
-          <FeatureSwitcher items={switcherItems} client:load />
+          <SmartBatchRenameVisual demoCopy={demoCopy} client:load />
         ) : (
-          <FeatureSwitcher items={switcherItems} client:visible />
+          <SmartBatchRenameVisual demoCopy={demoCopy} client:visible />
         )
       }
     </div>
+  </div>
+
+  <!-- Tier 2: where AI runs -->
+  {includeBand && <WaysToRun nested copy={copy} locale={locale} eagerVisuals={eagerVisuals} />}
+
+  <!-- Tier 3: everyday tools switcher -->
+  <div class={styles.SwitcherSection}>
+    {
+      eagerVisuals ? (
+        <FeatureSwitcher items={switcherItems} client:load />
+      ) : (
+        <FeatureSwitcher items={switcherItems} client:visible />
+      )
+    }
   </div>
 </section>

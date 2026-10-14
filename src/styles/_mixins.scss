@@ -1,3 +1,5 @@
+@use 'sass:list';
+@use 'sass:map';
 @use 'variables' as *;
 @use 'breakpoints' as *;
 
@@ -326,4 +328,227 @@
         background-color: color-mix(in oklch, var(--foreground) 5%, transparent);
         outline: none;
     }
+}
+
+// ---------------------------------------------------------------------------
+// Redesign primitives (design/homepage-concept/native.dc.html). Templates
+// compose these instead of restating the values, so every page keeps the same
+// rhythm, rules and accents as the homepage.
+// ---------------------------------------------------------------------------
+
+// Heading type scale: desktop size, phone size, tracking. <Heading> and
+// raw-markup sections both read from here.
+$heading-scale: (
+    'h1': (2.35rem, 1.95rem, -0.03em),
+    'h2': (2.5rem, 1.9rem, -0.03em),
+    'h3': (1.6rem, 1.3rem, -0.02em),
+    'h4': (1.25rem, 1.1rem, -0.03em),
+);
+
+@mixin heading-size($level: 'h2') {
+    $scale: map.get($heading-scale, $level);
+    font-size: list.nth($scale, 1);
+    letter-spacing: list.nth($scale, 3);
+
+    @include mobile {
+        font-size: list.nth($scale, 2);
+    }
+}
+
+@mixin heading($level: 'h2') {
+    font-family: var(--font-family-heading);
+    font-weight: 700;
+    line-height: 1.12;
+    color: var(--foreground);
+    text-wrap: balance;
+    @include heading-size($level);
+}
+
+// Vertical rhythm between page sections: 136px, 80px on phones.
+@mixin section-spacing {
+    padding-top: $section-gap;
+    scroll-margin-top: calc($navbar-height + 1rem);
+
+    @include mobile {
+        padding-top: $section-gap-mobile;
+    }
+}
+
+// Content section: container width plus the section rhythm.
+@mixin page-section {
+    @include container;
+    @include section-spacing;
+}
+
+// Label above a heading: plain accent text, never a pill.
+@mixin eyebrow {
+    display: block;
+    margin: 0 0 0.75rem;
+    padding: 0;
+    background: none;
+    border-radius: 0;
+    color: var(--primary);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+// The only panel the design uses: no fill, hairline border.
+@mixin surface-panel($radius: $radius-lg) {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: $radius;
+    box-shadow: none;
+}
+
+// Framed product screenshot: 18px corners, hairline border.
+@mixin frame {
+    border: 1px solid var(--border);
+    border-radius: 1.125rem;
+    overflow: hidden;
+}
+
+// Ruled item: a hairline on top carries the separation instead of a card.
+@mixin hairline-item($gap: 1.5rem) {
+    border-top: 1px solid var(--border);
+    padding-top: $gap;
+    min-width: 0;
+}
+
+// Inline accent link: no underline, dims on hover.
+@mixin text-link {
+    color: var(--primary);
+    font-weight: $font-weight-link;
+    text-decoration: none;
+    transition: opacity $transition-fast;
+
+    &:hover {
+        opacity: 0.78;
+    }
+}
+
+// <summary> of a hairline disclosure (FAQ rows, recorded results, prompts):
+// full-width row, no marker, icon pushed to the end.
+@mixin disclosure-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    padding: 1.25rem 0;
+    background: none;
+    border: none;
+    color: var(--foreground);
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    list-style: none;
+
+    &::-webkit-details-marker {
+        display: none;
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+        border-radius: $radius-sm;
+    }
+}
+
+// Chevron inside a disclosure summary: faint, flips when open.
+@mixin disclosure-chevron {
+    flex-shrink: 0;
+    color: var(--text-faint);
+    transition: transform $transition-fast;
+
+    details[open] & {
+        transform: rotate(180deg);
+    }
+}
+
+// Plain text tab (tour, feature switcher): 15px faint; active is ink and bold.
+@mixin text-tab {
+    padding: 0.5625rem 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    font: inherit;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-align: left;
+    color: var(--text-faint);
+    cursor: pointer;
+    transition: color $transition-fast;
+
+    &:hover {
+        color: var(--foreground);
+    }
+}
+
+@mixin text-tab-active {
+    color: var(--foreground);
+    font-weight: 700;
+}
+
+// Phone variant of the text tab: a swipeable chip.
+@mixin chip-tab {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    scroll-snap-align: start;
+    padding: 0.5625rem 0.875rem;
+    border: 1px solid var(--border-strong);
+    border-radius: $radius-full;
+    font-size: 0.875rem;
+}
+
+@mixin chip-tab-active {
+    border-color: transparent;
+    background: color-mix(in oklch, var(--foreground) 7%, transparent);
+}
+
+// Horizontal, swipeable row holding chip tabs on phones.
+@mixin chip-row {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    margin-inline: -1rem;
+    padding: 0 1rem 0.25rem;
+    width: calc(100% + 2rem);
+    max-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+// Wrapping row of text links (related pages, sources, guides).
+@mixin link-row($gap: 0.5rem 1.375rem) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $gap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+// Lead / body copy under a heading.
+@mixin body-copy($size: 1rem) {
+    color: var(--muted-foreground);
+    font-size: $size;
+    line-height: 1.65;
+}
+
+// Monospaced filename sample (before/after rows): Geist Mono, faint.
+@mixin mono-sample {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: var(--text-faint);
+    overflow-wrap: anywhere;
 }
