@@ -74,6 +74,37 @@
         }
     }
 
+    // Homepage: the intro sits over the animated point-wave rendered by
+    // HomePageContent.astro, so the section itself stays transparent.
+    &_wave {
+        padding-bottom: 7rem;
+
+        &::before {
+            content: none;
+        }
+
+        @include mobile {
+            padding-bottom: 4rem;
+        }
+
+        .Hero__TitleAccent {
+            color: var(--primary);
+        }
+
+        & .Hero__Title {
+            font-size: clamp(2.6rem, 6vw, 4.25rem);
+            line-height: 1.02;
+            letter-spacing: -0.04em;
+            margin-bottom: 1.5rem;
+        }
+
+        .Hero__Subtitle {
+            color: color-mix(in oklch, var(--foreground) 78%, var(--background));
+            font-size: 1.1875rem;
+            line-height: 1.6;
+        }
+    }
+
     &__Container {
         @include container;
         display: grid;

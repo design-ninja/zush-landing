@@ -3,10 +3,9 @@
 
 .Heading {
     font-family: var(--font-family-heading);
-    font-weight: 600;
-    // Inter's display optical size — tighter spacing, finer joins.
-    font-variation-settings: 'opsz' 32;
-    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.12;
     color: var(--foreground);
 
     &_left {
@@ -30,15 +29,16 @@
     }
 
     &_h2 {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
 
         @include mobile {
-            font-size: 1.8rem;
+            font-size: 1.9rem;
         }
     }
 
     &_h3 {
         font-size: 1.6rem;
+        letter-spacing: -0.02em;
 
         @include mobile {
             font-size: 1.3rem;

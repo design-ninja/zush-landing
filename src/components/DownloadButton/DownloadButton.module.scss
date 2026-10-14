@@ -50,15 +50,15 @@
 
 .Main {
     gap: 0.5rem;
-    border-top-left-radius: $radius-full;
-    border-bottom-left-radius: $radius-full;
+    border-top-left-radius: $radius-button;
+    border-bottom-left-radius: $radius-button;
 
     svg {
         flex-shrink: 0;
     }
 
     &_single {
-        border-radius: $radius-full;
+        border-radius: $radius-button;
         overflow: hidden;
         width: 100%;
     }
@@ -81,8 +81,8 @@
 }
 
 .Toggle {
-    border-top-right-radius: $radius-full;
-    border-bottom-right-radius: $radius-full;
+    border-top-right-radius: $radius-button;
+    border-bottom-right-radius: $radius-button;
     position: relative;
     align-self: stretch;
 
@@ -170,7 +170,7 @@
 
     @include cta-glass-surface;
     @include cta-glass-gloss;
-    border-radius: $radius-full;
+    border-radius: $radius-button;
     background-clip: padding-box;
     overflow: hidden;
 
@@ -313,6 +313,21 @@
 }
 
 
+// Quiet secondary CTA: hairline outline, no fill. Pairs with a primary button.
+.Group_outline {
+    .Main,
+    .Toggle {
+        background-color: transparent;
+        color: var(--foreground);
+        box-shadow: inset 0 0 0 1px var(--border);
+    }
+
+    .Main:hover,
+    .Toggle:hover {
+        background-color: color-mix(in oklch, var(--foreground) 5%, transparent);
+    }
+}
+
 .Group_ghost {
     .Main,
     .Toggle {
@@ -409,15 +424,15 @@
     .Main:not(.Main_single) {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
-        border-top-right-radius: $radius-full;
-        border-bottom-right-radius: $radius-full;
+        border-top-right-radius: $radius-button;
+        border-bottom-right-radius: $radius-button;
     }
 
     .Toggle {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
-        border-top-left-radius: $radius-full;
-        border-bottom-left-radius: $radius-full;
+        border-top-left-radius: $radius-button;
+        border-bottom-left-radius: $radius-button;
 
         &::before {
             left: auto;

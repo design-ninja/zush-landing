@@ -19,18 +19,18 @@
     max-width: $content-max-width;
     z-index: 1000;
     height: $navbar-height;
-    background-color: oklch(1 0 0 / 0.3);
+    background-color: oklch(1 0 0 / 0.72);
     // backdrop-filter lives in an `is:inline` <style> in Header.astro, not here.
     // The build's CSS pipeline dropped the unprefixed declaration from the
     // prefix pair, leaving only `-webkit-backdrop-filter` (which Chrome ignores),
     // so the blur vanished on prod while dev (unminified) was fine.
-    border: none;
-    border-radius: $radius-full;
+    border: 1px solid var(--border);
+    border-radius: $radius-md;
     box-shadow: none;
     // No overflow clipping: the language menu drops out below the pill.
 
     :global(html[data-theme='dark']) & {
-        background-color: oklch(0 0 0 / 0.24);
+        background-color: oklch(0.17 0.008 285 / 0.72);
     }
 
     // Blog posts and the archive sit in the wider 72rem container.
@@ -51,7 +51,7 @@
         top: 0.5rem;
         width: calc(100% - 1rem);
         max-width: none;
-        border-radius: $radius-full;
+        border-radius: $radius-md;
     }
 
     &__Container {
@@ -249,7 +249,19 @@
     // The leading OS icon pulls the label left; extra right padding puts the
     // text back in the optical centre of the pill. Qualified with `.Header` so
     // this outweighs `.Group_sm .Main` (two classes) inside DownloadButton.
+    // Quiet CTA in the pill: ink on light, raised graphite on dark. The hero
+    // keeps the brand-purple button as the page's primary action.
     & &__DownloadBtn {
+        --primary: oklch(0.17 0.01 285);
+        --primary-hover: oklch(0.26 0.01 285);
+        --primary-foreground: oklch(1 0 0);
+
+        :global(html[data-theme='dark']) & {
+            --primary: oklch(0.28 0.012 285);
+            --primary-hover: oklch(0.32 0.012 285);
+            --primary-foreground: oklch(0.95 0.005 285);
+        }
+
         > a,
         > button {
             gap: 0.4rem;

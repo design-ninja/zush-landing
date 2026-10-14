@@ -24,7 +24,7 @@ $tertiary: oklch(0 0 0);
 $tertiary-foreground: oklch(1 0 0);
 $tertiary-hover: oklch(0.15 0 0);
 
-$border: oklch(0.92 0.003 265);
+$border: oklch(0.935 0.006 285);
 
 // Cool grey for decorative icons. The other greys sit at 0.003–0.015 chroma and
 // read neutral; this one carries enough blue to look deliberately cold without
@@ -104,7 +104,7 @@ $dark-tertiary: oklch(0.3 0.01 285);
 $dark-tertiary-foreground: oklch(1 0 0);
 $dark-tertiary-hover: oklch(0.36 0.01 285);
 
-$dark-border: oklch(0.28 0.01 285);
+$dark-border: oklch(0.25 0.012 285);
 $dark-icon-muted: oklch(0.62 0.03 252);
 
 $dark-glass: oklch(0.2 0.01 285 / 0.7);
@@ -148,7 +148,8 @@ $dark-tone-magenta-bg: oklch(0.72 0.22 320 / 0.2);
 
 // Typography
 $font-family: 'Inter Variable', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-$font-family-heading: $font-family;
+// Headings: Manrope (self-hosted via @fontsource-variable/manrope), body stays Inter.
+$font-family-heading: 'Manrope Variable', 'Manrope', $font-family;
 $font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
 // Button type scale. Shared by <Button> and <DownloadButton>: size decides the
 // text size, variant decides the colour, and neither component owns the numbers.
@@ -186,6 +187,11 @@ $radius-md: 1rem;
 $radius-lg: 1.25rem;
 $radius-xl: 1.5rem;
 $radius-full: 9999px;
+// Buttons and CTAs: soft rectangle, not a pill.
+$radius-button: 0.75rem;
+// Vertical rhythm between top-level page sections.
+$section-gap: 8.5rem;
+$section-gap-mobile: 5rem;
 
 // Transitions
 $transition-fast: 0.2s ease;

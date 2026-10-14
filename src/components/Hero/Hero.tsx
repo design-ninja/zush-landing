@@ -27,6 +27,12 @@ interface HeroProps {
   /** Adds the theme-specific homepage nature photo. */
   natureBackground?: boolean;
   /**
+   * Homepage styling for an intro that sits over the animated point-wave.
+   * The canvas itself lives outside React (HomePageContent.astro) so the
+   * script that draws on it can never cause a hydration mismatch.
+   */
+  waveBackground?: boolean;
+  /**
    * Renders one button per platform instead of a single OS-detected button
    * with a dropdown. Only makes sense where no OS is forced.
    */
@@ -103,6 +109,7 @@ const Hero = ({
   as: Tag = "section",
   centered = false,
   natureBackground = false,
+  waveBackground = false,
   splitByOS = false,
   compactTopSpacing = false,
   forceOS,
@@ -166,6 +173,7 @@ const Hero = ({
         styles.Hero,
         centered ? styles.Hero_centered : "",
         natureBackground ? styles.Hero_natureBackground : "",
+        waveBackground ? styles.Hero_wave : "",
         compactTopSpacing ? styles.Hero_compactTopSpacing : "",
       ]
         .filter(Boolean)
@@ -263,7 +271,7 @@ const Hero = ({
                   <div className={styles.Hero__PlatformAction}>
                     <DownloadButton
                       source="hero"
-                      variant="black"
+                      variant={waveBackground ? "primary" : "black"}
                       size="lg"
                       forceOS="mac"
                       showDropdown={false}
@@ -273,7 +281,7 @@ const Hero = ({
                   <div className={styles.Hero__PlatformAction}>
                     <DownloadButton
                       source="hero"
-                      variant="black"
+                      variant={waveBackground ? "outline" : "black"}
                       size="lg"
                       forceOS="windows"
                       showDropdown={false}
