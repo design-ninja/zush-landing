@@ -265,20 +265,9 @@
     // The leading OS icon pulls the label left; extra right padding puts the
     // text back in the optical centre of the pill. Qualified with `.Header` so
     // this outweighs `.Group_sm .Main` (two classes) inside DownloadButton.
-    // Quiet CTA in the pill: ink on light, raised graphite on dark. The hero
-    // keeps the brand-purple button as the page's primary action.
+    // Quiet CTA in the pill (variant='ink'). The hero keeps the brand-purple
+    // button as the page's primary action.
     & &__DownloadBtn {
-        // Concept `headerBtn`: #111118 on light, #2A2A34 on dark.
-        --primary-button: #111118;
-        --primary-button-hover: #26262f;
-        --primary-foreground: #ffffff;
-
-        :global(html[data-theme='dark']) & {
-            --primary-button: #2a2a34;
-            --primary-button-hover: #33333f;
-            --primary-foreground: #ededf2;
-        }
-
         // Text-only pill: the OS glyph is dropped in the header.
         svg {
             display: none;

@@ -56,11 +56,27 @@ void main() {
   gl_FragColor = vec4(col, min(a, 1.0));
 }`;
 
-// a/b: base gradient across the swell; c: the sweeping highlight band.
-const THEMES = {
-  dark: { a: [0x4b, 0x3b, 0xe0], b: [0xb4, 0xaa, 0xff], c: [0xd4, 0xce, 0xff], opacity: 0.8, additive: true },
-  light: { a: [0x7b, 0x6b, 0xf5], b: [0xb0, 0xa6, 0xff], c: [0x6e, 0x5c, 0xf3], opacity: 0.75, additive: false },
-} as const;
+// Colours come from the theme tokens (--wave-a/b/c, --wave-opacity in
+// src/styles/_theme.scss): a→b is the base gradient across the swell, c the
+// sweeping highlight band.
+function hexToRgb(value: string): [number, number, number] {
+  const hex = value.trim().replace('#', '');
+  const full = hex.length === 3 ? hex.split('').map((c) => c + c).join('') : hex;
+  const n = parseInt(full, 16);
+  return [((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255];
+}
+
+function readTheme() {
+  const css = getComputedStyle(document.documentElement);
+  return {
+    a: hexToRgb(css.getPropertyValue('--wave-a')),
+    b: hexToRgb(css.getPropertyValue('--wave-b')),
+    c: hexToRgb(css.getPropertyValue('--wave-c')),
+    opacity: parseFloat(css.getPropertyValue('--wave-opacity')) || 1,
+    // Points glow additively on dark backgrounds and blend normally on light.
+    additive: document.documentElement.dataset.theme === 'dark',
+  };
+}
 
 function perspective(fovy: number, aspect: number, near: number, far: number) {
   const f = 1 / Math.tan(fovy / 2);
@@ -145,10 +161,10 @@ function startWave(canvas: HTMLCanvasElement) {
   };
 
   const applyTheme = () => {
-    const theme = document.documentElement.dataset.theme === 'light' ? THEMES.light : THEMES.dark;
-    gl.uniform3fv(uA, theme.a.map((v) => v / 255));
-    gl.uniform3fv(uB, theme.b.map((v) => v / 255));
-    gl.uniform3fv(uC, theme.c.map((v) => v / 255));
+    const theme = readTheme();
+    gl.uniform3fv(uA, theme.a);
+    gl.uniform3fv(uB, theme.b);
+    gl.uniform3fv(uC, theme.c);
     gl.uniform1f(uOpacity, theme.opacity);
     if (theme.additive) gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
     else gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);

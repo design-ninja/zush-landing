@@ -14,6 +14,17 @@ $muted-foreground: #555562;
 $text-faint: #6b6b78;
 $text-dim: #9a9aa6;
 $star: #f5b83d;
+// Ink button (quiet CTA, e.g. the header Download) and text on the brand green.
+$button-ink: #111118;
+$button-ink-hover: #26262f;
+$button-ink-foreground: #ffffff;
+$on-secondary: #0c0c10;
+// Hero point-wave (src/scripts/hero-wave.ts reads these): base gradient a→b,
+// sweeping highlight c, overall opacity.
+$wave-a: #7b6bf5;
+$wave-b: #b0a6ff;
+$wave-c: #6e5cf3;
+$wave-opacity: 0.75;
 
 // --primary is the accent for text, links and outlines; buttons fill with
 // --primary-button (the concept's `btn`), which differs in the dark theme.
@@ -101,6 +112,13 @@ $dark-muted: #18181f;
 $dark-muted-foreground: #a6a6b3;
 $dark-text-faint: #8a8a97;
 $dark-text-dim: #6e6e7b;
+$dark-button-ink: #2a2a34;
+$dark-button-ink-hover: #33333f;
+$dark-button-ink-foreground: #ededf2;
+$dark-wave-a: #4b3be0;
+$dark-wave-b: #b4aaff;
+$dark-wave-c: #d4ceff;
+$dark-wave-opacity: 0.8;
 
 $dark-primary: #9d8fff;
 $dark-primary-button: #6e5cf3;

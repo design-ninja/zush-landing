@@ -313,6 +313,20 @@
 }
 
 
+// Ink: dark solid fill (header Download).
+.Group_ink {
+    .Main,
+    .Toggle {
+        background-color: var(--button-ink);
+        color: var(--button-ink-foreground);
+    }
+
+    .Main:hover,
+    .Toggle:hover {
+        background-color: var(--button-ink-hover);
+    }
+}
+
 // Quiet secondary CTA: hairline outline, no fill. Pairs with a primary button.
 .Group_outline {
     .Main,

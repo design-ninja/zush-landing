@@ -74,6 +74,16 @@
         }
     }
 
+    // Ink: dark solid fill for quiet primary actions (header Download).
+    &_ink {
+        background-color: var(--button-ink);
+        color: var(--button-ink-foreground);
+
+        &:hover {
+            background-color: var(--button-ink-hover);
+        }
+    }
+
     // Quiet secondary action: hairline outline, no fill (concept `border2`).
     &_outline {
         background-color: transparent;

@@ -21,7 +21,7 @@ import styles from './DownloadButton.module.scss';
 
 const MobileDownloadModal = lazy(() => import('@/components/MobileDownloadModal'));
 
-type Variant = 'black' | 'primary' | 'ghost' | 'outline';
+type Variant = 'black' | 'primary' | 'ghost' | 'outline' | 'ink';
 type Size = 'sm' | 'md' | 'lg';
 type Surface = 'glass' | 'greenGlow';
 
