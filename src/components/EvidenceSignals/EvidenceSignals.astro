@@ -271,11 +271,9 @@ const sectionClass = [
     )}
 
     {showFactsTitle && (
-      <div class={sectionHeaderStyles.SectionHeader}>
-        <Heading id="evidence-facts-title" as="h2" align="center" className={sectionHeaderStyles.SectionHeader__Title}>
-          {FACTS_TITLES[locale]}
-        </Heading>
-      </div>
+      <Heading id="evidence-facts-title" as="h2" className={styles.EvidenceSignals__FactsTitle}>
+        {FACTS_TITLES[locale]}
+      </Heading>
     )}
 
     {showFacts && (

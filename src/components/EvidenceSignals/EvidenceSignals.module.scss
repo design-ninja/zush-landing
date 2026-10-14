@@ -35,6 +35,12 @@
     margin: 0;
   }
 
+  // Standard section h2, left-aligned above the columns.
+  & &__FactsTitle {
+    margin: 0 0 3rem;
+    text-align: left;
+  }
+
   // Four hairline columns, gap 40px.
   &__Facts {
     display: grid;

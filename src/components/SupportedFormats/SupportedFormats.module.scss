@@ -16,13 +16,16 @@
     grid-template-columns: repeat(auto-fit, minmax(min(18.75rem, 100%), 1fr));
     gap: 2rem 3rem;
 
+    // Standard section h2, left-aligned like the groups below it.
     > :first-child {
       grid-column: 1 / -1;
-      margin-bottom: 0.5rem;
+      align-items: flex-start;
+      max-width: none;
+      margin: 0 0 1rem;
+      text-align: left;
 
       h2 {
-        font-size: 2rem;
-        letter-spacing: -0.025em;
+        text-align: left;
       }
     }
   }
