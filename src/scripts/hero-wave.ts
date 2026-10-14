@@ -3,6 +3,10 @@
 //  - starts when the browser is idle after first paint (not part of LCP);
 //  - animates only while the hero is on screen and the tab is visible;
 //  - draws one still frame for prefers-reduced-motion;
+//  - draws one light still frame (phone-sized grid, 1x) when WebGL runs in
+//    software (no GPU: Lighthouse/PageSpeed, VMs, blocked drivers), where
+//    every animated frame would block the main thread;
+//  - freezes on the current frame if the first frames come in under ~24 fps;
 //  - quietly does nothing when WebGL is unavailable.
 
 const VERT = `
@@ -111,11 +115,25 @@ function compile(gl: WebGLRenderingContext, type: number, src: string) {
   return s;
 }
 
+// Some browsers still hand out a software context (Chrome with SwiftShader
+// allowed, Mesa's llvmpipe, Windows' Basic Render Driver). The renderer name
+// is masked in some browsers; then the frame-rate probe below takes over.
+function isSoftwareRenderer(gl: WebGLRenderingContext): boolean {
+  const info = gl.getExtension('WEBGL_debug_renderer_info');
+  const renderer = info ? String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL)) : '';
+  return /swiftshader|llvmpipe|softpipe|software|basic render/i.test(renderer);
+}
+
 function startWave(canvas: HTMLCanvasElement) {
   // Premultiplied (the default): Safari composites a canvas as premultiplied
   // even when asked not to, which turned straight-alpha points white there.
-  const gl = canvas.getContext('webgl', { alpha: true, antialias: true, powerPreference: 'low-power' });
+  // failIfMajorPerformanceCaveat refuses a software context; the second request
+  // accepts it and the wave is drawn once instead of animated.
+  const attributes: WebGLContextAttributes = { alpha: true, antialias: true, powerPreference: 'low-power' };
+  const gpu = canvas.getContext('webgl', { ...attributes, failIfMajorPerformanceCaveat: true });
+  const gl = gpu ?? canvas.getContext('webgl', attributes);
   if (!gl) return;
+  const software = !gpu || isSoftwareRenderer(gl);
   const prog = gl.createProgram()!;
   gl.attachShader(prog, compile(gl, gl.VERTEX_SHADER, VERT));
   gl.attachShader(prog, compile(gl, gl.FRAGMENT_SHADER, FRAG));
@@ -123,7 +141,7 @@ function startWave(canvas: HTMLCanvasElement) {
   if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return;
   gl.useProgram(prog);
 
-  const small = window.innerWidth < 768;
+  const small = software || window.innerWidth < 768;
   const COLS = small ? 120 : 240, ROWS = small ? 64 : 110, W = 66, D = 44;
   const pos = new Float32Array(COLS * ROWS * 3);
   let i = 0;
@@ -148,7 +166,7 @@ function startWave(canvas: HTMLCanvasElement) {
   gl.disable(gl.DEPTH_TEST);
 
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const dpr = Math.min(window.devicePixelRatio || 1, small ? 1.5 : 2);
+  const dpr = software ? 1 : Math.min(window.devicePixelRatio || 1, small ? 1.5 : 2);
   const mouse = { x: 0, y: 0 };
   const rot = { x: 0, y: 0 };
   let t = 6;
@@ -156,6 +174,13 @@ function startWave(canvas: HTMLCanvasElement) {
   let inView = true;
   let raf = 0;
   let last = 0;
+  // Frame-rate probe over the first frames of each run; a slow device keeps
+  // the still frame instead of animating.
+  const PROBE_FRAMES = 12;
+  const SLOW_FRAME_MS = 42;
+  let probeFrames = 0;
+  let probeStart = 0;
+  let tooSlow = false;
 
   const draw = () => {
     gl.clearColor(0, 0, 0, 0);
@@ -193,7 +218,7 @@ function startWave(canvas: HTMLCanvasElement) {
   new ResizeObserver(resize).observe(parent);
   new MutationObserver(applyTheme).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
   canvas.dataset.ready = 'true';
-  if (reduce) return;
+  if (reduce || software) return;
 
   window.addEventListener('pointermove', (e) => {
     mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
@@ -208,14 +233,20 @@ function startWave(canvas: HTMLCanvasElement) {
     rot.y += (mouse.x * 0.2 - rot.y) * 0.05;
     rot.x += (mouse.y * 0.07 - rot.x) * 0.05;
     draw();
+    if (probeFrames < PROBE_FRAMES && ++probeFrames === PROBE_FRAMES && (now - probeStart) / PROBE_FRAMES > SLOW_FRAME_MS) {
+      tooSlow = true;
+      running = false;
+      return;
+    }
     raf = requestAnimationFrame(tick);
   };
 
   const sync = () => {
-    const should = inView && !document.hidden;
+    const should = inView && !document.hidden && !tooSlow;
     if (should && !running) {
       running = true;
-      last = performance.now();
+      last = probeStart = performance.now();
+      probeFrames = 0;
       raf = requestAnimationFrame(tick);
     } else if (!should && running) {
       running = false;
