@@ -1,3 +1,5 @@
+@use 'sass:list';
+@use 'sass:map';
 @use 'variables' as *;
 @use 'breakpoints' as *;
 
@@ -25,56 +27,12 @@
     border-bottom: 1px solid var(--glass-border);
 }
 
-// Wide, flat brand bloom hugging the top edge of the page, painted behind the
-// header. Modelled on revone.app, toned down for the light theme.
-//
-// The host needs its own stacking context: without `isolation: isolate` the
-// z-index:-1 layer lands behind the opaque body background and never paints.
-// Horizontal clipping only — the bloom deliberately overflows the top edge.
+// Page-top host: the stacking context that heroes and page headers rely on.
+// The design is flat, so no brand bloom is painted behind the header any more.
 @mixin page-top-bloom {
     position: relative;
     isolation: isolate;
     overflow-x: clip;
-
-    &::before {
-        content: '';
-        position: absolute;
-        top: -12rem;
-        left: 50%;
-        transform: translateX(-50%);
-        width: min(100rem, 165%);
-        height: 30rem;
-        background: radial-gradient(
-            ellipse 50% 50% at 50% 50%,
-            color-mix(in oklch, var(--primary) 88%, transparent),
-            transparent 68%
-        );
-        // Safari can rerasterize the entire isolated Hero subtree when a
-        // descendant animates while this large filtered layer is present.
-        // The radial gradient already supplies a soft falloff without a
-        // compositing filter.
-        opacity: 0.85;
-        pointer-events: none;
-        z-index: -1;
-
-        // On the near-black dark background the same bloom reads far brighter
-        // than it does on white, so it is dialled back to sit behind the pill
-        // instead of lighting it up.
-        :global(html[data-theme='dark']) & {
-            background: radial-gradient(
-                ellipse 50% 50% at 50% 50%,
-                color-mix(in oklch, var(--primary) 60%, transparent),
-                transparent 68%
-            );
-            opacity: 0.45;
-        }
-
-        @include mobile {
-            top: -8rem;
-            height: 20rem;
-            opacity: 0.3;
-        }
-    }
 }
 
 @mixin container {
@@ -170,7 +128,7 @@
 @mixin card-hover-ring($color: var(--primary), $shadow: null) {
     border-color: $color;
 
-    @if $shadow {
+    @if $shadow and $shadow != none {
         box-shadow: inset 0 0 0 1px $color, $shadow;
     }
 
@@ -186,100 +144,6 @@
     outline: 2px solid $color;
 }
 
-@mixin cta-glass-vars(
-    $bg: oklch(0 0 0 / 0.88),
-    $bg-hover: oklch(0 0 0 / 0.95),
-    $glow: oklch(1 0 0 / 0.12),
-    $shadow: oklch(0 0 0 / 0.34),
-    $spot: oklch(1 0 0 / 0.1),
-    $spot-hover: oklch(1 0 0 / 0.14),
-    $shine: oklch(1 0 0 / 0.07),
-    $shine-strong: oklch(1 0 0 / 0.2)
-) {
-    --cta-glass-bg: #{$bg};
-    --cta-glass-bg-hover: #{$bg-hover};
-    --cta-glass-glow: #{$glow};
-    --cta-glass-shadow: #{$shadow};
-    --cta-glass-spot: #{$spot};
-    --cta-glass-spot-hover: #{$spot-hover};
-    --cta-glass-shine: #{$shine};
-    --cta-glass-shine-strong: #{$shine-strong};
-}
-
-@mixin cta-glass-primary-vars {
-    @include cta-glass-vars(
-        color-mix(in oklch, var(--primary) 88%, transparent),
-        color-mix(in oklch, var(--primary-hover) 94%, transparent),
-        color-mix(in oklch, var(--primary) 40%, transparent),
-        oklch(0.2 0.09 279 / 0.28),
-        color-mix(in oklch, var(--primary-hover) 22%, transparent),
-        color-mix(in oklch, var(--primary-hover) 28%, transparent)
-    );
-}
-
-@mixin cta-glass-surface {
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
-    background:
-        radial-gradient(circle at 74% 54%, var(--cta-glass-spot), transparent 32%),
-        linear-gradient(180deg, var(--cta-glass-shine), transparent 38%),
-        var(--cta-glass-bg);
-    color: oklch(1 0 0);
-    border: none;
-    box-shadow:
-        0 1.3rem 3.2rem -1.3rem var(--cta-glass-shadow),
-        0 0.7rem 1.9rem -1rem var(--cta-glass-glow);
-    // No backdrop-filter here on purpose. The surface is ~90% opaque, so the
-    // blur was nearly invisible — but in Safari it made the hero buttons
-    // shudder and swell on hover: the hero's blurred bloom sits underneath,
-    // and every hover repaint forced Safari to re-sample the backdrop against
-    // that filtered layer.
-    letter-spacing: 0;
-}
-
-@mixin cta-glass-gloss {
-    &::before {
-        content: '';
-        position: absolute;
-        inset: 0.1rem 0.25rem auto;
-        height: 46%;
-        border-radius: inherit;
-        background: linear-gradient(180deg, var(--cta-glass-shine-strong), transparent);
-        opacity: 0.92;
-        pointer-events: none;
-        z-index: 0;
-    }
-}
-
-@mixin cta-glass-content {
-    > * {
-        position: relative;
-        z-index: 1;
-    }
-
-    svg {
-        position: relative;
-        z-index: 1;
-        filter: drop-shadow(0 0.35rem 0.65rem oklch(0 0 0 / 0.2));
-    }
-}
-
-@mixin cta-glass-hover-surface {
-    background:
-        radial-gradient(circle at 74% 54%, var(--cta-glass-spot-hover), transparent 34%),
-        linear-gradient(180deg, var(--cta-glass-shine-strong), transparent 38%),
-        var(--cta-glass-bg-hover);
-    box-shadow:
-        0 1.5rem 3.5rem -1.35rem var(--cta-glass-shadow),
-        0 0.8rem 2rem -1.1rem var(--cta-glass-glow);
-}
-
-@mixin cta-glass-hover {
-    @include cta-glass-hover-surface;
-}
-
-// Centered page layout (for Activate, Recover, ThankYou, ManageSubscription pages)
 @mixin centered-page-layout($max-width: 500px) {
     min-height: calc(100vh - 200px);
     display: flex;
@@ -297,20 +161,10 @@
     text-align: center;
 }
 
-// Page title styling
-@mixin page-title($size: 2rem) {
-    font-size: $size;
-    font-weight: 600;
-    color: var(--foreground);
-    margin-bottom: 16px;
-}
-
-// Page subtitle styling
-@mixin page-subtitle($size: 1rem) {
-    font-size: $size;
-    color: var(--muted-foreground);
-    margin-bottom: 32px;
-    line-height: 1.6;
+// Lead under a page title on compact service pages (activation, recovery).
+@mixin page-subtitle {
+    @include body-copy(1.0625rem);
+    margin: 0 0 2rem;
 
     strong {
         color: var(--foreground);
@@ -325,25 +179,32 @@
     margin-bottom: 24px;
 }
 
-// Form input (email-style rounded input)
+// Text field: hairline border, button corners, no fill. Focus shows the
+// accent border instead of a glow.
 @mixin form-input {
-    padding: 16px 20px;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-family);
     font-size: 1rem;
-    border: 1px solid var(--border);
-    border-radius: $radius-full;
-    background: var(--muted);
+    border: 1px solid var(--border-strong);
+    border-radius: $radius-button;
+    background: transparent;
     color: var(--foreground);
     outline: none;
-    transition: border-color $transition-fast, box-shadow $transition-fast;
+    transition: border-color $transition-fast;
     box-sizing: border-box;
 
-    &:focus {
-        box-shadow: $shadow-focus;
+    &:hover {
+        border-color: var(--text-dim);
+    }
+
+    &:focus,
+    &:focus-visible {
+        border-color: var(--primary);
     }
 
     &::placeholder {
-        color: var(--muted-foreground);
-        opacity: 0.6;
+        color: var(--text-faint);
+        opacity: 1;
     }
 
     &:disabled {
@@ -352,13 +213,134 @@
     }
 }
 
-// Icon with drop shadow
-@mixin icon-with-shadow($color: var(--primary), $shadow-color: rgba(99, 102, 241, 0.3)) {
+// Button geometry shared by <Button> and hand-rolled buttons (search
+// submit, filters, pagination): button corners, flat, no movement.
+$button-sizes: (
+    'sm': (0.5rem 1.25rem, $button-font-size-sm),
+    'md': (0.8rem 1.5rem, $button-font-size-md),
+    'lg': (0.85rem 1.875rem, $button-font-size-lg),
+);
+
+@mixin button-size($size: 'md') {
+    $spec: map.get($button-sizes, $size);
+    padding: list.nth($spec, 1);
+    font-size: list.nth($spec, 2);
+}
+
+@mixin button-shape($size: 'md') {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 0;
+    border-radius: $radius-button;
+    font-family: var(--font-family);
+    font-weight: 500;
+    line-height: 1.2;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+        background-color $transition-fast,
+        color $transition-fast,
+        box-shadow $transition-fast;
+    @include button-size($size);
+
+    &:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 3px;
+    }
+}
+
+// Colour roles: primary (accent fill), ink (dark fill), outline (hairline),
+// ghost (accent wash).
+@mixin button-variant($variant: 'primary') {
+    @if $variant == 'primary' {
+        background-color: var(--primary-button);
+        color: var(--primary-foreground);
+
+        &:hover {
+            background-color: var(--primary-button-hover);
+        }
+    } @else if $variant == 'ink' {
+        background-color: var(--button-ink);
+        color: var(--button-ink-foreground);
+
+        &:hover {
+            background-color: var(--button-ink-hover);
+        }
+    } @else if $variant == 'outline' {
+        background-color: transparent;
+        color: var(--foreground);
+        box-shadow: inset 0 0 0 1px var(--border-strong);
+
+        &:hover {
+            background-color: color-mix(in oklch, var(--foreground) 5%, transparent);
+        }
+    } @else if $variant == 'ghost' {
+        background-color: var(--primary-soft);
+        color: var(--primary);
+    }
+}
+
+// Status badge (NEW, Latest): 11px / 700, brand green pill.
+@mixin badge {
+    font-family: var(--font-family);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1.4;
+    color: var(--on-secondary);
+    background: var(--secondary);
+    border-radius: $radius-full;
+    padding: 0.1875rem 0.5625rem;
+    white-space: nowrap;
+}
+
+// Small label/filter chip: 6px corners, hairline, muted text.
+@mixin chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.3125rem 0.625rem;
+    border: 1px solid var(--border);
+    border-radius: $radius-xs;
+    background: transparent;
+    color: var(--muted-foreground);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 1.3;
+    text-decoration: none;
+    transition:
+        color $transition-fast,
+        border-color $transition-fast;
+}
+
+@mixin chip-interactive {
+    @include chip;
+    cursor: pointer;
+
+    &:hover {
+        color: var(--foreground);
+        border-color: var(--border-strong);
+    }
+}
+
+// Selected chip (active filter, current page).
+@mixin chip-active {
+    color: var(--foreground);
+    border-color: var(--foreground);
+}
+
+// Status icon above a service-page title: 40px, flat, coloured, no glow.
+@mixin page-icon($color: var(--primary)) {
     color: $color;
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
+    line-height: 0;
 
     svg {
-        filter: drop-shadow(0 4px 12px $shadow-color);
+        width: 2.5rem;
+        height: 2.5rem;
     }
 }
 
@@ -402,17 +384,17 @@
 @mixin content-table-wrap {
     overflow-x: auto;
     border: 1px solid var(--border);
-    border-radius: 0.75rem;
+    border-radius: $radius-md;
 }
 
 @mixin content-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
 
     th,
     td {
-        padding: 0.75rem 1rem;
+        padding: 1rem 1.25rem;
         border-bottom: 1px solid var(--border);
         text-align: left;
         line-height: 1.5;
@@ -422,17 +404,15 @@
     thead th {
         font-weight: 600;
         font-size: 0.8125rem;
-        text-transform: uppercase;
-        letter-spacing: 0.04em;
         color: var(--muted-foreground);
-        background: var(--muted);
+        background: transparent;
     }
 
     // Markdown tables put a td in the first column; a comparison table uses a
     // row header there. Both read as the row label, so both get the emphasis.
     tbody tr > :is(th, td):first-child {
         color: var(--foreground);
-        font-weight: 500;
+        font-weight: 600;
     }
 
     tbody tr:last-child > :is(th, td) {
@@ -440,6 +420,349 @@
     }
 
     tbody tr:hover {
-        background: var(--muted);
+        background: color-mix(in oklch, var(--foreground) 3%, transparent);
     }
+}
+
+// Dropdown menus (language, download): hairline panel, input corners, no shadow.
+@mixin dropdown-menu {
+    border: 1px solid var(--border);
+    border-radius: $radius-md;
+    background-color: var(--background);
+    color: var(--foreground);
+    padding: 0.375rem;
+    box-shadow: none;
+}
+
+// Menu row: 8px corners, neutral hover/active wash instead of brand tint.
+@mixin dropdown-item {
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.625rem;
+    color: inherit;
+    font-size: 0.875rem;
+    // Menus follow the pointer: highlight changes almost instantly.
+    transition: background-color $transition-instant;
+
+    &:hover,
+    &:focus-visible {
+        background-color: color-mix(in oklch, var(--foreground) 5%, transparent);
+        outline: none;
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Redesign primitives (design/homepage-concept/native.dc.html). Templates
+// compose these instead of restating the values, so every page keeps the same
+// rhythm, rules and accents as the homepage.
+// ---------------------------------------------------------------------------
+
+// Heading type scale: desktop size, phone size, tracking. <Heading> and
+// raw-markup sections both read from here.
+// Strictly descending: a page title always outranks its sections.
+$heading-scale: (
+    'h1': (3rem, 2.25rem, -0.035em),
+    'h2': (2.5rem, 1.9rem, -0.03em),
+    'h3': (1.6rem, 1.3rem, -0.02em),
+    'h4': (1.25rem, 1.1rem, -0.02em),
+);
+
+@mixin heading-size($level: 'h2') {
+    $scale: map.get($heading-scale, $level);
+    font-size: list.nth($scale, 1);
+    letter-spacing: list.nth($scale, 3);
+
+    @include mobile {
+        font-size: list.nth($scale, 2);
+    }
+}
+
+@mixin heading($level: 'h2') {
+    font-family: var(--font-family-heading);
+    font-weight: 700;
+    line-height: 1.12;
+    color: var(--foreground);
+    text-wrap: balance;
+    @include heading-size($level);
+}
+
+// Vertical rhythm between page sections: 136px, 80px on phones.
+@mixin section-spacing {
+    padding-top: $section-gap;
+    scroll-margin-top: calc($navbar-height + 1rem);
+
+    @include mobile {
+        padding-top: $section-gap-mobile;
+    }
+}
+
+// Content section: container width plus the section rhythm.
+@mixin page-section {
+    @include container;
+    @include section-spacing;
+}
+
+// Label above a heading: plain accent text, never a pill.
+@mixin eyebrow {
+    display: block;
+    margin: 0 0 0.75rem;
+    padding: 0;
+    background: none;
+    border-radius: 0;
+    color: var(--primary);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+// The only panel the design uses: no fill, hairline border.
+@mixin surface-panel($radius: $radius-lg) {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: $radius;
+    box-shadow: none;
+}
+
+// Framed product screenshot: 12px corners, hairline border.
+@mixin frame {
+    border: 1px solid var(--border);
+    border-radius: $radius-lg;
+    overflow: hidden;
+}
+
+// Call to action: centred copy and buttons in a hairline panel (closing
+// CTA on landings, download CTA inside blog posts).
+@mixin cta-panel($padding: 4.5rem 2rem) {
+    @include surface-panel($radius-xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: $padding;
+    text-align: center;
+
+    @include mobile {
+        padding: 3rem 1.25rem;
+    }
+}
+
+// In-article callout. Tones: neutral (code grey), note (calm sage, TL;DR and
+// safety notes), accent (faint brand violet, product mentions).
+@mixin callout($tone: 'neutral') {
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: $radius-md;
+    background: var(--code-bg);
+
+    @if $tone == 'note' {
+        border-color: var(--note-border);
+        background: var(--note-bg);
+    } @else if $tone == 'accent' {
+        border-color: color-mix(in oklch, var(--primary) 18%, var(--border));
+        background: color-mix(in oklch, var(--primary) 6%, var(--background));
+    }
+}
+
+// Ruled item: a hairline on top carries the separation instead of a card.
+@mixin hairline-item($gap: 1.5rem) {
+    border-top: 1px solid var(--border);
+    padding-top: $gap;
+    min-width: 0;
+}
+
+// Inline accent link: no underline, dims on hover.
+@mixin text-link {
+    color: var(--primary);
+    font-weight: $font-weight-link;
+    text-decoration: none;
+    transition: opacity $transition-fast;
+
+    &:hover {
+        opacity: 0.78;
+    }
+}
+
+// <summary> of a hairline disclosure (FAQ rows, recorded results, prompts):
+// full-width row, no marker, icon pushed to the end.
+@mixin disclosure-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    padding: 1.25rem 0;
+    background: none;
+    border: none;
+    color: var(--foreground);
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    list-style: none;
+
+    &::-webkit-details-marker {
+        display: none;
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+        border-radius: $radius-sm;
+    }
+}
+
+// Animated open/close for a native <details>. The answer stays in the DOM
+// (crawlable, find-in-page works); browsers without ::details-content or
+// interpolate-size simply toggle instantly. Respects reduced motion.
+@mixin disclosure-motion($duration: 0.22s) {
+    interpolate-size: allow-keywords;
+
+    &::details-content {
+        block-size: 0;
+        overflow: hidden;
+        opacity: 0;
+    }
+
+    &[open]::details-content {
+        block-size: auto;
+        opacity: 1;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        &::details-content {
+            transition:
+                block-size $duration ease,
+                opacity $duration ease,
+                content-visibility $duration allow-discrete;
+        }
+    }
+}
+
+// "+" icon (lucide Plus) that turns into "−" when its <details> opens: the
+// vertical stroke collapses instead of disappearing.
+@mixin disclosure-plus {
+    flex-shrink: 0;
+    color: var(--text-faint);
+
+    path:nth-child(2) {
+        transform-box: fill-box;
+        transform-origin: center;
+        transition: transform $transition-fast;
+    }
+
+    details[open] & path:nth-child(2) {
+        transform: scaleY(0);
+    }
+}
+
+// Chevron inside a disclosure summary: faint, flips when open.
+@mixin disclosure-chevron {
+    flex-shrink: 0;
+    color: var(--text-faint);
+    transition: transform $transition-fast;
+
+    details[open] & {
+        transform: rotate(180deg);
+    }
+}
+
+// Plain text tab (tour, feature switcher): 15px faint; active is ink and bold.
+@mixin text-tab {
+    padding: 0.5625rem 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    font: inherit;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-align: left;
+    color: var(--text-faint);
+    cursor: pointer;
+    transition: color $transition-fast;
+
+    &:hover {
+        color: var(--foreground);
+    }
+}
+
+@mixin text-tab-active {
+    color: var(--foreground);
+    font-weight: 700;
+}
+
+// Phone variant of the text tab: a swipeable chip.
+@mixin chip-tab {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    scroll-snap-align: start;
+    padding: 0.5625rem 0.875rem;
+    border: 1px solid var(--border-strong);
+    border-radius: $radius-full;
+    font-size: 0.875rem;
+}
+
+@mixin chip-tab-active {
+    border-color: transparent;
+    background: color-mix(in oklch, var(--foreground) 7%, transparent);
+}
+
+// Horizontal, swipeable row holding chip tabs on phones.
+@mixin chip-row {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    margin-inline: -1rem;
+    padding: 0 1rem 0.25rem;
+    width: calc(100% + 2rem);
+    max-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+// Wrapping row of text links (related pages, sources, guides).
+@mixin link-row($gap: 0.5rem 1.375rem) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $gap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+// Grid of blog post tiles (homepage, profession guides): 240px minimum,
+// gap 40px 24px (concept).
+@mixin post-tile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+    gap: 2.5rem 1.5rem;
+}
+
+// Blog track label above a post title (General / Mac / Windows).
+@mixin post-track {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+}
+
+// Lead / body copy under a heading.
+@mixin body-copy($size: 1rem) {
+    color: var(--muted-foreground);
+    font-size: $size;
+    line-height: 1.65;
+}
+
+// Monospaced filename sample (before/after rows): Geist Mono, faint.
+@mixin mono-sample {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: var(--text-faint);
+    overflow-wrap: anywhere;
 }

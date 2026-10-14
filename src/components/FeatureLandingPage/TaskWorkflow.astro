@@ -1,12 +1,12 @@
 ---
 import { AudioLines, ChevronDown, Download, FileArchive, FileType2, Film } from 'lucide-react';
 import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
-import Heading from '@/components/Heading';
+import SectionHeader from '@/components/SectionHeader';
 import PillLink from '@/components/PillLink';
-import ThemedScreenshot from '@/components/OrganizationFeatures/ThemedScreenshot.astro';
+import ThemedScreenshot from '@/components/ThemedScreenshot/ThemedScreenshot.astro';
 import buttonStyles from '@/components/Button/Button.module.scss';
 import type { FeatureCategory } from '@/data/featureContent';
-import landingStyles from './FeatureLandingPage.module.scss';
+import b from '@/components/Blocks/Blocks.module.scss';
 import styles from './TaskWorkflow.module.scss';
 import type { DownloadMenuCopy } from '@/i18n/copy';
 import type { DownloadOS } from '@/utils/download';
@@ -72,129 +72,127 @@ const starterLabel = starter === 'pdf' ? 'PDF' : 'audio';
 const FileIcon = category === 'audio' ? AudioLines : category === 'video' ? Film : FileType2;
 const fileBadge = category === 'audio' ? 'WAV' : category === 'video' ? 'MP4' : 'PDF';
 const beforeName = starter === 'pdf' ? 'scan_001.pdf' : starter === 'audio' ? 'voice_memo_042.wav' : workflow?.testedInput;
-const buttonClass = (variant: 'primary' | 'ghost') =>
+const buttonClass = (variant: 'primary' | 'outline') =>
   [buttonStyles.Button, buttonStyles[`Button_${variant}`], buttonStyles.Button_md, styles.TaskWorkflow__Button].join(' ');
 ---
 {workflow && (
   <section
-    class:list={[landingStyles.Section, styles.TaskWorkflow]}
+    class:list={[b.Section, styles.TaskWorkflow]}
     id={starter ? `try-${starter}` : undefined}
     aria-labelledby="task-workflow-title"
     data-category={category}
     data-has-cta={starter ? '' : undefined}
   >
-    <div class={landingStyles.Section__Container}>
-      <header class={landingStyles.PdfDeepDive__Header}>
-        <p class={landingStyles.PdfDeepDive__Eyebrow}>{starter ? 'Try it with sample files' : 'How it works'}</p>
-        <Heading as="h2" align="center" id="task-workflow-title">{workflow.title}</Heading>
-        <p class={landingStyles.PdfDeepDive__Intro}>{workflow.intro}</p>
-      </header>
+    <SectionHeader
+      id="task-workflow-title"
+      eyebrow={starter ? 'Try it with sample files' : 'How it works'}
+      title={workflow.title}
+      description={workflow.intro}
+    />
 
-      <ol class={styles.Steps} role="list">
-        {workflow.steps.map(([title, text], index) => (
-          <li class={styles.Step}>
-            <span class={styles.Step__Number} aria-hidden="true">{index + 1}</span>
-            <Heading as="h3" size="h4" className={styles.Step__Title}>{title}</Heading>
-            <p class={styles.Step__Text}>{text}</p>
-          </li>
-        ))}
-      </ol>
+    <ol class={b.Columns} role="list">
+      {workflow.steps.map(([title, text], index) => (
+        <li class:list={[b.Column, b.Column_stack]}>
+          <span class={b.StepNumber} aria-hidden="true">{index + 1}</span>
+          <h3 class={b.ColumnTitle}>{title}</h3>
+          <p class={b.ColumnText}>{text}</p>
+        </li>
+      ))}
+    </ol>
 
-      <div class:list={[styles.Demo, { [styles.Demo_withMedia]: starter }]}>
-        <div class={styles.Demo__Main}>
-          <figure class={styles.Example}>
-            <div class={landingStyles.PdfFileItem}>
-              <div class={landingStyles.PdfFileItem__Preview} data-tone={category} aria-hidden="true">
-                <FileIcon size={24} strokeWidth={2.2} />
-                <span class={landingStyles.PdfFileItem__Badge}>{fileBadge}</span>
-              </div>
-              <div class={styles.Example__Names}>
-                <span class={styles.Example__Label}>Before</span>
-                <code class={styles.Example__Before}>{beforeName}</code>
-                <span class={styles.Example__Label}>Example result</span>
-                <code class={styles.Example__After}>{workflow.pattern}</code>
-              </div>
+    <div class:list={[styles.Demo, { [styles.Demo_withMedia]: starter }]}>
+      <div class={styles.Demo__Main}>
+        <figure class={styles.Example}>
+          <div class={b.File}>
+            <div class={b.FileTile} data-tone={category} aria-hidden="true">
+              <FileIcon size={24} strokeWidth={2.2} />
+              <span class={b.FileBadge}>{fileBadge}</span>
             </div>
-            <figcaption class={styles.Caption}>{workflow.caption}</figcaption>
-          </figure>
-
-          {starter && (
-            <div class={styles.Downloads}>
-              <div class={styles.Downloads__Buttons}>
-                <a
-                  class={buttonClass('primary')}
-                  href={`${starterRoot}/${starter}-starters.zushtemplates`}
-                  download
-                  aria-label={`Download ${starterLabel} Templates (2 Templates, .zushtemplates)`}
-                >
-                  <Download size={18} aria-hidden="true" />
-                  <span>Download Templates</span>
-                </a>
-                <a
-                  class={buttonClass('ghost')}
-                  href={`${starterRoot}/${starter}-examples.zip`}
-                  download
-                  aria-label="Download sample files (2 synthetic files, ZIP)"
-                >
-                  <FileArchive size={18} aria-hidden="true" />
-                  <span>Sample files</span>
-                </a>
-              </div>
-              <p class={styles.Caption}>
-                2 Templates (.zushtemplates) and 2 synthetic files (ZIP). Mac 3.13+ · Windows 3.10+. English output; sorting and metadata writing off.{starter === 'audio' && ' Speech analysis depends on your AI mode.'}{' '}
-                <a href={`${starterRoot}/README.md`}>Setup and sample details</a>
-              </p>
+            <div class={b.FileNames}>
+              <span class={styles.Example__Label}>Before</span>
+              <code class={b.FileBefore}>{beforeName}</code>
+              <span class={styles.Example__Label}>Example result</span>
+              <code class={b.FileAfter}>{workflow.pattern}</code>
             </div>
-          )}
-        </div>
+          </div>
+          <figcaption class={styles.Caption}>{workflow.caption}</figcaption>
+        </figure>
 
         {starter && (
-          <figure class={styles.Demo__Media}>
-            <a
-              class={styles.Screenshot}
-              href="/images/showcase/macos/template-transfer-light-1920.webp"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Open the full Mac import screenshot"
-            >
-              <ThemedScreenshot id="template-transfer" zoom alt="Zush for Mac Templates menu with Import Templates and Export All Templates." />
-            </a>
-            <figcaption class={styles.Caption}>
-              <strong>Import once, reuse the Template.</strong> The Mac Templates menu is shown here; Windows has its own import action.{' '}
-              <a href="/docs/template-import-export">Import instructions</a>
-            </figcaption>
-          </figure>
+          <div class={styles.Downloads}>
+            <div class={styles.Downloads__Buttons}>
+              <a
+                class={buttonClass('primary')}
+                href={`${starterRoot}/${starter}-starters.zushtemplates`}
+                download
+                aria-label={`Download ${starterLabel} Templates (2 Templates, .zushtemplates)`}
+              >
+                <Download size={18} aria-hidden="true" />
+                <span>Download Templates</span>
+              </a>
+              <a
+                class={buttonClass('outline')}
+                href={`${starterRoot}/${starter}-examples.zip`}
+                download
+                aria-label="Download sample files (2 synthetic files, ZIP)"
+              >
+                <FileArchive size={18} aria-hidden="true" />
+                <span>Sample files</span>
+              </a>
+            </div>
+            <p class={styles.Caption}>
+              2 Templates (.zushtemplates) and 2 synthetic files (ZIP). Mac 3.13+ · Windows 3.10+. English output; sorting and metadata writing off.{starter === 'audio' && ' Speech analysis depends on your AI mode.'}{' '}
+              <a href={`${starterRoot}/README.md`}>Setup and sample details</a>
+            </p>
+          </div>
         )}
       </div>
 
-      <div class={styles.Notes}>
-        <p class={styles.Notes__Limit}>{workflow.limit}</p>
+      {starter && (
+        <figure class={styles.Demo__Media}>
+          <a
+            class:list={[b.Frame, styles.Screenshot]}
+            href="/images/showcase/macos/template-transfer-light-1920.webp"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open the full Mac import screenshot"
+          >
+            <ThemedScreenshot id="template-transfer" zoom alt="Zush for Mac Templates menu with Import Templates and Export All Templates." />
+          </a>
+          <figcaption class={styles.Caption}>
+            <strong>Import once, reuse the Template.</strong> The Mac Templates menu is shown here; Windows has its own import action.{' '}
+            <a href="/docs/template-import-export">Import instructions</a>
+          </figcaption>
+        </figure>
+      )}
+    </div>
 
-        <details class={styles.Result}>
-          <summary class={styles.Result__Summary}>
-            <span>See a recorded test result</span>
-            <ChevronDown size={20} className={styles.Result__Icon} aria-hidden="true" />
-          </summary>
-          <div class={styles.Result__Body}>
-            <p>{workflow.testedContext}</p>
-            <dl class={styles.Result__Facts}>
-              <div><dt>File</dt><dd><code>{workflow.testedInput}</code></dd></div>
-              <div><dt>Named as</dt><dd>{workflow.testedResult}</dd></div>
-              <div><dt>Setup</dt><dd>Sept 5, 2026 · Zush 3.11.0 for Mac · Cloud AI · Smart Title Name</dd></div>
-              <div><dt>Contents</dt><dd>Unchanged, byte-for-byte</dd></div>
-            </dl>
-            <p class={styles.Result__Note}>
-              The test used a non-English output language; the name is translated here. A small test, not an accuracy guarantee{starter ? '; the starter Templates were not part of it' : ''}.{' '}
-              <a href="/benchmarks/ai-file-renamer-pilot-2026-09-05/README.md">Full test setup and results</a>
-            </p>
-          </div>
-        </details>
+    <div class={styles.Notes}>
+      <p class={styles.Notes__Limit}>{workflow.limit}</p>
 
-        <div class={styles.Notes__Guide}>
-          <PillLink href={workflow.guide} withArrow>{workflow.label}</PillLink>
+      <details class={styles.Result}>
+        <summary class={styles.Result__Summary}>
+          <span>See a recorded test result</span>
+          <ChevronDown size={18} className={styles.Result__Icon} aria-hidden="true" />
+        </summary>
+        <div class={styles.Result__Body}>
+          <p>{workflow.testedContext}</p>
+          <dl class={styles.Result__Facts}>
+            <div><dt>File</dt><dd><code>{workflow.testedInput}</code></dd></div>
+            <div><dt>Named as</dt><dd>{workflow.testedResult}</dd></div>
+            <div><dt>Setup</dt><dd>Sept 5, 2026 · Zush 3.11.0 for Mac · Cloud AI · Smart Title Name</dd></div>
+            <div><dt>Contents</dt><dd>Unchanged, byte-for-byte</dd></div>
+          </dl>
+          <p class={styles.Result__Note}>
+            The test used a non-English output language; the name is translated here. A small test, not an accuracy guarantee{starter ? '; the starter Templates were not part of it' : ''}.{' '}
+            <a href="/benchmarks/ai-file-renamer-pilot-2026-09-05/README.md">Full test setup and results</a>
+          </p>
         </div>
-      </div>
+      </details>
 
+      <div>
+        <PillLink href={workflow.guide} withArrow>{workflow.label}</PillLink>
+      </div>
     </div>
   </section>
 )}

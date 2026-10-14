@@ -165,6 +165,21 @@ const CONTROL_TITLES: Record<Locale, string> = {
   ar: 'تحكّم في كل عملية إعادة تسمية',
 };
 
+const FACTS_TITLES: Record<Locale, string> = {
+  en: 'Zush at a glance',
+  fr: 'Zush en bref',
+  de: 'Zush auf einen Blick',
+  es: 'Zush de un vistazo',
+  'pt-br': 'Zush em resumo',
+  it: 'Zush in breve',
+  nl: 'Zush in het kort',
+  tr: 'Bir bakışta Zush',
+  ja: 'Zush の概要',
+  ko: '한눈에 보는 Zush',
+  'zh-cn': 'Zush 概览',
+  ar: 'Zush في لمحة',
+};
+
 const localizedControlCopy = CONTROL_COPY[locale];
 const controlFacts = [
   {
@@ -214,10 +229,13 @@ const showFacts = variant !== 'intro' && variant !== 'sources';
 const showSources = variant === 'all' || variant === 'sources';
 const showIntro = variant === 'all' || variant === 'intro';
 const showControlTitle = variant === 'control' && showControlHeading;
+const showFactsTitle = variant === 'facts';
 const labelledBy = showIntro
   ? 'about-zush-title'
   : showControlTitle
     ? 'evidence-control-title'
+    : showFactsTitle
+      ? 'evidence-facts-title'
     : showSources
       ? 'evidence-sources-title'
       : undefined;
@@ -237,10 +255,10 @@ const sectionClass = [
   <div class={styles.EvidenceSignals__Container}>
     {showIntro && (
       <div class={`${sectionHeaderStyles.SectionHeader} ${variant === 'intro' ? styles.EvidenceSignals__IntroOnly : ''}`}>
-        <Heading id="about-zush-title" as="h2" align="center" className={sectionHeaderStyles.SectionHeader__Title}>
+        <Heading id="about-zush-title" as="h2" className={sectionHeaderStyles.SectionHeader__Title}>
           {titleParts[0]}{titleParts.length > 1 ? <span class="brand-accent-text">Zush</span> : null}{titleParts.slice(1).join('Zush')}
         </Heading>
-        <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>
+        <Text as="p" size="lg" color="subtle" className={sectionHeaderStyles.SectionHeader__Description}>
           {description}
         </Text>
       </div>
@@ -249,6 +267,12 @@ const sectionClass = [
     {showControlTitle && (
       <Heading id="evidence-control-title" as="h2" align="center" className={styles.EvidenceSignals__ControlTitle}>
         {CONTROL_TITLES[locale]}
+      </Heading>
+    )}
+
+    {showFactsTitle && (
+      <Heading id="evidence-facts-title" as="h2" className={styles.EvidenceSignals__FactsTitle}>
+        {FACTS_TITLES[locale]}
       </Heading>
     )}
 

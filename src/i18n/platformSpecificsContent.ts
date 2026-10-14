@@ -1,12 +1,10 @@
 import type {
-  InstallMethod,
   PlatformSpecificsContent,
   PlatformSpecificsKey,
   SpecKey,
 } from '@/data/platformSpecifics';
 import { DEFAULT_LOCALE, type Locale } from '@/i18n/config';
 import type { LocaleCopy } from '@/i18n/copy';
-import type { PlatformSpecificsCopy } from '@/i18n/platformSpecifics';
 
 const REQUIREMENT_LABELS: Partial<Record<Locale, Record<SpecKey, string>>> = {
   en: {
@@ -187,277 +185,18 @@ const REQUIREMENT_TEXT: Partial<Record<Locale, {
   },
 };
 
-type HomebrewInstallCopy = Pick<InstallMethod, 'title' | 'badge' | 'description' | 'steps'> & {
-  storeBadge: Pick<InstallMethod['storeBadge'], 'kicker' | 'label' | 'ariaLabel'>;
-};
-
-const HOMEBREW_INSTALL_METHOD: Partial<Record<Locale, HomebrewInstallCopy>> = {
-  en: {
-    title: 'Homebrew',
-    badge: 'Terminal',
-    description: 'Homebrew cask install for Mac users who manage apps from Terminal or scripted setup.',
-    steps: [
-      { step: 'Open Terminal', detail: 'Use any shell where Homebrew is already installed and available on your PATH.' },
-      { step: 'Run the cask install', detail: 'Install Zush with `brew install --cask zush`.' },
-      { step: 'Launch Zush', detail: 'Open Zush from Applications, Spotlight, or Launchpad after Homebrew finishes the install.' },
-    ],
-    storeBadge: {
-      kicker: 'Install with',
-      label: 'Homebrew',
-      ariaLabel: 'Open the Zush Homebrew cask',
-    },
-  },
-  de: {
-    title: 'Homebrew',
-    badge: 'Terminal',
-    description: 'Homebrew-Cask für Mac-Nutzer, die Apps im Terminal oder über Skripte verwalten.',
-    steps: [
-      { step: 'Terminal öffnen', detail: 'Nutze eine Shell, in der Homebrew installiert und im PATH verfügbar ist.' },
-      { step: 'Cask installieren', detail: 'Installiere Zush mit `brew install --cask zush`.' },
-      { step: 'Zush starten', detail: 'Öffne Zush nach der Installation aus Programme, Spotlight oder Launchpad.' },
-    ],
-    storeBadge: {
-      kicker: 'Installieren mit',
-      label: 'Homebrew',
-      ariaLabel: 'Zush Homebrew-Cask öffnen',
-    },
-  },
-  fr: {
-    title: 'Homebrew',
-    badge: 'Terminal',
-    description: 'Cask Homebrew pour les utilisateurs Mac qui gèrent les apps depuis le Terminal ou un script.',
-    steps: [
-      { step: 'Ouvrir le Terminal', detail: 'Utilisez un shell où Homebrew est déjà installé et disponible dans le PATH.' },
-      { step: 'Installer le cask', detail: 'Installez Zush avec `brew install --cask zush`.' },
-      { step: 'Lancer Zush', detail: 'Ouvrez Zush depuis Applications, Spotlight ou Launchpad une fois l’installation Homebrew terminée.' },
-    ],
-    storeBadge: {
-      kicker: 'Installer avec',
-      label: 'Homebrew',
-      ariaLabel: 'Ouvrir le cask Homebrew de Zush',
-    },
-  },
-  'pt-br': {
-    title: 'Homebrew',
-    badge: 'Terminal',
-    description: 'Cask do Homebrew para usuários de Mac que gerenciam apps pelo Terminal ou por scripts.',
-    steps: [
-      { step: 'Abrir o Terminal', detail: 'Use um shell em que o Homebrew já esteja instalado e disponível no PATH.' },
-      { step: 'Executar a instalação do cask', detail: 'Instale o Zush com `brew install --cask zush`.' },
-      { step: 'Abrir o Zush', detail: 'Abra o Zush por Aplicativos, Spotlight ou Launchpad depois que o Homebrew terminar.' },
-    ],
-    storeBadge: {
-      kicker: 'Instalar com',
-      label: 'Homebrew',
-      ariaLabel: 'Abrir o cask do Zush no Homebrew',
-    },
-  },
-  es: {
-    title: 'Homebrew',
-    badge: 'Terminal',
-    description: 'Cask de Homebrew para usuarios de Mac que gestionan apps desde Terminal o con scripts.',
-    steps: [
-      { step: 'Abrir Terminal', detail: 'Usa cualquier shell donde Homebrew ya esté instalado y disponible en el PATH.' },
-      { step: 'Ejecutar la instalación del cask', detail: 'Instala Zush con `brew install --cask zush`.' },
-      { step: 'Abrir Zush', detail: 'Abre Zush desde Aplicaciones, Spotlight o Launchpad cuando Homebrew termine.' },
-    ],
-    storeBadge: {
-      kicker: 'Instalar con',
-      label: 'Homebrew',
-      ariaLabel: 'Abrir el cask de Zush en Homebrew',
-    },
-  },
-  nl: {
-    title: 'Homebrew',
-    badge: 'Terminal',
-    description: 'Homebrew-cask voor Mac-gebruikers die apps via Terminal of scripts beheren.',
-    steps: [
-      { step: 'Terminal openen', detail: 'Gebruik een shell waarin Homebrew al is geïnstalleerd en beschikbaar is in PATH.' },
-      { step: 'Voer de cask-installatie uit', detail: 'Installeer Zush met `brew install --cask zush`.' },
-      { step: 'Start Zush', detail: 'Open Zush vanuit Programma’s, Spotlight of Launchpad nadat Homebrew klaar is.' },
-    ],
-    storeBadge: {
-      kicker: 'Installeren met',
-      label: 'Homebrew',
-      ariaLabel: 'Zush Homebrew-cask openen',
-    },
-  },
-  it: {
-    title: 'Homebrew',
-    badge: 'Terminale',
-    description: 'Cask Homebrew per utenti Mac che gestiscono le app dal Terminale o con script.',
-    steps: [
-      { step: 'Apri Terminale', detail: 'Usa una shell in cui Homebrew è già installato e disponibile nel PATH.' },
-      { step: 'Esegui l’installazione del cask', detail: 'Installa Zush con `brew install --cask zush`.' },
-      { step: 'Avvia Zush', detail: 'Apri Zush da Applicazioni, Spotlight o Launchpad al termine dell’installazione Homebrew.' },
-    ],
-    storeBadge: {
-      kicker: 'Installa con',
-      label: 'Homebrew',
-      ariaLabel: 'Apri il cask Homebrew di Zush',
-    },
-  },
-  ja: {
-    title: 'Homebrew',
-    badge: 'Terminal',
-    description: 'Terminal やスクリプトで Mac アプリを管理するユーザー向けの Homebrew cask です。',
-    steps: [
-      { step: 'Terminal を開く', detail: 'Homebrew がインストール済みで PATH から使えるシェルを使用します。' },
-      { step: 'cask をインストール', detail: '`brew install --cask zush` で Zush をインストールします。' },
-      { step: 'Zush を起動', detail: 'Homebrew のインストール完了後、アプリケーション、Spotlight、Launchpad から Zush を開きます。' },
-    ],
-    storeBadge: {
-      kicker: 'インストール',
-      label: 'Homebrew',
-      ariaLabel: 'Zush の Homebrew cask を開く',
-    },
-  },
-  ko: {
-    title: 'Homebrew',
-    badge: 'Terminal',
-    description: '터미널이나 스크립트로 Mac 앱을 관리하는 사용자를 위한 Homebrew cask입니다.',
-    steps: [
-      { step: '터미널 열기', detail: 'Homebrew가 설치되어 있고 PATH에서 사용할 수 있는 셸을 사용하세요.' },
-      { step: 'cask 설치 실행', detail: '`brew install --cask zush`로 Zush를 설치하세요.' },
-      { step: 'Zush 실행', detail: 'Homebrew 설치가 끝나면 응용 프로그램, Spotlight 또는 Launchpad에서 Zush를 여세요.' },
-    ],
-    storeBadge: {
-      kicker: '설치',
-      label: 'Homebrew',
-      ariaLabel: 'Zush Homebrew cask 열기',
-    },
-  },
-  'zh-cn': {
-    title: 'Homebrew',
-    badge: 'Terminal',
-    description: '适合通过终端或脚本管理 Mac 应用的 Homebrew cask。',
-    steps: [
-      { step: '打开终端', detail: '使用已安装 Homebrew 且可在 PATH 中访问的任意 shell。' },
-      { step: '运行 cask 安装', detail: '使用 `brew install --cask zush` 安装 Zush。' },
-      { step: '启动 Zush', detail: 'Homebrew 安装完成后，从“应用程序”、Spotlight 或 Launchpad 打开 Zush。' },
-    ],
-    storeBadge: {
-      kicker: '通过',
-      label: 'Homebrew',
-      ariaLabel: '打开 Zush Homebrew cask',
-    },
-  },
-  tr: {
-    title: 'Homebrew',
-    badge: 'Terminal',
-    description: 'Mac uygulamalarını Terminal veya betikli kurulumla yöneten kullanıcılar için Homebrew cask kurulumu.',
-    steps: [
-      { step: 'Terminal’i açın', detail: 'Homebrew’un kurulu ve PATH üzerinden erişilebilir olduğu herhangi bir kabuğu kullanın.' },
-      { step: 'cask kurulumunu çalıştırın', detail: 'Zush’u `brew install --cask zush` ile kurun.' },
-      { step: 'Zush’u başlatın', detail: 'Homebrew kurulumu tamamlandıktan sonra Zush’u Uygulamalar, Spotlight veya Launchpad’den açın.' },
-    ],
-    storeBadge: {
-      kicker: 'Şununla kurun',
-      label: 'Homebrew',
-      ariaLabel: 'Zush Homebrew cask sayfasını aç',
-    },
-  },
-  ar: {
-    title: 'Homebrew',
-    badge: 'Terminal',
-    description: 'تثبيت Homebrew cask لمستخدمي Mac الذين يديرون التطبيقات من Terminal أو عبر إعدادات آلية.',
-    steps: [
-      { step: 'افتح Terminal', detail: 'استخدم أي shell يكون Homebrew مثبتا فيه ومتاحا ضمن PATH.' },
-      { step: 'شغل تثبيت cask', detail: 'ثبّت Zush باستخدام `brew install --cask zush`.' },
-      { step: 'شغل Zush', detail: 'افتح Zush من Applications أو Spotlight أو Launchpad بعد انتهاء تثبيت Homebrew.' },
-    ],
-    storeBadge: {
-      kicker: 'التثبيت عبر',
-      label: 'Homebrew',
-      ariaLabel: 'فتح Homebrew cask الخاص بـ Zush',
-    },
-  },
-};
-
 function appSizeFor(platform: PlatformSpecificsKey): string {
   return platform === 'mac' ? '~200 MB' : '~250 MB';
-}
-
-function osLabelFor(platform: PlatformSpecificsKey): string {
-  return platform === 'mac' ? 'macOS' : 'Windows';
 }
 
 function localizedAfterNames(copy: LocaleCopy): string[] {
   return copy.home.showcaseSlides.flatMap((slide) => slide.files.map((file) => file.after));
 }
 
-function localizedHomebrewInstallMethod(locale: Locale, method: InstallMethod): InstallMethod {
-  const copy = HOMEBREW_INSTALL_METHOD[locale] ?? HOMEBREW_INSTALL_METHOD[DEFAULT_LOCALE]!;
-
-  return {
-    ...method,
-    title: copy.title,
-    badge: copy.badge,
-    description: copy.description,
-    steps: copy.steps,
-    storeBadge: {
-      ...method.storeBadge,
-      ...copy.storeBadge,
-    },
-  };
-}
-
-function platformInstallMethods(
-  platform: PlatformSpecificsKey,
-  locale: Locale,
-  localeCopy: LocaleCopy,
-  sectionCopy: PlatformSpecificsCopy,
-  fallback: PlatformSpecificsContent,
-): PlatformSpecificsContent['installMethods'] {
-  const platformCopy = localeCopy.platforms[platform];
-
-  return fallback.installMethods.map((method) => {
-    if (method.storeBadge.kind === 'homebrew') return localizedHomebrewInstallMethod(locale, method);
-
-    const isAppStore = method.storeBadge.kind === 'app-store';
-    const isMicrosoftStore = method.storeBadge.kind === 'microsoft-store';
-    const label = isAppStore
-      ? localeCopy.footer.appStoreLabel
-      : isMicrosoftStore
-        ? localeCopy.footer.microsoftStoreLabel
-        : localeCopy.downloadMenu.macDirectHint;
-    const kicker = isAppStore
-      ? localeCopy.footer.appStoreKicker
-      : isMicrosoftStore
-        ? localeCopy.footer.microsoftStoreKicker
-        : localeCopy.header.download;
-
-    return {
-      ...method,
-      title: label,
-      badge: method.recommended ? sectionCopy.installRecommendedBadge : method.badge,
-      description: platformCopy.ctaSubtitle,
-      steps: [
-        { step: localeCopy.header.download, detail: platformCopy.ctaSubtitle },
-        {
-          step: localeCopy.home.featureCards.batchRename.title,
-          detail: localeCopy.home.featureCards.batchRename.description,
-        },
-        {
-          step: localeCopy.home.featureCards.foldersMonitoring.title,
-          detail: localeCopy.home.featureCards.foldersMonitoring.description,
-        },
-      ],
-      storeBadge: {
-        ...method.storeBadge,
-        kicker,
-        label,
-        ariaLabel: platformCopy.ctaTitle,
-      },
-    };
-  });
-}
-
 export function getLocalizedPlatformSpecificsContent(
   platform: PlatformSpecificsKey,
   locale: Locale,
   localeCopy: LocaleCopy,
-  sectionCopy: PlatformSpecificsCopy,
   fallback: PlatformSpecificsContent,
 ): PlatformSpecificsContent {
   if (locale === DEFAULT_LOCALE) return fallback;
@@ -465,7 +204,6 @@ export function getLocalizedPlatformSpecificsContent(
   const labels = REQUIREMENT_LABELS[locale] ?? REQUIREMENT_LABELS[DEFAULT_LOCALE]!;
   const requirementText = REQUIREMENT_TEXT[locale] ?? REQUIREMENT_TEXT[DEFAULT_LOCALE]!;
   const afterNames = localizedAfterNames(localeCopy);
-  const osLabel = osLabelFor(platform);
   const platformCopy = localeCopy.platforms[platform];
 
   return {
@@ -485,43 +223,23 @@ export function getLocalizedPlatformSpecificsContent(
                   : row.value,
       })),
     },
-    installMethods: platformInstallMethods(platform, locale, localeCopy, sectionCopy, fallback),
     quickstart: [
       {
         title: platformCopy.ctaTitle,
         detail: platformCopy.ctaSubtitle,
-        duration: '~10s',
-        preview: 'launch',
       },
       {
         title: localeCopy.home.featureCards.aiAnalysis.title,
         detail: localeCopy.home.featureCards.aiAnalysis.description,
-        duration: '~20s',
-        preview: 'drop',
       },
       {
         title: localeCopy.home.featureCards.batchRename.title,
         detail: localeCopy.home.featureCards.batchRename.description,
-        duration: '~20s',
-        preview: 'review',
       },
       {
         title: localeCopy.home.featureCards.foldersMonitoring.title,
         detail: localeCopy.home.featureCards.foldersMonitoring.description,
-        duration: '~10s',
-        preview: 'watch',
       },
-    ],
-    integrations: [
-      {
-        title: localeCopy.home.whyZush.nativeTitle,
-        description: localeCopy.home.whyZush.nativeDescriptionPlatform.replace('{os}', osLabel),
-      },
-      localeCopy.home.featureCards.foldersMonitoring,
-      localeCopy.home.featureCards.batchRename,
-      localeCopy.home.featureCards.customPrompts,
-      localeCopy.home.featureCards.byok,
-      localeCopy.home.featureCards.offlineAi,
     ],
     scenarios: fallback.scenarios.map((scenario, index) => {
       const useCase = localeCopy.home.useCases.items[index];
@@ -532,14 +250,5 @@ export function getLocalizedPlatformSpecificsContent(
         after: scenario.fileType === 'video' || scenario.fileType === 'design' ? scenario.after : afterNames[index] ?? scenario.after,
       };
     }),
-    security: [
-      {
-        title: platformCopy.softwareName,
-        description: platformCopy.softwareDescription,
-      },
-      localeCopy.home.featureCards.offlineAi,
-      localeCopy.home.featureCards.byok,
-      localeCopy.home.featureCards.renameHistory,
-    ],
   };
 }

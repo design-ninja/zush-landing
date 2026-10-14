@@ -1,5 +1,4 @@
 ---
-import { ArrowUpRight } from 'lucide-react';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
 import { DEFAULT_LOCALE, getLocalizedPath, type Locale } from '@/i18n/config';
@@ -45,7 +44,6 @@ const hasTitleAccent = titleParts.length > 1;
           <p class={styles.PlatformCard__Description}>{copy.macDescription}</p>
           <span class={styles.PlatformCard__CTA}>
             {copy.macCta}
-            <ArrowUpRight size={16} aria-hidden='true' />
           </span>
         </a>
       )}
@@ -64,7 +62,6 @@ const hasTitleAccent = titleParts.length > 1;
           <p class={styles.PlatformCard__Description}>{copy.windowsDescription}</p>
           <span class={styles.PlatformCard__CTA}>
             {copy.windowsCta}
-            <ArrowUpRight size={16} aria-hidden='true' />
           </span>
         </a>
       )}

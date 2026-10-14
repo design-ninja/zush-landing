@@ -7,10 +7,7 @@ import {
   MonitorDown,
   Search,
 } from 'lucide-react';
-import Heading from '@/components/Heading';
-import PillLink from '@/components/PillLink';
-import Text from '@/components/Text';
-import styles from './WindowsSeoSection.module.scss';
+import PlatformSeoSection, { type PlatformSeoCard } from '@/components/PlatformSeoSection/PlatformSeoSection.astro';
 
 const docsLinks = [
   { href: '/powerrename-alternative', label: 'PowerRename alternative' },
@@ -24,123 +21,71 @@ const docsLinks = [
   { href: '/docs/folder-sorting', label: 'Nested folders & post-rename sorting' },
 ];
 
-const cards = [
+const cards: PlatformSeoCard[] = [
   {
     icon: ListChecks,
-    tone: 'purple',
     title: 'Batch rename files on Windows',
     body:
       'Drag files from File Explorer, generate names from content, review every suggestion, and apply only when the batch is ready. Undo history keeps the original names available.',
   },
   {
     icon: FolderSearch,
-    tone: 'blue',
     title: 'AI file organizer workflow',
     body:
       'Zush supports nested folder rules and sorting already renamed files without another rename credit. These workflows are available on both Windows and Mac.',
   },
   {
     icon: Search,
-    tone: 'teal',
     title: 'Searchable Windows filenames',
     body:
       'Zush turns file content into readable filenames and metadata so File Explorer and Windows Search can surface files without opening each one.',
   },
   {
     icon: MonitorDown,
-    tone: 'green',
     title: 'Microsoft Store install',
     body:
       'Install from the Microsoft Store for Windows 10 and Windows 11, with Store-managed package trust and automatic updates.',
   },
   {
     icon: KeyRound,
-    tone: 'orange',
     title: 'BYOK and Local AI',
     body:
       'Choose the privacy level for the job: use Zush Cloud, connect your own provider account with BYOK, or keep supported analysis on-device with Local AI.',
   },
   {
     icon: History,
-    tone: 'pink',
     title: 'RenameClick alternative for Windows',
     body:
       'Compare Zush when you want Microsoft Store distribution, preview, undo, BYOK, Local AI, and a Windows-focused batch rename workflow.',
   },
 ];
+
+const rows: [string, string, string][] = [
+  ['Need a RenameClick alternative on Windows', 'Zush for Windows', 'Microsoft Store distribution, batch review, undo, BYOK, and Local AI in one workflow.'],
+  ['Rename screenshots, PDFs, photos, videos, audio, or docs by content', 'Zush for Windows', 'Every file can get a different descriptive name after AI analysis.'],
+  ['Add counters, prefixes, or case rules only', 'PowerRename / Bulk Rename Utility', 'Rule-based tools still fit when the same pattern applies to every filename.'],
+];
 ---
 
-<section class={styles.WindowsSeoSection}>
-  <div class={styles.WindowsSeoSection__Container}>
-    <div class={styles.WindowsSeoSection__Header}>
-      <span class={styles.WindowsSeoSection__Eyebrow}>Windows file renaming</span>
-      <Heading as="h2" align="center">
-        Batch rename and organize Windows files by content
-      </Heading>
-      <Text as="p" align="center" color="subtle" className={styles.WindowsSeoSection__Intro}>
-        Zush is a Windows 10 and 11 AI file renamer for messy File Explorer folders. It proposes names first,
-        lets you review every change, and keeps the original names in undo history after you apply a batch.
-        Video support includes MP4, MOV, MKV, AVI, and WMV on both Windows and Mac.
-      </Text>
-    </div>
-
-    <div class={styles.WindowsSeoSection__Grid}>
-      {cards.map((card) => {
-        const Icon = card.icon;
-        return (
-          <article class={styles.WindowsSeoCard} data-tone={card.tone}>
-            <span class={styles.WindowsSeoCard__Icon} aria-hidden="true">
-              <Icon size={21} strokeWidth={1.8} />
-            </span>
-            <h3 class={styles.WindowsSeoCard__Title}>{card.title}</h3>
-            <p class={styles.WindowsSeoCard__Body}>{card.body}</p>
-          </article>
-        );
-      })}
-    </div>
-
-    <div class={styles.WindowsSeoSection__Comparison}>
-      <div class={styles.WindowsSeoSection__ComparisonIntro}>
-        <h3>When Zush is a RenameClick alternative for Windows</h3>
-        <p>
-          RenameClick and traditional Windows rename tools can both help clean up folders. Zush is strongest when
-          you want a Microsoft Store install, review before apply, undo history, BYOK, Local AI, and content-aware
-          names for mixed Windows folders.
-        </p>
-        <p>
-          Coming from PowerToys? PowerRename rewrites filenames with search-and-replace and regular expressions, while
-          Zush reads what each file contains and names it by content — see the full
-          <a href="/powerrename-alternative"> PowerRename alternative </a> comparison.
-        </p>
-      </div>
-      <div class={styles.WindowsSeoTable} role="table" aria-label="Windows rename workflow comparison">
-        <div class={styles.WindowsSeoTable__Row} role="row">
-          <strong role="columnheader">Workflow</strong>
-          <strong role="columnheader">Best fit</strong>
-          <strong role="columnheader">Why</strong>
-        </div>
-        <div class={styles.WindowsSeoTable__Row} role="row">
-          <span role="cell">Need a RenameClick alternative on Windows</span>
-          <span role="cell">Zush for Windows</span>
-          <span role="cell">Microsoft Store distribution, batch review, undo, BYOK, and Local AI in one workflow.</span>
-        </div>
-        <div class={styles.WindowsSeoTable__Row} role="row">
-          <span role="cell">Rename screenshots, PDFs, photos, videos, audio, or docs by content</span>
-          <span role="cell">Zush for Windows</span>
-          <span role="cell">Every file can get a different descriptive name after AI analysis.</span>
-        </div>
-        <div class={styles.WindowsSeoTable__Row} role="row">
-          <span role="cell">Add counters, prefixes, or case rules only</span>
-          <span role="cell">PowerRename / Bulk Rename Utility</span>
-          <span role="cell">Rule-based tools still fit when the same pattern applies to every filename.</span>
-        </div>
-      </div>
-    </div>
-
-    <nav class={styles.WindowsSeoSection__Docs} aria-label="Windows file renaming documentation">
-      {docsLinks.map((link) => (
-        <PillLink href={link.href} size="md">{link.label}</PillLink>
-      ))}
-    </nav>
-  </div>
-</section>
+<PlatformSeoSection
+  eyebrow="Windows file renaming"
+  title="Batch rename and organize Windows files by content"
+  intro="Zush is a Windows 10 and 11 AI file renamer for messy File Explorer folders. It proposes names first, lets you review every change, and keeps the original names in undo history after you apply a batch. Video support includes MP4, MOV, MKV, AVI, and WMV on both Windows and Mac."
+  cards={cards}
+  comparisonTitle="When Zush is a RenameClick alternative for Windows"
+  tableLabel="Windows rename workflow comparison"
+  rows={rows}
+  docsLabel="Windows file renaming documentation"
+  docsLinks={docsLinks}
+>
+  <p>
+    RenameClick and traditional Windows rename tools can both help clean up folders. Zush is strongest when
+    you want a Microsoft Store install, review before apply, undo history, BYOK, Local AI, and content-aware
+    names for mixed Windows folders.
+  </p>
+  <p>
+    Coming from PowerToys? PowerRename rewrites filenames with search-and-replace and regular expressions, while
+    Zush reads what each file contains and names it by content — see the full
+    <a href="/powerrename-alternative"> PowerRename alternative </a> comparison.
+  </p>
+</PlatformSeoSection>

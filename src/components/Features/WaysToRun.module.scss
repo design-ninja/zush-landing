@@ -1,15 +1,14 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
-.WaysToRun {
-    padding: 4.25rem 0;
-    scroll-margin-top: calc($navbar-height + 1rem);
+// Mode column (BentoCard) on top of Blocks.Column.
+.BentoCard {
+    display: flex;
+    flex-direction: column;
 
-    @include mobile {
-        padding: 3.25rem 0;
-    }
-
-    &__Container {
-        @include container;
+    &__TitleRow {
+        display: flex;
+        align-items: center;
+        gap: 0.625rem;
     }
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Check, FileText } from 'lucide-react';
 import { ACCOUNTANTS_FIELDS } from '@/data/accountantsLanding';
-import styles from '@/components/MedicalLandingPage/MedicalFieldExplorer.module.scss';
+import styles from '@/components/FieldExplorer/FieldExplorer.module.scss';
 
 const splitEmphasis = (after: string, emphasis: string | undefined) => {
   if (!emphasis) return { pre: after, hit: '', post: '' };

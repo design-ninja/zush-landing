@@ -1,6 +1,6 @@
 import type { FAQCopyItem } from '@/i18n/copy';
 
-export const PROFESSION_KEYS = [
+const PROFESSION_KEYS = [
   'accountants',
   'medical',
   'photographers',
@@ -11,7 +11,7 @@ export const PROFESSION_KEYS = [
 
 export type ProfessionKey = (typeof PROFESSION_KEYS)[number];
 
-export const PROFESSION_ROUTES: Record<ProfessionKey, `/${string}`> = {
+const PROFESSION_ROUTES: Record<ProfessionKey, `/${string}`> = {
   accountants: '/for-accountants',
   medical: '/for-medical',
   photographers: '/for-photographers',
@@ -19,10 +19,6 @@ export const PROFESSION_ROUTES: Record<ProfessionKey, `/${string}`> = {
   hr: '/for-hr',
   'real-estate': '/for-real-estate',
 };
-
-export function getProfessionKeyForRoute(route: string): ProfessionKey | undefined {
-  return PROFESSION_KEYS.find((key) => PROFESSION_ROUTES[key] === route);
-}
 
 export interface ProfessionFieldCopy {
   label: string;

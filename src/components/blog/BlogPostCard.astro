@@ -10,9 +10,11 @@ interface Props {
   post: BlogPost;
   /** Locale prefix of the surrounding page, e.g. '/' or '/de'. */
   basePath?: string;
+  /** `row` (blog lists) or `tile` (homepage grid: 16:9 cover above the text). */
+  variant?: 'row' | 'tile';
 }
 
-const { post, basePath = '/' } = Astro.props;
+const { post, basePath = '/', variant = 'row' } = Astro.props;
 
 const prefix = basePath === '/' ? '' : basePath.replace(/\/$/, '');
 const href = `${prefix}/blog/${post.slug}`;
@@ -22,17 +24,18 @@ const copy = getBlogPostCopy(post.locale);
 const thumbnail = getBlogThumbnail(post.translationOf ?? post.slug);
 ---
 
-<article class={styles.BlogPostCard}>
+<article class:list={[styles.BlogPostCard, variant === 'tile' && styles.BlogPostCard_tile]}>
   <a class={styles.BlogPostCard__Link} href={href}>
     <Image
       alt={`${post.title} guide thumbnail`}
       class={styles.BlogPostCard__Image}
       decoding='async'
       densities={[1, 2]}
-      height={126}
+      height={variant === 'tile' ? 180 : 126}
       loading='lazy'
+      quality={90}
       src={thumbnail}
-      width={168}
+      width={variant === 'tile' ? 320 : 168}
     />
     <span class={styles.BlogPostCard__Body}>
       <span class={styles.BlogPostCard__Track}>

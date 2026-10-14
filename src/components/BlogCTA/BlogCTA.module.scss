@@ -2,36 +2,11 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
+// Download CTA inside blog posts: the shared CTA panel, sized for the
+// article column.
 .BlogCTA {
-  position: relative;
-  z-index: 2;
-  overflow: visible;
+  @include cta-panel(3rem 2rem);
   margin-top: 2.5rem;
-  padding: 2.5rem;
-  border-radius: $radius-xl;
-  background:
-    radial-gradient(circle at 72% 18%, color-mix(in oklch, var(--secondary) 52%, transparent), transparent 34%),
-    linear-gradient(135deg, var(--primary), var(--primary-hover));
-  text-align: center;
-  box-shadow:
-    0 1.5rem 3.5rem -2rem color-mix(in oklch, var(--primary) 55%, transparent),
-    inset 0 1px 0 oklch(1 0 0 / 0.18);
-
-  @include mobile {
-    padding: 2rem 1.5rem;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    border-radius: inherit;
-    background:
-      linear-gradient(180deg, oklch(1 0 0 / 0.1), oklch(0 0 0 / 0.12)),
-      radial-gradient(circle at 50% 45%, transparent 0 34%, oklch(0 0 0 / 0.12));
-    pointer-events: none;
-  }
 
   &[data-placement='early'] {
     margin-bottom: 2.5rem;
@@ -42,58 +17,32 @@
     flex-direction: column;
     align-items: center;
     gap: 0.75rem;
-    position: relative;
-    z-index: 2;
-    overflow: visible;
-
-    // The shared Heading/Text classes set theme colors with the same
-    // specificity, so scope these under Content to keep the text readable
-    // over the gradient in both light and dark themes.
-    .BlogCTA__Title {
-      color: oklch(1 0 0);
-    }
-
-    .BlogCTA__Description {
-      color: oklch(1 0 0 / 0.88);
-    }
-
-    .BlogCTA__Hint {
-      color: oklch(1 0 0 / 0.72);
-    }
   }
 
-  &__Background {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: inherit;
-    object-fit: cover;
+  // Qualified so it outweighs the shared Heading/Text classes on the element.
+  & &__Title {
+    margin: 0;
+    text-wrap: balance;
   }
 
-  &__Title {
-    text-shadow: 0 1px 4px oklch(0 0 0 / 0.1);
-  }
-
-  &__Description {
-    max-width: 32rem;
-    text-shadow: 0 1px 4px oklch(0 0 0 / 0.09);
+  & &__Description {
+    @include body-copy;
+    max-width: 34rem;
+    margin: 0;
+    text-wrap: pretty;
   }
 
   &__Buttons {
     display: flex;
-    gap: 0.75rem;
-    margin-top: 0.5rem;
     flex-wrap: wrap;
     justify-content: center;
-    position: relative;
-    z-index: 3;
-    overflow: visible;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
   }
 
-  &__Hint {
-    text-shadow: 0 1px 4px oklch(0 0 0 / 0.08);
+  & &__Hint {
+    margin: 0;
+    color: var(--text-faint);
   }
 
   &__ButtonIcon {

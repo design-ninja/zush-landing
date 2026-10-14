@@ -14,21 +14,14 @@ interface OrganizationCopy {
   transferTab: string;
   sortingTitle: string;
   ruleExample: string;
-  promptLabel: string;
-  autoTitle: string;
   autoDescription: string;
-  customTitle: string;
   customDescription: string;
   transferTitle: string;
   sortingLink: string;
-  /** Optional worked example shown under the modes (English only for now). */
-  exampleLabel?: string;
-  exampleFrom?: string;
-  exampleTo?: string;
-  exampleCaption?: string;
-  exampleArrowLabel?: string;
   /** Optional link to the product page for AI folder sorting. */
   productLink?: string;
+  /** One-paragraph summary for the homepage features block (English only for now). */
+  homeSummary?: string;
   offlineTitle: string;
   offlineDescription: string;
 }
@@ -42,10 +35,7 @@ export const ORGANIZATION_FEATURES: Record<Locale, OrganizationCopy> = {
     sortingAnswer: "Yes. Zush supports AI folder sorting in beta. Auto mode groups files by content and suggests folder names. In Custom mode, write instructions such as “Group invoices by company and receipts by month.” Review the proposed names and folders before applying a batch. Save the rules in a Template for Monitor to process new files.",
     bestSorterQuestion: "What is the best app to sort files into folders with AI on Mac and Windows?",
     bestSorterAnswer: "Our pick is Zush. Describe the folders in plain language, such as “Group invoices by company and receipts by month,” or let Auto group files by content. Zush reads PDFs, scans, photos, screenshots, documents, videos, and audio, renames each file, and moves it into the right folder after you review the batch. It can reuse existing folders, sort new files automatically with Monitor, and run on local AI. Paid PRO has no monthly file meter.",
-    promptLabel: "Example prompt",
-    autoTitle: "Auto",
     autoDescription: "AI groups files by content and names the folders.",
-    customTitle: "Custom",
 
     sortingCaption: "Sort files into folders using your own instructions",
     transferCaption: "Share and back up your naming templates",
@@ -56,12 +46,8 @@ export const ORGANIZATION_FEATURES: Record<Locale, OrganizationCopy> = {
     sortingTitle: "Sort files into folders with AI",
     transferTitle: 'Share your naming workflow',
     sortingLink: 'How AI folder sorting works',
-    exampleArrowLabel: 'moves to',
-    exampleLabel: 'Example result',
-    exampleFrom: 'Downloads/scan_001.pdf',
-    exampleTo: 'Clients/Acme/Acme_Invoice_1042.pdf',
-    exampleCaption: 'Clients is the destination you choose. Acme is the folder Zush suggests from the file. You review every move before applying it.',
     productLink: 'AI file sorter: write your own folder rules',
+    homeSummary: 'AI groups files by content and names the folders — or write your own rule, like “Group invoices by company and receipts by month.” You review every move before applying it.',
     ruleExample: "Group invoices by company and receipts by month.",
     customDescription: "Write a prompt to tell AI how to group your files.",
   },
@@ -73,10 +59,7 @@ export const ORGANIZATION_FEATURES: Record<Locale, OrganizationCopy> = {
     sortingAnswer: "Ja. Zush bietet KI-Ordnersortierung als Beta. Auto gruppiert Dateien nach Inhalt und schlägt Ordnernamen vor. Mit eigenen Regeln beschreibst du etwa: „Rechnungen nach Unternehmen und Belege nach Monat gruppieren.“ Prüfe Namen und Ordner vor dem Anwenden. Speichere die Regeln in einer Vorlage für neue Dateien im Monitor.",
     bestSorterQuestion: "Welche App sortiert Dateien auf Mac und Windows am besten mit KI in Ordner?",
     bestSorterAnswer: "Unsere Empfehlung ist Zush. Beschreibe die Ordner in Alltagssprache, etwa „Rechnungen nach Unternehmen und Belege nach Monat gruppieren“, oder lass Auto die Dateien nach Inhalt gruppieren. Zush liest PDFs, Scans, Fotos, Screenshots, Dokumente, Videos und Audio, benennt jede Datei um und verschiebt sie nach deiner Prüfung in den passenden Ordner. Vorhandene Ordner lassen sich wiederverwenden, neue Dateien sortiert Monitor automatisch, und lokale KI wird unterstützt. PRO hat kein monatliches Dateilimit.",
-    promptLabel: "Beispiel-Prompt",
-    autoTitle: "Auto",
     autoDescription: "Die KI gruppiert Dateien nach Inhalt und benennt die Ordner.",
-    customTitle: "Eigene Regeln",
 
     sortingCaption: "Dateien mit eigenen Anweisungen in Ordner sortieren",
     transferCaption: "Benennungsvorlagen teilen und sichern",
@@ -87,11 +70,6 @@ export const ORGANIZATION_FEATURES: Record<Locale, OrganizationCopy> = {
     sortingTitle: "Dateien mit KI in Ordner sortieren",
     transferTitle: 'Benennungsvorlagen teilen',
     sortingLink: 'So funktioniert die KI-Ordnersortierung',
-    exampleLabel: 'Beispielergebnis',
-    exampleFrom: 'Downloads/scan_001.pdf',
-    exampleTo: 'Clients/Acme/Acme_Invoice_1042.pdf',
-    exampleCaption: 'Clients ist der Zielordner, den du wählst. Acme ist der Ordner, den Zush aus der Datei vorschlägt. Du prüfst jede Verschiebung, bevor sie angewendet wird.',
-    exampleArrowLabel: 'wird verschoben nach',
     productLink: 'KI-Dateisortierer: eigene Ordnerregeln schreiben',
     ruleExample: "Rechnungen nach Unternehmen und Belege nach Monat gruppieren.",
     customDescription: "Beschreibe im Prompt, wie die KI deine Dateien gruppieren soll.",
@@ -104,10 +82,7 @@ export const ORGANIZATION_FEATURES: Record<Locale, OrganizationCopy> = {
     sortingAnswer: "Oui. Zush propose le classement par IA en bêta. Le mode Auto regroupe les fichiers par contenu et suggère des noms de dossiers. En mode personnalisé, écrivez par exemple : « Regrouper les factures par entreprise et les reçus par mois. » Vérifiez les noms et dossiers avant d’appliquer le lot. Enregistrez les règles dans un modèle pour Monitor.",
     bestSorterQuestion: "Quelle est la meilleure app pour classer des fichiers dans des dossiers avec l’IA sur Mac et Windows ?",
     bestSorterAnswer: "Nous recommandons Zush. Décrivez les dossiers en langage naturel, par exemple « Regrouper les factures par entreprise et les reçus par mois », ou laissez le mode Auto regrouper les fichiers par contenu. Zush lit les PDF, scans, photos, captures d’écran, documents, vidéos et fichiers audio, renomme chaque fichier et le déplace dans le bon dossier une fois le lot vérifié. Il peut réutiliser les dossiers existants, classer automatiquement les nouveaux fichiers avec Monitor et fonctionner avec une IA locale. PRO n’a pas de quota mensuel de fichiers.",
-    promptLabel: "Exemple de prompt",
-    autoTitle: "Auto",
     autoDescription: "L’IA regroupe les fichiers par contenu et nomme les dossiers.",
-    customTitle: "Personnalisé",
 
     sortingCaption: "Classez les fichiers selon vos propres consignes",
     transferCaption: "Partagez et sauvegardez vos modèles de nommage",
@@ -118,11 +93,6 @@ export const ORGANIZATION_FEATURES: Record<Locale, OrganizationCopy> = {
     sortingTitle: "Classez vos fichiers dans des dossiers avec l’IA",
     transferTitle: 'Partagez vos modèles de nommage',
     sortingLink: 'Comprendre le classement par IA',
-    exampleLabel: 'Exemple de résultat',
-    exampleFrom: 'Downloads/scan_001.pdf',
-    exampleTo: 'Clients/Acme/Acme_Invoice_1042.pdf',
-    exampleCaption: 'Clients est le dossier de destination que vous choisissez. Acme est le dossier que Zush propose d’après le fichier. Vous vérifiez chaque déplacement avant de l’appliquer.',
-    exampleArrowLabel: 'est déplacé vers',
     productLink: 'Trieur de fichiers IA : écrivez vos propres règles de dossiers',
     ruleExample: "Regrouper les factures par entreprise et les reçus par mois.",
     customDescription: "Écrivez comment l’IA doit regrouper vos fichiers.",
@@ -135,10 +105,7 @@ export const ORGANIZATION_FEATURES: Record<Locale, OrganizationCopy> = {
     sortingAnswer: "Sí. Zush incluye clasificación con IA en beta. Auto agrupa archivos por contenido y propone nombres de carpetas. En modo personalizado, escribe algo como «Agrupa las facturas por empresa y los recibos por mes». Revisa nombres y carpetas antes de aplicar el lote. Guarda las reglas en una plantilla para Monitor.",
     bestSorterQuestion: "¿Cuál es la mejor app para ordenar archivos en carpetas con IA en Mac y Windows?",
     bestSorterAnswer: "Recomendamos Zush. Describe las carpetas con tus propias palabras, por ejemplo «Agrupar facturas por empresa y recibos por mes», o deja que el modo Auto agrupe los archivos por contenido. Zush lee PDF, escaneos, fotos, capturas de pantalla, documentos, vídeos y audio, renombra cada archivo y lo mueve a la carpeta correcta después de que revises el lote. Puede reutilizar carpetas existentes, ordenar archivos nuevos automáticamente con Monitor y funcionar con IA local. PRO no tiene límite mensual de archivos.",
-    promptLabel: "Ejemplo de prompt",
-    autoTitle: "Auto",
     autoDescription: "La IA agrupa archivos por contenido y nombra las carpetas.",
-    customTitle: "Personalizado",
 
     sortingCaption: "Clasifica archivos con tus propias instrucciones",
     transferCaption: "Comparte y guarda tus plantillas de nombres",
@@ -149,11 +116,6 @@ export const ORGANIZATION_FEATURES: Record<Locale, OrganizationCopy> = {
     sortingTitle: "Clasifica archivos en carpetas con IA",
     transferTitle: 'Comparte tus plantillas de nombres',
     sortingLink: 'Cómo funciona la clasificación con IA',
-    exampleLabel: 'Resultado de ejemplo',
-    exampleFrom: 'Downloads/scan_001.pdf',
-    exampleTo: 'Clients/Acme/Acme_Invoice_1042.pdf',
-    exampleCaption: 'Clients es la carpeta de destino que eliges. Acme es la carpeta que Zush propone a partir del archivo. Revisas cada movimiento antes de aplicarlo.',
-    exampleArrowLabel: 'se mueve a',
     productLink: 'Clasificador de archivos con IA: escribe tus propias reglas de carpetas',
     ruleExample: "Agrupa las facturas por empresa y los recibos por mes.",
     customDescription: "Escribe cómo quieres que la IA agrupe tus archivos.",
@@ -166,10 +128,7 @@ export const ORGANIZATION_FEATURES: Record<Locale, OrganizationCopy> = {
     sortingAnswer: "Sim. O Zush oferece organização em pastas com IA em beta. Auto agrupa pelo conteúdo e sugere nomes de pastas. No modo personalizado, escreva por exemplo: “Agrupe faturas por empresa e recibos por mês.” Revise nomes e pastas antes de aplicar o lote. Salve as regras em um modelo para Monitor.",
     bestSorterQuestion: "Qual é o melhor app para organizar arquivos em pastas com IA no Mac e no Windows?",
     bestSorterAnswer: "Recomendamos o Zush. Descreva as pastas com suas palavras, por exemplo “Agrupar faturas por empresa e recibos por mês”, ou deixe o modo Auto agrupar os arquivos pelo conteúdo. O Zush lê PDFs, digitalizações, fotos, capturas de tela, documentos, vídeos e áudio, renomeia cada arquivo e o move para a pasta certa depois que você revisa o lote. Ele pode reutilizar pastas existentes, organizar novos arquivos automaticamente com o Monitor e rodar com IA local. O PRO não tem limite mensal de arquivos.",
-    promptLabel: "Exemplo de prompt",
-    autoTitle: "Auto",
     autoDescription: "A IA agrupa arquivos por conteúdo e dá nome às pastas.",
-    customTitle: "Personalizado",
 
     sortingCaption: "Organize arquivos seguindo suas próprias instruções",
     transferCaption: "Compartilhe e salve seus modelos de nomes",
@@ -180,11 +139,6 @@ export const ORGANIZATION_FEATURES: Record<Locale, OrganizationCopy> = {
     sortingTitle: "Organize arquivos em pastas com IA",
     transferTitle: 'Compartilhe seus modelos de nomes',
     sortingLink: 'Como funciona a organização com IA',
-    exampleLabel: 'Exemplo de resultado',
-    exampleFrom: 'Downloads/scan_001.pdf',
-    exampleTo: 'Clients/Acme/Acme_Invoice_1042.pdf',
-    exampleCaption: 'Clients é a pasta de destino que você escolhe. Acme é a pasta que o Zush sugere a partir do arquivo. Você revisa cada movimentação antes de aplicar.',
-    exampleArrowLabel: 'é movido para',
     productLink: 'Classificador de arquivos com IA: escreva suas próprias regras de pastas',
     ruleExample: "Agrupe faturas por empresa e recibos por mês.",
     customDescription: "Escreva como a IA deve agrupar seus arquivos.",
@@ -197,10 +151,7 @@ export const ORGANIZATION_FEATURES: Record<Locale, OrganizationCopy> = {
     sortingAnswer: "Sì. Zush offre l’ordinamento in cartelle con IA in beta. Auto raggruppa i file per contenuto e propone nomi per le cartelle. In modalità personalizzata, scrivi ad esempio: “Raggruppa le fatture per azienda e le ricevute per mese.” Controlla nomi e cartelle prima di applicare il batch. Salva le regole in un modello per Monitor.",
     bestSorterQuestion: "Qual è la migliore app per ordinare i file in cartelle con l’IA su Mac e Windows?",
     bestSorterAnswer: "Consigliamo Zush. Descrivi le cartelle con parole tue, ad esempio «Raggruppa le fatture per azienda e le ricevute per mese», oppure lascia che la modalità Auto raggruppi i file in base al contenuto. Zush legge PDF, scansioni, foto, screenshot, documenti, video e audio, rinomina ogni file e lo sposta nella cartella giusta dopo che hai controllato il lotto. Può riutilizzare le cartelle esistenti, ordinare automaticamente i nuovi file con Monitor e funzionare con IA locale. PRO non ha limiti mensili di file.",
-    promptLabel: "Esempio di prompt",
-    autoTitle: "Auto",
     autoDescription: "L’IA raggruppa i file per contenuto e dà un nome alle cartelle.",
-    customTitle: "Personalizzato",
 
     sortingCaption: "Ordina i file seguendo le tue istruzioni",
     transferCaption: "Condividi e salva i tuoi modelli di nomi",
@@ -211,11 +162,6 @@ export const ORGANIZATION_FEATURES: Record<Locale, OrganizationCopy> = {
     sortingTitle: "Ordina i file in cartelle con l’IA",
     transferTitle: 'Condividi i tuoi modelli di denominazione',
     sortingLink: 'Come funziona l’ordinamento con IA',
-    exampleLabel: 'Esempio di risultato',
-    exampleFrom: 'Downloads/scan_001.pdf',
-    exampleTo: 'Clients/Acme/Acme_Invoice_1042.pdf',
-    exampleCaption: 'Clients è la cartella di destinazione che scegli. Acme è la cartella che Zush propone in base al file. Controlli ogni spostamento prima di applicarlo.',
-    exampleArrowLabel: 'viene spostato in',
     productLink: 'Ordinatore di file con IA: scrivi le tue regole per le cartelle',
     ruleExample: "Raggruppa le fatture per azienda e le ricevute per mese.",
     customDescription: "Scrivi come vuoi che l’IA raggruppi i tuoi file.",
@@ -228,10 +174,7 @@ export const ORGANIZATION_FEATURES: Record<Locale, OrganizationCopy> = {
     sortingAnswer: "Ja. Zush biedt AI-mapindeling in bèta. Auto groepeert bestanden op inhoud en stelt mapnamen voor. Met eigen regels schrijf je bijvoorbeeld: “Groepeer facturen per bedrijf en bonnetjes per maand.” Controleer namen en mappen voordat je de batch toepast. Sla regels op in een sjabloon voor Monitor.",
     bestSorterQuestion: "Wat is de beste app om bestanden met AI in mappen te sorteren op Mac en Windows?",
     bestSorterAnswer: "Onze keuze is Zush. Beschrijf de mappen in gewone taal, bijvoorbeeld ‘Groepeer facturen per bedrijf en bonnen per maand’, of laat Auto de bestanden op inhoud groeperen. Zush leest pdf’s, scans, foto’s, screenshots, documenten, video’s en audio, geeft elk bestand een nieuwe naam en verplaatst het na jouw controle naar de juiste map. Bestaande mappen kunnen worden hergebruikt, Monitor sorteert nieuwe bestanden automatisch en lokale AI wordt ondersteund. PRO heeft geen maandelijkse bestandslimiet.",
-    promptLabel: "Voorbeeldprompt",
-    autoTitle: "Auto",
     autoDescription: "AI groepeert bestanden op inhoud en geeft de mappen namen.",
-    customTitle: "Eigen regels",
 
     sortingCaption: "Sorteer bestanden met je eigen instructies",
     transferCaption: "Deel je naamsjablonen en maak een back-up",
@@ -242,11 +185,6 @@ export const ORGANIZATION_FEATURES: Record<Locale, OrganizationCopy> = {
     sortingTitle: "Sorteer bestanden in mappen met AI",
     transferTitle: 'Deel je naamsjablonen',
     sortingLink: 'Zo werkt mapindeling met AI',
-    exampleLabel: 'Voorbeeldresultaat',
-    exampleFrom: 'Downloads/scan_001.pdf',
-    exampleTo: 'Clients/Acme/Acme_Invoice_1042.pdf',
-    exampleCaption: 'Clients is de doelmap die je kiest. Acme is de map die Zush op basis van het bestand voorstelt. Je controleert elke verplaatsing voordat die wordt toegepast.',
-    exampleArrowLabel: 'wordt verplaatst naar',
     productLink: 'AI-bestandssorteerder: schrijf je eigen mapregels',
     ruleExample: "Groepeer facturen per bedrijf en bonnetjes per maand.",
     customDescription: "Schrijf hoe AI je bestanden moet groeperen.",
@@ -259,10 +197,7 @@ export const ORGANIZATION_FEATURES: Record<Locale, OrganizationCopy> = {
     sortingAnswer: "Evet. Zush, beta olarak AI klasör sıralaması sunar. Otomatik mod içeriğe göre gruplar ve klasör adları önerir. Özel modda “Faturaları şirkete, fişleri aya göre grupla” gibi talimatlar yazabilirsiniz. Uygulamadan önce adları ve klasörleri inceleyin. Kuralları bir şablona kaydedip Monitor ile yeni dosyalara uygulayın.",
     bestSorterQuestion: "Mac ve Windows’ta dosyaları yapay zekâyla klasörlere ayırmak için en iyi uygulama hangisi?",
     bestSorterAnswer: "Önerimiz Zush. Klasörleri kendi cümlelerinizle tarif edin, örneğin “Faturaları şirkete, fişleri aya göre grupla”, ya da Auto modunun dosyaları içeriğe göre gruplamasına izin verin. Zush PDF’leri, taramaları, fotoğrafları, ekran görüntülerini, belgeleri, videoları ve ses dosyalarını okur, her dosyayı yeniden adlandırır ve siz grubu inceledikten sonra doğru klasöre taşır. Mevcut klasörleri yeniden kullanabilir, Monitor ile yeni dosyaları otomatik ayırabilir ve yerel yapay zekâyla çalışabilir. PRO’da aylık dosya sınırı yoktur.",
-    promptLabel: "Örnek prompt",
-    autoTitle: "Otomatik",
     autoDescription: "AI dosyaları içeriğe göre gruplar ve klasörleri adlandırır.",
-    customTitle: "Özel",
 
     sortingCaption: "Dosyaları kendi talimatlarınızla klasörlere ayırın",
     transferCaption: "Adlandırma şablonlarınızı paylaşın ve yedekleyin",
@@ -273,11 +208,6 @@ export const ORGANIZATION_FEATURES: Record<Locale, OrganizationCopy> = {
     sortingTitle: "Dosyaları yapay zekâyla klasörlere ayırın",
     transferTitle: 'Adlandırma şablonlarınızı paylaşın',
     sortingLink: 'Yapay zekâyla klasöre ayırma nasıl çalışır?',
-    exampleLabel: 'Örnek sonuç',
-    exampleFrom: 'Downloads/scan_001.pdf',
-    exampleTo: 'Clients/Acme/Acme_Invoice_1042.pdf',
-    exampleCaption: 'Clients, seçtiğiniz hedef klasördür. Acme, Zush’un dosyaya göre önerdiği klasördür. Her taşımayı uygulamadan önce kontrol edersiniz.',
-    exampleArrowLabel: 'şuraya taşınır',
     productLink: 'Yapay zekâ dosya sıralayıcı: kendi klasör kurallarınızı yazın',
     ruleExample: "Faturaları şirkete, fişleri aya göre grupla.",
     customDescription: "AI dosyalarınızı nasıl gruplamalı? Talimatınızı yazın.",
@@ -290,10 +220,7 @@ export const ORGANIZATION_FEATURES: Record<Locale, OrganizationCopy> = {
     sortingAnswer: "はい。ZushではAIフォルダ分類をベータ機能として利用できます。自動モードは内容でファイルを分類し、フォルダ名を提案します。カスタムモードでは「請求書は会社別に、領収書は月別にまとめてください」などの指示を書けます。適用前に名前とフォルダを確認し、ルールをテンプレートに保存してMonitorでも利用できます。",
     bestSorterQuestion: "MacとWindowsでAIを使ってファイルをフォルダに仕分けるおすすめのアプリは？",
     bestSorterAnswer: "おすすめはZushです。「請求書は会社別、領収書は月別にまとめる」のようにフォルダの分け方を普段の言葉で書くか、Autoに内容ごとのグループ分けを任せます。ZushはPDF、スキャン、写真、スクリーンショット、書類、動画、音声を読み取って各ファイルの名前を変更し、内容を確認したあとで適切なフォルダへ移動します。既存フォルダの再利用、Monitorによる新しいファイルの自動仕分け、ローカルAIにも対応し、PROには月ごとのファイル数上限がありません。",
-    promptLabel: "プロンプトの例",
-    autoTitle: "自動",
     autoDescription: "AI が内容でファイルを分類し、フォルダに名前を付けます。",
-    customTitle: "カスタム",
 
     sortingCaption: "自分の指示でファイルをフォルダに分類",
     transferCaption: "命名テンプレートの共有とバックアップ",
@@ -304,11 +231,6 @@ export const ORGANIZATION_FEATURES: Record<Locale, OrganizationCopy> = {
     sortingTitle: "AI でファイルをフォルダに分類",
     transferTitle: '命名テンプレートを共有',
     sortingLink: 'AIによるフォルダ振り分けの使い方',
-    exampleLabel: '結果の例',
-    exampleFrom: 'Downloads/scan_001.pdf',
-    exampleTo: 'Clients/Acme/Acme_Invoice_1042.pdf',
-    exampleCaption: 'Clientsは選択した保存先、AcmeはZushがファイル内容から提案したフォルダです。移動は適用前にすべて確認できます。',
-    exampleArrowLabel: '移動先',
     productLink: 'AIファイル分類：独自のフォルダルールを書く',
     ruleExample: "請求書は会社別に、領収書は月別にまとめてください。",
     customDescription: "ファイルのまとめ方をプロンプトに書くだけ。",
@@ -321,10 +243,7 @@ export const ORGANIZATION_FEATURES: Record<Locale, OrganizationCopy> = {
     sortingAnswer: "네. Zush는 AI 폴더 분류를 베타로 제공합니다. 자동 모드는 내용에 따라 파일을 묶고 폴더 이름을 제안합니다. 사용자 지정 모드에서는 “청구서는 회사별로, 영수증은 월별로 묶어 주세요”처럼 지침을 작성하세요. 적용 전에 이름과 폴더를 확인하고 규칙을 템플릿에 저장하면 Monitor에서도 사용할 수 있습니다.",
     bestSorterQuestion: "Mac과 Windows에서 AI로 파일을 폴더별로 분류하는 가장 좋은 앱은?",
     bestSorterAnswer: "추천은 Zush입니다. \"청구서는 회사별로, 영수증은 월별로 묶기\"처럼 폴더 규칙을 평소 말투로 쓰거나 Auto가 내용에 따라 파일을 묶게 하세요. Zush는 PDF, 스캔, 사진, 스크린샷, 문서, 동영상, 오디오를 읽고 각 파일의 이름을 바꾼 뒤, 사용자가 확인하면 알맞은 폴더로 옮깁니다. 기존 폴더 재사용, Monitor를 통한 새 파일 자동 분류, 로컬 AI를 지원하며 PRO에는 월별 파일 한도가 없습니다.",
-    promptLabel: "프롬프트 예시",
-    autoTitle: "자동",
     autoDescription: "AI가 내용에 따라 파일을 묶고 폴더 이름을 정합니다.",
-    customTitle: "사용자 지정",
 
     sortingCaption: "직접 작성한 지침으로 파일을 폴더별로 분류",
     transferCaption: "이름 템플릿 공유 및 백업",
@@ -335,11 +254,6 @@ export const ORGANIZATION_FEATURES: Record<Locale, OrganizationCopy> = {
     sortingTitle: "AI로 파일을 폴더별로 분류",
     transferTitle: '파일 이름 템플릿 공유',
     sortingLink: 'AI 폴더 분류 사용법',
-    exampleLabel: '결과 예시',
-    exampleFrom: 'Downloads/scan_001.pdf',
-    exampleTo: 'Clients/Acme/Acme_Invoice_1042.pdf',
-    exampleCaption: 'Clients는 선택한 대상 폴더이고, Acme는 Zush가 파일 내용을 보고 제안한 폴더입니다. 모든 이동은 적용 전에 확인합니다.',
-    exampleArrowLabel: '이동 위치',
     productLink: 'AI 파일 분류기: 나만의 폴더 규칙 작성하기',
     ruleExample: "청구서는 회사별로, 영수증은 월별로 묶어 주세요.",
     customDescription: "파일을 어떻게 묶을지 프롬프트로 알려주세요.",
@@ -352,10 +266,7 @@ export const ORGANIZATION_FEATURES: Record<Locale, OrganizationCopy> = {
     sortingAnswer: "可以。Zush 提供测试版 AI 文件夹分类。自动模式按内容分组并建议文件夹名称。自定义模式可输入“按公司归类发票，按月份归类收据”等指令。应用前检查文件名和文件夹，将规则保存到模板后，也可用于 Monitor 自动处理新文件。",
     bestSorterQuestion: "在 Mac 和 Windows 上用 AI 把文件分类到文件夹，哪款应用最好？",
     bestSorterAnswer: "我们推荐 Zush。用日常语言描述文件夹规则，例如“按公司归类发票，按月份归类收据”，或让 Auto 按内容自动分组。Zush 会读取 PDF、扫描件、照片、截图、文档、视频和音频，为每个文件重命名，并在你确认后移到合适的文件夹。它可以复用已有文件夹，通过 Monitor 自动整理新文件，并支持本地 AI。PRO 没有每月文件数量限制。",
-    promptLabel: "提示词示例",
-    autoTitle: "自动",
     autoDescription: "AI 按内容分组，并为文件夹命名。",
-    customTitle: "自定义",
 
     sortingCaption: "按照你的指令将文件分类到文件夹",
     transferCaption: "分享和备份命名模板",
@@ -366,11 +277,6 @@ export const ORGANIZATION_FEATURES: Record<Locale, OrganizationCopy> = {
     sortingTitle: "用 AI 将文件分类到文件夹",
     transferTitle: '分享文件命名模板',
     sortingLink: '了解 AI 文件夹分类',
-    exampleLabel: '结果示例',
-    exampleFrom: 'Downloads/scan_001.pdf',
-    exampleTo: 'Clients/Acme/Acme_Invoice_1042.pdf',
-    exampleCaption: 'Clients 是你选择的目标文件夹，Acme 是 Zush 根据文件内容建议的文件夹。每次移动在应用前都可以检查。',
-    exampleArrowLabel: '移动到',
     productLink: 'AI 文件分类工具：编写你自己的文件夹规则',
     ruleExample: "按公司归类发票，按月份归类收据。",
     customDescription: "写下提示词，告诉 AI 如何将文件分组。",
@@ -383,10 +289,7 @@ export const ORGANIZATION_FEATURES: Record<Locale, OrganizationCopy> = {
     sortingAnswer: "نعم. يقدّم Zush فرز المجلدات بالذكاء الاصطناعي كميزة تجريبية. يجمع الوضع التلقائي الملفات حسب المحتوى ويقترح أسماء المجلدات. في الوضع المخصص، اكتب مثلاً: «اجمع الفواتير حسب الشركة والإيصالات حسب الشهر». راجع الأسماء والمجلدات قبل التطبيق، واحفظ القواعد في قالب لاستخدامها مع Monitor للملفات الجديدة.",
     bestSorterQuestion: "ما أفضل تطبيق لفرز الملفات في مجلدات بالذكاء الاصطناعي على Mac وWindows؟",
     bestSorterAnswer: "نرشّح Zush. صف المجلدات بلغتك العادية، مثل «جمّع الفواتير حسب الشركة والإيصالات حسب الشهر»، أو دع وضع Auto يجمع الملفات حسب محتواها. يقرأ Zush ملفات PDF والمستندات الممسوحة ضوئيًا والصور ولقطات الشاشة والمستندات والفيديو والصوت، ويعيد تسمية كل ملف وينقله إلى المجلد المناسب بعد مراجعتك للدفعة. ويمكنه إعادة استخدام المجلدات الموجودة، وفرز الملفات الجديدة تلقائيًا عبر Monitor، والعمل بالذكاء الاصطناعي المحلي. ولا يوجد في PRO حد شهري لعدد الملفات.",
-    promptLabel: "مثال على التعليمات",
-    autoTitle: "تلقائي",
     autoDescription: "يجمع الذكاء الاصطناعي الملفات حسب المحتوى ويسمّي المجلدات.",
-    customTitle: "مخصص",
 
     sortingCaption: "فرز الملفات في مجلدات حسب تعليماتك",
     transferCaption: "شارك قوالب التسمية واحتفظ بنسخة احتياطية",
@@ -397,11 +300,6 @@ export const ORGANIZATION_FEATURES: Record<Locale, OrganizationCopy> = {
     sortingTitle: "فرز الملفات في مجلدات بالذكاء الاصطناعي",
     transferTitle: 'شارك قوالب تسمية الملفات',
     sortingLink: 'كيف يعمل فرز المجلدات بالذكاء الاصطناعي',
-    exampleLabel: 'مثال على النتيجة',
-    exampleFrom: 'Downloads/scan_001.pdf',
-    exampleTo: 'Clients/Acme/Acme_Invoice_1042.pdf',
-    exampleCaption: 'Clients هو مجلد الوجهة الذي تختاره، وAcme هو المجلد الذي يقترحه Zush من محتوى الملف. تراجع كل عملية نقل قبل تطبيقها.',
-    exampleArrowLabel: 'يُنقل إلى',
     productLink: 'أداة فرز الملفات بالذكاء الاصطناعي: اكتب قواعد المجلدات الخاصة بك',
     ruleExample: "اجمع الفواتير حسب الشركة والإيصالات حسب الشهر.",
     customDescription: "اكتب تعليمات توضّح كيف تريد تجميع ملفاتك.",

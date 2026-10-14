@@ -1,11 +1,15 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
+// design/homepage-concept/native.dc.html — Testimonials.
 .Testimonials {
-  padding: $space-3xl 0;
+  padding: $section-gap 0 0;
   scroll-margin-top: calc($navbar-height + $space-lg);
-  background: var(--background);
   color: var(--foreground);
+
+  @include mobile {
+    padding-top: $section-gap-mobile;
+  }
 
   &__Container {
     @include container;
@@ -15,81 +19,98 @@
     display: inline-block;
   }
 
+  // repeat(auto-fit, minmax(320px, 1fr)), gap 56px 48px, stretch
   &__Grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: $space-md;
+    grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+    gap: 3.5rem 3rem;
     align-items: stretch;
-    margin-top: $space-2xl;
-
-    @include tablet {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    @include small {
-      grid-template-columns: 1fr;
-    }
   }
 
+  // 15px / 600 / accent, 40px above
   &__More {
-    margin: $space-xl 0 0;
-    text-align: center;
+    margin: 2.5rem 0 0;
+    text-align: left;
+    font-size: 0.9375rem;
     font-weight: 600;
 
     a {
       color: var(--primary);
-      text-underline-offset: 0.2em;
+      text-decoration: none;
     }
   }
 }
 
+// figure: border-top, padding-top 24px, flex column gap 12px, full height
 .TestimonialCard {
-  min-height: 100%;
-  padding: $space-lg;
-  border: 1px solid var(--border);
-  border-radius: $radius-lg;
-  background: var(--card);
+  height: 100%;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  gap: $space-md;
+  gap: 0.75rem;
   color: var(--foreground);
-  @include shadow('sm');
 
+  // Five 16px stars, gap 3px; the numeric score stays for readers, hidden visually.
   &__Rating {
     display: flex;
     align-items: center;
-    gap: $space-sm;
-    color: var(--text-subtle);
-    font-size: 0.78rem;
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
+    --star-rating-size: 1rem;
+    --star-rating-gap: 0.1875rem;
+
+    > span:last-child {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
   }
 
+  // h3 17px / 700
   &__Title {
     margin: 0;
-    font-size: 1rem;
+    font-size: 1.0625rem;
+    font-weight: 700;
     line-height: 1.35;
   }
 
+  // 15px / 1.65 / muted
   &__Quote {
     margin: 0;
-  }
 
-  &__Author {
-    margin: auto 0 0;
-    padding-top: $space-sm;
-    border-top: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    gap: $space-xs;
-  }
-
-  &__Author a {
-    color: inherit;
-    text-underline-offset: 0.2em;
-
-    &:hover {
-      color: var(--primary);
+    p {
+      margin: 0;
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      color: var(--muted-foreground);
     }
+  }
+
+  // margin-top auto; padding-top 12px; 13px faint; name bold; link accent
+  &__Author {
+    margin-top: auto;
+    padding-top: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 0.625rem;
+
+    p {
+      margin: 0;
+      font-size: 0.8125rem;
+      color: var(--text-faint);
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+  }
+
+  &__Name {
+    color: var(--foreground) !important;
+    font-weight: 600;
   }
 }

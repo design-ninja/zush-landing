@@ -1,9 +1,3 @@
-import {
-  APP_STORE_URL,
-  DOWNLOAD_URL,
-  HOMEBREW_CASK_URL,
-  WINDOWS_STORE_URL,
-} from '@/constants';
 import { VIDEO_PREVIEW_IMAGES } from '@/data/videoPreviewImages';
 
 export type PlatformSpecificsKey = 'mac' | 'windows';
@@ -16,38 +10,9 @@ export interface SpecRow {
   helper?: string;
 }
 
-export interface InstallStep {
-  step: string;
-  detail: string;
-}
-
-export interface InstallMethod {
-  title: string;
-  badge: string;
-  href: string;
-  description: string;
-  steps: InstallStep[];
-  recommended?: boolean;
-  storeBadge: {
-    kind: 'app-store' | 'microsoft-store' | 'direct-dmg' | 'homebrew';
-    kicker: string;
-    label: string;
-    ariaLabel: string;
-  };
-}
-
-export interface IntegrationItem {
-  title: string;
-  description: string;
-}
-
-export type QuickstartPreviewKind = 'launch' | 'drop' | 'review' | 'watch';
-
 export interface QuickstartStep {
   title: string;
   detail: string;
-  duration: string;
-  preview: QuickstartPreviewKind;
 }
 
 export type ScenarioFileType = 'image' | 'design' | 'doc' | 'sheet' | 'slides' | 'pdf' | 'video';
@@ -62,20 +27,12 @@ export interface ScenarioItem {
   badgeLabel?: string;
 }
 
-export interface SecurityItem {
-  title: string;
-  description: string;
-}
-
 export interface PlatformSpecificsContent {
   systemRequirements: {
     rows: SpecRow[];
   };
-  installMethods: InstallMethod[];
   quickstart: QuickstartStep[];
-  integrations: IntegrationItem[];
   scenarios: ScenarioItem[];
-  security: SecurityItem[];
 }
 
 export const PLATFORM_SPECIFICS_CONTENT: Record<PlatformSpecificsKey, PlatformSpecificsContent> = {
@@ -90,119 +47,22 @@ export const PLATFORM_SPECIFICS_CONTENT: Record<PlatformSpecificsKey, PlatformSp
         { key: 'permissions', label: 'Permissions', value: 'Folder access is requested when you add folders to rename or monitor' },
       ],
     },
-    installMethods: [
-      {
-        title: 'Direct .dmg download',
-        badge: 'Fastest',
-        href: DOWNLOAD_URL,
-        description:
-          'Signed and notarized universal .dmg, ~70 MB. Recommended when you want the latest release the day it ships.',
-        recommended: true,
-        steps: [
-          { step: 'Download Zush.dmg', detail: 'The file is code-signed and notarized by Apple, so Gatekeeper opens it without overrides.' },
-          { step: 'Open the .dmg', detail: 'Drag Zush.app into your /Applications folder.' },
-          { step: 'Launch Zush', detail: 'Grant folder access when you add files or a watched folder. Zush does not need broad disk access for ordinary drag-and-drop renaming.' },
-        ],
-        storeBadge: {
-          kind: 'direct-dmg',
-          kicker: 'Download the',
-          label: 'Universal .dmg',
-          ariaLabel: 'Download Zush as a signed and notarized .dmg installer',
-        },
-      },
-      {
-        title: 'Mac App Store',
-        badge: 'Auto updates',
-        href: APP_STORE_URL,
-        description:
-          'Sandboxed Mac App Store build. Updates and receipts are managed by your Apple ID. Best for managed devices and enterprise rollouts.',
-        steps: [
-          { step: 'Open the Mac App Store listing', detail: 'Click Get and authenticate with Touch ID or your Apple ID password.' },
-          { step: 'Wait for the install', detail: 'macOS keeps Zush updated automatically alongside other App Store apps.' },
-          { step: 'Launch Zush from Launchpad', detail: 'Sandboxed build behaves identically — folder monitoring uses macOS-granted bookmarks.' },
-        ],
-        storeBadge: {
-          kind: 'app-store',
-          kicker: 'Download on the',
-          label: 'Mac App Store',
-          ariaLabel: 'Open Zush on the Mac App Store',
-        },
-      },
-      {
-        title: 'Homebrew',
-        badge: 'Terminal',
-        href: HOMEBREW_CASK_URL,
-        description:
-          'Homebrew cask install for Mac users who manage apps from Terminal or scripted setup.',
-        steps: [
-          { step: 'Open Terminal', detail: 'Use any shell where Homebrew is already installed and available on your PATH.' },
-          { step: 'Run the cask install', detail: 'Install Zush with `brew install --cask zush`.' },
-          { step: 'Launch Zush', detail: 'Open Zush from Applications, Spotlight, or Launchpad after Homebrew finishes the install.' },
-        ],
-        storeBadge: {
-          kind: 'homebrew',
-          kicker: 'Install with',
-          label: 'Homebrew',
-          ariaLabel: 'Open the Zush Homebrew cask',
-        },
-      },
-    ],
     quickstart: [
       {
         title: 'Open Zush from Launchpad',
         detail: 'Or hit ⌘ Space and type “Zush”. The window opens to the AI Rename dropzone.',
-        duration: '~10s',
-        preview: 'launch',
       },
       {
         title: 'Drag a folder or files onto the dropzone',
         detail: 'Try ~/Downloads or your Screenshots folder. Zush analyzes images, design files, audio, videos, and documents in parallel.',
-        duration: '~20s',
-        preview: 'drop',
       },
       {
         title: 'Review the suggested names, then apply',
         detail: 'Click any name to edit, or hit Regenerate. When you’re happy, apply and the originals are renamed in place.',
-        duration: '~20s',
-        preview: 'review',
       },
       {
         title: 'Add a watched folder for everyday cleanup',
         detail: 'Open the Monitor tab → Add folder → pick ~/Downloads or your Screenshots folder. New supported files get descriptive names automatically, and you can exclude file types you do not want processed.',
-        duration: '~10s',
-        preview: 'watch',
-      },
-    ],
-    integrations: [
-      {
-        title: 'Finder workflow',
-        description:
-          'Drag files or folders from Finder into Zush, or use Rename with Zush from the Finder context menu. Review generated names, then apply the rename in place.',
-      },
-      {
-        title: 'Automation-ready folders',
-        description:
-          'Use watched folders with Shortcuts, Automator, browser downloads, or export folders by saving new files into a monitored directory.',
-      },
-      {
-        title: 'Spotlight metadata',
-        description:
-          'After Zush renames a file, the new name and tags are immediately searchable in Spotlight, Finder Tags, and Siri suggestions.',
-      },
-      {
-        title: 'Screenshot capture',
-        description:
-          'Point the screenshot save folder at a Zush-monitored directory. New screenshots get descriptive names within seconds, no extra step.',
-      },
-      {
-        title: 'iCloud Drive friendly',
-        description:
-          'Zush works with ordinary iCloud Drive folders, including folders synced from iPhone. Let large sync jobs settle before applying very large batches.',
-      },
-      {
-        title: 'Light & Dark mode',
-        description:
-          'Native macOS appearance toggle. Zush follows your system theme automatically and respects your accent color.',
       },
     ],
     scenarios: [
@@ -268,28 +128,6 @@ export const PLATFORM_SPECIFICS_CONTENT: Record<PlatformSpecificsKey, PlatformSp
         image: '/images/examples/flowers.webp',
       },
     ],
-    security: [
-      {
-        title: 'Apple-notarized .dmg',
-        description:
-          'The direct .dmg is signed with a Developer ID and notarized before release so supported macOS versions can verify the app normally.',
-      },
-      {
-        title: 'Sandboxed App Store build',
-        description:
-          'The Mac App Store build runs inside the App Sandbox. Folder access is granted via security-scoped bookmarks chosen by you.',
-      },
-      {
-        title: 'Originals stay on-device',
-        description:
-          'Cloud mode only sends the analysis payload (compressed preview, sampled video frames, subtitles, extracted text, or compact summary). Local AI sends nothing — Ollama runs on the device.',
-      },
-      {
-        title: 'Secure key storage',
-        description:
-          'BYOK keys are stored in macOS Keychain. They never leave the device unencrypted and are only used to call your chosen provider.',
-      },
-    ],
   },
   windows: {
     systemRequirements: {
@@ -302,83 +140,22 @@ export const PLATFORM_SPECIFICS_CONTENT: Record<PlatformSpecificsKey, PlatformSp
         { key: 'permissions', label: 'Permissions', value: 'Folder access is requested when you add folders to rename or monitor' },
       ],
     },
-    installMethods: [
-      {
-        title: 'Microsoft Store',
-        badge: 'Recommended',
-        href: WINDOWS_STORE_URL,
-        description:
-          'Distributed through the Microsoft Store so installation, package trust, and updates follow the standard Windows Store flow.',
-        recommended: true,
-        steps: [
-          { step: 'Open the Microsoft Store listing', detail: 'Click Install and let the Store handle the package download and publisher trust flow.' },
-          { step: 'Wait for the package to download', detail: 'Windows installs the package through the same Store update channel used by other desktop apps.' },
-          { step: 'Launch Zush from Start', detail: 'Future updates arrive through the Store, so you do not need to download a separate installer.' },
-        ],
-        storeBadge: {
-          kind: 'microsoft-store',
-          kicker: 'Download from the',
-          label: 'Microsoft Store',
-          ariaLabel: 'Open Zush on the Microsoft Store',
-        },
-      },
-    ],
     quickstart: [
       {
         title: 'Pin Zush to Start',
         detail: 'After install, Zush appears in the Start menu. Right-click → Pin to Start so it’s one click away.',
-        duration: '~10s',
-        preview: 'launch',
       },
       {
         title: 'Drag files from File Explorer',
         detail: 'Open the dropzone, then drag selected files from Explorer, OneDrive, or Desktop. Mixed types are handled in one batch.',
-        duration: '~20s',
-        preview: 'drop',
       },
       {
         title: 'Review the suggested names, then apply',
         detail: 'Edit any name inline or hit Regenerate. When you’re happy, apply — Zush renames the originals in place without changing modified dates.',
-        duration: '~20s',
-        preview: 'review',
       },
       {
         title: 'Watch a folder for ongoing cleanup',
         detail: 'Open the Monitor tab → Add folder → pick Downloads or a OneDrive folder. New supported files get descriptive names automatically, and you can exclude file types you do not want processed.',
-        duration: '~10s',
-        preview: 'watch',
-      },
-    ],
-    integrations: [
-      {
-        title: 'File Explorer drag-and-drop',
-        description:
-          'Drag selected files from File Explorer into Zush, including files from Desktop, Downloads, shared drives, and ordinary OneDrive folders.',
-      },
-      {
-        title: 'Snipping Tool capture',
-        description:
-          'Save Snipping Tool screenshots into a Zush-monitored folder. Each new capture gets a descriptive name automatically — no PowerShell, no scripts.',
-      },
-      {
-        title: 'PowerToys-friendly',
-        description:
-          'Keep PowerToys PowerRename for prefixes, counters, and static rules. Use Zush when every Windows file needs a different name based on screenshots, PDF text, document content, video frames, audio context, or image content.',
-      },
-      {
-        title: 'OneDrive and shared folders',
-        description:
-          'Use Zush with normal OneDrive folders and shared project folders. Let active sync finish before applying very large rename batches.',
-      },
-      {
-        title: 'Windows search index',
-        description:
-          'After Zush renames a file, the descriptive filename becomes available to Windows Search when that folder is indexed.',
-      },
-      {
-        title: 'Light & dark theme',
-        description:
-          'Follows your Windows personalization settings so the app stays comfortable in light and dark mode.',
       },
     ],
     scenarios: [
@@ -441,28 +218,6 @@ export const PLATFORM_SPECIFICS_CONTENT: Record<PlatformSpecificsKey, PlatformSp
           'Pick a USB drive, SD card, or any folder. Drop the whole batch onto Zush — hundreds of files get unique descriptive names in one pass.',
         fileType: 'image',
         image: '/images/examples/car.webp',
-      },
-    ],
-    security: [
-      {
-        title: 'Microsoft Store distribution',
-        description:
-          'Windows users install Zush from the Microsoft Store, using the Store package identity and update channel instead of a side-loaded installer.',
-      },
-      {
-        title: 'Store-managed package',
-        description:
-          'The Store manages package trust and updates, which keeps installation predictable for personal and managed Windows devices.',
-      },
-      {
-        title: 'Originals stay on-device',
-        description:
-          'Cloud mode only sends the analysis payload (compressed preview or extracted text). Local AI sends nothing — Ollama runs on the device.',
-      },
-      {
-        title: 'Secure key storage',
-        description:
-          'BYOK keys are stored in the Windows Credential Manager (DPAPI). They never leave the device unencrypted.',
       },
     ],
   },

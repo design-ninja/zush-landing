@@ -2,36 +2,28 @@
 @use '../../styles/mixins' as *;
 
 .CrossPlatformBanner {
-  padding: 4rem 0;
+  @include section-spacing;
 
   &__Container {
     @include container;
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
-    align-items: center;
+    align-items: stretch;
   }
 
   &__Header {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
     gap: 0.85rem;
     max-width: 42rem;
   }
 
   &__Eyebrow {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.35rem 0.85rem;
-    background: var(--primary-soft);
-    color: var(--primary);
-    border-radius: $radius-full;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0;
+    @include eyebrow;
+    margin: 0;
   }
 
   &__Title {
@@ -45,11 +37,11 @@
 
   &__Cards {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 22rem));
-    gap: 1.25rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    // Full container width, like every other column grid: the platform
+    // summaries fit on one line, so both links sit at the same height.
+    gap: 3rem;
     width: 100%;
-    max-width: 48rem;
-    justify-content: center;
 
     &[data-single='true'] {
       grid-template-columns: minmax(0, 22rem);
@@ -62,55 +54,31 @@
 }
 
 .PlatformCard {
-  position: relative;
+  // Open column with a hairline on top; the whole block stays one link.
+  @include hairline-item;
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-  padding: 1.75rem;
-  background: var(--muted);
-  border: 1px solid var(--border);
-  border-radius: $radius-xl;
   text-decoration: none;
   color: var(--foreground);
-  transition: $transition-fast;
-  overflow: hidden;
 
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    pointer-events: none;
-    box-shadow: 0 0 0 0 var(--primary-soft);
-    transition: box-shadow $transition-fast;
-  }
-
-  &:hover {
-    transform: translateY(-3px);
-    @include card-hover-ring(color-mix(in oklch, var(--primary) 35%, var(--border)));
-
-    &::after {
-      box-shadow: 0 0 0 6px var(--primary-soft);
-    }
+  &:hover .PlatformCard__CTA {
+    opacity: 0.8;
   }
 
   &__Icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 2.75rem;
-    height: 2.75rem;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: $radius-md;
+    justify-content: flex-start;
     color: var(--foreground);
     margin-bottom: 0.4rem;
   }
 
   &__Title {
     margin: 0;
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: 1.375rem;
+    font-weight: 700;
   }
 
   &__Description {
@@ -124,9 +92,17 @@
     display: inline-flex;
     align-items: center;
     gap: 0.3rem;
-    margin-top: 0.85rem;
+    // Pinned to the bottom so the links line up even if a summary wraps.
+    align-self: flex-start;
+    margin-top: auto;
+    padding-top: 0.85rem;
     color: var(--primary);
     font-weight: 600;
     font-size: 0.92rem;
+
+    // Decorative arrow from CSS so the link text stays unchanged.
+    &::after {
+      content: '→';
+    }
   }
 }

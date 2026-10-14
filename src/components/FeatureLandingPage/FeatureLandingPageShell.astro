@@ -4,9 +4,10 @@ import { RENAME_TASK_EXAMPLES } from '@/data/renameTaskExamples';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ComparisonTable from '@/components/ComparisonTable/ComparisonTable.astro';
 import PillLink from '@/components/PillLink';
-import OrganizationFeatures from '@/components/OrganizationFeatures/OrganizationFeatures.astro';
 import Features from '@/components/Features/Features.astro';
+import WaysToRun from '@/components/Features/WaysToRun.astro';
 import Heading from '@/components/Heading';
+import SectionHeader from '@/components/SectionHeader';
 import Hero from '@/components/Hero';
 import Pricing from '@/components/Pricing/Pricing.astro';
 import SupportedFormats from '@/components/SupportedFormats';
@@ -39,6 +40,8 @@ import macChangelogSource from '@/content/changelog.md?raw';
 import windowsChangelogSource from '@/content/changelog.windows.md?raw';
 import { parseLatestVersion } from '@/utils/version';
 import styles from './FeatureLandingPage.module.scss';
+import b from '@/components/Blocks/Blocks.module.scss';
+import faq from '@/components/FAQ/FAQ.module.scss';
 
 interface LocalizedProps {
   locale?: Locale;
@@ -76,6 +79,8 @@ const { route: currentRoute } = stripLocaleFromPath(Astro.url.pathname);
 const taskExample = currentLocale === DEFAULT_LOCALE ? RENAME_TASK_EXAMPLES[currentRoute] : undefined;
 const landingWorkflow = getLandingWorkflow(currentRoute, currentLocale);
 const showPdfScenariosEarly = currentRoute === '/rename-pdf-with-ai';
+// Pages about sorting show the sorting block inside the features block.
+const sortingRoute = ['/ai-file-organizer', '/ai-file-sorter', '/automate-downloads-folder', '/hazel-alternative'].includes(currentRoute);
 const macVersion = parseLatestVersion(macChangelogSource) ?? undefined;
 const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
 const relatedPageHref = (href: string) =>
@@ -125,10 +130,8 @@ const relatedPageTitle = (href: string, fallback: string) =>
   {showPdfScenariosEarly && <PdfScenarios copy={pdfDeepDive} locale={currentLocale} showReviewNote />}
 
   <Tour copy={currentCopy.home.showcase} />
-  <Features title={currentCopy.home.featuresTitle} description={currentCopy.home.featuresDescription} copy={currentCopy.home.featureCards} locale={currentLocale} />
-  {['/ai-file-organizer', '/ai-file-sorter', '/automate-downloads-folder', '/hazel-alternative'].includes(currentRoute) && (
-    <OrganizationFeatures locale={currentLocale} />
-  )}
+  <Features title={currentCopy.home.featuresTitle} description={currentCopy.home.featuresDescription} copy={currentCopy.home.featureCards} locale={currentLocale} sorting={sortingRoute} sorterLink={false} />
+  <WaysToRun copy={currentCopy.home.featureCards} />
   <SupportedFormats
     category={category}
     title={currentCopy.home.supportedFormats}
@@ -156,32 +159,26 @@ const relatedPageTitle = (href: string, fallback: string) =>
     <>
       {!showPdfScenariosEarly && <PdfScenarios copy={pdfDeepDive} locale={currentLocale} />}
 
-      <section class={styles.PdfComparison}>
-        <div class={styles.Section__Container}>
-          <div class={styles.PdfDeepDive__Header}>
-            <p class={styles.PdfDeepDive__Eyebrow}>{pdfDeepDive.comparisonEyebrow}</p>
-            <Heading as='h2' align='center'>
-              {pdfDeepDive.comparisonTitle}
-            </Heading>
-            <p class={styles.PdfDeepDive__Intro}>
-              {pdfDeepDive.comparisonIntro}
-            </p>
-          </div>
+      <section class={b.Section}>
+        <SectionHeader
+          eyebrow={pdfDeepDive.comparisonEyebrow}
+          title={pdfDeepDive.comparisonTitle}
+          description={pdfDeepDive.comparisonIntro}
+        />
 
-          <div class={styles.PdfComparisonTable}>
-            <div class={styles.PdfComparisonTable__Head}>
-              <span>{pdfDeepDive.comparisonHeaders?.tool ?? 'Tool'}</span>
-              <span>{pdfDeepDive.comparisonHeaders?.bestFor ?? 'Best for'}</span>
-              <span>{pdfDeepDive.comparisonHeaders?.gap ?? 'Filename gap'}</span>
-            </div>
-            {pdfDeepDive.comparisonRows.map((row) => (
-              <div class={styles.PdfComparisonTable__Row}>
-                <strong>{row.tool}</strong>
-                <span>{row.bestFor}</span>
-                <span>{row.gap}</span>
-              </div>
-            ))}
+        <div class:list={[b.Table, styles.PdfComparisonTable]}>
+          <div class:list={[b.TableRow, b.TableRow_head]}>
+            <span>{pdfDeepDive.comparisonHeaders?.tool ?? 'Tool'}</span>
+            <span>{pdfDeepDive.comparisonHeaders?.bestFor ?? 'Best for'}</span>
+            <span>{pdfDeepDive.comparisonHeaders?.gap ?? 'Filename gap'}</span>
           </div>
+          {pdfDeepDive.comparisonRows.map((row) => (
+            <div class={b.TableRow}>
+              <strong>{row.tool}</strong>
+              <span>{row.bestFor}</span>
+              <span>{row.gap}</span>
+            </div>
+          ))}
         </div>
       </section>
     </>
@@ -198,24 +195,20 @@ const relatedPageTitle = (href: string, fallback: string) =>
   )}
 
   {resolvedDirectAnswerSection && !landingWorkflow && (
-    <section class={`${styles.Section} ${styles.DirectAnswer}`}>
-      <div class={styles.DirectAnswer__Container}>
-        <Heading as='h2' align='left'>
-          {resolvedDirectAnswerSection.heading}
-        </Heading>
-        <p class={styles.DirectAnswer__Answer}>{resolvedDirectAnswerSection.answer}</p>
-        <ol class={styles.DirectAnswer__Steps}>
-          {resolvedDirectAnswerSection.steps.map((step) => <li>{step}</li>)}
-        </ol>
-      </div>
+    <section class={b.Section}>
+      <SectionHeader
+        title={resolvedDirectAnswerSection.heading}
+        description={resolvedDirectAnswerSection.answer}
+      />
+      <ol class={styles.Steps}>
+        {resolvedDirectAnswerSection.steps.map((step) => <li>{step}</li>)}
+      </ol>
     </section>
   )}
 
-  <section id='faq' class={styles.Section}>
-    <div class={styles.Section__Container}>
-      <Heading as='h2' align='center' style={{ marginBottom: '3rem' }}>
-        {pageCopy?.faqTitle ?? 'Frequently Asked Questions'}
-      </Heading>
+  <section id='faq' class={faq.FAQ}>
+    <div class={faq.FAQ__Container}>
+      <SectionHeader title={pageCopy?.faqTitle ?? 'Frequently Asked Questions'} />
       <FeatureFAQ faqItems={pageCopy?.faqItems ?? faqItems} />
     </div>
   </section>
@@ -224,11 +217,11 @@ const relatedPageTitle = (href: string, fallback: string) =>
   {currentLocale === DEFAULT_LOCALE && <TrustSignals />}
 
   {(relatedPages.length > 0 || relatedBlogPosts.length > 0) && (
-    <section class={styles.Section}>
-      <div class={styles.Section__Container}>
+    <section class={b.Section}>
+      <div class={b.Columns}>
         {relatedPages.length > 0 && (
-          <>
-            <Heading as='h3' align='center' style={{ marginBottom: '2rem' }}>
+          <div class={b.Column}>
+            <Heading as='h3' className={b.ColumnTitle}>
               {pageCopy?.relatedToolsTitle ?? 'Related Tools'}
             </Heading>
             <div class={styles.RelatedLinks}>
@@ -236,12 +229,12 @@ const relatedPageTitle = (href: string, fallback: string) =>
                 <PillLink href={relatedPageHref(page.href)} withArrow>{relatedPageTitle(page.href, page.title)}</PillLink>
               ))}
             </div>
-          </>
+          </div>
         )}
 
         {currentLocale === DEFAULT_LOCALE && relatedBlogPosts.length > 0 && (
-          <div class={relatedPages.length > 0 ? styles.RelatedSection : ''}>
-            <Heading as='h3' align='center' style={{ marginBottom: '2rem' }}>
+          <div class={b.Column}>
+            <Heading as='h3' className={b.ColumnTitle}>
               {pageCopy?.relatedGuidesTitle ?? 'Related Guides'}
             </Heading>
             <div class={styles.RelatedLinks}>

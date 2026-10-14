@@ -1,122 +1,34 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
+// Section frame, header and steps come from Blocks + SectionHeader; this
+// module only lays out the example, downloads and notes beneath them.
 .TaskWorkflow {
-  scroll-margin-top: calc($navbar-height + 1rem);
-
   a:not([class]) {
-    color: var(--primary);
-    font-weight: var(--font-weight-link);
-    text-underline-offset: 0.2em;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  // File tile colour per category; PDF keeps the shared red tone.
-  [data-tone='audio'] {
-    --file-preview-color: var(--tone-pink-fg);
-  }
-
-  [data-tone='video'] {
-    --file-preview-color: var(--tone-blue-fg);
+    @include text-link;
   }
 }
 
-// Steps — same hairline cards as the "Choose where AI runs" band.
-.Steps {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.5rem;
-  margin: 0 0 1.5rem;
-  padding: 0;
-  list-style: none;
-
-  @include tablet {
-    gap: 1rem;
-  }
-
-  @include small {
-    grid-template-columns: 1fr;
-  }
-}
-
-.Step {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  min-width: 0;
-  padding: 1.75rem;
-  border: $border-width-hairline solid var(--border);
-  border-radius: 1.75rem;
-
-  @include mobile {
-    padding: 1.25rem;
-    border-radius: $radius-xl;
-  }
-
-  // One column of stacked cards gets tall on phones: put the number beside
-  // the title instead of above it.
-  @include small {
-    display: grid;
-    grid-template-columns: 2.5rem minmax(0, 1fr);
-    column-gap: 1rem;
-    row-gap: 0.4rem;
-    align-items: center;
-  }
-
-  &__Number {
-    @include icon-wrapper(2.5rem);
-    font-size: 0.95rem;
-    font-weight: 600;
-    font-variant-numeric: tabular-nums;
-  }
-
-  &__Title {
-    margin: 0.25rem 0 0;
-
-    @include small {
-      margin: 0;
-    }
-  }
-
-  &__Text {
-    margin: 0;
-    color: var(--muted-foreground);
-    font-size: 0.9rem;
-    line-height: 1.6;
-
-    @include small {
-      grid-column: 2;
-    }
-  }
-}
-
-// Example + downloads + screenshot share one muted panel.
+// Example + downloads, with the import screenshot beside them.
 .Demo {
   display: grid;
-  gap: 2rem;
-  max-width: 50rem;
-  margin: 0 auto;
-  padding: 2rem;
-  background: var(--muted);
-  border: 1px solid var(--border);
-  border-radius: $radius-xl;
+  gap: 2.5rem;
+  max-width: 45rem;
+  margin-top: 4rem;
 
   @include mobile {
-    padding: 1.25rem;
-    gap: 1.5rem;
+    margin-top: 2.5rem;
+    gap: 2rem;
   }
 
   &_withMedia {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
     align-items: center;
     max-width: none;
-    gap: 2.5rem;
+    gap: 3rem;
 
     @include tablet {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
       gap: 2rem;
     }
   }
@@ -124,7 +36,7 @@
   &__Main {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.75rem;
     min-width: 0;
   }
 
@@ -148,40 +60,13 @@
     align-items: flex-start;
   }
 
-  &__Names {
-    display: grid;
-    gap: 0.15rem;
-    min-width: 0;
-    flex: 1;
-  }
-
   &__Label {
-    font-size: 0.7rem;
-    font-weight: 500;
-    color: var(--muted-foreground);
+    font-size: 0.75rem;
+    color: var(--text-faint);
 
     &:nth-of-type(2) {
       margin-top: 0.5rem;
     }
-  }
-
-  &__Before,
-  &__After {
-    font-family: $font-mono;
-    overflow-wrap: anywhere;
-    line-height: 1.45;
-  }
-
-  &__Before {
-    font-size: 0.78rem;
-    color: var(--muted-foreground);
-    text-decoration: line-through;
-  }
-
-  &__After {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--foreground);
   }
 }
 
@@ -215,12 +100,9 @@
   }
 }
 
+// Framed by Blocks.Frame; here only the zoom affordance.
 .Screenshot {
   display: block;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  border-radius: $radius-md;
-  background: var(--card);
   cursor: zoom-in;
 
   :global(.organization-screenshot) img {
@@ -233,90 +115,41 @@
   }
 }
 
-// Notes column: limit, recorded result (FAQ-style disclosure), guide link.
+// Notes column: limit, recorded result (hairline disclosure), guide link.
 .Notes {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  max-width: 50rem;
-  margin: 2.5rem auto 0;
+  gap: 1.5rem;
+  max-width: 45rem;
+  margin-top: 3rem;
 
   &__Limit {
+    @include body-copy(0.9375rem);
     margin: 0;
-    color: var(--muted-foreground);
-    font-size: 0.9rem;
-    line-height: 1.65;
-    text-align: center;
-  }
-
-  &__Guide {
-    display: flex;
-    justify-content: center;
   }
 }
 
 .Result {
-  background: var(--card);
-  outline: 1px solid var(--border);
-  border-radius: 16px;
-  overflow: hidden;
-  transition: outline 0.3s ease;
-
-  &:not([open]):hover {
-    @include card-hover-outline(var(--primary-soft));
-  }
-
-  &[open] {
-    outline: 3px solid var(--primary);
-  }
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  @include disclosure-motion;
 
   &__Summary {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 1.25rem 1.5rem;
-    cursor: pointer;
-    list-style: none;
-    color: var(--foreground);
-    font-weight: 600;
-
-    &::-webkit-details-marker {
-      display: none;
-    }
-
-    &:focus-visible {
-      outline: 2px solid var(--primary);
-      outline-offset: -2px;
-      border-radius: 16px;
-    }
+    @include disclosure-summary;
   }
 
   &__Icon {
-    flex-shrink: 0;
-    color: var(--muted-foreground);
-    transition: transform 0.3s ease;
-
-    .Result[open] & {
-      transform: rotate(180deg);
-      color: var(--primary);
-    }
+    @include disclosure-chevron;
   }
 
   &__Body {
     display: grid;
     gap: 1rem;
-    padding: 0 1.5rem 1.5rem;
-    color: var(--muted-foreground);
-    font-size: 0.9rem;
-    line-height: 1.6;
+    padding: 0 0 1.5rem;
+    @include body-copy(0.9375rem);
 
     p {
       margin: 0;
-    }
-
-    @include mobile {
-      padding: 0 1.25rem 1.25rem;
     }
   }
 
@@ -340,7 +173,7 @@
     }
 
     dt {
-      color: var(--muted-foreground);
+      color: var(--text-faint);
       font-size: 0.8125rem;
     }
 
@@ -352,7 +185,7 @@
     }
 
     code {
-      font-family: $font-mono;
+      font-family: var(--font-mono);
       font-size: 0.85rem;
     }
   }
@@ -360,10 +193,4 @@
   &__Note {
     font-size: 0.8125rem;
   }
-}
-
-// The shared DownloadCTA section (2rem top padding) follows directly;
-// trim the bottom padding so the gap matches the rest of the page.
-.TaskWorkflow[data-has-cta] {
-  padding-bottom: 1.5rem;
 }

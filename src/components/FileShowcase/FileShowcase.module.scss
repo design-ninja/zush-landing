@@ -44,7 +44,7 @@
     &_animated {
         opacity: 0;
         transform: translate3d(0, 0.5rem, 0) scale(0.98);
-        animation: file-item-enter 0.32s ease-out forwards;
+        animation: file-item-enter 0.2s ease-out forwards;
         animation-delay: var(--item-delay, 0ms);
         will-change: opacity, transform;
     }

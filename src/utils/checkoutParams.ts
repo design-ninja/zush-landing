@@ -1,4 +1,3 @@
-// fallow-ignore-file unused-file
 interface CheckoutParamsLocation {
   search: string;
   hash: string;
@@ -21,7 +20,6 @@ function paramsFromHash(hash: string): URLSearchParams {
   return new URLSearchParams(fragment);
 }
 
-// fallow-ignore-next-line unused-export
 export function getCheckoutParam(
   name: string,
   location: CheckoutParamsLocation = window.location,

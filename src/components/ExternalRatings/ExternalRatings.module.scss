@@ -1,0 +1,57 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// design/homepage-concept/native.dc.html: pills with a hairline, 13px / 500
+// muted text in one style, an 18px star pulled toward the score.
+.ExternalRatings {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.Rating {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.4375rem 0.875rem;
+    border: 1px solid var(--border);
+    border-radius: $radius-full;
+    background: var(--card);
+    color: var(--muted-foreground);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 1.4;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: color $transition-fast, border-color $transition-fast;
+
+    &:hover {
+        color: var(--foreground);
+        border-color: var(--border-strong);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 0.2rem;
+    }
+
+    &__Prefix {
+        margin-right: 0.28em;
+    }
+
+    &__Softpedia::before {
+        content: 'Softpedia';
+    }
+
+    &__Star {
+        width: 1.125rem;
+        height: 1.125rem;
+        margin: 0 0.125rem 0 0.4375rem;
+        background: var(--star);
+        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.8 14.8 8.6 21.2 9.5 16.6 14 17.7 20.3 12 17.3 6.3 20.3 7.4 14 2.8 9.5 9.2 8.6Z'/%3E%3C/svg%3E") center / contain no-repeat;
+    }
+
+    &__Score {
+        font-variant-numeric: tabular-nums;
+    }
+}

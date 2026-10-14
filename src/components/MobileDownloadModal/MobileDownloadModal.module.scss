@@ -29,11 +29,10 @@
   width: 100%;
   max-width: 24rem;
   padding: 2rem;
-  background: var(--card);
+  background: var(--background);
   border: 1px solid var(--border);
-  border-radius: $radius-xl;
+  border-radius: $radius-lg;
   text-align: center;
-  @include shadow('lg');
 }
 
 .MobileDownloadModal__Content_enter {
@@ -64,11 +63,7 @@
 .MobileDownloadModal__Badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: var(--muted);
-  border-radius: $radius-full;
-  font-size: 0.875rem;
+  @include chip;
   color: var(--foreground);
 }
 
@@ -84,19 +79,18 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem 1rem;
-  background: var(--muted);
-  border: 1px solid var(--border);
-  border-radius: $radius-md;
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  border-radius: $radius-button;
   text-decoration: none;
   color: var(--foreground);
   font-family: var(--font-family);
   text-align: left;
-  transition: background 0.15s ease, border-color 0.15s ease;
+  transition: background-color $transition-fast;
 
   &:hover,
   &:focus-visible {
-    background: var(--primary-soft);
-    border-color: var(--primary);
+    background: color-mix(in oklch, var(--foreground) 5%, transparent);
   }
 }
 
@@ -187,35 +181,30 @@
   margin-top: 1rem;
   padding: 0.75rem 1rem;
   background: var(--primary-soft);
-  border: 1px solid var(--primary);
-  border-radius: $radius-md;
+  border: 1px solid transparent;
+  border-radius: $radius-button;
   color: var(--foreground);
   font-family: var(--font-family);
   text-align: left;
   cursor: pointer;
-  transition: background 0.15s ease, border-color 0.15s ease;
+  transition: border-color $transition-fast;
 
   &:hover,
   &:focus-visible {
-    background: var(--primary-soft);
     border-color: var(--primary);
   }
 
   &[data-handoff-state='shared'],
   &[data-handoff-state='copied'] {
-    background: var(--muted);
-    border-color: var(--border);
+    background: transparent;
+    border-color: var(--border-strong);
   }
 }
 
 .MobileDownloadModal__Url {
   width: 100%;
   margin-top: 0.5rem;
+  @include form-input;
   padding: 0.5rem 0.75rem;
-  background: var(--muted);
-  border: 1px solid var(--border);
-  border-radius: $radius-md;
-  color: var(--foreground);
-  font-family: var(--font-family);
   font-size: 0.8125rem;
 }

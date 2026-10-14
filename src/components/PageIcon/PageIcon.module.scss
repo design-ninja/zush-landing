@@ -3,14 +3,10 @@
 @use '../../styles/animations';
 
 .PageIcon {
-    margin-bottom: 24px;
-
-    &--primary {
-        @include icon-with-shadow(var(--primary), rgba(99, 102, 241, 0.3));
-    }
+    @include page-icon;
 
     &--error {
-        @include icon-with-shadow(var(--destructive), rgba(239, 68, 68, 0.3));
+        color: var(--destructive);
     }
 
     &--animated {

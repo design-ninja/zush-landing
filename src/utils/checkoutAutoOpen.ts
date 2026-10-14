@@ -1,4 +1,3 @@
-// fallow-ignore-file unused-file
 import {
   PRO_MONTHLY_PADDLE_PRICE_ID,
   PRO_ONE_TIME_PADDLE_PRICE_ID,

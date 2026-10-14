@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Check, FileText } from 'lucide-react';
 import { HR_FIELDS } from '@/data/hrLanding';
-import styles from '@/components/LegalLandingPage/LegalFieldExplorer.module.scss';
+import styles from '@/components/FieldExplorer/FieldExplorer.module.scss';
 
 const splitEmphasis = (after: string, emphasis?: string) => {
   if (!emphasis) return { pre: after, hit: '', post: '' };

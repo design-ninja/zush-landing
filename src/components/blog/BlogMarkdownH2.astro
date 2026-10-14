@@ -4,9 +4,11 @@ import headingStyles from '@/components/Heading/Heading.module.scss';
 const { class: className = '', ...props } = Astro.props;
 ---
 
+<!-- Article sections sit one step below landing sections (h3 visual size),
+     so they never compete with the post title. -->
 <h2
   {...props}
-  class={[headingStyles.Heading, headingStyles.Heading_h2, className]
+  class={[headingStyles.Heading, headingStyles.Heading_h3, className]
     .filter(Boolean)
     .join(' ')}
 >

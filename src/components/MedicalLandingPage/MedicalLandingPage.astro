@@ -1,14 +1,12 @@
 ---
 import { Image } from 'astro:assets';
-import { ArrowRight, Bot, Cloud, KeyRound } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import audienceBillingImage from '@/assets/landing/medical-audience-billing.webp';
 import audienceFrontDeskImage from '@/assets/landing/medical-audience-front-desk.webp';
 import audienceOwnerImage from '@/assets/landing/medical-audience-owner.webp';
 import CloudFolders from '@/components/CloudFolders';
 import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
-import BentoCard from '@/components/Features/BentoCard.astro';
-import FeatureAnimation from '@/components/Features/FeatureAnimation';
-import featureStyles from '@/components/Features/Features.module.scss';
+import WaysToRun from '@/components/Features/WaysToRun.astro';
 import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
 import FAQ from '@/components/FAQ';
 import Heading from '@/components/Heading';
@@ -19,7 +17,6 @@ import Text from '@/components/Text';
 import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module.scss';
 import testimonialStyles from '@/components/Testimonials/Testimonials.module.scss';
 import { getCopy } from '@/i18n/copy';
-import { FEATURE_DEMO_COPY } from '@/i18n/featureDemoCopy';
 import {
   MEDICAL_AUDIENCES,
   MEDICAL_DOCUMENT_TYPES,
@@ -31,14 +28,12 @@ import {
 } from '@/data/medicalLanding';
 import MedicalFieldExplorer from './MedicalFieldExplorer';
 import MedicalHero from './MedicalHero.astro';
-import styles from './MedicalLandingPage.module.scss';
+import styles from '@/components/ProfessionLanding/ProfessionLanding.module.scss';
 
 // English-only page: no locale prop, no localized copy lookup beyond the
 // shared Pricing block, which is the same everywhere.
 const copy = getCopy('en');
 
-const demoCopy = FEATURE_DEMO_COPY.en;
-const PRIVACY_ICONS = { cloud: Cloud, byok: KeyRound, offline: Bot } as const;
 const AUDIENCE_IMAGES = {
   clinic: {
     src: audienceOwnerImage,
@@ -123,42 +118,21 @@ const AUDIENCE_IMAGES = {
 
 {/* 3 — privacy. Same bento pattern as the homepage "3 secure ways to run Zush",
     with records-specific copy and the matching hover-play demos. */}
-<section id='privacy' class={styles.Privacy} aria-labelledby='medical-privacy-title'>
-  <div class={styles.Privacy__Container}>
-    <div class={sectionHeaderStyles.SectionHeader}>
-      <Heading as='h2' align='center' id='medical-privacy-title' className={sectionHeaderStyles.SectionHeader__Title}>
-        Offline and BYOK processing for medical documents
-      </Heading>
-      <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
-        Run supported analysis with local Ollama models, or route it through the AI provider account and key your organization controls. Zush renames files in place and does not store them.
-      </Text>
-    </div>
-
-    <div class={featureStyles.Band__Grid}>
-      {MEDICAL_PRIVACY_MODES.map((mode) => (
-        <BentoCard
-          title={mode.title}
-          description={mode.description}
-          icon={PRIVACY_ICONS[mode.id]}
-          badge={mode.badge}
-          badgeTone={mode.badgeTone}
-        >
-          <div class={featureStyles.UI_FeatureAnimation}>
-            <FeatureAnimation kind={mode.kind} demoCopy={demoCopy} client:visible />
-          </div>
-        </BentoCard>
-      ))}
-    </div>
-
-    <p class={styles.Privacy__Note}>
-      {MEDICAL_PRIVACY_NOTE}{' '}
-      <a class={styles.ArrowLink} href='/docs/privacy-security'>
-        Read how the modes handle data
-        <ArrowRight size={15} aria-hidden='true' />
-      </a>
-    </p>
-  </div>
-</section>
+<WaysToRun
+  id='privacy'
+  headingId='medical-privacy-title'
+  title='Offline and BYOK processing for medical documents'
+  description='Run supported analysis with local Ollama models, or route it through the AI provider account and key your organization controls. Zush renames files in place and does not store them.'
+  modes={MEDICAL_PRIVACY_MODES}
+>
+  <p class={styles.Privacy__Note}>
+    {MEDICAL_PRIVACY_NOTE}{' '}
+    <a class={styles.ArrowLink} href='/docs/privacy-security'>
+      Read how the modes handle data
+      <ArrowRight size={15} aria-hidden='true' />
+    </a>
+  </p>
+</WaysToRun>
 
 {/* 4 — workflow. Hero's secondary CTA anchors here. */}
 <section id='workflow' class={styles.Workflow} aria-labelledby='medical-workflow-title'>

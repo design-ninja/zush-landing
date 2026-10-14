@@ -1,12 +1,12 @@
 ---
 import { Image } from 'astro:assets';
 import DownloadButton from '@/components/DownloadButton';
-import ExternalRatings from '@/components/ExternalRatings/ExternalRatings.astro';
+import ExternalRatings from '@/components/ExternalRatings';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
 import { MEDICAL_HERO } from '@/data/medicalLanding';
 import heroPhoto from '@/assets/landing/medical-hero.webp';
-import styles from './MedicalHero.module.scss';
+import styles from '@/components/ProfessionLanding/ProfessionHero.module.scss';
 
 // Full-bleed photo hero: the doctor photo fills the top of the page and runs
 // under the floating header (the page passes `disableTopOffset`). A theme-aware
@@ -30,7 +30,7 @@ import styles from './MedicalHero.module.scss';
 
   <div class={styles.Hero__Container}>
     <div class={styles.Hero__Intro}>
-      <ExternalRatings />
+      <ExternalRatings className={styles.Hero__Ratings} />
       <p class={styles.Hero__Eyebrow}>{MEDICAL_HERO.eyebrow}</p>
 
       <Heading as='h1' align='center' id='medical-hero-title' className={styles.Hero__Title}>

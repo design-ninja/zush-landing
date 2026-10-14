@@ -1,19 +1,6 @@
 ---
-import {
-  Camera,
-  Clapperboard,
-  FileSpreadsheet,
-  FileText,
-  FolderOpen,
-  Layers,
-  Monitor,
-  Music,
-  PenTool,
-} from 'lucide-react';
-import Heading from '@/components/Heading';
-import Text from '@/components/Text';
-import sectionHeaderStyles from '@/components/SectionHeader/SectionHeader.module.scss';
-import useCaseStyles from '@/components/UseCases/UseCases.module.scss';
+import SectionHeader from '@/components/SectionHeader';
+import blocks from '@/components/Blocks/Blocks.module.scss';
 import {
   getLocalesForRoute,
   getLocalizedPath,
@@ -32,17 +19,16 @@ const { copy, locale } = Astro.props;
 const WORKFLOWS: Array<{
   key: HomeWorkflowKey;
   route: string;
-  icon: typeof Monitor;
 }> = [
-  { key: 'screenshots', route: '/rename-screenshots-with-ai', icon: Monitor },
-  { key: 'pdfs', route: '/rename-pdf-with-ai', icon: FileText },
-  { key: 'photos', route: '/rename-photos-with-ai', icon: Camera },
-  { key: 'documents', route: '/rename-documents-with-ai', icon: FileSpreadsheet },
-  { key: 'organizer', route: '/ai-file-organizer', icon: FolderOpen },
-  { key: 'design', route: '/rename-design-files-with-ai', icon: PenTool },
-  { key: 'videos', route: '/rename-videos-with-ai', icon: Clapperboard },
-  { key: 'audio', route: '/rename-audio-with-ai', icon: Music },
-  { key: 'batch', route: '/batch-rename-files', icon: Layers },
+  { key: 'screenshots', route: '/rename-screenshots-with-ai' },
+  { key: 'pdfs', route: '/rename-pdf-with-ai' },
+  { key: 'photos', route: '/rename-photos-with-ai' },
+  { key: 'documents', route: '/rename-documents-with-ai' },
+  { key: 'organizer', route: '/ai-file-organizer' },
+  { key: 'design', route: '/rename-design-files-with-ai' },
+  { key: 'videos', route: '/rename-videos-with-ai' },
+  { key: 'audio', route: '/rename-audio-with-ai' },
+  { key: 'batch', route: '/batch-rename-files' },
 ];
 
 const localizedHref = (route: string): string =>
@@ -50,48 +36,19 @@ const localizedHref = (route: string): string =>
     ? getLocalizedPath(route, locale)
     : route;
 
-const titleParts = copy.title.split('Zush');
 ---
 
-<section class={useCaseStyles.UseCases} aria-labelledby="home-workflows-title">
-  <div class={useCaseStyles.UseCases__Container}>
-    <div class={sectionHeaderStyles.SectionHeader}>
-      <Heading
-        as="h2"
-        align="center"
-        id="home-workflows-title"
-        className={sectionHeaderStyles.SectionHeader__Title}
-      >
-        {titleParts[0]}{titleParts.length > 1 ? <span class="brand-accent-text">Zush</span> : null}{titleParts.slice(1).join('Zush')}
-      </Heading>
-      <Text
-        as="p"
-        size="lg"
-        color="subtle"
-        align="center"
-        className={sectionHeaderStyles.SectionHeader__Description}
-      >
-        {copy.description}
-      </Text>
-    </div>
+<section class={blocks.Section} aria-labelledby="home-workflows-title">
+  <SectionHeader id="home-workflows-title" title={copy.title} description={copy.description} />
 
-    <div class={useCaseStyles.UseCases__Grid}>
-      {WORKFLOWS.map(({ key, route, icon: Icon }) => (
-        <a
-          class={`${useCaseStyles.UseCaseCard} ${useCaseStyles.UseCaseCard_plain} ${useCaseStyles.UseCaseCard_linked}`}
-          href={localizedHref(route)}
-        >
-          <div class={useCaseStyles.UseCaseCard__IconWrapper}>
-            <Icon size={24} />
-          </div>
-          <Heading as="h3" size="h4" className={useCaseStyles.UseCaseCard__Title}>
-            {copy.items[key].title}
-          </Heading>
-          <Text className={useCaseStyles.UseCaseCard__Description}>
-            {copy.items[key].description}
-          </Text>
-        </a>
-      ))}
-    </div>
+  <div class:list={[blocks.Columns, blocks.Columns_list]}>
+    {WORKFLOWS.map(({ key, route }) => (
+      <a class={blocks.RowLink} href={localizedHref(route)}>
+        <span>
+          <h3 class={blocks.RowTitle}>{copy.items[key].title}</h3>
+          <span class={blocks.RowText}>{copy.items[key].description}</span>
+        </span>
+      </a>
+    ))}
   </div>
 </section>

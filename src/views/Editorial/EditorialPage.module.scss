@@ -20,20 +20,17 @@
   margin: 0;
 }
 
+// Hairline columns, like the rest of the site; no cards.
 .Grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: $space-md;
-  margin-top: $space-2xl;
+  gap: 3rem;
+  margin-top: 4rem;
 }
 
 .Card {
-  padding: $space-xl;
-  border: 1px solid var(--border);
-  border-radius: $radius-xl;
-  background: var(--card);
+  @include hairline-item;
   color: var(--foreground);
-  @include shadow('sm');
 }
 
 .CardWide {
@@ -55,10 +52,12 @@
 }
 
 .Links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: $space-sm;
-  margin-top: $space-lg;
+  @include link-row;
+  margin-top: 1rem;
+
+  a {
+    @include text-link;
+  }
 }
 
 .Profile {

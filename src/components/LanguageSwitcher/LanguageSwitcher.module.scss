@@ -25,7 +25,7 @@
   gap: 0.3rem;
   min-width: 0;
   border: none;
-  border-radius: $radius-full;
+  border-radius: $radius-button;
   // Translucent white so the header's blur shows through; dark theme gets a
   // low-alpha white wash instead, which reads as a lighter surface there.
   background-color: oklch(1 0 0 / 0.55);
@@ -128,12 +128,7 @@
   min-width: 12.5rem;
   width: max-content;
   max-width: min(18rem, calc(100vw - 2rem));
-  border: 1px solid var(--border);
-  border-radius: $radius-lg;
-  background-color: var(--background);
-  color: var(--foreground);
-  padding: 0.35rem;
-  box-shadow: 0 20px 45px -20px rgba(0, 0, 0, 0.25), 0 2px 6px rgba(0, 0, 0, 0.06);
+  @include dropdown-menu;
   animation: languageMenuFadeIn 120ms ease-out;
 }
 
@@ -141,24 +136,18 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  border-radius: $radius-md;
-  color: inherit;
-  padding: 0.55rem 0.65rem;
   text-decoration: none;
-  transition:
-    background-color $transition-fast,
-    color $transition-fast;
-
-  &:hover,
-  &:focus-visible {
-    background-color: var(--muted);
-    outline: none;
-  }
+  @include dropdown-item;
 
   &_active {
-    background-color: var(--primary-soft);
-    color: var(--primary);
+    background-color: color-mix(in oklch, var(--foreground) 5%, transparent);
+    font-weight: 600;
   }
+}
+
+// Text-only list: no flag glyphs in the menu.
+.LanguageSwitcher__MenuFlag {
+  display: none;
 }
 
 .LanguageSwitcher__MenuText {
@@ -171,8 +160,8 @@
 
 .LanguageSwitcher__MenuTitle {
   color: currentColor;
-  font-size: 0.9rem;
-  font-weight: $font-weight-link;
+  font-size: inherit;
+  font-weight: inherit;
 }
 
 @media (max-width: 768px) {

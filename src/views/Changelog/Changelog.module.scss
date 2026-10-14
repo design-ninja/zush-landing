@@ -16,10 +16,10 @@
         gap: 0.25rem;
         padding: 0.25rem;
         width: fit-content;
-        margin: 0 auto 2rem;
+        margin: 0 0 3rem;
         border: 1px solid var(--border);
-        border-radius: $radius-md;
-        background: var(--muted);
+        border-radius: $radius-button;
+        background: transparent;
     }
 
     &__Tab {
@@ -28,8 +28,8 @@
         justify-content: center;
         gap: 0.45rem;
         min-width: 6.25rem;
-        padding: 0.625rem 1rem;
-        border-radius: $radius-sm;
+        padding: 0.5rem 1rem;
+        border-radius: $radius-xs;
         color: var(--muted-foreground);
         font-size: 0.9rem;
         font-weight: $font-weight-link;
@@ -44,16 +44,15 @@
         }
 
         &--Active {
-            background: var(--background);
+            background: color-mix(in oklch, var(--foreground) 7%, transparent);
             color: var(--foreground);
-            @include shadow('sm');
         }
     }
 
     &__TabIcon {
         display: inline-flex;
-        width: 1.725rem;
-        height: 1.725rem;
+        width: 1.125rem;
+        height: 1.125rem;
         flex: 0 0 auto;
 
         svg {
@@ -62,89 +61,67 @@
         }
     }
 
+    // Releases: version and date on the left, notes on the right, a hairline
+    // between releases. No timeline rail, no panels.
     &__Timeline {
-        position: relative;
-        max-width: 50rem;
-        margin: 0 auto;
-        padding-left: 2rem;
-
-        &::before {
-            content: '';
-            position: absolute;
-            left: 0.375rem;
-            top: 0;
-            bottom: 0;
-            width: 0.125rem;
-            background: linear-gradient(to bottom,
-                    var(--primary),
-                    transparent);
-            border-radius: 1px;
-        }
+        border-bottom: 1px solid var(--border);
     }
 
     &__Item {
-        position: relative;
-        padding-bottom: 2.5rem;
+        display: grid;
+        grid-template-columns: 13rem minmax(0, 46rem);
+        gap: 1rem 3rem;
+        padding: 2.5rem 0;
+        border-top: 1px solid var(--border);
 
-        &:last-child {
-            padding-bottom: 0;
-        }
-
-        &::before {
-            content: '';
-            position: absolute;
-            left: -2.2rem;
-            top: 0.375rem;
-            width: 0.875rem;
-            height: 0.875rem;
-            background: var(--primary);
-            border-radius: 50%;
-            border: 0.1875rem solid var(--background);
-            @include shadow('focus');
+        @include tablet {
+            grid-template-columns: minmax(0, 1fr);
+            padding: 2rem 0;
         }
     }
 
     &__ItemHeader {
         display: flex;
-        align-items: center;
-        gap: 1rem;
-        margin-bottom: 1rem;
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+
+        @include tablet {
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.75rem;
+        }
     }
 
-    &__Version {
+    // Qualified so it outweighs the shared Heading size class on the element.
+    & &__Version {
         margin: 0;
+        @include heading-size('h4');
     }
 
     &__Date {
-        color: var(--muted-foreground);
-        font-size: 0.9rem;
+        color: var(--text-faint);
+        font-size: 0.875rem;
     }
 
+    // "Latest" marker: the same green badge as NEW on the homepage.
     &__Badge {
-        padding: 0.25rem 0.75rem;
-        background: var(--tone-green-bg);
-        color: var(--tone-green-fg);
-        border-radius: $radius-full;
-        font-size: 0.75rem;
-        font-weight: 500;
+        @include badge;
     }
 
     &__Content {
-        background: var(--muted);
-        border: 1px solid var(--border);
-        border-radius: $radius-md;
-        padding: 1.5rem;
-
         h1,
         h2,
         h3,
         h4,
         h5,
         h6 {
-            margin-bottom: 0.75rem;
-            margin-top: 1.5rem;
+            margin: 1.5rem 0 0.5rem;
             color: var(--foreground);
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
 
             &:first-child {
                 margin-top: 0;
@@ -153,23 +130,23 @@
 
         ul,
         ol {
-            padding-left: 1.5rem;
-            margin-bottom: 1rem;
+            padding-left: 1.25rem;
+            margin: 0 0 1rem;
 
             &:last-child {
                 margin-bottom: 0;
             }
 
             li {
-                padding: 0.25rem 0;
-                color: var(--muted-foreground);
+                @include body-copy(0.9375rem);
+                padding: 0.2rem 0;
                 line-height: 1.6;
             }
         }
 
         p {
-            margin-bottom: 1rem;
-            color: var(--muted-foreground);
+            @include body-copy(0.9375rem);
+            margin: 0 0 1rem;
 
             &:last-child {
                 margin-bottom: 0;

@@ -226,7 +226,7 @@ const ThankYou = ({
       {!isChecking && (
         <div className={styles.ThankYou__Actions}>
           {appUrl && (
-            <Button as="a" href={appUrl}>
+            <Button as="a" href={appUrl} variant="primary" size="lg">
               <ExternalLink size={18} />
               {copy.openZush}
             </Button>
@@ -234,7 +234,8 @@ const ThankYou = ({
           {activationState === "email" && (
             <DownloadButton
               source="thank-you"
-              variant="black"
+              variant="primary"
+              size="lg"
               label={copy.downloadZush}
               showDropdown={false}
             />

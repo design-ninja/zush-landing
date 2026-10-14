@@ -1,25 +1,30 @@
-// fallow-ignore-file unused-export
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
 .FAQ {
-    padding: 100px 0;
+    padding: $section-gap 0 0;
     background-color: var(--background);
+
+    @include mobile {
+        padding-top: $section-gap-mobile;
+    }
     position: relative;
     overflow: hidden;
     scroll-margin-top: calc($navbar-height + 1rem);
 
+    // Left edge of the page container, like every other section.
     &__Container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 0 20px;
+        @include container;
     }
 
+    // Hairline list instead of stacked cards: one rule between questions.
+    // 772px reading column (the concept's 820px less gutters).
     &__Grid {
-        margin-top: 60px;
+        max-width: 48.25rem;
+        margin-top: 3rem;
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        border-bottom: 1px solid var(--border);
     }
 
     &__TitleAccent {
@@ -28,56 +33,23 @@
 }
 
 .FAQItem {
-    background: var(--card);
-    outline: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-    transition: box-shadow 0.3s ease, outline 0.3s ease;
-
-    &:not([open]):hover {
-        @include card-hover-outline(var(--primary-soft));
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
-    }
-
-    &[open]:hover {
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
-    }
-
-    &[open] {
-        outline: 3px solid var(--primary);
-    }
+    border-top: 1px solid var(--border);
+    @include disclosure-motion;
 
     &__Header {
-        width: 100%;
-        padding: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background: none;
-        border: none;
-        cursor: pointer;
-        text-align: left;
-        gap: 16px;
-        list-style: none;
-
-        &::-webkit-details-marker { display: none; }
+        @include disclosure-summary;
     }
 
     &__Question {
         color: var(--foreground);
         margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
     }
 
     &__Icon {
-        flex-shrink: 0;
-        color: var(--muted-foreground);
-        transition: transform 0.3s ease;
-        transform: rotate(90deg);
-
-        .FAQItem[open] & {
-            transform: rotate(0deg);
-            color: var(--primary);
-        }
+        @include disclosure-plus;
     }
 
     &__Content {
@@ -85,9 +57,11 @@
     }
 
     &__Answer {
-        padding: 0 24px 24px;
-        color: var(--foreground);
-        line-height: 1.6;
+        padding: 0 0 1.375rem;
+        max-width: 42.5rem;
+        color: var(--muted-foreground);
+        font-size: 0.9375rem;
+        line-height: 1.65;
         margin: 0;
         overflow: hidden;
 

@@ -3,8 +3,9 @@
 @use '../../styles/mixins' as *;
 
 .Recover {
+    // Size and weight come from <Heading as="h1">, like every page title.
     &__Title {
-        @include page-title;
+        margin: 0 0 1rem;
     }
 
     &__Subtitle {

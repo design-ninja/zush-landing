@@ -3,7 +3,6 @@ import Hero from '@/components/Hero';
 import HomeRenameWorkflow from './HomeRenameWorkflow.astro';
 import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
 import Tour from '@/components/Tour';
-import OrganizationFeatures from '@/components/OrganizationFeatures/OrganizationFeatures.astro';
 import Features from '@/components/Features/Features.astro';
 import WaysToRun from '@/components/Features/WaysToRun.astro';
 import SupportedFormats from '@/components/SupportedFormats';
@@ -41,10 +40,14 @@ const macVersion = parseLatestVersion(macChangelogSource) ?? undefined;
 const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
 ---
 
+<div class="home-hero">
+<div class="home-hero__wave" aria-hidden="true"><canvas class="home-hero__canvas" data-hero-wave></canvas></div>
+<div class="home-hero__scrim" aria-hidden="true"></div>
 <Hero
   client:idle
   title={copy.home.heroTitle}
   titleAccent={copy.home.heroAccent}
+  titleHighlight={copy.home.heroTitle.includes('\n') ? copy.home.heroTitle.split('\n').pop() : copy.home.heroAccent}
   subtitle={copy.home.heroSubtitle}
   subtitleHighlights={copy.home.heroHighlights}
   buyLabel={copy.home.buyPro}
@@ -60,8 +63,71 @@ const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
   softpediaReviewAriaLabel={SOFTPEDIA_REVIEW_ARIA_LABELS[locale]}
   microsoftStoreRatedOnLabel={MICROSOFT_STORE_RATED_ON_LABELS[locale]}
   microsoftStoreRatingAriaLabel={MICROSOFT_STORE_RATING_ARIA_LABELS[locale]}
-  natureBackground
+  waveBackground
 />
+</div>
+<script>
+  import '@/scripts/hero-wave';
+</script>
+<style>
+  /* Animated point-wave behind the homepage intro (src/scripts/hero-wave.ts).
+     The canvas stays outside the hydrated Hero island on purpose. */
+  .home-hero {
+    position: relative;
+    isolation: isolate;
+    overflow-x: clip;
+  }
+
+  .home-hero :global([data-hero-root]) {
+    position: relative;
+    z-index: 1;
+  }
+
+  .home-hero__wave {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 24%, #000 70%, transparent 100%);
+  }
+
+  .home-hero__canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+  }
+
+  .home-hero__canvas[data-ready='true'] {
+    opacity: 1;
+  }
+
+  /* Soft pool of page colour under the copy so the points never fight the text. */
+  .home-hero__scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse 40% 36% at 50% 52%,
+      color-mix(in oklch, var(--background) 78%, transparent) 0%,
+      color-mix(in oklch, var(--background) 78%, transparent) 42%,
+      transparent 100%
+    );
+  }
+
+  @media (max-width: 768px) {
+    .home-hero__scrim {
+      background: radial-gradient(
+        ellipse 80% 46% at 50% 50%,
+        color-mix(in oklch, var(--background) 84%, transparent) 0%,
+        color-mix(in oklch, var(--background) 84%, transparent) 50%,
+        transparent 100%
+      );
+    }
+  }
+</style>
 <DemoVideo label={copy.home.showcase.title} />
 <EvidenceSignals locale={locale} variant="intro" />
 {locale === 'en'
@@ -72,11 +138,8 @@ const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
   description={copy.home.featuresDescription}
   copy={copy.home.featureCards}
   locale={locale}
-  includeBand={false}
-  compactTopSpacing
 />
-<OrganizationFeatures locale={locale} showProductLink />
-<WaysToRun copy={copy.home.featureCards} locale={locale} />
+<WaysToRun copy={copy.home.featureCards} />
 {(locale === 'en' || professionCopy) && (
   <HomeProfessions locale={locale} homeCopy={copy.home} professionCopy={professionCopy} />
 )}

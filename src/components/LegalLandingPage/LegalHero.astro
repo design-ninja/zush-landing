@@ -2,11 +2,11 @@
 import { Image } from 'astro:assets';
 import heroPhoto from '@/assets/landing/legal-hero.webp';
 import DownloadButton from '@/components/DownloadButton';
-import ExternalRatings from '@/components/ExternalRatings/ExternalRatings.astro';
+import ExternalRatings from '@/components/ExternalRatings';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
 import { LEGAL_HERO } from '@/data/legalLanding';
-import styles from './LegalHero.module.scss';
+import styles from '@/components/ProfessionLanding/ProfessionHero.module.scss';
 ---
 
 <section class={styles.Hero} aria-labelledby="legal-hero-title">
@@ -25,7 +25,7 @@ import styles from './LegalHero.module.scss';
 
   <div class={styles.Hero__Container}>
     <div class={styles.Hero__Intro}>
-      <ExternalRatings />
+      <ExternalRatings className={styles.Hero__Ratings} />
       <p class={styles.Hero__Eyebrow}>{LEGAL_HERO.eyebrow}</p>
 
       <Heading as="h1" align="center" id="legal-hero-title" className={styles.Hero__Title}>

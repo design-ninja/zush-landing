@@ -8,8 +8,8 @@ import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 export const MOVIES_TV_PAGE_PATH = '/rename-movies-and-tv-shows';
 export const MOVIES_TV_PAGE_TITLE = 'Rename Movies and TV Shows on Mac and Windows';
 export const TVDB_URL = 'https://thetvdb.com';
-export const MOVIES_TV_FREE_RENAMES = APP_CONFIG.free_tier_limit;
-export const MOVIES_TV_PRICE_LINE = `${MOVIES_TV_FREE_RENAMES} free renames. PRO is ${PRO_PRICING.monthly.label}/month or ${PRO_PRICING.oneTime.label} once.`;
+const MOVIES_TV_FREE_RENAMES = APP_CONFIG.free_tier_limit;
+const MOVIES_TV_PRICE_LINE = `${MOVIES_TV_FREE_RENAMES} free renames. PRO is ${PRO_PRICING.monthly.label}/month or ${PRO_PRICING.oneTime.label} once.`;
 export const MOVIES_TV_FINAL_LINE = 'Start for free. No credit card required to sign up.';
 
 export const MOVIES_TV_EXAMPLES = [
@@ -69,7 +69,7 @@ export const MOVIES_TV_FAQ = [
   },
 ] as const;
 
-export const MOVIES_TV_DESCRIPTION =
+const MOVIES_TV_DESCRIPTION =
   'Rename movies and TV episodes on Mac and Windows. Match real titles, preview Plex-style filenames, and optionally sort by show and season.';
 
 export const MOVIES_TV_JSON_LD = buildFeaturePageJsonLd({

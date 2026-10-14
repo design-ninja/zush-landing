@@ -30,7 +30,7 @@ import { PRO_PRICING } from '@/constants/pricing';
 export const SITE_ORIGIN = 'https://zushapp.com';
 export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/og-image.png`;
 
-export const HOME_KEYWORDS = [
+const HOME_KEYWORDS = [
   'Zush',
   'Zush AI',
   'Zush AI Renamer',

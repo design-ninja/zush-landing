@@ -122,6 +122,7 @@ const menuLinkClass = [appLinkStyles.AppLink, styles.Header__MenuLink].join(' ')
     styles.Header,
     width === 'wide' && styles.Header_wide,
     width === 'container' && styles.Header_container,
+    width === 'compact' && styles.Header_compact,
   ]}
   data-header-root
   data-menu-open='false'
@@ -224,12 +225,13 @@ const menuLinkClass = [appLinkStyles.AppLink, styles.Header__MenuLink].join(' ')
           <DownloadButton
             client:idle
             source='navbar'
-            variant='primary'
+            variant='ink'
             size='sm'
             label={copy.download}
             menuCopy={localeCopy.downloadMenu}
             forceOS={forceOS}
             showDropdown={false}
+            showIcon={false}
             className={styles.Header__DownloadBtn}
           />
         )}

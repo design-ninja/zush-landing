@@ -59,10 +59,10 @@
 
   &__SearchIcon {
     position: absolute;
-    left: 1.1rem;
+    left: 1rem;
     display: inline-flex;
     align-items: center;
-    color: var(--muted-foreground);
+    color: var(--text-faint);
     pointer-events: none;
   }
 
@@ -70,8 +70,7 @@
     @include form-input;
 
     width: 100%;
-    padding-left: 3rem;
-    background: color-mix(in srgb, var(--muted) 72%, var(--background));
+    padding-left: 2.75rem;
 
     // Chrome's own clear button ships a blue gradient that ignores the theme.
     &::-webkit-search-cancel-button {
@@ -81,30 +80,8 @@
   }
 
   &__SearchSubmit {
-    padding: 0 1.75rem;
-    border: 1px solid transparent;
-    border-radius: $radius-full;
-    background: var(--tertiary);
-    color: var(--tertiary-foreground);
-    font-family: var(--font-family);
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition:
-      background $transition-fast,
-      transform $transition-fast;
-
-    &:hover {
-      background: var(--tertiary-hover);
-    }
-
-    &:active {
-      transform: translateY(1px);
-    }
-
-    @include mobile {
-      padding: 0.9rem 1.75rem;
-    }
+    @include button-shape('md');
+    @include button-variant('ink');
   }
 
   &__Sections {
@@ -129,7 +106,7 @@
   &__IntroLinks {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
+    gap: 1.5rem 3rem;
     margin-bottom: 2.5rem;
 
     @include mobile {
@@ -137,21 +114,14 @@
     }
   }
 
+  // Plain link blocks: no card, no rule.
   &__IntroCard {
-    padding: 1.25rem 1.4rem;
-    border: 1px solid var(--border);
-    border-radius: $radius-xl;
-    background: var(--card);
-    text-decoration: none;
+    min-width: 0;
     color: inherit;
-    transition:
-      border-color $transition-fast,
-      box-shadow $transition-fast,
-      transform $transition-fast;
+    text-decoration: none;
 
-    &:hover {
-      @include card-hover-ring;
-      transform: translateY(-1px);
+    &:hover .BlogList__IntroCardMeta {
+      opacity: 0.78;
     }
   }
 
@@ -166,7 +136,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: var(--secondary);
+    color: var(--primary);
     flex-shrink: 0;
   }
 
@@ -205,19 +175,12 @@
     flex-wrap: wrap;
   }
 
+  // Post count beside the heading: quiet mono figure, no badge.
   &__SectionCount {
-    min-width: 1.75rem;
-    height: 1.75rem;
-    padding: 0 0.45rem;
-    border-radius: 9999px;
-    border: 1px solid var(--border);
-    background: var(--muted);
-    color: color-mix(in srgb, var(--muted-foreground) 72%, transparent);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
-    font-weight: 600;
+    color: var(--text-faint);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 400;
     line-height: 1;
   }
 
@@ -238,15 +201,8 @@
   }
 
   &__SectionAction {
-    color: var(--primary);
-    text-decoration: none;
-    font-family: var(--font-family);
-    font-size: 0.95rem;
-    font-weight: $font-weight-link;
-
-    &:hover {
-      color: var(--primary-hover);
-    }
+    @include text-link;
+    font-size: 0.9375rem;
   }
 
   // Post rows carry their own styling; see BlogPostCard.module.scss.
@@ -259,7 +215,7 @@
   &__TagCloud {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
+    gap: 2rem 3rem;
 
     @include tablet {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -271,23 +227,15 @@
   }
 
   &__TagCard {
+    @include hairline-item(1.25rem);
     display: flex;
     flex-direction: column;
-    gap: 0.65rem;
-    padding: 1.25rem 1.35rem;
-    border: 1px solid var(--border);
-    border-radius: $radius-xl;
-    background: var(--card);
+    gap: 0.5rem;
     color: inherit;
     text-decoration: none;
-    transition:
-      border-color $transition-fast,
-      box-shadow $transition-fast,
-      transform $transition-fast;
 
-    &:hover {
-      @include card-hover-ring;
-      transform: translateY(-1px);
+    &:hover .BlogList__TagTitle {
+      color: var(--primary);
     }
   }
 

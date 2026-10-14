@@ -2,11 +2,7 @@
 @use "../../styles/mixins" as *;
 
 .DemoVideo {
-    padding: 0 0 3.75rem;
-
-    @include mobile {
-        padding: 0 0 2.5rem;
-    }
+    padding: 0;
 
     &__Container {
         @include container;
@@ -22,7 +18,7 @@
         overflow: hidden;
         border-radius: clamp(1.1rem, 1.8vw, 1.4rem);
         background-color: var(--muted);
-        box-shadow: 0 1.6rem 3.75rem -2rem oklch(0 0 0 / 0.32);
+        box-shadow: 0 0 0 1px var(--border);
         // `translateZ(0)` used to sit here and promoted the frame to its own
         // compositing layer. Safari then clips the video against that layer
         // with an aliased rounded rect, so the corners come out jagged.
@@ -30,8 +26,7 @@
         isolation: isolate;
 
         @include mobile {
-            border-radius: 1.1rem;
-            box-shadow: 0 1rem 2.5rem -1.75rem oklch(0 0 0 / 0.28);
+            border-radius: $radius-lg;
         }
     }
 

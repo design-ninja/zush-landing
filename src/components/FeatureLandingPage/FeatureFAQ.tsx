@@ -1,6 +1,6 @@
 import { useId } from 'react';
 import FAQAccordionItem from '@/components/FAQ/FAQAccordionItem';
-import styles from './FeatureLandingPage.module.scss';
+import styles from '@/components/FAQ/FAQ.module.scss';
 
 interface FAQItem {
   question: string;
@@ -15,7 +15,7 @@ const FeatureFAQ = ({ faqItems }: FeatureFAQProps) => {
   const groupName = useId();
 
   return (
-    <div className={styles.FAQList}>
+    <div className={styles.FAQ__Grid}>
       {faqItems.map((item, index) => (
         <FAQAccordionItem
           key={index}

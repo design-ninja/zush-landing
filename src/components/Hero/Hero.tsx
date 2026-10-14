@@ -4,11 +4,12 @@ import type { Slide } from "../FileShowcase";
 import DownloadButton from "../DownloadButton";
 import Heading from "../Heading";
 import StarRating from "../StarRating";
+import ExternalRatings from "@/components/ExternalRatings";
 import Text from "../Text";
 import styles from "./Hero.module.scss";
 import type { DownloadOS } from "@/utils/download";
 import type { DownloadMenuCopy } from "@/i18n/copy";
-import { SOFTPEDIA_REVIEW_URL, WINDOWS_STORE_URL, WINDOWS_STORE_US_URL } from "@/constants";
+import { WINDOWS_STORE_URL } from "@/constants";
 
 
 interface HeroProps {
@@ -26,6 +27,12 @@ interface HeroProps {
   centered?: boolean;
   /** Adds the theme-specific homepage nature photo. */
   natureBackground?: boolean;
+  /**
+   * Homepage styling for an intro that sits over the animated point-wave.
+   * The canvas itself lives outside React (HomePageContent.astro) so the
+   * script that draws on it can never cause a hydration mismatch.
+   */
+  waveBackground?: boolean;
   /**
    * Renders one button per platform instead of a single OS-detected button
    * with a dropdown. Only makes sense where no OS is forced.
@@ -103,6 +110,7 @@ const Hero = ({
   as: Tag = "section",
   centered = false,
   natureBackground = false,
+  waveBackground = false,
   splitByOS = false,
   compactTopSpacing = false,
   forceOS,
@@ -166,6 +174,7 @@ const Hero = ({
         styles.Hero,
         centered ? styles.Hero_centered : "",
         natureBackground ? styles.Hero_natureBackground : "",
+        waveBackground ? styles.Hero_wave : "",
         compactTopSpacing ? styles.Hero_compactTopSpacing : "",
       ]
         .filter(Boolean)
@@ -174,49 +183,13 @@ const Hero = ({
       <div className={styles.Hero__Container}>
         <div className={styles.Hero__Intro}>
           {(softpediaReviewAriaLabel || microsoftStoreRatingAriaLabel) && (
-            <div className={styles.Hero__ExternalRatings} aria-label="Independent ratings">
-              {softpediaReviewAriaLabel && (
-                <a
-                  className={styles.Hero__StoreReview}
-                  href={SOFTPEDIA_REVIEW_URL}
-                  target="_blank"
-                  rel="noopener noreferrer external"
-                  aria-label={softpediaReviewAriaLabel}
-                >
-                  {softpediaRatedByLabel && (
-                    <span className={styles.Hero__StorePrefix}>{softpediaRatedByLabel}</span>
-                  )}
-                  <span className={styles.Hero__SoftpediaLogo} aria-hidden="true" />
-                  <span className={styles.Hero__StoreStars} aria-hidden="true">
-                    <span className={styles.Hero__StoreStar} />
-                  </span>
-                  <span className={styles.Hero__StoreScore}>4.5</span>
-                </a>
-              )}
-              {microsoftStoreRatingAriaLabel && (
-                <a
-                  className={styles.Hero__StoreReview}
-                  href={WINDOWS_STORE_US_URL}
-                  target="_blank"
-                  rel="noopener noreferrer external"
-                  aria-label={microsoftStoreRatingAriaLabel}
-                >
-                  {microsoftStoreRatedOnLabel && (
-                    <span className={styles.Hero__StorePrefix}>{microsoftStoreRatedOnLabel}</span>
-                  )}
-                  <span className={styles.Hero__MicrosoftStoreBrand} aria-hidden="true">
-                    <span className={styles.Hero__MicrosoftStoreMark}>
-                      <span /><span /><span /><span />
-                    </span>
-                    <span>Microsoft Store</span>
-                  </span>
-                  <span className={styles.Hero__StoreStars} aria-hidden="true">
-                    <span className={styles.Hero__StoreStar} />
-                  </span>
-                  <span className={styles.Hero__StoreScore}>5.0</span>
-                </a>
-              )}
-            </div>
+            <ExternalRatings
+              className={styles.Hero__ExternalRatings}
+              softpediaRatedByLabel={softpediaRatedByLabel}
+              softpediaReviewAriaLabel={softpediaReviewAriaLabel}
+              microsoftStoreRatedOnLabel={microsoftStoreRatedOnLabel}
+              microsoftStoreRatingAriaLabel={microsoftStoreRatingAriaLabel}
+            />
           )}
           {(reviewsHref || aiModes.length > 0) && (
             <div className={styles.Hero__ProofRow}>
@@ -263,7 +236,7 @@ const Hero = ({
                   <div className={styles.Hero__PlatformAction}>
                     <DownloadButton
                       source="hero"
-                      variant="black"
+                      variant="primary"
                       size="lg"
                       forceOS="mac"
                       showDropdown={false}
@@ -273,7 +246,7 @@ const Hero = ({
                   <div className={styles.Hero__PlatformAction}>
                     <DownloadButton
                       source="hero"
-                      variant="black"
+                      variant="outline"
                       size="lg"
                       forceOS="windows"
                       showDropdown={false}
@@ -301,7 +274,7 @@ const Hero = ({
                 <>
                   <DownloadButton
                     source="hero"
-                    variant="black"
+                    variant="primary"
                     size="lg"
                     forceOS={forceOS}
                     label={downloadLabel}
@@ -312,7 +285,7 @@ const Hero = ({
                   {appStoreLabel && (
                     <DownloadButton
                       source="hero"
-                      variant="black"
+                      variant="outline"
                       size="lg"
                       forceOS="mac"
                       channel="mac-app-store"
@@ -339,7 +312,6 @@ const Hero = ({
             className={`${styles.Hero__ShowcaseWrapper} ${styles.Hero__ShowcaseMotion}`}
           >
             <FileShowcase slides={slides} />
-            <div className={styles.Hero__GlowEffect} />
           </div>
         )}
       </div>

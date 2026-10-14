@@ -31,11 +31,11 @@ const srcSet = (src: string) => [640, 960, 1280, 1600, 1920, 2560].map(width => 
 
 <section class={styles.Tour} data-scroll-reveal-force data-tour>
   <div class={styles.Tour__Container}>
-    <div class={headerStyles.SectionHeader}>
-      <Heading as="h2" align="center" className={headerStyles.SectionHeader__Title}>
+    <div class={`${headerStyles.SectionHeader}`}>
+      <Heading as="h2" className={headerStyles.SectionHeader__Title}>
         {titleParts[0]}<span class="brand-accent-text">{copy.titleAccent}</span>{titleParts.slice(1).join(copy.titleAccent)}
       </Heading>
-      <Text as="p" size="lg" color="subtle" align="center" className={headerStyles.SectionHeader__Description}>{copy.description}</Text>
+      <Text as="p" size="lg" color="subtle" className={headerStyles.SectionHeader__Description}>{copy.description}</Text>
     </div>
     <zush-tour data-force-os={forceOS} class={styles.Tour__Player}>
       {groups.map((group, groupIndex) => (
@@ -46,7 +46,7 @@ const srcSet = (src: string) => [640, 960, 1280, 1600, 1920, 2560].map(width => 
                 data-tour-image data-light={item.images.light} data-dark={item.images.dark}
                 class={styles.Tour__Poster} data-active={index === 0 ? '' : undefined}
                 hidden={index !== 0}
-                src={imagePath(item.images.light, 1280)} srcset={srcSet(item.images.light)}
+                src={imagePath(item.images.light, 640)} srcset={srcSet(item.images.light)}
                 sizes="(max-width: 768px) calc(100vw - 40px), min(1024px, calc(100vw - 64px))"
                 alt={copy.items[item.id]?.alt ?? item.alt}
                 width="1280" height="720" loading="lazy" decoding="async"

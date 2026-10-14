@@ -37,7 +37,7 @@ const featuredButtonClass = [
 ].join(' ');
 const regularButtonClass = [
   buttonStyles.Button,
-  buttonStyles.Button_ghost,
+  buttonStyles.Button_outline,
   buttonStyles.Button_md,
   buttonStyles.Button_fluid,
 ].join(' ');
@@ -86,6 +86,7 @@ const plans = PRICING_PLANS.map((plan) => {
       decoding="async"
     />
     <SectionHeader
+      align="center"
       titleHtml={titleHtml}
       description={copy?.description ?? 'Monthly flexibility or one-time lifetime access. Both plans unlock unlimited PRO.'}
       className={styles.Pricing__Header}

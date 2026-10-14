@@ -21,15 +21,13 @@ import styles from './DownloadButton.module.scss';
 
 const MobileDownloadModal = lazy(() => import('@/components/MobileDownloadModal'));
 
-type Variant = 'black' | 'primary' | 'ghost';
+type Variant = 'black' | 'primary' | 'ghost' | 'outline' | 'ink';
 type Size = 'sm' | 'md' | 'lg';
-type Surface = 'glass' | 'greenGlow';
 
 interface DownloadButtonProps {
   source: DownloadSource;
   variant?: Variant;
   size?: Size;
-  surface?: Surface;
   label?: string;
   labelAccent?: string;
   edgeLabel?: string;
@@ -37,6 +35,8 @@ interface DownloadButtonProps {
   useMobileModal?: boolean;
   forceOS?: DownloadOS;
   showDropdown?: boolean;
+  /** OS glyph before the label; the header's compact button omits it. */
+  showIcon?: boolean;
   includeOtherOS?: boolean;
   /**
    * Install channel the main link points at. `mac-app-store` turns the button
@@ -85,7 +85,6 @@ const DownloadButton = ({
   source,
   variant = 'black',
   size = 'md',
-  surface = 'glass',
   label = 'Download',
   labelAccent,
   edgeLabel,
@@ -93,6 +92,7 @@ const DownloadButton = ({
   useMobileModal = true,
   forceOS,
   showDropdown = true,
+  showIcon = true,
   includeOtherOS = true,
   channel = 'direct',
   menuCopy = DEFAULT_MENU_COPY,
@@ -209,7 +209,7 @@ const DownloadButton = ({
       onClick={handleOtherClick}
     >
       <span className={styles.Menu__Icon}>
-        {otherOS === 'windows' ? <WindowsIcon colored /> : <AppleIcon />}
+        {otherOS === 'windows' ? <WindowsIcon /> : <AppleIcon />}
       </span>
       <span className={styles.Menu__Text}>
         <span className={styles.Menu__Title}>
@@ -265,7 +265,6 @@ const DownloadButton = ({
         styles.Group,
         styles[`Group_${variant}`],
         styles[`Group_${size}`],
-        surface !== 'glass' ? styles[`Group_surface_${surface}`] : '',
         !hasDropdownItems ? styles.Group_single : '',
         isOpen ? styles.Group_open : '',
         className,
@@ -298,13 +297,13 @@ const DownloadButton = ({
         }
         onClick={handlePrimaryClick}
       >
-        {isAppStoreChannel ? (
+        {showIcon && (isAppStoreChannel ? (
           <AppStoreIcon size={22} />
         ) : downloadOS === 'windows' ? (
-          <WindowsIcon colored />
+          <WindowsIcon />
         ) : (
           <AppleIcon />
-        )}
+        ))}
         {renderLabel(label, labelAccent)}
         {edgeLabel && <EdgeLabel>{edgeLabel}</EdgeLabel>}
       </a>

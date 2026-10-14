@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Check, Image as ImageIcon } from 'lucide-react';
 import { PHOTOGRAPHERS_FIELDS } from '@/data/photographersLanding';
-import styles from '../MedicalLandingPage/MedicalFieldExplorer.module.scss';
+import styles from '@/components/FieldExplorer/FieldExplorer.module.scss';
 
 const splitEmphasis = (after: string, emphasis: string | undefined) => {
   if (!emphasis) return { pre: after, hit: '', post: '' };

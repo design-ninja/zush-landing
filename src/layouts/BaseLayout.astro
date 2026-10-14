@@ -3,6 +3,8 @@ import type { SeoMeta } from '@/seo/config';
 import { DEFAULT_OG_IMAGE, getCanonicalUrl } from '@/seo/config';
 import { buildSiteEntityJsonLd } from '@/seo/entity';
 import '@fontsource-variable/inter/opsz.css';
+import '@fontsource-variable/manrope/wght.css';
+import '@fontsource-variable/geist-mono/wght.css';
 import '@/styles/main.scss';
 import Header from '@/components/Header/Header.astro';
 import type { HeaderWidth } from '@/components/Header/types';
@@ -41,7 +43,8 @@ interface Props {
   locale?: Locale;
   /**
    * Desktop width of the header pill. Pages in the wider blog container pass
-   * `wide`; everything else lines up with the 60rem content container.
+   * `wide`, standalone landings with their own style `compact`; everything
+   * else lines up with the 60rem content container.
    */
   headerWidth?: HeaderWidth;
   /**
@@ -547,8 +550,8 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
     opacity: 0;
     transform: translate3d(0, 1.5rem, 0);
     transition:
-      opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-      transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+      opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   html[data-scroll-reveal='enabled']

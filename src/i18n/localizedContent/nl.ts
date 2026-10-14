@@ -1,3 +1,5 @@
+// One module per locale with the same export shape, picked by getLocalizedContent().
+// fallow-ignore-file duplicate-export
 import type { HomeCopy } from '@/i18n/copy';
 import type { ProfessionLocaleCopy } from '@/i18n/professions/types';
 

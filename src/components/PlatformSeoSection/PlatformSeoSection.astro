@@ -1,0 +1,75 @@
+---
+// Platform SEO block (English /mac and /windows): use-case columns, a
+// "when Zush fits" comparison and documentation links. Each platform passes
+// its own copy; the comparison paragraphs come through the default slot.
+import type { LucideIcon } from 'lucide-react';
+import PillLink from '@/components/PillLink';
+import SectionHeader from '@/components/SectionHeader';
+import b from '@/components/Blocks/Blocks.module.scss';
+import styles from './PlatformSeoSection.module.scss';
+
+export interface PlatformSeoCard {
+  icon: LucideIcon;
+  title: string;
+  body: string;
+  href?: string;
+}
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  cards: PlatformSeoCard[];
+  comparisonTitle: string;
+  tableLabel: string;
+  rows: [string, string, string][];
+  docsLabel: string;
+  docsLinks: { href: string; label: string }[];
+}
+
+const { eyebrow, title, intro, cards, comparisonTitle, tableLabel, rows, docsLabel, docsLinks } = Astro.props;
+---
+
+<section class={b.Section}>
+  <SectionHeader eyebrow={eyebrow} title={title} description={intro} />
+
+  <div class={b.Columns}>
+    {cards.map(({ icon: Icon, title, body, href }) => (
+      <article class={b.Column}>
+        <span class={b.ColumnIcon} aria-hidden="true"><Icon size={24} strokeWidth={1.7} /></span>
+        <h3 class={b.ColumnTitle}>{title}</h3>
+        <p class={b.ColumnText}>
+          {body}
+          {href && <>{' '}<a class={styles.Link} href={href}>Learn more →</a></>}
+        </p>
+      </article>
+    ))}
+  </div>
+
+  <div class={styles.Comparison}>
+    <div class={styles.Comparison__Intro}>
+      <h3 class={b.BlockTitle}>{comparisonTitle}</h3>
+      <slot />
+    </div>
+    <div class={b.Table} role="table" aria-label={tableLabel}>
+      <div class:list={[b.TableRow, b.TableRow_head]} role="row">
+        <strong role="columnheader">Workflow</strong>
+        <strong role="columnheader">Best fit</strong>
+        <strong role="columnheader">Why</strong>
+      </div>
+      {rows.map(([workflow, fit, why]) => (
+        <div class={b.TableRow} role="row">
+          <span role="cell">{workflow}</span>
+          <span role="cell">{fit}</span>
+          <span role="cell">{why}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <nav class={styles.Docs} aria-label={docsLabel}>
+    {docsLinks.map((link) => (
+      <PillLink href={link.href} size="md">{link.label}</PillLink>
+    ))}
+  </nav>
+</section>

@@ -2,7 +2,7 @@ import { ReactNode, AnchorHTMLAttributes, ButtonHTMLAttributes, MouseEvent } fro
 import AppLink from '@/components/AppLink';
 import styles from './Button.module.scss';
 
-type ButtonVariant = 'primary' | 'black' | 'ghost';
+type ButtonVariant = 'primary' | 'ink' | 'outline' | 'ghost' | 'black';
 type ButtonSize = 'sm' | 'md' | 'lg';
 
 interface BaseProps {

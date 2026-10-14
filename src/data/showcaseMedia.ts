@@ -186,13 +186,6 @@ export const MACOS_SHOWCASE_SCREENSHOTS: ShowcaseScreenshotAsset[] = [
     alt: 'Zush grouping documents, design files, and photos into folders on Mac',
   },
   {
-    id: 'template-transfer',
-    title: 'Import / Export Templates',
-    description: 'Share and back up reusable naming workflows with .zushtemplates files',
-    images: { light: '/images/showcase/macos/template-transfer-light.webp', dark: '/images/showcase/macos/template-transfer-dark.webp' },
-    alt: 'Import Templates and Export All Templates in the Zush Templates menu',
-  },
-  {
     id: 'monitor',
     title: 'Folder Monitoring',
     description: 'Automatically rename new files as they appear',
@@ -282,6 +275,13 @@ export const MACOS_SHOWCASE_SCREENSHOTS: ShowcaseScreenshotAsset[] = [
     },
     alt: 'Bring your own key settings in Zush for macOS',
   },
+  {
+    id: 'template-transfer',
+    title: 'Import / Export Templates',
+    description: 'Share and back up reusable naming workflows with .zushtemplates files',
+    images: { light: '/images/showcase/macos/template-transfer-light.webp', dark: '/images/showcase/macos/template-transfer-dark.webp' },
+    alt: 'Import Templates and Export All Templates in the Zush Templates menu',
+  },
 ];
 
 export const WINDOWS_SHOWCASE_SCREENSHOTS: ShowcaseScreenshotAsset[] = [
@@ -305,13 +305,6 @@ export const WINDOWS_SHOWCASE_SCREENSHOTS: ShowcaseScreenshotAsset[] = [
     description: 'Group files into folders automatically or with your own rules',
     images: { light: '/images/showcase/windows/folder-sorting-light.webp', dark: '/images/showcase/windows/folder-sorting-dark.webp' },
     alt: 'Automatic AI folder grouping in Zush for Windows',
-  },
-  {
-    id: 'template-transfer',
-    title: 'Import and Export Templates',
-    description: 'Reuse naming templates, custom AI blocks, and folder rules on another computer',
-    images: { light: '/images/showcase/windows/template-transfer-light.webp', dark: '/images/showcase/windows/template-transfer-dark.webp' },
-    alt: 'Import and export naming templates in Zush for Windows',
   },
   {
     id: 'monitor',
@@ -403,6 +396,13 @@ export const WINDOWS_SHOWCASE_SCREENSHOTS: ShowcaseScreenshotAsset[] = [
     },
     alt: 'Offline AI setup in Zush for Windows',
   },
+  {
+    id: 'template-transfer',
+    title: 'Import and Export Templates',
+    description: 'Reuse naming templates, custom AI blocks, and folder rules on another computer',
+    images: { light: '/images/showcase/windows/template-transfer-light.webp', dark: '/images/showcase/windows/template-transfer-dark.webp' },
+    alt: 'Import and export naming templates in Zush for Windows',
+  },
 ];
 
 const SHOWCASE_VIDEO_BY_SRC = Object.fromEntries(
@@ -420,13 +420,6 @@ export function resolveShowcaseVideoMedia(
     source: asset.sources[theme],
     poster: asset.posters[theme],
   };
-}
-
-export function resolveShowcaseScreenshotMedia(
-  asset: ShowcaseScreenshotAsset,
-  theme: ShowcaseTheme,
-): string {
-  return asset.images[theme];
 }
 
 export function getShowcaseVideoBySrc(src?: string | null) {

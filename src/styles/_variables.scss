@@ -1,16 +1,38 @@
-$brand-green: oklch(0.7556 0.2082 146.98);
+// Values below mirror design/homepage-concept/native.dc.html (ZN_TOKENS).
+$brand-green: #4cc85a;
 
 // Light Mode
-$background: oklch(1 0 0);
-$foreground: oklch(0.15 0.015 265);
+$background: #ffffff;
+// Code samples and file examples: a barely-there grey on the page.
+$code-bg: #fafafa;
+$foreground: #111118;
 
-$card: oklch(1 0 0);
-$card-foreground: oklch(0.15 0.015 265);
+$card: #ffffff;
+$card-foreground: #111118;
 
-$muted: oklch(0.98 0.003 265);
-$muted-foreground: oklch(0.45 0.01 274.5);
+$muted: #f6f6f9;
+$muted-foreground: #555562;
+// Secondary text tiers from the concept: captions/meta, then decorative.
+$text-faint: #6b6b78;
+$text-dim: #9a9aa6;
+$star: #f5b83d;
+// Ink button (quiet CTA, e.g. the header Download) and text on the brand green.
+$button-ink: #111118;
+$button-ink-hover: #26262f;
+$button-ink-foreground: #ffffff;
+$on-secondary: #0c0c10;
+// Hero point-wave (src/scripts/hero-wave.ts reads these): base gradient a→b,
+// sweeping highlight c, overall opacity.
+$wave-a: #7b6bf5;
+$wave-b: #b0a6ff;
+$wave-c: #6e5cf3;
+$wave-opacity: 0.75;
 
-$primary: oklch(0.5595 0.2296 279.31);
+// --primary is the accent for text, links and outlines; buttons fill with
+// --primary-button (the concept's `btn`), which differs in the dark theme.
+$primary: #5443e6;
+$primary-button: #5b4bef;
+$primary-button-hover: #6e5cf3;
 $primary-foreground: oklch(1 0 0);
 $primary-hover: oklch(0.61 0.25 279.31);
 $primary-soft: oklch(0.5595 0.2296 279.31 / 0.1);
@@ -24,7 +46,8 @@ $tertiary: oklch(0 0 0);
 $tertiary-foreground: oklch(1 0 0);
 $tertiary-hover: oklch(0.15 0 0);
 
-$border: oklch(0.92 0.003 265);
+$border: #eaeaf0;
+$border-strong: #d9d9e2;
 
 // Cool grey for decorative icons. The other greys sit at 0.003–0.015 chroma and
 // read neutral; this one carries enough blue to look deliberately cold without
@@ -55,6 +78,11 @@ $tone-orange-bg:  oklch(0.74 0.17 55 / 0.16);
 
 $tone-green-fg:   $brand-green;
 $tone-green-bg:   oklch(0.7556 0.2082 146.98 / 0.14);
+// Calm sage for summary/success notes: same hue family as the brand green,
+// far lower chroma, so a TL;DR reads as a quiet note rather than an alert.
+$note-bg: oklch(0.975 0.018 160);
+$note-border: oklch(0.91 0.035 160);
+$note-fg: oklch(0.46 0.09 160);
 
 $tone-blue-fg:    oklch(0.62 0.2 252);
 $tone-blue-bg:    oklch(0.62 0.2 252 / 0.14);
@@ -81,16 +109,28 @@ $tone-magenta-fg: oklch(0.62 0.25 320);
 $tone-magenta-bg: oklch(0.62 0.25 320 / 0.13);
 
 // Dark Mode
-$dark-background: oklch(0.13 0.01 285);
-$dark-foreground: oklch(1 0 0);
+$dark-background: #0c0c10;
+$dark-code-bg: #15151a;
+$dark-foreground: #ededf2;
 
-$dark-card: oklch(0.17 0.01 285);
-$dark-card-foreground: oklch(1 0 0);
+$dark-card: #131318;
+$dark-card-foreground: #ededf2;
 
-$dark-muted: oklch(0.2 0.01 285);
-$dark-muted-foreground: oklch(0.7 0.01 265);
+$dark-muted: #18181f;
+$dark-muted-foreground: #a6a6b3;
+$dark-text-faint: #8a8a97;
+$dark-text-dim: #6e6e7b;
+$dark-button-ink: #2a2a34;
+$dark-button-ink-hover: #33333f;
+$dark-button-ink-foreground: #ededf2;
+$dark-wave-a: #4b3be0;
+$dark-wave-b: #b4aaff;
+$dark-wave-c: #d4ceff;
+$dark-wave-opacity: 0.8;
 
-$dark-primary: oklch(0.65 0.25 279.31);
+$dark-primary: #9d8fff;
+$dark-primary-button: #6e5cf3;
+$dark-primary-button-hover: #7b6bf5;
 $dark-primary-foreground: oklch(1 0 0);
 $dark-primary-hover: oklch(0.66 0.27 279.31);
 $dark-primary-soft: oklch(0.61 0.25 279.31 / 0.2);
@@ -104,7 +144,8 @@ $dark-tertiary: oklch(0.3 0.01 285);
 $dark-tertiary-foreground: oklch(1 0 0);
 $dark-tertiary-hover: oklch(0.36 0.01 285);
 
-$dark-border: oklch(0.28 0.01 285);
+$dark-border: #23232c;
+$dark-border-strong: #33333f;
 $dark-icon-muted: oklch(0.62 0.03 252);
 
 $dark-glass: oklch(0.2 0.01 285 / 0.7);
@@ -121,6 +162,9 @@ $dark-tone-orange-bg:  oklch(0.8 0.16 55 / 0.22);
 
 $dark-tone-green-fg:   $brand-green;
 $dark-tone-green-bg:   oklch(0.7556 0.2082 146.98 / 0.2);
+$dark-note-bg: oklch(0.24 0.02 160);
+$dark-note-border: oklch(0.34 0.035 160);
+$dark-note-fg: oklch(0.82 0.09 160);
 
 $dark-tone-blue-fg:    oklch(0.72 0.18 252);
 $dark-tone-blue-bg:    oklch(0.72 0.18 252 / 0.2);
@@ -148,28 +192,29 @@ $dark-tone-magenta-bg: oklch(0.72 0.22 320 / 0.2);
 
 // Typography
 $font-family: 'Inter Variable', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-$font-family-heading: $font-family;
-$font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+// Headings: Manrope (self-hosted via @fontsource-variable/manrope), body stays Inter.
+$font-family-heading: 'Manrope Variable', 'Manrope', $font-family;
+$font-mono: 'Geist Mono Variable', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
 // Button type scale. Shared by <Button> and <DownloadButton>: size decides the
 // text size, variant decides the colour, and neither component owns the numbers.
 // The hero CTAs are `lg`, so that value is what "button text like the hero" means.
 $button-font-size-sm: 0.8125rem;
 $button-font-size-md: 0.9rem;
-$button-font-size-lg: 0.975rem;
+$button-font-size-lg: 0.9375rem;
 
 $font-weight-regular: 400;
 $font-weight-link: $font-weight-regular;
 
 // Spacing
-$container-max-width: 80rem;
+$container-max-width: 72.5rem;
 // Blog pages run narrower than the marketing pages. The header pill, the
 // breadcrumbs and the post/list containers all key off this so their edges line
 // up — change it in one place, not four.
 $blog-container-max-width: 72rem;
 $content-max-width: 60rem;
 $content-reading-width: 48rem;
-$container-padding: 2rem;
-$navbar-height: 4.375rem;
+$container-padding: 1.5rem;
+$navbar-height: 3.875rem;
 $space-2xs: 0.25rem;
 $space-xs: 0.5rem;
 $space-sm: 0.75rem;
@@ -181,15 +226,24 @@ $space-3xl: 5rem;
 
 // Border Radius
 $border-width-hairline: 1px;
-$radius-sm: 0.75rem;
-$radius-md: 1rem;
-$radius-lg: 1.25rem;
-$radius-xl: 1.5rem;
-$radius-full: 9999px;
+// Tight scale: the design avoids big, bubbly corners. Panels top out at 16px.
+$radius-xs: 0.375rem;  // chips, code, small tiles
+$radius-sm: 0.5rem;    // file tiles, inner rows
+$radius-md: 0.625rem;  // inputs, menus, small panels
+$radius-lg: 0.75rem;   // screenshots, cards
+$radius-xl: 1rem;      // section panels (CTA, pricing)
+$radius-full: 9999px;  // dots and true pills only (badges)
+// Buttons and CTAs: soft rectangle, not a pill.
+$radius-button: 0.625rem;
+// Vertical rhythm between top-level page sections.
+$section-gap: 8.5rem;
+$section-gap-mobile: 5rem;
 
 // Transitions
-$transition-fast: 0.2s ease;
-$transition-normal: 0.3s ease;
+// Interface motion stays brisk: hovers 150ms, theme and larger state changes 200ms.
+$transition-fast: 0.15s ease;
+$transition-instant: 0.06s linear;
+$transition-normal: 0.2s ease;
 
 // Overlays
 $z-modal: 1000;
@@ -204,9 +258,11 @@ $accent-border-subtle: 28%;
 $accent-border-hover: 48%;
 
 // Shadows
-$shadow-sm: 0 0.25rem 1rem oklch(0 0 0 / 0.02);
-$shadow-md: 0 0.625rem 1.875rem oklch(0 0 0 / 0.08);
-$shadow-lg: 0 1.25rem 3.125rem oklch(0 0 0 / 0.12);
-$shadow-primary: 0 0.9375rem 1.875rem oklch(0.5595 0.2296 279.31 / 0.15);
-$shadow-glow: 0 0 0.9375rem var(--primary);
+// Flat design system: surfaces are separated by hairlines, not shadows.
+// The tokens stay so components keep one switch for elevation.
+$shadow-sm: none;
+$shadow-md: none;
+$shadow-lg: none;
+$shadow-primary: none;
+$shadow-glow: none;
 $shadow-focus: 0 0 0 0.1875rem oklch(0.5595 0.2296 279.31 / 0.2);

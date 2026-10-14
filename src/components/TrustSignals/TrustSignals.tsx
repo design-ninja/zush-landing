@@ -1,7 +1,6 @@
-import Heading from '@/components/Heading';
-import Text from '@/components/Text';
+import SectionHeader from '@/components/SectionHeader';
 import AppLink from '@/components/AppLink';
-import styles from './TrustSignals.module.scss';
+import b from '@/components/Blocks/Blocks.module.scss';
 
 interface TrustSignalsProps {
   title?: string;
@@ -13,53 +12,42 @@ const TrustSignals = ({
   description = 'How we score, update, and back up every claim on this page.',
 }: TrustSignalsProps) => {
   return (
-    <section className={styles.TrustSignals} aria-labelledby="trust-signals-title">
-      <div className={styles.TrustSignals__Container}>
-        <div className={styles.TrustSignals__Header}>
-          <Heading as="h2" id="trust-signals-title">
-            {title}
-          </Heading>
-          <Text color="subtle">{description}</Text>
-        </div>
+    <section className={b.Section} aria-labelledby="trust-signals-title">
+      <SectionHeader id="trust-signals-title" title={title} description={description} />
 
-        <div className={styles.TrustSignals__Grid}>
-          <article className={styles.TrustCard}>
-            <Heading as='h3'>Open scoring rubric</Heading>
-            <Text as='p' color='subtle'>
-              Weighted criteria for naming accuracy, automation, and rollback
-              — published and auditable.
-            </Text>
-            <AppLink href="/methodology" className={styles.TrustCard__Link}>
-              View methodology →
-            </AppLink>
-          </article>
+      <div className={b.Columns}>
+        <article className={b.Column}>
+          <h3 className={b.ColumnTitle}>Open scoring rubric</h3>
+          <p className={b.ColumnText}>
+            Weighted criteria for naming accuracy, automation, and rollback
+            — published and auditable.
+          </p>
+          <p className={b.Links}>
+            <AppLink href="/methodology">View methodology →</AppLink>
+          </p>
+        </article>
 
-          <article className={styles.TrustCard}>
-            <Heading as='h3'>Updated each release</Heading>
-            <Text as='p' color='subtle'>
-              Claims are refreshed with every shipped version — no stale copy.
-            </Text>
-            <AppLink href="/changelog" className={styles.TrustCard__Link}>
-              See changelog →
-            </AppLink>
-          </article>
+        <article className={b.Column}>
+          <h3 className={b.ColumnTitle}>Updated each release</h3>
+          <p className={b.ColumnText}>
+            Claims are refreshed with every shipped version — no stale copy.
+          </p>
+          <p className={b.Links}>
+            <AppLink href="/changelog">See changelog →</AppLink>
+          </p>
+        </article>
 
-          <article className={styles.TrustCard}>
-            <Heading as='h3'>Backed by evidence</Heading>
-            <Text as='p' color='subtle'>
-              Benchmarks, privacy terms, and head-to-head comparisons — all
-              linked, not just claimed.
-            </Text>
-            <div className={styles.TrustCard__Links}>
-              <AppLink href="/privacy-policy" className={styles.TrustCard__Link}>
-                Data policy
-              </AppLink>
-              <AppLink href="/blog/best-ai-file-renamer-tools-mac-compared" className={styles.TrustCard__Link}>
-                Comparison
-              </AppLink>
-            </div>
-          </article>
-        </div>
+        <article className={b.Column}>
+          <h3 className={b.ColumnTitle}>Backed by evidence</h3>
+          <p className={b.ColumnText}>
+            Benchmarks, privacy terms, and head-to-head comparisons — all
+            linked, not just claimed.
+          </p>
+          <p className={b.Links}>
+            <AppLink href="/privacy-policy">Data policy</AppLink>
+            <AppLink href="/blog/best-ai-file-renamer-tools-mac-compared">Comparison</AppLink>
+          </p>
+        </article>
       </div>
     </section>
   );

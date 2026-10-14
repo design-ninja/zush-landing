@@ -1,6 +1,4 @@
 ---
-import { getImage } from 'astro:assets';
-import ctaBackground from '@/assets/download-cta/try-zush-free-bg.webp';
 import headingStyles from '@/components/Heading/Heading.module.scss';
 import textStyles from '@/components/Text/Text.module.scss';
 import downloadStyles from '@/components/DownloadButton/DownloadButton.module.scss';
@@ -50,17 +48,6 @@ const hintClasses = [
   textStyles.Text_subtle,
   styles.BlogCTA__Hint,
 ].join(' ');
-// Rendered as a plain <img> rather than the Image component, which emits a
-// bare `alt` that crawlers read as missing. The alt is non-empty for the same
-// reason — Bing's Site Scan counts alt="" as undefined — while aria-hidden
-// keeps this purely decorative background out of the accessibility tree.
-const background = await getImage({
-  src: ctaBackground,
-  width: 1600,
-  height: 914,
-  format: 'webp',
-  quality: 78,
-});
 ---
 
 {
@@ -71,16 +58,6 @@ const background = await getImage({
       data-blog-cta-platform='general'
       data-placement={placement}
     >
-      <img
-        src={background.src}
-        width='1600'
-        height='914'
-        alt='Decorative background'
-        class={styles.BlogCTA__Background}
-        loading='lazy'
-        decoding='async'
-        aria-hidden='true'
-      />
       <div class={styles.BlogCTA__Content}>
         <h3
           class={titleClasses}
@@ -95,8 +72,8 @@ const background = await getImage({
           <div
             class={[
               downloadStyles.Group,
-              downloadStyles.Group_black,
-              downloadStyles.Group_md,
+              downloadStyles.Group_primary,
+              downloadStyles.Group_lg,
               downloadStyles.Group_single,
             ].join(' ')}
           >
@@ -136,16 +113,6 @@ const background = await getImage({
     </aside>
   ) : (
     <aside class={styles.BlogCTA} data-placement={placement}>
-      <img
-        src={background.src}
-        width='1600'
-        height='914'
-        alt='Decorative background'
-        class={styles.BlogCTA__Background}
-        loading='lazy'
-        decoding='async'
-        aria-hidden='true'
-      />
       <div class={styles.BlogCTA__Content}>
         <h3 class={titleClasses}>
           {title ?? placementTitles[placement](getOSLabel(platform === 'windows' ? 'windows' : 'mac'))}
@@ -155,8 +122,8 @@ const background = await getImage({
           <div
             class={[
               downloadStyles.Group,
-              downloadStyles.Group_black,
-              downloadStyles.Group_md,
+              downloadStyles.Group_primary,
+              downloadStyles.Group_lg,
               downloadStyles.Group_single,
             ].join(' ')}
           >

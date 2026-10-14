@@ -1,22 +1,33 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
+// Values from design/homepage-concept/native.dc.html (What is Zush, Evidence facts, Sources).
 .EvidenceSignals {
-  padding: 2rem 0 4.5rem;
+  padding: $section-gap 0 0;
+
+  @include mobile {
+    padding-top: $section-gap-mobile;
+  }
 
   &_introOnly {
-    padding: 2rem 0 2.5rem;
+    padding: $section-gap 0 0;
+
+    @include mobile {
+      padding-top: $section-gap-mobile;
+    }
   }
 
   &_sourcesOnly {
-    padding: 3rem 0 2rem;
+    padding: 6rem 0 0;
   }
 
   &__Container {
     @include container;
   }
 
+  // "What is Zush": 760px column, no gap below.
   &__IntroOnly {
+    max-width: 44.5rem;
     margin-bottom: 0;
   }
 
@@ -24,89 +35,91 @@
     margin: 0;
   }
 
+  // Standard section h2, left-aligned above the columns.
+  & &__FactsTitle {
+    margin: 0 0 3rem;
+    text-align: left;
+  }
+
+  // Four hairline columns, gap 40px.
   &__Facts {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    margin: 2.25rem 0 0;
+    gap: 2.5rem;
+    margin: 0;
   }
 
   &__Fact {
     min-width: 0;
-    padding: 1.5rem 1.25rem;
-    text-align: center;
-
-    &_green { --fact-accent: var(--tone-green-fg); }
-    &_blue { --fact-accent: var(--tone-blue-fg); }
-    &_purple { --fact-accent: var(--tone-purple-fg); }
-    &_orange { --fact-accent: var(--tone-orange-fg); }
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+    text-align: left;
   }
 
-  // A <dt>, so the global h1–h6 rule does not reach it — the heading face and
-  // weight are set here, matching the site's headings rather than drifting.
+  // A <dt>, so the global h1–h6 rule does not reach it. 17px / 700.
   &__FactTitle {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.55rem;
+    display: block;
     margin: 0;
     color: var(--foreground);
     font-family: var(--font-family-heading);
-    font-size: 1.25rem;
-    font-weight: 600;
-    line-height: 1.25;
+    font-size: 1.0625rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
 
-    @include mobile {
-      font-size: 1.1rem;
-    }
-
+    // Text-only facts in the design.
     svg {
-      flex: 0 0 auto;
-      color: var(--fact-accent);
+      display: none;
     }
   }
 
+  // 14px / 1.6 / muted, margin-top 8px
   &__FactDescription {
-    margin: 0.7rem 0 0;
+    margin: 0.5rem 0 0;
     color: var(--muted-foreground);
     font-size: 0.875rem;
-    line-height: 1.55;
+    line-height: 1.6;
   }
 
   &__Sources {
-    margin-top: 0;
-    padding-top: 0.75rem;
-    text-align: center;
+    text-align: left;
   }
 
-  &__SourcesTitle {
-    margin: 0 0 1rem;
+  // 13px / 600 / faint
+  & &__SourcesTitle {
+    margin: 0;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-align: left;
+    color: var(--text-faint);
   }
 
+  // Inline text links: 14px muted, gap 8px 22px.
   &__SourceLinks {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-    // No local cap: the pills use the full page container, which keeps the trail
-    // to two rows instead of four.
-    margin: 0 auto;
+    @include link-row;
+    margin-top: 0.875rem;
+
+    > a {
+      color: var(--muted-foreground);
+      font-size: 0.875rem;
+
+      &:hover {
+        color: var(--foreground);
+        opacity: 1;
+      }
+    }
   }
 
   @include tablet {
     &__Facts {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-
   }
 
   @include small {
     &__Facts {
       grid-template-columns: 1fr;
-    }
-
-    &__Fact {
-      padding: 1.125rem 0;
     }
   }
 }

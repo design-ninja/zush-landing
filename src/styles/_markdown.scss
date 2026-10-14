@@ -1,3 +1,4 @@
+@use 'variables' as *;
 @use 'mixins' as *;
 
 .markdown-content {
@@ -7,17 +8,21 @@
         scroll-margin-top: 6.5rem;
     }
 
+    // Article scale, one step below landing sections: h2 → h3 size, h3 → h4.
     h2 {
+        @include heading-size('h3');
         margin-top: 2.5rem;
         margin-bottom: 1rem;
     }
 
     h3 {
+        @include heading-size('h4');
         margin-top: 2rem;
-        margin-bottom: 1rem;
+        margin-bottom: 0.75rem;
     }
 
     h4 {
+        font-size: 1.0625rem;
         margin-top: 1.5rem;
         margin-bottom: 0.75rem;
     }
@@ -58,27 +63,28 @@
         font-style: italic;
     }
 
+    // Code and filename examples share one quiet surface with a hairline.
     code {
-        background: var(--border);
-        padding: 0.1em 0;
-        border-radius: 0.2rem;
+        padding: 0.1em 0.3em;
+        border: 1px solid var(--border);
+        border-radius: $radius-xs;
+        background: var(--code-bg);
         font-family: var(--font-mono);
         font-size: 0.875em;
-        box-shadow:
-            0.2em 0 0 var(--border),
-            -0.2em 0 0 var(--border);
     }
 
     pre {
-        background: var(--border);
-        padding: 1rem;
-        border-radius: 0.75rem;
+        padding: 1rem 1.25rem;
+        border: 1px solid var(--border);
+        border-radius: $radius-lg;
+        background: var(--code-bg);
         overflow-x: auto;
         margin-bottom: 1.5rem;
 
         code {
-            background: none;
             padding: 0;
+            border: 0;
+            background: none;
         }
     }
 
@@ -110,7 +116,7 @@
     .markdown-image {
         max-width: 100%;
         height: auto;
-        border-radius: 0.75rem;
+        border-radius: $radius-lg;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 
         &--screenshot {
@@ -125,7 +131,7 @@
     .markdown-video {
         max-width: 100%;
         height: auto;
-        border-radius: 0.75rem;
+        border-radius: $radius-lg;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     }
 
@@ -133,7 +139,7 @@
         position: relative;
         display: inline-flex;
         max-width: 100%;
-        border-radius: 0.75rem;
+        border-radius: $radius-lg;
         overflow: hidden;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
         text-decoration: none;
@@ -168,7 +174,7 @@
         color: white;
         font-size: 0.8125rem;
         font-weight: 600;
-        transition: background-color 0.2s ease;
+        transition: background-color $transition-fast;
     }
 
     .markdown-video-fallback {

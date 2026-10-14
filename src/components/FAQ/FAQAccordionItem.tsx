@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import Heading from '@/components/Heading';
 
 interface FAQAccordionItemProps {
@@ -26,7 +26,7 @@ const FAQAccordionItem = (
         <Heading as='h3' size='h4' className={classes.FAQItem__Question}>
           {question}
         </Heading>
-        <ChevronDown size={24} className={classes.FAQItem__Icon} />
+        <Plus size={18} strokeWidth={2} className={classes.FAQItem__Icon} aria-hidden='true' />
       </summary>
       <div className={classes.FAQItem__Content}>
         <div className={classes.FAQItem__Answer}>{answer}</div>

@@ -111,7 +111,7 @@ const breadcrumbItems = [
     <div class={styles.BlogPost__Container}>
       <header class={styles.BlogPost__Header}>
         <span
-          class={[styles.BlogPost__Track, styles[`BlogPost__Track_${post.platform}`]].join(' ')}
+          class={styles.BlogPost__Track}
         >
           {BLOG_PLATFORM_LABELS[post.platform]}
         </span>

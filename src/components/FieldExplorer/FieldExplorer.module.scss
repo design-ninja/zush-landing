@@ -1,0 +1,175 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.Explorer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    max-width: 46rem;
+
+    &__Label {
+        margin: 0 0 $space-md;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--text-faint);
+    }
+
+    &__Chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    // Selectable field chips: the shared chip, in mono, with an active state.
+    &__Chip {
+        @include chip-interactive;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        white-space: nowrap;
+
+        &[data-active='true'] {
+            @include chip-active;
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+    }
+
+    &__Stage {
+        width: 100%;
+        max-width: 40rem;
+        margin: $space-xl 0 0;
+        padding: $space-lg;
+        @include surface-panel;
+
+        @include mobile {
+            padding: $space-md;
+        }
+    }
+
+    &__Hint {
+        max-width: 34rem;
+        margin: $space-lg 0 0;
+        font-size: 0.8125rem;
+        line-height: 1.55;
+        color: var(--muted-foreground);
+    }
+}
+
+.Card {
+    display: grid;
+    grid-template-columns: 2.125rem max-content 1rem minmax(0, 1fr) 1rem;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.75rem 0.875rem;
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: $radius-sm;
+    text-align: left;
+    animation: card-in 260ms ease both;
+
+    @include mobile {
+        grid-template-columns: 1.75rem minmax(0, 1fr);
+        grid-auto-rows: auto;
+        row-gap: 0.375rem;
+    }
+
+    &__Icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.125rem;
+        height: 2.125rem;
+        border-radius: 0.5rem;
+        background: color-mix(in srgb, var(--tone-red-fg), transparent 88%);
+        color: var(--tone-red-fg);
+    }
+
+    &__Before {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--muted-foreground);
+        text-decoration: line-through;
+        white-space: nowrap;
+
+        @include mobile {
+            grid-column: 2;
+        }
+    }
+
+    &__Arrow {
+        color: var(--muted-foreground);
+
+        @include mobile {
+            display: none;
+        }
+    }
+
+    &__After {
+        justify-self: start;
+        max-width: 100%;
+        padding: 0.3125rem 0.5625rem;
+        border-radius: $radius-xs;
+        background: var(--primary-soft);
+        color: var(--primary);
+        font-family: var(--font-mono);
+        font-size: 0.8125rem;
+        letter-spacing: -0.01em;
+        // Keep the proposed name on one line; the strings are sized to fit.
+        white-space: nowrap;
+        animation: after-in 200ms 60ms ease both;
+
+        @include mobile {
+            grid-column: 2;
+            white-space: normal;
+        }
+    }
+
+    &__Hit {
+        font-weight: 700;
+        text-decoration: underline;
+        text-decoration-color: color-mix(in srgb, var(--primary), transparent 55%);
+        text-underline-offset: 0.2em;
+    }
+
+    &__Check {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1rem;
+        height: 1rem;
+        border-radius: $radius-full;
+        background: var(--success);
+        color: var(--success-foreground);
+        animation: after-in 200ms 120ms ease both;
+
+        @include mobile {
+            display: none;
+        }
+    }
+}
+
+@keyframes card-in {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes after-in {
+    from {
+        opacity: 0;
+        transform: translateX(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

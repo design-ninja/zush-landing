@@ -173,11 +173,6 @@ export default defineConfig({
   },
   vite: {
     plugins: [reactHydrationDiagnostics(), posthogSourcemaps()],
-    // Remotion is loaded by client:visible islands. Pre-bundle it at startup so
-    // Vite does not replace its dependency URL after an island has loaded.
-    optimizeDeps: {
-      include: ['@remotion/player', 'remotion'],
-    },
     server: {
       fs: {
         deny: ['.env', '.env.*', '*.{crt,pem,key,p12,pfx,cer,der}', '.npmrc', '.yarnrc.yml', '**/.git/**', '**/.secrets/**'],

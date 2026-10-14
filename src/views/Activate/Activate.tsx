@@ -134,8 +134,8 @@ const Activate = ({
         <Button
           as="a"
           href={DOWNLOAD_URL}
-          variant="ghost"
-          size="md"
+          variant="outline"
+          size="lg"
           onClick={() => trackDownloadClick({ os: 'mac', source: 'activate' })}
         >
           <Download size={18} />

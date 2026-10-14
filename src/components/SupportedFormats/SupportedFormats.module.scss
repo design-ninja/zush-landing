@@ -1,51 +1,68 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
+// design/homepage-concept/native.dc.html — Supported formats: 32px title, five
+// groups in a grid (minmax 300px, gap 32px 48px), extensions as Geist Mono text.
 .SupportedFormats {
-  padding: 4rem 0;
+  padding: 7.5rem 0 0;
 
   @include mobile {
-    padding: 2.5rem 0;
+    padding: $section-gap-mobile 0 0;
   }
 
   &__Container {
     @include container;
-  }
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(18.75rem, 100%), 1fr));
+    gap: 2rem 3rem;
 
-  &__Group {
-    text-align: center;
-
-    & + & {
-      margin-top: 1.5rem;
+    // The section header spans the whole grid.
+    > :first-child {
+      grid-column: 1 / -1;
+      margin-bottom: 1rem;
     }
   }
 
-  &__GroupTitle {
-    margin-bottom: 1.25rem;
+  &__Group {
+    text-align: left;
+
+    & + & {
+      margin-top: 0;
+    }
+  }
+
+  // 15px / 700
+  & &__GroupTitle {
+    margin: 0;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-align: left;
   }
 
   &__Tags {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-    // No local cap: the extension pills use the full page container, so long
-    // groups like Images and Documents take fewer rows.
-    margin: 0 auto;
+    justify-content: flex-start;
+    gap: 0 0.75rem;
+    margin: 0.5rem 0 0;
   }
 
+  // Geist Mono 12.5px / 1.9 / faint, plain text
   &__Tag {
-    padding: 0.375rem 0.75rem;
-    background: var(--primary-soft);
-    color: var(--primary);
-    border-radius: $radius-full;
-    font-size: 0.8125rem;
-    font-weight: 500;
+    padding: 0;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    color: var(--text-faint);
+    font-family: var(--font-mono);
+    font-size: 0.78125rem;
+    font-weight: 400;
+    line-height: 1.9;
 
     &_highlight {
-      background: var(--primary);
-      color: #fff;
-      font-weight: 600;
+      color: var(--foreground);
+      font-weight: 500;
     }
   }
 }

@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { ArrowRight, Bot, Cloud, KeyRound } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import audiencePhotographerImage from '@/assets/landing/photographers-audience-photographer.webp';
 import audienceStudioImage from '@/assets/landing/photographers-audience-studio.webp';
 import audienceVideographerImage from '@/assets/landing/photographers-audience-videographer.webp';
@@ -8,9 +8,7 @@ import CloudFolders from '@/components/CloudFolders';
 import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
 import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
 import FAQ from '@/components/FAQ';
-import BentoCard from '@/components/Features/BentoCard.astro';
-import FeatureAnimation from '@/components/Features/FeatureAnimation';
-import featureStyles from '@/components/Features/Features.module.scss';
+import WaysToRun from '@/components/Features/WaysToRun.astro';
 import Heading from '@/components/Heading';
 import Pricing from '@/components/Pricing/Pricing.astro';
 import ProfessionGuides from '@/components/ProfessionGuides/ProfessionGuides.astro';
@@ -30,14 +28,11 @@ import {
   PHOTOGRAPHERS_ZUSH_ADVANTAGES,
 } from '@/data/photographersLanding';
 import { getCopy } from '@/i18n/copy';
-import { FEATURE_DEMO_COPY } from '@/i18n/featureDemoCopy';
-import styles from '../MedicalLandingPage/MedicalLandingPage.module.scss';
+import styles from '@/components/ProfessionLanding/ProfessionLanding.module.scss';
 import { PhotographersFieldExplorer } from './PhotographersFieldExplorer';
 import PhotographersHero from './PhotographersHero.astro';
 
 const copy = getCopy('en');
-const demoCopy = FEATURE_DEMO_COPY.en;
-const PRIVACY_ICONS = { cloud: Cloud, byok: KeyRound, offline: Bot } as const;
 const AUDIENCE_IMAGES = {
   photographer: {
     src: audiencePhotographerImage,
@@ -113,42 +108,21 @@ const AUDIENCE_IMAGES = {
   </div>
 </section>
 
-<section id="privacy" class={styles.Privacy} aria-labelledby="photographers-privacy-title">
-  <div class={styles.Privacy__Container}>
-    <div class={sectionHeaderStyles.SectionHeader}>
-      <Heading as="h2" align="center" id="photographers-privacy-title" className={sectionHeaderStyles.SectionHeader__Title}>
-        Choose how each client shoot is analyzed
-      </Heading>
-      <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>
-        Start with managed AI, connect the provider account your studio controls, or run supported visual analysis locally for private and unreleased work.
-      </Text>
-    </div>
-
-    <div class={featureStyles.Band__Grid}>
-      {PHOTOGRAPHERS_PRIVACY_MODES.map((mode) => (
-        <BentoCard
-          title={mode.title}
-          description={mode.description}
-          icon={PRIVACY_ICONS[mode.id]}
-          badge={mode.badge}
-          badgeTone={mode.badgeTone}
-        >
-          <div class={featureStyles.UI_FeatureAnimation}>
-            <FeatureAnimation kind={mode.kind} demoCopy={demoCopy} client:visible />
-          </div>
-        </BentoCard>
-      ))}
-    </div>
-
-    <p class={styles.Privacy__Note}>
-      {PHOTOGRAPHERS_PRIVACY_NOTE}{' '}
-      <a class={styles.ArrowLink} href="/docs/ai-modes">
-        Compare the three AI modes
-        <ArrowRight size={15} aria-hidden="true" />
-      </a>
-    </p>
-  </div>
-</section>
+<WaysToRun
+  id="privacy"
+  headingId="photographers-privacy-title"
+  title="Choose how each client shoot is analyzed"
+  description="Start with managed AI, connect the provider account your studio controls, or run supported visual analysis locally for private and unreleased work."
+  modes={PHOTOGRAPHERS_PRIVACY_MODES}
+>
+  <p class={styles.Privacy__Note}>
+    {PHOTOGRAPHERS_PRIVACY_NOTE}{' '}
+    <a class={styles.ArrowLink} href="/docs/ai-modes">
+      Compare the three AI modes
+      <ArrowRight size={15} aria-hidden="true" />
+    </a>
+  </p>
+</WaysToRun>
 
 <section id="workflow" class={styles.Workflow} aria-labelledby="photographers-workflow-title">
   <div class={styles.Workflow__Container}>

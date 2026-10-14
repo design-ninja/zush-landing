@@ -1,6 +1,4 @@
 ---
-import { Image } from 'astro:assets';
-import ctaBackground from '@/assets/download-cta/try-zush-free-bg.webp';
 import DownloadButton from '@/components/DownloadButton/DownloadButton';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
@@ -41,18 +39,6 @@ const requirements = forceOS
 <section class:list={[styles.Section, className]}>
   <div class={styles.Container}>
     <div class={styles.Card}>
-      <Image
-        src={ctaBackground}
-        width={1600}
-        height={914}
-        format="webp"
-        quality={78}
-        alt="Decorative background"
-        class={styles.Background}
-        loading="lazy"
-        decoding="async"
-        aria-hidden="true"
-      />
       <div class={styles.Content}>
         <Heading as="h2" className={styles.Title}>{resolvedTitle}</Heading>
         <Text as="p" className={styles.Subtitle} color="subtle">{subtitle}</Text>
@@ -61,6 +47,7 @@ const requirements = forceOS
             <DownloadButton
               client:visible
               source="download-cta"
+              variant="primary"
               size="lg"
               forceOS={forceOS}
               showDropdown={false}
@@ -73,6 +60,7 @@ const requirements = forceOS
               <DownloadButton
                 client:visible
                 source="download-cta"
+                variant="primary"
                 size="lg"
                 forceOS="mac"
                 showDropdown={false}
@@ -81,6 +69,7 @@ const requirements = forceOS
               <DownloadButton
                 client:visible
                 source="download-cta"
+                variant="outline"
                 size="lg"
                 forceOS="windows"
                 showDropdown={false}

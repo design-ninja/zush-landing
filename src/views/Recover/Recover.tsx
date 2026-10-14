@@ -89,6 +89,7 @@ const Recover = ({
         <Button
           type="submit"
           variant="primary"
+          size="lg"
           disabled={isLoading}
         >
           {isLoading ? copy.sending : copy.send}

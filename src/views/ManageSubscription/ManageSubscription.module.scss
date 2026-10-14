@@ -3,8 +3,9 @@
 @use '../../styles/mixins' as *;
 
 .ManageSubscription {
+    // Size and weight come from <Heading as="h1">, like every page title.
     &__Title {
-        @include page-title;
+        margin: 0 0 1rem;
     }
 
     &__Subtitle {
@@ -26,10 +27,7 @@
         width: 100%;
         max-width: 420px;
         margin: 0 auto 24px;
-        padding: 14px 16px;
-        border: 1px solid color-mix(in srgb, var(--secondary) 34%, transparent);
-        border-radius: $radius-sm;
-        background: color-mix(in srgb, var(--secondary) 9%, transparent);
+        @include callout('note');
         text-align: center;
 
         p {
@@ -39,9 +37,7 @@
     }
 
     &__Info {
-        background: var(--muted);
-        border-radius: $radius-sm;
-        padding: 16px;
+        @include callout;
         margin-bottom: 24px;
         text-align: left;
 

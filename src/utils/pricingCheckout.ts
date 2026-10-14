@@ -1,4 +1,3 @@
-// fallow-ignore-file unused-file
 import { getCheckoutParam } from '@/utils/checkoutParams';
 
 let isPricingCheckoutBound = false;

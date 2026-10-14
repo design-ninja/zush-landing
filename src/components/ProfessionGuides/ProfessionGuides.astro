@@ -76,7 +76,7 @@ const browseLabels: Record<Locale, string> = {
     </div>
 
     <div class={styles.Guides__List}>
-      {guides.map((post) => <BlogPostCard post={post} basePath={basePath} />)}
+      {guides.map((post) => <BlogPostCard post={post} basePath={basePath} variant='tile' />)}
     </div>
 
     <div class={styles.Guides__Action}>
