@@ -35,12 +35,7 @@ const thumbnailSlug = post.translationOf ?? post.slug;
       densities={[1, 2]}
     />
     <span class={styles.BlogHighlightCard__Body}>
-      <span
-        class:list={[
-          styles.BlogHighlightCard__Track,
-          styles[`BlogHighlightCard__Track_${post.platform}`],
-        ]}
-      >
+      <span class={styles.BlogHighlightCard__Track}>
         {BLOG_PLATFORM_LABELS[post.platform]}
       </span>
       <h3 class={styles.BlogHighlightCard__Title}>{post.title}</h3>

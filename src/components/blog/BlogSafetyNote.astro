@@ -40,23 +40,21 @@ const {
   </div>
 </aside>
 
-<style is:global>
+<style is:global lang="scss">
+  @use 'styles/variables' as *;
+  @use 'styles/mixins' as *;
+
   .blog-safety-note {
+    @include callout('note');
     margin: 1.75rem 0 2rem;
-    padding: 1.1rem 1.2rem;
-    border: 1px solid color-mix(in srgb, #22c55e 32%, var(--border));
-    border-radius: var(--radius-md);
-    background: color-mix(in srgb, #22c55e 7%, var(--card));
   }
 
   .blog-safety-note__eyebrow {
     display: block;
     margin-bottom: 0.25rem;
-    color: #15803d;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    color: var(--note-fg);
+    font-size: 0.8125rem;
+    font-weight: 600;
   }
 
   .blog-safety-note__title {

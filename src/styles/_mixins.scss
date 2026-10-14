@@ -554,6 +554,23 @@ $heading-scale: (
     }
 }
 
+// In-article callout. Tones: neutral (code grey), note (calm sage, TL;DR and
+// safety notes), accent (faint brand violet, product mentions).
+@mixin callout($tone: 'neutral') {
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: $radius-md;
+    background: var(--code-bg);
+
+    @if $tone == 'note' {
+        border-color: var(--note-border);
+        background: var(--note-bg);
+    } @else if $tone == 'accent' {
+        border-color: color-mix(in oklch, var(--primary) 18%, var(--border));
+        background: color-mix(in oklch, var(--primary) 6%, var(--background));
+    }
+}
+
 // Ruled item: a hairline on top carries the separation instead of a card.
 @mixin hairline-item($gap: 1.5rem) {
     border-top: 1px solid var(--border);
@@ -731,6 +748,15 @@ $heading-scale: (
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
     gap: 2.5rem 1.5rem;
+}
+
+// Blog track label above a post title (General / Mac / Windows).
+@mixin post-track {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
 }
 
 // Lead / body copy under a heading.

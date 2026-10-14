@@ -61,13 +61,13 @@ const {
   </div>
 </aside>
 
-<style is:global>
+<style is:global lang="scss">
+  @use 'styles/variables' as *;
+  @use 'styles/mixins' as *;
+
   .blog-product-intro {
+    @include callout('accent');
     margin: 1.75rem 0 2rem;
-    padding: 1rem 1.25rem;
-    background: color-mix(in srgb, var(--primary) 7%, var(--card));
-    border: 1px solid color-mix(in srgb, var(--primary) 18%, var(--border));
-    border-radius: var(--radius-md);
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
@@ -129,15 +129,15 @@ const {
     font-size: 0.92rem;
     text-decoration: none;
     border: 0;
-    transition: opacity 0.15s ease;
+    transition: opacity $transition-fast;
   }
 
   .blog-product-intro__link:hover {
-    opacity: 0.75;
+    opacity: 0.78;
   }
 
   .blog-product-intro__link span {
-    transition: transform 0.15s ease;
+    transition: transform $transition-fast;
   }
 
   .blog-product-intro__link:hover span {

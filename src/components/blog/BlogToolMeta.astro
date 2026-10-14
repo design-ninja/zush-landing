@@ -45,13 +45,14 @@ const linkLabel =
   }
 </dl>
 
-<style is:global>
+<style is:global lang="scss">
+  @use 'styles/variables' as *;
+  @use 'styles/mixins' as *;
+
+  // Tool facts in comparison posts: neutral callout with label/value rows.
   .blog-tool-meta {
+    @include callout;
     margin: 0.5rem 0 1.5rem;
-    padding: 0.85rem 1rem;
-    background: color-mix(in srgb, var(--foreground) 4%, var(--card));
-    border: 1px solid var(--border);
-    border-radius: 0.6rem;
     display: grid;
     gap: 0.4rem;
   }
@@ -61,45 +62,28 @@ const linkLabel =
     grid-template-columns: 6.25rem 1fr;
     gap: 0.6rem;
     align-items: baseline;
+
+    @include small {
+      grid-template-columns: 1fr;
+      gap: 0.1rem;
+    }
   }
 
   .blog-tool-meta dt {
+    color: var(--text-faint);
+    font-size: 0.8125rem;
     font-weight: 600;
-    color: var(--muted-foreground);
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
   }
 
   .blog-tool-meta dd {
     margin: 0;
-    font-size: 0.95rem;
+    font-size: 0.9375rem;
     line-height: 1.55;
     min-width: 0;
     color: var(--foreground);
   }
 
   .blog-tool-meta__link {
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: var(--font-weight-link);
-    border-radius: 0.22em;
-  }
-
-  .blog-tool-meta__link:hover,
-  .blog-tool-meta__link:focus-visible {
-    color: var(--primary-hover);
-    background: var(--primary-soft);
-  }
-
-  @media (max-width: 600px) {
-    .blog-tool-meta__row {
-      grid-template-columns: 1fr;
-      gap: 0.1rem;
-    }
-
-    .blog-tool-meta dt {
-      font-size: 0.78rem;
-    }
+    @include text-link;
   }
 </style>

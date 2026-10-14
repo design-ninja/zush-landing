@@ -19,18 +19,6 @@
     @include chip;
     align-self: flex-start;
     margin-bottom: 0.9rem;
-
-    &_general {
-      --track-hue: var(--h-cyan);
-    }
-
-    &_mac {
-      --track-hue: var(--h-purple);
-    }
-
-    &_windows {
-      --track-hue: var(--h-blue);
-    }
   }
 
   &__Title {
@@ -90,11 +78,8 @@
   }
 
   &__Tldr {
+    @include callout('note');
     max-width: 46rem;
-    background: var(--note-bg);
-    border: 1px solid var(--note-border);
-    border-radius: $radius-md;
-    padding: 1rem 1.5rem;
     margin-bottom: 2rem;
     font-size: 0.95rem;
     line-height: 1.6;
@@ -155,11 +140,8 @@
       line-height: 1.6;
     }
     :global(.article-note) {
+      @include callout;
       margin: 1.5rem 0 2rem;
-      padding: 0.75rem 1rem;
-      background: var(--muted);
-      border: 1px solid var(--border);
-      border-radius: $radius-sm;
       color: var(--muted-foreground);
       font-size: 0.8125rem;
       line-height: 1.6;
@@ -190,40 +172,46 @@
     }
   }
 
+  // "On this page": a plain list on a hairline, no card.
   &__TocInner {
-    padding: 1rem 1rem 1.1rem;
-    border: 1px solid var(--border);
-    border-radius: $radius-lg;
-    background: var(--card);
+    padding-left: 1.25rem;
+    border-left: 1px solid var(--border);
     max-height: inherit;
     overflow-y: auto;
     overscroll-behavior: contain;
-    scrollbar-gutter: stable;
   }
 
-  &__TocTitle {
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted-foreground);
-    margin-bottom: 0.9rem;
+  // Qualified so it outweighs the shared Text size class on the element.
+  & &__TocTitle {
+    margin-bottom: 1rem;
+    color: var(--text-faint);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
   }
 
   &__TocNav {
     display: flex;
     flex-direction: column;
-    gap: 0.65rem;
+    gap: 0.625rem;
   }
 
   &__TocLink {
-    font-size: 0.92rem;
+    font-size: 0.875rem;
     line-height: 1.45;
-    color: var(--foreground);
+    color: var(--muted-foreground);
     text-decoration: none;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: var(--foreground);
+    }
 
     &_subtle {
-      color: var(--muted-foreground);
-      padding-left: 0.85rem;
-      font-size: 0.86rem;
+      padding-left: 0.875rem;
+      color: var(--text-faint);
+      font-size: 0.8125rem;
     }
   }
 
@@ -241,16 +229,9 @@
   }
 
   &__MobileTocSummary {
-    list-style: none;
-    cursor: pointer;
+    @include disclosure-summary;
     padding: 0.85rem 1rem;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--foreground);
-
-    &::-webkit-details-marker {
-      display: none;
-    }
+    font-size: 0.875rem;
   }
 
   &__MobileTocLinks {
@@ -277,7 +258,7 @@
   &__RelatedGrid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
+    gap: 0 3rem;
     max-width: 56rem;
 
     @include mobile {
