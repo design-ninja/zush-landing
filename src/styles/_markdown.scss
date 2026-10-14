@@ -63,27 +63,28 @@
         font-style: italic;
     }
 
+    // Code and filename examples share one quiet surface with a hairline.
     code {
-        background: var(--border);
-        padding: 0.1em 0;
-        border-radius: 0.2rem;
+        padding: 0.1em 0.3em;
+        border: 1px solid var(--border);
+        border-radius: $radius-xs;
+        background: var(--code-bg);
         font-family: var(--font-mono);
         font-size: 0.875em;
-        box-shadow:
-            0.2em 0 0 var(--border),
-            -0.2em 0 0 var(--border);
     }
 
     pre {
-        background: var(--border);
-        padding: 1rem;
+        padding: 1rem 1.25rem;
+        border: 1px solid var(--border);
         border-radius: $radius-lg;
+        background: var(--code-bg);
         overflow-x: auto;
         margin-bottom: 1.5rem;
 
         code {
-            background: none;
             padding: 0;
+            border: 0;
+            background: none;
         }
     }
 

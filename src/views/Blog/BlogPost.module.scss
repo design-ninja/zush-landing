@@ -232,7 +232,8 @@
     margin: 1.5rem 0;
     border: 1px solid var(--border);
     border-radius: $radius-md;
-    background: var(--card);
+    background: transparent;
+    @include disclosure-motion;
 
     @include tablet {
       display: block;

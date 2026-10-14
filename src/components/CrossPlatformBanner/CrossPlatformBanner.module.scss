@@ -2,11 +2,7 @@
 @use '../../styles/mixins' as *;
 
 .CrossPlatformBanner {
-  padding: $section-gap 0 0;
-
-  @include mobile {
-    padding-top: $section-gap-mobile;
-  }
+  @include section-spacing;
 
   &__Container {
     @include container;
@@ -26,11 +22,8 @@
   }
 
   &__Eyebrow {
-    display: inline-flex;
-    align-items: center;
-    color: var(--primary);
-    font-size: 0.8125rem;
-    font-weight: 600;
+    @include eyebrow;
+    margin: 0;
   }
 
   &__Title {
@@ -45,10 +38,10 @@
   &__Cards {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    // Full container width, like every other column grid: the platform
+    // summaries fit on one line, so both links sit at the same height.
     gap: 3rem;
     width: 100%;
-    max-width: 55rem;
-    justify-content: start;
 
     &[data-single='true'] {
       grid-template-columns: minmax(0, 22rem);
@@ -62,11 +55,10 @@
 
 .PlatformCard {
   // Open column with a hairline on top; the whole block stays one link.
+  @include hairline-item;
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
-  padding: 1.5rem 0 0;
-  border-top: 1px solid var(--border);
   text-decoration: none;
   color: var(--foreground);
 
@@ -100,7 +92,10 @@
     display: inline-flex;
     align-items: center;
     gap: 0.3rem;
-    margin-top: 0.85rem;
+    // Pinned to the bottom so the links line up even if a summary wraps.
+    align-self: flex-start;
+    margin-top: auto;
+    padding-top: 0.85rem;
     color: var(--primary);
     font-weight: 600;
     font-size: 0.92rem;

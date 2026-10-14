@@ -34,6 +34,7 @@
 
 .FAQItem {
     border-top: 1px solid var(--border);
+    @include disclosure-motion;
 
     &__Header {
         @include disclosure-summary;
@@ -48,13 +49,7 @@
     }
 
     &__Icon {
-        flex-shrink: 0;
-        // "+" closed, "−" open (concept): drop the vertical stroke when open.
-        color: var(--text-faint);
-
-        .FAQItem[open] & path:nth-child(2) {
-            display: none;
-        }
+        @include disclosure-plus;
     }
 
     &__Content {

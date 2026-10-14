@@ -599,6 +599,50 @@ $heading-scale: (
     }
 }
 
+// Animated open/close for a native <details>. The answer stays in the DOM
+// (crawlable, find-in-page works); browsers without ::details-content or
+// interpolate-size simply toggle instantly. Respects reduced motion.
+@mixin disclosure-motion($duration: 0.3s) {
+    interpolate-size: allow-keywords;
+
+    &::details-content {
+        block-size: 0;
+        overflow: hidden;
+        opacity: 0;
+    }
+
+    &[open]::details-content {
+        block-size: auto;
+        opacity: 1;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        &::details-content {
+            transition:
+                block-size $duration ease,
+                opacity $duration ease,
+                content-visibility $duration allow-discrete;
+        }
+    }
+}
+
+// "+" icon (lucide Plus) that turns into "−" when its <details> opens: the
+// vertical stroke collapses instead of disappearing.
+@mixin disclosure-plus {
+    flex-shrink: 0;
+    color: var(--text-faint);
+
+    path:nth-child(2) {
+        transform-box: fill-box;
+        transform-origin: center;
+        transition: transform $transition-fast;
+    }
+
+    details[open] & path:nth-child(2) {
+        transform: scaleY(0);
+    }
+}
+
 // Chevron inside a disclosure summary: faint, flips when open.
 @mixin disclosure-chevron {
     flex-shrink: 0;

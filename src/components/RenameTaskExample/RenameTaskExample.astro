@@ -90,7 +90,7 @@ const headingId = `rename-task-${example.id}`;
   .before { text-decoration: line-through; }
   .after { font-size: .9375rem; font-weight: 600; color: var(--foreground); }
   figcaption { font-size: .8125rem; margin-top: .75rem; }
-  details { margin: 2rem 0 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  details { margin: 2rem 0 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); @include disclosure-motion; }
   summary { @include disclosure-summary; }
   summary :global(.chevron) { @include disclosure-chevron; }
   .details-body { display: grid; gap: 1rem; padding: 0 0 1.5rem; font-size: .9375rem; }

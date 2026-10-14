@@ -13,6 +13,7 @@
     --radius-xl: #{$radius-xl};
 
     --background: #{$background};
+    --code-bg: #{$code-bg};
     --foreground: #{$foreground};
 
     --card: #{$card};
@@ -104,6 +105,7 @@
 
 [data-theme='dark'] {
     --background: #{$dark-background};
+    --code-bg: #{$dark-code-bg};
     --foreground: #{$dark-foreground};
 
     --card: #{$dark-card};
