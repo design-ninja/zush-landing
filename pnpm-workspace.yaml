@@ -4,7 +4,10 @@ allowBuilds:
   esbuild: true
   sharp: true
 minimumReleaseAge: 4320
-minimumReleaseAgeExclude: []
+minimumReleaseAgeExclude:
+  # 11.0.14 moves the rolldown import out of the function runtime; 11.0.13
+  # crashes every server route on Vercel. Drop once 11.0.14 is 3 days old.
+  - '@astrojs/vercel@11.0.14'
 
 onlyBuiltDependencies:
   - esbuild
