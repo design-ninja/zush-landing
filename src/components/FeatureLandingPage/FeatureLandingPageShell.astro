@@ -166,14 +166,14 @@ const relatedPageTitle = (href: string, fallback: string) =>
           description={pdfDeepDive.comparisonIntro}
         />
 
-        <div class={styles.PdfComparisonTable}>
-          <div class={styles.PdfComparisonTable__Head}>
+        <div class:list={[b.Table, styles.PdfComparisonTable]}>
+          <div class:list={[b.TableRow, b.TableRow_head]}>
             <span>{pdfDeepDive.comparisonHeaders?.tool ?? 'Tool'}</span>
             <span>{pdfDeepDive.comparisonHeaders?.bestFor ?? 'Best for'}</span>
             <span>{pdfDeepDive.comparisonHeaders?.gap ?? 'Filename gap'}</span>
           </div>
           {pdfDeepDive.comparisonRows.map((row) => (
-            <div class={styles.PdfComparisonTable__Row}>
+            <div class={b.TableRow}>
               <strong>{row.tool}</strong>
               <span>{row.bestFor}</span>
               <span>{row.gap}</span>

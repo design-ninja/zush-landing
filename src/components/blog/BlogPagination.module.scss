@@ -32,24 +32,7 @@
   }
 
   &__Link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 2.5rem;
-    padding: 0.65rem 1rem;
-    border: 1px solid var(--border);
-    border-radius: $radius-full;
-    color: var(--foreground);
-    text-decoration: none;
-    transition:
-      border-color $transition-fast,
-      color $transition-fast,
-      background-color $transition-fast;
-
-    &:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-      background: var(--primary-soft);
-    }
+    @include button-shape('md');
+    @include button-variant('outline');
   }
 }

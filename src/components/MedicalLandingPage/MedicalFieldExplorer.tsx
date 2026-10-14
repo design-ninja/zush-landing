@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Check, FileText } from 'lucide-react';
 import { MEDICAL_FIELDS } from '@/data/medicalLanding';
-import styles from './MedicalFieldExplorer.module.scss';
+import styles from '@/components/FieldExplorer/FieldExplorer.module.scss';
 
 // Interactive version of the field-extraction section: the chips are buttons,
 // and picking one drives the single rename demo below it. The examples stay

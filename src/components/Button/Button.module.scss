@@ -35,73 +35,38 @@
 
     // Sizes own geometry and text size only — never colour.
     &_sm {
-        padding: 0.5rem 1.25rem;
-        font-size: $button-font-size-sm;
+        @include button-size('sm');
         height: 1.15rem;
     }
 
     &_md {
-        padding: 0.8rem 1.5rem;
-        font-size: $button-font-size-md;
+        @include button-size('md');
     }
 
     &_lg {
-        padding: 0.85rem 1.875rem;
-        font-size: $button-font-size-lg;
+        @include button-size('lg');
     }
 
     &_fluid {
         width: 100%;
     }
 
-    // Variants
+    // Variants. `black` is the legacy name for ink.
     &_primary {
-        background-color: var(--primary-button);
-        color: var(--primary-foreground);
-
-        &:hover {
-            background-color: var(--primary-button-hover);
-        }
+        @include button-variant('primary');
     }
 
-    // Legacy name for the flat ink style.
-    &_black {
-        background-color: var(--button-ink);
-        color: var(--button-ink-foreground);
-
-        &:hover {
-            background-color: var(--button-ink-hover);
-        }
-    }
-
-    // Ink: dark solid fill for quiet primary actions (header Download).
+    &_black,
     &_ink {
-        background-color: var(--button-ink);
-        color: var(--button-ink-foreground);
-
-        &:hover {
-            background-color: var(--button-ink-hover);
-        }
+        @include button-variant('ink');
     }
 
-    // Quiet secondary action: hairline outline, no fill (concept `border2`).
     &_outline {
-        background-color: transparent;
-        color: var(--foreground);
-        box-shadow: inset 0 0 0 1px var(--border-strong);
-
-        &:hover {
-            background-color: color-mix(in oklch, var(--foreground) 5%, transparent);
-        }
+        @include button-variant('outline');
     }
 
     &_ghost {
-        background-color: var(--primary-soft);
-        color: var(--primary);
-
-        &:hover {
-            background-color: var(--primary-soft);
-        }
+        @include button-variant('ghost');
     }
 
     &_loading {

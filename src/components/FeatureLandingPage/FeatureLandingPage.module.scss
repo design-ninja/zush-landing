@@ -103,41 +103,7 @@
   }
 }
 
-// Tool comparison: hairline rows, no outer box.
+// Tool comparison (Blocks.Table): the gap column carries the most text.
 .PdfComparisonTable {
-  border-bottom: 1px solid var(--border);
-
-  &__Head,
-  &__Row {
-    display: grid;
-    grid-template-columns: 0.85fr 1fr 1.45fr;
-    gap: 1.5rem;
-    padding: 1rem 0;
-    border-top: 1px solid var(--border);
-
-    @include mobile {
-      grid-template-columns: 1fr;
-      gap: 0.4rem;
-    }
-  }
-
-  &__Head {
-    color: var(--text-faint);
-    font-size: 0.8125rem;
-    font-weight: 600;
-
-    @include mobile {
-      display: none;
-    }
-  }
-
-  &__Row {
-    @include body-copy(0.9375rem);
-    line-height: 1.55;
-
-    strong {
-      color: var(--foreground);
-      font-weight: 600;
-    }
-  }
+  --table-columns: 0.85fr 1fr 1.45fr;
 }

@@ -14,19 +14,11 @@
     margin-bottom: 1.5rem;
   }
 
+  // Track label (General / Mac / Windows): quiet chip.
   &__Track {
-    --track-hue: var(--h-purple);
-
-    display: inline-flex;
+    @include chip;
     align-self: flex-start;
     margin-bottom: 0.9rem;
-    padding: 0.32rem 0.72rem;
-    border-radius: $radius-full;
-    background: oklch(var(--case-bg-l) var(--case-bg-c) var(--track-hue));
-    color: oklch(var(--case-icon-l) var(--case-icon-c) var(--track-hue));
-    border: 1px solid oklch(var(--case-icon-bg-l) var(--case-icon-bg-c) var(--track-hue));
-    font-size: 0.75rem;
-    font-weight: 600;
 
     &_general {
       --track-hue: var(--h-cyan);
@@ -94,13 +86,7 @@
   }
 
   &__Tag {
-    padding: 0.25rem 0.75rem;
-    background: var(--primary-soft);
-    color: var(--primary);
-    border-radius: $radius-full;
-    font-size: 0.75rem;
-    font-weight: $font-weight-link;
-    text-decoration: none;
+    @include chip-interactive;
   }
 
   &__Tldr {

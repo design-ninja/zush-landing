@@ -17,6 +17,8 @@ import ComparisonTable from '@/components/ComparisonTable/ComparisonTable.astro'
 import PlatformSpecifics from '@/components/PlatformSpecifics/PlatformSpecifics.astro';
 import WindowsSeoSection from '@/components/WindowsSeoSection/WindowsSeoSection.astro';
 import MacSeoSection from '@/components/MacSeoSection/MacSeoSection.astro';
+import SectionHeader from '@/components/SectionHeader';
+import b from '@/components/Blocks/Blocks.module.scss';
 import styles from '@/components/PlatformLandingPage/PlatformLandingPage.module.scss';
 import { PLATFORM_LANDING_CONTENT } from '@/data/platformLanding';
 import { getPlatformLandingSections } from '@/data/platformLandingSections';
@@ -340,26 +342,23 @@ const jsonLdItems = [
   <EvidenceSignals locale={locale} variant="control" />
   <Tour forceOS={platform} copy={copy.home.showcase} />
   {locale === DEFAULT_LOCALE && (
-    <section class={styles.IntentSection} aria-labelledby='platform-intent-heading'>
-      <div class={styles.IntentSection__Container}>
-        <div class={styles.IntentSection__Header}>
-          <span class={styles.IntentSection__Eyebrow}>{intentSection.eyebrow}</span>
-          <h2 id='platform-intent-heading' class={styles.IntentSection__Title}>
-            {intentSection.title}
-          </h2>
-          <p class={styles.IntentSection__Body}>{intentSection.description}</p>
-        </div>
-        <ul class={styles.IntentSection__Grid}>
-          {intentSection.points.map((point) => (
-            <li>{point}</li>
-          ))}
-        </ul>
-        <nav class={styles.IntentSection__Links} aria-label={`${platformLabel} file renamer resources`}>
-          {intentSection.links.map((link) => (
-            <a href={link.href}>{link.label}</a>
-          ))}
-        </nav>
-      </div>
+    <section class={b.Section} aria-labelledby='platform-intent-heading'>
+      <SectionHeader
+        id='platform-intent-heading'
+        eyebrow={intentSection.eyebrow}
+        title={intentSection.title}
+        description={intentSection.description}
+      />
+      <ul class={b.Columns}>
+        {intentSection.points.map((point) => (
+          <li class:list={[b.Column, styles.Point]}>{point}</li>
+        ))}
+      </ul>
+      <nav class:list={[b.Links, styles.Links]} aria-label={`${platformLabel} file renamer resources`}>
+        {intentSection.links.map((link) => (
+          <a href={link.href}>{link.label}</a>
+        ))}
+      </nav>
     </section>
   )}
   <Testimonials locale={locale} />

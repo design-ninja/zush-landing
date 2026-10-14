@@ -11,11 +11,9 @@
 
     &__Label {
         margin: 0 0 $space-md;
-        font-size: 0.75rem;
+        font-size: 0.8125rem;
         font-weight: 600;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--muted-foreground);
+        color: var(--text-faint);
     }
 
     &__Chips {
@@ -25,28 +23,15 @@
         gap: 0.5rem;
     }
 
-    // Selectable tag-buttons — the same pill as <Tag mono>, plus states.
+    // Selectable field chips: the shared chip, in mono, with an active state.
     &__Chip {
-        padding: 0.4rem 0.75rem;
-        border: 1px solid var(--border);
-        border-radius: $radius-full;
-        background: var(--muted);
+        @include chip-interactive;
         font-family: var(--font-mono);
         font-size: 0.75rem;
-        line-height: 1.3;
-        color: var(--foreground);
         white-space: nowrap;
-        cursor: pointer;
-        transition: background-color $transition-fast, border-color $transition-fast, color $transition-fast;
-
-        &:hover {
-            border-color: color-mix(in oklch, var(--primary), transparent 55%);
-        }
 
         &[data-active='true'] {
-            background: var(--primary-soft);
-            border-color: color-mix(in oklch, var(--primary), transparent 45%);
-            color: var(--primary);
+            @include chip-active;
         }
 
         &:focus-visible {
@@ -60,8 +45,7 @@
         max-width: 40rem;
         margin: $space-xl auto 0;
         padding: $space-lg;
-        border-radius: 1.25rem;
-        background: var(--muted);
+        @include surface-panel;
 
         @include mobile {
             padding: $space-md;
@@ -79,31 +63,31 @@
 
 .Card {
     display: grid;
-    grid-template-columns: 34px max-content 16px minmax(0, 1fr) 16px;
+    grid-template-columns: 2.125rem max-content 1rem minmax(0, 1fr) 1rem;
     align-items: center;
-    gap: 10px;
-    padding: 12px 14px;
+    gap: 0.625rem;
+    padding: 0.75rem 0.875rem;
     background: var(--background);
     border: 1px solid var(--border);
-    border-radius: 13px;
+    border-radius: $radius-sm;
     text-align: left;
     animation: card-in 260ms ease both;
 
     @include mobile {
-        grid-template-columns: 28px minmax(0, 1fr);
+        grid-template-columns: 1.75rem minmax(0, 1fr);
         grid-auto-rows: auto;
-        row-gap: 6px;
+        row-gap: 0.375rem;
     }
 
     &__Icon {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 34px;
-        height: 34px;
-        border-radius: 10px;
-        background: color-mix(in srgb, #dc2626, transparent 88%);
-        color: #dc2626;
+        width: 2.125rem;
+        height: 2.125rem;
+        border-radius: 0.5rem;
+        background: color-mix(in srgb, var(--tone-red-fg), transparent 88%);
+        color: var(--tone-red-fg);
     }
 
     &__Before {
@@ -129,8 +113,8 @@
     &__After {
         justify-self: start;
         max-width: 100%;
-        padding: 5px 9px;
-        border-radius: 8px;
+        padding: 0.3125rem 0.5625rem;
+        border-radius: 0.375rem;
         background: var(--primary-soft);
         color: var(--primary);
         font-family: var(--font-mono);
@@ -157,11 +141,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 16px;
-        height: 16px;
-        border-radius: 999px;
+        width: 1rem;
+        height: 1rem;
+        border-radius: $radius-full;
         background: var(--success);
-        color: #fff;
+        color: var(--success-foreground);
         animation: after-in 320ms 160ms ease both;
 
         @include mobile {

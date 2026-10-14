@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Check, FileText } from 'lucide-react';
 import type { ProfessionFieldCopy } from '@/i18n/professions/types';
-import styles from '@/components/LegalLandingPage/LegalFieldExplorer.module.scss';
+import styles from '@/components/FieldExplorer/FieldExplorer.module.scss';
 
 interface Props {
   fields: ProfessionFieldCopy[];

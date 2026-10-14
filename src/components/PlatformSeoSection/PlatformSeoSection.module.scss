@@ -1,0 +1,44 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.Link {
+    @include text-link;
+}
+
+// Copy beside the comparison table.
+.Comparison {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    gap: 3.5rem;
+    align-items: start;
+    margin-top: 6rem;
+
+    @include tablet {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2rem;
+    }
+
+    @include mobile {
+        margin-top: 4rem;
+    }
+
+    &__Intro {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        p {
+            @include body-copy;
+            margin: 0;
+        }
+
+        a {
+            @include text-link;
+        }
+    }
+}
+
+.Docs {
+    @include link-row;
+    margin-top: 3rem;
+}
