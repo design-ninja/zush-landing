@@ -559,6 +559,24 @@
             color: var(--foreground);
         }
     }
+
+    // Standalone landings with their own art direction: a narrow, fully
+    // rounded pill. Last in the block so it outranks the base and mobile radii;
+    // the controls inside round with it.
+    &_compact {
+        max-width: 40rem;
+        border-radius: $radius-full;
+
+        @include mobile {
+            border-radius: $radius-full;
+        }
+    }
+
+    &_compact &__DownloadBtn > a,
+    &_compact &__DownloadBtn > button,
+    &_compact &__MenuToggle {
+        border-radius: $radius-full;
+    }
 }
 
 @keyframes headerMenuFadeIn {
