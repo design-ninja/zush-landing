@@ -32,6 +32,7 @@
     "seo:indexnow:deployed": "node scripts/indexnow-after-deploy.mjs",
     "seo:snapshot": "node scripts/seo-snapshot.mjs",
     "blog:covers": "node scripts/blog-covers/generate.mjs",
+    "og:images": "node scripts/og-images/generate.mjs",
     "check:seo": "pnpm check:astro && pnpm check:locale && pnpm check:localization-sources && pnpm check:locale-fallbacks && pnpm check:localized-landings && pnpm check:blog-locales && pnpm check:payments && pnpm check:pricing && pnpm check:product-facts && pnpm check:seo-middleware && pnpm check:seo-redirects && pnpm build && pnpm check:html && pnpm check:links",
     "check:seo:sandbox": "pnpm check:astro && pnpm check:locale && pnpm check:localization-sources && pnpm check:locale-fallbacks && pnpm check:localized-landings && pnpm check:blog-locales && pnpm check:payments && pnpm check:pricing && pnpm check:product-facts && pnpm check:seo-middleware && pnpm check:seo-redirects && pnpm build:sandbox && pnpm check:html && pnpm check:links",
     "youtube:auth": "node scripts/youtube-upload.mjs auth",

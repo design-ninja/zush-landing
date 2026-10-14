@@ -1,4 +1,5 @@
 ---
+import { getBlogOgImageUrl } from '@/data/blogOgImages';
 import BlogPostLayout, { type TranslationLink } from '@/components/blog/BlogPostLayout.astro';
 import type { AlternateLink } from '@/layouts/BaseLayout.astro';
 import {
@@ -64,6 +65,7 @@ const translationLocales = Object.keys(translations) as BlogLocale[];
 const seo = {
   ...getBlogSeo(post),
   canonicalPath: blogPath,
+  ogImage: getBlogOgImageUrl(post.slug),
 };
 const canonicalUrl = getCanonicalUrl(blogPath);
 

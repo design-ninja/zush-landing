@@ -1,4 +1,5 @@
 ---
+import { getBlogOgImageUrl } from '@/data/blogOgImages';
 import BlogPostLayout, { type TranslationLink } from '@/components/blog/BlogPostLayout.astro';
 import type { AlternateLink } from '@/layouts/BaseLayout.astro';
 import {
@@ -41,7 +42,7 @@ if (!details) {
 
 const { entry, post, faq } = details;
 const relatedPosts = await getRelatedPosts(post.slug);
-const seo = getBlogSeo(post);
+const seo = { ...getBlogSeo(post), ogImage: getBlogOgImageUrl(post.slug) };
 const howTo = HOW_TO_SCHEMAS[post.slug];
 const blogPath = `/blog/${post.slug}`;
 const isSelfCanonical = seo.canonicalPath === blogPath;
