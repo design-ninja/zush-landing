@@ -33,16 +33,6 @@ export const MEDICAL_HERO = {
   },
 } as const;
 
-// Header copy for the Remotion demo section (MedicalRecordsAnimation defines
-// its own file rows). Every generated name in the demo is identifier-based;
-// see house rule 1 at the top.
-export const MEDICAL_DEMO = {
-  title: 'Watch patient scans name themselves',
-  titleAccent: 'name themselves',
-  description:
-    'Real scanner output on the left, the names Zush proposes on the right — every batch is reviewed before anything is applied.',
-} as const;
-
 export interface MedicalField {
   label: string;
   /** The scanner default the interactive demo starts from. */

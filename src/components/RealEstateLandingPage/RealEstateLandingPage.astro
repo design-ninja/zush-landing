@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { ArrowRight, Bot, Cloud, KeyRound } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import audienceAgentImage from '@/assets/landing/real-estate-audience-agent.webp';
 import audienceCoordinatorImage from '@/assets/landing/real-estate-audience-coordinator.webp';
 import audienceListingMediaImage from '@/assets/landing/real-estate-audience-listing-media.webp';
@@ -8,10 +8,7 @@ import CloudFolders from '@/components/CloudFolders';
 import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
 import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
 import FAQ from '@/components/FAQ';
-import BentoCard from '@/components/Features/BentoCard.astro';
-import FeatureAnimation from '@/components/Features/FeatureAnimation';
-import featureStyles from '@/components/Features/Features.module.scss';
-import b from '@/components/Blocks/Blocks.module.scss';
+import WaysToRun from '@/components/Features/WaysToRun.astro';
 import Heading from '@/components/Heading';
 import Pricing from '@/components/Pricing/Pricing.astro';
 import ProfessionGuides from '@/components/ProfessionGuides/ProfessionGuides.astro';
@@ -28,14 +25,11 @@ import {
   REAL_ESTATE_WORKFLOW,
 } from '@/data/realEstateLanding';
 import { getCopy } from '@/i18n/copy';
-import { FEATURE_DEMO_COPY } from '@/i18n/featureDemoCopy';
 import styles from '@/components/ProfessionLanding/ProfessionLanding.module.scss';
 import { RealEstateFieldExplorer } from './RealEstateFieldExplorer';
 import RealEstateHero from './RealEstateHero.astro';
 
 const copy = getCopy('en');
-const demoCopy = FEATURE_DEMO_COPY.en;
-const PRIVACY_ICONS = { cloud: Cloud, byok: KeyRound, offline: Bot } as const;
 const AUDIENCE_IMAGES = {
   agent: {
     src: audienceAgentImage,
@@ -111,42 +105,21 @@ const AUDIENCE_IMAGES = {
   </div>
 </section>
 
-<section id="privacy" class={styles.Privacy} aria-labelledby="real-estate-privacy-title">
-  <div class={styles.Privacy__Container}>
-    <div class={sectionHeaderStyles.SectionHeader}>
-      <Heading as="h2" align="center" id="real-estate-privacy-title" className={sectionHeaderStyles.SectionHeader__Title}>
-        Process transaction documents on your terms
-      </Heading>
-      <Text as="p" size="lg" color="subtle" align="center" className={sectionHeaderStyles.SectionHeader__Description}>
-        Choose local processing, your brokerage’s approved AI provider, or Zush-managed AI based on the files in the workflow. Source documents remain in their existing folders.
-      </Text>
-    </div>
-
-    <div class={b.Columns}>
-      {REAL_ESTATE_PRIVACY_MODES.map((mode) => (
-        <BentoCard
-          title={mode.title}
-          description={mode.description}
-          icon={PRIVACY_ICONS[mode.id]}
-          badge={mode.badge}
-          badgeTone={mode.badgeTone}
-        >
-          <div class={featureStyles.UI_FeatureAnimation}>
-            <FeatureAnimation kind={mode.kind} demoCopy={demoCopy} client:visible />
-          </div>
-        </BentoCard>
-      ))}
-    </div>
-
-    <p class={styles.Privacy__Note}>
-      {REAL_ESTATE_PRIVACY_NOTE}{' '}
-      <a class={styles.ArrowLink} href="/docs/privacy-security">
-        Read how the modes handle data
-        <ArrowRight size={15} aria-hidden="true" />
-      </a>
-    </p>
-  </div>
-</section>
+<WaysToRun
+  id="privacy"
+  headingId="real-estate-privacy-title"
+  title="Process transaction documents on your terms"
+  description="Choose local processing, your brokerage’s approved AI provider, or Zush-managed AI based on the files in the workflow. Source documents remain in their existing folders."
+  modes={REAL_ESTATE_PRIVACY_MODES}
+>
+  <p class={styles.Privacy__Note}>
+    {REAL_ESTATE_PRIVACY_NOTE}{' '}
+    <a class={styles.ArrowLink} href="/docs/privacy-security">
+      Read how the modes handle data
+      <ArrowRight size={15} aria-hidden="true" />
+    </a>
+  </p>
+</WaysToRun>
 
 <section id="workflow" class={styles.Workflow} aria-labelledby="real-estate-workflow-title">
   <div class={styles.Workflow__Container}>

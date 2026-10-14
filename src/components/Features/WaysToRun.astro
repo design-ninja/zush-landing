@@ -1,66 +1,61 @@
 ---
-// "Choose where AI runs": the three AI modes as hairline columns. Standalone it
-// is its own section (homepage, platform pages); inside <Features> it renders
-// as a nested band with an h3 title. Landing pages add the animated demos.
+// "Choose where AI runs" — the homepage block (design/homepage-concept/native.dc.html):
+// three AI modes as hairline columns with an accent icon. Every page that
+// explains the AI modes renders this component; pages with their own wording
+// (professions) pass a title, description and modes, plus an optional note
+// in the default slot.
 import { Cloud, KeyRound, ShieldCheck } from 'lucide-react';
 import SectionHeader from '@/components/SectionHeader';
-import { DEFAULT_LOCALE, type Locale } from '@/i18n/config';
 import { DEFAULT_FEATURE_CARDS_COPY, type FeatureCardsCopy } from '@/i18n/copy';
-import { FEATURE_DEMO_COPY } from '@/i18n/featureDemoCopy';
 import BentoCard from './BentoCard.astro';
-import FeatureAnimation from './FeatureAnimation';
 import b from '@/components/Blocks/Blocks.module.scss';
-import styles from './Features.module.scss';
+
+type AiModeKind = 'cloud-ai' | 'byok' | 'offline-ai';
+
+export interface AiMode {
+  kind: AiModeKind;
+  title: string;
+  description: string;
+  badge?: string;
+  badgeTone?: 'success';
+}
 
 interface Props {
   copy?: FeatureCardsCopy;
-  locale?: Locale;
-  /** Render the animated demo under each mode. */
-  visuals?: boolean;
-  eagerVisuals?: boolean;
-  /** Band inside <Features>: a div with an h3 title instead of a section. */
-  nested?: boolean;
+  /** Page-specific modes; defaults to the three from `copy`. */
+  modes?: AiMode[];
+  title?: string;
+  description?: string;
+  /** Section anchor (#ways-to-run on product pages, #privacy on professions). */
+  id?: string;
+  /** Heading id for aria-labelledby and deep links. */
+  headingId?: string;
 }
+
+const MODE_ICONS = { 'cloud-ai': Cloud, byok: KeyRound, 'offline-ai': ShieldCheck } as const;
 
 const {
   copy = DEFAULT_FEATURE_CARDS_COPY,
-  locale = DEFAULT_LOCALE,
-  visuals = true,
-  eagerVisuals = false,
-  nested = false,
+  modes = [
+    { kind: 'cloud-ai', ...copy.cloudAi },
+    { kind: 'byok', ...copy.byok },
+    { kind: 'offline-ai', ...copy.offlineAi },
+  ],
+  title = copy.bandTitle,
+  description = copy.bandSubtitle,
+  id = 'ways-to-run',
+  headingId,
 } = Astro.props as Props;
-const demoCopy = FEATURE_DEMO_COPY[locale];
-const modes = [
-  { Icon: Cloud, kind: 'cloud-ai', ...copy.cloudAi },
-  { Icon: KeyRound, kind: 'byok', ...copy.byok },
-  { Icon: ShieldCheck, kind: 'offline-ai', ...copy.offlineAi },
-] as const;
-const Tag = nested ? 'div' : 'section';
-// Hydrated demos opt out of the section reveal so islands never mount hidden.
-const revealAttrs = visuals ? { 'data-scroll-reveal-skip': '' } : {};
 ---
 
-<Tag id='ways-to-run' class={nested ? styles.Band : b.Section} {...revealAttrs}>
-  <SectionHeader
-    level={nested ? 'h3' : 'h2'}
-    size='h2'
-    title={copy.bandTitle}
-    description={copy.bandSubtitle}
-  />
+<section id={id} class={b.Section} aria-labelledby={headingId}>
+  <SectionHeader id={headingId} title={title} description={description} />
 
   <div class={b.Columns}>
-    {modes.map(({ Icon, kind, title, description }) => (
-      <BentoCard title={title} description={description} icon={Icon}>
-        {visuals && (
-          <div class={styles.UI_FeatureAnimation}>
-            {eagerVisuals ? (
-              <FeatureAnimation kind={kind} demoCopy={demoCopy} client:load />
-            ) : (
-              <FeatureAnimation kind={kind} demoCopy={demoCopy} client:visible />
-            )}
-          </div>
-        )}
-      </BentoCard>
+    {modes.map(({ kind, title, description, badge, badgeTone }) => (
+      <BentoCard title={title} description={description} icon={MODE_ICONS[kind]} badge={badge} badgeTone={badgeTone} />
     ))}
   </div>
-</Tag>
+
+  <slot />
+</section>

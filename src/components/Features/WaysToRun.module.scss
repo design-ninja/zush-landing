@@ -1,0 +1,14 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// Mode column (BentoCard) on top of Blocks.Column.
+.BentoCard {
+    display: flex;
+    flex-direction: column;
+
+    &__TitleRow {
+        display: flex;
+        align-items: center;
+        gap: 0.625rem;
+    }
+}

@@ -4,11 +4,12 @@ import type { Slide } from "../FileShowcase";
 import DownloadButton from "../DownloadButton";
 import Heading from "../Heading";
 import StarRating from "../StarRating";
+import ExternalRatings from "@/components/ExternalRatings";
 import Text from "../Text";
 import styles from "./Hero.module.scss";
 import type { DownloadOS } from "@/utils/download";
 import type { DownloadMenuCopy } from "@/i18n/copy";
-import { SOFTPEDIA_REVIEW_URL, WINDOWS_STORE_URL, WINDOWS_STORE_US_URL } from "@/constants";
+import { WINDOWS_STORE_URL } from "@/constants";
 
 
 interface HeroProps {
@@ -182,49 +183,13 @@ const Hero = ({
       <div className={styles.Hero__Container}>
         <div className={styles.Hero__Intro}>
           {(softpediaReviewAriaLabel || microsoftStoreRatingAriaLabel) && (
-            <div className={styles.Hero__ExternalRatings} aria-label="Independent ratings">
-              {softpediaReviewAriaLabel && (
-                <a
-                  className={styles.Hero__StoreReview}
-                  href={SOFTPEDIA_REVIEW_URL}
-                  target="_blank"
-                  rel="noopener noreferrer external"
-                  aria-label={softpediaReviewAriaLabel}
-                >
-                  {softpediaRatedByLabel && (
-                    <span className={styles.Hero__StorePrefix}>{softpediaRatedByLabel}</span>
-                  )}
-                  <span className={styles.Hero__SoftpediaLogo} aria-hidden="true" />
-                  <span className={styles.Hero__StoreStars} aria-hidden="true">
-                    <span className={styles.Hero__StoreStar} />
-                  </span>
-                  <span className={styles.Hero__StoreScore}>4.5</span>
-                </a>
-              )}
-              {microsoftStoreRatingAriaLabel && (
-                <a
-                  className={styles.Hero__StoreReview}
-                  href={WINDOWS_STORE_US_URL}
-                  target="_blank"
-                  rel="noopener noreferrer external"
-                  aria-label={microsoftStoreRatingAriaLabel}
-                >
-                  {microsoftStoreRatedOnLabel && (
-                    <span className={styles.Hero__StorePrefix}>{microsoftStoreRatedOnLabel}</span>
-                  )}
-                  <span className={styles.Hero__MicrosoftStoreBrand} aria-hidden="true">
-                    <span className={styles.Hero__MicrosoftStoreMark}>
-                      <span /><span /><span /><span />
-                    </span>
-                    <span>Microsoft Store</span>
-                  </span>
-                  <span className={styles.Hero__StoreStars} aria-hidden="true">
-                    <span className={styles.Hero__StoreStar} />
-                  </span>
-                  <span className={styles.Hero__StoreScore}>5.0</span>
-                </a>
-              )}
-            </div>
+            <ExternalRatings
+              className={styles.Hero__ExternalRatings}
+              softpediaRatedByLabel={softpediaRatedByLabel}
+              softpediaReviewAriaLabel={softpediaReviewAriaLabel}
+              microsoftStoreRatedOnLabel={microsoftStoreRatedOnLabel}
+              microsoftStoreRatingAriaLabel={microsoftStoreRatingAriaLabel}
+            />
           )}
           {(reviewsHref || aiModes.length > 0) && (
             <div className={styles.Hero__ProofRow}>

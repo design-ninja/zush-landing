@@ -1,9 +1,9 @@
 ---
-// One feature/mode as a hairline column (Blocks): accent icon, title, copy,
-// and an optional demo underneath.
+// One AI mode as a hairline column (Blocks): accent icon, title, optional
+// badge, copy.
 import type { LucideIcon } from 'lucide-react';
 import b from '@/components/Blocks/Blocks.module.scss';
-import styles from './Features.module.scss';
+import styles from './WaysToRun.module.scss';
 
 interface Props {
   title: string;
@@ -15,7 +15,6 @@ interface Props {
 }
 
 const { title, description, icon: Icon, class: className, badge, badgeTone } = Astro.props;
-const hasVisual = Astro.slots.has('default');
 ---
 
 <div class:list={[b.Column, styles.BentoCard, className]} data-bento-card>
@@ -29,9 +28,4 @@ const hasVisual = Astro.slots.has('default');
     )}
   </div>
   <p class={b.ColumnText}>{description}</p>
-  {hasVisual && (
-    <div class={styles.BentoCard__Visual}>
-      <slot />
-    </div>
-  )}
 </div>

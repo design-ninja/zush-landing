@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { ArrowRight, Bot, Cloud, KeyRound } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import audienceBookkeeperImage from '@/assets/landing/accountants-audience-bookkeeper.webp';
 import audienceOwnerImage from '@/assets/landing/accountants-audience-practice-owner.webp';
 import audienceTeamImage from '@/assets/landing/accountants-audience-team.webp';
@@ -8,10 +8,7 @@ import CloudFolders from '@/components/CloudFolders';
 import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
 import DownloadCTA from '@/components/DownloadCTA/DownloadCTA.astro';
 import FAQ from '@/components/FAQ';
-import BentoCard from '@/components/Features/BentoCard.astro';
-import FeatureAnimation from '@/components/Features/FeatureAnimation';
-import featureStyles from '@/components/Features/Features.module.scss';
-import b from '@/components/Blocks/Blocks.module.scss';
+import WaysToRun from '@/components/Features/WaysToRun.astro';
 import Heading from '@/components/Heading';
 import Pricing from '@/components/Pricing/Pricing.astro';
 import ProfessionGuides from '@/components/ProfessionGuides/ProfessionGuides.astro';
@@ -31,15 +28,12 @@ import {
 } from '@/data/accountantsLanding';
 import { MICROSOFT_STORE_REVIEWS } from '@/data/microsoftStoreReviews';
 import { getCopy } from '@/i18n/copy';
-import { FEATURE_DEMO_COPY } from '@/i18n/featureDemoCopy';
 import { WINDOWS_STORE_US_URL } from '@/constants';
 import styles from '@/components/ProfessionLanding/ProfessionLanding.module.scss';
 import { AccountantsFieldExplorer } from './AccountantsFieldExplorer';
 import AccountantsHero from './AccountantsHero.astro';
 
 const copy = getCopy('en');
-const demoCopy = FEATURE_DEMO_COPY.en;
-const PRIVACY_ICONS = { cloud: Cloud, byok: KeyRound, offline: Bot } as const;
 const AUDIENCE_IMAGES = {
   'practice-owner': {
     src: audienceOwnerImage,
@@ -114,42 +108,21 @@ const AUDIENCE_IMAGES = {
   </div>
 </section>
 
-<section id='privacy' class={styles.Privacy} aria-labelledby='accountants-privacy-title'>
-  <div class={styles.Privacy__Container}>
-    <div class={sectionHeaderStyles.SectionHeader}>
-      <Heading as='h2' align='center' id='accountants-privacy-title' className={sectionHeaderStyles.SectionHeader__Title}>
-        Choose how financial documents are processed
-      </Heading>
-      <Text as='p' size='lg' color='subtle' align='center' className={sectionHeaderStyles.SectionHeader__Description}>
-        Start quickly with managed Cloud AI, route analysis through your firm’s provider account with BYOK, or keep supported document analysis on the machine with LM Studio or Ollama.
-      </Text>
-    </div>
-
-    <div class={b.Columns}>
-      {ACCOUNTANTS_PRIVACY_MODES.map((mode) => (
-        <BentoCard
-          title={mode.title}
-          description={mode.description}
-          icon={PRIVACY_ICONS[mode.id]}
-          badge={mode.badge}
-          badgeTone={mode.badgeTone}
-        >
-          <div class={featureStyles.UI_FeatureAnimation}>
-            <FeatureAnimation kind={mode.kind} demoCopy={demoCopy} client:visible />
-          </div>
-        </BentoCard>
-      ))}
-    </div>
-
-    <p class={styles.Privacy__Note}>
-      {ACCOUNTANTS_PRIVACY_NOTE}{' '}
-      <a class={styles.ArrowLink} href='/docs/privacy-security'>
-        Read how the modes handle data
-        <ArrowRight size={15} aria-hidden='true' />
-      </a>
-    </p>
-  </div>
-</section>
+<WaysToRun
+  id='privacy'
+  headingId='accountants-privacy-title'
+  title='Choose how financial documents are processed'
+  description='Start quickly with managed Cloud AI, route analysis through your firm’s provider account with BYOK, or keep supported document analysis on the machine with LM Studio or Ollama.'
+  modes={ACCOUNTANTS_PRIVACY_MODES}
+>
+  <p class={styles.Privacy__Note}>
+    {ACCOUNTANTS_PRIVACY_NOTE}{' '}
+    <a class={styles.ArrowLink} href='/docs/privacy-security'>
+      Read how the modes handle data
+      <ArrowRight size={15} aria-hidden='true' />
+    </a>
+  </p>
+</WaysToRun>
 
 <section id='workflow' class={styles.Workflow} aria-labelledby='accountants-workflow-title'>
   <div class={styles.Workflow__Container}>

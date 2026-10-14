@@ -3,7 +3,7 @@ import Hero from '@/components/Hero';
 import HomeRenameWorkflow from './HomeRenameWorkflow.astro';
 import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
 import Tour from '@/components/Tour';
-import HomeFeatures from './HomeFeatures.astro';
+import Features from '@/components/Features/Features.astro';
 import WaysToRun from '@/components/Features/WaysToRun.astro';
 import SupportedFormats from '@/components/SupportedFormats';
 import CloudFolders from '@/components/CloudFolders';
@@ -133,13 +133,13 @@ const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
 {locale === 'en'
   ? <HomeRenameWorkflow />
   : <EvidenceSignals locale={locale} variant="control" showControlHeading />}
-<HomeFeatures
+<Features
   title={copy.home.featuresTitle}
   description={copy.home.featuresDescription}
   copy={copy.home.featureCards}
   locale={locale}
 />
-<WaysToRun copy={copy.home.featureCards} locale={locale} visuals={false} />
+<WaysToRun copy={copy.home.featureCards} />
 {(locale === 'en' || professionCopy) && (
   <HomeProfessions locale={locale} homeCopy={copy.home} professionCopy={professionCopy} />
 )}

@@ -4,8 +4,8 @@ import { RENAME_TASK_EXAMPLES } from '@/data/renameTaskExamples';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ComparisonTable from '@/components/ComparisonTable/ComparisonTable.astro';
 import PillLink from '@/components/PillLink';
-import OrganizationFeatures from '@/components/OrganizationFeatures/OrganizationFeatures.astro';
 import Features from '@/components/Features/Features.astro';
+import WaysToRun from '@/components/Features/WaysToRun.astro';
 import Heading from '@/components/Heading';
 import SectionHeader from '@/components/SectionHeader';
 import Hero from '@/components/Hero';
@@ -79,6 +79,8 @@ const { route: currentRoute } = stripLocaleFromPath(Astro.url.pathname);
 const taskExample = currentLocale === DEFAULT_LOCALE ? RENAME_TASK_EXAMPLES[currentRoute] : undefined;
 const landingWorkflow = getLandingWorkflow(currentRoute, currentLocale);
 const showPdfScenariosEarly = currentRoute === '/rename-pdf-with-ai';
+// Pages about sorting show the sorting block inside the features block.
+const sortingRoute = ['/ai-file-organizer', '/ai-file-sorter', '/automate-downloads-folder', '/hazel-alternative'].includes(currentRoute);
 const macVersion = parseLatestVersion(macChangelogSource) ?? undefined;
 const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
 const relatedPageHref = (href: string) =>
@@ -128,10 +130,8 @@ const relatedPageTitle = (href: string, fallback: string) =>
   {showPdfScenariosEarly && <PdfScenarios copy={pdfDeepDive} locale={currentLocale} showReviewNote />}
 
   <Tour copy={currentCopy.home.showcase} />
-  <Features title={currentCopy.home.featuresTitle} description={currentCopy.home.featuresDescription} copy={currentCopy.home.featureCards} locale={currentLocale} />
-  {['/ai-file-organizer', '/ai-file-sorter', '/automate-downloads-folder', '/hazel-alternative'].includes(currentRoute) && (
-    <OrganizationFeatures locale={currentLocale} />
-  )}
+  <Features title={currentCopy.home.featuresTitle} description={currentCopy.home.featuresDescription} copy={currentCopy.home.featureCards} locale={currentLocale} sorting={sortingRoute} sorterLink={false} />
+  <WaysToRun copy={currentCopy.home.featureCards} />
   <SupportedFormats
     category={category}
     title={currentCopy.home.supportedFormats}

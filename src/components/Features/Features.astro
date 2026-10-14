@@ -1,76 +1,125 @@
 ---
+// "Your naming system" — the homepage features block (design/homepage-concept/
+// native.dc.html), shared by every page that lists the core features: the
+// flagship (AI batch rename) with AI folder sorting beside it, then the six
+// everyday tools as hairline rows.
+//
+// sorting={false} drops the sorting block; the flagship then shows batch rename.
 import SectionHeader from '@/components/SectionHeader';
-import { DEFAULT_LOCALE, type Locale } from '@/i18n/config';
-import { DEFAULT_FEATURE_CARDS_COPY, type FeatureCardsCopy } from '@/i18n/copy';
-import { FEATURE_DEMO_COPY } from '@/i18n/featureDemoCopy';
-import WaysToRun from './WaysToRun.astro';
-import SmartBatchRenameVisual from './SmartBatchRenameVisual';
-import FeatureSwitcher, { type FeatureSwitcherItem } from './FeatureSwitcher';
+import ThemedScreenshot from '@/components/ThemedScreenshot/ThemedScreenshot.astro';
+import { DEFAULT_LOCALE, getLocalizedPath, type Locale } from '@/i18n/config';
+import type { FeatureCardsCopy } from '@/i18n/copy';
+import { ORGANIZATION_FEATURES } from '@/i18n/organizationFeatures';
 import b from '@/components/Blocks/Blocks.module.scss';
-import styles from './Features.module.scss';
 
 interface Props {
-  title?: string;
-  description?: string;
-  copy?: FeatureCardsCopy;
-  compactTopSpacing?: boolean;
-  eagerVisuals?: boolean;
-  includeBand?: boolean;
+  title: string;
+  description: string;
+  copy: FeatureCardsCopy;
   locale?: Locale;
+  sorting?: boolean;
+  /** Link to /ai-file-sorter from the sorting block (off on the sorter page itself). */
+  sorterLink?: boolean;
+  platform?: 'mac' | 'windows';
 }
 
 const {
-  title = 'Zush Features',
-  description = 'Turn messy filenames into clear, consistent names with previews, templates, folder monitoring, and one-click undo',
-  copy = DEFAULT_FEATURE_CARDS_COPY,
-  compactTopSpacing = false,
-  eagerVisuals = false,
-  includeBand = true,
+  title,
+  description,
+  copy,
   locale = DEFAULT_LOCALE,
+  sorting = true,
+  sorterLink = true,
+  platform = 'mac',
 } = Astro.props as Props;
-const demoCopy = FEATURE_DEMO_COPY[locale];
-
-const switcherItems: FeatureSwitcherItem[] = [
-  { kind: 'folders', title: copy.foldersMonitoring.title, description: copy.foldersMonitoring.description },
-  { kind: 'templates', title: copy.templates.title, description: copy.templates.description },
-  { kind: 'naming-blocks', title: copy.namingBlocks.title, description: copy.namingBlocks.description },
-  { kind: 'prompts', title: copy.customPrompts.title, description: copy.customPrompts.description },
-  { kind: 'metadata', title: copy.smartMetadata.title, description: copy.smartMetadata.description },
-  { kind: 'history', title: copy.renameHistory.title, description: copy.renameHistory.description },
+const org = ORGANIZATION_FEATURES[locale];
+const sorterPath = getLocalizedPath('/ai-file-sorter', locale);
+const guidePath = getLocalizedPath(`/blog/sort-files-into-folders-with-ai-mac${locale === DEFAULT_LOCALE ? '' : `-${locale}`}`, locale);
+const sortingSummary = org.homeSummary ?? `${org.autoDescription} ${org.customDescription} “${org.ruleExample}”`;
+// The Mac sorting shot is cropped to the app window; other shots use the 4:3
+// zoomed framing. Each passes its real rendered width to srcset.
+const crop = sorting && platform === 'mac';
+const items = [
+  copy.foldersMonitoring,
+  copy.templates,
+  copy.namingBlocks,
+  copy.customPrompts,
+  copy.smartMetadata,
+  copy.renameHistory,
 ];
 ---
 
-<section id='features' class:list={[b.Section, { [styles.Features_compactTopSpacing]: compactTopSpacing }]} data-scroll-reveal-skip>
+<section id="features" class={b.Section}>
   <SectionHeader title={title} description={description} />
 
-  <!-- Tier 1: flagship -->
-  <div class={styles.Flagship} data-bento-card>
-    <div class={styles.Flagship__Copy}>
-      <h3 class={b.BlockTitle}>{copy.aiAnalysis.title}</h3>
-      <p class={b.BlockText}>{copy.aiAnalysis.description}{' '}{copy.customAiBlocks.description}</p>
+  <div class="flagship">
+    <div class="flagship-copy">
+      <div class="flagship-block">
+        <h3 class={b.BlockTitle}>{copy.aiAnalysis.title}</h3>
+        <p class={b.BlockText}>{copy.aiAnalysis.description}{' '}{copy.customAiBlocks.description}</p>
+      </div>
+      {sorting && (
+        <div class="flagship-block flagship-block--rule">
+          <div class="flagship-title-row">
+            <h3 id="organization-title" class={b.BlockTitle}>{org.sortingTitle}</h3>
+            <span class={b.Badge}>NEW</span>
+          </div>
+          <p class={b.BlockText}>{sortingSummary}</p>
+          <p class={b.Links}>
+            {sorterLink && org.productLink && <a href={sorterPath}>{org.productLink} <span aria-hidden="true">→</span></a>}
+            <a href={guidePath}>{org.sortingLink} <span aria-hidden="true">→</span></a>
+          </p>
+        </div>
+      )}
     </div>
-    <div class={styles.Flagship__Stage}>
-      {
-        eagerVisuals ? (
-          <SmartBatchRenameVisual demoCopy={demoCopy} client:load />
-        ) : (
-          <SmartBatchRenameVisual demoCopy={demoCopy} client:visible />
-        )
-      }
-    </div>
-  </div>
-
-  <!-- Tier 2: where AI runs -->
-  {includeBand && <WaysToRun nested copy={copy} locale={locale} eagerVisuals={eagerVisuals} />}
-
-  <!-- Tier 3: everyday tools switcher -->
-  <div class={styles.SwitcherSection}>
-    {
-      eagerVisuals ? (
-        <FeatureSwitcher items={switcherItems} client:load />
+    <div class:list={[b.Frame, 'flagship-visual', { 'flagship-visual--crop': crop }]}>
+      {crop ? (
+        <ThemedScreenshot
+          id="folder-sorting"
+          alt={org.sortingTab}
+          sizes="(max-width: 768px) calc(151.5vw - 61px), 1010px"
+        />
       ) : (
-        <FeatureSwitcher items={switcherItems} client:visible />
-      )
-    }
+        <ThemedScreenshot
+          id={sorting ? 'folder-sorting' : 'batch-rename'}
+          platform={platform}
+          alt={sorting ? org.sortingTab : copy.aiAnalysis.title}
+          zoom
+          sizes="(max-width: 768px) calc(135vw - 54px), 900px"
+        />
+      )}
+    </div>
   </div>
+
+  <ul class:list={[b.Columns, b.Columns_list, 'feature-list']}>
+    {items.map((item) => (
+      <li class={b.Column}>
+        <h3 class={b.ColumnTitle}>{item.title}</h3>
+        <p class={b.ColumnText}>{item.description}</p>
+      </li>
+    ))}
+  </ul>
 </section>
+
+<style>
+  /* Concept: copy flex 1 1 340px beside visual flex 1.9 1 560px, gap 48px. */
+  .flagship { display: flex; flex-wrap: wrap; align-items: center; gap: 3rem; }
+  .flagship-copy { flex: 1 1 21.25rem; display: flex; flex-direction: column; gap: 2.25rem; }
+  .flagship-block { display: flex; flex-direction: column; gap: 0.75rem; }
+  .flagship-block--rule { gap: 1rem; border-top: 1px solid var(--border); padding-top: 2rem; }
+  /* Badge stays beside the title; a long title wraps inside its own box instead. */
+  .flagship-title-row { display: flex; flex-wrap: nowrap; align-items: center; gap: 0.75rem; }
+  .flagship-title-row > :global(h3) { flex: 0 1 auto; min-width: 0; }
+  .flagship-title-row > :global(span) { flex: none; }
+  #organization-title { scroll-margin-top: 8rem; }
+
+  .flagship-visual { flex: 1.9 1 35rem; min-width: 0; position: relative; }
+  .flagship-visual :global(.organization-screenshot img) { border-radius: 0; }
+
+  /* Homepage Mac sorting shot: crop the 16:9 showcase to the app window (aspect 845/605). */
+  .flagship-visual--crop { aspect-ratio: 845 / 605; }
+  .flagship-visual--crop :global(.organization-screenshot) { position: absolute; inset: 0; }
+  .flagship-visual--crop :global(.organization-screenshot img) { position: absolute; width: 151.5%; max-width: none; height: auto; left: -25.8%; top: -9.5%; }
+
+  .feature-list { margin-top: 4rem; }
+</style>

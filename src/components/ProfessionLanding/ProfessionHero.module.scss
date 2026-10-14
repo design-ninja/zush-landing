@@ -76,6 +76,11 @@
         margin-inline: auto;
     }
 
+    &__Ratings {
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+
     &__Eyebrow {
         @include eyebrow;
         margin-bottom: $space-md;

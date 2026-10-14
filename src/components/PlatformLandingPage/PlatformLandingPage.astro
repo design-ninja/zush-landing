@@ -2,7 +2,6 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Hero from '@/components/Hero';
 import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
-import OrganizationFeatures from '@/components/OrganizationFeatures/OrganizationFeatures.astro';
 import Features from '@/components/Features/Features.astro';
 import WaysToRun from '@/components/Features/WaysToRun.astro';
 import EvidenceSignals from '@/components/EvidenceSignals/EvidenceSignals.astro';
@@ -333,10 +332,9 @@ const jsonLdItems = [
     description={platformSections.featuresDescription}
     copy={platformSections.featureCards}
     locale={locale}
-    includeBand={false}
+    platform={platform}
   />
-  <OrganizationFeatures locale={locale} platform={platform} showProductLink />
-  <WaysToRun copy={platformSections.featureCards} locale={locale} />
+  <WaysToRun copy={platformSections.featureCards} />
   <EvidenceSignals locale={locale} variant="control" />
   <Tour forceOS={platform} copy={copy.home.showcase} />
   {locale === DEFAULT_LOCALE && (

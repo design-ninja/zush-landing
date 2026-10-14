@@ -17,9 +17,6 @@ importers:
       '@fontsource-variable/manrope':
         specifier: ^5.3.0
         version: 5.3.0
-      '@remotion/player':
-        specifier: ^4.0.461
-        version: 4.0.461(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       bowser:
         specifier: ^2.14.1
         version: 2.14.1
@@ -35,9 +32,6 @@ importers:
       react-markdown:
         specifier: ^10.1.0
         version: 10.1.0(@types/react@19.2.14)(react@19.2.5)
-      remotion:
-        specifier: ^4.0.461
-        version: 4.0.461(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
     devDependencies:
       '@anthropic-ai/sdk':
         specifier: ^0.127.0
@@ -1155,12 +1149,6 @@ packages:
     resolution: {integrity: sha512-oVViFAZnIT3YVPahXzvvZtsPHISWikoYpqF+Hb4YMvufeVmTeljhFeg/hH5Y7b9UYhYbbv0JE7UQRfeSZZ6R+A==}
     peerDependencies:
       rollup: '>= 4.0.0'
-
-  '@remotion/player@4.0.461':
-    resolution: {integrity: sha512-5oSRxhU7EtWToTehcpNUBS2v2/mkjQnZ+exmfGswWdYCuAZS12AF6ozYeLCtCpXE3Z/E0ZezBvxGDzm30Tl/DQ==}
-    peerDependencies:
-      react: '>=16.8.0'
-      react-dom: '>=16.8.0'
 
   '@rolldown/binding-android-arm64@1.1.3':
     resolution: {integrity: sha512-DT6Z3PhvioeHMvxo+xHc3KtqggrI7CCTXCmC2h/5zUlp5jVitv7XEy+9q5/7v8IolhlioawpMo8Kg0EEBy7J0g==}
@@ -3448,12 +3436,6 @@ packages:
   remark-stringify@11.0.0:
     resolution: {integrity: sha512-1OSmLd3awB/t8qdoEOMazZkNsfVTeY4fTsgzcQFdXNq8ToTN4ZGwrMnlda4K6smTFKD+GRV6O48i6Z4iKgPPpw==}
 
-  remotion@4.0.461:
-    resolution: {integrity: sha512-D1phpW1aEUKUuoTLGLivZ0ZRc5A7A+ffEy4t5csF3mkzwGmKKS3AK2e0SOIQzeQRV5PNDeaDX/qZp/bQFpOIkw==}
-    peerDependencies:
-      react: '>=16.8.0'
-      react-dom: '>=16.8.0'
-
   request-light@0.5.8:
     resolution: {integrity: sha512-3Zjgh+8b5fhRJBQZoy+zbVKpAQGLyka0MPgW3zruTF4dFFJ8Fqcfu9YsAvi/rvdcaTeWG3MkbZv4WKxAn/84Lg==}
 
@@ -5320,12 +5302,6 @@ snapshots:
       '@posthog/plugin-utils': 2.0.0
       magic-string: 0.30.21
       rollup: 4.60.2
-
-  '@remotion/player@4.0.461(react-dom@19.2.5(react@19.2.5))(react@19.2.5)':
-    dependencies:
-      react: 19.2.5
-      react-dom: 19.2.5(react@19.2.5)
-      remotion: 4.0.461(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
 
   '@rolldown/binding-android-arm64@1.1.3':
     optional: true
@@ -7952,11 +7928,6 @@ snapshots:
       '@types/mdast': 4.0.4
       mdast-util-to-markdown: 2.1.2
       unified: 11.0.5
-
-  remotion@4.0.461(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
-    dependencies:
-      react: 19.2.5
-      react-dom: 19.2.5(react@19.2.5)
 
   request-light@0.5.8: {}
 

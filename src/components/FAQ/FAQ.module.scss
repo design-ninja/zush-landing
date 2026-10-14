@@ -12,15 +12,15 @@
     overflow: hidden;
     scroll-margin-top: calc($navbar-height + 1rem);
 
-    // 820px column incl. 24px gutters (concept)
+    // Left edge of the page container, like every other section.
     &__Container {
-        max-width: 51.25rem;
-        margin: 0 auto;
-        padding: 0 1.5rem;
+        @include container;
     }
 
     // Hairline list instead of stacked cards: one rule between questions.
+    // 772px reading column (the concept's 820px less gutters).
     &__Grid {
+        max-width: 48.25rem;
         margin-top: 3rem;
         display: flex;
         flex-direction: column;

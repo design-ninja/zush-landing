@@ -61,14 +61,12 @@
                 url('../../assets/landing/home-hero-dark.webp');
         }
 
-        .Hero__Subtitle,
-        .Hero__StorePrefix {
+        .Hero__Subtitle {
             color: #000;
         }
 
         :global(html[data-theme='dark']) & {
-            .Hero__Subtitle,
-            .Hero__StorePrefix {
+            .Hero__Subtitle {
                 color: #fff;
             }
         }
@@ -152,74 +150,6 @@
             color: var(--text-faint);
         }
 
-        // Rating pills: gap 8px; 13px muted, padding 7px 14px, hairline, card fill, gap 7px
-        .Hero__ExternalRatings {
-            gap: 0.5rem;
-        }
-
-        // One line, one style: every word in the pill shares size, weight and colour.
-        .Hero__StoreReview {
-            min-height: 0;
-            // Spacing comes from word spaces, so "Rated by Softpedia" reads as one phrase.
-            gap: 0;
-            padding: 0.4375rem 0.875rem;
-            border: 1px solid var(--border);
-            background: var(--card);
-            color: var(--muted-foreground);
-            font-size: 0.8125rem;
-            font-weight: 500;
-            line-height: 1.4;
-            white-space: nowrap;
-        }
-
-        .Hero__StorePrefix,
-        .Hero__StoreScore,
-        .Hero__MicrosoftStoreBrand {
-            color: inherit;
-            font-size: inherit;
-            font-weight: inherit;
-        }
-
-        .Hero__StorePrefix {
-            margin-right: 0.28em;
-        }
-
-        // 18px star; pulled toward the score (the glyph has side bearing).
-        .Hero__StoreStars {
-            margin: 0 0.125rem 0 0.4375rem;
-            color: var(--star);
-        }
-
-        .Hero__StoreStar {
-            width: 1.125rem;
-            height: 1.125rem;
-        }
-
-        .Hero__StoreScore {
-            height: auto;
-            line-height: inherit;
-        }
-
-        // Store names as bold text (concept). Softpedia's wordmark is drawn
-        // from CSS so the markup — and the page text — stay as they were.
-        .Hero__SoftpediaLogo {
-            width: auto;
-            height: auto;
-            background: none;
-            mask: none;
-
-            &::before {
-                content: 'Softpedia';
-            }
-        }
-
-        .Hero__MicrosoftStoreBrand {
-            gap: 0;
-        }
-
-        .Hero__MicrosoftStoreMark {
-            display: none;
-        }
     }
 
 
@@ -347,103 +277,13 @@
         color: inherit;
     }
 
+    // Ratings come from <ExternalRatings>; the hero only places them.
     &__ExternalRatings {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 0.55rem;
         margin: 0 0 1rem;
 
         @include mobile {
             justify-content: center;
         }
-    }
-
-    &__StoreReview {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.45rem;
-        min-height: 2rem;
-        padding: 0.35rem 0.65rem;
-        border: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
-        border-radius: $radius-full;
-        background: color-mix(in srgb, var(--card) 34%, transparent);
-        color: var(--text-subtle);
-        font-size: 0.75rem;
-        font-weight: 600;
-        line-height: 1;
-        text-decoration: none;
-        transition: color $transition-fast, background $transition-fast;
-
-        &:hover {
-            color: var(--foreground);
-            background: color-mix(in srgb, var(--card) 58%, transparent);
-        }
-
-        &:focus-visible {
-            outline: 2px solid color-mix(in srgb, var(--primary) 62%, transparent);
-            outline-offset: 0.2rem;
-        }
-    }
-
-    &__SoftpediaLogo {
-        width: 4.4rem;
-        height: 0.72rem;
-        flex: 0 0 auto;
-        background: currentColor;
-        mask: url('/images/featured-on/softpedia.svg') center / contain no-repeat;
-    }
-
-    &__StorePrefix {
-        color: var(--text-subtle);
-        font-weight: 500;
-        white-space: nowrap;
-    }
-
-    &__StoreStars {
-        display: inline-flex;
-        margin-right: -0.32rem;
-        color: var(--star);
-    }
-
-    &__StoreStar {
-        width: 1.05rem;
-        height: 1.05rem;
-        background: currentColor;
-        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.8 14.8 8.6 21.2 9.5 16.6 14 17.7 20.3 12 17.3 6.3 20.3 7.4 14 2.8 9.5 9.2 8.6Z'/%3E%3C/svg%3E") center / contain no-repeat;
-    }
-
-    &__StoreScore {
-        display: inline-flex;
-        align-items: center;
-        height: 1.05rem;
-        line-height: 1.05rem;
-        color: var(--foreground);
-        font-variant-numeric: tabular-nums;
-    }
-
-    &__MicrosoftStoreBrand {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.3rem;
-        color: var(--foreground);
-        font-size: 0.72rem;
-        font-weight: 650;
-        white-space: nowrap;
-    }
-
-    &__MicrosoftStoreMark {
-        display: grid;
-        grid-template-columns: repeat(2, 0.29rem);
-        grid-template-rows: repeat(2, 0.29rem);
-        gap: 0.06rem;
-        flex: 0 0 auto;
-
-        span:nth-child(1) { background: #f35325; }
-        span:nth-child(2) { background: #81bc06; }
-        span:nth-child(3) { background: #05a6f0; }
-        span:nth-child(4) { background: #ffba08; }
     }
 
     &__Subtitle {

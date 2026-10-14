@@ -1,7 +1,14 @@
 ---
 import { MACOS_SHOWCASE_SCREENSHOTS, WINDOWS_SHOWCASE_SCREENSHOTS, type ShowcaseTheme } from '@/data/showcaseMedia';
-interface Props { id: string; alt: string; zoom?: boolean; platform?: 'mac' | 'windows' }
-const { id, alt, zoom = false, platform = 'mac' } = Astro.props;
+interface Props {
+  id: string;
+  alt: string;
+  zoom?: boolean;
+  platform?: 'mac' | 'windows';
+  /** Rendered width hint for srcset; pass it when a host scales or crops the image. */
+  sizes?: string;
+}
+const { id, alt, zoom = false, platform = 'mac', sizes: sizesOverride } = Astro.props;
 const assets = platform === 'windows' ? WINDOWS_SHOWCASE_SCREENSHOTS : MACOS_SHOWCASE_SCREENSHOTS;
 const asset = assets.find(item => item.id === id);
 const standalone = platform === 'mac' && id === 'folder-rules';
@@ -12,7 +19,7 @@ const source = (theme: ShowcaseTheme, width: number) => (asset?.images[theme] ??
   {(['light', 'dark'] as const).map(theme => (
     <img data-screenshot-theme={theme} src={source(theme, 640)}
       srcset={[640, 960, 1280, 1600, 1920, 2560].map(width => `${source(theme, width)} ${width}w`).join(', ')}
-      sizes={zoom ? '(max-width: 768px) calc(135vw - 54px), (max-width: 1200px) 67.5vw, 810px' : '(max-width: 768px) calc(100vw - 40px), 800px'}
+      sizes={sizesOverride ?? (zoom ? '(max-width: 768px) calc(135vw - 54px), (max-width: 1200px) 67.5vw, 810px' : '(max-width: 768px) calc(100vw - 40px), 800px')}
       alt={alt} width="1280" height="720" loading="lazy" decoding="async" />
   ))}
 </div>
