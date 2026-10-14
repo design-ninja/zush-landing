@@ -82,7 +82,7 @@
   }
 
   &__Sources {
-    text-align: center;
+    text-align: left;
   }
 
   // 13px / 600 / faint
@@ -91,6 +91,7 @@
     font-size: 0.8125rem;
     font-weight: 600;
     letter-spacing: 0;
+    text-align: left;
     color: var(--text-faint);
   }
 
@@ -98,9 +99,9 @@
   &__SourceLinks {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 0.5rem 1.375rem;
-    margin: 0.875rem auto 0;
+    margin: 0.875rem 0 0;
 
     > a {
       padding: 0;
