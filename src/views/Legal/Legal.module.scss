@@ -15,16 +15,13 @@
     }
 
     &__Updated {
-        color: var(--muted-foreground);
+        color: var(--text-faint);
         margin-bottom: 2rem;
     }
 
+    // Plain reading column, no panel.
     &__Content {
         color: var(--foreground);
-        padding: 2.5rem;
-        background-color: var(--muted);
-        border-radius: $radius-xl;
-        border: 1px solid var(--border);
     }
 
     &__BackLink {

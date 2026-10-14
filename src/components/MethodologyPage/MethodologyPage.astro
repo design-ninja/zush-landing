@@ -203,13 +203,9 @@ const copy = Astro.props.copy ?? defaultCopy;
 <article class="methodology">
   <div class="methodology__container">
     <header class="methodology__hero">
-      <Text as="p" size="sm" color="subtle" align="center" className="methodology__kicker">
-        {copy.kicker}
-      </Text>
-      <Heading as="h1" align="center">{copy.title}</Heading>
-      <Text as="p" size="lg" color="subtle" align="center" className="methodology__lead">
-        {copy.lead}
-      </Text>
+      <p class="methodology__kicker">{copy.kicker}</p>
+      <Heading as="h1">{copy.title}</Heading>
+      <p class="methodology__lead">{copy.lead}</p>
 
       <div class="methodology__heroMeta">
         {copy.heroMeta.map((item, index) => (
@@ -226,7 +222,7 @@ const copy = Astro.props.copy ?? defaultCopy;
         <section id="editorial-policy" class="methodology__card">
           <div class="methodology__sectionHead">
             <span class="methodology__eyebrow">{copy.governanceEyebrow}</span>
-            <Heading as="h2" className="methodology__sectionTitle">{copy.accountabilityTitle}</Heading>
+            <Heading as="h2" size="h3" className="methodology__sectionTitle">{copy.accountabilityTitle}</Heading>
           </div>
 
           <div class="methodology__facts" role="list" aria-label={copy.factsLabel}>
@@ -253,7 +249,7 @@ const copy = Astro.props.copy ?? defaultCopy;
         <section id="scoring-rubric" class="methodology__card">
           <div class="methodology__sectionHead">
             <span class="methodology__eyebrow">{copy.rubricEyebrow}</span>
-            <Heading as="h2" className="methodology__sectionTitle">{copy.rubricTitle}</Heading>
+            <Heading as="h2" size="h3" className="methodology__sectionTitle">{copy.rubricTitle}</Heading>
           </div>
           <Text as="p" color="subtle" className="methodology__copy">{copy.rubricBody}</Text>
 
@@ -280,7 +276,7 @@ const copy = Astro.props.copy ?? defaultCopy;
         <section id="benchmark-protocol" class="methodology__card">
           <div class="methodology__sectionHead">
             <span class="methodology__eyebrow">{copy.validationEyebrow}</span>
-            <Heading as="h2" className="methodology__sectionTitle">{copy.benchmarkTitle}</Heading>
+            <Heading as="h2" size="h3" className="methodology__sectionTitle">{copy.benchmarkTitle}</Heading>
           </div>
 
           <ol class="methodology__steps">
@@ -296,7 +292,7 @@ const copy = Astro.props.copy ?? defaultCopy;
         <section id="evidence-status" class="methodology__card">
           <div class="methodology__sectionHead">
             <span class="methodology__eyebrow">{copy.evidenceStatusEyebrow ?? 'Evidence status'}</span>
-            <Heading as="h2" className="methodology__sectionTitle">{copy.evidenceStatusTitle ?? 'No unpublished scores presented as facts'}</Heading>
+            <Heading as="h2" size="h3" className="methodology__sectionTitle">{copy.evidenceStatusTitle ?? 'No unpublished scores presented as facts'}</Heading>
           </div>
           <Text as="p" color="subtle" className="methodology__copy">
             {copy.evidenceStatusBody ?? 'This page publishes the evaluation protocol, not a completed benchmark leaderboard. Zush does not claim benchmark scores until the controlled run, tested versions, review date, and evidence can be published together.'}
@@ -309,7 +305,7 @@ const copy = Astro.props.copy ?? defaultCopy;
         <section class="methodology__card">
           <div class="methodology__sectionHead methodology__sectionHead_compact">
             <span class="methodology__eyebrow">{copy.policyEyebrow}</span>
-            <Heading as="h2" className="methodology__sectionTitle">{copy.decisionPolicyTitle}</Heading>
+            <Heading as="h2" size="h3" className="methodology__sectionTitle">{copy.decisionPolicyTitle}</Heading>
           </div>
           <Text as="p" color="subtle" className="methodology__copy">{copy.decisionPolicyBody}</Text>
         </section>
@@ -317,7 +313,7 @@ const copy = Astro.props.copy ?? defaultCopy;
         <section class="methodology__card">
           <div class="methodology__sectionHead methodology__sectionHead_compact">
             <span class="methodology__eyebrow">{copy.coverageEyebrow}</span>
-            <Heading as="h2" className="methodology__sectionTitle">{copy.coverageTitle}</Heading>
+            <Heading as="h2" size="h3" className="methodology__sectionTitle">{copy.coverageTitle}</Heading>
           </div>
           <ul class="methodology__bulletList">
             {copy.coverageItems.map((item) => <li>{item}</li>)}
@@ -328,7 +324,7 @@ const copy = Astro.props.copy ?? defaultCopy;
           <section class="methodology__card">
             <div class="methodology__sectionHead methodology__sectionHead_compact">
               <span class="methodology__eyebrow">{copy.platformsEyebrow ?? 'Platforms'}</span>
-              <Heading as="h2" className="methodology__sectionTitle">
+              <Heading as="h2" size="h3" className="methodology__sectionTitle">
                 {copy.platformsTitle ?? 'Platforms covered'}
               </Heading>
             </div>
@@ -344,7 +340,7 @@ const copy = Astro.props.copy ?? defaultCopy;
           <section class="methodology__card">
             <div class="methodology__sectionHead methodology__sectionHead_compact">
               <span class="methodology__eyebrow">{copy.fileTypesEyebrow ?? 'File types'}</span>
-              <Heading as="h2" className="methodology__sectionTitle">
+              <Heading as="h2" size="h3" className="methodology__sectionTitle">
                 {copy.fileTypesTitle ?? 'File types in scope'}
               </Heading>
             </div>
@@ -359,7 +355,7 @@ const copy = Astro.props.copy ?? defaultCopy;
         <section class="methodology__card">
           <div class="methodology__sectionHead methodology__sectionHead_compact">
             <span class="methodology__eyebrow">{copy.referencesEyebrow}</span>
-            <Heading as="h2" className="methodology__sectionTitle">{copy.referencesTitle}</Heading>
+            <Heading as="h2" size="h3" className="methodology__sectionTitle">{copy.referencesTitle}</Heading>
           </div>
           <div class="methodology__links">
             <PillLink href={copy.paths.commercialComparison} withArrow size="sm">{copy.referenceLinks.commercialComparison}</PillLink>
@@ -373,65 +369,65 @@ const copy = Astro.props.copy ?? defaultCopy;
   </div>
 </article>
 
-<style>
+<style lang="scss">
+  @use 'styles/variables' as *;
+  @use 'styles/mixins' as *;
+
   .methodology {
     padding: 4rem 0 5rem;
+
+    @include tablet {
+      padding: 3rem 0 4rem;
+    }
   }
 
   .methodology__container {
-    max-width: 76rem;
-    margin: 0 auto;
-    padding: 0 2rem;
+    @include container;
   }
 
   .methodology__hero {
     max-width: 44rem;
-    margin: 0 auto 3rem;
-    text-align: center;
+    margin: 0 0 4rem;
   }
 
   .methodology__kicker {
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-weight: 600;
-    color: var(--primary);
-    margin-bottom: 0.75rem;
+    @include eyebrow;
   }
 
   .methodology__lead {
-    max-width: 44rem;
-    margin: 1rem auto 0;
-    line-height: 1.7;
+    @include body-copy(1.0625rem);
+    margin: 1rem 0 0;
   }
 
   .methodology__heroMeta {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-top: 1.5rem;
     font-size: 0.875rem;
-    color: var(--muted-foreground);
+    color: var(--text-faint);
   }
 
   .methodology__layout {
     display: grid;
     grid-template-columns: minmax(0, 1.45fr) minmax(18rem, 0.85fr);
-    gap: 1.25rem;
+    gap: 3rem 4rem;
     align-items: start;
+
+    @include tablet {
+      grid-template-columns: minmax(0, 1fr);
+    }
   }
 
   .methodology__main,
   .methodology__rail {
     display: grid;
-    gap: 1rem;
+    gap: 3rem;
   }
 
+  // Sections sit on a hairline, no cards.
   .methodology__card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 1.5rem;
+    @include hairline-item;
   }
 
   .methodology__sectionHead {
@@ -445,34 +441,28 @@ const copy = Astro.props.copy ?? defaultCopy;
   }
 
   .methodology__eyebrow {
-    font-size: 0.78rem;
-    line-height: 1.3;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--primary);
-    font-weight: 600;
-  }
-
-  .methodology__sectionTitle {
+    @include eyebrow;
     margin: 0;
   }
 
-  .methodology__copy {
+  // Set on <Heading>/<Text>, which Astro's scoped styles don't reach.
+  .methodology :global(.methodology__sectionTitle) {
+    margin: 0;
+  }
+
+  .methodology :global(.methodology__copy) {
     line-height: 1.7;
   }
 
   .methodology__facts {
     display: grid;
-    gap: 0.85rem;
   }
 
   .methodology__fact {
     display: grid;
-    gap: 0.3rem;
-    padding: 1rem 1.05rem;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    background: var(--muted);
+    gap: 0.25rem;
+    padding: 0.875rem 0;
+    border-top: 1px solid var(--border);
   }
 
   .methodology__fact p {
@@ -480,77 +470,51 @@ const copy = Astro.props.copy ?? defaultCopy;
   }
 
   .methodology__factLabel {
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted-foreground);
-    font-weight: 650;
+    color: var(--text-faint);
+    font-size: 0.8125rem;
+    font-weight: 600;
   }
 
   .methodology__tableWrap {
     overflow-x: auto;
     margin-top: 1.1rem;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
   }
 
   .methodology__table {
-    width: 100%;
-    border-collapse: collapse;
+    @include content-table;
     min-width: 40rem;
+
+    @include mobile {
+      min-width: 34rem;
+    }
+
+    th,
+    td {
+      vertical-align: top;
+    }
+
+    td:nth-child(2) {
+      color: var(--foreground);
+      font-family: var(--font-mono);
+      white-space: nowrap;
+    }
   }
 
-  .methodology__table th,
-  .methodology__table td {
-    border-bottom: 1px solid var(--border);
-    padding: 1rem 1.1rem;
-    text-align: left;
-    vertical-align: top;
-    color: var(--muted-foreground);
-    line-height: 1.6;
-  }
-
-  .methodology__table tbody tr:last-child td {
-    border-bottom: none;
-  }
-
-  .methodology__table td:first-child {
-    color: var(--foreground);
-    font-weight: 600;
-  }
-
-  .methodology__table td:nth-child(2) {
-    color: var(--foreground);
-    font-family: var(--font-family-heading);
-    font-weight: 550;
-    white-space: nowrap;
-  }
-
-  .methodology__table th {
-    font-size: 0.76rem;
-    text-transform: uppercase;
-    letter-spacing: 0.09em;
-    color: var(--muted-foreground);
-    background: var(--muted);
-  }
-
+  // Numbered protocol: hairline rows with a mono index, like the steps elsewhere.
   .methodology__steps {
     list-style: none;
     margin: 0;
     padding: 0;
     display: grid;
-    gap: 0.8rem;
   }
 
   .methodology__step {
     display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0.9rem;
-    align-items: start;
-    padding: 1rem 1.05rem;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    background: var(--muted);
+    grid-template-columns: 2.5rem 1fr;
+    gap: 0.75rem;
+    align-items: baseline;
+    padding: 1rem 0;
+    border-top: 1px solid var(--border);
   }
 
   .methodology__step p {
@@ -558,66 +522,20 @@ const copy = Astro.props.copy ?? defaultCopy;
   }
 
   .methodology__stepIndex {
-    min-width: 2.4rem;
-    height: 2.4rem;
-    border-radius: 0.6rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-family-heading);
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
     color: var(--primary);
-    background: var(--card);
-    border: 1px solid var(--border);
   }
 
   .methodology__bulletList {
+    @include body-copy(0.9375rem);
     margin: 0;
     padding-left: 1.2rem;
     display: grid;
     gap: 0.7rem;
-    color: var(--muted-foreground);
-    line-height: 1.6;
   }
 
   .methodology__links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  @media (max-width: 980px) {
-    .methodology {
-      padding: 3rem 0 4rem;
-    }
-
-    .methodology__layout {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .methodology__container {
-      padding: 0 1.25rem;
-    }
-
-    .methodology__card {
-      padding: 1.2rem;
-    }
-
-    .methodology__table {
-      min-width: 34rem;
-    }
-
-    .methodology__step {
-      grid-template-columns: 1fr;
-    }
-
-    .methodology__stepIndex {
-      min-width: 0;
-      width: fit-content;
-      padding: 0 0.85rem;
-    }
+    @include link-row(0.5rem 1.25rem);
   }
 </style>
