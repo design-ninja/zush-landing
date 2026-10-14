@@ -22,7 +22,6 @@
     @include shadow('sm');
 
     &:hover {
-      transform: translateY(-0.125rem);
       @include card-hover-ring(
         color-mix(in srgb, var(--primary), var(--border) 55%),
         $shadow-md

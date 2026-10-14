@@ -613,25 +613,6 @@
         }
     }
 
-    &__GlowEffect {
-        position: absolute;
-        top: -2.5rem;
-        right: -2.5rem;
-        width: 12.5rem;
-        height: 12.5rem;
-        background: var(--primary);
-        filter: blur(6.25rem);
-        opacity: 0.3;
-        pointer-events: none;
-        z-index: -1;
-
-        @include mobile {
-            right: 50%;
-            transform: translateX(50%);
-            top: 0;
-            opacity: 0.15;
-        }
-    }
 
     &_compactTopSpacing {
         padding-top: 2rem;

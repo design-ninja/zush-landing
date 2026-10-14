@@ -16,17 +16,10 @@
     grid-template-columns: repeat(auto-fit, minmax(min(18.75rem, 100%), 1fr));
     gap: 2rem 3rem;
 
-    // Standard section h2, left-aligned like the groups below it.
+    // The section header spans the whole grid.
     > :first-child {
       grid-column: 1 / -1;
-      align-items: flex-start;
-      max-width: none;
-      margin: 0 0 1rem;
-      text-align: left;
-
-      h2 {
-        text-align: left;
-      }
+      margin-bottom: 1rem;
     }
   }
 

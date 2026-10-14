@@ -243,9 +243,11 @@ $accent-border-subtle: 28%;
 $accent-border-hover: 48%;
 
 // Shadows
-$shadow-sm: 0 0.25rem 1rem oklch(0 0 0 / 0.02);
-$shadow-md: 0 0.625rem 1.875rem oklch(0 0 0 / 0.08);
-$shadow-lg: 0 1.25rem 3.125rem oklch(0 0 0 / 0.12);
-$shadow-primary: 0 0.9375rem 1.875rem oklch(0.5595 0.2296 279.31 / 0.15);
-$shadow-glow: 0 0 0.9375rem var(--primary);
+// Flat design system: surfaces are separated by hairlines, not shadows.
+// The tokens stay so components keep one switch for elevation.
+$shadow-sm: none;
+$shadow-md: none;
+$shadow-lg: none;
+$shadow-primary: none;
+$shadow-glow: none;
 $shadow-focus: 0 0 0 0.1875rem oklch(0.5595 0.2296 279.31 / 0.2);

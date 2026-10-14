@@ -23,13 +23,11 @@ const MobileDownloadModal = lazy(() => import('@/components/MobileDownloadModal'
 
 type Variant = 'black' | 'primary' | 'ghost' | 'outline' | 'ink';
 type Size = 'sm' | 'md' | 'lg';
-type Surface = 'glass' | 'greenGlow';
 
 interface DownloadButtonProps {
   source: DownloadSource;
   variant?: Variant;
   size?: Size;
-  surface?: Surface;
   label?: string;
   labelAccent?: string;
   edgeLabel?: string;
@@ -85,7 +83,6 @@ const DownloadButton = ({
   source,
   variant = 'black',
   size = 'md',
-  surface = 'glass',
   label = 'Download',
   labelAccent,
   edgeLabel,
@@ -265,7 +262,6 @@ const DownloadButton = ({
         styles.Group,
         styles[`Group_${variant}`],
         styles[`Group_${size}`],
-        surface !== 'glass' ? styles[`Group_surface_${surface}`] : '',
         !hasDropdownItems ? styles.Group_single : '',
         isOpen ? styles.Group_open : '',
         className,

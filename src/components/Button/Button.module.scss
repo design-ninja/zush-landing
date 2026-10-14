@@ -64,13 +64,13 @@
         }
     }
 
+    // Legacy name for the flat ink style.
     &_black {
-        background-color: var(--tertiary);
-        color: var(--tertiary-foreground);
-        outline: 1px solid var(--glass-border);
+        background-color: var(--button-ink);
+        color: var(--button-ink-foreground);
 
         &:hover {
-            background-color: var(--tertiary-hover);
+            background-color: var(--button-ink-hover);
         }
     }
 

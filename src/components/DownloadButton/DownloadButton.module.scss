@@ -155,150 +155,6 @@
 }
 
 // Variants
-.Group_black {
-    @include cta-glass-vars;
-
-    --download-accent-color: var(--secondary);
-    --tertiary: var(--cta-glass-bg);
-    --tertiary-foreground: oklch(1 0 0);
-    --tertiary-hover: var(--cta-glass-bg-hover);
-    --download-divider-color: oklch(1 0 0 / 0.24);
-    --download-divider-opacity: 1;
-    // Stronger than the shared default (0.2): on a black pill the top highlight
-    // is the only thing giving the surface any shape.
-    --cta-glass-shine-strong: #{oklch(1 0 0 / 0.32)};
-
-    @include cta-glass-surface;
-    @include cta-glass-gloss;
-    border-radius: $radius-button;
-    background-clip: padding-box;
-    overflow: hidden;
-
-    &.Group_open {
-        overflow: visible;
-    }
-
-    &:focus-within {
-        outline: 2px solid var(--primary);
-        outline-offset: 3px;
-    }
-
-    .Main:focus-visible,
-    .Toggle:focus-visible {
-        outline: none;
-    }
-
-    &::before {
-        inset: 0 0.25rem auto;
-        height: calc(46% + 0.1rem);
-    }
-
-    // The hover surface is a gradient stack, and gradients do not interpolate,
-    // so swapping `background` on :hover snaps. It is painted as an overlay
-    // instead and its opacity is what animates.
-    &::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
-        pointer-events: none;
-        z-index: 0;
-        opacity: 0;
-        background:
-            radial-gradient(circle at 74% 54%, var(--cta-glass-spot-hover), transparent 34%),
-            linear-gradient(180deg, var(--cta-glass-shine-strong), transparent 38%),
-            var(--cta-glass-bg-hover);
-        // Keep the overlay composited between hovers so Safari does not
-        // rebuild the rounded clip and text layers at each transition.
-        will-change: opacity;
-        transition: opacity $transition-normal;
-
-        @media (prefers-reduced-motion: reduce) {
-            transition: none;
-        }
-    }
-
-    &:hover::after,
-    &:focus-within::after {
-        opacity: 1;
-    }
-
-    .Main,
-    .Toggle {
-        position: relative;
-        z-index: 1;
-        background: transparent;
-        color: inherit;
-        box-shadow: none;
-    }
-
-    .Toggle::before {
-        top: 0.55rem;
-        bottom: 0.55rem;
-        z-index: 2;
-    }
-
-    // On a near-black page the button's own fill is almost the background, so the
-    // ring is what separates them. Kept brighter here than in the light theme.
-    :global(html[data-theme='dark']) & {
-        box-shadow:
-            inset 0 0 0 1px oklch(1 0 0 / 0.2),
-            0 1.25rem 3.1rem -1.1rem oklch(0 0 0 / 0.62),
-            0 0.65rem 1.65rem -1rem oklch(1 0 0 / 0.16),
-            0 0 0 1px oklch(1 0 0 / 0.1);
-    }
-
-    svg {
-        position: relative;
-        z-index: 1;
-    }
-}
-
-.Group_surface_greenGlow {
-    --cta-glass-bg: oklch(0 0 0 / 0.9);
-    --cta-glass-bg-hover: oklch(0 0 0 / 0.96);
-    --cta-glass-glow: oklch(0.78 0.18 148 / 0.36);
-    --cta-glass-spot: oklch(0.72 0.19 148 / 0.3);
-    --cta-glass-spot-hover: oklch(0.72 0.19 148 / 0.38);
-    --cta-glass-shine: oklch(1 0 0 / 0.08);
-    --cta-glass-shine-strong: oklch(1 0 0 / 0.24);
-    --cta-glass-shadow: oklch(0 0 0 / 0.44);
-
-    background:
-        radial-gradient(ellipse at 78% 56%, var(--cta-glass-spot), transparent 44%),
-        linear-gradient(180deg, var(--cta-glass-shine), transparent 38%),
-        var(--cta-glass-bg);
-    box-shadow:
-        inset 0 1px 0 oklch(1 0 0 / 0.18),
-        inset 0 -0.95rem 1.65rem oklch(0 0 0 / 0.24),
-        0 1.35rem 3.2rem -1.25rem var(--cta-glass-shadow),
-        0 0.8rem 2rem -1rem var(--cta-glass-glow);
-
-    &::before {
-        inset: 0 0.25rem auto;
-        height: 46%;
-        background: linear-gradient(180deg, var(--cta-glass-shine-strong), transparent);
-        opacity: 0.92;
-    }
-
-    &::after {
-        background:
-            radial-gradient(ellipse at 78% 56%, var(--cta-glass-spot-hover), transparent 46%),
-            linear-gradient(180deg, var(--cta-glass-shine-strong), transparent 38%),
-            var(--cta-glass-bg-hover);
-    }
-
-    :global(html[data-theme='dark']) & {
-        box-shadow:
-            inset 0 1px 0 oklch(1 0 0 / 0.18),
-            inset 0 0 0 1px oklch(1 0 0 / 0.12),
-            inset 0 -0.95rem 1.65rem oklch(0 0 0 / 0.24),
-            0 0 0 1px oklch(1 0 0 / 0.1),
-            0 1.25rem 3.1rem -1.1rem oklch(0 0 0 / 0.62),
-            0 0.8rem 2rem -1rem var(--cta-glass-glow);
-    }
-}
-
 .Group_primary {
     .Main,
     .Toggle {
@@ -313,8 +169,9 @@
 }
 
 
-// Ink: dark solid fill (header Download).
-.Group_ink {
+// Ink: dark solid fill. `black` is the legacy name for the same flat style.
+.Group_ink,
+.Group_black {
     .Main,
     .Toggle {
         background-color: var(--button-ink);

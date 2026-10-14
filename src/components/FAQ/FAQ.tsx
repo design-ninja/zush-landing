@@ -134,7 +134,6 @@ const FAQ = ({
     <section id='faq' className={styles.FAQ}>
       <div className={styles.FAQ__Container}>
         <SectionHeader
-          align='left'
           title={title}
           description={description}
         />

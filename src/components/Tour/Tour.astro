@@ -31,7 +31,7 @@ const srcSet = (src: string) => [640, 960, 1280, 1600, 1920, 2560].map(width => 
 
 <section class={styles.Tour} data-scroll-reveal-force data-tour>
   <div class={styles.Tour__Container}>
-    <div class={`${headerStyles.SectionHeader} ${headerStyles.SectionHeader_left}`}>
+    <div class={`${headerStyles.SectionHeader}`}>
       <Heading as="h2" className={headerStyles.SectionHeader__Title}>
         {titleParts[0]}<span class="brand-accent-text">{copy.titleAccent}</span>{titleParts.slice(1).join(copy.titleAccent)}
       </Heading>

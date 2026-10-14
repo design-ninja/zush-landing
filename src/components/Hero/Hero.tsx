@@ -271,7 +271,7 @@ const Hero = ({
                   <div className={styles.Hero__PlatformAction}>
                     <DownloadButton
                       source="hero"
-                      variant={waveBackground ? "primary" : "black"}
+                      variant="primary"
                       size="lg"
                       forceOS="mac"
                       showDropdown={false}
@@ -281,7 +281,7 @@ const Hero = ({
                   <div className={styles.Hero__PlatformAction}>
                     <DownloadButton
                       source="hero"
-                      variant={waveBackground ? "outline" : "black"}
+                      variant="outline"
                       size="lg"
                       forceOS="windows"
                       showDropdown={false}
@@ -309,7 +309,7 @@ const Hero = ({
                 <>
                   <DownloadButton
                     source="hero"
-                    variant="black"
+                    variant="primary"
                     size="lg"
                     forceOS={forceOS}
                     label={downloadLabel}
@@ -320,7 +320,7 @@ const Hero = ({
                   {appStoreLabel && (
                     <DownloadButton
                       source="hero"
-                      variant="black"
+                      variant="outline"
                       size="lg"
                       forceOS="mac"
                       channel="mac-app-store"
@@ -347,7 +347,6 @@ const Hero = ({
             className={`${styles.Hero__ShowcaseWrapper} ${styles.Hero__ShowcaseMotion}`}
           >
             <FileShowcase slides={slides} />
-            <div className={styles.Hero__GlowEffect} />
           </div>
         )}
       </div>

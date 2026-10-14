@@ -24,10 +24,10 @@ const SectionHeader = ({
   size,
   className = '',
   id,
-  align = 'center',
+  align = 'left',
 }: SectionHeaderProps) => {
   return (
-    <div className={`${styles.SectionHeader} ${align === 'left' ? styles.SectionHeader_left : ''} ${className}`}>
+    <div className={`${styles.SectionHeader} ${align === 'center' ? styles.SectionHeader_center : ''} ${className}`}>
       <Heading as={level} id={id} size={size} align={align} className={styles.SectionHeader__Title}>
         {titleHtml ? <span dangerouslySetInnerHTML={{ __html: titleHtml }} /> : title}
       </Heading>
