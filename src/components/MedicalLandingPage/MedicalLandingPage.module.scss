@@ -69,13 +69,13 @@
         position: relative;
         max-width: 40rem;
         margin: $space-xl auto 0;
-        border-radius: 1.25rem;
+        border-radius: $radius-xl;
         background: var(--muted);
         overflow: hidden;
         isolation: isolate;
 
         @include mobile {
-            border-radius: 1rem;
+            border-radius: $radius-lg;
         }
     }
 }
@@ -127,7 +127,7 @@
     &__Pattern {
         margin: $space-2xl 0 0;
         padding: $space-lg $space-xl;
-        border-radius: 1rem;
+        border-radius: $radius-lg;
         background: var(--primary-soft);
 
         @include mobile {
@@ -366,7 +366,7 @@
     min-width: 0;
     padding: $space-lg;
     border: 1px solid var(--border);
-    border-radius: 1rem;
+    border-radius: $radius-lg;
     background: var(--card);
 
     &__Title {
@@ -425,7 +425,7 @@
         margin-top: $space-2xl;
         overflow-x: auto;
         border: 1px solid var(--border);
-        border-radius: 1rem;
+        border-radius: $radius-lg;
         background: var(--card);
         -webkit-overflow-scrolling: touch;
 
@@ -643,7 +643,7 @@
 
     &__Media {
         aspect-ratio: 3 / 2;
-        border-radius: 0.875rem;
+        border-radius: $radius-lg;
         overflow: hidden;
         background: var(--muted);
     }

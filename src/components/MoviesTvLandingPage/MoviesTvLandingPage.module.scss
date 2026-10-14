@@ -1,3 +1,4 @@
+@use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
 .Page {
@@ -41,7 +42,7 @@
     gap: 0.65rem;
     min-height: 3.35rem;
     padding: 0.75rem 1.25rem;
-    border-radius: 0.65rem;
+    border-radius: $radius-md;
     font-size: 0.98rem;
     font-weight: 600;
     line-height: 1.2;
@@ -53,14 +54,14 @@
 .Button_primary,
 .Button_other {
     display: inline-flex;
-    border-radius: 0.65rem;
+    border-radius: $radius-md;
     transition: transform 0.2s ease;
 
 
     :global(a[class]) {
         min-height: 3.35rem;
         padding: 0.75rem 1.25rem;
-        border-radius: 0.65rem;
+        border-radius: $radius-md;
         font-size: 0.98rem;
         font-weight: 600;
         line-height: 1.2;
@@ -200,7 +201,7 @@
     width: 100%;
     min-width: 0;
     border: 1px solid #44425e;
-    border-radius: 1.2rem;
+    border-radius: $radius-xl;
     background: rgb(14 15 28 / 0.88);
     backdrop-filter: blur(20px);
     box-shadow: 0 2rem 7rem rgb(0 0 0 / 0.42), 0 0 5rem rgb(132 105 249 / 0.09);
@@ -236,7 +237,7 @@
 .Demo__Before {
     padding: 1.2rem 1.35rem;
     border: 1px solid #3c3b51;
-    border-radius: 0.75rem;
+    border-radius: $radius-lg;
     background: rgb(0 0 0 / 0.22);
 
     p {
@@ -298,7 +299,7 @@
     gap: 1.3rem;
     padding: 1.1rem;
     border: 1px solid #68588f;
-    border-radius: 0.9rem;
+    border-radius: $radius-lg;
     background: linear-gradient(120deg, rgb(104 80 183 / 0.18), rgb(23 24 40 / 0.95));
     animation: demo-reveal 8s ease-in-out infinite;
 }
@@ -449,7 +450,7 @@
     margin-top: 2rem;
     padding: 1.35rem 1.5rem;
     border: 1px solid #414457;
-    border-radius: 0.8rem;
+    border-radius: $radius-lg;
     background: #151923;
 
     h3 { margin: 0; font-size: 1.05rem; font-weight: 700; }

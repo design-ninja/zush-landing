@@ -53,56 +53,6 @@
   margin-top: 1rem;
 }
 
-// File tile + before/after names (PDF scenarios, task workflow example).
-.PdfFileItem {
-  display: flex;
-  align-items: center;
-  gap: 0.875rem;
-  min-width: 0;
-
-  &__Preview {
-    --file-preview-color: var(--tone-red-fg);
-    width: 3rem;
-    height: 3rem;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.15rem;
-    border-radius: $radius-sm;
-    color: var(--file-preview-color);
-    background: color-mix(in srgb, var(--file-preview-color) 12%, var(--background));
-    overflow: hidden;
-  }
-
-  &__Badge {
-    font-size: 0.5rem;
-    line-height: 1;
-    font-weight: 800;
-  }
-
-  &__Content {
-    flex: 1;
-    min-width: 0;
-    overflow: hidden;
-  }
-
-  &__Before {
-    @include mono-sample;
-    @include text-ellipsis;
-    font-size: 0.75rem;
-    text-decoration: line-through;
-  }
-
-  &__After {
-    @include mono-sample;
-    @include text-ellipsis;
-    font-weight: 600;
-    color: var(--foreground);
-  }
-}
-
 // Tool comparison (Blocks.Table): the gap column carries the most text.
 .PdfComparisonTable {
   --table-columns: 0.85fr 1fr 1.45fr;

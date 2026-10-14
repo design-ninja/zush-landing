@@ -114,9 +114,9 @@
     }
   }
 
-  // Hairline items, like the rest of the site's link columns.
+  // Plain link blocks: no card, no rule.
   &__IntroCard {
-    @include hairline-item(1.25rem);
+    min-width: 0;
     color: inherit;
     text-decoration: none;
 

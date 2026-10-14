@@ -2,6 +2,10 @@
   "$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/schema.json",
   "entry": [
     "src/styles/starlight-tokens.scss",
-    "src/styles/starlight.css"
+    "src/styles/starlight.css",
+    "src/scripts/hero-wave.ts"
+  ],
+  "ignorePatterns": [
+    "design/**"
   ]
 }

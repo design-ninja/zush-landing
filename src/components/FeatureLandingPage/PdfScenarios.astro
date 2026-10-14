@@ -3,7 +3,6 @@ import SectionHeader from '@/components/SectionHeader';
 import { FileType2 } from 'lucide-react';
 import type { PdfDeepDiveCopy } from '@/data/pdfDeepDive';
 import type { Locale } from '@/i18n/config';
-import styles from './FeatureLandingPage.module.scss';
 import b from '@/components/Blocks/Blocks.module.scss';
 interface Props { copy: PdfDeepDiveCopy; locale: Locale; showReviewNote?: boolean }
 const { copy, locale, showReviewNote = false } = Astro.props;
@@ -31,14 +30,14 @@ const notes: Record<Locale, string> = {
   <div class:list={[b.Columns, b.Columns_two]}>
     {copy.recipes.map((recipe) => (
       <article class:list={[b.Column, b.Column_stack]}>
-        <div class={styles.PdfFileItem}>
-          <div class={styles.PdfFileItem__Preview} aria-hidden='true'>
+        <div class={b.File}>
+          <div class={b.FileTile} data-tone='pdf' aria-hidden='true'>
             <FileType2 size={22} strokeWidth={2.2} />
-            <span class={styles.PdfFileItem__Badge}>PDF</span>
+            <span class={b.FileBadge}>PDF</span>
           </div>
-          <div class={styles.PdfFileItem__Content}>
-            <div class={styles.PdfFileItem__Before}>{recipe.before}</div>
-            <div class={styles.PdfFileItem__After}>{recipe.after}</div>
+          <div class={b.FileNames}>
+            <div class={b.FileBefore}>{recipe.before}</div>
+            <div class={b.FileAfter}>{recipe.after}</div>
           </div>
         </div>
         <h3 class={b.ColumnTitle}>{recipe.title}</h3>

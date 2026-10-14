@@ -7,15 +7,6 @@
   a:not([class]) {
     @include text-link;
   }
-
-  // File tile colour per category; PDF keeps the shared red tone.
-  [data-tone='audio'] {
-    --file-preview-color: var(--tone-pink-fg);
-  }
-
-  [data-tone='video'] {
-    --file-preview-color: var(--tone-blue-fg);
-  }
 }
 
 // Example + downloads, with the import screenshot beside them.
@@ -69,13 +60,6 @@
     align-items: flex-start;
   }
 
-  &__Names {
-    display: grid;
-    gap: 0.15rem;
-    min-width: 0;
-    flex: 1;
-  }
-
   &__Label {
     font-size: 0.75rem;
     color: var(--text-faint);
@@ -83,18 +67,6 @@
     &:nth-of-type(2) {
       margin-top: 0.5rem;
     }
-  }
-
-  &__Before {
-    @include mono-sample;
-    text-decoration: line-through;
-  }
-
-  &__After {
-    @include mono-sample;
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: var(--foreground);
   }
 }
 

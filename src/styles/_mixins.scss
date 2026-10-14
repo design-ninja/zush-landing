@@ -314,7 +314,7 @@ $button-sizes: (
     gap: 0.375rem;
     padding: 0.3125rem 0.625rem;
     border: 1px solid var(--border);
-    border-radius: 0.375rem;
+    border-radius: $radius-xs;
     background: transparent;
     color: var(--muted-foreground);
     font-size: 0.8125rem;
@@ -432,10 +432,10 @@ $button-sizes: (
     }
 }
 
-// Dropdown menus (language, download): hairline panel, 12px corners, no shadow.
+// Dropdown menus (language, download): hairline panel, input corners, no shadow.
 @mixin dropdown-menu {
     border: 1px solid var(--border);
-    border-radius: 0.75rem;
+    border-radius: $radius-md;
     background-color: var(--background);
     color: var(--foreground);
     padding: 0.375rem;
@@ -464,11 +464,12 @@ $button-sizes: (
 
 // Heading type scale: desktop size, phone size, tracking. <Heading> and
 // raw-markup sections both read from here.
+// Strictly descending: a page title always outranks its sections.
 $heading-scale: (
-    'h1': (2.35rem, 1.95rem, -0.03em),
+    'h1': (3rem, 2.25rem, -0.035em),
     'h2': (2.5rem, 1.9rem, -0.03em),
     'h3': (1.6rem, 1.3rem, -0.02em),
-    'h4': (1.25rem, 1.1rem, -0.03em),
+    'h4': (1.25rem, 1.1rem, -0.02em),
 );
 
 @mixin heading-size($level: 'h2') {
@@ -529,11 +530,26 @@ $heading-scale: (
     box-shadow: none;
 }
 
-// Framed product screenshot: 18px corners, hairline border.
+// Framed product screenshot: 12px corners, hairline border.
 @mixin frame {
     border: 1px solid var(--border);
-    border-radius: 1.125rem;
+    border-radius: $radius-lg;
     overflow: hidden;
+}
+
+// Call to action: centred copy and buttons in a hairline panel (closing
+// CTA on landings, download CTA inside blog posts).
+@mixin cta-panel($padding: 4.5rem 2rem) {
+    @include surface-panel($radius-xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: $padding;
+    text-align: center;
+
+    @include mobile {
+        padding: 3rem 1.25rem;
+    }
 }
 
 // Ruled item: a hairline on top carries the separation instead of a card.

@@ -6,7 +6,6 @@ import PillLink from '@/components/PillLink';
 import ThemedScreenshot from '@/components/OrganizationFeatures/ThemedScreenshot.astro';
 import buttonStyles from '@/components/Button/Button.module.scss';
 import type { FeatureCategory } from '@/data/featureContent';
-import landingStyles from './FeatureLandingPage.module.scss';
 import b from '@/components/Blocks/Blocks.module.scss';
 import styles from './TaskWorkflow.module.scss';
 import type { DownloadMenuCopy } from '@/i18n/copy';
@@ -104,16 +103,16 @@ const buttonClass = (variant: 'primary' | 'outline') =>
     <div class:list={[styles.Demo, { [styles.Demo_withMedia]: starter }]}>
       <div class={styles.Demo__Main}>
         <figure class={styles.Example}>
-          <div class={landingStyles.PdfFileItem}>
-            <div class={landingStyles.PdfFileItem__Preview} data-tone={category} aria-hidden="true">
+          <div class={b.File}>
+            <div class={b.FileTile} data-tone={category} aria-hidden="true">
               <FileIcon size={24} strokeWidth={2.2} />
-              <span class={landingStyles.PdfFileItem__Badge}>{fileBadge}</span>
+              <span class={b.FileBadge}>{fileBadge}</span>
             </div>
-            <div class={styles.Example__Names}>
+            <div class={b.FileNames}>
               <span class={styles.Example__Label}>Before</span>
-              <code class={styles.Example__Before}>{beforeName}</code>
+              <code class={b.FileBefore}>{beforeName}</code>
               <span class={styles.Example__Label}>Example result</span>
-              <code class={styles.Example__After}>{workflow.pattern}</code>
+              <code class={b.FileAfter}>{workflow.pattern}</code>
             </div>
           </div>
           <figcaption class={styles.Caption}>{workflow.caption}</figcaption>

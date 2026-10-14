@@ -76,6 +76,10 @@ $tone-orange-bg:  oklch(0.74 0.17 55 / 0.16);
 
 $tone-green-fg:   $brand-green;
 $tone-green-bg:   oklch(0.7556 0.2082 146.98 / 0.14);
+// Calm sage for summary/success notes: same hue family as the brand green,
+// far lower chroma, so a TL;DR reads as a quiet note rather than an alert.
+$note-bg: oklch(0.975 0.018 160);
+$note-border: oklch(0.91 0.035 160);
 
 $tone-blue-fg:    oklch(0.62 0.2 252);
 $tone-blue-bg:    oklch(0.62 0.2 252 / 0.14);
@@ -154,6 +158,8 @@ $dark-tone-orange-bg:  oklch(0.8 0.16 55 / 0.22);
 
 $dark-tone-green-fg:   $brand-green;
 $dark-tone-green-bg:   oklch(0.7556 0.2082 146.98 / 0.2);
+$dark-note-bg: oklch(0.24 0.02 160);
+$dark-note-border: oklch(0.34 0.035 160);
 
 $dark-tone-blue-fg:    oklch(0.72 0.18 252);
 $dark-tone-blue-bg:    oklch(0.72 0.18 252 / 0.2);
@@ -215,11 +221,13 @@ $space-3xl: 5rem;
 
 // Border Radius
 $border-width-hairline: 1px;
-$radius-sm: 0.75rem;
-$radius-md: 1rem;
-$radius-lg: 1.25rem;
-$radius-xl: 1.5rem;
-$radius-full: 9999px;
+// Tight scale: the design avoids big, bubbly corners. Panels top out at 16px.
+$radius-xs: 0.375rem;  // chips, code, small tiles
+$radius-sm: 0.5rem;    // file tiles, inner rows
+$radius-md: 0.625rem;  // inputs, menus, small panels
+$radius-lg: 0.75rem;   // screenshots, cards
+$radius-xl: 1rem;      // section panels (CTA, pricing)
+$radius-full: 9999px;  // dots and true pills only (badges)
 // Buttons and CTAs: soft rectangle, not a pill.
 $radius-button: 0.625rem;
 // Vertical rhythm between top-level page sections.

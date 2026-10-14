@@ -1,39 +1,19 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
-// Closing CTA: large type on the page colour, no photo card. The decorative
-// background <Image> stays in the markup (lazy, never requested while hidden).
+// Closing CTA: section h2 and buttons in the shared CTA panel.
 .Section {
-  padding: $section-gap 0 2rem;
-
-  @include mobile {
-    padding: $section-gap-mobile 0 1.5rem;
-
-    .Card {
-      padding: 3rem 1.25rem;
-    }
-  }
+  @include section-spacing;
+  padding-bottom: 2rem;
 }
 
 .Container {
   @include container;
 }
 
+// The panel keeps the centred CTA distinct from the left-aligned sections.
 .Card {
-  // Hairline panel keeps the centred closing CTA distinct from the
-  // left-aligned sections around it.
-  padding: 4.5rem 2rem;
-  border: 1px solid var(--border);
-  border-radius: $radius-xl;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  position: relative;
-}
-
-.Background {
-  display: none;
+  @include cta-panel;
 }
 
 .Content {
@@ -63,13 +43,13 @@
   display: flex;
   gap: 0.75rem;
   margin-top: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
 
   // Text-only CTAs, as in the hero.
   svg {
     display: none;
   }
-  flex-wrap: wrap;
-  justify-content: center;
 }
 
 .Card .Hint {

@@ -41,13 +41,13 @@
 .site-title > img {
   width: 2.625rem;
   height: 2.625rem;
-  border-radius: 0.375rem;
+  border-radius: var(--radius-xs);
 }
 
 .sl-markdown-content figure > img,
 .sl-markdown-content figure > video,
 .sl-markdown-content p > img {
-  border-radius: 12px;
+  border-radius: var(--radius-md);
 }
 
 .sl-markdown-content figure > video {

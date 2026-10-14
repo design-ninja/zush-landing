@@ -30,7 +30,7 @@
     height: auto;
     aspect-ratio: 4 / 3;
     flex-shrink: 0;
-    border-radius: 1rem;
+    border-radius: $radius-md;
     object-fit: cover;
 
     @include mobile {
@@ -102,7 +102,7 @@
     .BlogPostCard__Image {
       width: 100%;
       aspect-ratio: 16 / 9;
-      border-radius: 0.875rem;
+      border-radius: $radius-lg;
       margin-bottom: 0.375rem;
     }
 

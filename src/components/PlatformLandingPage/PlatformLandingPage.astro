@@ -41,7 +41,6 @@ import { DEFAULT_LOCALE, getLocalizedPath, type Locale } from '@/i18n/config';
 import { getCopy } from '@/i18n/copy';
 import { ORGANIZATION_FEATURES } from '@/i18n/organizationFeatures';
 import { getPlatformFaqCopy } from '@/i18n/platformFaqs';
-import { getPlatformSpecificsCopy } from '@/i18n/platformSpecifics';
 import { PRO_PRICING } from '@/constants/pricing';
 import { getLocalizedPlatformSpecificsContent } from '@/i18n/platformSpecificsContent';
 import { getLocalizedSeoForRoute } from '@/i18n/seo';
@@ -90,7 +89,6 @@ const specifics = getLocalizedPlatformSpecificsContent(
   platform,
   locale,
   copy,
-  getPlatformSpecificsCopy(locale),
   PLATFORM_SPECIFICS_CONTENT[platform],
 );
 const memorySpec = specifics.systemRequirements.rows.find((row) => row.key === 'memory')?.value;
@@ -365,7 +363,7 @@ const jsonLdItems = [
   {platform === 'mac' && locale === DEFAULT_LOCALE && <MacSeoSection />}
   {platform === 'windows' && locale === DEFAULT_LOCALE && <WindowsSeoSection />}
   {platform === 'windows' && locale === DEFAULT_LOCALE && <ComparisonTable {...WINDOWS_COMPARISON} />}
-  <PlatformSpecifics platform={platform} locale={locale} variant="compact" scenarioLimit={4} />
+  <PlatformSpecifics platform={platform} locale={locale} scenarioLimit={4} />
   <EvidenceSignals locale={locale} variant="facts" />
   <SupportedFormats
     title={copy.home.supportedFormats}

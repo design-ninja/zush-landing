@@ -27,6 +27,20 @@
         }
     }
 
+    // Four compact items (scenarios): 4 → 2 → 1.
+    &_four {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 2.5rem 2rem;
+
+        @include tablet {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        @include small {
+            grid-template-columns: minmax(0, 1fr);
+        }
+    }
+
     // Rows of short items: rules carry the rhythm, so no row gap.
     &_list {
         row-gap: 0;
@@ -144,7 +158,7 @@
     }
 }
 
-// Framed product screenshot: radius 18px, hairline border
+// Framed product screenshot: hairline border, card corners
 .Frame {
     @include frame;
 }
@@ -226,4 +240,63 @@
             display: none;
         }
     }
+}
+
+// File sample: type tile (or thumbnail) beside the before → after names.
+// The tile colour follows data-tone on the tile.
+.File {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    min-width: 0;
+}
+
+.FileTile {
+    --file-tone: var(--tone-red-fg);
+    width: 3rem;
+    height: 3rem;
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.15rem;
+    overflow: hidden;
+    border-radius: $radius-sm;
+    color: var(--file-tone);
+    background: color-mix(in srgb, var(--file-tone) 12%, var(--background));
+    object-fit: cover;
+
+    &[data-tone='doc'] { --file-tone: var(--tone-blue-fg); }
+    &[data-tone='design'] { --file-tone: var(--tone-magenta-fg); }
+    &[data-tone='sheet'] { --file-tone: var(--tone-green-fg); }
+    &[data-tone='slides'] { --file-tone: var(--tone-orange-fg); }
+    &[data-tone='video'] { --file-tone: var(--tone-cyan-fg); }
+    &[data-tone='audio'] { --file-tone: var(--tone-pink-fg); }
+}
+
+.FileBadge {
+    font-size: 0.5rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.FileNames {
+    display: grid;
+    gap: 0.125rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.FileBefore {
+    @include mono-sample;
+    @include text-ellipsis;
+    font-size: 0.75rem;
+    text-decoration: line-through;
+}
+
+.FileAfter {
+    @include mono-sample;
+    font-weight: 600;
+    color: var(--foreground);
 }

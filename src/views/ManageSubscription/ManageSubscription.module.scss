@@ -27,9 +27,9 @@
         max-width: 420px;
         margin: 0 auto 24px;
         padding: 14px 16px;
-        border: 1px solid color-mix(in srgb, var(--secondary) 34%, transparent);
+        border: 1px solid var(--note-border);
         border-radius: $radius-sm;
-        background: color-mix(in srgb, var(--secondary) 9%, transparent);
+        background: var(--note-bg);
         text-align: center;
 
         p {
