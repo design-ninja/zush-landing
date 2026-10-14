@@ -74,36 +74,153 @@
         }
     }
 
-    // Homepage: the intro sits over the animated point-wave rendered by
-    // HomePageContent.astro, so the section itself stays transparent.
-    &_wave {
-        padding-bottom: 7rem;
+    // Homepage hero — design/homepage-concept/native.dc.html, values 1:1.
+    // Doubled class so these win over the generic _centered rules below.
+    // <section padding: 200px 24px 128px>; intro: flex column, gap 24px.
+    &.Hero_wave {
+        padding: 12.5rem 0 8rem;
 
         &::before {
             content: none;
         }
 
         @include mobile {
-            padding-bottom: 4rem;
+            padding: 8rem 0 4rem;
+        }
+
+        .Hero__Intro {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+
+            > * {
+                margin: 0;
+            }
+        }
+
+        // h1: 68px / 1.02 / -0.04em / 700, max-width 900px, balanced, no authored break
+        .Hero__Title {
+            margin: 0;
+            max-width: 56.25rem;
+            font-size: 4.25rem;
+            line-height: 1.02;
+            letter-spacing: -0.04em;
+            font-weight: 700;
+            text-wrap: balance;
+
+            br {
+                display: none;
+            }
+
+            @include mobile {
+                font-size: 2.625rem;
+            }
         }
 
         .Hero__TitleAccent {
             color: var(--primary);
         }
 
-        & .Hero__Title {
-            font-size: clamp(2.6rem, 6vw, 4.25rem);
-            line-height: 1.02;
-            letter-spacing: -0.04em;
-            margin-bottom: 1.5rem;
-        }
-
+        // p: 19px / 1.6, max-width 640px
         .Hero__Subtitle {
+            margin: 0 auto;
+            max-width: 40rem;
             color: color-mix(in oklch, var(--foreground) 78%, var(--background));
             font-size: 1.1875rem;
             line-height: 1.6;
         }
+
+        // Buttons row (padding-top 8px, gap 12px) then the trust line, 24px apart.
+        .Hero__ActionRow {
+            gap: 1.5rem;
+            margin: 0;
+            padding-top: 0.5rem;
+        }
+
+        .Hero__Buttons {
+            gap: 0.75rem;
+        }
+
+        .Hero__PlatformAction {
+            min-width: 0;
+        }
+
+        // Text-only CTAs: no OS glyphs.
+        .Hero__Buttons svg {
+            display: none;
+        }
+
+        // 13px, faint
+        .Hero__TrustRow {
+            font-size: 0.8125rem;
+            color: var(--text-faint);
+        }
+
+        // Rating pills: gap 8px; 13px muted, padding 7px 14px, hairline, card fill, gap 7px
+        .Hero__ExternalRatings {
+            gap: 0.5rem;
+        }
+
+        .Hero__StoreReview {
+            min-height: 0;
+            gap: 0.4375rem;
+            padding: 0.4375rem 0.875rem;
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: var(--muted-foreground);
+            font-size: 0.8125rem;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .Hero__StorePrefix {
+            color: var(--muted-foreground);
+            font-weight: 400;
+        }
+
+        .Hero__StoreStars {
+            margin-right: 0;
+            color: var(--star);
+        }
+
+        .Hero__StoreStar {
+            width: 0.875rem;
+            height: 0.875rem;
+        }
+
+        .Hero__StoreScore {
+            height: auto;
+            line-height: inherit;
+            font-weight: 700;
+        }
+
+        // Store names as bold text (concept). Softpedia's wordmark is drawn
+        // from CSS so the markup — and the page text — stay as they were.
+        .Hero__SoftpediaLogo {
+            width: auto;
+            height: auto;
+            background: none;
+            mask: none;
+
+            &::before {
+                content: 'Softpedia';
+                color: var(--foreground);
+                font-weight: 700;
+            }
+        }
+
+        .Hero__MicrosoftStoreBrand {
+            gap: 0;
+            font-size: inherit;
+            font-weight: 700;
+        }
+
+        .Hero__MicrosoftStoreMark {
+            display: none;
+        }
     }
+
 
     &__Container {
         @include container;

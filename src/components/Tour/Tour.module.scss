@@ -10,18 +10,15 @@
 
     &__Container {
         @include container;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
     }
 
     &__ScreenshotWrapper {
+        grid-column: 2;
+        grid-row: 1;
         width: 100%;
-        max-width: 1024px;
         aspect-ratio: 16 / 9;
         background: transparent;
-        border-radius: 1.5rem;
+        border-radius: 1.125rem;
         overflow: hidden;
         position: relative;
         border: 1px solid var(--border);
@@ -32,15 +29,18 @@
 
     &__Player { display: block; width: 100%; }
 
+    // design/homepage-concept/native.dc.html — Tour: tab list (220px) beside the
+    // screenshot, caption under it; gap 40px / 16px.
     &__Platform {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
+        display: grid;
+        grid-template-columns: 13.75rem minmax(0, 1fr);
+        column-gap: 2.5rem;
+        row-gap: 1rem;
+        align-items: start;
         &[hidden] { display: none; }
     }
 
-    &__Captions { width: 100%; max-width: 1024px; }
+    &__Captions { grid-column: 2; grid-row: 2; width: 100%; }
 
     &__Poster {
         position: absolute;
@@ -66,24 +66,26 @@
     }
 
     &__Tabs {
+        grid-column: 1;
+        grid-row: 1 / span 2;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
         width: 100%;
-        max-width: 46rem;
     }
 
+    // Plain text tabs: 15px, faint; active is ink and bold. Padding 9px 0.
     &__Tab {
         position: relative;
-        padding: 0.5625rem 1rem;
+        padding: 0.5625rem 0;
         background: transparent;
-        border: 1px solid var(--border);
-        border-radius: 9999px;
-        font-size: 0.875rem;
+        border: 0;
+        border-radius: 0;
+        font-size: 0.9375rem;
         font-weight: 500;
-        color: var(--muted-foreground);
+        text-align: left;
+        color: var(--text-faint);
         cursor: pointer;
         transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
         overflow: hidden;
@@ -96,8 +98,7 @@
 
         &[aria-current='true'] {
             color: var(--foreground);
-            background: color-mix(in oklch, var(--foreground) 7%, transparent);
-            border-color: transparent;
+            font-weight: 700;
 
             &:hover {
                 color: var(--foreground);
@@ -110,7 +111,9 @@
         z-index: 2;
     }
 
+    // Autoplay keeps running; the design shows no progress fill.
     &__TabProgress {
+        display: none;
         position: absolute;
         inset: 0;
         z-index: 1;
@@ -133,11 +136,11 @@
 
     &__Description {
         width: 100%;
-        max-width: 1024px;
-        margin: -0.75rem 0 0;
-        padding: 0 0.25rem;
+        margin: 0;
+        padding: 0;
+        font-size: 0.9375rem;
         color: var(--muted-foreground);
-        text-align: center;
+        text-align: left;
         animation: tourDescriptionFade 320ms cubic-bezier(0.4, 0, 0.2, 1);
     }
 }
@@ -191,9 +194,18 @@
 
 @media (max-width: 768px) {
     .Tour {
-        // Phones: one swipeable row of tabs instead of a tall wrapped block.
+        &__Platform {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        // Phones: one swipeable row of chips above the screenshot.
         &__Tabs {
+            order: -1;
+            flex-direction: row;
             flex-wrap: nowrap;
+            gap: 0.5rem;
             justify-content: flex-start;
             overflow-x: auto;
             scroll-snap-type: x proximity;
@@ -212,10 +224,18 @@
             flex: 0 0 auto;
             white-space: nowrap;
             scroll-snap-align: start;
+            padding: 0.5625rem 0.875rem;
+            border: 1px solid var(--border-strong);
+            border-radius: $radius-full;
+            font-size: 0.875rem;
+
+            &[aria-current='true'] {
+                border-color: transparent;
+                background: color-mix(in oklch, var(--foreground) 7%, transparent);
+            }
         }
 
         &__Description {
-            margin-top: -0.25rem;
             padding: 0;
         }
     }

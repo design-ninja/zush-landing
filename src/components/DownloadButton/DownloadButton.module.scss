@@ -28,7 +28,7 @@
     justify-content: center;
     cursor: pointer;
     font-family: var(--font-family);
-    font-weight: 500;
+    font-weight: 600;
     line-height: 1;
     min-height: var(--download-button-height);
     white-space: nowrap;
@@ -136,10 +136,10 @@
 }
 
 .Group_lg {
-    --download-button-height: 3rem;
+    --download-button-height: 3.125rem;
 
     .Main {
-        padding: 0.85rem 1.65rem;
+        padding: 0.85rem 1.5rem;
         font-size: $button-font-size-lg;
     }
 
@@ -302,13 +302,13 @@
 .Group_primary {
     .Main,
     .Toggle {
-        background-color: var(--primary);
+        background-color: var(--primary-button);
         color: var(--primary-foreground);
     }
 
     .Main:hover,
     .Toggle:hover {
-        background-color: var(--primary-hover);
+        background-color: var(--primary-button-hover);
     }
 }
 
@@ -350,12 +350,7 @@
     width: max-content;
     max-width: 20rem;
     z-index: 100;
-    background-color: var(--background);
-    color: var(--foreground);
-    border: 1px solid var(--border);
-    border-radius: $radius-lg;
-    padding: 0.35rem;
-    box-shadow: 0 20px 45px -20px rgba(0, 0, 0, 0.25), 0 2px 6px rgba(0, 0, 0, 0.06);
+    @include dropdown-menu;
     animation: menuFadeIn 120ms ease-out;
 
     &__Item {
@@ -363,18 +358,10 @@
         grid-template-columns: 2rem minmax(0, 1fr);
         align-items: center;
         column-gap: 0.75rem;
-        padding: 0.55rem 0.65rem;
-        border-radius: $radius-md;
         text-decoration: none;
-        color: inherit;
         cursor: pointer;
         transition: background-color $transition-fast;
-
-        &:hover,
-        &:focus-visible {
-            background-color: var(--muted);
-            outline: none;
-        }
+        @include dropdown-item;
     }
 
     &__Icon {

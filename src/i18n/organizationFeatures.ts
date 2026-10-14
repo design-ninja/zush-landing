@@ -29,6 +29,8 @@ interface OrganizationCopy {
   exampleArrowLabel?: string;
   /** Optional link to the product page for AI folder sorting. */
   productLink?: string;
+  /** One-paragraph summary for the homepage features block (English only for now). */
+  homeSummary?: string;
   offlineTitle: string;
   offlineDescription: string;
 }
@@ -62,6 +64,7 @@ export const ORGANIZATION_FEATURES: Record<Locale, OrganizationCopy> = {
     exampleTo: 'Clients/Acme/Acme_Invoice_1042.pdf',
     exampleCaption: 'Clients is the destination you choose. Acme is the folder Zush suggests from the file. You review every move before applying it.',
     productLink: 'AI file sorter: write your own folder rules',
+    homeSummary: 'AI groups files by content and names the folders — or write your own rule, like “Group invoices by company and receipts by month.” You review every move before applying it.',
     ruleExample: "Group invoices by company and receipts by month.",
     customDescription: "Write a prompt to tell AI how to group your files.",
   },

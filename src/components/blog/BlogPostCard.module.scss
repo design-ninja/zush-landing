@@ -87,4 +87,52 @@
     font-size: 0.8rem;
     white-space: nowrap;
   }
+
+  // Homepage tile — design/homepage-concept/native.dc.html (Blog):
+  // 16:9 cover (radius 14px), label 12px faint, title 17px / 700, text 14px, meta 13px.
+  &_tile {
+    border-bottom: 0 !important;
+
+    .BlogPostCard__Link {
+      flex-direction: column;
+      gap: 0.625rem;
+      padding: 0;
+    }
+
+    .BlogPostCard__Image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 0.875rem;
+      margin-bottom: 0.375rem;
+    }
+
+    .BlogPostCard__Body {
+      gap: 0.5rem;
+    }
+
+    .BlogPostCard__Track {
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--text-faint);
+    }
+
+    .BlogPostCard__Title {
+      font-size: 1.0625rem;
+      font-weight: 700;
+      -webkit-line-clamp: unset;
+    }
+
+    .BlogPostCard__Description {
+      font-size: 0.875rem;
+      line-height: 1.55;
+      -webkit-line-clamp: unset;
+    }
+
+    .BlogPostCard__Meta {
+      color: var(--text-faint);
+      font-size: 0.8125rem;
+    }
+  }
 }

@@ -3,8 +3,12 @@
 @use '../../styles/mixins' as *;
 
 .Footer {
-    margin-top: $section-gap-mobile;
-    padding: 4rem 0 2rem;
+    margin-top: 7rem;
+    padding: 3.5rem 0 2.5rem;
+
+    @include mobile {
+        margin-top: 5rem;
+    }
     border-top: 1px solid var(--border);
     font-size: 0.875rem;
 
@@ -12,55 +16,76 @@
         @include container;
     }
 
+    // design/homepage-concept/native.dc.html — Footer: brand column (flex 1 1 220px)
+    // beside link columns (auto-fit minmax(150px), gap 32px 24px), 48px apart.
+    // At desktop width that is four link columns, wrapping to a second row.
     &__Grid {
         display: grid;
-        grid-template-columns: 1.4fr repeat(5, minmax(0, 1fr));
-        gap: 2rem;
-        margin-bottom: 6rem;
+        grid-template-columns: 1.43fr repeat(4, minmax(0, 1fr));
+        gap: 2rem 1.5rem;
+        margin-bottom: 3rem;
 
-        &_withProfessions {
-            grid-template-columns: 1.4fr repeat(6, minmax(0, 1fr));
+        > :first-child {
+            grid-row: 1 / span 2;
+            padding-right: 1.5rem;
         }
 
         @include tablet {
             grid-template-columns: repeat(3, minmax(0, 1fr));
+
+            > :first-child {
+                grid-column: 1 / -1;
+                grid-row: auto;
+                padding-right: 0;
+            }
         }
 
         @include mobile {
-            grid-template-columns: 1fr;
-            gap: 2.5rem;
-            text-align: center;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 2rem 1.5rem;
         }
     }
 
+    // Logo mark + wordmark (36px / 20px), as in the header.
     &__Brand {
         font-family: var(--font-family-heading);
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         font-weight: 700;
         letter-spacing: -0.02em;
         color: var(--foreground);
-        margin-bottom: 1rem;
-        display: block;
+        margin-bottom: 0.875rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6875rem;
+
+        &::before {
+            content: '';
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 0.5625rem;
+            background: url('/logo-96.webp') center / cover no-repeat;
+            flex-shrink: 0;
+        }
+
     }
 
     &__Description {
-        max-width: 18.75rem;
-
-        @include mobile {
-            margin: 0 auto;
-        }
+        font-size: 0.875rem;
+        line-height: 1.6;
+        color: var(--muted-foreground);
     }
 
+    &__Description {
+        max-width: none;
+
+    }
+
+    // Store badges as on production.
     &__StoreBadges {
         display: flex;
         flex-wrap: wrap;
         gap: 0.75rem;
         margin-top: 1rem;
-
-        @include mobile {
-            justify-content: center;
-            margin: 1rem auto 0;
-        }
     }
 
     &__AppStore {
@@ -129,42 +154,48 @@
         font-weight: 500;
     }
 
-    &__SectionTitle {
-        margin-bottom: 1.5rem;
+    // Column heading: 13px / 700, 14px above the list
+    & &__SectionTitle {
+        margin: 0 0 0.875rem;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        letter-spacing: 0;
     }
 
     &__Links {
         display: flex;
         flex-direction: column;
-        gap: 0.75rem;
+        gap: 0.5625rem;
     }
 
+    // 13.5px muted
     &__Link {
         color: var(--muted-foreground);
-        font-size: 0.875rem;
+        font-size: 0.84375rem;
         transition: color 0.2s ease;
 
         &:hover,
         &:focus-visible {
-            color: var(--primary);
+            color: var(--foreground);
         }
     }
 
+    // padding 24px 0 0; 13px faint
     &__Bottom {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-top: 2rem;
+        padding-top: 1.5rem;
         border-top: 1px solid var(--border);
+        font-size: 0.8125rem;
+        color: var(--text-faint);
 
-        @include mobile {
-            flex-direction: column;
-            gap: 1.5rem;
-            text-align: center;
-        }
+        flex-wrap: wrap;
+        gap: 1rem;
 
         a {
-            color: var(--primary);
+            color: var(--foreground);
+            font-weight: 600;
         }
     }
 
@@ -175,17 +206,16 @@
 
     &__BottomText {
         margin: 0;
+        color: inherit !important;
+        font-size: inherit !important;
     }
 
     &__Social {
         display: flex;
-        gap: 2rem;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.125rem;
         align-items: center;
 
-        @include mobile {
-            flex-wrap: wrap;
-            justify-content: center;
-        }
     }
 
     // Qualified with `.Footer` so it outweighs `&__Bottom a` above, which is a
@@ -196,16 +226,23 @@
         display: flex;
         align-items: center;
         // Cool grey: these are secondary wayfinding, not calls to action.
-        color: var(--icon-muted);
+        color: var(--text-faint);
+        font-weight: 400;
         transition: color 0.2s;
 
-        svg {
-            width: 1.25rem;
-            height: 1.25rem;
+        // Text labels (concept): the name comes from data-label, so the page
+        // text is unchanged; icon and tooltip are not shown.
+        > svg,
+        > :not(svg) {
+            display: none;
+        }
+
+        &::after {
+            content: attr(data-label);
         }
 
         &:hover {
-            color: var(--primary);
+            color: var(--foreground);
         }
     }
 

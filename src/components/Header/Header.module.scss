@@ -11,7 +11,7 @@
 // `_wide` matches the 72rem blog container.
 .Header {
     position: fixed;
-    top: 1.25rem;
+    top: 0.875rem;
     left: 0;
     right: 0;
     margin-inline: auto;
@@ -24,7 +24,8 @@
     // The build's CSS pipeline dropped the unprefixed declaration from the
     // prefix pair, leaving only `-webkit-backdrop-filter` (which Chrome ignores),
     // so the blur vanished on prod while dev (unminified) was fine.
-    border: 1px solid var(--border);
+    // No outline: the frosted fill alone separates the pill from the page.
+    border: 0;
     border-radius: $radius-md;
     box-shadow: none;
     // No overflow clipping: the language menu drops out below the pill.
@@ -61,8 +62,9 @@
         align-items: center;
         justify-content: space-between;
         height: 100%;
-        gap: 1.5rem;
-        padding-inline: $container-padding;
+        gap: 1.25rem;
+        // Concept: padding 0 8px 0 14px.
+        padding: 0 0.5rem 0 0.875rem;
 
         // The logo is the only direct anchor child.
         > a {
@@ -111,6 +113,10 @@
             gap: 1rem;
         }
 
+        @media (max-width: 1100px) {
+            gap: 1.25rem;
+        }
+
         @include mobile {
             display: none;
         }
@@ -137,7 +143,7 @@
         align-items: center;
         justify-content: flex-end;
         flex-wrap: nowrap;
-        gap: 0.5rem;
+        gap: 0.125rem;
 
         @include tablet {
             gap: 0.4rem;
@@ -154,12 +160,14 @@
 
     &__Link {
         white-space: nowrap;
+        font-size: 0.875rem;
         font-weight: $font-weight-link;
+        color: var(--muted-foreground);
         transition: color 0.2s ease;
 
         &:hover,
         &:focus-visible {
-            color: var(--primary);
+            color: var(--foreground);
         }
 
         @include tablet {
@@ -180,15 +188,22 @@
         }
     }
 
+    // 40×40, muted, 17px icon
     &__ThemeToggle {
         all: unset;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: var(--foreground);
+        width: 2.5rem;
+        height: 2.5rem;
+        color: var(--muted-foreground);
         cursor: pointer;
-        border-radius: 999px;
-        padding: 0.35rem;
+        border-radius: 0.625rem;
+
+        svg {
+            width: 1.0625rem;
+            height: 1.0625rem;
+        }
         transition: background-color 0.2s ease, color 0.2s ease;
 
         @include mobile {
@@ -236,6 +251,7 @@
         display: flex;
         align-items: center;
         gap: 0.5rem;
+        margin-left: 0.375rem;
 
         @include tablet {
             gap: 0.35rem;
@@ -252,21 +268,30 @@
     // Quiet CTA in the pill: ink on light, raised graphite on dark. The hero
     // keeps the brand-purple button as the page's primary action.
     & &__DownloadBtn {
-        --primary: oklch(0.17 0.01 285);
-        --primary-hover: oklch(0.26 0.01 285);
-        --primary-foreground: oklch(1 0 0);
+        // Concept `headerBtn`: #111118 on light, #2A2A34 on dark.
+        --primary-button: #111118;
+        --primary-button-hover: #26262f;
+        --primary-foreground: #ffffff;
 
         :global(html[data-theme='dark']) & {
-            --primary: oklch(0.28 0.012 285);
-            --primary-hover: oklch(0.32 0.012 285);
-            --primary-foreground: oklch(0.95 0.005 285);
+            --primary-button: #2a2a34;
+            --primary-button-hover: #33333f;
+            --primary-foreground: #ededf2;
+        }
+
+        // Text-only pill: the OS glyph is dropped in the header.
+        svg {
+            display: none;
         }
 
         > a,
         > button {
             gap: 0.4rem;
-            padding-left: 0.65rem;
-            padding-right: 1.1rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            min-height: 2.5rem;
+            border-radius: 0.625rem;
+            font-size: 0.875rem;
         }
 
         @include mobile {
@@ -316,9 +341,27 @@
 
     // Desktop-only: on phones the languages collapse into the picker inside the
     // burger panel, which frees the pill for the Download button.
+    // Concept: plain "EN" (13px / 600 / muted) before the theme toggle.
     &__Lang {
+        order: -1;
         display: inline-flex;
         align-items: center;
+
+        button {
+            height: 2.5rem;
+            padding: 0 0.625rem;
+            border: 0 !important;
+            background: transparent !important;
+            box-shadow: none !important;
+            border-radius: 0.625rem;
+            color: var(--muted-foreground);
+            font-size: 0.8125rem;
+            font-weight: 600;
+        }
+
+        button svg {
+            display: none;
+        }
 
         @include mobile {
             display: none;
@@ -415,12 +458,7 @@
         max-height: calc(100dvh - 6rem);
         overflow-y: auto;
         overscroll-behavior: contain;
-        border: 1px solid var(--border);
-        border-radius: $radius-md;
-        background-color: var(--background);
-        color: var(--foreground);
-        padding: 0.6rem;
-        box-shadow: 0 12px 26px -18px oklch(0 0 0 / 0.16), 0 1px 3px oklch(0 0 0 / 0.04);
+        @include dropdown-menu;
     }
 
     &[data-menu-open='true'] &__Menu {
@@ -438,7 +476,7 @@
     &__MenuLink {
         display: flex;
         align-items: center;
-        border-radius: $radius-md;
+        border-radius: 0.5rem;
         color: inherit;
         font-size: 1rem;
         padding: 0.7rem 0.65rem;
@@ -466,7 +504,7 @@
         display: flex;
         align-items: center;
         gap: 0.6rem;
-        border-radius: $radius-md;
+        border-radius: 0.5rem;
         color: inherit;
         cursor: pointer;
         font-family: var(--font-family);
@@ -488,7 +526,7 @@
         display: flex;
         align-items: center;
         gap: 0.6rem;
-        border-radius: $radius-md;
+        border-radius: 0.5rem;
         color: inherit;
         cursor: pointer;
         font-size: 0.9rem;

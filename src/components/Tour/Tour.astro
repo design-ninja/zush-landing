@@ -46,7 +46,7 @@ const srcSet = (src: string) => [640, 960, 1280, 1600, 1920, 2560].map(width => 
                 data-tour-image data-light={item.images.light} data-dark={item.images.dark}
                 class={styles.Tour__Poster} data-active={index === 0 ? '' : undefined}
                 hidden={index !== 0}
-                src={imagePath(item.images.light, 1280)} srcset={srcSet(item.images.light)}
+                src={imagePath(item.images.light, 640)} srcset={srcSet(item.images.light)}
                 sizes="(max-width: 768px) calc(100vw - 40px), min(1024px, calc(100vw - 64px))"
                 alt={copy.items[item.id]?.alt ?? item.alt}
                 width="1280" height="720" loading="lazy" decoding="async"

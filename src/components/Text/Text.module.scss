@@ -45,11 +45,13 @@
         font-size: 1rem;
     }
 
+    // Lead paragraph (concept: 17px / 1.65).
     &_lg {
-        font-size: 1rem;
+        font-size: 1.0625rem;
+        line-height: 1.65;
 
         @include mobile {
-            font-size: 0.9375rem;
+            font-size: 1rem;
         }
     }
 

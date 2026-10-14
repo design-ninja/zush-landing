@@ -57,6 +57,11 @@
   display: flex;
   gap: 0.75rem;
   margin-top: 2rem;
+
+  // Text-only CTAs, as in the hero.
+  svg {
+    display: none;
+  }
   flex-wrap: wrap;
   justify-content: center;
 }

@@ -15,8 +15,14 @@
 
     --muted: #{$muted};
     --muted-foreground: #{$muted-foreground};
+    --text-faint: #{$text-faint};
+    --text-subtle: #{$text-faint};
+    --text-dim: #{$text-dim};
+    --star: #{$star};
 
     --primary: #{$primary};
+    --primary-button: #{$primary-button};
+    --primary-button-hover: #{$primary-button-hover};
     --primary-foreground: #{$primary-foreground};
     --primary-hover: #{$primary-hover};
     --primary-soft: #{$primary-soft};
@@ -31,6 +37,7 @@
     --tertiary-hover: #{$tertiary-hover};
 
     --border: #{$border};
+    --border-strong: #{$border-strong};
     --icon-muted: #{$icon-muted};
 
     --glass: #{$glass};
@@ -89,8 +96,13 @@
 
     --muted: #{$dark-muted};
     --muted-foreground: #{$dark-muted-foreground};
+    --text-faint: #{$dark-text-faint};
+    --text-subtle: #{$dark-text-faint};
+    --text-dim: #{$dark-text-dim};
 
     --primary: #{$dark-primary};
+    --primary-button: #{$dark-primary-button};
+    --primary-button-hover: #{$dark-primary-button-hover};
     --primary-foreground: #{$dark-primary-foreground};
     --primary-hover: #{$dark-primary-hover};
     --primary-soft: #{$dark-primary-soft};
@@ -105,6 +117,7 @@
     --tertiary-hover: #{$dark-tertiary-hover};
 
     --border: #{$dark-border};
+    --border-strong: #{$dark-border-strong};
     --icon-muted: #{$dark-icon-muted};
 
     --glass: #{$dark-glass};

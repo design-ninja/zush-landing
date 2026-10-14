@@ -28,18 +28,63 @@
 
   &__Intro {
     color: var(--muted-foreground);
-    line-height: 1.6;
-    max-width: 720px;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    max-width: 48.75rem;
     margin: 1rem auto 0;
   }
 
+  // Concept: open table, no outer box; strong rule under the header row;
+  // the Zush row reads in ink with the name in the accent colour.
   &__Scroll {
-    @include content-table-wrap;
+    overflow-x: auto;
   }
 
   &__Table {
     @include content-table;
-    min-width: 640px;
+    min-width: 45rem;
+    font-size: 0.875rem;
+
+    th,
+    td {
+      padding: 1.25rem;
+      line-height: 1.6;
+      vertical-align: top;
+    }
+
+    :is(th, td):first-child {
+      padding-left: 0;
+    }
+
+    :is(th, td):last-child {
+      padding-right: 0;
+    }
+
+    thead th {
+      padding-block: 0.75rem;
+      font-size: 0.875rem;
+      color: var(--text-faint);
+      border-bottom-color: var(--border-strong);
+    }
+
+    tbody tr:hover {
+      background: none;
+    }
+
+    tbody tr:first-child {
+      > :first-child {
+        color: var(--primary);
+        font-weight: 700;
+      }
+
+      > :not(:first-child) {
+        color: var(--foreground);
+      }
+    }
+
+    tbody :is(th, td):first-child {
+      font-weight: 700;
+    }
   }
 
   // The heading above already states this; the caption exists so the table is

@@ -1,8 +1,10 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
+// design/homepage-concept/native.dc.html — Supported formats: 32px title, five
+// groups in a grid (minmax 300px, gap 32px 48px), extensions as Geist Mono text.
 .SupportedFormats {
-  padding: $section-gap 0 0;
+  padding: 7.5rem 0 0;
 
   @include mobile {
     padding: $section-gap-mobile 0 0;
@@ -10,45 +12,61 @@
 
   &__Container {
     @include container;
-  }
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(18.75rem, 100%), 1fr));
+    gap: 2rem 3rem;
 
-  &__Group {
-    text-align: center;
+    > :first-child {
+      grid-column: 1 / -1;
+      margin-bottom: 0.5rem;
 
-    & + & {
-      margin-top: 1.5rem;
+      h2 {
+        font-size: 2rem;
+        letter-spacing: -0.025em;
+      }
     }
   }
 
-  &__GroupTitle {
-    margin-bottom: 1.25rem;
+  &__Group {
+    text-align: left;
+
+    & + & {
+      margin-top: 0;
+    }
+  }
+
+  // 15px / 700
+  & &__GroupTitle {
+    margin: 0;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-align: left;
   }
 
   &__Tags {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-    // No local cap: the extension pills use the full page container, so long
-    // groups like Images and Documents take fewer rows.
-    margin: 0 auto;
+    justify-content: flex-start;
+    gap: 0 0.75rem;
+    margin: 0.5rem 0 0;
   }
 
-  // Quiet monospace tags: no fill, so seven rows of extensions read as data.
+  // Geist Mono 12.5px / 1.9 / faint, plain text
   &__Tag {
-    padding: 0.3rem 0.6rem;
-    background: transparent;
-    color: var(--muted-foreground);
-    border: 1px solid var(--border);
-    border-radius: 0.5rem;
+    padding: 0;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    color: var(--text-faint);
     font-family: var(--font-mono);
-    font-size: 0.75rem;
-    font-weight: 500;
+    font-size: 0.78125rem;
+    font-weight: 400;
+    line-height: 1.9;
 
     &_highlight {
       color: var(--foreground);
-      border-color: color-mix(in oklch, var(--foreground) 30%, transparent);
-      font-weight: 600;
+      font-weight: 500;
     }
   }
 }

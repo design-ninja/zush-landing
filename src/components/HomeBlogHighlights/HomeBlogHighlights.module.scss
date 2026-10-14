@@ -1,39 +1,48 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
+// design/homepage-concept/native.dc.html — Blog: left-aligned header with the
+// archive link on the right; 4 tiles, repeat(auto-fit, minmax(240px, 1fr)), gap 40px 24px.
 .HomeBlogHighlights {
-  padding: $section-gap 0 0;
-
-  @include mobile {
-    padding-top: $section-gap-mobile;
-  }
-
-  &__Container {
-    @include container;
-  }
-
-  // One row per post; the rows draw their own separators.
-  &__List {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0;
-    max-width: 56rem;
-    margin: 0 auto;
-  }
-
-  &__Action {
+  &__Header {
     display: flex;
-    justify-content: center;
-    margin-top: 2.5rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1rem;
+  }
+
+  &__Intro {
+    max-width: 38.75rem;
+
+    h2 {
+      margin: 0;
+    }
+
+    p {
+      margin: 0.875rem 0 0;
+    }
   }
 
   &__ActionLink {
     color: var(--primary);
-    font-weight: var(--font-weight-link);
+    font-size: 0.9375rem;
+    font-weight: 600;
     text-decoration: none;
 
-    &:hover {
-      opacity: 0.75;
+    &::after {
+      content: ' →';
     }
+
+    &:hover {
+      opacity: 0.78;
+    }
+  }
+
+  &__Grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+    gap: 2.5rem 1.5rem;
+    margin-top: 3rem;
   }
 }

@@ -3,16 +3,21 @@
 @use '../../styles/mixins' as *;
 
 .FAQ {
-    padding: 100px 0;
+    padding: $section-gap 0 0;
     background-color: var(--background);
+
+    @include mobile {
+        padding-top: $section-gap-mobile;
+    }
     position: relative;
     overflow: hidden;
     scroll-margin-top: calc($navbar-height + 1rem);
 
+    // 820px column incl. 24px gutters (concept)
     &__Container {
-        max-width: 800px;
+        max-width: 51.25rem;
         margin: 0 auto;
-        padding: 0 20px;
+        padding: 0 1.5rem;
     }
 
     // Hairline list instead of stacked cards: one rule between questions.
@@ -57,13 +62,11 @@
 
     &__Icon {
         flex-shrink: 0;
-        color: var(--muted-foreground);
-        transition: transform 0.3s ease;
-        transform: rotate(90deg);
+        // "+" closed, "−" open (concept): drop the vertical stroke when open.
+        color: var(--text-faint);
 
-        .FAQItem[open] & {
-            transform: rotate(0deg);
-            color: var(--foreground);
+        .FAQItem[open] & path:nth-child(2) {
+            display: none;
         }
     }
 
@@ -72,9 +75,10 @@
     }
 
     &__Answer {
-        padding: 0 0 1.4rem;
-        max-width: 42rem;
+        padding: 0 0 1.375rem;
+        max-width: 42.5rem;
         color: var(--muted-foreground);
+        font-size: 0.9375rem;
         line-height: 1.65;
         margin: 0;
         overflow: hidden;

@@ -47,7 +47,7 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 3rem;
     width: 100%;
-    max-width: 56rem;
+    max-width: 55rem;
     justify-content: center;
 
     &[data-single='true'] {
@@ -104,5 +104,10 @@
     color: var(--primary);
     font-weight: 600;
     font-size: 0.92rem;
+
+    // Decorative arrow from CSS so the link text stays unchanged.
+    &::after {
+      content: '→';
+    }
   }
 }

@@ -56,11 +56,11 @@
 
     // Variants
     &_primary {
-        background-color: var(--primary);
+        background-color: var(--primary-button);
         color: var(--primary-foreground);
 
         &:hover {
-            background-color: var(--primary-hover);
+            background-color: var(--primary-button-hover);
         }
     }
 
@@ -71,6 +71,17 @@
 
         &:hover {
             background-color: var(--tertiary-hover);
+        }
+    }
+
+    // Quiet secondary action: hairline outline, no fill (concept `border2`).
+    &_outline {
+        background-color: transparent;
+        color: var(--foreground);
+        box-shadow: inset 0 0 0 1px var(--border-strong);
+
+        &:hover {
+            background-color: color-mix(in oklch, var(--foreground) 5%, transparent);
         }
     }
 

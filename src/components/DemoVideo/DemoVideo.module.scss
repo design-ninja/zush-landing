@@ -2,11 +2,7 @@
 @use "../../styles/mixins" as *;
 
 .DemoVideo {
-    padding: 0 0 3.75rem;
-
-    @include mobile {
-        padding: 0 0 2.5rem;
-    }
+    padding: 0;
 
     &__Container {
         @include container;

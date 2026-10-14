@@ -1,0 +1,935 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Zush — Native</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Geist+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{text-decoration:none;color:inherit}
+a:hover{opacity:.78}
+h1,h2,h3,h4,p{margin:0}
+h1,h2{text-wrap:balance}
+h1,h2,h3,h4{font-family:'Manrope',system-ui,sans-serif}
+button{font:inherit;color:inherit}
+.zn-nav a{white-space:nowrap}
+@media (max-width:1100px){.zn-nav{display:none !important}}
+@media (max-width:820px){.zn-h1{font-size:42px !important}.zn-h2{font-size:30px !important}
+.zn-tour{flex-direction:column !important;gap:20px !important}
+.zn-tabs{flex:0 0 auto !important;flex-direction:row !important;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -24px;padding:0 24px 4px;scrollbar-width:none}
+.zn-tabs::-webkit-scrollbar{display:none}
+.zn-tab{flex:0 0 auto;scroll-snap-align:start;padding:9px 14px !important;border-radius:999px;background:var(--zn-chip-bg) !important;border:1px solid var(--zn-chip-border) !important;font-size:14px !important}}
+</style>
+</helmet>
+<div style="font-family: 'Inter Variable', 'Inter', system-ui, sans-serif; color: {{t.text}}; background: {{t.bg}}; min-height: 100%; -webkit-font-smoothing: antialiased">
+
+  <!-- ===== Header ===== -->
+  <header style="position: sticky; top: 0; z-index: 20; padding: 14px 24px 0">
+    <div style="max-width: 1160px; margin: 0 auto; height: 62px; padding: 0 8px 0 14px; border-radius: 16px; background: {{t.header}}; backdrop-filter: blur(14px); display: flex; align-items: center; justify-content: space-between; gap: 20px">
+      <a href="#" style="display: flex; align-items: center; gap: 11px; font-weight: 700; font-size: 20px; letter-spacing: -0.02em">
+        <img src="/_blob/d6f593fe5264719b1011134b61d7c010" alt="Zush logo" style="width: 36px; height: 36px; border-radius: 9px">
+        Zush
+      </a>
+      <nav class="zn-nav" aria-label="Main" style="display: flex; gap: 28px; font-size: 14px; color: {{t.muted}}">
+        <a href="#">Mac</a><a href="#">Windows</a><a href="#">Cloud/Local AI</a><a href="#">Pricing</a><a href="#">FAQ</a><a href="#">Blog</a>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 2px">
+        <button type="button" aria-label="Language: English" style="height: 40px; padding: 0 10px; border: 0; background: transparent; border-radius: 10px; font-size: 13px; font-weight: 600; color: {{t.muted}}; cursor: pointer">EN</button>
+        <button type="button" aria-label="Toggle theme" onClick="{{toggleTheme}}" style="width: 40px; height: 40px; border: 0; background: transparent; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; color: {{t.muted}}; cursor: pointer">
+          <sc-if value="{{isDark}}" hint-placeholder-val="{{ true }}">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          </sc-if>
+          <sc-if value="{{isLight}}" hint-placeholder-val="{{ false }}">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          </sc-if>
+        </button>
+        <a href="#" style="margin-left: 6px; background: {{t.headerBtn}}; color: {{t.headerBtnText}}; font-size: 14px; font-weight: 600; padding: 0 16px; height: 40px; display: inline-flex; align-items: center; border-radius: 10px">Download</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Hero (three.js wave field behind) ===== -->
+  <section style="position: relative; overflow: hidden; margin-top: -76px; padding: 200px 24px 128px">
+    <div aria-hidden="true" style="position: absolute; inset: 0; z-index: 0; pointer-events: none; -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 24%, #000 70%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, #000 24%, #000 70%, transparent 100%)">
+      <canvas ref="{{setCanvas}}" style="display: block; width: 100%; height: 100%; opacity: {{waveOpacity}}; transition: opacity 1.2s ease"></canvas>
+    </div>
+    <div aria-hidden="true" style="position: absolute; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(ellipse 46% 42% at 50% 52%, {{t.scrim}} 0%, {{t.scrim}} 45%, transparent 100%)"></div>
+    <div style="position: relative; z-index: 1; max-width: 1160px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 24px">
+      <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center">
+        <a href="#" style="font-size: 13px; color: {{t.muted}}; border: 1px solid {{t.border}}; background: {{t.pill}}; border-radius: 999px; padding: 7px 14px; display: inline-flex; align-items: center; gap: 7px">Rated by <strong style="color: {{t.text}}">Softpedia</strong>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="{{t.star}}" stroke="{{t.star}}" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg><strong style="color: {{t.text}}">4.5</strong></a>
+        <a href="#" style="font-size: 13px; color: {{t.muted}}; border: 1px solid {{t.border}}; background: {{t.pill}}; border-radius: 999px; padding: 7px 14px; display: inline-flex; align-items: center; gap: 7px">Rated on <strong style="color: {{t.text}}">Microsoft Store</strong>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="{{t.star}}" stroke="{{t.star}}" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg><strong style="color: {{t.text}}">5.0</strong></a>
+      </div>
+      <h1 class="zn-h1" style="font-size: 68px; line-height: 1.02; letter-spacing: -0.04em; font-weight: 700; max-width: 900px">Zush AI File Renamer &amp; Organizer <span style="color: {{t.accent}}">for Mac &amp; Windows</span></h1>
+      <p style="font-size: 19px; line-height: 1.6; color: {{t.heroSub}}; max-width: 640px">Rename files by content and sort them into folders with AI. Preview every name and folder, undo any batch, and choose Zush Cloud, BYOK, LM Studio or Ollama.</p>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; padding-top: 8px">
+        <a href="#" style="background: {{t.btn}}; color: #ffffff; font-weight: 600; font-size: 15px; height: 50px; padding: 0 24px; border-radius: 12px; display: inline-flex; align-items: center">Download for Mac</a>
+        <a href="#" style="font-weight: 600; font-size: 15px; height: 50px; padding: 0 24px; border-radius: 12px; display: inline-flex; align-items: center; border: 1px solid {{t.border2}}">Download for Windows</a>
+      </div>
+      <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 10px; font-size: 13px; color: {{t.faint}}">
+        <li>Get started for free</li><li aria-hidden="true">·</li><li>No registration</li><li aria-hidden="true">·</li><li>No credit card required</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== Demo video ===== -->
+  <section style="max-width: 1160px; margin: 0 auto; padding: 0 24px">
+    <div style="position: relative; border-radius: 20px; overflow: hidden; border: 1px solid {{t.border}}">
+      <img src="{{img.poster}}" alt="Zush demo: dropping files into AI Rename and reviewing the suggested names" style="display: block; width: 100%; height: auto">
+      <button type="button" aria-label="Play demo video" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 72px; height: 72px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.35); background: rgba(12,12,16,0.5); backdrop-filter: blur(8px); color: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ===== What is Zush ===== -->
+  <section style="max-width: 760px; margin: 0 auto; padding: 136px 24px 0; text-align: center">
+    <h2 class="zn-h2" style="font-size: 40px; line-height: 1.12; letter-spacing: -0.03em; font-weight: 700">What is Zush AI File Renamer?</h2>
+    <p style="font-size: 17px; line-height: 1.65; color: {{t.muted}}; margin-top: 18px">Zush is an AI file renamer for Mac and Windows. It names files in 107 formats from their content, metadata, and your rules — review, batch rename, or undo anytime. Templates and folder monitoring automate repeat work, on Cloud AI or Local AI.</p>
+  </section>
+
+  <!-- ===== How it works ===== -->
+  <section style="max-width: 1160px; margin: 0 auto; padding: 136px 24px 0">
+    <div style="text-align: center; max-width: 720px; margin: 0 auto">
+      <h2 class="zn-h2" style="font-size: 40px; line-height: 1.12; letter-spacing: -0.03em; font-weight: 700">How Zush’s AI file renamer and organizer works</h2>
+      <p style="font-size: 17px; line-height: 1.65; color: {{t.muted}}; margin-top: 16px">Zush reads the content and metadata of PDFs, photos, video and audio to suggest descriptive names. You review before applying, files stay put unless you turn on AI folder sorting (beta), and every rename or move can be undone.</p>
+    </div>
+    <ol style="list-style: none; margin: 64px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 48px">
+      <li style="border-top: 1px solid {{t.border}}; padding-top: 24px; display: flex; flex-direction: column; gap: 12px">
+        <span style="font-family: 'Geist Mono', monospace; font-size: 13px; color: {{t.accent}}">01</span>
+        <h3 style="font-size: 19px; font-weight: 700">Add your files</h3>
+        <p style="font-size: 15px; line-height: 1.6; color: {{t.muted}}">Documents, photos, video and audio.</p>
+        <p style="font-family: 'Geist Mono', monospace; font-size: 13px; line-height: 1.9; color: {{t.faint}}; margin-top: 6px">scan_001.pdf<br>IMG_2048.jpg<br>recording_03.wav</p>
+      </li>
+      <li style="border-top: 1px solid {{t.border}}; padding-top: 24px; display: flex; flex-direction: column; gap: 12px">
+        <span style="font-family: 'Geist Mono', monospace; font-size: 13px; color: {{t.accent}}">02</span>
+        <h3 style="font-size: 19px; font-weight: 700">Build the name</h3>
+        <p style="font-size: 15px; line-height: 1.6; color: {{t.muted}}">Set your rules with Naming Blocks.</p>
+        <p style="font-family: 'Geist Mono', monospace; font-size: 13px; line-height: 1.9; color: {{t.faint}}; margin-top: 6px">Vendor <span style="color: {{t.text}}">Acme</span> · Type <span style="color: {{t.text}}">Invoice</span> · Number <span style="color: {{t.text}}">1042</span><br>Vendor_Type_Number.pdf</p>
+      </li>
+      <li style="border-top: 1px solid {{t.border}}; padding-top: 24px; display: flex; flex-direction: column; gap: 12px">
+        <span style="font-family: 'Geist Mono', monospace; font-size: 13px; color: {{t.accent}}">03</span>
+        <h3 style="font-size: 19px; font-weight: 700">Review &amp; rename</h3>
+        <p style="font-size: 15px; line-height: 1.6; color: {{t.muted}}">Preview first, optionally sort into folders, undo when needed.</p>
+        <p style="font-family: 'Geist Mono', monospace; font-size: 13px; line-height: 1.9; color: {{t.faint}}; margin-top: 6px"><s>scan_001.pdf</s><br><span style="color: {{t.text}}">Acme_Invoice_1042.pdf</span><br>You can undo this rename</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ===== Features ===== -->
+  <section style="max-width: 1160px; margin: 0 auto; padding: 136px 24px 0">
+    <div style="text-align: center; max-width: 720px; margin: 0 auto">
+      <h2 class="zn-h2" style="font-size: 40px; line-height: 1.12; letter-spacing: -0.03em; font-weight: 700">Your naming system, powered by AI</h2>
+      <p style="font-size: 17px; line-height: 1.65; color: {{t.muted}}; margin-top: 16px">Combine file content, metadata, dates, custom instructions, and reusable blocks into filenames that match the way you work. Zush suggests — you review and decide.</p>
+    </div>
+    <div style="margin-top: 64px; display: flex; flex-wrap: wrap; align-items: center; gap: 48px">
+      <div style="flex: 1 1 340px; display: flex; flex-direction: column; gap: 36px">
+        <div style="display: flex; flex-direction: column; gap: 12px">
+          <h3 style="font-size: 26px; font-weight: 700; letter-spacing: -0.02em">Smart Batch Rename</h3>
+          <p style="font-size: 16px; line-height: 1.65; color: {{t.muted}}">Analyze and rename 100+ file formats in one batch, from images, EPUB and FB2 ebooks, and PDFs to audio, video, and Office files. Describe any detail for Zush to extract, then reuse it as a Custom AI Block in any template.</p>
+        </div>
+        <div id="organization" style="display: flex; flex-direction: column; gap: 16px; border-top: 1px solid {{t.border}}; padding-top: 32px">
+          <h3 style="font-size: 26px; font-weight: 700; letter-spacing: -0.02em; display: flex; align-items: center; gap: 12px; flex-wrap: wrap">Sort files into folders with AI <span style="font-family: 'Inter Variable', 'Inter', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; color: {{t.newText}}; background: {{t.newBg}}; border-radius: 999px; padding: 3px 9px">NEW</span></h3>
+          <p style="font-size: 16px; line-height: 1.65; color: {{t.muted}}">AI groups files by content and names the folders — or write your own rule, like “Group invoices by company and receipts by month.” You review every move before applying it.</p>
+          <p style="display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 15px; font-weight: 600; color: {{t.accent}}">
+            <a href="#">AI file sorter: write your own folder rules →</a>
+            <a href="#">How AI folder sorting works →</a>
+          </p>
+        </div>
+      </div>
+      <div style="flex: 1.9 1 560px; min-width: 0; position: relative; aspect-ratio: 845 / 605; border-radius: 18px; overflow: hidden; border: 1px solid {{t.border}}">
+        <img src="{{img.sorting}}" alt="AI Folder Sorting" style="position: absolute; display: block; width: 151.5%; max-width: none; height: auto; left: -25.8%; top: -9.5%">
+      </div>
+    </div>
+    <div style="margin-top: 64px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); column-gap: 48px">
+      <div style="border-top: 1px solid {{t.border}}; padding: 24px 0 32px"><h3 style="font-size: 17px; font-weight: 700">Folders Monitoring</h3><p style="font-size: 15px; line-height: 1.6; color: {{t.muted}}; margin-top: 8px">Watch one or multiple folders — including iCloud Drive, Google Drive, Dropbox, and OneDrive folders. Zush runs in the background and processes new files automatically.</p></div>
+      <div style="border-top: 1px solid {{t.border}}; padding: 24px 0 32px"><h3 style="font-size: 17px; font-weight: 700">Templates</h3><p style="font-size: 15px; line-height: 1.6; color: {{t.muted}}; margin-top: 8px">Save reusable rename setups for screenshots, expenses, music tracks, client work, legal files, travel bookings, and monitored folders.</p></div>
+      <div style="border-top: 1px solid {{t.border}}; padding: 24px 0 32px"><h3 style="font-size: 17px; font-weight: 700">Naming Blocks</h3><p style="font-size: 15px; line-height: 1.6; color: {{t.muted}}; margin-top: 8px">Build consistent filenames from 145+ blocks covering dates, file metadata, audio, photos, finance, legal, travel, clients, and AI-detected fields.</p></div>
+      <div style="border-top: 1px solid {{t.border}}; padding: 24px 0 32px"><h3 style="font-size: 17px; font-weight: 700">Custom AI Prompts</h3><p style="font-size: 15px; line-height: 1.6; color: {{t.muted}}; margin-top: 8px">Set rename, tagging, and metadata rules so AI output follows your style and workflow.</p></div>
+      <div style="border-top: 1px solid {{t.border}}; padding: 24px 0 32px"><h3 style="font-size: 17px; font-weight: 700">Smart Metadata</h3><p style="font-size: 15px; line-height: 1.6; color: {{t.muted}}; margin-top: 8px">Automatically add Finder tags and Spotlight metadata. Find files instantly with natural search queries.</p></div>
+      <div style="border-top: 1px solid {{t.border}}; padding: 24px 0 32px"><h3 style="font-size: 17px; font-weight: 700">Rename History</h3><p style="font-size: 15px; line-height: 1.6; color: {{t.muted}}; margin-top: 8px">Keep track of every change. Made a mistake? Rollback to the original filename with one click.</p></div>
+    </div>
+  </section>
+
+  <!-- ===== Choose where AI runs ===== -->
+  <section style="max-width: 1160px; margin: 0 auto; padding: 136px 24px 0">
+    <div style="text-align: center; max-width: 720px; margin: 0 auto">
+      <h2 class="zn-h2" style="font-size: 40px; line-height: 1.12; letter-spacing: -0.03em; font-weight: 700">Choose where AI runs</h2>
+      <p style="font-size: 17px; line-height: 1.65; color: {{t.muted}}; margin-top: 16px">Choose Zush Cloud, BYOK, LM Studio or Ollama for the same review-first rename workflow.</p>
+    </div>
+    <div style="margin-top: 56px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 48px">
+      <div style="border-top: 1px solid {{t.border}}; padding-top: 24px"><span style="display: block; color: {{t.accent}}; margin-bottom: 14px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></span><h3 style="font-size: 19px; font-weight: 700">Cloud AI</h3><p style="font-size: 15px; line-height: 1.6; color: {{t.muted}}; margin-top: 10px">Goes through our relay to a commercial AI provider, under their standard API terms. The relay exists so the API key can’t be pulled out of the app.</p></div>
+      <div style="border-top: 1px solid {{t.border}}; padding-top: 24px"><span style="display: block; color: {{t.accent}}; margin-bottom: 14px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"/><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"/></svg></span><h3 style="font-size: 19px; font-weight: 700">Bring Your Own Key</h3><p style="font-size: 15px; line-height: 1.6; color: {{t.muted}}; margin-top: 10px">Connect your own API key from Gemini, OpenRouter, OpenAI, or Claude for cloud renames; FREE includes 50 across all modes and PRO is unlimited. Keys are stored locally in secure platform storage.</p></div>
+      <div style="border-top: 1px solid {{t.border}}; padding-top: 24px"><span style="display: block; color: {{t.accent}}; margin-bottom: 14px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><h3 style="font-size: 19px; font-weight: 700">Private Local AI Options</h3><p style="font-size: 15px; line-height: 1.6; color: {{t.muted}}; margin-top: 10px">Keep supported analysis on your device with LM Studio or Ollama. Each local mode works offline after setup.</p></div>
+    </div>
+  </section>
+
+  <!-- ===== Professions ===== -->
+  <section style="max-width: 1160px; margin: 0 auto; padding: 136px 24px 0">
+    <div style="text-align: center; max-width: 760px; margin: 0 auto">
+      <h2 class="zn-h2" style="font-size: 40px; line-height: 1.12; letter-spacing: -0.03em; font-weight: 700">Built for people<br>who work with files all day</h2>
+      <p style="font-size: 17px; line-height: 1.65; color: {{t.muted}}; margin-top: 16px">Every profession has its own naming convention. Zush reads each file and fills the structure you choose — without changing the folders or tools you already use.</p>
+    </div>
+    <div style="margin-top: 56px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 48px 32px">
+      <sc-for list="{{professions}}" as="p" hint-placeholder-count="6">
+        <a href="#" style="display: flex; flex-direction: column; gap: 16px">
+          <img src="{{p.img}}" alt="{{p.alt}}" style="display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 16px">
+          <h3 style="font-size: 18px; font-weight: 700">{{p.title}}</h3>
+          <span style="font-size: 15px; line-height: 1.6; color: {{t.muted}}; margin-top: -6px">{{p.desc}}</span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ===== What can Zush rename? ===== -->
+  <section style="max-width: 1160px; margin: 0 auto; padding: 136px 24px 0">
+    <div style="text-align: center; max-width: 720px; margin: 0 auto">
+      <h2 class="zn-h2" style="font-size: 40px; line-height: 1.12; letter-spacing: -0.03em; font-weight: 700">What can Zush rename?</h2>
+      <p style="font-size: 17px; line-height: 1.65; color: {{t.muted}}; margin-top: 16px">Choose a workflow, decide which details Zush should extract, and control how the final filename is structured.</p>
+    </div>
+    <div style="margin-top: 56px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); column-gap: 48px">
+      <sc-for list="{{workflows}}" as="w" hint-placeholder-count="9">
+        <a href="#" style="display: flex; justify-content: space-between; gap: 16px; border-top: 1px solid {{t.border}}; padding: 22px 0 26px">
+          <span><h3 style="font-size: 16px; font-weight: 700">{{w.title}}</h3><span style="display: block; font-size: 14px; line-height: 1.55; color: {{t.muted}}; margin-top: 6px">{{w.desc}}</span></span>
+          <span aria-hidden="true" style="color: {{t.dim}}">→</span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ===== Works with cloud folders ===== -->
+  <section style="max-width: 1160px; margin: 0 auto; padding: 120px 24px 0; text-align: center">
+    <h2 style="font-size: 24px; letter-spacing: -0.02em; font-weight: 700">Works with cloud folders</h2>
+    <ul style="list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 36px; font-size: 16px; color: {{t.muted}}">
+      <li style="display: inline-flex; align-items: center; gap: 10px"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="cf-icloud" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3FC8F5"/><stop offset="1" stop-color="#1E7FE5"/></linearGradient></defs><path fill="url(#cf-icloud)" d="M13.762 4.29a6.51 6.51 0 0 0-5.669 3.332 3.571 3.571 0 0 0-1.558-.36 3.571 3.571 0 0 0-3.516 3A4.918 4.918 0 0 0 0 14.796a4.918 4.918 0 0 0 4.92 4.914 4.93 4.93 0 0 0 .617-.045h14.42c2.305-.272 4.041-2.258 4.043-4.589v-.009a4.594 4.594 0 0 0-3.727-4.508 6.51 6.51 0 0 0-6.511-6.27z"/></svg>iCloud Drive</li>
+      <li style="display: inline-flex; align-items: center; gap: 10px"><svg width="22" height="20" viewBox="0 0 256 229" aria-hidden="true"><path fill="#0066da" d="m19.354 196.034l11.29 19.5c2.346 4.106 5.718 7.332 9.677 9.678q17.009-21.591 23.68-33.137q6.77-11.717 16.641-36.655q-26.604-3.502-40.32-3.502q-13.165 0-40.322 3.502c0 4.545 1.173 9.09 3.519 13.196z"/><path fill="#ea4335" d="M215.681 225.212c3.96-2.346 7.332-5.572 9.677-9.677l4.692-8.064l22.434-38.855a26.57 26.57 0 0 0 3.518-13.196q-27.315-3.502-40.247-3.502q-13.899 0-40.248 3.502q9.754 25.075 16.422 36.655q6.724 11.683 23.752 33.137"/><path fill="#00832d" d="M128.001 73.311q19.68-23.768 27.125-36.655q5.996-10.377 13.196-33.137C164.363 1.173 159.818 0 155.126 0h-54.25C96.184 0 91.64 1.32 87.68 3.519q9.16 26.103 15.544 37.154q7.056 12.213 24.777 32.638"/><path fill="#2684fc" d="M175.36 155.42H80.642l-40.32 69.792c3.958 2.346 8.503 3.519 13.195 3.519h148.968c4.692 0 9.238-1.32 13.196-3.52z"/><path fill="#00ac47" d="M128.001 73.311L87.681 3.52c-3.96 2.346-7.332 5.571-9.678 9.677L3.519 142.224A26.57 26.57 0 0 0 0 155.42h80.642z"/><path fill="#ffba00" d="m215.242 77.71l-37.243-64.514c-2.345-4.106-5.718-7.331-9.677-9.677l-40.32 69.792l47.358 82.109h80.496c0-4.546-1.173-9.09-3.519-13.196z"/></svg>Google Drive</li>
+      <li style="display: inline-flex; align-items: center; gap: 10px"><svg width="22" height="19" viewBox="0 0 256 218" aria-hidden="true"><path fill="#0061ff" d="M63.995 0L0 40.771l63.995 40.772L128 40.771zM192 0l-64 40.775l64 40.775l64.001-40.775zM0 122.321l63.995 40.772L128 122.321L63.995 81.55zM192 81.55l-64 40.775l64 40.774l64-40.774zM64 176.771l64.005 40.772L192 176.771L128.005 136z"/></svg>Dropbox</li>
+      <li style="display: inline-flex; align-items: center; gap: 10px"><svg width="26" height="17" viewBox="0 0 256 165" aria-hidden="true"><path fill="#0364b8" d="m154.66 110.682l52.842-50.534c-10.976-42.8-54.57-68.597-97.37-57.62a80 80 0 0 0-46.952 33.51c.817-.02 91.48 74.644 91.48 74.644"/><path fill="#0078d4" d="m97.618 45.552l-.002.009a63.7 63.7 0 0 0-33.619-9.543c-.274 0-.544.017-.818.02C27.852 36.476-.432 65.47.005 100.798a63.97 63.97 0 0 0 11.493 35.798l79.165-9.915l60.694-48.94z"/><path fill="#1490df" d="M207.502 60.148a53 53 0 0 0-3.51-.131a51.8 51.8 0 0 0-20.61 4.254l-.002-.005l-32.022 13.475l35.302 43.607l63.11 15.341c13.62-25.283 4.164-56.82-21.12-70.44a52 52 0 0 0-21.148-6.1"/><path fill="#28a8ea" d="M11.498 136.596a63.91 63.91 0 0 0 52.5 27.417h139.994a51.99 51.99 0 0 0 45.778-27.323l-98.413-58.95z"/></svg>OneDrive</li>
+      <li style="display: inline-flex; align-items: center; gap: 10px"><svg width="30" height="16" viewBox="0 0 512 277" aria-hidden="true"><path fill="#0061d5" d="M507.486 245.434c6.391 8.948 5.113 20.453-2.557 26.844c-8.948 6.392-21.73 5.113-28.122-2.556l-44.741-57.524l-43.462 56.245c-6.392 8.948-19.175 8.948-28.123 2.557c-8.948-6.392-10.226-17.896-3.835-26.844l51.132-66.472l-51.132-66.472c-6.391-8.948-3.835-21.73 3.835-28.122c8.948-6.392 21.731-3.835 28.123 3.835l43.462 57.523l44.74-54.967c6.392-8.948 17.897-10.226 28.123-3.835c8.948 6.392 8.948 19.175 2.557 28.123l-49.854 65.193zm-232.651-7.67c-33.236 0-60.08-25.566-60.08-58.802c0-31.957 26.844-58.802 60.08-58.802s60.08 26.845 60.08 58.802c-1.278 33.236-28.123 58.802-60.08 58.802m-176.406 0c-33.236 0-60.08-25.566-60.08-58.802c0-31.957 26.844-58.802 60.08-58.802s60.08 26.845 60.08 58.802c0 33.236-26.844 58.802-60.08 58.802M274.835 81.811c-37.07 0-70.307 20.453-86.925 51.132c-16.618-30.679-49.853-51.132-88.202-51.132c-23.01 0-43.463 7.67-60.08 19.175V19.175C39.627 8.948 30.678 0 20.452 0C8.948 0 0 8.948 0 19.175V180.24c1.278 53.688 44.74 95.872 98.43 95.872c38.348 0 71.584-21.73 88.202-52.41c16.618 30.68 49.854 52.41 86.925 52.41c54.967 0 99.707-43.462 99.707-98.43c1.278-52.41-43.462-95.872-98.43-95.872"/></svg>Box</li>
+    </ul>
+  </section>
+
+  <!-- ===== Testimonials ===== -->
+  <section style="max-width: 1160px; margin: 0 auto; padding: 136px 24px 0">
+    <div style="text-align: center; max-width: 720px; margin: 0 auto">
+      <h2 class="zn-h2" style="font-size: 40px; line-height: 1.12; letter-spacing: -0.03em; font-weight: 700">What people say about Zush</h2>
+      <p style="font-size: 17px; line-height: 1.65; color: {{t.muted}}; margin-top: 16px">Published reviews from Microsoft Store, plus Softpedia’s independent editorial assessment.</p>
+    </div>
+    <div style="margin-top: 56px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 56px 48px; align-items: stretch">
+      <sc-for list="{{reviews}}" as="r" hint-placeholder-count="6">
+        <figure style="margin: 0; border-top: 1px solid {{t.border}}; padding-top: 24px; display: flex; flex-direction: column; gap: 12px; height: 100%; box-sizing: border-box">
+          <span role="img" aria-label="Rated {{r.score}} out of 5" style="display: flex; align-items: center; gap: 3px">
+            <sc-for list="{{r.stars}}" as="s" hint-placeholder-count="5">
+              <span style="position: relative; display: inline-flex; width: 16px; height: 16px">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="{{t.starEmpty}}" stroke="none" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+                <span style="position: absolute; left: 0; top: 0; height: 16px; width: {{s.fill}}; overflow: hidden; display: inline-flex">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="{{t.star}}" stroke="none" aria-hidden="true" style="flex: 0 0 16px"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+                </span>
+              </span>
+            </sc-for>
+          </span>
+          <h3 style="font-size: 17px; font-weight: 700">{{r.title}}</h3>
+          <blockquote style="margin: 0; font-size: 15px; line-height: 1.65; color: {{t.muted}}">{{r.text}}</blockquote>
+          <figcaption style="margin-top: auto; padding-top: 12px; font-size: 13px; color: {{t.faint}}; display: flex; flex-wrap: wrap; gap: 4px 10px"><span style="color: {{t.text}}; font-weight: 600">{{r.author}}</span><span>{{r.date}}</span><a href="#" style="color: {{t.accent}}">{{r.source}}</a></figcaption>
+        </figure>
+      </sc-for>
+    </div>
+    <p style="text-align: center; margin-top: 40px"><a href="#" style="font-size: 15px; font-weight: 600; color: {{t.accent}}">See all reviews on Microsoft Store →</a></p>
+  </section>
+
+  <!-- ===== Tour ===== -->
+  <section style="max-width: 1160px; margin: 0 auto; padding: 136px 24px 0">
+    <div style="text-align: center; max-width: 720px; margin: 0 auto">
+      <h2 class="zn-h2" style="font-size: 40px; line-height: 1.12; letter-spacing: -0.03em; font-weight: 700">Take a tour of Zush</h2>
+      <p style="font-size: 17px; line-height: 1.65; color: {{t.muted}}; margin-top: 16px">One quick showcase per feature. Click a tab to see it in action.</p>
+    </div>
+    <div class="zn-tour" style="margin-top: 48px; display: flex; gap: 40px">
+      <div class="zn-tabs" role="tablist" aria-label="Zush features" style="flex: 0 0 220px; display: flex; flex-direction: column">
+        <sc-for list="{{tour}}" as="tab" hint-placeholder-count="13">
+          <button class="zn-tab" type="button" role="tab" aria-selected="{{tab.selected}}" onClick="{{tab.pick}}" style="text-align: left; border: 0; background: transparent; color: {{tab.color}}; padding: 9px 0; font-size: 15px; font-weight: {{tab.weight}}; white-space: nowrap; cursor: pointer; --zn-chip-bg: {{tab.chipBg}}; --zn-chip-border: {{tab.chipBorder}}">{{tab.title}}</button>
+        </sc-for>
+      </div>
+      <div style="flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+        <div style="border-radius: 18px; overflow: hidden; border: 1px solid {{t.border}}">
+          <img src="{{tourActive.src}}" alt="{{tourActive.alt}}" style="display: block; width: 100%; height: auto">
+        </div>
+        <p style="font-size: 15px; color: {{t.muted}}">{{tourActive.desc}}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Pricing ===== -->
+  <section style="max-width: 1160px; margin: 0 auto; padding: 136px 24px 0">
+    <div style="text-align: center; max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 16px">
+      <img src="/_blob/d6f593fe5264719b1011134b61d7c010" alt="Zush app icon" style="width: 56px; height: 56px; border-radius: 14px">
+      <h2 class="zn-h2" style="font-size: 40px; line-height: 1.12; letter-spacing: -0.03em; font-weight: 700">Choose your PRO plan</h2>
+      <p style="font-size: 17px; line-height: 1.65; color: {{t.muted}}">Monthly flexibility or one-time lifetime access. Both plans remove the rename limit across every AI mode.</p>
+      <div style="display: flex; align-items: center; justify-content: center; gap: 12px; color: {{t.faint}}">
+        <svg width="22" height="46" viewBox="0 0 28 58" fill="currentColor" aria-hidden="true" style="opacity: 0.5">
+          <defs><path id="zn-laurel-a" d="M0 0 C-2.1 -2.6 -2.1 -6 0 -8.6 C2.1 -6 2.1 -2.6 0 0 Z"/></defs>
+          <use href="#zn-laurel-a" transform="translate(19 52.5) rotate(-72)"/><use href="#zn-laurel-a" transform="translate(14.5 45.5) rotate(-62)"/><use href="#zn-laurel-a" transform="translate(16 46.5) rotate(-12) scale(0.85)"/><use href="#zn-laurel-a" transform="translate(11.5 37.5) rotate(-52)"/><use href="#zn-laurel-a" transform="translate(13.2 38.5) rotate(-4) scale(0.85)"/><use href="#zn-laurel-a" transform="translate(10 29.5) rotate(-42)"/><use href="#zn-laurel-a" transform="translate(11.8 30.5) rotate(4) scale(0.85)"/><use href="#zn-laurel-a" transform="translate(10.6 21.5) rotate(-32)"/><use href="#zn-laurel-a" transform="translate(12.4 22.3) rotate(12) scale(0.85)"/><use href="#zn-laurel-a" transform="translate(12 13.5) rotate(-22)"/><use href="#zn-laurel-a" transform="translate(13.8 14) rotate(18) scale(0.85)"/><use href="#zn-laurel-a" transform="translate(14.4 7) rotate(-6)"/>
+        </svg>
+        <span style="display: flex; flex-direction: column; align-items: center; gap: 4px">
+          <span role="img" aria-label="5 out of 5 stars" style="display: flex; gap: 2px; color: {{t.star}}">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>
+          </span>
+          <span style="font-size: 14px; color: {{t.faint}}">Trusted by 3000+ users</span>
+        </span>
+        <svg width="22" height="46" viewBox="0 0 28 58" fill="currentColor" aria-hidden="true" style="opacity: 0.5; transform: scaleX(-1)">
+          <defs><path id="zn-laurel-b" d="M0 0 C-2.1 -2.6 -2.1 -6 0 -8.6 C2.1 -6 2.1 -2.6 0 0 Z"/></defs>
+          <use href="#zn-laurel-b" transform="translate(19 52.5) rotate(-72)"/><use href="#zn-laurel-b" transform="translate(14.5 45.5) rotate(-62)"/><use href="#zn-laurel-b" transform="translate(16 46.5) rotate(-12) scale(0.85)"/><use href="#zn-laurel-b" transform="translate(11.5 37.5) rotate(-52)"/><use href="#zn-laurel-b" transform="translate(13.2 38.5) rotate(-4) scale(0.85)"/><use href="#zn-laurel-b" transform="translate(10 29.5) rotate(-42)"/><use href="#zn-laurel-b" transform="translate(11.8 30.5) rotate(4) scale(0.85)"/><use href="#zn-laurel-b" transform="translate(10.6 21.5) rotate(-32)"/><use href="#zn-laurel-b" transform="translate(12.4 22.3) rotate(12) scale(0.85)"/><use href="#zn-laurel-b" transform="translate(12 13.5) rotate(-22)"/><use href="#zn-laurel-b" transform="translate(13.8 14) rotate(18) scale(0.85)"/><use href="#zn-laurel-b" transform="translate(14.4 7) rotate(-6)"/>
+        </svg>
+      </div>
+    </div>
+    <div style="margin: 48px auto 0; max-width: 800px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px">
+      <div style="border: 1px solid {{t.border}}; border-radius: 20px; padding: 32px; display: flex; flex-direction: column; gap: 12px">
+        <h3 style="font-size: 26px; font-weight: 700; letter-spacing: -0.02em"><span style="color: {{t.accent}}">PRO</span> Monthly</h3>
+        <p style="font-size: 14px; color: {{t.muted}}">Flexible monthly plan</p>
+        <p style="font-size: 44px; font-weight: 700; letter-spacing: -0.04em; margin-top: 8px">$10<span style="font-size: 14px; font-weight: 500; color: {{t.faint}}; letter-spacing: 0">/month +VAT</span></p>
+        <p style="font-size: 15px; color: {{t.muted}}; margin-top: auto; padding-top: 12px">Unlimited AI Renames</p>
+        <a href="#" style="margin-top: 8px; box-sizing: border-box; height: 50px; border: 1px solid {{t.border2}}; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 600">Start PRO Monthly</a>
+      </div>
+      <div style="border: 1px solid {{t.accent}}; border-radius: 20px; padding: 32px; display: flex; flex-direction: column; gap: 12px">
+        <h3 style="font-size: 26px; font-weight: 700; letter-spacing: -0.02em"><span style="color: {{t.accent}}">PRO</span> One-Time</h3>
+        <p style="font-size: 14px; color: {{t.muted}}">Pay once for lifetime access</p>
+        <p style="font-size: 44px; font-weight: 700; letter-spacing: -0.04em; margin-top: 8px; display: flex; align-items: baseline; gap: 10px"><s style="font-size: 20px; color: {{t.dim}}; font-weight: 600">$48</s>$36<span style="font-size: 14px; font-weight: 500; color: {{t.faint}}; letter-spacing: 0">one-time +VAT</span></p>
+        <p style="font-size: 14px; color: {{t.muted}}; display: flex; flex-wrap: wrap; align-items: center; gap: 8px">Limited Offer · 25% off with code <button type="button" aria-label="Copy code ZUSH25" style="font-family: 'Geist Mono', monospace; font-size: 13px; border: 1px dashed {{t.border2}}; background: transparent; border-radius: 8px; padding: 3px 9px; cursor: pointer">ZUSH25</button></p>
+        <p style="font-size: 15px; color: {{t.muted}}; margin-top: auto; padding-top: 12px">Unlimited AI Renames</p>
+        <a href="#" style="margin-top: 8px; box-sizing: border-box; height: 50px; background: {{t.btn}}; color: #ffffff; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 600">Buy PRO One-Time</a>
+      </div>
+    </div>
+    <p style="font-size: 13px; color: {{t.faint}}; margin-top: 18px; text-align: center">14-day money-back guarantee • Secure via Paddle</p>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section style="max-width: 820px; margin: 0 auto; padding: 136px 24px 0">
+    <div style="text-align: center">
+      <h2 class="zn-h2" style="font-size: 40px; line-height: 1.12; letter-spacing: -0.03em; font-weight: 700">Frequently Asked Questions</h2>
+      <p style="font-size: 17px; color: {{t.muted}}; margin-top: 14px">Everything you need to know about Zush in one place</p>
+    </div>
+    <div style="margin-top: 48px; border-bottom: 1px solid {{t.border}}">
+      <sc-for list="{{faq}}" as="q" hint-placeholder-count="18">
+        <div style="border-top: 1px solid {{t.border}}">
+          <h3 style="margin: 0">
+            <button type="button" aria-expanded="{{q.open}}" onClick="{{q.toggle}}" style="width: 100%; text-align: left; border: 0; background: transparent; padding: 20px 0; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-weight: 600; font-size: 16px; cursor: pointer">{{q.q}}<span aria-hidden="true" style="font-weight: 400; font-size: 20px; color: {{t.faint}}">{{q.sign}}</span></button>
+          </h3>
+          <sc-if value="{{q.open}}" hint-placeholder-val="{{ false }}">
+            <p style="font-size: 15px; line-height: 1.65; color: {{t.muted}}; padding: 0 0 22px; max-width: 680px">{{q.a}}</p>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ===== Try Zush free ===== -->
+  <section style="max-width: 1160px; margin: 0 auto; padding: 160px 24px 0; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 20px">
+    <h2 style="font-size: 56px; letter-spacing: -0.04em; font-weight: 700">Try Zush free</h2>
+    <p style="font-size: 17px; line-height: 1.65; color: {{t.muted}}; max-width: 600px">Rename and organize files with AI, monitor folders, and clean up screenshots, design files, PDFs, photos, audio, videos, iWork, and Office documents by content.</p>
+    <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; padding-top: 8px">
+      <a href="#" style="background: {{t.btn}}; color: #ffffff; font-weight: 600; font-size: 15px; height: 50px; padding: 0 24px; border-radius: 12px; display: inline-flex; align-items: center">Download for Mac</a>
+      <a href="#" style="font-weight: 600; font-size: 15px; height: 50px; padding: 0 24px; border-radius: 12px; display: inline-flex; align-items: center; border: 1px solid {{t.border2}}">Download for Windows</a>
+    </div>
+    <p style="font-size: 13px; color: {{t.faint}}">Free · No credit card required · macOS Sequoia+ · Windows 10+</p>
+  </section>
+
+  <!-- ===== Cross-platform ===== -->
+  <section style="max-width: 1160px; margin: 0 auto; padding: 136px 24px 0">
+    <div style="text-align: center; max-width: 720px; margin: 0 auto">
+      <p style="font-size: 13px; color: {{t.accent}}; font-weight: 600">Available on both desktops</p>
+      <h2 class="zn-h2" style="font-size: 40px; line-height: 1.12; letter-spacing: -0.03em; font-weight: 700; margin-top: 12px">Pick your platform — same Zush, native everywhere</h2>
+      <p style="font-size: 17px; line-height: 1.65; color: {{t.muted}}; margin-top: 16px">A signed and notarized .dmg, Mac App Store build, or Homebrew cask for macOS. A Microsoft Store install for Windows. Same renaming engine, same BYOK and Local AI mode, native to each OS.</p>
+    </div>
+    <div style="margin: 56px auto 0; max-width: 880px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 48px">
+      <a href="#" style="border-top: 1px solid {{t.border}}; padding-top: 24px; display: flex; flex-direction: column; gap: 10px">
+        <span style="color: {{t.text}}; margin-bottom: 6px"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.120-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.260-3.428-2.8-1.287-1.82-2.323-4.630-2.323-7.280 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.010 3.902-1.010.613 0 2.886.06 4.374 2.190-.13.09-2.383 1.370-2.383 4.190 0 3.260 2.854 4.420 2.955 4.450z"/></svg></span>
+        <h3 style="font-size: 22px; font-weight: 700">Zush for Mac</h3>
+        <span style="font-size: 15px; color: {{t.muted}}">Apple Silicon and Intel · macOS 15+ · App Store + .dmg + Homebrew</span>
+        <span style="font-size: 15px; font-weight: 600; color: {{t.accent}}; margin-top: 6px">See Mac details →</span>
+      </a>
+      <a href="#" style="border-top: 1px solid {{t.border}}; padding-top: 24px; display: flex; flex-direction: column; gap: 10px">
+        <span style="margin-bottom: 6px"><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path fill="#F25022" d="M0 3.449L9.75 2.1v9.451H0z"/><path fill="#7FBA00" d="M10.949 1.94L24 0v11.4H10.949z"/><path fill="#00A4EF" d="M0 12.6h9.75v9.451L0 20.699z"/><path fill="#FFB900" d="M10.949 12.6H24V24l-13.051-1.801z"/></svg></span>
+        <h3 style="font-size: 22px; font-weight: 700">Zush for Windows</h3>
+        <span style="font-size: 15px; color: {{t.muted}}">x64 and ARM64 · Windows 10/11 · Microsoft Store</span>
+        <span style="font-size: 15px; font-weight: 600; color: {{t.accent}}; margin-top: 6px">See Windows details →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== Comparison ===== -->
+  <section style="max-width: 1160px; margin: 0 auto; padding: 136px 24px 0">
+    <div style="max-width: 780px; margin: 0 auto; text-align: center">
+      <h2 class="zn-h2" style="font-size: 40px; line-height: 1.12; letter-spacing: -0.03em; font-weight: 700">How Zush compares to other AI file renamers</h2>
+      <p style="font-size: 17px; line-height: 1.65; color: {{t.muted}}; margin-top: 16px">Zush is our pick for the best AI file renamer on Mac and Windows: one workflow that reads 107 file formats, follows your naming rules, previews every batch, and undoes it from Rename History. Paid PRO has no monthly rename meter, and the first 50 renames are free. The other rows summarize our Mac and Windows comparisons.</p>
+    </div>
+    <div style="margin-top: 48px; overflow-x: auto">
+      <table style="width: 100%; min-width: 720px; border-collapse: collapse; font-size: 14px; line-height: 1.6">
+        <caption style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">How Zush compares to other AI file renamers</caption>
+        <thead><tr style="text-align: left; color: {{t.faint}}"><th scope="col" style="font-weight: 600; padding: 12px 20px 12px 0; border-bottom: 1px solid {{t.border2}}; width: 20%">Tool</th><th scope="col" style="font-weight: 600; padding: 12px 20px; border-bottom: 1px solid {{t.border2}}">Where it fits</th><th scope="col" style="font-weight: 600; padding: 12px 0 12px 20px; border-bottom: 1px solid {{t.border2}}">Watch out for</th></tr></thead>
+        <tbody style="color: {{t.muted}}">
+          <tr><th scope="row" style="text-align: left; padding: 20px 20px 20px 0; color: {{t.accent}}; font-weight: 700; border-bottom: 1px solid {{t.border}}">Zush</th><td style="padding: 20px; border-bottom: 1px solid {{t.border}}; color: {{t.text}}">Best overall on Mac and Windows: mixed folders, configurable naming, AI folder sorting that follows your own plain-language rules, folder monitoring, preview, and batch undo. Zush managed cloud, BYOK, Ollama, or LM Studio. PRO is $10/month or $48 one-time.</td><td style="padding: 20px 0 20px 20px; border-bottom: 1px solid {{t.border}}; color: {{t.text}}">A desktop app, so it installs on the computer that holds the files.</td></tr>
+          <tr><th scope="row" style="text-align: left; padding: 20px 20px 20px 0; color: {{t.text}}; font-weight: 700; border-bottom: 1px solid {{t.border}}">NameQuick</th><td style="padding: 20px; border-bottom: 1px solid {{t.border}}">Conditional routing Rules</td><td style="padding: 20px 0 20px 20px; border-bottom: 1px solid {{t.border}}">Managed plans meter renames; the one-time plan needs your own API key or local model; no complete public format or platform matrix.</td></tr>
+          <tr><th scope="row" style="text-align: left; padding: 20px 20px 20px 0; color: {{t.text}}; font-weight: 700; border-bottom: 1px solid {{t.border}}">RenameClick</th><td style="padding: 20px; border-bottom: 1px solid {{t.border}}">Rename-and-move routing into preset categories</td><td style="padding: 20px 0 20px 20px; border-bottom: 1px solid {{t.border}}">No documented RAW, design-file, or video support; prices are quoted before VAT.</td></tr>
+          <tr><th scope="row" style="text-align: left; padding: 20px 20px 20px 0; color: {{t.text}}; font-weight: 700; border-bottom: 1px solid {{t.border}}">Renamer.ai</th><td style="padding: 20px; border-bottom: 1px solid {{t.border}}">Document-heavy OCR workflows</td><td style="padding: 20px 0 20px 20px; border-bottom: 1px solid {{t.border}}">Every paid tier is metered, with no published BYOK or local-model option.</td></tr>
+          <tr><th scope="row" style="text-align: left; padding: 20px 20px 20px 0; color: {{t.text}}; font-weight: 700; border-bottom: 1px solid {{t.border}}">FilesDesk</th><td style="padding: 20px; border-bottom: 1px solid {{t.border}}">Setups that require vLLM</td><td style="padding: 20px 0 20px 20px; border-bottom: 1px solid {{t.border}}">Managed suggestions are metered; the lifetime license needs your own API key or local model.</td></tr>
+          <tr><th scope="row" style="text-align: left; padding: 20px 20px 20px 0; color: {{t.text}}; font-weight: 700">Finder, PowerRename, or Bulk Rename Utility</th><td style="padding: 20px">One shared pattern across many files</td><td style="padding: 20px 0 20px 20px">They never read file content, so every file gets the same rule instead of a descriptive name.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===== Blog ===== -->
+  <section style="max-width: 1160px; margin: 0 auto; padding: 136px 24px 0">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px">
+      <div style="max-width: 620px">
+        <h2 class="zn-h2" style="font-size: 40px; line-height: 1.12; letter-spacing: -0.03em; font-weight: 700">Guides and comparisons</h2>
+        <p style="font-size: 17px; line-height: 1.65; color: {{t.muted}}; margin-top: 14px">Compare file renamers for Mac and Windows, organize files into folders with AI, and share reusable naming workflows.</p>
+      </div>
+      <a href="#" style="font-size: 15px; font-weight: 600; color: {{t.accent}}">Read all guides →</a>
+    </div>
+    <div style="margin-top: 48px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px 24px">
+      <sc-for list="{{posts}}" as="b" hint-placeholder-count="4">
+        <a href="#" style="display: flex; flex-direction: column; gap: 10px">
+          <img src="{{b.img}}" alt="{{b.alt}}" style="display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 14px; margin-bottom: 6px">
+          <span style="font-size: 12px; color: {{t.faint}}">{{b.label}}</span>
+          <h3 style="font-size: 17px; font-weight: 700; line-height: 1.35">{{b.title}}</h3>
+          <span style="font-size: 14px; line-height: 1.55; color: {{t.muted}}">{{b.excerpt}}</span>
+          <span style="font-size: 13px; color: {{t.faint}}">{{b.meta}}</span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ===== Evidence facts ===== -->
+  <section style="max-width: 1160px; margin: 0 auto; padding: 120px 24px 0">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px">
+      <div style="border-top: 1px solid {{t.border}}; padding-top: 20px"><p style="font-size: 17px; font-weight: 700">Free to try</p><p style="font-size: 14px; line-height: 1.6; color: {{t.muted}}; margin-top: 8px">50 free AI renames — no signup, no credit card. PRO from $48 one-time or $10/month.</p></div>
+      <div style="border-top: 1px solid {{t.border}}; padding-top: 20px"><p style="font-size: 17px; font-weight: 700">145+ Naming Blocks</p><p style="font-size: 14px; line-height: 1.6; color: {{t.muted}}; margin-top: 8px">Build filenames from dates, metadata, audio details, finance fields, clients, travel, legal, and AI-detected context.</p></div>
+      <div style="border-top: 1px solid {{t.border}}; padding-top: 20px"><p style="font-size: 17px; font-weight: 700">60+ filename languages</p><p style="font-size: 14px; line-height: 1.6; color: {{t.muted}}; margin-top: 8px">Generate searchable names in the language and date format that fits each folder or team.</p></div>
+      <div style="border-top: 1px solid {{t.border}}; padding-top: 20px"><p style="font-size: 17px; font-weight: 700">107 supported formats</p><p style="font-size: 14px; line-height: 1.6; color: {{t.muted}}; margin-top: 8px">Images, RAW photos, design files, PDFs, Office and iWork files, subtitles, audio, and videos can live in one rename workflow.</p></div>
+    </div>
+  </section>
+
+  <!-- ===== Supported formats ===== -->
+  <section style="max-width: 1160px; margin: 0 auto; padding: 120px 24px 0">
+    <h2 class="zn-h2" style="font-size: 32px; letter-spacing: -0.025em; font-weight: 700; text-align: center">Supported File Formats</h2>
+    <div style="margin-top: 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px 48px">
+      <sc-for list="{{formats}}" as="f" hint-placeholder-count="5">
+        <div>
+          <h3 style="font-size: 15px; font-weight: 700">{{f.name}}</h3>
+          <p style="font-family: 'Geist Mono', monospace; font-size: 12.5px; line-height: 1.9; color: {{t.faint}}; margin-top: 8px; word-spacing: 6px">{{f.list}}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ===== Sources ===== -->
+  <section style="max-width: 1160px; margin: 0 auto; padding: 96px 24px 0; text-align: center">
+    <h2 style="font-size: 13px; font-weight: 600; color: {{t.faint}}">Sources</h2>
+    <ul style="list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; font-size: 14px; color: {{t.muted}}">
+      <sc-for list="{{sources}}" as="s" hint-placeholder-count="17"><li><a href="#">{{s}}</a></li></sc-for>
+    </ul>
+  </section>
+
+  <!-- ===== Featured on ===== -->
+  <section style="max-width: 1160px; margin: 0 auto; padding: 64px 24px 0; text-align: center">
+    <h2 style="font-size: 13px; font-weight: 600; color: {{t.faint}}">Featured on</h2>
+    <ul style="list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 18px 36px; font-size: 15px; font-weight: 600; color: {{t.text}}">
+      <sc-for list="{{featured}}" as="fo" hint-placeholder-count="15">
+        <li><a href="#" style="display: inline-flex; align-items: center; gap: 10px">
+          <sc-if value="{{fo.hasImg}}" hint-placeholder-val="{{ true }}"><img src="{{fo.img}}" alt="" width="24" height="24" style="width: 24px; height: 24px; object-fit: contain; border-radius: 6px"></sc-if>
+          <sc-if value="{{fo.ph}}" hint-placeholder-val="{{ false }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="#DA552F" aria-hidden="true"><path d="M13.604 8.4h-3.405V12h3.405a1.8 1.8 0 0 0 0-3.6zM12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm1.604 14.4h-3.405V18H7.801V6h5.804a4.2 4.2 0 0 1 0 8.4z"/></svg></sc-if>
+          <sc-if value="{{fo.tp}}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 468 468" fill="currentColor" fill-rule="evenodd" aria-hidden="true"><path d="m432,288h-180v180h-36V72h216c19.88,0,36,16.12,36,36v144c0,19.88-16.12,36-36,36ZM36,72h144v324h-36V108H0V0h288v36H36v36Zm252,180v36h-36V108h180v144h-144Z"/></svg></sc-if>
+          <sc-if value="{{fo.sl}}" hint-placeholder-val="{{ false }}"><svg width="22" height="22" viewBox="0 0 42 42" fill="currentColor" fill-rule="evenodd" aria-hidden="true"><path d="M22.0997 17.8596L31.9992 7.9602L29.8779 5.83883L22.539 13.1777V0H19.539V13.1777L12.2002 5.83883L10.0789 7.9602L19.9784 17.8596L21.039 18.9203L22.0997 17.8596ZM24.2204 19.981L34.1199 10.0815L36.2412 12.2028L28.9024 19.5416H41.998V22.5416H28.9024L36.2412 29.8805L34.1199 32.0018L24.2204 22.1023L23.1597 21.0416L24.2204 19.981ZM7.95821 32.0018L17.8576 22.1023L18.9183 21.0416L17.8576 19.981L7.95821 10.0815L5.83688 12.2028L13.1757 19.5416H0V22.5416H13.1757L5.83688 29.8805L7.95821 32.0018ZM19.9784 24.2236L10.0789 34.1231L12.2002 36.2444L19.539 28.9056V42H22.539V28.9056L29.8779 36.2444L31.9992 34.1231L22.0997 24.2236L21.039 23.1629L19.9784 24.2236Z"/></svg></sc-if>
+          {{fo.name}}
+        </a></li>
+      </sc-for>
+    </ul>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer style="margin-top: 112px; border-top: 1px solid {{t.border}}">
+    <div style="max-width: 1160px; margin: 0 auto; padding: 56px 24px 0; display: flex; flex-wrap: wrap; gap: 48px">
+      <div style="flex: 1 1 220px; display: flex; flex-direction: column; gap: 14px">
+        <a href="#" style="display: flex; align-items: center; gap: 11px; font-weight: 700; font-size: 20px"><img src="/_blob/d6f593fe5264719b1011134b61d7c010" alt="" style="width: 36px; height: 36px; border-radius: 9px">Zush</a>
+        <p style="font-size: 14px; line-height: 1.6; color: {{t.muted}}">AI file renamer and organizer for Mac and Windows</p>
+        <div style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: {{t.muted}}">
+          <a href="#">Download on the Mac App Store</a>
+          <a href="#">Download from the Microsoft Store</a>
+        </div>
+      </div>
+      <div style="flex: 4 1 640px; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 32px 24px">
+        <sc-for list="{{footerCols}}" as="col" hint-placeholder-count="6">
+          <div>
+            <h4 style="font-size: 13px; font-weight: 700; margin: 0 0 14px">{{col.title}}</h4>
+            <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; font-size: 13.5px; color: {{t.muted}}">
+              <sc-for list="{{col.links}}" as="l" hint-placeholder-count="6"><li><a href="#">{{l}}</a></li></sc-for>
+            </ul>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="max-width: 1160px; margin: 48px auto 0; padding: 24px 24px 40px; border-top: 1px solid {{t.border}}; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 13px; color: {{t.faint}}">
+      <span>© 2026 Zush</span>
+      <span style="display: flex; flex-wrap: wrap; gap: 8px 18px"><a href="#">X</a><a href="#">YouTube</a><a href="#">LinkedIn</a><a href="#">Facebook</a><a href="#">Product Hunt</a><a href="#">Google Workspace</a><a href="#">GitHub</a><a href="#">Homebrew</a></span>
+      <span>Designed by <a href="#" style="color: {{t.text}}; font-weight: 600">lirik</a> with <span style="color: {{t.green}}">♥</span></span>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["dark","light"],"default":"dark"},"$preview":{"width":1440,"height":15800}}'>
+const ZN_TOKENS = {
+  dark: {
+    bg: '#0C0C10', border: '#23232C', border2: '#33333F',
+    text: '#EDEDF2', muted: '#A6A6B3', faint: '#8A8A97', dim: '#6E6E7B',
+    accent: '#9D8FFF', btn: '#6E5CF3',
+    inv: '#EDEDF2', invText: '#0C0C10', green: '#4CC85A', star: '#F5B83D',
+    header: 'rgba(18,18,23,0.72)', pill: '#131318', starEmpty: '#33333F', scrim: 'rgba(12,12,16,0.82)', chipActive: '#26262F', headerBtn: '#2A2A34', headerBtnText: '#EDEDF2', newBg: '#4CC85A', newText: '#0C0C10', heroSub: '#C9C9D3',
+    waveA: '#4B3BE0', waveB: '#C9C2FF'
+  },
+  light: {
+    bg: '#FFFFFF', border: '#EAEAF0', border2: '#D9D9E2',
+    text: '#111118', muted: '#555562', faint: '#6B6B78', dim: '#9A9AA6',
+    accent: '#5443E6', btn: '#5B4BEF',
+    inv: '#111118', invText: '#FFFFFF', green: '#4CC85A', star: '#F5B83D',
+    header: 'rgba(255,255,255,0.8)', pill: '#FFFFFF', starEmpty: '#E3E3EA', scrim: 'rgba(255,255,255,0.85)', chipActive: '#EDEDF2', headerBtn: '#111118', headerBtnText: '#FFFFFF', newBg: '#4CC85A', newText: '#0C0C10', heroSub: '#3F3F4A',
+    waveA: '#5B4BEF', waveB: '#A99FFF'
+  }
+};
+
+const ZN_TOUR = [
+  ['AI Batch Rename', 'Bulk rename files by real content before you apply changes', '/_blob/66b074514f26aedc39ab924f4e3671e9', '/_blob/9e33e0ffc9ff97ad77473c423f21bdc3', 'Batch rename results in Zush for macOS'],
+  ['Custom AI Blocks', 'Describe what AI should extract and reuse it as your own naming block', '/_blob/ddc95a03532ffd33f3006216d1cf31c4', '/_blob/f133c5ee8b553db6332a9602dca22428', 'Custom AI Blocks in the Naming Blocks picker in Zush for macOS'],
+  ['AI Folder Sorting', 'Sort files into folders using your own instructions', '/_blob/bd5be068b4a4a67c63117cdfdbfc1600', '/_blob/19438179535d2ad50f069b42ea825243', 'Sort files into folders with AI'],
+  ['Import / Export Templates', 'Share and back up your naming templates', '/_blob/704980af60f328b8b0421c924ea6592a', '/_blob/a13c072f1b2ddfdf58c1b52f3a1a0ac3', 'Share your naming workflow'],
+  ['Folders Monitor', 'Watch folders and rename new files automatically', '/_blob/8ee78f8bcba53075286378411ba293f1', '/_blob/2ad9d88bda21a9308fd3a96386f6a0ec', 'Folder monitoring settings in Zush for macOS'],
+  ['Activity History', 'Review recent renames and undo changes when needed', '/_blob/fb0f3fbb1ee42456fd264276f8ae4ae8', '/_blob/d474bf5bd260886051ea360b2564ce00', 'Activity history in Zush for macOS'],
+  ['Statistics', 'See rename volume, Monitor share, activity, and file type trends', '/_blob/9db838ba54111aa1ff70875fef00fb3c', '/_blob/dd35918e10a608d3585887aa1f748fdc', 'Statistics dashboard in Zush for macOS'],
+  ['Templates', 'Save reusable rename setups for repeated AI Rename and Monitor workflows', '/_blob/d57a82f8293be407f43a018c7f0a80f0', '/_blob/ef084d1ab7352497d42518894e13bf58', 'Reusable templates list in Zush for macOS'],
+  ['Naming Blocks', 'Build filenames from your file content using 145+ ready-made blocks', '/_blob/62eacb0cb722a563df24df89ee5f7a33', '/_blob/807ecfe2255d675f33c4048c9e904337', 'Naming Blocks catalog in Zush for macOS'],
+  ['Custom Prompts', 'Guide filename generation with your own instructions', '/_blob/b8ecd71ea7a0435a1233491b27344eb4', '/_blob/3f6f1355f9bf2ffa9d8c84c9dd1c3ff3', 'Custom prompt editor in Zush for macOS'],
+  ['Zush Cloud AI', 'Start renaming immediately with managed cloud analysis and no setup', '/_blob/6176fe5bcd8d742521b015f1798d2777', '/_blob/31fca63cb6d28f2ad97746d07dbd4ee1', 'Zush Cloud AI selected in AI Modes for macOS'],
+  ['Offline Mode', 'Run supported analysis on your Mac with LM Studio or Ollama.', '/_blob/3b43b6f307aa49ed73ce96fe9335ba75', '/_blob/6b39e781ba99e9baf61c3e368c4c23b9', 'Run supported analysis on your Mac with LM Studio or Ollama.'],
+  ['BYOK', 'Connect your own AI provider for renaming; FREE includes 50 across all modes and PRO is unlimited', '/_blob/574a5108b81f974c54115f08846a225b', '/_blob/1cef83f4c4fd826055580e8e2b7a74d3', 'Bring your own key settings in Zush for macOS']
+];
+
+const ZN_TOUR_WIN = [
+  ['AI Batch Rename', 'Bulk rename files by real content before you apply changes', '/_blob/2993c7f573d1282d3f7a056f9aa13765', '/_blob/c4da1727c43e8eb46fa3d87e1358f83f', 'Batch rename workflow in Zush for Windows'],
+  ['AI Folder Sorting', 'Sort files into folders using your own instructions', '/_blob/92241f5eb237555da616fc3f5bce3942', '/_blob/7b9cebaa5dda840c1357c9d83315b9b1', 'Sort files into folders with AI'],
+  ['Import / Export Templates', 'Share and back up your naming templates', '/_blob/8fb574ba39adcf73bc0b3eed4bee27f0', '/_blob/2a6580cb489b4138da56cedafa774ba7', 'Share your naming workflow'],
+  ['Folders Monitor', 'Watch folders and rename new files automatically', '/_blob/585db8883bd12d33dbaab39412d4c012', '/_blob/e1c33ca0857248518279a61b59fa4c73', 'Folder monitoring settings in Zush for Windows'],
+  ['Activity History', 'Review recent renames and undo changes when needed', '/_blob/f957451e57f176601388cf134f65a178', '/_blob/adc6c27ce9db79ff9e41335abeb7232e', 'Activity history and undo workflow in Zush for Windows'],
+  ['Statistics', 'See rename volume, Monitor share, activity, and file type trends', '/_blob/4b84e4518c888bdf7b3c9ff8747ac62d', '/_blob/9884d56ef590e325944b7f6a0b1a5f69', 'Rename statistics in Zush for Windows'],
+  ['Templates', 'Save reusable rename setups for repeated AI Rename and Monitor workflows', '/_blob/002546b6dd4da93e3bcabc7ebf203ea3', '/_blob/c9d65b9ec785d92992216d6ff3521f8c', 'Smart Rename templates in Zush for Windows'],
+  ['Naming Blocks', 'Build filenames from your file content using 145+ ready-made blocks', '/_blob/a8e7ca293a80333c037a777740aa8506', '/_blob/44933f6d9b8f297c2b33e108d2e53e8e', 'Naming Blocks editor in Zush for Windows'],
+  ['Custom AI Blocks', 'Describe what AI should extract and reuse it as your own naming block', '/_blob/bb372101e51158efc12ab4385d63d028', '/_blob/eca213b771f7c6fa859f2bec054591f0', 'Custom AI Block editor in Zush for Windows'],
+  ['Custom Prompts', 'Guide filename generation with your own instructions', '/_blob/16d36144f7b0613344d227e88624f8d5', '/_blob/2fbbf1774937c47f066102e10b4de172', 'Custom prompt settings in Zush for Windows'],
+  ['BYOK', 'Connect your own AI provider for renaming; FREE includes 50 across all modes and PRO is unlimited', '/_blob/48f68637cbaff6c133a5c81fa59203d1', '/_blob/4c6cef35060c218f4c44a41fc7e4cb7e', 'Bring your own key setup in Zush for Windows'],
+  ['Local AI Renaming', 'Use LM Studio or Ollama for supported on-device analysis, even without an internet connection', '/_blob/9a6b206158371485e16990c668c348b7', '/_blob/9a6b206158371485e16990c668c348b7', 'Offline AI setup in Zush for Windows']
+];
+
+function znDetectOs() {
+  const nav = window.navigator || {};
+  const p = ((nav.userAgentData && nav.userAgentData.platform) || nav.platform || nav.userAgent || '').toLowerCase();
+  return p.indexOf('win') !== -1 ? 'windows' : 'mac';
+}
+
+const ZN_FAQ = [
+  ['Can I sort files into folders with my own AI prompt?', 'Yes. Zush supports AI folder sorting in beta. Auto mode groups files by content and suggests folder names. In Custom mode, write instructions such as “Group invoices by company and receipts by month.” Review the proposed names and folders before applying a batch. Save the rules in a Template for Monitor to process new files.'],
+  ['What is the best AI file renamer for Mac and Windows?', 'Our pick is Zush. It renames files by their content on both Mac and Windows with one workflow: 107 supported formats, reusable naming Templates, folder monitoring, a preview of every batch, and undo from Rename History. It works with Zush Cloud AI, BYOK, LM Studio, and Ollama, starts with 50 free renames, and paid PRO has no monthly rename meter.'],
+  ['What is the best app to sort files into folders with AI on Mac and Windows?', 'Our pick is Zush. Describe the folders in plain language, such as “Group invoices by company and receipts by month,” or let Auto group files by content. Zush reads PDFs, scans, photos, screenshots, documents, videos, and audio, renames each file, and moves it into the right folder after you review the batch. It can reuse existing folders, sort new files automatically with Monitor, and run on local AI. Paid PRO has no monthly file meter.'],
+  ['What is AI renamer software?', 'AI renamer software, also called an AI file renamer, reads what is inside each file, such as the text of a PDF, the scene in a photo, or the frames of a video, and suggests a descriptive filename for it: scan_004.pdf becomes invoice-7842-webdesign-services.pdf. A bulk rename utility such as Finder, PowerRename, or Bulk Rename Utility applies one shared rule to every file and never opens it. Zush is AI renamer software for Mac and Windows that combines both: AI suggestions that follow your own naming rules, reviewed before anything changes.'],
+  ['How does Zush compare to NameQuick, RenameClick, Renamer.ai, and FilesDesk?', 'Zush has no monthly rename meter on paid PRO and publishes support for RAW photos, design files, video, and audio in the same workflow. NameQuick, Renamer.ai, and FilesDesk meter their managed renames, RenameClick does not document RAW, design, or video support, and Renamer.ai publishes no BYOK or local-model option. The Mac comparison and Windows comparison list the sources and check dates.'],
+  ['How does an AI file renamer work?', 'An AI file renamer reads file content, metadata, text, and visual previews, then writes a different descriptive filename for every file instead of one shared pattern. In Zush you add files or a monitored folder, pick a Template that sets the filename structure, review each suggestion, and apply the batch; Rename History can undo it later.'],
+  ['Can Zush rename files based on their content?', 'Yes. Depending on the file type, Zush can use visual previews, extracted text, PDF context, design previews, metadata, transcripts, and sampled video frames to suggest a descriptive filename.'],
+  ['How is Zush different from Finder, File Explorer, or Bulk Rename Utility?', 'Pattern-based tools work best when every file needs the same prefix, suffix, or sequence. Zush analyzes each file separately, so mixed files can receive different content-aware names in one reviewed batch.'],
+  ['Does Zush move or sort files into folders?', 'Yes. Zush offers AI folder sorting (beta) and destination folders for batch renaming and Monitor on Mac and Windows. Use Auto grouping or write your own folder rules in plain language, and Zush can reuse folders that already exist. Keep sorting off to rename in place.'],
+  ['Is Zush free to try?', 'Yes. Zush includes 50 free AI renames with no credit card required, shared across Zush Cloud AI, BYOK, LM Studio, and Ollama, so you can test the full workflow before upgrading.'],
+  ['Is my data private?', 'Your original files stay on your device. Zush Cloud AI sends only the content needed for analysis, BYOK sends it to the provider you choose, and LM Studio and Ollama keep supported analysis on your computer without cloud processing.'],
+  ['Which operating systems does Zush support?', 'Zush runs on macOS 15.0+ and Windows 10 or 11. The Mac app is available as a signed DMG, from the Mac App Store, and through Homebrew. The Windows app is available from the Microsoft Store.'],
+  ['Which file formats are supported?', 'Zush supports 107 file extensions across images, RAW photos, design files, PDFs, ebooks, documents, video, and audio — including HEIC, PNG, PDF, EPUB, FB2, DOCX, XLSX, KEY, FIG, PSD, MP4, MOV, MP3, and FLAC.'],
+  ['Can Zush rename files offline?', 'Yes. LM Studio and Ollama work offline after you configure a compatible local model. Both local modes are available on the free plan for supported files and share the 50-rename limit with Zush Cloud AI and BYOK; PRO removes that limit.'],
+  ['How does folder monitoring work?', 'Choose a folder and a rename template, and Zush can process new supported files as they arrive. Monitored renames remain visible in Activity history and can be undone.'],
+  ['Does Zush work with Google Drive, Dropbox, and iCloud?', 'Yes. Zush doesn’t connect to your cloud accounts — it renames files directly in the local folder your cloud app already keeps in sync, so there’s nothing to authorize. This works with iCloud Drive, Google Drive, Dropbox, OneDrive, and Box on Mac, and with OneDrive, Google Drive, and Dropbox folders on Windows. Once renamed, the new name syncs to your other devices automatically.'],
+  ['Can I control the filename format?', 'Yes. You can write custom instructions, save reusable templates, and combine 145+ Naming Blocks for dates, categories, client names, document fields, counters, and other metadata. You can also create Custom AI Blocks: describe what Zush should extract from a file and reuse it as your own naming block in any template. All of these are included in the free version.'],
+  ['Can I undo a rename?', 'Yes. Review suggestions before applying them, then use Activity history to restore original filenames if a batch needs to be reverted.'],
+  ['How much does Zush PRO cost?', 'Zush PRO costs $10 per month or $48 as a one-time purchase. Every mode — Zush Cloud AI, BYOK, LM Studio, and Ollama — is available within the 50-rename free limit; both PRO plans remove that limit. Eligible purchases include a 14-day refund period.']
+];
+
+function znWithStars(list) {
+  return list.map((r) => {
+    const score = parseFloat(r.score);
+    const stars = [0, 1, 2, 3, 4].map((i) => {
+      const part = Math.max(0, Math.min(1, score - i));
+      return { fill: Math.round(part * 100) + '%' };
+    });
+    return Object.assign({}, r, { stars: stars });
+  });
+}
+
+// ---- Hero wave field: raw WebGL, no dependencies (~4 KB) ----
+
+const ZN_VERT = `
+attribute vec3 aPos;
+uniform mat4 uProj;
+uniform mat4 uView;
+uniform float uTime;
+uniform float uPR;
+uniform float uRotX;
+uniform float uRotY;
+varying float vAlpha;
+varying float vMix;
+void main() {
+  vec3 p = aPos;
+  float w = sin(p.x * 0.28 + uTime * 0.55) * 0.55
+          + sin(p.z * 0.42 + uTime * 0.40) * 0.45
+          + sin((p.x + p.z) * 0.18 - uTime * 0.30) * 0.75;
+  float r = length(p.xz - vec2(0.0, -8.0));
+  w += sin(r * 0.55 - uTime * 1.1) * 0.35 * smoothstep(26.0, 4.0, r);
+  p.y += w;
+  float cy = cos(uRotY), sy = sin(uRotY);
+  p = vec3(cy * p.x + sy * p.z, p.y, -sy * p.x + cy * p.z);
+  float cx = cos(uRotX), sx = sin(uRotX);
+  p = vec3(p.x, cx * p.y - sx * p.z, sx * p.y + cx * p.z);
+  vec4 mv = uView * vec4(p, 1.0);
+  gl_Position = uProj * mv;
+  gl_PointSize = (1.6 + (w + 1.8) * 0.55) * uPR * (22.0 / -mv.z);
+  float edge = 1.0 - smoothstep(20.0, 31.0, abs(aPos.x));
+  vAlpha = smoothstep(58.0, 12.0, -mv.z) * edge;
+  vMix = clamp((w + 1.8) / 3.6, 0.0, 1.0);
+}`;
+
+const ZN_FRAG = `
+precision mediump float;
+uniform vec3 uA;
+uniform vec3 uB;
+uniform float uOpacity;
+varying float vAlpha;
+varying float vMix;
+void main() {
+  float d = length(gl_PointCoord - 0.5);
+  if (d > 0.5) discard;
+  float a = smoothstep(0.5, 0.05, d) * vAlpha * uOpacity;
+  gl_FragColor = vec4(mix(uA, uB, vMix), a);
+}`;
+
+function znPerspective(fovy, aspect, near, far) {
+  const f = 1 / Math.tan(fovy / 2), nf = 1 / (near - far);
+  return new Float32Array([f / aspect, 0, 0, 0, 0, f, 0, 0, 0, 0, (far + near) * nf, -1, 0, 0, 2 * far * near * nf, 0]);
+}
+
+function znLookAt(e, c) {
+  let zx = e[0] - c[0], zy = e[1] - c[1], zz = e[2] - c[2];
+  let l = Math.hypot(zx, zy, zz); zx /= l; zy /= l; zz /= l;
+  let xx = zz, xy = 0, xz = -zx; // up = (0,1,0) × z
+  l = Math.hypot(xx, xy, xz); xx /= l; xy /= l; xz /= l;
+  const yx = zy * xz - zz * xy, yy = zz * xx - zx * xz, yz = zx * xy - zy * xx;
+  return new Float32Array([
+    xx, yx, zx, 0, xy, yy, zy, 0, xz, yz, zz, 0,
+    -(xx * e[0] + xy * e[1] + xz * e[2]), -(yx * e[0] + yy * e[1] + yz * e[2]), -(zx * e[0] + zy * e[1] + zz * e[2]), 1
+  ]);
+}
+
+function znRgb(hex) {
+  const n = parseInt(hex.slice(1), 16);
+  return [((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255];
+}
+
+function znShader(gl, type, src) {
+  const s = gl.createShader(type);
+  gl.shaderSource(s, src);
+  gl.compileShader(s);
+  if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s));
+  return s;
+}
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { tour: 0, faq: 0, themeOverride: null, waveReady: false, os: 'mac' };
+    this.canvasEl = null;
+    this.setCanvas = (el) => { this.canvasEl = el; };
+  }
+
+  themeName() {
+    return this.state.themeOverride || this.props.theme || 'dark';
+  }
+
+  componentDidMount() {
+    this._alive = true;
+    const os = znDetectOs();
+    if (os !== this.state.os) this.setState({ os: os });
+    // Start only after the page has painted and the browser is idle, so the
+    // wave never competes with LCP, fonts or the hero text.
+    const start = () => {
+      if (!this._alive || !this.canvasEl) return;
+      try { this.initWave(); } catch (e) { /* no WebGL: the hero stays static */ }
+    };
+    if ('requestIdleCallback' in window) this._idle = window.requestIdleCallback(start, { timeout: 2000 });
+    else this._idle = setTimeout(start, 300);
+  }
+
+  componentDidUpdate() {
+    this.applyWaveTheme();
+  }
+
+  componentWillUnmount() {
+    this._alive = false;
+    if ('cancelIdleCallback' in window && this._idle) window.cancelIdleCallback(this._idle);
+    clearTimeout(this._idle);
+    cancelAnimationFrame(this._raf);
+    if (this._io) this._io.disconnect();
+    if (this._ro) this._ro.disconnect();
+    if (this._onMove) window.removeEventListener('pointermove', this._onMove);
+    if (this._onVis) document.removeEventListener('visibilitychange', this._onVis);
+    const gl = this._gl;
+    if (gl) {
+      gl.deleteBuffer(this._buf);
+      gl.deleteProgram(this._prog);
+      const lose = gl.getExtension('WEBGL_lose_context');
+      if (lose) lose.loseContext();
+    }
+  }
+
+  initWave() {
+    const canvas = this.canvasEl;
+    const gl = canvas.getContext('webgl', { alpha: true, antialias: true, premultipliedAlpha: false, powerPreference: 'low-power' });
+    if (!gl) return;
+
+    const prog = gl.createProgram();
+    gl.attachShader(prog, znShader(gl, gl.VERTEX_SHADER, ZN_VERT));
+    gl.attachShader(prog, znShader(gl, gl.FRAGMENT_SHADER, ZN_FRAG));
+    gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return;
+    gl.useProgram(prog);
+
+    // Fewer points on small screens.
+    const small = window.innerWidth < 768;
+    const COLS = small ? 110 : 200, ROWS = small ? 60 : 90, W = 66, D = 44;
+    const pos = new Float32Array(COLS * ROWS * 3);
+    let i = 0;
+    for (let r = 0; r < ROWS; r++) {
+      for (let c = 0; c < COLS; c++) {
+        pos[i++] = (c / (COLS - 1) - 0.5) * W;
+        pos[i++] = 0;
+        pos[i++] = 8 - (r / (ROWS - 1)) * D;
+      }
+    }
+    const buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, pos, gl.STATIC_DRAW);
+    const aPos = gl.getAttribLocation(prog, 'aPos');
+    gl.enableVertexAttribArray(aPos);
+    gl.vertexAttribPointer(aPos, 3, gl.FLOAT, false, 0, 0);
+
+    const u = {};
+    ['uProj', 'uView', 'uTime', 'uPR', 'uRotX', 'uRotY', 'uA', 'uB', 'uOpacity'].forEach((n) => { u[n] = gl.getUniformLocation(prog, n); });
+    gl.uniformMatrix4fv(u.uView, false, znLookAt([0, 5.2, 19], [0, -0.6, -6]));
+    gl.enable(gl.BLEND);
+    gl.disable(gl.DEPTH_TEST);
+
+    this._gl = gl; this._prog = prog; this._buf = buf; this._u = u; this._count = COLS * ROWS; this._waveTheme = null;
+    this.applyWaveTheme();
+
+    const dpr = Math.min(window.devicePixelRatio || 1, small ? 1.5 : 2);
+    const parent = canvas.parentElement;
+    const resize = () => {
+      const w = parent.clientWidth || 1, h = parent.clientHeight || 1;
+      canvas.width = Math.round(w * dpr);
+      canvas.height = Math.round(h * dpr);
+      gl.viewport(0, 0, canvas.width, canvas.height);
+      gl.uniformMatrix4fv(u.uProj, false, znPerspective(42 * Math.PI / 180, w / h, 0.1, 200));
+      gl.uniform1f(u.uPR, dpr);
+      if (!this._running) this.drawWave();
+    };
+    resize();
+    if (window.ResizeObserver) { this._ro = new ResizeObserver(resize); this._ro.observe(parent); }
+
+    this._mouse = { x: 0, y: 0 };
+    this._rot = { x: 0, y: 0 };
+    this._onMove = (e) => {
+      this._mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+      this._mouse.y = (e.clientY / window.innerHeight) * 2 - 1;
+    };
+    window.addEventListener('pointermove', this._onMove, { passive: true });
+
+    this._t = 6;
+    this._reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.drawWave();
+    this.setState({ waveReady: true });
+    if (this._reduce) return; // one still frame, no loop
+
+    // Animate only while the hero is on screen and the tab is visible.
+    this._inView = true;
+    if (window.IntersectionObserver) {
+      this._io = new IntersectionObserver((entries) => { this._inView = entries[0].isIntersecting; this.syncLoop(); });
+      this._io.observe(parent);
+    }
+    this._onVis = () => this.syncLoop();
+    document.addEventListener('visibilitychange', this._onVis);
+    this.syncLoop();
+  }
+
+  syncLoop() {
+    const should = this._alive && this._inView && !document.hidden;
+    if (should && !this._running) {
+      this._running = true;
+      this._last = performance.now();
+      const tick = (now) => {
+        if (!this._running) return;
+        const dt = Math.min((now - this._last) / 1000, 0.05);
+        this._last = now;
+        this._t += dt;
+        this._rot.y += (this._mouse.x * 0.12 - this._rot.y) * 0.04;
+        this._rot.x += (this._mouse.y * 0.04 - this._rot.x) * 0.04;
+        this.drawWave();
+        this._raf = requestAnimationFrame(tick);
+      };
+      this._raf = requestAnimationFrame(tick);
+    } else if (!should && this._running) {
+      this._running = false;
+      cancelAnimationFrame(this._raf);
+    }
+  }
+
+  drawWave() {
+    const gl = this._gl, u = this._u;
+    if (!gl) return;
+    gl.clearColor(0, 0, 0, 0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.uniform1f(u.uTime, this._t);
+    gl.uniform1f(u.uRotX, this._rot ? this._rot.x : 0);
+    gl.uniform1f(u.uRotY, this._rot ? this._rot.y : 0);
+    gl.drawArrays(gl.POINTS, 0, this._count);
+  }
+
+  applyWaveTheme() {
+    const gl = this._gl;
+    if (!gl) return;
+    const name = this.themeName();
+    if (this._waveTheme === name) return;
+    this._waveTheme = name;
+    const tk = ZN_TOKENS[name] || ZN_TOKENS.dark;
+    const light = name === 'light';
+    gl.uniform3fv(this._u.uA, znRgb(tk.waveA));
+    gl.uniform3fv(this._u.uB, znRgb(tk.waveB));
+    gl.uniform1f(this._u.uOpacity, light ? 0.85 : 1.0);
+    // Additive glow on dark, normal blending on light.
+    if (light) gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+    else gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
+    if (!this._running) this.drawWave();
+  }
+
+  renderVals() {
+    const name = this.themeName();
+    const t = ZN_TOKENS[name] || ZN_TOKENS.dark;
+    const dark = name !== 'light';
+    const tourList = this.state.os === 'windows' ? ZN_TOUR_WIN : ZN_TOUR;
+    const tourIdx = Math.min(this.state.tour, tourList.length - 1);
+    const tour = tourList.map((row, idx) => {
+      const sel = idx === tourIdx;
+      return {
+        title: row[0],
+        selected: sel ? 'true' : 'false',
+        color: sel ? t.text : t.faint,
+        weight: sel ? '700' : '500',
+        chipBg: sel ? t.chipActive : 'transparent',
+        chipBorder: sel ? t.chipActive : t.border2,
+        pick: () => this.setState({ tour: idx })
+      };
+    });
+    const act = tourList[tourIdx];
+    const faq = ZN_FAQ.map((row, idx) => {
+      const open = idx === this.state.faq;
+      return {
+        q: row[0], a: row[1], open: open, sign: open ? '−' : '+',
+        toggle: () => this.setState({ faq: open ? -1 : idx })
+      };
+    });
+    return {
+      t: t,
+      isDark: dark,
+      isLight: !dark,
+      setCanvas: this.setCanvas,
+      waveOpacity: this.state.waveReady ? '1' : '0',
+      toggleTheme: () => this.setState({ themeOverride: dark ? 'light' : 'dark' }),
+      img: {
+        poster: dark ? '/_blob/5c4487aea89ebf56435c7d1758c47a4b' : '/_blob/60fd375dd13d72d7de5070ae8c416f9e',
+        batch: dark ? '/_blob/66b074514f26aedc39ab924f4e3671e9' : '/_blob/9e33e0ffc9ff97ad77473c423f21bdc3',
+        sorting: dark ? '/_blob/bd5be068b4a4a67c63117cdfdbfc1600' : '/_blob/19438179535d2ad50f069b42ea825243'
+      },
+      tour: tour,
+      tourActive: { src: dark ? act[2] : act[3], alt: act[4], desc: act[1] },
+      faq: faq,
+      professions: [
+        { img: '/_blob/1c9c14c57044d73d3fa1144ae77cd6ae', alt: 'Accountant reviewing client documents beside a desktop computer', title: 'Accountants & bookkeepers', desc: 'Invoices, receipts, and statements named by vendor, date, number, and amount — ready for reconciliation.' },
+        { img: '/_blob/b726745bf6bfd139d78e576f6ec2f5f3', alt: 'Physician organizing medical records at a desktop computer', title: 'Medical practices', desc: 'Scanned records named by identifier, date of service, and record type — with a local AI mode, so files never leave the machine.' },
+        { img: '/_blob/ec762f0986bdf4c095925a049412ac73', alt: 'Attorney reviewing legal documents at a desktop computer', title: 'Legal teams', desc: 'Filings, contracts, and correspondence named by matter, date, type, and party — the folder reads as the case chronology.' },
+        { img: '/_blob/f3d3bce1b784fd3431cbe92619fe0533', alt: 'HR professionals reviewing onboarding documents in a modern office', title: 'HR & people teams', desc: 'Candidate, onboarding, review, and policy files named by employee, date, type, role, period, and status.' },
+        { img: '/_blob/3cb71515519fe42ded301806eb9e81a8', alt: 'Photographer and videographer reviewing a shoot together in a studio', title: 'Photographers & videographers', desc: 'RAW photos, clips, and exports named by project, date, subject, scene, and take — from ingest to archive.' },
+        { img: '/_blob/271e7378027478a06ae7789d1b9d7e1b', alt: 'Real estate professional reviewing transaction documents at a laptop', title: 'Real estate teams', desc: 'Agreements, disclosures, inspections, appraisals, and property photos named by address, date, type, party, and status.' }
+      ],
+      workflows: [
+        { title: 'Rename screenshots', desc: '"Screenshot 2026-07-03" becomes a name that says what’s on screen.' },
+        { title: 'Rename PDFs & scans', desc: 'Invoices, contracts, and scans named by the text inside the document.' },
+        { title: 'Rename photos', desc: 'RAW, HEIC, and JPG named by subject and scene.' },
+        { title: 'Rename documents and ebooks', desc: 'EPUB, FB2, Word, Excel, PowerPoint, and iWork files named by topic.' },
+        { title: 'Organize files with AI', desc: 'Clean up Downloads and mixed folders with searchable names.' },
+        { title: 'Rename design files', desc: 'Figma, Sketch, PSD, and exports named by what they contain.' },
+        { title: 'Rename videos', desc: 'Recordings and clips named by frames and context.' },
+        { title: 'Rename audio', desc: 'MP3, WAV, and voice memos named by sound and metadata.' },
+        { title: 'Batch rename files', desc: 'Hundreds of files at once, with preview and one-click undo.' }
+      ],
+      reviews: znWithStars([
+        { score: '5.0', title: 'What I exactly needed', text: 'This is what i needed to get the first original creation date before the modified date back to original', author: 'Kevin', date: 'Sep 29, 2026', source: 'Read on Microsoft Store (Ireland)' },
+        { score: '5.0', title: 'Awesome App', text: 'Awesome App, I had over 127 Reels that needed namimng, it did it flawlessly, so well that I ended up buying the App Permanently :)', author: 'Lennox', date: 'Sep 6, 2026', source: 'Read on Microsoft Store (US)' },
+        { score: '5.0', title: 'Well Spent Money', text: 'Zush is a fast AI file renamer that really works and I can give tons of praise to them for creating this fantastic program. There are lots of things you can with Zush and templates to choose from or create your own templates. You can add all kinds of presets that can add more detail for your renaming but I bought the $10.00 monthly charge but soon will purchase the lifetime plan with this Great program so Thanks for creating this !!', author: 'Robert', date: 'Aug 9, 2026', source: 'Read on Microsoft Store (US)' },
+        { score: '5.0', title: 'Cleaned up my Screenshots', text: 'Nothing fancy to say here: I had a bunch of files with generic “Screenshot” names, and Zush renamed them so I could actually search for later. The folder monitoring is pretty neat too - it just watches my screenshots and handles the new ones automatically. That’s exactly what I needed. Thanks for the app!', author: 'Kirill', date: 'May 10, 2026', source: 'Read on Microsoft Store (US)' },
+        { score: '5.0', title: 'Amazing', text: 'This app does exactly what I needed it to do.', author: 'Lori Jean', date: 'Jul 24, 2026', source: 'Read on Microsoft Store (US)' },
+        { score: '4.5', title: 'Independent editorial review', text: 'Zush excels most in the freedom that it provides users with regarding the flexibility behind the renaming process.', author: 'Roberto Zamfir', date: 'Aug 6, 2026', source: 'Read on Softpedia' }
+      ]),
+      posts: [
+        { img: '/_blob/c753601c28a3485603ad74545537d442', alt: 'Best AI File Renamers for Windows (2026): 7 Compared guide thumbnail', label: 'Windows Guide', title: 'Best AI File Renamers for Windows (2026): 7 Compared', excerpt: 'Compare 7 Windows AI file renamers by preview, undo, file support, price, and AI options. Zush offers managed cloud, BYOK, Ollama, and LM Studio.', meta: 'April 23, 2026 · 16 min read' },
+        { img: '/_blob/dce7959b397ce76afea829c6112ab818', alt: 'Best AI File Renamers for Mac: 7 Apps Compared (2026) guide thumbnail', label: 'Mac Guide', title: 'Best AI File Renamers for Mac: 7 Apps Compared (2026)', excerpt: 'Compare AI file renamers for Mac on naming control, AI folder sorting, supported formats, automation, preview, recovery, and pricing.', meta: 'February 28, 2026 · 39 min read' },
+        { img: '/_blob/02f43d4afc9618f852c6622cb6b93b30', alt: 'How to Sort Files into Folders with AI on Mac guide thumbnail', label: 'Mac Guide', title: 'How to Sort Files into Folders with AI on Mac', excerpt: 'Tell Zush how you want files grouped. AI reads their content and follows your instructions — no scripts or complex filters to build.', meta: 'September 26, 2026 · 4 min read' },
+        { img: '/_blob/8577ac2a046eadd55e4a2844a7d3fe5a', alt: 'How to Import and Export Zush Templates on Mac guide thumbnail', label: 'Mac Guide', title: 'How to Import and Export Zush Templates on Mac', excerpt: 'Share AI file naming workflows between Macs with .zushtemplates files. Learn what exports, how import conflicts work, and which settings stay local.', meta: 'September 26, 2026 · 3 min read' }
+      ],
+      formats: [
+        { name: 'Images', list: 'png jpg jpeg jpe webp avif gif bmp dib tiff tif heic heics heif svg pdf jp2 jpf jpx j2k j2c exr tga ico icns pbm pgm ppm pfm cr2 cr3 nef arw dng orf raf rw2 pef srw sr2 raw' },
+        { name: 'Documents', list: 'pdf txt md json eml csv tsv log xml yaml yml srt vtt rtf odt ods odp pages numbers key doc docx docm dotx dotm ppt pptx pptm potx potm ppsx ppsm xls xlsx xlsm xltx xltm epub fb2 fb2.zip' },
+        { name: 'Videos', list: 'mp4 mov qt m4v mpeg mpg m2v 3gp 3gpp 3g2 3gp2 dv ts mts m2ts vob' },
+        { name: 'Audio', list: 'mp3 m4a wav flac ogg webm mpga' },
+        { name: 'Design', list: 'sketch fig ai psd' }
+      ],
+      sources: ['AI file renamer', 'Mac AI file renamer', 'Windows AI file renamer', 'Batch rename files', 'AI file organizer', 'Methodology', 'About Zush', 'Author', 'Pricing facts', 'Changelog', 'llms.txt', 'Privacy', 'Mac App Store', 'Microsoft Store', 'Product Hunt', 'LinkedIn', 'Crunchbase'],
+      featured: [
+        ['Product Hunt', 'ph'], ['AlternativeTo', '/_blob/4e08b43f43552e119fe5b136433ec018'], ['Stork.AI', '/_blob/fc9e9bf33f5e4b811091b839a9a2dab9'],
+        ['ProductDirs', '/_blob/6a610f76feb6beab4536d940c2baf3b7'], ['Capterra', '/_blob/fd950f1072c79255ffff7cb838594ba1'], ['MacUpdate', '/_blob/d44ca779cc75e50e7b03a3101b39083b'],
+        ['MacApp.Supply', '/_blob/9cffa3f5d5b9d8b9b8271c24995ab110'], ['GetApp', '/_blob/1e20eaa4493734c28793f18a8ddcc705'], ['SaaSHub', '/_blob/775e16e7f39ae4de821423c221b7a34e'],
+        ['Uneed', '/_blob/5bdb48d31e548bdb3332fa0714859bbd'], ['Dang.ai', '/_blob/020d9b7c68e75fbdd405251784ad8909'], ['ToolPilot', 'tp'],
+        ['There’s An AI For That', '/_blob/67516ae558743dddbb3d908b94b43b89'], ['Submit AI Tools', '/_blob/4d0f21c67608d42fc60d28c2cab46038'], ['ScrollLaunch', 'sl']
+      ].map((f) => ({ name: f[0], img: f[1], hasImg: f[1].charAt(0) === '/', ph: f[1] === 'ph', tp: f[1] === 'tp', sl: f[1] === 'sl' })),
+      footerCols: [
+        { title: 'Product', links: ['AI File Renamer', 'Batch Rename Tool', 'AI File Organizer', 'AI File Sorter', 'Offline AI File Renamer', 'AI File Renamer for Mac', 'AI File Renamer for Windows'] },
+        { title: 'By File Type', links: ['Rename PDFs', 'Rename Design Files', 'Rename Documents', 'Rename Photos', 'Rename Videos', 'Movies & TV', 'Rename Audio', 'Rename Screenshots'] },
+        { title: 'For Professionals', links: ['Accountants & Bookkeepers', 'Medical Practices', 'HR & People Teams', 'Legal Teams', 'Real Estate Professionals', 'Photographers & Videographers'] },
+        { title: 'Compare & Automate', links: ['Hazel Alternative', 'PowerRename Alternative', 'Automate Downloads', 'Rename Invoices', 'Rename Receipts', 'Rename Excel Files', 'Rename Word Documents', 'Rename Scanned Documents'] },
+        { title: 'Resources', links: ['Pricing', 'Blog', 'Docs', 'About Zush', 'Press Kit', 'Author', 'Changelog', 'Methodology'] },
+        { title: 'Support', links: ['Contact Support', 'Features & Bug Reports', 'Terms of Service', 'Privacy Policy', 'Refund Policy'] }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

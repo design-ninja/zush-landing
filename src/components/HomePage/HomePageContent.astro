@@ -3,9 +3,8 @@ import Hero from '@/components/Hero';
 import HomeRenameWorkflow from './HomeRenameWorkflow.astro';
 import DemoVideo from '@/components/DemoVideo/DemoVideo.astro';
 import Tour from '@/components/Tour';
-import OrganizationFeatures from '@/components/OrganizationFeatures/OrganizationFeatures.astro';
-import Features from '@/components/Features/Features.astro';
-import WaysToRun from '@/components/Features/WaysToRun.astro';
+import HomeFeatures from './HomeFeatures.astro';
+import HomeWaysToRun from './HomeWaysToRun.astro';
 import SupportedFormats from '@/components/SupportedFormats';
 import CloudFolders from '@/components/CloudFolders';
 import HomeBlogHighlights from '@/components/HomeBlogHighlights/HomeBlogHighlights.astro';
@@ -48,6 +47,7 @@ const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
   client:idle
   title={copy.home.heroTitle}
   titleAccent={copy.home.heroAccent}
+  titleHighlight={copy.home.heroTitle.includes('\n') ? copy.home.heroTitle.split('\n').pop() : copy.home.heroAccent}
   subtitle={copy.home.heroSubtitle}
   subtitleHighlights={copy.home.heroHighlights}
   buyLabel={copy.home.buyPro}
@@ -133,16 +133,13 @@ const windowsVersion = parseLatestVersion(windowsChangelogSource) ?? undefined;
 {locale === 'en'
   ? <HomeRenameWorkflow />
   : <EvidenceSignals locale={locale} variant="control" showControlHeading />}
-<Features
+<HomeFeatures
   title={copy.home.featuresTitle}
   description={copy.home.featuresDescription}
   copy={copy.home.featureCards}
   locale={locale}
-  includeBand={false}
-  compactTopSpacing
 />
-<OrganizationFeatures locale={locale} showProductLink />
-<WaysToRun copy={copy.home.featureCards} locale={locale} />
+<HomeWaysToRun copy={copy.home.featureCards} />
 {(locale === 'en' || professionCopy) && (
   <HomeProfessions locale={locale} homeCopy={copy.home} professionCopy={professionCopy} />
 )}

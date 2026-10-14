@@ -1,0 +1,87 @@
+---
+// "Your naming system" + AI folder sorting — design/homepage-concept/native.dc.html.
+import SectionHeader from '@/components/SectionHeader';
+import ThemedScreenshot from '@/components/OrganizationFeatures/ThemedScreenshot.astro';
+import { DEFAULT_LOCALE, getLocalizedPath, type Locale } from '@/i18n/config';
+import type { FeatureCardsCopy } from '@/i18n/copy';
+import { ORGANIZATION_FEATURES } from '@/i18n/organizationFeatures';
+import b from '@/components/Blocks/Blocks.module.scss';
+
+interface Props {
+  title: string;
+  description: string;
+  copy: FeatureCardsCopy;
+  locale?: Locale;
+}
+
+const { title, description, copy, locale = DEFAULT_LOCALE } = Astro.props as Props;
+const org = ORGANIZATION_FEATURES[locale];
+const sorterPath = getLocalizedPath('/ai-file-sorter', locale);
+const guidePath = getLocalizedPath(`/blog/sort-files-into-folders-with-ai-mac${locale === DEFAULT_LOCALE ? '' : `-${locale}`}`, locale);
+const sortingSummary = org.homeSummary ?? `${org.autoDescription} ${org.customDescription} “${org.ruleExample}”`;
+const items = [
+  copy.foldersMonitoring,
+  copy.templates,
+  copy.namingBlocks,
+  copy.customPrompts,
+  copy.smartMetadata,
+  copy.renameHistory,
+];
+---
+
+<section id="features" class={b.Section}>
+  <SectionHeader title={title} description={description} />
+
+  <div class="flagship">
+    <div class="flagship-copy">
+      <div class="flagship-block">
+        <h3 class={b.BlockTitle}>{copy.aiAnalysis.title}</h3>
+        <p class={b.BlockText}>{copy.aiAnalysis.description}{' '}{copy.customAiBlocks.description}</p>
+      </div>
+      <div class="flagship-block flagship-block--rule">
+        <div class="flagship-title-row">
+          <h3 id="organization-title" class={b.BlockTitle}>{org.sortingTitle}</h3>
+          <span class={b.Badge}>NEW</span>
+        </div>
+        <p class={b.BlockText}>{sortingSummary}</p>
+        <p class={b.Links}>
+          {org.productLink && <a href={sorterPath}>{org.productLink} <span aria-hidden="true">→</span></a>}
+          <a href={guidePath}>{org.sortingLink} <span aria-hidden="true">→</span></a>
+        </p>
+      </div>
+    </div>
+    <div class:list={[b.Frame, 'flagship-visual']}>
+      <ThemedScreenshot id="folder-sorting" alt={org.sortingTab} />
+    </div>
+  </div>
+
+  <ul class:list={[b.Columns, b.Columns_list, 'feature-list']}>
+    {items.map((item) => (
+      <li class={b.Column}>
+        <h3 class={b.ColumnTitle}>{item.title}</h3>
+        <p class={b.ColumnText}>{item.description}</p>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  /* Concept: copy flex 1 1 340px beside visual flex 1.9 1 560px, gap 48px. */
+  .flagship { display: flex; flex-wrap: wrap; align-items: center; gap: 3rem; }
+  .flagship-copy { flex: 1 1 21.25rem; display: flex; flex-direction: column; gap: 2.25rem; }
+  .flagship-block { display: flex; flex-direction: column; gap: 0.75rem; }
+  .flagship-block--rule { gap: 1rem; border-top: 1px solid var(--border); padding-top: 2rem; }
+  /* Badge follows the last word of the title, as in the concept's inline row. */
+  /* Badge stays beside the title; a long title wraps inside its own box instead. */
+  .flagship-title-row { display: flex; flex-wrap: nowrap; align-items: center; gap: 0.75rem; }
+  .flagship-title-row > :global(h3) { flex: 0 1 auto; min-width: 0; }
+  .flagship-title-row > :global(span) { flex: none; }
+  #organization-title { scroll-margin-top: 8rem; }
+
+  /* Crop the 16:9 showcase shot to the app window (aspect 845/605). */
+  .flagship-visual { flex: 1.9 1 35rem; min-width: 0; position: relative; aspect-ratio: 845 / 605; }
+  .flagship-visual :global(.organization-screenshot) { position: absolute; inset: 0; }
+  .flagship-visual :global(.organization-screenshot img) { position: absolute; width: 151.5%; max-width: none; height: auto; left: -25.8%; top: -9.5%; border-radius: 0; }
+
+  .feature-list { margin-top: 4rem; }
+</style>

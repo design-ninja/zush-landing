@@ -2,7 +2,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--star-rating-gap, 0.18rem);
-  color: #fc0;
+  color: var(--star);
   font-size: var(--star-rating-size, 1.15rem);
   line-height: 1;
   letter-spacing: 0;
@@ -25,7 +25,7 @@
 }
 
 .StarRating__StarEmpty {
-  color: color-mix(in srgb, currentColor 36%, transparent);
+  color: var(--border-strong);
 }
 
 .StarRating__StarFill {

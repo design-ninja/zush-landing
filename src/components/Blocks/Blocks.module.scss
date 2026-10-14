@@ -1,0 +1,199 @@
+// Shared page-section primitives for the redesign, ported 1:1 from
+// design/homepage-concept/native.dc.html. Headings go through <SectionHeader>
+// and <Heading>; this module holds the layout pieces they don't cover.
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// <section style="max-width: 1160px; margin: 0 auto; padding: 136px 24px 0">
+.Section {
+    max-width: $container-max-width;
+    margin: 0 auto;
+    padding: $section-gap 1.5rem 0;
+    scroll-margin-top: calc($navbar-height + 1rem);
+
+    @include mobile {
+        padding: $section-gap-mobile 1.25rem 0;
+    }
+}
+
+// Hairline columns: repeat(auto-fit, minmax(300px, 1fr)), gap 48px
+.Columns {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(18.75rem, 100%), 1fr));
+    gap: 3rem;
+
+    // Rows of short items: rules carry the rhythm, so no row gap.
+    &_list {
+        row-gap: 0;
+    }
+}
+
+// border-top 1px, padding-top 24px
+.Column {
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+    min-width: 0;
+
+    // List rows: padding 24px 0 32px
+    .Columns_list > & {
+        padding-bottom: 2rem;
+    }
+
+    // Steps: flex column, gap 12px
+    &_stack {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}
+
+// h3: 19px / 700 (17px in list rows)
+.ColumnTitle {
+    margin: 0;
+    font-size: 1.1875rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+
+    .Columns_list & {
+        font-size: 1.0625rem;
+    }
+}
+
+// p: 15px / 1.6 / muted; margin-top 10px (8px in list rows)
+.ColumnText {
+    margin: 0.625rem 0 0;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--muted-foreground);
+
+    .Columns_list & {
+        margin-top: 0.5rem;
+    }
+
+    .Column_stack & {
+        margin: 0;
+    }
+}
+
+// Accent icon above a column title: 24px, margin-bottom 14px
+.ColumnIcon {
+    display: block;
+    color: var(--primary);
+    margin-bottom: 0.875rem;
+}
+
+// Step number: Geist Mono 13px, accent
+.StepNumber {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--primary);
+}
+
+// Geist Mono 13px / 1.9 / faint
+.Mono {
+    margin: 0.375rem 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    line-height: 1.9;
+    color: var(--text-faint);
+}
+
+.MonoStrong {
+    color: var(--foreground);
+}
+
+// Feature block title: 26px / 700 / -0.02em
+.BlockTitle {
+    margin: 0;
+    font-size: 1.625rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+// Feature block copy: 16px / 1.65 / muted
+.BlockText {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--muted-foreground);
+}
+
+// Text link row: 15px / 600 / accent
+.Links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem 1.25rem;
+    margin: 0;
+    font-size: 0.9375rem;
+    font-weight: 600;
+
+    a {
+        color: var(--primary);
+        text-decoration: none;
+
+        &:hover {
+            opacity: 0.78;
+        }
+    }
+}
+
+// NEW badge: 11px / 700 / 0.06em, brand green pill
+.Badge {
+    font-family: var(--font-family);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1.4;
+    color: #0c0c10;
+    background: var(--secondary);
+    border-radius: $radius-full;
+    padding: 0.1875rem 0.5625rem;
+}
+
+// Framed product screenshot: radius 18px, hairline border
+.Frame {
+    border-radius: 1.125rem;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+// Directory row link: title + description, arrow on the right.
+// padding 22px 0 26px; title 16px / 700; text 14px / 1.55 / muted; arrow dim.
+.RowLink {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    border-top: 1px solid var(--border);
+    padding: 1.375rem 0 1.625rem;
+    color: inherit;
+    text-decoration: none;
+
+    // Arrow drawn from CSS so the anchor text is just title + description.
+    &::after {
+        content: '→';
+        color: var(--text-dim);
+    }
+
+    &:hover .RowTitle {
+        color: var(--primary);
+    }
+}
+
+.RowTitle {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    transition: color $transition-fast;
+}
+
+.RowText {
+    display: block;
+    margin-top: 0.375rem;
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--muted-foreground);
+}

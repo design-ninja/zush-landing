@@ -10,7 +10,7 @@ const source = (theme: ShowcaseTheme, width: number) => (asset?.images[theme] ??
 ---
 <div class:list={['organization-screenshot', { 'is-zoomed': zoom }]}>
   {(['light', 'dark'] as const).map(theme => (
-    <img data-screenshot-theme={theme} src={source(theme, 1280)}
+    <img data-screenshot-theme={theme} src={source(theme, 640)}
       srcset={[640, 960, 1280, 1600, 1920, 2560].map(width => `${source(theme, width)} ${width}w`).join(', ')}
       sizes={zoom ? '(max-width: 768px) calc(135vw - 54px), (max-width: 1200px) 67.5vw, 810px' : '(max-width: 768px) calc(100vw - 40px), 800px'}
       alt={alt} width="1280" height="720" loading="lazy" decoding="async" />
