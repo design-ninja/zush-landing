@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.17.0] - 2026-10-15
+
+### New
+
+- Sort files into folders while keeping their current names, in AI Rename and Folder Monitoring.
+
+### Improved
+
+- Custom folder rules are saved when you switch to Auto.
+- Turn on folder sorting after analysis without losing your prepared filenames.
+
 ## [3.16.3] - 2026-10-15
 
 ### Fixed
