@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.16.3] - 2026-10-15
+
+### Fixed
+
+- More reliable PRO activation after payment, with repeat purchases blocked while activation is in progress.
+- More reliable sorting into folders.
+- The update button now appears when a background update is ready to install.
+
 ## [3.16.2] - 2026-10-13
 
 ### Improved
