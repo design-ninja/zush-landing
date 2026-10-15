@@ -91,7 +91,7 @@ const items = [
     </div>
   </div>
 
-  <ul class:list={[b.Columns, b.Columns_list, 'feature-list']}>
+  <ul class:list={[b.Columns, b.Columns_list]}>
     {items.map((item) => (
       <li class={b.Column}>
         <h3 class={b.ColumnTitle}>{item.title}</h3>
@@ -103,7 +103,7 @@ const items = [
 
 <style>
   /* Concept: copy flex 1 1 340px beside visual flex 1.9 1 560px, gap 48px. */
-  .flagship { display: flex; flex-wrap: wrap; align-items: center; gap: 3rem; }
+  .flagship { display: flex; flex-wrap: wrap; align-items: center; gap: 3rem; margin-bottom: 4rem; }
   .flagship-copy { flex: 1 1 21.25rem; display: flex; flex-direction: column; gap: 2.25rem; }
   .flagship-block { display: flex; flex-direction: column; gap: 0.75rem; }
   .flagship-block--rule { gap: 1rem; border-top: 1px solid var(--border); padding-top: 2rem; }
@@ -120,6 +120,4 @@ const items = [
   .flagship-visual--crop { aspect-ratio: 845 / 605; }
   .flagship-visual--crop :global(.organization-screenshot) { position: absolute; inset: 0; }
   .flagship-visual--crop :global(.organization-screenshot img) { position: absolute; width: 151.5%; max-width: none; height: auto; left: -25.8%; top: -9.5%; }
-
-  .feature-list { margin-top: 4rem; }
 </style>

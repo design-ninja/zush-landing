@@ -104,6 +104,11 @@ const catalogs = [
     iconViewBox: '0 0 42 42',
     rel: 'noopener',
   },
+  {
+    name: 'Launchpadly',
+    href: 'https://launchpadly.co/startup/zush?ref=badge',
+    icon: '/images/featured-on/launchpadly.svg',
+  },
 ];
 
 const { locale = DEFAULT_LOCALE } = Astro.props as Props;
@@ -149,24 +154,6 @@ const title = titleByLocale[locale] ?? titleByLocale.en!;
           <span class={styles.FeaturedOnItem__Label}>{catalog.name}</span>
         </a>
       ))}
-      <a
-        href='https://launchpadly.co/startup/zush?ref=badge'
-        class={styles.FeaturedOnItem}
-        target='_blank'
-        rel='noopener noreferrer'
-        data-launchpadly-badge='zush'
-        data-launchpadly-badge-variant='listed-on'
-      >
-        <img
-          src='https://launchpadly.co/embed/badges/startup/zush.svg?variant=listed-on'
-          alt='Launchpadly Startup Directory'
-          width='260'
-          height='48'
-          loading='lazy'
-          decoding='async'
-          style='display:block;border:0;'
-        />
-      </a>
     </div>
   </div>
 </section>
