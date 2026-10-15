@@ -14,7 +14,6 @@ const ORGANIZER_TARGET = 'best-ai-file-organizers-mac';
 const FINDER_TARGET = 'finder-tags-guide-organize-files-mac';
 
 const renameClickUpdates = {
-  ar: '**تحديث المنافسين — 24 سبتمبر 2026:** تعرض RenameClick حاليًا 100 عملية إعادة تسمية أو نقل ناجحة شهريًا في الخطة المجانية، واشتراك Pro شهريًا بسعر 8 دولارات + ضريبة القيمة المضافة، وترخيصًا مدى الحياة بسعر 36 دولارًا + ضريبة القيمة المضافة. تحقّق من السعر النهائي عند الدفع. في NameQuick، تشمل التجربة المُدارة 250 إعادة تسمية خلال 14 يومًا، بينما تشمل تجربة Self-Managed ‏50 إعادة تسمية من دون بطاقة.',
   de: '**Wettbewerber-Update — 24. September 2026:** RenameClick nennt aktuell 100 erfolgreiche Umbenennungen oder Verschiebungen pro Monat im Gratis-Tarif, Pro Monthly für 8 $ zzgl. MwSt. und Pro Lifetime für 36 $ zzgl. MwSt.; prüfen Sie den Checkout. Bei NameQuick umfasst der Managed-Test 250 Umbenennungen in 14 Tagen, der Self-Managed-Test 50 Umbenennungen ohne Kreditkarte.',
   es: '**Actualización de competidores — 24 de septiembre de 2026:** RenameClick anuncia actualmente 100 cambios de nombre o movimientos correctos al mes en el plan gratuito, Pro mensual por 8 USD + IVA y Pro de por vida por 36 USD + IVA; confirme el precio en el pago. La prueba Managed de NameQuick incluye 250 cambios en 14 días y la prueba Self-Managed, 50 sin tarjeta.',
   fr: '**Mise à jour concurrents — 24 septembre 2026 :** RenameClick affiche actuellement 100 renommages ou déplacements réussis par mois avec l’offre gratuite, Pro mensuel à 8 $ HT et Pro à vie à 36 $ HT ; vérifiez le paiement. L’essai Managed de NameQuick comprend 250 renommages sur 14 jours, et l’essai Self-Managed 50 renommages sans carte.',
@@ -28,7 +27,6 @@ const renameClickUpdates = {
 };
 
 const organizerUpdates = {
-  ar: '**تحديث ميزات المنافسين — 24 سبتمبر 2026:** أصبح Quick Organize من NameQuick متاحًا الآن. وتوثّق Files Magic AI ثلاثة محركات محلية لإعادة التسمية — Apple Intelligence والنموذج المدمج وRename LLM الاختياري — إضافة إلى إعادة تسمية الملفات الجديدة تلقائيًا في المجلدات المراقبة.',
   de: '**Wettbewerber-Funktionsupdate — 24. September 2026:** NameQuick Quick Organize ist jetzt verfügbar. Files Magic AI dokumentiert drei lokale Umbenennungs-Engines – Apple Intelligence, das integrierte Modell und ein optionales Rename LLM – sowie die automatische Umbenennung neuer Dateien in überwachten Ordnern.',
   es: '**Actualización de funciones de competidores — 24 de septiembre de 2026:** Quick Organize de NameQuick ya está disponible. Files Magic AI documenta tres motores locales de renombrado — Apple Intelligence, el modelo integrado y un Rename LLM opcional — además del renombrado automático de archivos nuevos en carpetas vigiladas.',
   fr: '**Mise à jour des fonctions concurrentes — 24 septembre 2026 :** Quick Organize de NameQuick est maintenant disponible. Files Magic AI documente trois moteurs locaux de renommage — Apple Intelligence, le modèle intégré et un Rename LLM facultatif — ainsi que le renommage automatique des nouveaux fichiers dans les dossiers surveillés.',
@@ -47,7 +45,7 @@ function refreshRenameClickNumbers(source, translation) {
     .map((originalLine) => {
       let line = originalLine;
       const hasRenameClick = /renameclick|rename\.click/i.test(line);
-      const hasLimitContext = /free|gratis|gratuit|kosten|credit|apply|applic|month|monat|mois|mese|mes|maand|mês|ayda|月|월|شهري/i.test(line);
+      const hasLimitContext = /free|gratis|gratuit|kosten|credit|apply|applic|month|monat|mois|mese|mes|maand|mês|ayda|月|월/i.test(line);
       const sourceSpecificFreeRow =
         translation === 'best-ai-file-renamer-tools-2026'
           ? /^\|/.test(line) && /250\s*\/\s*14/.test(line)

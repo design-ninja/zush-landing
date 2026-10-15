@@ -4,7 +4,7 @@ import { frontmatterValue } from '../lib/frontmatter.mjs';
 
 const root = process.cwd();
 const origin = 'https://zushapp.com';
-const locales = ['de', 'fr', 'es', 'pt-br', 'it', 'nl', 'tr', 'ja', 'ko', 'zh-cn', 'ar'];
+const locales = ['de', 'fr', 'es', 'pt-br', 'it', 'nl', 'tr', 'ja', 'ko', 'zh-cn'];
 const professions = [
   'for-accountants',
   'for-medical',

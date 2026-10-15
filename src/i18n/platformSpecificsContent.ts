@@ -95,14 +95,6 @@ const REQUIREMENT_LABELS: Partial<Record<Locale, Record<SpecKey, string>>> = {
     network: 'Ağ',
     permissions: 'İzinler',
   },
-  ar: {
-    operatingSystem: 'نظام التشغيل',
-    processor: 'المعالج',
-    memory: 'الذاكرة',
-    diskSpace: 'مساحة القرص',
-    network: 'الشبكة',
-    permissions: 'الأذونات',
-  },
 };
 
 const REQUIREMENT_TEXT: Partial<Record<Locale, {
@@ -176,12 +168,6 @@ const REQUIREMENT_TEXT: Partial<Record<Locale, {
     diskSpace: (appSize) => `Uygulama için ${appSize}, Ollama modelleri için ek alan`,
     network: 'Bulut yeniden adlandırma için gerekli, Çevrimdışı Yapay Zekâ modu için isteğe bağlı',
     permissions: 'Yeniden adlandırmak veya izlemek için klasör eklediğinizde klasör erişimi istenir',
-  },
-  ar: {
-    memory: '4 GB كحد أدنى، و8 GB موصى بها لوضع الذكاء الاصطناعي دون اتصال',
-    diskSpace: (appSize) => `${appSize} للتطبيق، مع مساحة إضافية لنماذج Ollama`,
-    network: 'مطلوبة لإعادة التسمية السحابية، واختيارية لوضع الذكاء الاصطناعي دون اتصال',
-    permissions: 'يُطلب الوصول إلى المجلدات عندما تضيف مجلدات لإعادة التسمية أو المراقبة',
   },
 };
 

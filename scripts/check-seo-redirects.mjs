@@ -82,9 +82,27 @@ for (const source of [`${POSTHOG_PROXY_PATH}/`, POSTHOG_PROXY_PATH]) {
   assert(sourceIndex < trailingSlashRedirectIndex, `${source} must run before the generic trailing-slash normalizer.`);
 }
 
+// The Arabic locale was removed; its indexed URLs must land on English pages.
+assertRedirect('/ar', '/');
+assertRedirect('/ar/:path*', '/:path*');
+assertRedirect('/ar/blog/best-ai-file-organizers-windows-ar', '/blog/best-ai-file-organizers-windows');
+assertRedirect('/ar/blog/batch-rename-files-mac-guide-ar', '/blog/batch-rename-files-on-mac-complete-guide');
+{
+  const catchAllIndex = redirects.findIndex((item) => item.source === '/ar/:path*');
+  const specificArabicRedirects = redirects.filter((item) => item.source.startsWith('/ar/') && item.source !== '/ar/:path*');
+  assert(specificArabicRedirects.length > 0, 'Missing per-article Arabic redirects.');
+  for (const item of specificArabicRedirects) {
+    assert(redirects.indexOf(item) < catchAllIndex, `${item.source} must run before the /ar catch-all.`);
+  }
+  assert(
+    !redirects.some((item) => /[(|]ar[|)]/.test(item.source)),
+    'Locale redirect patterns must not list the removed Arabic locale.',
+  );
+}
+
 assertRedirect('/rename-images-with-ai/', '/rename-photos-with-ai');
 assertRedirect('/rename-images-with-ai', '/rename-photos-with-ai');
-assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/rename-images-with-ai', '/:locale/rename-photos-with-ai');
+assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr)/rename-images-with-ai', '/:locale/rename-photos-with-ai');
 assertRedirect('/ai-photo-renamer', '/rename-photos-with-ai');
 assertRedirect('/blog/ai-ai-file-renamer-tools-mac-compared', '/blog/best-ai-file-renamer-tools-mac-compared');
 assertRedirect('/blog/best-ai-file-renamer-tool-mac-compared', '/blog/best-ai-file-renamer-tools-mac-compared');
@@ -98,11 +116,11 @@ assertRedirect('/batch-rename-tool/', '/batch-rename-files');
 assertRedirect('/batch-rename-tool', '/batch-rename-files');
 assertRedirect('/bulk-rename-files/', '/batch-rename-files');
 assertRedirect('/bulk-rename-files', '/batch-rename-files');
-assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/rename-files-with-ai', '/:locale');
-assertRedirect('/:locale(fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/batch-rename-files', '/:locale');
+assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr)/rename-files-with-ai', '/:locale');
+assertRedirect('/:locale(fr|es|pt-br|nl|it|ja|ko|zh-cn|tr)/batch-rename-files', '/:locale');
 assert(
   !redirects.some((item) =>
-    item.source === '/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/batch-rename-files'
+    item.source === '/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr)/batch-rename-files'
   ),
   'German batch rename landing page must not be captured by a locale redirect.',
 );
@@ -117,10 +135,10 @@ assertRedirect('/byok-setup/', '/docs/byok');
 assertRedirect('/byok-setup', '/docs/byok');
 assertRedirect('/ollama-setup/', '/docs/offline-ai');
 assertRedirect('/ollama-setup', '/docs/offline-ai');
-assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/byok-setup/', '/docs/byok');
-assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/byok-setup', '/docs/byok');
-assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/ollama-setup/', '/docs/offline-ai');
-assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)/ollama-setup', '/docs/offline-ai');
+assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr)/byok-setup/', '/docs/byok');
+assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr)/byok-setup', '/docs/byok');
+assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr)/ollama-setup/', '/docs/offline-ai');
+assertRedirect('/:locale(de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr)/ollama-setup', '/docs/offline-ai');
 assertHostRedirect('/', 'e.zushapp.com', 'https://zushapp.com/');
 assertHostRedirect('/:path(.+)/', 'e.zushapp.com', 'https://zushapp.com/e/:path');
 assertHostRedirect('/:path*', 'e.zushapp.com', 'https://zushapp.com/e/:path*');

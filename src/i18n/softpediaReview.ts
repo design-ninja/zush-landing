@@ -12,7 +12,6 @@ export const SOFTPEDIA_RATED_BY_LABELS: Record<Locale, string> = {
   ja: '評価元',
   ko: '평가 기관',
   'zh-cn': '评分来源',
-  ar: 'بتقييم من',
 };
 
 export const SOFTPEDIA_REVIEW_ARIA_LABELS: Record<Locale, string> = {
@@ -27,5 +26,4 @@ export const SOFTPEDIA_REVIEW_ARIA_LABELS: Record<Locale, string> = {
   ja: '5点満点中4.5点を獲得したZushのSoftpediaレビューを読む',
   ko: '5점 만점에 4.5점을 받은 Zush의 Softpedia 리뷰 읽기',
   'zh-cn': '阅读 Softpedia 对 Zush 的评测，评分为 4.5/5',
-  ar: 'اقرأ مراجعة Softpedia لتطبيق Zush الحاصل على 4.5 من 5',
 };

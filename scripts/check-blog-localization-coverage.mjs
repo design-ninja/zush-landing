@@ -7,7 +7,7 @@ const blogRoot = join(root, 'src/content/blog');
 const targets = JSON.parse(
   readFileSync(join(root, 'scripts/localization/top-blog-targets.json'), 'utf8'),
 ).articles;
-const locales = ['de', 'fr', 'es', 'pt-br', 'it', 'nl', 'tr', 'ja', 'ko', 'zh-cn', 'ar'];
+const locales = ['de', 'fr', 'es', 'pt-br', 'it', 'nl', 'tr', 'ja', 'ko', 'zh-cn'];
 const strict = process.argv.includes('--strict');
 const protectedTerms = [
   'Zush',
@@ -26,17 +26,6 @@ const protectedTerms = [
   'Finder',
   'File Explorer',
 ];
-const allowedUntranslatedLinkLabels = new Set([
-  ...protectedTerms,
-  'Advanced Renamer',
-  'Files Magic AI',
-  'rename.click',
-  'AI File Sorter',
-  'A Better Finder Rename',
-  'Bulk Rename Utility',
-  'File Juggler',
-  '`ozgrozer/ai-renamer`',
-]);
 const titleQualityPatterns = {
   de: [/\bAI-(?:Datei|Renamer)/i, /Dateiumbenennungsprogramme/i],
   fr: [/^Apps IA de renommage/i],
@@ -244,19 +233,6 @@ for (const locale of locales) {
       );
     }
 
-    if (locale === 'ar') {
-      const untranslatedLinkLabels = [...item.source.matchAll(/(?<!!)\[([^\]]+)\]\([^)]+\)/g)]
-        .map((match) => match[1].trim())
-        .filter((label) => {
-          if (allowedUntranslatedLinkLabels.has(label) || /[\u0600-\u06ff]/.test(label)) return false;
-          return (label.match(/\b[A-Za-z]{3,}\b/g) ?? []).length >= 2;
-        });
-      if (untranslatedLinkLabels.length > 0) {
-        invalid.push(
-          `${locale}/${item.name}: ${untranslatedLinkLabels.length} English Markdown link label(s) unchanged`,
-        );
-      }
-    }
   }
 }
 

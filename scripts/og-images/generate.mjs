@@ -35,7 +35,7 @@ const FONTS = `
 @font-face { font-family: 'Manrope'; font-weight: 200 800; src: url(${dataUrl('node_modules/@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2', 'font/woff2')}) format('woff2'); }
 @font-face { font-family: 'Inter'; font-weight: 100 900; src: url(${dataUrl('node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2', 'font/woff2')}) format('woff2'); }`;
 
-// System fallbacks cover the scripts Manrope and Inter lack (CJK, Arabic).
+// System fallbacks cover the scripts Manrope and Inter lack (CJK).
 const SCRIPT_FALLBACKS = `'Hiragino Sans', 'PingFang SC', 'Apple SD Gothic Neo', 'Geeza Pro', system-ui, sans-serif`;
 const LOGO = dataUrl('public/logo.png', 'image/png');
 // Same corner ratio as the header logo (src/components/Logo: 0.5rem on 2.25rem).
@@ -46,8 +46,8 @@ const TOKENS = Object.fromEntries(
   [...read('src/styles/_variables.scss').toString().matchAll(/^\$([\w-]+):\s*([^;]+);/gm)].map(([, name, value]) => [name, value.trim()]),
 );
 
-function frame(body, { css = '', dir = 'ltr', lang = 'en', theme = 'dark' } = {}) {
-  return `<!doctype html><html lang="${lang}" dir="${dir}" data-theme="${theme}"><head><meta charset="utf-8"><style>
+function frame(body, { css = '', lang = 'en', theme = 'dark' } = {}) {
+  return `<!doctype html><html lang="${lang}" data-theme="${theme}"><head><meta charset="utf-8"><style>
 ${FONTS}
 * { box-sizing: border-box; margin: 0; }
 html, body { width: ${WIDTH}px; height: ${HEIGHT}px; }
@@ -120,20 +120,17 @@ function postPage(post) {
   const sourceSlug = post.translationOf ?? post.slug;
   const spec = COVERS[sourceSlug];
   if (!spec) throw new Error(`No cover for ${sourceSlug} in scripts/blog-covers/covers.mjs`);
-  const rtl = post.locale === 'ar';
-  const glowX = rtl ? 22 : 78;
+  const glowX = 78;
   const css = `
 body { ${backdropCss(glowX, 50)} }
 body::before { ${dotsCss(glowX, 50)} }
 ${ART_CSS}
 .card { position: relative; height: 100%; display: grid; grid-template-columns: 1fr 420px; gap: 24px; padding: 64px 0 60px 72px; }
-[dir="rtl"] .card { padding: 64px 72px 60px 0; }
 .text { display: flex; flex-direction: column; justify-content: space-between; min-width: 0; }
 .brand { display: flex; align-items: center; gap: 14px; font: 700 28px Manrope, sans-serif; letter-spacing: -0.01em; }
 .brand img { width: 44px; height: 44px; }
 h1 { font: 700 var(--size, 60px)/1.14 Manrope, ${SCRIPT_FALLBACKS}; letter-spacing: -0.02em; text-wrap: balance; }
 .site { font: 500 22px Inter, sans-serif; color: ${PALETTE.dim}; letter-spacing: 0; }
-[dir="rtl"] .site { text-align: right; }
 .art { display: grid; place-items: center; }
 .art .row { transform: scale(0.78); }
 h1.clamped { display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }`;
@@ -153,9 +150,9 @@ document.fonts.ready.then(() => {
 });
 }</script>`;
   return frame(`<div class="card">
-<div class="text"><div class="brand"><img class="logo" src="${LOGO}" alt="">Zush</div><h1>${escapeHtml(post.title)}</h1><div class="site" dir="ltr">zushapp.com/blog</div></div>
+<div class="text"><div class="brand"><img class="logo" src="${LOGO}" alt="">Zush</div><h1>${escapeHtml(post.title)}</h1><div class="site">zushapp.com/blog</div></div>
 <div class="art">${motifs[spec.motif](spec, sourceSlug)}</div>
-</div>${fit}`, { css, dir: rtl ? 'rtl' : 'ltr', lang: post.locale });
+</div>${fit}`, { css, lang: post.locale });
 }
 
 // ------------------------------------------------------------------------ run

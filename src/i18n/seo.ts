@@ -122,18 +122,6 @@ const PLATFORM_SEO: Partial<Record<Locale, Partial<Record<'/mac' | '/windows', {
         'Windows için AI dosya adlandırıcı. Özel kurallar belirleyin, her değişikliği önizleyin, toplu işlemleri geri alın veya desteklenen cihaz içi analizi kullanın.',
     },
   },
-  ar: {
-    '/mac': {
-      title: 'إعادة تسمية ملفات Mac بقواعد مخصصة وذكاء اصطناعي | Zush',
-      description:
-        'أداة إعادة تسمية ملفات بالذكاء الاصطناعي لنظام Mac. أنشئ قواعد مخصصة وعاين كل تغيير وتراجع عن أي دفعة أو استخدم التحليل المدعوم على الجهاز.',
-    },
-    '/windows': {
-      title: 'إعادة تسمية ملفات Windows بقواعد مخصصة وذكاء اصطناعي | Zush',
-      description:
-        'أداة إعادة تسمية ملفات بالذكاء الاصطناعي لنظام Windows. أنشئ قواعد مخصصة وعاين كل تغيير وتراجع عن أي دفعة أو استخدم التحليل المدعوم على الجهاز.',
-    },
-  },
 };
 
 /**
@@ -198,10 +186,6 @@ const SEARCH_DESCRIPTION_OVERRIDES: Partial<Record<Locale, Partial<Record<Locali
       'AI 文档重命名工具。Zush 读取 EPUB、FB2、DOCX、XLSX、PPTX、Pages、Numbers、Keynote、TXT、CSV、邮件和字幕，按实际内容生成清晰名称。在 Mac 和 Windows 上批量处理，应用前预览建议，可撤销更改，并能选择 BYOK 或 Ollama 本地 AI。',
     '/rename-pdf-with-ai':
       'AI PDF 重命名工具。Zush 读取发票、合同、扫描件、收据和报告，按内容生成便于检索的文件名。在 Mac 和 Windows 上批量处理多个 PDF，结合供应商、日期和文档类型建立统一命名规则；应用前可预览全部建议，修改后可从历史记录恢复原始文件名。还可使用模板统一客户、项目和归档字段，让文档库保持一致。',
-  },
-  ar: {
-    '/rename-screenshots-with-ai':
-      'أعد تسمية لقطات الشاشة تلقائيًا حسب محتواها الظاهر. عالج الأرشيف دفعة واحدة أو راقب مجلد اللقطات الجديدة على Mac وWindows. يتعرف Zush على التطبيق والصفحة والخطأ والرسم البياني والمحادثة، ويقترح أسماء واضحة قابلة للبحث يمكنك معاينتها قبل التطبيق والتراجع عنها من السجل.',
   },
 };
 

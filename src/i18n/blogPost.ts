@@ -163,19 +163,6 @@ const BLOG_POST_COPY: Record<BlogLocale, BlogPostCopy> = {
     readingTime: (minutes) => `阅读需 ${minutes} 分钟`,
     dateLocale: 'zh-CN',
   },
-  ar: {
-    breadcrumbHome: 'الرئيسية',
-    breadcrumbBlog: 'المدونة',
-    tldrLabel: 'الخلاصة:',
-    jumpToSection: 'انتقل إلى القسم',
-    onThisPage: 'في هذه الصفحة',
-    reviewedPrefix: 'تاريخ المراجعة',
-    independentEvidence: 'دليل مستقل: اختبرت Softpedia تطبيق Zush لنظام Windows ومنحته تقييم 4.5/5، وأشادت بقواعد التسمية القابلة لإعادة الاستخدام ودعم النماذج المحلية.',
-    microsoftStoreEvidence: 'تقييم العملاء: حصل Zush على 5.0/5 في Microsoft Store الأمريكي استنادًا إلى 5 تقييمات.',
-    relatedArticles: 'مقالات ذات صلة',
-    readingTime: (minutes) => `${minutes} دقائق للقراءة`,
-    dateLocale: 'ar-SA',
-  },
 };
 
 export function getBlogPostCopy(locale: BlogLocale): BlogPostCopy {
@@ -199,15 +186,12 @@ export const TRANSLATION_LINK_LABEL: Record<BlogLocale, string> = {
   ja: '日本語で読む',
   ko: '한국어로 읽기',
   'zh-cn': '阅读中文版',
-  ar: 'اقرأ بالعربية',
 };
 
 /**
  * Which translation the visible link points at when a post has several.
  * Ordered by addressable audience for this site (de is the active locale
- * experiment and the largest non-EN market), not alphabetically — otherwise
- * `ar` wins on every fully translated post and an Arabic invitation tops
- * English articles read mostly from the US.
+ * experiment and the largest non-EN market), not alphabetically.
  */
 export const TRANSLATION_LINK_PRIORITY: BlogLocale[] = [
   'de',
@@ -220,5 +204,4 @@ export const TRANSLATION_LINK_PRIORITY: BlogLocale[] = [
   'ko',
   'zh-cn',
   'tr',
-  'ar',
 ];

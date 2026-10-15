@@ -26,7 +26,7 @@ const SITEMAP_EXCLUDED_PATHS = new Set([
   '/blog/search',
 ]);
 
-const SITEMAP_EXCLUDED_LOCALIZED_ROUTE = /^\/(?:de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr|ar)\/(?:404|activate|recover|thank-you|manage-subscription(?:\/confirm)?)$/;
+const SITEMAP_EXCLUDED_LOCALIZED_ROUTE = /^\/(?:de|fr|es|pt-br|nl|it|ja|ko|zh-cn|tr)\/(?:404|activate|recover|thank-you|manage-subscription(?:\/confirm)?)$/;
 
 const shouldIncludeInGeneratedSitemap = (page) => {
   const { pathname } = new URL(page);

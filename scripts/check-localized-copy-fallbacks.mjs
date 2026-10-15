@@ -8,7 +8,7 @@ const { createServer } = await import(
   pathToFileURL(resolve(astroPackageDir, '../vite/dist/node/index.js')).href
 );
 
-const locales = ['de', 'fr', 'es', 'pt-br', 'it', 'nl', 'tr', 'ja', 'ko', 'zh-cn', 'ar'];
+const locales = ['de', 'fr', 'es', 'pt-br', 'it', 'nl', 'tr', 'ja', 'ko', 'zh-cn'];
 const sections = ['header', 'downloadMenu', 'footer', 'pricing'];
 const strict = process.argv.includes('--strict');
 const allowedExact = new Set([

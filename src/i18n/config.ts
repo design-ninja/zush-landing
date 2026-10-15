@@ -38,7 +38,6 @@ export const LOCALES = [
   'ja',
   'ko',
   'zh-cn',
-  'ar',
 ] as const;
 
 export type Locale = (typeof LOCALES)[number];
@@ -51,7 +50,6 @@ export interface LocaleMeta {
   label: string;
   nativeLabel: string;
   flag: string;
-  dir?: 'ltr' | 'rtl';
 }
 
 export const LOCALE_META: Record<Locale, LocaleMeta> = {
@@ -154,16 +152,6 @@ export const LOCALE_META: Record<Locale, LocaleMeta> = {
     nativeLabel: 'Türkçe',
     flag: '🇹🇷',
   },
-  ar: {
-    locale: 'ar',
-    slug: 'ar',
-    lang: 'ar',
-    ogLocale: 'ar_SA',
-    label: 'Arabic',
-    nativeLabel: 'العربية',
-    flag: '🇸🇦',
-    dir: 'rtl',
-  },
 };
 
 export const INDEXABLE_LOCALIZED_ROUTES = [
@@ -248,7 +236,6 @@ const LANDING_LOCALIZED_ROUTES = [
 ] as const;
 
 const LIMITED_LOCALE_ROUTES: Partial<Record<Locale, readonly LocalizedRoute[]>> = {
-  ar: LANDING_LOCALIZED_ROUTES,
   tr: LANDING_LOCALIZED_ROUTES,
 };
 

@@ -15,7 +15,6 @@ Generated from the locale modules and localized MDX frontmatter.
 - [ja homepage](https://zushapp.com/ja)
 - [ko homepage](https://zushapp.com/ko)
 - [zh-cn homepage](https://zushapp.com/zh-cn)
-- [ar homepage](https://zushapp.com/ar)
 
 ## Localized profession pages
 
@@ -59,10 +58,6 @@ Generated from the locale modules and localized MDX frontmatter.
 - [zh-cn /for-medical](https://zushapp.com/zh-cn/for-medical)
 - [zh-cn /for-photographers](https://zushapp.com/zh-cn/for-photographers)
 - [zh-cn /for-legal](https://zushapp.com/zh-cn/for-legal)
-- [ar /for-accountants](https://zushapp.com/ar/for-accountants)
-- [ar /for-medical](https://zushapp.com/ar/for-medical)
-- [ar /for-photographers](https://zushapp.com/ar/for-photographers)
-- [ar /for-legal](https://zushapp.com/ar/for-legal)
 
 ## English priority blog sources
 
@@ -256,20 +251,3 @@ Generated from the locale modules and localized MDX frontmatter.
 - [zh-cn: best-ai-file-sorters-zh-cn](https://zushapp.com/zh-cn/blog/best-ai-file-sorters-zh-cn)
 - [zh-cn: best-file-renamer-windows-11-zh-cn](https://zushapp.com/zh-cn/blog/best-file-renamer-windows-11-zh-cn)
 - [zh-cn: rename-photos-by-date-windows-zh-cn](https://zushapp.com/zh-cn/blog/rename-photos-by-date-windows-zh-cn)
-- [ar: best-ai-file-renamer-tools-mac-ar](https://zushapp.com/ar/blog/best-ai-file-renamer-tools-mac-ar)
-- [ar: file-naming-conventions-best-practices-ar](https://zushapp.com/ar/blog/file-naming-conventions-best-practices-ar)
-- [ar: best-ai-file-renamer-tools-windows-ar](https://zushapp.com/ar/blog/best-ai-file-renamer-tools-windows-ar)
-- [ar: batch-rename-files-mac-guide-ar](https://zushapp.com/ar/blog/batch-rename-files-mac-guide-ar)
-- [ar: automate-file-organization-macos-ar](https://zushapp.com/ar/blog/automate-file-organization-macos-ar)
-- [ar: finder-tags-file-organization-mac-ar](https://zushapp.com/ar/blog/finder-tags-file-organization-mac-ar)
-- [ar: best-ai-file-renamer-tools-2026-ar](https://zushapp.com/ar/blog/best-ai-file-renamer-tools-2026-ar)
-- [ar: best-photo-organization-mac-ar](https://zushapp.com/ar/blog/best-photo-organization-mac-ar)
-- [ar: zush-vs-renameclick-ar](https://zushapp.com/ar/blog/zush-vs-renameclick-ar)
-- [ar: best-ai-file-organizers-mac-ar](https://zushapp.com/ar/blog/best-ai-file-organizers-mac-ar)
-- [ar: best-photo-organizing-software-mac-ar](https://zushapp.com/ar/blog/best-photo-organizing-software-mac-ar)
-- [ar: best-photo-organizer-windows-11-ar](https://zushapp.com/ar/blog/best-photo-organizer-windows-11-ar)
-- [ar: best-ai-file-organizers-windows-ar](https://zushapp.com/ar/blog/best-ai-file-organizers-windows-ar)
-- [ar: best-file-renamer-tools-ar](https://zushapp.com/ar/blog/best-file-renamer-tools-ar)
-- [ar: best-ai-file-sorters-ar](https://zushapp.com/ar/blog/best-ai-file-sorters-ar)
-- [ar: best-file-renamer-windows-11-ar](https://zushapp.com/ar/blog/best-file-renamer-windows-11-ar)
-- [ar: rename-photos-by-date-windows-ar](https://zushapp.com/ar/blog/rename-photos-by-date-windows-ar)

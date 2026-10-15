@@ -98,14 +98,6 @@ const PLATFORM_SPECIFICS_COPY: Partial<Record<Locale, PlatformSpecificsCopy>> = 
     scenariosDescriptionWindows:
       'İnsanların Zush’u Windows’ta her gün kullandığı iş akışları. Her biri izlenen bir klasör veya sürükle-bırak kadar basittir.',
   },
-  ar: {
-    scenariosEyebrow: 'سير العمل',
-    scenariosTitle: 'سيناريوهات واقعية',
-    scenariosDescriptionMac:
-      'هذه هي تدفقات Mac اليومية التي يستخدم الناس Zush من أجلها. كل واحد منها يبدأ بمجلد مراقب أو سحب وإفلات.',
-    scenariosDescriptionWindows:
-      'هذه هي تدفقات Windows اليومية التي يستخدم الناس Zush من أجلها. كل واحد منها يبدأ بمجلد مراقب أو سحب وإفلات.',
-  },
 };
 
 export function getPlatformSpecificsCopy(locale: Locale): PlatformSpecificsCopy {

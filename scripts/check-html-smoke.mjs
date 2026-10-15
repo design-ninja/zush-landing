@@ -50,7 +50,7 @@ const BRANDED_PRODUCT_ROUTES = new Set(['/mac', '/windows', '/pricing', '/docs']
 const WORKFLOW_LANDING_ROUTES = new Set([
   '/batch-rename-files', '/de/batch-rename-files', '/ai-file-organizer',
   '/offline-ai-file-renamer', '/rename-scanned-documents',
-  ...['', '/de', '/fr', '/es', '/pt-br', '/it', '/nl', '/tr', '/ja', '/ko', '/zh-cn', '/ar']
+  ...['', '/de', '/fr', '/es', '/pt-br', '/it', '/nl', '/tr', '/ja', '/ko', '/zh-cn']
     .flatMap((locale) => [`${locale}/rename-documents-with-ai`, `${locale}/rename-pdf-with-ai`]),
 ]);
 const ROOT_SOFTWARE_ID = `${SITE_ORIGIN}/#software`;
@@ -114,7 +114,7 @@ function isUseCasesLandingPath(pathname) {
 }
 
 function baseRoute(pathname) {
-  return pathname.replace(/^\/(?:de|fr|es|pt-br|it|nl|tr|ja|ko|zh-cn|ar)(?=\/)/, '') || '/';
+  return pathname.replace(/^\/(?:de|fr|es|pt-br|it|nl|tr|ja|ko|zh-cn)(?=\/)/, '') || '/';
 }
 
 function assertProductMetadata(html, pathname) {
@@ -353,7 +353,7 @@ for (const loc of locs) {
     console.warn(`[check-html-smoke] Review description length on ${pathname}: ${descriptionLength} characters (editorial guideline: 165).`);
   }
 
-  if (!/^\/(?:de|fr|es|pt-br|it|nl|tr|ja|ko|zh-cn|ar)(?:\/|$)/.test(pathname)) {
+  if (!/^\/(?:de|fr|es|pt-br|it|nl|tr|ja|ko|zh-cn)(?:\/|$)/.test(pathname)) {
     const encodedTitle = html.match(/<title>([\s\S]*?)<\/title>/i)?.[1];
     if (!encodedTitle) fail(`Title missing for ${pathname}`);
     const titleLength = Array.from(decodeHtmlEntities(encodedTitle.replace(/<[^>]+>/g, ' '))).length;
