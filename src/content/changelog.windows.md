@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.13.0.0] - 2026-10-15
+
+### Added
+- Sort files into folders while keeping their current names, both in AI Rename and monitored folders.
+
+### Improved
+- Turn on folder sorting after analysis without updating the suggested names. Zush prepares the extra file descriptions in the background.
+- A clearer Sort menu brings automatic and custom rules, keeping current names, and reusing existing folders together.
+- Switching to automatic sorting remembers your custom rule for later.
+- Clearer explanations when a PRO purchase cannot start, with purchase buttons locked while a completed payment is being activated.
+
+### Fixed
+- The template editor remembers whether you left it expanded or collapsed more reliably when its settings file is temporarily busy.
+
 ## [3.12.1.0] - 2026-10-13
 
 ### Added
