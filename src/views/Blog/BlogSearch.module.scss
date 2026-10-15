@@ -5,9 +5,14 @@
   padding: 2rem 0 3.75rem;
   min-height: 80vh;
 
+  // Full container like the breadcrumbs above, so the column starts at the same
+  // left edge; only the content is capped at a readable width.
   &__Container {
     @include container;
-    max-width: 56rem;
+
+    > * {
+      max-width: 56rem;
+    }
   }
 
   &__Title {
@@ -139,7 +144,7 @@
   &__Link {
     color: var(--primary);
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 0.875rem;
 
     &:hover {
       color: var(--primary-hover);

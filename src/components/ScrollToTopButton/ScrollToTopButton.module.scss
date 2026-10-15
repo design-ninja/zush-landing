@@ -10,8 +10,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 3rem;
-  height: 3rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border: 1px solid var(--border-strong);
   border-radius: $radius-button;
   color: var(--foreground);
@@ -42,8 +42,8 @@
   @include mobile {
     right: max(0.85rem, env(safe-area-inset-right));
     bottom: max(0.85rem, env(safe-area-inset-bottom));
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 2.5rem;
+    height: 2.5rem;
   }
 }
 

@@ -23,6 +23,7 @@ function inferImageSize(src: string) {
     '/images/blog/competitors/renamer-ai.png': { width: '2400', height: '1260' },
     '/images/blog/competitors/riffo.png': { width: '1200', height: '630' },
     '/images/blog/competitors/renameclick.webp': { width: '1924', height: '2020' },
+    '/images/blog/competitors/wisfile.webp': { width: '611', height: '674' },
   };
 
   return imageSizes[src];
@@ -62,56 +63,41 @@ function getThemedScreenshot(src: string) {
 {
   showcaseVideo ? (
     <figure class='markdown-figure markdown-figure--video'>
-      <a
-        aria-label={`${alt || showcaseVideo.title}. Open video in a new tab`}
-        class='markdown-video-link markdown-video-link--light'
-        data-autoplay-video='true'
-        data-video-label={alt || showcaseVideo.title}
-        data-video-poster={resolveShowcaseVideoMedia(showcaseVideo, 'light').poster}
-        data-video-src={resolveShowcaseVideoMedia(showcaseVideo, 'light').source}
-        href={resolveShowcaseVideoMedia(showcaseVideo, 'light').source}
-        rel='noopener noreferrer'
-        target='_blank'
-      >
-        <img
-          {...props}
-          alt={alt || showcaseVideo.title}
-          aria-hidden='true'
-          class='markdown-video-poster markdown-video-poster--light'
-          decoding='async'
-          fetchpriority={fetchpriority}
-          height='720'
-          loading={loading}
-          src={resolveShowcaseVideoMedia(showcaseVideo, 'light').poster}
-          width='1280'
-        />
-        <span class='markdown-video-badge'>Open video</span>
-      </a>
-      <a
-        aria-label={`${alt || showcaseVideo.title}. Open video in a new tab`}
-        class='markdown-video-link markdown-video-link--dark'
-        data-autoplay-video='true'
-        data-video-label={alt || showcaseVideo.title}
-        data-video-poster={resolveShowcaseVideoMedia(showcaseVideo, 'dark').poster}
-        data-video-src={resolveShowcaseVideoMedia(showcaseVideo, 'dark').source}
-        href={resolveShowcaseVideoMedia(showcaseVideo, 'dark').source}
-        rel='noopener noreferrer'
-        target='_blank'
-      >
-        <img
-          {...props}
-          alt={alt || showcaseVideo.title}
-          aria-hidden='true'
-          class='markdown-video-poster markdown-video-poster--dark'
-          decoding='async'
-          fetchpriority={fetchpriority}
-          height='720'
-          loading={loading}
-          src={resolveShowcaseVideoMedia(showcaseVideo, 'dark').poster}
-          width='1280'
-        />
-        <span class='markdown-video-badge'>Open video</span>
-      </a>
+      {(['light', 'dark'] as const).map((theme) => {
+        const media = resolveShowcaseVideoMedia(showcaseVideo, theme);
+        const label = alt || showcaseVideo.title;
+        return (
+          // A poster link, not a <video>: blog pages are not watch pages, so the
+          // player is only created on click. Without JavaScript the link opens the file.
+          <a
+            aria-label={`${label}. Play video`}
+            class={`markdown-video-link markdown-video-link--${theme}`}
+            data-inline-video
+            data-video-label={label}
+            data-video-poster={media.poster}
+            data-video-src={media.source}
+            href={media.source}
+            rel='noopener noreferrer'
+            target='_blank'
+          >
+            <img
+              {...props}
+              alt={label}
+              aria-hidden='true'
+              class={`markdown-video-poster markdown-video-poster--${theme}`}
+              decoding='async'
+              fetchpriority={fetchpriority}
+              height='720'
+              loading={loading}
+              src={media.poster}
+              width='1280'
+            />
+            <span class='markdown-video-play' aria-hidden='true'>
+              <svg viewBox='0 0 24 24' width='28' height='28'><path d='M8 5.14v13.72a1 1 0 0 0 1.52.85l10.4-6.86a1 1 0 0 0 0-1.7L9.52 4.29A1 1 0 0 0 8 5.14Z' fill='currentColor' /></svg>
+            </span>
+          </a>
+        );
+      })}
       {alt && <figcaption>{alt}</figcaption>}
     </figure>
   ) : themedScreenshot ? (
@@ -156,3 +142,34 @@ function getThemedScreenshot(src: string) {
     </figure>
   )
 }
+
+<script>
+  // Swap the clicked poster for a real player in place. Both theme links are
+  // replaced by one <video>, so a later theme switch never shows two items.
+  document.addEventListener('click', (event) => {
+    const mouse = event as MouseEvent;
+    if (mouse.button !== 0 || mouse.metaKey || mouse.ctrlKey || mouse.shiftKey || mouse.altKey) return;
+    const link = (event.target as Element | null)?.closest<HTMLAnchorElement>('a[data-inline-video]');
+    const figure = link?.closest('figure');
+    if (!link || !figure) return;
+    event.preventDefault();
+
+    const video = document.createElement('video');
+    video.className = 'markdown-video-player';
+    video.src = link.dataset.videoSrc ?? link.href;
+    video.poster = link.dataset.videoPoster ?? '';
+    video.controls = true;
+    video.playsInline = true;
+    video.preload = 'auto';
+    video.width = 1280;
+    video.height = 720;
+    video.setAttribute('aria-label', link.dataset.videoLabel ?? '');
+
+    figure.querySelectorAll('a[data-inline-video]').forEach((item, index) => {
+      if (index === 0) item.replaceWith(video);
+      else item.remove();
+    });
+    void video.play().catch(() => {});
+    video.focus({ preventScroll: true });
+  });
+</script>

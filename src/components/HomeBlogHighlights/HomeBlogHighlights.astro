@@ -8,9 +8,9 @@ import styles from './HomeBlogHighlights.module.scss';
 
 const FEATURED_SLUGS = [
   'best-ai-file-renamer-tools-windows-compared',
+  'best-ai-file-organizers-windows',
   'best-ai-file-renamer-tools-mac-compared',
   'sort-files-into-folders-with-ai-mac',
-  'import-export-zush-templates',
 ] as const;
 
 const posts = await getAllPosts();
@@ -30,8 +30,8 @@ const featured = FEATURED_SLUGS.map((slug) => {
     <div class={styles.HomeBlogHighlights__Intro}>
       <Heading as="h2" id="home-blog-title">Guides and comparisons</Heading>
       <Text as="p" size="lg" color="subtle">
-        Compare file renamers for Mac and Windows, organize files into folders with AI,
-        and share reusable naming workflows.
+        Compare AI file renamers and organizers for Mac and Windows, and sort files into
+        folders with AI.
       </Text>
     </div>
     <a class={styles.HomeBlogHighlights__ActionLink} href="/blog">
