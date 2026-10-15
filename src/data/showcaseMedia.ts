@@ -155,6 +155,13 @@ const SHOWCASE_VIDEOS: ShowcaseVideoAsset[] = [
       dark: '/videos/posters/ollama-dark.webp',
     },
   },
+  {
+    id: 'windows-batch-rename',
+    title: 'Batch Rename on Windows',
+    description: 'Batch rename files with AI based on their actual content in Zush for Windows',
+    sources: WINDOWS_DEMO_VIDEO.sources,
+    posters: WINDOWS_DEMO_VIDEO.posters,
+  },
 ];
 
 export const MACOS_SHOWCASE_SCREENSHOTS: ShowcaseScreenshotAsset[] = [
