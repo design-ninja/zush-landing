@@ -340,6 +340,39 @@ async function beforeCheckoutOpen(
   await waitForBrowserPaint();
 }
 
+// The Windows app falls back to this page with the transaction its checkout already created, in
+// Paddle's payment-link parameter `_ptxn`. Paddle.js opens such a link by itself only when it is on
+// the page from the start; here it loads on demand, so open that transaction explicitly instead of
+// waiting for a pricing button and creating a second one.
+export async function openPaddleTransactionCheckout(
+  transactionId: string,
+): Promise<boolean> {
+  activeCheckoutSource = "app";
+  activeCheckoutPriceId = null;
+  activeCheckoutSession = null;
+
+  try {
+    const ready = await ensurePaddleReady();
+    if (!ready || !window.Paddle) {
+      console.error("[Paddle] Paddle.js not ready");
+      trackCheckoutOpenError("sdk_load");
+      return false;
+    }
+
+    const checkoutOptions: PaddleCheckoutOptions = { transactionId };
+    const settings = buildCheckoutSettings();
+    if (settings) {
+      checkoutOptions.settings = settings;
+    }
+
+    window.Paddle.Checkout.open(checkoutOptions);
+    return true;
+  } catch (error) {
+    trackCheckoutOpenError("open");
+    throw error;
+  }
+}
+
 export async function openPaddleCheckout(
   deviceId?: string | null,
   priceId?: string | null,
