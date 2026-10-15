@@ -361,36 +361,6 @@ const COPY: Record<Locale, EvidenceSignalsCopy> = {
       privacy: '隐私政策',
     },
   },
-  ar: {
-    title: 'ما هو Zush AI File Renamer؟',
-    description:
-      'Zush أداة لإعادة تسمية الملفات بالذكاء الاصطناعي على Mac وWindows. يقرأ {count} صيغة ويسمّي كل ملف وفق محتواه وبياناته الوصفية وقواعدك: راجع، وأعد التسمية دفعةً واحدة، أو تراجع في أي وقت. تؤتمت Templates ومراقبة المجلدات المهام المتكررة، ويتيح Cloud AI أو Local AI اختيار مكان التحليل.',
-    freeTitle: 'جرّبه مجانًا',
-    freeDescription: `{limit} عملية إعادة تسمية مجانية بالذكاء الاصطناعي — دون تسجيل أو بطاقة ائتمان. النسخة PRO تبدأ من ${PRO_PRICING.oneTime.usd} دولارًا دفعة واحدة أو ${PRO_PRICING.monthly.usd} دولارات شهريًا.`,
-    blocksTitle: 'أكثر من 145 وحدة تسمية',
-    blocksDescription:
-      'كوّن أسماء الملفات من التواريخ والبيانات الوصفية وتفاصيل الصوت والحقول المالية والعملاء والسفر والبيانات القانونية والسياق الذي يكتشفه الذكاء الاصطناعي.',
-    languagesTitle: 'أكثر من 60 لغة لأسماء الملفات',
-    languagesDescription:
-      'أنشئ أسماء قابلة للبحث باللغة وتنسيق التاريخ المناسبين لكل مجلد أو فريق.',
-    formatsTitle: '{count} صيغة مدعومة',
-    formatsDescription:
-      'الصور وصور RAW وملفات التصميم وملفات PDF وملفات Office وiWork والترجمات والصوت والفيديو، كلها في مسار إعادة تسمية واحد.',
-    sourcesTitle: 'المصادر',
-    links: {
-      home: 'أداة إعادة تسمية الملفات بالذكاء الاصطناعي',
-      mac: 'إعادة تسمية الملفات بالذكاء الاصطناعي لنظام Mac',
-      windows: 'إعادة تسمية الملفات بالذكاء الاصطناعي لنظام Windows',
-      batchRename: 'إعادة تسمية الملفات دفعة واحدة',
-      organizer: 'منظّم الملفات بالذكاء الاصطناعي',
-      methodology: 'المنهجية',
-      about: 'عن Zush',
-      author: 'المؤلف',
-      pricing: 'تفاصيل الأسعار',
-      changelog: 'سجل التغييرات',
-      privacy: 'الخصوصية',
-    },
-  },
 };
 
 export function getEvidenceSignalsCopy(locale: Locale): EvidenceSignalsCopy {

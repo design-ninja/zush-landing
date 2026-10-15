@@ -66,7 +66,6 @@ const STABILIZATION_ROUTES = new Set([
   '/zh-cn/windows',
   '/zh-cn/rename-photos-with-ai',
   '/zh-cn/rename-screenshots-with-ai',
-  '/ar/rename-screenshots-with-ai',
 ]);
 
 async function getSitemapEntries() {
@@ -121,7 +120,7 @@ async function getRecentlyChangedUrls() {
 const GLOBAL_COPY_PREFIXES = ['src/i18n/', 'src/seo/'];
 
 // Keep in sync with LOCALES in src/i18n/config.ts (minus the default locale).
-const LOCALE_SLUGS = ['fr', 'de', 'es', 'pt-br', 'it', 'nl', 'tr', 'ja', 'ko', 'zh-cn', 'ar'];
+const LOCALE_SLUGS = ['fr', 'de', 'es', 'pt-br', 'it', 'nl', 'tr', 'ja', 'ko', 'zh-cn'];
 
 function routeOf(url) {
   return new URL(url).pathname.replace(/\/$/, '') || '/';

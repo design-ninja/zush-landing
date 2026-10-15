@@ -9,7 +9,7 @@ type LocalizedContentModule = {
 };
 
 const modules = import.meta.glob<LocalizedContentModule>(
-  './{de,fr,es,pt-br,it,nl,tr,ja,ko,zh-cn,ar}.ts',
+  './{de,fr,es,pt-br,it,nl,tr,ja,ko,zh-cn}.ts',
   { eager: true },
 );
 
