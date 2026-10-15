@@ -45,7 +45,6 @@ export function buildBlogPostingJsonLd(
       name: PRIMARY_AUTHOR.name,
       alternateName: PRIMARY_AUTHOR.alternateName,
       url: PRIMARY_AUTHOR.url,
-      sameAs: PRIMARY_AUTHOR.sameAs,
       image: PRIMARY_AUTHOR.image,
       worksFor: ORGANIZATION_REF,
     },

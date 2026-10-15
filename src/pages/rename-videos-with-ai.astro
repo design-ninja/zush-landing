@@ -18,6 +18,6 @@ const featurePage = {
 };
 ---
 
-<BaseLayout seo={seo} headerWidth="container" jsonLd={[featurePage.jsonLd, buildFeatureBreadcrumbJsonLd(featurePage.h1, '/rename-videos-with-ai')]}>
+<BaseLayout seo={seo} jsonLd={[featurePage.jsonLd, buildFeatureBreadcrumbJsonLd(featurePage.h1, '/rename-videos-with-ai')]}>
   <FeatureLandingPageShell {...featurePage} />
 </BaseLayout>

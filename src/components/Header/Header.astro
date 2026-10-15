@@ -32,9 +32,8 @@ interface Props {
   route?: string;
   hideDownload?: boolean;
   /**
-   * How wide the pill is on desktop. `default` matches the 60rem content
-   * container most pages use; `wide` matches the 72rem blog container. Phones
-   * ignore it — there the pill always spans the viewport.
+   * The shared pill matches the homepage container. The movies and TV
+   * landing uses `compact`; phones always span the viewport.
    */
   width?: HeaderWidth;
   /**
@@ -120,8 +119,6 @@ const menuLinkClass = [appLinkStyles.AppLink, styles.Header__MenuLink].join(' ')
 <nav
   class:list={[
     styles.Header,
-    width === 'wide' && styles.Header_wide,
-    width === 'container' && styles.Header_container,
     width === 'compact' && styles.Header_compact,
   ]}
   data-header-root
