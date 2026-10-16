@@ -1,4 +1,4 @@
-import { Sparkles, LucideIcon } from 'lucide-react';
+import { Laptop, Sparkles, LucideIcon } from 'lucide-react';
 import {
   PRO_MONTHLY_PADDLE_PRICE_ID,
   PRO_ONE_TIME_PADDLE_PRICE_ID,
@@ -10,6 +10,8 @@ interface Feature {
   desc: string;
   icon: LucideIcon;
   tone: 'orange' | 'green' | 'blue' | 'purple' | 'pink' | 'teal';
+  // Renders monochrome Mac and Windows marks after the title.
+  platforms?: boolean;
 }
 
 interface Plan {
@@ -29,6 +31,13 @@ export const PRO_FEATURES: Feature[] = [
     desc: 'Remove the 50-rename limit across Zush Cloud, BYOK, LM Studio, and Ollama',
     icon: Sparkles,
     tone: 'orange',
+  },
+  {
+    title: '3 devices per license',
+    desc: 'Activate PRO on up to 3 Macs or Windows PCs with the same email',
+    icon: Laptop,
+    tone: 'blue',
+    platforms: true,
   },
 ];
 

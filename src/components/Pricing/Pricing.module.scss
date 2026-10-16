@@ -105,10 +105,10 @@
 }
 
 .PricingCard {
-    // Flat card: hairline border, no glass, no shadow, no hover lift.
+    // Flat card: 2px border, no glass, no shadow, no hover lift.
     // 28px sides keep the one-line promo plate inside the card.
     padding: 2rem 1.75rem;
-    border: 1px solid var(--border);
+    border: 2px solid var(--border);
     border-radius: $radius-xl;
     background: transparent;
     display: grid;
@@ -208,6 +208,15 @@
         color: color-mix(in srgb, var(--muted-foreground), transparent 30%);
     }
 
+    &__Benefits {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
     &__Benefit {
         display: inline-flex;
         align-items: center;
@@ -218,10 +227,33 @@
         font-size: 0.9375rem;
         font-weight: 400;
 
-        // Plain line in the design.
+    }
+
+    &__Check {
+        flex-shrink: 0;
+        width: 1rem;
+        height: 1rem;
+        color: var(--success);
+    }
+
+    &__Platforms {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        margin-left: -0.15rem;
+        color: var(--muted-foreground);
+        opacity: 0.55;
+
         svg {
-            display: none;
+            display: block;
+            width: 1.25rem;
+            height: 1.25rem;
         }
+    }
+
+    &__PlatformsPlus {
+        font-size: 1rem;
+        line-height: 1;
     }
 
     &__PromotionSlot {
@@ -356,6 +388,7 @@
         display: flex;
         flex-direction: column;
         align-self: end;
+        margin-top: 0.5rem;
 
         button[data-paddle-checkout] {
             display: flex;

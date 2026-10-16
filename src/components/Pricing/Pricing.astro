@@ -1,8 +1,11 @@
 ---
 import SectionHeader from '@/components/SectionHeader';
+import AppleIcon from '@/components/AppleIcon';
 import StarRating from '@/components/StarRating';
 import Text from '@/components/Text';
+import WindowsIcon from '@/components/WindowsIcon';
 import buttonStyles from '@/components/Button/Button.module.scss';
+import { Check } from 'lucide-react';
 import { PRO_ONE_TIME_PROMOTION } from '@/constants/promotion';
 import { PRICING_PLANS, PRO_FEATURES } from './constants';
 import styles from './Pricing.module.scss';
@@ -49,11 +52,10 @@ const titleHtml = rawTitle.replace(
   /\bPRO\b/,
   `<span class="${styles.Pricing__TitlePro}">PRO</span>`,
 );
-const proFeature = {
-  ...PRO_FEATURES[0],
-  title: copy?.features[0]?.title ?? PRO_FEATURES[0].title,
-};
-const ProFeatureIcon = proFeature.icon;
+const proFeatures = PRO_FEATURES.map((feature, index) => ({
+  ...feature,
+  title: copy?.features[index]?.title ?? feature.title,
+}));
 const plans = PRICING_PLANS.map((plan) => {
   const planCopy: PlanCopy | undefined =
     plan.id === 'monthly' ? copy?.monthlyPlan : copy?.oneTimePlan;
@@ -206,10 +208,21 @@ const plans = PRICING_PLANS.map((plan) => {
             )}
           </div>
 
-          <div class={styles.PricingCard__Benefit}>
-            <ProFeatureIcon size={18} aria-hidden="true" />
-            <span>{proFeature.title}</span>
-          </div>
+          <ul class={styles.PricingCard__Benefits}>
+            {proFeatures.map((feature) => (
+                <li class={styles.PricingCard__Benefit}>
+                  <Check className={styles.PricingCard__Check} size={16} strokeWidth={2.5} aria-hidden="true" />
+                  <span>{feature.title}</span>
+                  {feature.platforms && (
+                    <span class={styles.PricingCard__Platforms} role="img" aria-label="Mac, Windows">
+                      <AppleIcon />
+                      <span class={styles.PricingCard__PlatformsPlus} aria-hidden="true">+</span>
+                      <WindowsIcon />
+                    </span>
+                  )}
+                </li>
+            ))}
+          </ul>
 
           <div class={styles.PricingCard__ButtonWrapper}>
             <button
