@@ -20,6 +20,13 @@ function paramsFromHash(hash: string): URLSearchParams {
   return new URLSearchParams(fragment);
 }
 
+// Paddle transaction IDs are "txn_" followed by 26 lowercase letters and digits.
+const PADDLE_TRANSACTION_ID_PATTERN = /^txn_[a-z\d]{26}$/;
+
+export function isPaddleTransactionId(value: string | null): value is string {
+  return value !== null && PADDLE_TRANSACTION_ID_PATTERN.test(value);
+}
+
 export function getCheckoutParam(
   name: string,
   location: CheckoutParamsLocation = window.location,
