@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.13.1.0] - 2026-10-17
+
+### Improved
+- Refreshed the PRO plan cards with clearer pricing and license benefits.
+- Simplified the collapsed template bar in AI Rename.
+- Clearer feedback when the analysis service is temporarily unavailable during regeneration.
+
+### Fixed
+- Fixed text extraction from EPUB books whose chapters include a document type declaration.
+
+
 ## [3.13.0.0] - 2026-10-15
 
 ### Added
