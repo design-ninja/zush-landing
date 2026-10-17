@@ -1219,7 +1219,7 @@ const EN_COPY: LocaleCopy = {
     buttonText: 'Buy PRO',
     buttonHint: '14-day money-back guarantee • Secure via Paddle',
     features: [
-      { title: 'Unlimited AI Renames', desc: 'Remove the 50-rename limit across Zush Cloud, BYOK, LM Studio, and Ollama' },
+      { title: 'Unlimited AI Renames & Sorting', desc: 'Remove the 50-rename limit across Zush Cloud, BYOK, LM Studio, and Ollama' },
       { title: '3 devices per license', desc: 'Activate PRO on up to 3 Macs or Windows PCs with the same email' },
     ],
     sharedFeaturesTitle: 'PRO 🌟 Features',
@@ -2713,43 +2713,43 @@ const localizedDownloadMenu: Record<Exclude<Locale, 'en'>, DownloadMenuCopy> = {
 
 const localizedPricingFeatures: Record<Exclude<Locale, 'en'>, PricingCopy['features']> = {
   de: simpleFeatures([
-    ['Unbegrenzte KI-Umbenennungen', 'Entfernt das Limit von 50 Umbenennungen für Cloud-KI, BYOK und Offline-KI'],
+    ['Unbegrenzte KI-Umbenennungen & Sortierung', 'Entfernt das Limit von 50 Umbenennungen für Cloud-KI, BYOK und Offline-KI'],
     ['3 Geräte pro Lizenz', 'PRO auf bis zu 3 Macs oder Windows-PCs mit derselben E-Mail aktivieren'],
   ]),
   fr: simpleFeatures([
-    ['Renommages IA illimités', 'Supprime la limite de 50 renommages pour l’IA cloud, BYOK et l’IA hors ligne'],
+    ['Renommages et classement IA illimités', 'Supprime la limite de 50 renommages pour l’IA cloud, BYOK et l’IA hors ligne'],
     ['3 appareils par licence', 'Activez PRO sur 3 Mac ou PC Windows maximum avec le même e-mail'],
   ]),
   'pt-br': simpleFeatures([
-    ['Renomeações ilimitadas com IA', 'Remove o limite de 50 renomeações em Cloud AI, BYOK e IA offline'],
+    ['Renomeações e organização ilimitadas com IA', 'Remove o limite de 50 renomeações em Cloud AI, BYOK e IA offline'],
     ['3 dispositivos por licença', 'Ative o PRO em até 3 Macs ou PCs Windows com o mesmo e-mail'],
   ]),
   es: simpleFeatures([
-    ['Renombrados ilimitados con IA', 'Elimina el límite de 50 renombrados en Cloud AI, BYOK e IA sin conexión'],
+    ['Renombrados y clasificación ilimitados con IA', 'Elimina el límite de 50 renombrados en Cloud AI, BYOK e IA sin conexión'],
     ['3 dispositivos por licencia', 'Activa PRO en hasta 3 Mac o PC con Windows con el mismo correo'],
   ]),
   nl: simpleFeatures([
-    ['Onbeperkt hernoemen met AI', 'Verwijdert de limiet van 50 hernoemingen voor Cloud AI, BYOK en Offline AI'],
+    ['Onbeperkt hernoemen en sorteren met AI', 'Verwijdert de limiet van 50 hernoemingen voor Cloud AI, BYOK en Offline AI'],
     ['3 apparaten per licentie', 'Activeer PRO op maximaal 3 Macs of Windows-pc\'s met hetzelfde e-mailadres'],
   ]),
   it: simpleFeatures([
-    ['Rinomine IA illimitate', 'Rimuove il limite di 50 rinomine per Cloud AI, BYOK e IA offline'],
+    ['Rinomine e smistamento IA illimitati', 'Rimuove il limite di 50 rinomine per Cloud AI, BYOK e IA offline'],
     ['3 dispositivi per licenza', 'Attiva PRO su un massimo di 3 Mac o PC Windows con la stessa email'],
   ]),
   ja: simpleFeatures([
-    ['AI リネーム無制限', 'Cloud AI、BYOK、オフライン AI 共通の 50 回上限を解除'],
+    ['AI リネーム・仕分け無制限', 'Cloud AI、BYOK、オフライン AI 共通の 50 回上限を解除'],
     ['1ライセンスで3台まで', '同じメールアドレスで最大3台の Mac または Windows PC に PRO を有効化'],
   ]),
   ko: simpleFeatures([
-    ['무제한 AI 이름 변경', 'Cloud AI, BYOK, 오프라인 AI의 공통 50회 제한 제거'],
+    ['무제한 AI 이름 변경 및 분류', 'Cloud AI, BYOK, 오프라인 AI의 공통 50회 제한 제거'],
     ['라이선스당 기기 3대', '같은 이메일로 Mac 또는 Windows PC 최대 3대에서 PRO 활성화'],
   ]),
   'zh-cn': simpleFeatures([
-    ['无限 AI 重命名', '移除 Cloud AI、BYOK 和离线 AI 共用的 50 次限制'],
+    ['无限 AI 重命名和分类', '移除 Cloud AI、BYOK 和离线 AI 共用的 50 次限制'],
     ['每个许可证 3 台设备', '使用同一邮箱在最多 3 台 Mac 或 Windows 电脑上激活 PRO'],
   ]),
   tr: simpleFeatures([
-    ['Sınırsız yapay zekâ yeniden adlandırma', 'Cloud AI, BYOK ve Çevrimdışı Yapay Zekâ için ortak 50 işlem sınırını kaldırır'],
+    ['Sınırsız yapay zekâ yeniden adlandırma ve sıralama', 'Cloud AI, BYOK ve Çevrimdışı Yapay Zekâ için ortak 50 işlem sınırını kaldırır'],
     ['Lisans başına 3 cihaz', 'Aynı e-postayla 3 adede kadar Mac veya Windows PC\'de PRO\'yu etkinleştirin'],
   ]),
 };
