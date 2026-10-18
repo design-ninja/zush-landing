@@ -9,8 +9,8 @@ tags:
   - "Image SEO"
   - "AI File Renaming"
   - "Tool Comparisons"
-tldr: "NameThisPic is a browser tool that writes SEO filenames and alt text, with monthly image caps and 50 to 100 images per batch. If you rename images in bulk, work with RAW or HEIC files, or want files renamed where they already live, a desktop app like Zush is a better fit. Keep NameThisPic if you mainly need alt text. Zush also offers optional AI folder sorting (beta)."
-reviewed: "2026-09-28"
+tldr: "NameThisPic is a browser tool that writes SEO filenames and alt text, with monthly image caps and 50 to 100 images per batch. If you rename images in bulk, work with RAW or HEIC files, or want files renamed where they already live, a desktop app like Zush is a better fit. Keep NameThisPic if you mainly need alt text. Zush also offers optional AI folder sorting (beta). One Zush license covers up to 3 devices."
+reviewed: "2026-10-18"
 ---
 
 import BlogCTA from '@/components/blog/BlogCTA.astro';
@@ -20,6 +20,8 @@ import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 Quick answer: if you rename more than a few dozen images at a time, use a desktop app. [Zush](/) renames images in place on Mac and Windows, with no upload-and-download step and no monthly cap on its paid plan. Stay with NameThisPic if alt text is the main thing you need, because Zush writes filenames, not alt text.
 
 **Last checked: September 22, 2026.** Written by the maker of Zush. NameThisPic details come from [its website](https://www.namethispic.com/); other tools from their own pricing pages.
+
+**Zush features reviewed October 18, 2026.** Competitor information retains the check dates stated in this article.
 
 ## What NameThisPic does
 
@@ -61,7 +63,7 @@ For web and SEO work, a few things help:
 - **Kebab-case and lowercase formatting**, so names come out as `blue-ceramic-coffee-mug-top-view.jpg`.
 - **Naming Blocks** to add a brand, product line, or SKU before the AI description, so every file follows the same pattern.
 - **60+ output languages**, useful for localized storefronts.
-- **All the formats a camera or phone produces**: JPG, PNG, WebP, HEIC, AVIF, and RAW like CR3, NEF, ARW, and DNG.
+- **Supported camera and phone formats**: JPG, PNG, WebP, HEIC, AVIF, and RAW like CR3, NEF, ARW, and DNG.
 
 AI can run through Zush Cloud AI, your own API key, or locally with Ollama or LM Studio if client images must stay on your machine. Rename History lets you revert a batch later.
 
@@ -69,13 +71,19 @@ What Zush does not do is write alt text. If your CMS needs alt text, generate it
 
 <BlogCTA placement='inline' platform='general' />
 
+One Zush license covers up to 3 devices on Mac and Windows.
+
+You can [export Templates](/docs/template-import-export) with Naming Blocks, Custom AI Blocks, and folder rules, then import them on another computer. Choose local destinations, folder permissions, and AI connections again there; this transfers the workflow settings, not your files.
+
 ### Organize the source images too
 
 For a product shoot or mixed media folder, Zush offers **AI folder sorting (beta)**. Use **Auto** or write **Folder rules** such as “Group product photos by product category.” Keep your SEO filename Template separate from the grouping instruction. Sorting organizes files on disk; it does not create alt text or update your CMS media records.
 
 Choose a **Destination folder**, or keep the source folder as the root. Enable **Reuse existing folders** to prefer suitable folders already there; Zush can create a new one when nothing fits. In a manual batch, review both the suggested names and folders before applying. To rename in place, leave sorting off and keep the original destination.
 
-Save the sorting settings in a **Template** and assign it to **Monitor** for new files directly inside the watched folder. This does not reorganize files already processed. Test the Template in a manual batch first. See the [folder sorting guide](/docs/folder-sorting) for the setup and monitoring scope.
+Save the sorting settings in a **Template** and assign it to **Monitor** for new files directly inside the watched folder. Changing the Monitor Template does not automatically reorganize files already processed. Test the Template in a manual batch first. See the [folder sorting guide](/docs/folder-sorting) for the setup and monitoring scope.
+
+Zush also supports nested folder rules, such as grouping by year and then month. You can sort already renamed files without changing their names again or spending another rename credit. Review the destinations before applying. This separate action handles an existing batch; changing a Monitor Template does not retroactively reorganize it. [AI folder sorting](/docs/folder-sorting) is in beta on Mac and Windows.
 
 ## 2. Renamer.ai: web or desktop, document-first
 
@@ -109,7 +117,7 @@ Whatever tool you use, the rules are the same:
 
 <BlogProductIntro
   title="Renaming product photos or a whole shoot?"
-  description="Zush renames images on your Mac or Windows PC with SEO-friendly, descriptive names. HEIC and RAW included, no upload and no monthly cap on PRO."
+  description="Zush renames images on your Mac or Windows PC with SEO-friendly, descriptive names. HEIC and RAW included, no browser upload/download workflow and no monthly cap on PRO. Choose Ollama or LM Studio for local analysis."
   links={[
     { href: '/rename-photos-with-ai', label: 'Rename photos with AI' },
     { href: '/', label: 'Zush AI file renamer' },
@@ -122,7 +130,7 @@ Whatever tool you use, the rules are the same:
 
 ### Can Zush sort files into folders as well as rename them?
 
-Yes. Its optional AI folder sorting is in beta on Mac and Windows. Choose Auto or write Folder rules, select the destination, and review both names and groups in a manual batch. A sorting-enabled Template can also process new files directly inside a monitored folder; it does not reorganize files already processed. Leave sorting off and keep the original destination for naming only.
+Yes. Its optional AI folder sorting is in beta on Mac and Windows. Choose Auto or write Folder rules, select the destination, and review both names and groups in a manual batch. A sorting-enabled Template can also process new files directly inside a monitored folder; changing its Template does not automatically reorganize files already processed. Leave sorting off and keep the original destination for naming only.
 
 ### What is the best NameThisPic alternative?
 
@@ -138,4 +146,4 @@ Yes. Google's image guidelines recommend descriptive filenames, and a name like 
 
 ### Can I rename images for SEO without uploading them?
 
-Yes. Desktop apps like Zush analyze images on your computer. With Ollama or LM Studio selected, the analysis also stays local.
+Yes. Select Ollama or LM Studio in Zush for local image analysis. Zush Cloud AI and BYOK send the content needed for analysis to a cloud provider; a desktop app alone does not mean offline processing.

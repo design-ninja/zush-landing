@@ -9,8 +9,8 @@ tags:
   - "File Naming"
   - "Tool Comparisons"
   - "AI File Renaming"
-tldr: "对于规则类任务（添加日期、替换文本、按序编号），免费的 PowerRename 已经够用；Bulk Rename Utility 和 Advanced Renamer 功能更深入。如果每个文件都需要一个不同的、有描述性的名称，比如截图、扫描件和照片，请使用 Zush 这类 AI 重命名工具，它会先读取每个文件的内容再命名。Zush 还提供可选的 AI 文件夹分类功能（测试版）。"
-reviewed: "2026-09-28"
+tldr: "对于规则类任务（添加日期、替换文本、按序编号），免费的 PowerRename 已经够用；Bulk Rename Utility 和 Advanced Renamer 功能更深入。如果每个文件都需要一个不同的、有描述性的名称，比如截图、扫描件和照片，请使用 Zush 这类 AI 重命名工具，它会先读取每个文件的内容再命名。Zush 还提供可选的 AI 文件夹分类功能（测试版）。 一个 Zush 许可证最多可用于 3 台设备。"
+reviewed: "2026-10-18"
 locale: "zh-cn"
 translationOf: "best-file-renamer-windows-11"
 ---
@@ -24,6 +24,8 @@ import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 这一区分决定了其余的一切。规则类工具快速而精确，但只能转换文件已有的名称。`IMG_4382.jpg` 可以变成 `Vacation_001.jpg`，却永远变不成 `lisbon-tram-at-night.jpg`。
 
 **最后核查日期：2026 年 9 月 22 日。** 本文作者为 Zush 的开发者。其他工具的详细信息均来自其官方页面。
+
+**Zush 功能核查日期：2026 年 10 月 18 日。** 竞品信息仍以文中原有的核查日期为准。
 
 ## 六款工具一览
 
@@ -90,6 +92,10 @@ AI 可以通过 Zush Cloud AI、你自己的 API 密钥运行，也可以借助 
 
 <BlogCTA placement='inline' platform='windows' />
 
+一个 Zush 许可证最多可用于 3 台 Mac 或 Windows 设备。
+
+可以[导出 Templates](/docs/template-import-export)，将 Naming Blocks、Custom AI Blocks 和文件夹规则一起导入另一台电脑。目标文件夹、访问权限和 AI 连接需要在新电脑上重新设置。转移的是工作流程设置，不是文件本身。
+
 ### 将重命名后的文件分类到文件夹
 
 在 Windows 上，Zush 还可以**用 AI 将文件分类到文件夹（测试版）**。选择 **Auto** 分组，或编写 **Folder rules**，例如“按公司归类发票，按月份归类收据。”你可以在查看文件名的同时审阅建议的文件夹分组；如果你只需要对一批文件做相同的文本修改，规则类重命名工具仍然足够。
@@ -97,6 +103,8 @@ AI 可以通过 Zush Cloud AI、你自己的 API 密钥运行，也可以借助 
 选择一个 **Destination folder**，或者保留源文件夹作为根目录。启用 **Reuse existing folders** 可优先使用已有的合适文件夹；当没有合适的文件夹时，Zush 可以新建一个。在手动批次中，应用之前请同时审阅建议的名称和文件夹。如果只想原地重命名，请关闭分类功能并保留原来的目标位置。
 
 把分类设置保存到一个 **Template** 中，并将其分配给 **Monitor**，用于处理被监控文件夹内直接出现的新文件。这不会重新整理已经处理过的文件。请先在手动批次中测试该 Template。设置方法和监控范围请参阅[文件夹分类指南](/docs/folder-sorting)。
+
+Zush 支持嵌套文件夹规则，例如先按年份、再按月份分类。已经重命名的文件可以单独分类，无需再次改名或消耗另一次重命名额度。应用前请核对目标路径。这与 Monitor 是两个操作：修改 Template 不会自动重新整理之前的文件。[AI 文件夹分类](/docs/folder-sorting)在 Mac 和 Windows 上仍处于 beta 阶段。
 
 ## 你应该使用哪款重命名工具？
 

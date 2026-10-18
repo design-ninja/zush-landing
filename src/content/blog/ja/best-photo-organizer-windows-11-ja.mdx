@@ -9,8 +9,8 @@ tags:
   - "Photos"
   - "Tool Comparisons"
   - "File Explorer"
-tldr: "Windows 11では閲覧にMicrosoft Photos、顔やタグを使う無料ライブラリにdigiKam、編集とカタログ管理にLightroom Classicが適しています。通常のフォルダではZushが対応写真の名前と内容別のフォルダ分けを提案します。AI分類はベータ版なので提案を確認してください。"
-reviewed: "2026-09-28"
+tldr: "Windows 11では閲覧にMicrosoft Photos、顔やタグを使う無料ライブラリにdigiKam、編集とカタログ管理にLightroom Classicが適しています。通常のフォルダではZushが対応写真の名前と内容別のフォルダ分けを提案します。AI分類はベータ版なので提案を確認してください。 Zushは1ライセンスで最大3台まで利用できます。"
+reviewed: "2026-10-18"
 locale: "ja"
 translationOf: "best-photo-organizer-windows-11"
 ---
@@ -18,6 +18,8 @@ import BlogCTA from '@/components/blog/BlogCTA.astro';
 import BlogProductIntro from '@/components/blog/BlogProductIntro.astro';
 
 Windows 11では閲覧にMicrosoft Photos、顔やタグを使う無料ライブラリにdigiKam、編集とカタログ管理にLightroom Classicが適しています。通常のフォルダではZushが対応写真の名前と内容別のフォルダ分けを提案します。AI分類はベータ版なので提案を確認してください。
+
+**Zushの機能確認日：2026年10月18日。** 競合製品の情報には、記事内に記載した従来の確認日が適用されます。
 
 ## 写真ライブラリと通常のファイルの違い
 
@@ -76,6 +78,10 @@ Zushのフォルダ分類はMacとWindowsでベータ提供中です。対応フ
 
 書き出した画像やフォルダのコピーで試してください。Photosライブラリパッケージの内部を並べ替えないでください。カタログ登録済みの原本には、そのソフトの改名や再リンク手順を使います。改名も移動もファイルパスを変更します。
 
+Zushは1ライセンスでMac・Windowsを合わせて最大3台まで利用できます。
+
+Naming Blocks、Custom AI Blocks、フォルダルールを含む[Templatesをエクスポート](/docs/template-import-export)し、別のパソコンに読み込めます。移動先フォルダ、アクセス権、AI接続は移行先で設定し直します。移すのは設定であり、ファイル自体ではありません。
+
 ## AIでファイルをフォルダに分類する
 
 Zushのフォルダ分類はMacとWindowsでベータ提供中です。対応ファイルの内容から名前とグループを提案します。Autoを使う場合はFolder rulesを空欄にし、独自の分類には自然な言葉で指示を書きます。ファイル名の形式はNaming Blocksで別に設定します。
@@ -92,6 +98,8 @@ Zushのフォルダ分類はMacとWindowsでベータ提供中です。対応フ
 確認した移動先とルールをTemplateに保存します。Monitorでは監視フォルダ直下に新しく届くファイルの命名と分類ができます。処理済みファイルをさかのぼって再整理するものではありません。分類を無効にして元の移動先を選べば、現在のフォルダに残ります。
 
 [AIフォルダ分類の手順ガイド](/blog/sort-files-into-folders-with-ai-windows) · [フォルダ分類のドキュメント](/docs/folder-sorting) · [フォルダルールの例30選](/blog/ai-folder-sorting-prompts).
+
+Zushは「年、その下に月」のような階層フォルダにも対応します。すでに名前を変更したファイルは、再度名前を変えたり追加の名前変更クレジットを使ったりせずに分類できます。適用前に移動先を確認してください。この操作はMonitorとは別で、Templateを変更しても過去のファイルが自動で再分類されるわけではありません。[AIフォルダ分類](/docs/folder-sorting)はMacとWindowsでベータ提供中です。
 
 Microsoft Photosの説明文による検索はCopilot+ PCsで利用できます。他のPCではより基本的な検索になります。XnView MPは個人・教育用途で無料、商用ライセンスは€29からです。ビューアは完全な編集・ライブラリ作業を代替しません。
 

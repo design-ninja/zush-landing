@@ -10,8 +10,8 @@ topic: "comparisons"
 tags:
   - "AI ファイルの名前変更"
   - "ツールの比較"
-tldr: "この比較で最も柔軟な命名ワークフローを求めるならZushです。既製のTemplates、145以上のNaming Blocks、Custom AI Blocks、バッチ復元付きのRename Historyに加え、普段の言葉で書いた独自ルールに従うAIフォルダ仕分けがあります。RenameClickはあらかじめ決めたカテゴリに仕分け、公開されている対応範囲も狭く、RAW、デザインファイル、iWork、動画には対応していません。ローカルAIと取り消しは両方にあります。"
-reviewed: "2026-10-13"
+tldr: "この比較で最も柔軟な命名ワークフローを求めるならZushです。既製のTemplates、145以上のNaming Blocks、Custom AI Blocks、バッチ復元付きのRename Historyに加え、普段の言葉で書いた独自ルールに従うAIフォルダ仕分けがあります。RenameClickはあらかじめ決めたカテゴリに仕分け、公開されている対応範囲も狭く、RAW、デザインファイル、iWork、動画には対応していません。ローカルAIと取り消しは両方にあります。 Zushは1ライセンスで最大3台まで利用できます。"
+reviewed: "2026-10-18"
 featuredOrder: 5
 ---
 import BlogHighlight from '@/components/blog/BlogHighlight.astro';
@@ -38,6 +38,8 @@ ZushはMacとWindowsで入れ子のフォルダへの分類と、追加の名前
 
 どちらもMacとWindows向けのデスクトップアプリで、ローカルAI、フォルダ監視、フォルダへの仕分け、取り消し履歴、買い切り価格に対応しています。これらは同等の機能です。Zushは命名の制御、復元の詳細さ、混在ファイルへの対応範囲、そして固定のカテゴリ一覧ではなく普段の言葉のルールで仕分けられる点で優れています。RenameClickならではの用途はAI Searchワークスペースで、対応フォーマットはより限られます。
 
+**Zushの機能確認日：2026年10月18日。** 競合製品の情報には、記事内に記載した従来の確認日が適用されます。
+
 ## 「RenameClick」対「Zush」: 迅速な判断
 
 |寸法| Zush | RenameClick |
@@ -46,8 +48,8 @@ ZushはMacとWindowsで入れ子のフォルダへの分類と、追加の名前
 |無料利用枠|開始までに 50 回の名前変更|無制限の AI 分析、100 クレジット/月の適用|
 |5 年間のコスト (1 回限りのパス)| <BlogHighlight>合計 48 ドル</BlogHighlight> |合計 $36+ VAT|
 |プラットフォーム|マック+「Windows」|マック+「Windows」|
-|処理オプション|クラウド AI、「BYOK」、または「Ollama」経由のオフライン AI|デフォルトでローカル AI が組み込まれています|
-|ローカルモデルがバンドルされています|いいえ、「Ollama」セットアップを使用してください|はい、ダウンロード後の Qwen3-VL ローカル モデル|
+|処理オプション|クラウド AI、「BYOK」、または「Ollama / LM Studio」経由のオフライン AI|デフォルトでローカル AI が組み込まれています|
+|ローカルモデルがバンドルされています|いいえ、「Ollama / LM Studio」セットアップを使用してください|はい、ダウンロード後の Qwen3-VL ローカル モデル|
 |AIプロバイダー|Zush Cloud AI; BYOK: Gemini, OpenRouter, OpenAI, Claude; LM Studio, Ollama|Qwen3-VL; LM Studio, Ollama; OpenAI, Gemini, Alibaba Cloud Qwen; OpenAI-compatible API (2.19, OpenRouter)|
 |画像・デザインフォーマット|41 の画像フォーマット + 4 つのデザインフォーマット（RAW、HEIC、AVIF、Sketch、Figma、AI、PSD を含む）|JPEG、PNG、GIF、WebP、AVIF、BMP、SVG、HEIC、HEIF、TIFF。デザインファイルがありません|
 |RAWのサポート| <BlogHighlight>はい (CR2、CR3、NEF、ARW、DNG、ORF、RAF、RW2、PEF、SRW、SR2)</BlogHighlight> |非公開|
@@ -75,7 +77,7 @@ ZushはMacとWindowsで入れ子のフォルダへの分類と、追加の名前
 
 ## Zush
 
-<BlogToolMeta platform="Mac (macOS 15+) および Windows 10/11" website="https://zushapp.com/" label="zushapp.com"><Fragment slot="pricing">無料枠 (50 回の名前変更)、Pro<BlogHighlight>月額 $10 または 1 回限り $48</BlogHighlight>無制限の PRO 名前変更の場合、「BYOK」は API コストでオプション (Gemini/OpenRouter/OpenAI/Claude)、「Ollama」経由のオフライン AI</Fragment></BlogToolMeta>
+<BlogToolMeta platform="Mac (macOS 15+) および Windows 10/11" website="https://zushapp.com/" label="zushapp.com"><Fragment slot="pricing">無料枠 (50 回の名前変更)、Pro<BlogHighlight>月額 $10 または 1 回限り $48</BlogHighlight>無制限の PRO 名前変更の場合、「BYOK」は API コストでオプション (Gemini/OpenRouter/OpenAI/Claude)、「Ollama / LM Studio」経由のオフライン AI</Fragment></BlogToolMeta>
 
 ![「Zush」AI による名前変更の結果には、説明的な前後の名前と緑色のチェックマークが付いたファイルが表示されます](/images/showcase/macos/batch-rename-light.webp)
 
@@ -84,6 +86,12 @@ ZushはMacとWindowsで入れ子のフォルダへの分類と、追加の名前
 この比較で重要な点は、「Zush」がファイル タイプのサイロを強制しないことです。 `IMG_4821.HEIC`、`_DSC0019.NEF`、`checkout-flow.fig`、`voice-memo.m4a`、`client-brief.pages`、`recording.mov`、および `invoice.pdf` を含むフォルダーは、1 つのワークフロー内に留めることができます。
 
 価格はシンプルで、PRO の場合は月額 10 ドル、または 1 回限り 48 ドルです。どちらの有料プランでも、Cloud AI、「BYOK」、およびオフライン AI にわたる名前変更制限が削除されます。 「Templates」、「Naming Blocks」、およびカスタム プロンプトが無料で含まれています。
+
+Zushは1ライセンスでMac・Windowsを合わせて最大3台まで利用できます。
+
+Naming Blocks、Custom AI Blocks、フォルダルールを含む[Templatesをエクスポート](/docs/template-import-export)し、別のパソコンに読み込めます。移動先フォルダ、アクセス権、AI接続は移行先で設定し直します。移すのは設定であり、ファイル自体ではありません。
+
+Zushは「年、その下に月」のような階層フォルダにも対応します。すでに名前を変更したファイルは、再度名前を変えたり追加の名前変更クレジットを使ったりせずに分類できます。適用前に移動先を確認してください。この操作はMonitorとは別で、Templateを変更しても過去のファイルが自動で再分類されるわけではありません。[AIフォルダ分類](/docs/folder-sorting)はMacとWindowsでベータ提供中です。
 
 ## RenameClick
 
