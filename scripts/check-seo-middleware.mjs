@@ -3,7 +3,8 @@ import { config } from '../middleware.js';
 
 const checkoutAvailability = { BD: false, IN: false };
 let checkoutAvailabilityCalls = 0;
-globalThis.fetch = async (input) => {
+let lastPageRequest = null;
+globalThis.fetch = async (input, init) => {
   const url = new URL(String(input));
   if (url.pathname === '/functions/v1/checkout-availability') {
     checkoutAvailabilityCalls += 1;
@@ -13,6 +14,18 @@ globalThis.fetch = async (input) => {
   }
   if (url.pathname === '/404') {
     return new Response('<h1>Page not found</h1>', { status: 200 });
+  }
+  if (url.pathname === '/mac') {
+    lastPageRequest = new Headers(init?.headers);
+    return new Response('<h1>Full page /mac</h1>', {
+      status: 200,
+      headers: {
+        'content-encoding': 'br',
+        etag: '"page"',
+        'last-modified': 'Sat, 17 Oct 2026 00:00:00 GMT',
+        'set-cookie': 'upstream=1; Path=/',
+      },
+    });
   }
   throw new Error(`Unexpected fetch: ${url}`);
 };
@@ -125,6 +138,43 @@ await assertNextWithCookie(
   'https://zushapp.com/mac',
   { 'x-vercel-ip-country': 'BD' },
   'zush_pricing_hidden=1',
+);
+
+const revalidation = await middleware(new Request('https://zushapp.com/mac', {
+  headers: {
+    'if-none-match': '"cached-before-country-change"',
+    'x-vercel-ip-country': 'BD',
+  },
+}));
+assert(revalidation.status === 200, `Expected a full page on revalidation, got ${revalidation.status}.`);
+assert(
+  (await revalidation.text()).includes('Full page /mac'),
+  'Revalidation with a cookie change should return the full page body.',
+);
+assert(
+  revalidation.headers.get('set-cookie') === null ||
+    !revalidation.headers.get('set-cookie').includes('upstream'),
+  'Upstream cookies must not leak into the full-page response.',
+);
+assert(
+  revalidation.headers.get('set-cookie')?.includes('zush_pricing_hidden=1'),
+  'Revalidation with a cookie change should set the pricing cookie.',
+);
+for (const name of ['etag', 'content-encoding', 'last-modified']) {
+  assert(!revalidation.headers.has(name), `Full-page response must not carry ${name}.`);
+}
+assert(lastPageRequest && !lastPageRequest.has('if-none-match'), 'Full-page fetch must not be conditional.');
+
+const unchangedRevalidation = await middleware(new Request('https://zushapp.com/mac', {
+  headers: {
+    cookie: 'zush_pricing_hidden=1',
+    'if-none-match': '"cached-with-current-cookie"',
+    'x-vercel-ip-country': 'BD',
+  },
+}));
+assert(
+  unchangedRevalidation === undefined,
+  'Revalidation with an unchanged cookie should keep the normal 304 path.',
 );
 
 const callsBeforeCachedLookup = checkoutAvailabilityCalls;
