@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.13.2.0] - 2026-10-18
+
+### Improved
+- Clearer messages when PRO checkout is unavailable for your region or email, or service availability cannot be verified.
+
+### Fixed
+- PRO checkout no longer closes because an earlier availability check fails after you update your email or billing country.
+
 ## [3.13.1.0] - 2026-10-17
 
 ### Improved

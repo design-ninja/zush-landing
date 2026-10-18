@@ -31,7 +31,7 @@ export const MACUPDATE_URL = "https://zush.macupdate.com/";
 export const SOFTPEDIA_REVIEW_URL =
   "https://www.softpedia.com/get/Artificial-Intelligence-Generative-AI/Zush.shtml";
 export const MAC_APP_VERSION = "3.17.1";
-export const WINDOWS_APP_VERSION = "3.13.1.0";
+export const WINDOWS_APP_VERSION = "3.13.2.0";
 export const PRODUCT_FACTS_REVIEWED_AT = "2026-10-18";
 export const AI_MODES_SUMMARY =
   "Zush Cloud AI, BYOK, LM Studio, and Ollama";
