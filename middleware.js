@@ -19,6 +19,7 @@ const CHECKOUT_AVAILABILITY_URL = `${
 const CHECKOUT_AVAILABILITY_TTL_MS = 10 * 60 * 1000;
 const CHECKOUT_AVAILABILITY_RETRY_MS = 60 * 1000;
 const CHECKOUT_AVAILABILITY_TIMEOUT_MS = 1000;
+const FULL_PAGE_TIMEOUT_MS = 5000;
 const PRICING_PAGE_PATTERN = /^\/(?:[a-z]{2}(?:-[a-z]{2})?\/)?pricing\/?$/;
 const checkoutAvailabilityCache = new Map();
 const LEGACY_POSTHOG_PROXY_HOST = 'e.zushapp.com';
@@ -105,10 +106,13 @@ async function getPricingHiddenCookie(request, country) {
   }
 
   const hidden = !(await isCheckoutAvailable(country));
+  const current = getCookieValue(request.headers.get('cookie'), PRICING_HIDDEN_COOKIE);
+  // Only send the cookie when it changes: revalidated pages keep the existing
+  // one, and a change takes the full-page path in nextWithCountryCookies.
   if (hidden) {
     return {
       hidden,
-      cookie: buildCountryCookie(
+      cookie: current === PRICING_HIDDEN_VALUE ? undefined : buildCountryCookie(
         PRICING_HIDDEN_COOKIE,
         PRICING_HIDDEN_VALUE,
         true,
@@ -117,7 +121,6 @@ async function getPricingHiddenCookie(request, country) {
     };
   }
 
-  const current = getCookieValue(request.headers.get('cookie'), PRICING_HIDDEN_COOKIE);
   return {
     hidden,
     cookie: current === PRICING_HIDDEN_VALUE
@@ -144,16 +147,39 @@ async function pricingNotFoundResponse(url, cookies) {
   return withCountryCookies(new Response(body, { status: 404, headers }), cookies);
 }
 
-// Vercel answers a browser revalidation with 304 and drops Set-Cookie, so a
-// page cached before the visitor's country changed would keep a stale cookie.
-// Forward the request without conditional headers whenever a cookie is set.
-function nextWithCountryCookies(request, cookies) {
+// Vercel answers a browser revalidation with 304 from the client's
+// conditional headers and drops Set-Cookie, so a page cached before the
+// visitor's country changed would never get the new cookie. When a cookie
+// changes on a conditional request, return the full page from here instead.
+async function nextWithCountryCookies(request, cookies) {
   if (!cookies.length) return undefined;
+
+  const conditional = request.headers.has('if-none-match') ||
+    request.headers.has('if-modified-since');
+  if (!conditional) return withCountryCookies(next(), cookies);
 
   const requestHeaders = new Headers(request.headers);
   requestHeaders.delete('if-none-match');
   requestHeaders.delete('if-modified-since');
-  return withCountryCookies(next({ request: { headers: requestHeaders } }), cookies);
+  try {
+    const page = await fetch(request.url, {
+      headers: requestHeaders,
+      redirect: 'manual',
+      signal: AbortSignal.timeout(FULL_PAGE_TIMEOUT_MS),
+    });
+    const headers = new Headers(page.headers);
+    // fetch already decoded the body; validators would let Vercel turn this
+    // response back into a cookie-less 304.
+    for (const name of ['content-encoding', 'content-length', 'etag', 'last-modified', 'set-cookie']) {
+      headers.delete(name);
+    }
+    return withCountryCookies(
+      new Response(page.body, { headers, status: page.status, statusText: page.statusText }),
+      cookies,
+    );
+  } catch {
+    return withCountryCookies(next(), cookies);
+  }
 }
 
 function getRequestHost(request) {
@@ -178,11 +204,13 @@ function buildLegacyPostHogProxyRedirectUrl(requestUrl) {
 
 function getPostHogCountryOptOutCookie(request) {
   const country = getVisitorCountry(request);
+  const currentOptOut = getCookieValue(request.headers.get('cookie'), POSTHOG_COUNTRY_OPTOUT_COOKIE);
   if (country && POSTHOG_COUNTRY_OPTOUT_COUNTRIES.has(country)) {
-    return buildPostHogCountryOptOutCookie(true);
+    return currentOptOut === POSTHOG_COUNTRY_OPTOUT_VALUE
+      ? undefined
+      : buildPostHogCountryOptOutCookie(true);
   }
 
-  const currentOptOut = getCookieValue(request.headers.get('cookie'), POSTHOG_COUNTRY_OPTOUT_COOKIE);
   if (country && currentOptOut === POSTHOG_COUNTRY_OPTOUT_VALUE) {
     return buildPostHogCountryOptOutCookie(false);
   }
