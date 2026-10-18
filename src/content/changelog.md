@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.17.1] - 2026-10-18
+
+- Improved AI analysis of images and documents.
+- More reliable cloud AI and faster analysis.
+- Clearer PRO plans, pricing, and benefits.
+- Fixed an error when switching plans during checkout.
+
 ## [3.17.0] - 2026-10-15
 
 ### New
