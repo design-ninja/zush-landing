@@ -6,6 +6,7 @@ import ts from 'typescript';
 const requests = [], analytics = [], alerts = [];
 let closed = 0;
 let allowed = false;
+let failNext = 0;
 const listeners = new Map();
 class Input { type = 'email'; value = 'buyer@example.com'; validity = {valid:true}; form; }
 class Select { value = 'BD'; form; }
@@ -21,7 +22,7 @@ const context = vm.createContext({
   document:{documentElement:{lang:'en',dataset:{}},addEventListener:(name,callback)=>listeners.set(name,callback)},
   window:{Paddle:{Checkout:{close:()=>closed++}},alert:message=>alerts.push(message)},
   sessionStorage:{removeItem(){}},
-  fetch:async (_url,options)=>{requests.push(JSON.parse(options.body));return {ok:allowed,status:allowed?200:403,json:async()=>({allowed,code:'blocked_email'})};},
+  fetch:async (_url,options)=>{requests.push(JSON.parse(options.body));if(failNext>0){failNext--;throw new Error('offline');}return {ok:allowed,status:allowed?200:403,json:async()=>({allowed,code:'blocked_email'})};},
 });
 const stubs = {
   '@/utils/analytics': {trackAnalyticsEvent:(name,data)=>analytics.push({name,data}),getAnalyticsDistinctId:()=>null},
@@ -42,6 +43,16 @@ assert.equal(closed,1);assert.equal(requests[0].email,'buyer@example.com');asser
 allowed=true; paddle.setTestSession('session2');
 await paddle.verifyCheckoutCountry({data:{customer:{email:'allowed@example.com',address:{country_code:'US'}}}});
 assert.equal(closed,1);
+let beforeEvents=requests.length;
+await paddle.verifyCheckoutCountry({data:{customer:{email:'allowed@example.com',address:{country_code:'US'}}}});
+assert.equal(requests.length,beforeEvents,'Repeated Paddle events for one customer must be checked once');
+paddle.setTestSession('session3');failNext=1;beforeEvents=requests.length;
+await paddle.verifyCheckoutCountry({data:{customer:{email:'retry@example.com',address:{country_code:'US'}}}});
+assert.equal(requests.length,beforeEvents+2,'A transient failure is retried once');
+assert.equal(closed,1,'A successful retry keeps checkout open');
+paddle.setTestSession('session4');failNext=2;
+await paddle.verifyCheckoutCountry({data:{customer:{email:'offline@example.com',address:{country_code:'US'}}}});
+assert.equal(closed,2,'A second failure closes checkout');
 assert.equal(JSON.stringify(analytics).includes('@example.com'),false);
 
 const observer=await load('src/utils/emailAccessPolicy.ts');observer.bindEmailAccessPolicy();

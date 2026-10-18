@@ -140,30 +140,57 @@ interface CheckoutCountryResponse {
 // The backend owns the availability policy and cancels the unpaid
 // transaction when checkout is not allowed. Verification errors close checkout
 // as well, so a failed request does not silently authorize payment.
+let lastVerifiedCheckoutCustomer: string | null = null;
+
 async function verifyCheckoutCountry(event: PaddleEvent): Promise<void> {
   const checkoutSession = activeCheckoutSession;
-  if (!checkoutSession || !event.data?.customer?.email) return;
+  const customer = event.data?.customer;
+  if (!checkoutSession || !customer?.email) return;
 
-  try {
-    const response = await fetch(
-      `${SUPABASE_URL}/functions/v1/verify-checkout-country`,
-      {
-        method: "POST",
-        signal: AbortSignal.timeout(15000),
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          checkout_session: checkoutSession,
-          email: event.data?.customer?.email,
-          country_code: event.data?.customer?.address?.country_code,
-        }),
-      },
-    );
-    const result = (await response.json().catch(() => ({}))) as
-      CheckoutCountryResponse;
-    if ((response.ok && result.allowed === true) || checkoutSession !== activeCheckoutSession) {
-      return;
+  // checkout.loaded, customer.created and customer.updated often carry the
+  // same customer; check each distinct email/country once per session.
+  const fingerprint = JSON.stringify([
+    checkoutSession,
+    customer.email,
+    customer.address?.country_code,
+  ]);
+  if (fingerprint === lastVerifiedCheckoutCustomer) return;
+  lastVerifiedCheckoutCustomer = fingerprint;
+
+  const body = JSON.stringify({
+    checkout_session: checkoutSession,
+    email: customer.email,
+    country_code: customer.address?.country_code,
+  });
+  let response: Response | null = null;
+  let result: CheckoutCountryResponse = {};
+  // One retry absorbs a transient network or server error. Only an explicit
+  // denial or a second failure closes the checkout.
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    try {
+      response = await fetch(
+        `${SUPABASE_URL}/functions/v1/verify-checkout-country`,
+        {
+          method: "POST",
+          signal: AbortSignal.timeout(15000),
+          headers: { "Content-Type": "application/json" },
+          body,
+        },
+      );
+      result = (await response.json().catch(() => ({}))) as
+        CheckoutCountryResponse;
+      if (response.ok || response.status === 403) break;
+    } catch (error) {
+      console.error("[Paddle] Checkout availability check failed:", error);
+      response = null;
+      result = {};
     }
+  }
 
+  if (checkoutSession !== activeCheckoutSession) return;
+  if (response?.ok && result.allowed === true) return;
+
+  if (response?.status === 403) {
     trackAnalyticsEvent("checkout_error", {
       provider: "paddle",
       source: activeCheckoutSource,
@@ -171,20 +198,13 @@ async function verifyCheckoutCountry(event: PaddleEvent): Promise<void> {
       stage: "country_check",
       error_code: "checkout_unavailable",
     });
-    activeCheckoutSession = null;
-    sessionStorage.removeItem("zush_checkout_session");
-    window.Paddle?.Checkout.close();
-    window.alert(accessPolicyMessage(result.code));
-  } catch (error) {
-    console.error("[Paddle] Checkout availability check failed:", error);
-    if (checkoutSession === activeCheckoutSession) {
-      activeCheckoutSession = null;
-      sessionStorage.removeItem("zush_checkout_session");
-      window.Paddle?.Checkout.close();
-      window.alert(accessPolicyMessage());
-      trackCheckoutOpenError("access_policy_unavailable");
-    }
+  } else {
+    trackCheckoutOpenError("access_policy_unavailable");
   }
+  activeCheckoutSession = null;
+  sessionStorage.removeItem("zush_checkout_session");
+  window.Paddle?.Checkout.close();
+  window.alert(accessPolicyMessage(response?.status === 403 ? result.code : undefined));
 }
 
 function notifyPaddleEventListeners(event: PaddleEvent): void {
