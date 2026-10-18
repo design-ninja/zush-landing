@@ -380,6 +380,8 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
       )}
       {includeChrome && <ScrollToTopButton />}
       <script>
+        import { bindEmailAccessPolicy } from '@/utils/emailAccessPolicy';
+        bindEmailAccessPolicy();
         import { bindDownloadTracking, bindProClickTracking, bindProPlanClickTracking } from '@/utils/download';
         import { bindCheckoutAutoOpen } from '@/utils/checkoutAutoOpen';
         import { bindPricingCheckout } from '@/utils/pricingCheckout';

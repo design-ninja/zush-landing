@@ -29,6 +29,11 @@ We do not store or process your credit card details. All payments are handled se
 
 For store purchases, Zush sends store product and transaction identifiers to Zush backend to verify PRO entitlement, restore purchases, prevent abuse, and maintain account status.
 
+**1.6 Service Availability Checks**
+Zush is not offered in some countries. To enforce this, Zush backend compares the country of the request's IP address, your device's region setting, and the billing country selected in checkout with the list of unavailable countries. The IP country is estimated on our servers with the [DB-IP](https://db-ip.com/) country database; your IP address is not sent to DB-IP.
+
+Email addresses you enter in website forms, in checkout, or in the app for activation are checked against a list of addresses used in an attempt from an unavailable country, and are added to that list when such an attempt occurs. Records of denied requests contain the operation, time, and country signals, not the email address, and are deleted after 90 days. Addresses on the list are kept to enforce this policy; you can contact us to review or delete them.
+
 ### 2. How We Use Your Information
 
 We use the collected information to:
