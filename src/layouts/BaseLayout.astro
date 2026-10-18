@@ -169,6 +169,14 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content={forcedTheme ?? 'light dark'} />
 
+    {/* middleware.js sets this cookie where checkout is unavailable; mark the
+        document before first paint so pricing never flashes. */}
+    <script is:inline>
+      if (/(?:^|;\s*)zush_pricing_hidden=1(?:;|$)/.test(document.cookie)) {
+        document.documentElement.setAttribute('data-pricing-hidden', '');
+      }
+    </script>
+
     <script is:inline>
       (() => {
         const THEME_STORAGE_KEY = 'zush-theme';
@@ -539,6 +547,15 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
 
 <style is:global>
   html[data-theme-forced] [data-theme-toggle] {
+    display: none !important;
+  }
+
+  html[data-pricing-hidden] :is(
+    #pricing,
+    a[href$='#pricing'],
+    [data-site-footer] a[href='/pricing'],
+    [data-site-footer] li:has(> a[href='/pricing'])
+  ) {
     display: none !important;
   }
 
