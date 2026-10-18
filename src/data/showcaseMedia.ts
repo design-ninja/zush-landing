@@ -45,8 +45,8 @@ export const MAC_DEMO_VIDEO: DemoVideoAsset = {
     light: '/videos/posters/demo-light.webp',
     dark: '/videos/posters/demo-dark.webp',
   },
-  width: 2548,
-  height: 1434,
+  width: 2560,
+  height: 1440,
 };
 
 // The Windows desktop demo has matching recordings and posters for both themes.
