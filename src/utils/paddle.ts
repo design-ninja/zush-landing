@@ -1,3 +1,4 @@
+import { accessPolicyMessage } from "@/utils/accessPolicyMessage";
 // Exports are read through dynamic import() destructuring in pricingCheckout.ts
 // and checkoutAutoOpen.ts, which static analysis does not follow.
 // fallow-ignore-file unused-export
@@ -72,6 +73,7 @@ const CHECKOUT_PRICE_ID_KEY = "zush_checkout_price_id";
 // Paddle.js emits these once checkout has collected the buyer's country,
 // before the payment step.
 const CHECKOUT_COUNTRY_EVENTS = new Set([
+  "checkout.loaded",
   "checkout.customer.created",
   "checkout.customer.updated",
 ]);
@@ -130,32 +132,35 @@ function getPaddleConfig() {
 }
 
 interface CheckoutCountryResponse {
+  code?: string;
   allowed?: boolean;
   message?: string;
 }
 
 // The backend owns the availability policy and cancels the unpaid
-// transaction when checkout is not allowed. A failed check never blocks the
-// buyer: only an explicit denial closes checkout.
+// transaction when checkout is not allowed. Verification errors close checkout
+// as well, so a failed request does not silently authorize payment.
 async function verifyCheckoutCountry(event: PaddleEvent): Promise<void> {
   const checkoutSession = activeCheckoutSession;
-  if (!checkoutSession) return;
+  if (!checkoutSession || !event.data?.customer?.email) return;
 
   try {
     const response = await fetch(
       `${SUPABASE_URL}/functions/v1/verify-checkout-country`,
       {
         method: "POST",
+        signal: AbortSignal.timeout(15000),
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           checkout_session: checkoutSession,
+          email: event.data?.customer?.email,
           country_code: event.data?.customer?.address?.country_code,
         }),
       },
     );
     const result = (await response.json().catch(() => ({}))) as
       CheckoutCountryResponse;
-    if (result.allowed !== false || checkoutSession !== activeCheckoutSession) {
+    if ((response.ok && result.allowed === true) || checkoutSession !== activeCheckoutSession) {
       return;
     }
 
@@ -169,11 +174,16 @@ async function verifyCheckoutCountry(event: PaddleEvent): Promise<void> {
     activeCheckoutSession = null;
     sessionStorage.removeItem("zush_checkout_session");
     window.Paddle?.Checkout.close();
-    if (result.message) {
-      window.alert(result.message);
-    }
+    window.alert(accessPolicyMessage(result.code));
   } catch (error) {
     console.error("[Paddle] Checkout availability check failed:", error);
+    if (checkoutSession === activeCheckoutSession) {
+      activeCheckoutSession = null;
+      sessionStorage.removeItem("zush_checkout_session");
+      window.Paddle?.Checkout.close();
+      window.alert(accessPolicyMessage());
+      trackCheckoutOpenError("access_policy_unavailable");
+    }
   }
 }
 
