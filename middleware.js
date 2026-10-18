@@ -8,6 +8,19 @@ const POSTHOG_COUNTRY_OPTOUT_VALUE = '1';
 const POSTHOG_COUNTRY_OPTOUT_MAX_AGE_SECONDS = 60 * 60 * 24 * 7;
 const POSTHOG_COUNTRY_OPTOUT_COUNTRIES = new Set(['TH']);
 const COUNTRY_VARY_HEADER = 'x-vercel-ip-country';
+const PRICING_HIDDEN_COOKIE = 'zush_pricing_hidden';
+const PRICING_HIDDEN_VALUE = '1';
+const PRICING_HIDDEN_MAX_AGE_SECONDS = 60 * 60 * 24;
+// The backend owns the country policy (app_config) and answers per country,
+// so the list is never shipped with the site.
+const CHECKOUT_AVAILABILITY_URL = `${
+  globalThis.process?.env?.PUBLIC_SUPABASE_URL || 'https://sjzrgmvinyxjzvshfvjy.supabase.co'
+}/functions/v1/checkout-availability`;
+const CHECKOUT_AVAILABILITY_TTL_MS = 10 * 60 * 1000;
+const CHECKOUT_AVAILABILITY_RETRY_MS = 60 * 1000;
+const CHECKOUT_AVAILABILITY_TIMEOUT_MS = 1000;
+const PRICING_PAGE_PATTERN = /^\/(?:[a-z]{2}(?:-[a-z]{2})?\/)?pricing\/?$/;
+const checkoutAvailabilityCache = new Map();
 const LEGACY_POSTHOG_PROXY_HOST = 'e.zushapp.com';
 const CANONICAL_HOST = 'zushapp.com';
 const POSTHOG_PROXY_PATH = '/e';
@@ -29,23 +42,106 @@ function getCookieValue(cookieHeader, name) {
   return undefined;
 }
 
-function buildPostHogCountryOptOutCookie(enabled) {
-  const value = enabled ? POSTHOG_COUNTRY_OPTOUT_VALUE : '';
-  const maxAge = enabled ? POSTHOG_COUNTRY_OPTOUT_MAX_AGE_SECONDS : 0;
-  const expires = enabled ? '' : '; Expires=Thu, 01 Jan 1970 00:00:00 GMT';
-
+function buildCountryCookie(name, value, enabled, maxAgeSeconds) {
   return [
-    `${POSTHOG_COUNTRY_OPTOUT_COOKIE}=${value}`,
-    `Max-Age=${maxAge}`,
+    `${name}=${enabled ? value : ''}`,
+    `Max-Age=${enabled ? maxAgeSeconds : 0}`,
     'Path=/',
     'SameSite=Lax',
     'Secure',
-  ].join('; ') + expires;
+  ].join('; ') + (enabled ? '' : '; Expires=Thu, 01 Jan 1970 00:00:00 GMT');
+}
+
+function buildPostHogCountryOptOutCookie(enabled) {
+  return buildCountryCookie(
+    POSTHOG_COUNTRY_OPTOUT_COOKIE,
+    POSTHOG_COUNTRY_OPTOUT_VALUE,
+    enabled,
+    POSTHOG_COUNTRY_OPTOUT_MAX_AGE_SECONDS,
+  );
 }
 
 function getVisitorCountry(request) {
   const country = geolocation(request).country ?? request.headers.get(COUNTRY_VARY_HEADER);
   return country?.toUpperCase();
+}
+
+// Unknown or failed lookups keep pricing visible: checkout itself re-checks
+// the buyer's country on the backend.
+function isCheckoutAvailable(country) {
+  const cached = checkoutAvailabilityCache.get(country);
+  if (cached && cached.expiresAt > Date.now()) return cached.available;
+
+  const lookup = fetch(
+    `${CHECKOUT_AVAILABILITY_URL}?country=${encodeURIComponent(country)}`,
+    { signal: AbortSignal.timeout(CHECKOUT_AVAILABILITY_TIMEOUT_MS) },
+  )
+    .then(async (response) => {
+      const body = response.ok ? await response.json() : null;
+      return typeof body?.checkout_available === 'boolean'
+        ? body.checkout_available
+        : null;
+    })
+    .catch(() => null)
+    .then((available) => {
+      checkoutAvailabilityCache.set(country, {
+        available: available ?? true,
+        expiresAt: Date.now() + (available === null
+          ? CHECKOUT_AVAILABILITY_RETRY_MS
+          : CHECKOUT_AVAILABILITY_TTL_MS),
+      });
+      return available ?? true;
+    });
+  checkoutAvailabilityCache.set(country, {
+    available: lookup,
+    expiresAt: Date.now() + CHECKOUT_AVAILABILITY_TIMEOUT_MS,
+  });
+  return lookup;
+}
+
+async function getPricingHiddenCookie(request, country) {
+  if (!country || !/^[A-Z]{2}$/.test(country)) {
+    return { hidden: false, cookie: undefined };
+  }
+
+  const hidden = !(await isCheckoutAvailable(country));
+  if (hidden) {
+    return {
+      hidden,
+      cookie: buildCountryCookie(
+        PRICING_HIDDEN_COOKIE,
+        PRICING_HIDDEN_VALUE,
+        true,
+        PRICING_HIDDEN_MAX_AGE_SECONDS,
+      ),
+    };
+  }
+
+  const current = getCookieValue(request.headers.get('cookie'), PRICING_HIDDEN_COOKIE);
+  return {
+    hidden,
+    cookie: current === PRICING_HIDDEN_VALUE
+      ? buildCountryCookie(PRICING_HIDDEN_COOKIE, '', false, 0)
+      : undefined,
+  };
+}
+
+async function pricingNotFoundResponse(url, cookies) {
+  const headers = new Headers({
+    'Cache-Control': 'private, no-store',
+    'Content-Type': 'text/html; charset=utf-8',
+  });
+  let body = 'Not Found';
+  try {
+    const page = await fetch(new URL('/404', url), {
+      signal: AbortSignal.timeout(CHECKOUT_AVAILABILITY_TIMEOUT_MS),
+    });
+    if (page.ok) body = await page.text();
+  } catch {
+    // The plain body still answers 404.
+  }
+
+  return withCountryCookies(new Response(body, { status: 404, headers }), cookies);
 }
 
 function getRequestHost(request) {
@@ -95,11 +191,13 @@ function addVaryHeader(headers, value) {
   }
 }
 
-function withPostHogCountryOptOutCookie(response, cookie) {
-  if (!cookie) return response;
+function withCountryCookies(response, cookies) {
+  if (!cookies.length) return response;
 
   const headers = new Headers(response.headers);
-  headers.append('Set-Cookie', cookie);
+  for (const cookie of cookies) {
+    headers.append('Set-Cookie', cookie);
+  }
   addVaryHeader(headers, COUNTRY_VARY_HEADER);
 
   return new Response(response.body, {
@@ -109,19 +207,23 @@ function withPostHogCountryOptOutCookie(response, cookie) {
   });
 }
 
-export default function middleware(request) {
+export default async function middleware(request) {
   const url = new URL(request.url);
 
   if (getRequestHost(request) === LEGACY_POSTHOG_PROXY_HOST) {
     return Response.redirect(buildLegacyPostHogProxyRedirectUrl(url), 308);
   }
 
-  const postHogCountryOptOutCookie = getPostHogCountryOptOutCookie(request);
+  const pricing = await getPricingHiddenCookie(request, getVisitorCountry(request));
+  const cookies = [getPostHogCountryOptOutCookie(request), pricing.cookie]
+    .filter(Boolean);
+
+  if (pricing.hidden && PRICING_PAGE_PATTERN.test(url.pathname)) {
+    return pricingNotFoundResponse(url, cookies);
+  }
 
   if (url.pathname !== '/') {
-    return postHogCountryOptOutCookie
-      ? withPostHogCountryOptOutCookie(next(), postHogCountryOptOutCookie)
-      : undefined;
+    return cookies.length ? withCountryCookies(next(), cookies) : undefined;
   }
 
   let changed = false;
@@ -140,13 +242,8 @@ export default function middleware(request) {
   }
 
   if (!changed) {
-    return postHogCountryOptOutCookie
-      ? withPostHogCountryOptOutCookie(next(), postHogCountryOptOutCookie)
-      : undefined;
+    return cookies.length ? withCountryCookies(next(), cookies) : undefined;
   }
 
-  return withPostHogCountryOptOutCookie(
-    Response.redirect(url, 308),
-    postHogCountryOptOutCookie,
-  );
+  return withCountryCookies(Response.redirect(url, 308), cookies);
 }
