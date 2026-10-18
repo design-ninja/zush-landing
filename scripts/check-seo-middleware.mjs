@@ -127,6 +127,23 @@ await assertNextWithCookie(
   'zush_pricing_hidden=1',
 );
 
+const revalidation = await middleware(new Request('https://zushapp.com/mac', {
+  headers: {
+    'if-modified-since': 'Sat, 17 Oct 2026 00:00:00 GMT',
+    'if-none-match': '"cached-before-country-change"',
+    'x-vercel-ip-country': 'BD',
+  },
+}));
+const forwardedHeaders = revalidation.headers
+  .get('x-middleware-override-headers')
+  ?.split(',') ?? [];
+assert(
+  forwardedHeaders.includes('x-vercel-ip-country') &&
+    !forwardedHeaders.includes('if-none-match') &&
+    !forwardedHeaders.includes('if-modified-since'),
+  'A cookie-setting response must not be answered with a cookie-less 304.',
+);
+
 const callsBeforeCachedLookup = checkoutAvailabilityCalls;
 await assertNextWithCookie(
   'https://zushapp.com/blog',

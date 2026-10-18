@@ -144,6 +144,18 @@ async function pricingNotFoundResponse(url, cookies) {
   return withCountryCookies(new Response(body, { status: 404, headers }), cookies);
 }
 
+// Vercel answers a browser revalidation with 304 and drops Set-Cookie, so a
+// page cached before the visitor's country changed would keep a stale cookie.
+// Forward the request without conditional headers whenever a cookie is set.
+function nextWithCountryCookies(request, cookies) {
+  if (!cookies.length) return undefined;
+
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.delete('if-none-match');
+  requestHeaders.delete('if-modified-since');
+  return withCountryCookies(next({ request: { headers: requestHeaders } }), cookies);
+}
+
 function getRequestHost(request) {
   return request.headers.get('host')?.split(':')[0].toLowerCase();
 }
@@ -223,7 +235,7 @@ export default async function middleware(request) {
   }
 
   if (url.pathname !== '/') {
-    return cookies.length ? withCountryCookies(next(), cookies) : undefined;
+    return nextWithCountryCookies(request, cookies);
   }
 
   let changed = false;
@@ -242,7 +254,7 @@ export default async function middleware(request) {
   }
 
   if (!changed) {
-    return cookies.length ? withCountryCookies(next(), cookies) : undefined;
+    return nextWithCountryCookies(request, cookies);
   }
 
   return withCountryCookies(Response.redirect(url, 308), cookies);
