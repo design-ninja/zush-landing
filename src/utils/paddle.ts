@@ -26,6 +26,9 @@ interface PaddleEvent extends CheckoutAnalyticsEvent {
     discount?: { id?: string } | null;
     customer?: {
       email?: string;
+      address?: {
+        country_code?: string;
+      } | null;
     };
   };
 }
@@ -52,6 +55,7 @@ declare global {
       Initialize: (config: PaddleConfig) => void;
       Checkout: {
         open: (options: PaddleCheckoutOptions) => void;
+        close: () => void;
       };
     };
   }
@@ -65,6 +69,12 @@ let activeCheckoutSource = "landing";
 let activeCheckoutPriceId: string | null = null;
 const paddleEventListeners = new Set<PaddleEventListener>();
 const CHECKOUT_PRICE_ID_KEY = "zush_checkout_price_id";
+// Paddle.js emits these once checkout has collected the buyer's country,
+// before the payment step.
+const CHECKOUT_COUNTRY_EVENTS = new Set([
+  "checkout.customer.created",
+  "checkout.customer.updated",
+]);
 
 function trackCheckoutOpenError(stage: string): void {
   trackAnalyticsEvent("checkout_error", {
@@ -117,6 +127,54 @@ function getPaddleConfig() {
   }
 
   return { paddleEnv, paddleToken };
+}
+
+interface CheckoutCountryResponse {
+  allowed?: boolean;
+  message?: string;
+}
+
+// The backend owns the availability policy and cancels the unpaid
+// transaction when checkout is not allowed. A failed check never blocks the
+// buyer: only an explicit denial closes checkout.
+async function verifyCheckoutCountry(event: PaddleEvent): Promise<void> {
+  const checkoutSession = activeCheckoutSession;
+  if (!checkoutSession) return;
+
+  try {
+    const response = await fetch(
+      `${SUPABASE_URL}/functions/v1/verify-checkout-country`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          checkout_session: checkoutSession,
+          country_code: event.data?.customer?.address?.country_code,
+        }),
+      },
+    );
+    const result = (await response.json().catch(() => ({}))) as
+      CheckoutCountryResponse;
+    if (result.allowed !== false || checkoutSession !== activeCheckoutSession) {
+      return;
+    }
+
+    trackAnalyticsEvent("checkout_error", {
+      provider: "paddle",
+      source: activeCheckoutSource,
+      paddle_price_id: activeCheckoutPriceId,
+      stage: "country_check",
+      error_code: "checkout_unavailable",
+    });
+    activeCheckoutSession = null;
+    sessionStorage.removeItem("zush_checkout_session");
+    window.Paddle?.Checkout.close();
+    if (result.message) {
+      window.alert(result.message);
+    }
+  } catch (error) {
+    console.error("[Paddle] Checkout availability check failed:", error);
+  }
 }
 
 function notifyPaddleEventListeners(event: PaddleEvent): void {
@@ -212,6 +270,10 @@ function initializePaddle(): boolean {
         });
       }
       notifyPaddleEventListeners(event);
+
+      if (CHECKOUT_COUNTRY_EVENTS.has(event.name)) {
+        void verifyCheckoutCountry(event);
+      }
 
       if (event.name === "checkout.completed") {
         const email = event.data?.customer?.email || "";
