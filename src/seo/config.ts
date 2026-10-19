@@ -142,9 +142,9 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'ai file sorter, sort files into folders with ai, ai folder organizer, automatically sort files into folders, sort files by content, ai file sorter mac, ai file sorter windows, organize files into folders automatically, file sorter app, auto sort downloads folder',
   },
   '/hazel-alternative': {
-    title: 'Hazel Alternative with AI File Naming',
+    title: 'Hazel Alternatives for Mac & Windows: Rules vs AI Sorting',
     description:
-      'Zush is a Hazel alternative for AI file naming and folder monitoring. Sort files by content automatically or with folder rules written in plain language.',
+      'Hazel vs File Juggler, DropIt, Sparkle, and Zush. Keep rules where the filename decides; let Zush name and sort files by content on Mac and Windows.',
     robots: 'index, follow',
     ogType: 'website',
     keywords:
