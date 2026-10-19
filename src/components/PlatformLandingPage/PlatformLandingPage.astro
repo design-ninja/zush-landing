@@ -192,7 +192,6 @@ const softwareJsonLd = {
   applicationSubCategory: 'File Renaming and Organization',
   applicationSuite: 'Zush',
   isPartOf: { '@id': `${SITE_ORIGIN}/#software` },
-  inLanguage: locale,
   publisher: ORGANIZATION_REF,
   operatingSystem: page.operatingSystem,
   ...(processorSpec ? { processorRequirements: processorSpec } : {}),
@@ -288,7 +287,8 @@ const webPageJsonLd = buildWebPageJsonLd({
 
 const jsonLdItems = [
   webPageJsonLd,
-  softwareJsonLd,
+  // The full product node stays on the canonical English page; locales reference it by @id.
+  ...(locale === DEFAULT_LOCALE ? [softwareJsonLd] : []),
   howToJsonLd,
   locale === DEFAULT_LOCALE
     ? buildFeatureBreadcrumbJsonLd(localizedPage.breadcrumbLabel, pagePath)
