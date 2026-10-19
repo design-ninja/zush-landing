@@ -190,6 +190,8 @@ const softwareJsonLd = {
   applicationCategory: 'UtilitiesApplication',
   applicationSubCategory: 'File Renaming and Organization',
   applicationSuite: 'Zush',
+  isPartOf: { '@id': `${SITE_ORIGIN}/#software` },
+  inLanguage: locale,
   publisher: ORGANIZATION_REF,
   operatingSystem: page.operatingSystem,
   ...(processorSpec ? { processorRequirements: processorSpec } : {}),
@@ -227,7 +229,7 @@ const softwareJsonLd = {
       description: `One-time purchase with unlimited renames across ${AI_MODES_SUMMARY}.`,
     },
   ],
-  featureList: [...localizedPage.features, ORGANIZATION_FEATURES[locale].sortingAnswer],
+  featureList: [...localizedPage.features, ORGANIZATION_FEATURES[locale].sortingTitle],
 };
 
 const WINDOWS_BATCH_RENAME_VIDEO_UPLOAD_DATE = '2026-04-29T00:00:00+00:00';
@@ -285,9 +287,11 @@ const webPageJsonLd = buildWebPageJsonLd({
 
 const jsonLdItems = [
   webPageJsonLd,
-  ...(locale === DEFAULT_LOCALE ? [softwareJsonLd] : []),
+  softwareJsonLd,
   howToJsonLd,
-  buildFeatureBreadcrumbJsonLd(localizedPage.breadcrumbLabel, pagePath),
+  locale === DEFAULT_LOCALE
+    ? buildFeatureBreadcrumbJsonLd(localizedPage.breadcrumbLabel, pagePath)
+    : buildFeatureBreadcrumbJsonLd(localizedPage.breadcrumbLabel, pagePath, 'Zush', getLocalizedPath('/', locale)),
   buildFAQPageJsonLd(faqItems),
   ...(windowsVideoJsonLd ? [windowsVideoJsonLd] : []),
 ];

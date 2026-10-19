@@ -21,6 +21,9 @@ const CHECKOUT_AVAILABILITY_RETRY_MS = 60 * 1000;
 const CHECKOUT_AVAILABILITY_TIMEOUT_MS = 1000;
 const FULL_PAGE_TIMEOUT_MS = 5000;
 const PRICING_PAGE_PATTERN = /^\/(?:[a-z]{2}(?:-[a-z]{2})?\/)?pricing\/?$/;
+// Search crawlers always get the pricing page: prices are already public in
+// /pricing.md and llms.txt, and a geo-dependent 404 must never reach the index.
+const SEARCH_CRAWLER_PATTERN = /\b(?:Googlebot|Google-InspectionTool|bingbot|Applebot|DuckDuckBot)\b/i;
 const checkoutAvailabilityCache = new Map();
 const LEGACY_POSTHOG_PROXY_HOST = 'e.zushapp.com';
 const CANONICAL_HOST = 'zushapp.com';
@@ -258,7 +261,11 @@ export default async function middleware(request) {
   const cookies = [getPostHogCountryOptOutCookie(request), pricing.cookie]
     .filter(Boolean);
 
-  if (pricing.hidden && PRICING_PAGE_PATTERN.test(url.pathname)) {
+  if (
+    pricing.hidden
+    && PRICING_PAGE_PATTERN.test(url.pathname)
+    && !SEARCH_CRAWLER_PATTERN.test(request.headers.get('user-agent') ?? '')
+  ) {
     return pricingNotFoundResponse(url, cookies);
   }
 
