@@ -188,7 +188,7 @@ export const MACOS_SHOWCASE_SCREENSHOTS: ShowcaseScreenshotAsset[] = [
   {
     id: 'folder-sorting',
     title: 'AI Folder Sorting',
-    description: 'Group files by content with optional AI folder sorting (beta)',
+    description: 'Group files by content with optional AI folder sorting',
     images: { light: '/images/showcase/macos/folder-sorting-light.webp', dark: '/images/showcase/macos/folder-sorting-dark.webp' },
     alt: 'Zush grouping documents, design files, and photos into folders on Mac',
   },

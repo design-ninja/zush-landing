@@ -20,6 +20,11 @@ const {
 // without an SSR `src`; the client assigns only the active theme's source. This
 // keeps autoplay while preventing the hidden recording from being downloaded.
 //
+// The light poster ships in the HTML so the frame paints before any script runs;
+// the recording itself is attached only once the page has loaded and the video is
+// near the viewport. Phones and data-saver connections get the poster with
+// click-to-play instead of a multi-megabyte autoplay.
+//
 // Neither file has an audio track, which is also why the native controls show
 // no volume slider: browsers omit it when there is nothing to mute.
 const isThemeAware = media.sources.light !== media.sources.dark;
@@ -39,6 +44,7 @@ const frameStyle = { '--demo-video-aspect-ratio': `${media.width} / ${media.heig
         data-dark-src={isThemeAware ? media.sources.dark : media.sources.light}
         data-light-poster={media.posters.light}
         data-dark-poster={isThemeAware ? media.posters.dark : media.posters.light}
+        poster={media.posters.light}
         controls
         controlslist="nodownload"
         autoplay={autoplay}
@@ -78,13 +84,60 @@ const frameStyle = { '--demo-video-aspect-ratio': `${media.width} / ${media.heig
     }
   };
 
+  const prefersLightweightMedia = () => {
+    const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+    return Boolean(connection?.saveData) || window.matchMedia('(max-width: 767px)').matches;
+  };
+
+  const activateDemoVideo = (video: HTMLVideoElement) => {
+    if (video.dataset.demoActive === 'true') return;
+    video.dataset.demoActive = 'true';
+    if (prefersLightweightMedia()) {
+      video.autoplay = false;
+      video.preload = 'none';
+    }
+    applyDemoVideoTheme(video);
+  };
+
+  // Attach sources after the load event so the recording never competes with
+  // the hero for bandwidth, and only for videos close to the viewport.
+  const visibilityObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      visibilityObserver.unobserve(entry.target);
+      activateDemoVideo(entry.target as HTMLVideoElement);
+    });
+  }, { rootMargin: '200px 0px' });
+
+  let pageLoaded = document.readyState === 'complete';
+
+  // Posters follow the theme right away; sources wait for the load event.
+  const syncPoster = (video: HTMLVideoElement) => {
+    const theme = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+    const poster = theme === 'dark' ? video.dataset.darkPoster : video.dataset.lightPoster;
+    if (poster && video.getAttribute('poster') !== poster) video.poster = poster;
+  };
+
   const initializeDemoVideos = () => {
     document
       .querySelectorAll<HTMLVideoElement>('video[data-demo-video]')
-      .forEach(applyDemoVideoTheme);
+      .forEach((video) => {
+        if (video.dataset.demoActive === 'true') {
+          applyDemoVideoTheme(video);
+          return;
+        }
+        syncPoster(video);
+        if (pageLoaded) visibilityObserver.observe(video);
+      });
   };
 
   initializeDemoVideos();
+  if (!pageLoaded) {
+    window.addEventListener('load', () => {
+      pageLoaded = true;
+      initializeDemoVideos();
+    }, { once: true });
+  }
   document.addEventListener('astro:page-load', initializeDemoVideos);
 
   const demoVideoThemeObserver = new MutationObserver(initializeDemoVideos);

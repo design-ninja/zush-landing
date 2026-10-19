@@ -5,6 +5,11 @@ import { buildSiteEntityJsonLd } from '@/seo/entity';
 import '@fontsource-variable/inter/opsz.css';
 import '@fontsource-variable/manrope/wght.css';
 import '@fontsource-variable/geist-mono/wght.css';
+// Same content-hashed files the Fontsource CSS references for the Latin subset;
+// preloading them lets text render in its final face before the first layout,
+// instead of swapping (and shifting) once the CSS discovers them.
+import interLatinFontUrl from '@fontsource-variable/inter/files/inter-latin-opsz-normal.woff2?url';
+import manropeLatinFontUrl from '@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2?url';
 import '@/styles/main.scss';
 import Header from '@/components/Header/Header.astro';
 import type { HeaderWidth } from '@/components/Header/types';
@@ -167,6 +172,8 @@ const appRelease = (globalThis as { process?: { env?: Record<string, string | un
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
     <link rel="manifest" href="/favicon/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preload" href={interLatinFontUrl} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={manropeLatinFontUrl} as="font" type="font/woff2" crossorigin />
     <meta name="color-scheme" content={forcedTheme ?? 'light dark'} />
 
     {/* middleware.js sets this cookie where checkout is unavailable; mark the

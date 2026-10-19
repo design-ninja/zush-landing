@@ -12,6 +12,15 @@ export const MICROSOFT_STORE_IRELAND_REVIEW = {
 } as const;
 export const MICROSOFT_STORE_REVIEWS = [
   {
+    name: 'Arthur',
+    title: 'Wow!',
+    quote:
+      "So far this product is doing what it should and better than most I've tried. I have the lifetime license so this is going to be fun.",
+    rating: 5,
+    publishedAt: '2026-10-17',
+    source: WINDOWS_STORE_US_URL,
+  },
+  {
     name: 'Lennox',
     title: 'Awesome App',
     quote:
@@ -27,15 +36,6 @@ export const MICROSOFT_STORE_REVIEWS = [
       'Zush is a fast AI file renamer that really works and I can give tons of praise to them for creating this fantastic program. There are lots of things you can with Zush and templates to choose from or create your own templates. You can add all kinds of presets that can add more detail for your renaming but I bought the $10.00 monthly charge but soon will purchase the lifetime plan with this Great program so Thanks for creating this !!',
     rating: 5,
     publishedAt: '2026-08-09',
-    source: WINDOWS_STORE_US_URL,
-  },
-  {
-    name: 'Kirill',
-    title: 'Cleaned up my Screenshots',
-    quote:
-      'Nothing fancy to say here: I had a bunch of files with generic “Screenshot” names, and Zush renamed them so I could actually search for later. The folder monitoring is pretty neat too - it just watches my screenshots and handles the new ones automatically. That’s exactly what I needed. Thanks for the app!',
-    rating: 5,
-    publishedAt: '2026-05-10',
     source: WINDOWS_STORE_US_URL,
   },
   {

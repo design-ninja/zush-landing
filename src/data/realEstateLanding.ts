@@ -211,7 +211,7 @@ export const REAL_ESTATE_FAQ = [
   {
     question: 'Does Zush move files into property folders?',
     answer:
-      'Zush can group files into property folders with AI (beta). Describe the grouping you want, such as by property address, in the folder rules and review the suggested folders before applying a batch. Keep sorting off to preserve the existing locations.',
+      'Zush can group files into property folders with AI. Describe the grouping you want, such as by property address, in the folder rules and review the suggested folders before applying a batch. Keep sorting off to preserve the existing locations.',
   },
   {
     question: 'Can transaction files be processed without uploading them?',

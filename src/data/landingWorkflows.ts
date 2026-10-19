@@ -67,7 +67,7 @@ const workflows: Record<string, LandingWorkflow> = {
       alt: 'Zush for Mac showing a batch of renamed files grouped into suggested folders before the changes are applied.',
       caption: 'Zush for Mac: proposed filenames grouped by suggested folder. Nothing moves until you apply the batch.',
     },
-    limit: 'AI folder sorting is in beta and moves files, so test on a copy first and keep it off for folders other apps reference by path. Zush does not delete duplicates, clean up disk space, or replace a document-management system. Undo restores the original name and folder.',
+    limit: 'AI folder sorting moves files, so test on a copy first and keep it off for folders other apps reference by path. Zush does not delete duplicates, clean up disk space, or replace a document-management system. Undo restores the original name and folder.',
     links: [{ href: '/ai-file-sorter', label: 'AI file sorter with your own folder rules' }, { href: '/docs/folder-sorting', label: 'Folder sorting documentation' }, { href: '/docs/folder-monitoring', label: 'Set up folder monitoring' }],
   },
   '/ai-file-sorter': {
@@ -84,7 +84,7 @@ const workflows: Record<string, LandingWorkflow> = {
       alt: 'The Folder rules editor in Zush with plain-language grouping instructions and example prompts.',
       caption: 'Folder rules accept up to 2,000 characters of plain-language instructions. Leave the field empty to use Auto.',
     },
-    limit: 'Folder sorting is in beta. It moves files, so test on a copy first and keep it off for folders that other apps reference by path. Rules work best when the answer is visible in the file, such as a company name, date, or subject. Files that fit no folder are renamed without being grouped.',
+    limit: 'Folder sorting moves files, so test on a copy first and keep it off for folders that other apps reference by path. Rules work best when the answer is visible in the file, such as a company name, date, or subject. Files that fit no folder are renamed without being grouped.',
     links: [{ href: '/ai-file-organizer', label: 'AI file organizer workflow: name, sort, and monitor' }, { href: '/blog/ai-folder-sorting-prompts', label: '30 folder sorting prompts to copy' }, { href: '/docs/folder-sorting', label: 'Folder sorting documentation' }, { href: '/blog/sort-files-into-folders-with-ai-windows', label: 'Step-by-step on Windows' }],
   },
   '/offline-ai-file-renamer': {

@@ -65,9 +65,16 @@
         opacity: 0.6;
     }
 
+    // Wrapped items would start a line with the separator, so phones drop the
+    // dots and space the items instead.
     @include mobile {
         flex-wrap: wrap;
+        column-gap: 0.9rem;
         font-size: 0.8125rem;
+
+        li + li::before {
+            content: none;
+        }
     }
 }
 

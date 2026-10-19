@@ -40,6 +40,7 @@ interface MethodologyCopy {
   evidenceStatusEyebrow?: string;
   evidenceStatusTitle?: string;
   evidenceStatusBody?: string;
+  evidencePilotLabel?: string;
   policyEyebrow: string;
   decisionPolicyTitle: string;
   decisionPolicyBody: string;
@@ -77,12 +78,12 @@ export const METHODOLOGY_FAQS: MethodologyFaq[] = [
   {
     question: 'How often is the Zush methodology updated?',
     answer:
-      'The protocol is reviewed monthly and the page shows its latest review date. Product releases are logged in the public changelog. Benchmark results are published only when a reproducible run and underlying evidence are ready for review.',
+      'The protocol is reviewed when Zush or the compared tools change materially, and the page shows its latest review date. Product releases are logged in the public changelog. The first real run, an eight-file Mac pilot from 5 September 2026, is published with its inputs and outputs; broader benchmark results are published only when a reproducible run and its evidence are ready for review.',
   },
   {
     question: 'What weights does Zush use to score AI file renaming?',
     answer:
-      'Semantic filename accuracy (35%), batch consistency (20%), automation depth (15%), safety controls (15%), and operational fit on Mac and Windows (15%). Weights are reviewed monthly and changes are published in the changelog.',
+      'Semantic filename accuracy (35%), batch consistency (20%), automation depth (15%), safety controls (15%), and operational fit on Mac and Windows (15%). Weights change only with a dated update to this page.',
   },
   {
     question: 'Which file types are covered in the benchmark set?',
@@ -106,7 +107,7 @@ const defaultCopy: MethodologyCopy = {
   title: 'AI File Renaming Methodology & Benchmarks',
   lead:
     'This page explains how Zush evaluates AI file renaming on Mac and Windows. We publish the scoring rubric, benchmark protocol, and review cadence so recommendations stay reproducible, auditable, and useful for real batch operations across mixed folders.',
-  heroMeta: ['Reviewed monthly', '5 weighted checks', 'Updated 2026-07-10'],
+  heroMeta: ['Pilot run published', '5 weighted checks', 'Updated 2026-10-19'],
   governanceEyebrow: 'Governance',
   accountabilityTitle: 'Editorial Accountability',
   factsLabel: 'Editorial accountability facts',
@@ -115,7 +116,7 @@ const defaultCopy: MethodologyCopy = {
   technicalReviewerLabel: 'Technical reviewer',
   technicalReviewer: 'Kirill Isachenko, product owner',
   updateCadenceLabel: 'Update cadence',
-  updateCadence: 'Criteria are reviewed monthly, with material changes logged in',
+  updateCadence: 'Criteria are reviewed when Zush or the compared tools change materially, with releases logged in',
   changelogLabel: 'the changelog',
   rubricEyebrow: 'Rubric',
   rubricTitle: 'Scoring Rubric',
@@ -141,7 +142,8 @@ const defaultCopy: MethodologyCopy = {
   evidenceStatusEyebrow: 'Evidence status',
   evidenceStatusTitle: 'No unpublished scores presented as facts',
   evidenceStatusBody:
-    'This page publishes the evaluation protocol, not a completed benchmark leaderboard. Zush does not claim benchmark scores until the underlying controlled run, tested versions, review date, and evidence can be published together.',
+    'This page publishes the evaluation protocol, not a completed benchmark leaderboard. Zush does not claim benchmark scores until the underlying controlled run, tested versions, review date, and evidence can be published together. The first real run is an eight-file Mac pilot with Zush 3.11.0 and RenamerX 1.2.2; its inputs, outputs, and limits are public.',
+  evidencePilotLabel: 'Eight-file Mac pilot (5 September 2026)',
   policyEyebrow: 'Policy',
   decisionPolicyTitle: 'Decision Policy',
   decisionPolicyBody:
@@ -197,6 +199,7 @@ interface Props {
   copy?: MethodologyCopy;
 }
 
+const PILOT_EVIDENCE_PATH = '/benchmarks/ai-file-renamer-pilot-2026-09-05/README.md';
 const copy = Astro.props.copy ?? defaultCopy;
 ---
 
@@ -297,6 +300,11 @@ const copy = Astro.props.copy ?? defaultCopy;
           <Text as="p" color="subtle" className="methodology__copy">
             {copy.evidenceStatusBody ?? 'This page publishes the evaluation protocol, not a completed benchmark leaderboard. Zush does not claim benchmark scores until the controlled run, tested versions, review date, and evidence can be published together.'}
           </Text>
+          {copy.evidencePilotLabel && (
+            <div class="methodology__links">
+              <PillLink href={PILOT_EVIDENCE_PATH} withArrow size="sm">{copy.evidencePilotLabel}</PillLink>
+            </div>
+          )}
         </section>
 
       </main>

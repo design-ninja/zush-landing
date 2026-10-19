@@ -95,6 +95,45 @@ const RenameWordDocumentsWithAI = () => (
         ],
       },
     ]}
+    directAnswerSection={{
+      heading: 'How do I rename many Word documents at once?',
+      answer:
+        'Add the DOCX and DOC files to Zush, choose a Template, and review the names before applying. Zush reads the document text, so Document1.docx becomes Client Proposal – Acme Redesign.docx. That avoids two common traps: Word suggests a filename from the first line you typed, often a greeting or a date, and the built-in Title property is frequently left over from the template the document started from.',
+      steps: [
+        'Close the documents. Check whether a mail merge, a linked Excel chart, or an intranet page points to any of them by path, since a rename breaks that link.',
+        'Drop the folder into Zush and pick a Template. Contracts read well as Counterparty + Document Type + Date; drafts as Project + AI Title + Version.',
+        'Review the suggestions. Replace a version tag such as final_v3 with a date if you keep several drafts, so the newest one sorts last.',
+        'Apply the batch, open one renamed file to confirm it opens normally, and keep Rename History for anything you need to restore.',
+      ],
+    }}
+    comparison={{
+      eyebrow: 'Word document renaming methods',
+      title: 'Which way to rename Word documents',
+      intro: 'Word renames only the document you have open, and its suggestions come from the first line of text. For a folder of drafts, the method depends on whether the name should come from the content.',
+      headers: { tool: 'Method', bestFor: 'Best for', gap: 'Where it stops' },
+      rows: [
+        {
+          tool: 'Word Save As',
+          bestFor: 'The document you are editing right now',
+          gap: 'One file at a time; the suggested name is usually the first line, not the subject.',
+        },
+        {
+          tool: 'Finder / File Explorer',
+          bestFor: 'Adding a client prefix or a sequence number to a selection',
+          gap: 'Applies one rule to every file without opening any of them.',
+        },
+        {
+          tool: 'Document properties',
+          bestFor: 'Searching by Title or Author inside Word and SharePoint',
+          gap: 'Properties are often stale and do not change the filename people see in folders and email.',
+        },
+        {
+          tool: 'Zush',
+          bestFor: 'A folder of DOCX, DOC, RTF, and ODT drafts where every file needs a name from its text, with preview and undo',
+          gap: 'It does not edit document properties or fix links that point to the old filename.',
+        },
+      ],
+    }}
     faqItems={faqItems}
     relatedPages={[
       { title: 'Rename Documents with AI', href: '/rename-documents-with-ai' },

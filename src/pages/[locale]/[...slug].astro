@@ -182,7 +182,7 @@ const professionHeaderNav = professionPage
             featureList: professionPage.documents.items.map((item) => item.title),
           },
         }),
-        buildFeatureBreadcrumbJsonLd(professionPage.pageTitle, localizedPath, copy.header.homeAria),
+        buildFeatureBreadcrumbJsonLd(professionPage.pageTitle, localizedPath, 'Zush', localizedHomeHref),
       ]}
     >
       <LocalizedProfessionLandingPage
@@ -349,7 +349,7 @@ const professionHeaderNav = professionPage
         chromeBasePath={localizedHomeHref}
         jsonLd={[
           pageJsonLd,
-          buildFeatureBreadcrumbJsonLd(localizedCopy?.h1 ?? batchRenamePage.h1, localizedPath),
+          buildFeatureBreadcrumbJsonLd(localizedCopy?.h1 ?? batchRenamePage.h1, localizedPath, 'Zush', localizedHomeHref),
         ]}
       >
         <FeatureLandingPageShell
@@ -386,7 +386,7 @@ const professionHeaderNav = professionPage
         seo={seo}
         locale={locale}
         chromeBasePath={localizedHomeHref}
-        jsonLd={[pageJsonLd, buildFeatureBreadcrumbJsonLd(sorter.h1, localizedPath)]}
+        jsonLd={[pageJsonLd, buildFeatureBreadcrumbJsonLd(sorter.h1, localizedPath, 'Zush', localizedHomeHref)]}
       >
         <FeatureLandingPageShell
           {...fileSorterPage}
@@ -402,10 +402,7 @@ const professionHeaderNav = professionPage
   route in FEATURE_VIEWS && (() => {
     const featurePage = getFeaturePageProps(FEATURE_VIEWS[route as keyof typeof FEATURE_VIEWS]);
     const localizedCopy = copy.featurePages[route];
-    const localizedSupportJsonLd = withoutFeaturePageEntities(
-      featurePage.jsonLd,
-      route === '/rename-documents-with-ai' || route === '/rename-pdf-with-ai',
-    );
+    const localizedSupportJsonLd = withoutFeaturePageEntities(featurePage.jsonLd, true);
     const localizedFaqItems = localizedCopy?.faqItems ?? featurePage.faqItems;
 
     return (
@@ -414,7 +411,7 @@ const professionHeaderNav = professionPage
         locale={locale}
         chromeBasePath={localizedPath}
         jsonLd={[
-          localizedSupportJsonLd,
+          ...(localizedSupportJsonLd['@graph'].length > 0 ? [localizedSupportJsonLd] : []),
           buildWebPageJsonLd({
             pagePath: localizedPath,
             title: localizedCopy?.h1 ?? featurePage.h1,
@@ -423,7 +420,7 @@ const professionHeaderNav = professionPage
             mainEntityId: 'https://zushapp.com/#software',
           }),
           buildFAQPageJsonLd(localizedFaqItems),
-          buildFeatureBreadcrumbJsonLd(localizedCopy?.h1 ?? featurePage.h1, localizedPath),
+          buildFeatureBreadcrumbJsonLd(localizedCopy?.h1 ?? featurePage.h1, localizedPath, 'Zush', localizedHomeHref),
         ]}
       >
         <FeatureLandingPageShell

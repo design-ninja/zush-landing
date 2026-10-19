@@ -169,6 +169,10 @@
     &__Link {
         color: var(--muted-foreground);
         font-size: 0.84375rem;
+        // 24px tap target (WCAG 2.2 AA) without changing the column rhythm.
+        display: inline-block;
+        padding-block: 0.25rem;
+        margin-block: -0.25rem;
         transition: color $transition-fast;
 
         &:hover,

@@ -94,6 +94,45 @@ const RenameDesignFilesWithAI = () => (
         ],
       },
     ]}
+    directAnswerSection={{
+      heading: 'How do I rename design files without breaking linked assets?',
+      answer:
+        'Rename exports, finals, and archived source files, and leave images that a live Illustrator or InDesign document links to until the project is closed. Those apps store linked files by path, so renaming one shows a missing link the next time the document opens. Zush reads the artwork in PSD, AI, Sketch, and exported PNG, SVG, or PDF files and proposes names such as Acme – Homepage Hero – Dark – 2026-06.png, which you review before anything changes.',
+      steps: [
+        'Pick a folder of exports or a finished project rather than the working folder an open document links to.',
+        'Drop it into Zush and choose a Template. Client + Project + Asset + Variant keeps related exports together; add a size or date block for multiple deliverables.',
+        'Review the names. Check variants such as dark, mobile, or 2x, which can look alike, and keep version numbers your team already uses.',
+        'Apply the batch. If a design document reports a missing link, relink it in the Links panel or undo the rename from Rename History.',
+      ],
+    }}
+    comparison={{
+      eyebrow: 'Design file renaming methods',
+      title: 'Which way to rename design files',
+      intro: 'Design apps name what they export, not what already sits in a folder. Choose by whether the right name depends on the artwork itself.',
+      headers: { tool: 'Method', bestFor: 'Best for', gap: 'Where it stops' },
+      rows: [
+        {
+          tool: 'Export presets in Figma, Photoshop, or Illustrator',
+          bestFor: 'New exports, using layer, artboard, or frame names plus a suffix',
+          gap: 'Only as good as the layer names, and it does nothing for files already exported.',
+        },
+        {
+          tool: 'Finder / File Explorer',
+          bestFor: 'Adding a client or project prefix to a selection',
+          gap: 'Every file gets the same rule; it cannot tell a hero image from an icon.',
+        },
+        {
+          tool: 'Adobe Bridge batch rename',
+          bestFor: 'Pattern renames with sequence numbers and metadata inside the Adobe workflow',
+          gap: 'Names come from metadata and counters, not from what the artwork shows.',
+        },
+        {
+          tool: 'Zush',
+          bestFor: 'Folders of PSD, AI, Sketch, PNG, SVG, and PDF files that each need a descriptive name, with preview and undo',
+          gap: 'It does not update links inside design documents; rename finished or exported files first.',
+        },
+      ],
+    }}
     faqItems={faqItems}
     relatedPages={[
       { title: 'Rename Screenshots with AI', href: '/rename-screenshots-with-ai' },

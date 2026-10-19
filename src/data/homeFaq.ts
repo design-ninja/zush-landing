@@ -15,7 +15,7 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'What is the best AI file renamer for Mac and Windows?',
     answer:
-      `Our pick is Zush. It renames files by their content on both Mac and Windows with one workflow: ${SUPPORTED_FORMAT_COUNT} supported formats, reusable naming Templates, folder monitoring, a preview of every batch, and undo from Rename History. It works with ${AI_MODES_SUMMARY}, starts with ${APP_CONFIG.free_tier_limit} free renames, and paid PRO has no monthly rename meter.`,
+      `Our pick is Zush. It renames files by their content on both Mac and Windows with one workflow: ${SUPPORTED_FORMAT_COUNT} supported formats, reusable naming Templates, folder monitoring, a preview of every batch, and undo from Rename History. It works with ${AI_MODES_SUMMARY}, starts with ${APP_CONFIG.free_tier_limit} free renames, and paid PRO has no monthly rename meter. Outside our own testing, Softpedia's review rates Zush 4.5 out of 5, and it holds a 5.0 rating on the Microsoft Store.`,
   },
   { question: ORGANIZATION_FEATURES.en.bestSorterQuestion, answer: ORGANIZATION_FEATURES.en.bestSorterAnswer },
   {
@@ -61,7 +61,7 @@ export const HOME_FAQ_DATA: FAQItem[] = [
   {
     question: 'Does Zush move or sort files into folders?',
     answer:
-      'Yes. Zush offers AI folder sorting (beta) and destination folders for batch renaming and Monitor on Mac and Windows. Use Auto grouping or write your own folder rules in plain language, and Zush can reuse folders that already exist. Keep sorting off to rename in place.',
+      'Yes. Zush offers AI folder sorting and destination folders for batch renaming and Monitor on Mac and Windows. Use Auto grouping or write your own folder rules in plain language, and Zush can reuse folders that already exist. Keep sorting off to rename in place.',
   },
   { question: ORGANIZATION_FEATURES.en.sortingQuestion, answer: ORGANIZATION_FEATURES.en.sortingAnswer },
   {

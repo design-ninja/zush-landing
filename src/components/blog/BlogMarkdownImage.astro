@@ -1,5 +1,22 @@
 ---
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import { getShowcaseVideoBySrc, resolveShowcaseVideoMedia } from '@/data/showcaseMedia';
+
+// Showcase screenshots ship pre-scaled siblings (name-light-960.webp, …). The article
+// column is ~736px, so the 2560px original only makes sense on very dense screens.
+const SHOWCASE_VARIANT_WIDTHS = [640, 960, 1280, 1600, 2560];
+const SHOWCASE_SIZES = '(max-width: 800px) 100vw, 736px';
+
+function getShowcaseSrcset(src: string): string | undefined {
+  const base = src.replace(/\.webp$/, '');
+  const candidates = SHOWCASE_VARIANT_WIDTHS
+    .map((width) => ({ width, path: `${base}-${width}.webp` }))
+    .filter(({ path }) => existsSync(join(process.cwd(), 'public', path)));
+  return candidates.length > 1
+    ? candidates.map(({ width, path }) => `${path} ${width}w`).join(', ')
+    : undefined;
+}
 
 const { src = '', alt = '', priority = false, ...props } = Astro.props;
 const loading = priority ? 'eager' : 'lazy';
@@ -18,10 +35,10 @@ const defaultImageProps = inferredImageSize
 
 function inferImageSize(src: string) {
   const imageSizes: Record<string, { width: string; height: string }> = {
-    '/images/blog/competitors/ai-renamer.png': { width: '1920', height: '1080' },
-    '/images/blog/competitors/namequick.png': { width: '1200', height: '630' },
-    '/images/blog/competitors/renamer-ai.png': { width: '2400', height: '1260' },
-    '/images/blog/competitors/riffo.png': { width: '1200', height: '630' },
+    '/images/blog/competitors/ai-renamer.webp': { width: '1200', height: '675' },
+    '/images/blog/competitors/namequick.webp': { width: '1200', height: '630' },
+    '/images/blog/competitors/renamer-ai.webp': { width: '1200', height: '630' },
+    '/images/blog/competitors/riffo.webp': { width: '1200', height: '630' },
     '/images/blog/competitors/renameclick.webp': { width: '1924', height: '2020' },
     '/images/blog/competitors/wisfile.webp': { width: '611', height: '674' },
   };
@@ -110,7 +127,9 @@ function getThemedScreenshot(src: string) {
         fetchpriority={fetchpriority}
         height={themedScreenshot.height}
         loading={loading}
+        sizes={getShowcaseSrcset(src) ? SHOWCASE_SIZES : undefined}
         src={src}
+        srcset={getShowcaseSrcset(src)}
         width={themedScreenshot.width}
       />
       <img
@@ -122,7 +141,9 @@ function getThemedScreenshot(src: string) {
         fetchpriority={fetchpriority}
         height={themedScreenshot.height}
         loading={loading}
+        sizes={getShowcaseSrcset(themedScreenshot.darkSrc) ? SHOWCASE_SIZES : undefined}
         src={themedScreenshot.darkSrc}
+        srcset={getShowcaseSrcset(themedScreenshot.darkSrc)}
         width={themedScreenshot.width}
       />
       {alt && <figcaption>{alt}</figcaption>}

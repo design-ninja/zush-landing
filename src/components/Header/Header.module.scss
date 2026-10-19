@@ -349,6 +349,14 @@
         color: var(--foreground);
         cursor: pointer;
         transition: background-color $transition-fast, color $transition-fast;
+        position: relative;
+
+        // Keep the 35px pill but give it a 44px tap target.
+        &::after {
+            content: '';
+            position: absolute;
+            inset: -0.3rem;
+        }
 
         @include mobile {
             display: inline-flex;

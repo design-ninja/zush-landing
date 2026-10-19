@@ -76,6 +76,9 @@ const ORGANIZATION_JSON_LD = {
   image: `${SITE_ORIGIN}/logo.png`,
   description:
     'Zush builds an AI file renamer and organizer for Mac and Windows that renames files by their content.',
+  // "Zush" is also used by unrelated clothing, interior, and music brands.
+  disambiguatingDescription:
+    'Maker of the Zush desktop app (zushapp.com) that renames and sorts files by their content on Mac and Windows.',
   email: SUPPORT_EMAIL,
   founder: {
     '@type': 'Person',
