@@ -13,7 +13,7 @@ const FEATURED_SLUGS = [
   'batch-rename-files-on-mac-complete-guide',
   'best-ai-file-organizers-windows',
   'batch-rename-files-windows-11',
-  'sort-files-into-folders-with-ai-mac',
+  'best-ai-file-organizers-mac',
 ] as const;
 
 const posts = await getAllPosts();
@@ -33,8 +33,7 @@ const featured = FEATURED_SLUGS.map((slug) => {
     <div class={styles.HomeBlogHighlights__Intro}>
       <Heading as="h2" id="home-blog-title">Guides and comparisons</Heading>
       <Text as="p" size="lg" color="subtle">
-        Compare AI file renamers and organizers for Mac and Windows, and sort files into
-        folders with AI.
+        Batch rename files and compare AI file organizers for Mac and Windows.
       </Text>
     </div>
     <a class={styles.HomeBlogHighlights__ActionLink} href="/blog">
