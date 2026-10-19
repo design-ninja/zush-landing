@@ -1,7 +1,7 @@
 import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 
 export const REAL_ESTATE_PAGE_PATH = '/for-real-estate';
-export const REAL_ESTATE_PAGE_TITLE = 'Real Estate Document Management with AI File Renaming';
+export const REAL_ESTATE_PAGE_TITLE = 'AI File Renamer for Real Estate Professionals';
 
 export const REAL_ESTATE_HERO = {
   eyebrow: 'For real estate agents and transaction teams',

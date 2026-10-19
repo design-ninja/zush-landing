@@ -184,7 +184,9 @@ export const INDEXABLE_LOCALIZED_ROUTES = [
  * out of search: legal boilerplate and the methodology explainer have no search
  * demand in any language, while their translations made up a quarter of the
  * localized index on a domain where crawlers are still selective about what they
- * keep. English versions remain indexable — only the non-default locales are
+ * keep. The profession landings joined them in October 2026: their 40 translations
+ * earned 1 Google click from August to mid-October while the English pages kept
+ * ranking. English versions remain indexable — only the non-default locales are
  * excluded (noindex + no sitemap entry + no hreflang, same treatment as
  * LOCALIZATION_PAUSED gives every locale).
  */
@@ -193,6 +195,10 @@ const SEO_EXCLUDED_LOCALIZED_ROUTES = [
   '/privacy-policy',
   '/terms-of-service',
   '/refund-policy',
+  '/for-accountants',
+  '/for-medical',
+  '/for-photographers',
+  '/for-legal',
 ] as const;
 
 export function isSeoExcludedLocalizedRoute(route: string): boolean {

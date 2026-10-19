@@ -1,7 +1,7 @@
 import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 
 export const LEGAL_PAGE_PATH = '/for-legal';
-export const LEGAL_PAGE_TITLE = 'Legal Document Management with Offline AI File Renaming';
+export const LEGAL_PAGE_TITLE = 'AI File Renamer for Law Firms & Legal Teams';
 
 export const LEGAL_HERO = {
   eyebrow: 'For law firms and legal teams',

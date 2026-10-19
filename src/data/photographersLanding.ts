@@ -1,3 +1,4 @@
+import type { ComparisonTableProps } from '@/components/ComparisonTable/types';
 import { buildFeaturePageJsonLd } from '@/utils/jsonLd';
 
 export const PHOTOGRAPHERS_PAGE_PATH = '/for-photographers';
@@ -96,6 +97,38 @@ export const PHOTOGRAPHERS_WORKFLOW = [
       'Read the proposed names as one batch, correct exceptions, apply with undo available, then reuse the same Template on the next job.',
   },
 ];
+
+// Photographers searching for rename tools land on rule-based renamers first, so
+// the page says plainly when a date-and-counter rule is enough.
+export const PHOTOGRAPHERS_METHODS_COMPARISON: ComparisonTableProps = {
+  eyebrow: 'Choose the right renaming method',
+  title: 'Rename by date and EXIF, or by what is in the shot?',
+  intro:
+    'For many shoots a rule is enough: capture date plus the camera counter keeps files unique and in order, and the tools below do that for free or come with your catalog. Zush is for the part a rule cannot write: names that say who or what is in each frame.',
+  headers: { tool: 'Method', bestFor: 'Best for', gap: 'Where it stops' },
+  rows: [
+    {
+      tool: 'Lightroom Classic or Photo Mechanic on import',
+      bestFor: 'Date, sequence, card, and job-name templates applied as cards are ingested',
+      gap: 'The template is the same for every frame, so a wedding still comes out as 0412_Smith_001 to 0412_Smith_900.',
+    },
+    {
+      tool: 'Bulk Rename Utility or Advanced Renamer',
+      bestFor: 'EXIF rules on a folder: capture date, camera model, lens, counters, find-and-replace',
+      gap: 'They read metadata, not the image, so they cannot tell the ceremony from the reception.',
+    },
+    {
+      tool: 'ExifTool scripts',
+      bestFor: 'Repeatable command-line renames by DateTimeOriginal across large archives',
+      gap: 'Needs a script per convention, and you check the result in the terminal rather than in a visual preview.',
+    },
+    {
+      tool: 'Zush',
+      bestFor: 'Shoots where the name should carry subject, scene, or take, combined with the same date and EXIF fields, with preview and undo',
+      gap: 'It is a renamer, not a catalog: keep ratings, keywords, and edits in Lightroom or Capture One, and rename before import.',
+    },
+  ],
+};
 
 export const PHOTOGRAPHERS_ZUSH_ADVANTAGES = [
   {

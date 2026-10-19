@@ -170,14 +170,14 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'AI file renamer for accountants, accounting document renamer, bookkeeper file naming, rename invoices automatically, organize client accounting documents, invoice file naming software, receipt renamer for bookkeepers',
   },
   '/for-medical': {
-    title: 'Healthcare Document Management with Offline AI File Renaming',
+    title: 'Offline AI File Renamer for Medical Practices',
     description:
-      'Healthcare document management for medical practices: rename scans, faxes, lab reports, and intake forms with Offline AI, preview, and undo.',
+      'Rename scans, faxes, lab reports, and intake forms by MRN, date of service, and record type. Offline AI keeps patient files on your Mac or PC.',
     robots: 'index, follow',
     ogType: 'website',
     ogImage: `${SITE_ORIGIN}/images/landing/medical-records-file-renamer.webp`,
     keywords:
-      'healthcare document management, medical document management, medical records file renamer, rename scanned medical records, medical document renamer, offline AI medical document renamer, medical file renamer for clinics',
+      'medical records file renamer, medical file naming software, rename scanned medical records, medical document renamer, offline AI medical document renamer, medical file renamer for clinics',
   },
   '/for-photographers': {
     title: 'AI File Renamer for Photographers & Videographers',
@@ -190,34 +190,34 @@ const ROUTE_META: Record<string, RouteSeoMeta> = {
       'AI file renamer for photographers, photo file naming software, video file renamer, batch rename RAW photos, rename video clips by content, photographer file naming workflow, videographer file organization, media file renamer',
   },
   '/for-legal': {
-    title: 'Legal Document Management with Offline AI File Renaming',
+    title: 'AI File Renamer for Law Firms & Legal Teams',
     description:
-      'Rename and organize case files, contracts, pleadings, and scans with AI. Create searchable filenames, work with your DMS, and run locally on Mac or Windows.',
+      'Rename contracts, pleadings, discovery, and scans by matter, date, and document type. Works next to your DMS and runs offline on Mac or Windows.',
     robots: 'index, follow',
     ogType: 'website',
     ogImage: `${SITE_ORIGIN}/images/landing/legal-document-renamer.webp`,
     keywords:
-      'AI legal document renamer, rename legal documents, legal document organizer, organize legal documents, legal file organization, organize case files, law firm document management workflow, matter file organization, legal document naming software',
+      'AI legal document renamer, rename legal documents, legal document organizer, organize legal documents, legal file organization, organize case files, law firm file naming software, matter file organization, legal document naming software, rename legal documents software',
   },
   '/for-hr': {
-    title: 'HR Document Management with Offline AI File Renaming',
+    title: 'AI File Renamer for HR & People Teams',
     description:
-      'Rename and organize employee, candidate, onboarding, review, and policy files with AI. Searchable HR filenames, Offline AI, preview, and undo on Mac or Windows.',
+      'Rename employee, candidate, onboarding, review, and policy files by name, date, and document type. Offline AI, preview, and undo on Mac or Windows.',
     robots: 'index, follow',
     ogType: 'website',
     ogImage: `${SITE_ORIGIN}/images/landing/hr-document-management.webp`,
     keywords:
-      'HR document management, employee file naming convention, HR document organizer, organize employee files, onboarding document management, recruiting file organization, AI HR document renamer, offline AI HR documents, HR file naming software',
+      'AI file renamer for HR, employee file naming convention, HR document organizer, organize employee files, onboarding file organization, recruiting file organization, AI HR document renamer, offline AI HR documents, HR file naming software',
   },
   '/for-real-estate': {
-    title: 'Real Estate Document Management with AI File Renaming',
+    title: 'AI File Renamer for Real Estate Professionals',
     description:
       'Rename purchase agreements, inspections, title files, appraisals, closing documents, and property photos by address, date, type, party, and status.',
     robots: 'index, follow',
     ogType: 'website',
     ogImage: `${SITE_ORIGIN}/images/landing/real-estate-document-management.webp`,
     keywords:
-      'real estate document management, real estate file organization, rename real estate documents, property transaction file naming, organize closing documents, rename DocuSign files, real estate document renamer, property file naming software',
+      'AI file renamer for real estate, real estate file organization, rename real estate documents, property transaction file naming, organize closing documents, rename DocuSign files, real estate document renamer, property file naming software',
   },
   '/rename-scanned-documents': {
     title: 'Rename Scanned Documents Automatically',

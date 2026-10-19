@@ -138,7 +138,8 @@ const professionSeo = professionPage
       ...getSeoForPath(route),
       ...professionPage.seo,
       canonicalPath: localizedPath,
-      robots: 'index, follow',
+      // Follows SEO_EXCLUDED_LOCALIZED_ROUTES: translations are noindex, English stays indexable.
+      robots: seo.robots,
       keywords: undefined,
     }
   : null;
