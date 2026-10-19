@@ -3,7 +3,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import AppLink from '@/components/AppLink';
 import Heading from '@/components/Heading';
 import Text from '@/components/Text';
-import { APP_STORE_URL, HOMEBREW_CASK_URL, PRODUCT_FACTS_REVIEWED_AT, WINDOWS_STORE_URL } from '@/constants';
+import { APP_CONFIG, APP_STORE_URL, HOMEBREW_CASK_URL, MAC_APP_VERSION, PRODUCT_FACTS_REVIEWED_AT, SUPPORTED_FORMAT_COUNT, WINDOWS_APP_VERSION, WINDOWS_STORE_URL } from '@/constants';
+import { PRO_PRICING_SUMMARY } from '@/constants/pricing';
 import { PRIMARY_AUTHOR, getPrimaryAuthorJsonLd } from '@/data/author';
 import { getSeoForPath, SITE_ORIGIN } from '@/seo/config';
 import styles from '@/views/Editorial/EditorialPage.module.scss';
@@ -56,6 +57,30 @@ const jsonLd = {
           </Text>
         </section>
 
+        <section class={styles.Card}>
+          <Heading as='h2' size='h3' className={styles.CardTitle}>Timeline</Heading>
+          <Text as='p' color='subtle' className={styles.CardCopy}>
+            The Mac changelog starts with version 0.1.0 on 30 December 2025. Zush for Windows reached 1.0 on 23 April 2026. The current releases are {MAC_APP_VERSION} on macOS and {WINDOWS_APP_VERSION} on Windows, and the website is available in 11 languages.
+          </Text>
+        </section>
+        <section class={styles.Card}>
+          <Heading as='h2' size='h3' className={styles.CardTitle}>Platforms and pricing</Heading>
+          <Text as='p' color='subtle' className={styles.CardCopy}>
+            Zush runs on macOS 15 and later and on Windows 10 and 11, and reads {SUPPORTED_FORMAT_COUNT} file formats. Every install starts with {APP_CONFIG.free_tier_limit} free AI renames; PRO is {PRO_PRICING_SUMMARY}, and one license covers up to 3 devices across Mac and Windows.
+          </Text>
+        </section>
+        <section class={styles.Card}>
+          <Heading as='h2' size='h3' className={styles.CardTitle}>How your files are handled</Heading>
+          <Text as='p' color='subtle' className={styles.CardCopy}>
+            Files are renamed and moved on your own computer, and nothing changes until you apply a batch; Rename History can undo it. In Zush Cloud AI and BYOK modes, an analysis payload is sent to the AI provider to suggest a name. With LM Studio or Ollama, supported analysis stays on your device.
+          </Text>
+        </section>
+        <section class={styles.Card}>
+          <Heading as='h2' size='h3' className={styles.CardTitle}>What Zush is not</Heading>
+          <Text as='p' color='subtle' className={styles.CardCopy}>
+            Zush is a desktop app for naming and organizing files, published at zushapp.com. It is not a cloud drive, backup service, or document-management system, and it is not affiliated with other companies or products that use the name Zush.
+          </Text>
+        </section>
         <section class={`${styles.Card} ${styles.CardWide}`}>
           <Heading as='h2' size='h3' className={styles.CardTitle}>How claims are verified</Heading>
           <Text as='p' color='subtle' className={styles.CardCopy}>
